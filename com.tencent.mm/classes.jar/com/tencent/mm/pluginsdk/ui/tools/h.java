@@ -53,7 +53,7 @@ public abstract interface h
   
   public static abstract interface a
   {
-    public abstract int eT(int paramInt1, int paramInt2);
+    public abstract int eU(int paramInt1, int paramInt2);
     
     public abstract void eb(int paramInt1, int paramInt2);
     

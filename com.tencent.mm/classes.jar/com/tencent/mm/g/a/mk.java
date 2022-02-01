@@ -1,14 +1,14 @@
 package com.tencent.mm.g.a;
 
+import android.app.Activity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.bmr;
 import com.tencent.mm.sdk.b.b;
-import java.util.LinkedList;
 
 public final class mk
   extends b
 {
-  public a dzU;
+  public a dAW;
+  public b dAX;
   
   public mk()
   {
@@ -17,17 +17,23 @@ public final class mk
   
   private mk(byte paramByte)
   {
-    AppMethodBeat.i(101728);
-    this.dzU = new a();
-    this.IbR = false;
+    AppMethodBeat.i(155373);
+    this.dAW = new a();
+    this.dAX = new b();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(101728);
+    AppMethodBeat.o(155373);
   }
   
   public static final class a
   {
-    public LinkedList<bmr> dzV;
-    public boolean dzW = false;
+    public Runnable dAY;
+    public Activity dtg;
+  }
+  
+  public static final class b
+  {
+    public boolean doq = false;
   }
 }
 

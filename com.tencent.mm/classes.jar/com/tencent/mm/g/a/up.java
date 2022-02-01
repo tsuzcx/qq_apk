@@ -1,13 +1,12 @@
 package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.byn;
 import com.tencent.mm.sdk.b.b;
 
 public final class up
   extends b
 {
-  public a dIP;
+  public a dJX;
   
   public up()
   {
@@ -16,24 +15,22 @@ public final class up
   
   private up(byte paramByte)
   {
-    AppMethodBeat.i(125640);
-    this.dIP = new a();
-    this.IbR = false;
+    AppMethodBeat.i(125637);
+    this.dJX = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(125640);
+    AppMethodBeat.o(125637);
   }
   
   public static final class a
   {
-    public byn dIQ;
-    public int dkM;
-    public String mediaId;
-    public String path;
+    public String dAg;
+    public String dqc;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.a.up
  * JD-Core Version:    0.7.0.1
  */

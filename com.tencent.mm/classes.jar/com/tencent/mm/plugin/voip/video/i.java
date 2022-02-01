@@ -14,62 +14,60 @@ import android.os.VibrationEffect;
 import android.os.Vibrator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.b.k;
-import com.tencent.mm.compatible.deviceinfo.ae;
 import com.tencent.mm.compatible.util.d;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public final class i
 {
-  public MediaPlayer Com;
-  public int Con;
-  public long Coo;
-  public long Cop;
-  a Coq;
+  public MediaPlayer CFQ;
+  public int CFR;
+  public long CFS;
+  public long CFT;
+  a CFU;
   public boolean aLU;
-  ap gIf;
-  private com.tencent.mm.compatible.util.b ixy;
+  aq gKO;
+  private com.tencent.mm.compatible.util.b iAr;
   private AudioManager mAudioManager;
   public Context mContext;
-  private Vibrator mUw;
+  private Vibrator mZD;
   
   public i(Context paramContext)
   {
     AppMethodBeat.i(115686);
     this.aLU = false;
-    this.Con = 65536;
-    this.gIf = new ap(Looper.getMainLooper());
+    this.CFR = 65536;
+    this.gKO = new aq(Looper.getMainLooper());
     this.mContext = paramContext;
     if (this.mContext != null)
     {
-      this.mAudioManager = com.tencent.mm.plugin.audio.c.a.bGC().audioManager;
+      this.mAudioManager = com.tencent.mm.plugin.audio.c.a.bHy().audioManager;
       if (this.mAudioManager == null) {
         this.mAudioManager = ((AudioManager)this.mContext.getSystemService("audio"));
       }
-      this.mUw = ((Vibrator)this.mContext.getSystemService("vibrator"));
+      this.mZD = ((Vibrator)this.mContext.getSystemService("vibrator"));
     }
-    this.ixy = new com.tencent.mm.compatible.util.b(aj.getContext());
+    this.iAr = new com.tencent.mm.compatible.util.b(ak.getContext());
     AppMethodBeat.o(115686);
   }
   
-  private void eAF()
+  private void eEn()
   {
     AppMethodBeat.i(115691);
-    Object localObject = this.mContext.getSharedPreferences(aj.fkC(), 0);
+    Object localObject = this.mContext.getSharedPreferences(ak.fow(), 0);
     boolean bool;
-    if (d.ly(26)) {
+    if (d.lA(26)) {
       bool = ((SharedPreferences)localObject).getBoolean("settings_voip_scene_shake", true);
     }
     while (bool)
     {
       int i = this.mAudioManager.getRingerMode();
-      ad.i("MicroMsg.RingPlayer", "system ringer mode: %s", new Object[] { Integer.valueOf(i) });
+      com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.RingPlayer", "system ringer mode: %s", new Object[] { Integer.valueOf(i) });
       if ((i == 1) || (i == 2))
       {
-        this.mUw = ((Vibrator)this.mContext.getSystemService("vibrator"));
-        if (this.mUw == null)
+        this.mZD = ((Vibrator)this.mContext.getSystemService("vibrator"));
+        if (this.mZD == null)
         {
           AppMethodBeat.o(115691);
           return;
@@ -77,32 +75,32 @@ public final class i
         }
         else
         {
-          if (d.ly(26))
+          if (d.lA(26))
           {
             localObject = new AudioAttributes.Builder().setUsage(7).build();
-            this.mUw.vibrate(VibrationEffect.createWaveform(new long[] { 1000L, 1000L, 1000L, 1000L }, 0), (AudioAttributes)localObject);
+            this.mZD.vibrate(VibrationEffect.createWaveform(new long[] { 1000L, 1000L, 1000L, 1000L }, 0), (AudioAttributes)localObject);
             AppMethodBeat.o(115691);
             return;
           }
-          this.mUw.vibrate(new long[] { 1000L, 1000L, 1000L, 1000L }, 0);
+          this.mZD.vibrate(new long[] { 1000L, 1000L, 1000L, 1000L }, 0);
           AppMethodBeat.o(115691);
         }
       }
       else
       {
-        ad.i("MicroMsg.RingPlayer", "system not open vibrate");
+        com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.RingPlayer", "system not open vibrate");
       }
     }
     AppMethodBeat.o(115691);
   }
   
-  private void eAG()
+  private void eEo()
   {
     AppMethodBeat.i(115692);
-    if (this.mUw != null)
+    if (this.mZD != null)
     {
-      this.mUw.cancel();
-      this.mUw = null;
+      this.mZD.cancel();
+      this.mZD = null;
     }
     AppMethodBeat.o(115692);
   }
@@ -113,24 +111,24 @@ public final class i
     // Byte code:
     //   0: ldc 209
     //   2: invokestatic 56	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: invokestatic 213	com/tencent/mm/sdk/platformtools/aj:cnC	()Z
+    //   5: invokestatic 213	com/tencent/mm/sdk/platformtools/ak:cpe	()Z
     //   8: ifeq +924 -> 932
     //   11: iload_2
     //   12: ifne +116 -> 128
-    //   15: invokestatic 219	com/tencent/mm/kernel/g:ajC	()Lcom/tencent/mm/kernel/e;
-    //   18: invokevirtual 225	com/tencent/mm/kernel/e:ajl	()Lcom/tencent/mm/storage/ai;
+    //   15: invokestatic 219	com/tencent/mm/kernel/g:ajR	()Lcom/tencent/mm/kernel/e;
+    //   18: invokevirtual 225	com/tencent/mm/kernel/e:ajA	()Lcom/tencent/mm/storage/aj;
     //   21: ldc 226
     //   23: getstatic 232	java/lang/Boolean:TRUE	Ljava/lang/Boolean;
-    //   26: invokevirtual 238	com/tencent/mm/storage/ai:get	(ILjava/lang/Object;)Ljava/lang/Object;
+    //   26: invokevirtual 238	com/tencent/mm/storage/aj:get	(ILjava/lang/Object;)Ljava/lang/Object;
     //   29: checkcast 228	java/lang/Boolean
     //   32: invokevirtual 241	java/lang/Boolean:booleanValue	()Z
     //   35: istore 6
     //   37: bipush 28
-    //   39: invokestatic 244	com/tencent/mm/compatible/util/d:lA	(I)Z
+    //   39: invokestatic 244	com/tencent/mm/compatible/util/d:lC	(I)Z
     //   42: ifeq +122 -> 164
-    //   45: invokestatic 249	com/tencent/mm/n/a:abL	()Z
+    //   45: invokestatic 249	com/tencent/mm/n/a:abU	()Z
     //   48: istore 8
-    //   50: invokestatic 252	com/tencent/mm/n/a:abM	()Z
+    //   50: invokestatic 252	com/tencent/mm/n/a:abV	()Z
     //   53: istore 7
     //   55: ldc 151
     //   57: ldc 254
@@ -156,7 +154,7 @@ public final class i
     //   89: iload_3
     //   90: invokestatic 257	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   93: aastore
-    //   94: invokestatic 164	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   94: invokestatic 164	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   97: iload 7
     //   99: istore 6
     //   101: iload_3
@@ -178,26 +176,26 @@ public final class i
     //   133: iload_2
     //   134: iconst_2
     //   135: if_icmpne +797 -> 932
-    //   138: invokestatic 219	com/tencent/mm/kernel/g:ajC	()Lcom/tencent/mm/kernel/e;
-    //   141: invokevirtual 225	com/tencent/mm/kernel/e:ajl	()Lcom/tencent/mm/storage/ai;
+    //   138: invokestatic 219	com/tencent/mm/kernel/g:ajR	()Lcom/tencent/mm/kernel/e;
+    //   141: invokevirtual 225	com/tencent/mm/kernel/e:ajA	()Lcom/tencent/mm/storage/aj;
     //   144: ldc_w 258
     //   147: getstatic 232	java/lang/Boolean:TRUE	Ljava/lang/Boolean;
-    //   150: invokevirtual 238	com/tencent/mm/storage/ai:get	(ILjava/lang/Object;)Ljava/lang/Object;
+    //   150: invokevirtual 238	com/tencent/mm/storage/aj:get	(ILjava/lang/Object;)Ljava/lang/Object;
     //   153: checkcast 228	java/lang/Boolean
     //   156: invokevirtual 241	java/lang/Boolean:booleanValue	()Z
     //   159: istore 6
     //   161: goto -124 -> 37
     //   164: bipush 26
-    //   166: invokestatic 137	com/tencent/mm/compatible/util/d:ly	(I)Z
+    //   166: invokestatic 137	com/tencent/mm/compatible/util/d:lA	(I)Z
     //   169: ifeq +16 -> 185
-    //   172: invokestatic 261	com/tencent/mm/n/a:abS	()Z
+    //   172: invokestatic 261	com/tencent/mm/n/a:acb	()Z
     //   175: istore 8
-    //   177: invokestatic 264	com/tencent/mm/n/a:abT	()Z
+    //   177: invokestatic 264	com/tencent/mm/n/a:acc	()Z
     //   180: istore 7
     //   182: goto -127 -> 55
-    //   185: invokestatic 267	com/tencent/mm/n/a:abJ	()Z
+    //   185: invokestatic 267	com/tencent/mm/n/a:abS	()Z
     //   188: istore 8
-    //   190: invokestatic 270	com/tencent/mm/n/a:abN	()Z
+    //   190: invokestatic 270	com/tencent/mm/n/a:abW	()Z
     //   193: istore 7
     //   195: goto -140 -> 55
     //   198: astore 9
@@ -212,7 +210,7 @@ public final class i
     //   217: invokevirtual 280	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   220: invokevirtual 284	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   223: invokevirtual 287	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   226: invokestatic 290	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   226: invokestatic 290	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   229: iconst_1
     //   230: istore 7
     //   232: iload 6
@@ -230,14 +228,14 @@ public final class i
     //   258: ifeq +640 -> 898
     //   261: aload_0
     //   262: invokestatic 296	java/lang/System:currentTimeMillis	()J
-    //   265: putfield 298	com/tencent/mm/plugin/voip/video/i:Coo	J
+    //   265: putfield 298	com/tencent/mm/plugin/voip/video/i:CFS	J
     //   268: aload_0
     //   269: new 300	com/tencent/mm/compatible/b/k
     //   272: dup
     //   273: invokespecial 301	com/tencent/mm/compatible/b/k:<init>	()V
-    //   276: putfield 303	com/tencent/mm/plugin/voip/video/i:Com	Landroid/media/MediaPlayer;
+    //   276: putfield 303	com/tencent/mm/plugin/voip/video/i:CFQ	Landroid/media/MediaPlayer;
     //   279: aload_0
-    //   280: getfield 303	com/tencent/mm/plugin/voip/video/i:Com	Landroid/media/MediaPlayer;
+    //   280: getfield 303	com/tencent/mm/plugin/voip/video/i:CFQ	Landroid/media/MediaPlayer;
     //   283: aload_0
     //   284: getfield 76	com/tencent/mm/plugin/voip/video/i:mContext	Landroid/content/Context;
     //   287: new 272	java/lang/StringBuilder
@@ -256,26 +254,26 @@ public final class i
     //   320: invokestatic 319	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
     //   323: invokevirtual 325	android/media/MediaPlayer:setDataSource	(Landroid/content/Context;Landroid/net/Uri;)V
     //   326: aload_0
-    //   327: getfield 303	com/tencent/mm/plugin/voip/video/i:Com	Landroid/media/MediaPlayer;
+    //   327: getfield 303	com/tencent/mm/plugin/voip/video/i:CFQ	Landroid/media/MediaPlayer;
     //   330: new 6	com/tencent/mm/plugin/voip/video/i$1
     //   333: dup
     //   334: aload_0
     //   335: invokespecial 328	com/tencent/mm/plugin/voip/video/i$1:<init>	(Lcom/tencent/mm/plugin/voip/video/i;)V
     //   338: invokevirtual 332	android/media/MediaPlayer:setOnCompletionListener	(Landroid/media/MediaPlayer$OnCompletionListener;)V
     //   341: aload_0
-    //   342: getfield 303	com/tencent/mm/plugin/voip/video/i:Com	Landroid/media/MediaPlayer;
+    //   342: getfield 303	com/tencent/mm/plugin/voip/video/i:CFQ	Landroid/media/MediaPlayer;
     //   345: new 8	com/tencent/mm/plugin/voip/video/i$2
     //   348: dup
     //   349: aload_0
     //   350: invokespecial 333	com/tencent/mm/plugin/voip/video/i$2:<init>	(Lcom/tencent/mm/plugin/voip/video/i;)V
     //   353: invokevirtual 337	android/media/MediaPlayer:setOnErrorListener	(Landroid/media/MediaPlayer$OnErrorListener;)V
-    //   356: invokestatic 340	com/tencent/mm/plugin/audio/c/a:bGD	()Z
+    //   356: invokestatic 340	com/tencent/mm/plugin/audio/c/a:bHz	()Z
     //   359: ifeq +204 -> 563
-    //   362: invokestatic 343	com/tencent/mm/plugin/audio/c/a:bGE	()Z
+    //   362: invokestatic 343	com/tencent/mm/plugin/audio/c/a:bHA	()Z
     //   365: ifeq +198 -> 563
     //   368: iconst_1
     //   369: istore 7
-    //   371: invokestatic 346	com/tencent/mm/plugin/audio/c/a:bGx	()Z
+    //   371: invokestatic 346	com/tencent/mm/plugin/audio/c/a:bHt	()Z
     //   374: istore 8
     //   376: ldc 151
     //   378: ldc_w 348
@@ -291,19 +289,19 @@ public final class i
     //   395: iload 8
     //   397: invokestatic 257	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   400: aastore
-    //   401: invokestatic 351	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   401: invokestatic 351	com/tencent/mm/sdk/platformtools/ae:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   404: iload 7
     //   406: ifeq +163 -> 569
-    //   409: invokestatic 354	com/tencent/mm/plugin/audio/c/a:bGy	()I
+    //   409: invokestatic 354	com/tencent/mm/plugin/audio/c/a:bHu	()I
     //   412: istore_1
     //   413: aload_0
     //   414: iconst_0
-    //   415: invokevirtual 358	com/tencent/mm/plugin/voip/video/i:tH	(Z)V
+    //   415: invokevirtual 358	com/tencent/mm/plugin/voip/video/i:tO	(Z)V
     //   418: bipush 28
-    //   420: invokestatic 244	com/tencent/mm/compatible/util/d:lA	(I)Z
+    //   420: invokestatic 244	com/tencent/mm/compatible/util/d:lC	(I)Z
     //   423: ifeq +238 -> 661
     //   426: aload_0
-    //   427: getfield 303	com/tencent/mm/plugin/voip/video/i:Com	Landroid/media/MediaPlayer;
+    //   427: getfield 303	com/tencent/mm/plugin/voip/video/i:CFQ	Landroid/media/MediaPlayer;
     //   430: new 168	android/media/AudioAttributes$Builder
     //   433: dup
     //   434: invokespecial 169	android/media/AudioAttributes$Builder:<init>	()V
@@ -317,13 +315,13 @@ public final class i
     //   453: invokevirtual 368	android/media/MediaPlayer:setAudioAttributes	(Landroid/media/AudioAttributes;)V
     //   456: ldc 151
     //   458: ldc_w 370
-    //   461: invokestatic 197	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   461: invokestatic 197	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   464: goto +474 -> 938
-    //   467: invokestatic 82	com/tencent/mm/plugin/audio/c/a:bGC	()Lcom/tencent/mm/plugin/audio/b/a;
+    //   467: invokestatic 82	com/tencent/mm/plugin/audio/c/a:bHy	()Lcom/tencent/mm/plugin/audio/b/a;
     //   470: iload_1
     //   471: invokevirtual 374	com/tencent/mm/plugin/audio/b/a:getStreamMaxVolume	(I)I
     //   474: istore 5
-    //   476: invokestatic 82	com/tencent/mm/plugin/audio/c/a:bGC	()Lcom/tencent/mm/plugin/audio/b/a;
+    //   476: invokestatic 82	com/tencent/mm/plugin/audio/c/a:bHy	()Lcom/tencent/mm/plugin/audio/b/a;
     //   479: iload_1
     //   480: invokevirtual 377	com/tencent/mm/plugin/audio/b/a:getStreamVolume	(I)I
     //   483: istore 4
@@ -338,30 +336,30 @@ public final class i
     //   499: iconst_2
     //   500: idiv
     //   501: istore_2
-    //   502: invokestatic 82	com/tencent/mm/plugin/audio/c/a:bGC	()Lcom/tencent/mm/plugin/audio/b/a;
+    //   502: invokestatic 82	com/tencent/mm/plugin/audio/c/a:bHy	()Lcom/tencent/mm/plugin/audio/b/a;
     //   505: iload_1
     //   506: iload_2
     //   507: invokevirtual 381	com/tencent/mm/plugin/audio/b/a:eD	(II)V
     //   510: aload_0
-    //   511: getfield 303	com/tencent/mm/plugin/voip/video/i:Com	Landroid/media/MediaPlayer;
+    //   511: getfield 303	com/tencent/mm/plugin/voip/video/i:CFQ	Landroid/media/MediaPlayer;
     //   514: iconst_1
     //   515: invokevirtual 384	android/media/MediaPlayer:setLooping	(Z)V
     //   518: aload_0
-    //   519: getfield 303	com/tencent/mm/plugin/voip/video/i:Com	Landroid/media/MediaPlayer;
+    //   519: getfield 303	com/tencent/mm/plugin/voip/video/i:CFQ	Landroid/media/MediaPlayer;
     //   522: invokevirtual 387	android/media/MediaPlayer:prepare	()V
     //   525: aload_0
-    //   526: getfield 303	com/tencent/mm/plugin/voip/video/i:Com	Landroid/media/MediaPlayer;
+    //   526: getfield 303	com/tencent/mm/plugin/voip/video/i:CFQ	Landroid/media/MediaPlayer;
     //   529: invokevirtual 390	android/media/MediaPlayer:start	()V
     //   532: invokestatic 296	java/lang/System:currentTimeMillis	()J
     //   535: aload_0
-    //   536: getfield 298	com/tencent/mm/plugin/voip/video/i:Coo	J
+    //   536: getfield 298	com/tencent/mm/plugin/voip/video/i:CFS	J
     //   539: lsub
     //   540: ldc2_w 391
     //   543: lcmp
     //   544: ifle +8 -> 552
     //   547: aload_0
     //   548: iconst_3
-    //   549: putfield 61	com/tencent/mm/plugin/voip/video/i:Con	I
+    //   549: putfield 61	com/tencent/mm/plugin/voip/video/i:CFR	I
     //   552: aload_0
     //   553: iconst_1
     //   554: putfield 58	com/tencent/mm/plugin/voip/video/i:aLU	Z
@@ -375,43 +373,43 @@ public final class i
     //   570: ifne +8 -> 578
     //   573: iload 8
     //   575: ifeq +56 -> 631
-    //   578: getstatic 398	com/tencent/mm/compatible/deviceinfo/ae:gcF	Lcom/tencent/mm/compatible/deviceinfo/b;
-    //   581: getfield 403	com/tencent/mm/compatible/deviceinfo/b:fWN	I
+    //   578: getstatic 398	com/tencent/mm/compatible/deviceinfo/ae:geN	Lcom/tencent/mm/compatible/deviceinfo/b;
+    //   581: getfield 403	com/tencent/mm/compatible/deviceinfo/b:fYT	I
     //   584: iflt +343 -> 927
-    //   587: getstatic 398	com/tencent/mm/compatible/deviceinfo/ae:gcF	Lcom/tencent/mm/compatible/deviceinfo/b;
-    //   590: getfield 403	com/tencent/mm/compatible/deviceinfo/b:fWN	I
+    //   587: getstatic 398	com/tencent/mm/compatible/deviceinfo/ae:geN	Lcom/tencent/mm/compatible/deviceinfo/b;
+    //   590: getfield 403	com/tencent/mm/compatible/deviceinfo/b:fYT	I
     //   593: istore_1
     //   594: goto +357 -> 951
     //   597: aload_0
     //   598: iconst_0
-    //   599: invokevirtual 358	com/tencent/mm/plugin/voip/video/i:tH	(Z)V
+    //   599: invokevirtual 358	com/tencent/mm/plugin/voip/video/i:tO	(Z)V
     //   602: goto -184 -> 418
     //   605: iconst_3
     //   606: istore_1
-    //   607: getstatic 398	com/tencent/mm/compatible/deviceinfo/ae:gcF	Lcom/tencent/mm/compatible/deviceinfo/b;
-    //   610: getfield 406	com/tencent/mm/compatible/deviceinfo/b:fWK	I
+    //   607: getstatic 398	com/tencent/mm/compatible/deviceinfo/ae:geN	Lcom/tencent/mm/compatible/deviceinfo/b;
+    //   610: getfield 406	com/tencent/mm/compatible/deviceinfo/b:fYQ	I
     //   613: iflt +10 -> 623
-    //   616: getstatic 398	com/tencent/mm/compatible/deviceinfo/ae:gcF	Lcom/tencent/mm/compatible/deviceinfo/b;
-    //   619: getfield 406	com/tencent/mm/compatible/deviceinfo/b:fWK	I
+    //   616: getstatic 398	com/tencent/mm/compatible/deviceinfo/ae:geN	Lcom/tencent/mm/compatible/deviceinfo/b;
+    //   619: getfield 406	com/tencent/mm/compatible/deviceinfo/b:fYQ	I
     //   622: istore_1
     //   623: aload_0
     //   624: iconst_1
-    //   625: invokevirtual 358	com/tencent/mm/plugin/voip/video/i:tH	(Z)V
+    //   625: invokevirtual 358	com/tencent/mm/plugin/voip/video/i:tO	(Z)V
     //   628: goto -210 -> 418
-    //   631: invokestatic 340	com/tencent/mm/plugin/audio/c/a:bGD	()Z
+    //   631: invokestatic 340	com/tencent/mm/plugin/audio/c/a:bHz	()Z
     //   634: ifne +288 -> 922
-    //   637: getstatic 398	com/tencent/mm/compatible/deviceinfo/ae:gcF	Lcom/tencent/mm/compatible/deviceinfo/b;
-    //   640: getfield 409	com/tencent/mm/compatible/deviceinfo/b:fWP	I
+    //   637: getstatic 398	com/tencent/mm/compatible/deviceinfo/ae:geN	Lcom/tencent/mm/compatible/deviceinfo/b;
+    //   640: getfield 409	com/tencent/mm/compatible/deviceinfo/b:fYV	I
     //   643: iflt +279 -> 922
-    //   646: getstatic 398	com/tencent/mm/compatible/deviceinfo/ae:gcF	Lcom/tencent/mm/compatible/deviceinfo/b;
-    //   649: getfield 409	com/tencent/mm/compatible/deviceinfo/b:fWP	I
+    //   646: getstatic 398	com/tencent/mm/compatible/deviceinfo/ae:geN	Lcom/tencent/mm/compatible/deviceinfo/b;
+    //   649: getfield 409	com/tencent/mm/compatible/deviceinfo/b:fYV	I
     //   652: istore_1
     //   653: aload_0
     //   654: iconst_1
-    //   655: invokevirtual 358	com/tencent/mm/plugin/voip/video/i:tH	(Z)V
+    //   655: invokevirtual 358	com/tencent/mm/plugin/voip/video/i:tO	(Z)V
     //   658: goto -240 -> 418
     //   661: aload_0
-    //   662: getfield 303	com/tencent/mm/plugin/voip/video/i:Com	Landroid/media/MediaPlayer;
+    //   662: getfield 303	com/tencent/mm/plugin/voip/video/i:CFQ	Landroid/media/MediaPlayer;
     //   665: iload_1
     //   666: invokevirtual 412	android/media/MediaPlayer:setAudioStreamType	(I)V
     //   669: goto +269 -> 938
@@ -425,10 +423,10 @@ public final class i
     //   688: invokevirtual 415	java/lang/Throwable:getMessage	()Ljava/lang/String;
     //   691: invokevirtual 284	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   694: invokevirtual 287	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   697: invokestatic 290	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   697: invokestatic 290	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   700: aload_0
     //   701: iconst_2
-    //   702: putfield 61	com/tencent/mm/plugin/voip/video/i:Con	I
+    //   702: putfield 61	com/tencent/mm/plugin/voip/video/i:CFR	I
     //   705: aload_0
     //   706: getfield 76	com/tencent/mm/plugin/voip/video/i:mContext	Landroid/content/Context;
     //   709: iconst_1
@@ -439,9 +437,9 @@ public final class i
     //   717: getfield 76	com/tencent/mm/plugin/voip/video/i:mContext	Landroid/content/Context;
     //   720: aload 9
     //   722: invokestatic 424	com/tencent/mm/compatible/b/k:e	(Landroid/content/Context;Landroid/net/Uri;)Lcom/tencent/mm/compatible/b/k;
-    //   725: putfield 303	com/tencent/mm/plugin/voip/video/i:Com	Landroid/media/MediaPlayer;
+    //   725: putfield 303	com/tencent/mm/plugin/voip/video/i:CFQ	Landroid/media/MediaPlayer;
     //   728: aload_0
-    //   729: getfield 303	com/tencent/mm/plugin/voip/video/i:Com	Landroid/media/MediaPlayer;
+    //   729: getfield 303	com/tencent/mm/plugin/voip/video/i:CFQ	Landroid/media/MediaPlayer;
     //   732: astore 9
     //   734: aload 9
     //   736: ifnonnull +75 -> 811
@@ -451,7 +449,7 @@ public final class i
     //   745: iload_3
     //   746: ifeq +53 -> 799
     //   749: aload_0
-    //   750: getfield 303	com/tencent/mm/plugin/voip/video/i:Com	Landroid/media/MediaPlayer;
+    //   750: getfield 303	com/tencent/mm/plugin/voip/video/i:CFQ	Landroid/media/MediaPlayer;
     //   753: ldc_w 425
     //   756: ldc_w 425
     //   759: invokevirtual 429	android/media/MediaPlayer:setVolume	(FF)V
@@ -466,59 +464,59 @@ public final class i
     //   781: invokevirtual 432	java/lang/Exception:toString	()Ljava/lang/String;
     //   784: invokevirtual 284	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   787: invokevirtual 287	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   790: invokestatic 290	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   790: invokestatic 290	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   793: ldc 209
     //   795: invokestatic 120	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   798: return
     //   799: iload 6
     //   801: ifeq -291 -> 510
     //   804: aload_0
-    //   805: invokespecial 434	com/tencent/mm/plugin/voip/video/i:eAF	()V
+    //   805: invokespecial 434	com/tencent/mm/plugin/voip/video/i:eEn	()V
     //   808: goto -298 -> 510
     //   811: aload_0
-    //   812: getfield 303	com/tencent/mm/plugin/voip/video/i:Com	Landroid/media/MediaPlayer;
+    //   812: getfield 303	com/tencent/mm/plugin/voip/video/i:CFQ	Landroid/media/MediaPlayer;
     //   815: invokevirtual 437	android/media/MediaPlayer:stop	()V
     //   818: aload_0
-    //   819: getfield 303	com/tencent/mm/plugin/voip/video/i:Com	Landroid/media/MediaPlayer;
+    //   819: getfield 303	com/tencent/mm/plugin/voip/video/i:CFQ	Landroid/media/MediaPlayer;
     //   822: invokevirtual 387	android/media/MediaPlayer:prepare	()V
     //   825: aload_0
-    //   826: getfield 303	com/tencent/mm/plugin/voip/video/i:Com	Landroid/media/MediaPlayer;
+    //   826: getfield 303	com/tencent/mm/plugin/voip/video/i:CFQ	Landroid/media/MediaPlayer;
     //   829: iconst_1
     //   830: invokevirtual 384	android/media/MediaPlayer:setLooping	(Z)V
     //   833: iload_3
     //   834: ifeq +52 -> 886
     //   837: aload_0
-    //   838: getfield 303	com/tencent/mm/plugin/voip/video/i:Com	Landroid/media/MediaPlayer;
+    //   838: getfield 303	com/tencent/mm/plugin/voip/video/i:CFQ	Landroid/media/MediaPlayer;
     //   841: ldc_w 425
     //   844: ldc_w 425
     //   847: invokevirtual 429	android/media/MediaPlayer:setVolume	(FF)V
     //   850: aload_0
-    //   851: getfield 303	com/tencent/mm/plugin/voip/video/i:Com	Landroid/media/MediaPlayer;
+    //   851: getfield 303	com/tencent/mm/plugin/voip/video/i:CFQ	Landroid/media/MediaPlayer;
     //   854: invokevirtual 390	android/media/MediaPlayer:start	()V
     //   857: aload_0
     //   858: iconst_0
-    //   859: putfield 61	com/tencent/mm/plugin/voip/video/i:Con	I
+    //   859: putfield 61	com/tencent/mm/plugin/voip/video/i:CFR	I
     //   862: goto -310 -> 552
     //   865: astore 9
     //   867: ldc_w 439
     //   870: aload 9
     //   872: invokevirtual 280	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   875: invokestatic 290	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   875: invokestatic 290	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   878: aload_0
     //   879: iconst_2
-    //   880: putfield 61	com/tencent/mm/plugin/voip/video/i:Con	I
+    //   880: putfield 61	com/tencent/mm/plugin/voip/video/i:CFR	I
     //   883: goto -331 -> 552
     //   886: iload 6
     //   888: ifeq -38 -> 850
     //   891: aload_0
-    //   892: invokespecial 434	com/tencent/mm/plugin/voip/video/i:eAF	()V
+    //   892: invokespecial 434	com/tencent/mm/plugin/voip/video/i:eEn	()V
     //   895: goto -45 -> 850
     //   898: iload 6
     //   900: ifeq +11 -> 911
     //   903: iload_3
     //   904: ifne +7 -> 911
     //   907: aload_0
-    //   908: invokespecial 434	com/tencent/mm/plugin/voip/video/i:eAF	()V
+    //   908: invokespecial 434	com/tencent/mm/plugin/voip/video/i:eEn	()V
     //   911: ldc 209
     //   913: invokestatic 120	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   916: return
@@ -615,92 +613,92 @@ public final class i
     //   185	195	917	java/lang/Exception
   }
   
-  public final boolean OJ()
+  public final boolean OH()
   {
     return !this.aLU;
   }
   
-  public final void U(boolean paramBoolean, int paramInt)
+  public final void X(boolean paramBoolean, int paramInt)
   {
-    AppMethodBeat.i(216569);
+    AppMethodBeat.i(210248);
     a(2131691034, paramBoolean, paramInt, true);
-    AppMethodBeat.o(216569);
+    AppMethodBeat.o(210248);
   }
   
   public final void a(final int paramInt1, final long paramLong, boolean paramBoolean, final int paramInt2)
   {
     AppMethodBeat.i(115690);
-    this.Coo = System.currentTimeMillis();
-    this.Com = new k();
+    this.CFS = System.currentTimeMillis();
+    this.CFQ = new k();
     try
     {
-      this.Com.setDataSource(this.mContext, Uri.parse("android.resource://" + this.mContext.getPackageName() + "/" + paramInt1));
-      this.Com.setOnCompletionListener(new MediaPlayer.OnCompletionListener()
+      this.CFQ.setDataSource(this.mContext, Uri.parse("android.resource://" + this.mContext.getPackageName() + "/" + paramInt1));
+      this.CFQ.setOnCompletionListener(new MediaPlayer.OnCompletionListener()
       {
         public final void onCompletion(MediaPlayer paramAnonymousMediaPlayer)
         {
           AppMethodBeat.i(115679);
-          if (System.currentTimeMillis() - i.this.Coo > 70000L) {
-            i.this.Con = 4;
+          if (System.currentTimeMillis() - i.this.CFS > 70000L) {
+            i.this.CFR = 4;
           }
           if (i.this.aLU)
           {
-            i.this.Coq = new i.a(i.this, paramInt1, paramLong, paramInt2, this.val$streamType);
-            i.this.gIf.postDelayed(i.this.Coq, paramLong);
+            i.this.CFU = new i.a(i.this, paramInt1, paramLong, paramInt2, this.val$streamType);
+            i.this.gKO.postDelayed(i.this.CFU, paramLong);
           }
           AppMethodBeat.o(115679);
         }
       });
-      this.Com.setOnErrorListener(new MediaPlayer.OnErrorListener()
+      this.CFQ.setOnErrorListener(new MediaPlayer.OnErrorListener()
       {
         public final boolean onError(MediaPlayer paramAnonymousMediaPlayer, int paramAnonymousInt1, int paramAnonymousInt2)
         {
           AppMethodBeat.i(115680);
-          i.this.Con = 1;
-          ad.w("MicroMsg.RingPlayer", "RingPlayer startPlayCustomRing MediaPlayer onError, what: " + paramAnonymousInt1 + ":extra:" + paramAnonymousInt2);
+          i.this.CFR = 1;
+          com.tencent.mm.sdk.platformtools.ae.w("MicroMsg.RingPlayer", "RingPlayer startPlayCustomRing MediaPlayer onError, what: " + paramAnonymousInt1 + ":extra:" + paramAnonymousInt2);
           AppMethodBeat.o(115680);
           return false;
         }
       });
-      this.Com.setAudioStreamType(paramInt2);
+      this.CFQ.setAudioStreamType(paramInt2);
       if (paramBoolean) {
-        this.Com.setVolume(0.6F, 0.6F);
+        this.CFQ.setVolume(0.6F, 0.6F);
       }
       for (;;)
       {
-        this.Com.setLooping(false);
-        this.Com.prepare();
-        this.Com.start();
-        if (System.currentTimeMillis() - this.Coo > 2000L) {
-          this.Con = 3;
+        this.CFQ.setLooping(false);
+        this.CFQ.prepare();
+        this.CFQ.start();
+        if (System.currentTimeMillis() - this.CFS > 2000L) {
+          this.CFR = 3;
         }
         AppMethodBeat.o(115690);
         return;
-        eAF();
+        eEn();
       }
       return;
     }
     catch (Exception localException)
     {
-      ad.e("MicroMsg.RingPlayer", "new MediaPlayer failed, " + localException.toString());
+      com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.RingPlayer", "new MediaPlayer failed, " + localException.toString());
       AppMethodBeat.o(115690);
     }
   }
   
   public final void a(int paramInt1, boolean paramBoolean1, int paramInt2, boolean paramBoolean2)
   {
-    AppMethodBeat.i(216568);
-    if ((paramInt1 == 2131691034) && (!com.tencent.mm.plugin.audio.c.a.bGD()) && (!com.tencent.mm.plugin.audio.c.a.bGx()) && ((this.mAudioManager.getRingerMode() == 0) || (this.mAudioManager.getRingerMode() == 1)))
+    AppMethodBeat.i(210247);
+    if ((paramInt1 == 2131691034) && (!com.tencent.mm.plugin.audio.c.a.bHz()) && (!com.tencent.mm.plugin.audio.c.a.bHt()) && ((this.mAudioManager.getRingerMode() == 0) || (this.mAudioManager.getRingerMode() == 1)))
     {
-      AppMethodBeat.o(216568);
+      AppMethodBeat.o(210247);
       return;
     }
-    boolean bool = this.mContext.getSharedPreferences(aj.fkC(), 0).getBoolean("settings_shake", true);
+    boolean bool = this.mContext.getSharedPreferences(ak.fow(), 0).getBoolean("settings_shake", true);
     if (paramBoolean1) {
-      bt.F(this.mContext, bool);
+      bu.F(this.mContext, bool);
     }
-    ad.i("MicroMsg.RingPlayer", "playSound, type: %s, changeStreamType: %s, shake: %s", new Object[] { Integer.valueOf(paramInt2), Boolean.valueOf(paramBoolean2), Boolean.valueOf(paramBoolean1) });
-    this.Cop = System.currentTimeMillis();
+    com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.RingPlayer", "playSound, type: %s, changeStreamType: %s, shake: %s", new Object[] { Integer.valueOf(paramInt2), Boolean.valueOf(paramBoolean2), Boolean.valueOf(paramBoolean1) });
+    this.CFT = System.currentTimeMillis();
     k localk = new k();
     try
     {
@@ -711,8 +709,8 @@ public final class i
         {
           AppMethodBeat.i(115681);
           paramAnonymousMediaPlayer.release();
-          if (System.currentTimeMillis() - i.this.Cop > 5000L) {
-            i.this.Con = 8;
+          if (System.currentTimeMillis() - i.this.CFT > 5000L) {
+            i.this.CFR = 8;
           }
           AppMethodBeat.o(115681);
         }
@@ -725,39 +723,39 @@ public final class i
           if (paramAnonymousMediaPlayer != null)
           {
             paramAnonymousMediaPlayer.release();
-            i.this.Con = 5;
-            ad.w("MicroMsg.RingPlayer", "RingPlayer playSound :onError", new Object[] { paramAnonymousMediaPlayer, Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2) });
+            i.this.CFR = 5;
+            com.tencent.mm.sdk.platformtools.ae.w("MicroMsg.RingPlayer", "RingPlayer playSound :onError", new Object[] { paramAnonymousMediaPlayer, Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2) });
           }
           AppMethodBeat.o(115682);
           return false;
         }
       });
-      tH(com.tencent.mm.plugin.audio.c.a.isSpeakerphoneOn());
+      tO(com.tencent.mm.plugin.audio.c.a.isSpeakerphoneOn());
       if (paramBoolean2)
       {
-        if (!com.tencent.mm.plugin.audio.c.a.bGD()) {
+        if (!com.tencent.mm.plugin.audio.c.a.bHz()) {
           break label354;
         }
-        paramInt2 = com.tencent.mm.plugin.audio.c.a.bGy();
+        paramInt2 = com.tencent.mm.plugin.audio.c.a.bHu();
         localk.setAudioStreamType(paramInt2);
-        if (!d.lA(28)) {
+        if (!d.lC(28)) {
           break label359;
         }
         localk.setAudioAttributes(new AudioAttributes.Builder().setUsage(6).setLegacyStreamType(paramInt2).setContentType(4).build());
-        ad.i("MicroMsg.RingPlayer", "use audio attribute to play ring");
+        com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.RingPlayer", "use audio attribute to play ring");
       }
       for (;;)
       {
-        if ((paramInt1 == 2131691034) && ((com.tencent.mm.plugin.audio.c.a.bGD()) || (com.tencent.mm.plugin.audio.c.a.bGx()))) {
+        if ((paramInt1 == 2131691034) && ((com.tencent.mm.plugin.audio.c.a.bHz()) || (com.tencent.mm.plugin.audio.c.a.bHt()))) {
           localk.setVolume(0.5F, 0.5F);
         }
         localk.prepare();
         localk.setLooping(false);
         localk.start();
-        if (System.currentTimeMillis() - this.Cop > 2000L) {
-          this.Con = 7;
+        if (System.currentTimeMillis() - this.CFT > 2000L) {
+          this.CFR = 7;
         }
-        AppMethodBeat.o(216568);
+        AppMethodBeat.o(210247);
         return;
         label354:
         paramInt2 = 0;
@@ -769,25 +767,25 @@ public final class i
     }
     catch (Throwable localThrowable)
     {
-      ad.w("MicroMsg.RingPlayer", "playSound Failed Throwable t = ", new Object[] { localThrowable });
-      this.Con = 6;
-      AppMethodBeat.o(216568);
+      com.tencent.mm.sdk.platformtools.ae.w("MicroMsg.RingPlayer", "playSound Failed Throwable t = ", new Object[] { localThrowable });
+      this.CFR = 6;
+      AppMethodBeat.o(210247);
     }
   }
   
-  public final void aO(int paramInt, boolean paramBoolean)
+  public final void aU(int paramInt, boolean paramBoolean)
   {
     AppMethodBeat.i(115693);
-    this.Con = 0;
+    this.CFR = 0;
     A(2131691029, paramInt, paramBoolean);
     AppMethodBeat.o(115693);
   }
   
-  public final int eAH()
+  public final int eEp()
   {
     AppMethodBeat.i(115696);
-    ad.d("MicroMsg.RingPlayer", "RingPlayer  mRingPlayerErrState:" + this.Con);
-    int i = this.Con;
+    com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.RingPlayer", "RingPlayer  mRingPlayerErrState:" + this.CFR);
+    int i = this.CFR;
     AppMethodBeat.o(115696);
     return i;
   }
@@ -795,61 +793,61 @@ public final class i
   public final void stop()
   {
     AppMethodBeat.i(115688);
-    ad.d("MicroMsg.RingPlayer", "stop, isStarted: %b", new Object[] { Boolean.valueOf(this.aLU) });
-    eAG();
-    if ((this.Com == null) || (!this.aLU))
+    com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.RingPlayer", "stop, isStarted: %b", new Object[] { Boolean.valueOf(this.aLU) });
+    eEo();
+    if ((this.CFQ == null) || (!this.aLU))
     {
       AppMethodBeat.o(115688);
       return;
     }
     try
     {
-      this.Com.stop();
-      this.Com.release();
-      if (this.Coq != null) {
-        this.gIf.removeCallbacks(this.Coq);
+      this.CFQ.stop();
+      this.CFQ.release();
+      if (this.CFU != null) {
+        this.gKO.removeCallbacks(this.CFU);
       }
       this.aLU = false;
-      com.tencent.mm.plugin.audio.c.a.bGw();
+      com.tencent.mm.plugin.audio.c.a.bHs();
       AppMethodBeat.o(115688);
       return;
     }
     catch (Exception localException)
     {
-      ad.e("MicroMsg.RingPlayer", localException.toString());
+      com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.RingPlayer", localException.toString());
       AppMethodBeat.o(115688);
     }
   }
   
-  public final void tH(boolean paramBoolean)
+  public final void tO(boolean paramBoolean)
   {
     int i = 3;
     AppMethodBeat.i(115687);
-    ad.m("MicroMsg.RingPlayer", "setSpeakerStatus, isSpeakerOn: %b, isSpeakerphoneOn: %s, mode: %s", new Object[] { Boolean.valueOf(paramBoolean), Boolean.valueOf(this.mAudioManager.isSpeakerphoneOn()), Integer.valueOf(this.mAudioManager.getMode()) });
+    com.tencent.mm.sdk.platformtools.ae.m("MicroMsg.RingPlayer", "setSpeakerStatus, isSpeakerOn: %b, isSpeakerphoneOn: %s, mode: %s", new Object[] { Boolean.valueOf(paramBoolean), Boolean.valueOf(this.mAudioManager.isSpeakerphoneOn()), Integer.valueOf(this.mAudioManager.getMode()) });
     int j;
     if (paramBoolean)
     {
       i = 0;
-      if ((!paramBoolean) || (ae.gcF.fWQ < 0)) {
+      if ((!paramBoolean) || (com.tencent.mm.compatible.deviceinfo.ae.geN.fYW < 0)) {
         break label174;
       }
-      j = ae.gcF.fWQ;
+      j = com.tencent.mm.compatible.deviceinfo.ae.geN.fYW;
     }
     for (;;)
     {
       if (j != this.mAudioManager.getMode())
       {
-        ad.i("MicroMsg.RingPlayer", "set AudioManager mode: %s", new Object[] { Integer.valueOf(j) });
-        com.tencent.mm.plugin.audio.c.a.bGC().b(j, null);
+        com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.RingPlayer", "set AudioManager mode: %s", new Object[] { Integer.valueOf(j) });
+        com.tencent.mm.plugin.audio.c.a.bHy().b(j, null);
       }
       if (paramBoolean != this.mAudioManager.isSpeakerphoneOn())
       {
-        ad.i("MicroMsg.RingPlayer", "set AudioManager speakerphoneOn: %s", new Object[] { Boolean.valueOf(paramBoolean) });
-        com.tencent.mm.plugin.audio.c.a.bGC().is(paramBoolean);
+        com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.RingPlayer", "set AudioManager speakerphoneOn: %s", new Object[] { Boolean.valueOf(paramBoolean) });
+        com.tencent.mm.plugin.audio.c.a.bHy().iq(paramBoolean);
       }
       AppMethodBeat.o(115687);
       return;
-      if (d.ly(21)) {
+      if (d.lA(21)) {
         break;
       }
       i = 2;
@@ -859,8 +857,8 @@ public final class i
       if (!paramBoolean)
       {
         j = i;
-        if (ae.gcF.fWO >= 0) {
-          j = ae.gcF.fWO;
+        if (com.tencent.mm.compatible.deviceinfo.ae.geN.fYU >= 0) {
+          j = com.tencent.mm.compatible.deviceinfo.ae.geN.fYU;
         }
       }
     }
@@ -869,7 +867,7 @@ public final class i
   final class a
     implements Runnable
   {
-    private boolean Cov;
+    private boolean CFZ;
     private long interval;
     private int resId;
     private int streamType;
@@ -878,21 +876,21 @@ public final class i
     {
       this.resId = paramInt1;
       this.interval = paramLong;
-      this.Cov = paramBoolean;
+      this.CFZ = paramBoolean;
       this.streamType = paramInt2;
     }
     
     public final void run()
     {
       AppMethodBeat.i(115685);
-      i.this.a(this.resId, this.interval, this.Cov, this.streamType);
+      i.this.a(this.resId, this.interval, this.CFZ, this.streamType);
       AppMethodBeat.o(115685);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.video.i
  * JD-Core Version:    0.7.0.1
  */

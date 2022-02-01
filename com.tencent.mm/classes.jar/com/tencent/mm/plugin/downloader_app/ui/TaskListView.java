@@ -25,8 +25,8 @@ import com.tencent.mm.plugin.downloader_app.a.d.f;
 import com.tencent.mm.plugin.downloader_app.a.d.g;
 import com.tencent.mm.plugin.downloader_app.a.i;
 import com.tencent.mm.plugin.downloader_app.a.j;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.base.h;
 import java.util.Collection;
 import java.util.HashMap;
@@ -37,55 +37,55 @@ import java.util.Map;
 public class TaskListView
   extends MRecyclerView
 {
-  private Map<String, i> ppc;
-  b pri;
-  DownloadMainUI.a prj;
-  boolean prk;
-  private d.d prl;
-  private d.a prm;
-  private d.b prn;
-  private d.f pro;
-  private d.e prp;
-  private d.g prq;
-  private boolean prr;
+  private Map<String, i> pvI;
+  b pxO;
+  DownloadMainUI.a pxP;
+  boolean pxQ;
+  private d.d pxR;
+  private d.a pxS;
+  private d.b pxT;
+  private d.f pxU;
+  private d.e pxV;
+  private d.g pxW;
+  private boolean pxX;
   
   public TaskListView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(9071);
-    this.ppc = new HashMap();
-    this.prl = new d.d()
+    this.pvI = new HashMap();
+    this.pxR = new d.d()
     {
-      public final void M(int paramAnonymousInt, long paramAnonymousLong)
+      public final void L(int paramAnonymousInt, long paramAnonymousLong)
       {
         AppMethodBeat.i(9062);
-        com.tencent.mm.plugin.downloader.g.a locala = com.tencent.mm.plugin.downloader.model.d.ua(paramAnonymousLong);
+        com.tencent.mm.plugin.downloader.g.a locala = com.tencent.mm.plugin.downloader.model.d.ur(paramAnonymousLong);
         if (locala != null) {
           TaskListView.a(TaskListView.this, paramAnonymousInt, locala.field_appId);
         }
         AppMethodBeat.o(9062);
       }
     };
-    this.prm = new d.a()
+    this.pxS = new d.a()
     {
-      public final void jX(boolean paramAnonymousBoolean)
+      public final void jW(boolean paramAnonymousBoolean)
       {
         AppMethodBeat.i(9063);
         TaskListView localTaskListView = TaskListView.this;
-        Iterator localIterator = localTaskListView.pri.pra.iterator();
+        Iterator localIterator = localTaskListView.pxO.pxG.iterator();
         while (localIterator.hasNext())
         {
           i locali = (i)localIterator.next();
-          if (locali.ccY()) {
+          if (locali.cen()) {
             locali.isSelected = paramAnonymousBoolean;
           }
         }
-        localTaskListView.pri.asY.notifyChanged();
-        com.tencent.mm.plugin.downloader_app.a.d.jW(paramAnonymousBoolean);
+        localTaskListView.pxO.asY.notifyChanged();
+        com.tencent.mm.plugin.downloader_app.a.d.jV(paramAnonymousBoolean);
         AppMethodBeat.o(9063);
       }
     };
-    this.prn = new d.b()
+    this.pxT = new d.b()
     {
       public final void onClick()
       {
@@ -95,58 +95,58 @@ public class TaskListView
         AppMethodBeat.o(9064);
       }
     };
-    this.pro = new d.f()
+    this.pxU = new d.f()
     {
-      public final void aaA(String paramAnonymousString)
+      public final void abr(String paramAnonymousString)
       {
         AppMethodBeat.i(9065);
         TaskListView.a(TaskListView.this, paramAnonymousString);
         AppMethodBeat.o(9065);
       }
     };
-    this.prp = new d.e()
+    this.pxV = new d.e()
     {
-      public final void aaz(String paramAnonymousString)
+      public final void abq(String paramAnonymousString)
       {
         AppMethodBeat.i(9066);
         TaskListView.b(TaskListView.this, paramAnonymousString);
         AppMethodBeat.o(9066);
       }
     };
-    this.prq = new d.g()
+    this.pxW = new d.g()
     {
-      public final void aaB(String paramAnonymousString)
+      public final void abs(String paramAnonymousString)
       {
         AppMethodBeat.i(9067);
         TaskListView.c(TaskListView.this, paramAnonymousString);
         AppMethodBeat.o(9067);
       }
     };
-    this.prr = true;
+    this.pxX = true;
     AppMethodBeat.o(9071);
   }
   
   private void c(i parami)
   {
     AppMethodBeat.i(9076);
-    b localb = this.pri;
-    localb.pra.remove(parami);
-    localb.pra.c(parami);
-    p.z(new b.1(localb));
+    b localb = this.pxO;
+    localb.pxG.remove(parami);
+    localb.pxG.c(parami);
+    p.x(new b.1(localb));
     AppMethodBeat.o(9076);
   }
   
-  public final void cdm()
+  public final void ceB()
   {
     AppMethodBeat.i(9078);
-    this.prk = false;
-    if (this.prj != null) {
-      this.prj.kd(false);
+    this.pxQ = false;
+    if (this.pxP != null) {
+      this.pxP.kc(false);
     }
-    Object localObject = this.pri.pra;
-    if (this.pri.ccW())
+    Object localObject = this.pxO.pxG;
+    if (this.pxO.cel())
     {
-      ((DownloadMainUI)getContext()).kc(true);
+      ((DownloadMainUI)getContext()).kb(true);
       AppMethodBeat.o(9078);
       return;
     }
@@ -154,19 +154,19 @@ public class TaskListView
     while (((Iterator)localObject).hasNext())
     {
       i locali = (i)((Iterator)localObject).next();
-      locali.oxZ = false;
+      locali.oEB = false;
       locali.isSelected = false;
     }
-    this.pri.prg = true;
-    this.pri.asY.notifyChanged();
-    this.prr = true;
+    this.pxO.pxM = true;
+    this.pxO.asY.notifyChanged();
+    this.pxX = true;
     AppMethodBeat.o(9078);
   }
   
   public int getSize()
   {
     AppMethodBeat.i(9077);
-    int i = this.pri.pra.size();
+    int i = this.pxO.pxG.size();
     AppMethodBeat.o(9077);
     return i;
   }
@@ -175,12 +175,12 @@ public class TaskListView
   {
     AppMethodBeat.i(9073);
     super.onAttachedToWindow();
-    com.tencent.mm.plugin.downloader_app.a.d.a(this.prl);
-    com.tencent.mm.plugin.downloader_app.a.d.a(this.prm);
-    com.tencent.mm.plugin.downloader_app.a.d.a(this.prn);
-    com.tencent.mm.plugin.downloader_app.a.d.a(this.pro);
-    com.tencent.mm.plugin.downloader_app.a.d.a(this.prp);
-    com.tencent.mm.plugin.downloader_app.a.d.a(this.prq);
+    com.tencent.mm.plugin.downloader_app.a.d.a(this.pxR);
+    com.tencent.mm.plugin.downloader_app.a.d.a(this.pxS);
+    com.tencent.mm.plugin.downloader_app.a.d.a(this.pxT);
+    com.tencent.mm.plugin.downloader_app.a.d.a(this.pxU);
+    com.tencent.mm.plugin.downloader_app.a.d.a(this.pxV);
+    com.tencent.mm.plugin.downloader_app.a.d.a(this.pxW);
     AppMethodBeat.o(9073);
   }
   
@@ -188,12 +188,12 @@ public class TaskListView
   {
     AppMethodBeat.i(9074);
     super.onDetachedFromWindow();
-    com.tencent.mm.plugin.downloader_app.a.d.b(this.prl);
-    com.tencent.mm.plugin.downloader_app.a.d.b(this.prm);
-    com.tencent.mm.plugin.downloader_app.a.d.b(this.prn);
-    com.tencent.mm.plugin.downloader_app.a.d.b(this.pro);
-    com.tencent.mm.plugin.downloader_app.a.d.b(this.prp);
-    com.tencent.mm.plugin.downloader_app.a.d.b(this.prq);
+    com.tencent.mm.plugin.downloader_app.a.d.b(this.pxR);
+    com.tencent.mm.plugin.downloader_app.a.d.b(this.pxS);
+    com.tencent.mm.plugin.downloader_app.a.d.b(this.pxT);
+    com.tencent.mm.plugin.downloader_app.a.d.b(this.pxU);
+    com.tencent.mm.plugin.downloader_app.a.d.b(this.pxV);
+    com.tencent.mm.plugin.downloader_app.a.d.b(this.pxW);
     AppMethodBeat.o(9074);
   }
   
@@ -201,11 +201,11 @@ public class TaskListView
   {
     AppMethodBeat.i(9072);
     super.onFinishInflate();
-    ad.d("MicroMsg.TaskListView", "onFinishInflate");
+    ae.d("MicroMsg.TaskListView", "onFinishInflate");
     getContext();
     setLayoutManager(new LinearLayoutManager());
-    this.pri = new b(getContext());
-    setAdapter(this.pri);
+    this.pxO = new b(getContext());
+    setAdapter(this.pxO);
     a(new a(getResources()));
     setOnItemLongClickListener(new MRecyclerView.b()
     {
@@ -219,12 +219,12 @@ public class TaskListView
         }
         if ((((ViewGroup)paramAnonymousView).getChildAt(0) instanceof TaskItemView))
         {
-          Object localObject = TaskListView.b(TaskListView.this).pra;
+          Object localObject = TaskListView.b(TaskListView.this).pxG;
           if (localObject != null)
           {
             localObject = ((com.tencent.mm.plugin.game.commlib.c.c)localObject).iterator();
             while (((Iterator)localObject).hasNext()) {
-              ((i)((Iterator)localObject).next()).oxZ = true;
+              ((i)((Iterator)localObject).next()).oEB = true;
             }
             ((TaskItemView)((ViewGroup)paramAnonymousView).getChildAt(0)).setSelected(true);
             TaskListView.c(TaskListView.this);
@@ -239,9 +239,9 @@ public class TaskListView
       public final void T(View paramAnonymousView, int paramAnonymousInt)
       {
         AppMethodBeat.i(9069);
-        ad.d("MicroMsg.TaskListView", "onItemClick");
+        ae.d("MicroMsg.TaskListView", "onItemClick");
         paramAnonymousView = ((ViewGroup)paramAnonymousView).getChildAt(0);
-        Object localObject = TaskListView.b(TaskListView.this).pra;
+        Object localObject = TaskListView.b(TaskListView.this).pxG;
         if ((paramAnonymousInt < 0) || (paramAnonymousInt >= ((com.tencent.mm.plugin.game.commlib.c.c)localObject).size()))
         {
           AppMethodBeat.o(9069);
@@ -251,9 +251,9 @@ public class TaskListView
         if (((i)localObject).type == 7)
         {
           paramAnonymousView = TaskListView.b(TaskListView.this);
-          if (paramAnonymousView.prf != true)
+          if (paramAnonymousView.pxL != true)
           {
-            paramAnonymousView.prf = true;
+            paramAnonymousView.pxL = true;
             paramAnonymousView.asY.notifyChanged();
           }
           com.tencent.mm.plugin.downloader_app.b.a.a(10, 1004, 101, 2, "", "", "");
@@ -270,7 +270,7 @@ public class TaskListView
             return;
           }
         }
-        if (bt.isNullOrNil(((i)localObject).jumpUrl))
+        if (bu.isNullOrNil(((i)localObject).jumpUrl))
         {
           AppMethodBeat.o(9069);
           return;
@@ -278,7 +278,7 @@ public class TaskListView
         paramAnonymousView = new Bundle();
         paramAnonymousView.putString("rawUrl", ((i)localObject).jumpUrl);
         ((com.tencent.mm.plugin.downloader_app.api.c)g.ab(com.tencent.mm.plugin.downloader_app.api.c.class)).e(TaskListView.this.getContext(), paramAnonymousView);
-        com.tencent.mm.plugin.downloader_app.b.a.a(10, com.tencent.mm.plugin.downloader_app.b.a.Bu(((i)localObject).type), ((i)localObject).position, 40, ((i)localObject).appId, "", "");
+        com.tencent.mm.plugin.downloader_app.b.a.a(10, com.tencent.mm.plugin.downloader_app.b.a.BG(((i)localObject).type), ((i)localObject).position, 40, ((i)localObject).appId, "", "");
         AppMethodBeat.o(9069);
       }
     });
@@ -292,21 +292,21 @@ public class TaskListView
     while (((Iterator)localObject1).hasNext())
     {
       localObject2 = (i)((Iterator)localObject1).next();
-      if (!bt.isNullOrNil(((i)localObject2).appId)) {
-        this.ppc.put(((i)localObject2).appId, localObject2);
+      if (!bu.isNullOrNil(((i)localObject2).appId)) {
+        this.pvI.put(((i)localObject2).appId, localObject2);
       }
     }
-    localObject1 = this.pri;
-    ((b)localObject1).pra.clear();
-    Object localObject2 = ((b)localObject1).pra;
+    localObject1 = this.pxO;
+    ((b)localObject1).pxG.clear();
+    Object localObject2 = ((b)localObject1).pxG;
     paramLinkedList = paramLinkedList.iterator();
     while (paramLinkedList.hasNext()) {
       ((com.tencent.mm.plugin.game.commlib.c.c)localObject2).b((com.tencent.mm.plugin.game.commlib.c.b)paramLinkedList.next());
     }
-    ((b)localObject1).pra.b(new i(1));
-    ((b)localObject1).pra.b(new i(3));
-    ((b)localObject1).pra.b(new i(5));
-    ((b)localObject1).pra.b(new i(7));
+    ((b)localObject1).pxG.b(new i(1));
+    ((b)localObject1).pxG.b(new i(3));
+    ((b)localObject1).pxG.b(new i(5));
+    ((b)localObject1).pxG.b(new i(7));
     ((RecyclerView.a)localObject1).asY.notifyChanged();
     AppMethodBeat.o(9075);
   }

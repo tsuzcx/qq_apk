@@ -10,8 +10,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.widget.recyclerview.MRecyclerView;
 import com.tencent.mm.plugin.downloader.b.a.b;
 import com.tencent.mm.plugin.downloader.model.d;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -20,28 +20,28 @@ public class DownloadSearchListView
   extends MRecyclerView
 {
   Context mContext;
-  a ppG;
-  List<b> ppH;
-  List<b> ppI;
-  private a.b ppJ;
+  a pwm;
+  List<b> pwn;
+  List<b> pwo;
+  private a.b pwp;
   
   public DownloadSearchListView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(8935);
-    this.ppJ = new a.b()
+    this.pwp = new a.b()
     {
-      public final void M(int paramAnonymousInt, long paramAnonymousLong)
+      public final void L(int paramAnonymousInt, long paramAnonymousLong)
       {
         AppMethodBeat.i(8934);
         if (paramAnonymousInt == 9)
         {
-          Object localObject = d.ua(paramAnonymousLong);
+          Object localObject = d.ur(paramAnonymousLong);
           if (localObject != null)
           {
             a locala = DownloadSearchListView.a(DownloadSearchListView.this);
             localObject = ((com.tencent.mm.plugin.downloader.g.a)localObject).field_appId;
-            if ((!bt.hj(locala.mDataList)) && (!bt.isNullOrNil((String)localObject)))
+            if ((!bu.ht(locala.mDataList)) && (!bu.isNullOrNil((String)localObject)))
             {
               Iterator localIterator = locala.mDataList.iterator();
               while (localIterator.hasNext())
@@ -66,19 +66,19 @@ public class DownloadSearchListView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(8936);
-    this.ppJ = new a.b()
+    this.pwp = new a.b()
     {
-      public final void M(int paramAnonymousInt, long paramAnonymousLong)
+      public final void L(int paramAnonymousInt, long paramAnonymousLong)
       {
         AppMethodBeat.i(8934);
         if (paramAnonymousInt == 9)
         {
-          Object localObject = d.ua(paramAnonymousLong);
+          Object localObject = d.ur(paramAnonymousLong);
           if (localObject != null)
           {
             a locala = DownloadSearchListView.a(DownloadSearchListView.this);
             localObject = ((com.tencent.mm.plugin.downloader.g.a)localObject).field_appId;
-            if ((!bt.hj(locala.mDataList)) && (!bt.isNullOrNil((String)localObject)))
+            if ((!bu.ht(locala.mDataList)) && (!bu.isNullOrNil((String)localObject)))
             {
               Iterator localIterator = locala.mDataList.iterator();
               while (localIterator.hasNext())
@@ -99,34 +99,34 @@ public class DownloadSearchListView
     AppMethodBeat.o(8936);
   }
   
-  public final void aaF(String paramString)
+  public final void abw(String paramString)
   {
     AppMethodBeat.i(8940);
-    if (bt.isNullOrNil(paramString))
+    if (bu.isNullOrNil(paramString))
     {
       AppMethodBeat.o(8940);
       return;
     }
-    b.aj(this.mContext, paramString);
-    this.ppH = b.ey(this.mContext);
+    b.al(this.mContext, paramString);
+    this.pwn = b.eC(this.mContext);
     AppMethodBeat.o(8940);
   }
   
   public void onAttachedToWindow()
   {
     AppMethodBeat.i(8937);
-    ad.i("MicroMsg.DownloadSearchListView", "onAttachedToWindow");
+    ae.i("MicroMsg.DownloadSearchListView", "onAttachedToWindow");
     super.onAttachedToWindow();
-    com.tencent.mm.plugin.downloader.b.a.a(this.ppJ);
+    com.tencent.mm.plugin.downloader.b.a.a(this.pwp);
     AppMethodBeat.o(8937);
   }
   
   public void onDetachedFromWindow()
   {
     AppMethodBeat.i(8938);
-    ad.i("MicroMsg.DownloadSearchListView", "onDetachedFromWindow");
+    ae.i("MicroMsg.DownloadSearchListView", "onDetachedFromWindow");
     super.onDetachedFromWindow();
-    com.tencent.mm.plugin.downloader.b.a.b(this.ppJ);
+    com.tencent.mm.plugin.downloader.b.a.b(this.pwp);
     AppMethodBeat.o(8938);
   }
   
@@ -136,20 +136,20 @@ public class DownloadSearchListView
     super.onFinishInflate();
     getContext();
     setLayoutManager(new LinearLayoutManager());
-    this.ppG = new a(this.mContext, this);
-    setAdapter(this.ppG);
+    this.pwm = new a(this.mContext, this);
+    setAdapter(this.pwm);
     a(new c(getResources()));
-    this.ppH = b.ey(this.mContext);
-    this.ppI = new ArrayList();
+    this.pwn = b.eC(this.mContext);
+    this.pwo = new ArrayList();
     AppMethodBeat.o(8939);
   }
   
   void setData(List<b> paramList)
   {
     AppMethodBeat.i(8941);
-    a locala = this.ppG;
+    a locala = this.pwm;
     locala.mDataList.clear();
-    if (!bt.hj(paramList)) {
+    if (!bu.ht(paramList)) {
       locala.mDataList.addAll(paramList);
     }
     locala.asY.notifyChanged();
@@ -158,7 +158,7 @@ public class DownloadSearchListView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.downloader_app.search.DownloadSearchListView
  * JD-Core Version:    0.7.0.1
  */

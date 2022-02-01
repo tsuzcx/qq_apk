@@ -8,8 +8,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.base.preference.Preference;
 
 public class SelfVuserPreference
@@ -17,7 +17,7 @@ public class SelfVuserPreference
 {
   Drawable drawable;
   String text;
-  private String yEO;
+  private String yUT;
   
   public SelfVuserPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -40,9 +40,9 @@ public class SelfVuserPreference
     if (localImageView != null)
     {
       localImageView.setImageDrawable(this.drawable);
-      ad.d("MicroMsg.SelfVuserPreference", "onBindView set icon=" + this.drawable);
-      if (!bt.isNullOrNil(this.yEO)) {
-        localImageView.setContentDescription(this.yEO);
+      ae.d("MicroMsg.SelfVuserPreference", "onBindView set icon=" + this.drawable);
+      if (!bu.isNullOrNil(this.yUT)) {
+        localImageView.setContentDescription(this.yUT);
       }
     }
     paramView = (TextView)paramView.findViewById(2131305744);

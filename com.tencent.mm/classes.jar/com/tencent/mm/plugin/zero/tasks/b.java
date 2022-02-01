@@ -12,9 +12,9 @@ public final class b
   {
     AppMethodBeat.i(133036);
     getClass().getClassLoader();
-    j.vr("commonimgdec");
+    j.vN("commonimgdec");
     getClass().getClassLoader();
-    j.vr("wechatcommon");
+    j.vN("wechatcommon");
     AppMethodBeat.o(133036);
   }
   

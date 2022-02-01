@@ -5,32 +5,32 @@ import java.util.Arrays;
 
 public final class a
 {
-  public int[] iHj;
-  public int iHk;
-  private String iHl;
-  private long iHm;
+  public int[] iKc;
+  public int iKd;
+  private String iKe;
+  private long iKf;
   
   public a(int paramInt)
   {
-    this.iHk = paramInt;
+    this.iKd = paramInt;
   }
   
   public a(int[] paramArrayOfInt)
   {
-    this.iHj = paramArrayOfInt;
+    this.iKc = paramArrayOfInt;
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(186984);
-    String str = "OpenGLInfo{ids=" + Arrays.toString(this.iHj) + ", error=" + this.iHk + ", javaStack='" + this.iHl + '\'' + ", nativeStack=" + this.iHm + '}';
-    AppMethodBeat.o(186984);
+    AppMethodBeat.i(193520);
+    String str = "OpenGLInfo{ids=" + Arrays.toString(this.iKc) + ", error=" + this.iKd + ", javaStack='" + this.iKe + '\'' + ", nativeStack=" + this.iKf + '}';
+    AppMethodBeat.o(193520);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.openglapihook.a
  * JD-Core Version:    0.7.0.1
  */

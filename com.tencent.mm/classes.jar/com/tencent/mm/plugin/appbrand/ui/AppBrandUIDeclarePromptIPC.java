@@ -15,33 +15,33 @@ public class AppBrandUIDeclarePromptIPC
   {
     public static final Parcelable.Creator<IPCDeclarePromptCallbackParam> CREATOR;
     private boolean cancel;
-    private int ePC;
-    private String jDb;
+    private int eRn;
+    private String jFZ;
     
     static
     {
-      AppMethodBeat.i(188925);
+      AppMethodBeat.i(223158);
       CREATOR = new Parcelable.Creator() {};
-      AppMethodBeat.o(188925);
+      AppMethodBeat.o(223158);
     }
     
     public IPCDeclarePromptCallbackParam(int paramInt, boolean paramBoolean, String paramString)
     {
-      this.ePC = paramInt;
+      this.eRn = paramInt;
       this.cancel = paramBoolean;
-      this.jDb = paramString;
+      this.jFZ = paramString;
     }
     
     protected IPCDeclarePromptCallbackParam(Parcel paramParcel)
     {
-      AppMethodBeat.i(188923);
-      this.ePC = paramParcel.readInt();
+      AppMethodBeat.i(223156);
+      this.eRn = paramParcel.readInt();
       if (paramParcel.readByte() != 0) {}
       for (boolean bool = true;; bool = false)
       {
         this.cancel = bool;
-        this.jDb = paramParcel.readString();
-        AppMethodBeat.o(188923);
+        this.jFZ = paramParcel.readString();
+        AppMethodBeat.o(223156);
         return;
       }
     }
@@ -53,14 +53,14 @@ public class AppBrandUIDeclarePromptIPC
     
     public final void writeToParcel(Parcel paramParcel, int paramInt)
     {
-      AppMethodBeat.i(188924);
-      paramParcel.writeInt(this.ePC);
+      AppMethodBeat.i(223157);
+      paramParcel.writeInt(this.eRn);
       if (this.cancel) {}
       for (paramInt = 1;; paramInt = 0)
       {
         paramParcel.writeByte((byte)paramInt);
-        paramParcel.writeString(this.jDb);
-        AppMethodBeat.o(188924);
+        paramParcel.writeString(this.jFZ);
+        AppMethodBeat.o(223157);
         return;
       }
     }

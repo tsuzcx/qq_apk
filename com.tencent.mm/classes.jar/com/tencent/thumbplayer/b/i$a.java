@@ -2,9 +2,9 @@ package com.tencent.thumbplayer.b;
 
 public final class i$a
 {
-  public String LXT;
-  public String LYY;
-  public String lnz;
+  public String MuO;
+  public String MvT;
+  public String lrY;
 }
 
 

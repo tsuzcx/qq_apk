@@ -1,40 +1,29 @@
 package com.tencent.mm.ba;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.bu;
-import java.util.Map;
+import com.tencent.mm.plugin.messenger.foundation.a.a.k.b;
+import com.tencent.mm.protocal.protobuf.aee;
 
+@Deprecated
 public final class g
-  extends a
+  extends k.b
 {
-  public g(Map<String, String> paramMap, bu parambu)
-  {
-    super(paramMap, parambu);
-  }
+  private aee ill;
   
-  protected final boolean aAc()
+  public g(String paramString)
   {
-    AppMethodBeat.i(219251);
-    if (this.values == null)
-    {
-      ad.e("MicroMsg.FinderChatSystemaNewXmlMsg", "[parseXml] values == null ");
-      AppMethodBeat.o(219251);
-      return false;
-    }
-    ad.i("MicroMsg.FinderChatSystemaNewXmlMsg", "[parseXml] type:%s, values size:%s", new Object[] { bt.nullAsNil(this.TYPE), Integer.valueOf(this.values.size()) });
-    if (this.values.containsKey(".sysmsg.SysMsgContent")) {
-      this.ihO = bt.nullAsNil((String)this.values.get(".sysmsg.SysMsgContent"));
-    }
-    ad.i("MicroMsg.FinderChatSystemaNewXmlMsg", "appText = " + this.ihO);
-    AppMethodBeat.o(219251);
-    return false;
+    super(32);
+    AppMethodBeat.i(20566);
+    this.ill = new aee();
+    this.ill.GuQ = paramString;
+    this.ill.GuR = 0;
+    this.vWq = this.ill;
+    AppMethodBeat.o(20566);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ba.g
  * JD-Core Version:    0.7.0.1
  */

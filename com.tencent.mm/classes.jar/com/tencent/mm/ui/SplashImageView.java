@@ -6,19 +6,19 @@ import android.graphics.Canvas;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.chatting.ap;
+import com.tencent.mm.ui.chatting.aq;
 
 public class SplashImageView
   extends ImageView
 {
-  private ap JfV;
+  private aq JAG;
   private boolean hasDrawed;
   
   public SplashImageView(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(33760);
-    drW();
+    dvk();
     AppMethodBeat.o(33760);
   }
   
@@ -26,7 +26,7 @@ public class SplashImageView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(33761);
-    drW();
+    dvk();
     AppMethodBeat.o(33761);
   }
   
@@ -34,11 +34,11 @@ public class SplashImageView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(33762);
-    drW();
+    dvk();
     AppMethodBeat.o(33762);
   }
   
-  private void drW()
+  private void dvk()
   {
     AppMethodBeat.i(33763);
     setBackgroundDrawable(getResources().getDrawable(2131234439));
@@ -53,16 +53,16 @@ public class SplashImageView
     if (!this.hasDrawed)
     {
       this.hasDrawed = true;
-      if (this.JfV != null) {
-        this.JfV.cWa();
+      if (this.JAG != null) {
+        this.JAG.cYF();
       }
     }
     AppMethodBeat.o(33764);
   }
   
-  public void setOnDrawListener(ap paramap)
+  public void setOnDrawListener(aq paramaq)
   {
-    this.JfV = paramap;
+    this.JAG = paramaq;
   }
 }
 

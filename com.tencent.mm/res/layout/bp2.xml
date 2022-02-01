@@ -10,19 +10,25 @@
                     </com.tencent.mm.plugin.finder.feed.RoundLinearLayout>
                 </FrameLayout>
                 <FrameLayout android:id="@id/hfm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="14.0dip">
-                    <View android:background="@drawable/c5s" android:layout_width="24.0dip" android:layout_height="24.0dip" />
+                    <com.tencent.mm.plugin.finder.feed.RoundLinearLayout android:id="@id/i74" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                        <View android:background="@color/c" android:layout_width="24.0dip" android:layout_height="24.0dip" />
+                    </com.tencent.mm.plugin.finder.feed.RoundLinearLayout>
                     <com.tencent.mm.plugin.finder.feed.RoundLinearLayout android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content">
                         <ImageView android:id="@id/hfl" android:layout_width="@dimen/c6" android:layout_height="@dimen/c6" />
                     </com.tencent.mm.plugin.finder.feed.RoundLinearLayout>
                 </FrameLayout>
                 <FrameLayout android:id="@id/hfk" android:layout_width="wrap_content" android:layout_height="wrap_content">
-                    <View android:background="@drawable/c5s" android:layout_width="24.0dip" android:layout_height="24.0dip" />
+                    <com.tencent.mm.plugin.finder.feed.RoundLinearLayout android:id="@id/i75" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                        <View android:background="@color/c" android:layout_width="24.0dip" android:layout_height="24.0dip" />
+                    </com.tencent.mm.plugin.finder.feed.RoundLinearLayout>
                     <com.tencent.mm.plugin.finder.feed.RoundLinearLayout android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content">
                         <ImageView android:id="@id/hfj" android:layout_width="@dimen/c6" android:layout_height="@dimen/c6" />
                     </com.tencent.mm.plugin.finder.feed.RoundLinearLayout>
                 </FrameLayout>
                 <FrameLayout android:id="@id/hfr" android:visibility="gone" android:layout_width="24.0dip" android:layout_height="24.0dip">
-                    <View android:background="@drawable/c5s" android:layout_width="24.0dip" android:layout_height="24.0dip" />
+                    <com.tencent.mm.plugin.finder.feed.RoundLinearLayout android:id="@id/i76" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                        <View android:background="@color/c" android:layout_width="24.0dip" android:layout_height="24.0dip" />
+                    </com.tencent.mm.plugin.finder.feed.RoundLinearLayout>
                     <com.tencent.mm.plugin.finder.feed.RoundLinearLayout android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content">
                         <ImageView android:id="@id/hfp" android:layout_width="@dimen/c6" android:layout_height="@dimen/c6" />
                     </com.tencent.mm.plugin.finder.feed.RoundLinearLayout>

@@ -3,16 +3,16 @@ package com.tencent.mm.plugin.recordvideo.ui.editor.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/touch/MatrixInterpolator;", "", "()V", "Companion", "plugin-recordvideo_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/touch/MatrixInterpolator;", "", "()V", "Companion", "plugin-recordvideo_release"})
 public final class b
 {
-  public static final b.a xQe;
+  public static final b.a yfX;
   
   static
   {
-    AppMethodBeat.i(200830);
-    xQe = new b.a((byte)0);
-    AppMethodBeat.o(200830);
+    AppMethodBeat.i(207088);
+    yfX = new b.a((byte)0);
+    AppMethodBeat.o(207088);
   }
 }
 

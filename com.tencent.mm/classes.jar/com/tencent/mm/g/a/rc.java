@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class rc
   extends b
 {
-  public a dFF;
+  public a dGH;
   
   public rc()
   {
@@ -15,28 +15,24 @@ public final class rc
   
   private rc(byte paramByte)
   {
-    AppMethodBeat.i(89650);
-    this.dFF = new a();
-    this.IbR = false;
+    AppMethodBeat.i(116043);
+    this.dGH = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(89650);
+    AppMethodBeat.o(116043);
   }
   
   public static final class a
   {
-    public int action;
     public String appId;
-    public int dFG;
-    public String dFH;
-    public String dls;
-    public String msgId;
-    public int msgType;
-    public int scene;
+    public String dGI;
+    public String dGJ;
+    public String mediaTagName;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.a.rc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,60 +1,37 @@
 package com.tencent.mm.plugin.appbrand.z;
 
-import android.content.Context;
-import android.content.pm.ApplicationInfo;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
-import android.os.Bundle;
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.plugin.appbrand.z.d.d.a;
+import com.tencent.mm.plugin.appbrand.z.e.i;
 
-public final class b
+public abstract class b
+  implements d
 {
-  public static String er(String paramString1, String paramString2)
+  protected boolean mVm;
+  
+  public final void a(a parama, com.tencent.mm.plugin.appbrand.z.d.d paramd)
   {
-    AppMethodBeat.i(187734);
-    try
-    {
-      paramString1 = aj.getContext().getPackageManager().getApplicationInfo(aj.getContext().getPackageName(), 128).metaData.getString(paramString1, paramString2);
-      AppMethodBeat.o(187734);
-      return paramString1;
-    }
-    catch (PackageManager.NameNotFoundException paramString1)
-    {
-      ad.l("Luggage.AndroidPackageUtil", "", new Object[] { paramString1 });
-      AppMethodBeat.o(187734);
-    }
-    return paramString2;
+    paramd = new com.tencent.mm.plugin.appbrand.z.d.e(paramd);
+    paramd.a(d.a.mWn);
+    parama.b(paramd);
   }
   
-  public static PackageInfo getPackageInfo(Context paramContext, String paramString)
+  public void b(com.tencent.mm.plugin.appbrand.z.e.a parama) {}
+  
+  public final i bCu()
   {
-    AppMethodBeat.i(140800);
-    if (paramString == null)
-    {
-      ad.e("Luggage.AndroidPackageUtil", "getPackageInfo fail, packageName is null");
-      AppMethodBeat.o(140800);
-      return null;
-    }
-    try
-    {
-      paramContext = paramContext.getPackageManager().getPackageInfo(paramString, 0);
-      AppMethodBeat.o(140800);
-      return paramContext;
-    }
-    catch (PackageManager.NameNotFoundException paramContext)
-    {
-      ad.w("Luggage.AndroidPackageUtil", paramContext.getMessage());
-      AppMethodBeat.o(140800);
-    }
-    return null;
+    return new com.tencent.mm.plugin.appbrand.z.e.e();
+  }
+  
+  public void c(com.tencent.mm.plugin.appbrand.z.d.d paramd) {}
+  
+  public final void setTcpNoDelay(boolean paramBoolean)
+  {
+    this.mVm = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.z.b
  * JD-Core Version:    0.7.0.1
  */

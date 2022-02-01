@@ -11,8 +11,7 @@ import com.tencent.mm.ipcinvoker.h;
 import com.tencent.mm.plugin.webview.luggage.jsapi.bq;
 import com.tencent.mm.plugin.webview.luggage.jsapi.bq.a;
 import com.tencent.mm.plugin.webview.luggage.u;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 import org.json.JSONObject;
 
 public class ae
@@ -23,11 +22,11 @@ public class ae
   public final void b(final com.tencent.luggage.d.b<a>.a paramb)
   {
     AppMethodBeat.i(83092);
-    ad.i("MicroMsg.JsApiSetGameData", "invokeInOwn");
+    com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.JsApiSetGameData", "invokeInOwn");
     Object localObject2 = paramb.chh.cgn;
     if (localObject2 == null)
     {
-      ad.e("MicroMsg.JsApiSetGameData", "data is null");
+      com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.JsApiSetGameData", "data is null");
       paramb.a("null_data", null);
       AppMethodBeat.o(83092);
       return;
@@ -35,15 +34,15 @@ public class ae
     a locala = (a)paramb.chg;
     if ((locala instanceof com.tencent.mm.plugin.game.luggage.f.g))
     {
-      str1 = ((com.tencent.mm.plugin.game.luggage.f.g)locala).DOL.getAppId();
+      str1 = ((com.tencent.mm.plugin.game.luggage.f.g)locala).EgL.getAppId();
       localObject1 = str1;
-      if (!bt.isNullOrNil(str1)) {
+      if (!bu.isNullOrNil(str1)) {
         break label149;
       }
-      localObject1 = Uri.parse(bt.nullAsNil(((com.tencent.mm.plugin.game.luggage.f.g)locala).bQm()));
+      localObject1 = Uri.parse(bu.nullAsNil(((com.tencent.mm.plugin.game.luggage.f.g)locala).bRn()));
       if ((((Uri)localObject1).getHost() == null) || (!((Uri)localObject1).getHost().equals("game.weixin.qq.com")))
       {
-        ad.i("MicroMsg.JsApiSetGameData", "appId is null");
+        com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.JsApiSetGameData", "appId is null");
         paramb.a("appid_null", null);
         AppMethodBeat.o(83092);
         return;
@@ -57,9 +56,9 @@ public class ae
     String str4 = ((JSONObject)localObject2).optString("expireTime");
     boolean bool1 = ((JSONObject)localObject2).optBoolean("autoClean", true);
     boolean bool2 = ((JSONObject)localObject2).optBoolean("pageCache", false);
-    if ((bt.isNullOrNil(str1)) || (bt.isNullOrNil(str2)) || (str1.length() > 80))
+    if ((bu.isNullOrNil(str1)) || (bu.isNullOrNil(str2)) || (str1.length() > 80))
     {
-      ad.i("MicroMsg.JsApiSetGameData", "key or value is invalid");
+      com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.JsApiSetGameData", "key or value is invalid");
       paramb.a("null_key", null);
       AppMethodBeat.o(83092);
       return;
@@ -70,8 +69,8 @@ public class ae
     ((Bundle)localObject2).putString("weight", str3);
     ((Bundle)localObject2).putString("expireTime", str4);
     ((Bundle)localObject2).putBoolean("autoClean", bool1);
-    com.tencent.mm.plugin.webview.b.b.eNT();
-    long l = com.tencent.mm.plugin.webview.b.b.kI(str1, str2);
+    com.tencent.mm.plugin.webview.b.b.eRE();
+    long l = com.tencent.mm.plugin.webview.b.b.kP(str1, str2);
     ((Bundle)localObject2).putLong("storeSize", l);
     if ((l <= 204800L) && (!bool2)) {
       ((Bundle)localObject2).putString("value", str2);
@@ -79,11 +78,11 @@ public class ae
     if (bool2) {
       if ((locala instanceof com.tencent.mm.plugin.game.luggage.f.g))
       {
-        if (((com.tencent.mm.game.report.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.game.report.a.b.class)).a(com.tencent.mm.plugin.expt.b.b.a.qqt, 0) == 1) {}
+        if (((com.tencent.mm.game.report.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.game.report.a.b.class)).a(com.tencent.mm.plugin.expt.b.b.a.qxb, 0) == 1) {}
         for (bool1 = true;; bool1 = false)
         {
-          bool2 = ((com.tencent.mm.plugin.game.luggage.f.g)locala).cXw().EDx;
-          ad.i("MicroMsg.JsApiSetGameData", "isOpenPageCache:%b, allowSetPageCache:%b", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) });
+          bool2 = ((com.tencent.mm.plugin.game.luggage.f.g)locala).dag().EVT;
+          com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.JsApiSetGameData", "isOpenPageCache:%b, allowSetPageCache:%b", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) });
           if (bool1) {
             break;
           }
@@ -106,7 +105,7 @@ public class ae
     AppMethodBeat.o(83092);
   }
   
-  public final int ccO()
+  public final int ced()
   {
     return 0;
   }

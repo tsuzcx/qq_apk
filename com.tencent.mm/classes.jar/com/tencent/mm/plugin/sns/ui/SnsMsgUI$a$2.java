@@ -5,7 +5,7 @@ import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.ui.base.MMSlideDelView.d;
 import com.tencent.mm.ui.base.MMSlideDelView.f;
 
@@ -19,11 +19,11 @@ final class SnsMsgUI$a$2
     AppMethodBeat.i(98878);
     b localb = new b();
     localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/sns/ui/SnsMsgUI$SnsMsgAdapter$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-    ad.v("MicroMsg.SnsMsgUI", "on delView clicked");
-    this.AfL.nUz.deD();
-    if (this.AfL.AfK != null) {
-      this.AfL.AfK.cP(paramView.getTag());
+    a.b("com/tencent/mm/plugin/sns/ui/SnsMsgUI$SnsMsgAdapter$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+    ae.v("MicroMsg.SnsMsgUI", "on delView clicked");
+    this.AwX.oaf.dhv();
+    if (this.AwX.AwW != null) {
+      this.AwX.AwW.cQ(paramView.getTag());
     }
     a.a(this, "com/tencent/mm/plugin/sns/ui/SnsMsgUI$SnsMsgAdapter$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(98878);

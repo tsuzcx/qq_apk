@@ -13,21 +13,21 @@ import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bs.d;
+import com.tencent.mm.br.d;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.model.ba;
+import com.tencent.mm.model.bc;
 import com.tencent.mm.model.c;
-import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.aj;
 import com.tencent.mm.ui.MMActivity;
 
 public class FreeWifiIntroductionUI
   extends MMActivity
 {
-  private int dnh;
-  private Button toU;
-  private Button tqf;
-  private Button tqg;
-  private CheckBox tqh;
+  private int doj;
+  private Button tAW;
+  private Button tAX;
+  private CheckBox tAY;
+  private Button tzL;
   
   public int getForceOrientation()
   {
@@ -42,17 +42,17 @@ public class FreeWifiIntroductionUI
   public void initView()
   {
     AppMethodBeat.i(25063);
-    this.tqf = ((Button)findViewById(2131298782));
-    this.tqh = ((CheckBox)findViewById(2131296517));
-    this.toU = ((Button)findViewById(2131300737));
-    this.tqg = ((Button)findViewById(2131306232));
-    this.dnh = getIntent().getIntExtra("free_wifi_source", 1);
-    if (this.dnh == 3)
+    this.tAW = ((Button)findViewById(2131298782));
+    this.tAY = ((CheckBox)findViewById(2131296517));
+    this.tzL = ((Button)findViewById(2131300737));
+    this.tAX = ((Button)findViewById(2131306232));
+    this.doj = getIntent().getIntExtra("free_wifi_source", 1);
+    if (this.doj == 3)
     {
       setMMTitle(2131761233);
       ((TextView)findViewById(2131300263)).setText(2131761231);
       ((TextView)findViewById(2131300258)).setText(2131761230);
-      this.toU.setVisibility(8);
+      this.tzL.setVisibility(8);
     }
     for (;;)
     {
@@ -66,29 +66,29 @@ public class FreeWifiIntroductionUI
           return false;
         }
       });
-      this.tqf.setOnClickListener(new View.OnClickListener()
+      this.tAW.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(25058);
           Object localObject = new b();
           ((b)localObject).bd(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/freewifi/ui/FreeWifiIntroductionUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahq());
-          ba.aBQ();
-          c.ajl().set(303104, Integer.valueOf(1));
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/freewifi/ui/FreeWifiIntroductionUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahF());
+          bc.aCg();
+          c.ajA().set(303104, Integer.valueOf(1));
           localObject = FreeWifiIntroductionUI.this.getIntent();
           ((Intent)localObject).setClass(FreeWifiIntroductionUI.this, FreeWifiEntryUI.class);
           paramAnonymousView = FreeWifiIntroductionUI.this;
           localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
-          com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahp(), "com/tencent/mm/plugin/freewifi/ui/FreeWifiIntroductionUI$2", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mq(0));
+          com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahE(), "com/tencent/mm/plugin/freewifi/ui/FreeWifiIntroductionUI$2", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mt(0));
           com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, "com/tencent/mm/plugin/freewifi/ui/FreeWifiIntroductionUI$2", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
           FreeWifiIntroductionUI.this.finish();
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/freewifi/ui/FreeWifiIntroductionUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(25058);
         }
       });
-      this.tqh.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
+      this.tAY.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
       {
         public final void onCheckedChanged(CompoundButton paramAnonymousCompoundButton, boolean paramAnonymousBoolean)
         {
@@ -103,14 +103,14 @@ public class FreeWifiIntroductionUI
           AppMethodBeat.o(25059);
         }
       });
-      this.tqg.setOnClickListener(new View.OnClickListener()
+      this.tAX.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(25060);
           Object localObject = new b();
           ((b)localObject).bd(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/freewifi/ui/FreeWifiIntroductionUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahq());
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/freewifi/ui/FreeWifiIntroductionUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahF());
           if (FreeWifiIntroductionUI.b(FreeWifiIntroductionUI.this) == 3) {}
           for (paramAnonymousView = FreeWifiIntroductionUI.this.getString(2131761232);; paramAnonymousView = FreeWifiIntroductionUI.this.getString(2131759650))
           {
@@ -125,14 +125,14 @@ public class FreeWifiIntroductionUI
           }
         }
       });
-      this.toU.setOnClickListener(new View.OnClickListener()
+      this.tzL.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(25061);
           Object localObject = new b();
           ((b)localObject).bd(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/freewifi/ui/FreeWifiIntroductionUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahq());
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/freewifi/ui/FreeWifiIntroductionUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahF());
           paramAnonymousView = FreeWifiIntroductionUI.this.getString(2131759630);
           localObject = new Intent();
           ((Intent)localObject).putExtra("rawUrl", paramAnonymousView);

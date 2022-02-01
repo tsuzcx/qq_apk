@@ -1,45 +1,45 @@
 package com.tencent.mm.plugin.wallet_ecard.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.cof;
-import com.tencent.mm.protocal.protobuf.cog;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.coz;
+import com.tencent.mm.protocal.protobuf.cpa;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class f
   extends n
   implements k
 {
-  public cog Dpf;
-  private com.tencent.mm.al.f callback;
+  public cpa DGL;
+  private com.tencent.mm.ak.f callback;
   private b rr;
   
   public f(String paramString, int paramInt)
   {
     AppMethodBeat.i(71698);
     Object localObject = new b.a();
-    ((b.a)localObject).hNM = new cof();
-    ((b.a)localObject).hNN = new cog();
+    ((b.a)localObject).hQF = new coz();
+    ((b.a)localObject).hQG = new cpa();
     ((b.a)localObject).funcId = getType();
     ((b.a)localObject).uri = "/cgi-bin/mmpay-bin/qryecardbanklist4bind";
-    ((b.a)localObject).hNO = 0;
+    ((b.a)localObject).hQH = 0;
     ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).aDC();
-    localObject = (cof)this.rr.hNK.hNQ;
-    ((cof)localObject).FDo = paramString;
-    ((cof)localObject).dBY = paramInt;
-    ad.i("MicroMsg.NetSceneQryBankList4Bind", "cardType: %s, openScene: %s", new Object[] { paramString, Integer.valueOf(paramInt) });
+    this.rr = ((b.a)localObject).aDS();
+    localObject = (coz)this.rr.hQD.hQJ;
+    ((coz)localObject).FVJ = paramString;
+    ((coz)localObject).dDd = paramInt;
+    ae.i("MicroMsg.NetSceneQryBankList4Bind", "cardType: %s, openScene: %s", new Object[] { paramString, Integer.valueOf(paramInt) });
     AppMethodBeat.o(71698);
   }
   
-  public final int doScene(e parame, com.tencent.mm.al.f paramf)
+  public final int doScene(e parame, com.tencent.mm.ak.f paramf)
   {
     AppMethodBeat.i(71700);
     this.callback = paramf;
@@ -56,9 +56,9 @@ public final class f
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(71699);
-    ad.i("MicroMsg.NetSceneQryBankList4Bind", "errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    this.Dpf = ((cog)((b)paramq).hNL.hNQ);
-    ad.i("MicroMsg.NetSceneQryBankList4Bind", "ret_code: %d, ret_msg: %s", new Object[] { Integer.valueOf(this.Dpf.ozR), this.Dpf.ozS });
+    ae.i("MicroMsg.NetSceneQryBankList4Bind", "errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    this.DGL = ((cpa)((b)paramq).hQE.hQJ);
+    ae.i("MicroMsg.NetSceneQryBankList4Bind", "ret_code: %d, ret_msg: %s", new Object[] { Integer.valueOf(this.DGL.oGt), this.DGL.oGu });
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }

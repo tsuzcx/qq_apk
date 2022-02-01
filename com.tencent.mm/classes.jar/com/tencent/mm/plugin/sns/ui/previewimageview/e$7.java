@@ -16,8 +16,8 @@ final class e$7
     AppMethodBeat.i(100289);
     b localb = new b();
     localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/sns/ui/previewimageview/DynamicGridPreviewImgView$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-    e.a(this.AzP);
+    a.b("com/tencent/mm/plugin/sns/ui/previewimageview/DynamicGridPreviewImgView$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+    e.a(this.ARl);
     a.a(this, "com/tencent/mm/plugin/sns/ui/previewimageview/DynamicGridPreviewImgView$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(100289);
   }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:id="@id/i5p" android:layout_width="fill_parent" android:layout_height="@dimen/ch"
+<FrameLayout android:id="@id/i5p" android:layout_width="fill_parent" android:layout_height="@dimen/ce"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
     <View android:background="@color/BW_0_Alpha_0_1" android:layout_width="fill_parent" android:layout_height="0.5dip" />
     <LinearLayout android:gravity="center" android:layout_gravity="center_vertical" android:orientation="horizontal" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content">

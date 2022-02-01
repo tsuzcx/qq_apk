@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.appbrand.luggage.export.functionalpage.a;
 
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"doOnNextLayout", "", "Landroid/view/View;", "action", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "view", "doOnPreDraw", "removeFromViewTree", "plugin-appbrand-integration_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"doOnNextLayout", "", "Landroid/view/View;", "action", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "view", "doOnPreDraw", "removeFromViewTree", "plugin-appbrand-integration_release"})
 public final class a {}
 
 

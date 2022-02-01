@@ -6,16 +6,16 @@ import d.g.b.q;
 import d.l;
 import d.z;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/media/remuxer/MediaCodecRemuxerFactory;", "Lcom/tencent/mm/media/remuxer/IMediaCodecVideoRemuxer$Factory;", "()V", "get", "Lcom/tencent/mm/media/remuxer/IMediaCodecVideoRemuxer;", "filePath", "", "outputFilePath", "outputWidth", "", "outputHeight", "outputBitrate", "outputFps", "minQP", "maxQP", "callback", "Lcom/tencent/mm/media/remuxer/IMediaCodecVideoRemuxer$FinishCallback;", "startTimeMs", "", "endTimeMs", "plugin-mediaeditor_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/media/remuxer/MediaCodecRemuxerFactory;", "Lcom/tencent/mm/media/remuxer/IMediaCodecVideoRemuxer$Factory;", "()V", "get", "Lcom/tencent/mm/media/remuxer/IMediaCodecVideoRemuxer;", "filePath", "", "outputFilePath", "outputWidth", "", "outputHeight", "outputBitrate", "outputFps", "minQP", "maxQP", "callback", "Lcom/tencent/mm/media/remuxer/IMediaCodecVideoRemuxer$FinishCallback;", "startTimeMs", "", "endTimeMs", "plugin-mediaeditor_release"})
 public final class h
   implements d.a
 {
-  public static final h hmY;
+  public static final h hpM;
   
   static
   {
     AppMethodBeat.i(93825);
-    hmY = new h();
+    hpM = new h();
     AppMethodBeat.o(93825);
   }
   
@@ -59,7 +59,7 @@ public final class h
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "path", "", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "path", "", "invoke"})
   static final class a
     extends q
     implements b<String, z>
@@ -70,7 +70,7 @@ public final class h
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "path", "", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "path", "", "invoke"})
   static final class b
     extends q
     implements b<String, z>

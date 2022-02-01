@@ -2,12 +2,12 @@ package com.tencent.mm.plugin.scanner.ui.widget;
 
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/scanner/ui/widget/IScrollTab;", "", "getTabId", "", "getTabTitle", "", "onTabSelected", "", "onTabUnselected", "setTabEnabled", "enable", "", "setTabId", "tabId", "setTabTitle", "tabTitle", "plugin-scan_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/scanner/ui/widget/IScrollTab;", "", "getTabId", "", "getTabTitle", "", "onTabSelected", "", "onTabUnselected", "setTabEnabled", "enable", "", "setTabId", "tabId", "setTabTitle", "tabTitle", "plugin-scan_release"})
 public abstract interface a
 {
-  public abstract void dMs();
+  public abstract void dPL();
   
-  public abstract void dMt();
+  public abstract void dPM();
   
   public abstract int getTabId();
   

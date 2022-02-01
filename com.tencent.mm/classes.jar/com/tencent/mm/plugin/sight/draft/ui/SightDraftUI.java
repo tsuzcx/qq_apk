@@ -10,24 +10,24 @@ import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.modelvideo.j;
 import com.tencent.mm.modelvideo.k;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.t;
-import com.tencent.mm.vfs.i;
+import com.tencent.mm.vfs.o;
 import java.util.LinkedList;
 
 public class SightDraftUI
   extends MMActivity
 {
-  private int yTO;
-  SightDraftContainerView yTP;
-  private LinkedList<String> yTQ;
+  private int zjY;
+  SightDraftContainerView zjZ;
+  private LinkedList<String> zka;
   
   public SightDraftUI()
   {
     AppMethodBeat.i(28699);
-    this.yTO = 1;
-    this.yTQ = new LinkedList();
+    this.zjY = 1;
+    this.zka = new LinkedList();
     AppMethodBeat.o(28699);
   }
   
@@ -42,9 +42,9 @@ public class SightDraftUI
     super.onCreate(paramBundle);
     setMMTitle(2131763708);
     getSupportActionBar().setBackgroundDrawable(getResources().getDrawable(2131100017));
-    this.yTP = new SightDraftContainerView(this);
-    setContentView(this.yTP);
-    this.yTP.dQz();
+    this.zjZ = new SightDraftContainerView(this);
+    setContentView(this.zjZ);
+    this.zjZ.dTW();
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -55,9 +55,9 @@ public class SightDraftUI
         return false;
       }
     });
-    this.yTP.setSightDraftCallback(new a()
+    this.zjZ.setSightDraftCallback(new a()
     {
-      public final void dQw()
+      public final void dTT()
       {
         AppMethodBeat.i(28697);
         SightDraftUI.this.addTextOptionMenu(SightDraftUI.a(SightDraftUI.this), SightDraftUI.this.getString(2131763697), new MenuItem.OnMenuItemClickListener()
@@ -73,7 +73,7 @@ public class SightDraftUI
         AppMethodBeat.o(28697);
       }
       
-      public final void dQx()
+      public final void dTU()
       {
         AppMethodBeat.i(28698);
         SightDraftUI.this.removeOptionMenu(SightDraftUI.a(SightDraftUI.this));

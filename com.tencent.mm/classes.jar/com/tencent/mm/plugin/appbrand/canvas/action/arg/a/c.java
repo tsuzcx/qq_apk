@@ -8,32 +8,32 @@ import java.util.Map;
 public final class c
   extends a<BaseDrawActionArg>
 {
-  private static com.tencent.mm.plugin.appbrand.canvas.c jTL;
-  private static c jTM;
+  private static com.tencent.mm.plugin.appbrand.canvas.c jXc;
+  private static c jXd;
   
   static
   {
     AppMethodBeat.i(145318);
-    jTL = new com.tencent.mm.plugin.appbrand.canvas.c();
-    jTM = new c();
+    jXc = new com.tencent.mm.plugin.appbrand.canvas.c();
+    jXd = new c();
     AppMethodBeat.o(145318);
   }
   
-  public static c bdr()
+  public static c bdW()
   {
-    return jTM;
+    return jXd;
   }
   
-  public final <T> T MP(String paramString)
+  public final <T> T Nw(String paramString)
   {
     AppMethodBeat.i(145317);
-    paramString = (d)jTL.jSX.get(paramString);
+    paramString = (d)jXc.jWo.get(paramString);
     if (paramString == null)
     {
       AppMethodBeat.o(145317);
       return null;
     }
-    paramString = paramString.bdn();
+    paramString = paramString.bdS();
     AppMethodBeat.o(145317);
     return paramString;
   }

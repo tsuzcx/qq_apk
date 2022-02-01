@@ -15,11 +15,11 @@ import java.util.List;
 public abstract interface f
   extends IInterface
 {
-  public abstract void Dr(String paramString);
+  public abstract void DT(String paramString);
   
-  public abstract void Ds(String paramString);
+  public abstract void DU(String paramString);
   
-  public abstract void Dt(String paramString);
+  public abstract void DV(String paramString);
   
   public abstract int a(r paramr, l paraml);
   
@@ -43,17 +43,17 @@ public abstract interface f
   
   public abstract void a(boolean paramBoolean, String paramString1, String paramString2, int[] paramArrayOfInt1, int[] paramArrayOfInt2, int paramInt1, int paramInt2, String paramString3, String paramString4);
   
-  public abstract boolean aEO();
+  public abstract boolean aFe();
   
-  public abstract void aFe();
+  public abstract void aFu();
   
-  public abstract void aFf();
+  public abstract void aFv();
   
-  public abstract d aOH();
+  public abstract d aPe();
   
-  public abstract void aOI();
+  public abstract void aPf();
   
-  public abstract i aOJ();
+  public abstract i aPg();
   
   public abstract void addHostInfo(String[] paramArrayOfString1, String[] paramArrayOfString2, int[] paramArrayOfInt);
   
@@ -63,13 +63,13 @@ public abstract interface f
   
   public abstract void e(String paramString1, String paramString2, String paramString3, String paramString4);
   
-  public abstract void eF(boolean paramBoolean);
-  
-  public abstract void eG(boolean paramBoolean);
-  
   public abstract void eH(boolean paramBoolean);
   
   public abstract void eI(boolean paramBoolean);
+  
+  public abstract void eJ(boolean paramBoolean);
+  
+  public abstract void eK(boolean paramBoolean);
   
   public abstract void forceUseV6(boolean paramBoolean);
   
@@ -110,7 +110,7 @@ public abstract interface f
       attachInterface(this, "com.tencent.mm.network.IDispatcher_AIDL");
     }
     
-    public static f m(IBinder paramIBinder)
+    public static f n(IBinder paramIBinder)
     {
       if (paramIBinder == null) {
         return null;
@@ -160,7 +160,7 @@ public abstract interface f
         return true;
       case 1: 
         paramParcel1.enforceInterface("com.tencent.mm.network.IDispatcher_AIDL");
-        localr = r.a.p(paramParcel1.readStrongBinder());
+        localr = r.a.q(paramParcel1.readStrongBinder());
         paramParcel1 = paramParcel1.readStrongBinder();
         if (paramParcel1 == null) {
           paramParcel1 = (Parcel)localObject1;
@@ -185,7 +185,7 @@ public abstract interface f
         return true;
       case 3: 
         paramParcel1.enforceInterface("com.tencent.mm.network.IDispatcher_AIDL");
-        localObject1 = aOH();
+        localObject1 = aPe();
         paramParcel2.writeNoException();
         paramParcel1 = localr;
         if (localObject1 != null) {
@@ -246,7 +246,7 @@ public abstract interface f
         if (paramParcel1.readInt() != 0) {
           bool1 = true;
         }
-        eF(bool1);
+        eH(bool1);
         paramParcel2.writeNoException();
         return true;
       case 10: 
@@ -261,12 +261,12 @@ public abstract interface f
         return true;
       case 12: 
         paramParcel1.enforceInterface("com.tencent.mm.network.IDispatcher_AIDL");
-        aOI();
+        aPf();
         paramParcel2.writeNoException();
         return true;
       case 13: 
         paramParcel1.enforceInterface("com.tencent.mm.network.IDispatcher_AIDL");
-        bool1 = aEO();
+        bool1 = aFe();
         paramParcel2.writeNoException();
         paramInt1 = i;
         if (bool1) {
@@ -294,12 +294,12 @@ public abstract interface f
         }
       case 15: 
         paramParcel1.enforceInterface("com.tencent.mm.network.IDispatcher_AIDL");
-        Dr(paramParcel1.readString());
+        DT(paramParcel1.readString());
         paramParcel2.writeNoException();
         return true;
       case 16: 
         paramParcel1.enforceInterface("com.tencent.mm.network.IDispatcher_AIDL");
-        localObject1 = aOJ();
+        localObject1 = aPg();
         paramParcel2.writeNoException();
         paramParcel1 = localObject4;
         if (localObject1 != null) {
@@ -375,7 +375,7 @@ public abstract interface f
         return true;
       case 25: 
         paramParcel1.enforceInterface("com.tencent.mm.network.IDispatcher_AIDL");
-        aFe();
+        aFu();
         paramParcel2.writeNoException();
         return true;
       case 26: 
@@ -461,7 +461,7 @@ public abstract interface f
         }
       case 34: 
         paramParcel1.enforceInterface("com.tencent.mm.network.IDispatcher_AIDL");
-        Ds(paramParcel1.readString());
+        DU(paramParcel1.readString());
         paramParcel2.writeNoException();
         return true;
       case 35: 
@@ -470,7 +470,7 @@ public abstract interface f
         if (paramParcel1.readInt() != 0) {
           bool1 = true;
         }
-        eG(bool1);
+        eI(bool1);
         paramParcel2.writeNoException();
         return true;
       case 36: 
@@ -479,7 +479,7 @@ public abstract interface f
         if (paramParcel1.readInt() != 0) {
           bool1 = true;
         }
-        eH(bool1);
+        eJ(bool1);
         paramParcel2.writeNoException();
         return true;
       case 37: 
@@ -488,12 +488,12 @@ public abstract interface f
         if (paramParcel1.readInt() != 0) {
           bool1 = true;
         }
-        eI(bool1);
+        eK(bool1);
         paramParcel2.writeNoException();
         return true;
       case 38: 
         paramParcel1.enforceInterface("com.tencent.mm.network.IDispatcher_AIDL");
-        aFf();
+        aFv();
         paramParcel2.writeNoException();
         return true;
       case 39: 
@@ -516,7 +516,7 @@ public abstract interface f
         }
       case 40: 
         paramParcel1.enforceInterface("com.tencent.mm.network.IDispatcher_AIDL");
-        Dt(paramParcel1.readString());
+        DV(paramParcel1.readString());
         paramParcel2.writeNoException();
         return true;
       case 41: 
@@ -558,7 +558,7 @@ public abstract interface f
         this.mRemote = paramIBinder;
       }
       
-      public final void Dr(String paramString)
+      public final void DT(String paramString)
       {
         AppMethodBeat.i(132712);
         Parcel localParcel1 = Parcel.obtain();
@@ -579,7 +579,7 @@ public abstract interface f
         }
       }
       
-      public final void Ds(String paramString)
+      public final void DU(String paramString)
       {
         AppMethodBeat.i(132731);
         Parcel localParcel1 = Parcel.obtain();
@@ -600,7 +600,7 @@ public abstract interface f
         }
       }
       
-      public final void Dt(String paramString)
+      public final void DV(String paramString)
       {
         AppMethodBeat.i(132737);
         Parcel localParcel1 = Parcel.obtain();
@@ -1200,7 +1200,7 @@ public abstract interface f
         }
       }
       
-      public final boolean aEO()
+      public final boolean aFe()
       {
         boolean bool = false;
         AppMethodBeat.i(132710);
@@ -1225,7 +1225,7 @@ public abstract interface f
         }
       }
       
-      public final void aFe()
+      public final void aFu()
       {
         AppMethodBeat.i(132722);
         Parcel localParcel1 = Parcel.obtain();
@@ -1245,7 +1245,7 @@ public abstract interface f
         }
       }
       
-      public final void aFf()
+      public final void aFv()
       {
         AppMethodBeat.i(132735);
         Parcel localParcel1 = Parcel.obtain();
@@ -1265,7 +1265,7 @@ public abstract interface f
         }
       }
       
-      public final d aOH()
+      public final d aPe()
       {
         AppMethodBeat.i(132700);
         Parcel localParcel1 = Parcel.obtain();
@@ -1275,7 +1275,7 @@ public abstract interface f
           localParcel1.writeInterfaceToken("com.tencent.mm.network.IDispatcher_AIDL");
           this.mRemote.transact(3, localParcel1, localParcel2, 0);
           localParcel2.readException();
-          d locald = d.a.l(localParcel2.readStrongBinder());
+          d locald = d.a.m(localParcel2.readStrongBinder());
           return locald;
         }
         finally
@@ -1286,7 +1286,7 @@ public abstract interface f
         }
       }
       
-      public final void aOI()
+      public final void aPf()
       {
         AppMethodBeat.i(132709);
         Parcel localParcel1 = Parcel.obtain();
@@ -1306,7 +1306,7 @@ public abstract interface f
         }
       }
       
-      public final i aOJ()
+      public final i aPg()
       {
         AppMethodBeat.i(132713);
         Parcel localParcel1 = Parcel.obtain();
@@ -1316,7 +1316,7 @@ public abstract interface f
           localParcel1.writeInterfaceToken("com.tencent.mm.network.IDispatcher_AIDL");
           this.mRemote.transact(16, localParcel1, localParcel2, 0);
           localParcel2.readException();
-          i locali = i.a.n(localParcel2.readStrongBinder());
+          i locali = i.a.o(localParcel2.readStrongBinder());
           return locali;
         }
         finally
@@ -1423,7 +1423,7 @@ public abstract interface f
         }
       }
       
-      public final void eF(boolean paramBoolean)
+      public final void eH(boolean paramBoolean)
       {
         int i = 0;
         AppMethodBeat.i(132706);
@@ -1448,7 +1448,7 @@ public abstract interface f
         }
       }
       
-      public final void eG(boolean paramBoolean)
+      public final void eI(boolean paramBoolean)
       {
         int i = 0;
         AppMethodBeat.i(132732);
@@ -1473,7 +1473,7 @@ public abstract interface f
         }
       }
       
-      public final void eH(boolean paramBoolean)
+      public final void eJ(boolean paramBoolean)
       {
         int i = 0;
         AppMethodBeat.i(132733);
@@ -1498,7 +1498,7 @@ public abstract interface f
         }
       }
       
-      public final void eI(boolean paramBoolean)
+      public final void eK(boolean paramBoolean)
       {
         int i = 0;
         AppMethodBeat.i(132734);
@@ -1838,7 +1838,7 @@ public abstract interface f
       public final void switchProcessActiveState(boolean paramBoolean)
       {
         int i = 0;
-        AppMethodBeat.i(189844);
+        AppMethodBeat.i(193562);
         Parcel localParcel1 = Parcel.obtain();
         Parcel localParcel2 = Parcel.obtain();
         try
@@ -1856,7 +1856,7 @@ public abstract interface f
         {
           localParcel2.recycle();
           localParcel1.recycle();
-          AppMethodBeat.o(189844);
+          AppMethodBeat.o(193562);
         }
       }
     }

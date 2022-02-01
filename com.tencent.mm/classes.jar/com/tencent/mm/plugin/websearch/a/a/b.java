@@ -6,8 +6,8 @@ import com.tencent.mm.plugin.fts.a.a.j;
 import com.tencent.mm.plugin.fts.a.a.k;
 import com.tencent.mm.plugin.fts.a.l;
 import com.tencent.mm.plugin.fts.a.n;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -20,28 +20,28 @@ import java.util.concurrent.TimeUnit;
 public final class b
   implements c
 {
-  Map<a, CountDownLatch> DDe;
-  private l DDf;
-  private l DDg;
-  Map<a, c.a> nyV;
+  Map<a, CountDownLatch> DVc;
+  private l DVd;
+  private l DVe;
+  Map<a, c.a> nEq;
   
   public b()
   {
     AppMethodBeat.i(116556);
-    this.DDe = new ConcurrentHashMap();
-    this.nyV = new HashMap();
-    this.DDf = new l()
+    this.DVc = new ConcurrentHashMap();
+    this.nEq = new HashMap();
+    this.DVd = new l()
     {
       public final void b(k paramAnonymousk)
       {
         AppMethodBeat.i(116554);
-        a locala = (a)paramAnonymousk.tvk.tuc;
+        a locala = (a)paramAnonymousk.tGb.tET;
         if (locala == null)
         {
           AppMethodBeat.o(116554);
           return;
         }
-        CountDownLatch localCountDownLatch = (CountDownLatch)b.this.DDe.remove(locala);
+        CountDownLatch localCountDownLatch = (CountDownLatch)b.this.DVc.remove(locala);
         switch (paramAnonymousk.bZU)
         {
         }
@@ -50,32 +50,32 @@ public final class b
           localCountDownLatch.countDown();
           AppMethodBeat.o(116554);
           return;
-          if ((paramAnonymousk.tvl == null) || (paramAnonymousk.tvl.size() == 0))
+          if ((paramAnonymousk.tGc == null) || (paramAnonymousk.tGc.size() == 0))
           {
-            ad.i("FTSMatchContact", "local contact search size 0");
-            locala.gR(Collections.emptyList());
+            ae.i("FTSMatchContact", "local contact search size 0");
+            locala.hb(Collections.emptyList());
             localCountDownLatch.countDown();
             AppMethodBeat.o(116554);
             return;
           }
-          locala.gR(paramAnonymousk.tvl);
+          locala.hb(paramAnonymousk.tGc);
           continue;
-          locala.gR(Collections.emptyList());
+          locala.hb(Collections.emptyList());
         }
       }
     };
-    this.DDg = new l()
+    this.DVe = new l()
     {
       public final void b(k paramAnonymousk)
       {
         AppMethodBeat.i(116555);
-        a locala = (a)paramAnonymousk.tvk.tuc;
+        a locala = (a)paramAnonymousk.tGb.tET;
         if (locala == null)
         {
           AppMethodBeat.o(116555);
           return;
         }
-        c.a locala1 = (c.a)b.this.nyV.remove(locala);
+        c.a locala1 = (c.a)b.this.nEq.remove(locala);
         if (locala1 == null)
         {
           AppMethodBeat.o(116555);
@@ -86,19 +86,19 @@ public final class b
         }
         for (;;)
         {
-          locala1.eMD();
+          locala1.eQo();
           AppMethodBeat.o(116555);
           return;
-          if ((paramAnonymousk.tvl == null) || (paramAnonymousk.tvl.size() == 0))
+          if ((paramAnonymousk.tGc == null) || (paramAnonymousk.tGc.size() == 0))
           {
-            ad.i("FTSMatchContact", "local contact search size 0");
-            locala1.eMD();
+            ae.i("FTSMatchContact", "local contact search size 0");
+            locala1.eQo();
             AppMethodBeat.o(116555);
             return;
           }
-          locala.gR(paramAnonymousk.tvl);
+          locala.hb(paramAnonymousk.tGc);
           continue;
-          locala.gR(Collections.emptyList());
+          locala.hb(Collections.emptyList());
         }
       }
     };
@@ -108,21 +108,21 @@ public final class b
   private static boolean a(a parama, l paraml)
   {
     AppMethodBeat.i(116559);
-    if (bt.isNullOrNil(parama.query))
+    if (bu.isNullOrNil(parama.query))
     {
       AppMethodBeat.o(116559);
       return false;
     }
     j localj = new j();
     localj.query = parama.query;
-    localj.tve = new int[] { 131072 };
-    localj.tvf = new int[] { 1, 5 };
-    localj.tvg = parama.DDd;
-    localj.tvi = com.tencent.mm.plugin.fts.a.c.b.tvI;
-    localj.tvh = new HashSet();
-    localj.tvj = paraml;
+    localj.tFV = new int[] { 131072 };
+    localj.tFW = new int[] { 1, 5 };
+    localj.tFX = parama.DVb;
+    localj.tFZ = com.tencent.mm.plugin.fts.a.c.b.tGz;
+    localj.tFY = new HashSet();
+    localj.tGa = paraml;
     localj.scene = 1;
-    ((n)g.ad(n.class)).search(2, localj).tuc = parama;
+    ((n)g.ad(n.class)).search(2, localj).tET = parama;
     AppMethodBeat.o(116559);
     return true;
   }
@@ -130,22 +130,22 @@ public final class b
   public final void a(a parama, c.a parama1)
   {
     AppMethodBeat.i(116558);
-    this.nyV.put(parama, parama1);
-    a(parama, this.DDg);
+    this.nEq.put(parama, parama1);
+    a(parama, this.DVe);
     AppMethodBeat.o(116558);
   }
   
-  public final a aFX(String paramString)
+  public final a aHr(String paramString)
   {
     AppMethodBeat.i(116557);
     e locale = new e(paramString);
-    CountDownLatch localCountDownLatch = (CountDownLatch)this.DDe.get(locale);
+    CountDownLatch localCountDownLatch = (CountDownLatch)this.DVc.get(locale);
     if (localCountDownLatch == null) {
-      if (a(locale, this.DDf))
+      if (a(locale, this.DVd))
       {
-        ad.i("FTSMatchContact", "not have a running task ,start new task, query %s,maxMatch %d", new Object[] { paramString, Integer.valueOf(2147483647) });
+        ae.i("FTSMatchContact", "not have a running task ,start new task, query %s,maxMatch %d", new Object[] { paramString, Integer.valueOf(2147483647) });
         paramString = new CountDownLatch(1);
-        this.DDe.put(locale, paramString);
+        this.DVc.put(locale, paramString);
       }
     }
     for (;;)
@@ -154,20 +154,20 @@ public final class b
       try
       {
         paramString.await(2000L, TimeUnit.MILLISECONDS);
-        this.DDe.remove(locale);
+        this.DVc.remove(locale);
         AppMethodBeat.o(116557);
         return locale;
-        ad.i("FTSMatchContact", "start new task fail, query %s,maxMatch %d", new Object[] { paramString, Integer.valueOf(2147483647) });
+        ae.i("FTSMatchContact", "start new task fail, query %s,maxMatch %d", new Object[] { paramString, Integer.valueOf(2147483647) });
         paramString = localCountDownLatch;
         continue;
-        ad.i("FTSMatchContact", "have a running task ,wait for result, query %s,maxMatch %d", new Object[] { paramString, Integer.valueOf(2147483647) });
+        ae.i("FTSMatchContact", "have a running task ,wait for result, query %s,maxMatch %d", new Object[] { paramString, Integer.valueOf(2147483647) });
         paramString = localCountDownLatch;
       }
       catch (Exception paramString)
       {
         for (;;)
         {
-          ad.printErrStackTrace("FTSMatchContact", paramString, "", new Object[0]);
+          ae.printErrStackTrace("FTSMatchContact", paramString, "", new Object[0]);
         }
       }
     }
@@ -175,7 +175,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.websearch.a.a.b
  * JD-Core Version:    0.7.0.1
  */

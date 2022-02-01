@@ -6,13 +6,13 @@ import java.io.Serializable;
 public final class d$a
   implements Serializable
 {
-  public int dwg;
+  public int dxl;
   public String userName;
   
   public final String toString()
   {
     AppMethodBeat.i(19957);
-    String str = "[" + this.userName + "(" + this.dwg + ")]";
+    String str = "[" + this.userName + "(" + this.dxl + ")]";
     AppMethodBeat.o(19957);
     return str;
   }

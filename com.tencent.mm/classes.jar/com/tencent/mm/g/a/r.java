@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class r
   extends b
 {
-  public a dko;
+  public a dlq;
   
   public r()
   {
@@ -15,17 +15,17 @@ public final class r
   
   private r(byte paramByte)
   {
-    AppMethodBeat.i(195187);
-    this.dko = new a();
-    this.IbR = false;
+    AppMethodBeat.i(218635);
+    this.dlq = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(195187);
+    AppMethodBeat.o(218635);
   }
   
   public static final class a
   {
-    public boolean dkp = false;
-    public boolean dkq = false;
+    public boolean dlr = false;
+    public boolean dls = false;
   }
 }
 

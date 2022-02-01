@@ -21,9 +21,9 @@ final class a$b$1
     AppMethodBeat.i(152099);
     b localb = new b();
     localb.bd(paramView);
-    a.b("com/tencent/mm/pluginsdk/ui/AvatarDrawable$Factory$1", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.ahq());
-    ((ClipboardManager)this.qeK.getContext().getSystemService("clipboard")).setPrimaryClip(ClipData.newPlainText("UserName:", this.cCj));
-    Toast.makeText(this.qeK.getContext(), 2131755702, 0).show();
+    a.b("com/tencent/mm/pluginsdk/ui/AvatarDrawable$Factory$1", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.ahF());
+    ((ClipboardManager)this.qlp.getContext().getSystemService("clipboard")).setPrimaryClip(ClipData.newPlainText("UserName:", this.cCQ));
+    Toast.makeText(this.qlp.getContext(), 2131755702, 0).show();
     a.a(true, this, "com/tencent/mm/pluginsdk/ui/AvatarDrawable$Factory$1", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
     AppMethodBeat.o(152099);
     return true;
@@ -31,7 +31,7 @@ final class a$b$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.a.b.1
  * JD-Core Version:    0.7.0.1
  */

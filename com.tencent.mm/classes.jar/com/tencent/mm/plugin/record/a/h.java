@@ -10,11 +10,11 @@ public abstract interface h
 {
   public static final String[] SQL_CREATE = { j.getCreateSQLs(k.info, "RecordMessageInfo") };
   
-  public abstract k NA(int paramInt);
+  public abstract void Of(int paramInt);
   
-  public abstract void Nz(int paramInt);
+  public abstract k Og(int paramInt);
   
-  public abstract List<k> dEh();
+  public abstract List<k> dHy();
 }
 
 

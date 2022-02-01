@@ -3,21 +3,21 @@ package com.tencent.qbar.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/qbar/util/ScanBitmapUtil;", "", "()V", "TAG", "", "calculateInSampleSize", "", "imageWidth", "imageHeight", "reqWidth", "reqHeight", "scan-sdk_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/qbar/util/ScanBitmapUtil;", "", "()V", "TAG", "", "calculateInSampleSize", "", "imageWidth", "imageHeight", "reqWidth", "reqHeight", "scan-sdk_release"})
 public final class a
 {
-  public static final a LLd;
+  public static final a Mic;
   
   static
   {
-    AppMethodBeat.i(218772);
-    LLd = new a();
-    AppMethodBeat.o(218772);
+    AppMethodBeat.i(196708);
+    Mic = new a();
+    AppMethodBeat.o(196708);
   }
   
   public static final int O(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(218771);
+    AppMethodBeat.i(196707);
     int j = 1;
     if ((paramInt2 > paramInt4) || (paramInt1 > paramInt3))
     {
@@ -37,7 +37,7 @@ public final class a
         }
       }
     }
-    AppMethodBeat.o(218771);
+    AppMethodBeat.o(196707);
     return j;
   }
 }

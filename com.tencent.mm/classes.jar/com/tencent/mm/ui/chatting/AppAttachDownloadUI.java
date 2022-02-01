@@ -24,30 +24,31 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.k.b;
-import com.tencent.mm.al.n;
-import com.tencent.mm.g.a.cv;
-import com.tencent.mm.g.a.on;
-import com.tencent.mm.g.a.on.a;
+import com.tencent.mm.ah.k.b;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.g.a.cw;
+import com.tencent.mm.g.a.oo;
+import com.tencent.mm.g.a.oo.a;
 import com.tencent.mm.g.c.ei;
-import com.tencent.mm.model.ba;
-import com.tencent.mm.model.bj;
-import com.tencent.mm.model.cf;
-import com.tencent.mm.model.u;
-import com.tencent.mm.model.w;
-import com.tencent.mm.modelsimple.aa;
+import com.tencent.mm.model.bc;
+import com.tencent.mm.model.bl;
+import com.tencent.mm.model.ch;
+import com.tencent.mm.model.v;
+import com.tencent.mm.model.x;
+import com.tencent.mm.modelsimple.ab;
 import com.tencent.mm.platformtools.af;
 import com.tencent.mm.platformtools.p.a;
 import com.tencent.mm.plugin.handoff.model.HandOffFile;
+import com.tencent.mm.plugin.messenger.foundation.a.a.i;
 import com.tencent.mm.plugin.msgquote.model.MsgQuoteItem;
 import com.tencent.mm.plugin.record.b.f.a;
 import com.tencent.mm.pluginsdk.model.app.ao;
 import com.tencent.mm.sdk.e.k.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.bu;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.bv;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.MMImageView;
 import com.tencent.mm.ui.base.h;
@@ -56,152 +57,154 @@ import com.tencent.mm.ui.base.n.e;
 import com.tencent.mm.ui.chatting.gallery.ImageGalleryUI;
 import com.tencent.mm.ui.tools.ShowImageUI;
 import com.tencent.mm.ui.widget.progress.RoundProgressBtn;
+import com.tencent.mm.vfs.k;
+import com.tencent.mm.vfs.o;
 
 public class AppAttachDownloadUI
   extends MMActivity
-  implements com.tencent.mm.al.f, f.a, k.a
+  implements com.tencent.mm.ak.f, f.a, k.a
 {
-  private com.tencent.mm.ui.chatting.g.a Fkw;
-  private boolean JxA;
-  private int JxB;
-  private LinearLayout JxC;
-  private LinearLayout JxD;
-  private boolean JxE;
-  private RoundProgressBtn Jxl;
-  private a Jxm;
-  private View Jxn;
-  private TextView Jxo;
-  private TextView Jxp;
-  private TextView Jxq;
-  private com.tencent.mm.al.g Jxr;
-  private boolean Jxs;
-  private k.b Jxt;
-  private long Jxu;
-  private String Jxv;
-  private boolean Jxw;
-  private boolean Jxx;
-  private boolean Jxy;
-  private int Jxz;
+  private com.tencent.mm.ui.chatting.g.a FCU;
+  private RoundProgressBtn JSb;
+  private a JSc;
+  private View JSd;
+  private TextView JSe;
+  private TextView JSf;
+  private TextView JSg;
+  private com.tencent.mm.ak.g JSh;
+  private boolean JSi;
+  private k.b JSj;
+  private long JSk;
+  private String JSl;
+  private boolean JSm;
+  private boolean JSn;
+  private boolean JSo;
+  private int JSp;
+  private boolean JSq;
+  private int JSr;
+  private LinearLayout JSs;
+  private LinearLayout JSt;
+  private boolean JSu;
   private int appType;
-  private bu dBd;
-  private boolean dBt;
-  private String dDP;
-  private String dyU;
-  private String fVf;
+  private bv dCi;
+  private boolean dCy;
+  private String dEU;
+  private String dzZ;
+  private String fXl;
   private String fileName;
   private String filePath;
-  private String gjI;
-  private String gjc;
-  private TextView jai;
+  private String glu;
+  private String gmb;
+  private TextView jdb;
   private String mediaId;
   private long msgId;
-  private String nUg;
-  private int nYw;
-  private int nYx;
-  private com.tencent.mm.ui.widget.b.a nZK;
-  private int oTx;
-  private n.e qlC;
-  private HandOffFile rAg;
-  private View.OnTouchListener rAi;
-  private View.OnLongClickListener rAj;
-  private Button rzQ;
+  private String nZM;
+  private int oZZ;
+  private int oef;
+  private int oeg;
+  private com.tencent.mm.ui.widget.b.a ofu;
+  private n.e qsh;
+  private Button rIb;
+  private HandOffFile rIr;
+  private View.OnTouchListener rIt;
+  private View.OnLongClickListener rIu;
   private int scene;
-  private String uDO;
-  private MMImageView xdL;
-  private com.tencent.mm.plugin.record.b.f xqu;
+  private String uPt;
+  private com.tencent.mm.plugin.record.b.f xGr;
+  private MMImageView xtC;
   
   public AppAttachDownloadUI()
   {
     AppMethodBeat.i(34129);
-    this.oTx = 0;
-    this.Jxw = false;
-    this.Jxx = false;
-    this.Jxy = true;
-    this.Jxz = 5000;
-    this.JxA = false;
-    this.JxE = false;
-    this.nZK = null;
-    this.qlC = new n.e()
+    this.oZZ = 0;
+    this.JSm = false;
+    this.JSn = false;
+    this.JSo = true;
+    this.JSp = 5000;
+    this.JSq = false;
+    this.JSu = false;
+    this.ofu = null;
+    this.qsh = new n.e()
     {
       public final void onMMMenuItemSelected(MenuItem paramAnonymousMenuItem, int paramAnonymousInt)
       {
-        AppMethodBeat.i(193820);
-        ClipboardManager localClipboardManager = (ClipboardManager)aj.getContext().getSystemService("clipboard");
+        AppMethodBeat.i(187116);
+        ClipboardManager localClipboardManager = (ClipboardManager)ak.getContext().getSystemService("clipboard");
         if (AppAttachDownloadUI.z(AppAttachDownloadUI.this).equals("")) {}
         for (paramAnonymousMenuItem = AppAttachDownloadUI.this.getString(2131761808);; paramAnonymousMenuItem = AppAttachDownloadUI.z(AppAttachDownloadUI.this))
         {
           localClipboardManager.setPrimaryClip(ClipData.newPlainText(null, paramAnonymousMenuItem));
-          h.cl(AppAttachDownloadUI.this, AppAttachDownloadUI.this.getString(2131755702));
-          AppMethodBeat.o(193820);
+          h.cm(AppAttachDownloadUI.this, AppAttachDownloadUI.this.getString(2131755702));
+          AppMethodBeat.o(187116);
           return;
         }
       }
     };
-    this.rAi = new View.OnTouchListener()
+    this.rIt = new View.OnTouchListener()
     {
       public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
       {
-        AppMethodBeat.i(193821);
+        AppMethodBeat.i(187117);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
         localb.bd(paramAnonymousView);
         localb.bd(paramAnonymousMotionEvent);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/chatting/AppAttachDownloadUI$9", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahq());
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/chatting/AppAttachDownloadUI$9", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahF());
         switch (paramAnonymousMotionEvent.getAction())
         {
         }
         for (;;)
         {
           com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/mm/ui/chatting/AppAttachDownloadUI$9", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
-          AppMethodBeat.o(193821);
+          AppMethodBeat.o(187117);
           return false;
           AppAttachDownloadUI.b(AppAttachDownloadUI.this, (int)paramAnonymousMotionEvent.getRawX());
           AppAttachDownloadUI.c(AppAttachDownloadUI.this, (int)paramAnonymousMotionEvent.getRawY());
         }
       }
     };
-    this.rAj = new View.OnLongClickListener()
+    this.rIu = new View.OnLongClickListener()
     {
       public final boolean onLongClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(193813);
+        AppMethodBeat.i(187109);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
         localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/chatting/AppAttachDownloadUI$10", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.ahq());
-        ad.d("MicroMsg.AppAttachDownloadUI", "onLongClick");
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/chatting/AppAttachDownloadUI$10", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.ahF());
+        ae.d("MicroMsg.AppAttachDownloadUI", "onLongClick");
         if (AppAttachDownloadUI.A(AppAttachDownloadUI.this) == null) {
-          AppAttachDownloadUI.a(AppAttachDownloadUI.this, new com.tencent.mm.ui.widget.b.a(AppAttachDownloadUI.this.cwQ()));
+          AppAttachDownloadUI.a(AppAttachDownloadUI.this, new com.tencent.mm.ui.widget.b.a(AppAttachDownloadUI.this.cyr()));
         }
         AppAttachDownloadUI.A(AppAttachDownloadUI.this).a(paramAnonymousView, AppAttachDownloadUI.this, AppAttachDownloadUI.B(AppAttachDownloadUI.this), AppAttachDownloadUI.C(AppAttachDownloadUI.this), AppAttachDownloadUI.D(AppAttachDownloadUI.this));
         com.tencent.mm.hellhoundlib.a.a.a(true, this, "com/tencent/mm/ui/chatting/AppAttachDownloadUI$10", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
-        AppMethodBeat.o(193813);
+        AppMethodBeat.o(187109);
         return true;
       }
     };
     AppMethodBeat.o(34129);
   }
   
-  private String aVO(String paramString)
+  private String aXp(String paramString)
   {
     AppMethodBeat.i(34142);
     String str = paramString;
-    if (this.Jxs)
+    if (this.JSi)
     {
       str = paramString;
       if (paramString != null) {
-        str = bj.Bl(paramString);
+        str = bl.BN(paramString);
       }
     }
     AppMethodBeat.o(34142);
     return str;
   }
   
-  private void acG(int paramInt)
+  private void ado(int paramInt)
   {
     AppMethodBeat.i(34158);
-    if (paramInt != this.Jxl.getVisibility())
+    if (paramInt != this.JSb.getVisibility())
     {
-      ad.i("MicroMsg.AppAttachDownloadUI", "setRoundProgressBar %s %s", new Object[] { Integer.valueOf(paramInt), af.aQL() });
-      this.Jxl.setVisibility(paramInt);
+      ae.i("MicroMsg.AppAttachDownloadUI", "setRoundProgressBar %s %s", new Object[] { Integer.valueOf(paramInt), af.aRk() });
+      this.JSb.setVisibility(paramInt);
     }
     AppMethodBeat.o(34158);
   }
@@ -214,8 +217,8 @@ public class AppAttachDownloadUI
       AppMethodBeat.o(34157);
       return false;
     }
-    com.tencent.mm.vfs.e locale = new com.tencent.mm.vfs.e(paramc.field_fileFullPath);
-    if ((locale.exists()) && (locale.length() == paramc.field_totalLen))
+    k localk = new k(paramc.field_fileFullPath);
+    if ((localk.exists()) && (localk.length() == paramc.field_totalLen))
     {
       AppMethodBeat.o(34157);
       return true;
@@ -224,62 +227,62 @@ public class AppAttachDownloadUI
     return false;
   }
   
-  private void dCs()
+  private void dFJ()
   {
     AppMethodBeat.i(34153);
-    ad.i("MicroMsg.AppAttachDownloadUI", "[ImageGalleryUI] showImage");
+    ae.i("MicroMsg.AppAttachDownloadUI", "[ImageGalleryUI] showImage");
     Object localObject = new Intent(this, ImageGalleryUI.class);
-    ((Intent)localObject).putExtra("img_gallery_msg_id", this.dBd.field_msgId);
-    ((Intent)localObject).putExtra("img_gallery_talker", this.dBd.field_talker);
+    ((Intent)localObject).putExtra("img_gallery_msg_id", this.dCi.field_msgId);
+    ((Intent)localObject).putExtra("img_gallery_talker", this.dCi.field_talker);
     localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
-    com.tencent.mm.hellhoundlib.a.a.a(this, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahp(), "com/tencent/mm/ui/chatting/AppAttachDownloadUI", "showImage", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mq(0));
+    com.tencent.mm.hellhoundlib.a.a.a(this, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahE(), "com/tencent/mm/ui/chatting/AppAttachDownloadUI", "showImage", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mt(0));
     com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/chatting/AppAttachDownloadUI", "showImage", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     finish();
     overridePendingTransition(0, 0);
     AppMethodBeat.o(34153);
   }
   
-  private void deI()
+  private void dhA()
   {
     AppMethodBeat.i(34132);
-    this.Fkw = new com.tencent.mm.ui.chatting.g.a(new com.tencent.mm.plugin.ball.a.e((MMActivity)super.getContext()));
-    this.Fkw.h(this.filePath, this.fVf, this.oTx, true);
-    this.Fkw.mn(this.fVf, this.fileName);
-    this.rAg.L(this.Fkw.nGj);
+    this.FCU = new com.tencent.mm.ui.chatting.g.a(new com.tencent.mm.plugin.ball.a.e((MMActivity)super.getContext()));
+    this.FCU.h(this.filePath, this.fXl, this.oZZ, true);
+    this.FCU.mu(this.fXl, this.fileName);
+    this.rIr.N(this.FCU.nLK);
     AppMethodBeat.o(34132);
   }
   
-  private void fAl()
+  private void fEn()
   {
     AppMethodBeat.i(34133);
-    String str1 = af.nullAsNil(u.aAm());
-    Object localObject2 = af.nullAsNil(this.dBd.field_talker);
+    String str1 = af.nullAsNil(v.aAC());
+    Object localObject2 = af.nullAsNil(this.dCi.field_talker);
     Object localObject1 = localObject2;
-    if (w.vF((String)localObject2)) {
-      localObject1 = af.nullAsNil(this.Jxt.dyU);
+    if (x.wb((String)localObject2)) {
+      localObject1 = af.nullAsNil(this.JSj.dzZ);
     }
-    if (this.dBd.field_isSend == 1)
+    if (this.dCi.field_isSend == 1)
     {
       localObject2 = str1;
-      if (this.dBd.field_isSend != 1) {
+      if (this.dCi.field_isSend != 1) {
         break label259;
       }
       label76:
       String str2 = af.nullAsNil(this.filePath);
-      String str3 = this.fVf;
+      String str3 = this.fXl;
       String str4 = this.fileName;
-      String str5 = this.nUg;
-      long l = this.Jxu;
-      String str6 = Long.toString(this.dBd.field_msgSvrId);
-      if (af.isNullOrNil(this.uDO)) {
+      String str5 = this.nZM;
+      long l = this.JSk;
+      String str6 = Long.toString(this.dCi.field_msgSvrId);
+      if (af.isNullOrNil(this.uPt)) {
         break label266;
       }
-      str1 = this.uDO;
+      str1 = this.uPt;
       label136:
-      this.rAg = new HandOffFile(str2, str3, str4, str5, l, str6, "", str1, this.gjI, this.gjc, "", "", (String)localObject2, (String)localObject1);
-      boolean bool = b(fAr());
-      localObject1 = this.rAg;
+      this.rIr = new HandOffFile(str2, str3, str4, str5, l, str6, "", str1, this.gmb, this.glu, "", "", (String)localObject2, (String)localObject1);
+      boolean bool = b(fEt());
+      localObject1 = this.rIr;
       if (!bool) {
         break label275;
       }
@@ -289,37 +292,37 @@ public class AppAttachDownloadUI
     label275:
     for (int i = 1;; i = 2)
     {
-      ((HandOffFile)localObject1).uDP = i;
-      ((com.tencent.mm.plugin.handoff.a.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.handoff.a.a.class)).f(this.rAg);
-      ((com.tencent.mm.plugin.handoff.a.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.handoff.a.a.class)).c(this.rAg);
+      ((HandOffFile)localObject1).uPu = i;
+      ((com.tencent.mm.plugin.handoff.a.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.handoff.a.a.class)).g(this.rIr);
+      ((com.tencent.mm.plugin.handoff.a.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.handoff.a.a.class)).c(this.rIr);
       AppMethodBeat.o(34133);
       return;
       localObject2 = localObject1;
       break;
       localObject1 = str1;
       break label76;
-      str1 = this.Jxv;
+      str1 = this.JSl;
       break label136;
     }
   }
   
-  private boolean fAm()
+  private boolean fEo()
   {
     AppMethodBeat.i(34134);
     this.scene = getIntent().getIntExtra("scene", 0);
     this.msgId = getIntent().getLongExtra("app_msg_id", -1L);
-    this.JxA = getIntent().getBooleanExtra("choose_way", false);
-    this.JxB = getIntent().getIntExtra("msg_type", 0);
+    this.JSq = getIntent().getBooleanExtra("choose_way", false);
+    this.JSr = getIntent().getIntExtra("msg_type", 0);
     if (this.msgId == -1L)
     {
       AppMethodBeat.o(34134);
       return false;
     }
-    ba.aBQ();
-    this.dBd = com.tencent.mm.model.c.azs().xY(this.msgId);
-    if ((this.dBd == null) || (this.dBd.field_msgId == 0L) || (this.dBd.field_content == null))
+    bc.aCg();
+    this.dCi = com.tencent.mm.model.c.azI().ys(this.msgId);
+    if ((this.dCi == null) || (this.dCi.field_msgId == 0L) || (this.dCi.field_content == null))
     {
-      if (!fAn()) {
+      if (!fEp()) {
         break label358;
       }
       localObject = (MsgQuoteItem)getIntent().getParcelableExtra("key_quoted_msg");
@@ -328,71 +331,71 @@ public class AppAttachDownloadUI
         AppMethodBeat.o(34134);
         return false;
       }
-      this.dBd = new bu();
-      this.dBd.setType(((MsgQuoteItem)localObject).type);
-      this.dBd.qz(((MsgQuoteItem)localObject).vZc);
-      this.dBd.tN(((MsgQuoteItem)localObject).vZd);
-      this.dBd.sP(((MsgQuoteItem)localObject).vZg);
-      this.dBd.setContent(((MsgQuoteItem)localObject).content);
-      if (bt.lQ(((MsgQuoteItem)localObject).vZe, u.aAm())) {
-        this.dBd.kr(1);
+      this.dCi = new bv();
+      this.dCi.setType(((MsgQuoteItem)localObject).type);
+      this.dCi.qM(((MsgQuoteItem)localObject).wlg);
+      this.dCi.ui(((MsgQuoteItem)localObject).wlh);
+      this.dCi.tk(((MsgQuoteItem)localObject).wlk);
+      this.dCi.setContent(((MsgQuoteItem)localObject).content);
+      if (bu.lX(((MsgQuoteItem)localObject).wli, v.aAC())) {
+        this.dCi.kt(1);
       }
     }
-    this.Jxs = w.vF(this.dBd.field_talker);
-    this.dDP = this.dBd.field_content;
-    if ((this.Jxs) && (this.dBd.field_isSend == 0)) {
-      this.dDP = aVO(this.dBd.field_content);
+    this.JSi = x.wb(this.dCi.field_talker);
+    this.dEU = this.dCi.field_content;
+    if ((this.JSi) && (this.dCi.field_isSend == 0)) {
+      this.dEU = aXp(this.dCi.field_content);
     }
-    this.Jxt = k.b.yr(this.dDP);
-    if (this.Jxt == null)
+    this.JSj = k.b.zb(this.dEU);
+    if (this.JSj == null)
     {
-      ad.e("MicroMsg.AppAttachDownloadUI", "summerapp parse msgContent error, %s", new Object[] { this.dDP });
+      ae.e("MicroMsg.AppAttachDownloadUI", "summerapp parse msgContent error, %s", new Object[] { this.dEU });
       AppMethodBeat.o(34134);
       return false;
       label358:
       AppMethodBeat.o(34134);
       return false;
     }
-    if ((af.isNullOrNil(this.Jxt.dks)) && (!af.isNullOrNil(this.Jxt.hAd)))
+    if ((af.isNullOrNil(this.JSj.dlu)) && (!af.isNullOrNil(this.JSj.hCR)))
     {
-      ad.e("MicroMsg.AppAttachDownloadUI", "summerapp msgContent format error, %s", new Object[] { this.dDP });
-      this.Jxt.dks = this.Jxt.hAd.hashCode();
+      ae.e("MicroMsg.AppAttachDownloadUI", "summerapp msgContent format error, %s", new Object[] { this.dEU });
+      this.JSj.dlu = this.JSj.hCR.hashCode();
     }
-    this.appType = this.Jxt.type;
-    this.mediaId = this.Jxt.dks;
-    this.fileName = af.nullAsNil(this.Jxt.title);
-    this.fVf = af.nullAsNil(this.Jxt.hzP).toLowerCase();
-    this.Jxu = this.Jxt.hzO;
-    this.nUg = af.nullAsNil(this.Jxt.filemd5);
-    this.dyU = af.nullAsNil(this.Jxt.dyU);
-    this.uDO = af.nullAsNil(this.Jxt.hAd);
-    this.Jxv = af.nullAsNil(this.Jxt.hzU);
-    this.gjI = af.nullAsNil(this.Jxt.gjI);
-    this.gjc = af.nullAsNil(this.Jxt.hAa);
-    if (af.isNullOrNil(this.fVf)) {
-      this.fVf = com.tencent.mm.vfs.i.ZF(this.fileName);
+    this.appType = this.JSj.type;
+    this.mediaId = this.JSj.dlu;
+    this.fileName = af.nullAsNil(this.JSj.title);
+    this.fXl = af.nullAsNil(this.JSj.hCD).toLowerCase();
+    this.JSk = this.JSj.hCC;
+    this.nZM = af.nullAsNil(this.JSj.filemd5);
+    this.dzZ = af.nullAsNil(this.JSj.dzZ);
+    this.uPt = af.nullAsNil(this.JSj.hCR);
+    this.JSl = af.nullAsNil(this.JSj.hCI);
+    this.gmb = af.nullAsNil(this.JSj.gmb);
+    this.glu = af.nullAsNil(this.JSj.hCO);
+    if (af.isNullOrNil(this.fXl)) {
+      this.fXl = o.aaw(this.fileName);
     }
-    ad.i("MicroMsg.AppAttachDownloadUI", "summerapp initParams msgId[%d], sender[%d], msgContent[%s], appType[%d], mediaId[%s], fileName[%s]", new Object[] { Long.valueOf(this.msgId), Integer.valueOf(this.dBd.field_isSend), this.dDP, Integer.valueOf(this.appType), this.mediaId, this.fileName });
-    Object localObject = fAr();
+    ae.i("MicroMsg.AppAttachDownloadUI", "summerapp initParams msgId[%d], sender[%d], msgContent[%s], appType[%d], mediaId[%s], fileName[%s]", new Object[] { Long.valueOf(this.msgId), Integer.valueOf(this.dCi.field_isSend), this.dEU, Integer.valueOf(this.appType), this.mediaId, this.fileName });
+    Object localObject = fEt();
     if (localObject == null)
     {
-      ad.i("MicroMsg.AppAttachDownloadUI", "summerapp initParams attInfo is null");
-      this.Jxx = false;
-      if (this.Jxt.type == 6) {
-        ((com.tencent.mm.plugin.comm.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.comm.a.b.class)).aa(String.valueOf(this.dBd.field_msgId), this.dBd.field_msgSvrId);
+      ae.i("MicroMsg.AppAttachDownloadUI", "summerapp initParams attInfo is null");
+      this.JSn = false;
+      if (this.JSj.type == 6) {
+        ((com.tencent.mm.plugin.comm.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.comm.a.b.class)).aa(String.valueOf(this.dCi.field_msgId), this.dCi.field_msgSvrId);
       }
-      fB(4, 0);
-      fAl();
+      fz(4, 0);
+      fEn();
       if (!b((com.tencent.mm.pluginsdk.model.app.c)localObject)) {
         break label998;
       }
       if (this.scene != 1) {
         break label914;
       }
-      this.oTx = 7;
-      if (this.JxA)
+      this.oZZ = 7;
+      if (this.JSq)
       {
-        bool = com.tencent.mm.pluginsdk.ui.tools.a.c(this, ((com.tencent.mm.pluginsdk.model.app.c)localObject).field_fileFullPath, this.fVf, this.oTx);
+        bool = com.tencent.mm.pluginsdk.ui.tools.a.c(this, ((com.tencent.mm.pluginsdk.model.app.c)localObject).field_fileFullPath, this.fXl, this.oZZ);
         AppMethodBeat.o(34134);
         return bool;
       }
@@ -400,30 +403,30 @@ public class AppAttachDownloadUI
     else
     {
       this.filePath = ((com.tencent.mm.pluginsdk.model.app.c)localObject).field_fileFullPath;
-      new com.tencent.mm.vfs.e(((com.tencent.mm.pluginsdk.model.app.c)localObject).field_fileFullPath);
+      new k(((com.tencent.mm.pluginsdk.model.app.c)localObject).field_fileFullPath);
       if (((com.tencent.mm.pluginsdk.model.app.c)localObject).field_offset > 0L) {}
-      for (this.Jxx = true;; this.Jxx = false)
+      for (this.JSn = true;; this.JSn = false)
       {
-        ad.i("MicroMsg.AppAttachDownloadUI", "summerapp initParams attInfo field_fileFullPath[%s], field_offset[%d], isDownloadStarted[%b]", new Object[] { ((com.tencent.mm.pluginsdk.model.app.c)localObject).field_fileFullPath, Long.valueOf(((com.tencent.mm.pluginsdk.model.app.c)localObject).field_offset), Boolean.valueOf(this.Jxx) });
+        ae.i("MicroMsg.AppAttachDownloadUI", "summerapp initParams attInfo field_fileFullPath[%s], field_offset[%d], isDownloadStarted[%b]", new Object[] { ((com.tencent.mm.pluginsdk.model.app.c)localObject).field_fileFullPath, Long.valueOf(((com.tencent.mm.pluginsdk.model.app.c)localObject).field_offset), Boolean.valueOf(this.JSn) });
         break;
       }
     }
-    boolean bool = com.tencent.mm.pluginsdk.ui.tools.a.ai(((com.tencent.mm.pluginsdk.model.app.c)localObject).field_fileFullPath, this.fVf, this.oTx);
+    boolean bool = com.tencent.mm.pluginsdk.ui.tools.a.ak(((com.tencent.mm.pluginsdk.model.app.c)localObject).field_fileFullPath, this.fXl, this.oZZ);
     AppMethodBeat.o(34134);
     return bool;
     label914:
-    if (this.oTx != 9) {
-      this.oTx = 1;
+    if (this.oZZ != 9) {
+      this.oZZ = 1;
     }
-    if (this.JxA)
+    if (this.JSq)
     {
-      bool = com.tencent.mm.pluginsdk.ui.tools.a.c(this, ((com.tencent.mm.pluginsdk.model.app.c)localObject).field_fileFullPath, this.fVf, this.oTx);
+      bool = com.tencent.mm.pluginsdk.ui.tools.a.c(this, ((com.tencent.mm.pluginsdk.model.app.c)localObject).field_fileFullPath, this.fXl, this.oZZ);
       AppMethodBeat.o(34134);
       return bool;
     }
-    if (!com.tencent.mm.pluginsdk.ui.tools.a.lz(((com.tencent.mm.pluginsdk.model.app.c)localObject).field_fileFullPath, this.fVf))
+    if (!com.tencent.mm.pluginsdk.ui.tools.a.lG(((com.tencent.mm.pluginsdk.model.app.c)localObject).field_fileFullPath, this.fXl))
     {
-      bool = com.tencent.mm.pluginsdk.ui.tools.a.ai(((com.tencent.mm.pluginsdk.model.app.c)localObject).field_fileFullPath, this.fVf, this.oTx);
+      bool = com.tencent.mm.pluginsdk.ui.tools.a.ak(((com.tencent.mm.pluginsdk.model.app.c)localObject).field_fileFullPath, this.fXl, this.oZZ);
       AppMethodBeat.o(34134);
       return bool;
     }
@@ -432,44 +435,44 @@ public class AppAttachDownloadUI
     return true;
   }
   
-  private boolean fAn()
+  private boolean fEp()
   {
-    return this.JxB == 1;
+    return this.JSr == 1;
   }
   
-  private void fAo()
+  private void fEq()
   {
     AppMethodBeat.i(34141);
-    cv localcv = new cv();
-    com.tencent.mm.pluginsdk.model.g.e(localcv, this.dBd);
-    localcv.dnG.activity = this;
-    localcv.dnG.dnM = 39;
-    com.tencent.mm.sdk.b.a.IbL.l(localcv);
+    cw localcw = new cw();
+    com.tencent.mm.pluginsdk.model.g.e(localcw, this.dCi);
+    localcw.doL.activity = this;
+    localcw.doL.doR = 39;
+    com.tencent.mm.sdk.b.a.IvT.l(localcw);
     AppMethodBeat.o(34141);
   }
   
-  private void fAp()
+  private void fEr()
   {
     AppMethodBeat.i(34143);
-    acG(0);
-    this.Jxm.setVisibility(8);
-    if (fAq())
+    ado(0);
+    this.JSc.setVisibility(8);
+    if (fEs())
     {
-      ad.i("MicroMsg.AppAttachDownloadUI", "startToDownloadFile");
-      this.xqu = new com.tencent.mm.plugin.record.b.f(this.msgId, this.mediaId, this.Jxr);
-      ba.aiU().a(this.xqu, 0);
-      aa.R(this.dBd);
-      fB(7, 1);
+      ae.i("MicroMsg.AppAttachDownloadUI", "startToDownloadFile");
+      this.xGr = new com.tencent.mm.plugin.record.b.f(this.msgId, this.mediaId, this.JSh);
+      bc.ajj().a(this.xGr, 0);
+      ab.R(this.dCi);
+      fz(7, 1);
     }
     AppMethodBeat.o(34143);
   }
   
-  private boolean fAq()
+  private boolean fEs()
   {
     int i = -1;
     boolean bool2 = true;
     AppMethodBeat.i(34145);
-    Object localObject1 = fAr();
+    Object localObject1 = fEt();
     Object localObject2;
     boolean bool1;
     long l1;
@@ -479,8 +482,8 @@ public class AppAttachDownloadUI
     long l4;
     if (localObject1 == null)
     {
-      com.tencent.mm.pluginsdk.model.app.m.y(this.msgId, this.dDP);
-      localObject2 = fAr();
+      com.tencent.mm.pluginsdk.model.app.m.z(this.msgId, this.dEU);
+      localObject2 = fEt();
       localObject1 = localObject2;
       bool1 = bool2;
       if (localObject2 != null)
@@ -495,12 +498,12 @@ public class AppAttachDownloadUI
         if (((com.tencent.mm.pluginsdk.model.app.c)localObject2).field_signature != null) {
           break label322;
         }
-        ad.i("MicroMsg.AppAttachDownloadUI", "summerapp tryInitAttachInfo newInfo systemRowid [%d], totalLen[%d], field_fileFullPath[%s], type[%d], mediaId[%s], msgid[%d], upload[%b], signature len[%d]", new Object[] { Long.valueOf(l1), Long.valueOf(l2), localObject1, Long.valueOf(l3), str1, Long.valueOf(l4), Boolean.valueOf(bool1), Integer.valueOf(i) });
-        if (this.Jxt.hzS == 0)
+        ae.i("MicroMsg.AppAttachDownloadUI", "summerapp tryInitAttachInfo newInfo systemRowid [%d], totalLen[%d], field_fileFullPath[%s], type[%d], mediaId[%s], msgid[%d], upload[%b], signature len[%d]", new Object[] { Long.valueOf(l1), Long.valueOf(l2), localObject1, Long.valueOf(l3), str1, Long.valueOf(l4), Boolean.valueOf(bool1), Integer.valueOf(i) });
+        if (this.JSj.hCG == 0)
         {
           localObject1 = localObject2;
           bool1 = bool2;
-          if (this.Jxt.hzO <= 26214400) {}
+          if (this.JSj.hCC <= 26214400) {}
         }
         else
         {
@@ -512,7 +515,7 @@ public class AppAttachDownloadUI
           localObject1 = localObject2;
         }
       }
-      if ((this.Jxt == null) || ((this.Jxt.hzS == 0) && (this.Jxt.hzO <= 26214400))) {
+      if ((this.JSj == null) || ((this.JSj.hCG == 0) && (this.JSj.hCC <= 26214400))) {
         break label569;
       }
       bool1 = false;
@@ -521,12 +524,12 @@ public class AppAttachDownloadUI
     for (;;)
     {
       if (!bool1) {
-        ba.aiU().a(new com.tencent.mm.plugin.record.b.d((com.tencent.mm.pluginsdk.model.app.c)localObject1, this.gjI, this.nUg, this.fileName, this.fVf, this.dyU), 0);
+        bc.ajj().a(new com.tencent.mm.plugin.record.b.d((com.tencent.mm.pluginsdk.model.app.c)localObject1, this.gmb, this.nZM, this.fileName, this.fXl, this.dzZ), 0);
       }
       if (localObject1 != null)
       {
         this.filePath = ((com.tencent.mm.pluginsdk.model.app.c)localObject1).field_fileFullPath;
-        deI();
+        dhA();
       }
       AppMethodBeat.o(34145);
       return bool1;
@@ -536,11 +539,11 @@ public class AppAttachDownloadUI
       label334:
       bool1 = false;
       break label219;
-      localObject2 = new com.tencent.mm.vfs.e(((com.tencent.mm.pluginsdk.model.app.c)localObject1).field_fileFullPath);
-      if ((((com.tencent.mm.pluginsdk.model.app.c)localObject1).field_status == 199L) && (!((com.tencent.mm.vfs.e)localObject2).exists()))
+      localObject2 = new k(((com.tencent.mm.pluginsdk.model.app.c)localObject1).field_fileFullPath);
+      if ((((com.tencent.mm.pluginsdk.model.app.c)localObject1).field_status == 199L) && (!((k)localObject2).exists()))
       {
-        ad.i("MicroMsg.AppAttachDownloadUI", "summerapp tryInitAttachInfo info exist but file not!");
-        com.tencent.mm.pluginsdk.model.app.m.y(this.msgId, this.dDP);
+        ae.i("MicroMsg.AppAttachDownloadUI", "summerapp tryInitAttachInfo info exist but file not!");
+        com.tencent.mm.pluginsdk.model.app.m.z(this.msgId, this.dEU);
       }
       l1 = ((com.tencent.mm.pluginsdk.model.app.c)localObject1).systemRowid;
       l2 = ((com.tencent.mm.pluginsdk.model.app.c)localObject1).field_totalLen;
@@ -549,12 +552,12 @@ public class AppAttachDownloadUI
       String str2 = ((com.tencent.mm.pluginsdk.model.app.c)localObject1).field_mediaId;
       l4 = ((com.tencent.mm.pluginsdk.model.app.c)localObject1).field_msgInfoId;
       bool1 = ((com.tencent.mm.pluginsdk.model.app.c)localObject1).field_isUpload;
-      boolean bool3 = ((com.tencent.mm.vfs.e)localObject2).exists();
+      boolean bool3 = ((k)localObject2).exists();
       long l5 = ((com.tencent.mm.pluginsdk.model.app.c)localObject1).field_status;
       if (((com.tencent.mm.pluginsdk.model.app.c)localObject1).field_signature == null) {}
       for (;;)
       {
-        ad.i("MicroMsg.AppAttachDownloadUI", "summerapp tryInitAttachInfo info exist systemRowid [%d], totalLen[%d], field_fileFullPath[%s], type[%d], mediaId[%s], msgid[%d], upload[%b], file.exists[%b], status[%d], signature len[%d]", new Object[] { Long.valueOf(l1), Long.valueOf(l2), str1, Long.valueOf(l3), str2, Long.valueOf(l4), Boolean.valueOf(bool1), Boolean.valueOf(bool3), Long.valueOf(l5), Integer.valueOf(i) });
+        ae.i("MicroMsg.AppAttachDownloadUI", "summerapp tryInitAttachInfo info exist systemRowid [%d], totalLen[%d], field_fileFullPath[%s], type[%d], mediaId[%s], msgid[%d], upload[%b], file.exists[%b], status[%d], signature len[%d]", new Object[] { Long.valueOf(l1), Long.valueOf(l2), str1, Long.valueOf(l3), str2, Long.valueOf(l4), Boolean.valueOf(bool1), Boolean.valueOf(bool3), Long.valueOf(l5), Integer.valueOf(i) });
         bool1 = bool2;
         break;
         i = ((com.tencent.mm.pluginsdk.model.app.c)localObject1).field_signature.length();
@@ -562,33 +565,33 @@ public class AppAttachDownloadUI
     }
   }
   
-  private com.tencent.mm.pluginsdk.model.app.c fAr()
+  private com.tencent.mm.pluginsdk.model.app.c fEt()
   {
     AppMethodBeat.i(34147);
-    final com.tencent.mm.pluginsdk.model.app.c localc1 = ao.bIX().CB(this.msgId);
+    final com.tencent.mm.pluginsdk.model.app.c localc1 = ao.bJV().CZ(this.msgId);
     if (localc1 != null)
     {
-      ad.i("MicroMsg.AppAttachDownloadUI", "summerapp getAppAttachInfo by msgId [%d] stack[%s]", new Object[] { Long.valueOf(this.msgId), af.aQL() });
+      ae.i("MicroMsg.AppAttachDownloadUI", "summerapp getAppAttachInfo by msgId [%d] stack[%s]", new Object[] { Long.valueOf(this.msgId), af.aRk() });
       AppMethodBeat.o(34147);
       return localc1;
     }
-    localc1 = com.tencent.mm.pluginsdk.model.app.m.aLN(this.mediaId);
+    localc1 = com.tencent.mm.pluginsdk.model.app.m.aNj(this.mediaId);
     if (localc1 == null)
     {
-      ad.i("MicroMsg.AppAttachDownloadUI", "summerapp getAppAttachInfo by msgId and mediaId is null stack[%s]", new Object[] { af.aQL() });
+      ae.i("MicroMsg.AppAttachDownloadUI", "summerapp getAppAttachInfo by msgId and mediaId is null stack[%s]", new Object[] { af.aRk() });
       AppMethodBeat.o(34147);
       return localc1;
     }
-    if ((localc1.field_msgInfoId == this.msgId) || (com.tencent.mm.vfs.i.fv(localc1.field_fileFullPath)))
+    if ((localc1.field_msgInfoId == this.msgId) || (o.fB(localc1.field_fileFullPath)))
     {
       AppMethodBeat.o(34147);
       return localc1;
     }
-    com.tencent.mm.pluginsdk.model.app.m.y(this.msgId, this.dDP);
-    final com.tencent.mm.pluginsdk.model.app.c localc2 = ao.bIX().CB(this.msgId);
+    com.tencent.mm.pluginsdk.model.app.m.z(this.msgId, this.dEU);
+    final com.tencent.mm.pluginsdk.model.app.c localc2 = ao.bJV().CZ(this.msgId);
     if (localc2 == null)
     {
-      ad.w("MicroMsg.AppAttachDownloadUI", "summerapp getAppAttachInfo create new info from local but failed stack[%s]", new Object[] { af.aQL() });
+      ae.w("MicroMsg.AppAttachDownloadUI", "summerapp getAppAttachInfo create new info from local but failed stack[%s]", new Object[] { af.aRk() });
       AppMethodBeat.o(34147);
       return localc1;
     }
@@ -598,7 +601,7 @@ public class AppAttachDownloadUI
       {
         AppMethodBeat.i(34117);
         long l1 = System.currentTimeMillis();
-        long l2 = com.tencent.mm.vfs.i.mz(localc1.field_fileFullPath, localc2.field_fileFullPath);
+        long l2 = o.mF(localc1.field_fileFullPath, localc2.field_fileFullPath);
         if (l2 > 0L)
         {
           localc2.field_offset = l2;
@@ -606,9 +609,9 @@ public class AppAttachDownloadUI
             localc2.field_status = 199L;
           }
         }
-        for (boolean bool = ao.bIX().a(localc2, new String[0]);; bool = false)
+        for (boolean bool = ao.bJV().a(localc2, new String[0]);; bool = false)
         {
-          ad.i("MicroMsg.AppAttachDownloadUI", "summerapp copyAttachFromLocal size[%d], id[%d, %d], ret[%b], new status[%d], take[%d]ms", new Object[] { Long.valueOf(l2), Long.valueOf(localc1.field_msgInfoId), Long.valueOf(localc2.field_msgInfoId), Boolean.valueOf(bool), Long.valueOf(localc2.field_status), Long.valueOf(System.currentTimeMillis() - l1) });
+          ae.i("MicroMsg.AppAttachDownloadUI", "summerapp copyAttachFromLocal size[%d], id[%d, %d], ret[%b], new status[%d], take[%d]ms", new Object[] { Long.valueOf(l2), Long.valueOf(localc1.field_msgInfoId), Long.valueOf(localc2.field_msgInfoId), Boolean.valueOf(bool), Long.valueOf(localc2.field_status), Long.valueOf(System.currentTimeMillis() - l1) });
           AppMethodBeat.o(34117);
           return;
         }
@@ -618,7 +621,7 @@ public class AppAttachDownloadUI
     return localc1;
   }
   
-  private void fAs()
+  private void fEu()
   {
     AppMethodBeat.i(34150);
     switch (this.appType)
@@ -628,59 +631,59 @@ public class AppAttachDownloadUI
     case 4: 
     case 5: 
     default: 
-      this.rzQ.setVisibility(0);
-      acG(8);
-      this.Jxn.setVisibility(8);
+      this.rIb.setVisibility(0);
+      ado(8);
+      this.JSd.setVisibility(8);
     }
     for (;;)
     {
       Object localObject;
-      if (this.rAg.uDP != 1)
+      if (this.rIr.uPu != 1)
       {
-        this.rAg.uDP = 1;
-        localObject = fAr();
+        this.rIr.uPu = 1;
+        localObject = fEt();
         if (localObject != null) {
-          this.rAg.ane(af.nullAsNil(((com.tencent.mm.pluginsdk.model.app.c)localObject).field_fileFullPath));
+          this.rIr.aof(af.nullAsNil(((com.tencent.mm.pluginsdk.model.app.c)localObject).field_fileFullPath));
         }
-        ((com.tencent.mm.plugin.handoff.a.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.handoff.a.a.class)).f(this.rAg);
-        ((com.tencent.mm.plugin.handoff.a.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.handoff.a.a.class)).e(this.rAg);
+        ((com.tencent.mm.plugin.handoff.a.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.handoff.a.a.class)).g(this.rIr);
+        ((com.tencent.mm.plugin.handoff.a.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.handoff.a.a.class)).e(this.rIr);
       }
       AppMethodBeat.o(34150);
       return;
-      if (fAt()) {
-        if (bt.aRt(this.fVf))
+      if (fEv()) {
+        if (bu.aSQ(this.fXl))
         {
-          fAu();
+          fEw();
         }
         else
         {
           localObject = getMimeType();
-          ad.i("MicroMsg.AppAttachDownloadUI", "onDownLoadImpl");
-          fAw();
-          acG(8);
-          this.Jxn.setVisibility(8);
-          this.Jxm.setVisibility(8);
-          this.Jxp.setVisibility(0);
+          ae.i("MicroMsg.AppAttachDownloadUI", "onDownLoadImpl");
+          fEy();
+          ado(8);
+          this.JSd.setVisibility(8);
+          this.JSc.setVisibility(8);
+          this.JSf.setVisibility(0);
           if (this.fileName.equals("")) {
-            this.Jxp.setText(getString(2131761808));
+            this.JSf.setText(getString(2131761808));
           }
           for (;;)
           {
             if ((localObject != null) && (!((String)localObject).equals(""))) {
               break label318;
             }
-            this.rzQ.setVisibility(8);
-            this.jai.setText(getString(2131758100));
+            this.rIb.setVisibility(8);
+            this.jdb.setText(getString(2131758100));
             break;
-            this.Jxp.setText(this.fileName);
+            this.JSf.setText(this.fileName);
           }
           label318:
-          this.rzQ.setVisibility(0);
-          this.jai.setText(getString(2131758101));
+          this.rIb.setVisibility(0);
+          this.jdb.setText(getString(2131758101));
           continue;
-          if (fAt())
+          if (fEv())
           {
-            dCs();
+            dFJ();
             continue;
             localObject = new Intent();
             ((Intent)localObject).putExtra("App_MsgId", this.msgId);
@@ -692,86 +695,86 @@ public class AppAttachDownloadUI
     }
   }
   
-  private boolean fAt()
+  private boolean fEv()
   {
     AppMethodBeat.i(34151);
-    com.tencent.mm.pluginsdk.model.app.c localc = fAr();
+    com.tencent.mm.pluginsdk.model.app.c localc = fEt();
     if (localc == null)
     {
       AppMethodBeat.o(34151);
       return true;
     }
-    if (com.tencent.mm.vfs.i.fv(localc.field_fileFullPath))
+    if (o.fB(localc.field_fileFullPath))
     {
-      acG(8);
-      this.Jxn.setVisibility(8);
-      this.Jxm.setVisibility(8);
+      ado(8);
+      this.JSd.setVisibility(8);
+      this.JSc.setVisibility(8);
       AppMethodBeat.o(34151);
       return true;
     }
-    acG(8);
-    fAv();
+    ado(8);
+    fEx();
     AppMethodBeat.o(34151);
     return false;
   }
   
-  private void fAu()
+  private void fEw()
   {
     AppMethodBeat.i(34152);
-    Object localObject = fAr();
+    Object localObject = fEt();
     if (localObject == null)
     {
-      ad.e("MicroMsg.AppAttachDownloadUI", "info == null");
+      ae.e("MicroMsg.AppAttachDownloadUI", "info == null");
       AppMethodBeat.o(34152);
       return;
     }
     Intent localIntent = new Intent(this, ShowImageUI.class);
-    localIntent.putExtra("key_message_id", this.dBd.field_msgId);
+    localIntent.putExtra("key_message_id", this.dCi.field_msgId);
     localIntent.putExtra("key_image_path", ((com.tencent.mm.pluginsdk.model.app.c)localObject).field_fileFullPath);
     localIntent.putExtra("key_favorite", true);
     localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localIntent);
-    com.tencent.mm.hellhoundlib.a.a.a(this, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahp(), "com/tencent/mm/ui/chatting/AppAttachDownloadUI", "showFileImage", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mq(0));
+    com.tencent.mm.hellhoundlib.a.a.a(this, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahE(), "com/tencent/mm/ui/chatting/AppAttachDownloadUI", "showFileImage", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mt(0));
     com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/chatting/AppAttachDownloadUI", "showFileImage", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     finish();
     AppMethodBeat.o(34152);
   }
   
-  private void fAv()
+  private void fEx()
   {
     AppMethodBeat.i(34159);
-    this.JxC.setVisibility(0);
-    this.JxD.setVisibility(8);
-    fAw();
-    this.Jxm.fAx();
+    this.JSs.setVisibility(0);
+    this.JSt.setVisibility(8);
+    fEy();
+    this.JSc.fEz();
     AppMethodBeat.o(34159);
   }
   
-  private void fAw()
+  private void fEy()
   {
     AppMethodBeat.i(34160);
-    this.jai.setVisibility(8);
+    this.jdb.setVisibility(8);
     AppMethodBeat.o(34160);
   }
   
-  private void fB(int paramInt1, int paramInt2)
+  private void fz(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(34161);
     String str;
     if (6 == this.appType)
     {
-      com.tencent.mm.plugin.report.e.ygI.idkeyStat(1203L, paramInt2, 1L, false);
-      str = this.Jxt.hAd;
-      if (this.Jxt.hzS != 1) {
+      com.tencent.mm.plugin.report.e.ywz.idkeyStat(1203L, paramInt2, 1L, false);
+      str = this.JSj.hCR;
+      if (this.JSj.hCG != 1) {
         break label208;
       }
     }
     label208:
     for (paramInt2 = 7;; paramInt2 = 5)
     {
-      str = String.format("%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s", new Object[] { str, Integer.valueOf(paramInt2), Integer.valueOf(this.Jxt.hzO), Integer.valueOf(paramInt1), Long.valueOf((cf.aCL() - this.dBd.field_createTime) / 1000L), this.fVf, this.dBd.field_talker, Integer.valueOf(1), "", Long.valueOf(this.dBd.field_msgSvrId), Long.valueOf(this.dBd.field_createTime) });
-      ad.i("MicroMsg.AppAttachDownloadUI", "reportKVStat 14665 %s", new Object[] { str });
-      com.tencent.mm.plugin.report.service.g.yhR.kvStat(14665, str);
+      str = String.format("%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s", new Object[] { str, Integer.valueOf(paramInt2), Integer.valueOf(this.JSj.hCC), Integer.valueOf(paramInt1), Long.valueOf((ch.aDb() - this.dCi.field_createTime) / 1000L), this.fXl, this.dCi.field_talker, Integer.valueOf(1), "", Long.valueOf(this.dCi.field_msgSvrId), Long.valueOf(this.dCi.field_createTime) });
+      ae.i("MicroMsg.AppAttachDownloadUI", "reportKVStat 14665 %s", new Object[] { str });
+      com.tencent.mm.plugin.report.service.g.yxI.kvStat(14665, str);
       AppMethodBeat.o(34161);
       return;
     }
@@ -780,14 +783,14 @@ public class AppAttachDownloadUI
   private String getMimeType()
   {
     AppMethodBeat.i(34146);
-    k.b localb = k.b.yr(this.dDP);
+    k.b localb = k.b.zb(this.dEU);
     Object localObject2 = null;
     Object localObject1 = localObject2;
-    if (localb.hzP != null)
+    if (localb.hCD != null)
     {
       localObject1 = localObject2;
-      if (localb.hzP.length() > 0) {
-        localObject1 = MimeTypeMap.getSingleton().getMimeTypeFromExtension(localb.hzP);
+      if (localb.hCD.length() > 0) {
+        localObject1 = MimeTypeMap.getSingleton().getMimeTypeFromExtension(localb.hCD);
       }
     }
     if (localObject1 != null)
@@ -797,8 +800,8 @@ public class AppAttachDownloadUI
     }
     else
     {
-      ad.w("MicroMsg.AppAttachDownloadUI", "getMimeType fail, not a built-in mimetype, use \"*/{fileext}\" instead");
-      localObject2 = "*/" + localb.hzP;
+      ae.w("MicroMsg.AppAttachDownloadUI", "getMimeType fail, not a built-in mimetype, use \"*/{fileext}\" instead");
+      localObject2 = "*/" + localb.hCD;
     }
     AppMethodBeat.o(34146);
     return localObject2;
@@ -810,47 +813,47 @@ public class AppAttachDownloadUI
     setMMTitle("");
     setActionbarColor(getResources().getColor(2131101179));
     hideActionbarLine();
-    if (!fAm())
+    if (!fEo())
     {
       finish();
       AppMethodBeat.o(34131);
       return;
     }
-    com.tencent.mm.vfs.e locale = new com.tencent.mm.vfs.e(com.tencent.mm.loader.j.b.arX());
-    if (!locale.exists()) {
-      locale.mkdirs();
+    k localk = new k(com.tencent.mm.loader.j.b.asm());
+    if (!localk.exists()) {
+      localk.mkdirs();
     }
-    ao.bIX().add(this);
+    ao.bJV().add(this);
     initView();
-    deI();
+    dhA();
     AppMethodBeat.o(34131);
   }
   
   public final void a(String paramString, com.tencent.mm.sdk.e.m paramm)
   {
     AppMethodBeat.i(34149);
-    com.tencent.mm.pluginsdk.model.app.c localc = fAr();
+    com.tencent.mm.pluginsdk.model.app.c localc = fEt();
     int i;
     StringBuilder localStringBuilder;
     if (localc != null)
     {
       long l1 = localc.field_totalLen;
       long l2 = localc.field_offset;
-      this.Jxu = l1;
-      this.Jxo.setText(getString(2131758103, new Object[] { af.sy(l2), af.sy(l1) }));
+      this.JSk = l1;
+      this.JSe.setText(getString(2131758103, new Object[] { af.sL(l2), af.sL(l1) }));
       if (localc.field_totalLen != 0L) {
         break label425;
       }
       i = 0;
-      ad.v("MicroMsg.AppAttachDownloadUI", "summerapp attach progress:" + i + " offset:" + l2 + " totallen:" + l1 + " status " + localc.field_status);
-      this.Jxl.setProgress(i);
-      if ((localc.field_status == 199L) && (i >= 100) && (!this.Jxw))
+      ae.v("MicroMsg.AppAttachDownloadUI", "summerapp attach progress:" + i + " offset:" + l2 + " totallen:" + l1 + " status " + localc.field_status);
+      this.JSb.setProgress(i);
+      if ((localc.field_status == 199L) && (i >= 100) && (!this.JSm))
       {
-        this.Jxw = true;
-        if (this.JxE)
+        this.JSm = true;
+        if (this.JSu)
         {
-          this.JxE = false;
-          fAo();
+          this.JSu = false;
+          fEq();
         }
         if (localc != null)
         {
@@ -859,8 +862,8 @@ public class AppAttachDownloadUI
           paramString = paramm;
           if (paramm != null)
           {
-            String str = com.tencent.mm.loader.j.b.arP();
-            paramm = com.tencent.mm.vfs.i.k(paramm, true);
+            String str = com.tencent.mm.loader.j.b.ase();
+            paramm = o.k(paramm, true);
             int j = paramm.indexOf(str);
             paramString = paramm;
             if (j >= 0)
@@ -878,22 +881,22 @@ public class AppAttachDownloadUI
     label445:
     for (paramString = "/sdcard".concat(String.valueOf(paramString));; paramString = "/sdcard/".concat(String.valueOf(paramString)))
     {
-      Toast.makeText(this, paramString, this.Jxz).show();
-      com.tencent.mm.pluginsdk.ui.tools.a.a(this, localc.field_fileFullPath, this.fVf, this.fileName, 1);
-      aq.o(new Runnable()
+      Toast.makeText(this, paramString, this.JSp).show();
+      com.tencent.mm.pluginsdk.ui.tools.a.a(this, localc.field_fileFullPath, this.fXl, this.fileName, 1);
+      ar.o(new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(193815);
+          AppMethodBeat.i(187111);
           AppAttachDownloadUI.G(AppAttachDownloadUI.this);
-          AppMethodBeat.o(193815);
+          AppMethodBeat.o(187111);
         }
       }, 200L);
-      if ((this.Jxl.getVisibility() != 0) && (i < 100) && (!localc.field_isUpload) && (localc.field_status == 101L))
+      if ((this.JSb.getVisibility() != 0) && (i < 100) && (!localc.field_isUpload) && (localc.field_status == 101L))
       {
-        ad.i("MicroMsg.AppAttachDownloadUI", "summerapp still downloading updateProgress progress[%d]", new Object[] { Integer.valueOf(i) });
-        acG(0);
-        this.Jxm.setVisibility(8);
+        ae.i("MicroMsg.AppAttachDownloadUI", "summerapp still downloading updateProgress progress[%d]", new Object[] { Integer.valueOf(i) });
+        ado(0);
+        this.JSc.setVisibility(8);
       }
       AppMethodBeat.o(34149);
       return;
@@ -902,15 +905,15 @@ public class AppAttachDownloadUI
     }
   }
   
-  public final MMActivity cwQ()
+  public final MMActivity cyr()
   {
-    AppMethodBeat.i(221403);
+    AppMethodBeat.i(224191);
     MMActivity localMMActivity = (MMActivity)super.getContext();
-    AppMethodBeat.o(221403);
+    AppMethodBeat.o(224191);
     return localMMActivity;
   }
   
-  public final void dEj()
+  public final void dHA()
   {
     AppMethodBeat.i(34155);
     Toast.makeText(this, 2131758115, 0).show();
@@ -925,42 +928,42 @@ public class AppAttachDownloadUI
   public void initView()
   {
     AppMethodBeat.i(34139);
-    this.xdL = ((MMImageView)findViewById(2131299226));
-    this.Jxl = ((RoundProgressBtn)findViewById(2131304258));
-    this.Jxm = new a((Button)findViewById(2131299199), (TextView)findViewById(2131299200));
-    this.rzQ = ((Button)findViewById(2131299212));
-    this.Jxn = findViewById(2131299201);
-    this.jai = ((TextView)findViewById(2131299208));
-    this.Jxo = ((TextView)findViewById(2131299202));
-    this.Jxp = ((TextView)findViewById(2131299206));
-    this.Jxq = ((TextView)findViewById(2131299207));
-    this.JxC = ((LinearLayout)findViewById(2131299210));
-    this.JxD = ((LinearLayout)findViewById(2131301484));
-    this.Jxp.setOnTouchListener(this.rAi);
-    this.Jxp.setOnLongClickListener(this.rAj);
-    if (this.Jxp != null)
+    this.xtC = ((MMImageView)findViewById(2131299226));
+    this.JSb = ((RoundProgressBtn)findViewById(2131304258));
+    this.JSc = new a((Button)findViewById(2131299199), (TextView)findViewById(2131299200));
+    this.rIb = ((Button)findViewById(2131299212));
+    this.JSd = findViewById(2131299201);
+    this.jdb = ((TextView)findViewById(2131299208));
+    this.JSe = ((TextView)findViewById(2131299202));
+    this.JSf = ((TextView)findViewById(2131299206));
+    this.JSg = ((TextView)findViewById(2131299207));
+    this.JSs = ((LinearLayout)findViewById(2131299210));
+    this.JSt = ((LinearLayout)findViewById(2131301484));
+    this.JSf.setOnTouchListener(this.rIt);
+    this.JSf.setOnLongClickListener(this.rIu);
+    if (this.JSf != null)
     {
-      localObject = this.Jxp.getPaint();
+      localObject = this.JSf.getPaint();
       if (localObject != null) {
         ((Paint)localObject).setFakeBoldText(true);
       }
     }
-    this.Jxl.setOnClickListener(new View.OnClickListener()
+    this.JSb.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(34122);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
         localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/chatting/AppAttachDownloadUI$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/chatting/AppAttachDownloadUI$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
         AppAttachDownloadUI.a(AppAttachDownloadUI.this, 8);
         AppAttachDownloadUI.s(AppAttachDownloadUI.this).setVisibility(0);
         AppAttachDownloadUI.t(AppAttachDownloadUI.this).setVisibility(8);
-        ad.i("MicroMsg.AppAttachDownloadUI", "summerapp roundProgressBar downloadAppAttachScene[%s]", new Object[] { AppAttachDownloadUI.a(AppAttachDownloadUI.this) });
+        ae.i("MicroMsg.AppAttachDownloadUI", "summerapp roundProgressBar downloadAppAttachScene[%s]", new Object[] { AppAttachDownloadUI.a(AppAttachDownloadUI.this) });
         if (AppAttachDownloadUI.a(AppAttachDownloadUI.this) != null)
         {
           AppAttachDownloadUI.a(AppAttachDownloadUI.this).a(AppAttachDownloadUI.this);
-          com.tencent.mm.kernel.g.aiU().a(AppAttachDownloadUI.a(AppAttachDownloadUI.this));
+          com.tencent.mm.kernel.g.ajj().a(AppAttachDownloadUI.a(AppAttachDownloadUI.this));
         }
         for (;;)
         {
@@ -970,22 +973,22 @@ public class AppAttachDownloadUI
           paramAnonymousView = AppAttachDownloadUI.u(AppAttachDownloadUI.this);
           if ((paramAnonymousView != null) && (paramAnonymousView.field_status != 199L))
           {
-            ad.i("MicroMsg.AppAttachDownloadUI", "summerapp roundProgressBar onClick but scene is null and set status[%d] paused", new Object[] { Long.valueOf(paramAnonymousView.field_status) });
+            ae.i("MicroMsg.AppAttachDownloadUI", "summerapp roundProgressBar onClick but scene is null and set status[%d] paused", new Object[] { Long.valueOf(paramAnonymousView.field_status) });
             paramAnonymousView.field_status = 102L;
-            ao.bIX().a(paramAnonymousView, new String[0]);
+            ao.bJV().a(paramAnonymousView, new String[0]);
           }
         }
       }
     });
-    Object localObject = this.Jxm;
+    Object localObject = this.JSc;
     View.OnClickListener local11 = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(193819);
+        AppMethodBeat.i(187115);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
         localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/chatting/AppAttachDownloadUI$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/chatting/AppAttachDownloadUI$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
         AppAttachDownloadUI.a(AppAttachDownloadUI.this, 0);
         AppAttachDownloadUI.s(AppAttachDownloadUI.this).setVisibility(8);
         if (AppAttachDownloadUI.v(AppAttachDownloadUI.this))
@@ -994,29 +997,29 @@ public class AppAttachDownloadUI
           if (paramAnonymousView != null)
           {
             paramAnonymousView.field_status = 101L;
-            paramAnonymousView.field_lastModifyTime = bt.aQJ();
-            ao.bIX().a(paramAnonymousView, new String[0]);
+            paramAnonymousView.field_lastModifyTime = bu.aRi();
+            ao.bJV().a(paramAnonymousView, new String[0]);
           }
           AppAttachDownloadUI.a(AppAttachDownloadUI.this, new com.tencent.mm.plugin.record.b.f(AppAttachDownloadUI.w(AppAttachDownloadUI.this), AppAttachDownloadUI.x(AppAttachDownloadUI.this), AppAttachDownloadUI.y(AppAttachDownloadUI.this)));
-          ba.aiU().a(AppAttachDownloadUI.a(AppAttachDownloadUI.this), 0);
+          bc.ajj().a(AppAttachDownloadUI.a(AppAttachDownloadUI.this), 0);
         }
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/chatting/AppAttachDownloadUI$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(193819);
+        AppMethodBeat.o(187115);
       }
     };
-    ((a)localObject).sfz.setOnClickListener(local11);
-    this.rzQ.setOnClickListener(new View.OnClickListener()
+    ((a)localObject).sos.setOnClickListener(local11);
+    this.rIb.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(193814);
+        AppMethodBeat.i(187110);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
         localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/chatting/AppAttachDownloadUI$11", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/chatting/AppAttachDownloadUI$11", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
         AppAttachDownloadUI.E(AppAttachDownloadUI.this);
         AppAttachDownloadUI.F(AppAttachDownloadUI.this);
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/chatting/AppAttachDownloadUI$11", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(193814);
+        AppMethodBeat.o(187110);
       }
     });
     switch (this.appType)
@@ -1025,16 +1028,16 @@ public class AppAttachDownloadUI
     case 3: 
     case 5: 
     default: 
-      this.xdL.setImageResource(2131689577);
+      this.xtC.setImageResource(2131689577);
       setBackBtn(new MenuItem.OnMenuItemClickListener()
       {
         public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
         {
           AppMethodBeat.i(34114);
           if (AppAttachDownloadUI.a(AppAttachDownloadUI.this) != null) {
-            ba.aiU().a(AppAttachDownloadUI.a(AppAttachDownloadUI.this));
+            bc.ajj().a(AppAttachDownloadUI.a(AppAttachDownloadUI.this));
           }
-          if ((AppAttachDownloadUI.b(AppAttachDownloadUI.this) != null) && (AppAttachDownloadUI.b(AppAttachDownloadUI.this).sv(1)))
+          if ((AppAttachDownloadUI.b(AppAttachDownloadUI.this) != null) && (AppAttachDownloadUI.b(AppAttachDownloadUI.this).sy(1)))
           {
             AppMethodBeat.o(34114);
             return true;
@@ -1044,8 +1047,8 @@ public class AppAttachDownloadUI
           return true;
         }
       });
-      this.dBt = getIntent().getBooleanExtra("app_show_share", true);
-      if (this.dBt) {
+      this.dCy = getIntent().getBooleanExtra("app_show_share", true);
+      if (this.dCy) {
         addIconOptionMenu(0, 2131689493, new MenuItem.OnMenuItemClickListener()
         {
           public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -1057,60 +1060,60 @@ public class AppAttachDownloadUI
           }
         });
       }
-      this.Jxw = false;
-      if ((!fAn()) || (this.dBd.field_msgId != 0L)) {
+      this.JSm = false;
+      if ((!fEp()) || (this.dCi.field_msgId != 0L)) {
         break label556;
       }
-      this.Jxq.setVisibility(8);
-      this.Jxp.setVisibility(0);
+      this.JSg.setVisibility(8);
+      this.JSf.setVisibility(0);
       if (this.fileName.equals("")) {
-        this.Jxp.setText(getString(2131761808));
+        this.JSf.setText(getString(2131761808));
       }
       break;
     }
     for (;;)
     {
-      fAv();
+      fEx();
       AppMethodBeat.o(34139);
       return;
-      this.xdL.setImageResource(2131230944);
+      this.xtC.setImageResource(2131230944);
       break;
-      this.xdL.setImageResource(2131689581);
+      this.xtC.setImageResource(2131689581);
       break;
-      this.xdL.setImageResource(com.tencent.mm.pluginsdk.model.q.aLB(this.fVf));
+      this.xtC.setImageResource(com.tencent.mm.pluginsdk.model.q.aMX(this.fXl));
       break;
-      if (bt.aRt(this.fVf))
+      if (bu.aSQ(this.fXl))
       {
-        this.xdL.setImageResource(2131230944);
+        this.xtC.setImageResource(2131230944);
         break;
       }
-      this.xdL.setImageResource(2131689577);
+      this.xtC.setImageResource(2131689577);
       break;
-      this.Jxp.setText(this.fileName);
+      this.JSf.setText(this.fileName);
     }
     label556:
-    localObject = fAr();
+    localObject = fEt();
     int i;
-    if ((localObject == null) || (!new com.tencent.mm.vfs.e(((com.tencent.mm.pluginsdk.model.app.c)localObject).field_fileFullPath).exists()))
+    if ((localObject == null) || (!new k(((com.tencent.mm.pluginsdk.model.app.c)localObject).field_fileFullPath).exists()))
     {
       i = 0;
       if (i == 0) {
         break label707;
       }
-      ad.i("MicroMsg.AppAttachDownloadUI", "summerapp isCanOpenFile");
-      if (this.Jxu <= 0L) {
+      ae.i("MicroMsg.AppAttachDownloadUI", "summerapp isCanOpenFile");
+      if (this.JSk <= 0L) {
         break label695;
       }
-      this.Jxq.setVisibility(0);
-      this.Jxq.setText(getResources().getString(2131759078, new Object[] { af.sy(this.Jxu) }));
+      this.JSg.setVisibility(0);
+      this.JSg.setText(getResources().getString(2131759078, new Object[] { af.sL(this.JSk) }));
     }
     for (;;)
     {
-      this.Jxw = true;
-      fAs();
+      this.JSm = true;
+      fEu();
       AppMethodBeat.o(34139);
       return;
-      if ((((com.tencent.mm.pluginsdk.model.app.c)localObject).cWz()) || ((this.dBd.field_isSend == 1) && (((com.tencent.mm.pluginsdk.model.app.c)localObject).field_isUpload)))
+      if ((((com.tencent.mm.pluginsdk.model.app.c)localObject).cZe()) || ((this.dCi.field_isSend == 1) && (((com.tencent.mm.pluginsdk.model.app.c)localObject).field_isUpload)))
       {
         i = 1;
         break;
@@ -1118,25 +1121,25 @@ public class AppAttachDownloadUI
       i = 0;
       break;
       label695:
-      this.Jxq.setVisibility(8);
+      this.JSg.setVisibility(8);
     }
     label707:
-    if (this.Jxu > 0L)
+    if (this.JSk > 0L)
     {
-      this.Jxq.setVisibility(0);
-      this.Jxq.setText(getResources().getString(2131759078, new Object[] { af.sy(this.Jxu) }));
+      this.JSg.setVisibility(0);
+      this.JSg.setText(getResources().getString(2131759078, new Object[] { af.sL(this.JSk) }));
     }
-    while (this.Jxw)
+    while (this.JSm)
     {
       AppMethodBeat.o(34139);
       return;
-      this.Jxq.setVisibility(8);
+      this.JSg.setVisibility(8);
     }
-    this.Jxr = new com.tencent.mm.al.g()
+    this.JSh = new com.tencent.mm.ak.g()
     {
       public final void a(int paramAnonymousInt1, int paramAnonymousInt2, n paramAnonymousn)
       {
-        AppMethodBeat.i(193818);
+        AppMethodBeat.i(187114);
         if (paramAnonymousInt2 == 0) {}
         for (float f = 0.0F;; f = paramAnonymousInt1 * 100.0F / paramAnonymousInt2)
         {
@@ -1146,7 +1149,7 @@ public class AppAttachDownloadUI
             AppAttachDownloadUI.s(AppAttachDownloadUI.this).setVisibility(8);
           }
           AppAttachDownloadUI.r(AppAttachDownloadUI.this).setProgress((int)f);
-          AppMethodBeat.o(193818);
+          AppMethodBeat.o(187114);
           return;
         }
       }
@@ -1158,74 +1161,74 @@ public class AppAttachDownloadUI
     case 4: 
     case 5: 
     default: 
-      ad.i("MicroMsg.AppAttachDownloadUI", "summerapp progressCallBack[%s], isDownloadFinished[%b], isDownloadStarted[%b]", new Object[] { this.Jxr, Boolean.valueOf(this.Jxw), Boolean.valueOf(this.Jxx) });
-      if ((this.appType == 2) || ((!this.Jxw) && (!this.Jxx))) {
-        fAp();
+      ae.i("MicroMsg.AppAttachDownloadUI", "summerapp progressCallBack[%s], isDownloadFinished[%b], isDownloadStarted[%b]", new Object[] { this.JSh, Boolean.valueOf(this.JSm), Boolean.valueOf(this.JSn) });
+      if ((this.appType == 2) || ((!this.JSm) && (!this.JSn))) {
+        fEr();
       }
       AppMethodBeat.o(34139);
       return;
     case 0: 
     case 6: 
-      if (this.Jxx)
+      if (this.JSn)
       {
-        this.Jxm.setVisibility(0);
-        acG(8);
-        this.Jxn.setVisibility(8);
-        this.rzQ.setVisibility(8);
-        fAw();
-        this.Jxp.setVisibility(0);
+        this.JSc.setVisibility(0);
+        ado(8);
+        this.JSd.setVisibility(8);
+        this.rIb.setVisibility(8);
+        fEy();
+        this.JSf.setVisibility(0);
         if (!this.fileName.equals("")) {
           break label1056;
         }
-        this.Jxp.setText(getString(2131761808));
+        this.JSf.setText(getString(2131761808));
         localObject = getMimeType();
         if ((localObject != null) && (!((String)localObject).equals(""))) {
           break label1070;
         }
-        this.jai.setText(getString(2131758100));
+        this.jdb.setText(getString(2131758100));
       }
-      while (bt.aRt(this.fVf))
+      while (bu.aSQ(this.fXl))
       {
-        fAw();
+        fEy();
         break;
-        this.Jxm.setVisibility(8);
+        this.JSc.setVisibility(8);
         break label931;
-        this.Jxp.setText(this.fileName);
+        this.JSf.setText(this.fileName);
         break label994;
-        this.jai.setText(getString(2131758101));
+        this.jdb.setText(getString(2131758101));
       }
     case 7: 
       label931:
       label994:
-      if (this.Jxx) {
-        this.Jxm.setVisibility(0);
+      if (this.JSn) {
+        this.JSc.setVisibility(0);
       }
       for (;;)
       {
         label1056:
         label1070:
-        acG(8);
-        this.Jxn.setVisibility(8);
-        this.rzQ.setVisibility(8);
-        this.Jxp.setVisibility(8);
-        fAw();
-        this.jai.setText(getString(2131758101));
+        ado(8);
+        this.JSd.setVisibility(8);
+        this.rIb.setVisibility(8);
+        this.JSf.setVisibility(8);
+        fEy();
+        this.jdb.setText(getString(2131758101));
         break;
-        this.Jxm.setVisibility(8);
+        this.JSc.setVisibility(8);
       }
     }
-    acG(8);
-    this.Jxn.setVisibility(8);
-    if (this.Jxx) {
-      this.Jxm.setVisibility(0);
+    ado(8);
+    this.JSd.setVisibility(8);
+    if (this.JSn) {
+      this.JSc.setVisibility(0);
     }
     for (;;)
     {
-      this.rzQ.setVisibility(8);
-      this.Jxp.setVisibility(8);
-      fAw();
+      this.rIb.setVisibility(8);
+      this.JSf.setVisibility(8);
+      fEy();
       break;
-      this.Jxm.setVisibility(8);
+      this.JSc.setVisibility(8);
     }
   }
   
@@ -1233,7 +1236,7 @@ public class AppAttachDownloadUI
   {
     AppMethodBeat.i(34148);
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    com.tencent.mm.pluginsdk.ui.tools.a.a(this, paramInt1, paramInt2, paramIntent, this.Jxy, 2131758111, 2131758112, 1);
+    com.tencent.mm.pluginsdk.ui.tools.a.a(this, paramInt1, paramInt2, paramIntent, this.JSo, 2131758111, 2131758112, 1);
     AppMethodBeat.o(34148);
   }
   
@@ -1256,13 +1259,13 @@ public class AppAttachDownloadUI
   public void onDestroy()
   {
     AppMethodBeat.i(34136);
-    ao.bIX().remove(this);
+    ao.bJV().remove(this);
     super.onDestroy();
-    if (this.Fkw != null) {
-      this.Fkw.onDestroy();
+    if (this.FCU != null) {
+      this.FCU.onDestroy();
     }
-    if (this.rAg != null) {
-      ((com.tencent.mm.plugin.handoff.a.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.handoff.a.a.class)).d(this.rAg);
+    if (this.rIr != null) {
+      ((com.tencent.mm.plugin.handoff.a.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.handoff.a.a.class)).d(this.rIr);
     }
     AppMethodBeat.o(34136);
   }
@@ -1270,8 +1273,8 @@ public class AppAttachDownloadUI
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
     AppMethodBeat.i(34140);
-    ad.i("MicroMsg.AppAttachDownloadUI", "onKeyDown keyCode %d", new Object[] { Integer.valueOf(paramInt) });
-    if ((paramInt == 4) && (this.Fkw != null) && (this.Fkw.sv(2)))
+    ae.i("MicroMsg.AppAttachDownloadUI", "onKeyDown keyCode %d", new Object[] { Integer.valueOf(paramInt) });
+    if ((paramInt == 4) && (this.FCU != null) && (this.FCU.sy(2)))
     {
       AppMethodBeat.o(34140);
       return true;
@@ -1286,10 +1289,10 @@ public class AppAttachDownloadUI
     AppMethodBeat.i(34156);
     super.onNewIntent(paramIntent);
     setIntent(paramIntent);
-    if (this.Fkw != null)
+    if (this.FCU != null)
     {
-      this.Fkw.bgC();
-      this.Fkw.onDestroy();
+      this.FCU.bhk();
+      this.FCU.onDestroy();
     }
     init();
     AppMethodBeat.o(34156);
@@ -1298,21 +1301,21 @@ public class AppAttachDownloadUI
   public void onPause()
   {
     AppMethodBeat.i(34138);
-    ba.aiU().b(221, this);
-    ba.aiU().b(728, this);
+    bc.ajj().b(221, this);
+    bc.ajj().b(728, this);
     super.onPause();
-    if (this.Fkw != null) {
-      this.Fkw.bgC();
+    if (this.FCU != null) {
+      this.FCU.bhk();
     }
-    on localon = new on();
-    localon.dCu.dCv = false;
-    on.a locala = localon.dCu;
-    if (this.dBd == null) {}
-    for (String str = "";; str = this.dBd.field_talker)
+    oo localoo = new oo();
+    localoo.dDz.dDA = false;
+    oo.a locala = localoo.dDz;
+    if (this.dCi == null) {}
+    for (String str = "";; str = this.dCi.field_talker)
     {
       locala.talker = str;
-      com.tencent.mm.sdk.b.a.IbL.a(localon, getMainLooper());
-      ad.d("MicroMsg.AppAttachDownloadUI", "AppAttachDownloadUI cancel pause auto download logic");
+      com.tencent.mm.sdk.b.a.IvT.a(localoo, getMainLooper());
+      ae.d("MicroMsg.AppAttachDownloadUI", "AppAttachDownloadUI cancel pause auto download logic");
       AppMethodBeat.o(34138);
       return;
     }
@@ -1322,16 +1325,16 @@ public class AppAttachDownloadUI
   {
     AppMethodBeat.i(34137);
     super.onResume();
-    ba.aiU().a(221, this);
-    ba.aiU().a(728, this);
-    on localon = new on();
-    localon.dCu.dCv = true;
-    localon.dCu.talker = this.dBd.field_talker;
-    com.tencent.mm.sdk.b.a.IbL.a(localon, getMainLooper());
-    ad.d("MicroMsg.AppAttachDownloadUI", "AppAttachDownloadUI req pause auto download logic");
-    this.rzQ.setEnabled(true);
-    if (this.Fkw != null) {
-      this.Fkw.bgB();
+    bc.ajj().a(221, this);
+    bc.ajj().a(728, this);
+    oo localoo = new oo();
+    localoo.dDz.dDA = true;
+    localoo.dDz.talker = this.dCi.field_talker;
+    com.tencent.mm.sdk.b.a.IvT.a(localoo, getMainLooper());
+    ae.d("MicroMsg.AppAttachDownloadUI", "AppAttachDownloadUI req pause auto download logic");
+    this.rIb.setEnabled(true);
+    if (this.FCU != null) {
+      this.FCU.bhj();
     }
     AppMethodBeat.o(34137);
   }
@@ -1339,7 +1342,7 @@ public class AppAttachDownloadUI
   public void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     AppMethodBeat.i(34154);
-    ad.i("MicroMsg.AppAttachDownloadUI", "summerapp onSceneEnd type[%d], [%d, %d, %s]", new Object[] { Integer.valueOf(paramn.getType()), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    ae.i("MicroMsg.AppAttachDownloadUI", "summerapp onSceneEnd type[%d], [%d, %d, %s]", new Object[] { Integer.valueOf(paramn.getType()), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
     if ((paramn.getType() != 221) && (paramn.getType() != 728))
     {
       AppMethodBeat.o(34154);
@@ -1347,66 +1350,66 @@ public class AppAttachDownloadUI
     }
     if ((paramn.getType() == 728) && (paramInt1 == 0) && (paramInt2 == 0))
     {
-      paramString = fAr();
+      paramString = fEt();
       if (paramString == null)
       {
-        ad.i("MicroMsg.AppAttachDownloadUI", "summerapp onSceneEnd getAppAttachInfo is null");
+        ae.i("MicroMsg.AppAttachDownloadUI", "summerapp onSceneEnd getAppAttachInfo is null");
         if (paramString != null)
         {
           paramString.field_status = 101L;
-          paramString.field_lastModifyTime = bt.aQJ();
-          ao.bIX().a(paramString, new String[0]);
+          paramString.field_lastModifyTime = bu.aRi();
+          ao.bJV().a(paramString, new String[0]);
         }
-        this.xqu = new com.tencent.mm.plugin.record.b.f(this.msgId, this.mediaId, this.Jxr);
-        ba.aiU().a(this.xqu, 0);
+        this.xGr = new com.tencent.mm.plugin.record.b.f(this.msgId, this.mediaId, this.JSh);
+        bc.ajj().a(this.xGr, 0);
         AppMethodBeat.o(34154);
         return;
       }
       if (paramString.field_signature == null) {}
       for (paramInt1 = -1;; paramInt1 = paramString.field_signature.length())
       {
-        ad.i("MicroMsg.AppAttachDownloadUI", "summerapp onSceneEnd CheckBigFileDownload ok signature len[%d] start NetSceneDownloadAppAttach", new Object[] { Integer.valueOf(paramInt1) });
+        ae.i("MicroMsg.AppAttachDownloadUI", "summerapp onSceneEnd CheckBigFileDownload ok signature len[%d] start NetSceneDownloadAppAttach", new Object[] { Integer.valueOf(paramInt1) });
         break;
       }
     }
-    if ((this.xqu == null) && ((paramn instanceof com.tencent.mm.plugin.record.b.f)))
+    if ((this.xGr == null) && ((paramn instanceof com.tencent.mm.plugin.record.b.f)))
     {
       paramString = (com.tencent.mm.plugin.record.b.f)paramn;
-      com.tencent.mm.pluginsdk.model.app.c localc = fAr();
+      com.tencent.mm.pluginsdk.model.app.c localc = fEt();
       if ((localc != null) && (!af.isNullOrNil(localc.field_mediaSvrId)) && (localc.field_mediaSvrId.equals(paramString.getMediaId())))
       {
-        this.xqu = paramString;
-        ad.i("MicroMsg.AppAttachDownloadUI", "summerapp onSceneEnd reset downloadAppAttachScene[%s] by mediaSvrId[%s]", new Object[] { this.xqu, localc.field_mediaSvrId });
+        this.xGr = paramString;
+        ae.i("MicroMsg.AppAttachDownloadUI", "summerapp onSceneEnd reset downloadAppAttachScene[%s] by mediaSvrId[%s]", new Object[] { this.xGr, localc.field_mediaSvrId });
       }
     }
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      if (this.Jxt.type == 6)
+      if (this.JSj.type == 6)
       {
-        fB(0, 2);
-        paramString = fAr();
+        fz(0, 2);
+        paramString = fEt();
         if (paramString != null) {
-          com.tencent.mm.plugin.report.e.ygI.idkeyStat(1203L, 5L, paramString.field_totalLen, false);
+          com.tencent.mm.plugin.report.e.ywz.idkeyStat(1203L, 5L, paramString.field_totalLen, false);
         }
       }
       AppMethodBeat.o(34154);
       return;
     }
-    if ((paramInt2 != 0) && (com.tencent.mm.sdk.a.b.fjN())) {
+    if ((paramInt2 != 0) && (com.tencent.mm.sdk.a.b.fnF())) {
       Toast.makeText(this, "errCode[" + paramInt2 + "]", 0).show();
     }
     if (paramInt2 == -5103059)
     {
-      fAv();
-      acG(8);
-      fB(1, 3);
+      fEx();
+      ado(8);
+      fz(1, 3);
       AppMethodBeat.o(34154);
       return;
     }
-    acG(8);
-    this.Jxm.setVisibility(0);
-    this.Jxn.setVisibility(8);
-    ad.e("MicroMsg.AppAttachDownloadUI", "summerapp onSceneEnd, download fail, type = " + paramn.getType() + " errType = " + paramInt1 + ", errCode = " + paramInt2);
+    ado(8);
+    this.JSc.setVisibility(0);
+    this.JSd.setVisibility(8);
+    ae.e("MicroMsg.AppAttachDownloadUI", "summerapp onSceneEnd, download fail, type = " + paramn.getType() + " errType = " + paramInt1 + ", errCode = " + paramInt2);
     AppMethodBeat.o(34154);
   }
   
@@ -1418,31 +1421,31 @@ public class AppAttachDownloadUI
   
   final class a
   {
-    Button sfz;
+    Button sos;
     private TextView vk;
-    private boolean xsq;
+    private boolean xIn;
     
     public a(Button paramButton, TextView paramTextView)
     {
       AppMethodBeat.i(34126);
-      this.sfz = paramButton;
+      this.sos = paramButton;
       this.vk = paramTextView;
       if (paramTextView != null)
       {
-        int i = com.tencent.mm.n.g.acA().getInt("MsgFileExpiredInterval", 432000);
+        int i = com.tencent.mm.n.g.acL().getInt("MsgFileExpiredInterval", 432000);
         long l = AppAttachDownloadUI.H(AppAttachDownloadUI.this).field_createTime / 1000L;
-        Math.floor((i - cf.rM(l)) * 1.0D / 86400.0D);
+        Math.floor((i - ch.rZ(l)) * 1.0D / 86400.0D);
         paramTextView.setText("");
       }
       AppMethodBeat.o(34126);
     }
     
-    public final void fAx()
+    public final void fEz()
     {
       AppMethodBeat.i(34128);
-      ad.i("MicroMsg.AppAttachDownloadUI", "showErrorTip overtime %s", new Object[] { Long.valueOf(AppAttachDownloadUI.H(AppAttachDownloadUI.this).field_msgId) });
-      if (this.sfz != null) {
-        this.sfz.setVisibility(4);
+      ae.i("MicroMsg.AppAttachDownloadUI", "showErrorTip overtime %s", new Object[] { Long.valueOf(AppAttachDownloadUI.H(AppAttachDownloadUI.this).field_msgId) });
+      if (this.sos != null) {
+        this.sos.setVisibility(4);
       }
       if (this.vk != null)
       {
@@ -1451,9 +1454,9 @@ public class AppAttachDownloadUI
         this.vk.setTextColor(AppAttachDownloadUI.this.getResources().getColor(2131099805));
         AppAttachDownloadUI.I(AppAttachDownloadUI.this).setVisibility(8);
         AppAttachDownloadUI.t(AppAttachDownloadUI.this).setVisibility(8);
-        if (!this.xsq)
+        if (!this.xIn)
         {
-          this.xsq = true;
+          this.xIn = true;
           AppAttachDownloadUI.J(AppAttachDownloadUI.this);
         }
       }
@@ -1463,8 +1466,8 @@ public class AppAttachDownloadUI
     public final void setVisibility(int paramInt)
     {
       AppMethodBeat.i(34127);
-      if (this.sfz != null) {
-        this.sfz.setVisibility(paramInt);
+      if (this.sos != null) {
+        this.sos.setVisibility(paramInt);
       }
       if (this.vk != null) {
         this.vk.setVisibility(paramInt);

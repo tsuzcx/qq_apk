@@ -8,17 +8,17 @@ public abstract class el
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eDc = "status".hashCode();
-  private static final int eEd;
-  private static final int eEf = "createTime".hashCode();
-  private static final int fkO;
-  private static final int fkS;
-  private static final int fkV = "memberUuid".hashCode();
-  private static final int fkW;
+  private static final int eEL = "status".hashCode();
+  private static final int eFM;
+  private static final int eFO = "createTime".hashCode();
+  private static final int fmN;
+  private static final int fmR;
+  private static final int fmV = "memberUuid".hashCode();
+  private static final int fmW;
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eCZ = true;
-  private boolean eDG = true;
-  private boolean eDI = true;
+  private boolean eEI = true;
+  private boolean eFp = true;
+  private boolean eFr = true;
   public long field_createTime;
   public String field_inviteUserName;
   public long field_memberId;
@@ -26,17 +26,17 @@ public abstract class el
   public int field_status;
   public String field_userName;
   public String field_wxGroupId;
-  private boolean fkJ = true;
-  private boolean fkN = true;
-  private boolean fkT = true;
-  private boolean fkU = true;
+  private boolean fmH = true;
+  private boolean fmL = true;
+  private boolean fmT = true;
+  private boolean fmU = true;
   
   static
   {
-    fkO = "wxGroupId".hashCode();
-    eEd = "userName".hashCode();
-    fkS = "inviteUserName".hashCode();
-    fkW = "memberId".hashCode();
+    fmN = "wxGroupId".hashCode();
+    eFM = "userName".hashCode();
+    fmR = "inviteUserName".hashCode();
+    fmW = "memberId".hashCode();
   }
   
   public void convertFrom(Cursor paramCursor)
@@ -52,7 +52,7 @@ public abstract class el
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (fkV != k) {
+      if (fmV != k) {
         break label60;
       }
       this.field_memberUuid = paramCursor.getLong(i);
@@ -63,17 +63,17 @@ public abstract class el
       break label20;
       break;
       label60:
-      if (fkO == k) {
+      if (fmN == k) {
         this.field_wxGroupId = paramCursor.getString(i);
-      } else if (eEd == k) {
+      } else if (eFM == k) {
         this.field_userName = paramCursor.getString(i);
-      } else if (fkS == k) {
+      } else if (fmR == k) {
         this.field_inviteUserName = paramCursor.getString(i);
-      } else if (fkW == k) {
+      } else if (fmW == k) {
         this.field_memberId = paramCursor.getLong(i);
-      } else if (eDc == k) {
+      } else if (eEL == k) {
         this.field_status = paramCursor.getInt(i);
-      } else if (eEf == k) {
+      } else if (eFO == k) {
         this.field_createTime = paramCursor.getLong(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
@@ -84,25 +84,25 @@ public abstract class el
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.fkT) {
+    if (this.fmT) {
       localContentValues.put("memberUuid", Long.valueOf(this.field_memberUuid));
     }
-    if (this.fkJ) {
+    if (this.fmH) {
       localContentValues.put("wxGroupId", this.field_wxGroupId);
     }
-    if (this.eDG) {
+    if (this.eFp) {
       localContentValues.put("userName", this.field_userName);
     }
-    if (this.fkN) {
+    if (this.fmL) {
       localContentValues.put("inviteUserName", this.field_inviteUserName);
     }
-    if (this.fkU) {
+    if (this.fmU) {
       localContentValues.put("memberId", Long.valueOf(this.field_memberId));
     }
-    if (this.eCZ) {
+    if (this.eEI) {
       localContentValues.put("status", Integer.valueOf(this.field_status));
     }
-    if (this.eDI) {
+    if (this.eFr) {
       localContentValues.put("createTime", Long.valueOf(this.field_createTime));
     }
     if (this.systemRowid > 0L) {

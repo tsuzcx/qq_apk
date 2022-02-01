@@ -3,22 +3,22 @@ package com.tencent.mm.plugin.appbrand.jsapi;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandOnCopyUrlEvent;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandJsApiEvent;", "()V", "Companion", "luggage-wechat-full-sdk_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandOnCopyUrlEvent;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandJsApiEvent;", "()V", "Companion", "luggage-wechat-full-sdk_release"})
 public final class r
   extends p
 {
   public static final int CTRL_INDEX = 754;
   public static final String NAME = "onCopyUrl";
-  public static final a kqU;
+  public static final a kuj;
   
   static
   {
     AppMethodBeat.i(169553);
-    kqU = new a((byte)0);
+    kuj = new a((byte)0);
     AppMethodBeat.o(169553);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandOnCopyUrlEvent$Companion;", "", "()V", "CTRL_INDEX", "", "NAME", "", "WEBVIEW_ID", "dispatch", "", "webviewId", "service", "Lcom/tencent/luggage/sdk/jsapi/component/service/AppBrandServiceLU;", "luggage-wechat-full-sdk_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandOnCopyUrlEvent$Companion;", "", "()V", "CTRL_INDEX", "", "NAME", "", "WEBVIEW_ID", "dispatch", "", "webviewId", "service", "Lcom/tencent/luggage/sdk/jsapi/component/service/AppBrandServiceLU;", "luggage-wechat-full-sdk_release"})
   public static final class a {}
 }
 

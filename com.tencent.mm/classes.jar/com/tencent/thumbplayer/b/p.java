@@ -7,9 +7,9 @@ import java.util.ArrayList;
 
 public final class p
 {
-  public String LZm;
-  public ArrayList<b> LZn;
-  private a LZo;
+  public String Mwh;
+  public ArrayList<b> Mwi;
+  private a Mwj;
   public long bbs;
   public long bbt;
   public int videoCodecId;
@@ -19,52 +19,52 @@ public final class p
     this.bbs = parama.bbs;
     this.bbt = parama.bbt;
     this.videoCodecId = parama.videoCodecId;
-    this.LZm = parama.LZm;
-    this.LZn = parama.LZn;
-    this.LZo = parama;
+    this.Mwh = parama.Mwh;
+    this.Mwi = parama.Mwi;
+    this.Mwj = parama;
   }
   
   public static final class a
   {
-    String LZm;
-    ArrayList<b> LZn;
+    String Mwh;
+    ArrayList<b> Mwi;
     long bbs;
     long bbt;
     int videoCodecId;
     
     public final a a(b paramb)
     {
-      AppMethodBeat.i(191859);
-      if (a.isEmpty(this.LZn)) {
-        this.LZn = new ArrayList();
+      AppMethodBeat.i(194537);
+      if (a.isEmpty(this.Mwi)) {
+        this.Mwi = new ArrayList();
       }
       for (;;)
       {
-        this.LZn.add(paramb);
-        AppMethodBeat.o(191859);
+        this.Mwi.add(paramb);
+        AppMethodBeat.o(194537);
         return this;
-        this.LZn.clear();
+        this.Mwi.clear();
       }
     }
     
-    public final a aZJ(String paramString)
+    public final a bbm(String paramString)
     {
-      this.LZm = paramString;
+      this.Mwh = paramString;
       return this;
     }
     
-    public final p fWy()
+    public final p gaX()
     {
-      AppMethodBeat.i(191860);
+      AppMethodBeat.i(194538);
       p localp = new p(this, (byte)0);
-      AppMethodBeat.o(191860);
+      AppMethodBeat.o(194538);
       return localp;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.thumbplayer.b.p
  * JD-Core Version:    0.7.0.1
  */

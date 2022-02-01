@@ -6,16 +6,16 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.widget.TextView.BufferType;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bc.b;
-import com.tencent.mm.bc.t;
+import com.tencent.mm.bb.b;
+import com.tencent.mm.bb.t;
 import com.tencent.mm.g.c.ei;
-import com.tencent.mm.model.ba;
+import com.tencent.mm.model.bc;
 import com.tencent.mm.model.c;
 import com.tencent.mm.plugin.report.service.g;
 import com.tencent.mm.pluginsdk.ui.span.j.a;
 import com.tencent.mm.pluginsdk.ui.span.k;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.bu;
+import com.tencent.mm.storage.aj;
+import com.tencent.mm.storage.bv;
 import com.tencent.mm.ui.chatting.BaseChattingUIFragment;
 import com.tencent.neattextview.textview.view.NeatTextView;
 import java.util.regex.Matcher;
@@ -24,56 +24,56 @@ import java.util.regex.Pattern;
 final class av
   implements au.a
 {
-  public final void b(c.a parama, int paramInt, com.tencent.mm.ui.chatting.e.a parama1, bu parambu)
+  public final void b(c.a parama, int paramInt, com.tencent.mm.ui.chatting.e.a parama1, bv parambv)
   {
     AppMethodBeat.i(37379);
     parama = (au.b)parama;
-    parama.KfL.ar(parambu.field_content);
-    parama.KfL.setTag(new bk(parambu, parama1.fFv(), paramInt, null, '\000'));
+    parama.KCe.aq(parambv.field_content);
+    parama.KCe.setTag(new bk(parambv, parama1.fJC(), paramInt, null, '\000'));
     Object localObject = new Bundle();
     ((Bundle)localObject).putString("chatroom_name", parama1.getTalkerUserName());
-    ((Bundle)localObject).putLong("msg_id", parambu.field_msgId);
-    if ((parambu.field_flag & 0x8) != 0)
+    ((Bundle)localObject).putLong("msg_id", parambv.field_msgId);
+    if ((parambv.field_flag & 0x8) != 0)
     {
-      parama.KfL.a(k.a(parama1.JOR.getContext(), parambu.field_content, (int)parama.KfL.getTextSize(), false, localObject), TextView.BufferType.SPANNABLE);
-      parama.KfL.setClickable(true);
-      if (parambu.field_content.contains("weixin://wxpay/transfer/remindrcvmsg"))
+      parama.KCe.a(k.a(parama1.Kkd.getContext(), parambv.field_content, (int)parama.KCe.getTextSize(), false, localObject), TextView.BufferType.SPANNABLE);
+      parama.KCe.setClickable(true);
+      if (parambv.field_content.contains("weixin://wxpay/transfer/remindrcvmsg"))
       {
-        parambu = parambu.field_content;
-        parambu = j.a.Fhm.matcher(parambu);
-        if (parambu.find())
+        parambv = parambv.field_content;
+        parambv = j.a.FzK.matcher(parambv);
+        if (parambv.find())
         {
-          localObject = Uri.parse(parambu.group(1));
-          parambu = ((Uri)localObject).getQueryParameter("transferid");
+          localObject = Uri.parse(parambv.group(1));
+          parambv = ((Uri)localObject).getQueryParameter("transferid");
           localObject = ((Uri)localObject).getQueryParameter("transfer_msg_type");
-          g.yhR.f(20467, new Object[] { "transfer_to_change", "read message", "", "", "", "", Integer.valueOf(4), parambu, localObject });
+          g.yxI.f(20467, new Object[] { "transfer_to_change", "read message", "", "", "", "", Integer.valueOf(4), parambv, localObject });
         }
       }
-      parambu = t.aKa().Gb(parama1.getTalkerUserName());
-      ba.aBQ();
-      paramInt = ((Integer)c.ajl().get(12311, Integer.valueOf(-2))).intValue();
-      if (((parambu == null) || (parambu.iiM == -2)) && ((parambu != null) || (paramInt == -2))) {
+      parambv = t.aKt().GD(parama1.getTalkerUserName());
+      bc.aCg();
+      paramInt = ((Integer)c.ajA().get(12311, Integer.valueOf(-2))).intValue();
+      if (((parambv == null) || (parambv.ilF == -2)) && ((parambv != null) || (paramInt == -2))) {
         break label422;
       }
-      parama.KfL.setTextColor(parama1.JOR.getContext().getResources().getColor(2131100151));
-      parama.KfL.setBackground(parama1.JOR.getContext().getResources().getDrawable(2131231583));
+      parama.KCe.setTextColor(parama1.Kkd.getContext().getResources().getColor(2131100151));
+      parama.KCe.setBackground(parama1.Kkd.getContext().getResources().getDrawable(2131231583));
     }
     for (;;)
     {
-      parama.KfL.invalidate();
+      parama.KCe.invalidate();
       AppMethodBeat.o(37379);
       return;
-      parama.KfL.a(k.a(parama1.JOR.getContext(), parambu.field_content, (int)parama.KfL.getTextSize(), true, localObject), TextView.BufferType.SPANNABLE);
+      parama.KCe.a(k.a(parama1.Kkd.getContext(), parambv.field_content, (int)parama.KCe.getTextSize(), true, localObject), TextView.BufferType.SPANNABLE);
       break;
       label422:
-      parama.KfL.setTextColor(parama1.JOR.getContext().getResources().getColor(2131099735));
-      parama.KfL.setBackground(parama1.JOR.getContext().getResources().getDrawable(2131231582));
+      parama.KCe.setTextColor(parama1.Kkd.getContext().getResources().getColor(2131099735));
+      parama.KCe.setBackground(parama1.Kkd.getContext().getResources().getDrawable(2131231582));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.viewitems.av
  * JD-Core Version:    0.7.0.1
  */

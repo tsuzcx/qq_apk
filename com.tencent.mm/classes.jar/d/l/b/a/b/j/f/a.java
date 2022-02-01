@@ -16,41 +16,41 @@ public abstract class a
   {
     p.h(paramf, "name");
     p.h(parama, "location");
-    return gth().a(paramf, parama);
+    return gxJ().a(paramf, parama);
   }
   
   public Collection<l> a(d paramd, b<? super f, Boolean> paramb)
   {
     p.h(paramd, "kindFilter");
     p.h(paramb, "nameFilter");
-    return gth().a(paramd, paramb);
+    return gxJ().a(paramd, paramb);
   }
   
   public Collection<am> b(f paramf, d.l.b.a.b.c.a.a parama)
   {
     p.h(paramf, "name");
     p.h(parama, "location");
-    return gth().b(paramf, parama);
+    return gxJ().b(paramf, parama);
   }
   
   public final d.l.b.a.b.b.h c(f paramf, d.l.b.a.b.c.a.a parama)
   {
     p.h(paramf, "name");
     p.h(parama, "location");
-    return gth().c(paramf, parama);
+    return gxJ().c(paramf, parama);
   }
   
-  public final Set<f> gjW()
+  public final Set<f> goy()
   {
-    return gth().gjW();
+    return gxJ().goy();
   }
   
-  public final Set<f> gjX()
+  public final Set<f> goz()
   {
-    return gth().gjX();
+    return gxJ().goz();
   }
   
-  protected abstract h gth();
+  protected abstract h gxJ();
 }
 
 

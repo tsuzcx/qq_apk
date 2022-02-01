@@ -7,17 +7,17 @@ import java.util.Iterator;
 
 public final class a
 {
-  public static final String bcY(String paramString)
+  public static final String beC(String paramString)
   {
     AppMethodBeat.i(61336);
     p.h(paramString, "$this$decapitalizeSmartForCompiler");
     if (((CharSequence)paramString).length() == 0) {}
-    for (int i = 1; (i != 0) || (!hn(paramString, 0)); i = 0)
+    for (int i = 1; (i != 0) || (!hw(paramString, 0)); i = 0)
     {
       AppMethodBeat.o(61336);
       return paramString;
     }
-    if ((paramString.length() == 1) || (!hn(paramString, 1)))
+    if ((paramString.length() == 1) || (!hw(paramString, 1)))
     {
       p.h(paramString, "$this$decapitalizeAsciiOnly");
       if (((CharSequence)paramString).length() == 0)
@@ -46,12 +46,12 @@ public final class a
       AppMethodBeat.o(61336);
       return paramString;
     }
-    Object localObject2 = ((Iterable)n.aG((CharSequence)paramString)).iterator();
+    Object localObject2 = ((Iterable)n.aF((CharSequence)paramString)).iterator();
     Object localObject1;
     if (((Iterator)localObject2).hasNext())
     {
       localObject1 = ((Iterator)localObject2).next();
-      if (!hn(paramString, ((Number)localObject1).intValue()))
+      if (!hw(paramString, ((Number)localObject1).intValue()))
       {
         i = 1;
         label216:
@@ -70,7 +70,7 @@ public final class a
       localObject1 = new StringBuilder();
       localObject2 = paramString.substring(0, i);
       p.g(localObject2, "(this as java.lang.Strin…ing(startIndex, endIndex)");
-      localObject1 = ((StringBuilder)localObject1).append(bcZ((String)localObject2));
+      localObject1 = ((StringBuilder)localObject1).append(beD((String)localObject2));
       paramString = paramString.substring(i);
       p.g(paramString, "(this as java.lang.String).substring(startIndex)");
       paramString = paramString;
@@ -83,20 +83,20 @@ public final class a
       localObject1 = null;
     }
     label307:
-    paramString = bcZ(paramString);
+    paramString = beD(paramString);
     AppMethodBeat.o(61336);
     return paramString;
   }
   
-  private static final String bcZ(String paramString)
+  private static final String beD(String paramString)
   {
     AppMethodBeat.i(61338);
-    paramString = bdb(paramString);
+    paramString = beF(paramString);
     AppMethodBeat.o(61338);
     return paramString;
   }
   
-  public static final String bda(String paramString)
+  public static final String beE(String paramString)
   {
     AppMethodBeat.i(61339);
     p.h(paramString, "$this$capitalizeAsciiOnly");
@@ -121,7 +121,7 @@ public final class a
     return paramString;
   }
   
-  private static String bdb(String paramString)
+  private static String beF(String paramString)
   {
     AppMethodBeat.i(61340);
     p.h(paramString, "$this$toLowerCaseAsciiOnly");
@@ -148,7 +148,7 @@ public final class a
     return paramString;
   }
   
-  private static final boolean hn(String paramString, int paramInt)
+  private static final boolean hw(String paramString, int paramInt)
   {
     AppMethodBeat.i(61337);
     paramInt = paramString.charAt(paramInt);

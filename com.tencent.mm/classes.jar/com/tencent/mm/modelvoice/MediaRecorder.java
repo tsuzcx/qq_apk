@@ -6,17 +6,17 @@ import com.tencent.mm.pointers.PByteArray;
 
 public class MediaRecorder
 {
-  public static long ivY;
-  public static long ivZ;
-  public static final int[] iwa;
+  public static long iyR;
+  public static long iyS;
+  public static final int[] iyT;
   
   static
   {
     AppMethodBeat.i(177009);
     g.b.init();
-    ivY = 0L;
-    ivZ = 0L;
-    iwa = new int[] { 13, 14, 16, 18, 20, 21, 27, 32 };
+    iyR = 0L;
+    iyS = 0L;
+    iyT = new int[] { 13, 14, 16, 18, 20, 21, 27, 32 };
     AppMethodBeat.o(177009);
   }
   

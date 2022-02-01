@@ -10,36 +10,36 @@ import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cc.a;
+import com.tencent.mm.cb.a;
 import com.tencent.mm.g.c.aw;
-import com.tencent.mm.model.q;
-import com.tencent.mm.model.v;
+import com.tencent.mm.model.r;
 import com.tencent.mm.model.w;
+import com.tencent.mm.model.x;
 import com.tencent.mm.pluginsdk.ui.a.b;
 import com.tencent.mm.pluginsdk.ui.span.k;
-import com.tencent.mm.storage.am;
+import com.tencent.mm.storage.an;
 import java.util.List;
 
 public final class m
   extends BaseAdapter
 {
-  private List<String> Kmq;
-  private boolean Kmr;
+  private List<String> KIK;
+  private boolean KIL;
   private Context context;
-  private List<am> fPS;
+  private List<an> fRY;
   
-  public m(Context paramContext, List<am> paramList, List<String> paramList1, boolean paramBoolean)
+  public m(Context paramContext, List<an> paramList, List<String> paramList1, boolean paramBoolean)
   {
-    this.fPS = paramList;
+    this.fRY = paramList;
     this.context = paramContext;
-    this.Kmr = paramBoolean;
-    this.Kmq = paramList1;
+    this.KIL = paramBoolean;
+    this.KIK = paramList1;
   }
   
   public final int getCount()
   {
     AppMethodBeat.i(37849);
-    int i = this.fPS.size();
+    int i = this.fRY.size();
     AppMethodBeat.o(37849);
     return i;
   }
@@ -47,7 +47,7 @@ public final class m
   public final Object getItem(int paramInt)
   {
     AppMethodBeat.i(37850);
-    Object localObject = this.fPS.get(paramInt);
+    Object localObject = this.fRY.get(paramInt);
     AppMethodBeat.o(37850);
     return localObject;
   }
@@ -60,33 +60,33 @@ public final class m
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(37848);
-    am localam = (am)this.fPS.get(paramInt);
+    an localan = (an)this.fRY.get(paramInt);
     if (paramView == null)
     {
       paramViewGroup = new GroupCardSelectUI.a();
       paramView = View.inflate(this.context, 2131494422, null);
-      paramViewGroup.uXJ = ((TextView)paramView.findViewById(2131300624));
-      paramViewGroup.KmE = ((TextView)paramView.findViewById(2131300625));
-      paramViewGroup.jdF = ((ImageView)paramView.findViewById(2131300623));
-      paramViewGroup.wNt = ((CheckBox)paramView.findViewById(2131304502));
+      paramViewGroup.vjx = ((TextView)paramView.findViewById(2131300624));
+      paramViewGroup.KIY = ((TextView)paramView.findViewById(2131300625));
+      paramViewGroup.jgy = ((ImageView)paramView.findViewById(2131300623));
+      paramViewGroup.xdh = ((CheckBox)paramView.findViewById(2131304502));
       paramView.setTag(paramViewGroup);
-      a.b.c(paramViewGroup.jdF, localam.field_username);
-      paramViewGroup.KmE.setText(k.b(this.context, v.zf(localam.field_username), a.ax(this.context, 2131165517)));
-      paramViewGroup.uXJ.setText("(" + q.yS(localam.field_username) + ")");
-      if (!w.zm(localam.field_username)) {
+      a.b.c(paramViewGroup.jgy, localan.field_username);
+      paramViewGroup.KIY.setText(k.b(this.context, w.zP(localan.field_username), a.ax(this.context, 2131165517)));
+      paramViewGroup.vjx.setText("(" + r.zC(localan.field_username) + ")");
+      if (!x.zW(localan.field_username)) {
         break label290;
       }
       Drawable localDrawable = this.context.getResources().getDrawable(2131691000);
       localDrawable.setBounds(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
-      paramViewGroup.KmE.setCompoundDrawablesWithIntrinsicBounds(null, null, localDrawable, null);
+      paramViewGroup.KIY.setCompoundDrawablesWithIntrinsicBounds(null, null, localDrawable, null);
       label232:
-      if (this.Kmr)
+      if (this.KIL)
       {
-        paramViewGroup.wNt.setVisibility(0);
-        if (!this.Kmq.contains(localam.field_username)) {
+        paramViewGroup.xdh.setVisibility(0);
+        if (!this.KIK.contains(localan.field_username)) {
           break label304;
         }
-        paramViewGroup.wNt.setChecked(true);
+        paramViewGroup.xdh.setChecked(true);
       }
     }
     for (;;)
@@ -96,16 +96,16 @@ public final class m
       paramViewGroup = (GroupCardSelectUI.a)paramView.getTag();
       break;
       label290:
-      paramViewGroup.KmE.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
+      paramViewGroup.KIY.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
       break label232;
       label304:
-      paramViewGroup.wNt.setChecked(false);
+      paramViewGroup.xdh.setChecked(false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ui.contact.m
  * JD-Core Version:    0.7.0.1
  */

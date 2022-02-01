@@ -7,24 +7,24 @@ import d.g.b.p;
 import d.l;
 import org.json.JSONObject;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiAppJoinGroup;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandAsyncJsApi;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "()V", "invoke", "", "env", "data", "Lorg/json/JSONObject;", "callbackId", "", "Companion", "plugin-appbrand-integration_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiAppJoinGroup;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandAsyncJsApi;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "()V", "invoke", "", "env", "data", "Lorg/json/JSONObject;", "callbackId", "", "Companion", "plugin-appbrand-integration_release"})
 public final class ak
   extends a<c>
 {
   public static final int CTRL_INDEX = 876;
   public static final String NAME = "joinGroup";
-  public static final a krw;
+  public static final a kuM;
   
   static
   {
-    AppMethodBeat.i(189058);
-    krw = new a((byte)0);
-    AppMethodBeat.o(189058);
+    AppMethodBeat.i(223317);
+    kuM = new a((byte)0);
+    AppMethodBeat.o(223317);
   }
   
   public final void a(c paramc, JSONObject paramJSONObject, int paramInt)
   {
-    AppMethodBeat.i(189057);
+    AppMethodBeat.i(223316);
     p.h(paramc, "env");
     p.h(paramJSONObject, "data");
     String str1 = paramc.getAppId();
@@ -32,8 +32,8 @@ public final class ak
     if ((localObject == null) || (((CharSequence)localObject).length() == 0)) {}
     for (int i = 1; i != 0; i = 0)
     {
-      paramc.h(paramInt, Pg("fail:appId is null"));
-      AppMethodBeat.o(189057);
+      paramc.h(paramInt, PO("fail:appId is null"));
+      AppMethodBeat.o(223316);
       return;
     }
     localObject = paramJSONObject.optString("signature");
@@ -42,14 +42,14 @@ public final class ak
     c.b localb = new c.b();
     localb.appId = str1;
     localb.signature = ((String)localObject);
-    localb.vJO = str2;
-    localb.vJP = paramJSONObject;
+    localb.vVS = str2;
+    localb.vVT = paramJSONObject;
     ((com.tencent.mm.plugin.messenger.foundation.a.c)g.ab(com.tencent.mm.plugin.messenger.foundation.a.c.class)).a(paramc.getContext(), localb);
-    paramc.h(paramInt, Pg("ok"));
-    AppMethodBeat.o(189057);
+    paramc.h(paramInt, PO("ok"));
+    AppMethodBeat.o(223316);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiAppJoinGroup$Companion;", "", "()V", "CTRL_INDEX", "", "NAME", "", "TAG", "plugin-appbrand-integration_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiAppJoinGroup$Companion;", "", "()V", "CTRL_INDEX", "", "NAME", "", "TAG", "plugin-appbrand-integration_release"})
   public static final class a {}
 }
 

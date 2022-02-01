@@ -13,24 +13,24 @@ public abstract class AppBrandProxyUIProcessTask$ProcessRequest
     j(paramParcel);
   }
   
-  protected abstract Class<? extends AppBrandProxyUIProcessTask> bgN();
+  protected abstract Class<? extends AppBrandProxyUIProcessTask> bhv();
   
-  protected boolean bhR()
+  protected boolean biA()
   {
     return false;
   }
   
-  protected String bhS()
+  protected String biB()
   {
     return null;
   }
   
-  protected int bhT()
+  protected int biC()
   {
     return -1;
   }
   
-  protected boolean bhU()
+  protected boolean biD()
   {
     return false;
   }

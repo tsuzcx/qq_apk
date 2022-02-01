@@ -9,7 +9,7 @@ import com.tencent.mm.plugin.appbrand.canvas.a.a;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.BaseDrawActionArg;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.DrawActionArg;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.SetStrokeStyleActionArg;
-import com.tencent.mm.plugin.appbrand.z.g;
+import com.tencent.mm.plugin.appbrand.y.g;
 import org.json.JSONArray;
 
 public final class af
@@ -76,12 +76,12 @@ public final class af
         if (localJSONArray.length() >= 2)
         {
           arrayOfFloat[i] = ((float)localJSONArray.optDouble(0));
-          paramJSONArray[i] = g.q(localJSONArray.optJSONArray(1));
+          paramJSONArray[i] = g.r(localJSONArray.optJSONArray(1));
         }
         i += 1;
       }
       paramCanvas = new LinearGradient(f1, f2, f3, f4, paramJSONArray, arrayOfFloat, Shader.TileMode.CLAMP);
-      paramd.jSY.setShader(paramCanvas);
+      paramd.jWp.setShader(paramCanvas);
     }
     for (;;)
     {
@@ -113,12 +113,12 @@ public final class af
           if (localJSONArray.length() >= 2)
           {
             arrayOfFloat[i] = ((float)localJSONArray.optDouble(0));
-            paramJSONArray[i] = g.q(localJSONArray.optJSONArray(1));
+            paramJSONArray[i] = g.r(localJSONArray.optJSONArray(1));
           }
           i += 1;
         }
         paramCanvas = new RadialGradient(f1, f2, f3, paramJSONArray, arrayOfFloat, Shader.TileMode.CLAMP);
-        paramd.jSY.setShader(paramCanvas);
+        paramd.jWp.setShader(paramCanvas);
       }
       else if ("normal".equalsIgnoreCase(paramCanvas))
       {
@@ -128,12 +128,12 @@ public final class af
           AppMethodBeat.o(144971);
           return false;
         }
-        paramd.jSY.setColor(g.q(paramCanvas));
+        paramd.jWp.setColor(g.r(paramCanvas));
       }
     }
   }
   
-  public final BaseDrawActionArg bdn()
+  public final BaseDrawActionArg bdS()
   {
     AppMethodBeat.i(144970);
     SetStrokeStyleActionArg localSetStrokeStyleActionArg = new SetStrokeStyleActionArg();

@@ -1,6 +1,6 @@
 package com.tencent.mm.pluginsdk.b;
 
-import com.tencent.mm.model.ax;
+import com.tencent.mm.model.az;
 import com.tencent.mm.pluginsdk.n;
 
 @Deprecated
@@ -8,7 +8,7 @@ public abstract interface d
 {
   public abstract n createApplication();
   
-  public abstract ax createSubCore();
+  public abstract az createSubCore();
   
   public abstract c getContactWidgetFactory();
 }

@@ -7,46 +7,46 @@ import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.audio.b.j;
 import com.tencent.mm.plugin.editor.model.b.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.av;
-import com.tencent.mm.sdk.platformtools.av.a;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.vfs.e;
-import com.tencent.mm.vfs.i;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.aw;
+import com.tencent.mm.sdk.platformtools.aw.a;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.vfs.k;
+import com.tencent.mm.vfs.o;
 
 public final class c
 {
-  private static c ptx = null;
+  private static c pAb = null;
   public long duration;
-  public com.tencent.mm.compatible.util.b ixy;
+  public com.tencent.mm.compatible.util.b iAr;
+  public String pAa;
+  public TextView pAc;
+  public int pAd;
+  public a pAe;
+  public com.tencent.mm.plugin.editor.model.a.m pAf;
+  private final aq pAg;
+  public final aw pAh;
   public String path;
-  public a ptA;
-  public com.tencent.mm.plugin.editor.model.a.m ptB;
-  private final ap ptC;
-  public final av ptD;
-  public final ap pte;
-  public boolean ptn;
-  public long pto;
-  public boolean ptp;
-  public long ptq;
-  private Toast ptt;
-  public j ptu;
-  public com.tencent.mm.modelvoice.m ptv;
-  public String ptw;
-  public TextView pty;
-  public int ptz;
+  public final aq pzK;
+  public boolean pzT;
+  public long pzU;
+  public boolean pzV;
+  public long pzW;
+  private Toast pzX;
+  public j pzY;
+  public com.tencent.mm.modelvoice.m pzZ;
   
   private c()
   {
     AppMethodBeat.i(181679);
-    this.ptq = -1L;
-    this.ptw = "";
+    this.pzW = -1L;
+    this.pAa = "";
     this.path = "";
-    this.ptz = 0;
-    this.ptB = null;
-    this.ptC = new ap()
+    this.pAd = 0;
+    this.pAf = null;
+    this.pAg = new aq()
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
@@ -56,36 +56,36 @@ public final class c
         AppMethodBeat.o(181676);
       }
     };
-    this.pte = new ap()
+    this.pzK = new aq()
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
         AppMethodBeat.i(181677);
-        if (c.c(c.this).pud.booleanValue())
+        if (c.c(c.this).pAH.booleanValue())
         {
-          c.d(c.this).ced();
-          c.c(c.this).pud = Boolean.FALSE;
+          c.d(c.this).cfs();
+          c.c(c.this).pAH = Boolean.FALSE;
         }
-        c.c(c.this).ptV = ((int)com.tencent.mm.plugin.editor.b.sv(c.e(c.this)));
+        c.c(c.this).pAz = ((int)com.tencent.mm.plugin.editor.b.sI(c.e(c.this)));
         sendEmptyMessageDelayed(4096, 250L);
         AppMethodBeat.o(181677);
       }
     };
-    this.ptD = new av(new av.a()
+    this.pAh = new aw(new aw.a()
     {
       public final boolean onTimerExpired()
       {
         AppMethodBeat.i(181678);
         if (c.f(c.this) == -1L) {
-          c.a(c.this, bt.HI());
+          c.a(c.this, bu.HQ());
         }
-        long l = bt.aO(c.f(c.this));
+        long l = bu.aO(c.f(c.this));
         if ((l >= 3590000L) && (l <= 3600000L))
         {
           if (c.g(c.this) != null) {
             break label179;
           }
-          c.a(c.this, Toast.makeText(aj.getContext(), aj.getContext().getString(2131758842, new Object[] { Integer.valueOf((int)((3600000L - l) / 1000L)) }), 0));
+          c.a(c.this, Toast.makeText(ak.getContext(), ak.getContext().getString(2131758842, new Object[] { Integer.valueOf((int)((3600000L - l) / 1000L)) }), 0));
         }
         for (;;)
         {
@@ -93,98 +93,98 @@ public final class c
           if (l < 3600000L) {
             break;
           }
-          ad.v("MicroMsg.EditorVoiceLogic", "record stop on countdown");
+          ae.v("MicroMsg.EditorVoiceLogic", "record stop on countdown");
           c.h(c.this);
           c.i(c.this);
           if (c.d(c.this) != null) {
-            c.d(c.this).cec();
+            c.d(c.this).cfr();
           }
           AppMethodBeat.o(181678);
           return false;
           label179:
-          c.g(c.this).setText(aj.getContext().getString(2131758842, new Object[] { Integer.valueOf((int)((3600000L - l) / 1000L)) }));
+          c.g(c.this).setText(ak.getContext().getString(2131758842, new Object[] { Integer.valueOf((int)((3600000L - l) / 1000L)) }));
         }
         AppMethodBeat.o(181678);
         return true;
       }
     }, true);
-    this.ixy = new com.tencent.mm.compatible.util.b(aj.getContext());
+    this.iAr = new com.tencent.mm.compatible.util.b(ak.getContext());
     AppMethodBeat.o(181679);
   }
   
-  public static c cdU()
+  public static c cfj()
   {
     AppMethodBeat.i(181680);
-    if (ptx == null) {
-      ptx = new c();
+    if (pAb == null) {
+      pAb = new c();
     }
-    c localc = ptx;
+    c localc = pAb;
     AppMethodBeat.o(181680);
     return localc;
   }
   
-  private void cdX()
+  private void cfm()
   {
     AppMethodBeat.i(181684);
-    if (!this.ptn)
+    if (!this.pzT)
     {
       AppMethodBeat.o(181684);
       return;
     }
-    this.pte.removeMessages(4096);
+    this.pzK.removeMessages(4096);
     stopRecord();
     this.duration = getDuration();
     if (this.duration < 800L) {}
     for (int i = 1;; i = 0)
     {
-      this.ptD.stopTimer();
+      this.pAh.stopTimer();
       if (i != 0)
       {
-        cdZ();
-        cdY();
+        cfo();
+        cfn();
       }
-      this.ptn = false;
+      this.pzT = false;
       AppMethodBeat.o(181684);
       return;
     }
   }
   
-  private void cdY()
+  private void cfn()
   {
     AppMethodBeat.i(181685);
-    this.ptC.sendEmptyMessageDelayed(0, 500L);
+    this.pAg.sendEmptyMessageDelayed(0, 500L);
     AppMethodBeat.o(181685);
   }
   
-  private void cdZ()
+  private void cfo()
   {
     AppMethodBeat.i(181687);
-    e locale = new e(this.path);
-    if (locale.exists()) {
-      locale.delete();
+    k localk = new k(this.path);
+    if (localk.exists()) {
+      localk.delete();
     }
     AppMethodBeat.o(181687);
   }
   
-  public static c cea()
+  public static c cfp()
   {
-    return ptx;
+    return pAb;
   }
   
   public static void destroy()
   {
-    ptx = null;
+    pAb = null;
   }
   
   private long getDuration()
   {
     AppMethodBeat.i(181686);
-    if (this.pto == 0L)
+    if (this.pzU == 0L)
     {
       AppMethodBeat.o(181686);
       return 0L;
     }
-    long l = bt.aO(this.pto);
+    long l = bu.aO(this.pzU);
     AppMethodBeat.o(181686);
     return l;
   }
@@ -192,38 +192,38 @@ public final class c
   private void stopRecord()
   {
     AppMethodBeat.i(181683);
-    if (this.ptw.equals("speex")) {
-      this.ptv.PG();
+    if (this.pAa.equals("speex")) {
+      this.pzZ.PF();
     }
     for (;;)
     {
-      if (this.ixy != null) {
-        this.ixy.abe();
+      if (this.iAr != null) {
+        this.iAr.abn();
       }
       AppMethodBeat.o(181683);
       return;
-      this.ptu.PG();
+      this.pzY.PF();
     }
   }
   
-  public final void cdV()
+  public final void cfk()
   {
     AppMethodBeat.i(181681);
-    if (!this.ptn)
+    if (!this.pzT)
     {
       AppMethodBeat.o(181681);
       return;
     }
-    if (!this.ptp) {
-      cdX();
+    if (!this.pzV) {
+      cfm();
     }
     AppMethodBeat.o(181681);
   }
   
-  public final String cdW()
+  public final String cfl()
   {
     AppMethodBeat.i(181682);
-    if (i.fv(this.path))
+    if (o.fB(this.path))
     {
       String str = this.path;
       AppMethodBeat.o(181682);

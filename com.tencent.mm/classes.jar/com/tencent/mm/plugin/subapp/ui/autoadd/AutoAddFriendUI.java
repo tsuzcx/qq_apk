@@ -7,17 +7,17 @@ import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.ba;
+import com.tencent.mm.model.bc;
 import com.tencent.mm.model.c;
-import com.tencent.mm.model.u;
+import com.tencent.mm.model.v;
 import com.tencent.mm.n.e;
 import com.tencent.mm.n.g;
 import com.tencent.mm.plugin.messenger.foundation.a.a.j;
 import com.tencent.mm.plugin.messenger.foundation.a.a.k.a;
-import com.tencent.mm.protocal.protobuf.aty;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ai;
+import com.tencent.mm.protocal.protobuf.auo;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.aj;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.widget.MMSwitchBtn;
 import com.tencent.mm.ui.widget.MMSwitchBtn.a;
@@ -25,62 +25,62 @@ import com.tencent.mm.ui.widget.MMSwitchBtn.a;
 public class AutoAddFriendUI
   extends MMActivity
 {
-  private MMSwitchBtn Bii;
-  private TextView Bij;
-  private MMSwitchBtn Bik;
-  private SparseIntArray Bil;
+  private MMSwitchBtn BzG;
+  private TextView BzH;
+  private MMSwitchBtn BzI;
+  private SparseIntArray BzJ;
   private int status;
   
   public AutoAddFriendUI()
   {
     AppMethodBeat.i(29009);
-    this.Bii = null;
-    this.Bij = null;
-    this.Bik = null;
-    this.Bil = new SparseIntArray();
+    this.BzG = null;
+    this.BzH = null;
+    this.BzI = null;
+    this.BzJ = new SparseIntArray();
     AppMethodBeat.o(29009);
   }
   
-  private boolean MT(int paramInt)
+  private boolean Nz(int paramInt)
   {
     return (this.status & paramInt) != 0;
   }
   
-  private boolean enb()
+  private boolean eqK()
   {
     AppMethodBeat.i(29011);
-    ba.aBQ();
-    c.ajl().set(7, Integer.valueOf(this.status));
+    bc.aCg();
+    c.ajA().set(7, Integer.valueOf(this.status));
     int i = 0;
-    while (i < this.Bil.size())
+    while (i < this.BzJ.size())
     {
-      int j = this.Bil.keyAt(i);
-      int k = this.Bil.valueAt(i);
-      aty localaty = new aty();
-      localaty.GrZ = j;
-      localaty.xcI = k;
-      ba.aBQ();
-      c.azo().c(new k.a(23, localaty));
-      ad.d("MicroMsg.AutoAddFriendUI", "switch  " + j + " " + k);
+      int j = this.BzJ.keyAt(i);
+      int k = this.BzJ.valueAt(i);
+      auo localauo = new auo();
+      localauo.GLx = j;
+      localauo.xsz = k;
+      bc.aCg();
+      c.azE().d(new k.a(23, localauo));
+      ae.d("MicroMsg.AutoAddFriendUI", "switch  " + j + " " + k);
       i += 1;
     }
-    this.Bil.clear();
+    this.BzJ.clear();
     AppMethodBeat.o(29011);
     return true;
   }
   
-  private static int enc()
+  private static int eqL()
   {
     AppMethodBeat.i(29013);
-    String str2 = g.acA().getValue("AutoAddFriendShow");
+    String str2 = g.acL().getValue("AutoAddFriendShow");
     String str1 = str2;
-    if (bt.isNullOrNil(str2)) {
+    if (bu.isNullOrNil(str2)) {
       str1 = "0";
     }
     try
     {
-      i = bt.getInt(str1, 0);
-      ad.d("MicroMsg.AutoAddFriendUI", "getAutoAddDynamicConfig, autoAdd = %d", new Object[] { Integer.valueOf(i) });
+      i = bu.getInt(str1, 0);
+      ae.d("MicroMsg.AutoAddFriendUI", "getAutoAddDynamicConfig, autoAdd = %d", new Object[] { Integer.valueOf(i) });
       AppMethodBeat.o(29013);
       return i;
     }
@@ -101,15 +101,15 @@ public class AutoAddFriendUI
   public void initView()
   {
     AppMethodBeat.i(29012);
-    this.Bii = ((MMSwitchBtn)findViewById(2131302705));
-    this.Bij = ((TextView)findViewById(2131296990));
-    this.Bik = ((MMSwitchBtn)findViewById(2131296989));
-    boolean bool = MT(32);
-    this.Bii.setCheck(bool);
-    if (enc() == 1)
+    this.BzG = ((MMSwitchBtn)findViewById(2131302705));
+    this.BzH = ((TextView)findViewById(2131296990));
+    this.BzI = ((MMSwitchBtn)findViewById(2131296989));
+    boolean bool = Nz(32);
+    this.BzG.setCheck(bool);
+    if (eqL() == 1)
     {
-      this.Bik.setCheck(MT(2097152));
-      this.Bik.setSwitchListener(new MMSwitchBtn.a()
+      this.BzI.setCheck(Nz(2097152));
+      this.BzI.setSwitchListener(new MMSwitchBtn.a()
       {
         public final void onStatusChange(boolean paramAnonymousBoolean)
         {
@@ -121,7 +121,7 @@ public class AutoAddFriendUI
     }
     for (;;)
     {
-      this.Bii.setSwitchListener(new MMSwitchBtn.a()
+      this.BzG.setSwitchListener(new MMSwitchBtn.a()
       {
         public final void onStatusChange(boolean paramAnonymousBoolean)
         {
@@ -142,8 +142,8 @@ public class AutoAddFriendUI
       });
       AppMethodBeat.o(29012);
       return;
-      this.Bij.setVisibility(8);
-      this.Bik.setVisibility(8);
+      this.BzH.setVisibility(8);
+      this.BzI.setVisibility(8);
     }
   }
   
@@ -152,7 +152,7 @@ public class AutoAddFriendUI
     AppMethodBeat.i(29010);
     super.onCreate(paramBundle);
     setMMTitle(2131756085);
-    this.status = u.aAq();
+    this.status = v.aAG();
     initView();
     AppMethodBeat.o(29010);
   }
@@ -168,7 +168,7 @@ public class AutoAddFriendUI
   {
     AppMethodBeat.i(29015);
     super.onPause();
-    enb();
+    eqK();
     AppMethodBeat.o(29015);
   }
   

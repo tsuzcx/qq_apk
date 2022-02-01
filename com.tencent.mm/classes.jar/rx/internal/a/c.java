@@ -5,20 +5,20 @@ import rx.e;
 
 public final class c<T>
 {
-  private static final c NXG;
-  private static final Object NXH;
-  private static final Object NXI;
+  private static final c OuL;
+  private static final Object OuM;
+  private static final Object OuN;
   
   static
   {
     AppMethodBeat.i(90234);
-    NXG = new c();
-    NXH = new c.1();
-    NXI = new c.2();
+    OuL = new c();
+    OuM = new c.1();
+    OuN = new c.2();
     AppMethodBeat.o(90234);
   }
   
-  public static Object M(Throwable paramThrowable)
+  public static Object N(Throwable paramThrowable)
   {
     AppMethodBeat.i(90232);
     paramThrowable = new c.a(paramThrowable);
@@ -29,15 +29,15 @@ public final class c<T>
   public static boolean a(e<? super T> parame, Object paramObject)
   {
     AppMethodBeat.i(90233);
-    if (paramObject == NXH)
+    if (paramObject == OuM)
     {
-      parame.gyM();
+      parame.gDo();
       AppMethodBeat.o(90233);
       return true;
     }
-    if (paramObject == NXI)
+    if (paramObject == OuN)
     {
-      parame.gz(null);
+      parame.gC(null);
       AppMethodBeat.o(90233);
       return false;
     }
@@ -49,7 +49,7 @@ public final class c<T>
         AppMethodBeat.o(90233);
         return true;
       }
-      parame.gz(paramObject);
+      parame.gC(paramObject);
       AppMethodBeat.o(90233);
       return false;
     }
@@ -58,11 +58,21 @@ public final class c<T>
     throw parame;
   }
   
-  public static Object gB(T paramT)
+  public static <T> c<T> gDy()
+  {
+    return OuL;
+  }
+  
+  public static Object gDz()
+  {
+    return OuM;
+  }
+  
+  public static Object gE(T paramT)
   {
     Object localObject = paramT;
     if (paramT == null) {
-      localObject = NXI;
+      localObject = OuN;
     }
     return localObject;
   }
@@ -70,25 +80,15 @@ public final class c<T>
   public static T getValue(Object paramObject)
   {
     Object localObject = paramObject;
-    if (paramObject == NXI) {
+    if (paramObject == OuN) {
       localObject = null;
     }
     return localObject;
   }
-  
-  public static <T> c<T> gyW()
-  {
-    return NXG;
-  }
-  
-  public static Object gyX()
-  {
-    return NXH;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     rx.internal.a.c
  * JD-Core Version:    0.7.0.1
  */

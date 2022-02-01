@@ -12,7 +12,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class ao
 {
-  public static boolean abX(int paramInt)
+  public static boolean acF(int paramInt)
   {
     AppMethodBeat.i(159117);
     if (1.0D - (0.299D * Color.red(paramInt) + 0.587D * Color.green(paramInt) + 0.114D * Color.blue(paramInt)) / 255.0D >= 0.3D)
@@ -56,7 +56,7 @@ public final class ao
     return paramDrawable;
   }
   
-  public static int eV(int paramInt1, int paramInt2)
+  public static int eW(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(159112);
     if ((paramInt2 < 0) || (paramInt2 > 100))
@@ -70,7 +70,7 @@ public final class ao
     return 0xFFFFFF & paramInt1 | paramInt2 << 24;
   }
   
-  private static int jD(int paramInt1, int paramInt2)
+  private static int jH(int paramInt1, int paramInt2)
   {
     return 255 - (255 - paramInt2) * (255 - paramInt1) / 255;
   }
@@ -91,7 +91,7 @@ public final class ao
     AppMethodBeat.i(159113);
     int i = Color.alpha(paramInt2);
     int j = Color.alpha(paramInt1);
-    int k = jD(j, i);
+    int k = jH(j, i);
     paramInt1 = Color.argb(k, c(Color.red(paramInt1), j, Color.red(paramInt2), i, k), c(Color.green(paramInt1), j, Color.green(paramInt2), i, k), c(Color.blue(paramInt1), j, Color.blue(paramInt2), i, k));
     AppMethodBeat.o(159113);
     return paramInt1;

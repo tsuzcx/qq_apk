@@ -4,16 +4,16 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 public final class i
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public LinkedList<String> nDk;
-  public LinkedList<Long> nDl;
+  public LinkedList<String> nIF;
+  public LinkedList<Long> nIG;
   
   public i()
   {
     AppMethodBeat.i(22110);
-    this.nDk = new LinkedList();
-    this.nDl = new LinkedList();
+    this.nIF = new LinkedList();
+    this.nIG = new LinkedList();
     AppMethodBeat.o(22110);
   }
   
@@ -23,27 +23,27 @@ public final class i
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.e(1, 1, this.nDk);
-      paramVarArgs.e(2, 3, this.nDl);
+      paramVarArgs.e(1, 1, this.nIF);
+      paramVarArgs.e(2, 3, this.nIG);
       AppMethodBeat.o(22111);
       return 0;
     }
     if (paramInt == 1)
     {
-      paramInt = f.a.a.a.c(1, 1, this.nDk);
-      int i = f.a.a.a.c(2, 3, this.nDl);
+      paramInt = f.a.a.a.c(1, 1, this.nIF);
+      int i = f.a.a.a.c(2, 3, this.nIG);
       AppMethodBeat.o(22111);
       return paramInt + 0 + i;
     }
     if (paramInt == 2)
     {
       paramVarArgs = (byte[])paramVarArgs[0];
-      this.nDk.clear();
-      this.nDl.clear();
+      this.nIF.clear();
+      this.nIG.clear();
       paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gxE();
+          paramVarArgs.gCg();
         }
       }
       AppMethodBeat.o(22111);
@@ -59,11 +59,11 @@ public final class i
         AppMethodBeat.o(22111);
         return -1;
       case 1: 
-        locali.nDk.add(locala.NPN.readString());
+        locali.nIF.add(locala.OmT.readString());
         AppMethodBeat.o(22111);
         return 0;
       }
-      locali.nDl.add(Long.valueOf(locala.NPN.zd()));
+      locali.nIG.add(Long.valueOf(locala.OmT.zd()));
       AppMethodBeat.o(22111);
       return 0;
     }

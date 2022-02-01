@@ -16,8 +16,8 @@ final class WxaLuckyMoneyPrepareUI$9
     AppMethodBeat.i(64955);
     b localb = new b();
     localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/luckymoney/appbrand/ui/prepare/WxaLuckyMoneyPrepareUI$17", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-    this.vkB.hideTenpayKB();
+    a.b("com/tencent/mm/plugin/luckymoney/appbrand/ui/prepare/WxaLuckyMoneyPrepareUI$17", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+    this.vwG.hideTenpayKB();
     a.a(this, "com/tencent/mm/plugin/luckymoney/appbrand/ui/prepare/WxaLuckyMoneyPrepareUI$17", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(64955);
   }

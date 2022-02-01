@@ -1,106 +1,60 @@
 package com.tencent.mm.emoji.a.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.emoji.PluginEmoji;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.storage.az;
+import com.tencent.mm.emoji.a.i;
+import com.tencent.mm.storage.emotion.EmojiGroupInfo;
 import com.tencent.mm.storage.emotion.EmojiInfo;
+import d.a.v;
 import d.g.b.p;
-import java.util.ArrayList;
-import java.util.Collection;
+import d.l;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-@d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/emoji/model/search/EmojiSuggestLocal;", "Lcom/tencent/mm/emoji/model/search/IEmojiSuggest;", "()V", "TAG", "", "checkMatch", "", "desc", "getEmojiList", "", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "md5List", "searchSuggest", "", "callback", "Lcom/tencent/mm/emoji/model/search/IEmojiSuggest$SuggestCallback;", "plugin-emojisdk_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/emoji/model/panel/CustomItemGroup;", "Lcom/tencent/mm/emoji/model/panel/AbsPanelItemGroup;", "hasEntrance", "", "hasSystem", "(ZZ)V", "emojiList", "", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "kotlin.jvm.PlatformType", "reportCount", "", "getReportCount", "plugin-emojisdk_release"})
 public final class e
-  implements j
+  extends a
 {
-  private final String TAG = "MicroMsg.EmojiSuggestLocal";
+  private final List<EmojiInfo> gnf;
+  private int gng;
   
-  public static boolean vX(String paramString)
+  public e(boolean paramBoolean1, boolean paramBoolean2)
   {
-    AppMethodBeat.i(218966);
-    p.h(paramString, "desc");
-    boolean bool = az.fqY().vZ(paramString);
-    AppMethodBeat.o(218966);
-    return bool;
+    super(ad.afS());
+    AppMethodBeat.i(105531);
+    Object localObject = i.aeX().dj(true);
+    if (localObject != null) {}
+    for (localObject = (List)localObject;; localObject = (List)v.NhH)
+    {
+      this.gnf = ((List)localObject);
+      this.gng = this.gnf.size();
+      this.gne.add(this.gnd);
+      if (paramBoolean1) {
+        this.gne.add(new m(0));
+      }
+      localObject = this.gnf.iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        EmojiInfo localEmojiInfo = (EmojiInfo)((Iterator)localObject).next();
+        if ((paramBoolean2) || (localEmojiInfo.field_catalog != EmojiGroupInfo.OzS))
+        {
+          LinkedList localLinkedList = this.gne;
+          p.g(localEmojiInfo, "info");
+          localLinkedList.add(new h(localEmojiInfo, 0));
+        }
+      }
+    }
+    AppMethodBeat.o(105531);
   }
   
-  public final void a(String paramString, j.b paramb)
+  public final int afA()
   {
-    AppMethodBeat.i(218967);
-    p.h(paramString, "desc");
-    Object localObject1 = g.ad(PluginEmoji.class);
-    p.g(localObject1, "MMKernel.plugin(PluginEmoji::class.java)");
-    localObject1 = d.a.j.p((Iterable)((PluginEmoji)localObject1).getEmojiMgr().abx(paramString));
-    paramString = new LinkedList();
-    Object localObject2 = (Collection)localObject1;
-    int i;
-    if ((localObject2 == null) || (((Collection)localObject2).isEmpty())) {
-      i = 1;
-    }
-    while (i == 0)
-    {
-      if (((List)localObject1).size() > 100)
-      {
-        localObject2 = d.gml;
-        d.ma(24);
-      }
-      int j = ((List)localObject1).size();
-      i = 0;
-      for (;;)
-      {
-        if ((i < j) && (i < 100))
-        {
-          localObject2 = g.ad(PluginEmoji.class);
-          p.g(localObject2, "MMKernel.plugin(PluginEmoji::class.java)");
-          localObject2 = ((PluginEmoji)localObject2).getEmojiMgr().abr((String)((List)localObject1).get(i));
-          if (localObject2 != null) {
-            paramString.add(localObject2);
-          }
-          i += 1;
-          continue;
-          i = 0;
-          break;
-        }
-      }
-      if (!paramString.isEmpty()) {
-        break label302;
-      }
-      ad.i(this.TAG, "sorEmojiList return. empty list.");
-    }
-    for (;;)
-    {
-      localObject1 = (Iterable)paramString;
-      paramString = (Collection)new ArrayList(d.a.j.a((Iterable)localObject1, 10));
-      localObject1 = ((Iterable)localObject1).iterator();
-      i = 0;
-      while (((Iterator)localObject1).hasNext())
-      {
-        localObject2 = ((Iterator)localObject1).next();
-        if (i < 0) {
-          d.a.j.gfB();
-        }
-        paramString.add(new l((EmojiInfo)localObject2, 0, i + 1));
-        i += 1;
-      }
-      label302:
-      localObject1 = ((Iterable)paramString).iterator();
-      while (((Iterator)localObject1).hasNext())
-      {
-        localObject2 = (EmojiInfo)((Iterator)localObject1).next();
-        ad.i(this.TAG, "getEmojiList: match " + ((EmojiInfo)localObject2).Lb());
-      }
-    }
-    paramb.a((List)paramString, new m(0L, 0, 0, null, 15));
-    AppMethodBeat.o(218967);
+    return this.gng;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.emoji.a.b.e
  * JD-Core Version:    0.7.0.1
  */

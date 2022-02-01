@@ -7,46 +7,46 @@ import java.util.Map;
 public abstract class e
   implements d
 {
-  protected a kcv;
-  protected String kcw;
-  protected String kcx;
-  protected Map<String, String> kcy = new HashMap();
+  protected a kfM;
+  protected String kfN;
+  protected String kfO;
+  protected Map<String, String> kfP = new HashMap();
   protected String mUrl;
   
   public e(String paramString1, String paramString2)
   {
     this.mUrl = paramString1;
-    this.kcx = paramString2;
-    this.kcw = bff();
-    this.kcv = a.kcA;
+    this.kfO = paramString2;
+    this.kfN = bfN();
+    this.kfM = a.kfR;
   }
   
   protected final void a(a parama)
   {
-    this.kcv = parama;
+    this.kfM = parama;
   }
   
-  public abstract String bff();
+  public abstract String bfN();
   
-  protected final void bfh()
+  protected final void bfP()
   {
-    cE("Content-Type", "text/xml;charset=\"utf-8\"");
-    cE("Connection", "close");
+    cG("Content-Type", "text/xml;charset=\"utf-8\"");
+    cG("Connection", "close");
   }
   
-  public final a bfi()
+  public final a bfQ()
   {
-    return this.kcv;
+    return this.kfM;
   }
   
-  public final Map<String, String> bfj()
+  public final Map<String, String> bfR()
   {
-    return this.kcy;
+    return this.kfP;
   }
   
-  public final void cE(String paramString1, String paramString2)
+  public final void cG(String paramString1, String paramString2)
   {
-    this.kcy.put(paramString1, paramString2);
+    this.kfP.put(paramString1, paramString2);
   }
   
   public final String getUrl()
@@ -61,15 +61,15 @@ public abstract class e
     static
     {
       AppMethodBeat.i(158886);
-      kcz = new a("GET", 0, "GET");
-      kcA = new a("POST", 1, "POST");
-      kcB = new a("NOTIFY", 2, "NOTIFY");
-      kcC = new a("M_SEARCH", 3, "M-SEARCH");
-      kcD = new a("SUBSCRIBE", 4, "SUBSCRIBE");
-      kcE = new a("UNSUBSCRIBE", 5, "UNSUBSCRIBE");
-      kcF = new a("RENEW_SUBSCRIBE", 6, "SUBSCRIBE");
-      kcG = new a("UNKNOWN", 7, "UNKNOWN");
-      kcH = new a[] { kcz, kcA, kcB, kcC, kcD, kcE, kcF, kcG };
+      kfQ = new a("GET", 0, "GET");
+      kfR = new a("POST", 1, "POST");
+      kfS = new a("NOTIFY", 2, "NOTIFY");
+      kfT = new a("M_SEARCH", 3, "M-SEARCH");
+      kfU = new a("SUBSCRIBE", 4, "SUBSCRIBE");
+      kfV = new a("UNSUBSCRIBE", 5, "UNSUBSCRIBE");
+      kfW = new a("RENEW_SUBSCRIBE", 6, "SUBSCRIBE");
+      kfX = new a("UNKNOWN", 7, "UNKNOWN");
+      kfY = new a[] { kfQ, kfR, kfS, kfT, kfU, kfV, kfW, kfX };
       AppMethodBeat.o(158886);
     }
     

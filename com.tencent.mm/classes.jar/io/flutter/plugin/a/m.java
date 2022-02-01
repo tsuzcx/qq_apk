@@ -7,9 +7,9 @@ import io.flutter.view.FlutterNativeView;
 
 public abstract interface m
 {
-  public abstract boolean bbH(String paramString);
+  public abstract boolean bdl(String paramString);
   
-  public abstract c em(String paramString);
+  public abstract c er(String paramString);
   
   public static abstract interface a
   {
@@ -23,19 +23,19 @@ public abstract interface m
   
   public static abstract interface c
   {
-    public abstract Activity JQ();
+    public abstract Activity JY();
     
-    public abstract Context JR();
+    public abstract Context JZ();
     
-    public abstract c JS();
+    public abstract c Ka();
     
-    public abstract io.flutter.view.c JT();
+    public abstract io.flutter.view.c Kb();
     
     public abstract String L(String paramString1, String paramString2);
     
     public abstract c a(m.f paramf);
     
-    public abstract String en(String paramString);
+    public abstract String es(String paramString);
   }
   
   public static abstract interface d
@@ -55,7 +55,7 @@ public abstract interface m
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     io.flutter.plugin.a.m
  * JD-Core Version:    0.7.0.1
  */

@@ -3,146 +3,146 @@ package com.tencent.mm.plugin.wenote.a;
 import android.content.Context;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.gt;
-import com.tencent.mm.g.a.nj;
-import com.tencent.mm.g.a.nj.a;
-import com.tencent.mm.model.ba;
+import com.tencent.mm.g.a.gu;
+import com.tencent.mm.g.a.nk;
+import com.tencent.mm.g.a.nk.a;
+import com.tencent.mm.model.bc;
 import com.tencent.mm.plugin.fav.a.ao;
 import com.tencent.mm.plugin.wenote.model.d;
 import com.tencent.mm.plugin.wenote.model.f;
 import com.tencent.mm.plugin.wenote.model.g.1;
 import com.tencent.mm.plugin.wenote.model.h;
 import com.tencent.mm.plugin.wenote.model.nativenote.manager.c.1;
-import com.tencent.mm.protocal.protobuf.akd;
-import com.tencent.mm.protocal.protobuf.akj;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.protocal.protobuf.akn;
+import com.tencent.mm.protocal.protobuf.akt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ar;
 import org.json.JSONException;
 
 public final class a
-  extends com.tencent.mm.sdk.b.c<nj>
+  extends com.tencent.mm.sdk.b.c<nk>
 {
   public a()
   {
     AppMethodBeat.i(161476);
-    this.__eventId = nj.class.getName().hashCode();
+    this.__eventId = nk.class.getName().hashCode();
     AppMethodBeat.o(161476);
   }
   
-  private static boolean a(nj paramnj)
+  private static boolean a(nk paramnk)
   {
     AppMethodBeat.i(30258);
-    switch (paramnj.dBj.type)
+    switch (paramnk.dCo.type)
     {
     }
     for (;;)
     {
       AppMethodBeat.o(30258);
       return false;
-      com.tencent.mm.plugin.wenote.model.c.eWI().EyD.b(paramnj);
+      com.tencent.mm.plugin.wenote.model.c.fau().EQZ.b(paramnk);
       continue;
-      Object localObject = new gt((byte)0);
-      com.tencent.mm.sdk.b.a.IbL.l((com.tencent.mm.sdk.b.b)localObject);
+      Object localObject = new gu((byte)0);
+      com.tencent.mm.sdk.b.a.IvT.l((com.tencent.mm.sdk.b.b)localObject);
       com.tencent.mm.plugin.wenote.model.g localg = new com.tencent.mm.plugin.wenote.model.g();
-      localg.EyQ = com.tencent.mm.plugin.wenote.b.b.a(paramnj.dBj);
-      localg.EyR = 1;
-      com.tencent.mm.plugin.wenote.model.c.eWI().EyD = localg;
-      if (paramnj.dBj.dBs != 4)
+      localg.ERm = com.tencent.mm.plugin.wenote.b.b.a(paramnk.dCo);
+      localg.ERn = 1;
+      com.tencent.mm.plugin.wenote.model.c.fau().EQZ = localg;
+      if (paramnk.dCo.dCx != 4)
       {
-        com.tencent.mm.plugin.report.service.g.yhR.f(14789, new Object[] { Integer.valueOf(1) });
-        ad.i("MicroMsg.NotifyWNNoteOperationListener", "do OPEN_NOTE_FROM_FAV");
-        if (paramnj.dBj.dBs == 5) {}
+        com.tencent.mm.plugin.report.service.g.yxI.f(14789, new Object[] { Integer.valueOf(1) });
+        ae.i("MicroMsg.NotifyWNNoteOperationListener", "do OPEN_NOTE_FROM_FAV");
+        if (paramnk.dCo.dCx == 5) {}
         for (int i = 1;; i = 0)
         {
-          if ((paramnj.dBj.field_favProto != null) && (paramnj.dBj.field_favProto.Gjv != null)) {
-            localg.EyX = paramnj.dBj.field_favProto.Gjv.sourceType;
+          if ((paramnk.dCo.field_favProto != null) && (paramnk.dCo.field_favProto.GCe != null)) {
+            localg.ERt = paramnk.dCo.field_favProto.GCe.sourceType;
           }
-          if (paramnj.dBj.dBq != null) {
-            localg.EyY = paramnj.dBj.dBq.getLong("edittime", 0L);
+          if (paramnk.dCo.dCv != null) {
+            localg.ERu = paramnk.dCo.dCv.getLong("edittime", 0L);
           }
           if (i == 0) {
             break label338;
           }
-          localg.Ezb = true;
-          localg.a(paramnj.dBj.field_localId, paramnj.dBj.context, Boolean.valueOf(paramnj.dBj.dBt), 0, 0, paramnj.dBj.dBu, paramnj.dBj.field_favProto);
+          localg.ERx = true;
+          localg.a(paramnk.dCo.field_localId, paramnk.dCo.context, Boolean.valueOf(paramnk.dCo.dCy), 0, 0, paramnk.dCo.dCz, paramnk.dCo.field_favProto);
           break;
         }
         label338:
-        localg.a(paramnj.dBj.field_localId, paramnj.dBj.context, Boolean.valueOf(paramnj.dBj.dBt), paramnj.dBj.dBm, 0, paramnj.dBj.dBu, null);
+        localg.a(paramnk.dCo.field_localId, paramnk.dCo.context, Boolean.valueOf(paramnk.dCo.dCy), paramnk.dCo.dCr, 0, paramnk.dCo.dCz, null);
       }
       else
       {
-        com.tencent.mm.plugin.report.service.g.yhR.f(14789, new Object[] { Integer.valueOf(4) });
-        ad.i("MicroMsg.NotifyWNNoteOperationListener", "do OPEN_NOTE_FROM_SNS");
-        Context localContext = paramnj.dBj.context;
-        akd localakd = paramnj.dBj.field_favProto;
-        Bundle localBundle = paramnj.dBj.dBq;
-        boolean bool = paramnj.dBj.dBt;
+        com.tencent.mm.plugin.report.service.g.yxI.f(14789, new Object[] { Integer.valueOf(4) });
+        ae.i("MicroMsg.NotifyWNNoteOperationListener", "do OPEN_NOTE_FROM_SNS");
+        Context localContext = paramnk.dCo.context;
+        akn localakn = paramnk.dCo.field_favProto;
+        Bundle localBundle = paramnk.dCo.dCv;
+        boolean bool = paramnk.dCo.dCy;
         localObject = "";
-        paramnj = "";
+        paramnk = "";
         long l = 0L;
         if (localBundle != null)
         {
           localObject = localBundle.getString("noteauthor", "");
-          paramnj = localBundle.getString("noteeditor", "");
+          paramnk = localBundle.getString("noteeditor", "");
           l = localBundle.getLong("edittime", 0L);
-          localg.EyS = localBundle.getString("snslocalid");
-          localg.EyT = localBundle.getString("notexml", "");
-          localg.EyZ = localBundle.getString("snsthumbpath", "");
-          localg.Eza = localBundle.getString("snsnotelinkxml", "");
+          localg.ERo = localBundle.getString("snslocalid");
+          localg.ERp = localBundle.getString("notexml", "");
+          localg.ERv = localBundle.getString("snsthumbpath", "");
+          localg.ERw = localBundle.getString("snsnotelinkxml", "");
         }
-        localg.dBy = System.currentTimeMillis();
-        localg.dBt = bool;
-        localg.EyN = false;
-        localg.EyW = ((String)localObject + ";" + paramnj + ";" + l);
+        localg.dCD = System.currentTimeMillis();
+        localg.dCy = bool;
+        localg.ERj = false;
+        localg.ERs = ((String)localObject + ";" + paramnk + ";" + l);
         localg.an(localContext, 4);
-        ba.ajF().ay(new g.1(localg, localakd));
+        bc.ajU().aw(new g.1(localg, localakn));
         continue;
-        ad.i("MicroMsg.NotifyWNNoteOperationListener", "do OPEN_NOTE_FROM_ADD");
+        ae.i("MicroMsg.NotifyWNNoteOperationListener", "do OPEN_NOTE_FROM_ADD");
         localObject = new com.tencent.mm.plugin.wenote.model.g();
-        ((com.tencent.mm.plugin.wenote.model.g)localObject).EyQ = com.tencent.mm.plugin.wenote.b.b.a(paramnj.dBj);
-        ((com.tencent.mm.plugin.wenote.model.g)localObject).EyR = 1;
-        ((com.tencent.mm.plugin.wenote.model.g)localObject).dBy = paramnj.dBj.field_localId;
-        com.tencent.mm.plugin.wenote.model.c.eWI().EyD = ((d)localObject);
-        paramnj = paramnj.dBj.context;
-        ((com.tencent.mm.plugin.wenote.model.g)localObject).EyN = true;
-        ((com.tencent.mm.plugin.wenote.model.g)localObject).an(paramnj, 2);
+        ((com.tencent.mm.plugin.wenote.model.g)localObject).ERm = com.tencent.mm.plugin.wenote.b.b.a(paramnk.dCo);
+        ((com.tencent.mm.plugin.wenote.model.g)localObject).ERn = 1;
+        ((com.tencent.mm.plugin.wenote.model.g)localObject).dCD = paramnk.dCo.field_localId;
+        com.tencent.mm.plugin.wenote.model.c.fau().EQZ = ((d)localObject);
+        paramnk = paramnk.dCo.context;
+        ((com.tencent.mm.plugin.wenote.model.g)localObject).ERj = true;
+        ((com.tencent.mm.plugin.wenote.model.g)localObject).an(paramnk, 2);
         continue;
-        paramnj.dBk.path = ao.cvC();
+        paramnk.dCp.path = ao.cxd();
         continue;
-        switch (paramnj.dBj.dBr)
+        switch (paramnk.dCo.dCw)
         {
         default: 
           break;
         case 2: 
-          h.aM(paramnj.dBj.lh);
+          h.aN(paramnk.dCo.lh);
           break;
         case 4: 
-          h.q(paramnj.dBj.context, paramnj.dBj.path, paramnj.dBj.dBs);
+          h.p(paramnk.dCo.context, paramnk.dCo.path, paramnk.dCo.dCx);
           break;
         case 5: 
-          h.aKf(paramnj.dBj.path);
+          h.aLB(paramnk.dCo.path);
           break;
         case 3: 
           try
           {
-            h.aKg(paramnj.dBj.dBn);
+            h.aLC(paramnk.dCo.dCs);
           }
-          catch (JSONException paramnj)
+          catch (JSONException paramnk)
           {
-            ad.printErrStackTrace("MicroMsg.NotifyWNNoteOperationListener", paramnj, "", new Object[0]);
+            ae.printErrStackTrace("MicroMsg.NotifyWNNoteOperationListener", paramnk, "", new Object[0]);
           }
           continue;
-          h.bG(paramnj.dBj.context, paramnj.dBj.path);
+          h.bH(paramnk.dCo.context, paramnk.dCo.path);
           continue;
-          f.I(paramnj.dBj.field_localId, paramnj.dBj.path);
+          f.J(paramnk.dCo.field_localId, paramnk.dCo.path);
           continue;
-          f.aL(paramnj.dBj.lh);
+          f.aM(paramnk.dCo.lh);
           continue;
-          paramnj = new gt((byte)0);
-          com.tencent.mm.sdk.b.a.IbL.l(paramnj);
-          paramnj = com.tencent.mm.plugin.wenote.model.nativenote.manager.c.eWU();
-          ba.ajF().n(new c.1(paramnj), 700L);
+          paramnk = new gu((byte)0);
+          com.tencent.mm.sdk.b.a.IvT.l(paramnk);
+          paramnk = com.tencent.mm.plugin.wenote.model.nativenote.manager.c.faG();
+          bc.ajU().n(new c.1(paramnk), 700L);
         }
       }
     }

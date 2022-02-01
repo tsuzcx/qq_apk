@@ -14,46 +14,46 @@ import java.util.List;
 public abstract class q
   extends p
 {
-  private final d.l.b.a.b.k.a.b.f NyY;
-  private final d NyZ;
-  private final d.l.b.a.b.e.b.a Nyy;
-  final y Nza;
-  private a.l Nzb;
-  private h Nzc;
+  private final d.l.b.a.b.e.b.a NVF;
+  private final d.l.b.a.b.k.a.b.f NWf;
+  private final d NWg;
+  final y NWh;
+  private a.l NWi;
+  private h NWj;
   
   public q(d.l.b.a.b.f.b paramb, j paramj, d.l.b.a.b.b.y paramy, a.l paraml, d.l.b.a.b.e.b.a parama)
   {
     super(paramb, paramj, paramy);
-    this.Nyy = parama;
-    this.NyY = null;
-    paramb = paraml.Nmh;
+    this.NVF = parama;
+    this.NWf = null;
+    paramb = paraml.NJn;
     d.g.b.p.g(paramb, "proto.strings");
-    paramj = paraml.Nmi;
+    paramj = paraml.NJo;
     d.g.b.p.g(paramj, "proto.qualifiedNames");
-    this.NyZ = new d(paramb, paramj);
-    this.Nza = new y(paraml, (c)this.NyZ, this.Nyy, (d.g.a.b)new a(this));
-    this.Nzb = paraml;
+    this.NWg = new d(paramb, paramj);
+    this.NWh = new y(paraml, (c)this.NWg, this.NVF, (d.g.a.b)new a(this));
+    this.NWi = paraml;
   }
   
   public final void b(l paraml)
   {
     d.g.b.p.h(paraml, "components");
-    Object localObject = this.Nzb;
+    Object localObject = this.NWi;
     if (localObject == null) {
       throw ((Throwable)new IllegalStateException("Repeated call to DeserializedPackageFragmentImpl::initialize".toString()));
     }
-    this.Nzb = null;
+    this.NWi = null;
     ab localab = (ab)this;
-    localObject = ((a.l)localObject).Nmj;
+    localObject = ((a.l)localObject).NJp;
     d.g.b.p.g(localObject, "proto.`package`");
-    this.Nzc = ((h)new i(localab, (a.k)localObject, (c)this.NyZ, this.Nyy, this.NyY, paraml, (d.g.a.a)new b(this)));
+    this.NWj = ((h)new i(localab, (a.k)localObject, (c)this.NWg, this.NVF, this.NWf, paraml, (d.g.a.a)new b(this)));
   }
   
-  public final h gil()
+  public final h gmN()
   {
-    h localh = this.Nzc;
+    h localh = this.NWj;
     if (localh == null) {
-      d.g.b.p.bcb("_memberScope");
+      d.g.b.p.bdF("_memberScope");
     }
     return localh;
   }
@@ -80,7 +80,7 @@ public abstract class q
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.k.a.q
  * JD-Core Version:    0.7.0.1
  */

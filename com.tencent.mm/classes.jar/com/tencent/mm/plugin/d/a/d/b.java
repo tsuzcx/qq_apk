@@ -13,86 +13,86 @@ import com.tencent.mm.plugin.d.a.c.a;
 import com.tencent.mm.plugin.d.a.c.a.a;
 import com.tencent.mm.plugin.d.a.c.a.b;
 import com.tencent.mm.plugin.exdevice.service.v;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aq;
 import java.lang.ref.WeakReference;
 import java.util.HashSet;
 import junit.framework.Assert;
 
 public final class b
 {
-  private ap mHandler;
-  public com.tencent.mm.plugin.d.a.b.b nTs;
-  public a nTt;
-  c nTu;
-  final HashSet<String> nTv;
+  private aq mHandler;
+  public com.tencent.mm.plugin.d.a.b.b nYY;
+  public a nYZ;
+  c nZa;
+  final HashSet<String> nZb;
   
-  public b(Context paramContext, c paramc, ap paramap)
+  public b(Context paramContext, c paramc, aq paramaq)
   {
     AppMethodBeat.i(179586);
     this.mHandler = null;
-    this.nTs = null;
-    this.nTt = null;
-    this.nTu = null;
-    this.nTv = new HashSet();
-    this.nTt = new a(paramap);
+    this.nYY = null;
+    this.nYZ = null;
+    this.nZa = null;
+    this.nZb = new HashSet();
+    this.nYZ = new a(paramaq);
     Object localObject;
     if (Build.VERSION.SDK_INT >= 18)
     {
-      this.nTs = new com.tencent.mm.plugin.d.a.b.b(paramap.getSerialTag());
-      paramap = this.nTs;
+      this.nYY = new com.tencent.mm.plugin.d.a.b.b(paramaq.getSerialTag());
+      paramaq = this.nYY;
       localObject = new b();
-      ad.i("MicroMsg.exdevice.BluetoothLEManager", "------init------");
+      ae.i("MicroMsg.exdevice.BluetoothLEManager", "------init------");
       Assert.assertNotNull(paramContext);
       Assert.assertNotNull(localObject);
-      if (!paramap.mIsInit)
+      if (!paramaq.mIsInit)
       {
-        paramap.mIsInit = true;
-        paramap.IR = paramContext;
-        paramap.nPY = ((com.tencent.mm.plugin.d.a.b.b.a)localObject);
-        paramap.nQb = com.tencent.mm.plugin.d.a.b.c.bMI();
-        if (d.ly(21)) {
-          paramap.nQc = g.bMN();
+        paramaq.mIsInit = true;
+        paramaq.IR = paramContext;
+        paramaq.nVE = ((com.tencent.mm.plugin.d.a.b.b.a)localObject);
+        paramaq.nVH = com.tencent.mm.plugin.d.a.b.c.bNG();
+        if (d.lA(21)) {
+          paramaq.nVI = g.bNL();
         }
-        if (paramap.bMG()) {
+        if (paramaq.bNE()) {
           break label303;
         }
-        ad.w("MicroMsg.exdevice.BluetoothLEManager", "BLE Unsupport!!!");
+        ae.w("MicroMsg.exdevice.BluetoothLEManager", "BLE Unsupport!!!");
       }
     }
     for (;;)
     {
-      paramap = this.nTt;
+      paramaq = this.nYZ;
       localObject = new a();
-      ad.i("MicroMsg.exdevice.BluetoothChatManager", "------init------");
+      ae.i("MicroMsg.exdevice.BluetoothChatManager", "------init------");
       Assert.assertNotNull(paramContext);
       Assert.assertNotNull(localObject);
-      if (!paramap.mIsInit)
+      if (!paramaq.mIsInit)
       {
-        paramap.mIsInit = true;
-        paramap.nSW = ((a.a)localObject);
-        paramap.nSX = paramContext;
+        paramaq.mIsInit = true;
+        paramaq.nYC = ((a.a)localObject);
+        paramaq.nYD = paramContext;
         paramContext = new IntentFilter();
         paramContext.addAction("android.bluetooth.adapter.action.DISCOVERY_FINISHED");
         paramContext.addAction("android.bluetooth.device.action.FOUND");
         paramContext.addAction("android.bluetooth.adapter.action.SCAN_MODE_CHANGED");
         paramContext.addAction("android.bluetooth.device.action.ACL_DISCONNECTED");
-        paramap.nSX.registerReceiver(paramap.mReceiver, paramContext);
-        paramap.nPt = BluetoothAdapter.getDefaultAdapter();
+        paramaq.nYD.registerReceiver(paramaq.mReceiver, paramContext);
+        paramaq.nUZ = BluetoothAdapter.getDefaultAdapter();
       }
-      this.mHandler = new c(v.clW().imu.getSerialTag(), this);
-      this.nTu = paramc;
+      this.mHandler = new c(v.cnm().ipo.getSerialTag(), this);
+      this.nZa = paramc;
       AppMethodBeat.o(179586);
       return;
       label303:
-      paramap.nPt = ((BluetoothManager)paramap.IR.getSystemService("bluetooth")).getAdapter();
+      paramaq.nUZ = ((BluetoothManager)paramaq.IR.getSystemService("bluetooth")).getAdapter();
     }
   }
   
   public final boolean d(int paramInt, int... paramVarArgs)
   {
     AppMethodBeat.i(22625);
-    ad.i("MicroMsg.exdevice.BluetoothSDKManager", "---scan--- aBluetoothVersion = ".concat(String.valueOf(paramInt)));
+    ae.i("MicroMsg.exdevice.BluetoothSDKManager", "---scan--- aBluetoothVersion = ".concat(String.valueOf(paramInt)));
     switch (paramInt)
     {
     default: 
@@ -100,29 +100,29 @@ public final class b
       AppMethodBeat.o(22625);
       return false;
     case 1: 
-      if (this.nTt == null)
+      if (this.nYZ == null)
       {
-        ad.e("MicroMsg.exdevice.BluetoothSDKManager", "mMrgBC == null");
+        ae.e("MicroMsg.exdevice.BluetoothSDKManager", "mMrgBC == null");
         AppMethodBeat.o(22625);
         return false;
       }
-      bool = this.nTt.jj(true);
+      bool = this.nYZ.jh(true);
       AppMethodBeat.o(22625);
       return bool;
     }
-    if (this.nTs == null)
+    if (this.nYY == null)
     {
-      ad.e("MicroMsg.exdevice.BluetoothSDKManager", "mMrgBLE == null");
+      ae.e("MicroMsg.exdevice.BluetoothSDKManager", "mMrgBLE == null");
       AppMethodBeat.o(22625);
       return false;
     }
     if (paramVarArgs == null)
     {
-      bool = this.nTs.a(true, new int[0]);
+      bool = this.nYY.a(true, new int[0]);
       AppMethodBeat.o(22625);
       return bool;
     }
-    boolean bool = this.nTs.a(true, paramVarArgs);
+    boolean bool = this.nYY.a(true, paramVarArgs);
     AppMethodBeat.o(22625);
     return bool;
   }
@@ -130,7 +130,7 @@ public final class b
   public final void e(long paramLong1, long paramLong2, int paramInt)
   {
     AppMethodBeat.i(22626);
-    ad.i("MicroMsg.exdevice.BluetoothSDKManager", "***createSession*** deviceId = " + paramLong1 + "aBluetoothVersion = " + paramInt);
+    ae.i("MicroMsg.exdevice.BluetoothSDKManager", "***createSession*** deviceId = " + paramLong1 + "aBluetoothVersion = " + paramInt);
     switch (paramInt)
     {
     default: 
@@ -138,18 +138,18 @@ public final class b
       AppMethodBeat.o(22626);
       return;
     case 1: 
-      if (this.nTt == null)
+      if (this.nYZ == null)
       {
-        ad.e("MicroMsg.exdevice.BluetoothSDKManager", "mMrgBC == null");
+        ae.e("MicroMsg.exdevice.BluetoothSDKManager", "mMrgBC == null");
         AppMethodBeat.o(22626);
         return;
       }
-      localObject = this.nTt;
-      ad.i("MicroMsg.exdevice.BluetoothChatManager", "createSession");
+      localObject = this.nYZ;
+      ae.i("MicroMsg.exdevice.BluetoothChatManager", "createSession");
       Assert.assertTrue(((a)localObject).mIsInit);
-      if (!((a)localObject).bMP())
+      if (!((a)localObject).bNN())
       {
-        ad.e("MicroMsg.exdevice.BluetoothChatManager", "BC Unsupport!!!");
+        ae.e("MicroMsg.exdevice.BluetoothChatManager", "BC Unsupport!!!");
         AppMethodBeat.o(22626);
         return;
       }
@@ -157,18 +157,18 @@ public final class b
       AppMethodBeat.o(22626);
       return;
     }
-    if (this.nTs == null)
+    if (this.nYY == null)
     {
-      ad.e("MicroMsg.exdevice.BluetoothSDKManager", "mMrgBLE == null");
+      ae.e("MicroMsg.exdevice.BluetoothSDKManager", "mMrgBLE == null");
       AppMethodBeat.o(22626);
       return;
     }
-    Object localObject = this.nTs;
-    ad.i("MicroMsg.exdevice.BluetoothLEManager", "------createSession------ macAddr = %d channelId = %d", new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2) });
+    Object localObject = this.nYY;
+    ae.i("MicroMsg.exdevice.BluetoothLEManager", "------createSession------ macAddr = %d channelId = %d", new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2) });
     Assert.assertTrue(((com.tencent.mm.plugin.d.a.b.b)localObject).mIsInit);
-    if (!((com.tencent.mm.plugin.d.a.b.b)localObject).bMG())
+    if (!((com.tencent.mm.plugin.d.a.b.b)localObject).bNE())
     {
-      ad.e("MicroMsg.exdevice.BluetoothLEManager", "BLE Unsupport");
+      ae.e("MicroMsg.exdevice.BluetoothLEManager", "BLE Unsupport");
       AppMethodBeat.o(22626);
       return;
     }
@@ -184,17 +184,17 @@ public final class b
     public final void b(long paramLong, byte[] paramArrayOfByte)
     {
       AppMethodBeat.i(22613);
-      ad.i("MicroMsg.exdevice.BluetoothSDKManager", "***BC onRecv*** sessionId = ".concat(String.valueOf(paramLong)));
+      ae.i("MicroMsg.exdevice.BluetoothSDKManager", "***BC onRecv*** sessionId = ".concat(String.valueOf(paramLong)));
       paramArrayOfByte = new b.h(paramLong, paramArrayOfByte);
       Assert.assertTrue(b.a(b.this, 1, 1, paramArrayOfByte));
       AppMethodBeat.o(22613);
     }
     
-    public final void bMH()
+    public final void bNF()
     {
       AppMethodBeat.i(22610);
-      ad.i("MicroMsg.exdevice.BluetoothSDKManager", "***BC onDiscoverFinished***");
-      b.this.nTv.clear();
+      ae.i("MicroMsg.exdevice.BluetoothSDKManager", "***BC onDiscoverFinished***");
+      b.this.nZb.clear();
       Assert.assertTrue(b.a(b.this, 2, 1, null));
       AppMethodBeat.o(22610);
     }
@@ -202,37 +202,37 @@ public final class b
     public final void c(long paramLong, int paramInt, String paramString)
     {
       AppMethodBeat.i(22615);
-      ad.i("MicroMsg.exdevice.BluetoothSDKManager", "***BC onError*** SessionId = " + paramLong + " errorCode = " + paramInt + " errorInfo = " + paramString);
+      ae.i("MicroMsg.exdevice.BluetoothSDKManager", "***BC onError*** SessionId = " + paramLong + " errorCode = " + paramInt + " errorInfo = " + paramString);
       paramString = new b.g(paramLong, paramInt, paramString);
       Assert.assertTrue(b.a(b.this, 5, 1, paramString));
       AppMethodBeat.o(22615);
     }
     
-    public final void eG(String paramString1, String paramString2)
+    public final void eJ(String paramString1, String paramString2)
     {
       AppMethodBeat.i(22611);
       b localb = b.this;
       int i;
       if (paramString1 == null)
       {
-        ad.e("MicroMsg.exdevice.BluetoothSDKManager", "null == aDeviceMac");
+        ae.e("MicroMsg.exdevice.BluetoothSDKManager", "null == aDeviceMac");
         i = 0;
       }
       while (i == 0)
       {
         AppMethodBeat.o(22611);
         return;
-        if (localb.nTv.contains(paramString1))
+        if (localb.nZb.contains(paramString1))
         {
           i = 0;
         }
         else
         {
-          localb.nTv.add(paramString1);
+          localb.nZb.add(paramString1);
           i = 1;
         }
       }
-      ad.i("MicroMsg.exdevice.BluetoothSDKManager", "***BC onDiscover*** deviceMac = " + paramString1 + "deviceName = " + paramString2);
+      ae.i("MicroMsg.exdevice.BluetoothSDKManager", "***BC onDiscover*** deviceMac = " + paramString1 + "deviceName = " + paramString2);
       paramString1 = new b.i(paramString1, paramString2, 0, null);
       Assert.assertTrue(b.a(b.this, 3, 1, paramString1));
       AppMethodBeat.o(22611);
@@ -241,7 +241,7 @@ public final class b
     public final void i(long paramLong1, long paramLong2, long paramLong3)
     {
       AppMethodBeat.i(22609);
-      ad.i("MicroMsg.exdevice.BluetoothSDKManager", "***BC onSessionCreate*** sessionID = " + paramLong1 + " deviceID = " + paramLong2);
+      ae.i("MicroMsg.exdevice.BluetoothSDKManager", "***BC onSessionCreate*** sessionID = " + paramLong1 + " deviceID = " + paramLong2);
       b.d locald = new b.d(paramLong1, paramLong2, paramLong3);
       Assert.assertTrue(b.a(b.this, 6, 1, locald));
       AppMethodBeat.o(22609);
@@ -250,7 +250,7 @@ public final class b
     public final void l(long paramLong, boolean paramBoolean)
     {
       AppMethodBeat.i(22612);
-      ad.i("MicroMsg.exdevice.BluetoothSDKManager", "***BC onConnected*** SessionId = " + paramLong + " Connected = " + paramBoolean);
+      ae.i("MicroMsg.exdevice.BluetoothSDKManager", "***BC onConnected*** SessionId = " + paramLong + " Connected = " + paramBoolean);
       b.f localf = new b.f(paramLong, paramBoolean);
       Assert.assertTrue(b.a(b.this, 4, 1, localf));
       AppMethodBeat.o(22612);
@@ -259,7 +259,7 @@ public final class b
     public final void m(long paramLong, boolean paramBoolean)
     {
       AppMethodBeat.i(22614);
-      ad.i("MicroMsg.exdevice.BluetoothSDKManager", "***BC onSend*** SessionId = " + paramLong + " success = " + paramBoolean);
+      ae.i("MicroMsg.exdevice.BluetoothSDKManager", "***BC onSend*** SessionId = " + paramLong + " success = " + paramBoolean);
       b.j localj = new b.j(paramLong, paramBoolean);
       Assert.assertTrue(b.a(b.this, 0, 1, localj));
       AppMethodBeat.o(22614);
@@ -274,7 +274,7 @@ public final class b
     public final void a(String paramString1, String paramString2, int paramInt, byte[] paramArrayOfByte)
     {
       AppMethodBeat.i(22618);
-      ad.d("MicroMsg.exdevice.BluetoothSDKManager", "---BLE onDiscover---, %s, %s", new Object[] { paramString1, paramString2 });
+      ae.d("MicroMsg.exdevice.BluetoothSDKManager", "---BLE onDiscover---, %s, %s", new Object[] { paramString1, paramString2 });
       paramString1 = new b.i(paramString1, paramString2, paramInt, paramArrayOfByte);
       Assert.assertTrue(b.a(b.this, 3, 0, paramString1));
       AppMethodBeat.o(22618);
@@ -283,17 +283,17 @@ public final class b
     public final void b(long paramLong, byte[] paramArrayOfByte)
     {
       AppMethodBeat.i(22620);
-      ad.i("MicroMsg.exdevice.BluetoothSDKManager", "***BLE onRecv*** sessionId = ".concat(String.valueOf(paramLong)));
+      ae.i("MicroMsg.exdevice.BluetoothSDKManager", "***BLE onRecv*** sessionId = ".concat(String.valueOf(paramLong)));
       paramArrayOfByte = new b.h(paramLong, paramArrayOfByte);
       Assert.assertTrue(b.a(b.this, 1, 0, paramArrayOfByte));
       AppMethodBeat.o(22620);
     }
     
-    public final void bMH()
+    public final void bNF()
     {
       AppMethodBeat.i(22617);
-      ad.i("MicroMsg.exdevice.BluetoothSDKManager", "***BLE onDiscoverFinished***");
-      b.this.nTv.clear();
+      ae.i("MicroMsg.exdevice.BluetoothSDKManager", "***BLE onDiscoverFinished***");
+      b.this.nZb.clear();
       Assert.assertTrue(b.a(b.this, 2, 0, null));
       AppMethodBeat.o(22617);
     }
@@ -301,7 +301,7 @@ public final class b
     public final void i(long paramLong1, long paramLong2, long paramLong3)
     {
       AppMethodBeat.i(22616);
-      ad.i("MicroMsg.exdevice.BluetoothSDKManager", "***BLE onSessionCreate*** sessionID = " + paramLong1 + " deviceID = " + paramLong2);
+      ae.i("MicroMsg.exdevice.BluetoothSDKManager", "***BLE onSessionCreate*** sessionID = " + paramLong1 + " deviceID = " + paramLong2);
       b.d locald = new b.d(paramLong1, paramLong2, paramLong3);
       Assert.assertTrue(b.a(b.this, 6, 0, locald));
       AppMethodBeat.o(22616);
@@ -310,7 +310,7 @@ public final class b
     public final void l(long paramLong, boolean paramBoolean)
     {
       AppMethodBeat.i(22619);
-      ad.i("MicroMsg.exdevice.BluetoothSDKManager", "***BLE onConnected*** SessionId = " + paramLong + " Connected = " + paramBoolean);
+      ae.i("MicroMsg.exdevice.BluetoothSDKManager", "***BLE onConnected*** SessionId = " + paramLong + " Connected = " + paramBoolean);
       b.f localf = new b.f(paramLong, paramBoolean);
       Assert.assertTrue(b.a(b.this, 4, 0, localf));
       AppMethodBeat.o(22619);
@@ -319,7 +319,7 @@ public final class b
     public final void m(long paramLong, boolean paramBoolean)
     {
       AppMethodBeat.i(22621);
-      ad.i("MicroMsg.exdevice.BluetoothSDKManager", "***BLE onSend*** SessionId = " + paramLong + " success = " + paramBoolean);
+      ae.i("MicroMsg.exdevice.BluetoothSDKManager", "***BLE onSend*** SessionId = " + paramLong + " success = " + paramBoolean);
       b.j localj = new b.j(paramLong, paramBoolean);
       Assert.assertTrue(b.a(b.this, 0, 0, localj));
       AppMethodBeat.o(22621);
@@ -327,30 +327,30 @@ public final class b
   }
   
   static final class c
-    extends ap
+    extends aq
   {
-    private WeakReference<b> nQG;
+    private WeakReference<b> nWm;
     
     public c(String paramString, b paramb)
     {
       super();
       AppMethodBeat.i(179585);
-      this.nQG = null;
-      this.nQG = new WeakReference(paramb);
+      this.nWm = null;
+      this.nWm = new WeakReference(paramb);
       AppMethodBeat.o(179585);
     }
     
     public final void handleMessage(Message paramMessage)
     {
       AppMethodBeat.i(22623);
-      b localb = (b)this.nQG.get();
+      b localb = (b)this.nWm.get();
       if (localb == null)
       {
-        ad.w("MicroMsg.exdevice.BluetoothSDKManager", "null == BluetoothSdkManager");
+        ae.w("MicroMsg.exdevice.BluetoothSDKManager", "null == BluetoothSdkManager");
         AppMethodBeat.o(22623);
         return;
       }
-      ad.i("MicroMsg.exdevice.BluetoothSDKManager", "handleMessage Message.What = " + paramMessage.what);
+      ae.i("MicroMsg.exdevice.BluetoothSDKManager", "handleMessage Message.What = " + paramMessage.what);
       switch (paramMessage.what)
       {
       }
@@ -359,30 +359,30 @@ public final class b
         AppMethodBeat.o(22623);
         return;
         paramMessage = (b.f)paramMessage.obj;
-        localb.nTu.l(paramMessage.nTy, paramMessage.nTz);
+        localb.nZa.l(paramMessage.nZe, paramMessage.nZf);
         AppMethodBeat.o(22623);
         return;
         paramMessage = (b.g)paramMessage.obj;
-        localb.nTu.th(paramMessage.mSessionId);
+        localb.nZa.tv(paramMessage.mSessionId);
         AppMethodBeat.o(22623);
         return;
         paramMessage = (b.h)paramMessage.obj;
-        localb.nTu.b(paramMessage.mSessionId, paramMessage.mData);
+        localb.nZa.b(paramMessage.mSessionId, paramMessage.mData);
         AppMethodBeat.o(22623);
         return;
-        localb.nTu.yV(paramMessage.arg1);
+        localb.nZa.ze(paramMessage.arg1);
         AppMethodBeat.o(22623);
         return;
         b.i locali = (b.i)paramMessage.obj;
-        localb.nTu.a(locali.nTB, locali.mDeviceName, paramMessage.arg1, locali.kGT, locali.nTC);
+        localb.nZa.a(locali.nZh, locali.mDeviceName, paramMessage.arg1, locali.kKi, locali.nZi);
         AppMethodBeat.o(22623);
         return;
         paramMessage = (b.j)paramMessage.obj;
-        localb.nTu.m(paramMessage.nTy, paramMessage.nTz);
+        localb.nZa.m(paramMessage.nZe, paramMessage.nZf);
         AppMethodBeat.o(22623);
         return;
         paramMessage = (b.d)paramMessage.obj;
-        localb.nTu.i(paramMessage.mSessionId, paramMessage.nTx, paramMessage.nQl);
+        localb.nZa.i(paramMessage.mSessionId, paramMessage.nZd, paramMessage.nVR);
       }
     }
   }
@@ -390,26 +390,26 @@ public final class b
   static final class d
   {
     long mSessionId;
-    long nQl;
-    long nTx;
+    long nVR;
+    long nZd;
     
     public d(long paramLong1, long paramLong2, long paramLong3)
     {
       this.mSessionId = paramLong1;
-      this.nTx = paramLong2;
-      this.nQl = paramLong3;
+      this.nZd = paramLong2;
+      this.nVR = paramLong3;
     }
   }
   
   static class e
   {
-    long nTy;
-    boolean nTz;
+    long nZe;
+    boolean nZf;
     
     public e(long paramLong, boolean paramBoolean)
     {
-      this.nTy = paramLong;
-      this.nTz = paramBoolean;
+      this.nZe = paramLong;
+      this.nZf = paramBoolean;
     }
   }
   
@@ -426,13 +426,13 @@ public final class b
   {
     private int mErrorCode;
     long mSessionId;
-    private String nTA;
+    private String nZg;
     
     public g(long paramLong, int paramInt, String paramString)
     {
       this.mSessionId = paramLong;
       this.mErrorCode = paramInt;
-      this.nTA = paramString;
+      this.nZg = paramString;
     }
   }
   
@@ -450,17 +450,17 @@ public final class b
   
   static final class i
   {
-    int kGT;
+    int kKi;
     String mDeviceName;
-    String nTB;
-    byte[] nTC;
+    String nZh;
+    byte[] nZi;
     
     public i(String paramString1, String paramString2, int paramInt, byte[] paramArrayOfByte)
     {
-      this.nTB = paramString1;
+      this.nZh = paramString1;
       this.mDeviceName = paramString2;
-      this.kGT = paramInt;
-      this.nTC = paramArrayOfByte;
+      this.kKi = paramInt;
+      this.nZi = paramArrayOfByte;
     }
   }
   

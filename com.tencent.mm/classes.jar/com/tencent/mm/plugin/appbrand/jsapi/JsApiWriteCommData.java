@@ -8,9 +8,9 @@ import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandMainProcessService;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
 import org.json.JSONObject;
 
 public final class JsApiWriteCommData
@@ -31,10 +31,10 @@ public final class JsApiWriteCommData
   {
     public static final Parcelable.Creator<WriteCommDataTask> CREATOR;
     private int cgA;
-    private m ksO;
-    private boolean ksW;
-    private String ksX;
-    private c kuU;
+    private c jQp;
+    private m kwe;
+    private boolean kwm;
+    private String kwn;
     private String mData;
     private String mPackageName;
     
@@ -55,48 +55,48 @@ public final class JsApiWriteCommData
     public WriteCommDataTask(m paramm, c paramc, int paramInt, JSONObject paramJSONObject)
     {
       AppMethodBeat.i(139847);
-      this.ksO = paramm;
-      this.kuU = paramc;
+      this.kwe = paramm;
+      this.jQp = paramc;
       this.cgA = paramInt;
       this.mPackageName = paramJSONObject.optString("packageName");
       this.mData = paramJSONObject.optString("data");
-      this.ksW = true;
+      this.kwm = true;
       AppMethodBeat.o(139847);
     }
     
-    public final void aOA()
+    public final void aOX()
     {
       boolean bool = false;
       AppMethodBeat.i(139849);
-      if (bt.isNullOrNil(this.mPackageName)) {
-        ad.e("MicroMsg.JsApiWriteCommData", "packageName nil");
+      if (bu.isNullOrNil(this.mPackageName)) {
+        ae.e("MicroMsg.JsApiWriteCommData", "packageName nil");
       }
       for (;;)
       {
-        bhX();
+        biG();
         AppMethodBeat.o(139849);
         return;
-        if (!aj.getContext().getSharedPreferences(aj.getPackageName() + "_comm_preferences", 0).edit().putString(this.mPackageName, this.mData).commit()) {
+        if (!ak.getContext().getSharedPreferences(ak.getPackageName() + "_comm_preferences", 0).edit().putString(this.mPackageName, this.mData).commit()) {
           bool = true;
         }
-        this.ksW = bool;
+        this.kwm = bool;
       }
     }
     
-    public final void aOB()
+    public final void aOY()
     {
       AppMethodBeat.i(139850);
-      if (this.ksW)
+      if (this.kwm)
       {
-        if (bt.isNullOrNil(this.ksX)) {}
-        for (String str = "fail";; str = String.format("fail:%s", new Object[] { this.ksX }))
+        if (bu.isNullOrNil(this.kwn)) {}
+        for (String str = "fail";; str = String.format("fail:%s", new Object[] { this.kwn }))
         {
-          this.kuU.h(this.cgA, this.ksO.e(str, null));
+          this.jQp.h(this.cgA, this.kwe.e(str, null));
           AppMethodBeat.o(139850);
           return;
         }
       }
-      this.kuU.h(this.cgA, this.ksO.e("ok", null));
+      this.jQp.h(this.cgA, this.kwe.e("ok", null));
       AppMethodBeat.o(139850);
     }
     
@@ -109,8 +109,8 @@ public final class JsApiWriteCommData
       if (paramParcel.readInt() == 1) {}
       for (;;)
       {
-        this.ksW = bool;
-        this.ksX = paramParcel.readString();
+        this.kwm = bool;
+        this.kwn = paramParcel.readString();
         AppMethodBeat.o(139851);
         return;
         bool = false;
@@ -122,11 +122,11 @@ public final class JsApiWriteCommData
       AppMethodBeat.i(139852);
       paramParcel.writeString(this.mPackageName);
       paramParcel.writeString(this.mData);
-      if (this.ksW) {}
+      if (this.kwm) {}
       for (paramInt = 1;; paramInt = 0)
       {
         paramParcel.writeInt(paramInt);
-        paramParcel.writeString(this.ksX);
+        paramParcel.writeString(this.kwn);
         AppMethodBeat.o(139852);
         return;
       }

@@ -4,9 +4,9 @@ import java.util.List;
 
 public abstract interface g$b
 {
-  public abstract void aNQ();
+  public abstract void aOo();
   
-  public abstract void aNU();
+  public abstract void aOs();
   
   public abstract void b(String[] paramArrayOfString, List<String> paramList);
   

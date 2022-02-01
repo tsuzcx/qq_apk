@@ -334,9 +334,9 @@ public class V8
   
   public static void broadcastMessage(int paramInt, String paramString)
   {
-    AppMethodBeat.i(213643);
+    AppMethodBeat.i(196758);
     _nativeTransBroadcastMessage(paramInt, paramString);
-    AppMethodBeat.o(213643);
+    AppMethodBeat.o(196758);
   }
   
   private void checkArgs(Object[] paramArrayOfObject)
@@ -659,9 +659,9 @@ public class V8
   
   public static long getNativeTransManager()
   {
-    AppMethodBeat.i(213641);
+    AppMethodBeat.i(196756);
     long l = _getNativeTransManager();
-    AppMethodBeat.o(213641);
+    AppMethodBeat.o(196756);
     return l;
   }
   
@@ -817,9 +817,9 @@ public class V8
   
   public static void postMessage(int paramInt, String paramString)
   {
-    AppMethodBeat.i(213642);
+    AppMethodBeat.i(196757);
     _nativeTransPostMessage(paramInt, paramString);
-    AppMethodBeat.o(213642);
+    AppMethodBeat.o(196757);
   }
   
   private void releaseArguments(Object[] paramArrayOfObject, boolean paramBoolean)
@@ -1501,9 +1501,9 @@ public class V8
   
   public void enableNativeTrans()
   {
-    AppMethodBeat.i(213640);
+    AppMethodBeat.i(196755);
     _enableNativeTrans(this.v8RuntimePtr);
-    AppMethodBeat.o(213640);
+    AppMethodBeat.o(196755);
   }
   
   protected boolean equals(long paramLong1, long paramLong2, long paramLong3)
@@ -2195,49 +2195,49 @@ public class V8
   
   public void nativeDispatch()
   {
-    AppMethodBeat.i(213635);
+    AppMethodBeat.i(196750);
     _nativeDispatch(this.v8RuntimePtr);
-    AppMethodBeat.o(213635);
+    AppMethodBeat.o(196750);
   }
   
   public void nativeLoopStop()
   {
-    AppMethodBeat.i(213636);
+    AppMethodBeat.i(196751);
     _nativeLoopStop(this.v8RuntimePtr);
-    AppMethodBeat.o(213636);
+    AppMethodBeat.o(196751);
   }
   
   public void nativeMessageLoop()
   {
-    AppMethodBeat.i(213634);
+    AppMethodBeat.i(196749);
     _nativeMessageLoop(this.v8RuntimePtr);
-    AppMethodBeat.o(213634);
+    AppMethodBeat.o(196749);
   }
   
   protected void onNativeRunJavaTask()
   {
-    AppMethodBeat.i(213637);
+    AppMethodBeat.i(196752);
     if (this.nativeJavaCallback_ != null) {
       this.nativeJavaCallback_.run();
     }
-    AppMethodBeat.o(213637);
+    AppMethodBeat.o(196752);
   }
   
   protected void onNativeTransMsgDispatchByJava()
   {
-    AppMethodBeat.i(213639);
+    AppMethodBeat.i(196754);
     if (this._javaTaskScheduler != null) {
       this._javaTaskScheduler.Schedule(new Runnable()
       {
         public void run()
         {
-          AppMethodBeat.i(213633);
+          AppMethodBeat.i(196748);
           V8.access$200(V8.this.v8RuntimePtr);
-          AppMethodBeat.o(213633);
+          AppMethodBeat.o(196748);
         }
       });
     }
-    AppMethodBeat.o(213639);
+    AppMethodBeat.o(196754);
   }
   
   boolean pumpMessageLoop()
@@ -2465,10 +2465,10 @@ public class V8
   
   public void setJavaTaskScheduler(JavaTaskScheduler paramJavaTaskScheduler)
   {
-    AppMethodBeat.i(213638);
+    AppMethodBeat.i(196753);
     this._javaTaskScheduler = paramJavaTaskScheduler;
     _nativeTransSetJavaSchedule(1L);
-    AppMethodBeat.o(213638);
+    AppMethodBeat.o(196753);
   }
   
   public void setNativeJavaCallback(Runnable paramRunnable)
@@ -2601,7 +2601,7 @@ public class V8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.eclipsesource.v8.V8
  * JD-Core Version:    0.7.0.1
  */

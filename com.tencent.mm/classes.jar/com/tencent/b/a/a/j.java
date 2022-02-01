@@ -2,8 +2,8 @@ package com.tencent.b.a.a;
 
 public final class j
 {
-  public static int cOK = 0;
-  public static int cOL = 0;
+  public static int cPu = 0;
+  public static int cPv = 0;
 }
 
 

@@ -4,7 +4,7 @@ import com.tencent.mm.plugin.appbrand.appusage.LocalUsageInfo;
 
 public abstract interface d$a
 {
-  public abstract LocalUsageInfo buY();
+  public abstract LocalUsageInfo bvJ();
 }
 
 

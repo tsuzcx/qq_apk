@@ -16,14 +16,14 @@ final class j$1
     AppMethodBeat.i(113548);
     com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
     localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/card/ui/CardPopupWindow$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+    a.b("com/tencent/mm/plugin/card/ui/CardPopupWindow$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
     if ((paramView.getId() == 2131303350) || (paramView.getId() == 2131303346))
     {
-      if ((this.oJA.jtC != null) && (this.oJA.jtC.isShowing())) {
-        this.oJA.jtC.dismiss();
+      if ((this.oQc.jwx != null) && (this.oQc.jwx.isShowing())) {
+        this.oQc.jwx.dismiss();
       }
-      if (!this.oJA.owK.bTw()) {
-        this.oJA.bXe();
+      if (!this.oQc.oDm.bUL()) {
+        this.oQc.bYt();
       }
     }
     a.a(this, "com/tencent/mm/plugin/card/ui/CardPopupWindow$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");

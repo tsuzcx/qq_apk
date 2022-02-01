@@ -595,7 +595,7 @@ public class TXCRenderAndDec
   
   public void setVideoFrameListener(n paramn, com.tencent.liteav.basic.a.b paramb)
   {
-    AppMethodBeat.i(187215);
+    AppMethodBeat.i(221344);
     this.mVideoFrameListener = paramn;
     this.mVideoFrameFormat = paramb;
     TXCLog.i("TXCRenderAndDec", "setVideoFrameListener->enter listener: " + paramn + ", format: " + paramb);
@@ -605,13 +605,13 @@ public class TXCRenderAndDec
       {
         TXCLog.i("TXCRenderAndDec", "setCustomRenderListener-> clean listener.");
         ((com.tencent.liteav.renderer.a)this.mVideoRender).b(null);
-        AppMethodBeat.o(187215);
+        AppMethodBeat.o(221344);
         return;
       }
       TXCLog.i("TXCRenderAndDec", "setCustomRenderListener-> set listener.");
       ((com.tencent.liteav.renderer.a)this.mVideoRender).b(this);
     }
-    AppMethodBeat.o(187215);
+    AppMethodBeat.o(221344);
   }
   
   public void setVideoRender(e parame)

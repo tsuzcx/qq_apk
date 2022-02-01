@@ -10,6 +10,7 @@ import android.graphics.PorterDuff.Mode;
 import android.graphics.drawable.Drawable;
 import android.os.Looper;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.g;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
@@ -23,12 +24,13 @@ import com.tencent.kinda.gen.IUIPagePlatformFuncDelegate;
 import com.tencent.kinda.gen.VoidBoolI32Callback;
 import com.tencent.kinda.gen.VoidCallback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.MMFragment;
 import com.tencent.mm.wallet_core.keyboard.WcPayKeyboard;
+import com.tencent.mm.wallet_core.ui.h;
 import java.util.List;
 
 public class UIPagePlatformFuncDelegateImpl
@@ -64,7 +66,7 @@ public class UIPagePlatformFuncDelegateImpl
       if (localDrawable != null)
       {
         localObject1 = localDrawable;
-        if (bt.isNullOrNil(this.topRightBtnColor)) {}
+        if (bu.isNullOrNil(this.topRightBtnColor)) {}
       }
     }
     try
@@ -106,11 +108,11 @@ public class UIPagePlatformFuncDelegateImpl
   
   public void closeUI(boolean paramBoolean)
   {
-    AppMethodBeat.i(199433);
+    AppMethodBeat.i(193143);
     if ((this.activity instanceof BaseFragment)) {
       ((BaseFragment)this.activity).popFragment();
     }
-    AppMethodBeat.o(199433);
+    AppMethodBeat.o(193143);
   }
   
   public void endEditing()
@@ -138,7 +140,7 @@ public class UIPagePlatformFuncDelegateImpl
   public void endIgnoringInteractionEvents()
   {
     AppMethodBeat.i(18599);
-    new ap(Looper.getMainLooper()).post(new Runnable()
+    new aq(Looper.getMainLooper()).post(new Runnable()
     {
       public void run()
       {
@@ -152,16 +154,16 @@ public class UIPagePlatformFuncDelegateImpl
   
   protected View getKBLayout(FragmentActivity paramFragmentActivity)
   {
-    AppMethodBeat.i(199434);
+    AppMethodBeat.i(193144);
     int i = paramFragmentActivity.getSupportFragmentManager().getFragments().size();
     if (i <= 0)
     {
       paramFragmentActivity = paramFragmentActivity.findViewById(2131305693);
-      AppMethodBeat.o(199434);
+      AppMethodBeat.o(193144);
       return paramFragmentActivity;
     }
     paramFragmentActivity = ((BaseFragment)paramFragmentActivity.getSupportFragmentManager().getFragments().get(i - 1)).findViewById(2131305693);
-    AppMethodBeat.o(199434);
+    AppMethodBeat.o(193144);
     return paramFragmentActivity;
   }
   
@@ -175,26 +177,26 @@ public class UIPagePlatformFuncDelegateImpl
   
   protected WcPayKeyboard getWcPayKeyboard(FragmentActivity paramFragmentActivity)
   {
-    AppMethodBeat.i(199435);
+    AppMethodBeat.i(193145);
     int i = paramFragmentActivity.getSupportFragmentManager().getFragments().size();
     if (i <= 0)
     {
       paramFragmentActivity = (WcPayKeyboard)paramFragmentActivity.findViewById(2131308467);
-      AppMethodBeat.o(199435);
+      AppMethodBeat.o(193145);
       return paramFragmentActivity;
     }
     paramFragmentActivity = (WcPayKeyboard)((BaseFragment)paramFragmentActivity.getSupportFragmentManager().getFragments().get(i - 1)).findViewById(2131308467);
-    AppMethodBeat.o(199435);
+    AppMethodBeat.o(193145);
     return paramFragmentActivity;
   }
   
   public void onKeyboardShow(boolean paramBoolean, int paramInt)
   {
-    AppMethodBeat.i(199436);
+    AppMethodBeat.i(193146);
     if (this.onKeyboardShowCallback != null) {
       this.onKeyboardShowCallback.call(paramBoolean, paramInt);
     }
-    AppMethodBeat.o(199436);
+    AppMethodBeat.o(193146);
   }
   
   public void refreshNavigationBar() {}
@@ -203,7 +205,7 @@ public class UIPagePlatformFuncDelegateImpl
   {
     AppMethodBeat.i(18604);
     this.activity.setMMNormalView();
-    if (!bt.isNullOrNil(this.mmTitle)) {
+    if (!bu.isNullOrNil(this.mmTitle)) {
       this.activity.setMMTitle(this.mmTitle);
     }
     recreateTopRightBtn();
@@ -253,7 +255,7 @@ public class UIPagePlatformFuncDelegateImpl
   public void setTopRightBtnImage(String paramString)
   {
     AppMethodBeat.i(18602);
-    if (!bt.isNullOrNil(paramString))
+    if (!bu.isNullOrNil(paramString))
     {
       this.topRightBtnResId = ResourcesUtils.getDrawableId(this.activity.getContext(), paramString);
       if (this.topRightBtnResId <= 0) {
@@ -280,18 +282,18 @@ public class UIPagePlatformFuncDelegateImpl
   
   public void setWindowAdjustUnspecified(boolean paramBoolean)
   {
-    AppMethodBeat.i(199437);
+    AppMethodBeat.i(193147);
     if (this.activity.getActivity().getWindow() != null)
     {
       if (paramBoolean)
       {
         this.activity.getActivity().getWindow().setSoftInputMode(19);
-        AppMethodBeat.o(199437);
+        AppMethodBeat.o(193147);
         return;
       }
       this.activity.getActivity().getWindow().setSoftInputMode(35);
     }
-    AppMethodBeat.o(199437);
+    AppMethodBeat.o(193147);
   }
   
   public void startLoading(String paramString, boolean paramBoolean)
@@ -306,11 +308,11 @@ public class UIPagePlatformFuncDelegateImpl
     paramString = KindaContext.getTopOrUIPageFragmentActivity();
     if (paramString == null)
     {
-      ad.e("UIPagePlatformFuncDelegateImpl", "IUIPagePlatformFuncDelegate can't startLoading because the activity is null!");
+      ae.e("UIPagePlatformFuncDelegateImpl", "IUIPagePlatformFuncDelegate can't startLoading because the activity is null!");
       AppMethodBeat.o(18607);
       return;
     }
-    this.mTipDialog = com.tencent.mm.wallet_core.ui.g.b(paramString, paramString.getString(2131765693), true, new DialogInterface.OnCancelListener()
+    this.mTipDialog = h.b(paramString, paramString.getString(2131765693), true, new DialogInterface.OnCancelListener()
     {
       public void onCancel(DialogInterface paramAnonymousDialogInterface)
       {
@@ -336,7 +338,7 @@ public class UIPagePlatformFuncDelegateImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.kinda.framework.app.UIPagePlatformFuncDelegateImpl
  * JD-Core Version:    0.7.0.1
  */

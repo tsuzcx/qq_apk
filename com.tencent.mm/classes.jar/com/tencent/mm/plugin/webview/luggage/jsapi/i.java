@@ -7,10 +7,10 @@ import com.tencent.luggage.bridge.k;
 import com.tencent.luggage.d.b.a;
 import com.tencent.luggage.d.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bs.d;
+import com.tencent.mm.br.d;
 import com.tencent.mm.plugin.webview.luggage.g;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.MMActivity.a;
 import java.io.Serializable;
@@ -26,7 +26,7 @@ public class i
   public final void b(final com.tencent.luggage.d.b<g>.a paramb)
   {
     AppMethodBeat.i(78527);
-    ad.i("MicroMsg.JsApiChooseImage", "invoke");
+    ae.i("MicroMsg.JsApiChooseImage", "invoke");
     Object localObject3 = paramb.chh.cgn;
     Object localObject1 = ((JSONObject)localObject3).optJSONArray("sourceType");
     int k;
@@ -34,7 +34,7 @@ public class i
     int j;
     if (localObject1 != null)
     {
-      ad.i("MicroMsg.JsApiChooseImage", "sourceType = " + ((JSONArray)localObject1).toString());
+      ae.i("MicroMsg.JsApiChooseImage", "sourceType = " + ((JSONArray)localObject1).toString());
       k = 0;
       i = 0;
       if (k < ((JSONArray)localObject1).length())
@@ -59,11 +59,11 @@ public class i
       if (i == 0) {}
       for (j = 3;; j = i)
       {
-        ad.i("MicroMsg.JsApiChooseImage", "real scene = %d", new Object[] { Integer.valueOf(j) });
+        ae.i("MicroMsg.JsApiChooseImage", "real scene = %d", new Object[] { Integer.valueOf(j) });
         if ((j == 2) || (j == 3))
         {
           boolean bool = com.tencent.mm.pluginsdk.permission.b.a((Activity)((g)paramb.chg).mContext, "android.permission.CAMERA", 113, "", "");
-          ad.d("MicroMsg.JsApiChooseImage", " checkPermission checkcamera[%b]", new Object[] { Boolean.valueOf(bool) });
+          ae.d("MicroMsg.JsApiChooseImage", " checkPermission checkcamera[%b]", new Object[] { Boolean.valueOf(bool) });
           if (!bool)
           {
             paramb.a("android_permission_denied", null);
@@ -114,7 +114,7 @@ public class i
           ((Intent)localObject2).putExtra("key_pick_local_pic_query_source_type", i);
           ((Intent)localObject2).putExtra("key_pick_local_pic_send_raw", (Serializable)localObject1);
           ((Intent)localObject2).putExtra("query_media_type", 1);
-          ad.i("MicroMsg.JsApiChooseImage", "doChooseImage: realScene: %d, count: %d, querySourceType: %d, sendRaw: %b", new Object[] { Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(i), localObject1 });
+          ae.i("MicroMsg.JsApiChooseImage", "doChooseImage: realScene: %d, count: %d, querySourceType: %d, sendRaw: %b", new Object[] { Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(i), localObject1 });
           ((MMActivity)((g)paramb.chg).mContext).mmSetOnActivityResultCallback(new MMActivity.a()
           {
             public final void c(int paramAnonymousInt1, int paramAnonymousInt2, Intent paramAnonymousIntent)
@@ -128,7 +128,7 @@ public class i
                   break label137;
                 }
                 bool = false;
-                ad.i("MicroMsg.JsApiChooseImage", "request to open file chooser, result code = %d, hasShowMemoryWarning = %b", new Object[] { Integer.valueOf(paramAnonymousInt2), Boolean.valueOf(bool) });
+                ae.i("MicroMsg.JsApiChooseImage", "request to open file chooser, result code = %d, hasShowMemoryWarning = %b", new Object[] { Integer.valueOf(paramAnonymousInt2), Boolean.valueOf(bool) });
                 localHashMap = new HashMap();
                 if (bool) {
                   localHashMap.put("memoryWarning", Boolean.TRUE);
@@ -136,7 +136,7 @@ public class i
                 switch (paramAnonymousInt2)
                 {
                 default: 
-                  paramb.d("fail", localHashMap);
+                  paramb.e("fail", localHashMap);
                 }
               }
               for (;;)
@@ -149,18 +149,18 @@ public class i
                 bool = paramAnonymousIntent.getBooleanExtra("key_pick_local_media_show_memory_warning", false);
                 break;
                 if (paramAnonymousIntent != null) {}
-                for (String str = paramAnonymousIntent.getStringExtra("key_pick_local_pic_callback_local_ids"); !bt.isNullOrNil(str); str = null)
+                for (String str = paramAnonymousIntent.getStringExtra("key_pick_local_pic_callback_local_ids"); !bu.isNullOrNil(str); str = null)
                 {
-                  ad.i("MicroMsg.JsApiChooseImage", "localIds = %s", new Object[] { str });
+                  ae.i("MicroMsg.JsApiChooseImage", "localIds = %s", new Object[] { str });
                   localHashMap.put("localIds", str);
                   paramAnonymousIntent = paramAnonymousIntent.getStringExtra("key_pick_local_pic_source_type");
                   if (paramAnonymousIntent != null) {
                     localHashMap.put("sourceType", paramAnonymousIntent);
                   }
-                  paramb.d("", localHashMap);
+                  paramb.e("", localHashMap);
                   break label111;
                 }
-                paramb.d("cancel", localHashMap);
+                paramb.e("cancel", localHashMap);
               }
             }
           });
@@ -183,7 +183,7 @@ public class i
     }
   }
   
-  public final int ccO()
+  public final int ced()
   {
     return 0;
   }

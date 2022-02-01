@@ -2,101 +2,93 @@ package com.tencent.mm.plugin.story.f;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
+import com.tencent.mm.vfs.k;
 import d.b.a;
 import d.g.b.p;
 import d.l;
 import java.util.Comparator;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/story/model/StoryConstants;", "", "()V", "Companion", "plugin-story_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/story/model/StoryConstants;", "", "()V", "Companion", "plugin-story_release"})
 public final class i
 {
-  private static int AJB;
-  private static String AJC;
-  private static final String AJD;
-  public static final i.a AJE;
+  private static int Bbe;
+  private static String Bbf;
+  private static final String Bbg;
+  public static final a Bbh;
   
   static
   {
     AppMethodBeat.i(118667);
-    AJE = new i.a((byte)0);
-    AJB = 86400;
+    Bbh = new a((byte)0);
+    Bbe = 86400;
     StringBuilder localStringBuilder = new StringBuilder();
-    com.tencent.mm.kernel.e locale = g.ajC();
+    com.tencent.mm.kernel.e locale = g.ajR();
     p.g(locale, "MMKernel.storage()");
-    AJC = locale.getAccPath() + "story/";
-    AJD = AJC + "mix/";
+    Bbf = locale.getAccPath() + "story/";
+    Bbg = Bbf + "mix/";
     AppMethodBeat.o(118667);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
-  public static final class a$a
-    implements Runnable
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/story/model/StoryConstants$Companion;", "", "()V", "STORY_DEPRECATED_TIME_SECOND", "", "getSTORY_DEPRECATED_TIME_SECOND", "()I", "setSTORY_DEPRECATED_TIME_SECOND", "(I)V", "STORY_FRIENDLY_TIME_SECOND", "StoryMixPath", "", "getStoryMixPath", "()Ljava/lang/String;", "StoryRootPath", "getStoryRootPath", "setStoryRootPath", "(Ljava/lang/String;)V", "StoryTypeImage", "StoryTypeNone", "StoryTypeVideo", "videoRequestMaxThreadCount", "cleanMixFile", "", "getRecordTempPath", "timeStamp", "", "getRecordThumbTempPath", "plugin-story_release"})
+  public static final class a
   {
-    public static final a AJF;
-    
-    static
+    @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
+    public static final class a
+      implements Runnable
     {
-      AppMethodBeat.i(118666);
-      AJF = new a();
-      AppMethodBeat.o(118666);
-    }
-    
-    public final void run()
-    {
-      AppMethodBeat.i(118665);
-      Object localObject1 = i.AJE;
-      localObject1 = new com.tencent.mm.vfs.e(i.ehM()).fOM();
-      if (localObject1 != null)
+      public static final a Bbi;
+      
+      static
       {
-        if (localObject1.length > 1) {
-          d.a.e.a((Object[])localObject1, (Comparator)new a());
-        }
-        int k = localObject1.length;
-        int j = 0;
-        int i = 0;
-        while (j < k)
+        AppMethodBeat.i(118666);
+        Bbi = new a();
+        AppMethodBeat.o(118666);
+      }
+      
+      public final void run()
+      {
+        AppMethodBeat.i(118665);
+        Object localObject1 = i.Bbh;
+        localObject1 = new k(i.elu()).fTj();
+        if (localObject1 != null)
         {
-          Object localObject2 = localObject1[j];
-          if (i >= 4) {
-            localObject2.delete();
+          if (localObject1.length > 1) {
+            d.a.e.a((Object[])localObject1, (Comparator)new a());
           }
-          j += 1;
-          i += 1;
+          int k = localObject1.length;
+          int j = 0;
+          int i = 0;
+          while (j < k)
+          {
+            Object localObject2 = localObject1[j];
+            if (i >= 4) {
+              localObject2.delete();
+            }
+            j += 1;
+            i += 1;
+          }
+        }
+        AppMethodBeat.o(118665);
+      }
+      
+      @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "T", "a", "kotlin.jvm.PlatformType", "b", "compare", "(Ljava/lang/Object;Ljava/lang/Object;)I", "kotlin/comparisons/ComparisonsKt__ComparisonsKt$compareByDescending$1"})
+      public static final class a<T>
+        implements Comparator<T>
+      {
+        public final int compare(T paramT1, T paramT2)
+        {
+          AppMethodBeat.i(118664);
+          int i = a.a((Comparable)Long.valueOf(((k)paramT2).lastModified()), (Comparable)Long.valueOf(((k)paramT1).lastModified()));
+          AppMethodBeat.o(118664);
+          return i;
         }
       }
-      AppMethodBeat.o(118665);
-    }
-    
-    @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "T", "a", "kotlin.jvm.PlatformType", "b", "compare", "(Ljava/lang/Object;Ljava/lang/Object;)I", "kotlin/comparisons/ComparisonsKt__ComparisonsKt$compareByDescending$1"})
-    public static final class a<T>
-      implements Comparator<T>
-    {
-      public final int compare(T paramT1, T paramT2)
-      {
-        AppMethodBeat.i(118664);
-        int i = a.a((Comparable)Long.valueOf(((com.tencent.mm.vfs.e)paramT2).lastModified()), (Comparable)Long.valueOf(((com.tencent.mm.vfs.e)paramT1).lastModified()));
-        AppMethodBeat.o(118664);
-        return i;
-      }
-    }
-  }
-  
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "T", "a", "kotlin.jvm.PlatformType", "b", "compare", "(Ljava/lang/Object;Ljava/lang/Object;)I", "kotlin/comparisons/ComparisonsKt__ComparisonsKt$compareByDescending$1"})
-  public static final class a$a$a<T>
-    implements Comparator<T>
-  {
-    public final int compare(T paramT1, T paramT2)
-    {
-      AppMethodBeat.i(118664);
-      int i = a.a((Comparable)Long.valueOf(((com.tencent.mm.vfs.e)paramT2).lastModified()), (Comparable)Long.valueOf(((com.tencent.mm.vfs.e)paramT1).lastModified()));
-      AppMethodBeat.o(118664);
-      return i;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.story.f.i
  * JD-Core Version:    0.7.0.1
  */

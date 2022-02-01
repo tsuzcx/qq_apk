@@ -8,10 +8,10 @@ import java.util.List;
 
 public final class e
 {
-  private final boolean NqM;
-  private boolean NqN;
-  private int NqO;
-  private a NqP;
+  private final boolean NNS;
+  private boolean NNT;
+  private int NNU;
+  private a NNV;
   private int bQG;
   int bQH;
   private int bQI;
@@ -26,38 +26,38 @@ public final class e
   private e(p paramp)
   {
     AppMethodBeat.i(59390);
-    this.NqN = false;
+    this.NNT = false;
     this.bQJ = 2147483647;
     this.bQL = 64;
     this.bQM = 67108864;
-    this.NqP = null;
+    this.NNV = null;
     this.buffer = paramp.zr;
-    this.bQH = paramp.grn();
+    this.bQH = paramp.gvP();
     this.bufferSize = (this.bQH + paramp.size());
-    this.NqO = (-this.bQH);
+    this.NNU = (-this.bQH);
     this.input = null;
-    this.NqM = true;
+    this.NNS = true;
     AppMethodBeat.o(59390);
   }
   
   private e(InputStream paramInputStream)
   {
     AppMethodBeat.i(59389);
-    this.NqN = false;
+    this.NNT = false;
     this.bQJ = 2147483647;
     this.bQL = 64;
     this.bQM = 67108864;
-    this.NqP = null;
+    this.NNV = null;
     this.buffer = new byte[4096];
     this.bufferSize = 0;
     this.bQH = 0;
-    this.NqO = 0;
+    this.NNU = 0;
     this.input = paramInputStream;
-    this.NqM = false;
+    this.NNS = false;
     AppMethodBeat.o(59389);
   }
   
-  public static long Fx(long paramLong)
+  public static long FZ(long paramLong)
   {
     return paramLong >>> 1 ^ -(1L & paramLong);
   }
@@ -88,19 +88,19 @@ public final class e
     }
   }
   
-  private void akY(int paramInt)
+  private void alI(int paramInt)
   {
     AppMethodBeat.i(59394);
-    if (!akZ(paramInt))
+    if (!alJ(paramInt))
     {
-      k localk = k.grP();
+      k localk = k.gwr();
       AppMethodBeat.o(59394);
       throw localk;
     }
     AppMethodBeat.o(59394);
   }
   
-  private boolean akZ(int paramInt)
+  private boolean alJ(int paramInt)
   {
     AppMethodBeat.i(59395);
     do
@@ -112,7 +112,7 @@ public final class e
         AppMethodBeat.o(59395);
         throw ((Throwable)localObject);
       }
-      if (this.NqO + this.bQH + paramInt > this.bQJ)
+      if (this.NNU + this.bQH + paramInt > this.bQJ)
       {
         AppMethodBeat.o(59395);
         return false;
@@ -128,7 +128,7 @@ public final class e
           localObject = this.buffer;
           System.arraycopy(localObject, i, localObject, 0, this.bufferSize - i);
         }
-        this.NqO += i;
+        this.NNU += i;
         this.bufferSize -= i;
         this.bQH = 0;
       }
@@ -143,9 +143,9 @@ public final class e
         break;
       }
       this.bufferSize = (i + this.bufferSize);
-      if (this.NqO + paramInt - this.bQM > 0)
+      if (this.NNU + paramInt - this.bQM > 0)
       {
-        localObject = k.grW();
+        localObject = k.gwy();
         AppMethodBeat.o(59395);
         throw ((Throwable)localObject);
       }
@@ -157,31 +157,31 @@ public final class e
     return false;
   }
   
-  private void alb(int paramInt)
+  private void alL(int paramInt)
   {
     AppMethodBeat.i(59399);
     k localk;
     if (paramInt < 0)
     {
-      localk = k.grQ();
+      localk = k.gws();
       AppMethodBeat.o(59399);
       throw localk;
     }
-    if (this.NqO + this.bQH + paramInt > this.bQJ)
+    if (this.NNU + this.bQH + paramInt > this.bQJ)
     {
-      fK(this.bQJ - this.NqO - this.bQH);
-      localk = k.grP();
+      fK(this.bQJ - this.NNU - this.bQH);
+      localk = k.gwr();
       AppMethodBeat.o(59399);
       throw localk;
     }
     int i = this.bufferSize - this.bQH;
     this.bQH = this.bufferSize;
-    akY(1);
+    alI(1);
     while (paramInt - i > this.bufferSize)
     {
       i += this.bufferSize;
       this.bQH = this.bufferSize;
-      akY(1);
+      alI(1);
     }
     this.bQH = (paramInt - i);
     AppMethodBeat.o(59399);
@@ -196,23 +196,11 @@ public final class e
       AppMethodBeat.o(59398);
       return;
     }
-    alb(paramInt);
+    alL(paramInt);
     AppMethodBeat.o(59398);
   }
   
-  private boolean grB()
-  {
-    AppMethodBeat.i(59393);
-    if ((this.bQH == this.bufferSize) && (!akZ(1)))
-    {
-      AppMethodBeat.o(59393);
-      return true;
-    }
-    AppMethodBeat.o(59393);
-    return false;
-  }
-  
-  private long gry()
+  private long gwa()
   {
     AppMethodBeat.i(59386);
     long l = 0L;
@@ -228,15 +216,27 @@ public final class e
       }
       i += 7;
     }
-    k localk = k.grR();
+    k localk = k.gwt();
     AppMethodBeat.o(59386);
     throw localk;
+  }
+  
+  private boolean gwd()
+  {
+    AppMethodBeat.i(59393);
+    if ((this.bQH == this.bufferSize) && (!alJ(1)))
+    {
+      AppMethodBeat.o(59393);
+      return true;
+    }
+    AppMethodBeat.o(59393);
+    return false;
   }
   
   private void ze()
   {
     this.bufferSize += this.bQG;
-    int i = this.NqO + this.bufferSize;
+    int i = this.NNU + this.bufferSize;
     if (i > this.bQJ)
     {
       this.bQG = (i - this.bQJ);
@@ -250,7 +250,7 @@ public final class e
   {
     AppMethodBeat.i(59396);
     if (this.bQH == this.bufferSize) {
-      akY(1);
+      alI(1);
     }
     byte[] arrayOfByte = this.buffer;
     int i = this.bQH;
@@ -266,7 +266,7 @@ public final class e
     int i = zc();
     if (this.bQK >= this.bQL)
     {
-      params = k.grV();
+      params = k.gwx();
       AppMethodBeat.o(59382);
       throw params;
     }
@@ -287,7 +287,7 @@ public final class e
     switch (z.fQ(paramInt))
     {
     default: 
-      paramf = k.grU();
+      paramf = k.gww();
       AppMethodBeat.o(59380);
       throw paramf;
     case 0: 
@@ -297,13 +297,13 @@ public final class e
       AppMethodBeat.o(59380);
       return true;
     case 1: 
-      l = grA();
+      l = gwc();
       paramf.fO(paramInt);
-      paramf.FA(l);
+      paramf.Gc(l);
       AppMethodBeat.o(59380);
       return true;
     case 2: 
-      d locald = grx();
+      d locald = gvZ();
       paramf.fO(paramInt);
       paramf.b(locald);
       AppMethodBeat.o(59380);
@@ -323,14 +323,14 @@ public final class e
       AppMethodBeat.o(59380);
       return false;
     }
-    int i = grz();
+    int i = gwb();
     paramf.fO(paramInt);
-    paramf.ale(i);
+    paramf.alO(i);
     AppMethodBeat.o(59380);
     return true;
   }
   
-  final byte[] ala(int paramInt)
+  final byte[] alK(int paramInt)
   {
     AppMethodBeat.i(59397);
     if (paramInt <= 0)
@@ -341,14 +341,14 @@ public final class e
         AppMethodBeat.o(59397);
         return localObject1;
       }
-      localObject1 = k.grQ();
+      localObject1 = k.gws();
       AppMethodBeat.o(59397);
       throw ((Throwable)localObject1);
     }
-    if (this.NqO + this.bQH + paramInt > this.bQJ)
+    if (this.NNU + this.bQH + paramInt > this.bQJ)
     {
-      fK(this.bQJ - this.NqO - this.bQH);
-      localObject1 = k.grP();
+      fK(this.bQJ - this.NNU - this.bQH);
+      localObject1 = k.gwr();
       AppMethodBeat.o(59397);
       throw ((Throwable)localObject1);
     }
@@ -361,7 +361,7 @@ public final class e
       this.bQH = this.bufferSize;
       j = paramInt - i;
       if (this.bufferSize - this.bQH < j) {
-        akY(j);
+        alI(j);
       }
       System.arraycopy(this.buffer, 0, localObject1, i, paramInt - i);
       this.bQH = (paramInt - i);
@@ -370,7 +370,7 @@ public final class e
     }
     int m = this.bQH;
     int n = this.bufferSize;
-    this.NqO += this.bufferSize;
+    this.NNU += this.bufferSize;
     this.bQH = 0;
     this.bufferSize = 0;
     Object localObject2 = new ArrayList();
@@ -384,11 +384,11 @@ public final class e
         if (this.input == null) {}
         for (int k = -1; k == -1; k = this.input.read((byte[])localObject1, j, localObject1.length - j))
         {
-          localObject1 = k.grP();
+          localObject1 = k.gwr();
           AppMethodBeat.o(59397);
           throw ((Throwable)localObject1);
         }
-        this.NqO += k;
+        this.NNU += k;
         j += k;
       }
       j = localObject1.length;
@@ -414,7 +414,7 @@ public final class e
     AppMethodBeat.i(59379);
     if (this.bQI != paramInt)
     {
-      k localk = k.grT();
+      k localk = k.gwv();
       AppMethodBeat.o(59379);
       throw localk;
     }
@@ -427,15 +427,15 @@ public final class e
     k localk;
     if (paramInt < 0)
     {
-      localk = k.grQ();
+      localk = k.gws();
       AppMethodBeat.o(59391);
       throw localk;
     }
-    paramInt = this.NqO + this.bQH + paramInt;
+    paramInt = this.NNU + this.bQH + paramInt;
     int i = this.bQJ;
     if (paramInt > i)
     {
-      localk = k.grP();
+      localk = k.gwr();
       AppMethodBeat.o(59391);
       throw localk;
     }
@@ -453,14 +453,71 @@ public final class e
     AppMethodBeat.o(59392);
   }
   
-  public final long grA()
+  public final boolean gvY()
+  {
+    AppMethodBeat.i(59381);
+    if (zd() != 0L)
+    {
+      AppMethodBeat.o(59381);
+      return true;
+    }
+    AppMethodBeat.o(59381);
+    return false;
+  }
+  
+  public final d gvZ()
+  {
+    AppMethodBeat.i(59383);
+    int i = zc();
+    if ((i <= this.bufferSize - this.bQH) && (i > 0))
+    {
+      if ((this.NNS) && (this.NNT)) {}
+      for (localObject = new c(this.buffer, this.bQH, i);; localObject = d.K(this.buffer, this.bQH, i))
+      {
+        this.bQH = (i + this.bQH);
+        AppMethodBeat.o(59383);
+        return localObject;
+      }
+    }
+    if (i == 0)
+    {
+      localObject = d.NNO;
+      AppMethodBeat.o(59383);
+      return localObject;
+    }
+    Object localObject = new p(alK(i));
+    AppMethodBeat.o(59383);
+    return localObject;
+  }
+  
+  public final int gwb()
+  {
+    AppMethodBeat.i(59387);
+    int j = this.bQH;
+    int i = j;
+    if (this.bufferSize - j < 4)
+    {
+      alI(4);
+      i = this.bQH;
+    }
+    byte[] arrayOfByte = this.buffer;
+    this.bQH = (i + 4);
+    j = arrayOfByte[i];
+    int k = arrayOfByte[(i + 1)];
+    int m = arrayOfByte[(i + 2)];
+    i = arrayOfByte[(i + 3)];
+    AppMethodBeat.o(59387);
+    return (i & 0xFF) << 24 | j & 0xFF | (k & 0xFF) << 8 | (m & 0xFF) << 16;
+  }
+  
+  public final long gwc()
   {
     AppMethodBeat.i(59388);
     int j = this.bQH;
     int i = j;
     if (this.bufferSize - j < 8)
     {
-      akY(8);
+      alI(8);
       i = this.bQH;
     }
     byte[] arrayOfByte = this.buffer;
@@ -477,67 +534,10 @@ public final class e
     return (l8 & 0xFF) << 56 | l1 & 0xFF | (l2 & 0xFF) << 8 | (l3 & 0xFF) << 16 | (l4 & 0xFF) << 24 | (l5 & 0xFF) << 32 | (l6 & 0xFF) << 40 | (l7 & 0xFF) << 48;
   }
   
-  public final boolean grw()
-  {
-    AppMethodBeat.i(59381);
-    if (zd() != 0L)
-    {
-      AppMethodBeat.o(59381);
-      return true;
-    }
-    AppMethodBeat.o(59381);
-    return false;
-  }
-  
-  public final d grx()
-  {
-    AppMethodBeat.i(59383);
-    int i = zc();
-    if ((i <= this.bufferSize - this.bQH) && (i > 0))
-    {
-      if ((this.NqM) && (this.NqN)) {}
-      for (localObject = new c(this.buffer, this.bQH, i);; localObject = d.J(this.buffer, this.bQH, i))
-      {
-        this.bQH = (i + this.bQH);
-        AppMethodBeat.o(59383);
-        return localObject;
-      }
-    }
-    if (i == 0)
-    {
-      localObject = d.NqI;
-      AppMethodBeat.o(59383);
-      return localObject;
-    }
-    Object localObject = new p(ala(i));
-    AppMethodBeat.o(59383);
-    return localObject;
-  }
-  
-  public final int grz()
-  {
-    AppMethodBeat.i(59387);
-    int j = this.bQH;
-    int i = j;
-    if (this.bufferSize - j < 4)
-    {
-      akY(4);
-      i = this.bQH;
-    }
-    byte[] arrayOfByte = this.buffer;
-    this.bQH = (i + 4);
-    j = arrayOfByte[i];
-    int k = arrayOfByte[(i + 1)];
-    int m = arrayOfByte[(i + 2)];
-    i = arrayOfByte[(i + 3)];
-    AppMethodBeat.o(59387);
-    return (i & 0xFF) << 24 | j & 0xFF | (k & 0xFF) << 8 | (m & 0xFF) << 16;
-  }
-  
   public final int zb()
   {
     AppMethodBeat.i(59378);
-    if (grB())
+    if (gwd())
     {
       this.bQI = 0;
       AppMethodBeat.o(59378);
@@ -546,7 +546,7 @@ public final class e
     this.bQI = zc();
     if (z.fR(this.bQI) == 0)
     {
-      k localk = k.grS();
+      k localk = k.gwu();
       AppMethodBeat.o(59378);
       throw localk;
     }
@@ -636,7 +636,7 @@ public final class e
                 if (arrayOfByte[m] >= 0) {
                   continue;
                 }
-                i = (int)gry();
+                i = (int)gwa();
                 AppMethodBeat.o(59384);
                 return i;
               }
@@ -739,7 +739,7 @@ public final class e
                     i = j + 1;
                     if (arrayOfByte[j] < 0L)
                     {
-                      l = gry();
+                      l = gwa();
                       AppMethodBeat.o(59385);
                       return l;
                     }
@@ -762,7 +762,7 @@ public final class e
     if (this.bQJ == 2147483647) {
       return -1;
     }
-    int i = this.NqO;
+    int i = this.NNU;
     int j = this.bQH;
     return this.bQJ - (i + j);
   }
@@ -771,7 +771,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     d.l.b.a.b.h.e
  * JD-Core Version:    0.7.0.1
  */

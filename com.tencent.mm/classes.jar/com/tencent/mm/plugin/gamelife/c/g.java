@@ -1,43 +1,43 @@
 package com.tencent.mm.plugin.gamelife.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/gamelife/cgi/CgiTest;", "", "()V", "Companion", "plugin-gamelife_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/gamelife/cgi/CgiTest;", "", "()V", "Companion", "plugin-gamelife_release"})
 public final class g
 {
   private static final String TAG = "MicroMsg.CgiTest";
-  public static final a uxG;
+  public static final a uJj;
   
   static
   {
-    AppMethodBeat.i(211284);
-    uxG = new a((byte)0);
+    AppMethodBeat.i(212051);
+    uJj = new a((byte)0);
     TAG = "MicroMsg.CgiTest";
-    AppMethodBeat.o(211284);
+    AppMethodBeat.o(212051);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/gamelife/cgi/CgiTest$Companion;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "getBlackList", "", "userName", "getChatSessionData", "sessionIdList", "Ljava/util/LinkedList;", "getChatSessionId", "fromUserName", "toUserName", "getChatUserInfo", "userNameList", "setBlackList", "switch", "", "associateWxGameAccount", "setChatSessionData", "sessionId", "mask", "", "plugin-gamelife_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/gamelife/cgi/CgiTest$Companion;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "getBlackList", "", "userName", "getChatSessionData", "sessionIdList", "Ljava/util/LinkedList;", "getChatSessionId", "fromUserName", "toUserName", "getChatUserInfo", "userNameList", "setBlackList", "switch", "", "associateWxGameAccount", "setChatSessionData", "sessionId", "mask", "", "plugin-gamelife_release"})
   public static final class a
   {
     public static void d(String paramString, long paramLong, boolean paramBoolean)
     {
-      AppMethodBeat.i(211283);
+      AppMethodBeat.i(212050);
       p.h(paramString, "sessionId");
-      ad.i(g.access$getTAG$cp(), "setChatSessionData, sessionId = " + paramString + ", mask = " + paramLong + ", switch = " + paramBoolean);
-      new f(paramString, paramLong, paramBoolean).aED();
-      AppMethodBeat.o(211283);
+      ae.i(g.access$getTAG$cp(), "setChatSessionData, sessionId = " + paramString + ", mask = " + paramLong + ", switch = " + paramBoolean);
+      new f(paramString, paramLong, paramBoolean).aET();
+      AppMethodBeat.o(212050);
     }
     
     public static void g(String paramString, boolean paramBoolean1, boolean paramBoolean2)
     {
-      AppMethodBeat.i(211282);
+      AppMethodBeat.i(212049);
       p.h(paramString, "userName");
-      ad.i(g.access$getTAG$cp(), "setBlackList, userName = " + paramString + ", swith = " + paramBoolean1 + ", associateWxGameAccount = " + paramBoolean2);
-      new e(paramString, paramBoolean1, paramBoolean2).aED();
-      AppMethodBeat.o(211282);
+      ae.i(g.access$getTAG$cp(), "setBlackList, userName = " + paramString + ", swith = " + paramBoolean1 + ", associateWxGameAccount = " + paramBoolean2);
+      new e(paramString, paramBoolean1, paramBoolean2).aET();
+      AppMethodBeat.o(212049);
     }
   }
 }

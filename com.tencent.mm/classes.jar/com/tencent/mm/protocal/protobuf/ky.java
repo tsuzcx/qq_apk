@@ -4,19 +4,19 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 public final class ky
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public long FDe;
-  public long FDf;
-  public LinkedList<kw> FDg;
-  public boolean FDh;
+  public long FVA;
+  public LinkedList<kw> FVB;
+  public boolean FVC;
+  public long FVz;
   public long uin;
   
   public ky()
   {
     AppMethodBeat.i(110888);
-    this.FDg = new LinkedList();
-    this.FDh = false;
+    this.FVB = new LinkedList();
+    this.FVC = false;
     AppMethodBeat.o(110888);
   }
   
@@ -26,33 +26,33 @@ public final class ky
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aY(1, this.FDe);
-      paramVarArgs.aY(2, this.uin);
-      paramVarArgs.aY(3, this.FDf);
-      paramVarArgs.e(4, 8, this.FDg);
-      paramVarArgs.bt(5, this.FDh);
+      paramVarArgs.aZ(1, this.FVz);
+      paramVarArgs.aZ(2, this.uin);
+      paramVarArgs.aZ(3, this.FVA);
+      paramVarArgs.e(4, 8, this.FVB);
+      paramVarArgs.bC(5, this.FVC);
       AppMethodBeat.o(110889);
       return 0;
     }
     int i;
     if (paramInt == 1)
     {
-      paramInt = f.a.a.b.b.a.p(1, this.FDe);
+      paramInt = f.a.a.b.b.a.p(1, this.FVz);
       i = f.a.a.b.b.a.p(2, this.uin);
-      int j = f.a.a.b.b.a.p(3, this.FDf);
-      int k = f.a.a.a.c(4, 8, this.FDg);
-      int m = f.a.a.b.b.a.alV(5);
+      int j = f.a.a.b.b.a.p(3, this.FVA);
+      int k = f.a.a.a.c(4, 8, this.FVB);
+      int m = f.a.a.b.b.a.amF(5);
       AppMethodBeat.o(110889);
       return paramInt + 0 + i + j + k + m;
     }
     if (paramInt == 2)
     {
       paramVarArgs = (byte[])paramVarArgs[0];
-      this.FDg.clear();
+      this.FVB.clear();
       paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gxE();
+          paramVarArgs.gCg();
         }
       }
       AppMethodBeat.o(110889);
@@ -69,19 +69,19 @@ public final class ky
         AppMethodBeat.o(110889);
         return -1;
       case 1: 
-        localky.FDe = ((f.a.a.a.a)localObject1).NPN.zd();
+        localky.FVz = ((f.a.a.a.a)localObject1).OmT.zd();
         AppMethodBeat.o(110889);
         return 0;
       case 2: 
-        localky.uin = ((f.a.a.a.a)localObject1).NPN.zd();
+        localky.uin = ((f.a.a.a.a)localObject1).OmT.zd();
         AppMethodBeat.o(110889);
         return 0;
       case 3: 
-        localky.FDf = ((f.a.a.a.a)localObject1).NPN.zd();
+        localky.FVA = ((f.a.a.a.a)localObject1).OmT.zd();
         AppMethodBeat.o(110889);
         return 0;
       case 4: 
-        paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
+        paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
         i = paramVarArgs.size();
         paramInt = 0;
         while (paramInt < i)
@@ -89,14 +89,14 @@ public final class ky
           Object localObject2 = (byte[])paramVarArgs.get(paramInt);
           localObject1 = new kw();
           localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-          for (boolean bool = true; bool; bool = ((kw)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, com.tencent.mm.bx.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-          localky.FDg.add(localObject1);
+          for (boolean bool = true; bool; bool = ((kw)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+          localky.FVB.add(localObject1);
           paramInt += 1;
         }
         AppMethodBeat.o(110889);
         return 0;
       }
-      localky.FDh = ((f.a.a.a.a)localObject1).NPN.grw();
+      localky.FVC = ((f.a.a.a.a)localObject1).OmT.gvY();
       AppMethodBeat.o(110889);
       return 0;
     }

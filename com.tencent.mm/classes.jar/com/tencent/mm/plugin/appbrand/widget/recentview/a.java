@@ -4,8 +4,8 @@ import com.tencent.mm.plugin.appbrand.appusage.LocalUsageInfo;
 
 public final class a
 {
-  public LocalUsageInfo mXW;
-  public boolean nmR = false;
+  public LocalUsageInfo ndd;
+  public boolean nsb = false;
   public int position;
   public int type = 1;
   
@@ -16,7 +16,7 @@ public final class a
   
   public a(LocalUsageInfo paramLocalUsageInfo)
   {
-    this.mXW = paramLocalUsageInfo;
+    this.ndd = paramLocalUsageInfo;
     this.type = 1;
   }
 }

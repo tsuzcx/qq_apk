@@ -6,8 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class ig
   extends b
 {
-  public a duM;
-  public b duN;
+  public a dvQ;
   
   public ig()
   {
@@ -16,23 +15,20 @@ public final class ig
   
   private ig(byte paramByte)
   {
-    AppMethodBeat.i(89643);
-    this.duM = new a();
-    this.duN = new b();
-    this.IbR = false;
+    AppMethodBeat.i(89642);
+    this.dvQ = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(89643);
+    AppMethodBeat.o(89642);
   }
   
   public static final class a
   {
-    public int EN = 0;
-    public String param;
-  }
-  
-  public static final class b
-  {
-    public String duO;
+    public String appId;
+    public String extInfo;
+    public String md5;
+    public int scene;
+    public String url;
   }
 }
 

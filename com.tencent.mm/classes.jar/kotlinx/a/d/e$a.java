@@ -4,7 +4,7 @@ import d.g.b.q;
 import d.l;
 import d.z;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "Lkotlinx/serialization/modules/SerializersModuleBuilder;", "invoke"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "Lkotlinx/serialization/modules/SerializersModuleBuilder;", "invoke"})
 public final class e$a
   extends q
   implements d.g.a.b<h, z>

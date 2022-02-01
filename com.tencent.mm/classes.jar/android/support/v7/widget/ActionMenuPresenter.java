@@ -94,7 +94,7 @@ final class ActionMenuPresenter
     boolean bool = true;
     super.a(paramContext, paramh);
     paramh = paramContext.getResources();
-    paramContext = android.support.v7.view.a.Z(paramContext);
+    paramContext = android.support.v7.view.a.aa(paramContext);
     int i;
     if (!this.aii)
     {
@@ -506,7 +506,7 @@ final class ActionMenuPresenter
   public final void iv()
   {
     if (!this.aim) {
-      this.ail = android.support.v7.view.a.Z(this.mContext).hs();
+      this.ail = android.support.v7.view.a.aa(this.mContext).hs();
     }
     if (this.aaD != null) {
       this.aaD.r(true);

@@ -1,13 +1,12 @@
 package com.tencent.mm.g.a;
 
-import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class tr
   extends b
 {
-  public a dIc;
+  public a dJf;
   
   public tr()
   {
@@ -16,22 +15,23 @@ public final class tr
   
   private tr(byte paramByte)
   {
-    AppMethodBeat.i(195189);
-    this.dIc = new a();
-    this.IbR = false;
+    AppMethodBeat.i(93328);
+    this.dJf = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(195189);
+    AppMethodBeat.o(93328);
   }
   
   public static final class a
   {
-    public String action;
-    public Intent intent;
+    public long dnX;
+    public String dxN;
+    public String dxO;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.a.tr
  * JD-Core Version:    0.7.0.1
  */

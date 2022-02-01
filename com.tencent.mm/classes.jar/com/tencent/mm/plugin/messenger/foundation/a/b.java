@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.messenger.foundation.a;
 
 public abstract interface b
 {
-  public abstract boolean az(int paramInt, String paramString);
+  public abstract boolean ay(int paramInt, String paramString);
 }
 
 

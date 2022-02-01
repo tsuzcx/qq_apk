@@ -5,10 +5,10 @@ import com.tencent.mm.pluginsdk.s;
 
 public final class f
 {
-  private static double kSA = -85.0D;
-  private static double kSB = -1000.0D;
-  private static double kSy = -85.0D;
-  private static double kSz = -1000.0D;
+  private static double kWh = -85.0D;
+  private static double kWi = -1000.0D;
+  private static double kWj = -85.0D;
+  private static double kWk = -1000.0D;
   
   public static double E(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
@@ -65,13 +65,13 @@ public final class f
   public static double h(double paramDouble1, double paramDouble2)
   {
     AppMethodBeat.i(55688);
-    kSA = paramDouble1;
-    kSB = paramDouble2;
-    if ((kSy == -85.0D) || (kSz == -1000.0D)) {}
-    for (paramDouble1 = 0.0D;; paramDouble1 = Math.atan2(kSB - kSz, kSA - kSy) * 180.0D / 3.141592D)
+    kWj = paramDouble1;
+    kWk = paramDouble2;
+    if ((kWh == -85.0D) || (kWi == -1000.0D)) {}
+    for (paramDouble1 = 0.0D;; paramDouble1 = Math.atan2(kWk - kWi, kWj - kWh) * 180.0D / 3.141592D)
     {
-      kSy = kSA;
-      kSz = kSB;
+      kWh = kWj;
+      kWi = kWk;
       AppMethodBeat.o(55688);
       return paramDouble1;
     }
@@ -84,7 +84,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.location.model.f
  * JD-Core Version:    0.7.0.1
  */

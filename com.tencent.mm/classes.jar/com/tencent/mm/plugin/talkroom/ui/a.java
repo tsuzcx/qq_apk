@@ -8,29 +8,29 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.aq;
 import com.tencent.mm.ui.base.o;
 
 public final class a
 {
-  private static final int[] izo = { 2131230925, 2131230926, 2131230927, 2131230928, 2131230929, 2131230930, 2131230931 };
-  private static final int[] rxn = { 0, 15, 30, 45, 60, 75, 90, 100 };
-  private int AQR;
-  private o BoC;
-  private TextView BoD;
-  private ImageView BoE;
-  private View BoF;
+  private static final int[] iCh = { 2131230925, 2131230926, 2131230927, 2131230928, 2131230929, 2131230930, 2131230931 };
+  private static final int[] rFy = { 0, 15, 30, 45, 60, 75, 90, 100 };
+  private o BGb;
+  private TextView BGc;
+  private ImageView BGd;
+  private View BGe;
+  private int Bip;
   private Context context;
-  private final ap ptC;
-  private View rxg;
-  private View rxh;
-  private ImageView rxi;
-  private View rxk;
+  private final aq pAg;
+  private View rFs;
+  private View rFt;
+  private ImageView rFu;
+  private View rFw;
   
   public a(Context paramContext)
   {
     AppMethodBeat.i(29571);
-    this.ptC = new ap()
+    this.pAg = new aq()
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
@@ -41,15 +41,15 @@ public final class a
       }
     };
     this.context = paramContext;
-    this.AQR = BackwardSupportUtil.b.g(paramContext, 180.0F);
-    this.BoC = new o(((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2131495869, null), -1, -2);
-    this.rxi = ((ImageView)this.BoC.getContentView().findViewById(2131306518));
-    this.rxk = this.BoC.getContentView().findViewById(2131306521);
-    this.BoD = ((TextView)this.BoC.getContentView().findViewById(2131306523));
-    this.BoE = ((ImageView)this.BoC.getContentView().findViewById(2131306522));
-    this.BoF = this.BoC.getContentView().findViewById(2131306524);
-    this.rxg = this.BoC.getContentView().findViewById(2131306525);
-    this.rxh = this.BoC.getContentView().findViewById(2131306526);
+    this.Bip = BackwardSupportUtil.b.h(paramContext, 180.0F);
+    this.BGb = new o(((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2131495869, null), -1, -2);
+    this.rFu = ((ImageView)this.BGb.getContentView().findViewById(2131306518));
+    this.rFw = this.BGb.getContentView().findViewById(2131306521);
+    this.BGc = ((TextView)this.BGb.getContentView().findViewById(2131306523));
+    this.BGd = ((ImageView)this.BGb.getContentView().findViewById(2131306522));
+    this.BGe = this.BGb.getContentView().findViewById(2131306524);
+    this.rFs = this.BGb.getContentView().findViewById(2131306525);
+    this.rFt = this.BGb.getContentView().findViewById(2131306526);
     AppMethodBeat.o(29571);
   }
 }

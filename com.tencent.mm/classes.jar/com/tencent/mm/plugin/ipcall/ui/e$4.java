@@ -23,10 +23,10 @@ final class e$4
     Object localObject = new b();
     ((b)localObject).bd(paramAdapterView);
     ((b)localObject).bd(paramView);
-    ((b)localObject).mr(paramInt);
-    ((b)localObject).qY(paramLong);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/ipcall/ui/IPCallAddressController$4", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, ((b)localObject).ahq());
-    if (this.uPW.uPN.HY(paramInt))
+    ((b)localObject).mu(paramInt);
+    ((b)localObject).rl(paramLong);
+    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/ipcall/ui/IPCallAddressController$4", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, ((b)localObject).ahF());
+    if (this.vbI.vbz.Iw(paramInt))
     {
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/ipcall/ui/IPCallAddressController$4", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
       AppMethodBeat.o(25652);
@@ -34,7 +34,7 @@ final class e$4
     }
     if ((paramAdapterView instanceof ListView))
     {
-      paramView = this.uPW.uPN.IL(paramInt - ((ListView)paramAdapterView).getHeaderViewsCount());
+      paramView = this.vbI.vbz.Jj(paramInt - ((ListView)paramAdapterView).getHeaderViewsCount());
       if (paramView == null)
       {
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/ipcall/ui/IPCallAddressController$4", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
@@ -43,9 +43,9 @@ final class e$4
       }
       paramAdapterView = null;
       if (paramView.field_addressId > 0L) {
-        paramAdapterView = i.ddM().xN(paramView.field_addressId);
+        paramAdapterView = i.dgE().yh(paramView.field_addressId);
       }
-      localObject = new Intent(this.uPW.uPP, IPCallUserProfileUI.class);
+      localObject = new Intent(this.vbI.vbB, IPCallUserProfileUI.class);
       if (paramAdapterView == null) {
         break label317;
       }
@@ -56,10 +56,10 @@ final class e$4
     for (;;)
     {
       ((Intent)localObject).putExtra("IPCallProfileUI_isNeedShowRecord", true);
-      paramAdapterView = this.uPW.uPP;
+      paramAdapterView = this.vbI.vbB;
       paramView = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
-      com.tencent.mm.hellhoundlib.a.a.a(paramAdapterView, paramView.ahp(), "com/tencent/mm/plugin/ipcall/ui/IPCallAddressController$4", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramAdapterView.startActivity((Intent)paramView.mq(0));
+      com.tencent.mm.hellhoundlib.a.a.a(paramAdapterView, paramView.ahE(), "com/tencent/mm/plugin/ipcall/ui/IPCallAddressController$4", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramAdapterView.startActivity((Intent)paramView.mt(0));
       com.tencent.mm.hellhoundlib.a.a.a(paramAdapterView, "com/tencent/mm/plugin/ipcall/ui/IPCallAddressController$4", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/ipcall/ui/IPCallAddressController$4", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
       AppMethodBeat.o(25652);

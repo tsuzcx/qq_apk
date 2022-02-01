@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class vj
   extends b
 {
-  public a dJv;
+  public a dKG;
   
   public vj()
   {
@@ -15,20 +15,16 @@ public final class vj
   
   private vj(byte paramByte)
   {
-    AppMethodBeat.i(125650);
-    this.dJv = new a();
-    this.IbR = false;
+    AppMethodBeat.i(94817);
+    this.dKG = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(125650);
+    AppMethodBeat.o(94817);
   }
   
   public static final class a
   {
-    public int dJw;
-    public boolean dJx;
-    public int dJy;
-    public String drH;
-    public int dsi;
+    public String mediaId;
   }
 }
 

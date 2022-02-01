@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.account.a.a;
 
 public abstract interface b
 {
-  public abstract void eO(boolean paramBoolean);
+  public abstract void eQ(boolean paramBoolean);
 }
 
 

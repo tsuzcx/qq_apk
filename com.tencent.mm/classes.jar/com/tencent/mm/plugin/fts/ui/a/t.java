@@ -6,22 +6,22 @@ import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.fts.a.d.a.a;
 import com.tencent.mm.plugin.fts.a.d.a.a.a;
 import com.tencent.mm.plugin.fts.a.d.a.a.b;
-import com.tencent.mm.protocal.protobuf.ehp;
-import com.tencent.mm.protocal.protobuf.ehy;
+import com.tencent.mm.protocal.protobuf.ejg;
+import com.tencent.mm.protocal.protobuf.ejp;
 import org.json.JSONObject;
 
 public final class t
   extends n
 {
-  public ehy tBY;
-  public ehp tCn;
-  private a tCo;
+  public ejp tMP;
+  public ejg tNe;
+  private a tNf;
   
   public t(int paramInt)
   {
     super(paramInt);
     AppMethodBeat.i(112131);
-    this.tCo = new a();
+    this.tNf = new a();
     AppMethodBeat.o(112131);
   }
   
@@ -31,7 +31,7 @@ public final class t
     super.a(paramContext, parama, paramVarArgs);
     try
     {
-      if ("HOME".equals(new JSONObject(this.tBY.HSt).optString("content_type", "")))
+      if ("HOME".equals(new JSONObject(this.tMP.ImA).optString("content_type", "")))
       {
         gf(2, 0);
         AppMethodBeat.o(112132);
@@ -47,9 +47,9 @@ public final class t
     }
   }
   
-  public final a.b agC()
+  public final a.b agQ()
   {
-    return this.tCo;
+    return this.tNf;
   }
   
   public final class a
@@ -63,7 +63,7 @@ public final class t
     public final boolean a(Context paramContext, a paramVarArgs)
     {
       AppMethodBeat.i(112130);
-      ((com.tencent.mm.plugin.websearch.api.h)g.ab(com.tencent.mm.plugin.websearch.api.h.class)).a(paramContext, 60, "", t.this.tun.tuL);
+      ((com.tencent.mm.plugin.websearch.api.h)g.ab(com.tencent.mm.plugin.websearch.api.h.class)).a(paramContext, 60, "", t.this.tFe.tFC);
       AppMethodBeat.o(112130);
       return false;
     }
@@ -71,7 +71,7 @@ public final class t
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.ui.a.t
  * JD-Core Version:    0.7.0.1
  */

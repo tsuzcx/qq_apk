@@ -6,7 +6,8 @@ import com.tencent.mm.sdk.b.b;
 public final class rv
   extends b
 {
-  public a dGs;
+  public a dHw;
+  public b dHx;
   
   public rv()
   {
@@ -15,17 +16,17 @@ public final class rv
   
   private rv(byte paramByte)
   {
-    AppMethodBeat.i(55665);
-    this.dGs = new a();
-    this.IbR = false;
+    AppMethodBeat.i(93326);
+    this.dHw = new a();
+    this.dHx = new b();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(55665);
+    AppMethodBeat.o(93326);
   }
   
-  public static final class a
-  {
-    public boolean active;
-  }
+  public static final class a {}
+  
+  public static final class b {}
 }
 
 

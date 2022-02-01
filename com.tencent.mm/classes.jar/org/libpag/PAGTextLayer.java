@@ -8,10 +8,10 @@ public class PAGTextLayer
 {
   static
   {
-    AppMethodBeat.i(220211);
+    AppMethodBeat.i(216965);
     b.loadLibrary("libpag");
     nativeInit();
-    AppMethodBeat.o(220211);
+    AppMethodBeat.o(216965);
   }
   
   public PAGTextLayer(long paramLong)
@@ -33,9 +33,9 @@ public class PAGTextLayer
   
   public void setFont(PAGFont paramPAGFont)
   {
-    AppMethodBeat.i(220210);
+    AppMethodBeat.i(216964);
     setFont(paramPAGFont.fontFamily, paramPAGFont.fontStyle);
-    AppMethodBeat.o(220210);
+    AppMethodBeat.o(216964);
   }
   
   public native void setFontSize(float paramFloat);

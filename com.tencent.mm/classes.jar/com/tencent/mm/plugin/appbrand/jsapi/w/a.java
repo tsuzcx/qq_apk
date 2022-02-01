@@ -9,9 +9,9 @@ public abstract interface a
 {
   public abstract boolean a(c paramc, at paramat);
   
-  public abstract int bmv();
+  public abstract int bne();
   
-  public abstract int bmw();
+  public abstract int bnf();
 }
 
 

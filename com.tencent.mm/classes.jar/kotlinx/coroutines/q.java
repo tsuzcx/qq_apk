@@ -2,11 +2,11 @@ package kotlinx.coroutines;
 
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/coroutines/ChildHandle;", "Lkotlinx/coroutines/DisposableHandle;", "childCancelled", "", "cause", "", "kotlinx-coroutines-core"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/coroutines/ChildHandle;", "Lkotlinx/coroutines/DisposableHandle;", "childCancelled", "", "cause", "", "kotlinx-coroutines-core"})
 public abstract interface q
   extends ba
 {
-  public abstract boolean z(Throwable paramThrowable);
+  public abstract boolean A(Throwable paramThrowable);
 }
 
 

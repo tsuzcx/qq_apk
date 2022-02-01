@@ -4,7 +4,7 @@ public class n
   extends o
 {
   public String content;
-  public String kRE;
+  public String kVn;
   public String title;
 }
 

@@ -5,23 +5,23 @@ import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.a.a;
 import com.tencent.mm.compatible.a.a.a;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ak;
 
 public final class b
 {
-  b gdr;
-  private final String gds;
+  private final String gfA;
+  b gfz;
   Context mContext;
   
   public b(Context paramContext)
   {
     AppMethodBeat.i(155865);
     this.mContext = null;
-    this.gdr = null;
-    this.gds = "audio_lock";
+    this.gfz = null;
+    this.gfA = "audio_lock";
     Context localContext = paramContext;
     if ((paramContext instanceof Activity)) {
-      localContext = aj.getContext();
+      localContext = ak.getContext();
     }
     this.mContext = localContext;
     a.a(8, new a.a()
@@ -29,31 +29,31 @@ public final class b
       public final void run()
       {
         AppMethodBeat.i(155864);
-        b.this.gdr = new c(b.this.mContext);
+        b.this.gfz = new c(b.this.mContext);
         AppMethodBeat.o(155864);
       }
     });
     AppMethodBeat.o(155865);
   }
   
-  public final void a(b.a parama)
+  public final void a(a parama)
   {
     AppMethodBeat.i(155868);
-    if (this.gdr != null) {
-      this.gdr.a(parama);
+    if (this.gfz != null) {
+      this.gfz.a(parama);
     }
     AppMethodBeat.o(155868);
   }
   
-  public final boolean abe()
+  public final boolean abn()
   {
     AppMethodBeat.i(155867);
     try
     {
-      if (this.gdr == null) {
+      if (this.gfz == null) {
         return false;
       }
-      boolean bool = this.gdr.abe();
+      boolean bool = this.gfz.abn();
       return bool;
     }
     finally
@@ -67,10 +67,10 @@ public final class b
     AppMethodBeat.i(155866);
     try
     {
-      if (this.gdr == null) {
+      if (this.gfz == null) {
         return false;
       }
-      boolean bool = this.gdr.requestFocus();
+      boolean bool = this.gfz.requestFocus();
       return bool;
     }
     finally
@@ -79,11 +79,16 @@ public final class b
     }
   }
   
+  public static abstract interface a
+  {
+    public abstract void hF(int paramInt);
+  }
+  
   public static abstract interface b
   {
     public abstract void a(b.a parama);
     
-    public abstract boolean abe();
+    public abstract boolean abn();
     
     public abstract boolean requestFocus();
   }

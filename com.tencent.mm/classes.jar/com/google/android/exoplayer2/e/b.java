@@ -3,6 +3,7 @@ package com.google.android.exoplayer2.e;
 import android.annotation.TargetApi;
 import android.media.MediaCodec;
 import android.media.MediaCodec.BufferInfo;
+import android.media.MediaCodec.CodecException;
 import android.media.MediaCodec.CryptoException;
 import android.media.MediaCodec.CryptoInfo;
 import android.media.MediaCrypto;
@@ -14,6 +15,7 @@ import com.google.android.exoplayer2.drm.DrmInitData;
 import com.google.android.exoplayer2.i.v;
 import com.google.android.exoplayer2.i.x;
 import com.google.android.exoplayer2.source.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.List;
@@ -83,7 +85,7 @@ public abstract class b
     }
   }
   
-  private void a(b.a parama)
+  private void a(a parama)
   {
     throw com.google.android.exoplayer2.e.b(parama, this.index);
   }
@@ -706,7 +708,7 @@ public abstract class b
             }
           }
           if (this.btq == null) {
-            a(new b.a(this.bdI, null, bool1, -49999));
+            a(new a(this.bdI, null, bool1, -49999));
           }
           if (!a(this.btq)) {
             break;
@@ -793,7 +795,7 @@ public abstract class b
               bool1 = false;
               break;
               localb = localb;
-              a(new b.a(this.bdI, localb, bool1, -49998));
+              a(new a(this.bdI, localb, bool1, -49998));
               continue;
               if ((x.SDK_INT < 24) && (("OMX.Nvidia.h264.decode".equals(localb)) || ("OMX.Nvidia.h264.decode.secure".equals(localb))) && (("flounder".equals(x.DEVICE)) || ("flounder_lte".equals(x.DEVICE)) || ("grouper".equals(x.DEVICE)) || ("tilapia".equals(x.DEVICE))))
               {
@@ -823,7 +825,7 @@ public abstract class b
           {
             for (;;)
             {
-              a(new b.a(this.bdI, localException, bool1, localb));
+              a(new a(this.bdI, localException, bool1, localb));
               continue;
               label964:
               long l1 = -9223372036854775807L;
@@ -857,7 +859,7 @@ public abstract class b
     //   23: iconst_0
     //   24: putfield 221	com/google/android/exoplayer2/e/b:btE	Z
     //   27: aload_0
-    //   28: getfield 124	com/google/android/exoplayer2/e/b:btl	Ljava/util/List;
+    //   28: getfield 125	com/google/android/exoplayer2/e/b:btl	Ljava/util/List;
     //   31: invokeinterface 412 1 0
     //   36: aload_0
     //   37: aconst_null
@@ -903,12 +905,12 @@ public abstract class b
     //   103: putfield 156	com/google/android/exoplayer2/e/b:btJ	Z
     //   106: aload_0
     //   107: iconst_0
-    //   108: putfield 131	com/google/android/exoplayer2/e/b:btG	I
+    //   108: putfield 132	com/google/android/exoplayer2/e/b:btG	I
     //   111: aload_0
     //   112: iconst_0
-    //   113: putfield 133	com/google/android/exoplayer2/e/b:btH	I
+    //   113: putfield 134	com/google/android/exoplayer2/e/b:btH	I
     //   116: aload_0
-    //   117: getfield 111	com/google/android/exoplayer2/e/b:bti	Lcom/google/android/exoplayer2/b/e;
+    //   117: getfield 112	com/google/android/exoplayer2/e/b:bti	Lcom/google/android/exoplayer2/b/e;
     //   120: aconst_null
     //   121: putfield 276	com/google/android/exoplayer2/b/e:aKX	Ljava/nio/ByteBuffer;
     //   124: aload_0
@@ -1013,10 +1015,54 @@ public abstract class b
   }
   
   protected void uY() {}
+  
+  public static final class a
+    extends Exception
+  {
+    public final boolean btP;
+    public final String btQ;
+    public final String btR;
+    public final String mimeType;
+    
+    public a(Format paramFormat, Throwable paramThrowable, boolean paramBoolean, int paramInt)
+    {
+      super(paramThrowable);
+      AppMethodBeat.i(92357);
+      this.mimeType = paramFormat.bdt;
+      this.btP = paramBoolean;
+      this.btQ = null;
+      if (paramInt < 0) {}
+      for (paramFormat = "neg_";; paramFormat = "")
+      {
+        this.btR = ("com.google.android.exoplayer.MediaCodecTrackRenderer_" + paramFormat + Math.abs(paramInt));
+        AppMethodBeat.o(92357);
+        return;
+      }
+    }
+    
+    public a(Format paramFormat, Throwable paramThrowable, boolean paramBoolean, String paramString)
+    {
+      super(paramThrowable);
+      AppMethodBeat.i(92358);
+      this.mimeType = paramFormat.bdt;
+      this.btP = paramBoolean;
+      this.btQ = paramString;
+      paramFormat = localObject;
+      if (x.SDK_INT >= 21)
+      {
+        paramFormat = localObject;
+        if ((paramThrowable instanceof MediaCodec.CodecException)) {
+          paramFormat = ((MediaCodec.CodecException)paramThrowable).getDiagnosticInfo();
+        }
+      }
+      this.btR = paramFormat;
+      AppMethodBeat.o(92358);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.exoplayer2.e.b
  * JD-Core Version:    0.7.0.1
  */

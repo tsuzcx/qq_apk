@@ -9,9 +9,9 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cc.a;
+import com.tencent.mm.cb.a;
 import com.tencent.mm.plugin.order.model.MallOrderDetailObject.HelpCenter;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.base.preference.Preference;
 import java.util.LinkedList;
 import java.util.List;
@@ -21,9 +21,9 @@ public final class j
 {
   View.OnClickListener mOnClickListener;
   private View mView;
-  List<MallOrderDetailObject.HelpCenter> wCg;
-  String wFk;
-  View.OnClickListener wFl;
+  List<MallOrderDetailObject.HelpCenter> wRR;
+  String wUV;
+  View.OnClickListener wUW;
   
   public j(Context paramContext)
   {
@@ -31,8 +31,8 @@ public final class j
     AppMethodBeat.i(66831);
     this.mView = null;
     this.mOnClickListener = null;
-    this.wFl = null;
-    this.wCg = new LinkedList();
+    this.wUW = null;
+    this.wRR = new LinkedList();
     setLayoutResource(2131494718);
     AppMethodBeat.o(66831);
   }
@@ -55,15 +55,15 @@ public final class j
     super.onBindView(paramView);
     paramView = (LinearLayout)paramView.findViewById(2131302068);
     paramView.removeAllViews();
-    if (this.wCg == null)
+    if (this.wRR == null)
     {
       AppMethodBeat.o(66833);
       return;
     }
     int i;
-    if ((!bt.isNullOrNil(this.wFk)) && (this.wFl != null))
+    if ((!bu.isNullOrNil(this.wUV)) && (this.wUW != null))
     {
-      i = this.wCg.size();
+      i = this.wRR.size();
       if (i != 0) {
         break label455;
       }
@@ -77,9 +77,9 @@ public final class j
       Object localObject;
       for (;;)
       {
-        if (j < this.wCg.size())
+        if (j < this.wRR.size())
         {
-          localObject = (MallOrderDetailObject.HelpCenter)this.wCg.get(j);
+          localObject = (MallOrderDetailObject.HelpCenter)this.wRR.get(j);
           TextView localTextView = new TextView(this.mContext);
           localTextView.setTextColor(this.mContext.getResources().getColor(2131100711));
           localTextView.setTextSize(0, a.ax(this.mContext, 2131165517));
@@ -101,19 +101,19 @@ public final class j
           k += 1;
           j += 1;
           continue;
-          i = this.wCg.size() - 1;
+          i = this.wRR.size() - 1;
           break;
         }
       }
-      if ((!bt.isNullOrNil(this.wFk)) && (this.wFl != null))
+      if ((!bu.isNullOrNil(this.wUV)) && (this.wUW != null))
       {
         localObject = new TextView(this.mContext);
         ((TextView)localObject).setTextColor(this.mContext.getResources().getColor(2131100711));
         ((TextView)localObject).setTextSize(0, a.ax(this.mContext, 2131165517));
         ((TextView)localObject).setIncludeFontPadding(false);
-        ((TextView)localObject).setText(this.wFk);
+        ((TextView)localObject).setText(this.wUV);
         ((TextView)localObject).setGravity(17);
-        ((TextView)localObject).setOnClickListener(this.wFl);
+        ((TextView)localObject).setOnClickListener(this.wUW);
         if (k == i) {
           ((TextView)localObject).setTextColor(this.mContext.getResources().getColor(2131100464));
         }
@@ -126,7 +126,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.order.ui.a.j
  * JD-Core Version:    0.7.0.1
  */

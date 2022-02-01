@@ -14,12 +14,12 @@ final class a$4
   
   public final void onDestroy()
   {
-    AppMethodBeat.i(206220);
-    this.lpQ.onUIDestroy();
-    this.kCd.b(this.kPe);
-    this.kCd.b(this.kPd);
-    this.kCd.b(this);
-    AppMethodBeat.o(206220);
+    AppMethodBeat.i(211248);
+    this.lun.onUIDestroy();
+    this.kFs.b(this.kSM);
+    this.kFs.b(this.kSL);
+    this.kFs.b(this);
+    AppMethodBeat.o(211248);
   }
 }
 

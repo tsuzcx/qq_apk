@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.scanner.ui;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bd;
+import com.tencent.mm.sdk.platformtools.be;
 
 final class BaseScanUI$12
   implements Runnable
@@ -11,7 +11,7 @@ final class BaseScanUI$12
   public final void run()
   {
     AppMethodBeat.i(169971);
-    bd.aI(this.yqg, 2131762120);
+    be.aI(this.yGg, 2131762120);
     AppMethodBeat.o(169971);
   }
 }

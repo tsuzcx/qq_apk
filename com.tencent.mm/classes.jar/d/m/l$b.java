@@ -6,17 +6,17 @@ import d.g.b.q;
 import d.l;
 import java.util.Iterator;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "T", "it", "Lkotlin/sequences/Sequence;", "invoke"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "T", "it", "Lkotlin/sequences/Sequence;", "invoke"})
 public final class l$b
   extends q
   implements b<h<? extends T>, Iterator<? extends T>>
 {
-  public static final b NGJ;
+  public static final b OdP;
   
   static
   {
     AppMethodBeat.i(129476);
-    NGJ = new b();
+    OdP = new b();
     AppMethodBeat.o(129476);
   }
   

@@ -11,37 +11,37 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aq;
 
 public class RichTextImageView
   extends LinearLayout
 {
-  private Activity dsa;
+  private TextView Ahm;
+  private TextView AmZ;
+  private boolean Ana;
+  private String Anb;
+  private Activity dtg;
   private TextView titleTv;
-  private ImageView vEq;
-  private TextView zQf;
-  private TextView zVR;
-  private boolean zVS;
-  private String zVT;
+  private ImageView vQu;
   
   public RichTextImageView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(98234);
-    this.zVS = false;
-    this.dsa = ((Activity)paramContext);
-    paramContext = inflate(this.dsa, 2131495582, this);
-    this.zQf = ((TextView)paramContext.findViewById(2131304202));
+    this.Ana = false;
+    this.dtg = ((Activity)paramContext);
+    paramContext = inflate(this.dtg, 2131495582, this);
+    this.Ahm = ((TextView)paramContext.findViewById(2131304202));
     this.titleTv = ((TextView)paramContext.findViewById(2131305950));
-    this.zVR = ((TextView)paramContext.findViewById(2131297478));
-    this.vEq = ((ImageView)paramContext.findViewById(2131300948));
+    this.AmZ = ((TextView)paramContext.findViewById(2131297478));
+    this.vQu = ((ImageView)paramContext.findViewById(2131300948));
     AppMethodBeat.o(98234);
   }
   
   public ImageView getImageView()
   {
-    return this.vEq;
+    return this.vQu;
   }
   
   public TextView getTitle()
@@ -53,19 +53,19 @@ public class RichTextImageView
   {
     AppMethodBeat.i(98239);
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    if (!this.zVS)
+    if (!this.Ana)
     {
       AppMethodBeat.o(98239);
       return;
     }
-    if (this.zVT == null)
+    if (this.Anb == null)
     {
       AppMethodBeat.o(98239);
       return;
     }
-    ad.d("MicroMsg.RichTextImageView", "onLayout  Heighth:" + this.zQf.getHeight() + " LineHeight:" + this.zQf.getLineHeight());
-    paramInt3 = this.zQf.getHeight() / this.zQf.getLineHeight();
-    int i = this.zQf.getLineCount();
+    ae.d("MicroMsg.RichTextImageView", "onLayout  Heighth:" + this.Ahm.getHeight() + " LineHeight:" + this.Ahm.getLineHeight());
+    paramInt3 = this.Ahm.getHeight() / this.Ahm.getLineHeight();
+    int i = this.Ahm.getLineCount();
     Rect localRect = new Rect();
     paramInt1 = 0;
     paramInt2 = 0;
@@ -74,31 +74,31 @@ public class RichTextImageView
       if (paramInt1 < paramInt3) {
         try
         {
-          this.zQf.getLineBounds(paramInt1, localRect);
+          this.Ahm.getLineBounds(paramInt1, localRect);
           paramInt2 += localRect.height();
-          if (paramInt2 <= this.zQf.getHeight()) {
+          if (paramInt2 <= this.Ahm.getHeight()) {
             paramInt1 += 1;
           }
         }
         catch (IndexOutOfBoundsException localIndexOutOfBoundsException) {}
       }
     }
-    if ((i >= paramInt1) && (this.zVS))
+    if ((i >= paramInt1) && (this.Ana))
     {
       paramInt2 = paramInt1;
       if (paramInt1 <= 0) {
         paramInt2 = 1;
       }
-      paramInt1 = this.zQf.getLayout().getLineVisibleEnd(paramInt2 - 1);
-      StringBuilder localStringBuilder = new StringBuilder("bottomH:").append(this.zVR.getHeight()).append("length");
-      String str = this.zVT;
-      ad.e("test", str.substring(paramInt1, str.length()).length());
-      ad.e("test", "bottomH:" + this.zVR.getHeight());
-      if (this.zVR.getText().length() > 0)
+      paramInt1 = this.Ahm.getLayout().getLineVisibleEnd(paramInt2 - 1);
+      StringBuilder localStringBuilder = new StringBuilder("bottomH:").append(this.AmZ.getHeight()).append("length");
+      String str = this.Anb;
+      ae.e("test", str.substring(paramInt1, str.length()).length());
+      ae.e("test", "bottomH:" + this.AmZ.getHeight());
+      if (this.AmZ.getText().length() > 0)
       {
-        this.zVR.setVisibility(0);
-        this.zVS = false;
-        new ap().post(new Runnable()
+        this.AmZ.setVisibility(0);
+        this.Ana = false;
+        new aq().post(new Runnable()
         {
           public final void run()
           {
@@ -107,12 +107,12 @@ public class RichTextImageView
             RichTextImageView.c(RichTextImageView.this).setText(RichTextImageView.a(RichTextImageView.this).substring(paramInt1, RichTextImageView.a(RichTextImageView.this).length()));
             RichTextImageView.c(RichTextImageView.this).invalidate();
             RichTextImageView.d(RichTextImageView.this);
-            ad.e("test", "bottomH:" + RichTextImageView.c(RichTextImageView.this).getHeight());
+            ae.e("test", "bottomH:" + RichTextImageView.c(RichTextImageView.this).getHeight());
             AppMethodBeat.o(98233);
           }
         });
       }
-      ad.e("test", "bottom:" + paramInt4 + "   mesH:" + this.zVR.getMeasuredHeight());
+      ae.e("test", "bottom:" + paramInt4 + "   mesH:" + this.AmZ.getMeasuredHeight());
     }
     AppMethodBeat.o(98239);
   }
@@ -120,27 +120,27 @@ public class RichTextImageView
   public void setImage(int paramInt)
   {
     AppMethodBeat.i(98237);
-    this.vEq.setImageResource(paramInt);
+    this.vQu.setImageResource(paramInt);
     AppMethodBeat.o(98237);
   }
   
   public void setImage(Bitmap paramBitmap)
   {
     AppMethodBeat.i(98238);
-    this.vEq.setImageBitmap(paramBitmap);
+    this.vQu.setImageBitmap(paramBitmap);
     AppMethodBeat.o(98238);
   }
   
   public void setText(String paramString)
   {
     AppMethodBeat.i(98236);
-    this.zVS = true;
+    this.Ana = true;
     String str = paramString;
     if (paramString == null) {
       str = "";
     }
-    this.zVT = str;
-    this.zQf.setText(this.zVT);
+    this.Anb = str;
+    this.Ahm.setText(this.Anb);
     requestLayout();
     AppMethodBeat.o(98236);
   }

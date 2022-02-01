@@ -21,16 +21,16 @@ public final class e
   public final void a(int paramInt, j paramj)
   {
     AppMethodBeat.i(27864);
-    dEv();
+    dHM();
     AppMethodBeat.o(27864);
   }
   
   public final void a(a parama)
   {
     AppMethodBeat.i(27863);
-    this.xrT = parama;
-    this.xrx.clear();
-    this.xrx.addAll(parama.xrx);
+    this.xHQ = parama;
+    this.xHu.clear();
+    this.xHu.addAll(parama.xHu);
     notifyDataSetChanged();
     AppMethodBeat.o(27863);
   }
@@ -39,8 +39,8 @@ public final class e
   {
     paramb.dataType = 0;
     paramb.fromScene = this.fromScene;
-    paramb.msgId = ((f)this.xrT).msgId;
-    paramb.dEP = ((f)this.xrT).dEP;
+    paramb.msgId = ((f)this.xHQ).msgId;
+    paramb.dFU = ((f)this.xHQ).dFU;
   }
 }
 

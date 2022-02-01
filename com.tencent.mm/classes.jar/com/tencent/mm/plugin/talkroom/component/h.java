@@ -7,51 +7,51 @@ import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.b.e;
 import com.tencent.mm.pointers.PInt;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aq;
 
 public final class h
   extends e.a
   implements Runnable
 {
-  private static final int BmX = com.tencent.mm.plugin.talkroom.model.a.BmX;
-  private v2engine BmI;
-  private short BmJ;
-  private short BmK;
-  private final c BmY;
-  private boolean BmZ;
-  private long Bna;
-  private int Bnb;
-  private long Bnc;
+  private static final int BEw = com.tencent.mm.plugin.talkroom.model.a.BEw;
+  private int BEA;
+  private long BEB;
+  private v2engine BEh;
+  private short BEi;
+  private short BEj;
+  private final c BEx;
+  private boolean BEy;
+  private long BEz;
   private AudioTrack bfq;
   private int bufferSize;
-  private boolean cXh;
-  private boolean dtm;
-  private ap handler;
-  private boolean iwW;
-  private boolean iyT;
+  private boolean cYe;
+  private boolean dus;
+  private aq handler;
+  private boolean iBM;
+  private boolean izP;
   private final Object lock;
   private int sampleRateInHz;
-  private int vaB;
+  private int vmM;
   
   public h(v2engine paramv2engine, c paramc)
   {
     AppMethodBeat.i(29419);
-    this.sampleRateInHz = BmX;
-    this.bufferSize = (BmX / 1000 * 20 * 2);
-    this.handler = new ap(Looper.getMainLooper());
+    this.sampleRateInHz = BEw;
+    this.bufferSize = (BEw / 1000 * 20 * 2);
+    this.handler = new aq(Looper.getMainLooper());
     this.lock = new Object();
-    this.cXh = false;
-    this.iwW = false;
-    this.dtm = true;
-    this.BmZ = false;
-    this.Bna = 0L;
-    this.iyT = true;
-    this.vaB = 0;
-    this.Bnc = 0L;
-    this.BmI = paramv2engine;
-    this.BmY = paramc;
-    this.iwW = true;
+    this.cYe = false;
+    this.izP = false;
+    this.dus = true;
+    this.BEy = false;
+    this.BEz = 0L;
+    this.iBM = true;
+    this.vmM = 0;
+    this.BEB = 0L;
+    this.BEh = paramv2engine;
+    this.BEx = paramc;
+    this.izP = true;
     if ((this.bfq != null) && (this.bfq.getState() == 1)) {
       this.bfq.stop();
     }
@@ -60,8 +60,8 @@ public final class h
     {
       this.bfq.release();
       label152:
-      com.tencent.mm.plugin.audio.c.a.VK("music").iq(true);
-      int i = com.tencent.mm.plugin.audio.c.a.ix(true);
+      com.tencent.mm.plugin.audio.c.a.Ww("music").io(true);
+      int i = com.tencent.mm.plugin.audio.c.a.iv(true);
       int j = AudioTrack.getMinBufferSize(this.sampleRateInHz, 2, 2);
       if ((j == -2) || (j == -1))
       {
@@ -69,7 +69,7 @@ public final class h
         return;
       }
       this.bfq = new e(i, this.sampleRateInHz, 2, j * 8);
-      this.iwW = false;
+      this.izP = false;
       AppMethodBeat.o(29419);
       return;
     }
@@ -79,17 +79,17 @@ public final class h
     }
   }
   
-  public final void cxw()
+  public final void cyX()
   {
     AppMethodBeat.i(29420);
-    this.dtm = true;
+    this.dus = true;
     if ((this.bfq != null) && (this.bfq.getState() == 1)) {
       this.bfq.pause();
     }
     AppMethodBeat.o(29420);
   }
   
-  public final void eaq()
+  public final void edW()
   {
     AppMethodBeat.i(29421);
     if ((this.bfq != null) && (this.bfq.getState() == 1)) {
@@ -97,33 +97,33 @@ public final class h
     }
     synchronized (this.lock)
     {
-      this.dtm = false;
+      this.dus = false;
       this.lock.notify();
-      this.BmK = 0;
-      this.BmJ = 0;
+      this.BEj = 0;
+      this.BEi = 0;
       AppMethodBeat.o(29421);
       return;
     }
   }
   
-  public final int enB()
+  public final int eri()
   {
-    if (this.BmK < this.BmJ) {
-      this.BmK = this.BmJ;
+    if (this.BEj < this.BEi) {
+      this.BEj = this.BEi;
     }
-    if (this.BmK == 0) {
+    if (this.BEj == 0) {
       return 0;
     }
-    int i = (short)(this.BmJ * 100 / this.BmK);
-    this.BmJ = 0;
+    int i = (short)(this.BEi * 100 / this.BEj);
+    this.BEi = 0;
     return i;
   }
   
   public final void release()
   {
     AppMethodBeat.i(29422);
-    ad.i("MicroMsg.TalkRoomPlayer", "release");
-    this.cXh = true;
+    ae.i("MicroMsg.TalkRoomPlayer", "release");
+    this.cYe = true;
     if ((this.bfq != null) && (this.bfq.getState() == 1)) {
       this.bfq.stop();
     }
@@ -132,7 +132,7 @@ public final class h
     }
     synchronized (this.lock)
     {
-      this.dtm = false;
+      this.dus = false;
       this.lock.notify();
       AppMethodBeat.o(29422);
       return;
@@ -146,13 +146,13 @@ public final class h
     //   0: sipush 29423
     //   3: invokestatic 56	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_0
-    //   7: getfield 80	com/tencent/mm/plugin/talkroom/component/h:cXh	Z
+    //   7: getfield 80	com/tencent/mm/plugin/talkroom/component/h:cYe	Z
     //   10: ifeq +10 -> 20
     //   13: sipush 29423
     //   16: invokestatic 137	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   19: return
     //   20: aload_0
-    //   21: getfield 82	com/tencent/mm/plugin/talkroom/component/h:iwW	Z
+    //   21: getfield 82	com/tencent/mm/plugin/talkroom/component/h:izP	Z
     //   24: ifeq +30 -> 54
     //   27: ldc2_w 173
     //   30: invokestatic 180	java/lang/Thread:sleep	(J)V
@@ -163,7 +163,7 @@ public final class h
     //   42: ldc 182
     //   44: iconst_0
     //   45: anewarray 75	java/lang/Object
-    //   48: invokestatic 186	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   48: invokestatic 186	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   51: goto -45 -> 6
     //   54: aload_0
     //   55: getfield 78	com/tencent/mm/plugin/talkroom/component/h:lock	Ljava/lang/Object;
@@ -171,7 +171,7 @@ public final class h
     //   60: aload 8
     //   62: monitorenter
     //   63: aload_0
-    //   64: getfield 84	com/tencent/mm/plugin/talkroom/component/h:dtm	Z
+    //   64: getfield 84	com/tencent/mm/plugin/talkroom/component/h:dus	Z
     //   67: istore 5
     //   69: iload 5
     //   71: ifeq +10 -> 81
@@ -181,13 +181,13 @@ public final class h
     //   81: aload 8
     //   83: monitorexit
     //   84: aload_0
-    //   85: getfield 94	com/tencent/mm/plugin/talkroom/component/h:Bnc	J
+    //   85: getfield 94	com/tencent/mm/plugin/talkroom/component/h:BEB	J
     //   88: lstore 6
     //   90: aload_0
-    //   91: invokestatic 195	com/tencent/mm/sdk/platformtools/bt:HI	()J
-    //   94: putfield 94	com/tencent/mm/plugin/talkroom/component/h:Bnc	J
+    //   91: invokestatic 195	com/tencent/mm/sdk/platformtools/bu:HQ	()J
+    //   94: putfield 94	com/tencent/mm/plugin/talkroom/component/h:BEB	J
     //   97: aload_0
-    //   98: getfield 94	com/tencent/mm/plugin/talkroom/component/h:Bnc	J
+    //   98: getfield 94	com/tencent/mm/plugin/talkroom/component/h:BEB	J
     //   101: lload 6
     //   103: lsub
     //   104: lstore 6
@@ -223,13 +223,13 @@ public final class h
     //   165: invokespecial 205	com/tencent/mm/pointers/PInt:<init>	()V
     //   168: astore 10
     //   170: aload_0
-    //   171: getfield 96	com/tencent/mm/plugin/talkroom/component/h:BmI	Lcom/tencent/mm/plugin/talkroom/component/v2engine;
+    //   171: getfield 96	com/tencent/mm/plugin/talkroom/component/h:BEh	Lcom/tencent/mm/plugin/talkroom/component/v2engine;
     //   174: invokevirtual 210	com/tencent/mm/plugin/talkroom/component/v2engine:IsSilenceFrame	()I
     //   177: istore_3
     //   178: iload_3
     //   179: ifne +449 -> 628
     //   182: aload_0
-    //   183: getfield 96	com/tencent/mm/plugin/talkroom/component/h:BmI	Lcom/tencent/mm/plugin/talkroom/component/v2engine;
+    //   183: getfield 96	com/tencent/mm/plugin/talkroom/component/h:BEh	Lcom/tencent/mm/plugin/talkroom/component/v2engine;
     //   186: aload 8
     //   188: aload_0
     //   189: getfield 60	com/tencent/mm/plugin/talkroom/component/h:bufferSize	I
@@ -241,10 +241,10 @@ public final class h
     //   201: ifge +155 -> 356
     //   204: aload_0
     //   205: aload_0
-    //   206: getfield 92	com/tencent/mm/plugin/talkroom/component/h:vaB	I
+    //   206: getfield 92	com/tencent/mm/plugin/talkroom/component/h:vmM	I
     //   209: iconst_1
     //   210: iadd
-    //   211: putfield 92	com/tencent/mm/plugin/talkroom/component/h:vaB	I
+    //   211: putfield 92	com/tencent/mm/plugin/talkroom/component/h:vmM	I
     //   214: ldc 163
     //   216: ldc 216
     //   218: iconst_2
@@ -257,20 +257,20 @@ public final class h
     //   229: dup
     //   230: iconst_1
     //   231: aload_0
-    //   232: getfield 92	com/tencent/mm/plugin/talkroom/component/h:vaB	I
+    //   232: getfield 92	com/tencent/mm/plugin/talkroom/component/h:vmM	I
     //   235: invokestatic 222	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   238: aastore
-    //   239: invokestatic 226	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   239: invokestatic 226	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   242: aload_0
-    //   243: getfield 92	com/tencent/mm/plugin/talkroom/component/h:vaB	I
+    //   243: getfield 92	com/tencent/mm/plugin/talkroom/component/h:vmM	I
     //   246: bipush 100
     //   248: if_icmplt -242 -> 6
     //   251: aload_0
     //   252: iconst_0
-    //   253: putfield 92	com/tencent/mm/plugin/talkroom/component/h:vaB	I
+    //   253: putfield 92	com/tencent/mm/plugin/talkroom/component/h:vmM	I
     //   256: aload_0
     //   257: iconst_1
-    //   258: putfield 84	com/tencent/mm/plugin/talkroom/component/h:dtm	Z
+    //   258: putfield 84	com/tencent/mm/plugin/talkroom/component/h:dus	Z
     //   261: goto -255 -> 6
     //   264: astore 8
     //   266: ldc 163
@@ -278,11 +278,11 @@ public final class h
     //   270: ldc 182
     //   272: iconst_0
     //   273: anewarray 75	java/lang/Object
-    //   276: invokestatic 186	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   276: invokestatic 186	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   279: ldc 163
     //   281: aload 8
     //   283: invokevirtual 230	java/lang/Exception:toString	()Ljava/lang/String;
-    //   286: invokestatic 232	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   286: invokestatic 232	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   289: goto -283 -> 6
     //   292: astore 9
     //   294: ldc 163
@@ -290,7 +290,7 @@ public final class h
     //   298: ldc 182
     //   300: iconst_0
     //   301: anewarray 75	java/lang/Object
-    //   304: invokestatic 186	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   304: invokestatic 186	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   307: goto -226 -> 81
     //   310: astore 9
     //   312: aload 8
@@ -312,7 +312,7 @@ public final class h
     //   344: ldc 182
     //   346: iconst_0
     //   347: anewarray 75	java/lang/Object
-    //   350: invokestatic 186	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   350: invokestatic 186	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   353: goto -210 -> 143
     //   356: iload_3
     //   357: ifne +224 -> 581
@@ -359,11 +359,11 @@ public final class h
     //   426: istore_1
     //   427: iload_1
     //   428: aload_0
-    //   429: getfield 160	com/tencent/mm/plugin/talkroom/component/h:BmJ	S
+    //   429: getfield 160	com/tencent/mm/plugin/talkroom/component/h:BEi	S
     //   432: if_icmple +201 -> 633
     //   435: aload_0
     //   436: iload_1
-    //   437: putfield 160	com/tencent/mm/plugin/talkroom/component/h:BmJ	S
+    //   437: putfield 160	com/tencent/mm/plugin/talkroom/component/h:BEi	S
     //   440: goto +193 -> 633
     //   443: aload_0
     //   444: getfield 100	com/tencent/mm/plugin/talkroom/component/h:bfq	Landroid/media/AudioTrack;
@@ -378,15 +378,15 @@ public final class h
     //   463: iload_3
     //   464: ifne +134 -> 598
     //   467: aload_0
-    //   468: invokestatic 195	com/tencent/mm/sdk/platformtools/bt:HI	()J
-    //   471: putfield 88	com/tencent/mm/plugin/talkroom/component/h:Bna	J
+    //   468: invokestatic 195	com/tencent/mm/sdk/platformtools/bu:HQ	()J
+    //   471: putfield 88	com/tencent/mm/plugin/talkroom/component/h:BEz	J
     //   474: iconst_0
     //   475: istore 5
     //   477: aload_0
-    //   478: getfield 90	com/tencent/mm/plugin/talkroom/component/h:iyT	Z
+    //   478: getfield 90	com/tencent/mm/plugin/talkroom/component/h:iBM	Z
     //   481: ifne +15 -> 496
     //   484: aload_0
-    //   485: getfield 245	com/tencent/mm/plugin/talkroom/component/h:Bnb	I
+    //   485: getfield 245	com/tencent/mm/plugin/talkroom/component/h:BEA	I
     //   488: aload 10
     //   490: getfield 247	com/tencent/mm/pointers/PInt:value	I
     //   493: if_icmpeq +16 -> 509
@@ -396,12 +396,12 @@ public final class h
     //   503: getfield 247	com/tencent/mm/pointers/PInt:value	I
     //   506: ifne +15 -> 521
     //   509: aload_0
-    //   510: getfield 90	com/tencent/mm/plugin/talkroom/component/h:iyT	Z
+    //   510: getfield 90	com/tencent/mm/plugin/talkroom/component/h:iBM	Z
     //   513: ifne -507 -> 6
     //   516: iload 5
     //   518: ifeq -512 -> 6
     //   521: aload_0
-    //   522: getfield 86	com/tencent/mm/plugin/talkroom/component/h:BmZ	Z
+    //   522: getfield 86	com/tencent/mm/plugin/talkroom/component/h:BEy	Z
     //   525: ifne -519 -> 6
     //   528: iload 5
     //   530: ifne +20 -> 550
@@ -411,9 +411,9 @@ public final class h
     //   541: aload_0
     //   542: aload 10
     //   544: getfield 247	com/tencent/mm/pointers/PInt:value	I
-    //   547: putfield 245	com/tencent/mm/plugin/talkroom/component/h:Bnb	I
+    //   547: putfield 245	com/tencent/mm/plugin/talkroom/component/h:BEA	I
     //   550: aload_0
-    //   551: getfield 73	com/tencent/mm/plugin/talkroom/component/h:handler	Lcom/tencent/mm/sdk/platformtools/ap;
+    //   551: getfield 73	com/tencent/mm/plugin/talkroom/component/h:handler	Lcom/tencent/mm/sdk/platformtools/aq;
     //   554: new 8	com/tencent/mm/plugin/talkroom/component/h$1
     //   557: dup
     //   558: aload_0
@@ -421,22 +421,22 @@ public final class h
     //   561: aload 10
     //   563: iload 5
     //   565: invokespecial 250	com/tencent/mm/plugin/talkroom/component/h$1:<init>	(Lcom/tencent/mm/plugin/talkroom/component/h;Lcom/tencent/mm/pointers/PInt;Lcom/tencent/mm/pointers/PInt;Z)V
-    //   568: invokevirtual 254	com/tencent/mm/sdk/platformtools/ap:postAtFrontOfQueue	(Ljava/lang/Runnable;)Z
+    //   568: invokevirtual 254	com/tencent/mm/sdk/platformtools/aq:postAtFrontOfQueue	(Ljava/lang/Runnable;)Z
     //   571: pop
     //   572: aload_0
     //   573: iload 5
-    //   575: putfield 90	com/tencent/mm/plugin/talkroom/component/h:iyT	Z
+    //   575: putfield 90	com/tencent/mm/plugin/talkroom/component/h:iBM	Z
     //   578: goto -572 -> 6
     //   581: aload_0
-    //   582: getfield 90	com/tencent/mm/plugin/talkroom/component/h:iyT	Z
+    //   582: getfield 90	com/tencent/mm/plugin/talkroom/component/h:iBM	Z
     //   585: ifeq -122 -> 463
     //   588: aload_0
     //   589: getfield 100	com/tencent/mm/plugin/talkroom/component/h:bfq	Landroid/media/AudioTrack;
     //   592: invokevirtual 149	android/media/AudioTrack:pause	()V
     //   595: goto -132 -> 463
     //   598: aload_0
-    //   599: getfield 88	com/tencent/mm/plugin/talkroom/component/h:Bna	J
-    //   602: invokestatic 258	com/tencent/mm/sdk/platformtools/bt:aO	(J)J
+    //   599: getfield 88	com/tencent/mm/plugin/talkroom/component/h:BEz	J
+    //   602: invokestatic 258	com/tencent/mm/sdk/platformtools/bu:aO	(J)J
     //   605: lstore 6
     //   607: lload 6
     //   609: ldc2_w 259
@@ -509,13 +509,13 @@ public final class h
   public final void start()
   {
     AppMethodBeat.i(29424);
-    com.tencent.e.h.LTJ.aU(this);
+    com.tencent.e.h.MqF.aR(this);
     AppMethodBeat.o(29424);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.talkroom.component.h
  * JD-Core Version:    0.7.0.1
  */

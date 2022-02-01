@@ -9,15 +9,15 @@ import android.text.TextDirectionHeuristics;
 import android.text.TextPaint;
 import android.text.TextUtils.TruncateAt;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 
 public class a
 {
-  private static boolean gFE;
-  private static Constructor<StaticLayout> gFF;
-  private static Object gFG;
+  private static boolean gIl;
+  private static Constructor<StaticLayout> gIm;
+  private static Object gIn;
   private static boolean sInitialized;
   
   public static StaticLayout a(CharSequence paramCharSequence, int paramInt1, int paramInt2, TextPaint paramTextPaint, int paramInt3, Layout.Alignment paramAlignment, float paramFloat1, float paramFloat2, boolean paramBoolean, TextUtils.TruncateAt paramTruncateAt, int paramInt4, int paramInt5)
@@ -26,7 +26,7 @@ public class a
     {
       AppMethodBeat.i(141138);
       ensureInitialized();
-      if (gFE)
+      if (gIl)
       {
         paramCharSequence = new IllegalStateException("initialize error, cannot create StaticLayout");
         AppMethodBeat.o(141138);
@@ -36,8 +36,8 @@ public class a
     finally {}
     try
     {
-      Object localObject = gFG;
-      paramCharSequence = (StaticLayout)gFF.newInstance(new Object[] { paramCharSequence, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramTextPaint, Integer.valueOf(paramInt3), paramAlignment, localObject, Float.valueOf(paramFloat1), Float.valueOf(paramFloat2), Boolean.valueOf(paramBoolean), paramTruncateAt, Integer.valueOf(paramInt4), Integer.valueOf(paramInt5) });
+      Object localObject = gIn;
+      paramCharSequence = (StaticLayout)gIm.newInstance(new Object[] { paramCharSequence, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramTextPaint, Integer.valueOf(paramInt3), paramAlignment, localObject, Float.valueOf(paramFloat1), Float.valueOf(paramFloat2), Boolean.valueOf(paramBoolean), paramTruncateAt, Integer.valueOf(paramInt4), Integer.valueOf(paramInt5) });
       AppMethodBeat.o(141138);
       return paramCharSequence;
     }
@@ -55,7 +55,7 @@ public class a
     {
       AppMethodBeat.i(141139);
       ensureInitialized();
-      if (gFE)
+      if (gIl)
       {
         paramCharSequence = new IllegalStateException("initialize error, cannot create StaticLayout");
         AppMethodBeat.o(141139);
@@ -65,7 +65,7 @@ public class a
     finally {}
     try
     {
-      paramCharSequence = (StaticLayout)gFF.newInstance(new Object[] { paramCharSequence, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramTextPaint, Integer.valueOf(paramInt3), paramAlignment, paramTextDirectionHeuristic, Float.valueOf(paramFloat1), Float.valueOf(paramFloat2), Boolean.valueOf(paramBoolean), paramTruncateAt, Integer.valueOf(paramInt4), Integer.valueOf(paramInt5) });
+      paramCharSequence = (StaticLayout)gIm.newInstance(new Object[] { paramCharSequence, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramTextPaint, Integer.valueOf(paramInt3), paramAlignment, paramTextDirectionHeuristic, Float.valueOf(paramFloat1), Float.valueOf(paramFloat2), Boolean.valueOf(paramBoolean), paramTruncateAt, Integer.valueOf(paramInt4), Integer.valueOf(paramInt5) });
       AppMethodBeat.o(141139);
       return paramCharSequence;
     }
@@ -99,9 +99,9 @@ public class a
           break label180;
         }
         localObject1 = TextDirectionHeuristic.class;
-        gFG = TextDirectionHeuristics.FIRSTSTRONG_LTR;
+        gIn = TextDirectionHeuristics.FIRSTSTRONG_LTR;
         localObject1 = StaticLayout.class.getDeclaredConstructor(new Class[] { CharSequence.class, Integer.TYPE, Integer.TYPE, TextPaint.class, Integer.TYPE, Layout.Alignment.class, localObject1, Float.TYPE, Float.TYPE, Boolean.TYPE, TextUtils.TruncateAt.class, Integer.TYPE, Integer.TYPE });
-        gFF = (Constructor)localObject1;
+        gIm = (Constructor)localObject1;
         ((Constructor)localObject1).setAccessible(true);
         sInitialized = true;
       }
@@ -109,36 +109,36 @@ public class a
       {
         Object localObject4;
         Class localClass;
-        ad.e("StaticTextView.StaticLayoutWithMaxLines", "StaticLayout constructor with max lines not found.", new Object[] { localNoSuchMethodException });
-        gFE = true;
+        ae.e("StaticTextView.StaticLayoutWithMaxLines", "StaticLayout constructor with max lines not found.", new Object[] { localNoSuchMethodException });
+        gIl = true;
         sInitialized = true;
         continue;
       }
       catch (ClassNotFoundException localClassNotFoundException)
       {
-        ad.e("StaticTextView.StaticLayoutWithMaxLines", "TextDirectionHeuristic class not found.", new Object[] { localClassNotFoundException });
-        gFE = true;
+        ae.e("StaticTextView.StaticLayoutWithMaxLines", "TextDirectionHeuristic class not found.", new Object[] { localClassNotFoundException });
+        gIl = true;
         sInitialized = true;
         continue;
       }
       catch (NoSuchFieldException localNoSuchFieldException)
       {
-        ad.e("StaticTextView.StaticLayoutWithMaxLines", "TextDirectionHeuristics.FIRSTSTRONG_LTR not found.", new Object[] { localNoSuchFieldException });
-        gFE = true;
+        ae.e("StaticTextView.StaticLayoutWithMaxLines", "TextDirectionHeuristics.FIRSTSTRONG_LTR not found.", new Object[] { localNoSuchFieldException });
+        gIl = true;
         sInitialized = true;
         continue;
       }
       catch (IllegalAccessException localIllegalAccessException)
       {
-        ad.e("StaticTextView.StaticLayoutWithMaxLines", "TextDirectionHeuristics.FIRSTSTRONG_LTR not accessible.", new Object[] { localIllegalAccessException });
-        gFE = true;
+        ae.e("StaticTextView.StaticLayoutWithMaxLines", "TextDirectionHeuristics.FIRSTSTRONG_LTR not accessible.", new Object[] { localIllegalAccessException });
+        gIl = true;
         sInitialized = true;
         continue;
       }
       catch (Exception localException)
       {
-        ad.e("StaticTextView.StaticLayoutWithMaxLines", "Other error.", new Object[] { localException });
-        gFE = true;
+        ae.e("StaticTextView.StaticLayoutWithMaxLines", "Other error.", new Object[] { localException });
+        gIl = true;
         sInitialized = true;
         continue;
       }
@@ -147,20 +147,20 @@ public class a
         sInitialized = true;
         AppMethodBeat.o(141137);
       }
-      ad.i("StaticTextView.StaticLayoutWithMaxLines", "ensureInitialized finish, sInitialError: " + gFE);
+      ae.i("StaticTextView.StaticLayoutWithMaxLines", "ensureInitialized finish, sInitialError: " + gIl);
       AppMethodBeat.o(141137);
       continue;
       label180:
       localObject4 = a.class.getClassLoader();
       localClass = ((ClassLoader)localObject4).loadClass("android.text.TextDirectionHeuristic");
       localObject4 = ((ClassLoader)localObject4).loadClass("android.text.TextDirectionHeuristics");
-      gFG = ((Class)localObject4).getField("FIRSTSTRONG_LTR").get(localObject4);
+      gIn = ((Class)localObject4).getField("FIRSTSTRONG_LTR").get(localObject4);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.kiss.widget.textview.b.a
  * JD-Core Version:    0.7.0.1
  */

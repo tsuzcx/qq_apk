@@ -5,17 +5,17 @@ import com.tencent.mm.sticker.f;
 import com.tencent.mm.storage.emotion.EmojiInfo;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/emojicapture/model/mix/EmojiMixInfo;", "", "scene", "", "timeEnter", "", "videoPath", "", "outputPath", "retriever", "Lcom/tencent/mm/plugin/emojicapture/model/mix/EmojiFrameRetriever;", "videoPlayRate", "isRemoveBg", "", "stickerPack", "Lcom/tencent/mm/sticker/StickerPack;", "outputGif", "emojiInfo", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "(IJLjava/lang/String;Ljava/lang/String;Lcom/tencent/mm/plugin/emojicapture/model/mix/EmojiFrameRetriever;IZLcom/tencent/mm/sticker/StickerPack;ZLcom/tencent/mm/storage/emotion/EmojiInfo;)V", "getEmojiInfo", "()Lcom/tencent/mm/storage/emotion/EmojiInfo;", "()Z", "getOutputGif", "getOutputPath", "()Ljava/lang/String;", "getRetriever", "()Lcom/tencent/mm/plugin/emojicapture/model/mix/EmojiFrameRetriever;", "getScene", "()I", "getStickerPack", "()Lcom/tencent/mm/sticker/StickerPack;", "getTimeEnter", "()J", "getVideoPath", "getVideoPlayRate", "plugin-emojicapture_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/emojicapture/model/mix/EmojiMixInfo;", "", "scene", "", "timeEnter", "", "videoPath", "", "outputPath", "retriever", "Lcom/tencent/mm/plugin/emojicapture/model/mix/EmojiFrameRetriever;", "videoPlayRate", "isRemoveBg", "", "stickerPack", "Lcom/tencent/mm/sticker/StickerPack;", "outputGif", "emojiInfo", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "(IJLjava/lang/String;Ljava/lang/String;Lcom/tencent/mm/plugin/emojicapture/model/mix/EmojiFrameRetriever;IZLcom/tencent/mm/sticker/StickerPack;ZLcom/tencent/mm/storage/emotion/EmojiInfo;)V", "getEmojiInfo", "()Lcom/tencent/mm/storage/emotion/EmojiInfo;", "()Z", "getOutputGif", "getOutputPath", "()Ljava/lang/String;", "getRetriever", "()Lcom/tencent/mm/plugin/emojicapture/model/mix/EmojiFrameRetriever;", "getScene", "()I", "getStickerPack", "()Lcom/tencent/mm/sticker/StickerPack;", "getTimeEnter", "()J", "getVideoPath", "getVideoPlayRate", "plugin-emojicapture_release"})
 public final class d
 {
-  final EmojiInfo gjb;
-  final long gpU;
-  final String pSc;
-  final a pSh;
-  final int pSi;
-  final boolean pSj;
-  final f pSk;
-  final boolean pSl;
+  final EmojiInfo glt;
+  final long gsp;
+  final String pYH;
+  final a pYM;
+  final int pYN;
+  final boolean pYO;
+  final f pYP;
+  final boolean pYQ;
   final int scene;
   final String videoPath;
   
@@ -23,21 +23,21 @@ public final class d
   {
     AppMethodBeat.i(270);
     this.scene = paramInt1;
-    this.gpU = paramLong;
+    this.gsp = paramLong;
     this.videoPath = paramString1;
-    this.pSc = paramString2;
-    this.pSh = parama;
-    this.pSi = paramInt2;
-    this.pSj = paramBoolean1;
-    this.pSk = paramf;
-    this.pSl = paramBoolean2;
-    this.gjb = paramEmojiInfo;
+    this.pYH = paramString2;
+    this.pYM = parama;
+    this.pYN = paramInt2;
+    this.pYO = paramBoolean1;
+    this.pYP = paramf;
+    this.pYQ = paramBoolean2;
+    this.glt = paramEmojiInfo;
     AppMethodBeat.o(270);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.emojicapture.model.b.d
  * JD-Core Version:    0.7.0.1
  */

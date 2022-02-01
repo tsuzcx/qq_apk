@@ -1,11 +1,11 @@
 package com.tencent.mm.plugin.fingerprint.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.f;
+import com.tencent.mm.ak.f;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.network.k;
 import com.tencent.mm.plugin.soter.b.d;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.soter.a.f.e.b;
 
 public final class c
@@ -13,23 +13,23 @@ public final class c
   implements k, com.tencent.soter.a.f.e
 {
   private f callback;
-  private int dJI;
-  private String jqo = null;
-  public com.tencent.mm.al.b rr;
-  private int thJ;
-  private com.tencent.soter.a.f.b<e.b> thK = null;
+  private int dKW;
+  private String jth = null;
+  public com.tencent.mm.ak.b rr;
+  private int tsC;
+  private com.tencent.soter.a.f.b<e.b> tsD = null;
   
   public c(String paramString, int paramInt)
   {
-    this.jqo = paramString;
-    this.thJ = paramInt;
-    this.dJI = paramInt;
+    this.jth = paramString;
+    this.tsC = paramInt;
+    this.dKW = paramInt;
   }
   
-  public final void GC(int paramInt)
+  public final void GZ(int paramInt)
   {
     AppMethodBeat.i(64466);
-    ad.i("MicroMsg.NetSceneSoterPayUploadAuthKeyManually", "hy: onError: errType: %d, errcode: %d", new Object[] { Integer.valueOf(3), Integer.valueOf(paramInt) });
+    ae.i("MicroMsg.NetSceneSoterPayUploadAuthKeyManually", "hy: onError: errType: %d, errcode: %d", new Object[] { Integer.valueOf(3), Integer.valueOf(paramInt) });
     if (this.callback != null) {
       this.callback.onSceneEnd(4, -1, "", this);
     }
@@ -38,20 +38,20 @@ public final class c
   
   public final void a(com.tencent.soter.a.f.b<e.b> paramb)
   {
-    this.thK = paramb;
+    this.tsD = paramb;
   }
   
-  public final void cQb()
+  public final void cSG()
   {
     AppMethodBeat.i(64465);
-    ad.i("MicroMsg.NetSceneSoterPayUploadAuthKeyManually", "hy: authkey required");
+    ae.i("MicroMsg.NetSceneSoterPayUploadAuthKeyManually", "hy: authkey required");
     if (this.callback != null) {
       this.callback.onSceneEnd(4, -1, "", this);
     }
-    if (this.thK != null)
+    if (this.tsD != null)
     {
-      ad.e("MicroMsg.NetSceneSoterPayUploadAuthKeyManually", "alvinluo pay auth key expired when upload pay auth key");
-      this.thK.eu(new e.b(false));
+      ae.e("MicroMsg.NetSceneSoterPayUploadAuthKeyManually", "alvinluo pay auth key expired when upload pay auth key");
+      this.tsD.ex(new e.b(false));
     }
     AppMethodBeat.o(64465);
   }
@@ -59,20 +59,20 @@ public final class c
   public final void d(int paramInt1, int paramInt2, String paramString, com.tencent.mm.network.q paramq)
   {
     AppMethodBeat.i(64464);
-    ad.d("MicroMsg.NetSceneSoterPayUploadAuthKeyManually", "onGYNetEnd errType: %d , errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    ae.d("MicroMsg.NetSceneSoterPayUploadAuthKeyManually", "onGYNetEnd errType: %d , errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt1, paramInt2, paramString, this);
     }
-    com.tencent.mm.plugin.soter.d.m.AFI = paramString;
-    if (this.thK != null)
+    com.tencent.mm.plugin.soter.d.m.AXl = paramString;
+    if (this.tsD != null)
     {
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        this.thK.eu(new e.b(true));
+        this.tsD.ex(new e.b(true));
         AppMethodBeat.o(64464);
         return;
       }
-      this.thK.eu(new e.b(false));
+      this.tsD.ex(new e.b(false));
     }
     AppMethodBeat.o(64464);
   }
@@ -89,7 +89,7 @@ public final class c
   public final void execute()
   {
     AppMethodBeat.i(64467);
-    g.aiU().a(this, 0);
+    g.ajj().a(this, 0);
     AppMethodBeat.o(64467);
   }
   

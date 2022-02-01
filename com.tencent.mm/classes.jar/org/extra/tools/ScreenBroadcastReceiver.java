@@ -10,20 +10,20 @@ import java.lang.reflect.Method;
 public class ScreenBroadcastReceiver
   extends BroadcastReceiver
 {
-  private a NVX;
+  private a Otc;
   
   public ScreenBroadcastReceiver(a parama)
   {
-    this.NVX = parama;
+    this.Otc = parama;
   }
   
   public static Context getApplicationContext()
   {
-    AppMethodBeat.i(220108);
+    AppMethodBeat.i(216862);
     try
     {
       Context localContext = ((Application)Class.forName("android.app.ActivityThread").getMethod("currentApplication", new Class[0]).invoke(null, null)).getApplicationContext();
-      AppMethodBeat.o(220108);
+      AppMethodBeat.o(216862);
       return localContext;
     }
     catch (Exception localException)
@@ -37,18 +37,18 @@ public class ScreenBroadcastReceiver
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    AppMethodBeat.i(220107);
+    AppMethodBeat.i(216861);
     paramContext = paramIntent.getAction();
     if ("android.intent.action.SCREEN_ON".equals(paramContext))
     {
-      this.NVX.onScreenOn();
-      AppMethodBeat.o(220107);
+      this.Otc.onScreenOn();
+      AppMethodBeat.o(216861);
       return;
     }
     if ("android.intent.action.SCREEN_OFF".equals(paramContext)) {
-      this.NVX.onScreenOff();
+      this.Otc.onScreenOff();
     }
-    AppMethodBeat.o(220107);
+    AppMethodBeat.o(216861);
   }
   
   public static abstract interface a

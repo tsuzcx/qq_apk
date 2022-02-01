@@ -15,7 +15,7 @@ import java.util.List;
 
 public final class a
 {
-  public b LLv;
+  public b Miu;
   public Context mContext;
   
   public a(Context paramContext)
@@ -23,7 +23,7 @@ public final class a
     AppMethodBeat.i(138310);
     this.mContext = null;
     this.mContext = paramContext;
-    this.LLv = new b(paramContext);
+    this.Miu = new b(paramContext);
     AppMethodBeat.o(138310);
   }
   
@@ -36,47 +36,47 @@ public final class a
       return null;
     }
     com.tencent.d.c.b.b localb = new com.tencent.d.c.b.b();
-    localb.LMc = paramInt;
-    localb.LMd = null;
-    localb.LMe = parama.dFD;
-    localb.LMf = com.tencent.d.f.e.aZn(parama.LLq);
-    paramContext = com.tencent.d.f.a.cx(paramContext, parama.dFD);
+    localb.Mjb = paramInt;
+    localb.Mjc = null;
+    localb.Mjd = parama.dGI;
+    localb.Mje = com.tencent.d.f.e.baQ(parama.Mip);
+    paramContext = com.tencent.d.f.a.cy(paramContext, parama.dGI);
     if (paramContext.size() > 1)
     {
-      localb.LMu = new ArrayList();
+      localb.Mjt = new ArrayList();
       paramContext = paramContext.iterator();
       while (paramContext.hasNext())
       {
         byte[] arrayOfByte = (byte[])paramContext.next();
-        localb.LMu.add(arrayOfByte);
+        localb.Mjt.add(arrayOfByte);
       }
     }
-    localb.LMg = parama.fileSize;
-    localb.LMh = parama.LLp;
-    localb.LMi = parama.versionCode;
-    localb.LMj = parama.versionName;
-    localb.LMk = 0;
+    localb.Mjf = parama.fileSize;
+    localb.Mjg = parama.Mio;
+    localb.Mjh = parama.versionCode;
+    localb.Mji = parama.versionName;
+    localb.Mjj = 0;
     if (parama.appType == 1) {
-      localb.LMk |= 0x1;
+      localb.Mjj |= 0x1;
     }
-    localb.LMk |= 0x2;
-    if ((!parama.LLr.startsWith("/data")) && (!parama.LLr.startsWith("/system"))) {
-      localb.LMk |= 0x4;
+    localb.Mjj |= 0x2;
+    if ((!parama.Miq.startsWith("/data")) && (!parama.Miq.startsWith("/system"))) {
+      localb.Mjj |= 0x4;
     }
-    localb.LMl = "";
-    localb.LMm = 0;
-    localb.LMn = 0;
-    localb.LMo = 0;
-    localb.LMp = null;
-    localb.LMq = 0;
-    localb.LMr = false;
-    localb.LMs = 0;
-    localb.LMt = 0;
+    localb.Mjk = "";
+    localb.Mjl = 0;
+    localb.Mjm = 0;
+    localb.Mjn = 0;
+    localb.Mjo = null;
+    localb.Mjp = 0;
+    localb.Mjq = false;
+    localb.Mjr = 0;
+    localb.Mjs = 0;
     AppMethodBeat.o(138312);
     return localb;
   }
   
-  public static com.tencent.d.c.b.d fTI()
+  public static com.tencent.d.c.b.d fYi()
   {
     AppMethodBeat.i(138311);
     com.tencent.d.c.b.d locald = new com.tencent.d.c.b.d();
@@ -84,14 +84,14 @@ public final class a
     {
       try
       {
-        locald.LMK = Build.FINGERPRINT;
-        locald.LML = com.tencent.d.f.d.fUe();
-        locald.hQG = Build.BRAND;
+        locald.MjJ = Build.FINGERPRINT;
+        locald.MjK = com.tencent.d.f.d.fYE();
+        locald.hTy = Build.BRAND;
         locald.model = Build.MODEL;
-        locald.LMM = Build.VERSION.SDK_INT;
-        locald.LMN = Build.CPU_ABI;
-        locald.platform = com.tencent.d.f.d.aZm("ro.board.platform");
-        if (!com.tencent.d.d.a.f.fTM()) {
+        locald.MjL = Build.VERSION.SDK_INT;
+        locald.MjM = Build.CPU_ABI;
+        locald.platform = com.tencent.d.f.d.baP("ro.board.platform");
+        if (!com.tencent.d.d.a.f.fYm()) {
           continue;
         }
         i = 2;
@@ -118,10 +118,10 @@ public final class a
         i = 1;
         continue;
       }
-      locald.LMO = i;
+      locald.MjN = i;
       AppMethodBeat.o(138311);
       return locald;
-      localObject2 = com.tencent.d.d.b.d.fTN();
+      localObject2 = com.tencent.d.d.b.d.fYn();
       if (!((Collection)localObject2).isEmpty()) {
         continue;
       }
@@ -132,7 +132,7 @@ public final class a
       localObject1 = new ArrayList(3);
       ((List)localObject1).add(new g());
       ((List)localObject1).add(new com.tencent.d.d.a.d());
-      if (com.tencent.d.d.b.f.fTO()) {
+      if (com.tencent.d.d.b.f.fYo()) {
         ((List)localObject1).add(new c());
       }
       localObject2 = ((List)localObject2).iterator();
@@ -153,42 +153,42 @@ public final class a
         if (!((Iterator)localObject1).hasNext()) {
           continue;
         }
-        if (((com.tencent.d.d.a.b)((Iterator)localObject1).next()).fTK())
+        if (((com.tencent.d.d.a.b)((Iterator)localObject1).next()).fYk())
         {
           i = 1;
           continue;
-          if (com.tencent.d.d.a.e.fTL())
+          if (com.tencent.d.d.a.e.fYl())
           {
             i = 1;
           }
           else
           {
-            if (!com.tencent.d.d.a.a.aZh("/system/bin/debuggerd"))
+            if (!com.tencent.d.d.a.a.baK("/system/bin/debuggerd"))
             {
               i = 1;
               continue;
             }
-            if (!com.tencent.d.d.a.a.aZh("/system/bin/debuggerd64"))
+            if (!com.tencent.d.d.a.a.baK("/system/bin/debuggerd64"))
             {
               i = 1;
               continue;
             }
-            if (!com.tencent.d.d.a.a.aZh("/system/bin/ddexe"))
+            if (!com.tencent.d.d.a.a.baK("/system/bin/ddexe"))
             {
               i = 1;
               continue;
             }
-            if (!com.tencent.d.d.a.a.aZi("/system/etc/install-recovery.sh"))
+            if (!com.tencent.d.d.a.a.baL("/system/etc/install-recovery.sh"))
             {
               i = 1;
               continue;
             }
-            if (!com.tencent.d.d.a.a.aZi("/system/bin/install-recovery.sh"))
+            if (!com.tencent.d.d.a.a.baL("/system/bin/install-recovery.sh"))
             {
               i = 1;
               continue;
             }
-            h.fUg();
+            h.fYF();
             i = 0;
             continue;
             i = 0;

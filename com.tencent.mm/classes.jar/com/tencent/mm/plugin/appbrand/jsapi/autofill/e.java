@@ -1,10 +1,10 @@
 package com.tencent.mm.plugin.appbrand.jsapi.autofill;
 
-import com.tencent.mm.plugin.appbrand.page.aa;
-import com.tencent.mm.protocal.protobuf.bjx;
+import com.tencent.mm.plugin.appbrand.page.z;
+import com.tencent.mm.protocal.protobuf.bkp;
 
 public final class e
-  extends com.tencent.mm.plugin.appbrand.jsapi.a<aa>
+  extends com.tencent.mm.plugin.appbrand.jsapi.a<z>
 {
   public static final int CTRL_INDEX = 204;
   public static final String NAME = "getUserAutoFillData";

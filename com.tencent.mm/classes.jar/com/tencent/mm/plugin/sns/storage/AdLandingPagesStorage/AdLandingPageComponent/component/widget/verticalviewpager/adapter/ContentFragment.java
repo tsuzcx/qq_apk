@@ -34,25 +34,28 @@ import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ab;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.l;
+import com.tencent.mm.memory.n;
+import com.tencent.mm.plugin.sns.ad.landingpage.helper.floatpage.FloatJumpCompHelper;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ac;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ao;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.an;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.m;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.widget.c;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.widget.c.b;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.widget.verticalviewpager.DummyViewPager;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.t;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.x;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.y;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.f.a;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.h;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.g;
 import com.tencent.mm.plugin.sns.ui.SnsAdNativeLandingPagesUI;
 import com.tencent.mm.plugin.sns.ui.av;
 import com.tencent.mm.plugin.sns.ui.widget.SnsAdLandingPageFloatView;
 import com.tencent.mm.plugin.sns.ui.widget.ad.OverScrollLinearout;
 import com.tencent.mm.plugin.sns.ui.widget.ad.OverScrollLinearout.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.vfs.i;
+import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Collections;
@@ -64,71 +67,71 @@ import java.util.WeakHashMap;
 public class ContentFragment
   extends Fragment
 {
+  private boolean Aaa;
+  private ValueAnimator Aab;
+  private int Aac;
+  public int Aad;
+  public a Aae;
+  private b Aaf;
+  private a Aag;
+  private boolean Aah;
+  protected final String Aai;
+  protected boolean Aaj;
+  protected boolean Aak;
+  private BroadcastReceiver Aal;
+  protected View.OnClickListener Aam;
+  private View.OnClickListener Aan;
+  private boolean Aao;
+  private OverScrollLinearout.a Aap;
   private int bgColor;
-  public boolean cBJ;
-  public boolean iVf;
-  private int jbg;
-  private ap lRx;
-  private int ltA;
-  private int ltB;
-  public Map<String, Object> xaW;
-  private LinearLayoutManager zCm;
-  private final Map<String, Bitmap> zFe;
-  public com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.g zII;
-  private int zIK;
-  public c zIM;
-  private int zIN;
-  private com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.am zIO;
-  public boolean zIP;
-  private boolean zIQ;
-  private boolean zIR;
-  public boolean zIS;
-  private boolean zIT;
-  private ValueAnimator zIU;
-  private int zIV;
-  public int zIW;
-  public a zIX;
-  private b zIY;
-  private a zIZ;
-  private boolean zJa;
-  protected final String zJb;
-  protected boolean zJc;
-  protected boolean zJd;
-  private BroadcastReceiver zJe;
-  protected View.OnClickListener zJf;
-  private View.OnClickListener zJg;
-  private boolean zJh;
-  private OverScrollLinearout.a zJi;
+  public boolean cCq;
+  public boolean iXY;
+  private int jdZ;
+  private aq lVY;
+  private int lxZ;
+  private int lya;
+  public Map<String, Object> xqN;
+  private LinearLayoutManager zTo;
+  private final Map<String, Bitmap> zWk;
+  public g zZP;
+  private int zZR;
+  public c zZT;
+  private int zZU;
+  private ao zZV;
+  public boolean zZW;
+  private boolean zZX;
+  private boolean zZY;
+  public boolean zZZ;
   
   public ContentFragment()
   {
     AppMethodBeat.i(97093);
-    this.zFe = new WeakHashMap();
-    this.zIN = 1000;
-    this.zIT = false;
-    this.zJb = "ContentFragmentSphereImageView";
-    this.zJc = false;
-    this.zJd = false;
-    this.zJe = new BroadcastReceiver()
+    this.zWk = new WeakHashMap();
+    this.zZU = 1000;
+    this.Aaa = false;
+    this.Aai = "ContentFragmentSphereImageView";
+    this.Aaj = false;
+    this.Aak = false;
+    this.Aal = new BroadcastReceiver()
     {
       public final void onReceive(Context paramAnonymousContext, Intent paramAnonymousIntent)
       {
         AppMethodBeat.i(97091);
         paramAnonymousContext = paramAnonymousIntent.getAction();
-        ad.i("ContentFragmentSphereImageView", "onReceive, action=" + paramAnonymousContext + ", isSphereCom=" + ContentFragment.this.zJc + ", isFullScreen=" + ContentFragment.this.zJd);
+        ae.i("ContentFragmentSphereImageView", "onReceive, action=" + paramAnonymousContext + ", isSphereCom=" + ContentFragment.this.Aaj + ", isFullScreen=" + ContentFragment.this.Aak);
         if ("com.tencent.mm.adlanding.sphereimage.next_page_view_show".equals(paramAnonymousContext))
         {
           paramAnonymousContext = ContentFragment.this.getActivity();
           if ((paramAnonymousContext instanceof SnsAdNativeLandingPagesUI))
           {
-            boolean bool = ((SnsAdNativeLandingPagesUI)paramAnonymousContext).ebr();
-            ad.i("ContentFragmentSphereImageView", "hasNextPage=".concat(String.valueOf(bool)));
+            boolean bool = ((SnsAdNativeLandingPagesUI)paramAnonymousContext).eeY();
+            ae.i("ContentFragmentSphereImageView", "hasNextPage=".concat(String.valueOf(bool)));
             if (bool)
             {
-              ContentFragment.a(ContentFragment.this).zJq.setVisibility(0);
+              ContentFragment.a(ContentFragment.this).Aax.setVisibility(0);
               paramAnonymousContext = new AlphaAnimation(0.0F, 1.0F);
               paramAnonymousContext.setDuration(500L);
-              ContentFragment.a(ContentFragment.this).zJq.startAnimation(paramAnonymousContext);
+              ContentFragment.a(ContentFragment.this).Aax.startAnimation(paramAnonymousContext);
             }
           }
           AppMethodBeat.o(97091);
@@ -136,9 +139,9 @@ public class ContentFragment
         }
         if ("com.tencent.mm.adlanding.sphereimage.next_page_view_alpha_none".equals(paramAnonymousContext))
         {
-          if (ContentFragment.a(ContentFragment.this).zJq.getVisibility() == 0)
+          if (ContentFragment.a(ContentFragment.this).Aax.getVisibility() == 0)
           {
-            paramAnonymousContext = ObjectAnimator.ofFloat(ContentFragment.a(ContentFragment.this).zJq, "alpha", new float[] { 0.5F, 1.0F });
+            paramAnonymousContext = ObjectAnimator.ofFloat(ContentFragment.a(ContentFragment.this).Aax, "alpha", new float[] { 0.5F, 1.0F });
             paramAnonymousContext.setDuration(300L);
             paramAnonymousContext.start();
             AppMethodBeat.o(97091);
@@ -146,50 +149,50 @@ public class ContentFragment
         }
         else if ("com.tencent.mm.adlanding.sphereimage.next_page_view_alpha_half".equals(paramAnonymousContext))
         {
-          if (ContentFragment.a(ContentFragment.this).zJq.getVisibility() == 0)
+          if (ContentFragment.a(ContentFragment.this).Aax.getVisibility() == 0)
           {
-            paramAnonymousContext = ObjectAnimator.ofFloat(ContentFragment.a(ContentFragment.this).zJq, "alpha", new float[] { 1.0F, 0.5F });
+            paramAnonymousContext = ObjectAnimator.ofFloat(ContentFragment.a(ContentFragment.this).Aax, "alpha", new float[] { 1.0F, 0.5F });
             paramAnonymousContext.setDuration(300L);
             paramAnonymousContext.start();
             AppMethodBeat.o(97091);
           }
         }
-        else if (("com.tencent.mm.adlanding.sphereimage.next_page_view_hide".equals(paramAnonymousContext)) && (ContentFragment.a(ContentFragment.this).zJq.getVisibility() == 0))
+        else if (("com.tencent.mm.adlanding.sphereimage.next_page_view_hide".equals(paramAnonymousContext)) && (ContentFragment.a(ContentFragment.this).Aax.getVisibility() == 0))
         {
           paramAnonymousContext = new AlphaAnimation(1.0F, 0.0F);
           paramAnonymousContext.setDuration(250L);
           paramAnonymousContext.setFillAfter(true);
-          ContentFragment.a(ContentFragment.this).zJq.startAnimation(paramAnonymousContext);
+          ContentFragment.a(ContentFragment.this).Aax.startAnimation(paramAnonymousContext);
         }
         AppMethodBeat.o(97091);
       }
     };
-    this.zJf = new View.OnClickListener()
+    this.Aam = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(97092);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
         localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/widget/verticalviewpager/adapter/ContentFragment$9", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/widget/verticalviewpager/adapter/ContentFragment$9", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
         paramAnonymousView = ContentFragment.this.getActivity();
         if ((paramAnonymousView instanceof SnsAdNativeLandingPagesUI))
         {
-          ad.i("ContentFragmentSphereImageView", "jumpNextPage");
-          ((SnsAdNativeLandingPagesUI)paramAnonymousView).ebq();
+          ae.i("ContentFragmentSphereImageView", "jumpNextPage");
+          ((SnsAdNativeLandingPagesUI)paramAnonymousView).eeX();
         }
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/widget/verticalviewpager/adapter/ContentFragment$9", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(97092);
       }
     };
-    this.zJg = new View.OnClickListener()
+    this.Aan = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(198093);
+        AppMethodBeat.i(219605);
         Object localObject = new com.tencent.mm.hellhoundlib.b.b();
         ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/widget/verticalviewpager/adapter/ContentFragment$10", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahq());
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/widget/verticalviewpager/adapter/ContentFragment$10", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahF());
         for (;;)
         {
           try
@@ -198,7 +201,7 @@ public class ContentFragment
             if (paramAnonymousView == null)
             {
               com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/widget/verticalviewpager/adapter/ContentFragment$10", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-              AppMethodBeat.o(198093);
+              AppMethodBeat.o(219605);
               return;
             }
             localObject = ContentFragment.this.getActivity();
@@ -210,13 +213,13 @@ public class ContentFragment
               if (localLinearLayoutManager == null)
               {
                 com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/widget/verticalviewpager/adapter/ContentFragment$10", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-                AppMethodBeat.o(198093);
+                AppMethodBeat.o(219605);
               }
             }
             else
             {
               com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/widget/verticalviewpager/adapter/ContentFragment$10", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-              AppMethodBeat.o(198093);
+              AppMethodBeat.o(219605);
               return;
             }
             int i = localLinearLayoutManager.ko();
@@ -224,206 +227,219 @@ public class ContentFragment
             if ((i < 0) || (j <= 0))
             {
               com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/widget/verticalviewpager/adapter/ContentFragment$10", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-              AppMethodBeat.o(198093);
+              AppMethodBeat.o(219605);
               return;
             }
             if (i == j - 1) {
               continue;
             }
-            ad.i("ContentFragment.VideoPlay", "By recyclerView, can scrollVertically");
+            ae.i("ContentFragment.VideoPlay", "By recyclerView, can scrollVertically");
             paramAnonymousView.a(0, ContentFragment.f(ContentFragment.this), null);
           }
           catch (Throwable paramAnonymousView)
           {
-            ad.e("ContentFragment.VideoPlay", paramAnonymousView.toString());
+            ae.e("ContentFragment.VideoPlay", paramAnonymousView.toString());
             continue;
           }
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/widget/verticalviewpager/adapter/ContentFragment$10", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-          AppMethodBeat.o(198093);
+          AppMethodBeat.o(219605);
           return;
-          ad.i("ContentFragment.VideoPlay", "By recyclerView, can not scrollVertically");
-          if (((SnsAdNativeLandingPagesUI)localObject).ebr())
+          ae.i("ContentFragment.VideoPlay", "By recyclerView, can not scrollVertically");
+          if (((SnsAdNativeLandingPagesUI)localObject).eeY())
           {
-            ad.i("ContentFragment.VideoPlay", "By viewPager, jumpNextPage");
-            ((SnsAdNativeLandingPagesUI)localObject).ebq();
+            ae.i("ContentFragment.VideoPlay", "By viewPager, jumpNextPage");
+            ((SnsAdNativeLandingPagesUI)localObject).eeX();
           }
         }
       }
     };
-    this.zJh = false;
-    this.zJi = new OverScrollLinearout.a()
+    this.Aao = false;
+    this.Aap = new OverScrollLinearout.a()
     {
-      public final void bD(float paramAnonymousFloat)
+      public final void bB(float paramAnonymousFloat)
       {
-        AppMethodBeat.i(198094);
+        AppMethodBeat.i(219606);
         int i = (int)(paramAnonymousFloat * 0.8D);
-        if (ContentFragment.a(ContentFragment.this).zJo.getScrollY() + i <= 0)
+        if ((ContentFragment.a(ContentFragment.this) == null) || (ContentFragment.a(ContentFragment.this).Aav == null) || (ContentFragment.a(ContentFragment.this).Aav.getScrollY() + i <= 0))
         {
-          AppMethodBeat.o(198094);
+          AppMethodBeat.o(219606);
           return;
         }
-        Object localObject = ContentFragment.m(ContentFragment.this).dXC();
-        if (!(localObject instanceof com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.n))
+        int j = ContentFragment.this.ebt();
+        if (j > 0)
         {
-          AppMethodBeat.o(198094);
+          int k = ContentFragment.a(ContentFragment.this).Aav.getScrollY();
+          if (k < j)
+          {
+            i = Math.min(i, j - k);
+            ContentFragment.a(ContentFragment.this).Aav.scrollBy(0, i);
+          }
+          AppMethodBeat.o(219606);
           return;
         }
-        localObject = (com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.n)localObject;
-        if (ContentFragment.a(ContentFragment.this).zJo.getScrollY() + i < ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.n)localObject).zDZ)
+        Object localObject = ContentFragment.m(ContentFragment.this).ebf();
+        if (!(localObject instanceof com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.o))
         {
-          ContentFragment.a(ContentFragment.this).zJo.scrollBy(0, i);
-          AppMethodBeat.o(198094);
+          AppMethodBeat.o(219606);
+          return;
+        }
+        localObject = (com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.o)localObject;
+        if (ContentFragment.a(ContentFragment.this).Aav.getScrollY() + i < ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.o)localObject).zVe)
+        {
+          ContentFragment.a(ContentFragment.this).Aav.scrollBy(0, i);
+          AppMethodBeat.o(219606);
           return;
         }
         if (!ContentFragment.n(ContentFragment.this))
         {
           ContentFragment.a(ContentFragment.this, true);
-          ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.n)localObject).dXc();
+          ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.o)localObject).eaG();
         }
-        AppMethodBeat.o(198094);
+        AppMethodBeat.o(219606);
       }
       
-      public final boolean dXQ()
+      public final void eaV()
       {
-        AppMethodBeat.i(198095);
-        int i = ContentFragment.o(ContentFragment.this).ko();
+        AppMethodBeat.i(219608);
+        ContentFragment.a(ContentFragment.this, false);
+        AppMethodBeat.o(219608);
+      }
+      
+      public final boolean ebu()
+      {
+        AppMethodBeat.i(219607);
+        int i = ContentFragment.this.ebt();
+        int j = ContentFragment.o(ContentFragment.this).ko();
         boolean bool = ContentFragment.this.getRecyclerView().canScrollVertically(1);
-        l locall = ContentFragment.m(ContentFragment.this).dXC();
-        if ((ContentFragment.p(ContentFragment.this)) && (!bool) && (i == ContentFragment.m(ContentFragment.this).getItemCount() - 1) && ((locall instanceof com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.n)))
+        m localm = ContentFragment.m(ContentFragment.this).ebf();
+        if ((ContentFragment.p(ContentFragment.this)) && (!bool) && (j == ContentFragment.m(ContentFragment.this).getItemCount() - 1) && ((i > 0) || ((localm instanceof com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.o))))
         {
-          AppMethodBeat.o(198095);
+          AppMethodBeat.o(219607);
           return true;
         }
-        AppMethodBeat.o(198095);
+        AppMethodBeat.o(219607);
         return false;
-      }
-      
-      public final void dXs()
-      {
-        AppMethodBeat.i(198096);
-        ContentFragment.a(ContentFragment.this, false);
-        AppMethodBeat.o(198096);
       }
     };
     AppMethodBeat.o(97093);
   }
   
-  private void ams()
+  private void amH()
   {
     AppMethodBeat.i(97103);
-    if (this.zIY == null)
+    if (this.Aaf == null)
     {
       AppMethodBeat.o(97103);
       return;
     }
-    dXI();
+    ebl();
     final String str;
-    if ((this.zII.zLH != null) && (this.zII.zLH.length() > 0))
+    if ((this.zZP.AcO != null) && (this.zZP.AcO.length() > 0))
     {
-      str = this.zII.zLH;
-      ad.i("ContentFragment", "bg need blur %b, url %s", new Object[] { Boolean.valueOf(this.zII.zLI), str });
-      if (this.zFe.containsKey(str))
+      str = this.zZP.AcO;
+      ae.i("ContentFragment", "bg need blur %b, url %s", new Object[] { Boolean.valueOf(this.zZP.AcP), str });
+      if (this.zWk.containsKey(str))
       {
-        ad.i("ContentFragment", "bg has cache bitmap");
-        an((Bitmap)this.zFe.get(str));
-        if (this.zIZ != null) {
-          if ((this.zII.zLH == null) || (this.zII.zLH.length() <= 0)) {
+        ae.i("ContentFragment", "bg has cache bitmap");
+        ao((Bitmap)this.zWk.get(str));
+        if (this.Aag != null) {
+          if ((this.zZP.AcO == null) || (this.zZP.AcO.length() <= 0)) {
             break label204;
           }
         }
       }
     }
     label204:
-    for (this.zIZ.bgColor = 0;; this.zIZ.bgColor = this.bgColor)
+    for (this.Aag.bgColor = 0;; this.Aag.bgColor = this.bgColor)
     {
-      this.zIZ.a(this.zII);
+      this.Aag.a(this.zZP);
       AppMethodBeat.o(97103);
       return;
-      h.c("adId", str, false, 1000000001, new f.a()
+      com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.h.c("adId", str, false, 1000000001, new f.a()
       {
-        public final void axG(String paramAnonymousString)
+        public final void ayY(String paramAnonymousString)
         {
           AppMethodBeat.i(97081);
           ContentFragment.a(ContentFragment.this, paramAnonymousString, "adId", str);
           AppMethodBeat.o(97081);
         }
         
-        public final void dRW() {}
+        public final void dVu() {}
         
-        public final void dRX()
+        public final void dVv()
         {
           AppMethodBeat.i(97080);
-          ad.i("ContentFragment", "download img fail %s", new Object[] { str });
+          ae.i("ContentFragment", "download img fail %s", new Object[] { str });
           ContentFragment.c(ContentFragment.this);
           AppMethodBeat.o(97080);
         }
       });
       break;
-      dXI();
+      ebl();
       break;
     }
   }
   
-  private void an(Bitmap paramBitmap)
+  private void ao(Bitmap paramBitmap)
   {
     AppMethodBeat.i(97105);
     if (paramBitmap != null)
     {
-      this.zIY.fOB.setBackgroundColor(0);
-      this.zIY.zJn.setBackgroundColor(0);
-      this.zIY.zJo.setBackgroundColor(0);
-      FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.zIY.zJn.getLayoutParams();
-      if (localLayoutParams.height >= this.ltB) {}
-      for (int i = localLayoutParams.height;; i = this.ltB)
+      this.Aaf.fQH.setBackgroundColor(0);
+      this.Aaf.Aau.setBackgroundColor(0);
+      this.Aaf.Aav.setBackgroundColor(0);
+      FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.Aaf.Aau.getLayoutParams();
+      if (localLayoutParams.height >= this.lya) {}
+      for (int i = localLayoutParams.height;; i = this.lya)
       {
         localLayoutParams.height = i;
-        this.zIY.zJn.setLayoutParams(localLayoutParams);
-        this.zIY.zJn.setImageBitmap(paramBitmap);
+        this.Aaf.Aau.setLayoutParams(localLayoutParams);
+        this.Aaf.Aau.setImageBitmap(paramBitmap);
         AppMethodBeat.o(97105);
         return;
       }
     }
-    dXI();
+    ebl();
     AppMethodBeat.o(97105);
   }
   
-  private void b(com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.g paramg)
+  private void b(g paramg)
   {
     AppMethodBeat.i(97111);
-    this.zJc = false;
-    this.zJd = false;
-    if ((paramg != null) && (paramg.zLJ != null))
+    this.Aaj = false;
+    this.Aak = false;
+    if ((paramg != null) && (paramg.AcQ != null))
     {
-      paramg = paramg.zLJ.iterator();
+      paramg = paramg.AcQ.iterator();
       while (paramg.hasNext())
       {
-        x localx = (x)paramg.next();
-        if ((localx instanceof t))
+        y localy = (y)paramg.next();
+        if ((localy instanceof t))
         {
-          paramg = (t)localx;
-          if ((paramg.zzK) || (paramg.width == 0.0F) || (paramg.height == 0.0F)) {
-            this.zJd = true;
+          paramg = (t)localy;
+          if ((paramg.zQJ) || (paramg.width == 0.0F) || (paramg.height == 0.0F)) {
+            this.Aak = true;
           }
-          this.zJc = true;
+          this.Aaj = true;
         }
       }
     }
-    ad.i("ContentFragmentSphereImageView", "checkSphereImageComp, isSphereImageViewCompPage=" + this.zJc + ", isFullScreen=" + this.zJd);
+    ae.i("ContentFragmentSphereImageView", "checkSphereImageComp, isSphereImageViewCompPage=" + this.Aaj + ", isFullScreen=" + this.Aak);
     AppMethodBeat.o(97111);
   }
   
-  private void dXI()
+  private void ebl()
   {
     AppMethodBeat.i(97104);
-    if ((this.zII.jVX != null) && (this.zII.jVX.length() > 0)) {
-      ad.i("ContentFragment", "setting bg color %s", new Object[] { this.zII.jVX });
+    if ((this.zZP.jZm != null) && (this.zZP.jZm.length() > 0)) {
+      ae.i("ContentFragment", "setting bg color %s", new Object[] { this.zZP.jZm });
     }
     try
     {
-      this.bgColor = Color.parseColor(this.zII.jVX);
-      this.zIY.fOB.setBackgroundColor(this.bgColor);
-      this.zIY.zJn.setBackgroundColor(this.bgColor);
-      this.zIY.zJo.setBackgroundColor(this.bgColor);
+      this.bgColor = Color.parseColor(this.zZP.jZm);
+      this.Aaf.fQH.setBackgroundColor(this.bgColor);
+      this.Aaf.Aau.setBackgroundColor(this.bgColor);
+      this.Aaf.Aav.setBackgroundColor(this.bgColor);
       AppMethodBeat.o(97104);
       return;
     }
@@ -431,50 +447,50 @@ public class ContentFragment
     {
       for (;;)
       {
-        ad.e("ContentFragment", "the color is error : " + this.zII.jVX);
+        ae.e("ContentFragment", "the color is error : " + this.zZP.jZm);
       }
     }
   }
   
-  private boolean dXL()
+  private boolean ebo()
   {
     boolean bool2 = true;
     AppMethodBeat.i(97109);
-    if (!this.zIR)
+    if (!this.zZY)
     {
       AppMethodBeat.o(97109);
       return false;
     }
-    if (this.zIV != 0)
+    if (this.Aac != 0)
     {
       AppMethodBeat.o(97109);
       return false;
     }
-    if (this.zIW != 0)
+    if (this.Aad != 0)
     {
       AppMethodBeat.o(97109);
       return false;
     }
-    if (this.zJc)
+    if (this.Aaj)
     {
       AppMethodBeat.o(97109);
       return false;
     }
-    SnsAdNativeLandingPagesUI localSnsAdNativeLandingPagesUI = dXO();
-    if ((localSnsAdNativeLandingPagesUI != null) && ((localSnsAdNativeLandingPagesUI.ebu()) || (localSnsAdNativeLandingPagesUI.zYn)))
+    SnsAdNativeLandingPagesUI localSnsAdNativeLandingPagesUI = ebr();
+    if ((localSnsAdNativeLandingPagesUI != null) && ((localSnsAdNativeLandingPagesUI.efb()) || (localSnsAdNativeLandingPagesUI.Apy)))
     {
       AppMethodBeat.o(97109);
       return false;
     }
-    int i = this.zCm.km();
-    if ((i == this.zCm.ko()) && (i == -1))
+    int i = this.zTo.km();
+    if ((i == this.zTo.ko()) && (i == -1))
     {
       AppMethodBeat.o(97109);
       return false;
     }
     boolean bool1 = bool2;
-    if (this.iVf) {
-      if (this.zCm.ko() == this.zIZ.getItemCount() - 1) {
+    if (this.iXY) {
+      if (this.zTo.ko() == this.Aag.getItemCount() - 1) {
         break label173;
       }
     }
@@ -486,7 +502,7 @@ public class ContentFragment
     }
   }
   
-  private SnsAdNativeLandingPagesUI dXO()
+  private SnsAdNativeLandingPagesUI ebr()
   {
     AppMethodBeat.i(97114);
     Object localObject = getActivity();
@@ -500,13 +516,13 @@ public class ContentFragment
     return null;
   }
   
-  private ab dXP()
+  private ac ebs()
   {
     AppMethodBeat.i(97115);
-    Object localObject = dXO();
+    Object localObject = ebr();
     if (localObject != null)
     {
-      localObject = ((SnsAdNativeLandingPagesUI)localObject).zXy;
+      localObject = ((SnsAdNativeLandingPagesUI)localObject).AoJ;
       AppMethodBeat.o(97115);
       return localObject;
     }
@@ -514,65 +530,75 @@ public class ContentFragment
     return null;
   }
   
-  public final void a(com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.g paramg)
+  public final void Av(long paramLong)
+  {
+    AppMethodBeat.i(97116);
+    SnsAdNativeLandingPagesUI localSnsAdNativeLandingPagesUI = ebr();
+    if (localSnsAdNativeLandingPagesUI != null) {
+      localSnsAdNativeLandingPagesUI.Av(paramLong);
+    }
+    AppMethodBeat.o(97116);
+  }
+  
+  public final void a(g paramg)
   {
     AppMethodBeat.i(97102);
-    if (this.zII != paramg)
+    if (this.zZP != paramg)
     {
-      this.zII = paramg;
+      this.zZP = paramg;
       b(paramg);
-      ams();
+      amH();
     }
     AppMethodBeat.o(97102);
   }
   
-  public final Collection<l> dXE()
+  public final Collection<m> ebh()
   {
     AppMethodBeat.i(97106);
-    if (this.zIZ == null)
+    if (this.Aag == null)
     {
       localObject = Collections.EMPTY_LIST;
       AppMethodBeat.o(97106);
       return localObject;
     }
-    Object localObject = this.zIZ.dXE();
+    Object localObject = this.Aag.ebh();
     AppMethodBeat.o(97106);
     return localObject;
   }
   
-  public final void dXF()
+  public final void ebi()
   {
     AppMethodBeat.i(97100);
-    if ((this.cBJ) && (this.zIM != null)) {
-      this.zIM.dXz();
+    if ((this.cCq) && (this.zZT != null)) {
+      this.zZT.ebc();
     }
     AppMethodBeat.o(97100);
   }
   
-  public final boolean dXG()
+  public final boolean ebj()
   {
     AppMethodBeat.i(97101);
     try
     {
-      Object localObject1 = this.zIZ.dXC();
-      if ((localObject1 != null) && ((((l)localObject1).dWS().type == 62) || (((l)localObject1).dWS().type == 61)))
+      Object localObject1 = this.Aag.ebf();
+      if ((localObject1 != null) && ((((m)localObject1).eaw().type == 62) || (((m)localObject1).eaw().type == 61)))
       {
-        ad.i("ContentFragment", "isFloatBarCoverVideo, ret=true, lastComp is Video");
+        ae.i("ContentFragment", "isFloatBarCoverVideo, ret=true, lastComp is Video");
         AppMethodBeat.o(97101);
         return true;
       }
-      Object localObject2 = this.zIZ.dXD();
-      if ((localObject2 != null) && ((((l)localObject2).dWS().type == 62) || (((l)localObject2).dWS().type == 61)) && (localObject1 != null))
+      Object localObject2 = this.Aag.ebg();
+      if ((localObject2 != null) && ((((m)localObject2).eaw().type == 62) || (((m)localObject2).eaw().type == 61)) && (localObject1 != null))
       {
-        localObject1 = ((l)localObject1).contentView;
+        localObject1 = ((m)localObject1).contentView;
         if (localObject1 != null)
         {
           localObject2 = new Rect();
           ((View)localObject1).getLocalVisibleRect((Rect)localObject2);
-          int i = com.tencent.mm.cc.a.fromDPToPix(getContext(), 88);
+          int i = com.tencent.mm.cb.a.fromDPToPix(getContext(), 88);
           if ((((Rect)localObject2).bottom >= 0) && (((Rect)localObject2).bottom < i))
           {
-            ad.i("ContentFragment", "isFloatBarCoverVideo, ret=true, lastComp.rect=" + ((Rect)localObject2).toShortString());
+            ae.i("ContentFragment", "isFloatBarCoverVideo, ret=true, lastComp.rect=" + ((Rect)localObject2).toShortString());
             AppMethodBeat.o(97101);
             return true;
           }
@@ -581,26 +607,26 @@ public class ContentFragment
     }
     catch (Exception localException)
     {
-      ad.e("ContentFragment", "isFloatBarCoverVideo, exp=" + localException.toString());
-      ad.i("ContentFragment", "isFloatBarCoverVideo, ret=false");
+      ae.e("ContentFragment", "isFloatBarCoverVideo, exp=" + localException.toString());
+      ae.i("ContentFragment", "isFloatBarCoverVideo, ret=false");
       AppMethodBeat.o(97101);
     }
     return false;
   }
   
-  public final boolean dXH()
+  public final boolean ebk()
   {
-    return (this.zII != null) && (this.zII.zLN);
+    return (this.zZP != null) && (this.zZP.AcU);
   }
   
-  public final void dXJ()
+  public final void ebm()
   {
     AppMethodBeat.i(97107);
     try
     {
-      if ((dXL()) && (!this.zIT))
+      if ((ebo()) && (!this.Aaa))
       {
-        boolean bool = this.zIY.zJr;
+        boolean bool = this.Aaf.Aay;
         if (!bool) {}
       }
       else
@@ -608,62 +634,62 @@ public class ContentFragment
         AppMethodBeat.o(97107);
         return;
       }
-      this.zIY.zJp.setVisibility(0);
-      this.zIY.zJp.setTranslationY(-com.tencent.mm.cc.a.fromDPToPix(getContext(), 20));
-      this.zIU.setRepeatMode(2);
-      this.zIU.setRepeatCount(-1);
-      this.zIU.start();
+      this.Aaf.Aaw.setVisibility(0);
+      this.Aaf.Aaw.setTranslationY(-com.tencent.mm.cb.a.fromDPToPix(getContext(), 20));
+      this.Aab.setRepeatMode(2);
+      this.Aab.setRepeatCount(-1);
+      this.Aab.start();
       AppMethodBeat.o(97107);
       return;
     }
     catch (Exception localException)
     {
-      ad.e("ContentFragment", "startDownAnimation, exp=" + localException.toString());
+      ae.e("ContentFragment", "startDownAnimation, exp=" + localException.toString());
       AppMethodBeat.o(97107);
     }
   }
   
-  public final void dXK()
+  public final void ebn()
   {
     AppMethodBeat.i(97108);
     try
     {
-      this.zIY.zJp.setVisibility(4);
-      this.zIY.zJp.setTranslationY(-com.tencent.mm.cc.a.fromDPToPix(getContext(), 20));
-      this.zIU.setRepeatMode(2);
-      this.zIU.setRepeatCount(0);
-      this.zIU.end();
+      this.Aaf.Aaw.setVisibility(4);
+      this.Aaf.Aaw.setTranslationY(-com.tencent.mm.cb.a.fromDPToPix(getContext(), 20));
+      this.Aab.setRepeatMode(2);
+      this.Aab.setRepeatCount(0);
+      this.Aab.end();
       AppMethodBeat.o(97108);
       return;
     }
     catch (Exception localException)
     {
-      ad.e("ContentFragment", "stopDownAnimation, exp=" + localException.toString());
+      ae.e("ContentFragment", "stopDownAnimation, exp=" + localException.toString());
       AppMethodBeat.o(97108);
     }
   }
   
-  public final boolean dXM()
+  public final boolean ebp()
   {
     AppMethodBeat.i(97112);
     try
     {
-      ab localab = dXP();
-      boolean bool = this.iVf;
-      if ((!bool) || (localab == null))
+      ac localac = ebs();
+      boolean bool = this.iXY;
+      if ((!bool) || (localac == null))
       {
         AppMethodBeat.o(97112);
         return true;
       }
-      if (this.zIY.gmV != null)
+      if (this.Aaf.gpr != null)
       {
-        int i = this.zIY.gmV.computeVerticalScrollOffset();
-        int j = this.zIY.gmV.computeVerticalScrollExtent();
-        j = this.zIY.gmV.computeVerticalScrollRange() - i - j;
-        ad.d("ContentFragment", "bottomDis=" + j + ", appearBottom=" + localab.zAz + ", topDis=" + i + ", appearTop=" + localab.zAy + ", height=" + com.tencent.mm.cc.a.iq(getContext()));
-        if (localab.zAz > 0)
+        int i = this.Aaf.gpr.computeVerticalScrollOffset();
+        int j = this.Aaf.gpr.computeVerticalScrollExtent();
+        j = this.Aaf.gpr.computeVerticalScrollRange() - i - j;
+        ae.d("ContentFragment", "bottomDis=" + j + ", appearBottom=" + localac.zRz + ", topDis=" + i + ", appearTop=" + localac.zRy + ", height=" + com.tencent.mm.cb.a.iv(getContext()));
+        if (localac.zRz > 0)
         {
-          i = localab.zAz;
+          i = localac.zRz;
           if (j < i)
           {
             AppMethodBeat.o(97112);
@@ -679,16 +705,16 @@ public class ContentFragment
     return true;
   }
   
-  public final boolean dXN()
+  public final boolean ebq()
   {
     AppMethodBeat.i(97113);
     try
     {
-      ab localab = dXP();
-      int i = this.zIY.gmV.computeVerticalScrollOffset();
-      if ((this.zIP) && (localab != null))
+      ac localac = ebs();
+      int i = this.Aaf.gpr.computeVerticalScrollOffset();
+      if ((this.zZW) && (localac != null))
       {
-        if ((localab.zAy == 0) || ((localab.zAy > 0) && (i >= localab.zAy)))
+        if ((localac.zRy == 0) || ((localac.zRy > 0) && (i >= localac.zRy)))
         {
           AppMethodBeat.o(97113);
           return true;
@@ -704,10 +730,30 @@ public class ContentFragment
     return true;
   }
   
+  protected final int ebt()
+  {
+    AppMethodBeat.i(219609);
+    Object localObject = getActivity();
+    if ((localObject instanceof SnsAdNativeLandingPagesUI))
+    {
+      localObject = ((SnsAdNativeLandingPagesUI)localObject).ApV;
+      if (localObject != null)
+      {
+        int i = ((FloatJumpCompHelper)localObject).znQ;
+        AppMethodBeat.o(219609);
+        return i;
+      }
+      AppMethodBeat.o(219609);
+      return -1;
+    }
+    AppMethodBeat.o(219609);
+    return -1;
+  }
+  
   public final RecyclerView getRecyclerView()
   {
-    if (this.zIY != null) {
-      return this.zIY.gmV;
+    if (this.Aaf != null) {
+      return this.Aaf.gpr;
     }
     return null;
   }
@@ -716,21 +762,21 @@ public class ContentFragment
   {
     AppMethodBeat.i(97094);
     super.onCreate(paramBundle);
-    paramBundle = this.xaW;
-    int[] arrayOfInt = com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.am.gk(getContext());
-    this.ltA = arrayOfInt[0];
-    this.ltB = arrayOfInt[1];
-    if (this.zII == null)
+    paramBundle = this.xqN;
+    int[] arrayOfInt = an.gp(getContext());
+    this.lxZ = arrayOfInt[0];
+    this.lya = arrayOfInt[1];
+    if (this.zZP == null)
     {
-      this.zII = ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.g)paramBundle.get("pageInfo"));
-      b(this.zII);
+      this.zZP = ((g)paramBundle.get("pageInfo"));
+      b(this.zZP);
     }
-    this.zIO = ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.am)paramBundle.get("pageDownIconInfo"));
-    this.zIP = bt.o((Boolean)paramBundle.get("is_first_show_page"));
-    this.iVf = bt.o((Boolean)paramBundle.get("is_last_shown_page"));
-    this.zIQ = bt.o((Boolean)paramBundle.get("needEnterAnimation"));
-    this.zIR = bt.o((Boolean)paramBundle.get("needDirectionAnimation"));
-    this.zIK = bt.m(paramBundle.get("groupListCompShowIndex"), 0);
+    this.zZV = ((ao)paramBundle.get("pageDownIconInfo"));
+    this.zZW = bu.o((Boolean)paramBundle.get("is_first_show_page"));
+    this.iXY = bu.o((Boolean)paramBundle.get("is_last_shown_page"));
+    this.zZX = bu.o((Boolean)paramBundle.get("needEnterAnimation"));
+    this.zZY = bu.o((Boolean)paramBundle.get("needDirectionAnimation"));
+    this.zZR = bu.m(paramBundle.get("groupListCompShowIndex"), 0);
     AppMethodBeat.o(97094);
   }
   
@@ -738,38 +784,38 @@ public class ContentFragment
   {
     AppMethodBeat.i(97095);
     paramLayoutInflater = paramLayoutInflater.inflate(2131492939, paramViewGroup, false);
-    this.zIY = new b((byte)0);
-    this.zIY.fOB = paramLayoutInflater;
-    this.zIY.zJn = ((ImageView)paramLayoutInflater.findViewById(2131304900));
-    this.zIY.zJo = ((OverScrollLinearout)paramLayoutInflater.findViewById(2131304922));
-    if (this.iVf) {
-      this.zIY.zJo.setOnScrollActionListener(this.zJi);
+    this.Aaf = new b((byte)0);
+    this.Aaf.fQH = paramLayoutInflater;
+    this.Aaf.Aau = ((ImageView)paramLayoutInflater.findViewById(2131304900));
+    this.Aaf.Aav = ((OverScrollLinearout)paramLayoutInflater.findViewById(2131304922));
+    if (this.iXY) {
+      this.Aaf.Aav.setOnScrollActionListener(this.Aap);
     }
-    this.zIY.zJp = ((ImageView)paramLayoutInflater.findViewById(2131305020));
-    this.zIY.zJq = paramLayoutInflater.findViewById(2131305021);
-    this.zIY.zJq.setOnClickListener(this.zJf);
-    this.zIY.zJp.setOnClickListener(this.zJg);
-    this.zIY.gmV = ((RecyclerView)paramLayoutInflater.findViewById(2131298763));
-    this.zIY.zJs = ((LinearLayout)paramLayoutInflater.findViewById(2131299754));
-    paramViewGroup = this.zIY.gmV;
+    this.Aaf.Aaw = ((ImageView)paramLayoutInflater.findViewById(2131305020));
+    this.Aaf.Aax = paramLayoutInflater.findViewById(2131305021);
+    this.Aaf.Aax.setOnClickListener(this.Aam);
+    this.Aaf.Aaw.setOnClickListener(this.Aan);
+    this.Aaf.gpr = ((RecyclerView)paramLayoutInflater.findViewById(2131298763));
+    this.Aaf.Aaz = ((LinearLayout)paramLayoutInflater.findViewById(2131299754));
+    paramViewGroup = this.Aaf.gpr;
     paramViewGroup.setOverScrollMode(0);
-    int i = bt.m(this.xaW.get("pageCount"), 0);
-    ad.d("ContentFragment", "initRecyclerView, pageCount=".concat(String.valueOf(i)));
+    int i = bu.m(this.xqN.get("pageCount"), 0);
+    ae.d("ContentFragment", "initRecyclerView, pageCount=".concat(String.valueOf(i)));
     if (i > 1) {
-      paramViewGroup.setOnTouchListener(new com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.widget.verticalviewpager.b((DummyViewPager)this.xaW.get("viewPager")));
+      paramViewGroup.setOnTouchListener(new com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.widget.verticalviewpager.b((DummyViewPager)this.xqN.get("viewPager")));
     }
     for (;;)
     {
       getActivity();
-      this.zCm = new LinearLayoutManager();
-      paramViewGroup.setLayoutManager(this.zCm);
-      this.zIZ = new a(this.zII, this.bgColor, getActivity(), this.zCm);
-      if (this.zIP) {
-        this.zIZ.zIK = this.zIK;
+      this.zTo = new LinearLayoutManager();
+      paramViewGroup.setLayoutManager(this.zTo);
+      this.Aag = new a(this.zZP, this.bgColor, getActivity(), this.zTo);
+      if (this.zZW) {
+        this.Aag.zZR = this.zZR;
       }
-      paramViewGroup.setAdapter(this.zIZ);
+      paramViewGroup.setAdapter(this.Aag);
       paramViewGroup.setDescendantFocusability(131072);
-      this.zIM = new c(paramViewGroup);
+      this.zZT = new c(paramViewGroup);
       paramViewGroup.a(new RecyclerView.m()
       {
         public final void a(RecyclerView paramAnonymousRecyclerView, int paramAnonymousInt1, int paramAnonymousInt2)
@@ -777,12 +823,12 @@ public class ContentFragment
           AppMethodBeat.i(97078);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
           localb.bd(paramAnonymousRecyclerView);
-          localb.mr(paramAnonymousInt1);
-          localb.mr(paramAnonymousInt2);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/widget/verticalviewpager/adapter/ContentFragment$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroid/support/v7/widget/RecyclerView;II)V", this, localb.ahq());
+          localb.mu(paramAnonymousInt1);
+          localb.mu(paramAnonymousInt2);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/widget/verticalviewpager/adapter/ContentFragment$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroid/support/v7/widget/RecyclerView;II)V", this, localb.ahF());
           super.a(paramAnonymousRecyclerView, paramAnonymousInt1, paramAnonymousInt2);
-          if ((ContentFragment.a(ContentFragment.this).zJn != null) && (ContentFragment.a(ContentFragment.this).zJn.getVisibility() == 0)) {
-            ContentFragment.a(ContentFragment.this).zJn.scrollBy(paramAnonymousInt1, paramAnonymousInt2);
+          if ((ContentFragment.a(ContentFragment.this).Aau != null) && (ContentFragment.a(ContentFragment.this).Aau.getVisibility() == 0)) {
+            ContentFragment.a(ContentFragment.this).Aau.scrollBy(paramAnonymousInt1, paramAnonymousInt2);
           }
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/widget/verticalviewpager/adapter/ContentFragment$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroid/support/v7/widget/RecyclerView;II)V");
           AppMethodBeat.o(97078);
@@ -793,15 +839,15 @@ public class ContentFragment
           AppMethodBeat.i(97079);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
           localb.bd(paramAnonymousRecyclerView);
-          localb.mr(paramAnonymousInt);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/widget/verticalviewpager/adapter/ContentFragment$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroid/support/v7/widget/RecyclerView;I)V", this, localb.ahq());
+          localb.mu(paramAnonymousInt);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/widget/verticalviewpager/adapter/ContentFragment$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroid/support/v7/widget/RecyclerView;I)V", this, localb.ahF());
           super.b(paramAnonymousRecyclerView, paramAnonymousInt);
           ContentFragment.a(ContentFragment.this, paramAnonymousInt);
           if (paramAnonymousInt == 0)
           {
-            ContentFragment.this.zX(50L);
+            ContentFragment.this.Av(50L);
             if (ContentFragment.b(ContentFragment.this)) {
-              ContentFragment.this.dXJ();
+              ContentFragment.this.ebm();
             }
           }
           for (;;)
@@ -811,74 +857,74 @@ public class ContentFragment
             return;
             if (paramAnonymousInt == 1)
             {
-              ContentFragment.this.dXK();
-              com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.am.gl(ContentFragment.this.getContext());
+              ContentFragment.this.ebn();
+              an.gq(ContentFragment.this.getContext());
             }
           }
         }
       });
-      paramLayoutInflater.setTag(this.zIY);
-      ams();
-      this.zIU = ValueAnimator.ofFloat(new float[] { 1.0F, 0.0F });
-      this.zIU.setDuration(this.zIN);
-      this.zIU.setInterpolator(new AccelerateDecelerateInterpolator());
-      this.zIU.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
+      paramLayoutInflater.setTag(this.Aaf);
+      amH();
+      this.Aab = ValueAnimator.ofFloat(new float[] { 1.0F, 0.0F });
+      this.Aab.setDuration(this.zZU);
+      this.Aab.setInterpolator(new AccelerateDecelerateInterpolator());
+      this.Aab.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
       {
         public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
         {
           AppMethodBeat.i(97084);
           float f = ((Float)paramAnonymousValueAnimator.getAnimatedValue()).floatValue();
-          ContentFragment.a(ContentFragment.this).zJp.setTranslationY((int)(f * -com.tencent.mm.cc.a.fromDPToPix(ContentFragment.this.getContext(), 20)));
+          ContentFragment.a(ContentFragment.this).Aaw.setTranslationY((int)(f * -com.tencent.mm.cb.a.fromDPToPix(ContentFragment.this.getContext(), 20)));
           AppMethodBeat.o(97084);
         }
       });
-      this.zIU.addListener(new AnimatorListenerAdapter()
+      this.Aab.addListener(new AnimatorListenerAdapter()
       {
         public final void onAnimationEnd(Animator paramAnonymousAnimator)
         {
           AppMethodBeat.i(97086);
-          ad.d("ContentFragment", "onAnimationEnd show nextBtn");
-          ContentFragment.a(ContentFragment.this).zJr = false;
+          ae.d("ContentFragment", "onAnimationEnd show nextBtn");
+          ContentFragment.a(ContentFragment.this).Aay = false;
           AppMethodBeat.o(97086);
         }
         
         public final void onAnimationStart(Animator paramAnonymousAnimator)
         {
           AppMethodBeat.i(97085);
-          ad.d("ContentFragment", "onAnimationStart show nextBtn");
-          ContentFragment.a(ContentFragment.this).zJr = true;
+          ae.d("ContentFragment", "onAnimationStart show nextBtn");
+          ContentFragment.a(ContentFragment.this).Aay = true;
           AppMethodBeat.o(97085);
         }
       });
-      this.zIU.setRepeatCount(-1);
-      this.zIU.setRepeatMode(2);
-      if ((this.zIO != null) && (!this.zIO.equals(this.zIY.zJp.getTag())))
+      this.Aab.setRepeatCount(-1);
+      this.Aab.setRepeatMode(2);
+      if ((this.zZV != null) && (!this.zZV.equals(this.Aaf.Aaw.getTag())))
       {
-        this.zIY.zJp.setTag(this.zIO);
-        this.zIY.zJp.setVisibility(8);
-        h.a(this.zIO.iconUrl, 1000000001, new f.a()
+        this.Aaf.Aaw.setTag(this.zZV);
+        this.Aaf.Aaw.setVisibility(8);
+        com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.h.a(this.zZV.iconUrl, 1000000001, new f.a()
         {
-          public final void axG(String paramAnonymousString)
+          public final void ayY(String paramAnonymousString)
           {
             AppMethodBeat.i(97088);
-            ad.d("ContentFragment", "onDownloaded nextBtn");
-            ContentFragment.a(ContentFragment.this, paramAnonymousString, ContentFragment.a(ContentFragment.this).zJp);
-            ContentFragment.this.dXJ();
+            ae.d("ContentFragment", "onDownloaded nextBtn");
+            ContentFragment.a(ContentFragment.this, paramAnonymousString, ContentFragment.a(ContentFragment.this).Aaw);
+            ContentFragment.this.ebm();
             AppMethodBeat.o(97088);
           }
           
-          public final void dRW() {}
+          public final void dVu() {}
           
-          public final void dRX()
+          public final void dVv()
           {
             AppMethodBeat.i(97087);
-            ad.d("ContentFragment", "onDownloadError nextBtn");
+            ae.d("ContentFragment", "onDownloadError nextBtn");
             AppMethodBeat.o(97087);
           }
         });
       }
-      if (this.zIX != null) {
-        this.zIX.q(this);
+      if (this.Aae != null) {
+        this.Aae.q(this);
       }
       AppMethodBeat.o(97095);
       return paramLayoutInflater;
@@ -890,10 +936,10 @@ public class ContentFragment
   {
     AppMethodBeat.i(97098);
     super.onDestroy();
-    if (this.zIM != null) {
-      this.zIM.zIr.onDestroy();
+    if (this.zZT != null) {
+      this.zZT.zZy.onDestroy();
     }
-    dXK();
+    ebn();
     AppMethodBeat.o(97098);
   }
   
@@ -901,23 +947,23 @@ public class ContentFragment
   {
     AppMethodBeat.i(97097);
     super.onPause();
-    ad.i("ContentFragment", this + " onPause " + getUserVisibleHint());
-    this.cBJ = false;
-    this.zIM.cBJ = this.cBJ;
-    if ((this.zIM != null) && (getUserVisibleHint())) {
-      this.zIM.dXA();
+    ae.i("ContentFragment", this + " onPause " + getUserVisibleHint());
+    this.cCq = false;
+    this.zZT.cCq = this.cCq;
+    if ((this.zZT != null) && (getUserVisibleHint())) {
+      this.zZT.ebd();
     }
-    if (this.zJc) {
+    if (this.Aaj) {
       try
       {
-        ad.d("ContentFragmentSphereImageView", "unRegisterSphereImageCompEventReceiver, hash=" + hashCode());
-        d.U(getContext()).unregisterReceiver(this.zJe);
+        ae.d("ContentFragmentSphereImageView", "unRegisterSphereImageCompEventReceiver, hash=" + hashCode());
+        d.V(getContext()).unregisterReceiver(this.Aal);
         AppMethodBeat.o(97097);
         return;
       }
       catch (Exception localException)
       {
-        ad.e("ContentFragmentSphereImageView", "unRegisterSphereImageCompEventReceiver, exp:" + localException.toString());
+        ae.e("ContentFragmentSphereImageView", "unRegisterSphereImageCompEventReceiver, exp:" + localException.toString());
       }
     }
     AppMethodBeat.o(97097);
@@ -927,12 +973,12 @@ public class ContentFragment
   {
     AppMethodBeat.i(97096);
     super.onResume();
-    ad.i("ContentFragment", this + " onResume " + getUserVisibleHint());
-    this.cBJ = true;
+    ae.i("ContentFragment", this + " onResume " + getUserVisibleHint());
+    this.cCq = true;
     Object localObject;
-    if ((this.zIY != null) && (this.zIY.fOB != null))
+    if ((this.Aaf != null) && (this.Aaf.fQH != null))
     {
-      for (localObject = (ViewGroup)this.zIY.fOB.getParent(); (localObject != null) && ((localObject == null) || (((ViewGroup)localObject).getId() != 2131304239)); localObject = (ViewGroup)((ViewGroup)localObject).getParent()) {}
+      for (localObject = (ViewGroup)this.Aaf.fQH.getParent(); (localObject != null) && ((localObject == null) || (((ViewGroup)localObject).getId() != 2131304239)); localObject = (ViewGroup)((ViewGroup)localObject).getParent()) {}
       if ((localObject instanceof FrameLayout))
       {
         int j = ((ViewGroup)localObject).getChildCount();
@@ -940,48 +986,48 @@ public class ContentFragment
         while (i < j)
         {
           if ((((ViewGroup)localObject).getChildAt(i) instanceof SnsAdLandingPageFloatView)) {
-            this.cBJ = false;
+            this.cCq = false;
           }
           i += 1;
         }
       }
     }
-    this.zIM.cBJ = this.cBJ;
-    if ((this.zIM != null) && (getUserVisibleHint())) {
-      this.zIM.dWw();
+    this.zZT.cCq = this.cCq;
+    if ((this.zZT != null) && (getUserVisibleHint())) {
+      this.zZT.dZY();
     }
-    if (this.zJc) {
+    if (this.Aaj) {
       try
       {
-        ad.d("ContentFragmentSphereImageView", "registerSphereImageCompEventReceiver, hash=" + hashCode());
+        ae.d("ContentFragmentSphereImageView", "registerSphereImageCompEventReceiver, hash=" + hashCode());
         localObject = new IntentFilter();
         ((IntentFilter)localObject).addAction("com.tencent.mm.adlanding.sphereimage.next_page_view_show");
         ((IntentFilter)localObject).addAction("com.tencent.mm.adlanding.sphereimage.next_page_view_alpha_none");
         ((IntentFilter)localObject).addAction("com.tencent.mm.adlanding.sphereimage.next_page_view_alpha_half");
         ((IntentFilter)localObject).addAction("com.tencent.mm.adlanding.sphereimage.next_page_view_hide");
-        d.U(getContext()).a(this.zJe, (IntentFilter)localObject);
+        d.V(getContext()).a(this.Aal, (IntentFilter)localObject);
         AppMethodBeat.o(97096);
         return;
       }
       catch (Exception localException)
       {
-        ad.e("ContentFragmentSphereImageView", "registerSphereImageCompEventReceiver, exp:" + localException.toString());
+        ae.e("ContentFragmentSphereImageView", "registerSphereImageCompEventReceiver, exp:" + localException.toString());
       }
     }
     AppMethodBeat.o(97096);
   }
   
-  public final void rG(boolean paramBoolean)
+  public final void rN(boolean paramBoolean)
   {
     AppMethodBeat.i(97110);
-    this.zIT = paramBoolean;
-    if ((dXL()) && (!paramBoolean))
+    this.Aaa = paramBoolean;
+    if ((ebo()) && (!paramBoolean))
     {
-      dXJ();
+      ebm();
       AppMethodBeat.o(97110);
       return;
     }
-    dXK();
+    ebn();
     AppMethodBeat.o(97110);
   }
   
@@ -991,26 +1037,16 @@ public class ContentFragment
     super.setUserVisibleHint(paramBoolean);
     if (paramBoolean)
     {
-      if (this.zIM != null)
+      if (this.zZT != null)
       {
-        this.zIM.dWw();
+        this.zZT.dZY();
         AppMethodBeat.o(97099);
       }
     }
-    else if (this.zIM != null) {
-      this.zIM.dXA();
+    else if (this.zZT != null) {
+      this.zZT.ebd();
     }
     AppMethodBeat.o(97099);
-  }
-  
-  public final void zX(long paramLong)
-  {
-    AppMethodBeat.i(97116);
-    SnsAdNativeLandingPagesUI localSnsAdNativeLandingPagesUI = dXO();
-    if (localSnsAdNativeLandingPagesUI != null) {
-      localSnsAdNativeLandingPagesUI.zX(paramLong);
-    }
-    AppMethodBeat.o(97116);
   }
   
   public static abstract interface a
@@ -1021,19 +1057,19 @@ public class ContentFragment
   
   static final class b
   {
-    public View fOB;
-    public RecyclerView gmV;
-    public ImageView zJn = null;
-    public OverScrollLinearout zJo = null;
-    public ImageView zJp = null;
-    public View zJq = null;
-    public boolean zJr = false;
-    LinearLayout zJs;
+    public ImageView Aau = null;
+    public OverScrollLinearout Aav = null;
+    public ImageView Aaw = null;
+    public View Aax = null;
+    public boolean Aay = false;
+    LinearLayout Aaz;
+    public View fQH;
+    public RecyclerView gpr;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.widget.verticalviewpager.adapter.ContentFragment
  * JD-Core Version:    0.7.0.1
  */

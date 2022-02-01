@@ -2,30 +2,30 @@ package com.tencent.mm.plugin.vlog.model.panel;
 
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.emoji.a.a.o;
-import com.tencent.mm.emoji.d.c;
+import com.tencent.mm.emoji.a.b.o;
+import com.tencent.mm.emoji.d.e;
 import com.tencent.mm.storage.emotion.EmojiGroupInfo;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/vlog/model/panel/PagPanelGroupViewProvider;", "Lcom/tencent/mm/emoji/model/panel/ExternalPanelGroupViewProvider;", "()V", "getGroupId", "", "setTabIcon", "", "icon", "Landroid/widget/ImageView;", "color", "", "groupInfo", "Lcom/tencent/mm/storage/emotion/EmojiGroupInfo;", "plugin-vlog_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/vlog/model/panel/PagPanelGroupViewProvider;", "Lcom/tencent/mm/emoji/model/panel/ExternalPanelGroupViewProvider;", "()V", "getGroupId", "", "setTabIcon", "", "icon", "Landroid/widget/ImageView;", "color", "", "groupInfo", "Lcom/tencent/mm/storage/emotion/EmojiGroupInfo;", "plugin-vlog_release"})
 public final class d
   implements o
 {
   public final void a(ImageView paramImageView, int paramInt, EmojiGroupInfo paramEmojiGroupInfo)
   {
-    AppMethodBeat.i(195872);
+    AppMethodBeat.i(191331);
     p.h(paramImageView, "icon");
     p.h(paramEmojiGroupInfo, "groupInfo");
-    c.a(paramImageView, 2131691602, paramInt);
-    AppMethodBeat.o(195872);
+    e.a(paramImageView, 2131691602, paramInt);
+    AppMethodBeat.o(191331);
   }
   
-  public final String afw()
+  public final String afK()
   {
-    AppMethodBeat.i(195871);
-    String str = b.esB();
-    AppMethodBeat.o(195871);
+    AppMethodBeat.i(191330);
+    String str = b.ewi();
+    AppMethodBeat.o(191330);
     return str;
   }
 }

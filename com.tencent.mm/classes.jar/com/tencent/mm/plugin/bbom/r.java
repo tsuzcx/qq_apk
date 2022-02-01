@@ -6,17 +6,17 @@ import com.tencent.mm.network.n.a;
 
 public final class r
 {
-  private static boolean nOK = false;
+  private static boolean nUq = false;
   
   /* Error */
-  public static void en(Context paramContext)
+  public static void er(Context paramContext)
   {
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
     //   3: sipush 22382
     //   6: invokestatic 20	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   9: getstatic 12	com/tencent/mm/plugin/bbom/r:nOK	Z
+    //   9: getstatic 12	com/tencent/mm/plugin/bbom/r:nUq	Z
     //   12: ifeq +13 -> 25
     //   15: sipush 22382
     //   18: invokestatic 63	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -24,8 +24,8 @@ public final class r
     //   23: monitorexit
     //   24: return
     //   25: iconst_1
-    //   26: putstatic 12	com/tencent/mm/plugin/bbom/r:nOK	Z
-    //   29: invokestatic 132	com/tencent/mm/kernel/g:ajB	()Lcom/tencent/mm/kernel/b;
+    //   26: putstatic 12	com/tencent/mm/plugin/bbom/r:nUq	Z
+    //   29: invokestatic 132	com/tencent/mm/kernel/g:ajQ	()Lcom/tencent/mm/kernel/b;
     //   32: new 6	com/tencent/mm/plugin/bbom/r$1
     //   35: dup
     //   36: aload_0

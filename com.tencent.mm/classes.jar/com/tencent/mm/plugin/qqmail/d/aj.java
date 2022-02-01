@@ -4,14 +4,14 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import f.a.a.b;
 
 public final class aj
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
   public String name;
   public String path;
   public long size;
   public int state;
-  public String uDM;
-  public long xcO;
+  public String uPr;
+  public long xsF;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -37,11 +37,11 @@ public final class aj
       if (this.name != null) {
         paramVarArgs.d(2, this.name);
       }
-      paramVarArgs.aY(3, this.size);
+      paramVarArgs.aZ(3, this.size);
       paramVarArgs.aS(4, this.state);
-      paramVarArgs.aY(5, this.xcO);
-      if (this.uDM != null) {
-        paramVarArgs.d(6, this.uDM);
+      paramVarArgs.aZ(5, this.xsF);
+      if (this.uPr != null) {
+        paramVarArgs.d(6, this.uPr);
       }
       AppMethodBeat.o(122801);
       return 0;
@@ -58,19 +58,19 @@ public final class aj
       if (this.name != null) {
         i = paramInt + f.a.a.b.b.a.e(2, this.name);
       }
-      i = i + f.a.a.b.b.a.p(3, this.size) + f.a.a.b.b.a.bz(4, this.state) + f.a.a.b.b.a.p(5, this.xcO);
+      i = i + f.a.a.b.b.a.p(3, this.size) + f.a.a.b.b.a.bz(4, this.state) + f.a.a.b.b.a.p(5, this.xsF);
       paramInt = i;
-      if (this.uDM != null) {
-        paramInt = i + f.a.a.b.b.a.e(6, this.uDM);
+      if (this.uPr != null) {
+        paramInt = i + f.a.a.b.b.a.e(6, this.uPr);
       }
       AppMethodBeat.o(122801);
       return paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
         if (this.path == null)
@@ -98,27 +98,27 @@ public final class aj
           AppMethodBeat.o(122801);
           return -1;
         case 1: 
-          localaj.path = locala.NPN.readString();
+          localaj.path = locala.OmT.readString();
           AppMethodBeat.o(122801);
           return 0;
         case 2: 
-          localaj.name = locala.NPN.readString();
+          localaj.name = locala.OmT.readString();
           AppMethodBeat.o(122801);
           return 0;
         case 3: 
-          localaj.size = locala.NPN.zd();
+          localaj.size = locala.OmT.zd();
           AppMethodBeat.o(122801);
           return 0;
         case 4: 
-          localaj.state = locala.NPN.zc();
+          localaj.state = locala.OmT.zc();
           AppMethodBeat.o(122801);
           return 0;
         case 5: 
-          localaj.xcO = locala.NPN.zd();
+          localaj.xsF = locala.OmT.zd();
           AppMethodBeat.o(122801);
           return 0;
         }
-        localaj.uDM = locala.NPN.readString();
+        localaj.uPr = locala.OmT.readString();
         AppMethodBeat.o(122801);
         return 0;
       }

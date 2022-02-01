@@ -32,8 +32,8 @@ public class DexClassLoaderProviderService
     AppMethodBeat.i(53134);
     com.tencent.mm.hellhoundlib.b.a locala = c.a(0, new com.tencent.mm.hellhoundlib.b.a());
     Object localObject = new Object();
-    com.tencent.mm.hellhoundlib.a.a.a(localObject, locala.ahp(), "com/tencent/smtt/export/external/DexClassLoaderProviderService", "onDestroy", "()V", "java/lang/System_EXEC_", "exit", "(I)V");
-    System.exit(((Integer)locala.mq(0)).intValue());
+    com.tencent.mm.hellhoundlib.a.a.a(localObject, locala.ahE(), "com/tencent/smtt/export/external/DexClassLoaderProviderService", "onDestroy", "()V", "java/lang/System_EXEC_", "exit", "(I)V");
+    System.exit(((Integer)locala.mt(0)).intValue());
     com.tencent.mm.hellhoundlib.a.a.a(localObject, "com/tencent/smtt/export/external/DexClassLoaderProviderService", "onDestroy", "()V", "java/lang/System_EXEC_", "exit", "(I)V");
     AppMethodBeat.o(53134);
   }

@@ -12,18 +12,18 @@ import java.util.List;
 public class FTSConvMessageUI
   extends FTSBaseUI
 {
-  private int ljZ;
+  private int lox;
   private String query;
-  private String tvc;
-  private h tzz;
+  private String tFT;
+  private h tKq;
   
   protected final d a(e parame)
   {
     AppMethodBeat.i(111916);
-    if (this.tzz == null) {
-      this.tzz = new h(parame, this.tvc, this.ljZ);
+    if (this.tKq == null) {
+      this.tKq = new h(parame, this.tFT, this.lox);
     }
-    parame = this.tzz;
+    parame = this.tKq;
     AppMethodBeat.o(111916);
     return parame;
   }
@@ -35,18 +35,18 @@ public class FTSConvMessageUI
     AppMethodBeat.o(168768);
   }
   
-  public final boolean bzz()
+  public final boolean bAu()
   {
     return false;
   }
   
-  protected final void cTt()
+  protected final void cVY()
   {
     AppMethodBeat.i(111913);
-    super.cTt();
-    this.tvc = getIntent().getStringExtra("key_conv");
+    super.cVY();
+    this.tFT = getIntent().getStringExtra("key_conv");
     this.query = getIntent().getStringExtra("key_query");
-    this.ljZ = getIntent().getIntExtra("Search_Scene", 0);
+    this.lox = getIntent().getIntExtra("Search_Scene", 0);
     AppMethodBeat.o(111913);
   }
   
@@ -68,18 +68,18 @@ public class FTSConvMessageUI
     AppMethodBeat.i(111914);
     super.onCreate(paramBundle);
     paramBundle = new a((byte)0);
-    a.a(paramBundle, com.tencent.mm.plugin.fts.a.d.agg(this.tvc));
+    a.a(paramBundle, com.tencent.mm.plugin.fts.a.d.ahd(this.tFT));
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(paramBundle);
-    t(this.query, localArrayList);
-    cTo();
+    u(this.query, localArrayList);
+    cVT();
     AppMethodBeat.o(111914);
   }
   
   public void onDestroy()
   {
     AppMethodBeat.i(111915);
-    this.tzz.finish();
+    this.tKq.finish();
     super.onDestroy();
     AppMethodBeat.o(111915);
   }
@@ -93,7 +93,7 @@ public class FTSConvMessageUI
   final class a
     implements a.c
   {
-    private String fVj;
+    private String fXp;
     
     private a() {}
     
@@ -104,13 +104,13 @@ public class FTSConvMessageUI
     
     public final String getTagName()
     {
-      return this.fVj;
+      return this.fXp;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.ui.FTSConvMessageUI
  * JD-Core Version:    0.7.0.1
  */

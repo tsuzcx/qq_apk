@@ -5,29 +5,29 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bs.d;
+import com.tencent.mm.br.d;
 import com.tencent.mm.kernel.a;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import d.g.b.p;
 import d.l;
 import d.v;
 import java.security.MessageDigest;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/recordvideo/util/WeSeeUtil;", "", "()V", "TAG", "", "buildCameraEntranceSessionId", "timestamp", "", "bytesToHexString", "bArray", "", "checkWeishiInstalled", "", "context", "Landroid/content/Context;", "doCpatureWeSeeSight", "", "videoPath", "doDownloadWeSee", "plugin-recordvideo_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/recordvideo/util/WeSeeUtil;", "", "()V", "TAG", "", "buildCameraEntranceSessionId", "timestamp", "", "bytesToHexString", "bArray", "", "checkWeishiInstalled", "", "context", "Landroid/content/Context;", "doCpatureWeSeeSight", "", "videoPath", "doDownloadWeSee", "plugin-recordvideo_release"})
 public final class f
 {
-  public static final f xRE;
+  public static final f yhx;
   
   static
   {
     AppMethodBeat.i(76229);
-    xRE = new f();
+    yhx = new f();
     AppMethodBeat.o(76229);
   }
   
-  public static boolean ga(Context paramContext)
+  public static boolean gg(Context paramContext)
   {
     bool1 = true;
     AppMethodBeat.i(76226);
@@ -41,7 +41,7 @@ public final class f
       paramContext = paramContext.signatures[0].toByteArray();
       localObject = MessageDigest.getInstance("MD5");
       if (localObject == null) {
-        p.gfZ();
+        p.gkB();
       }
       ((MessageDigest)localObject).update(paramContext);
       paramContext = ((MessageDigest)localObject).digest();
@@ -58,7 +58,7 @@ public final class f
         boolean bool2;
         int j;
         int i;
-        ad.w("MicroMsg.WeSeeUtil", "checkWeishiInstalled Exception: %s", new Object[] { paramContext.getMessage() });
+        ae.w("MicroMsg.WeSeeUtil", "checkWeishiInstalled Exception: %s", new Object[] { paramContext.getMessage() });
         bool1 = false;
         continue;
         String str = str.toUpperCase();
@@ -69,7 +69,7 @@ public final class f
         paramContext = ((StringBuffer)localObject).toString();
       }
     }
-    bool2 = bt.lQ(paramContext, "2A281593D71DF33374E6124E9106DF08");
+    bool2 = bu.lX(paramContext, "2A281593D71DF33374E6124E9106DF08");
     if (bool2)
     {
       AppMethodBeat.o(76226);
@@ -95,7 +95,7 @@ public final class f
     }
   }
   
-  public static void gb(Context paramContext)
+  public static void gh(Context paramContext)
   {
     AppMethodBeat.i(76227);
     p.h(paramContext, "context");
@@ -105,12 +105,12 @@ public final class f
     AppMethodBeat.o(76227);
   }
   
-  public static String yS(long paramLong)
+  public static String zq(long paramLong)
   {
     AppMethodBeat.i(76228);
     Object localObject = new StringBuilder();
-    p.g(g.ajA(), "MMKernel.account()");
-    localObject = a.aiq() + "_" + paramLong;
+    p.g(g.ajP(), "MMKernel.account()");
+    localObject = a.aiF() + "_" + paramLong;
     p.g(localObject, "sb.append(MMKernel.accou…end(timestamp).toString()");
     AppMethodBeat.o(76228);
     return localObject;
@@ -118,7 +118,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.e.f
  * JD-Core Version:    0.7.0.1
  */

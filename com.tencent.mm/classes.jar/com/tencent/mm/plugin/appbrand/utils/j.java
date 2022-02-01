@@ -1,49 +1,125 @@
 package com.tencent.mm.plugin.appbrand.utils;
 
+import android.os.Looper;
+import android.os.Message;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.l;
-import java.util.concurrent.atomic.AtomicInteger;
+import com.tencent.mm.plugin.appbrand.report.o;
+import com.tencent.mm.sdk.d.d;
+import java.util.LinkedList;
+import java.util.Queue;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/utils/CountDownLock;", "", "countDownCallback", "Ljava/lang/Runnable;", "count", "", "(Ljava/lang/Runnable;I)V", "counter", "Ljava/util/concurrent/atomic/AtomicInteger;", "countDown", "", "plugin-appbrand-integration_release"})
-public final class j
+public abstract class j<Task>
+  extends d
 {
-  private final AtomicInteger counter;
-  private final Runnable mOL;
+  final j<Task>.b mTL = new b((byte)0);
+  private final j<Task>.a mTM = new a((byte)0);
+  final String mTN;
+  private final Queue<Task> mTO = new LinkedList();
   
-  public j(Runnable paramRunnable, int paramInt)
+  protected j(String paramString, Looper paramLooper)
   {
-    AppMethodBeat.i(51402);
-    this.mOL = paramRunnable;
-    if (paramInt > 0) {}
-    for (int i = 1; i == 0; i = 0)
-    {
-      paramRunnable = (Throwable)new IllegalArgumentException("count <= 0".toString());
-      AppMethodBeat.o(51402);
-      throw paramRunnable;
-    }
-    this.counter = new AtomicInteger(paramInt);
-    AppMethodBeat.o(51402);
+    super(paramString, paramLooper);
+    this.mTN = paramString;
+    a(this.mTL);
+    a(this.mTM);
+    b(this.mTL);
+    start();
   }
   
-  public final void countDown()
+  public final void bao()
   {
-    AppMethodBeat.i(51401);
-    if (this.counter.decrementAndGet() == 0)
+    super.bao();
+    synchronized (this.mTO)
     {
-      Runnable localRunnable = this.mOL;
-      if (localRunnable != null)
-      {
-        localRunnable.run();
-        AppMethodBeat.o(51401);
-        return;
-      }
+      this.mTO.clear();
+      return;
     }
-    AppMethodBeat.o(51401);
+  }
+  
+  protected abstract boolean bjv();
+  
+  public final void cJ(Task paramTask)
+  {
+    if (bjv()) {
+      return;
+    }
+    synchronized (this.mTO)
+    {
+      this.mTO.offer(paramTask);
+      abg(1);
+      return;
+    }
+  }
+  
+  protected abstract void cv(Task paramTask);
+  
+  final class a
+    extends o
+  {
+    private a() {}
+    
+    public final String getName()
+    {
+      AppMethodBeat.i(107819);
+      String str = j.this.mTN + "|StateExecuting";
+      AppMethodBeat.o(107819);
+      return str;
+    }
+    
+    public final boolean k(Message paramMessage)
+    {
+      AppMethodBeat.i(107818);
+      if (2 == paramMessage.what)
+      {
+        j.this.b(j.this.mTL);
+        AppMethodBeat.o(107818);
+        return true;
+      }
+      boolean bool = super.k(paramMessage);
+      AppMethodBeat.o(107818);
+      return bool;
+    }
+  }
+  
+  final class b
+    extends o
+  {
+    private b() {}
+    
+    public final void enter()
+    {
+      AppMethodBeat.i(107820);
+      super.enter();
+      j.a(j.this);
+      AppMethodBeat.o(107820);
+    }
+    
+    public final String getName()
+    {
+      AppMethodBeat.i(107822);
+      String str = j.this.mTN + "|StateIdle";
+      AppMethodBeat.o(107822);
+      return str;
+    }
+    
+    public final boolean k(Message paramMessage)
+    {
+      AppMethodBeat.i(107821);
+      if ((1 == paramMessage.what) || (2 == paramMessage.what))
+      {
+        j.a(j.this);
+        AppMethodBeat.o(107821);
+        return true;
+      }
+      boolean bool = super.k(paramMessage);
+      AppMethodBeat.o(107821);
+      return bool;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.utils.j
  * JD-Core Version:    0.7.0.1
  */

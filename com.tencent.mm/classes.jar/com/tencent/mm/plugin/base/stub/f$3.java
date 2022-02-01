@@ -1,31 +1,31 @@
 package com.tencent.mm.plugin.base.stub;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.x.a;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.x.a;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.appbrand.service.i;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 final class f$3
   implements x.a
 {
   public final int a(int paramInt1, int paramInt2, String paramString, b paramb, n paramn)
   {
-    AppMethodBeat.i(193148);
-    ad.i("MicroMsg.WXBizLogic", "doPreloadMiniProgramTranslateLink, %d, %d, %s, cgiType=%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString, Integer.valueOf(this.nNL) });
+    AppMethodBeat.i(186406);
+    ae.i("MicroMsg.WXBizLogic", "doPreloadMiniProgramTranslateLink, %d, %d, %s, cgiType=%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString, Integer.valueOf(this.nTq) });
     if ((paramInt1 != 0) || (paramInt2 != 0))
     {
-      f.x(false, this.nNL);
-      AppMethodBeat.o(193148);
+      f.y(false, this.nTq);
+      AppMethodBeat.o(186406);
       return 0;
     }
-    f.x(true, this.nNL);
-    if (this.nNL == 3) {
-      ((i)g.ab(i.class)).Lc("");
+    f.y(true, this.nTq);
+    if (this.nTq == 3) {
+      ((i)g.ab(i.class)).LC("");
     }
-    AppMethodBeat.o(193148);
+    AppMethodBeat.o(186406);
     return 0;
   }
 }

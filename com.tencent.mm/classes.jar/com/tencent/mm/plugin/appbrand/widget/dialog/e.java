@@ -26,8 +26,8 @@ import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.luggage.h.f;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aq;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Set;
@@ -36,30 +36,31 @@ public final class e
   extends RelativeLayout
   implements m
 {
-  private boolean cMS;
-  private final ap lEc;
+  private boolean cNB;
+  private final aq lIB;
   private final View.OnClickListener mOnClickListener;
   private int mRotation;
-  private final j ndp;
-  private final LinkedList<k> ndq;
-  private final Runnable ndr;
-  private k nds;
-  private k ndt;
-  private Set<l> ndu;
-  private final Set<Object> ndv;
-  private final Set<Object> ndx;
-  private boolean ndy;
+  private final Runnable ngA;
+  private k ngB;
+  private k ngG;
+  private Set<l> ngH;
+  private final Set<Object> ngI;
+  private final Set<Object> ngJ;
+  private boolean ngK;
+  private boolean ngL;
+  private final j ngy;
+  private final LinkedList<k> ngz;
   
   public e(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(131483);
     this.mRotation = 0;
-    this.lEc = new ap(Looper.getMainLooper());
-    this.ndp = new j(this);
-    this.ndq = new LinkedList();
+    this.lIB = new aq(Looper.getMainLooper());
+    this.ngy = new j(this);
+    this.ngz = new LinkedList();
     this.mOnClickListener = new e.1(this);
-    this.ndr = new Runnable()
+    this.ngA = new Runnable()
     {
       public final void run()
       {
@@ -70,11 +71,12 @@ public final class e
         AppMethodBeat.o(131478);
       }
     };
-    this.cMS = false;
-    this.ndu = new b();
-    this.ndv = new b();
-    this.ndx = new b();
-    this.ndy = false;
+    this.cNB = false;
+    this.ngH = new b();
+    this.ngI = new b();
+    this.ngJ = new b();
+    this.ngK = false;
+    this.ngL = true;
     setVisibility(4);
     setBackgroundColor(0);
     setOnClickListener(this.mOnClickListener);
@@ -124,34 +126,10 @@ public final class e
     AppMethodBeat.o(131487);
   }
   
-  public final void My()
-  {
-    AppMethodBeat.i(183778);
-    if (this.ndp.isRunning()) {
-      this.ndp.cancel();
-    }
-    if (!this.ndq.isEmpty())
-    {
-      a local6 = new a() {};
-      while (!this.ndq.isEmpty()) {
-        local6.apply(this.ndq.pollFirst());
-      }
-    }
-    this.nds = null;
-    this.ndt = null;
-    this.ndy = false;
-    this.ndv.clear();
-    this.ndx.clear();
-    removeAllViewsInLayout();
-    this.lEc.removeCallbacksAndMessages(null);
-    this.ndr.run();
-    AppMethodBeat.o(183778);
-  }
-  
   public final void a(l paraml)
   {
     AppMethodBeat.i(176008);
-    this.ndu.add(paraml);
+    this.ngH.add(paraml);
     AppMethodBeat.o(176008);
   }
   
@@ -163,10 +141,10 @@ public final class e
       AppMethodBeat.o(131484);
       return;
     }
-    ad.i("MicroMsg.AppBrandDialogContainerLayout", "showDialog dialog[%s] tid[%d]", new Object[] { paramk.getClass().getName(), Long.valueOf(Thread.currentThread().getId()) });
+    ae.i("MicroMsg.AppBrandDialogContainerLayout", "showDialog dialog[%s] tid[%d]", new Object[] { paramk.getClass().getName(), Long.valueOf(Thread.currentThread().getId()) });
     if (Looper.getMainLooper() != Looper.myLooper())
     {
-      this.lEc.post(new Runnable()
+      this.lIB.post(new Runnable()
       {
         public final void run()
         {
@@ -178,14 +156,14 @@ public final class e
       AppMethodBeat.o(131484);
       return;
     }
-    f.aC(getContext());
-    if (this.ndp.isRunning()) {
-      this.ndp.cancel();
+    f.aD(getContext());
+    if (this.ngy.isRunning()) {
+      this.ngy.cancel();
     }
     View localView = paramk.getContentView();
     if (localView == null)
     {
-      ad.w("MicroMsg.AppBrandDialogContainerLayout", "showDialog NULL dialogView from dialog[%s], stack=%s", new Object[] { paramk, Log.getStackTraceString(new Throwable()) });
+      ae.w("MicroMsg.AppBrandDialogContainerLayout", "showDialog NULL dialogView from dialog[%s], stack=%s", new Object[] { paramk, Log.getStackTraceString(new Throwable()) });
       AppMethodBeat.o(131484);
       return;
     }
@@ -194,54 +172,80 @@ public final class e
     {
       cZ(localView);
       if (paramk.getPosition() != 2) {
-        break label357;
+        break label358;
       }
       localLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
       localLayoutParams.addRule(12);
       localLayoutParams.addRule(14);
       addView(localView, localLayoutParams);
-      if (this.ndt != paramk)
+      if (this.ngG != paramk)
       {
         localView.clearAnimation();
         if (paramk.getPosition() != 2) {
-          break label378;
+          break label379;
         }
         localView.startAnimation(AnimationUtils.loadAnimation(getContext(), 2130772064));
       }
     }
     for (;;)
     {
-      this.ndt = paramk;
+      this.ngG = paramk;
       localView.setOnClickListener(this.mOnClickListener);
-      this.ndq.add(paramk);
+      this.ngz.add(paramk);
       paramk.a(this);
       setVisibility(0);
-      bringToFront();
-      this.ndp.c(Color.argb(127, 0, 0, 0), null);
-      if ((this.ndu.isEmpty()) || (this.cMS)) {
-        break label395;
+      if (this.ngL) {
+        bringToFront();
       }
-      paramk = this.ndu.iterator();
+      this.ngy.c(Color.argb(127, 0, 0, 0), null);
+      if ((this.ngH.isEmpty()) || (this.cNB)) {
+        break label396;
+      }
+      paramk = this.ngH.iterator();
       while (paramk.hasNext()) {
         ((l)paramk.next()).h(Boolean.TRUE);
       }
-      label357:
+      label358:
       localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
       localLayoutParams.addRule(13);
       break;
-      label378:
+      label379:
       localView.startAnimation(AnimationUtils.loadAnimation(getContext(), 2130771999));
     }
-    label395:
-    this.cMS = true;
+    label396:
+    this.cNB = true;
     AppMethodBeat.o(131484);
   }
   
   public final void b(l paraml)
   {
     AppMethodBeat.i(176009);
-    this.ndu.remove(paraml);
+    this.ngH.remove(paraml);
     AppMethodBeat.o(176009);
+  }
+  
+  public final void bEI()
+  {
+    AppMethodBeat.i(183778);
+    if (this.ngy.isRunning()) {
+      this.ngy.cancel();
+    }
+    if (!this.ngz.isEmpty())
+    {
+      a local6 = new a() {};
+      while (!this.ngz.isEmpty()) {
+        local6.apply(this.ngz.pollFirst());
+      }
+    }
+    this.ngB = null;
+    this.ngG = null;
+    this.ngK = false;
+    this.ngI.clear();
+    this.ngJ.clear();
+    removeAllViewsInLayout();
+    this.lIB.removeCallbacksAndMessages(null);
+    this.ngA.run();
+    AppMethodBeat.o(183778);
   }
   
   public final void c(final k paramk)
@@ -254,13 +258,13 @@ public final class e
     }
     if (Looper.getMainLooper() != Looper.myLooper())
     {
-      this.lEc.post(new Runnable()
+      this.lIB.post(new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(199401);
+          AppMethodBeat.i(200132);
           e.this.c(paramk);
-          AppMethodBeat.o(199401);
+          AppMethodBeat.o(200132);
         }
       });
       AppMethodBeat.o(131485);
@@ -271,14 +275,14 @@ public final class e
       AppMethodBeat.o(131485);
       return;
     }
-    if (this.nds == paramk)
+    if (this.ngB == paramk)
     {
       AppMethodBeat.o(131485);
       return;
     }
-    this.nds = paramk;
-    if (this.ndt == paramk) {
-      this.ndt = null;
+    this.ngB = paramk;
+    if (this.ngG == paramk) {
+      this.ngG = null;
     }
     final View localView = paramk.getContentView();
     localView.animate().cancel();
@@ -288,14 +292,14 @@ public final class e
     {
       public final void onAnimationCancel(Animator paramAnonymousAnimator)
       {
-        AppMethodBeat.i(199403);
+        AppMethodBeat.i(200134);
         onAnimationEnd(paramAnonymousAnimator);
-        AppMethodBeat.o(199403);
+        AppMethodBeat.o(200134);
       }
       
       public final void onAnimationEnd(Animator paramAnonymousAnimator)
       {
-        AppMethodBeat.i(199404);
+        AppMethodBeat.i(200135);
         localView.setVisibility(8);
         e.b(e.this).remove(paramk);
         e.c(e.this);
@@ -303,8 +307,8 @@ public final class e
         {
           public final void run()
           {
-            AppMethodBeat.i(199402);
-            e.this.removeView(e.5.this.nbv);
+            AppMethodBeat.i(200133);
+            e.this.removeView(e.5.this.ngE);
             e.a(e.this, true);
             Iterator localIterator = e.d(e.this).iterator();
             while (localIterator.hasNext()) {
@@ -316,24 +320,24 @@ public final class e
               e.d(e.this).removeAll(e.e(e.this));
               e.e(e.this).clear();
             }
-            AppMethodBeat.o(199402);
+            AppMethodBeat.o(200133);
           }
         });
-        AppMethodBeat.o(199404);
+        AppMethodBeat.o(200135);
       }
     });
     localAnimator.start();
-    if (this.ndq.size() <= 1) {
-      this.ndp.c(0, this.ndr);
+    if (this.ngz.size() <= 1) {
+      this.ngy.c(0, this.ngA);
     }
-    if ((!this.ndu.isEmpty()) && (this.cMS))
+    if ((!this.ngH.isEmpty()) && (this.cNB))
     {
-      paramk = this.ndu.iterator();
+      paramk = this.ngH.iterator();
       while (paramk.hasNext()) {
         ((l)paramk.next()).h(Boolean.FALSE);
       }
     }
-    this.cMS = false;
+    this.cNB = false;
     AppMethodBeat.o(131485);
   }
   
@@ -353,7 +357,7 @@ public final class e
   public final k getCurrentDialog()
   {
     AppMethodBeat.i(131486);
-    k localk = (k)this.ndq.peekLast();
+    k localk = (k)this.ngz.peekLast();
     AppMethodBeat.o(131486);
     return localk;
   }
@@ -361,14 +365,14 @@ public final class e
   public final boolean onBackPressed()
   {
     AppMethodBeat.i(131489);
-    k localk = (k)this.ndq.peekLast();
+    k localk = (k)this.ngz.peekLast();
     if (localk == null)
     {
       setVisibility(8);
       AppMethodBeat.o(131489);
       return false;
     }
-    if ((!localk.aOv()) && (localk.isCancelable()))
+    if ((!localk.aOS()) && (localk.isCancelable()))
     {
       localk.onCancel();
       c(localk);
@@ -388,9 +392,9 @@ public final class e
       if (this.mRotation != i)
       {
         this.mRotation = i;
-        paramConfiguration = this.ndq.iterator();
+        paramConfiguration = this.ngz.iterator();
         while (paramConfiguration.hasNext()) {
-          ((k)paramConfiguration.next()).qy(this.mRotation);
+          ((k)paramConfiguration.next()).qB(this.mRotation);
         }
       }
     }
@@ -399,17 +403,22 @@ public final class e
   
   public final void onViewRemoved(View paramView)
   {
-    AppMethodBeat.i(199406);
+    AppMethodBeat.i(200137);
     super.onViewRemoved(paramView);
-    if (this.ndq.size() == 0) {
-      this.ndp.c(0, this.ndr);
+    if (this.ngz.size() == 0) {
+      this.ngy.c(0, this.ngA);
     }
-    AppMethodBeat.o(199406);
+    AppMethodBeat.o(200137);
+  }
+  
+  public final void setShouldBringSelfToFrontWhenDialogShown(boolean paramBoolean)
+  {
+    this.ngL = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.dialog.e
  * JD-Core Version:    0.7.0.1
  */

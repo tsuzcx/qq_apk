@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.expt.hellhound.a.f.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.expt.hellhound.core.a.b;
-import com.tencent.mm.protocal.protobuf.bob;
-import com.tencent.mm.protocal.protobuf.boc;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.bot;
+import com.tencent.mm.protocal.protobuf.bou;
+import com.tencent.mm.sdk.platformtools.ae;
 import d.g.b.p;
 import d.l;
 import java.io.IOException;
@@ -13,19 +13,19 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/expt/hellhound/ext/session/dao/SessionPageBackup;", "", "()V", "Companion", "plugin-expt_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/expt/hellhound/ext/session/dao/SessionPageBackup;", "", "()V", "Companion", "plugin-expt_release"})
 public final class j
 {
-  public static final a qZi;
+  public static final a rho;
   
   static
   {
     AppMethodBeat.i(185603);
-    qZi = new a((byte)0);
+    rho = new a((byte)0);
     AppMethodBeat.o(185603);
   }
   
-  public static final void ZK(String paramString)
+  public static final void aaB(String paramString)
   {
     AppMethodBeat.i(185605);
     if (paramString == null)
@@ -33,32 +33,32 @@ public final class j
       AppMethodBeat.o(185605);
       return;
     }
-    bob localbob = a.cqq();
-    if (localbob == null)
+    bot localbot = a.crS();
+    if (localbot == null)
     {
       AppMethodBeat.o(185605);
       return;
     }
-    int i = localbob.GII.size() - 1;
+    int i = localbot.Hck.size() - 1;
     if (i >= 0)
     {
-      boc localboc = (boc)localbob.GII.get(i);
-      if ((localboc == null) || ((p.i(paramString, localboc.dyV) ^ true))) {}
+      bou localbou = (bou)localbot.Hck.get(i);
+      if ((localbou == null) || ((p.i(paramString, localbou.dAa) ^ true))) {}
       for (;;)
       {
         i -= 1;
         break;
-        localbob.GII.remove(i);
+        localbot.Hck.remove(i);
       }
     }
-    if ((localbob == null) || (localbob.GII.isEmpty()))
+    if ((localbot == null) || (localbot.Hck.isEmpty()))
     {
       AppMethodBeat.o(185605);
       return;
     }
     try
     {
-      paramString = localbob.toByteArray();
+      paramString = localbot.toByteArray();
       if (paramString != null) {
         b.p("mmkv_ssionPg_matched_bckup", paramString);
       }
@@ -67,12 +67,12 @@ public final class j
     }
     catch (IOException paramString)
     {
-      ad.printErrStackTrace("HABBYGE-MALI.SessionPageBackup", (Throwable)paramString, "SessionPageBackup, _write: %s", new Object[] { paramString.getMessage() });
+      ae.printErrStackTrace("HABBYGE-MALI.SessionPageBackup", (Throwable)paramString, "SessionPageBackup, _write: %s", new Object[] { paramString.getMessage() });
       AppMethodBeat.o(185605);
     }
   }
   
-  public static final List<boc> afh(String paramString)
+  public static final List<bou> agd(String paramString)
   {
     AppMethodBeat.i(185604);
     if (paramString == null)
@@ -80,19 +80,19 @@ public final class j
       AppMethodBeat.o(185604);
       return null;
     }
-    Object localObject = a.cqq();
+    Object localObject = a.crS();
     if (localObject == null)
     {
       AppMethodBeat.o(185604);
       return null;
     }
     ArrayList localArrayList = new ArrayList();
-    localObject = ((bob)localObject).GII.iterator();
+    localObject = ((bot)localObject).Hck.iterator();
     while (((Iterator)localObject).hasNext())
     {
-      boc localboc = (boc)((Iterator)localObject).next();
-      if ((localboc != null) && (!(p.i(paramString, localboc.dyV) ^ true))) {
-        localArrayList.add(localboc);
+      bou localbou = (bou)((Iterator)localObject).next();
+      if ((localbou != null) && (!(p.i(paramString, localbou.dAa) ^ true))) {
+        localArrayList.add(localbou);
       }
     }
     paramString = (List)localArrayList;
@@ -100,10 +100,10 @@ public final class j
     return paramString;
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/expt/hellhound/ext/session/dao/SessionPageBackup$Companion;", "", "()V", "KEY_MMKV", "", "TAG", "_read", "Lcom/tencent/mm/protocal/protobuf/HellPageFlow;", "_write", "", "path", "backup", "pageItems", "", "Lcom/tencent/mm/protocal/protobuf/HellPageFlowItem;", "getBackup", "sessionId", "reset", "plugin-expt_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/expt/hellhound/ext/session/dao/SessionPageBackup$Companion;", "", "()V", "KEY_MMKV", "", "TAG", "_read", "Lcom/tencent/mm/protocal/protobuf/HellPageFlow;", "_write", "", "path", "backup", "pageItems", "", "Lcom/tencent/mm/protocal/protobuf/HellPageFlowItem;", "getBackup", "sessionId", "reset", "plugin-expt_release"})
   public static final class a
   {
-    static bob cqq()
+    static bot crS()
     {
       AppMethodBeat.i(185602);
       byte[] arrayOfByte = b.getBytes("mmkv_ssionPg_matched_bckup");
@@ -118,16 +118,16 @@ public final class j
         AppMethodBeat.o(185602);
         return null;
       }
-      bob localbob = new bob();
+      bot localbot = new bot();
       try
       {
-        localbob.parseFrom(arrayOfByte);
+        localbot.parseFrom(arrayOfByte);
         AppMethodBeat.o(185602);
-        return localbob;
+        return localbot;
       }
       catch (IOException localIOException)
       {
-        ad.printErrStackTrace("HABBYGE-MALI.SessionPageBackup", (Throwable)localIOException, "SessionPageBackup, _read: %s", new Object[] { localIOException.getMessage() });
+        ae.printErrStackTrace("HABBYGE-MALI.SessionPageBackup", (Throwable)localIOException, "SessionPageBackup, _read: %s", new Object[] { localIOException.getMessage() });
         AppMethodBeat.o(185602);
       }
       return null;
@@ -143,7 +143,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.hellhound.a.f.c.j
  * JD-Core Version:    0.7.0.1
  */

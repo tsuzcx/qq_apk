@@ -7,50 +7,49 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.ai.x;
-import com.tencent.mm.bs.d;
-import com.tencent.mm.protocal.protobuf.aky;
-import com.tencent.mm.protocal.protobuf.dlo;
-import com.tencent.mm.protocal.protobuf.dlp;
-import com.tencent.mm.protocal.protobuf.dlq;
-import com.tencent.mm.protocal.protobuf.dls;
-import com.tencent.mm.protocal.protobuf.dlt;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.w;
+import com.tencent.mm.ah.m;
+import com.tencent.mm.ah.x;
+import com.tencent.mm.br.d;
+import com.tencent.mm.protocal.protobuf.ali;
+import com.tencent.mm.protocal.protobuf.dml;
+import com.tencent.mm.protocal.protobuf.dmm;
+import com.tencent.mm.protocal.protobuf.dmn;
+import com.tencent.mm.protocal.protobuf.dmp;
+import com.tencent.mm.protocal.protobuf.dmq;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.storage.y;
 import com.tencent.mm.ui.e.b;
 import com.tencent.mm.ui.widget.MMNeat7extView;
 
 public final class t
-  extends v
+  extends w
 {
-  public View iCM;
-  public TextView odV;
-  public View odW;
-  public View odX;
-  public View odY;
-  public TextView odZ;
-  public View oeL;
-  public TextView oeM;
-  public MMNeat7extView oeN;
-  public MMNeat7extView oea;
+  public View iFF;
+  public TextView ojL;
+  public View ojM;
+  public View ojN;
+  public View ojO;
+  public TextView ojP;
+  public MMNeat7extView ojQ;
+  public View okE;
+  public TextView okF;
+  public MMNeat7extView okG;
   
   public t(Context paramContext, com.tencent.mm.plugin.brandservice.ui.timeline.b paramb)
   {
-    AppMethodBeat.i(209529);
+    AppMethodBeat.i(208485);
     super.b(paramContext, paramb);
-    AppMethodBeat.o(209529);
+    AppMethodBeat.o(208485);
   }
   
   public final void hide()
   {
-    AppMethodBeat.i(209530);
-    if (this.odh != null) {
-      this.odh.setVisibility(8);
+    AppMethodBeat.i(208486);
+    if (this.oiV != null) {
+      this.oiV.setVisibility(8);
     }
-    AppMethodBeat.o(209530);
+    AppMethodBeat.o(208486);
   }
 }
 

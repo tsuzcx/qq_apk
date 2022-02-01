@@ -6,7 +6,7 @@ import android.support.v7.widget.RecyclerView.h;
 import android.support.v7.widget.RecyclerView.t;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cc.a;
+import com.tencent.mm.cb.a;
 
 final class AppBrandProfileUI$21
   extends RecyclerView.h
@@ -15,21 +15,21 @@ final class AppBrandProfileUI$21
   
   public final void a(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.t paramt)
   {
-    AppMethodBeat.i(188883);
-    int i = a.ax(this.mDY, 2131165829);
-    int j = a.ax(this.mDY, 2131165823);
+    AppMethodBeat.i(223115);
+    int i = a.ax(this.mJd, 2131165829);
+    int j = a.ax(this.mJd, 2131165823);
     if (RecyclerView.bw(paramView) == 0) {}
     for (paramRect.left = i;; paramRect.left = 0)
     {
       paramRect.right = j;
-      AppMethodBeat.o(188883);
+      AppMethodBeat.o(223115);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.AppBrandProfileUI.21
  * JD-Core Version:    0.7.0.1
  */

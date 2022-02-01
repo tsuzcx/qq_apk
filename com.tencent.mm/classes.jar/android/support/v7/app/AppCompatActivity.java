@@ -258,7 +258,7 @@ public class AppCompatActivity
     {
       if (supportShouldUpRecreateTask((Intent)localObject))
       {
-        localObject = ab.P(this);
+        localObject = ab.Q(this);
         onCreateSupportNavigateUpTaskStack((ab)localObject);
         onPrepareSupportNavigateUpTaskStack((ab)localObject);
         if (((ab)localObject).IH.isEmpty()) {
@@ -362,8 +362,8 @@ public class AppCompatActivity
     }
     paramIntent.addFlags(67108864);
     paramIntent = new com.tencent.mm.hellhoundlib.b.a().bc(paramIntent);
-    com.tencent.mm.hellhoundlib.a.a.a(this, paramIntent.ahp(), "android/support/v4/app/NavUtils", "navigateUpTo", "(Landroid/app/Activity;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    startActivity((Intent)paramIntent.mq(0));
+    com.tencent.mm.hellhoundlib.a.a.a(this, paramIntent.ahE(), "android/support/v4/app/NavUtils", "navigateUpTo", "(Landroid/app/Activity;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    startActivity((Intent)paramIntent.mt(0));
     com.tencent.mm.hellhoundlib.a.a.a(this, "android/support/v4/app/NavUtils", "navigateUpTo", "(Landroid/app/Activity;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     finish();
   }

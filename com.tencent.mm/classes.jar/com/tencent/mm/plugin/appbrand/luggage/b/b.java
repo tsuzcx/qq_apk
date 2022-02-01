@@ -10,55 +10,55 @@ import com.tencent.mm.pluginsdk.j.a.a.i;
 import com.tencent.mm.pluginsdk.j.a.c.q;
 import com.tencent.mm.pluginsdk.j.a.c.q.a;
 import com.tencent.mm.pluginsdk.j.a.c.s;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
 
 @Deprecated
 public final class b
   implements com.tencent.luggage.sdk.customize.a
 {
-  public final com.tencent.mm.plugin.appbrand.appstorage.d Ei()
+  public final com.tencent.mm.plugin.appbrand.appstorage.d El()
   {
     AppMethodBeat.i(47479);
-    com.tencent.mm.plugin.appbrand.appstorage.d locald = j.Ei();
+    com.tencent.mm.plugin.appbrand.appstorage.d locald = j.El();
     AppMethodBeat.o(47479);
     return locald;
   }
   
-  public final com.tencent.mm.plugin.appbrand.config.d Ej()
+  public final com.tencent.mm.plugin.appbrand.config.d Em()
   {
     AppMethodBeat.i(47481);
-    com.tencent.mm.plugin.appbrand.config.d locald = j.Ej();
+    com.tencent.mm.plugin.appbrand.config.d locald = j.Em();
     AppMethodBeat.o(47481);
     return locald;
   }
   
-  public final void Ek()
+  public final void En()
   {
     AppMethodBeat.i(47482);
-    if (aj.cmR())
+    if (ak.coh())
     {
-      com.tencent.mm.pluginsdk.j.a.a.b localb = com.tencent.mm.pluginsdk.j.a.a.b.faE();
-      com.tencent.mm.pluginsdk.j.a.a.b.faE();
-      s locals = q.a.fbc().aMi(i.jn(38, 1));
+      com.tencent.mm.pluginsdk.j.a.a.b localb = com.tencent.mm.pluginsdk.j.a.a.b.fes();
+      com.tencent.mm.pluginsdk.j.a.a.b.fes();
+      s locals = q.a.feQ().aNE(i.jr(38, 1));
       if (locals == null) {}
-      for (int i = 0;; i = bt.getInt(locals.field_fileVersion, 0))
+      for (int i = 0;; i = bu.getInt(locals.field_fileVersion, 0))
       {
         localb.f(38, 1, i, false);
         AppMethodBeat.o(47482);
         return;
       }
     }
-    ad.i("MicroMsg.AppBrand.AppBrandGlobalSystemCon", "onConfigFileDeleted: not in main proc, ignore");
+    ae.i("MicroMsg.AppBrand.AppBrandGlobalSystemCon", "onConfigFileDeleted: not in main proc, ignore");
     AppMethodBeat.o(47482);
   }
   
-  public final h dg(String paramString)
+  public final h dl(String paramString)
   {
     AppMethodBeat.i(47480);
-    h.a locala = h.jMr;
-    paramString = h.a.sF(new p(((com.tencent.mm.plugin.appbrand.appstorage.a.a)g.ab(com.tencent.mm.plugin.appbrand.appstorage.a.a.class)).Mz(paramString)).longValue());
+    h.a locala = h.jPD;
+    paramString = h.a.sS(new p(((com.tencent.mm.plugin.appbrand.appstorage.a.a)g.ab(com.tencent.mm.plugin.appbrand.appstorage.a.a.class)).Ng(paramString)).longValue());
     AppMethodBeat.o(47480);
     return paramString;
   }

@@ -3,25 +3,25 @@ package d.j;
 import d.l;
 import java.util.Random;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlin/random/AbstractPlatformRandom;", "Lkotlin/random/Random;", "()V", "impl", "Ljava/util/Random;", "getImpl", "()Ljava/util/Random;", "nextBits", "", "bitCount", "nextBoolean", "", "nextBytes", "", "array", "nextDouble", "", "nextFloat", "", "nextInt", "until", "nextLong", "", "kotlin-stdlib"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlin/random/AbstractPlatformRandom;", "Lkotlin/random/Random;", "()V", "impl", "Ljava/util/Random;", "getImpl", "()Ljava/util/Random;", "nextBits", "", "bitCount", "nextBoolean", "", "nextBytes", "", "array", "nextDouble", "", "nextFloat", "", "nextInt", "until", "nextLong", "", "kotlin-stdlib"})
 public abstract class a
   extends c
 {
-  public final int ajk(int paramInt)
+  public final int ajU(int paramInt)
   {
-    return d.ln(ggd().nextInt(), paramInt);
+    return d.lu(gkF().nextInt(), paramInt);
   }
   
-  public abstract Random ggd();
+  public abstract Random gkF();
   
   public final double nextDouble()
   {
-    return ggd().nextDouble();
+    return gkF().nextDouble();
   }
   
   public final int nextInt()
   {
-    return ggd().nextInt();
+    return gkF().nextInt();
   }
 }
 

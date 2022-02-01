@@ -1,18 +1,18 @@
 package com.tencent.mm.protocal;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.ccj;
+import com.tencent.mm.protocal.protobuf.cdd;
 
 public final class u$a
   extends l.d
   implements l.b
 {
-  public ccj Fov;
+  public cdd FGT;
   
   public u$a()
   {
     AppMethodBeat.i(133111);
-    this.Fov = new ccj();
+    this.FGT = new cdd();
     AppMethodBeat.o(133111);
   }
   
@@ -29,8 +29,8 @@ public final class u$a
   public final byte[] toProtoBuf()
   {
     AppMethodBeat.i(133112);
-    this.Fov.setBaseRequest(l.a(this));
-    byte[] arrayOfByte = this.Fov.toByteArray();
+    this.FGT.setBaseRequest(l.a(this));
+    byte[] arrayOfByte = this.FGT.toByteArray();
     AppMethodBeat.o(133112);
     return arrayOfByte;
   }

@@ -15,25 +15,25 @@ import com.tencent.mm.compatible.deviceinfo.v;
 
 public final class b
 {
-  public g ERs;
-  public int ERt;
-  private final int ERu;
-  private b.a ERv;
+  public g FjN;
+  public int FjO;
+  private final int FjP;
+  private b.a FjQ;
   public Context context;
   public int fileSize;
   public String filename;
-  private boolean hpv;
-  public int ism;
-  public MediaRecorder vPZ;
-  public a yVh;
+  private boolean hsj;
+  public int ivg;
+  public MediaRecorder wcd;
+  public a zlr;
   
   public b()
   {
     AppMethodBeat.i(31167);
-    this.ERt = 0;
-    this.ERu = 5;
-    this.hpv = false;
-    this.ERv = new b.a(Looper.getMainLooper());
+    this.FjO = 0;
+    this.FjP = 5;
+    this.hsj = false;
+    this.FjQ = new b.a(Looper.getMainLooper());
     AppMethodBeat.o(31167);
   }
   
@@ -41,7 +41,7 @@ public final class b
   {
     AppMethodBeat.i(31169);
     this.context = paramActivity;
-    int i = this.ERs.a(paramActivity, this.yVh, paramBoolean);
+    int i = this.FjN.a(paramActivity, this.zlr, paramBoolean);
     if (i != 0)
     {
       AppMethodBeat.o(31169);
@@ -54,15 +54,15 @@ public final class b
   public final int b(SurfaceHolder paramSurfaceHolder)
   {
     AppMethodBeat.i(31171);
-    int i = this.ERs.b(paramSurfaceHolder);
+    int i = this.FjN.b(paramSurfaceHolder);
     AppMethodBeat.o(31171);
     return i;
   }
   
-  public final int fbk()
+  public final int feY()
   {
     AppMethodBeat.i(31170);
-    this.ERs.dmK();
+    this.FjN.dpI();
     AppMethodBeat.o(31170);
     return 0;
   }
@@ -70,12 +70,12 @@ public final class b
   public final int getPreviewHeight()
   {
     AppMethodBeat.i(31173);
-    if (this.ERs.fYS.gbc == null)
+    if (this.FjN.gaZ.gdk == null)
     {
       AppMethodBeat.o(31173);
       return 0;
     }
-    int i = this.ERs.fYS.gbc.getParameters().getPreviewSize().height;
+    int i = this.FjN.gaZ.gdk.getParameters().getPreviewSize().height;
     AppMethodBeat.o(31173);
     return i;
   }
@@ -83,12 +83,12 @@ public final class b
   public final int getPreviewWidth()
   {
     AppMethodBeat.i(31172);
-    if (this.ERs.fYS.gbc == null)
+    if (this.FjN.gaZ.gdk == null)
     {
       AppMethodBeat.o(31172);
       return 0;
     }
-    int i = this.ERs.fYS.gbc.getParameters().getPreviewSize().width;
+    int i = this.FjN.gaZ.gdk.getParameters().getPreviewSize().width;
     AppMethodBeat.o(31172);
     return i;
   }
@@ -102,8 +102,8 @@ public final class b
       public final void run()
       {
         AppMethodBeat.i(31165);
-        if (b.this.vPZ != null) {
-          b.this.vPZ.setOrientationHint(paramInt);
+        if (b.this.wcd != null) {
+          b.this.wcd.setOrientationHint(paramInt);
         }
         AppMethodBeat.o(31165);
       }

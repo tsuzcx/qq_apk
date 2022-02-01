@@ -3,19 +3,19 @@ package d.l;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlin/reflect/KVariance;", "", "(Ljava/lang/String;I)V", "INVARIANT", "IN", "OUT", "kotlin-stdlib"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlin/reflect/KVariance;", "", "(Ljava/lang/String;I)V", "INVARIANT", "IN", "OUT", "kotlin-stdlib"})
 public enum r
 {
   static
   {
     AppMethodBeat.i(129551);
     r localr1 = new r("INVARIANT", 0);
-    MMD = localr1;
+    NjI = localr1;
     r localr2 = new r("IN", 1);
-    MME = localr2;
+    NjJ = localr2;
     r localr3 = new r("OUT", 2);
-    MMF = localr3;
-    MMG = new r[] { localr1, localr2, localr3 };
+    NjK = localr3;
+    NjL = new r[] { localr1, localr2, localr3 };
     AppMethodBeat.o(129551);
   }
   

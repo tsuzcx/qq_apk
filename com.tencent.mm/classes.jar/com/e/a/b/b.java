@@ -15,11 +15,11 @@ public final class b
     this.cdT = paramLong2;
   }
   
-  public final List<a> Bh()
+  public final List<a> Bi()
   {
     ArrayList localArrayList = new ArrayList();
-    c localc = Bg();
-    Bs().aG(this.cdT);
+    c localc = Bh();
+    Bt().aG(this.cdT);
     while (localc != null)
     {
       d[] arrayOfd = localc.cdY;
@@ -31,14 +31,14 @@ public final class b
         localArrayList.add(new a(locald, a(locald.cdS)));
         i += 1;
       }
-      localc = localc.Bj();
+      localc = localc.Bk();
     }
     return localArrayList;
   }
   
   public final String toString()
   {
-    return String.format("%s@%d (0x%x)", new Object[] { Bg().mClassName, Long.valueOf(Br()), Long.valueOf(Br()) });
+    return String.format("%s@%d (0x%x)", new Object[] { Bh().mClassName, Long.valueOf(Bs()), Long.valueOf(Bs()) });
   }
   
   public static final class a

@@ -4,20 +4,20 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class f
 {
-  private char[] BYu;
+  private char[] CpV;
   private int pos;
   
   public f()
   {
     AppMethodBeat.i(114845);
-    this.BYu = new char[50];
+    this.CpV = new char[50];
     AppMethodBeat.o(114845);
   }
   
   public final String toString()
   {
     AppMethodBeat.i(114846);
-    String str = new String(this.BYu, 0, this.pos);
+    String str = new String(this.CpV, 0, this.pos);
     AppMethodBeat.o(114846);
     return str;
   }

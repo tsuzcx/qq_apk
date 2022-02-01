@@ -1,48 +1,66 @@
 package com.tencent.mm.plugin.appbrand.config;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b.a;
+import com.tencent.mm.ak.a.a;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.cm.f;
+import com.tencent.mm.cm.g;
 import com.tencent.mm.plugin.appbrand.app.j;
 import com.tencent.mm.plugin.appbrand.networking.a;
-import com.tencent.mm.protocal.protobuf.egk;
-import com.tencent.mm.protocal.protobuf.egm;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.eib;
+import com.tencent.mm.protocal.protobuf.eid;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.vending.g.c.a;
 
 public final class o
-  extends a<egm>
+  extends com.tencent.mm.plugin.appbrand.networking.b<eid>
 {
-  final com.tencent.mm.al.b rr;
+  final com.tencent.mm.ak.b rr;
   
   public o(String paramString1, String paramString2)
   {
     super(paramString2, paramString1);
     AppMethodBeat.i(44853);
     b.a locala = new b.a();
-    egk localegk = new egk();
-    localegk.GNH = paramString1;
-    if (bt.isNullOrNil(paramString1))
+    eib localeib = new eib();
+    localeib.Hhh = paramString1;
+    if (bu.isNullOrNil(paramString1))
     {
-      paramString1 = j.aYP().e(paramString2, new String[] { "syncVersion" });
+      paramString1 = j.aZl().e(paramString2, new String[] { "syncVersion" });
       if (paramString1 == null) {
         paramString1 = "";
       }
     }
-    for (paramString1 = new com.tencent.mm.bx.b(paramString1.getBytes());; paramString1 = j.aYP().Nw(paramString1))
+    for (paramString1 = new com.tencent.mm.bw.b(paramString1.getBytes());; paramString1 = j.aZl().Oe(paramString1))
     {
-      localegk.FGF = paramString1;
-      localegk.HRz = paramString2;
-      locala.hNM = localegk;
-      locala.hNN = new egm();
+      localeib.FZb = paramString1;
+      localeib.IlG = paramString2;
+      locala.hQF = localeib;
+      locala.hQG = new eid();
       locala.funcId = 1151;
       locala.uri = "/cgi-bin/mmbiz-bin/wxaattr/wxaattrsync";
-      paramString1 = locala.aDC();
+      paramString1 = locala.aDS();
       this.rr = paramString1;
       c(paramString1);
       AppMethodBeat.o(44853);
       return;
-      paramString1 = bt.nullAsNil(paramString1.field_syncVersion);
+      paramString1 = bu.nullAsNil(paramString1.field_syncVersion);
       break;
     }
+  }
+  
+  public final f<a.a<eid>> beN()
+  {
+    AppMethodBeat.i(222223);
+    if (!a.ej(((eib)this.rr.hQD.hQJ).IlG, ((eib)this.rr.hQD.hQJ).Hhh))
+    {
+      f localf = g.c(new c.a() {});
+      AppMethodBeat.o(222223);
+      return localf;
+    }
+    AppMethodBeat.o(222223);
+    return null;
   }
 }
 

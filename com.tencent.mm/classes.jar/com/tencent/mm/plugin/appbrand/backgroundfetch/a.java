@@ -2,10 +2,10 @@ package com.tencent.mm.plugin.appbrand.backgroundfetch;
 
 public final class a
 {
-  public boolean jRu = false;
-  public boolean jRv = false;
-  public int jRw = 0;
-  public int jRx = 7;
+  public boolean jUM = false;
+  public boolean jUN = false;
+  public int jUO = 0;
+  public int jUP = 7;
 }
 
 

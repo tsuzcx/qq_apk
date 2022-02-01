@@ -13,15 +13,15 @@ import rx.internal.util.unsafe.UnsafeAccess;
 public final class j<T>
   implements d.b<T, T>
 {
-  private final g NXQ;
-  private final boolean NYd;
+  private final g OuV;
+  private final boolean Ovi;
   private final int bufferSize;
   
   public j(g paramg, int paramInt)
   {
     AppMethodBeat.i(90276);
-    this.NXQ = paramg;
-    this.NYd = false;
+    this.OuV = paramg;
+    this.Ovi = false;
     if (paramInt > 0) {}
     for (;;)
     {
@@ -36,27 +36,27 @@ public final class j<T>
     extends rx.i<T>
     implements a
   {
-    final boolean NYd;
-    final rx.i<? super T> NYe;
-    final g.a NYf;
-    final c<T> NYg;
-    final AtomicLong NYh;
-    final AtomicLong NYi;
-    Throwable NYj;
-    long NYk;
+    final boolean Ovi;
+    final rx.i<? super T> Ovj;
+    final g.a Ovk;
+    final c<T> Ovl;
+    final AtomicLong Ovm;
+    final AtomicLong Ovn;
+    Throwable Ovo;
+    long Ovp;
     volatile boolean bWS;
-    final Queue<Object> deY;
+    final Queue<Object> dga;
     final int limit;
     
     public a(g paramg, rx.i<? super T> parami, boolean paramBoolean, int paramInt)
     {
       AppMethodBeat.i(90269);
-      this.NYh = new AtomicLong();
-      this.NYi = new AtomicLong();
-      this.NYe = parami;
-      this.NYf = paramg.createWorker();
-      this.NYd = paramBoolean;
-      this.NYg = c.gyW();
+      this.Ovm = new AtomicLong();
+      this.Ovn = new AtomicLong();
+      this.Ovj = parami;
+      this.Ovk = paramg.createWorker();
+      this.Ovi = paramBoolean;
+      this.Ovl = c.gDy();
       if (paramInt > 0)
       {
         this.limit = (paramInt - (paramInt >> 2));
@@ -65,9 +65,9 @@ public final class j<T>
         }
       }
       label112:
-      for (this.deY = new SpscArrayQueue(paramInt);; this.deY = new rx.internal.util.a.c(paramInt))
+      for (this.dga = new SpscArrayQueue(paramInt);; this.dga = new rx.internal.util.a.c(paramInt))
       {
-        FO(paramInt);
+        Gq(paramInt);
         AppMethodBeat.o(90269);
         return;
         paramInt = rx.internal.util.f.SIZE;
@@ -78,7 +78,7 @@ public final class j<T>
     private boolean a(boolean paramBoolean1, boolean paramBoolean2, rx.i<? super T> parami, Queue<Object> paramQueue)
     {
       AppMethodBeat.i(90275);
-      if (parami.NXn.OaI)
+      if (parami.Ous.OxN)
       {
         paramQueue.clear();
         AppMethodBeat.o(90275);
@@ -86,12 +86,12 @@ public final class j<T>
       }
       if (paramBoolean1)
       {
-        if (!this.NYd) {
+        if (!this.Ovi) {
           break label97;
         }
         if (paramBoolean2)
         {
-          paramQueue = this.NYj;
+          paramQueue = this.Ovo;
           if (paramQueue == null) {
             break label75;
           }
@@ -110,12 +110,12 @@ public final class j<T>
           }
           finally
           {
-            this.NYf.gyQ();
+            this.Ovk.gDs();
             AppMethodBeat.o(90275);
           }
-          parami.gyM();
+          parami.gDo();
         }
-        Throwable localThrowable = this.NYj;
+        Throwable localThrowable = this.Ovo;
         if (localThrowable != null)
         {
           paramQueue.clear();
@@ -126,19 +126,19 @@ public final class j<T>
           }
           finally
           {
-            this.NYf.gyQ();
+            this.Ovk.gDs();
             AppMethodBeat.o(90275);
           }
         }
       } while (!paramBoolean2);
       try
       {
-        parami.gyM();
+        parami.gDo();
         return true;
       }
       finally
       {
-        this.NYf.gyQ();
+        this.Ovk.gDs();
         AppMethodBeat.o(90275);
       }
     }
@@ -147,10 +147,10 @@ public final class j<T>
     {
       AppMethodBeat.i(90274);
       long l3 = 1L;
-      long l2 = this.NYk;
-      Object localObject1 = this.deY;
-      rx.i locali = this.NYe;
-      long l1 = this.NYh.get();
+      long l2 = this.Ovp;
+      Object localObject1 = this.dga;
+      rx.i locali = this.Ovj;
+      long l1 = this.Ovm.get();
       label33:
       Object localObject2;
       long l4;
@@ -166,19 +166,19 @@ public final class j<T>
         }
         if (!bool1)
         {
-          locali.gz(c.getValue(localObject2));
+          locali.gC(c.getValue(localObject2));
           l4 = l2 + 1L;
           if (l4 != this.limit) {
             break label280;
           }
-          localObject2 = this.NYh;
+          localObject2 = this.Ovm;
           label126:
           l2 = ((AtomicLong)localObject2).get();
           if (l2 == 9223372036854775807L)
           {
             l1 = 9223372036854775807L;
             label144:
-            FO(l4);
+            Gq(l4);
             l2 = l1;
           }
         }
@@ -205,8 +205,8 @@ public final class j<T>
           AppMethodBeat.o(90274);
           return;
         }
-        this.NYk = l2;
-        l1 = this.NYi.addAndGet(-l3);
+        this.Ovp = l2;
+        l1 = this.Ovn.addAndGet(-l3);
         l3 = l1;
         if (l1 != 0L) {
           break;
@@ -218,28 +218,15 @@ public final class j<T>
       }
     }
     
-    public final void gyM()
-    {
-      AppMethodBeat.i(90271);
-      if ((this.NXn.OaI) || (this.bWS))
-      {
-        AppMethodBeat.o(90271);
-        return;
-      }
-      this.bWS = true;
-      schedule();
-      AppMethodBeat.o(90271);
-    }
-    
-    public final void gz(T paramT)
+    public final void gC(T paramT)
     {
       AppMethodBeat.i(90270);
-      if ((this.NXn.OaI) || (this.bWS))
+      if ((this.Ous.OxN) || (this.bWS))
       {
         AppMethodBeat.o(90270);
         return;
       }
-      if (!this.deY.offer(c.gB(paramT)))
+      if (!this.dga.offer(c.gE(paramT)))
       {
         onError(new rx.a.c());
         AppMethodBeat.o(90270);
@@ -249,16 +236,29 @@ public final class j<T>
       AppMethodBeat.o(90270);
     }
     
+    public final void gDo()
+    {
+      AppMethodBeat.i(90271);
+      if ((this.Ous.OxN) || (this.bWS))
+      {
+        AppMethodBeat.o(90271);
+        return;
+      }
+      this.bWS = true;
+      schedule();
+      AppMethodBeat.o(90271);
+    }
+    
     public final void onError(Throwable paramThrowable)
     {
       AppMethodBeat.i(90272);
-      if ((this.NXn.OaI) || (this.bWS))
+      if ((this.Ous.OxN) || (this.bWS))
       {
         rx.d.c.onError(paramThrowable);
         AppMethodBeat.o(90272);
         return;
       }
-      this.NYj = paramThrowable;
+      this.Ovo = paramThrowable;
       this.bWS = true;
       schedule();
       AppMethodBeat.o(90272);
@@ -267,8 +267,8 @@ public final class j<T>
     protected final void schedule()
     {
       AppMethodBeat.i(90273);
-      if (this.NYi.getAndIncrement() == 0L) {
-        this.NYf.a(this);
+      if (this.Ovn.getAndIncrement() == 0L) {
+        this.Ovk.a(this);
       }
       AppMethodBeat.o(90273);
     }
@@ -276,7 +276,7 @@ public final class j<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     rx.internal.a.j
  * JD-Core Version:    0.7.0.1
  */

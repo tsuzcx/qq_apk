@@ -25,7 +25,32 @@ public final class e
   static
   {
     AppMethodBeat.i(108074);
-    bOG = new e.1();
+    bOG = new Writer()
+    {
+      public final void close()
+      {
+        AppMethodBeat.i(108081);
+        AssertionError localAssertionError = new AssertionError();
+        AppMethodBeat.o(108081);
+        throw localAssertionError;
+      }
+      
+      public final void flush()
+      {
+        AppMethodBeat.i(108080);
+        AssertionError localAssertionError = new AssertionError();
+        AppMethodBeat.o(108080);
+        throw localAssertionError;
+      }
+      
+      public final void write(char[] paramAnonymousArrayOfChar, int paramAnonymousInt1, int paramAnonymousInt2)
+      {
+        AppMethodBeat.i(108079);
+        paramAnonymousArrayOfChar = new AssertionError();
+        AppMethodBeat.o(108079);
+        throw paramAnonymousArrayOfChar;
+      }
+    };
     bOH = new p("closed");
     AppMethodBeat.o(108074);
   }
@@ -263,7 +288,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.google.a.b.a.e
  * JD-Core Version:    0.7.0.1
  */

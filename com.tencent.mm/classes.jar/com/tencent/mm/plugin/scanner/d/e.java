@@ -8,18 +8,23 @@ public abstract class e
 {
   protected Context context;
   protected int mode;
-  protected ScanView ypf;
-  protected b ypg;
+  protected ScanView yFe;
+  protected b yFf;
   
   public abstract void c(long paramLong, Bundle paramBundle);
   
   public abstract void destroy();
   
-  public void y(long paramLong, boolean paramBoolean) {}
+  public void z(long paramLong, boolean paramBoolean) {}
+  
+  public static abstract interface a
+  {
+    public abstract void t(int paramInt, Bundle paramBundle);
+  }
   
   public static abstract interface b
   {
-    public abstract void bWi();
+    public abstract void bXx();
   }
 }
 

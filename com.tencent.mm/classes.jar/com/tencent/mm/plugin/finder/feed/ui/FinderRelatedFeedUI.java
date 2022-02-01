@@ -14,12 +14,12 @@ import com.tencent.mm.plugin.finder.feed.model.FinderRelatedLoader;
 import com.tencent.mm.plugin.finder.feed.model.internal.IResponse;
 import com.tencent.mm.plugin.finder.feed.y.a;
 import com.tencent.mm.plugin.finder.feed.y.b;
-import com.tencent.mm.plugin.finder.model.al;
+import com.tencent.mm.plugin.finder.model.am;
 import com.tencent.mm.plugin.finder.viewmodel.component.FinderReporterUIC;
-import com.tencent.mm.protocal.protobuf.aoj;
-import com.tencent.mm.protocal.protobuf.aok;
-import com.tencent.mm.protocal.protobuf.arg;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.aow;
+import com.tencent.mm.protocal.protobuf.aox;
+import com.tencent.mm.protocal.protobuf.arv;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.view.RefreshLoadMoreLayout;
 import d.g.a.b;
@@ -28,41 +28,41 @@ import d.l;
 import d.z;
 import java.util.HashMap;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderRelatedFeedUI;", "Lcom/tencent/mm/plugin/finder/feed/ui/FinderBaseGridFeedUI;", "Lcom/tencent/mm/plugin/finder/feed/FinderRelatedFeedUIContract$ViewCallback;", "Lcom/tencent/mm/plugin/finder/feed/FinderRelatedFeedUIContract$Presenter;", "()V", "feedLoader", "Lcom/tencent/mm/plugin/finder/feed/model/BaseFinderFeedLoader;", "getFeedLoader", "()Lcom/tencent/mm/plugin/finder/feed/model/BaseFinderFeedLoader;", "setFeedLoader", "(Lcom/tencent/mm/plugin/finder/feed/model/BaseFinderFeedLoader;)V", "firstRsp", "Lcom/tencent/mm/protocal/protobuf/FinderGetRelatedListResp;", "presenter", "req", "Lcom/tencent/mm/protocal/protobuf/FinderGetRelatedListReq;", "scene", "", "title", "", "viewCallback", "getCommentScene", "getLayoutId", "getLoader", "getPresenter", "getReportType", "getViewCallback", "initAfterAttach", "", "initOnCreate", "onActivityResult", "requestCode", "resultCode", "data", "Landroid/content/Intent;", "Companion", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderRelatedFeedUI;", "Lcom/tencent/mm/plugin/finder/feed/ui/FinderBaseGridFeedUI;", "Lcom/tencent/mm/plugin/finder/feed/FinderRelatedFeedUIContract$ViewCallback;", "Lcom/tencent/mm/plugin/finder/feed/FinderRelatedFeedUIContract$Presenter;", "()V", "feedLoader", "Lcom/tencent/mm/plugin/finder/feed/model/BaseFinderFeedLoader;", "getFeedLoader", "()Lcom/tencent/mm/plugin/finder/feed/model/BaseFinderFeedLoader;", "setFeedLoader", "(Lcom/tencent/mm/plugin/finder/feed/model/BaseFinderFeedLoader;)V", "firstRsp", "Lcom/tencent/mm/protocal/protobuf/FinderGetRelatedListResp;", "presenter", "req", "Lcom/tencent/mm/protocal/protobuf/FinderGetRelatedListReq;", "scene", "", "title", "", "viewCallback", "getCommentScene", "getLayoutId", "getLoader", "getPresenter", "getReportType", "getViewCallback", "initAfterAttach", "", "initOnCreate", "onActivityResult", "requestCode", "resultCode", "data", "Landroid/content/Intent;", "Companion", "plugin-finder_release"})
 public final class FinderRelatedFeedUI
   extends FinderBaseGridFeedUI<y.b, y.a>
 {
-  public static final a shh;
+  public static final FinderRelatedFeedUI.a sqb;
   private HashMap _$_findViewCache;
-  public BaseFinderFeedLoader rTS;
-  private aoj rXP;
   private final int scene = 2;
-  private y.a she;
-  private y.b shf;
-  private aok shg;
+  public BaseFinderFeedLoader scw;
+  private aow sgA;
+  private y.a spY;
+  private y.b spZ;
+  private aox sqa;
   private String title = "";
   
   static
   {
-    AppMethodBeat.i(202845);
-    shh = new a((byte)0);
-    AppMethodBeat.o(202845);
+    AppMethodBeat.i(203324);
+    sqb = new FinderRelatedFeedUI.a((byte)0);
+    AppMethodBeat.o(203324);
   }
   
-  private y.a cCt()
+  private y.a cEf()
   {
-    AppMethodBeat.i(202839);
-    y.a locala = this.she;
+    AppMethodBeat.i(203318);
+    y.a locala = this.spY;
     if (locala == null) {
-      d.g.b.p.bcb("presenter");
+      d.g.b.p.bdF("presenter");
     }
-    AppMethodBeat.o(202839);
+    AppMethodBeat.o(203318);
     return locala;
   }
   
   public final View _$_findCachedViewById(int paramInt)
   {
-    AppMethodBeat.i(202847);
+    AppMethodBeat.i(203326);
     if (this._$_findViewCache == null) {
       this._$_findViewCache = new HashMap();
     }
@@ -73,38 +73,38 @@ public final class FinderRelatedFeedUI
       localView1 = findViewById(paramInt);
       this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
     }
-    AppMethodBeat.o(202847);
+    AppMethodBeat.o(203326);
     return localView1;
   }
   
-  public final int cAZ()
+  public final int cCL()
   {
-    AppMethodBeat.i(202842);
+    AppMethodBeat.i(203321);
     int i = getIntent().getIntExtra("KEY_MORE_ACTION_TYPE", 0);
     if (i == 2)
     {
-      AppMethodBeat.o(202842);
+      AppMethodBeat.o(203321);
       return 28;
     }
     if (i == 1)
     {
-      AppMethodBeat.o(202842);
+      AppMethodBeat.o(203321);
       return 30;
     }
-    AppMethodBeat.o(202842);
+    AppMethodBeat.o(203321);
     return 0;
   }
   
-  public final int cBZ()
+  public final int cDL()
   {
-    AppMethodBeat.i(202843);
+    AppMethodBeat.i(203322);
     int i = getIntent().getIntExtra("KEY_MORE_ACTION_TYPE", 0);
     if ((i == 2) || (i == 1))
     {
-      AppMethodBeat.o(202843);
+      AppMethodBeat.o(203322);
       return 3;
     }
-    AppMethodBeat.o(202843);
+    AppMethodBeat.o(203322);
     return 0;
   }
   
@@ -116,36 +116,36 @@ public final class FinderRelatedFeedUI
   public final void initOnCreate()
   {
     boolean bool2 = true;
-    AppMethodBeat.i(202838);
-    Object localObject1 = (com.tencent.mm.bx.a)new aoj();
+    AppMethodBeat.i(203317);
+    Object localObject1 = (com.tencent.mm.bw.a)new aow();
     Object localObject4 = getIntent().getByteArrayExtra("SECTION_REQ");
     try
     {
-      ((com.tencent.mm.bx.a)localObject1).parseFrom((byte[])localObject4);
-      this.rXP = ((aoj)localObject1);
-      localObject1 = (com.tencent.mm.bx.a)new aok();
+      ((com.tencent.mm.bw.a)localObject1).parseFrom((byte[])localObject4);
+      this.sgA = ((aow)localObject1);
+      localObject1 = (com.tencent.mm.bw.a)new aox();
       localObject4 = getIntent().getByteArrayExtra("SECTION_FIRST_RSP");
     }
     catch (Exception localException1)
     {
       try
       {
-        ((com.tencent.mm.bx.a)localObject1).parseFrom((byte[])localObject4);
-        this.shg = ((aok)localObject1);
-        if ((this.rXP == null) || (this.shg == null))
+        ((com.tencent.mm.bw.a)localObject1).parseFrom((byte[])localObject4);
+        this.sqa = ((aox)localObject1);
+        if ((this.sgA == null) || (this.sqa == null))
         {
           localObject1 = new StringBuilder("req is null? ");
-          if (this.rXP == null)
+          if (this.sgA == null)
           {
             bool1 = true;
             localObject1 = ((StringBuilder)localObject1).append(bool1).append(", rsp is null? ");
-            if (this.shg != null) {
-              break label602;
+            if (this.sqa != null) {
+              break label612;
             }
             bool1 = bool2;
-            ad.i("Finder.FinderRelatedFeedUI", bool1 + ", finish");
+            ae.i("Finder.FinderRelatedFeedUI", bool1 + ", finish");
             finish();
-            this.rXP = new aoj();
+            this.sgA = new aow();
           }
         }
         else
@@ -157,63 +157,66 @@ public final class FinderRelatedFeedUI
           }
           this.title = ((String)localObject1);
           setMMTitle(this.title);
-          localObject1 = this.rXP;
+          localObject1 = this.sgA;
           if (localObject1 == null) {
-            d.g.b.p.gfZ();
+            d.g.b.p.gkB();
           }
-          int i = ((aoj)localObject1).duh;
-          int j = cAZ();
-          localObject1 = this.rXP;
+          int i = ((aow)localObject1).dvm;
+          int j = cCL();
+          localObject1 = this.sgA;
           if (localObject1 == null) {
-            d.g.b.p.gfZ();
+            d.g.b.p.gkB();
           }
-          float f1 = ((aoj)localObject1).dAp;
-          localObject1 = this.rXP;
+          float f1 = ((aow)localObject1).dBu;
+          localObject1 = this.sgA;
           if (localObject1 == null) {
-            d.g.b.p.gfZ();
+            d.g.b.p.gkB();
           }
-          float f2 = ((aoj)localObject1).dyz;
-          localObject1 = this.rXP;
+          float f2 = ((aow)localObject1).dzE;
+          localObject1 = this.sgA;
           if (localObject1 == null) {
-            d.g.b.p.gfZ();
+            d.g.b.p.gkB();
           }
-          localObject1 = ((aoj)localObject1).rJv;
-          d.g.b.p.g(localObject1, "req!!.sectionInfo");
-          localObject4 = com.tencent.mm.ui.component.a.KiD;
-          localObject1 = new FinderRelatedLoader(i, j, f1, f2, (arg)localObject1, ((FinderReporterUIC)com.tencent.mm.ui.component.a.s((MMActivity)this).get(FinderReporterUIC.class)).cOu());
+          localObject4 = ((aow)localObject1).rRJ;
+          localObject1 = localObject4;
+          if (localObject4 == null) {
+            localObject1 = new arv();
+          }
+          localObject4 = com.tencent.mm.ui.component.a.KEX;
+          localObject1 = new FinderRelatedLoader(i, j, f1, f2, (arv)localObject1, ((FinderReporterUIC)com.tencent.mm.ui.component.a.s((MMActivity)this).get(FinderReporterUIC.class)).cQZ());
           localObject4 = getIntent();
           d.g.b.p.g(localObject4, "intent");
           ((FinderRelatedLoader)localObject1).initFromCache((Intent)localObject4);
           ((FinderRelatedLoader)localObject1).fetchEndCallback = ((b)new b(this));
-          this.rTS = ((BaseFinderFeedLoader)localObject1);
+          this.scw = ((BaseFinderFeedLoader)localObject1);
           localObject1 = (MMActivity)this;
-          cAZ();
-          localObject4 = this.rTS;
+          cCL();
+          localObject4 = this.scw;
           if (localObject4 == null) {
-            d.g.b.p.bcb("feedLoader");
+            d.g.b.p.bdF("feedLoader");
           }
-          this.she = new y.a((MMActivity)localObject1, (BaseFinderFeedLoader)localObject4);
+          this.spY = new y.a((MMActivity)localObject1, (BaseFinderFeedLoader)localObject4);
           localObject1 = (MMActivity)this;
           i = this.scene;
-          j = cAZ();
-          localObject4 = this.rXP;
+          j = cCL();
+          localObject4 = this.sgA;
           if (localObject4 == null) {
-            d.g.b.p.gfZ();
+            d.g.b.p.gkB();
           }
-          this.shf = new y.b((MMActivity)localObject1, i, j, (aoj)localObject4, this.title);
-          localObject1 = this.shf;
+          this.spZ = new y.b((MMActivity)localObject1, i, j, (aow)localObject4, this.title);
+          localObject1 = this.spZ;
           if (localObject1 == null) {
-            d.g.b.p.bcb("viewCallback");
+            d.g.b.p.bdF("viewCallback");
           }
-          localObject4 = this.she;
+          localObject4 = this.spY;
           if (localObject4 == null) {
-            d.g.b.p.bcb("presenter");
+            d.g.b.p.bdF("presenter");
           }
           ((y.b)localObject1).a((b.a)localObject4);
-          AppMethodBeat.o(202838);
+          AppMethodBeat.o(203317);
           return;
           localException1 = localException1;
-          ad.l("safeParser", "", new Object[] { localException1 });
+          ae.l("safeParser", "", new Object[] { localException1 });
           Object localObject2 = null;
         }
       }
@@ -221,12 +224,12 @@ public final class FinderRelatedFeedUI
       {
         for (;;)
         {
-          ad.l("safeParser", "", new Object[] { localException2 });
+          ae.l("safeParser", "", new Object[] { localException2 });
           Object localObject3 = null;
           continue;
           boolean bool1 = false;
           continue;
-          label602:
+          label612:
           bool1 = false;
         }
       }
@@ -235,27 +238,27 @@ public final class FinderRelatedFeedUI
   
   public final void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    AppMethodBeat.i(202844);
+    AppMethodBeat.i(203323);
     if ((paramInt1 == 501) && (paramInt2 == -1) && (paramIntent != null))
     {
-      y.a locala = cCt();
+      y.a locala = cEf();
       d.g.b.p.h(paramIntent, "data");
-      Object localObject = locala.rTQ;
+      Object localObject = locala.scu;
       if (localObject != null)
       {
-        localObject = ((b.b)localObject).rTF.getRecyclerView();
+        localObject = ((b.b)localObject).scj.getRecyclerView();
         if (localObject != null)
         {
-          com.tencent.mm.plugin.finder.utils.p localp = com.tencent.mm.plugin.finder.utils.p.sMo;
-          com.tencent.mm.plugin.finder.utils.p.a(paramIntent, (RecyclerView)localObject, locala.rTS);
-          AppMethodBeat.o(202844);
+          com.tencent.mm.plugin.finder.utils.p localp = com.tencent.mm.plugin.finder.utils.p.sXz;
+          com.tencent.mm.plugin.finder.utils.p.a(paramIntent, (RecyclerView)localObject, locala.scw);
+          AppMethodBeat.o(203323);
           return;
         }
       }
-      AppMethodBeat.o(202844);
+      AppMethodBeat.o(203323);
       return;
     }
-    AppMethodBeat.o(202844);
+    AppMethodBeat.o(203323);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -264,13 +267,10 @@ public final class FinderRelatedFeedUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderRelatedFeedUI$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
-  public static final class a {}
-  
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "invoke", "com/tencent/mm/plugin/finder/feed/ui/FinderRelatedFeedUI$initOnCreate$1$1"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "invoke", "com/tencent/mm/plugin/finder/feed/ui/FinderRelatedFeedUI$initOnCreate$1$1"})
   static final class b
     extends q
-    implements b<IResponse<al>, z>
+    implements b<IResponse<am>, z>
   {
     b(FinderRelatedFeedUI paramFinderRelatedFeedUI)
     {
@@ -280,7 +280,7 @@ public final class FinderRelatedFeedUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.feed.ui.FinderRelatedFeedUI
  * JD-Core Version:    0.7.0.1
  */

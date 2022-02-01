@@ -1,84 +1,88 @@
 package com.tencent.mm.plugin.game.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import f.a.a.b;
+import java.util.LinkedList;
 
 public final class di
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public String IconUrl;
-  public String ueY;
-  public String ujI;
+  public ep uuV;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(41832);
+    AppMethodBeat.i(41825);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.ujI != null) {
-        paramVarArgs.d(1, this.ujI);
+      if (this.uuV == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: AppInfo");
+        AppMethodBeat.o(41825);
+        throw paramVarArgs;
       }
-      if (this.IconUrl != null) {
-        paramVarArgs.d(2, this.IconUrl);
+      if (this.uuV != null)
+      {
+        paramVarArgs.lJ(1, this.uuV.computeSize());
+        this.uuV.writeFields(paramVarArgs);
       }
-      if (this.ueY != null) {
-        paramVarArgs.d(3, this.ueY);
-      }
-      AppMethodBeat.o(41832);
+      AppMethodBeat.o(41825);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.ujI == null) {
-        break label334;
+      if (this.uuV == null) {
+        break label358;
       }
     }
-    label334:
-    for (int i = f.a.a.b.b.a.e(1, this.ujI) + 0;; i = 0)
+    label358:
+    for (paramInt = f.a.a.a.lI(1, this.uuV.computeSize()) + 0;; paramInt = 0)
     {
-      paramInt = i;
-      if (this.IconUrl != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.IconUrl);
-      }
-      i = paramInt;
-      if (this.ueY != null) {
-        i = paramInt + f.a.a.b.b.a.e(3, this.ueY);
-      }
-      AppMethodBeat.o(41832);
-      return i;
+      AppMethodBeat.o(41825);
+      return paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
-        AppMethodBeat.o(41832);
+        if (this.uuV == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: AppInfo");
+          AppMethodBeat.o(41825);
+          throw paramVarArgs;
+        }
+        AppMethodBeat.o(41825);
         return 0;
       }
       if (paramInt == 3)
       {
-        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+        Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
         di localdi = (di)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(41832);
+          AppMethodBeat.o(41825);
           return -1;
-        case 1: 
-          localdi.ujI = locala.NPN.readString();
-          AppMethodBeat.o(41832);
-          return 0;
-        case 2: 
-          localdi.IconUrl = locala.NPN.readString();
-          AppMethodBeat.o(41832);
-          return 0;
         }
-        localdi.ueY = locala.NPN.readString();
-        AppMethodBeat.o(41832);
+        paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
+        int i = paramVarArgs.size();
+        paramInt = 0;
+        while (paramInt < i)
+        {
+          Object localObject2 = (byte[])paramVarArgs.get(paramInt);
+          localObject1 = new ep();
+          localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
+          for (boolean bool = true; bool; bool = ((ep)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+          localdi.uuV = ((ep)localObject1);
+          paramInt += 1;
+        }
+        AppMethodBeat.o(41825);
         return 0;
       }
-      AppMethodBeat.o(41832);
+      AppMethodBeat.o(41825);
       return -1;
     }
   }

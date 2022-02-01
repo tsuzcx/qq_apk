@@ -5,9 +5,9 @@ import java.util.List;
 public abstract interface d
   extends a
 {
-  public abstract List<e> fWE();
+  public abstract List<e> gbd();
   
-  public abstract long fWF();
+  public abstract long gbe();
   
   public abstract int getTrackId();
 }

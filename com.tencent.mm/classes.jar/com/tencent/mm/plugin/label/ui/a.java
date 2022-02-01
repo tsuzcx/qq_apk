@@ -6,16 +6,16 @@ import android.database.Cursor;
 import android.view.View;
 import android.view.ViewGroup;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.am.o;
+import com.tencent.mm.al.o;
 import com.tencent.mm.g.c.aw;
-import com.tencent.mm.model.as.a;
-import com.tencent.mm.model.as.c;
-import com.tencent.mm.model.ba;
-import com.tencent.mm.model.v;
+import com.tencent.mm.model.au.a;
+import com.tencent.mm.model.au.c;
+import com.tencent.mm.model.bc;
+import com.tencent.mm.model.w;
 import com.tencent.mm.pluginsdk.ui.span.k;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.storage.am;
-import com.tencent.mm.storage.bp;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.storage.an;
+import com.tencent.mm.storage.bq;
 import com.tencent.mm.ui.AddressView;
 import com.tencent.mm.ui.contact.f;
 import com.tencent.mm.ui.r;
@@ -25,15 +25,15 @@ import java.util.Map;
 public final class a
   extends r<f>
 {
-  public static final ColorStateList uWW;
-  public static final ColorStateList uWX;
-  List<String> uWY;
+  public static final ColorStateList viK;
+  public static final ColorStateList viL;
+  List<String> viM;
   
   static
   {
     AppMethodBeat.i(26260);
-    uWW = com.tencent.mm.cc.a.m(aj.getContext(), 2131100638);
-    uWX = com.tencent.mm.cc.a.m(aj.getContext(), 2131100490);
+    viK = com.tencent.mm.cb.a.m(ak.getContext(), 2131100638);
+    viL = com.tencent.mm.cb.a.m(ak.getContext(), 2131100490);
     AppMethodBeat.o(26260);
   }
   
@@ -51,13 +51,13 @@ public final class a
     if (paramf == null) {
       localf = new f();
     }
-    ba.aBQ();
-    paramf = com.tencent.mm.model.c.azp().aTf(am.p(paramCursor));
+    bc.aCg();
+    paramf = com.tencent.mm.model.c.azF().aUG(an.p(paramCursor));
     if (paramf == null)
     {
       localf.contact.convertFrom(paramCursor);
-      ba.aBQ();
-      com.tencent.mm.model.c.azp().ad(localf.contact);
+      bc.aCg();
+      com.tencent.mm.model.c.azF().ak(localf.contact);
     }
     for (;;)
     {
@@ -67,18 +67,18 @@ public final class a
     }
   }
   
-  public final f IT(int paramInt)
+  public final f Jr(int paramInt)
   {
     AppMethodBeat.i(26252);
-    if (HY(paramInt))
+    if (Iw(paramInt))
     {
-      localf = (f)dae();
+      localf = (f)dcP();
       AppMethodBeat.o(26252);
       return localf;
     }
-    if (this.JaE != null)
+    if (this.Jvm != null)
     {
-      localf = (f)this.JaE.get(Integer.valueOf(paramInt));
+      localf = (f)this.Jvm.get(Integer.valueOf(paramInt));
       if (localf != null)
       {
         AppMethodBeat.o(26252);
@@ -91,18 +91,18 @@ public final class a
       return null;
     }
     f localf = a(null, getCursor());
-    if (this.JaE == null) {
-      xk(true);
+    if (this.Jvm == null) {
+      xs(true);
     }
-    if (this.JaE != null) {
-      this.JaE.put(Integer.valueOf(paramInt), localf);
+    if (this.Jvm != null) {
+      this.Jvm.put(Integer.valueOf(paramInt), localf);
     }
     AppMethodBeat.o(26252);
     return localf;
   }
   
   /* Error */
-  public final void Zu()
+  public final void ZD()
   {
     // Byte code:
     //   0: aload_0
@@ -115,17 +115,17 @@ public final class a
     //   17: iconst_1
     //   18: istore_1
     //   19: aload_0
-    //   20: getfield 149	com/tencent/mm/plugin/label/ui/a:uWY	Ljava/util/List;
+    //   20: getfield 149	com/tencent/mm/plugin/label/ui/a:viM	Ljava/util/List;
     //   23: ifnull +55 -> 78
     //   26: aload_0
-    //   27: getfield 149	com/tencent/mm/plugin/label/ui/a:uWY	Ljava/util/List;
+    //   27: getfield 149	com/tencent/mm/plugin/label/ui/a:viM	Ljava/util/List;
     //   30: invokeinterface 155 1 0
     //   35: ifle +43 -> 78
-    //   38: invokestatic 62	com/tencent/mm/model/ba:aBQ	()Lcom/tencent/mm/model/c;
+    //   38: invokestatic 62	com/tencent/mm/model/bc:aCg	()Lcom/tencent/mm/model/c;
     //   41: pop
-    //   42: invokestatic 68	com/tencent/mm/model/c:azp	()Lcom/tencent/mm/storage/bp;
+    //   42: invokestatic 68	com/tencent/mm/model/c:azF	()Lcom/tencent/mm/storage/bq;
     //   45: aload_0
-    //   46: getfield 149	com/tencent/mm/plugin/label/ui/a:uWY	Ljava/util/List;
+    //   46: getfield 149	com/tencent/mm/plugin/label/ui/a:viM	Ljava/util/List;
     //   49: invokeinterface 159 2 0
     //   54: astore_2
     //   55: iload_1
@@ -141,7 +141,7 @@ public final class a
     //   73: iconst_0
     //   74: istore_1
     //   75: goto -56 -> 19
-    //   78: invokestatic 167	com/tencent/mm/storagebase/d:ftG	()Landroid/database/Cursor;
+    //   78: invokestatic 167	com/tencent/mm/storagebase/d:fxH	()Landroid/database/Cursor;
     //   81: astore_2
     //   82: goto -27 -> 55
     //   85: new 7	com/tencent/mm/plugin/label/ui/a$1
@@ -149,7 +149,7 @@ public final class a
     //   89: aload_0
     //   90: aload_2
     //   91: invokespecial 170	com/tencent/mm/plugin/label/ui/a$1:<init>	(Lcom/tencent/mm/plugin/label/ui/a;Landroid/database/Cursor;)V
-    //   94: invokestatic 176	com/tencent/mm/sdk/platformtools/aq:f	(Ljava/lang/Runnable;)V
+    //   94: invokestatic 176	com/tencent/mm/sdk/platformtools/ar:f	(Ljava/lang/Runnable;)V
     //   97: sipush 26254
     //   100: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   103: goto -33 -> 70
@@ -173,10 +173,10 @@ public final class a
     //   85	103	106	finally
   }
   
-  public final void Zv()
+  public final void ZE()
   {
     AppMethodBeat.i(26255);
-    Zu();
+    ZD();
     AppMethodBeat.o(26255);
   }
   
@@ -191,7 +191,7 @@ public final class a
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(26253);
-    am localam = IT(paramInt).contact;
+    an localan = Jr(paramInt).contact;
     View localView;
     Object localObject2;
     float f;
@@ -200,9 +200,9 @@ public final class a
       localView = View.inflate(this.context, 2131493649, null);
       paramViewGroup = new a(localView);
       localView.setTag(paramViewGroup);
-      localObject1 = paramViewGroup.uXb;
-      localObject2 = localam.field_username;
-      f = com.tencent.mm.pluginsdk.ui.a.nZg;
+      localObject1 = paramViewGroup.viP;
+      localObject2 = localan.field_username;
+      f = com.tencent.mm.pluginsdk.ui.a.oeP;
       paramView = ((com.tencent.mm.pluginsdk.ui.a.a)localObject1).getDrawable();
       if ((paramView == null) || (!(paramView instanceof com.tencent.mm.pluginsdk.ui.c))) {
         break label361;
@@ -212,24 +212,24 @@ public final class a
       paramView.setTag((String)localObject2);
       ((com.tencent.mm.pluginsdk.ui.a.a)localObject1).setImageDrawable(paramView);
       ((com.tencent.mm.pluginsdk.ui.a.a)localObject1).doInvalidate();
-      if (localam.field_verifyFlag == 0) {
+      if (localan.field_verifyFlag == 0) {
         break label387;
       }
-      paramView = as.a.hFQ.os(localam.field_verifyFlag);
+      paramView = au.a.hII.ov(localan.field_verifyFlag);
       if (paramView == null) {
         break label376;
       }
-      paramView = o.Eg(paramView);
-      paramViewGroup.uXb.setMaskBitmap(paramView);
+      paramView = o.EI(paramView);
+      paramViewGroup.viP.setMaskBitmap(paramView);
       label157:
-      if (localam.field_deleteFlag != 1) {
+      if (localan.field_deleteFlag != 1) {
         break label398;
       }
-      paramViewGroup.uXb.setNickNameTextColor(uWX);
+      paramViewGroup.viP.setNickNameTextColor(viL);
       label176:
-      paramViewGroup.uXb.updateTextColors();
-      paramViewGroup.uXb.setMergeCallback(null);
-      paramView = localam.InJ;
+      paramViewGroup.viP.updateTextColors();
+      paramViewGroup.viP.setMergeCallback(null);
+      paramView = localan.IHU;
       if (paramView != null) {
         break label417;
       }
@@ -237,7 +237,7 @@ public final class a
     try
     {
       localObject2 = this.context;
-      localObject1 = v.zf(localam.field_username);
+      localObject1 = w.zP(localan.field_username);
       paramView = (View)localObject1;
       if ("".length() > 0)
       {
@@ -252,7 +252,7 @@ public final class a
           paramView = paramView.toString();
         }
       }
-      paramView = k.b((Context)localObject2, paramView, paramViewGroup.uXb.getNickNameSize());
+      paramView = k.b((Context)localObject2, paramView, paramViewGroup.viP.getNickNameSize());
     }
     catch (Exception paramView)
     {
@@ -265,11 +265,11 @@ public final class a
     if (paramView == null) {
       localObject1 = "";
     }
-    paramViewGroup.uXb.setName((CharSequence)localObject1);
-    localam.InJ = ((CharSequence)localObject1);
+    paramViewGroup.viP.setName((CharSequence)localObject1);
+    localan.IHU = ((CharSequence)localObject1);
     for (;;)
     {
-      paramViewGroup.uXb.updatePositionFlag();
+      paramViewGroup.viP.updatePositionFlag();
       AppMethodBeat.o(26253);
       return localView;
       paramViewGroup = (a)paramView.getTag();
@@ -279,23 +279,23 @@ public final class a
       paramView = new com.tencent.mm.pluginsdk.ui.c((String)localObject2, f);
       break label97;
       label376:
-      paramViewGroup.uXb.setMaskBitmap(null);
+      paramViewGroup.viP.setMaskBitmap(null);
       break label157;
       label387:
-      paramViewGroup.uXb.setMaskBitmap(null);
+      paramViewGroup.viP.setMaskBitmap(null);
       break label157;
       label398:
-      paramViewGroup.uXb.setNickNameTextColor(uWW);
+      paramViewGroup.viP.setNickNameTextColor(viK);
       break label176;
       label417:
-      paramViewGroup.uXb.setName(paramView);
+      paramViewGroup.viP.setName(paramView);
     }
   }
   
   public final void j(Cursor paramCursor)
   {
     AppMethodBeat.i(26257);
-    det();
+    dhl();
     setCursor(paramCursor);
     notifyDataSetChanged();
     AppMethodBeat.o(26257);
@@ -303,12 +303,12 @@ public final class a
   
   protected static final class a
   {
-    public AddressView uXb;
+    public AddressView viP;
     
     public a(View paramView)
     {
       AppMethodBeat.i(26249);
-      this.uXb = ((AddressView)paramView.findViewById(2131302653));
+      this.viP = ((AddressView)paramView.findViewById(2131302653));
       AppMethodBeat.o(26249);
     }
   }

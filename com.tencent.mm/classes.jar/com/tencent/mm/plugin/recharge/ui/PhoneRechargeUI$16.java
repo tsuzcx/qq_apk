@@ -6,7 +6,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 
 final class PhoneRechargeUI$16
   implements View.OnClickListener
@@ -18,12 +18,12 @@ final class PhoneRechargeUI$16
     AppMethodBeat.i(67178);
     com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
     localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/recharge/ui/PhoneRechargeUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-    if (com.tencent.mm.pluginsdk.permission.b.a(this.xoG.getContext(), "android.permission.READ_CONTACTS", 48, null, null))
+    a.b("com/tencent/mm/plugin/recharge/ui/PhoneRechargeUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+    if (com.tencent.mm.pluginsdk.permission.b.a(this.xED.getContext(), "android.permission.READ_CONTACTS", 48, null, null))
     {
       paramView = new Intent("android.intent.action.PICK", ContactsContract.Contacts.CONTENT_URI);
-      if (bt.aj(this.xoG, paramView)) {
-        this.xoG.startActivityForResult(paramView, 1);
+      if (bu.aj(this.xED, paramView)) {
+        this.xED.startActivityForResult(paramView, 1);
       }
     }
     a.a(this, "com/tencent/mm/plugin/recharge/ui/PhoneRechargeUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");

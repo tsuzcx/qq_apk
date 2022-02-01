@@ -12,9 +12,9 @@ import com.tencent.matrix.a.b.f;
 public final class a
   extends com.tencent.matrix.e.b
 {
-  private com.tencent.matrix.a.b.c cBA;
-  private boolean cBB;
-  public final com.tencent.matrix.a.a.a cBz;
+  public final com.tencent.matrix.a.a.a cCg;
+  private com.tencent.matrix.a.b.c cCh;
+  private boolean cCi;
   
   public final void destroy()
   {
@@ -31,7 +31,7 @@ public final class a
     super.init(paramApplication, paramc);
     com.tencent.matrix.a.d.a.setPackageName(paramApplication);
     com.tencent.matrix.a.d.a.setProcessName(com.tencent.matrix.g.d.getProcessName(paramApplication));
-    this.cBA = new com.tencent.matrix.a.b.c(this);
+    this.cCh = new com.tencent.matrix.a.b.c(this);
   }
   
   public final void onForeground(boolean paramBoolean)
@@ -40,9 +40,9 @@ public final class a
     {
       com.tencent.matrix.g.c.i("Matrix.BatteryCanaryPlugin", "onForeground:".concat(String.valueOf(paramBoolean)), new Object[0]);
       super.onForeground(paramBoolean);
-      com.tencent.matrix.a.b.c localc = this.cBA;
-      if (localc.cCh != null) {
-        localc.cCh.cBJ = paramBoolean;
+      com.tencent.matrix.a.b.c localc = this.cCh;
+      if (localc.cCO != null) {
+        localc.cCO.cCq = paramBoolean;
       }
       return;
     }
@@ -58,32 +58,32 @@ public final class a
     Object localObject1;
     try
     {
-      if ((isPluginStarted()) || (this.cBB)) {
+      if ((isPluginStarted()) || (this.cCi)) {
         break label178;
       }
       super.start();
-      com.tencent.matrix.a.b.c localc1 = this.cBA;
-      localObject1 = localc1.cCe;
+      com.tencent.matrix.a.b.c localc1 = this.cCh;
+      localObject1 = localc1.cCL;
       if (!((com.tencent.matrix.a.b.d)localObject1).started)
       {
-        ((com.tencent.matrix.a.b.d)localObject1).cCw = new Handler(com.tencent.matrix.g.b.Jt().getLooper());
+        ((com.tencent.matrix.a.b.d)localObject1).cDd = new Handler(com.tencent.matrix.g.b.JB().getLooper());
         ((com.tencent.matrix.a.b.d)localObject1).started = true;
       }
-      localObject1 = localc1.cBz;
+      localObject1 = localc1.cCg;
       if (localObject1 == null) {
         throw new RuntimeException("batteryConfig is null");
       }
     }
     finally {}
-    if (((com.tencent.matrix.a.a.a)localObject1).HT())
+    if (((com.tencent.matrix.a.a.a)localObject1).Ib())
     {
-      localc2.cCg = new f(localc2, (com.tencent.matrix.a.a.a)localObject1, new c.3(localc2));
+      localc2.cCN = new f(localc2, (com.tencent.matrix.a.a.a)localObject1, new c.3(localc2));
       e.a(localc2);
     }
-    if (((com.tencent.matrix.a.a.a)localObject1).cBC.get(a.a.LCO.name(), true))
+    if (((com.tencent.matrix.a.a.a)localObject1).cCj.get(a.a.LZS.name(), true))
     {
-      localc2.cCh = new com.tencent.matrix.a.b.a(localc2, localc2.cBz);
-      localc2.cCe.q(new c.4(localc2));
+      localc2.cCO = new com.tencent.matrix.a.b.a(localc2, localc2.cCg);
+      localc2.cCL.q(new c.4(localc2));
       com.tencent.matrix.a.b.b.a(localc2);
     }
     for (;;)
@@ -107,14 +107,14 @@ public final class a
     //   1: monitorenter
     //   2: aload_0
     //   3: iconst_0
-    //   4: putfield 89	com/tencent/matrix/a/a:cBB	Z
+    //   4: putfield 89	com/tencent/matrix/a/a:cCi	Z
     //   7: aload_0
     //   8: invokevirtual 87	com/tencent/matrix/a/a:isPluginStarted	()Z
     //   11: ifeq +59 -> 70
     //   14: aload_0
     //   15: invokespecial 198	com/tencent/matrix/e/b:stop	()V
     //   18: aload_0
-    //   19: getfield 47	com/tencent/matrix/a/a:cBA	Lcom/tencent/matrix/a/b/c;
+    //   19: getfield 47	com/tencent/matrix/a/a:cCh	Lcom/tencent/matrix/a/b/c;
     //   22: astore_1
     //   23: aload_1
     //   24: monitorenter
@@ -128,13 +128,13 @@ public final class a
     //   36: aload_1
     //   37: invokestatic 203	com/tencent/matrix/a/b/b:b	(Lcom/tencent/matrix/a/b/b$b;)V
     //   40: aload_1
-    //   41: getfield 95	com/tencent/matrix/a/b/c:cCe	Lcom/tencent/matrix/a/b/d;
+    //   41: getfield 95	com/tencent/matrix/a/b/c:cCL	Lcom/tencent/matrix/a/b/d;
     //   44: astore_2
     //   45: aload_2
     //   46: getfield 100	com/tencent/matrix/a/b/d:started	Z
     //   49: ifeq +16 -> 65
     //   52: aload_2
-    //   53: getfield 121	com/tencent/matrix/a/b/d:cCw	Landroid/os/Handler;
+    //   53: getfield 121	com/tencent/matrix/a/b/d:cDd	Landroid/os/Handler;
     //   56: aconst_null
     //   57: invokevirtual 207	android/os/Handler:removeCallbacksAndMessages	(Ljava/lang/Object;)V
     //   60: aload_2
@@ -142,7 +142,7 @@ public final class a
     //   62: putfield 100	com/tencent/matrix/a/b/d:started	Z
     //   65: aload_1
     //   66: aconst_null
-    //   67: putfield 148	com/tencent/matrix/a/b/c:cCg	Lcom/tencent/matrix/a/b/f;
+    //   67: putfield 148	com/tencent/matrix/a/b/c:cCN	Lcom/tencent/matrix/a/b/f;
     //   70: aload_0
     //   71: monitorexit
     //   72: return

@@ -4,12 +4,12 @@ import android.text.SpannableString;
 
 public final class c
 {
-  final SpannableString lDw;
+  final SpannableString lHV;
   final int mState;
   
   public c(SpannableString paramSpannableString, int paramInt)
   {
-    this.lDw = paramSpannableString;
+    this.lHV = paramSpannableString;
     this.mState = paramInt;
   }
 }

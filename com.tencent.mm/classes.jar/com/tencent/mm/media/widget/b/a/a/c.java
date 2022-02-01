@@ -6,17 +6,17 @@ import d.g.b.p;
 import d.l;
 import java.lang.reflect.Constructor;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/media/widget/camera2/effect/request/WCRequestKeyCreator;", "", "()V", "TAG", "", "requestConstructor", "Ljava/lang/reflect/Constructor;", "Landroid/hardware/camera2/CaptureRequest$Key;", "resultConstructor", "Landroid/hardware/camera2/CaptureResult$Key;", "requestKey", "T", "name", "klass", "Ljava/lang/Class;", "resultKey", "plugin-mediaeditor_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/media/widget/camera2/effect/request/WCRequestKeyCreator;", "", "()V", "TAG", "", "requestConstructor", "Ljava/lang/reflect/Constructor;", "Landroid/hardware/camera2/CaptureRequest$Key;", "resultConstructor", "Landroid/hardware/camera2/CaptureResult$Key;", "requestKey", "T", "name", "klass", "Ljava/lang/Class;", "resultKey", "plugin-mediaeditor_release"})
 public final class c
 {
   private static final String TAG = "MicroMsg.WCRequestKeyCreator";
-  private static Constructor<CaptureRequest.Key<?>> hsM;
-  public static final c hsN;
+  private static Constructor<CaptureRequest.Key<?>> hvA;
+  public static final c hvB;
   
   static
   {
     AppMethodBeat.i(94202);
-    hsN = new c();
+    hvB = new c();
     TAG = "MicroMsg.WCRequestKeyCreator";
     AppMethodBeat.o(94202);
   }
@@ -29,20 +29,20 @@ public final class c
     try
     {
       Constructor localConstructor;
-      if (hsM == null)
+      if (hvA == null)
       {
         localConstructor = CaptureRequest.Key.class.getConstructor(new Class[] { String.class, paramClass.getClass() });
-        hsM = localConstructor;
+        hvA = localConstructor;
         if (localConstructor == null) {
-          p.gfZ();
+          p.gkB();
         }
         localConstructor.setAccessible(true);
       }
       try
       {
-        localConstructor = hsM;
+        localConstructor = hvA;
         if (localConstructor == null) {
-          p.gfZ();
+          p.gkB();
         }
         paramString = (CaptureRequest.Key)localConstructor.newInstance(new Object[] { paramString, paramClass });
         AppMethodBeat.o(94201);

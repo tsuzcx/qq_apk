@@ -1,12 +1,12 @@
 package com.tencent.mm.plugin.patmsg.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.k.b;
+import com.tencent.mm.ah.f;
+import com.tencent.mm.ah.k.b;
 import com.tencent.mm.i.d;
-import com.tencent.mm.protocal.protobuf.cif;
-import com.tencent.mm.protocal.protobuf.cig;
-import com.tencent.mm.sdk.platformtools.bw;
+import com.tencent.mm.protocal.protobuf.ciz;
+import com.tencent.mm.protocal.protobuf.cja;
+import com.tencent.mm.sdk.platformtools.bx;
 import com.tencent.mm.util.e;
 import com.tencent.mm.util.e.a;
 import java.util.Iterator;
@@ -16,59 +16,59 @@ import java.util.Map;
 public class a
   extends f
 {
-  public cif wFH;
+  public ciz wVs;
   
   public a()
   {
-    AppMethodBeat.i(215706);
-    this.wFH = new cif();
-    AppMethodBeat.o(215706);
+    AppMethodBeat.i(220340);
+    this.wVs = new ciz();
+    AppMethodBeat.o(220340);
   }
   
   public final void a(StringBuilder paramStringBuilder, k.b paramb, String paramString, d paramd, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(215708);
-    paramString = this.wFH;
+    AppMethodBeat.i(220342);
+    paramString = this.wVs;
     paramb = new StringBuilder();
     paramb.append("<patMsg>");
-    paramb.append("<chatUser>").append(paramString.fFR).append("</chatUser>");
+    paramb.append("<chatUser>").append(paramString.fHV).append("</chatUser>");
     paramb.append("<records>");
-    paramb.append("<recordNum>").append(paramString.vox.size()).append("</recordNum>");
-    paramString = paramString.vox.iterator();
+    paramb.append("<recordNum>").append(paramString.vAC.size()).append("</recordNum>");
+    paramString = paramString.vAC.iterator();
     while (paramString.hasNext())
     {
-      paramd = (cig)paramString.next();
+      paramd = (cja)paramString.next();
       paramb.append("<record>");
-      paramb.append("<fromUser>").append(paramd.dyU).append("</fromUser>");
-      paramb.append("<pattedUser>").append(paramd.Hcd).append("</pattedUser>");
-      paramb.append("<template>").append(bw.aRy(paramd.hEb)).append("</template>");
+      paramb.append("<fromUser>").append(paramd.dzZ).append("</fromUser>");
+      paramb.append("<pattedUser>").append(paramd.HvD).append("</pattedUser>");
+      paramb.append("<template>").append(bx.aSV(paramd.hGT)).append("</template>");
       if ((paramd instanceof e.a)) {
-        paramb.append("<templete>").append(bw.aRy(((e.a)paramd).LgL)).append("</templete>");
+        paramb.append("<templete>").append(bx.aSV(((e.a)paramd).LDn)).append("</templete>");
       }
       paramb.append("<createTime>").append(paramd.createTime).append("</createTime>");
-      paramb.append("<readStatus>").append(paramd.Hce).append("</readStatus>");
-      paramb.append("<svrId>").append(paramd.nxr).append("</svrId>");
+      paramb.append("<readStatus>").append(paramd.HvE).append("</readStatus>");
+      paramb.append("<svrId>").append(paramd.nCM).append("</svrId>");
       paramb.append("</record>");
     }
     paramb.append("</records>");
     paramb.append("</patMsg>");
     paramStringBuilder.append(paramb.toString());
-    AppMethodBeat.o(215708);
+    AppMethodBeat.o(220342);
   }
   
   public final void a(Map<String, String> paramMap, k.b paramb)
   {
-    AppMethodBeat.i(215709);
-    this.wFH = e.Q(".msg.appmsg", paramMap);
-    AppMethodBeat.o(215709);
+    AppMethodBeat.i(220343);
+    this.wVs = e.R(".msg.appmsg", paramMap);
+    AppMethodBeat.o(220343);
   }
   
-  public final f aot()
+  public final f aoI()
   {
-    AppMethodBeat.i(215707);
+    AppMethodBeat.i(220341);
     a locala = new a();
-    locala.wFH = this.wFH;
-    AppMethodBeat.o(215707);
+    locala.wVs = this.wVs;
+    AppMethodBeat.o(220341);
     return locala;
   }
 }

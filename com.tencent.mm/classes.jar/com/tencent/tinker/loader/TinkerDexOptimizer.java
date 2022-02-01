@@ -37,12 +37,12 @@ public final class TinkerDexOptimizer
   private static final String INTERPRET_LOCK_FILE_NAME = "interpret.lock";
   private static final String TAG = "Tinker.ParallelDex";
   
-  public static boolean optimizeAll(Context paramContext, Collection<File> paramCollection, File paramFile, ResultCallback paramResultCallback)
+  public static boolean optimizeAll(Context paramContext, Collection<File> paramCollection, File paramFile, boolean paramBoolean, ResultCallback paramResultCallback)
   {
-    return optimizeAll(paramContext, paramCollection, paramFile, false, null, paramResultCallback);
+    return optimizeAll(paramContext, paramCollection, paramFile, false, paramBoolean, null, paramResultCallback);
   }
   
-  public static boolean optimizeAll(Context paramContext, Collection<File> paramCollection, File paramFile, boolean paramBoolean, String paramString, ResultCallback paramResultCallback)
+  public static boolean optimizeAll(Context paramContext, Collection<File> paramCollection, File paramFile, boolean paramBoolean1, boolean paramBoolean2, String paramString, ResultCallback paramResultCallback)
   {
     paramCollection = new ArrayList(paramCollection);
     Collections.sort(paramCollection, new Comparator()
@@ -62,7 +62,7 @@ public final class TinkerDexOptimizer
     });
     paramCollection = paramCollection.iterator();
     while (paramCollection.hasNext()) {
-      if (!new OptimizeWorker(paramContext, (File)paramCollection.next(), paramFile, paramBoolean, paramString, paramResultCallback).run()) {
+      if (!new OptimizeWorker(paramContext, (File)paramCollection.next(), paramFile, paramBoolean1, paramBoolean2, paramString, paramResultCallback).run()) {
         return false;
       }
     }
@@ -78,14 +78,16 @@ public final class TinkerDexOptimizer
     private final Context context;
     private final File dexFile;
     private final File optimizedDir;
+    private final boolean useDLCOnAPI29AndAbove;
     private final boolean useInterpretMode;
     
-    OptimizeWorker(Context paramContext, File paramFile1, File paramFile2, boolean paramBoolean, String paramString, TinkerDexOptimizer.ResultCallback paramResultCallback)
+    OptimizeWorker(Context paramContext, File paramFile1, File paramFile2, boolean paramBoolean1, boolean paramBoolean2, String paramString, TinkerDexOptimizer.ResultCallback paramResultCallback)
     {
       this.context = paramContext;
       this.dexFile = paramFile1;
       this.optimizedDir = paramFile2;
-      this.useInterpretMode = paramBoolean;
+      this.useInterpretMode = paramBoolean1;
+      this.useDLCOnAPI29AndAbove = paramBoolean2;
       this.callback = paramResultCallback;
       targetISA = paramString;
     }
@@ -289,94 +291,94 @@ public final class TinkerDexOptimizer
       // Byte code:
       //   0: iconst_1
       //   1: istore 6
-      //   3: invokestatic 325	android/os/Binder:clearCallingIdentity	()J
+      //   3: invokestatic 328	android/os/Binder:clearCallingIdentity	()J
       //   6: lstore 7
-      //   8: invokestatic 331	android/os/Parcel:obtain	()Landroid/os/Parcel;
+      //   8: invokestatic 334	android/os/Parcel:obtain	()Landroid/os/Parcel;
       //   11: astore 9
-      //   13: invokestatic 331	android/os/Parcel:obtain	()Landroid/os/Parcel;
+      //   13: invokestatic 334	android/os/Parcel:obtain	()Landroid/os/Parcel;
       //   16: astore 10
       //   18: aload 9
       //   20: ldc 17
-      //   22: invokevirtual 334	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
+      //   22: invokevirtual 337	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
       //   25: aload 9
       //   27: aload_2
-      //   28: invokevirtual 337	android/os/Parcel:writeString	(Ljava/lang/String;)V
+      //   28: invokevirtual 340	android/os/Parcel:writeString	(Ljava/lang/String;)V
       //   31: aload 9
       //   33: aload_3
-      //   34: invokevirtual 337	android/os/Parcel:writeString	(Ljava/lang/String;)V
+      //   34: invokevirtual 340	android/os/Parcel:writeString	(Ljava/lang/String;)V
       //   37: iload 4
       //   39: ifeq +78 -> 117
       //   42: iconst_1
       //   43: istore 5
       //   45: aload 9
       //   47: iload 5
-      //   49: invokevirtual 341	android/os/Parcel:writeInt	(I)V
+      //   49: invokevirtual 344	android/os/Parcel:writeInt	(I)V
       //   52: aload_0
       //   53: iload_1
       //   54: aload 9
       //   56: aload 10
       //   58: iconst_0
-      //   59: invokeinterface 345 5 0
+      //   59: invokeinterface 348 5 0
       //   64: ifne +59 -> 123
-      //   67: new 275	java/lang/IllegalStateException
+      //   67: new 278	java/lang/IllegalStateException
       //   70: dup
-      //   71: ldc_w 347
-      //   74: invokespecial 291	java/lang/IllegalStateException:<init>	(Ljava/lang/String;)V
+      //   71: ldc_w 350
+      //   74: invokespecial 294	java/lang/IllegalStateException:<init>	(Ljava/lang/String;)V
       //   77: athrow
       //   78: astore_0
-      //   79: new 275	java/lang/IllegalStateException
+      //   79: new 278	java/lang/IllegalStateException
       //   82: dup
       //   83: aload_0
-      //   84: invokespecial 350	java/lang/IllegalStateException:<init>	(Ljava/lang/Throwable;)V
+      //   84: invokespecial 353	java/lang/IllegalStateException:<init>	(Ljava/lang/Throwable;)V
       //   87: athrow
       //   88: astore_0
       //   89: aload 10
       //   91: astore_2
       //   92: lload 7
-      //   94: invokestatic 353	android/os/Binder:restoreCallingIdentity	(J)V
+      //   94: invokestatic 356	android/os/Binder:restoreCallingIdentity	(J)V
       //   97: aload_2
       //   98: ifnull +7 -> 105
       //   101: aload_2
-      //   102: invokevirtual 356	android/os/Parcel:recycle	()V
+      //   102: invokevirtual 359	android/os/Parcel:recycle	()V
       //   105: aload 9
       //   107: ifnull +8 -> 115
       //   110: aload 9
-      //   112: invokevirtual 356	android/os/Parcel:recycle	()V
+      //   112: invokevirtual 359	android/os/Parcel:recycle	()V
       //   115: aload_0
       //   116: athrow
       //   117: iconst_0
       //   118: istore 5
       //   120: goto -75 -> 45
       //   123: aload 10
-      //   125: invokevirtual 359	android/os/Parcel:readException	()V
+      //   125: invokevirtual 362	android/os/Parcel:readException	()V
       //   128: aload 10
-      //   130: invokevirtual 362	android/os/Parcel:readInt	()I
+      //   130: invokevirtual 365	android/os/Parcel:readInt	()I
       //   133: ifeq +59 -> 192
       //   136: iload 6
       //   138: istore_1
       //   139: iload_1
       //   140: ifne +16 -> 156
-      //   143: ldc_w 263
-      //   146: ldc_w 364
+      //   143: ldc_w 266
+      //   146: ldc_w 367
       //   149: iconst_0
       //   150: anewarray 4	java/lang/Object
-      //   153: invokestatic 271	com/tencent/tinker/loader/shareutil/ShareTinkerLog:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+      //   153: invokestatic 274	com/tencent/tinker/loader/shareutil/ShareTinkerLog:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
       //   156: lload 7
-      //   158: invokestatic 353	android/os/Binder:restoreCallingIdentity	(J)V
+      //   158: invokestatic 356	android/os/Binder:restoreCallingIdentity	(J)V
       //   161: aload 10
       //   163: ifnull +8 -> 171
       //   166: aload 10
-      //   168: invokevirtual 356	android/os/Parcel:recycle	()V
+      //   168: invokevirtual 359	android/os/Parcel:recycle	()V
       //   171: aload 9
       //   173: ifnull +8 -> 181
       //   176: aload 9
-      //   178: invokevirtual 356	android/os/Parcel:recycle	()V
+      //   178: invokevirtual 359	android/os/Parcel:recycle	()V
       //   181: return
       //   182: astore_0
-      //   183: new 275	java/lang/IllegalStateException
+      //   183: new 278	java/lang/IllegalStateException
       //   186: dup
       //   187: aload_0
-      //   188: invokespecial 350	java/lang/IllegalStateException:<init>	(Ljava/lang/Throwable;)V
+      //   188: invokespecial 353	java/lang/IllegalStateException:<init>	(Ljava/lang/Throwable;)V
       //   191: athrow
       //   192: iconst_0
       //   193: istore_1
@@ -441,27 +443,27 @@ public final class TinkerDexOptimizer
     {
       // Byte code:
       //   0: aload_0
-      //   1: invokestatic 393	com/tencent/tinker/loader/TinkerDexOptimizer$OptimizeWorker:getSynchronizedPackageManager	(Landroid/content/Context;)Landroid/content/pm/PackageManager;
+      //   1: invokestatic 396	com/tencent/tinker/loader/TinkerDexOptimizer$OptimizeWorker:getSynchronizedPackageManager	(Landroid/content/Context;)Landroid/content/pm/PackageManager;
       //   4: astore 4
       //   6: aload 4
-      //   8: invokevirtual 90	java/lang/Object:getClass	()Ljava/lang/Class;
-      //   11: ldc_w 394
+      //   8: invokevirtual 93	java/lang/Object:getClass	()Ljava/lang/Class;
+      //   11: ldc_w 397
       //   14: iconst_2
-      //   15: anewarray 56	java/lang/Class
+      //   15: anewarray 59	java/lang/Class
       //   18: dup
       //   19: iconst_0
-      //   20: ldc 64
+      //   20: ldc 67
       //   22: aastore
       //   23: dup
       //   24: iconst_1
-      //   25: ldc_w 396
+      //   25: ldc_w 399
       //   28: aastore
-      //   29: invokestatic 70	com/tencent/tinker/loader/shareutil/ShareReflectUtil:findMethod	(Ljava/lang/Class;Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
+      //   29: invokestatic 73	com/tencent/tinker/loader/shareutil/ShareReflectUtil:findMethod	(Ljava/lang/Class;Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
       //   32: astore 5
-      //   34: new 135	java/io/File
+      //   34: new 138	java/io/File
       //   37: dup
       //   38: aload_2
-      //   39: invokespecial 138	java/io/File:<init>	(Ljava/lang/String;)V
+      //   39: invokespecial 141	java/io/File:<init>	(Ljava/lang/String;)V
       //   42: astore_2
       //   43: iconst_0
       //   44: istore_3
@@ -482,14 +484,14 @@ public final class TinkerDexOptimizer
       //   65: iconst_1
       //   66: new 9	com/tencent/tinker/loader/TinkerDexOptimizer$OptimizeWorker$1
       //   69: dup
-      //   70: invokespecial 397	com/tencent/tinker/loader/TinkerDexOptimizer$OptimizeWorker$1:<init>	()V
+      //   70: invokespecial 400	com/tencent/tinker/loader/TinkerDexOptimizer$OptimizeWorker$1:<init>	()V
       //   73: aastore
-      //   74: invokevirtual 78	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
+      //   74: invokevirtual 81	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
       //   77: pop
-      //   78: ldc2_w 298
-      //   81: invokestatic 305	android/os/SystemClock:sleep	(J)V
+      //   78: ldc2_w 301
+      //   81: invokestatic 308	android/os/SystemClock:sleep	(J)V
       //   84: aload_2
-      //   85: invokevirtual 142	java/io/File:exists	()Z
+      //   85: invokevirtual 145	java/io/File:exists	()Z
       //   88: ifne +78 -> 166
       //   91: iload_3
       //   92: iconst_1
@@ -502,28 +504,28 @@ public final class TinkerDexOptimizer
       //   103: aload_0
       //   104: athrow
       //   105: aload_2
-      //   106: invokevirtual 142	java/io/File:exists	()Z
+      //   106: invokevirtual 145	java/io/File:exists	()Z
       //   109: ifne +50 -> 159
-      //   112: new 275	java/lang/IllegalStateException
+      //   112: new 278	java/lang/IllegalStateException
       //   115: dup
-      //   116: new 197	java/lang/StringBuilder
+      //   116: new 200	java/lang/StringBuilder
       //   119: dup
-      //   120: ldc_w 310
-      //   123: invokespecial 200	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+      //   120: ldc_w 313
+      //   123: invokespecial 203	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
       //   126: aload_2
-      //   127: invokevirtual 313	java/io/File:getAbsolutePath	()Ljava/lang/String;
-      //   130: invokevirtual 204	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-      //   133: ldc_w 315
-      //   136: invokevirtual 204	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-      //   139: invokevirtual 208	java/lang/StringBuilder:toString	()Ljava/lang/String;
-      //   142: invokespecial 291	java/lang/IllegalStateException:<init>	(Ljava/lang/String;)V
+      //   127: invokevirtual 316	java/io/File:getAbsolutePath	()Ljava/lang/String;
+      //   130: invokevirtual 207	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      //   133: ldc_w 318
+      //   136: invokevirtual 207	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      //   139: invokevirtual 211	java/lang/StringBuilder:toString	()Ljava/lang/String;
+      //   142: invokespecial 294	java/lang/IllegalStateException:<init>	(Ljava/lang/String;)V
       //   145: athrow
       //   146: astore_0
-      //   147: new 275	java/lang/IllegalStateException
+      //   147: new 278	java/lang/IllegalStateException
       //   150: dup
-      //   151: ldc_w 399
+      //   151: ldc_w 402
       //   154: aload_0
-      //   155: invokespecial 308	java/lang/IllegalStateException:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
+      //   155: invokespecial 311	java/lang/IllegalStateException:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
       //   158: athrow
       //   159: iload_3
       //   160: iconst_1
@@ -599,7 +601,7 @@ public final class TinkerDexOptimizer
           ShareTinkerLog.printErrStackTrace("Tinker.ParallelDex", localThrowable, "[-] Fail to call performDexOptSecondary.", new Object[0]);
           i = 0;
         }
-        ShareTinkerLog.w("Tinker.ParallelDex", "Bg-dexopt was triggered, but no odex file was generated.", new Object[0]);
+        throw new IllegalStateException("Bg-dexopt was triggered, but no odex file was generated.");
       }
     }
     
@@ -631,7 +633,7 @@ public final class TinkerDexOptimizer
           String str;
           ShareTinkerLog.e("Tinker.ParallelDex", "Failed to optimize dex: " + this.dexFile.getAbsolutePath(), new Object[] { localThrowable });
           if (this.callback == null) {
-            break label314;
+            break label318;
           }
           this.callback.onFailed(this.dexFile, this.optimizedDir, localThrowable);
           return false;
@@ -639,17 +641,17 @@ public final class TinkerDexOptimizer
           continue;
         }
         if (this.callback == null) {
-          break label314;
+          break label318;
         }
         this.callback.onSuccess(this.dexFile, this.optimizedDir, new File(str));
-        break label314;
+        break label318;
         if ((Build.VERSION.SDK_INT < 26) && ((Build.VERSION.SDK_INT < 25) || (Build.VERSION.PREVIEW_SDK_INT == 0))) {
           continue;
         }
-        NewClassLoaderInjector.triggerDex2Oat(this.context, this.optimizedDir, new String[] { this.dexFile.getAbsolutePath() });
+        NewClassLoaderInjector.triggerDex2Oat(this.context, this.optimizedDir, this.useDLCOnAPI29AndAbove, new String[] { this.dexFile.getAbsolutePath() });
         triggerPMDexOptOnDemand(this.context, this.dexFile.getAbsolutePath(), str);
       }
-      label314:
+      label318:
       return true;
     }
   }

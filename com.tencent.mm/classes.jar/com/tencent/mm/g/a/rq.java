@@ -2,11 +2,12 @@ package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
+import java.util.ArrayList;
 
 public final class rq
   extends b
 {
-  public a dGm;
+  public a dHp;
   
   public rq()
   {
@@ -15,21 +16,22 @@ public final class rq
   
   private rq(byte paramByte)
   {
-    AppMethodBeat.i(116046);
-    this.dGm = new a();
-    this.IbR = false;
+    AppMethodBeat.i(125629);
+    this.dHp = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(116046);
+    AppMethodBeat.o(125629);
   }
   
   public static final class a
   {
-    public int dGn = -1;
+    public ArrayList dHq;
+    public String dHr;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.a.rq
  * JD-Core Version:    0.7.0.1
  */

@@ -15,9 +15,9 @@ public abstract interface t
   
   public abstract boolean a(f paramf, String... paramVarArgs);
   
-  public abstract List<f> cvj();
+  public abstract List<f> cwK();
   
-  public abstract f vD(long paramLong);
+  public abstract f vT(long paramLong);
 }
 
 

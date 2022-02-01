@@ -1,24 +1,24 @@
 package com.tencent.mm.plugin.finder.cgi.oplog;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.cgi.at;
-import com.tencent.mm.plugin.finder.cgi.at.a;
-import com.tencent.mm.protocal.protobuf.app;
+import com.tencent.mm.plugin.finder.cgi.au;
+import com.tencent.mm.plugin.finder.cgi.au.a;
+import com.tencent.mm.protocal.protobuf.aqc;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/cgi/oplog/FinderModMessageSetting;", "Lcom/tencent/mm/plugin/findersdk/api/IFinderMessageMuteSetting;", "Lcom/tencent/mm/plugin/finder/cgi/oplog/FinderOpLogCore;", "Lcom/tencent/mm/protocal/protobuf/FinderModMsgMuteSetting;", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "convertToCmdBuf", "Lcom/tencent/mm/protobuf/ByteString;", "cmdBufItem", "getCmdId", "", "handleUpdateResult", "", "retCode", "modifyMessageMuteSetting", "ifOpen", "", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/cgi/oplog/FinderModMessageSetting;", "Lcom/tencent/mm/plugin/findersdk/api/IFinderMessageMuteSetting;", "Lcom/tencent/mm/plugin/finder/cgi/oplog/FinderOpLogCore;", "Lcom/tencent/mm/protocal/protobuf/FinderModMsgMuteSetting;", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "convertToCmdBuf", "Lcom/tencent/mm/protobuf/ByteString;", "cmdBufItem", "getCmdId", "", "handleUpdateResult", "", "retCode", "modifyMessageMuteSetting", "ifOpen", "", "plugin-finder_release"})
 public final class b
-  extends h<app>
+  extends h<aqc>
   implements com.tencent.mm.plugin.i.a.h
 {
   private final String TAG = "Finder.FinderModMessageSetting";
   
   public final int getCmdId()
   {
-    AppMethodBeat.i(201237);
-    at.a locala = at.rJK;
-    int i = at.cyE();
-    AppMethodBeat.o(201237);
+    AppMethodBeat.i(201664);
+    au.a locala = au.rRY;
+    int i = au.cAf();
+    AppMethodBeat.o(201664);
     return i;
   }
   
@@ -29,14 +29,14 @@ public final class b
   
   public final void lL(boolean paramBoolean)
   {
-    AppMethodBeat.i(201239);
-    app localapp = new app();
+    AppMethodBeat.i(201666);
+    aqc localaqc = new aqc();
     if (paramBoolean) {}
     for (int i = 1;; i = 0)
     {
-      localapp.opType = i;
-      a(localapp, null);
-      AppMethodBeat.o(201239);
+      localaqc.opType = i;
+      a(localaqc, null);
+      AppMethodBeat.o(201666);
       return;
     }
   }

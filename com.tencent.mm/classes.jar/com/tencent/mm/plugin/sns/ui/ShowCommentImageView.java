@@ -10,24 +10,24 @@ import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.lang.reflect.Field;
 
 public class ShowCommentImageView
   extends ImageView
 {
-  private static Bitmap zVY;
-  private static Bitmap zVZ;
-  private static Field zWa;
-  private static Field zWb;
-  private static boolean zWc = false;
-  private boolean zVX;
+  private static Bitmap Ang;
+  private static Bitmap Anh;
+  private static Field Ani;
+  private static Field Anj;
+  private static boolean Ank = false;
+  private boolean Anf;
   
   public ShowCommentImageView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(98260);
-    this.zVX = false;
+    this.Anf = false;
     init();
     AppMethodBeat.o(98260);
   }
@@ -36,18 +36,18 @@ public class ShowCommentImageView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(98261);
-    this.zVX = false;
+    this.Anf = false;
     init();
     AppMethodBeat.o(98261);
   }
   
-  private void ai(boolean paramBoolean1, boolean paramBoolean2)
+  private void ah(boolean paramBoolean1, boolean paramBoolean2)
   {
     AppMethodBeat.i(98265);
     if (paramBoolean1) {}
     try
     {
-      for (Field localField = zWa; paramBoolean2; localField = zWb)
+      for (Field localField = Ani; paramBoolean2; localField = Anj)
       {
         localField.set(this, null);
         AppMethodBeat.o(98265);
@@ -56,7 +56,7 @@ public class ShowCommentImageView
       Bitmap localBitmap;
       if (paramBoolean1)
       {
-        localBitmap = zVZ;
+        localBitmap = Anh;
         if (localBitmap != null) {
           break label103;
         }
@@ -64,20 +64,20 @@ public class ShowCommentImageView
       label103:
       for (paramBoolean2 = true;; paramBoolean2 = false)
       {
-        ad.d("MicroMsg.ShowCommentImageView", "setDrawingCache, autoScale: %s, cache==null: %s", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2) });
+        ae.d("MicroMsg.ShowCommentImageView", "setDrawingCache, autoScale: %s, cache==null: %s", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2) });
         if (localBitmap != null) {
           localField.set(this, localBitmap);
         }
         AppMethodBeat.o(98265);
         return;
-        localBitmap = zVY;
+        localBitmap = Ang;
         break;
       }
       return;
     }
     catch (Exception localException)
     {
-      ad.e("MicroMsg.ShowCommentImageView", "setDrawingCache error: %s", new Object[] { localException.getMessage() });
+      ae.e("MicroMsg.ShowCommentImageView", "setDrawingCache error: %s", new Object[] { localException.getMessage() });
       AppMethodBeat.o(98265);
     }
   }
@@ -85,33 +85,33 @@ public class ShowCommentImageView
   private static void init()
   {
     AppMethodBeat.i(98262);
-    if ((zWa != null) && (zWb != null))
+    if ((Ani != null) && (Anj != null))
     {
       AppMethodBeat.o(98262);
       return;
     }
     try
     {
-      zWa = View.class.getDeclaredField("mDrawingCache");
-      zWb = View.class.getDeclaredField("mUnscaledDrawingCache");
-      zWa.setAccessible(true);
-      zWb.setAccessible(true);
-      zWc = true;
+      Ani = View.class.getDeclaredField("mDrawingCache");
+      Anj = View.class.getDeclaredField("mUnscaledDrawingCache");
+      Ani.setAccessible(true);
+      Anj.setAccessible(true);
+      Ank = true;
       AppMethodBeat.o(98262);
       return;
     }
     catch (Exception localException)
     {
-      ad.e("MicroMsg.ShowCommentImageView", "init error: %s", new Object[] { localException.getMessage() });
-      zWc = false;
+      ae.e("MicroMsg.ShowCommentImageView", "init error: %s", new Object[] { localException.getMessage() });
+      Ank = false;
       AppMethodBeat.o(98262);
     }
   }
   
-  private boolean rL(boolean paramBoolean)
+  private boolean rS(boolean paramBoolean)
   {
     AppMethodBeat.i(98264);
-    if (!zWc)
+    if (!Ank)
     {
       AppMethodBeat.o(98264);
       return false;
@@ -119,7 +119,7 @@ public class ShowCommentImageView
     if (paramBoolean) {}
     try
     {
-      for (Field localField = zWa; (Bitmap)localField.get(this) != null; localField = zWb)
+      for (Field localField = Ani; (Bitmap)localField.get(this) != null; localField = Anj)
       {
         AppMethodBeat.o(98264);
         return true;
@@ -129,8 +129,8 @@ public class ShowCommentImageView
     }
     catch (Exception localException)
     {
-      ad.printErrStackTrace("MicroMsg.ShowCommentImageView", localException, "", new Object[0]);
-      ad.e("MicroMsg.ShowCommentImageView", "checkIfCanReuseDrawingCache error: %s", new Object[] { localException.getMessage() });
+      ae.printErrStackTrace("MicroMsg.ShowCommentImageView", localException, "", new Object[0]);
+      ae.e("MicroMsg.ShowCommentImageView", "checkIfCanReuseDrawingCache error: %s", new Object[] { localException.getMessage() });
       AppMethodBeat.o(98264);
     }
     return false;
@@ -140,14 +140,14 @@ public class ShowCommentImageView
   {
     AppMethodBeat.i(98263);
     Object localObject;
-    if (zWc) {
-      if (!this.zVX) {
-        if (!rL(paramBoolean))
+    if (Ank) {
+      if (!this.Anf) {
+        if (!rS(paramBoolean))
         {
           if (paramBoolean) {}
-          for (localObject = zVZ; (localObject != null) && (!((Bitmap)localObject).isRecycled()); localObject = zVY)
+          for (localObject = Anh; (localObject != null) && (!((Bitmap)localObject).isRecycled()); localObject = Ang)
           {
-            ai(paramBoolean, false);
+            ah(paramBoolean, false);
             AppMethodBeat.o(98263);
             return;
           }
@@ -160,40 +160,40 @@ public class ShowCommentImageView
     {
       try
       {
-        localObject = zWa;
+        localObject = Ani;
         localObject = (Bitmap)((Field)localObject).get(this);
         if (localObject != null) {
           break label205;
         }
         bool = true;
-        ad.d("MicroMsg.ShowCommentImageView", "getStaticDrawingCache, autoScale: %s, cache==null: %s", new Object[] { Boolean.valueOf(paramBoolean), Boolean.valueOf(bool) });
+        ae.d("MicroMsg.ShowCommentImageView", "getStaticDrawingCache, autoScale: %s, cache==null: %s", new Object[] { Boolean.valueOf(paramBoolean), Boolean.valueOf(bool) });
         if (localObject == null) {
           break label171;
         }
         if (!paramBoolean) {
           break label167;
         }
-        zVZ = (Bitmap)localObject;
+        Anh = (Bitmap)localObject;
         AppMethodBeat.o(98263);
         return;
       }
       catch (Exception localException)
       {
-        ad.e("MicroMsg.ShowCommentImageView", "getStaticDrawingCache error: %s", new Object[] { localException.getMessage() });
+        ae.e("MicroMsg.ShowCommentImageView", "getStaticDrawingCache error: %s", new Object[] { localException.getMessage() });
         AppMethodBeat.o(98263);
         return;
       }
-      Field localField = zWb;
+      Field localField = Anj;
       continue;
       label167:
-      zVY = localField;
+      Ang = localField;
       label171:
       AppMethodBeat.o(98263);
       return;
       super.buildDrawingCache(paramBoolean);
       AppMethodBeat.o(98263);
       return;
-      ai(paramBoolean, true);
+      ah(paramBoolean, true);
       super.buildDrawingCache(paramBoolean);
       AppMethodBeat.o(98263);
       return;
@@ -214,8 +214,8 @@ public class ShowCommentImageView
     AppMethodBeat.i(98266);
     try
     {
-      zWa.set(this, null);
-      zWb.set(this, null);
+      Ani.set(this, null);
+      Anj.set(this, null);
       super.onDetachedFromWindow();
       AppMethodBeat.o(98266);
       return;
@@ -224,7 +224,7 @@ public class ShowCommentImageView
     {
       for (;;)
       {
-        ad.e("MicroMsg.ShowCommentImageView", "setDrawingCache error: %s", new Object[] { localException.getMessage() });
+        ae.e("MicroMsg.ShowCommentImageView", "setDrawingCache error: %s", new Object[] { localException.getMessage() });
       }
     }
   }
@@ -248,7 +248,7 @@ public class ShowCommentImageView
       boolean bool = super.onTouchEvent(paramMotionEvent);
       AppMethodBeat.o(98269);
       return bool;
-      this.zVX = true;
+      this.Anf = true;
     }
   }
   
@@ -262,7 +262,7 @@ public class ShowCommentImageView
         AppMethodBeat.i(98258);
         b localb = new b();
         localb.bd(paramAnonymousView);
-        a.b("com/tencent/mm/plugin/sns/ui/ShowCommentImageView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        a.b("com/tencent/mm/plugin/sns/ui/ShowCommentImageView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
         ShowCommentImageView.a(ShowCommentImageView.this, true);
         paramOnClickListener.onClick(paramAnonymousView);
         a.a(this, "com/tencent/mm/plugin/sns/ui/ShowCommentImageView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");

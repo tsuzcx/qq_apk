@@ -6,19 +6,19 @@ import java.io.IOException;
 public final class f
   extends IOException
 {
-  public final IOException EQu;
+  public final IOException FiP;
   public final int httpStatusCode;
   
   public f(int paramInt, IOException paramIOException)
   {
     this.httpStatusCode = paramInt;
-    this.EQu = paramIOException;
+    this.FiP = paramIOException;
   }
   
   public final String toString()
   {
     AppMethodBeat.i(152010);
-    String str = "UnknownConnectionError{httpStatusCode=" + this.httpStatusCode + ", realException=" + this.EQu + '}';
+    String str = "UnknownConnectionError{httpStatusCode=" + this.httpStatusCode + ", realException=" + this.FiP + '}';
     AppMethodBeat.o(152010);
     return str;
   }

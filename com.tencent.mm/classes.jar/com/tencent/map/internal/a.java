@@ -22,7 +22,7 @@ public final class a
   
   public a(Context paramContext, TencentMapOptions paramTencentMapOptions)
   {
-    AppMethodBeat.i(195052);
+    AppMethodBeat.i(209756);
     this.b = paramContext.getApplicationContext();
     str = "";
     if (TextUtils.isEmpty(paramTencentMapOptions.getMapKey())) {}
@@ -41,7 +41,7 @@ public final class a
         paramContext = str;
         continue;
       }
-      this.a = new SheetManager.Options().setAdapterType(SheetManager.Options.AdapterType.LOC_SHEET).setSheetEnable(true).setSheetProjectName("tms").setSoLibName("txmapengine").setVersion("4.3.9").setVersionCode("1").setFlavor("wechatSearchSheetok").setCoreLogReportUrl("https://analytics.map.qq.com/tr?mllc").setAppKey(paramContext).setCoreLogOn(true).setUncaughtListener(new SheetManager.UncaughtListener(Thread.getDefaultUncaughtExceptionHandler())
+      this.a = new SheetManager.Options().setAdapterType(SheetManager.Options.AdapterType.LOC_SHEET).setSheetEnable(true).setSheetProjectName("tms").setSoLibName("txmapengine").setVersion("4.3.9").setVersionCode("3").setSdkRepo("8569aba84").setFlavor("wechatSearchSheetok").setCoreLogReportUrl("https://analytics.map.qq.com/tr?mllc").setAppKey(paramContext).setCoreLogOn(true).setUncaughtListener(new SheetManager.UncaughtListener(Thread.getDefaultUncaughtExceptionHandler())
       {
         public final boolean onModuleSDKCrashed(Throwable paramAnonymousThrowable)
         {
@@ -52,7 +52,7 @@ public final class a
           return false;
         }
       });
-      AppMethodBeat.o(195052);
+      AppMethodBeat.o(209756);
       return;
       paramContext = paramTencentMapOptions.getMapKey();
     }
@@ -60,13 +60,13 @@ public final class a
   
   public final BaseMapView.MapViewProxy a(ViewGroup paramViewGroup, TencentMapOptions paramTencentMapOptions)
   {
-    AppMethodBeat.i(195053);
+    AppMethodBeat.i(209757);
     Object localObject = SheetManager.getInstance().findSheet("com.tencent.mapsdk.core.MapDelegateFactoryImpl");
     localObject = SheetManager.getInstance().newSheetIns((Class)localObject, new Object[0]);
     SheetManager localSheetManager = SheetManager.getInstance();
     Context localContext = this.b;
     paramViewGroup = (BaseMapView.MapViewProxy)localSheetManager.callSheetMth(localObject, "createDelegate", new Class[] { Context.class, TencentMapOptions.class, ViewGroup.class }, new Object[] { localContext, paramTencentMapOptions, paramViewGroup });
-    AppMethodBeat.o(195053);
+    AppMethodBeat.o(209757);
     return paramViewGroup;
   }
 }

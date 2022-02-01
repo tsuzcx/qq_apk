@@ -6,66 +6,66 @@ import java.util.LinkedList;
 
 public final class a
 {
-  public final f.a.a.b.a.a NPN;
-  private int NPO;
+  public final f.a.a.b.a.a OmT;
+  private int OmU;
   private final b unknownTagHandler;
   
   public a(byte[] paramArrayOfByte, b paramb)
   {
     AppMethodBeat.i(2399);
-    this.NPO = 0;
-    this.NPN = new f.a.a.b.a.a(paramArrayOfByte, paramArrayOfByte.length);
+    this.OmU = 0;
+    this.OmT = new f.a.a.b.a.a(paramArrayOfByte, paramArrayOfByte.length);
     this.unknownTagHandler = paramb;
     AppMethodBeat.o(2399);
   }
   
-  public final LinkedList<byte[]> alQ(int paramInt)
+  public final LinkedList<byte[]> amA(int paramInt)
   {
     AppMethodBeat.i(2404);
-    LinkedList localLinkedList = this.NPN.alQ(paramInt);
+    LinkedList localLinkedList = this.OmT.amA(paramInt);
     AppMethodBeat.o(2404);
     return localLinkedList;
   }
   
-  public final int gxA()
+  public final int gCc()
   {
     AppMethodBeat.i(2400);
-    int i = this.NPN.zc();
+    int i = this.OmT.zc();
     AppMethodBeat.o(2400);
     return i;
   }
   
-  public final String gxB()
+  public final String gCd()
   {
-    AppMethodBeat.i(221593);
-    String str = this.NPN.readString();
-    AppMethodBeat.o(221593);
+    AppMethodBeat.i(224312);
+    String str = this.OmT.readString();
+    AppMethodBeat.o(224312);
     return str;
   }
   
-  public final boolean gxC()
+  public final boolean gCe()
   {
-    AppMethodBeat.i(221594);
-    boolean bool = this.NPN.grw();
-    AppMethodBeat.o(221594);
+    AppMethodBeat.i(224313);
+    boolean bool = this.OmT.gvY();
+    AppMethodBeat.o(224313);
     return bool;
   }
   
-  public final int gxD()
+  public final int gCf()
   {
     AppMethodBeat.i(168735);
-    this.NPO = this.NPN.zb();
-    int i = f.a.a.b.a.fR(this.NPO);
+    this.OmU = this.OmT.zb();
+    int i = f.a.a.b.a.fR(this.OmU);
     AppMethodBeat.o(168735);
     return i;
   }
   
-  public final void gxE()
+  public final void gCg()
   {
     AppMethodBeat.i(2403);
-    int i = f.a.a.b.a.fQ(this.NPO);
+    int i = f.a.a.b.a.fQ(this.OmU);
     StringBuffer localStringBuffer = new StringBuffer();
-    localStringBuffer.append("FieldNumber: ").append(f.a.a.b.a.fR(this.NPO)).append(" - ");
+    localStringBuffer.append("FieldNumber: ").append(f.a.a.b.a.fR(this.OmU)).append(" - ");
     switch (i)
     {
     }
@@ -73,16 +73,16 @@ public final class a
     {
       AppMethodBeat.o(2403);
       return;
-      localStringBuffer.append("float value: ").append(Float.toString(Float.intBitsToFloat(this.NPN.grz())));
+      localStringBuffer.append("float value: ").append(Float.toString(Float.intBitsToFloat(this.OmT.gwb())));
       AppMethodBeat.o(2403);
       return;
-      localStringBuffer.append("double value: ").append(Double.toString(Double.longBitsToDouble(this.NPN.grA())));
+      localStringBuffer.append("double value: ").append(Double.toString(Double.longBitsToDouble(this.OmT.gwc())));
       AppMethodBeat.o(2403);
       return;
-      localStringBuffer.append("Length delimited (String or ByteString) value: ").append(this.NPN.readString());
+      localStringBuffer.append("Length delimited (String or ByteString) value: ").append(this.OmT.readString());
       AppMethodBeat.o(2403);
       return;
-      localStringBuffer.append("varint (long, int or boolean) value: ").append(this.NPN.zd());
+      localStringBuffer.append("varint (long, int or boolean) value: ").append(this.OmT.zd());
     }
   }
 }

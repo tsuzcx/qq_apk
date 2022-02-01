@@ -1,27 +1,10 @@
 package com.tencent.mm.plugin.appbrand.page;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-
 public final class p
   extends com.tencent.mm.plugin.appbrand.jsapi.p
 {
-  private static final int CTRL_INDEX = 156;
-  private static final String NAME = "onTapStatusBar";
-  private static p lZT;
-  
-  static
-  {
-    AppMethodBeat.i(135003);
-    lZT = new p();
-    AppMethodBeat.o(135003);
-  }
-  
-  public static void h(aa paramaa)
-  {
-    AppMethodBeat.i(135002);
-    lZT.g(paramaa).bir();
-    AppMethodBeat.o(135002);
-  }
+  private static final int CTRL_INDEX = 409;
+  private static final String NAME = "onWindowResize";
 }
 
 

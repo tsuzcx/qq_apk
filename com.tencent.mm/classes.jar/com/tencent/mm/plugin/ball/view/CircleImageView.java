@@ -16,7 +16,7 @@ import android.support.v4.content.b;
 import android.support.v7.widget.AppCompatImageView;
 import android.util.AttributeSet;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cc.a;
+import com.tencent.mm.cb.a;
 
 public class CircleImageView
   extends AppCompatImageView
@@ -30,7 +30,7 @@ public class CircleImageView
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(106377);
     this.progress = -2147483648L;
-    el(paramContext);
+    ep(paramContext);
     AppMethodBeat.o(106377);
   }
   
@@ -39,11 +39,11 @@ public class CircleImageView
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(106376);
     this.progress = -2147483648L;
-    el(paramContext);
+    ep(paramContext);
     AppMethodBeat.o(106376);
   }
   
-  private void el(Context paramContext)
+  private void ep(Context paramContext)
   {
     AppMethodBeat.i(106378);
     this.defaultWidth = a.ay(paramContext, 2131166366);
@@ -94,7 +94,7 @@ public class CircleImageView
           j = getWidth();
           float f1 = i / 2.0F;
           float f2 = j / 2.0F;
-          float f3 = a.g(getContext(), 1.5F);
+          float f3 = a.h(getContext(), 1.5F);
           float f4 = i * 0.7083333F / 2.0F - f3;
           localPaint = new Paint();
           localPaint.setAntiAlias(true);

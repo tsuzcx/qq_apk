@@ -4,21 +4,21 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlin/text/SystemProperties;", "", "()V", "LINE_SEPARATOR", "", "kotlin-stdlib"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlin/text/SystemProperties;", "", "()V", "LINE_SEPARATOR", "", "kotlin-stdlib"})
 final class aa
 {
-  public static final String NHr;
-  public static final aa NHs;
+  public static final String Oex;
+  public static final aa Oey;
   
   static
   {
     AppMethodBeat.i(129359);
-    NHs = new aa();
+    Oey = new aa();
     String str = System.getProperty("line.separator");
     if (str == null) {
-      p.gfZ();
+      p.gkB();
     }
-    NHr = str;
+    Oex = str;
     AppMethodBeat.o(129359);
   }
 }

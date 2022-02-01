@@ -6,7 +6,7 @@ import com.davemorrissey.labs.subscaleview.c.b;
 import com.davemorrissey.labs.subscaleview.c.e;
 import com.davemorrissey.labs.subscaleview.view.SubsamplingScaleImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.lang.ref.WeakReference;
 
 public final class c
@@ -124,7 +124,7 @@ public final class c
       //   140: getfield 75	com/davemorrissey/labs/subscaleview/c/e:sampleSize	I
       //   143: invokestatic 123	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
       //   146: aastore
-      //   147: invokestatic 129	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+      //   147: invokestatic 129	com/tencent/mm/sdk/platformtools/ae:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
       //   150: aload_1
       //   151: invokevirtual 133	com/davemorrissey/labs/subscaleview/view/SubsamplingScaleImageView:getDecoderLock	()Ljava/util/concurrent/locks/ReadWriteLock;
       //   154: invokeinterface 139 1 0
@@ -166,7 +166,7 @@ public final class c
       //   238: getfield 75	com/davemorrissey/labs/subscaleview/c/e:sampleSize	I
       //   241: invokestatic 123	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
       //   244: aastore
-      //   245: invokestatic 129	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+      //   245: invokestatic 129	com/tencent/mm/sdk/platformtools/ae:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
       //   248: aload_3
       //   249: aload_2
       //   250: getfield 147	com/davemorrissey/labs/subscaleview/c/e:aWZ	Landroid/graphics/Rect;
@@ -222,7 +222,7 @@ public final class c
       //   363: ldc 194
       //   365: iconst_0
       //   366: anewarray 113	java/lang/Object
-      //   369: invokestatic 198	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+      //   369: invokestatic 198	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
       //   372: aload_0
       //   373: aload_1
       //   374: putfield 200	com/davemorrissey/labs/subscaleview/b/c$a:exception	Ljava/lang/Exception;
@@ -305,7 +305,7 @@ public final class c
       //   544: ldc 214
       //   546: iconst_0
       //   547: anewarray 113	java/lang/Object
-      //   550: invokestatic 198	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+      //   550: invokestatic 198	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
       //   553: aload_0
       //   554: new 216	java/lang/RuntimeException
       //   557: dup
@@ -374,7 +374,7 @@ public final class c
       }
       catch (Exception localException)
       {
-        ad.printErrStackTrace("MicroMsg.LegacyTileLoaderFactory", localException, "alvinluo TileLoaderTask cancel exception", new Object[0]);
+        ae.printErrStackTrace("MicroMsg.LegacyTileLoaderFactory", localException, "alvinluo TileLoaderTask cancel exception", new Object[0]);
         AppMethodBeat.o(157367);
       }
     }

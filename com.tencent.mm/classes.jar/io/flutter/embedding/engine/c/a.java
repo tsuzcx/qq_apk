@@ -14,20 +14,20 @@ import java.util.HashMap;
 
 public final class a
 {
-  public final FlutterJNI MCg;
-  public final b<Object> MDR;
-  a MDS;
-  private final b.b<Object> MDT;
+  public final FlutterJNI MZl;
+  public final b<Object> NaX;
+  a NaY;
+  private final b.b<Object> NaZ;
   
   public a(DartExecutor paramDartExecutor, FlutterJNI paramFlutterJNI)
   {
     AppMethodBeat.i(10262);
-    this.MDT = new b.b()
+    this.NaZ = new b.b()
     {
-      public final void eE(Object paramAnonymousObject)
+      public final void eH(Object paramAnonymousObject)
       {
         AppMethodBeat.i(10285);
-        if (a.this.MDS == null)
+        if (a.this.NaY == null)
         {
           AppMethodBeat.o(10285);
           return;
@@ -36,7 +36,7 @@ public final class a
         String str = (String)paramAnonymousObject.get("type");
         HashMap localHashMap = (HashMap)paramAnonymousObject.get("data");
         new StringBuilder("Received ").append(str).append(" message.");
-        io.flutter.a.gea();
+        io.flutter.a.giD();
         int i;
         switch (str.hashCode())
         {
@@ -75,24 +75,24 @@ public final class a
           paramAnonymousObject = (String)localHashMap.get("message");
           if (paramAnonymousObject != null)
           {
-            a.this.MDS.bbM(paramAnonymousObject);
+            a.this.NaY.bdq(paramAnonymousObject);
             AppMethodBeat.o(10285);
             return;
             paramAnonymousObject = (Integer)paramAnonymousObject.get("nodeId");
             if (paramAnonymousObject != null)
             {
-              a.this.MDS.aiX(paramAnonymousObject.intValue());
+              a.this.NaY.ajH(paramAnonymousObject.intValue());
               AppMethodBeat.o(10285);
               return;
               paramAnonymousObject = (Integer)paramAnonymousObject.get("nodeId");
               if (paramAnonymousObject != null)
               {
-                a.this.MDS.aiY(paramAnonymousObject.intValue());
+                a.this.NaY.ajI(paramAnonymousObject.intValue());
                 AppMethodBeat.o(10285);
                 return;
                 paramAnonymousObject = (String)localHashMap.get("message");
                 if (paramAnonymousObject != null) {
-                  a.this.MDS.bbN(paramAnonymousObject);
+                  a.this.NaY.bdr(paramAnonymousObject);
                 }
               }
             }
@@ -100,16 +100,16 @@ public final class a
         }
       }
     };
-    this.MDR = new b(paramDartExecutor, "flutter/accessibility", n.MFY);
-    paramDartExecutor = this.MDR;
-    b.b localb = this.MDT;
-    c localc = paramDartExecutor.vCh;
+    this.NaX = new b(paramDartExecutor, "flutter/accessibility", n.Nde);
+    paramDartExecutor = this.NaX;
+    b.b localb = this.NaZ;
+    c localc = paramDartExecutor.vOl;
     String str = paramDartExecutor.name;
     if (localb == null) {}
     for (paramDartExecutor = null;; paramDartExecutor = new b.a(paramDartExecutor, localb, (byte)0))
     {
       localc.a(str, paramDartExecutor);
-      this.MCg = paramFlutterJNI;
+      this.MZl = paramFlutterJNI;
       AppMethodBeat.o(10262);
       return;
     }
@@ -118,40 +118,40 @@ public final class a
   public final void a(a parama)
   {
     AppMethodBeat.i(10265);
-    this.MDS = parama;
-    this.MCg.setAccessibilityDelegate(parama);
+    this.NaY = parama;
+    this.MZl.setAccessibilityDelegate(parama);
     AppMethodBeat.o(10265);
   }
   
   public final void dispatchSemanticsAction(int paramInt, a.b paramb)
   {
     AppMethodBeat.i(10263);
-    this.MCg.dispatchSemanticsAction(paramInt, paramb);
+    this.MZl.dispatchSemanticsAction(paramInt, paramb);
     AppMethodBeat.o(10263);
   }
   
   public final void dispatchSemanticsAction(int paramInt, a.b paramb, Object paramObject)
   {
     AppMethodBeat.i(10264);
-    this.MCg.dispatchSemanticsAction(paramInt, paramb, paramObject);
+    this.MZl.dispatchSemanticsAction(paramInt, paramb, paramObject);
     AppMethodBeat.o(10264);
   }
   
   public static abstract interface a
     extends FlutterJNI.AccessibilityDelegate
   {
-    public abstract void aiX(int paramInt);
+    public abstract void ajH(int paramInt);
     
-    public abstract void aiY(int paramInt);
+    public abstract void ajI(int paramInt);
     
-    public abstract void bbM(String paramString);
+    public abstract void bdq(String paramString);
     
-    public abstract void bbN(String paramString);
+    public abstract void bdr(String paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     io.flutter.embedding.engine.c.a
  * JD-Core Version:    0.7.0.1
  */

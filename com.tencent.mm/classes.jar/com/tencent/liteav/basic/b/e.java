@@ -485,20 +485,20 @@ public class e
   
   private boolean c()
   {
-    AppMethodBeat.i(187262);
+    AppMethodBeat.i(221391);
     if (!Environment.getExternalStorageState().equals("mounted"))
     {
       TXCLog.e("LicenceCheck", "checkSdcardLicence, sdcard not mounted yet!");
-      AppMethodBeat.o(187262);
+      AppMethodBeat.o(221391);
       return false;
     }
     if (this.a.getExternalFilesDir(null) == null)
     {
       TXCLog.e("LicenceCheck", "checkSdcardLicence, mContext.getExternalFilesDir is null!");
-      AppMethodBeat.o(187262);
+      AppMethodBeat.o(221391);
       return false;
     }
-    AppMethodBeat.o(187262);
+    AppMethodBeat.o(221391);
     return true;
   }
   
@@ -664,9 +664,9 @@ public class e
   
   private String h(a parama)
   {
-    AppMethodBeat.i(187264);
+    AppMethodBeat.i(221393);
     parama = com.tencent.liteav.basic.util.c.b(new File(parama.c + File.separator + parama.b).getAbsolutePath());
-    AppMethodBeat.o(187264);
+    AppMethodBeat.o(221393);
     return parama;
   }
   
@@ -804,9 +804,9 @@ public class e
   
   public int b()
   {
-    AppMethodBeat.i(187263);
+    AppMethodBeat.i(221392);
     int i = g(this.f);
-    AppMethodBeat.o(187263);
+    AppMethodBeat.o(221392);
     return i;
   }
   

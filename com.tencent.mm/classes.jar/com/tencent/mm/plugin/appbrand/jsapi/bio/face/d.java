@@ -7,7 +7,7 @@ import com.tencent.mm.plugin.appbrand.jsapi.a;
 import com.tencent.mm.plugin.appbrand.jsapi.h;
 import com.tencent.mm.plugin.appbrand.jsapi.nfc.c;
 import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class d
   extends a<h>

@@ -3,24 +3,24 @@ package com.tencent.mm.app;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.KVCommCrossProcessReceiver;
 import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.sdk.platformtools.au;
-import com.tencent.mm.sdk.platformtools.au.c;
+import com.tencent.mm.sdk.platformtools.av;
+import com.tencent.mm.sdk.platformtools.av.c;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/app/LiteAppProfile$onCreate$1", "Lcom/tencent/mm/sdk/platformtools/MMUncaughtExceptionHandler$IOnUncaughtExceptionListener;", "uncaughtException", "", "ueh", "Lcom/tencent/mm/sdk/platformtools/MMUncaughtExceptionHandler;", "msg", "", "ex", "", "app_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/app/LiteAppProfile$onCreate$1", "Lcom/tencent/mm/sdk/platformtools/MMUncaughtExceptionHandler$IOnUncaughtExceptionListener;", "uncaughtException", "", "ueh", "Lcom/tencent/mm/sdk/platformtools/MMUncaughtExceptionHandler;", "msg", "", "ex", "", "app_release"})
 public final class LiteAppProfile$a
-  implements au.c
+  implements av.c
 {
-  public final void a(au paramau, String paramString, Throwable paramThrowable)
+  public final void a(av paramav, String paramString, Throwable paramThrowable)
   {
-    AppMethodBeat.i(194834);
-    p.h(paramau, "ueh");
+    AppMethodBeat.i(188236);
+    p.h(paramav, "ueh");
     p.h(paramString, "msg");
     p.h(paramThrowable, "ex");
-    g.yhR.n(1293L, 3L, 1L);
-    KVCommCrossProcessReceiver.dKl();
-    AppMethodBeat.o(194834);
+    g.yxI.n(1293L, 3L, 1L);
+    KVCommCrossProcessReceiver.dND();
+    AppMethodBeat.o(188236);
   }
 }
 

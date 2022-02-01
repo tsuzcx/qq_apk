@@ -3,47 +3,47 @@ package com.tencent.mm.plugin.music.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.music.cache.c;
 import com.tencent.mm.plugin.music.cache.e;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class b
 {
-  private static long cJi = 0L;
-  private static boolean whM = false;
+  private static long cJR = 0L;
+  private static boolean wxq = false;
   
-  public static boolean drw()
+  public static boolean duI()
   {
     AppMethodBeat.i(137011);
     long l = System.currentTimeMillis();
-    if (l - cJi < 120000L)
+    if (l - cJR < 120000L)
     {
-      bool = whM;
+      bool = wxq;
       AppMethodBeat.o(137011);
       return bool;
     }
-    cJi = l;
-    if (e.dsB())
+    cJR = l;
+    if (e.dvQ())
     {
-      bool = ((c)com.tencent.mm.plugin.music.f.c.b.aQ(c.class)).dsx();
-      whM = bool;
-      ad.i("MicroMsg.Audio.AudioMixSupport", "isSupportMixAudio:%b", new Object[] { Boolean.valueOf(whM) });
-      if (!whM) {
-        if (!e.dsB()) {
+      bool = ((c)com.tencent.mm.plugin.music.f.c.b.aQ(c.class)).dvM();
+      wxq = bool;
+      ae.i("MicroMsg.Audio.AudioMixSupport", "isSupportMixAudio:%b", new Object[] { Boolean.valueOf(wxq) });
+      if (!wxq) {
+        if (!e.dvQ()) {
           break label153;
         }
       }
     }
-    for (boolean bool = ((c)com.tencent.mm.plugin.music.f.c.b.aQ(c.class)).dsy();; bool = false)
+    for (boolean bool = ((c)com.tencent.mm.plugin.music.f.c.b.aQ(c.class)).dvN();; bool = false)
     {
-      whM = bool;
-      ad.i("MicroMsg.Audio.AudioMixSupport", "isSupportMixAudioByCP:%b", new Object[] { Boolean.valueOf(whM) });
-      bool = whM;
+      wxq = bool;
+      ae.i("MicroMsg.Audio.AudioMixSupport", "isSupportMixAudioByCP:%b", new Object[] { Boolean.valueOf(wxq) });
+      bool = wxq;
       AppMethodBeat.o(137011);
       return bool;
-      ad.e("MicroMsg.Music.MusicDataStorageImpl", "IMusicDataStorage service not exist");
+      ae.e("MicroMsg.Music.MusicDataStorageImpl", "IMusicDataStorage service not exist");
       bool = false;
       break;
       label153:
-      ad.e("MicroMsg.Music.MusicDataStorageImpl", "IMusicDataStorage service not exist");
+      ae.e("MicroMsg.Music.MusicDataStorageImpl", "IMusicDataStorage service not exist");
     }
   }
 }

@@ -1,36 +1,36 @@
 package com.tencent.mm.plugin.story.i;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.gi;
+import com.tencent.mm.g.c.gj;
 import com.tencent.mm.sdk.e.c.a;
-import com.tencent.mm.vfs.i;
+import com.tencent.mm.vfs.o;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/story/storage/StoryVideoCache;", "Lcom/tencent/mm/autogen/table/BaseStoryVideoCacheInfo;", "()V", "value", "", "cacheSize", "getCacheSize", "()I", "setCacheSize", "(I)V", "", "filePath", "getFilePath", "()Ljava/lang/String;", "setFilePath", "(Ljava/lang/String;)V", "", "storyId", "getStoryId", "()J", "setStoryId", "(J)V", "totalSize", "getTotalSize", "setTotalSize", "url", "getUrl", "setUrl", "downloadFinish", "", "downloadFinishAndCheckFile", "getDBInfo", "Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "resetVideo", "", "toString", "Companion", "plugin-story_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/story/storage/StoryVideoCache;", "Lcom/tencent/mm/autogen/table/BaseStoryVideoCacheInfo;", "()V", "value", "", "cacheSize", "getCacheSize", "()I", "setCacheSize", "(I)V", "", "filePath", "getFilePath", "()Ljava/lang/String;", "setFilePath", "(Ljava/lang/String;)V", "", "storyId", "getStoryId", "()J", "setStoryId", "(J)V", "totalSize", "getTotalSize", "setTotalSize", "url", "getUrl", "setUrl", "downloadFinish", "", "downloadFinishAndCheckFile", "getDBInfo", "Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "resetVideo", "", "toString", "Companion", "plugin-story_release"})
 public final class n
-  extends gi
+  extends gj
 {
-  public static final a AUs;
+  public static final a BlQ;
   private static final c.a info;
   
   static
   {
     AppMethodBeat.i(119603);
-    AUs = new a((byte)0);
-    info = gi.Vv();
+    BlQ = new a((byte)0);
+    info = gj.VD();
     AppMethodBeat.o(119603);
   }
   
-  public final boolean XQ()
+  public final boolean Ya()
   {
     return (this.field_totalSize > 0) && (this.field_cacheSize == this.field_totalSize);
   }
   
-  public final boolean elH()
+  public final boolean epq()
   {
     AppMethodBeat.i(119600);
-    if ((XQ()) && (i.fv(this.field_filePath)))
+    if ((Ya()) && (o.fB(this.field_filePath)))
     {
       AppMethodBeat.o(119600);
       return true;
@@ -39,7 +39,7 @@ public final class n
     return false;
   }
   
-  public final void elI()
+  public final void epr()
   {
     this.field_cacheSize = 0;
     this.field_totalSize = 0;
@@ -62,7 +62,7 @@ public final class n
     return str;
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/story/storage/StoryVideoCache$Companion;", "", "()V", "info", "Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "kotlin.jvm.PlatformType", "getInfo", "()Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "plugin-story_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/story/storage/StoryVideoCache$Companion;", "", "()V", "info", "Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "kotlin.jvm.PlatformType", "getInfo", "()Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "plugin-story_release"})
   public static final class a {}
 }
 

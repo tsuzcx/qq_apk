@@ -12,7 +12,7 @@ import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
 public class EasyTextView
   extends View
 {
-  private static final Paint hxL;
+  private static final Paint hAz;
   private static int textSize;
   private Context context;
   private String text;
@@ -20,11 +20,11 @@ public class EasyTextView
   static
   {
     AppMethodBeat.i(97853);
-    hxL = new Paint();
+    hAz = new Paint();
     textSize = -1;
-    hxL.setAntiAlias(true);
-    hxL.setFilterBitmap(true);
-    hxL.setColor(737373);
+    hAz.setAntiAlias(true);
+    hAz.setFilterBitmap(true);
+    hAz.setColor(737373);
     AppMethodBeat.o(97853);
   }
   
@@ -36,10 +36,10 @@ public class EasyTextView
     this.context = paramContext;
     if (textSize == -1)
     {
-      textSize = BackwardSupportUtil.b.g(this.context, 12.0F);
-      hxL.setTextSize(textSize);
+      textSize = BackwardSupportUtil.b.h(this.context, 12.0F);
+      hAz.setTextSize(textSize);
     }
-    hxL.setColor(this.context.getResources().getColor(2131100017));
+    hAz.setColor(this.context.getResources().getColor(2131100017));
     AppMethodBeat.o(97850);
   }
   
@@ -48,7 +48,7 @@ public class EasyTextView
     AppMethodBeat.i(97852);
     super.draw(paramCanvas);
     int i = getHeight();
-    paramCanvas.drawText(this.text, 0.0F, i / 2, hxL);
+    paramCanvas.drawText(this.text, 0.0F, i / 2, hAz);
     AppMethodBeat.o(97852);
   }
   
@@ -64,7 +64,7 @@ public class EasyTextView
   public void setTextSize(int paramInt)
   {
     AppMethodBeat.i(97851);
-    hxL.setTextSize(paramInt);
+    hAz.setTextSize(paramInt);
     AppMethodBeat.o(97851);
   }
 }

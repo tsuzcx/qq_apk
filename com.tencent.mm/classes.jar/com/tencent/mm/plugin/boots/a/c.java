@@ -7,11 +7,11 @@ public abstract interface c
 {
   public abstract void a(String paramString1, String paramString2, String paramString3, f paramf);
   
-  public abstract List<a> bMT();
+  public abstract List<a> bNR();
   
-  public abstract void eN(int paramInt1, int paramInt2);
+  public abstract void eO(int paramInt1, int paramInt2);
   
-  public abstract void yY(int paramInt);
+  public abstract void zh(int paramInt);
 }
 
 

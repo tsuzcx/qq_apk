@@ -12,7 +12,7 @@ public final class c
     super(paramMMActivity, true);
   }
   
-  protected final boolean epl()
+  protected final boolean esS()
   {
     return false;
   }

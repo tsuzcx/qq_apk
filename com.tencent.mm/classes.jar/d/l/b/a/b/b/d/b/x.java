@@ -10,19 +10,19 @@ public final class x
   extends n
   implements f, w
 {
-  private final TypeVariable<?> NaH;
+  private final TypeVariable<?> NxN;
   
   public x(TypeVariable<?> paramTypeVariable)
   {
     AppMethodBeat.i(57510);
-    this.NaH = paramTypeVariable;
+    this.NxN = paramTypeVariable;
     AppMethodBeat.o(57510);
   }
   
   public final boolean equals(Object paramObject)
   {
     AppMethodBeat.i(57507);
-    if (((paramObject instanceof x)) && (p.i(this.NaH, ((x)paramObject).NaH)))
+    if (((paramObject instanceof x)) && (p.i(this.NxN, ((x)paramObject).NxN)))
     {
       AppMethodBeat.o(57507);
       return true;
@@ -31,18 +31,18 @@ public final class x
     return false;
   }
   
-  public final d.l.b.a.b.f.f giD()
+  public final d.l.b.a.b.f.f gnf()
   {
     AppMethodBeat.i(57506);
-    d.l.b.a.b.f.f localf = d.l.b.a.b.f.f.bcE(this.NaH.getName());
+    d.l.b.a.b.f.f localf = d.l.b.a.b.f.f.bei(this.NxN.getName());
     p.g(localf, "Name.identifier(typeVariable.name)");
     AppMethodBeat.o(57506);
     return localf;
   }
   
-  public final AnnotatedElement gkC()
+  public final AnnotatedElement gpe()
   {
-    TypeVariable localTypeVariable2 = this.NaH;
+    TypeVariable localTypeVariable2 = this.NxN;
     TypeVariable localTypeVariable1 = localTypeVariable2;
     if (!(localTypeVariable2 instanceof AnnotatedElement)) {
       localTypeVariable1 = null;
@@ -53,7 +53,7 @@ public final class x
   public final int hashCode()
   {
     AppMethodBeat.i(57508);
-    int i = this.NaH.hashCode();
+    int i = this.NxN.hashCode();
     AppMethodBeat.o(57508);
     return i;
   }
@@ -61,14 +61,14 @@ public final class x
   public final String toString()
   {
     AppMethodBeat.i(57509);
-    String str = getClass().getName() + ": " + this.NaH;
+    String str = getClass().getName() + ": " + this.NxN;
     AppMethodBeat.o(57509);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.b.d.b.x
  * JD-Core Version:    0.7.0.1
  */

@@ -2,21 +2,21 @@ package com.tencent.mm.plugin.finder.video.parser;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.a.k;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/video/parser/FinderMp4Parser;", "Lcom/tencent/mm/plugin/Atom/Mp4Parser2;", "()V", "TAG", "", "setLazyParse", "", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/video/parser/FinderMp4Parser;", "Lcom/tencent/mm/plugin/Atom/Mp4Parser2;", "()V", "TAG", "", "setLazyParse", "", "plugin-finder_release"})
 public final class a
   extends k
 {
   private final String TAG = "Finder.FinderMp4Parser";
   
-  public final void aQQ()
+  public final void aRp()
   {
-    AppMethodBeat.i(204913);
-    ad.i(this.TAG, "setLazyParse false");
-    this.iQV = false;
-    AppMethodBeat.o(204913);
+    AppMethodBeat.i(205538);
+    ae.i(this.TAG, "setLazyParse false");
+    this.iTO = false;
+    AppMethodBeat.o(205538);
   }
 }
 

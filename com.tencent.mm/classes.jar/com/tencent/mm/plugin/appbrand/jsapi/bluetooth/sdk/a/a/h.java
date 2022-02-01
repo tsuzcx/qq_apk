@@ -6,93 +6,93 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.a.d;
 import com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.c.j;
 import com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.c;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.av;
-import com.tencent.mm.sdk.platformtools.av.a;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aw;
+import com.tencent.mm.sdk.platformtools.aw.a;
 import d.g.b.p;
 import d.l;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/bluetooth/sdk/connect/action/SetMtuAction;", "Lcom/tencent/mm/plugin/appbrand/jsapi/bluetooth/sdk/model/Action;", "mtuSize", "", "deviceId", "", "(Ljava/lang/Integer;Ljava/lang/String;)V", "getDeviceId", "()Ljava/lang/String;", "isTimeOut", "Ljava/util/concurrent/atomic/AtomicBoolean;", "Ljava/lang/Integer;", "timerHandler", "Lcom/tencent/mm/sdk/platformtools/MTimerHandler;", "doActionImpl", "", "getName", "onMtuChanged", "gatt", "Landroid/bluetooth/BluetoothGatt;", "mtu", "status", "luggage-commons-jsapi-connectivity-ext_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsapi/bluetooth/sdk/connect/action/SetMtuAction;", "Lcom/tencent/mm/plugin/appbrand/jsapi/bluetooth/sdk/model/Action;", "mtuSize", "", "deviceId", "", "(Ljava/lang/Integer;Ljava/lang/String;)V", "getDeviceId", "()Ljava/lang/String;", "isTimeOut", "Ljava/util/concurrent/atomic/AtomicBoolean;", "Ljava/lang/Integer;", "timerHandler", "Lcom/tencent/mm/sdk/platformtools/MTimerHandler;", "doActionImpl", "", "getName", "onMtuChanged", "gatt", "Landroid/bluetooth/BluetoothGatt;", "mtu", "status", "luggage-commons-jsapi-connectivity-ext_release"})
 public final class h
   extends com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.c.a
 {
-  private final String cUi;
-  final AtomicBoolean kFd;
-  private final Integer kFe;
-  private final av timerHandler;
+  private final String cVh;
+  final AtomicBoolean kIs;
+  private final Integer kIt;
+  private final aw timerHandler;
   
   public h(Integer paramInteger, String paramString)
   {
     AppMethodBeat.i(144794);
-    this.kFe = paramInteger;
-    this.cUi = paramString;
-    this.timerHandler = new av((av.a)new a(this), false);
-    this.kFd = new AtomicBoolean(false);
+    this.kIt = paramInteger;
+    this.cVh = paramString;
+    this.timerHandler = new aw((aw.a)new a(this), false);
+    this.kIs = new AtomicBoolean(false);
     AppMethodBeat.o(144794);
   }
   
-  public final void bjq()
+  public final void bjZ()
   {
     AppMethodBeat.i(144792);
-    if (c.bjx() == null)
+    if (c.bkg() == null)
     {
       com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.a.e("MicroMsg.Ble.Action", "action:%s, bluetoothGatt is null", new Object[] { this });
-      a(j.kFI);
+      a(j.kIX);
       done();
       AppMethodBeat.o(144792);
       return;
     }
-    if ((this.cUi == null) || (!BluetoothAdapter.checkBluetoothAddress(this.cUi)) || (this.kFe == null))
+    if ((this.cVh == null) || (!BluetoothAdapter.checkBluetoothAddress(this.cVh)) || (this.kIt == null))
     {
       com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.a.w("MicroMsg.Ble.Action", "action:%s, unspecified deviceId", new Object[] { this });
-      a(j.kFR);
+      a(j.kJg);
       done();
       AppMethodBeat.o(144792);
       return;
     }
-    if (!c.bjz())
+    if (!c.bki())
     {
       com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.a.e("MicroMsg.Ble.Action", "bluetooth is not enable.", new Object[0]);
-      a(j.kFD);
+      a(j.kIS);
       done();
       AppMethodBeat.o(144792);
       return;
     }
-    Object localObject = this.kFh;
+    Object localObject = this.kIw;
     p.g(localObject, "worker");
-    if (((d)localObject).bjp() == null)
+    if (((d)localObject).bjY() == null)
     {
-      a(j.kFI);
+      a(j.kIX);
       done();
       AppMethodBeat.o(144792);
       return;
     }
-    localObject = this.kFh;
+    localObject = this.kIw;
     p.g(localObject, "worker");
-    localObject = ((d)localObject).bjp();
-    if (this.kFe.intValue() > 512)
+    localObject = ((d)localObject).bjY();
+    if (this.kIt.intValue() > 512)
     {
       a(new j(10013, "fail:invalid data, DEFAULT_MAX_MTU = 512"));
       done();
       AppMethodBeat.o(144792);
       return;
     }
-    if (this.kFe.intValue() < 23)
+    if (this.kIt.intValue() < 23)
     {
       a(new j(10013, "fail:invalid data, DEFAULT_MIN_MTU = 23"));
       done();
       AppMethodBeat.o(144792);
       return;
     }
-    if (!((BluetoothGatt)localObject).requestMtu(this.kFe.intValue()))
+    if (!((BluetoothGatt)localObject).requestMtu(this.kIt.intValue()))
     {
-      a(j.kFK);
+      a(j.kIZ);
       done();
       AppMethodBeat.o(144792);
       return;
     }
-    this.timerHandler.az(500L, 9223372036854775807L);
+    this.timerHandler.ay(500L, 9223372036854775807L);
     AppMethodBeat.o(144792);
   }
   
@@ -106,38 +106,38 @@ public final class h
     AppMethodBeat.i(144793);
     p.h(paramBluetoothGatt, "gatt");
     super.onMtuChanged(paramBluetoothGatt, paramInt1, paramInt2);
-    if (this.kFd.get())
+    if (this.kIs.get())
     {
-      this.kFd.set(false);
+      this.kIs.set(false);
       AppMethodBeat.o(144793);
       return;
     }
-    ad.d("MicroMsg.Ble.Action", "onMtuChanged: mtu = %d, status = %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    paramBluetoothGatt = this.kFe;
+    ae.d("MicroMsg.Ble.Action", "onMtuChanged: mtu = %d, status = %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    paramBluetoothGatt = this.kIt;
     if (paramBluetoothGatt == null) {}
     while ((paramInt1 != paramBluetoothGatt.intValue()) || (paramInt2 != 0))
     {
-      a(j.kFB);
+      a(j.kIQ);
       done();
       AppMethodBeat.o(144793);
       return;
     }
-    a(j.kFA);
+    a(j.kIP);
     done();
     AppMethodBeat.o(144793);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "onTimerExpired"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "onTimerExpired"})
   static final class a
-    implements av.a
+    implements aw.a
   {
     a(h paramh) {}
     
     public final boolean onTimerExpired()
     {
       AppMethodBeat.i(144791);
-      this.kFf.kFd.set(true);
-      this.kFf.a(j.kFP);
+      this.kIu.kIs.set(true);
+      this.kIu.a(j.kJe);
       AppMethodBeat.o(144791);
       return false;
     }

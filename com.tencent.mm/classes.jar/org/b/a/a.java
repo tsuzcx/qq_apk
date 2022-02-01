@@ -8,12 +8,12 @@ import org.b.g.d;
 
 public final class a
 {
-  public String NVZ;
-  public String NWa;
-  public String NWb = "oob";
-  public org.b.a.a.a NWc;
-  public h NWd = h.NWs;
-  public OutputStream NWe = null;
+  public String Ote;
+  public String Otf;
+  public String Otg = "oob";
+  public org.b.a.a.a Oth;
+  public h Oti = h.Otx;
+  public OutputStream Otj = null;
   public String scope;
   
   public static org.b.a.a.a bH(Class<? extends org.b.a.a.a> paramClass)

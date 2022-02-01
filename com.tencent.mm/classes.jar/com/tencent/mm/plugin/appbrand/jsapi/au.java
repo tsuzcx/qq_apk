@@ -4,22 +4,22 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.service.c;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiFunctionalPageStartGame;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandAsyncJsApi;", "Lcom/tencent/mm/plugin/appbrand/service/AppBrandServiceWC;", "()V", "invoke", "", "service", "data", "Lorg/json/JSONObject;", "callbackId", "", "Companion", "plugin-appbrand-integration_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiFunctionalPageStartGame;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandAsyncJsApi;", "Lcom/tencent/mm/plugin/appbrand/service/AppBrandServiceWC;", "()V", "invoke", "", "service", "data", "Lorg/json/JSONObject;", "callbackId", "", "Companion", "plugin-appbrand-integration_release"})
 public final class au
   extends a<c>
 {
   public static final int CTRL_INDEX = -2;
   public static final String NAME = "functionalPageStartGame";
-  public static final a ksh;
+  public static final a kvx;
   
   static
   {
-    AppMethodBeat.i(189060);
-    ksh = new a((byte)0);
-    AppMethodBeat.o(189060);
+    AppMethodBeat.i(223319);
+    kvx = new a((byte)0);
+    AppMethodBeat.o(223319);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiFunctionalPageStartGame$Companion;", "", "()V", "CTRL_INDEX", "", "DEFAULT_URL", "", "NAME", "plugin-appbrand-integration_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiFunctionalPageStartGame$Companion;", "", "()V", "CTRL_INDEX", "", "DEFAULT_URL", "", "NAME", "plugin-appbrand-integration_release"})
   public static final class a {}
 }
 

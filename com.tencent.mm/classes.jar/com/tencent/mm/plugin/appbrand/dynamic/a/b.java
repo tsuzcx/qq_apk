@@ -10,36 +10,36 @@ import com.tencent.mm.ipcinvoker.i;
 import com.tencent.mm.modelappbrand.e;
 import com.tencent.mm.modelappbrand.f;
 import com.tencent.mm.plugin.appbrand.dynamic.widget.IPCDynamicPageView;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.Iterator;
 import java.util.Set;
 
 final class b
   implements f
 {
-  e kfC;
-  Runnable kfD;
-  Runnable kfE;
-  Runnable kfF;
+  e kiS;
+  Runnable kiT;
+  Runnable kiU;
+  Runnable kiV;
   
   b(e parame)
   {
     AppMethodBeat.i(121219);
-    this.kfD = new Runnable()
+    this.kiT = new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(121213);
-        i.wv("com.tencent.mm:support");
+        i.xe("com.tencent.mm:support");
         AppMethodBeat.o(121213);
       }
     };
-    this.kfE = new Runnable()
+    this.kiU = new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(121215);
-        if (!c.ahu().ws("com.tencent.mm:support"))
+        if (!c.ahJ().xb("com.tencent.mm:support"))
         {
           AppMethodBeat.o(121215);
           return;
@@ -48,12 +48,12 @@ final class b
         AppMethodBeat.o(121215);
       }
     };
-    this.kfF = new Runnable()
+    this.kiV = new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(121217);
-        if (!c.ahu().ws("com.tencent.mm:support"))
+        if (!c.ahJ().xb("com.tencent.mm:support"))
         {
           AppMethodBeat.o(121217);
           return;
@@ -64,14 +64,14 @@ final class b
         AppMethodBeat.o(121217);
       }
     };
-    this.kfC = parame;
+    this.kiS = parame;
     AppMethodBeat.o(121219);
   }
   
-  public final void Ca(String paramString)
+  public final void CC(String paramString)
   {
     AppMethodBeat.i(121222);
-    paramString = this.kfC.bX(paramString);
+    paramString = this.kiS.bX(paramString);
     if ((paramString == null) || (paramString.isEmpty()))
     {
       AppMethodBeat.o(121222);
@@ -83,17 +83,17 @@ final class b
       View localView = (View)paramString.next();
       if ((localView != null) && ((localView instanceof IPCDynamicPageView)))
       {
-        ad.v("MicroMsg.DynamicPagePerformance", "pauseAllView, do pause view(%s)", new Object[] { Integer.valueOf(localView.hashCode()) });
+        ae.v("MicroMsg.DynamicPagePerformance", "pauseAllView, do pause view(%s)", new Object[] { Integer.valueOf(localView.hashCode()) });
         ((IPCDynamicPageView)localView).onPause();
       }
     }
     AppMethodBeat.o(121222);
   }
   
-  public final void Cb(String paramString)
+  public final void CD(String paramString)
   {
     AppMethodBeat.i(121223);
-    paramString = this.kfC.bX(paramString);
+    paramString = this.kiS.bX(paramString);
     if ((paramString == null) || (paramString.isEmpty()))
     {
       AppMethodBeat.o(121223);
@@ -105,7 +105,7 @@ final class b
       View localView = (View)paramString.next();
       if ((localView != null) && ((localView instanceof IPCDynamicPageView)))
       {
-        ad.v("MicroMsg.DynamicPagePerformance", "pauseAllView, do resume view(%s)", new Object[] { Integer.valueOf(localView.hashCode()) });
+        ae.v("MicroMsg.DynamicPagePerformance", "pauseAllView, do resume view(%s)", new Object[] { Integer.valueOf(localView.hashCode()) });
         ((IPCDynamicPageView)localView).onResume();
       }
     }
@@ -115,15 +115,15 @@ final class b
   public final void exit()
   {
     AppMethodBeat.i(121220);
-    com.tencent.mm.plugin.appbrand.dynamic.b.postToWorker(this.kfE);
+    com.tencent.mm.plugin.appbrand.dynamic.b.postToWorker(this.kiU);
     AppMethodBeat.o(121220);
   }
   
   public final void restart()
   {
     AppMethodBeat.i(121221);
-    com.tencent.mm.plugin.appbrand.dynamic.b.postToWorker(this.kfF);
-    com.tencent.mm.plugin.appbrand.dynamic.b.k(this.kfD, 2000L);
+    com.tencent.mm.plugin.appbrand.dynamic.b.postToWorker(this.kiV);
+    com.tencent.mm.plugin.appbrand.dynamic.b.k(this.kiT, 2000L);
     AppMethodBeat.o(121221);
   }
 }

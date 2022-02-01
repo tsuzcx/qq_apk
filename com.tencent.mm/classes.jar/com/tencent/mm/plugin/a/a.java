@@ -80,10 +80,10 @@ public class a
   public static final int bmr;
   public static final int bms;
   public static final int bmt;
-  public static final int iQf;
-  private int iQg;
-  private long iQh;
-  public long iQi;
+  public static final int iSY;
+  private int iSZ;
+  private long iTa;
+  public long iTb;
   private int type;
   
   static
@@ -165,32 +165,32 @@ public class a
     bmr = c.bJ("mean");
     bms = c.bJ("name");
     bmt = c.bJ("data");
-    iQf = c.bJ("----");
+    iSY = c.bJ("----");
     AppMethodBeat.o(133849);
   }
   
   public a(int paramInt1, long paramLong1, int paramInt2, long paramLong2)
   {
-    this.iQg = paramInt1;
-    this.iQi = paramLong1;
+    this.iSZ = paramInt1;
+    this.iTb = paramLong1;
     this.type = paramInt2;
-    this.iQh = paramLong2;
+    this.iTa = paramLong2;
   }
   
-  public final boolean aQM()
+  public final boolean aRl()
   {
     return this.type == blp;
   }
   
-  public final boolean aQN()
+  public final boolean aRm()
   {
-    return this.iQg == 0;
+    return this.iSZ == 0;
   }
   
   public final long getEndPos()
   {
     AppMethodBeat.i(133847);
-    long l1 = this.iQi;
+    long l1 = this.iTb;
     long l2 = getSize();
     AppMethodBeat.o(133847);
     return l1 + l2;
@@ -198,25 +198,25 @@ public class a
   
   public final long getSize()
   {
-    if (this.iQh > 0L) {
-      return this.iQh;
+    if (this.iTa > 0L) {
+      return this.iTa;
     }
-    return this.iQg;
+    return this.iSZ;
   }
   
   public String toString()
   {
     AppMethodBeat.i(133848);
-    Object localObject = new StringBuilder("Atom{atomSize=").append(this.iQg).append(", atomLargeSize=").append(this.iQh).append(", type=");
+    Object localObject = new StringBuilder("Atom{atomSize=").append(this.iSZ).append(", atomLargeSize=").append(this.iTa).append(", type=");
     int i = this.type;
-    localObject = new String(new byte[] { (byte)(i >> 24 & 0xFF), (byte)(i >> 16 & 0xFF), (byte)(i >> 8 & 0xFF), (byte)(i & 0xFF) }) + ", beginPos=" + this.iQi + '}';
+    localObject = new String(new byte[] { (byte)(i >> 24 & 0xFF), (byte)(i >> 16 & 0xFF), (byte)(i >> 8 & 0xFF), (byte)(i & 0xFF) }) + ", beginPos=" + this.iTb + '}';
     AppMethodBeat.o(133848);
     return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.a.a
  * JD-Core Version:    0.7.0.1
  */

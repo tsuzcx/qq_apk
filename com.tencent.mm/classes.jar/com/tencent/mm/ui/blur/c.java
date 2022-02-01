@@ -5,29 +5,29 @@ import android.graphics.drawable.Drawable;
 
 public abstract interface c
 {
-  public abstract void E(Drawable paramDrawable);
+  public abstract void F(Drawable paramDrawable);
   
   public abstract void a(b paramb);
   
-  public abstract void acD(int paramInt);
+  public abstract void adl(int paramInt);
   
-  public abstract void bU(float paramFloat);
+  public abstract void bS(float paramFloat);
   
   public abstract void destroy();
   
-  public abstract void fAd();
+  public abstract void fEf();
   
-  public abstract void fAe();
+  public abstract void fEg();
   
-  public abstract void fAf();
+  public abstract void fEh();
   
-  public abstract void fAg();
+  public abstract void fEi();
   
   public abstract void p(Canvas paramCanvas);
   
-  public abstract void xL(boolean paramBoolean);
+  public abstract void xS(boolean paramBoolean);
   
-  public abstract void xM(boolean paramBoolean);
+  public abstract void xT(boolean paramBoolean);
 }
 
 

@@ -10,8 +10,8 @@ public class CreTypeRuleInfo
   implements Parcelable
 {
   public static final Parcelable.Creator<CreTypeRuleInfo> CREATOR;
-  public int CVM;
-  public CreExtInfo CVN;
+  public int Dns;
+  public CreExtInfo Dnt;
   
   static
   {
@@ -25,8 +25,8 @@ public class CreTypeRuleInfo
   protected CreTypeRuleInfo(Parcel paramParcel)
   {
     AppMethodBeat.i(70252);
-    this.CVM = paramParcel.readInt();
-    this.CVN = ((CreExtInfo)paramParcel.readParcelable(CreExtInfo.class.getClassLoader()));
+    this.Dns = paramParcel.readInt();
+    this.Dnt = ((CreExtInfo)paramParcel.readParcelable(CreExtInfo.class.getClassLoader()));
     AppMethodBeat.o(70252);
   }
   
@@ -36,8 +36,8 @@ public class CreTypeRuleInfo
     if (paramJSONObject != null)
     {
       CreTypeRuleInfo localCreTypeRuleInfo = new CreTypeRuleInfo();
-      localCreTypeRuleInfo.CVM = paramJSONObject.optInt("support_cre_type", 0);
-      localCreTypeRuleInfo.CVN = CreExtInfo.bd(paramJSONObject.optJSONObject("cre_need_info"));
+      localCreTypeRuleInfo.Dns = paramJSONObject.optInt("support_cre_type", 0);
+      localCreTypeRuleInfo.Dnt = CreExtInfo.bd(paramJSONObject.optJSONObject("cre_need_info"));
       AppMethodBeat.o(70254);
       return localCreTypeRuleInfo;
     }
@@ -53,14 +53,14 @@ public class CreTypeRuleInfo
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(70253);
-    paramParcel.writeInt(this.CVM);
-    paramParcel.writeParcelable(this.CVN, paramInt);
+    paramParcel.writeInt(this.Dns);
+    paramParcel.writeParcelable(this.Dnt, paramInt);
     AppMethodBeat.o(70253);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.model.CreTypeRuleInfo
  * JD-Core Version:    0.7.0.1
  */

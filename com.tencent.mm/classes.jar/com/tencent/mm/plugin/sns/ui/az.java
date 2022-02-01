@@ -5,12 +5,12 @@ import java.util.List;
 
 public final class az
 {
-  public boolean Aae;
-  public List<View> Ady;
-  public String drH;
+  public boolean AnN;
+  public boolean Arr;
+  public List<View> AuK;
+  public String dsN;
   public int index;
   public int position;
-  public boolean zWE;
 }
 
 

@@ -1,39 +1,39 @@
 package com.tencent.mm.plugin.emoji.sync.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.kernel.b;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.emoji.model.k;
 import com.tencent.mm.plugin.emoji.sync.d;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.bd;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.be;
 import com.tencent.mm.storage.emotion.EmojiInfo;
 
 public final class c
   extends com.tencent.mm.plugin.emoji.sync.c
 {
   private String mKey;
-  private d pGW;
-  private n pGY;
-  private EmojiInfo pGZ;
+  private d pNA;
+  private n pNC;
+  private EmojiInfo pND;
   
   public c(String paramString)
   {
     AppMethodBeat.i(108781);
-    if (bt.isNullOrNil(paramString)) {
-      ad.e("MicroMsg.BKGLoader.EmojiUploadTask", "[cpan] can not create task. md5 is null.");
+    if (bu.isNullOrNil(paramString)) {
+      ae.e("MicroMsg.BKGLoader.EmojiUploadTask", "[cpan] can not create task. md5 is null.");
     }
     this.mKey = paramString;
-    this.pGZ = k.getEmojiStorageMgr().ILn.aUK(this.mKey);
+    this.pND = k.getEmojiStorageMgr().JfU.aWl(this.mKey);
     AppMethodBeat.o(108781);
   }
   
   public final void a(d paramd)
   {
-    this.pGW = paramd;
+    this.pNA = paramd;
   }
   
   public final void cancel() {}
@@ -44,7 +44,7 @@ public final class c
     if ((paramObject != null) && ((paramObject instanceof c)))
     {
       paramObject = (c)paramObject;
-      if ((!bt.isNullOrNil(this.mKey)) && (!bt.isNullOrNil(paramObject.mKey)) && (this.mKey.equals(paramObject.mKey)))
+      if ((!bu.isNullOrNil(this.mKey)) && (!bu.isNullOrNil(paramObject.mKey)) && (this.mKey.equals(paramObject.mKey)))
       {
         AppMethodBeat.o(108783);
         return true;
@@ -62,24 +62,24 @@ public final class c
   public final void run()
   {
     AppMethodBeat.i(108782);
-    if (this.pGW != null) {
-      this.pGW.abW(this.mKey);
+    if (this.pNA != null) {
+      this.pNA.acN(this.mKey);
     }
-    while (this.pGZ == null)
+    while (this.pND == null)
     {
-      this.pGW.l(this.mKey, 1, false);
+      this.pNA.l(this.mKey, 1, false);
       AppMethodBeat.o(108782);
       return;
-      ad.w("MicroMsg.BKGLoader.EmojiUploadTask", "call back is null.");
+      ae.w("MicroMsg.BKGLoader.EmojiUploadTask", "call back is null.");
     }
-    this.pGY = new com.tencent.mm.plugin.emoji.f.f(this.pGZ);
-    g.ajB().gAO.a(this.pGY, 0);
+    this.pNC = new com.tencent.mm.plugin.emoji.f.f(this.pND);
+    g.ajQ().gDv.a(this.pNC, 0);
     AppMethodBeat.o(108782);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.sync.a.c
  * JD-Core Version:    0.7.0.1
  */

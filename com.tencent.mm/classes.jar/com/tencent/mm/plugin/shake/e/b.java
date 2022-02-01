@@ -9,20 +9,20 @@ import com.tencent.mm.platformtools.s;
 import com.tencent.mm.platformtools.s.a;
 import com.tencent.mm.platformtools.s.b;
 import com.tencent.mm.plugin.shake.b.m;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.g;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.h;
 import java.io.IOException;
 
 public final class b
   implements s
 {
   private String thumburl = "";
-  private c.a yQQ = null;
+  private c.a zha = null;
   
   public b(c.a parama)
   {
-    this.yQQ = parama;
+    this.zha = parama;
   }
   
   public b(String paramString)
@@ -33,10 +33,10 @@ public final class b
   public final Bitmap a(Bitmap paramBitmap, s.a parama, String paramString)
   {
     AppMethodBeat.i(28620);
-    if (s.a.iNr == parama) {}
+    if (s.a.iQl == parama) {}
     try
     {
-      g.a(paramBitmap, 100, Bitmap.CompressFormat.PNG, aQw(), false);
+      h.a(paramBitmap, 100, Bitmap.CompressFormat.PNG, aQV(), false);
       AppMethodBeat.o(28620);
       return paramBitmap;
     }
@@ -44,51 +44,31 @@ public final class b
     {
       for (;;)
       {
-        ad.printErrStackTrace("MicroMsg.TVImgGetStrategy", parama, "", new Object[0]);
+        ae.printErrStackTrace("MicroMsg.TVImgGetStrategy", parama, "", new Object[0]);
       }
     }
   }
   
   public final void a(s.a parama, String paramString) {}
   
-  public final boolean aQA()
-  {
-    return false;
-  }
-  
-  public final Bitmap aQB()
-  {
-    AppMethodBeat.i(28621);
-    if (aj.getContext() == null)
-    {
-      AppMethodBeat.o(28621);
-      return null;
-    }
-    Bitmap localBitmap = BitmapFactory.decodeResource(aj.getContext().getResources(), 2131233476);
-    AppMethodBeat.o(28621);
-    return localBitmap;
-  }
-  
-  public final void aQC() {}
-  
-  public final s.b aQv()
+  public final s.b aQU()
   {
     return null;
   }
   
-  public final String aQw()
+  public final String aQV()
   {
     AppMethodBeat.i(28617);
     String str;
-    if ((this.yQQ != null) && (this.yQQ.field_thumburl != null))
+    if ((this.zha != null) && (this.zha.field_thumburl != null))
     {
-      str = m.iY(this.yQQ.field_thumburl, "@S");
+      str = m.je(this.zha.field_thumburl, "@S");
       AppMethodBeat.o(28617);
       return str;
     }
     if (this.thumburl != null)
     {
-      str = m.iY(this.thumburl, "@S");
+      str = m.je(this.thumburl, "@S");
       AppMethodBeat.o(28617);
       return str;
     }
@@ -96,33 +76,53 @@ public final class b
     return "";
   }
   
-  public final String aQx()
+  public final String aQW()
   {
-    if ((this.yQQ != null) && (this.yQQ.field_thumburl != null)) {
-      return this.yQQ.field_thumburl;
+    if ((this.zha != null) && (this.zha.field_thumburl != null)) {
+      return this.zha.field_thumburl;
     }
     return this.thumburl;
   }
   
-  public final String aQy()
+  public final String aQX()
   {
     AppMethodBeat.i(28618);
-    String str = aQx() + "_tv";
+    String str = aQW() + "_tv";
     AppMethodBeat.o(28618);
     return str;
   }
   
-  public final boolean aQz()
+  public final boolean aQY()
   {
     return false;
   }
+  
+  public final boolean aQZ()
+  {
+    return false;
+  }
+  
+  public final Bitmap aRa()
+  {
+    AppMethodBeat.i(28621);
+    if (ak.getContext() == null)
+    {
+      AppMethodBeat.o(28621);
+      return null;
+    }
+    Bitmap localBitmap = BitmapFactory.decodeResource(ak.getContext().getResources(), 2131233476);
+    AppMethodBeat.o(28621);
+    return localBitmap;
+  }
+  
+  public final void aRb() {}
   
   public final void aa(String paramString, boolean paramBoolean) {}
   
   public final String getCacheKey()
   {
     AppMethodBeat.i(28619);
-    String str = aQx() + "_tv";
+    String str = aQW() + "_tv";
     AppMethodBeat.o(28619);
     return str;
   }

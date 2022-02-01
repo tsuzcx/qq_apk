@@ -10,14 +10,14 @@ public final class i
   extends w
   implements f
 {
-  private final w Naq;
-  private final Type Nar;
+  private final w Nxw;
+  private final Type Nxx;
   
   public i(Type paramType)
   {
     AppMethodBeat.i(57424);
-    this.Nar = paramType;
-    paramType = this.Nar;
+    this.Nxx = paramType;
+    paramType = this.Nxx;
     if ((paramType instanceof GenericArrayType))
     {
       paramType = ((GenericArrayType)paramType).getGenericComponentType();
@@ -25,7 +25,7 @@ public final class i
     }
     for (paramType = w.a.j(paramType);; paramType = w.a.j((Type)paramType))
     {
-      this.Naq = paramType;
+      this.Nxw = paramType;
       AppMethodBeat.o(57424);
       return;
       if ((!(paramType instanceof Class)) || (!((Class)paramType).isArray())) {
@@ -34,19 +34,19 @@ public final class i
       paramType = ((Class)paramType).getComponentType();
       p.g(paramType, "getComponentType()");
     }
-    paramType = (Throwable)new IllegalArgumentException("Not an array type (" + this.Nar.getClass() + "): " + this.Nar);
+    paramType = (Throwable)new IllegalArgumentException("Not an array type (" + this.Nxx.getClass() + "): " + this.Nxx);
     AppMethodBeat.o(57424);
     throw paramType;
   }
   
-  protected final Type gkF()
+  protected final Type gph()
   {
-    return this.Nar;
+    return this.Nxx;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.b.d.b.i
  * JD-Core Version:    0.7.0.1
  */

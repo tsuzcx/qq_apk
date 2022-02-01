@@ -4,10 +4,10 @@ import android.annotation.TargetApi;
 import android.bluetooth.BluetoothAdapter;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.d;
-import com.tencent.mm.plugin.appbrand.g;
-import com.tencent.mm.plugin.appbrand.g.c;
+import com.tencent.mm.plugin.appbrand.h;
+import com.tencent.mm.plugin.appbrand.h.c;
 import com.tencent.mm.plugin.appbrand.jsapi.at;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.vending.j.b;
 import java.util.Collection;
 import java.util.HashMap;
@@ -24,8 +24,8 @@ public final class c
 {
   private static final int CTRL_INDEX = 221;
   private static final String NAME = "startBeaconDiscovery";
-  g.c kEd = null;
-  private a.a.a kNI;
+  h.c kHs = null;
+  private a.a.a kRk;
   
   private static UUID[] N(JSONObject paramJSONObject)
   {
@@ -51,7 +51,7 @@ public final class c
           localObject1 = paramJSONObject;
           localObject2 = localJSONArray.getString(i);
           localObject1 = paramJSONObject;
-          ad.d("MicroMsg.JsApiStartBeaconDiscovery", "uuid %s", new Object[] { localObject2 });
+          ae.d("MicroMsg.JsApiStartBeaconDiscovery", "uuid %s", new Object[] { localObject2 });
           localObject1 = paramJSONObject;
           paramJSONObject[i] = UUID.fromString((String)localObject2);
           i += 1;
@@ -60,7 +60,7 @@ public final class c
       }
       catch (JSONException paramJSONObject)
       {
-        ad.e("MicroMsg.JsApiStartBeaconDiscovery", "get uuid error!");
+        ae.e("MicroMsg.JsApiStartBeaconDiscovery", "get uuid error!");
         localObject2 = localObject1;
       }
     }
@@ -70,38 +70,38 @@ public final class c
   public final void a(final com.tencent.mm.plugin.appbrand.jsapi.c paramc, JSONObject paramJSONObject, int paramInt)
   {
     AppMethodBeat.i(144679);
-    ad.i("MicroMsg.JsApiStartBeaconDiscovery", "startBeaconDiscovery data %s", new Object[] { paramJSONObject });
+    ae.i("MicroMsg.JsApiStartBeaconDiscovery", "startBeaconDiscovery data %s", new Object[] { paramJSONObject });
     UUID[] arrayOfUUID = N(paramJSONObject);
     if ((arrayOfUUID == null) || (arrayOfUUID.length <= 0))
     {
-      ad.e("MicroMsg.JsApiStartBeaconDiscovery", "serviceUuids is empty");
+      ae.e("MicroMsg.JsApiStartBeaconDiscovery", "serviceUuids is empty");
       paramJSONObject = new HashMap();
       paramJSONObject.put("errCode", Integer.valueOf(11006));
-      paramc.h(paramInt, m("fail:invalid data", paramJSONObject));
+      paramc.h(paramInt, n("fail:invalid data", paramJSONObject));
       AppMethodBeat.o(144679);
       return;
     }
     String str = paramc.getAppId();
-    Object localObject = a.PD(paramc.getAppId());
+    Object localObject = a.Ql(paramc.getAppId());
     paramJSONObject = (JSONObject)localObject;
     if (localObject == null)
     {
-      ad.i("MicroMsg.JsApiStartBeaconDiscovery", "beaconWorker init");
+      ae.i("MicroMsg.JsApiStartBeaconDiscovery", "beaconWorker init");
       paramJSONObject = new a.a();
       a.a(str, paramJSONObject);
     }
-    if (this.kNI == null)
+    if (this.kRk == null)
     {
-      ad.i("MicroMsg.JsApiStartBeaconDiscovery", "onBeaconScanCallback init");
-      this.kNI = new a.a.a()
+      ae.i("MicroMsg.JsApiStartBeaconDiscovery", "onBeaconScanCallback init");
+      this.kRk = new a.a.a()
       {
-        c.b kNN;
-        c.a kNO;
+        c.b kRp;
+        c.a kRq;
         
-        public final void E(Map<String, JSONObject> paramAnonymousMap)
+        public final void L(Map<String, JSONObject> paramAnonymousMap)
         {
           AppMethodBeat.i(144676);
-          ad.d("MicroMsg.JsApiStartBeaconDiscovery", "found device ibeacon %s", new Object[] { paramAnonymousMap });
+          ae.d("MicroMsg.JsApiStartBeaconDiscovery", "found device ibeacon %s", new Object[] { paramAnonymousMap });
           JSONArray localJSONArray = new JSONArray();
           paramAnonymousMap = paramAnonymousMap.values().iterator();
           while (paramAnonymousMap.hasNext())
@@ -115,7 +115,7 @@ public final class c
           try
           {
             paramAnonymousMap.put("beacons", localJSONArray);
-            this.kNN.b(paramc, paramc.aXC()).Pi(paramAnonymousMap.toString()).bir();
+            this.kRp.b(paramc, paramc.aXX()).PQ(paramAnonymousMap.toString()).bja();
             AppMethodBeat.o(144676);
             return;
           }
@@ -123,22 +123,22 @@ public final class c
           {
             for (;;)
             {
-              ad.e("MicroMsg.JsApiStartBeaconDiscovery", "put res JSON data error : %s", new Object[] { localJSONException });
+              ae.e("MicroMsg.JsApiStartBeaconDiscovery", "put res JSON data error : %s", new Object[] { localJSONException });
             }
           }
         }
         
-        public final void gs(boolean paramAnonymousBoolean)
+        public final void gq(boolean paramAnonymousBoolean)
         {
           AppMethodBeat.i(144677);
-          ad.i("MicroMsg.JsApiStartBeaconDiscovery", "onBluetoothStateChange:%b", new Object[] { Boolean.valueOf(paramAnonymousBoolean) });
+          ae.i("MicroMsg.JsApiStartBeaconDiscovery", "onBluetoothStateChange:%b", new Object[] { Boolean.valueOf(paramAnonymousBoolean) });
           JSONObject localJSONObject = new JSONObject();
           try
           {
             localJSONObject.put("available", paramAnonymousBoolean);
             localJSONObject.put("discovering", false);
-            ad.d("MicroMsg.JsApiStartBeaconDiscovery", "OnBeaconServiceChangedEvent %s", new Object[] { localJSONObject.toString() });
-            this.kNO.b(paramc, paramc.aXC()).Pi(localJSONObject.toString()).bir();
+            ae.d("MicroMsg.JsApiStartBeaconDiscovery", "OnBeaconServiceChangedEvent %s", new Object[] { localJSONObject.toString() });
+            this.kRq.b(paramc, paramc.aXX()).PQ(localJSONObject.toString()).bja();
             AppMethodBeat.o(144677);
             return;
           }
@@ -146,40 +146,40 @@ public final class c
           {
             for (;;)
             {
-              ad.e("MicroMsg.JsApiStartBeaconDiscovery", "put JSON data error : %s", new Object[] { localJSONException });
+              ae.e("MicroMsg.JsApiStartBeaconDiscovery", "put JSON data error : %s", new Object[] { localJSONException });
             }
           }
         }
       };
     }
-    if (this.kEd == null)
+    if (this.kHs == null)
     {
-      ad.i("MicroMsg.JsApiStartBeaconDiscovery", "listener init");
-      this.kEd = new g.c()
+      ae.i("MicroMsg.JsApiStartBeaconDiscovery", "listener init");
+      this.kHs = new h.c()
       {
         public final void onDestroy()
         {
           AppMethodBeat.i(144678);
-          ad.i("MicroMsg.JsApiStartBeaconDiscovery", "onDestroy");
-          g.b(paramc.getAppId(), this);
-          a.a locala = a.PD(paramc.getAppId());
+          ae.i("MicroMsg.JsApiStartBeaconDiscovery", "onDestroy");
+          h.b(paramc.getAppId(), this);
+          a.a locala = a.Ql(paramc.getAppId());
           if (locala != null)
           {
-            locala.Gv();
+            locala.GB();
             a.remove(paramc.getAppId());
           }
-          c.this.kEd = null;
+          c.this.kHs = null;
           AppMethodBeat.o(144678);
         }
       };
-      g.a(paramc.getAppId(), this.kEd);
+      h.a(paramc.getAppId(), this.kHs);
     }
-    paramJSONObject.kNH = arrayOfUUID;
-    paramJSONObject.kNI = this.kNI;
-    ad.i("MicroMsg.BeaconManager", "BeaconWorker:%d start", new Object[] { Integer.valueOf(paramJSONObject.hashCode()) });
+    paramJSONObject.kRj = arrayOfUUID;
+    paramJSONObject.kRk = this.kRk;
+    ae.i("MicroMsg.BeaconManager", "BeaconWorker:%d start", new Object[] { Integer.valueOf(paramJSONObject.hashCode()) });
     if (paramJSONObject.isStart())
     {
-      ad.i("MicroMsg.BeaconManager", "BeaconWorker:%d, already start", new Object[] { Integer.valueOf(paramJSONObject.hashCode()) });
+      ae.i("MicroMsg.BeaconManager", "BeaconWorker:%d, already start", new Object[] { Integer.valueOf(paramJSONObject.hashCode()) });
       paramJSONObject = com.tencent.mm.vending.j.c.N(Integer.valueOf(11003), "fail:already start");
       localObject = new HashMap();
       ((Map)localObject).put("errCode", paramJSONObject.get(0));
@@ -190,36 +190,36 @@ public final class c
     label542:
     for (paramJSONObject = "ok";; paramJSONObject = (String)paramJSONObject.get(1))
     {
-      paramc.h(paramInt, m(paramJSONObject, (Map)localObject));
+      paramc.h(paramInt, n(paramJSONObject, (Map)localObject));
       AppMethodBeat.o(144679);
       return;
-      if (d.lz(18))
+      if (d.lB(18))
       {
-        ad.e("MicroMsg.BeaconManager", "API version is below 18!");
+        ae.e("MicroMsg.BeaconManager", "API version is below 18!");
         paramJSONObject = com.tencent.mm.vending.j.c.N(Integer.valueOf(11000), "fail:not support");
         break;
       }
-      if (paramJSONObject.kNF == null)
+      if (paramJSONObject.kRh == null)
       {
-        ad.e("MicroMsg.BeaconManager", "bluetoothAdapter is null!");
+        ae.e("MicroMsg.BeaconManager", "bluetoothAdapter is null!");
         paramJSONObject = com.tencent.mm.vending.j.c.N(Integer.valueOf(11001), "fail:bluetooth service is unavailable");
         break;
       }
-      if (!paramJSONObject.kNF.isEnabled())
+      if (!paramJSONObject.kRh.isEnabled())
       {
-        ad.e("MicroMsg.BeaconManager", "bluetoothAdapter is not enabled!");
+        ae.e("MicroMsg.BeaconManager", "bluetoothAdapter is not enabled!");
         paramJSONObject = com.tencent.mm.vending.j.c.N(Integer.valueOf(11001), "fail:bluetooth service is unavailable");
         break;
       }
-      if (paramJSONObject.kNF.isDiscovering())
+      if (paramJSONObject.kRh.isDiscovering())
       {
-        ad.e("MicroMsg.BeaconManager", "bluetoothAdapter is Discovering!");
+        ae.e("MicroMsg.BeaconManager", "bluetoothAdapter is Discovering!");
         paramJSONObject = com.tencent.mm.vending.j.c.N(Integer.valueOf(11003), "fail:already start");
         break;
       }
-      paramJSONObject.kNG.clear();
-      boolean bool = paramJSONObject.kNF.startLeScan(paramJSONObject.kNL);
-      ad.i("MicroMsg.BeaconManager", "startLeScan:%b", new Object[] { Boolean.valueOf(bool) });
+      paramJSONObject.kRi.clear();
+      boolean bool = paramJSONObject.kRh.startLeScan(paramJSONObject.kRn);
+      ae.i("MicroMsg.BeaconManager", "startLeScan:%b", new Object[] { Boolean.valueOf(bool) });
       if (!bool)
       {
         paramJSONObject = com.tencent.mm.vending.j.c.N(Integer.valueOf(11005), "fail:system error");

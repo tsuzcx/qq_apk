@@ -2,40 +2,40 @@ package com.tencent.mm.ui.contact;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.fts.a.a.m;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.HashSet;
 import java.util.List;
 
 public final class t
   extends s
 {
-  private HashSet<String> Knv;
+  private HashSet<String> KJP;
   
   public t(MMBaseSelectContactUI paramMMBaseSelectContactUI, List<String> paramList, boolean paramBoolean, String paramString)
   {
     super(paramMMBaseSelectContactUI, paramList, paramBoolean, 0);
     AppMethodBeat.i(102890);
-    this.Knv = new HashSet();
-    if (!bt.isNullOrNil(paramString))
+    this.KJP = new HashSet();
+    if (!bu.isNullOrNil(paramString))
     {
-      this.Knv.addAll(bt.U(paramString.split(",")));
-      ad.i("MicroMsg.MMSearchSportContactAdapter", "matchUsernameSet %s", new Object[] { Integer.valueOf(this.Knv.size()) });
+      this.KJP.addAll(bu.U(paramString.split(",")));
+      ae.i("MicroMsg.MMSearchSportContactAdapter", "matchUsernameSet %s", new Object[] { Integer.valueOf(this.KJP.size()) });
     }
     AppMethodBeat.o(102890);
   }
   
-  protected final void iw(List<m> paramList)
+  protected final void iG(List<m> paramList)
   {
     AppMethodBeat.i(102891);
-    super.iw(paramList);
-    if (this.Knv.size() > 0)
+    super.iG(paramList);
+    if (this.KJP.size() > 0)
     {
       int i = paramList.size() - 1;
       while (i >= 0)
       {
         m localm = (m)paramList.get(i);
-        if (!this.Knv.contains(localm.tuh)) {
+        if (!this.KJP.contains(localm.tEY)) {
           paramList.remove(i);
         }
         i -= 1;

@@ -1,41 +1,41 @@
 package com.tencent.mm.plugin.collect.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.dcm;
-import com.tencent.mm.protocal.protobuf.dcn;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.ddg;
+import com.tencent.mm.protocal.protobuf.ddh;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class p
   extends n
   implements k
 {
   private f callback;
-  private b gPp;
-  private dcm paO;
+  private b gRX;
+  private ddg phs;
   
   public p(String paramString)
   {
     AppMethodBeat.i(63838);
     b.a locala = new b.a();
-    locala.hNM = new dcm();
-    locala.hNN = new dcn();
+    locala.hQF = new ddg();
+    locala.hQG = new ddh();
     locala.funcId = 304;
     locala.uri = "/cgi-bin/micromsg-bin/setpushsound";
-    locala.hNO = 0;
+    locala.hQH = 0;
     locala.respCmdId = 0;
-    this.gPp = locala.aDC();
-    this.paO = ((dcm)this.gPp.hNK.hNQ);
-    this.paO.nEf = 3;
-    this.paO.Hrz = paramString;
-    ad.i("MicroMsg.NetSceneSetPushSound", "type: %d, sound: %s", new Object[] { Integer.valueOf(3), paramString });
+    this.gRX = locala.aDS();
+    this.phs = ((ddg)this.gRX.hQD.hQJ);
+    this.phs.nJA = 3;
+    this.phs.HLb = paramString;
+    ae.i("MicroMsg.NetSceneSetPushSound", "type: %d, sound: %s", new Object[] { Integer.valueOf(3), paramString });
     AppMethodBeat.o(63838);
   }
   
@@ -43,7 +43,7 @@ public final class p
   {
     AppMethodBeat.i(63839);
     this.callback = paramf;
-    int i = dispatch(parame, this.gPp, this);
+    int i = dispatch(parame, this.gRX, this);
     AppMethodBeat.o(63839);
     return i;
   }
@@ -56,7 +56,7 @@ public final class p
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(63840);
-    ad.i("MicroMsg.NetSceneSetPushSound", "errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    ae.i("MicroMsg.NetSceneSetPushSound", "errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }

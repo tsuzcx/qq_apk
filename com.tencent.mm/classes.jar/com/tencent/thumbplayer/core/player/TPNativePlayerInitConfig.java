@@ -60,18 +60,18 @@ public class TPNativePlayerInitConfig
   
   public TPNativePlayerInitConfig()
   {
-    AppMethodBeat.i(220708);
+    AppMethodBeat.i(197647);
     this.mIntMap = new HashMap();
     this.mLongMap = new HashMap();
     this.mBoolMap = new HashMap();
     this.mQueueIntMap = new HashMap();
     this.mQueueStringMap = new HashMap();
-    AppMethodBeat.o(220708);
+    AppMethodBeat.o(197647);
   }
   
   public void addQueueInt(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(220709);
+    AppMethodBeat.i(197648);
     Vector localVector2 = (Vector)this.mQueueIntMap.get(Integer.valueOf(paramInt1));
     Vector localVector1 = localVector2;
     if (localVector2 == null)
@@ -80,12 +80,12 @@ public class TPNativePlayerInitConfig
       this.mQueueIntMap.put(Integer.valueOf(paramInt1), localVector1);
     }
     localVector1.add(Integer.valueOf(paramInt2));
-    AppMethodBeat.o(220709);
+    AppMethodBeat.o(197648);
   }
   
   public void addQueueString(int paramInt, String paramString)
   {
-    AppMethodBeat.i(220710);
+    AppMethodBeat.i(197649);
     Vector localVector2 = (Vector)this.mQueueStringMap.get(Integer.valueOf(paramInt));
     Vector localVector1 = localVector2;
     if (localVector2 == null)
@@ -94,7 +94,7 @@ public class TPNativePlayerInitConfig
       this.mQueueStringMap.put(Integer.valueOf(paramInt), localVector1);
     }
     localVector1.add(paramString);
-    AppMethodBeat.o(220710);
+    AppMethodBeat.o(197649);
   }
   
   public HashMap<Integer, Boolean> getBoolMap()
@@ -124,23 +124,23 @@ public class TPNativePlayerInitConfig
   
   public void setBool(int paramInt, boolean paramBoolean)
   {
-    AppMethodBeat.i(220713);
+    AppMethodBeat.i(197652);
     this.mBoolMap.put(Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean));
-    AppMethodBeat.o(220713);
+    AppMethodBeat.o(197652);
   }
   
   public void setInt(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(220711);
+    AppMethodBeat.i(197650);
     this.mIntMap.put(Integer.valueOf(paramInt1), Integer.valueOf(paramInt2));
-    AppMethodBeat.o(220711);
+    AppMethodBeat.o(197650);
   }
   
   public void setLong(int paramInt, long paramLong)
   {
-    AppMethodBeat.i(220712);
+    AppMethodBeat.i(197651);
     this.mLongMap.put(Integer.valueOf(paramInt), Long.valueOf(paramLong));
-    AppMethodBeat.o(220712);
+    AppMethodBeat.o(197651);
   }
 }
 

@@ -6,7 +6,7 @@ public abstract interface m
   public abstract void a(l paraml);
   
   @Deprecated
-  public abstract void baU(String paramString);
+  public abstract void bcx(String paramString);
   
   public abstract boolean setProfileResultCallback(String paramString, k paramk);
 }

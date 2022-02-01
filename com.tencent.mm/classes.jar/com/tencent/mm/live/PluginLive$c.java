@@ -5,17 +5,17 @@ import com.tencent.mm.live.b.c.c;
 import com.tencent.mm.storagebase.h.b;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "", "kotlin.jvm.PlatformType", "getSQLs", "()[Ljava/lang/String;"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "", "kotlin.jvm.PlatformType", "getSQLs", "()[Ljava/lang/String;"})
 final class PluginLive$c
   implements h.b
 {
-  public static final c gGi;
+  public static final c gIP;
   
   static
   {
-    AppMethodBeat.i(211989);
-    gGi = new c();
-    AppMethodBeat.o(211989);
+    AppMethodBeat.i(215607);
+    gIP = new c();
+    AppMethodBeat.o(215607);
   }
   
   public final String[] getSQLs()

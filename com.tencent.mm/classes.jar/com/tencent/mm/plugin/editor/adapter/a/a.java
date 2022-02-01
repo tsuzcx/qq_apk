@@ -7,17 +7,17 @@ import com.tencent.mm.plugin.editor.model.nativenote.manager.j;
 public abstract class a
   extends RecyclerView.w
 {
-  protected j prJ;
+  protected j pyp;
   
   public a(View paramView, j paramj)
   {
     super(paramView);
-    this.prJ = paramj;
+    this.pyp = paramj;
   }
   
   public abstract void a(com.tencent.mm.plugin.editor.model.a.a parama, int paramInt1, int paramInt2);
   
-  public abstract int cdT();
+  public abstract int cfi();
 }
 
 

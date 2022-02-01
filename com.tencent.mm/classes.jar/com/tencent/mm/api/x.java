@@ -1,5 +1,7 @@
 package com.tencent.mm.api;
 
+import android.app.Activity;
+import android.content.Intent;
 import com.tencent.mm.kernel.c.a;
 import com.tencent.mm.plugin.webview.c.f;
 import com.tencent.mm.plugin.webview.core.BaseWebViewController;
@@ -10,7 +12,11 @@ public abstract interface x
 {
   public abstract BaseWebViewController a(MMWebView paramMMWebView);
   
+  public abstract boolean a(Activity paramActivity, int paramInt1, int paramInt2, Intent paramIntent);
+  
   public abstract f b(MMWebView paramMMWebView);
+  
+  public abstract void c(Activity paramActivity, String paramString);
 }
 
 

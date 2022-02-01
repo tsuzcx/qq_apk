@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.appbrand.ipc;
 
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public class SampleTask2
   extends MainProcessTask
@@ -16,10 +16,10 @@ public class SampleTask2
     AppMethodBeat.o(134867);
   }
   
-  public final void aOA()
+  public final void aOX()
   {
     AppMethodBeat.i(134866);
-    ad.e("SampleTask2", "Run in Main Process");
+    ae.e("SampleTask2", "Run in Main Process");
     AppMethodBeat.o(134866);
   }
 }

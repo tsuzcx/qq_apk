@@ -1,48 +1,49 @@
 package com.tencent.mm.audio.mix.h;
 
-import android.os.Environment;
+import android.content.Context;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.vfs.e;
-import java.io.File;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.vfs.k;
+import com.tencent.mm.vfs.w;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 public final class a
 {
-  private static boolean dfL = false;
+  private static boolean dgN = false;
+  
+  public static k PB()
+  {
+    AppMethodBeat.i(195431);
+    k localk2 = k.W(ak.getContext().getExternalCacheDir());
+    k localk1 = localk2;
+    if (localk2 == null) {
+      localk1 = k.W(ak.getContext().getCacheDir());
+    }
+    localk1 = new k(localk1, "MixAudio");
+    localk1.mkdirs();
+    AppMethodBeat.o(195431);
+    return localk1;
+  }
   
   public static String R(String paramString1, String paramString2)
   {
     AppMethodBeat.i(136956);
-    Object localObject = Environment.getExternalStorageDirectory().getAbsolutePath();
-    if ((dfL) && (paramString2.contains(".")) && (paramString2.contains("/")))
-    {
+    k localk = PB();
+    if ((paramString2.contains(".")) && (paramString2.contains("/")) && (paramString2.lastIndexOf(".") > paramString2.lastIndexOf("/"))) {
       paramString2 = paramString2.substring(paramString2.lastIndexOf("/") + 1, paramString2.lastIndexOf("."));
-      paramString2 = paramString2 + "_cache.pcm";
     }
-    for (;;)
+    for (paramString2 = paramString2 + "_cache.pcm";; paramString2 = c.ej(new StringBuilder().append(paramString2.hashCode()).toString()) + "_cache.pcm")
     {
-      paramString1 = "/".concat(String.valueOf(paramString1));
-      paramString1 = (String)localObject + paramString1;
-      localObject = new e(paramString1);
-      if (!((e)localObject).exists()) {
-        ((e)localObject).mkdirs();
+      localk = new k(w.B(localk.mUri) + "/" + paramString1);
+      if (!localk.exists()) {
+        localk.mkdirs();
       }
-      paramString1 = paramString1 + "/" + paramString2;
+      b.i("MicroMsg.Mix.FileUtil", "path:%s, appId:%s", new Object[] { w.B(localk.mUri), paramString1 });
+      paramString1 = w.B(new k(localk, paramString2).mUri);
       AppMethodBeat.o(136956);
       return paramString1;
-      if ((paramString2.contains(".")) && (paramString2.contains("/")) && (paramString2.lastIndexOf(".") > paramString2.lastIndexOf("/")))
-      {
-        paramString2 = paramString2.substring(paramString2.lastIndexOf("/") + 1, paramString2.lastIndexOf("."));
-        paramString2 = paramString2 + "_cache.pcm";
-        localObject = (String)localObject + "/tencent/MicroMsg/MixAudio";
-      }
-      else
-      {
-        paramString2 = c.ee(new StringBuilder().append(paramString2.hashCode()).toString()) + "_cache.pcm";
-        localObject = (String)localObject + "/tencent/MicroMsg/MixAudio";
-      }
     }
   }
   
@@ -55,10 +56,10 @@ public final class a
       while (paramArrayList.hasNext())
       {
         String str = R(paramString, (String)paramArrayList.next());
-        e locale = new e(str);
-        if (locale.exists())
+        k localk = new k(str);
+        if (localk.exists())
         {
-          locale.delete();
+          localk.delete();
           b.i("MicroMsg.Mix.FileUtil", "delete pcm cache file, file:%s", new Object[] { str });
         }
       }
@@ -66,44 +67,25 @@ public final class a
     AppMethodBeat.o(136957);
   }
   
-  public static String gv(String paramString)
+  public static String gB(String paramString)
   {
     AppMethodBeat.i(136954);
-    Object localObject = Environment.getExternalStorageDirectory().getAbsolutePath();
-    String str;
-    if ((dfL) && (paramString.contains(".")) && (paramString.contains("/")))
-    {
+    k localk = PB();
+    if ((paramString.contains(".")) && (paramString.contains("/")) && (paramString.lastIndexOf(".") > paramString.lastIndexOf("/"))) {
       paramString = paramString.substring(paramString.lastIndexOf("/") + 1, paramString.lastIndexOf("."));
-      str = paramString + "_convert.pcm";
-      paramString = (String)localObject;
     }
-    for (;;)
+    for (paramString = paramString + "_convert.pcm";; paramString = c.ej(new StringBuilder().append(paramString.hashCode()).toString()) + "_convert.pcm")
     {
-      localObject = new e(paramString);
-      if (!((e)localObject).exists()) {
-        ((e)localObject).mkdirs();
-      }
-      paramString = paramString + "/" + str;
+      paramString = w.B(new k(localk, paramString).mUri);
       AppMethodBeat.o(136954);
       return paramString;
-      if ((paramString.contains(".")) && (paramString.contains("/")) && (paramString.lastIndexOf(".") > paramString.lastIndexOf("/")))
-      {
-        paramString = paramString.substring(paramString.lastIndexOf("/") + 1, paramString.lastIndexOf("."));
-        str = paramString + "_convert.pcm";
-        paramString = (String)localObject + "/tencent/MicroMsg/MixAudio";
-      }
-      else
-      {
-        str = c.ee(new StringBuilder().append(paramString.hashCode()).toString()) + "_convert.pcm";
-        paramString = (String)localObject + "/tencent/MicroMsg/MixAudio";
-      }
     }
   }
   
-  public static e gw(String paramString)
+  public static k gC(String paramString)
   {
     AppMethodBeat.i(177346);
-    paramString = new e(paramString);
+    paramString = new k(paramString);
     if (!paramString.exists()) {}
     try
     {
@@ -120,7 +102,7 @@ public final class a
     }
   }
   
-  public static boolean gx(String paramString)
+  public static boolean gD(String paramString)
   {
     AppMethodBeat.i(136958);
     if (TextUtils.isEmpty(paramString))
@@ -128,13 +110,13 @@ public final class a
       AppMethodBeat.o(136958);
       return false;
     }
-    e locale = new e(paramString);
-    if (!locale.exists())
+    k localk = new k(paramString);
+    if (!localk.exists())
     {
       AppMethodBeat.o(136958);
       return false;
     }
-    if (locale.isDirectory())
+    if (localk.isDirectory())
     {
       AppMethodBeat.o(136958);
       return false;
@@ -142,7 +124,7 @@ public final class a
     int i;
     if (paramString.endsWith(".wav"))
     {
-      if (locale.length() >= 5000000L) {}
+      if (localk.length() >= 5000000L) {}
       for (i = 1; i != 0; i = 0)
       {
         AppMethodBeat.o(136958);
@@ -151,7 +133,7 @@ public final class a
     }
     if (!paramString.endsWith(".wav"))
     {
-      if (locale.length() >= 2000000L) {}
+      if (localk.length() >= 2000000L) {}
       for (i = 1; i != 0; i = 0)
       {
         AppMethodBeat.o(136958);
@@ -162,10 +144,10 @@ public final class a
     return true;
   }
   
-  public static long gy(String paramString)
+  public static long gE(String paramString)
   {
     AppMethodBeat.i(136959);
-    paramString = new e(paramString);
+    paramString = new k(paramString);
     if (paramString.exists())
     {
       long l = paramString.length();
@@ -178,7 +160,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.audio.mix.h.a
  * JD-Core Version:    0.7.0.1
  */

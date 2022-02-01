@@ -9,28 +9,28 @@ final class d$1$1
   
   public final void run()
   {
-    AppMethodBeat.i(188146);
-    if (this.kjF.kjE.kjz != null) {
-      this.kjF.kjE.kjz.bgB();
+    AppMethodBeat.i(222272);
+    if (this.kmV.kmU.kmP != null) {
+      this.kmV.kmU.kmP.bhj();
     }
-    if (this.kjF.kjE.kjA != null) {
-      this.kjF.kjE.kjA.bgB();
+    if (this.kmV.kmU.kmQ != null) {
+      this.kmV.kmU.kmQ.bhj();
     }
-    if (this.kjF.kjE.kjB != null) {
-      this.kjF.kjE.kjB.bgB();
+    if (this.kmV.kmU.kmR != null) {
+      this.kmV.kmU.kmR.bhj();
     }
-    if (this.kjF.kjE.kjD != null) {
-      this.kjF.kjE.kjD.bgB();
+    if (this.kmV.kmU.kmT != null) {
+      this.kmV.kmU.kmT.bhj();
     }
-    if (this.kjF.kjE.kjC != null) {
-      this.kjF.kjE.kjC.bgB();
+    if (this.kmV.kmU.kmS != null) {
+      this.kmV.kmU.kmS.bhj();
     }
-    AppMethodBeat.o(188146);
+    AppMethodBeat.o(222272);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.floatball.d.1.1
  * JD-Core Version:    0.7.0.1
  */

@@ -5,17 +5,17 @@ import java.util.List;
 public abstract interface g$b
   extends b<g.a>
 {
-  public abstract void B(boolean paramBoolean, int paramInt);
+  public abstract void C(boolean paramBoolean, int paramInt);
   
-  public abstract void Eg(int paramInt);
+  public abstract void Et(int paramInt);
   
-  public abstract void cxe();
+  public abstract void cyF();
   
-  public abstract void dv(List<d> paramList);
+  public abstract void dy(List<d> paramList);
   
-  public abstract void dw(List<d> paramList);
+  public abstract void dz(List<d> paramList);
   
-  public abstract void jD(boolean paramBoolean);
+  public abstract void jC(boolean paramBoolean);
 }
 
 

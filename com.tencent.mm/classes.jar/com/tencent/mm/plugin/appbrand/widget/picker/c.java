@@ -2,8 +2,8 @@ package com.tencent.mm.plugin.appbrand.widget.picker;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.support.constraint.ConstraintLayout.LayoutParams;
 import android.support.v4.content.b;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,97 +17,155 @@ import android.widget.FrameLayout.LayoutParams;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.plugin.appbrand.utils.a;
+import com.tencent.mm.plugin.appbrand.utils.a.a;
+import com.tencent.mm.plugin.appbrand.utils.ac;
+import com.tencent.mm.plugin.appbrand.utils.q;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public class c
   extends FrameLayout
 {
   private boolean isAnimating;
-  TextView lzZ;
-  private com.tencent.mm.plugin.appbrand.jsapi.p.c nkS;
-  private FrameLayout nkT;
-  View nkU;
-  View nkV;
-  private a nkW;
-  private boolean nkX;
-  private View nkY;
-  View nkZ;
-  private b nla;
+  TextView lEx;
+  private com.tencent.mm.plugin.appbrand.jsapi.p.c nqa;
+  private FrameLayout nqb;
+  View nqc;
+  View nqd;
+  View nqe;
+  private a nqf;
+  private boolean nqg;
+  private View nqh;
+  View nqi;
+  private b nqj;
+  private q nqk;
   
   public c(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(138049);
+    this.nqk = null;
     setClickable(true);
     setLongClickable(true);
     paramContext = new FrameLayout.LayoutParams(-1, -2);
     paramContext.gravity = 80;
-    this.nkY = LayoutInflater.from(getContext()).inflate(2131493021, this, false);
-    this.nkT = ((FrameLayout)this.nkY.findViewById(2131296792));
-    this.nkZ = this.nkY.findViewById(2131296790);
-    this.nkV = this.nkY.findViewById(2131303266);
-    q(this.nkV, getContext().getResources().getDimensionPixelSize(2131166684), getContext().getResources().getDimensionPixelSize(2131166683));
-    this.nkV.findViewById(2131297573).setOnClickListener(new c.4(this));
-    this.nkV.findViewById(2131297572).setOnClickListener(new c.5(this));
-    this.nkV.setOnClickListener(new c.6(this));
-    View localView = this.nkY.findViewById(2131296792);
+    this.nqh = LayoutInflater.from(getContext()).inflate(2131493021, this, false);
+    this.nqb = ((FrameLayout)this.nqh.findViewById(2131296792));
+    this.nqi = this.nqh.findViewById(2131296790);
+    this.nqd = this.nqh.findViewById(2131303266);
+    this.nqe = this.nqd.findViewById(2131306423);
+    bGe();
+    this.nqd.findViewById(2131297573).setOnClickListener(new c.4(this));
+    this.nqd.findViewById(2131297572).setOnClickListener(new c.5(this));
+    this.nqd.setOnClickListener(new c.6(this));
+    View localView = this.nqh.findViewById(2131296792);
     localView.setOnClickListener(new c.7(this));
     localView.setBackgroundColor(b.n(localView.getContext(), 2131099653));
-    addView(this.nkY, paramContext);
-    this.lzZ = ((TextView)findViewById(2131296789));
-    this.lzZ.setClickable(true);
-    this.nkU = findViewById(2131296788);
+    addView(this.nqh, paramContext);
+    this.lEx = ((TextView)findViewById(2131296789));
+    this.lEx.setClickable(true);
+    this.nqc = findViewById(2131296788);
     addOnLayoutChangeListener(new View.OnLayoutChangeListener()
     {
       public final void onLayoutChange(View paramAnonymousView, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3, int paramAnonymousInt4, int paramAnonymousInt5, int paramAnonymousInt6, int paramAnonymousInt7, int paramAnonymousInt8)
       {
         AppMethodBeat.i(138043);
-        c.a(c.this, c.this.nkV, c.this.getContext().getResources().getDimensionPixelSize(2131166684), c.this.getContext().getResources().getDimensionPixelSize(2131166683));
-        c.a(c.this, c.this.nkZ, c.this.getContext().getResources().getDimensionPixelSize(2131165292), c.this.getContext().getResources().getDimensionPixelSize(2131165303));
+        c.c(c.this);
+        c.d(c.this);
         AppMethodBeat.o(138043);
       }
     });
     AppMethodBeat.o(138049);
   }
   
+  private boolean aoA()
+  {
+    AppMethodBeat.i(197285);
+    if (ac.mUv == bGf().bxC())
+    {
+      AppMethodBeat.o(197285);
+      return true;
+    }
+    AppMethodBeat.o(197285);
+    return false;
+  }
+  
   private void b(boolean paramBoolean, Object paramObject)
   {
     AppMethodBeat.i(138048);
-    if ((!this.nkX) && (this.nkW != null))
+    if ((!this.nqg) && (this.nqf != null))
     {
-      this.nkX = true;
-      this.nkW.a(paramBoolean, paramObject);
-      this.nkX = false;
+      this.nqg = true;
+      this.nqf.a(paramBoolean, paramObject);
+      this.nqg = false;
     }
     AppMethodBeat.o(138048);
   }
   
-  private void bFk()
+  private void bGc()
   {
-    this.nkW = null;
-    this.nla = null;
+    this.nqf = null;
+    this.nqj = null;
   }
   
-  private void q(View paramView, int paramInt1, int paramInt2)
+  private void bGd()
   {
-    AppMethodBeat.i(138057);
-    if (getContext().getResources().getConfiguration().orientation == 2)
+    AppMethodBeat.i(197283);
+    if (aoA()) {}
+    for (int i = 0;; i = getContext().getResources().getDimensionPixelSize(2131165292))
     {
-      paramView.setLayoutParams(new LinearLayout.LayoutParams(-1, paramInt2));
-      AppMethodBeat.o(138057);
+      LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)this.nqi.getLayoutParams();
+      localLayoutParams.height = i;
+      this.nqi.setLayoutParams(localLayoutParams);
+      AppMethodBeat.o(197283);
       return;
     }
-    if (getContext().getResources().getConfiguration().orientation == 1) {
-      paramView.setLayoutParams(new LinearLayout.LayoutParams(-1, paramInt1));
-    }
-    AppMethodBeat.o(138057);
   }
   
-  protected final void cO(Object paramObject)
+  private void bGe()
+  {
+    AppMethodBeat.i(197284);
+    int k;
+    int j;
+    if (aoA())
+    {
+      k = getContext().getResources().getDimensionPixelSize(2131165289);
+      j = getContext().getResources().getDimensionPixelSize(2131165289);
+    }
+    for (int i = getContext().getResources().getDimensionPixelSize(2131166683);; i = getContext().getResources().getDimensionPixelSize(2131166684))
+    {
+      ConstraintLayout.LayoutParams localLayoutParams = (ConstraintLayout.LayoutParams)this.nqe.getLayoutParams();
+      localLayoutParams.topMargin = k;
+      localLayoutParams.bottomMargin = j;
+      this.nqe.setLayoutParams(localLayoutParams);
+      this.nqd.setLayoutParams(new LinearLayout.LayoutParams(-1, i));
+      AppMethodBeat.o(197284);
+      return;
+      k = getContext().getResources().getDimensionPixelSize(2131165296);
+      j = getContext().getResources().getDimensionPixelSize(2131165294);
+    }
+  }
+  
+  private q bGf()
+  {
+    AppMethodBeat.i(197287);
+    if (this.nqk == null)
+    {
+      ae.w("MicroMsg.AppBrand.AppBrandPickerBottomPanelBase", "requireOrientationGetter, orientationGetter is null, use AndroidOrientationGetter as fallback");
+      localObject = a.mTz;
+      this.nqk = a.a.b(null);
+    }
+    Object localObject = this.nqk;
+    AppMethodBeat.o(197287);
+    return localObject;
+  }
+  
+  protected final void cP(Object paramObject)
   {
     AppMethodBeat.i(138059);
-    if (this.nla != null) {
-      this.nla.cx(paramObject);
+    if (this.nqj != null) {
+      this.nqj.cy(paramObject);
     }
     AppMethodBeat.o(138059);
   }
@@ -122,7 +180,7 @@ public class c
   
   public com.tencent.mm.plugin.appbrand.jsapi.p.c getPicker()
   {
-    return this.nkS;
+    return this.nqa;
   }
   
   public void hide()
@@ -134,12 +192,12 @@ public class c
       return;
     }
     b(false, null);
-    if (this.nkS != null)
+    if (this.nqa != null)
     {
-      this.nkS.onHide(this);
+      this.nqa.onHide(this);
       this.isAnimating = true;
       Animation localAnimation = AnimationUtils.loadAnimation(getContext(), 2130772084);
-      this.nkY.startAnimation(localAnimation);
+      this.nqh.startAnimation(localAnimation);
       startAnimation(AnimationUtils.loadAnimation(getContext(), 2130771993));
       localAnimation.setAnimationListener(new Animation.AnimationListener()
       {
@@ -166,7 +224,7 @@ public class c
   {
     AppMethodBeat.i(138058);
     super.onDetachedFromWindow();
-    bFk();
+    bGc();
     removeAllViews();
     AppMethodBeat.o(138058);
   }
@@ -183,13 +241,13 @@ public class c
   public void setHeader(String paramString)
   {
     AppMethodBeat.i(138056);
-    if (bt.isNullOrNil(paramString))
+    if (bu.isNullOrNil(paramString))
     {
-      q(this.nkZ, getContext().getResources().getDimensionPixelSize(2131165292), getContext().getResources().getDimensionPixelSize(2131165303));
-      this.nkZ.setVisibility(0);
-      this.lzZ.setText("");
-      this.nkU.setVisibility(8);
-      this.lzZ.setVisibility(8);
+      bGd();
+      this.nqi.setVisibility(0);
+      this.lEx.setText("");
+      this.nqc.setVisibility(8);
+      this.lEx.setVisibility(8);
       AppMethodBeat.o(138056);
       return;
     }
@@ -199,10 +257,10 @@ public class c
     }
     for (;;)
     {
-      this.nkZ.setVisibility(8);
-      this.nkU.setVisibility(0);
-      this.lzZ.setVisibility(0);
-      this.lzZ.setText(str);
+      this.nqi.setVisibility(8);
+      this.nqc.setVisibility(0);
+      this.lEx.setVisibility(0);
+      this.lEx.setText(str);
       AppMethodBeat.o(138056);
       return;
       if ("设置地区".equals(paramString))
@@ -225,34 +283,42 @@ public class c
   
   public void setOnResultListener(a parama)
   {
-    this.nkW = parama;
+    this.nqf = parama;
   }
   
   public void setOnValueUpdateListener(b paramb)
   {
-    this.nla = paramb;
+    this.nqj = paramb;
+  }
+  
+  public void setOrientationGetter(q paramq)
+  {
+    AppMethodBeat.i(197286);
+    ae.d("MicroMsg.AppBrand.AppBrandPickerBottomPanelBase", "setOrientationGetter, orientationGetter is " + paramq.getName());
+    this.nqk = paramq;
+    AppMethodBeat.o(197286);
   }
   
   protected void setPickerImpl(com.tencent.mm.plugin.appbrand.jsapi.p.c paramc)
   {
     AppMethodBeat.i(138050);
-    if (this.nkS != null) {
-      this.nkS.onDetach(this);
+    if (this.nqa != null) {
+      this.nqa.onDetach(this);
     }
-    this.nkS = paramc;
-    if (this.nkS != null) {
-      this.nkS.onAttach(this);
+    this.nqa = paramc;
+    if (this.nqa != null) {
+      this.nqa.onAttach(this);
     }
-    if ((this.nkT == null) || (this.nkS == null) || (this.nkS.getView() == null))
+    if ((this.nqb == null) || (this.nqa == null) || (this.nqa.getView() == null))
     {
       AppMethodBeat.o(138050);
       return;
     }
-    this.nkT.removeAllViews();
-    bFk();
+    this.nqb.removeAllViews();
+    bGc();
     paramc = new FrameLayout.LayoutParams(-1, -1);
     paramc.gravity = 17;
-    this.nkT.addView(this.nkS.getView(), paramc);
+    this.nqb.addView(this.nqa.getView(), paramc);
     AppMethodBeat.o(138050);
   }
   
@@ -277,18 +343,18 @@ public class c
       AppMethodBeat.o(138051);
       return;
     }
-    if (this.nkS == null)
+    if (this.nqa == null)
     {
       setVisibility(8);
       AppMethodBeat.o(138051);
       return;
     }
-    this.nkS.onShow(this);
+    this.nqa.onShow(this);
     clearAnimation();
     setVisibility(0);
     this.isAnimating = true;
     Animation localAnimation = AnimationUtils.loadAnimation(getContext(), 2130771994);
-    this.nkY.startAnimation(localAnimation);
+    this.nqh.startAnimation(localAnimation);
     startAnimation(AnimationUtils.loadAnimation(getContext(), 2130771992));
     localAnimation.setAnimationListener(new Animation.AnimationListener()
     {
@@ -314,7 +380,7 @@ public class c
   
   public static abstract interface b<T>
   {
-    public abstract void cx(T paramT);
+    public abstract void cy(T paramT);
   }
 }
 

@@ -2,9 +2,9 @@ package com.tencent.mm.pluginsdk.ui.applet;
 
 import android.graphics.BitmapFactory.Options;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aw.a.c.c;
+import com.tencent.mm.av.a.c.c;
 import com.tencent.mm.graphics.MMBitmapFactory;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import d.g.b.p;
 
 public final class n
@@ -22,14 +22,14 @@ public final class n
     this.scene = paramInt;
   }
   
-  private com.tencent.mm.aw.a.d.b aMP(String paramString)
+  private com.tencent.mm.av.a.d.b aOl(String paramString)
   {
     AppMethodBeat.i(124383);
-    ad.d("MicroMsg.ChattingBizImgDownloader", "getNormalImageData from url:%s", new Object[] { paramString });
+    ae.d("MicroMsg.ChattingBizImgDownloader", "getNormalImageData from url:%s", new Object[] { paramString });
     try
     {
       System.currentTimeMillis();
-      h localh = h.EVl;
+      h localh = h.FnG;
       paramString = h.a(paramString, true, new k(this.scene));
       if (paramString != null) {
         System.currentTimeMillis();
@@ -39,69 +39,69 @@ public final class n
     }
     catch (Exception paramString)
     {
-      ad.e("MicroMsg.ChattingBizImgDownloader", "get image data failed.:%s", new Object[] { paramString.toString() });
-      paramString = new com.tencent.mm.aw.a.d.b(null, null, (byte)0);
+      ae.e("MicroMsg.ChattingBizImgDownloader", "get image data failed.:%s", new Object[] { paramString.toString() });
+      paramString = new com.tencent.mm.av.a.d.b(null, null, (byte)0);
       AppMethodBeat.o(124383);
     }
     return paramString;
   }
   
-  private com.tencent.mm.aw.a.d.b aMQ(String paramString)
+  private com.tencent.mm.av.a.d.b aOm(String paramString)
   {
     AppMethodBeat.i(124385);
-    ad.i("MicroMsg.ChattingBizImgDownloader", "alvinluo tryToGetNormalImage after get WxPic failed");
-    paramString = aMP(paramString);
+    ae.i("MicroMsg.ChattingBizImgDownloader", "alvinluo tryToGetNormalImage after get WxPic failed");
+    paramString = aOl(paramString);
     AppMethodBeat.o(124385);
     return paramString;
   }
   
-  private void fcy()
+  private void fgm()
   {
     AppMethodBeat.i(124384);
-    Object localObject = g.EVk;
-    if (g.YO(this.scene))
+    Object localObject = g.FnF;
+    if (g.Zu(this.scene))
     {
-      localObject = f.EVi;
-      f.vM(false);
+      localObject = f.FnD;
+      f.vU(false);
     }
     AppMethodBeat.o(124384);
   }
   
-  public final com.tencent.mm.aw.a.d.b FH(String paramString)
+  public final com.tencent.mm.av.a.d.b Gj(String paramString)
   {
     AppMethodBeat.i(124382);
-    ad.d("MicroMsg.ChattingBizImgDownloader", "get image data from url:%s", new Object[] { paramString });
+    ae.d("MicroMsg.ChattingBizImgDownloader", "get image data from url:%s", new Object[] { paramString });
     for (;;)
     {
       try
       {
         long l = System.currentTimeMillis();
-        Object localObject1 = h.EVl;
+        Object localObject1 = h.FnG;
         localObject1 = h.a(paramString, false, new k(this.scene));
         if (localObject1 != null)
         {
           l = System.currentTimeMillis() - l;
-          localObject2 = ((com.tencent.mm.aw.a.d.b)localObject1).contentType;
-          int j = ((com.tencent.mm.aw.a.d.b)localObject1).idU;
-          if (((com.tencent.mm.aw.a.d.b)localObject1).data != null)
+          localObject2 = ((com.tencent.mm.av.a.d.b)localObject1).contentType;
+          int j = ((com.tencent.mm.av.a.d.b)localObject1).igM;
+          if (((com.tencent.mm.av.a.d.b)localObject1).data != null)
           {
-            i = ((com.tencent.mm.aw.a.d.b)localObject1).data.length;
-            ad.d("MicroMsg.ChattingBizImgDownloader", "alvinluo BizImage download responseContentType: %s, contentLength: %d, dataLength: %d, url: %s, download used %d ms", new Object[] { localObject2, Integer.valueOf(j), Integer.valueOf(i), paramString, Long.valueOf(l) });
-            localObject2 = g.EVk;
-            localObject2 = ((com.tencent.mm.aw.a.d.b)localObject1).contentType;
+            i = ((com.tencent.mm.av.a.d.b)localObject1).data.length;
+            ae.d("MicroMsg.ChattingBizImgDownloader", "alvinluo BizImage download responseContentType: %s, contentLength: %d, dataLength: %d, url: %s, download used %d ms", new Object[] { localObject2, Integer.valueOf(j), Integer.valueOf(i), paramString, Long.valueOf(l) });
+            localObject2 = g.FnF;
+            localObject2 = ((com.tencent.mm.av.a.d.b)localObject1).contentType;
             p.h(paramString, "url");
-            if ((com.tencent.mm.api.b.Kc()) && (g.aMM((String)localObject2)) && (com.tencent.mm.api.b.ex(paramString)))
+            if ((com.tencent.mm.api.b.Kk()) && (g.aOi((String)localObject2)) && (com.tencent.mm.api.b.eC(paramString)))
             {
               i = 1;
               if (i == 0) {
                 continue;
               }
-              if (((com.tencent.mm.aw.a.d.b)localObject1).data != null) {
+              if (((com.tencent.mm.av.a.d.b)localObject1).data != null) {
                 continue;
               }
-              ad.e("MicroMsg.ChattingBizImgDownloader", "response.data is null");
-              fcy();
-              paramString = aMQ(paramString);
+              ae.e("MicroMsg.ChattingBizImgDownloader", "response.data is null");
+              fgm();
+              paramString = aOm(paramString);
               AppMethodBeat.o(124382);
               return paramString;
             }
@@ -113,58 +113,58 @@ public final class n
           }
           int i = 0;
           continue;
-          if ((((com.tencent.mm.aw.a.d.b)localObject1).idU > 0) && (((com.tencent.mm.aw.a.d.b)localObject1).idU != ((com.tencent.mm.aw.a.d.b)localObject1).data.length))
+          if ((((com.tencent.mm.av.a.d.b)localObject1).igM > 0) && (((com.tencent.mm.av.a.d.b)localObject1).igM != ((com.tencent.mm.av.a.d.b)localObject1).data.length))
           {
-            fcy();
-            paramString = aMQ(paramString);
+            fgm();
+            paramString = aOm(paramString);
             AppMethodBeat.o(124382);
             return paramString;
           }
           localObject2 = new BitmapFactory.Options();
           ((BitmapFactory.Options)localObject2).inJustDecodeBounds = true;
-          MMBitmapFactory.decodeByteArray(((com.tencent.mm.aw.a.d.b)localObject1).data, 0, ((com.tencent.mm.aw.a.d.b)localObject1).data.length, (BitmapFactory.Options)localObject2);
+          MMBitmapFactory.decodeByteArray(((com.tencent.mm.av.a.d.b)localObject1).data, 0, ((com.tencent.mm.av.a.d.b)localObject1).data.length, (BitmapFactory.Options)localObject2);
           if ((((BitmapFactory.Options)localObject2).outHeight <= 0) || (((BitmapFactory.Options)localObject2).outWidth <= 0))
           {
-            ad.e("MicroMsg.ChattingBizImgDownloader", "decode wxpic fail");
-            localObject1 = ((com.tencent.mm.aw.a.d.b)localObject1).contentType;
-            localObject2 = g.EVk;
-            if (g.YO(this.scene))
+            ae.e("MicroMsg.ChattingBizImgDownloader", "decode wxpic fail");
+            localObject1 = ((com.tencent.mm.av.a.d.b)localObject1).contentType;
+            localObject2 = g.FnF;
+            if (g.Zu(this.scene))
             {
-              localObject2 = f.EVi;
-              f.cB((String)localObject1, false);
+              localObject2 = f.FnD;
+              f.cF((String)localObject1, false);
             }
-            localObject2 = g.EVk;
-            if (g.aMM((String)localObject1))
+            localObject2 = g.FnF;
+            if (g.aOi((String)localObject1))
             {
-              localObject1 = f.EVi;
-              f.aH(paramString, 1, this.scene);
+              localObject1 = f.FnD;
+              f.aJ(paramString, 1, this.scene);
             }
-            paramString = aMQ(paramString);
+            paramString = aOm(paramString);
             AppMethodBeat.o(124382);
             return paramString;
           }
-          paramString = g.EVk;
-          if (g.YO(this.scene))
+          paramString = g.FnF;
+          if (g.Zu(this.scene))
           {
-            paramString = f.EVi;
-            f.vM(true);
+            paramString = f.FnD;
+            f.vU(true);
           }
-          ad.d("MicroMsg.ChattingBizImgDownloader", "decode wxpic success");
+          ae.d("MicroMsg.ChattingBizImgDownloader", "decode wxpic success");
         }
         else
         {
           AppMethodBeat.o(124382);
           return localObject1;
         }
-        Object localObject2 = g.EVk;
+        Object localObject2 = g.FnF;
         boolean bool;
-        if (g.lv(paramString, ((com.tencent.mm.aw.a.d.b)localObject1).contentType))
+        if (g.lC(paramString, ((com.tencent.mm.av.a.d.b)localObject1).contentType))
         {
           bool = true;
-          ad.d("MicroMsg.ChattingBizImgDownloader", "getImageData, isDownloadWebp: %b, used %d ms", new Object[] { Boolean.valueOf(bool), Long.valueOf(l) });
-          com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(86L, 4L, l, false);
+          ae.d("MicroMsg.ChattingBizImgDownloader", "getImageData, isDownloadWebp: %b, used %d ms", new Object[] { Boolean.valueOf(bool), Long.valueOf(l) });
+          com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(86L, 4L, l, false);
           if (bool) {
-            com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(86L, 17L, l, false);
+            com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(86L, 17L, l, false);
           }
         }
         else
@@ -174,8 +174,8 @@ public final class n
       }
       catch (Exception paramString)
       {
-        ad.e("MicroMsg.ChattingBizImgDownloader", "get image data failed.:%s", new Object[] { paramString.toString() });
-        paramString = new com.tencent.mm.aw.a.d.b(null, null, (byte)0);
+        ae.e("MicroMsg.ChattingBizImgDownloader", "get image data failed.:%s", new Object[] { paramString.toString() });
+        paramString = new com.tencent.mm.av.a.d.b(null, null, (byte)0);
         AppMethodBeat.o(124382);
         return paramString;
       }

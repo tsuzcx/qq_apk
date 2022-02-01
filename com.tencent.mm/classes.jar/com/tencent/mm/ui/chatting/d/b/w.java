@@ -8,11 +8,11 @@ public abstract interface w
 {
   public abstract void a(z.a parama);
   
-  public abstract int dbF();
+  public abstract int dew();
   
-  public abstract void xT(boolean paramBoolean);
+  public abstract void ya(boolean paramBoolean);
   
-  public abstract void xU(boolean paramBoolean);
+  public abstract void yb(boolean paramBoolean);
 }
 
 

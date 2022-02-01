@@ -14,11 +14,11 @@ public class IPCSetCurrentPaySpeech
     implements Parcelable
   {
     public static final Parcelable.Creator<IPCSetCurrentPaySpeechParam> CREATOR;
-    private String lau;
-    private String lav;
-    private String law;
-    private boolean lax;
-    private String lay;
+    private String lec;
+    private String led;
+    private String lee;
+    private boolean lef;
+    private String leg;
     
     static
     {
@@ -32,14 +32,14 @@ public class IPCSetCurrentPaySpeech
     protected IPCSetCurrentPaySpeechParam(Parcel paramParcel)
     {
       AppMethodBeat.i(46654);
-      this.lau = paramParcel.readString();
-      this.lav = paramParcel.readString();
-      this.law = paramParcel.readString();
+      this.lec = paramParcel.readString();
+      this.led = paramParcel.readString();
+      this.lee = paramParcel.readString();
       if (paramParcel.readByte() != 0) {}
       for (boolean bool = true;; bool = false)
       {
-        this.lax = bool;
-        this.lay = paramParcel.readString();
+        this.lef = bool;
+        this.leg = paramParcel.readString();
         AppMethodBeat.o(46654);
         return;
       }
@@ -47,11 +47,11 @@ public class IPCSetCurrentPaySpeech
     
     public IPCSetCurrentPaySpeechParam(String paramString1, String paramString2, String paramString3, boolean paramBoolean, String paramString4)
     {
-      this.lau = paramString1;
-      this.lav = paramString2;
-      this.law = paramString3;
-      this.lax = paramBoolean;
-      this.lay = paramString4;
+      this.lec = paramString1;
+      this.led = paramString2;
+      this.lee = paramString3;
+      this.lef = paramBoolean;
+      this.leg = paramString4;
     }
     
     public final int describeContents()
@@ -62,14 +62,14 @@ public class IPCSetCurrentPaySpeech
     public final void writeToParcel(Parcel paramParcel, int paramInt)
     {
       AppMethodBeat.i(46653);
-      paramParcel.writeString(this.lau);
-      paramParcel.writeString(this.lav);
-      paramParcel.writeString(this.law);
-      if (this.lax) {}
+      paramParcel.writeString(this.lec);
+      paramParcel.writeString(this.led);
+      paramParcel.writeString(this.lee);
+      if (this.lef) {}
       for (byte b = 1;; b = 0)
       {
         paramParcel.writeByte(b);
-        paramParcel.writeString(this.lay);
+        paramParcel.writeString(this.leg);
         AppMethodBeat.o(46653);
         return;
       }

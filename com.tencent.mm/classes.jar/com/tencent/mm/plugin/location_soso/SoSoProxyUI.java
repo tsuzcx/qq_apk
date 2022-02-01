@@ -13,8 +13,8 @@ import com.tencent.mm.plugin.k.c;
 import com.tencent.mm.plugin.k.c.a;
 import com.tencent.mm.plugin.report.service.g;
 import com.tencent.mm.sdk.a.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
 import com.tencent.mm.ui.z;
 import com.tencent.tencentmap.mapsdk.map.MapActivity;
 
@@ -61,9 +61,9 @@ public class SoSoProxyUI
   public Resources getResources()
   {
     AppMethodBeat.i(56239);
-    if ((getAssets() != null) && (aj.getResources() != null))
+    if ((getAssets() != null) && (ak.getResources() != null))
     {
-      localResources = aj.getResources();
+      localResources = ak.getResources();
       AppMethodBeat.o(56239);
       return localResources;
     }
@@ -104,13 +104,13 @@ public class SoSoProxyUI
   {
     boolean bool1 = true;
     AppMethodBeat.i(56229);
-    ad.i("MicroMsg.SoSoProxyUI", "SoSoProxyUI onCreate");
+    ae.i("MicroMsg.SoSoProxyUI", "SoSoProxyUI onCreate");
     super.onCreate(paramBundle);
     if (Build.VERSION.SDK_INT != 26) {
       setRequestedOrientation(1);
     }
     int i = getIntent().getIntExtra("intent_map_key", -1);
-    if (c.a.viz == null) {
+    if (c.a.vuE == null) {
       for (;;)
       {
         try
@@ -119,21 +119,21 @@ public class SoSoProxyUI
           if (paramBundle == null) {
             continue;
           }
-          ad.e("MicroMsg.SoSoProxyUI", "summerasyncinit not init activity foreground[%b] savedInstanceState[%b], activity[%s, %d]", new Object[] { Boolean.valueOf(bool2), Boolean.valueOf(bool1), getClass().getSimpleName(), Integer.valueOf(hashCode()) });
+          ae.e("MicroMsg.SoSoProxyUI", "summerasyncinit not init activity foreground[%b] savedInstanceState[%b], activity[%s, %d]", new Object[] { Boolean.valueOf(bool2), Boolean.valueOf(bool1), getClass().getSimpleName(), Integer.valueOf(hashCode()) });
           finish();
         }
         catch (Throwable paramBundle)
         {
-          ad.printErrStackTrace("MicroMsg.SoSoProxyUI", paramBundle, "summerasyncinit finish:", new Object[0]);
+          ae.printErrStackTrace("MicroMsg.SoSoProxyUI", paramBundle, "summerasyncinit finish:", new Object[0]);
           continue;
         }
-        g.yhR.idkeyStat(598L, 20L, 1L, false);
+        g.yxI.idkeyStat(598L, 20L, 1L, false);
         AppMethodBeat.o(56229);
         return;
         bool1 = false;
       }
     }
-    this.basemapUI = c.a.viz.h(this, i);
+    this.basemapUI = c.a.vuE.h(this, i);
     if (this.basemapUI == null)
     {
       finish();
@@ -159,7 +159,7 @@ public class SoSoProxyUI
     AppMethodBeat.i(56233);
     if ((paramInt == 82) && (paramKeyEvent.getAction() == 1))
     {
-      this.basemapUI.dgX();
+      this.basemapUI.djW();
       AppMethodBeat.o(56233);
       return true;
     }

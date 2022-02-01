@@ -1,13 +1,12 @@
 package com.tencent.mm.g.a;
 
-import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class yc
   extends b
 {
-  public a dMs;
+  public a dNw;
   
   public yc()
   {
@@ -16,16 +15,16 @@ public final class yc
   
   private yc(byte paramByte)
   {
-    AppMethodBeat.i(130929);
-    this.dMs = new a();
-    this.IbR = false;
+    AppMethodBeat.i(19846);
+    this.dNw = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(130929);
+    AppMethodBeat.o(19846);
   }
   
   public static final class a
   {
-    public Context context;
+    public String path;
   }
 }
 

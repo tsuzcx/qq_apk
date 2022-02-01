@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class aw
   extends b
 {
-  public a dlJ;
+  public a dmL;
   
   public aw()
   {
@@ -16,15 +16,15 @@ public final class aw
   private aw(byte paramByte)
   {
     AppMethodBeat.i(120830);
-    this.dlJ = new a();
-    this.IbR = false;
+    this.dmL = new a();
+    this.IvZ = false;
     this.callback = null;
     AppMethodBeat.o(120830);
   }
   
   public static final class a
   {
-    public int dlK;
+    public int dmM;
     public int scene = 0;
   }
 }

@@ -11,7 +11,7 @@ import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.widget.MMWebView;
 import com.tencent.mm.ui.widget.MMWebView.a;
@@ -21,16 +21,16 @@ import com.tencent.xweb.z;
 public class ShowWxPayAgreementsUI
   extends MMActivity
 {
-  private TextView Dch;
-  private TextView Dci;
+  private TextView DtL;
+  private TextView DtM;
   private String content;
-  private MMWebView ruW;
+  private MMWebView rDi;
   private int type;
   
   public void finish()
   {
     AppMethodBeat.i(70686);
-    ad.i("MicroMsg.ShowWxPayAgreementsUI", "onRefreshed");
+    ae.i("MicroMsg.ShowWxPayAgreementsUI", "onRefreshed");
     super.finish();
     overridePendingTransition(2130771986, 2130772106);
     AppMethodBeat.o(70686);
@@ -44,46 +44,46 @@ public class ShowWxPayAgreementsUI
   public void initView()
   {
     AppMethodBeat.i(70685);
-    g.yhR.f(15236, new Object[] { Integer.valueOf(1) });
+    g.yxI.f(15236, new Object[] { Integer.valueOf(1) });
     getSupportActionBar().hide();
     overridePendingTransition(2130772108, 2130771986);
     this.type = getIntent().getIntExtra("agreement_type", 0);
-    this.ruW = MMWebView.a.a(this, getContentView(), 2131296526);
-    this.ruW.getSettings().setJavaScriptEnabled(true);
-    this.Dch = ((TextView)findViewById(2131296524));
-    this.Dci = ((TextView)findViewById(2131296521));
+    this.rDi = MMWebView.a.a(this, getContentView(), 2131296526);
+    this.rDi.getSettings().setJavaScriptEnabled(true);
+    this.DtL = ((TextView)findViewById(2131296524));
+    this.DtM = ((TextView)findViewById(2131296521));
     this.content = getIntent().getStringExtra("agreement_content");
-    this.Dci.setOnClickListener(new View.OnClickListener()
+    this.DtM.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(70682);
         b localb = new b();
         localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/wallet_core/ui/ShowWxPayAgreementsUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-        g.yhR.f(15236, new Object[] { Integer.valueOf(2) });
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/wallet_core/ui/ShowWxPayAgreementsUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        g.yxI.f(15236, new Object[] { Integer.valueOf(2) });
         ShowWxPayAgreementsUI.this.setResult(-1);
         ShowWxPayAgreementsUI.this.finish();
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/wallet_core/ui/ShowWxPayAgreementsUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(70682);
       }
     });
-    this.Dch.setOnClickListener(new View.OnClickListener()
+    this.DtL.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(70683);
         b localb = new b();
         localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/wallet_core/ui/ShowWxPayAgreementsUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-        g.yhR.f(15236, new Object[] { Integer.valueOf(3) });
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/wallet_core/ui/ShowWxPayAgreementsUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        g.yxI.f(15236, new Object[] { Integer.valueOf(3) });
         ShowWxPayAgreementsUI.this.finish();
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/wallet_core/ui/ShowWxPayAgreementsUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(70683);
       }
     });
-    this.ruW.setWebViewClient(new i(this));
-    this.ruW.loadData(this.content, "text/html; charset=UTF-8", null);
+    this.rDi.setWebViewClient(new i(this));
+    this.rDi.loadData(this.content, "text/html; charset=UTF-8", null);
     AppMethodBeat.o(70685);
   }
   

@@ -3,38 +3,51 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class aqh
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public int Gop;
-  public int action;
+  public String dsk;
+  public int scene;
+  public String sessionId;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(209346);
+    AppMethodBeat.i(195195);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aS(1, this.Gop);
-      paramVarArgs.aS(2, this.action);
-      AppMethodBeat.o(209346);
+      paramVarArgs.aS(1, this.scene);
+      if (this.dsk != null) {
+        paramVarArgs.d(2, this.dsk);
+      }
+      if (this.sessionId != null) {
+        paramVarArgs.d(3, this.sessionId);
+      }
+      AppMethodBeat.o(195195);
       return 0;
     }
     if (paramInt == 1)
     {
-      paramInt = f.a.a.b.b.a.bz(1, this.Gop);
-      int i = f.a.a.b.b.a.bz(2, this.action);
-      AppMethodBeat.o(209346);
-      return paramInt + 0 + i;
+      int i = f.a.a.b.b.a.bz(1, this.scene) + 0;
+      paramInt = i;
+      if (this.dsk != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.dsk);
+      }
+      i = paramInt;
+      if (this.sessionId != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.sessionId);
+      }
+      AppMethodBeat.o(195195);
+      return i;
     }
     if (paramInt == 2)
     {
       paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gxE();
+          paramVarArgs.gCg();
         }
       }
-      AppMethodBeat.o(209346);
+      AppMethodBeat.o(195195);
       return 0;
     }
     if (paramInt == 3)
@@ -44,18 +57,22 @@ public final class aqh
       switch (((Integer)paramVarArgs[2]).intValue())
       {
       default: 
-        AppMethodBeat.o(209346);
+        AppMethodBeat.o(195195);
         return -1;
       case 1: 
-        localaqh.Gop = locala.NPN.zc();
-        AppMethodBeat.o(209346);
+        localaqh.scene = locala.OmT.zc();
+        AppMethodBeat.o(195195);
+        return 0;
+      case 2: 
+        localaqh.dsk = locala.OmT.readString();
+        AppMethodBeat.o(195195);
         return 0;
       }
-      localaqh.action = locala.NPN.zc();
-      AppMethodBeat.o(209346);
+      localaqh.sessionId = locala.OmT.readString();
+      AppMethodBeat.o(195195);
       return 0;
     }
-    AppMethodBeat.o(209346);
+    AppMethodBeat.o(195195);
     return -1;
   }
 }

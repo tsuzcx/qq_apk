@@ -10,7 +10,7 @@ public final class b
   public final void execute(Runnable paramRunnable)
   {
     AppMethodBeat.i(183279);
-    h.LTJ.aT(paramRunnable);
+    h.MqF.aQ(paramRunnable);
     AppMethodBeat.o(183279);
   }
   

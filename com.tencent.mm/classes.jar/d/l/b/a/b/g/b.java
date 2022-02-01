@@ -11,7 +11,7 @@ import java.util.Set;
 public final class b
   implements d.g.b.a.a, Collection<a>
 {
-  final Set<a> NqC;
+  final Set<a> NNI;
   
   public final boolean addAll(Collection<? extends a> paramCollection)
   {
@@ -39,7 +39,7 @@ public final class b
     }
     paramObject = (a)paramObject;
     p.h(paramObject, "element");
-    boolean bool = this.NqC.contains(paramObject);
+    boolean bool = this.NNI.contains(paramObject);
     AppMethodBeat.o(59345);
     return bool;
   }
@@ -48,7 +48,7 @@ public final class b
   {
     AppMethodBeat.i(59346);
     p.h(paramCollection, "elements");
-    boolean bool = this.NqC.containsAll(paramCollection);
+    boolean bool = this.NNI.containsAll(paramCollection);
     AppMethodBeat.o(59346);
     return bool;
   }
@@ -66,7 +66,7 @@ public final class b
       AppMethodBeat.o(59342);
       return false;
     }
-    if ((p.i(this.NqC, ((b)paramObject).NqC) ^ true))
+    if ((p.i(this.NNI, ((b)paramObject).NNI) ^ true))
     {
       AppMethodBeat.o(59342);
       return false;
@@ -78,7 +78,7 @@ public final class b
   public final int hashCode()
   {
     AppMethodBeat.i(59343);
-    int i = this.NqC.hashCode();
+    int i = this.NNI.hashCode();
     AppMethodBeat.o(59343);
     return i;
   }
@@ -86,7 +86,7 @@ public final class b
   public final boolean isEmpty()
   {
     AppMethodBeat.i(59347);
-    boolean bool = this.NqC.isEmpty();
+    boolean bool = this.NNI.isEmpty();
     AppMethodBeat.o(59347);
     return bool;
   }
@@ -94,7 +94,7 @@ public final class b
   public final Iterator<a> iterator()
   {
     AppMethodBeat.i(59348);
-    Iterator localIterator = this.NqC.iterator();
+    Iterator localIterator = this.NNI.iterator();
     AppMethodBeat.o(59348);
     return localIterator;
   }
@@ -143,7 +143,7 @@ public final class b
   {
     AppMethodBeat.i(59341);
     p.h(this, "$this$presentableDescription");
-    String str = j.a((Iterable)this.NqC, (CharSequence)"/", null, null, 0, null, null, 62);
+    String str = j.a((Iterable)this.NNI, (CharSequence)"/", null, null, 0, null, null, 62);
     AppMethodBeat.o(59341);
     return str;
   }

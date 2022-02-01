@@ -11,33 +11,33 @@ public abstract class g
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eEB = "scene".hashCode();
-  private static final int eEC = "ticket".hashCode();
-  private static final int eEd = "userName".hashCode();
+  private static final int eFM = "userName".hashCode();
+  private static final int eGk = "scene".hashCode();
+  private static final int eGl = "ticket".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eDG = true;
-  private boolean eEA = true;
-  private boolean eEz = true;
+  private boolean eFp = true;
+  private boolean eGi = true;
+  private boolean eGj = true;
   public int field_scene;
   public String field_ticket;
   public String field_userName;
   
-  public static c.a Vv()
+  public static c.a VD()
   {
     c.a locala = new c.a();
-    locala.IhA = new Field[3];
+    locala.IBL = new Field[3];
     locala.columns = new String[4];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "userName";
-    locala.IhC.put("userName", "TEXT");
+    locala.IBN.put("userName", "TEXT");
     localStringBuilder.append(" userName TEXT");
     localStringBuilder.append(", ");
     locala.columns[1] = "scene";
-    locala.IhC.put("scene", "INTEGER");
+    locala.IBN.put("scene", "INTEGER");
     localStringBuilder.append(" scene INTEGER");
     localStringBuilder.append(", ");
     locala.columns[2] = "ticket";
-    locala.IhC.put("ticket", "TEXT");
+    locala.IBN.put("ticket", "TEXT");
     localStringBuilder.append(" ticket TEXT");
     locala.columns[3] = "rowid";
     locala.sql = localStringBuilder.toString();
@@ -57,7 +57,7 @@ public abstract class g
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eEd != k) {
+      if (eFM != k) {
         break label60;
       }
       this.field_userName = paramCursor.getString(i);
@@ -68,9 +68,9 @@ public abstract class g
       break label20;
       break;
       label60:
-      if (eEB == k) {
+      if (eGk == k) {
         this.field_scene = paramCursor.getInt(i);
-      } else if (eEC == k) {
+      } else if (eGl == k) {
         this.field_ticket = paramCursor.getString(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
@@ -81,13 +81,13 @@ public abstract class g
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eDG) {
+    if (this.eFp) {
       localContentValues.put("userName", this.field_userName);
     }
-    if (this.eEz) {
+    if (this.eGi) {
       localContentValues.put("scene", Integer.valueOf(this.field_scene));
     }
-    if (this.eEA) {
+    if (this.eGj) {
       localContentValues.put("ticket", this.field_ticket);
     }
     if (this.systemRowid > 0L) {

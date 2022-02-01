@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class pw
   extends b
 {
-  public a dEo;
+  public a dFr;
   
   public pw()
   {
@@ -15,24 +15,25 @@ public final class pw
   
   private pw(byte paramByte)
   {
-    AppMethodBeat.i(91214);
-    this.dEo = new a();
-    this.IbR = false;
+    AppMethodBeat.i(91213);
+    this.dFr = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(91214);
+    AppMethodBeat.o(91213);
   }
   
   public static final class a
   {
-    public String dDP;
-    public long dEl;
-    public String dEp;
-    public String username;
+    public String content;
+    public String dFs;
+    public String dzZ;
+    public String toUser;
+    public int type;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.a.pw
  * JD-Core Version:    0.7.0.1
  */

@@ -6,15 +6,15 @@ import java.util.Iterator;
 
 public final class b
 {
-  public String dow;
+  public String dpB;
   public String host;
-  public String kcO;
-  public String kcP;
-  public String kcQ;
-  public String kcR;
-  public String kcS;
-  public ArrayList<f> kcT;
-  public ArrayList<Object> kcU;
+  public String kgf;
+  public String kgg;
+  public String kgh;
+  public String kgi;
+  public String kgj;
+  public ArrayList<f> kgk;
+  public ArrayList<Object> kgl;
   public int major;
   public int minor;
   public int port;
@@ -23,8 +23,8 @@ public final class b
   public b()
   {
     AppMethodBeat.i(158911);
-    this.kcT = new ArrayList();
-    this.kcU = new ArrayList();
+    this.kgk = new ArrayList();
+    this.kgl = new ArrayList();
     AppMethodBeat.o(158911);
   }
   
@@ -39,7 +39,7 @@ public final class b
     if ((paramObject instanceof b))
     {
       paramObject = (b)paramObject;
-      if ((this.host.equals(paramObject.host)) && (this.port == paramObject.port) && (this.kcS.equals(paramObject.kcS)))
+      if ((this.host.equals(paramObject.host)) && (this.port == paramObject.port) && (this.kgj.equals(paramObject.kgj)))
       {
         AppMethodBeat.o(158913);
         return true;
@@ -55,7 +55,7 @@ public final class b
   {
     AppMethodBeat.i(158912);
     Object localObject = new StringBuilder();
-    Iterator localIterator = this.kcT.iterator();
+    Iterator localIterator = this.kgk.iterator();
     while (localIterator.hasNext())
     {
       f localf = (f)localIterator.next();
@@ -63,7 +63,7 @@ public final class b
       ((StringBuilder)localObject).append(localf.toString());
       ((StringBuilder)localObject).append("]\n");
     }
-    localObject = "host=" + this.host + "\nport=" + this.port + "\nmajor=" + this.major + "\nminor=" + this.minor + "\ndeviceType=" + this.dow + "\nfriendlyName=" + this.kcP + "\nmanufacturer=" + this.kcQ + "\nmodeName=" + this.kcR + "\nserviceCount=" + this.kcT.size() + "\nserviceList=\n" + ((StringBuilder)localObject).toString();
+    localObject = "host=" + this.host + "\nport=" + this.port + "\nmajor=" + this.major + "\nminor=" + this.minor + "\ndeviceType=" + this.dpB + "\nfriendlyName=" + this.kgg + "\nmanufacturer=" + this.kgh + "\nmodeName=" + this.kgi + "\nserviceCount=" + this.kgk.size() + "\nserviceList=\n" + ((StringBuilder)localObject).toString();
     AppMethodBeat.o(158912);
     return localObject;
   }

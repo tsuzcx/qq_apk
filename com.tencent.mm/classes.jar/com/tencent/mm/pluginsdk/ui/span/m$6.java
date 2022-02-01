@@ -13,8 +13,8 @@ final class m$6
   public final void onCancel(DialogInterface paramDialogInterface)
   {
     AppMethodBeat.i(31926);
-    if (this.FhF != null) {
-      this.FhF.onDismiss(null);
+    if (this.FAd != null) {
+      this.FAd.onDismiss(null);
     }
     AppMethodBeat.o(31926);
   }

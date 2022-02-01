@@ -11,38 +11,38 @@ import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.game.report.f;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.plugin.game.d.ah;
-import com.tencent.mm.plugin.game.d.p;
+import com.tencent.mm.plugin.game.d.an;
+import com.tencent.mm.plugin.game.d.s;
 import com.tencent.mm.plugin.game.f.c;
 import com.tencent.mm.plugin.game.f.e;
 import com.tencent.mm.plugin.game.f.e.a.a;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public class GameFeedSubscriptView
   extends LinearLayout
   implements View.OnClickListener
 {
-  private ImageView pcD;
-  private ah upf;
-  private TextView upk;
-  private TextView upl;
-  private LinearLayout upm;
-  private TextView upn;
-  private TextView upo;
-  private TextView upp;
+  private ImageView pjj;
+  private an uAB;
+  private TextView uAG;
+  private TextView uAH;
+  private LinearLayout uAI;
+  private TextView uAJ;
+  private TextView uAK;
+  private TextView uAL;
   
   public GameFeedSubscriptView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
   }
   
-  private void HX(int paramInt)
+  private void Iv(int paramInt)
   {
     AppMethodBeat.i(42134);
     if (paramInt == 1) {}
-    for (String str = com.tencent.mm.plugin.game.e.a.aj(this.upf.ufG, "clickType", "leftCorner");; str = com.tencent.mm.plugin.game.e.a.aj(this.upf.ufG, "clickType", "rightCorner"))
+    for (String str = com.tencent.mm.plugin.game.e.a.ak(this.uAB.ura, "clickType", "leftCorner");; str = com.tencent.mm.plugin.game.e.a.ak(this.uAB.ura, "clickType", "rightCorner"))
     {
-      f.a(getContext(), 10, 1024, this.upf.ufI, 7, this.upf.iht, GameIndexListView.getSourceScene(), str);
+      f.a(getContext(), 10, 1024, this.uAB.urc, 7, this.uAB.ikm, GameIndexListView.getSourceScene(), str);
       AppMethodBeat.o(42134);
       return;
     }
@@ -53,18 +53,18 @@ public class GameFeedSubscriptView
     AppMethodBeat.i(42133);
     b localb = new b();
     localb.bd(paramView);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/game/ui/GameFeedSubscriptView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-    if (this.upf == null)
+    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/game/ui/GameFeedSubscriptView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+    if (this.uAB == null)
     {
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/game/ui/GameFeedSubscriptView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(42133);
       return;
     }
     if ((paramView.getId() == 2131301390) || (paramView.getId() == 2131301391) || (paramView.getId() == 2131297017)) {
-      if ((this.upf.ugK != null) && (!bt.isNullOrNil(this.upf.ugK.ueY)))
+      if ((this.uAB.ush != null) && (!bu.isNullOrNil(this.uAB.ush.uqf)))
       {
-        c.aB(getContext(), this.upf.ugK.ueY);
-        HX(1);
+        c.aD(getContext(), this.uAB.ush.uqf);
+        Iv(1);
       }
     }
     for (;;)
@@ -72,10 +72,10 @@ public class GameFeedSubscriptView
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/game/ui/GameFeedSubscriptView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(42133);
       return;
-      if ((paramView.getId() == 2131304196) && (this.upf.ugL != null) && (!bt.isNullOrNil(this.upf.ugL.ueY)))
+      if ((paramView.getId() == 2131304196) && (this.uAB.usi != null) && (!bu.isNullOrNil(this.uAB.usi.uqf)))
       {
-        c.aB(getContext(), this.upf.ugL.ueY);
-        HX(2);
+        c.aD(getContext(), this.uAB.usi.uqf);
+        Iv(2);
       }
     }
   }
@@ -85,69 +85,69 @@ public class GameFeedSubscriptView
     AppMethodBeat.i(42131);
     super.onFinishInflate();
     View localView = LayoutInflater.from(getContext()).inflate(2131494307, this, true);
-    this.upk = ((TextView)localView.findViewById(2131301390));
-    this.upl = ((TextView)localView.findViewById(2131301391));
-    this.upm = ((LinearLayout)localView.findViewById(2131297017));
-    this.pcD = ((ImageView)localView.findViewById(2131296996));
-    this.upn = ((TextView)localView.findViewById(2131302858));
-    this.upo = ((TextView)localView.findViewById(2131306231));
-    this.upp = ((TextView)localView.findViewById(2131304196));
-    this.upk.setOnClickListener(this);
-    this.upl.setOnClickListener(this);
-    this.upm.setOnClickListener(this);
-    this.upp.setOnClickListener(this);
+    this.uAG = ((TextView)localView.findViewById(2131301390));
+    this.uAH = ((TextView)localView.findViewById(2131301391));
+    this.uAI = ((LinearLayout)localView.findViewById(2131297017));
+    this.pjj = ((ImageView)localView.findViewById(2131296996));
+    this.uAJ = ((TextView)localView.findViewById(2131302858));
+    this.uAK = ((TextView)localView.findViewById(2131306231));
+    this.uAL = ((TextView)localView.findViewById(2131304196));
+    this.uAG.setOnClickListener(this);
+    this.uAH.setOnClickListener(this);
+    this.uAI.setOnClickListener(this);
+    this.uAL.setOnClickListener(this);
     AppMethodBeat.o(42131);
   }
   
-  public void setData(ah paramah)
+  public void setData(an paraman)
   {
     AppMethodBeat.i(42132);
-    if ((paramah == null) || ((paramah.ugK == null) && (paramah.ugL == null)))
+    if ((paraman == null) || ((paraman.ush == null) && (paraman.usi == null)))
     {
       setVisibility(8);
       AppMethodBeat.o(42132);
       return;
     }
-    this.upf = paramah;
+    this.uAB = paraman;
     setVisibility(0);
-    this.upk.setVisibility(8);
-    this.upl.setVisibility(8);
-    this.upm.setVisibility(8);
-    if (paramah.ugK != null) {
-      switch (paramah.ugK.ufS)
+    this.uAG.setVisibility(8);
+    this.uAH.setVisibility(8);
+    this.uAI.setVisibility(8);
+    if (paraman.ush != null) {
+      switch (paraman.ush.uro)
       {
       }
     }
-    while (paramah.ugL != null)
+    while (paraman.usi != null)
     {
-      this.upp.setText(paramah.ugL.Desc);
-      this.upp.setVisibility(0);
+      this.uAL.setText(paraman.usi.Desc);
+      this.uAL.setVisibility(0);
       AppMethodBeat.o(42132);
       return;
-      this.upk.setVisibility(0);
-      this.upk.setText(paramah.ugK.Desc);
+      this.uAG.setVisibility(0);
+      this.uAG.setText(paraman.ush.Desc);
       continue;
-      this.upl.setVisibility(0);
-      this.upl.setText(paramah.ugK.Desc);
+      this.uAH.setVisibility(0);
+      this.uAH.setText(paraman.ush.Desc);
       continue;
-      this.upm.setVisibility(0);
-      if (!bt.isNullOrNil(paramah.ugK.ufR))
+      this.uAI.setVisibility(0);
+      if (!bu.isNullOrNil(paraman.ush.urn))
       {
         e.a.a locala = new e.a.a();
-        locala.hfi = true;
-        e.dav().a(this.pcD, paramah.ugK.ufR, locala.daw());
-        this.pcD.setVisibility(0);
+        locala.hhW = true;
+        e.ddh().a(this.pjj, paraman.ush.urn, locala.ddi());
+        this.pjj.setVisibility(0);
       }
-      this.upn.setText(paramah.ugK.Name);
-      this.upo.setText(paramah.ugK.Desc);
+      this.uAJ.setText(paraman.ush.Name);
+      this.uAK.setText(paraman.ush.Desc);
     }
-    this.upp.setVisibility(8);
+    this.uAL.setVisibility(8);
     AppMethodBeat.o(42132);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.GameFeedSubscriptView
  * JD-Core Version:    0.7.0.1
  */

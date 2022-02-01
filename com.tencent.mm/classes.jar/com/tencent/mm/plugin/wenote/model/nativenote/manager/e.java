@@ -36,7 +36,7 @@ public class e
     return this.avj == this.OQ;
   }
   
-  public final e jh(int paramInt1, int paramInt2)
+  public final e jl(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(30461);
     this.avj = Math.max(0, this.avj - paramInt1);

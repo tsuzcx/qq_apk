@@ -10,23 +10,23 @@ import com.tencent.mm.plugin.fts.ui.b.c;
 import com.tencent.mm.plugin.fts.ui.n;
 import com.tencent.mm.plugin.messenger.foundation.a.l;
 import com.tencent.mm.pluginsdk.ui.span.k;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ab;
-import com.tencent.mm.storage.am;
-import com.tencent.mm.storage.bp;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.ac;
+import com.tencent.mm.storage.an;
+import com.tencent.mm.storage.bq;
 
 public final class d
   extends m
 {
-  public CharSequence tAK;
-  private a tAL;
-  public ab tzs;
+  public ac tKj;
+  public CharSequence tLB;
+  private a tLC;
   
   public d(int paramInt)
   {
     super(paramInt);
     AppMethodBeat.i(112060);
-    this.tAL = new a();
+    this.tLC = new a();
     AppMethodBeat.o(112060);
   }
   
@@ -34,41 +34,41 @@ public final class d
   {
     AppMethodBeat.i(112061);
     super.a(paramContext, parama, paramVarArgs);
-    am localam = ((l)g.ab(l.class)).azp().Bf(this.kjY.talker);
-    if (localam == null) {
-      parama = com.tencent.mm.plugin.fts.a.d.agg(this.kjY.tuh);
+    an localan = ((l)g.ab(l.class)).azF().BH(this.kno.talker);
+    if (localan == null) {
+      parama = com.tencent.mm.plugin.fts.a.d.ahd(this.kno.tEY);
     }
     for (;;)
     {
-      if (!bt.isNullOrNil(parama)) {
-        this.tAK = k.d(paramContext, parama, b.c.tyh);
+      if (!bu.isNullOrNil(parama)) {
+        this.tLB = k.d(paramContext, parama, b.c.tIY);
       }
       AppMethodBeat.o(112061);
       return;
-      if (bt.isNullOrNil(localam.field_conRemark))
+      if (bu.isNullOrNil(localan.field_conRemark))
       {
-        if (this.tzs != null)
+        if (this.tKj != null)
         {
-          paramVarArgs = this.tzs.zf(this.kjY.talker);
+          paramVarArgs = this.tKj.zP(this.kno.talker);
           parama = paramVarArgs;
-          if (bt.isNullOrNil(paramVarArgs)) {
-            parama = localam.field_nickname;
+          if (bu.isNullOrNil(paramVarArgs)) {
+            parama = localan.field_nickname;
           }
         }
         else
         {
-          parama = localam.field_nickname;
+          parama = localan.field_nickname;
         }
       }
       else {
-        parama = localam.field_conRemark;
+        parama = localan.field_conRemark;
       }
     }
   }
   
-  public final com.tencent.mm.plugin.fts.a.d.a.a.b agC()
+  public final com.tencent.mm.plugin.fts.a.d.a.a.b agQ()
   {
-    return this.tAL;
+    return this.tLC;
   }
   
   public final class a
@@ -84,18 +84,18 @@ public final class d
       AppMethodBeat.i(112059);
       paramContext = (d)parama1;
       parama = (m.a)parama;
-      n.p(parama.kke, d.this.tvU);
-      if (bt.isNullOrNil(paramContext.kjY.talker)) {
-        com.tencent.mm.pluginsdk.ui.a.b.c(parama.fOf, paramContext.kjY.tuh);
+      n.p(parama.knu, d.this.tGL);
+      if (bu.isNullOrNil(paramContext.kno.talker)) {
+        com.tencent.mm.pluginsdk.ui.a.b.c(parama.fQl, paramContext.kno.tEY);
       }
       for (;;)
       {
-        n.a(paramContext.tAK, parama.fOg);
-        n.a(paramContext.hbQ, parama.fTO);
-        n.a(paramContext.tBG, parama.fTP);
+        n.a(paramContext.tLB, parama.fQm);
+        n.a(paramContext.heE, parama.fVU);
+        n.a(paramContext.tMx, parama.fVV);
         AppMethodBeat.o(112059);
         return;
-        com.tencent.mm.pluginsdk.ui.a.b.c(parama.fOf, paramContext.kjY.talker);
+        com.tencent.mm.pluginsdk.ui.a.b.c(parama.fQl, paramContext.kno.talker);
       }
     }
   }

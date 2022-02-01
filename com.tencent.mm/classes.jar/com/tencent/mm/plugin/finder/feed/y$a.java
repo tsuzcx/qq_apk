@@ -10,65 +10,65 @@ import d.g.b.p;
 import d.l;
 import java.util.ArrayList;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/feed/FinderRelatedFeedUIContract$Presenter;", "Lcom/tencent/mm/plugin/finder/feed/FinderBaseGridFeedUIContract$Presenter;", "context", "Lcom/tencent/mm/ui/MMActivity;", "scene", "", "commentScene", "loader", "Lcom/tencent/mm/plugin/finder/feed/model/BaseFinderFeedLoader;", "(Lcom/tencent/mm/ui/MMActivity;IILcom/tencent/mm/plugin/finder/feed/model/BaseFinderFeedLoader;)V", "buildItemCoverts", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "initViewCallback", "", "loadInitData", "loadMoreData", "refreshRV", "data", "Landroid/content/Intent;", "requestRefresh", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/feed/FinderRelatedFeedUIContract$Presenter;", "Lcom/tencent/mm/plugin/finder/feed/FinderBaseGridFeedUIContract$Presenter;", "context", "Lcom/tencent/mm/ui/MMActivity;", "scene", "", "commentScene", "loader", "Lcom/tencent/mm/plugin/finder/feed/model/BaseFinderFeedLoader;", "(Lcom/tencent/mm/ui/MMActivity;IILcom/tencent/mm/plugin/finder/feed/model/BaseFinderFeedLoader;)V", "buildItemCoverts", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "initViewCallback", "", "loadInitData", "loadMoreData", "refreshRV", "data", "Landroid/content/Intent;", "requestRefresh", "plugin-finder_release"})
 public final class y$a
   extends b.a
 {
   public y$a(MMActivity paramMMActivity, BaseFinderFeedLoader paramBaseFinderFeedLoader)
   {
     super(paramMMActivity, paramBaseFinderFeedLoader);
-    AppMethodBeat.i(202007);
-    AppMethodBeat.o(202007);
+    AppMethodBeat.i(202471);
+    AppMethodBeat.o(202471);
   }
   
-  public final void aTt()
+  public final void aTS()
   {
-    AppMethodBeat.i(202004);
-    this.rTS.requestLoadMore();
-    AppMethodBeat.o(202004);
+    AppMethodBeat.i(202468);
+    this.scw.requestLoadMore();
+    AppMethodBeat.o(202468);
   }
   
-  public final void cAA()
+  public final void cCA()
   {
-    AppMethodBeat.i(202003);
-    b.b localb = this.rTQ;
+    AppMethodBeat.i(202469);
+    BaseFeedLoader.requestInit$default(this.scw, false, 1, null);
+    AppMethodBeat.o(202469);
+  }
+  
+  public final void cCm()
+  {
+    AppMethodBeat.i(202467);
+    b.b localb = this.scu;
     if (localb != null)
     {
-      localb.U((ArrayList)this.rTS.getDataListJustForAdapter());
-      AppMethodBeat.o(202003);
+      localb.U((ArrayList)this.scw.getDataListJustForAdapter());
+      AppMethodBeat.o(202467);
       return;
     }
-    AppMethodBeat.o(202003);
+    AppMethodBeat.o(202467);
   }
   
-  public final c cAE()
+  public final c cCq()
   {
-    AppMethodBeat.i(202006);
-    Object localObject = this.rTQ;
+    AppMethodBeat.i(202470);
+    Object localObject = this.scu;
     if (localObject != null) {}
-    for (localObject = ((b.b)localObject).cAR();; localObject = null)
+    for (localObject = ((b.b)localObject).cCD();; localObject = null)
     {
       if (localObject == null) {
-        p.gfZ();
+        p.gkB();
       }
-      localObject = ((z)localObject).cBj();
-      AppMethodBeat.o(202006);
+      localObject = ((z)localObject).cCV();
+      AppMethodBeat.o(202470);
       return localObject;
     }
-  }
-  
-  public final void cAO()
-  {
-    AppMethodBeat.i(202005);
-    BaseFeedLoader.requestInit$default(this.rTS, false, 1, null);
-    AppMethodBeat.o(202005);
   }
   
   public final void requestRefresh() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.feed.y.a
  * JD-Core Version:    0.7.0.1
  */

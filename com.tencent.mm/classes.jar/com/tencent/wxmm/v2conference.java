@@ -12,10 +12,18 @@ public class v2conference
   public int defaultWidth;
   public int field_HWEncH;
   public int field_HWEncW;
+  public int field_localImgHeight;
+  public int field_localImgWidth;
+  public int field_remoteImgFormat;
   public int field_remoteImgHeight;
   public int field_remoteImgLength;
   public int field_remoteImgMember;
   public int field_remoteImgWidth;
+  public int field_remoteScreenImgFormat;
+  public int field_remoteScreenImgHeight;
+  public int field_remoteScreenImgLength;
+  public int field_remoteScreenImgMember;
+  public int field_remoteScreenImgWidth;
   private IConfCallBack mUiConfCallback;
   public int maxMemberSize;
   public int[] memberVadlist;
@@ -43,8 +51,16 @@ public class v2conference
     this.field_remoteImgHeight = 0;
     this.field_remoteImgWidth = 0;
     this.field_remoteImgMember = -1;
+    this.field_remoteImgFormat = 0;
+    this.field_remoteScreenImgLength = 0;
+    this.field_remoteScreenImgHeight = 0;
+    this.field_remoteScreenImgWidth = 0;
+    this.field_remoteScreenImgMember = -1;
+    this.field_remoteScreenImgFormat = 0;
     this.field_HWEncW = 0;
     this.field_HWEncH = 0;
+    this.field_localImgWidth = 0;
+    this.field_localImgHeight = 0;
     this.memberVadlist = null;
     this.audioSampleRate = new int[] { 8000 };
     this.audioFrameLen = new int[] { 20 };
@@ -52,7 +68,7 @@ public class v2conference
     AppMethodBeat.o(40766);
   }
   
-  private native int GetVideoData(byte[] paramArrayOfByte);
+  private native int GetVideoData(byte[] paramArrayOfByte, int paramInt);
   
   public native int Accept(int paramInt);
   
@@ -99,15 +115,15 @@ public class v2conference
   
   public native int GetAudioFormat(int[] paramArrayOfInt1, int[] paramArrayOfInt2, int[] paramArrayOfInt3);
   
-  public int GetDecodeVideoData(byte[] paramArrayOfByte)
+  public int GetDecodeVideoData(byte[] paramArrayOfByte, int paramInt)
   {
-    AppMethodBeat.i(40769);
-    if (1 == GetVideoData(paramArrayOfByte))
+    AppMethodBeat.i(188639);
+    if (1 == GetVideoData(paramArrayOfByte, paramInt))
     {
-      AppMethodBeat.o(40769);
+      AppMethodBeat.o(188639);
       return 1;
     }
-    AppMethodBeat.o(40769);
+    AppMethodBeat.o(188639);
     return 0;
   }
   
@@ -160,6 +176,8 @@ public class v2conference
   
   public native int JoinRoom(long paramLong, int paramInt1, int paramInt2);
   
+  public native int JoinRoomWithGroupID(String paramString, int paramInt1, int paramInt2);
+  
   public native int OnNetworkChange(int paramInt);
   
   public native int PutExternalplayAudioData(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
@@ -177,9 +195,9 @@ public class v2conference
     this.mUiConfCallback = paramIConfCallBack;
   }
   
-  public native int SetVideoResolution(byte[] paramArrayOfByte, int paramInt);
+  public native int SubscribeVideo(byte[] paramArrayOfByte, int paramInt);
   
-  public native int SwitchAV(int paramInt1, int paramInt2);
+  public native int SwitchAV(int paramInt1, int paramInt2, int paramInt3);
   
   public native int UnInit();
   
@@ -195,13 +213,13 @@ public class v2conference
   
   public native int UpdateAuthKey(byte[] paramArrayOfByte, int paramInt);
   
-  public native int videoHWProcess(byte[] paramArrayOfByte1, int paramInt1, int paramInt2, int paramInt3, int paramInt4, byte[] paramArrayOfByte2);
+  public native int videoHWProcess(byte[] paramArrayOfByte1, int paramInt1, int paramInt2, int paramInt3, int paramInt4, byte[] paramArrayOfByte2, int paramInt5, int paramInt6);
   
   public native int videoTrans(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int[] paramArrayOfInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.wxmm.v2conference
  * JD-Core Version:    0.7.0.1
  */

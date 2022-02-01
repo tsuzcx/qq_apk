@@ -19,25 +19,25 @@ import java.util.Set;
 public final class d
   implements d.l.b.a.b.j.f.h
 {
-  private final d.l.b.a.b.d.a.c.h NeA;
-  final j Nfa;
-  private final d.l.b.a.b.l.f Nfb;
-  private final h Nfc;
+  private final d.l.b.a.b.d.a.c.h NBF;
+  final j NCf;
+  private final d.l.b.a.b.l.f NCg;
+  private final h NCh;
   
   static
   {
     AppMethodBeat.i(57783);
-    cwV = new k[] { (k)z.a(new d.g.b.x(z.bp(d.class), "kotlinScopes", "getKotlinScopes()Ljava/util/List;")) };
+    cxA = new k[] { (k)z.a(new d.g.b.x(z.bp(d.class), "kotlinScopes", "getKotlinScopes()Ljava/util/List;")) };
     AppMethodBeat.o(57783);
   }
   
   public d(d.l.b.a.b.d.a.c.h paramh, t paramt, h paramh1)
   {
     AppMethodBeat.i(57792);
-    this.NeA = paramh;
-    this.Nfc = paramh1;
-    this.Nfa = new j(this.NeA, paramt, this.Nfc);
-    this.Nfb = this.NeA.NeI.MQa.S((d.g.a.a)new a(this));
+    this.NBF = paramh;
+    this.NCh = paramh1;
+    this.NCf = new j(this.NBF, paramt, this.NCh);
+    this.NCg = this.NBF.NBN.Nnf.S((d.g.a.a)new a(this));
     AppMethodBeat.o(57792);
   }
   
@@ -46,14 +46,14 @@ public final class d
     AppMethodBeat.i(57791);
     p.h(paramf, "name");
     p.h(parama, "location");
-    d.l.b.a.b.c.a.a(this.NeA.NeI.Neo, parama, (ab)this.Nfc, paramf);
+    d.l.b.a.b.c.a.a(this.NBF.NBN.NBt, parama, (ab)this.NCh, paramf);
     AppMethodBeat.o(57791);
   }
   
-  private final List<d.l.b.a.b.j.f.h> glI()
+  private final List<d.l.b.a.b.j.f.h> gqk()
   {
     AppMethodBeat.i(57784);
-    List localList = (List)d.l.b.a.b.l.i.a(this.Nfb, cwV[0]);
+    List localList = (List)d.l.b.a.b.l.i.a(this.NCg, cxA[0]);
     AppMethodBeat.o(57784);
     return localList;
   }
@@ -64,15 +64,15 @@ public final class d
     p.h(paramf, "name");
     p.h(parama, "location");
     d(paramf, parama);
-    Object localObject1 = this.Nfa;
-    Object localObject2 = glI();
+    Object localObject1 = this.NCf;
+    Object localObject2 = gqk();
     localObject1 = ((d.l.b.a.b.j.f.h)localObject1).a(paramf, parama);
     localObject2 = ((List)localObject2).iterator();
     while (((Iterator)localObject2).hasNext()) {
       localObject1 = d.l.b.a.b.n.b.a.a((Collection)localObject1, ((d.l.b.a.b.j.f.h)((Iterator)localObject2).next()).a(paramf, parama));
     }
     if (localObject1 == null) {}
-    for (paramf = (Collection)d.a.x.MKG;; paramf = (d.l.b.a.b.f.f)localObject1)
+    for (paramf = (Collection)d.a.x.NhJ;; paramf = (d.l.b.a.b.f.f)localObject1)
     {
       AppMethodBeat.o(57786);
       return paramf;
@@ -84,15 +84,15 @@ public final class d
     AppMethodBeat.i(57788);
     p.h(paramd, "kindFilter");
     p.h(paramb, "nameFilter");
-    Object localObject1 = this.Nfa;
-    Object localObject2 = glI();
+    Object localObject1 = this.NCf;
+    Object localObject2 = gqk();
     localObject1 = ((d.l.b.a.b.j.f.h)localObject1).a(paramd, paramb);
     localObject2 = ((List)localObject2).iterator();
     while (((Iterator)localObject2).hasNext()) {
       localObject1 = d.l.b.a.b.n.b.a.a((Collection)localObject1, ((d.l.b.a.b.j.f.h)((Iterator)localObject2).next()).a(paramd, paramb));
     }
     if (localObject1 == null) {}
-    for (paramd = (Collection)d.a.x.MKG;; paramd = (d.l.b.a.b.j.f.d)localObject1)
+    for (paramd = (Collection)d.a.x.NhJ;; paramd = (d.l.b.a.b.j.f.d)localObject1)
     {
       AppMethodBeat.o(57788);
       return paramd;
@@ -105,15 +105,15 @@ public final class d
     p.h(paramf, "name");
     p.h(parama, "location");
     d(paramf, parama);
-    Object localObject1 = this.Nfa;
-    Object localObject2 = glI();
+    Object localObject1 = this.NCf;
+    Object localObject2 = gqk();
     localObject1 = ((d.l.b.a.b.j.f.h)localObject1).b(paramf, parama);
     localObject2 = ((List)localObject2).iterator();
     while (((Iterator)localObject2).hasNext()) {
       localObject1 = d.l.b.a.b.n.b.a.a((Collection)localObject1, ((d.l.b.a.b.j.f.h)((Iterator)localObject2).next()).b(paramf, parama));
     }
     if (localObject1 == null) {}
-    for (paramf = (Collection)d.a.x.MKG;; paramf = (d.l.b.a.b.f.f)localObject1)
+    for (paramf = (Collection)d.a.x.NhJ;; paramf = (d.l.b.a.b.f.f)localObject1)
     {
       AppMethodBeat.o(57787);
       return paramf;
@@ -126,20 +126,20 @@ public final class d
     p.h(paramf, "name");
     p.h(parama, "location");
     d(paramf, parama);
-    Object localObject = this.Nfa.e(paramf, parama);
+    Object localObject = this.NCf.e(paramf, parama);
     if (localObject != null)
     {
       paramf = (d.l.b.a.b.b.h)localObject;
       AppMethodBeat.o(57785);
       return paramf;
     }
-    Iterator localIterator = glI().iterator();
+    Iterator localIterator = gqk().iterator();
     localObject = null;
     while (localIterator.hasNext())
     {
       d.l.b.a.b.b.h localh = ((d.l.b.a.b.j.f.h)localIterator.next()).c(paramf, parama);
       if (localh != null) {
-        if (((localh instanceof d.l.b.a.b.b.i)) && (((d.l.b.a.b.b.i)localh).ghE()))
+        if (((localh instanceof d.l.b.a.b.b.i)) && (((d.l.b.a.b.b.i)localh).gmg()))
         {
           if (localObject == null) {
             localObject = localh;
@@ -156,31 +156,31 @@ public final class d
     return localObject;
   }
   
-  public final Set<d.l.b.a.b.f.f> gjW()
+  public final Set<d.l.b.a.b.f.f> goy()
   {
     AppMethodBeat.i(57789);
-    Object localObject2 = (Iterable)glI();
+    Object localObject2 = (Iterable)gqk();
     Object localObject1 = (Collection)new LinkedHashSet();
     localObject2 = ((Iterable)localObject2).iterator();
     while (((Iterator)localObject2).hasNext()) {
-      d.a.j.a((Collection)localObject1, (Iterable)((d.l.b.a.b.j.f.h)((Iterator)localObject2).next()).gjW());
+      d.a.j.a((Collection)localObject1, (Iterable)((d.l.b.a.b.j.f.h)((Iterator)localObject2).next()).goy());
     }
-    ((Set)localObject1).addAll((Collection)this.Nfa.gjW());
+    ((Set)localObject1).addAll((Collection)this.NCf.goy());
     localObject1 = (Set)localObject1;
     AppMethodBeat.o(57789);
     return localObject1;
   }
   
-  public final Set<d.l.b.a.b.f.f> gjX()
+  public final Set<d.l.b.a.b.f.f> goz()
   {
     AppMethodBeat.i(57790);
-    Object localObject2 = (Iterable)glI();
+    Object localObject2 = (Iterable)gqk();
     Object localObject1 = (Collection)new LinkedHashSet();
     localObject2 = ((Iterable)localObject2).iterator();
     while (((Iterator)localObject2).hasNext()) {
-      d.a.j.a((Collection)localObject1, (Iterable)((d.l.b.a.b.j.f.h)((Iterator)localObject2).next()).gjX());
+      d.a.j.a((Collection)localObject1, (Iterable)((d.l.b.a.b.j.f.h)((Iterator)localObject2).next()).goz());
     }
-    ((Set)localObject1).addAll((Collection)this.Nfa.gjX());
+    ((Set)localObject1).addAll((Collection)this.NCf.goz());
     localObject1 = (Set)localObject1;
     AppMethodBeat.o(57790);
     return localObject1;
@@ -198,7 +198,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.d.a.c.a.d
  * JD-Core Version:    0.7.0.1
  */

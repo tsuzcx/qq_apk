@@ -12,8 +12,8 @@ final class FacebookFriendUI$2
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
     AppMethodBeat.i(127959);
-    this.jjP.hideVKB();
-    this.jjP.finish();
+    this.jmI.hideVKB();
+    this.jmI.finish();
     AppMethodBeat.o(127959);
     return true;
   }

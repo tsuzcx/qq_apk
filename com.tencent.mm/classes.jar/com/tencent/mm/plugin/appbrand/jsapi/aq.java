@@ -3,23 +3,23 @@ package com.tencent.mm.plugin.appbrand.jsapi;
 import android.content.Intent;
 import com.tencent.luggage.h.e.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.q;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.plugin.appbrand.r;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.HashMap;
 import java.util.Map;
 
 public final class aq
-  extends a<q>
+  extends a<r>
 {
   public static final int CTRL_INDEX = 501;
   public static final String NAME = "chooseInvoice";
-  final int krZ;
+  final int kvp;
   
   public aq()
   {
     AppMethodBeat.i(174751);
-    this.krZ = com.tencent.luggage.sdk.g.a.aC(this);
+    this.kvp = com.tencent.luggage.sdk.g.a.aC(this);
     AppMethodBeat.o(174751);
   }
 }

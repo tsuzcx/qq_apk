@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.vlog.ui.plugin.caption;
 
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/vlog/ui/plugin/caption/EditorTextCaptionView$Companion;", "", "()V", "LIST_ROW", "", "TAG", "", "TYPE_CAPTION", "TYPE_RECORD_CAPTION", "UNSELECTED_ALPHA", "", "plugin-vlog_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/vlog/ui/plugin/caption/EditorTextCaptionView$Companion;", "", "()V", "LIST_ROW", "", "TAG", "", "TYPE_CAPTION", "TYPE_RECORD_CAPTION", "UNSELECTED_ALPHA", "", "plugin-vlog_release"})
 public final class d$b {}
 
 

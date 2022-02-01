@@ -7,12 +7,12 @@ import java.lang.reflect.Proxy;
 
 public final class f
 {
-  private static volatile boolean gBJ = false;
+  private static volatile boolean gEq = false;
   
   private static <T> T a(Class<T> paramClass, int paramInt)
   {
     AppMethodBeat.i(158302);
-    if (!gBJ)
+    if (!gEq)
     {
       AppMethodBeat.o(158302);
       return null;
@@ -48,7 +48,7 @@ public final class f
   public static <T> T ag(Class<T> paramClass)
   {
     AppMethodBeat.i(158301);
-    if (!gBJ)
+    if (!gEq)
     {
       AppMethodBeat.o(158301);
       return null;

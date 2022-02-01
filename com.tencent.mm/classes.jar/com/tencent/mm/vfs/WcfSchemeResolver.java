@@ -4,10 +4,9 @@ import android.net.Uri;
 import android.os.Parcelable.Creator;
 import android.util.Pair;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.Map;
 
 public final class WcfSchemeResolver
-  extends SchemeResolver.Base
+  extends SingletonSchemeResolver
 {
   public static final a CREATOR;
   
@@ -18,34 +17,34 @@ public final class WcfSchemeResolver
     AppMethodBeat.o(13337);
   }
   
-  public static WcfSchemeResolver fPu()
+  static i fSO()
   {
-    return a.Lmk;
+    return a.LFU;
   }
   
-  public final Pair<FileSystem, String> a(SchemeResolver.b paramb, Uri paramUri)
+  public final Pair<FileSystem.b, String> a(g paramg, Uri paramUri)
   {
-    AppMethodBeat.i(13336);
-    FileSystem localFileSystem = (FileSystem)((c)paramb).LkR.get(paramUri.getAuthority());
-    paramb = paramUri.getPath();
-    if (paramb == null) {}
-    for (paramb = "";; paramb = q.o(paramb, true, true))
+    AppMethodBeat.i(193454);
+    FileSystem.b localb = ((h)paramg).aZO(paramUri.getAuthority());
+    paramg = paramUri.getPath();
+    if (paramg == null) {}
+    for (paramg = "";; paramg = w.o(paramg, true, true))
     {
-      paramb = new Pair(localFileSystem, paramb);
-      AppMethodBeat.o(13336);
-      return paramb;
+      paramg = new Pair(localb, paramg);
+      AppMethodBeat.o(193454);
+      return paramg;
     }
   }
   
   static final class a
     implements Parcelable.Creator<WcfSchemeResolver>
   {
-    static final WcfSchemeResolver Lmk;
+    static final i LFU;
     
     static
     {
       AppMethodBeat.i(13335);
-      Lmk = new WcfSchemeResolver((byte)0);
+      LFU = new i(new WcfSchemeResolver((byte)0));
       AppMethodBeat.o(13335);
     }
   }

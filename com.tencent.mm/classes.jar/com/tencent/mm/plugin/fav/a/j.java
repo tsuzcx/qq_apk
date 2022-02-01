@@ -12,11 +12,11 @@ public final class j
   static
   {
     AppMethodBeat.i(103405);
-    info = bz.Vv();
+    info = bz.VD();
     AppMethodBeat.o(103405);
   }
   
-  public static int DX(int paramInt)
+  public static int Ek(int paramInt)
   {
     return 1 << paramInt;
   }

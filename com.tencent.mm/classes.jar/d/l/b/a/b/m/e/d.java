@@ -7,30 +7,30 @@ import d.l.b.a.b.m.ab;
 
 final class d
 {
-  final as NCv;
-  final ab NEc;
-  final ab NEd;
+  final as NZC;
+  final ab Obj;
+  final ab Obk;
   
   public d(as paramas, ab paramab1, ab paramab2)
   {
     AppMethodBeat.i(61277);
-    this.NCv = paramas;
-    this.NEc = paramab1;
-    this.NEd = paramab2;
+    this.NZC = paramas;
+    this.Obj = paramab1;
+    this.Obk = paramab2;
     AppMethodBeat.o(61277);
   }
   
-  public final boolean guk()
+  public final boolean gyM()
   {
     AppMethodBeat.i(61276);
-    boolean bool = g.NDb.c(this.NEc, this.NEd);
+    boolean bool = g.Oai.c(this.Obj, this.Obk);
     AppMethodBeat.o(61276);
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.m.e.d
  * JD-Core Version:    0.7.0.1
  */

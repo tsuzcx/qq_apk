@@ -1,83 +1,83 @@
 package com.tencent.mm.plugin.card.base;
 
-import com.tencent.mm.protocal.protobuf.ddt;
-import com.tencent.mm.protocal.protobuf.sr;
-import com.tencent.mm.protocal.protobuf.tl;
-import com.tencent.mm.protocal.protobuf.ts;
+import com.tencent.mm.protocal.protobuf.den;
+import com.tencent.mm.protocal.protobuf.st;
+import com.tencent.mm.protocal.protobuf.tn;
+import com.tencent.mm.protocal.protobuf.tu;
 
 public abstract interface b
 {
-  public abstract String An(int paramInt);
+  public abstract String Az(int paramInt);
   
-  public abstract void Yc(String paramString);
+  public abstract void YT(String paramString);
   
-  public abstract void a(sr paramsr);
+  public abstract void a(st paramst);
   
-  public abstract void a(tl paramtl);
+  public abstract void a(tn paramtn);
   
-  public abstract boolean bTA();
+  public abstract boolean bUH();
   
-  public abstract boolean bTB();
+  public abstract boolean bUI();
   
-  public abstract boolean bTC();
+  public abstract boolean bUJ();
   
-  public abstract boolean bTD();
+  public abstract boolean bUK();
   
-  public abstract boolean bTE();
+  public abstract boolean bUL();
   
-  public abstract boolean bTF();
+  public abstract boolean bUM();
   
-  public abstract boolean bTG();
+  public abstract boolean bUN();
   
-  public abstract boolean bTH();
+  public abstract boolean bUO();
   
-  public abstract boolean bTI();
+  public abstract boolean bUP();
   
-  public abstract boolean bTJ();
+  public abstract boolean bUQ();
   
-  public abstract boolean bTK();
+  public abstract boolean bUR();
   
-  public abstract boolean bTL();
+  public abstract boolean bUS();
   
-  public abstract boolean bTM();
+  public abstract boolean bUT();
   
-  public abstract ts bTN();
+  public abstract boolean bUU();
   
-  public abstract sr bTO();
+  public abstract boolean bUV();
   
-  public abstract ddt bTP();
+  public abstract boolean bUW();
   
-  public abstract tl bTQ();
+  public abstract boolean bUX();
   
-  public abstract String bTR();
+  public abstract boolean bUY();
   
-  public abstract String bTS();
+  public abstract boolean bUZ();
   
-  public abstract String bTT();
+  public abstract boolean bVa();
   
-  public abstract long bTU();
+  public abstract boolean bVb();
   
-  public abstract String bTV();
+  public abstract tu bVc();
   
-  public abstract int bTW();
+  public abstract st bVd();
   
-  public abstract String bTX();
+  public abstract den bVe();
   
-  public abstract boolean bTs();
+  public abstract tn bVf();
   
-  public abstract boolean bTt();
+  public abstract String bVg();
   
-  public abstract boolean bTu();
+  public abstract String bVh();
   
-  public abstract boolean bTv();
+  public abstract String bVi();
   
-  public abstract boolean bTw();
+  public abstract long bVj();
   
-  public abstract boolean bTx();
+  public abstract String bVk();
   
-  public abstract boolean bTy();
+  public abstract int bVl();
   
-  public abstract boolean bTz();
+  public abstract String bVm();
   
   public abstract long getEndTime();
   

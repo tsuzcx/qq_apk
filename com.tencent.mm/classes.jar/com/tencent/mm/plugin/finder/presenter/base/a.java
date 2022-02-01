@@ -2,10 +2,10 @@ package com.tencent.mm.plugin.finder.presenter.base;
 
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/presenter/base/IPresenter;", "V", "", "onAttach", "", "callback", "(Ljava/lang/Object;)V", "onDetach", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/presenter/base/IPresenter;", "V", "", "onAttach", "", "callback", "(Ljava/lang/Object;)V", "onDetach", "plugin-finder_release"})
 public abstract interface a<V>
 {
-  public abstract void db(V paramV);
+  public abstract void dc(V paramV);
   
   public abstract void onDetach();
 }

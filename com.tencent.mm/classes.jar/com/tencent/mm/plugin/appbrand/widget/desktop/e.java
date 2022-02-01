@@ -4,47 +4,47 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.al;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/widget/desktop/AppBrandDesktopViewBgParticleColorConfig;", "", "particleColor1", "", "particleColor2", "particleColor3", "bgColor1", "bgColor2", "(IIIII)V", "getBgColor1", "()I", "getBgColor2", "getParticleColor1", "getParticleColor2", "getParticleColor3", "Companion", "plugin-appbrand-integration_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/widget/desktop/AppBrandDesktopViewBgParticleColorConfig;", "", "particleColor1", "", "particleColor2", "particleColor3", "bgColor1", "bgColor2", "(IIIII)V", "getBgColor1", "()I", "getBgColor2", "getParticleColor1", "getParticleColor2", "getParticleColor3", "Companion", "plugin-appbrand-integration_release"})
 public final class e
 {
-  public static final e mYe;
-  public static final e mYf;
-  public static final e.a mYg;
-  final int ggg;
-  final int ggh;
-  final int ggi;
-  final int ggj;
-  final int ggk;
+  public static final e ndl;
+  public static final e ndm;
+  public static final e.a ndn;
+  final int giA;
+  final int giB;
+  final int giC;
+  final int giy;
+  final int giz;
   
   static
   {
-    AppMethodBeat.i(189686);
-    mYg = new e.a((byte)0);
-    mYe = new e(-12105913, -13948117, -12105913, -14935012, -11316397);
-    mYf = new e(-11975584, -13948609, -11975584, -15263959, -11120530);
-    AppMethodBeat.o(189686);
+    AppMethodBeat.i(223958);
+    ndn = new e.a((byte)0);
+    ndl = new e(-12105913, -13948117, -12105913, -14935012, -11316397);
+    ndm = new e(-11975584, -13948609, -11975584, -15263959, -11120530);
+    AppMethodBeat.o(223958);
   }
   
   private e(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
-    this.ggg = paramInt1;
-    this.ggh = paramInt2;
-    this.ggi = paramInt3;
-    this.ggj = paramInt4;
-    this.ggk = paramInt5;
+    this.giy = paramInt1;
+    this.giz = paramInt2;
+    this.giA = paramInt3;
+    this.giB = paramInt4;
+    this.giC = paramInt5;
   }
   
-  public static final e bDe()
+  public static final e bDW()
   {
-    AppMethodBeat.i(189687);
+    AppMethodBeat.i(223959);
     if (al.isDarkMode())
     {
-      locale = mYe;
-      AppMethodBeat.o(189687);
+      locale = ndl;
+      AppMethodBeat.o(223959);
       return locale;
     }
-    e locale = mYf;
-    AppMethodBeat.o(189687);
+    e locale = ndm;
+    AppMethodBeat.o(223959);
     return locale;
   }
 }

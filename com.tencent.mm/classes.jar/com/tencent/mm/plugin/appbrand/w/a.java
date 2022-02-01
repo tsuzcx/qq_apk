@@ -1,56 +1,70 @@
 package com.tencent.mm.plugin.appbrand.w;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.ba;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.w;
-import com.tencent.mm.o.b;
-import com.tencent.mm.plugin.appbrand.service.e;
-import com.tencent.mm.plugin.messenger.foundation.a.l;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.am;
-import com.tencent.mm.storage.at;
-import com.tencent.mm.storage.bp;
-import com.tencent.mm.storage.bq;
-import com.tencent.mm.storage.bq.a;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public final class a
-  implements bq.a
 {
-  public final void a(at paramat, bq parambq)
+  private final Map<String, List<Object>> lba;
+  
+  private a()
   {
-    AppMethodBeat.i(48310);
-    if ((paramat != null) && (!bt.isNullOrNil(paramat.field_username)))
+    AppMethodBeat.i(140790);
+    this.lba = new HashMap();
+    AppMethodBeat.o(140790);
+  }
+  
+  private void Vg(String paramString)
+  {
+    AppMethodBeat.i(220897);
+    paramString = (List)this.lba.get(paramString);
+    if (paramString == null)
     {
-      parambq = paramat.field_username;
-      am localam = ((l)g.ab(l.class)).azp().Bf(parambq);
-      if ((localam == null) || ((int)localam.gfj == 0))
-      {
-        ad.e("MicroMsg.AppBrandConversionExtension", "contact is null or contactId is 0 for %s", new Object[] { parambq });
-        AppMethodBeat.o(48310);
-        return;
-      }
-      if ((am.yt(parambq)) && (!w.zQ(parambq)))
-      {
-        ad.i("MicroMsg.AppBrandConversionExtension", "this conversation is a app brand contact!");
-        paramat.tD("appbrandcustomerservicemsg");
-        ((e)g.ab(e.class)).c(paramat);
-        AppMethodBeat.o(48310);
-        return;
-      }
-      if (w.Am(parambq))
-      {
-        ad.i("MicroMsg.AppBrandConversionExtension", "appBrandSuperConv is created");
-        paramat.tD(null);
-      }
+      AppMethodBeat.o(220897);
+      return;
     }
-    AppMethodBeat.o(48310);
+    int i = 0;
+    while (i < paramString.size())
+    {
+      paramString.get(i);
+      i += 1;
+    }
+    AppMethodBeat.o(220897);
+  }
+  
+  public final void K(String paramString1, final String paramString2, final String paramString3)
+  {
+    AppMethodBeat.i(140792);
+    new Object() {};
+    Vg(paramString1);
+    AppMethodBeat.o(140792);
+  }
+  
+  public final void a(String paramString1, final String paramString2, final b.b paramb)
+  {
+    AppMethodBeat.i(140791);
+    new Object() {};
+    Vg(paramString1);
+    AppMethodBeat.o(140791);
+  }
+  
+  static final class a
+  {
+    private static final a mBV;
+    
+    static
+    {
+      AppMethodBeat.i(140789);
+      mBV = new a((byte)0);
+      AppMethodBeat.o(140789);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.w.a
  * JD-Core Version:    0.7.0.1
  */

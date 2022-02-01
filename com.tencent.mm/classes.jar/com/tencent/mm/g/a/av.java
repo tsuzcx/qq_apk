@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class av
   extends b
 {
-  public a dlH;
+  public a dmJ;
   
   public av()
   {
@@ -16,15 +16,15 @@ public final class av
   private av(byte paramByte)
   {
     AppMethodBeat.i(115970);
-    this.dlH = new a();
-    this.IbR = false;
+    this.dmJ = new a();
+    this.IvZ = false;
     this.callback = null;
     AppMethodBeat.o(115970);
   }
   
   public static final class a
   {
-    public long dlI;
+    public long dmK;
     public String filePath;
   }
 }

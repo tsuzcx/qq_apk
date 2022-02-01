@@ -11,7 +11,7 @@ public final class b
   extends a
 {
   private String mReqKey;
-  public Orders ygb;
+  public Orders yvS;
   
   public b(String paramString)
   {
@@ -21,7 +21,7 @@ public final class b
   private b(String paramString, byte paramByte)
   {
     AppMethodBeat.i(163874);
-    this.ygb = null;
+    this.yvS = null;
     this.mReqKey = null;
     this.mReqKey = paramString;
     paramString = new HashMap();
@@ -31,7 +31,7 @@ public final class b
     AppMethodBeat.o(163874);
   }
   
-  public final int eEK()
+  public final int eIr()
   {
     return 8;
   }
@@ -39,16 +39,16 @@ public final class b
   public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(72085);
-    this.ygb = Orders.aY(paramJSONObject);
-    if (this.ygb != null) {
-      this.ygb.dlu = this.mReqKey;
+    this.yvS = Orders.aY(paramJSONObject);
+    if (this.yvS != null) {
+      this.yvS.dmw = this.mReqKey;
     }
     AppMethodBeat.o(72085);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_payu.pay.a.b
  * JD-Core Version:    0.7.0.1
  */

@@ -2,12 +2,12 @@ package com.tencent.mm.ui.widget.picker;
 
 public final class g
 {
-  public static boolean wJ(int paramInt)
+  public static boolean wO(int paramInt)
   {
     return (paramInt >= 0) && (paramInt <= 59);
   }
   
-  public static boolean wK(int paramInt)
+  public static boolean wP(int paramInt)
   {
     return (paramInt >= 0) && (paramInt <= 23);
   }

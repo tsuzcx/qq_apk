@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class pm
   extends b
 {
-  public a dDG;
+  public a dEI;
   
   public pm()
   {
@@ -15,27 +15,20 @@ public final class pm
   
   private pm(byte paramByte)
   {
-    AppMethodBeat.i(89649);
-    this.dDG = new a();
-    this.IbR = false;
+    AppMethodBeat.i(214293);
+    this.dEI = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(89649);
+    AppMethodBeat.o(214293);
   }
   
   public static final class a
   {
-    public String appId;
-    public String appName;
-    public String content;
-    public String dDH;
-    public boolean dDI;
-    public boolean dDJ;
-    public int dlp = 0;
-    public String dls;
-    public int iconHeight;
-    public int iconWidth;
-    public long msgId;
-    public int msgType;
+    public String dEJ;
+    public long dEK;
+    public int dla;
+    public boolean dnq;
+    public String dyI;
   }
 }
 

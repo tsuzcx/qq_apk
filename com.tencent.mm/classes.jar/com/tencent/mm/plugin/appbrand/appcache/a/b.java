@@ -18,15 +18,15 @@ public abstract interface b<_Request extends a, _Response, _Progress extends k>
       static
       {
         AppMethodBeat.i(90674);
-        jJw = new a("OK", 0, 0);
-        jJx = new a("FAILED", 1, 101);
-        jJy = new a("LOCAL_FILE_NOT_FOUND", 2, 102);
-        jJz = new a("PKG_INTEGRITY_FAILED", 3, 104);
-        jJA = new a("PKG_INVALID", 4, 105);
-        jJB = new a("SEVER_FILE_NOT_FOUND", 5, 106);
-        jJC = new a("DISK_FULL", 6, 110);
-        jJD = new a("ENV_ERR", 7, 200);
-        jJE = new a[] { jJw, jJx, jJy, jJz, jJA, jJB, jJC, jJD };
+        jMy = new a("OK", 0, 0);
+        jMz = new a("FAILED", 1, 101);
+        jMA = new a("LOCAL_FILE_NOT_FOUND", 2, 102);
+        jMB = new a("PKG_INTEGRITY_FAILED", 3, 104);
+        jMC = new a("PKG_INVALID", 4, 105);
+        jMD = new a("SEVER_FILE_NOT_FOUND", 5, 106);
+        jME = new a("DISK_FULL", 6, 110);
+        jMF = new a("ENV_ERR", 7, 200);
+        jMG = new a[] { jMy, jMz, jMA, jMB, jMC, jMD, jME, jMF };
         AppMethodBeat.o(90674);
       }
       
@@ -35,7 +35,7 @@ public abstract interface b<_Request extends a, _Response, _Progress extends k>
         this.code = paramInt;
       }
       
-      public final int baI()
+      public final int bbh()
       {
         return this.code;
       }
@@ -44,12 +44,12 @@ public abstract interface b<_Request extends a, _Response, _Progress extends k>
   
   public static abstract interface b
   {
-    public abstract void baR();
+    public abstract void bbq();
   }
   
   public static abstract interface c
   {
-    public abstract void baS();
+    public abstract void bbr();
   }
 }
 

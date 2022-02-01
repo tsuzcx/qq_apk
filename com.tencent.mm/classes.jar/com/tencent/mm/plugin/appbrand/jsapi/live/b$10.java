@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.appbrand.jsapi.live;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.e;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.rtmp.ITXLivePushListener;
 import java.util.Iterator;
 import java.util.Set;
@@ -23,7 +23,7 @@ final class b$10
     JSONObject localJSONObject2;
     try
     {
-      localJSONObject1.put("livePusherId", this.kCh);
+      localJSONObject1.put("livePusherId", this.kFw);
       localJSONObject2 = new JSONObject();
       if (paramBundle != null)
       {
@@ -33,7 +33,7 @@ final class b$10
           String str = (String)localIterator.next();
           localJSONObject2.put(str, paramBundle.get(str));
           continue;
-          this.kCd.b(localf.Pi(localJSONObject1.toString()));
+          this.kFs.b(localf.PQ(localJSONObject1.toString()));
         }
       }
     }
@@ -49,16 +49,16 @@ final class b$10
   public final void onPushEvent(int paramInt, Bundle paramBundle)
   {
     AppMethodBeat.i(145871);
-    ad.i("MicroMsg.JsApiInsertLivePusher", "onPushEvent errCode:%d", new Object[] { Integer.valueOf(paramInt) });
+    ae.i("MicroMsg.JsApiInsertLivePusher", "onPushEvent errCode:%d", new Object[] { Integer.valueOf(paramInt) });
     b.g localg = new b.g((byte)0);
     JSONObject localJSONObject = new JSONObject();
     try
     {
       localJSONObject.put("errCode", paramInt);
       localJSONObject.put("errMsg", paramBundle.getString("EVT_MSG"));
-      localJSONObject.put("livePusherId", this.kCh);
+      localJSONObject.put("livePusherId", this.kFw);
       label76:
-      this.kCd.b(localg.Pi(localJSONObject.toString()));
+      this.kFs.b(localg.PQ(localJSONObject.toString()));
       AppMethodBeat.o(145871);
       return;
     }

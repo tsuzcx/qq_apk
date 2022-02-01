@@ -1,14 +1,13 @@
 package com.tencent.mm.g.a;
 
-import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class jk
   extends b
 {
-  public a dwj;
-  public b dwk;
+  public a dxm;
+  public b dxn;
   
   public jk()
   {
@@ -17,27 +16,24 @@ public final class jk
   
   private jk(byte paramByte)
   {
-    AppMethodBeat.i(155370);
-    this.dwj = new a();
-    this.dwk = new b();
-    this.IbR = false;
+    AppMethodBeat.i(149865);
+    this.dxm = new a();
+    this.dxn = new b();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(155370);
+    AppMethodBeat.o(149865);
   }
   
   public static final class a
   {
-    public Context context;
+    public String userName;
   }
   
-  public static final class b
-  {
-    public String dwl;
-  }
+  public static final class b {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.a.jk
  * JD-Core Version:    0.7.0.1
  */

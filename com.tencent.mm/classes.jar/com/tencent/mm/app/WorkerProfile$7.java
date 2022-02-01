@@ -1,16 +1,16 @@
 package com.tencent.mm.app;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.ky;
+import com.tencent.mm.g.a.kz;
 import com.tencent.mm.sdk.b.c;
 
 final class WorkerProfile$7
-  extends c<ky>
+  extends c<kz>
 {
   WorkerProfile$7(WorkerProfile paramWorkerProfile)
   {
     AppMethodBeat.i(161237);
-    this.__eventId = ky.class.getName().hashCode();
+    this.__eventId = kz.class.getName().hashCode();
     AppMethodBeat.o(161237);
   }
 }

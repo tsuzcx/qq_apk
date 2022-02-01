@@ -2,70 +2,70 @@ package com.tencent.mm.plugin.websearch.api;
 
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.aag;
-import com.tencent.mm.protocal.protobuf.ccy;
-import com.tencent.mm.protocal.protobuf.dlx;
-import com.tencent.mm.protocal.protobuf.dty;
-import com.tencent.mm.protocal.protobuf.een;
-import com.tencent.mm.protocal.protobuf.eib;
+import com.tencent.mm.protocal.protobuf.aaj;
+import com.tencent.mm.protocal.protobuf.cds;
+import com.tencent.mm.protocal.protobuf.dmu;
+import com.tencent.mm.protocal.protobuf.duv;
+import com.tencent.mm.protocal.protobuf.ege;
+import com.tencent.mm.protocal.protobuf.ejs;
 import java.util.LinkedList;
 
 public final class s
 {
-  public int DAZ;
-  public LinkedList<dty> DBa;
-  public String DBb;
-  public String DBc;
-  public int DBd;
-  public LinkedList<String> DBe;
-  public int DBf;
-  public int DBg;
-  public String DBh;
-  public dlx DBi;
-  public LinkedList<aag> DBj;
-  public LinkedList<ccy> DBk;
-  public int DBl;
-  public eib DBm;
-  public een DBn;
-  public String DBo;
-  public String DBp;
-  public boolean DBq;
-  public String DBr;
-  public int DBs;
-  public boolean DBt;
+  public int DSW;
+  public LinkedList<duv> DSX;
+  public String DSY;
+  public String DSZ;
+  public int DTa;
+  public LinkedList<String> DTb;
+  public int DTc;
+  public int DTd;
+  public String DTe;
+  public dmu DTf;
+  public LinkedList<aaj> DTg;
+  public LinkedList<cds> DTh;
+  public int DTi;
+  public ejs DTj;
+  public ege DTk;
+  public String DTl;
+  public String DTm;
+  public boolean DTn;
+  public String DTo;
+  public int DTp;
+  public boolean DTq;
   public int businessType;
-  public int cSc;
+  public int cSM;
   public String content;
-  public int dCT;
-  public String dCW;
-  public int dDa;
-  public String dld;
-  public String dlu;
-  public String dwW;
+  public int dDY;
+  public String dEb;
+  public int dEf;
+  public String dmf;
+  public String dmw;
+  public String dyb;
   public String language;
   public int offset;
-  public String pLL;
+  public String pSq;
   public int scene;
   public String sessionId;
-  public int tug;
-  public Bundle yjJ;
+  public int tEX;
+  public Bundle yzF;
   
   public s()
   {
     AppMethodBeat.i(117623);
-    this.DBa = new LinkedList();
-    this.DBe = new LinkedList();
-    this.DBj = new LinkedList();
-    this.DBk = new LinkedList();
-    this.dlu = "";
+    this.DSX = new LinkedList();
+    this.DTb = new LinkedList();
+    this.DTg = new LinkedList();
+    this.DTh = new LinkedList();
+    this.dmw = "";
     this.content = "";
-    this.DBt = true;
+    this.DTq = true;
     AppMethodBeat.o(117623);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.websearch.api.s
  * JD-Core Version:    0.7.0.1
  */

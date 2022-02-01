@@ -13,7 +13,7 @@ public class v$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.appbrand.v8.v.a
  * JD-Core Version:    0.7.0.1
  */

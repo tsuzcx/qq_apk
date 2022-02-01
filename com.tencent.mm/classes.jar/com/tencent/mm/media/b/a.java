@@ -9,7 +9,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.d;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.expt.b.b.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import d.g.b.p;
 import d.l;
 import d.n.n;
@@ -17,43 +17,43 @@ import d.v;
 import java.util.Arrays;
 import java.util.Collection;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/media/config/BaseCodecConfig;", "", "()V", "STRING_SPILT", "", "supportedHardcodeEncoder", "", "[Ljava/lang/String;", "isRecognizedFormat", "", "colorFormat", "", "isRecognizedProfile", "profile", "selectCodec", "Landroid/media/MediaCodecInfo;", "mimeType", "selectColorFormat", "codecInfo", "trySetBitRateMode", "", "mediaFormat", "Landroid/media/MediaFormat;", "trySetProfile", "Companion", "plugin-mediaeditor_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/media/config/BaseCodecConfig;", "", "()V", "STRING_SPILT", "", "supportedHardcodeEncoder", "", "[Ljava/lang/String;", "isRecognizedFormat", "", "colorFormat", "", "isRecognizedProfile", "profile", "selectCodec", "Landroid/media/MediaCodecInfo;", "mimeType", "selectColorFormat", "codecInfo", "trySetBitRateMode", "", "mediaFormat", "Landroid/media/MediaFormat;", "trySetProfile", "Companion", "plugin-mediaeditor_release"})
 public class a
 {
-  public static final a.a hhM;
-  private final String hhK;
-  private String[] hhL;
+  public static final a.a hkA;
+  private final String hky;
+  private String[] hkz;
   
   static
   {
     AppMethodBeat.i(93516);
-    hhM = new a.a((byte)0);
+    hkA = new a.a((byte)0);
     AppMethodBeat.o(93516);
   }
   
   public a()
   {
     AppMethodBeat.i(93515);
-    this.hhK = ";";
-    this.hhL = new String[] { "OMX.oppo.h264.encoder" };
-    Object localObject = ((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qyK, "");
+    this.hky = ";";
+    this.hkz = new String[] { "OMX.oppo.h264.encoder" };
+    Object localObject = ((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qFQ, "");
     p.g(localObject, "supportedHardcodeEncoderList");
-    Object[] arrayOfObject = ((Collection)n.b((CharSequence)localObject, new String[] { this.hhK })).toArray(new String[0]);
+    Object[] arrayOfObject = ((Collection)n.b((CharSequence)localObject, new String[] { this.hky })).toArray(new String[0]);
     if (arrayOfObject == null)
     {
       localObject = new v("null cannot be cast to non-null type kotlin.Array<T>");
       AppMethodBeat.o(93515);
       throw ((Throwable)localObject);
     }
-    this.hhL = ((String[])arrayOfObject);
-    ad.i("MicroMsg.VideoCodecConfig", "supportedHardcodeEncoderList : " + (String)localObject + "  supportedHardcodeEncoder size:" + this.hhL.length);
-    if (this.hhL.length == 0) {}
+    this.hkz = ((String[])arrayOfObject);
+    ae.i("MicroMsg.VideoCodecConfig", "supportedHardcodeEncoderList : " + (String)localObject + "  supportedHardcodeEncoder size:" + this.hkz.length);
+    if (this.hkz.length == 0) {}
     for (int i = 1;; i = 0)
     {
       if (i != 0)
       {
-        localObject = b.hhO;
-        b.ea(false);
+        localObject = b.hkC;
+        b.ec(false);
       }
       AppMethodBeat.o(93515);
       return;
@@ -66,7 +66,7 @@ public class a
     p.h(paramMediaCodecInfo, "codecInfo");
     p.h(paramMediaFormat, "mediaFormat");
     p.h(paramString, "mimeType");
-    if (d.ly(23)) {}
+    if (d.lA(23)) {}
     for (;;)
     {
       int i;
@@ -90,7 +90,7 @@ public class a
               Object localObject = paramMediaCodecInfo[i];
               m = localObject.profile;
               n = localObject.level;
-              ad.i("MicroMsg.VideoCodecConfig", "profile: %s, level: %s", new Object[] { Integer.valueOf(m), Integer.valueOf(n) });
+              ae.i("MicroMsg.VideoCodecConfig", "profile: %s, level: %s", new Object[] { Integer.valueOf(m), Integer.valueOf(n) });
             }
             switch (m)
             {
@@ -101,7 +101,7 @@ public class a
               paramString.profile = m;
               paramString.level = n;
               break label307;
-              ad.i("MicroMsg.VideoCodecConfig", "best profile: %s, level: %s", new Object[] { Integer.valueOf(paramString.profile), Integer.valueOf(paramString.level) });
+              ae.i("MicroMsg.VideoCodecConfig", "best profile: %s, level: %s", new Object[] { Integer.valueOf(paramString.profile), Integer.valueOf(paramString.level) });
               if ((paramString.profile > 0) && (paramString.level >= 256))
               {
                 paramMediaFormat.setInteger("profile", paramString.profile);
@@ -116,7 +116,7 @@ public class a
       }
       catch (Exception paramMediaCodecInfo)
       {
-        ad.e("MicroMsg.VideoCodecConfig", "trySetProfile error: %s", new Object[] { paramMediaCodecInfo.getMessage() });
+        ae.e("MicroMsg.VideoCodecConfig", "trySetProfile error: %s", new Object[] { paramMediaCodecInfo.getMessage() });
       }
       AppMethodBeat.o(93514);
       return;
@@ -134,7 +134,7 @@ public class a
     AppMethodBeat.i(93513);
     p.h(paramString, "mimeType");
     int m = MediaCodecList.getCodecCount();
-    ad.i("MicroMsg.VideoCodecConfig", "numCodec:".concat(String.valueOf(m)));
+    ae.i("MicroMsg.VideoCodecConfig", "numCodec:".concat(String.valueOf(m)));
     int i = 0;
     MediaCodecInfo localMediaCodecInfo;
     String[] arrayOfString;
@@ -146,8 +146,8 @@ public class a
       p.g(localMediaCodecInfo, "codecInfo");
       if (localMediaCodecInfo.isEncoder())
       {
-        ad.i("MicroMsg.VideoCodecConfig", "config to use supportedHardcodeEncoder:" + Arrays.toString(this.hhL));
-        arrayOfString = this.hhL;
+        ae.i("MicroMsg.VideoCodecConfig", "config to use supportedHardcodeEncoder:" + Arrays.toString(this.hkz));
+        arrayOfString = this.hkz;
         int n = arrayOfString.length;
         j = 0;
         while (j < n)
@@ -161,17 +161,17 @@ public class a
             int i1 = localObject.length;
             while (k < i1)
             {
-              ad.i("MicroMsg.VideoCodecConfig", "hardcodeEncoder: " + localMediaCodecInfo.getName() + "  type:" + localObject[k]);
+              ae.i("MicroMsg.VideoCodecConfig", "hardcodeEncoder: " + localMediaCodecInfo.getName() + "  type:" + localObject[k]);
               if (n.H(localObject[k], paramString, true))
               {
-                paramString = b.hhO;
-                b.ea(true);
+                paramString = b.hkC;
+                b.ec(true);
                 AppMethodBeat.o(93513);
                 return localMediaCodecInfo;
               }
               k += 1;
             }
-            ad.i("MicroMsg.VideoCodecConfig", "selectCodec from hardcodeEncoder " + this.hhL + ": " + localMediaCodecInfo.getName());
+            ae.i("MicroMsg.VideoCodecConfig", "selectCodec from hardcodeEncoder " + this.hkz + ": " + localMediaCodecInfo.getName());
           }
           j += 1;
         }
@@ -191,7 +191,7 @@ public class a
         k = arrayOfString.length;
         while (j < k)
         {
-          ad.i("MicroMsg.VideoCodecConfig", "selectCodec:  " + m + "  type: " + arrayOfString[j]);
+          ae.i("MicroMsg.VideoCodecConfig", "selectCodec:  " + m + "  type: " + arrayOfString[j]);
           if (n.H(arrayOfString[j], paramString, true))
           {
             AppMethodBeat.o(93513);

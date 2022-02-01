@@ -4,15 +4,15 @@ import com.tencent.mm.plugin.appbrand.jsapi.video.b.c.c;
 
 public abstract interface e
 {
-  public abstract void QL(String paramString);
+  public abstract void Ru(String paramString);
   
   public abstract long a(g paramg);
   
   public abstract long available();
   
-  public abstract long baK();
+  public abstract long bbj();
   
-  public abstract c bnC();
+  public abstract c bom();
   
   public abstract void close();
   

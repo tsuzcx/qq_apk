@@ -6,17 +6,17 @@ import d.g.b.q;
 import d.l;
 import d.z;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "storyId", "", "isSync", "", "fromUser", "", "storyOwner", "invoke"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "storyId", "", "isSync", "", "fromUser", "", "storyOwner", "invoke"})
 final class a$j
   extends q
   implements r<Long, Boolean, String, String, z>
 {
-  public static final j ANv;
+  public static final j BeW;
   
   static
   {
     AppMethodBeat.i(119000);
-    ANv = new j();
+    BeW = new j();
     AppMethodBeat.o(119000);
   }
   

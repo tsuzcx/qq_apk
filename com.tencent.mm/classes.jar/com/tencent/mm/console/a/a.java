@@ -3,7 +3,7 @@ package com.tencent.mm.console.a;
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.emoji.model.k;
-import com.tencent.mm.storage.bd;
+import com.tencent.mm.storage.be;
 import com.tencent.mm.storage.emotion.w;
 
 public final class a
@@ -12,7 +12,7 @@ public final class a
   public final boolean a(Context paramContext, String[] paramArrayOfString, String paramString)
   {
     AppMethodBeat.i(20169);
-    k.getEmojiStorageMgr().ILy.bcD();
+    k.getEmojiStorageMgr().Jgf.bdi();
     AppMethodBeat.o(20169);
     return true;
   }

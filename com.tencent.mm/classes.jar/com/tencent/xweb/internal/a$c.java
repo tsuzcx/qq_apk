@@ -7,40 +7,40 @@ import org.xwalk.core.XWalkEnvironment;
 public final class a$c
   extends a.b
 {
-  static String Mtn = null;
+  static String MQr = null;
   
-  public static void bbi(String paramString)
+  public static void bcL(String paramString)
   {
-    Mtn = paramString;
+    MQr = paramString;
   }
   
-  public static boolean gbF()
+  public static boolean ggh()
   {
-    AppMethodBeat.i(197095);
-    if (!XWalkEnvironment.getRuntimeAbi().equalsIgnoreCase(Mtn))
+    AppMethodBeat.i(217413);
+    if (!XWalkEnvironment.getRuntimeAbi().equalsIgnoreCase(MQr))
     {
-      AppMethodBeat.o(197095);
+      AppMethodBeat.o(217413);
       return true;
     }
-    AppMethodBeat.o(197095);
+    AppMethodBeat.o(217413);
     return false;
   }
   
-  public final String gbB()
+  public final String ggd()
   {
     AppMethodBeat.i(156957);
-    if (!TextUtils.isEmpty(Mtn))
+    if (!TextUtils.isEmpty(MQr))
     {
-      str = Mtn;
+      str = MQr;
       AppMethodBeat.o(156957);
       return str;
     }
-    String str = super.gbB();
+    String str = super.ggd();
     AppMethodBeat.o(156957);
     return str;
   }
   
-  protected final boolean gbD()
+  protected final boolean ggf()
   {
     AppMethodBeat.i(156956);
     boolean bool = XWalkEnvironment.is64BitRuntime();

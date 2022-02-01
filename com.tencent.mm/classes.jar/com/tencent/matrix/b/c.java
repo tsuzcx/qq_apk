@@ -6,6 +6,8 @@ import com.tencent.matrix.report.h.c;
 import com.tencent.matrix.report.h.d;
 import com.tencent.matrix.resource.c.a;
 import com.tencent.mm.protocal.d;
+import com.tencent.mm.sdk.platformtools.j;
+import com.tencent.mm.vfs.o;
 import java.io.File;
 import java.util.Properties;
 import org.json.JSONObject;
@@ -18,10 +20,10 @@ public final class c
     String str;
     if ("memory".equals(paramd.tag))
     {
-      if (paramd.cEZ == null) {
+      if (paramd.cFG == null) {
         break label200;
       }
-      str = paramd.cEZ.optString("resultZipPath");
+      str = paramd.cFG.optString("resultZipPath");
       if ((str != null) && (str.length() != 0)) {}
     }
     else
@@ -29,16 +31,16 @@ public final class c
       return;
     }
     Properties localProperties = new Properties();
-    localProperties.put("Uin", com.tencent.mm.loader.j.c.hgR.ax("last_login_uin", "0"));
-    localProperties.put("ClientVersion", String.valueOf(d.Fnj));
-    localProperties.put("Revision", com.tencent.mm.sdk.platformtools.i.REV);
+    localProperties.put("Uin", com.tencent.mm.loader.j.c.hjF.ay("last_login_uin", "0"));
+    localProperties.put("ClientVersion", String.valueOf(d.FFH));
+    localProperties.put("Revision", j.REV);
     localProperties.put("ReportTime", String.valueOf(System.currentTimeMillis()));
-    localProperties.put("process", paramd.cEZ.optString("process"));
+    localProperties.put("process", paramd.cFG.optString("process"));
     MrsLogic.PhoneInfo localPhoneInfo = MrsLogic.getPhoneInfo();
     localProperties.put("DeviceModel", localPhoneInfo.deviceModel);
     localProperties.put("OSName", localPhoneInfo.osName);
     localProperties.put("OSVersion", localPhoneInfo.osVersion);
-    if (a.a(new File(com.tencent.mm.vfs.i.k(com.tencent.mm.vfs.i.k(str, true), true)), localProperties))
+    if (a.a(new File(o.k(o.k(str, true), true)), localProperties))
     {
       paramd.filePath = str;
       return;

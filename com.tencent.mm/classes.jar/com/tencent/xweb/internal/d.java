@@ -2,9 +2,9 @@ package com.tencent.xweb.internal;
 
 public abstract interface d
 {
-  public abstract boolean bba(String paramString);
+  public abstract boolean bcD(String paramString);
   
-  public abstract void gbf();
+  public abstract void gfH();
 }
 
 

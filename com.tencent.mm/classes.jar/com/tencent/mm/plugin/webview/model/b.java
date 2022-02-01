@@ -2,10 +2,11 @@ package com.tencent.mm.plugin.webview.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.sdk.platformtools.bw;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.az;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.bx;
 import java.net.InetAddress;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -13,11 +14,11 @@ import java.util.Map;
 
 public final class b
 {
-  ay DIg;
+  ay Eae;
   
   public b(ay paramay)
   {
-    this.DIg = paramay;
+    this.Eae = paramay;
   }
 }
 

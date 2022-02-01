@@ -1,26 +1,26 @@
 package com.tencent.mm.plugin.story.h;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/story/report/StoryRemuxIDKeyStat;", "", "()V", "ID", "", "TAG", "", "markCreateThumbFailed", "", "markRemuxProcessType", "isForeground", "", "markStoryRemuxHitBitrateExceed", "markStoryRemuxResult", "isLocalCapture", "bitrate", "", "fps", "plugin-story_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/story/report/StoryRemuxIDKeyStat;", "", "()V", "ID", "", "TAG", "", "markCreateThumbFailed", "", "markRemuxProcessType", "isForeground", "", "markStoryRemuxHitBitrateExceed", "markStoryRemuxResult", "isLocalCapture", "bitrate", "", "fps", "plugin-story_release"})
 public final class g
 {
-  public static final g ARV;
+  public static final g Bjt;
   
   static
   {
     AppMethodBeat.i(119440);
-    ARV = new g();
+    Bjt = new g();
     AppMethodBeat.o(119440);
   }
   
-  public static void ejX()
+  public static void enG()
   {
     AppMethodBeat.i(119439);
-    ad.i("MicroMsg.StoryRemuxIDKeyStat", "markStoryRemuxHitBitrateExceed");
-    com.tencent.mm.plugin.report.service.g.yhR.n(986L, 73L, 1L);
+    ae.i("MicroMsg.StoryRemuxIDKeyStat", "markStoryRemuxHitBitrateExceed");
+    com.tencent.mm.plugin.report.service.g.yxI.n(986L, 73L, 1L);
     AppMethodBeat.o(119439);
   }
 }

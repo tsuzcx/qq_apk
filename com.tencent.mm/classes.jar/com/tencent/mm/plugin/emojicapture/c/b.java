@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.emojicapture.c;
 
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/emojicapture/contract/EditorContract;", "", "IPresenter", "IView", "plugin-emojicapture_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/emojicapture/contract/EditorContract;", "", "IPresenter", "IView", "plugin-emojicapture_release"})
 public abstract interface b {}
 
 

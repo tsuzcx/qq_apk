@@ -65,7 +65,7 @@ public final class a
     return paramInt;
   }
   
-  public final int zR()
+  public final int zS()
   {
     AppMethodBeat.i(74971);
     if (this.handle == 0L)
@@ -89,7 +89,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.qq.wx.voice.vad.a
  * JD-Core Version:    0.7.0.1
  */

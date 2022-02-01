@@ -7,33 +7,33 @@ import com.tencent.mm.picker.f.b;
 
 public final class a
 {
-  private com.tencent.mm.picker.c.a iLi;
+  private com.tencent.mm.picker.c.a iOb;
   
   public a(Context paramContext, c paramc)
   {
     AppMethodBeat.i(175328);
-    this.iLi = new com.tencent.mm.picker.c.a(1);
-    this.iLi.context = paramContext;
-    this.iLi.iLj = paramc;
+    this.iOb = new com.tencent.mm.picker.c.a(1);
+    this.iOb.context = paramContext;
+    this.iOb.iOc = paramc;
     AppMethodBeat.o(175328);
   }
   
   public final void a(b paramb)
   {
     AppMethodBeat.i(175329);
-    paramb.a(this.iLi);
+    paramb.a(this.iOb);
     AppMethodBeat.o(175329);
   }
   
-  public final a qR(int paramInt)
+  public final a qU(int paramInt)
   {
-    this.iLi.iKN = paramInt;
+    this.iOb.iNG = paramInt;
     return this;
   }
   
-  public final a qS(int paramInt)
+  public final a qV(int paramInt)
   {
-    this.iLi.option = paramInt;
+    this.iOb.option = paramInt;
     return this;
   }
 }

@@ -12,7 +12,7 @@ final class WalletPayUI$20
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     AppMethodBeat.i(69409);
-    this.CKl.finish();
+    this.DbR.finish();
     AppMethodBeat.o(69409);
   }
 }

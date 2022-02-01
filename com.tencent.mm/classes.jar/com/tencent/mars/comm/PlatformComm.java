@@ -1,7 +1,7 @@
 package com.tencent.mars.comm;
 
 import android.content.Context;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.aq;
 
 public class PlatformComm
 {
@@ -21,7 +21,7 @@ public class PlatformComm
   public static final int NETTYPE_WIFI = 1;
   private static final String TAG = "PlatformComm";
   private static Context context = null;
-  private static ap handler = null;
+  private static aq handler = null;
   public static IReportCrash reportCrashImp;
   public static IResetProcess resetprocessimp = null;
   
@@ -30,10 +30,10 @@ public class PlatformComm
     reportCrashImp = null;
   }
   
-  public static void init(Context paramContext, ap paramap)
+  public static void init(Context paramContext, aq paramaq)
   {
     context = paramContext;
-    handler = paramap;
+    handler = paramaq;
     NetworkSignalUtil.InitNetworkSignalUtil(paramContext);
   }
   

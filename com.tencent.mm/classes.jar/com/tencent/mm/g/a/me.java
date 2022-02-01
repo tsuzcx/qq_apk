@@ -1,17 +1,12 @@
 package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.az.c;
-import com.tencent.mm.az.d;
-import com.tencent.mm.az.f;
 import com.tencent.mm.sdk.b.b;
-import java.util.List;
 
 public final class me
   extends b
 {
-  public a dzC;
-  public b dzD;
+  public a dAF;
   
   public me()
   {
@@ -20,38 +15,21 @@ public final class me
   
   private me(byte paramByte)
   {
-    AppMethodBeat.i(136975);
-    this.dzC = new a();
-    this.dzD = new b();
-    this.IbR = false;
+    AppMethodBeat.i(116032);
+    this.dAF = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(136975);
+    AppMethodBeat.o(116032);
   }
   
   public static final class a
   {
-    public int action;
-    public List dtj;
-    public f dzE;
-    public int dzF;
-    public boolean dzG;
-    public d dzH;
-    public int position;
-    public String songAlbumUrl;
-  }
-  
-  public static final class b
-  {
-    public List dtj;
-    public f dzE;
-    public c dzI;
-    public String dzJ;
-    public boolean result;
+    public boolean dAG;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.a.me
  * JD-Core Version:    0.7.0.1
  */

@@ -8,11 +8,11 @@ public abstract class dd
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int fen = "chatRoomName".hashCode();
-  private static final int feo = "BindAppData".hashCode();
+  private static final int fgg = "chatRoomName".hashCode();
+  private static final int fgh = "BindAppData".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean fel = true;
-  private boolean fem = true;
+  private boolean fge = true;
+  private boolean fgf = true;
   public byte[] field_BindAppData;
   public String field_chatRoomName;
   
@@ -29,11 +29,11 @@ public abstract class dd
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (fen != k) {
+      if (fgg != k) {
         break label65;
       }
       this.field_chatRoomName = paramCursor.getString(i);
-      this.fel = true;
+      this.fge = true;
     }
     for (;;)
     {
@@ -41,7 +41,7 @@ public abstract class dd
       break label20;
       break;
       label65:
-      if (feo == k) {
+      if (fgh == k) {
         this.field_BindAppData = paramCursor.getBlob(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
@@ -55,10 +55,10 @@ public abstract class dd
     if (this.field_chatRoomName == null) {
       this.field_chatRoomName = "群username";
     }
-    if (this.fel) {
+    if (this.fge) {
       localContentValues.put("chatRoomName", this.field_chatRoomName);
     }
-    if (this.fem) {
+    if (this.fgf) {
       localContentValues.put("BindAppData", this.field_BindAppData);
     }
     if (this.systemRowid > 0L) {
@@ -69,7 +69,7 @@ public abstract class dd
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.c.dd
  * JD-Core Version:    0.7.0.1
  */

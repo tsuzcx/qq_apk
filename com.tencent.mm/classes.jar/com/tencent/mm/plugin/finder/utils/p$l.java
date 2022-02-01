@@ -6,33 +6,33 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.t.b;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onViewCustomize"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onViewCustomize"})
 final class p$l
   implements t.b
 {
-  public static final l sML;
+  public static final l sXW;
   
   static
   {
-    AppMethodBeat.i(204531);
-    sML = new l();
-    AppMethodBeat.o(204531);
+    AppMethodBeat.i(205151);
+    sXW = new l();
+    AppMethodBeat.o(205151);
   }
   
   public final void ec(View paramView)
   {
-    AppMethodBeat.i(204530);
+    AppMethodBeat.i(205150);
     if (paramView != null)
     {
       paramView = (TextView)paramView.findViewById(2131305957);
       if (paramView != null)
       {
         paramView.setTextSize(1, 14.0F);
-        AppMethodBeat.o(204530);
+        AppMethodBeat.o(205150);
         return;
       }
     }
-    AppMethodBeat.o(204530);
+    AppMethodBeat.o(205150);
   }
 }
 

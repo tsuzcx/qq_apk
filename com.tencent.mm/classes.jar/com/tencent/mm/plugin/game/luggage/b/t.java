@@ -6,12 +6,12 @@ import com.tencent.luggage.d.b;
 import com.tencent.luggage.d.b.a;
 import com.tencent.luggage.d.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bs.d;
+import com.tencent.mm.br.d;
 import com.tencent.mm.plugin.game.luggage.f.g;
 import com.tencent.mm.plugin.webview.luggage.jsapi.bq;
 import com.tencent.mm.plugin.webview.luggage.jsapi.bq.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.MMActivity.a;
 import java.util.HashMap;
@@ -24,7 +24,7 @@ public class t
   public final void b(final b<g>.a paramb)
   {
     AppMethodBeat.i(83081);
-    ad.i("MicroMsg.JsApiOpenGameRegion", "invoke");
+    ae.i("MicroMsg.JsApiOpenGameRegion", "invoke");
     final MMActivity localMMActivity = (MMActivity)((g)paramb.chg).mContext;
     localMMActivity.mmSetOnActivityResultCallback(new MMActivity.a()
     {
@@ -39,10 +39,10 @@ public class t
           if (paramAnonymousIntent == null) {
             break label83;
           }
-          paramAnonymousIntent = bt.bI(paramAnonymousIntent.getStringExtra("gameRegionName"), "");
+          paramAnonymousIntent = bu.bI(paramAnonymousIntent.getStringExtra("gameRegionName"), "");
           HashMap localHashMap = new HashMap();
           localHashMap.put("gameRegionName", paramAnonymousIntent);
-          paramb.d("", localHashMap);
+          paramb.e("", localHashMap);
         }
         for (;;)
         {
@@ -65,7 +65,7 @@ public class t
     AppMethodBeat.o(83081);
   }
   
-  public final int ccO()
+  public final int ced()
   {
     return 0;
   }

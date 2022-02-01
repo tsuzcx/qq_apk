@@ -10,15 +10,15 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class HeaderContainer
   extends FrameLayout
 {
-  private i IXt;
-  private ac IXu;
-  private Rect mVW;
+  private i Jsb;
+  private ac Jsc;
+  private Rect nbc;
   
   public HeaderContainer(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(33167);
-    this.mVW = new Rect();
+    this.nbc = new Rect();
     init(paramContext);
     AppMethodBeat.o(33167);
   }
@@ -27,7 +27,7 @@ public class HeaderContainer
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(33168);
-    this.mVW = new Rect();
+    this.nbc = new Rect();
     init(paramContext);
     AppMethodBeat.o(33168);
   }
@@ -35,22 +35,22 @@ public class HeaderContainer
   private void init(Context paramContext)
   {
     AppMethodBeat.i(33171);
-    this.IXu = new ac(paramContext);
-    this.IXu.setHeaderContainer(this);
-    this.IXu.setId(2131302489);
+    this.Jsc = new ac(paramContext);
+    this.Jsc.setHeaderContainer(this);
+    this.Jsc.setId(2131302489);
     paramContext = new FrameLayout.LayoutParams(-1, -2);
-    addView(this.IXu, paramContext);
+    addView(this.Jsc, paramContext);
     AppMethodBeat.o(33171);
   }
   
   public Rect getBackUpFooterRect()
   {
-    return this.mVW;
+    return this.nbc;
   }
   
   public ac getHeaderView()
   {
-    return this.IXu;
+    return this.Jsc;
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
@@ -63,9 +63,9 @@ public class HeaderContainer
   public void setAnimController(i parami)
   {
     AppMethodBeat.i(33169);
-    this.IXt = parami;
-    if ((this.IXu != null) && (this.IXt != null)) {
-      this.IXt.a(this.IXu);
+    this.Jsb = parami;
+    if ((this.Jsc != null) && (this.Jsb != null)) {
+      this.Jsb.a(this.Jsc);
     }
     AppMethodBeat.o(33169);
   }

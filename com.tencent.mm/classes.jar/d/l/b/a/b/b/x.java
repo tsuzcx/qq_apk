@@ -9,7 +9,7 @@ public final class x
   {
     AppMethodBeat.i(56863);
     p.h(parame, "$this$isFinalClass");
-    if ((parame.ghx() == w.MUB) && (parame.ghw() != f.MUt))
+    if ((parame.glZ() == w.NrG) && (parame.glY() != f.Nry))
     {
       AppMethodBeat.o(56863);
       return true;
@@ -20,7 +20,7 @@ public final class x
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.b.x
  * JD-Core Version:    0.7.0.1
  */

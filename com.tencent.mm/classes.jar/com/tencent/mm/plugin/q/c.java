@@ -10,23 +10,23 @@ public abstract interface c
   
   public abstract void Z(Context paramContext, Intent paramIntent);
   
-  public abstract String aqS(String paramString);
+  public abstract String arX(String paramString);
   
   public abstract a c(Context paramContext, DialogInterface.OnCancelListener paramOnCancelListener);
   
   public abstract a d(Context paramContext, DialogInterface.OnCancelListener paramOnCancelListener);
   
-  public abstract void dow();
+  public abstract void dru();
   
-  public abstract b dox();
+  public abstract b drv();
   
-  public abstract a fQ(Context paramContext);
+  public abstract a fW(Context paramContext);
   
-  public abstract void fR(Context paramContext);
+  public abstract void fX(Context paramContext);
   
   public abstract void h(String paramString1, int paramInt, String paramString2, String paramString3);
   
-  public abstract void oC(boolean paramBoolean);
+  public abstract void oH(boolean paramBoolean);
 }
 
 

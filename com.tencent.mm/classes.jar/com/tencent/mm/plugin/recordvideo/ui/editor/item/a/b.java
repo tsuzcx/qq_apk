@@ -11,20 +11,20 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/draw/BitmapArrayEditorItem;", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/draw/BaseEditorItem;", "bitmapArray", "", "Landroid/graphics/Bitmap;", "animInterval", "", "matrix", "Landroid/graphics/Matrix;", "([Landroid/graphics/Bitmap;JLandroid/graphics/Matrix;)V", "bitmaps", "", "currIndex", "", "destroy", "", "draw", "canvas", "Landroid/graphics/Canvas;", "paint", "Landroid/graphics/Paint;", "init", "prepareNext", "plugin-recordvideo_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/draw/BitmapArrayEditorItem;", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/draw/BaseEditorItem;", "bitmapArray", "", "Landroid/graphics/Bitmap;", "animInterval", "", "matrix", "Landroid/graphics/Matrix;", "([Landroid/graphics/Bitmap;JLandroid/graphics/Matrix;)V", "bitmaps", "", "currIndex", "", "destroy", "", "draw", "canvas", "Landroid/graphics/Canvas;", "paint", "Landroid/graphics/Paint;", "init", "prepareNext", "plugin-recordvideo_release"})
 public final class b
   extends a
 {
-  private int xPs;
-  private final List<Bitmap> xPt;
-  private final long xPu;
+  private int yfl;
+  private final List<Bitmap> yfm;
+  private final long yfn;
   
   public b(Bitmap[] paramArrayOfBitmap, Matrix paramMatrix)
   {
     super(paramMatrix);
-    AppMethodBeat.i(200752);
-    this.xPu = 100L;
-    this.xPt = ((List)new ArrayList());
+    AppMethodBeat.i(207010);
+    this.yfn = 100L;
+    this.yfm = ((List)new ArrayList());
     if (paramArrayOfBitmap != null)
     {
       int j = paramArrayOfBitmap.length;
@@ -33,26 +33,26 @@ public final class b
       {
         paramMatrix = paramArrayOfBitmap[i];
         if (paramMatrix != null) {
-          this.xPt.add(paramMatrix);
+          this.yfm.add(paramMatrix);
         }
         i += 1;
       }
     }
-    AppMethodBeat.o(200752);
+    AppMethodBeat.o(207010);
   }
   
-  public final long dIg()
+  public final long dLx()
   {
-    AppMethodBeat.i(200751);
-    if (this.xPt.isEmpty())
+    AppMethodBeat.i(207009);
+    if (this.yfm.isEmpty())
     {
-      AppMethodBeat.o(200751);
+      AppMethodBeat.o(207009);
       return 9223372036854775807L;
     }
-    this.xPs += 1;
-    this.xPs %= ((Collection)this.xPt).size();
-    long l = this.xPu;
-    AppMethodBeat.o(200751);
+    this.yfl += 1;
+    this.yfl %= ((Collection)this.yfm).size();
+    long l = this.yfn;
+    AppMethodBeat.o(207009);
     return l;
   }
   
@@ -60,27 +60,27 @@ public final class b
   
   public final void draw(Canvas paramCanvas, Paint paramPaint)
   {
-    AppMethodBeat.i(200750);
+    AppMethodBeat.i(207008);
     p.h(paramCanvas, "canvas");
     p.h(paramPaint, "paint");
-    if (this.xPt.isEmpty())
+    if (this.yfm.isEmpty())
     {
-      AppMethodBeat.o(200750);
+      AppMethodBeat.o(207008);
       return;
     }
-    Bitmap localBitmap = (Bitmap)this.xPt.get(this.xPs);
+    Bitmap localBitmap = (Bitmap)this.yfm.get(this.yfl);
     paramCanvas.save();
     paramCanvas.concat(this.gR);
     paramCanvas.drawBitmap(localBitmap, 0.0F, 0.0F, paramPaint);
     paramCanvas.restore();
-    AppMethodBeat.o(200750);
+    AppMethodBeat.o(207008);
   }
   
   public final void init() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.ui.editor.item.a.b
  * JD-Core Version:    0.7.0.1
  */

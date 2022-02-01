@@ -219,7 +219,7 @@ public class BottomNavigationItemView
     this.ka.setEnabled(paramBoolean);
     if (paramBoolean)
     {
-      t.a(this, r.W(getContext()));
+      t.a(this, r.X(getContext()));
       return;
     }
     t.a(this, null);

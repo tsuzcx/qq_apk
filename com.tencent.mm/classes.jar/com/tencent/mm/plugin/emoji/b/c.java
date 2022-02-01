@@ -5,17 +5,17 @@ import com.tencent.mm.kernel.c.a;
 public abstract interface c
   extends a
 {
-  public abstract byte[] aX(byte[] paramArrayOfByte);
+  public abstract byte[] aW(byte[] paramArrayOfByte);
   
-  public abstract String abe(String paramString);
+  public abstract String abV(String paramString);
   
-  public abstract boolean cfL();
+  public abstract boolean chb();
   
-  public abstract boolean cfM();
+  public abstract boolean chc();
   
-  public abstract boolean cfN();
+  public abstract boolean chd();
   
-  public abstract int fs(String paramString1, String paramString2);
+  public abstract int fw(String paramString1, String paramString2);
   
   public abstract int nativeWxam2Pic(String paramString1, String paramString2);
 }

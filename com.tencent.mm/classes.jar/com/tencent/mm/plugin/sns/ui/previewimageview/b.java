@@ -8,50 +8,50 @@ import java.util.List;
 public abstract class b
   extends a
 {
-  int Azx;
+  int AQT;
   protected Context mContext;
   ArrayList<Object> mItems = new ArrayList();
   
   protected b(Context paramContext)
   {
     this.mContext = paramContext;
-    this.Azx = 3;
+    this.AQT = 3;
   }
   
-  public boolean RC(int paramInt)
+  public boolean Sj(int paramInt)
   {
     return true;
   }
   
-  public boolean RD(int paramInt)
+  public boolean Sk(int paramInt)
   {
     return true;
   }
   
   public final void add(int paramInt, Object paramObject)
   {
-    dJ(paramObject);
+    dK(paramObject);
     this.mItems.add(paramInt, paramObject);
     notifyDataSetChanged();
   }
   
   public final void add(Object paramObject)
   {
-    dJ(paramObject);
+    dK(paramObject);
     this.mItems.add(paramObject);
     notifyDataSetChanged();
   }
   
   public void clear()
   {
-    this.Azw.clear();
+    this.AQS.clear();
     this.mItems.clear();
     notifyDataSetChanged();
   }
   
   public final int getColumnCount()
   {
-    return this.Azx;
+    return this.AQT;
   }
   
   protected final Context getContext()
@@ -69,15 +69,15 @@ public abstract class b
     return this.mItems.get(paramInt);
   }
   
-  public void gf(List<?> paramList)
+  public void go(List<?> paramList)
   {
     clear();
-    ge(paramList);
+    gn(paramList);
     this.mItems.addAll(paramList);
     notifyDataSetChanged();
   }
   
-  public void hV(int paramInt1, int paramInt2)
+  public void hY(int paramInt1, int paramInt2)
   {
     if (paramInt2 < getCount())
     {

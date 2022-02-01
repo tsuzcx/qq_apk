@@ -52,9 +52,9 @@ public class TXCLog
   
   public static void d(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    AppMethodBeat.i(187258);
+    AppMethodBeat.i(221387);
     log(1, paramString1, String.format(paramString2, paramVarArgs));
-    AppMethodBeat.o(187258);
+    AppMethodBeat.o(221387);
   }
   
   public static void e(String paramString1, String paramString2)
@@ -66,9 +66,9 @@ public class TXCLog
   
   public static void e(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    AppMethodBeat.i(187261);
+    AppMethodBeat.i(221390);
     log(4, paramString1, String.format(paramString2, paramVarArgs));
-    AppMethodBeat.o(187261);
+    AppMethodBeat.o(221390);
   }
   
   public static void i(String paramString1, String paramString2)
@@ -80,9 +80,9 @@ public class TXCLog
   
   public static void i(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    AppMethodBeat.i(187259);
+    AppMethodBeat.i(221388);
     log(2, paramString1, String.format(paramString2, paramVarArgs));
-    AppMethodBeat.o(187259);
+    AppMethodBeat.o(221388);
   }
   
   public static boolean init()
@@ -248,9 +248,9 @@ public class TXCLog
   
   public static void v(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    AppMethodBeat.i(187257);
+    AppMethodBeat.i(221386);
     log(0, paramString1, String.format(paramString2, paramVarArgs));
-    AppMethodBeat.o(187257);
+    AppMethodBeat.o(221386);
   }
   
   public static void w(String paramString1, String paramString2)
@@ -262,9 +262,9 @@ public class TXCLog
   
   public static void w(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    AppMethodBeat.i(187260);
+    AppMethodBeat.i(221389);
     log(3, paramString1, String.format(paramString2, paramVarArgs));
-    AppMethodBeat.o(187260);
+    AppMethodBeat.o(221389);
   }
 }
 

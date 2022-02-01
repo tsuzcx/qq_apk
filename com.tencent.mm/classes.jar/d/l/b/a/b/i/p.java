@@ -8,15 +8,15 @@ public enum p
   static
   {
     b localb = new b("PLAIN");
-    Nvh = localb;
+    NSn = localb;
     a locala = new a("HTML");
-    Nvi = locala;
-    Nvj = new p[] { localb, locala };
+    NSo = locala;
+    NSp = new p[] { localb, locala };
   }
   
   private p() {}
   
-  public abstract String wo(String paramString);
+  public abstract String wX(String paramString);
   
   static final class a
     extends p
@@ -26,7 +26,7 @@ public enum p
       super(1, (byte)0);
     }
     
-    public final String wo(String paramString)
+    public final String wX(String paramString)
     {
       AppMethodBeat.i(59867);
       d.g.b.p.h(paramString, "string");
@@ -44,7 +44,7 @@ public enum p
       super(0, (byte)0);
     }
     
-    public final String wo(String paramString)
+    public final String wX(String paramString)
     {
       AppMethodBeat.i(59868);
       d.g.b.p.h(paramString, "string");
@@ -55,7 +55,7 @@ public enum p
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.i.p
  * JD-Core Version:    0.7.0.1
  */

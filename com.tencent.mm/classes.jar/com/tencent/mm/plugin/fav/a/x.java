@@ -20,9 +20,9 @@ public abstract interface x
   
   public abstract LinkedList<Integer> D(long paramLong, int paramInt);
   
-  public abstract int DZ(int paramInt);
-  
   public abstract long E(long paramLong, int paramInt);
+  
+  public abstract int Em(int paramInt);
   
   public abstract ArrayList<g> a(List<Long> paramList, List<g> paramList1, Set<Integer> paramSet, w paramw);
   
@@ -30,41 +30,41 @@ public abstract interface x
   
   public abstract boolean a(g paramg, String... paramVarArgs);
   
-  public abstract void ad(int paramInt, long paramLong);
+  public abstract void ac(int paramInt, long paramLong);
   
-  public abstract g agw(String paramString);
+  public abstract g aht(String paramString);
   
   public abstract List<g> b(long paramLong, int paramInt, Set<Integer> paramSet, w paramw);
   
   public abstract boolean b(g paramg, String... paramVarArgs);
   
-  public abstract e cvk();
+  public abstract e cwL();
   
-  public abstract int cvl();
+  public abstract int cwM();
   
-  public abstract List<g> cvm();
+  public abstract List<g> cwN();
   
-  public abstract List<g> cvn();
+  public abstract List<g> cwO();
   
-  public abstract List<g> cvo();
+  public abstract List<g> cwP();
   
-  public abstract List<g> cvp();
+  public abstract List<g> cwQ();
   
-  public abstract List<g> cvq();
+  public abstract List<g> cwR();
   
-  public abstract List<g> cvr();
+  public abstract List<g> cwS();
   
-  public abstract List<Long> cvs();
+  public abstract List<Long> cwT();
   
-  public abstract void cvt();
+  public abstract void cwU();
   
-  public abstract List<Long> cvu();
+  public abstract List<Long> cwV();
   
   public abstract int getCount();
   
-  public abstract g vE(long paramLong);
+  public abstract g vU(long paramLong);
   
-  public abstract g vF(long paramLong);
+  public abstract g vV(long paramLong);
   
   public abstract boolean z(g paramg);
 }

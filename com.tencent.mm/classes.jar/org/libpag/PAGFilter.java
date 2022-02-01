@@ -9,10 +9,10 @@ public class PAGFilter
   
   static
   {
-    AppMethodBeat.i(220140);
+    AppMethodBeat.i(216894);
     b.loadLibrary("libpag");
     nativeInit();
-    AppMethodBeat.o(220140);
+    AppMethodBeat.o(216894);
   }
   
   public PAGFilter(long paramLong)

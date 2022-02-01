@@ -1,23 +1,23 @@
 package com.tencent.mm.plugin.brandservice;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.tl;
+import com.tencent.mm.g.a.tm;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.ax;
-import com.tencent.mm.model.t;
+import com.tencent.mm.model.az;
+import com.tencent.mm.model.u;
 import com.tencent.mm.plugin.fts.a.n;
 import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
 
 public class d
-  implements ax
+  implements az
 {
   private static HashMap<Integer, h.b> baseDBFactories;
-  private a nWf;
-  private com.tencent.mm.plugin.brandservice.ui.timeline.preload.a.b nWg;
+  private a obO;
+  private com.tencent.mm.plugin.brandservice.ui.timeline.preload.a.b obP;
   
   static
   {
@@ -28,28 +28,28 @@ public class d
     {
       public final String[] getSQLs()
       {
-        return com.tencent.mm.plugin.brandservice.ui.timeline.preload.a.b.hEf;
+        return com.tencent.mm.plugin.brandservice.ui.timeline.preload.a.b.hGX;
       }
     });
     AppMethodBeat.o(5562);
   }
   
-  private static d bNq()
+  private static d bOo()
   {
     AppMethodBeat.i(5558);
-    d locald = (d)t.ap(d.class);
+    d locald = (d)u.ap(d.class);
     AppMethodBeat.o(5558);
     return locald;
   }
   
-  public static com.tencent.mm.plugin.brandservice.ui.timeline.preload.a.b bNr()
+  public static com.tencent.mm.plugin.brandservice.ui.timeline.preload.a.b bOp()
   {
     AppMethodBeat.i(5561);
-    g.ajA().aiF();
-    if (bNq().nWg == null) {
-      bNq().nWg = new com.tencent.mm.plugin.brandservice.ui.timeline.preload.a.b(g.ajC().gBq);
+    g.ajP().aiU();
+    if (bOo().obP == null) {
+      bOo().obP = new com.tencent.mm.plugin.brandservice.ui.timeline.preload.a.b(g.ajR().gDX);
     }
-    com.tencent.mm.plugin.brandservice.ui.timeline.preload.a.b localb = bNq().nWg;
+    com.tencent.mm.plugin.brandservice.ui.timeline.preload.a.b localb = bOo().obP;
     AppMethodBeat.o(5561);
     return localb;
   }
@@ -64,11 +64,11 @@ public class d
   public void onAccountPostReset(boolean paramBoolean)
   {
     AppMethodBeat.i(5559);
-    ad.d("MicroMsg.BrandService.SubCoreBrandService", "on sub core brand service reset");
-    if (this.nWf == null) {
-      this.nWf = new a();
+    ae.d("MicroMsg.BrandService.SubCoreBrandService", "on sub core brand service reset");
+    if (this.obO == null) {
+      this.obO = new a();
     }
-    com.tencent.mm.sdk.b.a.IbL.c(this.nWf);
+    com.tencent.mm.sdk.b.a.IvT.c(this.obO);
     Object localObject = new com.tencent.mm.plugin.brandservice.ui.a.d();
     ((n)g.ad(n.class)).registerFTSUILogic((com.tencent.mm.plugin.fts.a.d.d)localObject);
     localObject = new com.tencent.mm.plugin.brandservice.ui.a.b();
@@ -79,8 +79,8 @@ public class d
   public void onAccountRelease()
   {
     AppMethodBeat.i(5560);
-    if (this.nWf != null) {
-      com.tencent.mm.sdk.b.a.IbL.d(this.nWf);
+    if (this.obO != null) {
+      com.tencent.mm.sdk.b.a.IvT.d(this.obO);
     }
     ((n)g.ad(n.class)).unregisterFTSUILogic(96);
     ((n)g.ad(n.class)).unregisterFTSUILogic(4208);
@@ -90,12 +90,12 @@ public class d
   public void onSdcardMount(boolean paramBoolean) {}
   
   public static final class a
-    extends c<tl>
+    extends c<tm>
   {
     public a()
     {
       AppMethodBeat.i(160481);
-      this.__eventId = tl.class.getName().hashCode();
+      this.__eventId = tm.class.getName().hashCode();
       AppMethodBeat.o(160481);
     }
   }

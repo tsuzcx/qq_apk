@@ -6,31 +6,31 @@ import android.os.Build.VERSION;
 import android.widget.RemoteViews;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.app.AppForegroundDelegate;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.ar;
 import d.g.b.p;
 import d.l;
 import d.n.n;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/util/ActivityHelper;", "", "()V", "START_METHOD", "", "TAG", "USE_ACTIVITY", "", "USE_SERVICE", "delayTime", "", "getDelayTime", "()J", "checkAndStartActivity", "", "context", "Landroid/content/Context;", "intent", "Landroid/content/Intent;", "remoteViews", "Landroid/widget/RemoteViews;", "description", "destClass", "isImmediately", "", "channelId", "isNotifyStill", "plugin", "entry", "checkAndStartActivityWithoutOp", "startActivityOnNotification", "startActivityOnNotificationWithoutOp", "plugin-comm_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/util/ActivityHelper;", "", "()V", "START_METHOD", "", "TAG", "USE_ACTIVITY", "", "USE_SERVICE", "delayTime", "", "getDelayTime", "()J", "checkAndStartActivity", "", "context", "Landroid/content/Context;", "intent", "Landroid/content/Intent;", "remoteViews", "Landroid/widget/RemoteViews;", "description", "destClass", "isImmediately", "", "channelId", "isNotifyStill", "plugin", "entry", "checkAndStartActivityWithoutOp", "startActivityOnNotification", "startActivityOnNotificationWithoutOp", "plugin-comm_release"})
 public final class a
 {
-  public static final int Lgl = 0;
-  public static final int Lgm = 1;
-  public static String Lgn;
-  private static final long Lgo = 800L;
-  public static final a Lgp;
+  public static final int LCN = 0;
+  public static final int LCO = 1;
+  public static String LCP;
+  private static final long LCQ = 800L;
+  public static final a LCR;
   private static final String TAG = "MicroMsg.ActivityHelper";
   
   static
   {
     AppMethodBeat.i(149830);
-    Lgp = new a();
+    LCR = new a();
     TAG = "MicroMsg.ActivityHelper";
-    Lgm = 1;
-    Lgn = "startMethod";
-    Lgo = 800L;
+    LCO = 1;
+    LCP = "startMethod";
+    LCQ = 800L;
     AppMethodBeat.o(149830);
   }
   
@@ -42,10 +42,10 @@ public final class a
     p.h(paramString1, "description");
     p.h(paramString2, "destClass");
     p.h(paramString3, "channelId");
-    if ((com.tencent.mm.compatible.util.d.lA(28)) || (p.i(Build.VERSION.CODENAME, "Q"))) {}
+    if ((com.tencent.mm.compatible.util.d.lC(28)) || (p.i(Build.VERSION.CODENAME, "Q"))) {}
     for (boolean bool = true;; bool = false)
     {
-      aq.o((Runnable)new a(bool, paramRemoteViews, paramIntent, paramContext, paramString1, paramString2, paramString3), 0L);
+      ar.o((Runnable)new a(bool, paramRemoteViews, paramIntent, paramContext, paramString1, paramString2, paramString3), 0L);
       AppMethodBeat.o(149827);
       return;
     }
@@ -59,11 +59,11 @@ public final class a
     p.h(paramString1, "description");
     p.h(paramString2, "destClass");
     p.h(paramString3, "channelId");
-    long l = Lgo;
-    if ((com.tencent.mm.compatible.util.d.lA(28)) || (p.i(Build.VERSION.CODENAME, "Q"))) {}
+    long l = LCQ;
+    if ((com.tencent.mm.compatible.util.d.lC(28)) || (p.i(Build.VERSION.CODENAME, "Q"))) {}
     for (boolean bool = true;; bool = false)
     {
-      aq.o((Runnable)new b(bool, paramContext, paramIntent, paramString1, paramString2, paramString3), l);
+      ar.o((Runnable)new b(bool, paramContext, paramIntent, paramString1, paramString2, paramString3), l);
       AppMethodBeat.o(149828);
       return;
     }
@@ -78,16 +78,16 @@ public final class a
     p.h(paramIntent, "intent");
     p.h(paramString3, "description");
     p.h(paramString4, "channelId");
-    if ((com.tencent.mm.compatible.util.d.lA(28)) || (p.i(Build.VERSION.CODENAME, "Q"))) {}
+    if ((com.tencent.mm.compatible.util.d.lC(28)) || (p.i(Build.VERSION.CODENAME, "Q"))) {}
     for (boolean bool = true;; bool = false)
     {
-      aq.o((Runnable)new c(bool, paramRemoteViews, paramIntent, paramString1, paramString2, paramContext, paramString3, paramString4), 0L);
+      ar.o((Runnable)new c(bool, paramRemoteViews, paramIntent, paramString1, paramString2, paramContext, paramString3, paramString4), 0L);
       AppMethodBeat.o(149829);
       return;
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
   static final class a
     implements Runnable
   {
@@ -96,30 +96,30 @@ public final class a
     public final void run()
     {
       AppMethodBeat.i(149824);
-      if ((this.Lgq) && (!AppForegroundDelegate.cSQ.LH()) && (paramRemoteViews != null))
+      if ((this.LCS) && (!AppForegroundDelegate.cTA.LP()) && (paramRemoteViews != null))
       {
-        localObject1 = a.Lgp;
-        ad.i(a.fNG(), "start permission notification in Q and use service");
+        localObject1 = a.LCR;
+        ae.i(a.fSb(), "start permission notification in Q and use service");
         paramIntent.putExtra("Voip_Call_From", 0);
-        localObject1 = a.Lgp;
-        a.a(paramContext, paramIntent, paramRemoteViews, paramString1, paramString2, paramString3, this.Lgv);
+        localObject1 = a.LCR;
+        a.a(paramContext, paramIntent, paramRemoteViews, paramString1, paramString2, paramString3, this.LCX);
         AppMethodBeat.o(149824);
         return;
       }
-      Object localObject1 = a.Lgp;
-      ad.i(a.fNG(), "start permission notification in Q and use activity");
+      Object localObject1 = a.LCR;
+      ae.i(a.fSb(), "start permission notification in Q and use activity");
       paramIntent.putExtra("Voip_Call_From", 1);
       localObject1 = paramContext;
       Object localObject2 = paramIntent;
       localObject2 = new com.tencent.mm.hellhoundlib.b.a().bc(localObject2);
-      com.tencent.mm.hellhoundlib.a.a.a(localObject1, ((com.tencent.mm.hellhoundlib.b.a)localObject2).ahp(), "com/tencent/mm/util/ActivityHelper$checkAndStartActivityWithoutOp$1", "run", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      ((Context)localObject1).startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject2).mq(0));
+      com.tencent.mm.hellhoundlib.a.a.a(localObject1, ((com.tencent.mm.hellhoundlib.b.a)localObject2).ahE(), "com/tencent/mm/util/ActivityHelper$checkAndStartActivityWithoutOp$1", "run", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      ((Context)localObject1).startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject2).mt(0));
       com.tencent.mm.hellhoundlib.a.a.a(localObject1, "com/tencent/mm/util/ActivityHelper$checkAndStartActivityWithoutOp$1", "run", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       AppMethodBeat.o(149824);
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
   static final class b
     implements Runnable
   {
@@ -128,28 +128,28 @@ public final class a
     public final void run()
     {
       AppMethodBeat.i(149825);
-      if ((this.Lgq) && (!AppForegroundDelegate.cSQ.LH()))
+      if ((this.LCS) && (!AppForegroundDelegate.cTA.LP()))
       {
-        localObject1 = a.Lgp;
-        ad.i(a.fNG(), "start permission notification in Q and use service");
-        localObject1 = a.Lgp;
-        a.a(paramContext, paramIntent, paramString1, paramString2, paramString3, this.Lgv);
+        localObject1 = a.LCR;
+        ae.i(a.fSb(), "start permission notification in Q and use service");
+        localObject1 = a.LCR;
+        a.a(paramContext, paramIntent, paramString1, paramString2, paramString3, this.LCX);
         AppMethodBeat.o(149825);
         return;
       }
-      Object localObject1 = a.Lgp;
-      ad.i(a.fNG(), "start permission notification in Q and use activity");
+      Object localObject1 = a.LCR;
+      ae.i(a.fSb(), "start permission notification in Q and use activity");
       localObject1 = paramContext;
       Object localObject2 = paramIntent;
       localObject2 = new com.tencent.mm.hellhoundlib.b.a().bc(localObject2);
-      com.tencent.mm.hellhoundlib.a.a.a(localObject1, ((com.tencent.mm.hellhoundlib.b.a)localObject2).ahp(), "com/tencent/mm/util/ActivityHelper$checkAndStartActivityWithoutOp$2", "run", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      ((Context)localObject1).startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject2).mq(0));
+      com.tencent.mm.hellhoundlib.a.a.a(localObject1, ((com.tencent.mm.hellhoundlib.b.a)localObject2).ahE(), "com/tencent/mm/util/ActivityHelper$checkAndStartActivityWithoutOp$2", "run", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      ((Context)localObject1).startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject2).mt(0));
       com.tencent.mm.hellhoundlib.a.a.a(localObject1, "com/tencent/mm/util/ActivityHelper$checkAndStartActivityWithoutOp$2", "run", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       AppMethodBeat.o(149825);
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
   static final class c
     implements Runnable
   {
@@ -158,33 +158,33 @@ public final class a
     public final void run()
     {
       AppMethodBeat.i(149826);
-      if ((this.Lgq) && (!AppForegroundDelegate.cSQ.LH()) && (paramRemoteViews != null))
+      if ((this.LCS) && (!AppForegroundDelegate.cTA.LP()) && (paramRemoteViews != null))
       {
-        localObject = a.Lgp;
-        ad.i(a.fNG(), "start permission notification in Q and use service");
-        paramIntent.putExtra(a.Lgn, a.Lgl);
-        localObject = aj.fkB() + ".plugin." + paramString1;
-        if (n.nz(paramString2, ".")) {}
+        localObject = a.LCR;
+        ae.i(a.fSb(), "start permission notification in Q and use service");
+        paramIntent.putExtra(a.LCP, a.LCN);
+        localObject = ak.fov() + ".plugin." + paramString1;
+        if (n.nF(paramString2, ".")) {}
         for (localObject = (String)localObject + paramString2;; localObject = paramString2)
         {
           Class.forName((String)localObject, false, paramContext.getClassLoader());
-          a locala = a.Lgp;
-          a.a(paramContext, paramIntent, paramRemoteViews, paramString3, (String)localObject, paramString4, this.Lgv);
+          a locala = a.LCR;
+          a.a(paramContext, paramIntent, paramRemoteViews, paramString3, (String)localObject, paramString4, this.LCX);
           AppMethodBeat.o(149826);
           return;
         }
       }
-      paramIntent.putExtra(a.Lgn, a.Lgm);
-      Object localObject = a.Lgp;
-      ad.i(a.fNG(), "start permission notification in Q and use activity");
-      com.tencent.mm.bs.d.a(paramContext, paramString1, paramString2, paramIntent, null);
+      paramIntent.putExtra(a.LCP, a.LCO);
+      Object localObject = a.LCR;
+      ae.i(a.fSb(), "start permission notification in Q and use activity");
+      com.tencent.mm.br.d.a(paramContext, paramString1, paramString2, paramIntent, null);
       AppMethodBeat.o(149826);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.util.a
  * JD-Core Version:    0.7.0.1
  */

@@ -4,7 +4,7 @@ import android.content.res.Resources;
 import android.widget.FrameLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.z;
+import com.tencent.mm.sdk.platformtools.aa;
 
 final class SnsUserUI$18
   implements Runnable
@@ -13,15 +13,15 @@ final class SnsUserUI$18
   
   public final void run()
   {
-    AppMethodBeat.i(198496);
+    AppMethodBeat.i(220038);
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
-    int j = z.aU(this.ApE);
-    if (z.iK(this.ApE)) {}
-    for (int i = this.ApE.getResources().getDimensionPixelSize(2131165252);; i = this.ApE.getResources().getDimensionPixelSize(2131165251))
+    int j = aa.aV(this.AGR);
+    if (aa.iP(this.AGR)) {}
+    for (int i = this.AGR.getResources().getDimensionPixelSize(2131165252);; i = this.AGR.getResources().getDimensionPixelSize(2131165251))
     {
       localLayoutParams.topMargin = (i + j);
-      SnsUserUI.p(this.ApE).setLayoutParams(localLayoutParams);
-      AppMethodBeat.o(198496);
+      SnsUserUI.p(this.AGR).setLayoutParams(localLayoutParams);
+      AppMethodBeat.o(220038);
       return;
     }
   }

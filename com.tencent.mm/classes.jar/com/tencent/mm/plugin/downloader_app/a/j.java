@@ -8,31 +8,31 @@ import com.tencent.mm.plugin.downloader_app.c.c;
 import com.tencent.mm.pluginsdk.model.app.g;
 import com.tencent.mm.pluginsdk.model.app.h;
 import com.tencent.mm.pluginsdk.model.app.q;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 public final class j
 {
-  private static LinkedList<String> ppo;
-  private static LinkedList<String> ppp;
-  private static d.d ppq;
+  private static LinkedList<String> pvU;
+  private static LinkedList<String> pvV;
+  private static d.d pvW;
   
   static
   {
     AppMethodBeat.i(8920);
-    ppo = new LinkedList();
-    ppp = new LinkedList();
+    pvU = new LinkedList();
+    pvV = new LinkedList();
     AppMethodBeat.o(8920);
   }
   
-  public static int aaD(String paramString)
+  public static int abu(String paramString)
   {
     AppMethodBeat.i(8913);
-    if (ppp.contains(paramString))
+    if (pvV.contains(paramString))
     {
-      i = k.ppr;
+      i = k.pvX;
       AppMethodBeat.o(8913);
       return i;
     }
@@ -41,27 +41,27 @@ public final class j
     return i;
   }
   
-  public static void aaE(String paramString)
+  public static void abv(String paramString)
   {
     AppMethodBeat.i(8915);
     if (!contains(paramString))
     {
-      ppo.addFirst(paramString);
-      if (b.cdd() != null)
+      pvU.addFirst(paramString);
+      if (b.ces() != null)
       {
         com.tencent.mm.plugin.downloader_app.c.a locala = new com.tencent.mm.plugin.downloader_app.c.a();
         locala.field_appId = paramString;
         locala.field_modifyTime = System.currentTimeMillis();
-        b.cdd().insert(locala);
+        b.ces().insert(locala);
       }
     }
     AppMethodBeat.o(8915);
   }
   
-  public static boolean ccE()
+  public static boolean cdT()
   {
     AppMethodBeat.i(8917);
-    if (ppo.size() > 0)
+    if (pvU.size() > 0)
     {
       AppMethodBeat.o(8917);
       return true;
@@ -70,25 +70,25 @@ public final class j
     return false;
   }
   
-  public static void ccH()
+  public static void cdW()
   {
     AppMethodBeat.i(175275);
-    Iterator localIterator = ppo.iterator();
+    Iterator localIterator = pvU.iterator();
     while (localIterator.hasNext())
     {
-      com.tencent.mm.plugin.downloader.g.a locala = com.tencent.mm.plugin.downloader.model.d.aad((String)localIterator.next());
+      com.tencent.mm.plugin.downloader.g.a locala = com.tencent.mm.plugin.downloader.model.d.aaU((String)localIterator.next());
       if ((locala != null) && (locala.field_status == 1)) {
-        f.ccl().tT(locala.field_downloadId);
+        f.cdA().uk(locala.field_downloadId);
       }
     }
     AppMethodBeat.o(175275);
   }
   
-  public static void cda()
+  public static void cep()
   {
     Object localObject1 = null;
     AppMethodBeat.i(8909);
-    if (b.cdd() == null)
+    if (b.ces() == null)
     {
       if (localObject1 != null) {
         localObject1 = ((LinkedList)localObject1).iterator();
@@ -101,15 +101,15 @@ public final class j
           break label216;
         }
         Object localObject2 = (com.tencent.mm.plugin.downloader_app.c.a)((Iterator)localObject1).next();
-        ad.d("MicroMsg.TaskManager", "initFromDB, appId:%s, status:%d", new Object[] { ((com.tencent.mm.plugin.downloader_app.c.a)localObject2).field_appId, Integer.valueOf(((com.tencent.mm.plugin.downloader_app.c.a)localObject2).field_status) });
-        if (((com.tencent.mm.plugin.downloader_app.c.a)localObject2).field_status == k.ppr)
+        ae.d("MicroMsg.TaskManager", "initFromDB, appId:%s, status:%d", new Object[] { ((com.tencent.mm.plugin.downloader_app.c.a)localObject2).field_appId, Integer.valueOf(((com.tencent.mm.plugin.downloader_app.c.a)localObject2).field_status) });
+        if (((com.tencent.mm.plugin.downloader_app.c.a)localObject2).field_status == k.pvX)
         {
-          if (ppp.contains(((com.tencent.mm.plugin.downloader_app.c.a)localObject2).field_appId)) {
+          if (pvV.contains(((com.tencent.mm.plugin.downloader_app.c.a)localObject2).field_appId)) {
             continue;
           }
-          ppp.add(((com.tencent.mm.plugin.downloader_app.c.a)localObject2).field_appId);
+          pvV.add(((com.tencent.mm.plugin.downloader_app.c.a)localObject2).field_appId);
           continue;
-          localObject2 = b.cdd().rawQuery(String.format("select * from %s order by %s desc", new Object[] { "DownloadTaskItem", "modifyTime" }), new String[0]);
+          localObject2 = b.ces().rawQuery(String.format("select * from %s order by %s desc", new Object[] { "DownloadTaskItem", "modifyTime" }), new String[0]);
           if (localObject2 == null) {
             break;
           }
@@ -123,25 +123,25 @@ public final class j
           ((Cursor)localObject2).close();
           break;
         }
-        if (!ppo.contains(((com.tencent.mm.plugin.downloader_app.c.a)localObject2).field_appId)) {
-          ppo.add(((com.tencent.mm.plugin.downloader_app.c.a)localObject2).field_appId);
+        if (!pvU.contains(((com.tencent.mm.plugin.downloader_app.c.a)localObject2).field_appId)) {
+          pvU.add(((com.tencent.mm.plugin.downloader_app.c.a)localObject2).field_appId);
         }
       }
     }
     label216:
-    if (ppq == null) {
-      ppq = new d.d()
+    if (pvW == null) {
+      pvW = new d.d()
       {
-        public final void M(int paramAnonymousInt, long paramAnonymousLong)
+        public final void L(int paramAnonymousInt, long paramAnonymousLong)
         {
           AppMethodBeat.i(8908);
-          com.tencent.mm.plugin.downloader.g.a locala = com.tencent.mm.plugin.downloader.model.d.ua(paramAnonymousLong);
+          com.tencent.mm.plugin.downloader.g.a locala = com.tencent.mm.plugin.downloader.model.d.ur(paramAnonymousLong);
           if (locala == null)
           {
             AppMethodBeat.o(8908);
             return;
           }
-          ad.i("MicroMsg.TaskManager", "onDownloadStatusChange, event = %d, appId = %s", new Object[] { Integer.valueOf(paramAnonymousInt), locala.field_appId });
+          ae.i("MicroMsg.TaskManager", "onDownloadStatusChange, event = %d, appId = %s", new Object[] { Integer.valueOf(paramAnonymousInt), locala.field_appId });
           if (!j.contains(locala.field_appId))
           {
             AppMethodBeat.o(8908);
@@ -149,44 +149,44 @@ public final class j
           }
           if (paramAnonymousInt == 9)
           {
-            j.uh(locala.field_appId);
+            j.uC(locala.field_appId);
             AppMethodBeat.o(8908);
             return;
           }
           if ((paramAnonymousInt == 1) || (paramAnonymousInt == 7))
           {
             g localg = h.m(locala.field_appId, true, false);
-            if ((localg != null) && (q.s(aj.getContext(), localg.field_packageName)))
+            if ((localg != null) && (q.s(ak.getContext(), localg.field_packageName)))
             {
-              ad.i("MicroMsg.TaskManager", "onDownloadStatusChange, hasInstall");
+              ae.i("MicroMsg.TaskManager", "onDownloadStatusChange, hasInstall");
               AppMethodBeat.o(8908);
               return;
             }
-            j.FZ(locala.field_appId);
+            j.GB(locala.field_appId);
           }
           AppMethodBeat.o(8908);
         }
       };
     }
-    d.a(ppq);
+    d.a(pvW);
     AppMethodBeat.o(8909);
   }
   
-  public static LinkedList<String> cdb()
+  public static LinkedList<String> ceq()
   {
     AppMethodBeat.i(8911);
     LinkedList localLinkedList = new LinkedList();
-    localLinkedList.addAll(ppo);
-    localLinkedList.addAll(ppp);
+    localLinkedList.addAll(pvU);
+    localLinkedList.addAll(pvV);
     AppMethodBeat.o(8911);
     return localLinkedList;
   }
   
-  public static LinkedList<String> cdc()
+  public static LinkedList<String> cer()
   {
     AppMethodBeat.i(8912);
     LinkedList localLinkedList = new LinkedList();
-    localLinkedList.addAll(ppo);
+    localLinkedList.addAll(pvU);
     AppMethodBeat.o(8912);
     return localLinkedList;
   }
@@ -194,7 +194,7 @@ public final class j
   public static boolean contains(String paramString)
   {
     AppMethodBeat.i(8914);
-    if ((ppp.contains(paramString)) || (ppo.contains(paramString)))
+    if ((pvV.contains(paramString)) || (pvU.contains(paramString)))
     {
       AppMethodBeat.o(8914);
       return true;
@@ -206,22 +206,22 @@ public final class j
   public static void stop()
   {
     AppMethodBeat.i(8910);
-    ppo.clear();
-    ppp.clear();
-    if (ppq != null) {
-      d.b(ppq);
+    pvU.clear();
+    pvV.clear();
+    if (pvW != null) {
+      d.b(pvW);
     }
-    ppq = null;
+    pvW = null;
     AppMethodBeat.o(8910);
   }
   
-  public static void vR(String paramString)
+  public static void wy(String paramString)
   {
     AppMethodBeat.i(8916);
-    ppp.remove(paramString);
-    ppo.remove(paramString);
-    if (b.cdd() != null) {
-      b.cdd().execSQL("DownloadTaskItem", String.format("delete from %s where %s=\"%s\"", new Object[] { "DownloadTaskItem", "appId", paramString }));
+    pvV.remove(paramString);
+    pvU.remove(paramString);
+    if (b.ces() != null) {
+      b.ces().execSQL("DownloadTaskItem", String.format("delete from %s where %s=\"%s\"", new Object[] { "DownloadTaskItem", "appId", paramString }));
     }
     AppMethodBeat.o(8916);
   }

@@ -21,23 +21,23 @@ import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.f;
-import com.tencent.mm.g.b.a.jw;
-import com.tencent.mm.model.az;
-import com.tencent.mm.modelsimple.u;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.g.b.a.jy;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.model.bb;
+import com.tencent.mm.modelsimple.v;
 import com.tencent.mm.plugin.mobile.verify.a.a.a;
 import com.tencent.mm.pluginsdk.l;
 import com.tencent.mm.pluginsdk.m;
-import com.tencent.mm.protocal.protobuf.ccb;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.ccv;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.applet.SecurityImage;
 import com.tencent.mm.ui.applet.SecurityImage.a;
 import com.tencent.mm.ui.applet.SecurityImage.b;
-import com.tencent.mm.ui.base.h;
-import com.tencent.mm.vfs.i;
+import com.tencent.mm.vfs.o;
 import com.tencent.mm.view.CheckBoxLicenseView;
 
 public class RegByMobileAutoVerifyUI
@@ -45,45 +45,45 @@ public class RegByMobileAutoVerifyUI
   implements f, a.a
 {
   private String countryCode;
-  private String dpf;
-  private String dzn;
-  private String gOx;
-  private String jmq;
-  private int jnh;
-  private String joA;
-  private String joB;
-  private boolean joC;
-  private int joD;
-  private ProgressDialog joE;
-  private SecurityImage joF;
-  private jw joG;
-  private String jox;
-  private String joy;
-  private String joz;
+  private String dAs;
+  private String dqk;
+  private String gRf;
+  private String jpk;
+  private int jqb;
+  private String jrq;
+  private String jrr;
+  private String jrs;
+  private String jrt;
+  private String jru;
+  private boolean jrv;
+  private int jrw;
+  private ProgressDialog jrx;
+  private SecurityImage jry;
+  private jy jrz;
   
   public RegByMobileAutoVerifyUI()
   {
-    AppMethodBeat.i(207132);
-    this.joD = 2;
-    this.joG = new jw();
-    AppMethodBeat.o(207132);
+    AppMethodBeat.i(188423);
+    this.jrw = 2;
+    this.jrz = new jy();
+    AppMethodBeat.o(188423);
   }
   
-  private void aUp()
+  private void aUO()
   {
-    AppMethodBeat.i(207136);
-    ((com.tencent.mm.plugin.mobile.verify.a.a)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.mobile.verify.a.a.class)).getMobileToken(this.joz, this.gOx, this);
-    this.joE = h.b(this, getString(2131756503), true, new DialogInterface.OnCancelListener()
+    AppMethodBeat.i(188427);
+    ((com.tencent.mm.plugin.mobile.verify.a.a)g.ad(com.tencent.mm.plugin.mobile.verify.a.a.class)).getMobileToken(this.jrs, this.gRf, this);
+    this.jrx = com.tencent.mm.ui.base.h.b(this, getString(2131756503), true, new DialogInterface.OnCancelListener()
     {
       public final void onCancel(DialogInterface paramAnonymousDialogInterface)
       {
-        AppMethodBeat.i(207126);
-        ((com.tencent.mm.plugin.mobile.verify.a.a)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.mobile.verify.a.a.class)).removeCallback(RegByMobileAutoVerifyUI.f(RegByMobileAutoVerifyUI.this));
+        AppMethodBeat.i(188417);
+        ((com.tencent.mm.plugin.mobile.verify.a.a)g.ad(com.tencent.mm.plugin.mobile.verify.a.a.class)).removeCallback(RegByMobileAutoVerifyUI.f(RegByMobileAutoVerifyUI.this));
         RegByMobileAutoVerifyUI.g(RegByMobileAutoVerifyUI.this).dismiss();
-        AppMethodBeat.o(207126);
+        AppMethodBeat.o(188417);
       }
     });
-    AppMethodBeat.o(207136);
+    AppMethodBeat.o(188427);
   }
   
   public int getLayoutId()
@@ -93,23 +93,23 @@ public class RegByMobileAutoVerifyUI
   
   public void initView()
   {
-    AppMethodBeat.i(207134);
+    AppMethodBeat.i(188425);
     final Button localButton = (Button)findViewById(2131302852);
     localButton.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(207123);
+        AppMethodBeat.i(188414);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
         localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/account/ui/RegByMobileAutoVerifyUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/account/ui/RegByMobileAutoVerifyUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
         if (RegByMobileAutoVerifyUI.a(RegByMobileAutoVerifyUI.this) != 2) {
           RegByMobileAutoVerifyUI.b(RegByMobileAutoVerifyUI.this);
         }
         for (;;)
         {
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/account/ui/RegByMobileAutoVerifyUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-          AppMethodBeat.o(207123);
+          AppMethodBeat.o(188414);
           return;
           RegByMobileAutoVerifyUI.c(RegByMobileAutoVerifyUI.this);
         }
@@ -121,122 +121,122 @@ public class RegByMobileAutoVerifyUI
     {
       public final void onCheckedChanged(CompoundButton paramAnonymousCompoundButton, boolean paramAnonymousBoolean)
       {
-        AppMethodBeat.i(207124);
+        AppMethodBeat.i(188415);
         if (paramAnonymousBoolean)
         {
-          RegByMobileAutoVerifyUI.d(RegByMobileAutoVerifyUI.this).dPT = 1;
-          RegByMobileAutoVerifyUI.d(RegByMobileAutoVerifyUI.this).aLk();
+          RegByMobileAutoVerifyUI.d(RegByMobileAutoVerifyUI.this).dRj = 1;
+          RegByMobileAutoVerifyUI.d(RegByMobileAutoVerifyUI.this).aLH();
         }
         localButton.setEnabled(paramAnonymousBoolean);
-        AppMethodBeat.o(207124);
+        AppMethodBeat.o(188415);
       }
     });
-    ((TextView)findViewById(2131303934)).setText(getString(2131762322, new Object[] { this.jox }));
+    ((TextView)findViewById(2131303934)).setText(getString(2131762322, new Object[] { this.jrq }));
     ((TextView)findViewById(2131303941)).setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(207125);
+        AppMethodBeat.i(188416);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
         localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/account/ui/RegByMobileAutoVerifyUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-        RegByMobileAutoVerifyUI.d(RegByMobileAutoVerifyUI.this).dPT = 2;
-        RegByMobileAutoVerifyUI.d(RegByMobileAutoVerifyUI.this).aLk();
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/account/ui/RegByMobileAutoVerifyUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        RegByMobileAutoVerifyUI.d(RegByMobileAutoVerifyUI.this).dRj = 2;
+        RegByMobileAutoVerifyUI.d(RegByMobileAutoVerifyUI.this).aLH();
         RegByMobileAutoVerifyUI.e(RegByMobileAutoVerifyUI.this);
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/account/ui/RegByMobileAutoVerifyUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(207125);
+        AppMethodBeat.o(188416);
       }
     });
-    AppMethodBeat.o(207134);
+    AppMethodBeat.o(188425);
   }
   
   public void onBackPressed()
   {
-    AppMethodBeat.i(207135);
-    this.joG.dPT = 4;
-    this.joG.aLk();
+    AppMethodBeat.i(188426);
+    this.jrz.dRj = 4;
+    this.jrz.aLH();
     super.onBackPressed();
-    AppMethodBeat.o(207135);
+    AppMethodBeat.o(188426);
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(207133);
+    AppMethodBeat.i(188424);
     super.onCreate(paramBundle);
     setMMTitle("");
     setActionbarColor(getResources().getColor(2131101179));
     hideActionbarLine();
-    this.dzn = getIntent().getStringExtra("Key_Mobile");
+    this.dAs = getIntent().getStringExtra("Key_Mobile");
     this.countryCode = getIntent().getStringExtra("Key_CountryCode");
-    this.jox = (this.countryCode + this.dzn);
-    this.joy = getIntent().getStringExtra("Key_Seq");
-    this.gOx = getIntent().getStringExtra("Key_Url");
-    this.jmq = getIntent().getStringExtra("Key_reg_sessionId");
-    this.joz = (System.currentTimeMillis() + "_" + this.joy);
-    this.joA = getIntent().getStringExtra("kintent_nickname");
-    this.joB = getIntent().getStringExtra("kintent_password");
-    this.jnh = getIntent().getIntExtra("key_reg_style", 1);
-    this.joC = getIntent().getBooleanExtra("kintent_hasavatar", false);
-    ad.i("MicroMsg.RegByMobileAutoVerifyUI", "mobile (%s,%s), seq %s, verifyUrl %s, regNickname %s, hasSetAvatar %s", new Object[] { this.countryCode, this.dzn, this.joy, this.gOx, this.joA, Boolean.valueOf(this.joC) });
+    this.jrq = (this.countryCode + this.dAs);
+    this.jrr = getIntent().getStringExtra("Key_Seq");
+    this.gRf = getIntent().getStringExtra("Key_Url");
+    this.jpk = getIntent().getStringExtra("Key_reg_sessionId");
+    this.jrs = (System.currentTimeMillis() + "_" + this.jrr);
+    this.jrt = getIntent().getStringExtra("kintent_nickname");
+    this.jru = getIntent().getStringExtra("kintent_password");
+    this.jqb = getIntent().getIntExtra("key_reg_style", 1);
+    this.jrv = getIntent().getBooleanExtra("kintent_hasavatar", false);
+    ae.i("MicroMsg.RegByMobileAutoVerifyUI", "mobile (%s,%s), seq %s, verifyUrl %s, regNickname %s, hasSetAvatar %s", new Object[] { this.countryCode, this.dAs, this.jrr, this.gRf, this.jrt, Boolean.valueOf(this.jrv) });
     initView();
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
-        AppMethodBeat.i(207114);
+        AppMethodBeat.i(188405);
         RegByMobileAutoVerifyUI.this.onBackPressed();
-        AppMethodBeat.o(207114);
+        AppMethodBeat.o(188405);
         return true;
       }
     });
-    this.joG.eeE = System.currentTimeMillis();
-    paramBundle = this.joG;
-    paramBundle.eCy = paramBundle.t("DeviceID", com.tencent.mm.compatible.deviceinfo.q.aaB(), true);
-    paramBundle = this.joG;
-    paramBundle.eCx = paramBundle.t("RegisterMobile", this.jox, true);
-    com.tencent.mm.kernel.g.aiU().a(126, this);
-    com.tencent.mm.kernel.g.aiU().a(145, this);
-    AppMethodBeat.o(207133);
+    this.jrz.ege = System.currentTimeMillis();
+    paramBundle = this.jrz;
+    paramBundle.eEh = paramBundle.t("DeviceID", com.tencent.mm.compatible.deviceinfo.q.aaK(), true);
+    paramBundle = this.jrz;
+    paramBundle.eEg = paramBundle.t("RegisterMobile", this.jrq, true);
+    g.ajj().a(126, this);
+    g.ajj().a(145, this);
+    AppMethodBeat.o(188424);
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(207138);
+    AppMethodBeat.i(188429);
     super.onDestroy();
-    ((com.tencent.mm.plugin.mobile.verify.a.a)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.mobile.verify.a.a.class)).removeCallback(this.joz);
-    com.tencent.mm.kernel.g.aiU().b(126, this);
-    com.tencent.mm.kernel.g.aiU().b(145, this);
-    com.tencent.mm.kernel.g.aiU().b(701, this);
-    com.tencent.mm.kernel.g.aiU().b(252, this);
-    AppMethodBeat.o(207138);
+    ((com.tencent.mm.plugin.mobile.verify.a.a)g.ad(com.tencent.mm.plugin.mobile.verify.a.a.class)).removeCallback(this.jrs);
+    g.ajj().b(126, this);
+    g.ajj().b(145, this);
+    g.ajj().b(701, this);
+    g.ajj().b(252, this);
+    AppMethodBeat.o(188429);
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, final String paramString, final com.tencent.mm.al.n paramn)
+  public void onSceneEnd(int paramInt1, int paramInt2, final String paramString, final com.tencent.mm.ak.n paramn)
   {
-    AppMethodBeat.i(207139);
-    ad.i("MicroMsg.RegByMobileAutoVerifyUI", "scene %s, onSceneEnd: errType %d, errCode %d, errMsg %s", new Object[] { paramn, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-    if (this.joE != null)
+    AppMethodBeat.i(188430);
+    ae.i("MicroMsg.RegByMobileAutoVerifyUI", "scene %s, onSceneEnd: errType %d, errCode %d, errMsg %s", new Object[] { paramn, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    if (this.jrx != null)
     {
-      this.joE.dismiss();
-      this.joE = null;
+      this.jrx.dismiss();
+      this.jrx = null;
     }
     int i;
     if (paramn.getType() == 145)
     {
-      i = ((com.tencent.mm.modelfriend.a)paramn).KR();
-      ad.i("MicroMsg.RegByMobileAutoVerifyUI", "BindMobileForReg OpCode %d", new Object[] { Integer.valueOf(i) });
+      i = ((com.tencent.mm.modelfriend.a)paramn).KZ();
+      ae.i("MicroMsg.RegByMobileAutoVerifyUI", "BindMobileForReg OpCode %d", new Object[] { Integer.valueOf(i) });
       if (i == 14) {
         if (paramInt2 == 0)
         {
-          this.joD = ((com.tencent.mm.modelfriend.a)paramn).aHz();
-          ad.i("MicroMsg.RegByMobileAutoVerifyUI", "mobile check type %d", new Object[] { Integer.valueOf(this.joD) });
-          if (this.joD == 2)
+          this.jrw = ((com.tencent.mm.modelfriend.a)paramn).aHQ();
+          ae.i("MicroMsg.RegByMobileAutoVerifyUI", "mobile check type %d", new Object[] { Integer.valueOf(this.jrw) });
+          if (this.jrw == 2)
           {
-            paramn = ((com.tencent.mm.modelfriend.a)paramn).aHC();
-            this.joy = paramn.joy;
-            this.gOx = paramn.url;
-            this.joz = (System.currentTimeMillis() + "_" + this.joy);
-            aUp();
+            paramn = ((com.tencent.mm.modelfriend.a)paramn).aHT();
+            this.jrr = paramn.jrr;
+            this.gRf = paramn.url;
+            this.jrs = (System.currentTimeMillis() + "_" + this.jrr);
+            aUO();
           }
         }
       }
@@ -249,189 +249,189 @@ public class RegByMobileAutoVerifyUI
       {
         for (;;)
         {
-          paramn = com.tencent.mm.h.a.uz(paramString);
+          paramn = com.tencent.mm.h.a.uU(paramString);
           if ((paramn == null) || (!paramn.a(this, null, null))) {
             break;
           }
-          AppMethodBeat.o(207139);
+          AppMethodBeat.o(188430);
           return;
-          if (this.joD == 1)
+          if (this.jrw == 1)
           {
-            this.joG.dPT = 3;
-            this.joG.emu = 2;
-            this.joG.aLk();
-            localObject1 = ((com.tencent.mm.modelfriend.a)paramn).aHB();
-            paramn = ((com.tencent.mm.modelfriend.a)paramn).aHA();
+            this.jrz.dRj = 3;
+            this.jrz.eoc = 2;
+            this.jrz.aLH();
+            localObject1 = ((com.tencent.mm.modelfriend.a)paramn).aHS();
+            paramn = ((com.tencent.mm.modelfriend.a)paramn).aHR();
             localObject2 = new Intent(this, RegByMobileSendSmsUI.class);
-            ((Intent)localObject2).putExtra("regsession_id", this.jmq);
+            ((Intent)localObject2).putExtra("regsession_id", this.jpk);
             ((Intent)localObject2).putExtra("key_reg_style", 1);
-            ((Intent)localObject2).putExtra("from_mobile", this.jox);
+            ((Intent)localObject2).putExtra("from_mobile", this.jrq);
             ((Intent)localObject2).putExtra("to_mobile", (String)localObject1);
             ((Intent)localObject2).putExtra("verify_code", paramn);
-            ((Intent)localObject2).putExtra("kintent_nickname", this.joA);
-            ((Intent)localObject2).putExtra("kintent_password", this.joB);
-            ((Intent)localObject2).putExtra("kintent_hasavatar", this.joC);
+            ((Intent)localObject2).putExtra("kintent_nickname", this.jrt);
+            ((Intent)localObject2).putExtra("kintent_password", this.jru);
+            ((Intent)localObject2).putExtra("kintent_hasavatar", this.jrv);
             paramn = new com.tencent.mm.hellhoundlib.b.a().bc(localObject2);
-            com.tencent.mm.hellhoundlib.a.a.a(this, paramn.ahp(), "com/tencent/mm/plugin/account/ui/RegByMobileAutoVerifyUI", "onSceneEnd", "(IILjava/lang/String;Lcom/tencent/mm/modelbase/NetSceneBase;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-            startActivity((Intent)paramn.mq(0));
+            com.tencent.mm.hellhoundlib.a.a.a(this, paramn.ahE(), "com/tencent/mm/plugin/account/ui/RegByMobileAutoVerifyUI", "onSceneEnd", "(IILjava/lang/String;Lcom/tencent/mm/modelbase/NetSceneBase;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+            startActivity((Intent)paramn.mt(0));
             com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/account/ui/RegByMobileAutoVerifyUI", "onSceneEnd", "(IILjava/lang/String;Lcom/tencent/mm/modelbase/NetSceneBase;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
           }
           else
           {
-            this.joG.dPT = 3;
-            this.joG.emu = 2;
-            this.joG.aLk();
-            i = ((com.tencent.mm.modelfriend.a)paramn).aHE();
-            int j = ((com.tencent.mm.modelfriend.a)paramn).aHF();
+            this.jrz.dRj = 3;
+            this.jrz.eoc = 2;
+            this.jrz.aLH();
+            i = ((com.tencent.mm.modelfriend.a)paramn).aHV();
+            int j = ((com.tencent.mm.modelfriend.a)paramn).aHW();
             paramn = new Intent();
-            paramn.putExtra("bindmcontact_mobile", this.jox);
-            paramn.putExtra("bindmcontact_shortmobile", this.dzn);
+            paramn.putExtra("bindmcontact_mobile", this.jrq);
+            paramn.putExtra("bindmcontact_shortmobile", this.dAs);
             paramn.putExtra("couttry_code", this.countryCode);
             paramn.putExtra("mobileverify_countdownsec", i);
             paramn.putExtra("mobileverify_countdownstyle", j);
-            paramn.putExtra("kintent_hasavatar", this.joC);
-            paramn.putExtra("kintent_nickname", this.joA);
-            paramn.putExtra("kintent_password", this.joB);
-            paramn.putExtra("key_reg_style", this.jnh);
-            paramn.putExtra("regsession_id", this.jmq);
+            paramn.putExtra("kintent_hasavatar", this.jrv);
+            paramn.putExtra("kintent_nickname", this.jrt);
+            paramn.putExtra("kintent_password", this.jru);
+            paramn.putExtra("key_reg_style", this.jqb);
+            paramn.putExtra("regsession_id", this.jpk);
             paramn.putExtra("mobile_verify_purpose", 2);
             startActivity(MobileVerifyUI.class, paramn);
             finish();
             continue;
             if (paramInt2 == -41)
             {
-              h.l(this, 2131762328, 2131762329);
-              AppMethodBeat.o(207139);
+              com.tencent.mm.ui.base.h.l(this, 2131762328, 2131762329);
+              AppMethodBeat.o(188430);
               return;
             }
             if (paramInt2 == -34)
             {
-              h.c(this, getString(2131756462), "", true);
-              AppMethodBeat.o(207139);
+              com.tencent.mm.ui.base.h.c(this, getString(2131756462), "", true);
+              AppMethodBeat.o(188430);
               return;
               if (i == 15)
               {
                 paramn = (com.tencent.mm.modelfriend.a)paramn;
-                this.dpf = paramn.aHw();
+                this.dqk = paramn.aHN();
                 if (paramInt2 == 0)
                 {
-                  this.joG.dPT = 3;
-                  this.joG.emu = 1;
-                  this.joG.aLk();
-                  if (this.jnh == 1)
+                  this.jrz.dRj = 3;
+                  this.jrz.eoc = 1;
+                  this.jrz.aLH();
+                  if (this.jqb == 1)
                   {
-                    com.tencent.mm.kernel.g.aiU().a(126, this);
-                    paramn = new u("", this.joB, this.joA, 0, "", this.jox, "", "", this.dpf, 1, "", "", "", true, this.joC);
-                    paramn.Gn(this.jmq);
-                    paramn.pT(this.joD);
-                    com.tencent.mm.kernel.g.aiU().a(paramn, 0);
+                    g.ajj().a(126, this);
+                    paramn = new v("", this.jru, this.jrt, 0, "", this.jrq, "", "", this.dqk, 1, "", "", "", true, this.jrv);
+                    paramn.GP(this.jpk);
+                    paramn.pW(this.jrw);
+                    g.ajj().a(paramn, 0);
                     getString(2131755906);
-                    this.joE = h.b(this, getString(2131762385), true, new DialogInterface.OnCancelListener()
+                    this.jrx = com.tencent.mm.ui.base.h.b(this, getString(2131762385), true, new DialogInterface.OnCancelListener()
                     {
                       public final void onCancel(DialogInterface paramAnonymousDialogInterface)
                       {
-                        AppMethodBeat.i(207130);
-                        com.tencent.mm.kernel.g.aiU().a(paramn);
-                        com.tencent.mm.kernel.g.aiU().b(126, RegByMobileAutoVerifyUI.this);
-                        AppMethodBeat.o(207130);
+                        AppMethodBeat.i(188421);
+                        g.ajj().a(paramn);
+                        g.ajj().b(126, RegByMobileAutoVerifyUI.this);
+                        AppMethodBeat.o(188421);
                       }
                     });
                   }
                   else
                   {
                     localObject1 = new Intent();
-                    ((Intent)localObject1).putExtra("regsetinfo_ticket", this.dpf);
-                    ((Intent)localObject1).putExtra("regsetinfo_user", this.jox);
-                    ((Intent)localObject1).putExtra("regsession_id", this.jmq);
+                    ((Intent)localObject1).putExtra("regsetinfo_ticket", this.dqk);
+                    ((Intent)localObject1).putExtra("regsetinfo_user", this.jrq);
+                    ((Intent)localObject1).putExtra("regsession_id", this.jpk);
                     ((Intent)localObject1).putExtra("mobile_check_type", 1);
                     ((Intent)localObject1).putExtra("regsetinfo_ismobile", 4);
-                    ((Intent)localObject1).putExtra("regsetinfo_NextControl", paramn.aHD());
-                    ((Intent)localObject1).putExtra("key_reg_style", this.jnh);
+                    ((Intent)localObject1).putExtra("regsetinfo_NextControl", paramn.aHU());
+                    ((Intent)localObject1).putExtra("key_reg_style", this.jqb);
                     ((Intent)localObject1).setClass(this, RegSetInfoUI.class);
                     paramn = new com.tencent.mm.hellhoundlib.b.a().bc(localObject1);
-                    com.tencent.mm.hellhoundlib.a.a.a(this, paramn.ahp(), "com/tencent/mm/plugin/account/ui/RegByMobileAutoVerifyUI", "onSceneEnd", "(IILjava/lang/String;Lcom/tencent/mm/modelbase/NetSceneBase;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-                    startActivity((Intent)paramn.mq(0));
+                    com.tencent.mm.hellhoundlib.a.a.a(this, paramn.ahE(), "com/tencent/mm/plugin/account/ui/RegByMobileAutoVerifyUI", "onSceneEnd", "(IILjava/lang/String;Lcom/tencent/mm/modelbase/NetSceneBase;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+                    startActivity((Intent)paramn.mt(0));
                     com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/account/ui/RegByMobileAutoVerifyUI", "onSceneEnd", "(IILjava/lang/String;Lcom/tencent/mm/modelbase/NetSceneBase;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
                   }
                 }
                 else if (paramInt2 == -35)
                 {
-                  this.joG.dPT = 3;
-                  this.joG.emu = 2;
-                  this.joG.aLk();
-                  localObject1 = com.tencent.mm.h.a.uz(paramString);
+                  this.jrz.dRj = 3;
+                  this.jrz.eoc = 2;
+                  this.jrz.aLH();
+                  localObject1 = com.tencent.mm.h.a.uU(paramString);
                   if (localObject1 != null) {
                     ((com.tencent.mm.h.a)localObject1).a(this, new DialogInterface.OnClickListener()
                     {
                       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
                       {
-                        AppMethodBeat.i(207131);
-                        com.tencent.mm.kernel.g.aiU().a(701, RegByMobileAutoVerifyUI.this);
-                        com.tencent.mm.kernel.g.aiU().a(252, RegByMobileAutoVerifyUI.this);
-                        RegByMobileAutoVerifyUI.a(RegByMobileAutoVerifyUI.this, paramn.getUsername(), paramn.aHv());
-                        AppMethodBeat.o(207131);
+                        AppMethodBeat.i(188422);
+                        g.ajj().a(701, RegByMobileAutoVerifyUI.this);
+                        g.ajj().a(252, RegByMobileAutoVerifyUI.this);
+                        RegByMobileAutoVerifyUI.a(RegByMobileAutoVerifyUI.this, paramn.getUsername(), paramn.aHM());
+                        AppMethodBeat.o(188422);
                       }
                     }, null);
                   } else {
-                    h.a(this, getString(2131756444), null, new DialogInterface.OnClickListener()
+                    com.tencent.mm.ui.base.h.a(this, getString(2131756444), null, new DialogInterface.OnClickListener()
                     {
                       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
                       {
-                        AppMethodBeat.i(207115);
-                        com.tencent.mm.kernel.g.aiU().a(701, RegByMobileAutoVerifyUI.this);
-                        com.tencent.mm.kernel.g.aiU().a(252, RegByMobileAutoVerifyUI.this);
-                        RegByMobileAutoVerifyUI.a(RegByMobileAutoVerifyUI.this, paramn.getUsername(), paramn.aHv());
-                        AppMethodBeat.o(207115);
+                        AppMethodBeat.i(188406);
+                        g.ajj().a(701, RegByMobileAutoVerifyUI.this);
+                        g.ajj().a(252, RegByMobileAutoVerifyUI.this);
+                        RegByMobileAutoVerifyUI.a(RegByMobileAutoVerifyUI.this, paramn.getUsername(), paramn.aHM());
+                        AppMethodBeat.o(188406);
                       }
                     }, null);
                   }
                 }
                 else if (paramInt2 == -212)
                 {
-                  this.joG.dPT = 3;
-                  this.joG.emu = 2;
-                  this.joG.aLk();
+                  this.jrz.dRj = 3;
+                  this.jrz.eoc = 2;
+                  this.jrz.aLH();
                   localObject1 = new Intent(this, MobileLoginOrForceReg.class);
-                  ((Intent)localObject1).putExtra("ticket", this.dpf);
-                  ((Intent)localObject1).putExtra("moble", this.jox);
-                  ((Intent)localObject1).putExtra("regsession_id", this.jmq);
-                  ((Intent)localObject1).putExtra("next_controll", paramn.aHD());
+                  ((Intent)localObject1).putExtra("ticket", this.dqk);
+                  ((Intent)localObject1).putExtra("moble", this.jrq);
+                  ((Intent)localObject1).putExtra("regsession_id", this.jpk);
+                  ((Intent)localObject1).putExtra("next_controll", paramn.aHU());
                   ((Intent)localObject1).putExtra("username", paramn.getUsername());
-                  ((Intent)localObject1).putExtra("password", paramn.aHv());
-                  ((Intent)localObject1).putExtra("nickname", paramn.aHJ());
-                  ((Intent)localObject1).putExtra("avatar_url", paramn.aHI());
-                  ((Intent)localObject1).putExtra("mobile_check_type", this.joD);
-                  ((Intent)localObject1).putExtra("kintent_hasavatar", this.joC);
-                  ((Intent)localObject1).putExtra("kintent_nickname", this.joA);
-                  ((Intent)localObject1).putExtra("kintent_password", this.joB);
-                  ((Intent)localObject1).putExtra("key_reg_style", this.jnh);
+                  ((Intent)localObject1).putExtra("password", paramn.aHM());
+                  ((Intent)localObject1).putExtra("nickname", paramn.aIa());
+                  ((Intent)localObject1).putExtra("avatar_url", paramn.aHZ());
+                  ((Intent)localObject1).putExtra("mobile_check_type", this.jrw);
+                  ((Intent)localObject1).putExtra("kintent_hasavatar", this.jrv);
+                  ((Intent)localObject1).putExtra("kintent_nickname", this.jrt);
+                  ((Intent)localObject1).putExtra("kintent_password", this.jru);
+                  ((Intent)localObject1).putExtra("key_reg_style", this.jqb);
                   paramn = new com.tencent.mm.hellhoundlib.b.a().bc(localObject1);
-                  com.tencent.mm.hellhoundlib.a.a.a(this, paramn.ahp(), "com/tencent/mm/plugin/account/ui/RegByMobileAutoVerifyUI", "onSceneEnd", "(IILjava/lang/String;Lcom/tencent/mm/modelbase/NetSceneBase;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-                  startActivity((Intent)paramn.mq(0));
+                  com.tencent.mm.hellhoundlib.a.a.a(this, paramn.ahE(), "com/tencent/mm/plugin/account/ui/RegByMobileAutoVerifyUI", "onSceneEnd", "(IILjava/lang/String;Lcom/tencent/mm/modelbase/NetSceneBase;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+                  startActivity((Intent)paramn.mt(0));
                   com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/account/ui/RegByMobileAutoVerifyUI", "onSceneEnd", "(IILjava/lang/String;Lcom/tencent/mm/modelbase/NetSceneBase;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
                 }
                 else
                 {
                   if ((paramInt2 == -449) || (paramInt2 == -450) || (paramInt2 == -451))
                   {
-                    this.joG.dPT = 3;
-                    this.joG.emu = 2;
-                    this.joG.aLk();
-                    h.a(this, getString(2131762320), "", getString(2131755792), false, new DialogInterface.OnClickListener()
+                    this.jrz.dRj = 3;
+                    this.jrz.eoc = 2;
+                    this.jrz.aLH();
+                    com.tencent.mm.ui.base.h.a(this, getString(2131762320), "", getString(2131755792), false, new DialogInterface.OnClickListener()
                     {
                       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
                       {
-                        AppMethodBeat.i(207116);
+                        AppMethodBeat.i(188407);
                         RegByMobileAutoVerifyUI.e(RegByMobileAutoVerifyUI.this);
-                        AppMethodBeat.o(207116);
+                        AppMethodBeat.o(188407);
                       }
                     });
-                    AppMethodBeat.o(207139);
+                    AppMethodBeat.o(188430);
                     return;
                   }
-                  this.joG.dPT = 3;
-                  this.joG.emu = 2;
-                  this.joG.aLk();
+                  this.jrz.dRj = 3;
+                  this.jrz.eoc = 2;
+                  this.jrz.aLH();
                   Toast.makeText(this, getString(2131756507, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }), 0).show();
                 }
               }
@@ -439,142 +439,142 @@ public class RegByMobileAutoVerifyUI
           }
         }
       } while (paramn.getType() != 126);
-      localObject1 = (u)paramn;
+      localObject1 = (v)paramn;
       if ((paramInt2 == -6) || (paramInt2 == -311) || (paramInt2 == -310))
       {
-        if (this.joF == null)
+        if (this.jry == null)
         {
-          this.joF = SecurityImage.a.a(this, 0, ((u)localObject1).aKM(), ((u)localObject1).aKL(), "", new DialogInterface.OnClickListener()
+          this.jry = SecurityImage.a.a(this, 0, ((v)localObject1).aLj(), ((v)localObject1).aLi(), "", new DialogInterface.OnClickListener()
           {
             public final void onClick(final DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
             {
-              AppMethodBeat.i(207118);
-              paramAnonymousDialogInterface = new u("", RegByMobileAutoVerifyUI.h(RegByMobileAutoVerifyUI.this), RegByMobileAutoVerifyUI.i(RegByMobileAutoVerifyUI.this), 0, "", RegByMobileAutoVerifyUI.j(RegByMobileAutoVerifyUI.this), "", "", RegByMobileAutoVerifyUI.k(RegByMobileAutoVerifyUI.this), 1, "", this.joJ.aKL(), RegByMobileAutoVerifyUI.l(RegByMobileAutoVerifyUI.this).getSecImgCode(), true, RegByMobileAutoVerifyUI.m(RegByMobileAutoVerifyUI.this));
-              paramAnonymousDialogInterface.Gn(RegByMobileAutoVerifyUI.n(RegByMobileAutoVerifyUI.this));
-              paramAnonymousDialogInterface.pT(RegByMobileAutoVerifyUI.a(RegByMobileAutoVerifyUI.this));
-              com.tencent.mm.kernel.g.aiU().a(paramAnonymousDialogInterface, 0);
+              AppMethodBeat.i(188409);
+              paramAnonymousDialogInterface = new v("", RegByMobileAutoVerifyUI.h(RegByMobileAutoVerifyUI.this), RegByMobileAutoVerifyUI.i(RegByMobileAutoVerifyUI.this), 0, "", RegByMobileAutoVerifyUI.j(RegByMobileAutoVerifyUI.this), "", "", RegByMobileAutoVerifyUI.k(RegByMobileAutoVerifyUI.this), 1, "", this.jrC.aLi(), RegByMobileAutoVerifyUI.l(RegByMobileAutoVerifyUI.this).getSecImgCode(), true, RegByMobileAutoVerifyUI.m(RegByMobileAutoVerifyUI.this));
+              paramAnonymousDialogInterface.GP(RegByMobileAutoVerifyUI.n(RegByMobileAutoVerifyUI.this));
+              paramAnonymousDialogInterface.pW(RegByMobileAutoVerifyUI.a(RegByMobileAutoVerifyUI.this));
+              g.ajj().a(paramAnonymousDialogInterface, 0);
               RegByMobileAutoVerifyUI localRegByMobileAutoVerifyUI = RegByMobileAutoVerifyUI.this;
               AppCompatActivity localAppCompatActivity = RegByMobileAutoVerifyUI.this.getContext();
               RegByMobileAutoVerifyUI.this.getString(2131755906);
-              RegByMobileAutoVerifyUI.a(localRegByMobileAutoVerifyUI, h.b(localAppCompatActivity, RegByMobileAutoVerifyUI.this.getString(2131762385), true, new DialogInterface.OnCancelListener()
+              RegByMobileAutoVerifyUI.a(localRegByMobileAutoVerifyUI, com.tencent.mm.ui.base.h.b(localAppCompatActivity, RegByMobileAutoVerifyUI.this.getString(2131762385), true, new DialogInterface.OnCancelListener()
               {
                 public final void onCancel(DialogInterface paramAnonymous2DialogInterface)
                 {
-                  AppMethodBeat.i(207117);
-                  com.tencent.mm.kernel.g.aiU().a(paramAnonymousDialogInterface);
-                  AppMethodBeat.o(207117);
+                  AppMethodBeat.i(188408);
+                  g.ajj().a(paramAnonymousDialogInterface);
+                  AppMethodBeat.o(188408);
                 }
               }));
-              AppMethodBeat.o(207118);
+              AppMethodBeat.o(188409);
             }
           }, null, new DialogInterface.OnDismissListener()new SecurityImage.b
           {
             public final void onDismiss(DialogInterface paramAnonymousDialogInterface)
             {
-              AppMethodBeat.i(207119);
+              AppMethodBeat.i(188410);
               RegByMobileAutoVerifyUI.o(RegByMobileAutoVerifyUI.this);
-              AppMethodBeat.o(207119);
+              AppMethodBeat.o(188410);
             }
           }, new SecurityImage.b()
           {
-            public final void aSv()
+            public final void aSU()
             {
-              AppMethodBeat.i(207120);
+              AppMethodBeat.i(188411);
               RegByMobileAutoVerifyUI.this.hideVKB();
-              u localu = new u("", RegByMobileAutoVerifyUI.h(RegByMobileAutoVerifyUI.this), RegByMobileAutoVerifyUI.i(RegByMobileAutoVerifyUI.this), 0, "", RegByMobileAutoVerifyUI.j(RegByMobileAutoVerifyUI.this), "", "", RegByMobileAutoVerifyUI.k(RegByMobileAutoVerifyUI.this), 1, "", this.joJ.aKL(), RegByMobileAutoVerifyUI.l(RegByMobileAutoVerifyUI.this).getSecImgCode(), true, RegByMobileAutoVerifyUI.m(RegByMobileAutoVerifyUI.this));
-              localu.Gn(RegByMobileAutoVerifyUI.n(RegByMobileAutoVerifyUI.this));
-              localu.pT(RegByMobileAutoVerifyUI.a(RegByMobileAutoVerifyUI.this));
-              com.tencent.mm.kernel.g.aiU().a(localu, 0);
-              AppMethodBeat.o(207120);
+              v localv = new v("", RegByMobileAutoVerifyUI.h(RegByMobileAutoVerifyUI.this), RegByMobileAutoVerifyUI.i(RegByMobileAutoVerifyUI.this), 0, "", RegByMobileAutoVerifyUI.j(RegByMobileAutoVerifyUI.this), "", "", RegByMobileAutoVerifyUI.k(RegByMobileAutoVerifyUI.this), 1, "", this.jrC.aLi(), RegByMobileAutoVerifyUI.l(RegByMobileAutoVerifyUI.this).getSecImgCode(), true, RegByMobileAutoVerifyUI.m(RegByMobileAutoVerifyUI.this));
+              localv.GP(RegByMobileAutoVerifyUI.n(RegByMobileAutoVerifyUI.this));
+              localv.pW(RegByMobileAutoVerifyUI.a(RegByMobileAutoVerifyUI.this));
+              g.ajj().a(localv, 0);
+              AppMethodBeat.o(188411);
             }
           });
-          AppMethodBeat.o(207139);
+          AppMethodBeat.o(188430);
           return;
         }
-        this.joF.b(0, ((u)paramn).aKM(), ((u)paramn).aKL(), "");
-        AppMethodBeat.o(207139);
+        this.jry.b(0, ((v)paramn).aLj(), ((v)paramn).aLi(), "");
+        AppMethodBeat.o(188430);
         return;
       }
     } while ((paramInt1 != 0) || (paramInt2 != 0));
-    paramString = this.jox;
+    paramString = this.jrq;
     com.tencent.mm.kernel.a.unhold();
-    com.tencent.mm.kernel.a.dB(true);
-    if (this.joC)
+    com.tencent.mm.kernel.a.dC(true);
+    if (this.jrv)
     {
-      paramn = com.tencent.mm.loader.j.b.asc() + "temp.avatar";
-      localObject2 = com.tencent.mm.loader.j.b.asc() + "temp.avatar.hd";
-      i.mA(paramn, (String)localObject2);
-      i.deleteFile(paramn);
-      com.tencent.mm.sdk.platformtools.g.c((String)localObject2, 156, 156, Bitmap.CompressFormat.JPEG, 90, paramn);
-      new com.tencent.mm.ak.n(this, com.tencent.mm.loader.j.b.asc() + "temp.avatar").a(new Runnable()new Runnable
+      paramn = com.tencent.mm.loader.j.b.asr() + "temp.avatar";
+      localObject2 = com.tencent.mm.loader.j.b.asr() + "temp.avatar.hd";
+      o.mG(paramn, (String)localObject2);
+      o.deleteFile(paramn);
+      com.tencent.mm.sdk.platformtools.h.c((String)localObject2, 156, 156, Bitmap.CompressFormat.JPEG, 90, paramn);
+      new com.tencent.mm.aj.n(this, com.tencent.mm.loader.j.b.asr() + "temp.avatar").a(new Runnable()new Runnable
       {
         public final void run()
         {
-          AppMethodBeat.i(207121);
-          RegByMobileAutoVerifyUI.b(RegByMobileAutoVerifyUI.this, this.joJ.aKV());
-          az.hFS.aM("login_user_name", paramString);
-          i.deleteFile(com.tencent.mm.loader.j.b.asc() + "temp.avatar");
-          Object localObject2 = com.tencent.mm.plugin.account.a.a.iRG.bC(RegByMobileAutoVerifyUI.this);
+          AppMethodBeat.i(188412);
+          RegByMobileAutoVerifyUI.b(RegByMobileAutoVerifyUI.this, this.jrC.aLs());
+          bb.hIK.aM("login_user_name", paramString);
+          o.deleteFile(com.tencent.mm.loader.j.b.asr() + "temp.avatar");
+          Object localObject2 = com.tencent.mm.plugin.account.a.a.iUz.bE(RegByMobileAutoVerifyUI.this);
           ((Intent)localObject2).addFlags(67108864);
           Object localObject1 = RegByMobileAutoVerifyUI.this;
           localObject2 = new com.tencent.mm.hellhoundlib.b.a().bc(localObject2);
-          com.tencent.mm.hellhoundlib.a.a.a(localObject1, ((com.tencent.mm.hellhoundlib.b.a)localObject2).ahp(), "com/tencent/mm/plugin/account/ui/RegByMobileAutoVerifyUI$15", "run", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          ((RegByMobileAutoVerifyUI)localObject1).startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject2).mq(0));
+          com.tencent.mm.hellhoundlib.a.a.a(localObject1, ((com.tencent.mm.hellhoundlib.b.a)localObject2).ahE(), "com/tencent/mm/plugin/account/ui/RegByMobileAutoVerifyUI$15", "run", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          ((RegByMobileAutoVerifyUI)localObject1).startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject2).mt(0));
           com.tencent.mm.hellhoundlib.a.a.a(localObject1, "com/tencent/mm/plugin/account/ui/RegByMobileAutoVerifyUI$15", "run", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
           localObject1 = new StringBuilder();
-          com.tencent.mm.kernel.g.ajA();
-          localObject1 = ((StringBuilder)localObject1).append(com.tencent.mm.kernel.a.aiO()).append(",").append(getClass().getName()).append(",R200_600,");
-          com.tencent.mm.kernel.g.ajA();
-          com.tencent.mm.plugin.b.a.vk(com.tencent.mm.kernel.a.wS("R200_600") + ",4");
+          g.ajP();
+          localObject1 = ((StringBuilder)localObject1).append(com.tencent.mm.kernel.a.ajd()).append(",").append(getClass().getName()).append(",R200_600,");
+          g.ajP();
+          com.tencent.mm.plugin.b.a.vG(com.tencent.mm.kernel.a.xB("R200_600") + ",4");
           RegByMobileAutoVerifyUI.this.finish();
-          AppMethodBeat.o(207121);
+          AppMethodBeat.o(188412);
         }
       }, new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(207122);
-          RegByMobileAutoVerifyUI.b(RegByMobileAutoVerifyUI.this, this.joJ.aKV());
-          az.hFS.aM("login_user_name", paramString);
-          Object localObject2 = com.tencent.mm.plugin.account.a.a.iRG.bC(RegByMobileAutoVerifyUI.this);
+          AppMethodBeat.i(188413);
+          RegByMobileAutoVerifyUI.b(RegByMobileAutoVerifyUI.this, this.jrC.aLs());
+          bb.hIK.aM("login_user_name", paramString);
+          Object localObject2 = com.tencent.mm.plugin.account.a.a.iUz.bE(RegByMobileAutoVerifyUI.this);
           ((Intent)localObject2).addFlags(67108864);
           Object localObject1 = RegByMobileAutoVerifyUI.this;
           localObject2 = new com.tencent.mm.hellhoundlib.b.a().bc(localObject2);
-          com.tencent.mm.hellhoundlib.a.a.a(localObject1, ((com.tencent.mm.hellhoundlib.b.a)localObject2).ahp(), "com/tencent/mm/plugin/account/ui/RegByMobileAutoVerifyUI$16", "run", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          ((RegByMobileAutoVerifyUI)localObject1).startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject2).mq(0));
+          com.tencent.mm.hellhoundlib.a.a.a(localObject1, ((com.tencent.mm.hellhoundlib.b.a)localObject2).ahE(), "com/tencent/mm/plugin/account/ui/RegByMobileAutoVerifyUI$16", "run", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          ((RegByMobileAutoVerifyUI)localObject1).startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject2).mt(0));
           com.tencent.mm.hellhoundlib.a.a.a(localObject1, "com/tencent/mm/plugin/account/ui/RegByMobileAutoVerifyUI$16", "run", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
           localObject1 = new StringBuilder();
-          com.tencent.mm.kernel.g.ajA();
-          localObject1 = ((StringBuilder)localObject1).append(com.tencent.mm.kernel.a.aiO()).append(",").append(getClass().getName()).append(",R200_600,");
-          com.tencent.mm.kernel.g.ajA();
-          com.tencent.mm.plugin.b.a.vk(com.tencent.mm.kernel.a.wS("R200_600") + ",4");
+          g.ajP();
+          localObject1 = ((StringBuilder)localObject1).append(com.tencent.mm.kernel.a.ajd()).append(",").append(getClass().getName()).append(",R200_600,");
+          g.ajP();
+          com.tencent.mm.plugin.b.a.vG(com.tencent.mm.kernel.a.xB("R200_600") + ",4");
           RegByMobileAutoVerifyUI.this.finish();
-          AppMethodBeat.o(207122);
+          AppMethodBeat.o(188413);
         }
       });
-      AppMethodBeat.o(207139);
+      AppMethodBeat.o(188430);
       return;
     }
-    this.dpf = ((u)localObject1).aKV();
-    az.hFS.aM("login_user_name", paramString);
-    paramString = com.tencent.mm.plugin.account.a.a.iRG.bC(this);
+    this.dqk = ((v)localObject1).aLs();
+    bb.hIK.aM("login_user_name", paramString);
+    paramString = com.tencent.mm.plugin.account.a.a.iUz.bE(this);
     paramString.addFlags(67108864);
     paramString.putExtra("LauncherUI.enter_from_reg", true);
     paramString = new com.tencent.mm.hellhoundlib.b.a().bc(paramString);
-    com.tencent.mm.hellhoundlib.a.a.a(this, paramString.ahp(), "com/tencent/mm/plugin/account/ui/RegByMobileAutoVerifyUI", "onSceneEnd", "(IILjava/lang/String;Lcom/tencent/mm/modelbase/NetSceneBase;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    startActivity((Intent)paramString.mq(0));
+    com.tencent.mm.hellhoundlib.a.a.a(this, paramString.ahE(), "com/tencent/mm/plugin/account/ui/RegByMobileAutoVerifyUI", "onSceneEnd", "(IILjava/lang/String;Lcom/tencent/mm/modelbase/NetSceneBase;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    startActivity((Intent)paramString.mt(0));
     com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/account/ui/RegByMobileAutoVerifyUI", "onSceneEnd", "(IILjava/lang/String;Lcom/tencent/mm/modelbase/NetSceneBase;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     finish();
-    com.tencent.mm.plugin.b.a.Ma("RE900_100");
+    com.tencent.mm.plugin.b.a.KB("RE900_100");
     paramString = new StringBuilder();
-    com.tencent.mm.kernel.g.ajA();
-    paramString = paramString.append(com.tencent.mm.kernel.a.aiO()).append(",").append(getClass().getName()).append(",R200_600,");
-    com.tencent.mm.kernel.g.ajA();
-    com.tencent.mm.plugin.b.a.i(false, com.tencent.mm.kernel.a.wS("R200_600") + ",4");
-    AppMethodBeat.o(207139);
+    g.ajP();
+    paramString = paramString.append(com.tencent.mm.kernel.a.ajd()).append(",").append(getClass().getName()).append(",R200_600,");
+    g.ajP();
+    com.tencent.mm.plugin.b.a.i(false, com.tencent.mm.kernel.a.xB("R200_600") + ",4");
+    AppMethodBeat.o(188430);
     return;
-    com.tencent.mm.plugin.account.a.a.iRH.a(this, paramInt1, paramInt2, paramString);
-    AppMethodBeat.o(207139);
+    com.tencent.mm.plugin.account.a.a.iUA.a(this, paramInt1, paramInt2, paramString);
+    AppMethodBeat.o(188430);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -583,50 +583,50 @@ public class RegByMobileAutoVerifyUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  public final void y(final Bundle paramBundle)
+  public final void z(final Bundle paramBundle)
   {
-    AppMethodBeat.i(207137);
-    aq.f(new Runnable()
+    AppMethodBeat.i(188428);
+    ar.f(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(207128);
+        AppMethodBeat.i(188419);
         String str = paramBundle.getString("session", "");
-        if ((!bt.isNullOrNil(str)) && (str.equals(RegByMobileAutoVerifyUI.f(RegByMobileAutoVerifyUI.this))))
+        if ((!bu.isNullOrNil(str)) && (str.equals(RegByMobileAutoVerifyUI.f(RegByMobileAutoVerifyUI.this))))
         {
           str = paramBundle.getString("token", "");
-          ad.i("MicroMsg.RegByMobileAutoVerifyUI", "reg, get mobile token %s", new Object[] { str });
-          if (!bt.isNullOrNil(str))
+          ae.i("MicroMsg.RegByMobileAutoVerifyUI", "reg, get mobile token %s", new Object[] { str });
+          if (!bu.isNullOrNil(str))
           {
             RegByMobileAutoVerifyUI.a(RegByMobileAutoVerifyUI.this, str);
-            AppMethodBeat.o(207128);
+            AppMethodBeat.o(188419);
             return;
           }
-          RegByMobileAutoVerifyUI.d(RegByMobileAutoVerifyUI.this).dPT = 3;
-          RegByMobileAutoVerifyUI.d(RegByMobileAutoVerifyUI.this).emu = 2;
-          RegByMobileAutoVerifyUI.d(RegByMobileAutoVerifyUI.this).aLk();
+          RegByMobileAutoVerifyUI.d(RegByMobileAutoVerifyUI.this).dRj = 3;
+          RegByMobileAutoVerifyUI.d(RegByMobileAutoVerifyUI.this).eoc = 2;
+          RegByMobileAutoVerifyUI.d(RegByMobileAutoVerifyUI.this).aLH();
           if (RegByMobileAutoVerifyUI.g(RegByMobileAutoVerifyUI.this) != null) {
             RegByMobileAutoVerifyUI.g(RegByMobileAutoVerifyUI.this).dismiss();
           }
-          h.a(RegByMobileAutoVerifyUI.this, RegByMobileAutoVerifyUI.this.getString(2131762320), "", RegByMobileAutoVerifyUI.this.getString(2131755792), false, new DialogInterface.OnClickListener()
+          com.tencent.mm.ui.base.h.a(RegByMobileAutoVerifyUI.this, RegByMobileAutoVerifyUI.this.getString(2131762320), "", RegByMobileAutoVerifyUI.this.getString(2131755792), false, new DialogInterface.OnClickListener()
           {
             public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
             {
-              AppMethodBeat.i(207127);
+              AppMethodBeat.i(188418);
               RegByMobileAutoVerifyUI.e(RegByMobileAutoVerifyUI.this);
-              AppMethodBeat.o(207127);
+              AppMethodBeat.o(188418);
             }
           });
         }
-        AppMethodBeat.o(207128);
+        AppMethodBeat.o(188419);
       }
     });
-    AppMethodBeat.o(207137);
+    AppMethodBeat.o(188428);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.account.ui.RegByMobileAutoVerifyUI
  * JD-Core Version:    0.7.0.1
  */

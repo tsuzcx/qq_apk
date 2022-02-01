@@ -27,131 +27,131 @@ import d.g.b.p;
 import d.l;
 import d.v;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/live/plugin/LiveVideoMicPlugin;", "Lcom/tencent/mm/live/plugin/BaseLivePlugin;", "root", "Landroid/view/ViewGroup;", "statusMonitor", "Lcom/tencent/mm/live/plugin/ILiveStatus;", "(Landroid/view/ViewGroup;Lcom/tencent/mm/live/plugin/ILiveStatus;)V", "blankArea", "Landroid/view/View;", "cancelBtn", "Landroid/widget/Button;", "dialogGroup", "liveCore", "Lcom/tencent/mm/live/core/core/trtc/AbsLiveTRTCCore;", "okBtn", "previewLayout", "Landroid/widget/RelativeLayout;", "previewView", "Landroid/view/SurfaceView;", "getStatusMonitor", "()Lcom/tencent/mm/live/plugin/ILiveStatus;", "setStatusMonitor", "(Lcom/tencent/mm/live/plugin/ILiveStatus;)V", "switchCameraBtn", "Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "kotlin.jvm.PlatformType", "getCameraSurface", "Lcom/tencent/mm/live/core/render/RenderSurfaceHolder;", "hide", "", "cancel", "", "onBackPress", "setupConfig", "config", "Lcom/tencent/mm/live/api/LiveConfig;", "show", "statusChange", "status", "Lcom/tencent/mm/live/plugin/ILiveStatus$LiveStatus;", "param", "Landroid/os/Bundle;", "plugin-logic_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/live/plugin/LiveVideoMicPlugin;", "Lcom/tencent/mm/live/plugin/BaseLivePlugin;", "root", "Landroid/view/ViewGroup;", "statusMonitor", "Lcom/tencent/mm/live/plugin/ILiveStatus;", "(Landroid/view/ViewGroup;Lcom/tencent/mm/live/plugin/ILiveStatus;)V", "blankArea", "Landroid/view/View;", "cancelBtn", "Landroid/widget/Button;", "dialogGroup", "liveCore", "Lcom/tencent/mm/live/core/core/trtc/AbsLiveTRTCCore;", "okBtn", "previewLayout", "Landroid/widget/RelativeLayout;", "previewView", "Landroid/view/SurfaceView;", "getStatusMonitor", "()Lcom/tencent/mm/live/plugin/ILiveStatus;", "setStatusMonitor", "(Lcom/tencent/mm/live/plugin/ILiveStatus;)V", "switchCameraBtn", "Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "kotlin.jvm.PlatformType", "getCameraSurface", "Lcom/tencent/mm/live/core/render/RenderSurfaceHolder;", "hide", "", "cancel", "", "onBackPress", "setupConfig", "config", "Lcom/tencent/mm/live/api/LiveConfig;", "show", "statusChange", "status", "Lcom/tencent/mm/live/plugin/ILiveStatus$LiveStatus;", "param", "Landroid/os/Bundle;", "plugin-logic_release"})
 public final class bc
   extends a
 {
-  b gSM;
-  private final Button gUt;
-  private View gVS;
-  private final Button gWI;
-  public com.tencent.mm.live.core.core.trtc.a gWW;
-  private ViewGroup gXi;
-  private RelativeLayout gXj;
-  private final WeImageView gXk;
-  private SurfaceView gXl;
+  b gVv;
+  private final Button gXc;
+  private View gYC;
+  public com.tencent.mm.live.core.core.trtc.a gZJ;
+  private ViewGroup gZU;
+  private RelativeLayout gZV;
+  private final WeImageView gZW;
+  private SurfaceView gZX;
+  private final Button gZv;
   
   public bc(ViewGroup paramViewGroup, b paramb)
   {
     super(paramViewGroup, paramb);
-    AppMethodBeat.i(212619);
-    this.gSM = paramb;
+    AppMethodBeat.i(216245);
+    this.gVv = paramb;
     paramb = paramViewGroup.findViewById(2131307826);
     p.g(paramb, "root.findViewById(R.id.l…eo_mic_dialog_blank_area)");
-    this.gVS = paramb;
+    this.gYC = paramb;
     paramb = paramViewGroup.findViewById(2131307828);
     p.g(paramb, "root.findViewById(R.id.l…mic_dialog_content_group)");
-    this.gXi = ((ViewGroup)paramb);
+    this.gZU = ((ViewGroup)paramb);
     paramb = paramViewGroup.findViewById(2131307854);
     p.g(paramb, "root.findViewById(R.id.local_camera_view)");
-    this.gXj = ((RelativeLayout)paramb);
+    this.gZV = ((RelativeLayout)paramb);
     paramb = paramViewGroup.findViewById(2131307830);
     p.g(paramb, "root.findViewById(R.id.l…_video_mic_dialog_ok_btn)");
-    this.gUt = ((Button)paramb);
+    this.gXc = ((Button)paramb);
     paramb = paramViewGroup.findViewById(2131307827);
     p.g(paramb, "root.findViewById(R.id.l…eo_mic_dialog_cancel_btn)");
-    this.gWI = ((Button)paramb);
-    this.gXk = ((WeImageView)paramViewGroup.findViewById(2131307831));
+    this.gZv = ((Button)paramb);
+    this.gZW = ((WeImageView)paramViewGroup.findViewById(2131307831));
     paramb = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131496353, null);
     if (paramb == null)
     {
       paramViewGroup = new v("null cannot be cast to non-null type android.view.SurfaceView");
-      AppMethodBeat.o(212619);
+      AppMethodBeat.o(216245);
       throw paramViewGroup;
     }
-    this.gXl = ((SurfaceView)paramb);
-    this.gUt.setOnClickListener((View.OnClickListener)new View.OnClickListener()
+    this.gZX = ((SurfaceView)paramb);
+    this.gXc.setOnClickListener((View.OnClickListener)new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(212609);
+        AppMethodBeat.i(216235);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
         localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/live/plugin/LiveVideoMicPlugin$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-        b.b.a(this.gXm.gSM, b.c.gSb);
-        this.gXm.dV(false);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/live/plugin/LiveVideoMicPlugin$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        b.b.a(this.gZY.gVv, b.c.gUJ);
+        this.gZY.dX(false);
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/live/plugin/LiveVideoMicPlugin$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(212609);
+        AppMethodBeat.o(216235);
       }
     });
-    this.gWI.setOnClickListener((View.OnClickListener)new View.OnClickListener()
+    this.gZv.setOnClickListener((View.OnClickListener)new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(212610);
+        AppMethodBeat.i(216236);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
         localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/live/plugin/LiveVideoMicPlugin$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-        this.gXm.dV(true);
-        paramAnonymousView = this.gXm.gWW;
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/live/plugin/LiveVideoMicPlugin$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        this.gZY.dX(true);
+        paramAnonymousView = this.gZY.gZJ;
         if (paramAnonymousView != null)
         {
-          paramAnonymousView = paramAnonymousView.gIt;
-          if ((paramAnonymousView != null) && (!paramAnonymousView.alE())) {
-            c.apy();
+          paramAnonymousView = paramAnonymousView.gLc;
+          if ((paramAnonymousView != null) && (!paramAnonymousView.alT())) {
+            c.apM();
           }
         }
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/live/plugin/LiveVideoMicPlugin$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(212610);
+        AppMethodBeat.o(216236);
       }
     });
-    this.gVS.setOnClickListener((View.OnClickListener)new View.OnClickListener()
+    this.gYC.setOnClickListener((View.OnClickListener)new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(212611);
+        AppMethodBeat.i(216237);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
         localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/live/plugin/LiveVideoMicPlugin$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-        this.gXm.dV(true);
-        paramAnonymousView = this.gXm.gWW;
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/live/plugin/LiveVideoMicPlugin$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        this.gZY.dX(true);
+        paramAnonymousView = this.gZY.gZJ;
         if (paramAnonymousView != null)
         {
-          paramAnonymousView = paramAnonymousView.gIt;
-          if ((paramAnonymousView != null) && (!paramAnonymousView.alE())) {
-            c.apy();
+          paramAnonymousView = paramAnonymousView.gLc;
+          if ((paramAnonymousView != null) && (!paramAnonymousView.alT())) {
+            c.apM();
           }
         }
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/live/plugin/LiveVideoMicPlugin$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(212611);
+        AppMethodBeat.o(216237);
       }
     });
-    this.gXk.setOnClickListener((View.OnClickListener)new View.OnClickListener()
+    this.gZW.setOnClickListener((View.OnClickListener)new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(212612);
+        AppMethodBeat.i(216238);
         Object localObject = new com.tencent.mm.hellhoundlib.b.b();
         ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/live/plugin/LiveVideoMicPlugin$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahq());
-        b.b.a(this.gXm.gSM, b.c.gRx);
-        paramAnonymousView = g.gOr;
-        paramAnonymousView = g.anw();
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/live/plugin/LiveVideoMicPlugin$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahF());
+        b.b.a(this.gZY.gVv, b.c.gUf);
+        paramAnonymousView = g.gQZ;
+        paramAnonymousView = g.anL();
         if (paramAnonymousView != null)
         {
-          paramAnonymousView = paramAnonymousView.gHB;
+          paramAnonymousView = paramAnonymousView.gKk;
           if (paramAnonymousView != null)
           {
-            localObject = g.gOr;
-            localObject = g.anw();
+            localObject = g.gQZ;
+            localObject = g.anL();
             if (localObject == null) {
               break label123;
             }
-            localObject = ((d)localObject).gHB;
+            localObject = ((d)localObject).gKk;
             if (localObject == null) {
               break label123;
             }
-            bool = ((com.tencent.mm.live.core.core.b.b)localObject).gHu;
+            bool = ((com.tencent.mm.live.core.core.b.b)localObject).gKd;
             if (bool) {
               break label128;
             }
@@ -160,9 +160,9 @@ public final class bc
         label128:
         for (boolean bool = true;; bool = false)
         {
-          paramAnonymousView.gHu = bool;
+          paramAnonymousView.gKd = bool;
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/live/plugin/LiveVideoMicPlugin$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-          AppMethodBeat.o(212612);
+          AppMethodBeat.o(216238);
           return;
           label123:
           bool = true;
@@ -170,150 +170,150 @@ public final class bc
         }
       }
     });
-    this.gXi.setTranslationY(ar.ci(paramViewGroup.getContext()).y);
+    this.gZU.setTranslationY(ar.ck(paramViewGroup.getContext()).y);
     if (paramViewGroup.findViewById(2131298772) != null)
     {
       paramb = new RelativeLayout.LayoutParams(-2, -1);
-      if (!aol()) {
-        paramb.bottomMargin = ar.ej(paramViewGroup.getContext());
+      if (!aoA()) {
+        paramb.bottomMargin = ar.en(paramViewGroup.getContext());
       }
-      paramb.width = ar.ci(paramViewGroup.getContext()).y;
+      paramb.width = ar.ck(paramViewGroup.getContext()).y;
       paramb.addRule(14);
       paramViewGroup = paramViewGroup.findViewById(2131298772);
       p.g(paramViewGroup, "root.findViewById<Relati…>(R.id.content_root_view)");
       ((RelativeLayout)paramViewGroup).setLayoutParams((ViewGroup.LayoutParams)paramb);
     }
-    AppMethodBeat.o(212619);
+    AppMethodBeat.o(216245);
   }
   
   public final void a(b.c paramc, Bundle paramBundle)
   {
-    AppMethodBeat.i(212617);
+    AppMethodBeat.i(216243);
     p.h(paramc, "status");
     super.a(paramc, paramBundle);
-    switch (bd.cpQ[paramc.ordinal()])
+    switch (bd.cqt[paramc.ordinal()])
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(212617);
+      AppMethodBeat.o(216243);
       return;
-      nI(0);
-      paramc = this.gXl.getParent();
+      nL(0);
+      paramc = this.gZX.getParent();
       if (paramc != null)
       {
         if (paramc == null)
         {
           paramc = new v("null cannot be cast to non-null type android.view.ViewGroup");
-          AppMethodBeat.o(212617);
+          AppMethodBeat.o(216243);
           throw paramc;
         }
-        ((ViewGroup)paramc).removeView((View)this.gXl);
+        ((ViewGroup)paramc).removeView((View)this.gZX);
       }
-      this.gXj.addView((View)this.gXl);
-      this.gXk.bringToFront();
-      this.gXi.animate().translationY(0.0F).setListener(null).start();
-      AppMethodBeat.o(212617);
+      this.gZV.addView((View)this.gZX);
+      this.gZW.bringToFront();
+      this.gZU.animate().translationY(0.0F).setListener(null).start();
+      AppMethodBeat.o(216243);
       return;
-      paramc = g.gOr;
-      g.dQ(true);
-      AppMethodBeat.o(212617);
+      paramc = g.gQZ;
+      g.dR(true);
+      AppMethodBeat.o(216243);
       return;
-      paramc = this.gWW;
+      paramc = this.gZJ;
       if (paramc != null)
       {
-        paramc = paramc.gIt;
+        paramc = paramc.gLc;
         if (paramc != null)
         {
-          if (paramc.alE() != true) {
+          if (paramc.alT() != true) {
             continue;
           }
-          c.apE();
-          AppMethodBeat.o(212617);
+          c.apS();
+          AppMethodBeat.o(216243);
           return;
         }
       }
-      AppMethodBeat.o(212617);
+      AppMethodBeat.o(216243);
       return;
-      paramc = this.gWW;
+      paramc = this.gZJ;
       if (paramc != null)
       {
-        paramc = paramc.gIt;
+        paramc = paramc.gLc;
         if (paramc != null)
         {
-          if (paramc.alE() != true) {
+          if (paramc.alT() != true) {
             continue;
           }
-          c.apD();
-          AppMethodBeat.o(212617);
+          c.apR();
+          AppMethodBeat.o(216243);
           return;
         }
       }
-      AppMethodBeat.o(212617);
+      AppMethodBeat.o(216243);
       return;
-      paramc = this.gWW;
+      paramc = this.gZJ;
       if (paramc != null)
       {
-        paramc = paramc.gIt;
-        if ((paramc != null) && (paramc.alE() == true))
+        paramc = paramc.gLc;
+        if ((paramc != null) && (paramc.alT() == true))
         {
-          c.apA();
-          AppMethodBeat.o(212617);
+          c.apO();
+          AppMethodBeat.o(216243);
           return;
         }
       }
-      c.apz();
+      c.apN();
     }
   }
   
-  public final boolean aoB()
+  public final boolean aoQ()
   {
-    AppMethodBeat.i(212618);
-    if (this.gGK.getVisibility() == 0)
+    AppMethodBeat.i(216244);
+    if (this.gJt.getVisibility() == 0)
     {
-      dV(true);
-      AppMethodBeat.o(212618);
+      dX(true);
+      AppMethodBeat.o(216244);
       return true;
     }
-    boolean bool = super.aoB();
-    AppMethodBeat.o(212618);
+    boolean bool = super.aoQ();
+    AppMethodBeat.o(216244);
     return bool;
   }
   
-  public final j aoY()
+  public final j apm()
   {
-    AppMethodBeat.i(212616);
-    j localj = new j(this.gXl.getHolder());
-    AppMethodBeat.o(212616);
+    AppMethodBeat.i(216242);
+    j localj = new j(this.gZX.getHolder());
+    AppMethodBeat.o(216242);
     return localj;
   }
   
-  public final void dV(boolean paramBoolean)
+  public final void dX(boolean paramBoolean)
   {
-    AppMethodBeat.i(212615);
-    this.gXi.animate().translationY(ar.ci(this.gGK.getContext()).y).setListener((Animator.AnimatorListener)new a(this)).start();
+    AppMethodBeat.i(216241);
+    this.gZU.animate().translationY(ar.ck(this.gJt.getContext()).y).setListener((Animator.AnimatorListener)new a(this)).start();
     if (paramBoolean) {
-      b.b.a(this.gSM, b.c.gSa);
+      b.b.a(this.gVv, b.c.gUI);
     }
-    this.gXj.removeView((View)this.gXl);
-    AppMethodBeat.o(212615);
+    this.gZV.removeView((View)this.gZX);
+    AppMethodBeat.o(216241);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/live/plugin/LiveVideoMicPlugin$hide$1", "Landroid/animation/AnimatorListenerAdapter;", "onAnimationEnd", "", "animation", "Landroid/animation/Animator;", "plugin-logic_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/live/plugin/LiveVideoMicPlugin$hide$1", "Landroid/animation/AnimatorListenerAdapter;", "onAnimationEnd", "", "animation", "Landroid/animation/Animator;", "plugin-logic_release"})
   public static final class a
     extends AnimatorListenerAdapter
   {
     public final void onAnimationEnd(Animator paramAnimator)
     {
-      AppMethodBeat.i(212614);
-      this.gXm.nI(8);
-      AppMethodBeat.o(212614);
+      AppMethodBeat.i(216240);
+      this.gZY.nL(8);
+      AppMethodBeat.o(216240);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.live.c.bc
  * JD-Core Version:    0.7.0.1
  */

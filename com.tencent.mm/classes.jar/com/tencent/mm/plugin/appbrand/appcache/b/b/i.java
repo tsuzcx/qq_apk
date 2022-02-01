@@ -1,11 +1,11 @@
 package com.tencent.mm.plugin.appbrand.appcache.b.b;
 
-import com.tencent.mm.protocal.protobuf.eil;
+import com.tencent.mm.protocal.protobuf.ekc;
 
 public final class i
-  extends a<Boolean, eil>
+  extends a<Boolean, ekc>
 {
-  final String bbb()
+  final String bbD()
   {
     return "CmdUpdateVersion";
   }

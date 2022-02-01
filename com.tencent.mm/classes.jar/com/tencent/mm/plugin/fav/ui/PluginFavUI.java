@@ -11,16 +11,16 @@ public class PluginFavUI
   extends f
   implements com.tencent.mm.kernel.a.b.b, c
 {
-  private com.tencent.mm.plugin.fav.ui.d.a rzh;
-  private a rzi;
-  private q rzj;
+  private com.tencent.mm.plugin.fav.ui.d.a rHs;
+  private a rHt;
+  private q rHu;
   
   public PluginFavUI()
   {
     AppMethodBeat.i(107082);
-    this.rzh = new com.tencent.mm.plugin.fav.ui.d.a();
-    this.rzi = new a();
-    this.rzj = new q();
+    this.rHs = new com.tencent.mm.plugin.fav.ui.d.a();
+    this.rHt = new a();
+    this.rHu = new q();
     AppMethodBeat.o(107082);
   }
   
@@ -29,9 +29,9 @@ public class PluginFavUI
   public void onAccountInitialized(e.c paramc)
   {
     AppMethodBeat.i(107083);
-    this.rzh.alive();
-    this.rzi.alive();
-    this.rzj.alive();
+    this.rHs.alive();
+    this.rHt.alive();
+    this.rHu.alive();
     ((n)com.tencent.mm.kernel.g.ad(n.class)).getFTSTaskDaemon().a(-86016, new com.tencent.mm.plugin.fts.a.a.a()
     {
       public final boolean execute()
@@ -56,9 +56,9 @@ public class PluginFavUI
   public void onAccountRelease()
   {
     AppMethodBeat.i(107084);
-    this.rzh.dead();
-    this.rzi.dead();
-    this.rzj.dead();
+    this.rHs.dead();
+    this.rHt.dead();
+    this.rHu.dead();
     AppMethodBeat.o(107084);
   }
   

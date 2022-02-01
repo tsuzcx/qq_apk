@@ -12,7 +12,7 @@ public final class b
   public static <T extends com.tencent.mm.ipcinvoker.b<InputType, ResultType>, InputType extends Parcelable, ResultType extends Parcelable> boolean b(InputType paramInputType, Class<T> paramClass, d<ResultType> paramd)
   {
     AppMethodBeat.i(82981);
-    if (cXa()) {}
+    if (cZH()) {}
     for (String str = "com.tencent.mm:toolsmp";; str = "com.tencent.mm:tools")
     {
       boolean bool = h.a(str, paramInputType, paramClass, paramd);
@@ -21,10 +21,10 @@ public final class b
     }
   }
   
-  private static boolean cXa()
+  private static boolean cZH()
   {
     AppMethodBeat.i(82980);
-    if ((t.baV("game.weixin.qq.com")) && (!ToolsProcessIPCService.ahO()))
+    if ((t.bcy("game.weixin.qq.com")) && (!ToolsProcessIPCService.aid()))
     {
       AppMethodBeat.o(82980);
       return true;

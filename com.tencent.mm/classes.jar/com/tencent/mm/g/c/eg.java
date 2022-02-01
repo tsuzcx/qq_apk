@@ -11,26 +11,26 @@ public abstract class eg
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eSc = "count".hashCode();
-  private static final int fkb = "date".hashCode();
+  private static final int eTN = "count".hashCode();
+  private static final int flY = "date".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eRC = true;
+  private boolean eTn = true;
   public int field_count;
   public String field_date;
-  private boolean fka = true;
+  private boolean flX = true;
   
-  public static c.a Vv()
+  public static c.a VD()
   {
     c.a locala = new c.a();
-    locala.IhA = new Field[2];
+    locala.IBL = new Field[2];
     locala.columns = new String[3];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "date";
-    locala.IhC.put("date", "TEXT");
+    locala.IBN.put("date", "TEXT");
     localStringBuilder.append(" date TEXT");
     localStringBuilder.append(", ");
     locala.columns[1] = "count";
-    locala.IhC.put("count", "INTEGER");
+    locala.IBN.put("count", "INTEGER");
     localStringBuilder.append(" count INTEGER");
     locala.columns[2] = "rowid";
     locala.sql = localStringBuilder.toString();
@@ -50,7 +50,7 @@ public abstract class eg
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (fkb != k) {
+      if (flY != k) {
         break label60;
       }
       this.field_date = paramCursor.getString(i);
@@ -61,7 +61,7 @@ public abstract class eg
       break label20;
       break;
       label60:
-      if (eSc == k) {
+      if (eTN == k) {
         this.field_count = paramCursor.getInt(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
@@ -72,10 +72,10 @@ public abstract class eg
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.fka) {
+    if (this.flX) {
       localContentValues.put("date", this.field_date);
     }
-    if (this.eRC) {
+    if (this.eTn) {
       localContentValues.put("count", Integer.valueOf(this.field_count));
     }
     if (this.systemRowid > 0L) {

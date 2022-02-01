@@ -4,7 +4,7 @@ public final class b$a
 {
   public int id;
   public String username;
-  public boolean vJZ;
+  public boolean vWd;
 }
 
 

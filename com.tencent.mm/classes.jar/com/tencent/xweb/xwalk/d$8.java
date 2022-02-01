@@ -19,14 +19,14 @@ final class d$8
     AppMethodBeat.i(154159);
     Object localObject = new b();
     ((b)localObject).bd(paramView);
-    a.b("com/tencent/xweb/xwalk/WebDebugPage$16", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahq());
-    paramView = this.MvU;
-    localObject = this.MvX;
-    int i = paramView.MvF.getSettings().getForceDarkMode();
-    int j = paramView.MvF.getSettings().getForceDarkBehavior();
+    a.b("com/tencent/xweb/xwalk/WebDebugPage$16", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahF());
+    paramView = this.MSY;
+    localObject = this.MTb;
+    int i = paramView.MSJ.getSettings().getForceDarkMode();
+    int j = paramView.MSJ.getSettings().getForceDarkBehavior();
     if ((i != 0) && (i == 2)) {
       if (j == 2) {
-        paramView.MvF.getSettings().setForceDarkBehavior(1);
+        paramView.MSJ.getSettings().setForceDarkBehavior(1);
       }
     }
     for (;;)
@@ -37,16 +37,16 @@ final class d$8
       return;
       if (j == 1)
       {
-        paramView.MvF.getSettings().setForceDarkMode(0);
+        paramView.MSJ.getSettings().setForceDarkMode(0);
       }
       else if (j == 0)
       {
-        paramView.MvF.getSettings().setForceDarkMode(0);
+        paramView.MSJ.getSettings().setForceDarkMode(0);
       }
       else
       {
-        paramView.MvF.getSettings().setForceDarkMode(2);
-        paramView.MvF.getSettings().setForceDarkBehavior(2);
+        paramView.MSJ.getSettings().setForceDarkMode(2);
+        paramView.MSJ.getSettings().setForceDarkBehavior(2);
       }
     }
   }

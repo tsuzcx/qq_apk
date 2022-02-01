@@ -5,17 +5,17 @@ import android.content.Intent;
 import android.os.Parcelable;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.k.b;
+import com.tencent.mm.ah.k.b;
 import com.tencent.mm.g.c.ei;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.u;
+import com.tencent.mm.model.v;
 import com.tencent.mm.plugin.messenger.foundation.a.a.i;
 import com.tencent.mm.plugin.messenger.foundation.a.l;
 import com.tencent.mm.plugin.msgquote.model.MsgQuoteItem;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.bc;
-import com.tencent.mm.storage.bu;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.bd;
+import com.tencent.mm.storage.bv;
 import com.tencent.mm.ui.MMFragment;
 import com.tencent.mm.ui.base.t;
 import com.tencent.mm.ui.chatting.BaseChattingUIFragment;
@@ -28,22 +28,22 @@ final class v$e
     AppMethodBeat.i(37034);
     if (paramMsgQuoteItem == null)
     {
-      ad.e("MicroMsg.msgquote.QuoteMsgSourceClickLogic", "msgQuoteItem is null!");
+      ae.e("MicroMsg.msgquote.QuoteMsgSourceClickLogic", "msgQuoteItem is null!");
       AppMethodBeat.o(37034);
       return;
     }
-    Object localObject3 = ((l)g.ab(l.class)).dlK().xY(paramLong);
-    ad.i("MicroMsg.msgquote.QuoteMsgSourceClickLogic", "handleQuoteMsgClick msgId:%s msgSvrId:%s MsgQuoteItem(type:%s svrid:%s content:%s)", new Object[] { Long.valueOf(paramLong), Long.valueOf(((ei)localObject3).field_msgSvrId), Integer.valueOf(paramMsgQuoteItem.type), Long.valueOf(paramMsgQuoteItem.vZc), bt.aRp(paramMsgQuoteItem.content) });
+    Object localObject3 = ((l)g.ab(l.class)).doJ().ys(paramLong);
+    ae.i("MicroMsg.msgquote.QuoteMsgSourceClickLogic", "handleQuoteMsgClick msgId:%s msgSvrId:%s MsgQuoteItem(type:%s svrid:%s content:%s)", new Object[] { Long.valueOf(paramLong), Long.valueOf(((ei)localObject3).field_msgSvrId), Integer.valueOf(paramMsgQuoteItem.type), Long.valueOf(paramMsgQuoteItem.wlg), bu.aSM(paramMsgQuoteItem.content) });
     Object localObject1 = paramMsgQuoteItem;
     Object localObject2;
     int i;
-    if (bt.isNullOrNil(paramMsgQuoteItem.vZd))
+    if (bu.isNullOrNil(paramMsgQuoteItem.wlh))
     {
-      ad.e("MicroMsg.msgquote.QuoteMsgSourceClickLogic", "msgQuoteItem.fromusr is null!(1)");
+      ae.e("MicroMsg.msgquote.QuoteMsgSourceClickLogic", "msgQuoteItem.fromusr is null!(1)");
       localObject1 = null;
       localObject2 = ((ei)localObject3).field_content;
       paramMsgQuoteItem = (MsgQuoteItem)localObject2;
-      if (parama.fFv())
+      if (parama.fJC())
       {
         i = ((ei)localObject3).field_content.indexOf(':');
         paramMsgQuoteItem = (MsgQuoteItem)localObject2;
@@ -52,27 +52,27 @@ final class v$e
         }
       }
       if (paramMsgQuoteItem != null) {
-        localObject1 = k.b.aA(paramMsgQuoteItem, ((ei)localObject3).field_reserved);
+        localObject1 = k.b.aB(paramMsgQuoteItem, ((ei)localObject3).field_reserved);
       }
-      localObject1 = ((k.b)localObject1).hCy;
+      localObject1 = ((k.b)localObject1).hFq;
     }
-    if (bt.isNullOrNil(((MsgQuoteItem)localObject1).vZd))
+    if (bu.isNullOrNil(((MsgQuoteItem)localObject1).wlh))
     {
-      ad.e("MicroMsg.msgquote.QuoteMsgSourceClickLogic", "msgQuoteItem.fromusr is null!(2)");
+      ae.e("MicroMsg.msgquote.QuoteMsgSourceClickLogic", "msgQuoteItem.fromusr is null!(2)");
       AppMethodBeat.o(37034);
       return;
     }
-    paramMsgQuoteItem = ((l)g.ab(l.class)).dlK().aI(((MsgQuoteItem)localObject1).vZd, ((MsgQuoteItem)localObject1).vZc);
+    paramMsgQuoteItem = ((l)g.ab(l.class)).doJ().aJ(((MsgQuoteItem)localObject1).wlh, ((MsgQuoteItem)localObject1).wlg);
     if (paramMsgQuoteItem.field_msgId == 0L)
     {
-      paramMsgQuoteItem = new bu();
+      paramMsgQuoteItem = new bv();
       paramMsgQuoteItem.setType(((MsgQuoteItem)localObject1).type);
-      paramMsgQuoteItem.qz(((MsgQuoteItem)localObject1).vZc);
-      paramMsgQuoteItem.tN(((MsgQuoteItem)localObject1).vZd);
-      paramMsgQuoteItem.sP(((MsgQuoteItem)localObject1).vZg);
+      paramMsgQuoteItem.qM(((MsgQuoteItem)localObject1).wlg);
+      paramMsgQuoteItem.ui(((MsgQuoteItem)localObject1).wlh);
+      paramMsgQuoteItem.tk(((MsgQuoteItem)localObject1).wlk);
       paramMsgQuoteItem.setContent(((MsgQuoteItem)localObject1).content);
-      if (bt.lQ(((MsgQuoteItem)localObject1).vZe, u.aAm())) {
-        paramMsgQuoteItem.kr(1);
+      if (bu.lX(((MsgQuoteItem)localObject1).wli, v.aAC())) {
+        paramMsgQuoteItem.kt(1);
       }
     }
     for (;;)
@@ -83,30 +83,30 @@ final class v$e
       for (;;)
       {
         if ((((MsgQuoteItem)localObject1).type != 49) && (((MsgQuoteItem)localObject1).type != 805306417) && (((MsgQuoteItem)localObject1).type != 822083633)) {
-          com.tencent.mm.plugin.msgquote.model.b.b(1L, ((MsgQuoteItem)localObject1).vZc, ((MsgQuoteItem)localObject1).type, 0L);
+          com.tencent.mm.plugin.msgquote.model.b.b(1L, ((MsgQuoteItem)localObject1).wlg, ((MsgQuoteItem)localObject1).type, 0L);
         }
         AppMethodBeat.o(37034);
         return;
-        paramc = new Intent(parama.JOR.getContext(), TextPreviewUI.class);
+        paramc = new Intent(parama.Kkd.getContext(), TextPreviewUI.class);
         paramc.addFlags(67108864);
         paramc.putExtra("key_chat_text", ((MsgQuoteItem)localObject1).content);
         paramc.putExtra("Chat_Msg_Id", paramMsgQuoteItem.field_msgId);
         paramc.putExtra("key_msg_type", 1);
-        paramView = parama.JOR.getContext();
+        paramView = parama.Kkd.getContext();
         paramc = new com.tencent.mm.hellhoundlib.b.a().bc(paramc);
-        com.tencent.mm.hellhoundlib.a.a.a(paramView, paramc.ahp(), "com/tencent/mm/ui/chatting/viewitems/ChattingItemAppMsgMsgQuote$QuoteMsgSourceClickLogic", "handleItemClickEvent", "(Lcom/tencent/mm/ui/chatting/context/ChattingContext;Lcom/tencent/mm/ui/chatting/viewitems/ChattingItem;Landroid/view/View;JLcom/tencent/mm/plugin/msgquote/model/MsgQuoteItem;Z)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        paramView.startActivity((Intent)paramc.mq(0));
+        com.tencent.mm.hellhoundlib.a.a.a(paramView, paramc.ahE(), "com/tencent/mm/ui/chatting/viewitems/ChattingItemAppMsgMsgQuote$QuoteMsgSourceClickLogic", "handleItemClickEvent", "(Lcom/tencent/mm/ui/chatting/context/ChattingContext;Lcom/tencent/mm/ui/chatting/viewitems/ChattingItem;Landroid/view/View;JLcom/tencent/mm/plugin/msgquote/model/MsgQuoteItem;Z)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramView.startActivity((Intent)paramc.mt(0));
         com.tencent.mm.hellhoundlib.a.a.a(paramView, "com/tencent/mm/ui/chatting/viewitems/ChattingItemAppMsgMsgQuote$QuoteMsgSourceClickLogic", "handleItemClickEvent", "(Lcom/tencent/mm/ui/chatting/context/ChattingContext;Lcom/tencent/mm/ui/chatting/viewitems/ChattingItem;Landroid/view/View;JLcom/tencent/mm/plugin/msgquote/model/MsgQuoteItem;Z)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        com.tencent.mm.ui.base.b.kd(parama.JOR.getContext());
+        com.tencent.mm.ui.base.b.kk(parama.Kkd.getContext());
         continue;
         if (paramMsgQuoteItem.field_msgId == 0L)
         {
           paramc = new Intent();
-          paramc.setClassName(parama.JOR.getContext(), "com.tencent.mm.ui.chatting.ResourcesExceedUI");
+          paramc.setClassName(parama.Kkd.getContext(), "com.tencent.mm.ui.chatting.ResourcesExceedUI");
           paramc.putExtra("clean_view_type", 1);
           paramc = new com.tencent.mm.hellhoundlib.b.a().bc(paramc);
-          com.tencent.mm.hellhoundlib.a.a.a(parama, paramc.ahp(), "com/tencent/mm/ui/chatting/viewitems/ChattingItemAppMsgMsgQuote$QuoteMsgSourceClickLogic", "handleItemClickEvent", "(Lcom/tencent/mm/ui/chatting/context/ChattingContext;Lcom/tencent/mm/ui/chatting/viewitems/ChattingItem;Landroid/view/View;JLcom/tencent/mm/plugin/msgquote/model/MsgQuoteItem;Z)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          parama.startActivity((Intent)paramc.mq(0));
+          com.tencent.mm.hellhoundlib.a.a.a(parama, paramc.ahE(), "com/tencent/mm/ui/chatting/viewitems/ChattingItemAppMsgMsgQuote$QuoteMsgSourceClickLogic", "handleItemClickEvent", "(Lcom/tencent/mm/ui/chatting/context/ChattingContext;Lcom/tencent/mm/ui/chatting/viewitems/ChattingItem;Landroid/view/View;JLcom/tencent/mm/plugin/msgquote/model/MsgQuoteItem;Z)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          parama.startActivity((Intent)paramc.mt(0));
           com.tencent.mm.hellhoundlib.a.a.a(parama, "com/tencent/mm/ui/chatting/viewitems/ChattingItemAppMsgMsgQuote$QuoteMsgSourceClickLogic", "handleItemClickEvent", "(Lcom/tencent/mm/ui/chatting/context/ChattingContext;Lcom/tencent/mm/ui/chatting/viewitems/ChattingItem;Landroid/view/View;JLcom/tencent/mm/plugin/msgquote/model/MsgQuoteItem;Z)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
         }
         else
@@ -116,11 +116,11 @@ final class v$e
           if (paramMsgQuoteItem.field_msgId == 0L)
           {
             paramc = new Intent();
-            paramc.setClassName(parama.JOR.getContext(), "com.tencent.mm.ui.chatting.ResourcesExceedUI");
+            paramc.setClassName(parama.Kkd.getContext(), "com.tencent.mm.ui.chatting.ResourcesExceedUI");
             paramc.putExtra("clean_view_type", 0);
             paramc = new com.tencent.mm.hellhoundlib.b.a().bc(paramc);
-            com.tencent.mm.hellhoundlib.a.a.a(parama, paramc.ahp(), "com/tencent/mm/ui/chatting/viewitems/ChattingItemAppMsgMsgQuote$QuoteMsgSourceClickLogic", "handleItemClickEvent", "(Lcom/tencent/mm/ui/chatting/context/ChattingContext;Lcom/tencent/mm/ui/chatting/viewitems/ChattingItem;Landroid/view/View;JLcom/tencent/mm/plugin/msgquote/model/MsgQuoteItem;Z)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-            parama.startActivity((Intent)paramc.mq(0));
+            com.tencent.mm.hellhoundlib.a.a.a(parama, paramc.ahE(), "com/tencent/mm/ui/chatting/viewitems/ChattingItemAppMsgMsgQuote$QuoteMsgSourceClickLogic", "handleItemClickEvent", "(Lcom/tencent/mm/ui/chatting/context/ChattingContext;Lcom/tencent/mm/ui/chatting/viewitems/ChattingItem;Landroid/view/View;JLcom/tencent/mm/plugin/msgquote/model/MsgQuoteItem;Z)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+            parama.startActivity((Intent)paramc.mt(0));
             com.tencent.mm.hellhoundlib.a.a.a(parama, "com/tencent/mm/ui/chatting/viewitems/ChattingItemAppMsgMsgQuote$QuoteMsgSourceClickLogic", "handleItemClickEvent", "(Lcom/tencent/mm/ui/chatting/context/ChattingContext;Lcom/tencent/mm/ui/chatting/viewitems/ChattingItem;Landroid/view/View;JLcom/tencent/mm/plugin/msgquote/model/MsgQuoteItem;Z)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
           }
           else
@@ -129,13 +129,13 @@ final class v$e
             continue;
             new aq.c(parama, paramMsgQuoteItem);
             continue;
-            paramc = bc.lZ(((MsgQuoteItem)localObject1).vZd, paramMsgQuoteItem.field_content);
+            paramc = bd.mg(((MsgQuoteItem)localObject1).wlh, paramMsgQuoteItem.field_content);
             if (paramc != null) {
-              paramMsgQuoteItem.tO(paramc.md5);
+              paramMsgQuoteItem.uj(paramc.md5);
             }
             new ak.d(parama, paramMsgQuoteItem);
             continue;
-            paramView = k.b.yr(paramMsgQuoteItem.field_content);
+            paramView = k.b.zb(paramMsgQuoteItem.field_content);
             if (paramView != null)
             {
               int j = 0;
@@ -144,15 +144,15 @@ final class v$e
               {
               default: 
                 i = j;
-                if (!ay(paramMsgQuoteItem)) {
+                if (!ax(paramMsgQuoteItem)) {
                   i = 1;
                 }
                 break;
               }
               for (;;)
               {
-                com.tencent.mm.plugin.msgquote.model.b.b(1L, ((MsgQuoteItem)localObject1).vZc, 49L, paramView.type);
-                if (!ay(paramMsgQuoteItem)) {
+                com.tencent.mm.plugin.msgquote.model.b.b(1L, ((MsgQuoteItem)localObject1).wlg, 49L, paramView.type);
+                if (!ax(paramMsgQuoteItem)) {
                   break label1761;
                 }
                 if (i == 0) {
@@ -162,24 +162,24 @@ final class v$e
                 break;
                 if (!paramBoolean)
                 {
-                  t.g(parama.JOR.getContext(), parama.JOR.getContentView());
+                  t.g(parama.Kkd.getContext(), parama.Kkd.getContentView());
                   AppMethodBeat.o(37034);
                   return;
                 }
                 localObject2 = new Intent();
-                ((Intent)localObject2).setClassName(parama.JOR.getContext(), "com.tencent.mm.ui.chatting.AppAttachDownloadUI");
+                ((Intent)localObject2).setClassName(parama.Kkd.getContext(), "com.tencent.mm.ui.chatting.AppAttachDownloadUI");
                 ((Intent)localObject2).putExtra("scene", 2);
                 ((Intent)localObject2).putExtra("app_msg_id", paramMsgQuoteItem.field_msgId);
                 ((Intent)localObject2).putExtra("key_msg_type", 1);
                 ((Intent)localObject2).putExtra("msg_type", 1);
                 ((Intent)localObject2).putExtra("key_quoted_msg", (Parcelable)localObject1);
                 localObject2 = new com.tencent.mm.hellhoundlib.b.a().bc(localObject2);
-                com.tencent.mm.hellhoundlib.a.a.a(parama, ((com.tencent.mm.hellhoundlib.b.a)localObject2).ahp(), "com/tencent/mm/ui/chatting/viewitems/ChattingItemAppMsgMsgQuote$QuoteMsgSourceClickLogic", "handleItemClickEvent", "(Lcom/tencent/mm/ui/chatting/context/ChattingContext;Lcom/tencent/mm/ui/chatting/viewitems/ChattingItem;Landroid/view/View;JLcom/tencent/mm/plugin/msgquote/model/MsgQuoteItem;Z)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-                parama.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject2).mq(0));
+                com.tencent.mm.hellhoundlib.a.a.a(parama, ((com.tencent.mm.hellhoundlib.b.a)localObject2).ahE(), "com/tencent/mm/ui/chatting/viewitems/ChattingItemAppMsgMsgQuote$QuoteMsgSourceClickLogic", "handleItemClickEvent", "(Lcom/tencent/mm/ui/chatting/context/ChattingContext;Lcom/tencent/mm/ui/chatting/viewitems/ChattingItem;Landroid/view/View;JLcom/tencent/mm/plugin/msgquote/model/MsgQuoteItem;Z)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+                parama.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject2).mt(0));
                 com.tencent.mm.hellhoundlib.a.a.a(parama, "com/tencent/mm/ui/chatting/viewitems/ChattingItemAppMsgMsgQuote$QuoteMsgSourceClickLogic", "handleItemClickEvent", "(Lcom/tencent/mm/ui/chatting/context/ChattingContext;Lcom/tencent/mm/ui/chatting/viewitems/ChattingItem;Landroid/view/View;JLcom/tencent/mm/plugin/msgquote/model/MsgQuoteItem;Z)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
                 i = j;
                 continue;
-                if (ay(paramMsgQuoteItem))
+                if (ax(paramMsgQuoteItem))
                 {
                   e.e.j(paramView, parama, paramc, paramMsgQuoteItem);
                   i = j;
@@ -189,7 +189,7 @@ final class v$e
                   e.d.e(paramView, parama, paramc, paramMsgQuoteItem);
                   i = j;
                   continue;
-                  if (ay(paramMsgQuoteItem))
+                  if (ax(paramMsgQuoteItem))
                   {
                     e.e.b(paramView, parama, paramc, paramMsgQuoteItem);
                     i = j;
@@ -199,7 +199,7 @@ final class v$e
                     e.d.b(paramView, parama, paramc, paramMsgQuoteItem);
                     i = j;
                     continue;
-                    if (ay(paramMsgQuoteItem))
+                    if (ax(paramMsgQuoteItem))
                     {
                       i = j;
                       if (!e.e.g(paramView, parama, paramc, paramMsgQuoteItem)) {
@@ -213,7 +213,7 @@ final class v$e
                       {
                         i = 1;
                         continue;
-                        if (ay(paramMsgQuoteItem))
+                        if (ax(paramMsgQuoteItem))
                         {
                           e.e.h(paramView, parama, paramc, paramMsgQuoteItem);
                           i = j;
@@ -228,20 +228,20 @@ final class v$e
                             e.a(paramView, parama, paramMsgQuoteItem);
                             i = j;
                             continue;
-                            localObject3 = new Intent(parama.JOR.getContext(), TextPreviewUI.class);
+                            localObject3 = new Intent(parama.Kkd.getContext(), TextPreviewUI.class);
                             ((Intent)localObject3).addFlags(67108864);
                             ((Intent)localObject3).putExtra("key_chat_text", paramView.title);
                             ((Intent)localObject3).putExtra("Chat_Msg_Id", paramMsgQuoteItem.field_msgId);
                             ((Intent)localObject3).putExtra("key_msg_type", 1);
-                            localObject2 = parama.JOR.getContext();
+                            localObject2 = parama.Kkd.getContext();
                             localObject3 = new com.tencent.mm.hellhoundlib.b.a().bc(localObject3);
-                            com.tencent.mm.hellhoundlib.a.a.a(localObject2, ((com.tencent.mm.hellhoundlib.b.a)localObject3).ahp(), "com/tencent/mm/ui/chatting/viewitems/ChattingItemAppMsgMsgQuote$QuoteMsgSourceClickLogic", "handleItemClickEvent", "(Lcom/tencent/mm/ui/chatting/context/ChattingContext;Lcom/tencent/mm/ui/chatting/viewitems/ChattingItem;Landroid/view/View;JLcom/tencent/mm/plugin/msgquote/model/MsgQuoteItem;Z)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-                            ((Activity)localObject2).startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject3).mq(0));
+                            com.tencent.mm.hellhoundlib.a.a.a(localObject2, ((com.tencent.mm.hellhoundlib.b.a)localObject3).ahE(), "com/tencent/mm/ui/chatting/viewitems/ChattingItemAppMsgMsgQuote$QuoteMsgSourceClickLogic", "handleItemClickEvent", "(Lcom/tencent/mm/ui/chatting/context/ChattingContext;Lcom/tencent/mm/ui/chatting/viewitems/ChattingItem;Landroid/view/View;JLcom/tencent/mm/plugin/msgquote/model/MsgQuoteItem;Z)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+                            ((Activity)localObject2).startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject3).mt(0));
                             com.tencent.mm.hellhoundlib.a.a.a(localObject2, "com/tencent/mm/ui/chatting/viewitems/ChattingItemAppMsgMsgQuote$QuoteMsgSourceClickLogic", "handleItemClickEvent", "(Lcom/tencent/mm/ui/chatting/context/ChattingContext;Lcom/tencent/mm/ui/chatting/viewitems/ChattingItem;Landroid/view/View;JLcom/tencent/mm/plugin/msgquote/model/MsgQuoteItem;Z)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-                            com.tencent.mm.ui.base.b.kd(parama.JOR.getContext());
+                            com.tencent.mm.ui.base.b.kk(parama.Kkd.getContext());
                             i = j;
                             continue;
-                            if (ay(paramMsgQuoteItem))
+                            if (ax(paramMsgQuoteItem))
                             {
                               e.e.f(paramView, parama, paramc, paramMsgQuoteItem);
                               i = j;
@@ -269,9 +269,9 @@ final class v$e
     }
   }
   
-  private static boolean ay(bu parambu)
+  private static boolean ax(bv parambv)
   {
-    return parambu.field_isSend == 1;
+    return parambv.field_isSend == 1;
   }
 }
 

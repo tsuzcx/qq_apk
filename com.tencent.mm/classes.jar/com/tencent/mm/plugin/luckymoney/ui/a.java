@@ -12,7 +12,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class a
   extends e
 {
-  a vum;
+  a vGq;
   
   public a(Context paramContext)
   {
@@ -25,8 +25,8 @@ public final class a
   public final void onBackPressed()
   {
     AppMethodBeat.i(65414);
-    if (this.vum != null) {
-      this.vum.dja();
+    if (this.vGq != null) {
+      this.vGq.dlZ();
     }
     AppMethodBeat.o(65414);
   }
@@ -45,7 +45,7 @@ public final class a
   
   static abstract interface a
   {
-    public abstract void dja();
+    public abstract void dlZ();
   }
 }
 

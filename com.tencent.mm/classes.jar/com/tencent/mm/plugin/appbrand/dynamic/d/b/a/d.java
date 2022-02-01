@@ -16,7 +16,7 @@ public final class d
     return paramString;
   }
   
-  public final int bgd()
+  public final int bgL()
   {
     return 0;
   }

@@ -5,15 +5,15 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.j;
 import com.tencent.mm.plugin.music.f.a.a;
 import com.tencent.mm.plugin.music.f.a.c;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class b
   implements c
 {
-  public final boolean asH(String paramString)
+  public final boolean atU(String paramString)
   {
     AppMethodBeat.i(63136);
-    boolean bool = j.vs(paramString);
+    boolean bool = j.vO(paramString);
     AppMethodBeat.o(63136);
     return bool;
   }
@@ -38,33 +38,33 @@ public final class b
     AppMethodBeat.i(63134);
     if (TextUtils.isEmpty(paramString))
     {
-      ad.e("MicroMsg.Music.WechatMusicLoadLibrary", "LoadLibrary lib_name is null");
+      ae.e("MicroMsg.Music.WechatMusicLoadLibrary", "LoadLibrary lib_name is null");
       AppMethodBeat.o(63134);
       return false;
     }
-    if (j.vs(paramString))
+    if (j.vO(paramString))
     {
       AppMethodBeat.o(63134);
       return true;
     }
-    ad.i("MicroMsg.Music.WechatMusicLoadLibrary", "load library %s", new Object[] { paramString });
+    ae.i("MicroMsg.Music.WechatMusicLoadLibrary", "load library %s", new Object[] { paramString });
     a.class.getClassLoader();
-    String str = j.vq(paramString);
+    String str = j.vM(paramString);
     if (!TextUtils.isEmpty(str))
     {
-      ad.i("MicroMsg.Music.WechatMusicLoadLibrary", "LoadLibrary find and load the lib %s so", new Object[] { str });
-      j.vr(paramString);
+      ae.i("MicroMsg.Music.WechatMusicLoadLibrary", "LoadLibrary find and load the lib %s so", new Object[] { str });
+      j.vN(paramString);
       AppMethodBeat.o(63134);
       return true;
     }
-    ad.e("MicroMsg.Music.WechatMusicLoadLibrary", "LoadLibrary can't find the lib %s so", new Object[] { paramString });
+    ae.e("MicroMsg.Music.WechatMusicLoadLibrary", "LoadLibrary can't find the lib %s so", new Object[] { paramString });
     AppMethodBeat.o(63134);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.music.model.c.b
  * JD-Core Version:    0.7.0.1
  */

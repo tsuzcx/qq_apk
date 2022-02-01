@@ -6,7 +6,8 @@ import com.tencent.mm.sdk.b.b;
 public final class zk
   extends b
 {
-  public a dOu;
+  public a dPB;
+  public b dPC;
   
   public zk()
   {
@@ -15,36 +16,28 @@ public final class zk
   
   private zk(byte paramByte)
   {
-    AppMethodBeat.i(116060);
-    this.dOu = new a();
-    this.IbR = false;
+    AppMethodBeat.i(19850);
+    this.dPB = new a();
+    this.dPC = new b();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(116060);
+    AppMethodBeat.o(19850);
   }
   
   public static final class a
   {
-    public String dOA;
-    public String dOB;
-    public int dOC;
-    public int dOD;
-    public int dOE;
-    public String dOF;
-    public String dOG;
-    public String dOH;
-    public int dOI;
-    public String dOJ;
-    public String dOv;
-    public String dOw;
-    public String dOx;
-    public String dOy;
-    public int dOz;
-    public String url;
+    public int dlO;
+    public String username;
+  }
+  
+  public static final class b
+  {
+    public int dPD;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.a.zk
  * JD-Core Version:    0.7.0.1
  */

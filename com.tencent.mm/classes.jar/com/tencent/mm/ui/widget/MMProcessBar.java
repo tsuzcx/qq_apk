@@ -8,21 +8,21 @@ import android.view.animation.Interpolator;
 import android.view.animation.LinearInterpolator;
 import android.view.animation.RotateAnimation;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public class MMProcessBar
   extends View
 {
   private Animation FD;
-  private boolean KRw;
-  private float KRx;
+  private boolean LnU;
+  private float LnV;
   
   public MMProcessBar(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(164211);
-    this.KRw = true;
-    this.KRx = 0.0F;
+    this.LnU = true;
+    this.LnV = 0.0F;
     this.FD = new RotateAnimation(0.0F, 360.0F);
     AppMethodBeat.o(164211);
   }
@@ -31,13 +31,13 @@ public class MMProcessBar
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(164212);
-    this.KRw = true;
-    this.KRx = 0.0F;
+    this.LnU = true;
+    this.LnV = 0.0F;
     this.FD = new RotateAnimation(0.0F, 360.0F);
     AppMethodBeat.o(164212);
   }
   
-  private void fLs()
+  private void fPM()
   {
     AppMethodBeat.i(164217);
     if (this.FD != null) {
@@ -47,7 +47,7 @@ public class MMProcessBar
     AppMethodBeat.o(164217);
   }
   
-  public final void fLt()
+  public final void fPN()
   {
     AppMethodBeat.i(164218);
     if (getVisibility() == 0)
@@ -56,7 +56,7 @@ public class MMProcessBar
       AppMethodBeat.o(164218);
       return;
     }
-    ad.w("MicroMsg.MMProcessBar", "[startRotate] startRotate fail. this view Visibility=%s", new Object[] { Integer.valueOf(getVisibility()) });
+    ae.w("MicroMsg.MMProcessBar", "[startRotate] startRotate fail. this view Visibility=%s", new Object[] { Integer.valueOf(getVisibility()) });
     AppMethodBeat.o(164218);
   }
   
@@ -64,7 +64,7 @@ public class MMProcessBar
   {
     AppMethodBeat.i(164215);
     super.onAttachedToWindow();
-    fLt();
+    fPN();
     AppMethodBeat.o(164215);
   }
   
@@ -72,7 +72,7 @@ public class MMProcessBar
   {
     AppMethodBeat.i(164214);
     super.onDetachedFromWindow();
-    fLs();
+    fPM();
     AppMethodBeat.o(164214);
   }
   
@@ -84,14 +84,14 @@ public class MMProcessBar
     {
       float f1 = getWidth() / 2;
       float f2 = getHeight() / 2;
-      fLs();
+      fPM();
       this.FD = new RotateAnimation(0.0F, 72000.0F, f1, f2);
       this.FD.setRepeatMode(-1);
       this.FD.setRepeatCount(-1);
       this.FD.setDuration(75000L);
       this.FD.setInterpolator(new LinearInterpolator());
-      if ((getVisibility() == 0) && (this.KRw)) {
-        fLt();
+      if ((getVisibility() == 0) && (this.LnU)) {
+        fPN();
       }
     }
     AppMethodBeat.o(164216);
@@ -103,8 +103,8 @@ public class MMProcessBar
     if ((this.FD != null) && (!this.FD.hasEnded())) {
       this.FD.cancel();
     }
-    this.KRx += paramFloat;
-    setRotation(this.KRx * 360.0F);
+    this.LnV += paramFloat;
+    setRotation(this.LnV * 360.0F);
     AppMethodBeat.o(164219);
   }
   
@@ -117,7 +117,7 @@ public class MMProcessBar
   
   public void setIfVisibleRotate(boolean paramBoolean)
   {
-    this.KRw = paramBoolean;
+    this.LnU = paramBoolean;
   }
   
   public void setInterpolator(Interpolator paramInterpolator)
@@ -133,21 +133,21 @@ public class MMProcessBar
     super.setVisibility(paramInt);
     if (paramInt == 0)
     {
-      if (this.KRw)
+      if (this.LnU)
       {
-        fLt();
+        fPN();
         AppMethodBeat.o(164213);
       }
     }
     else {
-      fLs();
+      fPM();
     }
     AppMethodBeat.o(164213);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.widget.MMProcessBar
  * JD-Core Version:    0.7.0.1
  */

@@ -5,7 +5,7 @@ import com.tencent.luggage.a.b;
 public abstract interface h
   extends b
 {
-  public abstract String QF(String paramString);
+  public abstract String Ro(String paramString);
   
   public abstract int a(String paramString, d paramd);
   

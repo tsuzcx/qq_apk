@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.luckymoney.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
@@ -10,9 +10,9 @@ import org.json.JSONObject;
 public final class ar
   extends am
 {
-  public String thm;
-  public String vkl;
-  public String vqz;
+  public String tsf;
+  public String vCE;
+  public String vwq;
   
   public ar(int paramInt1, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt2, String paramString6, int paramInt3, String paramString7, int paramInt4, int paramInt5, String paramString8)
   {
@@ -24,16 +24,16 @@ public final class ar
     AppMethodBeat.i(65307);
     HashMap localHashMap = new HashMap();
     localHashMap.put("amount", String.valueOf(paramInt1));
-    localHashMap.put("wishing", URLEncoder.encode(bt.nullAsNil(paramString1)));
+    localHashMap.put("wishing", URLEncoder.encode(bu.nullAsNil(paramString1)));
     localHashMap.put("sendUserName", paramString4);
-    if (!bt.isNullOrNil(paramString3)) {
+    if (!bu.isNullOrNil(paramString3)) {
       localHashMap.put("username", paramString3);
     }
-    if (!bt.isNullOrNil(paramString2)) {
+    if (!bu.isNullOrNil(paramString2)) {
       localHashMap.put("headImg", URLEncoder.encode(paramString2));
     }
-    if (!bt.isNullOrNil(paramString5)) {
-      localHashMap.put("nickName", URLEncoder.encode(bt.nullAsNil(paramString5)));
+    if (!bu.isNullOrNil(paramString5)) {
+      localHashMap.put("nickName", URLEncoder.encode(bu.nullAsNil(paramString5)));
     }
     localHashMap.put("inWay", String.valueOf(paramInt2));
     localHashMap.put("imageId", paramString6);
@@ -41,19 +41,19 @@ public final class ar
     localHashMap.put("imageLength", "0");
     localHashMap.put("expressionurl", paramString8);
     localHashMap.put("expressiontype", String.valueOf(paramInt3));
-    if (!bt.isNullOrNil(paramString9)) {
+    if (!bu.isNullOrNil(paramString9)) {
       localHashMap.put("unique_id", paramString9);
     }
     localHashMap.put("user_confirm_jump", String.valueOf(paramInt4));
     localHashMap.put("unpay_type", String.valueOf(paramInt5));
-    if (!bt.isNullOrNil(paramString10)) {
+    if (!bu.isNullOrNil(paramString10)) {
       localHashMap.put("cancel_sendid", paramString10);
     }
     setRequestData(localHashMap);
     AppMethodBeat.o(65307);
   }
   
-  public final String cau()
+  public final String cbJ()
   {
     return "/cgi-bin/mmpay-bin/yearrequestwxhb";
   }
@@ -66,15 +66,15 @@ public final class ar
   public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(65308);
-    this.vkl = paramJSONObject.optString("sendId");
-    this.thm = paramJSONObject.optString("reqkey");
-    this.vqz = paramJSONObject.optString("sendMsgXml");
+    this.vwq = paramJSONObject.optString("sendId");
+    this.tsf = paramJSONObject.optString("reqkey");
+    this.vCE = paramJSONObject.optString("sendMsgXml");
     AppMethodBeat.o(65308);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.model.ar
  * JD-Core Version:    0.7.0.1
  */

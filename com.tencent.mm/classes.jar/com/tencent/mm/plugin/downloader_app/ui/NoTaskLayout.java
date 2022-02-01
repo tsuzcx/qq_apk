@@ -11,8 +11,8 @@ import com.tencent.mm.plugin.downloader_app.b;
 public class NoTaskLayout
   extends RelativeLayout
 {
-  private ImageView mAR;
-  private BottomEntranceView pqC;
+  private ImageView mFU;
+  private BottomEntranceView pxi;
   
   public NoTaskLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -23,16 +23,16 @@ public class NoTaskLayout
   {
     AppMethodBeat.i(9019);
     super.onFinishInflate();
-    this.mAR = ((ImageView)findViewById(2131300976));
-    this.pqC = ((BottomEntranceView)findViewById(2131297447));
-    b.e(this.mAR, "download_non_task");
+    this.mFU = ((ImageView)findViewById(2131300976));
+    this.pxi = ((BottomEntranceView)findViewById(2131297447));
+    b.e(this.mFU, "download_non_task");
     AppMethodBeat.o(9019);
   }
   
   public void setData(f paramf)
   {
     AppMethodBeat.i(9020);
-    this.pqC.setData(paramf);
+    this.pxi.setData(paramf);
     AppMethodBeat.o(9020);
   }
 }

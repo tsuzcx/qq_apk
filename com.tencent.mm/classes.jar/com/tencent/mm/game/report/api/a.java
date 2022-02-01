@@ -4,7 +4,7 @@ import android.content.Context;
 
 public abstract class a
 {
-  public static a gsb;
+  public static a guC;
   
   public abstract void a(int paramInt, String paramString1, String paramString2, long paramLong);
   

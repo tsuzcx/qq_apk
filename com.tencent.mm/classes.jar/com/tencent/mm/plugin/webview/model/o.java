@@ -1,18 +1,18 @@
 package com.tencent.mm.plugin.webview.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.axt;
-import com.tencent.mm.protocal.protobuf.axu;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.ayj;
+import com.tencent.mm.protocal.protobuf.ayk;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.Map;
 
 public final class o
@@ -26,21 +26,21 @@ public final class o
   {
     AppMethodBeat.i(78882);
     Object localObject = new b.a();
-    ((b.a)localObject).hNM = new axt();
-    ((b.a)localObject).hNN = new axu();
+    ((b.a)localObject).hQF = new ayj();
+    ((b.a)localObject).hQG = new ayk();
     ((b.a)localObject).uri = "/cgi-bin/mmocbiz-bin/getbizjsapiredirecturl";
     ((b.a)localObject).funcId = 1393;
-    ((b.a)localObject).hNO = 0;
+    ((b.a)localObject).hQH = 0;
     ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).aDC();
-    localObject = (axt)this.rr.hNK.hNQ;
-    ((axt)localObject).GaY = paramString1;
-    ((axt)localObject).FKT = paramString2;
-    ((axt)localObject).GvH = ((String)paramMap.get("groupId"));
-    ((axt)localObject).CWf = ((String)paramMap.get("timestamp"));
-    ((axt)localObject).oIw = ((String)paramMap.get("nonceStr"));
-    ((axt)localObject).signature = ((String)paramMap.get("signature"));
-    ((axt)localObject).GvI = paramMap.get("params").toString();
+    this.rr = ((b.a)localObject).aDS();
+    localObject = (ayj)this.rr.hQD.hQJ;
+    ((ayj)localObject).GtF = paramString1;
+    ((ayj)localObject).Gds = paramString2;
+    ((ayj)localObject).GPg = ((String)paramMap.get("groupId"));
+    ((ayj)localObject).DnK = ((String)paramMap.get("timestamp"));
+    ((ayj)localObject).oOY = ((String)paramMap.get("nonceStr"));
+    ((ayj)localObject).signature = ((String)paramMap.get("signature"));
+    ((ayj)localObject).GPh = paramMap.get("params").toString();
     AppMethodBeat.o(78882);
   }
   
@@ -48,16 +48,16 @@ public final class o
   {
     AppMethodBeat.i(78884);
     this.callback = paramf;
-    ad.i("MicroMsg.NetSceneGetBizJsApiRedirectUrl", "do scene");
+    ae.i("MicroMsg.NetSceneGetBizJsApiRedirectUrl", "do scene");
     int i = dispatch(parame, this.rr, this);
     AppMethodBeat.o(78884);
     return i;
   }
   
-  public final axu ePW()
+  public final ayk eTI()
   {
-    if ((this.rr != null) && (this.rr.hNL.hNQ != null)) {
-      return (axu)this.rr.hNL.hNQ;
+    if ((this.rr != null) && (this.rr.hQE.hQJ != null)) {
+      return (ayk)this.rr.hQE.hQJ;
     }
     return null;
   }
@@ -70,7 +70,7 @@ public final class o
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(78883);
-    ad.d("MicroMsg.NetSceneGetBizJsApiRedirectUrl", "onGYNetEnd code(%d, %d)", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    ae.d("MicroMsg.NetSceneGetBizJsApiRedirectUrl", "onGYNetEnd code(%d, %d)", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }

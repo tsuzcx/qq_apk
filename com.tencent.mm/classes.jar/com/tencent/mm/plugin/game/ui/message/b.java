@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.game.ui.message;
 
 import android.content.Context;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
@@ -12,23 +13,25 @@ import java.util.HashMap;
 public final class b
   extends FrameLayout
 {
-  private int fPp;
-  d uuC;
-  private int uus;
+  View GG;
+  private int fRv;
+  private int uFO;
+  d uGb;
   
   public b(Context paramContext, int paramInt)
   {
     super(paramContext);
     AppMethodBeat.i(183881);
-    this.fPp = paramInt;
-    if (((com.tencent.mm.plugin.game.api.f)g.ab(com.tencent.mm.plugin.game.api.f.class)).cWH().HQ(2) != 0)
+    this.fRv = paramInt;
+    this.GG = LayoutInflater.from(getContext()).inflate(2131494354, this, false);
+    if (((com.tencent.mm.plugin.game.api.f)g.ab(com.tencent.mm.plugin.game.api.f.class)).cZl().In(2) != 0)
     {
-      this.uuC = new d(getContext(), this.fPp);
-      addView(this.uuC, new FrameLayout.LayoutParams(-1, -1));
+      this.uGb = new d(getContext(), this.fRv);
+      addView(this.uGb, new FrameLayout.LayoutParams(-1, -1));
       AppMethodBeat.o(183881);
       return;
     }
-    LayoutInflater.from(getContext()).inflate(2131494354, this, true);
+    addView(this.GG);
     AppMethodBeat.o(183881);
   }
   
@@ -37,20 +40,20 @@ public final class b
     AppMethodBeat.i(184807);
     HashMap localHashMap = new HashMap();
     localHashMap.put("tab", "2");
-    localHashMap.put("newnotice", String.valueOf(this.uus));
-    com.tencent.mm.game.report.f.a(getContext(), 13, 1300, 0, 1, this.fPp, com.tencent.mm.game.report.f.k(localHashMap));
-    this.uus = 0;
+    localHashMap.put("newnotice", String.valueOf(this.uFO));
+    com.tencent.mm.game.report.f.a(getContext(), 13, 1300, 0, 1, this.fRv, com.tencent.mm.game.report.f.r(localHashMap));
+    this.uFO = 0;
     AppMethodBeat.o(184807);
   }
   
   public final void setNewMessageCount(int paramInt)
   {
-    this.uus = paramInt;
+    this.uFO = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.message.b
  * JD-Core Version:    0.7.0.1
  */

@@ -14,161 +14,161 @@ import android.os.Build.VERSION;
 import android.view.Surface;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.b.k;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
 
 public final class d
   extends a
 {
-  private MediaPlayer lqh;
-  private MediaPlayer.OnPreparedListener lqi;
-  private MediaPlayer.OnVideoSizeChangedListener lqj;
-  private MediaPlayer.OnCompletionListener lqk;
-  private MediaPlayer.OnInfoListener lql;
-  private MediaPlayer.OnSeekCompleteListener lqm;
-  private MediaPlayer.OnErrorListener lqn;
-  private MediaPlayer.OnBufferingUpdateListener lqo;
+  private MediaPlayer luF;
+  private MediaPlayer.OnPreparedListener luG;
+  private MediaPlayer.OnVideoSizeChangedListener luH;
+  private MediaPlayer.OnCompletionListener luI;
+  private MediaPlayer.OnInfoListener luJ;
+  private MediaPlayer.OnSeekCompleteListener luK;
+  private MediaPlayer.OnErrorListener luL;
+  private MediaPlayer.OnBufferingUpdateListener luM;
   
   public d()
   {
-    AppMethodBeat.i(206245);
-    this.lqi = new MediaPlayer.OnPreparedListener()
+    AppMethodBeat.i(211273);
+    this.luG = new MediaPlayer.OnPreparedListener()
     {
       public final void onPrepared(MediaPlayer paramAnonymousMediaPlayer)
       {
-        AppMethodBeat.i(206238);
-        d.this.lpU = 2;
-        d.this.bok();
-        AppMethodBeat.o(206238);
+        AppMethodBeat.i(211266);
+        d.this.lur = 2;
+        d.this.boU();
+        AppMethodBeat.o(211266);
       }
     };
-    this.lqj = new MediaPlayer.OnVideoSizeChangedListener()
+    this.luH = new MediaPlayer.OnVideoSizeChangedListener()
     {
       public final void onVideoSizeChanged(MediaPlayer paramAnonymousMediaPlayer, int paramAnonymousInt1, int paramAnonymousInt2)
       {
-        AppMethodBeat.i(206239);
+        AppMethodBeat.i(211267);
         d.this.dW(paramAnonymousInt1, paramAnonymousInt2);
-        AppMethodBeat.o(206239);
+        AppMethodBeat.o(211267);
       }
     };
-    this.lqk = new MediaPlayer.OnCompletionListener()
+    this.luI = new MediaPlayer.OnCompletionListener()
     {
       public final void onCompletion(MediaPlayer paramAnonymousMediaPlayer)
       {
-        AppMethodBeat.i(206240);
-        d.this.lpU = 6;
-        d.this.bol();
-        AppMethodBeat.o(206240);
+        AppMethodBeat.i(211268);
+        d.this.lur = 6;
+        d.this.boV();
+        AppMethodBeat.o(211268);
       }
     };
-    this.lql = new MediaPlayer.OnInfoListener()
+    this.luJ = new MediaPlayer.OnInfoListener()
     {
       public final boolean onInfo(MediaPlayer paramAnonymousMediaPlayer, int paramAnonymousInt1, int paramAnonymousInt2)
       {
-        AppMethodBeat.i(206241);
+        AppMethodBeat.i(211269);
         boolean bool = d.this.dY(paramAnonymousInt1, paramAnonymousInt2);
-        AppMethodBeat.o(206241);
+        AppMethodBeat.o(211269);
         return bool;
       }
     };
-    this.lqm = new MediaPlayer.OnSeekCompleteListener()
+    this.luK = new MediaPlayer.OnSeekCompleteListener()
     {
       public final void onSeekComplete(MediaPlayer paramAnonymousMediaPlayer)
       {
-        AppMethodBeat.i(206242);
-        d.this.bom();
-        AppMethodBeat.o(206242);
+        AppMethodBeat.i(211270);
+        d.this.boW();
+        AppMethodBeat.o(211270);
       }
     };
-    this.lqn = new MediaPlayer.OnErrorListener()
+    this.luL = new MediaPlayer.OnErrorListener()
     {
       public final boolean onError(MediaPlayer paramAnonymousMediaPlayer, int paramAnonymousInt1, int paramAnonymousInt2)
       {
-        AppMethodBeat.i(206243);
+        AppMethodBeat.i(211271);
         boolean bool = d.this.dX(paramAnonymousInt1, paramAnonymousInt2);
-        AppMethodBeat.o(206243);
+        AppMethodBeat.o(211271);
         return bool;
       }
     };
-    this.lqo = new MediaPlayer.OnBufferingUpdateListener()
+    this.luM = new MediaPlayer.OnBufferingUpdateListener()
     {
       public final void onBufferingUpdate(MediaPlayer paramAnonymousMediaPlayer, int paramAnonymousInt)
       {
-        AppMethodBeat.i(206244);
-        d.this.tC(paramAnonymousInt);
-        AppMethodBeat.o(206244);
+        AppMethodBeat.i(211272);
+        d.this.tH(paramAnonymousInt);
+        AppMethodBeat.o(211272);
       }
     };
-    this.lqh = new k();
-    this.lqh.setScreenOnWhilePlaying(true);
-    this.lqh.setAudioStreamType(3);
-    this.lqh.setOnInfoListener(this.lql);
-    this.lqh.setOnErrorListener(this.lqn);
-    this.lqh.setOnPreparedListener(this.lqi);
-    this.lqh.setOnCompletionListener(this.lqk);
-    this.lqh.setOnSeekCompleteListener(this.lqm);
-    this.lqh.setOnVideoSizeChangedListener(this.lqj);
-    this.lqh.setOnBufferingUpdateListener(this.lqo);
-    AppMethodBeat.o(206245);
+    this.luF = new k();
+    this.luF.setScreenOnWhilePlaying(true);
+    this.luF.setAudioStreamType(3);
+    this.luF.setOnInfoListener(this.luJ);
+    this.luF.setOnErrorListener(this.luL);
+    this.luF.setOnPreparedListener(this.luG);
+    this.luF.setOnCompletionListener(this.luI);
+    this.luF.setOnSeekCompleteListener(this.luK);
+    this.luF.setOnVideoSizeChangedListener(this.luH);
+    this.luF.setOnBufferingUpdateListener(this.luM);
+    AppMethodBeat.o(211273);
   }
   
   private boolean available()
   {
-    return this.lqh != null;
+    return this.luF != null;
   }
   
-  private void tD(int paramInt)
+  private void tI(int paramInt)
   {
-    AppMethodBeat.i(206265);
-    if (this.lqn != null) {
-      this.lqn.onError(this.lqh, -1024, paramInt);
+    AppMethodBeat.i(211293);
+    if (this.luL != null) {
+      this.luL.onError(this.luF, -1024, paramInt);
     }
-    AppMethodBeat.o(206265);
+    AppMethodBeat.o(211293);
   }
   
   public final boolean aF(float paramFloat)
   {
-    AppMethodBeat.i(206250);
+    AppMethodBeat.i(211278);
     if (paramFloat <= 0.0F)
     {
-      AppMethodBeat.o(206250);
+      AppMethodBeat.o(211278);
       return false;
     }
     try
     {
       if ((available()) && (Build.VERSION.SDK_INT >= 23))
       {
-        PlaybackParams localPlaybackParams = this.lqh.getPlaybackParams();
+        PlaybackParams localPlaybackParams = this.luF.getPlaybackParams();
         localPlaybackParams.setSpeed(paramFloat);
-        if (!this.lqh.isPlaying())
+        if (!this.luF.isPlaying())
         {
-          this.lqh.setPlaybackParams(localPlaybackParams);
-          this.lqh.pause();
+          this.luF.setPlaybackParams(localPlaybackParams);
+          this.luF.pause();
         }
         for (;;)
         {
-          AppMethodBeat.o(206250);
+          AppMethodBeat.o(211278);
           return true;
-          this.lqh.setPlaybackParams(localPlaybackParams);
+          this.luF.setPlaybackParams(localPlaybackParams);
         }
-        AppMethodBeat.o(206250);
+        AppMethodBeat.o(211278);
       }
     }
     catch (Exception localException)
     {
-      ad.printErrStackTrace("MicroMsg.SameLayer.SystemMediaPlayer", localException, "%s setSpeed fail", new Object[] { Integer.valueOf(hashCode()) });
-      tD(-14);
+      ae.printErrStackTrace("MicroMsg.SameLayer.SystemMediaPlayer", localException, "%s setSpeed fail", new Object[] { Integer.valueOf(hashCode()) });
+      tI(-14);
     }
     for (;;)
     {
       return false;
-      ad.w("MicroMsg.SameLayer.SystemMediaPlayer", "%s setSpeed, current system(%d) not support play speed setting", new Object[] { Integer.valueOf(hashCode()), Integer.valueOf(Build.VERSION.SDK_INT) });
+      ae.w("MicroMsg.SameLayer.SystemMediaPlayer", "%s setSpeed, current system(%d) not support play speed setting", new Object[] { Integer.valueOf(hashCode()), Integer.valueOf(Build.VERSION.SDK_INT) });
     }
   }
   
-  public final void dD(String paramString1, String paramString2)
+  public final void dF(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(206247);
+    AppMethodBeat.i(211275);
     try
     {
       if (available())
@@ -176,370 +176,370 @@ public final class d
         if (paramString2 != null) {
           break label35;
         }
-        this.lqh.setDataSource(paramString1);
+        this.luF.setDataSource(paramString1);
       }
       for (;;)
       {
-        this.lpU = 1;
-        AppMethodBeat.o(206247);
+        this.lur = 1;
+        AppMethodBeat.o(211275);
         return;
         label35:
-        ad.i("MicroMsg.SameLayer.SystemMediaPlayer", "setDataSource, referrer: ".concat(String.valueOf(paramString2)));
-        paramString2 = com.tencent.mm.plugin.appbrand.jsapi.s.d.Qv(paramString2);
-        this.lqh.setDataSource(aj.getContext(), Uri.parse(paramString1), paramString2);
+        ae.i("MicroMsg.SameLayer.SystemMediaPlayer", "setDataSource, referrer: ".concat(String.valueOf(paramString2)));
+        paramString2 = com.tencent.mm.plugin.appbrand.jsapi.s.d.Re(paramString2);
+        this.luF.setDataSource(ak.getContext(), Uri.parse(paramString1), paramString2);
       }
       return;
     }
     catch (Exception paramString1)
     {
-      ad.printErrStackTrace("MicroMsg.SameLayer.SystemMediaPlayer", paramString1, "%s setDataSource fail", new Object[] { Integer.valueOf(hashCode()) });
-      tD(-11);
-      AppMethodBeat.o(206247);
+      ae.printErrStackTrace("MicroMsg.SameLayer.SystemMediaPlayer", paramString1, "%s setDataSource fail", new Object[] { Integer.valueOf(hashCode()) });
+      tI(-11);
+      AppMethodBeat.o(211275);
     }
   }
   
   public final int getCurrentPosition()
   {
-    AppMethodBeat.i(206254);
+    AppMethodBeat.i(211282);
     try
     {
-      if ((available()) && ((this.lpU == 2) || (this.lpU == 3) || (this.lpU == 4) || (this.lpU == 6)))
+      if ((available()) && ((this.lur == 2) || (this.lur == 3) || (this.lur == 4) || (this.lur == 6)))
       {
-        int i = this.lqh.getCurrentPosition();
-        AppMethodBeat.o(206254);
+        int i = this.luF.getCurrentPosition();
+        AppMethodBeat.o(211282);
         return i;
       }
     }
     catch (Exception localException)
     {
-      ad.printErrStackTrace("MicroMsg.SameLayer.SystemMediaPlayer", localException, "%s getCurrentPosition fail", new Object[] { Integer.valueOf(hashCode()) });
-      tD(-15);
-      AppMethodBeat.o(206254);
+      ae.printErrStackTrace("MicroMsg.SameLayer.SystemMediaPlayer", localException, "%s getCurrentPosition fail", new Object[] { Integer.valueOf(hashCode()) });
+      tI(-15);
+      AppMethodBeat.o(211282);
     }
     return 0;
   }
   
   public final int getDuration()
   {
-    AppMethodBeat.i(206255);
+    AppMethodBeat.i(211283);
     try
     {
-      if ((available()) && (this.lpU != -1) && (this.lpU != 1) && (this.lpU != 0))
+      if ((available()) && (this.lur != -1) && (this.lur != 1) && (this.lur != 0))
       {
-        int i = this.lqh.getDuration();
-        AppMethodBeat.o(206255);
+        int i = this.luF.getDuration();
+        AppMethodBeat.o(211283);
         return i;
       }
     }
     catch (Exception localException)
     {
-      ad.printErrStackTrace("MicroMsg.SameLayer.SystemMediaPlayer", localException, "%s getDuration fail", new Object[] { Integer.valueOf(hashCode()) });
-      tD(-16);
-      AppMethodBeat.o(206255);
+      ae.printErrStackTrace("MicroMsg.SameLayer.SystemMediaPlayer", localException, "%s getDuration fail", new Object[] { Integer.valueOf(hashCode()) });
+      tI(-16);
+      AppMethodBeat.o(211283);
     }
     return 0;
   }
   
   public final int getVideoHeight()
   {
-    AppMethodBeat.i(206257);
+    AppMethodBeat.i(211285);
     try
     {
       if (available())
       {
-        int i = this.lqh.getVideoHeight();
-        AppMethodBeat.o(206257);
+        int i = this.luF.getVideoHeight();
+        AppMethodBeat.o(211285);
         return i;
       }
     }
     catch (Exception localException)
     {
-      ad.printErrStackTrace("MicroMsg.SameLayer.SystemMediaPlayer", localException, "%s getVideoHeight fail", new Object[] { Integer.valueOf(hashCode()) });
-      tD(-18);
-      AppMethodBeat.o(206257);
+      ae.printErrStackTrace("MicroMsg.SameLayer.SystemMediaPlayer", localException, "%s getVideoHeight fail", new Object[] { Integer.valueOf(hashCode()) });
+      tI(-18);
+      AppMethodBeat.o(211285);
     }
     return 0;
   }
   
   public final int getVideoWidth()
   {
-    AppMethodBeat.i(206256);
+    AppMethodBeat.i(211284);
     try
     {
       if (available())
       {
-        int i = this.lqh.getVideoWidth();
-        AppMethodBeat.o(206256);
+        int i = this.luF.getVideoWidth();
+        AppMethodBeat.o(211284);
         return i;
       }
     }
     catch (Exception localException)
     {
-      ad.printErrStackTrace("MicroMsg.SameLayer.SystemMediaPlayer", localException, "%s getVideoWidth fail", new Object[] { Integer.valueOf(hashCode()) });
-      tD(-17);
-      AppMethodBeat.o(206256);
+      ae.printErrStackTrace("MicroMsg.SameLayer.SystemMediaPlayer", localException, "%s getVideoWidth fail", new Object[] { Integer.valueOf(hashCode()) });
+      tI(-17);
+      AppMethodBeat.o(211284);
     }
     return 0;
   }
   
   public final boolean isPlaying()
   {
-    AppMethodBeat.i(206253);
+    AppMethodBeat.i(211281);
     try
     {
-      if ((available()) && (this.lpU != -1) && (this.lpU != -2) && (this.lpU != 0) && (this.lpU != 1))
+      if ((available()) && (this.lur != -1) && (this.lur != -2) && (this.lur != 0) && (this.lur != 1))
       {
-        boolean bool = this.lqh.isPlaying();
-        AppMethodBeat.o(206253);
+        boolean bool = this.luF.isPlaying();
+        AppMethodBeat.o(211281);
         return bool;
       }
     }
     catch (Exception localException)
     {
-      ad.printErrStackTrace("MicroMsg.SameLayer.SystemMediaPlayer", localException, "%s isPlaying fail", new Object[] { Integer.valueOf(hashCode()) });
-      tD(-9);
-      AppMethodBeat.o(206253);
+      ae.printErrStackTrace("MicroMsg.SameLayer.SystemMediaPlayer", localException, "%s isPlaying fail", new Object[] { Integer.valueOf(hashCode()) });
+      tI(-9);
+      AppMethodBeat.o(211281);
     }
     return false;
   }
   
   public final void pause()
   {
-    AppMethodBeat.i(206260);
+    AppMethodBeat.i(211288);
     try
     {
-      if ((available()) && ((this.lpU == 2) || (this.lpU == 3) || (this.lpU == 6)))
+      if ((available()) && ((this.lur == 2) || (this.lur == 3) || (this.lur == 6)))
       {
-        this.lqh.pause();
-        this.lpU = 4;
+        this.luF.pause();
+        this.lur = 4;
       }
-      AppMethodBeat.o(206260);
+      AppMethodBeat.o(211288);
       return;
     }
     catch (Exception localException)
     {
-      ad.printErrStackTrace("MicroMsg.SameLayer.SystemMediaPlayer", localException, "%s pause fail", new Object[] { Integer.valueOf(hashCode()) });
-      tD(-2);
-      AppMethodBeat.o(206260);
+      ae.printErrStackTrace("MicroMsg.SameLayer.SystemMediaPlayer", localException, "%s pause fail", new Object[] { Integer.valueOf(hashCode()) });
+      tI(-2);
+      AppMethodBeat.o(211288);
     }
   }
   
   public final void prepareAsync()
   {
-    AppMethodBeat.i(206258);
+    AppMethodBeat.i(211286);
     try
     {
       if (available()) {
-        this.lqh.prepareAsync();
+        this.luF.prepareAsync();
       }
-      AppMethodBeat.o(206258);
+      AppMethodBeat.o(211286);
       return;
     }
     catch (Exception localException)
     {
-      ad.printErrStackTrace("MicroMsg.SameLayer.SystemMediaPlayer", localException, "%s prepareAsync fail", new Object[] { Integer.valueOf(hashCode()) });
-      tD(-6);
-      AppMethodBeat.o(206258);
+      ae.printErrStackTrace("MicroMsg.SameLayer.SystemMediaPlayer", localException, "%s prepareAsync fail", new Object[] { Integer.valueOf(hashCode()) });
+      tI(-6);
+      AppMethodBeat.o(211286);
     }
   }
   
   public final void release()
   {
-    AppMethodBeat.i(206264);
+    AppMethodBeat.i(211292);
     try
     {
       if (available())
       {
-        if (this.lqh != null)
+        if (this.luF != null)
         {
-          this.lqh.setOnInfoListener(null);
-          this.lqh.setOnErrorListener(null);
-          this.lqh.setOnPreparedListener(null);
-          this.lqh.setOnCompletionListener(null);
-          this.lqh.setOnSeekCompleteListener(null);
-          this.lqh.setOnBufferingUpdateListener(null);
-          this.lqh.setOnVideoSizeChangedListener(null);
+          this.luF.setOnInfoListener(null);
+          this.luF.setOnErrorListener(null);
+          this.luF.setOnPreparedListener(null);
+          this.luF.setOnCompletionListener(null);
+          this.luF.setOnSeekCompleteListener(null);
+          this.luF.setOnBufferingUpdateListener(null);
+          this.luF.setOnVideoSizeChangedListener(null);
         }
-        this.lqh.release();
-        this.lpU = -2;
+        this.luF.release();
+        this.lur = -2;
         super.release();
       }
-      AppMethodBeat.o(206264);
+      AppMethodBeat.o(211292);
       return;
     }
     catch (Exception localException)
     {
-      ad.printErrStackTrace("MicroMsg.SameLayer.SystemMediaPlayer", localException, "%s release fail", new Object[] { Integer.valueOf(hashCode()) });
-      tD(-8);
-      AppMethodBeat.o(206264);
+      ae.printErrStackTrace("MicroMsg.SameLayer.SystemMediaPlayer", localException, "%s release fail", new Object[] { Integer.valueOf(hashCode()) });
+      tI(-8);
+      AppMethodBeat.o(211292);
     }
   }
   
   public final void reset()
   {
-    AppMethodBeat.i(206263);
+    AppMethodBeat.i(211291);
     try
     {
       if (available())
       {
-        this.lqh.reset();
-        this.lpU = 0;
+        this.luF.reset();
+        this.lur = 0;
       }
-      AppMethodBeat.o(206263);
+      AppMethodBeat.o(211291);
       return;
     }
     catch (Exception localException)
     {
-      ad.printErrStackTrace("MicroMsg.SameLayer.SystemMediaPlayer", localException, "%s reset fail", new Object[] { Integer.valueOf(hashCode()) });
-      tD(-7);
-      AppMethodBeat.o(206263);
+      ae.printErrStackTrace("MicroMsg.SameLayer.SystemMediaPlayer", localException, "%s reset fail", new Object[] { Integer.valueOf(hashCode()) });
+      tI(-7);
+      AppMethodBeat.o(211291);
     }
   }
   
   public final void seekTo(long paramLong)
   {
-    AppMethodBeat.i(206261);
+    AppMethodBeat.i(211289);
     try
     {
-      if ((available()) && ((this.lpU == 2) || (this.lpU == 3) || (this.lpU == 4) || (this.lpU == 6))) {
-        this.lqh.seekTo((int)paramLong);
+      if ((available()) && ((this.lur == 2) || (this.lur == 3) || (this.lur == 4) || (this.lur == 6))) {
+        this.luF.seekTo((int)paramLong);
       }
-      AppMethodBeat.o(206261);
+      AppMethodBeat.o(211289);
       return;
     }
     catch (Exception localException)
     {
-      ad.printErrStackTrace("MicroMsg.SameLayer.SystemMediaPlayer", localException, "%s seekTo fail", new Object[] { Integer.valueOf(hashCode()) });
-      tD(-3);
-      AppMethodBeat.o(206261);
+      ae.printErrStackTrace("MicroMsg.SameLayer.SystemMediaPlayer", localException, "%s seekTo fail", new Object[] { Integer.valueOf(hashCode()) });
+      tI(-3);
+      AppMethodBeat.o(211289);
     }
   }
   
   public final void setDataSource(String paramString)
   {
-    AppMethodBeat.i(206246);
-    dD(paramString, null);
-    AppMethodBeat.o(206246);
+    AppMethodBeat.i(211274);
+    dF(paramString, null);
+    AppMethodBeat.o(211274);
   }
   
   public final void setLooping(boolean paramBoolean)
   {
-    AppMethodBeat.i(206252);
+    AppMethodBeat.i(211280);
     try
     {
       if (available()) {
-        this.lqh.setLooping(paramBoolean);
+        this.luF.setLooping(paramBoolean);
       }
-      AppMethodBeat.o(206252);
+      AppMethodBeat.o(211280);
       return;
     }
     catch (Exception localException)
     {
-      ad.printErrStackTrace("MicroMsg.SameLayer.SystemMediaPlayer", localException, "%s setLooping fail", new Object[] { Integer.valueOf(hashCode()) });
-      tD(-10);
-      AppMethodBeat.o(206252);
+      ae.printErrStackTrace("MicroMsg.SameLayer.SystemMediaPlayer", localException, "%s setLooping fail", new Object[] { Integer.valueOf(hashCode()) });
+      tI(-10);
+      AppMethodBeat.o(211280);
     }
   }
   
   public final void setMute(boolean paramBoolean)
   {
-    AppMethodBeat.i(206251);
+    AppMethodBeat.i(211279);
     if (available())
     {
       if (paramBoolean)
       {
         setVolume(0.0F, 0.0F);
-        AppMethodBeat.o(206251);
+        AppMethodBeat.o(211279);
         return;
       }
       setVolume(1.0F, 1.0F);
     }
-    AppMethodBeat.o(206251);
+    AppMethodBeat.o(211279);
   }
   
   public final void setSurface(Surface paramSurface)
   {
-    AppMethodBeat.i(206248);
+    AppMethodBeat.i(211276);
     try
     {
       if (available()) {
-        this.lqh.setSurface(paramSurface);
+        this.luF.setSurface(paramSurface);
       }
-      AppMethodBeat.o(206248);
+      AppMethodBeat.o(211276);
       return;
     }
     catch (Exception paramSurface)
     {
-      ad.printErrStackTrace("MicroMsg.SameLayer.SystemMediaPlayer", paramSurface, "%s setSurface fail", new Object[] { Integer.valueOf(hashCode()) });
-      tD(-12);
-      AppMethodBeat.o(206248);
+      ae.printErrStackTrace("MicroMsg.SameLayer.SystemMediaPlayer", paramSurface, "%s setSurface fail", new Object[] { Integer.valueOf(hashCode()) });
+      tI(-12);
+      AppMethodBeat.o(211276);
     }
   }
   
   public final void setVolume(float paramFloat1, float paramFloat2)
   {
-    AppMethodBeat.i(206249);
+    AppMethodBeat.i(211277);
     try
     {
       if (available()) {
-        this.lqh.setVolume(paramFloat1, paramFloat2);
+        this.luF.setVolume(paramFloat1, paramFloat2);
       }
-      AppMethodBeat.o(206249);
+      AppMethodBeat.o(211277);
       return;
     }
     catch (Exception localException)
     {
-      ad.printErrStackTrace("MicroMsg.SameLayer.SystemMediaPlayer", localException, "%s setVolume fail", new Object[] { Integer.valueOf(hashCode()) });
-      tD(-13);
-      AppMethodBeat.o(206249);
+      ae.printErrStackTrace("MicroMsg.SameLayer.SystemMediaPlayer", localException, "%s setVolume fail", new Object[] { Integer.valueOf(hashCode()) });
+      tI(-13);
+      AppMethodBeat.o(211277);
     }
   }
   
   public final void start()
   {
-    AppMethodBeat.i(206259);
+    AppMethodBeat.i(211287);
     try
     {
-      if ((available()) && ((this.lpU == 2) || (this.lpU == 4) || (this.lpU == 6)))
+      if ((available()) && ((this.lur == 2) || (this.lur == 4) || (this.lur == 6)))
       {
-        this.lqh.start();
-        this.lpU = 3;
+        this.luF.start();
+        this.lur = 3;
       }
-      AppMethodBeat.o(206259);
+      AppMethodBeat.o(211287);
       return;
     }
     catch (Exception localException)
     {
-      ad.printErrStackTrace("MicroMsg.SameLayer.SystemMediaPlayer", localException, "%s start fail", new Object[] { Integer.valueOf(hashCode()) });
-      tD(-1);
-      AppMethodBeat.o(206259);
+      ae.printErrStackTrace("MicroMsg.SameLayer.SystemMediaPlayer", localException, "%s start fail", new Object[] { Integer.valueOf(hashCode()) });
+      tI(-1);
+      AppMethodBeat.o(211287);
     }
   }
   
   public final void stop()
   {
-    AppMethodBeat.i(206262);
+    AppMethodBeat.i(211290);
     try
     {
-      if ((available()) && ((this.lpU == 2) || (this.lpU == 3) || (this.lpU == 4) || (this.lpU == 6)))
+      if ((available()) && ((this.lur == 2) || (this.lur == 3) || (this.lur == 4) || (this.lur == 6)))
       {
-        this.lqh.stop();
-        this.lpU = 5;
+        this.luF.stop();
+        this.lur = 5;
       }
-      AppMethodBeat.o(206262);
+      AppMethodBeat.o(211290);
       return;
     }
     catch (Exception localException)
     {
-      ad.printErrStackTrace("MicroMsg.SameLayer.SystemMediaPlayer", localException, "%s stop fail", new Object[] { Integer.valueOf(hashCode()) });
-      tD(-4);
-      AppMethodBeat.o(206262);
+      ae.printErrStackTrace("MicroMsg.SameLayer.SystemMediaPlayer", localException, "%s stop fail", new Object[] { Integer.valueOf(hashCode()) });
+      tI(-4);
+      AppMethodBeat.o(211290);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.video.e.d
  * JD-Core Version:    0.7.0.1
  */

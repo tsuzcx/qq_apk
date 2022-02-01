@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.voip_cs.c.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.dxf;
-import com.tencent.mm.protocal.protobuf.dxg;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.dyw;
+import com.tencent.mm.protocal.protobuf.dyx;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class d
   extends n
@@ -24,17 +24,17 @@ public final class d
   {
     AppMethodBeat.i(125431);
     Object localObject = new b.a();
-    ((b.a)localObject).hNM = new dxf();
-    ((b.a)localObject).hNN = new dxg();
+    ((b.a)localObject).hQF = new dyw();
+    ((b.a)localObject).hQG = new dyx();
     ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/csvoipredirect";
     ((b.a)localObject).funcId = 285;
-    ((b.a)localObject).hNO = 0;
+    ((b.a)localObject).hQH = 0;
     ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).aDC();
-    localObject = (dxf)this.rr.hNK.hNQ;
-    ((dxf)localObject).HyS = paramLong1;
-    ((dxf)localObject).GeJ = paramLong2;
-    ((dxf)localObject).HfW = System.currentTimeMillis();
+    this.rr = ((b.a)localObject).aDS();
+    localObject = (dyw)this.rr.hQD.hQJ;
+    ((dyw)localObject).HSD = paramLong1;
+    ((dyw)localObject).Gxr = paramLong2;
+    ((dyw)localObject).Hzw = System.currentTimeMillis();
     AppMethodBeat.o(125431);
   }
   
@@ -55,7 +55,7 @@ public final class d
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(125432);
-    ad.i("MicroMsg.NetSceneVoipCSRedirect", "onGYNetEnd, errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    ae.i("MicroMsg.NetSceneVoipCSRedirect", "onGYNetEnd, errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(125432);
   }

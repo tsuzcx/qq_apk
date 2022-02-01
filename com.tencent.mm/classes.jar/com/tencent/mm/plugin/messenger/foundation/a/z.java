@@ -1,13 +1,12 @@
 package com.tencent.mm.plugin.messenger.foundation.a;
 
-import com.tencent.mm.protocal.protobuf.cv;
-import com.tencent.mm.storage.bu;
-
 public abstract interface z
 {
-  public abstract void a(bu parambu, cv paramcv);
+  public abstract void aI(Object paramObject);
   
-  public abstract void cCF();
+  public abstract void aJ(Object paramObject);
+  
+  public abstract void aK(Object paramObject);
 }
 
 

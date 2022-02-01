@@ -8,24 +8,24 @@ public abstract class fn
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eSU;
-  private static final int feK = "createtime".hashCode();
-  private static final int fqQ = "uid".hashCode();
-  private static final int fqR;
+  private static final int eUF;
+  private static final int fgF = "createtime".hashCode();
+  private static final int fsQ = "uid".hashCode();
+  private static final int fsR;
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eSi = true;
-  private boolean feB = true;
+  private boolean eTT = true;
+  private boolean fgu = true;
   public long field_createtime;
   public String field_devicetype;
   public String field_name;
   public String field_uid;
-  private boolean fqO = true;
-  private boolean fqP = true;
+  private boolean fsO = true;
+  private boolean fsP = true;
   
   static
   {
-    eSU = "name".hashCode();
-    fqR = "devicetype".hashCode();
+    eUF = "name".hashCode();
+    fsR = "devicetype".hashCode();
   }
   
   public void convertFrom(Cursor paramCursor)
@@ -41,11 +41,11 @@ public abstract class fn
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (fqQ != k) {
+      if (fsQ != k) {
         break label65;
       }
       this.field_uid = paramCursor.getString(i);
-      this.fqO = true;
+      this.fsO = true;
     }
     for (;;)
     {
@@ -53,11 +53,11 @@ public abstract class fn
       break label20;
       break;
       label65:
-      if (eSU == k) {
+      if (eUF == k) {
         this.field_name = paramCursor.getString(i);
-      } else if (fqR == k) {
+      } else if (fsR == k) {
         this.field_devicetype = paramCursor.getString(i);
-      } else if (feK == k) {
+      } else if (fgF == k) {
         this.field_createtime = paramCursor.getLong(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
@@ -71,22 +71,22 @@ public abstract class fn
     if (this.field_uid == null) {
       this.field_uid = "";
     }
-    if (this.fqO) {
+    if (this.fsO) {
       localContentValues.put("uid", this.field_uid);
     }
     if (this.field_name == null) {
       this.field_name = "";
     }
-    if (this.eSi) {
+    if (this.eTT) {
       localContentValues.put("name", this.field_name);
     }
     if (this.field_devicetype == null) {
       this.field_devicetype = "";
     }
-    if (this.fqP) {
+    if (this.fsP) {
       localContentValues.put("devicetype", this.field_devicetype);
     }
-    if (this.feB) {
+    if (this.fgu) {
       localContentValues.put("createtime", Long.valueOf(this.field_createtime));
     }
     if (this.systemRowid > 0L) {

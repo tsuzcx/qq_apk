@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class ub
   extends b
 {
-  public a dIz;
+  public a dJD;
   
   public ub()
   {
@@ -15,21 +15,22 @@ public final class ub
   
   private ub(byte paramByte)
   {
-    AppMethodBeat.i(125632);
-    this.dIz = new a();
-    this.IbR = false;
+    AppMethodBeat.i(94813);
+    this.dJD = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(125632);
+    AppMethodBeat.o(94813);
   }
   
   public static final class a
   {
-    public boolean isStart;
+    public String dJE;
+    public int state;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.g.a.ub
  * JD-Core Version:    0.7.0.1
  */

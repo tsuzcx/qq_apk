@@ -6,55 +6,55 @@ import android.content.SharedPreferences.Editor;
 import android.os.Looper;
 import android.os.Process;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.ba;
+import com.tencent.mm.model.bc;
 import com.tencent.mm.protocal.d;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.ax;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ah;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.ai;
 
 public final class o
 {
-  static long fFr = 0L;
+  static long fHv = 0L;
   
-  public static void MX()
+  public static void MS()
   {
     AppMethodBeat.i(19904);
-    ug("mm_proc_startup");
-    ug("push_proc_startup");
+    uB("mm_proc_startup");
+    uB("push_proc_startup");
     AppMethodBeat.o(19904);
   }
   
-  public static void Xb()
+  public static void Xj()
   {
     AppMethodBeat.i(19903);
-    Object localObject1 = aj.getContext().getSharedPreferences("mm_proc_startup", 0);
-    ax localax = ax.aQA("mm_proc_startup");
-    ax.a((SharedPreferences)localObject1, localax);
-    localObject1 = localax.getString("startup_info", "").split("=");
+    Object localObject1 = ak.getContext().getSharedPreferences("mm_proc_startup", 0);
+    ay localay = ay.aRX("mm_proc_startup");
+    ay.a((SharedPreferences)localObject1, localay);
+    localObject1 = localay.getString("startup_info", "").split("=");
     if ((localObject1 != null) && (localObject1.length > 0))
     {
       localObject2 = new a();
-      if (((a)localObject2).ui(localObject1[(localObject1.length - 1)]))
+      if (((a)localObject2).uD(localObject1[(localObject1.length - 1)]))
       {
-        ((a)localObject2).fFx = Process.myPid();
+        ((a)localObject2).fHB = Process.myPid();
         localObject1[(localObject1.length - 1)] = ((a)localObject2).toString();
       }
     }
     Object localObject2 = new a();
-    ((a)localObject2).fFt = 2;
-    ((a)localObject2).fFv = Process.myPid();
-    ((a)localObject2).fFw = ((int)bt.aQJ());
+    ((a)localObject2).fHx = 2;
+    ((a)localObject2).fHz = Process.myPid();
+    ((a)localObject2).fHA = ((int)bu.aRi());
     String str = g((String[])localObject1);
     localObject2 = ((a)localObject2).toString();
     localObject1 = localObject2;
     if (str.length() > 0) {
       localObject1 = str + "=" + (String)localObject2;
     }
-    ad.d("MicroMsg.ProcessReport", "startProc new info %s", new Object[] { localObject1 });
-    localax.edit().putString("startup_info", (String)localObject1).commit();
+    ae.d("MicroMsg.ProcessReport", "startProc new info %s", new Object[] { localObject1 });
+    localay.edit().putString("startup_info", (String)localObject1).commit();
     AppMethodBeat.o(19903);
   }
   
@@ -86,37 +86,37 @@ public final class o
   public static void report()
   {
     AppMethodBeat.i(19906);
-    if ((fFr != 0L) && (bt.aO(fFr) < 3600000L))
+    if ((fHv != 0L) && (bu.aO(fHv) < 3600000L))
     {
       AppMethodBeat.o(19906);
       return;
     }
-    int i = ((Integer)ba.aBO().get(37, Integer.valueOf(0))).intValue();
-    if (d.Fnj != i)
+    int i = ((Integer)bc.aCe().get(37, Integer.valueOf(0))).intValue();
+    if (d.FFH != i)
     {
-      ba.aBO().set(37, Integer.valueOf(d.Fnj));
-      new ap(Looper.getMainLooper()).post(new o.1(i));
+      bc.aCe().set(37, Integer.valueOf(d.FFH));
+      new aq(Looper.getMainLooper()).post(new o.1(i));
     }
-    fFr = bt.HI();
-    new ap(Looper.getMainLooper()).post(new Runnable()
+    fHv = bu.HQ();
+    new aq(Looper.getMainLooper()).post(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(19900);
-        o.uh("mm_proc_startup");
-        o.uh("push_proc_startup");
+        o.uC("mm_proc_startup");
+        o.uC("push_proc_startup");
         AppMethodBeat.o(19900);
       }
     });
     AppMethodBeat.o(19906);
   }
   
-  private static void ug(String paramString)
+  private static void uB(String paramString)
   {
     AppMethodBeat.i(19905);
-    Object localObject = aj.getContext().getSharedPreferences(paramString, 0);
-    paramString = ax.aQA(paramString);
-    ax.a((SharedPreferences)localObject, paramString);
+    Object localObject = ak.getContext().getSharedPreferences(paramString, 0);
+    paramString = ay.aRX(paramString);
+    ay.a((SharedPreferences)localObject, paramString);
     localObject = paramString.getString("startup_info", "").split("=");
     if ((localObject == null) || (localObject.length == 0))
     {
@@ -124,57 +124,57 @@ public final class o
       return;
     }
     a locala = new a();
-    if (locala.ui(localObject[(localObject.length - 1)]))
+    if (locala.uD(localObject[(localObject.length - 1)]))
     {
-      locala.fFu = 2;
+      locala.fHy = 2;
       localObject[(localObject.length - 1)] = locala.toString();
     }
     localObject = g((String[])localObject);
-    ad.d("MicroMsg.ProcessReport", "uerExit new info %s", new Object[] { localObject });
+    ae.d("MicroMsg.ProcessReport", "uerExit new info %s", new Object[] { localObject });
     paramString.edit().putString("startup_info", (String)localObject).commit();
     AppMethodBeat.o(19905);
   }
   
   static final class a
   {
-    int fFt;
-    int fFu = 1;
-    int fFv;
-    int fFw;
-    int fFx;
+    int fHA;
+    int fHB;
+    int fHx;
+    int fHy = 1;
+    int fHz;
     
     public final String toString()
     {
       AppMethodBeat.i(19902);
-      String str = String.format("%d,%d,%d,%d,%d", new Object[] { Integer.valueOf(this.fFt), Integer.valueOf(this.fFu), Integer.valueOf(this.fFv), Integer.valueOf(this.fFw), Integer.valueOf(this.fFx) });
+      String str = String.format("%d,%d,%d,%d,%d", new Object[] { Integer.valueOf(this.fHx), Integer.valueOf(this.fHy), Integer.valueOf(this.fHz), Integer.valueOf(this.fHA), Integer.valueOf(this.fHB) });
       AppMethodBeat.o(19902);
       return str;
     }
     
-    public final boolean ui(String paramString)
+    public final boolean uD(String paramString)
     {
       AppMethodBeat.i(19901);
       paramString = paramString.split(",");
       if ((paramString == null) || (paramString.length != 5))
       {
-        ad.e("MicroMsg.ProcessReport", "error format");
+        ae.e("MicroMsg.ProcessReport", "error format");
         AppMethodBeat.o(19901);
         return false;
       }
       try
       {
-        this.fFt = bt.getInt(paramString[0], 0);
-        this.fFu = bt.getInt(paramString[1], 0);
-        this.fFv = bt.getInt(paramString[2], 0);
-        this.fFw = bt.getInt(paramString[3], 0);
-        this.fFx = bt.getInt(paramString[4], 0);
+        this.fHx = bu.getInt(paramString[0], 0);
+        this.fHy = bu.getInt(paramString[1], 0);
+        this.fHz = bu.getInt(paramString[2], 0);
+        this.fHA = bu.getInt(paramString[3], 0);
+        this.fHB = bu.getInt(paramString[4], 0);
         AppMethodBeat.o(19901);
         return true;
       }
       catch (Exception paramString)
       {
-        ad.e("MicroMsg.ProcessReport", "ParseFrom parse failed");
-        ad.printErrStackTrace("MicroMsg.ProcessReport", paramString, "", new Object[0]);
+        ae.e("MicroMsg.ProcessReport", "ParseFrom parse failed");
+        ae.printErrStackTrace("MicroMsg.ProcessReport", paramString, "", new Object[0]);
         AppMethodBeat.o(19901);
       }
       return false;

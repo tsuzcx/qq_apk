@@ -16,8 +16,8 @@ final class FavoriteFileDetailUI$5
     AppMethodBeat.i(107120);
     b localb = new b();
     localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/fav/ui/detail/FavoriteFileDetailUI$13", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-    FavoriteFileDetailUI.t(this.rAl);
+    a.b("com/tencent/mm/plugin/fav/ui/detail/FavoriteFileDetailUI$13", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+    FavoriteFileDetailUI.t(this.rIw);
     a.a(this, "com/tencent/mm/plugin/fav/ui/detail/FavoriteFileDetailUI$13", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(107120);
   }

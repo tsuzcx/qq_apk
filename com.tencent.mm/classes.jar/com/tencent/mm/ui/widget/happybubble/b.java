@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
 import android.view.ViewTreeObserver;
 import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.view.Window;
@@ -22,34 +21,34 @@ import com.tencent.mm.ui.ar;
 public class b
   extends Dialog
 {
-  private BubbleLayout KXJ;
-  private View KXK;
-  private View KXL;
-  private int KXM;
-  private boolean KXN;
-  private a KXO;
-  private a[] KXP;
-  private a KXQ;
-  private boolean KXR;
-  private int[] KXS;
+  private BubbleLayout Luh;
+  private View Lui;
+  private View Luj;
+  private int Luk;
+  private boolean Lul;
+  private a Lum;
+  private a[] Lun;
+  private a Luo;
+  private boolean Lup;
+  private int[] Luq;
   private ViewTreeObserver.OnGlobalLayoutListener ajt;
   private Activity mActivity;
   private boolean mCancelable;
-  private int mFF;
   private int mHeight;
+  private int mKJ;
   private int mMargin;
   private int mOffsetX;
   private int mOffsetY;
   private int mWidth;
   
-  public b(final Context paramContext)
+  public b(Context paramContext)
   {
     super(paramContext, 2131821723);
     AppMethodBeat.i(143532);
-    this.KXO = a.KXZ;
-    this.KXP = new a[4];
-    this.KXR = false;
-    this.KXS = new int[2];
+    this.Lum = a.Lux;
+    this.Lun = new a[4];
+    this.Lup = false;
+    this.Luq = new int[2];
     setCancelable(true);
     this.mActivity = ((Activity)paramContext);
     paramContext = getWindow();
@@ -59,44 +58,15 @@ public class b
       return;
     }
     paramContext = paramContext.getAttributes();
-    final int i = c.eB(getContext())[0];
-    this.mFF = ar.jG(getContext());
-    getWindow().getDecorView().setOnTouchListener(new View.OnTouchListener()
-    {
-      public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
-      {
-        AppMethodBeat.i(143525);
-        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bd(paramAnonymousView);
-        localb.bd(paramAnonymousMotionEvent);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/widget/happybubble/BubbleDialog$1", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahq());
-        if (b.a(b.this))
-        {
-          if (paramContext.x < 0) {}
-          for (float f1 = 0.0F;; f1 = paramContext.x)
-          {
-            float f2 = f1;
-            if (paramAnonymousView.getWidth() + f1 > i) {
-              f2 = i - paramAnonymousView.getWidth();
-            }
-            paramAnonymousMotionEvent.setLocation(f2 + paramAnonymousMotionEvent.getX(), paramContext.y + paramAnonymousMotionEvent.getY());
-            b.b(b.this).getWindow().getDecorView().dispatchTouchEvent(paramAnonymousMotionEvent);
-            com.tencent.mm.hellhoundlib.a.a.a(true, this, "com/tencent/mm/ui/widget/happybubble/BubbleDialog$1", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
-            AppMethodBeat.o(143525);
-            return true;
-          }
-        }
-        com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/mm/ui/widget/happybubble/BubbleDialog$1", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
-        AppMethodBeat.o(143525);
-        return false;
-      }
-    });
+    int i = c.eF(getContext())[0];
+    this.mKJ = ar.jN(getContext());
+    getWindow().getDecorView().setOnTouchListener(new b.1(this, paramContext, i));
     AppMethodBeat.o(143532);
   }
   
-  private boolean fMn()
+  private boolean fQH()
   {
-    a[] arrayOfa = this.KXP;
+    a[] arrayOfa = this.Lun;
     int m = arrayOfa.length;
     int i = 0;
     int k;
@@ -111,25 +81,25 @@ public class b
     return j > 0;
   }
   
-  private void fMo()
+  private void fQI()
   {
     AppMethodBeat.i(143535);
-    if ((this.KXL == null) || ((this.KXQ == null) && (!fMn())))
+    if ((this.Luj == null) || ((this.Luo == null) && (!fQH())))
     {
       AppMethodBeat.o(143535);
       return;
     }
     Object localObject = new int[4];
-    localObject[0] = this.KXS[0];
-    localObject[1] = this.KXS[1];
-    localObject[2] = (c.eB(getContext())[0] - this.KXS[0] - this.KXL.getWidth());
-    localObject[3] = (c.eB(getContext())[1] - this.KXS[1] - this.KXL.getHeight() - this.KXJ.getLookLength() - com.tencent.mm.cc.a.fromDPToPix(this.KXL.getContext(), 30));
+    localObject[0] = this.Luq[0];
+    localObject[1] = this.Luq[1];
+    localObject[2] = (c.eF(getContext())[0] - this.Luq[0] - this.Luj.getWidth());
+    localObject[3] = (c.eF(getContext())[1] - this.Luq[1] - this.Luj.getHeight() - this.Luh.getLookLength() - com.tencent.mm.cb.a.fromDPToPix(this.Luj.getContext(), 30));
     int j;
     int i;
-    if (fMn())
+    if (fQH())
     {
-      this.KXK.measure(0, 0);
-      a[] arrayOfa = this.KXP;
+      this.Lui.measure(0, 0);
+      a[] arrayOfa = this.Lun;
       j = arrayOfa.length;
       i = 0;
       if (i < j)
@@ -140,7 +110,7 @@ public class b
           AppMethodBeat.o(143535);
           return;
         }
-        switch (4.KXW[locala.ordinal()])
+        switch (4.Luu[locala.ordinal()])
         {
         }
         do
@@ -153,29 +123,29 @@ public class b
               {
                 i += 1;
                 break;
-              } while (localObject[0] <= this.KXK.getMeasuredWidth());
-              this.KXO = a.KXY;
+              } while (localObject[0] <= this.Lui.getMeasuredWidth());
+              this.Lum = a.Luw;
               AppMethodBeat.o(143535);
               return;
-            } while (localObject[1] <= this.KXK.getMeasuredHeight());
-            this.KXO = a.KXZ;
+            } while (localObject[1] <= this.Lui.getMeasuredHeight());
+            this.Lum = a.Lux;
             AppMethodBeat.o(143535);
             return;
-          } while (localObject[2] <= this.KXK.getMeasuredWidth());
-          this.KXO = a.KYa;
+          } while (localObject[2] <= this.Lui.getMeasuredWidth());
+          this.Lum = a.Luy;
           AppMethodBeat.o(143535);
           return;
-        } while (localObject[3] <= this.KXK.getMeasuredHeight());
-        this.KXO = a.KYb;
+        } while (localObject[3] <= this.Lui.getMeasuredHeight());
+        this.Lum = a.Luz;
         AppMethodBeat.o(143535);
         return;
       }
-      this.KXO = this.KXP[0];
+      this.Lum = this.Lun[0];
       AppMethodBeat.o(143535);
       return;
     }
-    if (this.KXQ != null) {}
-    switch (4.KXX[this.KXQ.ordinal()])
+    if (this.Luo != null) {}
+    switch (4.Luv[this.Luo.ordinal()])
     {
     case 1: 
     default: 
@@ -197,70 +167,70 @@ public class b
       j += 1;
       break;
       if (localObject[1] > localObject[3]) {}
-      for (localObject = a.KXZ;; localObject = a.KYb)
+      for (localObject = a.Lux;; localObject = a.Luz)
       {
-        this.KXO = ((a)localObject);
+        this.Lum = ((a)localObject);
         AppMethodBeat.o(143535);
         return;
       }
       if (localObject[0] > localObject[2]) {}
-      for (localObject = a.KXY;; localObject = a.KYa)
+      for (localObject = a.Luw;; localObject = a.Luy)
       {
-        this.KXO = ((a)localObject);
+        this.Lum = ((a)localObject);
         AppMethodBeat.o(143535);
         return;
       }
       if (i == localObject[0])
       {
-        this.KXO = a.KXY;
+        this.Lum = a.Luw;
         AppMethodBeat.o(143535);
         return;
       }
       if (i == localObject[1])
       {
-        this.KXO = a.KXZ;
+        this.Lum = a.Lux;
         AppMethodBeat.o(143535);
         return;
       }
       if (i == localObject[2])
       {
-        this.KXO = a.KYa;
+        this.Lum = a.Luy;
         AppMethodBeat.o(143535);
         return;
       }
       if (i == localObject[3]) {
-        this.KXO = a.KYb;
+        this.Lum = a.Luz;
       }
       AppMethodBeat.o(143535);
       return;
     }
   }
   
-  private void fMp()
+  private void fQJ()
   {
     AppMethodBeat.i(143536);
-    switch (4.KXW[this.KXO.ordinal()])
+    switch (4.Luu[this.Lum.ordinal()])
     {
     }
     for (;;)
     {
-      this.KXJ.fMs();
+      this.Luh.fQM();
       AppMethodBeat.o(143536);
       return;
-      this.KXJ.setLook(BubbleLayout.a.KYt);
+      this.Luh.setLook(BubbleLayout.a.LuR);
       continue;
-      this.KXJ.setLook(BubbleLayout.a.KYu);
+      this.Luh.setLook(BubbleLayout.a.LuS);
       continue;
-      this.KXJ.setLook(BubbleLayout.a.KYr);
+      this.Luh.setLook(BubbleLayout.a.LuP);
       continue;
-      this.KXJ.setLook(BubbleLayout.a.KYs);
+      this.Luh.setLook(BubbleLayout.a.LuQ);
     }
   }
   
-  private void fMq()
+  private void fQK()
   {
     AppMethodBeat.i(143538);
-    if (this.KXL == null)
+    if (this.Luj == null)
     {
       AppMethodBeat.o(143538);
       return;
@@ -282,134 +252,134 @@ public class b
     FrameLayout.LayoutParams localLayoutParams1;
     if (this.mMargin != 0)
     {
-      localLayoutParams1 = (FrameLayout.LayoutParams)this.KXJ.getLayoutParams();
-      if ((this.KXO == a.KXZ) || (this.KXO == a.KYb))
+      localLayoutParams1 = (FrameLayout.LayoutParams)this.Luh.getLayoutParams();
+      if ((this.Lum == a.Lux) || (this.Lum == a.Luz))
       {
         localLayoutParams1.leftMargin = this.mMargin;
         localLayoutParams1.rightMargin = this.mMargin;
-        this.KXJ.setLayoutParams(localLayoutParams1);
+        this.Luh.setLayoutParams(localLayoutParams1);
       }
     }
     else
     {
-      switch (4.KXW[this.KXO.ordinal()])
+      switch (4.Luu[this.Lum.ordinal()])
       {
       }
     }
     for (;;)
     {
-      this.KXJ.invalidate();
+      this.Luh.invalidate();
       localWindow.setAttributes(localLayoutParams);
       AppMethodBeat.o(143538);
       return;
       localLayoutParams1.topMargin = this.mMargin;
       localLayoutParams1.bottomMargin = this.mMargin;
       break;
-      localLayoutParams.x = (this.KXS[0] + this.KXL.getWidth() / 2 - this.KXJ.getWidth() / 2 + this.mOffsetX);
+      localLayoutParams.x = (this.Luq[0] + this.Luj.getWidth() / 2 - this.Luh.getWidth() / 2 + this.mOffsetX);
       if ((this.mMargin != 0) && (this.mWidth == -1)) {
-        this.KXJ.setLookPosition(this.KXS[0] - this.mMargin + this.KXL.getWidth() / 2 - this.KXJ.getLookWidth() / 2);
+        this.Luh.setLookPosition(this.Luq[0] - this.mMargin + this.Luj.getWidth() / 2 - this.Luh.getLookWidth() / 2);
       }
       for (;;)
       {
-        if (this.KXO != a.KYb) {
+        if (this.Lum != a.Luz) {
           break label519;
         }
-        if (this.KXM != 0) {
-          this.mOffsetY = this.KXM;
+        if (this.Luk != 0) {
+          this.mOffsetY = this.Luk;
         }
-        localLayoutParams.y = (this.KXS[1] + this.KXL.getHeight() + this.mOffsetY - this.mFF);
+        localLayoutParams.y = (this.Luq[1] + this.Luj.getHeight() + this.mOffsetY - this.mKJ);
         break;
         if (localLayoutParams.x <= 0) {
-          this.KXJ.setLookPosition(this.KXS[0] + this.KXL.getWidth() / 2 - this.KXJ.getLookWidth() / 2);
-        } else if (localLayoutParams.x + this.KXJ.getWidth() > c.eB(getContext())[0]) {
-          this.KXJ.setLookPosition(this.KXS[0] - (c.eB(getContext())[0] - this.KXJ.getWidth()) + this.KXL.getWidth() / 2 - this.KXJ.getLookWidth() / 2);
+          this.Luh.setLookPosition(this.Luq[0] + this.Luj.getWidth() / 2 - this.Luh.getLookWidth() / 2);
+        } else if (localLayoutParams.x + this.Luh.getWidth() > c.eF(getContext())[0]) {
+          this.Luh.setLookPosition(this.Luq[0] - (c.eF(getContext())[0] - this.Luh.getWidth()) + this.Luj.getWidth() / 2 - this.Luh.getLookWidth() / 2);
         } else {
-          this.KXJ.setLookPosition(this.KXS[0] - localLayoutParams.x + this.KXL.getWidth() / 2 - this.KXJ.getLookWidth() / 2);
+          this.Luh.setLookPosition(this.Luq[0] - localLayoutParams.x + this.Luj.getWidth() / 2 - this.Luh.getLookWidth() / 2);
         }
       }
       label519:
-      if (this.KXM != 0) {
-        this.mOffsetY = (-this.KXM);
+      if (this.Luk != 0) {
+        this.mOffsetY = (-this.Luk);
       }
-      localLayoutParams.y = (this.KXS[1] - this.KXJ.getHeight() + this.mOffsetY - this.mFF);
+      localLayoutParams.y = (this.Luq[1] - this.Luh.getHeight() + this.mOffsetY - this.mKJ);
       continue;
-      localLayoutParams.y = (this.KXS[1] + this.mOffsetY + this.KXL.getHeight() / 2 - this.KXJ.getHeight() / 2 - this.mFF);
+      localLayoutParams.y = (this.Luq[1] + this.mOffsetY + this.Luj.getHeight() / 2 - this.Luh.getHeight() / 2 - this.mKJ);
       if ((this.mMargin != 0) && (this.mHeight == -1)) {
-        this.KXJ.setLookPosition(this.KXS[1] - this.mMargin + this.KXL.getHeight() / 2 - this.KXJ.getLookWidth() / 2 - this.mFF);
+        this.Luh.setLookPosition(this.Luq[1] - this.mMargin + this.Luj.getHeight() / 2 - this.Luh.getLookWidth() / 2 - this.mKJ);
       }
       for (;;)
       {
-        if (this.KXO != a.KYa) {
+        if (this.Lum != a.Luy) {
           break label887;
         }
-        if (this.KXM != 0) {
-          this.mOffsetX = this.KXM;
+        if (this.Luk != 0) {
+          this.mOffsetX = this.Luk;
         }
-        localLayoutParams.x = (this.KXS[0] + this.KXL.getWidth() + this.mOffsetX);
+        localLayoutParams.x = (this.Luq[0] + this.Luj.getWidth() + this.mOffsetX);
         break;
         if (localLayoutParams.y <= 0) {
-          this.KXJ.setLookPosition(this.KXS[1] + this.KXL.getHeight() / 2 - this.KXJ.getLookWidth() / 2 - this.mFF);
-        } else if (localLayoutParams.y + this.KXJ.getHeight() > c.eB(getContext())[1]) {
-          this.KXJ.setLookPosition(this.KXS[1] - (c.eB(getContext())[1] - this.KXJ.getHeight()) + this.KXL.getHeight() / 2 - this.KXJ.getLookWidth() / 2);
+          this.Luh.setLookPosition(this.Luq[1] + this.Luj.getHeight() / 2 - this.Luh.getLookWidth() / 2 - this.mKJ);
+        } else if (localLayoutParams.y + this.Luh.getHeight() > c.eF(getContext())[1]) {
+          this.Luh.setLookPosition(this.Luq[1] - (c.eF(getContext())[1] - this.Luh.getHeight()) + this.Luj.getHeight() / 2 - this.Luh.getLookWidth() / 2);
         } else {
-          this.KXJ.setLookPosition(this.KXS[1] - localLayoutParams.y + this.KXL.getHeight() / 2 - this.KXJ.getLookWidth() / 2 - this.mFF);
+          this.Luh.setLookPosition(this.Luq[1] - localLayoutParams.y + this.Luj.getHeight() / 2 - this.Luh.getLookWidth() / 2 - this.mKJ);
         }
       }
       label887:
-      if (this.KXM != 0) {
-        this.mOffsetX = (-this.KXM);
+      if (this.Luk != 0) {
+        this.mOffsetX = (-this.Luk);
       }
-      localLayoutParams.x = (this.KXS[0] - this.KXJ.getWidth() + this.mOffsetX);
+      localLayoutParams.x = (this.Luq[0] - this.Luh.getWidth() + this.mOffsetX);
     }
   }
   
   public final <T extends b> T a(BubbleLayout paramBubbleLayout)
   {
-    this.KXJ = paramBubbleLayout;
+    this.Luh = paramBubbleLayout;
     return this;
   }
   
   public final <T extends b> T a(a... paramVarArgs)
   {
-    this.KXP = paramVarArgs;
+    this.Lun = paramVarArgs;
     return this;
   }
   
   public void dismiss()
   {
     AppMethodBeat.i(143537);
-    if (this.KXN)
+    if (this.Lul)
     {
       View localView = getCurrentFocus();
       if ((localView instanceof TextView)) {
         ((InputMethodManager)getContext().getSystemService("input_method")).hideSoftInputFromWindow(localView.getWindowToken(), 0);
       }
     }
-    if ((this.KXJ != null) && (Build.VERSION.SDK_INT >= 16)) {
-      this.KXJ.getViewTreeObserver().removeOnGlobalLayoutListener(this.ajt);
+    if ((this.Luh != null) && (Build.VERSION.SDK_INT >= 16)) {
+      this.Luh.getViewTreeObserver().removeOnGlobalLayoutListener(this.ajt);
     }
     super.dismiss();
     AppMethodBeat.o(143537);
   }
   
-  public final <T extends b> T hc(View paramView)
+  public final <T extends b> T hh(View paramView)
   {
-    AppMethodBeat.i(186543);
-    this.KXL = paramView;
-    this.KXL.getLocationOnScreen(this.KXS);
+    AppMethodBeat.i(193801);
+    this.Luj = paramView;
+    this.Luj.getLocationOnScreen(this.Luq);
     if (this.ajt != null)
     {
-      fMo();
-      fMp();
-      fMq();
+      fQI();
+      fQJ();
+      fQK();
     }
-    AppMethodBeat.o(186543);
+    AppMethodBeat.o(193801);
     return this;
   }
   
-  public final <T extends b> T hd(View paramView)
+  public final <T extends b> T hi(View paramView)
   {
-    this.KXK = paramView;
+    this.Lui = paramView;
     return this;
   }
   
@@ -417,48 +387,48 @@ public class b
   {
     AppMethodBeat.i(143534);
     super.onCreate(paramBundle);
-    if (this.KXJ == null) {
-      this.KXJ = new BubbleLayout(getContext());
+    if (this.Luh == null) {
+      this.Luh = new BubbleLayout(getContext());
     }
-    if (this.KXK != null) {
-      this.KXJ.addView(this.KXK);
+    if (this.Lui != null) {
+      this.Luh.addView(this.Lui);
     }
-    setContentView(this.KXJ);
+    setContentView(this.Luh);
     paramBundle = getWindow();
     if (paramBundle == null)
     {
       AppMethodBeat.o(143534);
       return;
     }
-    if (this.KXN) {
+    if (this.Lul) {
       paramBundle.setSoftInputMode(18);
     }
     paramBundle.setLayout(-2, -2);
-    fMo();
-    fMp();
+    fQI();
+    fQJ();
     this.ajt = new ViewTreeObserver.OnGlobalLayoutListener()
     {
-      int ngT;
-      int ngU;
+      int nmb;
+      int nmc;
       
       public final void onGlobalLayout()
       {
         AppMethodBeat.i(143526);
-        if ((this.ngT == b.c(b.this).getWidth()) && (this.ngU == b.c(b.this).getHeight()))
+        if ((this.nmb == b.c(b.this).getWidth()) && (this.nmc == b.c(b.this).getHeight()))
         {
           AppMethodBeat.o(143526);
           return;
         }
         b.d(b.this);
-        this.ngT = b.c(b.this).getWidth();
-        this.ngU = b.c(b.this).getHeight();
+        this.nmb = b.c(b.this).getWidth();
+        this.nmc = b.c(b.this).getHeight();
         AppMethodBeat.o(143526);
       }
     };
-    this.KXJ.getViewTreeObserver().addOnGlobalLayoutListener(this.ajt);
-    this.KXJ.setOnClickEdgeListener(new BubbleLayout.b()
+    this.Luh.getViewTreeObserver().addOnGlobalLayoutListener(this.ajt);
+    this.Luh.setOnClickEdgeListener(new BubbleLayout.b()
     {
-      public final void fMr()
+      public final void fQL()
       {
         AppMethodBeat.i(143527);
         if (b.e(b.this)) {
@@ -473,7 +443,7 @@ public class b
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
     AppMethodBeat.i(143533);
-    if ((this.KXR) && (paramInt == 4) && (paramKeyEvent.getRepeatCount() == 0))
+    if ((this.Lup) && (paramInt == 4) && (paramKeyEvent.getRepeatCount() == 0))
     {
       dismiss();
       this.mActivity.onBackPressed();
@@ -525,11 +495,11 @@ public class b
     static
     {
       AppMethodBeat.i(143531);
-      KXY = new a("LEFT", 0);
-      KXZ = new a("TOP", 1);
-      KYa = new a("RIGHT", 2);
-      KYb = new a("BOTTOM", 3);
-      KYc = new a[] { KXY, KXZ, KYa, KYb };
+      Luw = new a("LEFT", 0);
+      Lux = new a("TOP", 1);
+      Luy = new a("RIGHT", 2);
+      Luz = new a("BOTTOM", 3);
+      LuA = new a[] { Luw, Lux, Luy, Luz };
       AppMethodBeat.o(143531);
     }
     

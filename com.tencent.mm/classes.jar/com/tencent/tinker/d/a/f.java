@@ -6,7 +6,7 @@ import java.util.concurrent.atomic.AtomicReference;
 
 public final class f
 {
-  private static AtomicReference<byte[]> MhN = new AtomicReference();
+  private static AtomicReference<byte[]> MEK = new AtomicReference();
   
   public static int W(InputStream paramInputStream)
   {
@@ -30,7 +30,7 @@ public final class f
       if (paramArrayOfByte == null) {
         throw new NullPointerException("dst == null");
       }
-      b.aV(paramArrayOfByte.length, 0, paramInt2);
+      b.aW(paramArrayOfByte.length, 0, paramInt2);
       while (paramInt2 > 0)
       {
         int i = paramInputStream.read(paramArrayOfByte, paramInt1, paramInt2);

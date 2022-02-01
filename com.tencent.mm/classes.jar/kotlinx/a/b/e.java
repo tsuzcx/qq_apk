@@ -7,23 +7,23 @@ import java.util.List;
 import kotlinx.a.h;
 import kotlinx.a.n;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/serialization/internal/ArrayListSerializer;", "E", "Lkotlinx/serialization/internal/ListLikeSerializer;", "", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "element", "Lkotlinx/serialization/KSerializer;", "(Lkotlinx/serialization/KSerializer;)V", "descriptor", "Lkotlinx/serialization/SerialDescriptor;", "getDescriptor", "()Lkotlinx/serialization/SerialDescriptor;", "builder", "builderSize", "", "checkCapacity", "", "size", "collectionIterator", "", "collectionSize", "insert", "index", "(Ljava/util/ArrayList;ILjava/lang/Object;)V", "toBuilder", "toResult", "kotlinx-serialization-runtime"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/serialization/internal/ArrayListSerializer;", "E", "Lkotlinx/serialization/internal/ListLikeSerializer;", "", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "element", "Lkotlinx/serialization/KSerializer;", "(Lkotlinx/serialization/KSerializer;)V", "descriptor", "Lkotlinx/serialization/SerialDescriptor;", "getDescriptor", "()Lkotlinx/serialization/SerialDescriptor;", "builder", "builderSize", "", "checkCapacity", "", "size", "collectionIterator", "", "collectionSize", "insert", "index", "(Ljava/util/ArrayList;ILjava/lang/Object;)V", "toBuilder", "toResult", "kotlinx-serialization-runtime"})
 public final class e<E>
   extends ai<E, List<? extends E>, ArrayList<E>>
 {
-  private final n NLm;
+  private final n Ois;
   
   public e(h<E> paramh)
   {
     super(paramh, (byte)0);
-    AppMethodBeat.i(191237);
-    this.NLm = ((n)new d(paramh.eLj()));
-    AppMethodBeat.o(191237);
+    AppMethodBeat.i(199825);
+    this.Ois = ((n)new d(paramh.eOR()));
+    AppMethodBeat.o(199825);
   }
   
-  public final n eLj()
+  public final n eOR()
   {
-    return this.NLm;
+    return this.Ois;
   }
 }
 

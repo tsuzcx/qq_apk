@@ -3,15 +3,15 @@ package kotlinx.coroutines;
 import d.l;
 import kotlinx.coroutines.internal.a;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/coroutines/EventLoop;", "Lkotlinx/coroutines/CoroutineDispatcher;", "()V", "isActive", "", "()Z", "isEmpty", "isUnconfinedLoopActive", "isUnconfinedQueueEmpty", "nextTime", "", "getNextTime", "()J", "shared", "unconfinedQueue", "Lkotlinx/coroutines/internal/ArrayQueue;", "Lkotlinx/coroutines/DispatchedTask;", "useCount", "decrementUseCount", "", "unconfined", "delta", "dispatchUnconfined", "task", "incrementUseCount", "processNextEvent", "processUnconfinedEvent", "shouldBeProcessedFromContext", "shutdown", "kotlinx-coroutines-core"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/coroutines/EventLoop;", "Lkotlinx/coroutines/CoroutineDispatcher;", "()V", "isActive", "", "()Z", "isEmpty", "isUnconfinedLoopActive", "isUnconfinedQueueEmpty", "nextTime", "", "getNextTime", "()J", "shared", "unconfinedQueue", "Lkotlinx/coroutines/internal/ArrayQueue;", "Lkotlinx/coroutines/DispatchedTask;", "useCount", "decrementUseCount", "", "unconfined", "delta", "dispatchUnconfined", "task", "incrementUseCount", "processNextEvent", "processUnconfinedEvent", "shouldBeProcessedFromContext", "shutdown", "kotlinx-coroutines-core"})
 public abstract class bd
   extends ac
 {
-  private long NIu;
-  private boolean NIv;
-  private a<ax<?>> NIw;
+  private long OfA;
+  private boolean OfB;
+  private a<ax<?>> OfC;
   
-  private static long At(boolean paramBoolean)
+  private static long AG(boolean paramBoolean)
   {
     if (paramBoolean) {
       return 4294967296L;
@@ -19,37 +19,37 @@ public abstract class bd
     return 1L;
   }
   
-  public final void Au(boolean paramBoolean)
+  public final void AH(boolean paramBoolean)
   {
-    this.NIu += At(paramBoolean);
+    this.OfA += AG(paramBoolean);
     if (!paramBoolean) {
-      this.NIv = true;
+      this.OfB = true;
     }
   }
   
   public final void b(ax<?> paramax)
   {
-    a locala2 = this.NIw;
+    a locala2 = this.OfC;
     a locala1 = locala2;
     if (locala2 == null)
     {
       locala1 = new a();
-      this.NIw = locala1;
+      this.OfC = locala1;
     }
     locala1.addLast(paramax);
   }
   
-  public long gvr()
+  public long gzT()
   {
-    if (!gvt()) {
+    if (!gzV()) {
       return 9223372036854775807L;
     }
-    return gvs();
+    return gzU();
   }
   
-  protected long gvs()
+  protected long gzU()
   {
-    a locala = this.NIw;
+    a locala = this.OfC;
     if (locala == null) {}
     while (locala.isEmpty()) {
       return 9223372036854775807L;
@@ -57,13 +57,13 @@ public abstract class bd
     return 0L;
   }
   
-  public final boolean gvt()
+  public final boolean gzV()
   {
-    Object localObject = this.NIw;
+    Object localObject = this.OfC;
     if (localObject == null) {
       return false;
     }
-    localObject = (ax)((a)localObject).gvT();
+    localObject = (ax)((a)localObject).gAv();
     if (localObject == null) {
       return false;
     }
@@ -71,44 +71,44 @@ public abstract class bd
     return true;
   }
   
-  public final boolean gvu()
+  public final boolean gzW()
   {
-    return this.NIu >= At(true);
+    return this.OfA >= AG(true);
   }
   
-  public final boolean gvv()
+  public final boolean gzX()
   {
-    a locala = this.NIw;
+    a locala = this.OfC;
     if (locala != null) {
       return locala.isEmpty();
     }
     return true;
   }
   
-  public final void gvw()
+  public final void gzY()
   {
     int i = 1;
-    this.NIu -= At(true);
-    if (this.NIu > 0L) {}
+    this.OfA -= AG(true);
+    if (this.OfA > 0L) {}
     do
     {
       return;
-      if (am.gvd())
+      if (am.gzF())
       {
-        if (this.NIu == 0L) {}
+        if (this.OfA == 0L) {}
         while (i == 0)
         {
           throw ((Throwable)new AssertionError());
           i = 0;
         }
       }
-    } while (!this.NIv);
+    } while (!this.OfB);
     shutdown();
   }
   
   protected boolean isEmpty()
   {
-    return gvv();
+    return gzX();
   }
   
   protected void shutdown() {}

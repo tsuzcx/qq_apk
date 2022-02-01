@@ -1,145 +1,167 @@
 package com.tencent.mm.storage;
 
+import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.e.j;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import java.util.ArrayList;
+import java.util.List;
 
 public final class bj
+  extends j<bi>
+  implements com.tencent.mm.plugin.messenger.foundation.a.a.e
 {
-  public static final bj ILN;
-  public static final bj ILO;
-  public static final bj ILP;
-  public static final bj ILQ;
-  public static final bj ILR;
-  public static final bj ILS;
-  public static final bj ILT;
-  public static final bj ILU;
-  public static final bj ILV;
-  public static final bj ILW;
-  public static final bj ILX;
-  public static final bj ILY;
-  public static final bj ILZ;
-  public int hbR = 0;
-  public String tag = "";
+  private static final String[] IJJ;
+  public static final String[] SQL_CREATE;
+  public com.tencent.mm.sdk.e.e db;
   
   static
   {
-    AppMethodBeat.i(133298);
-    ILN = new bj("timeline");
-    ILO = new bj("album_friend");
-    ILP = new bj("album_self");
-    ILQ = new bj("album_stranger");
-    ILR = new bj("profile_friend");
-    ILS = new bj("profile_stranger");
-    ILT = new bj("comment");
-    ILU = new bj("comment_detail");
-    ILV = new bj("other");
-    ILW = new bj("snssight");
-    ILX = new bj("fts");
-    ILY = new bj("storysight");
-    ILZ = new bj("storyalbum");
-    AppMethodBeat.o(133298);
+    AppMethodBeat.i(117170);
+    SQL_CREATE = new String[] { j.getCreateSQLs(bi.info, "fmessage_msginfo") };
+    IJJ = new String[] { "CREATE INDEX IF NOT EXISTS  fmessageTalkerIndex ON fmessage_msginfo ( talker )" };
+    AppMethodBeat.o(117170);
   }
   
-  public bj(String paramString)
+  public bj(com.tencent.mm.sdk.e.e parame)
   {
-    this.tag = paramString;
+    super(parame, bi.info, "fmessage_msginfo", IJJ);
+    this.db = parame;
   }
   
-  public static bj a(bj parambj, int paramInt)
+  public final bi[] aVw(String paramString)
   {
-    AppMethodBeat.i(133295);
-    parambj = new bj(parambj.tag);
-    parambj.hbR = paramInt;
-    AppMethodBeat.o(133295);
-    return parambj;
-  }
-  
-  public static bj frn()
-  {
-    AppMethodBeat.i(133288);
-    bj localbj = new bj("timeline");
-    AppMethodBeat.o(133288);
-    return localbj;
-  }
-  
-  public static bj fro()
-  {
-    AppMethodBeat.i(133289);
-    bj localbj = new bj("album_friend");
-    AppMethodBeat.o(133289);
-    return localbj;
-  }
-  
-  public static bj frp()
-  {
-    AppMethodBeat.i(133290);
-    bj localbj = new bj("album_self");
-    AppMethodBeat.o(133290);
-    return localbj;
-  }
-  
-  public static bj frq()
-  {
-    AppMethodBeat.i(133291);
-    bj localbj = new bj("album_stranger");
-    AppMethodBeat.o(133291);
-    return localbj;
-  }
-  
-  public static bj frr()
-  {
-    AppMethodBeat.i(133292);
-    bj localbj = new bj("comment_detail");
-    AppMethodBeat.o(133292);
-    return localbj;
-  }
-  
-  public static bj frs()
-  {
-    AppMethodBeat.i(133293);
-    bj localbj = new bj("snssight");
-    AppMethodBeat.o(133293);
-    return localbj;
-  }
-  
-  public static bj frt()
-  {
-    AppMethodBeat.i(133294);
-    bj localbj = new bj("storysight");
-    AppMethodBeat.o(133294);
-    return localbj;
-  }
-  
-  public final bj aaU(int paramInt)
-  {
-    this.hbR = paramInt;
-    return this;
-  }
-  
-  public final boolean equals(Object paramObject)
-  {
-    AppMethodBeat.i(133296);
-    if ((paramObject instanceof bj))
+    AppMethodBeat.i(117162);
+    ae.d("MicroMsg.FMessageMsgInfoStorage", "getLastFMessageMsgInfo");
+    paramString = "select *, rowid from fmessage_msginfo  where talker = '" + bu.aSk(paramString) + "' order by createTime DESC limit 3";
+    paramString = this.db.a(paramString, null, 2);
+    ArrayList localArrayList = new ArrayList();
+    while (paramString.moveToNext())
     {
-      bool = ((bj)paramObject).tag.equals(this.tag);
-      AppMethodBeat.o(133296);
-      return bool;
+      bi localbi = new bi();
+      localbi.convertFrom(paramString);
+      localArrayList.add(localbi);
     }
-    boolean bool = super.equals(paramObject);
-    AppMethodBeat.o(133296);
+    paramString.close();
+    paramString = (bi[])localArrayList.toArray(new bi[localArrayList.size()]);
+    AppMethodBeat.o(117162);
+    return paramString;
+  }
+  
+  public final bi aVx(String paramString)
+  {
+    AppMethodBeat.i(117164);
+    paramString = gx(paramString, 1);
+    if ((paramString != null) && (paramString.length > 0))
+    {
+      paramString = paramString[0];
+      AppMethodBeat.o(117164);
+      return paramString;
+    }
+    AppMethodBeat.o(117164);
+    return null;
+  }
+  
+  public final bi aqR(String paramString)
+  {
+    AppMethodBeat.i(117163);
+    if ((paramString == null) || (paramString.length() == 0))
+    {
+      ae.e("MicroMsg.FMessageMsgInfoStorage", "getLastFMsg fail, talker is null");
+      AppMethodBeat.o(117163);
+      return null;
+    }
+    paramString = "select * from fmessage_msginfo where talker = '" + bu.aSk(paramString) + "' order by createTime DESC limit 1";
+    paramString = this.db.a(paramString, null, 2);
+    bi localbi = new bi();
+    if (paramString.moveToFirst()) {
+      localbi.convertFrom(paramString);
+    }
+    paramString.close();
+    AppMethodBeat.o(117163);
+    return localbi;
+  }
+  
+  public final boolean aqS(String paramString)
+  {
+    AppMethodBeat.i(117168);
+    if ((paramString == null) || (paramString.length() == 0))
+    {
+      ae.e("MicroMsg.FMessageMsgInfoStorage", "deleteByTalker fail, talker is null");
+      AppMethodBeat.o(117168);
+      return false;
+    }
+    paramString = "delete from fmessage_msginfo where talker = '" + bu.aSk(paramString) + "'";
+    boolean bool = this.db.execSQL("fmessage_msginfo", paramString);
+    AppMethodBeat.o(117168);
     return bool;
   }
   
-  public final String toString()
+  public final boolean b(bi parambi)
   {
-    AppMethodBeat.i(133297);
-    String str = this.tag + "@" + this.hbR;
-    AppMethodBeat.o(133297);
-    return str;
+    AppMethodBeat.i(117166);
+    if (parambi == null)
+    {
+      ae.e("MicroMsg.FMessageMsgInfoStorage", "insert fail, fmsgInfo is null");
+      AppMethodBeat.o(117166);
+      return false;
+    }
+    if (super.insert(parambi))
+    {
+      doNotify(parambi.systemRowid);
+      AppMethodBeat.o(117166);
+      return true;
+    }
+    AppMethodBeat.o(117166);
+    return false;
+  }
+  
+  public final List<bi> doO()
+  {
+    AppMethodBeat.i(117167);
+    ae.d("MicroMsg.FMessageMsgInfoStorage", "getFMsgByType, type = 0");
+    ArrayList localArrayList = new ArrayList();
+    Cursor localCursor = this.db.a("select *, rowid from fmessage_msginfo where type = 0", null, 2);
+    while (localCursor.moveToNext())
+    {
+      bi localbi = new bi();
+      localbi.convertFrom(localCursor);
+      localArrayList.add(localbi);
+    }
+    localCursor.close();
+    ae.d("MicroMsg.FMessageMsgInfoStorage", "getFMsgByType, size = " + localArrayList.size());
+    AppMethodBeat.o(117167);
+    return localArrayList;
+  }
+  
+  public final bi[] gx(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(117165);
+    if ((paramString == null) || (paramString.length() == 0))
+    {
+      ae.e("MicroMsg.FMessageMsgInfoStorage", "getLastRecvFMsg fail, talker is null");
+      AppMethodBeat.o(117165);
+      return null;
+    }
+    paramString = "select * from fmessage_msginfo where isSend != 1 and talker = '" + bu.aSk(paramString) + "' order by createTime DESC limit " + paramInt;
+    paramString = this.db.a(paramString, null, 2);
+    ArrayList localArrayList = new ArrayList();
+    while (paramString.moveToNext())
+    {
+      bi localbi = new bi();
+      localbi.convertFrom(paramString);
+      localArrayList.add(localbi);
+    }
+    paramString.close();
+    paramString = (bi[])localArrayList.toArray(new bi[localArrayList.size()]);
+    AppMethodBeat.o(117165);
+    return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.storage.bj
  * JD-Core Version:    0.7.0.1
  */

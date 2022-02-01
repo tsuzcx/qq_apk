@@ -2,11 +2,11 @@ package com.tencent.matrix.a.c.a;
 
 public abstract interface a
 {
-  public abstract void Ii();
+  public abstract void Iq();
   
-  public abstract void Ij();
+  public abstract void Ir();
   
-  public abstract int Ik();
+  public abstract int Is();
   
   public abstract void a(com.tencent.matrix.a.c.a parama);
   

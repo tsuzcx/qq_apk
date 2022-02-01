@@ -4,7 +4,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.e.c.a;
 import com.tencent.mm.sdk.e.e;
 import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.storagebase.g;
 import com.tencent.mm.storagebase.g.a;
 import com.tencent.mm.storagebase.h;
@@ -15,8 +15,8 @@ public final class t
   extends j<SmileyInfo>
   implements g.a
 {
-  private static final String[] IOp;
-  private static final String[] IOq;
+  private static final String[] JiV;
+  private static final String[] JiW;
   public static final String[] SQL_CREATE;
   private e db;
   
@@ -24,8 +24,8 @@ public final class t
   {
     AppMethodBeat.i(105145);
     SQL_CREATE = new String[] { j.getCreateSQLs(SmileyInfo.info, "SmileyInfo") };
-    IOp = new String[] { "key", "cnValue", "qqValue", "enValue", "twValue", "thValue", "eggIndex", "fileName" };
-    IOq = new String[] { "key" };
+    JiV = new String[] { "key", "cnValue", "qqValue", "enValue", "twValue", "thValue", "eggIndex", "fileName" };
+    JiW = new String[] { "key" };
     AppMethodBeat.o(105145);
   }
   
@@ -46,12 +46,12 @@ public final class t
     return 0;
   }
   
-  public final boolean aU(ArrayList<SmileyInfo> paramArrayList)
+  public final boolean aV(ArrayList<SmileyInfo> paramArrayList)
   {
     AppMethodBeat.i(105144);
     if ((paramArrayList == null) || (paramArrayList.size() <= 0))
     {
-      ad.i("MicroMsg.emoji.NewSmileyInfoStorage", "insertSmileyInfoList failed. list is null.");
+      ae.i("MicroMsg.emoji.NewSmileyInfoStorage", "insertSmileyInfoList failed. list is null.");
       AppMethodBeat.o(105144);
       return false;
     }
@@ -60,7 +60,7 @@ public final class t
     if ((this.db instanceof h))
     {
       localh = (h)this.db;
-      l = localh.xO(Thread.currentThread().getId());
+      l = localh.yi(Thread.currentThread().getId());
     }
     for (;;)
     {
@@ -71,7 +71,7 @@ public final class t
       }
       int i = -1;
       if (localh != null) {
-        i = localh.sJ(l);
+        i = localh.sW(l);
       }
       if (i >= 0)
       {
@@ -86,7 +86,7 @@ public final class t
   }
   
   /* Error */
-  public final ArrayList<SmileyInfo> cgv()
+  public final ArrayList<SmileyInfo> chL()
   {
     // Byte code:
     //   0: ldc 145
@@ -98,7 +98,7 @@ public final class t
     //   14: aload_0
     //   15: getfield 72	com/tencent/mm/storage/emotion/t:db	Lcom/tencent/mm/sdk/e/e;
     //   18: ldc 32
-    //   20: getstatic 56	com/tencent/mm/storage/emotion/t:IOp	[Ljava/lang/String;
+    //   20: getstatic 56	com/tencent/mm/storage/emotion/t:JiV	[Ljava/lang/String;
     //   23: ldc 149
     //   25: iconst_1
     //   26: anewarray 24	java/lang/String
@@ -163,8 +163,8 @@ public final class t
     //   132: astore_2
     //   133: ldc 85
     //   135: aload 4
-    //   137: invokestatic 184	com/tencent/mm/sdk/platformtools/bt:n	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   140: invokestatic 187	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   137: invokestatic 183	com/tencent/mm/sdk/platformtools/bu:o	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   140: invokestatic 186	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   143: aload_3
     //   144: ifnull -25 -> 119
     //   147: aload_3
@@ -218,7 +218,7 @@ public final class t
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.storage.emotion.t
  * JD-Core Version:    0.7.0.1
  */

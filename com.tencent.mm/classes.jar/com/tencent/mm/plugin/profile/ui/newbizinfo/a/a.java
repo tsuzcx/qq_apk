@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ak;
 
 public final class a
   implements com.tencent.mm.pluginsdk.cmd.a
@@ -14,7 +14,7 @@ public final class a
     AppMethodBeat.i(27581);
     if ("//usenewprofile".equals(paramArrayOfString[0]))
     {
-      paramContext = aj.fkD();
+      paramContext = ak.fox();
       if (paramArrayOfString.length <= 1)
       {
         paramContext.edit().putBoolean("use_new_profile", true).commit();

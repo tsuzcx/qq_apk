@@ -4,180 +4,182 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.topstory.a.h;
 import com.tencent.mm.plugin.topstory.ui.webview.TopStoryWebView;
 import com.tencent.mm.plugin.topstory.ui.webview.c;
-import com.tencent.mm.protocal.protobuf.dnp;
-import com.tencent.mm.protocal.protobuf.dnq;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.vfs.i;
+import com.tencent.mm.plugin.topstory.ui.webview.e;
+import com.tencent.mm.protocal.protobuf.dom;
+import com.tencent.mm.protocal.protobuf.don;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.vfs.k;
+import com.tencent.mm.vfs.o;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.LinkedList;
 
 public final class d
 {
-  private dnp BtD;
-  private c BtE;
-  private TopStoryWebView BtF;
-  private com.tencent.mm.plugin.topstory.ui.webview.e BtG;
-  public HashMap<Integer, dnq> BtH;
-  public HashMap<Integer, String> BtI;
-  boolean uCi;
+  private dom BLb;
+  private c BLc;
+  private TopStoryWebView BLd;
+  private e BLe;
+  public HashMap<Integer, don> BLf;
+  public HashMap<Integer, String> BLg;
+  boolean uNN;
   
   public d()
   {
     AppMethodBeat.i(126060);
-    this.uCi = false;
-    this.BtH = new HashMap();
-    this.BtI = new HashMap();
+    this.uNN = false;
+    this.BLf = new HashMap();
+    this.BLg = new HashMap();
     AppMethodBeat.o(126060);
   }
   
-  private String a(dnp paramdnp, int paramInt, boolean paramBoolean)
+  private String a(dom paramdom, int paramInt, boolean paramBoolean)
   {
     AppMethodBeat.i(126063);
     String str = "";
     Object localObject;
-    if (this.BtH.containsKey(Integer.valueOf(paramInt)))
+    if (this.BLf.containsKey(Integer.valueOf(paramInt)))
     {
-      localObject = (dnq)this.BtH.get(Integer.valueOf(paramInt));
-      ad.i("MicroMsg.TopStory.TopStoryWebViewMgr", "loadWebViewShowData SaveTs:%sms, DirectShowTs:%ss, ShowAndRefreshTs:%ss, curTs:%sms", new Object[] { Long.valueOf(((dnq)localObject).HBG), Integer.valueOf(((dnq)localObject).HjJ), Integer.valueOf(((dnq)localObject).HBH), Long.valueOf(System.currentTimeMillis()) });
-      if (((dnq)localObject).HBG + ((dnq)localObject).HjJ * 1000 > System.currentTimeMillis())
+      localObject = (don)this.BLf.get(Integer.valueOf(paramInt));
+      ae.i("MicroMsg.TopStory.TopStoryWebViewMgr", "loadWebViewShowData SaveTs:%sms, DirectShowTs:%ss, ShowAndRefreshTs:%ss, curTs:%sms", new Object[] { Long.valueOf(((don)localObject).HVt), Integer.valueOf(((don)localObject).HDj), Integer.valueOf(((don)localObject).HVu), Long.valueOf(System.currentTimeMillis()) });
+      if (((don)localObject).HVt + ((don)localObject).HDj * 1000 > System.currentTimeMillis())
       {
-        this.BtE.eqS();
-        ad.i("MicroMsg.TopStory.TopStoryWebViewMgr", "loadWebViewShowData No Need Auto Refresh");
-        localObject = ((dnq)localObject).hDa;
+        this.BLc.euz();
+        ae.i("MicroMsg.TopStory.TopStoryWebViewMgr", "loadWebViewShowData No Need Auto Refresh");
+        localObject = ((don)localObject).hFS;
       }
     }
     for (;;)
     {
       AppMethodBeat.o(126063);
       return localObject;
-      if (((dnq)localObject).HBG + ((dnq)localObject).HBH * 1000 > System.currentTimeMillis())
+      if (((don)localObject).HVt + ((don)localObject).HVu * 1000 > System.currentTimeMillis())
       {
-        this.BtE.eqS();
-        ad.i("MicroMsg.TopStory.TopStoryWebViewMgr", "loadWebViewShowData Need Auto Refresh");
-        str = ((dnq)localObject).hDa;
+        this.BLc.euz();
+        ae.i("MicroMsg.TopStory.TopStoryWebViewMgr", "loadWebViewShowData Need Auto Refresh");
+        str = ((don)localObject).hFS;
       }
       for (;;)
       {
-        paramdnp.HBE.addAll(((dnq)localObject).HjL);
+        paramdom.HVr.addAll(((don)localObject).HDl);
         localObject = str;
         if (!paramBoolean) {
           break;
         }
-        this.BtE.a(paramdnp, false, false, 0);
+        this.BLc.a(paramdom, false, false, 0);
         localObject = str;
         break;
-        this.BtE.eqS();
-        ad.i("MicroMsg.TopStory.TopStoryWebViewMgr", "loadWebViewShowData No Need Show CacheData");
+        this.BLc.euz();
+        ae.i("MicroMsg.TopStory.TopStoryWebViewMgr", "loadWebViewShowData No Need Show CacheData");
       }
-      this.BtE.eqS();
+      this.BLc.euz();
       localObject = str;
       if (paramBoolean)
       {
-        this.BtE.a(paramdnp, false, false, 0);
+        this.BLc.a(paramdom, false, false, 0);
         localObject = str;
       }
     }
   }
   
-  private boolean eps()
+  private boolean esZ()
   {
     AppMethodBeat.i(126064);
-    if (this.BtH.containsKey(Integer.valueOf(100)))
+    if (this.BLf.containsKey(Integer.valueOf(100)))
     {
-      dnq localdnq = (dnq)this.BtH.get(Integer.valueOf(100));
-      long l = localdnq.HBG;
-      if (localdnq.HjJ * 1000 + l > System.currentTimeMillis())
+      don localdon = (don)this.BLf.get(Integer.valueOf(100));
+      long l = localdon.HVt;
+      if (localdon.HDj * 1000 + l > System.currentTimeMillis())
       {
-        ad.i("MicroMsg.TopStory.TopStoryWebViewMgr", "needRefreshCache false");
+        ae.i("MicroMsg.TopStory.TopStoryWebViewMgr", "needRefreshCache false");
         AppMethodBeat.o(126064);
         return false;
       }
     }
-    ad.i("MicroMsg.TopStory.TopStoryWebViewMgr", "needRefreshCache true");
+    ae.i("MicroMsg.TopStory.TopStoryWebViewMgr", "needRefreshCache true");
     AppMethodBeat.o(126064);
     return true;
   }
   
-  public final void a(dnp paramdnp, boolean paramBoolean)
+  public final void a(dom paramdom, boolean paramBoolean)
   {
     AppMethodBeat.i(126061);
     int i;
-    if (!this.uCi)
+    if (!this.uNN)
     {
-      this.uCi = true;
-      com.tencent.mm.plugin.topstory.ui.d.c(paramdnp, "startCreateWB", System.currentTimeMillis());
-      this.BtD = paramdnp;
-      this.BtE = new c();
-      if (paramdnp.cSc > 0) {
+      this.uNN = true;
+      com.tencent.mm.plugin.topstory.ui.d.c(paramdom, "startCreateWB", System.currentTimeMillis());
+      this.BLb = paramdom;
+      this.BLc = new c();
+      if (paramdom.cSM > 0) {
         break label251;
       }
       i = 100;
-      String str = a(paramdnp, i, paramBoolean);
-      this.BtF = new TopStoryWebView(aj.getContext());
+      String str = a(paramdom, i, paramBoolean);
+      this.BLd = new TopStoryWebView(ak.getContext());
       Object localObject = new com.tencent.mm.plugin.topstory.ui.webview.b();
-      com.tencent.mm.plugin.topstory.ui.webview.d locald = new com.tencent.mm.plugin.topstory.ui.webview.d(paramdnp, this.BtE);
-      this.BtG = new com.tencent.mm.plugin.topstory.ui.webview.e(this.BtF, paramdnp, this.BtE);
-      this.BtF.a((com.tencent.mm.plugin.topstory.ui.webview.b)localObject, locald);
-      this.BtF.addJavascriptInterface(this.BtG, "topStoryJSApi");
-      if (this.BtE.Byl == null) {
+      com.tencent.mm.plugin.topstory.ui.webview.d locald = new com.tencent.mm.plugin.topstory.ui.webview.d(paramdom, this.BLc);
+      this.BLe = new e(this.BLd, paramdom, this.BLc);
+      this.BLd.a((com.tencent.mm.plugin.topstory.ui.webview.b)localObject, locald);
+      this.BLd.addJavascriptInterface(this.BLe, "topStoryJSApi");
+      if (this.BLc.BPJ == null) {
         break label259;
       }
-      localObject = (String)this.BtI.get(Integer.valueOf(i));
-      this.BtE.y(str, (String)localObject, eps());
-      this.BtF.loadDataWithBaseURL(paramdnp.url, new String(this.BtE.Byl), "text/html", "utf-8", null);
-      this.BtE.Byl = null;
-      com.tencent.mm.plugin.topstory.ui.d.c(paramdnp, "endCreateWBWithLoadData", System.currentTimeMillis());
+      localObject = (String)this.BLg.get(Integer.valueOf(i));
+      this.BLc.y(str, (String)localObject, esZ());
+      this.BLd.loadDataWithBaseURL(paramdom.url, new String(this.BLc.BPJ), "text/html", "utf-8", null);
+      this.BLc.BPJ = null;
+      com.tencent.mm.plugin.topstory.ui.d.c(paramdom, "endCreateWBWithLoadData", System.currentTimeMillis());
     }
     for (;;)
     {
       if (100 == i) {
-        this.BtG.aCZ("");
+        this.BLe.aEs("");
       }
       AppMethodBeat.o(126061);
       return;
       label251:
-      i = paramdnp.cSc;
+      i = paramdom.cSM;
       break;
       label259:
-      this.BtF.loadUrl(paramdnp.url);
-      com.tencent.mm.plugin.topstory.ui.d.c(paramdnp, "endCreateWBWithLoadURL", System.currentTimeMillis());
+      this.BLd.loadUrl(paramdom.url);
+      com.tencent.mm.plugin.topstory.ui.d.c(paramdom, "endCreateWBWithLoadURL", System.currentTimeMillis());
     }
   }
   
   public final void b(b paramb)
   {
     AppMethodBeat.i(126062);
-    ad.i("MicroMsg.TopStory.TopStoryWebViewMgr", "attachWebViewToActivity %s", new Object[] { Integer.valueOf(paramb.hashCode()) });
-    paramb.a(this.BtE, this.BtF, this.BtG, this.BtD);
-    this.BtE = null;
-    this.BtF = null;
-    this.BtG = null;
-    this.BtD = null;
-    this.uCi = false;
+    ae.i("MicroMsg.TopStory.TopStoryWebViewMgr", "attachWebViewToActivity %s", new Object[] { Integer.valueOf(paramb.hashCode()) });
+    paramb.a(this.BLc, this.BLd, this.BLe, this.BLb);
+    this.BLc = null;
+    this.BLd = null;
+    this.BLe = null;
+    this.BLb = null;
+    this.uNN = false;
     AppMethodBeat.o(126062);
   }
   
   public final void cl(int paramInt, String paramString)
   {
     AppMethodBeat.i(126065);
-    this.BtI.put(Integer.valueOf(paramInt), paramString);
+    this.BLg.put(Integer.valueOf(paramInt), paramString);
     try
     {
       paramString = paramString.getBytes("utf-8");
-      com.tencent.mm.vfs.e locale = new com.tencent.mm.vfs.e(h.eoM());
-      if (!locale.exists()) {
-        locale.mkdirs();
+      k localk = new k(h.est());
+      if (!localk.exists()) {
+        localk.mkdirs();
       }
-      i.f(h.eoM() + paramInt, paramString, paramString.length);
-      ad.i("MicroMsg.TopStory.TopStoryWebViewMgr", "putNegDataCache write data key: %d length: %d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramString.length) });
+      o.f(h.est() + paramInt, paramString, paramString.length);
+      ae.i("MicroMsg.TopStory.TopStoryWebViewMgr", "putNegDataCache write data key: %d length: %d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramString.length) });
       AppMethodBeat.o(126065);
       return;
     }
     catch (IOException paramString)
     {
-      ad.printErrStackTrace("MicroMsg.TopStory.TopStoryWebViewMgr", paramString, "putNegDataCache", new Object[0]);
+      ae.printErrStackTrace("MicroMsg.TopStory.TopStoryWebViewMgr", paramString, "putNegDataCache", new Object[0]);
       AppMethodBeat.o(126065);
     }
   }
@@ -191,7 +193,7 @@ public final class d
     //   2: ldc_w 304
     //   5: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: aload_2
-    //   9: invokestatic 310	com/tencent/mm/sdk/platformtools/bt:isNullOrNil	(Ljava/lang/String;)Z
+    //   9: invokestatic 310	com/tencent/mm/sdk/platformtools/bu:isNullOrNil	(Ljava/lang/String;)Z
     //   12: ifeq +12 -> 24
     //   15: ldc_w 304
     //   18: invokestatic 42	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -211,7 +213,7 @@ public final class d
     //   41: iconst_1
     //   42: aload_2
     //   43: aastore
-    //   44: invokestatic 95	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   44: invokestatic 95	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   47: new 314	com/tencent/mm/plugin/topstory/ui/home/d$1
     //   50: dup
     //   51: aload_0
@@ -241,7 +243,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.ui.home.d
  * JD-Core Version:    0.7.0.1
  */

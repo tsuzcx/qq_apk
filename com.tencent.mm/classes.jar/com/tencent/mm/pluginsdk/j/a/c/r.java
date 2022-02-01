@@ -13,39 +13,39 @@ import java.util.Set;
 @SuppressLint({"UseSparseArrays"})
 public final class r
 {
-  private static final HashMap<Integer, g> ERa;
-  private static volatile List<g> ERb;
+  private static final HashMap<Integer, g> Fjv;
+  private static volatile List<g> Fjw;
   
   static
   {
     AppMethodBeat.i(152069);
     HashMap localHashMap = new HashMap(1);
-    ERa = localHashMap;
+    Fjv = localHashMap;
     localHashMap.put(Integer.valueOf("CheckResUpdatePlugin".hashCode()), new b.a());
-    ERb = null;
+    Fjw = null;
     AppMethodBeat.o(152069);
   }
   
-  public static Collection<g> fbd()
+  public static Collection<g> feR()
   {
     AppMethodBeat.i(152068);
-    if (ERb != null)
+    if (Fjw != null)
     {
-      localObject = ERb;
+      localObject = Fjw;
       AppMethodBeat.o(152068);
       return localObject;
     }
     Object localObject = new LinkedList();
-    Iterator localIterator = ERa.keySet().iterator();
+    Iterator localIterator = Fjv.keySet().iterator();
     while (localIterator.hasNext())
     {
       int i = ((Integer)localIterator.next()).intValue();
-      g localg = (g)ERa.get(Integer.valueOf(i));
+      g localg = (g)Fjv.get(Integer.valueOf(i));
       if (localg != null) {
         ((LinkedList)localObject).add(localg);
       }
     }
-    ERb = (List)localObject;
+    Fjw = (List)localObject;
     AppMethodBeat.o(152068);
     return localObject;
   }

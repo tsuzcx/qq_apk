@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.card.ui.v3;
 
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/card/ui/v3/VipCardListUI$Companion;", "", "()V", "CONVERT_TYPE_HEADER", "", "CONVERT_TYPE_VIP_CARD", "SORT_TYPE_DEFAULT", "SORT_TYPE_DISTANCE", "SORT_TYPE_EXPIRETIME", "SORT_TYPE_RCTIME", "plugin-card_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/card/ui/v3/VipCardListUI$Companion;", "", "()V", "CONVERT_TYPE_HEADER", "", "CONVERT_TYPE_VIP_CARD", "SORT_TYPE_DEFAULT", "SORT_TYPE_DISTANCE", "SORT_TYPE_EXPIRETIME", "SORT_TYPE_RCTIME", "plugin-card_release"})
 public final class VipCardListUI$a {}
 
 

@@ -4,22 +4,22 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.g;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/report/model/WeAppRuntimeLoginStatusErrorReport;", "", "()V", "ID", "", "KEY_SYSTEM_RECREATE_APPBRAND_UI_MM_INVALID_UIN", "KEY_SYSTEM_RECREATE_APPBRAND_UI_NOW_UIN_NOT_EQUALS_CONFIG_UIN", "report", "", "key", "plugin-appbrand-integration_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/report/model/WeAppRuntimeLoginStatusErrorReport;", "", "()V", "ID", "", "KEY_SYSTEM_RECREATE_APPBRAND_UI_MM_INVALID_UIN", "KEY_SYSTEM_RECREATE_APPBRAND_UI_NOW_UIN_NOT_EQUALS_CONFIG_UIN", "report", "", "key", "plugin-appbrand-integration_release"})
 public final class j
 {
-  public static final j msR;
+  public static final j mxO;
   
   static
   {
     AppMethodBeat.i(175213);
-    msR = new j();
+    mxO = new j();
     AppMethodBeat.o(175213);
   }
   
-  public static final void ma(int paramInt)
+  public static final void md(int paramInt)
   {
     AppMethodBeat.i(175212);
-    g.yhR.A(1294L, paramInt);
+    g.yxI.A(1294L, paramInt);
     AppMethodBeat.o(175212);
   }
 }

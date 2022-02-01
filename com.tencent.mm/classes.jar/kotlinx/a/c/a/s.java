@@ -10,49 +10,49 @@ import kotlinx.a.w.b;
 import kotlinx.a.w.c;
 import kotlinx.a.x.c;
 
-@d.l(gfx={1, 1, 16}, gfy={""}, gfz={"selectMapMode", "T", "R1", "R2", "Lkotlinx/serialization/json/Json;", "mapDescriptor", "Lkotlinx/serialization/SerialDescriptor;", "ifMap", "Lkotlin/Function0;", "ifList", "(Lkotlinx/serialization/json/Json;Lkotlinx/serialization/SerialDescriptor;Lkotlin/jvm/functions/Function0;Lkotlin/jvm/functions/Function0;)Ljava/lang/Object;", "switchMode", "Lkotlinx/serialization/json/internal/WriteMode;", "desc", "kotlinx-serialization-runtime"})
+@d.l(gjZ={1, 1, 16}, gka={""}, gkb={"selectMapMode", "T", "R1", "R2", "Lkotlinx/serialization/json/Json;", "mapDescriptor", "Lkotlinx/serialization/SerialDescriptor;", "ifMap", "Lkotlin/Function0;", "ifList", "(Lkotlinx/serialization/json/Json;Lkotlinx/serialization/SerialDescriptor;Lkotlin/jvm/functions/Function0;Lkotlin/jvm/functions/Function0;)Ljava/lang/Object;", "switchMode", "Lkotlinx/serialization/json/internal/WriteMode;", "desc", "kotlinx-serialization-runtime"})
 public final class s
 {
   public static final r a(a parama, n paramn)
   {
-    AppMethodBeat.i(191351);
+    AppMethodBeat.i(199939);
     p.h(parama, "$this$switchMode");
     p.h(paramn, "desc");
-    kotlinx.a.s locals = paramn.gwR();
+    kotlinx.a.s locals = paramn.gBt();
     if ((locals instanceof j))
     {
-      parama = r.NOz;
-      AppMethodBeat.o(191351);
+      parama = r.OlF;
+      AppMethodBeat.o(199939);
       return parama;
     }
-    if (p.i(locals, w.b.NLR))
+    if (p.i(locals, w.b.OiX))
     {
-      parama = r.NOx;
-      AppMethodBeat.o(191351);
+      parama = r.OlD;
+      AppMethodBeat.o(199939);
       return parama;
     }
-    if (p.i(locals, w.c.NLS))
+    if (p.i(locals, w.c.OiY))
     {
-      paramn = paramn.alK(0);
-      locals = paramn.gwR();
-      if (((locals instanceof kotlinx.a.l)) || (p.i(locals, x.c.NLX)))
+      paramn = paramn.amu(0);
+      locals = paramn.gBt();
+      if (((locals instanceof kotlinx.a.l)) || (p.i(locals, x.c.Ojd)))
       {
-        parama = r.NOy;
-        AppMethodBeat.o(191351);
+        parama = r.OlE;
+        AppMethodBeat.o(199939);
         return parama;
       }
-      if (parama.NNe.NNs)
+      if (parama.Okk.Oky)
       {
-        parama = r.NOx;
-        AppMethodBeat.o(191351);
+        parama = r.OlD;
+        AppMethodBeat.o(199939);
         return parama;
       }
       parama = (Throwable)kotlinx.a.c.l.f(paramn);
-      AppMethodBeat.o(191351);
+      AppMethodBeat.o(199939);
       throw parama;
     }
-    parama = r.NOw;
-    AppMethodBeat.o(191351);
+    parama = r.OlC;
+    AppMethodBeat.o(199939);
     return parama;
   }
 }

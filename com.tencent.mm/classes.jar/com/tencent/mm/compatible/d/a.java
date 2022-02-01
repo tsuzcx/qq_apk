@@ -8,7 +8,7 @@ import java.util.Locale;
 
 public final class a
 {
-  public static Boolean gdf;
+  public static Boolean gfn;
   
   /* Error */
   public static void a(String paramString, java.util.List<b> paramList, java.util.List<a> paramList1)
@@ -17,15 +17,15 @@ public final class a
     //   0: ldc 18
     //   2: invokestatic 24	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: aload_0
-    //   6: invokestatic 30	com/tencent/mm/vfs/i:fv	(Ljava/lang/String;)Z
+    //   6: invokestatic 30	com/tencent/mm/vfs/o:fB	(Ljava/lang/String;)Z
     //   9: ifne +16 -> 25
     //   12: ldc 32
     //   14: ldc 34
-    //   16: invokestatic 39	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   16: invokestatic 39	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   19: ldc 18
     //   21: invokestatic 42	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   24: return
-    //   25: invokestatic 48	com/tencent/mm/sdk/platformtools/ac:fks	()Ljava/lang/String;
+    //   25: invokestatic 48	com/tencent/mm/sdk/platformtools/ad:fom	()Ljava/lang/String;
     //   28: astore_3
     //   29: aload_3
     //   30: ldc 50
@@ -37,10 +37,10 @@ public final class a
     //   43: astore_3
     //   44: new 58	java/io/BufferedReader
     //   47: dup
-    //   48: new 60	com/tencent/mm/vfs/k
+    //   48: new 60	com/tencent/mm/vfs/q
     //   51: dup
     //   52: aload_0
-    //   53: invokespecial 64	com/tencent/mm/vfs/k:<init>	(Ljava/lang/String;)V
+    //   53: invokespecial 64	com/tencent/mm/vfs/q:<init>	(Ljava/lang/String;)V
     //   56: invokespecial 67	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
     //   59: astore_0
     //   60: aload_0
@@ -64,7 +64,7 @@ public final class a
     //   93: astore_3
     //   94: aload 6
     //   96: ldc 79
-    //   98: invokestatic 85	com/tencent/mm/sdk/platformtools/bw:M	(Ljava/lang/String;Ljava/lang/String;)Ljava/util/Map;
+    //   98: invokestatic 85	com/tencent/mm/sdk/platformtools/bx:M	(Ljava/lang/String;Ljava/lang/String;)Ljava/util/Map;
     //   101: astore 5
     //   103: aload 5
     //   105: ifnonnull +113 -> 218
@@ -75,12 +75,12 @@ public final class a
     //   114: aload 6
     //   116: invokestatic 91	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
     //   119: invokevirtual 95	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   122: invokestatic 98	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   122: invokestatic 98	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   125: goto -65 -> 60
     //   128: astore_1
     //   129: ldc 32
     //   131: ldc 100
-    //   133: invokestatic 98	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   133: invokestatic 98	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   136: aload_0
     //   137: ifnull +610 -> 747
     //   140: aload_0
@@ -132,14 +132,14 @@ public final class a
     //   245: aload 6
     //   247: invokestatic 91	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
     //   250: invokevirtual 95	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   253: invokestatic 98	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   253: invokestatic 98	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   256: goto -196 -> 60
     //   259: astore_1
     //   260: aload_0
     //   261: astore_3
     //   262: ldc 32
     //   264: ldc 135
-    //   266: invokestatic 98	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   266: invokestatic 98	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   269: aload_0
     //   270: ifnull +490 -> 760
     //   273: aload_0
@@ -166,7 +166,7 @@ public final class a
     //   311: new 142	android/util/SparseArray
     //   314: dup
     //   315: invokespecial 143	android/util/SparseArray:<init>	()V
-    //   318: putfield 147	com/tencent/mm/compatible/d/a$b:gdj	Landroid/util/SparseArray;
+    //   318: putfield 147	com/tencent/mm/compatible/d/a$b:gfr	Landroid/util/SparseArray;
     //   321: aload_0
     //   322: astore_3
     //   323: aload 6
@@ -174,7 +174,7 @@ public final class a
     //   327: ldc 149
     //   329: invokeinterface 131 2 0
     //   334: checkcast 52	java/lang/String
-    //   337: putfield 153	com/tencent/mm/compatible/d/a$b:gdk	Ljava/lang/String;
+    //   337: putfield 153	com/tencent/mm/compatible/d/a$b:gfs	Ljava/lang/String;
     //   340: aload_0
     //   341: astore_3
     //   342: aload 6
@@ -194,7 +194,7 @@ public final class a
     //   378: aload_0
     //   379: astore_3
     //   380: aload 6
-    //   382: getfield 147	com/tencent/mm/compatible/d/a$b:gdj	Landroid/util/SparseArray;
+    //   382: getfield 147	com/tencent/mm/compatible/d/a$b:gfr	Landroid/util/SparseArray;
     //   385: iconst_1
     //   386: aload 5
     //   388: new 110	java/lang/StringBuilder
@@ -210,7 +210,7 @@ public final class a
     //   416: aload_0
     //   417: astore_3
     //   418: aload 6
-    //   420: getfield 147	com/tencent/mm/compatible/d/a$b:gdj	Landroid/util/SparseArray;
+    //   420: getfield 147	com/tencent/mm/compatible/d/a$b:gfr	Landroid/util/SparseArray;
     //   423: iconst_2
     //   424: aload 5
     //   426: new 110	java/lang/StringBuilder
@@ -232,8 +232,8 @@ public final class a
     //   465: ldc 172
     //   467: invokeinterface 131 2 0
     //   472: checkcast 52	java/lang/String
-    //   475: invokestatic 178	com/tencent/mm/sdk/platformtools/bt:aRe	(Ljava/lang/String;)I
-    //   478: putfield 182	com/tencent/mm/compatible/d/a$b:gdi	I
+    //   475: invokestatic 178	com/tencent/mm/sdk/platformtools/bu:aSB	(Ljava/lang/String;)I
+    //   478: putfield 182	com/tencent/mm/compatible/d/a$b:gfq	I
     //   481: aload_0
     //   482: astore_3
     //   483: aload_1
@@ -269,7 +269,7 @@ public final class a
     //   539: new 142	android/util/SparseArray
     //   542: dup
     //   543: invokespecial 143	android/util/SparseArray:<init>	()V
-    //   546: putfield 191	com/tencent/mm/compatible/d/a$a:gdj	Landroid/util/SparseArray;
+    //   546: putfield 191	com/tencent/mm/compatible/d/a$a:gfr	Landroid/util/SparseArray;
     //   549: aload_0
     //   550: astore_3
     //   551: aload 6
@@ -277,7 +277,7 @@ public final class a
     //   555: ldc 193
     //   557: invokeinterface 131 2 0
     //   562: checkcast 52	java/lang/String
-    //   565: putfield 196	com/tencent/mm/compatible/d/a$a:dFD	Ljava/lang/String;
+    //   565: putfield 196	com/tencent/mm/compatible/d/a$a:dGI	Ljava/lang/String;
     //   568: aload_0
     //   569: astore_3
     //   570: aload 6
@@ -285,8 +285,8 @@ public final class a
     //   574: ldc 198
     //   576: invokeinterface 131 2 0
     //   581: checkcast 52	java/lang/String
-    //   584: invokestatic 178	com/tencent/mm/sdk/platformtools/bt:aRe	(Ljava/lang/String;)I
-    //   587: putfield 201	com/tencent/mm/compatible/d/a$a:gdg	I
+    //   584: invokestatic 178	com/tencent/mm/sdk/platformtools/bu:aSB	(Ljava/lang/String;)I
+    //   587: putfield 201	com/tencent/mm/compatible/d/a$a:gfo	I
     //   590: aload_0
     //   591: astore_3
     //   592: aload 6
@@ -294,12 +294,12 @@ public final class a
     //   596: ldc 203
     //   598: invokeinterface 131 2 0
     //   603: checkcast 52	java/lang/String
-    //   606: invokestatic 178	com/tencent/mm/sdk/platformtools/bt:aRe	(Ljava/lang/String;)I
-    //   609: putfield 206	com/tencent/mm/compatible/d/a$a:gdh	I
+    //   606: invokestatic 178	com/tencent/mm/sdk/platformtools/bu:aSB	(Ljava/lang/String;)I
+    //   609: putfield 206	com/tencent/mm/compatible/d/a$a:gfp	I
     //   612: aload_0
     //   613: astore_3
     //   614: aload 6
-    //   616: getfield 191	com/tencent/mm/compatible/d/a$a:gdj	Landroid/util/SparseArray;
+    //   616: getfield 191	com/tencent/mm/compatible/d/a$a:gfr	Landroid/util/SparseArray;
     //   619: iconst_1
     //   620: aload 5
     //   622: new 110	java/lang/StringBuilder
@@ -315,7 +315,7 @@ public final class a
     //   650: aload_0
     //   651: astore_3
     //   652: aload 6
-    //   654: getfield 191	com/tencent/mm/compatible/d/a$a:gdj	Landroid/util/SparseArray;
+    //   654: getfield 191	com/tencent/mm/compatible/d/a$a:gfr	Landroid/util/SparseArray;
     //   657: iconst_2
     //   658: aload 5
     //   660: new 110	java/lang/StringBuilder
@@ -337,8 +337,8 @@ public final class a
     //   699: ldc 172
     //   701: invokeinterface 131 2 0
     //   706: checkcast 52	java/lang/String
-    //   709: invokestatic 178	com/tencent/mm/sdk/platformtools/bt:aRe	(Ljava/lang/String;)I
-    //   712: putfield 207	com/tencent/mm/compatible/d/a$a:gdi	I
+    //   709: invokestatic 178	com/tencent/mm/sdk/platformtools/bu:aSB	(Ljava/lang/String;)I
+    //   712: putfield 207	com/tencent/mm/compatible/d/a$a:gfq	I
     //   715: aload_0
     //   716: astore_3
     //   717: aload_2
@@ -517,18 +517,18 @@ public final class a
     return false;
   }
   
-  public static final class a
+  static final class a
   {
-    public String dFD;
-    public int gdg;
-    public int gdh;
-    public int gdi;
-    SparseArray<String> gdj;
+    String dGI;
+    int gfo;
+    int gfp;
+    int gfq;
+    SparseArray<String> gfr;
     
     public final String toString()
     {
       AppMethodBeat.i(155844);
-      String str = String.format(Locale.US, "pkgname: %s, minCode:%d, maxCode: %d, value: %s, chkExp: %d", new Object[] { this.dFD, Integer.valueOf(this.gdg), Integer.valueOf(this.gdh), this.gdj, Integer.valueOf(this.gdi) });
+      String str = String.format(Locale.US, "pkgname: %s, minCode:%d, maxCode: %d, value: %s, chkExp: %d", new Object[] { this.dGI, Integer.valueOf(this.gfo), Integer.valueOf(this.gfp), this.gfr, Integer.valueOf(this.gfq) });
       AppMethodBeat.o(155844);
       return str;
     }
@@ -536,16 +536,16 @@ public final class a
   
   public static final class b
   {
-    public int gdi;
-    SparseArray<String> gdj;
-    public String gdk;
+    public int gfq;
+    SparseArray<String> gfr;
+    public String gfs;
     public String model;
     public String version;
     
     public final String toString()
     {
       AppMethodBeat.i(155845);
-      String str = String.format(Locale.US, "manufacture: %s, model: %s, version: %s, value: %s, chkExp: %d", new Object[] { this.gdk, this.model, this.version, this.gdj, Integer.valueOf(this.gdi) });
+      String str = String.format(Locale.US, "manufacture: %s, model: %s, version: %s, value: %s, chkExp: %d", new Object[] { this.gfs, this.model, this.version, this.gfr, Integer.valueOf(this.gfq) });
       AppMethodBeat.o(155845);
       return str;
     }
@@ -553,7 +553,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.compatible.d.a
  * JD-Core Version:    0.7.0.1
  */

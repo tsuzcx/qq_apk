@@ -6,7 +6,7 @@ import org.json.JSONArray;
 
 final class aa
 {
-  static LinkedList<String> m(JSONArray paramJSONArray)
+  static LinkedList<String> n(JSONArray paramJSONArray)
   {
     AppMethodBeat.i(123526);
     if (paramJSONArray == null)

@@ -1,73 +1,136 @@
 package d.k;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import d.e.c;
+import d.g.b.a.a;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlin/ranges/LongRange;", "Lkotlin/ranges/LongProgression;", "Lkotlin/ranges/ClosedRange;", "", "start", "endInclusive", "(JJ)V", "getEndInclusive", "()Ljava/lang/Long;", "getStart", "contains", "", "value", "equals", "other", "", "hashCode", "", "isEmpty", "toString", "", "Companion", "kotlin-stdlib"})
-public final class g
-  extends e
-  implements a<Long>
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlin/ranges/LongProgression;", "", "", "start", "endInclusive", "step", "(JJJ)V", "first", "getFirst", "()J", "last", "getLast", "getStep", "equals", "", "other", "", "hashCode", "", "isEmpty", "iterator", "Lkotlin/collections/LongIterator;", "toString", "", "Companion", "kotlin-stdlib"})
+public class g
+  implements a, Iterable<Long>
 {
-  private static final g MMt;
-  public static final a MMu;
+  public static final a Njv;
+  public final long Nju;
+  public final long first;
+  public final long xMb;
   
   static
   {
-    AppMethodBeat.i(129302);
-    MMu = new a((byte)0);
-    MMt = new g(1L, 0L);
-    AppMethodBeat.o(129302);
+    AppMethodBeat.i(129320);
+    Njv = new a((byte)0);
+    AppMethodBeat.o(129320);
   }
   
-  public g(long paramLong1, long paramLong2)
+  public g(long paramLong1, long paramLong2, long paramLong3)
   {
-    super(paramLong1, paramLong2, 1L);
-  }
-  
-  public final boolean equals(Object paramObject)
-  {
-    AppMethodBeat.i(129299);
-    if (((paramObject instanceof g)) && (((isEmpty()) && (((g)paramObject).isEmpty())) || ((this.first == ((g)paramObject).first) && (this.MMp == ((g)paramObject).MMp))))
+    AppMethodBeat.i(129319);
+    if (paramLong3 == 0L)
     {
-      AppMethodBeat.o(129299);
+      localThrowable = (Throwable)new IllegalArgumentException("Step must be non-zero.");
+      AppMethodBeat.o(129319);
+      throw localThrowable;
+    }
+    if (paramLong3 == -9223372036854775808L)
+    {
+      localThrowable = (Throwable)new IllegalArgumentException("Step must be greater than Long.MIN_VALUE to avoid overflow on negation.");
+      AppMethodBeat.o(129319);
+      throw localThrowable;
+    }
+    this.first = paramLong1;
+    long l;
+    if (paramLong3 > 0L) {
+      if (paramLong1 >= paramLong2) {
+        l = paramLong2;
+      }
+    }
+    for (;;)
+    {
+      this.Nju = l;
+      this.xMb = paramLong3;
+      AppMethodBeat.o(129319);
+      return;
+      l = paramLong2 - c.u(paramLong2, paramLong1, paramLong3);
+      continue;
+      if (paramLong3 >= 0L) {
+        break;
+      }
+      l = paramLong2;
+      if (paramLong1 > paramLong2) {
+        l = paramLong2 + c.u(paramLong1, paramLong2, -paramLong3);
+      }
+    }
+    Throwable localThrowable = (Throwable)new IllegalArgumentException("Step is zero.");
+    AppMethodBeat.o(129319);
+    throw localThrowable;
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    AppMethodBeat.i(129316);
+    if (((paramObject instanceof g)) && (((isEmpty()) && (((g)paramObject).isEmpty())) || ((this.first == ((g)paramObject).first) && (this.Nju == ((g)paramObject).Nju) && (this.xMb == ((g)paramObject).xMb))))
+    {
+      AppMethodBeat.o(129316);
       return true;
     }
-    AppMethodBeat.o(129299);
+    AppMethodBeat.o(129316);
     return false;
   }
   
-  public final int hashCode()
+  public int hashCode()
   {
-    AppMethodBeat.i(129300);
+    AppMethodBeat.i(129317);
     if (isEmpty())
     {
-      AppMethodBeat.o(129300);
+      AppMethodBeat.o(129317);
       return -1;
     }
-    int i = (int)(31L * (this.first ^ this.first >>> 32) + (this.MMp ^ this.MMp >>> 32));
-    AppMethodBeat.o(129300);
+    int i = (int)(((this.first ^ this.first >>> 32) * 31L + (this.Nju ^ this.Nju >>> 32)) * 31L + (this.xMb ^ this.xMb >>> 32));
+    AppMethodBeat.o(129317);
     return i;
   }
   
-  public final boolean isEmpty()
+  public boolean isEmpty()
   {
-    return this.first > this.MMp;
+    if (this.xMb > 0L) {
+      if (this.first <= this.Nju) {}
+    }
+    while (this.first < this.Nju)
+    {
+      return true;
+      return false;
+    }
+    return false;
   }
   
-  public final String toString()
+  public String toString()
   {
-    AppMethodBeat.i(129301);
-    String str = this.first + ".." + this.MMp;
-    AppMethodBeat.o(129301);
+    AppMethodBeat.i(129318);
+    if (this.xMb > 0L)
+    {
+      str = this.first + ".." + this.Nju + " step " + this.xMb;
+      AppMethodBeat.o(129318);
+      return str;
+    }
+    String str = this.first + " downTo " + this.Nju + " step " + -this.xMb;
+    AppMethodBeat.o(129318);
     return str;
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlin/ranges/LongRange$Companion;", "", "()V", "EMPTY", "Lkotlin/ranges/LongRange;", "getEMPTY", "()Lkotlin/ranges/LongRange;", "kotlin-stdlib"})
-  public static final class a {}
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlin/ranges/LongProgression$Companion;", "", "()V", "fromClosedRange", "Lkotlin/ranges/LongProgression;", "rangeStart", "", "rangeEnd", "step", "kotlin-stdlib"})
+  public static final class a
+  {
+    public static g v(long paramLong1, long paramLong2, long paramLong3)
+    {
+      AppMethodBeat.i(129321);
+      g localg = new g(paramLong1, paramLong2, paramLong3);
+      AppMethodBeat.o(129321);
+      return localg;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     d.k.g
  * JD-Core Version:    0.7.0.1
  */

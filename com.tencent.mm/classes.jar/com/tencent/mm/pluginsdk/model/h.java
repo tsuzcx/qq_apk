@@ -2,117 +2,117 @@ package com.tencent.mm.pluginsdk.model;
 
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.cv;
-import com.tencent.mm.model.u;
+import com.tencent.mm.g.a.cw;
+import com.tencent.mm.model.v;
 import com.tencent.mm.plugin.fav.a.ad;
-import com.tencent.mm.protocal.protobuf.ajn;
-import com.tencent.mm.protocal.protobuf.ajq;
-import com.tencent.mm.protocal.protobuf.akd;
-import com.tencent.mm.protocal.protobuf.akj;
-import com.tencent.mm.protocal.protobuf.aks;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.ajx;
+import com.tencent.mm.protocal.protobuf.aka;
+import com.tencent.mm.protocal.protobuf.akn;
+import com.tencent.mm.protocal.protobuf.akt;
+import com.tencent.mm.protocal.protobuf.alc;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.LinkedList;
 
 public final class h
   implements ad
 {
-  public final boolean a(cv paramcv, int paramInt, String paramString)
+  public final boolean a(cw paramcw, int paramInt, String paramString)
   {
     AppMethodBeat.i(30966);
-    boolean bool = g.a(paramcv, paramInt, paramString);
+    boolean bool = g.a(paramcw, paramInt, paramString);
     AppMethodBeat.o(30966);
     return bool;
   }
   
-  public final boolean a(cv paramcv, int paramInt, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10, String paramString11)
+  public final boolean a(cw paramcw, int paramInt, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10, String paramString11)
   {
     AppMethodBeat.i(30964);
-    akd localakd = new akd();
-    akj localakj = new akj();
-    ajn localajn = new ajn();
-    localajn.ZI(5);
-    localajn.aOu(paramString7);
-    localajn.aOl(paramString3);
-    localajn.ZH(paramInt);
-    localajn.aOf(paramString1);
-    localajn.aOg(paramString2);
-    localajn.aOD(paramString11);
-    paramString2 = new ajq();
-    paramString2.hCg = paramString1;
-    paramString2.Gje = paramInt;
-    paramString2.hCe = paramString3;
-    paramString2.hCi = paramString5;
-    paramString2.hCh = paramString4;
-    paramString2.hCj = paramString6;
-    paramString2.hCk = paramString9;
-    paramString2.hCl = paramString10;
-    localajn.a(paramString2);
-    localakj.aPf(paramString8);
-    localakj.aPg(u.aAm());
-    localakj.ZR(0);
-    localakj.CM(bt.flT());
-    localakd.a(localakj);
-    localakd.nZa.add(localajn);
-    paramcv.dnG.title = localajn.title;
-    paramcv.dnG.desc = localajn.title;
-    paramcv.dnG.dnI = localakd;
-    paramcv.dnG.type = 4;
+    akn localakn = new akn();
+    akt localakt = new akt();
+    ajx localajx = new ajx();
+    localajx.aao(5);
+    localajx.aPR(paramString7);
+    localajx.aPI(paramString3);
+    localajx.aan(paramInt);
+    localajx.aPC(paramString1);
+    localajx.aPD(paramString2);
+    localajx.aQa(paramString11);
+    paramString2 = new aka();
+    paramString2.hEV = paramString1;
+    paramString2.GBN = paramInt;
+    paramString2.hET = paramString3;
+    paramString2.hEX = paramString5;
+    paramString2.hEW = paramString4;
+    paramString2.hEY = paramString6;
+    paramString2.hEZ = paramString9;
+    paramString2.hFa = paramString10;
+    localajx.a(paramString2);
+    localakt.aQC(paramString8);
+    localakt.aQD(v.aAC());
+    localakt.aax(0);
+    localakt.Dk(bu.fpO());
+    localakn.a(localakt);
+    localakn.oeJ.add(localajx);
+    paramcw.doL.title = localajx.title;
+    paramcw.doL.desc = localajx.title;
+    paramcw.doL.doN = localakn;
+    paramcw.doL.type = 4;
     AppMethodBeat.o(30964);
     return true;
   }
   
-  public final boolean a(cv paramcv, long paramLong)
+  public final boolean a(cw paramcw, long paramLong)
   {
     AppMethodBeat.i(30967);
-    boolean bool = g.a(paramcv, paramLong);
+    boolean bool = g.a(paramcw, paramLong);
     AppMethodBeat.o(30967);
     return bool;
   }
   
-  public final boolean a(cv paramcv, Intent paramIntent)
+  public final boolean a(cw paramcw, Intent paramIntent)
   {
     AppMethodBeat.i(30965);
-    boolean bool = g.a(paramcv, paramIntent);
+    boolean bool = g.a(paramcw, paramIntent);
     AppMethodBeat.o(30965);
     return bool;
   }
   
-  public final boolean a(cv paramcv, String paramString1, String paramString2, String paramString3)
+  public final boolean a(cw paramcw, String paramString1, String paramString2, String paramString3)
   {
     AppMethodBeat.i(169777);
-    boolean bool = g.a(paramcv, paramString1, paramString2, paramString3, true);
+    boolean bool = g.a(paramcw, paramString1, paramString2, paramString3, true);
     AppMethodBeat.o(169777);
     return bool;
   }
   
-  public final boolean a(cv paramcv, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7)
+  public final boolean a(cw paramcw, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7)
   {
     AppMethodBeat.i(30968);
     String str = String.format("%s#%s", new Object[] { paramString1, "" });
-    akd localakd = new akd();
-    akj localakj = new akj();
-    localakj.aPf(paramString2);
-    localakj.ZR(2);
-    localakj.CM(System.currentTimeMillis());
-    localakj.aPk(String.valueOf(paramString1));
-    localakj.aPh(str);
-    paramString1 = new ajn();
-    paramString1.aOx(str);
-    paramString1.wl(true);
-    paramString1.ZI(5);
-    paramString1.aOf(paramString3);
-    paramString1.aOg(paramString4);
-    paramString1.aOE(paramString5);
-    paramString1.wk(true);
-    localakd.nZa.add(paramString1);
-    paramString1 = new aks();
-    paramString1.aPv(paramString6);
-    paramString1.aPu(paramString7);
-    localakd.b(paramString1);
-    localakd.a(localakj);
-    paramcv.dnG.dnI = localakd;
-    paramcv.dnG.desc = paramString3;
-    paramcv.dnG.type = 5;
+    akn localakn = new akn();
+    akt localakt = new akt();
+    localakt.aQC(paramString2);
+    localakt.aax(2);
+    localakt.Dk(System.currentTimeMillis());
+    localakt.aQH(String.valueOf(paramString1));
+    localakt.aQE(str);
+    paramString1 = new ajx();
+    paramString1.aPU(str);
+    paramString1.wt(true);
+    paramString1.aao(5);
+    paramString1.aPC(paramString3);
+    paramString1.aPD(paramString4);
+    paramString1.aQb(paramString5);
+    paramString1.ws(true);
+    localakn.oeJ.add(paramString1);
+    paramString1 = new alc();
+    paramString1.aQS(paramString6);
+    paramString1.aQR(paramString7);
+    localakn.b(paramString1);
+    localakn.a(localakt);
+    paramcw.doL.doN = localakn;
+    paramcw.doL.desc = paramString3;
+    paramcw.doL.type = 5;
     AppMethodBeat.o(30968);
     return true;
   }

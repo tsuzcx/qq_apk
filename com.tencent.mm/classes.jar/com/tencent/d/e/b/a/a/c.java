@@ -5,15 +5,15 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class c
 {
   public int errorCode;
-  public String yWM;
+  public String zmV;
   
   public c(String paramString, int paramInt)
   {
-    this.yWM = paramString;
+    this.zmV = paramString;
     this.errorCode = paramInt;
   }
   
-  public static c agG(int paramInt)
+  public static c ahp(int paramInt)
   {
     AppMethodBeat.i(138432);
     c localc = new c("", paramInt);

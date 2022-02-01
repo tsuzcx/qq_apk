@@ -10,7 +10,7 @@ import com.tencent.mm.network.c;
 import com.tencent.mm.network.e;
 import com.tencent.mm.protocal.d;
 import com.tencent.mm.protocal.protobuf.jc;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.io.IOException;
 
 public class NetworkServiceImpl
@@ -30,20 +30,20 @@ public class NetworkServiceImpl
       tmp16_11[1] = 1;
       tmp16_11;
       jc localjc = new jc();
-      localjc.FCf = 0;
-      localjc.FCe = new com.tencent.mm.bx.b(arrayOfByte);
-      localjc.FCg = new com.tencent.mm.bx.b(arrayOfByte);
+      localjc.FUA = 0;
+      localjc.FUz = new com.tencent.mm.bw.b(arrayOfByte);
+      localjc.FUB = new com.tencent.mm.bw.b(arrayOfByte);
       localjc.Scene = paramInt;
-      localjc.FCd = new com.tencent.mm.bx.b(arrayOfByte);
-      g.ajA();
-      localjc.qdX = a.getUin();
+      localjc.FUy = new com.tencent.mm.bw.b(arrayOfByte);
+      g.ajP();
+      localjc.qkC = a.getUin();
       arrayOfByte = localjc.toByteArray();
       AppMethodBeat.o(18674);
       return arrayOfByte;
     }
     catch (IOException localIOException)
     {
-      ad.printErrStackTrace("MicroMsg.WXPNetworkServiceImpl", localIOException, "", new Object[0]);
+      ae.printErrStackTrace("MicroMsg.WXPNetworkServiceImpl", localIOException, "", new Object[0]);
       AppMethodBeat.o(18674);
     }
     return new byte[0];
@@ -54,55 +54,55 @@ public class NetworkServiceImpl
     AppMethodBeat.i(18672);
     Object localObject1 = new jc();
     byte[] arrayOfByte = getBaseRequestOnError(paramInt);
-    Object localObject2 = g.ajB().gAO;
+    Object localObject2 = g.ajQ().gDv;
     if (localObject2 == null)
     {
-      ad.printErrStackTrace("MicroMsg.WXPNetworkServiceImpl", new Throwable(), "kernel().network().getNetSceneQueue() return null!!", new Object[0]);
+      ae.printErrStackTrace("MicroMsg.WXPNetworkServiceImpl", new Throwable(), "kernel().network().getNetSceneQueue() return null!!", new Object[0]);
       AppMethodBeat.o(18672);
       return arrayOfByte;
     }
-    localObject2 = ((com.tencent.mm.al.q)localObject2).hOv;
+    localObject2 = ((com.tencent.mm.ak.q)localObject2).hRo;
     if (localObject2 == null)
     {
-      ad.printErrStackTrace("MicroMsg.WXPNetworkServiceImpl", new Throwable(), "netSceneQueue.getDispatcher() return null!!", new Object[0]);
+      ae.printErrStackTrace("MicroMsg.WXPNetworkServiceImpl", new Throwable(), "netSceneQueue.getDispatcher() return null!!", new Object[0]);
       AppMethodBeat.o(18672);
       return arrayOfByte;
     }
-    localObject2 = ((e)localObject2).aFc();
+    localObject2 = ((e)localObject2).aFs();
     if (localObject2 == null)
     {
-      ad.printErrStackTrace("MicroMsg.WXPNetworkServiceImpl", new Throwable(), "dispatcher.getAccInfo() return null!!", new Object[0]);
+      ae.printErrStackTrace("MicroMsg.WXPNetworkServiceImpl", new Throwable(), "dispatcher.getAccInfo() return null!!", new Object[0]);
       AppMethodBeat.o(18672);
       return arrayOfByte;
     }
-    ((jc)localObject1).FCf = d.Fnj;
+    ((jc)localObject1).FUA = d.FFH;
     ((jc)localObject1).Scene = paramInt;
-    ((jc)localObject1).qdX = ((c)localObject2).getUin();
-    g.ajA();
-    ad.v("MicroMsg.WXPNetworkServiceImpl", "uin: %d, uin2: %d, username: %s, wxusername: %s, islogin: %s", new Object[] { Integer.valueOf(a.getUin()), Integer.valueOf(((c)localObject2).getUin()), ((c)localObject2).getUsername(), ((c)localObject2).aEY(), Boolean.valueOf(((c)localObject2).aEW()) });
-    ((jc)localObject1).FCe = com.tencent.mm.bx.b.cj(com.tencent.mm.compatible.deviceinfo.q.aay().getBytes());
-    if (((jc)localObject1).FCe.zr.length >= 16) {
-      ((jc)localObject1).FCe = ((jc)localObject1).FCe.Zz(16);
+    ((jc)localObject1).qkC = ((c)localObject2).getUin();
+    g.ajP();
+    ae.v("MicroMsg.WXPNetworkServiceImpl", "uin: %d, uin2: %d, username: %s, wxusername: %s, islogin: %s", new Object[] { Integer.valueOf(a.getUin()), Integer.valueOf(((c)localObject2).getUin()), ((c)localObject2).getUsername(), ((c)localObject2).aFo(), Boolean.valueOf(((c)localObject2).aFm()) });
+    ((jc)localObject1).FUz = com.tencent.mm.bw.b.cm(com.tencent.mm.compatible.deviceinfo.q.aaH().getBytes());
+    if (((jc)localObject1).FUz.zr.length >= 16) {
+      ((jc)localObject1).FUz = ((jc)localObject1).FUz.aaf(16);
     }
-    ((jc)localObject1).FCg = com.tencent.mm.bx.b.cj(d.hgH.getBytes());
-    if (((jc)localObject1).FCg.zr.length >= 132) {
-      ((jc)localObject1).FCg = ((jc)localObject1).FCg.Zz(132);
+    ((jc)localObject1).FUB = com.tencent.mm.bw.b.cm(d.hjv.getBytes());
+    if (((jc)localObject1).FUB.zr.length >= 132) {
+      ((jc)localObject1).FUB = ((jc)localObject1).FUB.aaf(132);
     }
-    ((jc)localObject1).FCd = com.tencent.mm.bx.b.cj(((c)localObject2).mO(1));
-    if (((jc)localObject1).FCd.zr.length >= 36) {
-      ((jc)localObject1).FCd = ((jc)localObject1).FCd.Zz(36);
+    ((jc)localObject1).FUy = com.tencent.mm.bw.b.cm(((c)localObject2).mR(1));
+    if (((jc)localObject1).FUy.zr.length >= 36) {
+      ((jc)localObject1).FUy = ((jc)localObject1).FUy.aaf(36);
     }
     try
     {
       localObject1 = ((jc)localObject1).toByteArray();
-      ad.v("MicroMsg.WXPNetworkServiceImpl", "result.size: %d", new Object[] { Integer.valueOf(localObject1.length) });
+      ae.v("MicroMsg.WXPNetworkServiceImpl", "result.size: %d", new Object[] { Integer.valueOf(localObject1.length) });
       AppMethodBeat.o(18672);
       return localObject1;
     }
     catch (IOException localIOException)
     {
-      ad.printErrStackTrace("MicroMsg.WXPNetworkServiceImpl", localIOException, "", new Object[0]);
-      ad.v("MicroMsg.WXPNetworkServiceImpl", "exception: %s", new Object[] { localIOException.getMessage() });
+      ae.printErrStackTrace("MicroMsg.WXPNetworkServiceImpl", localIOException, "", new Object[0]);
+      ae.v("MicroMsg.WXPNetworkServiceImpl", "exception: %s", new Object[] { localIOException.getMessage() });
       AppMethodBeat.o(18672);
     }
     return arrayOfByte;
@@ -111,16 +111,16 @@ public class NetworkServiceImpl
   public void invoke(KCgi paramKCgi, KNetworkMockManager paramKNetworkMockManager)
   {
     AppMethodBeat.i(18673);
-    ad.d("MicroMsg.WXPNetworkServiceImpl", "thread when WXPNetworkServiceImpl.invoke: %s, , thread id: %d", new Object[] { Thread.currentThread(), Long.valueOf(Thread.currentThread().getId()) });
+    ae.d("MicroMsg.WXPNetworkServiceImpl", "thread when WXPNetworkServiceImpl.invoke: %s, , thread id: %d", new Object[] { Thread.currentThread(), Long.valueOf(Thread.currentThread().getId()) });
     paramKNetworkMockManager = new WXPNetSceneBase(paramKCgi.getCgiId(), paramKCgi.getCgiId(), paramKCgi.getCgiUrl(), paramKCgi.getChannelType(), paramKCgi.getTimeout(), paramKCgi.getRetryCount(), paramKCgi.getRequestData(), paramKCgi, paramKNetworkMockManager);
-    g.ajB().gAO.a(paramKNetworkMockManager, 0);
-    ad.d("MicroMsg.WXPNetworkServiceImpl", "do scene for: %s", new Object[] { paramKCgi.getCgiUrl() });
+    g.ajQ().gDv.a(paramKNetworkMockManager, 0);
+    ae.d("MicroMsg.WXPNetworkServiceImpl", "do scene for: %s", new Object[] { paramKCgi.getCgiUrl() });
     AppMethodBeat.o(18673);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.kinda.framework.module.impl.NetworkServiceImpl
  * JD-Core Version:    0.7.0.1
  */

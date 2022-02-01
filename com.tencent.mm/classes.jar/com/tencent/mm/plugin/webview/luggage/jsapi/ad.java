@@ -6,6 +6,7 @@ import com.tencent.luggage.d.b.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.webview.a.a;
 import com.tencent.mm.pluginsdk.m;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.MMActivity.a;
 import org.json.JSONException;
@@ -22,7 +23,7 @@ public class ad
       Object localObject = new JSONObject(paramString);
       paramString = ((JSONObject)localObject).optString("tousername");
       String str1 = ((JSONObject)localObject).optString("extmsg");
-      com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.JsApiJumpToBizProfile", "doJumpToBizProfile %s, %s", new Object[] { paramString, str1 });
+      ae.d("MicroMsg.JsApiJumpToBizProfile", "doJumpToBizProfile %s, %s", new Object[] { paramString, str1 });
       String str2 = ((JSONObject)localObject).optString("currentUrl");
       localObject = new Intent();
       ((Intent)localObject).putExtra("toUserName", paramString);
@@ -35,14 +36,14 @@ public class ad
         {
           AppMethodBeat.i(78568);
           if (paramAnonymousInt1 == (ad.this.hashCode() & 0xFFFF)) {
-            com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.JsApiJumpToBizProfile", "request jumpToBizProfile, resultCode = ".concat(String.valueOf(paramAnonymousInt2)));
+            ae.i("MicroMsg.JsApiJumpToBizProfile", "request jumpToBizProfile, resultCode = ".concat(String.valueOf(paramAnonymousInt2)));
           }
           switch (paramAnonymousInt2)
           {
           case 1: 
           default: 
             parama.f("fail", null);
-            com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.JsApiJumpToBizProfile", "unknown resultCode");
+            ae.e("MicroMsg.JsApiJumpToBizProfile", "unknown resultCode");
             AppMethodBeat.o(78568);
             return;
           case -1: 
@@ -58,13 +59,13 @@ public class ad
           AppMethodBeat.o(78568);
         }
       };
-      a.iRG.a((Intent)localObject, hashCode() & 0xFFFF, paramString, (MMActivity)paramContext);
+      a.iUz.a((Intent)localObject, hashCode() & 0xFFFF, paramString, (MMActivity)paramContext);
       AppMethodBeat.o(78569);
       return;
     }
     catch (JSONException paramContext)
     {
-      com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.JsApiJumpToBizProfile", "parase json fail");
+      ae.e("MicroMsg.JsApiJumpToBizProfile", "parase json fail");
       parama.f("fail", null);
       AppMethodBeat.o(78569);
     }
@@ -72,7 +73,7 @@ public class ad
   
   public final void b(b.a parama) {}
   
-  public final int ccO()
+  public final int ced()
   {
     return 2;
   }

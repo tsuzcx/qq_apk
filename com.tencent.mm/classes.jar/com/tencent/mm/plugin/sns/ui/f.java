@@ -10,17 +10,17 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bc.p;
-import com.tencent.mm.bc.t;
+import com.tencent.mm.bb.p;
+import com.tencent.mm.bb.t;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.modelsns.h;
-import com.tencent.mm.plugin.sns.model.ag;
-import com.tencent.mm.protocal.protobuf.byn;
+import com.tencent.mm.plugin.sns.model.ah;
+import com.tencent.mm.protocal.protobuf.bzh;
 import com.tencent.mm.protocal.protobuf.gr;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.storage.bj;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.storage.bk;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -31,39 +31,39 @@ import java.util.Set;
 public final class f
   extends BaseAdapter
 {
-  private final Activity dsa;
-  private final ap handler;
-  final List<byn> list;
-  private String uZv;
-  final Map<Integer, Integer> zNS;
-  final Map<Integer, Integer> zNT;
-  int zNU;
-  int zNV;
-  private final b zNW;
-  private final g zNX;
-  final a zNY;
-  gr zNZ;
+  final Map<Integer, Integer> AeZ;
+  final Map<Integer, Integer> Afa;
+  int Afb;
+  int Afc;
+  private final b Afd;
+  private final g Afe;
+  final a Aff;
+  gr Afg;
+  private final Activity dtg;
+  private final aq handler;
+  final List<bzh> list;
+  private String vlG;
   
   public f(Activity paramActivity, String paramString, b paramb, a parama)
   {
     AppMethodBeat.i(97707);
     this.list = new ArrayList();
-    this.zNS = new HashMap();
-    this.zNT = new HashMap();
-    this.zNU = 0;
-    this.zNV = 0;
-    this.handler = new ap();
-    this.uZv = "";
-    this.dsa = paramActivity;
-    this.uZv = paramString;
-    this.zNW = paramb;
-    this.zNY = parama;
-    this.zNX = new g(new g.a()
+    this.AeZ = new HashMap();
+    this.Afa = new HashMap();
+    this.Afb = 0;
+    this.Afc = 0;
+    this.handler = new aq();
+    this.vlG = "";
+    this.dtg = paramActivity;
+    this.vlG = paramString;
+    this.Afd = paramb;
+    this.Aff = parama;
+    this.Afe = new g(new g.a()
     {
-      public final void a(List<byn> paramAnonymousList, Map<Integer, Integer> paramAnonymousMap1, Map<Integer, Integer> paramAnonymousMap2, int paramAnonymousInt1, int paramAnonymousInt2, gr paramAnonymousgr)
+      public final void a(List<bzh> paramAnonymousList, Map<Integer, Integer> paramAnonymousMap1, Map<Integer, Integer> paramAnonymousMap2, int paramAnonymousInt1, int paramAnonymousInt2, gr paramAnonymousgr)
       {
         AppMethodBeat.i(97702);
-        ad.d("MicroMsg.ArtistAdapter", "onFinishFixPos");
+        ae.d("MicroMsg.ArtistAdapter", "onFinishFixPos");
         f localf = f.this;
         if ((paramAnonymousList == null) || (paramAnonymousList.size() <= 0))
         {
@@ -72,18 +72,18 @@ public final class f
         }
         try
         {
-          localf.zNZ = ((gr)new gr().parseFrom(paramAnonymousgr.toByteArray()));
-          localf.zNY.a(localf.zNZ);
-          ad.d("MicroMsg.ArtistAdapter", "copy list info");
+          localf.Afg = ((gr)new gr().parseFrom(paramAnonymousgr.toByteArray()));
+          localf.Aff.a(localf.Afg);
+          ae.d("MicroMsg.ArtistAdapter", "copy list info");
           j = paramAnonymousList.size();
           localf.list.clear();
-          localf.zNS.clear();
-          localf.zNT.clear();
+          localf.AeZ.clear();
+          localf.Afa.clear();
           i = 0;
           while (i < j)
           {
-            paramAnonymousgr = (byn)paramAnonymousList.get(i);
-            paramAnonymousgr = h.a(paramAnonymousgr.Id, paramAnonymousgr.nEf, paramAnonymousgr.Url, paramAnonymousgr.GSI, paramAnonymousgr.GEe, paramAnonymousgr.GSJ, paramAnonymousgr.Desc);
+            paramAnonymousgr = (bzh)paramAnonymousList.get(i);
+            paramAnonymousgr = h.a(paramAnonymousgr.Id, paramAnonymousgr.nJA, paramAnonymousgr.Url, paramAnonymousgr.Hmj, paramAnonymousgr.GXH, paramAnonymousgr.Hmk, paramAnonymousgr.Desc);
             localf.list.add(paramAnonymousgr);
             i += 1;
           }
@@ -94,76 +94,76 @@ public final class f
           int i;
           for (;;)
           {
-            ad.printErrStackTrace("MicroMsg.ArtistAdapter", paramAnonymousgr, "", new Object[0]);
+            ae.printErrStackTrace("MicroMsg.ArtistAdapter", paramAnonymousgr, "", new Object[0]);
           }
           paramAnonymousgr = paramAnonymousMap1.keySet().iterator();
           while (paramAnonymousgr.hasNext())
           {
             i = ((Integer)paramAnonymousgr.next()).intValue();
             j = ((Integer)paramAnonymousMap1.get(Integer.valueOf(i))).intValue();
-            localf.zNS.put(Integer.valueOf(i), Integer.valueOf(j));
+            localf.AeZ.put(Integer.valueOf(i), Integer.valueOf(j));
           }
           paramAnonymousgr = paramAnonymousMap2.keySet().iterator();
           while (paramAnonymousgr.hasNext())
           {
             i = ((Integer)paramAnonymousgr.next()).intValue();
             j = ((Integer)paramAnonymousMap2.get(Integer.valueOf(i))).intValue();
-            localf.zNT.put(Integer.valueOf(i), Integer.valueOf(j));
+            localf.Afa.put(Integer.valueOf(i), Integer.valueOf(j));
           }
           paramAnonymousList.clear();
           paramAnonymousMap1.clear();
           paramAnonymousMap2.clear();
-          localf.zNV = paramAnonymousInt1;
-          localf.zNU = paramAnonymousInt2;
-          ad.d("MicroMsg.ArtistAdapter", "reallyCount " + paramAnonymousInt1 + " icount " + paramAnonymousInt2);
+          localf.Afc = paramAnonymousInt1;
+          localf.Afb = paramAnonymousInt2;
+          ae.d("MicroMsg.ArtistAdapter", "reallyCount " + paramAnonymousInt1 + " icount " + paramAnonymousInt2);
           localf.notifyDataSetChanged();
           AppMethodBeat.o(97702);
         }
       }
       
-      public final void dZq()
+      public final void ecV()
       {
         AppMethodBeat.i(97703);
         f localf = f.this;
-        if (localf.zNY != null) {
-          localf.zNY.dZr();
+        if (localf.Aff != null) {
+          localf.Aff.ecW();
         }
         AppMethodBeat.o(97703);
       }
     });
-    Zu();
+    ZD();
     AppMethodBeat.o(97707);
   }
   
   private void a(int paramInt, ImageView paramImageView)
   {
     AppMethodBeat.i(97711);
-    byn localbyn = (byn)getItem(paramInt);
+    bzh localbzh = (bzh)getItem(paramInt);
     paramImageView.setVisibility(0);
     f.b.a locala = new f.b.a();
-    locala.dzb = "";
+    locala.dAg = "";
     locala.position = paramInt;
     paramImageView.setTag(locala);
-    ag.dUb().b(localbyn, paramImageView, this.dsa.hashCode(), bj.ILV);
+    ah.dXB().b(localbzh, paramImageView, this.dtg.hashCode(), bk.JgC);
     AppMethodBeat.o(97711);
   }
   
-  public final void Zu()
+  public final void ZD()
   {
     AppMethodBeat.i(97708);
-    if (this.zNX != null)
+    if (this.Afe != null)
     {
-      t.aJZ();
-      String str = p.aJW();
-      ad.d("MicroMsg.ArtistAdapter", "packgePath: ".concat(String.valueOf(str)));
-      this.zNX.jT(this.uZv, str);
+      t.aKs();
+      String str = p.aKp();
+      ae.d("MicroMsg.ArtistAdapter", "packgePath: ".concat(String.valueOf(str)));
+      this.Afe.ka(this.vlG, str);
     }
     AppMethodBeat.o(97708);
   }
   
   public final int getCount()
   {
-    return this.zNU;
+    return this.Afb;
   }
   
   public final Object getItem(int paramInt)
@@ -185,38 +185,38 @@ public final class f
     if (paramView == null)
     {
       paramViewGroup = new c();
-      paramView = View.inflate(this.dsa, 2131495528, null);
-      paramViewGroup.gnM = ((TextView)paramView.findViewById(2131305087));
-      paramViewGroup.zOg = ((TextView)paramView.findViewById(2131305088));
-      paramViewGroup.zOh = ((ImageView)paramView.findViewById(2131300977));
-      paramViewGroup.zOi = ((ImageView)paramView.findViewById(2131300978));
-      paramViewGroup.zOj = ((ImageView)paramView.findViewById(2131300979));
-      paramViewGroup.zOk = ((LinearLayout)paramView.findViewById(2131301456));
-      paramViewGroup.zOl = paramView.findViewById(2131301422);
-      paramViewGroup.zOh.setOnClickListener(this.zNW.zOb);
-      paramViewGroup.zOi.setOnClickListener(this.zNW.zOc);
-      paramViewGroup.zOj.setOnClickListener(this.zNW.zOd);
+      paramView = View.inflate(this.dtg, 2131495528, null);
+      paramViewGroup.gqi = ((TextView)paramView.findViewById(2131305087));
+      paramViewGroup.Afn = ((TextView)paramView.findViewById(2131305088));
+      paramViewGroup.Afo = ((ImageView)paramView.findViewById(2131300977));
+      paramViewGroup.Afp = ((ImageView)paramView.findViewById(2131300978));
+      paramViewGroup.Afq = ((ImageView)paramView.findViewById(2131300979));
+      paramViewGroup.Afr = ((LinearLayout)paramView.findViewById(2131301456));
+      paramViewGroup.Afs = paramView.findViewById(2131301422);
+      paramViewGroup.Afo.setOnClickListener(this.Afd.Afi);
+      paramViewGroup.Afp.setOnClickListener(this.Afd.Afj);
+      paramViewGroup.Afq.setOnClickListener(this.Afd.Afk);
       paramView.setTag(paramViewGroup);
-      if (this.zNS.get(Integer.valueOf(paramInt)) == null) {
+      if (this.AeZ.get(Integer.valueOf(paramInt)) == null) {
         break label638;
       }
     }
     label342:
     label638:
-    for (int i = ((Integer)this.zNS.get(Integer.valueOf(paramInt))).intValue();; i = -1)
+    for (int i = ((Integer)this.AeZ.get(Integer.valueOf(paramInt))).intValue();; i = -1)
     {
-      paramViewGroup.zOh.setVisibility(8);
-      paramViewGroup.zOi.setVisibility(8);
-      paramViewGroup.zOj.setVisibility(8);
-      paramViewGroup.zOl.setVisibility(8);
-      if (paramViewGroup.zOa.uZv.equals("en"))
+      paramViewGroup.Afo.setVisibility(8);
+      paramViewGroup.Afp.setVisibility(8);
+      paramViewGroup.Afq.setVisibility(8);
+      paramViewGroup.Afs.setVisibility(8);
+      if (paramViewGroup.Afh.vlG.equals("en"))
       {
-        paramViewGroup.gnM.setVisibility(8);
-        paramViewGroup.zOg.setVisibility(4);
+        paramViewGroup.gqi.setVisibility(8);
+        paramViewGroup.Afn.setVisibility(4);
       }
       for (;;)
       {
-        if ((i < this.zNV) && (i != -1)) {
+        if ((i < this.Afc) && (i != -1)) {
           break label342;
         }
         paramView.setLayoutParams(new AbsListView.LayoutParams(-1, 1));
@@ -225,46 +225,46 @@ public final class f
         return paramView;
         paramViewGroup = (c)paramView.getTag();
         break;
-        paramViewGroup.gnM.setVisibility(4);
-        paramViewGroup.zOg.setVisibility(8);
+        paramViewGroup.gqi.setVisibility(4);
+        paramViewGroup.Afn.setVisibility(8);
       }
       if (i - 1 >= 0) {}
-      for (String str = ((byn)getItem(i - 1)).Desc;; str = "")
+      for (String str = ((bzh)getItem(i - 1)).Desc;; str = "")
       {
         paramView.setLayoutParams(new AbsListView.LayoutParams(-1, -2));
         paramView.setVisibility(0);
-        if (this.zNT.get(Integer.valueOf(paramInt)) != null) {}
-        for (paramInt = ((Integer)this.zNT.get(Integer.valueOf(paramInt))).intValue();; paramInt = 1)
+        if (this.Afa.get(Integer.valueOf(paramInt)) != null) {}
+        for (paramInt = ((Integer)this.Afa.get(Integer.valueOf(paramInt))).intValue();; paramInt = 1)
         {
-          byn localbyn = (byn)getItem(i);
-          if ((localbyn.Desc.equals("")) || (!localbyn.Desc.equals(str)))
+          bzh localbzh = (bzh)getItem(i);
+          if ((localbzh.Desc.equals("")) || (!localbzh.Desc.equals(str)))
           {
-            if (!this.uZv.equals("en")) {
+            if (!this.vlG.equals("en")) {
               break label582;
             }
-            paramViewGroup.zOg.setVisibility(0);
-            paramViewGroup.zOg.setText(localbyn.Desc);
-            paramViewGroup.zOl.setVisibility(0);
+            paramViewGroup.Afn.setVisibility(0);
+            paramViewGroup.Afn.setText(localbzh.Desc);
+            paramViewGroup.Afs.setVisibility(0);
           }
           for (;;)
           {
             if (paramInt > 0) {
-              a(i, paramViewGroup.zOh);
+              a(i, paramViewGroup.Afo);
             }
             if (paramInt >= 2) {
-              a(i + 1, paramViewGroup.zOi);
+              a(i + 1, paramViewGroup.Afp);
             }
             if (paramInt >= 3) {
-              a(i + 2, paramViewGroup.zOj);
+              a(i + 2, paramViewGroup.Afq);
             }
-            if (this.zNY == null) {
+            if (this.Aff == null) {
               break;
             }
-            this.zNY.b(this.zNZ);
+            this.Aff.b(this.Afg);
             break;
-            paramViewGroup.gnM.setVisibility(0);
-            paramViewGroup.gnM.setText(localbyn.Desc);
-            paramViewGroup.zOl.setVisibility(0);
+            paramViewGroup.gqi.setVisibility(0);
+            paramViewGroup.gqi.setText(localbzh.Desc);
+            paramViewGroup.Afs.setVisibility(0);
           }
         }
       }
@@ -277,76 +277,76 @@ public final class f
     
     public abstract void b(gr paramgr);
     
-    public abstract void dZr();
+    public abstract void ecW();
   }
   
   static abstract class b
   {
-    View.OnClickListener zOb = new View.OnClickListener()
+    View.OnClickListener Afi = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(97704);
         b localb = new b();
         localb.bd(paramAnonymousView);
-        a.b("com/tencent/mm/plugin/sns/ui/ArtistAdapter$SnsEventListeners$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-        f.b.this.zOe = ((f.b.a)paramAnonymousView.getTag());
-        int i = f.b.this.zOe.position;
-        f.b.this.QR(i);
+        a.b("com/tencent/mm/plugin/sns/ui/ArtistAdapter$SnsEventListeners$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        f.b.this.Afl = ((f.b.a)paramAnonymousView.getTag());
+        int i = f.b.this.Afl.position;
+        f.b.this.Ry(i);
         a.a(this, "com/tencent/mm/plugin/sns/ui/ArtistAdapter$SnsEventListeners$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(97704);
       }
     };
-    View.OnClickListener zOc = new View.OnClickListener()
+    View.OnClickListener Afj = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(97705);
         b localb = new b();
         localb.bd(paramAnonymousView);
-        a.b("com/tencent/mm/plugin/sns/ui/ArtistAdapter$SnsEventListeners$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-        f.b.this.zOe = ((f.b.a)paramAnonymousView.getTag());
-        int i = f.b.this.zOe.position;
-        f.b.this.QR(i);
+        a.b("com/tencent/mm/plugin/sns/ui/ArtistAdapter$SnsEventListeners$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        f.b.this.Afl = ((f.b.a)paramAnonymousView.getTag());
+        int i = f.b.this.Afl.position;
+        f.b.this.Ry(i);
         a.a(this, "com/tencent/mm/plugin/sns/ui/ArtistAdapter$SnsEventListeners$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(97705);
       }
     };
-    View.OnClickListener zOd = new View.OnClickListener()
+    View.OnClickListener Afk = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(97706);
         b localb = new b();
         localb.bd(paramAnonymousView);
-        a.b("com/tencent/mm/plugin/sns/ui/ArtistAdapter$SnsEventListeners$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-        f.b.this.zOe = ((f.b.a)paramAnonymousView.getTag());
-        int i = f.b.this.zOe.position;
-        f.b.this.QR(i);
+        a.b("com/tencent/mm/plugin/sns/ui/ArtistAdapter$SnsEventListeners$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        f.b.this.Afl = ((f.b.a)paramAnonymousView.getTag());
+        int i = f.b.this.Afl.position;
+        f.b.this.Ry(i);
         a.a(this, "com/tencent/mm/plugin/sns/ui/ArtistAdapter$SnsEventListeners$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(97706);
       }
     };
-    public a zOe = new a();
+    public a Afl = new a();
     
-    public abstract void QR(int paramInt);
+    public abstract void Ry(int paramInt);
     
     public static final class a
     {
-      public String dzb;
+      public String dAg;
       public int position;
     }
   }
   
   final class c
   {
-    TextView gnM;
-    TextView zOg;
-    ImageView zOh;
-    ImageView zOi;
-    ImageView zOj;
-    LinearLayout zOk;
-    View zOl;
+    TextView Afn;
+    ImageView Afo;
+    ImageView Afp;
+    ImageView Afq;
+    LinearLayout Afr;
+    View Afs;
+    TextView gqi;
     
     c() {}
   }

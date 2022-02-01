@@ -8,14 +8,14 @@ public final class g
   {
     AppMethodBeat.i(91309);
     if (paramInt1 >= 0) {
-      com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(320L, paramInt1 + paramInt2, 1L, true);
+      com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(320L, paramInt1 + paramInt2, 1L, true);
     }
     AppMethodBeat.o(91309);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.protocal.g
  * JD-Core Version:    0.7.0.1
  */

@@ -15,19 +15,19 @@ public final class o
   {
     AppMethodBeat.i(31043);
     c.a locala = new c.a();
-    locala.IhA = new Field[3];
+    locala.IBL = new Field[3];
     locala.columns = new String[4];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "flag";
-    locala.IhC.put("flag", "LONG default '0' ");
+    locala.IBN.put("flag", "LONG default '0' ");
     localStringBuilder.append(" flag LONG default '0' ");
     localStringBuilder.append(", ");
     locala.columns[1] = "appId";
-    locala.IhC.put("appId", "TEXT default '' ");
+    locala.IBN.put("appId", "TEXT default '' ");
     localStringBuilder.append(" appId TEXT default '' ");
     localStringBuilder.append(", ");
     locala.columns[2] = "sortId";
-    locala.IhC.put("sortId", "INTEGER default '0' ");
+    locala.IBN.put("sortId", "INTEGER default '0' ");
     localStringBuilder.append(" sortId INTEGER default '0' ");
     locala.columns[3] = "rowid";
     locala.sql = localStringBuilder.toString();

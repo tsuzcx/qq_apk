@@ -2,23 +2,23 @@ package com.tencent.luggage.xweb_ext.extendplugin.component;
 
 import android.view.View;
 import com.tencent.luggage.xweb_ext.extendplugin.a.a;
-import com.tencent.mm.ac.i;
+import com.tencent.mm.ab.i;
 import com.tencent.mm.plugin.appbrand.jsapi.q.b;
 import com.tencent.mm.plugin.appbrand.jsapi.q.b.a;
 import com.tencent.mm.plugin.appbrand.jsapi.q.g;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public abstract class c<OriginVideoContainer extends g, PipVideoContainer extends View>
   implements p<OriginVideoContainer, PipVideoContainer>
 {
-  private final a cqQ;
+  private final a cru;
   
   protected c(a parama)
   {
-    this.cqQ = parama;
+    this.cru = parama;
   }
   
-  public final b dv(final String paramString)
+  public final b dx(final String paramString)
   {
     try
     {
@@ -36,30 +36,30 @@ public abstract class c<OriginVideoContainer extends g, PipVideoContainer extend
       {
         new b()
         {
-          public final b.a FI()
+          public final b.a FO()
           {
             return paramString;
           }
           
-          public final Boolean FJ()
+          public final Boolean FP()
           {
-            return this.cra;
+            return this.crE;
           }
         };
-        paramString = b.a.Qt(paramString);
+        paramString = b.a.Rc(paramString);
         break;
       }
       return null;
     }
     catch (Exception paramString)
     {
-      ad.printErrStackTrace("MicroMsg.AppBrand.AbsXWebPipInfoProvider#" + this.cqQ.getId(), paramString, "getPipExtra fail", new Object[0]);
+      ae.printErrStackTrace("MicroMsg.AppBrand.AbsXWebPipInfoProvider#" + this.cru.getId(), paramString, "getPipExtra fail", new Object[0]);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.luggage.xweb_ext.extendplugin.component.c
  * JD-Core Version:    0.7.0.1
  */

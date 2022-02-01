@@ -3,44 +3,42 @@ package com.tencent.mm.plugin.appbrand.report;
 import com.tencent.luggage.sdk.b.a.d.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.appbrand.v8.m.c;
-import com.tencent.mm.g.b.a.jj;
+import com.tencent.mm.g.b.a.jl;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
 import com.tencent.mm.plugin.appbrand.appcache.WxaPkgWrappingInfo;
 import com.tencent.mm.plugin.appbrand.appstorage.ICommLibReader;
 import com.tencent.mm.plugin.appbrand.config.AppBrandSysConfigWC;
 import com.tencent.mm.plugin.appbrand.d;
-import com.tencent.mm.plugin.appbrand.o;
-import com.tencent.mm.plugin.appbrand.page.ae;
+import com.tencent.mm.plugin.appbrand.page.ad;
 import com.tencent.mm.plugin.appbrand.report.quality.QualitySessionRuntime;
 import com.tencent.mm.plugin.appbrand.report.quality.a;
 import com.tencent.mm.plugin.appbrand.report.quality.b;
 import com.tencent.mm.plugin.appbrand.step.KSProcessWeAppLaunch;
 import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.sdk.platformtools.ad;
-import d.g.b.p;
+import com.tencent.mm.sdk.platformtools.ae;
 import d.l;
 import d.n.n;
 import d.t;
 import d.v;
 import java.util.concurrent.atomic.AtomicInteger;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/report/AppBrandServiceWCScriptReporter;", "", "()V", "TAG", "", "reportEvaluateResult", "", "service", "Lcom/tencent/mm/plugin/appbrand/service/AppBrandServiceWC;", "scriptInfo", "Lcom/tencent/luggage/sdk/jsapi/component/IAppBrandComponentWxaSharedLU$JavascriptInfo;", "succeed", "", "startTimeMs", "", "endTimeMs", "extraParams", "reportJSError", "message", "stackTrace", "plugin-appbrand-integration_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/report/AppBrandServiceWCScriptReporter;", "", "()V", "TAG", "", "reportEvaluateResult", "", "service", "Lcom/tencent/mm/plugin/appbrand/service/AppBrandServiceWC;", "scriptInfo", "Lcom/tencent/luggage/sdk/jsapi/component/IAppBrandComponentWxaSharedLU$JavascriptInfo;", "succeed", "", "startTimeMs", "", "endTimeMs", "extraParams", "reportJSError", "message", "stackTrace", "plugin-appbrand-integration_release"})
 public final class j
 {
-  public static final j mru;
+  public static final j mws;
   
   static
   {
     AppMethodBeat.i(51009);
-    mru = new j();
+    mws = new j();
     AppMethodBeat.o(51009);
   }
   
   public static void a(com.tencent.mm.plugin.appbrand.service.c paramc, d.a parama, boolean paramBoolean, long paramLong1, long paramLong2, Object paramObject)
   {
     AppMethodBeat.i(175210);
-    p.h(paramc, "service");
-    p.h(parama, "scriptInfo");
+    d.g.b.p.h(paramc, "service");
+    d.g.b.p.h(parama, "scriptInfo");
     Object localObject1 = parama.scriptName;
     Object localObject2 = (CharSequence)localObject1;
     if ((localObject2 == null) || (((CharSequence)localObject2).length() == 0)) {}
@@ -51,8 +49,8 @@ public final class j
     }
     if (!paramBoolean)
     {
-      ad.e("MicroMsg.AppBrandServiceWCScriptReporter", "reportEvaluateResult, !succeed name[" + (String)localObject1 + "], appId[" + paramc.getAppId() + ']');
-      if ((parama.cnw <= 0) && (localObject1 != null)) {}
+      ae.e("MicroMsg.AppBrandServiceWCScriptReporter", "reportEvaluateResult, !succeed name[" + (String)localObject1 + "], appId[" + paramc.getAppId() + ']');
+      if ((parama.cny <= 0) && (localObject1 != null)) {}
     }
     else
     {
@@ -67,12 +65,12 @@ public final class j
     int j;
     for (;;)
     {
-      if (n.nA((String)localObject1, "/app-service.js"))
+      if (n.nG((String)localObject1, "/app-service.js"))
       {
-        g.yhR.dD(370, 30);
+        g.yxI.dD(370, 30);
         if (paramBoolean)
         {
-          g.yhR.dD(370, 31);
+          g.yxI.dD(370, 31);
           AppMethodBeat.o(175210);
           return;
           switch (((String)localObject1).hashCode())
@@ -83,13 +81,13 @@ public final class j
             if (!((String)localObject1).equals("WAServiceMainContext.js")) {
               break;
             }
-            g.yhR.dD(370, 73);
+            g.yxI.dD(370, 73);
             break;
           case 2071195020: 
             if (!((String)localObject1).equals("WAService.js")) {
               break;
             }
-            g.yhR.dD(370, 72);
+            g.yxI.dD(370, 72);
             break;
             switch (((String)localObject1).hashCode())
             {
@@ -98,7 +96,7 @@ public final class j
             case -979125780: 
               if (((String)localObject1).equals("WAServiceMainContext.js"))
               {
-                ad.i("MicroMsg.AppBrandServiceWCScriptReporter", "reportEvaluateResult, service_lib_script[" + (String)localObject1 + "], succeed[" + paramBoolean + ']');
+                ae.i("MicroMsg.AppBrandServiceWCScriptReporter", "reportEvaluateResult, service_lib_script[" + (String)localObject1 + "], succeed[" + paramBoolean + ']');
                 if (paramc.getRuntime() != null)
                 {
                   if (paramBoolean) {
@@ -107,19 +105,19 @@ public final class j
                 }
                 else
                 {
-                  a.bxN();
-                  b.a(paramc, (String)localObject1, parama.cnw, paramLong1, paramLong2, paramObject);
+                  a.byG();
+                  b.a(paramc, (String)localObject1, parama.cny, paramLong1, paramLong2, paramObject);
                   switch (((String)localObject1).hashCode())
                   {
                   default: 
                     parama = new t(Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0));
                     i = ((Number)parama.first).intValue();
                     k = ((Number)parama.second).intValue();
-                    j = ((Number)parama.MKl).intValue();
-                    g.yhR.dD(370, i);
+                    j = ((Number)parama.Nho).intValue();
+                    g.yxI.dD(370, i);
                     if (paramBoolean)
                     {
-                      g.yhR.dD(370, j);
+                      g.yxI.dD(370, j);
                       AppMethodBeat.o(175210);
                       return;
                     }
@@ -132,14 +130,14 @@ public final class j
               if (((String)localObject1).equals("WAGame.js")) {
                 if (!paramBoolean)
                 {
-                  h.bS(paramc.getAppId(), 24);
+                  h.bW(paramc.getAppId(), 24);
                   parama = paramc.getAppId();
                   paramObject = paramc.getRuntime();
-                  p.g(paramObject, "service.runtime");
-                  i = paramObject.EX();
+                  d.g.b.p.g(paramObject, "service.runtime");
+                  i = paramObject.Fc();
                   paramc = paramc.getRuntime();
-                  p.g(paramc, "service.runtime");
-                  h.b(parama, i, paramc.aVL(), 778, 14);
+                  d.g.b.p.g(paramc, "service.runtime");
+                  h.b(parama, i, paramc.aWk(), 778, 14);
                   AppMethodBeat.o(175210);
                   return;
                 }
@@ -150,9 +148,9 @@ public final class j
               label444:
               if (((String)localObject1).equals("app-service.js"))
               {
-                g.yhR.dD(370, 9);
+                g.yxI.dD(370, 9);
                 if (paramBoolean) {
-                  if ((paramc.aXu()) || (paramc.isRunning()))
+                  if ((paramc.aXP()) || (paramc.isRunning()))
                   {
                     localObject2 = (AppBrandRuntime)paramc.getRuntime();
                     if ((paramObject instanceof m.c)) {
@@ -175,7 +173,7 @@ public final class j
       m.c localc = (m.c)paramObject;
       if (localc != null)
       {
-        paramLong1 = localc.cYI;
+        paramLong1 = localc.cZG;
         label669:
         if (localObject2 == null) {
           break label993;
@@ -187,9 +185,9 @@ public final class j
         }
         localObject1 = Integer.valueOf(((AppBrandRuntime)localObject2).hashCode());
         label696:
-        ad.i("MicroMsg.AppBrandServiceWCScriptReporter", "[QualitySystem] app-service.js runtime.appId=[%s], runtime.hashCode = [%d]", new Object[] { paramObject, localObject1 });
+        ae.i("MicroMsg.AppBrandServiceWCScriptReporter", "[QualitySystem] app-service.js runtime.appId=[%s], runtime.hashCode = [%d]", new Object[] { paramObject, localObject1 });
         paramc = (d)paramc;
-        j = parama.cnw;
+        j = parama.cny;
         if (localObject2 == null) {
           break label1008;
         }
@@ -201,7 +199,7 @@ public final class j
       for (i = ((AppBrandRuntime)localObject2).hashCode();; i = -1)
       {
         a.a(paramc, "app-service.js", j, "", 0, paramLong1, i, localc);
-        g.yhR.dD(370, 11);
+        g.yxI.dD(370, 11);
         AppMethodBeat.o(175210);
         return;
         if (!((String)localObject1).equals("WAService.js")) {
@@ -220,20 +218,20 @@ public final class j
         }
         parama = new t(Integer.valueOf(61), Integer.valueOf(62), Integer.valueOf(63));
         break label444;
-        g.yhR.dD(370, k);
-        h.bS(paramc.getAppId(), 24);
+        g.yxI.dD(370, k);
+        h.bW(paramc.getAppId(), 24);
         if (paramc.getRuntime() != null)
         {
           parama = paramc.getRuntime();
-          p.g(parama, "runtime");
-          i = parama.aXb().jYh.pkgVersion;
+          d.g.b.p.g(parama, "runtime");
+          i = parama.aXw().kbw.pkgVersion;
           if (paramc.getRuntime() == null) {
             break label984;
           }
           parama = paramc.getRuntime();
-          p.g(parama, "runtime");
+          d.g.b.p.g(parama, "runtime");
         }
-        for (j = parama.aXb().bee();; j = -1)
+        for (j = parama.aXw().beK();; j = -1)
         {
           h.b(paramc.getAppId(), i, j, 370, k);
           AppMethodBeat.o(175210);
@@ -249,24 +247,24 @@ public final class j
       }
       try
       {
-        g.yhR.dD(370, 10);
-        h.bS(paramc.getAppId(), 24);
-        h.b(paramc.getAppId(), paramc.getRuntime().aXb().jYh.pkgVersion, paramc.getRuntime().aXb().jYh.jIU, 370, 10);
+        g.yxI.dD(370, 10);
+        h.bW(paramc.getAppId(), 24);
+        h.b(paramc.getAppId(), paramc.getRuntime().aXw().kbw.pkgVersion, paramc.getRuntime().aXw().kbw.jLV, 370, 10);
         AppMethodBeat.o(175210);
         return;
       }
       catch (NullPointerException paramc)
       {
-        ad.e("MicroMsg.AppBrandServiceWCScriptReporter", "Inject External Service Script Failed, report npe = %s", new Object[] { paramc });
+        ae.e("MicroMsg.AppBrandServiceWCScriptReporter", "Inject External Service Script Failed, report npe = %s", new Object[] { paramc });
         AppMethodBeat.o(175210);
         return;
       }
-      a.bxN();
-      b.a(paramc, (String)localObject1, parama.cnw, paramLong1, paramLong2, paramObject);
+      a.byG();
+      b.a(paramc, (String)localObject1, parama.cny, paramLong1, paramLong2, paramObject);
       AppMethodBeat.o(175210);
       return;
-      ad.e("MicroMsg.AppBrandServiceWCScriptReporter", "inject module(" + (String)localObject1 + ") script failed");
-      g.yhR.dD(370, 32);
+      ae.e("MicroMsg.AppBrandServiceWCScriptReporter", "inject module(" + (String)localObject1 + ") script failed");
+      g.yxI.dD(370, 32);
       AppMethodBeat.o(175210);
       return;
     }
@@ -275,29 +273,29 @@ public final class j
   public static final void b(com.tencent.mm.plugin.appbrand.service.c paramc, String paramString1, String paramString2)
   {
     AppMethodBeat.i(51008);
-    p.h(paramc, "service");
-    QualitySessionRuntime localQualitySessionRuntime = a.Ut(paramc.getAppId());
+    d.g.b.p.h(paramc, "service");
+    QualitySessionRuntime localQualitySessionRuntime = a.Ve(paramc.getAppId());
     if (localQualitySessionRuntime != null)
     {
-      jj localjj = new jj();
-      localjj.rN(localQualitySessionRuntime.appId);
-      localjj.pG(localQualitySessionRuntime.mvi);
-      localjj.pH(localQualitySessionRuntime.mtG);
-      localjj.Vr();
-      localjj.rO(paramString1);
-      localjj.rP(paramString2);
-      paramString1 = paramc.aVF();
+      jl localjl = new jl();
+      localjl.si(localQualitySessionRuntime.appId);
+      localjl.pT(localQualitySessionRuntime.mAf);
+      localjl.pU(localQualitySessionRuntime.myD);
+      localjl.Vz();
+      localjl.sj(paramString1);
+      localjl.sk(paramString2);
+      paramString1 = paramc.aWe();
       if (paramString1 == null) {
-        p.gfZ();
+        d.g.b.p.gkB();
       }
-      localjj.rQ(paramString1.aZn());
-      localjj.pI(localQualitySessionRuntime.apptype);
-      localjj.pJ(localQualitySessionRuntime.mvv.get());
-      paramString1 = paramc.aWZ();
-      p.g(paramString1, "page");
+      localjl.sl(paramString1.aZK());
+      localjl.pV(localQualitySessionRuntime.apptype);
+      localjl.pW(localQualitySessionRuntime.mAs.get());
+      paramString1 = paramc.aXu();
+      d.g.b.p.g(paramString1, "page");
       paramc = paramString1.getURL();
-      paramString1 = paramString1.buA();
-      p.g(paramString1, "page.urlWithQuery");
+      paramString1 = paramString1.bvl();
+      d.g.b.p.g(paramString1, "page.urlWithQuery");
       int i = paramc.length();
       if (paramString1 == null)
       {
@@ -306,10 +304,10 @@ public final class j
         throw paramc;
       }
       paramString1 = paramString1.substring(i);
-      p.g(paramString1, "(this as java.lang.String).substring(startIndex)");
-      localjj.rR(paramc);
-      localjj.rS(paramString1);
-      localjj.aLk();
+      d.g.b.p.g(paramString1, "(this as java.lang.String).substring(startIndex)");
+      localjl.sm(paramc);
+      localjl.sn(paramString1);
+      localjl.aLH();
       AppMethodBeat.o(51008);
       return;
     }
@@ -318,7 +316,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.report.j
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,9 @@
 package com.tencent.mm.h;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.sdk.platformtools.bw;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.bx;
 import java.util.Map;
 import org.json.JSONObject;
 
@@ -11,15 +11,15 @@ public final class c
 {
   public String Title;
   public String desc;
-  public int dlo;
-  public int dlp;
-  public int dlq;
-  public String fHU;
-  public String fHV;
-  public int fHW;
+  public int dmq;
+  public int dmr;
+  public int dms;
+  public String fJY;
+  public String fJZ;
+  public int fKa;
   public String url;
   
-  private static boolean la(int paramInt)
+  private static boolean lc(int paramInt)
   {
     if (paramInt == 4) {}
     while ((paramInt == 1) || (paramInt == 5) || (paramInt == 3) || (paramInt == 8)) {
@@ -28,32 +28,32 @@ public final class c
     return false;
   }
   
-  public static c uB(String paramString)
+  public static c uW(String paramString)
   {
     AppMethodBeat.i(134108);
-    if (bt.isNullOrNil(paramString))
+    if (bu.isNullOrNil(paramString))
     {
       AppMethodBeat.o(134108);
       return null;
     }
     c localc = new c();
-    paramString = bw.M(paramString, "e");
+    paramString = bx.M(paramString, "e");
     if (paramString == null)
     {
-      ad.d("MicroMsg.BroadcastEntity", "this is not errmsg");
+      ae.d("MicroMsg.BroadcastEntity", "this is not errmsg");
       AppMethodBeat.o(134108);
       return null;
     }
     localc.desc = ((String)paramString.get(".e.Content"));
     localc.url = ((String)paramString.get(".e.Url"));
     localc.Title = ((String)paramString.get(".e.Title"));
-    localc.dlq = bt.getInt((String)paramString.get(".e.Action"), 0);
-    localc.dlp = bt.getInt((String)paramString.get(".e.ShowType"), 0);
-    localc.dlo = bt.getInt((String)paramString.get(".e.DispSec"), 30);
-    localc.fHU = ((String)paramString.get(".e.Ok"));
-    localc.fHV = ((String)paramString.get(".e.Cancel"));
-    localc.fHW = bt.getInt((String)paramString.get("e.Countdown"), 0);
-    if (la(localc.dlp))
+    localc.dms = bu.getInt((String)paramString.get(".e.Action"), 0);
+    localc.dmr = bu.getInt((String)paramString.get(".e.ShowType"), 0);
+    localc.dmq = bu.getInt((String)paramString.get(".e.DispSec"), 30);
+    localc.fJY = ((String)paramString.get(".e.Ok"));
+    localc.fJZ = ((String)paramString.get(".e.Cancel"));
+    localc.fKa = bu.getInt((String)paramString.get("e.Countdown"), 0);
+    if (lc(localc.dmr))
     {
       AppMethodBeat.o(134108);
       return localc;
@@ -64,13 +64,13 @@ public final class c
       localc.desc = localJSONObject.getString("Content");
       localc.url = localJSONObject.getString("Url");
       localc.Title = localJSONObject.getString("Title");
-      localc.dlq = bt.getInt(localJSONObject.getString("Action"), 0);
-      localc.dlp = bt.getInt(localJSONObject.getString("ShowType"), 0);
-      localc.dlo = bt.getInt(localJSONObject.getString("DispSec"), 30);
-      localc.fHU = ((String)paramString.get(".e.Ok"));
-      localc.fHV = ((String)paramString.get(".e.Cancel"));
-      localc.fHW = bt.getInt((String)paramString.get("e.Countdown"), 0);
-      boolean bool = la(localc.dlp);
+      localc.dms = bu.getInt(localJSONObject.getString("Action"), 0);
+      localc.dmr = bu.getInt(localJSONObject.getString("ShowType"), 0);
+      localc.dmq = bu.getInt(localJSONObject.getString("DispSec"), 30);
+      localc.fJY = ((String)paramString.get(".e.Ok"));
+      localc.fJZ = ((String)paramString.get(".e.Cancel"));
+      localc.fKa = bu.getInt((String)paramString.get("e.Countdown"), 0);
+      boolean bool = lc(localc.dmr);
       if (bool)
       {
         AppMethodBeat.o(134108);
@@ -79,7 +79,7 @@ public final class c
     }
     catch (Exception paramString)
     {
-      ad.printErrStackTrace("MicroMsg.BroadcastEntity", paramString, "", new Object[0]);
+      ae.printErrStackTrace("MicroMsg.BroadcastEntity", paramString, "", new Object[0]);
       AppMethodBeat.o(134108);
     }
     return null;

@@ -1,25 +1,25 @@
 package com.tencent.mm.plugin.priority.model.a.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.k.b;
-import com.tencent.mm.al.q;
+import com.tencent.mm.ah.k.b;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.g.c.ei;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.record.b.f;
-import com.tencent.mm.storage.bu;
+import com.tencent.mm.storage.bv;
 
 final class a$a$1
   implements Runnable
 {
-  a$a$1(a.a parama, bu parambu, k.b paramb) {}
+  a$a$1(a.a parama, bv parambv, k.b paramb) {}
   
   public final void run()
   {
     AppMethodBeat.i(87826);
-    this.wLp.wLn.wLm = new f(this.hEN.field_msgId, this.wLo.dks, null);
-    this.wLp.wLn.wLm.pmU = true;
-    g.aiU().a(221, this.wLp.wLn);
-    g.aiU().a(this.wLp.wLn.wLm, 0);
+    this.xbd.xbb.xba = new f(this.hHF.field_msgId, this.xbc.dlu, null);
+    this.xbd.xbb.xba.ptB = true;
+    g.ajj().a(221, this.xbd.xbb);
+    g.ajj().a(this.xbd.xbb.xba, 0);
     AppMethodBeat.o(87826);
   }
 }

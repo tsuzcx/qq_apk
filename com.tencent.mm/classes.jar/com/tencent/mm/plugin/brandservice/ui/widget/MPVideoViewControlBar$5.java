@@ -16,7 +16,7 @@ final class MPVideoViewControlBar$5
     AppMethodBeat.i(6278);
     b localb = new b();
     localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/brandservice/ui/widget/MPVideoViewControlBar$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+    a.b("com/tencent/mm/plugin/brandservice/ui/widget/MPVideoViewControlBar$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
     a.a(this, "com/tencent/mm/plugin/brandservice/ui/widget/MPVideoViewControlBar$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(6278);
   }

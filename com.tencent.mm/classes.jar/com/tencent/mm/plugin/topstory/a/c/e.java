@@ -1,18 +1,18 @@
 package com.tencent.mm.plugin.topstory.a.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.abe;
-import com.tencent.mm.protocal.protobuf.crv;
-import com.tencent.mm.protocal.protobuf.crw;
-import com.tencent.mm.protocal.protobuf.doa;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.abn;
+import com.tencent.mm.protocal.protobuf.csp;
+import com.tencent.mm.protocal.protobuf.csq;
+import com.tencent.mm.protocal.protobuf.dox;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -21,29 +21,29 @@ public final class e
   extends n
   implements k
 {
-  private doa BrB;
+  private dox BJa;
   private f callback;
   public b rr;
   
-  public e(doa paramdoa, List<String> paramList)
+  public e(dox paramdox, List<String> paramList)
   {
     AppMethodBeat.i(91011);
-    ad.i("MicroMsg.TopStory.NetSceneTopStoryGetVideoUrl", "Create NetSceneTopStoryGetVideoUrl Video");
-    this.BrB = paramdoa;
-    paramdoa = new b.a();
-    paramdoa.funcId = getType();
-    paramdoa.uri = "/cgi-bin/mmsearch-bin/recommendgetvideourl";
-    paramdoa.hNM = new crv();
-    paramdoa.hNN = new crw();
-    this.rr = paramdoa.aDC();
-    paramdoa = (crv)this.rr.hNK.hNQ;
+    ae.i("MicroMsg.TopStory.NetSceneTopStoryGetVideoUrl", "Create NetSceneTopStoryGetVideoUrl Video");
+    this.BJa = paramdox;
+    paramdox = new b.a();
+    paramdox.funcId = getType();
+    paramdox.uri = "/cgi-bin/mmsearch-bin/recommendgetvideourl";
+    paramdox.hQF = new csp();
+    paramdox.hQG = new csq();
+    this.rr = paramdox.aDS();
+    paramdox = (csp)this.rr.hQD.hQJ;
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
       String str = (String)paramList.next();
-      abe localabe = new abe();
-      localabe.orq = str;
-      paramdoa.Hkp.add(localabe);
+      abn localabn = new abn();
+      localabn.oxM = str;
+      paramdox.HDP.add(localabn);
     }
     AppMethodBeat.o(91011);
   }
@@ -65,7 +65,7 @@ public final class e
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(91013);
-    ad.i("MicroMsg.TopStory.NetSceneTopStoryGetVideoUrl", "netId %d | errType %d | errCode %d | errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    ae.i("MicroMsg.TopStory.NetSceneTopStoryGetVideoUrl", "netId %d | errType %d | errCode %d | errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(91013);
   }

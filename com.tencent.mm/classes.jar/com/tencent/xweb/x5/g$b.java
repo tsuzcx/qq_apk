@@ -7,9 +7,9 @@ import java.util.Map;
 public final class g$b
   implements com.tencent.xweb.WebResourceRequest
 {
-  private Map<String, String> EQK;
-  private boolean MtT;
-  private boolean MtU;
+  private Map<String, String> Fjf;
+  private boolean MQX;
+  private boolean MQY;
   private String method;
   private Uri url;
   
@@ -17,10 +17,10 @@ public final class g$b
   {
     AppMethodBeat.i(153848);
     this.url = paramWebResourceRequest.getUrl();
-    this.MtT = paramWebResourceRequest.isForMainFrame();
-    this.MtU = paramWebResourceRequest.hasGesture();
+    this.MQX = paramWebResourceRequest.isForMainFrame();
+    this.MQY = paramWebResourceRequest.hasGesture();
     this.method = paramWebResourceRequest.getMethod();
-    this.EQK = paramWebResourceRequest.getRequestHeaders();
+    this.Fjf = paramWebResourceRequest.getRequestHeaders();
     AppMethodBeat.o(153848);
   }
   
@@ -31,7 +31,7 @@ public final class g$b
   
   public final Map<String, String> getRequestHeaders()
   {
-    return this.EQK;
+    return this.Fjf;
   }
   
   public final Uri getUrl()
@@ -41,12 +41,12 @@ public final class g$b
   
   public final boolean hasGesture()
   {
-    return this.MtU;
+    return this.MQY;
   }
   
   public final boolean isForMainFrame()
   {
-    return this.MtT;
+    return this.MQX;
   }
 }
 

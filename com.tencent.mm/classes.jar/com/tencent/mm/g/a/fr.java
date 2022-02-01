@@ -3,13 +3,12 @@ package com.tencent.mm.g.a;
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
-import java.util.List;
 
 public final class fr
   extends b
 {
-  public a dqN;
-  public b dqO;
+  public a drP;
+  public b drQ;
   
   public fr()
   {
@@ -18,36 +17,27 @@ public final class fr
   
   private fr(byte paramByte)
   {
-    AppMethodBeat.i(116017);
-    this.dqN = new a();
-    this.dqO = new b();
-    this.IbR = false;
+    AppMethodBeat.i(116016);
+    this.drP = new a();
+    this.drQ = new b();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(116017);
+    AppMethodBeat.o(116016);
   }
   
   public static final class a
   {
-    public Cursor dqP;
+    public String drR;
   }
   
   public static final class b
   {
-    public String dqQ;
-    public int dqR;
-    public String dqS;
-    public long dqT;
-    public int dqU;
-    public List dqV;
-    public List dqW;
-    public int dqX;
-    public int dqY;
-    public int mediaType;
+    public Cursor drI;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.a.fr
  * JD-Core Version:    0.7.0.1
  */

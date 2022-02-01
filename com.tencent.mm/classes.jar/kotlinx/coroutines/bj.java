@@ -5,7 +5,7 @@ import d.l;
 import java.util.concurrent.Executor;
 import kotlinx.coroutines.internal.d;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/coroutines/ExecutorCoroutineDispatcherImpl;", "Lkotlinx/coroutines/ExecutorCoroutineDispatcherBase;", "executor", "Ljava/util/concurrent/Executor;", "(Ljava/util/concurrent/Executor;)V", "getExecutor", "()Ljava/util/concurrent/Executor;", "kotlinx-coroutines-core"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/coroutines/ExecutorCoroutineDispatcherImpl;", "Lkotlinx/coroutines/ExecutorCoroutineDispatcherBase;", "executor", "Ljava/util/concurrent/Executor;", "(Ljava/util/concurrent/Executor;)V", "getExecutor", "()Ljava/util/concurrent/Executor;", "kotlinx-coroutines-core"})
 public final class bj
   extends bi
 {
@@ -13,10 +13,10 @@ public final class bj
   
   public bj(Executor paramExecutor)
   {
-    AppMethodBeat.i(190702);
+    AppMethodBeat.i(209193);
     this.executor = paramExecutor;
-    this.NIH = d.b(getExecutor());
-    AppMethodBeat.o(190702);
+    this.OfN = d.b(getExecutor());
+    AppMethodBeat.o(209193);
   }
   
   public final Executor getExecutor()

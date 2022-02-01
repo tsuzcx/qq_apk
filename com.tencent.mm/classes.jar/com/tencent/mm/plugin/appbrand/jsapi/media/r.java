@@ -6,42 +6,42 @@ import android.graphics.BitmapFactory.Options;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.Exif;
 import com.tencent.mm.graphics.MMBitmapFactory;
-import com.tencent.mm.plugin.appbrand.utils.c;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.sdk.platformtools.g;
-import com.tencent.mm.vfs.e;
-import com.tencent.mm.vfs.i;
+import com.tencent.mm.plugin.appbrand.utils.d;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.h;
+import com.tencent.mm.vfs.k;
+import com.tencent.mm.vfs.o;
 import d.g.b.p;
 import d.l;
 import java.util.Iterator;
 import java.util.List;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/media/MediaUtils;", "", "()V", "DEFAULT_IMAGE_COMPRESS_QUALITY", "", "TAG", "", "doCompressImage", "srcPath", "doRotate", "shouldRotate", "", "imageFile", "imageFiles", "", "plugin-appbrand-integration_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsapi/media/MediaUtils;", "", "()V", "DEFAULT_IMAGE_COMPRESS_QUALITY", "", "TAG", "", "doCompressImage", "srcPath", "doRotate", "shouldRotate", "", "imageFile", "imageFiles", "", "plugin-appbrand-integration_release"})
 public final class r
 {
-  public static final r kVK;
+  public static final r kZs;
   
   static
   {
-    AppMethodBeat.i(189151);
-    kVK = new r();
-    AppMethodBeat.o(189151);
+    AppMethodBeat.i(223408);
+    kZs = new r();
+    AppMethodBeat.o(223408);
   }
   
-  public static final String PX(String paramString)
+  public static final String QG(String paramString)
   {
-    AppMethodBeat.i(189147);
+    AppMethodBeat.i(223404);
     p.h(paramString, "srcPath");
-    String str = i.k(com.tencent.mm.loader.j.b.asg() + "microMsg." + System.currentTimeMillis() + ".jpg", true);
+    String str = o.k(com.tencent.mm.loader.j.b.asv() + "microMsg." + System.currentTimeMillis() + ".jpg", true);
     long l;
     try
     {
       Bitmap localBitmap1 = MMBitmapFactory.decodeFile(paramString);
       if (localBitmap1 == null)
       {
-        ad.e("MicroMsg.MediaUtils", "doCompressImage, decode bmp return null");
-        AppMethodBeat.o(189147);
+        ae.e("MicroMsg.MediaUtils", "doCompressImage, decode bmp return null");
+        AppMethodBeat.o(223404);
         return null;
       }
     }
@@ -49,19 +49,19 @@ public final class r
     {
       for (;;)
       {
-        ad.e("MicroMsg.MediaUtils", "doCompressImage, decode bmp oom");
+        ae.e("MicroMsg.MediaUtils", "doCompressImage, decode bmp oom");
         try
         {
-          Bitmap localBitmap2 = g.decodeFile(paramString, null);
+          Bitmap localBitmap2 = h.decodeFile(paramString, null);
         }
         catch (OutOfMemoryError localOutOfMemoryError2)
         {
-          ad.e("MicroMsg.MediaUtils", "doCompressImage, decode bmp oom retry, oom again");
+          ae.e("MicroMsg.MediaUtils", "doCompressImage, decode bmp oom retry, oom again");
           Object localObject1 = null;
         }
         catch (Exception localException1)
         {
-          ad.e("MicroMsg.MediaUtils", "doCompressImage, decode bmp oom retry, e ".concat(String.valueOf(localException1)));
+          ae.e("MicroMsg.MediaUtils", "doCompressImage, decode bmp oom retry, e ".concat(String.valueOf(localException1)));
           Object localObject2 = null;
         }
       }
@@ -72,11 +72,11 @@ public final class r
       {
         try
         {
-          Bitmap localBitmap3 = g.decodeFile(paramString, null);
+          Bitmap localBitmap3 = h.decodeFile(paramString, null);
         }
         catch (Exception localException2)
         {
-          ad.e("MicroMsg.MediaUtils", "doCompressImage, decode bmp npe retry, e ".concat(String.valueOf(localException2)));
+          ae.e("MicroMsg.MediaUtils", "doCompressImage, decode bmp npe retry, e ".concat(String.valueOf(localException2)));
           Object localObject3 = null;
         }
       }
@@ -86,16 +86,16 @@ public final class r
       Object localObject4;
       for (;;)
       {
-        ad.e("MicroMsg.MediaUtils", "doCompressImage, decode bmp e ".concat(String.valueOf(localException3)));
+        ae.e("MicroMsg.MediaUtils", "doCompressImage, decode bmp e ".concat(String.valueOf(localException3)));
         localObject4 = null;
       }
       localObject4.recycle();
-      l = bt.flT();
+      l = bu.fpO();
     }
     try
     {
-      boolean bool = c.es(str, paramString);
-      ad.i("MicroMsg.MediaUtils", "doCompressImage, ret = %b, cost = %d, %s (%d) -> %s (%d)", new Object[] { Boolean.valueOf(bool), Long.valueOf(bt.flT() - l), paramString, Long.valueOf(i.aYo(paramString)), str, Long.valueOf(new e(str).length()) });
+      boolean bool = d.ev(str, paramString);
+      ae.i("MicroMsg.MediaUtils", "doCompressImage, ret = %b, cost = %d, %s (%d) -> %s (%d)", new Object[] { Boolean.valueOf(bool), Long.valueOf(bu.fpO() - l), paramString, Long.valueOf(o.aZR(paramString)), str, Long.valueOf(new k(str).length()) });
       if (bool) {
         paramString = str;
       }
@@ -104,16 +104,16 @@ public final class r
     {
       for (;;)
       {
-        ad.e("MicroMsg.MediaUtils", "compressImage, oom");
+        ae.e("MicroMsg.MediaUtils", "compressImage, oom");
       }
     }
-    AppMethodBeat.o(189147);
+    AppMethodBeat.o(223404);
     return paramString;
   }
   
-  public static final String PY(String paramString)
+  public static final String QH(String paramString)
   {
-    AppMethodBeat.i(189148);
+    AppMethodBeat.i(223405);
     p.h(paramString, "srcPath");
     Object localObject1 = Exif.fromFile(paramString);
     p.g(localObject1, "exif");
@@ -127,17 +127,17 @@ public final class r
           localObject1 = MMBitmapFactory.decodeFile(paramString, localOptions);
           if (localObject1 == null)
           {
-            ad.e("MicroMsg.MediaUtils", "rotate image, get null bmp");
-            AppMethodBeat.o(189148);
+            ae.e("MicroMsg.MediaUtils", "rotate image, get null bmp");
+            AppMethodBeat.o(223405);
             return paramString;
           }
-          localBitmap = g.a((Bitmap)localObject1, i % 360);
-          localObject2 = new StringBuilder().append(com.tencent.mm.loader.j.b.arS()).append("microMsg.tmp.").append(System.currentTimeMillis());
-          if (c.d(localOptions))
+          localBitmap = h.a((Bitmap)localObject1, i % 360);
+          localObject2 = new StringBuilder().append(com.tencent.mm.loader.j.b.ash()).append("microMsg.tmp.").append(System.currentTimeMillis());
+          if (d.d(localOptions))
           {
             localObject1 = ".jpg";
             localObject2 = (String)localObject1;
-            if (!c.d(localOptions)) {
+            if (!d.d(localOptions)) {
               continue;
             }
             localObject1 = Bitmap.CompressFormat.JPEG;
@@ -149,7 +149,7 @@ public final class r
           Bitmap localBitmap;
           Object localObject2;
           continue;
-          AppMethodBeat.o(189148);
+          AppMethodBeat.o(223405);
           return paramString;
         }
         catch (NullPointerException localNullPointerException)
@@ -158,19 +158,19 @@ public final class r
         }
         try
         {
-          g.a(localBitmap, 80, (Bitmap.CompressFormat)localObject1, (String)localObject2, true);
-          if (c.d(localOptions)) {
-            com.tencent.mm.plugin.appbrand.l.b.cT(paramString, (String)localObject2);
+          h.a(localBitmap, 80, (Bitmap.CompressFormat)localObject1, (String)localObject2, true);
+          if (d.d(localOptions)) {
+            com.tencent.mm.plugin.appbrand.l.b.cV(paramString, (String)localObject2);
           }
           paramString = (String)localObject2;
         }
         catch (Exception localException)
         {
-          ad.e("MicroMsg.MediaUtils", "rotate image, exception occurred when saving | %s", new Object[] { localException });
-          i.deleteFile((String)localObject2);
+          ae.e("MicroMsg.MediaUtils", "rotate image, exception occurred when saving | %s", new Object[] { localException });
+          o.deleteFile((String)localObject2);
           continue;
         }
-        AppMethodBeat.o(189148);
+        AppMethodBeat.o(223405);
         return paramString;
         localObject1 = ".png";
         continue;
@@ -179,33 +179,33 @@ public final class r
     }
   }
   
-  public static final boolean Qc(String paramString)
+  public static final boolean QL(String paramString)
   {
-    AppMethodBeat.i(189150);
+    AppMethodBeat.i(223407);
     p.h(paramString, "imageFile");
-    if (bt.isNullOrNil(paramString))
+    if (bu.isNullOrNil(paramString))
     {
-      AppMethodBeat.o(189150);
+      AppMethodBeat.o(223407);
       return false;
     }
     paramString = Exif.fromFile(paramString);
     p.g(paramString, "Exif.fromFile(imageFile)");
     if (paramString.getOrientationInDegree() != 0)
     {
-      AppMethodBeat.o(189150);
+      AppMethodBeat.o(223407);
       return true;
     }
-    AppMethodBeat.o(189150);
+    AppMethodBeat.o(223407);
     return false;
   }
   
-  public static final boolean bp(List<String> paramList)
+  public static final boolean br(List<String> paramList)
   {
-    AppMethodBeat.i(189149);
+    AppMethodBeat.i(223406);
     p.h(paramList, "imageFiles");
-    if (bt.hj(paramList))
+    if (bu.ht(paramList))
     {
-      AppMethodBeat.o(189149);
+      AppMethodBeat.o(223406);
       return false;
     }
     paramList = paramList.iterator();
@@ -215,11 +215,11 @@ public final class r
       p.g(localExif, "Exif.fromFile(path)");
       if (localExif.getOrientationInDegree() != 0)
       {
-        AppMethodBeat.o(189149);
+        AppMethodBeat.o(223406);
         return true;
       }
     }
-    AppMethodBeat.o(189149);
+    AppMethodBeat.o(223406);
     return false;
   }
 }

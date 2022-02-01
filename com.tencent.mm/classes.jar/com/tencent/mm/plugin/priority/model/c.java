@@ -3,9 +3,9 @@ package com.tencent.mm.plugin.priority.model;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.g.c.aw;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.cf;
-import com.tencent.mm.model.q;
-import com.tencent.mm.model.w;
+import com.tencent.mm.model.ch;
+import com.tencent.mm.model.r;
+import com.tencent.mm.model.x;
 import com.tencent.mm.plugin.expt.b.b.a;
 import com.tencent.mm.plugin.messenger.foundation.a.l;
 import com.tencent.mm.plugin.priority.PluginPriority;
@@ -13,13 +13,13 @@ import com.tencent.mm.plugin.priority.a.a.a.a;
 import com.tencent.mm.plugin.report.e;
 import com.tencent.mm.protocal.protobuf.ho;
 import com.tencent.mm.protocal.protobuf.hp;
-import com.tencent.mm.protocal.protobuf.vx;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ay;
-import com.tencent.mm.storage.am;
-import com.tencent.mm.storage.bp;
+import com.tencent.mm.protocal.protobuf.wa;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.az;
+import com.tencent.mm.storage.an;
 import com.tencent.mm.storage.bq;
+import com.tencent.mm.storage.br;
 
 public final class c
 {
@@ -27,12 +27,12 @@ public final class c
   {
     AppMethodBeat.i(87810);
     Object localObject1 = (com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class);
-    Object localObject2 = b.a.qsQ;
-    com.tencent.mm.util.c localc = com.tencent.mm.util.c.LgD;
-    if (!com.tencent.mm.util.c.fNK())
+    Object localObject2 = b.a.qzF;
+    com.tencent.mm.util.c localc = com.tencent.mm.util.c.LDf;
+    if (!com.tencent.mm.util.c.fSf())
     {
-      localc = com.tencent.mm.util.c.LgD;
-      if (!com.tencent.mm.util.c.fNL()) {
+      localc = com.tencent.mm.util.c.LDf;
+      if (!com.tencent.mm.util.c.fSg()) {
         break label65;
       }
     }
@@ -42,34 +42,34 @@ public final class c
       AppMethodBeat.o(87810);
       return;
     }
-    localObject1 = ay.iR(aj.getContext());
+    localObject1 = az.iW(ak.getContext());
     int j;
     int k;
     label107:
     int m;
     label123:
     int i;
-    if (w.vF(paramho.FzS))
+    if (x.wb(paramho.FSq))
     {
       j = 1;
-      if (!a.auu(paramho.FzS)) {
+      if (!a.avJ(paramho.FSq)) {
         break label532;
       }
       k = 1;
       if (j != 1) {
         break label538;
       }
-      m = q.yS(paramho.FzS);
-      localObject2 = ((l)g.ab(l.class)).azp().Bf(paramho.FzS);
+      m = r.zC(paramho.FSq);
+      localObject2 = ((l)g.ab(l.class)).azF().BH(paramho.FSq);
       if (j != 1) {
         break label550;
       }
-      if (!com.tencent.mm.o.b.lM(((aw)localObject2).field_type)) {
+      if (!com.tencent.mm.contact.c.lO(((aw)localObject2).field_type)) {
         break label544;
       }
       i = 3;
       label168:
-      if (!((l)g.ab(l.class)).azv().aTH(paramho.FzS)) {
+      if (!((l)g.ab(l.class)).azL().aVi(paramho.FSq)) {
         break label570;
       }
     }
@@ -80,18 +80,18 @@ public final class c
     label570:
     for (int n = 1;; n = 2)
     {
-      long l2 = Math.round(paramho.FAc * 100.0D);
-      localObject2 = ((PluginPriority)g.ad(PluginPriority.class)).getC2CChatUsageResultStorage().auz(paramho.FzS);
+      long l2 = Math.round(paramho.FSA * 100.0D);
+      localObject2 = ((PluginPriority)g.ad(PluginPriority.class)).getC2CChatUsageResultStorage().avO(paramho.FSq);
       long l1 = 0L;
       int i1 = -1;
       if (localObject2 != null)
       {
-        l1 = Math.round(((vx)localObject2).FVz * 100.0D);
-        i1 = ((vx)localObject2).ujD;
+        l1 = Math.round(((wa)localObject2).GnY * 100.0D);
+        i1 = ((wa)localObject2).uvb;
       }
-      paramho = String.format("%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s", new Object[] { Long.valueOf(paramho.FzY), Integer.valueOf(paramInt1), localObject1, Integer.valueOf(paramho.FzW), Integer.valueOf(paramInt2), Long.valueOf(cf.aCL() - paramho.FzV), Long.valueOf(paramho.FzZ), paramho.FAa, Integer.valueOf(j), Integer.valueOf(k), paramho.FzS, Integer.valueOf(m), Integer.valueOf(i), Integer.valueOf(n), Long.valueOf(l2), Integer.valueOf(paramho.FAd), paramho.FzT, Long.valueOf(paramLong), Integer.valueOf(paramho.FzU), paramho.Id, Long.valueOf(l1), Integer.valueOf(i1), paramho.FAe });
-      ad.i("MicroMsg.Priority.PriorityReportLogic", "report18569File %s", new Object[] { paramho });
-      e.ygI.kvStat(18569, paramho);
+      paramho = String.format("%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s", new Object[] { Long.valueOf(paramho.FSw), Integer.valueOf(paramInt1), localObject1, Integer.valueOf(paramho.FSu), Integer.valueOf(paramInt2), Long.valueOf(ch.aDb() - paramho.FSt), Long.valueOf(paramho.FSx), paramho.FSy, Integer.valueOf(j), Integer.valueOf(k), paramho.FSq, Integer.valueOf(m), Integer.valueOf(i), Integer.valueOf(n), Long.valueOf(l2), Integer.valueOf(paramho.FSB), paramho.FSr, Long.valueOf(paramLong), Integer.valueOf(paramho.FSs), paramho.Id, Long.valueOf(l1), Integer.valueOf(i1), paramho.FSC });
+      ae.i("MicroMsg.Priority.PriorityReportLogic", "report18569File %s", new Object[] { paramho });
+      e.ywz.kvStat(18569, paramho);
       AppMethodBeat.o(87810);
       return;
       j = 2;
@@ -102,7 +102,7 @@ public final class c
       break label123;
       i = 4;
       break label168;
-      if (((am)localObject2).adm()) {}
+      if (((an)localObject2).adx()) {}
       for (i = 1;; i = 2) {
         break;
       }
@@ -113,12 +113,12 @@ public final class c
   {
     AppMethodBeat.i(87809);
     Object localObject1 = (com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class);
-    Object localObject2 = b.a.qsP;
-    com.tencent.mm.util.c localc = com.tencent.mm.util.c.LgD;
-    if (!com.tencent.mm.util.c.fNK())
+    Object localObject2 = b.a.qzE;
+    com.tencent.mm.util.c localc = com.tencent.mm.util.c.LDf;
+    if (!com.tencent.mm.util.c.fSf())
     {
-      localc = com.tencent.mm.util.c.LgD;
-      if (!com.tencent.mm.util.c.fNL()) {
+      localc = com.tencent.mm.util.c.LDf;
+      if (!com.tencent.mm.util.c.fSg()) {
         break label65;
       }
     }
@@ -128,34 +128,34 @@ public final class c
       AppMethodBeat.o(87809);
       return;
     }
-    localObject1 = ay.iR(aj.getContext());
+    localObject1 = az.iW(ak.getContext());
     int j;
     int k;
     label107:
     int m;
     label123:
     int i;
-    if (w.vF(paramhp.FzS))
+    if (x.wb(paramhp.FSq))
     {
       j = 1;
-      if (!a.auu(paramhp.FzS)) {
+      if (!a.avJ(paramhp.FSq)) {
         break label513;
       }
       k = 1;
       if (j != 1) {
         break label519;
       }
-      m = q.yS(paramhp.FzS);
-      localObject2 = ((l)g.ab(l.class)).azp().Bf(paramhp.FzS);
+      m = r.zC(paramhp.FSq);
+      localObject2 = ((l)g.ab(l.class)).azF().BH(paramhp.FSq);
       if (j != 1) {
         break label531;
       }
-      if (!com.tencent.mm.o.b.lM(((aw)localObject2).field_type)) {
+      if (!com.tencent.mm.contact.c.lO(((aw)localObject2).field_type)) {
         break label525;
       }
       i = 3;
       label168:
-      if (!((l)g.ab(l.class)).azv().aTH(paramhp.FzS)) {
+      if (!((l)g.ab(l.class)).azL().aVi(paramhp.FSq)) {
         break label551;
       }
     }
@@ -166,18 +166,18 @@ public final class c
     label551:
     for (int n = 1;; n = 2)
     {
-      long l2 = Math.round(paramhp.FAc * 100.0D);
-      localObject2 = ((PluginPriority)g.ad(PluginPriority.class)).getC2CChatUsageResultStorage().auz(paramhp.FzS);
+      long l2 = Math.round(paramhp.FSA * 100.0D);
+      localObject2 = ((PluginPriority)g.ad(PluginPriority.class)).getC2CChatUsageResultStorage().avO(paramhp.FSq);
       long l1 = 0L;
       int i1 = -1;
       if (localObject2 != null)
       {
-        l1 = Math.round(((vx)localObject2).FVz * 100.0D);
-        i1 = ((vx)localObject2).ujD;
+        l1 = Math.round(((wa)localObject2).GnY * 100.0D);
+        i1 = ((wa)localObject2).uvb;
       }
-      paramhp = String.format("%d,%d,%d,%s,%d,%d,%d,%d,%d,%d,%d,%d,%s,%d,%d,%d,%d,%s,%d,%s,%s", new Object[] { Long.valueOf(paramhp.FAf), Integer.valueOf(paramInt1), Long.valueOf(paramLong), localObject1, Integer.valueOf(paramhp.FzW), Integer.valueOf(paramInt2), Long.valueOf(cf.aCL() - paramhp.FzV), Integer.valueOf(0), Integer.valueOf(paramhp.FAg), Long.valueOf(paramhp.FzY), Integer.valueOf(j), Integer.valueOf(k), paramhp.FzS, Integer.valueOf(m), Integer.valueOf(i), Integer.valueOf(n), Long.valueOf(l2), paramhp.FzT, Integer.valueOf(paramhp.FAd), Long.valueOf(l1), Integer.valueOf(i1) });
-      ad.i("MicroMsg.Priority.PriorityReportLogic", "report16308Img %s", new Object[] { paramhp });
-      e.ygI.kvStat(16308, paramhp);
+      paramhp = String.format("%d,%d,%d,%s,%d,%d,%d,%d,%d,%d,%d,%d,%s,%d,%d,%d,%d,%s,%d,%s,%s", new Object[] { Long.valueOf(paramhp.FSD), Integer.valueOf(paramInt1), Long.valueOf(paramLong), localObject1, Integer.valueOf(paramhp.FSu), Integer.valueOf(paramInt2), Long.valueOf(ch.aDb() - paramhp.FSt), Integer.valueOf(0), Integer.valueOf(paramhp.FSE), Long.valueOf(paramhp.FSw), Integer.valueOf(j), Integer.valueOf(k), paramhp.FSq, Integer.valueOf(m), Integer.valueOf(i), Integer.valueOf(n), Long.valueOf(l2), paramhp.FSr, Integer.valueOf(paramhp.FSB), Long.valueOf(l1), Integer.valueOf(i1) });
+      ae.i("MicroMsg.Priority.PriorityReportLogic", "report16308Img %s", new Object[] { paramhp });
+      e.ywz.kvStat(16308, paramhp);
       AppMethodBeat.o(87809);
       return;
       j = 2;
@@ -188,7 +188,7 @@ public final class c
       break label123;
       i = 4;
       break label168;
-      if (((am)localObject2).adm()) {}
+      if (((an)localObject2).adx()) {}
       for (i = 1;; i = 2) {
         break;
       }
@@ -197,7 +197,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.priority.model.c
  * JD-Core Version:    0.7.0.1
  */

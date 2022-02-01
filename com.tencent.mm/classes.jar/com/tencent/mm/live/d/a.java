@@ -2,136 +2,136 @@ package com.tencent.mm.live.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/live/report/LiveAnchorIDKeyStat;", "", "()V", "ID", "", "TAG", "", "markAnchorAllowComment", "", "markAnchorClickIconEnterLive", "markAnchorClickOnlineUserList", "markAnchorExitBeforeStartLive", "markAnchorFinishLive", "markAnchorForbidComment", "markAnchorLanscapeLive", "markAnchorMaximumView", "markAnchorMinimumView", "markAnchorModifyLiveName", "markAnchorPortraitLive", "markAnchorStopCounter", "markAnchorSwitchCameraBeforeStartLive", "markAnchorSwitchCameraWhileLiveOn", "plugin-logic_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/live/report/LiveAnchorIDKeyStat;", "", "()V", "ID", "", "TAG", "", "markAnchorAllowComment", "", "markAnchorClickIconEnterLive", "markAnchorClickOnlineUserList", "markAnchorExitBeforeStartLive", "markAnchorFinishLive", "markAnchorForbidComment", "markAnchorLanscapeLive", "markAnchorMaximumView", "markAnchorMinimumView", "markAnchorModifyLiveName", "markAnchorPortraitLive", "markAnchorStopCounter", "markAnchorSwitchCameraBeforeStartLive", "markAnchorSwitchCameraWhileLiveOn", "plugin-logic_release"})
 public final class a
 {
-  public static final a gYe;
+  public static final a haQ;
   
   static
   {
-    AppMethodBeat.i(212712);
-    gYe = new a();
-    AppMethodBeat.o(212712);
+    AppMethodBeat.i(216340);
+    haQ = new a();
+    AppMethodBeat.o(216340);
   }
   
-  public static final void apg()
+  public static final void apA()
   {
-    AppMethodBeat.i(212698);
-    ad.i("MicroMsg.LiveAnchorIDKeyStat", "markAnchorClickIconEnterLive");
-    g.yhR.n(1380L, 0L, 1L);
-    AppMethodBeat.o(212698);
+    AppMethodBeat.i(216332);
+    ae.i("MicroMsg.LiveAnchorIDKeyStat", "markAnchorAllowComment");
+    g.yxI.n(1380L, 6L, 1L);
+    AppMethodBeat.o(216332);
   }
   
-  public static final void aph()
+  public static final void apB()
   {
-    AppMethodBeat.i(212699);
-    ad.i("MicroMsg.LiveAnchorIDKeyStat", "markAnchorSwitchCameraBeforeStartLive");
-    g.yhR.n(1380L, 1L, 1L);
-    AppMethodBeat.o(212699);
+    AppMethodBeat.i(216333);
+    ae.i("MicroMsg.LiveAnchorIDKeyStat", "markAnchorSwitchCameraWhileLiveOn");
+    g.yxI.n(1380L, 7L, 1L);
+    AppMethodBeat.o(216333);
   }
   
-  public static final void api()
+  public static final void apC()
   {
-    AppMethodBeat.i(212700);
-    ad.i("MicroMsg.LiveAnchorIDKeyStat", "markAnchorExitBeforeStartLive");
-    g.yhR.n(1380L, 2L, 1L);
-    AppMethodBeat.o(212700);
+    AppMethodBeat.i(216334);
+    ae.i("MicroMsg.LiveAnchorIDKeyStat", "markAnchorFinishLive");
+    g.yxI.n(1380L, 8L, 1L);
+    AppMethodBeat.o(216334);
   }
   
-  public static final void apj()
+  public static final void apD()
   {
-    AppMethodBeat.i(212701);
-    ad.i("MicroMsg.LiveAnchorIDKeyStat", "markAnchorModifyLiveName");
-    g.yhR.n(1380L, 3L, 1L);
-    AppMethodBeat.o(212701);
+    AppMethodBeat.i(216335);
+    ae.i("MicroMsg.LiveAnchorIDKeyStat", "markAnchorClickOnlineUserList");
+    g.yxI.n(1380L, 9L, 1L);
+    AppMethodBeat.o(216335);
   }
   
-  public static final void apk()
+  public static final void apE()
   {
-    AppMethodBeat.i(212702);
-    ad.i("MicroMsg.LiveAnchorIDKeyStat", "markAnchorStopCounter");
-    g.yhR.n(1380L, 4L, 1L);
-    AppMethodBeat.o(212702);
+    AppMethodBeat.i(216336);
+    ae.i("MicroMsg.LiveAnchorIDKeyStat", "markAnchorMinimumView");
+    g.yxI.n(1380L, 10L, 1L);
+    AppMethodBeat.o(216336);
   }
   
-  public static final void apl()
+  public static final void apF()
   {
-    AppMethodBeat.i(212703);
-    ad.i("MicroMsg.LiveAnchorIDKeyStat", "markAnchorForbidComment");
-    g.yhR.n(1380L, 5L, 1L);
-    AppMethodBeat.o(212703);
+    AppMethodBeat.i(216337);
+    ae.i("MicroMsg.LiveAnchorIDKeyStat", "markAnchorMaximumView");
+    g.yxI.n(1380L, 11L, 1L);
+    AppMethodBeat.o(216337);
   }
   
-  public static final void apm()
+  public static final void apG()
   {
-    AppMethodBeat.i(212704);
-    ad.i("MicroMsg.LiveAnchorIDKeyStat", "markAnchorAllowComment");
-    g.yhR.n(1380L, 6L, 1L);
-    AppMethodBeat.o(212704);
+    AppMethodBeat.i(216338);
+    ae.i("MicroMsg.LiveAnchorIDKeyStat", "markAnchorLanscapeLive");
+    g.yxI.n(1380L, 12L, 1L);
+    AppMethodBeat.o(216338);
   }
   
-  public static final void apn()
+  public static final void apH()
   {
-    AppMethodBeat.i(212705);
-    ad.i("MicroMsg.LiveAnchorIDKeyStat", "markAnchorSwitchCameraWhileLiveOn");
-    g.yhR.n(1380L, 7L, 1L);
-    AppMethodBeat.o(212705);
+    AppMethodBeat.i(216339);
+    ae.i("MicroMsg.LiveAnchorIDKeyStat", "markAnchorMaximumView");
+    g.yxI.n(1380L, 13L, 1L);
+    AppMethodBeat.o(216339);
   }
   
-  public static final void apo()
+  public static final void apu()
   {
-    AppMethodBeat.i(212706);
-    ad.i("MicroMsg.LiveAnchorIDKeyStat", "markAnchorFinishLive");
-    g.yhR.n(1380L, 8L, 1L);
-    AppMethodBeat.o(212706);
+    AppMethodBeat.i(216326);
+    ae.i("MicroMsg.LiveAnchorIDKeyStat", "markAnchorClickIconEnterLive");
+    g.yxI.n(1380L, 0L, 1L);
+    AppMethodBeat.o(216326);
   }
   
-  public static final void app()
+  public static final void apv()
   {
-    AppMethodBeat.i(212707);
-    ad.i("MicroMsg.LiveAnchorIDKeyStat", "markAnchorClickOnlineUserList");
-    g.yhR.n(1380L, 9L, 1L);
-    AppMethodBeat.o(212707);
+    AppMethodBeat.i(216327);
+    ae.i("MicroMsg.LiveAnchorIDKeyStat", "markAnchorSwitchCameraBeforeStartLive");
+    g.yxI.n(1380L, 1L, 1L);
+    AppMethodBeat.o(216327);
   }
   
-  public static final void apq()
+  public static final void apw()
   {
-    AppMethodBeat.i(212708);
-    ad.i("MicroMsg.LiveAnchorIDKeyStat", "markAnchorMinimumView");
-    g.yhR.n(1380L, 10L, 1L);
-    AppMethodBeat.o(212708);
+    AppMethodBeat.i(216328);
+    ae.i("MicroMsg.LiveAnchorIDKeyStat", "markAnchorExitBeforeStartLive");
+    g.yxI.n(1380L, 2L, 1L);
+    AppMethodBeat.o(216328);
   }
   
-  public static final void apr()
+  public static final void apx()
   {
-    AppMethodBeat.i(212709);
-    ad.i("MicroMsg.LiveAnchorIDKeyStat", "markAnchorMaximumView");
-    g.yhR.n(1380L, 11L, 1L);
-    AppMethodBeat.o(212709);
+    AppMethodBeat.i(216329);
+    ae.i("MicroMsg.LiveAnchorIDKeyStat", "markAnchorModifyLiveName");
+    g.yxI.n(1380L, 3L, 1L);
+    AppMethodBeat.o(216329);
   }
   
-  public static final void aps()
+  public static final void apy()
   {
-    AppMethodBeat.i(212710);
-    ad.i("MicroMsg.LiveAnchorIDKeyStat", "markAnchorLanscapeLive");
-    g.yhR.n(1380L, 12L, 1L);
-    AppMethodBeat.o(212710);
+    AppMethodBeat.i(216330);
+    ae.i("MicroMsg.LiveAnchorIDKeyStat", "markAnchorStopCounter");
+    g.yxI.n(1380L, 4L, 1L);
+    AppMethodBeat.o(216330);
   }
   
-  public static final void apt()
+  public static final void apz()
   {
-    AppMethodBeat.i(212711);
-    ad.i("MicroMsg.LiveAnchorIDKeyStat", "markAnchorMaximumView");
-    g.yhR.n(1380L, 13L, 1L);
-    AppMethodBeat.o(212711);
+    AppMethodBeat.i(216331);
+    ae.i("MicroMsg.LiveAnchorIDKeyStat", "markAnchorForbidComment");
+    g.yxI.n(1380L, 5L, 1L);
+    AppMethodBeat.o(216331);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.live.d.a
  * JD-Core Version:    0.7.0.1
  */

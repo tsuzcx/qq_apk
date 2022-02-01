@@ -11,18 +11,18 @@ import org.json.JSONObject;
 public final class i
   extends m
 {
-  public String dzn;
-  public String wyg;
-  private String wyh;
-  private boolean wyi;
+  public String dAs;
+  public String wNR;
+  private String wNS;
+  private boolean wNT;
   
   public i(Bankcard paramBankcard, String paramString1, String paramString2, int paramInt, String paramString3)
   {
     AppMethodBeat.i(66296);
-    this.wyg = "0";
-    this.wyh = "0";
-    this.dzn = "";
-    this.wyi = false;
+    this.wNR = "0";
+    this.wNS = "0";
+    this.dAs = "";
+    this.wNT = false;
     HashMap localHashMap = new HashMap();
     localHashMap.put("passwd", paramString1);
     localHashMap.put("oper", paramString2);
@@ -39,7 +39,7 @@ public final class i
       localHashMap.put("bind_serialno", paramBankcard.field_bindSerial);
       localHashMap.put("bank_type", paramBankcard.field_bankcardType);
       localHashMap.put("card_tail", paramBankcard.field_bankcardTail);
-      this.dzn = paramBankcard.field_mobile;
+      this.dAs = paramBankcard.field_mobile;
       setRequestData(localHashMap);
       AppMethodBeat.o(66296);
       return;
@@ -58,15 +58,15 @@ public final class i
     AppMethodBeat.i(66297);
     if (paramJSONObject != null)
     {
-      this.wyg = paramJSONObject.optString("verify_flag");
-      this.wyh = paramJSONObject.optString("limit_fee");
+      this.wNR = paramJSONObject.optString("verify_flag");
+      this.wNS = paramJSONObject.optString("limit_fee");
     }
     AppMethodBeat.o(66297);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.offline.a.i
  * JD-Core Version:    0.7.0.1
  */

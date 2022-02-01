@@ -12,7 +12,7 @@ final class TopStoryFSVideoUI$13
   public final void onCancel(DialogInterface paramDialogInterface)
   {
     AppMethodBeat.i(126348);
-    this.Bxi.finish();
+    this.BOG.finish();
     AppMethodBeat.o(126348);
   }
 }

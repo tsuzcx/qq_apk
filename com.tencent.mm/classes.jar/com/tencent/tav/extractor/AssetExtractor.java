@@ -32,12 +32,12 @@ public class AssetExtractor
   
   static
   {
-    AppMethodBeat.i(218513);
+    AppMethodBeat.i(215153);
     DOWNGRADING = false;
     if (ResourceLoadUtil.isLoaded())
     {
       nativeInit();
-      AppMethodBeat.o(218513);
+      AppMethodBeat.o(215153);
       return;
     }
     System.out.println("loadlibrary : tav start");
@@ -46,12 +46,12 @@ public class AssetExtractor
       System.loadLibrary("tav");
       ResourceLoadUtil.setLoaded(true);
       nativeInit();
-      AppMethodBeat.o(218513);
+      AppMethodBeat.o(215153);
       return;
     }
     catch (Throwable localThrowable)
     {
-      AppMethodBeat.o(218513);
+      AppMethodBeat.o(215153);
     }
   }
   
@@ -62,7 +62,7 @@ public class AssetExtractor
   
   public AssetExtractor(boolean paramBoolean)
   {
-    AppMethodBeat.i(218491);
+    AppMethodBeat.i(215131);
     this.released = false;
     this.mNativeContext = 0L;
     this.sourcePath = "";
@@ -72,7 +72,7 @@ public class AssetExtractor
     if (paramBoolean) {
       this.delegate = new ApiAssetExtractorDelegate();
     }
-    AppMethodBeat.o(218491);
+    AppMethodBeat.o(215131);
   }
   
   private synchronized native boolean advanceNative();
@@ -105,35 +105,35 @@ public class AssetExtractor
     {
       try
       {
-        AppMethodBeat.i(218503);
+        AppMethodBeat.i(215143);
         if (this.delegate != null)
         {
           bool = this.delegate.advance();
-          AppMethodBeat.o(218503);
+          AppMethodBeat.o(215143);
           return bool;
         }
         if (!this.released)
         {
           bool = advanceNative();
-          AppMethodBeat.o(218503);
+          AppMethodBeat.o(215143);
           continue;
         }
         boolean bool = false;
       }
       finally {}
-      AppMethodBeat.o(218503);
+      AppMethodBeat.o(215143);
     }
   }
   
   public AssetExtractor clone()
   {
-    AppMethodBeat.i(218492);
+    AppMethodBeat.i(215132);
     AssetExtractor localAssetExtractor = new AssetExtractor();
     localAssetExtractor.setSize(getSize());
     localAssetExtractor.setPreferRotation(getPreferRotation());
     localAssetExtractor.setDuration(getDuration());
     localAssetExtractor.setDataSource(this.sourcePath);
-    AppMethodBeat.o(218492);
+    AppMethodBeat.o(215132);
     return localAssetExtractor;
   }
   
@@ -183,15 +183,15 @@ public class AssetExtractor
   
   protected void finalize()
   {
-    AppMethodBeat.i(218496);
+    AppMethodBeat.i(215136);
     if (this.delegate != null)
     {
-      AppMethodBeat.o(218496);
+      AppMethodBeat.o(215136);
       return;
     }
     if (this.released)
     {
-      AppMethodBeat.o(218496);
+      AppMethodBeat.o(215136);
       return;
     }
     try
@@ -205,7 +205,7 @@ public class AssetExtractor
     }
     finally
     {
-      AppMethodBeat.o(218496);
+      AppMethodBeat.o(215136);
     }
   }
   
@@ -213,9 +213,9 @@ public class AssetExtractor
   {
     try
     {
-      AppMethodBeat.i(218509);
+      AppMethodBeat.i(215149);
       long l = DecoderUtils.getAudioDuration(this);
-      AppMethodBeat.o(218509);
+      AppMethodBeat.o(215149);
       return l;
     }
     finally
@@ -229,12 +229,12 @@ public class AssetExtractor
   {
     try
     {
-      AppMethodBeat.i(218508);
+      AppMethodBeat.i(215148);
       if (this.duration == 0L) {
         this.duration = DecoderUtils.getDuration(this);
       }
       long l = this.duration;
-      AppMethodBeat.o(218508);
+      AppMethodBeat.o(215148);
       return l;
     }
     finally {}
@@ -244,12 +244,12 @@ public class AssetExtractor
   {
     try
     {
-      AppMethodBeat.i(218511);
+      AppMethodBeat.i(215151);
       if (this.preferRotation == -1) {
         this.preferRotation = ExtractorUtils.getPreferRotation(this);
       }
       int i = this.preferRotation;
-      AppMethodBeat.o(218511);
+      AppMethodBeat.o(215151);
       return i;
     }
     finally {}
@@ -263,23 +263,23 @@ public class AssetExtractor
     {
       try
       {
-        AppMethodBeat.i(218506);
+        AppMethodBeat.i(215146);
         if (this.delegate != null)
         {
           l = this.delegate.getSampleTime();
-          AppMethodBeat.o(218506);
+          AppMethodBeat.o(215146);
           return l;
         }
         if (!this.released)
         {
           l = getSampleTimeNative();
-          AppMethodBeat.o(218506);
+          AppMethodBeat.o(215146);
           continue;
         }
         long l = -1L;
       }
       finally {}
-      AppMethodBeat.o(218506);
+      AppMethodBeat.o(215146);
     }
   }
   
@@ -289,23 +289,23 @@ public class AssetExtractor
     {
       try
       {
-        AppMethodBeat.i(218505);
+        AppMethodBeat.i(215145);
         if (this.delegate != null)
         {
           i = this.delegate.getSampleTrackIndex();
-          AppMethodBeat.o(218505);
+          AppMethodBeat.o(215145);
           return i;
         }
         if (!this.released)
         {
           i = getSampleTrackIndexNative();
-          AppMethodBeat.o(218505);
+          AppMethodBeat.o(215145);
           continue;
         }
         int i = -1;
       }
       finally {}
-      AppMethodBeat.o(218505);
+      AppMethodBeat.o(215145);
     }
   }
   
@@ -313,12 +313,12 @@ public class AssetExtractor
   {
     try
     {
-      AppMethodBeat.i(218510);
+      AppMethodBeat.i(215150);
       if (this.size == null) {
         this.size = ExtractorUtils.getVideoSize(this);
       }
       CGSize localCGSize = this.size;
-      AppMethodBeat.o(218510);
+      AppMethodBeat.o(215150);
       return localCGSize;
     }
     finally {}
@@ -335,23 +335,23 @@ public class AssetExtractor
     {
       try
       {
-        AppMethodBeat.i(218498);
+        AppMethodBeat.i(215138);
         if (this.delegate != null)
         {
           i = this.delegate.getTrackCount();
-          AppMethodBeat.o(218498);
+          AppMethodBeat.o(215138);
           return i;
         }
         if (!this.released)
         {
           i = getTrackCountNative();
-          AppMethodBeat.o(218498);
+          AppMethodBeat.o(215138);
           continue;
         }
         int i = 0;
       }
       finally {}
-      AppMethodBeat.o(218498);
+      AppMethodBeat.o(215138);
     }
   }
   
@@ -361,17 +361,17 @@ public class AssetExtractor
     {
       try
       {
-        AppMethodBeat.i(218499);
+        AppMethodBeat.i(215139);
         if (this.delegate != null)
         {
           localMediaFormat = this.delegate.getTrackFormat(paramInt);
-          AppMethodBeat.o(218499);
+          AppMethodBeat.o(215139);
           return localMediaFormat;
         }
         MediaFormat localMediaFormat = new MediaFormat();
         if (this.released)
         {
-          AppMethodBeat.o(218499);
+          AppMethodBeat.o(215139);
           continue;
         }
         localMap = getTrackFormatNative(paramInt);
@@ -383,7 +383,7 @@ public class AssetExtractor
         Field localField = MediaFormat.class.getDeclaredField("mMap");
         localField.setAccessible(true);
         localField.set(localObject, localMap);
-        AppMethodBeat.o(218499);
+        AppMethodBeat.o(215139);
       }
       catch (Exception localException)
       {
@@ -406,23 +406,23 @@ public class AssetExtractor
     {
       try
       {
-        AppMethodBeat.i(218504);
+        AppMethodBeat.i(215144);
         if (this.delegate != null)
         {
           paramInt = this.delegate.readSampleData(paramByteBuffer, paramInt);
-          AppMethodBeat.o(218504);
+          AppMethodBeat.o(215144);
           return paramInt;
         }
         if (!this.released)
         {
           paramInt = readSampleDataNative(paramByteBuffer, paramInt);
-          AppMethodBeat.o(218504);
+          AppMethodBeat.o(215144);
           continue;
         }
         paramInt = -1;
       }
       finally {}
-      AppMethodBeat.o(218504);
+      AppMethodBeat.o(215144);
     }
   }
   
@@ -576,23 +576,23 @@ public class AssetExtractor
     {
       try
       {
-        AppMethodBeat.i(218494);
+        AppMethodBeat.i(215134);
         if (this.delegate != null)
         {
           this.delegate.setDataSource(paramAssetFileDescriptor);
-          AppMethodBeat.o(218494);
+          AppMethodBeat.o(215134);
           return;
         }
         if (paramAssetFileDescriptor.getDeclaredLength() < 0L)
         {
           setDataSource(paramAssetFileDescriptor.getFileDescriptor());
-          AppMethodBeat.o(218494);
+          AppMethodBeat.o(215134);
           continue;
         }
         setDataSource(paramAssetFileDescriptor.getFileDescriptor(), paramAssetFileDescriptor.getStartOffset(), paramAssetFileDescriptor.getDeclaredLength());
       }
       finally {}
-      AppMethodBeat.o(218494);
+      AppMethodBeat.o(215134);
     }
   }
   

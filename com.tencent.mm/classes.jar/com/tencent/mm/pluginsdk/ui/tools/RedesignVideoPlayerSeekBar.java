@@ -11,10 +11,10 @@ import com.tencent.mm.ui.ao;
 public class RedesignVideoPlayerSeekBar
   extends VideoPlayerSeekBar
 {
-  long FkR = 0L;
-  long dcg = 0L;
-  long hXx = 0L;
-  private ImageView lrJ;
+  long FDp = 0L;
+  long ddi = 0L;
+  long iap = 0L;
+  private ImageView lwj;
   
   public RedesignVideoPlayerSeekBar(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -26,16 +26,16 @@ public class RedesignVideoPlayerSeekBar
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public final boolean Zw(int paramInt)
+  public final boolean aac(int paramInt)
   {
     AppMethodBeat.i(134012);
     int j = getVideoTotalTime();
-    if ((paramInt == this.hXx) && (j == this.dcg))
+    if ((paramInt == this.iap) && (j == this.ddi))
     {
       AppMethodBeat.o(134012);
       return false;
     }
-    if (System.currentTimeMillis() - this.FkR < 300L)
+    if (System.currentTimeMillis() - this.FDp < 300L)
     {
       AppMethodBeat.o(134012);
       return false;
@@ -58,11 +58,11 @@ public class RedesignVideoPlayerSeekBar
     if (j == 0) {}
     for (paramInt = 0;; paramInt = (int)(paramInt * (i * 1.0D / j)))
     {
-      FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.lrJ.getLayoutParams();
+      FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.lwj.getLayoutParams();
       localLayoutParams.width = paramInt;
-      this.lrJ.setLayoutParams(localLayoutParams);
-      this.hXx = i;
-      this.dcg = j;
+      this.lwj.setLayoutParams(localLayoutParams);
+      this.iap = i;
+      this.ddi = j;
       AppMethodBeat.o(134012);
       return true;
     }
@@ -84,23 +84,23 @@ public class RedesignVideoPlayerSeekBar
   {
     AppMethodBeat.i(134009);
     super.init();
-    this.lrJ = ((ImageView)this.contentView.findViewById(2131303303));
+    this.lwj = ((ImageView)this.contentView.findViewById(2131303303));
     AppMethodBeat.o(134009);
   }
   
   public void setIsPlay(boolean paramBoolean)
   {
     AppMethodBeat.i(134011);
-    this.dtk = paramBoolean;
+    this.duq = paramBoolean;
     if (paramBoolean)
     {
-      this.lru.setImageDrawable(ao.k(getContext(), 2131690445, -1));
-      this.lru.setContentDescription(getContext().getString(2131755838));
+      this.lvU.setImageDrawable(ao.k(getContext(), 2131690445, -1));
+      this.lvU.setContentDescription(getContext().getString(2131755838));
       AppMethodBeat.o(134011);
       return;
     }
-    this.lru.setImageDrawable(ao.k(getContext(), 2131690459, -1));
-    this.lru.setContentDescription(getContext().getString(2131755856));
+    this.lvU.setImageDrawable(ao.k(getContext(), 2131690459, -1));
+    this.lvU.setContentDescription(getContext().getString(2131755856));
     AppMethodBeat.o(134011);
   }
 }

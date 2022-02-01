@@ -1,106 +1,67 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import f.a.a.b;
 
 public final class ecx
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public long HOL;
-  public String Hnp;
-  public String nEt;
+  public String GLc;
+  public int GLu;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(32536);
+    AppMethodBeat.i(197211);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.Hnp == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: Talker");
-        AppMethodBeat.o(32536);
-        throw paramVarArgs;
+      paramVarArgs.aS(1, this.GLu);
+      if (this.GLc != null) {
+        paramVarArgs.d(2, this.GLc);
       }
-      if (this.nEt == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: NickName");
-        AppMethodBeat.o(32536);
-        throw paramVarArgs;
-      }
-      if (this.Hnp != null) {
-        paramVarArgs.d(1, this.Hnp);
-      }
-      if (this.nEt != null) {
-        paramVarArgs.d(2, this.nEt);
-      }
-      paramVarArgs.aY(3, this.HOL);
-      AppMethodBeat.o(32536);
+      AppMethodBeat.o(197211);
       return 0;
     }
-    if (paramInt == 1) {
-      if (this.Hnp == null) {
-        break label427;
-      }
-    }
-    label427:
-    for (paramInt = f.a.a.b.b.a.e(1, this.Hnp) + 0;; paramInt = 0)
+    if (paramInt == 1)
     {
-      int i = paramInt;
-      if (this.nEt != null) {
-        i = paramInt + f.a.a.b.b.a.e(2, this.nEt);
+      int i = f.a.a.b.b.a.bz(1, this.GLu) + 0;
+      paramInt = i;
+      if (this.GLc != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.GLc);
       }
-      paramInt = f.a.a.b.b.a.p(3, this.HOL);
-      AppMethodBeat.o(32536);
-      return i + paramInt;
-      if (paramInt == 2)
-      {
-        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
-          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
-          }
-        }
-        if (this.Hnp == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: Talker");
-          AppMethodBeat.o(32536);
-          throw paramVarArgs;
-        }
-        if (this.nEt == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: NickName");
-          AppMethodBeat.o(32536);
-          throw paramVarArgs;
-        }
-        AppMethodBeat.o(32536);
-        return 0;
-      }
-      if (paramInt == 3)
-      {
-        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
-        ecx localecx = (ecx)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
-        {
-        default: 
-          AppMethodBeat.o(32536);
-          return -1;
-        case 1: 
-          localecx.Hnp = locala.NPN.readString();
-          AppMethodBeat.o(32536);
-          return 0;
-        case 2: 
-          localecx.nEt = locala.NPN.readString();
-          AppMethodBeat.o(32536);
-          return 0;
-        }
-        localecx.HOL = locala.NPN.zd();
-        AppMethodBeat.o(32536);
-        return 0;
-      }
-      AppMethodBeat.o(32536);
-      return -1;
+      AppMethodBeat.o(197211);
+      return paramInt;
     }
+    if (paramInt == 2)
+    {
+      paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.gCg();
+        }
+      }
+      AppMethodBeat.o(197211);
+      return 0;
+    }
+    if (paramInt == 3)
+    {
+      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+      ecx localecx = (ecx)paramVarArgs[1];
+      switch (((Integer)paramVarArgs[2]).intValue())
+      {
+      default: 
+        AppMethodBeat.o(197211);
+        return -1;
+      case 1: 
+        localecx.GLu = locala.OmT.zc();
+        AppMethodBeat.o(197211);
+        return 0;
+      }
+      localecx.GLc = locala.OmT.readString();
+      AppMethodBeat.o(197211);
+      return 0;
+    }
+    AppMethodBeat.o(197211);
+    return -1;
   }
 }
 

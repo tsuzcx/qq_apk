@@ -1,30 +1,30 @@
 package com.tencent.mm.plugin.appbrand.debugger;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.appcache.bd.c;
+import com.tencent.mm.plugin.appbrand.appcache.be.c;
 import com.tencent.mm.plugin.appbrand.appusage.an;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 import d.l;
 import java.util.Map;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/debugger/MonkeyUpdateWxaUsageListNotify;", "Lcom/tencent/mm/plugin/appbrand/appcache/WxaPkgPushingXmlHandler$IMessageHandler;", "()V", "SAMPLE", "", "handleMessage", "", "xml", "parsedKV", "", "nilAs", "as", "Lkotlin/Function0;", "plugin-appbrand-integration_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/debugger/MonkeyUpdateWxaUsageListNotify;", "Lcom/tencent/mm/plugin/appbrand/appcache/WxaPkgPushingXmlHandler$IMessageHandler;", "()V", "SAMPLE", "", "handleMessage", "", "xml", "parsedKV", "", "nilAs", "as", "Lkotlin/Function0;", "plugin-appbrand-integration_release"})
 public final class i
-  implements bd.c
+  implements be.c
 {
-  private final String kaN = "<sysmsg type=\"AppBrandTestUpdateWxaUsageListNotify\">\n\n<AppBrandTestUpdateWxaUsageListNotify>\n\n    <DeleteCount></DeleteCount>\n\n    <DeleteList>\n\n        <DeleteAppInfo>\n\n            <UserName>%s</UserName>\n\n            <AppID>%s</AppID>\n\n            <AppType>%d</AppType>\n\n        </DeleteAppInfo>\n\n    </DeleteList>\n\n</AppBrandTestUpdateWxaUsageListNotify></sysmsg>";
+  private final String ked = "<sysmsg type=\"AppBrandTestUpdateWxaUsageListNotify\">\n\n<AppBrandTestUpdateWxaUsageListNotify>\n\n    <DeleteCount></DeleteCount>\n\n    <DeleteList>\n\n        <DeleteAppInfo>\n\n            <UserName>%s</UserName>\n\n            <AppID>%s</AppID>\n\n            <AppType>%d</AppType>\n\n        </DeleteAppInfo>\n\n    </DeleteList>\n\n</AppBrandTestUpdateWxaUsageListNotify></sysmsg>";
   
-  public final void k(String paramString, Map<String, String> paramMap)
+  public final void l(String paramString, Map<String, String> paramMap)
   {
-    AppMethodBeat.i(189031);
+    AppMethodBeat.i(223290);
     if (paramMap == null)
     {
-      AppMethodBeat.o(189031);
+      AppMethodBeat.o(223290);
       return;
     }
-    int k = bt.getInt((String)paramMap.get(".sysmsg.AppBrandTestUpdateWxaUsageListNotify" + ".DeleteCount"), 0);
+    int k = bu.getInt((String)paramMap.get(".sysmsg.AppBrandTestUpdateWxaUsageListNotify" + ".DeleteCount"), 0);
     if (k <= 0)
     {
-      AppMethodBeat.o(189031);
+      AppMethodBeat.o(223290);
       return;
     }
     if (k >= 0)
@@ -40,7 +40,7 @@ public final class i
           Object localObject2 = paramString;
           paramString = (String)paramMap.get((String)localObject2 + ".UserName");
           localObject1 = (String)paramMap.get((String)localObject2 + ".AppID");
-          m = bt.getInt((String)paramMap.get((String)localObject2 + ".AppType"), 0);
+          m = bu.getInt((String)paramMap.get((String)localObject2 + ".AppType"), 0);
           localObject2 = (CharSequence)paramString;
           if ((localObject2 != null) && (((CharSequence)localObject2).length() != 0)) {
             break label325;
@@ -70,13 +70,13 @@ public final class i
         for (int j = 1;; j = 0)
         {
           if (j != 0) {
-            paramString = com.tencent.mm.plugin.appbrand.config.v.NG((String)localObject1);
+            paramString = com.tencent.mm.plugin.appbrand.config.v.Oo((String)localObject1);
           }
           if (localObject1 != null) {
             break label343;
           }
           paramString = new d.v("null cannot be cast to non-null type kotlin.String");
-          AppMethodBeat.o(189031);
+          AppMethodBeat.o(223290);
           throw paramString;
           paramString = Integer.valueOf(i);
           break;
@@ -94,7 +94,7 @@ public final class i
         i += 1;
       }
     }
-    AppMethodBeat.o(189031);
+    AppMethodBeat.o(223290);
   }
 }
 

@@ -5,8 +5,8 @@ import android.media.MediaCodec.BufferInfo;
 import android.media.MediaFormat;
 import android.media.MediaMuxer;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.nio.ByteBuffer;
 
 @Deprecated
@@ -15,55 +15,55 @@ public class p
   implements e
 {
   protected boolean isStart;
-  protected MediaMuxer vQp;
-  protected int vQq;
-  protected int vQr;
-  protected boolean vQs;
-  protected boolean vQt;
-  protected long vQu;
+  protected MediaMuxer wct;
+  protected int wcu;
+  protected int wcv;
+  protected boolean wcw;
+  protected boolean wcx;
+  protected long wcy;
   
   public p(String paramString)
   {
-    AppMethodBeat.i(213680);
+    AppMethodBeat.i(210682);
     this.isStart = false;
-    this.vQq = -1;
-    this.vQr = -1;
-    this.vQs = false;
-    this.vQt = false;
-    this.vQu = 0L;
+    this.wcu = -1;
+    this.wcv = -1;
+    this.wcw = false;
+    this.wcx = false;
+    this.wcy = 0L;
     try
     {
-      this.vQp = new MediaMuxer(paramString, 0);
-      this.vQp.setOrientationHint(0);
-      ad.d("MicroMsg.MMSightSystemMediaMuxer", "create muxer, orientation: %s, filename: %s", new Object[] { Integer.valueOf(0), paramString });
-      AppMethodBeat.o(213680);
+      this.wct = new MediaMuxer(paramString, 0);
+      this.wct.setOrientationHint(0);
+      ae.d("MicroMsg.MMSightSystemMediaMuxer", "create muxer, orientation: %s, filename: %s", new Object[] { Integer.valueOf(0), paramString });
+      AppMethodBeat.o(210682);
       return;
     }
     catch (Exception paramString)
     {
-      ad.e("MicroMsg.MMSightSystemMediaMuxer", "new muxer error: %s", new Object[] { paramString.getMessage() });
-      AppMethodBeat.o(213680);
+      ae.e("MicroMsg.MMSightSystemMediaMuxer", "new muxer error: %s", new Object[] { paramString.getMessage() });
+      AppMethodBeat.o(210682);
     }
   }
   
-  public final boolean dnk()
+  public final boolean dqi()
   {
     return false;
   }
   
-  public final long dnt()
+  public final long dqr()
   {
-    return this.vQu;
+    return this.wcy;
   }
   
-  public final void dnu()
+  public final void dqs()
   {
-    AppMethodBeat.i(213682);
-    this.vQu = System.nanoTime();
-    AppMethodBeat.o(213682);
+    AppMethodBeat.i(210684);
+    this.wcy = System.nanoTime();
+    AppMethodBeat.o(210684);
   }
   
-  public final boolean dnv()
+  public final boolean dqt()
   {
     return this.isStart;
   }
@@ -75,14 +75,14 @@ public class p
       AppMethodBeat.i(89574);
       try
       {
-        if ((this.vQp != null) && (this.vQr == -1))
+        if ((this.wct != null) && (this.wcv == -1))
         {
-          this.vQr = this.vQp.addTrack(paramMediaFormat);
-          ad.i("MicroMsg.MMSightSystemMediaMuxer", "addAACTrack, aacTrackIndex: %s", new Object[] { Integer.valueOf(this.vQr) });
-          if ((!this.isStart) && (this.vQr != -1) && (this.vQq != -1))
+          this.wcv = this.wct.addTrack(paramMediaFormat);
+          ae.i("MicroMsg.MMSightSystemMediaMuxer", "addAACTrack, aacTrackIndex: %s", new Object[] { Integer.valueOf(this.wcv) });
+          if ((!this.isStart) && (this.wcv != -1) && (this.wcu != -1))
           {
-            ad.i("MicroMsg.MMSightSystemMediaMuxer", "start!");
-            this.vQp.start();
+            ae.i("MicroMsg.MMSightSystemMediaMuxer", "start!");
+            this.wct.start();
             this.isStart = true;
           }
         }
@@ -92,7 +92,7 @@ public class p
       {
         for (;;)
         {
-          ad.e("MicroMsg.MMSightSystemMediaMuxer", "addAACTrack error: %s", new Object[] { paramMediaFormat.getMessage() });
+          ae.e("MicroMsg.MMSightSystemMediaMuxer", "addAACTrack error: %s", new Object[] { paramMediaFormat.getMessage() });
           AppMethodBeat.o(89574);
         }
       }
@@ -105,24 +105,24 @@ public class p
   {
     try
     {
-      AppMethodBeat.i(213683);
+      AppMethodBeat.i(210685);
       try
       {
-        ad.i("MicroMsg.MMSightSystemMediaMuxer", "finish");
+        ae.i("MicroMsg.MMSightSystemMediaMuxer", "finish");
         this.isStart = false;
-        if (this.vQp != null)
+        if (this.wct != null)
         {
-          this.vQp.stop();
-          this.vQp.release();
+          this.wct.stop();
+          this.wct.release();
         }
-        AppMethodBeat.o(213683);
+        AppMethodBeat.o(210685);
       }
       catch (Exception localException)
       {
         for (;;)
         {
-          ad.e("MicroMsg.MMSightSystemMediaMuxer", "stop error: %s", new Object[] { localException.getMessage() });
-          AppMethodBeat.o(213683);
+          ae.e("MicroMsg.MMSightSystemMediaMuxer", "stop error: %s", new Object[] { localException.getMessage() });
+          AppMethodBeat.o(210685);
         }
       }
       return;
@@ -137,14 +137,14 @@ public class p
       AppMethodBeat.i(89573);
       try
       {
-        if ((this.vQp != null) && (this.vQq == -1))
+        if ((this.wct != null) && (this.wcu == -1))
         {
-          this.vQq = this.vQp.addTrack(paramMediaFormat);
-          ad.i("MicroMsg.MMSightSystemMediaMuxer", "addX264Track, x264TrackIndex: %s", new Object[] { Integer.valueOf(this.vQq) });
-          if ((!this.isStart) && (this.vQq != -1) && (this.vQr != -1))
+          this.wcu = this.wct.addTrack(paramMediaFormat);
+          ae.i("MicroMsg.MMSightSystemMediaMuxer", "addX264Track, x264TrackIndex: %s", new Object[] { Integer.valueOf(this.wcu) });
+          if ((!this.isStart) && (this.wcu != -1) && (this.wcv != -1))
           {
-            ad.i("MicroMsg.MMSightSystemMediaMuxer", "start!");
-            this.vQp.start();
+            ae.i("MicroMsg.MMSightSystemMediaMuxer", "start!");
+            this.wct.start();
             this.isStart = true;
           }
         }
@@ -154,7 +154,7 @@ public class p
       {
         for (;;)
         {
-          ad.e("MicroMsg.MMSightSystemMediaMuxer", "addX264Track error: %s", new Object[] { paramMediaFormat.getMessage() });
+          ae.e("MicroMsg.MMSightSystemMediaMuxer", "addX264Track error: %s", new Object[] { paramMediaFormat.getMessage() });
           AppMethodBeat.o(89573);
         }
       }
@@ -170,13 +170,13 @@ public class p
       AppMethodBeat.i(89575);
       try
       {
-        if ((this.vQp != null) && (this.vQr != -1) && (this.isStart) && (paramByteBuffer != null) && (paramBufferInfo != null))
+        if ((this.wct != null) && (this.wcv != -1) && (this.isStart) && (paramByteBuffer != null) && (paramBufferInfo != null))
         {
           long l1 = paramBufferInfo.presentationTimeUs;
-          paramBufferInfo.presentationTimeUs = ((System.nanoTime() - this.vQu) / 1000L);
-          long l2 = bt.HI();
-          this.vQp.writeSampleData(this.vQr, paramByteBuffer, paramBufferInfo);
-          ad.v("MicroMsg.MMSightSystemMediaMuxer", "writeAACSampleData size: %s used %dms oldpts %s fix pts: %s", new Object[] { Integer.valueOf(paramBufferInfo.size), Long.valueOf(bt.aO(l2)), Long.valueOf(l1), Long.valueOf(paramBufferInfo.presentationTimeUs) });
+          paramBufferInfo.presentationTimeUs = ((System.nanoTime() - this.wcy) / 1000L);
+          long l2 = bu.HQ();
+          this.wct.writeSampleData(this.wcv, paramByteBuffer, paramBufferInfo);
+          ae.v("MicroMsg.MMSightSystemMediaMuxer", "writeAACSampleData size: %s used %dms oldpts %s fix pts: %s", new Object[] { Integer.valueOf(paramBufferInfo.size), Long.valueOf(bu.aO(l2)), Long.valueOf(l1), Long.valueOf(paramBufferInfo.presentationTimeUs) });
         }
         AppMethodBeat.o(89575);
       }
@@ -184,7 +184,7 @@ public class p
       {
         for (;;)
         {
-          ad.e("MicroMsg.MMSightSystemMediaMuxer", "writeAACSampleData error: %s", new Object[] { paramByteBuffer.getMessage() });
+          ae.e("MicroMsg.MMSightSystemMediaMuxer", "writeAACSampleData error: %s", new Object[] { paramByteBuffer.getMessage() });
           AppMethodBeat.o(89575);
         }
       }
@@ -200,10 +200,10 @@ public class p
     {
       try
       {
-        AppMethodBeat.i(213681);
+        AppMethodBeat.i(210683);
         try
         {
-          if ((this.vQp != null) && (this.vQq != -1) && (this.isStart))
+          if ((this.wct != null) && (this.wcu != -1) && (this.isStart))
           {
             if (paramByteBuffer == null) {
               continue;
@@ -213,20 +213,20 @@ public class p
             if ((j & i) != 0)
             {
               long l1 = paramBufferInfo.presentationTimeUs;
-              paramBufferInfo.presentationTimeUs = ((System.nanoTime() - this.vQu) / 1000L);
+              paramBufferInfo.presentationTimeUs = ((System.nanoTime() - this.wcy) / 1000L);
               paramBufferInfo.flags = 1;
-              long l2 = bt.HI();
-              this.vQp.writeSampleData(this.vQq, paramByteBuffer, paramBufferInfo);
-              ad.v("MicroMsg.MMSightSystemMediaMuxer", "writeAACSampleData size: %s used %dms oldpts %s fix pts: %s", new Object[] { Integer.valueOf(paramBufferInfo.size), Long.valueOf(bt.aO(l2)), Long.valueOf(l1), Long.valueOf(paramBufferInfo.presentationTimeUs) });
+              long l2 = bu.HQ();
+              this.wct.writeSampleData(this.wcu, paramByteBuffer, paramBufferInfo);
+              ae.v("MicroMsg.MMSightSystemMediaMuxer", "writeAACSampleData size: %s used %dms oldpts %s fix pts: %s", new Object[] { Integer.valueOf(paramBufferInfo.size), Long.valueOf(bu.aO(l2)), Long.valueOf(l1), Long.valueOf(paramBufferInfo.presentationTimeUs) });
             }
           }
-          AppMethodBeat.o(213681);
+          AppMethodBeat.o(210683);
         }
         catch (Exception paramByteBuffer)
         {
           int i;
-          ad.e("MicroMsg.MMSightSystemMediaMuxer", "writeX264SampleData error: %s", new Object[] { paramByteBuffer.getMessage() });
-          AppMethodBeat.o(213681);
+          ae.e("MicroMsg.MMSightSystemMediaMuxer", "writeX264SampleData error: %s", new Object[] { paramByteBuffer.getMessage() });
+          AppMethodBeat.o(210683);
           continue;
         }
         return;

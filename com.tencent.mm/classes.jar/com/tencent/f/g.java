@@ -7,23 +7,23 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class g
   implements com.tencent.f.b.b
 {
-  private f Mkb;
-  d Mkc;
-  b Mkd;
-  a Mke;
+  private f MGY;
+  d MGZ;
+  b MHa;
+  a MHb;
   int mReferenceCount = 0;
   int mState;
   
   public g(f paramf, d paramd)
   {
-    this.Mkb = paramf;
-    this.Mkc = paramd;
+    this.MGY = paramf;
+    this.MGZ = paramd;
   }
   
   public final void start()
   {
     AppMethodBeat.i(62798);
-    this.Mkb.a(this);
+    this.MGY.a(this);
     AppMethodBeat.o(62798);
   }
 }

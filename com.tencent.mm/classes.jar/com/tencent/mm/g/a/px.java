@@ -2,12 +2,11 @@ package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
-import com.tencent.mm.storage.bu;
 
 public final class px
   extends b
 {
-  public a dEq;
+  public a dFt;
   
   public px()
   {
@@ -16,16 +15,19 @@ public final class px
   
   private px(byte paramByte)
   {
-    AppMethodBeat.i(42656);
-    this.dEq = new a();
-    this.IbR = false;
+    AppMethodBeat.i(91214);
+    this.dFt = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(42656);
+    AppMethodBeat.o(91214);
   }
   
   public static final class a
   {
-    public bu dku;
+    public String dEU;
+    public long dFq;
+    public String dFu;
+    public String username;
   }
 }
 

@@ -11,44 +11,44 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.model.a.e;
 import com.tencent.mm.model.a.f;
 import com.tencent.mm.model.a.g;
-import com.tencent.mm.plugin.sns.data.q;
-import com.tencent.mm.plugin.sns.model.ag;
+import com.tencent.mm.plugin.sns.data.r;
+import com.tencent.mm.plugin.sns.model.ah;
 import com.tencent.mm.plugin.sns.storage.p;
 import com.tencent.mm.plugin.sns.ui.SnsNotInterestUI;
 import com.tencent.mm.plugin.sns.ui.item.BaseTimeLineItem.BaseViewHolder;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public final class a
 {
   private static Context context;
-  private static boolean yVW;
-  private static String yVX;
-  private static View.OnClickListener yVY;
-  private static int yVZ;
-  private static int yWa;
-  private static long yWb;
-  private static View yWc;
-  private static b yWd;
-  private static NotInterestMenu.c yWe;
-  private static com.tencent.mm.sdk.b.c yWf;
-  private static com.tencent.mm.sdk.b.c yWg;
+  private static boolean zmg;
+  private static String zmh;
+  private static View.OnClickListener zmi;
+  private static int zmj;
+  private static int zmk;
+  private static long zml;
+  private static View zmm;
+  private static b zmn;
+  private static NotInterestMenu.c zmo;
+  private static com.tencent.mm.sdk.b.c zmp;
+  private static com.tencent.mm.sdk.b.c zmq;
   
   static
   {
     AppMethodBeat.i(94936);
-    yVW = false;
-    yVX = "0";
-    yVY = null;
-    yVZ = -1;
-    yWa = -1;
-    yWb = 0L;
-    yWc = null;
-    yWd = null;
-    yWe = null;
+    zmg = false;
+    zmh = "0";
+    zmi = null;
+    zmj = -1;
+    zmk = -1;
+    zml = 0L;
+    zmm = null;
+    zmn = null;
+    zmo = null;
     context = null;
-    yWf = new a.1();
-    yWg = new a.2();
+    zmp = new a.1();
+    zmq = new a.2();
     AppMethodBeat.o(94936);
   }
   
@@ -57,16 +57,16 @@ public final class a
     int i = 2;
     AppMethodBeat.i(94927);
     Intent localIntent;
-    if ((yVW) && (paramp != null) && (paramContext != null))
+    if ((zmg) && (paramp != null) && (paramContext != null))
     {
-      yWb = paramp.field_snsId;
+      zml = paramp.field_snsId;
       a(paramp);
       localIntent = new Intent(paramContext, SnsNotInterestUI.class);
-      localIntent.putExtra("sns_info_svr_id", yWb);
-      if ((!yVW) || (bt.isNullOrNil(yVX))) {
+      localIntent.putExtra("sns_info_svr_id", zml);
+      if ((!zmg) || (bu.isNullOrNil(zmh))) {
         break label210;
       }
-      if ((!yVX.equals("1")) && (!yVX.equals("2"))) {
+      if ((!zmh.equals("1")) && (!zmh.equals("2"))) {
         break label166;
       }
       i = 1;
@@ -75,15 +75,15 @@ public final class a
     {
       localIntent.putExtra("sns_info_not_interest_scene", i);
       paramp = new com.tencent.mm.hellhoundlib.b.a().bc(localIntent);
-      com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramp.ahp(), "com/tencent/mm/plugin/sns/abtest/NotInteresetABTestManager", "dealNotInterest", "(Landroid/content/Context;Lcom/tencent/mm/plugin/sns/storage/SnsInfo;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramContext.startActivity((Intent)paramp.mq(0));
+      com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramp.ahE(), "com/tencent/mm/plugin/sns/abtest/NotInteresetABTestManager", "dealNotInterest", "(Landroid/content/Context;Lcom/tencent/mm/plugin/sns/storage/SnsInfo;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramContext.startActivity((Intent)paramp.mt(0));
       com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/plugin/sns/abtest/NotInteresetABTestManager", "dealNotInterest", "(Landroid/content/Context;Lcom/tencent/mm/plugin/sns/storage/SnsInfo;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       AppMethodBeat.o(94927);
       return;
       label166:
-      if (yVX.equals("3"))
+      if (zmh.equals("3"))
       {
-        if (q.m(paramp)) {
+        if (r.n(paramp)) {
           i = 4;
         } else if (paramp.field_type == 1) {
           i = 3;
@@ -99,7 +99,7 @@ public final class a
   public static void a(ContextMenu paramContextMenu, p paramp)
   {
     AppMethodBeat.i(94928);
-    if ((yVW) && (yVX.equals("3")) && (paramp != null) && (!paramp.QM(32)) && (!paramp.field_userName.equals(ag.dTJ())) && (paramp.field_type != 15)) {
+    if ((zmg) && (zmh.equals("3")) && (paramp != null) && (!paramp.Rt(32)) && (!paramp.field_userName.equals(ah.dXj())) && (paramp.field_type != 15)) {
       paramContextMenu.add(0, 13, 0, 2131763845);
     }
     AppMethodBeat.o(94928);
@@ -108,13 +108,13 @@ public final class a
   public static void a(View paramView, BaseTimeLineItem.BaseViewHolder paramBaseViewHolder)
   {
     AppMethodBeat.i(94929);
-    if ((yVW) && (!bt.isNullOrNil(yVX)) && (!yVX.equals("0")))
+    if ((zmg) && (!bu.isNullOrNil(zmh)) && (!zmh.equals("0")))
     {
-      paramBaseViewHolder.AvR = ((ImageView)paramView.findViewById(2131304979));
-      paramBaseViewHolder.AvR.setVisibility(8);
-      paramBaseViewHolder.AvS = false;
-      if (!yVX.equals("3")) {
-        paramBaseViewHolder.AvR.setOnClickListener(yVY);
+      paramBaseViewHolder.ANi = ((ImageView)paramView.findViewById(2131304979));
+      paramBaseViewHolder.ANi.setVisibility(8);
+      paramBaseViewHolder.ANj = false;
+      if (!zmh.equals("3")) {
+        paramBaseViewHolder.ANi.setOnClickListener(zmi);
       }
     }
     AppMethodBeat.o(94929);
@@ -123,16 +123,16 @@ public final class a
   private static void a(p paramp)
   {
     AppMethodBeat.i(94926);
-    boolean bool = yVX.equals("3");
+    boolean bool = zmh.equals("3");
     if (paramp.field_type == 1)
     {
       if (bool)
       {
-        yWa = 5;
+        zmk = 5;
         AppMethodBeat.o(94926);
         return;
       }
-      yWa = 0;
+      zmk = 0;
       AppMethodBeat.o(94926);
       return;
     }
@@ -140,11 +140,11 @@ public final class a
     {
       if (bool)
       {
-        yWa = 4;
+        zmk = 4;
         AppMethodBeat.o(94926);
         return;
       }
-      yWa = 1;
+      zmk = 1;
       AppMethodBeat.o(94926);
       return;
     }
@@ -152,19 +152,19 @@ public final class a
     {
       if (!bool)
       {
-        yWa = 2;
+        zmk = 2;
         AppMethodBeat.o(94926);
       }
     }
-    else if (q.m(paramp))
+    else if (r.n(paramp))
     {
       if (bool)
       {
-        yWa = 6;
+        zmk = 6;
         AppMethodBeat.o(94926);
         return;
       }
-      yWa = 3;
+      zmk = 3;
     }
     AppMethodBeat.o(94926);
   }
@@ -172,9 +172,9 @@ public final class a
   public static void b(p paramp)
   {
     AppMethodBeat.i(94930);
-    if (yVW)
+    if (zmg)
     {
-      yWb = paramp.field_snsId;
+      zml = paramp.field_snsId;
       a(paramp);
     }
     AppMethodBeat.o(94930);
@@ -183,68 +183,68 @@ public final class a
   public static void clean()
   {
     AppMethodBeat.i(94931);
-    yWa = -1;
-    yVZ = -1;
-    yWb = 0L;
-    yVY = null;
-    yWe = null;
-    yWc = null;
+    zmk = -1;
+    zmj = -1;
+    zml = 0L;
+    zmi = null;
+    zmo = null;
+    zmm = null;
     context = null;
-    yVW = false;
-    yVX = "0";
-    f.BJ("7");
-    com.tencent.mm.sdk.b.a.IbL.d(yWf);
-    com.tencent.mm.sdk.b.a.IbL.d(yWg);
+    zmg = false;
+    zmh = "0";
+    f.Cl("7");
+    com.tencent.mm.sdk.b.a.IvT.d(zmp);
+    com.tencent.mm.sdk.b.a.IvT.d(zmq);
     AppMethodBeat.o(94931);
   }
   
   public static void d(Context paramContext, ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(94924);
-    if (g.aCR().BE("7") != null)
+    if (g.aDh().Cg("7") != null)
     {
-      yVW = true;
-      yVX = g.aCR().BE("7").value;
-      ad.d("MicroMsg.NotInteresetABTestManager", "start not interest abtest, testStyle:%s", new Object[] { yVX });
-      yWc = paramViewGroup;
-      yWd = new b(paramViewGroup);
+      zmg = true;
+      zmh = g.aDh().Cg("7").value;
+      ae.d("MicroMsg.NotInteresetABTestManager", "start not interest abtest, testStyle:%s", new Object[] { zmh });
+      zmm = paramViewGroup;
+      zmn = new b(paramViewGroup);
       context = paramContext;
-      com.tencent.mm.sdk.b.a.IbL.c(yWf);
-      com.tencent.mm.sdk.b.a.IbL.c(yWg);
-      yVY = new a.3();
-      yWe = new NotInterestMenu.c()
+      com.tencent.mm.sdk.b.a.IvT.c(zmp);
+      com.tencent.mm.sdk.b.a.IvT.c(zmq);
+      zmi = new a.3();
+      zmo = new NotInterestMenu.c()
       {
         public final void c(p paramAnonymousp)
         {
           AppMethodBeat.i(94921);
-          a.a(a.dQY(), paramAnonymousp);
+          a.a(a.dUv(), paramAnonymousp);
           AppMethodBeat.o(94921);
         }
         
         public final void d(p paramAnonymousp)
         {
           AppMethodBeat.i(94922);
-          a.b(a.dQY(), paramAnonymousp);
+          a.b(a.dUv(), paramAnonymousp);
           AppMethodBeat.o(94922);
         }
         
         public final void e(p paramAnonymousp)
         {
           AppMethodBeat.i(94923);
-          a.c(a.dQY(), paramAnonymousp);
+          a.c(a.dUv(), paramAnonymousp);
           AppMethodBeat.o(94923);
         }
       };
-      yWd.yWj = yWe;
+      zmn.zmt = zmo;
     }
     AppMethodBeat.o(94924);
   }
   
-  public static void dQX()
+  public static void dUu()
   {
     AppMethodBeat.i(94925);
-    if (yWd != null) {
-      yWd.dRb();
+    if (zmn != null) {
+      zmn.dUy();
     }
     AppMethodBeat.o(94925);
   }

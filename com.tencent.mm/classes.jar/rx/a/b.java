@@ -7,7 +7,7 @@ import java.util.Set;
 
 public final class b
 {
-  public static void K(Throwable paramThrowable)
+  public static void L(Throwable paramThrowable)
   {
     if ((paramThrowable instanceof f)) {
       throw ((f)paramThrowable);
@@ -32,7 +32,7 @@ public final class b
     }
   }
   
-  public static Throwable L(Throwable paramThrowable)
+  public static Throwable M(Throwable paramThrowable)
   {
     AppMethodBeat.i(90046);
     int i = 0;
@@ -54,7 +54,7 @@ public final class b
   public static void a(Throwable paramThrowable, rx.e<?> parame)
   {
     AppMethodBeat.i(90049);
-    K(paramThrowable);
+    L(paramThrowable);
     parame.onError(paramThrowable);
     AppMethodBeat.o(90049);
   }
@@ -62,7 +62,7 @@ public final class b
   public static void a(Throwable paramThrowable, rx.e<?> parame, Object paramObject)
   {
     AppMethodBeat.i(90048);
-    K(paramThrowable);
+    L(paramThrowable);
     parame.onError(g.a(paramThrowable, paramObject));
     AppMethodBeat.o(90048);
   }
@@ -104,7 +104,7 @@ public final class b
     }
   }
   
-  public static void jz(List<? extends Throwable> paramList)
+  public static void jI(List<? extends Throwable> paramList)
   {
     AppMethodBeat.i(90047);
     if ((paramList != null) && (!paramList.isEmpty()))
@@ -137,7 +137,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     rx.a.b
  * JD-Core Version:    0.7.0.1
  */

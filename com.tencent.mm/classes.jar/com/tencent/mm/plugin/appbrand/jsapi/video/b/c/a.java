@@ -4,7 +4,7 @@ import com.tencent.mm.plugin.appbrand.jsapi.video.b.b.e;
 
 public abstract interface a
 {
-  public abstract e dx(String paramString1, String paramString2);
+  public abstract e dz(String paramString1, String paramString2);
 }
 
 

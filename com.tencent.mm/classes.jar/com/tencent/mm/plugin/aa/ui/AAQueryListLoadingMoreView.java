@@ -37,7 +37,7 @@ public class AAQueryListLoadingMoreView
   private void init(Context paramContext)
   {
     AppMethodBeat.i(63507);
-    z.jO(paramContext).inflate(2131492888, this, true);
+    z.jV(paramContext).inflate(2131492888, this, true);
     AppMethodBeat.o(63507);
   }
 }

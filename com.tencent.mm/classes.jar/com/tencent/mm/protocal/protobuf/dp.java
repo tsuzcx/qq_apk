@@ -3,10 +3,10 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class dp
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public String FvR;
-  public String dxD;
+  public String FOp;
+  public String dyI;
   public String title;
   
   public final int op(int paramInt, Object... paramVarArgs)
@@ -18,11 +18,11 @@ public final class dp
       if (this.title != null) {
         paramVarArgs.d(1, this.title);
       }
-      if (this.dxD != null) {
-        paramVarArgs.d(2, this.dxD);
+      if (this.dyI != null) {
+        paramVarArgs.d(2, this.dyI);
       }
-      if (this.FvR != null) {
-        paramVarArgs.d(3, this.FvR);
+      if (this.FOp != null) {
+        paramVarArgs.d(3, this.FOp);
       }
       AppMethodBeat.o(168751);
       return 0;
@@ -36,21 +36,21 @@ public final class dp
     for (int i = f.a.a.b.b.a.e(1, this.title) + 0;; i = 0)
     {
       paramInt = i;
-      if (this.dxD != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.dxD);
+      if (this.dyI != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.dyI);
       }
       i = paramInt;
-      if (this.FvR != null) {
-        i = paramInt + f.a.a.b.b.a.e(3, this.FvR);
+      if (this.FOp != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.FOp);
       }
       AppMethodBeat.o(168751);
       return i;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
         AppMethodBeat.o(168751);
@@ -66,15 +66,15 @@ public final class dp
           AppMethodBeat.o(168751);
           return -1;
         case 1: 
-          localdp.title = locala.NPN.readString();
+          localdp.title = locala.OmT.readString();
           AppMethodBeat.o(168751);
           return 0;
         case 2: 
-          localdp.dxD = locala.NPN.readString();
+          localdp.dyI = locala.OmT.readString();
           AppMethodBeat.o(168751);
           return 0;
         }
-        localdp.FvR = locala.NPN.readString();
+        localdp.FOp = locala.OmT.readString();
         AppMethodBeat.o(168751);
         return 0;
       }

@@ -5,7 +5,7 @@ import com.tencent.smtt.export.external.interfaces.IX5CoreWebStorage;
 import java.util.Map;
 
 public class WebStorage
-  extends x
+  extends z
 {
   private static WebStorage a;
   

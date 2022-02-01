@@ -13,14 +13,14 @@ public class a
   
   public a(double paramDouble1, double paramDouble2, double paramDouble3, double paramDouble4)
   {
-    AppMethodBeat.i(193049);
+    AppMethodBeat.i(217719);
     this.a = paramDouble1;
     this.b = paramDouble3;
     this.c = paramDouble2;
     this.d = paramDouble4;
     this.e = ((paramDouble1 + paramDouble2) / 2.0D);
     this.f = ((paramDouble3 + paramDouble4) / 2.0D);
-    AppMethodBeat.o(193049);
+    AppMethodBeat.o(217719);
   }
   
   public boolean a(double paramDouble1, double paramDouble2)
@@ -35,17 +35,17 @@ public class a
   
   public boolean a(a parama)
   {
-    AppMethodBeat.i(193051);
+    AppMethodBeat.i(217721);
     boolean bool = a(parama.a, parama.c, parama.b, parama.d);
-    AppMethodBeat.o(193051);
+    AppMethodBeat.o(217721);
     return bool;
   }
   
   public boolean a(b paramb)
   {
-    AppMethodBeat.i(193050);
+    AppMethodBeat.i(217720);
     boolean bool = a(paramb.a, paramb.b);
-    AppMethodBeat.o(193050);
+    AppMethodBeat.o(217720);
     return bool;
   }
   

@@ -3,29 +3,29 @@ package com.tencent.mm.live.core.core;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/live/core/core/LiveCoreConstants$AudienceMode;", "", "()V", "CDN_MODE", "", "getCDN_MODE", "()I", "TRTC_MODE", "getTRTC_MODE", "plugin-core_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/live/core/core/LiveCoreConstants$AudienceMode;", "", "()V", "CDN_MODE", "", "getCDN_MODE", "()I", "TRTC_MODE", "getTRTC_MODE", "plugin-core_release"})
 public final class c$a
 {
-  private static final int gGS = 0;
-  private static final int gGT = 1;
-  public static final a gGU;
+  private static final int gJB = 0;
+  private static final int gJC = 1;
+  public static final a gJD;
   
   static
   {
-    AppMethodBeat.i(216782);
-    gGU = new a();
-    gGT = 1;
-    AppMethodBeat.o(216782);
+    AppMethodBeat.i(196794);
+    gJD = new a();
+    gJC = 1;
+    AppMethodBeat.o(196794);
   }
   
-  public static int alk()
+  public static int alA()
   {
-    return gGS;
+    return gJC;
   }
   
-  public static int all()
+  public static int alz()
   {
-    return gGT;
+    return gJB;
   }
 }
 

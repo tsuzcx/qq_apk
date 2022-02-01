@@ -1,21 +1,21 @@
 package com.tencent.mm.plugin.collect.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.byw;
-import com.tencent.mm.protocal.protobuf.ul;
-import com.tencent.mm.protocal.protobuf.um;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.al.a;
+import com.tencent.mm.protocal.protobuf.bzq;
+import com.tencent.mm.protocal.protobuf.un;
+import com.tencent.mm.protocal.protobuf.uo;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.aj;
+import com.tencent.mm.storage.am.a;
 import com.tencent.mm.wallet_core.c.ag;
 import java.util.List;
 import org.json.JSONArray;
@@ -28,7 +28,7 @@ public final class l
 {
   private final String TAG;
   private f callback;
-  public um pax;
+  public uo phb;
   private b rr;
   
   public l()
@@ -36,52 +36,52 @@ public final class l
     AppMethodBeat.i(63827);
     this.TAG = "MicroMsg.NetSceneF2fQrcode";
     b.a locala = new b.a();
-    locala.hNM = new ul();
-    locala.hNN = new um();
+    locala.hQF = new un();
+    locala.hQG = new uo();
     locala.funcId = 1588;
     locala.uri = "/cgi-bin/mmpay-bin/f2fqrcode";
-    locala.hNO = 0;
+    locala.hQH = 0;
     locala.respCmdId = 0;
-    this.rr = locala.aDC();
+    this.rr = locala.aDS();
     AppMethodBeat.o(63827);
   }
   
-  private static JSONObject a(byw parambyw)
+  private static JSONObject a(bzq parambzq)
   {
     AppMethodBeat.i(63831);
-    if ((parambyw != null) && (!bt.isNullOrNil(parambyw.dxD))) {}
+    if ((parambzq != null) && (!bu.isNullOrNil(parambzq.dyI))) {}
     for (int i = 1; i == 0; i = 0)
     {
-      ad.w("MicroMsg.NetSceneF2fQrcode", "empty menu item");
+      ae.w("MicroMsg.NetSceneF2fQrcode", "empty menu item");
       AppMethodBeat.o(63831);
       return null;
     }
     JSONObject localJSONObject = new JSONObject();
     try
     {
-      localJSONObject.put("type", parambyw.type);
-      localJSONObject.put("wording", parambyw.dxD);
-      localJSONObject.put("url", parambyw.url);
-      localJSONObject.put("waapp_username", parambyw.GUa);
-      localJSONObject.put("waapp_path", parambyw.GUb);
+      localJSONObject.put("type", parambzq.type);
+      localJSONObject.put("wording", parambzq.dyI);
+      localJSONObject.put("url", parambzq.url);
+      localJSONObject.put("waapp_username", parambzq.HnB);
+      localJSONObject.put("waapp_path", parambzq.HnC);
       AppMethodBeat.o(63831);
       return localJSONObject;
     }
-    catch (JSONException parambyw)
+    catch (JSONException parambzq)
     {
-      ad.printErrStackTrace("MicroMsg.NetSceneF2fQrcode", parambyw, "", new Object[0]);
+      ae.printErrStackTrace("MicroMsg.NetSceneF2fQrcode", parambzq, "", new Object[0]);
       AppMethodBeat.o(63831);
     }
     return null;
   }
   
-  private static JSONArray cK(List<byw> paramList)
+  private static JSONArray cN(List<bzq> paramList)
   {
     AppMethodBeat.i(63830);
     JSONArray localJSONArray = new JSONArray();
     if ((paramList == null) || (paramList.size() == 0))
     {
-      ad.w("MicroMsg.NetSceneF2fQrcode", "empty menu items");
+      ae.w("MicroMsg.NetSceneF2fQrcode", "empty menu items");
       AppMethodBeat.o(63830);
       return null;
     }
@@ -90,7 +90,7 @@ public final class l
     {
       while (i < paramList.size())
       {
-        JSONObject localJSONObject = a((byw)paramList.get(i));
+        JSONObject localJSONObject = a((bzq)paramList.get(i));
         if (localJSONObject != null) {
           localJSONArray.put(i, localJSONObject);
         }
@@ -101,7 +101,7 @@ public final class l
     }
     catch (JSONException paramList)
     {
-      ad.printErrStackTrace("MicroMsg.NetSceneF2fQrcode", paramList, "", new Object[0]);
+      ae.printErrStackTrace("MicroMsg.NetSceneF2fQrcode", paramList, "", new Object[0]);
       AppMethodBeat.o(63830);
     }
     return null;
@@ -124,51 +124,51 @@ public final class l
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(63829);
-    this.pax = ((um)((b)paramq).hNL.hNQ);
-    ad.i("MicroMsg.NetSceneF2fQrcode", "errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    ad.d("MicroMsg.NetSceneF2fQrcode", "payurl: %s, true_name: %s, bottom_icon_url: %s", new Object[] { this.pax.url, this.pax.CTa, this.pax.FTL });
-    if (!bt.isNullOrNil(this.pax.url))
+    this.phb = ((uo)((b)paramq).hQE.hQJ);
+    ae.i("MicroMsg.NetSceneF2fQrcode", "errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    ae.d("MicroMsg.NetSceneF2fQrcode", "payurl: %s, true_name: %s, bottom_icon_url: %s", new Object[] { this.phb.url, this.phb.DkG, this.phb.Gmk });
+    if (!bu.isNullOrNil(this.phb.url))
     {
-      g.ajD();
-      g.ajC().ajl().set(al.a.IAO, this.pax.url);
+      g.ajS();
+      g.ajR().ajA().set(am.a.IVn, this.phb.url);
     }
-    g.ajD();
-    g.ajC().ajl().set(al.a.IAQ, Integer.valueOf(ag.ago(this.pax.FTC)));
-    if (!bt.isNullOrNil(this.pax.CTa))
+    g.ajS();
+    g.ajR().ajA().set(am.a.IVp, Integer.valueOf(ag.agX(this.phb.Gmb)));
+    if (!bu.isNullOrNil(this.phb.DkG))
     {
-      g.ajD();
-      g.ajC().ajl().set(al.a.IAP, this.pax.CTa);
+      g.ajS();
+      g.ajR().ajA().set(am.a.IVo, this.phb.DkG);
     }
-    if (!bt.isNullOrNil(this.pax.FTT))
+    if (!bu.isNullOrNil(this.phb.Gms))
     {
-      g.ajD();
-      g.ajC().ajl().set(al.a.IAU, this.pax.FTT);
+      g.ajS();
+      g.ajR().ajA().set(am.a.IVt, this.phb.Gms);
     }
-    if (!bt.isNullOrNil(this.pax.FTR))
+    if (!bu.isNullOrNil(this.phb.Gmq))
     {
-      g.ajD();
-      g.ajC().ajl().set(al.a.IAV, this.pax.FTR);
+      g.ajS();
+      g.ajR().ajA().set(am.a.IVu, this.phb.Gmq);
     }
-    if (!bt.isNullOrNil(this.pax.FTS))
+    if (!bu.isNullOrNil(this.phb.Gmr))
     {
-      g.ajD();
-      g.ajC().ajl().set(al.a.IAW, this.pax.FTS);
+      g.ajS();
+      g.ajR().ajA().set(am.a.IVv, this.phb.Gmr);
     }
-    g.ajD();
-    g.ajC().ajl().set(al.a.IAS, this.pax.FTL);
-    paramq = a(this.pax.FTK);
-    paramArrayOfByte = cK(this.pax.FTJ);
+    g.ajS();
+    g.ajR().ajA().set(am.a.IVr, this.phb.Gmk);
+    paramq = a(this.phb.Gmj);
+    paramArrayOfByte = cN(this.phb.Gmi);
     if (paramq != null)
     {
-      ad.d("MicroMsg.NetSceneF2fQrcode", "bottom: %s", new Object[] { paramq.toString() });
-      g.ajD();
-      g.ajC().ajl().set(al.a.IAR, paramq.toString());
+      ae.d("MicroMsg.NetSceneF2fQrcode", "bottom: %s", new Object[] { paramq.toString() });
+      g.ajS();
+      g.ajR().ajA().set(am.a.IVq, paramq.toString());
     }
     if (paramArrayOfByte != null)
     {
-      ad.d("MicroMsg.NetSceneF2fQrcode", "upright: %s", new Object[] { paramArrayOfByte.toString() });
-      g.ajD();
-      g.ajC().ajl().set(al.a.IAT, paramArrayOfByte.toString());
+      ae.d("MicroMsg.NetSceneF2fQrcode", "upright: %s", new Object[] { paramArrayOfByte.toString() });
+      g.ajS();
+      g.ajR().ajA().set(am.a.IVs, paramArrayOfByte.toString());
     }
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
@@ -178,7 +178,7 @@ public final class l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.collect.model.l
  * JD-Core Version:    0.7.0.1
  */

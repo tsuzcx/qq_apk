@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.exdevice.g.b;
 
 public abstract interface f
 {
-  public abstract void acC(String paramString);
+  public abstract void adt(String paramString);
 }
 
 

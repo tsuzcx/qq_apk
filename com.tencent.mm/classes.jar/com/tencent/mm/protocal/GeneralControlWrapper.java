@@ -4,24 +4,24 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.aut;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.avj;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public class GeneralControlWrapper
   implements Parcelable
 {
   public static final Parcelable.Creator<GeneralControlWrapper> CREATOR;
-  public static final GeneralControlWrapper FnA;
-  private static Boolean FnC;
-  public static final GeneralControlWrapper Fnz;
-  public int FnB;
+  public static final GeneralControlWrapper FFX;
+  public static final GeneralControlWrapper FFY;
+  private static Boolean FGa;
+  public int FFZ;
   
   static
   {
     AppMethodBeat.i(152449);
-    Fnz = new GeneralControlWrapper(10);
-    FnA = new GeneralControlWrapper(1);
-    FnC = null;
+    FFX = new GeneralControlWrapper(10);
+    FFY = new GeneralControlWrapper(1);
+    FGa = null;
     CREATOR = new Parcelable.Creator() {};
     AppMethodBeat.o(152449);
   }
@@ -29,25 +29,25 @@ public class GeneralControlWrapper
   public GeneralControlWrapper(int paramInt)
   {
     AppMethodBeat.i(152439);
-    this.FnB = paramInt;
-    ad.d("MicroMsg.GeneralControlWrapper", "edw <init>, ".concat(String.valueOf(this)));
+    this.FFZ = paramInt;
+    ae.d("MicroMsg.GeneralControlWrapper", "edw <init>, ".concat(String.valueOf(this)));
     AppMethodBeat.o(152439);
   }
   
   private GeneralControlWrapper(Parcel paramParcel)
   {
     AppMethodBeat.i(152448);
-    this.FnB = paramParcel.readInt();
+    this.FFZ = paramParcel.readInt();
     AppMethodBeat.o(152448);
   }
   
-  public GeneralControlWrapper(aut paramaut)
+  public GeneralControlWrapper(avj paramavj)
   {
     AppMethodBeat.i(152438);
-    if (paramaut == null) {}
-    for (this.FnB = 0;; this.FnB = paramaut.GsY)
+    if (paramavj == null) {}
+    for (this.FFZ = 0;; this.FFZ = paramavj.GMw)
     {
-      ad.d("MicroMsg.GeneralControlWrapper", "edw <init>, ".concat(String.valueOf(this)));
+      ae.d("MicroMsg.GeneralControlWrapper", "edw <init>, ".concat(String.valueOf(this)));
       AppMethodBeat.o(152438);
       return;
     }
@@ -58,97 +58,97 @@ public class GeneralControlWrapper
     return 0;
   }
   
-  public final boolean fgk()
+  public final boolean fka()
   {
-    AppMethodBeat.i(195456);
-    if ((this.FnB & 0x2000) != 0) {}
+    AppMethodBeat.i(218909);
+    if ((this.FFZ & 0x2000) != 0) {}
     for (boolean bool = true;; bool = false)
     {
-      ad.d("MicroMsg.GeneralControlWrapper", "allowOuterOpenUrl, ret = ".concat(String.valueOf(bool)));
-      AppMethodBeat.o(195456);
+      ae.d("MicroMsg.GeneralControlWrapper", "allowOuterOpenUrl, ret = ".concat(String.valueOf(bool)));
+      AppMethodBeat.o(218909);
       return bool;
     }
   }
   
-  public final boolean fgl()
+  public final boolean fkb()
   {
     AppMethodBeat.i(152441);
-    if ((this.FnB & 0x2) > 0) {}
+    if ((this.FFZ & 0x2) > 0) {}
     for (boolean bool = true;; bool = false)
     {
-      ad.d("MicroMsg.GeneralControlWrapper", "allowInnerOpenUrl, ret = ".concat(String.valueOf(bool)));
+      ae.d("MicroMsg.GeneralControlWrapper", "allowInnerOpenUrl, ret = ".concat(String.valueOf(bool)));
       AppMethodBeat.o(152441);
       return bool;
     }
   }
   
-  public final boolean fgm()
+  public final boolean fkc()
   {
     AppMethodBeat.i(152442);
-    if ((this.FnB & 0x40) > 0) {}
+    if ((this.FFZ & 0x40) > 0) {}
     for (boolean bool = true;; bool = false)
     {
-      ad.d("MicroMsg.GeneralControlWrapper", "allowScanQRCode, ret = ".concat(String.valueOf(bool)));
+      ae.d("MicroMsg.GeneralControlWrapper", "allowScanQRCode, ret = ".concat(String.valueOf(bool)));
       AppMethodBeat.o(152442);
       return bool;
     }
   }
   
-  public final boolean fgn()
+  public final boolean fkd()
   {
-    AppMethodBeat.i(195457);
-    if ((this.FnB & 0x200) > 0) {}
+    AppMethodBeat.i(218910);
+    if ((this.FFZ & 0x200) > 0) {}
     for (boolean bool = true;; bool = false)
     {
-      ad.d("MicroMsg.GeneralControlWrapper", "allowUploadHosts, ret = ".concat(String.valueOf(bool)));
-      AppMethodBeat.o(195457);
+      ae.d("MicroMsg.GeneralControlWrapper", "allowUploadHosts, ret = ".concat(String.valueOf(bool)));
+      AppMethodBeat.o(218910);
       return bool;
     }
   }
   
-  public final boolean fgo()
+  public final boolean fke()
   {
-    AppMethodBeat.i(195458);
-    if ((this.FnB & 0x400) > 0) {}
+    AppMethodBeat.i(218911);
+    if ((this.FFZ & 0x400) > 0) {}
     for (boolean bool = true;; bool = false)
     {
-      ad.d("MicroMsg.GeneralControlWrapper", "allowUploadHTML, ret = ".concat(String.valueOf(bool)));
-      AppMethodBeat.o(195458);
+      ae.d("MicroMsg.GeneralControlWrapper", "allowUploadHTML, ret = ".concat(String.valueOf(bool)));
+      AppMethodBeat.o(218911);
       return bool;
     }
   }
   
-  public final boolean fgp()
+  public final boolean fkf()
   {
     AppMethodBeat.i(152443);
-    if ((this.FnB & 0x800) > 0) {}
+    if ((this.FFZ & 0x800) > 0) {}
     for (boolean bool = true;; bool = false)
     {
-      ad.d("MicroMsg.GeneralControlWrapper", "allowReportPageEvent, ret = ".concat(String.valueOf(bool)));
+      ae.d("MicroMsg.GeneralControlWrapper", "allowReportPageEvent, ret = ".concat(String.valueOf(bool)));
       AppMethodBeat.o(152443);
       return bool;
     }
   }
   
-  public final boolean fgq()
+  public final boolean fkg()
   {
     AppMethodBeat.i(152444);
-    if ((this.FnB & 0x4000) > 0) {}
+    if ((this.FFZ & 0x4000) > 0) {}
     for (boolean bool = true;; bool = false)
     {
-      ad.d("MicroMsg.GeneralControlWrapper", "allowReportPageEvent, ret = ".concat(String.valueOf(bool)));
+      ae.d("MicroMsg.GeneralControlWrapper", "allowReportPageEvent, ret = ".concat(String.valueOf(bool)));
       AppMethodBeat.o(152444);
       return bool;
     }
   }
   
-  public final boolean fgr()
+  public final boolean fkh()
   {
     AppMethodBeat.i(152445);
-    if ((this.FnB & 0x8000) > 0) {}
+    if ((this.FFZ & 0x8000) > 0) {}
     for (boolean bool = true;; bool = false)
     {
-      ad.d("MicroMsg.GeneralControlWrapper", "allowFavImage, ret = ".concat(String.valueOf(bool)));
+      ae.d("MicroMsg.GeneralControlWrapper", "allowFavImage, ret = ".concat(String.valueOf(bool)));
       AppMethodBeat.o(152445);
       return bool;
     }
@@ -159,7 +159,7 @@ public class GeneralControlWrapper
     AppMethodBeat.i(152446);
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("[bitset=0x");
-    ((StringBuilder)localObject).append(Integer.toHexString(this.FnB));
+    ((StringBuilder)localObject).append(Integer.toHexString(this.FFZ));
     ((StringBuilder)localObject).append("]");
     localObject = ((StringBuilder)localObject).toString();
     AppMethodBeat.o(152446);
@@ -169,7 +169,7 @@ public class GeneralControlWrapper
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(152447);
-    paramParcel.writeInt(this.FnB);
+    paramParcel.writeInt(this.FFZ);
     AppMethodBeat.o(152447);
   }
 }

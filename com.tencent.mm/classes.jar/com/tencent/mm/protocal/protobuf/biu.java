@@ -4,58 +4,45 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 public final class biu
-  extends cvc
+  extends cvw
 {
-  public String GDr;
-  public String username;
+  public int GWF;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(153282);
+    AppMethodBeat.i(153279);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
       if (this.BaseRequest != null)
       {
-        paramVarArgs.lC(1, this.BaseRequest.computeSize());
+        paramVarArgs.lJ(1, this.BaseRequest.computeSize());
         this.BaseRequest.writeFields(paramVarArgs);
       }
-      if (this.username != null) {
-        paramVarArgs.d(2, this.username);
-      }
-      if (this.GDr != null) {
-        paramVarArgs.d(3, this.GDr);
-      }
-      AppMethodBeat.o(153282);
+      paramVarArgs.aS(2, this.GWF);
+      AppMethodBeat.o(153279);
       return 0;
     }
     if (paramInt == 1) {
       if (this.BaseRequest == null) {
-        break label430;
+        break label354;
       }
     }
-    label430:
-    for (int i = f.a.a.a.lB(1, this.BaseRequest.computeSize()) + 0;; i = 0)
+    label354:
+    for (paramInt = f.a.a.a.lI(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
     {
-      paramInt = i;
-      if (this.username != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.username);
-      }
-      i = paramInt;
-      if (this.GDr != null) {
-        i = paramInt + f.a.a.b.b.a.e(3, this.GDr);
-      }
-      AppMethodBeat.o(153282);
-      return i;
+      int i = f.a.a.b.b.a.bz(2, this.GWF);
+      AppMethodBeat.o(153279);
+      return paramInt + i;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = cvc.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cvc.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = cvw.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cvw.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
-        AppMethodBeat.o(153282);
+        AppMethodBeat.o(153279);
         return 0;
       }
       if (paramInt == 3)
@@ -66,10 +53,10 @@ public final class biu
         switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(153282);
+          AppMethodBeat.o(153279);
           return -1;
         case 1: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
+          paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
@@ -77,22 +64,18 @@ public final class biu
             Object localObject2 = (byte[])paramVarArgs.get(paramInt);
             localObject1 = new jc();
             localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((jc)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, cvc.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            for (boolean bool = true; bool; bool = ((jc)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cvw.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
             localbiu.BaseRequest = ((jc)localObject1);
             paramInt += 1;
           }
-          AppMethodBeat.o(153282);
-          return 0;
-        case 2: 
-          localbiu.username = ((f.a.a.a.a)localObject1).NPN.readString();
-          AppMethodBeat.o(153282);
+          AppMethodBeat.o(153279);
           return 0;
         }
-        localbiu.GDr = ((f.a.a.a.a)localObject1).NPN.readString();
-        AppMethodBeat.o(153282);
+        localbiu.GWF = ((f.a.a.a.a)localObject1).OmT.zc();
+        AppMethodBeat.o(153279);
         return 0;
       }
-      AppMethodBeat.o(153282);
+      AppMethodBeat.o(153279);
       return -1;
     }
   }

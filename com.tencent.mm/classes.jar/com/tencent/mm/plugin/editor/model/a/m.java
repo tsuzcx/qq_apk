@@ -3,12 +3,12 @@ package com.tencent.mm.plugin.editor.model.a;
 public final class m
   extends f
 {
-  public Boolean puc = Boolean.FALSE;
-  public Boolean pud = Boolean.FALSE;
+  public Boolean pAG = Boolean.FALSE;
+  public Boolean pAH = Boolean.FALSE;
   
-  public final String ceb()
+  public final String cfq()
   {
-    return this.ptU;
+    return this.pAy;
   }
   
   public final int getType()

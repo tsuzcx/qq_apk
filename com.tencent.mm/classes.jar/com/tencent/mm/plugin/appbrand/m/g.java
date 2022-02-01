@@ -9,11 +9,13 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
 import com.tencent.mm.plugin.appbrand.appcache.ModulePkgInfo;
 import com.tencent.mm.plugin.appbrand.appcache.WxaPkgWrappingInfo;
-import com.tencent.mm.plugin.appbrand.appcache.bf;
+import com.tencent.mm.plugin.appbrand.appcache.bg;
 import com.tencent.mm.plugin.appbrand.widget.dialog.k.a;
+import com.tencent.mm.plugin.appbrand.y.i;
 import com.tencent.mm.pointers.PBool;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.vfs.o;
 import java.io.FileNotFoundException;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -25,42 +27,42 @@ import java.util.Set;
 public final class g
   implements a
 {
-  private final Map<String, Boolean> coJ;
-  private final Set<String> lUG;
-  final com.tencent.mm.plugin.appbrand.z.h<String, b> lUH;
-  final com.tencent.luggage.sdk.d.c lUI;
+  private final Map<String, Boolean> coL;
+  private final Set<String> lZj;
+  final com.tencent.mm.plugin.appbrand.y.h<String, b> lZk;
+  final com.tencent.luggage.sdk.d.d lZl;
   
-  public g(com.tencent.luggage.sdk.d.c paramc)
+  public g(com.tencent.luggage.sdk.d.d paramd)
   {
     AppMethodBeat.i(147355);
-    this.lUG = new HashSet();
-    this.lUH = new com.tencent.mm.plugin.appbrand.z.h();
-    this.coJ = new HashMap();
-    this.lUI = paramc;
+    this.lZj = new HashSet();
+    this.lZk = new com.tencent.mm.plugin.appbrand.y.h();
+    this.coL = new HashMap();
+    this.lZl = paramd;
     AppMethodBeat.o(147355);
   }
   
   private void a(ModulePkgInfo arg1, a.b paramb, a.a parama)
   {
-    AppMethodBeat.i(192255);
+    AppMethodBeat.i(220828);
     final String str = ???.name;
     final boolean bool1;
-    if ((!"__APP__".equals(str)) && (!???.independent) && (!btc()))
+    if ((!"__APP__".equals(str)) && (!???.independent) && (!btN()))
     {
       bool1 = true;
       if (bool1) {
-        a(this.lUI.Fa().jYh, null, null);
+        a(this.lZl.Ff().kbw, null, null);
       }
-      ad.i("MicroMsg.AppBrand.RuntimeModularizingHelper[modularizing]", "loadModule, name %s, independent %b, should ensure __APP__ %b", new Object[] { ???.name, Boolean.valueOf(???.independent), Boolean.valueOf(bool1) });
+      ae.i("MicroMsg.AppBrand.RuntimeModularizingHelper[modularizing]", "loadModule, name %s, independent %b, should ensure __APP__ %b", new Object[] { ???.name, Boolean.valueOf(???.independent), Boolean.valueOf(bool1) });
       b(str, paramb, parama);
     }
     for (;;)
     {
-      synchronized (this.lUG)
+      synchronized (this.lZj)
       {
-        boolean bool2 = this.lUG.contains(str);
+        boolean bool2 = this.lZj.contains(str);
         if (!bool2) {
-          this.lUG.add(str);
+          this.lZj.add(str);
         }
         if (!bool2)
         {
@@ -71,40 +73,40 @@ public final class g
             {
               public final void a(a.d paramAnonymousd)
               {
-                AppMethodBeat.i(192246);
-                paramModulePkgInfo.Z(null);
-                AppMethodBeat.o(192246);
+                AppMethodBeat.i(220819);
+                paramModulePkgInfo.X(null);
+                AppMethodBeat.o(220819);
               }
             }, null);
-            paramb = this.lUI.Fa().jYh.cg(this.lUI.mAppId, str);
-            paramb = e.c.lUF.j(this.lUI, paramb);
+            paramb = this.lZl.Ff().kbw.ch(this.lZl.mAppId, str);
+            paramb = e.c.lZi.j(this.lZl, paramb);
             paramb.a(new e.b()
             {
-              public final void OX(final String paramAnonymousString)
+              public final void PF(final String paramAnonymousString)
               {
-                AppMethodBeat.i(192249);
-                ad.i("MicroMsg.AppBrand.RuntimeModularizingHelper[modularizing]", "onLoad, module(%s) pkgPath(%s)", new Object[] { str, paramAnonymousString });
+                AppMethodBeat.i(220822);
+                ae.i("MicroMsg.AppBrand.RuntimeModularizingHelper[modularizing]", "onLoad, module(%s) pkgPath(%s)", new Object[] { str, paramAnonymousString });
                 paramAnonymousString = new Runnable()
                 {
                   public final void run()
                   {
-                    AppMethodBeat.i(192247);
-                    if (g.this.lUI.isDestroyed())
+                    AppMethodBeat.i(220820);
+                    if (g.this.lZl.isDestroyed())
                     {
-                      ad.e("MicroMsg.AppBrand.RuntimeModularizingHelper[modularizing]", "onLoad with module(%s) but runtime(%s) destroyed", new Object[] { g.5.this.coO, g.this.lUI.toString() });
-                      AppMethodBeat.o(192247);
+                      ae.e("MicroMsg.AppBrand.RuntimeModularizingHelper[modularizing]", "onLoad with module(%s) but runtime(%s) destroyed", new Object[] { g.5.this.coQ, g.this.lZl.toString() });
+                      AppMethodBeat.o(220820);
                       return;
                     }
                     int i;
-                    if ((!bt.isNullOrNil(paramAnonymousString)) && ((!g.5.this.lUU) || (g.this.btc())))
+                    if ((!bu.isNullOrNil(paramAnonymousString)) && ((!g.5.this.lZx) || (g.this.btN())))
                     {
                       i = 1;
                       if (i != 0)
                       {
-                        if (!"__APP__".equals(g.5.this.coO)) {
+                        if (!"__APP__".equals(g.5.this.coQ)) {
                           break label260;
                         }
-                        g.this.lUI.Fa().jYh.pkgPath = paramAnonymousString;
+                        g.this.lZl.Ff().kbw.pkgPath = paramAnonymousString;
                         label172:
                         break label283;
                       }
@@ -114,103 +116,103 @@ public final class g
                       Object localObject2;
                       try
                       {
-                        g.this.lUI.Fa().jYh.md5 = com.tencent.mm.b.g.b(com.tencent.mm.vfs.i.openRead(paramAnonymousString), 4096);
-                        bf.N(g.this.lUI);
+                        g.this.lZl.Ff().kbw.md5 = com.tencent.mm.b.g.b(o.openRead(paramAnonymousString), 4096);
+                        bg.L(g.this.lZl);
                         localObject2 = g.this;
-                        String str = g.5.this.coO;
+                        String str = g.5.this.coQ;
                         if (i == 0) {
                           break label330;
                         }
-                        a.d locald = a.d.lUw;
+                        a.d locald = a.d.lYZ;
                         g.a((g)localObject2, str, locald);
-                        AppMethodBeat.o(192247);
+                        AppMethodBeat.o(220820);
                         return;
                         i = 0;
                       }
                       catch (FileNotFoundException localFileNotFoundException)
                       {
-                        ad.e("MicroMsg.AppBrand.RuntimeModularizingHelper[modularizing]", "loaded __APP__, appId = %s, pkg not found", new Object[] { g.this.lUI.mAppId });
+                        ae.e("MicroMsg.AppBrand.RuntimeModularizingHelper[modularizing]", "loaded __APP__, appId = %s, pkg not found", new Object[] { g.this.lZl.mAppId });
                         continue;
                       }
                       label260:
-                      Object localObject1 = g.this.lUI.Fa().jYh.jIX.iterator();
+                      Object localObject1 = g.this.lZl.Ff().kbw.jLY.iterator();
                       label283:
                       if (((Iterator)localObject1).hasNext())
                       {
                         localObject2 = (ModulePkgInfo)((Iterator)localObject1).next();
-                        if (!g.5.this.coO.equals(((ModulePkgInfo)localObject2).name)) {
+                        if (!g.5.this.coQ.equals(((ModulePkgInfo)localObject2).name)) {
                           break label172;
                         }
                         ((ModulePkgInfo)localObject2).pkgPath = paramAnonymousString;
                         continue;
                         label330:
-                        localObject1 = a.d.lUx;
+                        localObject1 = a.d.lZa;
                       }
                     }
                   }
                 };
-                paramModulePkgInfo.Z(paramAnonymousString);
-                AppMethodBeat.o(192249);
+                paramModulePkgInfo.X(paramAnonymousString);
+                AppMethodBeat.o(220822);
               }
               
               public final void a(final android.arch.a.c.a<AppBrandRuntime, Boolean> paramAnonymousa)
               {
-                AppMethodBeat.i(192251);
+                AppMethodBeat.i(220824);
                 paramAnonymousa = new Runnable()
                 {
                   public final void run()
                   {
-                    AppMethodBeat.i(192248);
-                    boolean bool2 = g.this.lUI.isDestroyed();
+                    AppMethodBeat.i(220821);
+                    boolean bool2 = g.this.lZl.isDestroyed();
                     if (bool2) {}
-                    for (boolean bool1 = false;; bool1 = ((Boolean)paramAnonymousa.apply(g.this.lUI)).booleanValue())
+                    for (boolean bool1 = false;; bool1 = ((Boolean)paramAnonymousa.apply(g.this.lZl)).booleanValue())
                     {
-                      ad.i("MicroMsg.AppBrand.RuntimeModularizingHelper[modularizing]", "onLoad onResultCustomAction, runtime(%s), moduleName(%s) destroyed(%b) loaded(%b)", new Object[] { g.this.lUI.toString(), g.5.this.coO, Boolean.valueOf(bool2), Boolean.valueOf(bool1) });
+                      ae.i("MicroMsg.AppBrand.RuntimeModularizingHelper[modularizing]", "onLoad onResultCustomAction, runtime(%s), moduleName(%s) destroyed(%b) loaded(%b)", new Object[] { g.this.lZl.toString(), g.5.this.coQ, Boolean.valueOf(bool2), Boolean.valueOf(bool1) });
                       if (!bool2) {
                         break;
                       }
-                      AppMethodBeat.o(192248);
+                      AppMethodBeat.o(220821);
                       return;
                     }
-                    if ((bool1) && (!g.this.lUI.getAppConfig().jVy.booleanValue())) {
-                      g.this.lUI.aVP();
+                    if ((bool1) && (!g.this.lZl.getAppConfig().jYP.booleanValue())) {
+                      g.this.lZl.aWp();
                     }
                     g localg = g.this;
-                    String str = g.5.this.coO;
+                    String str = g.5.this.coQ;
                     if (bool1) {}
-                    for (a.d locald = a.d.lUw;; locald = a.d.lUx)
+                    for (a.d locald = a.d.lYZ;; locald = a.d.lZa)
                     {
                       g.a(localg, str, locald);
-                      AppMethodBeat.o(192248);
+                      AppMethodBeat.o(220821);
                       return;
                     }
                   }
                 };
-                paramModulePkgInfo.Z(paramAnonymousa);
-                AppMethodBeat.o(192251);
+                paramModulePkgInfo.X(paramAnonymousa);
+                AppMethodBeat.o(220824);
               }
               
               public final void a(c paramAnonymousc)
               {
-                AppMethodBeat.i(192250);
-                ad.i("MicroMsg.AppBrand.RuntimeModularizingHelper[modularizing]", "hy: on load module progress %s", new Object[] { paramAnonymousc });
+                AppMethodBeat.i(220823);
+                ae.i("MicroMsg.AppBrand.RuntimeModularizingHelper[modularizing]", "hy: on load module progress %s", new Object[] { paramAnonymousc });
                 Object localObject1 = g.this;
                 Object localObject2 = str;
-                localObject1 = ((g)localObject1).lUH.cE(localObject2);
+                localObject1 = ((g)localObject1).lZk.cF(localObject2);
                 if (localObject1 == null)
                 {
-                  AppMethodBeat.o(192250);
+                  AppMethodBeat.o(220823);
                   return;
                 }
                 localObject1 = ((Set)localObject1).iterator();
                 while (((Iterator)localObject1).hasNext())
                 {
                   localObject2 = (g.b)((Iterator)localObject1).next();
-                  if (((g.b)localObject2).lVb != null) {
-                    ((g.b)localObject2).lVb.b(paramAnonymousc);
+                  if (((g.b)localObject2).lZE != null) {
+                    ((g.b)localObject2).lZE.b(paramAnonymousc);
                   }
                 }
-                AppMethodBeat.o(192250);
+                AppMethodBeat.o(220823);
               }
             });
             paramb.start();
@@ -218,27 +220,27 @@ public final class g
         }
         else
         {
-          AppMethodBeat.o(192255);
+          AppMethodBeat.o(220828);
           return;
           bool1 = false;
         }
       }
-      ???.Z(null);
+      ???.X(null);
     }
   }
   
   private boolean a(ModulePkgInfo paramModulePkgInfo)
   {
     AppMethodBeat.i(147357);
-    if ((!bt.isNullOrNil(paramModulePkgInfo.pkgPath)) && (com.tencent.mm.vfs.i.fv(paramModulePkgInfo.pkgPath))) {}
+    if ((!bu.isNullOrNil(paramModulePkgInfo.pkgPath)) && (o.fB(paramModulePkgInfo.pkgPath))) {}
     for (boolean bool = true;; bool = false)
     {
       if (bool)
       {
         if (!paramModulePkgInfo.independent) {
-          ee("__APP__", "checkModuleLoaded");
+          eg("__APP__", "checkModuleLoaded");
         }
-        ee(paramModulePkgInfo.name, "checkModuleLoaded");
+        eg(paramModulePkgInfo.name, "checkModuleLoaded");
       }
       AppMethodBeat.o(147357);
       return bool;
@@ -253,29 +255,29 @@ public final class g
       AppMethodBeat.o(147362);
       return;
     }
-    this.lUH.j(paramString, new b(paramb, parama));
+    this.lZk.j(paramString, new b(paramb, parama));
     AppMethodBeat.o(147362);
   }
   
-  public final String SB(String paramString)
+  public final String Tk(String paramString)
   {
     AppMethodBeat.i(147363);
-    paramString = SC(paramString).name;
+    paramString = Tl(paramString).name;
     AppMethodBeat.o(147363);
     return paramString;
   }
   
-  public final ModulePkgInfo SC(String paramString)
+  public final ModulePkgInfo Tl(String paramString)
   {
     AppMethodBeat.i(147364);
-    WxaPkgWrappingInfo localWxaPkgWrappingInfo = this.lUI.Fa().jYh;
-    if ((bt.isNullOrNil(paramString)) || ("__APP__".equals(paramString)))
+    WxaPkgWrappingInfo localWxaPkgWrappingInfo = this.lZl.Ff().kbw;
+    if ((bu.isNullOrNil(paramString)) || ("__APP__".equals(paramString)))
     {
       AppMethodBeat.o(147364);
       return localWxaPkgWrappingInfo;
     }
-    bf.N(this.lUI);
-    paramString = (ModulePkgInfo)h.e(localWxaPkgWrappingInfo.jIX, paramString, "findModuleInfoByResourcePath");
+    bg.L(this.lZl);
+    paramString = (ModulePkgInfo)h.e(localWxaPkgWrappingInfo.jLY, paramString, "findModuleInfoByResourcePath");
     if (paramString != null)
     {
       AppMethodBeat.o(147364);
@@ -289,93 +291,93 @@ public final class g
   {
     AppMethodBeat.i(169498);
     final g.a locala = new g.a((byte)0);
-    locala.lUY = true;
-    locala.lUZ = true;
-    if (this.lUI.isDestroyed())
+    locala.lZB = true;
+    locala.lZC = true;
+    if (this.lZl.isDestroyed())
     {
-      ad.e("MicroMsg.AppBrand.RuntimeModularizingHelper[modularizing]", "loadModule with path(%s), but runtime(%s) finished", new Object[] { paramString, this.lUI.mAppId });
+      ae.e("MicroMsg.AppBrand.RuntimeModularizingHelper[modularizing]", "loadModule with path(%s), but runtime(%s) finished", new Object[] { paramString, this.lZl.mAppId });
       if (paramb != null) {
-        paramb.a(a.d.lUx);
+        paramb.a(a.d.lZa);
       }
       AppMethodBeat.o(169498);
       return;
     }
-    final com.tencent.mm.plugin.appbrand.z.i locali = new com.tencent.mm.plugin.appbrand.z.i();
-    if (bt.isNullOrNil(paramString)) {}
-    for (Object localObject = this.lUI.Fa().jYh;; localObject = SC(paramString))
+    final i locali = new i();
+    if (bu.isNullOrNil(paramString)) {}
+    for (Object localObject = this.lZl.Ff().kbw;; localObject = Tl(paramString))
     {
       locali.value = localObject;
       if (!a((ModulePkgInfo)localObject)) {
         break;
       }
-      ad.i("MicroMsg.AppBrand.RuntimeModularizingHelper[modularizing]", "loadModule appId:%s path:%s, module:%s, options:%b, [loaded]", new Object[] { this.lUI.mAppId, paramString, ((ModulePkgInfo)locali.value).name, locala });
+      ae.i("MicroMsg.AppBrand.RuntimeModularizingHelper[modularizing]", "loadModule appId:%s path:%s, module:%s, options:%b, [loaded]", new Object[] { this.lZl.mAppId, paramString, ((ModulePkgInfo)locali.value).name, locala });
       if (paramb == null) {
         break;
       }
-      if (locala.lUZ) {
-        ee(((ModulePkgInfo)locali.value).name, "options.injectModuleJS");
+      if (locala.lZC) {
+        eg(((ModulePkgInfo)locali.value).name, "options.injectModuleJS");
       }
-      paramb.a(a.d.lUw);
+      paramb.a(a.d.lYZ);
       AppMethodBeat.o(169498);
       return;
     }
-    localObject = new com.tencent.mm.plugin.appbrand.z.i();
+    localObject = new i();
     final PBool localPBool = new PBool();
-    if (locala.lUY) {
-      this.lUI.j(new Runnable()
+    if (locala.lZB) {
+      this.lZl.j(new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(192242);
+          AppMethodBeat.i(220815);
           if (!localPBool.value)
           {
             d locald = new d().a(new DialogInterface.OnCancelListener()
             {
               public final void onCancel(DialogInterface paramAnonymous2DialogInterface)
               {
-                AppMethodBeat.i(192240);
+                AppMethodBeat.i(220813);
                 paramAnonymous2DialogInterface.dismiss();
-                g.a(g.this, ((ModulePkgInfo)g.1.this.lUK.value).name, a.d.lUy);
-                AppMethodBeat.o(192240);
+                g.a(g.this, ((ModulePkgInfo)g.1.this.lZn.value).name, a.d.lZb);
+                AppMethodBeat.o(220813);
               }
             });
-            locald.lUC = new android.arch.a.c.a() {};
-            locald.aa(g.this.lUI);
-            this.lUL.value = locald;
+            locald.lZf = new android.arch.a.c.a() {};
+            locald.aa(g.this.lZl);
+            this.lZo.value = locald;
           }
-          AppMethodBeat.o(192242);
+          AppMethodBeat.o(220815);
         }
       }, 0L);
     }
-    ad.i("MicroMsg.AppBrand.RuntimeModularizingHelper[modularizing]", "loadModule, appId:%s path:%s, module:%s, options:%b [do loadOrAddPendingCallback]", new Object[] { this.lUI.mAppId, paramString, ((ModulePkgInfo)locali.value).name, locala });
+    ae.i("MicroMsg.AppBrand.RuntimeModularizingHelper[modularizing]", "loadModule, appId:%s path:%s, module:%s, options:%b [do loadOrAddPendingCallback]", new Object[] { this.lZl.mAppId, paramString, ((ModulePkgInfo)locali.value).name, locala });
     a((ModulePkgInfo)locali.value, new a.b()
     {
       public final void a(a.d paramAnonymousd)
       {
-        AppMethodBeat.i(192244);
+        AppMethodBeat.i(220817);
         localPBool.value = true;
-        if ((a.d.lUw == paramAnonymousd) && (locala != null) && (locala.lUZ))
+        if ((a.d.lYZ == paramAnonymousd) && (locala != null) && (locala.lZC))
         {
           if (!((ModulePkgInfo)locali.value).independent) {
-            g.this.ee("__APP__", "options.injectModuleJS");
+            g.this.eg("__APP__", "options.injectModuleJS");
           }
-          g.this.ee(((ModulePkgInfo)locali.value).name, "options.injectModuleJS");
+          g.this.eg(((ModulePkgInfo)locali.value).name, "options.injectModuleJS");
         }
-        g.this.lUI.j(new Runnable()
+        g.this.lZl.j(new Runnable()
         {
           public final void run()
           {
-            AppMethodBeat.i(192243);
-            if (g.2.this.lUL.value != null) {
-              ((DialogInterface)g.2.this.lUL.value).dismiss();
+            AppMethodBeat.i(220816);
+            if (g.2.this.lZo.value != null) {
+              ((DialogInterface)g.2.this.lZo.value).dismiss();
             }
-            AppMethodBeat.o(192243);
+            AppMethodBeat.o(220816);
           }
         }, 0L);
         if (paramb != null) {
           paramb.a(paramAnonymousd);
         }
-        AppMethodBeat.o(192244);
+        AppMethodBeat.o(220817);
       }
     }, null);
     AppMethodBeat.o(169498);
@@ -383,22 +385,22 @@ public final class g
   
   public final void a(String paramString, final a.b paramb, a.a parama)
   {
-    AppMethodBeat.i(192254);
+    AppMethodBeat.i(220827);
     Object localObject;
     if (!TextUtils.isEmpty(paramString))
     {
-      localObject = this.lUI.Fa().jYh;
+      localObject = this.lZl.Ff().kbw;
       if (!h.a(localObject, paramString, "findModuleInfoByModuleName")) {}
     }
     while (localObject == null)
     {
-      ad.i("MicroMsg.AppBrand.RuntimeModularizingHelper[modularizing]", "loadModuleByName, appId:%s, name:%s, injectModuleJS:%b, [not found]", new Object[] { this.lUI.mAppId, paramString, Boolean.FALSE });
-      paramb.a(a.d.lUz);
-      AppMethodBeat.o(192254);
+      ae.i("MicroMsg.AppBrand.RuntimeModularizingHelper[modularizing]", "loadModuleByName, appId:%s, name:%s, injectModuleJS:%b, [not found]", new Object[] { this.lZl.mAppId, paramString, Boolean.FALSE });
+      paramb.a(a.d.lZc);
+      AppMethodBeat.o(220827);
       return;
-      String str = WxaPkgWrappingInfo.LK(paramString);
-      bf.N(this.lUI);
-      Iterator localIterator = ((WxaPkgWrappingInfo)localObject).jIX.iterator();
+      String str = WxaPkgWrappingInfo.Mn(paramString);
+      bg.L(this.lZl);
+      Iterator localIterator = ((WxaPkgWrappingInfo)localObject).jLY.iterator();
       for (;;)
       {
         if (localIterator.hasNext())
@@ -413,69 +415,69 @@ public final class g
     }
     if (a((ModulePkgInfo)localObject))
     {
-      ad.i("MicroMsg.AppBrand.RuntimeModularizingHelper[modularizing]", "loadModuleByName, appId:%s, name:%s, injectModuleJS:%b, [loaded]", new Object[] { this.lUI.mAppId, paramString, Boolean.FALSE });
-      paramb.a(a.d.lUw);
-      AppMethodBeat.o(192254);
+      ae.i("MicroMsg.AppBrand.RuntimeModularizingHelper[modularizing]", "loadModuleByName, appId:%s, name:%s, injectModuleJS:%b, [loaded]", new Object[] { this.lZl.mAppId, paramString, Boolean.FALSE });
+      paramb.a(a.d.lYZ);
+      AppMethodBeat.o(220827);
       return;
     }
-    ad.i("MicroMsg.AppBrand.RuntimeModularizingHelper[modularizing]", "loadModuleByName, appId:%s, name:%s, injectModuleJS:%b, [do loadOrAddPendingCallback]", new Object[] { this.lUI.mAppId, paramString, Boolean.FALSE });
+    ae.i("MicroMsg.AppBrand.RuntimeModularizingHelper[modularizing]", "loadModuleByName, appId:%s, name:%s, injectModuleJS:%b, [do loadOrAddPendingCallback]", new Object[] { this.lZl.mAppId, paramString, Boolean.FALSE });
     a((ModulePkgInfo)localObject, new a.b()
     {
       public final void a(a.d paramAnonymousd)
       {
-        AppMethodBeat.i(192245);
-        if ((a.d.lUw == paramAnonymousd) && (this.lUR))
+        AppMethodBeat.i(220818);
+        if ((a.d.lYZ == paramAnonymousd) && (this.lZu))
         {
-          if (!this.lUS.independent) {
-            g.this.ee("__APP__", "options.injectModuleJS");
+          if (!this.lZv.independent) {
+            g.this.eg("__APP__", "options.injectModuleJS");
           }
-          g.this.ee(this.lUS.name, "options.injectModuleJS");
+          g.this.eg(this.lZv.name, "options.injectModuleJS");
         }
         if (paramb != null) {
           paramb.a(paramAnonymousd);
         }
-        AppMethodBeat.o(192245);
+        AppMethodBeat.o(220818);
       }
     }, parama);
-    AppMethodBeat.o(192254);
+    AppMethodBeat.o(220827);
   }
   
-  public final boolean btb()
+  public final boolean btM()
   {
     return true;
   }
   
-  final boolean btc()
+  final boolean btN()
   {
     AppMethodBeat.i(147356);
-    boolean bool = a(this.lUI.Fa().jYh);
+    boolean bool = a(this.lZl.Ff().kbw);
     AppMethodBeat.o(147356);
     return bool;
   }
   
-  final void ee(String paramString1, String paramString2)
+  final void eg(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(192253);
-    boolean bool = ((f)this.lUI.Ew()).cS(paramString1);
-    ad.i("MicroMsg.AppBrand.RuntimeModularizingHelper[modularizing]", "injectServiceScriptSafe appId:%s, module:%s, reason:%s ret:%b", new Object[] { this.lUI.mAppId, paramString1, paramString2, Boolean.valueOf(bool) });
-    AppMethodBeat.o(192253);
+    AppMethodBeat.i(220826);
+    boolean bool = ((f)this.lZl.Ey()).cU(paramString1);
+    ae.i("MicroMsg.AppBrand.RuntimeModularizingHelper[modularizing]", "injectServiceScriptSafe appId:%s, module:%s, reason:%s ret:%b", new Object[] { this.lZl.mAppId, paramString1, paramString2, Boolean.valueOf(bool) });
+    AppMethodBeat.o(220826);
   }
   
   static final class b
   {
-    final a.b lVa;
-    final a.a lVb;
+    final a.b lZD;
+    final a.a lZE;
     
     public b(a.b paramb, a.a parama)
     {
-      this.lVa = paramb;
-      this.lVb = parama;
+      this.lZD = paramb;
+      this.lZE = parama;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.m.g
  * JD-Core Version:    0.7.0.1
  */

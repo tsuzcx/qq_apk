@@ -7,24 +7,24 @@ import com.tencent.xweb.r;
 public final class g$h
   implements r
 {
-  ValueCallback<Boolean> MwK;
+  ValueCallback<Boolean> MTO;
   
   public g$h(ValueCallback<Boolean> paramValueCallback)
   {
-    this.MwK = paramValueCallback;
+    this.MTO = paramValueCallback;
   }
   
   public final void cancel()
   {
     AppMethodBeat.i(154281);
-    this.MwK.onReceiveValue(Boolean.FALSE);
+    this.MTO.onReceiveValue(Boolean.FALSE);
     AppMethodBeat.o(154281);
   }
   
   public final void proceed()
   {
     AppMethodBeat.i(154280);
-    this.MwK.onReceiveValue(Boolean.TRUE);
+    this.MTO.onReceiveValue(Boolean.TRUE);
     AppMethodBeat.o(154280);
   }
 }

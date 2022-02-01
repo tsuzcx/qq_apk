@@ -1,23 +1,23 @@
 package com.tencent.mm.plugin.appbrand.appcache;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.utils.l;
+import com.tencent.mm.plugin.appbrand.utils.m;
 
 abstract interface r
   extends q
 {
-  public abstract String Ln(String paramString);
+  public abstract String LO(String paramString);
   
   public abstract <T> T f(String paramString, Class<T> paramClass);
   
   public static final class a
   {
-    static r jFQ;
+    static r jIP;
     
     static
     {
       AppMethodBeat.i(178520);
-      jFQ = (r)l.g("IWxaPkgRuntimeReaderEx.DUMMY", r.class);
+      jIP = (r)m.g("IWxaPkgRuntimeReaderEx.DUMMY", r.class);
       AppMethodBeat.o(178520);
     }
   }

@@ -10,7 +10,7 @@ import android.widget.FrameLayout.LayoutParams;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cc.a;
+import com.tencent.mm.cb.a;
 import com.tencent.mm.emoji.view.EmojiStatusView.b;
 import com.tencent.mm.g.c.ei;
 import com.tencent.mm.kernel.g;
@@ -18,24 +18,24 @@ import com.tencent.mm.plugin.emoji.PluginEmoji;
 import com.tencent.mm.plugin.messenger.foundation.a.a.i;
 import com.tencent.mm.plugin.messenger.foundation.a.l;
 import com.tencent.mm.pluginsdk.a.d;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.storage.ay;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.storage.az;
 import com.tencent.mm.storage.emotion.EmojiInfo;
 
 public class RTChattingEmojiView
   extends FrameLayout
 {
-  private TextView BWm;
-  private int Fff;
-  private int Ffg;
-  private int Ffh;
-  private int Ffi;
-  private int Ffj;
-  public ChattingEmojiView Ffk;
-  private ProgressBar Ffl;
+  private TextView CnN;
+  private int FxD;
+  private int FxE;
+  private int FxF;
+  private int FxG;
+  private int FxH;
+  public ChattingEmojiView FxI;
+  private ProgressBar FxJ;
   private int mStatus = -1;
-  private EmojiInfo pIn;
-  private boolean unj = true;
+  private EmojiInfo pOS;
+  private boolean uyF = true;
   
   public RTChattingEmojiView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -47,7 +47,7 @@ public class RTChattingEmojiView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  private void Zq(int paramInt)
+  private void ZW(int paramInt)
   {
     AppMethodBeat.i(104732);
     this.mStatus = paramInt;
@@ -58,32 +58,32 @@ public class RTChattingEmojiView
     {
       AppMethodBeat.o(104732);
       return;
-      this.Ffl.setVisibility(0);
-      this.BWm.setVisibility(4);
-      this.Ffk.setVisibility(4);
+      this.FxJ.setVisibility(0);
+      this.CnN.setVisibility(4);
+      this.FxI.setVisibility(4);
       setBackgroundResource(2131234429);
       AppMethodBeat.o(104732);
       return;
-      this.Ffl.setVisibility(0);
-      this.BWm.setVisibility(4);
-      this.Ffk.setVisibility(4);
+      this.FxJ.setVisibility(0);
+      this.CnN.setVisibility(4);
+      this.FxI.setVisibility(4);
       setBackgroundResource(2131231680);
       AppMethodBeat.o(104732);
       return;
       Drawable localDrawable = getResources().getDrawable(2131232026);
-      localDrawable.setBounds(0, 0, this.Ffh, this.Ffh);
-      ad.d("MicroMsg.emoji.RTChattingEmojiView", "iconSize:%d hashcode:%d", new Object[] { Integer.valueOf(this.Ffh), Integer.valueOf(hashCode()) });
-      this.BWm.setCompoundDrawables(null, localDrawable, null, null);
-      this.BWm.setText(2131758294);
-      this.BWm.setVisibility(0);
-      this.Ffl.setVisibility(4);
-      this.Ffk.setVisibility(4);
+      localDrawable.setBounds(0, 0, this.FxF, this.FxF);
+      ae.d("MicroMsg.emoji.RTChattingEmojiView", "iconSize:%d hashcode:%d", new Object[] { Integer.valueOf(this.FxF), Integer.valueOf(hashCode()) });
+      this.CnN.setCompoundDrawables(null, localDrawable, null, null);
+      this.CnN.setText(2131758294);
+      this.CnN.setVisibility(0);
+      this.FxJ.setVisibility(4);
+      this.FxI.setVisibility(4);
       setBackgroundResource(2131231680);
       AppMethodBeat.o(104732);
       return;
-      this.Ffk.setVisibility(0);
-      this.Ffl.setVisibility(4);
-      this.BWm.setVisibility(4);
+      this.FxI.setVisibility(0);
+      this.FxJ.setVisibility(4);
+      this.CnN.setVisibility(4);
       setBackgroundResource(2131234429);
     }
   }
@@ -91,26 +91,26 @@ public class RTChattingEmojiView
   public final void a(EmojiInfo paramEmojiInfo, long paramLong)
   {
     AppMethodBeat.i(104728);
-    a(paramEmojiInfo, paramLong, new ay(""));
+    a(paramEmojiInfo, paramLong, new az(""));
     AppMethodBeat.o(104728);
   }
   
-  public final void a(EmojiInfo paramEmojiInfo, long paramLong, ay paramay)
+  public final void a(EmojiInfo paramEmojiInfo, long paramLong, az paramaz)
   {
     boolean bool2 = false;
     AppMethodBeat.i(104729);
-    ad.i("MicroMsg.emoji.RTChattingEmojiView", "setEmojiInfo %s msgId %s", new Object[] { paramEmojiInfo.field_md5, Long.valueOf(paramLong) });
-    this.pIn = paramEmojiInfo;
-    if (this.pIn.Eb())
+    ae.i("MicroMsg.emoji.RTChattingEmojiView", "setEmojiInfo %s msgId %s", new Object[] { paramEmojiInfo.field_md5, Long.valueOf(paramLong) });
+    this.pOS = paramEmojiInfo;
+    if (this.pOS.Ee())
     {
-      this.Ffk.setStatus(1);
-      Zq(2);
-      Object localObject = ((l)g.ab(l.class)).dlK().xY(paramLong);
+      this.FxI.setStatus(1);
+      ZW(2);
+      Object localObject = ((l)g.ab(l.class)).doJ().ys(paramLong);
       if ((((ei)localObject).field_status == 2) || (((ei)localObject).field_status == 3) || (((ei)localObject).field_status == 5)) {}
       for (boolean bool1 = true;; bool1 = false)
       {
-        localObject = this.Ffk;
-        if (!paramay.itZ) {
+        localObject = this.FxI;
+        if (!paramaz.iwT) {
           bool2 = true;
         }
         ((ChattingEmojiView)localObject).a(bool2, bool1, ((PluginEmoji)g.ad(PluginEmoji.class)).getEmojiMgr().q(paramEmojiInfo), ((PluginEmoji)g.ad(PluginEmoji.class)).getEmojiMgr().r(paramEmojiInfo), paramEmojiInfo.getName(), String.valueOf(paramLong + paramEmojiInfo.getName()));
@@ -118,10 +118,10 @@ public class RTChattingEmojiView
         return;
       }
     }
-    this.unj = true;
-    this.Ffk.setStatusListener(new EmojiStatusView.b()
+    this.uyF = true;
+    this.FxI.setStatusListener(new EmojiStatusView.b()
     {
-      public final void md(int paramAnonymousInt)
+      public final void mg(int paramAnonymousInt)
       {
         AppMethodBeat.i(104724);
         if (paramAnonymousInt == 0)
@@ -145,48 +145,48 @@ public class RTChattingEmojiView
         AppMethodBeat.o(104724);
       }
     });
-    this.Ffk.a(this.pIn, paramLong);
+    this.FxI.a(this.pOS, paramLong);
     AppMethodBeat.o(104729);
   }
   
-  public final void feB()
+  public final void fir()
   {
     AppMethodBeat.i(104726);
     FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-2, -2);
     localLayoutParams.gravity = 3;
-    addView(this.Ffk, localLayoutParams);
+    addView(this.FxI, localLayoutParams);
     AppMethodBeat.o(104726);
   }
   
-  public final void feC()
+  public final void fis()
   {
     AppMethodBeat.i(104727);
     FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-2, -2);
     localLayoutParams.gravity = 5;
-    addView(this.Ffk, localLayoutParams);
+    addView(this.FxI, localLayoutParams);
     AppMethodBeat.o(104727);
   }
   
   public void initView()
   {
     AppMethodBeat.i(104725);
-    this.Fff = getContext().getResources().getDimensionPixelSize(2131166264);
-    this.Ffg = getContext().getResources().getDimensionPixelSize(2131166261);
-    this.Ffi = getContext().getResources().getDimensionPixelSize(2131166267);
-    this.Ffj = getContext().getResources().getDimensionPixelSize(2131166266);
-    this.Ffk = new ChattingEmojiView(getContext());
-    this.Ffl = new ProgressBar(getContext());
-    this.Ffl.setIndeterminateDrawable(getResources().getDrawable(2131233684));
-    this.BWm = new TextView(getContext());
-    this.BWm.setText(2131758294);
-    this.BWm.setTextColor(getResources().getColor(2131100275));
+    this.FxD = getContext().getResources().getDimensionPixelSize(2131166264);
+    this.FxE = getContext().getResources().getDimensionPixelSize(2131166261);
+    this.FxG = getContext().getResources().getDimensionPixelSize(2131166267);
+    this.FxH = getContext().getResources().getDimensionPixelSize(2131166266);
+    this.FxI = new ChattingEmojiView(getContext());
+    this.FxJ = new ProgressBar(getContext());
+    this.FxJ.setIndeterminateDrawable(getResources().getDrawable(2131233684));
+    this.CnN = new TextView(getContext());
+    this.CnN.setText(2131758294);
+    this.CnN.setTextColor(getResources().getColor(2131100275));
     int i = a.fromDPToPix(getContext(), 32);
     FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(i, i);
     localLayoutParams.gravity = 17;
-    addView(this.Ffl, localLayoutParams);
+    addView(this.FxJ, localLayoutParams);
     localLayoutParams = new FrameLayout.LayoutParams(-2, -2);
     localLayoutParams.gravity = 17;
-    addView(this.BWm, localLayoutParams);
+    addView(this.CnN, localLayoutParams);
     AppMethodBeat.o(104725);
   }
   
@@ -208,22 +208,22 @@ public class RTChattingEmojiView
   {
     AppMethodBeat.i(104733);
     if ((this.mStatus == 0) || (this.mStatus == 1) || (this.mStatus == 3)) {
-      if ((this.pIn == null) || (this.pIn.field_height == 0)) {
+      if ((this.pOS == null) || (this.pOS.field_height == 0)) {
         break label155;
       }
     }
     label155:
-    for (int i = Math.max((int)(this.pIn.field_height * this.Ffk.getEmojiDensityScale()), this.Ffg);; i = this.Fff)
+    for (int i = Math.max((int)(this.pOS.field_height * this.FxI.getEmojiDensityScale()), this.FxE);; i = this.FxD)
     {
       int j = i;
-      if (i > this.Fff) {
-        j = this.Fff;
+      if (i > this.FxD) {
+        j = this.FxD;
       }
-      this.Ffh = this.Ffi;
-      if ((j >= this.Ffg) && (j < this.Ffg + (this.Ffi - this.Ffj)))
+      this.FxF = this.FxG;
+      if ((j >= this.FxE) && (j < this.FxE + (this.FxG - this.FxH)))
       {
-        i = this.Ffj;
-        this.Ffh = (j - this.Ffg + i);
+        i = this.FxH;
+        this.FxF = (j - this.FxE + i);
       }
       super.onMeasure(paramInt1, paramInt2);
       AppMethodBeat.o(104733);
@@ -234,11 +234,11 @@ public class RTChattingEmojiView
   public boolean performClick()
   {
     AppMethodBeat.i(104731);
-    ad.i("MicroMsg.emoji.RTChattingEmojiView", "performClick: %s", new Object[] { Integer.valueOf(this.mStatus) });
+    ae.i("MicroMsg.emoji.RTChattingEmojiView", "performClick: %s", new Object[] { Integer.valueOf(this.mStatus) });
     if (this.mStatus == 3)
     {
-      this.unj = false;
-      this.Ffk.reload();
+      this.uyF = false;
+      this.FxI.reload();
       AppMethodBeat.o(104731);
       return true;
     }
@@ -248,7 +248,7 @@ public class RTChattingEmojiView
       AppMethodBeat.o(104731);
       return bool;
     }
-    ad.d("MicroMsg.emoji.RTChattingEmojiView", "do nothing when loading");
+    ae.d("MicroMsg.emoji.RTChattingEmojiView", "do nothing when loading");
     AppMethodBeat.o(104731);
     return true;
   }
@@ -256,11 +256,11 @@ public class RTChattingEmojiView
   public void setImageBitmap(Bitmap paramBitmap)
   {
     AppMethodBeat.i(104730);
-    Zq(2);
-    if ((this.Ffk != null) && (paramBitmap != null) && (!paramBitmap.isRecycled()))
+    ZW(2);
+    if ((this.FxI != null) && (paramBitmap != null) && (!paramBitmap.isRecycled()))
     {
-      paramBitmap.setDensity(this.Ffk.getEmojiDensity());
-      this.Ffk.setImageBitmap(paramBitmap);
+      paramBitmap.setDensity(this.FxI.getEmojiDensity());
+      this.FxI.setImageBitmap(paramBitmap);
     }
     AppMethodBeat.o(104730);
   }

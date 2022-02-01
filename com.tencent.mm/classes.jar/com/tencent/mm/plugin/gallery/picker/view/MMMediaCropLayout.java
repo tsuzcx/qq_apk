@@ -16,7 +16,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.loader.f.e;
 import com.tencent.mm.plugin.gallery.model.GalleryItem.MediaItem;
 import com.tencent.mm.pluginsdk.ui.CommonVideoView;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.ui.widget.cropview.CropLayout;
 import com.tencent.mm.ui.widget.cropview.CropLayout.e;
 import d.f;
@@ -28,23 +28,23 @@ import d.l;
 import d.v;
 import d.z;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/gallery/picker/view/MMMediaCropLayout;", "Landroid/widget/FrameLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "currentPreviewMediaId", "", "getCurrentPreviewMediaId", "()J", "setCurrentPreviewMediaId", "(J)V", "defaultScaleType", "Lcom/tencent/mm/ui/widget/cropview/CropLayout$ScaleType;", "getDefaultScaleType", "()Lcom/tencent/mm/ui/widget/cropview/CropLayout$ScaleType;", "setDefaultScaleType", "(Lcom/tencent/mm/ui/widget/cropview/CropLayout$ScaleType;)V", "imageView", "Landroid/widget/ImageView;", "getImageView", "()Landroid/widget/ImageView;", "imageView$delegate", "Lkotlin/Lazy;", "isLockCropWindow", "", "()Z", "setLockCropWindow", "(Z)V", "layout", "Lcom/tencent/mm/ui/widget/cropview/CropLayout;", "getLayout", "()Lcom/tencent/mm/ui/widget/cropview/CropLayout;", "layout$delegate", "matrixMap", "Landroid/util/LongSparseArray;", "Lcom/tencent/mm/plugin/gallery/picker/view/MMMediaCropLayout$CropInfo;", "videoView", "Lcom/tencent/mm/pluginsdk/ui/CommonVideoView;", "getVideoView", "()Lcom/tencent/mm/pluginsdk/ui/CommonVideoView;", "videoView$delegate", "lockCropWindow", "", "width", "height", "onDetachedFromWindow", "onPreview", "media", "Lcom/tencent/mm/plugin/gallery/model/GalleryItem$MediaItem;", "onPreviewImage", "isHard", "onPreviewVideo", "onUIPause", "onUIResume", "reset", "scaleType", "setContentView", "view", "Landroid/view/View;", "mediaId", "item", "Companion", "CropInfo", "MediaExtra", "plugin-gallery_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/gallery/picker/view/MMMediaCropLayout;", "Landroid/widget/FrameLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "currentPreviewMediaId", "", "getCurrentPreviewMediaId", "()J", "setCurrentPreviewMediaId", "(J)V", "defaultScaleType", "Lcom/tencent/mm/ui/widget/cropview/CropLayout$ScaleType;", "getDefaultScaleType", "()Lcom/tencent/mm/ui/widget/cropview/CropLayout$ScaleType;", "setDefaultScaleType", "(Lcom/tencent/mm/ui/widget/cropview/CropLayout$ScaleType;)V", "imageView", "Landroid/widget/ImageView;", "getImageView", "()Landroid/widget/ImageView;", "imageView$delegate", "Lkotlin/Lazy;", "isLockCropWindow", "", "()Z", "setLockCropWindow", "(Z)V", "layout", "Lcom/tencent/mm/ui/widget/cropview/CropLayout;", "getLayout", "()Lcom/tencent/mm/ui/widget/cropview/CropLayout;", "layout$delegate", "matrixMap", "Landroid/util/LongSparseArray;", "Lcom/tencent/mm/plugin/gallery/picker/view/MMMediaCropLayout$CropInfo;", "videoView", "Lcom/tencent/mm/pluginsdk/ui/CommonVideoView;", "getVideoView", "()Lcom/tencent/mm/pluginsdk/ui/CommonVideoView;", "videoView$delegate", "lockCropWindow", "", "width", "height", "onDetachedFromWindow", "onPreview", "media", "Lcom/tencent/mm/plugin/gallery/model/GalleryItem$MediaItem;", "onPreviewImage", "isHard", "onPreviewVideo", "onUIPause", "onUIResume", "reset", "scaleType", "setContentView", "view", "Landroid/view/View;", "mediaId", "item", "Companion", "CropInfo", "MediaExtra", "plugin-gallery_release"})
 public final class MMMediaCropLayout
   extends FrameLayout
 {
-  public static final MMMediaCropLayout.a tKD;
-  private long tKA;
-  public boolean tKB;
-  private final LongSparseArray<b> tKC;
-  private final f tKw;
-  private final f tKx;
-  private final f tKy;
-  private CropLayout.e tKz;
+  public static final MMMediaCropLayout.a tVu;
+  private final f tVn;
+  private final f tVo;
+  private final f tVp;
+  private CropLayout.e tVq;
+  private long tVr;
+  public boolean tVs;
+  private final LongSparseArray<b> tVt;
   
   static
   {
     AppMethodBeat.i(164935);
-    tKD = new MMMediaCropLayout.a((byte)0);
+    tVu = new MMMediaCropLayout.a((byte)0);
     AppMethodBeat.o(164935);
   }
   
@@ -52,11 +52,11 @@ public final class MMMediaCropLayout
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(164946);
-    this.tKw = g.O((a)new d(this));
-    this.tKx = g.O((a)new g(this));
-    this.tKy = g.O((a)new e(this));
-    this.tKz = CropLayout.e.KVo;
-    this.tKC = new LongSparseArray();
+    this.tVn = g.O((a)new d(this));
+    this.tVo = g.O((a)new g(this));
+    this.tVp = g.O((a)new e(this));
+    this.tVq = CropLayout.e.LrM;
+    this.tVt = new LongSparseArray();
     paramContext = new FrameLayout.LayoutParams(-1, -1);
     paramContext.gravity = 17;
     addView((View)getLayout(), (ViewGroup.LayoutParams)paramContext);
@@ -67,11 +67,11 @@ public final class MMMediaCropLayout
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(164947);
-    this.tKw = g.O((a)new d(this));
-    this.tKx = g.O((a)new g(this));
-    this.tKy = g.O((a)new e(this));
-    this.tKz = CropLayout.e.KVo;
-    this.tKC = new LongSparseArray();
+    this.tVn = g.O((a)new d(this));
+    this.tVo = g.O((a)new g(this));
+    this.tVp = g.O((a)new e(this));
+    this.tVq = CropLayout.e.LrM;
+    this.tVt = new LongSparseArray();
     paramContext = new FrameLayout.LayoutParams(-1, -1);
     paramContext.gravity = 17;
     addView((View)getLayout(), (ViewGroup.LayoutParams)paramContext);
@@ -81,9 +81,9 @@ public final class MMMediaCropLayout
   private final void a(View paramView, long paramLong, int paramInt1, int paramInt2, GalleryItem.MediaItem paramMediaItem)
   {
     AppMethodBeat.i(164942);
-    ad.i("MMMediaCropLayout", "[setContentView] mediaId=" + paramLong + " width=" + paramInt1 + " height=" + paramInt2 + " isLockCropWindow=" + this.tKB);
-    this.tKA = paramLong;
-    Object localObject1 = (b)this.tKC.get(paramLong);
+    ae.i("MMMediaCropLayout", "[setContentView] mediaId=" + paramLong + " width=" + paramInt1 + " height=" + paramInt2 + " isLockCropWindow=" + this.tVs);
+    this.tVr = paramLong;
+    Object localObject1 = (b)this.tVt.get(paramLong);
     Object localObject2;
     Object localObject3;
     if (localObject1 != null)
@@ -96,10 +96,10 @@ public final class MMMediaCropLayout
     {
       localObject1 = (MMMediaCropLayout)this;
       localObject2 = new b(paramLong);
-      ((MMMediaCropLayout)localObject1).getLayout().getVisibilityRect().round(((b)localObject2).hmm);
+      ((MMMediaCropLayout)localObject1).getLayout().getVisibilityRect().round(((b)localObject2).hpa);
       ((b)localObject2).viewRect.set(0, 0, paramInt1, paramInt2);
-      ((b)localObject2).pZj = ((MMMediaCropLayout)localObject1).getLayout().getContentRect();
-      localObject3 = paramMediaItem.hNZ;
+      ((b)localObject2).qfO = ((MMMediaCropLayout)localObject1).getLayout().getContentRect();
+      localObject3 = paramMediaItem.hQS;
       if (localObject3 == null)
       {
         paramView = new v("null cannot be cast to non-null type com.tencent.mm.plugin.gallery.picker.view.MMMediaCropLayout.MediaExtra");
@@ -107,12 +107,12 @@ public final class MMMediaCropLayout
         throw paramView;
       }
       ((MMMediaCropLayout.c)localObject3).a((b)localObject2);
-      ((MMMediaCropLayout)localObject1).tKC.put(paramLong, localObject2);
+      ((MMMediaCropLayout)localObject1).tVt.put(paramLong, localObject2);
       localObject1 = ((b)localObject2).gR;
     }
-    if ((this.tKB) || (paramMediaItem.getType() == 2))
+    if ((this.tVs) || (paramMediaItem.getType() == 2))
     {
-      localObject2 = CropLayout.e.KVn;
+      localObject2 = CropLayout.e.LrL;
       localObject3 = getLayout();
       if (paramMediaItem.getType() == 2) {
         break label294;
@@ -125,25 +125,25 @@ public final class MMMediaCropLayout
       CropLayout.a(getLayout(), paramView, paramInt1, paramInt2, (Matrix)localObject1, (CropLayout.e)localObject2, null, 32);
       AppMethodBeat.o(164942);
       return;
-      localObject2 = this.tKz;
+      localObject2 = this.tVq;
       break;
     }
   }
   
   public final long getCurrentPreviewMediaId()
   {
-    return this.tKA;
+    return this.tVr;
   }
   
   public final CropLayout.e getDefaultScaleType()
   {
-    return this.tKz;
+    return this.tVq;
   }
   
   public final ImageView getImageView()
   {
     AppMethodBeat.i(164936);
-    ImageView localImageView = (ImageView)this.tKw.getValue();
+    ImageView localImageView = (ImageView)this.tVn.getValue();
     AppMethodBeat.o(164936);
     return localImageView;
   }
@@ -151,7 +151,7 @@ public final class MMMediaCropLayout
   public final CropLayout getLayout()
   {
     AppMethodBeat.i(164938);
-    CropLayout localCropLayout = (CropLayout)this.tKy.getValue();
+    CropLayout localCropLayout = (CropLayout)this.tVp.getValue();
     AppMethodBeat.o(164938);
     return localCropLayout;
   }
@@ -159,7 +159,7 @@ public final class MMMediaCropLayout
   public final CommonVideoView getVideoView()
   {
     AppMethodBeat.i(164937);
-    CommonVideoView localCommonVideoView = (CommonVideoView)this.tKx.getValue();
+    CommonVideoView localCommonVideoView = (CommonVideoView)this.tVo.getValue();
     AppMethodBeat.o(164937);
     return localCommonVideoView;
   }
@@ -174,35 +174,35 @@ public final class MMMediaCropLayout
   
   public final void setCurrentPreviewMediaId(long paramLong)
   {
-    this.tKA = paramLong;
+    this.tVr = paramLong;
   }
   
   public final void setDefaultScaleType(CropLayout.e parame)
   {
     AppMethodBeat.i(164939);
     p.h(parame, "<set-?>");
-    this.tKz = parame;
+    this.tVq = parame;
     AppMethodBeat.o(164939);
   }
   
   public final void setLockCropWindow(boolean paramBoolean)
   {
-    this.tKB = paramBoolean;
+    this.tVs = paramBoolean;
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/gallery/picker/view/MMMediaCropLayout$CropInfo;", "", "mediaId", "", "(J)V", "contentRect", "Landroid/graphics/Rect;", "getContentRect", "()Landroid/graphics/Rect;", "setContentRect", "(Landroid/graphics/Rect;)V", "cropRect", "getCropRect", "setCropRect", "matrix", "Landroid/graphics/Matrix;", "getMatrix", "()Landroid/graphics/Matrix;", "setMatrix", "(Landroid/graphics/Matrix;)V", "viewRect", "getViewRect", "setViewRect", "component1", "copy", "equals", "", "other", "hashCode", "", "toString", "", "plugin-gallery_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/gallery/picker/view/MMMediaCropLayout$CropInfo;", "", "mediaId", "", "(J)V", "contentRect", "Landroid/graphics/Rect;", "getContentRect", "()Landroid/graphics/Rect;", "setContentRect", "(Landroid/graphics/Rect;)V", "cropRect", "getCropRect", "setCropRect", "matrix", "Landroid/graphics/Matrix;", "getMatrix", "()Landroid/graphics/Matrix;", "setMatrix", "(Landroid/graphics/Matrix;)V", "viewRect", "getViewRect", "setViewRect", "component1", "copy", "equals", "", "other", "hashCode", "", "toString", "", "plugin-gallery_release"})
   public static final class b
   {
     public Matrix gR;
-    public Rect hmm;
-    public Rect pZj;
-    private final long tHA;
+    public Rect hpa;
+    public Rect qfO;
+    private final long tSr;
     public Rect viewRect;
     
     public b(long paramLong)
     {
       AppMethodBeat.i(164925);
-      this.tHA = paramLong;
+      this.tSr = paramLong;
       this.gR = new Matrix();
       this.viewRect = new Rect();
       AppMethodBeat.o(164925);
@@ -215,7 +215,7 @@ public final class MMMediaCropLayout
         if ((paramObject instanceof b))
         {
           paramObject = (b)paramObject;
-          if (this.tHA != paramObject.tHA) {}
+          if (this.tSr != paramObject.tSr) {}
         }
       }
       else {
@@ -226,20 +226,20 @@ public final class MMMediaCropLayout
     
     public final int hashCode()
     {
-      long l = this.tHA;
+      long l = this.tSr;
       return (int)(l ^ l >>> 32);
     }
     
     public final String toString()
     {
       AppMethodBeat.i(164926);
-      String str = "CropInfo(mediaId=" + this.tHA + ")";
+      String str = "CropInfo(mediaId=" + this.tSr + ")";
       AppMethodBeat.o(164926);
       return str;
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "Landroid/widget/ImageView;", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "Landroid/widget/ImageView;", "invoke"})
   static final class d
     extends q
     implements a<ImageView>
@@ -250,7 +250,7 @@ public final class MMMediaCropLayout
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "Lcom/tencent/mm/ui/widget/cropview/CropLayout;", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "Lcom/tencent/mm/ui/widget/cropview/CropLayout;", "invoke"})
   static final class e
     extends q
     implements a<CropLayout>
@@ -261,13 +261,13 @@ public final class MMMediaCropLayout
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "<anonymous parameter 0>", "Lcom/tencent/mm/loader/model/data/DataItem;", "Lcom/tencent/mm/plugin/gallery/model/GalleryItem$MediaItem;", "kotlin.jvm.PlatformType", "<anonymous parameter 1>", "Lcom/tencent/mm/loader/impr/target/ViewWeakHolder;", "resource", "Landroid/graphics/Bitmap;", "onImageLoadComplete"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "<anonymous parameter 0>", "Lcom/tencent/mm/loader/model/data/DataItem;", "Lcom/tencent/mm/plugin/gallery/model/GalleryItem$MediaItem;", "kotlin.jvm.PlatformType", "<anonymous parameter 1>", "Lcom/tencent/mm/loader/impr/target/ViewWeakHolder;", "resource", "Landroid/graphics/Bitmap;", "onImageLoadComplete"})
   static final class f<T, R>
     implements e<GalleryItem.MediaItem, Bitmap>
   {
     f(MMMediaCropLayout paramMMMediaCropLayout, GalleryItem.MediaItem paramMediaItem) {}
     
-    @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke", "com/tencent/mm/plugin/gallery/picker/view/MMMediaCropLayout$onPreviewImage$1$1$1"})
+    @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke", "com/tencent/mm/plugin/gallery/picker/view/MMMediaCropLayout$onPreviewImage$1$1$1"})
     static final class a
       extends q
       implements a<z>
@@ -279,7 +279,7 @@ public final class MMMediaCropLayout
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "Lcom/tencent/mm/pluginsdk/ui/CommonVideoView;", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "Lcom/tencent/mm/pluginsdk/ui/CommonVideoView;", "invoke"})
   static final class g
     extends q
     implements a<CommonVideoView>
@@ -292,7 +292,7 @@ public final class MMMediaCropLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.gallery.picker.view.MMMediaCropLayout
  * JD-Core Version:    0.7.0.1
  */

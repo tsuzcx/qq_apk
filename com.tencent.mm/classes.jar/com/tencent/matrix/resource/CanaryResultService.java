@@ -33,7 +33,7 @@ public class CanaryResultService
         paramIntent = new JSONObject();
         paramIntent.put("resultZipPath", localObject);
         paramIntent.put("activity", str);
-        localObject = com.tencent.matrix.b.HL().V(b.class);
+        localObject = com.tencent.matrix.b.HT().V(b.class);
         if (localObject != null) {
           ((com.tencent.matrix.e.b)localObject).onDetectIssue(new com.tencent.matrix.report.c(paramIntent));
         }

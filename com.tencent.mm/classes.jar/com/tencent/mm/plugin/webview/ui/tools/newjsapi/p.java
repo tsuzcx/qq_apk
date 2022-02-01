@@ -6,46 +6,46 @@ import com.tencent.mm.plugin.webview.c.d;
 import com.tencent.mm.plugin.webview.g.f.a;
 import java.util.Map;
 
-@d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/webview/ui/tools/newjsapi/JsApiRequest;", "Lcom/tencent/mm/plugin/webview/jsapi/newjsapi/BaseJsApi;", "()V", "TAG", "", "controlByte", "", "getControlByte", "()I", "funcName", "getFuncName", "()Ljava/lang/String;", "handleMsg", "", "env", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiEnv;", "msg", "Lcom/tencent/mm/plugin/webview/jsapi/MsgWrapper;", "plugin-webview_release"})
+@d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/webview/ui/tools/newjsapi/JsApiRequest;", "Lcom/tencent/mm/plugin/webview/jsapi/newjsapi/BaseJsApi;", "()V", "TAG", "", "controlByte", "", "getControlByte", "()I", "funcName", "getFuncName", "()Ljava/lang/String;", "handleMsg", "", "env", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiEnv;", "msg", "Lcom/tencent/mm/plugin/webview/jsapi/MsgWrapper;", "plugin-webview_release"})
 public final class p
   extends a
 {
-  private static final int EkT = 331;
-  public static final p EpJ;
+  private static final int ECX = 331;
+  public static final p EHU;
   private static final String TAG = "MicroMsg.JsApiRequest";
-  private static final String dKm = "request";
+  private static final String dLB = "request";
   
   static
   {
     AppMethodBeat.i(175687);
-    EpJ = new p();
+    EHU = new p();
     TAG = "MicroMsg.JsApiRequest";
-    EkT = 331;
-    dKm = "request";
+    ECX = 331;
+    dLB = "request";
     AppMethodBeat.o(175687);
   }
   
   public final boolean a(d paramd, com.tencent.mm.plugin.webview.c.l paraml)
   {
-    AppMethodBeat.i(207676);
+    AppMethodBeat.i(199442);
     d.g.b.p.h(paramd, "env");
     d.g.b.p.h(paraml, "msg");
     boolean bool = com.tencent.mm.plugin.webview.g.f.a(paraml, (f.a)new a(paramd));
-    AppMethodBeat.o(207676);
+    AppMethodBeat.o(199442);
     return bool;
   }
   
-  public final int eOL()
+  public final int eSw()
   {
-    return EkT;
+    return ECX;
   }
   
-  public final String eOM()
+  public final String eSx()
   {
-    return dKm;
+    return dLB;
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "msg", "Lcom/tencent/mm/plugin/webview/jsapi/MsgWrapper;", "kotlin.jvm.PlatformType", "ret", "", "retValue", "", "", "", "callback"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "msg", "Lcom/tencent/mm/plugin/webview/jsapi/MsgWrapper;", "kotlin.jvm.PlatformType", "ret", "", "retValue", "", "", "", "callback"})
   static final class a
     implements f.a
   {
@@ -53,9 +53,9 @@ public final class p
     
     public final void a(com.tencent.mm.plugin.webview.c.l paraml, String paramString, Map<String, Object> paramMap)
     {
-      AppMethodBeat.i(207675);
-      this.EkW.Dyx.i(paraml.DNz, paramString, paramMap);
-      AppMethodBeat.o(207675);
+      AppMethodBeat.i(199441);
+      this.EDa.DQe.i(paraml.Efy, paramString, paramMap);
+      AppMethodBeat.o(199441);
     }
   }
 }

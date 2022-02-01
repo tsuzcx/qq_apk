@@ -7,8 +7,8 @@ import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wallet_core.id_verify.model.Profession;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.base.preference.PreferenceTitleCategory;
@@ -57,10 +57,10 @@ public class WalletSelectProfessionUI
       while (i < k)
       {
         Object localObject = paramBundle[i];
-        if ((localObject != null) && (!bt.isNullOrNil(localObject.CSY)))
+        if ((localObject != null) && (!bu.isNullOrNil(localObject.DkE)))
         {
           Preference localPreference = new Preference(getContext());
-          localPreference.setTitle(localObject.CSY);
+          localPreference.setTitle(localObject.DkE);
           localPreference.setKey("index_".concat(String.valueOf(j)));
           this.screen.b(localPreference);
         }
@@ -91,7 +91,7 @@ public class WalletSelectProfessionUI
       if (paramf.length != 2) {
         break label81;
       }
-      int i = bt.getInt(paramf[1], 0);
+      int i = bu.getInt(paramf[1], 0);
       paramf = this.mProfessions[i];
       paramPreference = new Intent();
       paramPreference.putExtra("key_select_profession", paramf);
@@ -103,7 +103,7 @@ public class WalletSelectProfessionUI
       AppMethodBeat.o(71231);
       return true;
       label81:
-      ad.w("MicroMsg.WalletSelectProfessionUI", "error key: %s, %s", new Object[] { paramPreference.mKey, paramPreference.getTitle() });
+      ae.w("MicroMsg.WalletSelectProfessionUI", "error key: %s, %s", new Object[] { paramPreference.mKey, paramPreference.getTitle() });
       setResult(0);
     }
   }
@@ -116,7 +116,7 @@ public class WalletSelectProfessionUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.ui.WalletSelectProfessionUI
  * JD-Core Version:    0.7.0.1
  */

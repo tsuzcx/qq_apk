@@ -6,14 +6,14 @@ import com.tencent.mm.plugin.wenote.model.nativenote.manager.e;
 public final class n
   extends e
 {
-  final boolean pxo;
-  public final boolean pxp;
+  final boolean pDS;
+  public final boolean pDT;
   
   public n(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2)
   {
     super(paramInt1, paramInt2);
-    this.pxo = paramBoolean1;
-    this.pxp = paramBoolean2;
+    this.pDS = paramBoolean1;
+    this.pDT = paramBoolean2;
   }
   
   public final boolean a(e parame)
@@ -37,7 +37,7 @@ public final class n
       label101:
       for (int j = 1;; j = 0)
       {
-        if ((i == 0) && ((j == 0) || (!this.pxp))) {
+        if ((i == 0) && ((j == 0) || (!this.pDT))) {
           break label106;
         }
         AppMethodBeat.o(30652);
@@ -58,7 +58,7 @@ public final class n
     return false;
   }
   
-  public final int cfs()
+  public final int cgI()
   {
     AppMethodBeat.i(30653);
     int i = Math.abs(this.OQ - this.avj);

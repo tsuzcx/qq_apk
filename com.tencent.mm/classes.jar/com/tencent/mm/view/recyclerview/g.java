@@ -4,32 +4,32 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 import java.util.LinkedList;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/view/recyclerview/WxRVData;", "", "state", "", "(I)V", "acrossDataList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/view/recyclerview/WxRVDataItem;", "getAcrossDataList", "()Ljava/util/LinkedList;", "setAcrossDataList", "(Ljava/util/LinkedList;)V", "diffInvisibleDataList", "getDiffInvisibleDataList", "setDiffInvisibleDataList", "diffVisibleDataList", "getDiffVisibleDataList", "setDiffVisibleDataList", "firstVisibleItemPosition", "getFirstVisibleItemPosition", "()I", "setFirstVisibleItemPosition", "lastFirstVisibleItemPosition", "getLastFirstVisibleItemPosition", "setLastFirstVisibleItemPosition", "lastLastVisibleItemPosition", "getLastLastVisibleItemPosition", "setLastLastVisibleItemPosition", "lastVisibleItemPosition", "getLastVisibleItemPosition", "setLastVisibleItemPosition", "getState", "visibleDataList", "getVisibleDataList", "setVisibleDataList", "component1", "copy", "equals", "", "other", "hashCode", "toString", "", "libmmui_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/view/recyclerview/WxRVData;", "", "state", "", "(I)V", "acrossDataList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/view/recyclerview/WxRVDataItem;", "getAcrossDataList", "()Ljava/util/LinkedList;", "setAcrossDataList", "(Ljava/util/LinkedList;)V", "diffInvisibleDataList", "getDiffInvisibleDataList", "setDiffInvisibleDataList", "diffVisibleDataList", "getDiffVisibleDataList", "setDiffVisibleDataList", "firstVisibleItemPosition", "getFirstVisibleItemPosition", "()I", "setFirstVisibleItemPosition", "lastFirstVisibleItemPosition", "getLastFirstVisibleItemPosition", "setLastFirstVisibleItemPosition", "lastLastVisibleItemPosition", "getLastLastVisibleItemPosition", "setLastLastVisibleItemPosition", "lastVisibleItemPosition", "getLastVisibleItemPosition", "setLastVisibleItemPosition", "getState", "visibleDataList", "getVisibleDataList", "setVisibleDataList", "component1", "copy", "equals", "", "other", "hashCode", "toString", "", "libmmui_release"})
 public final class g
 {
-  LinkedList<h> LvG;
-  public LinkedList<h> LvH;
-  LinkedList<h> LvI;
-  public LinkedList<h> LvJ;
-  int obN;
-  int obO;
-  int rRd;
-  int rRf;
+  LinkedList<h> LSt;
+  public LinkedList<h> LSu;
+  LinkedList<h> LSv;
+  public LinkedList<h> LSw;
+  int ohB;
+  int ohC;
+  int rZF;
+  int rZH;
   private final int state;
   
   public g(int paramInt)
   {
-    AppMethodBeat.i(186671);
+    AppMethodBeat.i(193928);
     this.state = paramInt;
-    this.obN = -1;
-    this.obO = -1;
-    this.rRd = -1;
-    this.rRf = -1;
-    this.LvG = new LinkedList();
-    this.LvH = new LinkedList();
-    this.LvI = new LinkedList();
-    this.LvJ = new LinkedList();
-    AppMethodBeat.o(186671);
+    this.ohB = -1;
+    this.ohC = -1;
+    this.rZF = -1;
+    this.rZH = -1;
+    this.LSt = new LinkedList();
+    this.LSu = new LinkedList();
+    this.LSv = new LinkedList();
+    this.LSw = new LinkedList();
+    AppMethodBeat.o(193928);
   }
   
   public final boolean equals(Object paramObject)
@@ -55,15 +55,15 @@ public final class g
   
   public final String toString()
   {
-    AppMethodBeat.i(186672);
+    AppMethodBeat.i(193929);
     String str = "WxRVData(state=" + this.state + ")";
-    AppMethodBeat.o(186672);
+    AppMethodBeat.o(193929);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.view.recyclerview.g
  * JD-Core Version:    0.7.0.1
  */

@@ -3,11 +3,11 @@ package com.tencent.mm.plugin.game.luggage.c.a;
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.z.b;
+import com.tencent.mm.plugin.appbrand.y.b;
 import com.tencent.mm.plugin.lite.jsapi.a.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.HashMap;
 import java.util.Map;
 import org.json.JSONArray;
@@ -16,21 +16,21 @@ import org.json.JSONObject;
 public class e
   extends com.tencent.mm.plugin.lite.jsapi.a
 {
-  public final int cXg()
+  public final int cZP()
   {
     return 0;
   }
   
   public final void j(String paramString, final JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(211637);
-    com.tencent.mm.ci.a.post(new Runnable()
+    AppMethodBeat.i(193026);
+    com.tencent.mm.ch.a.post(new Runnable()
     {
       public final void run()
       {
         int i = 0;
-        AppMethodBeat.i(211636);
-        Context localContext = aj.getContext();
+        AppMethodBeat.i(193025);
+        Context localContext = ak.getContext();
         JSONArray localJSONArray = paramJSONObject.optJSONArray("packageName");
         Object localObject3;
         Object localObject4;
@@ -62,7 +62,7 @@ public class e
               n = 0;
               break label484;
               j = i;
-              ad.i("LiteAppJsApiGetInstallState", "getInstallState, packageName = " + str + ", version = " + n + ", versionName = " + (String)localObject1);
+              ae.i("LiteAppJsApiGetInstallState", "getInstallState, packageName = " + str + ", version = " + n + ", versionName = " + (String)localObject1);
               k = i;
               if (i == 0)
               {
@@ -92,22 +92,22 @@ public class e
             if (k == 0) {
               continue;
             }
-            e.a(e.this).ai((Map)localObject2);
-            AppMethodBeat.o(211636);
+            e.a(e.this).ao((Map)localObject2);
+            AppMethodBeat.o(193025);
             return;
-            e.b(e.this).YL("get_install_state:no");
-            AppMethodBeat.o(211636);
+            e.b(e.this).ZC("get_install_state:no");
+            AppMethodBeat.o(193025);
             return;
           }
           j = i;
           localObject1 = ((PackageInfo)localObject1).versionName;
           continue;
           localObject3 = paramJSONObject.optString("packageName");
-          if (bt.isNullOrNil((String)localObject3))
+          if (bu.isNullOrNil((String)localObject3))
           {
-            ad.i("LiteAppJsApiGetInstallState", "packageName is null or nil");
-            e.c(e.this).YL("get_install_state:no_null_packageName");
-            AppMethodBeat.o(211636);
+            ae.i("LiteAppJsApiGetInstallState", "packageName is null or nil");
+            e.c(e.this).ZC("get_install_state:no_null_packageName");
+            AppMethodBeat.o(193025);
             return;
           }
           localObject4 = b.getPackageInfo(localContext, (String)localObject3);
@@ -119,12 +119,12 @@ public class e
           label435:
           for (Object localObject2 = "null";; localObject2 = ((PackageInfo)localObject4).versionName)
           {
-            ad.i("LiteAppJsApiGetInstallState", "doGetInstallState, packageName = " + (String)localObject3 + ", version = " + i + ", versionName = " + (String)localObject2);
+            ae.i("LiteAppJsApiGetInstallState", "doGetInstallState, packageName = " + (String)localObject3 + ", version = " + i + ", versionName = " + (String)localObject2);
             if (localObject4 != null) {
               break label445;
             }
-            e.d(e.this).YL("get_install_state:no");
-            AppMethodBeat.o(211636);
+            e.d(e.this).ZC("get_install_state:no");
+            AppMethodBeat.o(193025);
             return;
             i = ((PackageInfo)localObject4).versionCode;
             break;
@@ -132,8 +132,8 @@ public class e
           label445:
           localObject3 = new HashMap();
           ((Map)localObject3).put("versionName", localObject2);
-          e.e(e.this).ai((Map)localObject3);
-          AppMethodBeat.o(211636);
+          e.e(e.this).ao((Map)localObject3);
+          AppMethodBeat.o(193025);
           return;
           label484:
           if (localObject2 == null) {
@@ -142,7 +142,7 @@ public class e
         }
       }
     });
-    AppMethodBeat.o(211637);
+    AppMethodBeat.o(193026);
   }
 }
 

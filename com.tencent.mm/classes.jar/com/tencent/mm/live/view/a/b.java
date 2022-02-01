@@ -14,82 +14,82 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/live/view/adapter/LiveAfterMembersStatesAdapter;", "Landroid/support/v7/widget/RecyclerView$Adapter;", "Lcom/tencent/mm/live/view/adapter/LiveAfterMembersStatesAdapter$LiveMemberItemHolder;", "()V", "membersList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/live/view/adapter/MembersData;", "Lkotlin/collections/ArrayList;", "getItemCount", "", "onBindViewHolder", "", "holder", "position", "onCreateViewHolder", "viewGroup", "Landroid/view/ViewGroup;", "type", "updateMembers", "members", "", "LiveMemberItemHolder", "plugin-logic_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/live/view/adapter/LiveAfterMembersStatesAdapter;", "Landroid/support/v7/widget/RecyclerView$Adapter;", "Lcom/tencent/mm/live/view/adapter/LiveAfterMembersStatesAdapter$LiveMemberItemHolder;", "()V", "membersList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/live/view/adapter/MembersData;", "Lkotlin/collections/ArrayList;", "getItemCount", "", "onBindViewHolder", "", "holder", "position", "onCreateViewHolder", "viewGroup", "Landroid/view/ViewGroup;", "type", "updateMembers", "members", "", "LiveMemberItemHolder", "plugin-logic_release"})
 public final class b
   extends RecyclerView.a<a>
 {
-  private final ArrayList<g> hbS;
+  private final ArrayList<g> heG;
   
   public b()
   {
-    AppMethodBeat.i(213057);
-    this.hbS = new ArrayList();
-    AppMethodBeat.o(213057);
+    AppMethodBeat.i(216687);
+    this.heG = new ArrayList();
+    AppMethodBeat.o(216687);
   }
   
   public final void aa(List<g> paramList)
   {
-    AppMethodBeat.i(213053);
+    AppMethodBeat.i(216683);
     p.h(paramList, "members");
-    this.hbS.clear();
-    this.hbS.addAll((Collection)paramList);
-    AppMethodBeat.o(213053);
+    this.heG.clear();
+    this.heG.addAll((Collection)paramList);
+    AppMethodBeat.o(216683);
   }
   
   public final int getItemCount()
   {
-    AppMethodBeat.i(213055);
-    int i = this.hbS.size();
-    AppMethodBeat.o(213055);
+    AppMethodBeat.i(216685);
+    int i = this.heG.size();
+    AppMethodBeat.o(216685);
     return i;
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/live/view/adapter/LiveAfterMembersStatesAdapter$LiveMemberItemHolder;", "Landroid/support/v7/widget/RecyclerView$ViewHolder;", "itemView", "Landroid/view/View;", "(Landroid/view/View;)V", "arrow", "Landroid/widget/ImageView;", "getArrow", "()Landroid/widget/ImageView;", "avatarIcon", "getAvatarIcon", "usernameTv", "Landroid/widget/TextView;", "getUsernameTv", "()Landroid/widget/TextView;", "plugin-logic_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/live/view/adapter/LiveAfterMembersStatesAdapter$LiveMemberItemHolder;", "Landroid/support/v7/widget/RecyclerView$ViewHolder;", "itemView", "Landroid/view/View;", "(Landroid/view/View;)V", "arrow", "Landroid/widget/ImageView;", "getArrow", "()Landroid/widget/ImageView;", "avatarIcon", "getAvatarIcon", "usernameTv", "Landroid/widget/TextView;", "getUsernameTv", "()Landroid/widget/TextView;", "plugin-logic_release"})
   public static final class a
     extends RecyclerView.w
   {
-    final ImageView hbT;
-    final TextView hbU;
-    private final ImageView hbV;
+    final ImageView heH;
+    final TextView heI;
+    private final ImageView heJ;
     
     public a(View paramView)
     {
       super();
-      AppMethodBeat.i(213050);
+      AppMethodBeat.i(216680);
       View localView = paramView.findViewById(2131307544);
       p.g(localView, "itemView.findViewById(R.…_member_item_avatar_icon)");
-      this.hbT = ((ImageView)localView);
+      this.heH = ((ImageView)localView);
       localView = paramView.findViewById(2131307545);
       p.g(localView, "itemView.findViewById(R.…_member_item_username_tv)");
-      this.hbU = ((TextView)localView);
+      this.heI = ((TextView)localView);
       paramView = paramView.findViewById(2131307543);
       p.g(paramView, "itemView.findViewById(R.…states_member_item_arrow)");
-      this.hbV = ((ImageView)paramView);
-      AppMethodBeat.o(213050);
+      this.heJ = ((ImageView)paramView);
+      AppMethodBeat.o(216680);
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class b
     implements View.OnClickListener
   {
-    public static final b hbW;
+    public static final b heK;
     
     static
     {
-      AppMethodBeat.i(213052);
-      hbW = new b();
-      AppMethodBeat.o(213052);
+      AppMethodBeat.i(216682);
+      heK = new b();
+      AppMethodBeat.o(216682);
     }
     
     public final void onClick(View paramView)
     {
-      AppMethodBeat.i(213051);
+      AppMethodBeat.i(216681);
       com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
       localb.bd(paramView);
-      a.b("com/tencent/mm/live/view/adapter/LiveAfterMembersStatesAdapter$onBindViewHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+      a.b("com/tencent/mm/live/view/adapter/LiveAfterMembersStatesAdapter$onBindViewHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
       a.a(this, "com/tencent/mm/live/view/adapter/LiveAfterMembersStatesAdapter$onBindViewHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(213051);
+      AppMethodBeat.o(216681);
     }
   }
 }

@@ -27,7 +27,7 @@ public class d
     }
     else if (paramb.getLayoutManager().getClipToPadding())
     {
-      j = paramb.epD().kB() + paramb.epD().kD() / 2;
+      j = paramb.etk().kB() + paramb.etk().kD() / 2;
       int i = 2147483647;
       k = 0;
       localObject = null;
@@ -36,7 +36,7 @@ public class d
         break label164;
       }
       View localView = paramb.getLayoutManager().getChildAt(k);
-      int m = Math.abs(paramb.epD().bn(localView) + paramb.epD().br(localView) / 2 - j);
+      int m = Math.abs(paramb.etk().bn(localView) + paramb.etk().br(localView) / 2 - j);
       if (m >= i) {
         break label191;
       }
@@ -49,7 +49,7 @@ public class d
     {
       k += 1;
       break label79;
-      j = paramb.epD().getEnd() / 2;
+      j = paramb.etk().getEnd() / 2;
       break label71;
       paramb = paramb.getRecyclerView().bh(localObject);
       break;
@@ -67,7 +67,7 @@ public class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.ui.video.d
  * JD-Core Version:    0.7.0.1
  */

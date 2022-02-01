@@ -15,15 +15,15 @@ final class SnsBaseGalleryUI$2
     AppMethodBeat.i(98482);
     float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
     if (f <= 0.1F) {
-      SnsBaseGalleryUI.a(this.Aaa).setAlpha(f * 10.0F);
+      SnsBaseGalleryUI.a(this.Arn).setAlpha(f * 10.0F);
     }
     for (;;)
     {
-      SnsBaseGalleryUI.a(this.Aaa).setTranslationY(f * (this.rny - SnsBaseGalleryUI.a(this.Aaa).getHeight()));
+      SnsBaseGalleryUI.a(this.Arn).setTranslationY(f * (this.rvD - SnsBaseGalleryUI.a(this.Arn).getHeight()));
       AppMethodBeat.o(98482);
       return;
       if (f >= 0.9F) {
-        SnsBaseGalleryUI.a(this.Aaa).setAlpha((1.0F - f) * 10.0F);
+        SnsBaseGalleryUI.a(this.Arn).setAlpha((1.0F - f) * 10.0F);
       }
     }
   }

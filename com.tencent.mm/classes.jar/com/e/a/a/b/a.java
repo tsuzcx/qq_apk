@@ -14,11 +14,11 @@ abstract class a<K, V>
     super(paramMap);
   }
   
-  abstract List<V> AK();
+  abstract List<V> AL();
   
-  public Map<K, Collection<V>> AL()
+  public Map<K, Collection<V>> AM()
   {
-    return super.AL();
+    return super.AM();
   }
   
   public List<V> ap(@Nullable K paramK)
@@ -38,7 +38,7 @@ abstract class a<K, V>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.e.a.a.b.a
  * JD-Core Version:    0.7.0.1
  */

@@ -14,7 +14,7 @@ public abstract interface KLink
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.kinda.gen.KLink
  * JD-Core Version:    0.7.0.1
  */

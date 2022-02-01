@@ -6,37 +6,37 @@ import org.json.JSONObject;
 
 public final class c
 {
-  String DpI;
-  public String DpJ;
-  long DpK;
-  int DpL;
-  public String DpM;
-  public String DpN;
-  public String DpO;
-  public String DpP;
+  String DHo;
+  public String DHp;
+  long DHq;
+  int DHr;
+  public String DHs;
+  public String DHt;
+  public String DHu;
+  public String DHv;
   public String cff;
   String mPackageName;
   public String mToken;
-  public String pFG;
+  public String pMk;
   
   public c(String paramString1, String paramString2, String paramString3)
   {
     AppMethodBeat.i(71806);
-    this.DpI = paramString1;
-    this.DpN = paramString2;
-    paramString1 = new JSONObject(this.DpN);
-    this.DpJ = paramString1.optString("orderId");
+    this.DHo = paramString1;
+    this.DHt = paramString2;
+    paramString1 = new JSONObject(this.DHt);
+    this.DHp = paramString1.optString("orderId");
     this.mPackageName = paramString1.optString("packageName");
-    this.pFG = paramString1.optString("productId");
-    this.DpK = paramString1.optLong("purchaseTime");
-    this.DpL = paramString1.optInt("purchaseState");
+    this.pMk = paramString1.optString("productId");
+    this.DHq = paramString1.optLong("purchaseTime");
+    this.DHr = paramString1.optInt("purchaseState");
     paramString2 = paramString1.optString("developerPayload");
-    ArrayList localArrayList = aFc(paramString2);
+    ArrayList localArrayList = aGw(paramString2);
     if (localArrayList.size() == 3)
     {
-      this.DpM = ((String)localArrayList.get(0));
-      this.DpP = ((String)localArrayList.get(1));
-      this.DpO = ((String)localArrayList.get(2));
+      this.DHs = ((String)localArrayList.get(0));
+      this.DHv = ((String)localArrayList.get(1));
+      this.DHu = ((String)localArrayList.get(2));
     }
     for (;;)
     {
@@ -44,19 +44,19 @@ public final class c
       this.cff = paramString3;
       AppMethodBeat.o(71806);
       return;
-      this.DpM = paramString2;
+      this.DHs = paramString2;
     }
   }
   
   public c(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    this.pFG = paramString1;
-    this.DpM = paramString2;
-    this.DpO = paramString3;
-    this.DpP = paramString4;
+    this.pMk = paramString1;
+    this.DHs = paramString2;
+    this.DHu = paramString3;
+    this.DHv = paramString4;
   }
   
-  private static ArrayList<String> aFc(String paramString)
+  private static ArrayList<String> aGw(String paramString)
   {
     AppMethodBeat.i(71807);
     ArrayList localArrayList = new ArrayList();
@@ -74,14 +74,14 @@ public final class c
   public final String toString()
   {
     AppMethodBeat.i(71808);
-    String str = "PurchaseInfo(type:" + this.DpI + "):" + this.DpN;
+    String str = "PurchaseInfo(type:" + this.DHo + "):" + this.DHt;
     AppMethodBeat.o(71808);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_index.b.a.c
  * JD-Core Version:    0.7.0.1
  */

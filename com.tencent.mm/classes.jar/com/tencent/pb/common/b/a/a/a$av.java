@@ -6,18 +6,18 @@ import com.google.b.a.e;
 public final class a$av
   extends e
 {
-  public int LIb = 0;
-  public int LIc = 0;
-  public int LId = 0;
-  public int LIe = 0;
-  public int LIf = 0;
-  public int LIg = 0;
-  public int LIh = 0;
-  public int LIi = 0;
-  public int LIj = 0;
-  public int LIk = 0;
-  public int hVk = 0;
-  public int hVl = 0;
+  public int Mff = 0;
+  public int Mfg = 0;
+  public int Mfh = 0;
+  public int Mfi = 0;
+  public int Mfj = 0;
+  public int Mfk = 0;
+  public int Mfl = 0;
+  public int Mfm = 0;
+  public int Mfn = 0;
+  public int Mfo = 0;
+  public int hYc = 0;
+  public int hYd = 0;
   
   public a$av()
   {
@@ -26,41 +26,41 @@ public final class a$av
   
   public final void a(b paramb)
   {
-    if (this.LIb != 0) {
-      paramb.bx(1, this.LIb);
+    if (this.Mff != 0) {
+      paramb.bx(1, this.Mff);
     }
-    if (this.hVk != 0) {
-      paramb.bx(2, this.hVk);
+    if (this.hYc != 0) {
+      paramb.bx(2, this.hYc);
     }
-    if (this.hVl != 0) {
-      paramb.bx(3, this.hVl);
+    if (this.hYd != 0) {
+      paramb.bx(3, this.hYd);
     }
-    if (this.LIc != 0) {
-      paramb.bx(4, this.LIc);
+    if (this.Mfg != 0) {
+      paramb.bx(4, this.Mfg);
     }
-    if (this.LId != 0) {
-      paramb.bx(5, this.LId);
+    if (this.Mfh != 0) {
+      paramb.bx(5, this.Mfh);
     }
-    if (this.LIe != 0) {
-      paramb.bx(6, this.LIe);
+    if (this.Mfi != 0) {
+      paramb.bx(6, this.Mfi);
     }
-    if (this.LIf != 0) {
-      paramb.bx(7, this.LIf);
+    if (this.Mfj != 0) {
+      paramb.bx(7, this.Mfj);
     }
-    if (this.LIg != 0) {
-      paramb.bx(8, this.LIg);
+    if (this.Mfk != 0) {
+      paramb.bx(8, this.Mfk);
     }
-    if (this.LIh != 0) {
-      paramb.bx(9, this.LIh);
+    if (this.Mfl != 0) {
+      paramb.bx(9, this.Mfl);
     }
-    if (this.LIi != 0) {
-      paramb.bx(10, this.LIi);
+    if (this.Mfm != 0) {
+      paramb.bx(10, this.Mfm);
     }
-    if (this.LIj != 0) {
-      paramb.bx(11, this.LIj);
+    if (this.Mfn != 0) {
+      paramb.bx(11, this.Mfn);
     }
-    if (this.LIk != 0) {
-      paramb.bx(12, this.LIk);
+    if (this.Mfo != 0) {
+      paramb.bx(12, this.Mfo);
     }
     super.a(paramb);
   }
@@ -69,52 +69,52 @@ public final class a$av
   {
     int j = super.zq();
     int i = j;
-    if (this.LIb != 0) {
-      i = j + b.bz(1, this.LIb);
+    if (this.Mff != 0) {
+      i = j + b.bz(1, this.Mff);
     }
     j = i;
-    if (this.hVk != 0) {
-      j = i + b.bz(2, this.hVk);
+    if (this.hYc != 0) {
+      j = i + b.bz(2, this.hYc);
     }
     i = j;
-    if (this.hVl != 0) {
-      i = j + b.bz(3, this.hVl);
+    if (this.hYd != 0) {
+      i = j + b.bz(3, this.hYd);
     }
     j = i;
-    if (this.LIc != 0) {
-      j = i + b.bz(4, this.LIc);
+    if (this.Mfg != 0) {
+      j = i + b.bz(4, this.Mfg);
     }
     i = j;
-    if (this.LId != 0) {
-      i = j + b.bz(5, this.LId);
+    if (this.Mfh != 0) {
+      i = j + b.bz(5, this.Mfh);
     }
     j = i;
-    if (this.LIe != 0) {
-      j = i + b.bz(6, this.LIe);
+    if (this.Mfi != 0) {
+      j = i + b.bz(6, this.Mfi);
     }
     i = j;
-    if (this.LIf != 0) {
-      i = j + b.bz(7, this.LIf);
+    if (this.Mfj != 0) {
+      i = j + b.bz(7, this.Mfj);
     }
     j = i;
-    if (this.LIg != 0) {
-      j = i + b.bz(8, this.LIg);
+    if (this.Mfk != 0) {
+      j = i + b.bz(8, this.Mfk);
     }
     i = j;
-    if (this.LIh != 0) {
-      i = j + b.bz(9, this.LIh);
+    if (this.Mfl != 0) {
+      i = j + b.bz(9, this.Mfl);
     }
     j = i;
-    if (this.LIi != 0) {
-      j = i + b.bz(10, this.LIi);
+    if (this.Mfm != 0) {
+      j = i + b.bz(10, this.Mfm);
     }
     i = j;
-    if (this.LIj != 0) {
-      i = j + b.bz(11, this.LIj);
+    if (this.Mfn != 0) {
+      i = j + b.bz(11, this.Mfn);
     }
     j = i;
-    if (this.LIk != 0) {
-      j = i + b.bz(12, this.LIk);
+    if (this.Mfo != 0) {
+      j = i + b.bz(12, this.Mfo);
     }
     return j;
   }

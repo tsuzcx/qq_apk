@@ -1,49 +1,49 @@
 package com.tencent.mm.plugin.exdevice.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.f;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.f;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.bou;
-import com.tencent.mm.protocal.protobuf.dow;
-import com.tencent.mm.protocal.protobuf.dox;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.bpm;
+import com.tencent.mm.protocal.protobuf.dpt;
+import com.tencent.mm.protocal.protobuf.dpu;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class n
-  extends com.tencent.mm.al.n
+  extends com.tencent.mm.ak.n
   implements k
 {
-  public String cUi;
+  public String cVh;
   private f callback;
-  public int qcW;
+  public int qjB;
   b rr;
   
-  public n(bou parambou, String paramString1, String paramString2, int paramInt)
+  public n(bpm parambpm, String paramString1, String paramString2, int paramInt)
   {
     AppMethodBeat.i(23388);
     this.callback = null;
     this.rr = null;
-    this.cUi = null;
-    this.qcW = 0;
+    this.cVh = null;
+    this.qjB = 0;
     Object localObject = new b.a();
-    ((b.a)localObject).hNM = new dow();
-    ((b.a)localObject).hNN = new dox();
+    ((b.a)localObject).hQF = new dpt();
+    ((b.a)localObject).hQG = new dpu();
     ((b.a)localObject).uri = "/cgi-bin/mmoc-bin/hardware/transfermsgtodevice";
     ((b.a)localObject).funcId = 1717;
-    ((b.a)localObject).hNO = 0;
+    ((b.a)localObject).hQH = 0;
     ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).aDC();
-    localObject = (dow)this.rr.hNK.hNQ;
-    ((dow)localObject).FzJ = paramString1;
-    ((dow)localObject).Gax = paramString2;
-    ((dow)localObject).HDc = parambou;
-    ((dow)localObject).HDd = paramInt;
-    this.cUi = paramString2;
-    this.qcW = paramInt;
+    this.rr = ((b.a)localObject).aDS();
+    localObject = (dpt)this.rr.hQD.hQJ;
+    ((dpt)localObject).FSh = paramString1;
+    ((dpt)localObject).Gte = paramString2;
+    ((dpt)localObject).HWP = parambpm;
+    ((dpt)localObject).HWQ = paramInt;
+    this.cVh = paramString2;
+    this.qjB = paramInt;
     AppMethodBeat.o(23388);
   }
   
@@ -64,7 +64,7 @@ public final class n
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(23389);
-    ad.i("MicroMsg.exdevice.NetSceneGetAppMsgInfo", "onGYNetEnd netId = " + paramInt1 + " errType = " + paramInt2 + " errCode = " + paramInt3 + paramString);
+    ae.i("MicroMsg.exdevice.NetSceneGetAppMsgInfo", "onGYNetEnd netId = " + paramInt1 + " errType = " + paramInt2 + " errCode = " + paramInt3 + paramString);
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(23389);
   }

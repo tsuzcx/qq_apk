@@ -104,7 +104,7 @@ public abstract class zzzq<MessageType extends zzzq<MessageType, BuilderType>, B
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.google.android.gms.internal.measurement.zzzq
  * JD-Core Version:    0.7.0.1
  */

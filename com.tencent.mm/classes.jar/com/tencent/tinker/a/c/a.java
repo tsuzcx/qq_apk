@@ -3,9 +3,9 @@ package com.tencent.tinker.a.c;
 public final class a
   implements Cloneable
 {
-  private static final boolean[] Meu = new boolean[0];
+  private static final boolean[] MBr = new boolean[0];
   private static final int[] bQP = new int[0];
-  private boolean[] Mev = new boolean[10];
+  private boolean[] MBs = new boolean[10];
   private int[] OW = new int[10];
   private int mSize = 0;
   
@@ -49,7 +49,7 @@ public final class a
     return i;
   }
   
-  private a fYs()
+  private a gcR()
   {
     try
     {
@@ -61,7 +61,7 @@ public final class a
       try
       {
         locala.OW = ((int[])this.OW.clone());
-        locala.Mev = ((boolean[])this.Mev.clone());
+        locala.MBs = ((boolean[])this.MBs.clone());
         return locala;
       }
       catch (CloneNotSupportedException localCloneNotSupportedException2) {}
@@ -70,12 +70,12 @@ public final class a
     }
   }
   
-  public final void ahU(int paramInt)
+  public final void aiD(int paramInt)
   {
     int i = b(this.OW, this.mSize, paramInt);
     if (i >= 0)
     {
-      this.Mev[i] = true;
+      this.MBs[i] = true;
       return;
     }
     i ^= 0xFFFFFFFF;
@@ -93,7 +93,7 @@ public final class a
     for (;;)
     {
       this.OW = ((int[])localObject1);
-      localObject1 = this.Mev;
+      localObject1 = this.MBs;
       paramInt = this.mSize;
       if (paramInt <= localObject1.length) {
         break;
@@ -112,7 +112,7 @@ public final class a
     }
     for (;;)
     {
-      this.Mev = ((boolean[])localObject1);
+      this.MBs = ((boolean[])localObject1);
       this.mSize += 1;
       return;
       localObject2 = new boolean[av(paramInt)];
@@ -143,7 +143,7 @@ public final class a
       }
       localStringBuilder.append(this.OW[i]);
       localStringBuilder.append('=');
-      localStringBuilder.append(this.Mev[i]);
+      localStringBuilder.append(this.MBs[i]);
       i += 1;
     }
     localStringBuilder.append('}');

@@ -8,9 +8,9 @@ final class WWAPIImpl$2
 {
   WWAPIImpl$2()
   {
-    AppMethodBeat.i(190351);
+    AppMethodBeat.i(193323);
     add("com.tencent.wework");
-    AppMethodBeat.o(190351);
+    AppMethodBeat.o(193323);
   }
 }
 

@@ -42,16 +42,16 @@ public class GPUDecoder
   
   static
   {
-    AppMethodBeat.i(220132);
+    AppMethodBeat.i(216886);
     TAG = "MicroMsg.libpag.GPUDecoder";
     HandlerThreadCount = 0;
     handlerLock = new Object();
-    AppMethodBeat.o(220132);
+    AppMethodBeat.o(216886);
   }
   
   public GPUDecoder()
   {
-    AppMethodBeat.i(220110);
+    AppMethodBeat.i(216864);
     this.frameSyncObject = new Object();
     this.frameAvailable = false;
     this.outputFormat = null;
@@ -61,15 +61,15 @@ public class GPUDecoder
     this.lastOutputBufferIndex = -1;
     this.successFrame = new OutputFrame(null);
     this.released = false;
-    AppMethodBeat.o(220110);
+    AppMethodBeat.o(216864);
   }
   
   private static GPUDecoder Create(int paramInt)
   {
-    AppMethodBeat.i(220112);
+    AppMethodBeat.i(216866);
     if (forceSoftwareDecoder())
     {
-      AppMethodBeat.o(220112);
+      AppMethodBeat.o(216866);
       return null;
     }
     GPUDecoder localGPUDecoder = new GPUDecoder();
@@ -82,7 +82,7 @@ public class GPUDecoder
         localGPUDecoder.surfaceTexture.setOnFrameAvailableListener(localGPUDecoder, new Handler(handlerThread.getLooper()));
         new StringBuilder("Create GPUDecoder:").append(localGPUDecoder);
         localGPUDecoder.outputSurface = new Surface(localGPUDecoder.surfaceTexture);
-        AppMethodBeat.o(220112);
+        AppMethodBeat.o(216866);
         return localGPUDecoder;
       }
       localGPUDecoder.surfaceTexture.setOnFrameAvailableListener(localGPUDecoder);
@@ -94,7 +94,7 @@ public class GPUDecoder
   {
     try
     {
-      AppMethodBeat.i(220111);
+      AppMethodBeat.i(216865);
       HandlerThreadCount += 1;
       if (handlerThread == null)
       {
@@ -102,7 +102,7 @@ public class GPUDecoder
         handlerThread = localHandlerThread;
         localHandlerThread.start();
       }
-      AppMethodBeat.o(220111);
+      AppMethodBeat.o(216865);
       return;
     }
     finally {}
@@ -110,29 +110,29 @@ public class GPUDecoder
   
   private boolean attachToGLContext(int paramInt)
   {
-    AppMethodBeat.i(220131);
+    AppMethodBeat.i(216885);
     if (this.surfaceTexture == null)
     {
-      AppMethodBeat.o(220131);
+      AppMethodBeat.o(216885);
       return false;
     }
     try
     {
       this.surfaceTexture.detachFromGLContext();
       this.surfaceTexture.attachToGLContext(paramInt);
-      AppMethodBeat.o(220131);
+      AppMethodBeat.o(216885);
       return true;
     }
     catch (Exception localException)
     {
-      AppMethodBeat.o(220131);
+      AppMethodBeat.o(216885);
     }
     return false;
   }
   
   private boolean awaitNewImage()
   {
-    AppMethodBeat.i(220115);
+    AppMethodBeat.i(216869);
     int i = 10;
     synchronized (this.frameSyncObject)
     {
@@ -152,38 +152,38 @@ public class GPUDecoder
       this.frameAvailable = false;
       if (i == 0)
       {
-        AppMethodBeat.o(220115);
+        AppMethodBeat.o(216869);
         return false;
       }
     }
     try
     {
       this.surfaceTexture.updateTexImage();
-      AppMethodBeat.o(220115);
+      AppMethodBeat.o(216869);
       return true;
     }
     catch (Exception localException)
     {
-      AppMethodBeat.o(220115);
+      AppMethodBeat.o(216869);
     }
     localObject2 = finally;
-    AppMethodBeat.o(220115);
+    AppMethodBeat.o(216869);
     throw localObject2;
     return false;
   }
   
   private int dequeueInputBuffer()
   {
-    AppMethodBeat.i(220120);
+    AppMethodBeat.i(216874);
     try
     {
       int i = this.decoder.dequeueInputBuffer(1000L);
-      AppMethodBeat.o(220120);
+      AppMethodBeat.o(216874);
       return i;
     }
     catch (Exception localException)
     {
-      AppMethodBeat.o(220120);
+      AppMethodBeat.o(216874);
       return -1;
     }
     catch (Error localError)
@@ -195,16 +195,16 @@ public class GPUDecoder
   
   private int dequeueOutputBuffer()
   {
-    AppMethodBeat.i(220119);
+    AppMethodBeat.i(216873);
     try
     {
       int i = this.decoder.dequeueOutputBuffer(this.bufferInfo, 1000L);
-      AppMethodBeat.o(220119);
+      AppMethodBeat.o(216873);
       return i;
     }
     catch (Exception localException)
     {
-      AppMethodBeat.o(220119);
+      AppMethodBeat.o(216873);
     }
     return -1;
   }
@@ -216,22 +216,22 @@ public class GPUDecoder
   
   private ByteBuffer getInputBuffer(int paramInt)
   {
-    AppMethodBeat.i(220121);
+    AppMethodBeat.i(216875);
     try
     {
       if (Build.VERSION.SDK_INT >= 21)
       {
         localByteBuffer = this.decoder.getInputBuffer(paramInt);
-        AppMethodBeat.o(220121);
+        AppMethodBeat.o(216875);
         return localByteBuffer;
       }
       ByteBuffer localByteBuffer = this.decoder.getInputBuffers()[paramInt];
-      AppMethodBeat.o(220121);
+      AppMethodBeat.o(216875);
       return localByteBuffer;
     }
     catch (Exception localException)
     {
-      AppMethodBeat.o(220121);
+      AppMethodBeat.o(216875);
       return null;
     }
     catch (Error localError)
@@ -243,10 +243,10 @@ public class GPUDecoder
   
   private boolean onConfigure(MediaFormat paramMediaFormat)
   {
-    AppMethodBeat.i(220118);
+    AppMethodBeat.i(216872);
     if (this.outputSurface == null)
     {
-      AppMethodBeat.o(220118);
+      AppMethodBeat.o(216872);
       return false;
     }
     this.targetWidth = paramMediaFormat.getInteger("width");
@@ -257,7 +257,7 @@ public class GPUDecoder
       this.decoder = MediaCodec.createDecoderByType(paramMediaFormat.getString("mime"));
       this.decoder.configure(paramMediaFormat, this.outputSurface, null, 0);
       this.decoder.start();
-      AppMethodBeat.o(220118);
+      AppMethodBeat.o(216872);
       return true;
     }
     catch (Exception paramMediaFormat)
@@ -267,14 +267,14 @@ public class GPUDecoder
         this.decoder.release();
         this.decoder = null;
       }
-      AppMethodBeat.o(220118);
+      AppMethodBeat.o(216872);
     }
     return false;
   }
   
   private int onDecodeFrame()
   {
-    AppMethodBeat.i(220127);
+    AppMethodBeat.i(216881);
     releaseOutputBuffer();
     try
     {
@@ -284,7 +284,7 @@ public class GPUDecoder
         if (i >= 0) {
           this.lastOutputBufferIndex = i;
         }
-        AppMethodBeat.o(220127);
+        AppMethodBeat.o(216881);
         return -3;
       }
       if (i >= 0) {
@@ -292,17 +292,17 @@ public class GPUDecoder
       }
       while (this.lastOutputBufferIndex != -1)
       {
-        AppMethodBeat.o(220127);
+        AppMethodBeat.o(216881);
         return 0;
         if (i == -2) {
           this.outputFormat = this.decoder.getOutputFormat();
         }
       }
-      AppMethodBeat.o(220127);
+      AppMethodBeat.o(216881);
     }
     catch (Exception localException)
     {
-      AppMethodBeat.o(220127);
+      AppMethodBeat.o(216881);
       return -2;
     }
     return -1;
@@ -310,41 +310,41 @@ public class GPUDecoder
   
   private int onEndOfStream()
   {
-    AppMethodBeat.i(220126);
+    AppMethodBeat.i(216880);
     int i = dequeueInputBuffer();
     if (i >= 0)
     {
       i = queueInputBuffer(i, 0, 0, 0L, 4);
-      AppMethodBeat.o(220126);
+      AppMethodBeat.o(216880);
       return i;
     }
-    AppMethodBeat.o(220126);
+    AppMethodBeat.o(216880);
     return -1;
   }
   
   private void onFlush()
   {
-    AppMethodBeat.i(220128);
+    AppMethodBeat.i(216882);
     try
     {
       this.decoder.flush();
       this.bufferInfo = new MediaCodec.BufferInfo();
       this.lastOutputBufferIndex = -1;
-      AppMethodBeat.o(220128);
+      AppMethodBeat.o(216882);
       return;
     }
     catch (Exception localException)
     {
-      AppMethodBeat.o(220128);
+      AppMethodBeat.o(216882);
     }
   }
   
   private void onRelease()
   {
-    AppMethodBeat.i(220130);
+    AppMethodBeat.i(216884);
     if (this.released)
     {
-      AppMethodBeat.o(220130);
+      AppMethodBeat.o(216884);
       return;
     }
     new StringBuilder("Destroy GPUDecoder:").append(this);
@@ -380,10 +380,10 @@ public class GPUDecoder
           this.surfaceTexture.release();
           this.surfaceTexture = null;
         }
-        AppMethodBeat.o(220130);
+        AppMethodBeat.o(216884);
         return;
         localObject2 = finally;
-        AppMethodBeat.o(220130);
+        AppMethodBeat.o(216884);
         throw localObject2;
       }
       catch (Exception localException1)
@@ -399,7 +399,7 @@ public class GPUDecoder
   
   private OutputFrame onRenderFrame()
   {
-    AppMethodBeat.i(220129);
+    AppMethodBeat.i(216883);
     if (this.lastOutputBufferIndex != -1)
     {
       int i = releaseOutputBuffer(this.lastOutputBufferIndex, true);
@@ -407,34 +407,34 @@ public class GPUDecoder
       if ((i == 0) && (awaitNewImage()))
       {
         OutputFrame localOutputFrame = this.successFrame;
-        AppMethodBeat.o(220129);
+        AppMethodBeat.o(216883);
         return localOutputFrame;
       }
     }
-    AppMethodBeat.o(220129);
+    AppMethodBeat.o(216883);
     return null;
   }
   
   private int onSendBytes(ByteBuffer paramByteBuffer, long paramLong)
   {
-    AppMethodBeat.i(220125);
+    AppMethodBeat.i(216879);
     int i = dequeueInputBuffer();
     if (i >= 0)
     {
       ByteBuffer localByteBuffer = getInputBuffer(i);
       if (localByteBuffer == null)
       {
-        AppMethodBeat.o(220125);
+        AppMethodBeat.o(216879);
         return -2;
       }
       localByteBuffer.clear();
       paramByteBuffer.position(0);
       localByteBuffer.put(paramByteBuffer);
       i = queueInputBuffer(i, 0, paramByteBuffer.limit(), paramLong, 0);
-      AppMethodBeat.o(220125);
+      AppMethodBeat.o(216879);
       return i;
     }
-    AppMethodBeat.o(220125);
+    AppMethodBeat.o(216879);
     return -1;
   }
   
@@ -445,16 +445,16 @@ public class GPUDecoder
   
   private int queueInputBuffer(int paramInt1, int paramInt2, int paramInt3, long paramLong, int paramInt4)
   {
-    AppMethodBeat.i(220122);
+    AppMethodBeat.i(216876);
     try
     {
       this.decoder.queueInputBuffer(paramInt1, paramInt2, paramInt3, paramLong, paramInt4);
-      AppMethodBeat.o(220122);
+      AppMethodBeat.o(216876);
       return 0;
     }
     catch (Exception localException)
     {
-      AppMethodBeat.o(220122);
+      AppMethodBeat.o(216876);
       return -2;
     }
     catch (Error localError)
@@ -466,7 +466,7 @@ public class GPUDecoder
   
   private void reflectLooper()
   {
-    AppMethodBeat.i(220113);
+    AppMethodBeat.i(216867);
     Object localObject3 = SurfaceTexture.class.getDeclaredClasses();
     int j = localObject3.length;
     int i = 0;
@@ -480,7 +480,7 @@ public class GPUDecoder
     {
       if (localObject1 == null)
       {
-        AppMethodBeat.o(220113);
+        AppMethodBeat.o(216867);
         return;
         i += 1;
         break;
@@ -491,12 +491,12 @@ public class GPUDecoder
         localObject3 = this.surfaceTexture.getClass().getDeclaredField("mEventHandler");
         ((Field)localObject3).setAccessible(true);
         ((Field)localObject3).set(this.surfaceTexture, localObject1);
-        AppMethodBeat.o(220113);
+        AppMethodBeat.o(216867);
         return;
       }
       catch (Exception localException)
       {
-        AppMethodBeat.o(220113);
+        AppMethodBeat.o(216867);
         return;
       }
       Object localObject2 = null;
@@ -505,16 +505,16 @@ public class GPUDecoder
   
   private int releaseOutputBuffer(int paramInt, boolean paramBoolean)
   {
-    AppMethodBeat.i(220124);
+    AppMethodBeat.i(216878);
     try
     {
       this.decoder.releaseOutputBuffer(paramInt, paramBoolean);
-      AppMethodBeat.o(220124);
+      AppMethodBeat.o(216878);
       return 0;
     }
     catch (Exception localException)
     {
-      AppMethodBeat.o(220124);
+      AppMethodBeat.o(216878);
       return -2;
     }
     catch (Error localError)
@@ -526,63 +526,63 @@ public class GPUDecoder
   
   private void releaseOutputBuffer()
   {
-    AppMethodBeat.i(220123);
+    AppMethodBeat.i(216877);
     if (this.lastOutputBufferIndex != -1)
     {
       releaseOutputBuffer(this.lastOutputBufferIndex, false);
       this.lastOutputBufferIndex = -1;
     }
-    AppMethodBeat.o(220123);
+    AppMethodBeat.o(216877);
   }
   
   private float videoHeight()
   {
-    AppMethodBeat.i(220117);
+    AppMethodBeat.i(216871);
     float[] arrayOfFloat = new float[16];
     this.surfaceTexture.getTransformMatrix(arrayOfFloat);
     float f = Math.abs(arrayOfFloat[5]);
     if (f > 0.0F)
     {
       f = this.targetHeight / f;
-      AppMethodBeat.o(220117);
+      AppMethodBeat.o(216871);
       return f;
     }
     f = this.targetHeight;
-    AppMethodBeat.o(220117);
+    AppMethodBeat.o(216871);
     return f;
   }
   
   private float videoWidth()
   {
-    AppMethodBeat.i(220116);
+    AppMethodBeat.i(216870);
     float[] arrayOfFloat = new float[16];
     this.surfaceTexture.getTransformMatrix(arrayOfFloat);
     float f = Math.abs(arrayOfFloat[0]);
     if (f > 0.0F)
     {
       f = this.targetWidth / f;
-      AppMethodBeat.o(220116);
+      AppMethodBeat.o(216870);
       return f;
     }
     f = this.targetWidth;
-    AppMethodBeat.o(220116);
+    AppMethodBeat.o(216870);
     return f;
   }
   
   public void onFrameAvailable(SurfaceTexture arg1)
   {
-    AppMethodBeat.i(220114);
+    AppMethodBeat.i(216868);
     synchronized (this.frameSyncObject)
     {
       if (this.frameAvailable)
       {
         new RuntimeException("frameAvailable already set, frame could be dropped");
-        AppMethodBeat.o(220114);
+        AppMethodBeat.o(216868);
         return;
       }
       this.frameAvailable = true;
       this.frameSyncObject.notifyAll();
-      AppMethodBeat.o(220114);
+      AppMethodBeat.o(216868);
       return;
     }
   }
@@ -594,10 +594,10 @@ public class GPUDecoder
     
     private OutputFrame()
     {
-      AppMethodBeat.i(220109);
+      AppMethodBeat.i(216863);
       this.data = new long[3];
       this.lineSize = new int[3];
-      AppMethodBeat.o(220109);
+      AppMethodBeat.o(216863);
     }
   }
 }

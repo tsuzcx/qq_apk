@@ -3,34 +3,43 @@ package com.tencent.mm.plugin.gamelife.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class l
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public long uxu;
+  public String oGf;
+  public int uIW;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(211169);
+    AppMethodBeat.i(218211);
     if (paramInt == 0)
     {
-      ((f.a.a.c.a)paramVarArgs[0]).aY(1, this.uxu);
-      AppMethodBeat.o(211169);
+      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.aS(1, this.uIW);
+      if (this.oGf != null) {
+        paramVarArgs.d(2, this.oGf);
+      }
+      AppMethodBeat.o(218211);
       return 0;
     }
     if (paramInt == 1)
     {
-      paramInt = f.a.a.b.b.a.p(1, this.uxu);
-      AppMethodBeat.o(211169);
-      return paramInt + 0;
+      int i = f.a.a.b.b.a.bz(1, this.uIW) + 0;
+      paramInt = i;
+      if (this.oGf != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.oGf);
+      }
+      AppMethodBeat.o(218211);
+      return paramInt;
     }
     if (paramInt == 2)
     {
       paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gxE();
+          paramVarArgs.gCg();
         }
       }
-      AppMethodBeat.o(211169);
+      AppMethodBeat.o(218211);
       return 0;
     }
     if (paramInt == 3)
@@ -40,14 +49,18 @@ public final class l
       switch (((Integer)paramVarArgs[2]).intValue())
       {
       default: 
-        AppMethodBeat.o(211169);
+        AppMethodBeat.o(218211);
         return -1;
+      case 1: 
+        locall.uIW = locala.OmT.zc();
+        AppMethodBeat.o(218211);
+        return 0;
       }
-      locall.uxu = locala.NPN.zd();
-      AppMethodBeat.o(211169);
+      locall.oGf = locala.OmT.readString();
+      AppMethodBeat.o(218211);
       return 0;
     }
-    AppMethodBeat.o(211169);
+    AppMethodBeat.o(218211);
     return -1;
   }
 }

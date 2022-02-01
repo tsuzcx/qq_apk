@@ -4,20 +4,20 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 import java.nio.ByteBuffer;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/voip/video/program/FaceBeautyData;", "", "width", "", "height", "fbType", "mBuffer", "Ljava/nio/ByteBuffer;", "dataType", "(IIILjava/nio/ByteBuffer;I)V", "reset", "", "type", "Companion", "IFaceBeautyData", "plugin-voip_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/voip/video/program/FaceBeautyData;", "", "width", "", "height", "fbType", "mBuffer", "Ljava/nio/ByteBuffer;", "dataType", "(IIILjava/nio/ByteBuffer;I)V", "reset", "", "type", "Companion", "IFaceBeautyData", "plugin-voip_release"})
 public final class a
 {
-  public static final a.a Cpv;
-  public int Cpu;
+  public static final a.a CGZ;
+  public int CGY;
   public int dataType;
-  public ByteBuffer hHi;
+  public ByteBuffer hKa;
   public int height;
   public int width;
   
   static
   {
     AppMethodBeat.i(115962);
-    Cpv = new a.a((byte)0);
+    CGZ = new a.a((byte)0);
     AppMethodBeat.o(115962);
   }
   
@@ -25,8 +25,8 @@ public final class a
   {
     this.width = paramInt1;
     this.height = paramInt2;
-    this.Cpu = paramInt3;
-    this.hHi = paramByteBuffer;
+    this.CGY = paramInt3;
+    this.hKa = paramByteBuffer;
     this.dataType = 0;
   }
   
@@ -34,12 +34,12 @@ public final class a
   {
     this.width = paramInt1;
     this.height = paramInt2;
-    this.hHi = paramByteBuffer;
-    this.Cpu = paramInt3;
+    this.hKa = paramByteBuffer;
+    this.CGY = paramInt3;
     this.dataType = paramInt4;
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/voip/video/program/FaceBeautyData$IFaceBeautyData;", "", "getFaceBeautyData", "", "faceBeautyData", "Lcom/tencent/mm/plugin/voip/video/program/FaceBeautyData;", "plugin-voip_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/voip/video/program/FaceBeautyData$IFaceBeautyData;", "", "getFaceBeautyData", "", "faceBeautyData", "Lcom/tencent/mm/plugin/voip/video/program/FaceBeautyData;", "plugin-voip_release"})
   public static abstract interface b
   {
     public abstract void a(a parama);

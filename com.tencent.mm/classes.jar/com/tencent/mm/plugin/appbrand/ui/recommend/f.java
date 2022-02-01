@@ -3,28 +3,28 @@ package com.tencent.mm.plugin.appbrand.ui.recommend;
 import android.graphics.Bitmap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.modelappbrand.a.b.h;
-import com.tencent.mm.sdk.platformtools.g;
+import com.tencent.mm.sdk.platformtools.h;
 
 public final class f
   implements b.h
 {
-  public static final f mNc;
-  public int hNd = 0;
-  public int mNb = 0;
+  public static final f mSf;
+  public int hPW = 0;
+  public int mSe = 0;
   
   static
   {
     AppMethodBeat.i(49296);
-    mNc = new f();
+    mSf = new f();
     AppMethodBeat.o(49296);
   }
   
-  public final String BM()
+  public final String BN()
   {
     return "WxaRecommendIcon";
   }
   
-  public final Bitmap F(Bitmap paramBitmap)
+  public final Bitmap G(Bitmap paramBitmap)
   {
     AppMethodBeat.i(49295);
     if ((paramBitmap.getWidth() <= 0) || (paramBitmap.getHeight() <= 0))
@@ -36,17 +36,17 @@ public final class f
     float f1;
     if (paramBitmap.getWidth() == paramBitmap.getHeight())
     {
-      f2 = this.mNb;
+      f2 = this.mSe;
       f1 = f2;
-      if (this.hNd > 0)
+      if (this.hPW > 0)
       {
         f1 = f2;
-        if (this.mNb > 0) {
-          f1 = this.mNb * paramBitmap.getWidth() / this.hNd;
+        if (this.mSe > 0) {
+          f1 = this.mSe * paramBitmap.getWidth() / this.hPW;
         }
       }
     }
-    for (paramBitmap = g.a(paramBitmap, false, f1);; paramBitmap = g.a(paramBitmap, false, f1))
+    for (paramBitmap = h.a(paramBitmap, false, f1);; paramBitmap = h.a(paramBitmap, false, f1))
     {
       AppMethodBeat.o(49295);
       return paramBitmap;
@@ -55,14 +55,14 @@ public final class f
       if (j <= 0) {
         i = Math.max(paramBitmap.getWidth(), paramBitmap.getHeight());
       }
-      paramBitmap = g.b(paramBitmap, i, i, true);
-      f2 = this.mNb;
+      paramBitmap = h.b(paramBitmap, i, i, true);
+      f2 = this.mSe;
       f1 = f2;
-      if (this.hNd > 0)
+      if (this.hPW > 0)
       {
         f1 = f2;
-        if (this.mNb > 0) {
-          f1 = this.mNb * paramBitmap.getWidth() / this.hNd;
+        if (this.mSe > 0) {
+          f1 = this.mSe * paramBitmap.getWidth() / this.hPW;
         }
       }
     }

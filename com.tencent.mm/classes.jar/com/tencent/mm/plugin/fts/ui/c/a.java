@@ -2,20 +2,20 @@ package com.tencent.mm.plugin.fts.ui.c;
 
 public final class a
 {
-  public long tCq;
-  public int tCr;
-  public long tCs;
+  public long tNh;
+  public int tNi;
+  public long tNj;
   
   public final void reset()
   {
-    this.tCq = 0L;
-    this.tCr = 0;
-    this.tCs = 0L;
+    this.tNh = 0L;
+    this.tNi = 0;
+    this.tNj = 0L;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.ui.c.a
  * JD-Core Version:    0.7.0.1
  */

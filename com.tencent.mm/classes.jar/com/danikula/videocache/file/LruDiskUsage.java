@@ -71,9 +71,9 @@ public abstract class LruDiskUsage
     
     public Void call()
     {
-      AppMethodBeat.i(215901);
+      AppMethodBeat.i(195185);
       LruDiskUsage.this.touchInBackground(this.file);
-      AppMethodBeat.o(215901);
+      AppMethodBeat.o(195185);
       return null;
     }
   }

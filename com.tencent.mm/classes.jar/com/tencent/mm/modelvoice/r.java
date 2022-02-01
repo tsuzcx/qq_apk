@@ -8,61 +8,61 @@ public final class r
 {
   public String clientId;
   public long createTime;
-  public long dAY;
-  public int dDp;
-  public String dDy;
-  int eLr;
-  String eLs;
+  public long dCd;
+  public String dED;
+  public int dEu;
+  int eNc;
+  String eNd;
   public String fileName;
-  public int hMP;
-  public int isJ;
-  public String itY;
-  public int iua;
-  public long iud;
-  public int iuf;
-  int iug;
-  String iwb;
-  int iwi;
-  public int ixm;
-  int ixn;
-  long ixo;
-  int ixp;
+  public int hPI;
+  public int iAf;
+  int iAg;
+  long iAh;
+  int iAi;
+  public int ivD;
+  public String iwS;
+  public int iwU;
+  public long iwX;
+  public int iwZ;
+  int ixa;
+  String iyU;
+  int izb;
   public int status;
   
   public r()
   {
     AppMethodBeat.i(148454);
-    this.dDp = -1;
-    this.iwi = 0;
+    this.dEu = -1;
+    this.izb = 0;
     this.fileName = "";
-    this.dDy = "";
+    this.dED = "";
     this.clientId = "";
-    this.dAY = 0L;
-    this.isJ = 0;
-    this.iua = 0;
-    this.hMP = 0;
+    this.dCd = 0L;
+    this.ivD = 0;
+    this.iwU = 0;
+    this.hPI = 0;
     this.status = 0;
     this.createTime = 0L;
-    this.iud = 0L;
-    this.ixm = 0;
-    this.iuf = 0;
-    this.itY = "";
-    this.iug = 0;
-    this.iwb = "";
-    this.eLs = "";
-    this.eLr = 0;
-    this.ixn = 0;
-    this.ixo = 0L;
-    this.ixp = 0;
+    this.iwX = 0L;
+    this.iAf = 0;
+    this.iwZ = 0;
+    this.iwS = "";
+    this.ixa = 0;
+    this.iyU = "";
+    this.eNd = "";
+    this.eNc = 0;
+    this.iAg = 0;
+    this.iAh = 0L;
+    this.iAi = 0;
     AppMethodBeat.o(148454);
   }
   
-  public final boolean aNB()
+  public final boolean aNZ()
   {
     return (this.status == 5) || (this.status == 6);
   }
   
-  public final boolean aNC()
+  public final boolean aOa()
   {
     return ((this.status > 1) && (this.status <= 3)) || (this.status == 8);
   }
@@ -71,25 +71,25 @@ public final class r
   {
     AppMethodBeat.i(148453);
     this.fileName = paramCursor.getString(0);
-    this.dDy = paramCursor.getString(1);
-    this.dAY = paramCursor.getLong(2);
-    this.isJ = paramCursor.getInt(3);
-    this.iua = paramCursor.getInt(4);
-    this.hMP = paramCursor.getInt(5);
+    this.dED = paramCursor.getString(1);
+    this.dCd = paramCursor.getLong(2);
+    this.ivD = paramCursor.getInt(3);
+    this.iwU = paramCursor.getInt(4);
+    this.hPI = paramCursor.getInt(5);
     this.status = paramCursor.getInt(6);
     this.createTime = paramCursor.getLong(7);
-    this.iud = paramCursor.getLong(8);
+    this.iwX = paramCursor.getLong(8);
     this.clientId = paramCursor.getString(9);
-    this.ixm = paramCursor.getInt(10);
-    this.iuf = paramCursor.getInt(11);
-    this.itY = paramCursor.getString(12);
-    this.iug = paramCursor.getInt(13);
-    this.iwb = paramCursor.getString(14);
-    this.eLs = paramCursor.getString(15);
-    this.eLr = paramCursor.getInt(16);
-    this.ixn = paramCursor.getInt(17);
-    this.ixo = paramCursor.getLong(18);
-    this.ixp = paramCursor.getInt(19);
+    this.iAf = paramCursor.getInt(10);
+    this.iwZ = paramCursor.getInt(11);
+    this.iwS = paramCursor.getString(12);
+    this.ixa = paramCursor.getInt(13);
+    this.iyU = paramCursor.getString(14);
+    this.eNd = paramCursor.getString(15);
+    this.eNc = paramCursor.getInt(16);
+    this.iAg = paramCursor.getInt(17);
+    this.iAh = paramCursor.getLong(18);
+    this.iAi = paramCursor.getInt(19);
     AppMethodBeat.o(148453);
   }
   
@@ -97,65 +97,65 @@ public final class r
   {
     AppMethodBeat.i(148452);
     ContentValues localContentValues = new ContentValues();
-    if ((this.dDp & 0x1) != 0) {
+    if ((this.dEu & 0x1) != 0) {
       localContentValues.put("FileName", this.fileName);
     }
-    if ((this.dDp & 0x2) != 0) {
-      localContentValues.put("User", this.dDy);
+    if ((this.dEu & 0x2) != 0) {
+      localContentValues.put("User", this.dED);
     }
-    if ((this.dDp & 0x4) != 0) {
-      localContentValues.put("MsgId", Long.valueOf(this.dAY));
+    if ((this.dEu & 0x4) != 0) {
+      localContentValues.put("MsgId", Long.valueOf(this.dCd));
     }
-    if ((this.dDp & 0x8) != 0) {
-      localContentValues.put("NetOffset", Integer.valueOf(this.isJ));
+    if ((this.dEu & 0x8) != 0) {
+      localContentValues.put("NetOffset", Integer.valueOf(this.ivD));
     }
-    if ((this.dDp & 0x10) != 0) {
-      localContentValues.put("FileNowSize", Integer.valueOf(this.iua));
+    if ((this.dEu & 0x10) != 0) {
+      localContentValues.put("FileNowSize", Integer.valueOf(this.iwU));
     }
-    if ((this.dDp & 0x20) != 0) {
-      localContentValues.put("TotalLen", Integer.valueOf(this.hMP));
+    if ((this.dEu & 0x20) != 0) {
+      localContentValues.put("TotalLen", Integer.valueOf(this.hPI));
     }
-    if ((this.dDp & 0x40) != 0) {
+    if ((this.dEu & 0x40) != 0) {
       localContentValues.put("Status", Integer.valueOf(this.status));
     }
-    if ((this.dDp & 0x80) != 0) {
+    if ((this.dEu & 0x80) != 0) {
       localContentValues.put("CreateTime", Long.valueOf(this.createTime));
     }
-    if ((this.dDp & 0x100) != 0) {
-      localContentValues.put("LastModifyTime", Long.valueOf(this.iud));
+    if ((this.dEu & 0x100) != 0) {
+      localContentValues.put("LastModifyTime", Long.valueOf(this.iwX));
     }
-    if ((this.dDp & 0x200) != 0) {
+    if ((this.dEu & 0x200) != 0) {
       localContentValues.put("ClientId", this.clientId);
     }
-    if ((this.dDp & 0x400) != 0) {
-      localContentValues.put("VoiceLength", Integer.valueOf(this.ixm));
+    if ((this.dEu & 0x400) != 0) {
+      localContentValues.put("VoiceLength", Integer.valueOf(this.iAf));
     }
-    if ((this.dDp & 0x800) != 0) {
-      localContentValues.put("MsgLocalId", Integer.valueOf(this.iuf));
+    if ((this.dEu & 0x800) != 0) {
+      localContentValues.put("MsgLocalId", Integer.valueOf(this.iwZ));
     }
-    if ((this.dDp & 0x1000) != 0) {
-      localContentValues.put("Human", this.itY);
+    if ((this.dEu & 0x1000) != 0) {
+      localContentValues.put("Human", this.iwS);
     }
-    if ((this.dDp & 0x2000) != 0) {
-      localContentValues.put("reserved1", Integer.valueOf(this.iug));
+    if ((this.dEu & 0x2000) != 0) {
+      localContentValues.put("reserved1", Integer.valueOf(this.ixa));
     }
-    if ((this.dDp & 0x4000) != 0) {
-      localContentValues.put("reserved2", this.iwb);
+    if ((this.dEu & 0x4000) != 0) {
+      localContentValues.put("reserved2", this.iyU);
     }
-    if ((this.dDp & 0x8000) != 0) {
-      localContentValues.put("MsgSource", this.eLs);
+    if ((this.dEu & 0x8000) != 0) {
+      localContentValues.put("MsgSource", this.eNd);
     }
-    if ((this.dDp & 0x10000) != 0) {
-      localContentValues.put("MsgFlag", Integer.valueOf(this.eLr));
+    if ((this.dEu & 0x10000) != 0) {
+      localContentValues.put("MsgFlag", Integer.valueOf(this.eNc));
     }
-    if ((this.dDp & 0x20000) != 0) {
-      localContentValues.put("MsgSeq", Integer.valueOf(this.ixn));
+    if ((this.dEu & 0x20000) != 0) {
+      localContentValues.put("MsgSeq", Integer.valueOf(this.iAg));
     }
-    if ((this.dDp & 0x40000) != 0) {
-      localContentValues.put("MasterBufId", Long.valueOf(this.ixo));
+    if ((this.dEu & 0x40000) != 0) {
+      localContentValues.put("MasterBufId", Long.valueOf(this.iAh));
     }
-    if ((this.dDp & 0x80000) != 0) {
-      localContentValues.put("checksum", Integer.valueOf(this.ixp));
+    if ((this.dEu & 0x80000) != 0) {
+      localContentValues.put("checksum", Integer.valueOf(this.iAi));
     }
     AppMethodBeat.o(148452);
     return localContentValues;

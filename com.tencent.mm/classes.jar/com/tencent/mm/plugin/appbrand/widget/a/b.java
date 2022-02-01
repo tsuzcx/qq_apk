@@ -8,11 +8,11 @@ import com.tencent.mm.plugin.appbrand.widget.o;
 public abstract interface b
   extends a
 {
-  public abstract j aYR();
+  public abstract j aZn();
   
-  public abstract o aYT();
+  public abstract o aZq();
   
-  public abstract g aYY();
+  public abstract g aZv();
 }
 
 

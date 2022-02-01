@@ -8,16 +8,16 @@ public abstract class ev
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eCW = "msgId".hashCode();
-  private static final int eLo = "isRead".hashCode();
-  private static final int fnS = "msgContentXml".hashCode();
+  private static final int eEF = "msgId".hashCode();
+  private static final int eMY = "isRead".hashCode();
+  private static final int fpT = "msgContentXml".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eCS = true;
-  private boolean eLb = true;
+  private boolean eEB = true;
+  private boolean eMK = true;
   public String field_isRead;
   public String field_msgContentXml;
   public String field_msgId;
-  private boolean fnR = true;
+  private boolean fpS = true;
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -32,11 +32,11 @@ public abstract class ev
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eCW != k) {
+      if (eEF != k) {
         break label65;
       }
       this.field_msgId = paramCursor.getString(i);
-      this.eCS = true;
+      this.eEB = true;
     }
     for (;;)
     {
@@ -44,9 +44,9 @@ public abstract class ev
       break label20;
       break;
       label65:
-      if (fnS == k) {
+      if (fpT == k) {
         this.field_msgContentXml = paramCursor.getString(i);
-      } else if (eLo == k) {
+      } else if (eMY == k) {
         this.field_isRead = paramCursor.getString(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
@@ -57,13 +57,13 @@ public abstract class ev
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eCS) {
+    if (this.eEB) {
       localContentValues.put("msgId", this.field_msgId);
     }
-    if (this.fnR) {
+    if (this.fpS) {
       localContentValues.put("msgContentXml", this.field_msgContentXml);
     }
-    if (this.eLb) {
+    if (this.eMK) {
       localContentValues.put("isRead", this.field_isRead);
     }
     if (this.systemRowid > 0L) {

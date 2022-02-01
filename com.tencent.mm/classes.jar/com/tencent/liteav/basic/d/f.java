@@ -24,7 +24,7 @@ public class f
   
   public f()
   {
-    AppMethodBeat.i(187295);
+    AppMethodBeat.i(221424);
     this.b = null;
     this.c = null;
     this.e = null;
@@ -34,12 +34,12 @@ public class f
     this.h = 0L;
     this.i = 0L;
     this.j = new float[16];
-    AppMethodBeat.o(187295);
+    AppMethodBeat.o(221424);
   }
   
   private void a(int paramInt)
   {
-    AppMethodBeat.i(187303);
+    AppMethodBeat.i(221432);
     try
     {
       if (this.c != null) {
@@ -49,13 +49,13 @@ public class f
     }
     finally
     {
-      AppMethodBeat.o(187303);
+      AppMethodBeat.o(221432);
     }
   }
   
   private void a(int paramInt, long paramLong)
   {
-    AppMethodBeat.i(187302);
+    AppMethodBeat.i(221431);
     try
     {
       if (this.c != null) {
@@ -65,13 +65,13 @@ public class f
     }
     finally
     {
-      AppMethodBeat.o(187302);
+      AppMethodBeat.o(221431);
     }
   }
   
   private void a(int paramInt, Runnable paramRunnable)
   {
-    AppMethodBeat.i(187304);
+    AppMethodBeat.i(221433);
     try
     {
       if (this.c != null)
@@ -85,13 +85,13 @@ public class f
     }
     finally
     {
-      AppMethodBeat.o(187304);
+      AppMethodBeat.o(221433);
     }
   }
   
   private void b()
   {
-    AppMethodBeat.i(187301);
+    AppMethodBeat.i(221430);
     f();
     try
     {
@@ -103,12 +103,12 @@ public class f
       this.c.b = 720;
       TXCLog.w("TXGLSurfaceTextureThread", "create gl thread " + this.b.getName());
       a(100);
-      AppMethodBeat.o(187301);
+      AppMethodBeat.o(221430);
       return;
     }
     finally
     {
-      AppMethodBeat.o(187301);
+      AppMethodBeat.o(221430);
     }
   }
   
@@ -134,7 +134,7 @@ public class f
   
   private void g()
   {
-    AppMethodBeat.i(187305);
+    AppMethodBeat.i(221434);
     TXCLog.w("TXGLSurfaceTextureThread", "destroy surface texture ");
     n localn = this.d;
     if (localn != null) {
@@ -152,19 +152,19 @@ public class f
       GLES20.glDeleteTextures(1, this.e, 0);
       this.e = null;
     }
-    AppMethodBeat.o(187305);
+    AppMethodBeat.o(221434);
   }
   
   private void h()
   {
-    AppMethodBeat.i(187306);
+    AppMethodBeat.i(221435);
     TXCLog.w("TXGLSurfaceTextureThread", "init surface texture ");
     this.e = new int[1];
     this.e[0] = j.b();
     if (this.e[0] <= 0)
     {
       this.e = null;
-      AppMethodBeat.o(187306);
+      AppMethodBeat.o(221435);
       return;
     }
     this.f = new SurfaceTexture(this.e[0]);
@@ -173,42 +173,42 @@ public class f
     {
       public void onFrameAvailable(SurfaceTexture paramAnonymousSurfaceTexture)
       {
-        AppMethodBeat.i(187293);
+        AppMethodBeat.i(221422);
         f.a(f.this, 103, new Runnable()
         {
           public void run()
           {
-            AppMethodBeat.i(187362);
+            AppMethodBeat.i(221491);
             f.a(f.this, true);
             f.a(f.this, 102);
-            AppMethodBeat.o(187362);
+            AppMethodBeat.o(221491);
           }
         });
         paramAnonymousSurfaceTexture.setOnFrameAvailableListener(null);
-        AppMethodBeat.o(187293);
+        AppMethodBeat.o(221422);
       }
     });
     n localn = this.d;
     if (localn != null) {
       localn.a(this.f);
     }
-    AppMethodBeat.o(187306);
+    AppMethodBeat.o(221435);
   }
   
   private boolean i()
   {
-    AppMethodBeat.i(187307);
+    AppMethodBeat.i(221436);
     if (!this.g)
     {
       this.h = 0L;
       this.i = System.nanoTime();
-      AppMethodBeat.o(187307);
+      AppMethodBeat.o(221436);
       return false;
     }
     long l = System.nanoTime();
     if (l < this.i + this.h * 1000L * 1000L * 1000L / this.a)
     {
-      AppMethodBeat.o(187307);
+      AppMethodBeat.o(221436);
       return false;
     }
     if (this.i == 0L) {
@@ -217,7 +217,7 @@ public class f
     for (;;)
     {
       this.h += 1L;
-      AppMethodBeat.o(187307);
+      AppMethodBeat.o(221436);
       return true;
       if (l > this.i + 1000000000L)
       {
@@ -229,24 +229,24 @@ public class f
   
   public void a()
   {
-    AppMethodBeat.i(187297);
+    AppMethodBeat.i(221426);
     f();
-    AppMethodBeat.o(187297);
+    AppMethodBeat.o(221426);
   }
   
   public void a(int paramInt, boolean paramBoolean)
   {
-    AppMethodBeat.i(187296);
+    AppMethodBeat.i(221425);
     this.a = paramInt;
     b();
-    AppMethodBeat.o(187296);
+    AppMethodBeat.o(221425);
   }
   
   public void a(int paramInt1, boolean paramBoolean1, int paramInt2, int paramInt3, int paramInt4, boolean paramBoolean2) {}
   
   public void a(Runnable paramRunnable)
   {
-    AppMethodBeat.i(187299);
+    AppMethodBeat.i(221428);
     try
     {
       if (this.c != null) {
@@ -256,7 +256,7 @@ public class f
     }
     finally
     {
-      AppMethodBeat.o(187299);
+      AppMethodBeat.o(221428);
     }
   }
   

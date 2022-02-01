@@ -4,12 +4,12 @@ import java.util.ArrayList;
 
 public final class r
 {
-  public String oBW = "";
-  public int oBX = 0;
-  public ArrayList<String> oBY;
-  public boolean oBZ = false;
-  public boolean oCa = false;
-  public String oxM = "";
+  public String oEo = "";
+  public ArrayList<String> oIA;
+  public boolean oIB = false;
+  public boolean oIC = false;
+  public String oIy = "";
+  public int oIz = 0;
 }
 
 

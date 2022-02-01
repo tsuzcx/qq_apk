@@ -2,17 +2,17 @@ package com.tencent.mm.plugin.appbrand.media.record.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.media.record.h;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public abstract class b
 {
-  private static b lSb = new b()
+  private static b lWC = new b()
   {
-    public final d Sx(String paramAnonymousString)
+    public final d Tg(String paramAnonymousString)
     {
       AppMethodBeat.i(146341);
-      ad.i("MicroMsg.Record.AudioEncodeFactory", "createEncodeByType:%s", new Object[] { paramAnonymousString });
-      if (!h.Su(paramAnonymousString))
+      ae.i("MicroMsg.Record.AudioEncodeFactory", "createEncodeByType:%s", new Object[] { paramAnonymousString });
+      if (!h.Td(paramAnonymousString))
       {
         AppMethodBeat.o(146341);
         return null;
@@ -46,12 +46,12 @@ public abstract class b
     }
   };
   
-  public static d Sy(String paramString)
+  public static d Th(String paramString)
   {
-    return lSb.Sx(paramString);
+    return lWC.Tg(paramString);
   }
   
-  public abstract d Sx(String paramString);
+  public abstract d Tg(String paramString);
 }
 
 

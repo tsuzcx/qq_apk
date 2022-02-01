@@ -1,17 +1,17 @@
 package com.tencent.mm.openim.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.cac;
-import com.tencent.mm.protocal.protobuf.cad;
-import com.tencent.mm.protocal.protobuf.ces;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.caw;
+import com.tencent.mm.protocal.protobuf.cax;
+import com.tencent.mm.protocal.protobuf.cfm;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class p
   extends n
@@ -26,15 +26,15 @@ public final class p
     AppMethodBeat.i(151222);
     b.a locala = new b.a();
     this.username = paramString2;
-    cac localcac = new cac();
-    localcac.iHB = paramString1;
-    localcac.GUW = new ces();
-    localcac.GUW.userName = paramString2;
-    locala.hNM = localcac;
-    locala.hNN = new cad();
+    caw localcaw = new caw();
+    localcaw.iKu = paramString1;
+    localcaw.Hox = new cfm();
+    localcaw.Hox.userName = paramString2;
+    locala.hQF = localcaw;
+    locala.hQG = new cax();
     locala.uri = "/cgi-bin/micromsg-bin/modopenimchatroomowner";
     locala.funcId = 811;
-    this.rr = locala.aDC();
+    this.rr = locala.aDS();
     AppMethodBeat.o(151222);
   }
   
@@ -55,7 +55,7 @@ public final class p
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(151224);
-    ad.w("MicroMsg.NetSceneTransferOpenImChatRoomOwner", "errType = %s errCode = %s errMsg = %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    ae.w("MicroMsg.NetSceneTransferOpenImChatRoomOwner", "errType = %s errCode = %s errMsg = %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(151224);
   }

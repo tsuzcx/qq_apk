@@ -8,11 +8,11 @@ public abstract class dn
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eCT = "payMsgId".hashCode();
-  private static final int eCW = "msgId".hashCode();
+  private static final int eEC = "payMsgId".hashCode();
+  private static final int eEF = "msgId".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eCP = true;
-  private boolean eCS = true;
+  private boolean eEB = true;
+  private boolean eEy = true;
   public long field_msgId;
   public String field_payMsgId;
   
@@ -29,11 +29,11 @@ public abstract class dn
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eCT != k) {
+      if (eEC != k) {
         break label65;
       }
       this.field_payMsgId = paramCursor.getString(i);
-      this.eCP = true;
+      this.eEy = true;
     }
     for (;;)
     {
@@ -41,7 +41,7 @@ public abstract class dn
       break label20;
       break;
       label65:
-      if (eCW == k) {
+      if (eEF == k) {
         this.field_msgId = paramCursor.getLong(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
@@ -52,10 +52,10 @@ public abstract class dn
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eCP) {
+    if (this.eEy) {
       localContentValues.put("payMsgId", this.field_payMsgId);
     }
-    if (this.eCS) {
+    if (this.eEB) {
       localContentValues.put("msgId", Long.valueOf(this.field_msgId));
     }
     if (this.systemRowid > 0L) {

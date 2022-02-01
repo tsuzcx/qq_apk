@@ -1,53 +1,78 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import f.a.a.b;
 import java.util.LinkedList;
 
 public final class ada
-  extends cvc
+  extends cvw
 {
-  public String Gcc;
+  public String FNj;
+  public LinkedList<String> FNk;
+  
+  public ada()
+  {
+    AppMethodBeat.i(138171);
+    this.FNk = new LinkedList();
+    AppMethodBeat.o(138171);
+  }
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(32186);
+    AppMethodBeat.i(138172);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
+      if (this.FNj == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: ChatRoomName");
+        AppMethodBeat.o(138172);
+        throw paramVarArgs;
+      }
       if (this.BaseRequest != null)
       {
-        paramVarArgs.lC(1, this.BaseRequest.computeSize());
+        paramVarArgs.lJ(1, this.BaseRequest.computeSize());
         this.BaseRequest.writeFields(paramVarArgs);
       }
-      if (this.Gcc != null) {
-        paramVarArgs.d(2, this.Gcc);
+      if (this.FNj != null) {
+        paramVarArgs.d(2, this.FNj);
       }
-      AppMethodBeat.o(32186);
+      paramVarArgs.e(3, 1, this.FNk);
+      AppMethodBeat.o(138172);
       return 0;
     }
     if (paramInt == 1) {
       if (this.BaseRequest == null) {
-        break label378;
+        break label478;
       }
     }
-    label378:
-    for (paramInt = f.a.a.a.lB(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
+    label478:
+    for (paramInt = f.a.a.a.lI(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
     {
       int i = paramInt;
-      if (this.Gcc != null) {
-        i = paramInt + f.a.a.b.b.a.e(2, this.Gcc);
+      if (this.FNj != null) {
+        i = paramInt + f.a.a.b.b.a.e(2, this.FNj);
       }
-      AppMethodBeat.o(32186);
-      return i;
+      paramInt = f.a.a.a.c(3, 1, this.FNk);
+      AppMethodBeat.o(138172);
+      return i + paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = cvc.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cvc.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = (byte[])paramVarArgs[0];
+        this.FNk.clear();
+        paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
+        for (paramInt = cvw.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cvw.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
-        AppMethodBeat.o(32186);
+        if (this.FNj == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: ChatRoomName");
+          AppMethodBeat.o(138172);
+          throw paramVarArgs;
+        }
+        AppMethodBeat.o(138172);
         return 0;
       }
       if (paramInt == 3)
@@ -58,10 +83,10 @@ public final class ada
         switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(32186);
+          AppMethodBeat.o(138172);
           return -1;
         case 1: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
+          paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
@@ -69,18 +94,22 @@ public final class ada
             Object localObject2 = (byte[])paramVarArgs.get(paramInt);
             localObject1 = new jc();
             localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((jc)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, cvc.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            for (boolean bool = true; bool; bool = ((jc)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cvw.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
             localada.BaseRequest = ((jc)localObject1);
             paramInt += 1;
           }
-          AppMethodBeat.o(32186);
+          AppMethodBeat.o(138172);
+          return 0;
+        case 2: 
+          localada.FNj = ((f.a.a.a.a)localObject1).OmT.readString();
+          AppMethodBeat.o(138172);
           return 0;
         }
-        localada.Gcc = ((f.a.a.a.a)localObject1).NPN.readString();
-        AppMethodBeat.o(32186);
+        localada.FNk.add(((f.a.a.a.a)localObject1).OmT.readString());
+        AppMethodBeat.o(138172);
         return 0;
       }
-      AppMethodBeat.o(32186);
+      AppMethodBeat.o(138172);
       return -1;
     }
   }

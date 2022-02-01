@@ -5,11 +5,11 @@ import com.tencent.mm.vending.base.Vending;
 
 public abstract interface z
 {
-  public abstract p QT(int paramInt);
+  public abstract p RA(int paramInt);
   
-  public abstract void dZO();
+  public abstract void edu();
   
-  public abstract Vending dZP();
+  public abstract Vending edv();
   
   public abstract int getCount();
   

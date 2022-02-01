@@ -4,7 +4,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.appcache.ModulePkgInfo;
 import com.tencent.mm.plugin.appbrand.appcache.WxaPkgWrappingInfo.a;
 import com.tencent.mm.plugin.appbrand.config.WxaAttributes.WxaVersionModuleInfo;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import d.a.j;
 import d.b.a;
 import d.g.b.p;
@@ -17,21 +17,21 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.List<+TM;>;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/modularizing/WxaRuntimeModularizingUtils;", "", "()V", "TAG", "", "moduleAliases", "", "getModuleAliases", "(Ljava/lang/Object;)[Ljava/lang/String;", "moduleName", "getModuleName", "(Ljava/lang/Object;)Ljava/lang/String;", "findModule", "M", "", "pathOrModule", "message", "print", "", "(Ljava/util/List;Ljava/lang/String;Ljava/lang/String;Z)Ljava/lang/Object;", "matchModule", "pathOrModuleName", "(Ljava/lang/Object;Ljava/lang/String;Ljava/lang/String;)Z", "sortModuleList", "splitPathPartsArray", "(Ljava/lang/String;)[Ljava/lang/String;", "startsWith", "prefixArr", "([Ljava/lang/String;[Ljava/lang/String;)Z", "WxaPkgModuleListMatcherIMPL", "luggage-wechat-full-sdk_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/modularizing/WxaRuntimeModularizingUtils;", "", "()V", "TAG", "", "moduleAliases", "", "getModuleAliases", "(Ljava/lang/Object;)[Ljava/lang/String;", "moduleName", "getModuleName", "(Ljava/lang/Object;)Ljava/lang/String;", "findModule", "M", "", "pathOrModule", "message", "print", "", "(Ljava/util/List;Ljava/lang/String;Ljava/lang/String;Z)Ljava/lang/Object;", "matchModule", "pathOrModuleName", "(Ljava/lang/Object;Ljava/lang/String;Ljava/lang/String;)Z", "sortModuleList", "splitPathPartsArray", "(Ljava/lang/String;)[Ljava/lang/String;", "startsWith", "prefixArr", "([Ljava/lang/String;[Ljava/lang/String;)Z", "WxaPkgModuleListMatcherIMPL", "luggage-wechat-full-sdk_release"})
 public final class h
 {
-  public static final h lVc;
+  public static final h lZF;
   
   static
   {
-    AppMethodBeat.i(192368);
-    lVc = new h();
-    AppMethodBeat.o(192368);
+    AppMethodBeat.i(220979);
+    lZF = new h();
+    AppMethodBeat.o(220979);
   }
   
-  private static String[] SD(String paramString)
+  private static String[] Tm(String paramString)
   {
-    AppMethodBeat.i(192367);
+    AppMethodBeat.i(220978);
     int j = ((CharSequence)paramString).length();
     int i = 0;
     if (i < j) {
@@ -55,7 +55,7 @@ public final class h
       if (paramString == null)
       {
         paramString = new v("null cannot be cast to non-null type java.lang.String");
-        AppMethodBeat.o(192367);
+        AppMethodBeat.o(220978);
         throw paramString;
       }
       paramString = paramString.substring(i, k);
@@ -64,11 +64,11 @@ public final class h
       if (paramString == null)
       {
         paramString = new v("null cannot be cast to non-null type kotlin.Array<T>");
-        AppMethodBeat.o(192367);
+        AppMethodBeat.o(220978);
         throw paramString;
       }
       paramString = (String[])paramString;
-      AppMethodBeat.o(192367);
+      AppMethodBeat.o(220978);
       return paramString;
       i = 0;
     }
@@ -76,19 +76,19 @@ public final class h
   
   public static final <M> boolean a(M paramM, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(192363);
+    AppMethodBeat.i(220974);
     p.h(paramString1, "pathOrModuleName");
     boolean bool = p.i(c(j.listOf(paramM), paramString1, paramString2), paramM);
-    AppMethodBeat.o(192363);
+    AppMethodBeat.o(220974);
     return bool;
   }
   
   private static <M> M c(List<? extends M> paramList, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(192364);
+    AppMethodBeat.i(220975);
     p.h(paramList, "$this$findModule");
     p.h(paramString1, "pathOrModule");
-    String[] arrayOfString = SD(paramString1);
+    String[] arrayOfString = Tm(paramString1);
     p.h(paramList, "$this$sortModuleList");
     Iterator localIterator = ((Iterable)j.a((Iterable)paramList, (Comparator)new b())).iterator();
     label269:
@@ -101,10 +101,10 @@ public final class h
       Object localObject1;
       if (localObject2 != null)
       {
-        paramList = cA(localObject2);
+        paramList = cB(localObject2);
         if (paramList != null)
         {
-          localObject1 = SD(paramList);
+          localObject1 = Tm(paramList);
           paramList = (List<? extends M>)localObject1;
           if (localObject1 != null) {
             break label109;
@@ -128,13 +128,13 @@ public final class h
       int j;
       label237:
       label242:
-      for (paramList = cA(localObject2);; paramList = null)
+      for (paramList = cB(localObject2);; paramList = null)
       {
-        ad.i("Luggage.FULL.WxaRuntimeModularizingUtils", paramList + ", path:" + paramString1 + ", message[ " + paramString2 + " ]");
+        ae.i("Luggage.FULL.WxaRuntimeModularizingUtils", paramList + ", path:" + paramString1 + ", message[ " + paramString2 + " ]");
         if (localObject2 == null) {
-          p.gfZ();
+          p.gkB();
         }
-        AppMethodBeat.o(192364);
+        AppMethodBeat.o(220975);
         return localObject2;
         j = paramList.length;
         i = 0;
@@ -176,11 +176,11 @@ public final class h
           if ((localCharSequence == null) || (localCharSequence.length() == 0)) {}
           for (j = 1;; j = 0)
           {
-            if ((j != 0) || (!n.nz(paramString1, (String)localObject1))) {
+            if ((j != 0) || (!n.nF(paramString1, (String)localObject1))) {
               break label431;
             }
-            ad.i("Luggage.FULL.WxaRuntimeModularizingUtils", "findModule, hit module by alias:" + (String)localObject1 + ", path:" + paramString1 + ", message[ " + paramString2 + " ]");
-            AppMethodBeat.o(192364);
+            ae.i("Luggage.FULL.WxaRuntimeModularizingUtils", "findModule, hit module by alias:" + (String)localObject1 + ", path:" + paramString1 + ", message[ " + paramString2 + " ]");
+            AppMethodBeat.o(220975);
             return localObject2;
             if ((localObject2 instanceof ModulePkgInfo))
             {
@@ -189,77 +189,77 @@ public final class h
               break;
             }
             paramList = (Throwable)new IllegalStateException("Only WxaAttributes.WxaVersionModuleInfo or ModulePkgInfo supported here.".toString());
-            AppMethodBeat.o(192364);
+            AppMethodBeat.o(220975);
             throw paramList;
           }
           i += 1;
         }
       }
     }
-    ad.i("Luggage.FULL.WxaRuntimeModularizingUtils", "findModule, return null with path:" + paramString1 + ", message[ " + paramString2 + " ]");
-    AppMethodBeat.o(192364);
+    ae.i("Luggage.FULL.WxaRuntimeModularizingUtils", "findModule, return null with path:" + paramString1 + ", message[ " + paramString2 + " ]");
+    AppMethodBeat.o(220975);
     return null;
   }
   
-  private static String cA(Object paramObject)
+  private static String cB(Object paramObject)
   {
-    AppMethodBeat.i(192362);
+    AppMethodBeat.i(220973);
     if ((paramObject instanceof WxaAttributes.WxaVersionModuleInfo))
     {
       paramObject = ((WxaAttributes.WxaVersionModuleInfo)paramObject).name;
-      AppMethodBeat.o(192362);
+      AppMethodBeat.o(220973);
       return paramObject;
     }
     if ((paramObject instanceof ModulePkgInfo))
     {
       paramObject = ((ModulePkgInfo)paramObject).name;
-      AppMethodBeat.o(192362);
+      AppMethodBeat.o(220973);
       return paramObject;
     }
     paramObject = (Throwable)new IllegalStateException("Only WxaAttributes.WxaVersionModuleInfo or ModulePkgInfo supported here.".toString());
-    AppMethodBeat.o(192362);
+    AppMethodBeat.o(220973);
     throw paramObject;
   }
   
   public static final <M> M e(List<? extends M> paramList, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(192366);
+    AppMethodBeat.i(220977);
     paramList = c(paramList, paramString1, paramString2);
-    AppMethodBeat.o(192366);
+    AppMethodBeat.o(220977);
     return paramList;
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/modularizing/WxaRuntimeModularizingUtils$WxaPkgModuleListMatcherIMPL;", "Lcom/tencent/mm/plugin/appbrand/appcache/WxaPkgWrappingInfo$WxaPkgModuleListMatcher;", "()V", "findModule", "Lcom/tencent/mm/plugin/appbrand/appcache/ModulePkgInfo;", "moduleList", "", "pathOrModuleName", "", "message", "luggage-wechat-full-sdk_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/modularizing/WxaRuntimeModularizingUtils$WxaPkgModuleListMatcherIMPL;", "Lcom/tencent/mm/plugin/appbrand/appcache/WxaPkgWrappingInfo$WxaPkgModuleListMatcher;", "()V", "findModule", "Lcom/tencent/mm/plugin/appbrand/appcache/ModulePkgInfo;", "moduleList", "", "pathOrModuleName", "", "message", "luggage-wechat-full-sdk_release"})
   public static final class a
     implements WxaPkgWrappingInfo.a
   {
-    public static final a lVd;
+    public static final a lZG;
     
     static
     {
-      AppMethodBeat.i(192360);
-      lVd = new a();
-      AppMethodBeat.o(192360);
+      AppMethodBeat.i(220971);
+      lZG = new a();
+      AppMethodBeat.o(220971);
     }
     
     public final ModulePkgInfo b(List<? extends ModulePkgInfo> paramList, String paramString1, String paramString2)
     {
-      AppMethodBeat.i(192359);
+      AppMethodBeat.i(220970);
       p.h(paramList, "moduleList");
       p.h(paramString1, "pathOrModuleName");
       paramList = (ModulePkgInfo)h.d(paramList, paramString1, paramString2);
-      AppMethodBeat.o(192359);
+      AppMethodBeat.o(220970);
       return paramList;
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "T", "a", "kotlin.jvm.PlatformType", "b", "compare", "(Ljava/lang/Object;Ljava/lang/Object;)I", "kotlin/comparisons/ComparisonsKt__ComparisonsKt$compareByDescending$1"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "T", "a", "kotlin.jvm.PlatformType", "b", "compare", "(Ljava/lang/Object;Ljava/lang/Object;)I", "kotlin/comparisons/ComparisonsKt__ComparisonsKt$compareByDescending$1"})
   public static final class b<T>
     implements Comparator<T>
   {
     public final int compare(T paramT1, T paramT2)
     {
-      AppMethodBeat.i(192361);
+      AppMethodBeat.i(220972);
       if ((paramT2 instanceof WxaAttributes.WxaVersionModuleInfo))
       {
         i = ((WxaAttributes.WxaVersionModuleInfo)paramT2).name.length();
@@ -271,7 +271,7 @@ public final class h
       for (int i = ((WxaAttributes.WxaVersionModuleInfo)paramT1).name.length();; i = ((ModulePkgInfo)paramT1).name.length())
       {
         i = a.a(paramT2, (Comparable)Integer.valueOf(i));
-        AppMethodBeat.o(192361);
+        AppMethodBeat.o(220972);
         return i;
         if ((paramT2 instanceof ModulePkgInfo))
         {
@@ -279,7 +279,7 @@ public final class h
           break;
         }
         paramT1 = (Throwable)new IllegalStateException("Only WxaAttributes.WxaVersionModuleInfo or ModulePkgInfo supported here.".toString());
-        AppMethodBeat.o(192361);
+        AppMethodBeat.o(220972);
         throw paramT1;
         label112:
         if (!(paramT1 instanceof ModulePkgInfo)) {
@@ -288,7 +288,7 @@ public final class h
       }
       label133:
       paramT1 = (Throwable)new IllegalStateException("Only WxaAttributes.WxaVersionModuleInfo or ModulePkgInfo supported here.".toString());
-      AppMethodBeat.o(192361);
+      AppMethodBeat.o(220972);
       throw paramT1;
     }
   }

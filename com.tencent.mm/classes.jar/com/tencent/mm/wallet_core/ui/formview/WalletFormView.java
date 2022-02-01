@@ -31,12 +31,12 @@ import android.widget.TextView.OnEditorActionListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wxpay.a.a;
 import com.tencent.mm.pluginsdk.ui.wallet.WalletIconImageView;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
-import com.tencent.mm.wallet_core.ui.e;
+import com.tencent.mm.wallet_core.ui.f;
 import com.tenpay.android.wechat.TenpaySecureEditText;
 import java.lang.reflect.Field;
 import junit.framework.Assert;
@@ -45,53 +45,53 @@ public final class WalletFormView
   extends LinearLayout
   implements View.OnFocusChangeListener
 {
-  private int JsT;
-  private a LAA;
-  private com.tencent.mm.wallet_core.ui.formview.a.a LAB;
-  private com.tencent.mm.wallet_core.ui.formview.a.b LAC;
-  private int LAD;
-  private int LAE;
-  private int LAF;
-  private int LAG;
-  private int LAH;
-  private boolean LAI;
+  private int JNI;
+  private int LXA;
+  private int LXB;
+  private int LXC;
+  private c LXn;
+  public TenpaySecureEditText LXo;
+  private LinearLayout LXp;
+  private a LXq;
+  private com.tencent.mm.wallet_core.ui.formview.a.a LXr;
+  private com.tencent.mm.wallet_core.ui.formview.a.b LXs;
+  private int LXt;
+  private int LXu;
+  private int LXv;
+  private int LXw;
+  private int LXx;
+  private boolean LXy;
   @Deprecated
-  private int LAJ;
-  private int LAK;
-  private int LAL;
-  private int LAM;
-  private c LAx;
-  public TenpaySecureEditText LAy;
-  private LinearLayout LAz;
-  private TextView lCL;
-  private String uZe;
-  private TextView xWU;
-  private WalletIconImageView xpB;
-  private TextView xpC;
-  private View.OnFocusChangeListener xpE;
-  private View.OnClickListener xpF;
-  private int xpI;
-  private int xpJ;
-  private String xpK;
-  private int xpL;
-  private int xpM;
-  private int xpN;
-  private String xpO;
-  private int xpP;
-  private String xpQ;
-  private int xpR;
-  private int xpS;
-  private String xpT;
-  private int xpU;
-  private int xpV;
-  private int xpW;
-  private boolean xpX;
-  private boolean xpY;
-  private boolean xpZ;
-  private TextView xpz;
-  private int xqa;
-  private int xqb;
-  private int xqc;
+  private int LXz;
+  private TextView lHk;
+  private String vli;
+  private View.OnFocusChangeListener xFB;
+  private View.OnClickListener xFC;
+  private int xFF;
+  private int xFG;
+  private String xFH;
+  private int xFI;
+  private int xFJ;
+  private int xFK;
+  private String xFL;
+  private int xFM;
+  private String xFN;
+  private int xFO;
+  private int xFP;
+  private String xFQ;
+  private int xFR;
+  private int xFS;
+  private int xFT;
+  private boolean xFU;
+  private boolean xFV;
+  private boolean xFW;
+  private int xFX;
+  private int xFY;
+  private int xFZ;
+  private TextView xFw;
+  private WalletIconImageView xFy;
+  private TextView xFz;
+  private TextView ymN;
   
   public WalletFormView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -102,118 +102,118 @@ public final class WalletFormView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(73147);
-    this.lCL = null;
-    this.xpz = null;
-    this.LAy = null;
-    this.xpB = null;
-    this.xpC = null;
-    this.LAA = null;
-    this.xpE = null;
-    this.xpF = null;
-    this.LAB = null;
-    this.LAC = null;
-    this.xpI = -1;
-    this.LAD = this.xpI;
-    this.LAE = 100;
-    this.uZe = "";
-    this.xpJ = 0;
-    this.xpK = "";
-    this.xpL = 8;
-    this.xpM = -1;
-    this.LAF = -1;
-    this.xpN = 4;
-    this.xpO = "";
-    this.xpP = 8;
-    this.xpQ = "";
-    this.LAG = -1;
-    this.xpR = 19;
-    this.xpS = 2131100711;
-    this.xpT = "";
-    this.LAH = 0;
-    this.xpU = 2147483647;
-    this.xpV = 1;
-    this.xpW = 2131233299;
-    this.xpX = true;
-    this.xpY = false;
-    this.xpZ = true;
-    this.LAI = false;
-    this.xqa = 1;
-    this.xqb = 5;
-    this.xqc = 2131100551;
-    this.LAJ = 0;
-    this.LAK = 0;
-    this.LAL = 0;
+    this.lHk = null;
+    this.xFw = null;
+    this.LXo = null;
+    this.xFy = null;
+    this.xFz = null;
+    this.LXq = null;
+    this.xFB = null;
+    this.xFC = null;
+    this.LXr = null;
+    this.LXs = null;
+    this.xFF = -1;
+    this.LXt = this.xFF;
+    this.LXu = 100;
+    this.vli = "";
+    this.xFG = 0;
+    this.xFH = "";
+    this.xFI = 8;
+    this.xFJ = -1;
+    this.LXv = -1;
+    this.xFK = 4;
+    this.xFL = "";
+    this.xFM = 8;
+    this.xFN = "";
+    this.LXw = -1;
+    this.xFO = 19;
+    this.xFP = 2131100711;
+    this.xFQ = "";
+    this.LXx = 0;
+    this.xFR = 2147483647;
+    this.xFS = 1;
+    this.xFT = 2131233299;
+    this.xFU = true;
+    this.xFV = false;
+    this.xFW = true;
+    this.LXy = false;
+    this.xFX = 1;
+    this.xFY = 5;
+    this.xFZ = 2131100551;
+    this.LXz = 0;
+    this.LXA = 0;
+    this.LXB = 0;
     paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, a.a.WalletFormAttrs, paramInt, 0);
-    this.xpI = paramAttributeSet.getResourceId(23, this.xpI);
+    this.xFF = paramAttributeSet.getResourceId(23, this.xFF);
     paramInt = paramAttributeSet.getResourceId(30, 0);
     if (paramInt != 0) {
-      this.uZe = paramContext.getString(paramInt);
+      this.vli = paramContext.getString(paramInt);
     }
-    this.JsT = paramAttributeSet.getDimensionPixelSize(32, -1);
-    this.xpM = paramAttributeSet.getResourceId(20, this.xpM);
-    this.LAF = paramAttributeSet.getColor(19, this.LAF);
+    this.JNI = paramAttributeSet.getDimensionPixelSize(32, -1);
+    this.xFJ = paramAttributeSet.getResourceId(20, this.xFJ);
+    this.LXv = paramAttributeSet.getColor(19, this.LXv);
     paramInt = paramAttributeSet.getResourceId(28, 0);
     if (paramInt != 0) {
-      this.xpO = paramContext.getString(paramInt);
+      this.xFL = paramContext.getString(paramInt);
     }
-    this.xpN = paramAttributeSet.getInteger(21, this.xpN);
-    this.xpJ = paramAttributeSet.getInteger(31, this.xpJ);
-    this.xpP = paramAttributeSet.getInteger(29, this.xpP);
-    this.xpL = paramAttributeSet.getInteger(27, this.xpL);
+    this.xFK = paramAttributeSet.getInteger(21, this.xFK);
+    this.xFG = paramAttributeSet.getInteger(31, this.xFG);
+    this.xFM = paramAttributeSet.getInteger(29, this.xFM);
+    this.xFI = paramAttributeSet.getInteger(27, this.xFI);
     paramInt = paramAttributeSet.getResourceId(25, 0);
     if (paramInt != 0) {
-      this.xpK = paramContext.getString(paramInt);
+      this.xFH = paramContext.getString(paramInt);
     }
     paramInt = paramAttributeSet.getResourceId(11, 0);
     if (paramInt != 0) {
-      this.xpQ = paramContext.getString(paramInt);
+      this.xFN = paramContext.getString(paramInt);
     }
-    this.LAG = paramAttributeSet.getDimensionPixelSize(12, -1);
-    this.xpR = paramAttributeSet.getInteger(10, this.xpR);
-    this.xpS = paramAttributeSet.getColor(17, this.xpS);
+    this.LXw = paramAttributeSet.getDimensionPixelSize(12, -1);
+    this.xFO = paramAttributeSet.getInteger(10, this.xFO);
+    this.xFP = paramAttributeSet.getColor(17, this.xFP);
     paramInt = paramAttributeSet.getResourceId(16, 0);
     if (paramInt != 0) {
-      this.xpT = paramContext.getString(paramInt);
+      this.xFQ = paramContext.getString(paramInt);
     }
-    this.LAH = paramAttributeSet.getInt(9, this.LAH);
-    this.xpU = paramAttributeSet.getInteger(14, this.xpU);
-    this.xpV = paramAttributeSet.getInteger(15, this.xpV);
-    this.xpW = paramAttributeSet.getResourceId(5, this.xpW);
-    this.xpX = paramAttributeSet.getBoolean(7, this.xpX);
-    this.xpY = paramAttributeSet.getBoolean(6, this.xpY);
-    this.xpZ = paramAttributeSet.getBoolean(7, this.xpZ);
-    this.xqa = paramAttributeSet.getInteger(0, this.xqa);
-    this.xqb = paramAttributeSet.getInteger(1, this.xqb);
-    this.LAE = paramAttributeSet.getInteger(18, this.LAE);
-    this.xqc = paramAttributeSet.getInteger(13, this.xqc);
-    this.LAD = paramAttributeSet.getResourceId(24, this.LAD);
-    this.LAJ = paramAttributeSet.getInteger(33, 0);
-    this.LAK = paramAttributeSet.getInteger(34, -1);
-    if ((this.LAJ == 1) && (this.LAK == -1)) {
-      this.LAK = 4;
+    this.LXx = paramAttributeSet.getInt(9, this.LXx);
+    this.xFR = paramAttributeSet.getInteger(14, this.xFR);
+    this.xFS = paramAttributeSet.getInteger(15, this.xFS);
+    this.xFT = paramAttributeSet.getResourceId(5, this.xFT);
+    this.xFU = paramAttributeSet.getBoolean(7, this.xFU);
+    this.xFV = paramAttributeSet.getBoolean(6, this.xFV);
+    this.xFW = paramAttributeSet.getBoolean(7, this.xFW);
+    this.xFX = paramAttributeSet.getInteger(0, this.xFX);
+    this.xFY = paramAttributeSet.getInteger(1, this.xFY);
+    this.LXu = paramAttributeSet.getInteger(18, this.LXu);
+    this.xFZ = paramAttributeSet.getInteger(13, this.xFZ);
+    this.LXt = paramAttributeSet.getResourceId(24, this.LXt);
+    this.LXz = paramAttributeSet.getInteger(33, 0);
+    this.LXA = paramAttributeSet.getInteger(34, -1);
+    if ((this.LXz == 1) && (this.LXA == -1)) {
+      this.LXA = 4;
     }
-    this.LAL = paramAttributeSet.getResourceId(2, 0);
+    this.LXB = paramAttributeSet.getResourceId(2, 0);
     paramAttributeSet.recycle();
-    if (this.xpI > 0) {
+    if (this.xFF > 0) {
       bool = true;
     }
     Assert.assertTrue(bool);
     setOrientation(1);
-    if ((!bt.isNullOrNil(this.uZe)) && (this.uZe.length() > 6)) {
-      inflate(paramContext, this.LAD, this);
+    if ((!bu.isNullOrNil(this.vli)) && (this.vli.length() > 6)) {
+      inflate(paramContext, this.LXt, this);
     }
     for (;;)
     {
-      this.lCL = ((TextView)findViewById(2131306836));
-      this.xpz = ((TextView)findViewById(2131306818));
-      this.LAy = ((TenpaySecureEditText)findViewById(2131306718));
-      this.xpB = ((WalletIconImageView)findViewById(2131306746));
-      this.xpC = ((TextView)findViewById(2131306835));
-      this.LAz = ((LinearLayout)findViewById(2131306753));
-      this.xWU = ((TextView)findViewById(2131306756));
+      this.lHk = ((TextView)findViewById(2131306836));
+      this.xFw = ((TextView)findViewById(2131306818));
+      this.LXo = ((TenpaySecureEditText)findViewById(2131306718));
+      this.xFy = ((WalletIconImageView)findViewById(2131306746));
+      this.xFz = ((TextView)findViewById(2131306835));
+      this.LXp = ((LinearLayout)findViewById(2131306753));
+      this.ymN = ((TextView)findViewById(2131306756));
       AppMethodBeat.o(73147);
       return;
-      inflate(paramContext, this.xpI, this);
+      inflate(paramContext, this.xFF, this);
     }
   }
   
@@ -225,11 +225,11 @@ public final class WalletFormView
       AppMethodBeat.o(73187);
       return;
     }
-    a(paramEditText, paramString, aZ(paramString, paramInt1, paramInt2));
+    a(paramEditText, paramString, bc(paramString, paramInt1, paramInt2));
     AppMethodBeat.o(73187);
   }
   
-  public static void a(EditText paramEditText, String paramString1, String paramString2)
+  public static void a(EditText paramEditText, String paramString1, final String paramString2)
   {
     AppMethodBeat.i(73185);
     if (paramEditText == null)
@@ -237,12 +237,38 @@ public final class WalletFormView
       AppMethodBeat.o(73185);
       return;
     }
-    if (bt.lQ(paramString1, paramString2))
+    if (bu.lX(paramString1, paramString2))
     {
       AppMethodBeat.o(73185);
       return;
     }
-    aq.f(new WalletFormView.4(paramEditText, paramString2));
+    ar.f(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(73146);
+        int j = this.val$editText.getSelectionStart();
+        int k = this.val$editText.getSelectionEnd();
+        if (bu.isNullOrNil(paramString2))
+        {
+          this.val$editText.setText("");
+          AppMethodBeat.o(73146);
+          return;
+        }
+        this.val$editText.setText(paramString2);
+        EditText localEditText = this.val$editText;
+        int i = j;
+        if (j > paramString2.length()) {
+          i = paramString2.length();
+        }
+        j = k;
+        if (k > paramString2.length()) {
+          j = paramString2.length();
+        }
+        localEditText.setSelection(i, j);
+        AppMethodBeat.o(73146);
+      }
+    });
     AppMethodBeat.o(73185);
   }
   
@@ -287,7 +313,24 @@ public final class WalletFormView
     return false;
   }
   
-  public static String aZ(String paramString, int paramInt1, int paramInt2)
+  private boolean b(View paramView, MotionEvent paramMotionEvent)
+  {
+    AppMethodBeat.i(73172);
+    if ((paramView != null) && (paramView.getVisibility() == 0))
+    {
+      if (eB(paramView).contains((int)paramMotionEvent.getX(), (int)paramMotionEvent.getY()))
+      {
+        AppMethodBeat.o(73172);
+        return true;
+      }
+      AppMethodBeat.o(73172);
+      return false;
+    }
+    AppMethodBeat.o(73172);
+    return false;
+  }
+  
+  public static String bc(String paramString, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(73184);
     if (paramString == null)
@@ -308,42 +351,25 @@ public final class WalletFormView
     }
     String str = paramString.substring(0, paramInt1);
     paramString = paramString.substring(paramInt2, paramString.length());
-    paramString = bt.bI(str, "") + bt.bI(paramString, "");
+    paramString = bu.bI(str, "") + bu.bI(paramString, "");
     AppMethodBeat.o(73184);
     return paramString;
   }
   
-  private boolean b(View paramView, MotionEvent paramMotionEvent)
-  {
-    AppMethodBeat.i(73172);
-    if ((paramView != null) && (paramView.getVisibility() == 0))
-    {
-      if (eB(paramView).contains((int)paramMotionEvent.getX(), (int)paramMotionEvent.getY()))
-      {
-        AppMethodBeat.o(73172);
-        return true;
-      }
-      AppMethodBeat.o(73172);
-      return false;
-    }
-    AppMethodBeat.o(73172);
-    return false;
-  }
-  
-  private void dEc()
+  private void dHt()
   {
     AppMethodBeat.i(73160);
-    if ((this.xpB != null) && (!bt.isNullOrNil(getText())) && (this.LAy != null) && (this.LAy.isEnabled()) && (this.LAy.isClickable()) && (this.LAy.isFocusable()) && (this.LAy.isFocused()))
+    if ((this.xFy != null) && (!bu.isNullOrNil(getText())) && (this.LXo != null) && (this.LXo.isEnabled()) && (this.LXo.isClickable()) && (this.LXo.isFocusable()) && (this.LXo.isFocused()))
     {
-      this.xpB.setToClearState(new View.OnClickListener()
+      this.xFy.setToClearState(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(73144);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
           localb.bd(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/wallet_core/ui/formview/WalletFormView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-          WalletFormView.this.dEe();
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/wallet_core/ui/formview/WalletFormView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+          WalletFormView.this.dHv();
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/wallet_core/ui/formview/WalletFormView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(73144);
         }
@@ -351,13 +377,13 @@ public final class WalletFormView
       AppMethodBeat.o(73160);
       return;
     }
-    if (this.xpB != null)
+    if (this.xFy != null)
     {
-      this.xpB.ffz();
+      this.xFy.fjp();
       AppMethodBeat.o(73160);
       return;
     }
-    ad.v("MicroMsg.WalletFormView", "hy: no info iv");
+    ae.v("MicroMsg.WalletFormView", "hy: no info iv");
     AppMethodBeat.o(73160);
   }
   
@@ -376,21 +402,21 @@ public final class WalletFormView
     return null;
   }
   
-  private void fSg()
+  private void fWC()
   {
     AppMethodBeat.i(73174);
     if (getTitleTv() != null)
     {
-      getTitleTv().setText(this.uZe);
-      getTitleTv().setVisibility(this.xpJ);
-      setTitleWidth(this.JsT);
+      getTitleTv().setText(this.vli);
+      getTitleTv().setVisibility(this.xFG);
+      setTitleWidth(this.JNI);
     }
     AppMethodBeat.o(73174);
   }
   
   private Rect k(View paramView, Rect paramRect)
   {
-    if (paramView == this.xpB)
+    if (paramView == this.xFy)
     {
       paramRect.left -= 50;
       paramRect.right += 50;
@@ -403,33 +429,33 @@ public final class WalletFormView
   public final void a(TextWatcher paramTextWatcher)
   {
     AppMethodBeat.i(73182);
-    if (this.LAy != null) {
-      this.LAy.addTextChangedListener(paramTextWatcher);
+    if (this.LXo != null) {
+      this.LXo.addTextChangedListener(paramTextWatcher);
     }
     AppMethodBeat.o(73182);
   }
   
-  public final boolean aVa()
+  public final boolean aVz()
   {
     AppMethodBeat.i(73189);
-    if (this.LAy != null)
+    if (this.LXo != null)
     {
-      int i = this.LAy.getInputLength();
-      if ((i > this.xpU) || (i < this.xpV))
+      int i = this.LXo.getInputLength();
+      if ((i > this.xFR) || (i < this.xFS))
       {
         AppMethodBeat.o(73189);
         return false;
       }
-      if (this.LAC != null)
+      if (this.LXs != null)
       {
-        boolean bool = this.LAC.a(this);
+        boolean bool = this.LXs.a(this);
         AppMethodBeat.o(73189);
         return bool;
       }
       AppMethodBeat.o(73189);
       return true;
     }
-    ad.e("MicroMsg.WalletFormView", "hy: no content edit text. true as default");
+    ae.e("MicroMsg.WalletFormView", "hy: no content edit text. true as default");
     AppMethodBeat.o(73189);
     return true;
   }
@@ -437,39 +463,39 @@ public final class WalletFormView
   public final void d(WalletBaseUI paramWalletBaseUI)
   {
     AppMethodBeat.i(73196);
-    if (this.LAy != null)
+    if (this.LXo != null)
     {
-      this.LAy.setFocusable(true);
-      this.LAy.requestFocus();
+      this.LXo.setFocusable(true);
+      this.LXo.requestFocus();
       paramWalletBaseUI.showTenpayKB();
     }
     AppMethodBeat.o(73196);
   }
   
-  public final void dEd()
+  public final void dHu()
   {
     AppMethodBeat.i(73191);
-    if (this.LAy != null) {
-      this.LAy.clearFocus();
+    if (this.LXo != null) {
+      this.LXo.clearFocus();
     }
     AppMethodBeat.o(73191);
   }
   
-  public final void dEe()
+  public final void dHv()
   {
     AppMethodBeat.i(73190);
-    if (this.LAy != null) {
-      this.LAy.ClearInput();
+    if (this.LXo != null) {
+      this.LXo.ClearInput();
     }
     AppMethodBeat.o(73190);
   }
   
-  public final boolean fSf()
+  public final boolean fWB()
   {
     AppMethodBeat.i(73161);
-    if (this.LAy != null)
+    if (this.LXo != null)
     {
-      boolean bool = this.LAy.isFocusable();
+      boolean bool = this.LXo.isFocusable();
       AppMethodBeat.o(73161);
       return bool;
     }
@@ -477,11 +503,11 @@ public final class WalletFormView
     return false;
   }
   
-  public final void fSh()
+  public final void fWD()
   {
     AppMethodBeat.i(73183);
-    if (this.LAy != null) {
-      this.LAy.addTextChangedListener(new TextWatcher()
+    if (this.LXo != null) {
+      this.LXo.addTextChangedListener(new TextWatcher()
       {
         public final void afterTextChanged(Editable paramAnonymousEditable)
         {
@@ -500,9 +526,9 @@ public final class WalletFormView
             }
           }
           int i = 0;
-          if ((this.LAO >= 0) && (k >= 0) && (m - k > this.LAO))
+          if ((this.LXE >= 0) && (k >= 0) && (m - k > this.LXE))
           {
-            paramAnonymousEditable = WalletFormView.aZ(str, this.LAO + k + 1, m);
+            paramAnonymousEditable = WalletFormView.bc(str, this.LXE + k + 1, m);
             i = 1;
           }
           for (;;)
@@ -510,25 +536,25 @@ public final class WalletFormView
             int j = i;
             Object localObject = paramAnonymousEditable;
             int n;
-            if (this.LAP >= 0)
+            if (this.LXF >= 0)
             {
               n = WalletFormView.j(WalletFormView.this).getSelectionStart();
-              if (k <= this.LAP) {
+              if (k <= this.LXF) {
                 break label236;
               }
               j = i;
               localObject = paramAnonymousEditable;
-              if (!bt.jx(n, -1))
+              if (!bu.jB(n, -1))
               {
                 j = i;
                 localObject = paramAnonymousEditable;
-                if (k - this.LAP > 0)
+                if (k - this.LXF > 0)
                 {
                   j = i;
                   localObject = paramAnonymousEditable;
-                  if (n - (k - this.LAP) >= 0)
+                  if (n - (k - this.LXF) >= 0)
                   {
-                    localObject = WalletFormView.aZ(paramAnonymousEditable, n - (k - 7), n);
+                    localObject = WalletFormView.bc(paramAnonymousEditable, n - (k - 7), n);
                     j = 1;
                   }
                 }
@@ -544,11 +570,11 @@ public final class WalletFormView
               label236:
               j = i;
               localObject = paramAnonymousEditable;
-              if (bt.jx(k, -1))
+              if (bu.jB(k, -1))
               {
                 j = i;
                 localObject = paramAnonymousEditable;
-                if (m > this.LAP)
+                if (m > this.LXF)
                 {
                   j = i;
                   localObject = paramAnonymousEditable;
@@ -556,9 +582,9 @@ public final class WalletFormView
                   {
                     j = i;
                     localObject = paramAnonymousEditable;
-                    if (n - (m - this.LAP) >= 0)
+                    if (n - (m - this.LXF) >= 0)
                     {
-                      localObject = WalletFormView.aZ(paramAnonymousEditable, n - (m - this.LAP), n);
+                      localObject = WalletFormView.bc(paramAnonymousEditable, n - (m - this.LXF), n);
                       j = 1;
                     }
                   }
@@ -577,44 +603,44 @@ public final class WalletFormView
     AppMethodBeat.o(73183);
   }
   
-  public final void fSi()
+  public final void fWE()
   {
     AppMethodBeat.i(73195);
-    if (this.LAy != null)
+    if (this.LXo != null)
     {
-      this.LAy.setFocusable(true);
-      this.LAy.requestFocus();
-      ((InputMethodManager)getContext().getSystemService("input_method")).showSoftInput(this.LAy, 0);
+      this.LXo.setFocusable(true);
+      this.LXo.requestFocus();
+      ((InputMethodManager)getContext().getSystemService("input_method")).showSoftInput(this.LXo, 0);
     }
     AppMethodBeat.o(73195);
   }
   
   public final EditText getContentEt()
   {
-    return this.LAy;
+    return this.LXo;
   }
   
   public final int getEncrptType()
   {
-    return this.LAE;
+    return this.LXu;
   }
   
   public final com.tencent.mm.wallet_core.ui.formview.a.a getEventDelegate()
   {
-    return this.LAB;
+    return this.LXr;
   }
   
   public final WalletIconImageView getInfoIv()
   {
-    return this.xpB;
+    return this.xFy;
   }
   
   public final int getInputLength()
   {
     AppMethodBeat.i(73194);
-    if (this.LAy != null)
+    if (this.LXo != null)
     {
-      int i = this.LAy.getInputLength();
+      int i = this.LXo.getInputLength();
       AppMethodBeat.o(73194);
       return i;
     }
@@ -624,66 +650,66 @@ public final class WalletFormView
   
   public final a getInputValidChangeListener()
   {
-    return this.LAA;
+    return this.LXq;
   }
   
   public final KeyListener getKeyListener()
   {
     AppMethodBeat.i(73177);
-    if (this.LAy != null)
+    if (this.LXo != null)
     {
-      KeyListener localKeyListener = this.LAy.getKeyListener();
+      KeyListener localKeyListener = this.LXo.getKeyListener();
       AppMethodBeat.o(73177);
       return localKeyListener;
     }
-    ad.w("MicroMsg.WalletFormView", "hy: no content et");
+    ae.w("MicroMsg.WalletFormView", "hy: no content et");
     AppMethodBeat.o(73177);
     return null;
   }
   
   public final com.tencent.mm.wallet_core.ui.formview.a.b getLogicDelegate()
   {
-    return this.LAC;
+    return this.LXs;
   }
   
   public final String getMD5Value()
   {
     AppMethodBeat.i(73152);
-    String str2 = bt.nullAsNil(this.LAy.getText().toString());
+    String str2 = bu.nullAsNil(this.LXo.getText().toString());
     String str1 = str2;
-    if (this.LAC != null)
+    if (this.LXs != null)
     {
       str1 = str2;
-      if (this.LAC.dEb()) {
-        str1 = this.LAC.c(this, str2);
+      if (this.LXs.dHs()) {
+        str1 = this.LXs.c(this, str2);
       }
     }
-    str1 = ai.ee(str1);
+    str1 = aj.ej(str1);
     AppMethodBeat.o(73152);
     return str1;
   }
   
   public final int getMaxInputLength()
   {
-    return this.xpU;
+    return this.xFR;
   }
   
   public final int getMinInputLength()
   {
-    return this.xpV;
+    return this.xFS;
   }
   
   public final TextView getPrefilledTv()
   {
-    return this.xpz;
+    return this.xFw;
   }
   
   public final int getSelectionStart()
   {
     AppMethodBeat.i(73157);
-    if (this.LAy != null)
+    if (this.LXo != null)
     {
-      int i = this.LAy.getSelectionStart();
+      int i = this.LXo.getSelectionStart();
       AppMethodBeat.o(73157);
       return i;
     }
@@ -694,64 +720,64 @@ public final class WalletFormView
   public final String getText()
   {
     AppMethodBeat.i(73176);
-    if (this.LAy != null)
+    if (this.LXo != null)
     {
-      String str = c.a.a(this.LAE, this.LAy);
-      if ((this.LAC != null) && (this.LAC.dEb()))
+      String str = c.a.a(this.LXu, this.LXo);
+      if ((this.LXs != null) && (this.LXs.dHs()))
       {
-        str = this.LAC.c(this, str);
+        str = this.LXs.c(this, str);
         AppMethodBeat.o(73176);
         return str;
       }
       AppMethodBeat.o(73176);
       return str;
     }
-    ad.e("MicroMsg.WalletFormView", "hy: no content et. return nil");
+    ae.e("MicroMsg.WalletFormView", "hy: no content et. return nil");
     AppMethodBeat.o(73176);
     return "";
   }
   
   public final TextView getTipsTv()
   {
-    return this.xpC;
+    return this.xFz;
   }
   
   public final float getTitleMeasuredWidth()
   {
     AppMethodBeat.i(182538);
-    float f = this.lCL.getPaint().measureText(this.lCL.getText(), 0, this.lCL.getText().length());
+    float f = this.lHk.getPaint().measureText(this.lHk.getText(), 0, this.lHk.getText().length());
     AppMethodBeat.o(182538);
     return f;
   }
   
   public final TextView getTitleTv()
   {
-    return this.lCL;
+    return this.lHk;
   }
   
-  public final boolean ho(View paramView)
+  public final boolean ht(View paramView)
   {
     AppMethodBeat.i(73192);
     if (getVisibility() == 0)
     {
-      if (bt.isNullOrNil(getText()))
+      if (bu.isNullOrNil(getText()))
       {
         if (paramView != null) {
           paramView.setVisibility(4);
         }
-        if (this.lCL != null) {
-          this.lCL.setEnabled(true);
+        if (this.lHk != null) {
+          this.lHk.setEnabled(true);
         }
         AppMethodBeat.o(73192);
         return false;
       }
-      if (aVa())
+      if (aVz())
       {
         if (paramView != null) {
           paramView.setVisibility(4);
         }
-        if (this.lCL != null) {
-          this.lCL.setEnabled(true);
+        if (this.lHk != null) {
+          this.lHk.setEnabled(true);
         }
         AppMethodBeat.o(73192);
         return true;
@@ -759,8 +785,8 @@ public final class WalletFormView
       if (paramView != null) {
         paramView.setVisibility(0);
       }
-      if (this.lCL != null) {
-        this.lCL.setEnabled(false);
+      if (this.lHk != null) {
+        this.lHk.setEnabled(false);
       }
       AppMethodBeat.o(73192);
       return false;
@@ -775,12 +801,12 @@ public final class WalletFormView
   public final boolean isPhoneNum()
   {
     AppMethodBeat.i(73181);
-    if (this.LAy == null)
+    if (this.LXo == null)
     {
       AppMethodBeat.o(73181);
       return false;
     }
-    boolean bool = this.LAy.isPhoneNum();
+    boolean bool = this.LXo.isPhoneNum();
     AppMethodBeat.o(73181);
     return bool;
   }
@@ -788,18 +814,18 @@ public final class WalletFormView
   public final int j(CharSequence paramCharSequence, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(73149);
-    if (this.LAM == 0)
+    if (this.LXC == 0)
     {
-      int i = this.lCL.getLeft();
-      this.LAM = (this.LAy.getLeft() - i + this.LAy.getPaddingLeft());
-      ad.d("MicroMsg.WalletFormView", "mMaxUnitLeftOriginWidth:%s", new Object[] { Integer.valueOf(this.LAM) });
+      int i = this.lHk.getLeft();
+      this.LXC = (this.LXo.getLeft() - i + this.LXo.getPaddingLeft());
+      ae.d("MicroMsg.WalletFormView", "mMaxUnitLeftOriginWidth:%s", new Object[] { Integer.valueOf(this.LXC) });
     }
-    if (!bt.lQ(paramCharSequence.toString(), ""))
+    if (!bu.lX(paramCharSequence.toString(), ""))
     {
       if (paramInt2 == 1) {}
-      for (float f1 = this.LAy.getPaint().measureText("1");; f1 = this.LAy.getPaint().measureText("2"))
+      for (float f1 = this.LXo.getPaint().measureText("1");; f1 = this.LXo.getPaint().measureText("2"))
       {
-        float f2 = this.LAM;
+        float f2 = this.LXC;
         paramInt1 = (int)(f1 / 2.0F + f2 - paramInt1 / 2);
         AppMethodBeat.o(73149);
         return paramInt1;
@@ -827,52 +853,52 @@ public final class WalletFormView
   {
     AppMethodBeat.i(73164);
     super.onFinishInflate();
-    fSg();
+    fWC();
     if (getPrefilledTv() != null)
     {
-      getPrefilledTv().setText(this.xpK);
-      getPrefilledTv().setVisibility(this.xpL);
+      getPrefilledTv().setText(this.xFH);
+      getPrefilledTv().setVisibility(this.xFI);
     }
     if (getInfoIv() != null)
     {
-      getInfoIv().setImageResource(this.xpM);
-      getInfoIv().setVisibility(this.xpN);
-      if (this.LAF != -1) {
-        getInfoIv().setmUserSetImageIconColor(this.LAF);
+      getInfoIv().setImageResource(this.xFJ);
+      getInfoIv().setVisibility(this.xFK);
+      if (this.LXv != -1) {
+        getInfoIv().setmUserSetImageIconColor(this.LXv);
       }
     }
     if (getTipsTv() != null)
     {
-      getTipsTv().setText(this.xpO);
-      getTipsTv().setVisibility(this.xpP);
+      getTipsTv().setText(this.xFL);
+      getTipsTv().setVisibility(this.xFM);
     }
     Object localObject = getContext();
     String str;
-    if (this.LAy != null) {
-      if (this.LAK >= 0) {
-        str = e.agp(this.LAK);
+    if (this.LXo != null) {
+      if (this.LXA >= 0) {
+        str = f.agY(this.LXA);
       }
     }
     try
     {
-      this.LAy.setTypeface(Typeface.createFromAsset(((Context)localObject).getAssets(), str));
-      if (this.LAG == -1)
+      this.LXo.setTypeface(Typeface.createFromAsset(((Context)localObject).getAssets(), str));
+      if (this.LXw == -1)
       {
-        this.LAy.setHint(this.xpQ);
-        this.LAy.setGravity(this.xpR);
-        this.LAy.setTextColor(this.xpS);
-        setText(this.xpT);
-        b.a(this.LAy, this.LAH);
-        this.LAy.setBackgroundResource(this.xpW);
-        this.LAy.setEnabled(this.xpX);
-        this.LAy.setFocusable(this.xpZ);
-        this.LAy.setClickable(this.xpY);
-        this.LAy.setHintTextColor(this.xqc);
-        setImeOptions(this.xqb);
-        setInputType(this.xqa);
-        this.LAy.addTextChangedListener(new TextWatcher()
+        this.LXo.setHint(this.xFN);
+        this.LXo.setGravity(this.xFO);
+        this.LXo.setTextColor(this.xFP);
+        setText(this.xFQ);
+        b.a(this.LXo, this.LXx);
+        this.LXo.setBackgroundResource(this.xFT);
+        this.LXo.setEnabled(this.xFU);
+        this.LXo.setFocusable(this.xFW);
+        this.LXo.setClickable(this.xFV);
+        this.LXo.setHintTextColor(this.xFZ);
+        setImeOptions(this.xFY);
+        setInputType(this.xFX);
+        this.LXo.addTextChangedListener(new TextWatcher()
         {
-          private boolean xqe = false;
+          private boolean xGb = false;
           
           public final void afterTextChanged(Editable paramAnonymousEditable)
           {
@@ -883,13 +909,13 @@ public final class WalletFormView
             }
             while ((!WalletFormView.i(WalletFormView.this)) || (!WalletFormView.a(str, WalletFormView.j(WalletFormView.this))))
             {
-              boolean bool = WalletFormView.this.aVa();
+              boolean bool = WalletFormView.this.aVz();
               if (WalletFormView.k(WalletFormView.this) != null)
               {
-                if (bool != this.xqe)
+                if (bool != this.xGb)
                 {
                   WalletFormView.k(WalletFormView.this).onInputValidChange(bool);
-                  this.xqe = WalletFormView.this.aVa();
+                  this.xGb = WalletFormView.this.aVz();
                 }
                 if (((WalletFormView.k(WalletFormView.this) instanceof WalletFormView.b)) && (bool)) {
                   WalletFormView.k(WalletFormView.this);
@@ -913,7 +939,7 @@ public final class WalletFormView
             AppMethodBeat.o(73142);
           }
         });
-        this.LAy.setOnFocusChangeListener(this);
+        this.LXo.setOnFocusChangeListener(this);
       }
     }
     catch (Exception localException1)
@@ -922,19 +948,19 @@ public final class WalletFormView
       {
         for (;;)
         {
-          if (!bt.jx(this.LAL, 0))
+          if (!bu.jB(this.LXB, 0))
           {
             localObject = TextView.class.getDeclaredField("mCursorDrawableRes");
             ((Field)localObject).setAccessible(true);
-            ((Field)localObject).set(this.LAy, Integer.valueOf(this.LAL));
+            ((Field)localObject).set(this.LXo, Integer.valueOf(this.LXB));
           }
-          dEc();
-          if (this.LAy != null)
+          dHt();
+          if (this.LXo != null)
           {
-            if (this.xqa != 2) {
+            if (this.xFX != 2) {
               break;
             }
-            this.LAy.setKeyListener(new NumberKeyListener()
+            this.LXo.setKeyListener(new NumberKeyListener()
             {
               protected final char[] getAcceptedChars()
               {
@@ -946,29 +972,29 @@ public final class WalletFormView
                 return 3;
               }
             });
-            if (this.xpU != -1) {
-              this.LAy.setFilters(new InputFilter[] { new InputFilter.LengthFilter(this.xpU) });
+            if (this.xFR != -1) {
+              this.LXo.setFilters(new InputFilter[] { new InputFilter.LengthFilter(this.xFR) });
             }
           }
           AppMethodBeat.o(73164);
           return;
           localException1 = localException1;
-          ad.e("MicroMsg.WalletFormView", "setTypeface() Exception:%s %s", new Object[] { localException1.getClass().getSimpleName(), localException1.getMessage() });
+          ae.e("MicroMsg.WalletFormView", "setTypeface() Exception:%s %s", new Object[] { localException1.getClass().getSimpleName(), localException1.getMessage() });
         }
-        SpannableString localSpannableString = new SpannableString(this.xpQ + "  ");
-        localSpannableString.setSpan(new com.tencent.mm.cg.a(this.LAG), 0, localSpannableString.length() - 2, 33);
-        localSpannableString.setSpan(new AbsoluteSizeSpan((int)this.LAy.getTextSize(), false), localSpannableString.length() - 2, localSpannableString.length(), 33);
-        this.LAy.setHint(new SpannedString(localSpannableString));
+        SpannableString localSpannableString = new SpannableString(this.xFN + "  ");
+        localSpannableString.setSpan(new com.tencent.mm.cf.a(this.LXw), 0, localSpannableString.length() - 2, 33);
+        localSpannableString.setSpan(new AbsoluteSizeSpan((int)this.LXo.getTextSize(), false), localSpannableString.length() - 2, localSpannableString.length(), 33);
+        this.LXo.setHint(new SpannedString(localSpannableString));
       }
       catch (Exception localException2)
       {
         for (;;)
         {
-          ad.e("MicroMsg.WalletFormView", "set textCursorDrawable fail!!");
+          ae.e("MicroMsg.WalletFormView", "set textCursorDrawable fail!!");
           continue;
-          if (this.xqa == 4)
+          if (this.xFX == 4)
           {
-            this.LAy.setKeyListener(new NumberKeyListener()
+            this.LXo.setKeyListener(new NumberKeyListener()
             {
               protected final char[] getAcceptedChars()
               {
@@ -981,10 +1007,10 @@ public final class WalletFormView
               }
             });
           }
-          else if (this.xqa == 128)
+          else if (this.xFX == 128)
           {
-            this.LAy.setTransformationMethod(PasswordTransformationMethod.getInstance());
-            this.LAy.setKeyListener(new NumberKeyListener()
+            this.LXo.setTransformationMethod(PasswordTransformationMethod.getInstance());
+            this.LXo.setKeyListener(new NumberKeyListener()
             {
               protected final char[] getAcceptedChars()
               {
@@ -996,11 +1022,11 @@ public final class WalletFormView
                 return 18;
               }
             });
-            this.LAy.setRawInputType(18);
+            this.LXo.setRawInputType(18);
           }
-          else if (this.xqa == 3)
+          else if (this.xFX == 3)
           {
-            this.LAy.setKeyListener(new NumberKeyListener()
+            this.LXo.setKeyListener(new NumberKeyListener()
             {
               protected final char[] getAcceptedChars()
               {
@@ -1015,7 +1041,7 @@ public final class WalletFormView
           }
           else
           {
-            this.LAy.setInputType(this.xqa);
+            this.LXo.setInputType(this.xFX);
           }
         }
       }
@@ -1025,24 +1051,24 @@ public final class WalletFormView
   public final void onFocusChange(View paramView, boolean paramBoolean)
   {
     AppMethodBeat.i(73198);
-    if (this.xpE != null) {
-      this.xpE.onFocusChange(this, paramBoolean);
+    if (this.xFB != null) {
+      this.xFB.onFocusChange(this, paramBoolean);
     }
-    if (this.LAA != null) {
-      this.LAA.onInputValidChange(aVa());
+    if (this.LXq != null) {
+      this.LXq.onInputValidChange(aVz());
     }
-    if (!aVa()) {
-      if (this.lCL != null) {
-        this.lCL.setEnabled(false);
+    if (!aVz()) {
+      if (this.lHk != null) {
+        this.lHk.setEnabled(false);
       }
     }
     for (;;)
     {
-      dEc();
+      dHt();
       AppMethodBeat.o(73198);
       return;
-      if (this.lCL != null) {
-        this.lCL.setEnabled(true);
+      if (this.lHk != null) {
+        this.lHk.setEnabled(true);
       }
     }
   }
@@ -1050,19 +1076,19 @@ public final class WalletFormView
   public final boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(73171);
-    if ((this.LAB == null) || (!this.LAB.fSk()))
+    if ((this.LXr == null) || (!this.LXr.fWG()))
     {
-      if ((this.LAy != null) && (b(this.LAy, paramMotionEvent)) && (!this.LAy.isClickable()))
+      if ((this.LXo != null) && (b(this.LXo, paramMotionEvent)) && (!this.LXo.isClickable()))
       {
-        ad.d("MicroMsg.WalletFormView", "hy: click on content but content is not clickable. whole view perform click");
+        ae.d("MicroMsg.WalletFormView", "hy: click on content but content is not clickable. whole view perform click");
         AppMethodBeat.o(73171);
         return true;
       }
-      if ((this.xpB != null) && (this.xpB.isClickable()) && (b(this.xpB, paramMotionEvent)) && (paramMotionEvent.getAction() == 1))
+      if ((this.xFy != null) && (this.xFy.isClickable()) && (b(this.xFy, paramMotionEvent)) && (paramMotionEvent.getAction() == 1))
       {
-        ad.d("MicroMsg.WalletFormView", "hy: click on info iv");
-        dEc();
-        this.xpB.performClick();
+        ae.d("MicroMsg.WalletFormView", "hy: click on info iv");
+        dHt();
+        this.xFy.performClick();
         AppMethodBeat.o(73171);
         return true;
       }
@@ -1077,7 +1103,7 @@ public final class WalletFormView
   protected final void onMeasure(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(73170);
-    if ((this.LAB == null) || (!this.LAB.fSj())) {
+    if ((this.LXr == null) || (!this.LXr.fWF())) {
       super.onMeasure(paramInt1, paramInt2);
     }
     AppMethodBeat.o(73170);
@@ -1086,8 +1112,8 @@ public final class WalletFormView
   public final void set3DesToView(String paramString)
   {
     AppMethodBeat.i(73199);
-    if (this.LAy != null) {
-      this.LAy.set3DesEncrptData(paramString);
+    if (this.LXo != null) {
+      this.LXo.set3DesEncrptData(paramString);
     }
     AppMethodBeat.o(73199);
   }
@@ -1095,9 +1121,9 @@ public final class WalletFormView
   public final void set3DesValStr(String paramString)
   {
     AppMethodBeat.i(73151);
-    if ((this.LAy != null) && ((this.LAC == null) || (!this.LAC.b(this, paramString))))
+    if ((this.LXo != null) && ((this.LXs == null) || (!this.LXs.b(this, paramString))))
     {
-      this.LAy.set3DesEncrptData(paramString);
+      this.LXo.set3DesEncrptData(paramString);
       setSelection(getInputLength());
     }
     AppMethodBeat.o(73151);
@@ -1106,8 +1132,8 @@ public final class WalletFormView
   public final void setBankcardTail(String paramString)
   {
     AppMethodBeat.i(73178);
-    if (this.LAy != null) {
-      this.LAy.setBankcardTailNum(paramString);
+    if (this.LXo != null) {
+      this.LXo.setBankcardTailNum(paramString);
     }
     AppMethodBeat.o(73178);
   }
@@ -1115,8 +1141,8 @@ public final class WalletFormView
   public final void setContentClickable(boolean paramBoolean)
   {
     AppMethodBeat.i(73166);
-    if (this.LAy != null) {
-      this.LAy.setClickable(paramBoolean);
+    if (this.LXo != null) {
+      this.LXo.setClickable(paramBoolean);
     }
     AppMethodBeat.o(73166);
   }
@@ -1124,8 +1150,8 @@ public final class WalletFormView
   public final void setContentEnabled(boolean paramBoolean)
   {
     AppMethodBeat.i(73168);
-    if (this.LAy != null) {
-      this.LAy.setEnabled(paramBoolean);
+    if (this.LXo != null) {
+      this.LXo.setEnabled(paramBoolean);
     }
     AppMethodBeat.o(73168);
   }
@@ -1133,8 +1159,8 @@ public final class WalletFormView
   public final void setContentFocusable(boolean paramBoolean)
   {
     AppMethodBeat.i(73167);
-    if (this.LAy != null) {
-      this.LAy.setFocusable(paramBoolean);
+    if (this.LXo != null) {
+      this.LXo.setFocusable(paramBoolean);
     }
     AppMethodBeat.o(73167);
   }
@@ -1142,8 +1168,8 @@ public final class WalletFormView
   public final void setContentPadding$3b4dfe4b(int paramInt)
   {
     AppMethodBeat.i(163889);
-    if (this.LAy != null) {
-      this.LAy.setPadding(paramInt, 0, 0, 0);
+    if (this.LXo != null) {
+      this.LXo.setPadding(paramInt, 0, 0, 0);
     }
     AppMethodBeat.o(163889);
   }
@@ -1151,8 +1177,8 @@ public final class WalletFormView
   public final void setContentTextColor(int paramInt)
   {
     AppMethodBeat.i(73159);
-    if (this.LAy != null) {
-      this.LAy.setTextColor(paramInt);
+    if (this.LXo != null) {
+      this.LXo.setTextColor(paramInt);
     }
     AppMethodBeat.o(73159);
   }
@@ -1161,21 +1187,21 @@ public final class WalletFormView
   public final void setContentTextColorRes(int paramInt)
   {
     AppMethodBeat.i(73158);
-    this.xpS = paramInt;
-    if (this.LAy != null) {
-      this.LAy.setTextColor(getResources().getColor(this.xpS));
+    this.xFP = paramInt;
+    if (this.LXo != null) {
+      this.LXo.setTextColor(getResources().getColor(this.xFP));
     }
     AppMethodBeat.o(73158);
   }
   
   public final void setEncryptType(int paramInt)
   {
-    this.LAE = paramInt;
+    this.LXu = paramInt;
   }
   
   public final void setEventDelegate(com.tencent.mm.wallet_core.ui.formview.a.a parama)
   {
-    this.LAB = parama;
+    this.LXr = parama;
   }
   
   public final void setFilterChar(char[] paramArrayOfChar) {}
@@ -1183,8 +1209,8 @@ public final class WalletFormView
   public final void setFilters(InputFilter[] paramArrayOfInputFilter)
   {
     AppMethodBeat.i(73193);
-    if (this.LAy != null) {
-      this.LAy.setFilters(paramArrayOfInputFilter);
+    if (this.LXo != null) {
+      this.LXo.setFilters(paramArrayOfInputFilter);
     }
     AppMethodBeat.o(73193);
   }
@@ -1192,17 +1218,17 @@ public final class WalletFormView
   public final void setHint(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(73165);
-    if (this.LAy != null)
+    if (this.LXo != null)
     {
-      if (this.LAG == -1)
+      if (this.LXw == -1)
       {
-        this.LAy.setHint(paramCharSequence);
+        this.LXo.setHint(paramCharSequence);
         AppMethodBeat.o(73165);
         return;
       }
       paramCharSequence = new SpannableString(paramCharSequence);
-      paramCharSequence.setSpan(new AbsoluteSizeSpan(this.LAG, false), 0, paramCharSequence.length(), 33);
-      this.LAy.setHint(new SpannedString(paramCharSequence));
+      paramCharSequence.setSpan(new AbsoluteSizeSpan(this.LXw, false), 0, paramCharSequence.length(), 33);
+      this.LXo.setHint(new SpannedString(paramCharSequence));
     }
     AppMethodBeat.o(73165);
   }
@@ -1210,8 +1236,8 @@ public final class WalletFormView
   public final void setImeOptions(int paramInt)
   {
     AppMethodBeat.i(73153);
-    if (this.LAy != null) {
-      this.LAy.setImeOptions(paramInt);
+    if (this.LXo != null) {
+      this.LXo.setImeOptions(paramInt);
     }
     AppMethodBeat.o(73153);
   }
@@ -1219,8 +1245,8 @@ public final class WalletFormView
   public final void setInputEnable(boolean paramBoolean)
   {
     AppMethodBeat.i(73156);
-    if (this.LAy != null) {
-      this.LAy.setEnabled(paramBoolean);
+    if (this.LXo != null) {
+      this.LXo.setEnabled(paramBoolean);
     }
     AppMethodBeat.o(73156);
   }
@@ -1228,8 +1254,8 @@ public final class WalletFormView
   public final void setInputType(int paramInt)
   {
     AppMethodBeat.i(73154);
-    if (this.LAy != null) {
-      this.LAy.setInputType(paramInt);
+    if (this.LXo != null) {
+      this.LXo.setInputType(paramInt);
     }
     AppMethodBeat.o(73154);
   }
@@ -1237,8 +1263,8 @@ public final class WalletFormView
   public final void setIsSecretAnswer(boolean paramBoolean)
   {
     AppMethodBeat.i(73197);
-    if (this.LAy != null) {
-      this.LAy.setIsSecurityAnswerFormat(paramBoolean);
+    if (this.LXo != null) {
+      this.LXo.setIsSecurityAnswerFormat(paramBoolean);
     }
     AppMethodBeat.o(73197);
   }
@@ -1246,25 +1272,25 @@ public final class WalletFormView
   public final void setKeyListener(KeyListener paramKeyListener)
   {
     AppMethodBeat.i(73188);
-    if (this.LAy != null) {
-      this.LAy.setKeyListener(paramKeyListener);
+    if (this.LXo != null) {
+      this.LXo.setKeyListener(paramKeyListener);
     }
     AppMethodBeat.o(73188);
   }
   
   public final void setLogicDelegate(com.tencent.mm.wallet_core.ui.formview.a.b paramb)
   {
-    this.LAC = paramb;
+    this.LXs = paramb;
   }
   
   public final void setMaxInputLength(int paramInt)
   {
-    this.xpU = paramInt;
+    this.xFR = paramInt;
   }
   
   public final void setMinInputLength(int paramInt)
   {
-    this.xpV = paramInt;
+    this.xFS = paramInt;
   }
   
   public final void setOnClickListener(View.OnClickListener paramOnClickListener)
@@ -1277,35 +1303,35 @@ public final class WalletFormView
   public final void setOnEditorActionListener(TextView.OnEditorActionListener paramOnEditorActionListener)
   {
     AppMethodBeat.i(73169);
-    this.LAy.setOnEditorActionListener(paramOnEditorActionListener);
+    this.LXo.setOnEditorActionListener(paramOnEditorActionListener);
     AppMethodBeat.o(73169);
   }
   
   public final void setOnFocusChangeListener(View.OnFocusChangeListener paramOnFocusChangeListener)
   {
-    this.xpE = paramOnFocusChangeListener;
+    this.xFB = paramOnFocusChangeListener;
   }
   
   public final void setOnInfoIvClickListener(View.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(73180);
-    this.xpF = paramOnClickListener;
+    this.xFC = paramOnClickListener;
     if (getInfoIv() != null) {
-      getInfoIv().setOnClickListener(this.xpF);
+      getInfoIv().setOnClickListener(this.xFC);
     }
     AppMethodBeat.o(73180);
   }
   
   public final void setOnInputValidChangeListener(a parama)
   {
-    this.LAA = parama;
+    this.LXq = parama;
   }
   
   public final void setSelection(int paramInt)
   {
     AppMethodBeat.i(73175);
-    if (this.LAy != null) {
-      this.LAy.setSelection(paramInt);
+    if (this.LXo != null) {
+      this.LXo.setSelection(paramInt);
     }
     AppMethodBeat.o(73175);
   }
@@ -1313,10 +1339,10 @@ public final class WalletFormView
   public final void setText(String paramString)
   {
     AppMethodBeat.i(73155);
-    if ((this.LAy != null) && ((this.LAC == null) || (!this.LAC.a(this, paramString))))
+    if ((this.LXo != null) && ((this.LXs == null) || (!this.LXs.a(this, paramString))))
     {
-      this.LAy.setText(paramString);
-      this.LAy.setSelection(getInputLength());
+      this.LXo.setText(paramString);
+      this.LXo.setSelection(getInputLength());
     }
     AppMethodBeat.o(73155);
   }
@@ -1324,22 +1350,22 @@ public final class WalletFormView
   public final void setTitleText(String paramString)
   {
     AppMethodBeat.i(73148);
-    this.uZe = paramString;
-    fSg();
+    this.vli = paramString;
+    fWC();
     AppMethodBeat.o(73148);
   }
   
   public final void setTitleWidth(int paramInt)
   {
     AppMethodBeat.i(182539);
-    this.JsT = paramInt;
-    if (this.JsT > 0)
+    this.JNI = paramInt;
+    if (this.JNI > 0)
     {
-      ViewGroup.LayoutParams localLayoutParams = this.lCL.getLayoutParams();
+      ViewGroup.LayoutParams localLayoutParams = this.lHk.getLayoutParams();
       if (localLayoutParams != null)
       {
-        localLayoutParams.width = this.JsT;
-        this.lCL.setLayoutParams(localLayoutParams);
+        localLayoutParams.width = this.JNI;
+        this.lHk.setLayoutParams(localLayoutParams);
       }
     }
     AppMethodBeat.o(182539);
@@ -1347,12 +1373,12 @@ public final class WalletFormView
   
   public final void setmContentAbnormalMoneyCheck(boolean paramBoolean)
   {
-    this.LAI = paramBoolean;
+    this.LXy = paramBoolean;
   }
   
   public final void setmWalletFormViewListener(c paramc)
   {
-    this.LAx = paramc;
+    this.LXn = paramc;
   }
   
   public static abstract interface a
@@ -1371,7 +1397,7 @@ public final class WalletFormView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.wallet_core.ui.formview.WalletFormView
  * JD-Core Version:    0.7.0.1
  */

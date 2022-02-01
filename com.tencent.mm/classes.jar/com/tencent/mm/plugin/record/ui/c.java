@@ -3,12 +3,12 @@ package com.tencent.mm.plugin.record.ui;
 import android.content.Context;
 import android.graphics.Bitmap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.gr;
-import com.tencent.mm.g.a.gr.a;
-import com.tencent.mm.g.a.gr.b;
-import com.tencent.mm.protocal.protobuf.ajn;
+import com.tencent.mm.g.a.gs;
+import com.tencent.mm.g.a.gs.a;
+import com.tencent.mm.g.a.gs.b;
+import com.tencent.mm.protocal.protobuf.ajx;
 import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class c
   implements h.a
@@ -16,48 +16,48 @@ public final class c
   public c(Context paramContext)
   {
     AppMethodBeat.i(27831);
-    gr localgr = new gr();
-    localgr.dsA.opType = 3;
-    localgr.dsA.context = paramContext;
-    a.IbL.l(localgr);
+    gs localgs = new gs();
+    localgs.dtG.opType = 3;
+    localgs.dtG.context = paramContext;
+    a.IvT.l(localgs);
     AppMethodBeat.o(27831);
   }
   
   public final Bitmap a(h.a.b paramb)
   {
     AppMethodBeat.i(27834);
-    gr localgr = new gr();
-    localgr.dsA.opType = 2;
-    localgr.dsA.dsH = false;
-    if (paramb.dsF)
+    gs localgs = new gs();
+    localgs.dtG.opType = 2;
+    localgs.dtG.dtN = false;
+    if (paramb.dtL)
     {
-      localgr.dsA.dsC = paramb.dsC;
-      localgr.dsA.dsF = paramb.dsF;
+      localgs.dtG.dtI = paramb.dtI;
+      localgs.dtG.dtL = paramb.dtL;
     }
     for (;;)
     {
-      a.IbL.l(localgr);
-      ad.d("MicroMsg.FavImageServiceProxy", "getSuitableBigImg favLocalId %s, dataId %s, retBmp %s, fromCache", new Object[] { Long.valueOf(paramb.xrW), paramb.dsC.dsU, localgr.dsB.dsI, Boolean.valueOf(localgr.dsA.dsF) });
-      paramb = localgr.dsB.dsI;
+      a.IvT.l(localgs);
+      ae.d("MicroMsg.FavImageServiceProxy", "getSuitableBigImg favLocalId %s, dataId %s, retBmp %s, fromCache", new Object[] { Long.valueOf(paramb.xHT), paramb.dtI.dua, localgs.dtH.dtO, Boolean.valueOf(localgs.dtG.dtL) });
+      paramb = localgs.dtH.dtO;
       AppMethodBeat.o(27834);
       return paramb;
-      localgr.dsA.dsC = paramb.dsC;
-      localgr.dsA.dnC = paramb.xrW;
-      localgr.dsA.maxWidth = paramb.maxWidth;
-      localgr.dsA.dsG = paramb.dsG;
+      localgs.dtG.dtI = paramb.dtI;
+      localgs.dtG.doH = paramb.xHT;
+      localgs.dtG.maxWidth = paramb.maxWidth;
+      localgs.dtG.dtM = paramb.dtM;
     }
   }
   
   public final Bitmap a(h.a.c paramc)
   {
     AppMethodBeat.i(27833);
-    gr localgr = new gr();
-    localgr.dsA.opType = 0;
-    localgr.dsA.dsC = paramc.dsC;
-    localgr.dsA.dnC = paramc.xrW;
-    a.IbL.l(localgr);
-    ad.d("MicroMsg.FavImageServiceProxy", "getThumb favLocalId %s, retBmp %s", new Object[] { Long.valueOf(paramc.xrW), localgr.dsB.dsI });
-    paramc = localgr.dsB.dsI;
+    gs localgs = new gs();
+    localgs.dtG.opType = 0;
+    localgs.dtG.dtI = paramc.dtI;
+    localgs.dtG.doH = paramc.xHT;
+    a.IvT.l(localgs);
+    ae.d("MicroMsg.FavImageServiceProxy", "getThumb favLocalId %s, retBmp %s", new Object[] { Long.valueOf(paramc.xHT), localgs.dtH.dtO });
+    paramc = localgs.dtH.dtO;
     AppMethodBeat.o(27833);
     return paramc;
   }
@@ -65,25 +65,25 @@ public final class c
   public final void a(h.a.a parama)
   {
     AppMethodBeat.i(27832);
-    ad.d("MicroMsg.FavImageServiceProxy", "attachThumb favLocalId %s", new Object[] { Long.valueOf(parama.xrW) });
-    gr localgr = new gr();
-    localgr.dsA.opType = 1;
-    localgr.dsA.dsD = parama.dsD;
-    localgr.dsA.dsC = parama.dsC;
-    localgr.dsA.dnC = parama.xrW;
-    localgr.dsA.dsE = parama.dsE;
-    localgr.dsA.width = parama.width;
-    localgr.dsA.height = parama.height;
-    a.IbL.l(localgr);
+    ae.d("MicroMsg.FavImageServiceProxy", "attachThumb favLocalId %s", new Object[] { Long.valueOf(parama.xHT) });
+    gs localgs = new gs();
+    localgs.dtG.opType = 1;
+    localgs.dtG.dtJ = parama.dtJ;
+    localgs.dtG.dtI = parama.dtI;
+    localgs.dtG.doH = parama.xHT;
+    localgs.dtG.dtK = parama.dtK;
+    localgs.dtG.width = parama.width;
+    localgs.dtG.height = parama.height;
+    a.IvT.l(localgs);
     AppMethodBeat.o(27832);
   }
   
-  public final void dEn()
+  public final void dHE()
   {
     AppMethodBeat.i(27835);
-    gr localgr = new gr();
-    localgr.dsA.opType = 4;
-    a.IbL.l(localgr);
+    gs localgs = new gs();
+    localgs.dtG.opType = 4;
+    a.IvT.l(localgs);
     AppMethodBeat.o(27835);
   }
 }

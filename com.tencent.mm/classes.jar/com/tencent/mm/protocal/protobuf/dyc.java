@@ -1,75 +1,53 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
 
 public final class dyc
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public LinkedList<dyb> HKO;
-  
-  public dyc()
-  {
-    AppMethodBeat.i(115894);
-    this.HKO = new LinkedList();
-    AppMethodBeat.o(115894);
-  }
+  public int FOT;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(115895);
+    AppMethodBeat.i(32500);
     if (paramInt == 0)
     {
-      ((f.a.a.c.a)paramVarArgs[0]).e(1, 8, this.HKO);
-      AppMethodBeat.o(115895);
+      ((f.a.a.c.a)paramVarArgs[0]).aS(1, this.FOT);
+      AppMethodBeat.o(32500);
       return 0;
     }
     if (paramInt == 1)
     {
-      paramInt = f.a.a.a.c(1, 8, this.HKO);
-      AppMethodBeat.o(115895);
+      paramInt = f.a.a.b.b.a.bz(1, this.FOT);
+      AppMethodBeat.o(32500);
       return paramInt + 0;
     }
     if (paramInt == 2)
     {
-      paramVarArgs = (byte[])paramVarArgs[0];
-      this.HKO.clear();
-      paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+      paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gxE();
+          paramVarArgs.gCg();
         }
       }
-      AppMethodBeat.o(115895);
+      AppMethodBeat.o(32500);
       return 0;
     }
     if (paramInt == 3)
     {
-      Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
+      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
       dyc localdyc = (dyc)paramVarArgs[1];
-      paramInt = ((Integer)paramVarArgs[2]).intValue();
-      switch (paramInt)
+      switch (((Integer)paramVarArgs[2]).intValue())
       {
       default: 
-        AppMethodBeat.o(115895);
+        AppMethodBeat.o(32500);
         return -1;
       }
-      paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
-      int i = paramVarArgs.size();
-      paramInt = 0;
-      while (paramInt < i)
-      {
-        Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-        localObject1 = new dyb();
-        localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-        for (boolean bool = true; bool; bool = ((dyb)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, com.tencent.mm.bx.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-        localdyc.HKO.add(localObject1);
-        paramInt += 1;
-      }
-      AppMethodBeat.o(115895);
+      localdyc.FOT = locala.OmT.zc();
+      AppMethodBeat.o(32500);
       return 0;
     }
-    AppMethodBeat.o(115895);
+    AppMethodBeat.o(32500);
     return -1;
   }
 }

@@ -1,27 +1,27 @@
 package com.tencent.mm.chatroom.plugin;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.t;
+import com.tencent.mm.model.u;
 
 public final class b
-  extends t
+  extends u
 {
-  private static b fLy;
+  private static b fNC;
   
   public b()
   {
     super(com.tencent.mm.chatroom.b.class);
   }
   
-  public static b Yj()
+  public static b Yt()
   {
     try
     {
       AppMethodBeat.i(12505);
-      if (fLy == null) {
-        fLy = new b();
+      if (fNC == null) {
+        fNC = new b();
       }
-      b localb = fLy;
+      b localb = fNC;
       AppMethodBeat.o(12505);
       return localb;
     }

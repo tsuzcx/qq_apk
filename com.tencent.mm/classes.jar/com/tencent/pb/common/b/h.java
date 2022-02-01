@@ -8,17 +8,17 @@ import com.tencent.pb.common.c.c;
 
 public final class h
 {
-  public static boolean LFK = true;
-  private static long LFL = -1L;
-  public static h.a LFM = h.a.LFO;
-  private static h.a LFN = h.a.LFO;
+  public static boolean McO = true;
+  private static long McP = -1L;
+  public static h.a McQ = h.a.McS;
+  private static h.a McR = h.a.McS;
   
-  private static NetworkInfo fSV()
+  private static NetworkInfo fXv()
   {
     NetworkInfo localNetworkInfo;
     try
     {
-      ConnectivityManager localConnectivityManager = (ConnectivityManager)c.ClL.getSystemService("connectivity");
+      ConnectivityManager localConnectivityManager = (ConnectivityManager)c.CDp.getSystemService("connectivity");
       if (localConnectivityManager == null)
       {
         b.w("getSystemService(Context.CONNECTIVITY_SERVICE) null", new Object[0]);
@@ -51,7 +51,7 @@ public final class h
   {
     try
     {
-      NetworkInfo localNetworkInfo = fSV();
+      NetworkInfo localNetworkInfo = fXv();
       if (localNetworkInfo == null) {
         return false;
       }

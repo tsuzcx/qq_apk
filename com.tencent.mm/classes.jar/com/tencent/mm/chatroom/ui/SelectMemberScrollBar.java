@@ -12,11 +12,11 @@ public class SelectMemberScrollBar
     super(paramContext, paramAttributeSet);
   }
   
-  public final void Zr()
+  public final void ZA()
   {
-    this.uQL = new String[] { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "#" };
-    this.uQJ = 1.45F;
-    this.uQK = 79;
+    this.vcx = new String[] { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "#" };
+    this.vcv = 1.45F;
+    this.vcw = 79;
   }
 }
 

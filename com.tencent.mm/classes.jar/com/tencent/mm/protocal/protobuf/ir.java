@@ -3,17 +3,17 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class ir
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public String CPf;
-  public String FBD;
-  public String FBE;
-  public String FBF;
-  public boolean FBG;
-  public String FBH;
-  public String dkR;
-  public String oIx;
-  public String uJF;
+  public String DgJ;
+  public String FTY;
+  public String FTZ;
+  public String FUa;
+  public boolean FUb;
+  public String FUc;
+  public String dlT;
+  public String oOZ;
+  public String uVs;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -21,79 +21,79 @@ public final class ir
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.uJF != null) {
-        paramVarArgs.d(1, this.uJF);
+      if (this.uVs != null) {
+        paramVarArgs.d(1, this.uVs);
       }
-      if (this.dkR != null) {
-        paramVarArgs.d(2, this.dkR);
+      if (this.dlT != null) {
+        paramVarArgs.d(2, this.dlT);
       }
-      if (this.oIx != null) {
-        paramVarArgs.d(3, this.oIx);
+      if (this.oOZ != null) {
+        paramVarArgs.d(3, this.oOZ);
       }
-      if (this.CPf != null) {
-        paramVarArgs.d(4, this.CPf);
+      if (this.DgJ != null) {
+        paramVarArgs.d(4, this.DgJ);
       }
-      if (this.FBD != null) {
-        paramVarArgs.d(5, this.FBD);
+      if (this.FTY != null) {
+        paramVarArgs.d(5, this.FTY);
       }
-      if (this.FBE != null) {
-        paramVarArgs.d(6, this.FBE);
+      if (this.FTZ != null) {
+        paramVarArgs.d(6, this.FTZ);
       }
-      if (this.FBF != null) {
-        paramVarArgs.d(8, this.FBF);
+      if (this.FUa != null) {
+        paramVarArgs.d(8, this.FUa);
       }
-      paramVarArgs.bt(9, this.FBG);
-      if (this.FBH != null) {
-        paramVarArgs.d(10, this.FBH);
+      paramVarArgs.bC(9, this.FUb);
+      if (this.FUc != null) {
+        paramVarArgs.d(10, this.FUc);
       }
       AppMethodBeat.o(72419);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.uJF == null) {
+      if (this.uVs == null) {
         break label686;
       }
     }
     label686:
-    for (int i = f.a.a.b.b.a.e(1, this.uJF) + 0;; i = 0)
+    for (int i = f.a.a.b.b.a.e(1, this.uVs) + 0;; i = 0)
     {
       paramInt = i;
-      if (this.dkR != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.dkR);
+      if (this.dlT != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.dlT);
       }
       i = paramInt;
-      if (this.oIx != null) {
-        i = paramInt + f.a.a.b.b.a.e(3, this.oIx);
+      if (this.oOZ != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.oOZ);
       }
       paramInt = i;
-      if (this.CPf != null) {
-        paramInt = i + f.a.a.b.b.a.e(4, this.CPf);
+      if (this.DgJ != null) {
+        paramInt = i + f.a.a.b.b.a.e(4, this.DgJ);
       }
       i = paramInt;
-      if (this.FBD != null) {
-        i = paramInt + f.a.a.b.b.a.e(5, this.FBD);
+      if (this.FTY != null) {
+        i = paramInt + f.a.a.b.b.a.e(5, this.FTY);
       }
       paramInt = i;
-      if (this.FBE != null) {
-        paramInt = i + f.a.a.b.b.a.e(6, this.FBE);
+      if (this.FTZ != null) {
+        paramInt = i + f.a.a.b.b.a.e(6, this.FTZ);
       }
       i = paramInt;
-      if (this.FBF != null) {
-        i = paramInt + f.a.a.b.b.a.e(8, this.FBF);
+      if (this.FUa != null) {
+        i = paramInt + f.a.a.b.b.a.e(8, this.FUa);
       }
-      i += f.a.a.b.b.a.alV(9);
+      i += f.a.a.b.b.a.amF(9);
       paramInt = i;
-      if (this.FBH != null) {
-        paramInt = i + f.a.a.b.b.a.e(10, this.FBH);
+      if (this.FUc != null) {
+        paramInt = i + f.a.a.b.b.a.e(10, this.FUc);
       }
       AppMethodBeat.o(72419);
       return paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
         AppMethodBeat.o(72419);
@@ -110,39 +110,39 @@ public final class ir
           AppMethodBeat.o(72419);
           return -1;
         case 1: 
-          localir.uJF = locala.NPN.readString();
+          localir.uVs = locala.OmT.readString();
           AppMethodBeat.o(72419);
           return 0;
         case 2: 
-          localir.dkR = locala.NPN.readString();
+          localir.dlT = locala.OmT.readString();
           AppMethodBeat.o(72419);
           return 0;
         case 3: 
-          localir.oIx = locala.NPN.readString();
+          localir.oOZ = locala.OmT.readString();
           AppMethodBeat.o(72419);
           return 0;
         case 4: 
-          localir.CPf = locala.NPN.readString();
+          localir.DgJ = locala.OmT.readString();
           AppMethodBeat.o(72419);
           return 0;
         case 5: 
-          localir.FBD = locala.NPN.readString();
+          localir.FTY = locala.OmT.readString();
           AppMethodBeat.o(72419);
           return 0;
         case 6: 
-          localir.FBE = locala.NPN.readString();
+          localir.FTZ = locala.OmT.readString();
           AppMethodBeat.o(72419);
           return 0;
         case 8: 
-          localir.FBF = locala.NPN.readString();
+          localir.FUa = locala.OmT.readString();
           AppMethodBeat.o(72419);
           return 0;
         case 9: 
-          localir.FBG = locala.NPN.grw();
+          localir.FUb = locala.OmT.gvY();
           AppMethodBeat.o(72419);
           return 0;
         }
-        localir.FBH = locala.NPN.readString();
+        localir.FUc = locala.OmT.readString();
         AppMethodBeat.o(72419);
         return 0;
       }
@@ -153,7 +153,7 @@ public final class ir
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.ir
  * JD-Core Version:    0.7.0.1
  */

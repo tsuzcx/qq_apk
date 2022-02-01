@@ -4,34 +4,36 @@ import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bs.d;
-import com.tencent.mm.g.a.cq;
-import com.tencent.mm.g.a.cq.a;
-import com.tencent.mm.g.a.cq.b;
-import com.tencent.mm.g.a.cv;
-import com.tencent.mm.g.a.cv.a;
-import com.tencent.mm.g.a.cv.b;
-import com.tencent.mm.g.a.gw;
-import com.tencent.mm.g.a.pt;
-import com.tencent.mm.g.a.pt.b;
-import com.tencent.mm.g.a.vk;
-import com.tencent.mm.g.a.vk.b;
+import com.tencent.mm.br.d;
+import com.tencent.mm.g.a.cr;
+import com.tencent.mm.g.a.cr.a;
+import com.tencent.mm.g.a.cr.b;
+import com.tencent.mm.g.a.cw;
+import com.tencent.mm.g.a.cw.a;
+import com.tencent.mm.g.a.cw.b;
+import com.tencent.mm.g.a.gx;
+import com.tencent.mm.g.a.pu;
+import com.tencent.mm.g.a.pu.b;
+import com.tencent.mm.g.a.vo;
+import com.tencent.mm.g.a.vo.b;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.y;
-import com.tencent.mm.model.y.b;
+import com.tencent.mm.model.z;
+import com.tencent.mm.model.z.b;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
+import com.tencent.mm.plugin.fav.a.ad;
 import com.tencent.mm.sdk.b.a;
 import com.tencent.mm.sdk.b.b;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public class FavUrlTask
   extends MainProcessTask
 {
   public static final Parcelable.Creator<FavUrlTask> CREATOR;
-  public boolean DOc;
-  public boolean DOd;
+  public boolean Egc;
+  public boolean Egd;
   public int actionType;
-  public Bundle dxT;
+  public Bundle dyY;
   public boolean result;
   public int ret;
   public int type;
@@ -52,7 +54,7 @@ public class FavUrlTask
     AppMethodBeat.o(78191);
   }
   
-  public final void aOA()
+  public final void aOX()
   {
     AppMethodBeat.i(78188);
     switch (this.actionType)
@@ -66,87 +68,87 @@ public class FavUrlTask
       int i;
       Object localObject3;
       boolean bool;
-      if (this.dxT != null)
+      if (this.dyY != null)
       {
-        long l = this.dxT.getLong("msg_id", -9223372036854775808L);
-        localObject2 = this.dxT.getString("sns_local_id");
-        i = this.dxT.getInt("news_svr_id", 0);
-        localObject3 = this.dxT.getString("news_svr_tweetid");
-        localObject1 = new cv();
+        long l = this.dyY.getLong("msg_id", -9223372036854775808L);
+        localObject2 = this.dyY.getString("sns_local_id");
+        i = this.dyY.getInt("news_svr_id", 0);
+        localObject3 = this.dyY.getString("news_svr_tweetid");
+        localObject1 = new cw();
         if (-9223372036854775808L == l) {
           break label367;
         }
-        ((cv)localObject1).dnG.dnK = this.dxT.getInt("message_index", 0);
-        bool = ((com.tencent.mm.plugin.fav.a.ad)g.ab(com.tencent.mm.plugin.fav.a.ad.class)).a((cv)localObject1, l);
+        ((cw)localObject1).doL.doP = this.dyY.getInt("message_index", 0);
+        bool = ((ad)g.ab(ad.class)).a((cw)localObject1, l);
         if (!bool) {
           break label527;
         }
-        Object localObject4 = bt.nullAsNil(this.dxT.getString("prePublishId"));
-        localObject2 = y.AH((String)localObject4);
-        localObject3 = y.aBq().F((String)localObject2, true);
-        ((y.b)localObject3).k("sendAppMsgScene", Integer.valueOf(2));
-        ((y.b)localObject3).k("preChatName", this.dxT.getString("preChatName"));
-        ((y.b)localObject3).k("preMsgIndex", Integer.valueOf(this.dxT.getInt("preMsgIndex")));
-        ((y.b)localObject3).k("prePublishId", localObject4);
-        ((y.b)localObject3).k("preUsername", this.dxT.getString("preUsername"));
-        ((y.b)localObject3).k("getA8KeyScene", this.dxT.getString("getA8KeyScene"));
-        ((y.b)localObject3).k("referUrl", this.dxT.getString("referUrl"));
-        localObject4 = this.dxT.getBundle("jsapiargs");
+        Object localObject4 = bu.nullAsNil(this.dyY.getString("prePublishId"));
+        localObject2 = z.Br((String)localObject4);
+        localObject3 = z.aBG().F((String)localObject2, true);
+        ((z.b)localObject3).k("sendAppMsgScene", Integer.valueOf(2));
+        ((z.b)localObject3).k("preChatName", this.dyY.getString("preChatName"));
+        ((z.b)localObject3).k("preMsgIndex", Integer.valueOf(this.dyY.getInt("preMsgIndex")));
+        ((z.b)localObject3).k("prePublishId", localObject4);
+        ((z.b)localObject3).k("preUsername", this.dyY.getString("preUsername"));
+        ((z.b)localObject3).k("getA8KeyScene", this.dyY.getString("getA8KeyScene"));
+        ((z.b)localObject3).k("referUrl", this.dyY.getString("referUrl"));
+        localObject4 = this.dyY.getBundle("jsapiargs");
         if (localObject4 != null) {
-          ((y.b)localObject3).k("adExtStr", ((Bundle)localObject4).getString("key_snsad_statextstr"));
+          ((z.b)localObject3).k("adExtStr", ((Bundle)localObject4).getString("key_snsad_statextstr"));
         }
-        ((cv)localObject1).dnG.sessionId = ((String)localObject2);
-        a.IbL.l((b)localObject1);
+        ((cw)localObject1).doL.sessionId = ((String)localObject2);
+        a.IvT.l((b)localObject1);
       }
       for (;;)
       {
-        this.ret = ((cv)localObject1).dnH.ret;
+        this.ret = ((cw)localObject1).doM.ret;
         AppMethodBeat.o(78188);
         return;
         label367:
-        if (!bt.isNullOrNil((String)localObject2))
+        if (!bu.isNullOrNil((String)localObject2))
         {
-          localObject3 = new vk();
-          ((vk)localObject3).dJz.dJC = ((String)localObject2);
-          ((vk)localObject3).dJz.dJD = ((cv)localObject1);
-          ((vk)localObject3).dJz.url = this.dxT.getString("rawUrl");
-          a.IbL.l((b)localObject3);
-          bool = ((vk)localObject3).dJA.dno;
+          localObject3 = new vo();
+          ((vo)localObject3).dKN.dKQ = ((String)localObject2);
+          ((vo)localObject3).dKN.dKR = ((cw)localObject1);
+          ((vo)localObject3).dKN.url = this.dyY.getString("rawUrl");
+          a.IvT.l((b)localObject3);
+          bool = ((vo)localObject3).dKO.doq;
           break;
         }
         if (i != 0)
         {
-          localObject2 = new pt();
-          ((pt)localObject2).dEe.opType = 3;
-          ((pt)localObject2).dEe.dEg = ((cv)localObject1);
-          ((pt)localObject2).dEe.dEh = i;
-          ((pt)localObject2).dEe.dEi = ((String)localObject3);
-          a.IbL.l((b)localObject2);
-          bool = ((pt)localObject2).dEf.dno;
+          localObject2 = new pu();
+          ((pu)localObject2).dFj.opType = 3;
+          ((pu)localObject2).dFj.dFl = ((cw)localObject1);
+          ((pu)localObject2).dFj.dFm = i;
+          ((pu)localObject2).dFj.dFn = ((String)localObject3);
+          a.IvT.l((b)localObject2);
+          bool = ((pu)localObject2).dFk.doq;
           break;
         }
-        this.DOc = true;
+        this.Egc = true;
         AppMethodBeat.o(78188);
         return;
         label527:
-        if (((cv)localObject1).dnG.dnL == 0) {
-          ((cv)localObject1).dnG.dnL = 2131758893;
+        if (((cw)localObject1).doL.doQ == 0) {
+          ((cw)localObject1).doL.doQ = 2131758893;
         }
-        a.IbL.l((b)localObject1);
+        a.IvT.l((b)localObject1);
       }
-      Object localObject1 = new gw();
-      ((gw)localObject1).dsV.type = 35;
-      a.IbL.l((b)localObject1);
+      Object localObject1 = new gx();
+      ((gx)localObject1).dub.type = 35;
+      a.IvT.l((b)localObject1);
       AppMethodBeat.o(78188);
       return;
-      this.DOd = d.aIu("favorite");
+      this.Egd = d.aJN("favorite");
       AppMethodBeat.o(78188);
       return;
-      localObject1 = new cq();
-      ((cq)localObject1).dnA.dnC = this.dxT.getLong("fav_local_id", -1L);
-      a.IbL.l((b)localObject1);
-      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.FavUrlTask", "do del fav web url, local id %d, result %B", new Object[] { Long.valueOf(((cq)localObject1).dnA.dnC), Boolean.valueOf(((cq)localObject1).dnB.dno) });
-      this.result = ((cq)localObject1).dnB.dno;
+      localObject1 = new cr();
+      ((cr)localObject1).doF.doH = this.dyY.getLong("fav_local_id", -1L);
+      a.IvT.l((b)localObject1);
+      ae.i("MicroMsg.FavUrlTask", "do del fav web url, local id %d, result %B", new Object[] { Long.valueOf(((cr)localObject1).doF.doH), Boolean.valueOf(((cr)localObject1).doG.doq) });
+      this.result = ((cr)localObject1).doG.doq;
     }
   }
   
@@ -155,11 +157,11 @@ public class FavUrlTask
     boolean bool2 = true;
     AppMethodBeat.i(78189);
     this.actionType = paramParcel.readInt();
-    this.dxT = paramParcel.readBundle();
+    this.dyY = paramParcel.readBundle();
     if (paramParcel.readByte() == 1)
     {
       bool1 = true;
-      this.DOc = bool1;
+      this.Egc = bool1;
       if (paramParcel.readByte() != 1) {
         break label97;
       }
@@ -176,7 +178,7 @@ public class FavUrlTask
     label102:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      this.DOd = bool1;
+      this.Egd = bool1;
       AppMethodBeat.o(78189);
       return;
       bool1 = false;
@@ -191,8 +193,8 @@ public class FavUrlTask
     int i = 1;
     AppMethodBeat.i(78190);
     paramParcel.writeInt(this.actionType);
-    paramParcel.writeBundle(this.dxT);
-    if (this.DOc)
+    paramParcel.writeBundle(this.dyY);
+    if (this.Egc)
     {
       paramInt = 1;
       paramParcel.writeByte((byte)paramInt);
@@ -204,7 +206,7 @@ public class FavUrlTask
       paramParcel.writeByte((byte)paramInt);
       paramParcel.writeInt(this.ret);
       paramParcel.writeInt(this.type);
-      if (!this.DOd) {
+      if (!this.Egd) {
         break label102;
       }
     }

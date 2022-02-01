@@ -16,7 +16,7 @@ class Files
 {
   static List<File> getLruListFiles(File paramFile)
   {
-    AppMethodBeat.i(215897);
+    AppMethodBeat.i(195181);
     LinkedList localLinkedList = new LinkedList();
     File[] arrayOfFile = paramFile.listFiles();
     paramFile = localLinkedList;
@@ -25,39 +25,39 @@ class Files
       paramFile = Arrays.asList(arrayOfFile);
       Collections.sort(paramFile, new LastModifiedComparator(null));
     }
-    AppMethodBeat.o(215897);
+    AppMethodBeat.o(195181);
     return paramFile;
   }
   
   static void makeDir(File paramFile)
   {
-    AppMethodBeat.i(215896);
+    AppMethodBeat.i(195180);
     if (paramFile.exists())
     {
       if (!paramFile.isDirectory())
       {
         paramFile = new IOException("File " + paramFile + " is not directory!");
-        AppMethodBeat.o(215896);
+        AppMethodBeat.o(195180);
         throw paramFile;
       }
     }
     else if (!paramFile.mkdirs())
     {
       paramFile = new IOException(String.format("Directory %s can't be created", new Object[] { paramFile.getAbsolutePath() }));
-      AppMethodBeat.o(215896);
+      AppMethodBeat.o(195180);
       throw paramFile;
     }
-    AppMethodBeat.o(215896);
+    AppMethodBeat.o(195180);
   }
   
   static void modify(File paramFile)
   {
-    AppMethodBeat.i(215899);
+    AppMethodBeat.i(195183);
     long l = paramFile.length();
     if (l == 0L)
     {
       recreateZeroSizeFile(paramFile);
-      AppMethodBeat.o(215899);
+      AppMethodBeat.o(195183);
       return;
     }
     paramFile = new RandomAccessFile(paramFile, "rwd");
@@ -66,24 +66,24 @@ class Files
     paramFile.seek(l - 1L);
     paramFile.write(i);
     paramFile.close();
-    AppMethodBeat.o(215899);
+    AppMethodBeat.o(195183);
   }
   
   private static void recreateZeroSizeFile(File paramFile)
   {
-    AppMethodBeat.i(215900);
+    AppMethodBeat.i(195184);
     if ((!paramFile.delete()) || (!paramFile.createNewFile()))
     {
       paramFile = new IOException("Error recreate zero-size file ".concat(String.valueOf(paramFile)));
-      AppMethodBeat.o(215900);
+      AppMethodBeat.o(195184);
       throw paramFile;
     }
-    AppMethodBeat.o(215900);
+    AppMethodBeat.o(195184);
   }
   
   static void setLastModifiedNow(File paramFile)
   {
-    AppMethodBeat.i(215898);
+    AppMethodBeat.i(195182);
     if (paramFile.exists())
     {
       long l = System.currentTimeMillis();
@@ -95,7 +95,7 @@ class Files
         }
       }
     }
-    AppMethodBeat.o(215898);
+    AppMethodBeat.o(195182);
   }
   
   static final class LastModifiedComparator
@@ -114,9 +114,9 @@ class Files
     
     public final int compare(File paramFile1, File paramFile2)
     {
-      AppMethodBeat.i(215895);
+      AppMethodBeat.i(195179);
       int i = compareLong(paramFile1.lastModified(), paramFile2.lastModified());
-      AppMethodBeat.o(215895);
+      AppMethodBeat.o(195179);
       return i;
     }
   }

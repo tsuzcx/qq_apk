@@ -15,36 +15,36 @@ public final class i
   {
     AppMethodBeat.i(112781);
     c.a locala = new c.a();
-    locala.IhA = new Field[7];
+    locala.IBL = new Field[7];
     locala.columns = new String[8];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "card_id";
-    locala.IhC.put("card_id", "TEXT PRIMARY KEY ");
+    locala.IBN.put("card_id", "TEXT PRIMARY KEY ");
     localStringBuilder.append(" card_id TEXT PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.IhB = "card_id";
+    locala.IBM = "card_id";
     locala.columns[1] = "lower_bound";
-    locala.IhC.put("lower_bound", "INTEGER");
+    locala.IBN.put("lower_bound", "INTEGER");
     localStringBuilder.append(" lower_bound INTEGER");
     localStringBuilder.append(", ");
     locala.columns[2] = "need_insert_show_timestamp";
-    locala.IhC.put("need_insert_show_timestamp", "INTEGER default 'false' ");
+    locala.IBN.put("need_insert_show_timestamp", "INTEGER default 'false' ");
     localStringBuilder.append(" need_insert_show_timestamp INTEGER default 'false' ");
     localStringBuilder.append(", ");
     locala.columns[3] = "show_timestamp_encrypt_key";
-    locala.IhC.put("show_timestamp_encrypt_key", "TEXT");
+    locala.IBN.put("show_timestamp_encrypt_key", "TEXT");
     localStringBuilder.append(" show_timestamp_encrypt_key TEXT");
     localStringBuilder.append(", ");
     locala.columns[4] = "expire_time_interval";
-    locala.IhC.put("expire_time_interval", "INTEGER");
+    locala.IBN.put("expire_time_interval", "INTEGER");
     localStringBuilder.append(" expire_time_interval INTEGER");
     localStringBuilder.append(", ");
     locala.columns[5] = "show_expire_interval";
-    locala.IhC.put("show_expire_interval", "INTEGER");
+    locala.IBN.put("show_expire_interval", "INTEGER");
     localStringBuilder.append(" show_expire_interval INTEGER");
     localStringBuilder.append(", ");
     locala.columns[6] = "fetch_time";
-    locala.IhC.put("fetch_time", "LONG");
+    locala.IBN.put("fetch_time", "LONG");
     localStringBuilder.append(" fetch_time LONG");
     locala.columns[7] = "rowid";
     locala.sql = localStringBuilder.toString();
@@ -59,7 +59,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.card.model.i
  * JD-Core Version:    0.7.0.1
  */

@@ -33,7 +33,7 @@ class HttpProxyCache
   
   private boolean isUseCache(GetRequest paramGetRequest)
   {
-    AppMethodBeat.i(215822);
+    AppMethodBeat.i(195106);
     long l1 = this.source.length();
     if (l1 > 0L) {}
     for (int i = 1;; i = 0)
@@ -42,16 +42,16 @@ class HttpProxyCache
       if ((i != 0) && (paramGetRequest.partial) && ((float)paramGetRequest.rangeOffset > (float)l2 + (float)l1 * 0.2F)) {
         break;
       }
-      AppMethodBeat.o(215822);
+      AppMethodBeat.o(195106);
       return true;
     }
-    AppMethodBeat.o(215822);
+    AppMethodBeat.o(195106);
     return false;
   }
   
   private String newResponseHeaders(GetRequest paramGetRequest)
   {
-    AppMethodBeat.i(215823);
+    AppMethodBeat.i(195107);
     String str = this.source.getMime();
     int i;
     long l1;
@@ -115,7 +115,7 @@ class HttpProxyCache
     for (paramGetRequest = format("Content-Type: %s\n", new Object[] { str });; paramGetRequest = "")
     {
       paramGetRequest = paramGetRequest + "\n";
-      AppMethodBeat.o(215823);
+      AppMethodBeat.o(195107);
       return paramGetRequest;
       i = 0;
       break;
@@ -193,18 +193,18 @@ class HttpProxyCache
   
   public void processRequest(GetRequest paramGetRequest, Socket paramSocket)
   {
-    AppMethodBeat.i(215821);
+    AppMethodBeat.i(195105);
     paramSocket = new BufferedOutputStream(paramSocket.getOutputStream());
     paramSocket.write(newResponseHeaders(paramGetRequest).getBytes("UTF-8"));
     long l = paramGetRequest.rangeOffset;
     if (isUseCache(paramGetRequest))
     {
       responseWithCache(paramSocket, l);
-      AppMethodBeat.o(215821);
+      AppMethodBeat.o(195105);
       return;
     }
     responseWithoutCache(paramSocket, l);
-    AppMethodBeat.o(215821);
+    AppMethodBeat.o(195105);
   }
   
   public void registerCacheListener(CacheListener paramCacheListener)

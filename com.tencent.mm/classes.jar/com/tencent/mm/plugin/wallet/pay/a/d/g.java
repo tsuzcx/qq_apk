@@ -7,8 +7,8 @@ import com.tencent.mm.plugin.wallet_core.model.Orders.Commodity;
 import com.tencent.mm.plugin.wallet_core.model.v;
 import com.tencent.mm.plugin.wallet_core.utils.e;
 import com.tencent.mm.pluginsdk.wallet.PayInfo;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.wallet_core.a;
 import com.tencent.mm.wallet_core.c.z;
 import com.tencent.mm.wallet_core.d;
@@ -22,59 +22,59 @@ import org.json.JSONObject;
 public class g
   extends n
 {
-  protected v CIC;
-  public Orders CIn;
+  public Orders CZT;
+  protected v Dai;
   private int mPayScene;
   
   public g(v paramv, Orders paramOrders)
   {
     AppMethodBeat.i(69294);
-    this.CIn = null;
+    this.CZT = null;
     this.mPayScene = -1;
-    this.CIn = paramOrders;
-    this.CIC = paramv;
-    List localList = paramOrders.CYk;
+    this.CZT = paramOrders;
+    this.Dai = paramv;
+    List localList = paramOrders.DpP;
     if (localList.size() > 0) {
-      localObject = ((Orders.Commodity)localList.get(0)).dlv;
+      localObject = ((Orders.Commodity)localList.get(0)).dmx;
     }
-    if (paramv.xnF == null)
+    if (paramv.xDC == null)
     {
-      ad.e("MicroMsg.NetSceneTenpayPayVertify", "empty payInfo");
+      ae.e("MicroMsg.NetSceneTenpayPayVertify", "empty payInfo");
       AppMethodBeat.o(69294);
       return;
     }
-    this.mPayScene = paramv.xnF.dCC;
-    int i = paramv.xnF.channel;
-    b(paramOrders.dlu, (String)localObject, paramv.xnF.dCC, i, paramv.dkR, paramv.wBI);
+    this.mPayScene = paramv.xDC.dDH;
+    int i = paramv.xDC.channel;
+    b(paramOrders.dmw, (String)localObject, paramv.xDC.dDH, i, paramv.dlT, paramv.wRt);
     paramOrders = new HashMap();
     localObject = new HashMap();
     paramOrders.put("flag", paramv.flag);
-    paramOrders.put("passwd", paramv.jcJ);
+    paramOrders.put("passwd", paramv.jfC);
     boolean bool;
-    if (!bt.isNullOrNil(paramv.jcJ))
+    if (!bu.isNullOrNil(paramv.jfC))
     {
       bool = true;
-      ad.i("MicroMsg.NetSceneTenpayPayVertify", "hy: has pwd: %b", new Object[] { Boolean.valueOf(bool) });
-      setPayInfo(paramv.xnF, paramOrders, (Map)localObject, bool);
-      paramOrders.put("verify_type", paramv.dBZ);
-      if (paramv.dBZ != 0) {
+      ae.i("MicroMsg.NetSceneTenpayPayVertify", "hy: has pwd: %b", new Object[] { Boolean.valueOf(bool) });
+      setPayInfo(paramv.xDC, paramOrders, (Map)localObject, bool);
+      paramOrders.put("verify_type", paramv.dDe);
+      if (paramv.dDe != 0) {
         break label414;
       }
-      paramOrders.put("verify_code", paramv.Daf);
+      paramOrders.put("verify_code", paramv.DrK);
     }
     for (;;)
     {
       paramOrders.put("token", paramv.token);
-      paramOrders.put("bank_type", paramv.dkR);
-      paramOrders.put("bind_serial", paramv.wBI);
-      paramOrders.put("arrive_type", paramv.CTV);
-      paramOrders.put("default_favorcomposedid", paramv.CTY);
-      paramOrders.put("favorcomposedid", paramv.CTZ);
-      aS(paramOrders);
-      if (z.fRx())
+      paramOrders.put("bank_type", paramv.dlT);
+      paramOrders.put("bind_serial", paramv.wRt);
+      paramOrders.put("arrive_type", paramv.DlB);
+      paramOrders.put("default_favorcomposedid", paramv.DlE);
+      paramOrders.put("favorcomposedid", paramv.DlF);
+      aY(paramOrders);
+      if (z.fVT())
       {
         ((Map)localObject).put("uuid_for_bindcard", z.getBindCardUuid());
-        ((Map)localObject).put("bindcard_scene", z.fRy());
+        ((Map)localObject).put("bindcard_scene", z.fVU());
       }
       setRequestData(paramOrders);
       setWXRequestData((Map)localObject);
@@ -83,14 +83,14 @@ public class g
       bool = false;
       break;
       label414:
-      paramOrders.put("cre_tail", paramv.Dah);
-      paramOrders.put("cre_type", paramv.Dai);
+      paramOrders.put("cre_tail", paramv.DrM);
+      paramOrders.put("cre_type", paramv.DrN);
     }
   }
   
-  protected void aS(Map<String, String> paramMap) {}
+  protected void aY(Map<String, String> paramMap) {}
   
-  public final boolean eDw()
+  public final boolean eHd()
   {
     return (this.mPayScene == 11) || (this.mPayScene == 21);
   }
@@ -131,35 +131,35 @@ public class g
       AppMethodBeat.o(69295);
       return;
     }
-    ad.d("MicroMsg.NetSceneTenpayPayVertify", "Pay Success! saving bind_serial:".concat(String.valueOf(paramJSONObject.optString("bind_serial"))));
+    ae.d("MicroMsg.NetSceneTenpayPayVertify", "Pay Success! saving bind_serial:".concat(String.valueOf(paramJSONObject.optString("bind_serial"))));
     if ("1".equals(paramJSONObject.optString("pay_flag")))
     {
       setPaySuccess(true);
-      this.CIn = Orders.a(paramJSONObject, this.CIn);
-      ad.i("MicroMsg.NetSceneTenpayPayVertify", "mPayScene:" + this.mPayScene);
+      this.CZT = Orders.a(paramJSONObject, this.CZT);
+      ae.i("MicroMsg.NetSceneTenpayPayVertify", "mPayScene:" + this.mPayScene);
       if (this.mPayScene != 39) {
         break label172;
       }
-      ad.i("MicroMsg.NetSceneTenpayPayVertify", "it's the sns scene, parse the sns pay data");
+      ae.i("MicroMsg.NetSceneTenpayPayVertify", "it's the sns scene, parse the sns pay data");
       e.bx(paramJSONObject);
     }
     for (;;)
     {
-      paramString = a.aYz("PayProcess").iterator();
+      paramString = a.bac("PayProcess").iterator();
       while (paramString.hasNext()) {
-        ((d)paramString.next()).dxT.putInt("key_is_clear_failure", this.Lzr);
+        ((d)paramString.next()).dyY.putInt("key_is_clear_failure", this.LWg);
       }
       setPaySuccess(false);
       break;
       label172:
-      ad.i("MicroMsg.NetSceneTenpayPayVertify", "it's not the sns scene");
+      ae.i("MicroMsg.NetSceneTenpayPayVertify", "it's not the sns scene");
     }
     AppMethodBeat.o(69295);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.pay.a.d.g
  * JD-Core Version:    0.7.0.1
  */

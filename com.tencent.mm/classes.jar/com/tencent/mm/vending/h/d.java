@@ -7,18 +7,18 @@ import com.tencent.mm.vending.i.b;
 
 public abstract class d
 {
-  public static final h LiL = new h(Looper.getMainLooper(), "Vending.UI");
-  public static final h LiM = new h(b.fOl().LiX.getLooper(), "Vending.LOGIC");
-  public static final h LiN = new h(a.fOk().LiV.getLooper(), "Vending.HEAVY_WORK");
+  public static final h LFn = new h(Looper.getMainLooper(), "Vending.UI");
+  public static final h LFo = new h(b.fSG().LFz.getLooper(), "Vending.LOGIC");
+  public static final h LFp = new h(a.fSF().LFx.getLooper(), "Vending.HEAVY_WORK");
   
   static
   {
-    g.fOi();
+    g.fSD();
   }
   
-  public static d fOh()
+  public static d fSC()
   {
-    return g.fOh();
+    return g.fSC();
   }
   
   public abstract void cancel();
@@ -27,7 +27,7 @@ public abstract class d
   
   public abstract String getType();
   
-  public abstract void w(Runnable paramRunnable);
+  public abstract void u(Runnable paramRunnable);
 }
 
 

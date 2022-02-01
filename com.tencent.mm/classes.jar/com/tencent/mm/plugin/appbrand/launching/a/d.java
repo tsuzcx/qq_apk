@@ -2,57 +2,57 @@ package com.tencent.mm.plugin.appbrand.launching.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.config.AppBrandLaunchReferrer;
-import com.tencent.mm.protocal.protobuf.ehj;
-import com.tencent.mm.protocal.protobuf.eip;
+import com.tencent.mm.protocal.protobuf.eja;
+import com.tencent.mm.protocal.protobuf.ekg;
 
 public final class d
 {
-  public static eip b(AppBrandLaunchReferrer paramAppBrandLaunchReferrer)
+  public static ekg b(AppBrandLaunchReferrer paramAppBrandLaunchReferrer)
   {
-    eip localeip = null;
+    ekg localekg = null;
     AppMethodBeat.i(147319);
     if (paramAppBrandLaunchReferrer == null)
     {
       AppMethodBeat.o(147319);
       return null;
     }
-    if (2 == paramAppBrandLaunchReferrer.jXR)
+    if (2 == paramAppBrandLaunchReferrer.kbg)
     {
-      localeip = new eip();
-      localeip.FuU = paramAppBrandLaunchReferrer.appId;
-      localeip.Url = paramAppBrandLaunchReferrer.url;
+      localekg = new ekg();
+      localekg.FNs = paramAppBrandLaunchReferrer.appId;
+      localekg.Url = paramAppBrandLaunchReferrer.url;
     }
     AppMethodBeat.o(147319);
-    return localeip;
+    return localekg;
   }
   
-  public static ehj c(AppBrandLaunchReferrer paramAppBrandLaunchReferrer)
+  public static eja c(AppBrandLaunchReferrer paramAppBrandLaunchReferrer)
   {
-    ehj localehj1 = null;
+    eja localeja1 = null;
     AppMethodBeat.i(147320);
     if (paramAppBrandLaunchReferrer == null)
     {
       AppMethodBeat.o(147320);
       return null;
     }
-    if (1 == paramAppBrandLaunchReferrer.jXR)
+    if (1 == paramAppBrandLaunchReferrer.kbg)
     {
-      localehj1 = new ehj();
-      localehj1.GLe = paramAppBrandLaunchReferrer.appId;
-      localehj1.GKV = paramAppBrandLaunchReferrer.sourceType;
-      localehj1.HSd = paramAppBrandLaunchReferrer.jXT;
+      localeja1 = new eja();
+      localeja1.HeF = paramAppBrandLaunchReferrer.appId;
+      localeja1.Hew = paramAppBrandLaunchReferrer.sourceType;
+      localeja1.Imk = paramAppBrandLaunchReferrer.kbi;
     }
-    ehj localehj2 = localehj1;
+    eja localeja2 = localeja1;
     if (paramAppBrandLaunchReferrer.sourceType != 0)
     {
-      localehj2 = localehj1;
-      if (localehj1 == null) {
-        localehj2 = new ehj();
+      localeja2 = localeja1;
+      if (localeja1 == null) {
+        localeja2 = new eja();
       }
-      localehj2.GKV = paramAppBrandLaunchReferrer.sourceType;
+      localeja2.Hew = paramAppBrandLaunchReferrer.sourceType;
     }
     AppMethodBeat.o(147320);
-    return localehj2;
+    return localeja2;
   }
 }
 

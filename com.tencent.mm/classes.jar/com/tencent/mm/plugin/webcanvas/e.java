@@ -2,11 +2,11 @@ package com.tencent.mm.plugin.webcanvas;
 
 public abstract interface e
 {
-  public abstract void bYv();
+  public abstract void a(d paramd);
   
-  public abstract void eLm();
+  public abstract void a(f paramf);
   
-  public abstract void eLn();
+  public abstract void b(f paramf);
 }
 
 

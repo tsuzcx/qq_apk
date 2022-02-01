@@ -7,17 +7,17 @@ import java.util.Arrays;
 public final class f
   extends a
 {
-  public static final f NpU;
-  public static final f NpV;
-  public static final a NpW;
-  private final boolean NpT;
+  public static final f NNa;
+  public static final f NNb;
+  public static final a NNc;
+  private final boolean NMZ;
   
   static
   {
     AppMethodBeat.i(59244);
-    NpW = new a((byte)0);
-    NpU = new f(new int[] { 1, 1, 16 });
-    NpV = new f(new int[0]);
+    NNc = new a((byte)0);
+    NNa = new f(new int[] { 1, 1, 16 });
+    NNb = new f(new int[0]);
     AppMethodBeat.o(59244);
   }
   
@@ -32,18 +32,18 @@ public final class f
   {
     super(Arrays.copyOf(paramArrayOfInt, paramArrayOfInt.length));
     AppMethodBeat.i(59242);
-    this.NpT = paramBoolean;
+    this.NMZ = paramBoolean;
     AppMethodBeat.o(59242);
   }
   
-  public final boolean gqj()
+  public final boolean guL()
   {
     AppMethodBeat.i(59241);
     if ((this.major != 1) || (this.minor != 0))
     {
       boolean bool;
-      if (this.NpT) {
-        bool = a((a)NpU);
+      if (this.NMZ) {
+        bool = a((a)NNa);
       }
       while (bool)
       {
@@ -64,7 +64,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.e.c.a.f
  * JD-Core Version:    0.7.0.1
  */

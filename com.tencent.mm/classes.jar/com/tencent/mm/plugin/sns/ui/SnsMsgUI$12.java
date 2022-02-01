@@ -10,11 +10,11 @@ final class SnsMsgUI$12
 {
   SnsMsgUI$12(SnsMsgUI paramSnsMsgUI) {}
   
-  public final void s(View paramView, int paramInt1, int paramInt2)
+  public final void r(View paramView, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(198368);
-    SnsMsgUI.b(this.AfF).performItemClick(paramView, paramInt1, paramInt2);
-    AppMethodBeat.o(198368);
+    AppMethodBeat.i(219906);
+    SnsMsgUI.b(this.AwR).performItemClick(paramView, paramInt1, paramInt2);
+    AppMethodBeat.o(219906);
   }
 }
 

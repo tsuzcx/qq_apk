@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.fingerprint.d;
 
 import android.content.Context;
 import android.os.Bundle;
-import com.tencent.mm.g.a.od;
+import com.tencent.mm.g.a.oe;
 import com.tencent.mm.plugin.fingerprint.b.a.i;
 import java.util.Map;
 
@@ -13,51 +13,51 @@ public abstract interface a
   
   public abstract int a(c paramc, boolean paramBoolean);
   
-  public abstract void a(od paramod, int paramInt);
+  public abstract void a(oe paramoe, int paramInt);
   
-  public abstract void a(od paramod, int paramInt, String paramString);
+  public abstract void a(oe paramoe, int paramInt, String paramString);
   
   public abstract void a(i parami);
   
   public abstract boolean a(boolean paramBoolean1, boolean paramBoolean2, Bundle paramBundle);
   
-  public abstract boolean cPA();
+  public abstract void cRS();
   
-  public abstract boolean cPB();
+  public abstract boolean cRT();
   
-  public abstract boolean cPC();
+  public abstract boolean cRU();
   
-  public abstract void cPn();
+  public abstract boolean cRV();
   
-  public abstract boolean cPo();
+  public abstract boolean cRW();
   
-  public abstract boolean cPp();
+  public abstract String cRX();
   
-  public abstract boolean cPq();
+  public abstract boolean cRY();
   
-  public abstract boolean cPr();
+  public abstract boolean cRZ();
   
-  public abstract String cPs();
+  public abstract void cSa();
   
-  public abstract boolean cPt();
+  public abstract boolean cSb();
   
-  public abstract boolean cPu();
+  public abstract boolean cSc();
   
-  public abstract void cPv();
+  public abstract Map<String, String> cSd();
   
-  public abstract boolean cPw();
+  public abstract Map<String, String> cSe();
   
-  public abstract boolean cPx();
+  public abstract boolean cSf();
   
-  public abstract Map<String, String> cPy();
+  public abstract boolean cSg();
   
-  public abstract Map<String, String> cPz();
+  public abstract boolean cSh();
   
-  public abstract void fb(Context paramContext);
+  public abstract void ff(Context paramContext);
   
-  public abstract void my(boolean paramBoolean);
+  public abstract void mC(boolean paramBoolean);
   
-  public abstract void mz(boolean paramBoolean);
+  public abstract void mD(boolean paramBoolean);
   
   public abstract int type();
   
@@ -65,7 +65,7 @@ public abstract interface a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.fingerprint.d.a
  * JD-Core Version:    0.7.0.1
  */

@@ -12,75 +12,75 @@ import kotlinx.a.c.o;
 import kotlinx.a.c.s;
 import kotlinx.a.n;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/serialization/json/internal/JsonTreeMapInput;", "Lkotlinx/serialization/json/internal/JsonTreeInput;", "json", "Lkotlinx/serialization/json/Json;", "value", "Lkotlinx/serialization/json/JsonObject;", "(Lkotlinx/serialization/json/Json;Lkotlinx/serialization/json/JsonObject;)V", "keys", "", "", "position", "", "size", "getValue", "()Lkotlinx/serialization/json/JsonObject;", "currentElement", "Lkotlinx/serialization/json/JsonElement;", "tag", "decodeElementIndex", "descriptor", "Lkotlinx/serialization/SerialDescriptor;", "elementName", "desc", "index", "endStructure", "", "kotlinx-serialization-runtime"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/serialization/json/internal/JsonTreeMapInput;", "Lkotlinx/serialization/json/internal/JsonTreeInput;", "json", "Lkotlinx/serialization/json/Json;", "value", "Lkotlinx/serialization/json/JsonObject;", "(Lkotlinx/serialization/json/Json;Lkotlinx/serialization/json/JsonObject;)V", "keys", "", "", "position", "", "size", "getValue", "()Lkotlinx/serialization/json/JsonObject;", "currentElement", "Lkotlinx/serialization/json/JsonElement;", "tag", "decodeElementIndex", "descriptor", "Lkotlinx/serialization/SerialDescriptor;", "elementName", "desc", "index", "endStructure", "", "kotlinx-serialization-runtime"})
 final class j
   extends h
 {
-  private final s NOl;
-  private final List<String> NOn;
+  private final s Olr;
+  private final List<String> Olt;
   private int position;
   private final int size;
   
   public j(a parama, s params)
   {
     super(parama, params);
-    AppMethodBeat.i(191293);
-    this.NOl = params;
-    this.NOn = d.a.j.l((Iterable)this.NOl.keySet());
-    this.size = (this.NOn.size() * 2);
+    AppMethodBeat.i(199881);
+    this.Olr = params;
+    this.Olt = d.a.j.l((Iterable)this.Olr.keySet());
+    this.size = (this.Olt.size() * 2);
     this.position = -1;
-    AppMethodBeat.o(191293);
+    AppMethodBeat.o(199881);
   }
   
   public final void a(n paramn)
   {
-    AppMethodBeat.i(191292);
+    AppMethodBeat.i(199880);
     p.h(paramn, "descriptor");
-    AppMethodBeat.o(191292);
+    AppMethodBeat.o(199880);
   }
   
   public final int b(n paramn)
   {
-    AppMethodBeat.i(191290);
+    AppMethodBeat.i(199878);
     p.h(paramn, "descriptor");
     if (this.position < this.size - 1)
     {
       this.position += 1;
       int i = this.position;
-      AppMethodBeat.o(191290);
+      AppMethodBeat.o(199878);
       return i;
     }
-    AppMethodBeat.o(191290);
+    AppMethodBeat.o(199878);
     return -1;
   }
   
-  protected final f bdo(String paramString)
+  protected final f beS(String paramString)
   {
-    AppMethodBeat.i(191291);
+    AppMethodBeat.i(199879);
     p.h(paramString, "tag");
     if (this.position % 2 == 0)
     {
       paramString = (f)new o(paramString);
-      AppMethodBeat.o(191291);
+      AppMethodBeat.o(199879);
       return paramString;
     }
-    paramString = (f)ae.e((Map)this.NOl, paramString);
-    AppMethodBeat.o(191291);
+    paramString = (f)ae.e((Map)this.Olr, paramString);
+    AppMethodBeat.o(199879);
     return paramString;
   }
   
-  public final s gxv()
+  public final s gBX()
   {
-    return this.NOl;
+    return this.Olr;
   }
   
   public final String m(n paramn, int paramInt)
   {
-    AppMethodBeat.i(191289);
+    AppMethodBeat.i(199877);
     p.h(paramn, "desc");
     paramInt /= 2;
-    paramn = (String)this.NOn.get(paramInt);
-    AppMethodBeat.o(191289);
+    paramn = (String)this.Olt.get(paramInt);
+    AppMethodBeat.o(199877);
     return paramn;
   }
 }

@@ -1,6 +1,6 @@
 package com.tencent.mm.plugin.wepkg.utils;
 
-import com.tencent.mm.al.b;
+import com.tencent.mm.ak.b;
 
 public abstract interface WepkgRunCgi$a
 {

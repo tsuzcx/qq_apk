@@ -16,19 +16,19 @@ import com.tencent.mm.ui.MMActivity;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/chatroom/ui/ChatRoomOpenErrorInfoUI;", "Lcom/tencent/mm/ui/MMActivity;", "()V", "contentTextView", "Landroid/widget/TextView;", "titleTextView", "getLayoutId", "", "onCreate", "", "savedInstanceState", "Landroid/os/Bundle;", "setupView", "Companion", "ui-chatroom_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/chatroom/ui/ChatRoomOpenErrorInfoUI;", "Lcom/tencent/mm/ui/MMActivity;", "()V", "contentTextView", "Landroid/widget/TextView;", "titleTextView", "getLayoutId", "", "onCreate", "", "savedInstanceState", "Landroid/os/Bundle;", "setupView", "Companion", "ui-chatroom_release"})
 public final class ChatRoomOpenErrorInfoUI
   extends MMActivity
 {
-  public static final a fMs;
-  private TextView fMq;
-  private TextView fMr;
+  public static final a fOA;
+  private TextView fOy;
+  private TextView fOz;
   
   static
   {
-    AppMethodBeat.i(213629);
-    fMs = new a((byte)0);
-    AppMethodBeat.o(213629);
+    AppMethodBeat.i(217347);
+    fOA = new a((byte)0);
+    AppMethodBeat.o(217347);
   }
   
   public final int getLayoutId()
@@ -38,17 +38,17 @@ public final class ChatRoomOpenErrorInfoUI
   
   public final void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(213628);
+    AppMethodBeat.i(217346);
     super.onCreate(paramBundle);
     setActionbarColor(getResources().getColor(2131101179));
     setMMTitle("");
     setBackBtn((MenuItem.OnMenuItemClickListener)new b(this));
     paramBundle = findViewById(2131308459);
     p.g(paramBundle, "findViewById(R.id.tv_error_title)");
-    this.fMq = ((TextView)paramBundle);
+    this.fOy = ((TextView)paramBundle);
     paramBundle = findViewById(2131308458);
     p.g(paramBundle, "findViewById(R.id.tv_error_content)");
-    this.fMr = ((TextView)paramBundle);
+    this.fOz = ((TextView)paramBundle);
     findViewById(2131308234).setOnClickListener((View.OnClickListener)new c(this));
     Object localObject1 = getIntent().getStringExtra("key_error_title");
     paramBundle = (Bundle)localObject1;
@@ -60,17 +60,17 @@ public final class ChatRoomOpenErrorInfoUI
     if (localObject2 == null) {
       localObject1 = "";
     }
-    localObject2 = this.fMq;
+    localObject2 = this.fOy;
     if (localObject2 == null) {
-      p.bcb("titleTextView");
+      p.bdF("titleTextView");
     }
     ((TextView)localObject2).setText((CharSequence)paramBundle);
-    paramBundle = this.fMr;
+    paramBundle = this.fOz;
     if (paramBundle == null) {
-      p.bcb("contentTextView");
+      p.bdF("contentTextView");
     }
     paramBundle.setText((CharSequence)localObject1);
-    AppMethodBeat.o(213628);
+    AppMethodBeat.o(217346);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -79,10 +79,10 @@ public final class ChatRoomOpenErrorInfoUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/chatroom/ui/ChatRoomOpenErrorInfoUI$Companion;", "", "()V", "KEY_ERROR_CONTENT", "", "KEY_ERROR_TITLE", "TAG", "ui-chatroom_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/chatroom/ui/ChatRoomOpenErrorInfoUI$Companion;", "", "()V", "KEY_ERROR_CONTENT", "", "KEY_ERROR_TITLE", "TAG", "ui-chatroom_release"})
   public static final class a {}
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
   static final class b
     implements MenuItem.OnMenuItemClickListener
   {
@@ -90,14 +90,14 @@ public final class ChatRoomOpenErrorInfoUI
     
     public final boolean onMenuItemClick(MenuItem paramMenuItem)
     {
-      AppMethodBeat.i(213626);
-      this.fMt.finish();
-      AppMethodBeat.o(213626);
+      AppMethodBeat.i(217344);
+      this.fOB.finish();
+      AppMethodBeat.o(217344);
       return false;
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class c
     implements View.OnClickListener
   {
@@ -105,13 +105,13 @@ public final class ChatRoomOpenErrorInfoUI
     
     public final void onClick(View paramView)
     {
-      AppMethodBeat.i(213627);
+      AppMethodBeat.i(217345);
       b localb = new b();
       localb.bd(paramView);
-      a.b("com/tencent/mm/chatroom/ui/ChatRoomOpenErrorInfoUI$setupView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-      this.fMt.finish();
+      a.b("com/tencent/mm/chatroom/ui/ChatRoomOpenErrorInfoUI$setupView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+      this.fOB.finish();
       a.a(this, "com/tencent/mm/chatroom/ui/ChatRoomOpenErrorInfoUI$setupView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(213627);
+      AppMethodBeat.o(217345);
     }
   }
 }

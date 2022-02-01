@@ -5,44 +5,44 @@ import java.io.OutputStream;
 
 public final class a
 {
-  public int NQh;
-  public byte[] ObV;
-  public int ObW = 0;
-  public int ObX;
-  public OutputStream ObY;
+  public int Onn;
+  public byte[] Oza;
+  public int Ozb = 0;
+  public int Ozc;
+  public OutputStream Ozd;
   
-  public final byte amb(int paramInt)
+  public final byte amL(int paramInt)
   {
-    int i = this.NQh - paramInt - 1;
+    int i = this.Onn - paramInt - 1;
     paramInt = i;
     if (i < 0) {
-      paramInt = i + this.ObW;
+      paramInt = i + this.Ozb;
     }
-    return this.ObV[paramInt];
+    return this.Oza[paramInt];
   }
   
-  public final void gzE()
+  public final void gEg()
   {
     AppMethodBeat.i(155350);
-    gzF();
-    this.ObY = null;
+    gEh();
+    this.Ozd = null;
     AppMethodBeat.o(155350);
   }
   
-  public final void gzF()
+  public final void gEh()
   {
     AppMethodBeat.i(155351);
-    int i = this.NQh - this.ObX;
+    int i = this.Onn - this.Ozc;
     if (i == 0)
     {
       AppMethodBeat.o(155351);
       return;
     }
-    this.ObY.write(this.ObV, this.ObX, i);
-    if (this.NQh >= this.ObW) {
-      this.NQh = 0;
+    this.Ozd.write(this.Oza, this.Ozc, i);
+    if (this.Onn >= this.Ozb) {
+      this.Onn = 0;
     }
-    this.ObX = this.NQh;
+    this.Ozc = this.Onn;
     AppMethodBeat.o(155351);
   }
 }

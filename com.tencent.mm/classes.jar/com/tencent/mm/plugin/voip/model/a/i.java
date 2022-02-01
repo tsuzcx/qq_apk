@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.voip.model.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.protocal.protobuf.cwt;
-import com.tencent.mm.protocal.protobuf.dyo;
-import com.tencent.mm.protocal.protobuf.dyp;
-import com.tencent.mm.protocal.protobuf.dyu;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.protocal.protobuf.cxn;
+import com.tencent.mm.protocal.protobuf.eaf;
+import com.tencent.mm.protocal.protobuf.eag;
+import com.tencent.mm.protocal.protobuf.eal;
 
 public final class i
-  extends n<dyo, dyp>
+  extends n<eaf, eag>
 {
   String TAG;
   
@@ -19,31 +19,31 @@ public final class i
     AppMethodBeat.i(115244);
     this.TAG = "MicroMsg.NetSceneVoipShutDown";
     Object localObject = new b.a();
-    ((b.a)localObject).hNM = new dyo();
-    ((b.a)localObject).hNN = new dyp();
+    ((b.a)localObject).hQF = new eaf();
+    ((b.a)localObject).hQG = new eag();
     ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/voipshutdown";
     ((b.a)localObject).funcId = 173;
-    ((b.a)localObject).hNO = 66;
+    ((b.a)localObject).hQH = 66;
     ((b.a)localObject).respCmdId = 1000000066;
-    this.rr = ((b.a)localObject).aDC();
-    localObject = (dyo)this.rr.hNK.hNQ;
-    ((dyo)localObject).GeI = paramInt;
-    ((dyo)localObject).GeJ = paramLong;
-    dyu localdyu = new dyu();
-    cwt localcwt = new cwt();
-    localcwt.aPy(paramString);
-    localdyu.HAz = localcwt;
-    ((dyo)localObject).HKc = localdyu;
-    ((dyo)localObject).HJh = System.currentTimeMillis();
+    this.rr = ((b.a)localObject).aDS();
+    localObject = (eaf)this.rr.hQD.hQJ;
+    ((eaf)localObject).Gxq = paramInt;
+    ((eaf)localObject).Gxr = paramLong;
+    eal localeal = new eal();
+    cxn localcxn = new cxn();
+    localcxn.aQV(paramString);
+    localeal.HUm = localcxn;
+    ((eaf)localObject).Iek = localeal;
+    ((eaf)localObject).Idp = System.currentTimeMillis();
     AppMethodBeat.o(115244);
   }
   
-  public final com.tencent.mm.al.f eyd()
+  public final com.tencent.mm.ak.f eBL()
   {
     AppMethodBeat.i(115245);
-    com.tencent.mm.al.f local1 = new com.tencent.mm.al.f()
+    com.tencent.mm.ak.f local1 = new com.tencent.mm.ak.f()
     {
-      public final void onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, com.tencent.mm.al.n paramAnonymousn)
+      public final void onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, com.tencent.mm.ak.n paramAnonymousn)
       {
         AppMethodBeat.i(115243);
         com.tencent.mm.plugin.voip.b.f.Logd(i.this.TAG, "onSceneEnd type:" + paramAnonymousn.getType() + " errType:" + paramAnonymousInt1 + " errCode:" + paramAnonymousInt2);
@@ -61,7 +61,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.model.a.i
  * JD-Core Version:    0.7.0.1
  */

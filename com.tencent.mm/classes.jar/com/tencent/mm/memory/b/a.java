@@ -10,66 +10,66 @@ import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.memory.i;
 import com.tencent.mm.memory.n;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aq;
 
 public class a
   extends Drawable
   implements i
 {
   boolean DEBUG;
-  protected final Paint hxL;
-  private final ap hxM;
-  protected n hxN;
-  private Runnable hxO;
+  private final aq hAA;
+  protected n hAB;
+  private Runnable hAC;
+  protected final Paint hAz;
   protected String tag;
   
   public a(String paramString, n paramn)
   {
     AppMethodBeat.i(156523);
-    this.hxL = new Paint();
+    this.hAz = new Paint();
     this.DEBUG = false;
-    this.hxO = new Runnable()
+    this.hAC = new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(156522);
-        ad.d("MicroMsg.MaskBitmapDrawable", "refresh tag=%s", new Object[] { a.this.tag });
+        ae.d("MicroMsg.MaskBitmapDrawable", "refresh tag=%s", new Object[] { a.this.tag });
         a.this.invalidateSelf();
         AppMethodBeat.o(156522);
       }
     };
     this.tag = paramString;
-    this.hxN = paramn;
-    this.hxL.setAntiAlias(true);
-    this.hxL.setFilterBitmap(false);
-    this.hxL.setColor(-1118482);
-    this.hxM = new ap(Looper.getMainLooper());
+    this.hAB = paramn;
+    this.hAz.setAntiAlias(true);
+    this.hAz.setFilterBitmap(false);
+    this.hAz.setColor(-1118482);
+    this.hAA = new aq(Looper.getMainLooper());
     AppMethodBeat.o(156523);
   }
   
-  public final void ayB()
+  public final void ayQ()
   {
     AppMethodBeat.i(156525);
-    if (this.hxN != null) {
-      this.hxN.ayB();
+    if (this.hAB != null) {
+      this.hAB.ayQ();
     }
     AppMethodBeat.o(156525);
   }
   
-  public final void ayC()
+  public final void ayR()
   {
     AppMethodBeat.i(156526);
-    if (this.hxN != null) {
-      this.hxN.ayC();
+    if (this.hAB != null) {
+      this.hAB.ayR();
     }
     AppMethodBeat.o(156526);
   }
   
-  public final n ayW()
+  public final n azl()
   {
-    if (this.hxN != null) {
-      return this.hxN;
+    if (this.hAB != null) {
+      return this.hAB;
     }
     return null;
   }
@@ -78,14 +78,14 @@ public class a
   {
     AppMethodBeat.i(156524);
     Rect localRect = getBounds();
-    n localn = this.hxN;
+    n localn = this.hAB;
     if ((localn == null) || (localn.isRecycled()))
     {
       paramCanvas.drawColor(-1118482);
       AppMethodBeat.o(156524);
       return;
     }
-    Paint localPaint = this.hxL;
+    Paint localPaint = this.hAz;
     paramCanvas.drawBitmap(localn.bitmap, null, localRect, localPaint);
     AppMethodBeat.o(156524);
   }
@@ -93,12 +93,12 @@ public class a
   public int getIntrinsicHeight()
   {
     AppMethodBeat.i(156528);
-    if (this.hxN == null)
+    if (this.hAB == null)
     {
       AppMethodBeat.o(156528);
       return 0;
     }
-    n localn = this.hxN;
+    n localn = this.hAB;
     if ((localn != null) && (!localn.isRecycled()))
     {
       int i = localn.bitmap.getHeight();
@@ -112,12 +112,12 @@ public class a
   public int getIntrinsicWidth()
   {
     AppMethodBeat.i(156527);
-    if (this.hxN == null)
+    if (this.hAB == null)
     {
       AppMethodBeat.o(156527);
       return 0;
     }
-    n localn = this.hxN;
+    n localn = this.hAB;
     if ((localn != null) && (!localn.isRecycled()))
     {
       int i = localn.bitmap.getWidth();
@@ -144,8 +144,8 @@ public class a
     {
       String str2 = super.toString() + " code: " + hashCode();
       str1 = str2;
-      if (this.hxN != null) {
-        str1 = str2 + this.hxN;
+      if (this.hAB != null) {
+        str1 = str2 + this.hAB;
       }
       AppMethodBeat.o(156529);
       return str1;

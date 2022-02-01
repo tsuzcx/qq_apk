@@ -6,8 +6,8 @@ import org.json.JSONObject;
 
 public final class v
 {
-  public int IOs;
-  public long hfU;
+  public int JiY;
+  public long hiI;
   public String key;
   
   public final JSONObject toJson()
@@ -17,8 +17,8 @@ public final class v
     try
     {
       localJSONObject.put("key", this.key);
-      localJSONObject.put("use_count", this.IOs);
-      localJSONObject.put("last_time", this.hfU);
+      localJSONObject.put("use_count", this.JiY);
+      localJSONObject.put("last_time", this.hiI);
       AppMethodBeat.o(105153);
       return localJSONObject;
     }
@@ -31,7 +31,7 @@ public final class v
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.storage.emotion.v
  * JD-Core Version:    0.7.0.1
  */

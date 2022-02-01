@@ -14,34 +14,34 @@ public class MainThreadHandler
   public static void post(long paramLong1, long paramLong2, int paramInt)
   {
     AppMethodBeat.i(140003);
-    f.FL().post(new a(paramInt, paramLong1, paramLong2, (byte)0));
+    f.FR().post(new a(paramInt, paramLong1, paramLong2, (byte)0));
     AppMethodBeat.o(140003);
   }
   
   static final class a
     implements Runnable
   {
-    private int cyc;
-    private long cyd;
+    private int cyJ;
+    private long cyK;
     private long data;
     
     private a(int paramInt, long paramLong1, long paramLong2)
     {
-      this.cyc = paramInt;
-      this.cyd = paramLong1;
+      this.cyJ = paramInt;
+      this.cyK = paramLong1;
       this.data = paramLong2;
     }
     
     public final void run()
     {
       AppMethodBeat.i(140002);
-      if (this.cyc <= 1)
+      if (this.cyJ <= 1)
       {
-        MainThreadHandler.access$000(this.cyd, this.data);
+        MainThreadHandler.access$000(this.cyK, this.data);
         AppMethodBeat.o(140002);
         return;
       }
-      MainThreadHandler.post(this.cyd, this.data, this.cyc - 1);
+      MainThreadHandler.post(this.cyK, this.data, this.cyJ - 1);
       AppMethodBeat.o(140002);
     }
   }

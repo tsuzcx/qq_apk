@@ -31,20 +31,27 @@ public final class b
     AppMethodBeat.o(107300);
   }
   
-  public final ViewGroup bJP()
+  public final ViewGroup bKN()
   {
     AppMethodBeat.i(107295);
-    ViewGroup localViewGroup = super.bJP();
+    ViewGroup localViewGroup = super.bKN();
     AppMethodBeat.o(107295);
     return localViewGroup;
   }
   
-  public final boolean bgz()
+  public final boolean bhh()
   {
     AppMethodBeat.i(107297);
-    boolean bool = super.bgz();
+    boolean bool = super.bhh();
     AppMethodBeat.o(107297);
     return bool;
+  }
+  
+  public final void ge(boolean paramBoolean)
+  {
+    AppMethodBeat.i(107299);
+    super.ge(paramBoolean);
+    AppMethodBeat.o(107299);
   }
   
   public final Activity getActivity()
@@ -69,13 +76,6 @@ public final class b
     Intent localIntent = super.getIntent();
     AppMethodBeat.o(107294);
     return localIntent;
-  }
-  
-  public final void gg(boolean paramBoolean)
-  {
-    AppMethodBeat.i(107299);
-    super.gg(paramBoolean);
-    AppMethodBeat.o(107299);
   }
 }
 

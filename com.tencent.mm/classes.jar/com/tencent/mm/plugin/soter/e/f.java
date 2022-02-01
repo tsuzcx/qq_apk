@@ -5,7 +5,7 @@ import android.content.Context;
 import android.util.SparseArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.soter.d.m;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.soter.a.c.b;
 import com.tencent.soter.a.g.e;
 import com.tencent.soter.a.g.j;
@@ -22,15 +22,15 @@ public final class f
   public final void f(String paramString, int[] paramArrayOfInt)
   {
     AppMethodBeat.i(130887);
-    ad.v("MicroMsg.SoterTaskInitForWX", "alvinluo generateAuthKeyNames");
+    ae.v("MicroMsg.SoterTaskInitForWX", "alvinluo generateAuthKeyNames");
     int j = paramArrayOfInt.length;
     int i = 0;
     while (i < j)
     {
       int k = paramArrayOfInt[i];
-      paramString = m.RV(k);
-      ad.i("MicroMsg.SoterTaskInitForWX", "alvinluo scene: %d, authKeyName: %s", new Object[] { Integer.valueOf(k), paramString });
-      b.fUW().fUY().put(k, paramString);
+      paramString = m.SC(k);
+      ae.i("MicroMsg.SoterTaskInitForWX", "alvinluo scene: %d, authKeyName: %s", new Object[] { Integer.valueOf(k), paramString });
+      b.fZv().fZx().put(k, paramString);
       i += 1;
     }
     AppMethodBeat.o(130887);
@@ -38,7 +38,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.soter.e.f
  * JD-Core Version:    0.7.0.1
  */

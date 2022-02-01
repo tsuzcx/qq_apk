@@ -7,22 +7,22 @@ import d.l;
 import java.io.Serializable;
 import java.util.Map;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlin/collections/EmptyMap;", "", "", "", "Ljava/io/Serializable;", "Lkotlin/io/Serializable;", "()V", "entries", "", "", "getEntries", "()Ljava/util/Set;", "keys", "getKeys", "serialVersionUID", "", "size", "", "getSize", "()I", "values", "", "getValues", "()Ljava/util/Collection;", "containsKey", "", "key", "containsValue", "value", "equals", "other", "get", "hashCode", "isEmpty", "readResolve", "toString", "", "kotlin-stdlib"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlin/collections/EmptyMap;", "", "", "", "Ljava/io/Serializable;", "Lkotlin/io/Serializable;", "()V", "entries", "", "", "getEntries", "()Ljava/util/Set;", "keys", "getKeys", "serialVersionUID", "", "size", "", "getSize", "()I", "values", "", "getValues", "()Ljava/util/Collection;", "containsKey", "", "key", "containsValue", "value", "equals", "other", "get", "hashCode", "isEmpty", "readResolve", "toString", "", "kotlin-stdlib"})
 final class w
   implements a, Serializable, Map
 {
-  public static final w MKF;
+  public static final w NhI;
   
   static
   {
     AppMethodBeat.i(129139);
-    MKF = new w();
+    NhI = new w();
     AppMethodBeat.o(129139);
   }
   
   private final Object readResolve()
   {
-    return MKF;
+    return NhI;
   }
   
   public final void clear()

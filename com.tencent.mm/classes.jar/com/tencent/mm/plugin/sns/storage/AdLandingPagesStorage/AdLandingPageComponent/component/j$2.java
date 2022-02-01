@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageCom
 import android.view.View;
 import android.view.ViewGroup;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.ui.widget.MMWebView;
 
 final class j$2
@@ -16,7 +16,7 @@ final class j$2
     AppMethodBeat.i(176275);
     try
     {
-      Object localObject = this.zDy.hJc;
+      Object localObject = this.zUB.hLV;
       if ((localObject != null) && (((MMWebView)localObject).isAttachedToWindow()))
       {
         localObject = (ViewGroup)((MMWebView)localObject).getChildAt(0);
@@ -34,7 +34,7 @@ final class j$2
     }
     catch (Throwable localThrowable)
     {
-      ad.w("AdLandingNewH5Comp", "there is something in wevView fix!");
+      ae.w("AdLandingNewH5Comp", "there is something in wevView fix!");
       AppMethodBeat.o(176275);
     }
   }

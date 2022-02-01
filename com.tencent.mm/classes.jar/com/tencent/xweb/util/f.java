@@ -28,7 +28,7 @@ public final class f
     return null;
   }
   
-  public static Object bbq(String paramString)
+  public static Object bcT(String paramString)
   {
     AppMethodBeat.i(157011);
     if (TextUtils.isEmpty(paramString))
@@ -102,7 +102,7 @@ public final class f
     return paramObject;
   }
   
-  public static Object ni(String paramString1, String paramString2)
+  public static Object no(String paramString1, String paramString2)
   {
     AppMethodBeat.i(157009);
     try

@@ -12,11 +12,11 @@ public final class c
   static
   {
     AppMethodBeat.i(103362);
-    info = bu.Vv();
+    info = bu.VD();
     AppMethodBeat.o(103362);
   }
   
-  public final boolean cuN()
+  public final boolean cwo()
   {
     return this.field_dataType == 4;
   }

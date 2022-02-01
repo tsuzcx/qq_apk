@@ -9,21 +9,21 @@ import java.util.ArrayList;
 public final class a
   extends JceStruct
 {
-  static c LLZ;
-  static ArrayList<b> LMa;
-  static d LMb;
-  public c LLW = null;
-  public ArrayList<b> LLX = null;
-  public d LLY = null;
+  static c MiY;
+  static ArrayList<b> MiZ;
+  static d Mja;
+  public c MiV = null;
+  public ArrayList<b> MiW = null;
+  public d MiX = null;
   
   static
   {
     AppMethodBeat.i(138331);
-    LLZ = new c();
-    LMa = new ArrayList();
+    MiY = new c();
+    MiZ = new ArrayList();
     b localb = new b();
-    LMa.add(localb);
-    LMb = new d();
+    MiZ.add(localb);
+    Mja = new d();
     AppMethodBeat.o(138331);
   }
   
@@ -38,23 +38,23 @@ public final class a
   public final void readFrom(JceInputStream paramJceInputStream)
   {
     AppMethodBeat.i(138330);
-    this.LLW = ((c)paramJceInputStream.read(LLZ, 0, false));
-    this.LLX = ((ArrayList)paramJceInputStream.read(LMa, 1, false));
-    this.LLY = ((d)paramJceInputStream.read(LMb, 2, false));
+    this.MiV = ((c)paramJceInputStream.read(MiY, 0, false));
+    this.MiW = ((ArrayList)paramJceInputStream.read(MiZ, 1, false));
+    this.MiX = ((d)paramJceInputStream.read(Mja, 2, false));
     AppMethodBeat.o(138330);
   }
   
   public final void writeTo(JceOutputStream paramJceOutputStream)
   {
     AppMethodBeat.i(138329);
-    if (this.LLW != null) {
-      paramJceOutputStream.write(this.LLW, 0);
+    if (this.MiV != null) {
+      paramJceOutputStream.write(this.MiV, 0);
     }
-    if (this.LLX != null) {
-      paramJceOutputStream.write(this.LLX, 1);
+    if (this.MiW != null) {
+      paramJceOutputStream.write(this.MiW, 1);
     }
-    if (this.LLY != null) {
-      paramJceOutputStream.write(this.LLY, 2);
+    if (this.MiX != null) {
+      paramJceOutputStream.write(this.MiX, 2);
     }
     AppMethodBeat.o(138329);
   }

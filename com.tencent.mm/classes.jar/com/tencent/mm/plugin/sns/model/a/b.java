@@ -1,22 +1,19 @@
 package com.tencent.mm.plugin.sns.model.a;
 
 import com.tencent.mm.b.p;
-import com.tencent.mm.memory.n;
 import com.tencent.mm.network.b.b;
 import com.tencent.mm.network.v;
-import com.tencent.mm.plugin.sns.data.m;
-import com.tencent.mm.plugin.sns.data.q;
-import com.tencent.mm.plugin.sns.model.ag;
-import com.tencent.mm.plugin.sns.model.ba;
-import com.tencent.mm.plugin.sns.model.f;
+import com.tencent.mm.plugin.sns.data.r;
+import com.tencent.mm.plugin.sns.model.ah;
+import com.tencent.mm.plugin.sns.model.bb;
 import com.tencent.mm.pointers.PString;
-import com.tencent.mm.protocal.protobuf.byn;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ay;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.bj;
-import com.tencent.mm.vfs.i;
+import com.tencent.mm.protocal.protobuf.bzh;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.az;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.bk;
+import com.tencent.mm.vfs.o;
 import java.io.InputStream;
 import java.net.InetAddress;
 import java.net.SocketTimeoutException;
@@ -32,45 +29,45 @@ import java.util.concurrent.ExecutorService;
 public abstract class b
   extends c
 {
-  private static HashSet<String> zov = new HashSet();
+  private static HashSet<String> zFK = new HashSet();
   private int cdl = 0;
-  protected byn dIQ = null;
+  protected bzh dKe = null;
   private long dnsCostTime = -1L;
   private String host = "";
-  private int iEz = -1;
+  private int iHs = -1;
   private int retCode = -1;
-  protected c.a zoc;
-  protected n zod = null;
-  protected a zoe = null;
-  private String zof = "";
-  private String zog = "";
-  private String zoh = "";
-  private int zoi = 0;
-  protected int zoj = 0;
-  private long zok = -1L;
-  protected long zol = -1L;
-  protected long zom = -1L;
-  protected long zon = -1L;
-  protected String zoo = "";
-  protected PString zop = new PString();
-  protected int zoq;
-  protected long zor;
-  protected long zos;
-  protected long zot;
-  protected int zou = 0;
-  private Map<String, List<String>> zow;
-  int zox = 0;
+  protected long zFA = -1L;
+  protected long zFB = -1L;
+  protected long zFC = -1L;
+  protected String zFD = "";
+  protected PString zFE = new PString();
+  protected int zFF;
+  protected long zFG;
+  protected long zFH;
+  protected long zFI;
+  protected int zFJ = 0;
+  private Map<String, List<String>> zFL;
+  int zFM = 0;
+  protected c.a zFr;
+  protected com.tencent.mm.memory.n zFs = null;
+  protected a zFt = null;
+  private String zFu = "";
+  private String zFv = "";
+  private String zFw = "";
+  private int zFx = 0;
+  protected int zFy = 0;
+  private long zFz = -1L;
   
   public b(c.a parama, a parama1)
   {
     super(parama, parama1);
-    this.zoc = parama;
-    this.zoe = parama1;
+    this.zFr = parama;
+    this.zFt = parama1;
     if (parama1 == null) {
       return;
     }
-    this.dIQ = parama1.zhs;
-    zov.add(parama1.zhr);
+    this.dKe = parama1.zyh;
+    zFK.add(parama1.zyg);
     parama1.init();
   }
   
@@ -78,36 +75,36 @@ public abstract class b
   {
     try
     {
-      this.zoh = paramb.ip;
-      this.iEz = paramb.iEz;
-      this.zol = bt.flT();
-      paramb = com.tencent.mm.network.b.a(this.zoe.url, paramb);
+      this.zFw = paramb.ip;
+      this.iHs = paramb.iHs;
+      this.zFA = bu.fpO();
+      paramb = com.tencent.mm.network.b.a(this.zFt.url, paramb);
       paramb.setRequestMethod("GET");
       paramb.setRequestProperty("referer", paramString);
-      if (bt.getInt(com.tencent.mm.n.g.acA().getValue("SnsDownloadHttpKeep"), 0) > 0)
+      if (bu.getInt(com.tencent.mm.n.g.acL().getValue("SnsDownloadHttpKeep"), 0) > 0)
       {
-        ad.i("MicroMsg.SnsCdnDownloadBase", "header Connection close ");
+        ae.i("MicroMsg.SnsCdnDownloadBase", "header Connection close ");
         paramb.setRequestProperty("Connection", "close");
       }
       paramb.setConnectTimeout(25000);
       paramb.setReadTimeout(25000);
       paramb = a(paramb);
-      this.zow = paramb.getHeaderFields();
-      paramString = (List)this.zow.get("X-ClientIp");
+      this.zFL = paramb.getHeaderFields();
+      paramString = (List)this.zFL.get("X-ClientIp");
       if ((paramString != null) && (paramString.size() > 0)) {
-        this.zog = ((String)paramString.get(0));
+        this.zFv = ((String)paramString.get(0));
       }
-      paramString = (List)this.zow.get("X-ServerIp");
+      paramString = (List)this.zFL.get("X-ServerIp");
       if ((paramString != null) && (paramString.size() > 0)) {
-        this.zof = ((String)paramString.get(0));
+        this.zFu = ((String)paramString.get(0));
       }
-      paramString = (List)this.zow.get("X-ErrNo");
+      paramString = (List)this.zFL.get("X-ErrNo");
       if ((paramString != null) && (paramString.size() > 0)) {
-        this.zoi = bt.aRe((String)paramString.get(0));
+        this.zFx = bu.aSB((String)paramString.get(0));
       }
-      paramString = (List)this.zow.get("X-RtFlag");
+      paramString = (List)this.zFL.get("X-RtFlag");
       if ((paramString != null) && (paramString.size() > 0)) {
-        this.zoj = bt.aRe((String)paramString.get(0));
+        this.zFy = bu.aSB((String)paramString.get(0));
       }
       for (;;)
       {
@@ -118,23 +115,23 @@ public abstract class b
           if ((this.retCode == 200) || (this.retCode == 206)) {
             break;
           }
-          aH(paramb.getHeaderFields());
-          if (this.zoe.znY)
+          aN(paramb.getHeaderFields());
+          if (this.zFt.zFn)
           {
             if ((this.retCode >= 400) && (this.retCode < 500))
             {
-              com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(22L, 78L, 1L, true);
-              if (this.zoe.znX) {
-                com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(150L, 14L, 1L, true);
+              com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(22L, 78L, 1L, true);
+              if (this.zFt.zFm) {
+                com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(150L, 14L, 1L, true);
               }
-              ad.e("MicroMsg.SnsCdnDownloadBase", "GprsSetting.checkHttpConnection failed! mediaId : " + this.zoe.mediaId + " " + this.zoe.url + " " + this.retCode);
+              ae.e("MicroMsg.SnsCdnDownloadBase", "GprsSetting.checkHttpConnection failed! mediaId : " + this.zFt.mediaId + " " + this.zFt.url + " " + this.retCode);
               df(false);
               return null;
             }
             if ((this.retCode < 500) || (this.retCode >= 600)) {
               continue;
             }
-            com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(22L, 79L, 1L, true);
+            com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(22L, 79L, 1L, true);
             continue;
           }
         }
@@ -143,18 +140,18 @@ public abstract class b
           this.retCode = 1;
           df(false);
           paramb = paramb.getMessage();
-          if (!this.zoe.znY) {
+          if (!this.zFt.zFn) {
             break label780;
           }
-          com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(22L, 77L, 1L, true);
-          if (this.zoe.znX) {
-            com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(150L, 14L, 1L, true);
+          com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(22L, 77L, 1L, true);
+          if (this.zFt.zFm) {
+            com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(150L, 14L, 1L, true);
           }
-          ad.e("MicroMsg.SnsCdnDownloadBase", "GprsSetting.checkHttpConnection failed! socket timeout mediaId : " + this.zoe.mediaId + " " + this.zoe.url + " msg:" + paramb);
+          ae.e("MicroMsg.SnsCdnDownloadBase", "GprsSetting.checkHttpConnection failed! socket timeout mediaId : " + this.zFt.mediaId + " " + this.zFt.url + " msg:" + paramb);
           return null;
           if ((this.retCode >= 400) && (this.retCode < 500))
           {
-            com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(22L, 56L, 1L, true);
+            com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(22L, 56L, 1L, true);
             continue;
           }
         }
@@ -162,42 +159,42 @@ public abstract class b
         {
           df(false);
           paramb = paramb.getMessage();
-          if (this.zoe.znX) {
-            com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(150L, 14L, 1L, true);
+          if (this.zFt.zFm) {
+            com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(150L, 14L, 1L, true);
           }
-          ad.e("MicroMsg.SnsCdnDownloadBase", "GprsSetting.checkHttpConnection failed! mediaId : " + this.zoe.mediaId + " " + this.zoe.url + " msg:" + paramb);
+          ae.e("MicroMsg.SnsCdnDownloadBase", "GprsSetting.checkHttpConnection failed! mediaId : " + this.zFt.mediaId + " " + this.zFt.url + " msg:" + paramb);
           return null;
         }
         if ((this.retCode >= 500) && (this.retCode < 600))
         {
-          com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(22L, 57L, 1L, true);
+          com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(22L, 57L, 1L, true);
           continue;
           label780:
-          com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(22L, 55L, 1L, true);
+          com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(22L, 55L, 1L, true);
         }
       }
-      aH(paramb.getHeaderFields());
+      aN(paramb.getHeaderFields());
     }
     catch (Exception paramb)
     {
-      ad.printErrStackTrace("MicroMsg.SnsCdnDownloadBase", paramb, "connect fail : " + paramb.getMessage(), new Object[0]);
+      ae.printErrStackTrace("MicroMsg.SnsCdnDownloadBase", paramb, "connect fail : " + paramb.getMessage(), new Object[0]);
       this.retCode = 2;
       df(false);
       return null;
     }
     if (!c(paramb))
     {
-      com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(22L, 62L, 1L, true);
-      ad.e("MicroMsg.SnsCdnDownloadBase", "checkHttpConnection failed! nocache mediaId : " + this.zoe.mediaId);
+      com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(22L, 62L, 1L, true);
+      ae.e("MicroMsg.SnsCdnDownloadBase", "checkHttpConnection failed! nocache mediaId : " + this.zFt.mediaId);
       df(false);
       return null;
     }
-    this.zol = bt.Df(this.zol);
-    paramString = (List)this.zow.get("Content-Length");
+    this.zFA = bu.DD(this.zFA);
+    paramString = (List)this.zFL.get("Content-Length");
     if ((paramString != null) && (paramString.size() > 0)) {
-      this.zou = bt.aRe((String)paramString.get(0));
+      this.zFJ = bu.aSB((String)paramString.get(0));
     }
-    ad.i("MicroMsg.SnsCdnDownloadBase", "ip: url %s client ip %s server ip %s svrlen %d %d", new Object[] { this.zoe.url, this.zog, this.zof, Integer.valueOf(this.zou), Integer.valueOf(this.zoi) });
+    ae.i("MicroMsg.SnsCdnDownloadBase", "ip: url %s client ip %s server ip %s svrlen %d %d", new Object[] { this.zFt.url, this.zFv, this.zFu, Integer.valueOf(this.zFJ), Integer.valueOf(this.zFx) });
     return paramb;
   }
   
@@ -211,7 +208,25 @@ public abstract class b
     return true;
   }
   
-  private static void aH(Map<String, List<String>> paramMap)
+  private static long aAN(String paramString)
+  {
+    if ((paramString == null) || (paramString.length() == 0)) {
+      return 0L;
+    }
+    try
+    {
+      paramString = paramString.split("\\.");
+      long l1 = bu.getLong(paramString[0], 0L);
+      long l2 = bu.getLong(paramString[1], 0L);
+      long l3 = bu.getLong(paramString[2], 0L);
+      long l4 = bu.getLong(paramString[3], 0L);
+      return l4 + (16777216L * l1 + 65536L * l2 + 256L * l3);
+    }
+    catch (Exception paramString) {}
+    return 0L;
+  }
+  
+  private static void aN(Map<String, List<String>> paramMap)
   {
     if (paramMap == null) {
       return;
@@ -236,28 +251,10 @@ public abstract class b
           localStringBuffer.append(";");
         }
       }
-      ad.i("MicroMsg.SnsCdnDownloadBase", "header respone %s", new Object[] { localStringBuffer.toString() });
+      ae.i("MicroMsg.SnsCdnDownloadBase", "header respone %s", new Object[] { localStringBuffer.toString() });
       return;
     }
     catch (Exception paramMap) {}
-  }
-  
-  private static long azw(String paramString)
-  {
-    if ((paramString == null) || (paramString.length() == 0)) {
-      return 0L;
-    }
-    try
-    {
-      paramString = paramString.split("\\.");
-      long l1 = bt.getLong(paramString[0], 0L);
-      long l2 = bt.getLong(paramString[1], 0L);
-      long l3 = bt.getLong(paramString[2], 0L);
-      long l4 = bt.getLong(paramString[3], 0L);
-      return l4 + (16777216L * l1 + 65536L * l2 + 256L * l3);
-    }
-    catch (Exception paramString) {}
-    return 0L;
   }
   
   /* Error */
@@ -267,14 +264,14 @@ public abstract class b
     //   0: aconst_null
     //   1: astore 4
     //   3: aload_0
-    //   4: invokestatic 142	com/tencent/mm/sdk/platformtools/bt:flT	()J
-    //   7: putfield 447	com/tencent/mm/plugin/sns/model/a/b:zot	J
+    //   4: invokestatic 142	com/tencent/mm/sdk/platformtools/bu:fpO	()J
+    //   7: putfield 447	com/tencent/mm/plugin/sns/model/a/b:zFI	J
     //   10: aload_1
     //   11: invokevirtual 451	com/tencent/mm/network/v:getInputStream	()Ljava/io/InputStream;
     //   14: astore_3
     //   15: aload_0
-    //   16: invokestatic 142	com/tencent/mm/sdk/platformtools/bt:flT	()J
-    //   19: putfield 87	com/tencent/mm/plugin/sns/model/a/b:zom	J
+    //   16: invokestatic 142	com/tencent/mm/sdk/platformtools/bu:fpO	()J
+    //   19: putfield 87	com/tencent/mm/plugin/sns/model/a/b:zFB	J
     //   22: aload_0
     //   23: aload_3
     //   24: invokevirtual 455	com/tencent/mm/plugin/sns/model/a/b:L	(Ljava/io/InputStream;)Z
@@ -286,7 +283,7 @@ public abstract class b
     //   37: iload_2
     //   38: invokestatic 464	java/lang/String:valueOf	(Z)Ljava/lang/String;
     //   41: invokevirtual 467	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   44: invokestatic 191	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   44: invokestatic 191	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   47: iload_2
     //   48: ifne +18 -> 66
     //   51: aload_0
@@ -300,23 +297,23 @@ public abstract class b
     //   65: ireturn
     //   66: aload_0
     //   67: aload_0
-    //   68: getfield 87	com/tencent/mm/plugin/sns/model/a/b:zom	J
-    //   71: invokestatic 347	com/tencent/mm/sdk/platformtools/bt:Df	(J)J
-    //   74: putfield 87	com/tencent/mm/plugin/sns/model/a/b:zom	J
+    //   68: getfield 87	com/tencent/mm/plugin/sns/model/a/b:zFB	J
+    //   71: invokestatic 347	com/tencent/mm/sdk/platformtools/bu:DD	(J)J
+    //   74: putfield 87	com/tencent/mm/plugin/sns/model/a/b:zFB	J
     //   77: aload_0
     //   78: aload_0
-    //   79: getfield 89	com/tencent/mm/plugin/sns/model/a/b:zon	J
-    //   82: invokestatic 347	com/tencent/mm/sdk/platformtools/bt:Df	(J)J
-    //   85: putfield 79	com/tencent/mm/plugin/sns/model/a/b:zok	J
+    //   79: getfield 89	com/tencent/mm/plugin/sns/model/a/b:zFC	J
+    //   82: invokestatic 347	com/tencent/mm/sdk/platformtools/bu:DD	(J)J
+    //   85: putfield 79	com/tencent/mm/plugin/sns/model/a/b:zFz	J
     //   88: aload_0
-    //   89: invokevirtual 473	com/tencent/mm/plugin/sns/model/a/b:dVi	()Z
+    //   89: invokevirtual 473	com/tencent/mm/plugin/sns/model/a/b:dYJ	()Z
     //   92: istore_2
     //   93: ldc 184
     //   95: ldc_w 475
     //   98: iload_2
     //   99: invokestatic 464	java/lang/String:valueOf	(Z)Ljava/lang/String;
     //   102: invokevirtual 467	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   105: invokestatic 191	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   105: invokestatic 191	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   108: iload_2
     //   109: ifne +23 -> 132
     //   112: aload_0
@@ -339,8 +336,8 @@ public abstract class b
     //   141: iconst_1
     //   142: invokespecial 309	com/tencent/mm/plugin/sns/model/a/b:df	(Z)V
     //   145: aload_0
-    //   146: getfield 61	com/tencent/mm/plugin/sns/model/a/b:zoe	Lcom/tencent/mm/plugin/sns/model/a/a;
-    //   149: getfield 277	com/tencent/mm/plugin/sns/model/a/a:znX	Z
+    //   146: getfield 61	com/tencent/mm/plugin/sns/model/a/b:zFt	Lcom/tencent/mm/plugin/sns/model/a/a;
+    //   149: getfield 277	com/tencent/mm/plugin/sns/model/a/a:zFm	Z
     //   152: ifeq +124 -> 276
     //   155: iconst_3
     //   156: ireturn
@@ -359,7 +356,7 @@ public abstract class b
     //   183: invokevirtual 302	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   186: iconst_0
     //   187: anewarray 331	java/lang/Object
-    //   190: invokestatic 335	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   190: invokestatic 335	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   193: aload_0
     //   194: iconst_4
     //   195: putfield 98	com/tencent/mm/plugin/sns/model/a/b:retCode	I
@@ -382,7 +379,7 @@ public abstract class b
     //   225: ldc 65
     //   227: iconst_0
     //   228: anewarray 331	java/lang/Object
-    //   231: invokestatic 335	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   231: invokestatic 335	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   234: goto -23 -> 211
     //   237: astore_3
     //   238: aload 4
@@ -401,7 +398,7 @@ public abstract class b
     //   264: ldc 65
     //   266: iconst_0
     //   267: anewarray 331	java/lang/Object
-    //   270: invokestatic 335	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   270: invokestatic 335	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   273: goto -25 -> 248
     //   276: iconst_1
     //   277: ireturn
@@ -461,7 +458,7 @@ public abstract class b
       paramv = (List)paramv.getHeaderFields().get("cache-control");
       if ((paramv != null) && (paramv.size() != 0))
       {
-        if ((bt.isNullOrNil(paramv.toString())) || (!paramv.toString().contains("no-cache"))) {
+        if ((bu.isNullOrNil(paramv.toString())) || (!paramv.toString().contains("no-cache"))) {
           break label94;
         }
         boolean bool = paramv.toString().contains("no-cache");
@@ -470,7 +467,7 @@ public abstract class b
     }
     catch (Exception paramv)
     {
-      ad.printErrStackTrace("MicroMsg.SnsCdnDownloadBase", paramv, "", new Object[0]);
+      ae.printErrStackTrace("MicroMsg.SnsCdnDownloadBase", paramv, "", new Object[0]);
       return false;
     }
     return true;
@@ -478,9 +475,9 @@ public abstract class b
     return true;
   }
   
-  private void dVj()
+  private void dYK()
   {
-    ad.i("MicroMsg.SnsCdnDownloadBase", "ready to report logbuffer(13346) packageRecordList:%s", new Object[] { this.zop.value });
+    ae.i("MicroMsg.SnsCdnDownloadBase", "ready to report logbuffer(13346) packageRecordList:%s", new Object[] { this.zFE.value });
     int j = getMediaType();
     String str2 = "";
     String str1;
@@ -493,10 +490,10 @@ public abstract class b
       return;
     case 1: 
       str1 = "100105";
-      localObject = com.tencent.mm.model.c.d.aDs().wz(str1);
+      localObject = com.tencent.mm.model.c.d.aDI().xi(str1);
       if (((com.tencent.mm.storage.c)localObject).isValid())
       {
-        i = bt.getInt((String)((com.tencent.mm.storage.c)localObject).foF().get("needUploadData"), 1);
+        i = bu.getInt((String)((com.tencent.mm.storage.c)localObject).fsy().get("needUploadData"), 1);
         str2 = ((com.tencent.mm.storage.c)localObject).field_expId;
       }
       break;
@@ -504,38 +501,38 @@ public abstract class b
     while (i != 0)
     {
       localObject = new com.tencent.mm.modelsns.g();
-      ((com.tencent.mm.modelsns.g)localObject).m("20ImgSize", this.zox + ",");
+      ((com.tencent.mm.modelsns.g)localObject).m("20ImgSize", this.zFM + ",");
       StringBuilder localStringBuilder = new StringBuilder();
-      if (ay.isWifi(aj.getContext())) {}
+      if (az.isWifi(ak.getContext())) {}
       for (i = 1;; i = 0)
       {
         ((com.tencent.mm.modelsns.g)localObject).m("21NetType", i + ",");
-        ((com.tencent.mm.modelsns.g)localObject).m("22DelayTime", this.zok - this.zol + ",");
+        ((com.tencent.mm.modelsns.g)localObject).m("22DelayTime", this.zFz - this.zFA + ",");
         ((com.tencent.mm.modelsns.g)localObject).m("23RetCode", this.retCode + ",");
         ((com.tencent.mm.modelsns.g)localObject).m("24DnsCostTime", this.dnsCostTime + ",");
-        ((com.tencent.mm.modelsns.g)localObject).m("25ConnectCostTime", this.zol + ",");
+        ((com.tencent.mm.modelsns.g)localObject).m("25ConnectCostTime", this.zFA + ",");
         ((com.tencent.mm.modelsns.g)localObject).m("26SendCostTime", ",");
-        ((com.tencent.mm.modelsns.g)localObject).m("27WaitResponseCostTime", this.zos + ",");
-        ((com.tencent.mm.modelsns.g)localObject).m("28ReceiveCostTime", this.zom + ",");
-        ((com.tencent.mm.modelsns.g)localObject).m("29ClientAddrIP", this.zog + ",");
-        ((com.tencent.mm.modelsns.g)localObject).m("30ServerAddrIP", this.zoh + ",");
-        ((com.tencent.mm.modelsns.g)localObject).m("31dnstype", this.iEz + ",");
-        ((com.tencent.mm.modelsns.g)localObject).m("32signal", ay.getStrength(aj.getContext()) + ",");
+        ((com.tencent.mm.modelsns.g)localObject).m("27WaitResponseCostTime", this.zFH + ",");
+        ((com.tencent.mm.modelsns.g)localObject).m("28ReceiveCostTime", this.zFB + ",");
+        ((com.tencent.mm.modelsns.g)localObject).m("29ClientAddrIP", this.zFv + ",");
+        ((com.tencent.mm.modelsns.g)localObject).m("30ServerAddrIP", this.zFw + ",");
+        ((com.tencent.mm.modelsns.g)localObject).m("31dnstype", this.iHs + ",");
+        ((com.tencent.mm.modelsns.g)localObject).m("32signal", az.getStrength(ak.getContext()) + ",");
         ((com.tencent.mm.modelsns.g)localObject).m("33host", this.host + ",");
         ((com.tencent.mm.modelsns.g)localObject).m("34MediaType", j + ",");
-        ((com.tencent.mm.modelsns.g)localObject).m("35X_Errno", this.zoi + ",");
-        ((com.tencent.mm.modelsns.g)localObject).m("36MaxPackageSize", this.zoq + ",");
-        ((com.tencent.mm.modelsns.g)localObject).m("37MaxPackageTimeStamp", this.zor + ",");
-        ((com.tencent.mm.modelsns.g)localObject).m("38PackageRecordList", this.zop.value + ",");
+        ((com.tencent.mm.modelsns.g)localObject).m("35X_Errno", this.zFx + ",");
+        ((com.tencent.mm.modelsns.g)localObject).m("36MaxPackageSize", this.zFF + ",");
+        ((com.tencent.mm.modelsns.g)localObject).m("37MaxPackageTimeStamp", this.zFG + ",");
+        ((com.tencent.mm.modelsns.g)localObject).m("38PackageRecordList", this.zFE.value + ",");
         ((com.tencent.mm.modelsns.g)localObject).m("39ExpLayerId", str1 + ",");
         ((com.tencent.mm.modelsns.g)localObject).m("40ExpId", str2 + ",");
         ((com.tencent.mm.modelsns.g)localObject).m("41FeedId", ",");
-        ad.i("MicroMsg.SnsCdnDownloadBase", "report logbuffer(13480 TLMediaFielDownloadRecord): " + ((com.tencent.mm.modelsns.g)localObject).RE());
-        com.tencent.mm.plugin.report.service.g.yhR.f(13480, new Object[] { localObject });
+        ae.i("MicroMsg.SnsCdnDownloadBase", "report logbuffer(13480 TLMediaFielDownloadRecord): " + ((com.tencent.mm.modelsns.g)localObject).RD());
+        com.tencent.mm.plugin.report.service.g.yxI.f(13480, new Object[] { localObject });
         if (this.retCode == 200) {
           break;
         }
-        com.tencent.mm.plugin.report.service.g.yhR.f(14071, new Object[] { localObject });
+        com.tencent.mm.plugin.report.service.g.yxI.f(14071, new Object[] { localObject });
         return;
         str1 = "100106";
         break label65;
@@ -557,89 +554,89 @@ public abstract class b
     String str1;
     label179:
     int m;
-    if ((this.zoe != null) && (this.zoe.znY)) {
+    if ((this.zFt != null) && (this.zFt.zFn)) {
       if (!paramBoolean)
       {
-        com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(22L, 74L, 1L, true);
-        com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(22L, 73L, 1L, true);
-        if ((this.zoe != null) && (this.zoe.znX) && (!paramBoolean) && (!q.b(this.zod))) {
-          com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(150L, 66L, 1L, true);
+        com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(22L, 74L, 1L, true);
+        com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(22L, 73L, 1L, true);
+        if ((this.zFt != null) && (this.zFt.zFm) && (!paramBoolean) && (!r.b(this.zFs))) {
+          com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(150L, 66L, 1L, true);
         }
-        this.cdl = this.zox;
-        if (!ay.isWifi(aj.getContext())) {
+        this.cdl = this.zFM;
+        if (!az.isWifi(ak.getContext())) {
           break label735;
         }
         j = 1;
-        k = ay.getStrength(aj.getContext());
-        i = this.iEz;
+        k = az.getStrength(ak.getContext());
+        i = this.iHs;
         l1 = this.dnsCostTime;
-        l2 = this.zol;
-        long l3 = this.zom;
-        long l4 = this.zok;
-        localObject = this.zof;
-        String str2 = this.zoh;
-        String str3 = this.zog;
-        if (this.zoe != null) {
+        l2 = this.zFA;
+        long l3 = this.zFB;
+        long l4 = this.zFz;
+        localObject = this.zFu;
+        String str2 = this.zFw;
+        String str3 = this.zFv;
+        if (this.zFt != null) {
           break label740;
         }
         str1 = "";
-        ad.v("MicroMsg.SnsCdnDownloadBase", "report dns:%d wifi:%d signal:%d [%d,%d,%d]%d serverIp:[%s,%s] xclientip:%s url[%s]", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), Long.valueOf(l1), Long.valueOf(l2), Long.valueOf(l3), Long.valueOf(l4), localObject, str2, str3, str1 });
-        m = ay.getNetType(aj.getContext());
+        ae.v("MicroMsg.SnsCdnDownloadBase", "report dns:%d wifi:%d signal:%d [%d,%d,%d]%d serverIp:[%s,%s] xclientip:%s url[%s]", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), Long.valueOf(l1), Long.valueOf(l2), Long.valueOf(l3), Long.valueOf(l4), localObject, str2, str3, str1 });
+        m = az.getNetType(ak.getContext());
         i = 0;
-        if (this.zoe != null)
+        if (this.zFt != null)
         {
-          if (this.zoe.znZ != 4) {
+          if (this.zFt.zFo != 4) {
             break label752;
           }
           i = 1;
         }
         label301:
-        ad.i("MicroMsg.SnsCdnDownloadBase", "retCode :%d totalSize: %d net: %d downloadType %d xErrorNo %d", new Object[] { Integer.valueOf(this.retCode), Integer.valueOf(this.cdl), Integer.valueOf(m), Integer.valueOf(i), Integer.valueOf(this.zoi) });
-        localObject = com.tencent.mm.plugin.report.service.g.yhR;
-        if (this.zoe != null) {
+        ae.i("MicroMsg.SnsCdnDownloadBase", "retCode :%d totalSize: %d net: %d downloadType %d xErrorNo %d", new Object[] { Integer.valueOf(this.retCode), Integer.valueOf(this.cdl), Integer.valueOf(m), Integer.valueOf(i), Integer.valueOf(this.zFx) });
+        localObject = com.tencent.mm.plugin.report.service.g.yxI;
+        if (this.zFt != null) {
           break label757;
         }
         str1 = "";
         label374:
-        l2 = azw(this.zoh);
+        l2 = aAN(this.zFw);
         if (!paramBoolean) {
           break label769;
         }
       }
     }
     label769:
-    for (long l1 = this.zok;; l1 = 0L)
+    for (long l1 = this.zFz;; l1 = 0L)
     {
-      ((com.tencent.mm.plugin.report.service.g)localObject).f(10736, new Object[] { str1, Long.valueOf(l2), Long.valueOf(l1), "", Integer.valueOf(j), Long.valueOf(this.dnsCostTime), Long.valueOf(this.zol), Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(this.zom), Long.valueOf(azw(this.zog)), Long.valueOf(azw(this.zof)), Integer.valueOf(this.iEz), Integer.valueOf(k), Integer.valueOf(this.retCode), Integer.valueOf(this.cdl), Integer.valueOf(m), Integer.valueOf(i), Integer.valueOf(this.zoi) });
-      boolean bool = ay.isConnected(aj.getContext());
-      ad.d("MicroMsg.SnsCdnDownloadBase", "isConntected  " + bool + " urlIp: " + this.zoo);
-      if ((!paramBoolean) && (!bt.isNullOrNil(this.zoo)) && (bool)) {
-        com.tencent.mm.network.b.reportFailIp(this.zoo);
+      ((com.tencent.mm.plugin.report.service.g)localObject).f(10736, new Object[] { str1, Long.valueOf(l2), Long.valueOf(l1), "", Integer.valueOf(j), Long.valueOf(this.dnsCostTime), Long.valueOf(this.zFA), Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(this.zFB), Long.valueOf(aAN(this.zFv)), Long.valueOf(aAN(this.zFu)), Integer.valueOf(this.iHs), Integer.valueOf(k), Integer.valueOf(this.retCode), Integer.valueOf(this.cdl), Integer.valueOf(m), Integer.valueOf(i), Integer.valueOf(this.zFx) });
+      boolean bool = az.isConnected(ak.getContext());
+      ae.d("MicroMsg.SnsCdnDownloadBase", "isConntected  " + bool + " urlIp: " + this.zFD);
+      if ((!paramBoolean) && (!bu.isNullOrNil(this.zFD)) && (bool)) {
+        com.tencent.mm.network.b.reportFailIp(this.zFD);
       }
-      dVj();
+      dYK();
       return;
-      com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(22L, 75L, this.zok, true);
+      com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(22L, 75L, this.zFz, true);
       break;
       if (!paramBoolean) {
-        com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(22L, 52L, 1L, true);
+        com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(22L, 52L, 1L, true);
       }
       for (;;)
       {
-        com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(22L, 51L, 1L, true);
+        com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(22L, 51L, 1L, true);
         break;
-        com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(22L, 53L, this.zok, true);
+        com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(22L, 53L, this.zFz, true);
       }
       label735:
       j = 0;
       break label113;
       label740:
-      str1 = this.zoe.url;
+      str1 = this.zFt.url;
       break label179;
       label752:
       i = 0;
       break label301;
       label757:
-      str1 = this.zoe.url;
+      str1 = this.zFt.url;
       break label374;
     }
   }
@@ -651,7 +648,7 @@ public abstract class b
     return paramv;
   }
   
-  public final boolean a(bj parambj, String paramString1, long paramLong, String paramString2)
+  public final boolean a(bk parambk, String paramString1, long paramLong, String paramString2)
   {
     if (paramString1 == null) {}
     for (;;)
@@ -660,153 +657,153 @@ public abstract class b
       try
       {
         paramString1 = new URL(paramString1);
-        if ((parambj != null) && (paramString2 != null) && (paramString2.indexOf(paramString1.getHost()) != -1) && (parambj.hbR != 0))
+        if ((parambk != null) && (paramString2 != null) && (paramString2.indexOf(paramString1.getHost()) != -1) && (parambk.heF != 0))
         {
-          long l = bt.rM(parambj.hbR);
+          long l = bu.rZ(parambk.heF);
           if (l > paramLong) {
             return true;
           }
         }
       }
-      catch (Exception parambj)
+      catch (Exception parambk)
       {
-        ad.e("MicroMsg.SnsCdnDownloadBase", "error for check dcip %s", new Object[] { parambj.getMessage() });
+        ae.e("MicroMsg.SnsCdnDownloadBase", "error for check dcip %s", new Object[] { parambk.getMessage() });
       }
     }
     return false;
   }
   
-  public String azv(String paramString)
+  public String aAM(String paramString)
   {
     return paramString;
   }
   
-  public final ExecutorService dCe()
+  public final ExecutorService dFv()
   {
-    return ag.dTO();
+    return ah.dXo();
   }
   
-  public boolean dVh()
+  public boolean dYI()
   {
     return true;
   }
   
-  public abstract boolean dVi();
+  public abstract boolean dYJ();
   
-  public final Integer dVk()
+  public final Integer dYL()
   {
-    com.tencent.mm.kernel.g.ajD();
-    if ((!com.tencent.mm.kernel.g.ajC().isSDCardAvailable()) || (this.zoe == null))
+    com.tencent.mm.kernel.g.ajS();
+    if ((!com.tencent.mm.kernel.g.ajR().isSDCardAvailable()) || (this.zFt == null))
     {
       df(false);
       return Integer.valueOf(2);
     }
-    if (dVh())
+    if (dYI())
     {
-      localObject1 = this.zoe.zhn + this.zoe.dVg();
-      ad.i("MicroMsg.SnsCdnDownloadBase", "[tomys] delete img: %s", new Object[] { localObject1 });
-      i.deleteFile((String)localObject1);
+      localObject1 = this.zFt.zyc + this.zFt.dYH();
+      ae.i("MicroMsg.SnsCdnDownloadBase", "[tomys] delete img: %s", new Object[] { localObject1 });
+      o.deleteFile((String)localObject1);
     }
     long l3 = System.currentTimeMillis();
-    this.zon = System.currentTimeMillis();
-    ad.d("MicroMsg.SnsCdnDownloadBase", "to downloadBitmap " + this.zoe.mediaId + " " + this.zoe.znX + " type " + this.zoe.znZ);
-    i.aYg(this.zoe.getPath());
-    Object localObject3 = this.zoe.zoa;
+    this.zFC = System.currentTimeMillis();
+    ae.d("MicroMsg.SnsCdnDownloadBase", "to downloadBitmap " + this.zFt.mediaId + " " + this.zFt.zFm + " type " + this.zFt.zFo);
+    o.aZI(this.zFt.getPath());
+    Object localObject3 = this.zFt.zFp;
     Object localObject1 = "";
     Object localObject2;
     if (localObject3 == null)
     {
       localObject1 = "";
-      localObject2 = bj.ILV;
+      localObject2 = bk.JgC;
     }
     for (;;)
     {
       localObject3 = localObject1;
-      if (!bt.isNullOrNil((String)localObject1)) {
+      if (!bu.isNullOrNil((String)localObject1)) {
         localObject3 = "&scene=".concat(String.valueOf(localObject1));
       }
-      String str2 = String.format("http://weixin.qq.com/?version=%d&uin=%s&nettype=%d&signal=%d%s", new Object[] { Integer.valueOf(com.tencent.mm.protocal.d.Fnj), p.getString(ag.dTK()), Integer.valueOf(ay.getNetTypeForStat(aj.getContext())), Integer.valueOf(ay.getStrength(aj.getContext())), localObject3 });
-      this.zoe.url = azv(this.zoe.url);
-      this.dnsCostTime = bt.flT();
+      String str2 = String.format("http://weixin.qq.com/?version=%d&uin=%s&nettype=%d&signal=%d%s", new Object[] { Integer.valueOf(com.tencent.mm.protocal.d.FFH), p.getString(ah.dXk()), Integer.valueOf(az.getNetTypeForStat(ak.getContext())), Integer.valueOf(az.getStrength(ak.getContext())), localObject3 });
+      this.zFt.url = aAM(this.zFt.url);
+      this.dnsCostTime = bu.fpO();
       label326:
       label341:
       boolean bool;
-      if (this.zoe.znY)
+      if (this.zFt.zFn)
       {
         localObject1 = "SnsSightDomainList";
-        if (!this.zoe.znY) {
+        if (!this.zFt.zFn) {
           break label934;
         }
         localObject3 = "SnsSightMainStandbyIpSwitchTime";
-        localObject1 = com.tencent.mm.n.g.acA().getValue((String)localObject1);
-        long l2 = com.tencent.mm.n.g.acA().getInt((String)localObject3, 0);
-        ad.i("MicroMsg.SnsCdnDownloadBase", "pack.isAlbum %s pack.isthumb %s hostvalue %s dcipTime %s", new Object[] { Boolean.valueOf(this.zoe.znY), Boolean.valueOf(this.zoe.znX), localObject1, Long.valueOf(l2) });
+        localObject1 = com.tencent.mm.n.g.acL().getValue((String)localObject1);
+        long l2 = com.tencent.mm.n.g.acL().getInt((String)localObject3, 0);
+        ae.i("MicroMsg.SnsCdnDownloadBase", "pack.isAlbum %s pack.isthumb %s hostvalue %s dcipTime %s", new Object[] { Boolean.valueOf(this.zFt.zFn), Boolean.valueOf(this.zFt.zFm), localObject1, Long.valueOf(l2) });
         long l1 = l2;
         if (l2 <= 0L) {
           l1 = 259200L;
         }
-        bool = a((bj)localObject2, this.zoe.url, l1, (String)localObject1);
-        localObject3 = new b.b(this.zoe.url, bool);
-        this.dnsCostTime = bt.Df(this.dnsCostTime);
+        bool = a((bk)localObject2, this.zFt.url, l1, (String)localObject1);
+        localObject3 = new b.b(this.zFt.url, bool);
+        this.dnsCostTime = bu.DD(this.dnsCostTime);
       }
       try
       {
-        if (bt.isNullOrNil(((b.b)localObject3).ip)) {}
+        if (bu.isNullOrNil(((b.b)localObject3).ip)) {}
         for (localObject1 = InetAddress.getByName(((b.b)localObject3).host).getHostAddress();; localObject1 = ((b.b)localObject3).ip)
         {
-          ad.i("MicroMsg.SnsCdnDownloadBase", "checkAndGetHttpConn[%s] [%s] [id:%s] host ip:%d[%s] [%s] download type[%d] isDcIp[%s] fromScene[%s]", new Object[] { str2, this.zoe.url, this.zoe.mediaId, Integer.valueOf(((b.b)localObject3).iEz), localObject1, this.zoe.url, Integer.valueOf(this.zoe.znZ), Boolean.valueOf(bool), ((bj)localObject2).toString() });
-          this.zoj = 1;
+          ae.i("MicroMsg.SnsCdnDownloadBase", "checkAndGetHttpConn[%s] [%s] [id:%s] host ip:%d[%s] [%s] download type[%d] isDcIp[%s] fromScene[%s]", new Object[] { str2, this.zFt.url, this.zFt.mediaId, Integer.valueOf(((b.b)localObject3).iHs), localObject1, this.zFt.url, Integer.valueOf(this.zFt.zFo), Boolean.valueOf(bool), ((bk)localObject2).toString() });
+          this.zFy = 1;
           localObject1 = a((b.b)localObject3, str2);
           localObject2 = ((b.b)localObject3).ip;
           if (localObject1 == null) {
             break label962;
           }
           bool = true;
-          ad.i("MicroMsg.SnsCdnDownloadBase", "[sns ip strategy]connect ip:%s, result:%b, canRetry(X-RtFlag):%d, isDC(cold ip):%b, url:%s", new Object[] { localObject2, Boolean.valueOf(bool), Integer.valueOf(this.zoj), Boolean.valueOf(((b.b)localObject3).iEC), ((b.b)localObject3).iEB });
+          ae.i("MicroMsg.SnsCdnDownloadBase", "[sns ip strategy]connect ip:%s, result:%b, canRetry(X-RtFlag):%d, isDC(cold ip):%b, url:%s", new Object[] { localObject2, Boolean.valueOf(bool), Integer.valueOf(this.zFy), Boolean.valueOf(((b.b)localObject3).iHv), ((b.b)localObject3).iHu });
           int i = 2;
           if (localObject1 != null) {
             i = b((v)localObject1);
           }
-          ad.i("MicroMsg.SnsCdnDownloadBase", "DOWN FIN time:%d down:%d mediaId:%s url[%s], size %d", new Object[] { Long.valueOf(bt.Df(l3)), Long.valueOf(this.zok), this.zoe.mediaId, this.zoe.url, Integer.valueOf(this.zox) });
+          ae.i("MicroMsg.SnsCdnDownloadBase", "DOWN FIN time:%d down:%d mediaId:%s url[%s], size %d", new Object[] { Long.valueOf(bu.DD(l3)), Long.valueOf(this.zFz), this.zFt.mediaId, this.zFt.url, Integer.valueOf(this.zFM) });
           return Integer.valueOf(i);
-          if (((bj)localObject3).equals(bj.ILO))
+          if (((bk)localObject3).equals(bk.Jgv))
           {
             localObject1 = "album_friend";
             localObject2 = localObject3;
             break;
           }
-          if (((bj)localObject3).equals(bj.ILP))
+          if (((bk)localObject3).equals(bk.Jgw))
           {
             localObject1 = "album_self";
             localObject2 = localObject3;
             break;
           }
-          if (((bj)localObject3).equals(bj.ILQ))
+          if (((bk)localObject3).equals(bk.Jgx))
           {
             localObject1 = "album_stranger";
             localObject2 = localObject3;
             break;
           }
-          if (((bj)localObject3).equals(bj.ILR))
+          if (((bk)localObject3).equals(bk.Jgy))
           {
             localObject1 = "profile_friend";
             localObject2 = localObject3;
             break;
           }
-          if (((bj)localObject3).equals(bj.ILS))
+          if (((bk)localObject3).equals(bk.Jgz))
           {
             localObject1 = "profile_stranger";
             localObject2 = localObject3;
             break;
           }
-          if (((bj)localObject3).equals(bj.ILT))
+          if (((bk)localObject3).equals(bk.JgA))
           {
             localObject1 = "comment";
             localObject2 = localObject3;
             break;
           }
           localObject2 = localObject3;
-          if (!((bj)localObject3).equals(bj.ILN)) {
+          if (!((bk)localObject3).equals(bk.Jgu)) {
             break;
           }
           localObject1 = "timeline";
@@ -832,75 +829,75 @@ public abstract class b
     }
   }
   
-  public final void dVl()
+  public final void dYM()
   {
-    if (ag.dTN()) {
+    if (ah.dXn()) {
       return;
     }
     System.currentTimeMillis();
     Object localObject1;
     Object localObject2;
-    if (this.zoe.zcG.zds == 4)
+    if (this.zFt.ztw.zui == 4)
     {
-      ad.i("MicroMsg.SnsCdnDownloadBase", "decodeType blur thumb");
-      localObject1 = q.d(this.dIQ);
-      localObject2 = q.f(this.dIQ);
-      this.zod = com.tencent.mm.plugin.sns.lucky.a.a.jj(this.zoe.getPath() + (String)localObject1, this.zoe.getPath() + (String)localObject2);
-      ag.dUb().a(this.zoe.mediaId, this.zod, this.zoe.zcG.zds);
+      ae.i("MicroMsg.SnsCdnDownloadBase", "decodeType blur thumb");
+      localObject1 = r.d(this.dKe);
+      localObject2 = r.f(this.dKe);
+      this.zFs = com.tencent.mm.plugin.sns.lucky.a.a.jq(this.zFt.getPath() + (String)localObject1, this.zFt.getPath() + (String)localObject2);
+      ah.dXB().a(this.zFt.mediaId, this.zFs, this.zFt.ztw.zui);
       label132:
       localObject1 = null;
-      if (this.zoe.zcG.zds != 0) {
+      if (this.zFt.ztw.zui != 0) {
         break label593;
       }
-      localObject1 = "0-" + this.zoe.zcG.dwW;
+      localObject1 = "0-" + this.zFt.ztw.dyb;
     }
     for (;;)
     {
-      ag.dUb().ayL((String)localObject1);
+      ah.dXB().aAc((String)localObject1);
       return;
-      if (this.zoe.zcG.zds == 5)
+      if (this.zFt.ztw.zui == 5)
       {
-        ad.i("MicroMsg.SnsCdnDownloadBase", "decodeType blur grid");
-        localObject1 = q.d(this.dIQ);
-        localObject2 = q.g(this.dIQ);
-        this.zod = com.tencent.mm.plugin.sns.lucky.a.a.jj(this.zoe.getPath() + (String)localObject1, this.zoe.getPath() + (String)localObject2);
-        ag.dUb().a(this.zoe.mediaId, this.zod, this.zoe.zcG.zds);
+        ae.i("MicroMsg.SnsCdnDownloadBase", "decodeType blur grid");
+        localObject1 = r.d(this.dKe);
+        localObject2 = r.g(this.dKe);
+        this.zFs = com.tencent.mm.plugin.sns.lucky.a.a.jq(this.zFt.getPath() + (String)localObject1, this.zFt.getPath() + (String)localObject2);
+        ah.dXB().a(this.zFt.mediaId, this.zFs, this.zFt.ztw.zui);
         break label132;
       }
-      if (this.zoe.zcG.list.size() <= 1)
+      if (this.zFt.ztw.list.size() <= 1)
       {
-        ag.dUb().a(this.zoe.mediaId, this.zod, this.zoe.zcG.zds);
+        ah.dXB().a(this.zFt.mediaId, this.zFs, this.zFt.ztw.zui);
         break label132;
       }
-      ag.dUb().a(this.zoe.mediaId, this.zod, 0);
+      ah.dXB().a(this.zFt.mediaId, this.zFs, 0);
       localObject1 = new LinkedList();
       int i = 0;
       for (;;)
       {
-        if ((i >= this.zoe.zcG.list.size()) || (i >= 4)) {
+        if ((i >= this.zFt.ztw.list.size()) || (i >= 4)) {
           break label501;
         }
-        localObject2 = (byn)this.zoe.zcG.list.get(i);
-        n localn = ag.dUb().ayM(((byn)localObject2).Id);
-        if (!q.b(localn)) {
+        localObject2 = (bzh)this.zFt.ztw.list.get(i);
+        com.tencent.mm.memory.n localn = ah.dXB().aAd(((bzh)localObject2).Id);
+        if (!r.b(localn)) {
           break;
         }
         ((List)localObject1).add(localn);
-        ad.i("MicroMsg.SnsCdnDownloadBase", "merge bitmap from " + localn + " " + ((byn)localObject2).Id);
+        ae.i("MicroMsg.SnsCdnDownloadBase", "merge bitmap from " + localn + " " + ((bzh)localObject2).Id);
         i += 1;
       }
       label501:
-      this.zod = n.D(q.u((List)localObject1, ag.dUp()));
-      ad.i("MicroMsg.SnsCdnDownloadBase", "merge bitmap " + this.zoe.zcG.dwW + " " + this.zod);
-      ag.dUb().a(this.zoe.zcG.dwW, this.zod, this.zoe.zcG.zds);
+      this.zFs = com.tencent.mm.memory.n.E(r.v((List)localObject1, ah.dXP()));
+      ae.i("MicroMsg.SnsCdnDownloadBase", "merge bitmap " + this.zFt.ztw.dyb + " " + this.zFs);
+      ah.dXB().a(this.zFt.ztw.dyb, this.zFs, this.zFt.ztw.zui);
       break label132;
       label593:
-      if (this.zoe.zcG.zds == 1) {
-        localObject1 = "1-" + this.zoe.zcG.dwW;
-      } else if (this.zoe.zcG.zds == 4) {
-        localObject1 = "4-" + this.zoe.zcG.dwW;
-      } else if (this.zoe.zcG.zds == 5) {
-        localObject1 = "5-" + this.zoe.zcG.dwW;
+      if (this.zFt.ztw.zui == 1) {
+        localObject1 = "1-" + this.zFt.ztw.dyb;
+      } else if (this.zFt.ztw.zui == 4) {
+        localObject1 = "4-" + this.zFt.ztw.dyb;
+      } else if (this.zFt.ztw.zui == 5) {
+        localObject1 = "5-" + this.zFt.ztw.dyb;
       }
     }
   }
@@ -910,24 +907,24 @@ public abstract class b
   public final void onPostExecute(Integer paramInteger)
   {
     super.onPostExecute(paramInteger);
-    if (this.zoe == null) {
+    if (this.zFt == null) {
       return;
     }
-    ad.i("MicroMsg.SnsCdnDownloadBase", "download done result: %d, url:%s, mediaID:%s, totalSize: %d, runningTasksSize: %d", new Object[] { paramInteger, this.zoe.url, this.zoe.mediaId, Integer.valueOf(this.cdl), Integer.valueOf(zov.size()) });
-    zov.remove(this.zoe.zhr);
-    if ((this.zoe.znX) && (paramInteger.intValue() != 2))
+    ae.i("MicroMsg.SnsCdnDownloadBase", "download done result: %d, url:%s, mediaID:%s, totalSize: %d, runningTasksSize: %d", new Object[] { paramInteger, this.zFt.url, this.zFt.mediaId, Integer.valueOf(this.cdl), Integer.valueOf(zFK.size()) });
+    zFK.remove(this.zFt.zyg);
+    if ((this.zFt.zFm) && (paramInteger.intValue() != 2))
     {
-      ba.eY(this.zoe.mediaId, this.zoe.mediaType);
-      dVl();
+      bb.fh(this.zFt.mediaId, this.zFt.mediaType);
+      dYM();
     }
     for (;;)
     {
-      this.zoc.a(paramInteger.intValue(), this.dIQ, this.zoe.znZ, this.zoe.znX, this.zoe.zhr, this.cdl, -1, true);
+      this.zFr.a(paramInteger.intValue(), this.dKe, this.zFt.zFo, this.zFt.zFm, this.zFt.zyg, this.cdl, -1, true);
       return;
-      if ((!this.zoe.znX) && (this.zoe.znZ == 4))
+      if ((!this.zFt.zFm) && (this.zFt.zFo == 4))
       {
-        String str = this.zoe.getPath() + q.i(this.dIQ);
-        ag.dUb().jl(this.zoe.mediaId, str);
+        String str = this.zFt.getPath() + r.i(this.dKe);
+        ah.dXB().js(this.zFt.mediaId, str);
       }
     }
   }

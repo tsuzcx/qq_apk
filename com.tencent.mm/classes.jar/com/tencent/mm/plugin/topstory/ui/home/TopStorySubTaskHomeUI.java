@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.a;
 
@@ -13,12 +13,12 @@ import com.tencent.mm.ui.base.a;
 public class TopStorySubTaskHomeUI
   extends MMActivity
 {
-  private b Bsh;
+  private b BJG;
   
   public TopStorySubTaskHomeUI()
   {
     AppMethodBeat.i(126020);
-    this.Bsh = new b(this, false);
+    this.BJG = new b(this, false);
     AppMethodBeat.o(126020);
   }
   
@@ -31,15 +31,15 @@ public class TopStorySubTaskHomeUI
   {
     AppMethodBeat.i(126021);
     super.onCreate(paramBundle);
-    ad.i("MicroMsg.TopStory.TopStoryHomeUI", "use TopStoryHomeUI");
-    this.Bsh.onCreate(paramBundle);
+    ae.i("MicroMsg.TopStory.TopStoryHomeUI", "use TopStoryHomeUI");
+    this.BJG.onCreate(paramBundle);
     AppMethodBeat.o(126021);
   }
   
   public void onDestroy()
   {
     AppMethodBeat.i(126025);
-    this.Bsh.onDestroy();
+    this.BJG.onDestroy();
     super.onDestroy();
     AppMethodBeat.o(126025);
   }
@@ -47,7 +47,7 @@ public class TopStorySubTaskHomeUI
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
     AppMethodBeat.i(126022);
-    boolean bool = this.Bsh.SV(paramInt);
+    boolean bool = this.BJG.TC(paramInt);
     AppMethodBeat.o(126022);
     return bool;
   }
@@ -55,7 +55,7 @@ public class TopStorySubTaskHomeUI
   public void onNewIntent(Intent paramIntent)
   {
     AppMethodBeat.i(126026);
-    this.Bsh.onNewIntent(paramIntent);
+    this.BJG.onNewIntent(paramIntent);
     super.onNewIntent(paramIntent);
     AppMethodBeat.o(126026);
   }
@@ -63,7 +63,7 @@ public class TopStorySubTaskHomeUI
   public void onPause()
   {
     AppMethodBeat.i(126024);
-    this.Bsh.onPause();
+    this.BJG.onPause();
     super.onPause();
     AppMethodBeat.o(126024);
   }
@@ -72,7 +72,7 @@ public class TopStorySubTaskHomeUI
   {
     AppMethodBeat.i(126023);
     super.onResume();
-    this.Bsh.onResume();
+    this.BJG.onResume();
     AppMethodBeat.o(126023);
   }
   
@@ -80,7 +80,7 @@ public class TopStorySubTaskHomeUI
   {
     AppMethodBeat.i(126027);
     super.onSaveInstanceState(paramBundle);
-    this.Bsh.onSaveInstanceState(paramBundle);
+    this.BJG.onSaveInstanceState(paramBundle);
     AppMethodBeat.o(126027);
   }
   

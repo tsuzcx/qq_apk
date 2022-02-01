@@ -3,31 +3,31 @@ package com.tencent.mm.plugin.appbrand.appstorage.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.appstorage.FileStat;
 import com.tencent.mm.plugin.appbrand.appstorage.FileStructStat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import d.g.b.p;
 import d.l;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/appstorage/compatibility/AppBrandFileUtilsCompat;", "", "()V", "TAG", "", "cleanDirectory", "", "directory", "Ljava/io/File;", "deleteDirectory", "forceDelete", "file", "isSymlink", "", "moveDirectory", "srcDir", "destDir", "verifiedListFiles", "", "(Ljava/io/File;)[Ljava/io/File;", "plugin-appbrand-integration_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/appstorage/compatibility/AppBrandFileUtilsCompat;", "", "()V", "TAG", "", "cleanDirectory", "", "directory", "Ljava/io/File;", "deleteDirectory", "forceDelete", "file", "isSymlink", "", "moveDirectory", "srcDir", "destDir", "verifiedListFiles", "", "(Ljava/io/File;)[Ljava/io/File;", "plugin-appbrand-integration_release"})
 public final class a
 {
-  public static final a jNK;
+  public static final a jRb;
   
   static
   {
-    AppMethodBeat.i(188984);
-    jNK = new a();
-    AppMethodBeat.o(188984);
+    AppMethodBeat.i(223243);
+    jRb = new a();
+    AppMethodBeat.o(223243);
   }
   
   private static boolean F(File paramFile)
   {
-    AppMethodBeat.i(188983);
+    AppMethodBeat.i(223242);
     if (!paramFile.exists())
     {
-      AppMethodBeat.o(188983);
+      AppMethodBeat.o(223242);
       return false;
     }
     try
@@ -35,27 +35,27 @@ public final class a
       FileStructStat localFileStructStat = new FileStructStat();
       if (FileStat.stat(paramFile.getAbsolutePath(), localFileStructStat) == 0)
       {
-        ad.i("MicroMsg.AppBrandFileUtilsCompat", "constainsSymLink, path %s, stat.st_mode %d", new Object[] { paramFile.getAbsolutePath(), Integer.valueOf(localFileStructStat.st_mode) });
+        ae.i("MicroMsg.AppBrandFileUtilsCompat", "constainsSymLink, path %s, stat.st_mode %d", new Object[] { paramFile.getAbsolutePath(), Integer.valueOf(localFileStructStat.st_mode) });
         boolean bool = localFileStructStat.isSymLink();
-        AppMethodBeat.o(188983);
+        AppMethodBeat.o(223242);
         return bool;
       }
     }
     catch (Exception paramFile)
     {
-      ad.printErrStackTrace("MicroMsg.AppBrandFileUtilsCompat", (Throwable)paramFile, "", new Object[0]);
-      AppMethodBeat.o(188983);
+      ae.printErrStackTrace("MicroMsg.AppBrandFileUtilsCompat", (Throwable)paramFile, "", new Object[0]);
+      AppMethodBeat.o(223242);
     }
     return false;
   }
   
   public final void deleteDirectory(File paramFile)
   {
-    AppMethodBeat.i(188982);
+    AppMethodBeat.i(223241);
     p.h(paramFile, "directory");
     if (!paramFile.exists())
     {
-      AppMethodBeat.o(188982);
+      AppMethodBeat.o(223241);
       return;
     }
     File[] arrayOfFile;
@@ -67,20 +67,20 @@ public final class a
       if (!paramFile.exists())
       {
         paramFile = (Throwable)new IllegalArgumentException(paramFile + " does not exist");
-        AppMethodBeat.o(188982);
+        AppMethodBeat.o(223241);
         throw paramFile;
       }
       if (!paramFile.isDirectory())
       {
         paramFile = (Throwable)new IllegalArgumentException(paramFile + " is not a directory");
-        AppMethodBeat.o(188982);
+        AppMethodBeat.o(223241);
         throw paramFile;
       }
       arrayOfFile = paramFile.listFiles();
       if (arrayOfFile == null)
       {
         paramFile = (Throwable)new IOException("Failed to list contents of ".concat(String.valueOf(paramFile)));
-        AppMethodBeat.o(188982);
+        AppMethodBeat.o(223241);
         throw paramFile;
       }
       localThrowable = null;
@@ -107,11 +107,11 @@ public final class a
         if (!bool)
         {
           localThrowable = (Throwable)new FileNotFoundException("File does not exist: ".concat(String.valueOf(localFile)));
-          AppMethodBeat.o(188982);
+          AppMethodBeat.o(223241);
           throw localThrowable;
         }
         localThrowable = (Throwable)new IOException("Unable to delete file: ".concat(String.valueOf(localFile)));
-        AppMethodBeat.o(188982);
+        AppMethodBeat.o(223241);
         throw localThrowable;
       }
       catch (IOException localIOException)
@@ -121,16 +121,16 @@ public final class a
       if (localThrowable != null)
       {
         paramFile = (Throwable)localThrowable;
-        AppMethodBeat.o(188982);
+        AppMethodBeat.o(223241);
         throw paramFile;
       }
       if (!paramFile.delete())
       {
         paramFile = (Throwable)new IOException("Unable to delete directory " + paramFile + '.');
-        AppMethodBeat.o(188982);
+        AppMethodBeat.o(223241);
         throw paramFile;
       }
-      AppMethodBeat.o(188982);
+      AppMethodBeat.o(223241);
       return;
       label344:
       i += 1;
@@ -139,7 +139,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appstorage.b.a
  * JD-Core Version:    0.7.0.1
  */

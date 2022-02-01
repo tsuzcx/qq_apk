@@ -19,18 +19,18 @@ public final class a
     if (!paramLinkedList.isEmpty()) {}
     for (com.tencent.matrix.trace.d.a locala = (com.tencent.matrix.trace.d.a)paramLinkedList.peek();; locala = null)
     {
-      if ((locala != null) && (locala.cKC == parama.cKC) && (locala.bCc == parama.bCc) && (parama.bCc != 0))
+      if ((locala != null) && (locala.cLl == parama.cLl) && (locala.bCc == parama.bCc) && (parama.bCc != 0))
       {
-        if (parama.cKD == 5000) {}
-        for (int i = locala.cKD;; i = parama.cKD)
+        if (parama.cLm == 5000) {}
+        for (int i = locala.cLm;; i = parama.cLm)
         {
-          parama.cKD = i;
-          locala.aT(parama.cKD);
-          return locala.cKD;
+          parama.cLm = i;
+          locala.aT(parama.cLm);
+          return locala.cLm;
         }
       }
       paramLinkedList.push(parama);
-      return parama.cKD;
+      return parama.cLm;
     }
   }
   
@@ -42,12 +42,12 @@ public final class a
     if (localListIterator.hasNext())
     {
       b localb = new b((com.tencent.matrix.trace.d.a)localListIterator.next(), paramLinkedList);
-      if ((paramLinkedList == null) && (localb.Jm() != 0))
+      if ((paramLinkedList == null) && (localb.Ju() != 0))
       {
         c.e("Matrix.TraceDataUtils", "[stackToTree] begin error! why the first node'depth is not 0!", new Object[0]);
         return 0;
       }
-      int j = localb.Jm();
+      int j = localb.Ju();
       if ((paramLinkedList == null) || (j == 0)) {
         paramb.a(localb);
       }
@@ -56,15 +56,15 @@ public final class a
         i += 1;
         paramLinkedList = localb;
         break;
-        if (paramLinkedList.Jm() >= j)
+        if (paramLinkedList.Ju() >= j)
         {
-          while ((paramLinkedList != null) && (paramLinkedList.Jm() > j)) {
-            paramLinkedList = paramLinkedList.cMh;
+          while ((paramLinkedList != null) && (paramLinkedList.Ju() > j)) {
+            paramLinkedList = paramLinkedList.cMQ;
           }
-          if ((paramLinkedList != null) && (paramLinkedList.cMh != null))
+          if ((paramLinkedList != null) && (paramLinkedList.cMQ != null))
           {
-            localb.cMh = paramLinkedList.cMh;
-            paramLinkedList.cMh.a(localb);
+            localb.cMQ = paramLinkedList.cMQ;
+            paramLinkedList.cMQ.a(localb);
           }
         }
         else
@@ -94,11 +94,11 @@ public final class a
         localStringBuffer.append('.');
         i += 1;
       }
-      localStringBuilder.append(localStringBuffer.toString() + locala.cKC + " " + locala.count + " " + locala.cKD).append('\n');
-      if (l >= locala.cKD) {
+      localStringBuilder.append(localStringBuffer.toString() + locala.cLl + " " + locala.count + " " + locala.cLm).append('\n');
+      if (l >= locala.cLm) {
         break label189;
       }
-      l = locala.cKD;
+      l = locala.cLm;
     }
     label189:
     for (;;)
@@ -117,7 +117,7 @@ public final class a
     while (localIterator.hasNext())
     {
       com.tencent.matrix.trace.d.a locala = (com.tencent.matrix.trace.d.a)localIterator.next();
-      if (locala.cKD >= paramLong) {
+      if (locala.cLm >= paramLong) {
         localLinkedList.add(locala);
       }
     }
@@ -131,10 +131,10 @@ public final class a
       if (paramList.hasNext())
       {
         paramList = (com.tencent.matrix.trace.d.a)paramList.next();
-        localStringBuilder.append(paramList.cKC + "|");
+        localStringBuilder.append(paramList.cLl + "|");
       }
       return localStringBuilder.toString();
-      if ((localLinkedList.size() > 1) && (((com.tencent.matrix.trace.d.a)localLinkedList.peek()).cKC == 1048574)) {
+      if ((localLinkedList.size() > 1) && (((com.tencent.matrix.trace.d.a)localLinkedList.peek()).cLl == 1048574)) {
         localLinkedList.removeFirst();
       }
     }
@@ -143,13 +143,13 @@ public final class a
   private static void a(b paramb, LinkedList<com.tencent.matrix.trace.d.a> paramLinkedList)
   {
     int i = 0;
-    while (i < paramb.cMi.size())
+    while (i < paramb.cMR.size())
     {
-      b localb = (b)paramb.cMi.get(i);
-      if (localb.cMg != null) {
-        paramLinkedList.add(localb.cMg);
+      b localb = (b)paramb.cMR.get(i);
+      if (localb.cMP != null) {
+        paramLinkedList.add(localb.cMP);
       }
-      if (!localb.cMi.isEmpty()) {
+      if (!localb.cMR.isEmpty()) {
         a(localb, paramLinkedList);
       }
       i += 1;
@@ -167,7 +167,7 @@ public final class a
       {
         ListIterator localListIterator = paramList.listIterator(paramList.size());
         if (localListIterator.hasPrevious()) {
-          if (parama.b(((com.tencent.matrix.trace.d.a)localListIterator.previous()).cKD, j))
+          if (parama.b(((com.tencent.matrix.trace.d.a)localListIterator.previous()).cLm, j))
           {
             localListIterator.remove();
             int k = i - 1;
@@ -342,27 +342,27 @@ public final class a
   
   public static final class b
   {
-    com.tencent.matrix.trace.d.a cMg;
-    b cMh;
-    LinkedList<b> cMi = new LinkedList();
+    com.tencent.matrix.trace.d.a cMP;
+    b cMQ;
+    LinkedList<b> cMR = new LinkedList();
     
     b(com.tencent.matrix.trace.d.a parama, b paramb)
     {
-      this.cMg = parama;
-      this.cMh = paramb;
+      this.cMP = parama;
+      this.cMQ = paramb;
     }
     
-    final int Jm()
+    final int Ju()
     {
-      if (this.cMg == null) {
+      if (this.cMP == null) {
         return 0;
       }
-      return this.cMg.bCc;
+      return this.cMP.bCc;
     }
     
     final void a(b paramb)
     {
-      this.cMi.addFirst(paramb);
+      this.cMR.addFirst(paramb);
     }
   }
 }

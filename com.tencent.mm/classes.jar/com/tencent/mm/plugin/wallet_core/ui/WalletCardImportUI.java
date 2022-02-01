@@ -15,11 +15,13 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CheckedTextView;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.plugin.wallet_core.model.Authen;
 import com.tencent.mm.plugin.wallet_core.model.Bankcard;
@@ -28,11 +30,10 @@ import com.tencent.mm.plugin.wallet_core.model.Orders;
 import com.tencent.mm.plugin.wallet_core.model.an;
 import com.tencent.mm.plugin.wallet_core.model.t;
 import com.tencent.mm.plugin.wallet_core.model.x;
-import com.tencent.mm.plugin.wallet_core.utils.f;
 import com.tencent.mm.pluginsdk.wallet.PayInfo;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.base.h.d;
 import com.tencent.mm.ui.base.i;
@@ -41,7 +42,6 @@ import com.tencent.mm.wallet_core.d.g;
 import com.tencent.mm.wallet_core.ui.MMScrollView;
 import com.tencent.mm.wallet_core.ui.MMScrollView.b;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
-import com.tencent.mm.wallet_core.ui.e;
 import com.tencent.mm.wallet_core.ui.formview.WalletFormView;
 import com.tencent.mm.wallet_core.ui.formview.WalletFormView.a;
 import java.util.LinkedList;
@@ -51,59 +51,59 @@ public class WalletCardImportUI
   extends WalletBaseUI
   implements TextView.OnEditorActionListener, WalletFormView.a
 {
-  private static final String[] DeJ = { "ABC_DEBIT", "ABC_CREDIT", "CITIC_CREDIT", "CMBC_DEBIT", "HSBC_DEBIT" };
-  private Authen CIo;
-  private int CMB;
-  private WalletFormView CMx;
-  private ElementQuery CQB;
-  private WalletFormView DcA;
-  private WalletFormView DdJ;
-  private WalletFormView DdK;
-  private WalletFormView DdL;
-  private WalletFormView DdM;
-  private WalletFormView DdN;
-  private WalletFormView DdO;
-  private WalletFormView DdP;
-  private WalletFormView DdR;
-  private WalletFormView DdS;
-  private CheckBox DdW;
-  private String DdX;
-  private WalletFormView Ddv;
-  private WalletFormView Ddw;
-  private WalletFormView Ddy;
-  private WalletFormView Ddz;
-  private TextView DeK;
-  private MMScrollView DeL;
-  private Bankcard DeM;
-  private CheckBox DeN;
-  private BaseAdapter DeO;
-  private WalletFormView Dej;
-  private Button fQh;
+  private static final String[] Dwn = { "ABC_DEBIT", "ABC_CREDIT", "CITIC_CREDIT", "CMBC_DEBIT", "HSBC_DEBIT" };
+  private Authen CZU;
+  private WalletFormView Def;
+  private int Dej;
+  private ElementQuery Dif;
+  private WalletFormView DuZ;
+  private WalletFormView Due;
+  private CheckBox DvA;
+  private String DvB;
+  private WalletFormView DvN;
+  private WalletFormView Dva;
+  private WalletFormView Dvc;
+  private WalletFormView Dvd;
+  private WalletFormView Dvn;
+  private WalletFormView Dvo;
+  private WalletFormView Dvp;
+  private WalletFormView Dvq;
+  private WalletFormView Dvr;
+  private WalletFormView Dvs;
+  private WalletFormView Dvt;
+  private WalletFormView Dvv;
+  private WalletFormView Dvw;
+  private TextView Dwo;
+  private MMScrollView Dwp;
+  private Bankcard Dwq;
+  private CheckBox Dwr;
+  private BaseAdapter Dws;
+  private Button fSn;
   private Dialog mDialog;
-  private ap mHandler;
+  private aq mHandler;
   private PayInfo mPayInfo;
-  private String vgX;
-  private String vgY;
-  private Orders ygb;
+  private String vte;
+  private String vtf;
+  private Orders yvS;
   
   public WalletCardImportUI()
   {
     AppMethodBeat.i(70841);
     this.mDialog = null;
-    this.DdR = null;
-    this.mHandler = new ap();
-    this.CQB = new ElementQuery();
-    this.CIo = new Authen();
-    this.ygb = null;
+    this.Dvv = null;
+    this.mHandler = new aq();
+    this.Dif = new ElementQuery();
+    this.CZU = new Authen();
+    this.yvS = null;
     this.mPayInfo = null;
-    this.DeM = null;
-    this.CMB = 1;
-    this.DeO = new BaseAdapter()
+    this.Dwq = null;
+    this.Dej = 1;
+    this.Dws = new BaseAdapter()
     {
-      private Integer qM(int paramAnonymousInt)
+      private Integer qP(int paramAnonymousInt)
       {
         AppMethodBeat.i(70838);
-        Integer localInteger = (Integer)WalletCardImportUI.c(WalletCardImportUI.this).eFi().get(paramAnonymousInt);
+        Integer localInteger = (Integer)WalletCardImportUI.c(WalletCardImportUI.this).eIP().get(paramAnonymousInt);
         AppMethodBeat.o(70838);
         return localInteger;
       }
@@ -111,9 +111,9 @@ public class WalletCardImportUI
       public final int getCount()
       {
         AppMethodBeat.i(70837);
-        if (WalletCardImportUI.c(WalletCardImportUI.this).eFi() != null)
+        if (WalletCardImportUI.c(WalletCardImportUI.this).eIP() != null)
         {
-          int i = WalletCardImportUI.c(WalletCardImportUI.this).eFi().size();
+          int i = WalletCardImportUI.c(WalletCardImportUI.this).eIP().size();
           AppMethodBeat.o(70837);
           return i;
         }
@@ -130,8 +130,8 @@ public class WalletCardImportUI
       {
         AppMethodBeat.i(70839);
         paramAnonymousView = (CheckedTextView)View.inflate(WalletCardImportUI.this, 2131495971, null);
-        paramAnonymousView.setText(t.eFG().am(WalletCardImportUI.this, qM(paramAnonymousInt).intValue()));
-        if (WalletCardImportUI.f(WalletCardImportUI.this) == qM(paramAnonymousInt).intValue()) {
+        paramAnonymousView.setText(t.eJn().am(WalletCardImportUI.this, qP(paramAnonymousInt).intValue()));
+        if (WalletCardImportUI.f(WalletCardImportUI.this) == qP(paramAnonymousInt).intValue()) {
           paramAnonymousView.setChecked(true);
         }
         for (;;)
@@ -146,23 +146,23 @@ public class WalletCardImportUI
     AppMethodBeat.o(70841);
   }
   
-  private boolean aUW()
+  private boolean aVv()
   {
     AppMethodBeat.i(70850);
-    if (!this.DeN.isChecked()) {}
+    if (!this.Dwr.isChecked()) {}
     for (boolean bool = false;; bool = true)
     {
       if (bool)
       {
-        this.fQh.setEnabled(true);
-        this.fQh.setClickable(true);
+        this.fSn.setEnabled(true);
+        this.fSn.setClickable(true);
       }
       for (;;)
       {
         AppMethodBeat.o(70850);
         return bool;
-        this.fQh.setEnabled(false);
-        this.fQh.setClickable(false);
+        this.fSn.setEnabled(false);
+        this.fSn.setClickable(false);
       }
     }
   }
@@ -170,7 +170,7 @@ public class WalletCardImportUI
   private static boolean e(WalletFormView paramWalletFormView, String paramString)
   {
     AppMethodBeat.i(70845);
-    if (!bt.isNullOrNil(paramString))
+    if (!bu.isNullOrNil(paramString))
     {
       KeyListener localKeyListener = paramWalletFormView.getKeyListener();
       paramWalletFormView.setKeyListener(null);
@@ -187,96 +187,96 @@ public class WalletCardImportUI
     return false;
   }
   
-  private void eHu()
+  private void eLc()
   {
     AppMethodBeat.i(70847);
     Object localObject;
-    if (aUW())
+    if (aVv())
     {
-      f.eIT();
-      this.CIo = new Authen();
-      getInput().putBoolean("key_is_follow_bank_username", this.DdW.isChecked());
-      if ((this.DeM != null) && (!bt.isNullOrNil(this.DeM.CUM)))
+      com.tencent.mm.plugin.wallet_core.utils.f.eMB();
+      this.CZU = new Authen();
+      getInput().putBoolean("key_is_follow_bank_username", this.DvA.isChecked());
+      if ((this.Dwq != null) && (!bu.isNullOrNil(this.Dwq.Dms)))
       {
-        this.CIo.CFm = this.DeM.CUM;
-        this.CIo.wBI = this.DeM.field_bindSerial;
-        this.CIo.dkR = this.DeM.field_bankcardType;
-        this.CIo.CTR = this.DeM.CTR;
-        this.CIo.CTP = getInput().getString("key_pwd1");
-        this.CIo.token = getInput().getString("kreq_token");
-        com.tencent.mm.wallet_core.a.br(this);
-        if (getNetController().s(new Object[] { this.CIo, this.ygb }))
+        this.CZU.CWS = this.Dwq.Dms;
+        this.CZU.wRt = this.Dwq.field_bindSerial;
+        this.CZU.dlT = this.Dwq.field_bankcardType;
+        this.CZU.Dlx = this.Dwq.Dlx;
+        this.CZU.Dlv = getInput().getString("key_pwd1");
+        this.CZU.token = getInput().getString("kreq_token");
+        com.tencent.mm.wallet_core.a.bs(this);
+        if (getNetController().r(new Object[] { this.CZU, this.yvS }))
         {
-          com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.WalletCardElmentUI", "process controller deal with!!!");
+          ae.i("MicroMsg.WalletCardElmentUI", "process controller deal with!!!");
           AppMethodBeat.o(70847);
         }
       }
       else
       {
         localObject = getInput().getString("key_card_id");
-        if (this.DdS.getVisibility() != 0) {
+        if (this.Dvw.getVisibility() != 0) {
           break label615;
         }
-        localObject = this.DdS.getText();
+        localObject = this.Dvw.getText();
       }
     }
     label615:
     for (;;)
     {
-      this.CIo.xnF = ((PayInfo)getInput().getParcelable("key_pay_info"));
-      this.CIo.CTS = ((String)localObject);
-      this.CIo.dkR = this.CQB.dkR;
-      this.CIo.CTR = this.CMB;
-      this.CIo.CTP = getInput().getString("key_pwd1");
-      if (!bt.isNullOrNil(this.Ddw.getText())) {
-        this.CIo.CTT = this.Ddw.getText();
+      this.CZU.xDC = ((PayInfo)getInput().getParcelable("key_pay_info"));
+      this.CZU.Dly = ((String)localObject);
+      this.CZU.dlT = this.Dif.dlT;
+      this.CZU.Dlx = this.Dej;
+      this.CZU.Dlv = getInput().getString("key_pwd1");
+      if (!bu.isNullOrNil(this.Dva.getText())) {
+        this.CZU.Dlz = this.Dva.getText();
       }
-      this.CIo.CPf = this.Ddz.getText();
-      this.CIo.CTW = this.DdJ.getText();
-      this.CIo.CTX = this.DdK.getText();
-      this.CIo.country = this.DdX;
-      this.CIo.ePu = this.vgX;
-      this.CIo.ePv = this.vgY;
-      this.CIo.hWY = this.DdM.getText();
-      this.CIo.uJH = this.DdN.getText();
-      this.CIo.jrN = this.DdO.getText();
-      this.CIo.ePn = this.DdP.getText();
-      localObject = e.aYI(this.CIo.CPf);
+      this.CZU.DgJ = this.Dvd.getText();
+      this.CZU.DlC = this.Dvn.getText();
+      this.CZU.DlD = this.Dvo.getText();
+      this.CZU.country = this.DvB;
+      this.CZU.eRf = this.vte;
+      this.CZU.eRg = this.vtf;
+      this.CZU.hZQ = this.Dvq.getText();
+      this.CZU.uVu = this.Dvr.getText();
+      this.CZU.juG = this.Dvs.getText();
+      this.CZU.eQY = this.Dvt.getText();
+      localObject = com.tencent.mm.wallet_core.ui.f.bal(this.CZU.DgJ);
       getInput().putString("key_mobile", (String)localObject);
       localObject = getInput();
-      if (this.CQB.CPj == 2) {}
+      if (this.Dif.DgN == 2) {}
       for (boolean bool = true;; bool = false)
       {
         ((Bundle)localObject).putBoolean("key_is_oversea", bool);
-        this.CIo.CTQ = this.CMx.getText();
-        this.CIo.CTa = this.DcA.getText();
-        this.CIo.CTU = this.Ddv.getText();
-        com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.WalletCardElmentUI", "payInfo " + this.CIo.xnF + " elemt.bankcardTag : " + this.CQB.CPj);
+        this.CZU.Dlw = this.Def.getText();
+        this.CZU.DkG = this.Due.getText();
+        this.CZU.DlA = this.DuZ.getText();
+        ae.d("MicroMsg.WalletCardElmentUI", "payInfo " + this.CZU.xDC + " elemt.bankcardTag : " + this.Dif.DgN);
         break;
       }
-      com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.WalletCardElmentUI", "error process in the tenpay!!");
+      ae.e("MicroMsg.WalletCardElmentUI", "error process in the tenpay!!");
       AppMethodBeat.o(70847);
       return;
     }
   }
   
-  private void eHy()
+  private void eLg()
   {
     AppMethodBeat.i(70846);
-    this.DdJ.setVisibility(8);
-    this.DdK.setVisibility(8);
-    this.DdL.setVisibility(8);
-    this.DdM.setVisibility(8);
-    this.DdN.setVisibility(8);
-    this.DdO.setVisibility(8);
-    this.DdP.setVisibility(8);
+    this.Dvn.setVisibility(8);
+    this.Dvo.setVisibility(8);
+    this.Dvp.setVisibility(8);
+    this.Dvq.setVisibility(8);
+    this.Dvr.setVisibility(8);
+    this.Dvs.setVisibility(8);
+    this.Dvt.setVisibility(8);
     AppMethodBeat.o(70846);
   }
   
   private void updateView()
   {
     AppMethodBeat.i(70844);
-    if (this.DeM != null)
+    if (this.Dwq != null)
     {
       findViewById(2131306716).setVisibility(0);
       Object localObject1;
@@ -284,104 +284,104 @@ public class WalletCardImportUI
       Object localObject2;
       label138:
       Object localObject3;
-      if (!bt.isNullOrNil(getInput().getString("key_bank_username")))
+      if (!bu.isNullOrNil(getInput().getString("key_bank_username")))
       {
         localObject1 = getInput().getString("key_recommand_desc");
-        if (bt.isNullOrNil((String)localObject1))
+        if (bu.isNullOrNil((String)localObject1))
         {
-          this.DdW.setText(getString(2131765129, new Object[] { this.DeM.field_bankName }));
-          this.DdW.setVisibility(0);
-          eHy();
-          if ((bt.isNullOrNil(this.DeM.field_bankcardTail)) || (!e(this.DdS, this.DeM.CUz))) {
+          this.DvA.setText(getString(2131765129, new Object[] { this.Dwq.field_bankName }));
+          this.DvA.setVisibility(0);
+          eLg();
+          if ((bu.isNullOrNil(this.Dwq.field_bankcardTail)) || (!e(this.Dvw, this.Dwq.Dmf))) {
             break label508;
           }
-          localObject1 = this.DdS;
-          localObject2 = this.DdS;
-          if (!this.DeM.eET()) {
+          localObject1 = this.Dvw;
+          localObject2 = this.Dvw;
+          if (!this.Dwq.eIA()) {
             break label524;
           }
           localObject3 = getString(2131765221);
           label156:
-          if ((bt.isNullOrNil(this.DeM.field_bankName)) || (!e(this.Dej, this.DeM.field_bankName + " " + (String)localObject3))) {
+          if ((bu.isNullOrNil(this.Dwq.field_bankName)) || (!e(this.DvN, this.Dwq.field_bankName + " " + (String)localObject3))) {
             break label535;
           }
           localObject2 = localObject1;
           if (localObject1 == null) {
-            localObject2 = this.Dej;
+            localObject2 = this.DvN;
           }
-          localObject3 = this.Dej;
+          localObject3 = this.DvN;
         }
       }
       for (;;)
       {
         localObject1 = localObject2;
-        if (e(this.DcA, this.DeM.field_trueName))
+        if (e(this.Due, this.Dwq.field_trueName))
         {
           localObject1 = localObject2;
           if (localObject2 == null) {
-            localObject1 = this.DcA;
+            localObject1 = this.Due;
           }
-          localObject3 = this.DcA;
+          localObject3 = this.Due;
         }
         localObject2 = localObject1;
-        if (e(this.Ddy, t.eFG().am(getContext(), this.DeM.CTR)))
+        if (e(this.Dvc, t.eJn().am(getContext(), this.Dwq.Dlx)))
         {
           localObject2 = localObject1;
           if (localObject1 == null) {
-            localObject2 = this.Ddy;
+            localObject2 = this.Dvc;
           }
-          localObject3 = this.Ddy;
+          localObject3 = this.Dvc;
         }
         localObject1 = localObject2;
-        if (e(this.CMx, this.DeM.CUy))
+        if (e(this.Def, this.Dwq.Dme))
         {
           localObject1 = localObject2;
           if (localObject2 == null) {
-            localObject1 = this.CMx;
+            localObject1 = this.Def;
           }
-          localObject3 = this.CMx;
+          localObject3 = this.Def;
         }
         localObject2 = localObject1;
-        if (e(this.Ddz, this.DeM.field_mobile))
+        if (e(this.Dvd, this.Dwq.field_mobile))
         {
           localObject2 = localObject1;
           if (localObject1 == null) {
-            localObject2 = this.Ddz;
+            localObject2 = this.Dvd;
           }
-          localObject3 = this.Ddz;
+          localObject3 = this.Dvd;
         }
         localObject1 = localObject2;
-        if (e(this.Ddw, this.DeM.CTT))
+        if (e(this.Dva, this.Dwq.Dlz))
         {
           localObject1 = localObject2;
           if (localObject2 == null) {
-            localObject1 = this.Ddw;
+            localObject1 = this.Dva;
           }
-          localObject3 = this.Ddw;
+          localObject3 = this.Dva;
         }
         localObject2 = localObject1;
-        if (e(this.Ddv, this.DeM.CUA))
+        if (e(this.DuZ, this.Dwq.Dmg))
         {
           localObject2 = localObject1;
           if (localObject1 == null) {
-            localObject2 = this.Ddv;
+            localObject2 = this.DuZ;
           }
-          localObject3 = this.Ddv;
+          localObject3 = this.DuZ;
         }
         ((WalletFormView)localObject2).setBackgroundResource(2131231818);
         ((WalletFormView)localObject3).setBackgroundResource(2131231818);
-        if (!t.eFy().eGc()) {
+        if (!t.eJf().eJJ()) {
           break label551;
         }
-        this.fQh.setText(2131765141);
+        this.fSn.setText(2131765141);
         AppMethodBeat.o(70844);
         return;
-        this.DdW.setText((CharSequence)localObject1);
+        this.DvA.setText((CharSequence)localObject1);
         break;
-        this.DdW.setVisibility(8);
+        this.DvA.setVisibility(8);
         break label94;
         label508:
-        this.DdS.setVisibility(8);
+        this.Dvw.setVisibility(8);
         localObject2 = null;
         localObject1 = null;
         break label138;
@@ -389,12 +389,12 @@ public class WalletCardImportUI
         localObject3 = getString(2131765241);
         break label156;
         label535:
-        this.Dej.setVisibility(8);
+        this.DvN.setVisibility(8);
         localObject3 = localObject2;
         localObject2 = localObject1;
       }
       label551:
-      this.fQh.setText(2131765139);
+      this.fSn.setText(2131765139);
       AppMethodBeat.o(70844);
       return;
     }
@@ -414,44 +414,44 @@ public class WalletCardImportUI
   public void initView()
   {
     AppMethodBeat.i(70843);
-    this.DdS = ((WalletFormView)findViewById(2131306708));
-    com.tencent.mm.wallet_core.ui.formview.a.b(this.DdS);
-    this.Ddz = ((WalletFormView)findViewById(2131302346));
-    com.tencent.mm.wallet_core.ui.formview.a.c(this, this.Ddz);
-    this.DcA = ((WalletFormView)findViewById(2131302662));
-    com.tencent.mm.wallet_core.ui.formview.a.e(this, this.DcA);
-    this.Ddy = ((WalletFormView)findViewById(2131306730));
-    this.CMx = ((WalletFormView)findViewById(2131300910));
-    com.tencent.mm.wallet_core.ui.formview.a.d(this.CMx);
-    this.Dej = ((WalletFormView)findViewById(2131306717));
-    this.Ddw = ((WalletFormView)findViewById(2131298914));
-    com.tencent.mm.wallet_core.ui.formview.a.b(this, this.Ddw);
-    this.Ddv = ((WalletFormView)findViewById(2131298929));
-    com.tencent.mm.wallet_core.ui.formview.a.a(this, this.Ddv);
-    this.DeK = ((TextView)findViewById(2131306817));
-    this.DdJ = ((WalletFormView)findViewById(2131300112));
-    this.DdK = ((WalletFormView)findViewById(2131301314));
-    this.DdL = ((WalletFormView)findViewById(2131296936));
-    this.DdM = ((WalletFormView)findViewById(2131296479));
-    this.DdN = ((WalletFormView)findViewById(2131303210));
-    this.DdO = ((WalletFormView)findViewById(2131303363));
-    this.DdP = ((WalletFormView)findViewById(2131299329));
-    com.tencent.mm.wallet_core.ui.formview.a.e(this.DdP);
-    this.DeN = ((CheckBox)findViewById(2131296518));
-    this.DdW = ((CheckBox)findViewById(2131296515));
-    this.fQh = ((Button)findViewById(2131302852));
-    this.DeL = ((MMScrollView)findViewById(2131306834));
-    MMScrollView localMMScrollView = this.DeL;
+    this.Dvw = ((WalletFormView)findViewById(2131306708));
+    com.tencent.mm.wallet_core.ui.formview.a.b(this.Dvw);
+    this.Dvd = ((WalletFormView)findViewById(2131302346));
+    com.tencent.mm.wallet_core.ui.formview.a.c(this, this.Dvd);
+    this.Due = ((WalletFormView)findViewById(2131302662));
+    com.tencent.mm.wallet_core.ui.formview.a.e(this, this.Due);
+    this.Dvc = ((WalletFormView)findViewById(2131306730));
+    this.Def = ((WalletFormView)findViewById(2131300910));
+    com.tencent.mm.wallet_core.ui.formview.a.d(this.Def);
+    this.DvN = ((WalletFormView)findViewById(2131306717));
+    this.Dva = ((WalletFormView)findViewById(2131298914));
+    com.tencent.mm.wallet_core.ui.formview.a.b(this, this.Dva);
+    this.DuZ = ((WalletFormView)findViewById(2131298929));
+    com.tencent.mm.wallet_core.ui.formview.a.a(this, this.DuZ);
+    this.Dwo = ((TextView)findViewById(2131306817));
+    this.Dvn = ((WalletFormView)findViewById(2131300112));
+    this.Dvo = ((WalletFormView)findViewById(2131301314));
+    this.Dvp = ((WalletFormView)findViewById(2131296936));
+    this.Dvq = ((WalletFormView)findViewById(2131296479));
+    this.Dvr = ((WalletFormView)findViewById(2131303210));
+    this.Dvs = ((WalletFormView)findViewById(2131303363));
+    this.Dvt = ((WalletFormView)findViewById(2131299329));
+    com.tencent.mm.wallet_core.ui.formview.a.e(this.Dvt);
+    this.Dwr = ((CheckBox)findViewById(2131296518));
+    this.DvA = ((CheckBox)findViewById(2131296515));
+    this.fSn = ((Button)findViewById(2131302852));
+    this.Dwp = ((MMScrollView)findViewById(2131306834));
+    MMScrollView localMMScrollView = this.Dwp;
     localMMScrollView.a(localMMScrollView, localMMScrollView);
-    this.DeL.setOnSizeChangeListener(new MMScrollView.b()
+    this.Dwp.setOnSizeChangeListener(new MMScrollView.b()
     {
-      public final void uq(boolean paramAnonymousBoolean)
+      public final void uy(boolean paramAnonymousBoolean)
       {
         AppMethodBeat.i(70828);
         if (paramAnonymousBoolean) {}
         for (final int i = 8;; i = 0)
         {
-          com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.WalletCardElmentUI", "onSizeChanged : ".concat(String.valueOf(paramAnonymousBoolean)));
+          ae.d("MicroMsg.WalletCardElmentUI", "onSizeChanged : ".concat(String.valueOf(paramAnonymousBoolean)));
           WalletCardImportUI.b(WalletCardImportUI.this).post(new Runnable()
           {
             public final void run()
@@ -468,55 +468,75 @@ public class WalletCardImportUI
         }
       }
     });
-    this.DcA.setOnInputValidChangeListener(this);
-    this.DdS.setOnInputValidChangeListener(this);
-    this.Ddy.setOnInputValidChangeListener(this);
-    this.CMx.setOnInputValidChangeListener(this);
-    this.Ddz.setOnInputValidChangeListener(this);
-    this.Ddw.setOnInputValidChangeListener(this);
-    this.Ddv.setOnInputValidChangeListener(this);
-    this.DdJ.setOnInputValidChangeListener(this);
-    this.DdK.setOnInputValidChangeListener(this);
-    this.DdL.setOnInputValidChangeListener(this);
-    this.DdM.setOnInputValidChangeListener(this);
-    this.DdN.setOnInputValidChangeListener(this);
-    this.DdO.setOnInputValidChangeListener(this);
-    this.DdP.setOnInputValidChangeListener(this);
-    this.DcA.setOnEditorActionListener(this);
-    this.DdS.setOnEditorActionListener(this);
-    this.Ddy.setOnEditorActionListener(this);
-    this.CMx.setOnEditorActionListener(this);
-    this.Ddz.setOnEditorActionListener(this);
-    this.Ddw.setOnEditorActionListener(this);
-    this.Ddv.setOnEditorActionListener(this);
-    this.DdJ.setOnEditorActionListener(this);
-    this.DdK.setOnEditorActionListener(this);
-    this.DdL.setOnEditorActionListener(this);
-    this.DdM.setOnEditorActionListener(this);
-    this.DdN.setOnEditorActionListener(this);
-    this.DdO.setOnEditorActionListener(this);
-    this.DdP.setOnEditorActionListener(this);
-    this.Dej.setOnClickListener(new View.OnClickListener()
+    this.Due.setOnInputValidChangeListener(this);
+    this.Dvw.setOnInputValidChangeListener(this);
+    this.Dvc.setOnInputValidChangeListener(this);
+    this.Def.setOnInputValidChangeListener(this);
+    this.Dvd.setOnInputValidChangeListener(this);
+    this.Dva.setOnInputValidChangeListener(this);
+    this.DuZ.setOnInputValidChangeListener(this);
+    this.Dvn.setOnInputValidChangeListener(this);
+    this.Dvo.setOnInputValidChangeListener(this);
+    this.Dvp.setOnInputValidChangeListener(this);
+    this.Dvq.setOnInputValidChangeListener(this);
+    this.Dvr.setOnInputValidChangeListener(this);
+    this.Dvs.setOnInputValidChangeListener(this);
+    this.Dvt.setOnInputValidChangeListener(this);
+    this.Due.setOnEditorActionListener(this);
+    this.Dvw.setOnEditorActionListener(this);
+    this.Dvc.setOnEditorActionListener(this);
+    this.Def.setOnEditorActionListener(this);
+    this.Dvd.setOnEditorActionListener(this);
+    this.Dva.setOnEditorActionListener(this);
+    this.DuZ.setOnEditorActionListener(this);
+    this.Dvn.setOnEditorActionListener(this);
+    this.Dvo.setOnEditorActionListener(this);
+    this.Dvp.setOnEditorActionListener(this);
+    this.Dvq.setOnEditorActionListener(this);
+    this.Dvr.setOnEditorActionListener(this);
+    this.Dvs.setOnEditorActionListener(this);
+    this.Dvt.setOnEditorActionListener(this);
+    this.DvN.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(70829);
         b localb = new b();
         localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/wallet_core/ui/WalletCardImportUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/wallet_core/ui/WalletCardImportUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
         paramAnonymousView = new Bundle();
         paramAnonymousView.putInt("key_support_bankcard", WalletCardImportUI.this.getInput().getInt("key_support_bankcard", 3));
-        paramAnonymousView.putString("key_bank_type", WalletCardImportUI.c(WalletCardImportUI.this).dkR);
-        paramAnonymousView.putInt("key_bankcard_type", WalletCardImportUI.c(WalletCardImportUI.this).CWo);
-        com.tencent.mm.wallet_core.a.br(WalletCardImportUI.this).a(WalletCardImportUI.this, WalletCardSelectUI.class, paramAnonymousView, 1);
+        paramAnonymousView.putString("key_bank_type", WalletCardImportUI.c(WalletCardImportUI.this).dlT);
+        paramAnonymousView.putInt("key_bankcard_type", WalletCardImportUI.c(WalletCardImportUI.this).DnT);
+        com.tencent.mm.wallet_core.a.bs(WalletCardImportUI.this).a(WalletCardImportUI.this, WalletCardSelectUI.class, paramAnonymousView, 1);
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/wallet_core/ui/WalletCardImportUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(70829);
       }
     });
-    this.Ddy.setOnClickListener(new WalletCardImportUI.3(this));
-    this.DeN.setChecked(true);
-    this.DeN.setOnCheckedChangeListener(new WalletCardImportUI.4(this));
-    this.DdW.setChecked(true);
+    this.Dvc.setOnClickListener(new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(70830);
+        b localb = new b();
+        localb.bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/wallet_core/ui/WalletCardImportUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        WalletCardImportUI.this.showDialog(1);
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/wallet_core/ui/WalletCardImportUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        AppMethodBeat.o(70830);
+      }
+    });
+    this.Dwr.setChecked(true);
+    this.Dwr.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
+    {
+      public final void onCheckedChanged(CompoundButton paramAnonymousCompoundButton, boolean paramAnonymousBoolean)
+      {
+        AppMethodBeat.i(70831);
+        WalletCardImportUI.d(WalletCardImportUI.this);
+        AppMethodBeat.o(70831);
+      }
+    });
+    this.DvA.setChecked(true);
     findViewById(2131296513).setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
@@ -524,12 +544,12 @@ public class WalletCardImportUI
         AppMethodBeat.i(70833);
         Object localObject = new b();
         ((b)localObject).bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/wallet_core/ui/WalletCardImportUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahq());
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/wallet_core/ui/WalletCardImportUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahF());
         paramAnonymousView = new LinkedList();
         localObject = new LinkedList();
         paramAnonymousView.add(WalletCardImportUI.this.getString(2131765084));
         ((List)localObject).add(Integer.valueOf(0));
-        if ((WalletCardImportUI.c(WalletCardImportUI.this) != null) && (WalletCardImportUI.c(WalletCardImportUI.this).CWG))
+        if ((WalletCardImportUI.c(WalletCardImportUI.this) != null) && (WalletCardImportUI.c(WalletCardImportUI.this).Dol))
         {
           paramAnonymousView.add(WalletCardImportUI.this.getString(2131765082));
           ((List)localObject).add(Integer.valueOf(1));
@@ -546,13 +566,13 @@ public class WalletCardImportUI
             for (;;)
             {
               localIntent.putExtra("showShare", false);
-              e.an(WalletCardImportUI.this.getContext(), localIntent);
+              com.tencent.mm.wallet_core.ui.f.an(WalletCardImportUI.this.getContext(), localIntent);
               AppMethodBeat.o(70832);
               return;
-              localIntent.putExtra("rawUrl", WalletCardImportUI.this.getString(2131764961, new Object[] { ac.fks() }));
+              localIntent.putExtra("rawUrl", WalletCardImportUI.this.getString(2131764961, new Object[] { com.tencent.mm.sdk.platformtools.ad.fom() }));
               continue;
               if (WalletCardImportUI.c(WalletCardImportUI.this) != null) {
-                localIntent.putExtra("rawUrl", WalletCardImportUI.this.getString(2131764959, new Object[] { ac.fks(), WalletCardImportUI.c(WalletCardImportUI.this).dkR }));
+                localIntent.putExtra("rawUrl", WalletCardImportUI.this.getString(2131764959, new Object[] { com.tencent.mm.sdk.platformtools.ad.fom(), WalletCardImportUI.c(WalletCardImportUI.this).dlT }));
               }
             }
           }
@@ -561,17 +581,41 @@ public class WalletCardImportUI
         AppMethodBeat.o(70833);
       }
     });
-    this.DdL.setOnClickListener(new WalletCardImportUI.6(this));
-    this.fQh.setOnClickListener(new WalletCardImportUI.7(this));
+    this.Dvp.setOnClickListener(new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(70834);
+        b localb = new b();
+        localb.bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/wallet_core/ui/WalletCardImportUI$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        WalletCardImportUI.this.startActivityForResult(new Intent("com.tencent.mm.action.GET_ADRESS").putExtra("GetAddress", true), 2);
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/wallet_core/ui/WalletCardImportUI$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        AppMethodBeat.o(70834);
+      }
+    });
+    this.fSn.setOnClickListener(new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(70835);
+        b localb = new b();
+        localb.bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/wallet_core/ui/WalletCardImportUI$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        WalletCardImportUI.e(WalletCardImportUI.this);
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/wallet_core/ui/WalletCardImportUI$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        AppMethodBeat.o(70835);
+      }
+    });
     updateView();
-    aUW();
+    aVv();
     AppMethodBeat.o(70843);
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     AppMethodBeat.i(70849);
-    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.WalletCardElmentUI", "onAcvityResult requestCode:".concat(String.valueOf(paramInt1)));
+    ae.i("MicroMsg.WalletCardElmentUI", "onAcvityResult requestCode:".concat(String.valueOf(paramInt1)));
     if (paramInt2 != -1)
     {
       AppMethodBeat.o(70849);
@@ -582,43 +626,43 @@ public class WalletCardImportUI
     }
     for (;;)
     {
-      aUW();
+      aVv();
       AppMethodBeat.o(70849);
       return;
-      this.CQB = ((ElementQuery)paramIntent.getParcelableExtra("elemt_query"));
+      this.Dif = ((ElementQuery)paramIntent.getParcelableExtra("elemt_query"));
       updateView();
       continue;
       String str1 = paramIntent.getStringExtra("CountryName");
       String str2 = paramIntent.getStringExtra("Country");
-      this.DdX = (str1 + "|" + str2);
+      this.DvB = (str1 + "|" + str2);
       String str3 = paramIntent.getStringExtra("ProviceName");
       String str4 = paramIntent.getStringExtra("CityName");
-      if (!bt.isNullOrNil(paramIntent.getStringExtra("Contact_City")))
+      if (!bu.isNullOrNil(paramIntent.getStringExtra("Contact_City")))
       {
-        this.vgX = (str3 + "|" + paramIntent.getStringExtra("Contact_Province"));
-        this.vgY = (str4 + "|" + paramIntent.getStringExtra("Contact_City"));
-        this.DdL.setText(str1 + " " + str4);
+        this.vte = (str3 + "|" + paramIntent.getStringExtra("Contact_Province"));
+        this.vtf = (str4 + "|" + paramIntent.getStringExtra("Contact_City"));
+        this.Dvp.setText(str1 + " " + str4);
       }
       for (;;)
       {
-        if ((!"US".equals(str2)) && (!"CA".equals(str2)) && (!this.CQB.CWB)) {
+        if ((!"US".equals(str2)) && (!"CA".equals(str2)) && (!this.Dif.Dog)) {
           break label418;
         }
-        this.DdO.setVisibility(0);
+        this.Dvs.setVisibility(0);
         break;
-        if (!bt.isNullOrNil(paramIntent.getStringExtra("Contact_Province")))
+        if (!bu.isNullOrNil(paramIntent.getStringExtra("Contact_Province")))
         {
-          this.vgY = (str3 + "|" + paramIntent.getStringExtra("Contact_Province"));
-          this.DdL.setText(str1 + " " + str3);
+          this.vtf = (str3 + "|" + paramIntent.getStringExtra("Contact_Province"));
+          this.Dvp.setText(str1 + " " + str3);
         }
         else
         {
-          this.vgY = this.DdX;
-          this.DdL.setText(str1);
+          this.vtf = this.DvB;
+          this.Dvp.setText(str1);
         }
       }
       label418:
-      this.DdO.setVisibility(8);
+      this.Dvs.setVisibility(8);
     }
   }
   
@@ -627,17 +671,17 @@ public class WalletCardImportUI
     AppMethodBeat.i(70842);
     super.onCreate(paramBundle);
     setMMTitle(2131765247);
-    this.CQB = ((ElementQuery)getInput().getParcelable("elemt_query"));
-    this.ygb = ((Orders)getInput().getParcelable("key_orders"));
+    this.Dif = ((ElementQuery)getInput().getParcelable("elemt_query"));
+    this.yvS = ((Orders)getInput().getParcelable("key_orders"));
     this.mPayInfo = ((PayInfo)getInput().getParcelable("key_pay_info"));
-    this.DeM = ((Bankcard)getInput().getParcelable("key_import_bankcard"));
+    this.Dwq = ((Bankcard)getInput().getParcelable("key_import_bankcard"));
     if (this.mPayInfo == null) {
       this.mPayInfo = new PayInfo();
     }
-    com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.WalletCardElmentUI", "mPayInfo " + this.mPayInfo);
+    ae.d("MicroMsg.WalletCardElmentUI", "mPayInfo " + this.mPayInfo);
     initView();
-    this.DeL.pageScroll(33);
-    f.a(this, getInput(), 3);
+    this.Dwp.pageScroll(33);
+    com.tencent.mm.plugin.wallet_core.utils.f.a(this, getInput(), 3);
     AppMethodBeat.o(70842);
   }
   
@@ -654,7 +698,7 @@ public class WalletCardImportUI
     Object localObject = new i(this, 2131821285);
     ((Dialog)localObject).setContentView(2131495970);
     ListView localListView = (ListView)((Dialog)localObject).findViewById(2131296471);
-    localListView.setAdapter(this.DeO);
+    localListView.setAdapter(this.Dws);
     localListView.setOnItemClickListener(new AdapterView.OnItemClickListener()
     {
       public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
@@ -663,17 +707,17 @@ public class WalletCardImportUI
         b localb = new b();
         localb.bd(paramAnonymousAdapterView);
         localb.bd(paramAnonymousView);
-        localb.mr(paramAnonymousInt);
-        localb.qY(paramAnonymousLong);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/wallet_core/ui/WalletCardImportUI$8", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.ahq());
+        localb.mu(paramAnonymousInt);
+        localb.rl(paramAnonymousLong);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/wallet_core/ui/WalletCardImportUI$8", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.ahF());
         WalletCardImportUI.this.dismissDialog(1);
-        paramAnonymousInt = ((Integer)WalletCardImportUI.c(WalletCardImportUI.this).eFi().get(paramAnonymousInt)).intValue();
+        paramAnonymousInt = ((Integer)WalletCardImportUI.c(WalletCardImportUI.this).eIP().get(paramAnonymousInt)).intValue();
         if (WalletCardImportUI.f(WalletCardImportUI.this) != paramAnonymousInt)
         {
           WalletCardImportUI.a(WalletCardImportUI.this, paramAnonymousInt);
           WalletCardImportUI.g(WalletCardImportUI.this).setText(((CheckedTextView)paramAnonymousView).getText().toString());
           WalletCardImportUI.b(WalletCardImportUI.h(WalletCardImportUI.this), WalletCardImportUI.f(WalletCardImportUI.this));
-          WalletCardImportUI.h(WalletCardImportUI.this).dEe();
+          WalletCardImportUI.h(WalletCardImportUI.this).dHv();
           WalletCardImportUI.i(WalletCardImportUI.this);
         }
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/wallet_core/ui/WalletCardImportUI$8", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
@@ -699,51 +743,51 @@ public class WalletCardImportUI
   public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
     AppMethodBeat.i(70852);
-    com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.WalletCardElmentUI", "onEditorAction actionId : ".concat(String.valueOf(paramInt)));
+    ae.d("MicroMsg.WalletCardElmentUI", "onEditorAction actionId : ".concat(String.valueOf(paramInt)));
     switch (paramInt)
     {
     default: 
-      if (this.DdR == null) {
-        eHu();
+      if (this.Dvv == null) {
+        eLc();
       }
       AppMethodBeat.o(70852);
       return false;
     }
-    if (this.DdR != null) {
-      if ((this.DdR.isEnabled()) && (!this.DdR.isClickable()) && (this.DdR.fSf())) {
-        this.DdR.fSi();
+    if (this.Dvv != null) {
+      if ((this.Dvv.isEnabled()) && (!this.Dvv.isClickable()) && (this.Dvv.fWB())) {
+        this.Dvv.fWE();
       }
     }
     for (;;)
     {
       AppMethodBeat.o(70852);
       return true;
-      this.DdR.performClick();
+      this.Dvv.performClick();
       continue;
-      eHu();
+      eLc();
     }
   }
   
   public final void onInputValidChange(boolean paramBoolean)
   {
     AppMethodBeat.i(70851);
-    aUW();
+    aVv();
     AppMethodBeat.o(70851);
   }
   
   public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     AppMethodBeat.i(70848);
-    com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.WalletCardElmentUI", " errCode: " + paramInt2 + " errMsg :" + paramString);
+    ae.d("MicroMsg.WalletCardElmentUI", " errCode: " + paramInt2 + " errMsg :" + paramString);
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
       paramString = getInput();
-      com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.WalletCardElmentUI", "PayInfo  " + this.mPayInfo);
+      ae.d("MicroMsg.WalletCardElmentUI", "PayInfo  " + this.mPayInfo);
       if ((paramn instanceof com.tencent.mm.plugin.wallet_core.c.ad))
       {
         paramString.putBoolean("intent_bind_end", true);
         com.tencent.mm.wallet_core.a.k(this, paramString);
-        h.cl(this, getString(2131765037));
+        h.cm(this, getString(2131765037));
         AppMethodBeat.o(70848);
         return true;
       }
@@ -762,7 +806,7 @@ public class WalletCardImportUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.ui.WalletCardImportUI
  * JD-Core Version:    0.7.0.1
  */

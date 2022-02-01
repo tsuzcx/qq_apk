@@ -10,19 +10,18 @@ import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bs.d;
-import com.tencent.mm.g.a.cv;
-import com.tencent.mm.g.a.gw;
-import com.tencent.mm.g.a.gw.b;
-import com.tencent.mm.model.u;
+import com.tencent.mm.br.d;
+import com.tencent.mm.g.a.cw;
+import com.tencent.mm.g.a.gx;
+import com.tencent.mm.g.a.gx.b;
+import com.tencent.mm.model.v;
 import com.tencent.mm.pluginsdk.ui.tools.q;
-import com.tencent.mm.protocal.protobuf.ajn;
-import com.tencent.mm.protocal.protobuf.akd;
-import com.tencent.mm.protocal.protobuf.akj;
+import com.tencent.mm.protocal.protobuf.ajx;
+import com.tencent.mm.protocal.protobuf.akn;
+import com.tencent.mm.protocal.protobuf.akt;
 import com.tencent.mm.sdk.b.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.ui.base.h;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.base.h.c;
 import java.util.LinkedList;
 import java.util.List;
@@ -32,25 +31,25 @@ public class MallGalleryUI
   extends MallBaseUI
 {
   private final String TAG = "MicroMsg.MallGalleryUI";
-  private ViewPager wNi;
-  private g wNj;
-  private List<String> wNk;
-  private int wNl = 0;
-  private boolean wNm;
+  private ViewPager xcW;
+  private g xcX;
+  private List<String> xcY;
+  private int xcZ = 0;
+  private boolean xda;
   
-  final String dzP()
+  final String dDg()
   {
     AppMethodBeat.i(66950);
-    if ((this.wNk == null) || (this.wNk.size() < this.wNl + 1)) {
-      ad.e("MicroMsg.MallGalleryUI", "data not ready.retransmit failed");
+    if ((this.xcY == null) || (this.xcY.size() < this.xcZ + 1)) {
+      ae.e("MicroMsg.MallGalleryUI", "data not ready.retransmit failed");
     }
-    for (String str = null; bt.isNullOrNil(str); str = (String)this.wNk.get(this.wNl))
+    for (String str = null; bu.isNullOrNil(str); str = (String)this.xcY.get(this.xcZ))
     {
-      ad.w("MicroMsg.MallGalleryUI", "invoke error. No current url");
+      ae.w("MicroMsg.MallGalleryUI", "invoke error. No current url");
       AppMethodBeat.o(66950);
       return null;
     }
-    str = c.auC(str);
+    str = c.avR(str);
     AppMethodBeat.o(66950);
     return str;
   }
@@ -63,8 +62,8 @@ public class MallGalleryUI
   public void initView()
   {
     AppMethodBeat.i(66949);
-    this.wNi = ((ViewPager)findViewById(2131302011));
-    this.wNi.setOnPageChangeListener(new ViewPager.OnPageChangeListener()
+    this.xcW = ((ViewPager)findViewById(2131302011));
+    this.xcW.setOnPageChangeListener(new ViewPager.OnPageChangeListener()
     {
       public final void onPageScrollStateChanged(int paramAnonymousInt) {}
       
@@ -73,7 +72,7 @@ public class MallGalleryUI
       public final void onPageSelected(int paramAnonymousInt)
       {
         AppMethodBeat.i(66942);
-        ad.d("MicroMsg.MallGalleryUI", "Page Selected postion: %d", new Object[] { Integer.valueOf(paramAnonymousInt) });
+        ae.d("MicroMsg.MallGalleryUI", "Page Selected postion: %d", new Object[] { Integer.valueOf(paramAnonymousInt) });
         MallGalleryUI.a(MallGalleryUI.this, paramAnonymousInt);
         if (MallGalleryUI.a(MallGalleryUI.this))
         {
@@ -83,17 +82,17 @@ public class MallGalleryUI
         AppMethodBeat.o(66942);
       }
     });
-    this.wNj = new g(this);
-    this.wNj.wNH = new g.a()
+    this.xcX = new g(this);
+    this.xcX.xdv = new g.a()
     {
-      public final void dzQ()
+      public final void dDh()
       {
         AppMethodBeat.i(66943);
         MallGalleryUI.c(MallGalleryUI.this);
         AppMethodBeat.o(66943);
       }
     };
-    this.wNi.setAdapter(this.wNj);
+    this.xcW.setAdapter(this.xcX);
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -109,12 +108,12 @@ public class MallGalleryUI
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
         AppMethodBeat.i(66946);
-        if (d.aIu("favorite")) {}
+        if (d.aJN("favorite")) {}
         for (paramAnonymousMenuItem = MallGalleryUI.this.getResources().getStringArray(2130903065);; paramAnonymousMenuItem = MallGalleryUI.this.getResources().getStringArray(2130903066))
         {
-          h.b(MallGalleryUI.this.getContext(), null, paramAnonymousMenuItem, null, new h.c()
+          com.tencent.mm.ui.base.h.b(MallGalleryUI.this.getContext(), null, paramAnonymousMenuItem, null, new h.c()
           {
-            public final void lf(int paramAnonymous2Int)
+            public final void lh(int paramAnonymous2Int)
             {
               AppMethodBeat.i(66945);
               switch (paramAnonymous2Int)
@@ -128,74 +127,74 @@ public class MallGalleryUI
                 Object localObject1 = new Intent();
                 ((Intent)localObject1).putExtra("Retr_Msg_content", "");
                 ((Intent)localObject1).putExtra("Retr_Msg_Type", 0);
-                if (!bt.isNullOrNil(localMallGalleryUI.dzP()))
+                if (!bu.isNullOrNil(localMallGalleryUI.dDg()))
                 {
-                  ((Intent)localObject1).putExtra("Retr_File_Name", localMallGalleryUI.dzP());
+                  ((Intent)localObject1).putExtra("Retr_File_Name", localMallGalleryUI.dDg());
                   ((Intent)localObject1).putExtra("Retr_go_to_chattingUI", false);
                   ((Intent)localObject1).putExtra("Retr_show_success_tips", true);
                   d.f(localMallGalleryUI, ".ui.transmit.MsgRetransmitUI", (Intent)localObject1);
                   AppMethodBeat.o(66945);
                   return;
                 }
-                ad.e("MicroMsg.MallGalleryUI", "url is null or nil");
+                ae.e("MicroMsg.MallGalleryUI", "url is null or nil");
                 AppMethodBeat.o(66945);
                 return;
                 localMallGalleryUI = MallGalleryUI.this;
-                localObject1 = localMallGalleryUI.dzP();
-                if (!bt.isNullOrNil((String)localObject1))
+                localObject1 = localMallGalleryUI.dDg();
+                if (!bu.isNullOrNil((String)localObject1))
                 {
-                  ad.d("MicroMsg.MallGalleryUI", "can save. img path: %s", new Object[] { localObject1 });
+                  ae.d("MicroMsg.MallGalleryUI", "can save. img path: %s", new Object[] { localObject1 });
                   q.j((String)localObject1, localMallGalleryUI);
                   AppMethodBeat.o(66945);
                   return;
                 }
-                ad.w("MicroMsg.MallGalleryUI", "save error.");
+                ae.w("MicroMsg.MallGalleryUI", "save error.");
                 AppMethodBeat.o(66945);
                 return;
                 localMallGalleryUI = MallGalleryUI.this;
-                localObject1 = localMallGalleryUI.dzP();
-                if (!bt.isNullOrNil((String)localObject1))
+                localObject1 = localMallGalleryUI.dDg();
+                if (!bu.isNullOrNil((String)localObject1))
                 {
-                  ad.d("MicroMsg.MallGalleryUI", "file path valid");
-                  cv localcv = new cv();
-                  if (bt.isNullOrNil((String)localObject1))
+                  ae.d("MicroMsg.MallGalleryUI", "file path valid");
+                  cw localcw = new cw();
+                  if (bu.isNullOrNil((String)localObject1))
                   {
-                    ad.w("MicroMsg.GetFavDataSource", "fill favorite event fail, event is null or image path is empty");
-                    localcv.dnG.dnL = 2131758885;
+                    ae.w("MicroMsg.GetFavDataSource", "fill favorite event fail, event is null or image path is empty");
+                    localcw.doL.doQ = 2131758885;
                   }
                   for (;;)
                   {
-                    localcv.dnG.dnM = 4;
-                    localcv.dnG.activity = localMallGalleryUI;
-                    com.tencent.mm.sdk.b.a.IbL.l(localcv);
+                    localcw.doL.doR = 4;
+                    localcw.doL.activity = localMallGalleryUI;
+                    com.tencent.mm.sdk.b.a.IvT.l(localcw);
                     AppMethodBeat.o(66945);
                     return;
-                    ad.i("MicroMsg.GetFavDataSource", "do fill event info(fav simple image), path %s sourceType %d", new Object[] { localObject1, Integer.valueOf(9) });
-                    akd localakd = new akd();
-                    akj localakj = new akj();
-                    ajn localajn = new ajn();
-                    localajn.ZI(2);
-                    localajn.aOt((String)localObject1);
-                    localajn.aOs(com.tencent.mm.b.g.getMessageDigest((localajn.toString() + 2 + System.currentTimeMillis()).getBytes()));
-                    Object localObject2 = new gw();
-                    ((gw)localObject2).dsV.type = 27;
-                    ((gw)localObject2).dsV.dsX = localajn;
-                    com.tencent.mm.sdk.b.a.IbL.l((b)localObject2);
-                    localObject2 = ((gw)localObject2).dsW.thumbPath;
-                    com.tencent.mm.sdk.platformtools.g.c((String)localObject1, 150, 150, Bitmap.CompressFormat.JPEG, 90, (String)localObject2);
-                    localajn.aOu((String)localObject2);
-                    localakj.aPf(u.aAm());
-                    localakj.aPg(u.aAm());
-                    localakj.ZR(9);
-                    localakj.CM(bt.flT());
-                    localakd.a(localakj);
-                    localakd.nZa.add(localajn);
-                    localcv.dnG.title = localajn.title;
-                    localcv.dnG.dnI = localakd;
-                    localcv.dnG.type = 2;
+                    ae.i("MicroMsg.GetFavDataSource", "do fill event info(fav simple image), path %s sourceType %d", new Object[] { localObject1, Integer.valueOf(9) });
+                    akn localakn = new akn();
+                    akt localakt = new akt();
+                    ajx localajx = new ajx();
+                    localajx.aao(2);
+                    localajx.aPQ((String)localObject1);
+                    localajx.aPP(com.tencent.mm.b.g.getMessageDigest((localajx.toString() + 2 + System.currentTimeMillis()).getBytes()));
+                    Object localObject2 = new gx();
+                    ((gx)localObject2).dub.type = 27;
+                    ((gx)localObject2).dub.dud = localajx;
+                    com.tencent.mm.sdk.b.a.IvT.l((b)localObject2);
+                    localObject2 = ((gx)localObject2).duc.thumbPath;
+                    com.tencent.mm.sdk.platformtools.h.c((String)localObject1, 150, 150, Bitmap.CompressFormat.JPEG, 90, (String)localObject2);
+                    localajx.aPR((String)localObject2);
+                    localakt.aQC(v.aAC());
+                    localakt.aQD(v.aAC());
+                    localakt.aax(9);
+                    localakt.Dk(bu.fpO());
+                    localakn.a(localakt);
+                    localakn.oeJ.add(localajx);
+                    localcw.doL.title = localajx.title;
+                    localcw.doL.doN = localakn;
+                    localcw.doL.type = 2;
                   }
                 }
-                ad.w("MicroMsg.MallGalleryUI", "file path invalid");
+                ae.w("MicroMsg.MallGalleryUI", "file path invalid");
               }
             }
           });
@@ -211,9 +210,9 @@ public class MallGalleryUI
   {
     AppMethodBeat.i(66947);
     super.onCreate(paramBundle);
-    this.wNk = getIntent().getStringArrayListExtra("keys_img_urls");
+    this.xcY = getIntent().getStringArrayListExtra("keys_img_urls");
     hideTitleView();
-    this.wNm = false;
+    this.xda = false;
     initView();
     AppMethodBeat.o(66947);
   }
@@ -222,10 +221,10 @@ public class MallGalleryUI
   {
     AppMethodBeat.i(66948);
     super.onResume();
-    this.wNj.setData(this.wNk);
-    this.wNj.notifyDataSetChanged();
-    if (this.wNk != null) {
-      this.wNk.size();
+    this.xcX.setData(this.xcY);
+    this.xcX.notifyDataSetChanged();
+    if (this.xcY != null) {
+      this.xcY.size();
     }
     AppMethodBeat.o(66948);
   }

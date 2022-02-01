@@ -36,12 +36,11 @@ import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.ba;
-import com.tencent.mm.model.u;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.model.bc;
+import com.tencent.mm.model.w;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.HomeUI.FitSystemWindowLayoutView;
 import com.tencent.mm.ui.IChattingUIProxy;
 import com.tencent.mm.ui.MMFragment;
@@ -57,7 +56,6 @@ import com.tencent.mm.ui.tools.TestTimeForChatting;
 import com.tencent.mm.ui.tools.TestTimeForChatting.a;
 import com.tencent.mm.ui.tools.j;
 import com.tencent.mm.ui.widget.SwipeBackLayout;
-import com.tencent.mm.ui.z;
 
 public class BaseConversationUI
   extends MMFragmentActivity
@@ -73,7 +71,7 @@ public class BaseConversationUI
   public BaseConversationFmUI conversationFm;
   private boolean isAnimating;
   private String lastRestoreTalker;
-  private BaseConversationUI.a launcherUIStatus;
+  private a launcherUIStatus;
   private ActionBar mActionBar;
   private com.tencent.mm.ui.a mActionBarHelper;
   public boolean mChattingClosed;
@@ -92,7 +90,7 @@ public class BaseConversationUI
   {
     AppMethodBeat.i(38195);
     this.chattinguiResumeTime = 0L;
-    this.launcherUIStatus = BaseConversationUI.a.KrU;
+    this.launcherUIStatus = a.KOo;
     this.mNeedChattingAnim = false;
     this.mChattingClosed = true;
     this.chattingID = -1;
@@ -100,19 +98,19 @@ public class BaseConversationUI
     {
       long start = 0L;
       
-      public final void fxA()
+      public final void fBC()
       {
         AppMethodBeat.i(38173);
         if (BaseConversationUI.this.mChattingInAnim == null)
         {
-          BaseConversationUI.access$702(BaseConversationUI.this, AnimationUtils.loadAnimation(BaseConversationUI.this, MMFragmentActivity.a.mOe));
+          BaseConversationUI.access$702(BaseConversationUI.this, AnimationUtils.loadAnimation(BaseConversationUI.this, MMFragmentActivity.a.mTi));
           BaseConversationUI.this.mChattingInAnim.setAnimationListener(new Animation.AnimationListener()
           {
             public final void onAnimationEnd(Animation paramAnonymous2Animation)
             {
               AppMethodBeat.i(38171);
               BaseConversationUI.access$802(BaseConversationUI.this, false);
-              ad.i("MicroMsg.BaseConversationUI", "klem animationEnd");
+              ae.i("MicroMsg.BaseConversationUI", "klem animationEnd");
               BaseConversationUI.access$1000(BaseConversationUI.this);
               AppMethodBeat.o(38171);
             }
@@ -122,7 +120,7 @@ public class BaseConversationUI
             public final void onAnimationStart(Animation paramAnonymous2Animation)
             {
               AppMethodBeat.i(38170);
-              ad.i("MicroMsg.BaseConversationUI", "klem onAnimationStart onDrawed->onAnimationStart:%sms", new Object[] { Long.valueOf(System.currentTimeMillis() - BaseConversationUI.6.this.start) });
+              ae.i("MicroMsg.BaseConversationUI", "klem onAnimationStart onDrawed->onAnimationStart:%sms", new Object[] { Long.valueOf(System.currentTimeMillis() - BaseConversationUI.6.this.start) });
               BaseConversationUI.access$802(BaseConversationUI.this, true);
               BaseConversationUI.access$900(BaseConversationUI.this);
               BaseConversationUI.this.onSettle(false, 0);
@@ -134,14 +132,14 @@ public class BaseConversationUI
         {
           BaseConversationUI.this.chattingView.setOndispatchDraw(new TestTimeForChatting.a()
           {
-            public final void fxB()
+            public final void fBD()
             {
               AppMethodBeat.i(38172);
-              ad.i("MicroMsg.BaseConversationUI", "[onDrawed]");
+              ae.i("MicroMsg.BaseConversationUI", "[onDrawed]");
               BaseConversationUI.6.this.start = System.currentTimeMillis();
               if (BaseConversationUI.this.chattingFragmet == null)
               {
-                ad.e("MicroMsg.BaseConversationUI", "chattingFragmet is null!");
+                ae.e("MicroMsg.BaseConversationUI", "chattingFragmet is null!");
                 AppMethodBeat.o(38172);
                 return;
               }
@@ -161,8 +159,8 @@ public class BaseConversationUI
         }
         for (;;)
         {
-          BaseConversationUI.this.chattingFragmentView.JqD = null;
-          ad.i("MicroMsg.BaseConversationUI", "klem CHATTING ONLAYOUT ");
+          BaseConversationUI.this.chattingFragmentView.JLs = null;
+          ae.i("MicroMsg.BaseConversationUI", "klem CHATTING ONLAYOUT ");
           AppMethodBeat.o(38173);
           return;
           BaseConversationUI.access$900(BaseConversationUI.this);
@@ -177,12 +175,12 @@ public class BaseConversationUI
         AppMethodBeat.i(38177);
         if (!BaseConversationUI.this.mChattingClosed)
         {
-          ad.e("MicroMsg.BaseConversationUI", "start chatting but last chatting does't be close!");
+          ae.e("MicroMsg.BaseConversationUI", "start chatting but last chatting does't be close!");
           BaseConversationUI.this.closeChatting(false);
         }
         if ((BaseConversationUI.this.isFinishing()) || (BaseConversationUI.this.isPaused()) || (!BaseConversationUI.this.mChattingClosed))
         {
-          ad.w("MicroMsg.BaseConversationUI", "[startChattingRunnable] pass! isPause:%s mChattingClosed:%s", new Object[] { Boolean.valueOf(BaseConversationUI.this.isPaused()), Boolean.valueOf(BaseConversationUI.this.mChattingClosed) });
+          ae.w("MicroMsg.BaseConversationUI", "[startChattingRunnable] pass! isPause:%s mChattingClosed:%s", new Object[] { Boolean.valueOf(BaseConversationUI.this.isPaused()), Boolean.valueOf(BaseConversationUI.this.mChattingClosed) });
           AppMethodBeat.o(38177);
           return;
         }
@@ -191,7 +189,7 @@ public class BaseConversationUI
         if (BaseConversationUI.this.chattingView == null)
         {
           bool = false;
-          ad.i("MicroMsg.BaseConversationUI", "ashutest::startChatting, ishow:%b", new Object[] { Boolean.valueOf(bool) });
+          ae.i("MicroMsg.BaseConversationUI", "ashutest::startChatting, ishow:%b", new Object[] { Boolean.valueOf(bool) });
           Intent localIntent = new Intent().putExtra("Chat_User", BaseConversationUI.this.pendingUser);
           if (BaseConversationUI.this.pendingBundle != null) {
             localIntent.putExtras(BaseConversationUI.this.pendingBundle);
@@ -225,7 +223,7 @@ public class BaseConversationUI
               AppMethodBeat.o(38176);
             }
           }, "directReport_startChattingRunnable");
-          BaseConversationUI.access$402(BaseConversationUI.this, bt.aQJ());
+          BaseConversationUI.access$402(BaseConversationUI.this, bu.aRi());
           AppMethodBeat.o(38177);
           return;
           bool = BaseConversationUI.this.chattingView.isShown();
@@ -249,7 +247,7 @@ public class BaseConversationUI
   {
     AppMethodBeat.i(38221);
     paramInt = 0xFFFF & paramInt;
-    ad.w("MicroMsg.BaseConversationUI", "check request code %d", new Object[] { Integer.valueOf(paramInt) });
+    ae.w("MicroMsg.BaseConversationUI", "check request code %d", new Object[] { Integer.valueOf(paramInt) });
     switch (paramInt)
     {
     default: 
@@ -315,7 +313,7 @@ public class BaseConversationUI
       for (;;)
       {
         this.chattingView = ((TestTimeForChatting)findViewById(this.chattingID));
-        ad.i("MicroMsg.BaseConversationUI", "ashu::prepareChattingFragment init chattingView, top %s", new Object[] { Integer.valueOf(localObject2[1]) });
+        ae.i("MicroMsg.BaseConversationUI", "ashu::prepareChattingFragment init chattingView, top %s", new Object[] { Integer.valueOf(localObject2[1]) });
         AppMethodBeat.o(38210);
         return;
         localViewGroup = (ViewGroup)localObject1;
@@ -326,15 +324,15 @@ public class BaseConversationUI
           public final void run()
           {
             AppMethodBeat.i(38175);
-            BaseConversationUI.this.getSupportActionBar().getCustomView().getLocationInWindow(this.JeM);
-            int i = this.JeM[1];
+            BaseConversationUI.this.getSupportActionBar().getCustomView().getLocationInWindow(this.Jzx);
+            int i = this.Jzx[1];
             if (i > 0)
             {
               BaseConversationUI.access$1300(BaseConversationUI.this, localFitSystemWindowLayoutView, i, new Rect(0, i, 0, 0), localViewGroup);
               AppMethodBeat.o(38175);
               return;
             }
-            if (com.tencent.mm.compatible.util.d.ly(20)) {
+            if (com.tencent.mm.compatible.util.d.lA(20)) {
               localFitSystemWindowLayoutView.setOnApplyWindowInsetsListener(new View.OnApplyWindowInsetsListener()
               {
                 @TargetApi(20)
@@ -346,9 +344,9 @@ public class BaseConversationUI
                     AppMethodBeat.o(38174);
                     return paramAnonymous2WindowInsets;
                   }
-                  ad.i("MicroMsg.BaseConversationUI", "OnApplyWindowInsetsListener %s", new Object[] { paramAnonymous2WindowInsets });
+                  ae.i("MicroMsg.BaseConversationUI", "OnApplyWindowInsetsListener %s", new Object[] { paramAnonymous2WindowInsets });
                   paramAnonymous2WindowInsets.consumeSystemWindowInsets();
-                  BaseConversationUI.access$1300(BaseConversationUI.this, BaseConversationUI.7.this.JeN, paramAnonymous2WindowInsets.getSystemWindowInsetTop(), new Rect(paramAnonymous2WindowInsets.getSystemWindowInsetLeft(), paramAnonymous2WindowInsets.getSystemWindowInsetTop(), paramAnonymous2WindowInsets.getSystemWindowInsetRight(), paramAnonymous2WindowInsets.getSystemWindowInsetBottom()), BaseConversationUI.7.this.JeO);
+                  BaseConversationUI.access$1300(BaseConversationUI.this, BaseConversationUI.7.this.Jzy, paramAnonymous2WindowInsets.getSystemWindowInsetTop(), new Rect(paramAnonymous2WindowInsets.getSystemWindowInsetLeft(), paramAnonymous2WindowInsets.getSystemWindowInsetTop(), paramAnonymous2WindowInsets.getSystemWindowInsetRight(), paramAnonymous2WindowInsets.getSystemWindowInsetBottom()), BaseConversationUI.7.this.Jzz);
                   AppMethodBeat.o(38174);
                   return paramAnonymous2WindowInsets;
                 }
@@ -380,7 +378,7 @@ public class BaseConversationUI
         getSupportActionBar().getCustomView().getLocationInWindow((int[])localObject1);
         localObject2 = (HomeUI.FitSystemWindowLayoutView)localObject2;
         ((HomeUI.FitSystemWindowLayoutView)localObject2).fitSystemWindows(new Rect(0, ((HomeUI.FitSystemWindowLayoutView)localObject2).getCacheInsetsTop(), 0, 0));
-        ad.i("MicroMsg.BaseConversationUI", "rootLayout2 fitSystemWindows, top %s", new Object[] { Integer.valueOf(localObject1[1]) });
+        ae.i("MicroMsg.BaseConversationUI", "rootLayout2 fitSystemWindows, top %s", new Object[] { Integer.valueOf(localObject1[1]) });
         localViewGroup = (ViewGroup)localViewGroup.findViewById(2131301337);
         localObject2 = (ImageView)((HomeUI.FitSystemWindowLayoutView)localObject2).findViewById(2131303386);
         ((ImageView)localObject2).setTag(localViewGroup);
@@ -388,7 +386,7 @@ public class BaseConversationUI
         if ((localObject3 == null) || ((localObject3 instanceof FrameLayout.LayoutParams))) {
           break label663;
         }
-        ad.w("MicroMsg.BaseConversationUI", "FIX LayoutParams");
+        ae.w("MicroMsg.BaseConversationUI", "FIX LayoutParams");
         ((ImageView)localObject2).setLayoutParams(new FrameLayout.LayoutParams((ViewGroup.LayoutParams)localObject3));
         localObject3 = getMagicDrawingCache(localViewGroup);
         if (localObject3 == null) {
@@ -397,11 +395,11 @@ public class BaseConversationUI
         ((ImageView)localObject2).setImageBitmap((Bitmap)localObject3);
         localViewGroup.setVisibility(8);
         ((ImageView)localObject2).setVisibility(0);
-        ad.i("MicroMsg.BaseConversationUI", "[prepareChattingFragment] prepareView VISIBLE");
+        ae.i("MicroMsg.BaseConversationUI", "[prepareChattingFragment] prepareView VISIBLE");
       }
       for (;;)
       {
-        ad.i("MicroMsg.BaseConversationUI", "ashu::prepareChattingFragment has chattingView, top %s", new Object[] { Integer.valueOf(localObject1[1]) });
+        ae.i("MicroMsg.BaseConversationUI", "ashu::prepareChattingFragment has chattingView, top %s", new Object[] { Integer.valueOf(localObject1[1]) });
         AppMethodBeat.o(38210);
         return;
         label663:
@@ -411,7 +409,7 @@ public class BaseConversationUI
         ((ImageView)localObject2).setImageBitmap(null);
       }
       label682:
-      ad.e("MicroMsg.BaseConversationUI", "on position %d, rootLayout not found!", new Object[] { Integer.valueOf(i) });
+      ae.e("MicroMsg.BaseConversationUI", "on position %d, rootLayout not found!", new Object[] { Integer.valueOf(i) });
       i += 1;
     }
   }
@@ -419,16 +417,16 @@ public class BaseConversationUI
   private void doJobOnChattingAnimEnd()
   {
     AppMethodBeat.i(38205);
-    aq.o(new Runnable()
+    ar.o(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(38168);
-        ba.ajF().fkT();
-        aq.aay(0);
+        bc.ajU().foO();
+        ar.abe(0);
         BaseConversationUI.this.onSwipe(1.0F);
         if ((BaseConversationUI.this.chattingView != null) && (BaseConversationUI.this.chattingFragmet != null)) {
-          BaseConversationUI.this.chattingView.fKL();
+          BaseConversationUI.this.chattingView.fPc();
         }
         BaseConversationUI.this.chattingUIProxy.onEnterEnd();
         BaseConversationUI.access$600(BaseConversationUI.this);
@@ -450,7 +448,7 @@ public class BaseConversationUI
   {
     AppMethodBeat.i(38204);
     this.chattingView.setTranslationX(0.0F);
-    this.chattingView.fKK();
+    this.chattingView.fPb();
     AppMethodBeat.o(38204);
   }
   
@@ -487,14 +485,14 @@ public class BaseConversationUI
   private void initActionBar()
   {
     AppMethodBeat.i(38217);
-    if ((this.chattingFragmet != null) && (this.chattingFragmet.cWM.cBJ))
+    if ((this.chattingFragmet != null) && (this.chattingFragmet.cXJ.cCq))
     {
-      ad.w("MicroMsg.BaseConversationUI", "[initActionBar] isChattingForeground True!");
+      ae.w("MicroMsg.BaseConversationUI", "[initActionBar] isChattingForeground True!");
       AppMethodBeat.o(38217);
       return;
     }
-    ad.w("MicroMsg.BaseConversationUI", "[initActionBar] isChattingForeground False!");
-    View localView = z.jO(this).inflate(2131492921, null);
+    ae.w("MicroMsg.BaseConversationUI", "[initActionBar] isChattingForeground False!");
+    View localView = com.tencent.mm.ui.z.jV(this).inflate(2131492921, null);
     this.mActionBarHelper = new com.tencent.mm.ui.a(localView);
     this.mActionBar.setLogo(new ColorDrawable(getResources().getColor(17170445)));
     this.mActionBar.gm();
@@ -510,14 +508,14 @@ public class BaseConversationUI
         AppMethodBeat.i(38165);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
         localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/conversation/BaseConversationUI$10", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/conversation/BaseConversationUI$10", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
         if (BaseConversationUI.this.isAnimating)
         {
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/conversation/BaseConversationUI$10", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(38165);
           return;
         }
-        aq.aA(BaseConversationUI.this.startChattingRunnable);
+        ar.ay(BaseConversationUI.this.startChattingRunnable);
         BaseConversationUI.this.finish();
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/conversation/BaseConversationUI$10", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(38165);
@@ -545,7 +543,7 @@ public class BaseConversationUI
     {
       createChattingView();
       if (paramIntent != null) {
-        this.chattingFragmet.getArguments().putAll(y.bk(paramIntent));
+        this.chattingFragmet.getArguments().putAll(com.tencent.mm.sdk.platformtools.z.bl(paramIntent));
       }
       if (bool)
       {
@@ -557,7 +555,7 @@ public class BaseConversationUI
         if (this.chattingFragmet.isSupportNavigationSwipeBack()) {
           this.chattingFragmet.getSwipeBackLayout().setNeedRequestActivityTranslucent(false);
         }
-        ad.i("MicroMsg.BaseConversationUI", "ashu::prepareChattingFragment use %dms, needInit %B, Intent %s", new Object[] { Long.valueOf(System.currentTimeMillis() - l), Boolean.valueOf(bool), paramIntent });
+        ae.i("MicroMsg.BaseConversationUI", "ashu::prepareChattingFragment use %dms, needInit %B, Intent %s", new Object[] { Long.valueOf(System.currentTimeMillis() - l), Boolean.valueOf(bool), paramIntent });
         AppMethodBeat.o(38209);
         return;
         this.chattingUIProxy.onEnterBegin();
@@ -589,7 +587,7 @@ public class BaseConversationUI
   {
     boolean bool = true;
     AppMethodBeat.i(38206);
-    if ((!com.tencent.mm.compatible.util.d.ly(19)) || (!com.tencent.mm.compatible.g.b.abd()))
+    if ((!com.tencent.mm.compatible.util.d.lA(19)) || (!com.tencent.mm.compatible.g.b.abm()))
     {
       AppMethodBeat.o(38206);
       return;
@@ -597,9 +595,9 @@ public class BaseConversationUI
     if (this.chattingFragmet == null) {}
     for (;;)
     {
-      ad.i("MicroMsg.BaseConversationUI", "ashutest: tryResetChattingSwipeStatus, chattingFragment NULL ? %B", new Object[] { Boolean.valueOf(bool) });
+      ae.i("MicroMsg.BaseConversationUI", "ashutest: tryResetChattingSwipeStatus, chattingFragment NULL ? %B", new Object[] { Boolean.valueOf(bool) });
       if (this.chattingFragmet != null) {
-        this.chattingFragmet.getSwipeBackLayout().KTC = false;
+        this.chattingFragmet.getSwipeBackLayout().Lqa = false;
       }
       AppMethodBeat.o(38206);
       return;
@@ -615,7 +613,7 @@ public class BaseConversationUI
     if ((this.conversationFm != null) && (this.conversationFm.getView() != null)) {}
     for (int i = j - (paramInt + k + this.conversationFm.getView().getBottom());; i = 0)
     {
-      ad.i("MicroMsg.BaseConversationUI", "ashu::fitSystemWindows 2. decorBottom:%d, statusBarHeight:%d, actionBarHeight:%d, paddingForNavBar:%d", new Object[] { Integer.valueOf(j), Integer.valueOf(paramInt), Integer.valueOf(k), Integer.valueOf(i) });
+      ae.i("MicroMsg.BaseConversationUI", "ashu::fitSystemWindows 2. decorBottom:%d, statusBarHeight:%d, actionBarHeight:%d, paddingForNavBar:%d", new Object[] { Integer.valueOf(j), Integer.valueOf(paramInt), Integer.valueOf(k), Integer.valueOf(i) });
       paramFitSystemWindowLayoutView.setActionBarContainer(paramViewGroup);
       paramFitSystemWindowLayoutView.fitSystemWindows(paramRect);
       AppMethodBeat.o(38212);
@@ -629,7 +627,7 @@ public class BaseConversationUI
     if (this.chattingView == null) {}
     for (boolean bool = false;; bool = this.chattingView.isShown())
     {
-      ad.i("MicroMsg.BaseConversationUI", "try closeChatting, ishow:%b", new Object[] { Boolean.valueOf(bool) });
+      ae.i("MicroMsg.BaseConversationUI", "try closeChatting, ishow:%b", new Object[] { Boolean.valueOf(bool) });
       if ((this.chattingFragmet != null) && (this.chattingFragmet.isSupportNavigationSwipeBack())) {
         com.tencent.mm.ui.widget.h.b(this);
       }
@@ -639,21 +637,21 @@ public class BaseConversationUI
       AppMethodBeat.o(38216);
       return;
     }
-    ad.i("MicroMsg.BaseConversationUI", "[closeChatting] needAnim:%s", new Object[] { Boolean.valueOf(paramBoolean) });
+    ae.i("MicroMsg.BaseConversationUI", "[closeChatting] needAnim:%s", new Object[] { Boolean.valueOf(paramBoolean) });
     this.chattingView.setVisibility(8);
     this.mChattingClosed = true;
     if ((paramBoolean) && (this.mChattingOutAnim == null))
     {
-      this.mChattingOutAnim = AnimationUtils.loadAnimation(this, MMFragmentActivity.a.mOh);
+      this.mChattingOutAnim = AnimationUtils.loadAnimation(this, MMFragmentActivity.a.mTl);
       this.mChattingOutAnim.setAnimationListener(new Animation.AnimationListener()
       {
         public final void onAnimationEnd(Animation paramAnonymousAnimation)
         {
           AppMethodBeat.i(38180);
-          ba.ajF().fkT();
-          aq.aay(0);
+          bc.ajU().foO();
+          ar.abe(0);
           BaseConversationUI.access$600(BaseConversationUI.this);
-          ad.i("MicroMsg.BaseConversationUI", "klem pop out onAnimationEnd");
+          ae.i("MicroMsg.BaseConversationUI", "klem pop out onAnimationEnd");
           AppMethodBeat.o(38180);
         }
         
@@ -662,9 +660,9 @@ public class BaseConversationUI
         public final void onAnimationStart(Animation paramAnonymousAnimation)
         {
           AppMethodBeat.i(38179);
-          ba.ajF().fkR();
-          aq.aay(-8);
-          ad.i("MicroMsg.BaseConversationUI", "klem pop out onAnimationStart");
+          bc.ajU().foM();
+          ar.abe(-8);
+          ae.i("MicroMsg.BaseConversationUI", "klem pop out onAnimationStart");
           BaseConversationUI.this.onSettle(true, 0);
           AppMethodBeat.o(38179);
         }
@@ -676,7 +674,7 @@ public class BaseConversationUI
       if ((localImageView != null) && (localImageView.getVisibility() == 0))
       {
         localImageView.setVisibility(8);
-        ad.i("MicroMsg.BaseConversationUI", "[closeChatting] prepareView GONE");
+        ae.i("MicroMsg.BaseConversationUI", "[closeChatting] prepareView GONE");
         if (localImageView.getTag() != null) {
           ((View)localImageView.getTag()).setVisibility(0);
         }
@@ -706,7 +704,7 @@ public class BaseConversationUI
             return;
           }
           com.tencent.mm.modelstat.d.d(4, "ChattingUI" + BaseConversationUI.access$000(BaseConversationUI.this), BaseConversationUI.this.chattingFragmet.hashCode());
-          com.tencent.mm.modelstat.d.m("ChattingUI" + BaseConversationUI.access$000(BaseConversationUI.this), BaseConversationUI.this.chattinguiResumeTime, bt.aQJ());
+          com.tencent.mm.modelstat.d.m("ChattingUI" + BaseConversationUI.access$000(BaseConversationUI.this), BaseConversationUI.this.chattinguiResumeTime, bu.aRi());
           com.tencent.mm.modelstat.d.d(3, BaseConversationUI.this.getLocalClassName(), BaseConversationUI.this.hashCode());
           AppMethodBeat.o(38181);
         }
@@ -724,9 +722,9 @@ public class BaseConversationUI
   public boolean dispatchKeyEvent(KeyEvent paramKeyEvent)
   {
     AppMethodBeat.i(38225);
-    ad.d("MicroMsg.BaseConversationUI", "chatting ui dispatch key event %s", new Object[] { paramKeyEvent });
+    ae.d("MicroMsg.BaseConversationUI", "chatting ui dispatch key event %s", new Object[] { paramKeyEvent });
     if ((paramKeyEvent.getKeyCode() == 4) && (paramKeyEvent.getAction() == 0)) {
-      aq.aA(this.startChattingRunnable);
+      ar.ay(this.startChattingRunnable);
     }
     if (this.isAnimating)
     {
@@ -769,29 +767,29 @@ public class BaseConversationUI
       {
         if ((i <= 0) || (j <= 0) || (this.chattingFragmet.getView() == null))
         {
-          ad.e("MicroMsg.BaseConversationUI", "viewWidth:%s viewHeight:%s", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
+          ae.e("MicroMsg.BaseConversationUI", "viewWidth:%s viewHeight:%s", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
           AppMethodBeat.o(38211);
           return null;
         }
         if (this.chattingFragmet != null) {
-          ad.i("MicroMsg.BaseConversationUI", "getBottom:%s keyboardState:%s", new Object[] { Integer.valueOf(this.chattingFragmet.getView().getBottom()), Integer.valueOf(this.chattingFragmet.keyboardState()) });
+          ae.i("MicroMsg.BaseConversationUI", "getBottom:%s keyboardState:%s", new Object[] { Integer.valueOf(this.chattingFragmet.getView().getBottom()), Integer.valueOf(this.chattingFragmet.keyboardState()) });
         }
         if ((this.chattingFragmet != null) && (this.chattingFragmet.getView().getBottom() > 0) && ((this.chattingFragmet.keyboardState() == 1) || (this.chattingFragmet.getView().getBottom() < getResources().getDisplayMetrics().heightPixels * 2 / 3)))
         {
-          ad.e("MicroMsg.BaseConversationUI", "hardKeyboardHidden:%s", new Object[] { Integer.valueOf(this.chattingFragmet.keyboardState()) });
+          ae.e("MicroMsg.BaseConversationUI", "hardKeyboardHidden:%s", new Object[] { Integer.valueOf(this.chattingFragmet.keyboardState()) });
           AppMethodBeat.o(38211);
           return null;
         }
         if ((this.chattingFragmet != null) && (this.chattingFragmet.keyboardState() == 1))
         {
-          ad.e("MicroMsg.BaseConversationUI", "hardKeyboardHidden:%s", new Object[] { Integer.valueOf(this.chattingFragmet.keyboardState()) });
+          ae.e("MicroMsg.BaseConversationUI", "hardKeyboardHidden:%s", new Object[] { Integer.valueOf(this.chattingFragmet.keyboardState()) });
           AppMethodBeat.o(38211);
           return null;
         }
         if ((this.mPrepareBitmap == null) || (this.mPrepareBitmap.isRecycled()) || (this.mPrepareBitmap.getWidth() != i) || (this.mPrepareBitmap.getHeight() != j)) {
           if ((this.mPrepareBitmap != null) && (!this.mPrepareBitmap.isRecycled()))
           {
-            ad.i("MicroMsg.BaseConversationUI", "bitmap recycle %s", new Object[] { this.mPrepareBitmap.toString() });
+            ae.i("MicroMsg.BaseConversationUI", "bitmap recycle %s", new Object[] { this.mPrepareBitmap.toString() });
             this.mPrepareBitmap.recycle();
           }
         }
@@ -807,14 +805,14 @@ public class BaseConversationUI
             localPaint.setColor(-1);
             localCanvas.drawRect(0.0F, k, i, j - m, localPaint);
             paramView.draw(localCanvas);
-            ad.i("MicroMsg.BaseConversationUI", "[getMagicDrawingCache] cost%sms", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
+            ae.i("MicroMsg.BaseConversationUI", "[getMagicDrawingCache] cost%sms", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
             paramView = this.mPrepareBitmap;
             AppMethodBeat.o(38211);
             return paramView;
           }
           catch (OutOfMemoryError paramView)
           {
-            ad.e("MicroMsg.BaseConversationUI", "[getMagicDrawingCache] e:%s", new Object[] { paramView });
+            ae.e("MicroMsg.BaseConversationUI", "[getMagicDrawingCache] e:%s", new Object[] { paramView });
             AppMethodBeat.o(38211);
             return null;
           }
@@ -841,13 +839,13 @@ public class BaseConversationUI
     }
     if ((acceptRequestCode(paramInt1)) && (this.chattingFragmet == null))
     {
-      ad.i("MicroMsg.BaseConversationUI", "on select image ActivityResult. the chattingUI maybe kill in the background.");
-      aq.aA(this.selectImageJob);
-      this.selectImageJob.JeR = 0;
+      ae.i("MicroMsg.BaseConversationUI", "on select image ActivityResult. the chattingUI maybe kill in the background.");
+      ar.ay(this.selectImageJob);
+      this.selectImageJob.JzC = 0;
       this.selectImageJob.requestCode = paramInt1;
       this.selectImageJob.bZU = paramInt2;
-      this.selectImageJob.dxy = paramIntent;
-      aq.f(this.selectImageJob);
+      this.selectImageJob.dyD = paramIntent;
+      ar.f(this.selectImageJob);
       AppMethodBeat.o(38203);
       return;
     }
@@ -858,9 +856,9 @@ public class BaseConversationUI
   {
     AppMethodBeat.i(38196);
     getWindow().setFormat(-2);
-    com.tencent.mm.pluginsdk.h.aN(this);
+    com.tencent.mm.pluginsdk.h.aO(this);
     super.onCreate(paramBundle);
-    if (!b.fIB()) {
+    if (!b.fMT()) {
       getWindow().setCallback(new c(getWindow().getCallback(), this));
     }
     this.mActionBar = getSupportActionBar();
@@ -874,7 +872,7 @@ public class BaseConversationUI
     super.onDestroy();
     if ((this.mPrepareBitmap != null) && (!this.mPrepareBitmap.isRecycled()))
     {
-      ad.i("MicroMsg.BaseConversationUI", "bitmap recycle %s", new Object[] { this.mPrepareBitmap.toString() });
+      ae.i("MicroMsg.BaseConversationUI", "bitmap recycle %s", new Object[] { this.mPrepareBitmap.toString() });
       this.mPrepareBitmap.recycle();
     }
     this.chattingFragmet = null;
@@ -891,7 +889,7 @@ public class BaseConversationUI
   {
     AppMethodBeat.i(38197);
     super.onNewIntent(paramIntent);
-    ad.i("MicroMsg.BaseConversationUI", "onNewIntent");
+    ae.i("MicroMsg.BaseConversationUI", "onNewIntent");
     setIntent(paramIntent);
     AppMethodBeat.o(38197);
   }
@@ -899,12 +897,12 @@ public class BaseConversationUI
   public void onPause()
   {
     AppMethodBeat.i(38199);
-    ad.i("MicroMsg.BaseConversationUI", "on pause");
+    ae.i("MicroMsg.BaseConversationUI", "on pause");
     super.onPause();
     if (!isFinishing()) {
       com.tencent.mm.ui.widget.h.a(this);
     }
-    this.launcherUIStatus = BaseConversationUI.a.KrW;
+    this.launcherUIStatus = a.KOq;
     if ((this.chattingView != null) && (this.chattingView.isShown())) {}
     for (final boolean bool = true;; bool = false)
     {
@@ -929,7 +927,7 @@ public class BaseConversationUI
           {
             com.tencent.mm.modelstat.d.d(4, str, i);
             if (bool) {
-              com.tencent.mm.modelstat.d.m("ChattingUI" + BaseConversationUI.access$000(BaseConversationUI.this), BaseConversationUI.this.chattinguiResumeTime, bt.aQJ());
+              com.tencent.mm.modelstat.d.m("ChattingUI" + BaseConversationUI.access$000(BaseConversationUI.this), BaseConversationUI.this.chattinguiResumeTime, bu.aRi());
             }
             AppMethodBeat.o(38167);
             return;
@@ -953,7 +951,7 @@ public class BaseConversationUI
     AppMethodBeat.i(38222);
     super.onRestoreInstanceState(paramBundle);
     this.lastRestoreTalker = paramBundle.getString("last_restore_talker");
-    ad.d("MicroMsg.BaseConversationUI", "onRestoreInstantceState:%s", new Object[] { this.lastRestoreTalker });
+    ae.d("MicroMsg.BaseConversationUI", "onRestoreInstantceState:%s", new Object[] { this.lastRestoreTalker });
     AppMethodBeat.o(38222);
   }
   
@@ -963,7 +961,7 @@ public class BaseConversationUI
     super.onResume();
     com.tencent.mm.ui.widget.h.b(this);
     onSwipe(1.0F);
-    this.launcherUIStatus = BaseConversationUI.a.KrV;
+    this.launcherUIStatus = a.KOp;
     if ((this.chattingView != null) && (this.chattingView.isShown())) {}
     for (final boolean bool = true;; bool = false)
     {
@@ -992,9 +990,9 @@ public class BaseConversationUI
         }
       }, "directReport_onResume");
       if (!bool) {
-        this.chattinguiResumeTime = bt.aQJ();
+        this.chattinguiResumeTime = bu.aRi();
       }
-      if ((com.tencent.mm.compatible.util.d.ly(19)) && (com.tencent.mm.compatible.g.b.abd()))
+      if ((com.tencent.mm.compatible.util.d.lA(19)) && (com.tencent.mm.compatible.g.b.abm()))
       {
         if ((this.chattingFragmet != null) && (this.chattingFragmet.isSupportNavigationSwipeBack())) {
           this.chattingFragmet.getSwipeBackLayout().setEnableGesture(true);
@@ -1006,18 +1004,18 @@ public class BaseConversationUI
             AppMethodBeat.i(38166);
             long l = System.currentTimeMillis();
             if (BaseConversationUI.this.chattingView == null) {
-              if ((BaseConversationUI.this.conversationFm == null) || (bt.isNullOrNil(BaseConversationUI.this.conversationFm.getUserName()))) {
+              if ((BaseConversationUI.this.conversationFm == null) || (bu.isNullOrNil(BaseConversationUI.this.conversationFm.getUserName()))) {
                 break label127;
               }
             }
             label127:
-            for (Object localObject = BaseConversationUI.this.conversationFm.getUserName();; localObject = u.aAm())
+            for (Object localObject = BaseConversationUI.this.conversationFm.getUserName();; localObject = com.tencent.mm.model.v.aAC())
             {
               localObject = new Intent().putExtra("Chat_User", (String)localObject);
               BaseConversationUI.access$300(BaseConversationUI.this, (Intent)localObject, true);
               BaseConversationUI.this.chattingView.setVisibility(8);
               BaseConversationUI.this.resumeMainFragment();
-              ad.d("MicroMsg.BaseConversationUI", "prepare chattingUI logic use %dms", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
+              ae.d("MicroMsg.BaseConversationUI", "prepare chattingUI logic use %dms", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
               AppMethodBeat.o(38166);
               return false;
             }
@@ -1034,10 +1032,10 @@ public class BaseConversationUI
   public void onSaveInstanceState(Bundle paramBundle)
   {
     AppMethodBeat.i(38223);
-    if ((this.chattingFragmet != null) && (!bt.isNullOrNil(this.chattingFragmet.cWM.getTalkerUserName())))
+    if ((this.chattingFragmet != null) && (!bu.isNullOrNil(this.chattingFragmet.cXJ.getTalkerUserName())))
     {
-      ad.d("MicroMsg.BaseConversationUI", "onSaveInstanceState:%s", new Object[] { this.chattingFragmet.cWM.getTalkerUserName() });
-      paramBundle.putString("last_restore_talker", this.chattingFragmet.cWM.getTalkerUserName());
+      ae.d("MicroMsg.BaseConversationUI", "onSaveInstanceState:%s", new Object[] { this.chattingFragmet.cXJ.getTalkerUserName() });
+      paramBundle.putString("last_restore_talker", this.chattingFragmet.cXJ.getTalkerUserName());
     }
     AppMethodBeat.o(38223);
   }
@@ -1046,8 +1044,8 @@ public class BaseConversationUI
   {
     long l = 130L;
     AppMethodBeat.i(38224);
-    ad.v("MicroMsg.BaseConversationUI", "ashutest: on settle %B, speed %d, resumeStatus %s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt), this.launcherUIStatus });
-    if ((!com.tencent.mm.compatible.util.d.ly(19)) || (!com.tencent.mm.compatible.g.b.abd()))
+    ae.v("MicroMsg.BaseConversationUI", "ashutest: on settle %B, speed %d, resumeStatus %s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt), this.launcherUIStatus });
+    if ((!com.tencent.mm.compatible.util.d.lA(19)) || (!com.tencent.mm.compatible.g.b.abm()))
     {
       AppMethodBeat.o(38224);
       return;
@@ -1055,7 +1053,7 @@ public class BaseConversationUI
     View localView = findViewById(2131301337);
     if (localView == null)
     {
-      ad.e("MicroMsg.BaseConversationUI", "[onSettle] null == container");
+      ae.e("MicroMsg.BaseConversationUI", "[onSettle] null == container");
       AppMethodBeat.o(38224);
       return;
     }
@@ -1063,7 +1061,7 @@ public class BaseConversationUI
     if ((localImageView != null) && (localImageView.getVisibility() == 8) && (localImageView.getDrawable() != null))
     {
       localImageView.setVisibility(0);
-      ad.i("MicroMsg.BaseConversationUI", "[onSettle] prepareView VISIBLE");
+      ae.i("MicroMsg.BaseConversationUI", "[onSettle] prepareView VISIBLE");
       localView.setVisibility(8);
     }
     if ((localImageView != null) && (localImageView.getVisibility() == 0))
@@ -1112,15 +1110,15 @@ public class BaseConversationUI
   public void onSwipe(float paramFloat)
   {
     AppMethodBeat.i(38201);
-    ad.v("MicroMsg.BaseConversationUI", "ashutest::on swipe %f, duration %d, status %s", new Object[] { Float.valueOf(paramFloat), Long.valueOf(260L), this.launcherUIStatus });
-    if ((!com.tencent.mm.compatible.util.d.ly(19)) || (!com.tencent.mm.compatible.g.b.abd()))
+    ae.v("MicroMsg.BaseConversationUI", "ashutest::on swipe %f, duration %d, status %s", new Object[] { Float.valueOf(paramFloat), Long.valueOf(260L), this.launcherUIStatus });
+    if ((!com.tencent.mm.compatible.util.d.lA(19)) || (!com.tencent.mm.compatible.g.b.abm()))
     {
       AppMethodBeat.o(38201);
       return;
     }
     if (this.chattingFragmet == null)
     {
-      ad.e("MicroMsg.BaseConversationUI", "chattingFragmet is null!");
+      ae.e("MicroMsg.BaseConversationUI", "chattingFragmet is null!");
       AppMethodBeat.o(38201);
       return;
     }
@@ -1132,7 +1130,7 @@ public class BaseConversationUI
         localObject2 = (ViewGroup)((ImageView)localObject1).getTag();
         if (localObject2 != null)
         {
-          ad.i("MicroMsg.BaseConversationUI", "[onSwipe] prepareView GONE");
+          ae.i("MicroMsg.BaseConversationUI", "[onSwipe] prepareView GONE");
           ((ViewGroup)localObject2).setVisibility(0);
           ((ImageView)localObject1).setVisibility(8);
           ((ImageView)localObject1).setImageDrawable(null);
@@ -1142,9 +1140,9 @@ public class BaseConversationUI
         this.mChattingInAnim.cancel();
       }
     }
-    while ((BaseConversationUI.a.KrV != this.launcherUIStatus) && (Float.compare(1.0F, paramFloat) > 0))
+    while ((a.KOp != this.launcherUIStatus) && (Float.compare(1.0F, paramFloat) > 0))
     {
-      ad.i("MicroMsg.BaseConversationUI", "[onSwipe] return! consumedSuperCall:%s", new Object[] { Float.valueOf(paramFloat) });
+      ae.i("MicroMsg.BaseConversationUI", "[onSwipe] return! consumedSuperCall:%s", new Object[] { Float.valueOf(paramFloat) });
       AppMethodBeat.o(38201);
       return;
       if ((paramFloat == 1.0F) && (!this.mChattingClosed) && (this.chattingFragmet.isSupportNavigationSwipeBack()))
@@ -1154,7 +1152,7 @@ public class BaseConversationUI
         if ((localObject1 != null) && (((ImageView)localObject1).getVisibility() == 0) && (((ImageView)localObject1).getTag() != null))
         {
           ((View)((ImageView)localObject1).getTag()).setVisibility(0);
-          ad.i("MicroMsg.BaseConversationUI", "[onSwipe] prepareView GONE");
+          ae.i("MicroMsg.BaseConversationUI", "[onSwipe] prepareView GONE");
           ((ImageView)localObject1).setVisibility(8);
         }
       }
@@ -1164,7 +1162,7 @@ public class BaseConversationUI
     if ((localObject2 != null) && (((ImageView)localObject2).getVisibility() == 8) && (((ImageView)localObject2).getDrawable() != null) && (!this.mChattingClosed) && (paramFloat != 1.0F) && (paramFloat != 0.0F))
     {
       ((ImageView)localObject2).setVisibility(0);
-      ad.i("MicroMsg.BaseConversationUI", "[onSwipe] !1 && !0 prepareView VISIBLE");
+      ae.i("MicroMsg.BaseConversationUI", "[onSwipe] !1 && !0 prepareView VISIBLE");
       if (localObject1 != null) {
         ((View)localObject1).setVisibility(8);
       }
@@ -1182,17 +1180,17 @@ public class BaseConversationUI
   public ActionMode onWindowStartingActionMode(ActionMode.Callback paramCallback)
   {
     AppMethodBeat.i(38220);
-    if ((this.chattingFragmet == null) || (this.chattingFragmet.fAW() == null) || (!this.chattingFragmet.isSupportCustomActionBar()))
+    if ((this.chattingFragmet == null) || (this.chattingFragmet.fEY() == null) || (!this.chattingFragmet.isSupportCustomActionBar()))
     {
       AppMethodBeat.o(38220);
       return null;
     }
-    if (com.tencent.mm.compatible.util.d.lA(22))
+    if (com.tencent.mm.compatible.util.d.lC(22))
     {
       AppMethodBeat.o(38220);
       return null;
     }
-    paramCallback = this.chattingFragmet.fAW().startActionMode(paramCallback);
+    paramCallback = this.chattingFragmet.fEY().startActionMode(paramCallback);
     if (paramCallback == null)
     {
       AppMethodBeat.o(38220);
@@ -1247,14 +1245,14 @@ public class BaseConversationUI
     if (this.chattingView == null) {}
     for (boolean bool = false;; bool = this.chattingView.isShown())
     {
-      ad.i("MicroMsg.BaseConversationUI", "try startChatting, ishow:%b", new Object[] { Boolean.valueOf(bool) });
+      ae.i("MicroMsg.BaseConversationUI", "try startChatting, ishow:%b", new Object[] { Boolean.valueOf(bool) });
       this.pendingBundle = paramBundle;
       this.pendingUser = paramString;
       this.mNeedChattingAnim = paramBoolean;
-      ba.ajF().fkR();
-      aq.aay(-8);
-      aq.aA(this.startChattingRunnable);
-      aq.f(this.startChattingRunnable);
+      bc.ajU().foM();
+      ar.abe(-8);
+      ar.ay(this.startChattingRunnable);
+      ar.f(this.startChattingRunnable);
       AppMethodBeat.o(38208);
       return;
     }
@@ -1264,7 +1262,7 @@ public class BaseConversationUI
   {
     AppMethodBeat.i(38218);
     if (this.mActionBarHelper != null) {
-      this.mActionBarHelper.setTitle(com.tencent.mm.model.v.zf(this.title));
+      this.mActionBarHelper.setTitle(w.zP(this.title));
     }
     AppMethodBeat.o(38218);
   }
@@ -1272,7 +1270,7 @@ public class BaseConversationUI
   public static class BaseConversationFmUI
     extends MMFragment
   {
-    private BaseConversationUI.a fmStatus = BaseConversationUI.a.KrU;
+    private BaseConversationUI.a fmStatus = BaseConversationUI.a.KOo;
     public BaseConversationUI ui;
     
     public void finish()
@@ -1295,7 +1293,7 @@ public class BaseConversationUI
     public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
     {
       AppMethodBeat.i(38185);
-      this.fmStatus = BaseConversationUI.a.KrU;
+      this.fmStatus = BaseConversationUI.a.KOo;
       this.ui = ((BaseConversationUI)thisActivity());
       paramLayoutInflater = paramLayoutInflater.inflate(getLayoutId(), paramViewGroup, false);
       setHasOptionsMenu(true);
@@ -1306,9 +1304,9 @@ public class BaseConversationUI
     public void onDestroy()
     {
       AppMethodBeat.i(38190);
-      if (this.fmStatus != BaseConversationUI.a.KrW)
+      if (this.fmStatus != BaseConversationUI.a.KOq)
       {
-        ad.w("MicroMsg.BaseConversationUI", "fmStatus != ActivityStatus.ACTIVITY_PAUSE when fm onDestroy");
+        ae.w("MicroMsg.BaseConversationUI", "fmStatus != ActivityStatus.ACTIVITY_PAUSE when fm onDestroy");
         onPause();
       }
       super.onDestroy();
@@ -1319,7 +1317,7 @@ public class BaseConversationUI
     {
       AppMethodBeat.i(38189);
       super.onPause();
-      this.fmStatus = BaseConversationUI.a.KrW;
+      this.fmStatus = BaseConversationUI.a.KOq;
       AppMethodBeat.o(38189);
     }
     
@@ -1327,7 +1325,7 @@ public class BaseConversationUI
     {
       AppMethodBeat.i(38188);
       super.onResume();
-      this.fmStatus = BaseConversationUI.a.KrV;
+      this.fmStatus = BaseConversationUI.a.KOp;
       AppMethodBeat.o(38188);
     }
     
@@ -1341,12 +1339,27 @@ public class BaseConversationUI
     }
   }
   
+  static enum a
+  {
+    static
+    {
+      AppMethodBeat.i(38184);
+      KOo = new a("ACTIVITY_CREATE", 0);
+      KOp = new a("ACTIVITY_RESUME", 1);
+      KOq = new a("ACTIVITY_PAUSE", 2);
+      KOr = new a[] { KOo, KOp, KOq };
+      AppMethodBeat.o(38184);
+    }
+    
+    private a() {}
+  }
+  
   final class b
     implements Runnable
   {
-    int JeR = 0;
+    int JzC = 0;
     int bZU;
-    Intent dxy;
+    Intent dyD;
     int requestCode;
     
     private b() {}
@@ -1354,11 +1367,11 @@ public class BaseConversationUI
     public final void run()
     {
       AppMethodBeat.i(38193);
-      if (ba.ajx())
+      if (bc.ajM())
       {
-        ad.i("MicroMsg.BaseConversationUI", "on post select image job, acc has ready, retry count %d", new Object[] { Integer.valueOf(this.JeR) });
+        ae.i("MicroMsg.BaseConversationUI", "on post select image job, acc has ready, retry count %d", new Object[] { Integer.valueOf(this.JzC) });
         BaseConversationUI.this.startChatting(BaseConversationUI.this.lastRestoreTalker);
-        aq.f(new Runnable()
+        ar.f(new Runnable()
         {
           public final void run()
           {
@@ -1367,11 +1380,11 @@ public class BaseConversationUI
             if (BaseConversationUI.this.chattingFragmet == null) {}
             for (;;)
             {
-              ad.d("MicroMsg.BaseConversationUI", "on select image ActivityResult. after creat chattingUI, chatting fragment is null? %B", new Object[] { Boolean.valueOf(bool) });
+              ae.d("MicroMsg.BaseConversationUI", "on select image ActivityResult. after creat chattingUI, chatting fragment is null? %B", new Object[] { Boolean.valueOf(bool) });
               if (BaseConversationUI.this.chattingFragmet != null)
               {
-                ad.d("MicroMsg.BaseConversationUI", "on select image ActivityResult. do post activity result");
-                BaseConversationUI.this.chattingFragmet.onActivityResult(BaseConversationUI.b.this.requestCode & 0xFFFF, BaseConversationUI.b.this.bZU, BaseConversationUI.b.this.dxy);
+                ae.d("MicroMsg.BaseConversationUI", "on select image ActivityResult. do post activity result");
+                BaseConversationUI.this.chattingFragmet.onActivityResult(BaseConversationUI.b.this.requestCode & 0xFFFF, BaseConversationUI.b.this.bZU, BaseConversationUI.b.this.dyD);
               }
               AppMethodBeat.o(38191);
               return;
@@ -1390,15 +1403,15 @@ public class BaseConversationUI
         AppMethodBeat.o(38193);
         return;
       }
-      if (this.JeR >= 3)
+      if (this.JzC >= 3)
       {
-        ad.w("MicroMsg.BaseConversationUI", "on post select image job, match max retry count");
+        ae.w("MicroMsg.BaseConversationUI", "on post select image job, match max retry count");
         AppMethodBeat.o(38193);
         return;
       }
-      ad.w("MicroMsg.BaseConversationUI", "on post select image job, acc not ready, cur retry count %d", new Object[] { Integer.valueOf(this.JeR) });
-      this.JeR += 1;
-      aq.o(this, 300L);
+      ae.w("MicroMsg.BaseConversationUI", "on post select image job, acc not ready, cur retry count %d", new Object[] { Integer.valueOf(this.JzC) });
+      this.JzC += 1;
+      ar.o(this, 300L);
       AppMethodBeat.o(38193);
     }
     

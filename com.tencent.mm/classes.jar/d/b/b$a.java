@@ -5,7 +5,7 @@ import d.g.a.b;
 import d.l;
 import java.util.Comparator;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "T", "a", "kotlin.jvm.PlatformType", "b", "compare", "(Ljava/lang/Object;Ljava/lang/Object;)I"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "T", "a", "kotlin.jvm.PlatformType", "b", "compare", "(Ljava/lang/Object;Ljava/lang/Object;)I"})
 public final class b$a<T>
   implements Comparator<T>
 {
@@ -14,7 +14,7 @@ public final class b$a<T>
   public final int compare(T paramT1, T paramT2)
   {
     AppMethodBeat.i(183771);
-    b[] arrayOfb = this.MKK;
+    b[] arrayOfb = this.NhN;
     int j = arrayOfb.length;
     int i = 0;
     while (i < j)

@@ -10,19 +10,19 @@ public final class o
   extends b
   implements r
 {
-  private final ah MXS;
+  private final ah NuY;
   
   public o(g paramg, ah paramah)
   {
     super(paramg);
     AppMethodBeat.i(57099);
-    this.MXS = paramah;
+    this.NuY = paramah;
     AppMethodBeat.o(57099);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.b.c.o
  * JD-Core Version:    0.7.0.1
  */

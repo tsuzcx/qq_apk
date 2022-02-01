@@ -2,22 +2,24 @@ package com.tencent.mm.plugin.story.f.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.cf;
+import com.tencent.mm.model.ch;
 import com.tencent.mm.plugin.story.api.h;
+import com.tencent.mm.plugin.story.f.i;
 import com.tencent.mm.plugin.story.f.j.b;
 import com.tencent.mm.plugin.story.f.n.a;
 import com.tencent.mm.plugin.story.i.a.e;
 import com.tencent.mm.plugin.story.i.k;
-import com.tencent.mm.protocal.protobuf.diw;
-import com.tencent.mm.protocal.protobuf.dix;
-import com.tencent.mm.protocal.protobuf.diy;
-import com.tencent.mm.protocal.protobuf.dja;
+import com.tencent.mm.protocal.protobuf.djr;
 import com.tencent.mm.protocal.protobuf.djs;
-import com.tencent.mm.protocal.protobuf.djy;
-import com.tencent.mm.protocal.protobuf.djz;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.djt;
+import com.tencent.mm.protocal.protobuf.djv;
+import com.tencent.mm.protocal.protobuf.dkn;
+import com.tencent.mm.protocal.protobuf.dkt;
+import com.tencent.mm.protocal.protobuf.dku;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.vfs.o;
 import d.g.a.m;
 import d.g.a.r;
 import d.g.b.p;
@@ -33,71 +35,71 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/story/model/comment/StoryCommentLogic;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "Lcom/tencent/mm/plugin/story/api/IStoryComment;", "()V", "CacheFilePath", "", "MaxCacheSize", "", "MaxRetryCount", "OldCacheFilePath", "StateDeleted", "StateDeleting", "StateNone", "StatePosted", "StatePosting", "TAG", "commentCache", "Lcom/tencent/mm/protocal/protobuf/StoryCommentCache;", "getCommentCache", "()Lcom/tencent/mm/protocal/protobuf/StoryCommentCache;", "commentChangeListeners", "Ljava/util/LinkedList;", "Lcom/tencent/mm/plugin/story/api/IStoryComment$CommentChangeListener;", "commentPostStateListeners", "Lkotlin/Function2;", "", "", "", "currentCommentOp", "Lcom/tencent/mm/protocal/protobuf/StoryCommentOp;", "currentPostCommentItem", "Lcom/tencent/mm/plugin/story/model/comment/StoryCommentItem;", "opIndex", "storyCommentChangeListeners", "Ljava/util/ArrayList;", "Lkotlin/Function4;", "Lkotlin/collections/ArrayList;", "addCommentChangeListener", "listener", "addStoryCommentChangeListener", "addStoryCommentPostStateListener", "addSyncComment", "syncMsg", "Lcom/tencent/mm/protocal/protobuf/StorySyncMsg;", "addSyncVisit", "delSyncComment", "deleteComment", "storyId", "commentId", "sessionId", "content", "deleteCommentToRemote", "commentOp", "deleteCommentToStoryInfo", "destroy", "init", "initCommentSync", "commentItem", "onSceneEnd", "errType", "errCode", "errMsg", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "opToDetail", "Lcom/tencent/mm/protocal/protobuf/StoryCommentDetail;", "postBubble", "toUsername", "doubleClick", "storyOwner", "postComment", "replyCommentId", "postCommentOrBubble", "enhance", "commentFlag", "postCommentToRemote", "postVisit", "removeCommentChangeListener", "removeStoryCommentChangeListener", "removeStoryCommentPostStateListener", "saveCommentToStoryInfo", "commentDetail", "saveCommentToStoryInfoWithObj", "setAllCommentRead", "setCommentRead", "syncMsgToDetail", "tryStart", "updateCommentRead", "hasUnread", "force", "updateLastCommentSync", "updateStoryInfoByComment", "storyObj", "Lcom/tencent/mm/protocal/protobuf/StoryObject;", "writeCacheToFile", "plugin-story_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/story/model/comment/StoryCommentLogic;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "Lcom/tencent/mm/plugin/story/api/IStoryComment;", "()V", "CacheFilePath", "", "MaxCacheSize", "", "MaxRetryCount", "OldCacheFilePath", "StateDeleted", "StateDeleting", "StateNone", "StatePosted", "StatePosting", "TAG", "commentCache", "Lcom/tencent/mm/protocal/protobuf/StoryCommentCache;", "getCommentCache", "()Lcom/tencent/mm/protocal/protobuf/StoryCommentCache;", "commentChangeListeners", "Ljava/util/LinkedList;", "Lcom/tencent/mm/plugin/story/api/IStoryComment$CommentChangeListener;", "commentPostStateListeners", "Lkotlin/Function2;", "", "", "", "currentCommentOp", "Lcom/tencent/mm/protocal/protobuf/StoryCommentOp;", "currentPostCommentItem", "Lcom/tencent/mm/plugin/story/model/comment/StoryCommentItem;", "opIndex", "storyCommentChangeListeners", "Ljava/util/ArrayList;", "Lkotlin/Function4;", "Lkotlin/collections/ArrayList;", "addCommentChangeListener", "listener", "addStoryCommentChangeListener", "addStoryCommentPostStateListener", "addSyncComment", "syncMsg", "Lcom/tencent/mm/protocal/protobuf/StorySyncMsg;", "addSyncVisit", "delSyncComment", "deleteComment", "storyId", "commentId", "sessionId", "content", "deleteCommentToRemote", "commentOp", "deleteCommentToStoryInfo", "destroy", "init", "initCommentSync", "commentItem", "onSceneEnd", "errType", "errCode", "errMsg", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "opToDetail", "Lcom/tencent/mm/protocal/protobuf/StoryCommentDetail;", "postBubble", "toUsername", "doubleClick", "storyOwner", "postComment", "replyCommentId", "postCommentOrBubble", "enhance", "commentFlag", "postCommentToRemote", "postVisit", "removeCommentChangeListener", "removeStoryCommentChangeListener", "removeStoryCommentPostStateListener", "saveCommentToStoryInfo", "commentDetail", "saveCommentToStoryInfoWithObj", "setAllCommentRead", "setCommentRead", "syncMsgToDetail", "tryStart", "updateCommentRead", "hasUnread", "force", "updateLastCommentSync", "updateStoryInfoByComment", "storyObj", "Lcom/tencent/mm/protocal/protobuf/StoryObject;", "writeCacheToFile", "plugin-story_release"})
 public final class b
-  implements com.tencent.mm.al.f, h
+  implements com.tencent.mm.ak.f, h
 {
-  public static final String ALJ;
-  private static final int ALK = 50;
-  public static final diw ALM;
-  private static diy ALN;
-  private static a ALO;
-  private static int ALP = 0;
-  private static final ArrayList<r<Long, Boolean, String, String, z>> ALQ;
-  private static final LinkedList<Object> ALR;
-  private static final LinkedList<m<Boolean, Long, z>> ALS;
-  public static final b ALT;
+  public static final String Bdm;
+  private static final int Bdn = 50;
+  public static final djr Bdo;
+  private static djt Bdp;
+  private static a Bdq;
+  private static int Bdr = 0;
+  private static final ArrayList<r<Long, Boolean, String, String, z>> Bds;
+  private static final LinkedList<Object> Bdt;
+  private static final LinkedList<m<Boolean, Long, z>> Bdu;
+  public static final b Bdv;
   public static final String TAG = "MicroMsg.StoryCommentLogic";
-  private static final int tqv = 2147483647;
-  public static final String zlT;
+  private static final int tBm = 2147483647;
+  public static final String zDi;
   
   static
   {
     AppMethodBeat.i(118882);
-    ALT = new b();
+    Bdv = new b();
     StringBuilder localStringBuilder = new StringBuilder();
-    Object localObject = g.ajC();
+    Object localObject = g.ajR();
     p.g(localObject, "MMKernel.storage()");
-    ALJ = ((com.tencent.mm.kernel.e)localObject).getAccPath() + "story/commentCache.proto";
+    Bdm = ((com.tencent.mm.kernel.e)localObject).getAccPath() + "story/commentCache.proto";
     localStringBuilder = new StringBuilder();
     localObject = g.ad(com.tencent.mm.plugin.story.api.e.class);
     p.g(localObject, "MMKernel.plugin(IPluginStory::class.java)");
-    zlT = ((com.tencent.mm.plugin.story.api.e)localObject).getAccStoryPath() + "commentCache.proto";
-    ALK = 50;
-    tqv = 2147483647;
+    zDi = ((com.tencent.mm.plugin.story.api.e)localObject).getAccStoryPath() + "commentCache.proto";
+    Bdn = 50;
+    tBm = 2147483647;
     TAG = "MicroMsg.StoryCommentLogic";
-    ALM = new diw();
-    ALP = -1;
-    ALQ = new ArrayList();
-    ALR = new LinkedList();
-    ALS = new LinkedList();
+    Bdo = new djr();
+    Bdr = -1;
+    Bds = new ArrayList();
+    Bdt = new LinkedList();
+    Bdu = new LinkedList();
     AppMethodBeat.o(118882);
   }
   
-  public static void AH(long paramLong)
+  public static void Bf(long paramLong)
   {
     AppMethodBeat.i(118871);
     y.f localf = new y.f();
-    Object localObject1 = com.tencent.mm.plugin.story.f.j.AKb;
-    localf.MLV = j.b.ehW().AT(paramLong);
-    if ((com.tencent.mm.plugin.story.i.c)localf.MLV == null)
+    Object localObject1 = com.tencent.mm.plugin.story.f.j.BbE;
+    localf.NiY = j.b.elE().Br(paramLong);
+    if ((com.tencent.mm.plugin.story.i.c)localf.NiY == null)
     {
-      localf.MLV = new com.tencent.mm.plugin.story.i.c();
-      ((com.tencent.mm.plugin.story.i.c)localf.MLV).field_storyId = paramLong;
+      localf.NiY = new com.tencent.mm.plugin.story.i.c();
+      ((com.tencent.mm.plugin.story.i.c)localf.NiY).field_storyId = paramLong;
     }
-    localObject1 = com.tencent.mm.plugin.story.f.j.AKb;
-    final com.tencent.mm.plugin.story.i.j localj = j.b.ehT().AX(paramLong);
+    localObject1 = com.tencent.mm.plugin.story.f.j.BbE;
+    final com.tencent.mm.plugin.story.i.j localj = j.b.elB().Bv(paramLong);
     if (localj == null)
     {
       AppMethodBeat.o(118871);
       return;
     }
-    Object localObject2 = new djs();
+    Object localObject2 = new dkn();
     if (localj != null) {}
     try
     {
       localObject1 = localj.field_attrBuf;
-      ((djs)localObject2).parseFrom((byte[])localObject1);
+      ((dkn)localObject2).parseFrom((byte[])localObject1);
     }
     catch (Exception localException)
     {
@@ -105,7 +107,7 @@ public final class b
       int i;
       break label116;
     }
-    localObject1 = ((djs)localObject2).Hyz;
+    localObject1 = ((dkn)localObject2).HSk;
     p.g(localObject1, "storyObj.CommentList");
     localObject1 = (List)localObject1;
     localObject2 = ((List)localObject1).listIterator(((List)localObject1).size());
@@ -113,7 +115,7 @@ public final class b
     if (((ListIterator)localObject2).hasPrevious())
     {
       localObject1 = ((ListIterator)localObject2).previous();
-      if (((dix)localObject1).HtH != 0)
+      if (((djs)localObject1).HNk != 0)
       {
         i = 1;
         label178:
@@ -124,28 +126,28 @@ public final class b
     }
     for (;;)
     {
-      localObject2 = (dix)localObject1;
+      localObject2 = (djs)localObject1;
       if (localObject2 == null) {
         break label392;
       }
-      if ((((com.tencent.mm.plugin.story.i.c)localf.MLV).field_readCommentId != ((dix)localObject2).HtH) && (((com.tencent.mm.plugin.story.i.c)localf.MLV).field_readCommentTime < ((dix)localObject2).CreateTime))
+      if ((((com.tencent.mm.plugin.story.i.c)localf.NiY).field_readCommentId != ((djs)localObject2).HNk) && (((com.tencent.mm.plugin.story.i.c)localf.NiY).field_readCommentTime < ((djs)localObject2).CreateTime))
       {
-        ((com.tencent.mm.plugin.story.i.c)localf.MLV).field_readCommentId = ((dix)localObject2).HtH;
-        ((com.tencent.mm.plugin.story.i.c)localf.MLV).field_readCommentTime = ((dix)localObject2).CreateTime;
-        localObject1 = (com.tencent.mm.plugin.story.i.c)localf.MLV;
-        localObject2 = ((dix)localObject2).ukj;
+        ((com.tencent.mm.plugin.story.i.c)localf.NiY).field_readCommentId = ((djs)localObject2).HNk;
+        ((com.tencent.mm.plugin.story.i.c)localf.NiY).field_readCommentTime = ((djs)localObject2).CreateTime;
+        localObject1 = (com.tencent.mm.plugin.story.i.c)localf.NiY;
+        localObject2 = ((djs)localObject2).uvG;
         p.g(localObject2, "it.FromUserName");
-        ((com.tencent.mm.plugin.story.i.c)localObject1).aCd((String)localObject2);
-        com.tencent.mm.plugin.story.i.c localc = (com.tencent.mm.plugin.story.i.c)localf.MLV;
+        ((com.tencent.mm.plugin.story.i.c)localObject1).aDw((String)localObject2);
+        com.tencent.mm.plugin.story.i.c localc = (com.tencent.mm.plugin.story.i.c)localf.NiY;
         localObject2 = localj.field_userName;
         localObject1 = localObject2;
         if (localObject2 == null) {
           localObject1 = "";
         }
-        localc.aBP((String)localObject1);
-        localObject1 = com.tencent.mm.plugin.story.f.j.AKb;
-        j.b.ehW().update((com.tencent.mm.sdk.e.c)localf.MLV, new String[0]);
-        com.tencent.mm.ad.c.g((d.g.a.a)new h(localf, localj));
+        localc.aDi((String)localObject1);
+        localObject1 = com.tencent.mm.plugin.story.f.j.BbE;
+        j.b.elE().update((com.tencent.mm.sdk.e.c)localf.NiY, new String[0]);
+        com.tencent.mm.ac.c.h((d.g.a.a)new h(localf, localj));
       }
       AppMethodBeat.o(118871);
       return;
@@ -161,32 +163,32 @@ public final class b
     AppMethodBeat.o(118871);
   }
   
-  public static void AI(long paramLong)
+  public static void Bg(long paramLong)
   {
     AppMethodBeat.i(118880);
-    Object localObject1 = com.tencent.mm.plugin.story.f.j.AKb;
-    com.tencent.mm.plugin.story.i.j localj = j.b.ehT().AX(paramLong);
+    Object localObject1 = com.tencent.mm.plugin.story.f.j.BbE;
+    com.tencent.mm.plugin.story.i.j localj = j.b.elB().Bv(paramLong);
     y.f localf = new y.f();
-    localObject1 = com.tencent.mm.plugin.story.f.j.AKb;
-    localObject1 = j.b.ehW().AT(paramLong);
+    localObject1 = com.tencent.mm.plugin.story.f.j.BbE;
+    localObject1 = j.b.elE().Br(paramLong);
     if (localObject1 == null)
     {
       AppMethodBeat.o(118880);
       return;
     }
-    localf.MLV = localObject1;
+    localf.NiY = localObject1;
     if (localj == null)
     {
-      ad.i(TAG, "updateLastCommentSync will reset to 0 0");
-      ((com.tencent.mm.plugin.story.i.c)localf.MLV).field_readCommentTime = 0;
-      ((com.tencent.mm.plugin.story.i.c)localf.MLV).field_readCommentId = 0;
-      ((com.tencent.mm.plugin.story.i.c)localf.MLV).field_syncCommentTime = 0;
-      ((com.tencent.mm.plugin.story.i.c)localf.MLV).field_syncCommentId = 0;
-      ((com.tencent.mm.plugin.story.i.c)localf.MLV).aCd("");
+      ae.i(TAG, "updateLastCommentSync will reset to 0 0");
+      ((com.tencent.mm.plugin.story.i.c)localf.NiY).field_readCommentTime = 0;
+      ((com.tencent.mm.plugin.story.i.c)localf.NiY).field_readCommentId = 0;
+      ((com.tencent.mm.plugin.story.i.c)localf.NiY).field_syncCommentTime = 0;
+      ((com.tencent.mm.plugin.story.i.c)localf.NiY).field_syncCommentId = 0;
+      ((com.tencent.mm.plugin.story.i.c)localf.NiY).aDw("");
     }
     for (;;)
     {
-      Object localObject3 = (com.tencent.mm.plugin.story.i.c)localf.MLV;
+      Object localObject3 = (com.tencent.mm.plugin.story.i.c)localf.NiY;
       Object localObject2;
       if (localj != null)
       {
@@ -198,17 +200,17 @@ public final class b
       {
         localObject1 = "";
       }
-      ((com.tencent.mm.plugin.story.i.c)localObject3).aBP((String)localObject1);
-      localObject1 = com.tencent.mm.plugin.story.f.j.AKb;
-      j.b.ehW().replace((com.tencent.mm.sdk.e.c)localf.MLV);
-      com.tencent.mm.ad.c.g((d.g.a.a)new k(localf));
+      ((com.tencent.mm.plugin.story.i.c)localObject3).aDi((String)localObject1);
+      localObject1 = com.tencent.mm.plugin.story.f.j.BbE;
+      j.b.elE().replace((com.tencent.mm.sdk.e.c)localf.NiY);
+      com.tencent.mm.ac.c.h((d.g.a.a)new k(localf));
       AppMethodBeat.o(118880);
       return;
-      localObject3 = new djs();
+      localObject3 = new dkn();
       try
       {
-        ((djs)localObject3).parseFrom(localj.field_attrBuf);
-        localObject1 = ((djs)localObject3).Hyz;
+        ((dkn)localObject3).parseFrom(localj.field_attrBuf);
+        localObject1 = ((dkn)localObject3).HSk;
         p.g(localObject1, "storyObj.CommentList");
         localObject1 = (List)localObject1;
         localObject2 = ((List)localObject1).listIterator(((List)localObject1).size());
@@ -218,8 +220,8 @@ public final class b
         if (((ListIterator)localObject2).hasPrevious())
         {
           localObject1 = ((ListIterator)localObject2).previous();
-          localObject4 = (dix)localObject1;
-          if ((((dix)localObject4).HtH != 0) && (((dix)localObject4).CreateTime <= ((com.tencent.mm.plugin.story.i.c)localf.MLV).field_readCommentTime))
+          localObject4 = (djs)localObject1;
+          if ((((djs)localObject4).HNk != 0) && (((djs)localObject4).CreateTime <= ((com.tencent.mm.plugin.story.i.c)localf.NiY).field_readCommentTime))
           {
             i = 1;
             label322:
@@ -227,14 +229,14 @@ public final class b
               break label765;
             }
             label326:
-            localObject1 = (dix)localObject1;
+            localObject1 = (djs)localObject1;
             if (localObject1 != null) {
               break label935;
             }
-            if (!com.tencent.mm.plugin.story.c.a.e.AIM.egX()) {
+            if (!com.tencent.mm.plugin.story.c.a.e.Bap.ekF()) {
               break label782;
             }
-            localObject1 = ((djs)localObject3).HyF;
+            localObject1 = ((dkn)localObject3).HSq;
             p.g(localObject1, "storyObj.VisitorList");
             localObject1 = (List)localObject1;
             localObject2 = ((List)localObject1).listIterator(((List)localObject1).size());
@@ -243,8 +245,8 @@ public final class b
               break label777;
             }
             localObject1 = ((ListIterator)localObject2).previous();
-            localObject4 = (dix)localObject1;
-            if ((((dix)localObject4).HtH == 0) || (((dix)localObject4).CreateTime > ((com.tencent.mm.plugin.story.i.c)localf.MLV).field_readCommentTime)) {
+            localObject4 = (djs)localObject1;
+            if ((((djs)localObject4).HNk == 0) || (((djs)localObject4).CreateTime > ((com.tencent.mm.plugin.story.i.c)localf.NiY).field_readCommentTime)) {
               break label772;
             }
             i = 1;
@@ -253,53 +255,53 @@ public final class b
               break label775;
             }
             label433:
-            localObject1 = (dix)localObject1;
+            localObject1 = (djs)localObject1;
             localObject4 = TAG;
             StringBuilder localStringBuilder = new StringBuilder("updateLastCommentSync will reset to ");
             if (localObject1 == null) {
               break label889;
             }
-            localObject2 = Integer.valueOf(((dix)localObject1).CreateTime);
+            localObject2 = Integer.valueOf(((djs)localObject1).CreateTime);
             label468:
             localStringBuilder = localStringBuilder.append(localObject2).append(' ');
             if (localObject1 == null) {
               break label895;
             }
-            localObject2 = Integer.valueOf(((dix)localObject1).HtH);
+            localObject2 = Integer.valueOf(((djs)localObject1).HNk);
             label495:
-            ad.i((String)localObject4, localObject2);
-            localObject2 = (com.tencent.mm.plugin.story.i.c)localf.MLV;
+            ae.i((String)localObject4, localObject2);
+            localObject2 = (com.tencent.mm.plugin.story.i.c)localf.NiY;
             if (localObject1 == null) {
               break label901;
             }
-            i = ((dix)localObject1).CreateTime;
+            i = ((djs)localObject1).CreateTime;
             label529:
             ((com.tencent.mm.plugin.story.i.c)localObject2).field_readCommentTime = i;
-            localObject2 = (com.tencent.mm.plugin.story.i.c)localf.MLV;
+            localObject2 = (com.tencent.mm.plugin.story.i.c)localf.NiY;
             if (localObject1 == null) {
               break label906;
             }
-            i = ((dix)localObject1).HtH;
+            i = ((djs)localObject1).HNk;
             label554:
             ((com.tencent.mm.plugin.story.i.c)localObject2).field_readCommentId = i;
-            localObject2 = (com.tencent.mm.plugin.story.i.c)localf.MLV;
+            localObject2 = (com.tencent.mm.plugin.story.i.c)localf.NiY;
             if (localObject1 == null) {
               break label911;
             }
-            i = ((dix)localObject1).CreateTime;
+            i = ((djs)localObject1).CreateTime;
             label579:
             ((com.tencent.mm.plugin.story.i.c)localObject2).field_syncCommentTime = i;
-            localObject2 = (com.tencent.mm.plugin.story.i.c)localf.MLV;
+            localObject2 = (com.tencent.mm.plugin.story.i.c)localf.NiY;
             if (localObject1 == null) {
               break label916;
             }
-            i = ((dix)localObject1).HtH;
+            i = ((djs)localObject1).HNk;
             label604:
             ((com.tencent.mm.plugin.story.i.c)localObject2).field_syncCommentId = i;
-            localObject4 = (com.tencent.mm.plugin.story.i.c)localf.MLV;
+            localObject4 = (com.tencent.mm.plugin.story.i.c)localf.NiY;
             if (localObject1 != null)
             {
-              localObject2 = ((dix)localObject1).ukj;
+              localObject2 = ((djs)localObject1).uvG;
               localObject1 = localObject2;
               if (localObject2 != null) {}
             }
@@ -307,8 +309,8 @@ public final class b
             {
               localObject1 = "";
             }
-            ((com.tencent.mm.plugin.story.i.c)localObject4).aCd((String)localObject1);
-            localObject1 = ((djs)localObject3).Hyz;
+            ((com.tencent.mm.plugin.story.i.c)localObject4).aDw((String)localObject1);
+            localObject1 = ((dkn)localObject3).HSk;
             p.g(localObject1, "storyObj.CommentList");
             localObject2 = ((Iterable)localObject1).iterator();
             label672:
@@ -316,8 +318,8 @@ public final class b
               break label926;
             }
             localObject1 = ((Iterator)localObject2).next();
-            localObject3 = (dix)localObject1;
-            if ((((dix)localObject3).HtH == 0) || (((dix)localObject3).CreateTime <= ((com.tencent.mm.plugin.story.i.c)localf.MLV).field_readCommentTime)) {
+            localObject3 = (djs)localObject1;
+            if ((((djs)localObject3).HNk == 0) || (((djs)localObject3).CreateTime <= ((com.tencent.mm.plugin.story.i.c)localf.NiY).field_readCommentTime)) {
               break label921;
             }
             i = 1;
@@ -327,10 +329,10 @@ public final class b
             }
           }
         }
-        while ((dix)localObject1 == null)
+        while ((djs)localObject1 == null)
         {
-          localj.sv(false);
-          localObject1 = com.tencent.mm.plugin.story.f.n.AKq;
+          localj.sC(false);
+          localObject1 = com.tencent.mm.plugin.story.f.n.BbT;
           n.a.Z(localj.field_storyID, localj.field_localFlag);
           break;
           i = 0;
@@ -348,7 +350,7 @@ public final class b
           localObject1 = null;
           break label433;
           label782:
-          localObject1 = ((djs)localObject3).HyB;
+          localObject1 = ((dkn)localObject3).HSm;
           p.g(localObject1, "storyObj.BubbleList");
           localObject1 = (List)localObject1;
           localObject2 = ((List)localObject1).listIterator(((List)localObject1).size());
@@ -356,8 +358,8 @@ public final class b
           if (((ListIterator)localObject2).hasPrevious())
           {
             localObject1 = ((ListIterator)localObject2).previous();
-            localObject4 = (dix)localObject1;
-            if ((((dix)localObject4).HtH != 0) && (((dix)localObject4).CreateTime <= ((com.tencent.mm.plugin.story.i.c)localf.MLV).field_readCommentTime))
+            localObject4 = (djs)localObject1;
+            if ((((djs)localObject4).HNk != 0) && (((djs)localObject4).CreateTime <= ((com.tencent.mm.plugin.story.i.c)localf.NiY).field_readCommentTime))
             {
               i = 1;
               label867:
@@ -368,7 +370,7 @@ public final class b
           }
           for (;;)
           {
-            localObject1 = (dix)localObject1;
+            localObject1 = (djs)localObject1;
             break;
             i = 0;
             break label867;
@@ -416,8 +418,8 @@ public final class b
     int i = 1;
     AppMethodBeat.i(118874);
     Object localObject1 = new StringBuilder();
-    Object localObject2 = com.tencent.mm.plugin.story.f.j.AKb;
-    localObject1 = j.b.dTJ() + bt.HI();
+    Object localObject2 = com.tencent.mm.plugin.story.f.j.BbE;
+    localObject1 = j.b.dXj() + bu.HQ();
     localObject2 = d.n.d.UTF_8;
     if (localObject1 == null)
     {
@@ -428,32 +430,32 @@ public final class b
     localObject1 = ((String)localObject1).getBytes((Charset)localObject2);
     p.g(localObject1, "(this as java.lang.String).getBytes(charset)");
     localObject2 = com.tencent.xweb.util.d.getMessageDigest((byte[])localObject1);
-    localObject1 = new diy();
-    ((diy)localObject1).clientId = ((String)localObject2);
-    ((diy)localObject1).dKt = paramLong;
-    ((diy)localObject1).content = paramString2;
-    paramString2 = com.tencent.mm.plugin.story.f.j.AKb;
-    ((diy)localObject1).dyU = j.b.dTJ();
-    ((diy)localObject1).toUser = paramString1;
-    ((diy)localObject1).hZE = cf.aCN();
-    ((diy)localObject1).state = 1;
-    ((diy)localObject1).HxQ = 0;
+    localObject1 = new djt();
+    ((djt)localObject1).clientId = ((String)localObject2);
+    ((djt)localObject1).dLI = paramLong;
+    ((djt)localObject1).content = paramString2;
+    paramString2 = com.tencent.mm.plugin.story.f.j.BbE;
+    ((djt)localObject1).dzZ = j.b.dXj();
+    ((djt)localObject1).toUser = paramString1;
+    ((djt)localObject1).icw = ch.aDd();
+    ((djt)localObject1).state = 1;
+    ((djt)localObject1).HRB = 0;
     if (paramBoolean) {}
     for (;;)
     {
-      ((diy)localObject1).HxR = i;
-      ((diy)localObject1).sessionId = paramString3;
-      ((diy)localObject1).ALG = paramString4;
-      ((diy)localObject1).ALH = paramInt1;
-      ((diy)localObject1).Acs = paramInt2;
-      ALM.HxK.add(localObject1);
-      ALO = new a((diy)localObject1);
-      dVc();
-      paramString1 = com.tencent.mm.plugin.story.f.j.AKb;
-      j.b.dFL().post((Runnable)new g((diy)localObject1));
-      paramString1 = ALO;
+      ((djt)localObject1).HRC = i;
+      ((djt)localObject1).sessionId = paramString3;
+      ((djt)localObject1).Bdj = paramString4;
+      ((djt)localObject1).Bdk = paramInt1;
+      ((djt)localObject1).AtF = paramInt2;
+      Bdo.HRv.add(localObject1);
+      Bdq = new a((djt)localObject1);
+      dYC();
+      paramString1 = com.tencent.mm.plugin.story.f.j.BbE;
+      j.b.dJc().post((Runnable)new g((djt)localObject1));
+      paramString1 = Bdq;
       if (paramString1 == null) {
-        p.gfZ();
+        p.gkB();
       }
       AppMethodBeat.o(118874);
       return paramString1;
@@ -461,122 +463,122 @@ public final class b
     }
   }
   
-  private static dix a(diy paramdiy)
+  private static djs a(djt paramdjt)
   {
     AppMethodBeat.i(118876);
-    dix localdix = new dix();
-    localdix.Id = paramdiy.dKt;
-    localdix.HtH = paramdiy.ALy;
-    localdix.ukj = paramdiy.dyU;
-    localdix.uki = paramdiy.toUser;
-    localdix.hDa = paramdiy.content;
-    localdix.CreateTime = paramdiy.hZE;
-    localdix.HxO = paramdiy.HxQ;
-    localdix.HxP = paramdiy.HxR;
-    localdix.HtG = paramdiy.ALH;
-    localdix.HtL = paramdiy.Acs;
+    djs localdjs = new djs();
+    localdjs.Id = paramdjt.dLI;
+    localdjs.HNk = paramdjt.Bdb;
+    localdjs.uvG = paramdjt.dzZ;
+    localdjs.uvF = paramdjt.toUser;
+    localdjs.hFS = paramdjt.content;
+    localdjs.CreateTime = paramdjt.icw;
+    localdjs.HRz = paramdjt.HRB;
+    localdjs.HRA = paramdjt.HRC;
+    localdjs.HNj = paramdjt.Bdk;
+    localdjs.HNo = paramdjt.AtF;
     AppMethodBeat.o(118876);
-    return localdix;
+    return localdjs;
   }
   
   public static void a(long paramLong, a parama)
   {
     AppMethodBeat.i(118869);
     p.h(parama, "commentItem");
-    Object localObject = com.tencent.mm.plugin.story.f.j.AKb;
-    com.tencent.mm.plugin.story.i.c localc = j.b.ehW().AT(paramLong);
+    Object localObject = com.tencent.mm.plugin.story.f.j.BbE;
+    com.tencent.mm.plugin.story.i.c localc = j.b.elE().Br(paramLong);
     localObject = localc;
     if (localc == null)
     {
       localObject = new com.tencent.mm.plugin.story.i.c();
       ((com.tencent.mm.plugin.story.i.c)localObject).field_storyId = paramLong;
     }
-    ((com.tencent.mm.plugin.story.i.c)localObject).field_readCommentId = parama.ALy;
-    ((com.tencent.mm.plugin.story.i.c)localObject).field_readCommentTime = parama.hZE;
-    parama = com.tencent.mm.plugin.story.f.j.AKb;
-    j.b.ehW().update((com.tencent.mm.sdk.e.c)localObject, new String[0]);
+    ((com.tencent.mm.plugin.story.i.c)localObject).field_readCommentId = parama.Bdb;
+    ((com.tencent.mm.plugin.story.i.c)localObject).field_readCommentTime = parama.icw;
+    parama = com.tencent.mm.plugin.story.f.j.BbE;
+    j.b.elE().update((com.tencent.mm.sdk.e.c)localObject, new String[0]);
     AppMethodBeat.o(118869);
   }
   
-  private static void a(djs paramdjs)
+  private static void a(dkn paramdkn)
   {
     AppMethodBeat.i(118877);
-    if (paramdjs != null)
+    if (paramdkn != null)
     {
-      Object localObject1 = com.tencent.mm.plugin.story.f.j.AKb;
-      Object localObject2 = j.b.ehT().AX(paramdjs.Id);
+      Object localObject1 = com.tencent.mm.plugin.story.f.j.BbE;
+      Object localObject2 = j.b.elB().Bv(paramdkn.Id);
       localObject1 = localObject2;
       if (localObject2 == null) {
         localObject1 = new com.tencent.mm.plugin.story.i.j();
       }
-      localObject2 = com.tencent.mm.plugin.story.f.j.AKb;
-      if (bt.lQ(j.b.dTJ(), ((com.tencent.mm.plugin.story.i.j)localObject1).field_userName)) {
-        ((com.tencent.mm.plugin.story.i.j)localObject1).sv(true);
+      localObject2 = com.tencent.mm.plugin.story.f.j.BbE;
+      if (bu.lX(j.b.dXj(), ((com.tencent.mm.plugin.story.i.j)localObject1).field_userName)) {
+        ((com.tencent.mm.plugin.story.i.j)localObject1).sC(true);
       }
-      localObject2 = com.tencent.mm.plugin.story.f.j.AKb;
-      if (bt.lQ(j.b.dTJ(), paramdjs.nDo)) {
-        localObject2 = com.tencent.mm.plugin.story.i.a.ATp;
+      localObject2 = com.tencent.mm.plugin.story.f.j.BbE;
+      if (bu.lX(j.b.dXj(), paramdkn.nIJ)) {
+        localObject2 = com.tencent.mm.plugin.story.i.a.BkN;
       }
-      for (int i = com.tencent.mm.plugin.story.i.a.ekx();; i = com.tencent.mm.plugin.story.i.a.eky())
+      for (int i = com.tencent.mm.plugin.story.i.a.eog();; i = com.tencent.mm.plugin.story.i.a.eoh())
       {
-        localObject2 = com.tencent.mm.plugin.story.f.n.AKq;
-        n.a.a((com.tencent.mm.plugin.story.i.j)localObject1, paramdjs, i);
+        localObject2 = com.tencent.mm.plugin.story.f.n.BbT;
+        n.a.a((com.tencent.mm.plugin.story.i.j)localObject1, paramdkn, i);
         AppMethodBeat.o(118877);
         return;
-        localObject2 = com.tencent.mm.plugin.story.i.a.ATp;
+        localObject2 = com.tencent.mm.plugin.story.i.a.BkN;
       }
     }
     AppMethodBeat.o(118877);
   }
   
-  public static void a(djy paramdjy)
+  public static void a(dkt paramdkt)
   {
     int j = 0;
     AppMethodBeat.i(118878);
-    dix localdix1 = new dix();
-    localdix1.Id = paramdjy.Id;
-    localdix1.HtH = paramdjy.HyK.HtH;
-    localdix1.ukj = paramdjy.HyK.ukj;
-    localdix1.uki = paramdjy.HyK.uki;
-    localdix1.hDa = paramdjy.HyK.hDa;
-    localdix1.CreateTime = paramdjy.HyK.CreateTime;
-    localdix1.HxO = paramdjy.HyK.HxO;
-    localdix1.HtG = paramdjy.HyK.HtG;
-    if (paramdjy.HyK.nEf == 7)
+    djs localdjs1 = new djs();
+    localdjs1.Id = paramdkt.Id;
+    localdjs1.HNk = paramdkt.HSv.HNk;
+    localdjs1.uvG = paramdkt.HSv.uvG;
+    localdjs1.uvF = paramdkt.HSv.uvF;
+    localdjs1.hFS = paramdkt.HSv.hFS;
+    localdjs1.CreateTime = paramdkt.HSv.CreateTime;
+    localdjs1.HRz = paramdkt.HSv.HRz;
+    localdjs1.HNj = paramdkt.HSv.HNj;
+    if (paramdkt.HSv.nJA == 7)
     {
-      localObject = a.e.ATA;
-      localdix1.HtL = a.e.elh();
+      localObject = a.e.BkY;
+      localdjs1.HNo = a.e.eoQ();
     }
-    long l = localdix1.Id;
-    Object localObject = com.tencent.mm.plugin.story.f.j.AKb;
-    localObject = j.b.ehT().AX(l);
+    long l = localdjs1.Id;
+    Object localObject = com.tencent.mm.plugin.story.f.j.BbE;
+    localObject = j.b.elB().Bv(l);
     if (localObject == null)
     {
-      a(paramdjy.HyK.HxW);
+      a(paramdkt.HSv.HRH);
       AppMethodBeat.o(118878);
       return;
     }
-    djs localdjs = new djs();
+    dkn localdkn = new dkn();
     try
     {
-      localdjs.parseFrom(((com.tencent.mm.plugin.story.i.j)localObject).field_attrBuf);
+      localdkn.parseFrom(((com.tencent.mm.plugin.story.i.j)localObject).field_attrBuf);
       label197:
       int i;
       Iterator localIterator;
-      if (bt.isNullOrNil(localdix1.hDa))
+      if (bu.isNullOrNil(localdjs1.hFS))
       {
-        i = localdix1.HtL;
-        paramdjy = a.e.ATA;
-        if (i == a.e.elh())
+        i = localdjs1.HNo;
+        paramdkt = a.e.BkY;
+        if (i == a.e.eoQ())
         {
-          paramdjy = localdjs.HyF;
-          p.g(paramdjy, "storyObj.VisitorList");
-          localIterator = ((Iterable)paramdjy).iterator();
+          paramdkt = localdkn.HSq;
+          p.g(paramdkt, "storyObj.VisitorList");
+          localIterator = ((Iterable)paramdkt).iterator();
           if (localIterator.hasNext())
           {
-            paramdjy = localIterator.next();
-            dix localdix2 = (dix)paramdjy;
-            if ((localdix2.HtH == localdix1.HtH) || (bt.lQ(localdix2.ukj, localdix1.ukj))) {
+            paramdkt = localIterator.next();
+            djs localdjs2 = (djs)paramdkt;
+            if ((localdjs2.HNk == localdjs1.HNk) || (bu.lX(localdjs2.uvG, localdjs1.uvG))) {
               i = 1;
             }
           }
@@ -586,62 +588,62 @@ public final class b
       {
         label308:
         i = j;
-        if ((dix)paramdjy == null)
+        if ((djs)paramdkt == null)
         {
-          localdjs.HyF.add(localdix1);
+          localdkn.HSq.add(localdjs1);
           i = 1;
         }
         label330:
-        paramdjy = localdjs.HyF;
-        p.g(paramdjy, "storyObj.VisitorList");
-        localIterator = ((Iterable)paramdjy).iterator();
+        paramdkt = localdkn.HSq;
+        p.g(paramdkt, "storyObj.VisitorList");
+        localIterator = ((Iterable)paramdkt).iterator();
         for (;;)
         {
           if (localIterator.hasNext())
           {
-            paramdjy = localIterator.next();
-            if (bt.lQ(((dix)paramdjy).ukj, localdix1.ukj))
+            paramdkt = localIterator.next();
+            if (bu.lX(((djs)paramdkt).uvG, localdjs1.uvG))
             {
-              if ((dix)paramdjy == null) {
-                localdjs.HyF.add(localdix1);
+              if ((djs)paramdkt == null) {
+                localdkn.HSq.add(localdjs1);
               }
               if (i != 0)
               {
-                localdjs.CommentCount = localdjs.Hyz.size();
-                localdjs.HyA = localdjs.HyB.size();
-                localdjs.HyE = localdjs.HyF.size();
+                localdkn.CommentCount = localdkn.HSk.size();
+                localdkn.HSl = localdkn.HSm.size();
+                localdkn.HSp = localdkn.HSq.size();
               }
             }
           }
         }
         try
         {
-          ((com.tencent.mm.plugin.story.i.j)localObject).field_attrBuf = localdjs.toByteArray();
+          ((com.tencent.mm.plugin.story.i.j)localObject).field_attrBuf = localdkn.toByteArray();
           label461:
-          paramdjy = com.tencent.mm.plugin.story.f.j.AKb;
-          if (bt.lQ(j.b.dTJ(), ((com.tencent.mm.plugin.story.i.j)localObject).field_userName)) {
-            ((com.tencent.mm.plugin.story.i.j)localObject).sv(true);
+          paramdkt = com.tencent.mm.plugin.story.f.j.BbE;
+          if (bu.lX(j.b.dXj(), ((com.tencent.mm.plugin.story.i.j)localObject).field_userName)) {
+            ((com.tencent.mm.plugin.story.i.j)localObject).sC(true);
           }
-          paramdjy = com.tencent.mm.plugin.story.f.j.AKb;
-          j.b.ehT().e((com.tencent.mm.plugin.story.i.j)localObject);
+          paramdkt = com.tencent.mm.plugin.story.f.j.BbE;
+          j.b.elB().e((com.tencent.mm.plugin.story.i.j)localObject);
           AppMethodBeat.o(118878);
           return;
           i = 0;
           continue;
-          paramdjy = null;
+          paramdkt = null;
           break label308;
-          if (bt.isNullOrNil(localdix1.hDa))
+          if (bu.isNullOrNil(localdjs1.hFS))
           {
-            if (localdix1.HtH != 0)
+            if (localdjs1.HNk != 0)
             {
-              paramdjy = localdjs.HyB;
-              p.g(paramdjy, "storyObj.BubbleList");
-              localIterator = ((Iterable)paramdjy).iterator();
+              paramdkt = localdkn.HSm;
+              p.g(paramdkt, "storyObj.BubbleList");
+              localIterator = ((Iterable)paramdkt).iterator();
               label558:
               if (localIterator.hasNext())
               {
-                paramdjy = localIterator.next();
-                if (((dix)paramdjy).HtH == localdix1.HtH)
+                paramdkt = localIterator.next();
+                if (((djs)paramdkt).HNk == localdjs1.HNk)
                 {
                   i = 1;
                   label593:
@@ -653,33 +655,33 @@ public final class b
               for (;;)
               {
                 i = j;
-                if ((dix)paramdjy != null) {
+                if ((djs)paramdkt != null) {
                   break;
                 }
-                localdjs.HyB.add(localdix1);
+                localdkn.HSm.add(localdjs1);
                 i = 1;
                 break;
                 i = 0;
                 break label593;
                 label625:
                 break label558;
-                paramdjy = null;
+                paramdkt = null;
               }
             }
-            localdjs.HyB.add(localdix1);
+            localdkn.HSm.add(localdjs1);
             i = 1;
             break label330;
           }
-          if (localdix1.HtH != 0)
+          if (localdjs1.HNk != 0)
           {
-            paramdjy = localdjs.Hyz;
-            p.g(paramdjy, "storyObj.CommentList");
-            localIterator = ((Iterable)paramdjy).iterator();
+            paramdkt = localdkn.HSk;
+            p.g(paramdkt, "storyObj.CommentList");
+            localIterator = ((Iterable)paramdkt).iterator();
             label680:
             if (localIterator.hasNext())
             {
-              paramdjy = localIterator.next();
-              if (((dix)paramdjy).HtH == localdix1.HtH)
+              paramdkt = localIterator.next();
+              if (((djs)paramdkt).HNk == localdjs1.HNk)
               {
                 i = 1;
                 label715:
@@ -691,43 +693,43 @@ public final class b
             for (;;)
             {
               i = j;
-              if ((dix)paramdjy != null) {
+              if ((djs)paramdkt != null) {
                 break;
               }
-              localdjs.Hyz.add(localdix1);
+              localdkn.HSk.add(localdjs1);
               i = 1;
               break;
               i = 0;
               break label715;
               label747:
               break label680;
-              paramdjy = null;
+              paramdkt = null;
             }
           }
-          localdjs.Hyz.add(localdix1);
+          localdkn.HSk.add(localdjs1);
           i = 1;
           break label330;
-          paramdjy = null;
+          paramdkt = null;
         }
-        catch (Exception paramdjy)
+        catch (Exception paramdkt)
         {
           break label461;
         }
       }
     }
-    catch (Exception paramdjy)
+    catch (Exception paramdkt)
     {
       break label197;
     }
   }
   
-  public static void am(boolean paramBoolean1, boolean paramBoolean2)
+  public static void al(boolean paramBoolean1, boolean paramBoolean2)
   {
     AppMethodBeat.i(118872);
-    boolean bool = com.tencent.mm.z.c.aht().cI(352279, 266241);
-    ad.i(TAG, "updateCommentRead: " + bool + ", " + paramBoolean1);
+    boolean bool = com.tencent.mm.y.c.ahI().cI(352279, 266241);
+    ae.i(TAG, "updateCommentRead: " + bool + ", " + paramBoolean1);
     if ((bool != paramBoolean1) || (paramBoolean2)) {
-      com.tencent.mm.ad.c.g((d.g.a.a)new j(paramBoolean1));
+      com.tencent.mm.ac.c.h((d.g.a.a)new j(paramBoolean1));
     }
     AppMethodBeat.o(118872);
   }
@@ -736,12 +738,12 @@ public final class b
   {
     AppMethodBeat.i(118868);
     p.h(paramString2, "content");
-    ad.i(TAG, "deleteComment storyId:" + paramLong + " commentId:" + paramInt + " sessionId:" + paramString1 + " content:" + paramString2);
+    ae.i(TAG, "deleteComment storyId:" + paramLong + " commentId:" + paramInt + " sessionId:" + paramString1 + " content:" + paramString2);
     if (paramInt != 0)
     {
       Object localObject1 = new StringBuilder();
-      Object localObject2 = com.tencent.mm.plugin.story.f.j.AKb;
-      localObject1 = j.b.dTJ() + bt.HI();
+      Object localObject2 = com.tencent.mm.plugin.story.f.j.BbE;
+      localObject1 = j.b.dXj() + bu.HQ();
       localObject2 = d.n.d.UTF_8;
       if (localObject1 == null)
       {
@@ -752,21 +754,21 @@ public final class b
       localObject1 = ((String)localObject1).getBytes((Charset)localObject2);
       p.g(localObject1, "(this as java.lang.String).getBytes(charset)");
       localObject2 = com.tencent.xweb.util.d.getMessageDigest((byte[])localObject1);
-      localObject1 = new diy();
-      ((diy)localObject1).dKt = paramLong;
-      ((diy)localObject1).clientId = ((String)localObject2);
-      ((diy)localObject1).ALy = paramInt;
-      ((diy)localObject1).hZE = cf.aCN();
-      ((diy)localObject1).state = 3;
-      ((diy)localObject1).sessionId = paramString1;
-      paramString1 = com.tencent.mm.plugin.story.f.j.AKb;
-      ((diy)localObject1).dyU = j.b.dTJ();
-      ((diy)localObject1).toUser = "";
-      ALM.HxK.add(localObject1);
-      dVc();
+      localObject1 = new djt();
+      ((djt)localObject1).dLI = paramLong;
+      ((djt)localObject1).clientId = ((String)localObject2);
+      ((djt)localObject1).Bdb = paramInt;
+      ((djt)localObject1).icw = ch.aDd();
+      ((djt)localObject1).state = 3;
+      ((djt)localObject1).sessionId = paramString1;
+      paramString1 = com.tencent.mm.plugin.story.f.j.BbE;
+      ((djt)localObject1).dzZ = j.b.dXj();
+      ((djt)localObject1).toUser = "";
+      Bdo.HRv.add(localObject1);
+      dYC();
     }
-    paramString1 = com.tencent.mm.plugin.story.f.j.AKb;
-    j.b.dFL().post((Runnable)new c(paramLong, paramInt, paramString2));
+    paramString1 = com.tencent.mm.plugin.story.f.j.BbE;
+    j.b.dJc().post((Runnable)new c(paramLong, paramInt, paramString2));
     AppMethodBeat.o(118868);
   }
   
@@ -775,22 +777,22 @@ public final class b
     AppMethodBeat.i(118870);
     p.h(parama, "commentDetail");
     y.f localf = new y.f();
-    j.b localb = com.tencent.mm.plugin.story.f.j.AKb;
-    localf.MLV = j.b.ehW().AT(paramLong);
-    if ((com.tencent.mm.plugin.story.i.c)localf.MLV == null)
+    j.b localb = com.tencent.mm.plugin.story.f.j.BbE;
+    localf.NiY = j.b.elE().Br(paramLong);
+    if ((com.tencent.mm.plugin.story.i.c)localf.NiY == null)
     {
-      localf.MLV = new com.tencent.mm.plugin.story.i.c();
-      ((com.tencent.mm.plugin.story.i.c)localf.MLV).field_storyId = paramLong;
+      localf.NiY = new com.tencent.mm.plugin.story.i.c();
+      ((com.tencent.mm.plugin.story.i.c)localf.NiY).field_storyId = paramLong;
     }
-    if ((((com.tencent.mm.plugin.story.i.c)localf.MLV).field_readCommentId != parama.ALy) && (((com.tencent.mm.plugin.story.i.c)localf.MLV).field_readCommentTime < parama.hZE))
+    if ((((com.tencent.mm.plugin.story.i.c)localf.NiY).field_readCommentId != parama.Bdb) && (((com.tencent.mm.plugin.story.i.c)localf.NiY).field_readCommentTime < parama.icw))
     {
-      ((com.tencent.mm.plugin.story.i.c)localf.MLV).field_readCommentId = parama.ALy;
-      ((com.tencent.mm.plugin.story.i.c)localf.MLV).field_readCommentTime = parama.hZE;
-      ((com.tencent.mm.plugin.story.i.c)localf.MLV).aCd(parama.dyU);
-      ((com.tencent.mm.plugin.story.i.c)localf.MLV).aBP(parama.ALG);
-      parama = com.tencent.mm.plugin.story.f.j.AKb;
-      j.b.ehW().update((com.tencent.mm.sdk.e.c)localf.MLV, new String[0]);
-      com.tencent.mm.ad.c.g((d.g.a.a)new i(localf));
+      ((com.tencent.mm.plugin.story.i.c)localf.NiY).field_readCommentId = parama.Bdb;
+      ((com.tencent.mm.plugin.story.i.c)localf.NiY).field_readCommentTime = parama.icw;
+      ((com.tencent.mm.plugin.story.i.c)localf.NiY).aDw(parama.dzZ);
+      ((com.tencent.mm.plugin.story.i.c)localf.NiY).aDi(parama.Bdj);
+      parama = com.tencent.mm.plugin.story.f.j.BbE;
+      j.b.elE().update((com.tencent.mm.sdk.e.c)localf.NiY, new String[0]);
+      com.tencent.mm.ac.c.h((d.g.a.a)new i(localf));
       AppMethodBeat.o(118870);
       return true;
     }
@@ -802,44 +804,44 @@ public final class b
   {
     AppMethodBeat.i(118863);
     p.h(paramr, "listener");
-    if (!ALQ.contains(paramr)) {
-      ALQ.add(paramr);
+    if (!Bds.contains(paramr)) {
+      Bds.add(paramr);
     }
     AppMethodBeat.o(118863);
   }
   
-  public static void dVc()
+  public static void dYC()
   {
     int k = 0;
     AppMethodBeat.i(118873);
     Object localObject1 = new ArrayList();
-    int j = ALM.HxK.size();
+    int j = Bdo.HRv.size();
     int i = 0;
     Object localObject3;
     while (i < j)
     {
-      localObject2 = (diy)ALM.HxK.get(i);
-      if ((((diy)localObject2).state == 1) || (((diy)localObject2).state == 3))
+      localObject2 = (djt)Bdo.HRv.get(i);
+      if ((((djt)localObject2).state == 1) || (((djt)localObject2).state == 3))
       {
-        int m = ((diy)localObject2).hZE;
-        int n = cf.aCN();
-        localObject3 = com.tencent.mm.plugin.story.f.i.AJE;
-        if (m > n - com.tencent.mm.plugin.story.f.i.ehK()) {
+        int m = ((djt)localObject2).icw;
+        int n = ch.aDd();
+        localObject3 = i.Bbh;
+        if (m > n - i.els()) {
           ((ArrayList)localObject1).add(localObject2);
         }
       }
       i += 1;
     }
-    ALM.HxK.clear();
-    ALM.HxK.addAll((Collection)localObject1);
-    ALP += 1;
+    Bdo.HRv.clear();
+    Bdo.HRv.addAll((Collection)localObject1);
+    Bdr += 1;
     if (((ArrayList)localObject1).size() == 0)
     {
-      ALP = -1;
+      Bdr = -1;
       AppMethodBeat.o(118873);
       return;
     }
-    ALP %= ((ArrayList)localObject1).size();
+    Bdr %= ((ArrayList)localObject1).size();
     Object localObject2 = (Iterable)localObject1;
     localObject1 = (Collection)new ArrayList();
     localObject2 = ((Iterable)localObject2).iterator();
@@ -849,10 +851,10 @@ public final class b
     {
       localObject3 = ((Iterator)localObject2).next();
       if (i < 0) {
-        d.a.j.gfB();
+        d.a.j.gkd();
       }
-      localObject4 = (diy)localObject3;
-      if ((i >= ALP) && (((diy)localObject4).retryCount < tqv)) {}
+      localObject4 = (djt)localObject3;
+      if ((i >= Bdr) && (((djt)localObject4).retryCount < tBm)) {}
       for (j = 1;; j = 0)
       {
         if (j != 0) {
@@ -862,13 +864,13 @@ public final class b
         break;
       }
     }
-    localObject1 = (diy)d.a.j.jd((List)localObject1);
-    if ((localObject1 != null) && (((diy)localObject1).state == 1))
+    localObject1 = (djt)d.a.j.jm((List)localObject1);
+    if ((localObject1 != null) && (((djt)localObject1).state == 1))
     {
-      ad.i(TAG, "postCommentToRemote " + ((diy)localObject1).toUser + ' ' + ((diy)localObject1).dKt + ' ' + ((diy)localObject1).HxQ + ' ' + ((diy)localObject1).hZE);
-      ALN = (diy)localObject1;
-      localObject2 = a((diy)localObject1);
-      localObject3 = (CharSequence)((dix)localObject2).hDa;
+      ae.i(TAG, "postCommentToRemote " + ((djt)localObject1).toUser + ' ' + ((djt)localObject1).dLI + ' ' + ((djt)localObject1).HRB + ' ' + ((djt)localObject1).icw);
+      Bdp = (djt)localObject1;
+      localObject2 = a((djt)localObject1);
+      localObject3 = (CharSequence)((djs)localObject2).hFS;
       if (localObject3 != null)
       {
         i = k;
@@ -880,34 +882,34 @@ public final class b
       }
       if (i != 0)
       {
-        localObject3 = com.tencent.mm.plugin.story.h.e.ART;
-        com.tencent.mm.plugin.story.h.e.ejO();
+        localObject3 = com.tencent.mm.plugin.story.h.e.Bjr;
+        com.tencent.mm.plugin.story.h.e.enx();
       }
       for (;;)
       {
-        localObject3 = g.ajB();
+        localObject3 = g.ajQ();
         p.g(localObject3, "network()");
-        localObject3 = ((com.tencent.mm.kernel.b)localObject3).aiU();
-        localObject4 = ((diy)localObject1).clientId;
+        localObject3 = ((com.tencent.mm.kernel.b)localObject3).ajj();
+        localObject4 = ((djt)localObject1).clientId;
         p.g(localObject4, "commentOp.clientId");
-        ((com.tencent.mm.al.q)localObject3).b((com.tencent.mm.al.n)new com.tencent.mm.plugin.story.f.a.c((String)localObject4, (dix)localObject2, ((diy)localObject1).sessionId, ALO));
+        ((com.tencent.mm.ak.q)localObject3).b((com.tencent.mm.ak.n)new com.tencent.mm.plugin.story.f.a.c((String)localObject4, (djs)localObject2, ((djt)localObject1).sessionId, Bdq));
         AppMethodBeat.o(118873);
         return;
-        localObject3 = com.tencent.mm.plugin.story.h.e.ART;
-        com.tencent.mm.plugin.story.h.e.ejP();
+        localObject3 = com.tencent.mm.plugin.story.h.e.Bjr;
+        com.tencent.mm.plugin.story.h.e.eny();
       }
     }
-    if ((localObject1 != null) && (((diy)localObject1).state == 3))
+    if ((localObject1 != null) && (((djt)localObject1).state == 3))
     {
-      ad.i(TAG, "deleteCommentToRemote " + ((diy)localObject1).toUser + ' ' + ((diy)localObject1).dKt + ' ' + ((diy)localObject1).ALy + ' ' + ((diy)localObject1).hZE);
-      ALN = (diy)localObject1;
+      ae.i(TAG, "deleteCommentToRemote " + ((djt)localObject1).toUser + ' ' + ((djt)localObject1).dLI + ' ' + ((djt)localObject1).Bdb + ' ' + ((djt)localObject1).icw);
+      Bdp = (djt)localObject1;
       localObject2 = new ArrayList();
-      long l = ((diy)localObject1).dKt;
-      localObject3 = com.tencent.mm.plugin.story.i.a.ATp;
-      ((ArrayList)localObject2).add(new com.tencent.mm.plugin.story.f.a.j(l, com.tencent.mm.plugin.story.i.a.ekM(), ((diy)localObject1).ALy));
-      localObject1 = g.ajB();
+      long l = ((djt)localObject1).dLI;
+      localObject3 = com.tencent.mm.plugin.story.i.a.BkN;
+      ((ArrayList)localObject2).add(new com.tencent.mm.plugin.story.f.a.j(l, com.tencent.mm.plugin.story.i.a.eov(), ((djt)localObject1).Bdb));
+      localObject1 = g.ajQ();
       p.g(localObject1, "network()");
-      ((com.tencent.mm.kernel.b)localObject1).aiU().b((com.tencent.mm.al.n)new com.tencent.mm.plugin.story.f.a.f((List)localObject2));
+      ((com.tencent.mm.kernel.b)localObject1).ajj().b((com.tencent.mm.ak.n)new com.tencent.mm.plugin.story.f.a.f((List)localObject2));
     }
     AppMethodBeat.o(118873);
   }
@@ -916,15 +918,15 @@ public final class b
   {
     AppMethodBeat.i(118864);
     p.h(paramr, "listener");
-    ALQ.remove(paramr);
+    Bds.remove(paramr);
     AppMethodBeat.o(118864);
   }
   
-  public static void eiH()
+  public static void emp()
   {
     AppMethodBeat.i(118862);
-    byte[] arrayOfByte = ALM.toByteArray();
-    com.tencent.mm.vfs.i.C(zlT, arrayOfByte);
+    byte[] arrayOfByte = Bdo.toByteArray();
+    o.C(zDi, arrayOfByte);
     AppMethodBeat.o(118862);
   }
   
@@ -932,8 +934,8 @@ public final class b
   {
     AppMethodBeat.i(118865);
     p.h(paramm, "listener");
-    if (!ALS.contains(paramm)) {
-      ALS.add(paramm);
+    if (!Bdu.contains(paramm)) {
+      Bdu.add(paramm);
     }
     AppMethodBeat.o(118865);
   }
@@ -942,29 +944,29 @@ public final class b
   {
     AppMethodBeat.i(118866);
     p.h(paramm, "listener");
-    ALS.remove(paramm);
+    Bdu.remove(paramm);
     AppMethodBeat.o(118866);
   }
   
-  public static void k(long paramLong, int paramInt, String paramString)
+  public static void j(long paramLong, int paramInt, String paramString)
   {
     int i = 0;
     AppMethodBeat.i(118879);
-    Object localObject1 = com.tencent.mm.plugin.story.f.j.AKb;
-    localObject1 = j.b.ehT().AX(paramLong);
+    Object localObject1 = com.tencent.mm.plugin.story.f.j.BbE;
+    localObject1 = j.b.elB().Bv(paramLong);
     if (localObject1 == null)
     {
       AppMethodBeat.o(118879);
       return;
     }
-    djs localdjs = new djs();
+    dkn localdkn = new dkn();
     try
     {
-      localdjs.parseFrom(((com.tencent.mm.plugin.story.i.j)localObject1).field_attrBuf);
+      localdkn.parseFrom(((com.tencent.mm.plugin.story.i.j)localObject1).field_attrBuf);
       label55:
       if (paramInt != 0)
       {
-        paramString = localdjs.Hyz;
+        paramString = localdkn.HSk;
         p.g(paramString, "storyObj.CommentList");
         paramString = ((List)paramString).iterator();
         i = 0;
@@ -973,7 +975,7 @@ public final class b
       {
         int j;
         if (paramString.hasNext()) {
-          if (((dix)paramString.next()).HtH == paramInt)
+          if (((djs)paramString.next()).HNk == paramInt)
           {
             j = 1;
             label113:
@@ -983,17 +985,17 @@ public final class b
             label118:
             if (i != -1)
             {
-              localdjs.Hyz.remove(i);
-              localdjs.CommentCount = localdjs.Hyz.size();
+              localdkn.HSk.remove(i);
+              localdkn.CommentCount = localdkn.HSk.size();
             }
           }
         }
         try
         {
-          ((com.tencent.mm.plugin.story.i.j)localObject1).field_attrBuf = localdjs.toByteArray();
+          ((com.tencent.mm.plugin.story.i.j)localObject1).field_attrBuf = localdkn.toByteArray();
           label158:
-          paramString = com.tencent.mm.plugin.story.f.j.AKb;
-          j.b.ehT().e((com.tencent.mm.plugin.story.i.j)localObject1);
+          paramString = com.tencent.mm.plugin.story.f.j.BbE;
+          j.b.elB().e((com.tencent.mm.plugin.story.i.j)localObject1);
           AppMethodBeat.o(118879);
           return;
           j = 0;
@@ -1003,13 +1005,13 @@ public final class b
           continue;
           i = -1;
           break label118;
-          Object localObject2 = localdjs.Hyz;
+          Object localObject2 = localdkn.HSk;
           p.g(localObject2, "storyObj.CommentList");
           localObject2 = ((List)localObject2).iterator();
           paramInt = i;
           label229:
           if (((Iterator)localObject2).hasNext()) {
-            if (!bt.lQ(((dix)((Iterator)localObject2).next()).hDa, paramString)) {}
+            if (!bu.lX(((djs)((Iterator)localObject2).next()).hFS, paramString)) {}
           }
           for (;;)
           {
@@ -1038,48 +1040,48 @@ public final class b
     p.h(paramString1, "content");
     p.h(paramString2, "toUsername");
     p.h(paramString4, "storyOwner");
-    ad.i(TAG, "postComment: " + paramLong + ' ' + paramString1 + ' ' + paramString2);
+    ae.i(TAG, "postComment: " + paramLong + ' ' + paramString1 + ' ' + paramString2);
     paramString1 = a(paramLong, paramString2, paramString1, false, paramString3, paramString4, paramInt, 0, 256);
     AppMethodBeat.o(118867);
     return paramString1;
   }
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.al.n paramn)
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ak.n paramn)
   {
     int i = 0;
     AppMethodBeat.i(118881);
     p.h(paramn, "scene");
     int j = paramn.getType();
-    ad.i(TAG, "onSceneEnd " + paramInt1 + ", " + paramInt2 + ", " + paramString + ", " + j);
+    ae.i(TAG, "onSceneEnd " + paramInt1 + ", " + paramInt2 + ", " + paramString + ", " + j);
     label252:
     long l;
     if (j == 354)
     {
-      paramString = ((com.tencent.mm.plugin.story.f.a.c)paramn).rr.aEF();
+      paramString = ((com.tencent.mm.plugin.story.f.a.c)paramn).rr.aEV();
       if (paramString == null)
       {
         paramString = new v("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.StoryCommentResponse");
         AppMethodBeat.o(118881);
         throw paramString;
       }
-      localObject1 = (dja)paramString;
-      paramn = ((com.tencent.mm.plugin.story.f.a.c)paramn).ALg;
+      localObject1 = (djv)paramString;
+      paramn = ((com.tencent.mm.plugin.story.f.a.c)paramn).BcJ;
       Object localObject2;
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
         localObject2 = TAG;
         Object localObject3 = new StringBuilder("post comment success ");
-        paramString = ALN;
+        paramString = Bdp;
         if (paramString != null)
         {
           paramString = paramString.content;
-          ad.i((String)localObject2, paramString + ' ' + ((dja)localObject1).HtH);
-          paramString = com.tencent.mm.plugin.story.f.j.AKb;
-          j.b.dFL().post((Runnable)new d((dja)localObject1));
+          ae.i((String)localObject2, paramString + ' ' + ((djv)localObject1).HNk);
+          paramString = com.tencent.mm.plugin.story.f.j.BbE;
+          j.b.dJc().post((Runnable)new d((djv)localObject1));
           if (paramn != null) {
-            paramn.ALy = ((dja)localObject1).HtH;
+            paramn.Bdb = ((djv)localObject1).HNk;
           }
-          paramString = ((Iterable)ALS).iterator();
+          paramString = ((Iterable)Bdu).iterator();
           if (!paramString.hasNext()) {
             break label318;
           }
@@ -1090,7 +1092,7 @@ public final class b
           }
         }
         label312:
-        for (l = paramn.dKt;; l = 0L)
+        for (l = paramn.dLI;; l = 0L)
         {
           ((m)localObject2).p(localObject3, Long.valueOf(l));
           break label252;
@@ -1098,30 +1100,30 @@ public final class b
           break;
         }
         label318:
-        paramString = ALN;
+        paramString = Bdp;
         if (paramString != null) {
-          paramString.ALy = ((dja)localObject1).HtH;
+          paramString.Bdb = ((djv)localObject1).HNk;
         }
-        paramString = ALN;
+        paramString = Bdp;
         if (paramString != null) {
           paramString.state = 2;
         }
-        ALN = null;
+        Bdp = null;
       }
       for (l = 100L;; l = 300000L)
       {
-        paramString = com.tencent.mm.plugin.story.f.j.AKb;
-        j.b.dFL().postDelayed((Runnable)e.ALY, l);
+        paramString = com.tencent.mm.plugin.story.f.j.BbE;
+        j.b.dJc().postDelayed((Runnable)e.BdA, l);
         AppMethodBeat.o(118881);
         return;
         localObject1 = TAG;
         localObject2 = new StringBuilder("post comment fail ");
-        paramString = ALN;
+        paramString = Bdp;
         if (paramString != null)
         {
           paramString = paramString.content;
-          ad.i((String)localObject1, paramString);
-          paramString = ALN;
+          ae.i((String)localObject1, paramString);
+          paramString = Bdp;
           paramInt2 = i;
           if (paramString != null) {
             paramInt2 = paramString.retryCount;
@@ -1129,13 +1131,13 @@ public final class b
           if (paramInt1 != 4) {
             break label539;
           }
-          paramString = ALN;
+          paramString = Bdp;
           if (paramString != null) {
-            paramString.retryCount = tqv;
+            paramString.retryCount = tBm;
           }
           label463:
-          ALN = null;
-          paramString = ((Iterable)ALS).iterator();
+          Bdp = null;
+          paramString = ((Iterable)Bdu).iterator();
           label479:
           if (!paramString.hasNext()) {
             continue;
@@ -1148,13 +1150,13 @@ public final class b
         }
         label539:
         label557:
-        for (l = paramn.dKt;; l = 0L)
+        for (l = paramn.dLI;; l = 0L)
         {
           ((m)localObject1).p(localObject2, Long.valueOf(l));
           break label479;
           paramString = null;
           break;
-          paramString = ALN;
+          paramString = Bdp;
           if (paramString == null) {
             break label463;
           }
@@ -1163,14 +1165,14 @@ public final class b
         }
       }
     }
-    if ((j == 764) && ((((com.tencent.mm.plugin.story.f.a.f)paramn).eiG() instanceof com.tencent.mm.plugin.story.f.a.j)))
+    if ((j == 764) && ((((com.tencent.mm.plugin.story.f.a.f)paramn).emo() instanceof com.tencent.mm.plugin.story.f.a.j)))
     {
       if ((paramInt1 != 0) || (paramInt2 != 0)) {
         break label698;
       }
       paramn = TAG;
       localObject1 = new StringBuilder("delete comment success ");
-      paramString = ALN;
+      paramString = Bdp;
       if (paramString == null) {
         break label693;
       }
@@ -1178,28 +1180,28 @@ public final class b
     label693:
     for (paramString = paramString.content;; paramString = null)
     {
-      ad.i(paramn, paramString);
-      paramString = ALN;
+      ae.i(paramn, paramString);
+      paramString = Bdp;
       if (paramString != null) {
         paramString.state = 4;
       }
-      ALN = null;
+      Bdp = null;
       l = 100L;
-      paramString = com.tencent.mm.plugin.story.f.j.AKb;
-      j.b.dFL().postDelayed((Runnable)f.ALZ, l);
+      paramString = com.tencent.mm.plugin.story.f.j.BbE;
+      j.b.dJc().postDelayed((Runnable)f.BdB, l);
       AppMethodBeat.o(118881);
       return;
     }
     label698:
     paramn = TAG;
     Object localObject1 = new StringBuilder("delete comment fail ");
-    paramString = ALN;
+    paramString = Bdp;
     if (paramString != null)
     {
       paramString = paramString.content;
       label728:
-      ad.i(paramn, paramString);
-      paramString = ALN;
+      ae.i(paramn, paramString);
+      paramString = Bdp;
       if (paramString == null) {
         break label792;
       }
@@ -1208,14 +1210,14 @@ public final class b
       if (paramInt1 != 4) {
         break label797;
       }
-      paramString = ALN;
+      paramString = Bdp;
       if (paramString != null) {
-        paramString.retryCount = tqv;
+        paramString.retryCount = tBm;
       }
     }
     for (;;)
     {
-      ALN = null;
+      Bdp = null;
       l = 60000L;
       break;
       paramString = null;
@@ -1224,14 +1226,14 @@ public final class b
       paramInt2 = 0;
       break label755;
       label797:
-      paramString = ALN;
+      paramString = Bdp;
       if (paramString != null) {
         paramString.retryCount = (paramInt2 + 1);
       }
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
   public static final class a
     extends d.g.b.q
     implements d.g.a.a<z>
@@ -1242,7 +1244,7 @@ public final class b
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
   public static final class b
     extends d.g.b.q
     implements d.g.a.a<z>
@@ -1253,7 +1255,7 @@ public final class b
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
   static final class c
     implements Runnable
   {
@@ -1262,87 +1264,87 @@ public final class b
     public final void run()
     {
       AppMethodBeat.i(118851);
-      b localb = b.ALT;
-      b.l(this.ALV, paramString2, this.fKu);
+      b localb = b.Bdv;
+      b.k(this.Bdx, paramString2, this.fMx);
       AppMethodBeat.o(118851);
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
   static final class d
     implements Runnable
   {
-    d(dja paramdja) {}
+    d(djv paramdjv) {}
     
     public final void run()
     {
       AppMethodBeat.i(118852);
-      b localb = b.ALT;
-      b.b(this.ALX.HxW);
+      b localb = b.Bdv;
+      b.b(this.Bdz.HRH);
       AppMethodBeat.o(118852);
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
   static final class e
     implements Runnable
   {
-    public static final e ALY;
+    public static final e BdA;
     
     static
     {
       AppMethodBeat.i(118854);
-      ALY = new e();
+      BdA = new e();
       AppMethodBeat.o(118854);
     }
     
     public final void run()
     {
       AppMethodBeat.i(118853);
-      b localb = b.ALT;
-      b.eiK();
+      b localb = b.Bdv;
+      b.ems();
       AppMethodBeat.o(118853);
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
   static final class f
     implements Runnable
   {
-    public static final f ALZ;
+    public static final f BdB;
     
     static
     {
       AppMethodBeat.i(118856);
-      ALZ = new f();
+      BdB = new f();
       AppMethodBeat.o(118856);
     }
     
     public final void run()
     {
       AppMethodBeat.i(118855);
-      b localb = b.ALT;
-      b.eiK();
+      b localb = b.Bdv;
+      b.ems();
       AppMethodBeat.o(118855);
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
   static final class g
     implements Runnable
   {
-    g(diy paramdiy) {}
+    g(djt paramdjt) {}
     
     public final void run()
     {
       AppMethodBeat.i(118857);
-      b localb = b.ALT;
-      b.a(b.b(this.AMa));
+      b localb = b.Bdv;
+      b.a(b.b(this.BdC));
       AppMethodBeat.o(118857);
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke", "com/tencent/mm/plugin/story/model/comment/StoryCommentLogic$setAllCommentRead$1$1"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke", "com/tencent/mm/plugin/story/model/comment/StoryCommentLogic$setAllCommentRead$1$1"})
   static final class h
     extends d.g.b.q
     implements d.g.a.a<z>
@@ -1353,7 +1355,7 @@ public final class b
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
   static final class i
     extends d.g.b.q
     implements d.g.a.a<z>
@@ -1364,7 +1366,7 @@ public final class b
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
   static final class j
     extends d.g.b.q
     implements d.g.a.a<z>
@@ -1375,7 +1377,7 @@ public final class b
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
   static final class k
     extends d.g.b.q
     implements d.g.a.a<z>
@@ -1388,7 +1390,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.story.f.b.b
  * JD-Core Version:    0.7.0.1
  */

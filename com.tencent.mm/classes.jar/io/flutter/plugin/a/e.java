@@ -4,13 +4,13 @@ public final class e
   extends RuntimeException
 {
   public final String code;
-  public final Object tjB;
+  public final Object tut;
   
   e(String paramString1, String paramString2, Object paramObject)
   {
     super(paramString2);
     this.code = paramString1;
-    this.tjB = paramObject;
+    this.tut = paramObject;
   }
 }
 

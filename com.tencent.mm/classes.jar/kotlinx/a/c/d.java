@@ -5,35 +5,35 @@ import d.g.b.p;
 import d.l;
 import kotlinx.a.z;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/serialization/json/JsonConfiguration;", "", "encodeDefaults", "", "ignoreUnknownKeys", "isLenient", "serializeSpecialFloatingPointValues", "allowStructuredMapKeys", "prettyPrint", "unquotedPrint", "indent", "", "useArrayPolymorphism", "classDiscriminator", "updateMode", "Lkotlinx/serialization/UpdateMode;", "(ZZZZZZZLjava/lang/String;ZLjava/lang/String;Lkotlinx/serialization/UpdateMode;)V", "getAllowStructuredMapKeys$kotlinx_serialization_runtime", "()Z", "getClassDiscriminator$kotlinx_serialization_runtime", "()Ljava/lang/String;", "getEncodeDefaults$kotlinx_serialization_runtime", "getIgnoreUnknownKeys$kotlinx_serialization_runtime", "getIndent$kotlinx_serialization_runtime", "isLenient$kotlinx_serialization_runtime", "getPrettyPrint$kotlinx_serialization_runtime", "getSerializeSpecialFloatingPointValues$kotlinx_serialization_runtime", "getUnquotedPrint$kotlinx_serialization_runtime", "updateMode$annotations", "()V", "getUpdateMode$kotlinx_serialization_runtime", "()Lkotlinx/serialization/UpdateMode;", "getUseArrayPolymorphism$kotlinx_serialization_runtime", "component1", "component1$kotlinx_serialization_runtime", "component10", "component10$kotlinx_serialization_runtime", "component11", "component11$kotlinx_serialization_runtime", "component2", "component2$kotlinx_serialization_runtime", "component3", "component3$kotlinx_serialization_runtime", "component4", "component4$kotlinx_serialization_runtime", "component5", "component5$kotlinx_serialization_runtime", "component6", "component6$kotlinx_serialization_runtime", "component7", "component7$kotlinx_serialization_runtime", "component8", "component8$kotlinx_serialization_runtime", "component9", "component9$kotlinx_serialization_runtime", "copy", "equals", "other", "hashCode", "", "toString", "Companion", "kotlinx-serialization-runtime"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/serialization/json/JsonConfiguration;", "", "encodeDefaults", "", "ignoreUnknownKeys", "isLenient", "serializeSpecialFloatingPointValues", "allowStructuredMapKeys", "prettyPrint", "unquotedPrint", "indent", "", "useArrayPolymorphism", "classDiscriminator", "updateMode", "Lkotlinx/serialization/UpdateMode;", "(ZZZZZZZLjava/lang/String;ZLjava/lang/String;Lkotlinx/serialization/UpdateMode;)V", "getAllowStructuredMapKeys$kotlinx_serialization_runtime", "()Z", "getClassDiscriminator$kotlinx_serialization_runtime", "()Ljava/lang/String;", "getEncodeDefaults$kotlinx_serialization_runtime", "getIgnoreUnknownKeys$kotlinx_serialization_runtime", "getIndent$kotlinx_serialization_runtime", "isLenient$kotlinx_serialization_runtime", "getPrettyPrint$kotlinx_serialization_runtime", "getSerializeSpecialFloatingPointValues$kotlinx_serialization_runtime", "getUnquotedPrint$kotlinx_serialization_runtime", "updateMode$annotations", "()V", "getUpdateMode$kotlinx_serialization_runtime", "()Lkotlinx/serialization/UpdateMode;", "getUseArrayPolymorphism$kotlinx_serialization_runtime", "component1", "component1$kotlinx_serialization_runtime", "component10", "component10$kotlinx_serialization_runtime", "component11", "component11$kotlinx_serialization_runtime", "component2", "component2$kotlinx_serialization_runtime", "component3", "component3$kotlinx_serialization_runtime", "component4", "component4$kotlinx_serialization_runtime", "component5", "component5$kotlinx_serialization_runtime", "component6", "component6$kotlinx_serialization_runtime", "component7", "component7$kotlinx_serialization_runtime", "component8", "component8$kotlinx_serialization_runtime", "component9", "component9$kotlinx_serialization_runtime", "copy", "equals", "other", "hashCode", "", "toString", "Companion", "kotlinx-serialization-runtime"})
 public final class d
 {
-  private static final d NNA;
-  public static final a NNB;
-  private static final String NNx;
-  private static final String NNy;
-  private static final d NNz;
-  public final z NMc;
-  public final boolean NNp;
-  public final boolean NNq;
-  public final boolean NNr;
-  public final boolean NNs;
-  public final boolean NNt;
-  public final boolean NNu;
-  public final boolean NNv;
-  public final String NNw;
+  private static final String OkD;
+  private static final String OkE;
+  private static final d OkF;
+  private static final d OkG;
+  public static final a OkH;
+  public final z Oji;
+  public final boolean OkA;
+  public final boolean OkB;
+  public final String OkC;
+  public final boolean Okv;
+  public final boolean Okw;
+  public final boolean Okx;
+  public final boolean Oky;
+  public final boolean Okz;
   public final boolean bNj;
   public final String bQD;
   
   static
   {
-    AppMethodBeat.i(191281);
-    NNB = new a((byte)0);
-    NNx = "    ";
-    NNy = "type";
-    NNz = new d(false, false, false, false, false, false, false, null, false, null, null, 2047);
-    NNA = new d(true, false, false, false, true, false, false, NNx, false, NNy, null, 1024);
-    AppMethodBeat.o(191281);
+    AppMethodBeat.i(199869);
+    OkH = new a((byte)0);
+    OkD = "    ";
+    OkE = "type";
+    OkF = new d(false, false, false, false, false, false, false, null, false, null, null, 2047);
+    OkG = new d(true, false, false, false, true, false, false, OkD, false, OkE, null, 1024);
+    AppMethodBeat.o(199869);
   }
   
   public d()
@@ -43,50 +43,50 @@ public final class d
   
   private d(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, boolean paramBoolean5, boolean paramBoolean6, boolean paramBoolean7, String paramString1, boolean paramBoolean8, String paramString2, z paramz)
   {
-    AppMethodBeat.i(191279);
-    this.NNp = paramBoolean1;
-    this.NNq = paramBoolean2;
-    this.NNr = paramBoolean3;
+    AppMethodBeat.i(199867);
+    this.Okv = paramBoolean1;
+    this.Okw = paramBoolean2;
+    this.Okx = paramBoolean3;
     this.bNj = paramBoolean4;
-    this.NNs = paramBoolean5;
-    this.NNt = paramBoolean6;
-    this.NNu = paramBoolean7;
+    this.Oky = paramBoolean5;
+    this.Okz = paramBoolean6;
+    this.OkA = paramBoolean7;
     this.bQD = paramString1;
-    this.NNv = paramBoolean8;
-    this.NNw = paramString2;
-    this.NMc = paramz;
-    if ((this.NNv) && (!p.i(this.NNw, NNy)))
+    this.OkB = paramBoolean8;
+    this.OkC = paramString2;
+    this.Oji = paramz;
+    if ((this.OkB) && (!p.i(this.OkC, OkE)))
     {
       paramString1 = (Throwable)new IllegalArgumentException("Class discriminator should not be specified when array polymorphism is specified".toString());
-      AppMethodBeat.o(191279);
+      AppMethodBeat.o(199867);
       throw paramString1;
     }
-    if ((!this.NNt) && (!p.i(this.bQD, NNx)))
+    if ((!this.Okz) && (!p.i(this.bQD, OkD)))
     {
       paramString1 = (Throwable)new IllegalArgumentException("Indent should not be specified when default printing mode is used".toString());
-      AppMethodBeat.o(191279);
+      AppMethodBeat.o(199867);
       throw paramString1;
     }
-    AppMethodBeat.o(191279);
+    AppMethodBeat.o(199867);
   }
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(191284);
+    AppMethodBeat.i(199872);
     if (this != paramObject)
     {
       if ((paramObject instanceof d))
       {
         paramObject = (d)paramObject;
-        if ((this.NNp != paramObject.NNp) || (this.NNq != paramObject.NNq) || (this.NNr != paramObject.NNr) || (this.bNj != paramObject.bNj) || (this.NNs != paramObject.NNs) || (this.NNt != paramObject.NNt) || (this.NNu != paramObject.NNu) || (!p.i(this.bQD, paramObject.bQD)) || (this.NNv != paramObject.NNv) || (!p.i(this.NNw, paramObject.NNw)) || (!p.i(this.NMc, paramObject.NMc))) {}
+        if ((this.Okv != paramObject.Okv) || (this.Okw != paramObject.Okw) || (this.Okx != paramObject.Okx) || (this.bNj != paramObject.bNj) || (this.Oky != paramObject.Oky) || (this.Okz != paramObject.Okz) || (this.OkA != paramObject.OkA) || (!p.i(this.bQD, paramObject.bQD)) || (this.OkB != paramObject.OkB) || (!p.i(this.OkC, paramObject.OkC)) || (!p.i(this.Oji, paramObject.Oji))) {}
       }
     }
     else
     {
-      AppMethodBeat.o(191284);
+      AppMethodBeat.o(199872);
       return true;
     }
-    AppMethodBeat.o(191284);
+    AppMethodBeat.o(199872);
     return false;
   }
   
@@ -97,13 +97,13 @@ public final class d
   
   public final String toString()
   {
-    AppMethodBeat.i(191282);
-    String str = "JsonConfiguration(encodeDefaults=" + this.NNp + ", ignoreUnknownKeys=" + this.NNq + ", isLenient=" + this.NNr + ", serializeSpecialFloatingPointValues=" + this.bNj + ", allowStructuredMapKeys=" + this.NNs + ", prettyPrint=" + this.NNt + ", unquotedPrint=" + this.NNu + ", indent=" + this.bQD + ", useArrayPolymorphism=" + this.NNv + ", classDiscriminator=" + this.NNw + ", updateMode=" + this.NMc + ")";
-    AppMethodBeat.o(191282);
+    AppMethodBeat.i(199870);
+    String str = "JsonConfiguration(encodeDefaults=" + this.Okv + ", ignoreUnknownKeys=" + this.Okw + ", isLenient=" + this.Okx + ", serializeSpecialFloatingPointValues=" + this.bNj + ", allowStructuredMapKeys=" + this.Oky + ", prettyPrint=" + this.Okz + ", unquotedPrint=" + this.OkA + ", indent=" + this.bQD + ", useArrayPolymorphism=" + this.OkB + ", classDiscriminator=" + this.OkC + ", updateMode=" + this.Oji + ")";
+    AppMethodBeat.o(199870);
     return str;
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/serialization/json/JsonConfiguration$Companion;", "", "()V", "Default", "Lkotlinx/serialization/json/JsonConfiguration;", "Default$annotations", "getDefault", "()Lkotlinx/serialization/json/JsonConfiguration;", "Stable", "Stable$annotations", "getStable", "defaultDiscriminator", "", "defaultDiscriminator$annotations", "defaultIndent", "defaultIndent$annotations", "kotlinx-serialization-runtime"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/serialization/json/JsonConfiguration$Companion;", "", "()V", "Default", "Lkotlinx/serialization/json/JsonConfiguration;", "Default$annotations", "getDefault", "()Lkotlinx/serialization/json/JsonConfiguration;", "Stable", "Stable$annotations", "getStable", "defaultDiscriminator", "", "defaultDiscriminator$annotations", "defaultIndent", "defaultIndent$annotations", "kotlinx-serialization-runtime"})
   public static final class a {}
 }
 

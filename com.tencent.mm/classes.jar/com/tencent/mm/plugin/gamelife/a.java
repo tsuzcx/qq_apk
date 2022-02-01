@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.gamelife;
 
 public final class a
 {
-  public static int uwl = 1;
-  public static int uwm = 1;
-  public static int uwn = 2;
+  public static int uHK = 1;
+  public static int uHL = 1;
+  public static int uHM = 2;
 }
 
 

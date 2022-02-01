@@ -10,9 +10,9 @@ public final class j
     super(paramView, paramb);
   }
   
-  public final void eqg() {}
+  public final void etN() {}
   
-  public final f eqh()
+  public final f etO()
   {
     return null;
   }
@@ -22,11 +22,11 @@ public final class j
     return null;
   }
   
-  public final void sJ(boolean paramBoolean) {}
+  public final void sQ(boolean paramBoolean) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.ui.video.j
  * JD-Core Version:    0.7.0.1
  */

@@ -4,17 +4,17 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 public final class jl
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public int FAu;
-  public int FCk;
-  public LinkedList<String> FCl;
+  public int FUF;
+  public LinkedList<String> FUG;
   public int ReqType;
+  public int uqG;
   
   public jl()
   {
     AppMethodBeat.i(104755);
-    this.FCl = new LinkedList();
+    this.FUG = new LinkedList();
     AppMethodBeat.o(104755);
   }
   
@@ -24,30 +24,30 @@ public final class jl
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aS(1, this.FCk);
+      paramVarArgs.aS(1, this.FUF);
       paramVarArgs.aS(2, this.ReqType);
-      paramVarArgs.e(3, 1, this.FCl);
-      paramVarArgs.aS(4, this.FAu);
+      paramVarArgs.e(3, 1, this.FUG);
+      paramVarArgs.aS(4, this.uqG);
       AppMethodBeat.o(104756);
       return 0;
     }
     if (paramInt == 1)
     {
-      paramInt = f.a.a.b.b.a.bz(1, this.FCk);
+      paramInt = f.a.a.b.b.a.bz(1, this.FUF);
       int i = f.a.a.b.b.a.bz(2, this.ReqType);
-      int j = f.a.a.a.c(3, 1, this.FCl);
-      int k = f.a.a.b.b.a.bz(4, this.FAu);
+      int j = f.a.a.a.c(3, 1, this.FUG);
+      int k = f.a.a.b.b.a.bz(4, this.uqG);
       AppMethodBeat.o(104756);
       return paramInt + 0 + i + j + k;
     }
     if (paramInt == 2)
     {
       paramVarArgs = (byte[])paramVarArgs[0];
-      this.FCl.clear();
+      this.FUG.clear();
       paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gxE();
+          paramVarArgs.gCg();
         }
       }
       AppMethodBeat.o(104756);
@@ -63,19 +63,19 @@ public final class jl
         AppMethodBeat.o(104756);
         return -1;
       case 1: 
-        localjl.FCk = locala.NPN.zc();
+        localjl.FUF = locala.OmT.zc();
         AppMethodBeat.o(104756);
         return 0;
       case 2: 
-        localjl.ReqType = locala.NPN.zc();
+        localjl.ReqType = locala.OmT.zc();
         AppMethodBeat.o(104756);
         return 0;
       case 3: 
-        localjl.FCl.add(locala.NPN.readString());
+        localjl.FUG.add(locala.OmT.readString());
         AppMethodBeat.o(104756);
         return 0;
       }
-      localjl.FAu = locala.NPN.zc();
+      localjl.uqG = locala.OmT.zc();
       AppMethodBeat.o(104756);
       return 0;
     }

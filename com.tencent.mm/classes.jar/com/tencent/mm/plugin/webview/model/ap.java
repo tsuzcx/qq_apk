@@ -1,13 +1,13 @@
 package com.tencent.mm.plugin.webview.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.he;
+import com.tencent.mm.g.c.hf;
 import com.tencent.mm.sdk.e.c.a;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class ap
-  extends he
+  extends hf
 {
   protected static c.a info;
   
@@ -15,28 +15,28 @@ public final class ap
   {
     AppMethodBeat.i(79029);
     c.a locala = new c.a();
-    locala.IhA = new Field[5];
+    locala.IBL = new Field[5];
     locala.columns = new String[6];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "recordId";
-    locala.IhC.put("recordId", "INTEGER PRIMARY KEY ");
+    locala.IBN.put("recordId", "INTEGER PRIMARY KEY ");
     localStringBuilder.append(" recordId INTEGER PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.IhB = "recordId";
+    locala.IBM = "recordId";
     locala.columns[1] = "appId";
-    locala.IhC.put("appId", "TEXT");
+    locala.IBN.put("appId", "TEXT");
     localStringBuilder.append(" appId TEXT");
     localStringBuilder.append(", ");
     locala.columns[2] = "domin";
-    locala.IhC.put("domin", "TEXT");
+    locala.IBN.put("domin", "TEXT");
     localStringBuilder.append(" domin TEXT");
     localStringBuilder.append(", ");
     locala.columns[3] = "key";
-    locala.IhC.put("key", "TEXT");
+    locala.IBN.put("key", "TEXT");
     localStringBuilder.append(" key TEXT");
     localStringBuilder.append(", ");
     locala.columns[4] = "value";
-    locala.IhC.put("value", "TEXT");
+    locala.IBN.put("value", "TEXT");
     localStringBuilder.append(" value TEXT");
     locala.columns[5] = "rowid";
     locala.sql = localStringBuilder.toString();

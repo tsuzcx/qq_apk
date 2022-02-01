@@ -4,9 +4,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class i$b
 {
-  int zLV;
-  int zLW;
-  int zLX;
+  int Adc;
+  int Add;
+  int Ade;
   
   public final boolean equals(Object paramObject)
   {
@@ -16,13 +16,13 @@ final class i$b
     {
       paramObject = (b)paramObject;
       bool1 = bool2;
-      if (paramObject.zLV == this.zLV)
+      if (paramObject.Adc == this.Adc)
       {
         bool1 = bool2;
-        if (paramObject.zLW == this.zLW)
+        if (paramObject.Add == this.Add)
         {
           bool1 = bool2;
-          if (paramObject.zLX == this.zLX) {
+          if (paramObject.Ade == this.Ade) {
             bool1 = true;
           }
         }
@@ -33,13 +33,13 @@ final class i$b
   
   public final int hashCode()
   {
-    return this.zLV + this.zLW + this.zLX;
+    return this.Adc + this.Add + this.Ade;
   }
   
   public final String toString()
   {
     AppMethodBeat.i(97331);
-    String str = "[nodeType=" + this.zLV + ",compType=" + this.zLW + ",subCompType=" + this.zLX + "]";
+    String str = "[nodeType=" + this.Adc + ",compType=" + this.Add + ",subCompType=" + this.Ade + "]";
     AppMethodBeat.o(97331);
     return str;
   }

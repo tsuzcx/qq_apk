@@ -1,52 +1,52 @@
 package com.tencent.mm.plugin.websearch.widget;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.b.a.ej;
+import com.tencent.mm.g.b.a.el;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.modelappbrand.u;
 import com.tencent.mm.modelappbrand.v;
 import com.tencent.mm.plugin.websearch.api.WidgetData;
 import com.tencent.mm.plugin.websearch.api.WidgetData.Info;
 import com.tencent.mm.plugin.websearch.widget.a.a;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.az;
 import java.util.HashSet;
 import java.util.Set;
 
 public final class e
 {
-  private static final e DEr;
-  Set<WidgetData> DEs;
-  com.tencent.mm.plugin.websearch.widget.a.b DEt;
+  private static final e DWp;
+  Set<WidgetData> DWq;
+  com.tencent.mm.plugin.websearch.widget.a.b DWr;
   boolean Vp;
   
   static
   {
     AppMethodBeat.i(116644);
-    DEr = new e();
+    DWp = new e();
     AppMethodBeat.o(116644);
   }
   
   public e()
   {
     AppMethodBeat.i(116641);
-    this.DEs = new HashSet();
-    g.ajD();
-    this.DEt = new com.tencent.mm.plugin.websearch.widget.a.b(g.ajC().gBq);
-    eMM();
+    this.DWq = new HashSet();
+    g.ajS();
+    this.DWr = new com.tencent.mm.plugin.websearch.widget.a.b(g.ajR().gDX);
+    eQx();
     AppMethodBeat.o(116641);
   }
   
-  public static e eML()
+  public static e eQw()
   {
     AppMethodBeat.i(116640);
-    if (!aj.cnC())
+    if (!ak.cpe())
     {
       localObject = new RuntimeException("can not call this out of mm process");
       AppMethodBeat.o(116640);
       throw ((Throwable)localObject);
     }
-    Object localObject = DEr;
+    Object localObject = DWp;
     AppMethodBeat.o(116640);
     return localObject;
   }
@@ -54,34 +54,34 @@ public final class e
   public final void b(WidgetData paramWidgetData, String paramString)
   {
     AppMethodBeat.i(116643);
-    if (this.DEs.contains(paramWidgetData))
+    if (this.DWq.contains(paramWidgetData))
     {
-      u.i("WidgetSafeModeProxyImpl", "widget js error appid %s, err %s", new Object[] { paramWidgetData.DCO.hKC, paramString });
-      v.ma(31);
-      ej localej = new ej().nF(paramWidgetData.DCO.hKC);
-      localej.ehS = paramWidgetData.DCO.cQN;
-      localej.ehP = 20L;
-      localej.ehQ = System.currentTimeMillis();
-      localej.nG(ay.iR(aj.getContext())).nH(paramString).aLk();
+      u.i("WidgetSafeModeProxyImpl", "widget js error appid %s, err %s", new Object[] { paramWidgetData.DUM.hNv, paramString });
+      v.md(31);
+      el localel = new el().oa(paramWidgetData.DUM.hNv);
+      localel.ejC = paramWidgetData.DUM.cRx;
+      localel.ejz = 20L;
+      localel.ejA = System.currentTimeMillis();
+      localel.ob(az.iW(ak.getContext())).oc(paramString).aLH();
       paramString = new a();
-      paramString.field_appid = paramWidgetData.DCO.hKC;
-      if (this.DEt.get(paramString, new String[0]))
+      paramString.field_appid = paramWidgetData.DUM.hNv;
+      if (this.DWr.get(paramString, new String[0]))
       {
-        paramString.field_pkgVersion = paramWidgetData.DCO.version;
+        paramString.field_pkgVersion = paramWidgetData.DUM.version;
         paramString.field_jsExceptionCount += 1;
-        this.DEt.update(paramString, new String[0]);
+        this.DWr.update(paramString, new String[0]);
         AppMethodBeat.o(116643);
         return;
       }
-      paramString.field_pkgVersion = paramWidgetData.DCO.version;
+      paramString.field_pkgVersion = paramWidgetData.DUM.version;
       paramString.field_jsExceptionCount = 1;
       paramString.field_beginTimestamp = System.currentTimeMillis();
-      this.DEt.insert(paramString);
+      this.DWr.insert(paramString);
     }
     AppMethodBeat.o(116643);
   }
   
-  final void eMM()
+  final void eQx()
   {
     AppMethodBeat.i(116642);
     com.tencent.mm.sdk.g.b.c(new e.1(this), "WidgetSafeModeProxyImpl");

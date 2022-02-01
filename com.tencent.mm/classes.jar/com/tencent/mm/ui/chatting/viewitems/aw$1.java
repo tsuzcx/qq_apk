@@ -5,7 +5,7 @@ import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 final class aw$1
   implements View.OnClickListener
@@ -17,8 +17,8 @@ final class aw$1
     AppMethodBeat.i(37380);
     b localb = new b();
     localb.bd(paramView);
-    a.b("com/tencent/mm/ui/chatting/viewitems/ChattingItemSysMsgTemplate$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-    ad.d("MicroMsg.ChattingItemNewXmlSysImpl", "hy: textview clicked");
+    a.b("com/tencent/mm/ui/chatting/viewitems/ChattingItemSysMsgTemplate$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+    ae.d("MicroMsg.ChattingItemNewXmlSysImpl", "hy: textview clicked");
     a.a(this, "com/tencent/mm/ui/chatting/viewitems/ChattingItemSysMsgTemplate$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(37380);
   }

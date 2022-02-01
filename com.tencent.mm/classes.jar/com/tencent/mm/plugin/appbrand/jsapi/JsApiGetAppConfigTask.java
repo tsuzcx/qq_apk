@@ -17,7 +17,7 @@ class JsApiGetAppConfigTask
   public static final Parcelable.Creator<JsApiGetAppConfigTask> CREATOR;
   public String appId;
   public String key;
-  public Runnable krg;
+  public Runnable kuv;
   public int scene;
   public int type;
   public String value;
@@ -38,10 +38,10 @@ class JsApiGetAppConfigTask
     AppMethodBeat.o(45485);
   }
   
-  public final void aOA()
+  public final void aOX()
   {
     AppMethodBeat.i(45486);
-    if (!g.ajA().gAD)
+    if (!g.ajP().gDk)
     {
       AppMethodBeat.o(45486);
       return;
@@ -49,7 +49,7 @@ class JsApiGetAppConfigTask
     Pair localPair = ((b)j.T(b.class)).G(this.appId, 4, this.scene);
     if (((Boolean)localPair.first).booleanValue())
     {
-      com.tencent.mm.plugin.appbrand.appcache.b.c.a locala = com.tencent.mm.plugin.appbrand.appcache.b.c.a.jKA;
+      com.tencent.mm.plugin.appbrand.appcache.b.c.a locala = com.tencent.mm.plugin.appbrand.appcache.b.c.a.jNM;
       com.tencent.mm.plugin.appbrand.appcache.b.c.a.A(((Integer)localPair.second).intValue(), 166L);
     }
     if (!((Boolean)localPair.first).booleanValue()) {}
@@ -57,7 +57,7 @@ class JsApiGetAppConfigTask
     {
       p.a(this.appId, this.type, 0, new p.c()
       {
-        public final void LC(String paramAnonymousString)
+        public final void Mf(String paramAnonymousString)
         {
           AppMethodBeat.i(45483);
           JsApiGetAppConfigTask.this.value = paramAnonymousString;
@@ -70,11 +70,11 @@ class JsApiGetAppConfigTask
     }
   }
   
-  public final void aOB()
+  public final void aOY()
   {
     AppMethodBeat.i(45487);
-    if (this.krg != null) {
-      this.krg.run();
+    if (this.kuv != null) {
+      this.kuv.run();
     }
     AppMethodBeat.o(45487);
   }

@@ -9,27 +9,27 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 final class q$a
   extends c.a
 {
-  public ImageView KbJ;
-  TextView KbU;
-  ImageView fRd;
-  TextView gUs;
-  TextView opA;
+  public ImageView Kyb;
+  TextView Kym;
+  ImageView fTj;
+  TextView gXb;
+  TextView ovs;
   
-  public final a F(View paramView, boolean paramBoolean)
+  public final a K(View paramView, boolean paramBoolean)
   {
-    AppMethodBeat.i(194354);
-    super.gn(paramView);
-    this.fRd = ((ImageView)paramView.findViewById(2131308315));
-    this.opA = ((TextView)paramView.findViewById(2131308318));
-    this.gUs = ((TextView)paramView.findViewById(2131308317));
-    this.KbU = ((TextView)paramView.findViewById(2131308319));
-    this.yEk = ((TextView)paramView.findViewById(2131298185));
+    AppMethodBeat.i(187749);
+    super.gs(paramView);
+    this.fTj = ((ImageView)paramView.findViewById(2131308315));
+    this.ovs = ((TextView)paramView.findViewById(2131308318));
+    this.gXb = ((TextView)paramView.findViewById(2131308317));
+    this.Kym = ((TextView)paramView.findViewById(2131308319));
+    this.yUp = ((TextView)paramView.findViewById(2131298185));
     if (paramBoolean)
     {
-      this.xfR = ((ProgressBar)paramView.findViewById(2131306220));
-      this.KbJ = ((ImageView)paramView.findViewById(2131298176));
+      this.xvJ = ((ProgressBar)paramView.findViewById(2131306220));
+      this.Kyb = ((ImageView)paramView.findViewById(2131298176));
     }
-    AppMethodBeat.o(194354);
+    AppMethodBeat.o(187749);
     return this;
   }
 }

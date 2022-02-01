@@ -4,7 +4,7 @@ import com.tencent.kinda.gen.KindaLocationManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wallet_core.model.k;
 import com.tencent.mm.protocal.protobuf.bb;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public class KindaLocationManagerImpl
   implements KindaLocationManager
@@ -15,11 +15,11 @@ public class KindaLocationManagerImpl
   {
     AppMethodBeat.i(18454);
     String str = "";
-    bb localbb = k.eFo();
+    bb localbb = k.eIV();
     if (localbb != null) {
-      str = localbb.FsJ;
+      str = localbb.FLh;
     }
-    ad.i("KindaLocationManagerImpl", "getCellInfo return: ".concat(String.valueOf(str)));
+    ae.i("KindaLocationManagerImpl", "getCellInfo return: ".concat(String.valueOf(str)));
     AppMethodBeat.o(18454);
     return str;
   }
@@ -28,11 +28,11 @@ public class KindaLocationManagerImpl
   {
     AppMethodBeat.i(18453);
     String str = "";
-    bb localbb = k.eFo();
+    bb localbb = k.eIV();
     if (localbb != null) {
-      str = localbb.FsH;
+      str = localbb.FLf;
     }
-    ad.i("KindaLocationManagerImpl", "getEncryptInfo return: ".concat(String.valueOf(str)));
+    ae.i("KindaLocationManagerImpl", "getEncryptInfo return: ".concat(String.valueOf(str)));
     AppMethodBeat.o(18453);
     return str;
   }
@@ -41,18 +41,18 @@ public class KindaLocationManagerImpl
   {
     AppMethodBeat.i(18455);
     String str = "";
-    bb localbb = k.eFo();
+    bb localbb = k.eIV();
     if (localbb != null) {
-      str = localbb.FsI;
+      str = localbb.FLg;
     }
-    ad.i("KindaLocationManagerImpl", "getEncryptKey return: ".concat(String.valueOf(str)));
+    ae.i("KindaLocationManagerImpl", "getEncryptKey return: ".concat(String.valueOf(str)));
     AppMethodBeat.o(18455);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.kinda.framework.app.KindaLocationManagerImpl
  * JD-Core Version:    0.7.0.1
  */

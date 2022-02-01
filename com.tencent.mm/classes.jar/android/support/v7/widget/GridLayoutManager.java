@@ -21,7 +21,7 @@ public class GridLayoutManager
   View[] apC;
   final SparseIntArray apD = new SparseIntArray();
   final SparseIntArray apE = new SparseIntArray();
-  public b apF = new GridLayoutManager.a();
+  public b apF = new a();
   final Rect apG = new Rect();
   boolean apz = false;
   
@@ -1024,6 +1024,20 @@ public class GridLayoutManager
     }
   }
   
+  public static final class a
+    extends GridLayoutManager.b
+  {
+    public final int Z(int paramInt1, int paramInt2)
+    {
+      return paramInt1 % paramInt2;
+    }
+    
+    public final int bW(int paramInt)
+    {
+      return 1;
+    }
+  }
+  
   public static abstract class b
   {
     final SparseIntArray apJ = new SparseIntArray();
@@ -1163,7 +1177,7 @@ public class GridLayoutManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     android.support.v7.widget.GridLayoutManager
  * JD-Core Version:    0.7.0.1
  */

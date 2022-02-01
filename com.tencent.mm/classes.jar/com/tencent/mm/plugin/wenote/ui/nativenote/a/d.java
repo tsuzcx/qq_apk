@@ -8,28 +8,28 @@ import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.plugin.wenote.model.a.c;
 import com.tencent.mm.plugin.wenote.model.nativenote.manager.k;
 import com.tencent.mm.plugin.wenote.ui.nativenote.NoteEditorUI;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class d
   extends a
 {
-  private TextView EBl;
+  private TextView ETH;
   
   public d(View paramView, k paramk)
   {
     super(paramView, paramk);
     AppMethodBeat.i(30854);
-    this.EBl = null;
-    this.EBl = ((TextView)paramView.findViewById(2131302920));
-    this.EBl.setOnClickListener(new View.OnClickListener()
+    this.ETH = null;
+    this.ETH = ((TextView)paramView.findViewById(2131302920));
+    this.ETH.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(30853);
         b localb = new b();
         localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/wenote/ui/nativenote/itemholder/NoteComplaintItemHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-        NoteEditorUI.eXq();
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/wenote/ui/nativenote/itemholder/NoteComplaintItemHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        NoteEditorUI.fbc();
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/wenote/ui/nativenote/itemholder/NoteComplaintItemHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(30853);
       }
@@ -40,11 +40,11 @@ public final class d
   public final void a(c paramc, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(30855);
-    ad.i("MicroMsg.Note.NoteTextItemHolder", "TextItemHolder position is " + lM());
+    ae.i("MicroMsg.Note.NoteTextItemHolder", "TextItemHolder position is " + lM());
     AppMethodBeat.o(30855);
   }
   
-  public final int cdT()
+  public final int cfi()
   {
     return 30;
   }

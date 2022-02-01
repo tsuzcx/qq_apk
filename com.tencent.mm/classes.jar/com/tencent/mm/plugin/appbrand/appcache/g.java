@@ -1,9 +1,9 @@
 package com.tencent.mm.plugin.appbrand.appcache;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.a;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
+import com.tencent.mm.ak.a;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
 import com.tencent.mm.protocal.protobuf.jx;
 import com.tencent.mm.protocal.protobuf.jy;
 
@@ -23,9 +23,9 @@ public final class g
     b.a locala = new b.a();
     locala.funcId = 1713;
     locala.uri = paramString;
-    locala.hNM = paramjx;
-    locala.hNN = new jy();
-    paramjx = locala.aDC();
+    locala.hQF = paramjx;
+    locala.hQG = new jy();
+    paramjx = locala.aDS();
     this.rr = paramjx;
     c(paramjx);
     AppMethodBeat.o(174705);

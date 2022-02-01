@@ -1,67 +1,82 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import f.a.a.b;
 
 public final class efn
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public String HQM;
-  public String HjZ;
-  public String dxD;
-  public String pinyin;
+  public int FJl;
+  public String FZl;
+  public String HGP;
+  public boolean Ijr;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(152729);
+    AppMethodBeat.i(32565);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.HjZ != null) {
-        paramVarArgs.d(1, this.HjZ);
+      if (this.HGP == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: Talker");
+        AppMethodBeat.o(32565);
+        throw paramVarArgs;
       }
-      if (this.dxD != null) {
-        paramVarArgs.d(2, this.dxD);
+      if (this.FZl == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: Text");
+        AppMethodBeat.o(32565);
+        throw paramVarArgs;
       }
-      if (this.pinyin != null) {
-        paramVarArgs.d(3, this.pinyin);
+      if (this.HGP != null) {
+        paramVarArgs.d(1, this.HGP);
       }
-      if (this.HQM != null) {
-        paramVarArgs.d(4, this.HQM);
+      if (this.FZl != null) {
+        paramVarArgs.d(2, this.FZl);
       }
-      AppMethodBeat.o(152729);
+      paramVarArgs.bC(3, this.Ijr);
+      paramVarArgs.aS(4, this.FJl);
+      AppMethodBeat.o(32565);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.HjZ == null) {
-        break label394;
+      if (this.HGP == null) {
+        break label472;
       }
     }
-    label394:
-    for (int i = f.a.a.b.b.a.e(1, this.HjZ) + 0;; i = 0)
+    label472:
+    for (paramInt = f.a.a.b.b.a.e(1, this.HGP) + 0;; paramInt = 0)
     {
-      paramInt = i;
-      if (this.dxD != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.dxD);
+      int i = paramInt;
+      if (this.FZl != null) {
+        i = paramInt + f.a.a.b.b.a.e(2, this.FZl);
       }
-      i = paramInt;
-      if (this.pinyin != null) {
-        i = paramInt + f.a.a.b.b.a.e(3, this.pinyin);
-      }
-      paramInt = i;
-      if (this.HQM != null) {
-        paramInt = i + f.a.a.b.b.a.e(4, this.HQM);
-      }
-      AppMethodBeat.o(152729);
-      return paramInt;
+      paramInt = f.a.a.b.b.a.amF(3);
+      int j = f.a.a.b.b.a.bz(4, this.FJl);
+      AppMethodBeat.o(32565);
+      return i + paramInt + j;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
-        AppMethodBeat.o(152729);
+        if (this.HGP == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: Talker");
+          AppMethodBeat.o(32565);
+          throw paramVarArgs;
+        }
+        if (this.FZl == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: Text");
+          AppMethodBeat.o(32565);
+          throw paramVarArgs;
+        }
+        AppMethodBeat.o(32565);
         return 0;
       }
       if (paramInt == 3)
@@ -71,26 +86,26 @@ public final class efn
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(152729);
+          AppMethodBeat.o(32565);
           return -1;
         case 1: 
-          localefn.HjZ = locala.NPN.readString();
-          AppMethodBeat.o(152729);
+          localefn.HGP = locala.OmT.readString();
+          AppMethodBeat.o(32565);
           return 0;
         case 2: 
-          localefn.dxD = locala.NPN.readString();
-          AppMethodBeat.o(152729);
+          localefn.FZl = locala.OmT.readString();
+          AppMethodBeat.o(32565);
           return 0;
         case 3: 
-          localefn.pinyin = locala.NPN.readString();
-          AppMethodBeat.o(152729);
+          localefn.Ijr = locala.OmT.gvY();
+          AppMethodBeat.o(32565);
           return 0;
         }
-        localefn.HQM = locala.NPN.readString();
-        AppMethodBeat.o(152729);
+        localefn.FJl = locala.OmT.zc();
+        AppMethodBeat.o(32565);
         return 0;
       }
-      AppMethodBeat.o(152729);
+      AppMethodBeat.o(32565);
       return -1;
     }
   }

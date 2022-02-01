@@ -7,7 +7,7 @@ import com.tencent.thumbplayer.core.downloadproxy.api.ITPPlayListener;
 
 public abstract interface a
 {
-  public abstract void Fa(long paramLong);
+  public abstract void FC(long paramLong);
   
   public abstract com.tencent.thumbplayer.b.a.a a(com.tencent.thumbplayer.b.a.a parama, long paramLong, p paramp);
   
@@ -19,27 +19,27 @@ public abstract interface a
   
   public abstract void a(ITPPlayListener paramITPPlayListener);
   
-  public abstract String aZM(String paramString);
-  
-  public abstract void ahl(int paramInt);
+  public abstract void ahU(int paramInt);
   
   public abstract void b(f paramf);
   
+  public abstract String bbp(String paramString);
+  
   public abstract com.tencent.thumbplayer.b.a.a c(com.tencent.thumbplayer.b.a.a parama);
   
-  public abstract void fWX();
+  public abstract void gaT();
   
-  public abstract boolean fWY();
+  public abstract void gbw();
   
-  public abstract String fWZ();
+  public abstract boolean gbx();
   
-  public abstract void fWu();
+  public abstract String gby();
   
-  public abstract com.tencent.thumbplayer.b.b.a fXa();
+  public abstract com.tencent.thumbplayer.b.b.a gbz();
   
   public abstract boolean isEnable();
   
-  public abstract void mQ(String paramString1, String paramString2);
+  public abstract void mW(String paramString1, String paramString2);
   
   public abstract void pauseDownload();
   

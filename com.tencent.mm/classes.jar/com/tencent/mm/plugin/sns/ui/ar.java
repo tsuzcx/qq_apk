@@ -12,23 +12,24 @@ import android.view.View.OnClickListener;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.tx;
-import com.tencent.mm.g.a.tx.b;
+import com.tencent.mm.g.a.ty;
+import com.tencent.mm.g.a.ty.b;
 import com.tencent.mm.memory.n;
 import com.tencent.mm.modelsns.e;
-import com.tencent.mm.plugin.sns.data.q;
+import com.tencent.mm.plugin.sns.data.r;
 import com.tencent.mm.plugin.sns.j.g;
-import com.tencent.mm.plugin.sns.model.ag;
-import com.tencent.mm.plugin.sns.model.bc;
+import com.tencent.mm.plugin.sns.model.ah;
+import com.tencent.mm.plugin.sns.model.bd;
 import com.tencent.mm.pluginsdk.i.d;
 import com.tencent.mm.pointers.PInt;
-import com.tencent.mm.protocal.protobuf.bvq;
-import com.tencent.mm.protocal.protobuf.dhj;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.bwk;
+import com.tencent.mm.protocal.protobuf.did;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.base.t;
+import com.tencent.mm.vfs.o;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -36,25 +37,25 @@ import java.util.List;
 public final class ar
   implements ac
 {
+  private int Ahk;
+  private e Ahq;
+  private String Ahr;
+  private boolean Akd;
+  private Bitmap Ake;
+  bd Akt;
+  com.tencent.mm.plugin.sight.decode.a.a AnQ;
+  com.tencent.mm.plugin.sight.decode.ui.c AnR;
   private String desc;
-  private boolean doF;
-  MMActivity fLP;
-  ProgressDialog fMu;
+  private boolean dpK;
+  MMActivity fNT;
+  ProgressDialog fOC;
   String md5;
   ProgressBar progressBar;
-  private com.tencent.mm.sdk.b.c rVT;
   private View rY;
+  private com.tencent.mm.sdk.b.c seA;
   String thumbPath;
   String videoPath;
-  private int zQd;
-  private e zQj;
-  private String zQk;
-  private boolean zSW;
-  private Bitmap zSX;
-  bc zTm;
-  com.tencent.mm.plugin.sight.decode.a.a zWH;
-  com.tencent.mm.plugin.sight.decode.ui.c zWI;
-  private int znT;
+  private int zFi;
   
   public ar(MMActivity paramMMActivity)
   {
@@ -63,25 +64,25 @@ public final class ar
     this.thumbPath = "";
     this.videoPath = "";
     this.md5 = "";
-    this.doF = false;
-    this.zSW = false;
-    this.zSX = null;
-    this.zWI = null;
-    this.zQj = null;
-    this.znT = 1;
-    this.zQk = "";
-    this.rVT = new com.tencent.mm.sdk.b.c() {};
-    this.zTm = null;
+    this.dpK = false;
+    this.Akd = false;
+    this.Ake = null;
+    this.AnR = null;
+    this.Ahq = null;
+    this.zFi = 1;
+    this.Ahr = "";
+    this.seA = new com.tencent.mm.sdk.b.c() {};
+    this.Akt = null;
     this.desc = "";
-    this.fMu = null;
-    this.fLP = paramMMActivity;
+    this.fOC = null;
+    this.fNT = paramMMActivity;
     AppMethodBeat.o(98288);
   }
   
-  public final boolean a(int paramInt1, int paramInt2, org.b.d.i parami, String paramString1, List<String> paramList1, bvq parambvq, LinkedList<Long> paramLinkedList, int paramInt3, boolean paramBoolean, List<String> paramList2, PInt paramPInt, String paramString2, int paramInt4, int paramInt5)
+  public final boolean a(int paramInt1, int paramInt2, org.b.d.i parami, String paramString1, List<String> paramList1, bwk parambwk, LinkedList<Long> paramLinkedList, int paramInt3, boolean paramBoolean, List<String> paramList2, PInt paramPInt, String paramString2, int paramInt4, int paramInt5)
   {
     AppMethodBeat.i(98291);
-    if (this.zTm != null)
+    if (this.Akt != null)
     {
       AppMethodBeat.o(98291);
       return false;
@@ -91,88 +92,88 @@ public final class ar
     if (paramList1 != null)
     {
       new LinkedList();
-      paramLinkedList = d.fas();
+      paramLinkedList = d.feg();
       paramList1 = paramList1.iterator();
       while (paramList1.hasNext())
       {
         paramString2 = (String)paramList1.next();
         if (!paramLinkedList.contains(paramString2))
         {
-          dhj localdhj = new dhj();
-          localdhj.nDo = paramString2;
-          parami.add(localdhj);
+          did localdid = new did();
+          localdid.nIJ = paramString2;
+          parami.add(localdid);
         }
       }
     }
-    this.zTm = new bc(15);
-    paramPInt.value = this.zTm.beN;
-    if (paramInt3 > com.tencent.mm.plugin.sns.c.a.zbZ) {
-      this.zTm.Qb(3);
+    this.Akt = new bd(15);
+    paramPInt.value = this.Akt.beN;
+    if (paramInt3 > com.tencent.mm.plugin.sns.c.a.zsC) {
+      this.Akt.QI(3);
     }
-    paramString1 = this.zTm.azj(paramString1);
+    paramString1 = this.Akt.aAA(paramString1);
     new LinkedList();
-    paramString1.a(parambvq).aU(parami).Qe(paramInt1).Qf(paramInt2).fL(paramList2);
+    paramString1.a(parambwk).aV(parami).QL(paramInt1).QM(paramInt2).fU(paramList2);
     if (paramBoolean) {
-      this.zTm.Qh(1);
+      this.Akt.QO(1);
     }
     for (;;)
     {
-      this.zTm.fL(paramList2).Qe(paramInt1);
-      this.zTm.Qg(this.zQd);
-      this.zTm.cc(this.znT, this.zQk);
-      this.zTm.g(null, null, null, paramInt4, paramInt5);
-      if (!com.tencent.mm.vfs.i.fv(this.videoPath)) {
+      this.Akt.fU(paramList2).QL(paramInt1);
+      this.Akt.QN(this.Ahk);
+      this.Akt.cc(this.zFi, this.Ahr);
+      this.Akt.g(null, null, null, paramInt4, paramInt5);
+      if (!o.fB(this.videoPath)) {
         break;
       }
-      eaR();
+      eex();
       AppMethodBeat.o(98291);
       return true;
-      this.zTm.Qh(0);
+      this.Akt.QO(0);
     }
-    ad.i("MicroMsg.SightWidget", "commit file is not exist " + this.videoPath);
-    parami = this.fLP;
-    this.fLP.getString(2131755906);
-    this.fMu = h.b(parami, this.fLP.getString(2131763977), true, new DialogInterface.OnCancelListener()
+    ae.i("MicroMsg.SightWidget", "commit file is not exist " + this.videoPath);
+    parami = this.fNT;
+    this.fNT.getString(2131755906);
+    this.fOC = h.b(parami, this.fNT.getString(2131763977), true, new DialogInterface.OnCancelListener()
     {
       public final void onCancel(DialogInterface paramAnonymousDialogInterface)
       {
-        ar.this.zTm = null;
+        ar.this.Akt = null;
       }
     });
     AppMethodBeat.o(98291);
     return true;
   }
   
-  public final void ap(Bundle paramBundle)
+  public final void aq(Bundle paramBundle)
   {
     AppMethodBeat.i(98289);
-    this.zQj = e.w(this.fLP.getIntent());
-    this.thumbPath = this.fLP.getIntent().getStringExtra("KSightThumbPath");
-    this.videoPath = this.fLP.getIntent().getStringExtra("KSightPath");
-    this.md5 = this.fLP.getIntent().getStringExtra("sight_md5");
-    this.zQd = this.fLP.getIntent().getIntExtra("Ksnsupload_source", 0);
-    paramBundle = new tx();
-    paramBundle.dIp.type = 2;
-    com.tencent.mm.sdk.b.a.IbL.l(paramBundle);
-    if (bt.isNullOrNil(this.videoPath))
+    this.Ahq = e.w(this.fNT.getIntent());
+    this.thumbPath = this.fNT.getIntent().getStringExtra("KSightThumbPath");
+    this.videoPath = this.fNT.getIntent().getStringExtra("KSightPath");
+    this.md5 = this.fNT.getIntent().getStringExtra("sight_md5");
+    this.Ahk = this.fNT.getIntent().getIntExtra("Ksnsupload_source", 0);
+    paramBundle = new ty();
+    paramBundle.dJt.type = 2;
+    com.tencent.mm.sdk.b.a.IvT.l(paramBundle);
+    if (bu.isNullOrNil(this.videoPath))
     {
-      this.videoPath = bt.bI(paramBundle.dIq.dIu, "");
-      ad.e("MicroMsg.SightWidget", "videoPath is null %s", new Object[] { this.videoPath });
+      this.videoPath = bu.bI(paramBundle.dJu.dJy, "");
+      ae.e("MicroMsg.SightWidget", "videoPath is null %s", new Object[] { this.videoPath });
     }
-    if (bt.isNullOrNil(this.md5))
+    if (bu.isNullOrNil(this.md5))
     {
-      paramBundle = bt.bI(paramBundle.dIq.dIs, "");
+      paramBundle = bu.bI(paramBundle.dJu.dJw, "");
       this.md5 = paramBundle;
-      ad.i("MicroMsg.SightWidget", "oncreate thumb path %s videopath %s md5 %s", new Object[] { this.thumbPath, this.videoPath, this.md5 });
-      com.tencent.mm.sdk.b.a.IbL.c(this.rVT);
-      if (!this.fLP.getIntent().getBooleanExtra("SendAppMessageWrapper_TokenValid", true)) {
+      ae.i("MicroMsg.SightWidget", "oncreate thumb path %s videopath %s md5 %s", new Object[] { this.thumbPath, this.videoPath, this.md5 });
+      com.tencent.mm.sdk.b.a.IvT.c(this.seA);
+      if (!this.fNT.getIntent().getBooleanExtra("SendAppMessageWrapper_TokenValid", true)) {
         break label287;
       }
     }
     label287:
-    for (this.znT = 1;; this.znT = 0)
+    for (this.zFi = 1;; this.zFi = 0)
     {
-      this.zQk = bt.bI(this.fLP.getIntent().getStringExtra("SendAppMessageWrapper_PkgName"), "");
+      this.Ahr = bu.bI(this.fNT.getIntent().getStringExtra("SendAppMessageWrapper_PkgName"), "");
       AppMethodBeat.o(98289);
       return;
       paramBundle = this.md5;
@@ -180,21 +181,21 @@ public final class ar
     }
   }
   
-  public final void aq(Bundle paramBundle) {}
+  public final void ar(Bundle paramBundle) {}
   
-  public final boolean dZG()
+  public final boolean edl()
   {
     return true;
   }
   
-  public final View dZH()
+  public final View edm()
   {
     AppMethodBeat.i(98290);
-    this.rY = View.inflate(this.fLP, 2131495819, null);
-    this.zWH = ((com.tencent.mm.plugin.sight.decode.a.a)this.rY.findViewById(2131300914));
-    this.zWH.setDrawableWidth(com.tencent.mm.cc.a.fromDPToPix(this.fLP, 90));
+    this.rY = View.inflate(this.fNT, 2131495819, null);
+    this.AnQ = ((com.tencent.mm.plugin.sight.decode.a.a)this.rY.findViewById(2131300914));
+    this.AnQ.setDrawableWidth(com.tencent.mm.cb.a.fromDPToPix(this.fNT, 90));
     this.progressBar = ((ProgressBar)this.rY.findViewById(2131301489));
-    this.fLP.getResources().getDisplayMetrics();
+    this.fNT.getResources().getDisplayMetrics();
     this.rY.findViewById(2131298069).setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
@@ -202,111 +203,116 @@ public final class ar
         AppMethodBeat.i(98287);
         Object localObject = new com.tencent.mm.hellhoundlib.b.b();
         ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/sns/ui/SightWidget$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahq());
-        if (!com.tencent.mm.vfs.i.fv(ar.this.videoPath))
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/sns/ui/SightWidget$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahF());
+        if (!o.fB(ar.this.videoPath))
         {
-          ad.i("MicroMsg.SightWidget", "click videopath is not exist " + ar.this.videoPath);
+          ae.i("MicroMsg.SightWidget", "click videopath is not exist " + ar.this.videoPath);
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/sns/ui/SightWidget$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(98287);
           return;
         }
-        if (ar.this.zWI != null)
+        if (ar.this.AnR != null)
         {
-          ar.this.zWI.dismiss();
-          ar.this.zWI = null;
+          ar.this.AnR.dismiss();
+          ar.this.AnR = null;
         }
-        ar.this.zWI = new com.tencent.mm.plugin.sight.decode.ui.c(ar.this.fLP);
-        paramAnonymousView = ar.this.zWI;
+        ar.this.AnR = new com.tencent.mm.plugin.sight.decode.ui.c(ar.this.fNT);
+        paramAnonymousView = ar.this.AnR;
         localObject = ar.this.videoPath;
         String str = ar.this.thumbPath;
-        paramAnonymousView.hdP = ((String)localObject);
+        paramAnonymousView.hgD = ((String)localObject);
         paramAnonymousView.imagePath = str;
-        paramAnonymousView = ar.this.zWI;
-        paramAnonymousView.dLy = 0;
-        paramAnonymousView.ySd = 0;
-        paramAnonymousView.rwG = 1;
-        ar.this.zWI.show();
+        paramAnonymousView = ar.this.AnR;
+        paramAnonymousView.dMN = 0;
+        paramAnonymousView.zin = 0;
+        paramAnonymousView.rES = 1;
+        ar.this.AnR.show();
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/sns/ui/SightWidget$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(98287);
       }
     });
-    ad.i("MicroMsg.SightWidget", "videoPath " + this.videoPath + " thumbPath " + this.thumbPath + " " + com.tencent.mm.vfs.i.aYo(this.videoPath) + " " + com.tencent.mm.vfs.i.aYo(this.thumbPath));
-    if (com.tencent.mm.vfs.i.fv(this.videoPath))
+    ae.i("MicroMsg.SightWidget", "videoPath " + this.videoPath + " thumbPath " + this.thumbPath + " " + o.aZR(this.videoPath) + " " + o.aZR(this.thumbPath));
+    if (o.fB(this.videoPath))
     {
-      this.zWH.e(this.videoPath, false, 0);
+      this.AnQ.e(this.videoPath, false, 0);
       this.progressBar.setVisibility(8);
-      ad.i("MicroMsg.SightWidget", "videopath exist videopath %s md5 %s", new Object[] { this.videoPath, this.md5 });
+      ae.i("MicroMsg.SightWidget", "videopath exist videopath %s md5 %s", new Object[] { this.videoPath, this.md5 });
     }
     for (;;)
     {
       Object localObject = this.rY;
       AppMethodBeat.o(98290);
       return localObject;
-      localObject = q.ayc(this.thumbPath);
+      localObject = r.azt(this.thumbPath);
       if (localObject != null)
       {
-        this.zSX = ((n)localObject).ayF();
-        if (q.I(this.zSX)) {
-          this.zWH.setThumbBmp(this.zSX);
+        this.Ake = ((n)localObject).ayU();
+        if (r.J(this.Ake)) {
+          this.AnQ.setThumbBmp(this.Ake);
         }
       }
       this.progressBar.setVisibility(0);
     }
   }
   
-  public final boolean dZI()
+  public final boolean edn()
+  {
+    return true;
+  }
+  
+  public final boolean edo()
   {
     AppMethodBeat.i(98293);
-    if (this.fMu != null) {
-      this.fMu.dismiss();
+    if (this.fOC != null) {
+      this.fOC.dismiss();
     }
-    com.tencent.mm.sdk.b.a.IbL.d(this.rVT);
-    if (q.I(this.zSX)) {
-      this.zSX.recycle();
+    com.tencent.mm.sdk.b.a.IvT.d(this.seA);
+    if (r.J(this.Ake)) {
+      this.Ake.recycle();
     }
     AppMethodBeat.o(98293);
     return false;
   }
   
-  final void eaR()
+  final void eex()
   {
     AppMethodBeat.i(98292);
-    if (this.zSW)
+    if (this.Akd)
     {
       AppMethodBeat.o(98292);
       return;
     }
-    if (!this.zTm.z(this.videoPath, this.thumbPath, this.desc, this.md5))
+    if (!this.Akt.z(this.videoPath, this.thumbPath, this.desc, this.md5))
     {
-      ad.i("MicroMsg.SightWidget", "videopath " + com.tencent.mm.vfs.i.aYo(this.videoPath) + " thumb: " + com.tencent.mm.vfs.i.aYo(this.thumbPath));
-      t.makeText(this.fLP, 2131763075, 0).show();
+      ae.i("MicroMsg.SightWidget", "videopath " + o.aZR(this.videoPath) + " thumb: " + o.aZR(this.thumbPath));
+      t.makeText(this.fNT, 2131763075, 0).show();
       AppMethodBeat.o(98292);
       return;
     }
-    Object localObject1 = new tx();
-    ((tx)localObject1).dIp.type = 0;
-    ((tx)localObject1).dIp.dIr = true;
-    com.tencent.mm.sdk.b.a.IbL.l((com.tencent.mm.sdk.b.b)localObject1);
-    this.zSW = true;
-    int i = this.zTm.commit();
-    if (this.zQj != null)
+    Object localObject1 = new ty();
+    ((ty)localObject1).dJt.type = 0;
+    ((ty)localObject1).dJt.dJv = true;
+    com.tencent.mm.sdk.b.a.IvT.l((com.tencent.mm.sdk.b.b)localObject1);
+    this.Akd = true;
+    int i = this.Akt.commit();
+    if (this.Ahq != null)
     {
-      this.zQj.pX(i);
-      g.zus.c(this.zQj);
+      this.Ahq.qa(i);
+      g.zLJ.c(this.Ahq);
     }
-    ag.dUm().zVK = 0L;
+    ah.dXM().AmS = 0L;
     Object localObject2 = new Intent();
     ((Intent)localObject2).putExtra("sns_resume_state", false);
     ((Intent)localObject2).putExtra("sns_timeline_NeedFirstLoadint", true);
-    ((Intent)localObject2).setClass(this.fLP, SnsTimeLineUI.class);
+    ((Intent)localObject2).setClass(this.fNT, SnsTimeLineUI.class);
     ((Intent)localObject2).addFlags(67108864);
-    localObject1 = this.fLP;
+    localObject1 = this.fNT;
     localObject2 = new com.tencent.mm.hellhoundlib.b.a().bc(localObject2);
-    com.tencent.mm.hellhoundlib.a.a.a(localObject1, ((com.tencent.mm.hellhoundlib.b.a)localObject2).ahp(), "com/tencent/mm/plugin/sns/ui/SightWidget", "commitDone", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    ((MMActivity)localObject1).startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject2).mq(0));
+    com.tencent.mm.hellhoundlib.a.a.a(localObject1, ((com.tencent.mm.hellhoundlib.b.a)localObject2).ahE(), "com/tencent/mm/plugin/sns/ui/SightWidget", "commitDone", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    ((MMActivity)localObject1).startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject2).mt(0));
     com.tencent.mm.hellhoundlib.a.a.a(localObject1, "com/tencent/mm/plugin/sns/ui/SightWidget", "commitDone", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    this.fLP.setResult(-1);
-    this.fLP.finish();
+    this.fNT.setResult(-1);
+    this.fNT.finish();
     AppMethodBeat.o(98292);
   }
   

@@ -17,7 +17,7 @@ import d.l;
 import d.o;
 import java.io.InputStream;
 
-@l(gfx={1, 1, 13}, gfy={""}, gfz={"Lcom/tencent/magicbrush/image/BitmapDecoderMagicBrushExtension;", "Lcom/github/henryye/nativeiv/BitmapDecoder;", "()V", "TAG", "", "createBitmapWrapper", "Lcom/github/henryye/nativeiv/BitmapWrapper;", "mgr", "Lcom/github/henryye/nativeiv/BitmapDecoderFactoryMgr;", "decodeInfo", "Lcom/github/henryye/nativeiv/api/DecodeInfo;", "lib-magicbrush-nano_release"})
+@l(gjZ={1, 1, 13}, gka={""}, gkb={"Lcom/tencent/magicbrush/image/BitmapDecoderMagicBrushExtension;", "Lcom/github/henryye/nativeiv/BitmapDecoder;", "()V", "TAG", "", "createBitmapWrapper", "Lcom/github/henryye/nativeiv/BitmapWrapper;", "mgr", "Lcom/github/henryye/nativeiv/BitmapDecoderFactoryMgr;", "decodeInfo", "Lcom/github/henryye/nativeiv/api/DecodeInfo;", "lib-magicbrush-nano_release"})
 public final class a
   extends com.github.henryye.nativeiv.a
 {
@@ -25,15 +25,15 @@ public final class a
   
   public final com.github.henryye.nativeiv.c a(final com.github.henryye.nativeiv.b paramb, final com.github.henryye.nativeiv.api.a parama)
   {
-    AppMethodBeat.i(215122);
+    AppMethodBeat.i(213366);
     p.h(paramb, "mgr");
     p.h(parama, "decodeInfo");
     paramb = (com.github.henryye.nativeiv.c)new a(this, paramb, parama, paramb, parama);
-    AppMethodBeat.o(215122);
+    AppMethodBeat.o(213366);
     return paramb;
   }
   
-  @l(gfx={1, 1, 13}, gfy={""}, gfz={"com/tencent/magicbrush/image/BitmapDecoderMagicBrushExtension$createBitmapWrapper$1", "Lcom/github/henryye/nativeiv/BitmapWrapper;", "getPreferredSizeByConfig", "Lkotlin/Pair;", "", "config", "Lcom/github/henryye/nativeiv/ImageDecodeConfig;", "providePictureInfo", "Lcom/github/henryye/nativeiv/bitmap/PictureInfo;", "ins", "Ljava/io/InputStream;", "lib-magicbrush-nano_release"})
+  @l(gjZ={1, 1, 13}, gka={""}, gkb={"com/tencent/magicbrush/image/BitmapDecoderMagicBrushExtension$createBitmapWrapper$1", "Lcom/github/henryye/nativeiv/BitmapWrapper;", "getPreferredSizeByConfig", "Lkotlin/Pair;", "", "config", "Lcom/github/henryye/nativeiv/ImageDecodeConfig;", "providePictureInfo", "Lcom/github/henryye/nativeiv/bitmap/PictureInfo;", "ins", "Ljava/io/InputStream;", "lib-magicbrush-nano_release"})
   public static final class a
     extends com.github.henryye.nativeiv.c
   {
@@ -44,11 +44,11 @@ public final class a
     
     public final d i(final InputStream paramInputStream)
     {
-      AppMethodBeat.i(215120);
+      AppMethodBeat.i(213364);
       p.h(paramInputStream, "ins");
       locald = super.i(paramInputStream);
       if (locald.bbr == com.github.henryye.nativeiv.bitmap.c.bbp) {
-        com.github.henryye.nativeiv.a.b.w(this.czu.TAG, "hy: unknown type. judge svg", new Object[0]);
+        com.github.henryye.nativeiv.a.b.w(this.cAb.TAG, "hy: unknown type. judge svg", new Object[0]);
       }
       try
       {
@@ -64,16 +64,16 @@ public final class a
       {
         for (;;)
         {
-          com.github.henryye.nativeiv.a.b.printStackTrace(this.czu.TAG, (Throwable)paramInputStream, "hy: not svg image. return as failed", new Object[0]);
+          com.github.henryye.nativeiv.a.b.printStackTrace(this.cAb.TAG, (Throwable)paramInputStream, "hy: not svg image. return as failed", new Object[0]);
           locald.bbr = com.github.henryye.nativeiv.bitmap.c.bbp;
         }
       }
       p.g(locald, "info");
-      AppMethodBeat.o(215120);
+      AppMethodBeat.o(213364);
       return locald;
     }
     
-    @l(gfx={1, 1, 13}, gfy={""}, gfz={"com/tencent/magicbrush/image/BitmapDecoderMagicBrushExtension$createBitmapWrapper$1$providePictureInfo$1", "Lcom/github/henryye/nativeiv/bitmap/IBitmapFactory;", "Landroid/graphics/Bitmap;", "accept", "", "is", "Ljava/io/InputStream;", "config", "Landroid/graphics/Bitmap$Config;", "format", "Lcom/github/henryye/nativeiv/bitmap/PictureFormat;", "acceptRegion", "destroy", "", "produceBitmap", "Lcom/github/henryye/nativeiv/bitmap/IBitmap;", "lib-magicbrush-nano_release"})
+    @l(gjZ={1, 1, 13}, gka={""}, gkb={"com/tencent/magicbrush/image/BitmapDecoderMagicBrushExtension$createBitmapWrapper$1$providePictureInfo$1", "Lcom/github/henryye/nativeiv/bitmap/IBitmapFactory;", "Landroid/graphics/Bitmap;", "accept", "", "is", "Ljava/io/InputStream;", "config", "Landroid/graphics/Bitmap$Config;", "format", "Lcom/github/henryye/nativeiv/bitmap/PictureFormat;", "acceptRegion", "destroy", "", "produceBitmap", "Lcom/github/henryye/nativeiv/bitmap/IBitmap;", "lib-magicbrush-nano_release"})
     public static final class a
       implements com.github.henryye.nativeiv.bitmap.b<Bitmap>
     {
@@ -88,27 +88,27 @@ public final class a
       
       public final IBitmap<Bitmap> sM()
       {
-        AppMethodBeat.i(215119);
+        AppMethodBeat.i(213363);
         IBitmap localIBitmap = (IBitmap)new a(this);
-        AppMethodBeat.o(215119);
+        AppMethodBeat.o(213363);
         return localIBitmap;
       }
       
-      @l(gfx={1, 1, 13}, gfy={""}, gfz={"com/tencent/magicbrush/image/BitmapDecoderMagicBrushExtension$createBitmapWrapper$1$providePictureInfo$1$produceBitmap$1", "Lcom/github/henryye/nativeiv/LegacyBitmap;", "decodeInputStreamImp", "Landroid/graphics/Bitmap;", "ins", "Ljava/io/InputStream;", "config", "Lcom/github/henryye/nativeiv/ImageDecodeConfig;", "format", "Lcom/github/henryye/nativeiv/bitmap/PictureFormat;", "lib-magicbrush-nano_release"})
+      @l(gjZ={1, 1, 13}, gka={""}, gkb={"com/tencent/magicbrush/image/BitmapDecoderMagicBrushExtension$createBitmapWrapper$1$providePictureInfo$1$produceBitmap$1", "Lcom/github/henryye/nativeiv/LegacyBitmap;", "decodeInputStreamImp", "Landroid/graphics/Bitmap;", "ins", "Ljava/io/InputStream;", "config", "Lcom/github/henryye/nativeiv/ImageDecodeConfig;", "format", "Lcom/github/henryye/nativeiv/bitmap/PictureFormat;", "lib-magicbrush-nano_release"})
       public static final class a
         extends LegacyBitmap
       {
         public final Bitmap a(InputStream paramInputStream, ImageDecodeConfig paramImageDecodeConfig, com.github.henryye.nativeiv.bitmap.c paramc)
         {
-          AppMethodBeat.i(215118);
-          int j = (int)this.czz.czy.qJ();
-          int i = (int)this.czz.czy.qK();
+          AppMethodBeat.i(213362);
+          int j = (int)this.cAg.cAf.qJ();
+          int i = (int)this.cAg.cAf.qK();
           if ((paramc == com.github.henryye.nativeiv.bitmap.c.bbo) && (j > 0) && (j > 0))
           {
             if (paramImageDecodeConfig == null) {
               break label195;
             }
-            paramInputStream = a.a.a(this.czz.czx, paramImageDecodeConfig);
+            paramInputStream = a.a.a(this.cAg.cAe, paramImageDecodeConfig);
             if ((((Number)paramInputStream.first).intValue() <= 0) || (((Number)paramInputStream.second).intValue() <= 0)) {
               break label195;
             }
@@ -119,13 +119,13 @@ public final class a
           for (;;)
           {
             paramInputStream = Bitmap.createBitmap(j, i, Bitmap.Config.ARGB_8888);
-            new Canvas(paramInputStream).drawPicture(this.czz.czy.qI(), new RectF(0.0F, 0.0F, j, i));
+            new Canvas(paramInputStream).drawPicture(this.cAg.cAf.qI(), new RectF(0.0F, 0.0F, j, i));
             p.g(paramInputStream, "bitmap");
-            AppMethodBeat.o(215118);
+            AppMethodBeat.o(213362);
             return paramInputStream;
             paramInputStream = super.a(paramInputStream, paramImageDecodeConfig, paramc);
             p.g(paramInputStream, "super.decodeInputStreamImp(ins, config, format)");
-            AppMethodBeat.o(215118);
+            AppMethodBeat.o(213362);
             return paramInputStream;
           }
         }

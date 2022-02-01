@@ -15,7 +15,7 @@ public abstract class e$a
     attachInterface(this, "com.tencent.mm.plugin.talkroom.component.ITalkRoomPlayer_AIDL");
   }
   
-  public static e E(IBinder paramIBinder)
+  public static e F(IBinder paramIBinder)
   {
     if (paramIBinder == null) {
       return null;
@@ -43,12 +43,12 @@ public abstract class e$a
       return true;
     case 1: 
       paramParcel1.enforceInterface("com.tencent.mm.plugin.talkroom.component.ITalkRoomPlayer_AIDL");
-      cxw();
+      cyX();
       paramParcel2.writeNoException();
       return true;
     case 2: 
       paramParcel1.enforceInterface("com.tencent.mm.plugin.talkroom.component.ITalkRoomPlayer_AIDL");
-      eaq();
+      edW();
       paramParcel2.writeNoException();
       return true;
     case 3: 
@@ -58,7 +58,7 @@ public abstract class e$a
       return true;
     case 4: 
       paramParcel1.enforceInterface("com.tencent.mm.plugin.talkroom.component.ITalkRoomPlayer_AIDL");
-      paramInt1 = enB();
+      paramInt1 = eri();
       paramParcel2.writeNoException();
       paramParcel2.writeInt(paramInt1);
       return true;
@@ -84,7 +84,7 @@ public abstract class e$a
       return this.mRemote;
     }
     
-    public final void cxw()
+    public final void cyX()
     {
       AppMethodBeat.i(29389);
       Parcel localParcel1 = Parcel.obtain();
@@ -104,7 +104,7 @@ public abstract class e$a
       }
     }
     
-    public final void eaq()
+    public final void edW()
     {
       AppMethodBeat.i(29390);
       Parcel localParcel1 = Parcel.obtain();
@@ -124,7 +124,7 @@ public abstract class e$a
       }
     }
     
-    public final int enB()
+    public final int eri()
     {
       AppMethodBeat.i(29392);
       Parcel localParcel1 = Parcel.obtain();

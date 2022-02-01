@@ -4,54 +4,54 @@ import android.graphics.SurfaceTexture;
 import android.opengl.GLES20;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.media.g.d;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.FloatBuffer;
 
 public final class c
 {
-  public static float[] CpW = { 0.0F, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 1.0F, 0.0F };
-  public static final float[] hoI = { -1.0F, -1.0F, 1.0F, -1.0F, -1.0F, 1.0F, 1.0F, 1.0F };
-  d Chn;
-  int CpU;
-  FloatBuffer CpV;
+  public static float[] CHA = { 0.0F, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 1.0F, 0.0F };
+  public static final float[] hrw = { -1.0F, -1.0F, 1.0F, -1.0F, -1.0F, 1.0F, 1.0F, 1.0F };
+  int CHy;
+  FloatBuffer CHz;
+  d CyO;
   FloatBuffer mVertexBuffer;
   SurfaceTexture surfaceTexture;
   
   public c()
   {
     AppMethodBeat.i(115724);
-    this.CpU = 0;
-    this.CpU = f.createProgram("attribute vec4 vPosition;attribute vec2 vTexCoord;varying vec2 tc;void main() {  gl_Position = vPosition;  tc = vTexCoord;}", "#extension GL_OES_EGL_image_external : require\nprecision highp float;varying vec2 tc;uniform samplerExternalOES sTexture;void main() {   gl_FragColor = texture2D(sTexture, tc);}");
+    this.CHy = 0;
+    this.CHy = f.createProgram("attribute vec4 vPosition;attribute vec2 vTexCoord;varying vec2 tc;void main() {  gl_Position = vPosition;  tc = vTexCoord;}", "#extension GL_OES_EGL_image_external : require\nprecision highp float;varying vec2 tc;uniform samplerExternalOES sTexture;void main() {   gl_FragColor = texture2D(sTexture, tc);}");
     AppMethodBeat.o(115724);
   }
   
-  public static void eAR()
-  {
-    AppMethodBeat.i(115728);
-    ad.i("MicroMsg.VoipGLHProgram", "attachGLContext");
-    long l = bt.HI();
-    e.eAV().eAX();
-    ad.i("MicroMsg.VoipGLHProgram", "attachGLContext done, used %sms", new Object[] { Long.valueOf(bt.aO(l)) });
-    AppMethodBeat.o(115728);
-  }
-  
-  public static void eAS()
+  public static void eEA()
   {
     AppMethodBeat.i(115729);
-    ad.i("MicroMsg.VoipGLHProgram", "detachGLContext");
-    long l = bt.HI();
-    e.eAV().eAS();
-    ad.i("MicroMsg.VoipGLHProgram", "detachGLContext done, used %sms", new Object[] { Long.valueOf(bt.aO(l)) });
+    ae.i("MicroMsg.VoipGLHProgram", "detachGLContext");
+    long l = bu.HQ();
+    e.eED().eEA();
+    ae.i("MicroMsg.VoipGLHProgram", "detachGLContext done, used %sms", new Object[] { Long.valueOf(bu.aO(l)) });
     AppMethodBeat.o(115729);
+  }
+  
+  public static void eEz()
+  {
+    AppMethodBeat.i(115728);
+    ae.i("MicroMsg.VoipGLHProgram", "attachGLContext");
+    long l = bu.HQ();
+    e.eED().eEF();
+    ae.i("MicroMsg.VoipGLHProgram", "attachGLContext done, used %sms", new Object[] { Long.valueOf(bu.aO(l)) });
+    AppMethodBeat.o(115728);
   }
   
   public final void a(SurfaceTexture paramSurfaceTexture, d paramd)
   {
     this.surfaceTexture = paramSurfaceTexture;
-    this.Chn = paramd;
+    this.CyO = paramd;
   }
   
   public final void c(float[] paramArrayOfFloat1, float[] paramArrayOfFloat2)
@@ -60,20 +60,20 @@ public final class c
     this.mVertexBuffer = ByteBuffer.allocateDirect(paramArrayOfFloat1.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
     this.mVertexBuffer.put(paramArrayOfFloat1);
     this.mVertexBuffer.position(0);
-    this.CpV = ByteBuffer.allocateDirect(paramArrayOfFloat2.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
-    this.CpV.put(paramArrayOfFloat2);
-    this.CpV.position(0);
+    this.CHz = ByteBuffer.allocateDirect(paramArrayOfFloat2.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
+    this.CHz.put(paramArrayOfFloat2);
+    this.CHz.position(0);
     AppMethodBeat.o(115725);
   }
   
-  public final void eAQ()
+  public final void eEy()
   {
     try
     {
       AppMethodBeat.i(115727);
-      ad.i("MicroMsg.VoipGLHProgram", "%s do destroy", new Object[] { Integer.valueOf(hashCode()) });
-      GLES20.glDeleteProgram(this.CpU);
-      this.CpU = -1;
+      ae.i("MicroMsg.VoipGLHProgram", "%s do destroy", new Object[] { Integer.valueOf(hashCode()) });
+      GLES20.glDeleteProgram(this.CHy);
+      this.CHy = -1;
       AppMethodBeat.o(115727);
       return;
     }
@@ -95,7 +95,7 @@ public final class c
     }
     catch (Exception localException)
     {
-      ad.printErrStackTrace("MicroMsg.VoipGLHProgram", localException, "updateTexImage error", new Object[0]);
+      ae.printErrStackTrace("MicroMsg.VoipGLHProgram", localException, "updateTexImage error", new Object[0]);
       AppMethodBeat.o(115726);
     }
   }

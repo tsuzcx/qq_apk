@@ -3,72 +3,96 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class btw
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public String oBW;
-  public String session_id;
+  public int FJl;
+  public String GYJ;
+  public String HgS;
+  public boolean HgT;
+  public String HgU;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(104816);
+    AppMethodBeat.i(123623);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.oBW != null) {
-        paramVarArgs.d(1, this.oBW);
+      paramVarArgs.aS(1, this.FJl);
+      if (this.HgS != null) {
+        paramVarArgs.d(2, this.HgS);
       }
-      if (this.session_id != null) {
-        paramVarArgs.d(2, this.session_id);
+      paramVarArgs.bC(3, this.HgT);
+      if (this.HgU != null) {
+        paramVarArgs.d(4, this.HgU);
       }
-      AppMethodBeat.o(104816);
+      if (this.GYJ != null) {
+        paramVarArgs.d(5, this.GYJ);
+      }
+      AppMethodBeat.o(123623);
       return 0;
     }
-    if (paramInt == 1) {
-      if (this.oBW == null) {
-        break label274;
-      }
-    }
-    label274:
-    for (paramInt = f.a.a.b.b.a.e(1, this.oBW) + 0;; paramInt = 0)
+    if (paramInt == 1)
     {
-      int i = paramInt;
-      if (this.session_id != null) {
-        i = paramInt + f.a.a.b.b.a.e(2, this.session_id);
+      int i = f.a.a.b.b.a.bz(1, this.FJl) + 0;
+      paramInt = i;
+      if (this.HgS != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.HgS);
       }
-      AppMethodBeat.o(104816);
+      i = paramInt + f.a.a.b.b.a.amF(3);
+      paramInt = i;
+      if (this.HgU != null) {
+        paramInt = i + f.a.a.b.b.a.e(4, this.HgU);
+      }
+      i = paramInt;
+      if (this.GYJ != null) {
+        i = paramInt + f.a.a.b.b.a.e(5, this.GYJ);
+      }
+      AppMethodBeat.o(123623);
       return i;
-      if (paramInt == 2)
-      {
-        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
-          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
-          }
-        }
-        AppMethodBeat.o(104816);
-        return 0;
-      }
-      if (paramInt == 3)
-      {
-        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
-        btw localbtw = (btw)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
-        {
-        default: 
-          AppMethodBeat.o(104816);
-          return -1;
-        case 1: 
-          localbtw.oBW = locala.NPN.readString();
-          AppMethodBeat.o(104816);
-          return 0;
-        }
-        localbtw.session_id = locala.NPN.readString();
-        AppMethodBeat.o(104816);
-        return 0;
-      }
-      AppMethodBeat.o(104816);
-      return -1;
     }
+    if (paramInt == 2)
+    {
+      paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.gCg();
+        }
+      }
+      AppMethodBeat.o(123623);
+      return 0;
+    }
+    if (paramInt == 3)
+    {
+      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+      btw localbtw = (btw)paramVarArgs[1];
+      switch (((Integer)paramVarArgs[2]).intValue())
+      {
+      default: 
+        AppMethodBeat.o(123623);
+        return -1;
+      case 1: 
+        localbtw.FJl = locala.OmT.zc();
+        AppMethodBeat.o(123623);
+        return 0;
+      case 2: 
+        localbtw.HgS = locala.OmT.readString();
+        AppMethodBeat.o(123623);
+        return 0;
+      case 3: 
+        localbtw.HgT = locala.OmT.gvY();
+        AppMethodBeat.o(123623);
+        return 0;
+      case 4: 
+        localbtw.HgU = locala.OmT.readString();
+        AppMethodBeat.o(123623);
+        return 0;
+      }
+      localbtw.GYJ = locala.OmT.readString();
+      AppMethodBeat.o(123623);
+      return 0;
+    }
+    AppMethodBeat.o(123623);
+    return -1;
   }
 }
 

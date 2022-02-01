@@ -6,8 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class ed
   extends b
 {
-  public a dpk;
-  public b dpl;
+  public a dqn;
   
   public ed()
   {
@@ -16,28 +15,21 @@ public final class ed
   
   private ed(byte paramByte)
   {
-    AppMethodBeat.i(115991);
-    this.dpk = new a();
-    this.dpl = new b();
-    this.IbR = false;
+    AppMethodBeat.i(115990);
+    this.dqn = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(115991);
+    AppMethodBeat.o(115990);
   }
   
   public static final class a
   {
-    public boolean dpj = false;
-    public String dpm;
-  }
-  
-  public static final class b
-  {
-    public boolean dpn = false;
+    public boolean dqo = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.a.ed
  * JD-Core Version:    0.7.0.1
  */

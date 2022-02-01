@@ -4,92 +4,61 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 public final class dpd
-  extends cvp
+  extends com.tencent.mm.bw.a
 {
-  public int ozR;
-  public String ozS;
+  public LinkedList<Long> HWE;
+  
+  public dpd()
+  {
+    AppMethodBeat.i(189432);
+    this.HWE = new LinkedList();
+    AppMethodBeat.o(189432);
+  }
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(72593);
+    AppMethodBeat.i(189433);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.BaseResponse != null)
-      {
-        paramVarArgs.lC(1, this.BaseResponse.computeSize());
-        this.BaseResponse.writeFields(paramVarArgs);
-      }
-      paramVarArgs.aS(2, this.ozR);
-      if (this.ozS != null) {
-        paramVarArgs.d(3, this.ozS);
-      }
-      AppMethodBeat.o(72593);
+      ((f.a.a.c.a)paramVarArgs[0]).e(1, 3, this.HWE);
+      AppMethodBeat.o(189433);
       return 0;
     }
-    if (paramInt == 1) {
-      if (this.BaseResponse == null) {
-        break label414;
-      }
-    }
-    label414:
-    for (paramInt = f.a.a.a.lB(1, this.BaseResponse.computeSize()) + 0;; paramInt = 0)
+    if (paramInt == 1)
     {
-      int i = paramInt + f.a.a.b.b.a.bz(2, this.ozR);
-      paramInt = i;
-      if (this.ozS != null) {
-        paramInt = i + f.a.a.b.b.a.e(3, this.ozS);
-      }
-      AppMethodBeat.o(72593);
-      return paramInt;
-      if (paramInt == 2)
-      {
-        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = cvp.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cvp.getNextFieldNumber(paramVarArgs)) {
-          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
-          }
-        }
-        AppMethodBeat.o(72593);
-        return 0;
-      }
-      if (paramInt == 3)
-      {
-        Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
-        dpd localdpd = (dpd)paramVarArgs[1];
-        paramInt = ((Integer)paramVarArgs[2]).intValue();
-        switch (paramInt)
-        {
-        default: 
-          AppMethodBeat.o(72593);
-          return -1;
-        case 1: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new BaseResponse();
-            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((BaseResponse)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, cvp.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-            localdpd.BaseResponse = ((BaseResponse)localObject1);
-            paramInt += 1;
-          }
-          AppMethodBeat.o(72593);
-          return 0;
-        case 2: 
-          localdpd.ozR = ((f.a.a.a.a)localObject1).NPN.zc();
-          AppMethodBeat.o(72593);
-          return 0;
-        }
-        localdpd.ozS = ((f.a.a.a.a)localObject1).NPN.readString();
-        AppMethodBeat.o(72593);
-        return 0;
-      }
-      AppMethodBeat.o(72593);
-      return -1;
+      paramInt = f.a.a.a.c(1, 3, this.HWE);
+      AppMethodBeat.o(189433);
+      return paramInt + 0;
     }
+    if (paramInt == 2)
+    {
+      paramVarArgs = (byte[])paramVarArgs[0];
+      this.HWE.clear();
+      paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.gCg();
+        }
+      }
+      AppMethodBeat.o(189433);
+      return 0;
+    }
+    if (paramInt == 3)
+    {
+      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+      dpd localdpd = (dpd)paramVarArgs[1];
+      switch (((Integer)paramVarArgs[2]).intValue())
+      {
+      default: 
+        AppMethodBeat.o(189433);
+        return -1;
+      }
+      localdpd.HWE.add(Long.valueOf(locala.OmT.zd()));
+      AppMethodBeat.o(189433);
+      return 0;
+    }
+    AppMethodBeat.o(189433);
+    return -1;
   }
 }
 

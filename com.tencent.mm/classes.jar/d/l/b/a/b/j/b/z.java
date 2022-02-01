@@ -25,12 +25,12 @@ public final class z
   {
     AppMethodBeat.i(60126);
     p.h(paramy, "module");
-    a locala = g.MQb.MRx;
+    a locala = g.Nng.NoC;
     p.g(locala, "KotlinBuiltIns.FQ_NAMES.uShort");
     paramy = s.b(paramy, locala);
     if (paramy != null)
     {
-      paramy = paramy.giC();
+      paramy = paramy.gne();
       if (paramy != null)
       {
         paramy = (ab)paramy;
@@ -38,7 +38,7 @@ public final class z
         return paramy;
       }
     }
-    paramy = u.bcU("Unsigned type UShort not found");
+    paramy = u.bey("Unsigned type UShort not found");
     p.g(paramy, "ErrorUtils.createErrorTy…d type UShort not found\")");
     paramy = (ab)paramy;
     AppMethodBeat.o(60126);
@@ -55,7 +55,7 @@ public final class z
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.j.b.z
  * JD-Core Version:    0.7.0.1
  */

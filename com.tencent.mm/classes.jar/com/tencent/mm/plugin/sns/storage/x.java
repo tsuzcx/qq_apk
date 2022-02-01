@@ -7,13 +7,13 @@ import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.a;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public final class x
 {
-  public static boolean aAv(String paramString)
+  public static boolean aBM(String paramString)
   {
     AppMethodBeat.i(97638);
     if ((paramString != null) && (paramString.startsWith("ad_table_")))
@@ -25,31 +25,31 @@ public final class x
     return false;
   }
   
-  public static int aAw(String paramString)
+  public static int aBN(String paramString)
   {
     AppMethodBeat.i(97641);
-    if (bt.isNullOrNil(paramString))
+    if (bu.isNullOrNil(paramString))
     {
       AppMethodBeat.o(97641);
       return 0;
     }
     if (paramString.startsWith("ad_table_"))
     {
-      i = bt.aRe(paramString.substring(9));
+      i = bu.aSB(paramString.substring(9));
       AppMethodBeat.o(97641);
       return i;
     }
-    int i = bt.aRe(paramString.substring(10));
+    int i = bu.aSB(paramString.substring(10));
     AppMethodBeat.o(97641);
     return i;
   }
   
-  public static boolean aAx(String paramString)
+  public static boolean aBO(String paramString)
   {
     AppMethodBeat.i(97642);
     if (paramString.startsWith("ad_table_"))
     {
-      if (bt.aRf(paramString.substring(9)) != 0L)
+      if (bu.aSC(paramString.substring(9)) != 0L)
       {
         AppMethodBeat.o(97642);
         return true;
@@ -57,7 +57,7 @@ public final class x
       AppMethodBeat.o(97642);
       return false;
     }
-    if (bt.aRf(paramString.substring(10)) != 0L)
+    if (bu.aSC(paramString.substring(10)) != 0L)
     {
       AppMethodBeat.o(97642);
       return true;
@@ -66,10 +66,10 @@ public final class x
     return false;
   }
   
-  public static boolean aAy(String paramString)
+  public static boolean aBP(String paramString)
   {
     AppMethodBeat.i(97643);
-    if (!aAx(paramString))
+    if (!aBO(paramString))
     {
       AppMethodBeat.o(97643);
       return true;
@@ -78,7 +78,7 @@ public final class x
     return false;
   }
   
-  public static String aAz(String paramString)
+  public static String aBQ(String paramString)
   {
     AppMethodBeat.i(179142);
     str1 = "";
@@ -86,20 +86,20 @@ public final class x
     {
       try
       {
-        g.ajA();
-        String str2 = a.aiq();
-        if (bt.V(new String[] { paramString, str2 }))
+        g.ajP();
+        String str2 = a.aiF();
+        if (bu.V(new String[] { paramString, str2 }))
         {
-          ad.e("StorageHelper", "HalfScreenSubscribe, snsId or uin is empty");
+          ae.e("StorageHelper", "HalfScreenSubscribe, snsId or uin is empty");
           AppMethodBeat.o(179142);
           return "";
         }
         localStringBuilder = new StringBuilder();
-        if (bt.isNullOrNil(paramString)) {
+        if (bu.isNullOrNil(paramString)) {
           continue;
         }
         localStringBuilder.append(paramString);
-        if (bt.isNullOrNil(str2)) {
+        if (bu.isNullOrNil(str2)) {
           continue;
         }
         paramString = str2;
@@ -107,7 +107,7 @@ public final class x
       catch (Throwable paramString)
       {
         StringBuilder localStringBuilder;
-        ad.e("StorageHelper", paramString.toString());
+        ae.e("StorageHelper", paramString.toString());
         paramString = str1;
         continue;
         paramString = "";
@@ -117,13 +117,13 @@ public final class x
       if (localStringBuilder.length() > 0) {
         continue;
       }
-      ad.e("StorageHelper", "HalfScreenSubscribe, key is empty");
+      ae.e("StorageHelper", "HalfScreenSubscribe, key is empty");
       AppMethodBeat.o(179142);
       return "";
       paramString = "";
     }
     paramString = localStringBuilder.toString();
-    paramString = aj.getContext().getSharedPreferences("SnsAdVoteSubscribe", 0).getString(paramString, "");
+    paramString = ak.getContext().getSharedPreferences("SnsAdVoteSubscribe", 0).getString(paramString, "");
     AppMethodBeat.o(179142);
     return paramString;
   }
@@ -135,7 +135,7 @@ public final class x
     paramString1 = aI(paramString1, paramString2, paramString3);
     int j = k;
     int i;
-    if (!bt.isNullOrNil(paramString1))
+    if (!bu.isNullOrNil(paramString1))
     {
       paramString1 = paramString1.split("&");
       i = 0;
@@ -146,12 +146,12 @@ public final class x
       if (i < paramString1.length)
       {
         if ((paramString1[i] != null) && (paramString1[i].contains("voteResultIndex="))) {
-          j = bt.getInt(paramString1[i].substring(16), 0);
+          j = bu.getInt(paramString1[i].substring(16), 0);
         }
       }
       else
       {
-        ad.d("StorageHelper", "getSnsAdVoteIndex, voteIdx=".concat(String.valueOf(j)));
+        ae.d("StorageHelper", "getSnsAdVoteIndex, voteIdx=".concat(String.valueOf(j)));
         AppMethodBeat.o(97645);
         return j;
       }
@@ -180,9 +180,9 @@ public final class x
       localStringBuilder.append(paramString3);
       paramString1 = "";
       if (localStringBuilder.length() > 0) {
-        paramString1 = aj.getContext().getSharedPreferences("SnsAdVote", 0).getString(localStringBuilder.toString(), "");
+        paramString1 = ak.getContext().getSharedPreferences("SnsAdVote", 0).getString(localStringBuilder.toString(), "");
       }
-      ad.d("StorageHelper", "getSnsAdVoteInfo, ret=".concat(String.valueOf(paramString1)));
+      ae.d("StorageHelper", "getSnsAdVoteInfo, ret=".concat(String.valueOf(paramString1)));
       AppMethodBeat.o(97646);
       return paramString1;
       paramString1 = "";
@@ -195,32 +195,7 @@ public final class x
     }
   }
   
-  public static long axN(String paramString)
-  {
-    AppMethodBeat.i(97640);
-    if (bt.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(97640);
-      return 0L;
-    }
-    if (paramString.startsWith("ad_table_"))
-    {
-      l = bt.aRf(paramString.substring(9));
-      AppMethodBeat.o(97640);
-      return l;
-    }
-    if (paramString.startsWith("sns_table_"))
-    {
-      l = bt.aRf(paramString.substring(10));
-      AppMethodBeat.o(97640);
-      return l;
-    }
-    long l = bt.aRf(paramString);
-    AppMethodBeat.o(97640);
-    return l;
-  }
-  
-  public static boolean axz(String paramString)
+  public static boolean ayP(String paramString)
   {
     AppMethodBeat.i(97639);
     if ((paramString != null) && (paramString.startsWith("sns_table_")))
@@ -232,12 +207,37 @@ public final class x
     return false;
   }
   
+  public static long aze(String paramString)
+  {
+    AppMethodBeat.i(97640);
+    if (bu.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(97640);
+      return 0L;
+    }
+    if (paramString.startsWith("ad_table_"))
+    {
+      l = bu.aSC(paramString.substring(9));
+      AppMethodBeat.o(97640);
+      return l;
+    }
+    if (paramString.startsWith("sns_table_"))
+    {
+      l = bu.aSC(paramString.substring(10));
+      AppMethodBeat.o(97640);
+      return l;
+    }
+    long l = bu.aSC(paramString);
+    AppMethodBeat.o(97640);
+    return l;
+  }
+  
   public static void b(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, String paramString4)
   {
     AppMethodBeat.i(97647);
     if (TextUtils.isEmpty(paramString1))
     {
-      ad.e("StorageHelper", "saveSnsAdVoteInfo, url is empty");
+      ae.e("StorageHelper", "saveSnsAdVoteInfo, url is empty");
       AppMethodBeat.o(97647);
       return;
     }
@@ -260,7 +260,7 @@ public final class x
       if (localStringBuilder.length() > 0) {
         break label106;
       }
-      ad.e("StorageHelper", "saveSnsAdVoteInfo, key is empty");
+      ae.e("StorageHelper", "saveSnsAdVoteInfo, key is empty");
       AppMethodBeat.o(97647);
       return;
       paramString1 = "";
@@ -273,15 +273,15 @@ public final class x
     }
     label106:
     paramString1 = localStringBuilder.toString();
-    paramString2 = aj.getContext().getSharedPreferences("SnsAdVote", 0).edit();
+    paramString2 = ak.getContext().getSharedPreferences("SnsAdVote", 0).edit();
     paramString2.putString(paramString1, "voteResultIndex=" + paramInt1 + "&isUpdate=" + paramInt2);
     paramString2.putString(paramString1 + "_voteRet", paramString4);
     paramString2.commit();
-    ad.i("StorageHelper", "saveSnsAdVoteInfo, voteIdx=" + paramInt1 + ", isUpdate=" + paramInt2 + ", content=" + paramString4);
+    ae.i("StorageHelper", "saveSnsAdVoteInfo, voteIdx=" + paramInt1 + ", isUpdate=" + paramInt2 + ", content=" + paramString4);
     AppMethodBeat.o(97647);
   }
   
-  public static String bm(String paramString, long paramLong)
+  public static String bn(String paramString, long paramLong)
   {
     AppMethodBeat.i(97636);
     paramString = paramString + paramLong;
@@ -289,7 +289,7 @@ public final class x
     return paramString;
   }
   
-  public static String bn(String paramString, long paramLong)
+  public static String bo(String paramString, long paramLong)
   {
     AppMethodBeat.i(97637);
     paramString = paramString + paramLong;
@@ -297,11 +297,11 @@ public final class x
     return paramString;
   }
   
-  public static int jS(String paramString1, String paramString2)
+  public static int jZ(String paramString1, String paramString2)
   {
     AppMethodBeat.i(97644);
-    g.ajA();
-    int i = aH(paramString1, paramString2, a.aiq());
+    g.ajP();
+    int i = aH(paramString1, paramString2, a.aiF());
     AppMethodBeat.o(97644);
     return i;
   }

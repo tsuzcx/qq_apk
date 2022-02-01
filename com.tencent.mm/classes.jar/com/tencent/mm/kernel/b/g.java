@@ -6,34 +6,34 @@ import com.tencent.mm.kernel.a.a;
 public abstract class g
 {
   public Application ca;
-  public a gBe;
-  private Boolean gDT;
-  public a gDU = new a();
+  public a gDL;
+  private Boolean gGA;
+  public a gGB = new a();
   public String mProcessName;
   
   public g(String paramString, Application paramApplication)
   {
     this.mProcessName = paramString;
-    this.gBe = new a();
+    this.gDL = new a();
     this.ca = paramApplication;
   }
   
-  public final Application aku()
+  public final Application akJ()
   {
     return this.ca;
   }
   
-  public final a akv()
+  public final a akK()
   {
-    return this.gDU;
+    return this.gGB;
   }
   
-  public final boolean akw()
+  public final boolean akL()
   {
-    if (this.gDT == null) {
-      this.gDT = Boolean.valueOf(xf(""));
+    if (this.gGA == null) {
+      this.gGA = Boolean.valueOf(xO(""));
     }
-    return this.gDT.booleanValue();
+    return this.gGA.booleanValue();
   }
   
   public abstract String getPackageName();
@@ -51,27 +51,27 @@ public abstract class g
     return super.toString();
   }
   
-  public final boolean xf(String paramString)
+  public final boolean xO(String paramString)
   {
     return (this.mProcessName != null) && (this.mProcessName.equals(getPackageName() + paramString));
   }
   
-  public final boolean xg(String paramString)
+  public final boolean xP(String paramString)
   {
     return (this.mProcessName != null) && (this.mProcessName.contains(getPackageName() + paramString));
   }
   
   public static final class a
   {
-    public long gDV;
-    public long gDW;
-    public long gDX;
-    public long gDY;
-    public long gDZ;
-    public long gEa;
-    public long gEb;
-    public long gEc;
-    public long gEd;
+    public long gGC;
+    public long gGD;
+    public long gGE;
+    public long gGF;
+    public long gGG;
+    public long gGH;
+    public long gGI;
+    public long gGJ;
+    public long gGK;
   }
 }
 

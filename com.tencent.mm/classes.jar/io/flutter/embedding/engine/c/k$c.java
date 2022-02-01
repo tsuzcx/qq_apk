@@ -4,25 +4,25 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public enum k$c
 {
-  private final String MEk;
+  private final String Nbq;
   
   static
   {
     AppMethodBeat.i(10260);
-    MFr = new c("CHARACTERS", 0, "TextCapitalization.characters");
-    MFs = new c("WORDS", 1, "TextCapitalization.words");
-    MFt = new c("SENTENCES", 2, "TextCapitalization.sentences");
-    MFu = new c("NONE", 3, "TextCapitalization.none");
-    MFv = new c[] { MFr, MFs, MFt, MFu };
+    Ncx = new c("CHARACTERS", 0, "TextCapitalization.characters");
+    Ncy = new c("WORDS", 1, "TextCapitalization.words");
+    Ncz = new c("SENTENCES", 2, "TextCapitalization.sentences");
+    NcA = new c("NONE", 3, "TextCapitalization.none");
+    NcB = new c[] { Ncx, Ncy, Ncz, NcA };
     AppMethodBeat.o(10260);
   }
   
   private k$c(String paramString)
   {
-    this.MEk = paramString;
+    this.Nbq = paramString;
   }
   
-  static c bbW(String paramString)
+  static c bdA(String paramString)
   {
     AppMethodBeat.i(10259);
     c[] arrayOfc = values();
@@ -31,7 +31,7 @@ public enum k$c
     while (i < j)
     {
       c localc = arrayOfc[i];
-      if (localc.MEk.equals(paramString))
+      if (localc.Nbq.equals(paramString))
       {
         AppMethodBeat.o(10259);
         return localc;

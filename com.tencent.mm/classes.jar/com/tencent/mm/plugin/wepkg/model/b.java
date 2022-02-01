@@ -2,20 +2,20 @@ package com.tencent.mm.plugin.wepkg.model;
 
 public class b
 {
-  public int EEE;
-  public boolean EEF;
-  public String yFq;
+  public int EXa;
+  public boolean EXb;
+  public String yVv;
   
   public b(int paramInt, boolean paramBoolean, String paramString)
   {
-    this.EEE = paramInt;
-    this.EEF = paramBoolean;
-    this.yFq = paramString;
+    this.EXa = paramInt;
+    this.EXb = paramBoolean;
+    this.yVv = paramString;
   }
   
-  public final boolean eXV()
+  public final boolean fbH()
   {
-    return this.EEE == 0;
+    return this.EXa == 0;
   }
 }
 

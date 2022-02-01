@@ -35,9 +35,9 @@ public final class WXMediaMessage
   
   public WXMediaMessage(IMediaObject paramIMediaObject)
   {
-    AppMethodBeat.i(196988);
+    AppMethodBeat.i(194100);
     this.mediaObject = paramIMediaObject;
-    AppMethodBeat.o(196988);
+    AppMethodBeat.o(194100);
   }
   
   final boolean checkArgs()
@@ -293,7 +293,7 @@ public final class WXMediaMessage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.opensdk.modelmsg.WXMediaMessage
  * JD-Core Version:    0.7.0.1
  */

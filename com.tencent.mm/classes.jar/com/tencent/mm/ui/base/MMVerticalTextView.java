@@ -11,12 +11,12 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.View.MeasureSpec;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.af.a.a;
+import com.tencent.mm.ae.a.a;
 
 public class MMVerticalTextView
   extends View
 {
-  Rect Joo;
+  Rect JJd;
   private TextPaint ayp;
   private int direction;
   private String mText;
@@ -25,7 +25,7 @@ public class MMVerticalTextView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(142251);
-    this.Joo = new Rect();
+    this.JJd = new Rect();
     this.ayp = new TextPaint();
     this.ayp.setAntiAlias(true);
     this.ayp.setTextSize(15.0F);
@@ -59,7 +59,7 @@ public class MMVerticalTextView
     int j;
     if (this.direction == 0)
     {
-      j = (getWidth() >> 1) - (this.Joo.height() >> 1);
+      j = (getWidth() >> 1) - (this.JJd.height() >> 1);
       localPath.moveTo(j, 0.0F);
       localPath.lineTo(j, i);
     }
@@ -68,7 +68,7 @@ public class MMVerticalTextView
       paramCanvas.drawTextOnPath(this.mText, localPath, 0.0F, 0.0F, this.ayp);
       AppMethodBeat.o(142256);
       return;
-      j = (getWidth() >> 1) + (this.Joo.height() >> 1);
+      j = (getWidth() >> 1) + (this.JJd.height() >> 1);
       localPath.moveTo(j, i);
       localPath.lineTo(j, 0.0F);
     }
@@ -77,7 +77,7 @@ public class MMVerticalTextView
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(142255);
-    this.ayp.getTextBounds(this.mText, 0, this.mText.length(), this.Joo);
+    this.ayp.getTextBounds(this.mText, 0, this.mText.length(), this.JJd);
     int j = View.MeasureSpec.getMode(paramInt1);
     paramInt1 = View.MeasureSpec.getSize(paramInt1);
     if (j == 1073741824) {}
@@ -92,7 +92,7 @@ public class MMVerticalTextView
         setMeasuredDimension(paramInt1, paramInt2);
         AppMethodBeat.o(142255);
         return;
-        i = this.Joo.height();
+        i = this.JJd.height();
         if (j != -2147483648) {
           break label138;
         }

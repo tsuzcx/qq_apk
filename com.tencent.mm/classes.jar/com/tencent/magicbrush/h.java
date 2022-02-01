@@ -8,25 +8,25 @@ import d.l;
 import d.l.b;
 import d.l.d;
 
-@l(gfx={1, 1, 13})
+@l(gjZ={1, 1, 13})
 final class h
   extends t
 {
-  public static final d.l.h cxK;
+  public static final d.l.h cyr;
   
   static
   {
     AppMethodBeat.i(140104);
-    cxK = new h();
+    cyr = new h();
     AppMethodBeat.o(140104);
   }
   
-  public final String Hu()
+  public final String HC()
   {
     return "getAnimationFrameHandlerStrategy()Lcom/tencent/magicbrush/ui/AnimationFrameHandler$Strategy;";
   }
   
-  public final d Hv()
+  public final d HD()
   {
     AppMethodBeat.i(140105);
     b localb = z.bp(MBRuntime.MBParams.class);
@@ -51,7 +51,7 @@ final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.magicbrush.h
  * JD-Core Version:    0.7.0.1
  */

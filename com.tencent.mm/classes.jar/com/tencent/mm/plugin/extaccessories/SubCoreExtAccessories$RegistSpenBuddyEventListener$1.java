@@ -5,54 +5,54 @@ import android.graphics.Bitmap.CompressFormat;
 import com.samsung.android.sdk.look.writingbuddy.SlookWritingBuddy.ImageWritingListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.e;
-import com.tencent.mm.g.a.qp;
-import com.tencent.mm.g.a.qp.a;
-import com.tencent.mm.model.ax;
-import com.tencent.mm.model.ba;
-import com.tencent.mm.model.ca;
+import com.tencent.mm.g.a.qq;
+import com.tencent.mm.g.a.qq.a;
+import com.tencent.mm.model.az;
+import com.tencent.mm.model.bc;
+import com.tencent.mm.model.cc;
 import com.tencent.mm.pluginsdk.ui.a.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.sdk.platformtools.g;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.h;
 
 class SubCoreExtAccessories$RegistSpenBuddyEventListener$1
   implements SlookWritingBuddy.ImageWritingListener
 {
-  SubCoreExtAccessories$RegistSpenBuddyEventListener$1(b.a parama, qp paramqp) {}
+  SubCoreExtAccessories$RegistSpenBuddyEventListener$1(b.a parama, qq paramqq) {}
   
   public void onImageReceived(Bitmap paramBitmap)
   {
     AppMethodBeat.i(24541);
-    ad.i("MicroMsg.extaccessories.SubCoreExtAccessories", "onImageReceived");
+    ae.i("MicroMsg.extaccessories.SubCoreExtAccessories", "onImageReceived");
     if (paramBitmap == null)
     {
-      ad.e("MicroMsg.extaccessories.SubCoreExtAccessories", "img is null");
-      this.rfc.dFj.dFk.aMD(null);
+      ae.e("MicroMsg.extaccessories.SubCoreExtAccessories", "img is null");
+      this.rnf.dGo.dGp.aNZ(null);
       AppMethodBeat.o(24541);
       return;
     }
-    if (!e.abf())
+    if (!e.abo())
     {
-      ad.e("MicroMsg.extaccessories.SubCoreExtAccessories", "SDCard not available");
-      this.rfc.dFj.dFk.aMD(null);
+      ae.e("MicroMsg.extaccessories.SubCoreExtAccessories", "SDCard not available");
+      this.rnf.dGo.dGp.aNZ(null);
       AppMethodBeat.o(24541);
       return;
     }
-    ba.aBK();
-    Object localObject2 = (b)ca.By("plugin.extaccessories");
+    bc.aCa();
+    Object localObject2 = (b)cc.Ca("plugin.extaccessories");
     Object localObject1 = localObject2;
     if (localObject2 == null)
     {
-      ad.w("MicroMsg.extaccessories.SubCoreExtAccessories", "not found in MMCore, new one");
+      ae.w("MicroMsg.extaccessories.SubCoreExtAccessories", "not found in MMCore, new one");
       localObject1 = new b();
-      ba.aBK().a("plugin.extaccessories", (ax)localObject1);
+      bc.aCa().a("plugin.extaccessories", (az)localObject1);
     }
     localObject2 = System.currentTimeMillis();
-    if ((ba.ajx()) && (!bt.isNullOrNil((String)localObject2))) {}
-    for (localObject1 = ((b)localObject1).gBm + "image/spen/spen_" + (String)localObject2; bt.isNullOrNil((String)localObject1); localObject1 = "")
+    if ((bc.ajM()) && (!bu.isNullOrNil((String)localObject2))) {}
+    for (localObject1 = ((b)localObject1).gDT + "image/spen/spen_" + (String)localObject2; bu.isNullOrNil((String)localObject1); localObject1 = "")
     {
-      ad.e("MicroMsg.extaccessories.SubCoreExtAccessories", "filePath is null");
-      this.rfc.dFj.dFk.aMD(null);
+      ae.e("MicroMsg.extaccessories.SubCoreExtAccessories", "filePath is null");
+      this.rnf.dGo.dGp.aNZ(null);
       AppMethodBeat.o(24541);
       return;
     }
@@ -65,7 +65,7 @@ class SubCoreExtAccessories$RegistSpenBuddyEventListener$1
       }
       else
       {
-        ad.d("MicroMsg.extaccessories.SubCoreExtAccessories", "spen image %d, %d, need scale", new Object[] { Integer.valueOf(paramBitmap.getWidth()), Integer.valueOf(paramBitmap.getHeight()) });
+        ae.d("MicroMsg.extaccessories.SubCoreExtAccessories", "spen image %d, %d, need scale", new Object[] { Integer.valueOf(paramBitmap.getWidth()), Integer.valueOf(paramBitmap.getHeight()) });
         Bitmap localBitmap = Bitmap.createScaledBitmap(paramBitmap, paramBitmap.getWidth() / 2, paramBitmap.getHeight() / 2, true);
         localObject2 = paramBitmap;
         if (paramBitmap != localBitmap)
@@ -73,30 +73,30 @@ class SubCoreExtAccessories$RegistSpenBuddyEventListener$1
           localObject2 = paramBitmap;
           if (localBitmap != null)
           {
-            ad.i("MicroMsg.extaccessories.SubCoreExtAccessories", "bitmap recycle %s", new Object[] { paramBitmap.toString() });
+            ae.i("MicroMsg.extaccessories.SubCoreExtAccessories", "bitmap recycle %s", new Object[] { paramBitmap.toString() });
             paramBitmap.recycle();
             localObject2 = localBitmap;
           }
         }
       }
-      g.a((Bitmap)localObject2, 55, Bitmap.CompressFormat.JPEG, (String)localObject1, true);
-      ad.d("MicroMsg.extaccessories.SubCoreExtAccessories", "save spen temp image : %s", new Object[] { localObject1 });
-      this.rfc.dFj.dFk.aMD((String)localObject1);
+      h.a((Bitmap)localObject2, 55, Bitmap.CompressFormat.JPEG, (String)localObject1, true);
+      ae.d("MicroMsg.extaccessories.SubCoreExtAccessories", "save spen temp image : %s", new Object[] { localObject1 });
+      this.rnf.dGo.dGp.aNZ((String)localObject1);
       AppMethodBeat.o(24541);
       return;
     }
     catch (Exception paramBitmap)
     {
-      ad.e("MicroMsg.extaccessories.SubCoreExtAccessories", "Exception %s", new Object[] { paramBitmap.getMessage() });
-      ad.printErrStackTrace("MicroMsg.extaccessories.SubCoreExtAccessories", paramBitmap, "", new Object[0]);
-      this.rfc.dFj.dFk.aMD(null);
+      ae.e("MicroMsg.extaccessories.SubCoreExtAccessories", "Exception %s", new Object[] { paramBitmap.getMessage() });
+      ae.printErrStackTrace("MicroMsg.extaccessories.SubCoreExtAccessories", paramBitmap, "", new Object[0]);
+      this.rnf.dGo.dGp.aNZ(null);
       AppMethodBeat.o(24541);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.extaccessories.SubCoreExtAccessories.RegistSpenBuddyEventListener.1
  * JD-Core Version:    0.7.0.1
  */

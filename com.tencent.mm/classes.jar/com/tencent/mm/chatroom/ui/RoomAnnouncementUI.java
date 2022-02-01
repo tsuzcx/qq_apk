@@ -11,11 +11,13 @@ import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.ViewGroup;
 import com.jg.JgClassChecked;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.widget.MMWebView.a;
 import com.tencent.xweb.JsResult;
 import com.tencent.xweb.WebView;
+import com.tencent.xweb.ac;
 import com.tencent.xweb.x;
 import com.tencent.xweb.z;
 
@@ -24,8 +26,8 @@ import com.tencent.xweb.z;
 public class RoomAnnouncementUI
   extends MMActivity
 {
-  private WebView fQx;
-  private boolean fQy;
+  private WebView fSD;
+  private boolean fSE;
   private String roomId;
   
   public int getLayoutId()
@@ -38,17 +40,17 @@ public class RoomAnnouncementUI
   {
     AppMethodBeat.i(12690);
     setMMTitle(2131762725);
-    this.fQx = MMWebView.a.s(this, 2131306909);
-    this.fQx.getSettings().setJavaScriptEnabled(true);
-    this.fQx.getSettings().gbb();
-    this.fQx.getSettings().setBuiltInZoomControls(true);
-    this.fQx.getSettings().setUseWideViewPort(true);
-    this.fQx.getSettings().setLoadWithOverviewMode(true);
-    this.fQx.getSettings().gaU();
-    this.fQx.getSettings().gaT();
-    this.fQx.getSettings().setGeolocationEnabled(false);
-    this.fQx.getSettings().setJavaScriptCanOpenWindowsAutomatically(false);
-    this.fQx.setWebChromeClient(new x()
+    this.fSD = MMWebView.a.s(this, 2131306909);
+    this.fSD.getSettings().setJavaScriptEnabled(true);
+    this.fSD.getSettings().gfD();
+    this.fSD.getSettings().setBuiltInZoomControls(true);
+    this.fSD.getSettings().setUseWideViewPort(true);
+    this.fSD.getSettings().setLoadWithOverviewMode(true);
+    this.fSD.getSettings().gfw();
+    this.fSD.getSettings().gfv();
+    this.fSD.getSettings().setGeolocationEnabled(false);
+    this.fSD.getSettings().setJavaScriptCanOpenWindowsAutomatically(false);
+    this.fSD.setWebChromeClient(new x()
     {
       public final boolean a(WebView paramAnonymousWebView, String paramAnonymousString1, String paramAnonymousString2, JsResult paramAnonymousJsResult)
       {
@@ -67,7 +69,7 @@ public class RoomAnnouncementUI
         return true;
       }
     });
-    this.fQx.setWebViewClient(new com.tencent.xweb.ac()
+    this.fSD.setWebViewClient(new ac()
     {
       public final boolean a(WebView paramAnonymousWebView, String paramAnonymousString)
       {
@@ -93,8 +95,8 @@ public class RoomAnnouncementUI
         return true;
       }
     });
-    String str = getString(2131757103, new Object[] { com.tencent.mm.sdk.platformtools.ac.fks() });
-    this.fQx.loadUrl(str);
+    String str = getString(2131757103, new Object[] { ad.fom() });
+    this.fSD.loadUrl(str);
     AppMethodBeat.o(12690);
   }
   
@@ -102,7 +104,7 @@ public class RoomAnnouncementUI
   {
     AppMethodBeat.i(12686);
     super.onCreate(paramBundle);
-    this.fQy = getIntent().getBooleanExtra("need_bind_mobile", false);
+    this.fSE = getIntent().getBooleanExtra("need_bind_mobile", false);
     this.roomId = getIntent().getStringExtra("RoomInfo_Id");
     initView();
     AppMethodBeat.o(12686);
@@ -111,13 +113,13 @@ public class RoomAnnouncementUI
   public void onDestroy()
   {
     AppMethodBeat.i(12689);
-    if (this.fQx != null)
+    if (this.fSD != null)
     {
-      this.fQx.setVisibility(8);
-      ((ViewGroup)this.fQx.getParent()).removeView(this.fQx);
-      this.fQx.removeAllViews();
-      this.fQx.destroy();
-      this.fQx = null;
+      this.fSD.setVisibility(8);
+      ((ViewGroup)this.fSD.getParent()).removeView(this.fSD);
+      this.fSD.removeAllViews();
+      this.fSD.destroy();
+      this.fSD = null;
       System.gc();
     }
     super.onDestroy();

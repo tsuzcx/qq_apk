@@ -7,30 +7,30 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class BatteryManager
 {
-  public static boolean tSV;
-  public static BatteryChangedReceiver tSW;
+  public static boolean udM;
+  public static BatteryChangedReceiver udN;
   
   public static final class BatteryChangedReceiver
     extends BroadcastReceiver
   {
     public final void onReceive(Context paramContext, Intent paramIntent)
     {
-      AppMethodBeat.i(215761);
+      AppMethodBeat.i(213546);
       if (paramIntent == null)
       {
-        AppMethodBeat.o(215761);
+        AppMethodBeat.o(213546);
         return;
       }
       if ("android.intent.action.BATTERY_OKAY".equals(paramIntent.getAction()))
       {
-        BatteryManager.tSV = false;
-        AppMethodBeat.o(215761);
+        BatteryManager.udM = false;
+        AppMethodBeat.o(213546);
         return;
       }
       if ("android.intent.action.BATTERY_LOW".equals(paramIntent.getAction())) {
-        BatteryManager.tSV = true;
+        BatteryManager.udM = true;
       }
-      AppMethodBeat.o(215761);
+      AppMethodBeat.o(213546);
     }
   }
 }

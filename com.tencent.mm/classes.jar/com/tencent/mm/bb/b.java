@@ -1,186 +1,86 @@
 package com.tencent.mm.bb;
 
+import android.content.ContentValues;
+import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.l;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.n.b;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.plugin.messenger.foundation.a.a.k.b;
-import com.tencent.mm.protocal.l.b;
-import com.tencent.mm.protocal.l.c;
-import com.tencent.mm.protocal.l.d;
-import com.tencent.mm.protocal.l.e;
-import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.cgl;
-import com.tencent.mm.protocal.protobuf.cgm;
-import com.tencent.mm.protocal.protobuf.zu;
-import com.tencent.mm.protocal.protobuf.zv;
-import com.tencent.mm.sdk.platformtools.ad;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
+import com.tencent.mm.sdk.e.k;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storagebase.h;
+import junit.framework.Assert;
 
-public class b
-  extends n
-  implements k
+public final class b
+  extends k
 {
-  private f callback;
-  public a iij;
-  public final List<k.b> iik;
+  public static final String[] SQL_CREATE = { "CREATE TABLE IF NOT EXISTS chattingbginfo ( username text  PRIMARY KEY , bgflag int  , path text  , reserved1 text  , reserved2 text  , reserved3 int  , reserved4 int  ) " };
+  public h hKK;
   
-  public b(List<k.b> paramList)
+  public b(h paramh)
   {
-    AppMethodBeat.i(43049);
-    this.iik = new ArrayList();
-    this.iik.addAll(paramList);
-    this.iij = new a();
-    ((b)this.iij.getReqObj()).iin.GWT = aq(paramList);
-    AppMethodBeat.o(43049);
+    this.hKK = paramh;
   }
   
-  private static zv aq(List<k.b> paramList)
+  public final a GD(String paramString)
   {
-    AppMethodBeat.i(43050);
-    zv localzv = new zv();
-    Iterator localIterator = paramList.iterator();
-    while (localIterator.hasNext())
+    Object localObject = null;
+    AppMethodBeat.i(150789);
+    paramString = "select chattingbginfo.username,chattingbginfo.bgflag,chattingbginfo.path,chattingbginfo.reserved1,chattingbginfo.reserved2,chattingbginfo.reserved3,chattingbginfo.reserved4 from chattingbginfo   where chattingbginfo.username = \"" + bu.aSk(String.valueOf(paramString)) + "\"";
+    Cursor localCursor = this.hKK.a(paramString, null, 2);
+    if (localCursor == null)
     {
-      k.b localb = (k.b)localIterator.next();
-      byte[] arrayOfByte = localb.getBuffer();
-      zu localzu = new zu();
-      localzu.FYU = localb.getCmdId();
-      localzu.FYV = new SKBuiltinBuffer_t().setBuffer(arrayOfByte);
-      localzv.nDj.add(localzu);
+      AppMethodBeat.o(150789);
+      return null;
     }
-    localzv.nDi = paramList.size();
-    ad.d("MicroMsg.NetSceneOplog", "summeroplog oplogs size=" + paramList.size());
-    AppMethodBeat.o(43050);
-    return localzv;
+    paramString = localObject;
+    if (localCursor.moveToFirst())
+    {
+      paramString = new a();
+      paramString.convertFrom(localCursor);
+    }
+    localCursor.close();
+    AppMethodBeat.o(150789);
+    return paramString;
   }
   
-  public int doScene(e parame, f paramf)
+  public final boolean a(a parama)
   {
-    AppMethodBeat.i(43051);
-    this.callback = paramf;
-    int i = dispatch(parame, this.iij, this);
-    AppMethodBeat.o(43051);
-    return i;
+    AppMethodBeat.i(150787);
+    parama.dEu = -1;
+    ContentValues localContentValues = parama.convertTo();
+    if ((int)this.hKK.a("chattingbginfo", "username", localContentValues) != -1)
+    {
+      doNotify(parama.getUsername());
+      AppMethodBeat.o(150787);
+      return true;
+    }
+    AppMethodBeat.o(150787);
+    return false;
   }
   
-  public int getType()
+  public final boolean b(a parama)
   {
-    return 681;
-  }
-  
-  public void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
-  {
-    AppMethodBeat.i(43052);
-    this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(43052);
-  }
-  
-  public int securityLimitCount()
-  {
-    return 5;
-  }
-  
-  public n.b securityVerificationChecked(q paramq)
-  {
-    return n.b.hOp;
-  }
-  
-  public static final class a
-    extends l
-  {
-    private final b.b iil;
-    private final b.c iim;
-    
-    public a()
+    AppMethodBeat.i(150788);
+    if (parama != null) {}
+    for (boolean bool = true;; bool = false)
     {
-      AppMethodBeat.i(43044);
-      this.iil = new b.b();
-      this.iim = new b.c();
-      AppMethodBeat.o(43044);
+      Assert.assertTrue(bool);
+      ContentValues localContentValues = parama.convertTo();
+      if (localContentValues.size() <= 0) {
+        break;
+      }
+      if (this.hKK.update("chattingbginfo", localContentValues, "username= ?", new String[] { parama.getUsername() }) <= 0) {
+        break;
+      }
+      doNotify(parama.getUsername());
+      AppMethodBeat.o(150788);
+      return true;
     }
-    
-    public final l.d getReqObjImp()
-    {
-      return this.iil;
-    }
-    
-    public final l.e getRespObj()
-    {
-      return this.iim;
-    }
-    
-    public final int getType()
-    {
-      return 681;
-    }
-    
-    public final String getUri()
-    {
-      return "/cgi-bin/micromsg-bin/oplog";
-    }
-  }
-  
-  static final class b
-    extends l.d
-    implements l.b
-  {
-    public cgl iin;
-    
-    b()
-    {
-      AppMethodBeat.i(43045);
-      this.iin = new cgl();
-      AppMethodBeat.o(43045);
-    }
-    
-    public final int getFuncId()
-    {
-      return 681;
-    }
-    
-    public final byte[] toProtoBuf()
-    {
-      AppMethodBeat.i(43046);
-      byte[] arrayOfByte = this.iin.toByteArray();
-      AppMethodBeat.o(43046);
-      return arrayOfByte;
-    }
-  }
-  
-  public static final class c
-    extends l.e
-    implements l.c
-  {
-    public cgm iio;
-    
-    public c()
-    {
-      AppMethodBeat.i(43047);
-      this.iio = new cgm();
-      AppMethodBeat.o(43047);
-    }
-    
-    public final int fromProtoBuf(byte[] paramArrayOfByte)
-    {
-      AppMethodBeat.i(43048);
-      this.iio = ((cgm)new cgm().parseFrom(paramArrayOfByte));
-      int i = this.iio.Ret;
-      AppMethodBeat.o(43048);
-      return i;
-    }
+    AppMethodBeat.o(150788);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.bb.b
  * JD-Core Version:    0.7.0.1
  */

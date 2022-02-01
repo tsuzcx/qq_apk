@@ -4,10 +4,13 @@ import android.content.Context;
 import android.database.Cursor;
 import android.text.SpannableString;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ad.f;
-import com.tencent.mm.model.u;
+import com.tencent.mm.ac.c;
+import com.tencent.mm.ac.f;
+import com.tencent.mm.g.c.cf;
+import com.tencent.mm.model.ch;
 import com.tencent.mm.plugin.finder.model.BaseFinderFeed;
 import com.tencent.mm.plugin.finder.search.h;
+import com.tencent.mm.plugin.finder.storage.data.i;
 import com.tencent.mm.plugin.finder.storage.logic.b.a;
 import com.tencent.mm.plugin.finder.utils.n;
 import com.tencent.mm.plugin.finder.utils.o.a;
@@ -18,17 +21,18 @@ import com.tencent.mm.protocal.protobuf.FinderContact;
 import com.tencent.mm.protocal.protobuf.FinderMedia;
 import com.tencent.mm.protocal.protobuf.FinderObject;
 import com.tencent.mm.protocal.protobuf.FinderObjectDesc;
-import com.tencent.mm.protocal.protobuf.amn;
-import com.tencent.mm.protocal.protobuf.amx;
-import com.tencent.mm.protocal.protobuf.aoy;
-import com.tencent.mm.protocal.protobuf.asf;
-import com.tencent.mm.protocal.protobuf.bvf;
-import com.tencent.mm.protocal.protobuf.bvg;
-import com.tencent.mm.protocal.protobuf.bvl;
+import com.tencent.mm.protocal.protobuf.amz;
+import com.tencent.mm.protocal.protobuf.ank;
+import com.tencent.mm.protocal.protobuf.apl;
+import com.tencent.mm.protocal.protobuf.asu;
+import com.tencent.mm.protocal.protobuf.bvz;
+import com.tencent.mm.protocal.protobuf.bwa;
+import com.tencent.mm.protocal.protobuf.bwf;
 import com.tencent.mm.sdk.e.c.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.vfs.o;
 import d.a.j;
 import d.g.a.m;
 import d.g.b.q;
@@ -41,34 +45,34 @@ import java.util.LinkedList;
 import java.util.List;
 import org.json.JSONObject;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "Lcom/tencent/mm/autogen/table/BaseFinderFeedItem;", "()V", "value", "", "commentCount", "getCommentCount", "()I", "setCommentCount", "(I)V", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/FinderCommentInfo;", "commentList", "getCommentList", "()Ljava/util/LinkedList;", "setCommentList", "(Ljava/util/LinkedList;)V", "comment_close", "getComment_close", "setComment_close", "createTime", "getCreateTime", "setCreateTime", "debugDescription", "", "getDebugDescription", "()Ljava/lang/String;", "description", "getDescription", "setDescription", "(Ljava/lang/String;)V", "descriptionFullSpan", "Landroid/text/SpannableString;", "getDescriptionFullSpan", "()Landroid/text/SpannableString;", "setDescriptionFullSpan", "(Landroid/text/SpannableString;)V", "descriptionSpan", "getDescriptionSpan", "setDescriptionSpan", "Lcom/tencent/mm/protocal/protobuf/FinderExtendedReading;", "extReading", "getExtReading", "()Lcom/tencent/mm/protocal/protobuf/FinderExtendedReading;", "setExtReading", "(Lcom/tencent/mm/protocal/protobuf/FinderExtendedReading;)V", "favCount", "getFavCount", "setFavCount", "favFlag", "getFavFlag", "setFavFlag", "Lcom/tencent/mm/protocal/protobuf/FinderObject;", "feedObject", "getFeedObject", "()Lcom/tencent/mm/protocal/protobuf/FinderObject;", "setFeedObject", "(Lcom/tencent/mm/protocal/protobuf/FinderObject;)V", "foldedFeedList", "", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "getFoldedFeedList", "()Ljava/util/List;", "foldedFeeds", "", "foldedLayout", "Lcom/tencent/mm/protocal/protobuf/FinderFoldedLayout;", "getFoldedLayout", "()Lcom/tencent/mm/protocal/protobuf/FinderFoldedLayout;", "setFoldedLayout", "(Lcom/tencent/mm/protocal/protobuf/FinderFoldedLayout;)V", "forwardCount", "getForwardCount", "setForwardCount", "friendLikeCount", "getFriendLikeCount", "setFriendLikeCount", "fromType", "getFromType", "setFromType", "isRelatedItem", "", "()Z", "setRelatedItem", "(Z)V", "likeCount", "getLikeCount", "setLikeCount", "likeFlag", "getLikeFlag", "setLikeFlag", "likeList", "getLikeList", "setLikeList", "", "localId", "getLocalId", "()J", "setLocalId", "(J)V", "Lcom/tencent/mm/protocal/protobuf/FinderLocation;", "location", "getLocation", "()Lcom/tencent/mm/protocal/protobuf/FinderLocation;", "setLocation", "(Lcom/tencent/mm/protocal/protobuf/FinderLocation;)V", "Lcom/tencent/mm/protocal/protobuf/LocalFinderMedia;", "mediaExtList", "getMediaExtList", "setMediaExtList", "mediaList", "getMediaList", "setMediaList", "mediaType", "getMediaType", "setMediaType", "nickName", "getNickName", "setNickName", "nickNameSpan", "getNickNameSpan", "setNickNameSpan", "objectNonceId", "getObjectNonceId", "setObjectNonceId", "posTriggerConfig", "Lcom/tencent/mm/plugin/finder/storage/FinderItem$PosTriggerConfig;", "getPosTriggerConfig", "()Lcom/tencent/mm/plugin/finder/storage/FinderItem$PosTriggerConfig;", "setPosTriggerConfig", "(Lcom/tencent/mm/plugin/finder/storage/FinderItem$PosTriggerConfig;)V", "private_flag", "getPrivate_flag", "setPrivate_flag", "readCount", "getReadCount", "setReadCount", "Lcom/tencent/mm/protocal/protobuf/FinderContact;", "refObjectContact", "getRefObjectContact", "()Lcom/tencent/mm/protocal/protobuf/FinderContact;", "setRefObjectContact", "(Lcom/tencent/mm/protocal/protobuf/FinderContact;)V", "refObjectFlag", "getRefObjectFlag", "setRefObjectFlag", "refObjectId", "getRefObjectId", "setRefObjectId", "relatedFeedId", "getRelatedFeedId", "setRelatedFeedId", "timestamps", "getTimestamps", "topicClickExtra", "Lcom/tencent/mm/plugin/finder/utils/FinderTopicUtil$ClickExtra;", "getTopicClickExtra", "()Lcom/tencent/mm/plugin/finder/utils/FinderTopicUtil$ClickExtra;", "setTopicClickExtra", "(Lcom/tencent/mm/plugin/finder/utils/FinderTopicUtil$ClickExtra;)V", "topicList", "Lcom/tencent/mm/plugin/finder/utils/FinderTopicUtil$TopicStringInfo;", "getTopicList", "userName", "getUserName", "setUserName", "convertFrom", "", "cu", "Landroid/database/Cursor;", "fixMediaType", "obj", "getCropInfo", "index", "getDBInfo", "Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "getExpectId", "getFinderObject", "getId", "getNotShareMsg", "getPostInfo", "Lcom/tencent/mm/protocal/protobuf/LocalFinderPostInfo;", "info", "isCommentClose", "isNeedCrop", "isNeedVideoCompositionPlay", "isNotShare", "isOldVersion", "isOnlySelfSee", "isPostFailed", "isPostFailedCanRetry", "isPostFinish", "isPostNoAuth", "isPrivate", "isUploadFailed", "mediaExt", "mediaId", "parseJsonOfPosTriggerConfig", "setPostFailed", "setPostFailedAndNoAuth", "setPostFailedAndNotRetry", "setPostFinish", "setPostInfo", "field_postinfo", "setPostWaiting", "trackPost", "stage", "updateFinderObject", "svrFeed", "Companion", "PosTriggerConfig", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "Lcom/tencent/mm/autogen/table/BaseFinderFeedItem;", "()V", "value", "", "commentCount", "getCommentCount", "()I", "setCommentCount", "(I)V", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/FinderCommentInfo;", "commentList", "getCommentList", "()Ljava/util/LinkedList;", "setCommentList", "(Ljava/util/LinkedList;)V", "comment_close", "getComment_close", "setComment_close", "createTime", "getCreateTime", "setCreateTime", "debugDescription", "", "getDebugDescription", "()Ljava/lang/String;", "description", "getDescription", "setDescription", "(Ljava/lang/String;)V", "descriptionFullSpan", "Landroid/text/SpannableString;", "getDescriptionFullSpan", "()Landroid/text/SpannableString;", "setDescriptionFullSpan", "(Landroid/text/SpannableString;)V", "descriptionSpan", "getDescriptionSpan", "setDescriptionSpan", "Lcom/tencent/mm/protocal/protobuf/FinderExtendedReading;", "extReading", "getExtReading", "()Lcom/tencent/mm/protocal/protobuf/FinderExtendedReading;", "setExtReading", "(Lcom/tencent/mm/protocal/protobuf/FinderExtendedReading;)V", "favCount", "getFavCount", "setFavCount", "favFlag", "getFavFlag", "setFavFlag", "Lcom/tencent/mm/protocal/protobuf/FinderObject;", "feedObject", "getFeedObject", "()Lcom/tencent/mm/protocal/protobuf/FinderObject;", "setFeedObject", "(Lcom/tencent/mm/protocal/protobuf/FinderObject;)V", "foldedFeedList", "", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "getFoldedFeedList", "()Ljava/util/List;", "foldedFeeds", "", "foldedLayout", "Lcom/tencent/mm/protocal/protobuf/FinderFoldedLayout;", "getFoldedLayout", "()Lcom/tencent/mm/protocal/protobuf/FinderFoldedLayout;", "setFoldedLayout", "(Lcom/tencent/mm/protocal/protobuf/FinderFoldedLayout;)V", "forwardCount", "getForwardCount", "setForwardCount", "friendLikeCount", "getFriendLikeCount", "setFriendLikeCount", "fromType", "getFromType", "setFromType", "isRelatedItem", "", "()Z", "setRelatedItem", "(Z)V", "likeCount", "getLikeCount", "setLikeCount", "likeFlag", "getLikeFlag", "setLikeFlag", "likeList", "getLikeList", "setLikeList", "", "localId", "getLocalId", "()J", "setLocalId", "(J)V", "Lcom/tencent/mm/protocal/protobuf/FinderLocation;", "location", "getLocation", "()Lcom/tencent/mm/protocal/protobuf/FinderLocation;", "setLocation", "(Lcom/tencent/mm/protocal/protobuf/FinderLocation;)V", "Lcom/tencent/mm/protocal/protobuf/LocalFinderMedia;", "mediaExtList", "getMediaExtList", "setMediaExtList", "mediaList", "getMediaList", "setMediaList", "mediaType", "getMediaType", "setMediaType", "nickName", "getNickName", "setNickName", "nickNameSpan", "getNickNameSpan", "setNickNameSpan", "objectNonceId", "getObjectNonceId", "setObjectNonceId", "posTriggerConfig", "Lcom/tencent/mm/plugin/finder/storage/FinderItem$PosTriggerConfig;", "getPosTriggerConfig", "()Lcom/tencent/mm/plugin/finder/storage/FinderItem$PosTriggerConfig;", "setPosTriggerConfig", "(Lcom/tencent/mm/plugin/finder/storage/FinderItem$PosTriggerConfig;)V", "private_flag", "getPrivate_flag", "setPrivate_flag", "readCount", "getReadCount", "setReadCount", "Lcom/tencent/mm/protocal/protobuf/FinderContact;", "refObjectContact", "getRefObjectContact", "()Lcom/tencent/mm/protocal/protobuf/FinderContact;", "setRefObjectContact", "(Lcom/tencent/mm/protocal/protobuf/FinderContact;)V", "refObjectFlag", "getRefObjectFlag", "setRefObjectFlag", "refObjectId", "getRefObjectId", "setRefObjectId", "relatedFeedId", "getRelatedFeedId", "setRelatedFeedId", "timestamps", "getTimestamps", "topicClickExtra", "Lcom/tencent/mm/plugin/finder/utils/FinderTopicUtil$ClickExtra;", "getTopicClickExtra", "()Lcom/tencent/mm/plugin/finder/utils/FinderTopicUtil$ClickExtra;", "setTopicClickExtra", "(Lcom/tencent/mm/plugin/finder/utils/FinderTopicUtil$ClickExtra;)V", "topicList", "Lcom/tencent/mm/plugin/finder/utils/FinderTopicUtil$TopicStringInfo;", "getTopicList", "userName", "getUserName", "setUserName", "convertFrom", "", "cu", "Landroid/database/Cursor;", "fixMediaType", "obj", "getCropInfo", "index", "getDBInfo", "Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "getExpectId", "getFinderObject", "getId", "getNotShareMsg", "getPostInfo", "Lcom/tencent/mm/protocal/protobuf/LocalFinderPostInfo;", "getUnsignedId", "info", "isCommentClose", "isNeedCrop", "isNeedVideoCompositionPlay", "isNotShare", "isOldVersion", "isOnlySelfSee", "isPostFailed", "isPostFailedCanRetry", "isPostFinish", "isPostNoAuth", "isPrivate", "isUploadFailed", "mediaExt", "mediaId", "parseJsonOfPosTriggerConfig", "setPostFailed", "setPostFailedAndNoAuth", "setPostFailedAndNotRetry", "setPostFinish", "setPostInfo", "field_postinfo", "setPostWaiting", "trackPost", "stage", "updateFinderObject", "svrFeed", "Companion", "PosTriggerConfig", "plugin-finder_release"})
 public class FinderItem
-  extends com.tencent.mm.g.c.cf
+  extends cf
 {
   private static final String TAG = "Finder.FinderItem";
   private static final c.a info;
-  private static boolean syj;
-  public static final a syk;
-  private int ePx;
-  private amx foldedLayout;
+  private static boolean sJa;
+  public static final a sJb;
+  private int eRi;
+  private ank foldedLayout;
   private int mediaType;
-  private FinderObject rJO;
-  private b sxZ;
-  private o.a sya;
-  private final long syb;
-  private boolean syc;
-  private long syd;
-  private SpannableString sye;
-  private SpannableString syf;
-  private SpannableString syg;
-  private final List<o.c> syh;
-  private List<BaseFinderFeed> syi;
+  private FinderObject rSc;
+  private b sIQ;
+  private o.a sIR;
+  private final long sIS;
+  private boolean sIT;
+  private long sIU;
+  private SpannableString sIV;
+  private SpannableString sIW;
+  private SpannableString sIX;
+  private final List<o.c> sIY;
+  private List<BaseFinderFeed> sIZ;
   
   static
   {
     AppMethodBeat.i(167015);
-    syk = new a((byte)0);
-    c.a locala = com.tencent.mm.g.c.cf.initAutoDBInfo(FinderItem.class);
+    sJb = new a((byte)0);
+    c.a locala = cf.initAutoDBInfo(FinderItem.class);
     d.g.b.p.g(locala, "initAutoDBInfo(FinderItem::class.java)");
     info = locala;
     TAG = "Finder.FinderItem";
@@ -80,19 +84,22 @@ public class FinderItem
     AppMethodBeat.i(167014);
     FinderObject localFinderObject = new FinderObject();
     localFinderObject.objectDesc = new FinderObjectDesc();
-    localFinderObject.objectDesc.location = new aoy();
-    this.rJO = localFinderObject;
-    this.sya = new o.a(0L, (byte)0);
-    this.syb = com.tencent.mm.model.cf.aCM();
-    this.syh = ((List)new ArrayList());
-    this.syi = ((List)new ArrayList());
+    FinderObjectDesc localFinderObjectDesc = localFinderObject.objectDesc;
+    if (localFinderObjectDesc != null) {
+      localFinderObjectDesc.location = new apl();
+    }
+    this.rSc = localFinderObject;
+    this.sIR = new o.a(0L, (byte)0);
+    this.sIS = ch.aDc();
+    this.sIY = ((List)new ArrayList());
+    this.sIZ = ((List)new ArrayList());
     AppMethodBeat.o(167014);
   }
   
   private final void fixMediaType(FinderObject paramFinderObject)
   {
     AppMethodBeat.i(166979);
-    Object localObject = com.tencent.mm.plugin.finder.utils.p.sMo;
+    Object localObject = com.tencent.mm.plugin.finder.utils.p.sXz;
     int i = com.tencent.mm.plugin.finder.utils.p.p(paramFinderObject);
     paramFinderObject = paramFinderObject.objectDesc;
     if (paramFinderObject != null)
@@ -126,21 +133,21 @@ public class FinderItem
       paramCursor = new FinderObject();
     }
     setFeedObject(paramCursor);
-    this.rJO.username = u.aAu();
-    paramCursor = com.tencent.mm.plugin.finder.utils.p.sMo;
-    this.mediaType = com.tencent.mm.plugin.finder.utils.p.p(this.rJO);
+    this.rSc.username = com.tencent.mm.model.v.aAK();
+    paramCursor = com.tencent.mm.plugin.finder.utils.p.sXz;
+    this.mediaType = com.tencent.mm.plugin.finder.utils.p.p(this.rSc);
     AppMethodBeat.o(166984);
   }
   
   public final int getCommentCount()
   {
-    return this.rJO.commentCount;
+    return this.rSc.commentCount;
   }
   
   public final LinkedList<FinderCommentInfo> getCommentList()
   {
     AppMethodBeat.i(166996);
-    LinkedList localLinkedList = this.rJO.commentList;
+    LinkedList localLinkedList = this.rSc.commentList;
     d.g.b.p.g(localLinkedList, "feedObject.commentList");
     AppMethodBeat.o(166996);
     return localLinkedList;
@@ -148,12 +155,12 @@ public class FinderItem
   
   public final int getComment_close()
   {
-    return this.rJO.commentClose;
+    return this.rSc.commentClose;
   }
   
   public final int getCreateTime()
   {
-    return this.rJO.createtime;
+    return this.rSc.createtime;
   }
   
   public final long getCreateTime()
@@ -161,13 +168,13 @@ public class FinderItem
     return this.field_createTime;
   }
   
-  public final bvf getCropInfo(int paramInt)
+  public final bvz getCropInfo(int paramInt)
   {
     AppMethodBeat.i(167007);
     Object localObject = getMediaList();
     if (localObject != null)
     {
-      localObject = (bvf)j.E((List)localObject, paramInt);
+      localObject = (bvz)j.F((List)localObject, paramInt);
       AppMethodBeat.o(167007);
       return localObject;
     }
@@ -182,95 +189,106 @@ public class FinderItem
   
   public final String getDebugDescription()
   {
-    AppMethodBeat.i(203680);
+    AppMethodBeat.i(204248);
     Object localObject = getDescription();
     int i = Math.min(((String)localObject).length(), 3);
     if (localObject == null)
     {
       localObject = new d.v("null cannot be cast to non-null type java.lang.String");
-      AppMethodBeat.o(203680);
+      AppMethodBeat.o(204248);
       throw ((Throwable)localObject);
     }
     localObject = ((String)localObject).substring(0, i);
     d.g.b.p.g(localObject, "(this as java.lang.Strin…ing(startIndex, endIndex)");
-    AppMethodBeat.o(203680);
+    AppMethodBeat.o(204248);
     return localObject;
   }
   
   public final String getDescription()
   {
-    String str2 = this.rJO.objectDesc.description;
-    String str1 = str2;
-    if (str2 == null) {
-      str1 = "";
+    Object localObject = this.rSc.objectDesc;
+    if (localObject != null)
+    {
+      String str = ((FinderObjectDesc)localObject).description;
+      localObject = str;
+      if (str != null) {}
     }
-    return str1;
+    else
+    {
+      localObject = "";
+    }
+    return localObject;
   }
   
   public final SpannableString getDescriptionFullSpan()
   {
-    return this.syg;
+    return this.sIX;
   }
   
   public final SpannableString getDescriptionSpan()
   {
-    return this.syf;
+    return this.sIW;
   }
   
   public final long getExpectId()
   {
-    AppMethodBeat.i(203679);
+    AppMethodBeat.i(204247);
     if (this.field_id == 0L)
     {
       l = getLocalId();
-      AppMethodBeat.o(203679);
+      AppMethodBeat.o(204247);
       return l;
     }
     long l = this.field_id;
-    AppMethodBeat.o(203679);
+    AppMethodBeat.o(204247);
     return l;
   }
   
-  public final amn getExtReading()
+  public final amz getExtReading()
   {
     AppMethodBeat.i(167000);
-    amn localamn2 = this.rJO.objectDesc.extReading;
-    amn localamn1 = localamn2;
-    if (localamn2 == null)
+    Object localObject = this.rSc.objectDesc;
+    if (localObject != null)
     {
-      localamn1 = new amn();
-      localamn1.link = "";
-      localamn1.title = "";
+      amz localamz = ((FinderObjectDesc)localObject).extReading;
+      localObject = localamz;
+      if (localamz != null) {}
+    }
+    else
+    {
+      localObject = new amz();
+      ((amz)localObject).link = "";
+      ((amz)localObject).title = "";
     }
     AppMethodBeat.o(167000);
-    return localamn1;
+    return localObject;
   }
   
   public final int getFavCount()
   {
-    return this.rJO.favCount;
+    return this.rSc.favCount;
   }
   
   public final int getFavFlag()
   {
-    return this.rJO.favFlag;
+    return this.rSc.favFlag;
   }
   
   public final FinderObject getFeedObject()
   {
-    return this.rJO;
+    return this.rSc;
   }
   
   public final FinderObject getFinderObject()
   {
-    return this.rJO;
+    return this.rSc;
   }
   
   public final List<BaseFinderFeed> getFoldedFeedList()
   {
-    AppMethodBeat.i(203681);
+    AppMethodBeat.i(204249);
     Object localObject2;
-    if (bt.hj(this.syi))
+    if (bu.ht(this.sIZ))
     {
       localObject1 = getFoldedLayout();
       Object localObject3;
@@ -278,14 +296,14 @@ public class FinderItem
       Object localObject4;
       if (localObject1 != null)
       {
-        localObject1 = ((amx)localObject1).Gmm;
-        if (bt.hj((List)localObject1)) {
+        localObject1 = ((ank)localObject1).GFu;
+        if (bu.ht((List)localObject1)) {
           break label279;
         }
         localObject1 = getFoldedLayout();
         if (localObject1 != null)
         {
-          localObject1 = ((amx)localObject1).Gmm;
+          localObject1 = ((ank)localObject1).GFu;
           if (localObject1 != null)
           {
             localObject1 = (Iterable)localObject1;
@@ -341,7 +359,7 @@ public class FinderItem
             localObject3 = (FinderObject)((Iterator)localObject2).next();
             d.g.b.p.g(localObject3, "feed");
             localObject3 = a.a((FinderObject)localObject3, 1);
-            localObject4 = com.tencent.mm.plugin.finder.storage.logic.b.sAs;
+            localObject4 = com.tencent.mm.plugin.finder.storage.logic.b.sLq;
             ((Collection)localObject1).add(b.a.j((FinderItem)localObject3));
             continue;
             localObject1 = null;
@@ -349,7 +367,7 @@ public class FinderItem
           }
         }
         localObject1 = (List)localObject1;
-        localObject2 = this.syi;
+        localObject2 = this.sIZ;
         if (localObject1 == null) {
           break label297;
         }
@@ -357,35 +375,35 @@ public class FinderItem
     }
     label279:
     label297:
-    for (Object localObject1 = (Collection)localObject1;; localObject1 = (Collection)d.a.v.MKE)
+    for (Object localObject1 = (Collection)localObject1;; localObject1 = (Collection)d.a.v.NhH)
     {
       ((List)localObject2).addAll((Collection)localObject1);
-      localObject1 = this.syi;
-      AppMethodBeat.o(203681);
+      localObject1 = this.sIZ;
+      AppMethodBeat.o(204249);
       return localObject1;
       localObject1 = null;
       break;
     }
   }
   
-  public final amx getFoldedLayout()
+  public final ank getFoldedLayout()
   {
-    return this.rJO.foldedLayout;
+    return this.rSc.foldedLayout;
   }
   
   public final int getForwardCount()
   {
-    return this.rJO.forwardCount;
+    return this.rSc.forwardCount;
   }
   
   public final int getFriendLikeCount()
   {
-    return this.rJO.friendLikeCount;
+    return this.rSc.friendLikeCount;
   }
   
   public final int getFromType()
   {
-    return this.ePx;
+    return this.eRi;
   }
   
   public final long getId()
@@ -395,18 +413,18 @@ public class FinderItem
   
   public final int getLikeCount()
   {
-    return this.rJO.likeCount;
+    return this.rSc.likeCount;
   }
   
   public final int getLikeFlag()
   {
-    return this.rJO.likeFlag;
+    return this.rSc.likeFlag;
   }
   
   public final LinkedList<FinderCommentInfo> getLikeList()
   {
     AppMethodBeat.i(166994);
-    LinkedList localLinkedList = this.rJO.likeList;
+    LinkedList localLinkedList = this.rSc.likeList;
     d.g.b.p.g(localLinkedList, "feedObject.likeList");
     AppMethodBeat.o(166994);
     return localLinkedList;
@@ -417,28 +435,33 @@ public class FinderItem
     return this.field_localId;
   }
   
-  public final aoy getLocation()
+  public final apl getLocation()
   {
     AppMethodBeat.i(166998);
-    aoy localaoy2 = this.rJO.objectDesc.location;
-    aoy localaoy1 = localaoy2;
-    if (localaoy2 == null)
+    Object localObject = this.rSc.objectDesc;
+    if (localObject != null)
     {
-      localaoy1 = new aoy();
-      localaoy1.ePv = "";
-      localaoy1.jDf = "";
+      apl localapl = ((FinderObjectDesc)localObject).location;
+      localObject = localapl;
+      if (localapl != null) {}
+    }
+    else
+    {
+      localObject = new apl();
+      ((apl)localObject).eRg = "";
+      ((apl)localObject).jGd = "";
     }
     AppMethodBeat.o(166998);
-    return localaoy1;
+    return localObject;
   }
   
-  public final LinkedList<bvf> getMediaExtList()
+  public final LinkedList<bvz> getMediaExtList()
   {
     AppMethodBeat.i(166991);
     Object localObject = this.field_mediaExtList;
     if (localObject != null)
     {
-      LinkedList localLinkedList = ((bvl)localObject).GPF;
+      LinkedList localLinkedList = ((bwf)localObject).Hjh;
       localObject = localLinkedList;
       if (localLinkedList != null) {}
     }
@@ -450,20 +473,29 @@ public class FinderItem
     return localObject;
   }
   
-  public final LinkedList<bvf> getMediaList()
+  public final LinkedList<bvz> getMediaList()
   {
     AppMethodBeat.i(166989);
     if (getMediaExtList().size() > 0)
     {
-      localLinkedList = getMediaExtList();
+      localObject = getMediaExtList();
       AppMethodBeat.o(166989);
-      return localLinkedList;
+      return localObject;
     }
-    LinkedList localLinkedList = this.rJO.objectDesc.media;
-    d.g.b.p.g(localLinkedList, "feedObject.objectDesc.media");
-    localLinkedList = com.tencent.mm.plugin.finder.storage.data.i.aj(localLinkedList);
+    Object localObject = this.rSc.objectDesc;
+    if (localObject != null)
+    {
+      localObject = ((FinderObjectDesc)localObject).media;
+      if (localObject != null)
+      {
+        localObject = i.aj((LinkedList)localObject);
+        AppMethodBeat.o(166989);
+        return localObject;
+      }
+    }
+    localObject = new LinkedList();
     AppMethodBeat.o(166989);
-    return localLinkedList;
+    return localObject;
   }
   
   public final int getMediaType()
@@ -473,7 +505,7 @@ public class FinderItem
   
   public final String getNickName()
   {
-    String str2 = this.rJO.nickname;
+    String str2 = this.rSc.nickname;
     String str1 = str2;
     if (str2 == null) {
       str1 = "";
@@ -483,12 +515,12 @@ public class FinderItem
   
   public final SpannableString getNickNameSpan()
   {
-    return this.sye;
+    return this.sIV;
   }
   
   public final String getNotShareMsg()
   {
-    String str2 = this.rJO.sendShareFavWording;
+    String str2 = this.rSc.sendShareFavWording;
     String str1 = str2;
     if (str2 == null) {
       str1 = "";
@@ -498,7 +530,7 @@ public class FinderItem
   
   public final String getObjectNonceId()
   {
-    String str2 = this.rJO.objectNonceId;
+    String str2 = this.rSc.objectNonceId;
     String str1 = str2;
     if (str2 == null) {
       str1 = "";
@@ -508,35 +540,35 @@ public class FinderItem
   
   public final b getPosTriggerConfig()
   {
-    return this.sxZ;
+    return this.sIQ;
   }
   
-  public final bvg getPostInfo()
+  public final bwa getPostInfo()
   {
     AppMethodBeat.i(167004);
-    bvg localbvg2 = this.field_postinfo;
-    bvg localbvg1 = localbvg2;
-    if (localbvg2 == null) {
-      localbvg1 = new bvg();
+    bwa localbwa2 = this.field_postinfo;
+    bwa localbwa1 = localbwa2;
+    if (localbwa2 == null) {
+      localbwa1 = new bwa();
     }
     AppMethodBeat.o(167004);
-    return localbvg1;
+    return localbwa1;
   }
   
   public final int getPrivate_flag()
   {
-    return this.rJO.privateFlag;
+    return this.rSc.privateFlag;
   }
   
   public final int getReadCount()
   {
-    return this.rJO.readCount;
+    return this.rSc.readCount;
   }
   
   public final FinderContact getRefObjectContact()
   {
     AppMethodBeat.i(167002);
-    FinderContact localFinderContact2 = this.rJO.refObjectContact;
+    FinderContact localFinderContact2 = this.rSc.refObjectContact;
     FinderContact localFinderContact1 = localFinderContact2;
     if (localFinderContact2 == null) {
       localFinderContact1 = new FinderContact();
@@ -547,37 +579,45 @@ public class FinderItem
   
   public final long getRefObjectFlag()
   {
-    return this.rJO.refObjectFlag;
+    return this.rSc.refObjectFlag;
   }
   
   public final long getRefObjectId()
   {
-    return this.rJO.refObjectId;
+    return this.rSc.refObjectId;
   }
   
   public final long getRelatedFeedId()
   {
-    return this.syd;
+    return this.sIU;
   }
   
   public final long getTimestamps()
   {
-    return this.syb;
+    return this.sIS;
   }
   
   public final o.a getTopicClickExtra()
   {
-    return this.sya;
+    return this.sIR;
   }
   
   public final List<o.c> getTopicList()
   {
-    return this.syh;
+    return this.sIY;
+  }
+  
+  public final String getUnsignedId()
+  {
+    AppMethodBeat.i(204246);
+    String str = c.rp(getId());
+    AppMethodBeat.o(204246);
+    return str;
   }
   
   public final String getUserName()
   {
-    String str2 = this.rJO.username;
+    String str2 = this.rSc.username;
     String str1 = str2;
     if (str2 == null) {
       str1 = "";
@@ -588,7 +628,7 @@ public class FinderItem
   public final String info()
   {
     AppMethodBeat.i(167012);
-    StringBuilder localStringBuilder = new StringBuilder("id:").append(this.field_id).append(" username ").append(this.rJO.username).append(" mediaType ").append(this.mediaType).append(" localFlag ").append(this.field_localFlag).append(" description ");
+    StringBuilder localStringBuilder = new StringBuilder("id:").append(this.field_id).append(" username ").append(this.rSc.username).append(" mediaType ").append(this.mediaType).append(" localFlag ").append(this.field_localFlag).append(" description ");
     Object localObject = getDescription();
     if (localObject != null)
     {
@@ -613,19 +653,19 @@ public class FinderItem
   
   public final boolean isCommentClose()
   {
-    return this.rJO.commentClose == 1;
+    return this.rSc.commentClose == 1;
   }
   
   public final boolean isNeedCrop(int paramInt)
   {
     AppMethodBeat.i(167008);
-    bvf localbvf = getCropInfo(paramInt);
-    if (localbvf == null)
+    bvz localbvz = getCropInfo(paramInt);
+    if (localbvz == null)
     {
       AppMethodBeat.o(167008);
       return false;
     }
-    if (localbvf.GPt)
+    if (localbvz.HiV)
     {
       AppMethodBeat.o(167008);
       return true;
@@ -636,32 +676,32 @@ public class FinderItem
   
   public final boolean isNeedVideoCompositionPlay(int paramInt)
   {
-    AppMethodBeat.i(203682);
-    bvf localbvf = getCropInfo(paramInt);
-    com.tencent.mm.plugin.finder.utils.p localp = com.tencent.mm.plugin.finder.utils.p.sMo;
-    if (!com.tencent.mm.plugin.finder.utils.p.d(localbvf))
+    AppMethodBeat.i(204250);
+    bvz localbvz = getCropInfo(paramInt);
+    com.tencent.mm.plugin.finder.utils.p localp = com.tencent.mm.plugin.finder.utils.p.sXz;
+    if (!com.tencent.mm.plugin.finder.utils.p.d(localbvz))
     {
-      AppMethodBeat.o(203682);
+      AppMethodBeat.o(204250);
       return true;
     }
-    AppMethodBeat.o(203682);
+    AppMethodBeat.o(204250);
     return false;
   }
   
   public final boolean isNotShare()
   {
-    return this.rJO.objectStatus == 2;
+    return this.rSc.objectStatus == 2;
   }
   
   public final boolean isOldVersion()
   {
-    return this.rJO.secondaryShowFlag != 1;
+    return this.rSc.secondaryShowFlag != 1;
   }
   
   public final boolean isOnlySelfSee()
   {
-    if (syj) {}
-    while (this.rJO.objectStatus == 1) {
+    if (sJa) {}
+    while (this.rSc.objectStatus == 1) {
       return true;
     }
     return false;
@@ -689,18 +729,18 @@ public class FinderItem
   
   public final boolean isPrivate()
   {
-    return this.rJO.privateFlag == 1;
+    return this.rSc.privateFlag == 1;
   }
   
   public final boolean isRelatedItem()
   {
-    return this.syc;
+    return this.sIT;
   }
   
   public final boolean isUploadFailed()
   {
     AppMethodBeat.i(167011);
-    if (getPostInfo().GPx == 2)
+    if (getPostInfo().HiZ == 2)
     {
       AppMethodBeat.o(167011);
       return true;
@@ -709,14 +749,14 @@ public class FinderItem
     return false;
   }
   
-  public final bvf mediaExt(String paramString)
+  public final bvz mediaExt(String paramString)
   {
     AppMethodBeat.i(166993);
     d.g.b.p.h(paramString, "mediaId");
     Object localObject = this.field_mediaExtList;
     if (localObject != null)
     {
-      localObject = ((bvl)localObject).GPF;
+      localObject = ((bwf)localObject).Hjh;
       if (localObject != null)
       {
         Iterator localIterator = ((Iterable)localObject).iterator();
@@ -726,10 +766,10 @@ public class FinderItem
             break;
           }
           localObject = localIterator.next();
-        } while (!d.g.b.p.i(((bvf)localObject).mediaId, paramString));
+        } while (!d.g.b.p.i(((bvz)localObject).mediaId, paramString));
         for (paramString = (String)localObject;; paramString = null)
         {
-          paramString = (bvf)paramString;
+          paramString = (bvz)paramString;
           AppMethodBeat.o(166993);
           return paramString;
         }
@@ -741,105 +781,106 @@ public class FinderItem
   
   public final b parseJsonOfPosTriggerConfig()
   {
-    AppMethodBeat.i(203678);
+    AppMethodBeat.i(204245);
     Object localObject1 = new b(5, 0, 4, 0, "0");
     Object localObject2 = new b(10, 80, 8, 64, "||");
     int i;
     if (this.mediaType == 2)
     {
-      localObject2 = this.rJO.posTriggerConfig;
+      localObject2 = this.rSc.posTriggerConfig;
       if (localObject2 == null) {
-        break label461;
+        break label469;
       }
+      d.g.b.p.g(localObject2, "it");
       if (((CharSequence)localObject2).length() <= 0) {
-        break label409;
+        break label417;
       }
       i = 1;
-      label79:
-      label83:
+      label87:
+      label91:
       if ((i != 0) && (localObject2 == null)) {
-        break label461;
+        break label469;
       }
     }
-    label409:
-    label461:
-    label470:
-    label477:
+    label417:
+    label469:
+    label478:
+    label485:
     for (;;)
     {
       boolean bool1;
       try
       {
         JSONObject localJSONObject1 = new JSONObject((String)localObject2);
-        i = ((b)localObject1).sbY;
+        i = ((b)localObject1).skP;
         if (localJSONObject1.has("maxUnreadCount")) {
           i = localJSONObject1.getInt("maxUnreadCount");
         }
         JSONObject localJSONObject2 = localJSONObject1.getJSONObject("config");
-        int j = ((b)localObject1).syl;
+        int j = ((b)localObject1).sJc;
         if (localJSONObject2.has("showTime")) {
           j = localJSONObject2.getInt("showTime");
         }
-        int k = ((b)localObject1).sym;
+        int k = ((b)localObject1).sJd;
         if (localJSONObject2.has("showPercentage")) {
           k = localJSONObject2.getInt("showPercentage");
         }
-        int m = ((b)localObject1).syn;
+        int m = ((b)localObject1).sJe;
         if (localJSONObject2.has("preLoadTime")) {
           m = localJSONObject2.getInt("preLoadTime");
         }
-        int n = ((b)localObject1).syo;
+        int n = ((b)localObject1).sJf;
         if (localJSONObject2.has("preLoadPercentage")) {
           n = localJSONObject2.getInt("preLoadPercentage");
         }
-        String str = ((b)localObject1).syp;
+        String str = ((b)localObject1).sJg;
         if (localJSONObject2.has("logic"))
         {
           str = localJSONObject2.getString("logic");
           d.g.b.p.g(str, "config.getString(\"logic\")");
         }
-        bool2 = ((b)localObject1).syq;
+        bool2 = ((b)localObject1).sJh;
         if (localJSONObject1.has("favRelateListEnable"))
         {
           if (localJSONObject1.optInt("favRelateListEnable") == 1)
           {
             bool1 = true;
-            break label470;
+            break label478;
           }
         }
         else
         {
-          bool1 = ((b)localObject1).syr;
+          bool1 = ((b)localObject1).sJi;
           if (localJSONObject1.has("favRelateListEnableOnClick"))
           {
             if (localJSONObject1.optInt("favRelateListEnableOnClick") != 1) {
               continue;
             }
             bool1 = true;
-            break label477;
+            break label485;
           }
           localObject2 = new b(i, j, k, m, n, str, bool2, bool1, false, (String)localObject2);
-          ad.i(TAG, "[parseJsonOfPosTriggerConfig] config=".concat(String.valueOf(localObject2)));
-          AppMethodBeat.o(203678);
+          ae.i(TAG, "[parseJsonOfPosTriggerConfig] config=".concat(String.valueOf(localObject2)));
+          AppMethodBeat.o(204245);
           return localObject2;
           localObject1 = localObject2;
           break;
           i = 0;
-          break label79;
+          break label87;
           localObject2 = null;
-          break label83;
+          break label91;
         }
         bool1 = false;
-        break label470;
+        break label478;
         bool1 = false;
       }
       catch (Exception localException)
       {
-        ad.printErrStackTrace(TAG, (Throwable)localException, "", new Object[0]);
-        AppMethodBeat.o(203678);
+        ae.printErrStackTrace(TAG, (Throwable)localException, "", new Object[0]);
+        AppMethodBeat.o(204245);
         return localObject1;
       }
-      AppMethodBeat.o(203678);
+      AppMethodBeat.o(204245);
       return localObject1;
       boolean bool2 = bool1;
     }
@@ -848,8 +889,8 @@ public class FinderItem
   public final void setCommentCount(int paramInt)
   {
     AppMethodBeat.i(166987);
-    ad.d("Finder.FinderItem", "setCommentCount " + this.rJO.hashCode() + ", from:" + getCommentCount() + ", to:" + getCommentCount());
-    this.rJO.commentCount = paramInt;
+    ae.d("Finder.FinderItem", "setCommentCount " + this.rSc.hashCode() + ", from:" + getCommentCount() + ", to:" + getCommentCount());
+    this.rSc.commentCount = paramInt;
     AppMethodBeat.o(166987);
   }
   
@@ -857,64 +898,73 @@ public class FinderItem
   {
     AppMethodBeat.i(166997);
     d.g.b.p.h(paramLinkedList, "value");
-    this.rJO.commentList = paramLinkedList;
+    this.rSc.commentList = paramLinkedList;
     AppMethodBeat.o(166997);
   }
   
   public final void setComment_close(int paramInt)
   {
-    this.rJO.commentClose = paramInt;
+    this.rSc.commentClose = paramInt;
   }
   
   public final void setCreateTime(int paramInt)
   {
-    this.rJO.createtime = paramInt;
+    this.rSc.createtime = paramInt;
   }
   
   public final void setDescription(String paramString)
   {
     AppMethodBeat.i(166988);
     d.g.b.p.h(paramString, "value");
-    this.rJO.objectDesc.description = paramString;
-    this.syf = k.c(aj.getContext(), (CharSequence)paramString);
-    this.syg = this.syf;
-    ad.w(TAG, "unexpecting write!");
+    FinderObjectDesc localFinderObjectDesc = this.rSc.objectDesc;
+    if (localFinderObjectDesc != null) {
+      localFinderObjectDesc.description = paramString;
+    }
+    this.sIW = k.c(ak.getContext(), (CharSequence)paramString);
+    this.sIX = this.sIW;
+    ae.w(TAG, "unexpecting write!");
     AppMethodBeat.o(166988);
   }
   
   public final void setDescriptionFullSpan(SpannableString paramSpannableString)
   {
-    this.syg = paramSpannableString;
+    this.sIX = paramSpannableString;
   }
   
   public final void setDescriptionSpan(SpannableString paramSpannableString)
   {
-    this.syf = paramSpannableString;
+    this.sIW = paramSpannableString;
   }
   
-  public final void setExtReading(amn paramamn)
+  public final void setExtReading(amz paramamz)
   {
     AppMethodBeat.i(167001);
-    d.g.b.p.h(paramamn, "value");
-    this.rJO.objectDesc.extReading = paramamn;
+    d.g.b.p.h(paramamz, "value");
+    FinderObjectDesc localFinderObjectDesc = this.rSc.objectDesc;
+    if (localFinderObjectDesc != null)
+    {
+      localFinderObjectDesc.extReading = paramamz;
+      AppMethodBeat.o(167001);
+      return;
+    }
     AppMethodBeat.o(167001);
   }
   
   public final void setFavCount(int paramInt)
   {
-    this.rJO.favCount = paramInt;
+    this.rSc.favCount = paramInt;
   }
   
   public final void setFavFlag(int paramInt)
   {
-    this.rJO.favFlag = paramInt;
+    this.rSc.favFlag = paramInt;
   }
   
   public final void setFeedObject(FinderObject paramFinderObject)
   {
     AppMethodBeat.i(166980);
     d.g.b.p.h(paramFinderObject, "value");
-    Object localObject1 = com.tencent.mm.plugin.finder.utils.p.sMo;
+    Object localObject1 = com.tencent.mm.plugin.finder.utils.p.sXz;
     this.mediaType = com.tencent.mm.plugin.finder.utils.p.p(paramFinderObject);
     this.field_createTime = paramFinderObject.createtime;
     this.field_id = paramFinderObject.id;
@@ -925,115 +975,135 @@ public class FinderItem
     }
     this.field_username = ((String)localObject1);
     fixMediaType(paramFinderObject);
-    this.rJO = paramFinderObject;
+    this.rSc = paramFinderObject;
     this.field_finderObject = paramFinderObject;
     Object localObject3;
-    if (this.ePx == 16)
+    if (this.eRi == 16)
     {
-      localObject3 = aj.getContext();
-      localObject1 = h.stT;
+      localObject3 = ak.getContext();
+      localObject1 = h.sEe;
       localObject2 = paramFinderObject.nickname;
       localObject1 = localObject2;
       if (localObject2 == null) {
         localObject1 = "";
       }
-      this.sye = k.d((Context)localObject3, (CharSequence)h.ahY((String)localObject1), 0.0F);
-      localObject3 = aj.getContext();
-      localObject1 = h.stT;
-      localObject2 = paramFinderObject.objectDesc.description;
-      localObject1 = localObject2;
-      if (localObject2 == null) {
+      this.sIV = k.d((Context)localObject3, (CharSequence)h.aiW((String)localObject1), 0.0F);
+      localObject3 = ak.getContext();
+      localObject1 = h.sEe;
+      localObject1 = paramFinderObject.objectDesc;
+      if (localObject1 != null)
+      {
+        localObject2 = ((FinderObjectDesc)localObject1).description;
+        localObject1 = localObject2;
+        if (localObject2 != null) {}
+      }
+      else
+      {
         localObject1 = "";
       }
-      this.syf = k.b((Context)localObject3, (CharSequence)h.ahX((String)localObject1), 0.0F);
-      localObject1 = n.sMc;
-      localObject1 = paramFinderObject.objectDesc.topic;
+      this.sIW = k.b((Context)localObject3, (CharSequence)h.aiV((String)localObject1), 0.0F);
+      localObject1 = n.sXn;
+      localObject1 = paramFinderObject.objectDesc;
       if (localObject1 == null) {
-        break label450;
+        break label483;
+      }
+      localObject1 = ((FinderObjectDesc)localObject1).topic;
+      if (localObject1 == null) {
+        break label483;
       }
     }
-    label439:
-    label450:
-    for (localObject1 = ((asf)localObject1).Gqu;; localObject1 = null)
+    label401:
+    label472:
+    label483:
+    for (localObject1 = ((asu)localObject1).GJP;; localObject1 = null)
     {
-      localObject3 = this.syf;
+      localObject3 = this.sIW;
       localObject2 = localObject3;
       if (localObject3 == null) {
         localObject2 = new SpannableString((CharSequence)"");
       }
       long l = this.field_id;
-      List localList = this.syh;
+      List localList = this.sIY;
       LinkedList localLinkedList = paramFinderObject.mentionedUserContact;
       localObject3 = localLinkedList;
       if (localLinkedList == null) {
         localObject3 = new LinkedList();
       }
-      localLinkedList = paramFinderObject.objectDesc.mentionedUser;
-      paramFinderObject = localLinkedList;
-      if (localLinkedList == null) {
+      paramFinderObject = paramFinderObject.objectDesc;
+      if (paramFinderObject != null)
+      {
+        localLinkedList = paramFinderObject.mentionedUser;
+        paramFinderObject = localLinkedList;
+        if (localLinkedList != null) {}
+      }
+      else
+      {
         paramFinderObject = new LinkedList();
       }
-      this.syg = n.a((String)localObject1, (SpannableString)localObject2, l, localList, (LinkedList)localObject3, paramFinderObject, (m)new c(this), (d.g.a.b)new d(this));
+      this.sIX = n.a((String)localObject1, (SpannableString)localObject2, l, localList, (LinkedList)localObject3, paramFinderObject, (m)new c(this), (d.g.a.b)new d(this));
       AppMethodBeat.o(166980);
       return;
-      localObject2 = aj.getContext();
+      localObject2 = ak.getContext();
       localObject1 = paramFinderObject.nickname;
       if (localObject1 != null)
       {
         localObject1 = (CharSequence)localObject1;
-        label377:
-        this.sye = k.c((Context)localObject2, (CharSequence)localObject1);
-        localObject2 = aj.getContext();
-        localObject1 = paramFinderObject.objectDesc.description;
+        this.sIV = k.c((Context)localObject2, (CharSequence)localObject1);
+        localObject2 = ak.getContext();
+        localObject1 = paramFinderObject.objectDesc;
         if (localObject1 == null) {
-          break label439;
+          break label472;
+        }
+        localObject1 = ((FinderObjectDesc)localObject1).description;
+        if (localObject1 == null) {
+          break label472;
         }
       }
       for (localObject1 = (CharSequence)localObject1;; localObject1 = (CharSequence)"")
       {
-        this.syf = k.c((Context)localObject2, (CharSequence)localObject1);
+        this.sIW = k.c((Context)localObject2, (CharSequence)localObject1);
         break;
         localObject1 = (CharSequence)"";
-        break label377;
+        break label401;
       }
     }
   }
   
-  public final void setFoldedLayout(amx paramamx)
+  public final void setFoldedLayout(ank paramank)
   {
-    this.foldedLayout = paramamx;
+    this.foldedLayout = paramank;
   }
   
   public final void setForwardCount(int paramInt)
   {
-    this.rJO.forwardCount = paramInt;
+    this.rSc.forwardCount = paramInt;
   }
   
   public final void setFriendLikeCount(int paramInt)
   {
-    this.rJO.friendLikeCount = paramInt;
+    this.rSc.friendLikeCount = paramInt;
   }
   
   public final void setFromType(int paramInt)
   {
-    this.ePx = paramInt;
+    this.eRi = paramInt;
   }
   
   public final void setLikeCount(int paramInt)
   {
-    this.rJO.likeCount = paramInt;
+    this.rSc.likeCount = paramInt;
   }
   
   public final void setLikeFlag(int paramInt)
   {
-    this.rJO.likeFlag = paramInt;
+    this.rSc.likeFlag = paramInt;
   }
   
   public final void setLikeList(LinkedList<FinderCommentInfo> paramLinkedList)
   {
     AppMethodBeat.i(166995);
     d.g.b.p.h(paramLinkedList, "value");
-    this.rJO.likeList = paramLinkedList;
+    this.rSc.likeList = paramLinkedList;
     AppMethodBeat.o(166995);
   }
   
@@ -1042,53 +1112,62 @@ public class FinderItem
     this.field_localId = paramLong;
   }
   
-  public final void setLocation(aoy paramaoy)
+  public final void setLocation(apl paramapl)
   {
     AppMethodBeat.i(166999);
-    d.g.b.p.h(paramaoy, "value");
-    this.rJO.objectDesc.location = paramaoy;
+    d.g.b.p.h(paramapl, "value");
+    FinderObjectDesc localFinderObjectDesc = this.rSc.objectDesc;
+    if (localFinderObjectDesc != null)
+    {
+      localFinderObjectDesc.location = paramapl;
+      AppMethodBeat.o(166999);
+      return;
+    }
     AppMethodBeat.o(166999);
   }
   
-  public final void setMediaExtList(LinkedList<bvf> paramLinkedList)
+  public final void setMediaExtList(LinkedList<bvz> paramLinkedList)
   {
     AppMethodBeat.i(166992);
     d.g.b.p.h(paramLinkedList, "value");
     if (this.field_mediaExtList == null) {
-      this.field_mediaExtList = new bvl();
+      this.field_mediaExtList = new bwf();
     }
-    this.field_mediaExtList.GPF = paramLinkedList;
+    this.field_mediaExtList.Hjh = paramLinkedList;
     AppMethodBeat.o(166992);
   }
   
-  public final void setMediaList(LinkedList<bvf> paramLinkedList)
+  public final void setMediaList(LinkedList<bvz> paramLinkedList)
   {
     AppMethodBeat.i(166990);
     d.g.b.p.h(paramLinkedList, "value");
-    FinderObjectDesc localFinderObjectDesc = this.rJO.objectDesc;
-    d.g.b.p.h(paramLinkedList, "$this$toServer");
-    LinkedList localLinkedList = new LinkedList();
-    Iterator localIterator = ((Iterable)paramLinkedList).iterator();
-    while (localIterator.hasNext())
+    FinderObjectDesc localFinderObjectDesc = this.rSc.objectDesc;
+    if (localFinderObjectDesc != null)
     {
-      bvf localbvf = (bvf)localIterator.next();
-      d.g.b.p.h(localbvf, "$this$toServer");
-      FinderMedia localFinderMedia = new FinderMedia();
-      localFinderMedia.url = localbvf.url;
-      localFinderMedia.mediaType = localbvf.mediaType;
-      localFinderMedia.thumbUrl = localbvf.thumbUrl;
-      localFinderMedia.videoDuration = localbvf.videoDuration;
-      localFinderMedia.width = localbvf.width;
-      localFinderMedia.height = localbvf.height;
-      localFinderMedia.md5sum = localbvf.md5sum;
-      localFinderMedia.fileSize = localbvf.fileSize;
-      localFinderMedia.bitrate = localbvf.bitrate;
-      localFinderMedia.coverUrl = localbvf.coverUrl;
-      localFinderMedia.codec_info = localbvf.codec_info;
-      localLinkedList.add(localFinderMedia);
+      d.g.b.p.h(paramLinkedList, "$this$toServer");
+      LinkedList localLinkedList = new LinkedList();
+      Iterator localIterator = ((Iterable)paramLinkedList).iterator();
+      while (localIterator.hasNext())
+      {
+        bvz localbvz = (bvz)localIterator.next();
+        d.g.b.p.h(localbvz, "$this$toServer");
+        FinderMedia localFinderMedia = new FinderMedia();
+        localFinderMedia.url = localbvz.url;
+        localFinderMedia.mediaType = localbvz.mediaType;
+        localFinderMedia.thumbUrl = localbvz.thumbUrl;
+        localFinderMedia.videoDuration = localbvz.videoDuration;
+        localFinderMedia.width = localbvz.width;
+        localFinderMedia.height = localbvz.height;
+        localFinderMedia.md5sum = localbvz.md5sum;
+        localFinderMedia.fileSize = localbvz.fileSize;
+        localFinderMedia.bitrate = localbvz.bitrate;
+        localFinderMedia.coverUrl = localbvz.coverUrl;
+        localFinderMedia.codec_info = localbvz.codec_info;
+        localLinkedList.add(localFinderMedia);
+      }
+      localFinderObjectDesc.media = localLinkedList;
     }
-    localFinderObjectDesc.media = localLinkedList;
-    if (this.rJO.id == 0L) {
+    if (this.rSc.id == 0L) {
       setMediaExtList(paramLinkedList);
     }
     AppMethodBeat.o(166990);
@@ -1103,27 +1182,27 @@ public class FinderItem
   {
     AppMethodBeat.i(166985);
     d.g.b.p.h(paramString, "value");
-    this.rJO.nickname = paramString;
-    this.sye = k.c(aj.getContext(), (CharSequence)paramString);
+    this.rSc.nickname = paramString;
+    this.sIV = k.c(ak.getContext(), (CharSequence)paramString);
     AppMethodBeat.o(166985);
   }
   
   public final void setNickNameSpan(SpannableString paramSpannableString)
   {
-    this.sye = paramSpannableString;
+    this.sIV = paramSpannableString;
   }
   
   public final void setObjectNonceId(String paramString)
   {
     AppMethodBeat.i(166983);
     d.g.b.p.h(paramString, "value");
-    this.rJO.objectNonceId = paramString;
+    this.rSc.objectNonceId = paramString;
     AppMethodBeat.o(166983);
   }
   
   public final void setPosTriggerConfig(b paramb)
   {
-    this.sxZ = paramb;
+    this.sIQ = paramb;
   }
   
   public final void setPostFailed()
@@ -1154,11 +1233,11 @@ public class FinderItem
     this.field_localFlag &= 0xFFFFFFFD;
   }
   
-  public final void setPostInfo(bvg parambvg)
+  public final void setPostInfo(bwa parambwa)
   {
     AppMethodBeat.i(167005);
-    d.g.b.p.h(parambvg, "field_postinfo");
-    this.field_postinfo = parambvg;
+    d.g.b.p.h(parambwa, "field_postinfo");
+    this.field_postinfo = parambwa;
     AppMethodBeat.o(167005);
   }
   
@@ -1170,47 +1249,47 @@ public class FinderItem
   
   public final void setPrivate_flag(int paramInt)
   {
-    this.rJO.privateFlag = paramInt;
+    this.rSc.privateFlag = paramInt;
   }
   
   public final void setReadCount(int paramInt)
   {
-    this.rJO.readCount = paramInt;
+    this.rSc.readCount = paramInt;
   }
   
   public final void setRefObjectContact(FinderContact paramFinderContact)
   {
     AppMethodBeat.i(167003);
     d.g.b.p.h(paramFinderContact, "value");
-    this.rJO.refObjectContact = paramFinderContact;
+    this.rSc.refObjectContact = paramFinderContact;
     AppMethodBeat.o(167003);
   }
   
   public final void setRefObjectFlag(long paramLong)
   {
-    this.rJO.refObjectFlag = paramLong;
+    this.rSc.refObjectFlag = paramLong;
   }
   
   public final void setRefObjectId(long paramLong)
   {
-    this.rJO.refObjectId = paramLong;
+    this.rSc.refObjectId = paramLong;
   }
   
   public final void setRelatedFeedId(long paramLong)
   {
-    this.syd = paramLong;
+    this.sIU = paramLong;
   }
   
   public final void setRelatedItem(boolean paramBoolean)
   {
-    this.syc = paramBoolean;
+    this.sIT = paramBoolean;
   }
   
   public final void setTopicClickExtra(o.a parama)
   {
     AppMethodBeat.i(166981);
     d.g.b.p.h(parama, "<set-?>");
-    this.sya = parama;
+    this.sIR = parama;
     AppMethodBeat.o(166981);
   }
   
@@ -1218,7 +1297,7 @@ public class FinderItem
   {
     AppMethodBeat.i(166986);
     d.g.b.p.h(paramString, "value");
-    this.rJO.username = paramString;
+    this.rSc.username = paramString;
     AppMethodBeat.o(166986);
   }
   
@@ -1231,7 +1310,7 @@ public class FinderItem
       Object localObject1 = this.field_postinfo;
       if (localObject1 != null)
       {
-        String str = "localId:" + getLocalId() + ", localFlag:" + this.field_localFlag + ", uploadState:" + ((bvg)localObject1).GPx + ", tryCount:" + ((bvg)localObject1).hfV + ", utilNow:" + (com.tencent.mm.model.cf.aCK() - ((bvg)localObject1).GPA) + "ms, mediaProcessCost:" + ((bvg)localObject1).GPB + "ms, uploadCost:" + ((bvg)localObject1).gpV + "ms, doSceneCost:" + ((bvg)localObject1).GPC + "ms, totalCost:" + ((bvg)localObject1).whI + "ms";
+        String str = "localId:" + getLocalId() + ", localFlag:" + this.field_localFlag + ", uploadState:" + ((bwa)localObject1).HiZ + ", tryCount:" + ((bwa)localObject1).hiJ + ", utilNow:" + (ch.aDa() - ((bwa)localObject1).Hjc) + "ms, mediaProcessCost:" + ((bwa)localObject1).Hjd + "ms, uploadCost:" + ((bwa)localObject1).gsq + "ms, doSceneCost:" + ((bwa)localObject1).Hje + "ms, totalCost:" + ((bwa)localObject1).wxm + "ms";
         localObject1 = "localId:" + getLocalId() + ", mediaList: ";
         Object localObject2 = (Iterable)getMediaExtList();
         int i = 0;
@@ -1240,24 +1319,24 @@ public class FinderItem
         {
           Object localObject3 = ((Iterator)localObject2).next();
           if (i < 0) {
-            j.gfB();
+            j.gkd();
           }
-          localObject3 = (bvf)localObject3;
-          localObject1 = (String)localObject1 + "Index" + i + ", fileSize:" + (float)com.tencent.mm.vfs.i.aYo(((bvf)localObject3).url) / 1024.0F / 1024.0F + "MB, mediaType:" + ((bvf)localObject3).mediaType + "; ";
+          localObject3 = (bvz)localObject3;
+          localObject1 = (String)localObject1 + "Index" + i + ", fileSize:" + (float)o.aZR(((bvz)localObject3).url) / 1024.0F / 1024.0F + "MB, mediaType:" + ((bvz)localObject3).mediaType + "; ";
           i += 1;
         }
-        ad.i("Finder.PostLog", "stage:" + paramString + ' ' + str);
-        ad.i("Finder.PostLog", "stage:" + paramString + ' ' + (String)localObject1);
+        ae.i("Finder.PostLog", "stage:" + paramString + ' ' + str);
+        ae.i("Finder.PostLog", "stage:" + paramString + ' ' + (String)localObject1);
         AppMethodBeat.o(167013);
         return;
       }
-      ad.i("Finder.PostLog", "stage:" + paramString + " localId:" + getLocalId() + ", postInfo is null");
+      ae.i("Finder.PostLog", "stage:" + paramString + " localId:" + getLocalId() + ", postInfo is null");
       AppMethodBeat.o(167013);
       return;
     }
     catch (Throwable paramString)
     {
-      ad.i("Finder.PostLog", "exception: ".concat(String.valueOf(paramString)));
+      ae.i("Finder.PostLog", "exception: ".concat(String.valueOf(paramString)));
       AppMethodBeat.o(167013);
     }
   }
@@ -1274,7 +1353,7 @@ public class FinderItem
     AppMethodBeat.o(167006);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/storage/FinderItem$Companion;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "debugOnlySelfSee", "", "getDebugOnlySelfSee", "()Z", "setDebugOnlySelfSee", "(Z)V", "info", "Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "getInfo", "()Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "create", "Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "feedObject", "Lcom/tencent/mm/protocal/protobuf/FinderObject;", "type", "", "plugin-finder_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/storage/FinderItem$Companion;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "debugOnlySelfSee", "", "getDebugOnlySelfSee", "()Z", "setDebugOnlySelfSee", "(Z)V", "info", "Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "getInfo", "()Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "create", "Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "feedObject", "Lcom/tencent/mm/protocal/protobuf/FinderObject;", "type", "", "plugin-finder_release"})
   public static final class a
   {
     public static FinderItem a(FinderObject paramFinderObject, int paramInt)
@@ -1284,61 +1363,85 @@ public class FinderItem
       FinderItem localFinderItem = new FinderItem();
       localFinderItem.setFromType(paramInt);
       localFinderItem.setFeedObject(paramFinderObject);
-      if ((bt.isNullOrNil(localFinderItem.getFeedObject().nickname)) && (localFinderItem.getFeedObject().contact != null) && (!bt.isNullOrNil(localFinderItem.getFeedObject().contact.nickname))) {
-        localFinderItem.getFeedObject().nickname = localFinderItem.getFeedObject().contact.nickname;
+      if ((bu.isNullOrNil(localFinderItem.getFeedObject().nickname)) && (localFinderItem.getFeedObject().contact != null))
+      {
+        paramFinderObject = localFinderItem.getFeedObject().contact;
+        if (paramFinderObject == null) {
+          break label121;
+        }
       }
-      AppMethodBeat.o(166977);
-      return localFinderItem;
+      label121:
+      for (paramFinderObject = paramFinderObject.nickname;; paramFinderObject = null)
+      {
+        if (!bu.isNullOrNil(paramFinderObject))
+        {
+          FinderObject localFinderObject = localFinderItem.getFeedObject();
+          paramFinderObject = localFinderItem.getFeedObject().contact;
+          if (paramFinderObject != null)
+          {
+            String str = paramFinderObject.nickname;
+            paramFinderObject = str;
+            if (str != null) {}
+          }
+          else
+          {
+            paramFinderObject = "";
+          }
+          localFinderObject.nickname = paramFinderObject;
+        }
+        AppMethodBeat.o(166977);
+        return localFinderItem;
+      }
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/storage/FinderItem$PosTriggerConfig;", "", "maxUnreadCount", "", "showTime", "showPercentage", "preLoadTime", "preLoadPercentage", "logic", "", "favRelateListEnable", "", "favRelateListEnableOnClick", "isLocalDefault", "jsonStr", "(IIIIILjava/lang/String;ZZZLjava/lang/String;)V", "getFavRelateListEnable", "()Z", "getFavRelateListEnableOnClick", "setLocalDefault", "(Z)V", "getJsonStr", "()Ljava/lang/String;", "setJsonStr", "(Ljava/lang/String;)V", "getLogic", "getMaxUnreadCount", "()I", "getPreLoadPercentage", "getPreLoadTime", "getShowPercentage", "getShowTime", "component1", "component10", "component2", "component3", "component4", "component5", "component6", "component7", "component8", "component9", "copy", "equals", "other", "hashCode", "toString", "plugin-finder_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/storage/FinderItem$PosTriggerConfig;", "", "maxUnreadCount", "", "showTime", "showPercentage", "preLoadTime", "preLoadPercentage", "logic", "", "favRelateListEnable", "", "favRelateListEnableOnClick", "isLocalDefault", "jsonStr", "(IIIIILjava/lang/String;ZZZLjava/lang/String;)V", "getFavRelateListEnable", "()Z", "getFavRelateListEnableOnClick", "setLocalDefault", "(Z)V", "getJsonStr", "()Ljava/lang/String;", "setJsonStr", "(Ljava/lang/String;)V", "getLogic", "getMaxUnreadCount", "()I", "getPreLoadPercentage", "getPreLoadTime", "getShowPercentage", "getShowTime", "component1", "component10", "component2", "component3", "component4", "component5", "component6", "component7", "component8", "component9", "copy", "equals", "other", "hashCode", "toString", "plugin-finder_release"})
   public static final class b
   {
-    public String kwv;
-    public final int sbY;
-    private boolean slx;
-    public final int syl;
-    public final int sym;
-    public final int syn;
-    public final int syo;
-    public final String syp;
-    public final boolean syq;
-    public final boolean syr;
+    public String kzK;
+    public final int sJc;
+    public final int sJd;
+    public final int sJe;
+    public final int sJf;
+    public final String sJg;
+    public final boolean sJh;
+    public final boolean sJi;
+    public final int skP;
+    private boolean suw;
     
     public b(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, String paramString1, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString2)
     {
-      AppMethodBeat.i(203674);
-      this.sbY = paramInt1;
-      this.syl = paramInt2;
-      this.sym = paramInt3;
-      this.syn = paramInt4;
-      this.syo = paramInt5;
-      this.syp = paramString1;
-      this.syq = paramBoolean1;
-      this.syr = paramBoolean2;
-      this.slx = paramBoolean3;
-      this.kwv = paramString2;
-      AppMethodBeat.o(203674);
+      AppMethodBeat.i(204241);
+      this.skP = paramInt1;
+      this.sJc = paramInt2;
+      this.sJd = paramInt3;
+      this.sJe = paramInt4;
+      this.sJf = paramInt5;
+      this.sJg = paramString1;
+      this.sJh = paramBoolean1;
+      this.sJi = paramBoolean2;
+      this.suw = paramBoolean3;
+      this.kzK = paramString2;
+      AppMethodBeat.o(204241);
     }
     
     public final boolean equals(Object paramObject)
     {
-      AppMethodBeat.i(203676);
+      AppMethodBeat.i(204243);
       if (this != paramObject)
       {
         if ((paramObject instanceof b))
         {
           paramObject = (b)paramObject;
-          if ((this.sbY != paramObject.sbY) || (this.syl != paramObject.syl) || (this.sym != paramObject.sym) || (this.syn != paramObject.syn) || (this.syo != paramObject.syo) || (!d.g.b.p.i(this.syp, paramObject.syp)) || (this.syq != paramObject.syq) || (this.syr != paramObject.syr) || (this.slx != paramObject.slx) || (!d.g.b.p.i(this.kwv, paramObject.kwv))) {}
+          if ((this.skP != paramObject.skP) || (this.sJc != paramObject.sJc) || (this.sJd != paramObject.sJd) || (this.sJe != paramObject.sJe) || (this.sJf != paramObject.sJf) || (!d.g.b.p.i(this.sJg, paramObject.sJg)) || (this.sJh != paramObject.sJh) || (this.sJi != paramObject.sJi) || (this.suw != paramObject.suw) || (!d.g.b.p.i(this.kzK, paramObject.kzK))) {}
         }
       }
       else
       {
-        AppMethodBeat.o(203676);
+        AppMethodBeat.o(204243);
         return true;
       }
-      AppMethodBeat.o(203676);
+      AppMethodBeat.o(204243);
       return false;
     }
     
@@ -1349,14 +1452,14 @@ public class FinderItem
     
     public final String toString()
     {
-      AppMethodBeat.i(203673);
-      String str = "maxUnreadCount=" + this.sbY + ",showTime=" + this.syl + ",showPercentage=" + this.sym + ",preLoadTime=" + this.syn + ',' + "preLoadPercentage=" + this.syo + ",logic=" + this.syp + ",favRelateListEnable=" + this.syq + ",favRelateListEnableOnClick=" + this.syr + ",isLocalDefault=" + this.slx;
-      AppMethodBeat.o(203673);
+      AppMethodBeat.i(204240);
+      String str = "maxUnreadCount=" + this.skP + ",showTime=" + this.sJc + ",showPercentage=" + this.sJd + ",preLoadTime=" + this.sJe + ',' + "preLoadPercentage=" + this.sJf + ",logic=" + this.sJg + ",favRelateListEnable=" + this.sJh + ",favRelateListEnableOnClick=" + this.sJi + ",isLocalDefault=" + this.suw;
+      AppMethodBeat.o(204240);
       return str;
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "topic", "", "clickExtra", "Lcom/tencent/mm/plugin/finder/utils/FinderTopicUtil$ClickExtra;", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "topic", "", "clickExtra", "Lcom/tencent/mm/plugin/finder/utils/FinderTopicUtil$ClickExtra;", "invoke"})
   static final class c
     extends q
     implements m<String, o.a, z>
@@ -1367,7 +1470,7 @@ public class FinderItem
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "username", "", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "username", "", "invoke"})
   static final class d
     extends q
     implements d.g.a.b<String, z>
@@ -1380,7 +1483,7 @@ public class FinderItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.storage.FinderItem
  * JD-Core Version:    0.7.0.1
  */

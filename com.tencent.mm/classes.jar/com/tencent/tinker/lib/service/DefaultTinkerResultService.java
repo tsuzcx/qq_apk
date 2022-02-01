@@ -10,7 +10,7 @@ import java.io.File;
 public class DefaultTinkerResultService
   extends AbstractResultService
 {
-  public static void ac(File paramFile)
+  public static void ab(File paramFile)
   {
     if (!SharePatchFileUtil.isLegalFile(paramFile)) {}
     Object localObject;
@@ -44,9 +44,9 @@ public class DefaultTinkerResultService
     {
       return;
       ShareTinkerLog.i("Tinker.DefaultTinkerResultService", "DefaultTinkerResultService received a result:%s ", new Object[] { parama.toString() });
-      b.ll(getApplicationContext());
-    } while (!parama.dpX);
-    ac(new File(parama.MgK));
+      b.lr(getApplicationContext());
+    } while (!parama.drc);
+    ab(new File(parama.MDH));
     if (b(parama))
     {
       Process.killProcess(Process.myPid());
@@ -57,14 +57,14 @@ public class DefaultTinkerResultService
   
   public final boolean b(a parama)
   {
-    Object localObject = com.tencent.tinker.lib.e.a.lk(getApplicationContext());
-    if (((com.tencent.tinker.lib.e.a)localObject).Mhb)
+    Object localObject = com.tencent.tinker.lib.e.a.lq(getApplicationContext());
+    if (((com.tencent.tinker.lib.e.a)localObject).MDY)
     {
-      localObject = ((com.tencent.tinker.lib.e.a)localObject).Mha;
+      localObject = ((com.tencent.tinker.lib.e.a)localObject).MDX;
       if (localObject != null)
       {
-        localObject = ((d)localObject).Mhf;
-        if ((parama.MgN != null) && (parama.MgN.equals(localObject))) {
+        localObject = ((d)localObject).MEc;
+        if ((parama.MDK != null) && (parama.MDK.equals(localObject))) {
           return false;
         }
       }

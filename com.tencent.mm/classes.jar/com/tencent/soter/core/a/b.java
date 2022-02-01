@@ -125,11 +125,11 @@ final class b
   
   public static final class b
   {
-    b.c LPT;
+    b.c MmQ;
     
     public b(b.c paramc)
     {
-      this.LPT = paramc;
+      this.MmQ = paramc;
     }
   }
   

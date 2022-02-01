@@ -6,34 +6,34 @@ import java.util.concurrent.atomic.AtomicLong;
 
 public final class f
 {
-  private static final AtomicInteger jUV;
-  private static final AtomicLong jUW;
-  private static boolean jUX;
+  private static final AtomicInteger jYm;
+  private static final AtomicLong jYn;
+  private static boolean jYo;
   
   static
   {
     AppMethodBeat.i(146109);
-    jUV = new AtomicInteger();
-    jUW = new AtomicLong();
+    jYm = new AtomicInteger();
+    jYn = new AtomicLong();
     AppMethodBeat.o(146109);
   }
   
-  public static boolean bdD()
+  public static boolean bei()
   {
-    return jUX;
+    return jYo;
   }
   
-  public static String bdE()
+  public static String bej()
   {
     float f2 = 0.0F;
     AppMethodBeat.i(146108);
-    int i = jUV.get();
-    long l1 = jUW.get();
+    int i = jYm.get();
+    long l1 = jYn.get();
     Object localObject = new StringBuilder();
     StringBuilder localStringBuilder = ((StringBuilder)localObject).append("fps : ");
-    int j = jUV.get();
-    long l2 = jUW.get();
-    if ((!jUX) || (l2 <= 0L))
+    int j = jYm.get();
+    long l2 = jYn.get();
+    if ((!jYo) || (l2 <= 0L))
     {
       f1 = 0.0F;
       localStringBuilder.append(f1);
@@ -55,16 +55,16 @@ public final class f
     }
   }
   
-  public static void fY(boolean paramBoolean)
+  public static void fX(boolean paramBoolean)
   {
-    jUX = paramBoolean;
+    jYo = paramBoolean;
   }
   
   public static void reset()
   {
     AppMethodBeat.i(146107);
-    jUV.set(0);
-    jUW.set(0L);
+    jYm.set(0);
+    jYn.set(0L);
     AppMethodBeat.o(146107);
   }
 }

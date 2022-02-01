@@ -1,41 +1,74 @@
 package com.tencent.mm.plugin.appbrand.appcache;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.zq;
-import com.tencent.mm.g.a.zs;
-import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.b.c;
-import d.l;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.plugin.expt.b.b;
+import com.tencent.mm.plugin.expt.b.b.a;
+import com.tencent.mm.sdk.platformtools.ae;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/appcache/PkgDownloadCDNDownloaderQualityReporter;", "", "()V", "setup", "", "cronetProfile", "Lcom/tencent/mars/cdn/CdnLogic$WebPageProfile;", "Lcom/tencent/mm/pluginsdk/res/downloader/model/NetworkResponse;", "ConstantsIDKey", "plugin-appbrand-integration_release"})
 public final class v
 {
-  public static final v jGh;
-  
-  static
+  public static boolean bap()
   {
-    AppMethodBeat.i(188965);
-    jGh = new v();
-    AppMethodBeat.o(188965);
+    AppMethodBeat.i(44269);
+    if (!g.ajM())
+    {
+      AppMethodBeat.o(44269);
+      return false;
+    }
+    AppMethodBeat.o(44269);
+    return true;
   }
   
-  public static final void setup()
+  public static boolean baq()
   {
-    AppMethodBeat.i(188964);
-    a.IbL.b((c)new a());
-    a.IbL.b((c)new b());
-    AppMethodBeat.o(188964);
+    AppMethodBeat.i(44270);
+    if (!g.ajM())
+    {
+      AppMethodBeat.o(44270);
+      return false;
+    }
+    AppMethodBeat.o(44270);
+    return true;
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/appbrand/appcache/PkgDownloadCDNDownloaderQualityReporter$setup$1", "Lcom/tencent/mm/sdk/event/IListener;", "Lcom/tencent/mm/autogen/events/WxaPkgCDNDownloaderEventEvent;", "callback", "", "event", "plugin-appbrand-integration_release"})
-  public static final class a
-    extends c<zq>
-  {}
+  public static boolean bar()
+  {
+    AppMethodBeat.i(44271);
+    if (!g.ajM())
+    {
+      AppMethodBeat.o(44271);
+      return false;
+    }
+    AppMethodBeat.o(44271);
+    return true;
+  }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/appbrand/appcache/PkgDownloadCDNDownloaderQualityReporter$setup$2", "Lcom/tencent/mm/sdk/event/IListener;", "Lcom/tencent/mm/autogen/events/WxaPkgPreConnectCDNEventEvent;", "callback", "", "event", "plugin-appbrand-integration_release"})
-  public static final class b
-    extends c<zs>
-  {}
+  public static boolean bas()
+  {
+    AppMethodBeat.i(44273);
+    boolean bool = ((b)g.ab(b.class)).a(b.a.qzb, false);
+    if (bool) {}
+    for (int i = 1;; i = 0)
+    {
+      ae.i("MicroMsg.PkgABTest", "openSplitPluginCode exp:%d", new Object[] { Integer.valueOf(i) });
+      AppMethodBeat.o(44273);
+      return bool;
+    }
+  }
+  
+  public static boolean bat()
+  {
+    AppMethodBeat.i(222127);
+    boolean bool = ((b)g.ab(b.class)).a(b.a.qzc, false);
+    if (bool) {}
+    for (int i = 1;; i = 0)
+    {
+      ae.i("MicroMsg.PkgABTest", "openMultiSplitPluginCode exp:%d", new Object[] { Integer.valueOf(i) });
+      AppMethodBeat.o(222127);
+      return bool;
+    }
+  }
 }
 
 

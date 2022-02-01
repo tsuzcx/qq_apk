@@ -1,67 +1,59 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import f.a.a.b;
 
 public final class zd
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public int Scene;
-  public String Version;
-  public String ufQ;
+  public String Gre;
+  public String rfA;
+  public String rfo;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(110847);
+    AppMethodBeat.i(195194);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.ufQ == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: PkgId");
-        AppMethodBeat.o(110847);
-        throw paramVarArgs;
+      if (this.rfA != null) {
+        paramVarArgs.d(1, this.rfA);
       }
-      if (this.ufQ != null) {
-        paramVarArgs.d(1, this.ufQ);
+      if (this.rfo != null) {
+        paramVarArgs.d(2, this.rfo);
       }
-      if (this.Version != null) {
-        paramVarArgs.d(2, this.Version);
+      if (this.Gre != null) {
+        paramVarArgs.d(3, this.Gre);
       }
-      paramVarArgs.aS(3, this.Scene);
-      AppMethodBeat.o(110847);
+      AppMethodBeat.o(195194);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.ufQ == null) {
-        break label366;
+      if (this.rfA == null) {
+        break label334;
       }
     }
-    label366:
-    for (paramInt = f.a.a.b.b.a.e(1, this.ufQ) + 0;; paramInt = 0)
+    label334:
+    for (int i = f.a.a.b.b.a.e(1, this.rfA) + 0;; i = 0)
     {
-      int i = paramInt;
-      if (this.Version != null) {
-        i = paramInt + f.a.a.b.b.a.e(2, this.Version);
+      paramInt = i;
+      if (this.rfo != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.rfo);
       }
-      paramInt = f.a.a.b.b.a.bz(3, this.Scene);
-      AppMethodBeat.o(110847);
-      return i + paramInt;
+      i = paramInt;
+      if (this.Gre != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.Gre);
+      }
+      AppMethodBeat.o(195194);
+      return i;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
-        if (this.ufQ == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: PkgId");
-          AppMethodBeat.o(110847);
-          throw paramVarArgs;
-        }
-        AppMethodBeat.o(110847);
+        AppMethodBeat.o(195194);
         return 0;
       }
       if (paramInt == 3)
@@ -71,22 +63,22 @@ public final class zd
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(110847);
+          AppMethodBeat.o(195194);
           return -1;
         case 1: 
-          localzd.ufQ = locala.NPN.readString();
-          AppMethodBeat.o(110847);
+          localzd.rfA = locala.OmT.readString();
+          AppMethodBeat.o(195194);
           return 0;
         case 2: 
-          localzd.Version = locala.NPN.readString();
-          AppMethodBeat.o(110847);
+          localzd.rfo = locala.OmT.readString();
+          AppMethodBeat.o(195194);
           return 0;
         }
-        localzd.Scene = locala.NPN.zc();
-        AppMethodBeat.o(110847);
+        localzd.Gre = locala.OmT.readString();
+        AppMethodBeat.o(195194);
         return 0;
       }
-      AppMethodBeat.o(110847);
+      AppMethodBeat.o(195194);
       return -1;
     }
   }

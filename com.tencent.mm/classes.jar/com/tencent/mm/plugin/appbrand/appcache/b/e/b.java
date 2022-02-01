@@ -5,34 +5,34 @@ import android.util.Pair;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.e.e;
 import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public class b
   extends j<a>
 {
-  public static final String[] hEf;
-  private final e jHa;
+  public static final String[] hGX;
+  private final e jKa;
   
   static
   {
     AppMethodBeat.i(44436);
-    hEf = new String[] { j.getCreateSQLs(a.hEe, "PredownloadBlockCgiRequest") };
+    hGX = new String[] { j.getCreateSQLs(a.hGW, "PredownloadBlockCgiRequest") };
     AppMethodBeat.o(44436);
   }
   
   public b(e parame)
   {
-    super(parame, a.hEe, "PredownloadBlockCgiRequest", a.INDEX_CREATE);
-    this.jHa = parame;
+    super(parame, a.hGW, "PredownloadBlockCgiRequest", a.INDEX_CREATE);
+    this.jKa = parame;
   }
   
   private Pair<Boolean, Integer> c(String paramString1, String paramString2, int paramInt1, int paramInt2)
   {
     int i = -1;
     AppMethodBeat.i(44435);
-    long l = bt.aQJ();
+    long l = bu.aRi();
     paramString1 = "select reportId from PredownloadBlockCgiRequest where " + paramString1 + "=? and startTime<" + l + " and " + l + "<endTime and cgiList like '%;" + paramInt1 + ";%' and sceneList like '%;" + paramInt2 + ";%'";
-    paramString1 = this.jHa.rawQuery(paramString1, new String[] { paramString2 });
+    paramString1 = this.jKa.rawQuery(paramString1, new String[] { paramString2 });
     if ((paramString1 == null) || (paramString1.isClosed()))
     {
       paramString1 = Pair.create(Boolean.FALSE, Integer.valueOf(-1));

@@ -6,7 +6,7 @@ public final class e
 {
   public static long MX;
   public static Map<String, String> mHeaders;
-  public static String tTn;
+  public static String uee;
 }
 
 

@@ -1,13 +1,13 @@
 package com.tencent.mm.plugin.gai.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.ax;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.model.az;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
 
 public final class a
-  implements ax
+  implements az
 {
   public final void clearPluginData(int paramInt) {}
   
@@ -19,14 +19,14 @@ public final class a
   public final void onAccountPostReset(boolean paramBoolean)
   {
     AppMethodBeat.i(25276);
-    ad.i("MicroMsg.SubCoreGai", "SubCoreGai onAccountPostReset!");
+    ae.i("MicroMsg.SubCoreGai", "SubCoreGai onAccountPostReset!");
     AppMethodBeat.o(25276);
   }
   
   public final void onAccountRelease()
   {
     AppMethodBeat.i(25277);
-    ad.i("MicroMsg.SubCoreGai", "SubCoreGai onAccountRelease!");
+    ae.i("MicroMsg.SubCoreGai", "SubCoreGai onAccountRelease!");
     AppMethodBeat.o(25277);
   }
   

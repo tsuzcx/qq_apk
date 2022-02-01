@@ -1,11 +1,11 @@
 package com.tencent.mm.plugin.messenger.foundation.a;
 
-import com.tencent.mm.storage.bu;
+import com.tencent.mm.storage.bv;
 
 @Deprecated
 public abstract interface n
 {
-  public abstract String ac(bu parambu);
+  public abstract String ab(bv parambv);
 }
 
 

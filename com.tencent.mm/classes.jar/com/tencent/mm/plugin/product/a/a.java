@@ -2,59 +2,59 @@ package com.tencent.mm.plugin.product.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.ax;
-import com.tencent.mm.model.t;
+import com.tencent.mm.model.az;
+import com.tencent.mm.model.u;
 import com.tencent.mm.plugin.product.b.c;
 import com.tencent.mm.plugin.product.b.d;
 import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
 
 public class a
-  implements ax
+  implements az
 {
-  private c wLD;
-  private d wLE;
-  private com.tencent.mm.plugin.product.b.a wLF;
+  private c xbr;
+  private d xbs;
+  private com.tencent.mm.plugin.product.b.a xbt;
   
   public a()
   {
     AppMethodBeat.i(66847);
-    this.wLD = null;
-    this.wLE = null;
-    this.wLF = new com.tencent.mm.plugin.product.b.a();
+    this.xbr = null;
+    this.xbs = null;
+    this.xbt = new com.tencent.mm.plugin.product.b.a();
     AppMethodBeat.o(66847);
   }
   
-  public static a dzs()
+  public static a dCJ()
   {
     AppMethodBeat.i(66848);
-    a locala = (a)t.ap(a.class);
+    a locala = (a)u.ap(a.class);
     AppMethodBeat.o(66848);
     return locala;
   }
   
-  public static c dzt()
+  public static c dCK()
   {
     AppMethodBeat.i(66851);
-    g.ajA().aiF();
-    if (dzs().wLD == null) {
-      dzs().wLD = new c();
+    g.ajP().aiU();
+    if (dCJ().xbr == null) {
+      dCJ().xbr = new c();
     }
-    c localc = dzs().wLD;
+    c localc = dCJ().xbr;
     AppMethodBeat.o(66851);
     return localc;
   }
   
   public void clearPluginData(int paramInt) {}
   
-  public final d dzu()
+  public final d dCL()
   {
     AppMethodBeat.i(66852);
-    g.ajA().aiF();
-    if (this.wLE == null) {
-      this.wLE = new d();
+    g.ajP().aiU();
+    if (this.xbs == null) {
+      this.xbs = new d();
     }
-    d locald = this.wLE;
+    d locald = this.xbs;
     AppMethodBeat.o(66852);
     return locald;
   }
@@ -67,15 +67,15 @@ public class a
   public void onAccountPostReset(boolean paramBoolean)
   {
     AppMethodBeat.i(66849);
-    this.wLD = null;
-    com.tencent.mm.sdk.b.a.IbL.c(this.wLF);
+    this.xbr = null;
+    com.tencent.mm.sdk.b.a.IvT.c(this.xbt);
     AppMethodBeat.o(66849);
   }
   
   public void onAccountRelease()
   {
     AppMethodBeat.i(66850);
-    com.tencent.mm.sdk.b.a.IbL.d(this.wLF);
+    com.tencent.mm.sdk.b.a.IvT.d(this.xbt);
     AppMethodBeat.o(66850);
   }
   

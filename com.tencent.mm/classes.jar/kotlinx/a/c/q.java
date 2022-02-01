@@ -3,22 +3,22 @@ package kotlinx.a.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/serialization/json/JsonNull;", "Lkotlinx/serialization/json/JsonPrimitive;", "()V", "content", "", "getContent", "()Ljava/lang/String;", "contentOrNull", "getContentOrNull", "jsonNull", "getJsonNull", "()Lkotlinx/serialization/json/JsonNull;", "kotlinx-serialization-runtime"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/serialization/json/JsonNull;", "Lkotlinx/serialization/json/JsonPrimitive;", "()V", "content", "", "getContent", "()Ljava/lang/String;", "contentOrNull", "getContentOrNull", "jsonNull", "getJsonNull", "()Lkotlinx/serialization/json/JsonNull;", "kotlinx-serialization-runtime"})
 public final class q
   extends v
 {
-  private static final q NNQ;
-  public static final q NNR;
+  private static final q OkW;
+  public static final q OkX;
   private static final String content;
   
   static
   {
-    AppMethodBeat.i(191272);
+    AppMethodBeat.i(199860);
     q localq = new q();
-    NNR = localq;
-    NNQ = localq;
+    OkX = localq;
+    OkW = localq;
     content = "null";
-    AppMethodBeat.o(191272);
+    AppMethodBeat.o(199860);
   }
   
   private q()

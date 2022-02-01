@@ -10,48 +10,48 @@ import java.util.Map;
 public final class y$a
   extends p
 {
-  static final c.a hEe;
-  static final String[] jFa;
+  static final c.a hGW;
+  static final String[] jHZ;
   
   static
   {
     AppMethodBeat.i(44607);
-    jFa = new String[] { "brandId", "versionType", "scene" };
+    jHZ = new String[] { "brandId", "versionType", "scene" };
     c.a locala = new c.a();
-    locala.IhA = new Field[7];
+    locala.IBL = new Field[7];
     locala.columns = new String[8];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "recordId";
-    locala.IhC.put("recordId", "INTEGER PRIMARY KEY ");
+    locala.IBN.put("recordId", "INTEGER PRIMARY KEY ");
     localStringBuilder.append(" recordId INTEGER PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.IhB = "recordId";
+    locala.IBM = "recordId";
     locala.columns[1] = "brandId";
-    locala.IhC.put("brandId", "TEXT");
+    locala.IBN.put("brandId", "TEXT");
     localStringBuilder.append(" brandId TEXT");
     localStringBuilder.append(", ");
     locala.columns[2] = "versionType";
-    locala.IhC.put("versionType", "INTEGER");
+    locala.IBN.put("versionType", "INTEGER");
     localStringBuilder.append(" versionType INTEGER");
     localStringBuilder.append(", ");
     locala.columns[3] = "updateTime";
-    locala.IhC.put("updateTime", "LONG");
+    locala.IBN.put("updateTime", "LONG");
     localStringBuilder.append(" updateTime LONG");
     localStringBuilder.append(", ");
     locala.columns[4] = "scene";
-    locala.IhC.put("scene", "INTEGER");
+    locala.IBN.put("scene", "INTEGER");
     localStringBuilder.append(" scene INTEGER");
     localStringBuilder.append(", ");
     locala.columns[5] = "usedInThirdPartyAppRecently";
-    locala.IhC.put("usedInThirdPartyAppRecently", "INTEGER default 'false' ");
+    locala.IBN.put("usedInThirdPartyAppRecently", "INTEGER default 'false' ");
     localStringBuilder.append(" usedInThirdPartyAppRecently INTEGER default 'false' ");
     localStringBuilder.append(", ");
     locala.columns[6] = "thirdPartyAppUsingDesc";
-    locala.IhC.put("thirdPartyAppUsingDesc", "TEXT");
+    locala.IBN.put("thirdPartyAppUsingDesc", "TEXT");
     localStringBuilder.append(" thirdPartyAppUsingDesc TEXT");
     locala.columns[7] = "rowid";
     locala.sql = localStringBuilder.toString();
-    hEe = locala;
+    hGW = locala;
     AppMethodBeat.o(44607);
   }
   
@@ -69,7 +69,7 @@ public final class y$a
   
   public final c.a getDBInfo()
   {
-    return hEe;
+    return hGW;
   }
 }
 

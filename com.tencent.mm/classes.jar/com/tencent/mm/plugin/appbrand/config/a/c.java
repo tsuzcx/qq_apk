@@ -3,38 +3,38 @@ package com.tencent.mm.plugin.appbrand.config.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/config/prefetch/PrefetchWxaAttrsUtils;", "", "()V", "TAG", "", "collectBatchSyncVersionReqList", "", "Lcom/tencent/mm/protocal/protobuf/SyncVersionSingleReqInfo;", "plugin-appbrand-integration_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/config/prefetch/PrefetchWxaAttrsUtils;", "", "()V", "TAG", "", "collectBatchSyncVersionReqList", "", "Lcom/tencent/mm/protocal/protobuf/SyncVersionSingleReqInfo;", "plugin-appbrand-integration_release"})
 public final class c
 {
-  public static final c kay;
+  public static final c kdO;
   
   static
   {
-    AppMethodBeat.i(189025);
-    kay = new c();
-    AppMethodBeat.o(189025);
+    AppMethodBeat.i(223284);
+    kdO = new c();
+    AppMethodBeat.o(223284);
   }
   
   /* Error */
-  public static final java.util.List<com.tencent.mm.protocal.protobuf.dll> beu()
+  public static final java.util.List<com.tencent.mm.protocal.protobuf.dmi> bfc()
   {
     // Byte code:
     //   0: aconst_null
     //   1: astore 4
     //   3: ldc 43
     //   5: invokestatic 28	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   8: invokestatic 49	com/tencent/mm/plugin/appbrand/app/j:aYL	()Lcom/tencent/mm/platformtools/r$a;
+    //   8: invokestatic 49	com/tencent/mm/plugin/appbrand/app/j:aZh	()Lcom/tencent/mm/platformtools/r$a;
     //   11: astore 6
     //   13: aload 6
     //   15: ifnonnull +17 -> 32
-    //   18: getstatic 55	d/a/v:MKE	Ld/a/v;
+    //   18: getstatic 55	d/a/v:NhH	Ld/a/v;
     //   21: checkcast 57	java/util/List
     //   24: astore_3
     //   25: ldc 43
     //   27: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   30: aload_3
     //   31: areturn
-    //   32: invokestatic 63	com/tencent/mm/sdk/platformtools/bt:aQJ	()J
+    //   32: invokestatic 63	com/tencent/mm/sdk/platformtools/bu:aRi	()J
     //   35: getstatic 69	java/util/concurrent/TimeUnit:DAYS	Ljava/util/concurrent/TimeUnit;
     //   38: ldc2_w 70
     //   41: invokevirtual 75	java/util/concurrent/TimeUnit:toSeconds	(J)J
@@ -65,7 +65,7 @@ public final class c
     //   91: aload_3
     //   92: invokeinterface 107 1 0
     //   97: ifeq +90 -> 187
-    //   100: getstatic 55	d/a/v:MKE	Ld/a/v;
+    //   100: getstatic 55	d/a/v:NhH	Ld/a/v;
     //   103: checkcast 57	java/util/List
     //   106: astore_3
     //   107: aload 5
@@ -75,7 +75,7 @@ public final class c
     //   114: astore 4
     //   116: aload_3
     //   117: ifnonnull +11 -> 128
-    //   120: getstatic 55	d/a/v:MKE	Ld/a/v;
+    //   120: getstatic 55	d/a/v:NhH	Ld/a/v;
     //   123: checkcast 57	java/util/List
     //   126: astore 4
     //   128: aload 6
@@ -102,7 +102,7 @@ public final class c
     //   169: iload_0
     //   170: invokevirtual 138	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   173: invokevirtual 93	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   176: invokestatic 143	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   176: invokestatic 143	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   179: ldc 43
     //   181: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   184: aload 4
@@ -114,19 +114,19 @@ public final class c
     //   196: aload_3
     //   197: invokeinterface 149 1 0
     //   202: ifeq +70 -> 272
-    //   205: new 151	com/tencent/mm/protocal/protobuf/dll
+    //   205: new 151	com/tencent/mm/protocal/protobuf/dmi
     //   208: dup
-    //   209: invokespecial 152	com/tencent/mm/protocal/protobuf/dll:<init>	()V
+    //   209: invokespecial 152	com/tencent/mm/protocal/protobuf/dmi:<init>	()V
     //   212: astore 8
     //   214: aload 8
     //   216: aload_3
     //   217: iconst_0
     //   218: invokeinterface 156 2 0
-    //   223: putfield 160	com/tencent/mm/protocal/protobuf/dll:GNH	Ljava/lang/String;
+    //   223: putfield 160	com/tencent/mm/protocal/protobuf/dmi:Hhh	Ljava/lang/String;
     //   226: aload_3
     //   227: iconst_1
     //   228: invokeinterface 156 2 0
-    //   233: invokestatic 166	com/tencent/mm/plugin/appbrand/config/WxaAttributes$WxaVersionInfo:NR	(Ljava/lang/String;)Lcom/tencent/mm/plugin/appbrand/config/WxaAttributes$WxaVersionInfo;
+    //   233: invokestatic 166	com/tencent/mm/plugin/appbrand/config/WxaAttributes$WxaVersionInfo:Oy	(Ljava/lang/String;)Lcom/tencent/mm/plugin/appbrand/config/WxaAttributes$WxaVersionInfo;
     //   236: astore 9
     //   238: aload 9
     //   240: ifnull +41 -> 281
@@ -135,7 +135,7 @@ public final class c
     //   248: istore_0
     //   249: aload 8
     //   251: iload_0
-    //   252: putfield 173	com/tencent/mm/protocal/protobuf/dll:HzV	I
+    //   252: putfield 173	com/tencent/mm/protocal/protobuf/dmi:HTI	I
     //   255: aload 7
     //   257: aload 8
     //   259: invokevirtual 177	java/util/LinkedList:add	(Ljava/lang/Object;)Z
@@ -177,7 +177,7 @@ public final class c
     //   83	215	5	localCloseable	java.io.Closeable
     //   11	118	6	locala	com.tencent.mm.platformtools.r.a
     //   194	79	7	localLinkedList	java.util.LinkedList
-    //   212	46	8	localdll	com.tencent.mm.protocal.protobuf.dll
+    //   212	46	8	localdmi	com.tencent.mm.protocal.protobuf.dmi
     //   236	8	9	localWxaVersionInfo	com.tencent.mm.plugin.appbrand.config.WxaAttributes.WxaVersionInfo
     // Exception table:
     //   from	to	target	type

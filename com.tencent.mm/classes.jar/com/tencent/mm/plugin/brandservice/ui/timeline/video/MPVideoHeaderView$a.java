@@ -2,27 +2,27 @@ package com.tencent.mm.plugin.brandservice.ui.timeline.video;
 
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.j;
+import com.tencent.mm.aj.i;
+import com.tencent.mm.aj.j;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.as.b.a;
+import com.tencent.mm.model.au.b.a;
 import com.tencent.mm.pluginsdk.ui.a.b;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.am;
-import com.tencent.mm.storage.bp;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.an;
+import com.tencent.mm.storage.bq;
 import d.v;
 import java.lang.ref.WeakReference;
 
-@d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "username", "", "kotlin.jvm.PlatformType", "succ", "", "getContactCallBack"})
+@d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "username", "", "kotlin.jvm.PlatformType", "succ", "", "getContactCallBack"})
 final class MPVideoHeaderView$a
-  implements as.b.a
+  implements au.b.a
 {
   MPVideoHeaderView$a(WeakReference paramWeakReference) {}
   
   public final void p(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(7255);
-    ImageView localImageView = (ImageView)this.opP.get();
+    ImageView localImageView = (ImageView)this.ovH.get();
     if (localImageView == null)
     {
       AppMethodBeat.o(7255);
@@ -31,15 +31,15 @@ final class MPVideoHeaderView$a
     d.g.b.p.g(localImageView, "weakReference.get() ?: return@GetContactCallBack");
     Object localObject1 = g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class);
     d.g.b.p.g(localObject1, "MMKernel.service(IMessengerStorage::class.java)");
-    localObject1 = ((com.tencent.mm.plugin.messenger.foundation.a.l)localObject1).azp().Bf(paramString);
-    if ((localObject1 == null) || (((am)localObject1).adt() <= 0))
+    localObject1 = ((com.tencent.mm.plugin.messenger.foundation.a.l)localObject1).azF().BH(paramString);
+    if ((localObject1 == null) || (((an)localObject1).adE() <= 0))
     {
       AppMethodBeat.o(7255);
       return;
     }
     if ((localImageView.getTag() instanceof String))
     {
-      com.tencent.mm.ak.p.aEz().CU(paramString);
+      com.tencent.mm.aj.p.aEP().Dw(paramString);
       Object localObject2 = localImageView.getTag();
       if (localObject2 == null)
       {
@@ -47,12 +47,12 @@ final class MPVideoHeaderView$a
         AppMethodBeat.o(7255);
         throw paramString;
       }
-      if (bt.lQ((String)localObject2, paramString))
+      if (bu.lX((String)localObject2, paramString))
       {
-        localObject2 = com.tencent.mm.ak.p.aEx().Dj(paramString);
-        if ((localObject2 != null) && (!bt.isNullOrNil(((i)localObject2).aEr())))
+        localObject2 = com.tencent.mm.aj.p.aEN().DL(paramString);
+        if ((localObject2 != null) && (!bu.isNullOrNil(((i)localObject2).aEH())))
         {
-          com.tencent.mm.plugin.brandservice.b.d.a(localImageView, (am)localObject1, ((i)localObject2).aEr(), true);
+          com.tencent.mm.plugin.brandservice.b.d.a(localImageView, (an)localObject1, ((i)localObject2).aEH(), true);
           AppMethodBeat.o(7255);
           return;
         }

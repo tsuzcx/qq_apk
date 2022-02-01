@@ -1,442 +1,354 @@
 package com.tencent.mm.plugin.appbrand.page;
 
-import android.content.res.Configuration;
-import android.content.res.Resources;
-import android.os.Looper;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnLayoutChangeListener;
-import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.FrameLayout;
-import com.tencent.luggage.sdk.config.a;
+import android.util.Log;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
-import com.tencent.mm.plugin.appbrand.r.a.a.o;
-import com.tencent.mm.plugin.appbrand.r.a.c;
-import com.tencent.mm.plugin.appbrand.r.a.e.a;
-import com.tencent.mm.plugin.appbrand.r.a.e.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import java.util.ConcurrentModificationException;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Objects;
+import com.tencent.mm.plugin.appbrand.page.a.f;
+import com.tencent.mm.plugin.appbrand.page.a.f.a;
+import com.tencent.mm.plugin.appbrand.y.g;
+import com.tencent.mm.sdk.platformtools.ae;
+import d.g.b.p;
+import d.l;
 
-public final class bi
-  implements com.tencent.mm.plugin.appbrand.page.b.b, com.tencent.mm.plugin.appbrand.page.b.d
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/page/MPPageViewPullDownExtensionImpl;", "Lcom/tencent/mm/plugin/appbrand/page/extensions/AppBrandPageViewPullDownExtension;", "mPageView", "Lcom/tencent/mm/plugin/appbrand/page/AppBrandPageView;", "mPullDownWrapper", "Lcom/tencent/mm/plugin/appbrand/page/AppBrandPullDownWebView;", "(Lcom/tencent/mm/plugin/appbrand/page/AppBrandPageView;Lcom/tencent/mm/plugin/appbrand/page/AppBrandPullDownWebView;)V", "TAG", "", "enablePullDown", "", "enable", "", "enablePullDownRefresh", "getPullDownBackgroundColor", "", "requestDisallowInterceptTouchEvent", "disallow", "runOnUiThread", "block", "Lkotlin/Function0;", "setPullDownBackground", "style", "Lcom/tencent/mm/plugin/appbrand/page/extensions/AppBrandPageViewPullDownExtension$BackgroundTextStyle;", "color", "colorStr", "setPullDownBackgroundStyle", "setPullDownText", "text", "startPullDownRefresh", "stopPullDownRefresh", "luggage-wechat-full-sdk_release"})
+public class bi
+  implements f
 {
-  private final aa ckN;
-  volatile String ckX;
-  private boolean ckY;
-  private boolean mDestroyed;
-  final com.tencent.luggage.sdk.b.a.b.e meI;
-  private boolean meJ;
-  private boolean meK;
-  private Configuration meL;
-  private a meM;
+  private final String TAG;
+  private final z ckP;
+  private final ag mcN;
   
-  bi(aa paramaa)
+  public bi(z paramz, ag paramag)
   {
-    AppMethodBeat.i(147449);
-    this.ckY = false;
-    this.mDestroyed = false;
-    this.meJ = false;
-    this.meK = false;
-    this.ckN = paramaa;
-    this.meI = new com.tencent.luggage.sdk.b.a.b.e(paramaa);
-    this.ckN.lZG.addOnLayoutChangeListener(new View.OnLayoutChangeListener()
-    {
-      public final void onLayoutChange(View paramAnonymousView, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3, int paramAnonymousInt4, int paramAnonymousInt5, int paramAnonymousInt6, int paramAnonymousInt7, int paramAnonymousInt8)
-      {
-        AppMethodBeat.i(147445);
-        if (TextUtils.isEmpty(bi.a(bi.this).kuf))
-        {
-          AppMethodBeat.o(147445);
-          return;
-        }
-        if (bi.b(bi.this)) {
-          try
-          {
-            bi.a(bi.this).lZG.removeOnLayoutChangeListener(this);
-            AppMethodBeat.o(147445);
-            return;
-          }
-          catch (ConcurrentModificationException paramAnonymousView)
-          {
-            bi.a(bi.this).post(new Runnable()
-            {
-              public final void run()
-              {
-                AppMethodBeat.i(147444);
-                bi.a(bi.this).lZG.removeOnLayoutChangeListener(jdField_this);
-                AppMethodBeat.o(147444);
-              }
-            });
-            AppMethodBeat.o(147445);
-            return;
-          }
-        }
-        ad.i("Luggage.MPPageViewOrientationExtensionImpl[AppBrandSplashAd]", "pageArea onLayoutChange appId[%s], url[%s], frozen[%b]", new Object[] { bi.a(bi.this).getAppId(), bi.a(bi.this).kuf, Boolean.valueOf(bi.c(bi.this)) });
-        if (bi.c(bi.this))
-        {
-          bi.d(bi.this);
-          AppMethodBeat.o(147445);
-          return;
-        }
-        bi.e(bi.this);
-        AppMethodBeat.o(147445);
-      }
-    });
-    AppMethodBeat.o(147449);
+    AppMethodBeat.i(147996);
+    this.ckP = paramz;
+    this.mcN = paramag;
+    this.TAG = "Luggage.MPPageViewPullDownExtensionImpl";
+    AppMethodBeat.o(147996);
   }
   
-  private void bvn()
+  public final void Uh(final String paramString)
   {
-    AppMethodBeat.i(185221);
-    if (this.ckN.Ew() == null)
+    AppMethodBeat.i(147993);
+    p.h(paramString, "style");
+    if (!this.ckP.isRunning())
     {
-      AppMethodBeat.o(185221);
+      ae.e(this.TAG, "runOnUiThread PageView destroyed, stack=" + Log.getStackTraceString(new Throwable()));
+      AppMethodBeat.o(147993);
       return;
     }
-    if (this.mDestroyed)
+    this.ckP.K((Runnable)new f(this, this, paramString));
+    AppMethodBeat.o(147993);
+  }
+  
+  public void a(final f.a parama, final int paramInt)
+  {
+    AppMethodBeat.i(147991);
+    p.h(parama, "style");
+    if (!this.ckP.isRunning())
     {
-      AppMethodBeat.o(185221);
+      ae.e(this.TAG, "runOnUiThread PageView destroyed, stack=" + Log.getStackTraceString(new Throwable()));
+      AppMethodBeat.o(147991);
       return;
     }
-    this.meI.EC();
-    AppMethodBeat.o(185221);
+    this.ckP.K((Runnable)new d(this, this, parama, paramInt));
+    AppMethodBeat.o(147991);
   }
   
-  private com.tencent.mm.plugin.appbrand.r.a.e getOrientationHandler()
+  public final void bvZ()
   {
-    AppMethodBeat.i(169507);
-    com.tencent.mm.plugin.appbrand.r.a.e locale = this.ckN.jzX.getOrientationHandler();
-    AppMethodBeat.o(169507);
-    return locale;
-  }
-  
-  private void hi(boolean paramBoolean)
-  {
-    AppMethodBeat.i(185220);
-    this.meJ = paramBoolean;
-    if ((!this.meJ) && (this.meK))
+    AppMethodBeat.i(147987);
+    ae.i(this.TAG, "AppBrandPullDown invoke entered startPullDownRefresh appId:" + this.ckP.getAppId() + " url:" + this.ckP.getURL());
+    if (!this.ckP.isRunning())
     {
-      ad.i("Luggage.MPPageViewOrientationExtensionImpl[AppBrandSplashAd]", "emitPageLayout after mPageLayoutFrozen reset false, appId[%s] url[%s] mDestroyed[%b]", new Object[] { this.ckN.getAppId(), this.ckN.kuf, Boolean.valueOf(this.mDestroyed) });
-      bvn();
-      this.meK = false;
-    }
-    AppMethodBeat.o(185220);
-  }
-  
-  public final boolean Dy()
-  {
-    AppMethodBeat.i(147450);
-    Object localObject;
-    if (this.ckN.jzX == null)
-    {
-      localObject = null;
-      if (localObject != null) {
-        break label85;
-      }
-      ad.e("Luggage.MPPageViewOrientationExtensionImpl[AppBrandSplashAd]", "__willResize NULL orientationHandler, appId:%s, url:%s", new Object[] { this.ckN.getAppId(), this.ckN.kuf });
-    }
-    label85:
-    label235:
-    for (;;)
-    {
-      boolean bool = false;
-      this.meI.cov = bool;
-      AppMethodBeat.o(147450);
-      return bool;
-      localObject = this.ckN.jzX.getOrientationHandler();
-      break;
-      e.b localb = ((com.tencent.mm.plugin.appbrand.r.a.e)localObject).aXN();
-      localObject = e.b.Uf(this.ckX);
-      ad.i("Luggage.MPPageViewOrientationExtensionImpl[AppBrandSplashAd]", "willResizeByOrientation appId[%s], url[%s] current[%s], desire[%s]", new Object[] { this.ckN.getAppId(), this.ckN.kuf, localb, localObject });
-      if (e.b.moH != localObject) {
-        if ((e.b.c(getOrientationHandler().aXN())) && (((a)this.ckN.ar(a.class)).cmj))
-        {
-          ad.i("Luggage.MPPageViewOrientationExtensionImpl[AppBrandSplashAd]", "willResizeByOrientation appId[%s], url[%s], tabletLandscapeCompatible", new Object[] { this.ckN.getAppId(), this.ckN.kuf });
-        }
-        else
-        {
-          if (localObject == null) {
-            localObject = e.b.moG;
-          }
-          for (;;)
-          {
-            if (localb.b((e.b)localObject)) {
-              break label235;
-            }
-            bool = true;
-            break;
-          }
-        }
-      }
-    }
-  }
-  
-  public final String Dz()
-  {
-    return this.ckX;
-  }
-  
-  public final void a(final e.a parama)
-  {
-    AppMethodBeat.i(169508);
-    if (Looper.myLooper() != Looper.getMainLooper())
-    {
-      this.ckN.M(new Runnable()
-      {
-        public final void run()
-        {
-          AppMethodBeat.i(147447);
-          bi.this.a(parama);
-          AppMethodBeat.o(147447);
-        }
-      });
-      AppMethodBeat.o(169508);
+      ae.e(this.TAG, "runOnUiThread PageView destroyed, stack=" + Log.getStackTraceString(new Throwable()));
+      AppMethodBeat.o(147987);
       return;
     }
-    if (this.mDestroyed)
+    this.ckP.K((Runnable)new h(this, this));
+    AppMethodBeat.o(147987);
+  }
+  
+  public final void bwa()
+  {
+    AppMethodBeat.i(147988);
+    if (!this.ckP.isRunning())
     {
-      ad.w("Luggage.MPPageViewOrientationExtensionImpl[AppBrandSplashAd]", "resetPageOrientation but destroyed, appId:%s url:%s", new Object[] { this.ckN.getAppId(), this.ckN.kuf });
-      AppMethodBeat.o(169508);
+      ae.e(this.TAG, "runOnUiThread PageView destroyed, stack=" + Log.getStackTraceString(new Throwable()));
+      AppMethodBeat.o(147988);
       return;
     }
-    hi(true);
-    parama = new e.a()
+    this.ckP.K((Runnable)new i(this, this));
+    AppMethodBeat.o(147988);
+  }
+  
+  public void el(final String paramString1, final String paramString2)
+  {
+    AppMethodBeat.i(147992);
+    if (!this.ckP.isRunning())
     {
-      public final void a(e.b paramAnonymousb, boolean paramAnonymousBoolean)
-      {
-        AppMethodBeat.i(169506);
-        ad.i("Luggage.MPPageViewOrientationExtensionImpl[AppBrandSplashAd]", "resetPageOrientation, onOrientationChanged, appId[%s] url[%s] orientation[%s] success[%b]", new Object[] { bi.f(bi.this), bi.g(bi.this), paramAnonymousb, Boolean.valueOf(paramAnonymousBoolean) });
-        if (parama != null) {
-          parama.a(paramAnonymousb, paramAnonymousBoolean);
-        }
-        bi.h(bi.this);
-        AppMethodBeat.o(169506);
-      }
-    };
-    boolean bool = this.ckN.jzX instanceof o;
-    if ((e.b.c(getOrientationHandler().aXN())) && (bool) && (((a)this.ckN.ar(a.class)).cmj))
-    {
-      ad.i("Luggage.MPPageViewOrientationExtensionImpl[AppBrandSplashAd]", "resetPageOrientation appId[%s], url[%s], tabletLandscapeCompatible", new Object[] { this.ckN.getAppId(), this.ckN.kuf });
-      parama.a(null, false);
-      AppMethodBeat.o(169508);
+      ae.e(this.TAG, "runOnUiThread PageView destroyed, stack=" + Log.getStackTraceString(new Throwable()));
+      AppMethodBeat.o(147992);
       return;
     }
-    if (this.ckN.getRuntime().aWo())
+    this.ckP.K((Runnable)new e(this, this, paramString1, paramString2));
+    AppMethodBeat.o(147992);
+  }
+  
+  public final void hi(final boolean paramBoolean)
+  {
+    AppMethodBeat.i(147989);
+    if (!this.ckP.isRunning())
     {
-      ad.m("Luggage.MPPageViewOrientationExtensionImpl[AppBrandSplashAd]", "resetPageOrientation, wxa is showing launch ad, ignore changing orientation", new Object[0]);
-      parama.a(null, false);
-      AppMethodBeat.o(169508);
+      ae.e(this.TAG, "runOnUiThread PageView destroyed, stack=" + Log.getStackTraceString(new Throwable()));
+      AppMethodBeat.o(147989);
       return;
     }
-    ad.m("Luggage.MPPageViewOrientationExtensionImpl[AppBrandSplashAd]", "resetPageOrientation, before trigger, appId[%s] url[%s] orientation[%s]", new Object[] { this.ckN.getAppId(), this.ckN.kuf, this.ckX });
-    String str = bt.bI(this.ckX, "portrait");
-    int i = -1;
-    switch (str.hashCode())
-    {
-    }
-    for (;;)
-    {
-      switch (i)
-      {
-      default: 
-        str = String.format(Locale.US, "resetPageOrientation get invalid value, appId[%s], url[%s], orientation[%s]", new Object[] { this.ckN.getAppId(), this.ckN.kuf, this.ckX });
-        if (!this.ckN.jxf) {
-          break label564;
-        }
-        parama = new IllegalArgumentException(str);
-        AppMethodBeat.o(169508);
-        throw parama;
-        if (str.equals("auto"))
-        {
-          i = 0;
-          continue;
-          if (str.equals("landscape"))
-          {
-            i = 1;
-            continue;
-            if (str.equals("portrait"))
-            {
-              i = 2;
-              continue;
-              if (str.equals("landscapeLeft")) {
-                i = 3;
-              }
-            }
-          }
-        }
-        break;
-      }
-    }
-    getOrientationHandler().a(e.b.moH, parama);
-    AppMethodBeat.o(169508);
-    return;
-    getOrientationHandler().a(e.b.moI, parama);
-    AppMethodBeat.o(169508);
-    return;
-    getOrientationHandler().a(e.b.moG, parama);
-    AppMethodBeat.o(169508);
-    return;
-    getOrientationHandler().a(e.b.moK, parama);
-    AppMethodBeat.o(169508);
-    return;
-    label564:
-    ad.e("Luggage.MPPageViewOrientationExtensionImpl[AppBrandSplashAd]", str);
-    parama.a(null, false);
-    AppMethodBeat.o(169508);
+    this.ckP.K((Runnable)new b(this, this, paramBoolean));
+    AppMethodBeat.o(147989);
   }
   
-  public final void a(com.tencent.mm.plugin.appbrand.widget.actionbar.b paramb) {}
-  
-  public final void cW(String paramString)
+  public final void hk(final boolean paramBoolean)
   {
-    AppMethodBeat.i(147451);
-    this.ckX = paramString;
-    a(null);
-    AppMethodBeat.o(147451);
-  }
-  
-  public final void onBackground()
-  {
-    this.ckY = false;
-    this.meI.foreground = false;
-  }
-  
-  public final void onConfigurationChanged(Configuration paramConfiguration)
-  {
-    AppMethodBeat.i(192273);
-    if ((this.ckY) && (!this.mDestroyed) && (this.meL != null) && (this.meL.orientation != paramConfiguration.orientation))
+    AppMethodBeat.i(147990);
+    if (!this.ckP.isRunning())
     {
-      this.meL = new Configuration(paramConfiguration);
-      if (this.meM == null) {
-        this.meM = new a((byte)0);
-      }
-      paramConfiguration = this.meM;
-      paramConfiguration.meN.hi(true);
-      paramConfiguration.dO();
-      Object localObject = (View)Objects.requireNonNull(paramConfiguration.meN.ckN.kca);
-      ((View)localObject).postDelayed(paramConfiguration.meT, 100L);
-      localObject = ((View)localObject).getViewTreeObserver();
-      bi.a.2 local2 = new bi.a.2(paramConfiguration);
-      paramConfiguration.afi = local2;
-      ((ViewTreeObserver)localObject).addOnGlobalLayoutListener(local2);
-    }
-    AppMethodBeat.o(192273);
-  }
-  
-  public final void onDestroy()
-  {
-    AppMethodBeat.i(192272);
-    this.ckY = false;
-    this.mDestroyed = true;
-    if (this.meM != null)
-    {
-      a locala = this.meM;
-      locala.dO();
-      locala.afi = null;
-      locala.meT = null;
-    }
-    AppMethodBeat.o(192272);
-  }
-  
-  public final void onForeground()
-  {
-    AppMethodBeat.i(147454);
-    if (this.meL == null) {
-      this.meL = new Configuration(((r)Objects.requireNonNull(this.ckN.mcd)).getResources().getConfiguration());
-    }
-    this.ckY = true;
-    if ((this.ckN.getFullscreenImpl() != null) && (this.ckN.getFullscreenImpl().bwI())) {
-      this.ckN.getFullscreenImpl().a(new com.tencent.mm.plugin.appbrand.r.a.b()
-      {
-        public final void DA()
-        {
-          AppMethodBeat.i(192267);
-          bi.a(bi.this).getFullscreenImpl().b(this);
-          if ((!bi.b(bi.this)) && (bi.i(bi.this))) {
-            bi.this.a(null);
-          }
-          AppMethodBeat.o(192267);
-        }
-      });
-    }
-    for (;;)
-    {
-      com.tencent.luggage.sdk.b.a.b.e locale = this.meI;
-      if (locale.cor)
-      {
-        ad.i("Luggage.AppBrandPageViewResizedEmitter[pageOrientation]", "onForeground dispatch ViewDidResize appId[%s] url[%s]", new Object[] { locale.ckN.getAppId(), locale.ckN.kuf });
-        locale.ED();
-        locale.cor = false;
-      }
-      locale.foreground = true;
-      AppMethodBeat.o(147454);
-      return;
-      a(null);
-    }
-  }
-  
-  public final void q(String paramString, Map<String, Object> paramMap)
-  {
-    AppMethodBeat.i(147452);
-    if (Looper.myLooper() != Looper.getMainLooper())
-    {
-      this.ckN.M(new bi.2(this, paramString, paramMap));
-      AppMethodBeat.o(147452);
+      ae.e(this.TAG, "runOnUiThread PageView destroyed, stack=" + Log.getStackTraceString(new Throwable()));
+      AppMethodBeat.o(147990);
       return;
     }
-    com.tencent.luggage.sdk.b.a.b.e locale = this.meI;
-    if (paramMap != null) {
-      locale.cou.putAll(paramMap);
-    }
-    cW(paramString);
-    AppMethodBeat.o(147452);
+    this.ckP.K((Runnable)new a(this, this, paramBoolean));
+    AppMethodBeat.o(147990);
   }
   
-  final class a
+  public final void requestDisallowInterceptTouchEvent(final boolean paramBoolean)
   {
-    ViewTreeObserver.OnGlobalLayoutListener afi;
-    Runnable meT;
+    AppMethodBeat.i(147995);
+    if (!this.ckP.isRunning())
+    {
+      ae.e(this.TAG, "runOnUiThread PageView destroyed, stack=" + Log.getStackTraceString(new Throwable()));
+      AppMethodBeat.o(147995);
+      return;
+    }
+    this.ckP.K((Runnable)new c(this, this, paramBoolean));
+    AppMethodBeat.o(147995);
+  }
+  
+  public final void setPullDownText(final String paramString)
+  {
+    AppMethodBeat.i(147994);
+    p.h(paramString, "text");
+    if (!this.ckP.isRunning())
+    {
+      ae.e(this.TAG, "runOnUiThread PageView destroyed, stack=" + Log.getStackTraceString(new Throwable()));
+      AppMethodBeat.o(147994);
+      return;
+    }
+    this.ckP.K((Runnable)new g(this, this, paramString));
+    AppMethodBeat.o(147994);
+  }
+  
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run", "com/tencent/mm/plugin/appbrand/page/MPPageViewPullDownExtensionImpl$runOnUiThread$1"})
+  public static final class a
+    implements Runnable
+  {
+    public a(bi parambi1, bi parambi2, boolean paramBoolean) {}
     
-    private a()
+    public final void run()
     {
-      AppMethodBeat.i(192270);
-      this.meT = new Runnable()
+      AppMethodBeat.i(147978);
+      if (!bi.b(this.mjq).isRunning())
       {
-        public final void run()
-        {
-          AppMethodBeat.i(192268);
-          bi.h(bi.this);
-          AppMethodBeat.o(192268);
-        }
-      };
-      AppMethodBeat.o(192270);
-    }
-    
-    final void dO()
-    {
-      AppMethodBeat.i(192271);
-      ViewGroup localViewGroup = bi.a(bi.this).kca;
-      if (localViewGroup != null)
-      {
-        localViewGroup.removeCallbacks(this.meT);
-        if (this.afi != null) {
-          localViewGroup.getViewTreeObserver().removeOnGlobalLayoutListener(this.afi);
-        }
+        ae.e(bi.a(this.mjq), "runOnUiThread in ui-thread PageView destroyed");
+        AppMethodBeat.o(147978);
+        return;
       }
-      AppMethodBeat.o(192271);
+      bi.c(jdField_this).setPullDownEnabled(paramBoolean);
+      AppMethodBeat.o(147978);
+    }
+  }
+  
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run", "com/tencent/mm/plugin/appbrand/page/MPPageViewPullDownExtensionImpl$runOnUiThread$1"})
+  public static final class b
+    implements Runnable
+  {
+    public b(bi parambi1, bi parambi2, boolean paramBoolean) {}
+    
+    public final void run()
+    {
+      AppMethodBeat.i(147979);
+      if (!bi.b(this.mjq).isRunning())
+      {
+        ae.e(bi.a(this.mjq), "runOnUiThread in ui-thread PageView destroyed");
+        AppMethodBeat.o(147979);
+        return;
+      }
+      bi.c(jdField_this).setPullDownEnabled(paramBoolean);
+      bi.c(jdField_this).hi(paramBoolean);
+      AppMethodBeat.o(147979);
+    }
+  }
+  
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run", "com/tencent/mm/plugin/appbrand/page/MPPageViewPullDownExtensionImpl$runOnUiThread$1"})
+  public static final class c
+    implements Runnable
+  {
+    public c(bi parambi1, bi parambi2, boolean paramBoolean) {}
+    
+    public final void run()
+    {
+      AppMethodBeat.i(147980);
+      if (!bi.b(this.mjq).isRunning())
+      {
+        ae.e(bi.a(this.mjq), "runOnUiThread in ui-thread PageView destroyed");
+        AppMethodBeat.o(147980);
+        return;
+      }
+      bi.c(jdField_this).requestDisallowInterceptTouchEvent(paramBoolean);
+      AppMethodBeat.o(147980);
+    }
+  }
+  
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run", "com/tencent/mm/plugin/appbrand/page/MPPageViewPullDownExtensionImpl$runOnUiThread$1"})
+  public static final class d
+    implements Runnable
+  {
+    public d(bi parambi1, bi parambi2, f.a parama, int paramInt) {}
+    
+    public final void run()
+    {
+      AppMethodBeat.i(147981);
+      if (!bi.b(this.mjq).isRunning())
+      {
+        ae.e(bi.a(this.mjq), "runOnUiThread in ui-thread PageView destroyed");
+        AppMethodBeat.o(147981);
+        return;
+      }
+      bi.c(jdField_this).bT(parama.bwu(), paramInt);
+      AppMethodBeat.o(147981);
+    }
+  }
+  
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run", "com/tencent/mm/plugin/appbrand/page/MPPageViewPullDownExtensionImpl$runOnUiThread$1"})
+  public static final class e
+    implements Runnable
+  {
+    public e(bi parambi1, bi parambi2, String paramString1, String paramString2) {}
+    
+    public final void run()
+    {
+      AppMethodBeat.i(147982);
+      if (!bi.b(this.mjq).isRunning())
+      {
+        ae.e(bi.a(this.mjq), "runOnUiThread in ui-thread PageView destroyed");
+        AppMethodBeat.o(147982);
+        return;
+      }
+      bi.c(jdField_this).bT(paramString1, g.ck(paramString2, -1));
+      AppMethodBeat.o(147982);
+    }
+  }
+  
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run", "com/tencent/mm/plugin/appbrand/page/MPPageViewPullDownExtensionImpl$runOnUiThread$1"})
+  public static final class f
+    implements Runnable
+  {
+    public f(bi parambi1, bi parambi2, String paramString) {}
+    
+    public final void run()
+    {
+      AppMethodBeat.i(147983);
+      if (!bi.b(this.mjq).isRunning())
+      {
+        ae.e(bi.a(this.mjq), "runOnUiThread in ui-thread PageView destroyed");
+        AppMethodBeat.o(147983);
+        return;
+      }
+      bi.c(jdField_this).setBackgroundTextStyle(paramString);
+      AppMethodBeat.o(147983);
+    }
+  }
+  
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run", "com/tencent/mm/plugin/appbrand/page/MPPageViewPullDownExtensionImpl$runOnUiThread$1"})
+  public static final class g
+    implements Runnable
+  {
+    public g(bi parambi1, bi parambi2, String paramString) {}
+    
+    public final void run()
+    {
+      AppMethodBeat.i(147984);
+      if (!bi.b(this.mjq).isRunning())
+      {
+        ae.e(bi.a(this.mjq), "runOnUiThread in ui-thread PageView destroyed");
+        AppMethodBeat.o(147984);
+        return;
+      }
+      bi.c(jdField_this).setPullDownText(paramString);
+      AppMethodBeat.o(147984);
+    }
+  }
+  
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run", "com/tencent/mm/plugin/appbrand/page/MPPageViewPullDownExtensionImpl$runOnUiThread$1"})
+  public static final class h
+    implements Runnable
+  {
+    public h(bi parambi1, bi parambi2) {}
+    
+    public final void run()
+    {
+      AppMethodBeat.i(147985);
+      if (!bi.b(this.mjq).isRunning())
+      {
+        ae.e(bi.a(this.mjq), "runOnUiThread in ui-thread PageView destroyed");
+        AppMethodBeat.o(147985);
+        return;
+      }
+      ae.i(bi.a(jdField_this), "AppBrandPullDown OnUiThread startPullDownRefresh appId:" + bi.b(jdField_this).getAppId() + " url:" + bi.b(jdField_this).getURL());
+      try
+      {
+        ax localax = bi.b(jdField_this).bvk();
+        p.g(localax, "mPageView.webView");
+        if (localax.getWebScrollY() != 0) {
+          bi.b(jdField_this).bvk().Dq();
+        }
+        bi.c(jdField_this).hi(true);
+        bi.c(jdField_this).bvK();
+        AppMethodBeat.o(147985);
+        return;
+      }
+      catch (NullPointerException localNullPointerException)
+      {
+        ae.e(bi.a(jdField_this), "AppBrandPullDown OnUiThread startPullDownRefresh appId:" + bi.b(jdField_this).getAppId() + " url:" + bi.b(jdField_this).getURL() + " e:" + localNullPointerException);
+        Throwable localThrowable = (Throwable)localNullPointerException;
+        AppMethodBeat.o(147985);
+        throw localThrowable;
+      }
+    }
+  }
+  
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run", "com/tencent/mm/plugin/appbrand/page/MPPageViewPullDownExtensionImpl$runOnUiThread$1"})
+  public static final class i
+    implements Runnable
+  {
+    public i(bi parambi1, bi parambi2) {}
+    
+    public final void run()
+    {
+      AppMethodBeat.i(147986);
+      if (!bi.b(this.mjq).isRunning())
+      {
+        ae.e(bi.a(this.mjq), "runOnUiThread in ui-thread PageView destroyed");
+        AppMethodBeat.o(147986);
+        return;
+      }
+      bi.c(jdField_this).bvO();
+      AppMethodBeat.o(147986);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.page.bi
  * JD-Core Version:    0.7.0.1
  */

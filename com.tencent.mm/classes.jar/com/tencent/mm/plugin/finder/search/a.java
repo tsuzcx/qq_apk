@@ -4,12 +4,12 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/search/FinderExposeItem;", "", "()V", "clickTimes", "", "getClickTimes", "()I", "setClickTimes", "(I)V", "exposeTimes", "getExposeTimes", "setExposeTimes", "id", "", "getId", "()Ljava/lang/String;", "setId", "(Ljava/lang/String;)V", "isReport", "", "()Z", "setReport", "(Z)V", "position", "getPosition", "setPosition", "timeStamp", "", "getTimeStamp", "()J", "setTimeStamp", "(J)V", "type", "getType", "setType", "username", "getUsername", "setUsername", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/search/FinderExposeItem;", "", "()V", "clickTimes", "", "getClickTimes", "()I", "setClickTimes", "(I)V", "exposeTimes", "getExposeTimes", "setExposeTimes", "id", "", "getId", "()Ljava/lang/String;", "setId", "(Ljava/lang/String;)V", "isReport", "", "()Z", "setReport", "(Z)V", "position", "getPosition", "setPosition", "timeStamp", "", "getTimeStamp", "()J", "setTimeStamp", "(J)V", "type", "getType", "setType", "username", "getUsername", "setUsername", "plugin-finder_release"})
 public final class a
 {
   public String id = "";
   public int position = -1;
-  public boolean ssW;
+  public boolean sDg;
   public long timeStamp;
   public int type;
   private String username = "";

@@ -2,12 +2,12 @@ package com.tencent.mmkv;
 
 public final class d
 {
-  public long IeJ;
+  public long IyU;
   public int size;
   
   public d(long paramLong, int paramInt)
   {
-    this.IeJ = paramLong;
+    this.IyU = paramLong;
     this.size = paramInt;
   }
 }

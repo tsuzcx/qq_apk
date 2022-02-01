@@ -1,18 +1,18 @@
 package com.tencent.mm.plugin.record.b;
 
-import com.tencent.mm.protocal.protobuf.akd;
+import com.tencent.mm.protocal.protobuf.akn;
 
 public final class b
 {
   String desc;
-  akd dnI;
-  String xqw;
+  akn doN;
+  String xGt;
   
-  b(String paramString1, String paramString2, akd paramakd)
+  b(String paramString1, String paramString2, akn paramakn)
   {
     this.desc = paramString1;
-    this.xqw = paramString2;
-    this.dnI = paramakd;
+    this.xGt = paramString2;
+    this.doN = paramakn;
   }
 }
 

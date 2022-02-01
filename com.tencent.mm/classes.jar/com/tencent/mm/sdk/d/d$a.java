@@ -7,13 +7,13 @@ import java.util.Calendar;
 
 public final class d$a
 {
-  private d IgW;
-  private long IgX;
-  private int IgY;
-  private String IgZ;
-  private a Iha;
-  private a Ihb;
-  private a Ihc;
+  private d IBh;
+  private long IBi;
+  private int IBj;
+  private String IBk;
+  private a IBl;
+  private a IBm;
+  private a IBn;
   
   d$a(d paramd, Message paramMessage, String paramString, a parama1, a parama2, a parama3)
   {
@@ -25,16 +25,16 @@ public final class d$a
   public final void a(d paramd, Message paramMessage, String paramString, a parama1, a parama2, a parama3)
   {
     AppMethodBeat.i(158012);
-    this.IgW = paramd;
-    this.IgX = System.currentTimeMillis();
+    this.IBh = paramd;
+    this.IBi = System.currentTimeMillis();
     if (paramMessage != null) {}
     for (int i = paramMessage.what;; i = 0)
     {
-      this.IgY = i;
-      this.IgZ = paramString;
-      this.Iha = parama1;
-      this.Ihb = parama2;
-      this.Ihc = parama3;
+      this.IBj = i;
+      this.IBk = paramString;
+      this.IBl = parama1;
+      this.IBm = parama2;
+      this.IBn = parama3;
       AppMethodBeat.o(158012);
       return;
     }
@@ -46,29 +46,29 @@ public final class d$a
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("time=");
     Object localObject = Calendar.getInstance();
-    ((Calendar)localObject).setTimeInMillis(this.IgX);
+    ((Calendar)localObject).setTimeInMillis(this.IBi);
     localStringBuilder.append(String.format("%tm-%td %tH:%tM:%tS.%tL", new Object[] { localObject, localObject, localObject, localObject, localObject, localObject }));
     localStringBuilder.append(" processed=");
-    if (this.Iha == null)
+    if (this.IBl == null)
     {
       localObject = "<null>";
       localStringBuilder.append((String)localObject);
       localStringBuilder.append(" org=");
-      if (this.Ihb != null) {
+      if (this.IBm != null) {
         break label249;
       }
       localObject = "<null>";
       label111:
       localStringBuilder.append((String)localObject);
       localStringBuilder.append(" dest=");
-      if (this.Ihc != null) {
+      if (this.IBn != null) {
         break label262;
       }
       localObject = "<null>";
       label134:
       localStringBuilder.append((String)localObject);
       localStringBuilder.append(" what=");
-      if (this.IgW == null) {
+      if (this.IBh == null) {
         break label275;
       }
       localObject = null;
@@ -76,28 +76,28 @@ public final class d$a
       if (!TextUtils.isEmpty((CharSequence)localObject)) {
         break label281;
       }
-      localStringBuilder.append(this.IgY);
+      localStringBuilder.append(this.IBj);
       localStringBuilder.append("(0x");
-      localStringBuilder.append(Integer.toHexString(this.IgY));
+      localStringBuilder.append(Integer.toHexString(this.IBj));
       localStringBuilder.append(")");
     }
     for (;;)
     {
-      if (!TextUtils.isEmpty(this.IgZ))
+      if (!TextUtils.isEmpty(this.IBk))
       {
         localStringBuilder.append(" ");
-        localStringBuilder.append(this.IgZ);
+        localStringBuilder.append(this.IBk);
       }
       localObject = localStringBuilder.toString();
       AppMethodBeat.o(158013);
       return localObject;
-      localObject = this.Iha.getName();
+      localObject = this.IBl.getName();
       break;
       label249:
-      localObject = this.Ihb.getName();
+      localObject = this.IBm.getName();
       break label111;
       label262:
-      localObject = this.Ihc.getName();
+      localObject = this.IBn.getName();
       break label134;
       label275:
       localObject = "";
@@ -109,7 +109,7 @@ public final class d$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.sdk.d.d.a
  * JD-Core Version:    0.7.0.1
  */

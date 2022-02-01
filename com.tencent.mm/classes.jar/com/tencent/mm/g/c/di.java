@@ -3,57 +3,57 @@ package com.tencent.mm.g.c;
 import android.content.ContentValues;
 import android.database.Cursor;
 import com.tencent.mm.sdk.e.c;
-import com.tencent.mm.sdk.platformtools.aa;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public abstract class di
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eIm;
-  private static final int eLh = "lvbuffer".hashCode();
-  private static final int faV;
-  private static final int ffm = "deviceID".hashCode();
-  private static final int ffn = "brandName".hashCode();
-  private static final int ffo;
-  private static final int ffp;
-  private static final int ffq;
-  private static final int ffr;
-  private static final int ffs;
-  private static final int fft;
-  private static final int ffu;
-  private static final int ffv;
-  private static final int ffw;
+  private static final int eJV;
+  private static final int eMR = "lvbuffer".hashCode();
+  private static final int fcK;
+  private static final int fhj = "deviceID".hashCode();
+  private static final int fhk = "brandName".hashCode();
+  private static final int fhl;
+  private static final int fhm;
+  private static final int fhn;
+  private static final int fho;
+  private static final int fhp;
+  private static final int fhq;
+  private static final int fhr;
+  private static final int fhs;
+  private static final int fht;
   private static final int rowid_HASHCODE = "rowid".hashCode();
   public String category;
-  private boolean eIi = true;
-  public boolean eKU = true;
-  private boolean faJ = true;
-  private long ffA;
-  public String ffB;
-  public String ffC;
-  public String ffD;
-  private int ffE;
-  public int ffF;
-  public long ffG;
-  public String ffH;
-  public String ffI;
-  private String ffJ;
-  public String ffK;
-  private boolean ffb = true;
-  private boolean ffc = true;
-  private boolean ffd = true;
-  private boolean ffe = true;
-  private boolean fff = true;
-  private boolean ffg = true;
-  private boolean ffh = true;
-  private boolean ffi = true;
-  private boolean ffj = true;
-  private boolean ffk = true;
-  private boolean ffl = true;
-  public int ffx;
-  public int ffy;
-  public long ffz;
+  private boolean eJR = true;
+  public boolean eMD = true;
+  private boolean fcy = true;
+  private boolean fgY = true;
+  private boolean fgZ = true;
+  public String fhA;
+  private int fhB;
+  public int fhC;
+  public long fhD;
+  public String fhE;
+  public String fhF;
+  private String fhG;
+  public String fhH;
+  private boolean fha = true;
+  private boolean fhb = true;
+  private boolean fhc = true;
+  private boolean fhd = true;
+  private boolean fhe = true;
+  private boolean fhf = true;
+  private boolean fhg = true;
+  private boolean fhh = true;
+  private boolean fhi = true;
+  public int fhu;
+  public int fhv;
+  public long fhw;
+  private long fhx;
+  public String fhy;
+  public String fhz;
   public byte[] field_authBuf;
   public String field_authKey;
   public String field_brandName;
@@ -73,17 +73,17 @@ public abstract class di
   
   static
   {
-    faV = "mac".hashCode();
-    ffo = "deviceType".hashCode();
-    ffp = "connProto".hashCode();
-    ffq = "connStrategy".hashCode();
-    ffr = "closeStrategy".hashCode();
-    ffs = "md5Str".hashCode();
-    fft = "authKey".hashCode();
-    eIm = "url".hashCode();
-    ffu = "sessionKey".hashCode();
-    ffv = "sessionBuf".hashCode();
-    ffw = "authBuf".hashCode();
+    fcK = "mac".hashCode();
+    fhl = "deviceType".hashCode();
+    fhm = "connProto".hashCode();
+    fhn = "connStrategy".hashCode();
+    fho = "closeStrategy".hashCode();
+    fhp = "md5Str".hashCode();
+    fhq = "authKey".hashCode();
+    eJV = "url".hashCode();
+    fhr = "sessionKey".hashCode();
+    fhs = "sessionBuf".hashCode();
+    fht = "authBuf".hashCode();
   }
   
   public void convertFrom(Cursor paramCursor)
@@ -100,40 +100,40 @@ public abstract class di
         if (i < j)
         {
           int k = arrayOfString[i].hashCode();
-          if (ffm == k)
+          if (fhj == k)
           {
             this.field_deviceID = paramCursor.getString(i);
-            this.ffb = true;
+            this.fgY = true;
           }
           for (;;)
           {
             i += 1;
             break;
-            if (ffn == k) {
+            if (fhk == k) {
               this.field_brandName = paramCursor.getString(i);
-            } else if (faV == k) {
+            } else if (fcK == k) {
               this.field_mac = paramCursor.getLong(i);
-            } else if (ffo == k) {
+            } else if (fhl == k) {
               this.field_deviceType = paramCursor.getString(i);
-            } else if (ffp == k) {
+            } else if (fhm == k) {
               this.field_connProto = paramCursor.getString(i);
-            } else if (ffq == k) {
+            } else if (fhn == k) {
               this.field_connStrategy = paramCursor.getInt(i);
-            } else if (ffr == k) {
+            } else if (fho == k) {
               this.field_closeStrategy = paramCursor.getInt(i);
-            } else if (ffs == k) {
+            } else if (fhp == k) {
               this.field_md5Str = paramCursor.getString(i);
-            } else if (fft == k) {
+            } else if (fhq == k) {
               this.field_authKey = paramCursor.getString(i);
-            } else if (eIm == k) {
+            } else if (eJV == k) {
               this.field_url = paramCursor.getString(i);
-            } else if (ffu == k) {
+            } else if (fhr == k) {
               this.field_sessionKey = paramCursor.getBlob(i);
-            } else if (ffv == k) {
+            } else if (fhs == k) {
               this.field_sessionBuf = paramCursor.getBlob(i);
-            } else if (ffw == k) {
+            } else if (fht == k) {
               this.field_authBuf = paramCursor.getBlob(i);
-            } else if (eLh == k) {
+            } else if (eMR == k) {
               this.field_lvbuffer = paramCursor.getBlob(i);
             } else if (rowid_HASHCODE == k) {
               this.systemRowid = paramCursor.getLong(i);
@@ -144,141 +144,141 @@ public abstract class di
         {
           if ((this.field_lvbuffer != null) && (this.field_lvbuffer.length != 0))
           {
-            paramCursor = new aa();
-            i = paramCursor.cy(this.field_lvbuffer);
+            paramCursor = new ab();
+            i = paramCursor.cB(this.field_lvbuffer);
             if (i != 0)
             {
-              ad.e("MicroMsg.SDK.BaseHardDeviceInfo", "parse LVBuffer error:".concat(String.valueOf(i)));
+              ae.e("MicroMsg.SDK.BaseHardDeviceInfo", "parse LVBuffer error:".concat(String.valueOf(i)));
               return;
             }
           }
         }
         catch (Exception paramCursor)
         {
-          ad.e("MicroMsg.SDK.BaseHardDeviceInfo", "get value failed");
+          ae.e("MicroMsg.SDK.BaseHardDeviceInfo", "get value failed");
           return;
         }
       }
-      if (!paramCursor.fki()) {
-        this.ffx = paramCursor.getInt();
+      if (!paramCursor.foc()) {
+        this.fhu = paramCursor.getInt();
       }
-      if (!paramCursor.fki()) {
-        this.ffy = paramCursor.getInt();
+      if (!paramCursor.foc()) {
+        this.fhv = paramCursor.getInt();
       }
-      if (!paramCursor.fki()) {
-        this.ffz = paramCursor.getLong();
+      if (!paramCursor.foc()) {
+        this.fhw = paramCursor.getLong();
       }
-      if (!paramCursor.fki()) {
-        this.ffA = paramCursor.getLong();
+      if (!paramCursor.foc()) {
+        this.fhx = paramCursor.getLong();
       }
-      if (!paramCursor.fki()) {
-        this.ffB = paramCursor.getString();
+      if (!paramCursor.foc()) {
+        this.fhy = paramCursor.getString();
       }
-      if (!paramCursor.fki()) {
+      if (!paramCursor.foc()) {
         this.iconUrl = paramCursor.getString();
       }
-      if (!paramCursor.fki()) {
+      if (!paramCursor.foc()) {
         this.jumpUrl = paramCursor.getString();
       }
-      if (!paramCursor.fki()) {
-        this.ffC = paramCursor.getString();
+      if (!paramCursor.foc()) {
+        this.fhz = paramCursor.getString();
       }
-      if (!paramCursor.fki()) {
-        this.ffD = paramCursor.getString();
+      if (!paramCursor.foc()) {
+        this.fhA = paramCursor.getString();
       }
-      if (!paramCursor.fki()) {
+      if (!paramCursor.foc()) {
         this.category = paramCursor.getString();
       }
-      if (!paramCursor.fki()) {
-        this.ffE = paramCursor.getInt();
+      if (!paramCursor.foc()) {
+        this.fhB = paramCursor.getInt();
       }
-      if (!paramCursor.fki()) {
-        this.ffF = paramCursor.getInt();
+      if (!paramCursor.foc()) {
+        this.fhC = paramCursor.getInt();
       }
-      if (!paramCursor.fki()) {
-        this.ffG = paramCursor.getLong();
+      if (!paramCursor.foc()) {
+        this.fhD = paramCursor.getLong();
       }
-      if (!paramCursor.fki()) {
-        this.ffH = paramCursor.getString();
+      if (!paramCursor.foc()) {
+        this.fhE = paramCursor.getString();
       }
-      if (!paramCursor.fki()) {
-        this.ffI = paramCursor.getString();
+      if (!paramCursor.foc()) {
+        this.fhF = paramCursor.getString();
       }
-      if (!paramCursor.fki()) {
-        this.ffJ = paramCursor.getString();
+      if (!paramCursor.foc()) {
+        this.fhG = paramCursor.getString();
       }
-    } while (paramCursor.fki());
-    this.ffK = paramCursor.getString();
+    } while (paramCursor.foc());
+    this.fhH = paramCursor.getString();
   }
   
   public ContentValues convertTo()
   {
     try
     {
-      if (this.eKU)
+      if (this.eMD)
       {
-        localObject = new aa();
-        ((aa)localObject).fkj();
-        ((aa)localObject).aaw(this.ffx);
-        ((aa)localObject).aaw(this.ffy);
-        ((aa)localObject).CV(this.ffz);
-        ((aa)localObject).CV(this.ffA);
-        ((aa)localObject).aQp(this.ffB);
-        ((aa)localObject).aQp(this.iconUrl);
-        ((aa)localObject).aQp(this.jumpUrl);
-        ((aa)localObject).aQp(this.ffC);
-        ((aa)localObject).aQp(this.ffD);
-        ((aa)localObject).aQp(this.category);
-        ((aa)localObject).aaw(this.ffE);
-        ((aa)localObject).aaw(this.ffF);
-        ((aa)localObject).CV(this.ffG);
-        ((aa)localObject).aQp(this.ffH);
-        ((aa)localObject).aQp(this.ffI);
-        ((aa)localObject).aQp(this.ffJ);
-        ((aa)localObject).aQp(this.ffK);
-        this.field_lvbuffer = ((aa)localObject).fkk();
+        localObject = new ab();
+        ((ab)localObject).fod();
+        ((ab)localObject).abc(this.fhu);
+        ((ab)localObject).abc(this.fhv);
+        ((ab)localObject).Dt(this.fhw);
+        ((ab)localObject).Dt(this.fhx);
+        ((ab)localObject).aRM(this.fhy);
+        ((ab)localObject).aRM(this.iconUrl);
+        ((ab)localObject).aRM(this.jumpUrl);
+        ((ab)localObject).aRM(this.fhz);
+        ((ab)localObject).aRM(this.fhA);
+        ((ab)localObject).aRM(this.category);
+        ((ab)localObject).abc(this.fhB);
+        ((ab)localObject).abc(this.fhC);
+        ((ab)localObject).Dt(this.fhD);
+        ((ab)localObject).aRM(this.fhE);
+        ((ab)localObject).aRM(this.fhF);
+        ((ab)localObject).aRM(this.fhG);
+        ((ab)localObject).aRM(this.fhH);
+        this.field_lvbuffer = ((ab)localObject).foe();
       }
       Object localObject = new ContentValues();
-      if (this.ffb) {
+      if (this.fgY) {
         ((ContentValues)localObject).put("deviceID", this.field_deviceID);
       }
-      if (this.ffc) {
+      if (this.fgZ) {
         ((ContentValues)localObject).put("brandName", this.field_brandName);
       }
-      if (this.faJ) {
+      if (this.fcy) {
         ((ContentValues)localObject).put("mac", Long.valueOf(this.field_mac));
       }
-      if (this.ffd) {
+      if (this.fha) {
         ((ContentValues)localObject).put("deviceType", this.field_deviceType);
       }
-      if (this.ffe) {
+      if (this.fhb) {
         ((ContentValues)localObject).put("connProto", this.field_connProto);
       }
-      if (this.fff) {
+      if (this.fhc) {
         ((ContentValues)localObject).put("connStrategy", Integer.valueOf(this.field_connStrategy));
       }
-      if (this.ffg) {
+      if (this.fhd) {
         ((ContentValues)localObject).put("closeStrategy", Integer.valueOf(this.field_closeStrategy));
       }
-      if (this.ffh) {
+      if (this.fhe) {
         ((ContentValues)localObject).put("md5Str", this.field_md5Str);
       }
-      if (this.ffi) {
+      if (this.fhf) {
         ((ContentValues)localObject).put("authKey", this.field_authKey);
       }
-      if (this.eIi) {
+      if (this.eJR) {
         ((ContentValues)localObject).put("url", this.field_url);
       }
-      if (this.ffj) {
+      if (this.fhg) {
         ((ContentValues)localObject).put("sessionKey", this.field_sessionKey);
       }
-      if (this.ffk) {
+      if (this.fhh) {
         ((ContentValues)localObject).put("sessionBuf", this.field_sessionBuf);
       }
-      if (this.ffl) {
+      if (this.fhi) {
         ((ContentValues)localObject).put("authBuf", this.field_authBuf);
       }
-      if (this.eKU) {
+      if (this.eMD) {
         ((ContentValues)localObject).put("lvbuffer", this.field_lvbuffer);
       }
       if (this.systemRowid > 0L) {
@@ -290,87 +290,87 @@ public abstract class di
     {
       for (;;)
       {
-        ad.e("MicroMsg.SDK.BaseHardDeviceInfo", "get value failed, %s", new Object[] { localException.getMessage() });
+        ae.e("MicroMsg.SDK.BaseHardDeviceInfo", "get value failed, %s", new Object[] { localException.getMessage() });
       }
     }
   }
   
-  public final void kA(int paramInt)
+  public final void kB(int paramInt)
   {
-    this.ffF = paramInt;
-    this.eKU = true;
+    this.fhB = paramInt;
+    this.eMD = true;
   }
   
-  public final void kz(int paramInt)
+  public final void kC(int paramInt)
   {
-    this.ffE = paramInt;
-    this.eKU = true;
+    this.fhC = paramInt;
+    this.eMD = true;
   }
   
-  public final void qy(long paramLong)
+  public final void qL(long paramLong)
   {
-    this.ffG = paramLong;
-    this.eKU = true;
-  }
-  
-  public final void sQ(String paramString)
-  {
-    this.ffB = paramString;
-    this.eKU = true;
+    this.fhD = paramLong;
+    this.eMD = true;
   }
   
   public final void setIconUrl(String paramString)
   {
     this.iconUrl = paramString;
-    this.eKU = true;
+    this.eMD = true;
   }
   
-  public final void tF(String paramString)
+  public final void tl(String paramString)
+  {
+    this.fhy = paramString;
+    this.eMD = true;
+  }
+  
+  public final void ua(String paramString)
   {
     this.jumpUrl = paramString;
-    this.eKU = true;
+    this.eMD = true;
   }
   
-  public final void tG(String paramString)
+  public final void ub(String paramString)
   {
-    this.ffC = paramString;
-    this.eKU = true;
+    this.fhz = paramString;
+    this.eMD = true;
   }
   
-  public final void tH(String paramString)
+  public final void uc(String paramString)
   {
-    this.ffD = paramString;
-    this.eKU = true;
+    this.fhA = paramString;
+    this.eMD = true;
   }
   
-  public final void tI(String paramString)
+  public final void ud(String paramString)
   {
     this.category = paramString;
-    this.eKU = true;
+    this.eMD = true;
   }
   
-  public final void tJ(String paramString)
+  public final void ue(String paramString)
   {
-    this.ffH = paramString;
-    this.eKU = true;
+    this.fhE = paramString;
+    this.eMD = true;
   }
   
-  public final void tK(String paramString)
+  public final void uf(String paramString)
   {
-    this.ffI = paramString;
-    this.eKU = true;
+    this.fhF = paramString;
+    this.eMD = true;
   }
   
-  public final void tL(String paramString)
+  public final void ug(String paramString)
   {
-    this.ffJ = paramString;
-    this.eKU = true;
+    this.fhG = paramString;
+    this.eMD = true;
   }
   
-  public final void tM(String paramString)
+  public final void uh(String paramString)
   {
-    this.ffK = paramString;
-    this.eKU = true;
+    this.fhH = paramString;
+    this.eMD = true;
   }
 }
 

@@ -8,7 +8,7 @@ import com.tencent.mm.plugin.appbrand.jsapi.e;
 import com.tencent.mm.plugin.appbrand.jsapi.i.a.b.q;
 import com.tencent.mm.plugin.appbrand.jsapi.i.a.f;
 import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.HashMap;
 import java.util.Map;
 import org.json.JSONArray;
@@ -23,56 +23,56 @@ public final class s
   
   public final void a(final c paramc, final JSONObject paramJSONObject, int paramInt)
   {
-    AppMethodBeat.i(186145);
+    AppMethodBeat.i(206460);
     super.a(paramc, paramJSONObject, paramInt);
     if (paramJSONObject == null)
     {
-      ad.e("MicroMsg.JsApiInitMapMarkerCluster", "data is null");
+      ae.e("MicroMsg.JsApiInitMapMarkerCluster", "data is null");
       paramc.h(paramInt, e("fail:invalid data", null));
-      AppMethodBeat.o(186145);
+      AppMethodBeat.o(206460);
       return;
     }
-    ad.i("MicroMsg.JsApiInitMapMarkerCluster", "data:%s", new Object[] { paramJSONObject });
+    ae.i("MicroMsg.JsApiInitMapMarkerCluster", "data:%s", new Object[] { paramJSONObject });
     com.tencent.mm.plugin.appbrand.jsapi.i.a.b localb = h(paramc, paramJSONObject);
     if (localb == null)
     {
-      ad.e("MicroMsg.JsApiInitMapMarkerCluster", "mapView is null, return");
+      ae.e("MicroMsg.JsApiInitMapMarkerCluster", "mapView is null, return");
       paramc.h(paramInt, e("fail:mapview is null", null));
-      AppMethodBeat.o(186145);
+      AppMethodBeat.o(206460);
       return;
     }
     boolean bool1 = paramJSONObject.optBoolean("enableDefaultStyle", true);
     boolean bool2 = paramJSONObject.optBoolean("zoomOnClick", true);
     int i = paramJSONObject.optInt("minimumClusterSize", 2);
     int j = paramJSONObject.optInt("gridSize", 60);
-    ad.i("MicroMsg.JsApiInitMapMarkerCluster", "enableDefaultStyle:%b, zoomOnClick:%b, minimumClusterSize:%d, gridSize:%d", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2), Integer.valueOf(i), Integer.valueOf(j) });
+    ae.i("MicroMsg.JsApiInitMapMarkerCluster", "enableDefaultStyle:%b, zoomOnClick:%b, minimumClusterSize:%d, gridSize:%d", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2), Integer.valueOf(i), Integer.valueOf(j) });
     localb.a(bool1, bool2, i, j, new b.q()
     {
       JSONObject jsonObject;
       
       public final void R(JSONObject paramAnonymousJSONObject)
       {
-        AppMethodBeat.i(186144);
+        AppMethodBeat.i(206459);
         s.a locala = new s.a();
         HashMap localHashMap = new HashMap();
         localHashMap.put("cluster", paramAnonymousJSONObject);
         localHashMap.put("mapId", Integer.valueOf(f.S(paramJSONObject)));
-        locala.B(localHashMap);
-        ad.i("MicroMsg.JsApiInitMapMarkerCluster", "click clusterInfo:%s", new Object[] { paramAnonymousJSONObject });
+        locala.I(localHashMap);
+        ae.i("MicroMsg.JsApiInitMapMarkerCluster", "click clusterInfo:%s", new Object[] { paramAnonymousJSONObject });
         paramAnonymousJSONObject = ((g)paramc.K(g.class)).c(paramc, paramJSONObject);
         if (paramAnonymousJSONObject != null)
         {
           paramAnonymousJSONObject.b(locala);
-          AppMethodBeat.o(186144);
+          AppMethodBeat.o(206459);
           return;
         }
         paramc.a(locala);
-        AppMethodBeat.o(186144);
+        AppMethodBeat.o(206459);
       }
       
-      public final void o(JSONArray paramAnonymousJSONArray)
+      public final void p(JSONArray paramAnonymousJSONArray)
       {
-        AppMethodBeat.i(186143);
+        AppMethodBeat.i(206458);
         s.b localb = new s.b();
         HashMap localHashMap = new HashMap();
         localHashMap.put("clusters", paramAnonymousJSONArray);
@@ -84,17 +84,17 @@ public final class s
           this.jsonObject.remove("mapId");
           this.jsonObject.put("mapId", f.S(paramJSONObject));
           label98:
-          localb.B(localHashMap);
-          ad.i("MicroMsg.JsApiInitMapMarkerCluster", "create clusterInfo:%s", new Object[] { paramAnonymousJSONArray });
+          localb.I(localHashMap);
+          ae.i("MicroMsg.JsApiInitMapMarkerCluster", "create clusterInfo:%s", new Object[] { paramAnonymousJSONArray });
           paramAnonymousJSONArray = ((g)paramc.K(g.class)).c(paramc, paramJSONObject);
           if (paramAnonymousJSONArray != null)
           {
             paramAnonymousJSONArray.b(localb);
-            AppMethodBeat.o(186143);
+            AppMethodBeat.o(206458);
             return;
           }
           paramc.a(localb);
-          AppMethodBeat.o(186143);
+          AppMethodBeat.o(206458);
           return;
         }
         catch (JSONException localJSONException)
@@ -104,7 +104,7 @@ public final class s
       }
     });
     paramc.h(paramInt, e("ok", null));
-    AppMethodBeat.o(186145);
+    AppMethodBeat.o(206460);
   }
   
   public static final class a
@@ -123,7 +123,7 @@ public final class s
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.i.s
  * JD-Core Version:    0.7.0.1
  */

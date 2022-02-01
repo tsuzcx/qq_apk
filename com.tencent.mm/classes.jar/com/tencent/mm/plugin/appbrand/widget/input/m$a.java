@@ -5,11 +5,11 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 final class m$a
   implements CharSequence
 {
-  private CharSequence nej;
+  private CharSequence njs;
   
   m$a(CharSequence paramCharSequence)
   {
-    this.nej = paramCharSequence;
+    this.njs = paramCharSequence;
   }
   
   public final char charAt(int paramInt)
@@ -20,7 +20,7 @@ final class m$a
   public final int length()
   {
     AppMethodBeat.i(131501);
-    int i = this.nej.length();
+    int i = this.njs.length();
     AppMethodBeat.o(131501);
     return i;
   }
@@ -28,7 +28,7 @@ final class m$a
   public final CharSequence subSequence(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(131502);
-    CharSequence localCharSequence = this.nej.subSequence(paramInt1, paramInt2);
+    CharSequence localCharSequence = this.njs.subSequence(paramInt1, paramInt2);
     AppMethodBeat.o(131502);
     return localCharSequence;
   }

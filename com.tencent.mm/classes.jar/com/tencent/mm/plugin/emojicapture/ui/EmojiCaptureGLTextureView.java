@@ -9,16 +9,16 @@ import com.tencent.mm.plugin.emojicapture.ui.b.e;
 import d.l;
 import d.v;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/emojicapture/ui/EmojiCaptureGLTextureView;", "Lcom/tencent/mm/media/widget/camerarecordview/preview/CameraPreviewGLTextureView;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "defStyle", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "(Landroid/content/Context;)V", "getPreviewTexture", "Lcom/tencent/mm/media/globject/GLTextureObject;", "Companion", "plugin-emojicapture_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/emojicapture/ui/EmojiCaptureGLTextureView;", "Lcom/tencent/mm/media/widget/camerarecordview/preview/CameraPreviewGLTextureView;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "defStyle", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "(Landroid/content/Context;)V", "getPreviewTexture", "Lcom/tencent/mm/media/globject/GLTextureObject;", "Companion", "plugin-emojicapture_release"})
 public final class EmojiCaptureGLTextureView
   extends CameraPreviewGLTextureView
 {
-  public static final EmojiCaptureGLTextureView.a pUl;
+  public static final EmojiCaptureGLTextureView.a qaQ;
   
   static
   {
     AppMethodBeat.i(435);
-    pUl = new EmojiCaptureGLTextureView.a((byte)0);
+    qaQ = new EmojiCaptureGLTextureView.a((byte)0);
     AppMethodBeat.o(435);
   }
   
@@ -39,28 +39,28 @@ public final class EmojiCaptureGLTextureView
   
   public final d getPreviewTexture()
   {
-    AppMethodBeat.i(195133);
+    AppMethodBeat.i(221765);
     if ((getRenderer() instanceof e))
     {
       localObject = getRenderer();
       if (localObject == null)
       {
         localObject = new v("null cannot be cast to non-null type com.tencent.mm.plugin.emojicapture.ui.gl.EmojiCapturePreviewRenderer");
-        AppMethodBeat.o(195133);
+        AppMethodBeat.o(221765);
         throw ((Throwable)localObject);
       }
-      localObject = ((e)localObject).ckF();
-      AppMethodBeat.o(195133);
+      localObject = ((e)localObject).clV();
+      AppMethodBeat.o(221765);
       return localObject;
     }
     Object localObject = super.getPreviewTexture();
-    AppMethodBeat.o(195133);
+    AppMethodBeat.o(221765);
     return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.emojicapture.ui.EmojiCaptureGLTextureView
  * JD-Core Version:    0.7.0.1
  */

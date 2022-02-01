@@ -2,50 +2,50 @@ package com.tencent.mm.plugin.appbrand.jsapi.video.videoview;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.video.e.h;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class b
 {
-  e.h llB = e.h.llM;
-  public boolean lsI;
-  protected int ltA;
-  protected int ltB;
-  protected int ltC;
-  protected int ltD;
+  e.h lqa = e.h.lqm;
+  protected int lxZ;
+  public boolean lxh;
+  protected int lya;
+  protected int lyb;
+  protected int lyc;
   protected int videoHeight;
   protected int videoWidth;
   
   public final void reset()
   {
-    this.ltB = 0;
-    this.ltA = 0;
+    this.lya = 0;
+    this.lxZ = 0;
     this.videoHeight = 0;
     this.videoWidth = 0;
-    this.ltD = 0;
-    this.ltC = 0;
+    this.lyc = 0;
+    this.lyb = 0;
   }
   
   public final boolean y(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(206480);
-    if ((this.ltA == paramInt1) && (this.ltB == paramInt2) && (this.videoWidth == paramInt3) && (this.videoHeight == paramInt4))
+    AppMethodBeat.i(211510);
+    if ((this.lxZ == paramInt1) && (this.lya == paramInt2) && (this.videoWidth == paramInt3) && (this.videoHeight == paramInt4))
     {
-      AppMethodBeat.o(206480);
+      AppMethodBeat.o(211510);
       return true;
     }
-    this.ltA = paramInt1;
-    this.ltB = paramInt2;
+    this.lxZ = paramInt1;
+    this.lya = paramInt2;
     this.videoWidth = paramInt3;
     this.videoHeight = paramInt4;
     float f1 = this.videoWidth * 1.0F / this.videoHeight;
-    float f2 = this.ltA * 1.0F / this.ltB;
-    if (this.llB != e.h.llM) {
-      if (this.llB == e.h.llO) {
-        if (this.ltA < this.ltB)
+    float f2 = this.lxZ * 1.0F / this.lya;
+    if (this.lqa != e.h.lqm) {
+      if (this.lqa == e.h.lqo) {
+        if (this.lxZ < this.lya)
         {
-          this.ltD = ((int)(this.ltA / f1));
-          this.ltC = this.ltA;
-          if (this.ltD <= this.ltB) {}
+          this.lyc = ((int)(this.lxZ / f1));
+          this.lyb = this.lxZ;
+          if (this.lyc <= this.lya) {}
         }
       }
     }
@@ -53,80 +53,80 @@ public final class b
     for (;;)
     {
       b localb = this;
-      localb.ltC = ((int)(localb.ltB * f1));
-      localb.ltD = localb.ltB;
+      localb.lyb = ((int)(localb.lya * f1));
+      localb.lyc = localb.lya;
       for (;;)
       {
-        ad.d("MicroMsg.ViewSizeCache", "screen[%d, %d], video[%d, %d], measure[%d, %d] scale[%f, %f]", new Object[] { Integer.valueOf(this.ltA), Integer.valueOf(this.ltB), Integer.valueOf(this.videoWidth), Integer.valueOf(this.videoHeight), Integer.valueOf(this.ltC), Integer.valueOf(this.ltD), Float.valueOf(f2), Float.valueOf(f1) });
-        AppMethodBeat.o(206480);
+        ae.d("MicroMsg.ViewSizeCache", "screen[%d, %d], video[%d, %d], measure[%d, %d] scale[%f, %f]", new Object[] { Integer.valueOf(this.lxZ), Integer.valueOf(this.lya), Integer.valueOf(this.videoWidth), Integer.valueOf(this.videoHeight), Integer.valueOf(this.lyb), Integer.valueOf(this.lyc), Float.valueOf(f2), Float.valueOf(f1) });
+        AppMethodBeat.o(211510);
         return false;
-        this.ltC = ((int)(this.ltB * f1));
-        this.ltD = this.ltB;
-        if (this.ltC > this.ltA)
+        this.lyb = ((int)(this.lya * f1));
+        this.lyc = this.lya;
+        if (this.lyb > this.lxZ)
         {
-          this.ltD = ((int)(this.ltA / f1));
-          this.ltC = this.ltA;
+          this.lyc = ((int)(this.lxZ / f1));
+          this.lyb = this.lxZ;
           continue;
-          if (this.llB == e.h.llN)
+          if (this.lqa == e.h.lqn)
           {
-            this.ltD = this.ltB;
-            this.ltC = this.ltA;
+            this.lyc = this.lya;
+            this.lyb = this.lxZ;
           }
           else
           {
-            if (this.llB == e.h.llP)
+            if (this.lqa == e.h.lqp)
             {
-              if (this.ltA > this.ltB)
+              if (this.lxZ > this.lya)
               {
-                this.ltD = ((int)(this.ltA / f1));
-                this.ltC = this.ltA;
-                if (this.ltD >= this.ltB) {
+                this.lyc = ((int)(this.lxZ / f1));
+                this.lyb = this.lxZ;
+                if (this.lyc >= this.lya) {
                   continue;
                 }
                 break;
               }
-              this.ltC = ((int)(this.ltB * f1));
-              this.ltD = this.ltB;
-              if (this.ltC >= this.ltA) {
+              this.lyb = ((int)(this.lya * f1));
+              this.lyc = this.lya;
+              if (this.lyb >= this.lxZ) {
                 continue;
               }
-              this.ltD = ((int)(this.ltA / f1));
-              this.ltC = this.ltA;
+              this.lyc = ((int)(this.lxZ / f1));
+              this.lyb = this.lxZ;
               continue;
             }
-            if (!this.lsI)
+            if (!this.lxh)
             {
-              if (this.ltA < this.ltB)
+              if (this.lxZ < this.lya)
               {
-                this.ltD = ((int)(this.ltA / f1));
-                this.ltC = this.ltA;
+                this.lyc = ((int)(this.lxZ / f1));
+                this.lyb = this.lxZ;
               }
               else
               {
-                this.ltC = ((int)(this.ltB * f1));
-                this.ltD = this.ltB;
+                this.lyb = ((int)(this.lya * f1));
+                this.lyc = this.lya;
               }
             }
             else if (Math.abs(f1 - f2) > 0.05D)
             {
-              if (this.ltA < this.ltB)
+              if (this.lxZ < this.lya)
               {
-                this.ltD = ((int)(this.ltA / f1));
-                this.ltC = this.ltA;
+                this.lyc = ((int)(this.lxZ / f1));
+                this.lyb = this.lxZ;
               }
               else
               {
-                this.ltC = ((int)(this.ltB * f1));
-                this.ltD = this.ltB;
+                this.lyb = ((int)(this.lya * f1));
+                this.lyc = this.lya;
               }
             }
             else
             {
-              if (this.ltA <= this.ltB) {
+              if (this.lxZ <= this.lya) {
                 break label657;
               }
-              this.ltD = ((int)(this.ltA / f1));
-              this.ltC = this.ltA;
+              this.lyc = ((int)(this.lxZ / f1));
+              this.lyb = this.lxZ;
             }
           }
         }

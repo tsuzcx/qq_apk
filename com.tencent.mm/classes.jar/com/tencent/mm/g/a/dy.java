@@ -8,8 +8,8 @@ import org.json.JSONArray;
 public final class dy
   extends b
 {
-  public a doT;
-  public b doU;
+  public a dpV;
+  public b dpW;
   
   public dy()
   {
@@ -18,24 +18,24 @@ public final class dy
   
   private dy(byte paramByte)
   {
-    AppMethodBeat.i(115986);
-    this.doT = new a();
-    this.doU = new b();
-    this.IbR = false;
+    AppMethodBeat.i(115985);
+    this.dpV = new a();
+    this.dpW = new b();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(115986);
+    AppMethodBeat.o(115985);
   }
   
   public static final class a
   {
     public Context context;
-    public String doD;
+    public String dpI;
   }
   
   public static final class b
   {
-    public boolean doF;
-    public JSONArray doS;
+    public boolean dpK;
+    public JSONArray dpX;
   }
 }
 

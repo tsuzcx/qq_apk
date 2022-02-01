@@ -3,19 +3,21 @@ package com.tencent.mm.plugin.sns.ui;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.kernel.b;
 import com.tencent.mm.kernel.g;
+import com.tencent.mm.plugin.sns.model.r;
 
 final class SnsCommentDetailUI$2$1
   implements DialogInterface.OnCancelListener
 {
-  SnsCommentDetailUI$2$1(SnsCommentDetailUI.2 param2, com.tencent.mm.plugin.sns.model.q paramq) {}
+  SnsCommentDetailUI$2$1(SnsCommentDetailUI.2 param2, r paramr) {}
   
   public final void onCancel(DialogInterface paramDialogInterface)
   {
     AppMethodBeat.i(163079);
-    g.ajD();
-    g.ajB().gAO.a(this.AbO);
+    g.ajS();
+    g.ajQ().gDv.a(this.Atb);
     AppMethodBeat.o(163079);
   }
 }

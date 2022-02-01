@@ -1,20 +1,14 @@
 package com.tencent.mm.plugin.appbrand.page;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
+import android.view.View;
+import com.tencent.luggage.a.b;
+import d.l;
 
-public enum aw
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/page/IAppBrandPreloadedWidgetProvider;", "Lcom/tencent/luggage/base/ICustomize;", "getPreloadedWidget", "WIDGET", "Landroid/view/View;", "clazz", "Ljava/lang/Class;", "(Ljava/lang/Class;)Landroid/view/View;", "luggage-wxa-app_release"})
+public abstract interface aw
+  extends b
 {
-  static
-  {
-    AppMethodBeat.i(135279);
-    mes = new aw("MODAL", 0);
-    met = new aw("ACTION_SHEET", 1);
-    meu = new aw("TOAST", 2);
-    mev = new aw[] { mes, met, meu };
-    AppMethodBeat.o(135279);
-  }
-  
-  private aw() {}
+  public abstract <WIDGET extends View> WIDGET aC(Class<WIDGET> paramClass);
 }
 
 

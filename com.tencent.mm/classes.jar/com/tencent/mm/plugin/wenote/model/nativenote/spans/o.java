@@ -31,7 +31,7 @@ public abstract class o<V, C extends g<V>>
       if (((k > j) && (i < m)) || ((j > k) && (m < i))) {
         return true;
       }
-      if (params != s.EAU) {
+      if (params != s.ETq) {
         break;
       }
     } while ((k != j) || (i != m) || (j != m));
@@ -67,7 +67,7 @@ public abstract class o<V, C extends g<V>>
   
   protected final void a(Spannable paramSpannable, n paramn, p paramp)
   {
-    paramp.a(a(paramSpannable, paramn, s.EAU), paramn);
+    paramp.a(a(paramSpannable, paramn, s.ETq), paramn);
   }
   
   public abstract void a(WXRTEditText paramWXRTEditText, e parame, V paramV);
@@ -75,10 +75,10 @@ public abstract class o<V, C extends g<V>>
   public final void a(WXRTEditText paramWXRTEditText, V paramV)
   {
     e locale = paramWXRTEditText.getParagraphsInSelection();
-    if ((paramWXRTEditText.pvu) && (paramWXRTEditText.getSelection().avj == locale.avj) && (locale.avj > 1))
+    if ((paramWXRTEditText.pBY) && (paramWXRTEditText.getSelection().avj == locale.avj) && (locale.avj > 1))
     {
-      Object localObject1 = a(paramWXRTEditText.getText(), locale, s.EAV);
-      if ((!((ArrayList)localObject1).isEmpty()) && (paramWXRTEditText.getLayout().getPrimaryHorizontal(paramWXRTEditText.getSelection().avj) == b.cez()))
+      Object localObject1 = a(paramWXRTEditText.getText(), locale, s.ETr);
+      if ((!((ArrayList)localObject1).isEmpty()) && (paramWXRTEditText.getLayout().getPrimaryHorizontal(paramWXRTEditText.getSelection().avj) == b.cfO()))
       {
         localObject1 = ((ArrayList)localObject1).iterator();
         while (((Iterator)localObject1).hasNext())

@@ -11,9 +11,9 @@ import com.tencent.mm.platformtools.u;
 import com.tencent.mm.platformtools.u.a;
 import com.tencent.mm.plugin.scanner.util.n;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.base.preference.f;
 
@@ -22,7 +22,7 @@ public final class CategoryWithTitlePreference
   implements u.a
 {
   private Context context;
-  private ImageView fUN;
+  private ImageView fWT;
   private int iconHeight;
   private String iconUrl;
   private int iconWidth;
@@ -56,9 +56,9 @@ public final class CategoryWithTitlePreference
   public final void k(String paramString, final Bitmap paramBitmap)
   {
     AppMethodBeat.i(51784);
-    ad.d("MicroMsg.scanner.CategoryWithTitlePreference", "get pic:" + paramString + ", iconurl:" + this.iconUrl);
-    if ((!bt.isNullOrNil(paramString)) && (paramString.equals(this.iconUrl)) && (paramBitmap != null) && (!paramBitmap.isRecycled()) && (this.fUN != null)) {
-      aq.f(new Runnable()
+    ae.d("MicroMsg.scanner.CategoryWithTitlePreference", "get pic:" + paramString + ", iconurl:" + this.iconUrl);
+    if ((!bu.isNullOrNil(paramString)) && (paramString.equals(this.iconUrl)) && (paramBitmap != null) && (!paramBitmap.isRecycled()) && (this.fWT != null)) {
+      ar.f(new Runnable()
       {
         public final void run()
         {
@@ -80,24 +80,24 @@ public final class CategoryWithTitlePreference
     AppMethodBeat.i(51783);
     super.onBindView(paramView);
     this.titleTv = ((TextView)paramView.findViewById(16908310));
-    this.fUN = ((ImageView)paramView.findViewById(2131300874));
-    paramView = this.fUN.getLayoutParams();
-    paramView.width = BackwardSupportUtil.b.g(this.context, this.iconWidth / 2);
-    paramView.height = BackwardSupportUtil.b.g(this.context, this.iconHeight / 2);
-    this.fUN.setLayoutParams(paramView);
+    this.fWT = ((ImageView)paramView.findViewById(2131300874));
+    paramView = this.fWT.getLayoutParams();
+    paramView.width = BackwardSupportUtil.b.h(this.context, this.iconWidth / 2);
+    paramView.height = BackwardSupportUtil.b.h(this.context, this.iconHeight / 2);
+    this.fWT.setLayoutParams(paramView);
     if ((this.title != null) && (this.title.length() > 0) && (this.titleTv != null))
     {
       this.titleTv.setVisibility(0);
       this.titleTv.setText(this.title);
-      ad.v("MicroMsg.scanner.CategoryWithTitlePreference", "onBindView title : " + this.titleTv.getText());
+      ae.v("MicroMsg.scanner.CategoryWithTitlePreference", "onBindView title : " + this.titleTv.getText());
     }
-    if (!bt.isNullOrNil(this.iconUrl))
+    if (!bu.isNullOrNil(this.iconUrl))
     {
       paramView = u.a(new n(this.iconUrl));
       if ((paramView != null) && (!paramView.isRecycled()))
       {
-        this.fUN.setImageBitmap(paramView);
-        this.fUN.setVisibility(0);
+        this.fWT.setImageBitmap(paramView);
+        this.fWT.setVisibility(0);
       }
     }
     AppMethodBeat.o(51783);
@@ -111,7 +111,7 @@ public final class CategoryWithTitlePreference
       if (this.context != null) {
         this.title = this.context.getString(paramInt);
       }
-      if (bt.isNullOrNil(this.title)) {
+      if (bu.isNullOrNil(this.title)) {
         break label71;
       }
       this.titleTv.setVisibility(0);
@@ -137,7 +137,7 @@ public final class CategoryWithTitlePreference
       {
         this.titleTv.setVisibility(0);
         this.titleTv.setText(paramCharSequence);
-        ad.v("MicroMsg.scanner.CategoryWithTitlePreference", "title : " + this.titleTv.getText());
+        ae.v("MicroMsg.scanner.CategoryWithTitlePreference", "title : " + this.titleTv.getText());
       }
     }
     for (;;)

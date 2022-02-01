@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class kc
   extends b
 {
-  public a dxb;
+  public a dye;
   
   public kc()
   {
@@ -15,17 +15,17 @@ public final class kc
   
   private kc(byte paramByte)
   {
-    AppMethodBeat.i(153184);
-    this.dxb = new a();
-    this.IbR = false;
+    AppMethodBeat.i(121034);
+    this.dye = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(153184);
+    AppMethodBeat.o(121034);
   }
   
   public static final class a
   {
-    public int delay;
-    public int type;
+    public String dyb;
+    public String dyf;
   }
 }
 

@@ -48,7 +48,7 @@ public class PayUSecurityQuestion
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_payu.security_question.model.PayUSecurityQuestion
  * JD-Core Version:    0.7.0.1
  */

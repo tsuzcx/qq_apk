@@ -6,7 +6,7 @@ import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import com.qq.taf.jce.JceUtil;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class SettingsCfg
   extends JceStruct
@@ -133,7 +133,7 @@ public final class SettingsCfg
     }
     catch (Exception localException2)
     {
-      ad.printErrStackTrace("SettingsCfg", localException2, "", new Object[0]);
+      ae.printErrStackTrace("SettingsCfg", localException2, "", new Object[0]);
       AppMethodBeat.o(102373);
     }
     return 0;

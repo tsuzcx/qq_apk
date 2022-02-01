@@ -17,7 +17,7 @@ public final class k
   
   public final int b(k paramk)
   {
-    return c.p(this.data, paramk.data);
+    return c.q(this.data, paramk.data);
   }
   
   public final boolean equals(Object paramObject)

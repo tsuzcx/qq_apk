@@ -10,21 +10,21 @@ import com.tencent.mm.plugin.appbrand.canvas.action.arg.RealSetFillStyleActionRa
 public final class g
   extends a<BaseDrawActionArg>
 {
-  private static g jTS;
+  private static g jXj;
   
   static
   {
     AppMethodBeat.i(145327);
-    jTS = new g();
+    jXj = new g();
     AppMethodBeat.o(145327);
   }
   
-  public static g bdv()
+  public static g bea()
   {
-    return jTS;
+    return jXj;
   }
   
-  public final <T> T MP(String paramString)
+  public final <T> T Nw(String paramString)
   {
     AppMethodBeat.i(145326);
     Object localObject = null;

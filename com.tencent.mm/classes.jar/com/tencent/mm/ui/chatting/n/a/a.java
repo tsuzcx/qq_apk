@@ -6,8 +6,8 @@ import android.widget.ListView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.g.c.ei;
 import com.tencent.mm.plugin.report.service.f;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.bu;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.bv;
 import com.tencent.mm.ui.chatting.BaseChattingUIFragment;
 import com.tencent.mm.ui.chatting.d.b.k;
 import com.tencent.mm.ui.chatting.h.b.a;
@@ -23,63 +23,63 @@ import org.xwalk.core.Log;
 public abstract class a
   implements b.a
 {
-  long JWC;
-  long JWD;
-  public d JWP;
-  int JWQ;
-  int JWR;
-  long JWS;
-  long JWT;
-  int JWU = 3;
-  protected com.tencent.mm.ui.chatting.e.a cWM;
+  long KsT;
+  long KsU;
+  public d Ktg;
+  int Kth;
+  int Kti;
+  long Ktj;
+  long Ktk;
+  int Ktl = 3;
+  protected com.tencent.mm.ui.chatting.e.a cXJ;
   
   public a(com.tencent.mm.ui.chatting.e.a parama, d paramd)
   {
-    this.cWM = parama;
-    this.JWP = paramd;
+    this.cXJ = parama;
+    this.Ktg = paramd;
   }
   
   protected abstract e a(d.a parama, Bundle paramBundle, d.d paramd);
   
   public void a(final d.a parama, boolean paramBoolean, final Bundle paramBundle)
   {
-    Log.i("MicroMsg.ChattingLoader.AbstractDataPresenter", "[onLoad] action:" + parama + " isBlock:" + paramBoolean + " username:" + this.cWM.getTalkerUserName());
-    if (bt.isNullOrNil(this.cWM.getTalkerUserName()))
+    Log.i("MicroMsg.ChattingLoader.AbstractDataPresenter", "[onLoad] action:" + parama + " isBlock:" + paramBoolean + " username:" + this.cXJ.getTalkerUserName());
+    if (bu.isNullOrNil(this.cXJ.getTalkerUserName()))
     {
       Log.w("MicroMsg.ChattingLoader.AbstractDataPresenter", "[onLoad] username is null!");
       return;
     }
-    f.Oj(13);
-    ((k)this.cWM.bh(k.class)).fCp();
-    this.JWP.a(parama, paramBoolean, new d.c()
+    f.OP(13);
+    ((k)this.cXJ.bh(k.class)).fGr();
+    this.Ktg.a(parama, paramBoolean, new d.c()
     {
-      public final e b(d.d<bu> paramAnonymousd)
+      public final e b(d.d<bv> paramAnonymousd)
       {
         AppMethodBeat.i(36654);
-        paramAnonymousd.JVk = paramBundle;
+        paramAnonymousd.KrC = paramBundle;
         paramAnonymousd = a.this.a(parama, paramBundle, paramAnonymousd);
         AppMethodBeat.o(36654);
         return paramAnonymousd;
       }
       
-      public final void c(d.d<bu> paramAnonymousd)
+      public final void c(d.d<bv> paramAnonymousd)
       {
         AppMethodBeat.i(36655);
-        a.this.JWQ = paramAnonymousd.fTM;
-        a.this.JWR = paramAnonymousd.JVn;
-        if (paramAnonymousd.JVm.size() > 0)
+        a.this.Kth = paramAnonymousd.fVS;
+        a.this.Kti = paramAnonymousd.KrF;
+        if (paramAnonymousd.KrE.size() > 0)
         {
-          bu localbu = (bu)paramAnonymousd.JVm.get(0);
-          if (localbu != null)
+          bv localbv = (bv)paramAnonymousd.KrE.get(0);
+          if (localbv != null)
           {
-            a.this.JWC = localbu.field_createTime;
-            a.this.JWT = localbu.field_msgSeq;
+            a.this.KsT = localbv.field_createTime;
+            a.this.Ktk = localbv.field_msgSeq;
           }
-          paramAnonymousd = (bu)paramAnonymousd.JVm.get(paramAnonymousd.JVm.size() - 1);
+          paramAnonymousd = (bv)paramAnonymousd.KrE.get(paramAnonymousd.KrE.size() - 1);
           if (paramAnonymousd != null)
           {
-            a.this.JWD = paramAnonymousd.field_createTime;
-            a.this.JWS = paramAnonymousd.field_msgSeq;
+            a.this.KsU = paramAnonymousd.field_createTime;
+            a.this.Ktj = paramAnonymousd.field_msgSeq;
           }
         }
         AppMethodBeat.o(36655);
@@ -87,46 +87,46 @@ public abstract class a
     });
   }
   
-  public void a(MMChattingListView paramMMChattingListView, d.d<bu> paramd)
+  public void a(MMChattingListView paramMMChattingListView, d.d<bv> paramd)
   {
-    f.Ok(13);
+    f.OQ(13);
     paramMMChattingListView.getBaseAdapter().notifyDataSetChanged();
-    ((k)this.cWM.bh(k.class)).fCq();
-    if (paramd.JVl == d.a.JVf) {
-      this.cWM.JOR.dCa();
+    ((k)this.cXJ.bh(k.class)).fGs();
+    if (paramd.KrD == d.a.Krx) {
+      this.cXJ.Kkd.dFr();
     }
   }
   
-  protected final void aee(final int paramInt)
+  protected final void aeN(final int paramInt)
   {
-    this.JWU = 3;
-    if (!this.cWM.JOV) {
-      this.cWM.acU(paramInt);
+    this.Ktl = 3;
+    if (!this.cXJ.Kkh) {
+      this.cXJ.adC(paramInt);
     }
     for (;;)
     {
-      this.cWM.getListView().postDelayed(new Runnable()
+      this.cXJ.getListView().postDelayed(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(36656);
-          if ((a.this.fep().getFirstVisiblePosition() > paramInt) || (paramInt > a.this.fep().getLastVisiblePosition()))
+          if ((a.this.fif().getFirstVisiblePosition() > paramInt) || (paramInt > a.this.fif().getLastVisiblePosition()))
           {
-            Log.i("MicroMsg.ChattingLoader.AbstractDataPresenter", "[protectSetSelection] pos:" + paramInt + " reTryCount:" + a.this.JWU);
-            if (!a.this.cWM.JOV) {
-              a.this.fep().jR(paramInt, 0);
+            Log.i("MicroMsg.ChattingLoader.AbstractDataPresenter", "[protectSetSelection] pos:" + paramInt + " reTryCount:" + a.this.Ktl);
+            if (!a.this.cXJ.Kkh) {
+              a.this.fif().jV(paramInt, 0);
             }
             for (;;)
             {
               a locala = a.this;
-              locala.JWU -= 1;
-              if (a.this.JWU < 0) {
+              locala.Ktl -= 1;
+              if (a.this.Ktl < 0) {
                 break;
               }
-              a.this.fep().getListView().postDelayed(this, 20L);
+              a.this.fif().getListView().postDelayed(this, 20L);
               AppMethodBeat.o(36656);
               return;
-              a.this.fep().jR(paramInt, com.tencent.mm.cc.a.fromDPToPix(a.this.cWM.JOR.getContext(), 80));
+              a.this.fif().jV(paramInt, com.tencent.mm.cb.a.fromDPToPix(a.this.cXJ.Kkd.getContext(), 80));
             }
           }
           Log.i("MicroMsg.ChattingLoader.AbstractDataPresenter", "[protectSetSelection] successfully! pos:" + paramInt);
@@ -134,14 +134,14 @@ public abstract class a
         }
       }, 200L);
       return;
-      com.tencent.mm.ui.chatting.e.a locala = this.cWM;
-      locala.jR(paramInt, com.tencent.mm.cc.a.fromDPToPix(locala.JOR.getContext(), 80));
+      com.tencent.mm.ui.chatting.e.a locala = this.cXJ;
+      locala.jV(paramInt, com.tencent.mm.cb.a.fromDPToPix(locala.Kkd.getContext(), 80));
     }
   }
   
-  public final com.tencent.mm.ui.chatting.e.a fep()
+  public final com.tencent.mm.ui.chatting.e.a fif()
   {
-    return this.cWM;
+    return this.cXJ;
   }
   
   public String toString()

@@ -1,14 +1,14 @@
 package com.tencent.mm.plugin.appbrand.o;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.aa.e.h;
-import com.tencent.mm.plugin.appbrand.aa.f.b;
 import com.tencent.mm.plugin.appbrand.jsapi.websocket.e.a;
-import com.tencent.mm.plugin.appbrand.utils.w;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ay;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.plugin.appbrand.utils.y;
+import com.tencent.mm.plugin.appbrand.z.e.h;
+import com.tencent.mm.plugin.appbrand.z.f.b;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.az;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.net.Proxy;
 import java.net.Socket;
 import java.net.URI;
@@ -26,36 +26,36 @@ import org.json.JSONObject;
 public final class k
   implements com.tencent.mm.plugin.appbrand.jsapi.websocket.d
 {
-  private SSLSocketFactory kbT;
-  private boolean lWw;
-  private final String luC;
-  private int luD;
-  protected final ArrayList<com.tencent.mm.plugin.appbrand.jsapi.websocket.e> luZ;
+  private SSLSocketFactory kfk;
+  private final String lza;
+  private int lzb;
+  protected final ArrayList<com.tencent.mm.plugin.appbrand.jsapi.websocket.e> lzx;
+  private boolean mbc;
   
   public k(a parama)
   {
     AppMethodBeat.i(144405);
-    this.luZ = new ArrayList();
+    this.lzx = new ArrayList();
     SSLContext localSSLContext = j.a(parama);
     if (localSSLContext != null) {
-      this.kbT = localSSLContext.getSocketFactory();
+      this.kfk = localSSLContext.getSocketFactory();
     }
-    this.luC = parama.lVu;
-    this.luD = parama.lVq;
-    this.lWw = parama.cmS;
-    ad.i("MicroMsg.AppBrandNetworkWebSocket", "mTLSSkipHostnameCheck is %b", new Object[] { Boolean.valueOf(this.lWw) });
+    this.lza = parama.lZX;
+    this.lzb = parama.lZT;
+    this.mbc = parama.cmU;
+    ae.i("MicroMsg.AppBrandNetworkWebSocket", "mTLSSkipHostnameCheck is %b", new Object[] { Boolean.valueOf(this.mbc) });
     AppMethodBeat.o(144405);
   }
   
   private void c(com.tencent.mm.plugin.appbrand.jsapi.websocket.e parame)
   {
     AppMethodBeat.i(144407);
-    synchronized (this.luZ)
+    synchronized (this.lzx)
     {
-      if ("0".equals(parame.aOC())) {
-        this.luZ.clear();
+      if ("0".equals(parame.aOZ())) {
+        this.lzx.clear();
       }
-      this.luZ.add(parame);
+      this.lzx.add(parame);
       AppMethodBeat.o(144407);
       return;
     }
@@ -77,12 +77,12 @@ public final class k
     //   17: monitorexit
     //   18: return
     //   19: aload_0
-    //   20: getfield 49	com/tencent/mm/plugin/appbrand/o/k:luZ	Ljava/util/ArrayList;
+    //   20: getfield 49	com/tencent/mm/plugin/appbrand/o/k:lzx	Ljava/util/ArrayList;
     //   23: astore_2
     //   24: aload_2
     //   25: monitorenter
     //   26: aload_0
-    //   27: getfield 49	com/tencent/mm/plugin/appbrand/o/k:luZ	Ljava/util/ArrayList;
+    //   27: getfield 49	com/tencent/mm/plugin/appbrand/o/k:lzx	Ljava/util/ArrayList;
     //   30: aload_1
     //   31: invokevirtual 129	java/util/ArrayList:remove	(Ljava/lang/Object;)Z
     //   34: pop
@@ -126,8 +126,8 @@ public final class k
       AppMethodBeat.o(144415);
       return;
     }
-    Timer localTimer = parame.boX();
-    ad.i("MicroMsg.AppBrandNetworkWebSocket", "try to stop connectTimer");
+    Timer localTimer = parame.bpH();
+    ae.i("MicroMsg.AppBrandNetworkWebSocket", "try to stop connectTimer");
     if (localTimer != null)
     {
       localTimer.cancel();
@@ -136,7 +136,7 @@ public final class k
     AppMethodBeat.o(144415);
   }
   
-  public final com.tencent.mm.plugin.appbrand.jsapi.websocket.e Rk(String paramString)
+  public final com.tencent.mm.plugin.appbrand.jsapi.websocket.e RT(String paramString)
   {
     AppMethodBeat.i(144416);
     if (paramString == null)
@@ -144,13 +144,13 @@ public final class k
       AppMethodBeat.o(144416);
       return null;
     }
-    synchronized (this.luZ)
+    synchronized (this.lzx)
     {
-      Iterator localIterator = this.luZ.iterator();
+      Iterator localIterator = this.lzx.iterator();
       while (localIterator.hasNext())
       {
         com.tencent.mm.plugin.appbrand.jsapi.websocket.e locale = (com.tencent.mm.plugin.appbrand.jsapi.websocket.e)localIterator.next();
-        if (paramString.equals(locale.aOC()))
+        if (paramString.equals(locale.aOZ()))
         {
           AppMethodBeat.o(144416);
           return locale;
@@ -167,7 +167,7 @@ public final class k
     if (parame != null) {}
     try
     {
-      ad.i("MicroMsg.AppBrandNetworkWebSocket", "try to close socket");
+      ae.i("MicroMsg.AppBrandNetworkWebSocket", "try to close socket");
       parame.close();
       d(parame);
       AppMethodBeat.o(144409);
@@ -177,7 +177,7 @@ public final class k
     {
       for (;;)
       {
-        ad.printErrStackTrace("MicroMsg.AppBrandNetworkWebSocket", localException, "Exception: send error", new Object[0]);
+        ae.printErrStackTrace("MicroMsg.AppBrandNetworkWebSocket", localException, "Exception: send error", new Object[0]);
         e(parame);
       }
     }
@@ -189,8 +189,8 @@ public final class k
     if (parame != null) {}
     try
     {
-      ad.i("MicroMsg.AppBrandNetworkWebSocket", "try to close socket");
-      parame.bI(paramString, paramInt);
+      ae.i("MicroMsg.AppBrandNetworkWebSocket", "try to close socket");
+      parame.bL(paramString, paramInt);
       d(parame);
       AppMethodBeat.o(144410);
       return;
@@ -199,7 +199,7 @@ public final class k
     {
       for (;;)
       {
-        ad.printErrStackTrace("MicroMsg.AppBrandNetworkWebSocket", paramString, "Exception: send error", new Object[0]);
+        ae.printErrStackTrace("MicroMsg.AppBrandNetworkWebSocket", paramString, "Exception: send error", new Object[0]);
       }
     }
   }
@@ -208,7 +208,7 @@ public final class k
   {
     AppMethodBeat.i(144412);
     if (parame != null) {
-      parame.Rm(paramString);
+      parame.RV(paramString);
     }
     AppMethodBeat.o(144412);
   }
@@ -223,12 +223,12 @@ public final class k
   public final void a(final String paramString1, final String paramString2, int paramInt1, int paramInt2, final JSONObject paramJSONObject, Map<String, String> paramMap, final com.tencent.mm.plugin.appbrand.jsapi.websocket.d.a parama)
   {
     AppMethodBeat.i(144406);
-    synchronized (this.luZ)
+    synchronized (this.lzx)
     {
-      if (this.luZ.size() >= this.luD)
+      if (this.lzx.size() >= this.lzb)
       {
-        parama.Oc("max connected");
-        ad.i("MicroMsg.AppBrandNetworkWebSocket", "max connected mTaskList.size():%d,mMaxWebsocketConnect:%d", new Object[] { Integer.valueOf(this.luZ.size()), Integer.valueOf(this.luD) });
+        parama.OJ("max connected");
+        ae.i("MicroMsg.AppBrandNetworkWebSocket", "max connected mTaskList.size():%d,mMaxWebsocketConnect:%d", new Object[] { Integer.valueOf(this.lzx.size()), Integer.valueOf(this.lzb) });
         AppMethodBeat.o(144406);
         return;
       }
@@ -238,67 +238,69 @@ public final class k
     {
       URI localURI = new URI((String)???);
       boolean bool = paramJSONObject.optBoolean("tcpNoDelay", false);
-      ad.i("MicroMsg.AppBrandNetworkWebSocket", "connectSocket, url= %s, timeout = %d, tcpNoDelay = %b, taskId=%s", new Object[] { ???, Integer.valueOf(paramInt2), Boolean.valueOf(bool), paramString2 });
-      paramMap.put("User-Agent", this.luC);
+      ae.i("MicroMsg.AppBrandNetworkWebSocket", "connectSocket, url= %s, timeout = %d, tcpNoDelay = %b, taskId=%s", new Object[] { ???, Integer.valueOf(paramInt2), Boolean.valueOf(bool), paramString2 });
+      paramMap.put("User-Agent", this.lza);
       paramJSONObject = j.ac(paramJSONObject);
-      if (!bt.isNullOrNil(paramJSONObject))
+      if (!bu.isNullOrNil(paramJSONObject))
       {
-        ad.i("MicroMsg.AppBrandNetworkWebSocket", "protocols %s", new Object[] { paramJSONObject });
+        ae.i("MicroMsg.AppBrandNetworkWebSocket", "protocols %s", new Object[] { paramJSONObject });
         paramMap.put("Sec-WebSocket-Protocol", paramJSONObject);
       }
       paramJSONObject = j.a(localURI);
-      if (!bt.isNullOrNil(paramJSONObject))
+      if (!bu.isNullOrNil(paramJSONObject))
       {
-        ad.i("MicroMsg.AppBrandNetworkWebSocket", "Origin %s", new Object[] { paramJSONObject });
+        ae.i("MicroMsg.AppBrandNetworkWebSocket", "Origin %s", new Object[] { paramJSONObject });
         paramMap.put("Origin", paramJSONObject);
       }
       try
       {
-        paramJSONObject = new com.tencent.mm.plugin.appbrand.jsapi.websocket.c(localURI, new com.tencent.mm.plugin.appbrand.aa.b.d(), paramMap, paramInt2)
+        paramJSONObject = new com.tencent.mm.plugin.appbrand.jsapi.websocket.c(localURI, new com.tencent.mm.plugin.appbrand.z.b.d(), paramMap, paramInt2)
         {
-          private com.tencent.mm.plugin.appbrand.aa.d.d kbU = null;
+          private com.tencent.mm.plugin.appbrand.z.d.d kfl = null;
           
-          public final void Og(String paramAnonymousString)
+          public final void ON(String paramAnonymousString)
           {
             AppMethodBeat.i(144398);
             String str = this.val$url;
             if (paramAnonymousString != null) {}
             for (int i = paramAnonymousString.length();; i = -1)
             {
-              ad.i("MicroMsg.AppBrandNetworkWebSocket", "url is %s ,socket onmessage length :%d, taskId=%s", new Object[] { str, Integer.valueOf(i), paramString2 });
-              parama.Qh(paramAnonymousString);
+              ae.i("MicroMsg.AppBrandNetworkWebSocket", "url is %s ,socket onmessage length :%d, taskId=%s", new Object[] { str, Integer.valueOf(i), paramString2 });
+              parama.QQ(paramAnonymousString);
               AppMethodBeat.o(144398);
               return;
             }
           }
           
-          public final void a(com.tencent.mm.plugin.appbrand.aa.d.d paramAnonymousd)
+          public final void a(e.a paramAnonymousa) {}
+          
+          public final void a(com.tencent.mm.plugin.appbrand.z.d.d paramAnonymousd)
           {
             AppMethodBeat.i(144402);
-            if ((paramAnonymousd.bBM() != com.tencent.mm.plugin.appbrand.aa.d.d.a.mRa) && (!paramAnonymousd.bBK()))
+            if ((paramAnonymousd.bCG() != com.tencent.mm.plugin.appbrand.z.d.d.a.mWj) && (!paramAnonymousd.bCE()))
             {
-              this.kbU = paramAnonymousd;
+              this.kfl = paramAnonymousd;
               AppMethodBeat.o(144402);
               return;
             }
-            if (paramAnonymousd.bBM() == com.tencent.mm.plugin.appbrand.aa.d.d.a.mRa)
+            if (paramAnonymousd.bCG() == com.tencent.mm.plugin.appbrand.z.d.d.a.mWj)
             {
-              if (this.kbU == null)
+              if (this.kfl == null)
               {
                 AppMethodBeat.o(144402);
                 return;
               }
-              if (this.kbU.bBJ().position() > 10485760)
+              if (this.kfl.bCD().position() > 10485760)
               {
-                ad.e("MicroMsg.AppBrandNetworkWebSocket", "Pending Frame exploded");
-                this.kbU = null;
+                ae.e("MicroMsg.AppBrandNetworkWebSocket", "Pending Frame exploded");
+                this.kfl = null;
                 AppMethodBeat.o(144402);
                 return;
               }
               try
               {
-                this.kbU.e(paramAnonymousd);
-                if (!paramAnonymousd.bBK())
+                this.kfl.e(paramAnonymousd);
+                if (!paramAnonymousd.bCE())
                 {
                   AppMethodBeat.o(144402);
                   return;
@@ -308,28 +310,28 @@ public final class k
               {
                 for (;;)
                 {
-                  ad.printErrStackTrace("MicroMsg.AppBrandNetworkWebSocket", localException, "Exception: Framedata append fail", new Object[0]);
+                  ae.printErrStackTrace("MicroMsg.AppBrandNetworkWebSocket", localException, "Exception: Framedata append fail", new Object[0]);
                 }
               }
-              if (this.kbU.bBM() != com.tencent.mm.plugin.appbrand.aa.d.d.a.mRc) {
+              if (this.kfl.bCG() != com.tencent.mm.plugin.appbrand.z.d.d.a.mWl) {
                 break label177;
               }
-              l(this.kbU.bBJ());
+              l(this.kfl.bCD());
             }
             for (;;)
             {
-              this.kbU = null;
+              this.kfl = null;
               AppMethodBeat.o(144402);
               return;
               label177:
-              if (this.kbU.bBM() == com.tencent.mm.plugin.appbrand.aa.d.d.a.mRb) {
+              if (this.kfl.bCG() == com.tencent.mm.plugin.appbrand.z.d.d.a.mWk) {
                 try
                 {
-                  Og(bt.nullAsNil(b.B(this.kbU.bBJ())));
+                  ON(bu.nullAsNil(b.B(this.kfl.bCD())));
                 }
                 catch (Exception paramAnonymousd)
                 {
-                  ad.printErrStackTrace("MicroMsg.AppBrandNetworkWebSocket", paramAnonymousd, "Exception: stringUtf8 error", new Object[0]);
+                  ae.printErrStackTrace("MicroMsg.AppBrandNetworkWebSocket", paramAnonymousd, "Exception: stringUtf8 error", new Object[0]);
                 }
               }
             }
@@ -338,37 +340,35 @@ public final class k
           public final void a(h paramAnonymoush)
           {
             AppMethodBeat.i(144396);
-            ad.i("MicroMsg.AppBrandNetworkWebSocket", "url is %s ,state: opened, taskId=%s", new Object[] { this.val$url, paramString2 });
+            ae.i("MicroMsg.AppBrandNetworkWebSocket", "url is %s ,state: opened, taskId=%s", new Object[] { this.val$url, paramString2 });
             k.g(this);
             parama.a(paramAnonymoush, null);
             AppMethodBeat.o(144396);
           }
           
-          public final void a(e.a paramAnonymousa) {}
-          
           public final void ab(int paramAnonymousInt, String paramAnonymousString)
           {
             AppMethodBeat.i(144399);
-            ad.i("MicroMsg.AppBrandNetworkWebSocket", "url is %s ,state: closed ,reason: %s, errCode = %d, taskId=%s", new Object[] { this.val$url, paramAnonymousString, Integer.valueOf(paramAnonymousInt), paramString2 });
+            ae.i("MicroMsg.AppBrandNetworkWebSocket", "url is %s ,state: closed ,reason: %s, errCode = %d, taskId=%s", new Object[] { this.val$url, paramAnonymousString, Integer.valueOf(paramAnonymousInt), paramString2 });
             k.g(this);
             k.a(k.this, this);
             if ((paramAnonymousInt == -1) || (paramAnonymousInt == -2) || (paramAnonymousInt == -3))
             {
               com.tencent.mm.plugin.appbrand.jsapi.websocket.d.a locala;
               String str;
-              if (!ay.isConnected(aj.getContext()))
+              if (!az.isConnected(ak.getContext()))
               {
                 locala = parama;
                 str = "network is down";
               }
               for (;;)
               {
-                locala.Ob(str);
+                locala.OI(str);
                 parama.aa(1006, paramAnonymousString);
                 AppMethodBeat.o(144399);
                 return;
                 locala = parama;
-                if (bt.isNullOrNil(paramAnonymousString)) {
+                if (bu.isNullOrNil(paramAnonymousString)) {
                   str = "abnormal closure";
                 } else {
                   str = paramAnonymousString;
@@ -379,7 +379,7 @@ public final class k
             AppMethodBeat.o(144399);
           }
           
-          public final void b(com.tencent.mm.plugin.appbrand.aa.e.a paramAnonymousa)
+          public final void b(com.tencent.mm.plugin.appbrand.z.e.a paramAnonymousa)
           {
             AppMethodBeat.i(144397);
             parama.a(paramAnonymousa);
@@ -393,7 +393,7 @@ public final class k
             if (paramAnonymousByteBuffer != null) {}
             for (int i = paramAnonymousByteBuffer.capacity();; i = -1)
             {
-              ad.i("MicroMsg.AppBrandNetworkWebSocket", "url is %s , socket onMessage buffer length : %d, taskId=%s", new Object[] { str, Integer.valueOf(i), paramString2 });
+              ae.i("MicroMsg.AppBrandNetworkWebSocket", "url is %s , socket onMessage buffer length : %d, taskId=%s", new Object[] { str, Integer.valueOf(i), paramString2 });
               parama.k(paramAnonymousByteBuffer);
               AppMethodBeat.o(144401);
               return;
@@ -403,19 +403,19 @@ public final class k
           public final void onError(Exception paramAnonymousException)
           {
             AppMethodBeat.i(144400);
-            ad.printErrStackTrace("MicroMsg.AppBrandNetworkWebSocket", paramAnonymousException, "onError Exception: url %s, taskId=%s", new Object[] { this.val$url, paramString2 });
+            ae.printErrStackTrace("MicroMsg.AppBrandNetworkWebSocket", paramAnonymousException, "onError Exception: url %s, taskId=%s", new Object[] { this.val$url, paramString2 });
             k.g(this);
             k.a(k.this, this);
-            parama.Ob("exception " + paramAnonymousException.getMessage());
+            parama.OI("exception " + paramAnonymousException.getMessage());
             AppMethodBeat.o(144400);
           }
         };
-        paramJSONObject.Rl(paramString2);
+        paramJSONObject.RU(paramString2);
         paramJSONObject.setTcpNoDelay(bool);
-        if (!w.C((String)???, "ws://")) {
+        if (!y.C((String)???, "ws://")) {
           break label477;
         }
-        ad.i("MicroMsg.AppBrandNetworkWebSocket", "url is %s ,user ws connect", new Object[] { ??? });
+        ae.i("MicroMsg.AppBrandNetworkWebSocket", "url is %s ,user ws connect", new Object[] { ??? });
         paramJSONObject.a(new Socket(Proxy.NO_PROXY));
         paramJSONObject.connect();
         c(paramJSONObject);
@@ -425,10 +425,10 @@ public final class k
           public final void run()
           {
             AppMethodBeat.i(144403);
-            ad.e("MicroMsg.AppBrandNetworkWebSocket", "connect response time out");
+            ae.e("MicroMsg.AppBrandNetworkWebSocket", "connect response time out");
             paramJSONObject.close();
             k.a(k.this, paramJSONObject);
-            parama.Ob("connect response time out");
+            parama.OI("connect response time out");
             cancel();
             paramString1.cancel();
             AppMethodBeat.o(144403);
@@ -441,8 +441,8 @@ public final class k
       }
       catch (Exception paramString1)
       {
-        ad.printErrStackTrace("MicroMsg.AppBrandNetworkWebSocket", paramString1, "Exception: url %s", new Object[] { ??? });
-        parama.Ob(paramString1.getMessage());
+        ae.printErrStackTrace("MicroMsg.AppBrandNetworkWebSocket", paramString1, "Exception: url %s", new Object[] { ??? });
+        parama.OI(paramString1.getMessage());
         AppMethodBeat.o(144406);
         return;
       }
@@ -452,17 +452,17 @@ public final class k
     }
     catch (Exception paramString1)
     {
-      ad.printErrStackTrace("MicroMsg.AppBrandNetworkWebSocket", paramString1, "Exception: connect fail", new Object[0]);
-      parama.Oc("url not well format");
+      ae.printErrStackTrace("MicroMsg.AppBrandNetworkWebSocket", paramString1, "Exception: connect fail", new Object[0]);
+      parama.OJ("url not well format");
       AppMethodBeat.o(144406);
       return;
     }
     label477:
-    if (w.C((String)???, "wss://"))
+    if (y.C((String)???, "wss://"))
     {
-      ad.i("MicroMsg.AppBrandNetworkWebSocket", "url is %s ,user wss connect", new Object[] { ??? });
-      if (this.kbT != null) {}
-      for (paramString2 = this.kbT;; paramString2 = (SSLSocketFactory)SSLSocketFactory.getDefault())
+      ae.i("MicroMsg.AppBrandNetworkWebSocket", "url is %s ,user wss connect", new Object[] { ??? });
+      if (this.kfk != null) {}
+      for (paramString2 = this.kfk;; paramString2 = (SSLSocketFactory)SSLSocketFactory.getDefault())
       {
         paramJSONObject.a(paramString2.createSocket());
         if ((paramString1.equals("wx577c74fb940daaea")) || (paramString1.equals("wx850d691fd02de8a1")))
@@ -481,10 +481,10 @@ public final class k
           public final void run()
           {
             AppMethodBeat.i(144404);
-            ad.e("MicroMsg.AppBrandNetworkWebSocket", "connect response time out");
+            ae.e("MicroMsg.AppBrandNetworkWebSocket", "connect response time out");
             paramJSONObject.close();
             k.a(k.this, paramJSONObject);
-            parama.Ob("connect response time out");
+            parama.OI("connect response time out");
             cancel();
             paramString1.cancel();
             AppMethodBeat.o(144404);
@@ -496,8 +496,8 @@ public final class k
         return;
       }
     }
-    ad.i("MicroMsg.AppBrandNetworkWebSocket", "url error: %s not ws:// or wss://", new Object[] { ??? });
-    parama.Oc("url not ws or wss");
+    ae.i("MicroMsg.AppBrandNetworkWebSocket", "url error: %s not ws:// or wss://", new Object[] { ??? });
+    parama.OJ("url not ws or wss");
     AppMethodBeat.o(144406);
   }
   
@@ -517,7 +517,7 @@ public final class k
   public final void release()
   {
     AppMethodBeat.i(144414);
-    a(Rk("0"));
+    a(RT("0"));
     AppMethodBeat.o(144414);
   }
   
@@ -530,24 +530,24 @@ public final class k
   
   public static abstract interface b
   {
-    public abstract void Ob(String paramString);
+    public abstract void OI(String paramString);
     
-    public abstract void Oc(String paramString);
+    public abstract void OJ(String paramString);
     
     public abstract void aa(int paramInt, String paramString);
     
-    public abstract void beM();
+    public abstract void bfu();
     
-    public abstract void beN();
+    public abstract void bfv();
     
     public abstract void k(ByteBuffer paramByteBuffer);
   }
   
   public static abstract interface c
   {
-    public abstract boolean KN(String paramString);
+    public abstract boolean Ln(String paramString);
     
-    public abstract boolean aXT();
+    public abstract boolean aYm();
   }
 }
 

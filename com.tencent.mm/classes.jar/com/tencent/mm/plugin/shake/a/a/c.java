@@ -7,27 +7,27 @@ public abstract class c
   extends com.tencent.mm.sdk.e.c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eFp = "username".hashCode();
-  private static final int eHT;
-  private static final int feK = "createtime".hashCode();
+  private static final int eGY = "username".hashCode();
+  private static final int eJC;
+  private static final int fgF = "createtime".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private static final int yLA = "deeplink".hashCode();
-  private static final int yLB;
-  private boolean eFm = true;
-  private boolean eHQ = true;
-  private boolean feB = true;
+  private static final int zbK = "deeplink".hashCode();
+  private static final int zbL;
+  private boolean eGV = true;
+  private boolean eJz = true;
+  private boolean fgu = true;
   public long field_createtime;
   public String field_deeplink;
   public String field_iconurl;
   public String field_title;
   public String field_username;
-  private boolean yLy = true;
-  private boolean yLz = true;
+  private boolean zbI = true;
+  private boolean zbJ = true;
   
   static
   {
-    eHT = "title".hashCode();
-    yLB = "iconurl".hashCode();
+    eJC = "title".hashCode();
+    zbL = "iconurl".hashCode();
   }
   
   public void convertFrom(Cursor paramCursor)
@@ -43,11 +43,11 @@ public abstract class c
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eFp != k) {
+      if (eGY != k) {
         break label65;
       }
       this.field_username = paramCursor.getString(i);
-      this.eFm = true;
+      this.eGV = true;
     }
     for (;;)
     {
@@ -55,13 +55,13 @@ public abstract class c
       break label20;
       break;
       label65:
-      if (yLA == k) {
+      if (zbK == k) {
         this.field_deeplink = paramCursor.getString(i);
-      } else if (eHT == k) {
+      } else if (eJC == k) {
         this.field_title = paramCursor.getString(i);
-      } else if (yLB == k) {
+      } else if (zbL == k) {
         this.field_iconurl = paramCursor.getString(i);
-      } else if (feK == k) {
+      } else if (fgF == k) {
         this.field_createtime = paramCursor.getLong(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
@@ -75,28 +75,28 @@ public abstract class c
     if (this.field_username == null) {
       this.field_username = "";
     }
-    if (this.eFm) {
+    if (this.eGV) {
       localContentValues.put("username", this.field_username);
     }
     if (this.field_deeplink == null) {
       this.field_deeplink = "";
     }
-    if (this.yLy) {
+    if (this.zbI) {
       localContentValues.put("deeplink", this.field_deeplink);
     }
     if (this.field_title == null) {
       this.field_title = "";
     }
-    if (this.eHQ) {
+    if (this.eJz) {
       localContentValues.put("title", this.field_title);
     }
     if (this.field_iconurl == null) {
       this.field_iconurl = "";
     }
-    if (this.yLz) {
+    if (this.zbJ) {
       localContentValues.put("iconurl", this.field_iconurl);
     }
-    if (this.feB) {
+    if (this.fgu) {
       localContentValues.put("createtime", Long.valueOf(this.field_createtime));
     }
     if (this.systemRowid > 0L) {

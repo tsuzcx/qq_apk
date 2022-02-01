@@ -14,7 +14,7 @@ final class f
     AppMethodBeat.i(47415);
     if (paramUri == null) {}
     for (paramString = "";; paramString = paramUri.getQueryParameter("appid")) {
-      switch (1.lMI[parama.ordinal()])
+      switch (1.lRi[parama.ordinal()])
       {
       default: 
         AppBrand404PageUI.show(2131755402);

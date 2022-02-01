@@ -8,12 +8,12 @@ import android.graphics.Path;
 import android.graphics.Rect;
 import android.view.MotionEvent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aa.e;
-import com.tencent.mm.aa.e.a;
-import com.tencent.mm.aa.e.b;
 import com.tencent.mm.cache.c;
 import com.tencent.mm.cache.i;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.z.e;
+import com.tencent.mm.z.e.a;
+import com.tencent.mm.z.e.b;
 import java.util.LinkedList;
 
 public final class g
@@ -21,38 +21,38 @@ public final class g
 {
   private float ayf;
   private float ayg;
-  private float daO;
-  private float daP;
-  private Bitmap dbD;
-  private LinkedList<e.b> dbE;
-  public e.a dbF;
-  private boolean dbn;
-  private boolean dbo;
+  private float dbQ;
+  private float dbR;
+  private Bitmap dcF;
+  private LinkedList<e.b> dcG;
+  public e.a dcH;
+  private boolean dcp;
+  private boolean dcq;
   private Path xN;
   
   public g()
   {
     AppMethodBeat.i(9168);
-    this.dbn = true;
-    this.dbo = false;
+    this.dcp = true;
+    this.dcq = false;
     this.xN = new Path();
-    this.dbE = new LinkedList();
-    this.dbF = e.a.gzg;
+    this.dcG = new LinkedList();
+    this.dcH = e.a.gBN;
     AppMethodBeat.o(9168);
   }
   
-  public final a NI()
+  public final a NG()
   {
-    return a.dae;
+    return a.dbg;
   }
   
-  public final void NJ()
+  public final void NH()
   {
     AppMethodBeat.i(9174);
-    if ((NO() != null) && (!NO().isRecycled())) {
-      NO().recycle();
+    if ((NM() != null) && (!NM().isRecycled())) {
+      NM().recycle();
     }
-    s(((i)super.NK()).XN());
+    t(((i)super.NI()).XX());
     AppMethodBeat.o(9174);
   }
   
@@ -60,7 +60,7 @@ public final class g
   {
     AppMethodBeat.i(9173);
     super.cl(paramBoolean);
-    ((i)super.NK()).t(NO());
+    ((i)super.NI()).u(NM());
     AppMethodBeat.o(9173);
   }
   
@@ -68,13 +68,13 @@ public final class g
   {
     int j = 0;
     AppMethodBeat.i(9172);
-    if (!NP())
+    if (!NN())
     {
       AppMethodBeat.o(9172);
       return false;
     }
-    if (this.dat != null) {
-      this.dat.n(paramMotionEvent);
+    if (this.dbv != null) {
+      this.dbv.n(paramMotionEvent);
     }
     Object localObject = u(paramMotionEvent.getX(), paramMotionEvent.getY());
     switch (paramMotionEvent.getActionMasked())
@@ -82,69 +82,69 @@ public final class g
     }
     for (;;)
     {
-      boolean bool = this.dbn;
+      boolean bool = this.dcp;
       AppMethodBeat.o(9172);
       return bool;
       float f1;
-      if (this.dam.contains((int)localObject[0], (int)localObject[1]))
+      if (this.dbo.contains((int)localObject[0], (int)localObject[1]))
       {
         f1 = localObject[0];
-        this.daO = f1;
+        this.dbQ = f1;
         this.ayf = f1;
         f1 = localObject[1];
-        this.daP = f1;
+        this.dbR = f1;
         this.ayg = f1;
       }
-      for (this.dbn = true;; this.dbn = false)
+      for (this.dcp = true;; this.dcp = false)
       {
-        this.dbo = false;
+        this.dcq = false;
         break;
       }
-      if ((this.dbn) && (this.dbo))
+      if ((this.dcp) && (this.dcq))
       {
-        if ((i)super.NK() == null)
+        if ((i)super.NI() == null)
         {
-          ad.e("MicroMsg.MosaicArtist", "getCache is null???");
+          ae.e("MicroMsg.MosaicArtist", "getCache is null???");
           AppMethodBeat.o(9172);
           return true;
         }
-        if (this.dbF != e.a.gzg) {
+        if (this.dcH != e.a.gBN) {
           break label328;
         }
-        ((i)super.NK()).a(new e(this.dbF, new Path(this.xN), 1.0F / getScale(), this.dbD));
+        ((i)super.NI()).a(new e(this.dcH, new Path(this.xN), 1.0F / getScale(), this.dcF));
         cl(false);
       }
       for (;;)
       {
-        c.XI().b(com.tencent.mm.api.g.cRG);
-        NS();
-        this.dbE.clear();
+        c.XS().b(com.tencent.mm.api.g.cSq);
+        NQ();
+        this.dcG.clear();
         this.xN.reset();
-        this.dbo = false;
-        this.dbn = false;
+        this.dcq = false;
+        this.dcp = false;
         break;
         label328:
-        if (this.dbF == e.a.gzh)
+        if (this.dcH == e.a.gBO)
         {
-          ((i)super.NK()).a(new e(this.dbF, new LinkedList(this.dbE), 1.0F / getScale()));
+          ((i)super.NI()).a(new e(this.dcH, new LinkedList(this.dcG), 1.0F / getScale()));
           cl(false);
         }
       }
-      if ((this.dbn) && (this.dbo))
+      if ((this.dcp) && (this.dcq))
       {
-        this.daO = this.ayf;
-        this.daP = this.ayg;
+        this.dbQ = this.ayf;
+        this.dbR = this.ayg;
         this.ayf = localObject[0];
         this.ayg = localObject[1];
-        if (this.dbF == e.a.gzg) {
-          this.xN.quadTo(this.daO, this.daP, (this.ayf + this.daO) / 2.0F, (this.ayg + this.daP) / 2.0F);
+        if (this.dcH == e.a.gBN) {
+          this.xN.quadTo(this.dbQ, this.dbR, (this.ayf + this.dbQ) / 2.0F, (this.ayg + this.dbR) / 2.0F);
         }
-        while (this.dbF != e.a.gzh)
+        while (this.dcH != e.a.gBO)
         {
-          NR();
+          NP();
           break;
         }
-        double d = Math.toDegrees(Math.atan((this.ayf - this.daO) / (this.ayg - this.daP)));
+        double d = Math.toDegrees(Math.atan((this.ayf - this.dbQ) / (this.ayg - this.dbR)));
         label536:
         float f2;
         float f3;
@@ -153,15 +153,15 @@ public final class g
         {
           i = 180;
           f1 = (float)(i + d);
-          paramMotionEvent = this.dbE;
+          paramMotionEvent = this.dcG;
           f2 = 1.0F / getScale();
           f3 = this.ayf;
           f4 = this.ayg;
-          localObject = this.dak.ffU();
+          localObject = this.dbm.fjK();
           if ((localObject != null) && (f3 < ((Bitmap)localObject).getWidth()) && (f4 < ((Bitmap)localObject).getHeight()) && (f3 > 0.0F) && (f4 > 0.0F)) {
             break label693;
           }
-          ad.w("MicroMsg.MosaicArtist", "[getPosColor] X:%s,Y:%s", new Object[] { Float.valueOf(f3), Float.valueOf(f4) });
+          ae.w("MicroMsg.MosaicArtist", "[getPosColor] X:%s,Y:%s", new Object[] { Float.valueOf(f3), Float.valueOf(f4) });
         }
         label693:
         for (int i = j;; i = ((Bitmap)localObject).getPixel((int)f3, (int)f4))
@@ -172,12 +172,12 @@ public final class g
           break label536;
         }
       }
-      if ((this.dbn) && (!this.dbo))
+      if ((this.dcp) && (!this.dcq))
       {
-        if (this.dbF == e.a.gzg) {
+        if (this.dcH == e.a.gBN) {
           this.xN.moveTo(localObject[0], localObject[1]);
         }
-        this.dbo = true;
+        this.dcq = true;
       }
     }
   }
@@ -186,21 +186,21 @@ public final class g
   {
     AppMethodBeat.i(9169);
     super.onAlive();
-    if ((i)super.NK() != null) {
-      s(((i)super.NK()).XN());
+    if ((i)super.NI() != null) {
+      t(((i)super.NI()).XX());
     }
-    Bitmap localBitmap2 = this.dak.ffU();
+    Bitmap localBitmap2 = this.dbm.fjK();
     if (localBitmap2 == null)
     {
-      ad.e("MicroMsg.MosaicArtist", "[generateMosaicImage] bitmap is null");
+      ae.e("MicroMsg.MosaicArtist", "[generateMosaicImage] bitmap is null");
       localBitmap1 = null;
-      this.dbD = localBitmap1;
+      this.dcF = localBitmap1;
       AppMethodBeat.o(9169);
       return;
     }
     int n = localBitmap2.getWidth();
     int i1 = localBitmap2.getHeight();
-    int i3 = com.tencent.mm.cm.a.cd(6.0F);
+    int i3 = com.tencent.mm.cl.a.cb(6.0F);
     Bitmap localBitmap1 = Bitmap.createBitmap(n, i1, Bitmap.Config.RGB_565);
     Canvas localCanvas = new Canvas(localBitmap1);
     int i4 = (int)Math.ceil(n / i3);
@@ -252,8 +252,8 @@ public final class g
   {
     AppMethodBeat.i(9170);
     super.onDestroy();
-    if ((this.dbD != null) && (!this.dbD.isRecycled())) {
-      this.dbD.recycle();
+    if ((this.dcF != null) && (!this.dcF.isRecycled())) {
+      this.dcF.recycle();
     }
     AppMethodBeat.o(9170);
   }
@@ -262,20 +262,20 @@ public final class g
   {
     AppMethodBeat.i(9171);
     paramCanvas.save();
-    paramCanvas.clipRect(this.dam);
-    if (this.dbF == e.a.gzg)
+    paramCanvas.clipRect(this.dbo);
+    if (this.dcH == e.a.gBN)
     {
       d(paramCanvas);
-      new e(this.dbF, this.xN, 1.0F / getScale(), this.dbD).draw(paramCanvas);
+      new e(this.dcH, this.xN, 1.0F / getScale(), this.dcF).draw(paramCanvas);
     }
     for (;;)
     {
       paramCanvas.restore();
       AppMethodBeat.o(9171);
       return;
-      if (this.dbF == e.a.gzh)
+      if (this.dcH == e.a.gBO)
       {
-        new e(this.dbF, new LinkedList(this.dbE), 1.0F / getScale()).draw(new Canvas(NO()));
+        new e(this.dcH, new LinkedList(this.dcG), 1.0F / getScale()).draw(new Canvas(NM()));
         d(paramCanvas);
       }
     }
@@ -283,7 +283,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.e.g
  * JD-Core Version:    0.7.0.1
  */

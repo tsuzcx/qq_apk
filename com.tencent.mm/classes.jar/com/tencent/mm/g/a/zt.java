@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class zt
   extends b
 {
-  public a dPi;
+  public a dQj;
   
   public zt()
   {
@@ -15,21 +15,21 @@ public final class zt
   
   private zt(byte paramByte)
   {
-    AppMethodBeat.i(149896);
-    this.dPi = new a();
-    this.IbR = false;
+    AppMethodBeat.i(117553);
+    this.dQj = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(149896);
+    AppMethodBeat.o(117553);
   }
   
   public static final class a
   {
-    public boolean success = false;
+    public String dvD;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.a.zt
  * JD-Core Version:    0.7.0.1
  */

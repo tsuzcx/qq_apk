@@ -5,7 +5,7 @@ import com.tencent.mm.plugin.appbrand.d;
 import com.tencent.mm.plugin.appbrand.jsapi.a;
 import com.tencent.mm.plugin.appbrand.jsapi.co;
 import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.plugin.appbrand.page.aa;
+import com.tencent.mm.plugin.appbrand.page.z;
 
 public final class ae
   extends a<d>
@@ -13,7 +13,7 @@ public final class ae
   public static final int CTRL_INDEX = 9;
   public static final String NAME = "showNavigationBarLoading";
   
-  public final boolean bib()
+  public final boolean biK()
   {
     return true;
   }

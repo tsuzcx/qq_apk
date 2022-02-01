@@ -10,8 +10,8 @@ import org.apache.commons.b.c.a;
 
 public final class f
 {
-  private static final String NTt = "\"";
-  private static final char[] NTu = { 44, 34, 13, 10 };
+  private static final char[] OqA = { 44, 34, 13, 10 };
+  private static final String Oqz = "\"";
   
   private static String K(char paramChar)
   {
@@ -131,7 +131,7 @@ public final class f
         try
         {
           paramWriter.write((char)Integer.parseInt(locala.toString(), 16));
-          locala.gyj();
+          locala.gCL();
           j = 0;
           i = 0;
           k += 1;
@@ -199,15 +199,15 @@ public final class f
     AppMethodBeat.o(40742);
   }
   
-  public static String bdK(String paramString)
+  public static String bfo(String paramString)
   {
     AppMethodBeat.i(40737);
-    paramString = bdL(paramString);
+    paramString = bfp(paramString);
     AppMethodBeat.o(40737);
     return paramString;
   }
   
-  private static String bdL(String paramString)
+  private static String bfp(String paramString)
   {
     AppMethodBeat.i(40738);
     if (paramString == null)
@@ -231,7 +231,7 @@ public final class f
     }
   }
   
-  private static String bdM(String paramString)
+  private static String bfq(String paramString)
   {
     AppMethodBeat.i(40741);
     if (paramString == null)
@@ -255,15 +255,15 @@ public final class f
     }
   }
   
-  public static String bdN(String paramString)
+  public static String bfr(String paramString)
   {
     AppMethodBeat.i(40743);
-    paramString = bdM(paramString);
+    paramString = bfq(paramString);
     AppMethodBeat.o(40743);
     return paramString;
   }
   
-  public static String bdO(String paramString)
+  public static String bfs(String paramString)
   {
     AppMethodBeat.i(40744);
     if (paramString == null)
@@ -271,14 +271,14 @@ public final class f
       AppMethodBeat.o(40744);
       return null;
     }
-    paramString = c.NTj.unescape(paramString);
+    paramString = c.Oqp.unescape(paramString);
     AppMethodBeat.o(40744);
     return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     org.apache.commons.b.f
  * JD-Core Version:    0.7.0.1
  */

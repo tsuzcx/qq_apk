@@ -10,59 +10,59 @@ public class BaseScanRequest
   implements Parcelable
 {
   public static final Parcelable.Creator<BaseScanRequest> CREATOR;
-  public boolean yjE;
-  public boolean yjF;
-  public boolean yjG;
-  public boolean yjH;
-  public boolean yjI;
-  private Bundle yjJ;
+  public boolean yzA;
+  public boolean yzB;
+  public boolean yzC;
+  public boolean yzD;
+  public boolean yzE;
+  private Bundle yzF;
   
   static
   {
-    AppMethodBeat.i(191528);
+    AppMethodBeat.i(210670);
     CREATOR = new Parcelable.Creator() {};
-    AppMethodBeat.o(191528);
+    AppMethodBeat.o(210670);
   }
   
   public BaseScanRequest()
   {
-    this.yjE = false;
-    this.yjF = false;
-    this.yjG = false;
-    this.yjH = true;
-    this.yjI = true;
+    this.yzA = false;
+    this.yzB = false;
+    this.yzC = false;
+    this.yzD = true;
+    this.yzE = true;
   }
   
   public BaseScanRequest(Parcel paramParcel)
   {
-    AppMethodBeat.i(191525);
-    this.yjE = false;
-    this.yjF = false;
-    this.yjG = false;
-    this.yjH = true;
-    this.yjI = true;
+    AppMethodBeat.i(210667);
+    this.yzA = false;
+    this.yzB = false;
+    this.yzC = false;
+    this.yzD = true;
+    this.yzE = true;
     if (paramParcel.readByte() != 0)
     {
       bool1 = true;
-      this.yjE = bool1;
+      this.yzA = bool1;
       if (paramParcel.readByte() == 0) {
         break label125;
       }
       bool1 = true;
       label59:
-      this.yjF = bool1;
+      this.yzB = bool1;
       if (paramParcel.readByte() == 0) {
         break label130;
       }
       bool1 = true;
       label73:
-      this.yjG = bool1;
+      this.yzC = bool1;
       if (paramParcel.readByte() == 0) {
         break label135;
       }
       bool1 = true;
       label87:
-      this.yjH = bool1;
+      this.yzD = bool1;
       if (paramParcel.readByte() == 0) {
         break label140;
       }
@@ -72,9 +72,9 @@ public class BaseScanRequest
     label140:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      this.yjI = bool1;
-      this.yjJ = paramParcel.readBundle();
-      AppMethodBeat.o(191525);
+      this.yzE = bool1;
+      this.yzF = paramParcel.readBundle();
+      AppMethodBeat.o(210667);
       return;
       bool1 = false;
       break;
@@ -95,62 +95,62 @@ public class BaseScanRequest
   
   public final String getExtra(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(191524);
-    if (this.yjJ != null)
+    AppMethodBeat.i(210666);
+    if (this.yzF != null)
     {
-      paramString1 = this.yjJ.getString(paramString1, paramString2);
-      AppMethodBeat.o(191524);
+      paramString1 = this.yzF.getString(paramString1, paramString2);
+      AppMethodBeat.o(210666);
       return paramString1;
     }
-    AppMethodBeat.o(191524);
+    AppMethodBeat.o(210666);
     return paramString2;
   }
   
   public final void putExtra(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(191523);
-    if (this.yjJ == null) {
-      this.yjJ = new Bundle();
+    AppMethodBeat.i(210665);
+    if (this.yzF == null) {
+      this.yzF = new Bundle();
     }
-    this.yjJ.putString(paramString1, paramString2);
-    AppMethodBeat.o(191523);
+    this.yzF.putString(paramString1, paramString2);
+    AppMethodBeat.o(210665);
   }
   
   public String toString()
   {
-    AppMethodBeat.i(191527);
-    String str = String.format("BaseScanRequest{hideBottomTab: %b, hideScanTips: %b, hideFlashSwitcher: %b, hideGalleryButton: %b, hideOptionMenu: %b}", new Object[] { Boolean.valueOf(this.yjE), Boolean.valueOf(this.yjF), Boolean.valueOf(this.yjG), Boolean.valueOf(this.yjH), Boolean.valueOf(this.yjI) });
-    AppMethodBeat.o(191527);
+    AppMethodBeat.i(210669);
+    String str = String.format("BaseScanRequest{hideBottomTab: %b, hideScanTips: %b, hideFlashSwitcher: %b, hideGalleryButton: %b, hideOptionMenu: %b}", new Object[] { Boolean.valueOf(this.yzA), Boolean.valueOf(this.yzB), Boolean.valueOf(this.yzC), Boolean.valueOf(this.yzD), Boolean.valueOf(this.yzE) });
+    AppMethodBeat.o(210669);
     return str;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     int i = 1;
-    AppMethodBeat.i(191526);
-    if (this.yjE)
+    AppMethodBeat.i(210668);
+    if (this.yzA)
     {
       paramInt = 1;
       paramParcel.writeByte((byte)paramInt);
-      if (!this.yjF) {
+      if (!this.yzB) {
         break label101;
       }
       paramInt = 1;
       label31:
       paramParcel.writeByte((byte)paramInt);
-      if (!this.yjG) {
+      if (!this.yzC) {
         break label106;
       }
       paramInt = 1;
       label46:
       paramParcel.writeByte((byte)paramInt);
-      if (!this.yjH) {
+      if (!this.yzD) {
         break label111;
       }
       paramInt = 1;
       label61:
       paramParcel.writeByte((byte)paramInt);
-      if (!this.yjI) {
+      if (!this.yzE) {
         break label116;
       }
     }
@@ -161,8 +161,8 @@ public class BaseScanRequest
     for (paramInt = i;; paramInt = 0)
     {
       paramParcel.writeByte((byte)paramInt);
-      paramParcel.writeBundle(this.yjJ);
-      AppMethodBeat.o(191526);
+      paramParcel.writeBundle(this.yzF);
+      AppMethodBeat.o(210668);
       return;
       paramInt = 0;
       break;

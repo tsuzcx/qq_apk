@@ -45,7 +45,7 @@ public final class vv
       localPaint2.setPathEffect(null);
       c.a(localPaint2, paramVarArgs).setStrokeWidth(1.0F);
       localPaint1 = c.a(localPaint1, paramVarArgs);
-      localPaint1.setColor(-1);
+      localPaint1.setColor(-14624737);
       localCanvas.save();
       localPaint1 = c.a(localPaint1, paramVarArgs);
       arrayOfFloat = c.a(arrayOfFloat, 0.7071068F, -0.7071068F, 31.394091F, 0.7071068F, 0.7071068F, -12.125177F);

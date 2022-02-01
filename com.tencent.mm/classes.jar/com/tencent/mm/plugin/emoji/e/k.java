@@ -12,8 +12,8 @@ import com.tencent.mm.plugin.report.service.g;
 import com.tencent.mm.pluginsdk.m;
 import com.tencent.mm.protocal.protobuf.EmotionBannerSet;
 import com.tencent.mm.protocal.protobuf.EmotionSummary;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public final class k
 {
@@ -28,8 +28,8 @@ public final class k
     localIntent.putExtra("set_desc", paramString2);
     localIntent.setClass(paramContext, EmojiStoreV2SingleProductUI.class);
     paramString1 = new com.tencent.mm.hellhoundlib.b.a().bc(localIntent);
-    com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramString1.ahp(), "com/tencent/mm/plugin/emoji/mgr/EmojiUINavigatorMgr", "startEmojiList", "(Landroid/content/Context;ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    paramContext.startActivity((Intent)paramString1.mq(0));
+    com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramString1.ahE(), "com/tencent/mm/plugin/emoji/mgr/EmojiUINavigatorMgr", "startEmojiList", "(Landroid/content/Context;ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramContext.startActivity((Intent)paramString1.mt(0));
     com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/plugin/emoji/mgr/EmojiUINavigatorMgr", "startEmojiList", "(Landroid/content/Context;ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     AppMethodBeat.o(108538);
   }
@@ -50,8 +50,8 @@ public final class k
     for (;;)
     {
       paramString1 = new com.tencent.mm.hellhoundlib.b.a().bc(localIntent);
-      com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramString1.ahp(), "com/tencent/mm/plugin/emoji/mgr/EmojiUINavigatorMgr", "startEmotionList", "(Landroid/content/Context;ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Z)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramContext.startActivity((Intent)paramString1.mq(0));
+      com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramString1.ahE(), "com/tencent/mm/plugin/emoji/mgr/EmojiUINavigatorMgr", "startEmotionList", "(Landroid/content/Context;ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Z)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramContext.startActivity((Intent)paramString1.mt(0));
       com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/plugin/emoji/mgr/EmojiUINavigatorMgr", "startEmotionList", "(Landroid/content/Context;ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Z)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       AppMethodBeat.o(108539);
       return;
@@ -72,8 +72,8 @@ public final class k
     localIntent.putExtra("download_entrance_scene", paramInt1);
     localIntent.putExtra("check_clickflag", true);
     paramEmotionBannerSet = new com.tencent.mm.hellhoundlib.b.a().bc(localIntent);
-    com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramEmotionBannerSet.ahp(), "com/tencent/mm/plugin/emoji/mgr/EmojiUINavigatorMgr", "startDetailByBannerSet", "(Landroid/content/Context;Lcom/tencent/mm/protocal/protobuf/EmotionBannerSet;ZII)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    paramContext.startActivity((Intent)paramEmotionBannerSet.mq(0));
+    com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramEmotionBannerSet.ahE(), "com/tencent/mm/plugin/emoji/mgr/EmojiUINavigatorMgr", "startDetailByBannerSet", "(Landroid/content/Context;Lcom/tencent/mm/protocal/protobuf/EmotionBannerSet;ZII)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramContext.startActivity((Intent)paramEmotionBannerSet.mt(0));
     com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/plugin/emoji/mgr/EmojiUINavigatorMgr", "startDetailByBannerSet", "(Landroid/content/Context;Lcom/tencent/mm/protocal/protobuf/EmotionBannerSet;ZII)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     AppMethodBeat.o(108536);
   }
@@ -83,34 +83,34 @@ public final class k
     AppMethodBeat.i(108537);
     if (paramEmotionBannerSet == null)
     {
-      ad.i("MicroMsg.emoji.EmojiUINavigatorMgr", "banner is null. do nothing");
+      ae.i("MicroMsg.emoji.EmojiUINavigatorMgr", "banner is null. do nothing");
       AppMethodBeat.o(108537);
       return;
     }
     switch (paramEmotionBannerSet.SetType)
     {
     default: 
-      ad.i("MicroMsg.emoji.EmojiUINavigatorMgr", "Unkown type do nothing. SetType:%d", new Object[] { Integer.valueOf(paramEmotionBannerSet.SetType) });
+      ae.i("MicroMsg.emoji.EmojiUINavigatorMgr", "Unkown type do nothing. SetType:%d", new Object[] { Integer.valueOf(paramEmotionBannerSet.SetType) });
       AppMethodBeat.o(108537);
       return;
     case 0: 
-      ad.i("MicroMsg.emoji.EmojiUINavigatorMgr", "MM_EMOTION_BANNER_SET_NULL do nothing");
-      g.yhR.f(13223, new Object[] { Integer.valueOf(1), Integer.valueOf(paramEmotionBannerSet.ID), paramEmotionBannerSet.Title, Integer.valueOf(0), Integer.valueOf(0) });
+      ae.i("MicroMsg.emoji.EmojiUINavigatorMgr", "MM_EMOTION_BANNER_SET_NULL do nothing");
+      g.yxI.f(13223, new Object[] { Integer.valueOf(1), Integer.valueOf(paramEmotionBannerSet.ID), paramEmotionBannerSet.Title, Integer.valueOf(0), Integer.valueOf(0) });
       AppMethodBeat.o(108537);
       return;
     case 4: 
       a(paramContext, paramEmotionBannerSet.ID, paramEmotionBannerSet.Title, paramEmotionBannerSet.Desc, paramEmotionBannerSet.IconUrl, paramEmotionBannerSet.SecondUrl);
-      g.yhR.f(13223, new Object[] { Integer.valueOf(1), Integer.valueOf(paramEmotionBannerSet.ID), paramEmotionBannerSet.Title, Integer.valueOf(0), Integer.valueOf(1) });
+      g.yxI.f(13223, new Object[] { Integer.valueOf(1), Integer.valueOf(paramEmotionBannerSet.ID), paramEmotionBannerSet.Title, Integer.valueOf(0), Integer.valueOf(1) });
       AppMethodBeat.o(108537);
       return;
     case 3: 
       a(paramContext, paramEmotionBannerSet.ID, paramEmotionBannerSet.Title, paramEmotionBannerSet.Desc, paramEmotionBannerSet.IconUrl, paramEmotionBannerSet.SecondUrl, paramBoolean);
-      g.yhR.f(13223, new Object[] { Integer.valueOf(1), Integer.valueOf(paramEmotionBannerSet.ID), paramEmotionBannerSet.Title, Integer.valueOf(0), Integer.valueOf(2) });
+      g.yxI.f(13223, new Object[] { Integer.valueOf(1), Integer.valueOf(paramEmotionBannerSet.ID), paramEmotionBannerSet.Title, Integer.valueOf(0), Integer.valueOf(2) });
       AppMethodBeat.o(108537);
       return;
     case 2: 
       w(paramContext, paramEmotionBannerSet.LocateUrl, paramEmotionBannerSet.Title);
-      g.yhR.f(13223, new Object[] { Integer.valueOf(1), Integer.valueOf(paramEmotionBannerSet.ID), paramEmotionBannerSet.Title, Integer.valueOf(0), Integer.valueOf(3) });
+      g.yxI.f(13223, new Object[] { Integer.valueOf(1), Integer.valueOf(paramEmotionBannerSet.ID), paramEmotionBannerSet.Title, Integer.valueOf(0), Integer.valueOf(3) });
       AppMethodBeat.o(108537);
       return;
     }
@@ -119,7 +119,7 @@ public final class k
     }
     for (;;)
     {
-      g.yhR.f(13223, new Object[] { Integer.valueOf(1), Integer.valueOf(paramEmotionBannerSet.ID), paramEmotionBannerSet.Title, Integer.valueOf(0), Integer.valueOf(4) });
+      g.yxI.f(13223, new Object[] { Integer.valueOf(1), Integer.valueOf(paramEmotionBannerSet.ID), paramEmotionBannerSet.Title, Integer.valueOf(0), Integer.valueOf(4) });
       AppMethodBeat.o(108537);
       return;
       a(paramContext, paramEmotionBannerSet, 3, 5);
@@ -153,7 +153,7 @@ public final class k
       localIntent.putExtra("check_clickflag", false);
       localIntent.putExtra("download_entrance_scene", paramInt1);
       if (paramz != null) {
-        localIntent.putExtra("action_report", paramz.RD());
+        localIntent.putExtra("action_report", paramz.RC());
       }
       if (paramInt2 != -1) {
         localIntent.putExtra("extra_status", paramInt2);
@@ -161,19 +161,19 @@ public final class k
       if (paramInt3 != -1) {
         localIntent.putExtra("extra_progress", -1);
       }
-      if (!bt.isNullOrNil(paramString)) {
+      if (!bu.isNullOrNil(paramString)) {
         localIntent.putExtra("to_talker_name", paramString);
       }
     }
     for (;;)
     {
       paramEmotionSummary = new com.tencent.mm.hellhoundlib.b.a().bc(localIntent);
-      com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramEmotionSummary.ahp(), "com/tencent/mm/plugin/emoji/mgr/EmojiUINavigatorMgr", "startDetailBySummary", "(Landroid/content/Context;Lcom/tencent/mm/protocal/protobuf/EmotionSummary;ZIIILjava/lang/String;ILcom/tencent/mm/autogen/mmdata/rpt/EmoticonStoreActionStruct;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramContext.startActivity((Intent)paramEmotionSummary.mq(0));
+      com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramEmotionSummary.ahE(), "com/tencent/mm/plugin/emoji/mgr/EmojiUINavigatorMgr", "startDetailBySummary", "(Landroid/content/Context;Lcom/tencent/mm/protocal/protobuf/EmotionSummary;ZIIILjava/lang/String;ILcom/tencent/mm/autogen/mmdata/rpt/EmoticonStoreActionStruct;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramContext.startActivity((Intent)paramEmotionSummary.mt(0));
       com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/plugin/emoji/mgr/EmojiUINavigatorMgr", "startDetailBySummary", "(Landroid/content/Context;Lcom/tencent/mm/protocal/protobuf/EmotionSummary;ZIIILjava/lang/String;ILcom/tencent/mm/autogen/mmdata/rpt/EmoticonStoreActionStruct;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       AppMethodBeat.o(108535);
       return;
-      ad.i("MicroMsg.emoji.EmojiUINavigatorMgr", "get detail intent failed. summary is null.");
+      ae.i("MicroMsg.emoji.EmojiUINavigatorMgr", "get detail intent failed. summary is null.");
     }
   }
   
@@ -183,13 +183,13 @@ public final class k
     Intent localIntent = new Intent();
     localIntent.putExtra("rawUrl", paramString1);
     localIntent.putExtra("title", paramString2);
-    b.iRG.i(localIntent, paramContext);
+    b.iUz.i(localIntent, paramContext);
     AppMethodBeat.o(108540);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.e.k
  * JD-Core Version:    0.7.0.1
  */

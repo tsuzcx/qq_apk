@@ -2,12 +2,12 @@ package com.tencent.matrix.trace.a;
 
 public final class a
 {
-  private static final a cJB = new a();
-  public boolean cJC;
+  private static final a cKk = new a();
+  public boolean cKl;
   
-  public static a IY()
+  public static a Jg()
   {
-    return cJB;
+    return cKk;
   }
 }
 

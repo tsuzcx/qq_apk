@@ -4,9 +4,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.d;
 import com.tencent.mm.plugin.appbrand.jsapi.a;
 import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.plugin.appbrand.page.aa;
-import com.tencent.mm.plugin.appbrand.page.ae;
-import com.tencent.mm.plugin.appbrand.z.i;
+import com.tencent.mm.plugin.appbrand.page.ad;
+import com.tencent.mm.plugin.appbrand.page.z;
+import com.tencent.mm.plugin.appbrand.y.i;
 
 public final class b
   extends a<d>

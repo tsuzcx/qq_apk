@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.walletlock.gesture.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.DataInputStream;
@@ -11,17 +11,17 @@ import java.io.OutputStream;
 
 public final class g
 {
-  public long DuH = -1L;
-  public long DuI = 0L;
+  public long DMm = -1L;
+  public long DMn = 0L;
   
-  public final g ca(byte[] paramArrayOfByte)
+  public final g cd(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(129790);
     paramArrayOfByte = new DataInputStream(new ByteArrayInputStream(paramArrayOfByte));
     try
     {
-      this.DuH = paramArrayOfByte.readLong();
-      this.DuI = paramArrayOfByte.readLong();
+      this.DMm = paramArrayOfByte.readLong();
+      this.DMn = paramArrayOfByte.readLong();
       paramArrayOfByte.close();
       AppMethodBeat.o(129790);
       return this;
@@ -30,7 +30,7 @@ public final class g
     {
       for (;;)
       {
-        ad.printErrStackTrace("MicroMsg.TimeInfo", paramArrayOfByte, "", new Object[0]);
+        ae.printErrStackTrace("MicroMsg.TimeInfo", paramArrayOfByte, "", new Object[0]);
       }
     }
   }
@@ -42,8 +42,8 @@ public final class g
     DataOutputStream localDataOutputStream = new DataOutputStream((OutputStream)localObject);
     try
     {
-      localDataOutputStream.writeLong(this.DuH);
-      localDataOutputStream.writeLong(this.DuI);
+      localDataOutputStream.writeLong(this.DMm);
+      localDataOutputStream.writeLong(this.DMn);
       localDataOutputStream.close();
       localObject = ((ByteArrayOutputStream)localObject).toByteArray();
       AppMethodBeat.o(129789);
@@ -53,14 +53,14 @@ public final class g
     {
       for (;;)
       {
-        ad.printErrStackTrace("MicroMsg.TimeInfo", localIOException, "", new Object[0]);
+        ae.printErrStackTrace("MicroMsg.TimeInfo", localIOException, "", new Object[0]);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.walletlock.gesture.a.g
  * JD-Core Version:    0.7.0.1
  */

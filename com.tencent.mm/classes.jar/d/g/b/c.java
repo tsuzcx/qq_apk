@@ -3,16 +3,16 @@ package d.g.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlin/jvm/internal/BooleanCompanionObject;", "", "()V", "kotlin-stdlib"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlin/jvm/internal/BooleanCompanionObject;", "", "()V", "kotlin-stdlib"})
 public final class c
 {
-  public static final c MLx;
+  public static final c NiA;
   
   static
   {
-    AppMethodBeat.i(199623);
-    MLx = new c();
-    AppMethodBeat.o(199623);
+    AppMethodBeat.i(188715);
+    NiA = new c();
+    AppMethodBeat.o(188715);
   }
 }
 

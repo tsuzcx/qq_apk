@@ -11,7 +11,7 @@ public final class e
   extends j<d>
 {
   public static final String[] SQL_CREATE;
-  h jhS;
+  h jkL;
   
   static
   {
@@ -24,9 +24,9 @@ public final class e
   {
     super(parame, d.info, "SafeDeviceInfo", null);
     AppMethodBeat.i(125521);
-    this.jhS = null;
+    this.jkL = null;
     if ((parame instanceof h)) {
-      this.jhS = ((h)parame);
+      this.jkL = ((h)parame);
     }
     AppMethodBeat.o(125521);
   }
@@ -39,7 +39,7 @@ public final class e
     return bool;
   }
   
-  public final List<d> aTD()
+  public final List<d> aUc()
   {
     AppMethodBeat.i(125523);
     LinkedList localLinkedList = new LinkedList();

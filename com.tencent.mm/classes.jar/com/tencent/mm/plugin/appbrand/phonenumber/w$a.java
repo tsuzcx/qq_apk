@@ -7,17 +7,17 @@ import d.g.b.q;
 import d.l;
 import d.z;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "<anonymous parameter 0>", "", "<anonymous parameter 1>", "Landroid/content/Intent;", "invoke", "(Ljava/lang/Integer;Landroid/content/Intent;)V"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "<anonymous parameter 0>", "", "<anonymous parameter 1>", "Landroid/content/Intent;", "invoke", "(Ljava/lang/Integer;Landroid/content/Intent;)V"})
 final class w$a
   extends q
   implements m<Integer, Intent, z>
 {
-  public static final a mkI;
+  public static final a mpF;
   
   static
   {
     AppMethodBeat.i(148136);
-    mkI = new a();
+    mpF = new a();
     AppMethodBeat.o(148136);
   }
   

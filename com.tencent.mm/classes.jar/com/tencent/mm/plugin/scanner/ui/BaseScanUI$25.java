@@ -12,14 +12,14 @@ final class BaseScanUI$25
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     AppMethodBeat.i(51712);
-    BaseScanUI.R(this.yqg);
-    this.yqg.finish();
+    BaseScanUI.R(this.yGg);
+    this.yGg.finish();
     AppMethodBeat.o(51712);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.ui.BaseScanUI.25
  * JD-Core Version:    0.7.0.1
  */

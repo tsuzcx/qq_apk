@@ -5,7 +5,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.widget.a;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/story/ui/view/StoryActionView$StoryTipImageSpan;", "Lcom/tencent/mm/ui/widget/FixImageSpan;", "drawable", "Landroid/graphics/drawable/Drawable;", "verticalAlignment", "", "(Landroid/graphics/drawable/Drawable;I)V", "plugin-story_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/story/ui/view/StoryActionView$StoryTipImageSpan;", "Lcom/tencent/mm/ui/widget/FixImageSpan;", "drawable", "Landroid/graphics/drawable/Drawable;", "verticalAlignment", "", "(Landroid/graphics/drawable/Drawable;I)V", "plugin-story_release"})
 public final class StoryActionView$a
   extends a
 {

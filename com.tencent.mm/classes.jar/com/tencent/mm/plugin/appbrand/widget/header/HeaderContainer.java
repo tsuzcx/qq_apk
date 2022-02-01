@@ -27,9 +27,9 @@ public abstract class HeaderContainer
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public abstract boolean bCA();
+  public abstract void bDF();
   
-  public abstract void bCN();
+  public abstract boolean bDs();
   
   public void e(Configuration paramConfiguration) {}
   
@@ -62,7 +62,7 @@ public abstract class HeaderContainer
     return 0;
   }
   
-  public void ic(boolean paramBoolean) {}
+  public void ia(boolean paramBoolean) {}
   
   public boolean isFullScreen()
   {
@@ -91,7 +91,7 @@ public abstract class HeaderContainer
   
   public abstract void setFixedHeight(boolean paramBoolean);
   
-  public void wa(int paramInt) {}
+  public void wf(int paramInt) {}
 }
 
 

@@ -8,15 +8,15 @@ public abstract class ez
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eEB = "scene".hashCode();
-  private static final int eFq = "updateTime".hashCode();
+  private static final int eGZ = "updateTime".hashCode();
   private static final int eGk;
+  private static final int eHT;
   private static final int key_HASHCODE = "key".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
   private boolean __hadSetkey = true;
-  private boolean eEz = true;
-  private boolean eFn = true;
-  private boolean eGf = true;
+  private boolean eGW = true;
+  private boolean eGi = true;
+  private boolean eHO = true;
   public String field_key;
   public int field_scene;
   public long field_updateTime;
@@ -24,7 +24,8 @@ public abstract class ez
   
   static
   {
-    eGk = "version".hashCode();
+    eHT = "version".hashCode();
+    eGk = "scene".hashCode();
   }
   
   public void convertFrom(Cursor paramCursor)
@@ -51,11 +52,11 @@ public abstract class ez
       break label20;
       break;
       label60:
-      if (eGk == k) {
+      if (eHT == k) {
         this.field_version = paramCursor.getInt(i);
-      } else if (eEB == k) {
+      } else if (eGk == k) {
         this.field_scene = paramCursor.getInt(i);
-      } else if (eFq == k) {
+      } else if (eGZ == k) {
         this.field_updateTime = paramCursor.getLong(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
@@ -69,13 +70,13 @@ public abstract class ez
     if (this.__hadSetkey) {
       localContentValues.put("key", this.field_key);
     }
-    if (this.eGf) {
+    if (this.eHO) {
       localContentValues.put("version", Integer.valueOf(this.field_version));
     }
-    if (this.eEz) {
+    if (this.eGi) {
       localContentValues.put("scene", Integer.valueOf(this.field_scene));
     }
-    if (this.eFn) {
+    if (this.eGW) {
       localContentValues.put("updateTime", Long.valueOf(this.field_updateTime));
     }
     if (this.systemRowid > 0L) {

@@ -8,25 +8,25 @@ import d.l.b;
 import d.l.d;
 import d.l.h;
 
-@l(gfx={1, 1, 13})
+@l(gjZ={1, 1, 13})
 final class n
   extends t
 {
-  public static final h cxK;
+  public static final h cyr;
   
   static
   {
     AppMethodBeat.i(140124);
-    cxK = new n();
+    cyr = new n();
     AppMethodBeat.o(140124);
   }
   
-  public final String Hu()
+  public final String HC()
   {
     return "getEnable_2d()Z";
   }
   
-  public final d Hv()
+  public final d HD()
   {
     AppMethodBeat.i(140125);
     b localb = z.bp(MBRuntime.MBParams.class);
@@ -56,7 +56,7 @@ final class n
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.magicbrush.n
  * JD-Core Version:    0.7.0.1
  */

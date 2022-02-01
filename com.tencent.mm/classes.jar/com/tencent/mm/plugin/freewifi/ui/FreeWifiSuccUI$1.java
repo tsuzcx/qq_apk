@@ -16,9 +16,9 @@ final class FreeWifiSuccUI$1
     AppMethodBeat.i(25145);
     b localb = new b();
     localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/freewifi/ui/FreeWifiSuccUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-    this.tqZ.finish();
-    FreeWifiSuccUI.a(this.tqZ);
+    a.b("com/tencent/mm/plugin/freewifi/ui/FreeWifiSuccUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+    this.tBQ.finish();
+    FreeWifiSuccUI.a(this.tBQ);
     a.a(this, "com/tencent/mm/plugin/freewifi/ui/FreeWifiSuccUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(25145);
   }

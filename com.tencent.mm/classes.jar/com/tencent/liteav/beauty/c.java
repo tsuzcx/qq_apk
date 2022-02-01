@@ -240,16 +240,16 @@ class c
   
   private int A(int paramInt)
   {
-    AppMethodBeat.i(187172);
+    AppMethodBeat.i(221301);
     GLES20.glViewport(0, 0, this.I, this.J);
     paramInt = a(this.Z.q(), paramInt, 0L);
-    AppMethodBeat.o(187172);
+    AppMethodBeat.o(221301);
     return paramInt;
   }
   
   private int a(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(187170);
+    AppMethodBeat.i(221299);
     if (true == this.au) {
       if (this.aW != null)
       {
@@ -260,7 +260,7 @@ class c
     }
     for (;;)
     {
-      AppMethodBeat.o(187170);
+      AppMethodBeat.o(221299);
       return 0;
       if (this.aR != null)
       {
@@ -295,7 +295,7 @@ class c
             if (localByteBuffer == null)
             {
               TXCLog.e("TXCFilterDrawer", "glMapBufferRange is null");
-              AppMethodBeat.o(187170);
+              AppMethodBeat.o(221299);
               return -1;
             }
           }
@@ -317,7 +317,7 @@ class c
   
   private int a(int paramInt, long paramLong)
   {
-    AppMethodBeat.i(187169);
+    AppMethodBeat.i(221298);
     if (this.W == 0) {
       if (this.aW != null)
       {
@@ -331,7 +331,7 @@ class c
     for (;;)
     {
       this.aW.a(paramInt, this.P, this.Q, paramLong);
-      AppMethodBeat.o(187169);
+      AppMethodBeat.o(221298);
       return paramInt;
       if ((1 == this.W) || (3 == this.W) || (2 == this.W))
       {
@@ -339,7 +339,7 @@ class c
         if (this.aa == null)
         {
           TXCLog.e("TXCFilterDrawer", "mRGBA2I420Filter is null!");
-          AppMethodBeat.o(187169);
+          AppMethodBeat.o(221298);
           return paramInt;
         }
         GLES20.glBindFramebuffer(36160, this.b[0]);
@@ -350,20 +350,20 @@ class c
         for (;;)
         {
           GLES20.glBindFramebuffer(36160, 0);
-          AppMethodBeat.o(187169);
+          AppMethodBeat.o(221298);
           return paramInt;
           a(this.P, this.Q * 3 / 8);
         }
       }
       TXCLog.e("TXCFilterDrawer", "Don't support format!");
-      AppMethodBeat.o(187169);
+      AppMethodBeat.o(221298);
       return -1;
     }
   }
   
   private void a(int paramInt1, int paramInt2, float paramFloat1, Bitmap paramBitmap1, float paramFloat2, Bitmap paramBitmap2, float paramFloat3)
   {
-    AppMethodBeat.i(187181);
+    AppMethodBeat.i(221310);
     if (this.ak == null)
     {
       TXCLog.i("TXCFilterDrawer", "createComLooKupFilter");
@@ -372,17 +372,17 @@ class c
       {
         this.ak.a(true);
         this.ak.a(paramInt1, paramInt2);
-        AppMethodBeat.o(187181);
+        AppMethodBeat.o(221310);
         return;
       }
       TXCLog.e("TXCFilterDrawer", "mLookupFilterGroup init failed!");
     }
-    AppMethodBeat.o(187181);
+    AppMethodBeat.o(221310);
   }
   
   private void a(int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(187180);
+    AppMethodBeat.i(221309);
     TXCLog.i("TXCFilterDrawer", "create Beauty Filter!");
     if (paramInt3 == 0)
     {
@@ -394,7 +394,7 @@ class c
     while (this.ab == null)
     {
       TXCLog.e("TXCFilterDrawer", "mBeautyFilter set error!");
-      AppMethodBeat.o(187180);
+      AppMethodBeat.o(221309);
       return;
       if (1 == paramInt3)
       {
@@ -426,14 +426,14 @@ class c
       if (this.aD > 0)
       {
         this.ab.f(this.aD);
-        AppMethodBeat.o(187180);
+        AppMethodBeat.o(221309);
       }
     }
     else
     {
       TXCLog.e("TXCFilterDrawer", "mBeautyFilter init failed!");
     }
-    AppMethodBeat.o(187180);
+    AppMethodBeat.o(221309);
   }
   
   /* Error */
@@ -544,7 +544,7 @@ class c
   
   private void a(com.tencent.liteav.basic.d.a parama, int paramInt1, int paramInt2, int paramInt3, int paramInt4, boolean paramBoolean, int paramInt5, int paramInt6)
   {
-    AppMethodBeat.i(187167);
+    AppMethodBeat.i(221296);
     if (this.aq == null)
     {
       TXCLog.i("TXCFilterDrawer", "Create CropFilter");
@@ -575,7 +575,7 @@ class c
         paramInt4 = paramInt3;
       }
       this.aq.a(paramInt1, paramInt2, paramInt6, parama, paramInt5 / paramInt4, paramBoolean, false);
-      AppMethodBeat.o(187167);
+      AppMethodBeat.o(221296);
       return;
       this.aq = new l();
       break;
@@ -586,18 +586,18 @@ class c
   
   private void a(Runnable paramRunnable)
   {
-    AppMethodBeat.i(187183);
+    AppMethodBeat.i(221312);
     synchronized (this.at)
     {
       this.at.add(paramRunnable);
-      AppMethodBeat.o(187183);
+      AppMethodBeat.o(221312);
       return;
     }
   }
   
   private void a(Queue<Runnable> paramQueue)
   {
-    AppMethodBeat.i(187184);
+    AppMethodBeat.i(221313);
     for (;;)
     {
       Runnable localRunnable = null;
@@ -612,25 +612,25 @@ class c
       }
       finally
       {
-        AppMethodBeat.o(187184);
+        AppMethodBeat.o(221313);
       }
     }
-    AppMethodBeat.o(187184);
+    AppMethodBeat.o(221313);
   }
   
   private void a(byte[] paramArrayOfByte, boolean paramBoolean)
   {
-    AppMethodBeat.i(187171);
+    AppMethodBeat.i(221300);
     if (!paramBoolean)
     {
       if (this.aW != null)
       {
         this.aW.a(paramArrayOfByte, this.P, this.Q, this.W, TXCTimeUtil.generatePtsMS());
-        AppMethodBeat.o(187171);
+        AppMethodBeat.o(221300);
         return;
       }
       TXCLog.i("TXCFilterDrawer", "First Frame, don't process!");
-      AppMethodBeat.o(187171);
+      AppMethodBeat.o(221300);
       return;
     }
     int i1 = this.Q * 3 / 8;
@@ -643,30 +643,30 @@ class c
       if (true == NativeLoad.nativeGlReadPixsFromQueue(this.P, i1, this.aO))
       {
         this.aW.a(this.aO, this.P, this.Q, this.W, TXCTimeUtil.generatePtsMS());
-        AppMethodBeat.o(187171);
+        AppMethodBeat.o(221300);
         return;
       }
       TXCLog.d("TXCFilterDrawer", "nativeGlReadPixsFromQueue Failed");
       this.aW.a(paramArrayOfByte, this.P, this.Q, this.W, TXCTimeUtil.generatePtsMS());
-      AppMethodBeat.o(187171);
+      AppMethodBeat.o(221300);
       return;
     }
     NativeLoad.getInstance();
     if (!NativeLoad.nativeGlReadPixsFromQueue(this.P, i1, this.aR)) {
       TXCLog.d("TXCFilterDrawer", "nativeGlReadPixsFromQueue Failed");
     }
-    AppMethodBeat.o(187171);
+    AppMethodBeat.o(221300);
   }
   
   private void a(int[] paramArrayOfInt1, int[] paramArrayOfInt2, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(187177);
+    AppMethodBeat.i(221306);
     GLES20.glGenFramebuffers(1, paramArrayOfInt1, 0);
     paramArrayOfInt2[0] = com.tencent.liteav.basic.d.j.a(paramInt1, paramInt2, 6408, 6408, paramArrayOfInt2);
     GLES20.glBindFramebuffer(36160, paramArrayOfInt1[0]);
     GLES20.glFramebufferTexture2D(36160, 36064, 3553, paramArrayOfInt2[0], 0);
     GLES20.glBindFramebuffer(36160, 0);
-    AppMethodBeat.o(187177);
+    AppMethodBeat.o(221306);
   }
   
   private void b()
@@ -746,7 +746,7 @@ class c
   
   private void b(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(187182);
+    AppMethodBeat.i(221311);
     if (this.as == null)
     {
       TXCLog.i("TXCFilterDrawer", "createRecoverScaleFilter");
@@ -761,7 +761,7 @@ class c
       if (this.as != null) {
         this.as.a(paramInt1, paramInt2);
       }
-      AppMethodBeat.o(187182);
+      AppMethodBeat.o(221311);
       return;
       label74:
       TXCLog.e("TXCFilterDrawer", "mRecoverScaleFilter init failed!");
@@ -770,15 +770,15 @@ class c
   
   private void b(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(187173);
+    AppMethodBeat.i(221302);
     if (this.Z == null)
     {
       TXCLog.e("TXCFilterDrawer", "mI4202RGBAFilter is null!");
-      AppMethodBeat.o(187173);
+      AppMethodBeat.o(221302);
       return;
     }
     this.Z.a(paramArrayOfByte);
-    AppMethodBeat.o(187173);
+    AppMethodBeat.o(221302);
   }
   
   private void c()
@@ -805,7 +805,7 @@ class c
   
   private boolean c(d.b paramb)
   {
-    AppMethodBeat.i(187175);
+    AppMethodBeat.i(221304);
     TXCLog.i("TXCFilterDrawer", "come into initInternal");
     b();
     this.au = paramb.j;
@@ -880,7 +880,7 @@ class c
       TXCLog.i("TXCFilterDrawer", "opengl es 3.0, use PBO");
       com.tencent.liteav.basic.d.j.a(i2, i3, this.aP);
       TXCLog.i("TXCFilterDrawer", "come out initInternal");
-      AppMethodBeat.o(187175);
+      AppMethodBeat.o(221304);
       return true;
       label593:
       i1 = this.L;
@@ -898,7 +898,7 @@ class c
   
   private boolean d(d.b paramb)
   {
-    AppMethodBeat.i(187178);
+    AppMethodBeat.i(221307);
     if (((1 == paramb.k) || (3 == paramb.k) || (2 == paramb.k)) && (this.Z == null))
     {
       this.Z = new k(paramb.k);
@@ -906,7 +906,7 @@ class c
       if (!this.Z.a())
       {
         TXCLog.e("TXCFilterDrawer", "mI4202RGBAFilter init failed!!, break init");
-        AppMethodBeat.o(187178);
+        AppMethodBeat.o(221307);
         return false;
       }
       this.Z.a(paramb.d, paramb.e);
@@ -917,18 +917,18 @@ class c
       if (!this.aa.a())
       {
         TXCLog.e("TXCFilterDrawer", "mRGBA2I420Filter init failed!!, break init");
-        AppMethodBeat.o(187178);
+        AppMethodBeat.o(221307);
         return false;
       }
       this.aa.a(paramb.b, paramb.c);
     }
-    AppMethodBeat.o(187178);
+    AppMethodBeat.o(221307);
     return true;
   }
   
   public int a(int paramInt1, int paramInt2, long paramLong)
   {
-    AppMethodBeat.i(187165);
+    AppMethodBeat.i(221294);
     a(this.at);
     int i1;
     if (this.O != 1.0F)
@@ -1015,7 +1015,7 @@ class c
           paramInt1 = this.ap.b(paramInt2);
         }
         a(paramInt1, paramLong);
-        AppMethodBeat.o(187165);
+        AppMethodBeat.o(221294);
         return paramInt1;
         i1 = 0;
         break;
@@ -1027,7 +1027,7 @@ class c
   
   public int a(byte[] paramArrayOfByte, int paramInt)
   {
-    AppMethodBeat.i(187166);
+    AppMethodBeat.i(221295);
     a(paramArrayOfByte);
     if (!this.au)
     {
@@ -1045,7 +1045,7 @@ class c
     }
     for (paramInt = -1;; paramInt = A(paramInt))
     {
-      AppMethodBeat.o(187166);
+      AppMethodBeat.o(221295);
       return paramInt;
       b(paramArrayOfByte);
     }
@@ -1053,7 +1053,7 @@ class c
   
   public void a()
   {
-    AppMethodBeat.i(187174);
+    AppMethodBeat.i(221303);
     if (!this.au)
     {
       if (this.ay == null) {
@@ -1063,18 +1063,18 @@ class c
       try
       {
         this.d.b();
-        AppMethodBeat.o(187174);
+        AppMethodBeat.o(221303);
         return;
       }
       catch (InterruptedException localInterruptedException)
       {
-        AppMethodBeat.o(187174);
+        AppMethodBeat.o(221303);
         return;
       }
     }
     b();
     label57:
-    AppMethodBeat.o(187174);
+    AppMethodBeat.o(221303);
   }
   
   public void a(final float paramFloat)
@@ -1085,11 +1085,11 @@ class c
     {
       public void run()
       {
-        AppMethodBeat.i(187066);
+        AppMethodBeat.i(221195);
         if (c.a(c.this) != null) {
           c.a(c.this).a(paramFloat);
         }
-        AppMethodBeat.o(187066);
+        AppMethodBeat.o(221195);
       }
     });
     AppMethodBeat.o(15255);
@@ -1097,7 +1097,7 @@ class c
   
   public void a(final float paramFloat1, final Bitmap paramBitmap1, final float paramFloat2, final Bitmap paramBitmap2, final float paramFloat3)
   {
-    AppMethodBeat.i(187179);
+    AppMethodBeat.i(221308);
     if ((this.af != paramBitmap1) || (this.ag != paramBitmap2))
     {
       this.af = paramBitmap1;
@@ -1109,7 +1109,7 @@ class c
       {
         public void run()
         {
-          AppMethodBeat.i(187193);
+          AppMethodBeat.i(221322);
           if (c.a(c.this) != null) {
             a.a().e();
           }
@@ -1119,7 +1119,7 @@ class c
             {
               c.a(c.this).d();
               c.a(c.this, null);
-              AppMethodBeat.o(187193);
+              AppMethodBeat.o(221322);
             }
           }
           else
@@ -1127,15 +1127,15 @@ class c
             if (c.a(c.this) == null)
             {
               c.a(c.this, c.f(c.this), c.g(c.this), c.j(c.this), c.h(c.this), c.k(c.this), c.i(c.this), c.l(c.this));
-              AppMethodBeat.o(187193);
+              AppMethodBeat.o(221322);
               return;
             }
             c.a(c.this).a(paramFloat1, paramBitmap1, paramFloat2, paramBitmap2, paramFloat3);
           }
-          AppMethodBeat.o(187193);
+          AppMethodBeat.o(221322);
         }
       });
-      AppMethodBeat.o(187179);
+      AppMethodBeat.o(221308);
       return;
     }
     if ((this.ak != null) && ((this.ah != paramFloat1) || (this.ai != paramFloat2) || (this.aj != paramFloat3)))
@@ -1147,13 +1147,13 @@ class c
       {
         public void run()
         {
-          AppMethodBeat.i(187067);
+          AppMethodBeat.i(221196);
           c.a(c.this).a(paramFloat1, paramFloat2, paramFloat3);
-          AppMethodBeat.o(187067);
+          AppMethodBeat.o(221196);
         }
       });
     }
-    AppMethodBeat.o(187179);
+    AppMethodBeat.o(221308);
   }
   
   public void a(int paramInt) {}
@@ -1184,7 +1184,7 @@ class c
     {
       public void run()
       {
-        AppMethodBeat.i(187192);
+        AppMethodBeat.i(221321);
         if (paramBitmap != null) {
           a.a().g();
         }
@@ -1195,7 +1195,7 @@ class c
             c.b(c.this).d();
             c.a(c.this, null);
           }
-          AppMethodBeat.o(187192);
+          AppMethodBeat.o(221321);
           return;
         }
         if (c.b(c.this) == null)
@@ -1203,7 +1203,7 @@ class c
           if ((c.c(c.this) <= 0) || (c.d(c.this) <= 0))
           {
             TXCLog.e("TXCFilterDrawer", "output Width and Height is error!");
-            AppMethodBeat.o(187192);
+            AppMethodBeat.o(221321);
             return;
           }
           c.a(c.this, new x());
@@ -1213,14 +1213,14 @@ class c
             TXCLog.e("TXCFilterDrawer", "mWatermarkFilter.init failed!");
             c.b(c.this).d();
             c.a(c.this, null);
-            AppMethodBeat.o(187192);
+            AppMethodBeat.o(221321);
             return;
           }
           c.b(c.this).a(c.c(c.this), c.d(c.this));
         }
         c.b(c.this).c(true);
         c.b(c.this).a(paramBitmap, paramFloat1, paramFloat2, paramFloat3);
-        AppMethodBeat.o(187192);
+        AppMethodBeat.o(221321);
       }
     });
     AppMethodBeat.o(15221);
@@ -1260,9 +1260,9 @@ class c
     {
       public void run()
       {
-        AppMethodBeat.i(187071);
+        AppMethodBeat.i(221200);
         c.a(c.this, paramBoolean);
-        AppMethodBeat.o(187071);
+        AppMethodBeat.o(221200);
       }
     });
     AppMethodBeat.o(15217);
@@ -1280,9 +1280,9 @@ class c
     {
       public void run()
       {
-        AppMethodBeat.i(187194);
+        AppMethodBeat.i(221323);
         c.a(c.this, paramArrayOfFloat);
-        AppMethodBeat.o(187194);
+        AppMethodBeat.o(221323);
       }
     });
     AppMethodBeat.o(15216);
@@ -1362,9 +1362,9 @@ class c
     {
       public void run()
       {
-        AppMethodBeat.i(187163);
+        AppMethodBeat.i(221292);
         c.a(c.this, paramInt);
-        AppMethodBeat.o(187163);
+        AppMethodBeat.o(221292);
       }
     });
     AppMethodBeat.o(15226);
@@ -1374,20 +1374,20 @@ class c
   
   public boolean b(d.b paramb)
   {
-    AppMethodBeat.i(187176);
+    AppMethodBeat.i(221305);
     if (!this.au)
     {
       if (this.ay == null)
       {
         TXCLog.e("TXCFilterDrawer", "mThreadHandler is null!");
-        AppMethodBeat.o(187176);
+        AppMethodBeat.o(221305);
         return false;
       }
       this.ay.obtainMessage(5, 0, 0, paramb).sendToTarget();
     }
     for (;;)
     {
-      AppMethodBeat.o(187176);
+      AppMethodBeat.o(221305);
       return true;
       d(paramb);
     }
@@ -1401,14 +1401,14 @@ class c
     {
       public void run()
       {
-        AppMethodBeat.i(187112);
+        AppMethodBeat.i(221241);
         if (paramInt > 0) {
           a.a().b();
         }
         if ((c.e(c.this) != null) && (paramInt >= 0)) {
           c.e(c.this).c(paramInt);
         }
-        AppMethodBeat.o(187112);
+        AppMethodBeat.o(221241);
       }
     });
     AppMethodBeat.o(15228);
@@ -1427,9 +1427,9 @@ class c
     {
       public void run()
       {
-        AppMethodBeat.i(187111);
+        AppMethodBeat.i(221240);
         c.a(c.this, c.f(c.this), c.g(c.this), paramInt);
-        AppMethodBeat.o(187111);
+        AppMethodBeat.o(221240);
       }
     });
     AppMethodBeat.o(15229);
@@ -1443,14 +1443,14 @@ class c
     {
       public void run()
       {
-        AppMethodBeat.i(187113);
+        AppMethodBeat.i(221242);
         if (paramInt > 0) {
           a.a().c();
         }
         if ((c.e(c.this) != null) && (paramInt >= 0)) {
           c.e(c.this).d(paramInt);
         }
-        AppMethodBeat.o(187113);
+        AppMethodBeat.o(221242);
       }
     });
     AppMethodBeat.o(15230);
@@ -1464,14 +1464,14 @@ class c
     {
       public void run()
       {
-        AppMethodBeat.i(187195);
+        AppMethodBeat.i(221324);
         if (paramInt > 0) {
           a.a().f();
         }
         if ((c.e(c.this) != null) && (paramInt >= 0)) {
           c.e(c.this).f(paramInt);
         }
-        AppMethodBeat.o(187195);
+        AppMethodBeat.o(221324);
       }
     });
     AppMethodBeat.o(15231);
@@ -1485,14 +1485,14 @@ class c
     {
       public void run()
       {
-        AppMethodBeat.i(187107);
+        AppMethodBeat.i(221236);
         if (paramInt > 0) {
           a.a().d();
         }
         if ((c.e(c.this) != null) && (paramInt >= 0)) {
           c.e(c.this).e(paramInt);
         }
-        AppMethodBeat.o(187107);
+        AppMethodBeat.o(221236);
       }
     });
     AppMethodBeat.o(15232);
@@ -1624,7 +1624,7 @@ class c
     
     private void a(Object paramObject)
     {
-      AppMethodBeat.i(187062);
+      AppMethodBeat.i(221191);
       TXCLog.i(this.b, "come into InitEGL");
       paramObject = (d.b)paramObject;
       a();
@@ -1634,16 +1634,16 @@ class c
       if (!c.a(c.this, paramObject))
       {
         TXCLog.e(this.b, "initInternal failed!");
-        AppMethodBeat.o(187062);
+        AppMethodBeat.o(221191);
         return;
       }
       TXCLog.i(this.b, "come out InitEGL");
-      AppMethodBeat.o(187062);
+      AppMethodBeat.o(221191);
     }
     
     public void a()
     {
-      AppMethodBeat.i(187063);
+      AppMethodBeat.i(221192);
       TXCLog.i(this.b, "come into releaseEGL");
       if ((c.o(c.this) != null) && (c.o(c.this)[0] > 0))
       {
@@ -1665,7 +1665,7 @@ class c
       NativeLoad.getInstance();
       NativeLoad.nativeDeleteYuv2Yuv();
       TXCLog.i(this.b, "come out releaseEGL");
-      AppMethodBeat.o(187063);
+      AppMethodBeat.o(221192);
     }
     
     /* Error */
@@ -1707,7 +1707,7 @@ class c
     
     public void handleMessage(Message paramMessage)
     {
-      AppMethodBeat.i(187064);
+      AppMethodBeat.i(221193);
       super.handleMessage(paramMessage);
       switch (paramMessage.what)
       {
@@ -1725,7 +1725,7 @@ class c
           }
           finally
           {
-            AppMethodBeat.o(187064);
+            AppMethodBeat.o(221193);
           }
           a(paramMessage.obj);
           c.b(c.this, true);

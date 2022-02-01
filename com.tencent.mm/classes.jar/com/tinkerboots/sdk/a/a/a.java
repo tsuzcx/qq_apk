@@ -10,34 +10,34 @@ import java.util.Map;
 public class a
   implements b
 {
-  public void ah(Map<String, String> paramMap) {}
+  public void an(Map<String, String> paramMap) {}
   
-  public boolean dcC()
+  public boolean dfu()
   {
     AppMethodBeat.i(3437);
     Context localContext = c.getContext();
-    com.tencent.tinker.lib.e.a locala = com.tencent.tinker.lib.e.a.lk(localContext);
+    com.tencent.tinker.lib.e.a locala = com.tencent.tinker.lib.e.a.lq(localContext);
     if (!com.tinkerboots.sdk.b.a.isConnected(localContext))
     {
       ShareTinkerLog.v("Tinker.PatchRequestCallback", "TinkerBootsRequestCallback: beforePatchRequest return false, not connect to internet", new Object[0]);
       AppMethodBeat.o(3437);
       return false;
     }
-    if (com.tencent.tinker.lib.util.b.lm(localContext))
+    if (com.tencent.tinker.lib.util.b.ls(localContext))
     {
       ShareTinkerLog.v("Tinker.PatchRequestCallback", "TinkerBootsRequestCallback: beforePatchRequest return false, tinker service is running", new Object[0]);
       AppMethodBeat.o(3437);
       return false;
     }
-    if (!locala.AEC)
+    if (!locala.AWf)
     {
       ShareTinkerLog.v("Tinker.PatchRequestCallback", "TinkerBootsRequestCallback: beforePatchRequest return false, only request on the main process", new Object[0]);
       AppMethodBeat.o(3437);
       return false;
     }
-    if (d.gdZ())
+    if (d.giC())
     {
-      ShareTinkerLog.v("Tinker.PatchRequestCallback", "TinkerBootsRequestCallback: beforePatchRequest return false, is in ignore channel, current channel:%s", new Object[] { d.gdY() });
+      ShareTinkerLog.v("Tinker.PatchRequestCallback", "TinkerBootsRequestCallback: beforePatchRequest return false, is in ignore channel, current channel:%s", new Object[] { d.giB() });
       AppMethodBeat.o(3437);
       return false;
     }
@@ -45,7 +45,7 @@ public class a
     return true;
   }
   
-  public void dcD() {}
+  public void dfv() {}
 }
 
 

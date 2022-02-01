@@ -4,19 +4,19 @@ import com.tencent.mm.loader.h.a.c;
 import com.tencent.mm.plugin.finder.storage.r;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/loader/FinderLoaderData;", "Lcom/tencent/mm/loader/model/data/ILoaderData;", "getDecodeKey", "", "getMediaType", "Lcom/tencent/mm/plugin/finder/storage/FinderMediaType;", "getPath", "getThumbUrl", "getThumbUrlToken", "getUrl", "getUrlToken", "getUsername", "isLegal", "", "isLocal", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/loader/FinderLoaderData;", "Lcom/tencent/mm/loader/model/data/ILoaderData;", "getDecodeKey", "", "getMediaType", "Lcom/tencent/mm/plugin/finder/storage/FinderMediaType;", "getPath", "getThumbUrl", "getThumbUrlToken", "getUrl", "getUrlToken", "getUsername", "isLegal", "", "isLocal", "plugin-finder_release"})
 public abstract interface k
   extends c
 {
-  public abstract String akW();
+  public abstract String all();
   
-  public abstract String cCA();
+  public abstract r cEj();
   
-  public abstract r cCx();
+  public abstract String cEk();
   
-  public abstract String cCy();
+  public abstract String cEl();
   
-  public abstract String cCz();
+  public abstract String cEm();
   
   public abstract String getPath();
   

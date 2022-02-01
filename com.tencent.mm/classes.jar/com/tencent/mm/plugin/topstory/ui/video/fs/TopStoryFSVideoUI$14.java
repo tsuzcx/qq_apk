@@ -6,7 +6,7 @@ import android.view.View.OnTouchListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 final class TopStoryFSVideoUI$14
   implements View.OnTouchListener
@@ -19,19 +19,19 @@ final class TopStoryFSVideoUI$14
     b localb = new b();
     localb.bd(paramView);
     localb.bd(paramMotionEvent);
-    a.b("com/tencent/mm/plugin/topstory/ui/video/fs/TopStoryFSVideoUI$6", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahq());
-    if (this.Bxi.Bxc.getVisibility() == 0)
+    a.b("com/tencent/mm/plugin/topstory/ui/video/fs/TopStoryFSVideoUI$6", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahF());
+    if (this.BOG.BOA.getVisibility() == 0)
     {
       float f1 = paramMotionEvent.getX();
       float f2 = paramMotionEvent.getY();
-      if (TopStoryFSVideoUI.g(this.Bxi.Bxe, f1, f2))
+      if (TopStoryFSVideoUI.g(this.BOG.BOC, f1, f2))
       {
-        ad.i("MicroMsg.TopStory.TopStoryFSVideoUI", "touch in mContentViewNotFull");
+        ae.i("MicroMsg.TopStory.TopStoryFSVideoUI", "touch in mContentViewNotFull");
         a.a(false, this, "com/tencent/mm/plugin/topstory/ui/video/fs/TopStoryFSVideoUI$6", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
         AppMethodBeat.o(126349);
         return false;
       }
-      this.Bxi.Bxc.setVisibility(8);
+      this.BOG.BOA.setVisibility(8);
     }
     a.a(false, this, "com/tencent/mm/plugin/topstory/ui/video/fs/TopStoryFSVideoUI$6", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
     AppMethodBeat.o(126349);

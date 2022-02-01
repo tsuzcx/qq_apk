@@ -2,11 +2,11 @@ package com.tencent.mm.plugin.vlog.model.effect;
 
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/vlog/model/effect/EffectInfo;", "", "pagPath", "", "icon", "(Ljava/lang/String;Ljava/lang/String;)V", "getIcon", "()Ljava/lang/String;", "setIcon", "(Ljava/lang/String;)V", "getPagPath", "plugin-vlog_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/vlog/model/effect/EffectInfo;", "", "pagPath", "", "icon", "(Ljava/lang/String;Ljava/lang/String;)V", "getIcon", "()Ljava/lang/String;", "setIcon", "(Ljava/lang/String;)V", "getPagPath", "plugin-vlog_release"})
 public final class a
 {
-  public String dDH;
-  public final String xPf;
+  public String dEM;
+  public final String yeY;
 }
 
 

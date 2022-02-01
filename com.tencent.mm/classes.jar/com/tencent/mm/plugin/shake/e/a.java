@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.shake.e;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -9,12 +9,12 @@ import java.util.Map;
 
 public final class a
 {
-  public LinkedList<a> lFr;
+  public LinkedList<a> lJQ;
   
   public a()
   {
     AppMethodBeat.i(28614);
-    this.lFr = new LinkedList();
+    this.lJQ = new LinkedList();
     AppMethodBeat.o(28614);
   }
   
@@ -22,8 +22,8 @@ public final class a
   {
     AppMethodBeat.i(28616);
     a locala = new a(paramInt);
-    locala.title = bt.nullAsNil((String)paramMap.get(paramString + ".title"));
-    locala.summary = bt.nullAsNil((String)paramMap.get(paramString + ".summary"));
+    locala.title = bu.nullAsNil((String)paramMap.get(paramString + ".title"));
+    locala.summary = bu.nullAsNil((String)paramMap.get(paramString + ".summary"));
     String str = paramString + ".thumburl";
     int i = 0;
     if (i < 100)
@@ -33,10 +33,10 @@ public final class a
       for (Object localObject = Integer.valueOf(i);; localObject = "")
       {
         localObject = (String)paramMap.get(localObject);
-        if (bt.isNullOrNil((String)localObject)) {
+        if (bu.isNullOrNil((String)localObject)) {
           break label197;
         }
-        locala.yQN.add(localObject);
+        locala.zgX.add(localObject);
         i += 1;
         break;
       }
@@ -49,16 +49,16 @@ public final class a
     {
       AppMethodBeat.o(28616);
       return locala;
-      locala.cJt = bt.nullAsNil((String)paramMap.get(paramString + ".h5url.link"));
-      locala.yQO = bt.nullAsNil((String)paramMap.get(paramString + ".h5url.title"));
-      locala.yQP = bt.nullAsNil((String)paramMap.get(paramString + ".h5url.username"));
+      locala.cKc = bu.nullAsNil((String)paramMap.get(paramString + ".h5url.link"));
+      locala.zgY = bu.nullAsNil((String)paramMap.get(paramString + ".h5url.title"));
+      locala.zgZ = bu.nullAsNil((String)paramMap.get(paramString + ".h5url.username"));
       continue;
-      locala.cJt = bt.nullAsNil((String)paramMap.get(paramString + ".bizprofile.username"));
-      locala.yQO = bt.nullAsNil((String)paramMap.get(paramString + ".bizprofile.showchat"));
+      locala.cKc = bu.nullAsNil((String)paramMap.get(paramString + ".bizprofile.username"));
+      locala.zgY = bu.nullAsNil((String)paramMap.get(paramString + ".bizprofile.showchat"));
       continue;
-      locala.cJt = bt.nullAsNil((String)paramMap.get(paramString + ".nativepay.wx_pay_url"));
+      locala.cKc = bu.nullAsNil((String)paramMap.get(paramString + ".nativepay.wx_pay_url"));
       continue;
-      locala.cJt = bt.nullAsNil((String)paramMap.get(paramString + ".product.product_id"));
+      locala.cKc = bu.nullAsNil((String)paramMap.get(paramString + ".product.product_id"));
     }
   }
   
@@ -95,7 +95,7 @@ public final class a
       for (localObject1 = Integer.valueOf(k);; localObject1 = "")
       {
         localObject3 = localObject1;
-        if (!bt.isNullOrNil((String)paramMap.get((String)localObject3 + ".type"))) {
+        if (!bu.isNullOrNil((String)paramMap.get((String)localObject3 + ".type"))) {
           break label224;
         }
         if (i == 0) {
@@ -107,7 +107,7 @@ public final class a
         break;
       }
       label200:
-      locala1.lFr = ((LinkedList)localObject2);
+      locala1.lJQ = ((LinkedList)localObject2);
       i = 1;
     }
     label209:
@@ -129,8 +129,8 @@ public final class a
             break label424;
           }
           localObject1 = new a(m);
-          ((a)localObject1).cJt = bt.nullAsNil((String)paramMap.get((String)localObject3 + ".comment.id"));
-          ((a)localObject1).title = bt.nullAsNil((String)paramMap.get((String)localObject3 + ".comment.title"));
+          ((a)localObject1).cKc = bu.nullAsNil((String)paramMap.get((String)localObject3 + ".comment.id"));
+          ((a)localObject1).title = bu.nullAsNil((String)paramMap.get((String)localObject3 + ".comment.title"));
           if (localObject1 != null) {
             ((LinkedList)localObject2).add(localObject1);
           }
@@ -145,7 +145,7 @@ public final class a
             AppMethodBeat.o(28615);
             return localLinkedList;
           }
-          locala1.lFr = ((LinkedList)localObject2);
+          locala1.lJQ = ((LinkedList)localObject2);
           i = 1;
         }
         break label209;
@@ -167,29 +167,29 @@ public final class a
   
   public static final class a
   {
-    public String cJt;
+    public String cKc;
     public String summary;
     public String title;
     public int type;
-    public List<String> yQN;
-    public String yQO;
-    public String yQP;
+    public List<String> zgX;
+    public String zgY;
+    public String zgZ;
     
     public a()
     {
       AppMethodBeat.i(28612);
-      this.yQN = new ArrayList();
-      this.yQO = "";
-      this.yQP = "";
+      this.zgX = new ArrayList();
+      this.zgY = "";
+      this.zgZ = "";
       AppMethodBeat.o(28612);
     }
     
     public a(int paramInt)
     {
       AppMethodBeat.i(28613);
-      this.yQN = new ArrayList();
-      this.yQO = "";
-      this.yQP = "";
+      this.zgX = new ArrayList();
+      this.zgY = "";
+      this.zgZ = "";
       this.type = paramInt;
       AppMethodBeat.o(28613);
     }

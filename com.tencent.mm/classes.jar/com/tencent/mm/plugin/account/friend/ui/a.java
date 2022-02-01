@@ -8,21 +8,21 @@ import com.tencent.mm.g.c.aw;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.messenger.foundation.a.l;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.am;
-import com.tencent.mm.storage.bp;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.an;
+import com.tencent.mm.storage.bq;
 import java.util.LinkedList;
 
 public final class a
   implements View.OnClickListener
 {
   private Context context;
-  private a jfo;
+  private a jih;
   
   public a(Context paramContext, a parama)
   {
     this.context = paramContext;
-    this.jfo = parama;
+    this.jih = parama;
   }
   
   public final void onClick(final View paramView)
@@ -30,14 +30,14 @@ public final class a
     AppMethodBeat.i(131173);
     Object localObject = new b();
     ((b)localObject).bd(paramView);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/account/friend/ui/AddContactListener", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahq());
+    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/account/friend/ui/AddContactListener", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahF());
     localObject = (b)paramView.getTag();
     paramView = ((b)localObject).username;
-    int i = ((b)localObject).jfq;
+    int i = ((b)localObject).jij;
     final int j = ((b)localObject).position;
-    localObject = ((l)g.ab(l.class)).azp().Bf(paramView);
-    if (bt.isNullOrNil(((aw)localObject).field_username)) {
-      ((am)localObject).setUsername(paramView);
+    localObject = ((l)g.ab(l.class)).azF().BH(paramView);
+    if (bu.isNullOrNil(((aw)localObject).field_username)) {
+      ((an)localObject).setUsername(paramView);
     }
     localObject = new com.tencent.mm.pluginsdk.ui.applet.a(this.context, new com.tencent.mm.pluginsdk.ui.applet.a.a()
     {
@@ -46,8 +46,8 @@ public final class a
         AppMethodBeat.i(131172);
         if (paramAnonymousBoolean1)
         {
-          a.I(this.fSV);
-          a.a(a.this).JM(paramView);
+          a.P(this.fVb);
+          a.a(a.this).Kl(paramView);
           AppMethodBeat.o(131172);
           return;
         }
@@ -64,14 +64,14 @@ public final class a
   
   public static abstract interface a
   {
-    public abstract void JM(String paramString);
+    public abstract void Kl(String paramString);
     
     public abstract void ab(String paramString, boolean paramBoolean);
   }
   
   public static final class b
   {
-    public int jfq;
+    public int jij;
     public int position;
     public String username;
   }

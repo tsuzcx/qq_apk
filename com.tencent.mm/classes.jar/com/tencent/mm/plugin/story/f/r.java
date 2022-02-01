@@ -12,7 +12,7 @@ import android.support.v4.app.Fragment;
 import android.view.View;
 import android.view.ViewGroup;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cc.a;
+import com.tencent.mm.cb.a;
 import com.tencent.mm.particles.c;
 import com.tencent.mm.particles.d;
 import com.tencent.mm.plugin.story.api.AbsStoryGallery;
@@ -24,9 +24,9 @@ import com.tencent.mm.plugin.story.ui.album.StoryAlbumUI;
 import com.tencent.mm.plugin.story.ui.view.StoryHeaderTipView;
 import com.tencent.mm.plugin.story.ui.view.StoryMuteView;
 import com.tencent.mm.plugin.story.ui.view.gallery.StoryGalleryView;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.storage.cc;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.storage.cd;
 import com.tencent.mm.ui.MMFragment;
 import d.a.j;
 import d.g.b.p;
@@ -40,28 +40,28 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/story/model/StoryUIFactory;", "Lcom/tencent/mm/plugin/story/api/IStoryUIFactory;", "()V", "CONFETTI_WIDTH_DP", "", "TAG", "", "VIVO_COMPATIBLE_LIST", "", "confettiManagers", "Ljava/util/HashMap;", "Landroid/view/View;", "Lcom/tencent/mm/particles/ConfettiManager;", "Lkotlin/collections/HashMap;", "mRunningConfetti", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "printLog", "", "unreadConfettiGenerator", "Lcom/tencent/mm/particles/ConfettiGenerator;", "bindUnreadBubbleConfetti", "", "parentView", "Landroid/view/ViewGroup;", "anchor", "offsetX", "offsetY", "genCompatibleBubble", "Landroid/graphics/Bitmap;", "getStoryGallery", "Lcom/tencent/mm/plugin/story/api/AbsStoryGallery;", "context", "Landroid/content/Context;", "type", "Lcom/tencent/mm/plugin/story/api/IStoryUIFactory$GalleryType;", "chatRoom", "getStoryHeaderTipView", "Lcom/tencent/mm/plugin/story/api/AbsStoryHeaderTipView;", "getStoryHintDrawable", "Landroid/graphics/drawable/Drawable;", "highLight", "getStoryHintProxy", "Lcom/tencent/mm/plugin/story/api/IStoryHintProxy;", "getStoryMuteView", "Lcom/tencent/mm/plugin/story/api/AbsStoryMuteView;", "instantiateAlbumFragment", "Lcom/tencent/mm/ui/MMFragment;", "bundle", "Landroid/os/Bundle;", "isInCompatibleList", "lazyInit", "startUnreadBubbleConfetti", "stopUnreadBubbleConfetti", "unbindUnreadBubbleConfetti", "plugin-story_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/story/model/StoryUIFactory;", "Lcom/tencent/mm/plugin/story/api/IStoryUIFactory;", "()V", "CONFETTI_WIDTH_DP", "", "TAG", "", "VIVO_COMPATIBLE_LIST", "", "confettiManagers", "Ljava/util/HashMap;", "Landroid/view/View;", "Lcom/tencent/mm/particles/ConfettiManager;", "Lkotlin/collections/HashMap;", "mRunningConfetti", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "printLog", "", "unreadConfettiGenerator", "Lcom/tencent/mm/particles/ConfettiGenerator;", "bindUnreadBubbleConfetti", "", "parentView", "Landroid/view/ViewGroup;", "anchor", "offsetX", "offsetY", "genCompatibleBubble", "Landroid/graphics/Bitmap;", "getStoryGallery", "Lcom/tencent/mm/plugin/story/api/AbsStoryGallery;", "context", "Landroid/content/Context;", "type", "Lcom/tencent/mm/plugin/story/api/IStoryUIFactory$GalleryType;", "chatRoom", "getStoryHeaderTipView", "Lcom/tencent/mm/plugin/story/api/AbsStoryHeaderTipView;", "getStoryHintDrawable", "Landroid/graphics/drawable/Drawable;", "highLight", "getStoryHintProxy", "Lcom/tencent/mm/plugin/story/api/IStoryHintProxy;", "getStoryMuteView", "Lcom/tencent/mm/plugin/story/api/AbsStoryMuteView;", "instantiateAlbumFragment", "Lcom/tencent/mm/ui/MMFragment;", "bundle", "Landroid/os/Bundle;", "isInCompatibleList", "lazyInit", "startUnreadBubbleConfetti", "stopUnreadBubbleConfetti", "unbindUnreadBubbleConfetti", "plugin-story_release"})
 public final class r
   implements com.tencent.mm.plugin.story.api.n
 {
-  private static com.tencent.mm.particles.b AKU;
-  private static HashMap<View, c> AKV;
-  private static ArrayList<c> AKW;
-  private static int AKX = 0;
-  private static boolean AKY = false;
-  private static final List<String> AKZ;
-  public static final r ALa;
+  private static int BcA = 0;
+  private static boolean BcB = false;
+  private static final List<String> BcC;
+  public static final r BcD;
+  private static com.tencent.mm.particles.b Bcx;
+  private static HashMap<View, c> Bcy;
+  private static ArrayList<c> Bcz;
   private static final String TAG = "MicroMsg.StoryUIFactory";
   
   static
   {
     AppMethodBeat.i(118788);
-    ALa = new r();
+    BcD = new r();
     TAG = "MicroMsg.StoryUIFactory";
-    AKV = new HashMap();
-    AKW = new ArrayList();
-    AKY = true;
-    AKZ = j.listOf(new String[] { "y83a", "v1732a", " y83", "v1732t" });
+    Bcy = new HashMap();
+    Bcz = new ArrayList();
+    BcB = true;
+    BcC = j.listOf(new String[] { "y83a", "v1732a", " y83", "v1732t" });
     AppMethodBeat.o(118788);
   }
   
@@ -84,16 +84,16 @@ public final class r
     y.f localf;
     Object localObject1;
     int i;
-    if (AKU == null)
+    if (Bcx == null)
     {
-      AKX = a.fromDPToPix(aj.getContext(), 8);
+      BcA = a.fromDPToPix(ak.getContext(), 8);
       localf = new y.f();
-      if (AKY)
+      if (BcB)
       {
-        ad.i(TAG, "isInCompatibleList " + Build.BRAND + "  config " + cc.fsJ() + ' ');
-        AKY = false;
+        ae.i(TAG, "isInCompatibleList " + Build.BRAND + "  config " + cd.fwK() + ' ');
+        BcB = false;
       }
-      Object localObject2 = (Iterable)AKZ;
+      Object localObject2 = (Iterable)BcC;
       localObject1 = (Collection)new ArrayList();
       localObject2 = ((Iterable)localObject2).iterator();
       label221:
@@ -129,16 +129,16 @@ public final class r
       if (i == 0) {
         break label519;
       }
-      localObject1 = aj.getContext();
+      localObject1 = ak.getContext();
       p.g(localObject1, "MMApplicationContext.getContext()");
       localObject1 = BitmapFactory.decodeResource(((Context)localObject1).getResources(), 2131234240);
       p.g(localObject1, "BitmapFactory.decodeReso…ble.story_comment_bubble)");
     }
     for (;;)
     {
-      localf.MLV = localObject1;
-      AKU = (com.tencent.mm.particles.b)new a(localf);
-      if (!AKV.containsKey(paramView))
+      localf.NiY = localObject1;
+      Bcx = (com.tencent.mm.particles.b)new r.a(localf);
+      if (!Bcy.containsKey(paramView))
       {
         localObject1 = new int[2];
         Object tmp345_343 = localObject1;
@@ -147,12 +147,12 @@ public final class r
         tmp349_345[1] = 0;
         tmp349_345;
         paramView.getLocationOnScreen((int[])localObject1);
-        i = localObject1[0] + paramView.getWidth() / 2 - AKX / 2 + 0;
+        i = localObject1[0] + paramView.getWidth() / 2 - BcA / 2 + 0;
         paramInt = localObject1[1] + paramInt;
-        ad.d(TAG, "bindUnreadBubbleConfetti containerMiddleX=" + i + " containerMiddleY=" + paramInt);
+        ae.d(TAG, "bindUnreadBubbleConfetti containerMiddleX=" + i + " containerMiddleY=" + paramInt);
         localObject1 = new d(i, paramInt);
-        paramViewGroup = new c(aj.getContext(), AKU, (d)localObject1, paramViewGroup).aPD().ao(8.0F).C(0.0F, 15.0F).D(-60.0F, 10.0F).sx(1500L);
-        localObject1 = (Map)AKV;
+        paramViewGroup = new c(ak.getContext(), Bcx, (d)localObject1, paramViewGroup).aQc().ao(8.0F).C(0.0F, 15.0F).D(-60.0F, 10.0F).sK(1500L);
+        localObject1 = (Map)Bcy;
         p.g(paramViewGroup, "manager");
         ((Map)localObject1).put(paramView, paramViewGroup);
       }
@@ -162,47 +162,27 @@ public final class r
       i = 0;
       break;
       label519:
-      localObject1 = aj.getContext();
+      localObject1 = ak.getContext();
       p.g(localObject1, "MMApplicationContext.getContext()");
       localObject1 = BitmapFactory.decodeResource(((Context)localObject1).getResources(), 2131234240);
-      i = AKX;
+      i = BcA;
       localObject1 = Bitmap.createScaledBitmap((Bitmap)localObject1, i, i, true);
     }
   }
   
   public final void fA(View paramView)
   {
-    AppMethodBeat.i(118786);
-    p.h(paramView, "anchor");
-    ad.d(TAG, "startUnreadBubbleConfetti mRunningConfetti=" + AKW);
-    paramView = (c)AKV.get(paramView);
-    if (paramView != null)
-    {
-      if (!AKW.contains(paramView))
-      {
-        ad.d(TAG, "startUnreadBubbleConfetti");
-        paramView.aPH();
-        AKW.add(paramView);
-      }
-      AppMethodBeat.o(118786);
-      return;
-    }
-    AppMethodBeat.o(118786);
-  }
-  
-  public final void fB(View paramView)
-  {
     AppMethodBeat.i(118787);
     p.h(paramView, "anchor");
-    ad.d(TAG, "stopUnreadBubbleConfetti mRunningConfetti=" + AKW);
-    paramView = (c)AKV.get(paramView);
+    ae.d(TAG, "stopUnreadBubbleConfetti mRunningConfetti=" + Bcz);
+    paramView = (c)Bcy.get(paramView);
     if (paramView != null)
     {
-      if (AKW.contains(paramView))
+      if (Bcz.contains(paramView))
       {
-        ad.l(TAG, "stopUnreadBubbleConfetti", new Object[0]);
-        paramView.aPI();
-        AKW.remove(paramView);
+        ae.l(TAG, "stopUnreadBubbleConfetti", new Object[0]);
+        paramView.aQh();
+        Bcz.remove(paramView);
       }
       AppMethodBeat.o(118787);
       return;
@@ -210,17 +190,37 @@ public final class r
     AppMethodBeat.o(118787);
   }
   
-  public final void fz(View paramView)
+  public final void fy(View paramView)
   {
     AppMethodBeat.i(118785);
     p.h(paramView, "anchor");
-    if (AKV.containsKey(paramView)) {
-      AKV.remove(paramView);
+    if (Bcy.containsKey(paramView)) {
+      Bcy.remove(paramView);
     }
     AppMethodBeat.o(118785);
   }
   
-  public final AbsStoryMuteView gr(Context paramContext)
+  public final void fz(View paramView)
+  {
+    AppMethodBeat.i(118786);
+    p.h(paramView, "anchor");
+    ae.d(TAG, "startUnreadBubbleConfetti mRunningConfetti=" + Bcz);
+    paramView = (c)Bcy.get(paramView);
+    if (paramView != null)
+    {
+      if (!Bcz.contains(paramView))
+      {
+        ae.d(TAG, "startUnreadBubbleConfetti");
+        paramView.aQg();
+        Bcz.add(paramView);
+      }
+      AppMethodBeat.o(118786);
+      return;
+    }
+    AppMethodBeat.o(118786);
+  }
+  
+  public final AbsStoryMuteView gw(Context paramContext)
   {
     AppMethodBeat.i(118780);
     AbsStoryMuteView localAbsStoryMuteView = null;
@@ -231,7 +231,7 @@ public final class r
     return localAbsStoryMuteView;
   }
   
-  public final AbsStoryHeaderTipView gs(Context paramContext)
+  public final AbsStoryHeaderTipView gx(Context paramContext)
   {
     AppMethodBeat.i(118781);
     AbsStoryHeaderTipView localAbsStoryHeaderTipView = null;
@@ -242,7 +242,7 @@ public final class r
     return localAbsStoryHeaderTipView;
   }
   
-  public final i gt(Context paramContext)
+  public final i gy(Context paramContext)
   {
     AppMethodBeat.i(118778);
     p.h(paramContext, "context");
@@ -266,33 +266,26 @@ public final class r
     return paramContext;
   }
   
-  public final Drawable sh(boolean paramBoolean)
+  public final Drawable so(boolean paramBoolean)
   {
     AppMethodBeat.i(118783);
     if (paramBoolean) {}
     for (int i = 2131689897;; i = 2131689898)
     {
-      Object localObject = aj.getContext();
+      Object localObject = ak.getContext();
       p.g(localObject, "MMApplicationContext.getContext()");
       localObject = ((Context)localObject).getResources().getDrawable(i);
-      i = a.fromDPToPix(aj.getContext(), 8);
+      i = a.fromDPToPix(ak.getContext(), 8);
       ((Drawable)localObject).setBounds(0, 0, i, i);
       p.g(localObject, "hintDrawable");
       AppMethodBeat.o(118783);
       return localObject;
     }
   }
-  
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "Lcom/tencent/mm/plugin/story/ui/view/CommentTipSmallConfetti;", "it", "Ljava/util/Random;", "kotlin.jvm.PlatformType", "generateConfetti"})
-  static final class a
-    implements com.tencent.mm.particles.b
-  {
-    a(y.f paramf) {}
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.story.f.r
  * JD-Core Version:    0.7.0.1
  */

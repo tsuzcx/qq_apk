@@ -6,15 +6,15 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ak;
 
 public final class a
 {
   private boolean mHasStarted = false;
   private SensorManager mSensorManager;
-  private a rqE;
+  private a ryT;
   
-  public final void cuq()
+  public final void cvR()
   {
     AppMethodBeat.i(104273);
     if (this.mHasStarted)
@@ -24,12 +24,12 @@ public final class a
     }
     this.mHasStarted = true;
     new StringBuilder("lightSensor has started:").append(this.mHasStarted);
-    this.mSensorManager = ((SensorManager)aj.getContext().getSystemService("sensor"));
+    this.mSensorManager = ((SensorManager)ak.getContext().getSystemService("sensor"));
     Sensor localSensor = this.mSensorManager.getDefaultSensor(5);
     if (localSensor != null)
     {
-      this.rqE = new a((byte)0);
-      this.mSensorManager.registerListener(this.rqE, localSensor, 3);
+      this.ryT = new a((byte)0);
+      this.mSensorManager.registerListener(this.ryT, localSensor, 3);
     }
     AppMethodBeat.o(104273);
   }
@@ -37,10 +37,10 @@ public final class a
   public final float getLux()
   {
     AppMethodBeat.i(104274);
-    if (this.rqE != null)
+    if (this.ryT != null)
     {
-      new StringBuilder("Light lux: ").append(a.a(this.rqE));
-      float f = a.a(this.rqE);
+      new StringBuilder("Light lux: ").append(a.a(this.ryT));
+      float f = a.a(this.ryT);
       AppMethodBeat.o(104274);
       return f;
     }
@@ -57,7 +57,7 @@ public final class a
       return;
     }
     this.mHasStarted = false;
-    this.mSensorManager.unregisterListener(this.rqE);
+    this.mSensorManager.unregisterListener(this.ryT);
     AppMethodBeat.o(104275);
   }
   
@@ -82,12 +82,12 @@ public final class a
   
   public static final class b
   {
-    private static a rqG;
+    private static a ryV;
     
     static
     {
       AppMethodBeat.i(104272);
-      rqG = new a((byte)0);
+      ryV = new a((byte)0);
       AppMethodBeat.o(104272);
     }
   }

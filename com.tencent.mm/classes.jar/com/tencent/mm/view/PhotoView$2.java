@@ -19,9 +19,9 @@ final class PhotoView$2
       AppMethodBeat.o(164251);
       return false;
     }
-    PhotoView.c(this.Lqa, PhotoView.f(this.Lqa) * f);
-    PhotoView.d(this.Lqa).postScale(f, f, paramScaleGestureDetector.getFocusX(), paramScaleGestureDetector.getFocusY());
-    PhotoView.g(this.Lqa);
+    PhotoView.c(this.LML, PhotoView.f(this.LML) * f);
+    PhotoView.d(this.LML).postScale(f, f, paramScaleGestureDetector.getFocusX(), paramScaleGestureDetector.getFocusY());
+    PhotoView.g(this.LML);
     AppMethodBeat.o(164251);
     return true;
   }

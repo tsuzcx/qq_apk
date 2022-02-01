@@ -3,18 +3,18 @@ package com.tencent.mm.plugin.appbrand.jsapi.r;
 import android.view.View;
 import android.view.ViewGroup;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.av.a;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aw.a;
 
 final class d$2$1
-  implements av.a
+  implements aw.a
 {
   d$2$1(d.2 param2, View paramView) {}
   
   public final boolean onTimerExpired()
   {
     AppMethodBeat.i(138265);
-    View localView = this.leU;
+    View localView = this.liG;
     if (localView != null)
     {
       localView.setVisibility(8);
@@ -22,7 +22,7 @@ final class d$2$1
         ((ViewGroup)localView.getParent()).removeView(localView);
       }
     }
-    ad.i("MicroMsg.JsApiShowToast", "on timer expired!");
+    ae.i("MicroMsg.JsApiShowToast", "on timer expired!");
     AppMethodBeat.o(138265);
     return true;
   }

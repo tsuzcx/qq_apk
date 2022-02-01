@@ -1,51 +1,51 @@
 package com.tencent.mm.plugin.facedetect.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.dum;
-import com.tencent.mm.protocal.protobuf.dun;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.dvj;
+import com.tencent.mm.protocal.protobuf.dvk;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class s
   extends n
   implements k, e
 {
   private f callback;
-  private boolean rgp;
+  private boolean ros;
   private b rr;
   
   public s(long paramLong, String paramString1, String paramString2)
   {
     AppMethodBeat.i(103626);
-    this.rgp = false;
+    this.ros = false;
     Object localObject = new b.a();
-    ((b.a)localObject).hNM = new dum();
-    ((b.a)localObject).hNN = new dun();
+    ((b.a)localObject).hQF = new dvj();
+    ((b.a)localObject).hQG = new dvk();
     ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/verifyface";
     ((b.a)localObject).funcId = getType();
-    ((b.a)localObject).hNO = 0;
+    ((b.a)localObject).hQH = 0;
     ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).aDC();
-    localObject = (dum)this.rr.hNK.hNQ;
-    ((dum)localObject).Gvx = paramLong;
-    ((dum)localObject).Hlc = paramString1;
-    ((dum)localObject).Hld = paramString2;
+    this.rr = ((b.a)localObject).aDS();
+    localObject = (dvj)this.rr.hQD.hQJ;
+    ((dvj)localObject).GOW = paramLong;
+    ((dvj)localObject).HEC = paramString1;
+    ((dvj)localObject).HED = paramString2;
     AppMethodBeat.o(103626);
   }
   
-  public final boolean csE()
+  public final boolean cuf()
   {
     return true;
   }
   
-  public final String csF()
+  public final String cug()
   {
     return null;
   }
@@ -67,15 +67,15 @@ public final class s
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(103628);
-    paramq = (dun)((b)paramq).hNL.hNQ;
+    paramq = (dvk)((b)paramq).hQE.hQJ;
     boolean bool;
     if ((paramInt2 == 0) && (paramInt3 == 0)) {
-      if (paramq.Hlf == 0)
+      if (paramq.HEF == 0)
       {
         bool = true;
-        this.rgp = bool;
-        paramInt1 = paramq.Hlf;
-        ad.i("MicroMsg.NetSceneFaceVerifyFace", "hy: is Verified: %b", new Object[] { Boolean.valueOf(this.rgp) });
+        this.ros = bool;
+        paramInt1 = paramq.HEF;
+        ae.i("MicroMsg.NetSceneFaceVerifyFace", "hy: is Verified: %b", new Object[] { Boolean.valueOf(this.ros) });
       }
     }
     for (;;)
@@ -91,10 +91,10 @@ public final class s
       if (paramq != null)
       {
         paramInt1 = paramInt3;
-        if (paramq.Hlf != 0)
+        if (paramq.HEF != 0)
         {
-          ad.i("MicroMsg.NetSceneFaceVerifyFace", "hy: has DetailRet, use it");
-          paramInt1 = paramq.Hlf;
+          ae.i("MicroMsg.NetSceneFaceVerifyFace", "hy: has DetailRet, use it");
+          paramInt1 = paramq.HEF;
         }
       }
     }

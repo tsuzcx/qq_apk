@@ -1,14 +1,15 @@
 package com.tencent.mm.g.a;
 
+import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
-import java.util.List;
+import org.json.JSONArray;
 
 public final class dz
   extends b
 {
-  public a doV;
-  public b doW;
+  public a dpY;
+  public b dpZ;
   
   public dz()
   {
@@ -17,31 +18,29 @@ public final class dz
   
   private dz(byte paramByte)
   {
-    AppMethodBeat.i(115987);
-    this.doV = new a();
-    this.doW = new b();
-    this.IbR = false;
+    AppMethodBeat.i(115986);
+    this.dpY = new a();
+    this.dpZ = new b();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(115987);
+    AppMethodBeat.o(115986);
   }
   
   public static final class a
   {
-    public String doX;
-    public String doY;
-    public String doZ;
-    public long msgId;
+    public Context context;
+    public String dpI;
   }
   
   public static final class b
   {
-    public boolean doF;
-    public List dpa;
+    public boolean dpK;
+    public JSONArray dpX;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.a.dz
  * JD-Core Version:    0.7.0.1
  */

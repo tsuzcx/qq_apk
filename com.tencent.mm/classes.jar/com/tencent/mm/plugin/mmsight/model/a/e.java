@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.mmsight.model.a;
 
 public abstract interface e
 {
-  public abstract boolean dnk();
+  public abstract boolean dqi();
 }
 
 

@@ -9,24 +9,24 @@ import d.l;
 import d.z;
 import kotlinx.coroutines.a.a;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/coroutines/LazyDeferredCoroutine;", "T", "Lkotlinx/coroutines/DeferredCoroutine;", "parentContext", "Lkotlin/coroutines/CoroutineContext;", "block", "Lkotlin/Function2;", "Lkotlinx/coroutines/CoroutineScope;", "Lkotlin/coroutines/Continuation;", "", "Lkotlin/ExtensionFunctionType;", "(Lkotlin/coroutines/CoroutineContext;Lkotlin/jvm/functions/Function2;)V", "continuation", "", "onStart", "kotlinx-coroutines-core"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/coroutines/LazyDeferredCoroutine;", "T", "Lkotlinx/coroutines/DeferredCoroutine;", "parentContext", "Lkotlin/coroutines/CoroutineContext;", "block", "Lkotlin/Function2;", "Lkotlinx/coroutines/CoroutineScope;", "Lkotlin/coroutines/Continuation;", "", "Lkotlin/ExtensionFunctionType;", "(Lkotlin/coroutines/CoroutineContext;Lkotlin/jvm/functions/Function2;)V", "continuation", "", "onStart", "kotlinx-coroutines-core"})
 final class bx<T>
   extends ar<T>
 {
-  private final d<z> NIm;
+  private final d<z> Ofs;
   
   public bx(f paramf, m<? super ah, ? super d<? super T>, ? extends Object> paramm)
   {
     super(paramf, false);
     AppMethodBeat.i(118208);
-    this.NIm = b.a(paramm, this, (d)this);
+    this.Ofs = b.a(paramm, this, (d)this);
     AppMethodBeat.o(118208);
   }
   
   protected final void onStart()
   {
     AppMethodBeat.i(118207);
-    a.a(this.NIm, (d)this);
+    a.a(this.Ofs, (d)this);
     AppMethodBeat.o(118207);
   }
 }

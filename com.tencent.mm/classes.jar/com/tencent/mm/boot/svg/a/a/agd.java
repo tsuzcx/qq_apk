@@ -45,7 +45,7 @@ public final class agd
       c.a((Paint)localObject, paramVarArgs).setStrokeWidth(1.0F);
       localCanvas.save();
       localPaint = c.a(localPaint, paramVarArgs);
-      localPaint.setColor(1275068416);
+      localPaint.setColor(-15616);
       localObject = c.n(paramVarArgs);
       ((Path)localObject).moveTo(18.244925F, 1.64F);
       ((Path)localObject).lineTo(17.855F, 3.27F);

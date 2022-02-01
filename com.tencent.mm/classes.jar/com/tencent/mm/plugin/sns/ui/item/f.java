@@ -6,7 +6,7 @@ import android.view.View;
 import android.view.ViewStub;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.u;
+import com.tencent.mm.model.v;
 import com.tencent.mm.plugin.sns.ui.AsyncTextView;
 import com.tencent.mm.plugin.sns.ui.PhotosContent;
 import com.tencent.mm.plugin.sns.ui.TagImageView;
@@ -17,123 +17,123 @@ import com.tencent.mm.plugin.sns.ui.bi;
 import com.tencent.mm.plugin.sns.ui.d.c;
 import com.tencent.mm.protocal.protobuf.SnsObject;
 import com.tencent.mm.protocal.protobuf.TimeLineObject;
-import com.tencent.mm.protocal.protobuf.byo;
-import com.tencent.mm.protocal.protobuf.dgo;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.storage.bj;
+import com.tencent.mm.protocal.protobuf.bzi;
+import com.tencent.mm.protocal.protobuf.dhi;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.storage.bk;
 import java.util.ArrayList;
 import java.util.List;
 
 public final class f
   extends BaseTimeLineItem
 {
-  private int AaZ = 103;
+  private int Asm = 103;
   
   public final void a(BaseTimeLineItem.BaseViewHolder paramBaseViewHolder, int paramInt1, bi parambi, TimeLineObject paramTimeLineObject, int paramInt2, bh parambh)
   {
     AppMethodBeat.i(100086);
-    Object localObject = parambi.zQD;
-    if (paramBaseViewHolder.Awa != null)
+    Object localObject = parambi.AhK;
+    if (paramBaseViewHolder.ANr != null)
     {
-      if ((!parambi.AmR) || (paramBaseViewHolder.snsobj.SnsRedEnvelops == null) || (paramBaseViewHolder.snsobj.SnsRedEnvelops.HuQ <= 0)) {
+      if ((!parambi.AEf) || (paramBaseViewHolder.snsobj.SnsRedEnvelops == null) || (paramBaseViewHolder.snsobj.SnsRedEnvelops.HOt <= 0)) {
         break label247;
       }
-      paramBaseViewHolder.Awa.setBackgroundResource(2131232446);
+      paramBaseViewHolder.ANr.setBackgroundResource(2131232446);
     }
     int i;
     boolean bool;
     for (;;)
     {
-      TagImageView localTagImageView = paramBaseViewHolder.Avw.Ra(0);
+      TagImageView localTagImageView = paramBaseViewHolder.AMM.RH(0);
       ArrayList localArrayList = new ArrayList();
       localArrayList.add(localTagImageView);
       az localaz = new az();
-      localaz.drH = ((String)localObject);
+      localaz.dsN = ((String)localObject);
       localaz.index = 0;
-      localaz.Ady = localArrayList;
-      localaz.Aae = this.Aae;
+      localaz.AuK = localArrayList;
+      localaz.Arr = this.Arr;
       if (localTagImageView != null) {
         localTagImageView.setTag(localaz);
       }
-      localObject = parambi.Ant;
-      paramBaseViewHolder.zMQ = ((byo)localObject);
+      localObject = parambi.AEG;
+      paramBaseViewHolder.AdX = ((bzi)localObject);
       if (localObject == null) {
         break label465;
       }
-      if (!u.aAm().equals(paramTimeLineObject.nDo)) {
+      if (!v.aAC().equals(paramTimeLineObject.nIJ)) {
         break;
       }
-      paramBaseViewHolder.Avw.setVisibility(0);
-      parambh = parambh.AaN;
-      paramBaseViewHolder = paramBaseViewHolder.Avw;
-      parambi = parambi.zQD;
+      paramBaseViewHolder.AMM.setVisibility(0);
+      parambh = parambh.Asa;
+      paramBaseViewHolder = paramBaseViewHolder.AMM;
+      parambi = parambi.AhK;
       i = this.mActivity.hashCode();
-      bool = this.Aae;
-      localObject = bj.frn();
-      ((bj)localObject).hbR = paramTimeLineObject.CreateTime;
-      parambh.a(paramBaseViewHolder, paramTimeLineObject, parambi, i, paramInt2, paramInt1, bool, (bj)localObject, true);
+      bool = this.Arr;
+      localObject = bk.fvn();
+      ((bk)localObject).heF = paramTimeLineObject.CreateTime;
+      parambh.a(paramBaseViewHolder, paramTimeLineObject, parambi, i, paramInt2, paramInt1, bool, (bk)localObject, true);
       AppMethodBeat.o(100086);
       return;
       label247:
-      paramBaseViewHolder.Awa.setBackgroundResource(2131232445);
+      paramBaseViewHolder.ANr.setBackgroundResource(2131232445);
     }
-    if (parambi.AmU)
+    if (parambi.AEi)
     {
-      paramBaseViewHolder.Avw.setVisibility(0);
-      parambh = parambh.AaN;
-      paramBaseViewHolder = paramBaseViewHolder.Avw;
-      parambi = parambi.zQD;
+      paramBaseViewHolder.AMM.setVisibility(0);
+      parambh = parambh.Asa;
+      paramBaseViewHolder = paramBaseViewHolder.AMM;
+      parambi = parambi.AhK;
       i = this.mActivity.hashCode();
-      bool = this.Aae;
-      localObject = bj.frn();
-      ((bj)localObject).hbR = paramTimeLineObject.CreateTime;
-      parambh.a(paramBaseViewHolder, paramTimeLineObject, parambi, i, paramInt2, paramInt1, bool, (bj)localObject, false);
+      bool = this.Arr;
+      localObject = bk.fvn();
+      ((bk)localObject).heF = paramTimeLineObject.CreateTime;
+      parambh.a(paramBaseViewHolder, paramTimeLineObject, parambi, i, paramInt2, paramInt1, bool, (bk)localObject, false);
       AppMethodBeat.o(100086);
       return;
     }
-    if (((byo)localObject).dNN == 0)
+    if (((bzi)localObject).dPd == 0)
     {
-      paramBaseViewHolder.Avw.setVisibility(0);
-      parambh = parambh.AaN;
-      paramBaseViewHolder = paramBaseViewHolder.Avw;
-      parambi = parambi.zQD;
+      paramBaseViewHolder.AMM.setVisibility(0);
+      parambh = parambh.Asa;
+      paramBaseViewHolder = paramBaseViewHolder.AMM;
+      parambi = parambi.AhK;
       i = this.mActivity.hashCode();
-      bool = this.Aae;
-      localObject = bj.frn();
-      ((bj)localObject).hbR = paramTimeLineObject.CreateTime;
-      parambh.a(paramBaseViewHolder, paramTimeLineObject, parambi, i, paramInt2, paramInt1, bool, (bj)localObject, true);
+      bool = this.Arr;
+      localObject = bk.fvn();
+      ((bk)localObject).heF = paramTimeLineObject.CreateTime;
+      parambh.a(paramBaseViewHolder, paramTimeLineObject, parambi, i, paramInt2, paramInt1, bool, (bk)localObject, true);
       AppMethodBeat.o(100086);
       return;
     }
-    ad.e("MiroMsg.HBRewardTimeLineItem", "mediaPostInfo.hbStatus is " + ((byo)localObject).dNN);
+    ae.e("MiroMsg.HBRewardTimeLineItem", "mediaPostInfo.hbStatus is " + ((bzi)localObject).dPd);
     AppMethodBeat.o(100086);
     return;
     label465:
-    ad.e("MiroMsg.HBRewardTimeLineItem", "mediaPostInfo is null " + parambi.zQD);
+    ae.e("MiroMsg.HBRewardTimeLineItem", "mediaPostInfo is null " + parambi.AhK);
     AppMethodBeat.o(100086);
   }
   
   public final void h(BaseTimeLineItem.BaseViewHolder paramBaseViewHolder)
   {
     AppMethodBeat.i(100085);
-    paramBaseViewHolder.Avo.setImageResource(2131232932);
-    paramBaseViewHolder.AuW.setTextColor(paramBaseViewHolder.AuW.getContext().getResources().getColor(2131100800));
-    if (paramBaseViewHolder.Avc != null)
+    paramBaseViewHolder.AME.setImageResource(2131232932);
+    paramBaseViewHolder.AMm.setTextColor(paramBaseViewHolder.AMm.getContext().getResources().getColor(2131100800));
+    if (paramBaseViewHolder.AMs != null)
     {
-      paramBaseViewHolder.Avc.setLayoutResource(2131495550);
-      if (!paramBaseViewHolder.Avd) {
-        paramBaseViewHolder.Avw = ((PhotosContent)paramBaseViewHolder.Avc.inflate());
+      paramBaseViewHolder.AMs.setLayoutResource(2131495550);
+      if (!paramBaseViewHolder.AMt) {
+        paramBaseViewHolder.AMM = ((PhotosContent)paramBaseViewHolder.AMs.inflate());
       }
     }
-    for (paramBaseViewHolder.Avd = true;; paramBaseViewHolder.Avd = true)
+    for (paramBaseViewHolder.AMt = true;; paramBaseViewHolder.AMt = true)
     {
-      ad.i("MiroMsg.HBRewardTimeLineItem", "viewtype " + this.oIb);
-      TagImageView localTagImageView = (TagImageView)paramBaseViewHolder.Avw.findViewById(bb.AfX[0]);
-      paramBaseViewHolder.Avw.a(localTagImageView);
-      localTagImageView.setOnClickListener(this.zpI.zpd.zRv);
+      ae.i("MiroMsg.HBRewardTimeLineItem", "viewtype " + this.oOD);
+      TagImageView localTagImageView = (TagImageView)paramBaseViewHolder.AMM.findViewById(bb.Axj[0]);
+      paramBaseViewHolder.AMM.a(localTagImageView);
+      localTagImageView.setOnClickListener(this.zGX.zGs.AiC);
       AppMethodBeat.o(100085);
       return;
-      paramBaseViewHolder.Avw = ((PhotosContent)paramBaseViewHolder.tPw.findViewById(2131300686));
+      paramBaseViewHolder.AMM = ((PhotosContent)paramBaseViewHolder.uan.findViewById(2131300686));
     }
   }
 }

@@ -14,13 +14,13 @@ import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.h;
+import com.tencent.mm.ak.h;
 import com.tencent.mm.compatible.util.e;
 import com.tencent.mm.plugin.fav.ui.m;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.an;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.base.t;
 import java.util.Iterator;
 import java.util.List;
@@ -29,17 +29,17 @@ public class NoteVoiceView
   extends FrameLayout
   implements a.a
 {
-  public a ECY;
-  public a ECZ;
-  public int dtc;
+  public a EVu;
+  public a EVv;
+  public int dui;
   public int duration;
-  public View gZU;
+  public View hcH;
+  private TextView pAc;
+  private ViewGroup pFb;
+  TextView pFc;
+  private TextView pFe;
   public String path;
-  private TextView pty;
-  private TextView pyA;
-  private ViewGroup pyx;
-  TextView pyy;
-  private ImageButton ryl;
+  private ImageButton rGw;
   
   public NoteVoiceView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -59,11 +59,11 @@ public class NoteVoiceView
     AppMethodBeat.o(30920);
   }
   
-  private void cfD()
+  private void cgT()
   {
     AppMethodBeat.i(30926);
-    this.ECZ.stop();
-    this.pyy.setKeepScreenOn(false);
+    this.EVv.stop();
+    this.pFc.setKeepScreenOn(false);
     AppMethodBeat.o(30926);
   }
   
@@ -74,19 +74,19 @@ public class NoteVoiceView
     AppMethodBeat.o(30921);
   }
   
-  public final void aaY(String paramString)
+  public final void abP(String paramString)
   {
     AppMethodBeat.i(30922);
     if (!this.path.equals(paramString)) {
-      cfD();
+      cgT();
     }
     AppMethodBeat.o(30922);
   }
   
-  public final void cfy()
+  public final void cgO()
   {
     AppMethodBeat.i(30923);
-    cfD();
+    cgT();
     AppMethodBeat.o(30923);
   }
   
@@ -94,14 +94,14 @@ public class NoteVoiceView
   {
     AppMethodBeat.i(30924);
     super.onConfigurationChanged(paramConfiguration);
-    ad.i("MicroMsg.NoteVoiceView", "on configuration changed, is paused ? %B", new Object[] { Boolean.valueOf(this.ECZ.isPaused) });
-    if (this.ECZ.isPaused) {
-      this.ECZ.postDelayed(new Runnable()
+    ae.i("MicroMsg.NoteVoiceView", "on configuration changed, is paused ? %B", new Object[] { Boolean.valueOf(this.EVv.isPaused) });
+    if (this.EVv.isPaused) {
+      this.EVv.postDelayed(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(30912);
-          NoteVoiceView.g(NoteVoiceView.this).ams();
+          NoteVoiceView.g(NoteVoiceView.this).amH();
           AppMethodBeat.o(30912);
         }
       }, 128L);
@@ -113,61 +113,61 @@ public class NoteVoiceView
   {
     AppMethodBeat.i(30925);
     super.onFinishInflate();
-    this.pyx = ((ViewGroup)findViewById(2131306507));
-    this.pty = ((TextView)findViewById(2131306505));
-    this.pyA = ((TextView)findViewById(2131306508));
-    this.pyy = ((TextView)findViewById(2131306506));
-    this.ryl = ((ImageButton)findViewById(2131306504));
-    this.gZU = findViewById(2131306547);
-    this.ECZ = new a((byte)0);
-    this.ryl.setOnClickListener(new View.OnClickListener()
+    this.pFb = ((ViewGroup)findViewById(2131306507));
+    this.pAc = ((TextView)findViewById(2131306505));
+    this.pFe = ((TextView)findViewById(2131306508));
+    this.pFc = ((TextView)findViewById(2131306506));
+    this.rGw = ((ImageButton)findViewById(2131306504));
+    this.hcH = findViewById(2131306547);
+    this.EVv = new a((byte)0);
+    this.rGw.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(30913);
         Object localObject = new com.tencent.mm.hellhoundlib.b.b();
         ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/wenote/ui/nativenote/voiceview/NoteVoiceView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahq());
-        if ((com.tencent.mm.s.a.cf(paramAnonymousView.getContext())) || (com.tencent.mm.s.a.cd(paramAnonymousView.getContext())) || (com.tencent.mm.s.a.ch(paramAnonymousView.getContext())))
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/wenote/ui/nativenote/voiceview/NoteVoiceView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahF());
+        if ((com.tencent.mm.r.a.ch(paramAnonymousView.getContext())) || (com.tencent.mm.r.a.cf(paramAnonymousView.getContext())) || (com.tencent.mm.r.a.cj(paramAnonymousView.getContext())))
         {
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/wenote/ui/nativenote/voiceview/NoteVoiceView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(30913);
           return;
         }
-        if ((!e.abf()) && (!bt.isNullOrNil(NoteVoiceView.h(NoteVoiceView.this))))
+        if ((!e.abo()) && (!bu.isNullOrNil(NoteVoiceView.h(NoteVoiceView.this))))
         {
           t.g(paramAnonymousView.getContext(), null);
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/wenote/ui/nativenote/voiceview/NoteVoiceView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(30913);
           return;
         }
-        if (!bt.bI(NoteVoiceView.h(NoteVoiceView.this), "").equals(NoteVoiceView.i(NoteVoiceView.this).path))
+        if (!bu.bI(NoteVoiceView.h(NoteVoiceView.this), "").equals(NoteVoiceView.i(NoteVoiceView.this).path))
         {
           NoteVoiceView.j(NoteVoiceView.this);
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/wenote/ui/nativenote/voiceview/NoteVoiceView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(30913);
           return;
         }
-        if (NoteVoiceView.i(NoteVoiceView.this).cfC())
+        if (NoteVoiceView.i(NoteVoiceView.this).cgS())
         {
           paramAnonymousView = NoteVoiceView.this;
-          ad.i("MicroMsg.NoteVoiceView", "pause play");
-          localObject = paramAnonymousView.ECY;
-          ad.i("MicroMsg.RecordVoiceHelper", "pause play");
-          an.aQv("keep_app_silent");
-          if (((a)localObject).pyq == null) {
-            ad.w("MicroMsg.RecordVoiceHelper", "pause play error, player is null");
+          ae.i("MicroMsg.NoteVoiceView", "pause play");
+          localObject = paramAnonymousView.EVu;
+          ae.i("MicroMsg.RecordVoiceHelper", "pause play");
+          ao.aRS("keep_app_silent");
+          if (((a)localObject).pEU == null) {
+            ae.w("MicroMsg.RecordVoiceHelper", "pause play error, player is null");
           }
           for (;;)
           {
-            localObject = paramAnonymousView.ECZ;
+            localObject = paramAnonymousView.EVv;
             ((NoteVoiceView.a)localObject).isPaused = true;
             ((NoteVoiceView.a)localObject).removeMessages(4096);
-            NoteVoiceView.c(((NoteVoiceView.a)localObject).EDa).setImageResource(2131691385);
-            NoteVoiceView.c(((NoteVoiceView.a)localObject).EDa).setContentDescription(((NoteVoiceView.a)localObject).EDa.getContext().getResources().getString(2131755856));
-            paramAnonymousView.pyy.setKeepScreenOn(false);
+            NoteVoiceView.c(((NoteVoiceView.a)localObject).EVw).setImageResource(2131691385);
+            NoteVoiceView.c(((NoteVoiceView.a)localObject).EVw).setContentDescription(((NoteVoiceView.a)localObject).EVw.getContext().getResources().getString(2131755856));
+            paramAnonymousView.pFc.setKeepScreenOn(false);
             break;
-            if (((a)localObject).pyq.pause())
+            if (((a)localObject).pEU.pause())
             {
               localObject = ((a)localObject).callbacks.iterator();
               while (((Iterator)localObject).hasNext()) {
@@ -177,31 +177,31 @@ public class NoteVoiceView
           }
         }
         paramAnonymousView = NoteVoiceView.this;
-        ad.i("MicroMsg.NoteVoiceView", "resume play");
-        localObject = paramAnonymousView.ECY;
-        ad.i("MicroMsg.RecordVoiceHelper", "resume play");
-        an.aQu("keep_app_silent");
+        ae.i("MicroMsg.NoteVoiceView", "resume play");
+        localObject = paramAnonymousView.EVu;
+        ae.i("MicroMsg.RecordVoiceHelper", "resume play");
+        ao.aRR("keep_app_silent");
         int i;
-        if (((a)localObject).pyq == null)
+        if (((a)localObject).pEU == null)
         {
-          ad.w("MicroMsg.RecordVoiceHelper", "resum play error, player is null");
+          ae.w("MicroMsg.RecordVoiceHelper", "resum play error, player is null");
           i = 0;
         }
         boolean bool;
         do
         {
-          localObject = paramAnonymousView.ECZ;
+          localObject = paramAnonymousView.EVv;
           ((NoteVoiceView.a)localObject).isPaused = false;
           ((NoteVoiceView.a)localObject).sendEmptyMessage(4096);
-          NoteVoiceView.c(((NoteVoiceView.a)localObject).EDa).setImageResource(2131691386);
-          NoteVoiceView.c(((NoteVoiceView.a)localObject).EDa).setContentDescription(((NoteVoiceView.a)localObject).EDa.getContext().getResources().getString(2131755838));
-          paramAnonymousView.pyy.setKeepScreenOn(true);
+          NoteVoiceView.c(((NoteVoiceView.a)localObject).EVw).setImageResource(2131691386);
+          NoteVoiceView.c(((NoteVoiceView.a)localObject).EVw).setContentDescription(((NoteVoiceView.a)localObject).EVw.getContext().getResources().getString(2131755838));
+          paramAnonymousView.pFc.setKeepScreenOn(true);
           if (i != 0) {
             break;
           }
           NoteVoiceView.j(NoteVoiceView.this);
           break;
-          bool = ((a)localObject).pyq.resume();
+          bool = ((a)localObject).pEU.resume();
           i = bool;
         } while (!bool);
         localObject = ((a)localObject).callbacks.iterator();
@@ -221,54 +221,54 @@ public class NoteVoiceView
   public void setVoiceHelper(a parama)
   {
     AppMethodBeat.i(30927);
-    this.ECY = parama;
-    this.ECY.a(this);
+    this.EVu = parama;
+    this.EVu.a(this);
     AppMethodBeat.o(30927);
   }
   
   public final class a
-    extends ap
+    extends aq
   {
-    int gtm;
+    int gvT;
     boolean isPaused;
-    float pyE;
-    float pyF;
-    int pyG;
+    float pFi;
+    float pFj;
+    int pFk;
     
     private a() {}
     
     @SuppressLint({"ResourceType"})
-    public final void BH(int paramInt)
+    public final void BT(int paramInt)
     {
       AppMethodBeat.i(30914);
       this.isPaused = false;
-      this.pyE = com.tencent.mm.plugin.fav.a.b.vu(paramInt);
-      this.pyF = this.pyE;
-      this.pyG = com.tencent.mm.cc.a.fromDPToPix(NoteVoiceView.this.getContext(), 0);
-      NoteVoiceView.a(NoteVoiceView.this).setText(m.G(NoteVoiceView.this.getContext(), (int)(this.pyE - this.pyF)));
-      NoteVoiceView.b(NoteVoiceView.this).setText(m.G(NoteVoiceView.this.getContext(), (int)this.pyE));
+      this.pFi = com.tencent.mm.plugin.fav.a.b.vK(paramInt);
+      this.pFj = this.pFi;
+      this.pFk = com.tencent.mm.cb.a.fromDPToPix(NoteVoiceView.this.getContext(), 0);
+      NoteVoiceView.a(NoteVoiceView.this).setText(m.G(NoteVoiceView.this.getContext(), (int)(this.pFi - this.pFj)));
+      NoteVoiceView.b(NoteVoiceView.this).setText(m.G(NoteVoiceView.this.getContext(), (int)this.pFi));
       NoteVoiceView.c(NoteVoiceView.this).setImageResource(2131691385);
       NoteVoiceView.c(NoteVoiceView.this).setContentDescription(NoteVoiceView.this.getContext().getResources().getString(2131755856));
-      NoteVoiceView.d(NoteVoiceView.this).setWidth(this.pyG);
+      NoteVoiceView.d(NoteVoiceView.this).setWidth(this.pFk);
       AppMethodBeat.o(30914);
     }
     
-    public final void ams()
+    public final void amH()
     {
       AppMethodBeat.i(30916);
-      this.gtm = ((int)((1.0F - this.pyF / this.pyE) * (NoteVoiceView.f(NoteVoiceView.this).getWidth() - this.pyG)) + this.pyG);
-      NoteVoiceView.a(NoteVoiceView.this).setText(m.G(NoteVoiceView.this.getContext(), (int)(this.pyE - this.pyF)));
-      NoteVoiceView.b(NoteVoiceView.this).setText(m.G(NoteVoiceView.this.getContext(), (int)this.pyE));
-      NoteVoiceView.d(NoteVoiceView.this).setWidth(this.gtm);
+      this.gvT = ((int)((1.0F - this.pFj / this.pFi) * (NoteVoiceView.f(NoteVoiceView.this).getWidth() - this.pFk)) + this.pFk);
+      NoteVoiceView.a(NoteVoiceView.this).setText(m.G(NoteVoiceView.this.getContext(), (int)(this.pFi - this.pFj)));
+      NoteVoiceView.b(NoteVoiceView.this).setText(m.G(NoteVoiceView.this.getContext(), (int)this.pFi));
+      NoteVoiceView.d(NoteVoiceView.this).setWidth(this.gvT);
       AppMethodBeat.o(30916);
     }
     
     public final void handleMessage(Message paramMessage)
     {
       AppMethodBeat.i(30918);
-      this.pyF = Math.max(0.0F, this.pyF - 0.256F);
-      ams();
-      if (this.pyF <= 0.1F)
+      this.pFj = Math.max(0.0F, this.pFj - 0.256F);
+      amH();
+      if (this.pFj <= 0.1F)
       {
         AppMethodBeat.o(30918);
         return;
@@ -278,13 +278,13 @@ public class NoteVoiceView
     }
     
     @SuppressLint({"ResourceType"})
-    public final void ko(boolean paramBoolean)
+    public final void kn(boolean paramBoolean)
     {
       AppMethodBeat.i(30917);
-      this.pyG = com.tencent.mm.cc.a.fromDPToPix(NoteVoiceView.this.getContext(), 0);
+      this.pFk = com.tencent.mm.cb.a.fromDPToPix(NoteVoiceView.this.getContext(), 0);
       NoteVoiceView.c(NoteVoiceView.this).setImageResource(2131691385);
       NoteVoiceView.c(NoteVoiceView.this).setContentDescription(NoteVoiceView.this.getContext().getResources().getString(2131755856));
-      ams();
+      amH();
       if (paramBoolean)
       {
         NoteVoiceView.c(NoteVoiceView.this).setImageResource(2131691386);
@@ -299,7 +299,7 @@ public class NoteVoiceView
       AppMethodBeat.i(30915);
       this.isPaused = false;
       removeMessages(4096);
-      BH(NoteVoiceView.e(NoteVoiceView.this));
+      BT(NoteVoiceView.e(NoteVoiceView.this));
       AppMethodBeat.o(30915);
     }
   }

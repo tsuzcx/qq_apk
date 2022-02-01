@@ -3,25 +3,25 @@ package com.tencent.mm.plugin.gallery.ui.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.a.c;
 import com.tencent.mm.plugin.sight.base.SightVideoJNI;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ay;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.vfs.i;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.az;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.vfs.o;
 
 public final class a
   extends com.tencent.mm.ui.tools.b.a
 {
-  private String cuO;
+  private String cvr;
   public int mSize = 104857600;
-  private a tQt;
+  private a ubk;
   
   private a(String paramString)
   {
-    this.cuO = paramString;
+    this.cvr = paramString;
   }
   
-  public static a ale(String paramString)
+  public static a amc(String paramString)
   {
     AppMethodBeat.i(111734);
     paramString = new a(paramString);
@@ -29,20 +29,20 @@ public final class a
     return paramString;
   }
   
-  public final int bgi()
+  public final int bgQ()
   {
     int i = 10485760;
     AppMethodBeat.i(111735);
-    if (bt.isNullOrNil(this.cuO)) {
-      ad.w("MicroMsg.VideoBoundaryCheck", "dz[check video but path is null or nil]");
+    if (bu.isNullOrNil(this.cvr)) {
+      ae.w("MicroMsg.VideoBoundaryCheck", "dz[check video but path is null or nil]");
     }
-    boolean bool1 = ay.is2G(aj.getContext());
-    boolean bool2 = c.Ja(this.cuO);
+    boolean bool1 = az.is2G(ak.getContext());
+    boolean bool2 = c.Jz(this.cvr);
     label58:
     double d;
     if (bool2)
     {
-      String str = this.cuO;
+      String str = this.cvr;
       if (bool1)
       {
         if (!bool1) {
@@ -55,11 +55,11 @@ public final class a
     }
     for (;;)
     {
-      ad.i("MicroMsg.VideoBoundaryCheck", "check should remuxing, ret %d, isMp4 %b", new Object[] { Integer.valueOf(i), Boolean.valueOf(bool2) });
+      ae.i("MicroMsg.VideoBoundaryCheck", "check should remuxing, ret %d, isMp4 %b", new Object[] { Integer.valueOf(i), Boolean.valueOf(bool2) });
       switch (i)
       {
       default: 
-        ad.e("MicroMsg.VideoBoundaryCheck", "unknown check type %d", new Object[] { Integer.valueOf(i) });
+        ae.e("MicroMsg.VideoBoundaryCheck", "unknown check type %d", new Object[] { Integer.valueOf(i) });
         AppMethodBeat.o(111735);
         return 1;
         i = this.mSize;
@@ -67,7 +67,7 @@ public final class a
         label205:
         d = this.mSize;
         break label67;
-        int j = (int)i.aYo(this.cuO);
+        int j = (int)o.aZR(this.cvr);
         if (bool1) {}
         for (i = 10485760;; i = 26214400)
         {
@@ -89,16 +89,16 @@ public final class a
     return 1;
   }
   
-  public final void cWs()
+  public final void cYX()
   {
     AppMethodBeat.i(111736);
-    if (this.tQt == null)
+    if (this.ubk == null)
     {
-      ad.w("MicroMsg.VideoBoundaryCheck", "dz[callback is null]");
+      ae.w("MicroMsg.VideoBoundaryCheck", "dz[callback is null]");
       AppMethodBeat.o(111736);
       return;
     }
-    bgi();
+    bgQ();
     AppMethodBeat.o(111736);
   }
   
@@ -106,7 +106,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.gallery.ui.a.a
  * JD-Core Version:    0.7.0.1
  */

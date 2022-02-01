@@ -4,23 +4,23 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.b.p;
 import java.io.Serializable;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlin/Result$Failure;", "Ljava/io/Serializable;", "Lkotlin/io/Serializable;", "exception", "", "(Ljava/lang/Throwable;)V", "equals", "", "other", "", "hashCode", "", "toString", "", "kotlin-stdlib"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlin/Result$Failure;", "Ljava/io/Serializable;", "Lkotlin/io/Serializable;", "exception", "", "(Ljava/lang/Throwable;)V", "equals", "", "other", "", "hashCode", "", "toString", "", "kotlin-stdlib"})
 public final class p$b
   implements Serializable
 {
-  public final Throwable MKf;
+  public final Throwable Nhi;
   
   public p$b(Throwable paramThrowable)
   {
     AppMethodBeat.i(129288);
-    this.MKf = paramThrowable;
+    this.Nhi = paramThrowable;
     AppMethodBeat.o(129288);
   }
   
   public final boolean equals(Object paramObject)
   {
     AppMethodBeat.i(129285);
-    if (((paramObject instanceof b)) && (p.i(this.MKf, ((b)paramObject).MKf)))
+    if (((paramObject instanceof b)) && (p.i(this.Nhi, ((b)paramObject).Nhi)))
     {
       AppMethodBeat.o(129285);
       return true;
@@ -32,7 +32,7 @@ public final class p$b
   public final int hashCode()
   {
     AppMethodBeat.i(129286);
-    int i = this.MKf.hashCode();
+    int i = this.Nhi.hashCode();
     AppMethodBeat.o(129286);
     return i;
   }
@@ -40,7 +40,7 @@ public final class p$b
   public final String toString()
   {
     AppMethodBeat.i(129287);
-    String str = "Failure(" + this.MKf + ')';
+    String str = "Failure(" + this.Nhi + ')';
     AppMethodBeat.o(129287);
     return str;
   }

@@ -2,65 +2,65 @@ package com.tencent.mm.plugin.music.model.d;
 
 import com.tencent.mars.smc.IDKey;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.az.f;
+import com.tencent.mm.ay.f;
 import com.tencent.mm.plugin.fav.a.h;
 import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.ArrayList;
 
 public final class e
 {
-  public static long hLG;
+  public static long hOz;
   public static int scene;
-  public static int vtK;
-  public static boolean wlG;
-  public static boolean wlH;
-  public static int wlI;
-  private static com.tencent.mm.plugin.music.model.e.a wlJ;
+  public static int vFP;
+  public static boolean wBp;
+  public static boolean wBq;
+  public static int wBr;
+  private static com.tencent.mm.plugin.music.model.e.a wBs;
   
-  public static final void Lv(int paramInt)
+  public static final void Ma(int paramInt)
   {
     AppMethodBeat.i(63149);
     if (paramInt == 2)
     {
-      f localf = com.tencent.mm.az.a.aJJ();
+      f localf = com.tencent.mm.ay.a.aKc();
       if (localf != null) {
-        h.i(bt.getLong(localf.ihE, 0L), 1, 0);
+        h.i(bu.getLong(localf.ikx, 0L), 1, 0);
       }
     }
     AppMethodBeat.o(63149);
   }
   
-  public static final void Lw(int paramInt)
+  public static final void Mb(int paramInt)
   {
     AppMethodBeat.i(63150);
     if (paramInt == 2)
     {
-      f localf = com.tencent.mm.az.a.aJJ();
+      f localf = com.tencent.mm.ay.a.aKc();
       if (localf != null) {
-        h.i(bt.getLong(localf.ihE, 0L), 0, 0);
+        h.i(bu.getLong(localf.ikx, 0L), 0, 0);
       }
     }
     AppMethodBeat.o(63150);
   }
   
-  public static final void Lx(int paramInt)
+  public static final void Mc(int paramInt)
   {
     AppMethodBeat.i(63151);
-    com.tencent.mm.plugin.music.model.e.a locala = ((com.tencent.mm.plugin.music.e.e)com.tencent.mm.plugin.music.f.c.b.aQ(com.tencent.mm.plugin.music.e.e.class)).dsP();
+    com.tencent.mm.plugin.music.model.e.a locala = ((com.tencent.mm.plugin.music.e.e)com.tencent.mm.plugin.music.f.c.b.aQ(com.tencent.mm.plugin.music.e.e.class)).dwe();
     if (locala != null)
     {
-      ad.i("MicroMsg.Music.MusicReportUtil", "ReportMusicPlayerShareStat ShareType:%d, MusicId:%s, MusicTitle:%s, Singer:%s, AppId:%s", new Object[] { Integer.valueOf(paramInt), locala.field_musicId, locala.field_songName, locala.field_songSinger, locala.field_appId });
-      g.yhR.f(12836, new Object[] { Integer.valueOf(paramInt), locala.field_musicId, locala.field_songName, locala.field_songSinger, locala.field_appId });
+      ae.i("MicroMsg.Music.MusicReportUtil", "ReportMusicPlayerShareStat ShareType:%d, MusicId:%s, MusicTitle:%s, Singer:%s, AppId:%s", new Object[] { Integer.valueOf(paramInt), locala.field_musicId, locala.field_songName, locala.field_songSinger, locala.field_appId });
+      g.yxI.f(12836, new Object[] { Integer.valueOf(paramInt), locala.field_musicId, locala.field_songName, locala.field_songSinger, locala.field_appId });
     }
     AppMethodBeat.o(63151);
   }
   
-  private static void Ly(int paramInt)
+  private static void Md(int paramInt)
   {
     AppMethodBeat.i(63154);
-    ad.i("MicroMsg.Music.MusicReportUtil", "idKeyReportExoMusicPlayerSum scene:%d", new Object[] { Integer.valueOf(paramInt) });
+    ae.i("MicroMsg.Music.MusicReportUtil", "idKeyReportExoMusicPlayerSum scene:%d", new Object[] { Integer.valueOf(paramInt) });
     ArrayList localArrayList = new ArrayList();
     IDKey localIDKey1 = new IDKey();
     localIDKey1.SetID(797);
@@ -68,11 +68,11 @@ public final class e
     localIDKey1.SetValue(1L);
     IDKey localIDKey2 = new IDKey();
     localIDKey2.SetID(797);
-    localIDKey2.SetKey(b.Lq(paramInt));
+    localIDKey2.SetKey(b.LV(paramInt));
     localIDKey2.SetValue(1L);
     localArrayList.add(localIDKey1);
     localArrayList.add(localIDKey2);
-    g.yhR.b(localArrayList, true);
+    g.yxI.b(localArrayList, true);
     AppMethodBeat.o(63154);
   }
   
@@ -81,12 +81,12 @@ public final class e
     AppMethodBeat.i(63152);
     if (parama == null)
     {
-      ad.e("MicroMsg.Music.MusicReportUtil", "kvReportMusicNotificationStat music is null, err");
+      ae.e("MicroMsg.Music.MusicReportUtil", "kvReportMusicNotificationStat music is null, err");
       AppMethodBeat.o(63152);
       return;
     }
-    ad.i("MicroMsg.Music.MusicReportUtil", "kvReportMusicNotificationStat scene:%d, action:%d, src:%s, title:%s, singer:%s", new Object[] { Integer.valueOf(parama.field_musicType), Integer.valueOf(paramInt), parama.field_songWifiUrl, parama.field_songName, parama.field_songSinger });
-    g.yhR.f(15106, new Object[] { Integer.valueOf(parama.field_musicType), Integer.valueOf(paramInt), Long.valueOf(System.currentTimeMillis()), parama.field_songWifiUrl, parama.field_songName, parama.field_songSinger });
+    ae.i("MicroMsg.Music.MusicReportUtil", "kvReportMusicNotificationStat scene:%d, action:%d, src:%s, title:%s, singer:%s", new Object[] { Integer.valueOf(parama.field_musicType), Integer.valueOf(paramInt), parama.field_songWifiUrl, parama.field_songName, parama.field_songSinger });
+    g.yxI.f(15106, new Object[] { Integer.valueOf(parama.field_musicType), Integer.valueOf(paramInt), Long.valueOf(System.currentTimeMillis()), parama.field_songWifiUrl, parama.field_songName, parama.field_songSinger });
     AppMethodBeat.o(63152);
   }
   
@@ -95,7 +95,7 @@ public final class e
     AppMethodBeat.i(63153);
     if (paramf == null)
     {
-      ad.e("MicroMsg.Music.MusicReportUtil", "idKeyReportMusicPlayerSum music is null");
+      ae.e("MicroMsg.Music.MusicReportUtil", "idKeyReportMusicPlayerSum music is null");
       AppMethodBeat.o(63153);
       return;
     }
@@ -117,22 +117,22 @@ public final class e
     {
       localArrayList.add(localIDKey1);
       localArrayList.add(localIDKey2);
-      g.yhR.b(localArrayList, true);
+      g.yxI.b(localArrayList, true);
       AppMethodBeat.o(63153);
       return;
       if (com.tencent.mm.plugin.music.h.c.Q(paramf))
       {
-        Ly(paramf.ihe);
+        Md(paramf.ijX);
         AppMethodBeat.o(63153);
         return;
       }
-      if (com.tencent.mm.plugin.music.h.c.LD(paramf.ihe))
+      if (com.tencent.mm.plugin.music.h.c.Mi(paramf.ijX))
       {
         localIDKey2.SetKey(2);
-        localIDKey3.SetKey(c.Lu(paramf.ihe));
+        localIDKey3.SetKey(c.LZ(paramf.ijX));
         localArrayList.add(localIDKey3);
-        g.yhR.f(14174, new Object[] { Integer.valueOf(1), Integer.valueOf(paramf.ihe) });
-        if (com.tencent.mm.plugin.music.model.a.b.asE(paramf.playUrl))
+        g.yxI.f(14174, new Object[] { Integer.valueOf(1), Integer.valueOf(paramf.ijX) });
+        if (com.tencent.mm.plugin.music.model.a.b.atR(paramf.playUrl))
         {
           paramf = new IDKey();
           paramf.SetID(558);
@@ -144,10 +144,10 @@ public final class e
       else
       {
         localIDKey2.SetKey(1);
-        localIDKey3.SetKey(c.Lt(paramf.ihe));
+        localIDKey3.SetKey(c.LY(paramf.ijX));
         localArrayList.add(localIDKey3);
-        g.yhR.f(14174, new Object[] { Integer.valueOf(0), Integer.valueOf(paramf.ihe) });
-        if (com.tencent.mm.plugin.music.model.a.b.asE(paramf.playUrl))
+        g.yxI.f(14174, new Object[] { Integer.valueOf(0), Integer.valueOf(paramf.ijX) });
+        if (com.tencent.mm.plugin.music.model.a.b.atR(paramf.playUrl))
         {
           paramf = new IDKey();
           paramf.SetID(558);
@@ -159,13 +159,13 @@ public final class e
     }
   }
   
-  public static final void aJC()
+  public static final void aJV()
   {
     AppMethodBeat.i(63147);
-    if (hLG > 0L)
+    if (hOz > 0L)
     {
-      vtK = (int)(vtK + (System.currentTimeMillis() - hLG) / 1000L);
-      hLG = 0L;
+      vFP = (int)(vFP + (System.currentTimeMillis() - hOz) / 1000L);
+      hOz = 0L;
     }
     AppMethodBeat.o(63147);
   }
@@ -173,17 +173,17 @@ public final class e
   public static final void an(int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(63144);
-    com.tencent.mm.plugin.music.model.e.a locala = ((com.tencent.mm.plugin.music.e.e)com.tencent.mm.plugin.music.f.c.b.aQ(com.tencent.mm.plugin.music.e.e.class)).dsP();
+    com.tencent.mm.plugin.music.model.e.a locala = ((com.tencent.mm.plugin.music.e.e)com.tencent.mm.plugin.music.f.c.b.aQ(com.tencent.mm.plugin.music.e.e.class)).dwe();
     if (locala != null)
     {
-      ad.v("MicroMsg.Music.MusicReportUtil", "kvReportShakeReport: %d, %d, %d, %s, %s, %s, %s, %d %s, %s", new Object[] { Integer.valueOf(13042), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), locala.field_musicId, locala.field_songName, locala.field_songAlbum, Integer.valueOf(locala.field_songId), Integer.valueOf(paramInt3), locala.field_songSinger, locala.field_appId });
-      g.yhR.f(13042, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), locala.field_musicId, locala.field_songName, locala.field_songAlbum, Integer.valueOf(locala.field_songId), Integer.valueOf(paramInt3), locala.field_songSinger, locala.field_appId });
+      ae.v("MicroMsg.Music.MusicReportUtil", "kvReportShakeReport: %d, %d, %d, %s, %s, %s, %s, %d %s, %s", new Object[] { Integer.valueOf(13042), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), locala.field_musicId, locala.field_songName, locala.field_songAlbum, Integer.valueOf(locala.field_songId), Integer.valueOf(paramInt3), locala.field_songSinger, locala.field_appId });
+      g.yxI.f(13042, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), locala.field_musicId, locala.field_songName, locala.field_songAlbum, Integer.valueOf(locala.field_songId), Integer.valueOf(paramInt3), locala.field_songSinger, locala.field_appId });
     }
     AppMethodBeat.o(63144);
   }
   
   /* Error */
-  public static final void dtn()
+  public static final void dwC()
   {
     // Byte code:
     //   0: iconst_1
@@ -192,30 +192,30 @@ public final class e
     //   4: monitorenter
     //   5: ldc 230
     //   7: invokestatic 23	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   10: getstatic 232	com/tencent/mm/plugin/music/model/d/e:wlJ	Lcom/tencent/mm/plugin/music/model/e/a;
+    //   10: getstatic 232	com/tencent/mm/plugin/music/model/d/e:wBs	Lcom/tencent/mm/plugin/music/model/e/a;
     //   13: ifnull +328 -> 341
-    //   16: invokestatic 234	com/tencent/mm/plugin/music/model/d/e:aJC	()V
-    //   19: getstatic 232	com/tencent/mm/plugin/music/model/d/e:wlJ	Lcom/tencent/mm/plugin/music/model/e/a;
+    //   16: invokestatic 234	com/tencent/mm/plugin/music/model/d/e:aJV	()V
+    //   19: getstatic 232	com/tencent/mm/plugin/music/model/d/e:wBs	Lcom/tencent/mm/plugin/music/model/e/a;
     //   22: getfield 81	com/tencent/mm/plugin/music/model/e/a:field_musicId	Ljava/lang/String;
     //   25: astore 6
-    //   27: getstatic 232	com/tencent/mm/plugin/music/model/d/e:wlJ	Lcom/tencent/mm/plugin/music/model/e/a;
+    //   27: getstatic 232	com/tencent/mm/plugin/music/model/d/e:wBs	Lcom/tencent/mm/plugin/music/model/e/a;
     //   30: getfield 84	com/tencent/mm/plugin/music/model/e/a:field_songName	Ljava/lang/String;
     //   33: astore 7
-    //   35: getstatic 232	com/tencent/mm/plugin/music/model/d/e:wlJ	Lcom/tencent/mm/plugin/music/model/e/a;
+    //   35: getstatic 232	com/tencent/mm/plugin/music/model/d/e:wBs	Lcom/tencent/mm/plugin/music/model/e/a;
     //   38: getfield 222	com/tencent/mm/plugin/music/model/e/a:field_songAlbum	Ljava/lang/String;
     //   41: astore 8
-    //   43: getstatic 232	com/tencent/mm/plugin/music/model/d/e:wlJ	Lcom/tencent/mm/plugin/music/model/e/a;
+    //   43: getstatic 232	com/tencent/mm/plugin/music/model/d/e:wBs	Lcom/tencent/mm/plugin/music/model/e/a;
     //   46: getfield 225	com/tencent/mm/plugin/music/model/e/a:field_songId	I
     //   49: istore_3
-    //   50: getstatic 236	com/tencent/mm/plugin/music/model/d/e:wlI	I
+    //   50: getstatic 236	com/tencent/mm/plugin/music/model/d/e:wBr	I
     //   53: istore 4
-    //   55: getstatic 212	com/tencent/mm/plugin/music/model/d/e:vtK	I
+    //   55: getstatic 212	com/tencent/mm/plugin/music/model/d/e:vFP	I
     //   58: istore 5
-    //   60: getstatic 238	com/tencent/mm/plugin/music/model/d/e:wlG	Z
+    //   60: getstatic 238	com/tencent/mm/plugin/music/model/d/e:wBp	Z
     //   63: ifeq +315 -> 378
     //   66: iconst_1
     //   67: istore_0
-    //   68: getstatic 240	com/tencent/mm/plugin/music/model/d/e:wlH	Z
+    //   68: getstatic 240	com/tencent/mm/plugin/music/model/d/e:wBq	Z
     //   71: ifeq +312 -> 383
     //   74: iconst_1
     //   75: istore_1
@@ -272,38 +272,38 @@ public final class e
     //   158: aastore
     //   159: dup
     //   160: bipush 10
-    //   162: getstatic 232	com/tencent/mm/plugin/music/model/d/e:wlJ	Lcom/tencent/mm/plugin/music/model/e/a;
+    //   162: getstatic 232	com/tencent/mm/plugin/music/model/d/e:wBs	Lcom/tencent/mm/plugin/music/model/e/a;
     //   165: getfield 87	com/tencent/mm/plugin/music/model/e/a:field_songSinger	Ljava/lang/String;
     //   168: aastore
     //   169: dup
     //   170: bipush 11
-    //   172: getstatic 232	com/tencent/mm/plugin/music/model/d/e:wlJ	Lcom/tencent/mm/plugin/music/model/e/a;
+    //   172: getstatic 232	com/tencent/mm/plugin/music/model/d/e:wBs	Lcom/tencent/mm/plugin/music/model/e/a;
     //   175: getfield 90	com/tencent/mm/plugin/music/model/e/a:field_appId	Ljava/lang/String;
     //   178: aastore
-    //   179: invokestatic 228	com/tencent/mm/sdk/platformtools/ad:v	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   182: getstatic 101	com/tencent/mm/plugin/report/service/g:yhR	Lcom/tencent/mm/plugin/report/service/g;
+    //   179: invokestatic 228	com/tencent/mm/sdk/platformtools/ae:v	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   182: getstatic 101	com/tencent/mm/plugin/report/service/g:yxI	Lcom/tencent/mm/plugin/report/service/g;
     //   185: astore 6
-    //   187: getstatic 232	com/tencent/mm/plugin/music/model/d/e:wlJ	Lcom/tencent/mm/plugin/music/model/e/a;
+    //   187: getstatic 232	com/tencent/mm/plugin/music/model/d/e:wBs	Lcom/tencent/mm/plugin/music/model/e/a;
     //   190: getfield 81	com/tencent/mm/plugin/music/model/e/a:field_musicId	Ljava/lang/String;
     //   193: astore 7
-    //   195: getstatic 232	com/tencent/mm/plugin/music/model/d/e:wlJ	Lcom/tencent/mm/plugin/music/model/e/a;
+    //   195: getstatic 232	com/tencent/mm/plugin/music/model/d/e:wBs	Lcom/tencent/mm/plugin/music/model/e/a;
     //   198: getfield 84	com/tencent/mm/plugin/music/model/e/a:field_songName	Ljava/lang/String;
     //   201: astore 8
-    //   203: getstatic 232	com/tencent/mm/plugin/music/model/d/e:wlJ	Lcom/tencent/mm/plugin/music/model/e/a;
+    //   203: getstatic 232	com/tencent/mm/plugin/music/model/d/e:wBs	Lcom/tencent/mm/plugin/music/model/e/a;
     //   206: getfield 222	com/tencent/mm/plugin/music/model/e/a:field_songAlbum	Ljava/lang/String;
     //   209: astore 9
-    //   211: getstatic 232	com/tencent/mm/plugin/music/model/d/e:wlJ	Lcom/tencent/mm/plugin/music/model/e/a;
+    //   211: getstatic 232	com/tencent/mm/plugin/music/model/d/e:wBs	Lcom/tencent/mm/plugin/music/model/e/a;
     //   214: getfield 225	com/tencent/mm/plugin/music/model/e/a:field_songId	I
     //   217: istore_3
-    //   218: getstatic 236	com/tencent/mm/plugin/music/model/d/e:wlI	I
+    //   218: getstatic 236	com/tencent/mm/plugin/music/model/d/e:wBr	I
     //   221: istore 4
-    //   223: getstatic 212	com/tencent/mm/plugin/music/model/d/e:vtK	I
+    //   223: getstatic 212	com/tencent/mm/plugin/music/model/d/e:vFP	I
     //   226: istore 5
-    //   228: getstatic 238	com/tencent/mm/plugin/music/model/d/e:wlG	Z
+    //   228: getstatic 238	com/tencent/mm/plugin/music/model/d/e:wBp	Z
     //   231: ifeq +157 -> 388
     //   234: iconst_1
     //   235: istore_0
-    //   236: getstatic 240	com/tencent/mm/plugin/music/model/d/e:wlH	Z
+    //   236: getstatic 240	com/tencent/mm/plugin/music/model/d/e:wBq	Z
     //   239: ifeq +154 -> 393
     //   242: iload_2
     //   243: istore_1
@@ -355,27 +355,27 @@ public final class e
     //   317: aastore
     //   318: dup
     //   319: bipush 9
-    //   321: getstatic 232	com/tencent/mm/plugin/music/model/d/e:wlJ	Lcom/tencent/mm/plugin/music/model/e/a;
+    //   321: getstatic 232	com/tencent/mm/plugin/music/model/d/e:wBs	Lcom/tencent/mm/plugin/music/model/e/a;
     //   324: getfield 87	com/tencent/mm/plugin/music/model/e/a:field_songSinger	Ljava/lang/String;
     //   327: aastore
     //   328: dup
     //   329: bipush 10
-    //   331: getstatic 232	com/tencent/mm/plugin/music/model/d/e:wlJ	Lcom/tencent/mm/plugin/music/model/e/a;
+    //   331: getstatic 232	com/tencent/mm/plugin/music/model/d/e:wBs	Lcom/tencent/mm/plugin/music/model/e/a;
     //   334: getfield 90	com/tencent/mm/plugin/music/model/e/a:field_appId	Ljava/lang/String;
     //   337: aastore
     //   338: invokevirtual 105	com/tencent/mm/plugin/report/service/g:f	(I[Ljava/lang/Object;)V
     //   341: aconst_null
-    //   342: putstatic 232	com/tencent/mm/plugin/music/model/d/e:wlJ	Lcom/tencent/mm/plugin/music/model/e/a;
+    //   342: putstatic 232	com/tencent/mm/plugin/music/model/d/e:wBs	Lcom/tencent/mm/plugin/music/model/e/a;
     //   345: iconst_0
-    //   346: putstatic 238	com/tencent/mm/plugin/music/model/d/e:wlG	Z
+    //   346: putstatic 238	com/tencent/mm/plugin/music/model/d/e:wBp	Z
     //   349: iconst_0
-    //   350: putstatic 240	com/tencent/mm/plugin/music/model/d/e:wlH	Z
+    //   350: putstatic 240	com/tencent/mm/plugin/music/model/d/e:wBq	Z
     //   353: iconst_0
-    //   354: putstatic 236	com/tencent/mm/plugin/music/model/d/e:wlI	I
+    //   354: putstatic 236	com/tencent/mm/plugin/music/model/d/e:wBr	I
     //   357: iconst_0
-    //   358: putstatic 212	com/tencent/mm/plugin/music/model/d/e:vtK	I
+    //   358: putstatic 212	com/tencent/mm/plugin/music/model/d/e:vFP	I
     //   361: lconst_0
-    //   362: putstatic 210	com/tencent/mm/plugin/music/model/d/e:hLG	J
+    //   362: putstatic 210	com/tencent/mm/plugin/music/model/d/e:hOz	J
     //   365: iconst_0
     //   366: putstatic 244	com/tencent/mm/plugin/music/model/d/e:scene	I
     //   369: ldc 230
@@ -423,10 +423,10 @@ public final class e
     //   341	374	398	finally
   }
   
-  public static final void dto()
+  public static final void dwD()
   {
     AppMethodBeat.i(63148);
-    g.yhR.idkeyStat(285L, 4L, 1L, false);
+    g.yxI.idkeyStat(285L, 4L, 1L, false);
     AppMethodBeat.o(63148);
   }
   
@@ -434,7 +434,7 @@ public final class e
   {
     try
     {
-      wlJ = parama;
+      wBs = parama;
       return;
     }
     finally
@@ -444,14 +444,14 @@ public final class e
     }
   }
   
-  public static final void gN(int paramInt1, int paramInt2)
+  public static final void gO(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(63145);
-    com.tencent.mm.plugin.music.model.e.a locala = ((com.tencent.mm.plugin.music.e.e)com.tencent.mm.plugin.music.f.c.b.aQ(com.tencent.mm.plugin.music.e.e.class)).dsP();
+    com.tencent.mm.plugin.music.model.e.a locala = ((com.tencent.mm.plugin.music.e.e)com.tencent.mm.plugin.music.f.c.b.aQ(com.tencent.mm.plugin.music.e.e.class)).dwe();
     if (locala != null)
     {
-      ad.v("MicroMsg.Music.MusicReportUtil", "kvReportAction: %d, %s, %s, %s, %s, %d, %d, %s, %s", new Object[] { Integer.valueOf(13232), locala.field_musicId, locala.field_songName, locala.field_songAlbum, Integer.valueOf(locala.field_songId), Integer.valueOf(paramInt2), Integer.valueOf(paramInt1), locala.field_songSinger, locala.field_appId });
-      g.yhR.f(13232, new Object[] { locala.field_musicId, locala.field_songName, locala.field_songAlbum, Integer.valueOf(locala.field_songId), Integer.valueOf(paramInt2), Integer.valueOf(paramInt1), locala.field_songSinger, locala.field_appId });
+      ae.v("MicroMsg.Music.MusicReportUtil", "kvReportAction: %d, %s, %s, %s, %s, %d, %d, %s, %s", new Object[] { Integer.valueOf(13232), locala.field_musicId, locala.field_songName, locala.field_songAlbum, Integer.valueOf(locala.field_songId), Integer.valueOf(paramInt2), Integer.valueOf(paramInt1), locala.field_songSinger, locala.field_appId });
+      g.yxI.f(13232, new Object[] { locala.field_musicId, locala.field_songName, locala.field_songAlbum, Integer.valueOf(locala.field_songId), Integer.valueOf(paramInt2), Integer.valueOf(paramInt1), locala.field_songSinger, locala.field_appId });
     }
     AppMethodBeat.o(63145);
   }

@@ -20,10 +20,10 @@ public class TPUnitendCodecUtils
     {
       try
       {
-        AppMethodBeat.i(220525);
+        AppMethodBeat.i(197464);
         if ((!TextUtils.equals("video/avc", paramString)) && (!TextUtils.equals("video/hevc", paramString)))
         {
-          AppMethodBeat.o(220525);
+          AppMethodBeat.o(197464);
           return localObject1;
         }
         if (mSecureDecoderNameMaps == null) {
@@ -32,7 +32,7 @@ public class TPUnitendCodecUtils
         if (mSecureDecoderNameMaps.containsKey(paramString))
         {
           localObject1 = (String)mSecureDecoderNameMaps.get(paramString);
-          AppMethodBeat.o(220525);
+          AppMethodBeat.o(197464);
           continue;
         }
         arrayOfMediaCodecInfo = new MediaCodecList(1).getCodecInfos();
@@ -41,7 +41,7 @@ public class TPUnitendCodecUtils
       if (arrayOfMediaCodecInfo != null) {
         break;
       }
-      AppMethodBeat.o(220525);
+      AppMethodBeat.o(197464);
     }
     int j = arrayOfMediaCodecInfo.length;
     int i = 0;
@@ -66,7 +66,7 @@ public class TPUnitendCodecUtils
             {
               localObject1 = localMediaCodecInfo.getName();
               mSecureDecoderNameMaps.put(paramString, localObject1);
-              AppMethodBeat.o(220525);
+              AppMethodBeat.o(197464);
             }
           }
           catch (Exception localException)

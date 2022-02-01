@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.report.kvdata;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class log_13532
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
   public int clientVersion_;
   public int device_;
@@ -21,10 +21,10 @@ public class log_13532
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
       paramVarArgs.aS(1, this.import_ds_);
       paramVarArgs.aS(2, this.ds_);
-      paramVarArgs.aY(3, this.uin_);
+      paramVarArgs.aZ(3, this.uin_);
       paramVarArgs.aS(4, this.device_);
       paramVarArgs.aS(5, this.clientVersion_);
-      paramVarArgs.aY(6, this.time_stamp_);
+      paramVarArgs.aZ(6, this.time_stamp_);
       paramVarArgs.aS(7, this.type);
       AppMethodBeat.o(151544);
       return 0;
@@ -44,9 +44,9 @@ public class log_13532
     if (paramInt == 2)
     {
       paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gxE();
+          paramVarArgs.gCg();
         }
       }
       AppMethodBeat.o(151544);
@@ -62,31 +62,31 @@ public class log_13532
         AppMethodBeat.o(151544);
         return -1;
       case 1: 
-        locallog_13532.import_ds_ = locala.NPN.zc();
+        locallog_13532.import_ds_ = locala.OmT.zc();
         AppMethodBeat.o(151544);
         return 0;
       case 2: 
-        locallog_13532.ds_ = locala.NPN.zc();
+        locallog_13532.ds_ = locala.OmT.zc();
         AppMethodBeat.o(151544);
         return 0;
       case 3: 
-        locallog_13532.uin_ = locala.NPN.zd();
+        locallog_13532.uin_ = locala.OmT.zd();
         AppMethodBeat.o(151544);
         return 0;
       case 4: 
-        locallog_13532.device_ = locala.NPN.zc();
+        locallog_13532.device_ = locala.OmT.zc();
         AppMethodBeat.o(151544);
         return 0;
       case 5: 
-        locallog_13532.clientVersion_ = locala.NPN.zc();
+        locallog_13532.clientVersion_ = locala.OmT.zc();
         AppMethodBeat.o(151544);
         return 0;
       case 6: 
-        locallog_13532.time_stamp_ = locala.NPN.zd();
+        locallog_13532.time_stamp_ = locala.OmT.zd();
         AppMethodBeat.o(151544);
         return 0;
       }
-      locallog_13532.type = locala.NPN.zc();
+      locallog_13532.type = locala.OmT.zc();
       AppMethodBeat.o(151544);
       return 0;
     }

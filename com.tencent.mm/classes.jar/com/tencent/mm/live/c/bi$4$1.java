@@ -6,18 +6,18 @@ import d.g.b.q;
 import d.l;
 import d.z;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
 final class bi$4$1
   extends q
   implements a<z>
 {
-  public static final 1 gXK;
+  public static final 1 haw;
   
   static
   {
-    AppMethodBeat.i(212636);
-    gXK = new 1();
-    AppMethodBeat.o(212636);
+    AppMethodBeat.i(216262);
+    haw = new 1();
+    AppMethodBeat.o(216262);
   }
   
   bi$4$1()

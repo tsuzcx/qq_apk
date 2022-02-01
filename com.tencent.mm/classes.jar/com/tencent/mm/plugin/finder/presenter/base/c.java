@@ -6,12 +6,12 @@ import com.tencent.mm.ui.MMActivity;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/presenter/base/IViewCallback;", "T", "", "getActivity", "Lcom/tencent/mm/ui/MMActivity;", "getPresenter", "()Ljava/lang/Object;", "getResources", "Landroid/content/res/Resources;", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/presenter/base/IViewCallback;", "T", "", "getActivity", "Lcom/tencent/mm/ui/MMActivity;", "getPresenter", "()Ljava/lang/Object;", "getResources", "Landroid/content/res/Resources;", "plugin-finder_release"})
 public abstract interface c<T>
 {
   public abstract MMActivity getActivity();
   
-  @l(gfx={1, 1, 16})
+  @l(gjZ={1, 1, 16})
   public static final class a
   {
     public static <T> Resources a(c<T> paramc)
@@ -19,7 +19,7 @@ public abstract interface c<T>
       AppMethodBeat.i(166483);
       paramc = paramc.getActivity().getResources();
       if (paramc == null) {
-        p.gfZ();
+        p.gkB();
       }
       AppMethodBeat.o(166483);
       return paramc;

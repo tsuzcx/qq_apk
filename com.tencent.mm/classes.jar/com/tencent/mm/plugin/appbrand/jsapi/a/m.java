@@ -2,23 +2,23 @@ package com.tencent.mm.plugin.appbrand.jsapi.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.base.d;
-import com.tencent.mm.plugin.appbrand.page.ae;
+import com.tencent.mm.plugin.appbrand.page.ad;
 import d.g.b.p;
 import d.l;
 import org.json.JSONObject;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/canvas/JsApiUpdateHTMLCanvasElement;", "Lcom/tencent/mm/plugin/appbrand/jsapi/base/BaseUpdateViewJsApi;", "Lcom/tencent/mm/plugin/appbrand/page/AppBrandPageViewWC;", "()V", "enableGesture", "", "getViewId", "", "data", "Lorg/json/JSONObject;", "onUpdateView", "component", "viewId", "view", "Landroid/view/View;", "Companion", "plugin-appbrand-integration_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsapi/canvas/JsApiUpdateHTMLCanvasElement;", "Lcom/tencent/mm/plugin/appbrand/jsapi/base/BaseUpdateViewJsApi;", "Lcom/tencent/mm/plugin/appbrand/page/AppBrandPageViewWC;", "()V", "enableGesture", "", "getViewId", "", "data", "Lorg/json/JSONObject;", "onUpdateView", "component", "viewId", "view", "Landroid/view/View;", "Companion", "plugin-appbrand-integration_release"})
 public final class m
-  extends d<ae>
+  extends d<ad>
 {
   public static final int CTRL_INDEX = 595;
   public static final String NAME = "updateWebGLCanvas";
-  public static final a kJg;
+  public static final a kMv;
   
   static
   {
     AppMethodBeat.i(50507);
-    kJg = new a((byte)0);
+    kMv = new a((byte)0);
     AppMethodBeat.o(50507);
   }
   
@@ -31,12 +31,12 @@ public final class m
     return i;
   }
   
-  public final boolean biX()
+  public final boolean bjG()
   {
     return true;
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/canvas/JsApiUpdateHTMLCanvasElement$Companion;", "", "()V", "CTRL_INDEX", "", "NAME", "", "TAG", "plugin-appbrand-integration_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsapi/canvas/JsApiUpdateHTMLCanvasElement$Companion;", "", "()V", "CTRL_INDEX", "", "NAME", "", "TAG", "plugin-appbrand-integration_release"})
   public static final class a {}
 }
 

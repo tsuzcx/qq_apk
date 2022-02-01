@@ -1,10 +1,10 @@
 package com.tencent.mm.msgsubscription.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.u;
+import com.tencent.mm.model.v;
 import com.tencent.mm.msgsubscription.SubscribeMsgTmpItem;
 import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import d.a.j;
 import d.g.b.p;
 import d.l;
@@ -15,29 +15,29 @@ import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/msgsubscription/report/SubscribeMsgReporter;", "", "()V", "TAG", "", "TYPE_APP_BRAND", "", "TYPE_BIZ_SERVICE_BRAND", "mInfoButtonClickCountList", "", "mInfoButtonClickIndexList", "mTemplateCount", "sessionId", "", "addInfoButtonClick", "", "index", "buildInfoButtonClickInfoString", "Lkotlin/Pair;", "buildTemplateItemsJson", "subscribeMsgTmpItemList", "Lcom/tencent/mm/msgsubscription/SubscribeMsgTmpItem;", "createSession", "templateCount", "getUid", "bizUsername", "timestamp", "reportSubscribeAuthInBrandChat", "showType", "content", "reportSubscribeMsgListOfProfile", "switchOpen", "", "reportSubscribeMsgRequestDialogOp", "accType", "operationType", "reportSubscribeStatusOpInNotifyMessage", "templateId", "status", "templateName", "type", "ShowType", "plugin-comm_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/msgsubscription/report/SubscribeMsgReporter;", "", "()V", "TAG", "", "TYPE_APP_BRAND", "", "TYPE_BIZ_SERVICE_BRAND", "mInfoButtonClickCountList", "", "mInfoButtonClickIndexList", "mTemplateCount", "sessionId", "", "addInfoButtonClick", "", "index", "buildInfoButtonClickInfoString", "Lkotlin/Pair;", "buildTemplateItemsJson", "subscribeMsgTmpItemList", "Lcom/tencent/mm/msgsubscription/SubscribeMsgTmpItem;", "createSession", "templateCount", "getUid", "bizUsername", "timestamp", "reportSubscribeAuthInBrandChat", "showType", "content", "reportSubscribeMsgListOfProfile", "switchOpen", "", "reportSubscribeMsgRequestDialogOp", "accType", "operationType", "reportSubscribeStatusOpInNotifyMessage", "templateId", "status", "templateName", "type", "ShowType", "plugin-comm_release"})
 public final class a
 {
-  private static List<Integer> iBd;
-  private static List<Integer> iBe;
-  private static int iBf;
-  public static final a iBg;
+  private static List<Integer> iDW;
+  private static List<Integer> iDX;
+  private static int iDY;
+  public static final a iDZ;
   private static long sessionId;
   
   static
   {
     AppMethodBeat.i(149597);
-    iBg = new a();
+    iDZ = new a();
     sessionId = -1L;
-    iBd = (List)new ArrayList();
-    iBe = (List)new ArrayList();
+    iDW = (List)new ArrayList();
+    iDX = (List)new ArrayList();
     AppMethodBeat.o(149597);
   }
   
   private static String J(String paramString, long paramLong)
   {
     AppMethodBeat.i(149596);
-    paramString = u.aAm() + "#" + paramString + "#" + String.valueOf(paramLong);
+    paramString = v.aAC() + "#" + paramString + "#" + String.valueOf(paramLong);
     AppMethodBeat.o(149596);
     return paramString;
   }
@@ -48,8 +48,8 @@ public final class a
     p.h(paramString1, "bizUsername");
     p.h(paramString2, "templateId");
     p.h(paramString3, "templateName");
-    ad.v("MicroMsg.SubscribeMsgReporter", "alvinluo reportSubscribeStatusOpInNotifyMessage bizUsername: %s, showType: %d, templateId: %s, status: %d, templateName: %s", new Object[] { paramString1, Integer.valueOf(paramInt1), paramString2, Integer.valueOf(paramInt2), paramString3 });
-    g.yhR.f(17638, new Object[] { paramString1, Integer.valueOf(paramInt1), paramString2, Integer.valueOf(paramInt2), paramString3, Integer.valueOf(1) });
+    ae.v("MicroMsg.SubscribeMsgReporter", "alvinluo reportSubscribeStatusOpInNotifyMessage bizUsername: %s, showType: %d, templateId: %s, status: %d, templateName: %s", new Object[] { paramString1, Integer.valueOf(paramInt1), paramString2, Integer.valueOf(paramInt2), paramString3 });
+    g.yxI.f(17638, new Object[] { paramString1, Integer.valueOf(paramInt1), paramString2, Integer.valueOf(paramInt2), paramString3, Integer.valueOf(1) });
     AppMethodBeat.o(149594);
   }
   
@@ -59,7 +59,7 @@ public final class a
     p.h(paramString1, "bizUsername");
     p.h(paramString2, "content");
     paramString1 = J(paramString1, paramLong);
-    g.yhR.f(17639, new Object[] { paramString1, Integer.valueOf(paramInt), paramString2 });
+    g.yxI.f(17639, new Object[] { paramString1, Integer.valueOf(paramInt), paramString2 });
     AppMethodBeat.o(149595);
   }
   
@@ -70,14 +70,14 @@ public final class a
     p.h(paramList, "subscribeMsgTmpItemList");
     Object localObject1 = (List)new ArrayList();
     Object localObject2 = (List)new ArrayList();
-    Object localObject3 = (Iterable)iBe;
+    Object localObject3 = (Iterable)iDX;
     int i = 0;
     localObject3 = ((Iterable)localObject3).iterator();
     while (((Iterator)localObject3).hasNext())
     {
       Object localObject4 = ((Iterator)localObject3).next();
       if (i < 0) {
-        j.gfB();
+        j.gkd();
       }
       int j = ((Number)localObject4).intValue();
       if (j > 0)
@@ -90,8 +90,8 @@ public final class a
     localObject1 = new o(j.a((Iterable)localObject1, (CharSequence)"#", null, null, 0, null, null, 62), j.a((Iterable)localObject2, (CharSequence)"#", null, null, 0, null, null, 62));
     paramList = aA(paramList);
     localObject2 = J(paramString, paramLong);
-    ad.i("MicroMsg.SubscribeMsgReporter", "alvinluo reportSubscribeMsgRequestDialogOp templateJson: %s, bizUsername: %s, operationType: %d", new Object[] { paramList, paramString, Integer.valueOf(paramInt) });
-    g.yhR.f(17524, new Object[] { Integer.valueOf(0), paramList, Integer.valueOf(paramInt), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), paramString, "", ((o)localObject1).first, ((o)localObject1).second, Integer.valueOf(2), localObject2 });
+    ae.i("MicroMsg.SubscribeMsgReporter", "alvinluo reportSubscribeMsgRequestDialogOp templateJson: %s, bizUsername: %s, operationType: %d", new Object[] { paramList, paramString, Integer.valueOf(paramInt) });
+    g.yxI.f(17524, new Object[] { Integer.valueOf(0), paramList, Integer.valueOf(paramInt), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), paramString, "", ((o)localObject1).first, ((o)localObject1).second, Integer.valueOf(2), localObject2 });
     AppMethodBeat.o(149591);
   }
   
@@ -104,9 +104,9 @@ public final class a
     {
       SubscribeMsgTmpItem localSubscribeMsgTmpItem = (SubscribeMsgTmpItem)paramList.next();
       JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("templateId", localSubscribeMsgTmpItem.hAT);
-      localJSONObject.put("templateType", localSubscribeMsgTmpItem.iAq);
-      if (localSubscribeMsgTmpItem.izV == 1) {}
+      localJSONObject.put("templateId", localSubscribeMsgTmpItem.hDH);
+      localJSONObject.put("templateType", localSubscribeMsgTmpItem.iDj);
+      if (localSubscribeMsgTmpItem.iCO == 1) {}
       for (boolean bool = true;; bool = false)
       {
         localJSONObject.put("selected", bool);
@@ -126,16 +126,16 @@ public final class a
     AppMethodBeat.i(149593);
     p.h(paramString, "bizUsername");
     p.h(paramList, "subscribeMsgTmpItemList");
-    ad.i("MicroMsg.SubscribeMsgReporter", "alvinluo reportSubscribeMsgListOfProfile bizUsername: %s, switchOpen: %b, size: %d", new Object[] { paramString, Boolean.valueOf(paramBoolean), Integer.valueOf(paramList.size()) });
+    ae.i("MicroMsg.SubscribeMsgReporter", "alvinluo reportSubscribeMsgListOfProfile bizUsername: %s, switchOpen: %b, size: %d", new Object[] { paramString, Boolean.valueOf(paramBoolean), Integer.valueOf(paramList.size()) });
     JSONArray localJSONArray = new JSONArray();
     paramList = ((Iterable)paramList).iterator();
     if (paramList.hasNext())
     {
       SubscribeMsgTmpItem localSubscribeMsgTmpItem = (SubscribeMsgTmpItem)paramList.next();
       JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("scopeID", localSubscribeMsgTmpItem.hAT);
+      localJSONObject.put("scopeID", localSubscribeMsgTmpItem.hDH);
       localJSONObject.put("scopeName", localSubscribeMsgTmpItem.title);
-      if (localSubscribeMsgTmpItem.iAs == 1) {}
+      if (localSubscribeMsgTmpItem.iDl == 1) {}
       for (boolean bool = true;; bool = false)
       {
         localJSONObject.put("selected", bool);
@@ -143,8 +143,8 @@ public final class a
         break;
       }
     }
-    ad.v("MicroMsg.SubscribeMsgReporter", "alvinluo reportSubscribeMsgListOfProfile json: %s", new Object[] { localJSONArray.toString() });
-    paramList = g.yhR;
+    ae.v("MicroMsg.SubscribeMsgReporter", "alvinluo reportSubscribeMsgListOfProfile json: %s", new Object[] { localJSONArray.toString() });
+    paramList = g.yxI;
     if (paramBoolean) {
       i = 1;
     }
@@ -152,14 +152,14 @@ public final class a
     AppMethodBeat.o(149593);
   }
   
-  public static void qv(int paramInt)
+  public static void qy(int paramInt)
   {
     AppMethodBeat.i(149589);
-    ad.i("MicroMsg.SubscribeMsgReporter", "alvinluo createSession templateCount: %d", new Object[] { Integer.valueOf(paramInt) });
+    ae.i("MicroMsg.SubscribeMsgReporter", "alvinluo createSession templateCount: %d", new Object[] { Integer.valueOf(paramInt) });
     sessionId = System.currentTimeMillis();
-    iBf = paramInt;
-    iBd.clear();
-    iBe.clear();
+    iDY = paramInt;
+    iDW.clear();
+    iDX.clear();
     if (paramInt > 0)
     {
       ArrayList localArrayList = new ArrayList(paramInt);
@@ -169,17 +169,17 @@ public final class a
         localArrayList.add(Integer.valueOf(0));
         i += 1;
       }
-      iBe = (List)localArrayList;
+      iDX = (List)localArrayList;
     }
     AppMethodBeat.o(149589);
   }
   
-  public static void qw(int paramInt)
+  public static void qz(int paramInt)
   {
     AppMethodBeat.i(149590);
-    if (paramInt < iBf)
+    if (paramInt < iDY)
     {
-      List localList = iBe;
+      List localList = iDX;
       localList.set(paramInt, Integer.valueOf(((Number)localList.get(paramInt)).intValue() + 1));
     }
     AppMethodBeat.o(149590);

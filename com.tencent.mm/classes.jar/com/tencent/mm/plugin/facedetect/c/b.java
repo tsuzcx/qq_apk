@@ -3,15 +3,15 @@ package com.tencent.mm.plugin.facedetect.c;
 import android.content.Context;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public enum b
 {
   static
   {
     AppMethodBeat.i(103645);
-    rgI = new b("IML");
-    rgJ = new b[] { rgI };
+    roM = new b("IML");
+    roN = new b[] { roM };
     AppMethodBeat.o(103645);
   }
   
@@ -20,7 +20,7 @@ public enum b
   public static a a(Context paramContext, f paramf, int paramInt1, int paramInt2, Bundle paramBundle)
   {
     AppMethodBeat.i(103644);
-    ad.i("MicroMsg.FaceDetectControllerFactory", "alvinluo getController serverScene: %d", new Object[] { Integer.valueOf(paramInt1) });
+    ae.i("MicroMsg.FaceDetectControllerFactory", "alvinluo getController serverScene: %d", new Object[] { Integer.valueOf(paramInt1) });
     switch (paramInt1)
     {
     default: 

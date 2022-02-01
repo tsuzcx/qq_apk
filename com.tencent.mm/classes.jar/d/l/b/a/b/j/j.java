@@ -25,8 +25,8 @@ public final class j
       return paramCollection;
     }
     paramCollection = new LinkedList(paramCollection);
-    Object localObject1 = d.l.b.a.b.o.i.NGf;
-    localObject1 = i.b.guu();
+    Object localObject1 = d.l.b.a.b.o.i.Odl;
+    localObject1 = i.b.gyW();
     int i;
     if (!((Collection)paramCollection).isEmpty()) {
       i = 1;
@@ -35,9 +35,9 @@ public final class j
     {
       if (i != 0)
       {
-        Object localObject3 = d.a.j.jc((List)paramCollection);
-        Object localObject2 = d.l.b.a.b.o.i.NGf;
-        localObject2 = i.b.guu();
+        Object localObject3 = d.a.j.jl((List)paramCollection);
+        Object localObject2 = d.l.b.a.b.o.i.Odl;
+        localObject2 = i.b.gyW();
         Object localObject4 = i.a(localObject3, (Collection)paramCollection, paramb, (b)new b((d.l.b.a.b.o.i)localObject2));
         p.g(localObject4, "OverridingUtil.extractMe…nflictedHandles.add(it) }");
         if ((((Collection)localObject4).size() == 1) && (((d.l.b.a.b.o.i)localObject2).isEmpty()))
@@ -81,12 +81,12 @@ public final class j
     extends q
     implements b<D, D>
   {
-    public static final a Nwg;
+    public static final a NTm;
     
     static
     {
       AppMethodBeat.i(60007);
-      Nwg = new a();
+      NTm = new a();
       AppMethodBeat.o(60007);
     }
     

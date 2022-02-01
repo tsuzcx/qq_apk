@@ -8,22 +8,22 @@ import android.support.v7.widget.RecyclerView.t;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.AttributeSet;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import d.g.b.p;
 import d.l;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/view/manager/FinderStaggeredGridLayoutManager;", "Landroid/support/v7/widget/StaggeredGridLayoutManager;", "spanCount", "", "orientation", "(II)V", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "defStyleAttr", "defStyleRes", "(Landroid/content/Context;Landroid/util/AttributeSet;II)V", "onLayoutChildren", "", "recycler", "Landroid/support/v7/widget/RecyclerView$Recycler;", "Landroid/support/v7/widget/RecyclerView;", "state", "Landroid/support/v7/widget/RecyclerView$State;", "reflectMarkItemDecorInsetsDirty", "requestSimpleAnimationsInNextLayout", "scrollToPosition", "position", "scrollToPositionWithOffset", "offset", "scrollVerticallyBy", "dy", "smoothScrollToPosition", "recyclerView", "Companion", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/view/manager/FinderStaggeredGridLayoutManager;", "Landroid/support/v7/widget/StaggeredGridLayoutManager;", "spanCount", "", "orientation", "(II)V", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "defStyleAttr", "defStyleRes", "(Landroid/content/Context;Landroid/util/AttributeSet;II)V", "onLayoutChildren", "", "recycler", "Landroid/support/v7/widget/RecyclerView$Recycler;", "Landroid/support/v7/widget/RecyclerView;", "state", "Landroid/support/v7/widget/RecyclerView$State;", "reflectMarkItemDecorInsetsDirty", "requestSimpleAnimationsInNextLayout", "scrollToPosition", "position", "scrollToPositionWithOffset", "offset", "scrollVerticallyBy", "dy", "smoothScrollToPosition", "recyclerView", "Companion", "plugin-finder_release"})
 public class FinderStaggeredGridLayoutManager
   extends StaggeredGridLayoutManager
 {
-  public static final a sYE;
+  public static final FinderStaggeredGridLayoutManager.a tjS;
   
   static
   {
     AppMethodBeat.i(168540);
-    sYE = new a((byte)0);
+    tjS = new FinderStaggeredGridLayoutManager.a((byte)0);
     AppMethodBeat.o(168540);
   }
   
@@ -39,32 +39,32 @@ public class FinderStaggeredGridLayoutManager
   
   public final void a(RecyclerView paramRecyclerView, RecyclerView.t paramt, int paramInt)
   {
-    AppMethodBeat.i(205362);
-    if (ad.getLogLevel() <= 1) {
-      ad.d("Finder.StaggeredGridLayoutManager", "[smoothScrollToPosition] position=" + paramInt + " state=" + paramt);
+    AppMethodBeat.i(206008);
+    if (ae.getLogLevel() <= 1) {
+      ae.d("Finder.StaggeredGridLayoutManager", "[smoothScrollToPosition] position=" + paramInt + " state=" + paramt);
     }
     super.a(paramRecyclerView, paramt, paramInt);
-    AppMethodBeat.o(205362);
+    AppMethodBeat.o(206008);
   }
   
   public final void ag(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(205364);
-    if (ad.getLogLevel() <= 1) {
-      ad.d("Finder.StaggeredGridLayoutManager", "[scrollToPosition] position=" + paramInt1 + " offset=" + paramInt2);
+    AppMethodBeat.i(206010);
+    if (ae.getLogLevel() <= 1) {
+      ae.d("Finder.StaggeredGridLayoutManager", "[scrollToPosition] position=" + paramInt1 + " offset=" + paramInt2);
     }
     super.ag(paramInt1, paramInt2);
-    AppMethodBeat.o(205364);
+    AppMethodBeat.o(206010);
   }
   
   public final int b(int paramInt, RecyclerView.o paramo, RecyclerView.t paramt)
   {
-    AppMethodBeat.i(205361);
-    if (ad.getLogLevel() <= 1) {
-      ad.d("Finder.StaggeredGridLayoutManager", "[scrollVerticallyBy] dy=" + paramInt + " state=" + paramt);
+    AppMethodBeat.i(206007);
+    if (ae.getLogLevel() <= 1) {
+      ae.d("Finder.StaggeredGridLayoutManager", "[scrollVerticallyBy] dy=" + paramInt + " state=" + paramt);
     }
     paramInt = super.b(paramInt, paramo, paramt);
-    AppMethodBeat.o(205361);
+    AppMethodBeat.o(206007);
     return paramInt;
   }
   
@@ -79,19 +79,19 @@ public class FinderStaggeredGridLayoutManager
     }
     catch (IndexOutOfBoundsException paramo)
     {
-      ad.printErrStackTrace("Finder.StaggeredGridLayoutManager", (Throwable)paramo, "", new Object[0]);
+      ae.printErrStackTrace("Finder.StaggeredGridLayoutManager", (Throwable)paramo, "", new Object[0]);
       AppMethodBeat.o(168538);
     }
   }
   
   public final void ca(int paramInt)
   {
-    AppMethodBeat.i(205363);
-    if (ad.getLogLevel() <= 1) {
-      ad.d("Finder.StaggeredGridLayoutManager", "[scrollToPosition] position=" + paramInt + ' ');
+    AppMethodBeat.i(206009);
+    if (ae.getLogLevel() <= 1) {
+      ae.d("Finder.StaggeredGridLayoutManager", "[scrollToPosition] position=" + paramInt + ' ');
     }
     super.ca(paramInt);
-    AppMethodBeat.o(205363);
+    AppMethodBeat.o(206009);
   }
   
   public final void lA()
@@ -110,7 +110,7 @@ public class FinderStaggeredGridLayoutManager
       if (localObject != null)
       {
         localMethod.invoke(localObject, new Object[0]);
-        ad.i("Finder.StaggeredGridLayoutManager", "markItemDecorInsetsDirty");
+        ae.i("Finder.StaggeredGridLayoutManager", "markItemDecorInsetsDirty");
         AppMethodBeat.o(168539);
         return;
       }
@@ -119,17 +119,14 @@ public class FinderStaggeredGridLayoutManager
     }
     catch (Exception localException)
     {
-      ad.printErrStackTrace("Finder.StaggeredGridLayoutManager", (Throwable)localException, "", new Object[0]);
+      ae.printErrStackTrace("Finder.StaggeredGridLayoutManager", (Throwable)localException, "", new Object[0]);
       AppMethodBeat.o(168539);
     }
   }
-  
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/view/manager/FinderStaggeredGridLayoutManager$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
-  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.view.manager.FinderStaggeredGridLayoutManager
  * JD-Core Version:    0.7.0.1
  */

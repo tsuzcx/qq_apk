@@ -4,7 +4,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class b
 {
-  public static String auo(String paramString)
+  public static String avD(String paramString)
   {
     AppMethodBeat.i(145999);
     if (paramString.isEmpty())

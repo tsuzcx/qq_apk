@@ -12,8 +12,8 @@ import com.tencent.mm.ipcinvoker.h;
 import com.tencent.mm.plugin.webview.luggage.jsapi.bq;
 import com.tencent.mm.plugin.webview.luggage.jsapi.bq.a;
 import com.tencent.mm.plugin.webview.luggage.u;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import org.json.JSONObject;
 
 public class k
@@ -24,11 +24,11 @@ public class k
   public final void b(final com.tencent.luggage.d.b<a>.a paramb)
   {
     AppMethodBeat.i(83069);
-    ad.i("MicroMsg.JsApiGetGameData", "invokeInOwn");
+    ae.i("MicroMsg.JsApiGetGameData", "invokeInOwn");
     Object localObject2 = paramb.chh.cgn;
     if (localObject2 == null)
     {
-      ad.e("MicroMsg.JsApiGetGameData", "data is null");
+      ae.e("MicroMsg.JsApiGetGameData", "data is null");
       paramb.a("null_data", null);
       AppMethodBeat.o(83069);
       return;
@@ -36,14 +36,14 @@ public class k
     Object localObject3 = (a)paramb.chg;
     if ((localObject3 instanceof com.tencent.mm.plugin.game.luggage.f.g))
     {
-      localObject1 = ((com.tencent.mm.plugin.game.luggage.f.g)localObject3).DOL.getAppId();
-      if (!bt.isNullOrNil((String)localObject1)) {
+      localObject1 = ((com.tencent.mm.plugin.game.luggage.f.g)localObject3).EgL.getAppId();
+      if (!bu.isNullOrNil((String)localObject1)) {
         break label221;
       }
-      localObject1 = Uri.parse(bt.nullAsNil(((com.tencent.mm.plugin.game.luggage.f.g)localObject3).bQm()));
+      localObject1 = Uri.parse(bu.nullAsNil(((com.tencent.mm.plugin.game.luggage.f.g)localObject3).bRn()));
       if ((((Uri)localObject1).getHost() == null) || (!((Uri)localObject1).getHost().equals("game.weixin.qq.com")))
       {
-        ad.i("MicroMsg.JsApiGetGameData", "appId is null");
+        ae.i("MicroMsg.JsApiGetGameData", "appId is null");
         paramb.a("appid_null", null);
         AppMethodBeat.o(83069);
         return;
@@ -54,9 +54,9 @@ public class k
     for (;;)
     {
       localObject2 = ((JSONObject)localObject2).optString("key");
-      if (bt.isNullOrNil((String)localObject2))
+      if (bu.isNullOrNil((String)localObject2))
       {
-        ad.i("MicroMsg.JsApiGetGameData", "key is null");
+        ae.i("MicroMsg.JsApiGetGameData", "key is null");
         paramb.a("null_key", null);
         AppMethodBeat.o(83069);
         return;
@@ -70,7 +70,7 @@ public class k
     }
   }
   
-  public final int ccO()
+  public final int ced()
   {
     return 0;
   }

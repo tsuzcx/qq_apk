@@ -1,65 +1,57 @@
 package com.tencent.mm.model;
 
-import android.app.PendingIntent;
-import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
-import java.util.Map;
-import java.util.UUID;
 
 public final class ck
 {
-  Map<String, String> hCE;
-  
-  public ck(Map<String, String> paramMap)
+  public static boolean bW(Object paramObject)
   {
-    this.hCE = paramMap;
+    AppMethodBeat.i(150192);
+    if ((paramObject instanceof Boolean)) {
+      try
+      {
+        boolean bool = ((Boolean)paramObject).booleanValue();
+        AppMethodBeat.o(150192);
+        return bool;
+      }
+      catch (Exception paramObject) {}
+    }
+    AppMethodBeat.o(150192);
+    return false;
   }
   
-  final PendingIntent E(String paramString, long paramLong)
+  public static String c(Object paramObject, String paramString)
   {
-    AppMethodBeat.i(193115);
-    String str;
-    if (bt.isNullOrNil(paramString))
-    {
-      ad.e("MicroMsg.WakenPushMsgExtension", "dzmonster:dealDeepLink[url is null]");
-      str = "com.tencent.mm.ui.LauncherUI";
+    if ((paramObject instanceof String)) {
+      try
+      {
+        paramObject = (String)paramObject;
+        return paramObject;
+      }
+      catch (Exception paramObject) {}
     }
-    for (;;)
-    {
-      Intent localIntent = new Intent();
-      localIntent.setClassName(aj.getContext(), str);
-      localIntent.setFlags(536870912);
-      localIntent.putExtra("LauncherUI.Show.Update.DialogMsg", (String)this.hCE.get(".sysmsg.WakenPush.PushContent"));
-      if (!paramString.equals("weixin://dl/update_newest_version")) {
-        localIntent.putExtra("LauncherUI.Show.Update.Url", (String)this.hCE.get(".sysmsg.WakenPush.Jump"));
-      }
-      g.yhR.idkeyStat(405L, 32L, 1L, true);
-      paramString = PendingIntent.getActivity(aj.getContext(), UUID.randomUUID().hashCode(), localIntent, 134217728);
-      AppMethodBeat.o(193115);
-      return paramString;
-      if (((0x4 & paramLong) == 4L) && (paramString.startsWith("weixin://dl/moments")))
+    return paramString;
+  }
+  
+  public static int getInt(Object paramObject, int paramInt)
+  {
+    AppMethodBeat.i(150191);
+    if ((paramObject instanceof Integer)) {
+      try
       {
-        str = "com.tencent.mm.plugin.sns.ui.SnsTimeLineUI";
+        int i = ((Integer)paramObject).intValue();
+        AppMethodBeat.o(150191);
+        return i;
       }
-      else if (((0x40000 & paramLong) == 262144L) && (paramString.startsWith("weixin://dl/recommendation")))
-      {
-        str = "com.tencent.mm.plugin.subapp.ui.friend.FMessageConversationUI";
-      }
-      else
-      {
-        ad.e("MicroMsg.WakenPushMsgExtension", "dzmonster:dealDeepLink[unable to deal with the deep link:%s)", new Object[] { paramString });
-        str = "com.tencent.mm.ui.LauncherUI";
-      }
+      catch (Exception paramObject) {}
     }
+    AppMethodBeat.o(150191);
+    return paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.model.ck
  * JD-Core Version:    0.7.0.1
  */

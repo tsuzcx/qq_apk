@@ -12,23 +12,23 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.ui.z;
 
 public class ScannerFlashSwitcher
   extends LinearLayout
 {
   public boolean Vp;
-  boolean cMS;
-  private ImageView yum;
-  private TextView yun;
-  private boolean yuo;
+  boolean cNB;
+  private ImageView yKn;
+  private TextView yKo;
+  private boolean yKp;
   
   public ScannerFlashSwitcher(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(91061);
-    this.yuo = false;
+    this.yKp = false;
     init();
     AppMethodBeat.o(91061);
   }
@@ -37,7 +37,7 @@ public class ScannerFlashSwitcher
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(91062);
-    this.yuo = false;
+    this.yKp = false;
     init();
     AppMethodBeat.o(91062);
   }
@@ -45,41 +45,41 @@ public class ScannerFlashSwitcher
   private void init()
   {
     AppMethodBeat.i(91063);
-    z.jO(getContext()).inflate(2131495308, this, true);
-    this.yum = ((ImageView)findViewById(2131300127));
-    this.yun = ((TextView)findViewById(2131300126));
-    this.yuo = true;
+    z.jV(getContext()).inflate(2131495308, this, true);
+    this.yKn = ((ImageView)findViewById(2131300127));
+    this.yKo = ((TextView)findViewById(2131300126));
+    this.yKp = true;
     AppMethodBeat.o(91063);
   }
   
-  public final void dMi()
+  public final void dPB()
   {
     AppMethodBeat.i(91066);
-    ad.i("MicroMsg.ScannerFlashSwitcher", "openFlashStatus");
+    ae.i("MicroMsg.ScannerFlashSwitcher", "openFlashStatus");
     this.Vp = true;
-    this.yum.setImageResource(2131691128);
-    this.yun.setText(2131762814);
+    this.yKn.setImageResource(2131691128);
+    this.yKo.setText(2131762814);
     AppMethodBeat.o(91066);
   }
   
-  public final void dMj()
+  public final void dPC()
   {
     AppMethodBeat.i(91067);
-    ad.i("MicroMsg.ScannerFlashSwitcher", "closeFlashStatus");
+    ae.i("MicroMsg.ScannerFlashSwitcher", "closeFlashStatus");
     this.Vp = false;
-    this.yum.setImageResource(2131691127);
-    this.yun.setText(2131762815);
+    this.yKn.setImageResource(2131691127);
+    this.yKo.setText(2131762815);
     AppMethodBeat.o(91067);
   }
   
   public final void hide()
   {
     AppMethodBeat.i(91065);
-    ad.i("MicroMsg.ScannerFlashSwitcher", "hide");
+    ae.i("MicroMsg.ScannerFlashSwitcher", "hide");
     setEnabled(false);
-    this.cMS = false;
-    this.yum.animate().alpha(0.0F).setDuration(500L);
-    this.yun.animate().alpha(0.0F).setDuration(500L).setListener(new AnimatorListenerAdapter()
+    this.cNB = false;
+    this.yKn.animate().alpha(0.0F).setDuration(500L);
+    this.yKo.animate().alpha(0.0F).setDuration(500L).setListener(new AnimatorListenerAdapter()
     {
       public final void onAnimationEnd(Animator paramAnonymousAnimator)
       {
@@ -95,14 +95,14 @@ public class ScannerFlashSwitcher
   public final void show()
   {
     AppMethodBeat.i(91064);
-    ad.i("MicroMsg.ScannerFlashSwitcher", "show, isFirstShow: %s", new Object[] { Boolean.valueOf(this.yuo) });
-    this.cMS = true;
-    if (this.yuo)
+    ae.i("MicroMsg.ScannerFlashSwitcher", "show, isFirstShow: %s", new Object[] { Boolean.valueOf(this.yKp) });
+    this.cNB = true;
+    if (this.yKp)
     {
-      this.yum.setAlpha(0.0F);
-      this.yun.setAlpha(0.0F);
+      this.yKn.setAlpha(0.0F);
+      this.yKo.setAlpha(0.0F);
       setVisibility(0);
-      this.yun.animate().alpha(1.0F).setListener(null).setDuration(500L);
+      this.yKo.animate().alpha(1.0F).setListener(null).setDuration(500L);
       ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
       localValueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
       {
@@ -127,7 +127,7 @@ public class ScannerFlashSwitcher
         }
       });
       localValueAnimator.start();
-      this.yuo = false;
+      this.yKp = false;
     }
     for (;;)
     {
@@ -135,8 +135,8 @@ public class ScannerFlashSwitcher
       AppMethodBeat.o(91064);
       return;
       setVisibility(0);
-      this.yun.animate().alpha(1.0F).setDuration(500L).setListener(null).start();
-      this.yum.animate().alpha(1.0F).setDuration(500L).setListener(null).start();
+      this.yKo.animate().alpha(1.0F).setDuration(500L).setListener(null).start();
+      this.yKn.animate().alpha(1.0F).setDuration(500L).setListener(null).start();
     }
   }
 }

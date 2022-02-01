@@ -16,19 +16,20 @@ import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.graphics.a.c;
-import com.tencent.mm.model.ba;
+import com.tencent.mm.model.bc;
 import com.tencent.mm.modelcontrol.d;
 import com.tencent.mm.modelvideo.s;
 import com.tencent.mm.plugin.report.service.g;
+import com.tencent.mm.plugin.sight.base.e;
 import com.tencent.mm.pluginsdk.ui.tools.VideoPlayerTextureView;
 import com.tencent.mm.pluginsdk.ui.tools.VideoTextureView;
 import com.tencent.mm.pluginsdk.ui.tools.h.a;
 import com.tencent.mm.pluginsdk.ui.tools.t;
-import com.tencent.mm.protocal.protobuf.dki;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.sdk.platformtools.n;
+import com.tencent.mm.protocal.protobuf.dld;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.o;
 import com.tencent.mm.ui.base.MultiTouchImageView;
 import com.tencent.mm.ui.base.WxImageView;
 import com.tencent.mm.ui.widget.MMPinProgressBtn;
@@ -36,61 +37,61 @@ import java.util.HashMap;
 
 public final class k
 {
-  public b JPM;
-  public WxImageView JTA;
-  public boolean JTB;
-  int JTC;
-  int JTD;
-  public b.b JTa;
-  public HashMap<String, Boolean> JTb;
-  public RelativeLayout JTc;
-  public com.tencent.mm.pluginsdk.ui.tools.h JTd;
-  public ImageView JTe;
-  public ImageView JTf;
-  public MMPinProgressBtn JTg;
-  public View JTh;
-  public RelativeLayout JTi;
-  public ImageView JTj;
-  public ImageView JTk;
-  public com.tencent.mm.pluginsdk.ui.tools.h JTl;
-  public MMPinProgressBtn JTm;
-  public TextView JTn;
-  public RelativeLayout JTo;
-  public TextView JTp;
-  public LinearLayout JTq;
-  public TextView JTr;
-  public TextView JTs;
-  public ImageView JTt;
-  public ProgressBar JTu;
-  public ProgressBar JTv;
-  public LinearLayout JTw;
-  public TextView JTx;
-  public ImageView JTy;
-  public MultiTouchImageView JTz;
+  public b KkX;
+  public b.b KoA;
+  public HashMap<String, Boolean> KoB;
+  public RelativeLayout KoC;
+  public com.tencent.mm.pluginsdk.ui.tools.h KoD;
+  public ImageView KoE;
+  public ImageView KoF;
+  public MMPinProgressBtn KoG;
+  public View KoH;
+  public RelativeLayout KoI;
+  public ImageView KoJ;
+  public ImageView KoK;
+  public com.tencent.mm.pluginsdk.ui.tools.h KoL;
+  public MMPinProgressBtn KoM;
+  public TextView KoN;
+  public RelativeLayout KoO;
+  public TextView KoP;
+  public LinearLayout KoQ;
+  public TextView KoR;
+  public TextView KoS;
+  public ImageView KoT;
+  public ProgressBar KoU;
+  public ProgressBar KoV;
+  public LinearLayout KoW;
+  public TextView KoX;
+  public ImageView KoY;
+  public MultiTouchImageView KoZ;
+  public WxImageView Kpa;
+  public boolean Kpb;
+  int Kpc;
+  int Kpd;
   long createTime;
-  String dyU;
+  String dzZ;
   String fileId;
   public int mPosition;
-  public TextView rzW;
-  public View tPw;
-  int zGB;
+  public TextView rIh;
+  public View uan;
+  int zXJ;
   
   @TargetApi(11)
   public k(b paramb, View paramView)
   {
     AppMethodBeat.i(36331);
-    this.JTb = new HashMap();
-    this.zGB = 0;
-    this.JTC = 0;
-    this.JTD = 0;
-    this.dyU = "";
-    this.tPw = paramView;
-    this.JPM = paramb;
-    this.JTz = ((MultiTouchImageView)paramView.findViewById(2131300914));
-    this.JTA = ((WxImageView)paramView.findViewById(2131307106));
-    this.JTv = ((ProgressBar)paramView.findViewById(2131300931));
-    if (this.JTA != null) {
-      this.JTA.setForceTileFlag(c.guy);
+    this.KoB = new HashMap();
+    this.zXJ = 0;
+    this.Kpc = 0;
+    this.Kpd = 0;
+    this.dzZ = "";
+    this.uan = paramView;
+    this.KkX = paramb;
+    this.KoZ = ((MultiTouchImageView)paramView.findViewById(2131300914));
+    this.Kpa = ((WxImageView)paramView.findViewById(2131307106));
+    this.KoV = ((ProgressBar)paramView.findViewById(2131300931));
+    if (this.Kpa != null) {
+      this.Kpa.setForceTileFlag(c.gxf);
     }
     AppMethodBeat.o(36331);
   }
@@ -106,10 +107,10 @@ public final class k
   
   public final void a(int paramInt1, int paramInt2, int paramInt3, String paramString1, String paramString2, long paramLong)
   {
-    this.zGB = paramInt1;
-    this.JTC = paramInt2;
-    this.JTD = paramInt3;
-    this.dyU = paramString1;
+    this.zXJ = paramInt1;
+    this.Kpc = paramInt2;
+    this.Kpd = paramInt3;
+    this.dzZ = paramString1;
     this.fileId = paramString2;
     this.createTime = paramLong;
   }
@@ -117,47 +118,75 @@ public final class k
   public final void c(boolean paramBoolean, float paramFloat)
   {
     AppMethodBeat.i(36337);
-    ad.i("MicroMsg.ImageGalleryViewHolder", "%d switch video model isVideoPlay[%b] alpha[%f]", new Object[] { Integer.valueOf(hashCode()), Boolean.valueOf(paramBoolean), Float.valueOf(paramFloat) });
+    ae.i("MicroMsg.ImageGalleryViewHolder", "%d switch video model isVideoPlay[%b] alpha[%f]", new Object[] { Integer.valueOf(hashCode()), Boolean.valueOf(paramBoolean), Float.valueOf(paramFloat) });
     if (paramBoolean)
     {
-      View localView = (View)fGB().JTl;
+      View localView = (View)fKM().KoL;
       localView.setAlpha(paramFloat);
       aH(localView, 0);
       if (paramFloat >= 1.0D)
       {
-        aH(fGB().JTj, 8);
-        aH(fGB().JTk, 8);
+        aH(fKM().KoJ, 8);
+        aH(fKM().KoK, 8);
       }
       AppMethodBeat.o(36337);
       return;
     }
-    aH((View)fGB().JTl, 8);
-    aH(fGB().JTj, 0);
-    aH(fGB().JTk, 0);
+    aH((View)fKM().KoL, 8);
+    aH(fKM().KoJ, 0);
+    aH(fKM().KoK, 0);
     AppMethodBeat.o(36337);
   }
   
-  public final k fGA()
+  public final k fKJ()
+  {
+    AppMethodBeat.i(36333);
+    if (this.KoQ == null)
+    {
+      this.KoQ = ((LinearLayout)((ViewStub)this.uan.findViewById(2131300934)).inflate());
+      this.KoU = ((ProgressBar)this.KoQ.findViewById(2131299229));
+      this.KoR = ((TextView)this.KoQ.findViewById(2131299230));
+      this.KoS = ((TextView)this.KoQ.findViewById(2131299228));
+      this.KoT = ((ImageView)this.KoQ.findViewById(2131299231));
+    }
+    AppMethodBeat.o(36333);
+    return this;
+  }
+  
+  public final k fKK()
+  {
+    AppMethodBeat.i(36334);
+    if (this.KoW == null)
+    {
+      this.KoW = ((LinearLayout)((ViewStub)this.uan.findViewById(2131300932)).inflate());
+      this.KoY = ((ImageView)this.KoW.findViewById(2131299204));
+      this.KoX = ((TextView)this.KoW.findViewById(2131299205));
+    }
+    AppMethodBeat.o(36334);
+    return this;
+  }
+  
+  public final k fKL()
   {
     AppMethodBeat.i(36335);
-    if (this.JTc == null)
+    if (this.KoC == null)
     {
-      this.JTc = ((RelativeLayout)((ViewStub)this.tPw.findViewById(2131304816)).inflate());
-      this.JTd = t.hE(this.tPw.getContext());
+      this.KoC = ((RelativeLayout)((ViewStub)this.uan.findViewById(2131304816)).inflate());
+      this.KoD = t.hK(this.uan.getContext());
       RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
       localLayoutParams.addRule(13);
-      this.JTc.addView((View)this.JTd, localLayoutParams);
-      ((View)this.JTd).setVisibility(8);
-      this.JTh = this.JTc.findViewById(2131305896);
-      this.JTh.setVisibility(8);
-      this.rzW = ((TextView)this.JTc.findViewById(2131304777));
-      this.JTg = ((MMPinProgressBtn)this.JTc.findViewById(2131304805));
-      this.JTg.setVisibility(8);
-      this.JTe = ((ImageView)this.JTc.findViewById(2131304812));
-      this.JTf = ((ImageView)this.JTc.findViewById(2131306414));
-      this.JTd.setVideoCallback(new h.a()
+      this.KoC.addView((View)this.KoD, localLayoutParams);
+      ((View)this.KoD).setVisibility(8);
+      this.KoH = this.KoC.findViewById(2131305896);
+      this.KoH.setVisibility(8);
+      this.rIh = ((TextView)this.KoC.findViewById(2131304777));
+      this.KoG = ((MMPinProgressBtn)this.KoC.findViewById(2131304805));
+      this.KoG.setVisibility(8);
+      this.KoE = ((ImageView)this.KoC.findViewById(2131304812));
+      this.KoF = ((ImageView)this.KoC.findViewById(2131306414));
+      this.KoD.setVideoCallback(new h.a()
       {
-        public final int eT(int paramAnonymousInt1, int paramAnonymousInt2)
+        public final int eU(int paramAnonymousInt1, int paramAnonymousInt2)
         {
           return 0;
         }
@@ -167,35 +196,35 @@ public final class k
         public final void onCompletion()
         {
           AppMethodBeat.i(36320);
-          k.this.JTd.start();
-          k.this.JTh.post(new Runnable()
+          k.this.KoD.start();
+          k.this.KoH.post(new Runnable()
           {
             public final void run()
             {
               AppMethodBeat.i(36318);
-              if ((k.this.JTh == null) || (k.this.JTh.getVisibility() == 0))
+              if ((k.this.KoH == null) || (k.this.KoH.getVisibility() == 0))
               {
                 AppMethodBeat.o(36318);
                 return;
               }
-              if ((k.this.JTh.getTag() != null) && ((k.this.JTh.getTag() instanceof s)))
+              if ((k.this.KoH.getTag() != null) && ((k.this.KoH.getTag() instanceof s)))
               {
-                s locals = (s)k.this.JTh.getTag();
-                if ((locals.iun != null) && (!bt.isNullOrNil(locals.iun.hCe)))
+                s locals = (s)k.this.KoH.getTag();
+                if ((locals.ixh != null) && (!bu.isNullOrNil(locals.ixh.hET)))
                 {
-                  k.this.JTh.setVisibility(8);
+                  k.this.KoH.setVisibility(8);
                   AppMethodBeat.o(36318);
                   return;
                 }
-                if ((locals.iun != null) && (!bt.isNullOrNil(locals.iun.hCh)) && (!bt.isNullOrNil(locals.iun.hCi)))
+                if ((locals.ixh != null) && (!bu.isNullOrNil(locals.ixh.hEW)) && (!bu.isNullOrNil(locals.ixh.hEX)))
                 {
-                  k.this.JTh.setVisibility(8);
+                  k.this.KoH.setVisibility(8);
                   AppMethodBeat.o(36318);
                   return;
                 }
               }
-              k.this.JTh.setVisibility(0);
-              k.this.JTh.startAnimation(AnimationUtils.loadAnimation(k.this.JTh.getContext(), 2130772047));
+              k.this.KoH.setVisibility(0);
+              k.this.KoH.startAnimation(AnimationUtils.loadAnimation(k.this.KoH.getContext(), 2130772047));
               AppMethodBeat.o(36318);
             }
           });
@@ -205,120 +234,120 @@ public final class k
         public final void onError(int paramAnonymousInt1, int paramAnonymousInt2)
         {
           AppMethodBeat.i(36319);
-          k.this.JTd.stop();
-          final String str = (String)((View)k.this.JTd).getTag();
-          com.tencent.mm.sdk.a.b.O(Base64.encodeToString((com.tencent.mm.plugin.sight.base.e.dPZ() + "[ImageGallery] on play sight error, what=" + paramAnonymousInt1 + ", extra=" + paramAnonymousInt2 + ", path=" + bt.bI(str, "")).getBytes(), 2), "FullScreenPlaySight");
-          aq.f(new Runnable()
+          k.this.KoD.stop();
+          final String str = (String)((View)k.this.KoD).getTag();
+          com.tencent.mm.sdk.a.b.O(Base64.encodeToString((e.dTw() + "[ImageGallery] on play sight error, what=" + paramAnonymousInt1 + ", extra=" + paramAnonymousInt2 + ", path=" + bu.bI(str, "")).getBytes(), 2), "FullScreenPlaySight");
+          ar.f(new Runnable()
           {
             public final void run()
             {
               AppMethodBeat.i(36317);
-              if (bt.isNullOrNil(str))
+              if (bu.isNullOrNil(str))
               {
-                com.tencent.mm.ui.base.h.l(k.this.JPM.JPk, 2131764680, 2131757274);
+                com.tencent.mm.ui.base.h.l(k.this.KkX.Kkw, 2131764680, 2131757274);
                 AppMethodBeat.o(36317);
                 return;
               }
               Object localObject = new Intent();
               ((Intent)localObject).setAction("android.intent.action.VIEW");
-              n.a(k.this.JPM.JPk, (Intent)localObject, new com.tencent.mm.vfs.e(str), "video/*");
+              o.a(k.this.KkX.Kkw, (Intent)localObject, new com.tencent.mm.vfs.k(str), "video/*");
               try
               {
-                ImageGalleryUI localImageGalleryUI = k.this.JPM.JPk;
-                localObject = Intent.createChooser((Intent)localObject, k.this.JPM.JPk.getContext().getString(2131759030));
+                ImageGalleryUI localImageGalleryUI = k.this.KkX.Kkw;
+                localObject = Intent.createChooser((Intent)localObject, k.this.KkX.Kkw.getContext().getString(2131759030));
                 localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
-                com.tencent.mm.hellhoundlib.a.a.a(localImageGalleryUI, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahp(), "com/tencent/mm/ui/chatting/gallery/ImageGalleryViewHolder$1$1", "run", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-                localImageGalleryUI.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mq(0));
+                com.tencent.mm.hellhoundlib.a.a.a(localImageGalleryUI, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahE(), "com/tencent/mm/ui/chatting/gallery/ImageGalleryViewHolder$1$1", "run", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+                localImageGalleryUI.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mt(0));
                 com.tencent.mm.hellhoundlib.a.a.a(localImageGalleryUI, "com/tencent/mm/ui/chatting/gallery/ImageGalleryViewHolder$1$1", "run", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
                 AppMethodBeat.o(36317);
                 return;
               }
               catch (Exception localException)
               {
-                ad.e("MicroMsg.ImageGalleryViewHolder", "startActivity fail, activity not found");
-                com.tencent.mm.ui.base.h.l(k.this.JPM.JPk, 2131758931, 2131758932);
+                ae.e("MicroMsg.ImageGalleryViewHolder", "startActivity fail, activity not found");
+                com.tencent.mm.ui.base.h.l(k.this.KkX.Kkw, 2131758931, 2131758932);
                 AppMethodBeat.o(36317);
               }
             }
           });
-          k.this.JTb.put(str, Boolean.TRUE);
+          k.this.KoB.put(str, Boolean.TRUE);
           AppMethodBeat.o(36319);
         }
         
         public final void ta() {}
       });
-      this.rzW.setOnClickListener(new k.2(this));
+      this.rIh.setOnClickListener(new k.2(this));
     }
     AppMethodBeat.o(36335);
     return this;
   }
   
-  public final k fGB()
+  public final k fKM()
   {
     AppMethodBeat.i(36336);
-    if (this.JTi == null)
+    if (this.KoI == null)
     {
-      if (this.JTA != null) {
-        this.JTA.setVisibility(8);
+      if (this.Kpa != null) {
+        this.Kpa.setVisibility(8);
       }
-      if (this.JTz != null) {
-        this.JTz.setVisibility(8);
+      if (this.KoZ != null) {
+        this.KoZ.setVisibility(8);
       }
-      this.JTi = ((RelativeLayout)((ViewStub)this.tPw.findViewById(2131306392)).inflate());
-      this.JTj = ((ImageView)this.JTi.findViewById(2131306347));
-      this.JTk = ((ImageView)this.JTi.findViewById(2131306413));
-      this.JTk.setOnClickListener(new View.OnClickListener()
+      this.KoI = ((RelativeLayout)((ViewStub)this.uan.findViewById(2131306392)).inflate());
+      this.KoJ = ((ImageView)this.KoI.findViewById(2131306347));
+      this.KoK = ((ImageView)this.KoI.findViewById(2131306413));
+      this.KoK.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(36323);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
           localb.bd(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/chatting/gallery/ImageGalleryViewHolder$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-          if (k.this.JPM != null)
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/chatting/gallery/ImageGalleryViewHolder$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+          if (k.this.KkX != null)
           {
-            ad.i("MicroMsg.ImageGalleryViewHolder", "%d video wait play on click, play video %d", new Object[] { Integer.valueOf(k.this.hashCode()), Integer.valueOf(k.this.mPosition) });
-            k.this.JPM.adA(k.this.mPosition);
+            ae.i("MicroMsg.ImageGalleryViewHolder", "%d video wait play on click, play video %d", new Object[] { Integer.valueOf(k.this.hashCode()), Integer.valueOf(k.this.mPosition) });
+            k.this.KkX.aeh(k.this.mPosition);
           }
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/chatting/gallery/ImageGalleryViewHolder$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(36323);
         }
       });
-      d.aGQ();
-      if (!d.aHc()) {
+      d.aHh();
+      if (!d.aHt()) {
         break label309;
       }
-      this.JTl = new VideoPlayerTextureView(this.tPw.getContext());
-      g.yhR.idkeyStat(354L, 150L, 1L, false);
+      this.KoL = new VideoPlayerTextureView(this.uan.getContext());
+      g.yxI.idkeyStat(354L, 150L, 1L, false);
     }
     for (;;)
     {
-      this.JTn = ((TextView)this.tPw.findViewById(2131298943));
-      this.JTl.setPlayProgressCallback(true);
+      this.KoN = ((TextView)this.uan.findViewById(2131298943));
+      this.KoL.setPlayProgressCallback(true);
       RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
-      this.JTi.addView((View)this.JTl, 1, localLayoutParams);
-      this.JTm = ((MMPinProgressBtn)this.JTi.findViewById(2131306331));
-      this.JTm.setVisibility(8);
-      ((View)this.JTl).setVisibility(8);
-      this.JTo = ((RelativeLayout)this.tPw.findViewById(2131306339));
-      this.JTp = ((TextView)this.tPw.findViewById(2131306340));
-      this.JTl.setVideoCallback(new h.a()
+      this.KoI.addView((View)this.KoL, 1, localLayoutParams);
+      this.KoM = ((MMPinProgressBtn)this.KoI.findViewById(2131306331));
+      this.KoM.setVisibility(8);
+      ((View)this.KoL).setVisibility(8);
+      this.KoO = ((RelativeLayout)this.uan.findViewById(2131306339));
+      this.KoP = ((TextView)this.uan.findViewById(2131306340));
+      this.KoL.setVideoCallback(new h.a()
       {
-        public final int eT(final int paramAnonymousInt1, final int paramAnonymousInt2)
+        public final int eU(final int paramAnonymousInt1, final int paramAnonymousInt2)
         {
           AppMethodBeat.i(36329);
-          ad.i("MicroMsg.ImageGalleryViewHolder", "dkvideo onplaytime:%d total:%d,%d size:%d cnt:%d user:%s", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(k.this.zGB), Integer.valueOf(paramAnonymousInt2), Integer.valueOf(k.this.JTC), Integer.valueOf(k.this.JTD), k.this.dyU });
-          ba.ajF().ay(new Runnable()
+          ae.i("MicroMsg.ImageGalleryViewHolder", "dkvideo onplaytime:%d total:%d,%d size:%d cnt:%d user:%s", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(k.this.zXJ), Integer.valueOf(paramAnonymousInt2), Integer.valueOf(k.this.Kpc), Integer.valueOf(k.this.Kpd), k.this.dzZ });
+          bc.ajU().aw(new Runnable()
           {
             public final void run()
             {
               AppMethodBeat.i(36325);
-              g localg = g.yhR;
-              int j = k.this.JTC;
+              g localg = g.yxI;
+              int j = k.this.Kpc;
               if (paramAnonymousInt2 <= 0) {}
-              for (int i = k.this.zGB * 1000;; i = paramAnonymousInt2)
+              for (int i = k.this.zXJ * 1000;; i = paramAnonymousInt2)
               {
-                localg.f(12084, new Object[] { Integer.valueOf(j), Integer.valueOf(i), Integer.valueOf(paramAnonymousInt1), Integer.valueOf(1), k.this.dyU, Integer.valueOf(k.this.JTD), k.this.fileId, Long.valueOf(k.this.createTime) });
+                localg.f(12084, new Object[] { Integer.valueOf(j), Integer.valueOf(i), Integer.valueOf(paramAnonymousInt1), Integer.valueOf(1), k.this.dzZ, Integer.valueOf(k.this.Kpd), k.this.fileId, Long.valueOf(k.this.createTime) });
                 AppMethodBeat.o(36325);
                 return;
               }
@@ -333,18 +362,18 @@ public final class k
         public final void onCompletion()
         {
           AppMethodBeat.i(36328);
-          k.this.JPM.JPk.JRs.i(k.this.JPM.fFL(), 7);
-          k.this.JPM.JPk.JRs.irQ = 4;
-          aq.f(new Runnable()
+          k.this.KkX.Kkw.KmD.i(k.this.KkX.fJS(), 7);
+          k.this.KkX.Kkw.KmD.iuK = 4;
+          ar.f(new Runnable()
           {
             public final void run()
             {
               AppMethodBeat.i(36324);
-              k.this.JPM.JPk.setVideoStateIv(true);
-              b localb = k.this.JPM;
+              k.this.KkX.Kkw.setVideoStateIv(true);
+              b localb = k.this.KkX;
               int i = k.this.mPosition;
-              localb.JPq.adS(i);
-              k.this.JPM.JPq.fGu();
+              localb.KkC.aeA(i);
+              k.this.KkX.KkC.fKF();
               AppMethodBeat.o(36324);
             }
           });
@@ -354,21 +383,21 @@ public final class k
         public final void onError(int paramAnonymousInt1, int paramAnonymousInt2)
         {
           AppMethodBeat.i(36327);
-          ad.w("MicroMsg.ImageGalleryViewHolder", "play video error what : " + paramAnonymousInt1 + " extra: " + paramAnonymousInt2);
-          if (k.this.JPM != null) {
-            k.this.JPM.JPq.jS(paramAnonymousInt1, paramAnonymousInt2);
+          ae.w("MicroMsg.ImageGalleryViewHolder", "play video error what : " + paramAnonymousInt1 + " extra: " + paramAnonymousInt2);
+          if (k.this.KkX != null) {
+            k.this.KkX.KkC.jW(paramAnonymousInt1, paramAnonymousInt2);
           }
-          k.this.JPM.JPk.JRs.irQ = 4;
-          k.this.JPM.JPk.JRs.orD = ("what : " + paramAnonymousInt1 + " extra: " + paramAnonymousInt2);
-          g.yhR.f(12084, new Object[] { Integer.valueOf(k.this.JTC), Integer.valueOf(k.this.zGB * 1000), Integer.valueOf(0), Integer.valueOf(4), k.this.dyU, Integer.valueOf(k.this.JTD), k.this.fileId, Long.valueOf(k.this.createTime) });
+          k.this.KkX.Kkw.KmD.iuK = 4;
+          k.this.KkX.Kkw.KmD.oxZ = ("what : " + paramAnonymousInt1 + " extra: " + paramAnonymousInt2);
+          g.yxI.f(12084, new Object[] { Integer.valueOf(k.this.Kpc), Integer.valueOf(k.this.zXJ * 1000), Integer.valueOf(0), Integer.valueOf(4), k.this.dzZ, Integer.valueOf(k.this.Kpd), k.this.fileId, Long.valueOf(k.this.createTime) });
           AppMethodBeat.o(36327);
         }
         
         public final void ta()
         {
           AppMethodBeat.i(36326);
-          if (k.this.JPM != null) {
-            k.this.JPM.JPq.fGt();
+          if (k.this.KkX != null) {
+            k.this.KkX.KkC.fKE();
           }
           AppMethodBeat.o(36326);
         }
@@ -376,37 +405,9 @@ public final class k
       AppMethodBeat.o(36336);
       return this;
       label309:
-      this.JTl = new VideoTextureView(this.tPw.getContext());
-      g.yhR.idkeyStat(354L, 151L, 1L, false);
+      this.KoL = new VideoTextureView(this.uan.getContext());
+      g.yxI.idkeyStat(354L, 151L, 1L, false);
     }
-  }
-  
-  public final k fGy()
-  {
-    AppMethodBeat.i(36333);
-    if (this.JTq == null)
-    {
-      this.JTq = ((LinearLayout)((ViewStub)this.tPw.findViewById(2131300934)).inflate());
-      this.JTu = ((ProgressBar)this.JTq.findViewById(2131299229));
-      this.JTr = ((TextView)this.JTq.findViewById(2131299230));
-      this.JTs = ((TextView)this.JTq.findViewById(2131299228));
-      this.JTt = ((ImageView)this.JTq.findViewById(2131299231));
-    }
-    AppMethodBeat.o(36333);
-    return this;
-  }
-  
-  public final k fGz()
-  {
-    AppMethodBeat.i(36334);
-    if (this.JTw == null)
-    {
-      this.JTw = ((LinearLayout)((ViewStub)this.tPw.findViewById(2131300932)).inflate());
-      this.JTy = ((ImageView)this.JTw.findViewById(2131299204));
-      this.JTx = ((TextView)this.JTw.findViewById(2131299205));
-    }
-    AppMethodBeat.o(36334);
-    return this;
   }
 }
 

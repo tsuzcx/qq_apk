@@ -1,23 +1,23 @@
 package com.tencent.mm.plugin.sport.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.dsh;
-import com.tencent.mm.protocal.protobuf.dsi;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.dte;
+import com.tencent.mm.protocal.protobuf.dtf;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class f
   extends n
   implements k
 {
-  private dsh AGU;
-  private com.tencent.mm.al.f callback;
+  private dte AYx;
+  private com.tencent.mm.ak.f callback;
   private b rr;
   
   public f(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, String paramString3, int paramInt4)
@@ -25,28 +25,28 @@ public final class f
     AppMethodBeat.i(149305);
     this.callback = null;
     this.rr = null;
-    ad.i("MicroMsg.Sport.NetSceneUploadDeviceStep", "NetSceneUploadDeviceStep %s, %s, %s, %s, %s", new Object[] { paramString1, paramString2, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    ae.i("MicroMsg.Sport.NetSceneUploadDeviceStep", "NetSceneUploadDeviceStep %s, %s, %s, %s, %s", new Object[] { paramString1, paramString2, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
     b.a locala = new b.a();
-    locala.hNM = new dsh();
-    locala.hNN = new dsi();
+    locala.hQF = new dte();
+    locala.hQG = new dtf();
     locala.uri = "/cgi-bin/mmoc-bin/hardware/uploaddevicestep";
     locala.funcId = 1261;
-    locala.hNO = 0;
+    locala.hQH = 0;
     locala.respCmdId = 0;
-    this.rr = locala.aDC();
-    this.AGU = ((dsh)this.rr.hNK.hNQ);
-    this.AGU.cUi = paramString1;
-    this.AGU.dow = paramString2;
-    this.AGU.HEZ = paramInt1;
-    this.AGU.HFa = paramInt2;
-    this.AGU.cbX = paramInt3;
-    this.AGU.HFb = String.valueOf(l.egA());
-    this.AGU.HFd = paramString3;
-    this.AGU.HFg = paramInt4;
+    this.rr = locala.aDS();
+    this.AYx = ((dte)this.rr.hQD.hQJ);
+    this.AYx.cVh = paramString1;
+    this.AYx.dpB = paramString2;
+    this.AYx.HYM = paramInt1;
+    this.AYx.HYN = paramInt2;
+    this.AYx.cbX = paramInt3;
+    this.AYx.HYO = String.valueOf(l.eki());
+    this.AYx.HYQ = paramString3;
+    this.AYx.HYT = paramInt4;
     AppMethodBeat.o(149305);
   }
   
-  public final int doScene(e parame, com.tencent.mm.al.f paramf)
+  public final int doScene(e parame, com.tencent.mm.ak.f paramf)
   {
     AppMethodBeat.i(149306);
     this.callback = paramf;
@@ -63,7 +63,7 @@ public final class f
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(149307);
-    ad.i("MicroMsg.Sport.NetSceneUploadDeviceStep", "NetSceneUploadDeviceStep end: errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    ae.i("MicroMsg.Sport.NetSceneUploadDeviceStep", "NetSceneUploadDeviceStep end: errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(149307);
   }

@@ -11,9 +11,9 @@ import java.util.Set;
 
 public abstract interface b
 {
-  public abstract Set<f> glG();
+  public abstract Set<f> gqi();
   
-  public abstract Set<f> glH();
+  public abstract Set<f> gqj();
   
   public abstract Collection<q> j(f paramf);
   
@@ -22,23 +22,23 @@ public abstract interface b
   public static final class a
     implements b
   {
-    public static final a NeZ;
+    public static final a NCe;
     
     static
     {
       AppMethodBeat.i(57780);
-      NeZ = new a();
+      NCe = new a();
       AppMethodBeat.o(57780);
     }
     
-    public final Set<f> glG()
+    public final Set<f> gqi()
     {
-      return (Set)x.MKG;
+      return (Set)x.NhJ;
     }
     
-    public final Set<f> glH()
+    public final Set<f> gqj()
     {
-      return (Set)x.MKG;
+      return (Set)x.NhJ;
     }
     
     public final n k(f paramf)
@@ -52,7 +52,7 @@ public abstract interface b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.d.a.c.a.b
  * JD-Core Version:    0.7.0.1
  */

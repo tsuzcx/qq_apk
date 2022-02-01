@@ -13,7 +13,7 @@ final class w
   private long ccr;
   private long ccs;
   
-  static w AI()
+  static w AJ()
   {
     AppMethodBeat.i(87951);
     if (cco == null) {
@@ -38,8 +38,8 @@ final class w
   {
     AppMethodBeat.i(87952);
     if (this.ccp) {
-      if (k.Ai().bWM) {
-        k.Ai().Ae();
+      if (k.Aj().bWM) {
+        k.Aj().Af();
       }
     }
     for (;;)
@@ -47,10 +47,10 @@ final class w
       super.a(paramContext, paramHandler, parama);
       AppMethodBeat.o(87952);
       return;
-      if (!k.Ai().bWM) {
+      if (!k.Aj().bWM) {
         try
         {
-          k.Ai().a(paramContext, new m[] { this });
+          k.Aj().a(paramContext, new m[] { this });
         }
         catch (Exception localException) {}
       }

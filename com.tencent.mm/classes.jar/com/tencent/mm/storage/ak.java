@@ -1,9 +1,20 @@
 package com.tencent.mm.storage;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.kernel.e;
+import com.tencent.mm.kernel.g;
+
 public final class ak
 {
-  public static int IpL = 3;
-  public static int IpM = 10;
+  public static String azU()
+  {
+    AppMethodBeat.i(133751);
+    Object localObject = new StringBuilder();
+    g.ajS();
+    localObject = g.ajR().gDT + "favorite/";
+    AppMethodBeat.o(133751);
+    return localObject;
+  }
 }
 
 

@@ -38,12 +38,12 @@ public class WWMediaMessage
   
   public void fromBundle(Bundle paramBundle)
   {
-    AppMethodBeat.i(190361);
+    AppMethodBeat.i(193333);
     super.fromBundle(paramBundle);
     this.title = paramBundle.getString("_wwobject_title");
     this.description = paramBundle.getString("_wwobject_description");
     this.thumbData = paramBundle.getByteArray("_wwobject_thumbdata");
-    AppMethodBeat.o(190361);
+    AppMethodBeat.o(193333);
   }
   
   public final void setThumbImage(Bitmap paramBitmap)

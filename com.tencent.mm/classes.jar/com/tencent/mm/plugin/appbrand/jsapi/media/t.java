@@ -8,51 +8,51 @@ import com.tencent.mm.media.i.h;
 import com.tencent.mm.plugin.expt.b.b.a;
 import com.tencent.mm.plugin.sight.base.SightVideoJNI;
 import com.tencent.mm.pluginsdk.model.l;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.vfs.i;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.vfs.o;
 import java.io.IOException;
 import java.util.concurrent.CountDownLatch;
 
 public final class t
 {
-  public static final int kVL;
+  public static final int kZt;
   
   static
   {
     AppMethodBeat.i(46609);
-    kVL = com.tencent.mm.plugin.sight.base.c.yRc;
-    com.tencent.mm.plugin.appbrand.app.g.aYG();
+    kZt = com.tencent.mm.plugin.sight.base.c.zhm;
+    com.tencent.mm.plugin.appbrand.app.g.aZc();
     AppMethodBeat.o(46609);
   }
   
-  public static String PV(String paramString)
+  public static String QE(String paramString)
   {
     AppMethodBeat.i(46603);
     if (paramString == null)
     {
-      ad.e("MicroMsg.RemuxHelper", "remuxIfNeed, filePath is null");
+      ae.e("MicroMsg.RemuxHelper", "remuxIfNeed, filePath is null");
       AppMethodBeat.o(46603);
       return null;
     }
-    paramString = a(new a(paramString, 720, 540, 0, 0, com.tencent.mm.plugin.sight.base.c.yRc, com.tencent.mm.plugin.sight.base.c.yRd));
+    paramString = a(new a(paramString, 720, 540, 0, 0, com.tencent.mm.plugin.sight.base.c.zhm, com.tencent.mm.plugin.sight.base.c.zhn));
     AppMethodBeat.o(46603);
     return paramString;
   }
   
-  public static int Qd(String paramString)
+  public static int QM(String paramString)
   {
     AppMethodBeat.i(46606);
-    boolean bool = com.tencent.mm.plugin.a.c.Ja(paramString);
-    ad.i("MicroMsg.RemuxHelper", "checkRemux, isMp4 = %b", new Object[] { Boolean.valueOf(bool) });
+    boolean bool = com.tencent.mm.plugin.a.c.Jz(paramString);
+    ae.i("MicroMsg.RemuxHelper", "checkRemux, isMp4 = %b", new Object[] { Boolean.valueOf(bool) });
     int i;
     if (bool)
     {
       i = SightVideoJNI.shouldRemuxingVFS(paramString, 660, 500, 26214400, 1200000.0D, 1000000);
-      ad.i("MicroMsg.RemuxHelper", "checkRemux, ret = %d", new Object[] { Integer.valueOf(i) });
+      ae.i("MicroMsg.RemuxHelper", "checkRemux, ret = %d", new Object[] { Integer.valueOf(i) });
       switch (i)
       {
       default: 
-        ad.e("MicroMsg.RemuxHelper", "unknown check type");
+        ae.e("MicroMsg.RemuxHelper", "unknown check type");
         i = -50001;
       }
     }
@@ -60,7 +60,7 @@ public final class t
     {
       AppMethodBeat.o(46606);
       return i;
-      ad.i("MicroMsg.RemuxHelper", "fileLength = %d", new Object[] { Integer.valueOf((int)i.aYo(paramString)) });
+      ae.i("MicroMsg.RemuxHelper", "fileLength = %d", new Object[] { Integer.valueOf((int)o.aZR(paramString)) });
       i = 1;
       break;
       i = 1;
@@ -72,7 +72,7 @@ public final class t
   }
   
   /* Error */
-  public static b Qe(String paramString)
+  public static b QN(String paramString)
   {
     // Byte code:
     //   0: ldc 118
@@ -92,7 +92,7 @@ public final class t
     //   30: bipush 24
     //   32: invokevirtual 132	android/media/MediaMetadataRetriever:extractMetadata	(I)Ljava/lang/String;
     //   35: iconst_0
-    //   36: invokestatic 138	com/tencent/mm/sdk/platformtools/bt:getInt	(Ljava/lang/String;I)I
+    //   36: invokestatic 138	com/tencent/mm/sdk/platformtools/bu:getInt	(Ljava/lang/String;I)I
     //   39: istore_3
     //   40: aload 11
     //   42: astore 10
@@ -106,12 +106,12 @@ public final class t
     //   59: bipush 9
     //   61: invokevirtual 132	android/media/MediaMetadataRetriever:extractMetadata	(I)Ljava/lang/String;
     //   64: iconst_0
-    //   65: invokestatic 138	com/tencent/mm/sdk/platformtools/bt:getInt	(Ljava/lang/String;I)I
+    //   65: invokestatic 138	com/tencent/mm/sdk/platformtools/bu:getInt	(Ljava/lang/String;I)I
     //   68: istore 4
     //   70: aload 11
     //   72: astore 10
     //   74: aload_0
-    //   75: invokestatic 111	com/tencent/mm/vfs/i:aYo	(Ljava/lang/String;)J
+    //   75: invokestatic 111	com/tencent/mm/vfs/o:aZR	(Ljava/lang/String;)J
     //   78: lstore 8
     //   80: aload 11
     //   82: astore 10
@@ -119,7 +119,7 @@ public final class t
     //   86: bipush 18
     //   88: invokevirtual 132	android/media/MediaMetadataRetriever:extractMetadata	(I)Ljava/lang/String;
     //   91: iconst_0
-    //   92: invokestatic 138	com/tencent/mm/sdk/platformtools/bt:getInt	(Ljava/lang/String;I)I
+    //   92: invokestatic 138	com/tencent/mm/sdk/platformtools/bu:getInt	(Ljava/lang/String;I)I
     //   95: istore 5
     //   97: aload 11
     //   99: astore 10
@@ -127,7 +127,7 @@ public final class t
     //   103: bipush 19
     //   105: invokevirtual 132	android/media/MediaMetadataRetriever:extractMetadata	(I)Ljava/lang/String;
     //   108: iconst_0
-    //   109: invokestatic 138	com/tencent/mm/sdk/platformtools/bt:getInt	(Ljava/lang/String;I)I
+    //   109: invokestatic 138	com/tencent/mm/sdk/platformtools/bu:getInt	(Ljava/lang/String;I)I
     //   112: istore 6
     //   114: aload 11
     //   116: astore 10
@@ -135,7 +135,7 @@ public final class t
     //   120: bipush 20
     //   122: invokevirtual 132	android/media/MediaMetadataRetriever:extractMetadata	(I)Ljava/lang/String;
     //   125: iconst_0
-    //   126: invokestatic 138	com/tencent/mm/sdk/platformtools/bt:getInt	(Ljava/lang/String;I)I
+    //   126: invokestatic 138	com/tencent/mm/sdk/platformtools/bu:getInt	(Ljava/lang/String;I)I
     //   129: istore 7
     //   131: fconst_0
     //   132: fstore_1
@@ -150,7 +150,7 @@ public final class t
     //   151: bipush 25
     //   153: invokevirtual 132	android/media/MediaMetadataRetriever:extractMetadata	(I)Ljava/lang/String;
     //   156: fconst_0
-    //   157: invokestatic 147	com/tencent/mm/sdk/platformtools/bt:getFloat	(Ljava/lang/String;F)F
+    //   157: invokestatic 147	com/tencent/mm/sdk/platformtools/bu:getFloat	(Ljava/lang/String;F)F
     //   160: fstore_1
     //   161: fload_1
     //   162: fstore_2
@@ -162,11 +162,11 @@ public final class t
     //   171: astore 10
     //   173: ldc 44
     //   175: ldc 149
-    //   177: invokestatic 151	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   177: invokestatic 151	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   180: aload 11
     //   182: astore 10
     //   184: aload_0
-    //   185: invokestatic 155	com/tencent/mm/plugin/appbrand/jsapi/media/t:Qf	(Ljava/lang/String;)F
+    //   185: invokestatic 155	com/tencent/mm/plugin/appbrand/jsapi/media/t:QO	(Ljava/lang/String;)F
     //   188: fstore_2
     //   189: aload 11
     //   191: astore 10
@@ -217,7 +217,7 @@ public final class t
     //   263: fload_2
     //   264: invokestatic 167	java/lang/Float:valueOf	(F)Ljava/lang/Float;
     //   267: aastore
-    //   268: invokestatic 83	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   268: invokestatic 83	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   271: aload 11
     //   273: astore 10
     //   275: new 11	com/tencent/mm/plugin/appbrand/jsapi/media/t$b
@@ -246,7 +246,7 @@ public final class t
     //   314: astore 10
     //   316: ldc 44
     //   318: ldc 175
-    //   320: invokestatic 178	com/tencent/mm/sdk/platformtools/ad:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   320: invokestatic 178	com/tencent/mm/sdk/platformtools/ae:w	(Ljava/lang/String;Ljava/lang/String;)V
     //   323: aload_0
     //   324: ifnull +7 -> 331
     //   327: aload_0
@@ -321,7 +321,7 @@ public final class t
     //   275	298	363	java/lang/Exception
   }
   
-  private static float Qf(String paramString)
+  private static float QO(String paramString)
   {
     AppMethodBeat.i(46608);
     MediaExtractor localMediaExtractor = new MediaExtractor();
@@ -354,7 +354,7 @@ public final class t
         localMediaExtractor.release();
         AppMethodBeat.o(46608);
       }
-      ad.i("MicroMsg.RemuxHelper", "getVideoFrameRate fps: %d", new Object[] { Integer.valueOf(i) });
+      ae.i("MicroMsg.RemuxHelper", "getVideoFrameRate fps: %d", new Object[] { Integer.valueOf(i) });
       f = i;
       AppMethodBeat.o(46608);
       return f * 1.0F;
@@ -370,11 +370,11 @@ public final class t
     AppMethodBeat.i(46604);
     if (parama == null)
     {
-      ad.e("MicroMsg.RemuxHelper", "remuxIfNeed, compress request is null");
+      ae.e("MicroMsg.RemuxHelper", "remuxIfNeed, compress request is null");
       AppMethodBeat.o(46604);
       return null;
     }
-    if (((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qxI, 0) == 1) {}
+    if (((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qEO, 0) == 1) {}
     for (boolean bool = true;; bool = false)
     {
       parama = a(parama, bool);
@@ -387,13 +387,13 @@ public final class t
   {
     AppMethodBeat.i(46605);
     String str = parama.filePath;
-    if (Qd(str) != -50006)
+    if (QM(str) != -50006)
     {
-      d.ma(15);
+      d.md(15);
       AppMethodBeat.o(46605);
       return str;
     }
-    ad.i("MicroMsg.RemuxHelper", "compress info: filePath: %s, suggestWidth: %d, suggestHeight: %d, outputWidth: %d, outputHeight: %d, remuxBitRate %d", new Object[] { str, Integer.valueOf(parama.kVM), Integer.valueOf(parama.kVN), Integer.valueOf(parama.outputWidth), Integer.valueOf(parama.outputHeight), Integer.valueOf(parama.kVO) });
+    ae.i("MicroMsg.RemuxHelper", "compress info: filePath: %s, suggestWidth: %d, suggestHeight: %d, outputWidth: %d, outputHeight: %d, remuxBitRate %d", new Object[] { str, Integer.valueOf(parama.kZu), Integer.valueOf(parama.kZv), Integer.valueOf(parama.outputWidth), Integer.valueOf(parama.outputHeight), Integer.valueOf(parama.kZw) });
     int k;
     int j;
     int i;
@@ -414,56 +414,56 @@ public final class t
     label635:
     for (;;)
     {
-      ad.i("MicroMsg.RemuxHelper", "outputWidth: %d, outputHeight: %d", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
+      ae.i("MicroMsg.RemuxHelper", "outputWidth: %d, outputHeight: %d", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
       float f;
       Object localObject;
-      if (parama.kVO > 0)
+      if (parama.kZw > 0)
       {
-        k = parama.kVO;
-        if (parama.cvL <= 0.0F) {
+        k = parama.kZw;
+        if (parama.cwp <= 0.0F) {
           break label541;
         }
-        f = parama.cvL;
-        if (!i.fv(com.tencent.mm.loader.j.b.arS())) {
-          i.aYg(com.tencent.mm.loader.j.b.arS());
+        f = parama.cwp;
+        if (!o.fB(com.tencent.mm.loader.j.b.ash())) {
+          o.aZI(com.tencent.mm.loader.j.b.ash());
         }
-        parama = com.tencent.mm.loader.j.b.arS() + "microMsg." + System.currentTimeMillis() + ".mp4";
-        d.ma(0);
+        parama = com.tencent.mm.loader.j.b.ash() + "microMsg." + System.currentTimeMillis() + ".mp4";
+        d.md(0);
         if (!paramBoolean) {
           break label573;
         }
-        ad.i("MicroMsg.RemuxHelper", "hard remux mode.");
-        d.ma(1);
+        ae.i("MicroMsg.RemuxHelper", "hard remux mode.");
+        d.md(1);
         localObject = new CountDownLatch(1);
-        k = h.hmY.a(str, parama, i, j, k, (int)f, 0, 51, new d.b()
+        k = h.hpM.a(str, parama, i, j, k, (int)f, 0, 51, new d.b()
         {
-          public final void ye(String paramAnonymousString)
+          public final void yO(String paramAnonymousString)
           {
             AppMethodBeat.i(46602);
-            ad.d("MicroMsg.RemuxHelper", "remux onFinish.");
+            ae.d("MicroMsg.RemuxHelper", "remux onFinish.");
             this.val$latch.countDown();
             AppMethodBeat.o(46602);
           }
-        }).atP();
+        }).aue();
       }
       for (;;)
       {
         try
         {
-          ad.d("MicroMsg.RemuxHelper", "latch await ");
+          ae.d("MicroMsg.RemuxHelper", "latch await ");
           ((CountDownLatch)localObject).await();
-          d.ma(10);
-          ad.i("MicroMsg.RemuxHelper", "remuxIfNeed [%s] to [%s], result %d, resolution:[%d, %d]", new Object[] { str, parama, Integer.valueOf(k), Integer.valueOf(i), Integer.valueOf(j) });
+          d.md(10);
+          ae.i("MicroMsg.RemuxHelper", "remuxIfNeed [%s] to [%s], result %d, resolution:[%d, %d]", new Object[] { str, parama, Integer.valueOf(k), Integer.valueOf(i), Integer.valueOf(j) });
           AppMethodBeat.o(46605);
           return parama;
-          if (parama.kVM > 0)
+          if (parama.kZu > 0)
           {
-            i = parama.kVM;
-            if (parama.kVN <= 0) {
+            i = parama.kZu;
+            if (parama.kZv <= 0) {
               continue;
             }
-            j = parama.kVN;
-            localObject = Qe(str);
+            j = parama.kZv;
+            localObject = QN(str);
             if (localObject != null) {
               continue;
             }
@@ -472,7 +472,7 @@ public final class t
               continue;
             }
             m = 0;
-            ad.i("MicroMsg.RemuxHelper", "sourceWidth: %d, sourceHeight: %d", new Object[] { Integer.valueOf(k), Integer.valueOf(m) });
+            ae.i("MicroMsg.RemuxHelper", "sourceWidth: %d, sourceHeight: %d", new Object[] { Integer.valueOf(k), Integer.valueOf(m) });
             localObject = new int[2];
             l.b(str, (int[])localObject, i, j);
             i = localObject[0];
@@ -487,22 +487,22 @@ public final class t
           continue;
           int m = ((b)localObject).height;
           continue;
-          k = com.tencent.mm.plugin.sight.base.c.yRc;
+          k = com.tencent.mm.plugin.sight.base.c.zhm;
           break label196;
-          f = com.tencent.mm.plugin.sight.base.c.yRd;
+          f = com.tencent.mm.plugin.sight.base.c.zhn;
         }
         catch (InterruptedException localInterruptedException)
         {
-          ad.e("MicroMsg.RemuxHelper", "latch await exception, %s.", new Object[] { localInterruptedException.getMessage() });
+          ae.e("MicroMsg.RemuxHelper", "latch await exception, %s.", new Object[] { localInterruptedException.getMessage() });
           continue;
         }
-        ad.i("MicroMsg.RemuxHelper", "soft remux mode.");
-        d.ma(2);
-        k = SightVideoJNI.remuxingVFS(str, parama, i, j, k, com.tencent.mm.plugin.sight.base.c.yRb, 8, 2, 25.0F, f, null, 0, false, 0, 51);
+        ae.i("MicroMsg.RemuxHelper", "soft remux mode.");
+        d.md(2);
+        k = SightVideoJNI.remuxingVFS(str, parama, i, j, k, com.tencent.mm.plugin.sight.base.c.zhl, 8, 2, 25.0F, f, null, 0, false, 0, 51);
         if (k < 0) {
-          d.ma(14);
+          d.md(14);
         } else {
-          d.ma(11);
+          d.md(11);
         }
       }
     }
@@ -510,30 +510,30 @@ public final class t
   
   public static final class a
   {
-    public float cvL;
+    public float cwp;
     public String filePath;
-    public int kVM;
-    public int kVN;
-    public int kVO;
+    public int kZu;
+    public int kZv;
+    public int kZw;
     public int outputHeight;
     public int outputWidth;
     
     public a(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, float paramFloat)
     {
       this.filePath = paramString;
-      this.kVM = paramInt1;
-      this.kVN = paramInt2;
+      this.kZu = paramInt1;
+      this.kZv = paramInt2;
       this.outputWidth = paramInt3;
       this.outputHeight = paramInt4;
-      this.kVO = paramInt5;
-      this.cvL = paramFloat;
+      this.kZw = paramInt5;
+      this.cwp = paramFloat;
     }
   }
   
   public static final class b
   {
     public int bitrate;
-    public float cvL;
+    public float cwp;
     public int duration;
     public String filePath;
     public int height;
@@ -552,7 +552,7 @@ public final class t
       this.width = paramInt3;
       this.height = paramInt4;
       this.bitrate = paramInt5;
-      this.cvL = paramFloat;
+      this.cwp = paramFloat;
     }
   }
 }

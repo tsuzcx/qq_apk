@@ -1,20 +1,20 @@
 package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.bbs;
-import com.tencent.mm.protocal.protobuf.bbt;
-import com.tencent.mm.protocal.protobuf.cdi;
-import com.tencent.mm.protocal.protobuf.cdj;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.bci;
+import com.tencent.mm.protocal.protobuf.bcj;
+import com.tencent.mm.protocal.protobuf.cec;
+import com.tencent.mm.protocal.protobuf.ced;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class g
   extends n
@@ -28,13 +28,13 @@ public final class g
   {
     AppMethodBeat.i(97154);
     b.a locala = new b.a();
-    locala.hNM = new cdi();
-    locala.hNN = new cdj();
+    locala.hQF = new cec();
+    locala.hQG = new ced();
     locala.uri = "/cgi-bin/mmux-bin/wxaapp/mmuxwxa_officialsync";
     locala.funcId = 2721;
-    this.rr = locala.aDC();
-    ((cdi)this.rr.hNK.hNQ).GXw = paramString;
-    ad.i("MicroMsg.NetSceneLandingPagesDynamicUpdate", "Req: syncBuffer:".concat(String.valueOf(paramString)));
+    this.rr = locala.aDS();
+    ((cec)this.rr.hQD.hQJ).HqW = paramString;
+    ae.i("MicroMsg.NetSceneLandingPagesDynamicUpdate", "Req: syncBuffer:".concat(String.valueOf(paramString)));
     AppMethodBeat.o(97154);
   }
   
@@ -42,16 +42,16 @@ public final class g
   {
     AppMethodBeat.i(97153);
     Object localObject = new b.a();
-    ((b.a)localObject).hNM = new bbs();
-    ((b.a)localObject).hNN = new bbt();
+    ((b.a)localObject).hQF = new bci();
+    ((b.a)localObject).hQG = new bcj();
     ((b.a)localObject).uri = "/cgi-bin/mmgame-bin/getgamecanvasinfo";
     ((b.a)localObject).funcId = 1337;
-    this.rr = ((b.a)localObject).aDC();
-    localObject = (bbs)this.rr.hNK.hNQ;
-    ((bbs)localObject).iht = paramString1;
-    ((bbs)localObject).GyE = paramString2;
-    ((bbs)localObject).GyF = paramString3;
-    ad.i("MicroMsg.NetSceneLandingPagesDynamicUpdate", "Req: shareType:" + paramString2 + " sharedAppId :" + paramString1);
+    this.rr = ((b.a)localObject).aDS();
+    localObject = (bci)this.rr.hQD.hQJ;
+    ((bci)localObject).ikm = paramString1;
+    ((bci)localObject).GSe = paramString2;
+    ((bci)localObject).GSf = paramString3;
+    ae.i("MicroMsg.NetSceneLandingPagesDynamicUpdate", "Req: shareType:" + paramString2 + " sharedAppId :" + paramString1);
     AppMethodBeat.o(97153);
   }
   
@@ -75,9 +75,9 @@ public final class g
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(97157);
-    ad.i("MicroMsg.NetSceneLandingPagesDynamicUpdate", "netId : " + paramInt1 + " errType :" + paramInt2 + " errCode: " + paramInt3 + " errMsg :" + paramString + " sceneType: " + getType());
+    ae.i("MicroMsg.NetSceneLandingPagesDynamicUpdate", "netId : " + paramInt1 + " errType :" + paramInt2 + " errCode: " + paramInt3 + " errMsg :" + paramString + " sceneType: " + getType());
     if (getType() == 1337) {
-      this.jsonString = ((bbt)((b)paramq).hNL.hNQ).GuC;
+      this.jsonString = ((bcj)((b)paramq).hQE.hQJ).GOb;
     }
     for (;;)
     {
@@ -85,7 +85,7 @@ public final class g
       AppMethodBeat.o(97157);
       return;
       if (getType() == 2721) {
-        this.jsonString = ((cdj)((b)paramq).hNL.hNQ).GXx;
+        this.jsonString = ((ced)((b)paramq).hQE.hQJ).HqX;
       }
     }
   }

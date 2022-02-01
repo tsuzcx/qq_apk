@@ -16,19 +16,19 @@ import com.tencent.mm.ui.contact.a.e.b;
 public final class e
   extends com.tencent.mm.ui.contact.a.e
 {
-  private a wfs;
+  private a wuV;
   
   public e(int paramInt)
   {
     super(paramInt);
     AppMethodBeat.i(114718);
-    this.wfs = new a();
+    this.wuV = new a();
     AppMethodBeat.o(114718);
   }
   
-  public final com.tencent.mm.ui.contact.a.a.b aRs()
+  public final com.tencent.mm.ui.contact.a.a.b aRR()
   {
-    return this.wfs;
+    return this.wuV;
   }
   
   public final class a
@@ -44,11 +44,11 @@ public final class e
       AppMethodBeat.i(114716);
       paramContext = LayoutInflater.from(paramContext).inflate(2131494975, paramViewGroup, false);
       paramViewGroup = (com.tencent.mm.ui.contact.a.e.a)e.a(e.this);
-      paramViewGroup.fOf = ((ImageView)paramContext.findViewById(2131297008));
-      paramViewGroup.iVq = ((TextView)paramContext.findViewById(2131305948));
-      paramViewGroup.iCV = ((TextView)paramContext.findViewById(2131299008));
+      paramViewGroup.fQl = ((ImageView)paramContext.findViewById(2131297008));
+      paramViewGroup.iYj = ((TextView)paramContext.findViewById(2131305948));
+      paramViewGroup.iFO = ((TextView)paramContext.findViewById(2131299008));
       paramViewGroup.contentView = paramContext.findViewById(2131304518);
-      paramViewGroup.iVs = ((CheckBox)paramContext.findViewById(2131304502));
+      paramViewGroup.iYl = ((CheckBox)paramContext.findViewById(2131304502));
       paramContext.setTag(paramViewGroup);
       AppMethodBeat.o(114716);
       return paramContext;
@@ -61,36 +61,36 @@ public final class e
       parama = (com.tencent.mm.ui.contact.a.e)parama1;
       if ((parama.username != null) && (parama.username.length() > 0))
       {
-        com.tencent.mm.pluginsdk.ui.a.b.c(paramContext.fOf, parama.username);
-        n.a(parama.iVn, paramContext.iVq);
-        if (!e.this.KmP) {
+        com.tencent.mm.pluginsdk.ui.a.b.c(paramContext.fQl, parama.username);
+        n.a(parama.iYg, paramContext.iYj);
+        if (!e.this.KJj) {
           break label167;
         }
         if (!paramBoolean1) {
           break label121;
         }
-        paramContext.iVs.setChecked(true);
-        paramContext.iVs.setEnabled(false);
-        paramContext.iVs.setBackgroundResource(2131689939);
+        paramContext.iYl.setChecked(true);
+        paramContext.iYl.setEnabled(false);
+        paramContext.iYl.setBackgroundResource(2131689939);
       }
       for (;;)
       {
-        paramContext.iVs.setVisibility(0);
+        paramContext.iYl.setVisibility(0);
         AppMethodBeat.o(114717);
         return;
-        paramContext.fOf.setImageResource(2131231875);
+        paramContext.fQl.setImageResource(2131231875);
         break;
         label121:
-        paramContext.iVs.setChecked(paramBoolean2);
-        paramContext.iVs.setEnabled(true);
+        paramContext.iYl.setChecked(paramBoolean2);
+        paramContext.iYl.setEnabled(true);
         if (paramBoolean2) {
-          paramContext.iVs.setBackgroundResource(2131689936);
+          paramContext.iYl.setBackgroundResource(2131689936);
         } else {
-          paramContext.iVs.setBackgroundResource(2131231752);
+          paramContext.iYl.setBackgroundResource(2131231752);
         }
       }
       label167:
-      paramContext.iVs.setVisibility(8);
+      paramContext.iYl.setVisibility(8);
       AppMethodBeat.o(114717);
     }
   }

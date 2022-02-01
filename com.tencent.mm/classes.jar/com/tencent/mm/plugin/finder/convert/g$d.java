@@ -4,11 +4,11 @@ import android.animation.Animator;
 import android.animation.Animator.AnimatorListener;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/finder/convert/FinderFeedCommentLevel2Convert$onBindViewHolder$10", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/finder/convert/FinderFeedCommentLevel2Convert$onBindViewHolder$10", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "plugin-finder_release"})
 public final class g$d
   implements Animator.AnimatorListener
 {
@@ -18,12 +18,12 @@ public final class g$d
   
   public final void onAnimationEnd(Animator paramAnimator)
   {
-    AppMethodBeat.i(221451);
-    paramAnimator = this.rMk;
+    AppMethodBeat.i(201746);
+    paramAnimator = this.rUx;
     p.g(paramAnimator, "maskView");
     paramAnimator.setVisibility(8);
-    ad.i("Finder.FinderFeedCommentConvert", "maskView gone " + this.ghM);
-    AppMethodBeat.o(221451);
+    ae.i("Finder.FinderFeedCommentConvert", "maskView gone " + this.gke);
+    AppMethodBeat.o(201746);
   }
   
   public final void onAnimationRepeat(Animator paramAnimator) {}

@@ -4,8 +4,8 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.vfs.e;
-import com.tencent.mm.vfs.i;
+import com.tencent.mm.vfs.k;
+import com.tencent.mm.vfs.o;
 import java.io.FileNotFoundException;
 import java.util.Arrays;
 
@@ -77,16 +77,16 @@ public class ModulePkgInfo
   public long getPkgSize()
   {
     AppMethodBeat.i(182977);
-    if (!i.fv(this.pkgPath))
+    if (!o.fB(this.pkgPath))
     {
       localObject = new FileNotFoundException();
       AppMethodBeat.o(182977);
       throw ((Throwable)localObject);
     }
-    Object localObject = new e(this.pkgPath);
-    if ((((e)localObject).isFile()) && (((e)localObject).canRead()))
+    Object localObject = new k(this.pkgPath);
+    if ((((k)localObject).isFile()) && (((k)localObject).canRead()))
     {
-      long l = ((e)localObject).length();
+      long l = ((k)localObject).length();
       AppMethodBeat.o(182977);
       return l;
     }
@@ -105,9 +105,9 @@ public class ModulePkgInfo
   public long lastModified()
   {
     AppMethodBeat.i(182973);
-    if (i.fv(this.pkgPath))
+    if (o.fB(this.pkgPath))
     {
-      long l = i.aYp(this.pkgPath);
+      long l = o.aZS(this.pkgPath);
       AppMethodBeat.o(182973);
       return l;
     }
@@ -143,9 +143,9 @@ public class ModulePkgInfo
   
   public String toString()
   {
-    AppMethodBeat.i(199409);
+    AppMethodBeat.i(195061);
     String str = "ModulePkgInfo{pkgPath='" + this.pkgPath + '\'' + ", name='" + this.name + '\'' + ", md5='" + this.md5 + '\'' + ", independent=" + this.independent + ", aliases=" + Arrays.toString(this.aliases) + ", pkgVersion=" + this.pkgVersion + '}';
-    AppMethodBeat.o(199409);
+    AppMethodBeat.o(195061);
     return str;
   }
   

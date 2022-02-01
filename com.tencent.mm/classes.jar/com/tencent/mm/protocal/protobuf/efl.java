@@ -1,50 +1,40 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
 
 public final class efl
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public LinkedList<String> HQI;
-  public int version;
-  
-  public efl()
-  {
-    AppMethodBeat.i(219112);
-    this.HQI = new LinkedList();
-    AppMethodBeat.o(219112);
-  }
+  public long HuS;
+  public int Ijo;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(219113);
+    AppMethodBeat.i(32563);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aS(1, this.version);
-      paramVarArgs.e(2, 1, this.HQI);
-      AppMethodBeat.o(219113);
+      paramVarArgs.aS(1, this.Ijo);
+      paramVarArgs.aZ(2, this.HuS);
+      AppMethodBeat.o(32563);
       return 0;
     }
     if (paramInt == 1)
     {
-      paramInt = f.a.a.b.b.a.bz(1, this.version);
-      int i = f.a.a.a.c(2, 1, this.HQI);
-      AppMethodBeat.o(219113);
+      paramInt = f.a.a.b.b.a.bz(1, this.Ijo);
+      int i = f.a.a.b.b.a.p(2, this.HuS);
+      AppMethodBeat.o(32563);
       return paramInt + 0 + i;
     }
     if (paramInt == 2)
     {
-      paramVarArgs = (byte[])paramVarArgs[0];
-      this.HQI.clear();
-      paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+      paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gxE();
+          paramVarArgs.gCg();
         }
       }
-      AppMethodBeat.o(219113);
+      AppMethodBeat.o(32563);
       return 0;
     }
     if (paramInt == 3)
@@ -54,18 +44,18 @@ public final class efl
       switch (((Integer)paramVarArgs[2]).intValue())
       {
       default: 
-        AppMethodBeat.o(219113);
+        AppMethodBeat.o(32563);
         return -1;
       case 1: 
-        localefl.version = locala.NPN.zc();
-        AppMethodBeat.o(219113);
+        localefl.Ijo = locala.OmT.zc();
+        AppMethodBeat.o(32563);
         return 0;
       }
-      localefl.HQI.add(locala.NPN.readString());
-      AppMethodBeat.o(219113);
+      localefl.HuS = locala.OmT.zd();
+      AppMethodBeat.o(32563);
       return 0;
     }
-    AppMethodBeat.o(219113);
+    AppMethodBeat.o(32563);
     return -1;
   }
 }

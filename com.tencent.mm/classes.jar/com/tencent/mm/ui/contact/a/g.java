@@ -17,16 +17,16 @@ import com.tencent.mm.plugin.fts.ui.n;
 public final class g
   extends a
 {
-  private a.b Kri;
-  a.a Krj;
-  private CharSequence tBj;
+  private a.b KNC;
+  a.a KND;
+  private CharSequence tMa;
   
   public g(int paramInt)
   {
     super(5, paramInt);
     AppMethodBeat.i(102956);
-    this.Kri = new b();
-    this.Krj = new a();
+    this.KNC = new b();
+    this.KND = new a();
     AppMethodBeat.o(102956);
   }
   
@@ -34,32 +34,32 @@ public final class g
   {
     AppMethodBeat.i(102957);
     parama = new SpannableStringBuilder();
-    String[] arrayOfString = this.tun.tuN;
+    String[] arrayOfString = this.tFe.tFE;
     int j = arrayOfString.length;
     int i = 0;
     while (i < j)
     {
       String str = arrayOfString[i];
       SpannableString localSpannableString = new SpannableString(str);
-      localSpannableString.setSpan(new ForegroundColorSpan(b.b.tya), 0, str.length(), 33);
+      localSpannableString.setSpan(new ForegroundColorSpan(b.b.tIR), 0, str.length(), 33);
       parama.append(localSpannableString);
       parama.append("、");
       i += 1;
     }
-    this.tBj = TextUtils.concat(new CharSequence[] { paramContext.getString(2131762984), parama.subSequence(0, parama.length() - 1), paramContext.getString(2131762984) });
+    this.tMa = TextUtils.concat(new CharSequence[] { paramContext.getString(2131762984), parama.subSequence(0, parama.length() - 1), paramContext.getString(2131762984) });
     AppMethodBeat.o(102957);
   }
   
-  public final a.b aRs()
+  public final a.b aRR()
   {
-    return this.Kri;
+    return this.KNC;
   }
   
   public final class a
     extends a.a
   {
-    public TextView iCV;
-    public View kke;
+    public TextView iFO;
+    public View knu;
     
     public a()
     {
@@ -79,9 +79,9 @@ public final class g
     {
       AppMethodBeat.i(102954);
       paramContext = LayoutInflater.from(paramContext).inflate(2131495361, paramViewGroup, false);
-      paramViewGroup = (g.a)g.this.Krj;
-      paramViewGroup.iCV = ((TextView)paramContext.findViewById(2131299008));
-      paramViewGroup.kke = paramContext.findViewById(2131300716);
+      paramViewGroup = (g.a)g.this.KND;
+      paramViewGroup.iFO = ((TextView)paramContext.findViewById(2131299008));
+      paramViewGroup.knu = paramContext.findViewById(2131300716);
       paramContext.setTag(paramViewGroup);
       AppMethodBeat.o(102954);
       return paramContext;
@@ -91,18 +91,18 @@ public final class g
     {
       AppMethodBeat.i(102955);
       paramContext = (g.a)parama;
-      n.a(g.a((g)parama1), paramContext.iCV);
+      n.a(g.a((g)parama1), paramContext.iFO);
       if (g.this.position == 0)
       {
-        paramContext.kke.setVisibility(8);
+        paramContext.knu.setVisibility(8);
         AppMethodBeat.o(102955);
         return;
       }
-      paramContext.kke.setVisibility(0);
+      paramContext.knu.setVisibility(0);
       AppMethodBeat.o(102955);
     }
     
-    public final boolean aRt()
+    public final boolean aRS()
     {
       return false;
     }

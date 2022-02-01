@@ -10,7 +10,7 @@ public final class a$j
   public String groupId = "";
   public int roomId = 0;
   public long timestamp = 0L;
-  public long uLt = 0L;
+  public long uXg = 0L;
   
   public a$j()
   {
@@ -21,7 +21,7 @@ public final class a$j
   {
     paramb.by(1, this.action);
     paramb.bx(2, this.roomId);
-    paramb.n(3, this.uLt);
+    paramb.n(3, this.uXg);
     if (!this.groupId.equals("")) {
       paramb.d(4, this.groupId);
     }
@@ -33,7 +33,7 @@ public final class a$j
   
   public final int zq()
   {
-    int j = super.zq() + b.bA(1, this.action) + b.bz(2, this.roomId) + b.p(3, this.uLt);
+    int j = super.zq() + b.bA(1, this.action) + b.bz(2, this.roomId) + b.p(3, this.uXg);
     int i = j;
     if (!this.groupId.equals("")) {
       i = j + b.e(4, this.groupId);

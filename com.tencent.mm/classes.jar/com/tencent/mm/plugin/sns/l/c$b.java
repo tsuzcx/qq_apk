@@ -4,10 +4,10 @@ import java.util.List;
 
 public class c$b
 {
-  public String AEi;
-  public List<Long> AEj;
-  public int tFE = 0;
-  public long yXT;
+  public String AVL;
+  public List<Long> AVM;
+  public int tQv = 0;
+  public long zou;
 }
 
 

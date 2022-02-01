@@ -5,18 +5,18 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlin/Metadata;", "", "kind", "", "metadataVersion", "", "bytecodeVersion", "data1", "", "", "data2", "extraString", "packageName", "extraInt", "bv", "()[I", "d1", "()[Ljava/lang/String;", "d2", "xi", "()I", "xs", "()Ljava/lang/String;", "k", "mv", "pn", "kotlin-stdlib"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlin/Metadata;", "", "kind", "", "metadataVersion", "", "bytecodeVersion", "data1", "", "", "data2", "extraString", "packageName", "extraInt", "bv", "()[I", "d1", "()[Ljava/lang/String;", "d2", "xi", "()I", "xs", "()Ljava/lang/String;", "k", "mv", "pn", "kotlin-stdlib"})
 @Retention(RetentionPolicy.RUNTIME)
 @Target({java.lang.annotation.ElementType.TYPE})
 public @interface l
 {
-  int gfA() default 0;
+  int[] gjZ() default {};
   
-  int[] gfx() default {};
+  String[] gka() default {};
   
-  String[] gfy() default {};
+  String[] gkb() default {};
   
-  String[] gfz() default {};
+  int gkc() default 0;
 }
 
 

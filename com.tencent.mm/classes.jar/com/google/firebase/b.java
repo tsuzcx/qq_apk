@@ -38,7 +38,7 @@ public final class b
     }
   }
   
-  public static b al(Context paramContext)
+  public static b am(Context paramContext)
   {
     AppMethodBeat.i(4064);
     paramContext = new StringResourceValueReader(paramContext);

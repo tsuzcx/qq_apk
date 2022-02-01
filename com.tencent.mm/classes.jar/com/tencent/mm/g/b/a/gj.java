@@ -6,89 +6,89 @@ import com.tencent.mm.plugin.report.a;
 public final class gj
   extends a
 {
-  private long enE;
-  private long enF;
-  private long enG;
-  private String enN;
-  private long enP;
+  private String dTr = "";
+  private long epm;
+  private long epn;
+  private long epo;
+  private long epp;
   
-  public final String RD()
+  public final String RC()
   {
-    AppMethodBeat.i(219018);
+    AppMethodBeat.i(188491);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.enE);
+    ((StringBuffer)localObject).append(this.dTr);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.enF);
+    ((StringBuffer)localObject).append(this.epm);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.enG);
+    ((StringBuffer)localObject).append(this.epn);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.enP);
+    ((StringBuffer)localObject).append(this.epo);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.enN);
+    ((StringBuffer)localObject).append(this.epp);
     localObject = ((StringBuffer)localObject).toString();
-    awz((String)localObject);
-    AppMethodBeat.o(219018);
+    axO((String)localObject);
+    AppMethodBeat.o(188491);
     return localObject;
   }
   
-  public final String RE()
+  public final String RD()
   {
-    AppMethodBeat.i(219019);
+    AppMethodBeat.i(188492);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("PullStartTimeStamp:").append(this.enE);
+    ((StringBuffer)localObject).append("SessionId:").append(this.dTr);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("PullEndTimeStamp:").append(this.enF);
+    ((StringBuffer)localObject).append("PullStartTimeStamp:").append(this.epm);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("IsSuccess:").append(this.enG);
+    ((StringBuffer)localObject).append("PullEndTimeStamp:").append(this.epn);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("WordSize:").append(this.enP);
+    ((StringBuffer)localObject).append("IsSuccess:").append(this.epo);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("WordVersion:").append(this.enN);
+    ((StringBuffer)localObject).append("FailedType:").append(this.epp);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(219019);
+    AppMethodBeat.o(188492);
     return localObject;
   }
   
   public final int getId()
   {
-    return 20203;
+    return 20205;
   }
   
-  public final gj lQ(long paramLong)
+  public final gj lX(long paramLong)
   {
-    this.enE = paramLong;
+    this.epm = paramLong;
     return this;
   }
   
-  public final gj lR(long paramLong)
+  public final gj lY(long paramLong)
   {
-    this.enF = paramLong;
+    this.epn = paramLong;
     return this;
   }
   
-  public final gj lS(long paramLong)
+  public final gj lZ(long paramLong)
   {
-    this.enG = paramLong;
+    this.epo = paramLong;
     return this;
   }
   
-  public final gj lT(long paramLong)
+  public final gj ma(long paramLong)
   {
-    this.enP = paramLong;
+    this.epp = paramLong;
     return this;
   }
   
-  public final gj pf(String paramString)
+  public final gj pA(String paramString)
   {
-    AppMethodBeat.i(219017);
-    this.enN = t("WordVersion", paramString, true);
-    AppMethodBeat.o(219017);
+    AppMethodBeat.i(188490);
+    this.dTr = t("SessionId", paramString, true);
+    AppMethodBeat.o(188490);
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.b.a.gj
  * JD-Core Version:    0.7.0.1
  */

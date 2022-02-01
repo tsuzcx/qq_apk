@@ -12,42 +12,42 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class f
   implements b
 {
-  private final RenderScript JwJ;
-  private final ScriptIntrinsicBlur JwK;
-  private Allocation JwL;
-  private int JwM;
-  private int JwN;
+  private final ScriptIntrinsicBlur JRA;
+  private Allocation JRB;
+  private int JRC;
+  private int JRD;
+  private final RenderScript JRz;
   
   public f(Context paramContext)
   {
     AppMethodBeat.i(142746);
-    this.JwM = -1;
-    this.JwN = -1;
-    this.JwJ = RenderScript.create(paramContext);
-    this.JwK = ScriptIntrinsicBlur.create(this.JwJ, Element.U8_4(this.JwJ));
+    this.JRC = -1;
+    this.JRD = -1;
+    this.JRz = RenderScript.create(paramContext);
+    this.JRA = ScriptIntrinsicBlur.create(this.JRz, Element.U8_4(this.JRz));
     AppMethodBeat.o(142746);
   }
   
   public final Bitmap d(Bitmap paramBitmap, float paramFloat)
   {
     AppMethodBeat.i(142747);
-    Allocation localAllocation = Allocation.createFromBitmap(this.JwJ, paramBitmap);
-    if ((paramBitmap.getHeight() == this.JwN) && (paramBitmap.getWidth() == this.JwM)) {}
+    Allocation localAllocation = Allocation.createFromBitmap(this.JRz, paramBitmap);
+    if ((paramBitmap.getHeight() == this.JRD) && (paramBitmap.getWidth() == this.JRC)) {}
     for (int i = 1;; i = 0)
     {
       if (i == 0)
       {
-        if (this.JwL != null) {
-          this.JwL.destroy();
+        if (this.JRB != null) {
+          this.JRB.destroy();
         }
-        this.JwL = Allocation.createTyped(this.JwJ, localAllocation.getType());
-        this.JwM = paramBitmap.getWidth();
-        this.JwN = paramBitmap.getHeight();
+        this.JRB = Allocation.createTyped(this.JRz, localAllocation.getType());
+        this.JRC = paramBitmap.getWidth();
+        this.JRD = paramBitmap.getHeight();
       }
-      this.JwK.setRadius(paramFloat);
-      this.JwK.setInput(localAllocation);
-      this.JwK.forEach(this.JwL);
-      this.JwL.copyTo(paramBitmap);
+      this.JRA.setRadius(paramFloat);
+      this.JRA.setInput(localAllocation);
+      this.JRA.forEach(this.JRB);
+      this.JRB.copyTo(paramBitmap);
       localAllocation.destroy();
       AppMethodBeat.o(142747);
       return paramBitmap;
@@ -57,15 +57,15 @@ public final class f
   public final void destroy()
   {
     AppMethodBeat.i(142748);
-    this.JwK.destroy();
-    this.JwJ.destroy();
-    if (this.JwL != null) {
-      this.JwL.destroy();
+    this.JRA.destroy();
+    this.JRz.destroy();
+    if (this.JRB != null) {
+      this.JRB.destroy();
     }
     AppMethodBeat.o(142748);
   }
   
-  public final Bitmap.Config fAh()
+  public final Bitmap.Config fEj()
   {
     return Bitmap.Config.ARGB_8888;
   }

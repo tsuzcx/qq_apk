@@ -2,12 +2,12 @@ package com.tencent.mm.plugin.sns.ui;
 
 public final class at
 {
+  public String Aog;
+  public String Aoh;
   public String coverImgUrl;
   public String desc;
   public int duration;
   public String title;
-  public String zWV;
-  public String zWW;
 }
 
 

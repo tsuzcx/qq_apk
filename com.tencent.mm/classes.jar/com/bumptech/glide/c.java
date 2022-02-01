@@ -206,7 +206,7 @@ public class c
     AppMethodBeat.o(76773);
   }
   
-  public static c ad(Context paramContext)
+  public static c ae(Context paramContext)
   {
     AppMethodBeat.i(76772);
     if (aCh == null)
@@ -237,11 +237,11 @@ public class c
     return paramContext;
   }
   
-  public static j ae(Context paramContext)
+  public static j af(Context paramContext)
   {
     AppMethodBeat.i(76777);
     com.bumptech.glide.h.i.checkNotNull(paramContext, "You cannot start a load on a not yet attached View or a Fragment where getActivity() returns null (which usually occurs when getActivity() is called before the Fragment is attached or after the Fragment is destroyed).");
-    paramContext = ad(paramContext).aCq.ag(paramContext);
+    paramContext = ae(paramContext).aCq.ah(paramContext);
     AppMethodBeat.o(76777);
     return paramContext;
   }

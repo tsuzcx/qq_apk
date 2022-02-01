@@ -3,44 +3,41 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class atg
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public boolean Grl;
-  public String username;
+  public String title;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(32212);
+    AppMethodBeat.i(189419);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.username != null) {
-        paramVarArgs.d(1, this.username);
+      if (this.title != null) {
+        paramVarArgs.d(1, this.title);
       }
-      paramVarArgs.bt(2, this.Grl);
-      AppMethodBeat.o(32212);
+      AppMethodBeat.o(189419);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.username == null) {
-        break label262;
+      if (this.title == null) {
+        break label213;
       }
     }
-    label262:
-    for (paramInt = f.a.a.b.b.a.e(1, this.username) + 0;; paramInt = 0)
+    label213:
+    for (paramInt = f.a.a.b.b.a.e(1, this.title) + 0;; paramInt = 0)
     {
-      int i = f.a.a.b.b.a.alV(2);
-      AppMethodBeat.o(32212);
-      return paramInt + i;
+      AppMethodBeat.o(189419);
+      return paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
-        AppMethodBeat.o(32212);
+        AppMethodBeat.o(189419);
         return 0;
       }
       if (paramInt == 3)
@@ -50,18 +47,14 @@ public final class atg
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(32212);
+          AppMethodBeat.o(189419);
           return -1;
-        case 1: 
-          localatg.username = locala.NPN.readString();
-          AppMethodBeat.o(32212);
-          return 0;
         }
-        localatg.Grl = locala.NPN.grw();
-        AppMethodBeat.o(32212);
+        localatg.title = locala.OmT.readString();
+        AppMethodBeat.o(189419);
         return 0;
       }
-      AppMethodBeat.o(32212);
+      AppMethodBeat.o(189419);
       return -1;
     }
   }

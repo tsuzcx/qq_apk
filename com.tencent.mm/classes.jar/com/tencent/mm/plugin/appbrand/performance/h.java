@@ -5,20 +5,20 @@ import android.content.res.Configuration;
 import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class h
 {
-  public ComponentCallbacks2 daa;
+  public ComponentCallbacks2 dbc;
   
   public static final class a
   {
-    public static final h mhE;
+    public static final h mmD;
     
     static
     {
       AppMethodBeat.i(175047);
-      mhE = new h((byte)0);
+      mmD = new h((byte)0);
       AppMethodBeat.o(175047);
     }
   }

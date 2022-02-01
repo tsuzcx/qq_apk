@@ -18,30 +18,30 @@ public final class a
   extends aj
   implements ar, d
 {
-  private final d.l.b.a.b.b.a.g MVu;
-  private final av Nwi;
-  private final b Nwj;
-  private final boolean Nwk;
+  private final av NTo;
+  private final b NTp;
+  private final boolean NTq;
+  private final d.l.b.a.b.b.a.g Nsz;
   
   private a(av paramav, b paramb, boolean paramBoolean, d.l.b.a.b.b.a.g paramg)
   {
     AppMethodBeat.i(60026);
-    this.Nwi = paramav;
-    this.Nwj = paramb;
-    this.Nwk = paramBoolean;
-    this.MVu = paramg;
+    this.NTo = paramav;
+    this.NTp = paramb;
+    this.NTq = paramBoolean;
+    this.Nsz = paramg;
     AppMethodBeat.o(60026);
   }
   
-  private a Ao(boolean paramBoolean)
+  private a AB(boolean paramBoolean)
   {
     AppMethodBeat.i(60017);
-    if (paramBoolean == this.Nwk)
+    if (paramBoolean == this.NTq)
     {
       AppMethodBeat.o(60017);
       return this;
     }
-    a locala = new a(this.Nwi, this.Nwj, paramBoolean, this.MVu);
+    a locala = new a(this.NTo, this.NTp, paramBoolean, this.Nsz);
     AppMethodBeat.o(60017);
     return locala;
   }
@@ -49,8 +49,8 @@ public final class a
   private final ab b(bh parambh, ab paramab)
   {
     AppMethodBeat.i(60014);
-    if (this.Nwi.gud() == parambh) {
-      paramab = this.Nwi.gju();
+    if (this.NTo.gyF() == parambh) {
+      paramab = this.NTo.gnW();
     }
     p.g(paramab, "if (typeProjection.proje…jection.type else default");
     AppMethodBeat.o(60014);
@@ -61,7 +61,7 @@ public final class a
   {
     AppMethodBeat.i(60020);
     p.h(paramg, "newAnnotations");
-    paramg = new a(this.Nwi, this.Nwj, this.Nwk, paramg);
+    paramg = new a(this.NTo, this.NTp, this.NTq, paramg);
     AppMethodBeat.o(60020);
     return paramg;
   }
@@ -70,9 +70,9 @@ public final class a
   {
     AppMethodBeat.i(60023);
     p.h(parami, "kotlinTypeRefiner");
-    parami = this.Nwi.m(parami);
+    parami = this.NTo.m(parami);
     p.g(parami, "typeProjection.refine(kotlinTypeRefiner)");
-    parami = new a(parami, this.Nwj, this.Nwk, this.MVu);
+    parami = new a(parami, this.NTp, this.NTq, this.Nsz);
     AppMethodBeat.o(60023);
     return parami;
   }
@@ -81,7 +81,7 @@ public final class a
   {
     AppMethodBeat.i(60015);
     p.h(paramab, "type");
-    if (this.Nwj == paramab.gsZ())
+    if (this.NTp == paramab.gxB())
     {
       AppMethodBeat.o(60015);
       return true;
@@ -90,57 +90,57 @@ public final class a
     return false;
   }
   
-  public final d.l.b.a.b.b.a.g ghH()
-  {
-    return this.MVu;
-  }
-  
-  public final h gil()
+  public final h gmN()
   {
     AppMethodBeat.i(60011);
-    h localh = u.dv("No member resolution should be done on captured type, it used only during constraint system resolution", true);
+    h localh = u.dy("No member resolution should be done on captured type, it used only during constraint system resolution", true);
     p.g(localh, "ErrorUtils.createErrorSc…solution\", true\n        )");
     AppMethodBeat.o(60011);
     return localh;
   }
   
-  public final boolean glW()
+  public final d.l.b.a.b.b.a.g gmj()
   {
-    return this.Nwk;
+    return this.Nsz;
   }
   
-  public final List<av> gsW()
+  public final boolean gqy()
   {
-    return (List)v.MKE;
+    return this.NTq;
   }
   
-  public final ab gsX()
-  {
-    AppMethodBeat.i(60012);
-    Object localObject = bh.NCR;
-    aj localaj = d.l.b.a.b.m.d.a.aN(this).ghe();
-    p.g(localaj, "builtIns.nullableAnyType");
-    localObject = b((bh)localObject, (ab)localaj);
-    AppMethodBeat.o(60012);
-    return localObject;
-  }
-  
-  public final ab gsY()
+  public final ab gxA()
   {
     AppMethodBeat.i(60013);
-    Object localObject = bh.NCQ;
-    aj localaj = d.l.b.a.b.m.d.a.aN(this).ghc();
+    Object localObject = bh.NZX;
+    aj localaj = d.l.b.a.b.m.d.a.aN(this).glE();
     p.g(localaj, "builtIns.nothingType");
     localObject = b((bh)localObject, (ab)localaj);
     AppMethodBeat.o(60013);
     return localObject;
   }
   
+  public final List<av> gxy()
+  {
+    return (List)v.NhH;
+  }
+  
+  public final ab gxz()
+  {
+    AppMethodBeat.i(60012);
+    Object localObject = bh.NZY;
+    aj localaj = d.l.b.a.b.m.d.a.aN(this).glG();
+    p.g(localaj, "builtIns.nullableAnyType");
+    localObject = b((bh)localObject, (ab)localaj);
+    AppMethodBeat.o(60012);
+    return localObject;
+  }
+  
   public final String toString()
   {
     AppMethodBeat.i(60016);
-    StringBuilder localStringBuilder = new StringBuilder("Captured(").append(this.Nwi).append(')');
-    if (this.Nwk) {}
+    StringBuilder localStringBuilder = new StringBuilder("Captured(").append(this.NTo).append(')');
+    if (this.NTq) {}
     for (String str = "?";; str = "")
     {
       str = str;
@@ -151,7 +151,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.j.a.a.a
  * JD-Core Version:    0.7.0.1
  */

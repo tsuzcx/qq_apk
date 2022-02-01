@@ -5,7 +5,7 @@ import com.tencent.smtt.export.external.interfaces.IX5CoreGeolocationPermissions
 import java.util.Set;
 
 public class GeolocationPermissions
-  extends x
+  extends z
 {
   private static GeolocationPermissions a;
   

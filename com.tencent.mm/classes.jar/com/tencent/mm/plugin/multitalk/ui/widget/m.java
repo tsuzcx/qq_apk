@@ -9,26 +9,26 @@ import d.l;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/multitalk/ui/widget/SmallAvatarLayoutAdapter;", "Landroid/support/v7/widget/RecyclerView$Adapter;", "Lcom/tencent/mm/plugin/multitalk/ui/widget/SmallAvatarLayoutHolder;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "avatarItems", "Ljava/util/ArrayList;", "", "Lkotlin/collections/ArrayList;", "getContext", "()Landroid/content/Context;", "setContext", "addMember", "", "userName", "index", "", "checkIsExists", "", "getItemCount", "getMarginWidth", "onBindViewHolder", "holder", "position", "onCreateViewHolder", "parent", "Landroid/view/ViewGroup;", "plugin-multitalk_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/multitalk/ui/widget/SmallAvatarLayoutAdapter;", "Landroid/support/v7/widget/RecyclerView$Adapter;", "Lcom/tencent/mm/plugin/multitalk/ui/widget/SmallAvatarLayoutHolder;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "avatarItems", "Ljava/util/ArrayList;", "", "Lkotlin/collections/ArrayList;", "getContext", "()Landroid/content/Context;", "setContext", "addMember", "", "userName", "index", "", "checkIsExists", "", "getItemCount", "getMarginWidth", "onBindViewHolder", "holder", "position", "onCreateViewHolder", "parent", "Landroid/view/ViewGroup;", "plugin-multitalk_release"})
 public final class m
   extends RecyclerView.a<n>
 {
   private Context context;
-  public ArrayList<String> whw;
+  public ArrayList<String> wxa;
   
   public m(Context paramContext)
   {
     AppMethodBeat.i(178991);
     this.context = paramContext;
-    this.whw = new ArrayList();
+    this.wxa = new ArrayList();
     AppMethodBeat.o(178991);
   }
   
-  public final boolean arH(String paramString)
+  public final boolean asU(String paramString)
   {
     AppMethodBeat.i(178987);
     p.h(paramString, "userName");
-    Iterator localIterator = ((Iterable)this.whw).iterator();
+    Iterator localIterator = ((Iterable)this.wxa).iterator();
     Object localObject;
     do
     {
@@ -46,24 +46,24 @@ public final class m
     return false;
   }
   
-  public final void es(String paramString, int paramInt)
+  public final void eA(String paramString, int paramInt)
   {
     AppMethodBeat.i(178986);
     p.h(paramString, "userName");
-    if (this.whw.size() <= paramInt)
+    if (this.wxa.size() <= paramInt)
     {
-      this.whw.add(paramString);
+      this.wxa.add(paramString);
       AppMethodBeat.o(178986);
       return;
     }
-    this.whw.set(paramInt, paramString);
+    this.wxa.set(paramInt, paramString);
     AppMethodBeat.o(178986);
   }
   
   public final int getItemCount()
   {
     AppMethodBeat.i(178989);
-    int i = (int)Math.ceil(this.whw.size() / e.b.EJo);
+    int i = (int)Math.ceil(this.wxa.size() / e.b.FbM);
     AppMethodBeat.o(178989);
     return i;
   }

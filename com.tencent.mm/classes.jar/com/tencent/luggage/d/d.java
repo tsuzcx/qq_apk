@@ -4,7 +4,7 @@ import org.json.JSONObject;
 
 public abstract class d<TARGET extends s>
 {
-  public abstract JSONObject BO();
+  public abstract JSONObject BP();
   
   public abstract String name();
 }

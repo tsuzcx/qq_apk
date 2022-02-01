@@ -2,23 +2,23 @@ package com.tencent.mm.chatroom.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.g.b.a.p;
-import com.tencent.mm.model.w;
+import com.tencent.mm.model.x;
 
 public final class ab
 {
   public static void b(String paramString, int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(184787);
-    if (w.Az(paramString)) {}
+    if (x.Bj(paramString)) {}
     for (int i = 2;; i = 1)
     {
       p localp = new p();
-      localp.dSw = localp.t("roomusrname", paramString, true);
-      localp.dSx = paramInt1;
-      localp.dSy = i;
-      localp.dSz = paramInt2;
-      localp.dSA = paramInt3;
-      localp.aLk();
+      localp.dTM = localp.t("roomusrname", paramString, true);
+      localp.dTN = paramInt1;
+      localp.dTO = i;
+      localp.dTP = paramInt2;
+      localp.dTQ = paramInt3;
+      localp.aLH();
       AppMethodBeat.o(184787);
       return;
     }

@@ -15,19 +15,19 @@ public final class a
   {
     AppMethodBeat.i(183925);
     c.a locala = new c.a();
-    locala.IhA = new Field[3];
+    locala.IBL = new Field[3];
     locala.columns = new String[4];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "designerUin";
-    locala.IhC.put("designerUin", "INTEGER");
+    locala.IBN.put("designerUin", "INTEGER");
     localStringBuilder.append(" designerUin INTEGER");
     localStringBuilder.append(", ");
     locala.columns[1] = "productId";
-    locala.IhC.put("productId", "TEXT");
+    locala.IBN.put("productId", "TEXT");
     localStringBuilder.append(" productId TEXT");
     localStringBuilder.append(", ");
     locala.columns[2] = "syncTime";
-    locala.IhC.put("syncTime", "INTEGER");
+    locala.IBN.put("syncTime", "INTEGER");
     localStringBuilder.append(" syncTime INTEGER");
     locala.columns[3] = "rowid";
     locala.sql = localStringBuilder.toString();

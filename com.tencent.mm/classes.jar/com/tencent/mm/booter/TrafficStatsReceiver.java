@@ -7,26 +7,25 @@ import android.os.Build.VERSION;
 import android.os.SystemClock;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.a.a;
-import com.tencent.mm.compatible.deviceinfo.q;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public class TrafficStatsReceiver
   extends BroadcastReceiver
 {
   private long mLastTime = -1L;
   
-  public static void bP(Context paramContext)
+  public static void bR(Context paramContext)
   {
     AppMethodBeat.i(131938);
     Intent localIntent = new Intent("com.tencent.mm.TrafficStatsReceiver");
     a.a(paramContext, 111, 3, SystemClock.elapsedRealtime(), 300000L, localIntent);
-    ad.i("MicroMsg.TrafficStats", "Register alarm, interval: %d ms", new Object[] { Long.valueOf(300000L) });
+    ae.i("MicroMsg.TrafficStats", "Register alarm, interval: %d ms", new Object[] { Long.valueOf(300000L) });
     AppMethodBeat.o(131938);
   }
   
-  public static void bQ(Context paramContext)
+  public static void bS(Context paramContext)
   {
     AppMethodBeat.i(131939);
     a.c(paramContext, new Intent("com.tencent.mm.TrafficStatsReceiver"));
@@ -36,26 +35,26 @@ public class TrafficStatsReceiver
   public void onReceive(Context paramContext, Intent paramIntent)
   {
     AppMethodBeat.i(131937);
-    ad.d("MicroMsg.TrafficStats", "onRecieve");
+    ae.d("MicroMsg.TrafficStats", "onRecieve");
     long l1 = SystemClock.elapsedRealtime();
-    if ((Build.VERSION.SDK_INT > 28) || (Build.VERSION.CODENAME.equals("Q"))) {
-      bs.m(q.aas(), aj.getContext());
+    if (Build.VERSION.SDK_INT >= 28) {
+      bt.ji(ak.getContext());
     }
     for (;;)
     {
       if (this.mLastTime >= 0L)
       {
         long l2 = l1 - this.mLastTime;
-        long l3 = bs.flH() + bs.flG();
-        long l4 = bs.flF() + bs.flE();
-        long l5 = bs.Da(0L) + bs.CZ(0L);
-        long l6 = bs.Da(0L) + bs.CZ(0L);
-        ad.i("MicroMsg.TrafficStats", "Time: %d ms, System - [Mobile: %d, Wifi: %d, Speed: %.2f], WeChat - [Mobile: %d, Wifi: %d, Speed: %.2f]", new Object[] { Long.valueOf(l2), Long.valueOf(l3), Long.valueOf(l4), Double.valueOf((l3 + l4) / (l2 / 1000L)), Long.valueOf(l5), Long.valueOf(l6), Double.valueOf((l5 + l6) / (l2 / 1000L)) });
+        long l3 = bt.fpC() + bt.fpB();
+        long l4 = bt.fpA() + bt.fpz();
+        long l5 = bt.Dy(0L) + bt.Dx(0L);
+        long l6 = bt.Dy(0L) + bt.Dx(0L);
+        ae.i("MicroMsg.TrafficStats", "Time: %d ms, System - [Mobile: %d, Wifi: %d, Speed: %.2f], WeChat - [Mobile: %d, Wifi: %d, Speed: %.2f]", new Object[] { Long.valueOf(l2), Long.valueOf(l3), Long.valueOf(l4), Double.valueOf((l3 + l4) / (l2 / 1000L)), Long.valueOf(l5), Long.valueOf(l6), Double.valueOf((l5 + l6) / (l2 / 1000L)) });
       }
       this.mLastTime = l1;
       AppMethodBeat.o(131937);
       return;
-      bs.update();
+      bt.update();
     }
   }
 }

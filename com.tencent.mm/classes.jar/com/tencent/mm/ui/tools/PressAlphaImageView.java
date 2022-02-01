@@ -14,13 +14,13 @@ import junit.framework.Assert;
 public class PressAlphaImageView
   extends WeImageView
 {
-  private float KKt;
+  private float LgN;
   
   public PressAlphaImageView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(143206);
-    this.KKt = 0.7F;
+    this.LgN = 0.7F;
     super.setOnTouchListener(new View.OnTouchListener()
     {
       public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
@@ -29,7 +29,7 @@ public class PressAlphaImageView
         b localb = new b();
         localb.bd(paramAnonymousView);
         localb.bd(paramAnonymousMotionEvent);
-        a.b("com/tencent/mm/ui/tools/PressAlphaImageView$1", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahq());
+        a.b("com/tencent/mm/ui/tools/PressAlphaImageView$1", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahF());
         switch (paramAnonymousMotionEvent.getAction())
         {
         case 2: 
@@ -63,7 +63,7 @@ public class PressAlphaImageView
   
   public void setPressAlpha(float paramFloat)
   {
-    this.KKt = paramFloat;
+    this.LgN = paramFloat;
   }
 }
 

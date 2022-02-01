@@ -19,11 +19,11 @@ public abstract class AbsStoryPreference
   
   public abstract void a(d paramd);
   
-  public abstract void egO();
+  public abstract void ekw();
   
-  public abstract void egP();
+  public abstract void ekx();
   
-  public abstract void egQ();
+  public abstract void eky();
   
   public abstract void onCreate(String paramString);
   

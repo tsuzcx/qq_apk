@@ -1,18 +1,18 @@
 package com.tencent.mm.plugin.gamelife.a;
 
-import com.tencent.mm.storage.am;
+import com.tencent.mm.storage.an;
 
 public abstract interface a
 {
-  public abstract String VC();
+  public abstract String VK();
   
-  public abstract String cxL();
+  public abstract String czm();
   
-  public abstract am daA();
+  public abstract an ddm();
   
-  public abstract String daB();
+  public abstract String ddn();
   
-  public abstract int daC();
+  public abstract int ddo();
   
   public abstract String getTag();
   
@@ -22,7 +22,7 @@ public abstract interface a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.gamelife.a.a
  * JD-Core Version:    0.7.0.1
  */

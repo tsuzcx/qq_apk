@@ -4,7 +4,8 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
 
 final class ad$2
   implements Runnable
@@ -14,20 +15,20 @@ final class ad$2
   public final void run()
   {
     AppMethodBeat.i(23449);
-    boolean bool1 = aj.getContext().getPackageManager().hasSystemFeature("android.hardware.sensor.stepcounter");
-    boolean bool2 = aj.getContext().getPackageManager().hasSystemFeature("android.hardware.sensor.stepdetector");
+    boolean bool1 = ak.getContext().getPackageManager().hasSystemFeature("android.hardware.sensor.stepcounter");
+    boolean bool2 = ak.getContext().getPackageManager().hasSystemFeature("android.hardware.sensor.stepdetector");
     if ((bool1) && (bool2)) {
-      g.yhR.a(11891, "3", true, true);
+      g.yxI.a(11891, "3", true, true);
     }
     for (;;)
     {
-      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.exdevice.SubCoreExDevice", "[hakon][step] deviceFeatures stepCounter %s, stepDetector %s", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) });
+      ae.i("MicroMsg.exdevice.SubCoreExDevice", "[hakon][step] deviceFeatures stepCounter %s, stepDetector %s", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) });
       AppMethodBeat.o(23449);
       return;
       if (bool1) {
-        g.yhR.a(11891, "1", true, true);
+        g.yxI.a(11891, "1", true, true);
       } else if (bool2) {
-        g.yhR.a(11891, "2", true, true);
+        g.yxI.a(11891, "2", true, true);
       }
     }
   }

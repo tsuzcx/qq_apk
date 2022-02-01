@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.appbrand.jsapi.n;
 
 import com.tencent.mm.plugin.appbrand.d;
-import com.tencent.mm.plugin.appbrand.page.b.f;
+import com.tencent.mm.plugin.appbrand.page.a.f;
 
 public final class r
   extends j<d, f>

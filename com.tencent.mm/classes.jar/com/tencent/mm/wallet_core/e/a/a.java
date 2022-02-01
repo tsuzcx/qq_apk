@@ -1,18 +1,16 @@
 package com.tencent.mm.wallet_core.e.a;
 
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.f;
-import com.tencent.mm.model.u;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.model.v;
 import com.tencent.mm.network.e;
 import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.cka;
-import com.tencent.mm.protocal.protobuf.ckb;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.wallet_core.c.ae;
+import com.tencent.mm.protocal.protobuf.cku;
+import com.tencent.mm.protocal.protobuf.ckv;
+import com.tencent.mm.sdk.platformtools.ak;
 import com.tencent.mm.wallet_core.c.s;
 import com.tencent.mm.wallet_core.c.x;
 import com.tenpay.android.wechat.TenpayUtil;
@@ -28,21 +26,21 @@ public abstract class a
     if (localObject2 == null)
     {
       localObject1 = new b.a();
-      ((b.a)localObject1).hNM = new cka();
-      ((b.a)localObject1).hNN = new ckb();
+      ((b.a)localObject1).hQF = new cku();
+      ((b.a)localObject1).hQG = new ckv();
       ((b.a)localObject1).uri = "/cgi-bin/mmpay-bin/payu";
       ((b.a)localObject1).funcId = 1518;
-      ((b.a)localObject1).hNO = 0;
+      ((b.a)localObject1).hQH = 0;
       ((b.a)localObject1).respCmdId = 0;
-      localObject1 = ((b.a)localObject1).aDC();
+      localObject1 = ((b.a)localObject1).aDS();
       ((b)localObject1).setIsUserCmd(true);
     }
-    localObject2 = (cka)((b)localObject1).hNK.hNQ;
+    localObject2 = (cku)((b)localObject1).hQD.hQJ;
     if (paramBoolean1) {
-      ((cka)localObject2).GJm = eEK();
+      ((cku)localObject2).HcN = eIr();
     }
     if (paramBoolean2) {
-      ((cka)localObject2).GJn = 1;
+      ((cku)localObject2).HcO = 1;
     }
     setCommReqResp((b)localObject1);
   }
@@ -50,9 +48,9 @@ public abstract class a
   public int doScene(e parame, f paramf)
   {
     this.callback = paramf;
-    if (!u.aAB())
+    if (!v.aAR())
     {
-      ad.e("MicroMsg.NetScenePayUBase", "hy: serious error: not payupay");
+      com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.NetScenePayUBase", "hy: serious error: not payupay");
       paramf.onSceneEnd(1000, -100868, "Pay Method Err", this);
       return 1;
     }
@@ -61,20 +59,20 @@ public abstract class a
   
   public int doSceneSimulately(b paramb, e parame, f paramf)
   {
-    paramb = (cka)paramb.hNK.hNQ;
-    if (paramb.GJo != null) {
-      new String(paramb.GJo.getBufferToBytes());
+    paramb = (cku)paramb.hQD.hQJ;
+    if (paramb.HcP != null) {
+      new String(paramb.HcP.getBufferToBytes());
     }
-    if (paramb.HdC != null) {
-      new String(paramb.HdC.getBufferToBytes());
+    if (paramb.Hxc != null) {
+      new String(paramb.Hxc.getBufferToBytes());
     }
-    aj.getContext();
+    ak.getContext();
     getPayCgicmd();
-    ae.fRE();
+    com.tencent.mm.wallet_core.c.ae.fWa();
     return -1;
   }
   
-  public abstract int eEK();
+  public abstract int eIr();
   
   public String getEncryptUrl(String paramString)
   {
@@ -83,19 +81,19 @@ public abstract class a
   
   public int getPayCgicmd()
   {
-    return eEK();
+    return eIr();
   }
   
   public x getRetModel(b paramb)
   {
-    paramb = (ckb)paramb.hNL.hNQ;
+    paramb = (ckv)paramb.hQE.hQJ;
     x localx = new x();
-    localx.GJs = paramb.GJs;
-    localx.GJr = paramb.GJr;
-    localx.GJq = paramb.GJq;
-    localx.GJp = paramb.GJp;
-    localx.qem = paramb.HdE;
-    localx.Lyx = paramb.HdD;
+    localx.HcT = paramb.HcT;
+    localx.HcS = paramb.HcS;
+    localx.HcR = paramb.HcR;
+    localx.HcQ = paramb.HcQ;
+    localx.qkR = paramb.Hxe;
+    localx.LVm = paramb.Hxd;
     return localx;
   }
   
@@ -106,7 +104,7 @@ public abstract class a
   
   public void putToReqText(b paramb, SKBuiltinBuffer_t paramSKBuiltinBuffer_t)
   {
-    ((cka)paramb.hNK.hNQ).GJo = paramSKBuiltinBuffer_t;
+    ((cku)paramb.hQD.hQJ).HcP = paramSKBuiltinBuffer_t;
   }
   
   public void putToRequest(StringBuilder paramStringBuilder, String paramString)
@@ -116,12 +114,12 @@ public abstract class a
   
   public void putToWXReqText(b paramb, SKBuiltinBuffer_t paramSKBuiltinBuffer_t)
   {
-    ((cka)paramb.hNK.hNQ).HdC = paramSKBuiltinBuffer_t;
+    ((cku)paramb.hQD.hQJ).Hxc = paramSKBuiltinBuffer_t;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.wallet_core.e.a.a
  * JD-Core Version:    0.7.0.1
  */

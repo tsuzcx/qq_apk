@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.sns.ui;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.ia;
+import com.tencent.mm.g.a.ib;
 import com.tencent.mm.sdk.b.c;
 
 final class SnsCommentDetailUI$10
-  extends c<ia>
+  extends c<ib>
 {
   SnsCommentDetailUI$10(SnsCommentDetailUI paramSnsCommentDetailUI)
   {
     AppMethodBeat.i(163092);
-    this.__eventId = ia.class.getName().hashCode();
+    this.__eventId = ib.class.getName().hashCode();
     AppMethodBeat.o(163092);
   }
 }

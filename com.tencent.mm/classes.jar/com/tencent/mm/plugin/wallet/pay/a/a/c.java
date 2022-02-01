@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.wallet.pay.a.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.f;
+import com.tencent.mm.ak.f;
 import com.tencent.mm.network.e;
 import com.tencent.mm.plugin.wallet_core.model.Authen;
 import com.tencent.mm.plugin.wallet_core.model.Orders;
@@ -11,15 +11,15 @@ import org.json.JSONObject;
 public class c
   extends b
 {
-  private boolean CIw;
+  private boolean Dac;
   
   public c(Authen paramAuthen, Orders paramOrders, boolean paramBoolean)
   {
     super(paramAuthen, paramOrders);
-    this.CIw = paramBoolean;
+    this.Dac = paramBoolean;
   }
   
-  protected void aS(Map<String, String> paramMap) {}
+  protected void aY(Map<String, String> paramMap) {}
   
   public int doScene(e parame, f paramf)
   {
@@ -53,7 +53,7 @@ public class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.pay.a.a.c
  * JD-Core Version:    0.7.0.1
  */

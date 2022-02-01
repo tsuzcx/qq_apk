@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.appbrand.jsapi.audio;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsruntime.o;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.HashMap;
 import java.util.Map;
 import org.json.JSONObject;
@@ -16,39 +16,39 @@ public class f
   public final void a(com.tencent.mm.plugin.appbrand.jsapi.c paramc, JSONObject paramJSONObject, int paramInt)
   {
     AppMethodBeat.i(145705);
-    a(paramc, paramJSONObject, paramInt, paramc.aYh());
+    a(paramc, paramJSONObject, paramInt, paramc.aYB());
     AppMethodBeat.o(145705);
   }
   
   public final void a(final com.tencent.mm.plugin.appbrand.jsapi.c paramc, JSONObject paramJSONObject, final int paramInt, final o paramo)
   {
-    AppMethodBeat.i(198672);
-    ad.i("MicroMsg.JsApiCreateAudioInstanceAsync", "hy: create audio instance async invoke");
+    AppMethodBeat.i(210894);
+    ae.i("MicroMsg.JsApiCreateAudioInstanceAsync", "hy: create audio instance async invoke");
     new a()
     {
-      public final void Ox()
+      public final void Ov()
       {
         AppMethodBeat.i(145704);
-        ad.i("MicroMsg.JsApiCreateAudioInstanceAsync", "hy: start create audio instance async");
+        ae.i("MicroMsg.JsApiCreateAudioInstanceAsync", "hy: start create audio instance async");
         String str = e.k(paramc);
         HashMap localHashMap = new HashMap();
         localHashMap.put("audioId", str);
-        c.kvZ.Pk(paramc.getAppId()).a(str, paramo);
-        paramc.h(paramInt, f.this.m("ok", localHashMap));
+        c.kzo.PS(paramc.getAppId()).a(str, paramo);
+        paramc.h(paramInt, f.this.n("ok", localHashMap));
         AppMethodBeat.o(145704);
       }
-    }.biB();
-    AppMethodBeat.o(198672);
+    }.bjk();
+    AppMethodBeat.o(210894);
   }
   
-  public final boolean bij()
+  public final boolean biS()
   {
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.audio.f
  * JD-Core Version:    0.7.0.1
  */

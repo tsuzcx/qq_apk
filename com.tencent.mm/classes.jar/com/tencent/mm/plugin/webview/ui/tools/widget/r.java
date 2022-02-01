@@ -22,10 +22,10 @@ import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.modelappbrand.a.e;
 import com.tencent.mm.pluginsdk.ui.span.k;
-import com.tencent.mm.protocal.protobuf.cxm;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.cyg;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.base.AuthorizeItemListView;
 import com.tencent.mm.ui.base.i;
 import java.util.ArrayList;
@@ -33,55 +33,55 @@ import java.util.LinkedList;
 
 public final class r
 {
-  private b Esr;
+  private b EKH;
   private Context context;
-  private String kyo;
+  private String kBD;
   private String mAppName = "";
-  AuthorizeItemListView naX;
-  private LinearLayout naZ;
+  AuthorizeItemListView ngf;
+  private LinearLayout ngh;
   
   public r(Context paramContext)
   {
     this.context = paramContext;
   }
   
-  private boolean a(String paramString, final LinkedList<cxm> paramLinkedList, final a parama)
+  private boolean a(String paramString, final LinkedList<cyg> paramLinkedList, final a parama)
   {
     AppMethodBeat.i(151606);
     if ((paramLinkedList == null) || (paramLinkedList.size() <= 0))
     {
-      ad.e("MicroMsg.AppBrandAuthorizeDialog", "scopeInfoList is empty or null");
+      ae.e("MicroMsg.AppBrandAuthorizeDialog", "scopeInfoList is empty or null");
       AppMethodBeat.o(151606);
       return false;
     }
     final i locali = new i(this.context, 2131821725);
     LinearLayout localLinearLayout = (LinearLayout)((LayoutInflater)this.context.getSystemService("layout_inflater")).inflate(2131493119, null);
     Object localObject = (TextView)localLinearLayout.findViewById(2131306944);
-    if (!bt.isNullOrNil(paramString)) {
+    if (!bu.isNullOrNil(paramString)) {
       ((TextView)localObject).setText(paramString);
     }
     paramString = (ImageView)localLinearLayout.findViewById(2131296853);
-    localObject = com.tencent.mm.compatible.e.a.decodeResource(aj.getResources(), 2131690013);
-    localObject = d.a(aj.getResources(), (Bitmap)localObject);
+    localObject = com.tencent.mm.compatible.e.a.decodeResource(ak.getResources(), 2131690013);
+    localObject = d.a(ak.getResources(), (Bitmap)localObject);
     ((android.support.v4.graphics.drawable.b)localObject).ez();
     if (paramString != null) {
-      com.tencent.mm.modelappbrand.a.b.aDV().a(paramString, this.kyo, (Drawable)localObject, new e());
+      com.tencent.mm.modelappbrand.a.b.aEl().a(paramString, this.kBD, (Drawable)localObject, new e());
     }
     paramString = (TextView)localLinearLayout.findViewById(2131296866);
     if (this.mAppName == null) {
       this.mAppName = "";
     }
     paramString.setText(k.b(this.context, this.context.getString(2131760748, new Object[] { this.mAppName }), paramString.getTextSize()));
-    this.naX = ((AuthorizeItemListView)localLinearLayout.findViewById(2131296973));
-    this.Esr = new b(paramLinkedList);
-    this.naX.setAdapter(this.Esr);
+    this.ngf = ((AuthorizeItemListView)localLinearLayout.findViewById(2131296973));
+    this.EKH = new b(paramLinkedList);
+    this.ngf.setAdapter(this.EKH);
     if (paramLinkedList.size() > 5)
     {
-      this.naX.ajO = paramLinkedList.size();
-      this.naZ = ((LinearLayout)localLinearLayout.findViewById(2131296983));
-      paramString = (LinearLayout.LayoutParams)this.naZ.getLayoutParams();
+      this.ngf.ajO = paramLinkedList.size();
+      this.ngh = ((LinearLayout)localLinearLayout.findViewById(2131296983));
+      paramString = (LinearLayout.LayoutParams)this.ngh.getLayoutParams();
       paramString.height = this.context.getResources().getDimensionPixelSize(2131166486);
-      this.naZ.setLayoutParams(paramString);
+      this.ngh.setLayoutParams(paramString);
     }
     ((Button)localLinearLayout.findViewById(2131301557)).setOnClickListener(new View.OnClickListener()
     {
@@ -90,17 +90,17 @@ public final class r
         AppMethodBeat.i(151595);
         Object localObject = new com.tencent.mm.hellhoundlib.b.b();
         ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/webview/ui/tools/widget/WebAuthorizeDialog$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahq());
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/webview/ui/tools/widget/WebAuthorizeDialog$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahF());
         paramAnonymousView = new ArrayList();
         int i = 0;
         while (i < paramLinkedList.size())
         {
-          if ((((cxm)paramLinkedList.get(i)).HoV == 2) || (((cxm)paramLinkedList.get(i)).HoV == 3)) {
-            paramAnonymousView.add(((cxm)paramLinkedList.get(i)).FKf);
+          if ((((cyg)paramLinkedList.get(i)).HIx == 2) || (((cyg)paramLinkedList.get(i)).HIx == 3)) {
+            paramAnonymousView.add(((cyg)paramLinkedList.get(i)).GcE);
           }
           i += 1;
         }
-        ad.d("MicroMsg.AppBrandAuthorizeDialog", "stev acceptButton click!");
+        ae.d("MicroMsg.AppBrandAuthorizeDialog", "stev acceptButton click!");
         localObject = new Bundle();
         ((Bundle)localObject).putSerializable("key_scope", paramAnonymousView);
         parama.j(1, (Bundle)localObject);
@@ -116,17 +116,17 @@ public final class r
         AppMethodBeat.i(151596);
         Object localObject = new com.tencent.mm.hellhoundlib.b.b();
         ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/webview/ui/tools/widget/WebAuthorizeDialog$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahq());
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/webview/ui/tools/widget/WebAuthorizeDialog$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahF());
         paramAnonymousView = new ArrayList();
         int i = 0;
         while (i < paramLinkedList.size())
         {
-          if ((((cxm)paramLinkedList.get(i)).HoV == 2) || (((cxm)paramLinkedList.get(i)).HoV == 3)) {
-            paramAnonymousView.add(((cxm)paramLinkedList.get(i)).FKf);
+          if ((((cyg)paramLinkedList.get(i)).HIx == 2) || (((cyg)paramLinkedList.get(i)).HIx == 3)) {
+            paramAnonymousView.add(((cyg)paramLinkedList.get(i)).GcE);
           }
           i += 1;
         }
-        ad.d("MicroMsg.AppBrandAuthorizeDialog", "stev rejectButton click!");
+        ae.d("MicroMsg.AppBrandAuthorizeDialog", "stev rejectButton click!");
         localObject = new Bundle();
         ((Bundle)localObject).putSerializable("key_scope", paramAnonymousView);
         parama.j(2, (Bundle)localObject);
@@ -141,8 +141,8 @@ public final class r
       public final void onDismiss(DialogInterface paramAnonymousDialogInterface)
       {
         AppMethodBeat.i(151597);
-        if (r.this.naX != null) {
-          r.this.naX.setAdapter(null);
+        if (r.this.ngf != null) {
+          r.this.ngf.setAdapter(null);
         }
         AppMethodBeat.o(151597);
       }
@@ -152,7 +152,7 @@ public final class r
       public final void onCancel(DialogInterface paramAnonymousDialogInterface)
       {
         AppMethodBeat.i(151598);
-        ad.d("MicroMsg.AppBrandAuthorizeDialog", "stev dialog onCancel");
+        ae.d("MicroMsg.AppBrandAuthorizeDialog", "stev dialog onCancel");
         parama.j(3, null);
         AppMethodBeat.o(151598);
       }
@@ -166,13 +166,13 @@ public final class r
     }
     catch (Exception paramString)
     {
-      ad.e("MicroMsg.AppBrandAuthorizeDialog", "dialog show failed %s", new Object[] { paramString.getMessage() });
+      ae.e("MicroMsg.AppBrandAuthorizeDialog", "dialog show failed %s", new Object[] { paramString.getMessage() });
       AppMethodBeat.o(151606);
     }
     return false;
   }
   
-  public final boolean a(LinkedList<cxm> paramLinkedList, String paramString1, String paramString2, a parama)
+  public final boolean a(LinkedList<cyg> paramLinkedList, String paramString1, String paramString2, a parama)
   {
     AppMethodBeat.i(151605);
     boolean bool = a(paramLinkedList, paramString1, paramString2, null, parama);
@@ -180,12 +180,12 @@ public final class r
     return bool;
   }
   
-  public final boolean a(LinkedList<cxm> paramLinkedList, String paramString1, String paramString2, String paramString3, a parama)
+  public final boolean a(LinkedList<cyg> paramLinkedList, String paramString1, String paramString2, String paramString3, a parama)
   {
     AppMethodBeat.i(151604);
-    ad.d("MicroMsg.AppBrandAuthorizeDialog", "stev AppBrandAuthorizeDialog showAlert!");
+    ae.d("MicroMsg.AppBrandAuthorizeDialog", "stev AppBrandAuthorizeDialog showAlert!");
     this.mAppName = paramString1;
-    this.kyo = paramString2;
+    this.kBD = paramString2;
     boolean bool = a(paramString3, paramLinkedList, parama);
     AppMethodBeat.o(151604);
     return bool;
@@ -199,31 +199,31 @@ public final class r
   final class b
     extends BaseAdapter
   {
-    private LinkedList<cxm> Est;
+    private LinkedList<cyg> EKJ;
     
     public b()
     {
       Object localObject;
-      this.Est = localObject;
+      this.EKJ = localObject;
     }
     
-    private cxm XU(int paramInt)
+    private cyg YA(int paramInt)
     {
       AppMethodBeat.i(151601);
-      cxm localcxm = (cxm)this.Est.get(paramInt);
+      cyg localcyg = (cyg)this.EKJ.get(paramInt);
       AppMethodBeat.o(151601);
-      return localcxm;
+      return localcyg;
     }
     
     public final int getCount()
     {
       AppMethodBeat.i(151600);
-      if (this.Est == null)
+      if (this.EKJ == null)
       {
         AppMethodBeat.o(151600);
         return 0;
       }
-      int i = this.Est.size();
+      int i = this.EKJ.size();
       AppMethodBeat.o(151600);
       return i;
     }
@@ -236,53 +236,53 @@ public final class r
     public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
     {
       AppMethodBeat.i(151602);
-      if ((this.Est == null) || (this.Est.size() <= 0))
+      if ((this.EKJ == null) || (this.EKJ.size() <= 0))
       {
         AppMethodBeat.o(151602);
         return null;
       }
-      final cxm localcxm = XU(paramInt);
+      final cyg localcyg = YA(paramInt);
       Object localObject;
       if (paramView == null)
       {
         paramView = new a((byte)0);
         localObject = View.inflate(paramViewGroup.getContext(), 2131493120, null);
-        paramView.DZP = ((ImageView)((View)localObject).findViewById(2131296682));
-        paramView.nbj = ((TextView)((View)localObject).findViewById(2131296681));
+        paramView.ErR = ((ImageView)((View)localObject).findViewById(2131296682));
+        paramView.ngr = ((TextView)((View)localObject).findViewById(2131296681));
         ((View)localObject).setTag(paramView);
         paramViewGroup = paramView;
         paramView = (View)localObject;
-        if (localcxm.HoV != 1) {
+        if (localcyg.HIx != 1) {
           break label174;
         }
-        paramViewGroup.DZP.setImageResource(2131690740);
+        paramViewGroup.ErR.setImageResource(2131690740);
       }
       for (;;)
       {
-        paramViewGroup.nbj.setText(localcxm.Desc);
-        localObject = paramViewGroup.DZP;
-        paramViewGroup.DZP.setOnClickListener(new View.OnClickListener()
+        paramViewGroup.ngr.setText(localcyg.Desc);
+        localObject = paramViewGroup.ErR;
+        paramViewGroup.ErR.setOnClickListener(new View.OnClickListener()
         {
           public final void onClick(View paramAnonymousView)
           {
             AppMethodBeat.i(151599);
             com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
             localb.bd(paramAnonymousView);
-            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/webview/ui/tools/widget/WebAuthorizeDialog$LoginAuthListAdapter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-            if (localcxm.HoV == 2)
+            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/webview/ui/tools/widget/WebAuthorizeDialog$LoginAuthListAdapter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+            if (localcyg.HIx == 2)
             {
-              this.DZN.setImageResource(2131690740);
-              localcxm.HoV = 1;
+              this.ErP.setImageResource(2131690740);
+              localcyg.HIx = 1;
             }
             for (;;)
             {
               com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/webview/ui/tools/widget/WebAuthorizeDialog$LoginAuthListAdapter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
               AppMethodBeat.o(151599);
               return;
-              if (localcxm.HoV == 1)
+              if (localcyg.HIx == 1)
               {
-                this.DZN.setImageResource(2131690738);
-                localcxm.HoV = 2;
+                this.ErP.setImageResource(2131690738);
+                localcyg.HIx = 2;
               }
             }
           }
@@ -292,18 +292,18 @@ public final class r
         paramViewGroup = (a)paramView.getTag();
         break;
         label174:
-        if (localcxm.HoV == 3) {
-          paramViewGroup.DZP.setImageResource(2131690739);
+        if (localcyg.HIx == 3) {
+          paramViewGroup.ErR.setImageResource(2131690739);
         } else {
-          paramViewGroup.DZP.setImageResource(2131690738);
+          paramViewGroup.ErR.setImageResource(2131690738);
         }
       }
     }
     
     final class a
     {
-      ImageView DZP;
-      TextView nbj;
+      ImageView ErR;
+      TextView ngr;
       
       private a() {}
     }
@@ -311,7 +311,7 @@ public final class r
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.widget.r
  * JD-Core Version:    0.7.0.1
  */

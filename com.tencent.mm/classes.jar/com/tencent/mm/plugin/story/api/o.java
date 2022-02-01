@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,20 +22,20 @@ public final class o
       localIntent.putExtra("gallery_chat_room", paramString1);
       localIntent.putExtra("gallery_session_id", paramString2);
       paramList = new com.tencent.mm.hellhoundlib.b.a().bc(localIntent);
-      com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramList.ahp(), "com/tencent/mm/plugin/story/api/LaunchStory", "startStoryBrowse", "(Landroid/content/Context;Ljava/util/List;ZLjava/lang/String;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramContext.startActivity((Intent)paramList.mq(0));
+      com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramList.ahE(), "com/tencent/mm/plugin/story/api/LaunchStory", "startStoryBrowse", "(Landroid/content/Context;Ljava/util/List;ZLjava/lang/String;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramContext.startActivity((Intent)paramList.mt(0));
       com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/plugin/story/api/LaunchStory", "startStoryBrowse", "(Landroid/content/Context;Ljava/util/List;ZLjava/lang/String;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       AppMethodBeat.o(118427);
       return;
     }
     catch (ClassNotFoundException paramContext)
     {
-      ad.printErrStackTrace("LaunchStory", paramContext, "startStoryBrowse failed", new Object[0]);
+      ae.printErrStackTrace("LaunchStory", paramContext, "startStoryBrowse failed", new Object[0]);
       AppMethodBeat.o(118427);
     }
   }
   
-  public static void bi(Context paramContext, String paramString)
+  public static void bk(Context paramContext, String paramString)
   {
     AppMethodBeat.i(118423);
     try
@@ -43,26 +43,26 @@ public final class o
       Intent localIntent = new Intent(paramContext, Class.forName("com.tencent.mm.plugin.story.ui.StoryBrowseUI"));
       localIntent.putExtra("username", paramString);
       paramString = new com.tencent.mm.hellhoundlib.b.a().bc(localIntent);
-      com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramString.ahp(), "com/tencent/mm/plugin/story/api/LaunchStory", "startStoryBrowse", "(Landroid/content/Context;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramContext.startActivity((Intent)paramString.mq(0));
+      com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramString.ahE(), "com/tencent/mm/plugin/story/api/LaunchStory", "startStoryBrowse", "(Landroid/content/Context;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramContext.startActivity((Intent)paramString.mt(0));
       com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/plugin/story/api/LaunchStory", "startStoryBrowse", "(Landroid/content/Context;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       AppMethodBeat.o(118423);
       return;
     }
     catch (ClassNotFoundException paramContext)
     {
-      ad.printErrStackTrace("LaunchStory", paramContext, "startStoryBrowse failed", new Object[0]);
+      ae.printErrStackTrace("LaunchStory", paramContext, "startStoryBrowse failed", new Object[0]);
       AppMethodBeat.o(118423);
     }
   }
   
-  public static boolean ehh()
+  public static boolean ekP()
   {
     AppMethodBeat.i(118421);
-    if (((com.tencent.mm.plugin.zero.b.a)g.ab(com.tencent.mm.plugin.zero.b.a.class)).acA().getInt("StoryOpenRoomSync", 1) == 2) {}
+    if (((com.tencent.mm.plugin.zero.b.a)g.ab(com.tencent.mm.plugin.zero.b.a.class)).acL().getInt("StoryOpenRoomSync", 1) == 2) {}
     for (boolean bool = true;; bool = false)
     {
-      ad.i("LaunchStory", "isOpenRoomSync %s", new Object[] { Boolean.valueOf(bool) });
+      ae.i("LaunchStory", "isOpenRoomSync %s", new Object[] { Boolean.valueOf(bool) });
       if (bool) {
         break;
       }
@@ -73,13 +73,13 @@ public final class o
     return false;
   }
   
-  public static boolean ehi()
+  public static boolean ekQ()
   {
     AppMethodBeat.i(118422);
-    if (((com.tencent.mm.plugin.zero.b.a)g.ab(com.tencent.mm.plugin.zero.b.a.class)).acA().getInt("StoryOpenStrangerUserPage", 1) == 2) {}
+    if (((com.tencent.mm.plugin.zero.b.a)g.ab(com.tencent.mm.plugin.zero.b.a.class)).acL().getInt("StoryOpenStrangerUserPage", 1) == 2) {}
     for (boolean bool = true;; bool = false)
     {
-      ad.i("LaunchStory", "isOpenRoomSync %s", new Object[] { Boolean.valueOf(bool) });
+      ae.i("LaunchStory", "isOpenRoomSync %s", new Object[] { Boolean.valueOf(bool) });
       if (bool) {
         break;
       }

@@ -1,11 +1,11 @@
 package com.tencent.mm.plugin.appbrand;
 
-import com.tencent.luggage.sdk.d.c;
+import com.tencent.luggage.sdk.d.d;
 import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfig;
 import d.g.a.a;
 
 final class AppBrandRuntimeContainerWC$2
-  implements a<c>
+  implements a<d>
 {
   AppBrandRuntimeContainerWC$2(AppBrandRuntimeContainerWC paramAppBrandRuntimeContainerWC, AppBrandInitConfig paramAppBrandInitConfig) {}
 }

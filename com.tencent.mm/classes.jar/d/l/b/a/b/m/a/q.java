@@ -13,12 +13,12 @@ import d.l.b.a.b.m.y;
 
 public final class q
 {
-  public static final q NDt;
+  public static final q OaA;
   
   static
   {
     AppMethodBeat.i(61091);
-    NDt = new q();
+    OaA = new q();
     AppMethodBeat.o(61091);
   }
   
@@ -26,16 +26,16 @@ public final class q
   {
     AppMethodBeat.i(61090);
     p.h(parambg, "type");
-    Object localObject = c.NBi;
-    localObject = s.NDu;
-    boolean bool = c.a((g)new a(false, true, false, null, 12), (j)y.ao((ab)parambg), (g.b)g.b.b.NBv);
+    Object localObject = c.NYp;
+    localObject = s.OaB;
+    boolean bool = c.a((g)new a(false, true, false, null, 12), (j)y.ao((ab)parambg), (g.b)g.b.b.NYC);
     AppMethodBeat.o(61090);
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.m.a.q
  * JD-Core Version:    0.7.0.1
  */

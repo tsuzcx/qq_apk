@@ -2,13 +2,13 @@ package com.tencent.mm.plugin.shake.c.a;
 
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.to;
-import com.tencent.mm.model.ba;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.sdk.platformtools.bw;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.al.a;
+import com.tencent.mm.g.a.tp;
+import com.tencent.mm.model.bc;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.bx;
+import com.tencent.mm.storage.aj;
+import com.tencent.mm.storage.am.a;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,15 +18,15 @@ import java.util.regex.Pattern;
 
 public final class f
 {
-  public List<WeakReference<a>> owv;
-  private String yMz;
+  public List<WeakReference<a>> oCX;
+  private String zcJ;
   
   public f()
   {
     AppMethodBeat.i(28190);
-    this.owv = new ArrayList();
-    this.yMz = "";
-    this.yMz = com.tencent.mm.plugin.shake.c.c.a.dPj();
+    this.oCX = new ArrayList();
+    this.zcJ = "";
+    this.zcJ = com.tencent.mm.plugin.shake.c.c.a.dSG();
     AppMethodBeat.o(28190);
   }
   
@@ -35,29 +35,29 @@ public final class f
     AppMethodBeat.i(28194);
     if (paramb == null)
     {
-      ad.e("MicroMsg.ShakeCardMsgMgr", "saveEntranceMsg msg == null");
+      ae.e("MicroMsg.ShakeCardMsgMgr", "saveEntranceMsg msg == null");
       AppMethodBeat.o(28194);
       return;
     }
-    ad.i("MicroMsg.ShakeCardMsgMgr", "saveEntranceMsg msg");
-    if (!com.tencent.mm.plugin.shake.c.c.a.dOJ()) {
-      ad.i("MicroMsg.ShakeCardMsgMgr", "saveEntranceMsg isShakeCardEntranceOpen is false");
+    ae.i("MicroMsg.ShakeCardMsgMgr", "saveEntranceMsg msg");
+    if (!com.tencent.mm.plugin.shake.c.c.a.dSg()) {
+      ae.i("MicroMsg.ShakeCardMsgMgr", "saveEntranceMsg isShakeCardEntranceOpen is false");
     }
-    ad.i("MicroMsg.ShakeCardMsgMgr", "saveEntranceMsg begintime:" + paramb.yMA + "  endtime:" + paramb.yMB + "  flowlevelmin:" + paramb.yME + "  flowlevelmax:" + paramb.yMF + " entrancename:" + paramb.yMC + " activitytype:" + paramb.yMD);
-    ba.aBQ();
-    com.tencent.mm.model.c.ajl().set(al.a.IpY, Integer.valueOf(paramb.yMA));
-    ba.aBQ();
-    com.tencent.mm.model.c.ajl().set(al.a.IpZ, Integer.valueOf(paramb.yMB));
-    ba.aBQ();
-    com.tencent.mm.model.c.ajl().set(al.a.Iqa, paramb.yMC);
-    ba.aBQ();
-    com.tencent.mm.model.c.ajl().set(al.a.Iqe, Integer.valueOf(paramb.yMD));
-    ba.aBQ();
-    com.tencent.mm.model.c.ajl().set(al.a.Iqb, Integer.valueOf(paramb.yME));
-    ba.aBQ();
-    com.tencent.mm.model.c.ajl().set(al.a.Iqc, Integer.valueOf(paramb.yMF));
-    ba.aBQ();
-    com.tencent.mm.model.c.ajl().set(al.a.Iqd, paramb.yMG);
+    ae.i("MicroMsg.ShakeCardMsgMgr", "saveEntranceMsg begintime:" + paramb.zcK + "  endtime:" + paramb.zcL + "  flowlevelmin:" + paramb.zcO + "  flowlevelmax:" + paramb.zcP + " entrancename:" + paramb.zcM + " activitytype:" + paramb.zcN);
+    bc.aCg();
+    com.tencent.mm.model.c.ajA().set(am.a.IKs, Integer.valueOf(paramb.zcK));
+    bc.aCg();
+    com.tencent.mm.model.c.ajA().set(am.a.IKt, Integer.valueOf(paramb.zcL));
+    bc.aCg();
+    com.tencent.mm.model.c.ajA().set(am.a.IKu, paramb.zcM);
+    bc.aCg();
+    com.tencent.mm.model.c.ajA().set(am.a.IKy, Integer.valueOf(paramb.zcN));
+    bc.aCg();
+    com.tencent.mm.model.c.ajA().set(am.a.IKv, Integer.valueOf(paramb.zcO));
+    bc.aCg();
+    com.tencent.mm.model.c.ajA().set(am.a.IKw, Integer.valueOf(paramb.zcP));
+    bc.aCg();
+    com.tencent.mm.model.c.ajA().set(am.a.IKx, paramb.zcQ);
     AppMethodBeat.o(28194);
   }
   
@@ -66,56 +66,56 @@ public final class f
     AppMethodBeat.i(28196);
     if (paramd == null)
     {
-      ad.e("MicroMsg.ShakeCardMsgMgr", "saveRedDotMsg msg == null");
+      ae.e("MicroMsg.ShakeCardMsgMgr", "saveRedDotMsg msg == null");
       AppMethodBeat.o(28196);
       return;
     }
-    ad.i("MicroMsg.ShakeCardMsgMgr", "saveRedDotMsg msg reddotid is " + paramd.yMH);
-    ad.i("MicroMsg.ShakeCardMsgMgr", "saveRedDotMsg pre reddotid is " + this.yMz);
-    if (TextUtils.isEmpty(paramd.yMH))
+    ae.i("MicroMsg.ShakeCardMsgMgr", "saveRedDotMsg msg reddotid is " + paramd.zcR);
+    ae.i("MicroMsg.ShakeCardMsgMgr", "saveRedDotMsg pre reddotid is " + this.zcJ);
+    if (TextUtils.isEmpty(paramd.zcR))
     {
-      ad.i("MicroMsg.ShakeCardMsgMgr", "msg.reddotid is empty");
+      ae.i("MicroMsg.ShakeCardMsgMgr", "msg.reddotid is empty");
       AppMethodBeat.o(28196);
       return;
     }
-    if (TextUtils.isEmpty(this.yMz))
+    if (TextUtils.isEmpty(this.zcJ))
     {
-      ad.i("MicroMsg.ShakeCardMsgMgr", "redDotId is empty, msg.reddotid is not empty");
-      com.tencent.mm.z.c.aht().x(262154, true);
-      ba.aBQ();
-      com.tencent.mm.model.c.ajl().set(al.a.Iqf, paramd.yMH);
-      ba.aBQ();
-      com.tencent.mm.model.c.ajl().set(al.a.Iqg, paramd.yMI);
-      ba.aBQ();
-      com.tencent.mm.model.c.ajl().set(al.a.Iqh, paramd.yMJ);
+      ae.i("MicroMsg.ShakeCardMsgMgr", "redDotId is empty, msg.reddotid is not empty");
+      com.tencent.mm.y.c.ahI().x(262154, true);
+      bc.aCg();
+      com.tencent.mm.model.c.ajA().set(am.a.IKz, paramd.zcR);
+      bc.aCg();
+      com.tencent.mm.model.c.ajA().set(am.a.IKA, paramd.zcS);
+      bc.aCg();
+      com.tencent.mm.model.c.ajA().set(am.a.IKB, paramd.zcT);
       onChange();
       AppMethodBeat.o(28196);
       return;
     }
-    if (!this.yMz.equals(paramd.yMH))
+    if (!this.zcJ.equals(paramd.zcR))
     {
-      ad.i("MicroMsg.ShakeCardMsgMgr", "redDotId and msg.reddotid is not empty, but no equals");
-      com.tencent.mm.z.c.aht().x(262154, true);
-      ba.aBQ();
-      com.tencent.mm.model.c.ajl().set(al.a.Iqf, paramd.yMH);
-      ba.aBQ();
-      com.tencent.mm.model.c.ajl().set(al.a.Iqg, paramd.yMI);
-      ba.aBQ();
-      com.tencent.mm.model.c.ajl().set(al.a.Iqh, paramd.yMJ);
+      ae.i("MicroMsg.ShakeCardMsgMgr", "redDotId and msg.reddotid is not empty, but no equals");
+      com.tencent.mm.y.c.ahI().x(262154, true);
+      bc.aCg();
+      com.tencent.mm.model.c.ajA().set(am.a.IKz, paramd.zcR);
+      bc.aCg();
+      com.tencent.mm.model.c.ajA().set(am.a.IKA, paramd.zcS);
+      bc.aCg();
+      com.tencent.mm.model.c.ajA().set(am.a.IKB, paramd.zcT);
       onChange();
       AppMethodBeat.o(28196);
       return;
     }
-    if (this.yMz.equals(paramd.yMH)) {
-      ad.i("MicroMsg.ShakeCardMsgMgr", "redDotId equals msg.reddotid");
+    if (this.zcJ.equals(paramd.zcR)) {
+      ae.i("MicroMsg.ShakeCardMsgMgr", "redDotId equals msg.reddotid");
     }
     AppMethodBeat.o(28196);
   }
   
-  private static b axk(String paramString)
+  private static b ayA(String paramString)
   {
     AppMethodBeat.i(28193);
-    Object localObject = bw.M(paramString, "sysmsg");
+    Object localObject = bx.M(paramString, "sysmsg");
     if (localObject == null)
     {
       AppMethodBeat.o(28193);
@@ -125,78 +125,78 @@ public final class f
     String str = (String)((Map)localObject).get(".sysmsg.begintime");
     if ((!TextUtils.isEmpty(str)) && (isNumeric(str)))
     {
-      paramString.yMA = bt.getInt(str, 0);
+      paramString.zcK = bu.getInt(str, 0);
       str = (String)((Map)localObject).get(".sysmsg.endtime");
       if ((TextUtils.isEmpty(str)) || (!isNumeric(str))) {
         break label290;
       }
-      paramString.yMB = bt.getInt(str, 0);
+      paramString.zcL = bu.getInt(str, 0);
       label104:
-      paramString.yMC = ((String)((Map)localObject).get(".sysmsg.entrancename"));
+      paramString.zcM = ((String)((Map)localObject).get(".sysmsg.entrancename"));
       str = (String)((Map)localObject).get(".sysmsg.activitytype");
       if ((TextUtils.isEmpty(str)) || (!isNumeric(str))) {
         break label313;
       }
-      paramString.yMD = bt.getInt(str, 0);
+      paramString.zcN = bu.getInt(str, 0);
       label156:
-      ad.i("MicroMsg.ShakeCardMsgMgr", "parseEntrancedMsgFromMsgXml activitytype is ".concat(String.valueOf(str)));
+      ae.i("MicroMsg.ShakeCardMsgMgr", "parseEntrancedMsgFromMsgXml activitytype is ".concat(String.valueOf(str)));
       str = (String)((Map)localObject).get(".sysmsg.flowcontrollevelmin");
       if ((TextUtils.isEmpty(str)) || (!isNumeric(str))) {
         break label321;
       }
-      paramString.yME = bt.getInt(str, 0);
+      paramString.zcO = bu.getInt(str, 0);
       label207:
-      paramString.yMG = ((String)((Map)localObject).get(".sysmsg.shakecardentrancetip"));
+      paramString.zcQ = ((String)((Map)localObject).get(".sysmsg.shakecardentrancetip"));
       localObject = (String)((Map)localObject).get(".sysmsg.flowcontrollevelmax");
       if ((TextUtils.isEmpty((CharSequence)localObject)) || (!isNumeric((String)localObject))) {
         break label344;
       }
     }
-    for (paramString.yMF = bt.getInt((String)localObject, 0);; paramString.yMF = 0)
+    for (paramString.zcP = bu.getInt((String)localObject, 0);; paramString.zcP = 0)
     {
       AppMethodBeat.o(28193);
       return paramString;
-      ad.e("MicroMsg.ShakeCardMsgMgr", "parseEntrancedMsgFromMsgXml begintime is ".concat(String.valueOf(str)));
-      paramString.yMA = 0;
+      ae.e("MicroMsg.ShakeCardMsgMgr", "parseEntrancedMsgFromMsgXml begintime is ".concat(String.valueOf(str)));
+      paramString.zcK = 0;
       break;
       label290:
-      ad.e("MicroMsg.ShakeCardMsgMgr", "parseEntrancedMsgFromMsgXml endtime is ".concat(String.valueOf(str)));
-      paramString.yMB = 0;
+      ae.e("MicroMsg.ShakeCardMsgMgr", "parseEntrancedMsgFromMsgXml endtime is ".concat(String.valueOf(str)));
+      paramString.zcL = 0;
       break label104;
       label313:
-      paramString.yMD = 1;
+      paramString.zcN = 1;
       break label156;
       label321:
-      ad.e("MicroMsg.ShakeCardMsgMgr", "parseEntrancedMsgFromMsgXml flowcontrollevelmin is ".concat(String.valueOf(str)));
-      paramString.yME = 0;
+      ae.e("MicroMsg.ShakeCardMsgMgr", "parseEntrancedMsgFromMsgXml flowcontrollevelmin is ".concat(String.valueOf(str)));
+      paramString.zcO = 0;
       break label207;
       label344:
-      ad.e("MicroMsg.ShakeCardMsgMgr", "parseEntrancedMsgFromMsgXml flowcontrollevelmax is ".concat(String.valueOf(localObject)));
+      ae.e("MicroMsg.ShakeCardMsgMgr", "parseEntrancedMsgFromMsgXml flowcontrollevelmax is ".concat(String.valueOf(localObject)));
     }
   }
   
-  private static d axl(String paramString)
+  private static d ayB(String paramString)
   {
     AppMethodBeat.i(28195);
-    paramString = bw.M(paramString, "sysmsg");
+    paramString = bx.M(paramString, "sysmsg");
     if (paramString == null)
     {
       AppMethodBeat.o(28195);
       return null;
     }
     d locald = new d();
-    locald.yMH = ((String)paramString.get(".sysmsg.reddotid"));
-    locald.yMI = ((String)paramString.get(".sysmsg.reddotdesc"));
-    locald.yMJ = ((String)paramString.get(".sysmsg.reddottext"));
+    locald.zcR = ((String)paramString.get(".sysmsg.reddotid"));
+    locald.zcS = ((String)paramString.get(".sysmsg.reddotdesc"));
+    locald.zcT = ((String)paramString.get(".sysmsg.reddottext"));
     AppMethodBeat.o(28195);
     return locald;
   }
   
-  private static void dOW()
+  private static void dSt()
   {
     AppMethodBeat.i(28192);
-    to localto = new to();
-    com.tencent.mm.sdk.b.a.IbL.l(localto);
+    tp localtp = new tp();
+    com.tencent.mm.sdk.b.a.IvT.l(localtp);
     AppMethodBeat.o(28192);
   }
   
@@ -211,20 +211,20 @@ public final class f
   private void onChange()
   {
     AppMethodBeat.i(28198);
-    if (this.owv == null)
+    if (this.oCX == null)
     {
       AppMethodBeat.o(28198);
       return;
     }
     int i = 0;
-    while (i < this.owv.size())
+    while (i < this.oCX.size())
     {
-      Object localObject = (WeakReference)this.owv.get(i);
+      Object localObject = (WeakReference)this.oCX.get(i);
       if (localObject != null)
       {
         localObject = (a)((WeakReference)localObject).get();
         if (localObject != null) {
-          ((a)localObject).dOX();
+          ((a)localObject).dSu();
         }
       }
       i += 1;
@@ -235,48 +235,48 @@ public final class f
   public final void m(String paramString, long paramLong, int paramInt)
   {
     AppMethodBeat.i(28191);
-    ad.i("MicroMsg.ShakeCardMsgMgr", "msg_id is ".concat(String.valueOf(paramLong)));
+    ae.i("MicroMsg.ShakeCardMsgMgr", "msg_id is ".concat(String.valueOf(paramLong)));
     if (TextUtils.isEmpty(paramString))
     {
-      ad.e("MicroMsg.ShakeCardMsgMgr", "onReceive() msgText is empty");
+      ae.e("MicroMsg.ShakeCardMsgMgr", "onReceive() msgText is empty");
       AppMethodBeat.o(28191);
       return;
     }
     if (paramInt == 0)
     {
-      ad.i("MicroMsg.ShakeCardMsgMgr", "onReceive() msgText is MSG_TYPE_ENTRANCE");
-      a(axk(paramString));
-      dOW();
+      ae.i("MicroMsg.ShakeCardMsgMgr", "onReceive() msgText is MSG_TYPE_ENTRANCE");
+      a(ayA(paramString));
+      dSt();
     }
     for (;;)
     {
-      com.tencent.mm.plugin.shake.c.c.a.dOI();
+      com.tencent.mm.plugin.shake.c.c.a.dSf();
       AppMethodBeat.o(28191);
       return;
       if (paramInt == 1)
       {
-        ad.i("MicroMsg.ShakeCardMsgMgr", "onReceive() msgText is MSG_TYPE_RED_DOT");
-        a(axl(paramString));
-        dOW();
+        ae.i("MicroMsg.ShakeCardMsgMgr", "onReceive() msgText is MSG_TYPE_RED_DOT");
+        a(ayB(paramString));
+        dSt();
       }
     }
   }
   
   public static abstract interface a
   {
-    public abstract void dOX();
+    public abstract void dSu();
   }
   
   public static final class b
     extends f.c
   {
-    protected int yMA = 0;
-    protected int yMB = 0;
-    protected String yMC = "";
-    protected int yMD = 0;
-    protected int yME = 0;
-    protected int yMF = 7;
-    protected String yMG = "";
+    protected int zcK = 0;
+    protected int zcL = 0;
+    protected String zcM = "";
+    protected int zcN = 0;
+    protected int zcO = 0;
+    protected int zcP = 7;
+    protected String zcQ = "";
   }
   
   public static class c {}
@@ -284,14 +284,14 @@ public final class f
   public static final class d
     extends f.c
   {
-    protected String yMH;
-    protected String yMI;
-    protected String yMJ;
+    protected String zcR;
+    protected String zcS;
+    protected String zcT;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.shake.c.a.f
  * JD-Core Version:    0.7.0.1
  */

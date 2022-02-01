@@ -2,19 +2,19 @@ package com.tencent.mm.ui;
 
 public abstract interface l
 {
-  public abstract void fws();
+  public abstract void fAs();
   
-  public abstract void fwt();
+  public abstract void fAt();
   
-  public abstract void fwu();
+  public abstract void fAu();
   
-  public abstract void fwv();
+  public abstract void fAv();
   
-  public abstract void fww();
+  public abstract void fAw();
   
-  public abstract void fwx();
+  public abstract void fAx();
   
-  public abstract void fwy();
+  public abstract void fAy();
 }
 
 

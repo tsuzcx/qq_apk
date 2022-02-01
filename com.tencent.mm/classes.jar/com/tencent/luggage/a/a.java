@@ -18,12 +18,12 @@ public final class a
     AppMethodBeat.o(140304);
   }
   
-  public final Map<Class<? extends b>, b> BE()
+  public final Map<Class<? extends b>, b> BF()
   {
     return cgh;
   }
   
-  public final Map<Class<? extends d>, d> BF()
+  public final Map<Class<? extends d>, d> BG()
   {
     return cgj;
   }

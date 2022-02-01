@@ -19,7 +19,7 @@ public class HongBaoServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.kinda.framework.sns_cross.HongBaoServiceImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -3,81 +3,71 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class bxp
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public String GRG;
-  public String GRH;
-  public String GRI;
-  public String hDm;
-  public String hDo;
-  public String title;
+  public int FYj;
+  public int HeR;
+  public int Hko;
+  public int Hkp;
+  public String Hkq;
+  public int Hkr;
+  public int Scene;
+  public String dwb;
+  public String username;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(103209);
+    AppMethodBeat.i(147770);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.title != null) {
-        paramVarArgs.d(1, this.title);
+      if (this.dwb != null) {
+        paramVarArgs.d(1, this.dwb);
       }
-      if (this.hDo != null) {
-        paramVarArgs.d(2, this.hDo);
+      if (this.username != null) {
+        paramVarArgs.d(2, this.username);
       }
-      if (this.hDm != null) {
-        paramVarArgs.d(3, this.hDm);
+      paramVarArgs.aS(3, this.HeR);
+      paramVarArgs.aS(4, this.FYj);
+      paramVarArgs.aS(5, this.Scene);
+      paramVarArgs.aS(6, this.Hko);
+      paramVarArgs.aS(7, this.Hkp);
+      if (this.Hkq != null) {
+        paramVarArgs.d(8, this.Hkq);
       }
-      if (this.GRG != null) {
-        paramVarArgs.d(4, this.GRG);
-      }
-      if (this.GRH != null) {
-        paramVarArgs.d(5, this.GRH);
-      }
-      if (this.GRI != null) {
-        paramVarArgs.d(6, this.GRI);
-      }
-      AppMethodBeat.o(103209);
+      paramVarArgs.aS(9, this.Hkr);
+      AppMethodBeat.o(147770);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.title == null) {
-        break label518;
+      if (this.dwb == null) {
+        break label598;
       }
     }
-    label518:
-    for (int i = f.a.a.b.b.a.e(1, this.title) + 0;; i = 0)
+    label598:
+    for (paramInt = f.a.a.b.b.a.e(1, this.dwb) + 0;; paramInt = 0)
     {
+      int i = paramInt;
+      if (this.username != null) {
+        i = paramInt + f.a.a.b.b.a.e(2, this.username);
+      }
+      i = i + f.a.a.b.b.a.bz(3, this.HeR) + f.a.a.b.b.a.bz(4, this.FYj) + f.a.a.b.b.a.bz(5, this.Scene) + f.a.a.b.b.a.bz(6, this.Hko) + f.a.a.b.b.a.bz(7, this.Hkp);
       paramInt = i;
-      if (this.hDo != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.hDo);
+      if (this.Hkq != null) {
+        paramInt = i + f.a.a.b.b.a.e(8, this.Hkq);
       }
-      i = paramInt;
-      if (this.hDm != null) {
-        i = paramInt + f.a.a.b.b.a.e(3, this.hDm);
-      }
-      paramInt = i;
-      if (this.GRG != null) {
-        paramInt = i + f.a.a.b.b.a.e(4, this.GRG);
-      }
-      i = paramInt;
-      if (this.GRH != null) {
-        i = paramInt + f.a.a.b.b.a.e(5, this.GRH);
-      }
-      paramInt = i;
-      if (this.GRI != null) {
-        paramInt = i + f.a.a.b.b.a.e(6, this.GRI);
-      }
-      AppMethodBeat.o(103209);
-      return paramInt;
+      i = f.a.a.b.b.a.bz(9, this.Hkr);
+      AppMethodBeat.o(147770);
+      return paramInt + i;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
-        AppMethodBeat.o(103209);
+        AppMethodBeat.o(147770);
         return 0;
       }
       if (paramInt == 3)
@@ -87,34 +77,46 @@ public final class bxp
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(103209);
+          AppMethodBeat.o(147770);
           return -1;
         case 1: 
-          localbxp.title = locala.NPN.readString();
-          AppMethodBeat.o(103209);
+          localbxp.dwb = locala.OmT.readString();
+          AppMethodBeat.o(147770);
           return 0;
         case 2: 
-          localbxp.hDo = locala.NPN.readString();
-          AppMethodBeat.o(103209);
+          localbxp.username = locala.OmT.readString();
+          AppMethodBeat.o(147770);
           return 0;
         case 3: 
-          localbxp.hDm = locala.NPN.readString();
-          AppMethodBeat.o(103209);
+          localbxp.HeR = locala.OmT.zc();
+          AppMethodBeat.o(147770);
           return 0;
         case 4: 
-          localbxp.GRG = locala.NPN.readString();
-          AppMethodBeat.o(103209);
+          localbxp.FYj = locala.OmT.zc();
+          AppMethodBeat.o(147770);
           return 0;
         case 5: 
-          localbxp.GRH = locala.NPN.readString();
-          AppMethodBeat.o(103209);
+          localbxp.Scene = locala.OmT.zc();
+          AppMethodBeat.o(147770);
+          return 0;
+        case 6: 
+          localbxp.Hko = locala.OmT.zc();
+          AppMethodBeat.o(147770);
+          return 0;
+        case 7: 
+          localbxp.Hkp = locala.OmT.zc();
+          AppMethodBeat.o(147770);
+          return 0;
+        case 8: 
+          localbxp.Hkq = locala.OmT.readString();
+          AppMethodBeat.o(147770);
           return 0;
         }
-        localbxp.GRI = locala.NPN.readString();
-        AppMethodBeat.o(103209);
+        localbxp.Hkr = locala.OmT.zc();
+        AppMethodBeat.o(147770);
         return 0;
       }
-      AppMethodBeat.o(103209);
+      AppMethodBeat.o(147770);
       return -1;
     }
   }

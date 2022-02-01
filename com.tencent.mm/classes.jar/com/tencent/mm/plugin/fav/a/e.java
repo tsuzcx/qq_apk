@@ -12,7 +12,7 @@ public final class e
   static
   {
     AppMethodBeat.i(103368);
-    info = bv.Vv();
+    info = bv.VD();
     AppMethodBeat.o(103368);
   }
   

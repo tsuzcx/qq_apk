@@ -4,37 +4,37 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class d
 {
-  private int[] gtT;
-  private int[] gtU;
-  private boolean gtV;
+  private int[] gwA;
+  private int[] gwB;
+  private boolean gwC;
   private int size;
   int unit;
   
   public d()
   {
-    AppMethodBeat.i(219548);
-    this.gtV = true;
+    AppMethodBeat.i(209670);
+    this.gwC = true;
     this.size = 5;
-    this.gtT = new int[5];
-    this.gtU = new int[5];
+    this.gwA = new int[5];
+    this.gwB = new int[5];
     this.unit = 61166;
-    this.gtV = false;
-    AppMethodBeat.o(219548);
+    this.gwC = false;
+    AppMethodBeat.o(209670);
   }
   
   public final void J(int paramInt1, int paramInt2, int paramInt3)
   {
-    if (this.gtV) {}
+    if (this.gwC) {}
     while ((paramInt1 < 0) || (paramInt1 >= this.size)) {
       return;
     }
-    this.gtT[paramInt1] = paramInt2;
-    this.gtU[paramInt1] = paramInt3;
+    this.gwA[paramInt1] = paramInt2;
+    this.gwB[paramInt1] = paramInt3;
   }
   
-  public final int ml(int paramInt)
+  public final int mo(int paramInt)
   {
-    if (this.gtV) {}
+    if (this.gwC) {}
     for (;;)
     {
       return -1;
@@ -43,8 +43,8 @@ public final class d
       while (i <= j)
       {
         int k = (i & j) + ((i ^ j) >> 1);
-        int m = this.gtT[k];
-        int n = this.gtU[k];
+        int m = this.gwA[k];
+        int n = this.gwB[k];
         if ((paramInt >= m) && (paramInt <= n)) {
           return k;
         }
@@ -59,24 +59,24 @@ public final class d
   
   public final String toString()
   {
-    AppMethodBeat.i(219549);
-    if (this.gtV)
+    AppMethodBeat.i(209671);
+    if (this.gwC)
     {
       localObject = super.toString();
-      AppMethodBeat.o(219549);
+      AppMethodBeat.o(209671);
       return localObject;
     }
     Object localObject = new StringBuilder();
     int i = 0;
     while (i < this.size)
     {
-      int j = this.gtT[i];
-      int k = this.gtU[i];
+      int j = this.gwA[i];
+      int k = this.gwB[i];
       ((StringBuilder)localObject).append("[").append(j).append(", ").append(k).append(")\n");
       i += 1;
     }
     localObject = ((StringBuilder)localObject).toString();
-    AppMethodBeat.o(219549);
+    AppMethodBeat.o(209671);
     return localObject;
   }
 }

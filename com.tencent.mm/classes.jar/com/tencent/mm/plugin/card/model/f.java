@@ -2,10 +2,10 @@ package com.tencent.mm.plugin.card.model;
 
 public final class f
 {
-  public String ozh;
-  public String ozi;
-  public String ozj;
-  public boolean ozk = false;
+  public String oFJ;
+  public String oFK;
+  public String oFL;
+  public boolean oFM = false;
 }
 
 

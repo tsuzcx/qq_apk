@@ -1,13 +1,13 @@
 package com.tencent.mm.plugin.expt.hellhound.a.f.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public final class a
 {
-  public static JSONObject W(String paramString1, String paramString2, String paramString3)
+  public static JSONObject X(String paramString1, String paramString2, String paramString3)
   {
     AppMethodBeat.i(122089);
     JSONObject localJSONObject = new JSONObject();
@@ -21,7 +21,7 @@ public final class a
     }
     catch (JSONException paramString1)
     {
-      ad.printErrStackTrace("HABBYGE-MALI.AsyncBizCollector", paramString1, "AsyncBizCollector, generateParamJSONOBject, %s", new Object[] { paramString1.getMessage() });
+      ae.printErrStackTrace("HABBYGE-MALI.AsyncBizCollector", paramString1, "AsyncBizCollector, generateParamJSONOBject, %s", new Object[] { paramString1.getMessage() });
       AppMethodBeat.o(122089);
     }
     return null;

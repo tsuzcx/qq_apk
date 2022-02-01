@@ -8,7 +8,7 @@ import android.graphics.Path;
 import android.graphics.RectF;
 import android.graphics.drawable.Drawable;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ak;
 
 public final class a
   extends Drawable
@@ -16,44 +16,44 @@ public final class a
   private Paint borderPaint;
   float borderRadius;
   private int borderWidth;
-  private final RectF ciQ;
-  private Path njC;
-  private Path njD;
-  private int njE;
-  private int njF;
+  private final RectF ciS;
+  private Path noK;
+  private Path noL;
+  private int noM;
+  private int noN;
   private Paint paint;
   
   public a()
   {
     AppMethodBeat.i(146565);
-    this.ciQ = new RectF();
+    this.ciS = new RectF();
     this.borderRadius = 0.0F;
     this.borderWidth = 0;
-    this.njE = com.tencent.mm.cc.a.fromDPToPix(aj.getContext(), 3);
-    this.njF = this.njE;
+    this.noM = com.tencent.mm.cb.a.fromDPToPix(ak.getContext(), 3);
+    this.noN = this.noM;
     this.paint = new Paint(1);
     this.paint.setStyle(Paint.Style.FILL);
     this.borderPaint = new Paint(1);
     this.borderPaint.setStyle(Paint.Style.FILL);
-    this.njC = new Path();
-    this.njD = new Path();
+    this.noK = new Path();
+    this.noL = new Path();
     AppMethodBeat.o(146565);
   }
   
   public final void draw(Canvas paramCanvas)
   {
     AppMethodBeat.i(146566);
-    float f5 = this.ciQ.width();
-    float f6 = this.ciQ.height();
-    float f1 = this.ciQ.left;
-    float f2 = this.ciQ.top;
-    float f3 = this.ciQ.right;
-    float f4 = this.ciQ.bottom;
+    float f5 = this.ciS.width();
+    float f6 = this.ciS.height();
+    float f1 = this.ciS.left;
+    float f2 = this.ciS.top;
+    float f3 = this.ciS.right;
+    float f4 = this.ciS.bottom;
     f5 = Math.min(this.borderRadius, Math.min(f5, f6) * 0.5F);
-    paramCanvas.drawRoundRect(new RectF(this.njF + f1, this.njF + f2, f3 - this.njF, f4 - this.njF), f5, f5, this.borderPaint);
-    paramCanvas.drawPath(this.njD, this.borderPaint);
-    paramCanvas.drawRoundRect(new RectF(f1 + this.njF + this.borderWidth, f2 + this.njF + this.borderWidth, f3 - this.njF - this.borderWidth, f4 - this.njF - this.borderWidth), f5, f5, this.paint);
-    paramCanvas.drawPath(this.njC, this.paint);
+    paramCanvas.drawRoundRect(new RectF(this.noN + f1, this.noN + f2, f3 - this.noN, f4 - this.noN), f5, f5, this.borderPaint);
+    paramCanvas.drawPath(this.noL, this.borderPaint);
+    paramCanvas.drawRoundRect(new RectF(f1 + this.noN + this.borderWidth, f2 + this.noN + this.borderWidth, f3 - this.noN - this.borderWidth, f4 - this.noN - this.borderWidth), f5, f5, this.paint);
+    paramCanvas.drawPath(this.noK, this.paint);
     AppMethodBeat.o(146566);
   }
   
@@ -74,16 +74,16 @@ public final class a
   {
     AppMethodBeat.i(146567);
     super.setBounds(paramInt1, paramInt2, paramInt3, paramInt4);
-    this.ciQ.set(paramInt1, paramInt2, paramInt3, paramInt4);
+    this.ciS.set(paramInt1, paramInt2, paramInt3, paramInt4);
     float f = (paramInt1 + paramInt3) / 2.0F;
-    this.njD.moveTo(f, paramInt4);
-    this.njD.lineTo(f - this.njF, paramInt4 - this.njF);
-    this.njD.lineTo(this.njF + f, paramInt4 - this.njF);
-    this.njD.close();
-    this.njC.moveTo(f, paramInt4 - this.borderWidth);
-    this.njC.lineTo(f - this.njF, paramInt4 - this.njF - this.borderWidth);
-    this.njC.lineTo(f + this.njF, paramInt4 - this.njF - this.borderWidth);
-    this.njC.close();
+    this.noL.moveTo(f, paramInt4);
+    this.noL.lineTo(f - this.noN, paramInt4 - this.noN);
+    this.noL.lineTo(this.noN + f, paramInt4 - this.noN);
+    this.noL.close();
+    this.noK.moveTo(f, paramInt4 - this.borderWidth);
+    this.noK.lineTo(f - this.noN, paramInt4 - this.noN - this.borderWidth);
+    this.noK.lineTo(f + this.noN, paramInt4 - this.noN - this.borderWidth);
+    this.noK.close();
     AppMethodBeat.o(146567);
   }
   
@@ -106,7 +106,7 @@ public final class a
   {
     AppMethodBeat.i(146571);
     this.borderWidth = paramInt1;
-    this.njF = (paramInt1 / 3 + this.njE);
+    this.noN = (paramInt1 / 3 + this.noM);
     this.borderPaint.setColor(paramInt2);
     AppMethodBeat.o(146571);
   }

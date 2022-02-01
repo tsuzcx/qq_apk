@@ -125,14 +125,14 @@ public class SystemClassLoaderAdder
     }
   }
   
-  public static void installDexes(Application paramApplication, ClassLoader paramClassLoader, File paramFile, List<File> paramList, boolean paramBoolean)
+  public static void installDexes(Application paramApplication, ClassLoader paramClassLoader, File paramFile, List<File> paramList, boolean paramBoolean1, boolean paramBoolean2)
   {
     ShareTinkerLog.i("Tinker.ClassLoaderAdder", "installDexes dexOptDir: " + paramFile.getAbsolutePath() + ", dex size:" + paramList.size(), new Object[0]);
     if (!paramList.isEmpty())
     {
       paramList = createSortedAdditionalPathEntries(paramList);
-      if ((Build.VERSION.SDK_INT >= 24) && (!paramBoolean)) {
-        paramClassLoader = NewClassLoaderInjector.inject(paramApplication, paramClassLoader, paramFile, paramList);
+      if ((Build.VERSION.SDK_INT >= 24) && (!paramBoolean1)) {
+        paramClassLoader = NewClassLoaderInjector.inject(paramApplication, paramClassLoader, paramFile, paramBoolean2, paramList);
       }
       for (;;)
       {

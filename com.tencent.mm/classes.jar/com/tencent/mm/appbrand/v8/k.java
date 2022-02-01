@@ -6,14 +6,14 @@ import java.util.concurrent.LinkedBlockingDeque;
 
 final class k
 {
-  public final BlockingDeque<String> cYj;
+  public final BlockingDeque<String> cZh;
   public volatile boolean enable;
   
   k()
   {
     AppMethodBeat.i(185102);
     this.enable = false;
-    this.cYj = new LinkedBlockingDeque();
+    this.cZh = new LinkedBlockingDeque();
     AppMethodBeat.o(185102);
   }
 }

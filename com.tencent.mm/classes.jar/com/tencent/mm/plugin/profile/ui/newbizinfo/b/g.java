@@ -4,19 +4,21 @@ import android.content.Context;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.api.c;
-import com.tencent.mm.bs.d;
-import com.tencent.mm.model.w;
+import com.tencent.mm.br.d;
+import com.tencent.mm.model.x;
 import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
-import com.tencent.mm.plugin.appbrand.service.o;
-import com.tencent.mm.protocal.protobuf.pb;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.plugin.appbrand.service.p;
+import com.tencent.mm.plugin.websearch.api.ad;
+import com.tencent.mm.protocal.protobuf.pd;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import java.util.Map;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public final class g
 {
-  public static int Ng(int paramInt)
+  public static int NM(int paramInt)
   {
     switch (paramInt)
     {
@@ -37,48 +39,48 @@ public final class g
     return 4;
   }
   
-  public static void a(pb parampb, Context paramContext, String paramString)
+  public static void a(pd parampd, Context paramContext, String paramString)
   {
     AppMethodBeat.i(27582);
     Intent localIntent = new Intent();
-    localIntent.putExtra("rawUrl", parampb.value);
+    localIntent.putExtra("rawUrl", parampd.value);
     localIntent.putExtra("geta8key_username", paramString);
     localIntent.putExtra("geta8key_scene", 59);
     d.b(paramContext, "webview", ".ui.tools.WebViewUI", localIntent);
     AppMethodBeat.o(27582);
   }
   
-  public static void b(pb parampb, Context paramContext, String paramString)
+  public static void b(pd parampd, Context paramContext, String paramString)
   {
     Object localObject1 = null;
     AppMethodBeat.i(27583);
-    if (bt.isNullOrNil(parampb.value))
+    if (bu.isNullOrNil(parampd.value))
     {
-      ad.d("MicroMsg.NewBizInfoUtil", "jumpToWeApp serviceInfo.id:%s value is null", new Object[] { Integer.valueOf(parampb.id) });
+      ae.d("MicroMsg.NewBizInfoUtil", "jumpToWeApp serviceInfo.id:%s value is null", new Object[] { Integer.valueOf(parampd.id) });
       AppMethodBeat.o(27583);
       return;
     }
-    ad.d("MicroMsg.NewBizInfoUtil", "jumpToWeApp value:%s", new Object[] { parampb.value });
+    ae.d("MicroMsg.NewBizInfoUtil", "jumpToWeApp value:%s", new Object[] { parampd.value });
     try
     {
-      Object localObject2 = new JSONObject(parampb.value);
-      parampb = com.tencent.mm.am.g.eS(paramString);
+      Object localObject2 = new JSONObject(parampd.value);
+      parampd = com.tencent.mm.al.g.eX(paramString);
       AppBrandStatObject localAppBrandStatObject = new AppBrandStatObject();
       localAppBrandStatObject.scene = 1102;
-      localAppBrandStatObject.dkh = paramString;
-      paramString = (o)com.tencent.mm.kernel.g.ab(o.class);
+      localAppBrandStatObject.dlj = paramString;
+      paramString = (p)com.tencent.mm.kernel.g.ab(p.class);
       String str = ((JSONObject)localObject2).optString("userName");
       localObject2 = ((JSONObject)localObject2).optString("pagePath");
-      if (parampb == null) {}
-      for (parampb = localObject1;; parampb = parampb.field_appId)
+      if (parampd == null) {}
+      for (parampd = localObject1;; parampd = parampd.field_appId)
       {
-        paramString.a(paramContext, str, null, 0, 0, (String)localObject2, localAppBrandStatObject, parampb);
+        paramString.a(paramContext, str, null, 0, 0, (String)localObject2, localAppBrandStatObject, parampd);
         AppMethodBeat.o(27583);
         return;
       }
       return;
     }
-    catch (JSONException parampb)
+    catch (JSONException parampd)
     {
       AppMethodBeat.o(27583);
     }
@@ -87,7 +89,7 @@ public final class g
   public static int bC(int paramInt, String paramString)
   {
     AppMethodBeat.i(27584);
-    if ((paramString != null) && (w.zE(paramString)))
+    if ((paramString != null) && (x.Ao(paramString)))
     {
       AppMethodBeat.o(27584);
       return 3;
@@ -109,6 +111,34 @@ public final class g
     }
     AppMethodBeat.o(27584);
     return 3;
+  }
+  
+  public static void c(pd parampd, Context paramContext, String paramString)
+  {
+    AppMethodBeat.i(186596);
+    if (bu.isNullOrNil(parampd.value))
+    {
+      ae.d("MicroMsg.NewBizInfoUtil", "jumpToSearch serviceInfo.id: %s value is null", new Object[] { Integer.valueOf(parampd.id) });
+      AppMethodBeat.o(186596);
+      return;
+    }
+    parampd = parampd.value;
+    ae.i("MicroMsg.NewBizInfoUtil", "jumpToSearch username: %s, suggestData: %s", new Object[] { paramString, parampd });
+    Intent localIntent = ad.ePM();
+    localIntent.putExtra("ftsneedkeyboard", true);
+    localIntent.putExtra("ftsbizscene", 76);
+    localIntent.putExtra("ftsType", 2);
+    Map localMap = ad.f(76, false, 2);
+    localMap.put("userName", paramString);
+    if (!bu.isNullOrNil(parampd)) {
+      localMap.put("thirdExtParam", parampd);
+    }
+    localIntent.putExtra("rawUrl", ad.be(localMap));
+    localIntent.putExtra("key_load_js_without_delay", true);
+    localIntent.putExtra("ftsbizusername", paramString);
+    localIntent.addFlags(67108864);
+    d.b(paramContext, "webview", ".ui.tools.fts.FTSSearchTabWebViewUI", localIntent);
+    AppMethodBeat.o(186596);
   }
 }
 

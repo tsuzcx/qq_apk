@@ -1,7 +1,7 @@
 package com.tencent.mm.splash;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -56,7 +56,7 @@ public final class g
     if (bool1) {}
     for (paramString = " has multidex support";; paramString = " does not have multidex support")
     {
-      ad.i("MicroMsg.MultiDex", paramString);
+      ae.i("MicroMsg.MultiDex", paramString);
       AppMethodBeat.o(40619);
       return bool1;
     }

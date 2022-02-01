@@ -9,7 +9,7 @@ public final class AppIdentity
   implements Parcelable
 {
   public static final Parcelable.Creator<AppIdentity> CREATOR;
-  public final int hQh;
+  public final int hSZ;
   public final String username;
   
   static
@@ -23,14 +23,14 @@ public final class AppIdentity
   {
     AppMethodBeat.i(44630);
     this.username = paramParcel.readString();
-    this.hQh = paramParcel.readInt();
+    this.hSZ = paramParcel.readInt();
     AppMethodBeat.o(44630);
   }
   
   public AppIdentity(String paramString, int paramInt)
   {
     this.username = paramString;
-    this.hQh = paramInt;
+    this.hSZ = paramInt;
   }
   
   public final int describeContents()
@@ -42,7 +42,7 @@ public final class AppIdentity
   {
     AppMethodBeat.i(44629);
     paramParcel.writeString(this.username);
-    paramParcel.writeInt(this.hQh);
+    paramParcel.writeInt(this.hSZ);
     AppMethodBeat.o(44629);
   }
 }

@@ -14,7 +14,7 @@ public abstract interface d
   
   public abstract void q(double paramDouble);
   
-  public abstract void uD(int paramInt);
+  public abstract void uJ(int paramInt);
   
   public static abstract interface a
   {

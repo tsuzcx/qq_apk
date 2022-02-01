@@ -9,14 +9,14 @@ import com.tencent.mm.hellhoundlib.b.b;
 
 public final class o
 {
-  public static void gT(View paramView)
+  public static void gY(View paramView)
   {
-    AppMethodBeat.i(221159);
-    gU(paramView);
-    AppMethodBeat.o(221159);
+    AppMethodBeat.i(224386);
+    gZ(paramView);
+    AppMethodBeat.o(224386);
   }
   
-  public static void gU(View paramView)
+  public static void gZ(View paramView)
   {
     AppMethodBeat.i(143210);
     if (paramView == null)
@@ -32,7 +32,7 @@ public final class o
         b localb = new b();
         localb.bd(paramAnonymousView);
         localb.bd(paramAnonymousMotionEvent);
-        a.b("com/tencent/mm/ui/tools/PressAlphaUtil$1", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahq());
+        a.b("com/tencent/mm/ui/tools/PressAlphaUtil$1", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahF());
         switch (paramAnonymousMotionEvent.getAction())
         {
         case 2: 
@@ -46,7 +46,7 @@ public final class o
           a.a(bool, this, "com/tencent/mm/ui/tools/PressAlphaUtil$1", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
           AppMethodBeat.o(143208);
           return bool;
-          paramAnonymousView.setAlpha(this.KKv);
+          paramAnonymousView.setAlpha(this.LgP);
           break;
           paramAnonymousView.setAlpha(1.0F);
           break;
@@ -56,13 +56,13 @@ public final class o
     AppMethodBeat.o(143210);
   }
   
-  public static void gV(View paramView)
+  public static void ha(View paramView)
   {
-    AppMethodBeat.i(186500);
+    AppMethodBeat.i(193757);
     if (paramView != null) {
       paramView.setOnTouchListener(null);
     }
-    AppMethodBeat.o(186500);
+    AppMethodBeat.o(193757);
   }
 }
 

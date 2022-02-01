@@ -12,21 +12,21 @@ public abstract interface d
   
   public abstract void a(c paramc);
   
-  public abstract void k(Application paramApplication);
+  public abstract void l(Application paramApplication);
   
   public static abstract interface a
   {
-    public abstract void adf(String paramString);
+    public abstract void adW(String paramString);
     
-    public abstract void adg(String paramString);
+    public abstract void adX(String paramString);
     
-    public abstract void adh(String paramString);
+    public abstract void adY(String paramString);
     
-    public abstract void adi(String paramString);
+    public abstract void adZ(String paramString);
     
-    public abstract void adj(String paramString);
+    public abstract void aea(String paramString);
     
-    public abstract void cZ(String paramString, int paramInt);
+    public abstract void dd(String paramString, int paramInt);
     
     public abstract void e(String paramString, int paramInt, long paramLong);
     
@@ -41,15 +41,15 @@ public abstract interface d
   
   public static abstract interface b
   {
-    public abstract void P(int paramInt, long paramLong);
+    public abstract void O(int paramInt, long paramLong);
     
-    public abstract void Q(int paramInt, long paramLong);
+    public abstract void P(int paramInt, long paramLong);
     
     public abstract void b(String paramString1, String paramString2, int paramInt, long paramLong);
     
     public abstract void c(String paramString1, String paramString2, int paramInt, long paramLong);
     
-    public abstract void uR(long paramLong);
+    public abstract void vi(long paramLong);
   }
   
   public static abstract interface c
@@ -63,7 +63,7 @@ public abstract interface d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.b.d
  * JD-Core Version:    0.7.0.1
  */

@@ -3,7 +3,7 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class EmotionCDNUrl
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
   public String AesKey;
   public int FileSize;
@@ -43,9 +43,9 @@ public class EmotionCDNUrl
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
         AppMethodBeat.o(104771);
@@ -61,15 +61,15 @@ public class EmotionCDNUrl
           AppMethodBeat.o(104771);
           return -1;
         case 1: 
-          localEmotionCDNUrl.Url = locala.NPN.readString();
+          localEmotionCDNUrl.Url = locala.OmT.readString();
           AppMethodBeat.o(104771);
           return 0;
         case 2: 
-          localEmotionCDNUrl.AesKey = locala.NPN.readString();
+          localEmotionCDNUrl.AesKey = locala.OmT.readString();
           AppMethodBeat.o(104771);
           return 0;
         }
-        localEmotionCDNUrl.FileSize = locala.NPN.zc();
+        localEmotionCDNUrl.FileSize = locala.OmT.zc();
         AppMethodBeat.o(104771);
         return 0;
       }

@@ -5,41 +5,41 @@ import d.g.b.p;
 import d.l;
 import java.util.LinkedList;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/feed/model/internal/MergeResult;", "", "insertIndex", "", "insertCount", "changeIndex", "Ljava/util/LinkedList;", "isRemoveBeforeInsert", "", "(IILjava/util/LinkedList;Z)V", "getChangeIndex", "()Ljava/util/LinkedList;", "getInsertCount", "()I", "getInsertIndex", "()Z", "component1", "component2", "component3", "component4", "copy", "equals", "other", "hashCode", "toString", "", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/feed/model/internal/MergeResult;", "", "insertIndex", "", "insertCount", "changeIndex", "Ljava/util/LinkedList;", "isRemoveBeforeInsert", "", "(IILjava/util/LinkedList;Z)V", "getChangeIndex", "()Ljava/util/LinkedList;", "getInsertCount", "()I", "getInsertIndex", "()Z", "component1", "component2", "component3", "component4", "copy", "equals", "other", "hashCode", "toString", "", "plugin-finder_release"})
 public final class j
 {
-  final int scX;
-  final int scY;
-  final LinkedList<Integer> scZ;
-  final boolean sda;
+  final int slO;
+  final int slP;
+  final LinkedList<Integer> slQ;
+  final boolean slR;
   
   public j(int paramInt1, int paramInt2, LinkedList<Integer> paramLinkedList, boolean paramBoolean)
   {
-    AppMethodBeat.i(202585);
-    this.scX = paramInt1;
-    this.scY = paramInt2;
-    this.scZ = paramLinkedList;
-    this.sda = paramBoolean;
-    AppMethodBeat.o(202585);
+    AppMethodBeat.i(203061);
+    this.slO = paramInt1;
+    this.slP = paramInt2;
+    this.slQ = paramLinkedList;
+    this.slR = paramBoolean;
+    AppMethodBeat.o(203061);
   }
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(202588);
+    AppMethodBeat.i(203064);
     if (this != paramObject)
     {
       if ((paramObject instanceof j))
       {
         paramObject = (j)paramObject;
-        if ((this.scX != paramObject.scX) || (this.scY != paramObject.scY) || (!p.i(this.scZ, paramObject.scZ)) || (this.sda != paramObject.sda)) {}
+        if ((this.slO != paramObject.slO) || (this.slP != paramObject.slP) || (!p.i(this.slQ, paramObject.slQ)) || (this.slR != paramObject.slR)) {}
       }
     }
     else
     {
-      AppMethodBeat.o(202588);
+      AppMethodBeat.o(203064);
       return true;
     }
-    AppMethodBeat.o(202588);
+    AppMethodBeat.o(203064);
     return false;
   }
   
@@ -50,9 +50,9 @@ public final class j
   
   public final String toString()
   {
-    AppMethodBeat.i(202586);
-    String str = "MergeResult(insertIndex=" + this.scX + ", insertCount=" + this.scY + ", changeIndex=" + this.scZ + ", isRemoveBeforeInsert=" + this.sda + ")";
-    AppMethodBeat.o(202586);
+    AppMethodBeat.i(203062);
+    String str = "MergeResult(insertIndex=" + this.slO + ", insertCount=" + this.slP + ", changeIndex=" + this.slQ + ", isRemoveBeforeInsert=" + this.slR + ")";
+    AppMethodBeat.o(203062);
     return str;
   }
 }

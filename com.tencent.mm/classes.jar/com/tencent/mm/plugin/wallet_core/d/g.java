@@ -26,7 +26,7 @@ public final class g
     this.db = parame;
   }
   
-  public final ArrayList<ad> eHf()
+  public final ArrayList<ad> eKN()
   {
     ArrayList localArrayList = null;
     AppMethodBeat.i(70615);
@@ -53,7 +53,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.d.g
  * JD-Core Version:    0.7.0.1
  */

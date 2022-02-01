@@ -4,8 +4,8 @@ import android.util.Log;
 
 public final class c
 {
-  private static a cNR;
-  private static a cNS;
+  private static a cOB;
+  private static a cOC;
   
   static
   {
@@ -65,54 +65,54 @@ public final class c
         String.format(paramAnonymousString2, paramAnonymousVarArgs);
       }
     };
-    cNR = local1;
-    cNS = local1;
+    cOB = local1;
+    cOC = local1;
   }
   
   public static void b(a parama)
   {
-    cNS = parama;
+    cOC = parama;
   }
   
   public static void d(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    if (cNS != null) {
-      cNS.d(paramString1, paramString2, paramVarArgs);
+    if (cOC != null) {
+      cOC.d(paramString1, paramString2, paramVarArgs);
     }
   }
   
   public static void e(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    if (cNS != null) {
-      cNS.e(paramString1, paramString2, paramVarArgs);
+    if (cOC != null) {
+      cOC.e(paramString1, paramString2, paramVarArgs);
     }
   }
   
   public static void i(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    if (cNS != null) {
-      cNS.i(paramString1, paramString2, paramVarArgs);
+    if (cOC != null) {
+      cOC.i(paramString1, paramString2, paramVarArgs);
     }
   }
   
   public static void printErrStackTrace(String paramString1, Throwable paramThrowable, String paramString2, Object... paramVarArgs)
   {
-    if (cNS != null) {
-      cNS.printErrStackTrace(paramString1, paramThrowable, paramString2, paramVarArgs);
+    if (cOC != null) {
+      cOC.printErrStackTrace(paramString1, paramThrowable, paramString2, paramVarArgs);
     }
   }
   
   public static void v(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    if (cNS != null) {
-      cNS.v(paramString1, paramString2, paramVarArgs);
+    if (cOC != null) {
+      cOC.v(paramString1, paramString2, paramVarArgs);
     }
   }
   
   public static void w(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    if (cNS != null) {
-      cNS.w(paramString1, paramString2, paramVarArgs);
+    if (cOC != null) {
+      cOC.w(paramString1, paramString2, paramVarArgs);
     }
   }
   

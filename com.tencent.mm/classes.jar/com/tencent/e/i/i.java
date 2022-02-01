@@ -3,14 +3,14 @@ package com.tencent.e.i;
 public abstract class i
   implements f<Runnable>, Runnable
 {
-  protected abstract void aTu();
+  protected abstract void aTT();
   
   public final void run()
   {
-    aTv();
+    aTU();
     try
     {
-      aTu();
+      aTT();
       return;
     }
     finally

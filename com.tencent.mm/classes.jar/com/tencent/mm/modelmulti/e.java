@@ -1,17 +1,17 @@
 package com.tencent.mm.modelmulti;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.bco;
-import com.tencent.mm.protocal.protobuf.bcp;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.bde;
+import com.tencent.mm.protocal.protobuf.bdf;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class e
   extends n
@@ -19,7 +19,7 @@ public final class e
 {
   private f callback;
   public String content;
-  public int ieI;
+  public int ihA;
   private b rr;
   public String title;
   
@@ -28,22 +28,22 @@ public final class e
     AppMethodBeat.i(20543);
     this.title = "";
     this.content = "";
-    this.ieI = 0;
+    this.ihA = 0;
     b.a locala = new b.a();
-    locala.hNM = new bco();
-    locala.hNN = new bcp();
+    locala.hQF = new bde();
+    locala.hQG = new bdf();
     locala.uri = "/cgi-bin/micromsg-bin/getinvitefriendsmsg";
     locala.funcId = 1803;
-    this.rr = locala.aDC();
-    ((bco)this.rr.hNK.hNQ).Gzf = paramInt;
-    this.ieI = paramInt;
+    this.rr = locala.aDS();
+    ((bde)this.rr.hQD.hQJ).GSF = paramInt;
+    this.ihA = paramInt;
     AppMethodBeat.o(20543);
   }
   
   public final int doScene(com.tencent.mm.network.e parame, f paramf)
   {
     AppMethodBeat.i(20545);
-    ad.d("MicroMsg.NetSceneGetInviteFriendsMsg", "doScene");
+    ae.d("MicroMsg.NetSceneGetInviteFriendsMsg", "doScene");
     this.callback = paramf;
     int i = dispatch(parame, this.rr, this);
     AppMethodBeat.o(20545);
@@ -58,12 +58,12 @@ public final class e
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(20544);
-    ad.d("MicroMsg.NetSceneGetInviteFriendsMsg", "onGYNetEnd errType:" + paramInt2 + " errCode:" + paramInt3);
+    ae.d("MicroMsg.NetSceneGetInviteFriendsMsg", "onGYNetEnd errType:" + paramInt2 + " errCode:" + paramInt3);
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      paramq = (bcp)this.rr.hNL.hNQ;
-      this.title = paramq.Gzg;
-      this.content = paramq.Gzh;
+      paramq = (bdf)this.rr.hQE.hQJ;
+      this.title = paramq.GSG;
+      this.content = paramq.GSH;
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
       AppMethodBeat.o(20544);
       return;

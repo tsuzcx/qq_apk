@@ -3,13 +3,13 @@ package com.tencent.mm.media.widget.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/media/widget/camera/ICommonCamera$Companion;", "", "()V", "MAX_RESOLUTION", "", "plugin-mediaeditor_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/media/widget/camera/ICommonCamera$Companion;", "", "()V", "MAX_RESOLUTION", "", "plugin-mediaeditor_release"})
 public final class e$a
 {
   static
   {
     AppMethodBeat.i(94060);
-    hqi = new a();
+    hsW = new a();
     AppMethodBeat.o(94060);
   }
 }

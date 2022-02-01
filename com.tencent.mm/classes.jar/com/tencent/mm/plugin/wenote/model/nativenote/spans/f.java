@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.wenote.model.nativenote.spans;
 
 public abstract interface f<V>
 {
-  public abstract f<V> eXi();
+  public abstract f<V> faU();
 }
 
 

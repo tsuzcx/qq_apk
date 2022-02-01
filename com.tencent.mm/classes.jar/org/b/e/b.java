@@ -12,7 +12,7 @@ public abstract interface b
   
   public abstract String b(i parami);
   
-  public abstract i gyF();
+  public abstract i gDh();
 }
 
 

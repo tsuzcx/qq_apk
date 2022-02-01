@@ -6,35 +6,35 @@ import org.json.JSONObject;
 
 public final class j
 {
-  private String LQA = "";
-  private String LQB = "";
-  private String LQC = "";
-  public int LQD = 20;
-  public String LQE = "";
-  private long LQt = -1L;
-  public String LQx = null;
-  private String LQy = "";
-  private String LQz = "";
+  public int MnA = 20;
+  public String MnB = "";
+  private long Mnq = -1L;
+  public String Mnu = null;
+  private String Mnv = "";
+  private String Mnw = "";
+  private String Mnx = "";
+  private String Mny = "";
+  private String Mnz = "";
   private String rawValue = null;
   public String signature = "";
   
-  public static j aZw(String paramString)
+  public static j baZ(String paramString)
   {
     AppMethodBeat.i(88677);
     try
     {
       JSONObject localJSONObject = new JSONObject(paramString);
       j localj = new j();
-      localj.LQE = paramString;
+      localj.MnB = paramString;
       localj.rawValue = localJSONObject.optString("raw");
-      localj.LQx = localJSONObject.optString("fid");
-      localj.LQt = localJSONObject.optLong("counter");
-      localj.LQy = localJSONObject.optString("tee_n");
-      localj.LQz = localJSONObject.optString("tee_v");
-      localj.LQA = localJSONObject.optString("fp_n");
-      localj.LQB = localJSONObject.optString("fp_v");
-      localj.LQC = localJSONObject.optString("cpu_id");
-      localj.LQD = localJSONObject.optInt("rsa_pss_saltlen", 20);
+      localj.Mnu = localJSONObject.optString("fid");
+      localj.Mnq = localJSONObject.optLong("counter");
+      localj.Mnv = localJSONObject.optString("tee_n");
+      localj.Mnw = localJSONObject.optString("tee_v");
+      localj.Mnx = localJSONObject.optString("fp_n");
+      localj.Mny = localJSONObject.optString("fp_v");
+      localj.Mnz = localJSONObject.optString("cpu_id");
+      localj.MnA = localJSONObject.optInt("rsa_pss_saltlen", 20);
       AppMethodBeat.o(88677);
       return localj;
     }
@@ -49,14 +49,14 @@ public final class j
   public final String toString()
   {
     AppMethodBeat.i(88676);
-    String str = "SoterSignatureResult{rawValue='" + this.rawValue + '\'' + ", fid='" + this.LQx + '\'' + ", counter=" + this.LQt + ", TEEName='" + this.LQy + '\'' + ", TEEVersion='" + this.LQz + '\'' + ", FpName='" + this.LQA + '\'' + ", FpVersion='" + this.LQB + '\'' + ", cpuId='" + this.LQC + '\'' + ", saltLen=" + this.LQD + ", jsonValue='" + this.LQE + '\'' + ", signature='" + this.signature + '\'' + '}';
+    String str = "SoterSignatureResult{rawValue='" + this.rawValue + '\'' + ", fid='" + this.Mnu + '\'' + ", counter=" + this.Mnq + ", TEEName='" + this.Mnv + '\'' + ", TEEVersion='" + this.Mnw + '\'' + ", FpName='" + this.Mnx + '\'' + ", FpVersion='" + this.Mny + '\'' + ", cpuId='" + this.Mnz + '\'' + ", saltLen=" + this.MnA + ", jsonValue='" + this.MnB + '\'' + ", signature='" + this.signature + '\'' + '}';
     AppMethodBeat.o(88676);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.soter.core.c.j
  * JD-Core Version:    0.7.0.1
  */

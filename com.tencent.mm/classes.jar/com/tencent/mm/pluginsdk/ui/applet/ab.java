@@ -9,7 +9,7 @@ public abstract interface ab
   
   public static final class a
   {
-    public static ab EXc;
+    public static ab Fpw;
   }
 }
 

@@ -15,23 +15,23 @@ import com.tencent.mm.ui.base.preference.Preference;
 public final class g
   extends Preference
 {
-  public View.OnClickListener gMe;
-  private View jCI;
+  public View.OnClickListener gON;
+  private View jFG;
   public boolean mClickable;
   public String mContent;
   private View mView;
-  public int wET;
-  private int wEU;
-  private int wEV;
+  public int wUE;
+  private int wUF;
+  private int wUG;
   
   public g(Context paramContext)
   {
     super(paramContext, null);
     AppMethodBeat.i(70676);
     this.mView = null;
-    this.wET = 2147483647;
-    this.wEU = -1;
-    this.wEV = -1;
+    this.wUE = 2147483647;
+    this.wUF = -1;
+    this.wUG = -1;
     setLayoutResource(2131494531);
     AppMethodBeat.o(70676);
   }
@@ -55,17 +55,17 @@ public final class g
     Object localObject = (TextView)paramView.findViewById(2131301249);
     TextView localTextView = (TextView)paramView.findViewById(2131306264);
     ((TextView)localObject).setText(getTitle());
-    this.jCI = paramView;
-    if (this.wET != 2147483647) {
-      localTextView.setTextColor(this.wET);
+    this.jFG = paramView;
+    if (this.wUE != 2147483647) {
+      localTextView.setTextColor(this.wUE);
     }
     if (this.mClickable)
     {
-      if ((this.wEU >= 0) && (this.wEV > 0))
+      if ((this.wUF >= 0) && (this.wUG > 0))
       {
         paramView = new l(this.mContext);
         localObject = new SpannableString(this.mContent);
-        paramView.DfS = new l.a()
+        paramView.Dxw = new l.a()
         {
           public final void onClick(View paramAnonymousView)
           {
@@ -77,17 +77,17 @@ public final class g
           }
         };
         localTextView.setMovementMethod(LinkMovementMethod.getInstance());
-        ((SpannableString)localObject).setSpan(paramView, this.wEU, this.wEV, 33);
+        ((SpannableString)localObject).setSpan(paramView, this.wUF, this.wUG, 33);
         localTextView.setText((CharSequence)localObject);
         AppMethodBeat.o(70678);
         return;
       }
-      if (this.wET != 2147483647) {
-        localTextView.setTextColor(this.wET);
+      if (this.wUE != 2147483647) {
+        localTextView.setTextColor(this.wUE);
       }
       for (;;)
       {
-        localTextView.setOnClickListener(this.gMe);
+        localTextView.setOnClickListener(this.gON);
         localTextView.setText(k.b(this.mContext, this.mContent, localTextView.getTextSize()));
         AppMethodBeat.o(70678);
         return;
@@ -101,7 +101,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.ui.g
  * JD-Core Version:    0.7.0.1
  */

@@ -9,9 +9,9 @@ final class l$4
 {
   l$4(l paraml)
   {
-    AppMethodBeat.i(207111);
+    AppMethodBeat.i(188402);
     this.__eventId = bn.class.getName().hashCode();
-    AppMethodBeat.o(207111);
+    AppMethodBeat.o(188402);
   }
 }
 

@@ -1,110 +1,94 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bw.b;
 import java.util.LinkedList;
 
 public final class dfn
-  extends com.tencent.mm.bx.a
+  extends cwj
 {
-  public int CreateTime;
-  public int DeleteFlag;
-  public int HtG;
-  public int HtH;
-  public long HtI;
-  public long HtJ;
-  public int HtL;
-  public LinkedList<dft> HtM;
-  public int HtN;
-  public String Hub;
-  public int IsNotRichText;
-  public String Nickname;
-  public String Username;
-  public String hDa;
-  public int nEf;
-  public int tRT;
-  
-  public dfn()
-  {
-    AppMethodBeat.i(125778);
-    this.HtM = new LinkedList();
-    AppMethodBeat.o(125778);
-  }
+  public int HMJ;
+  public int HMK;
+  public int HML;
+  public b HMM;
+  public String HMx;
+  public String HMy;
+  public String HMz;
+  public String HkY;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(125779);
+    AppMethodBeat.i(117928);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.Username != null) {
-        paramVarArgs.d(1, this.Username);
+      if (this.BaseResponse != null)
+      {
+        paramVarArgs.lJ(1, this.BaseResponse.computeSize());
+        this.BaseResponse.writeFields(paramVarArgs);
       }
-      if (this.Nickname != null) {
-        paramVarArgs.d(2, this.Nickname);
+      if (this.HMx != null) {
+        paramVarArgs.d(2, this.HMx);
       }
-      paramVarArgs.aS(3, this.tRT);
-      paramVarArgs.aS(4, this.nEf);
-      if (this.hDa != null) {
-        paramVarArgs.d(5, this.hDa);
+      paramVarArgs.aS(3, this.HMJ);
+      paramVarArgs.aS(4, this.HMK);
+      if (this.HMy != null) {
+        paramVarArgs.d(5, this.HMy);
       }
-      paramVarArgs.aS(6, this.CreateTime);
-      paramVarArgs.aS(7, this.HtH);
-      paramVarArgs.aS(8, this.HtG);
-      if (this.Hub != null) {
-        paramVarArgs.d(9, this.Hub);
+      if (this.HMz != null) {
+        paramVarArgs.d(6, this.HMz);
       }
-      paramVarArgs.aS(10, this.IsNotRichText);
-      paramVarArgs.aY(11, this.HtI);
-      paramVarArgs.aY(12, this.HtJ);
-      paramVarArgs.aS(13, this.DeleteFlag);
-      paramVarArgs.aS(14, this.HtL);
-      paramVarArgs.e(15, 8, this.HtM);
-      paramVarArgs.aS(16, this.HtN);
-      AppMethodBeat.o(125779);
+      paramVarArgs.aS(7, this.HML);
+      if (this.HkY != null) {
+        paramVarArgs.d(8, this.HkY);
+      }
+      if (this.HMM != null) {
+        paramVarArgs.c(9, this.HMM);
+      }
+      AppMethodBeat.o(117928);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.Username == null) {
-        break label1050;
+      if (this.BaseResponse == null) {
+        break label750;
       }
     }
-    label1050:
-    for (paramInt = f.a.a.b.b.a.e(1, this.Username) + 0;; paramInt = 0)
+    label750:
+    for (paramInt = f.a.a.a.lI(1, this.BaseResponse.computeSize()) + 0;; paramInt = 0)
     {
       int i = paramInt;
-      if (this.Nickname != null) {
-        i = paramInt + f.a.a.b.b.a.e(2, this.Nickname);
+      if (this.HMx != null) {
+        i = paramInt + f.a.a.b.b.a.e(2, this.HMx);
       }
-      i = i + f.a.a.b.b.a.bz(3, this.tRT) + f.a.a.b.b.a.bz(4, this.nEf);
+      i = i + f.a.a.b.b.a.bz(3, this.HMJ) + f.a.a.b.b.a.bz(4, this.HMK);
       paramInt = i;
-      if (this.hDa != null) {
-        paramInt = i + f.a.a.b.b.a.e(5, this.hDa);
+      if (this.HMy != null) {
+        paramInt = i + f.a.a.b.b.a.e(5, this.HMy);
       }
-      i = paramInt + f.a.a.b.b.a.bz(6, this.CreateTime) + f.a.a.b.b.a.bz(7, this.HtH) + f.a.a.b.b.a.bz(8, this.HtG);
+      i = paramInt;
+      if (this.HMz != null) {
+        i = paramInt + f.a.a.b.b.a.e(6, this.HMz);
+      }
+      i += f.a.a.b.b.a.bz(7, this.HML);
       paramInt = i;
-      if (this.Hub != null) {
-        paramInt = i + f.a.a.b.b.a.e(9, this.Hub);
+      if (this.HkY != null) {
+        paramInt = i + f.a.a.b.b.a.e(8, this.HkY);
       }
-      i = f.a.a.b.b.a.bz(10, this.IsNotRichText);
-      int j = f.a.a.b.b.a.p(11, this.HtI);
-      int k = f.a.a.b.b.a.p(12, this.HtJ);
-      int m = f.a.a.b.b.a.bz(13, this.DeleteFlag);
-      int n = f.a.a.b.b.a.bz(14, this.HtL);
-      int i1 = f.a.a.a.c(15, 8, this.HtM);
-      int i2 = f.a.a.b.b.a.bz(16, this.HtN);
-      AppMethodBeat.o(125779);
-      return paramInt + i + j + k + m + n + i1 + i2;
+      i = paramInt;
+      if (this.HMM != null) {
+        i = paramInt + f.a.a.b.b.a.b(9, this.HMM);
+      }
+      AppMethodBeat.o(117928);
+      return i;
       if (paramInt == 2)
       {
-        paramVarArgs = (byte[])paramVarArgs[0];
-        this.HtM.clear();
-        paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = cwj.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cwj.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
-        AppMethodBeat.o(125779);
+        AppMethodBeat.o(117928);
         return 0;
       }
       if (paramInt == 3)
@@ -115,92 +99,64 @@ public final class dfn
         switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(125779);
+          AppMethodBeat.o(117928);
           return -1;
         case 1: 
-          localdfn.Username = ((f.a.a.a.a)localObject1).NPN.readString();
-          AppMethodBeat.o(125779);
-          return 0;
-        case 2: 
-          localdfn.Nickname = ((f.a.a.a.a)localObject1).NPN.readString();
-          AppMethodBeat.o(125779);
-          return 0;
-        case 3: 
-          localdfn.tRT = ((f.a.a.a.a)localObject1).NPN.zc();
-          AppMethodBeat.o(125779);
-          return 0;
-        case 4: 
-          localdfn.nEf = ((f.a.a.a.a)localObject1).NPN.zc();
-          AppMethodBeat.o(125779);
-          return 0;
-        case 5: 
-          localdfn.hDa = ((f.a.a.a.a)localObject1).NPN.readString();
-          AppMethodBeat.o(125779);
-          return 0;
-        case 6: 
-          localdfn.CreateTime = ((f.a.a.a.a)localObject1).NPN.zc();
-          AppMethodBeat.o(125779);
-          return 0;
-        case 7: 
-          localdfn.HtH = ((f.a.a.a.a)localObject1).NPN.zc();
-          AppMethodBeat.o(125779);
-          return 0;
-        case 8: 
-          localdfn.HtG = ((f.a.a.a.a)localObject1).NPN.zc();
-          AppMethodBeat.o(125779);
-          return 0;
-        case 9: 
-          localdfn.Hub = ((f.a.a.a.a)localObject1).NPN.readString();
-          AppMethodBeat.o(125779);
-          return 0;
-        case 10: 
-          localdfn.IsNotRichText = ((f.a.a.a.a)localObject1).NPN.zc();
-          AppMethodBeat.o(125779);
-          return 0;
-        case 11: 
-          localdfn.HtI = ((f.a.a.a.a)localObject1).NPN.zd();
-          AppMethodBeat.o(125779);
-          return 0;
-        case 12: 
-          localdfn.HtJ = ((f.a.a.a.a)localObject1).NPN.zd();
-          AppMethodBeat.o(125779);
-          return 0;
-        case 13: 
-          localdfn.DeleteFlag = ((f.a.a.a.a)localObject1).NPN.zc();
-          AppMethodBeat.o(125779);
-          return 0;
-        case 14: 
-          localdfn.HtL = ((f.a.a.a.a)localObject1).NPN.zc();
-          AppMethodBeat.o(125779);
-          return 0;
-        case 15: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
+          paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
             Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new dft();
+            localObject1 = new BaseResponse();
             localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((dft)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, com.tencent.mm.bx.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-            localdfn.HtM.add(localObject1);
+            for (boolean bool = true; bool; bool = ((BaseResponse)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cwj.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            localdfn.BaseResponse = ((BaseResponse)localObject1);
             paramInt += 1;
           }
-          AppMethodBeat.o(125779);
+          AppMethodBeat.o(117928);
+          return 0;
+        case 2: 
+          localdfn.HMx = ((f.a.a.a.a)localObject1).OmT.readString();
+          AppMethodBeat.o(117928);
+          return 0;
+        case 3: 
+          localdfn.HMJ = ((f.a.a.a.a)localObject1).OmT.zc();
+          AppMethodBeat.o(117928);
+          return 0;
+        case 4: 
+          localdfn.HMK = ((f.a.a.a.a)localObject1).OmT.zc();
+          AppMethodBeat.o(117928);
+          return 0;
+        case 5: 
+          localdfn.HMy = ((f.a.a.a.a)localObject1).OmT.readString();
+          AppMethodBeat.o(117928);
+          return 0;
+        case 6: 
+          localdfn.HMz = ((f.a.a.a.a)localObject1).OmT.readString();
+          AppMethodBeat.o(117928);
+          return 0;
+        case 7: 
+          localdfn.HML = ((f.a.a.a.a)localObject1).OmT.zc();
+          AppMethodBeat.o(117928);
+          return 0;
+        case 8: 
+          localdfn.HkY = ((f.a.a.a.a)localObject1).OmT.readString();
+          AppMethodBeat.o(117928);
           return 0;
         }
-        localdfn.HtN = ((f.a.a.a.a)localObject1).NPN.zc();
-        AppMethodBeat.o(125779);
+        localdfn.HMM = ((f.a.a.a.a)localObject1).OmT.gCk();
+        AppMethodBeat.o(117928);
         return 0;
       }
-      AppMethodBeat.o(125779);
+      AppMethodBeat.o(117928);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.dfn
  * JD-Core Version:    0.7.0.1
  */

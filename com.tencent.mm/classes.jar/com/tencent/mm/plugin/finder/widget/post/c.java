@@ -5,168 +5,166 @@ import android.graphics.Rect;
 import android.os.Bundle;
 import android.os.Parcelable;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.report.f;
-import com.tencent.mm.plugin.finder.upload.g;
 import com.tencent.mm.protocal.protobuf.FinderObjectDesc;
-import com.tencent.mm.protocal.protobuf.amn;
-import com.tencent.mm.protocal.protobuf.aoy;
-import com.tencent.mm.protocal.protobuf.aqb;
-import com.tencent.mm.protocal.protobuf.bvd;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.amz;
+import com.tencent.mm.protocal.protobuf.apl;
+import com.tencent.mm.protocal.protobuf.aqq;
+import com.tencent.mm.protocal.protobuf.bvx;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import d.g.b.p;
 import d.l;
 import java.util.ArrayList;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/widget/post/PostDataManager;", "", "intent", "Landroid/content/Intent;", "(Landroid/content/Intent;)V", "TAG", "", "compositionInfo", "", "getCompositionInfo", "()[B", "setCompositionInfo", "([B)V", "fromCamera", "", "getFromCamera", "()Z", "setFromCamera", "(Z)V", "geoDegree", "Lcom/tencent/mm/plugin/finder/utils/GeoDegree;", "getGeoDegree", "()Lcom/tencent/mm/plugin/finder/utils/GeoDegree;", "setGeoDegree", "(Lcom/tencent/mm/plugin/finder/utils/GeoDegree;)V", "imageQualityList", "Ljava/util/ArrayList;", "", "Lkotlin/collections/ArrayList;", "getImageQualityList", "()Ljava/util/ArrayList;", "setImageQualityList", "(Ljava/util/ArrayList;)V", "getIntent", "()Landroid/content/Intent;", "mediaCount", "getMediaCount", "()I", "setMediaCount", "(I)V", "mediaList", "getMediaList", "setMediaList", "postData", "Landroid/os/Bundle;", "getPostData", "()Landroid/os/Bundle;", "postType", "getPostType", "()Ljava/lang/Integer;", "setPostType", "(Ljava/lang/Integer;)V", "Ljava/lang/Integer;", "refFeed", "Lcom/tencent/mm/protocal/protobuf/FinderObjectRefInfo;", "getRefFeed", "()Lcom/tencent/mm/protocal/protobuf/FinderObjectRefInfo;", "setRefFeed", "(Lcom/tencent/mm/protocal/protobuf/FinderObjectRefInfo;)V", "refFeedContent", "Lcom/tencent/mm/protocal/protobuf/FinderObjectDesc;", "getRefFeedContent", "()Lcom/tencent/mm/protocal/protobuf/FinderObjectDesc;", "setRefFeedContent", "(Lcom/tencent/mm/protocal/protobuf/FinderObjectDesc;)V", "thumbList", "getThumbList", "setThumbList", "typeList", "getTypeList", "setTypeList", "videoCropInfoList", "Landroid/os/Parcelable;", "getVideoCropInfoList", "setVideoCropInfoList", "vlogCropRect", "Landroid/graphics/Rect;", "getVlogCropRect", "()Landroid/graphics/Rect;", "setVlogCropRect", "(Landroid/graphics/Rect;)V", "doPost", "", "desc", "uploadData", "Lcom/tencent/mm/plugin/finder/widget/post/UploadData;", "atContactList", "Lcom/tencent/mm/protocal/protobuf/LocalFinderAtContact;", "setupPostDataForMediaWidget", "", "updatePostVideoCoverUrl", "coverUrl", "coverQuality", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/widget/post/PostDataManager;", "", "intent", "Landroid/content/Intent;", "(Landroid/content/Intent;)V", "TAG", "", "compositionInfo", "", "getCompositionInfo", "()[B", "setCompositionInfo", "([B)V", "fromCamera", "", "getFromCamera", "()Z", "setFromCamera", "(Z)V", "geoDegree", "Lcom/tencent/mm/plugin/finder/utils/GeoDegree;", "getGeoDegree", "()Lcom/tencent/mm/plugin/finder/utils/GeoDegree;", "setGeoDegree", "(Lcom/tencent/mm/plugin/finder/utils/GeoDegree;)V", "imageQualityList", "Ljava/util/ArrayList;", "", "Lkotlin/collections/ArrayList;", "getImageQualityList", "()Ljava/util/ArrayList;", "setImageQualityList", "(Ljava/util/ArrayList;)V", "getIntent", "()Landroid/content/Intent;", "mediaCount", "getMediaCount", "()I", "setMediaCount", "(I)V", "mediaList", "getMediaList", "setMediaList", "postData", "Landroid/os/Bundle;", "getPostData", "()Landroid/os/Bundle;", "postType", "getPostType", "()Ljava/lang/Integer;", "setPostType", "(Ljava/lang/Integer;)V", "Ljava/lang/Integer;", "refFeed", "Lcom/tencent/mm/protocal/protobuf/FinderObjectRefInfo;", "getRefFeed", "()Lcom/tencent/mm/protocal/protobuf/FinderObjectRefInfo;", "setRefFeed", "(Lcom/tencent/mm/protocal/protobuf/FinderObjectRefInfo;)V", "refFeedContent", "Lcom/tencent/mm/protocal/protobuf/FinderObjectDesc;", "getRefFeedContent", "()Lcom/tencent/mm/protocal/protobuf/FinderObjectDesc;", "setRefFeedContent", "(Lcom/tencent/mm/protocal/protobuf/FinderObjectDesc;)V", "thumbList", "getThumbList", "setThumbList", "typeList", "getTypeList", "setTypeList", "videoCropInfoList", "Landroid/os/Parcelable;", "getVideoCropInfoList", "setVideoCropInfoList", "vlogCropRect", "Landroid/graphics/Rect;", "getVlogCropRect", "()Landroid/graphics/Rect;", "setVlogCropRect", "(Landroid/graphics/Rect;)V", "doPost", "", "desc", "uploadData", "Lcom/tencent/mm/plugin/finder/widget/post/UploadData;", "atContactList", "Lcom/tencent/mm/protocal/protobuf/LocalFinderAtContact;", "setupPostDataForMediaWidget", "", "updatePostVideoCoverUrl", "coverUrl", "coverQuality", "plugin-finder_release"})
 public final class c
 {
   private final String TAG;
-  private int dqU;
+  private int drZ;
   public final Intent intent;
-  public boolean kTo;
-  public final Bundle sKs;
-  public Integer teA;
-  public ArrayList<String> teB;
-  public ArrayList<Integer> teC;
-  public byte[] teD;
-  public ArrayList<Parcelable> teE;
-  public ArrayList<String> teF;
-  public ArrayList<Integer> teG;
-  public FinderObjectDesc teH;
-  public Rect teI;
-  public aqb ter;
+  public boolean kWX;
+  public final Bundle sVF;
+  public FinderObjectDesc tpA;
+  public Rect tpB;
+  public aqq tpk;
+  public Integer tpt;
+  public ArrayList<String> tpu;
+  public ArrayList<Integer> tpv;
+  public byte[] tpw;
+  public ArrayList<Parcelable> tpx;
+  public ArrayList<String> tpy;
+  public ArrayList<Integer> tpz;
   
   public c(Intent paramIntent)
   {
-    AppMethodBeat.i(205803);
+    AppMethodBeat.i(206417);
     this.intent = paramIntent;
     this.TAG = "Finder.PostDataManager";
-    this.sKs = new Bundle();
-    this.teA = Integer.valueOf(this.intent.getIntExtra("postType", 2));
-    this.teB = this.intent.getStringArrayListExtra("postMediaList");
-    this.teC = this.intent.getIntegerArrayListExtra("key_post_media_quality_list");
-    this.teD = this.intent.getByteArrayExtra("video_composition");
-    paramIntent = this.teB;
+    this.sVF = new Bundle();
+    this.tpt = Integer.valueOf(this.intent.getIntExtra("postType", 2));
+    this.tpu = this.intent.getStringArrayListExtra("postMediaList");
+    this.tpv = this.intent.getIntegerArrayListExtra("key_post_media_quality_list");
+    this.tpw = this.intent.getByteArrayExtra("video_composition");
+    paramIntent = this.tpu;
     int i;
     if (paramIntent != null) {
       i = paramIntent.size();
     }
     for (;;)
     {
-      this.dqU = i;
-      paramIntent = this.teA;
+      this.drZ = i;
+      paramIntent = this.tpt;
       label123:
       Object localObject1;
       if (paramIntent == null)
       {
         localObject1 = this.intent.getByteArrayExtra("postRefMediaList");
         if (localObject1 != null) {
-          paramIntent = (com.tencent.mm.bx.a)new FinderObjectDesc();
+          paramIntent = (com.tencent.mm.bw.a)new FinderObjectDesc();
         }
       }
       try
       {
         paramIntent.parseFrom((byte[])localObject1);
-        this.teH = ((FinderObjectDesc)paramIntent);
+        this.tpA = ((FinderObjectDesc)paramIntent);
         paramIntent = this.intent.getByteArrayExtra("postRefFeedInfo");
         if (paramIntent != null)
         {
-          localObject1 = new aqb();
-          ((aqb)localObject1).parseFrom(paramIntent);
-          this.ter = ((aqb)localObject1);
+          localObject1 = new aqq();
+          ((aqq)localObject1).parseFrom(paramIntent);
+          this.tpk = ((aqq)localObject1);
         }
-        this.kTo = this.intent.getBooleanExtra("KEY_POST_FROM_CAMERA", false);
-        this.teE = this.intent.getParcelableArrayListExtra("postVideoCropList");
-        this.teF = this.intent.getStringArrayListExtra("postThumbList");
-        this.teI = ((Rect)this.intent.getParcelableExtra("KEY_POST_VLOG_CROP_RECT"));
+        this.kWX = this.intent.getBooleanExtra("KEY_POST_FROM_CAMERA", false);
+        this.tpx = this.intent.getParcelableArrayListExtra("postVideoCropList");
+        this.tpy = this.intent.getStringArrayListExtra("postThumbList");
+        this.tpB = ((Rect)this.intent.getParcelableExtra("KEY_POST_VLOG_CROP_RECT"));
         paramIntent = this.intent.getStringExtra("post_id");
         localObject1 = this.intent.getStringExtra("edit_id");
         if (paramIntent != null)
         {
-          localObject2 = f.soC;
-          f.gm(paramIntent, (String)localObject1);
+          localObject2 = com.tencent.mm.plugin.finder.report.g.syJ;
+          com.tencent.mm.plugin.finder.report.g.gr(paramIntent, (String)localObject1);
         }
         paramIntent = this.TAG;
-        localObject1 = new StringBuilder("postType ").append(this.teA).append(", mediaList ").append(this.teB).append(" mediaCount ").append(this.dqU).append(' ').append("thumbList ").append(this.teF).append(" thumbCount ");
-        Object localObject2 = this.teF;
+        localObject1 = new StringBuilder("postType ").append(this.tpt).append(", mediaList ").append(this.tpu).append(" mediaCount ").append(this.drZ).append(' ').append("thumbList ").append(this.tpy).append(" thumbCount ");
+        Object localObject2 = this.tpy;
         i = j;
         if (localObject2 != null) {
           i = ((ArrayList)localObject2).size();
         }
-        ad.i(paramIntent, i + ", fromCamera:" + this.kTo);
-        AppMethodBeat.o(205803);
+        ae.i(paramIntent, i + ", fromCamera:" + this.kWX);
+        AppMethodBeat.o(206417);
         return;
         i = 0;
         continue;
         if (paramIntent.intValue() != 8) {
           break label123;
         }
-        this.teG = this.intent.getIntegerArrayListExtra("postTypeList");
+        this.tpz = this.intent.getIntegerArrayListExtra("postTypeList");
       }
       catch (Exception paramIntent)
       {
         for (;;)
         {
-          ad.l("safeParser", "", new Object[] { paramIntent });
+          ae.l("safeParser", "", new Object[] { paramIntent });
           paramIntent = null;
         }
       }
     }
   }
   
-  public final long a(String paramString, h paramh, ArrayList<bvd> paramArrayList)
+  public final long a(String paramString, h paramh, ArrayList<bvx> paramArrayList)
   {
-    AppMethodBeat.i(205802);
+    AppMethodBeat.i(206416);
     p.h(paramString, "desc");
     p.h(paramh, "uploadData");
-    aoy localaoy = new aoy();
-    amn localamn = new amn();
-    Object localObject1 = this.sKs;
-    Object localObject3 = a.tez;
-    localObject1 = ((Bundle)localObject1).getByteArray(a.cOH());
+    apl localapl = new apl();
+    amz localamz = new amz();
+    Object localObject1 = this.sVF;
+    Object localObject3 = a.tps;
+    localObject1 = ((Bundle)localObject1).getByteArray(a.cRm());
     if (localObject1 != null) {
-      localaoy.parseFrom((byte[])localObject1);
+      localapl.parseFrom((byte[])localObject1);
     }
-    localObject1 = this.sKs;
-    localObject3 = a.tez;
-    localObject1 = ((Bundle)localObject1).getByteArray(a.cOI());
+    localObject1 = this.sVF;
+    localObject3 = a.tps;
+    localObject1 = ((Bundle)localObject1).getByteArray(a.cRn());
     if (localObject1 != null) {
-      localamn.parseFrom((byte[])localObject1);
+      localamz.parseFrom((byte[])localObject1);
     }
-    localObject1 = this.sKs;
-    localObject3 = a.tez;
-    int i = ((Bundle)localObject1).getInt(a.cOM(), 0);
-    localObject1 = this.sKs;
-    localObject3 = a.tez;
-    boolean bool = ((Bundle)localObject1).getBoolean(a.cOL(), false);
-    localObject1 = this.sKs;
-    localObject3 = a.tez;
-    localObject3 = ((Bundle)localObject1).getByteArray(a.cOJ());
-    localObject1 = this.sKs;
-    a.a locala = a.tez;
-    localObject1 = ((Bundle)localObject1).getByteArray(a.cOK());
+    localObject1 = this.sVF;
+    localObject3 = a.tps;
+    int i = ((Bundle)localObject1).getInt(a.cRr(), 0);
+    localObject1 = this.sVF;
+    localObject3 = a.tps;
+    boolean bool = ((Bundle)localObject1).getBoolean(a.cRq(), false);
+    localObject1 = this.sVF;
+    localObject3 = a.tps;
+    localObject3 = ((Bundle)localObject1).getByteArray(a.cRo());
+    localObject1 = this.sVF;
+    a.a locala = a.tps;
+    localObject1 = ((Bundle)localObject1).getByteArray(a.cRp());
     if ((localObject3 != null) && (localObject1 != null)) {}
     Object localObject2;
-    for (localObject1 = (com.tencent.mm.bx.a)new aqb();; localObject2 = null) {
+    for (localObject1 = (com.tencent.mm.bw.a)new aqq();; localObject2 = null) {
       try
       {
-        ((com.tencent.mm.bx.a)localObject1).parseFrom((byte[])localObject3);
-        localObject1 = (aqb)localObject1;
-        localObject3 = g.sJk;
-        localObject3 = g.cKK();
+        ((com.tencent.mm.bw.a)localObject1).parseFrom((byte[])localObject3);
+        localObject1 = (aqq)localObject1;
+        localObject3 = com.tencent.mm.plugin.finder.upload.g.sUx;
+        localObject3 = com.tencent.mm.plugin.finder.upload.g.cNo();
         int j = paramh.type;
-        paramString = bt.nullAsNil(paramString);
+        paramString = bu.nullAsNil(paramString);
         p.g(paramString, "Util.nullAsNil(desc)");
-        long l = ((g)localObject3).a(j, paramString, paramh.tfE, localaoy, localamn, i, (aqb)localObject1, bool, paramh.tfq, paramArrayList);
-        AppMethodBeat.o(205802);
+        long l = ((com.tencent.mm.plugin.finder.upload.g)localObject3).a(j, paramString, paramh.tqx, localapl, localamz, i, (aqq)localObject1, bool, paramh.tqj, paramArrayList);
+        AppMethodBeat.o(206416);
         return l;
       }
       catch (Exception localException)
       {
         for (;;)
         {
-          ad.l("safeParser", "", new Object[] { localException });
+          ae.l("safeParser", "", new Object[] { localException });
           localObject2 = null;
         }
       }

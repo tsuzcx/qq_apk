@@ -1,99 +1,61 @@
 package com.tencent.mm.plugin.appbrand.jsapi.g;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.content.pm.ActivityInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
+import android.net.Uri;
+import android.view.MenuItem;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
-import com.tencent.mm.plugin.appbrand.page.a.c.a;
-import com.tencent.mm.plugin.appbrand.page.b;
-import com.tencent.mm.plugin.appbrand.page.b.a;
-import com.tencent.mm.plugin.appbrand.z.m;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.plugin.appbrand.jsapi.m;
+import com.tencent.mm.plugin.appbrand.r;
+import com.tencent.mm.plugin.appbrand.utils.b.a.a;
+import com.tencent.mm.plugin.appbrand.utils.b.a.b;
+import com.tencent.mm.plugin.location.model.LocationInfo;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.platformtools.k;
+import com.tencent.mm.ui.base.l;
+import com.tencent.mm.ui.base.n.d;
+import com.tencent.mm.ui.base.n.e;
+import com.tencent.mm.ui.widget.a.e;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
 public final class p
+  extends a<r>
 {
-  long kOB = 0L;
-  c.a kOC;
+  public static final int CTRL_INDEX = 902;
+  public static final String NAME = "openMapApp";
+  final q kSc;
+  Map<String, String> kSd;
+  protected LocationInfo kSe;
+  protected LocationInfo kSf;
+  protected com.tencent.mm.plugin.location.ui.d kSg;
+  double latitude;
+  double longitude;
   
-  public final void W(final AppBrandRuntime paramAppBrandRuntime)
+  public p()
   {
-    AppMethodBeat.i(138211);
-    ad.i("MicroMsg.LbsBlinkHelper", "startBlinkSubTitle");
-    m.runOnUiThread(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(138207);
-        if (p.this.kOC != null) {
-          p.this.kOC.dismiss();
-        }
-        p.this.kOC = b.ac(paramAppBrandRuntime).a(b.a.lYK);
-        p.this.kOB = System.currentTimeMillis();
-        AppMethodBeat.o(138207);
-      }
-    });
-    AppMethodBeat.o(138211);
-  }
-  
-  public final void bkA()
-  {
-    AppMethodBeat.i(138212);
-    ad.i("MicroMsg.LbsBlinkHelper", "stopBlinkSubTitle");
-    m.runOnUiThread(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(138209);
-        if (p.this.kOC == null)
-        {
-          AppMethodBeat.o(138209);
-          return;
-        }
-        long l = System.currentTimeMillis() - p.this.kOB;
-        if (l < 3000L)
-        {
-          aq.o(new Runnable()
-          {
-            public final void run()
-            {
-              AppMethodBeat.i(138208);
-              p.this.kOC.dismiss();
-              AppMethodBeat.o(138208);
-            }
-          }, 3000L - l);
-          AppMethodBeat.o(138209);
-          return;
-        }
-        p.this.kOC.dismiss();
-        AppMethodBeat.o(138209);
-      }
-    });
-    AppMethodBeat.o(138212);
-  }
-  
-  public final void bkB()
-  {
-    AppMethodBeat.i(138213);
-    ad.i("MicroMsg.LbsBlinkHelper", "stopBlinkSubTitleImmediately");
-    m.runOnUiThread(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(138210);
-        if (p.this.kOC == null)
-        {
-          AppMethodBeat.o(138210);
-          return;
-        }
-        p.this.kOC.dismiss();
-        AppMethodBeat.o(138210);
-      }
-    });
-    AppMethodBeat.o(138213);
+    AppMethodBeat.i(222554);
+    this.latitude = 0.0D;
+    this.longitude = 0.0D;
+    this.kSc = new q();
+    this.kSe = new LocationInfo((byte)0);
+    this.kSf = new LocationInfo((byte)0);
+    AppMethodBeat.o(222554);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.g.p
  * JD-Core Version:    0.7.0.1
  */

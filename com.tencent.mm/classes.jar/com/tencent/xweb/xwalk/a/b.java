@@ -5,7 +5,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class b
   extends l
 {
-  public final String aiI(int paramInt)
+  public final String ajr(int paramInt)
   {
     AppMethodBeat.i(157173);
     String str = dd(paramInt, "excelreader.apk");
@@ -13,24 +13,27 @@ public final class b
     return str;
   }
   
-  public final String gdf()
+  public final int ajs(int paramInt)
   {
-    return "com.tencent.xweb.xfiles.excel.ExcelReader";
-  }
-  
-  public final String gdg()
-  {
-    return "com.tencent.xweb.xfiles.excel.ExcelReaderEnvironment";
-  }
-  
-  public final int gdh()
-  {
+    if (paramInt == 1) {
+      return 2147483647;
+    }
     return 100;
   }
   
   public final String getPluginName()
   {
     return "XFilesExcelReader";
+  }
+  
+  public final String ghI()
+  {
+    return "com.tencent.xweb.xfiles.excel.ExcelReader";
+  }
+  
+  public final String ghJ()
+  {
+    return "com.tencent.xweb.xfiles.excel.ExcelReaderEnvironment";
   }
 }
 

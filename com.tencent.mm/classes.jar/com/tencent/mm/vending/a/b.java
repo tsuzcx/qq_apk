@@ -8,17 +8,17 @@ import junit.framework.Assert;
 public abstract class b<_Struct, _Item>
   extends com.tencent.mm.vending.base.b<_Struct, Cursor>
 {
-  public a LgP;
+  public a LDr;
   protected _Item MJ;
   protected Cursor Tc = null;
   protected int mCount;
-  protected Map<Integer, _Item> owN = null;
+  protected Map<Integer, _Item> oDp = null;
   
   public b(_Item param_Item)
   {
     this.MJ = param_Item;
     this.mCount = -1;
-    fNN();
+    fSi();
   }
   
   private Cursor getCursor()
@@ -33,13 +33,13 @@ public abstract class b<_Struct, _Item>
   
   public void destroyAsynchronous()
   {
-    det();
+    dhl();
   }
   
-  public final void det()
+  public final void dhl()
   {
-    if (this.owN != null) {
-      this.owN.clear();
+    if (this.oDp != null) {
+      this.oDp.clear();
     }
     if (this.Tc != null) {
       this.Tc.close();
@@ -47,16 +47,16 @@ public abstract class b<_Struct, _Item>
     this.mCount = -1;
   }
   
-  protected abstract Cursor edZ();
+  protected abstract Cursor ehG();
   
-  public final void fNN()
+  public final void fSi()
   {
-    if (this.owN == null) {
-      this.owN = new HashMap();
+    if (this.oDp == null) {
+      this.oDp = new HashMap();
     }
   }
   
-  public final int fNO()
+  public final int fSj()
   {
     if (this.mCount < 0) {
       this.mCount = getCursor().getCount();
@@ -66,9 +66,9 @@ public abstract class b<_Struct, _Item>
   
   public final _Item getItem(int paramInt)
   {
-    if (this.owN != null)
+    if (this.oDp != null)
     {
-      localObject = this.owN.get(Integer.valueOf(paramInt));
+      localObject = this.oDp.get(Integer.valueOf(paramInt));
       if (localObject != null) {
         return localObject;
       }
@@ -76,19 +76,19 @@ public abstract class b<_Struct, _Item>
     if ((paramInt < 0) || (!getCursor().moveToPosition(paramInt))) {
       return null;
     }
-    if (this.owN == null) {
+    if (this.oDp == null) {
       return a(this.MJ, getCursor());
     }
     Object localObject = a(null, getCursor());
-    this.owN.put(Integer.valueOf(paramInt), localObject);
+    this.oDp.put(Integer.valueOf(paramInt), localObject);
     return localObject;
   }
   
   public static abstract interface a
   {
-    public abstract void edg();
+    public abstract void egN();
     
-    public abstract void edh();
+    public abstract void egO();
   }
 }
 

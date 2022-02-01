@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.plugin.remittance.ui.RemittanceResendMsgUI;
 import com.tencent.mm.plugin.wallet_payu.remittance.a.f;
 import com.tencent.mm.ui.base.a;
@@ -35,12 +35,12 @@ public class PayURemittanceResendMsgUI
     {
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        h.cl(this, getString(2131762521));
+        h.cm(this, getString(2131762521));
         finish();
         AppMethodBeat.o(72205);
         return true;
       }
-      h.cl(this, paramString);
+      h.cm(this, paramString);
       finish();
       AppMethodBeat.o(72205);
       return true;
@@ -57,7 +57,7 @@ public class PayURemittanceResendMsgUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_payu.remittance.ui.PayURemittanceResendMsgUI
  * JD-Core Version:    0.7.0.1
  */

@@ -1,191 +1,228 @@
 package com.tencent.mm.util;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ad.f;
+import com.tencent.mm.ac.f;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.protocal.protobuf.ahq;
-import com.tencent.mm.protocal.protobuf.ahr;
-import com.tencent.mm.protocal.protobuf.ahs;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.sdk.platformtools.i;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.al.a;
+import com.tencent.mm.protocal.protobuf.aia;
+import com.tencent.mm.protocal.protobuf.aib;
+import com.tencent.mm.protocal.protobuf.aic;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bv;
+import com.tencent.mm.sdk.platformtools.j;
+import com.tencent.mm.storage.aj;
+import com.tencent.mm.storage.am.a;
 import d.g.b.p;
 import d.l;
+import d.z;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Map;
 import org.json.JSONObject;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/util/ExptSettingLogic;", "", "()V", "InnerVersion", "", "getInnerVersion", "()I", "InnerVersionKey", "", "getInnerVersionKey", "()Ljava/lang/String;", "TAG", "getTAG", "exptSettingConfig", "Lcom/tencent/mm/protocal/protobuf/ExptSettingConfig;", "getExptSettingConfig", "()Lcom/tencent/mm/protocal/protobuf/ExptSettingConfig;", "exptSettingValueMap", "Ljava/util/HashMap;", "Lkotlin/collections/HashMap;", "getExptSettingValueMap", "()Ljava/util/HashMap;", "applyLocalTemplate", "", "getConfigKey", "groupKey", "itemKey", "getConfigValue", "key", "defaultValue", "getCopyMsgInfoFlag", "getExptFlag", "getExptFlagInt", "isInnerUser", "isOpenFingerSearch", "isOpenHotWordSearch", "isOpenImageSearch", "isRedOrPurple", "isTestBSPatch", "isTestFullApk", "isTestHotPatch", "needRestart", "openPreload", "openTPPlayer", "openTPPlayerBgPrepare", "openTPPlayerFlowControl", "openTPPlayerScroll", "resetTemplate", "saveConfigValue", "", "setConfigValue", "flag", "plugin-comm_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/util/ExptSettingLogic;", "", "()V", "InnerVersion", "", "getInnerVersion", "()I", "InnerVersionKey", "", "getInnerVersionKey", "()Ljava/lang/String;", "TAG", "getTAG", "exptSettingConfig", "Lcom/tencent/mm/protocal/protobuf/ExptSettingConfig;", "getExptSettingConfig", "()Lcom/tencent/mm/protocal/protobuf/ExptSettingConfig;", "exptSettingValueMap", "Ljava/util/HashMap;", "Lkotlin/collections/HashMap;", "getExptSettingValueMap", "()Ljava/util/HashMap;", "applyLocalTemplate", "", "getConfigKey", "groupKey", "itemKey", "getConfigValue", "key", "defaultValue", "getCopyMsgInfoFlag", "getExptFlag", "getExptFlagInt", "getJsAccelerateFlag", "isInnerUser", "isOpenFingerSearch", "isOpenHotWordSearch", "isOpenImageSearch", "isRedOrPurple", "isTestBSPatch", "isTestFullApk", "isTestHotPatch", "needRestart", "openPreload", "openTPPlayer", "openTPPlayerBgPrepare", "openTPPlayerFlowControl", "openTPPlayerScroll", "resetTemplate", "saveConfigValue", "", "setConfigValue", "flag", "plugin-comm_release"})
 public final class c
 {
-  private static final int LgA = 1;
-  public static final ahq LgB;
-  public static final HashMap<String, Integer> LgC;
-  public static final c LgD;
-  private static final String Lgz = "InnerVersion";
+  private static final String LDb = "InnerVersion";
+  private static final int LDc = 1;
+  public static final aia LDd;
+  public static final HashMap<String, Integer> LDe;
+  public static final c LDf;
   private static final String TAG = "MicroMsg.ExptSettingLogic";
   
   static
   {
-    AppMethodBeat.i(195186);
-    LgD = new c();
+    AppMethodBeat.i(218965);
+    LDf = new c();
     TAG = "MicroMsg.ExptSettingLogic";
-    Lgz = "InnerVersion";
-    LgA = 1;
-    LgB = new ahq();
-    LgC = new HashMap();
-    Object localObject1 = new ahr();
-    ((ahr)localObject1).key = "total";
-    ((ahr)localObject1).title = "全局配置";
-    Object localObject3 = new ahs();
-    ((ahs)localObject3).key = "total";
-    ((ahs)localObject3).title = "试验总开关";
-    ((ahs)localObject3).defaultValue = 0;
-    ((ahr)localObject1).hDb.add(localObject3);
-    localObject3 = new ahs();
-    ((ahs)localObject3).key = "copyMsgInfo";
-    ((ahs)localObject3).title = "复制消息体";
-    ((ahs)localObject3).defaultValue = 0;
-    ((ahr)localObject1).hDb.add(localObject3);
-    LgB.Gfg.add(localObject1);
-    localObject1 = new ahr();
-    ((ahr)localObject1).key = "tpplayer";
-    ((ahr)localObject1).title = "TP播放器配置";
-    localObject3 = new ahs();
-    ((ahs)localObject3).key = "openFlag";
-    ((ahs)localObject3).title = "是否打开TPPlayer";
-    ((ahs)localObject3).defaultValue = 1;
-    ((ahs)localObject3).Gfh = 0;
-    ((ahr)localObject1).hDb.add(localObject3);
-    localObject3 = new ahs();
-    ((ahs)localObject3).key = "openBgPrepare";
-    ((ahs)localObject3).title = "是否打开预加载";
-    ((ahs)localObject3).defaultValue = 0;
-    ((ahr)localObject1).hDb.add(localObject3);
-    localObject3 = new ahs();
-    ((ahs)localObject3).key = "openScroll";
-    ((ahs)localObject3).title = "是否打开滑动优化";
-    ((ahs)localObject3).defaultValue = 0;
-    ((ahr)localObject1).hDb.add(localObject3);
-    localObject3 = new ahs();
-    ((ahs)localObject3).key = "openFlowControl";
-    ((ahs)localObject3).title = "是否打开流控";
-    ((ahs)localObject3).defaultValue = 0;
-    ((ahr)localObject1).hDb.add(localObject3);
-    LgB.Gfg.add(localObject1);
-    localObject1 = new ahr();
-    ((ahr)localObject1).key = "search";
-    ((ahr)localObject1).title = "搜索配置";
-    localObject3 = new ahs();
-    ((ahs)localObject3).key = "openPreload";
-    ((ahs)localObject3).title = "是否打开搜索预加载";
-    ((ahs)localObject3).defaultValue = 1;
-    ((ahs)localObject3).Gfh = 1;
-    ((ahr)localObject1).hDb.add(localObject3);
-    localObject3 = new ahs();
-    ((ahs)localObject3).key = "openResetTemplate";
-    ((ahs)localObject3).title = "是否启动重置模板";
-    ((ahs)localObject3).defaultValue = 0;
-    ((ahs)localObject3).Gfh = 1;
-    ((ahr)localObject1).hDb.add(localObject3);
-    localObject3 = new ahs();
-    ((ahs)localObject3).key = "applyLocalTemplate";
-    ((ahs)localObject3).title = "是否允许应用本地模板";
-    ((ahs)localObject3).defaultValue = 0;
-    ((ahr)localObject1).hDb.add(localObject3);
-    localObject3 = new ahs();
-    ((ahs)localObject3).key = "openFingerSearch";
-    ((ahs)localObject3).title = "是否打开指尖搜索";
-    ((ahs)localObject3).defaultValue = 0;
-    ((ahr)localObject1).hDb.add(localObject3);
-    localObject3 = new ahs();
-    ((ahs)localObject3).key = "openHotWordSearch";
-    ((ahs)localObject3).title = "是否打开热词搜索建立、加载模型";
-    ((ahs)localObject3).defaultValue = 0;
-    ((ahr)localObject1).hDb.add(localObject3);
-    localObject3 = new ahs();
-    ((ahs)localObject3).key = "openImageSearch";
-    ((ahs)localObject3).title = "是否打开图片搜索";
-    ((ahs)localObject3).defaultValue = 0;
-    ((ahr)localObject1).hDb.add(localObject3);
-    LgB.Gfg.add(localObject1);
-    localObject1 = new ahr();
-    ((ahr)localObject1).key = "testUpdate";
-    ((ahr)localObject1).title = "更新配置";
-    localObject3 = new ahs();
-    ((ahs)localObject3).key = "testHotPatch";
-    ((ahs)localObject3).title = "测试hotPatch";
-    ((ahs)localObject3).defaultValue = 0;
-    ((ahr)localObject1).hDb.add(localObject3);
-    localObject3 = new ahs();
-    ((ahs)localObject3).key = "testBSDiff";
-    ((ahs)localObject3).title = "测试BSDiff";
-    ((ahs)localObject3).defaultValue = 0;
-    ((ahr)localObject1).hDb.add(localObject3);
-    localObject3 = new ahs();
-    ((ahs)localObject3).key = "testFullApk";
-    ((ahs)localObject3).title = "测试fullApk";
-    ((ahs)localObject3).defaultValue = 0;
-    ((ahr)localObject1).hDb.add(localObject3);
-    LgB.Gfg.add(localObject1);
-    localObject1 = LgB.Gfg;
+    LDb = "InnerVersion";
+    LDc = 1;
+    LDd = new aia();
+    LDe = new HashMap();
+    Object localObject1 = new aib();
+    ((aib)localObject1).key = "total";
+    ((aib)localObject1).title = "全局配置";
+    Object localObject3 = new aic();
+    ((aic)localObject3).key = "total";
+    ((aic)localObject3).title = "试验总开关";
+    ((aic)localObject3).defaultValue = 0;
+    ((aib)localObject1).hFT.add(localObject3);
+    localObject3 = z.Nhr;
+    localObject3 = new aic();
+    ((aic)localObject3).key = "copyMsgInfo";
+    ((aic)localObject3).title = "复制消息体";
+    ((aic)localObject3).defaultValue = 0;
+    ((aib)localObject1).hFT.add(localObject3);
+    localObject3 = z.Nhr;
+    LDd.GxO.add(localObject1);
+    localObject1 = z.Nhr;
+    localObject1 = new aib();
+    ((aib)localObject1).key = "tpplayer";
+    ((aib)localObject1).title = "TP播放器配置";
+    localObject3 = new aic();
+    ((aic)localObject3).key = "openFlag";
+    ((aic)localObject3).title = "是否打开TPPlayer";
+    ((aic)localObject3).defaultValue = 1;
+    ((aic)localObject3).GxP = 0;
+    ((aib)localObject1).hFT.add(localObject3);
+    localObject3 = z.Nhr;
+    localObject3 = new aic();
+    ((aic)localObject3).key = "openBgPrepare";
+    ((aic)localObject3).title = "是否打开预加载";
+    ((aic)localObject3).defaultValue = 0;
+    ((aib)localObject1).hFT.add(localObject3);
+    localObject3 = z.Nhr;
+    localObject3 = new aic();
+    ((aic)localObject3).key = "openScroll";
+    ((aic)localObject3).title = "是否打开滑动优化";
+    ((aic)localObject3).defaultValue = 0;
+    ((aib)localObject1).hFT.add(localObject3);
+    localObject3 = z.Nhr;
+    localObject3 = new aic();
+    ((aic)localObject3).key = "openFlowControl";
+    ((aic)localObject3).title = "是否打开流控";
+    ((aic)localObject3).defaultValue = 0;
+    ((aib)localObject1).hFT.add(localObject3);
+    localObject3 = z.Nhr;
+    LDd.GxO.add(localObject1);
+    localObject1 = z.Nhr;
+    localObject1 = new aib();
+    ((aib)localObject1).key = "search";
+    ((aib)localObject1).title = "搜索配置";
+    localObject3 = new aic();
+    ((aic)localObject3).key = "openPreload";
+    ((aic)localObject3).title = "是否打开搜索预加载";
+    ((aic)localObject3).defaultValue = 1;
+    ((aic)localObject3).GxP = 1;
+    ((aib)localObject1).hFT.add(localObject3);
+    localObject3 = z.Nhr;
+    localObject3 = new aic();
+    ((aic)localObject3).key = "openResetTemplate";
+    ((aic)localObject3).title = "是否启动重置模板";
+    ((aic)localObject3).defaultValue = 0;
+    ((aic)localObject3).GxP = 1;
+    ((aib)localObject1).hFT.add(localObject3);
+    localObject3 = z.Nhr;
+    localObject3 = new aic();
+    ((aic)localObject3).key = "applyLocalTemplate";
+    ((aic)localObject3).title = "是否允许应用本地模板";
+    ((aic)localObject3).defaultValue = 0;
+    ((aib)localObject1).hFT.add(localObject3);
+    localObject3 = z.Nhr;
+    localObject3 = new aic();
+    ((aic)localObject3).key = "openFingerSearch";
+    ((aic)localObject3).title = "是否打开指尖搜索";
+    ((aic)localObject3).defaultValue = 0;
+    ((aib)localObject1).hFT.add(localObject3);
+    localObject3 = z.Nhr;
+    localObject3 = new aic();
+    ((aic)localObject3).key = "openHotWordSearch";
+    ((aic)localObject3).title = "是否打开热词搜索建立、加载模型";
+    ((aic)localObject3).defaultValue = 0;
+    ((aib)localObject1).hFT.add(localObject3);
+    localObject3 = z.Nhr;
+    localObject3 = new aic();
+    ((aic)localObject3).key = "openImageSearch";
+    ((aic)localObject3).title = "是否打开图片搜索";
+    ((aic)localObject3).defaultValue = 0;
+    ((aib)localObject1).hFT.add(localObject3);
+    localObject3 = z.Nhr;
+    LDd.GxO.add(localObject1);
+    localObject1 = z.Nhr;
+    localObject1 = new aib();
+    ((aib)localObject1).key = "testUpdate";
+    ((aib)localObject1).title = "更新配置";
+    localObject3 = new aic();
+    ((aic)localObject3).key = "testHotPatch";
+    ((aic)localObject3).title = "测试hotPatch";
+    ((aic)localObject3).defaultValue = 0;
+    ((aib)localObject1).hFT.add(localObject3);
+    localObject3 = z.Nhr;
+    localObject3 = new aic();
+    ((aic)localObject3).key = "testBSDiff";
+    ((aic)localObject3).title = "测试BSDiff";
+    ((aic)localObject3).defaultValue = 0;
+    ((aib)localObject1).hFT.add(localObject3);
+    localObject3 = z.Nhr;
+    localObject3 = new aic();
+    ((aic)localObject3).key = "testFullApk";
+    ((aic)localObject3).title = "测试fullApk";
+    ((aic)localObject3).defaultValue = 0;
+    ((aib)localObject1).hFT.add(localObject3);
+    localObject3 = z.Nhr;
+    LDd.GxO.add(localObject1);
+    localObject1 = z.Nhr;
+    localObject1 = new aib();
+    ((aib)localObject1).key = "topstory";
+    ((aib)localObject1).title = "看一看配置";
+    localObject3 = new aic();
+    ((aic)localObject3).key = "openJsAccelerate";
+    ((aic)localObject3).title = "是否打开JSCodeCache加速";
+    ((aic)localObject3).defaultValue = 0;
+    ((aib)localObject1).hFT.add(localObject3);
+    localObject3 = z.Nhr;
+    LDd.GxO.add(localObject1);
+    localObject1 = z.Nhr;
+    localObject1 = LDd.GxO;
     p.g(localObject1, "exptSettingConfig.groups");
     localObject1 = ((Iterable)localObject1).iterator();
     Object localObject4;
     Object localObject5;
     while (((Iterator)localObject1).hasNext())
     {
-      localObject3 = (ahr)((Iterator)localObject1).next();
-      localObject4 = ((ahr)localObject3).hDb;
+      localObject3 = (aib)((Iterator)localObject1).next();
+      localObject4 = ((aib)localObject3).hFT;
       p.g(localObject4, "group.items");
       localObject4 = ((Iterable)localObject4).iterator();
       while (((Iterator)localObject4).hasNext())
       {
-        localObject5 = (ahs)((Iterator)localObject4).next();
-        ((Map)LgC).put(((ahr)localObject3).key + '-' + ((ahs)localObject5).key, Integer.valueOf(((ahs)localObject5).defaultValue));
+        localObject5 = (aic)((Iterator)localObject4).next();
+        ((Map)LDe).put(((aib)localObject3).key + '-' + ((aic)localObject5).key, Integer.valueOf(((aic)localObject5).defaultValue));
       }
     }
     try
     {
-      localObject1 = g.ajC();
+      localObject1 = g.ajR();
       p.g(localObject1, "MMKernel.storage()");
-      localObject3 = ((e)localObject1).ajl().a(al.a.IJj, "");
+      localObject3 = ((e)localObject1).ajA().a(am.a.JdP, "");
       if (localObject3 == null) {
-        break label1006;
+        break label1155;
       }
       localObject1 = (CharSequence)localObject3;
       if (localObject1 == null) {
-        break label1057;
+        break label1217;
       }
       if (((CharSequence)localObject1).length() != 0) {
-        break label1037;
+        break label1186;
       }
     }
     catch (Exception localException)
     {
-      ad.d(TAG, "init " + LgC);
-      AppMethodBeat.o(195186);
+      label1069:
+      label1119:
+      ae.d(TAG, "init " + LDe);
+      label1155:
+      AppMethodBeat.o(218965);
       return;
     }
     if (localObject1 != null)
     {
       localObject1 = new JSONObject((String)localObject3);
-      if (((JSONObject)localObject1).optInt(Lgz, 0) == LgA)
-      {
-        localObject3 = ((JSONObject)localObject1).keys();
-        if (localObject3 == null) {}
+      if (((JSONObject)localObject1).optInt(LDb, 0) != LDc) {
+        break label1210;
+      }
+      localObject3 = ((JSONObject)localObject1).keys();
+      if (localObject3 == null) {
+        break label1210;
       }
     }
-    label920:
-    label1052:
-    label1057:
-    label1074:
-    label1077:
+    label1186:
+    label1191:
+    label1210:
+    label1217:
+    label1234:
+    label1237:
     for (;;)
     {
       if (((Iterator)localObject3).hasNext())
@@ -194,32 +231,32 @@ public final class c
         localObject5 = ((JSONObject)localObject1).opt((String)localObject4);
         CharSequence localCharSequence = (CharSequence)localObject4;
         if (localCharSequence == null) {
-          break label1074;
+          break label1234;
         }
-        if (localCharSequence.length() != 0) {
-          break label1052;
+        if (localCharSequence.length() == 0) {
+          break label1234;
         }
-        break label1074;
       }
       for (;;)
       {
-        label970:
         if ((i != 0) || (localObject5 == null) || (!(localObject5 instanceof Integer))) {
-          break label1077;
+          break label1237;
         }
-        ((Map)LgC).put(localObject4, localObject5);
-        break label920;
-        label1006:
+        ((Map)LDe).put(localObject4, localObject5);
+        break label1069;
         int i = 0;
         for (i = 0; i == 0; i = 1)
         {
           localObject2 = null;
           break;
           i = 0;
-          break label970;
+          break label1119;
+          localObject2 = z.Nhr;
+          localObject2 = z.Nhr;
+          break label1155;
           i = 1;
           if (i != 0) {
-            break label1042;
+            break label1191;
           }
         }
         Object localObject2 = localObject3;
@@ -229,94 +266,94 @@ public final class c
     }
   }
   
-  public static int aXU(String paramString)
+  public static int aZw(String paramString)
   {
-    AppMethodBeat.i(195181);
+    AppMethodBeat.i(218960);
     p.h(paramString, "key");
-    paramString = (Integer)LgC.get(paramString);
+    paramString = (Integer)LDe.get(paramString);
     if (paramString != null)
     {
       int i = paramString.intValue();
-      AppMethodBeat.o(195181);
+      AppMethodBeat.o(218960);
       return i;
     }
-    AppMethodBeat.o(195181);
+    AppMethodBeat.o(218960);
     return 0;
   }
   
-  public static boolean bPa()
+  public static boolean bPY()
   {
-    AppMethodBeat.i(195185);
-    if (aXU(ms("search", "openPreload")) == 1)
+    AppMethodBeat.i(218964);
+    if (aZw(mz("search", "openPreload")) == 1)
     {
-      AppMethodBeat.o(195185);
+      AppMethodBeat.o(218964);
       return true;
     }
-    AppMethodBeat.o(195185);
+    AppMethodBeat.o(218964);
     return false;
   }
   
-  public static ahq fNH()
+  public static aia fSc()
   {
-    return LgB;
+    return LDd;
   }
   
-  public static void fNI()
+  public static void fSd()
   {
-    AppMethodBeat.i(195179);
+    AppMethodBeat.i(218958);
     JSONObject localJSONObject = new JSONObject();
-    f.a((Map)LgC, localJSONObject);
-    localJSONObject.put(Lgz, LgA);
-    e locale = g.ajC();
+    f.a((Map)LDe, localJSONObject);
+    localJSONObject.put(LDb, LDc);
+    e locale = g.ajR();
     p.g(locale, "MMKernel.storage()");
-    locale.ajl().set(al.a.IJj, localJSONObject.toString());
-    AppMethodBeat.o(195179);
+    locale.ajA().set(am.a.JdP, localJSONObject.toString());
+    AppMethodBeat.o(218958);
   }
   
-  public static int fNJ()
+  public static int fSe()
   {
-    AppMethodBeat.i(195182);
-    int i = aXU(ms("total", "total"));
-    AppMethodBeat.o(195182);
+    AppMethodBeat.i(218961);
+    int i = aZw(mz("total", "total"));
+    AppMethodBeat.o(218961);
     return i;
   }
   
-  public static boolean fNK()
+  public static boolean fSf()
   {
-    AppMethodBeat.i(195183);
-    if (aXU(ms("total", "total")) == 1)
+    AppMethodBeat.i(218962);
+    if (aZw(mz("total", "total")) == 1)
     {
-      AppMethodBeat.o(195183);
+      AppMethodBeat.o(218962);
       return true;
     }
-    AppMethodBeat.o(195183);
+    AppMethodBeat.o(218962);
     return false;
   }
   
-  public static boolean fNL()
+  public static boolean fSg()
   {
-    return (i.IS_FLAVOR_PURPLE) || (i.IS_FLAVOR_RED);
+    return (j.IS_FLAVOR_PURPLE) || (j.IS_FLAVOR_RED);
   }
   
-  public static boolean fNM()
+  public static boolean fSh()
   {
-    AppMethodBeat.i(195184);
-    if ((i.DEBUG) || (fNL()) || (bu.flY()))
+    AppMethodBeat.i(218963);
+    if ((j.DEBUG) || (fSg()) || (bv.fpT()))
     {
-      AppMethodBeat.o(195184);
+      AppMethodBeat.o(218963);
       return true;
     }
-    AppMethodBeat.o(195184);
+    AppMethodBeat.o(218963);
     return false;
   }
   
-  public static String ms(String paramString1, String paramString2)
+  public static String mz(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(195180);
+    AppMethodBeat.i(218959);
     p.h(paramString1, "groupKey");
     p.h(paramString2, "itemKey");
     paramString1 = paramString1 + '-' + paramString2;
-    AppMethodBeat.o(195180);
+    AppMethodBeat.o(218959);
     return paramString1;
   }
 }

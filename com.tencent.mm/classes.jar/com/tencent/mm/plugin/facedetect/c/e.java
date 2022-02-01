@@ -5,21 +5,21 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.plugin.facedetect.model.FaceDetectReporter;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public class e
   extends a
 {
   private static final String TAG;
   private boolean isRetry = false;
-  private String rgK;
-  private String rgL;
-  private int rgM;
+  private String roO;
+  private String roP;
+  private int roQ;
   
   static
   {
@@ -31,14 +31,14 @@ public class e
   e(Context paramContext, f paramf, int paramInt1, int paramInt2)
   {
     super(paramContext, paramf, paramInt1, paramInt2);
-    this.rgM = paramInt1;
+    this.roQ = paramInt1;
   }
   
   private void u(final int paramInt1, final int paramInt2, final String paramString)
   {
     AppMethodBeat.i(103682);
     b(paramInt1, paramInt2, paramString, null);
-    Context localContext = aj.getContext();
+    Context localContext = ak.getContext();
     if (paramString == null) {}
     for (String str = localContext.getString(2131758686);; str = paramString)
     {
@@ -49,8 +49,8 @@ public class e
           AppMethodBeat.i(103674);
           b localb = new b();
           localb.bd(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/facedetect/controller/FaceVerifyController$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-          if (this.rgO) {
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/facedetect/controller/FaceVerifyController$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+          if (this.roS) {
             e.a(e.this);
           }
           for (;;)
@@ -58,7 +58,7 @@ public class e
             com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/facedetect/controller/FaceVerifyController$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
             AppMethodBeat.o(103674);
             return;
-            e.this.a(paramInt1, paramInt2, paramString, this.rgP);
+            e.this.a(paramInt1, paramInt2, paramString, this.roT);
           }
         }
       }, new View.OnClickListener()
@@ -68,8 +68,8 @@ public class e
           AppMethodBeat.i(103675);
           b localb = new b();
           localb.bd(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/facedetect/controller/FaceVerifyController$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-          e.this.a(paramInt1, paramInt2, paramString, this.rgP);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/facedetect/controller/FaceVerifyController$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+          e.this.a(paramInt1, paramInt2, paramString, this.roT);
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/facedetect/controller/FaceVerifyController$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(103675);
         }
@@ -81,12 +81,12 @@ public class e
     }
   }
   
-  public final void aT(int paramInt, String paramString)
+  public final void aS(int paramInt, String paramString)
   {
     AppMethodBeat.i(103680);
-    ad.i(TAG, "alvinluo onCancel, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt), paramString });
-    if (!FaceDetectReporter.cth().rhS) {
-      FaceDetectReporter.cth().a(FaceDetectReporter.DL(this.rgM), this.isRetry, 2, 1, paramInt);
+    ae.i(TAG, "alvinluo onCancel, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt), paramString });
+    if (!FaceDetectReporter.cuI().rpW) {
+      FaceDetectReporter.cuI().a(FaceDetectReporter.DY(this.roQ), this.isRetry, 2, 1, paramInt);
     }
     a(1, paramInt, paramString, null);
     AppMethodBeat.o(103680);
@@ -97,44 +97,44 @@ public class e
   public final boolean c(int paramInt, String paramString, Bundle paramBundle)
   {
     AppMethodBeat.i(103679);
-    ad.i(TAG, "alvinluo onUploadEnd errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(0), paramString });
+    ae.i(TAG, "alvinluo onUploadEnd errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(0), paramString });
     if (paramInt != 0)
     {
-      FaceDetectReporter.cth().a(FaceDetectReporter.DL(this.rgM), this.isRetry, 1, 2, 90012);
+      FaceDetectReporter.cuI().a(FaceDetectReporter.DY(this.roQ), this.isRetry, 1, 2, 90012);
       u(paramInt, 0, paramString);
       AppMethodBeat.o(103679);
       return true;
     }
-    if ((paramBundle == null) || (bt.isNullOrNil(paramBundle.getString("key_pic_cdn_id"))))
+    if ((paramBundle == null) || (bu.isNullOrNil(paramBundle.getString("key_pic_cdn_id"))))
     {
-      ad.e(TAG, "hy: not return cdn id!");
+      ae.e(TAG, "hy: not return cdn id!");
       u(4, 6, "not return cdn id");
       AppMethodBeat.o(103679);
       return true;
     }
-    this.rgK = paramBundle.getString("key_pic_cdn_id");
-    this.rgL = paramBundle.getString("key_cdn_aes_key");
-    ad.v(TAG, "hy: start upload: picCdnId: %s, aes key: %s", new Object[] { this.rgK, this.rgL });
+    this.roO = paramBundle.getString("key_pic_cdn_id");
+    this.roP = paramBundle.getString("key_cdn_aes_key");
+    ae.v(TAG, "hy: start upload: picCdnId: %s, aes key: %s", new Object[] { this.roO, this.roP });
     paramBundle = new Bundle();
     paramBundle.putString("err_msg", paramString);
-    paramBundle.putString("key_pic_cdn_id", this.rgK);
-    paramBundle.putString("key_cdn_aes_key", this.rgL);
-    paramBundle.putInt("check_alive_type", this.rgE);
+    paramBundle.putString("key_pic_cdn_id", this.roO);
+    paramBundle.putString("key_cdn_aes_key", this.roP);
+    paramBundle.putInt("check_alive_type", this.roI);
     a(paramInt, 0, paramString, paramBundle);
     AppMethodBeat.o(103679);
     return false;
   }
   
-  public final n csL()
+  public final n cum()
   {
     return null;
   }
   
-  public final Bundle csM()
+  public final Bundle cun()
   {
     AppMethodBeat.i(103681);
     Bundle localBundle = new Bundle();
-    localBundle.putLong("k_bio_id", csJ());
+    localBundle.putLong("k_bio_id", cuk());
     AppMethodBeat.o(103681);
     return localBundle;
   }
@@ -144,8 +144,8 @@ public class e
   public final void onRelease()
   {
     AppMethodBeat.i(103677);
-    if (!FaceDetectReporter.cth().rhS) {
-      FaceDetectReporter.cth().a(FaceDetectReporter.DL(this.rgM), this.isRetry, 2, 1, 90006);
+    if (!FaceDetectReporter.cuI().rpW) {
+      FaceDetectReporter.cuI().a(FaceDetectReporter.DY(this.roQ), this.isRetry, 2, 1, 90006);
     }
     AppMethodBeat.o(103677);
   }
@@ -153,16 +153,16 @@ public class e
   public final void onStart()
   {
     AppMethodBeat.i(103676);
-    ad.i(TAG, "alvinluo onStart and create report session");
-    FaceDetectReporter.cth().cti();
-    FaceDetectReporter.cth().ab(FaceDetectReporter.DL(this.rgM), this.isRetry);
+    ae.i(TAG, "alvinluo onStart and create report session");
+    FaceDetectReporter.cuI().cuJ();
+    FaceDetectReporter.cuI().ad(FaceDetectReporter.DY(this.roQ), this.isRetry);
     AppMethodBeat.o(103676);
   }
   
   public final void t(int paramInt1, int paramInt2, String paramString)
   {
     AppMethodBeat.i(103678);
-    ad.v(TAG, "alvinluo onCollectEnd errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    ae.v(TAG, "alvinluo onCollectEnd errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
     AppMethodBeat.o(103678);
   }
 }

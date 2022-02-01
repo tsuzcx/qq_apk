@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.m.a.a.a;
 
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/luggage/natives/flutter/channel/ChannelService$Companion;", "", "()V", "TAG", "", "instance", "Lcom/tencent/mm/plugin/luggage/natives/flutter/channel/ChannelService;", "getInstance", "()Lcom/tencent/mm/plugin/luggage/natives/flutter/channel/ChannelService;", "luggage-native-view_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/luggage/natives/flutter/channel/ChannelService$Companion;", "", "()V", "TAG", "", "instance", "Lcom/tencent/mm/plugin/luggage/natives/flutter/channel/ChannelService;", "getInstance", "()Lcom/tencent/mm/plugin/luggage/natives/flutter/channel/ChannelService;", "luggage-native-view_release"})
 public final class a$b {}
 
 

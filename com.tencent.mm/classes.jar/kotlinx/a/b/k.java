@@ -5,24 +5,24 @@ import kotlinx.a.h;
 import kotlinx.a.l.b;
 import kotlinx.a.n;
 
-@d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/serialization/internal/ByteSerializer;", "Lkotlinx/serialization/KSerializer;", "", "()V", "descriptor", "Lkotlinx/serialization/SerialDescriptor;", "getDescriptor", "()Lkotlinx/serialization/SerialDescriptor;", "deserialize", "decoder", "Lkotlinx/serialization/Decoder;", "(Lkotlinx/serialization/Decoder;)Ljava/lang/Byte;", "serialize", "", "encoder", "Lkotlinx/serialization/Encoder;", "value", "kotlinx-serialization-runtime"})
+@d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/serialization/internal/ByteSerializer;", "Lkotlinx/serialization/KSerializer;", "", "()V", "descriptor", "Lkotlinx/serialization/SerialDescriptor;", "getDescriptor", "()Lkotlinx/serialization/SerialDescriptor;", "deserialize", "decoder", "Lkotlinx/serialization/Decoder;", "(Lkotlinx/serialization/Decoder;)Ljava/lang/Byte;", "serialize", "", "encoder", "Lkotlinx/serialization/Encoder;", "value", "kotlinx-serialization-runtime"})
 public final class k
   implements h<Byte>
 {
-  private static final n NLm;
-  public static final k NMh;
+  private static final n Ois;
+  public static final k Ojn;
   
   static
   {
-    AppMethodBeat.i(191116);
-    NMh = new k();
-    NLm = (n)new ay("kotlin.Byte", (kotlinx.a.l)l.b.NLq);
-    AppMethodBeat.o(191116);
+    AppMethodBeat.i(199704);
+    Ojn = new k();
+    Ois = (n)new ay("kotlin.Byte", (kotlinx.a.l)l.b.Oiw);
+    AppMethodBeat.o(199704);
   }
   
-  public final n eLj()
+  public final n eOR()
   {
-    return NLm;
+    return Ois;
   }
 }
 

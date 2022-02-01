@@ -3,9 +3,9 @@ package com.tencent.mm.plugin.luckymoney.model;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.messenger.a.b;
-import com.tencent.mm.protocal.protobuf.bnu;
-import com.tencent.mm.protocal.protobuf.bnv;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.bom;
+import com.tencent.mm.protocal.protobuf.bon;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.LinkedList;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -18,65 +18,65 @@ public final class x
     l locall = new l();
     if (paramJSONObject != null)
     {
-      locall.dNM = paramJSONObject.optInt("hbType");
-      locall.dNN = paramJSONObject.optInt("hbStatus");
-      locall.voc = paramJSONObject.optString("statusMess");
-      locall.vod = paramJSONObject.optString("gameMess");
-      locall.vjr = paramJSONObject.optString("wishing");
-      locall.voe = paramJSONObject.optString("sendNick");
-      locall.vof = paramJSONObject.optString("sendHeadImg");
-      locall.vkl = paramJSONObject.optString("sendId");
-      locall.vog = paramJSONObject.optString("adMessage");
-      locall.voh = paramJSONObject.optString("adUrl");
-      locall.dOa = paramJSONObject.optLong("amount");
-      locall.voi = paramJSONObject.optLong("recNum");
-      locall.voj = paramJSONObject.optLong("recAmount");
-      locall.par = paramJSONObject.optInt("totalNum");
-      locall.vok = paramJSONObject.optLong("totalAmount");
-      locall.vol = paramJSONObject.optString("receiveId");
-      locall.vom = paramJSONObject.optInt("hasWriteAnswer");
-      locall.von = paramJSONObject.optInt("isSender");
-      locall.voo = paramJSONObject.optInt("isContinue");
-      locall.vop = paramJSONObject.optString("headTitle");
-      locall.dNO = paramJSONObject.optInt("receiveStatus");
-      locall.voq = paramJSONObject.optInt("canShare");
-      locall.vlu = paramJSONObject.optInt("jumpChange");
-      locall.vlw = paramJSONObject.optString("changeWording");
-      locall.vlv = paramJSONObject.optString("changeUrl");
-      locall.vow = paramJSONObject.optInt("hbKind");
-      locall.vlx = paramJSONObject.optString("externMess");
-      locall.voz = paramJSONObject.optString("sendUserName");
-      if ((bt.isNullOrNil(locall.voe)) && (!bt.isNullOrNil(locall.voz))) {
-        locall.voe = ((b)g.ab(b.class)).zf(locall.voz);
+      locall.dPc = paramJSONObject.optInt("hbType");
+      locall.dPd = paramJSONObject.optInt("hbStatus");
+      locall.vAh = paramJSONObject.optString("statusMess");
+      locall.vAi = paramJSONObject.optString("gameMess");
+      locall.vvw = paramJSONObject.optString("wishing");
+      locall.vAj = paramJSONObject.optString("sendNick");
+      locall.vAk = paramJSONObject.optString("sendHeadImg");
+      locall.vwq = paramJSONObject.optString("sendId");
+      locall.vAl = paramJSONObject.optString("adMessage");
+      locall.vAm = paramJSONObject.optString("adUrl");
+      locall.dPq = paramJSONObject.optLong("amount");
+      locall.vAn = paramJSONObject.optLong("recNum");
+      locall.vAo = paramJSONObject.optLong("recAmount");
+      locall.pgV = paramJSONObject.optInt("totalNum");
+      locall.vAp = paramJSONObject.optLong("totalAmount");
+      locall.vAq = paramJSONObject.optString("receiveId");
+      locall.vAr = paramJSONObject.optInt("hasWriteAnswer");
+      locall.vAs = paramJSONObject.optInt("isSender");
+      locall.vAt = paramJSONObject.optInt("isContinue");
+      locall.vAu = paramJSONObject.optString("headTitle");
+      locall.dPe = paramJSONObject.optInt("receiveStatus");
+      locall.vAv = paramJSONObject.optInt("canShare");
+      locall.vxz = paramJSONObject.optInt("jumpChange");
+      locall.vxB = paramJSONObject.optString("changeWording");
+      locall.vxA = paramJSONObject.optString("changeUrl");
+      locall.vAB = paramJSONObject.optInt("hbKind");
+      locall.vxC = paramJSONObject.optString("externMess");
+      locall.vAE = paramJSONObject.optString("sendUserName");
+      if ((bu.isNullOrNil(locall.vAj)) && (!bu.isNullOrNil(locall.vAE))) {
+        locall.vAj = ((b)g.ab(b.class)).zP(locall.vAE);
       }
-      locall.vor = new f();
+      locall.vAw = new f();
       Object localObject = paramJSONObject.optJSONObject("atomicFunc");
       if (localObject != null)
       {
-        locall.vor.fYO = ((JSONObject)localObject).optInt("enable");
-        locall.vor.vnN = ((JSONObject)localObject).optString("fissionContent");
-        locall.vor.vnM = ((JSONObject)localObject).optString("fissionUrl");
+        locall.vAw.gaV = ((JSONObject)localObject).optInt("enable");
+        locall.vAw.vzS = ((JSONObject)localObject).optString("fissionContent");
+        locall.vAw.vzR = ((JSONObject)localObject).optString("fissionUrl");
       }
-      locall.vos = new LinkedList();
+      locall.vAx = new LinkedList();
       localObject = paramJSONObject.optJSONArray("operationHeader");
       if (localObject != null)
       {
         int i = 0;
         while (i < ((JSONArray)localObject).length())
         {
-          locall.vos.add(aF(((JSONArray)localObject).getJSONObject(i)));
+          locall.vAx.add(aF(((JSONArray)localObject).getJSONObject(i)));
           i += 1;
         }
       }
-      locall.vou = paramJSONObject.optString("watermark");
-      locall.vov = paramJSONObject.optString("context");
-      locall.voy = paramJSONObject.optString("contextMd5");
+      locall.vAz = paramJSONObject.optString("watermark");
+      locall.vAA = paramJSONObject.optString("context");
+      locall.vAD = paramJSONObject.optString("contextMd5");
       locall.resourceId = paramJSONObject.optInt("resourceId");
-      locall.vot = aF(paramJSONObject.optJSONObject("operationTail"));
-      locall.vox = aE(paramJSONObject);
-      locall.voA = paramJSONObject.optInt("jumpChangeType");
-      locall.voB = paramJSONObject.optString("changeIconUrl");
-      locall.voC = paramJSONObject.optString("showSourceOpen");
+      locall.vAy = aF(paramJSONObject.optJSONObject("operationTail"));
+      locall.vAC = aE(paramJSONObject);
+      locall.vAF = paramJSONObject.optInt("jumpChangeType");
+      locall.vAG = paramJSONObject.optString("changeIconUrl");
+      locall.vAH = paramJSONObject.optString("showSourceOpen");
     }
     AppMethodBeat.o(65241);
     return locall;
@@ -96,16 +96,16 @@ public final class x
         y localy = new y();
         if (localJSONObject != null)
         {
-          localy.vpA = localJSONObject.optString("receiveName");
-          localy.vpB = localJSONObject.optString("receiveHeadImg");
-          localy.vpn = localJSONObject.optLong("receiveAmount");
-          localy.vpo = localJSONObject.optString("receiveTime");
-          localy.vpC = localJSONObject.optString("answer");
-          localy.vol = localJSONObject.optString("receiveId");
-          localy.vpD = localJSONObject.optString("gameTips");
+          localy.vBF = localJSONObject.optString("receiveName");
+          localy.vBG = localJSONObject.optString("receiveHeadImg");
+          localy.vBs = localJSONObject.optLong("receiveAmount");
+          localy.vBt = localJSONObject.optString("receiveTime");
+          localy.vBH = localJSONObject.optString("answer");
+          localy.vAq = localJSONObject.optString("receiveId");
+          localy.vBI = localJSONObject.optString("gameTips");
           localy.userName = localJSONObject.optString("userName");
-          if ((bt.isNullOrNil(localy.vpA)) && (!bt.isNullOrNil(localy.userName))) {
-            localy.vpA = ((b)g.ab(b.class)).zf(localy.userName);
+          if ((bu.isNullOrNil(localy.vBF)) && (!bu.isNullOrNil(localy.userName))) {
+            localy.vBF = ((b)g.ab(b.class)).zP(localy.userName);
           }
         }
         localLinkedList.add(localy);
@@ -122,19 +122,19 @@ public final class x
     au localau = new au();
     if (paramJSONObject != null)
     {
-      localau.fYO = paramJSONObject.optInt("enable", 0);
+      localau.gaV = paramJSONObject.optInt("enable", 0);
       localau.content = paramJSONObject.optString("content");
       localau.iconUrl = paramJSONObject.optString("iconUrl");
       localau.type = paramJSONObject.optString("type");
       localau.name = paramJSONObject.optString("name");
-      localau.vqM = paramJSONObject.optInt("ossKey");
-      localau.vqN = paramJSONObject.optInt("focus");
+      localau.vCR = paramJSONObject.optInt("ossKey");
+      localau.vCS = paramJSONObject.optInt("focus");
     }
     AppMethodBeat.o(65243);
     return localau;
   }
   
-  public static bnu aG(JSONObject paramJSONObject)
+  public static bom aG(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(65244);
     if (paramJSONObject == null)
@@ -142,43 +142,43 @@ public final class x
       AppMethodBeat.o(65244);
       return null;
     }
-    bnu localbnu = new bnu();
-    localbnu.subType = paramJSONObject.optInt("subType", -1);
-    localbnu.GHY = paramJSONObject.optString("corpName");
-    localbnu.Gat = paramJSONObject.optString("materialId");
-    localbnu.GIa = paramJSONObject.optString("expire_desc");
-    localbnu.GIb = paramJSONObject.optInt("is_expired");
-    localbnu.GIg = paramJSONObject.optInt("detail_link_type");
-    localbnu.GIh = paramJSONObject.optString("detail_link_appname");
-    localbnu.GIi = paramJSONObject.optString("detail_link_url");
-    localbnu.GIj = paramJSONObject.optString("detail_link_title");
-    localbnu.GIk = paramJSONObject.optString("exchange_title");
-    localbnu.GIl = paramJSONObject.optString("exchange_url");
-    localbnu.GIm = paramJSONObject.optInt("has_source");
-    localbnu.GDp = paramJSONObject.optLong("last_obtain_time");
-    localbnu.cOK = paramJSONObject.optInt("disable");
-    localbnu.GIn = paramJSONObject.optString("disable_text");
+    bom localbom = new bom();
+    localbom.subType = paramJSONObject.optInt("subType", -1);
+    localbom.HbA = paramJSONObject.optString("corpName");
+    localbom.Gta = paramJSONObject.optString("materialId");
+    localbom.HbC = paramJSONObject.optString("expire_desc");
+    localbom.HbD = paramJSONObject.optInt("is_expired");
+    localbom.HbI = paramJSONObject.optInt("detail_link_type");
+    localbom.HbJ = paramJSONObject.optString("detail_link_appname");
+    localbom.HbK = paramJSONObject.optString("detail_link_url");
+    localbom.HbL = paramJSONObject.optString("detail_link_title");
+    localbom.HbM = paramJSONObject.optString("exchange_title");
+    localbom.HbN = paramJSONObject.optString("exchange_url");
+    localbom.HbO = paramJSONObject.optInt("has_source");
+    localbom.GWP = paramJSONObject.optLong("last_obtain_time");
+    localbom.cPu = paramJSONObject.optInt("disable");
+    localbom.HbP = paramJSONObject.optString("disable_text");
     paramJSONObject = paramJSONObject.optJSONObject("sourceObject");
     if (paramJSONObject != null)
     {
-      bnv localbnv = new bnv();
-      localbnv.GIp = paramJSONObject.optString("bubbleImage");
-      localbnv.GIr = paramJSONObject.optString("bubbleImageMd5");
-      localbnv.GIo = paramJSONObject.optString("corpLogo");
-      localbnv.GIu = paramJSONObject.optString("corpLogoMd5");
-      localbnv.hkP = paramJSONObject.optString("coverImage");
-      localbnv.GIs = paramJSONObject.optString("coverImageMd5");
-      localbnv.GIq = paramJSONObject.optString("detailImage");
-      localbnv.GIt = paramJSONObject.optString("detailImageMd5");
-      localbnu.GHZ = localbnv;
+      bon localbon = new bon();
+      localbon.HbR = paramJSONObject.optString("bubbleImage");
+      localbon.HbT = paramJSONObject.optString("bubbleImageMd5");
+      localbon.HbQ = paramJSONObject.optString("corpLogo");
+      localbon.HbW = paramJSONObject.optString("corpLogoMd5");
+      localbon.hnD = paramJSONObject.optString("coverImage");
+      localbon.HbU = paramJSONObject.optString("coverImageMd5");
+      localbon.HbS = paramJSONObject.optString("detailImage");
+      localbon.HbV = paramJSONObject.optString("detailImageMd5");
+      localbom.HbB = localbon;
     }
     AppMethodBeat.o(65244);
-    return localbnu;
+    return localbom;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.model.x
  * JD-Core Version:    0.7.0.1
  */

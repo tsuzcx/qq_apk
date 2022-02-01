@@ -10,7 +10,7 @@ import com.tencent.mm.plugin.wallet_core.model.t;
 import com.tencent.mm.plugin.wallet_core.ui.WalletBankcardIdUI;
 import com.tencent.mm.plugin.wallet_core.ui.WalletCardImportUI;
 import com.tencent.mm.plugin.wallet_core.utils.f;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.wallet_core.c.ab;
 import com.tencent.mm.wallet_core.c.z;
 import com.tencent.mm.wallet_core.d;
@@ -21,13 +21,13 @@ public class a
   public final d a(Activity paramActivity, Bundle paramBundle)
   {
     AppMethodBeat.i(71704);
-    K(new Object[] { "start", paramActivity, paramBundle });
-    ad.d("MicroMsg.BindCardProcess", "start Process : BindCardProcess");
+    J(new Object[] { "start", paramActivity, paramBundle });
+    ae.d("MicroMsg.BindCardProcess", "start Process : BindCardProcess");
     if (paramBundle != null)
     {
-      ab.kB(6, paramBundle.getInt("key_bind_scene"));
-      z.agm(paramBundle.getInt("key_bind_scene"));
-      if (!t.eFy().eGa()) {
+      ab.kI(6, paramBundle.getInt("key_bind_scene"));
+      z.agV(paramBundle.getInt("key_bind_scene"));
+      if (!t.eJf().eJH()) {
         break label133;
       }
       if (paramBundle == null) {
@@ -42,8 +42,8 @@ public class a
     {
       AppMethodBeat.o(71704);
       return this;
-      ab.kB(6, 0);
-      z.agm(0);
+      ab.kI(6, 0);
+      z.agV(0);
       break;
       label108:
       b(paramActivity, WalletBankcardIdUI.class, paramBundle);
@@ -54,7 +54,7 @@ public class a
     return paramActivity;
     label133:
     if (paramBundle != null) {
-      f.iL(paramBundle.getInt("key_bind_scene", 0), 1);
+      f.iP(paramBundle.getInt("key_bind_scene", 0), 1);
     }
     if ((paramBundle != null) && (paramBundle.getBoolean("key_is_import_bind", false)))
     {
@@ -81,14 +81,14 @@ public class a
     AppMethodBeat.o(71705);
   }
   
-  public final String cQc()
+  public final String cSH()
   {
     return "OpenECardBindCardProcess";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_ecard.b.a
  * JD-Core Version:    0.7.0.1
  */

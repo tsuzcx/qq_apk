@@ -16,20 +16,20 @@ import java.util.Map;
 public final class i
   implements m
 {
-  final l MXA;
-  final h NeA;
-  final Map<w, Integer> NeL;
-  private final d<w, n> NeM;
-  final int NeN;
+  final h NBF;
+  final Map<w, Integer> NBQ;
+  private final d<w, n> NBR;
+  final int NBS;
+  final l NuG;
   
   public i(h paramh, l paraml, x paramx, int paramInt)
   {
     AppMethodBeat.i(57764);
-    this.NeA = paramh;
-    this.MXA = paraml;
-    this.NeN = paramInt;
-    this.NeL = a.C((Iterable)paramx.gip());
-    this.NeM = this.NeA.NeI.MQa.J((d.g.a.b)new a(this));
+    this.NBF = paramh;
+    this.NuG = paraml;
+    this.NBS = paramInt;
+    this.NBQ = a.C((Iterable)paramx.gmR());
+    this.NBR = this.NBF.NBN.Nnf.M((d.g.a.b)new a(this));
     AppMethodBeat.o(57764);
   }
   
@@ -37,14 +37,14 @@ public final class i
   {
     AppMethodBeat.i(57763);
     p.h(paramw, "javaTypeParameter");
-    n localn = (n)this.NeM.invoke(paramw);
+    n localn = (n)this.NBR.invoke(paramw);
     if (localn != null)
     {
       paramw = (as)localn;
       AppMethodBeat.o(57763);
       return paramw;
     }
-    paramw = this.NeA.NeJ.a(paramw);
+    paramw = this.NBF.NBO.a(paramw);
     AppMethodBeat.o(57763);
     return paramw;
   }
@@ -61,7 +61,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.d.a.c.i
  * JD-Core Version:    0.7.0.1
  */

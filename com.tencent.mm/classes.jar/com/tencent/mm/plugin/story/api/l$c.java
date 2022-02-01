@@ -10,17 +10,17 @@ public abstract interface l$c
   
   public abstract void b(l.b paramb);
   
-  public abstract List<String> eha();
+  public abstract List<String> ekI();
   
-  public abstract List<String> ehb();
+  public abstract List<String> ekJ();
   
-  public abstract LinkedHashMap<String, ArrayList<Long>> ehc();
+  public abstract LinkedHashMap<String, ArrayList<Long>> ekK();
   
-  public abstract int ehd();
+  public abstract int ekL();
   
-  public abstract List<String> ehe();
+  public abstract List<String> ekM();
   
-  public abstract void ehf();
+  public abstract void ekN();
 }
 
 

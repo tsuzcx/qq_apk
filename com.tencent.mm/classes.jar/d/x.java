@@ -2,15 +2,15 @@ package d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlin/UNINITIALIZED_VALUE;", "", "()V", "kotlin-stdlib"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlin/UNINITIALIZED_VALUE;", "", "()V", "kotlin-stdlib"})
 public final class x
 {
-  public static final x MKn;
+  public static final x Nhq;
   
   static
   {
     AppMethodBeat.i(129554);
-    MKn = new x();
+    Nhq = new x();
     AppMethodBeat.o(129554);
   }
 }

@@ -1,60 +1,90 @@
 package com.tencent.mm.plugin.setting.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.bhk;
-import com.tencent.mm.protocal.protobuf.bhl;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.avk;
+import com.tencent.mm.protocal.protobuf.avl;
+import com.tencent.mm.protocal.protobuf.avm;
+import com.tencent.mm.sdk.platformtools.ae;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.Map;
+import java.util.Set;
 
 public final class e
   extends n
   implements k
 {
   private f callback;
-  private final b rr;
-  public bhl yCO;
+  private b rr;
+  public String ySS;
   
-  public e()
+  public e(String paramString)
   {
-    AppMethodBeat.i(220929);
-    b.a locala = new b.a();
-    locala.hNM = new bhk();
-    locala.hNN = new bhl();
-    locala.funcId = 2745;
-    locala.uri = "/cgi-bin/mmpay-bin/getreceiptassisstatus";
-    this.rr = locala.aDC();
-    AppMethodBeat.o(220929);
+    this(paramString, null);
+    AppMethodBeat.i(73766);
+    AppMethodBeat.o(73766);
+  }
+  
+  public e(String paramString, Map<Integer, String> paramMap)
+  {
+    AppMethodBeat.i(190290);
+    Object localObject = new b.a();
+    ((b.a)localObject).hQF = new avk();
+    ((b.a)localObject).hQG = new avl();
+    ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/generalset";
+    ((b.a)localObject).funcId = 177;
+    ((b.a)localObject).hQH = 0;
+    ((b.a)localObject).respCmdId = 0;
+    this.rr = ((b.a)localObject).aDS();
+    this.ySS = paramString;
+    localObject = (avk)this.rr.hQD.hQJ;
+    ((avk)localObject).SetType = 1;
+    ((avk)localObject).GMx = paramString;
+    if (paramMap != null)
+    {
+      ((avk)localObject).GMy = paramMap.size();
+      ((avk)localObject).GMz = new LinkedList();
+      paramString = paramMap.keySet().iterator();
+      while (paramString.hasNext())
+      {
+        Integer localInteger = (Integer)paramString.next();
+        avm localavm = new avm();
+        localavm.nJA = localInteger.intValue();
+        localavm.xrf = ((String)paramMap.get(localInteger));
+        ((avk)localObject).GMz.add(localavm);
+      }
+    }
+    AppMethodBeat.o(190290);
   }
   
   public final int doScene(com.tencent.mm.network.e parame, f paramf)
   {
-    AppMethodBeat.i(220930);
+    AppMethodBeat.i(73767);
+    ae.d("MicroMsg.NetSceneGeneralSet", "doScene");
     this.callback = paramf;
     int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(220930);
+    AppMethodBeat.o(73767);
     return i;
   }
   
   public final int getType()
   {
-    return 2745;
+    return 177;
   }
   
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(220931);
-    ad.w("MicroMsg.NetSceneGetReceipAssistStatus", "errType = %s errCode = %s errMsg = %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    if ((paramInt2 == 0) && (paramInt3 == 0)) {
-      this.yCO = ((bhl)((b)paramq).hNL.hNQ);
-    }
+    AppMethodBeat.i(73768);
+    ae.d("MicroMsg.NetSceneGeneralSet", "onGYNetEnd errType:" + paramInt2 + " errCode:" + paramInt3);
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(220931);
+    AppMethodBeat.o(73768);
   }
 }
 

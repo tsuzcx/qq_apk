@@ -9,27 +9,27 @@ public abstract class ds
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int fgD = "logId".hashCode();
-  private static final int fgE = "liftTime".hashCode();
+  private static final int fiB = "logId".hashCode();
+  private static final int fiC = "liftTime".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean fgB = true;
-  private boolean fgC = true;
+  private boolean fiA = true;
   public long field_liftTime;
   public int field_logId;
+  private boolean fiz = true;
   
-  public static c.a Vv()
+  public static c.a VD()
   {
     c.a locala = new c.a();
-    locala.IhA = new Field[2];
+    locala.IBL = new Field[2];
     locala.columns = new String[3];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "logId";
-    locala.IhC.put("logId", "INTEGER PRIMARY KEY ");
+    locala.IBN.put("logId", "INTEGER PRIMARY KEY ");
     localStringBuilder.append(" logId INTEGER PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.IhB = "logId";
+    locala.IBM = "logId";
     locala.columns[1] = "liftTime";
-    locala.IhC.put("liftTime", "LONG");
+    locala.IBN.put("liftTime", "LONG");
     localStringBuilder.append(" liftTime LONG");
     locala.columns[2] = "rowid";
     locala.sql = localStringBuilder.toString();

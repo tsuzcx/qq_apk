@@ -19,21 +19,21 @@ public class AudioCompositor
   
   public AudioCompositor(AudioInfo paramAudioInfo)
   {
-    AppMethodBeat.i(217875);
+    AppMethodBeat.i(214513);
     this.TAG = ("AudioCompositor@" + Integer.toHexString(hashCode()));
     this.audioMixer = new AudioMixer(paramAudioInfo.sampleRate, paramAudioInfo.channelCount);
     this.audioResample = new AudioResample();
-    AppMethodBeat.o(217875);
+    AppMethodBeat.o(214513);
   }
   
   private AudioInfo resample(CMSampleBuffer paramCMSampleBuffer, AudioInfo paramAudioInfo)
   {
-    AppMethodBeat.i(217879);
+    AppMethodBeat.i(214517);
     ByteBuffer localByteBuffer2 = paramCMSampleBuffer.getSampleByteBuffer();
     if ((localByteBuffer2 == null) || (localByteBuffer2.limit() <= 0))
     {
       Logger.d(this.audioResample.TAG, "resample: 不进行重采样 byteBuffer = ".concat(String.valueOf(localByteBuffer2)));
-      AppMethodBeat.o(217879);
+      AppMethodBeat.o(214517);
       return paramAudioInfo;
     }
     ByteBuffer localByteBuffer1;
@@ -47,7 +47,7 @@ public class AudioCompositor
     for (;;)
     {
       paramCMSampleBuffer.setSampleByteBuffer(localByteBuffer1);
-      AppMethodBeat.o(217879);
+      AppMethodBeat.o(214517);
       return paramAudioInfo;
       localByteBuffer1 = localByteBuffer2;
     }
@@ -70,10 +70,10 @@ public class AudioCompositor
   
   public ByteBuffer processFrame(ByteBuffer paramByteBuffer, float paramFloat1, float paramFloat2, AudioInfo paramAudioInfo)
   {
-    AppMethodBeat.i(217878);
+    AppMethodBeat.i(214516);
     this.audioMixer.setAudioInfo(paramAudioInfo.sampleRate, paramAudioInfo.channelCount, paramAudioInfo.pcmEncoding);
     paramByteBuffer = this.audioMixer.processBytes(paramByteBuffer, paramFloat2, paramFloat1, 1.0F);
-    AppMethodBeat.o(217878);
+    AppMethodBeat.o(214516);
     return paramByteBuffer;
   }
   
@@ -495,9 +495,9 @@ public class AudioCompositor
   
   public void setAudioInfo(AudioInfo paramAudioInfo)
   {
-    AppMethodBeat.i(217876);
+    AppMethodBeat.i(214514);
     this.audioMixer = new AudioMixer(paramAudioInfo.sampleRate, paramAudioInfo.channelCount);
-    AppMethodBeat.o(217876);
+    AppMethodBeat.o(214514);
   }
 }
 

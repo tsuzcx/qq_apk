@@ -3,13 +3,13 @@ package com.tencent.mm.live.core.core.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/live/core/core/model/LiveRenderModel;", "", "useCamera2", "", "defaultFrontCamera", "useCPUCrop", "resolution", "", "(ZZZI)V", "getDefaultFrontCamera", "()Z", "setDefaultFrontCamera", "(Z)V", "getResolution", "()I", "setResolution", "(I)V", "getUseCPUCrop", "setUseCPUCrop", "getUseCamera2", "setUseCamera2", "component1", "component2", "component3", "component4", "copy", "equals", "other", "hashCode", "toString", "", "plugin-core_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/live/core/core/model/LiveRenderModel;", "", "useCamera2", "", "defaultFrontCamera", "useCPUCrop", "resolution", "", "(ZZZI)V", "getDefaultFrontCamera", "()Z", "setDefaultFrontCamera", "(Z)V", "getResolution", "()I", "setResolution", "(I)V", "getUseCPUCrop", "setUseCPUCrop", "getUseCamera2", "setUseCamera2", "component1", "component2", "component3", "component4", "copy", "equals", "other", "hashCode", "toString", "", "plugin-core_release"})
 public final class b
 {
-  public boolean gHt = false;
-  public boolean gHu = true;
-  public boolean gHv = false;
-  public int gHw = 1080;
+  public boolean gKc = false;
+  public boolean gKd = true;
+  public boolean gKe = false;
+  public int gKf = 1080;
   
   public final boolean equals(Object paramObject)
   {
@@ -18,7 +18,7 @@ public final class b
       if ((paramObject instanceof b))
       {
         paramObject = (b)paramObject;
-        if ((this.gHt != paramObject.gHt) || (this.gHu != paramObject.gHu) || (this.gHv != paramObject.gHv) || (this.gHw != paramObject.gHw)) {}
+        if ((this.gKc != paramObject.gKc) || (this.gKd != paramObject.gKd) || (this.gKe != paramObject.gKe) || (this.gKf != paramObject.gKf)) {}
       }
     }
     else {
@@ -34,9 +34,9 @@ public final class b
   
   public final String toString()
   {
-    AppMethodBeat.i(216812);
-    String str = "LiveRenderModel(useCamera2=" + this.gHt + ", defaultFrontCamera=" + this.gHu + ", useCPUCrop=" + this.gHv + ", resolution=" + this.gHw + ")";
-    AppMethodBeat.o(216812);
+    AppMethodBeat.i(196824);
+    String str = "LiveRenderModel(useCamera2=" + this.gKc + ", defaultFrontCamera=" + this.gKd + ", useCPUCrop=" + this.gKe + ", resolution=" + this.gKf + ")";
+    AppMethodBeat.o(196824);
     return str;
   }
 }

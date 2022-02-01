@@ -8,7 +8,7 @@ import d.g.b.p;
 import d.l;
 import d.v;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "animation", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate", "com/tencent/mm/plugin/scanner/ui/scangoods/widget/ScanAnimationHelper$animateCustomSuccessView$1$1"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "animation", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate", "com/tencent/mm/plugin/scanner/ui/scangoods/widget/ScanAnimationHelper$animateCustomSuccessView$1$1"})
 final class h$a
   implements ValueAnimator.AnimatorUpdateListener
 {
@@ -16,18 +16,18 @@ final class h$a
   
   public final void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    AppMethodBeat.i(186348);
+    AppMethodBeat.i(189643);
     p.g(paramValueAnimator, "animation");
     paramValueAnimator = paramValueAnimator.getAnimatedValue();
     if (paramValueAnimator == null)
     {
       paramValueAnimator = new v("null cannot be cast to non-null type kotlin.Float");
-      AppMethodBeat.o(186348);
+      AppMethodBeat.o(189643);
       throw paramValueAnimator;
     }
     float f = ((Float)paramValueAnimator).floatValue();
-    this.yvT.setRotation(360.0F - Math.abs(f));
-    AppMethodBeat.o(186348);
+    this.yLT.setRotation(360.0F - Math.abs(f));
+    AppMethodBeat.o(189643);
   }
 }
 

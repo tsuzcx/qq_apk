@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class cg
   extends b
 {
-  public a dnc;
+  public a doe;
   
   public cg()
   {
@@ -16,22 +16,22 @@ public final class cg
   private cg(byte paramByte)
   {
     AppMethodBeat.i(91201);
-    this.dnc = new a();
-    this.IbR = false;
+    this.doe = new a();
+    this.IvZ = false;
     this.callback = null;
     AppMethodBeat.o(91201);
   }
   
   public static final class a
   {
-    public int dnd;
-    public String dne;
-    public String dnf;
-    public String dng;
-    public int dnh;
-    public String dni;
-    public String dnj;
-    public boolean dnk = true;
+    public int dof;
+    public String dog;
+    public String doh;
+    public String doi;
+    public int doj;
+    public String dok;
+    public String dol;
+    public boolean dom = true;
     public long gW;
   }
 }

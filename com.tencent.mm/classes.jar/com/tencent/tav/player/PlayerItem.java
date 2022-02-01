@@ -55,13 +55,13 @@ public class PlayerItem
   public PlayerItem(Asset paramAsset)
   {
     this(paramAsset, new AssetExtension("play"));
-    AppMethodBeat.i(218609);
-    AppMethodBeat.o(218609);
+    AppMethodBeat.i(215249);
+    AppMethodBeat.o(215249);
   }
   
   public PlayerItem(Asset paramAsset, AssetExtension paramAssetExtension)
   {
-    AppMethodBeat.i(218610);
+    AppMethodBeat.i(215250);
     this.status = PlayerItem.PlayerItemStatus.PlayerItemStatusUnknown;
     this.tracks = new ArrayList();
     this.rate = 1.0F;
@@ -79,33 +79,33 @@ public class PlayerItem
       localPlayerItemTrack.setEnabled(true);
       this.tracks.add(localPlayerItemTrack);
     }
-    AppMethodBeat.o(218610);
+    AppMethodBeat.o(215250);
   }
   
   public PlayerItem(String paramString)
   {
     this(new URLAsset(paramString), null);
-    AppMethodBeat.i(218608);
-    AppMethodBeat.o(218608);
+    AppMethodBeat.i(215248);
+    AppMethodBeat.o(215248);
   }
   
   private float getVideoFrameRate()
   {
-    AppMethodBeat.i(218611);
+    AppMethodBeat.i(215251);
     if (this.videoComposition != null)
     {
       f = this.videoComposition.getFrameDuration().timeScale * 1.0F / (float)this.videoComposition.getFrameDuration().getValue();
-      AppMethodBeat.o(218611);
+      AppMethodBeat.o(215251);
       return f;
     }
     float f = PlayerDefaultConfigs.DEFAULT_FRAME_DURATION.timeScale;
-    AppMethodBeat.o(218611);
+    AppMethodBeat.o(215251);
     return f;
   }
   
   private void initVideoCompositionDecoderTrack()
   {
-    AppMethodBeat.i(218618);
+    AppMethodBeat.i(215258);
     VideoCompositionDecoderTrack localVideoCompositionDecoderTrack = new VideoCompositionDecoderTrack(this.asset, this.assetExtension, 1);
     Iterator localIterator = this.tracks.iterator();
     int i = 24;
@@ -137,7 +137,7 @@ public class PlayerItem
           localVideoCompositionDecoderTrack.setFrameRate(i);
           localVideoCompositionDecoderTrack.setFrameDuration(new CMTime(1L, i));
           this.realVDecoderTrack = localVideoCompositionDecoderTrack;
-          AppMethodBeat.o(218618);
+          AppMethodBeat.o(215258);
           return;
           i = 30;
         }
@@ -147,18 +147,18 @@ public class PlayerItem
   
   public void addOutput(PlayerItemOutput paramPlayerItemOutput)
   {
-    AppMethodBeat.i(218623);
+    AppMethodBeat.i(215263);
     this.outputs.add(paramPlayerItemOutput);
-    AppMethodBeat.o(218623);
+    AppMethodBeat.o(215263);
   }
   
   void bindLayer(PlayerLayer paramPlayerLayer)
   {
-    AppMethodBeat.i(218617);
+    AppMethodBeat.i(215257);
     this.layer = paramPlayerLayer;
     if (this.playerThreadMain == null)
     {
-      AppMethodBeat.o(218617);
+      AppMethodBeat.o(215257);
       return;
     }
     boolean bool;
@@ -175,7 +175,7 @@ public class PlayerItem
     for (IDecoderTrack localIDecoderTrack = this.vDecoderTrack;; localIDecoderTrack = this.realVDecoderTrack)
     {
       this.playerThreadMain.bindSurface(localIDecoderTrack, paramPlayerLayer);
-      AppMethodBeat.o(218617);
+      AppMethodBeat.o(215257);
       return;
       bool = false;
       break;
@@ -184,11 +184,11 @@ public class PlayerItem
   
   public void cancelPendingSeeks()
   {
-    AppMethodBeat.i(218622);
+    AppMethodBeat.i(215262);
     if (this.playerThreadMain != null) {
       this.playerThreadMain.cancelAllPendingSeeks();
     }
-    AppMethodBeat.o(218622);
+    AppMethodBeat.o(215262);
   }
   
   public CMTime currentTime()
@@ -258,15 +258,15 @@ public class PlayerItem
   
   public CGSize getPresentationSize()
   {
-    AppMethodBeat.i(218613);
+    AppMethodBeat.i(215253);
     if (this.presentationSize == null)
     {
       localCGSize = this.asset.getNaturalSize();
-      AppMethodBeat.o(218613);
+      AppMethodBeat.o(215253);
       return localCGSize;
     }
     CGSize localCGSize = new CGSize(16.0F, 16.0F);
-    AppMethodBeat.o(218613);
+    AppMethodBeat.o(215253);
     return localCGSize;
   }
   
@@ -312,7 +312,7 @@ public class PlayerItem
   
   AudioCompositionDecoderTrack initAudioCompositionDecoderTrack()
   {
-    AppMethodBeat.i(218619);
+    AppMethodBeat.i(215259);
     this.audioCompositionDecoderTrack = new AudioCompositionDecoderTrack(2);
     Object localObject = this.tracks.iterator();
     while (((Iterator)localObject).hasNext())
@@ -324,7 +324,7 @@ public class PlayerItem
     }
     this.audioCompositionDecoderTrack.setAudioMix(this.audioMix);
     localObject = this.audioCompositionDecoderTrack;
-    AppMethodBeat.o(218619);
+    AppMethodBeat.o(215259);
     return localObject;
   }
   
@@ -335,50 +335,50 @@ public class PlayerItem
   
   void release()
   {
-    AppMethodBeat.i(218625);
+    AppMethodBeat.i(215265);
     if (this.layer != null) {
       this.layer.release();
     }
     if (this.audioMix != null) {
       this.audioMix.release();
     }
-    AppMethodBeat.o(218625);
+    AppMethodBeat.o(215265);
   }
   
   public void removeOutput(PlayerItemOutput paramPlayerItemOutput)
   {
-    AppMethodBeat.i(218624);
+    AppMethodBeat.i(215264);
     this.outputs.remove(paramPlayerItemOutput);
-    AppMethodBeat.o(218624);
+    AppMethodBeat.o(215264);
   }
   
   public void seekToTime(CMTime paramCMTime1, CMTime paramCMTime2, CMTime paramCMTime3, Callback paramCallback)
   {
-    AppMethodBeat.i(218621);
+    AppMethodBeat.i(215261);
     if (this.playerThreadMain != null)
     {
       this.playerThreadMain.updatePositionRightAway(paramCMTime1);
       this.playerThreadMain.sendMessage(5, paramCMTime1, "main");
     }
-    AppMethodBeat.o(218621);
+    AppMethodBeat.o(215261);
   }
   
   public void seekToTime(CMTime paramCMTime, Callback paramCallback)
   {
-    AppMethodBeat.i(218620);
+    AppMethodBeat.i(215260);
     CMTime localCMTime = CMTime.CMTimeZero;
     seekToTime(paramCMTime, localCMTime, localCMTime, paramCallback);
-    AppMethodBeat.o(218620);
+    AppMethodBeat.o(215260);
   }
   
   public void setAudioMix(AudioMix paramAudioMix)
   {
-    AppMethodBeat.i(218607);
+    AppMethodBeat.i(215247);
     this.audioMix = paramAudioMix;
     if (this.audioCompositionDecoderTrack != null) {
       this.audioCompositionDecoderTrack.setAudioMix(paramAudioMix);
     }
-    AppMethodBeat.o(218607);
+    AppMethodBeat.o(215247);
   }
   
   public void setAudioTimePitchAlgorithm(String paramString)
@@ -403,13 +403,13 @@ public class PlayerItem
   
   void setRate(float paramFloat, int paramInt)
   {
-    AppMethodBeat.i(218612);
+    AppMethodBeat.i(215252);
     this.rate = paramFloat;
     this.maxCacheSize = paramInt;
     if (this.playerThreadMain != null) {
       this.playerThreadMain.setRate(paramFloat);
     }
-    AppMethodBeat.o(218612);
+    AppMethodBeat.o(215252);
   }
   
   public void setReversePlaybackEndTime(CMTime paramCMTime)
@@ -434,18 +434,18 @@ public class PlayerItem
   
   public void setVideoComposition(VideoComposition paramVideoComposition)
   {
-    AppMethodBeat.i(218606);
+    AppMethodBeat.i(215246);
     this.videoComposition = paramVideoComposition;
     if (paramVideoComposition != null) {
       this.customVideoCompositor = paramVideoComposition.getCustomVideoCompositor();
     }
-    AppMethodBeat.o(218606);
+    AppMethodBeat.o(215246);
   }
   
   void start(Player paramPlayer)
   {
     Surface localSurface = null;
-    AppMethodBeat.i(218614);
+    AppMethodBeat.i(215254);
     initVideoCompositionDecoderTrack();
     initAudioCompositionDecoderTrack();
     IDecoderTrack localIDecoderTrack;
@@ -467,7 +467,7 @@ public class PlayerItem
       if (this.videoComposition != null) {
         this.playerThreadMain.setFrameDuration(this.videoComposition.getFrameDuration());
       }
-      AppMethodBeat.o(218614);
+      AppMethodBeat.o(215254);
       return;
       localIDecoderTrack = this.vDecoderTrack;
       break;
@@ -478,7 +478,7 @@ public class PlayerItem
   
   public void updateComposition(Asset paramAsset)
   {
-    AppMethodBeat.i(218615);
+    AppMethodBeat.i(215255);
     this.asset = paramAsset;
     this.tracks.clear();
     paramAsset = paramAsset.getTracks().iterator();
@@ -491,15 +491,15 @@ public class PlayerItem
       localPlayerItemTrack.setEnabled(true);
       this.tracks.add(localPlayerItemTrack);
     }
-    AppMethodBeat.o(218615);
+    AppMethodBeat.o(215255);
   }
   
   void updateDecoderTrack()
   {
-    AppMethodBeat.i(218616);
+    AppMethodBeat.i(215256);
     initVideoCompositionDecoderTrack();
     initAudioCompositionDecoderTrack();
-    AppMethodBeat.o(218616);
+    AppMethodBeat.o(215256);
   }
 }
 

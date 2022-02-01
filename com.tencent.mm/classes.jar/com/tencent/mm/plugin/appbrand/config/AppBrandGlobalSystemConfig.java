@@ -5,10 +5,10 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.loader.j.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.vfs.e;
-import com.tencent.mm.vfs.q;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.vfs.k;
+import com.tencent.mm.vfs.w;
 import java.util.ArrayList;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -17,76 +17,76 @@ public final class AppBrandGlobalSystemConfig
   implements Parcelable
 {
   public static final Parcelable.Creator<AppBrandGlobalSystemConfig> CREATOR;
-  private static volatile AppBrandGlobalSystemConfig jWo;
-  public static final AppBrandGlobalSystemConfig jWp;
-  public HttpSetting jWA;
-  public int[] jWB;
-  public int jWC;
-  public int jWD;
-  public int jWE;
-  public int jWF;
-  public int jWG;
-  public int jWH;
-  public int jWI;
-  public int jWJ;
-  public int jWK;
-  public int jWL;
-  public int jWM;
-  public String[] jWN;
-  public double jWO;
-  public int jWP;
-  public int jWQ;
-  public WeAppSyncVersionSetting jWR;
-  public PackageManager jWS;
-  public long jWT;
-  public String[] jWU;
-  public int jWV;
-  public int jWW;
-  public int jWX;
-  public int jWq;
-  public int jWr;
-  public int jWs;
-  public int jWt;
-  public int jWu;
-  public int jWv;
-  public int jWw;
-  public int jWx;
-  public String jWy;
-  public String jWz;
+  private static volatile AppBrandGlobalSystemConfig jZD;
+  public static final AppBrandGlobalSystemConfig jZE;
+  public int jZF;
+  public int jZG;
+  public int jZH;
+  public int jZI;
+  public int jZJ;
+  public int jZK;
+  public int jZL;
+  public int jZM;
+  public String jZN;
+  public String jZO;
+  public HttpSetting jZP;
+  public int[] jZQ;
+  public int jZR;
+  public int jZS;
+  public int jZT;
+  public int jZU;
+  public int jZV;
+  public int jZW;
+  public int jZX;
+  public int jZY;
+  public int jZZ;
+  public int kaa;
+  public int kab;
+  public String[] kac;
+  public double kad;
+  public int kae;
+  public int kaf;
+  public WeAppSyncVersionSetting kag;
+  public PackageManager kah;
+  public long kai;
+  public String[] kaj;
+  public int kak;
+  public int kal;
+  public int kam;
   
   static
   {
     AppMethodBeat.i(146988);
     AppBrandGlobalSystemConfig localAppBrandGlobalSystemConfig = new AppBrandGlobalSystemConfig();
-    jWp = localAppBrandGlobalSystemConfig;
-    localAppBrandGlobalSystemConfig.jWr = 5;
-    jWp.jWs = 1;
-    jWp.jWt = 300;
-    jWp.jWu = 50;
-    jWp.jWv = 1048576;
-    jWp.jWw = 1048576;
-    jWp.jWx = 20971520;
-    jWp.jWB = a.jWY;
-    jWp.jWC = 50;
-    jWp.jWD = 11;
-    jWp.jWE = 12;
-    jWp.jWG = 1800;
-    jWp.jWH = 307200;
-    jWp.jWI = 25;
-    jWp.jWJ = 10485760;
-    jWp.jWK = 314572800;
-    jWp.jWL = 1;
-    jWp.jWM = 50;
-    jWp.jWN = a.jWZ;
-    jWp.jWO = 0.0D;
-    jWp.jWP = 60;
-    jWp.jWQ = 60;
-    jWp.jWR = new WeAppSyncVersionSetting();
-    jWp.jWS = new PackageManager();
-    jWp.jWT = 30L;
-    jWp.jWU = a.jXa;
-    jWp.jWV = 10;
-    jWp.jWX = 86400;
+    jZE = localAppBrandGlobalSystemConfig;
+    localAppBrandGlobalSystemConfig.jZG = 5;
+    jZE.jZH = 1;
+    jZE.jZI = 300;
+    jZE.jZJ = 50;
+    jZE.jZK = 1048576;
+    jZE.jZL = 1048576;
+    jZE.jZM = 20971520;
+    jZE.jZQ = a.kan;
+    jZE.jZR = 50;
+    jZE.jZS = 11;
+    jZE.jZT = 12;
+    jZE.jZV = 1800;
+    jZE.jZW = 307200;
+    jZE.jZX = 25;
+    jZE.jZY = 10485760;
+    jZE.jZZ = 314572800;
+    jZE.kaa = 1;
+    jZE.kab = 50;
+    jZE.kac = a.kao;
+    jZE.kad = 0.0D;
+    jZE.kae = 60;
+    jZE.kaf = 60;
+    jZE.kag = new WeAppSyncVersionSetting();
+    jZE.kah = new PackageManager();
+    jZE.kai = 30L;
+    jZE.kaj = a.kap;
+    jZE.kak = 10;
+    jZE.kam = 86400;
     CREATOR = new Parcelable.Creator() {};
     AppMethodBeat.o(146988);
   }
@@ -94,55 +94,55 @@ public final class AppBrandGlobalSystemConfig
   private AppBrandGlobalSystemConfig()
   {
     AppMethodBeat.i(146985);
-    this.jWq = 2147483647;
-    this.jWA = new HttpSetting();
+    this.jZF = 2147483647;
+    this.jZP = new HttpSetting();
     AppMethodBeat.o(146985);
   }
   
   protected AppBrandGlobalSystemConfig(Parcel paramParcel)
   {
     AppMethodBeat.i(146987);
-    this.jWq = 2147483647;
-    this.jWA = new HttpSetting();
-    this.jWq = paramParcel.readInt();
-    this.jWr = paramParcel.readInt();
-    this.jWs = paramParcel.readInt();
-    this.jWt = paramParcel.readInt();
-    this.jWu = paramParcel.readInt();
-    this.jWv = paramParcel.readInt();
-    this.jWw = paramParcel.readInt();
-    this.jWx = paramParcel.readInt();
-    this.jWy = paramParcel.readString();
-    this.jWz = paramParcel.readString();
-    this.jWA = ((HttpSetting)paramParcel.readParcelable(HttpSetting.class.getClassLoader()));
-    this.jWB = paramParcel.createIntArray();
-    this.jWC = paramParcel.readInt();
-    this.jWD = paramParcel.readInt();
-    this.jWG = paramParcel.readInt();
-    this.jWH = paramParcel.readInt();
-    this.jWI = paramParcel.readInt();
-    this.jWJ = paramParcel.readInt();
-    this.jWK = paramParcel.readInt();
-    this.jWL = paramParcel.readInt();
-    this.jWM = paramParcel.readInt();
-    this.jWN = paramParcel.createStringArray();
-    this.jWO = paramParcel.readDouble();
-    this.jWP = paramParcel.readInt();
-    this.jWR = ((WeAppSyncVersionSetting)paramParcel.readParcelable(WeAppSyncVersionSetting.class.getClassLoader()));
-    this.jWS = ((PackageManager)paramParcel.readParcelable(PackageManager.class.getClassLoader()));
-    this.jWT = paramParcel.readLong();
-    this.jWU = paramParcel.createStringArray();
-    this.jWV = paramParcel.readInt();
-    this.jWX = paramParcel.readInt();
-    this.jWW = paramParcel.readInt();
-    this.jWQ = paramParcel.readInt();
+    this.jZF = 2147483647;
+    this.jZP = new HttpSetting();
+    this.jZF = paramParcel.readInt();
+    this.jZG = paramParcel.readInt();
+    this.jZH = paramParcel.readInt();
+    this.jZI = paramParcel.readInt();
+    this.jZJ = paramParcel.readInt();
+    this.jZK = paramParcel.readInt();
+    this.jZL = paramParcel.readInt();
+    this.jZM = paramParcel.readInt();
+    this.jZN = paramParcel.readString();
+    this.jZO = paramParcel.readString();
+    this.jZP = ((HttpSetting)paramParcel.readParcelable(HttpSetting.class.getClassLoader()));
+    this.jZQ = paramParcel.createIntArray();
+    this.jZR = paramParcel.readInt();
+    this.jZS = paramParcel.readInt();
+    this.jZV = paramParcel.readInt();
+    this.jZW = paramParcel.readInt();
+    this.jZX = paramParcel.readInt();
+    this.jZY = paramParcel.readInt();
+    this.jZZ = paramParcel.readInt();
+    this.kaa = paramParcel.readInt();
+    this.kab = paramParcel.readInt();
+    this.kac = paramParcel.createStringArray();
+    this.kad = paramParcel.readDouble();
+    this.kae = paramParcel.readInt();
+    this.kag = ((WeAppSyncVersionSetting)paramParcel.readParcelable(WeAppSyncVersionSetting.class.getClassLoader()));
+    this.kah = ((PackageManager)paramParcel.readParcelable(PackageManager.class.getClassLoader()));
+    this.kai = paramParcel.readLong();
+    this.kaj = paramParcel.createStringArray();
+    this.kak = paramParcel.readInt();
+    this.kam = paramParcel.readInt();
+    this.kal = paramParcel.readInt();
+    this.kaf = paramParcel.readInt();
     AppMethodBeat.o(146987);
   }
   
-  private static AppBrandGlobalSystemConfig Nk(String paramString)
+  private static AppBrandGlobalSystemConfig NR(String paramString)
   {
     AppMethodBeat.i(146984);
-    ad.d("MicroMsg.AppBrandGlobalSystemConfig", "parse json = %s", new Object[] { paramString });
+    ae.d("MicroMsg.AppBrandGlobalSystemConfig", "parse json = %s", new Object[] { paramString });
     AppBrandGlobalSystemConfig localAppBrandGlobalSystemConfig;
     Object localObject2;
     int i;
@@ -156,7 +156,7 @@ public final class AppBrandGlobalSystemConfig
       }
       localObject2 = ((JSONObject)localObject1).optString("HTTPHeaderMode", "");
       if (((String)localObject2).equals("BlackList")) {
-        localAppBrandGlobalSystemConfig.jWA.mode = 1;
+        localAppBrandGlobalSystemConfig.jZP.mode = 1;
       }
       for (;;)
       {
@@ -164,138 +164,138 @@ public final class AppBrandGlobalSystemConfig
         if (localObject2 == null) {
           break;
         }
-        localAppBrandGlobalSystemConfig.jWA.jXb = new ArrayList();
+        localAppBrandGlobalSystemConfig.jZP.kaq = new ArrayList();
         i = 0;
         while (i < ((JSONArray)localObject2).length())
         {
-          localAppBrandGlobalSystemConfig.jWA.jXb.add(((JSONArray)localObject2).getString(i));
+          localAppBrandGlobalSystemConfig.jZP.kaq.add(((JSONArray)localObject2).getString(i));
           i += 1;
         }
         if (((String)localObject2).equals("WhiteList")) {
-          localAppBrandGlobalSystemConfig.jWA.mode = 2;
+          localAppBrandGlobalSystemConfig.jZP.mode = 2;
         }
       }
       localObject2 = ((JSONObject)localObject1).optJSONArray("HeaderWhiteList");
     }
     catch (Exception paramString)
     {
-      ad.e("MicroMsg.AppBrandGlobalSystemConfig", "parse exception = %s", new Object[] { bt.n(paramString) });
+      ae.e("MicroMsg.AppBrandGlobalSystemConfig", "parse exception = %s", new Object[] { bu.o(paramString) });
       AppMethodBeat.o(146984);
       return null;
     }
     if (localObject2 != null)
     {
-      localAppBrandGlobalSystemConfig.jWA.jXc = new ArrayList();
+      localAppBrandGlobalSystemConfig.jZP.kar = new ArrayList();
       i = 0;
       while (i < ((JSONArray)localObject2).length())
       {
-        localAppBrandGlobalSystemConfig.jWA.jXc.add(((JSONArray)localObject2).getString(i));
+        localAppBrandGlobalSystemConfig.jZP.kar.add(((JSONArray)localObject2).getString(i));
         i += 1;
       }
     }
-    localAppBrandGlobalSystemConfig.jWA.jXd = ((JSONObject)localObject1).optInt("WebsocketMaxTimeoutMS", -1);
-    localAppBrandGlobalSystemConfig.jWA.jXe = ((JSONObject)localObject1).optInt("UploadMaxTimeoutMS", -1);
-    localAppBrandGlobalSystemConfig.jWA.jXf = ((JSONObject)localObject1).optInt("DownloadMaxTimeoutMS", -1);
-    localAppBrandGlobalSystemConfig.jWA.jXg = ((JSONObject)localObject1).optInt("RequestMaxTimeoutMS", -1);
-    localAppBrandGlobalSystemConfig.jWA.jXh = ((JSONObject)localObject1).optString("HTTPHeaderReferer");
+    localAppBrandGlobalSystemConfig.jZP.kas = ((JSONObject)localObject1).optInt("WebsocketMaxTimeoutMS", -1);
+    localAppBrandGlobalSystemConfig.jZP.kat = ((JSONObject)localObject1).optInt("UploadMaxTimeoutMS", -1);
+    localAppBrandGlobalSystemConfig.jZP.kau = ((JSONObject)localObject1).optInt("DownloadMaxTimeoutMS", -1);
+    localAppBrandGlobalSystemConfig.jZP.kav = ((JSONObject)localObject1).optInt("RequestMaxTimeoutMS", -1);
+    localAppBrandGlobalSystemConfig.jZP.kaw = ((JSONObject)localObject1).optString("HTTPHeaderReferer");
     label326:
-    localAppBrandGlobalSystemConfig.jWR = new WeAppSyncVersionSetting();
+    localAppBrandGlobalSystemConfig.kag = new WeAppSyncVersionSetting();
     Object localObject1 = paramString.optJSONObject("SyncVersionSetting");
     if (localObject1 != null)
     {
-      localAppBrandGlobalSystemConfig.jWR.jXm = ((JSONObject)localObject1).optLong("PullVersionInterval", localAppBrandGlobalSystemConfig.jWR.jXm);
-      localAppBrandGlobalSystemConfig.jWR.jXn = ((JSONObject)localObject1).optLong("PullVersionWxaUsageLastInterval", localAppBrandGlobalSystemConfig.jWR.jXn);
-      localAppBrandGlobalSystemConfig.jWR.jXo = ((JSONObject)localObject1).optInt("PullVersionMaxCount", localAppBrandGlobalSystemConfig.jWR.jXo);
-      localAppBrandGlobalSystemConfig.jWR.jXp = ((JSONObject)localObject1).optInt("PullVersionMaxCountPerRequest", localAppBrandGlobalSystemConfig.jWR.jXp);
+      localAppBrandGlobalSystemConfig.kag.kaB = ((JSONObject)localObject1).optLong("PullVersionInterval", localAppBrandGlobalSystemConfig.kag.kaB);
+      localAppBrandGlobalSystemConfig.kag.kaC = ((JSONObject)localObject1).optLong("PullVersionWxaUsageLastInterval", localAppBrandGlobalSystemConfig.kag.kaC);
+      localAppBrandGlobalSystemConfig.kag.kaD = ((JSONObject)localObject1).optInt("PullVersionMaxCount", localAppBrandGlobalSystemConfig.kag.kaD);
+      localAppBrandGlobalSystemConfig.kag.kaE = ((JSONObject)localObject1).optInt("PullVersionMaxCountPerRequest", localAppBrandGlobalSystemConfig.kag.kaE);
     }
-    localAppBrandGlobalSystemConfig.jWS = new PackageManager();
+    localAppBrandGlobalSystemConfig.kah = new PackageManager();
     localObject1 = paramString.optJSONObject("PackageManager");
     if (localObject1 != null)
     {
-      localAppBrandGlobalSystemConfig.jWS.jXi = ((JSONObject)localObject1).optLong("CheckInterval", localAppBrandGlobalSystemConfig.jWS.jXi);
-      localAppBrandGlobalSystemConfig.jWS.jXj = ((JSONObject)localObject1).optLong("WithoutContactClearSeconds", localAppBrandGlobalSystemConfig.jWS.jXj);
-      localAppBrandGlobalSystemConfig.jWS.jXk = ((JSONObject)localObject1).optLong("ClientStorageMinMB", localAppBrandGlobalSystemConfig.jWS.jXk);
-      localAppBrandGlobalSystemConfig.jWS.jXl = ((JSONObject)localObject1).optInt("WholeClientStoragePercent", localAppBrandGlobalSystemConfig.jWS.jXl);
+      localAppBrandGlobalSystemConfig.kah.kax = ((JSONObject)localObject1).optLong("CheckInterval", localAppBrandGlobalSystemConfig.kah.kax);
+      localAppBrandGlobalSystemConfig.kah.kay = ((JSONObject)localObject1).optLong("WithoutContactClearSeconds", localAppBrandGlobalSystemConfig.kah.kay);
+      localAppBrandGlobalSystemConfig.kah.kaz = ((JSONObject)localObject1).optLong("ClientStorageMinMB", localAppBrandGlobalSystemConfig.kah.kaz);
+      localAppBrandGlobalSystemConfig.kah.kaA = ((JSONObject)localObject1).optInt("WholeClientStoragePercent", localAppBrandGlobalSystemConfig.kah.kaA);
     }
-    localAppBrandGlobalSystemConfig.jWy = paramString.optString("CDNBaseURL");
-    localAppBrandGlobalSystemConfig.jWz = paramString.optString("CDNPreConnectURL", "https://res.servicewechat.com");
-    localAppBrandGlobalSystemConfig.jWr = paramString.optInt("AppMaxRunningCount", 5);
-    localAppBrandGlobalSystemConfig.jWs = paramString.optInt("AppSharedResourceBackgroundRunningCount", 1);
-    localAppBrandGlobalSystemConfig.jWt = paramString.optInt("TempFileSizeLimitTotal", 300);
-    localAppBrandGlobalSystemConfig.jWu = paramString.optInt("DownloadFileSizeLimit", 50);
-    localAppBrandGlobalSystemConfig.jWv = paramString.optInt("MaxLocalStorageItemSize", 1048576);
-    localAppBrandGlobalSystemConfig.jWw = paramString.optInt("MaxGlobalStorageItemSize", 1048576);
-    localAppBrandGlobalSystemConfig.jWx = paramString.optInt("MaxGlobalStorageSize", 20971520);
-    localAppBrandGlobalSystemConfig.jWJ = paramString.optInt("NativeBufferSizeLimitByte", 10485760);
-    localAppBrandGlobalSystemConfig.jWK = paramString.optInt("NativeBufferQueueLimitByte", 314572800);
-    localAppBrandGlobalSystemConfig.jWX = paramString.optInt("WeUseRecallInterval", 86400);
+    localAppBrandGlobalSystemConfig.jZN = paramString.optString("CDNBaseURL");
+    localAppBrandGlobalSystemConfig.jZO = paramString.optString("CDNPreConnectURL", "https://res.servicewechat.com");
+    localAppBrandGlobalSystemConfig.jZG = paramString.optInt("AppMaxRunningCount", 5);
+    localAppBrandGlobalSystemConfig.jZH = paramString.optInt("AppSharedResourceBackgroundRunningCount", 1);
+    localAppBrandGlobalSystemConfig.jZI = paramString.optInt("TempFileSizeLimitTotal", 300);
+    localAppBrandGlobalSystemConfig.jZJ = paramString.optInt("DownloadFileSizeLimit", 50);
+    localAppBrandGlobalSystemConfig.jZK = paramString.optInt("MaxLocalStorageItemSize", 1048576);
+    localAppBrandGlobalSystemConfig.jZL = paramString.optInt("MaxGlobalStorageItemSize", 1048576);
+    localAppBrandGlobalSystemConfig.jZM = paramString.optInt("MaxGlobalStorageSize", 20971520);
+    localAppBrandGlobalSystemConfig.jZY = paramString.optInt("NativeBufferSizeLimitByte", 10485760);
+    localAppBrandGlobalSystemConfig.jZZ = paramString.optInt("NativeBufferQueueLimitByte", 314572800);
+    localAppBrandGlobalSystemConfig.kam = paramString.optInt("WeUseRecallInterval", 86400);
     localObject1 = paramString.optJSONArray("SyncLaunchSceneList");
     if (localObject1 != null)
     {
-      localAppBrandGlobalSystemConfig.jWB = new int[((JSONArray)localObject1).length()];
+      localAppBrandGlobalSystemConfig.jZQ = new int[((JSONArray)localObject1).length()];
       i = 0;
       while (i < ((JSONArray)localObject1).length())
       {
-        localAppBrandGlobalSystemConfig.jWB[i] = ((JSONArray)localObject1).optInt(i, 0);
+        localAppBrandGlobalSystemConfig.jZQ[i] = ((JSONArray)localObject1).optInt(i, 0);
         i += 1;
       }
     }
-    if (localAppBrandGlobalSystemConfig.jWB == null) {
-      localAppBrandGlobalSystemConfig.jWB = a.jWY;
+    if (localAppBrandGlobalSystemConfig.jZQ == null) {
+      localAppBrandGlobalSystemConfig.jZQ = a.kan;
     }
-    localAppBrandGlobalSystemConfig.jWC = paramString.optInt("StarNumberLimitation", 50);
-    localAppBrandGlobalSystemConfig.jWD = paramString.optInt("TaskBarItemCountLimitation", 11);
-    localAppBrandGlobalSystemConfig.jWE = paramString.optInt("NewTaskBarRecentsItemCountLimitation", 12);
-    localAppBrandGlobalSystemConfig.jWF = paramString.optInt("TaskBarSyncUsageRecordIntervalMinute", 20);
-    localAppBrandGlobalSystemConfig.jWG = paramString.optInt("WidgetImageFlowLimitDuration", 1800);
-    localAppBrandGlobalSystemConfig.jWH = paramString.optInt("WidgetImageFlowLimitMaxSize", 307200);
-    localAppBrandGlobalSystemConfig.jWI = paramString.optInt("WidgetDrawMinInterval", 25);
-    localAppBrandGlobalSystemConfig.jWL = paramString.optInt("GameMaxRunningCount", 1);
-    localAppBrandGlobalSystemConfig.jWM = paramString.optInt("GameDownloadFileSizeLimit", 50);
+    localAppBrandGlobalSystemConfig.jZR = paramString.optInt("StarNumberLimitation", 50);
+    localAppBrandGlobalSystemConfig.jZS = paramString.optInt("TaskBarItemCountLimitation", 11);
+    localAppBrandGlobalSystemConfig.jZT = paramString.optInt("NewTaskBarRecentsItemCountLimitation", 12);
+    localAppBrandGlobalSystemConfig.jZU = paramString.optInt("TaskBarSyncUsageRecordIntervalMinute", 20);
+    localAppBrandGlobalSystemConfig.jZV = paramString.optInt("WidgetImageFlowLimitDuration", 1800);
+    localAppBrandGlobalSystemConfig.jZW = paramString.optInt("WidgetImageFlowLimitMaxSize", 307200);
+    localAppBrandGlobalSystemConfig.jZX = paramString.optInt("WidgetDrawMinInterval", 25);
+    localAppBrandGlobalSystemConfig.kaa = paramString.optInt("GameMaxRunningCount", 1);
+    localAppBrandGlobalSystemConfig.kab = paramString.optInt("GameDownloadFileSizeLimit", 50);
     localObject1 = paramString.optJSONArray("SubContextImgDomain");
     if ((localObject1 == null) || (((JSONArray)localObject1).length() == 0))
     {
-      localAppBrandGlobalSystemConfig.jWN = a.jWZ;
-      localAppBrandGlobalSystemConfig.jWO = paramString.optDouble("GamePerfCollectSamplePercentage", 0.0D);
-      localAppBrandGlobalSystemConfig.jWP = paramString.optInt("GamePerfCollectInterval", 60);
-      localAppBrandGlobalSystemConfig.jWQ = paramString.optInt("PerformIndexReportGapInSeconds", 60);
-      localAppBrandGlobalSystemConfig.jWT = paramString.optLong("OpendataMaxFileStorageSize", 30L);
+      localAppBrandGlobalSystemConfig.kac = a.kao;
+      localAppBrandGlobalSystemConfig.kad = paramString.optDouble("GamePerfCollectSamplePercentage", 0.0D);
+      localAppBrandGlobalSystemConfig.kae = paramString.optInt("GamePerfCollectInterval", 60);
+      localAppBrandGlobalSystemConfig.kaf = paramString.optInt("PerformIndexReportGapInSeconds", 60);
+      localAppBrandGlobalSystemConfig.kai = paramString.optLong("OpendataMaxFileStorageSize", 30L);
       localObject1 = paramString.optJSONArray("PreDownloadUserNameBlackList");
       if ((localObject1 != null) && (((JSONArray)localObject1).length() > 0)) {
         break label1053;
       }
-      localAppBrandGlobalSystemConfig.jWU = a.jXa;
+      localAppBrandGlobalSystemConfig.kaj = a.kap;
     }
     for (;;)
     {
-      localAppBrandGlobalSystemConfig.jWV = paramString.optInt("WXDataMaxRequestConcurrent", 10);
-      localAppBrandGlobalSystemConfig.jWW = paramString.optInt("WxaWebRenderingCacheMaxStorageSizeMB", 100);
+      localAppBrandGlobalSystemConfig.kak = paramString.optInt("WXDataMaxRequestConcurrent", 10);
+      localAppBrandGlobalSystemConfig.kal = paramString.optInt("WxaWebRenderingCacheMaxStorageSizeMB", 100);
       AppMethodBeat.o(146984);
       return localAppBrandGlobalSystemConfig;
-      localAppBrandGlobalSystemConfig.jWN = new String[((JSONArray)localObject1).length()];
+      localAppBrandGlobalSystemConfig.kac = new String[((JSONArray)localObject1).length()];
       i = 0;
       while (i < ((JSONArray)localObject1).length())
       {
-        localAppBrandGlobalSystemConfig.jWN[i] = ((JSONArray)localObject1).optString(i, null);
+        localAppBrandGlobalSystemConfig.kac[i] = ((JSONArray)localObject1).optString(i, null);
         i += 1;
       }
       break;
       label1053:
-      localAppBrandGlobalSystemConfig.jWU = new String[((JSONArray)localObject1).length()];
+      localAppBrandGlobalSystemConfig.kaj = new String[((JSONArray)localObject1).length()];
       i = 0;
       while (i < ((JSONArray)localObject1).length())
       {
-        localAppBrandGlobalSystemConfig.jWU[i] = ((JSONArray)localObject1).optString(i, null);
+        localAppBrandGlobalSystemConfig.kaj[i] = ((JSONArray)localObject1).optString(i, null);
         i += 1;
       }
     }
   }
   
-  static void bdQ()
+  static void bew()
   {
     try
     {
-      jWo = null;
+      jZD = null;
       return;
     }
     finally
@@ -305,37 +305,37 @@ public final class AppBrandGlobalSystemConfig
     }
   }
   
-  static String bdR()
+  static String bex()
   {
     AppMethodBeat.i(146981);
-    Object localObject = new e(b.arN().replace("/data/user/0", "/data/data"), "wxaapp/res/");
-    if (!((e)localObject).exists()) {
-      ((e)localObject).mkdirs();
+    Object localObject = new k(b.asc().replace("/data/user/0", "/data/data"), "wxaapp/res/");
+    if (!((k)localObject).exists()) {
+      ((k)localObject).mkdirs();
     }
-    localObject = q.B(new e((e)localObject, "AppService.conf").fOK());
+    localObject = w.B(new k((k)localObject, "AppService.conf").fTh());
     AppMethodBeat.o(146981);
     return localObject;
   }
   
   /* Error */
-  private static AppBrandGlobalSystemConfig bdS()
+  private static AppBrandGlobalSystemConfig bey()
   {
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: ldc_w 518
+    //   3: ldc_w 517
     //   6: invokestatic 84	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   9: getstatic 467	com/tencent/mm/plugin/appbrand/config/AppBrandGlobalSystemConfig:jWo	Lcom/tencent/mm/plugin/appbrand/config/AppBrandGlobalSystemConfig;
+    //   9: getstatic 466	com/tencent/mm/plugin/appbrand/config/AppBrandGlobalSystemConfig:jZD	Lcom/tencent/mm/plugin/appbrand/config/AppBrandGlobalSystemConfig;
     //   12: astore_0
     //   13: aload_0
     //   14: ifnonnull +79 -> 93
-    //   17: invokestatic 520	com/tencent/mm/plugin/appbrand/config/AppBrandGlobalSystemConfig:bdR	()Ljava/lang/String;
-    //   20: invokestatic 525	com/tencent/mm/vfs/i:aYq	(Ljava/lang/String;)Ljava/lang/String;
+    //   17: invokestatic 519	com/tencent/mm/plugin/appbrand/config/AppBrandGlobalSystemConfig:bex	()Ljava/lang/String;
+    //   20: invokestatic 524	com/tencent/mm/vfs/o:aZT	(Ljava/lang/String;)Ljava/lang/String;
     //   23: astore_0
     //   24: aload_0
-    //   25: invokestatic 529	com/tencent/mm/sdk/platformtools/bt:isNullOrNil	(Ljava/lang/String;)Z
+    //   25: invokestatic 528	com/tencent/mm/sdk/platformtools/bu:isNullOrNil	(Ljava/lang/String;)Z
     //   28: ifeq +58 -> 86
-    //   31: ldc_w 518
+    //   31: ldc_w 517
     //   34: invokestatic 170	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   37: aconst_null
     //   38: astore_0
@@ -344,32 +344,32 @@ public final class AppBrandGlobalSystemConfig
     //   42: aload_0
     //   43: areturn
     //   44: astore_0
-    //   45: ldc_w 531
-    //   48: invokestatic 537	com/tencent/luggage/a/e:K	(Ljava/lang/Class;)Lcom/tencent/luggage/a/b;
-    //   51: checkcast 531	com/tencent/luggage/sdk/customize/a
-    //   54: invokeinterface 540 1 0
+    //   45: ldc_w 530
+    //   48: invokestatic 536	com/tencent/luggage/a/e:K	(Ljava/lang/Class;)Lcom/tencent/luggage/a/b;
+    //   51: checkcast 530	com/tencent/luggage/sdk/customize/a
+    //   54: invokeinterface 539 1 0
     //   59: aconst_null
     //   60: astore_0
     //   61: goto -37 -> 24
     //   64: astore_0
     //   65: ldc 230
-    //   67: ldc_w 542
+    //   67: ldc_w 541
     //   70: iconst_1
     //   71: anewarray 4	java/lang/Object
     //   74: dup
     //   75: iconst_0
     //   76: aload_0
     //   77: aastore
-    //   78: invokestatic 306	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   78: invokestatic 305	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   81: aconst_null
     //   82: astore_0
     //   83: goto -59 -> 24
     //   86: aload_0
-    //   87: invokestatic 544	com/tencent/mm/plugin/appbrand/config/AppBrandGlobalSystemConfig:Nk	(Ljava/lang/String;)Lcom/tencent/mm/plugin/appbrand/config/AppBrandGlobalSystemConfig;
-    //   90: putstatic 467	com/tencent/mm/plugin/appbrand/config/AppBrandGlobalSystemConfig:jWo	Lcom/tencent/mm/plugin/appbrand/config/AppBrandGlobalSystemConfig;
-    //   93: getstatic 467	com/tencent/mm/plugin/appbrand/config/AppBrandGlobalSystemConfig:jWo	Lcom/tencent/mm/plugin/appbrand/config/AppBrandGlobalSystemConfig;
+    //   87: invokestatic 543	com/tencent/mm/plugin/appbrand/config/AppBrandGlobalSystemConfig:NR	(Ljava/lang/String;)Lcom/tencent/mm/plugin/appbrand/config/AppBrandGlobalSystemConfig;
+    //   90: putstatic 466	com/tencent/mm/plugin/appbrand/config/AppBrandGlobalSystemConfig:jZD	Lcom/tencent/mm/plugin/appbrand/config/AppBrandGlobalSystemConfig;
+    //   93: getstatic 466	com/tencent/mm/plugin/appbrand/config/AppBrandGlobalSystemConfig:jZD	Lcom/tencent/mm/plugin/appbrand/config/AppBrandGlobalSystemConfig;
     //   96: astore_0
-    //   97: ldc_w 518
+    //   97: ldc_w 517
     //   100: invokestatic 170	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   103: goto -64 -> 39
     //   106: astore_0
@@ -398,13 +398,13 @@ public final class AppBrandGlobalSystemConfig
     //   93	103	106	finally
   }
   
-  public static AppBrandGlobalSystemConfig bdT()
+  public static AppBrandGlobalSystemConfig bez()
   {
     AppMethodBeat.i(146983);
-    AppBrandGlobalSystemConfig localAppBrandGlobalSystemConfig = bdS();
+    AppBrandGlobalSystemConfig localAppBrandGlobalSystemConfig = bey();
     if (localAppBrandGlobalSystemConfig == null)
     {
-      localAppBrandGlobalSystemConfig = jWp;
+      localAppBrandGlobalSystemConfig = jZE;
       AppMethodBeat.o(146983);
       return localAppBrandGlobalSystemConfig;
     }
@@ -420,38 +420,38 @@ public final class AppBrandGlobalSystemConfig
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(146986);
-    paramParcel.writeInt(this.jWq);
-    paramParcel.writeInt(this.jWr);
-    paramParcel.writeInt(this.jWs);
-    paramParcel.writeInt(this.jWt);
-    paramParcel.writeInt(this.jWu);
-    paramParcel.writeInt(this.jWv);
-    paramParcel.writeInt(this.jWw);
-    paramParcel.writeInt(this.jWx);
-    paramParcel.writeString(this.jWy);
-    paramParcel.writeString(this.jWz);
-    paramParcel.writeParcelable(this.jWA, paramInt);
-    paramParcel.writeIntArray(this.jWB);
-    paramParcel.writeInt(this.jWC);
-    paramParcel.writeInt(this.jWD);
-    paramParcel.writeInt(this.jWG);
-    paramParcel.writeInt(this.jWH);
-    paramParcel.writeInt(this.jWI);
-    paramParcel.writeInt(this.jWJ);
-    paramParcel.writeInt(this.jWK);
-    paramParcel.writeInt(this.jWL);
-    paramParcel.writeInt(this.jWM);
-    paramParcel.writeStringArray(this.jWN);
-    paramParcel.writeDouble(this.jWO);
-    paramParcel.writeInt(this.jWP);
-    paramParcel.writeParcelable(this.jWR, paramInt);
-    paramParcel.writeParcelable(this.jWS, paramInt);
-    paramParcel.writeLong(this.jWT);
-    paramParcel.writeStringArray(this.jWU);
-    paramParcel.writeInt(this.jWV);
-    paramParcel.writeInt(this.jWX);
-    paramParcel.writeInt(this.jWW);
-    paramParcel.writeInt(this.jWQ);
+    paramParcel.writeInt(this.jZF);
+    paramParcel.writeInt(this.jZG);
+    paramParcel.writeInt(this.jZH);
+    paramParcel.writeInt(this.jZI);
+    paramParcel.writeInt(this.jZJ);
+    paramParcel.writeInt(this.jZK);
+    paramParcel.writeInt(this.jZL);
+    paramParcel.writeInt(this.jZM);
+    paramParcel.writeString(this.jZN);
+    paramParcel.writeString(this.jZO);
+    paramParcel.writeParcelable(this.jZP, paramInt);
+    paramParcel.writeIntArray(this.jZQ);
+    paramParcel.writeInt(this.jZR);
+    paramParcel.writeInt(this.jZS);
+    paramParcel.writeInt(this.jZV);
+    paramParcel.writeInt(this.jZW);
+    paramParcel.writeInt(this.jZX);
+    paramParcel.writeInt(this.jZY);
+    paramParcel.writeInt(this.jZZ);
+    paramParcel.writeInt(this.kaa);
+    paramParcel.writeInt(this.kab);
+    paramParcel.writeStringArray(this.kac);
+    paramParcel.writeDouble(this.kad);
+    paramParcel.writeInt(this.kae);
+    paramParcel.writeParcelable(this.kag, paramInt);
+    paramParcel.writeParcelable(this.kah, paramInt);
+    paramParcel.writeLong(this.kai);
+    paramParcel.writeStringArray(this.kaj);
+    paramParcel.writeInt(this.kak);
+    paramParcel.writeInt(this.kam);
+    paramParcel.writeInt(this.kal);
+    paramParcel.writeInt(this.kaf);
     AppMethodBeat.o(146986);
   }
   
@@ -459,13 +459,13 @@ public final class AppBrandGlobalSystemConfig
     implements Parcelable
   {
     public static final Parcelable.Creator<HttpSetting> CREATOR;
-    public ArrayList<String> jXb;
-    public ArrayList<String> jXc;
-    public int jXd;
-    public int jXe;
-    public int jXf;
-    public int jXg;
-    public String jXh;
+    public ArrayList<String> kaq;
+    public ArrayList<String> kar;
+    public int kas;
+    public int kat;
+    public int kau;
+    public int kav;
+    public String kaw;
     public int mode;
     
     static
@@ -485,13 +485,13 @@ public final class AppBrandGlobalSystemConfig
       AppMethodBeat.i(146971);
       this.mode = 0;
       this.mode = paramParcel.readInt();
-      this.jXb = paramParcel.createStringArrayList();
-      this.jXc = paramParcel.createStringArrayList();
-      this.jXd = paramParcel.readInt();
-      this.jXe = paramParcel.readInt();
-      this.jXf = paramParcel.readInt();
-      this.jXg = paramParcel.readInt();
-      this.jXh = paramParcel.readString();
+      this.kaq = paramParcel.createStringArrayList();
+      this.kar = paramParcel.createStringArrayList();
+      this.kas = paramParcel.readInt();
+      this.kat = paramParcel.readInt();
+      this.kau = paramParcel.readInt();
+      this.kav = paramParcel.readInt();
+      this.kaw = paramParcel.readString();
       AppMethodBeat.o(146971);
     }
     
@@ -504,13 +504,13 @@ public final class AppBrandGlobalSystemConfig
     {
       AppMethodBeat.i(146970);
       paramParcel.writeInt(this.mode);
-      paramParcel.writeStringList(this.jXb);
-      paramParcel.writeStringList(this.jXc);
-      paramParcel.writeInt(this.jXd);
-      paramParcel.writeInt(this.jXe);
-      paramParcel.writeInt(this.jXf);
-      paramParcel.writeInt(this.jXg);
-      paramParcel.writeString(this.jXh);
+      paramParcel.writeStringList(this.kaq);
+      paramParcel.writeStringList(this.kar);
+      paramParcel.writeInt(this.kas);
+      paramParcel.writeInt(this.kat);
+      paramParcel.writeInt(this.kau);
+      paramParcel.writeInt(this.kav);
+      paramParcel.writeString(this.kaw);
       AppMethodBeat.o(146970);
     }
   }
@@ -519,10 +519,10 @@ public final class AppBrandGlobalSystemConfig
     implements Parcelable
   {
     public static final Parcelable.Creator<PackageManager> CREATOR;
-    public long jXi;
-    public long jXj;
-    public long jXk;
-    public int jXl;
+    public int kaA;
+    public long kax;
+    public long kay;
+    public long kaz;
     
     static
     {
@@ -533,23 +533,23 @@ public final class AppBrandGlobalSystemConfig
     
     public PackageManager()
     {
-      this.jXi = 86400L;
-      this.jXj = 864000L;
-      this.jXk = 256L;
-      this.jXl = 5;
+      this.kax = 86400L;
+      this.kay = 864000L;
+      this.kaz = 256L;
+      this.kaA = 5;
     }
     
     protected PackageManager(Parcel paramParcel)
     {
       AppMethodBeat.i(146975);
-      this.jXi = 86400L;
-      this.jXj = 864000L;
-      this.jXk = 256L;
-      this.jXl = 5;
-      this.jXi = paramParcel.readLong();
-      this.jXj = paramParcel.readLong();
-      this.jXk = paramParcel.readLong();
-      this.jXl = paramParcel.readInt();
+      this.kax = 86400L;
+      this.kay = 864000L;
+      this.kaz = 256L;
+      this.kaA = 5;
+      this.kax = paramParcel.readLong();
+      this.kay = paramParcel.readLong();
+      this.kaz = paramParcel.readLong();
+      this.kaA = paramParcel.readInt();
       AppMethodBeat.o(146975);
     }
     
@@ -561,10 +561,10 @@ public final class AppBrandGlobalSystemConfig
     public final void writeToParcel(Parcel paramParcel, int paramInt)
     {
       AppMethodBeat.i(146974);
-      paramParcel.writeLong(this.jXi);
-      paramParcel.writeLong(this.jXj);
-      paramParcel.writeLong(this.jXk);
-      paramParcel.writeInt(this.jXl);
+      paramParcel.writeLong(this.kax);
+      paramParcel.writeLong(this.kay);
+      paramParcel.writeLong(this.kaz);
+      paramParcel.writeInt(this.kaA);
       AppMethodBeat.o(146974);
     }
   }
@@ -573,10 +573,10 @@ public final class AppBrandGlobalSystemConfig
     implements Parcelable
   {
     public static final Parcelable.Creator<WeAppSyncVersionSetting> CREATOR;
-    public long jXm;
-    public long jXn;
-    public int jXo;
-    public int jXp;
+    public long kaB;
+    public long kaC;
+    public int kaD;
+    public int kaE;
     
     static
     {
@@ -587,23 +587,23 @@ public final class AppBrandGlobalSystemConfig
     
     WeAppSyncVersionSetting()
     {
-      this.jXm = 21600L;
-      this.jXn = 604800L;
-      this.jXo = 1000;
-      this.jXp = 100;
+      this.kaB = 21600L;
+      this.kaC = 604800L;
+      this.kaD = 1000;
+      this.kaE = 100;
     }
     
     WeAppSyncVersionSetting(Parcel paramParcel)
     {
       AppMethodBeat.i(146979);
-      this.jXm = 21600L;
-      this.jXn = 604800L;
-      this.jXo = 1000;
-      this.jXp = 100;
-      this.jXm = paramParcel.readLong();
-      this.jXn = paramParcel.readLong();
-      this.jXo = paramParcel.readInt();
-      this.jXp = paramParcel.readInt();
+      this.kaB = 21600L;
+      this.kaC = 604800L;
+      this.kaD = 1000;
+      this.kaE = 100;
+      this.kaB = paramParcel.readLong();
+      this.kaC = paramParcel.readLong();
+      this.kaD = paramParcel.readInt();
+      this.kaE = paramParcel.readInt();
       AppMethodBeat.o(146979);
     }
     
@@ -615,19 +615,19 @@ public final class AppBrandGlobalSystemConfig
     public final void writeToParcel(Parcel paramParcel, int paramInt)
     {
       AppMethodBeat.i(146978);
-      paramParcel.writeLong(this.jXm);
-      paramParcel.writeLong(this.jXn);
-      paramParcel.writeInt(this.jXo);
-      paramParcel.writeInt(this.jXp);
+      paramParcel.writeLong(this.kaB);
+      paramParcel.writeLong(this.kaC);
+      paramParcel.writeInt(this.kaD);
+      paramParcel.writeInt(this.kaE);
       AppMethodBeat.o(146978);
     }
   }
   
   public static abstract interface a
   {
-    public static final int[] jWY = new int[0];
-    public static final String[] jWZ = { "https://wx.qlogo.cn/" };
-    public static final String[] jXa = new String[0];
+    public static final int[] kan = new int[0];
+    public static final String[] kao = { "https://wx.qlogo.cn/" };
+    public static final String[] kap = new String[0];
   }
 }
 

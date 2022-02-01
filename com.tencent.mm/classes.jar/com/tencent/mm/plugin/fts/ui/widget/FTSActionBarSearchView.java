@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.fts.ui.widget;
 import android.content.Context;
 import android.util.AttributeSet;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.ui.tools.ActionBarSearchView;
 import com.tencent.mm.ui.tools.ActionBarSearchView.ActionBarEditText;
 
@@ -23,7 +23,7 @@ public class FTSActionBarSearchView
   public int getLayoutId()
   {
     AppMethodBeat.i(112231);
-    ad.i("FTSActionBarSearchView", "getLayoutId");
+    ae.i("FTSActionBarSearchView", "getLayoutId");
     AppMethodBeat.o(112231);
     return 2131494208;
   }
@@ -31,7 +31,7 @@ public class FTSActionBarSearchView
   public void setCursorVisible(boolean paramBoolean)
   {
     AppMethodBeat.i(112232);
-    this.KDm.setCursorVisible(paramBoolean);
+    this.KZG.setCursorVisible(paramBoolean);
     AppMethodBeat.o(112232);
   }
 }

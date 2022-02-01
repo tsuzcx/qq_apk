@@ -9,7 +9,7 @@ import com.tencent.mm.plugin.appbrand.canvas.widget.a;
 import com.tencent.mm.plugin.appbrand.jsapi.coverview.CoverViewContainer;
 import com.tencent.mm.plugin.appbrand.jsapi.f.b;
 import com.tencent.mm.plugin.appbrand.jsapi.f.d;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import org.json.JSONObject;
 
 public final class g
@@ -31,8 +31,8 @@ public final class g
     AppMethodBeat.i(145539);
     paramJSONObject = parame.getContext();
     final AppBrandDrawableView localAppBrandDrawableView = new AppBrandDrawableView(paramJSONObject);
-    localAppBrandDrawableView.getDrawContext().jTe = ((com.tencent.mm.plugin.appbrand.canvas.e)parame.K(com.tencent.mm.plugin.appbrand.canvas.e.class));
-    localAppBrandDrawableView.getDrawContext().cnl = parame;
+    localAppBrandDrawableView.getDrawContext().jWv = ((com.tencent.mm.plugin.appbrand.canvas.e)parame.K(com.tencent.mm.plugin.appbrand.canvas.e.class));
+    localAppBrandDrawableView.getDrawContext().cnn = parame;
     localAppBrandDrawableView.setContentDescription(paramJSONObject.getString(2131755285));
     parame.a(new f.b()
     {
@@ -40,11 +40,11 @@ public final class g
       {
         AppMethodBeat.i(161176);
         AppBrandDrawableView localAppBrandDrawableView = localAppBrandDrawableView;
-        ad.v("MicroMsg.MCanvasView", "onPause :%s", new Object[] { Integer.valueOf(localAppBrandDrawableView.hashCode()) });
-        com.tencent.mm.plugin.appbrand.canvas.b localb = localAppBrandDrawableView.jUt;
-        localb.jSI = 0L;
-        localb.jSF.R(localb.jSG);
-        localAppBrandDrawableView.bdB();
+        ae.v("MicroMsg.MCanvasView", "onPause :%s", new Object[] { Integer.valueOf(localAppBrandDrawableView.hashCode()) });
+        com.tencent.mm.plugin.appbrand.canvas.b localb = localAppBrandDrawableView.jXK;
+        localb.jVZ = 0L;
+        localb.jVW.P(localb.jVX);
+        localAppBrandDrawableView.beg();
         AppMethodBeat.o(161176);
       }
     });
@@ -62,19 +62,19 @@ public final class g
     return parame;
   }
   
-  public final boolean biX()
+  public final boolean bjG()
   {
     return true;
   }
   
-  public final boolean biY()
+  public final boolean bjH()
   {
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.a.g
  * JD-Core Version:    0.7.0.1
  */

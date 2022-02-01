@@ -5,18 +5,20 @@ import android.content.Intent;
 import android.net.Uri;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bs.d;
+import com.tencent.mm.br.d;
 import com.tencent.mm.compatible.util.q;
-import com.tencent.mm.g.a.nt;
+import com.tencent.mm.g.a.nu;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
+import com.tencent.mm.plugin.websearch.api.ad;
 import com.tencent.mm.plugin.websearch.api.h;
 import com.tencent.mm.plugin.websearch.api.i;
 import com.tencent.mm.protocal.GeneralControlWrapper;
 import com.tencent.mm.protocal.JsapiPermissionWrapper;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.al.a;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.aj;
+import com.tencent.mm.storage.am.a;
 import java.util.Map;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -40,15 +42,15 @@ public final class a
   
   private void a(final Context paramContext, final int paramInt1, final String paramString1, final String paramString2, final boolean paramBoolean1, final Map<String, String> paramMap, final boolean paramBoolean2, final int paramInt2, final String paramString3, final int paramInt3, final boolean paramBoolean3, final boolean paramBoolean4, final int paramInt4, final boolean paramBoolean5)
   {
-    AppMethodBeat.i(220002);
+    AppMethodBeat.i(209745);
     ((i)g.ab(i.class)).a(paramContext, new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(116526);
-        if (!com.tencent.mm.plugin.websearch.api.ad.Wd(0))
+        if (!ad.WK(0))
         {
-          com.tencent.mm.sdk.platformtools.ad.e("StartWebSearchService", "fts h5 template not avail");
+          ae.e("StartWebSearchService", "fts h5 template not avail");
           AppMethodBeat.o(116526);
           return;
         }
@@ -69,22 +71,22 @@ public final class a
         {
           localJSONObject.put("parentSearchID", localObject1);
           localObject3 = (String)paramMap.get("sugId");
-          i = bt.aRe((String)paramMap.get("sceneActionType"));
-          j = bt.aRe((String)paramMap.get("chatSearch"));
+          i = bu.aSB((String)paramMap.get("sceneActionType"));
+          j = bu.aSB((String)paramMap.get("chatSearch"));
           localObject2 = localObject1;
           localObject1 = localObject3;
-          com.tencent.mm.sdk.platformtools.ad.i("StartWebSearchService", "startWebSearch parentSearchID=%s", new Object[] { localObject2 });
+          ae.i("StartWebSearchService", "startWebSearch parentSearchID=%s", new Object[] { localObject2 });
           String str = String.valueOf(System.currentTimeMillis());
-          localObject3 = com.tencent.mm.plugin.websearch.api.ad.Wb(paramInt1);
+          localObject3 = ad.WI(paramInt1);
           if ((paramBoolean1) && (paramInt3 == 0) && (j != 2))
           {
-            com.tencent.mm.sdk.platformtools.ad.i("StartWebSearchService", "preload web search data");
-            com.tencent.mm.plugin.websearch.api.ad.a(str, paramString2, (String)localObject3, paramString1, paramInt1, (String)localObject1, i, (String)localObject2, j);
+            ae.i("StartWebSearchService", "preload web search data");
+            ad.a(str, paramString2, (String)localObject3, paramString1, paramInt1, (String)localObject1, i, (String)localObject2, j);
           }
-          localObject1 = new nt();
-          ((nt)localObject1).dBE.scene = 0;
-          com.tencent.mm.sdk.b.a.IbL.l((com.tencent.mm.sdk.b.b)localObject1);
-          localObject1 = com.tencent.mm.plugin.websearch.api.ad.a(paramInt1, paramBoolean1, paramInt3, Uri.encode(localJSONObject.toString()), "", paramString2, paramString1, "", (String)localObject3, "", str);
+          localObject1 = new nu();
+          ((nu)localObject1).dCJ.scene = 0;
+          com.tencent.mm.sdk.b.a.IvT.l((com.tencent.mm.sdk.b.b)localObject1);
+          localObject1 = ad.a(paramInt1, paramBoolean1, paramInt3, Uri.encode(localJSONObject.toString()), "", paramString2, paramString1, "", (String)localObject3, "", str);
           if (paramMap != null) {
             ((Map)localObject1).putAll(paramMap);
           }
@@ -96,8 +98,8 @@ public final class a
             Object localObject3;
             ((Map)localObject1).put("query", q.encode(paramString1, "UTF-8"));
             ((Map)localObject1).put("sessionId", paramString2);
-            localObject1 = com.tencent.mm.plugin.websearch.api.ad.aY((Map)localObject1);
-            localObject2 = com.tencent.mm.plugin.websearch.api.ad.eMd();
+            localObject1 = ad.be((Map)localObject1);
+            localObject2 = ad.ePM();
             ((Intent)localObject2).putExtra("ftsType", paramInt3);
             ((Intent)localObject2).putExtra("title", paramString3);
             ((Intent)localObject2).putExtra("ftsbizscene", paramInt1);
@@ -109,8 +111,8 @@ public final class a
               ((Intent)localObject2).putExtra("sessionId", paramString2);
               ((Intent)localObject2).putExtra("subSessionId", (String)localObject3);
               ((Intent)localObject2).putExtra("rawUrl", (String)localObject1);
-              ((Intent)localObject2).putExtra("key_preload_biz", a.eLB());
-              ((Intent)localObject2).putExtra("key_weapp_url", a.aFH(paramString2));
+              ((Intent)localObject2).putExtra("key_preload_biz", a.ePk());
+              ((Intent)localObject2).putExtra("key_weapp_url", a.aHb(paramString2));
               ((Intent)localObject2).putExtra("hideSearchInput", paramBoolean4);
               ((Intent)localObject2).putExtra("key_back_btn_type", paramInt4);
               ((Intent)localObject2).putExtra("key_hide_shadow_view", paramBoolean5);
@@ -125,7 +127,7 @@ public final class a
                 ((Intent)localObject2).putExtra("ftsneedkeyboard", true);
               }
               d.b(paramContext, "webview", ".ui.tools.fts.FTSSOSHomeWebViewUI", (Intent)localObject2);
-              a.eLC();
+              a.ePl();
               AppMethodBeat.o(116526);
               return;
               label655:
@@ -137,7 +139,7 @@ public final class a
                 break;
               }
               localJSONException = localJSONException;
-              com.tencent.mm.sdk.platformtools.ad.l("StartWebSearchService", "", new Object[] { localJSONException });
+              ae.l("StartWebSearchService", "", new Object[] { localJSONException });
             }
           }
           catch (Exception localException)
@@ -152,7 +154,7 @@ public final class a
         }
       }
     });
-    AppMethodBeat.o(220002);
+    AppMethodBeat.o(209745);
   }
   
   public final void I(Context paramContext, String paramString1, String paramString2)
@@ -164,25 +166,25 @@ public final class a
   
   public final void a(Context paramContext, int paramInt, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(220001);
+    AppMethodBeat.i(209744);
     Intent localIntent = new Intent();
-    localIntent.putExtra("hardcode_jspermission", JsapiPermissionWrapper.FnD);
-    localIntent.putExtra("hardcode_general_ctrl", GeneralControlWrapper.Fnz);
+    localIntent.putExtra("hardcode_jspermission", JsapiPermissionWrapper.FGb);
+    localIntent.putExtra("hardcode_general_ctrl", GeneralControlWrapper.FFX);
     localIntent.putExtra("neverGetA8Key", true);
     localIntent.putExtra("key_trust_url", true);
     localIntent.putExtra("KRightBtn", true);
     localIntent.putExtra("ftsneedkeyboard", true);
     localIntent.putExtra("ftsType", 64);
     localIntent.putExtra("ftsbizscene", paramInt);
-    Map localMap = com.tencent.mm.plugin.websearch.b.a.aS(paramInt, false);
-    String str = com.tencent.mm.modelappbrand.b.aDB();
+    Map localMap = com.tencent.mm.plugin.websearch.b.a.aY(paramInt, false);
+    String str = com.tencent.mm.modelappbrand.b.aDR();
     localMap.put("WASessionId", str);
-    if (!bt.isNullOrNil(paramString2)) {
+    if (!bu.isNullOrNil(paramString2)) {
       localMap.put("query", paramString2);
     }
     localMap.put("sessionId", str);
     localMap.put("subSessionId", str);
-    localIntent.putExtra("rawUrl", com.tencent.mm.plugin.websearch.b.a.aY(localMap));
+    localIntent.putExtra("rawUrl", com.tencent.mm.plugin.websearch.b.a.be(localMap));
     localIntent.putExtra("key_load_js_without_delay", true);
     localIntent.addFlags(67108864);
     localIntent.putExtra("key_session_id", str);
@@ -190,15 +192,15 @@ public final class a
     localIntent.putExtra("subSessionId", str);
     localIntent.putExtra("ftsQuery", paramString2);
     localIntent.putExtra("key_preload_biz", 5);
-    if (!bt.isNullOrNil(paramString1)) {
+    if (!bu.isNullOrNil(paramString1)) {
       localIntent.putExtra("key_search_place_holder", paramString1);
     }
     for (;;)
     {
       d.b(paramContext, "appbrand", ".ui.AppBrandSearchUI", localIntent);
-      AppMethodBeat.o(220001);
+      AppMethodBeat.o(209744);
       return;
-      paramString1 = g.ajC().ajl().get(al.a.IxJ, null);
+      paramString1 = g.ajR().ajA().get(am.a.ISh, null);
       if ((paramString1 != null) && ((paramString1 instanceof String))) {
         localIntent.putExtra("key_search_input_hint", (String)paramString1);
       }
@@ -214,9 +216,9 @@ public final class a
   
   public final void a(Context paramContext, int paramInt1, String paramString1, String paramString2, Map<String, String> paramMap, int paramInt2)
   {
-    AppMethodBeat.i(219999);
+    AppMethodBeat.i(209742);
     a(paramContext, paramInt1, paramString1, paramString2, true, paramMap, false, paramInt2, "", 0, true, true, 1, true);
-    AppMethodBeat.o(219999);
+    AppMethodBeat.o(209742);
   }
   
   public final void a(Context paramContext, int paramInt1, String paramString1, String paramString2, Map<String, String> paramMap, String paramString3, int paramInt2)
@@ -228,9 +230,9 @@ public final class a
   
   public final void a(Context paramContext, int paramInt1, String paramString1, String paramString2, boolean paramBoolean, Map<String, String> paramMap, int paramInt2)
   {
-    AppMethodBeat.i(220000);
+    AppMethodBeat.i(209743);
     a(paramContext, paramInt1, paramString1, paramString2, paramBoolean, paramMap, false, 2147483647, "", paramInt2, true, false, 0, false);
-    AppMethodBeat.o(220000);
+    AppMethodBeat.o(209743);
   }
   
   public final void a(Context paramContext, String paramString1, String paramString2, Map<String, String> paramMap)

@@ -10,7 +10,7 @@ import com.tencent.mm.pluginsdk.cmd.a;
 import com.tencent.mm.pluginsdk.cmd.b;
 import com.tencent.mm.pluginsdk.o.c.a;
 import com.tencent.mm.pluginsdk.o.e;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.ui.base.h;
 
 public final class m
@@ -29,7 +29,7 @@ public final class m
   {
     int i = 0;
     AppMethodBeat.i(20193);
-    if (ad.getLogLevel() > 1)
+    if (ae.getLogLevel() > 1)
     {
       AppMethodBeat.o(20193);
       return false;
@@ -68,10 +68,10 @@ public final class m
       }
       i = 2;
       break label83;
-      o.e.EJB.eKD();
+      o.e.FbZ.eOl();
       continue;
       paramArrayOfString = new TextView(paramContext);
-      paramArrayOfString.setText(o.e.EJB.eKC());
+      paramArrayOfString.setText(o.e.FbZ.eOk());
       paramArrayOfString.setGravity(19);
       paramArrayOfString.setTextSize(1, 10.0F);
       paramArrayOfString.setLayoutParams(new ViewGroup.LayoutParams(-1, -2));

@@ -12,21 +12,21 @@ public final class c
 {
   public static RelativeLayout.LayoutParams D(Context paramContext, int paramInt)
   {
-    AppMethodBeat.i(216776);
+    AppMethodBeat.i(197175);
     int i = dip2px(paramContext, 10.0F);
     int j = dip2px(paramContext, 15.0F);
     int k = dip2px(paramContext, 50.0F);
     int m = dip2px(paramContext, 192.0F);
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(m, dip2px(paramContext, 108.0F));
-    localLayoutParams.leftMargin = (paramInt - j - m - ar.ej(paramContext));
+    localLayoutParams.leftMargin = (paramInt - j - m - ar.en(paramContext));
     localLayoutParams.topMargin = (i + k);
-    AppMethodBeat.o(216776);
+    AppMethodBeat.o(197175);
     return localLayoutParams;
   }
   
   public static RelativeLayout.LayoutParams E(Context paramContext, int paramInt)
   {
-    AppMethodBeat.i(216777);
+    AppMethodBeat.i(197176);
     int i = dip2px(paramContext, 10.0F);
     int j = dip2px(paramContext, 15.0F);
     int k = dip2px(paramContext, 50.0F);
@@ -34,13 +34,13 @@ public final class c
     paramContext = new RelativeLayout.LayoutParams(m, dip2px(paramContext, 192.0F));
     paramContext.leftMargin = (paramInt - j - m);
     paramContext.topMargin = (i + k);
-    AppMethodBeat.o(216777);
+    AppMethodBeat.o(197176);
     return paramContext;
   }
   
   public static RelativeLayout.LayoutParams F(Context paramContext, int paramInt)
   {
-    AppMethodBeat.i(216780);
+    AppMethodBeat.i(197179);
     int i = dip2px(paramContext, 10.0F);
     int j = dip2px(paramContext, 15.0F);
     int k = dip2px(paramContext, 50.0F);
@@ -48,13 +48,13 @@ public final class c
     paramContext = new RelativeLayout.LayoutParams(m, dip2px(paramContext, 192.0F));
     paramContext.leftMargin = (paramInt - j - m);
     paramContext.topMargin = (i + k);
-    AppMethodBeat.o(216780);
+    AppMethodBeat.o(197179);
     return paramContext;
   }
   
   public static ArrayList<RelativeLayout.LayoutParams> b(Context paramContext, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(216778);
+    AppMethodBeat.i(197177);
     int i = dip2px(paramContext, 10.0F);
     int j = dip2px(paramContext, 50.0F);
     paramContext = new ArrayList();
@@ -84,13 +84,13 @@ public final class c
     paramContext.add(localLayoutParams2);
     paramContext.add(localLayoutParams3);
     paramContext.add(localLayoutParams4);
-    AppMethodBeat.o(216778);
+    AppMethodBeat.o(197177);
     return paramContext;
   }
   
   public static ArrayList<RelativeLayout.LayoutParams> c(Context paramContext, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(216779);
+    AppMethodBeat.i(197178);
     int i = dip2px(paramContext, 10.0F);
     int j = dip2px(paramContext, 50.0F);
     paramContext = new ArrayList();
@@ -146,21 +146,21 @@ public final class c
     paramContext.add(localLayoutParams7);
     paramContext.add(localLayoutParams8);
     paramContext.add(localLayoutParams9);
-    AppMethodBeat.o(216779);
+    AppMethodBeat.o(197178);
     return paramContext;
   }
   
   public static int dip2px(Context paramContext, float paramFloat)
   {
-    AppMethodBeat.i(216775);
+    AppMethodBeat.i(197174);
     int i = (int)(paramContext.getResources().getDisplayMetrics().density * paramFloat + 0.5F);
-    AppMethodBeat.o(216775);
+    AppMethodBeat.o(197174);
     return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.live.core.view.c
  * JD-Core Version:    0.7.0.1
  */

@@ -10,17 +10,17 @@ import com.tencent.mm.plugin.appbrand.widget.dialog.g;
 import com.tencent.mm.plugin.appbrand.widget.dialog.k;
 import com.tencent.mm.plugin.appbrand.widget.dialog.k.a;
 import com.tencent.mm.plugin.appbrand.widget.dialog.m;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.av;
-import com.tencent.mm.sdk.platformtools.av.a;
+import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.platformtools.aw;
+import com.tencent.mm.sdk.platformtools.aw.a;
 
 public final class d
   implements DialogInterface
 {
   private DialogInterface.OnCancelListener XL;
-  private av jkD;
-  public android.arch.a.c.a<Context, k.a> lUC;
-  private k.a lUD;
+  private aw jnx;
+  public android.arch.a.c.a<Context, k.a> lZf;
+  private k.a lZg;
   private boolean mCanceled = false;
   private boolean mDismissed = false;
   
@@ -28,8 +28,8 @@ public final class d
   {
     AppMethodBeat.i(147345);
     this.XL = paramOnCancelListener;
-    if (this.lUD != null) {
-      this.lUD.setOnCancelListener(this.XL);
+    if (this.lZg != null) {
+      this.lZg.setOnCancelListener(this.XL);
     }
     AppMethodBeat.o(147345);
     return this;
@@ -38,9 +38,9 @@ public final class d
   public final void aa(final AppBrandRuntime paramAppBrandRuntime)
   {
     AppMethodBeat.i(147344);
-    if (!aq.isMainThread())
+    if (!ar.isMainThread())
     {
-      aq.f(new Runnable()
+      ar.f(new Runnable()
       {
         public final void run()
         {
@@ -52,7 +52,7 @@ public final class d
       AppMethodBeat.o(147344);
       return;
     }
-    this.jkD = new av(Looper.getMainLooper(), new av.a()
+    this.jnx = new aw(Looper.getMainLooper(), new aw.a()
     {
       public final boolean onTimerExpired()
       {
@@ -62,7 +62,7 @@ public final class d
           AppMethodBeat.o(147343);
           return false;
         }
-        Object localObject1 = com.tencent.mm.sdk.f.a.jq(paramAppBrandRuntime.mContext);
+        Object localObject1 = com.tencent.mm.sdk.f.a.jw(paramAppBrandRuntime.mContext);
         if (localObject1 == null) {
           localObject1 = paramAppBrandRuntime.mContext;
         }
@@ -78,7 +78,7 @@ public final class d
             ((k.a)localObject2).setOnCancelListener(d.d(d.this));
             ((k.a)localObject2).setCancelable(true);
             ((k.a)localObject2).setCanceledOnTouchOutside(false);
-            paramAppBrandRuntime.iDP.b((k)localObject2);
+            paramAppBrandRuntime.iGI.b((k)localObject2);
             d.a(d.this, (k.a)localObject2);
             AppMethodBeat.o(147343);
             return false;
@@ -86,7 +86,7 @@ public final class d
         }
       }
     }, false);
-    this.jkD.az(500L, 500L);
+    this.jnx.ay(500L, 500L);
     AppMethodBeat.o(147344);
   }
   
@@ -94,9 +94,9 @@ public final class d
   {
     AppMethodBeat.i(147346);
     this.mCanceled = true;
-    if (this.lUD != null)
+    if (this.lZg != null)
     {
-      this.lUD.cancel();
+      this.lZg.cancel();
       AppMethodBeat.o(147346);
       return;
     }
@@ -110,8 +110,8 @@ public final class d
   {
     AppMethodBeat.i(147347);
     this.mDismissed = true;
-    if (this.lUD != null) {
-      this.lUD.dismiss();
+    if (this.lZg != null) {
+      this.lZg.dismiss();
     }
     AppMethodBeat.o(147347);
   }

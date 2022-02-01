@@ -7,74 +7,74 @@ import java.util.concurrent.ConcurrentLinkedDeque;
 
 public class r
 {
-  private long EJD;
-  protected ConcurrentLinkedDeque<a> EJE;
-  protected HashMap<String, a> EJF;
+  private long Fcb;
+  protected ConcurrentLinkedDeque<a> Fcc;
+  protected HashMap<String, a> Fcd;
   
   public r()
   {
     AppMethodBeat.i(141154);
-    this.EJD = System.currentTimeMillis();
-    this.EJE = new ConcurrentLinkedDeque();
-    this.EJF = new HashMap();
+    this.Fcb = System.currentTimeMillis();
+    this.Fcc = new ConcurrentLinkedDeque();
+    this.Fcd = new HashMap();
     AppMethodBeat.o(141154);
   }
   
   private void h(String paramString1, long paramLong, String paramString2)
   {
     AppMethodBeat.i(141156);
-    this.EJE.add(new a(paramString1, paramLong, paramString2));
+    this.Fcc.add(new a(paramString1, paramLong, paramString2));
     i(paramString1, paramLong, paramString2);
     AppMethodBeat.o(141156);
   }
   
   private void i(String paramString1, long paramLong, String paramString2)
   {
-    AppMethodBeat.i(186429);
+    AppMethodBeat.i(193682);
     if ((paramString1.equals("onPageStarted")) || (paramString1.equals("onPageFinished")) || (paramString1.equals("getA8KeyStart")) || (paramString1.equals("getA8KeyEnd")) || (paramString1.equals("firstScreenTimestamp")) || (paramString1.equals("firstScreenTime")))
     {
-      if (this.EJF.get(paramString1) == null) {
-        this.EJF.put(paramString1, new a(paramString1, paramLong, paramString2));
+      if (this.Fcd.get(paramString1) == null) {
+        this.Fcd.put(paramString1, new a(paramString1, paramLong, paramString2));
       }
-      ((a)this.EJF.get(paramString1)).time = paramLong;
+      ((a)this.Fcd.get(paramString1)).time = paramLong;
     }
-    AppMethodBeat.o(186429);
+    AppMethodBeat.o(193682);
   }
   
-  public final long aLo(String paramString)
+  public final long aMK(String paramString)
   {
-    AppMethodBeat.i(186430);
-    if ((this.EJF == null) || (this.EJF.isEmpty()))
+    AppMethodBeat.i(193683);
+    if ((this.Fcd == null) || (this.Fcd.isEmpty()))
     {
-      AppMethodBeat.o(186430);
+      AppMethodBeat.o(193683);
       return 0L;
     }
-    if (this.EJF.get(paramString) != null)
+    if (this.Fcd.get(paramString) != null)
     {
-      long l = ((a)this.EJF.get(paramString)).time;
-      AppMethodBeat.o(186430);
+      long l = ((a)this.Fcd.get(paramString)).time;
+      AppMethodBeat.o(193683);
       return l;
     }
-    AppMethodBeat.o(186430);
+    AppMethodBeat.o(193683);
     return 0L;
   }
   
-  public final void bL(String paramString, long paramLong)
+  public final void bM(String paramString, long paramLong)
   {
     AppMethodBeat.i(141155);
     h(paramString, paramLong, "");
     AppMethodBeat.o(141155);
   }
   
-  public final long bM(String paramString, long paramLong)
+  public final long bN(String paramString, long paramLong)
   {
     AppMethodBeat.i(141157);
-    if ((this.EJE == null) || (this.EJE.isEmpty()))
+    if ((this.Fcc == null) || (this.Fcc.isEmpty()))
     {
       AppMethodBeat.o(141157);
       return paramLong;
     }
-    Iterator localIterator = this.EJE.iterator();
+    Iterator localIterator = this.Fcc.iterator();
     while (localIterator.hasNext())
     {
       a locala = (a)localIterator.next();
@@ -91,7 +91,7 @@ public class r
   
   public final long getStartTime()
   {
-    return this.EJD;
+    return this.Fcb;
   }
   
   public final class a

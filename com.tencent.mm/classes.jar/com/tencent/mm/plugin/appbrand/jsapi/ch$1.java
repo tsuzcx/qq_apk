@@ -2,12 +2,12 @@ package com.tencent.mm.plugin.appbrand.jsapi;
 
 import android.os.Bundle;
 import com.tencent.mm.ipcinvoker.d;
-import com.tencent.mm.plugin.appbrand.q;
+import com.tencent.mm.plugin.appbrand.r;
 
 final class ch$1
   implements d<Bundle>
 {
-  ch$1(ch paramch, q paramq, int paramInt) {}
+  ch$1(ch paramch, r paramr, int paramInt) {}
 }
 
 

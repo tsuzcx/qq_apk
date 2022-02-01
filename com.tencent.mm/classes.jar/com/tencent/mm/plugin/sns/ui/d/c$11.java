@@ -16,9 +16,9 @@ final class c$11
     AppMethodBeat.i(100218);
     b localb = new b();
     localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/sns/ui/listener/TimelineClickListener$19", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+    a.b("com/tencent/mm/plugin/sns/ui/listener/TimelineClickListener$19", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
     paramView.getTag();
-    this.Azi.dI(paramView);
+    this.AQE.dJ(paramView);
     a.a(this, "com/tencent/mm/plugin/sns/ui/listener/TimelineClickListener$19", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(100218);
   }

@@ -9,7 +9,7 @@ public final class b
   public String desc;
   public String iconUrl;
   public String jumpUrl;
-  public String tUK;
+  public String ufC;
   
   public final int type()
   {

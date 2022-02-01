@@ -181,7 +181,7 @@ public class FirebaseMessagingService
       }
       localObject1 = new Bundle();
       ((Bundle)localObject1).putString("google.message_id", (String)localObject2);
-      localObject3 = ai.aq(this);
+      localObject3 = ai.ar(this);
       localObject1 = ((ai)localObject3).a(new com.google.firebase.iid.b(((ai)localObject3).yo(), (Bundle)localObject1));
       break;
       if (bMC.contains(localObject2))
@@ -251,7 +251,7 @@ public class FirebaseMessagingService
       }
       if (i != 0)
       {
-        if (c.ar(this).m((Bundle)localObject2)) {
+        if (c.as(this).m((Bundle)localObject2)) {
           continue;
         }
         if (l((Bundle)localObject2)) {

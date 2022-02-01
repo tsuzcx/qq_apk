@@ -16,9 +16,9 @@ final class TextPreviewUI$6
     AppMethodBeat.i(34935);
     b localb = new b();
     localb.bd(paramView);
-    a.b("com/tencent/mm/ui/chatting/TextPreviewUI$14", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-    if (TextPreviewUI.b(this.JEM) != null) {
-      TextPreviewUI.e(this.JEM.getContext(), TextPreviewUI.k(this.JEM).toString());
+    a.b("com/tencent/mm/ui/chatting/TextPreviewUI$14", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+    if (TextPreviewUI.b(this.JZD) != null) {
+      TextPreviewUI.e(this.JZD.getContext(), TextPreviewUI.k(this.JZD).toString());
     }
     a.a(this, "com/tencent/mm/ui/chatting/TextPreviewUI$14", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(34935);

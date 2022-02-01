@@ -15,16 +15,16 @@ import java.util.List;
 public abstract class h
   implements at
 {
-  private final f<a> NBy;
+  private final f<a> NYF;
   
   public h(d.l.b.a.b.l.j paramj)
   {
-    this.NBy = paramj.a((a)new b(this), (b)c.NBC, (b)new d(this));
+    this.NYF = paramj.a((a)new b(this), (b)c.NYJ, (b)new d(this));
   }
   
-  protected Collection<ab> Ar(boolean paramBoolean)
+  protected Collection<ab> AE(boolean paramBoolean)
   {
-    return (Collection)v.MKE;
+    return (Collection)v.NhH;
   }
   
   protected void I(ab paramab)
@@ -32,30 +32,30 @@ public abstract class h
     p.h(paramab, "type");
   }
   
-  protected abstract Collection<ab> ghN();
+  protected abstract Collection<ab> gmp();
   
-  protected abstract aq ghR();
+  protected abstract aq gmt();
   
-  protected ab gjT()
+  protected ab gov()
   {
     return null;
   }
   
-  public final List<ab> gtS()
+  public final List<ab> gyu()
   {
-    return ((a)this.NBy.invoke()).NBz;
+    return ((a)this.NYF.invoke()).NYG;
   }
   
   static final class a
   {
-    final Collection<ab> NBA;
-    List<? extends ab> NBz;
+    List<? extends ab> NYG;
+    final Collection<ab> NYH;
     
     public a(Collection<? extends ab> paramCollection)
     {
       AppMethodBeat.i(60602);
-      this.NBA = paramCollection;
-      this.NBz = d.a.j.listOf(u.NBN);
+      this.NYH = paramCollection;
+      this.NYG = d.a.j.listOf(u.NYU);
       AppMethodBeat.o(60602);
     }
   }
@@ -74,12 +74,12 @@ public abstract class h
     extends q
     implements b<Boolean, h.a>
   {
-    public static final c NBC;
+    public static final c NYJ;
     
     static
     {
       AppMethodBeat.i(60605);
-      NBC = new c();
+      NYJ = new c();
       AppMethodBeat.o(60605);
     }
     

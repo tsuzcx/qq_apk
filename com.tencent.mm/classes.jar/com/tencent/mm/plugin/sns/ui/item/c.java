@@ -14,10 +14,10 @@ import com.tencent.mm.plugin.sns.ui.bi;
 import com.tencent.mm.plugin.sns.ui.bo;
 import com.tencent.mm.plugin.sns.ui.view.ImageIndicatorView;
 import com.tencent.mm.protocal.protobuf.TimeLineObject;
-import com.tencent.mm.protocal.protobuf.abf;
-import com.tencent.mm.protocal.protobuf.ari;
-import com.tencent.mm.protocal.protobuf.arj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.abo;
+import com.tencent.mm.protocal.protobuf.arx;
+import com.tencent.mm.protocal.protobuf.ary;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.widget.b.a;
 import java.util.LinkedList;
 
@@ -26,86 +26,86 @@ public final class c
 {
   public final void a(BaseTimeLineItem.BaseViewHolder paramBaseViewHolder, int paramInt1, bi parambi, TimeLineObject paramTimeLineObject, int paramInt2, bh parambh)
   {
-    AppMethodBeat.i(198545);
+    AppMethodBeat.i(220087);
     Object localObject;
-    if ((paramTimeLineObject != null) && (paramTimeLineObject.HAT != null) && (paramTimeLineObject.HAT.GaU != null))
+    if ((paramTimeLineObject != null) && (paramTimeLineObject.HUG != null) && (paramTimeLineObject.HUG.GtB != null))
     {
       paramBaseViewHolder = (a)paramBaseViewHolder;
-      localObject = paramTimeLineObject.HAT.GaU;
-      if (!bt.hj(((arj)localObject).mediaList))
+      localObject = paramTimeLineObject.HUG.GtB;
+      if (!bu.ht(((ary)localObject).mediaList))
       {
-        parambi = (ari)((arj)localObject).mediaList.get(0);
+        parambi = (arx)((ary)localObject).mediaList.get(0);
         if (parambi != null)
         {
-          if (((arj)localObject).Gpi != 4) {
+          if (((ary)localObject).GIy != 4) {
             break label263;
           }
-          paramBaseViewHolder.zQn.setVisibility(0);
-          paramBaseViewHolder.AwK.setVisibility(8);
-          paramBaseViewHolder.AwJ.setGuidelineEnd(0);
-          localObject = h.a((int)parambi.width, (int)parambi.height, paramBaseViewHolder.AwI.getContext(), false);
+          paramBaseViewHolder.Ahu.setVisibility(0);
+          paramBaseViewHolder.AOc.setVisibility(8);
+          paramBaseViewHolder.AOb.setGuidelineEnd(0);
+          localObject = h.a((int)parambi.width, (int)parambi.height, paramBaseViewHolder.AOa.getContext(), false);
           paramInt1 = ((Integer)((Pair)localObject).first).intValue();
           paramInt2 = ((Integer)((Pair)localObject).second).intValue();
-          paramBaseViewHolder.AwI.getLayoutParams().width = paramInt1;
-          paramBaseViewHolder.AwI.getLayoutParams().height = paramInt2;
-          paramBaseViewHolder.AwI.requestLayout();
+          paramBaseViewHolder.AOa.getLayoutParams().width = paramInt1;
+          paramBaseViewHolder.AOa.getLayoutParams().height = paramInt2;
+          paramBaseViewHolder.AOa.requestLayout();
         }
       }
     }
     for (;;)
     {
-      ((t)g.ad(t.class)).loadImage(parambi.thumbUrl, paramBaseViewHolder.rAT);
-      paramBaseViewHolder.AwI.setTag(paramTimeLineObject);
-      paramBaseViewHolder.AwI.setOnClickListener(parambh.AaW.ApY);
-      parambh.ecN().c(paramBaseViewHolder.AwI, parambh.zpd.AyM, parambh.zpd.Ayq);
-      AppMethodBeat.o(198545);
+      ((t)g.ad(t.class)).loadImage(parambi.thumbUrl, paramBaseViewHolder.rJe);
+      paramBaseViewHolder.AOa.setTag(paramTimeLineObject);
+      paramBaseViewHolder.AOa.setOnClickListener(parambh.Asj.AHm);
+      parambh.egu().c(paramBaseViewHolder.AOa, parambh.zGs.AQi, parambh.zGs.APL);
+      AppMethodBeat.o(220087);
       return;
       label263:
-      paramBaseViewHolder.zQn.setVisibility(8);
-      paramBaseViewHolder.AwK.setVisibility(8);
-      paramBaseViewHolder.AwK.ABt = ((arj)localObject).dqU;
-      paramBaseViewHolder.AwJ.setGuidelineEnd(0);
-      localObject = h.a((int)parambi.width, (int)parambi.height, paramBaseViewHolder.AwI.getContext());
+      paramBaseViewHolder.Ahu.setVisibility(8);
+      paramBaseViewHolder.AOc.setVisibility(8);
+      paramBaseViewHolder.AOc.ASU = ((ary)localObject).drZ;
+      paramBaseViewHolder.AOb.setGuidelineEnd(0);
+      localObject = h.a((int)parambi.width, (int)parambi.height, paramBaseViewHolder.AOa.getContext());
       paramInt1 = ((Integer)((Pair)localObject).first).intValue();
       paramInt2 = ((Integer)((Pair)localObject).second).intValue();
-      paramBaseViewHolder.AwI.getLayoutParams().width = paramInt1;
-      paramBaseViewHolder.AwI.getLayoutParams().height = paramInt2;
-      paramBaseViewHolder.AwI.requestLayout();
+      paramBaseViewHolder.AOa.getLayoutParams().width = paramInt1;
+      paramBaseViewHolder.AOa.getLayoutParams().height = paramInt2;
+      paramBaseViewHolder.AOa.requestLayout();
     }
   }
   
   public final void h(BaseTimeLineItem.BaseViewHolder paramBaseViewHolder)
   {
-    AppMethodBeat.i(198544);
+    AppMethodBeat.i(220086);
     a locala = (a)paramBaseViewHolder;
-    if ((paramBaseViewHolder.Avc != null) && (paramBaseViewHolder.Avc.getParent() != null))
+    if ((paramBaseViewHolder.AMs != null) && (paramBaseViewHolder.AMs.getParent() != null))
     {
-      paramBaseViewHolder.Avc.setLayoutResource(2131496489);
-      if (!locala.AwH) {
-        locala.AwI = paramBaseViewHolder.Avc.inflate();
+      paramBaseViewHolder.AMs.setLayoutResource(2131496489);
+      if (!locala.ANZ) {
+        locala.AOa = paramBaseViewHolder.AMs.inflate();
       }
     }
-    for (locala.AwH = true;; locala.AwH = true)
+    for (locala.ANZ = true;; locala.ANZ = true)
     {
-      locala.zQn = ((ImageView)locala.AwI.findViewById(2131308429));
-      locala.AwK = ((ImageIndicatorView)locala.AwI.findViewById(2131308427));
-      locala.rAT = ((ImageView)locala.AwI.findViewById(2131308430));
-      locala.AwJ = ((Guideline)locala.AwI.findViewById(2131308428));
-      AppMethodBeat.o(198544);
+      locala.Ahu = ((ImageView)locala.AOa.findViewById(2131308429));
+      locala.AOc = ((ImageIndicatorView)locala.AOa.findViewById(2131308427));
+      locala.rJe = ((ImageView)locala.AOa.findViewById(2131308430));
+      locala.AOb = ((Guideline)locala.AOa.findViewById(2131308428));
+      AppMethodBeat.o(220086);
       return;
-      locala.AwI = paramBaseViewHolder.tPw.findViewById(2131308426);
+      locala.AOa = paramBaseViewHolder.uan.findViewById(2131308426);
     }
   }
   
   public static class a
     extends BaseTimeLineItem.BaseViewHolder
   {
-    boolean AwH = false;
-    View AwI;
-    Guideline AwJ;
-    ImageIndicatorView AwK;
-    ImageView rAT;
-    ImageView zQn;
+    boolean ANZ = false;
+    View AOa;
+    Guideline AOb;
+    ImageIndicatorView AOc;
+    ImageView Ahu;
+    ImageView rJe;
   }
 }
 

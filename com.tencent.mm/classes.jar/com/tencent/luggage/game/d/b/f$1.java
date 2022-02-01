@@ -5,22 +5,22 @@ import com.tencent.luggage.game.widget.input.WAGamePanelInputEditText;
 import com.tencent.luggage.game.widget.input.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.plugin.appbrand.page.aa;
-import com.tencent.mm.plugin.appbrand.q;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.plugin.appbrand.page.z;
+import com.tencent.mm.plugin.appbrand.r;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 
 final class f$1
   implements Runnable
 {
-  f$1(f paramf, q paramq, String paramString, int paramInt) {}
+  f$1(f paramf, r paramr, String paramString, int paramInt) {}
   
   public final void run()
   {
     AppMethodBeat.i(130620);
-    if (this.cjP.isRunning())
+    if (this.cjR.isRunning())
     {
-      localObject = this.cjP.getCurrentPageView();
+      localObject = this.cjR.getCurrentPageView();
       if (localObject != null) {}
     }
     else
@@ -28,17 +28,17 @@ final class f$1
       AppMethodBeat.o(130620);
       return;
     }
-    Object localObject = a.co(((aa)localObject).kca);
+    Object localObject = a.co(((z)localObject).kfr);
     if (localObject != null)
     {
       WAGamePanelInputEditText localWAGamePanelInputEditText = ((a)localObject).getAttachedEditText();
       int i = localWAGamePanelInputEditText.getMaxLength();
-      ad.v("MicroMsg.WAGameJsApiUpdateKeyboard", "maxLength(%d).", new Object[] { Integer.valueOf(i) });
-      if (!bt.isNullOrNil(this.ckI)) {
+      ae.v("MicroMsg.WAGameJsApiUpdateKeyboard", "maxLength(%d).", new Object[] { Integer.valueOf(i) });
+      if (!bu.isNullOrNil(this.ckK)) {
         if (i > 0) {
-          if (this.ckI.length() > i)
+          if (this.ckK.length() > i)
           {
-            localObject = this.ckI.substring(0, i);
+            localObject = this.ckK.substring(0, i);
             localWAGamePanelInputEditText.setText((CharSequence)localObject);
             label113:
             localWAGamePanelInputEditText.setSelection(localWAGamePanelInputEditText.getText().length());
@@ -47,17 +47,17 @@ final class f$1
       }
       for (;;)
       {
-        this.cjP.h(this.cjQ, this.ckJ.e("ok", null));
+        this.cjR.h(this.cjS, this.ckL.e("ok", null));
         AppMethodBeat.o(130620);
         return;
-        localObject = this.ckI;
+        localObject = this.ckK;
         break;
-        localWAGamePanelInputEditText.setText(this.ckI);
+        localWAGamePanelInputEditText.setText(this.ckK);
         break label113;
         localWAGamePanelInputEditText.setText("");
       }
     }
-    this.cjP.h(this.cjQ, this.ckJ.e("fail", null));
+    this.cjR.h(this.cjS, this.ckL.e("fail", null));
     AppMethodBeat.o(130620);
   }
 }

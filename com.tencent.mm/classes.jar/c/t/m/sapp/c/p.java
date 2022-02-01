@@ -12,7 +12,7 @@ public class p
   
   public static byte[] a(String paramString)
   {
-    AppMethodBeat.i(190506);
+    AppMethodBeat.i(210771);
     Object localObject;
     try
     {
@@ -32,11 +32,11 @@ public class p
     }
     catch (Exception paramString)
     {
-      AppMethodBeat.o(190506);
+      AppMethodBeat.o(210771);
       return null;
     }
     paramString.close();
-    AppMethodBeat.o(190506);
+    AppMethodBeat.o(210771);
     return localObject;
   }
   
@@ -252,7 +252,7 @@ public class p
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     c.t.m.sapp.c.p
  * JD-Core Version:    0.7.0.1
  */

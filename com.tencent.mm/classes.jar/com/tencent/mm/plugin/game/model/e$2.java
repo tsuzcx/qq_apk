@@ -15,7 +15,7 @@ final class e$2
   public final void run()
   {
     AppMethodBeat.i(41359);
-    h.a(this.val$context, this.pnK.field_packageName, this.pnL, this.pnK.field_appId, this.pnK.field_openId, 0, this.pnJ, null);
+    h.a(this.val$context, this.pur.field_packageName, this.pus, this.pur.field_appId, this.pur.field_openId, 0, this.puq, null);
     AppMethodBeat.o(41359);
   }
 }

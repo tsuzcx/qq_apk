@@ -7,7 +7,7 @@ import com.tencent.mm.sdk.b.b;
 public final class cn
   extends b
 {
-  public a dnr;
+  public a dot;
   
   public cn()
   {
@@ -17,8 +17,8 @@ public final class cn
   private cn(byte paramByte)
   {
     AppMethodBeat.i(19794);
-    this.dnr = new a();
-    this.IbR = false;
+    this.dot = new a();
+    this.IvZ = false;
     this.callback = null;
     AppMethodBeat.o(19794);
   }
@@ -27,13 +27,13 @@ public final class cn
   {
     public int action = 0;
     public Context context;
-    public String[] djJ;
+    public String[] dkL;
     public String[] selectionArgs;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.g.a.cn
  * JD-Core Version:    0.7.0.1
  */

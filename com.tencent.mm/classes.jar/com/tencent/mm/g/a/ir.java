@@ -6,7 +6,8 @@ import com.tencent.mm.sdk.b.b;
 public final class ir
   extends b
 {
-  public a dvo;
+  public a dwr;
+  public b dws;
   
   public ir()
   {
@@ -15,16 +16,22 @@ public final class ir
   
   private ir(byte paramByte)
   {
-    AppMethodBeat.i(149862);
-    this.dvo = new a();
-    this.IbR = false;
+    AppMethodBeat.i(123477);
+    this.dwr = new a();
+    this.dws = new b();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(149862);
+    AppMethodBeat.o(123477);
   }
   
   public static final class a
   {
-    public String appId;
+    public String url;
+  }
+  
+  public static final class b
+  {
+    public String dwb;
   }
 }
 

@@ -53,12 +53,12 @@ public final class l
   {
     try
     {
-      AppMethodBeat.i(217124);
+      AppMethodBeat.i(211651);
       if (this.bEV == 0) {
         this.bEW = this.bEU.elapsedRealtime();
       }
       this.bEV += 1;
-      AppMethodBeat.o(217124);
+      AppMethodBeat.o(211651);
       return;
     }
     finally {}
@@ -76,7 +76,7 @@ public final class l
     {
       try
       {
-        AppMethodBeat.i(217125);
+        AppMethodBeat.i(211652);
         if (this.bEV > 0)
         {
           bool = true;
@@ -184,7 +184,7 @@ public final class l
         this.bEW = l2;
       }
       this.bEX = 0L;
-      AppMethodBeat.o(217125);
+      AppMethodBeat.o(211652);
       return;
       i += 1;
       break;

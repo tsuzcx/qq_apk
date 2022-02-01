@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class fh
   extends b
 {
-  public a dqu;
+  public a dry;
   
   public fh()
   {
@@ -15,21 +15,21 @@ public final class fh
   
   private fh(byte paramByte)
   {
-    AppMethodBeat.i(116013);
-    this.dqu = new a();
-    this.IbR = false;
+    AppMethodBeat.i(116012);
+    this.dry = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(116013);
+    AppMethodBeat.o(116012);
   }
   
   public static final class a
   {
-    public boolean dpX;
+    public boolean dpJ = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.a.fh
  * JD-Core Version:    0.7.0.1
  */

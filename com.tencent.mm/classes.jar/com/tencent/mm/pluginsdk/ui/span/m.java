@@ -23,23 +23,23 @@ import android.widget.TextView;
 import android.widget.Toast;
 import com.tencent.mars.comm.PlatformComm.C2Java;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bs.d;
+import com.tencent.mm.br.d;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.kernel.e;
-import com.tencent.mm.model.u;
+import com.tencent.mm.model.v;
 import com.tencent.mm.plugin.bbom.c;
 import com.tencent.mm.plugin.messenger.foundation.a.a.j;
 import com.tencent.mm.plugin.messenger.foundation.a.a.k.a;
-import com.tencent.mm.protocal.protobuf.cai;
-import com.tencent.mm.protocal.protobuf.cki;
-import com.tencent.mm.protocal.protobuf.ckj;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.al.a;
-import com.tencent.mm.storage.am;
-import com.tencent.mm.storage.bp;
+import com.tencent.mm.protocal.protobuf.cbc;
+import com.tencent.mm.protocal.protobuf.clc;
+import com.tencent.mm.protocal.protobuf.cld;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.aj;
+import com.tencent.mm.storage.am.a;
+import com.tencent.mm.storage.an;
+import com.tencent.mm.storage.bq;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.base.n.d;
 import com.tencent.mm.ui.base.n.e;
@@ -53,32 +53,32 @@ import junit.framework.Assert;
 
 public final class m
 {
-  static String FhE;
+  static String FAc;
   
-  private static void a(Activity paramActivity, am paramam, String paramString, ArrayList<String> paramArrayList)
+  private static void a(Activity paramActivity, an paraman, String paramString, ArrayList<String> paramArrayList)
   {
     AppMethodBeat.i(31941);
-    cai localcai = new cai();
-    localcai.GUK = paramString;
-    ckj localckj = new ckj();
-    localckj.HdV = new LinkedList();
+    cbc localcbc = new cbc();
+    localcbc.Hol = paramString;
+    cld localcld = new cld();
+    localcld.Hxv = new LinkedList();
     ArrayList localArrayList = new ArrayList();
     Iterator localIterator = paramArrayList.iterator();
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
-      if (c.Wx(str))
+      if (c.Xj(str))
       {
-        cki localcki = new cki();
-        localcki.HdU = str;
-        localckj.HdV.add(localcki);
+        clc localclc = new clc();
+        localclc.Hxu = str;
+        localcld.Hxv.add(localclc);
         localArrayList.add(str);
       }
     }
-    localckj.nDi = localArrayList.size();
-    localcai.GUC = localckj;
-    ((com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azo().c(new k.a(60, localcai));
-    com.tencent.mm.o.a.a(paramam, paramString, paramArrayList);
+    localcld.nID = localArrayList.size();
+    localcbc.Hod = localcld;
+    ((com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azE().d(new k.a(60, localcbc));
+    com.tencent.mm.contact.a.a(paraman, paramString, paramArrayList);
     Toast.makeText(paramActivity, paramActivity.getString(2131764321), 0).show();
     AppMethodBeat.o(31941);
   }
@@ -87,18 +87,18 @@ public final class m
   {
     AppMethodBeat.i(31937);
     if (!(paramContext instanceof Activity)) {
-      ad.w("MicroMsg.MailPhoneMenuHelper", "context should be Activity, %s", new Object[] { bt.flS() });
+      ae.w("MicroMsg.MailPhoneMenuHelper", "context should be Activity, %s", new Object[] { bu.fpN() });
     }
-    if (com.tencent.mm.kernel.g.ajA().aiK()) {}
+    if (com.tencent.mm.kernel.g.ajP().aiZ()) {}
     label400:
     label411:
-    for (boolean bool = ((Boolean)com.tencent.mm.kernel.g.ajC().ajl().get(al.a.IsS, Boolean.FALSE)).booleanValue();; bool = false)
+    for (boolean bool = ((Boolean)com.tencent.mm.kernel.g.ajR().ajA().get(am.a.INo, Boolean.FALSE)).booleanValue();; bool = false)
     {
       final int i;
       if (paramBundle != null)
       {
         i = paramBundle.getInt("fromScene");
-        if (!feS()) {
+        if (!fiI()) {
           break label660;
         }
         if (paramBundle != null) {
@@ -106,8 +106,8 @@ public final class m
         }
         localObject = "";
         label90:
-        localObject = bt.nullAsNil((String)localObject);
-        if ((localObject != null) && (localObject != "") && (!u.za((String)localObject)) && (!am.aSQ((String)localObject))) {
+        localObject = bu.nullAsNil((String)localObject);
+        if ((localObject != null) && (localObject != "") && (!v.zK((String)localObject)) && (!an.aUq((String)localObject))) {
           break label462;
         }
         if (!bool) {
@@ -120,28 +120,28 @@ public final class m
         localObject[3] = paramContext.getResources().getString(2131757262);
       }
       label193:
-      for (Object localObject = bt.U((String[])localObject);; localObject = bt.U(new String[] { paramContext.getResources().getString(2131757270), paramContext.getResources().getString(2131757264) }))
+      for (Object localObject = bu.U((String[])localObject);; localObject = bu.U(new String[] { paramContext.getResources().getString(2131757270), paramContext.getResources().getString(2131757264) }))
       {
-        com.tencent.mm.plugin.report.service.g.yhR.f(11621, new Object[] { Integer.valueOf(i), Integer.valueOf(2) });
-        if (r.MW())
+        com.tencent.mm.plugin.report.service.g.yxI.f(11621, new Object[] { Integer.valueOf(i), Integer.valueOf(2) });
+        if (r.MR())
         {
           ((List)localObject).add(paramContext.getResources().getString(2131757266));
-          com.tencent.mm.plugin.report.service.g.yhR.f(11621, new Object[] { Integer.valueOf(i), Integer.valueOf(3) });
+          com.tencent.mm.plugin.report.service.g.yxI.f(11621, new Object[] { Integer.valueOf(i), Integer.valueOf(3) });
           if (PlatformComm.C2Java.isNetworkConnected()) {
-            r.feV();
+            r.fiL();
           }
         }
         final com.tencent.mm.ui.base.k localk = new com.tencent.mm.ui.base.k(paramContext);
         localk.setTitle(paramString);
         a locala = new a((List)localObject, paramContext, paramOnDismissListener, paramBundle);
-        locala.FhN = new m.a.a()
+        locala.FAl = new m.a.a()
         {
-          public final void nN(boolean paramAnonymousBoolean)
+          public final void nR(boolean paramAnonymousBoolean)
           {
             AppMethodBeat.i(31925);
             if (paramAnonymousBoolean)
             {
-              this.FhI.dismiss();
+              this.FAg.dismiss();
               if (paramOnDismissListener != null) {
                 paramOnDismissListener.onDismiss(null);
               }
@@ -149,10 +149,10 @@ public final class m
             AppMethodBeat.o(31925);
           }
         };
-        localk.oDI = locala;
+        localk.oKk = locala;
         h.a(paramContext, localk);
         localk.setOnCancelListener(new m.6(paramOnDismissListener));
-        localk.Fjk = new AdapterView.OnItemClickListener()
+        localk.FBJ = new AdapterView.OnItemClickListener()
         {
           public final void onItemClick(final AdapterView<?> paramAnonymousAdapterView, final View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
           {
@@ -160,26 +160,26 @@ public final class m
             Object localObject = new b();
             ((b)localObject).bd(paramAnonymousAdapterView);
             ((b)localObject).bd(paramAnonymousView);
-            ((b)localObject).mr(paramAnonymousInt);
-            ((b)localObject).qY(paramAnonymousLong);
-            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/pluginsdk/ui/span/MailPhoneMenuHelper$7", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, ((b)localObject).ahq());
-            paramAnonymousView = this.uVf.replace(" ", "").replace("(", "").replace(")", "").replace("-", "");
+            ((b)localObject).mu(paramAnonymousInt);
+            ((b)localObject).rl(paramAnonymousLong);
+            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/pluginsdk/ui/span/MailPhoneMenuHelper$7", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, ((b)localObject).ahF());
+            paramAnonymousView = this.vgS.replace(" ", "").replace("(", "").replace(")", "").replace("-", "");
             paramAnonymousAdapterView = paramAnonymousView.replaceAll("#", "%23");
-            localObject = (String)this.rvN.get(paramAnonymousInt);
-            ad.i("MicroMsg.MailPhoneMenuHelper", (String)localObject);
+            localObject = (String)this.rDZ.get(paramAnonymousInt);
+            ae.i("MicroMsg.MailPhoneMenuHelper", (String)localObject);
             if (paramContext.getString(2131757270).equals(localObject))
             {
               paramAnonymousView = new Intent("android.intent.action.DIAL", Uri.parse("tel:".concat(String.valueOf(paramAnonymousAdapterView))));
               paramAnonymousView.addFlags(268435456);
-              if (bt.aj(paramContext, paramAnonymousView))
+              if (bu.aj(paramContext, paramAnonymousView))
               {
                 paramAnonymousAdapterView = paramContext;
                 paramAnonymousView = new com.tencent.mm.hellhoundlib.b.a().bc(paramAnonymousView);
-                com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousAdapterView, paramAnonymousView.ahp(), "com/tencent/mm/pluginsdk/ui/span/MailPhoneMenuHelper$7", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-                paramAnonymousAdapterView.startActivity((Intent)paramAnonymousView.mq(0));
+                com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousAdapterView, paramAnonymousView.ahE(), "com/tencent/mm/pluginsdk/ui/span/MailPhoneMenuHelper$7", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+                paramAnonymousAdapterView.startActivity((Intent)paramAnonymousView.mt(0));
                 com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousAdapterView, "com/tencent/mm/pluginsdk/ui/span/MailPhoneMenuHelper$7", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
               }
-              com.tencent.mm.plugin.report.service.g.yhR.kvStat(10112, "1");
+              com.tencent.mm.plugin.report.service.g.yxI.kvStat(10112, "1");
               localk.dismiss();
               if (paramOnDismissListener != null) {
                 paramOnDismissListener.onDismiss(null);
@@ -192,7 +192,7 @@ public final class m
               return;
               if (paramContext.getString(2131757271).equals(localObject))
               {
-                com.tencent.mm.plugin.report.service.g.yhR.f(12059, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) });
+                com.tencent.mm.plugin.report.service.g.yxI.f(12059, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) });
                 paramAnonymousAdapterView = new Intent();
                 paramAnonymousAdapterView.putExtra("IPCallTalkUI_phoneNumber", paramAnonymousView);
                 d.b(paramContext, "ipcall", ".ui.IPCallDialUI", paramAnonymousAdapterView);
@@ -205,14 +205,14 @@ public final class m
               {
                 if (paramContext.getString(2131757262).equals(localObject))
                 {
-                  if ((m.feT()) && (m.feU())) {
+                  if ((m.fiJ()) && (m.fiK())) {
                     paramAnonymousAdapterView = paramContext.getResources().getStringArray(2130903074);
                   }
                   for (;;)
                   {
                     paramContext.getResources().getString(2131757268);
                     localObject = new com.tencent.mm.ui.tools.l(paramContext);
-                    ((com.tencent.mm.ui.tools.l)localObject).KJy = new n.d()
+                    ((com.tencent.mm.ui.tools.l)localObject).LfS = new n.d()
                     {
                       public final void onCreateMMMenu(com.tencent.mm.ui.base.l paramAnonymous2l)
                       {
@@ -220,19 +220,19 @@ public final class m
                         int i = 0;
                         while (i < paramAnonymousAdapterView.length)
                         {
-                          paramAnonymous2l.c(i, paramAnonymousAdapterView[i]);
+                          paramAnonymous2l.d(i, paramAnonymousAdapterView[i]);
                           i += 1;
                         }
                         AppMethodBeat.o(179832);
                       }
                     };
-                    ((com.tencent.mm.ui.tools.l)localObject).KJz = new n.e()
+                    ((com.tencent.mm.ui.tools.l)localObject).LfT = new n.e()
                     {
                       public final void onMMMenuItemSelected(MenuItem paramAnonymous2MenuItem, int paramAnonymous2Int)
                       {
                         AppMethodBeat.i(179833);
-                        if (m.7.this.FhF != null) {
-                          m.7.this.FhF.onDismiss(null);
+                        if (m.7.this.FAd != null) {
+                          m.7.this.FAd.onDismiss(null);
                         }
                         switch (paramAnonymous2MenuItem.getItemId())
                         {
@@ -241,7 +241,7 @@ public final class m
                         {
                           AppMethodBeat.o(179833);
                           return;
-                          if (m.feT())
+                          if (m.fiJ())
                           {
                             paramAnonymous2MenuItem = m.7.this.val$context;
                             Object localObject = paramAnonymousView;
@@ -249,19 +249,19 @@ public final class m
                             localIntent.setType("vnd.android.cursor.dir/contact");
                             localIntent.putExtra("phone", (String)localObject);
                             localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localIntent);
-                            com.tencent.mm.hellhoundlib.a.a.a(paramAnonymous2MenuItem, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahp(), "com/tencent/mm/pluginsdk/ui/span/MailPhoneMenuHelper", "phoneCreateContact", "(Landroid/content/Context;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-                            paramAnonymous2MenuItem.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mq(0));
+                            com.tencent.mm.hellhoundlib.a.a.a(paramAnonymous2MenuItem, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahE(), "com/tencent/mm/pluginsdk/ui/span/MailPhoneMenuHelper", "phoneCreateContact", "(Landroid/content/Context;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+                            paramAnonymous2MenuItem.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mt(0));
                             com.tencent.mm.hellhoundlib.a.a.a(paramAnonymous2MenuItem, "com/tencent/mm/pluginsdk/ui/span/MailPhoneMenuHelper", "phoneCreateContact", "(Landroid/content/Context;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-                            com.tencent.mm.plugin.report.service.g.yhR.kvStat(10113, "1");
+                            com.tencent.mm.plugin.report.service.g.yxI.kvStat(10113, "1");
                             AppMethodBeat.o(179833);
                             return;
                           }
-                          m.bU(m.7.this.val$context, paramAnonymousView);
-                          com.tencent.mm.plugin.report.service.g.yhR.kvStat(10114, "1");
+                          m.bV(m.7.this.val$context, paramAnonymousView);
+                          com.tencent.mm.plugin.report.service.g.yxI.kvStat(10114, "1");
                           AppMethodBeat.o(179833);
                           return;
-                          m.bU(m.7.this.val$context, paramAnonymousView);
-                          com.tencent.mm.plugin.report.service.g.yhR.kvStat(10114, "1");
+                          m.bV(m.7.this.val$context, paramAnonymousView);
+                          com.tencent.mm.plugin.report.service.g.yxI.kvStat(10114, "1");
                         }
                       }
                     };
@@ -270,16 +270,16 @@ public final class m
                       public final void onDismiss()
                       {
                         AppMethodBeat.i(179834);
-                        if (m.7.this.FhF != null) {
-                          m.7.this.FhF.onDismiss(null);
+                        if (m.7.this.FAd != null) {
+                          m.7.this.FAd.onDismiss(null);
                         }
                         AppMethodBeat.o(179834);
                       }
                     });
                     localk.dismiss();
-                    ((com.tencent.mm.ui.tools.l)localObject).fKy();
+                    ((com.tencent.mm.ui.tools.l)localObject).fOP();
                     break;
-                    if (m.feT())
+                    if (m.fiJ())
                     {
                       paramAnonymousAdapterView = new String[1];
                       paramAnonymousAdapterView[0] = paramContext.getResources().getString(2131757261);
@@ -294,7 +294,7 @@ public final class m
                 if (paramContext.getString(2131757264).equals(localObject))
                 {
                   com.tencent.mm.pluginsdk.i.a.b(paramAnonymousView, paramAnonymousView);
-                  com.tencent.mm.plugin.report.service.g.yhR.kvStat(10115, "1");
+                  com.tencent.mm.plugin.report.service.g.yxI.kvStat(10115, "1");
                   if (paramOnDismissListener != null) {
                     paramOnDismissListener.onDismiss(null);
                   }
@@ -303,11 +303,11 @@ public final class m
                 }
                 else if (paramContext.getString(2131757266).equals(localObject))
                 {
-                  ad.d("MicroMsg.MailPhoneMenuHelper", "hy: button should consume this action");
+                  ae.d("MicroMsg.MailPhoneMenuHelper", "hy: button should consume this action");
                 }
-                else if (m.FhE.equals(localObject))
+                else if (m.FAc.equals(localObject))
                 {
-                  m.a((Activity)paramContext, this.uVf, paramBundle);
+                  m.a((Activity)paramContext, this.vgS, paramBundle);
                   localk.dismiss();
                   if (paramOnDismissListener != null) {
                     paramOnDismissListener.onDismiss(null);
@@ -315,7 +315,7 @@ public final class m
                 }
                 else
                 {
-                  ad.e("MicroMsg.MailPhoneMenuHelper", "hy: error phone item clicked. should not happen");
+                  ae.e("MicroMsg.MailPhoneMenuHelper", "hy: error phone item clicked. should not happen");
                   localk.dismiss();
                   if (paramOnDismissListener != null) {
                     paramOnDismissListener.onDismiss(null);
@@ -338,27 +338,27 @@ public final class m
         localObject[2] = paramContext.getResources().getString(2131757262);
         break label193;
         label462:
-        localObject = ((com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azp().Bf((String)localObject);
+        localObject = ((com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azF().BH((String)localObject);
         if (localObject == null)
         {
           AppMethodBeat.o(31937);
           return;
         }
-        localObject = ((am)localObject).adv();
-        FhE = paramContext.getResources().getString(2131757263, new Object[] { localObject });
+        localObject = ((an)localObject).adG();
+        FAc = paramContext.getResources().getString(2131757263, new Object[] { localObject });
         if (bool)
         {
           localObject = new String[5];
           localObject[0] = paramContext.getResources().getString(2131757270);
           localObject[1] = paramContext.getResources().getString(2131757271);
-          localObject[2] = FhE;
+          localObject[2] = FAc;
           localObject[3] = paramContext.getResources().getString(2131757264);
           localObject[4] = paramContext.getResources().getString(2131757262);
           break label193;
         }
         localObject = new String[4];
         localObject[0] = paramContext.getResources().getString(2131757270);
-        localObject[1] = FhE;
+        localObject[1] = FAc;
         localObject[2] = paramContext.getResources().getString(2131757264);
         localObject[3] = paramContext.getResources().getString(2131757262);
         break label193;
@@ -369,7 +369,7 @@ public final class m
   public static void b(Context paramContext, String paramString, DialogInterface.OnDismissListener paramOnDismissListener)
   {
     AppMethodBeat.i(31936);
-    if ((u.aAy() & 0x1) == 0) {}
+    if ((v.aAO() & 0x1) == 0) {}
     for (int i = 1; i != 0; i = 0)
     {
       h.a(paramContext, paramString, paramContext.getResources().getStringArray(2130903046), "", new m.1(paramOnDismissListener, paramString, paramContext));
@@ -382,10 +382,10 @@ public final class m
     AppMethodBeat.o(31936);
   }
   
-  private static boolean feS()
+  private static boolean fiI()
   {
     AppMethodBeat.i(31938);
-    if ((feT()) || (feU()))
+    if ((fiJ()) || (fiK()))
     {
       AppMethodBeat.o(31938);
       return true;
@@ -394,22 +394,22 @@ public final class m
     return false;
   }
   
-  static boolean feT()
+  static boolean fiJ()
   {
     AppMethodBeat.i(31939);
-    Context localContext = aj.getContext();
+    Context localContext = ak.getContext();
     Intent localIntent = new Intent("android.intent.action.INSERT");
     localIntent.setType("vnd.android.cursor.dir/contact");
     localIntent.putExtra("phone", "10086");
-    boolean bool = bt.aj(localContext, localIntent);
+    boolean bool = bu.aj(localContext, localIntent);
     AppMethodBeat.o(31939);
     return bool;
   }
   
-  static boolean feU()
+  static boolean fiK()
   {
     AppMethodBeat.i(31940);
-    boolean bool = bt.aj(aj.getContext(), new Intent("android.intent.action.PICK", ContactsContract.Contacts.CONTENT_URI));
+    boolean bool = bu.aj(ak.getContext(), new Intent("android.intent.action.PICK", ContactsContract.Contacts.CONTENT_URI));
     AppMethodBeat.o(31940);
     return bool;
   }
@@ -417,27 +417,27 @@ public final class m
   static final class a
     extends BaseAdapter
   {
-    private DialogInterface.OnDismissListener FhM;
-    a FhN;
+    private DialogInterface.OnDismissListener FAk;
+    a FAl;
     private Bundle GO;
-    private List<String> cje;
+    private List<String> cjg;
     private Context mContext;
     
     public a(List<String> paramList, Context paramContext, DialogInterface.OnDismissListener paramOnDismissListener, Bundle paramBundle)
     {
       AppMethodBeat.i(31931);
-      this.cje = null;
+      this.cjg = null;
       this.mContext = null;
-      this.FhM = null;
+      this.FAk = null;
       this.GO = null;
-      this.FhN = null;
+      this.FAl = null;
       if (paramContext != null) {}
       for (boolean bool = true;; bool = false)
       {
         Assert.assertTrue(bool);
-        this.cje = paramList;
+        this.cjg = paramList;
         this.mContext = paramContext;
-        this.FhM = paramOnDismissListener;
+        this.FAk = paramOnDismissListener;
         this.GO = paramBundle;
         AppMethodBeat.o(31931);
         return;
@@ -447,12 +447,12 @@ public final class m
     public final int getCount()
     {
       AppMethodBeat.i(31932);
-      if (this.cje == null)
+      if (this.cjg == null)
       {
         AppMethodBeat.o(31932);
         return 0;
       }
-      int i = this.cje.size();
+      int i = this.cjg.size();
       AppMethodBeat.o(31932);
       return i;
     }
@@ -460,7 +460,7 @@ public final class m
     public final Object getItem(int paramInt)
     {
       AppMethodBeat.i(31933);
-      Object localObject = this.cje.get(paramInt);
+      Object localObject = this.cjg.get(paramInt);
       AppMethodBeat.o(31933);
       return localObject;
     }
@@ -473,7 +473,7 @@ public final class m
     public final int getItemViewType(int paramInt)
     {
       AppMethodBeat.i(31934);
-      String str = (String)this.cje.get(paramInt);
+      String str = (String)this.cjg.get(paramInt);
       if (this.mContext.getString(2131757266).equals(str))
       {
         AppMethodBeat.o(31934);
@@ -495,15 +495,15 @@ public final class m
         {
           paramView = paramView.inflate(2131493471, paramViewGroup, false);
           paramViewGroup = new b((byte)0);
-          ((b)paramViewGroup).gnM = ((TextView)paramView.findViewById(2131305902));
-          ((b)paramViewGroup).rzR = ((Button)paramView.findViewById(2131299195));
-          ((b)paramViewGroup).FhP = ((TextView)paramView.findViewById(2131305875));
+          ((b)paramViewGroup).gqi = ((TextView)paramView.findViewById(2131305902));
+          ((b)paramViewGroup).rIc = ((Button)paramView.findViewById(2131299195));
+          ((b)paramViewGroup).FAn = ((TextView)paramView.findViewById(2131305875));
           paramView.setTag(paramViewGroup);
           switch (paramInt)
           {
           default: 
             label116:
-            ad.e("MicroMsg.MailPhoneMenuHelper", "hy: error tag");
+            ae.e("MicroMsg.MailPhoneMenuHelper", "hy: error tag");
           }
         }
       }
@@ -513,30 +513,30 @@ public final class m
         return paramView;
         paramView = paramView.inflate(2131493472, paramViewGroup, false);
         paramViewGroup = new c((byte)0);
-        ((c)paramViewGroup).gnM = ((TextView)paramView.findViewById(2131305902));
+        ((c)paramViewGroup).gqi = ((TextView)paramView.findViewById(2131305902));
         break;
         paramViewGroup = paramView.getTag();
         break label116;
         paramViewGroup = (c)paramViewGroup;
-        paramViewGroup.gnM.setText(k.b(this.mContext, bt.nullAsNil(str), paramViewGroup.gnM.getTextSize()));
+        paramViewGroup.gqi.setText(k.b(this.mContext, bu.nullAsNil(str), paramViewGroup.gqi.getTextSize()));
         continue;
         paramViewGroup = (b)paramViewGroup;
-        paramViewGroup.gnM.setText(k.b(this.mContext, bt.nullAsNil(str), paramViewGroup.gnM.getTextSize()));
-        paramViewGroup.FhP.setText(this.mContext.getString(2131757272));
-        paramViewGroup.rzR.setOnClickListener(new View.OnClickListener()
+        paramViewGroup.gqi.setText(k.b(this.mContext, bu.nullAsNil(str), paramViewGroup.gqi.getTextSize()));
+        paramViewGroup.FAn.setText(this.mContext.getString(2131757272));
+        paramViewGroup.rIc.setOnClickListener(new View.OnClickListener()
         {
           public final void onClick(View paramAnonymousView)
           {
             AppMethodBeat.i(31930);
             b localb = new b();
             localb.bd(paramAnonymousView);
-            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/pluginsdk/ui/span/MailPhoneMenuHelper$PhoneAdapter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/pluginsdk/ui/span/MailPhoneMenuHelper$PhoneAdapter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
             if (!PlatformComm.C2Java.isNetworkConnected())
             {
-              ad.w("MicroMsg.MailPhoneMenuHelper", "hy: no network. abort download");
+              ae.w("MicroMsg.MailPhoneMenuHelper", "hy: no network. abort download");
               t.makeText(m.a.a(m.a.this), m.a.a(m.a.this).getString(2131759511), 0).show();
               if (m.a.b(m.a.this) != null) {
-                m.a.b(m.a.this).nN(false);
+                m.a.b(m.a.this).nR(false);
               }
             }
             for (;;)
@@ -546,7 +546,7 @@ public final class m
               return;
               r.h(m.a.a(m.a.this), m.a.c(m.a.this));
               if (m.a.b(m.a.this) != null) {
-                m.a.b(m.a.this).nN(true);
+                m.a.b(m.a.this).nR(true);
               }
             }
           }
@@ -561,21 +561,21 @@ public final class m
     
     public static abstract interface a
     {
-      public abstract void nN(boolean paramBoolean);
+      public abstract void nR(boolean paramBoolean);
     }
     
     final class b
     {
-      TextView FhP;
-      TextView gnM;
-      Button rzR;
+      TextView FAn;
+      TextView gqi;
+      Button rIc;
       
       private b() {}
     }
     
     final class c
     {
-      TextView gnM;
+      TextView gqi;
       
       private c() {}
     }

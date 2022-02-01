@@ -1,24 +1,24 @@
 package com.tencent.mm.plugin.performance.diagnostic;
 
 import com.tencent.mm.plugin.performance.a.c;
-import com.tencent.mm.sdk.platformtools.ax;
+import com.tencent.mm.sdk.platformtools.ay;
 import java.util.Map;
 
 public abstract class a
   implements c
 {
-  public static ax wGr = ax.aQz("diagnostic_storage");
+  public static ay wWe = ay.aRW("diagnostic_storage");
   
-  public final void au(Map<String, String> paramMap)
+  public final void aA(Map<String, String> paramMap)
   {
-    if ((paramMap != null) && (paramMap.containsKey(dyy()))) {
-      av(paramMap);
+    if ((paramMap != null) && (paramMap.containsKey(dBO()))) {
+      aB(paramMap);
     }
   }
   
-  protected abstract void av(Map<String, String> paramMap);
+  protected abstract void aB(Map<String, String> paramMap);
   
-  public abstract String dyy();
+  public abstract String dBO();
 }
 
 

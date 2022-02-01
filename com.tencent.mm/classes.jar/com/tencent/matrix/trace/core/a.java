@@ -12,11 +12,11 @@ import java.util.Objects;
 public final class a
   implements MessageQueue.IdleHandler
 {
-  private static final a cJW = new a();
-  private static boolean cJX = false;
-  private b cJT;
-  private Looper cJU;
-  private long cJV = 0L;
+  private static final a cKF = new a();
+  private static boolean cKG = false;
+  private b cKC;
+  private Looper cKD;
+  private long cKE = 0L;
   public final HashSet<a> listeners = new HashSet();
   
   private a()
@@ -27,12 +27,12 @@ public final class a
   public a(Looper paramLooper)
   {
     Objects.requireNonNull(paramLooper);
-    this.cJU = paramLooper;
-    IZ();
+    this.cKD = paramLooper;
+    Jh();
     c(paramLooper);
   }
   
-  private void IZ()
+  private void Jh()
   {
     Object localObject1 = null;
     for (;;)
@@ -40,9 +40,9 @@ public final class a
       try
       {
         Printer localPrinter;
-        if (!cJX)
+        if (!cKG)
         {
-          localPrinter = (Printer)f.a(this.cJU.getClass(), "mLogging", this.cJU);
+          localPrinter = (Printer)f.a(this.cKD.getClass(), "mLogging", this.cKD);
           localObject1 = localPrinter;
         }
         b localb;
@@ -52,16 +52,16 @@ public final class a
       catch (Exception localException2)
       {
         localException2 = localException2;
-        cJX = true;
-        if (this.cJT != null) {
-          c.w("Matrix.LooperMonitor", "maybe thread:%s printer[%s] was replace other[%s]!", new Object[] { this.cJU.getThread().getName(), this.cJT, localObject1 });
+        cKG = true;
+        if (this.cKC != null) {
+          c.w("Matrix.LooperMonitor", "maybe thread:%s printer[%s] was replace other[%s]!", new Object[] { this.cKD.getThread().getName(), this.cKC, localObject1 });
         }
-        localLooper = this.cJU;
+        localLooper = this.cKD;
         localb = new b(localObject1);
-        this.cJT = localb;
+        this.cKC = localb;
         localLooper.setMessageLogging(localb);
         if (localObject1 != null) {
-          c.i("Matrix.LooperMonitor", "reset printer, originPrinter[%s] in %s", new Object[] { localObject1, this.cJU.getThread().getName() });
+          c.i("Matrix.LooperMonitor", "reset printer, originPrinter[%s] in %s", new Object[] { localObject1, this.cKD.getThread().getName() });
         }
       }
       finally {}
@@ -70,7 +70,7 @@ public final class a
   
   public static void a(a parama)
   {
-    a locala = cJW;
+    a locala = cKF;
     synchronized (locala.listeners)
     {
       locala.listeners.add(parama);
@@ -123,7 +123,7 @@ public final class a
   
   static void b(a parama)
   {
-    a locala = cJW;
+    a locala = cKF;
     synchronized (locala.listeners)
     {
       locala.listeners.remove(parama);
@@ -181,7 +181,7 @@ public final class a
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 83	com/tencent/matrix/trace/core/a:cJT	Lcom/tencent/matrix/trace/core/a$b;
+    //   3: getfield 83	com/tencent/matrix/trace/core/a:cKC	Lcom/tencent/matrix/trace/core/a$b;
     //   6: ifnull +85 -> 91
     //   9: aload_0
     //   10: getfield 50	com/tencent/matrix/trace/core/a:listeners	Ljava/util/HashSet;
@@ -200,33 +200,33 @@ public final class a
     //   33: dup
     //   34: iconst_0
     //   35: aload_0
-    //   36: getfield 60	com/tencent/matrix/trace/core/a:cJU	Landroid/os/Looper;
+    //   36: getfield 60	com/tencent/matrix/trace/core/a:cKD	Landroid/os/Looper;
     //   39: invokevirtual 91	android/os/Looper:getThread	()Ljava/lang/Thread;
     //   42: invokevirtual 97	java/lang/Thread:getName	()Ljava/lang/String;
     //   45: aastore
     //   46: dup
     //   47: iconst_1
     //   48: aload_0
-    //   49: getfield 83	com/tencent/matrix/trace/core/a:cJT	Lcom/tencent/matrix/trace/core/a$b;
-    //   52: getfield 182	com/tencent/matrix/trace/core/a$b:cJZ	Landroid/util/Printer;
+    //   49: getfield 83	com/tencent/matrix/trace/core/a:cKC	Lcom/tencent/matrix/trace/core/a$b;
+    //   52: getfield 182	com/tencent/matrix/trace/core/a$b:cKI	Landroid/util/Printer;
     //   55: aastore
     //   56: invokestatic 185	com/tencent/matrix/g/c:v	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   59: aload_0
-    //   60: getfield 60	com/tencent/matrix/trace/core/a:cJU	Landroid/os/Looper;
+    //   60: getfield 60	com/tencent/matrix/trace/core/a:cKD	Landroid/os/Looper;
     //   63: aload_0
-    //   64: getfield 83	com/tencent/matrix/trace/core/a:cJT	Lcom/tencent/matrix/trace/core/a$b;
-    //   67: getfield 182	com/tencent/matrix/trace/core/a$b:cJZ	Landroid/util/Printer;
+    //   64: getfield 83	com/tencent/matrix/trace/core/a:cKC	Lcom/tencent/matrix/trace/core/a$b;
+    //   67: getfield 182	com/tencent/matrix/trace/core/a$b:cKI	Landroid/util/Printer;
     //   70: invokevirtual 110	android/os/Looper:setMessageLogging	(Landroid/util/Printer;)V
     //   73: aload_0
     //   74: aload_0
-    //   75: getfield 60	com/tencent/matrix/trace/core/a:cJU	Landroid/os/Looper;
+    //   75: getfield 60	com/tencent/matrix/trace/core/a:cKD	Landroid/os/Looper;
     //   78: invokespecial 187	com/tencent/matrix/trace/core/a:b	(Landroid/os/Looper;)V
     //   81: aload_0
     //   82: aconst_null
-    //   83: putfield 60	com/tencent/matrix/trace/core/a:cJU	Landroid/os/Looper;
+    //   83: putfield 60	com/tencent/matrix/trace/core/a:cKD	Landroid/os/Looper;
     //   86: aload_0
     //   87: aconst_null
-    //   88: putfield 83	com/tencent/matrix/trace/core/a:cJT	Lcom/tencent/matrix/trace/core/a$b;
+    //   88: putfield 83	com/tencent/matrix/trace/core/a:cKC	Lcom/tencent/matrix/trace/core/a$b;
     //   91: aload_0
     //   92: monitorexit
     //   93: return
@@ -256,21 +256,21 @@ public final class a
   
   public final boolean queueIdle()
   {
-    if (SystemClock.uptimeMillis() - this.cJV >= 60000L)
+    if (SystemClock.uptimeMillis() - this.cKE >= 60000L)
     {
-      IZ();
-      this.cJV = SystemClock.uptimeMillis();
+      Jh();
+      this.cKE = SystemClock.uptimeMillis();
     }
     return true;
   }
   
   public static abstract class a
   {
-    boolean cJY = false;
+    boolean cKH = false;
     
-    public void dN(String paramString)
+    public void dQ(String paramString)
     {
-      this.cJY = true;
+      this.cKH = true;
       dispatchStart();
     }
     
@@ -287,39 +287,39 @@ public final class a
   final class b
     implements Printer
   {
-    boolean cJS = false;
-    public Printer cJZ;
-    boolean cKa = false;
+    boolean cKB = false;
+    public Printer cKI;
+    boolean cKJ = false;
     
     b(Printer paramPrinter)
     {
-      this.cJZ = paramPrinter;
+      this.cKI = paramPrinter;
     }
     
     public final void println(String paramString)
     {
       boolean bool2 = true;
-      if (this.cJZ != null)
+      if (this.cKI != null)
       {
-        this.cJZ.println(paramString);
-        if (this.cJZ == this) {
+        this.cKI.println(paramString);
+        if (this.cKI == this) {
           throw new RuntimeException("Matrix.LooperMonitor origin == this");
         }
       }
-      if (!this.cKa)
+      if (!this.cKJ)
       {
         if ((paramString.charAt(0) != '>') && (paramString.charAt(0) != '<')) {
           break label131;
         }
         bool1 = true;
-        this.cJS = bool1;
-        this.cKa = true;
-        if (!this.cJS) {
+        this.cKB = bool1;
+        this.cKJ = true;
+        if (!this.cKB) {
           c.e("Matrix.LooperMonitor", "[println] Printer is inValid! x:%s", new Object[] { paramString });
         }
       }
       a locala;
-      if (this.cJS)
+      if (this.cKB)
       {
         locala = a.this;
         if (paramString.charAt(0) != '>') {

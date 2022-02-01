@@ -4,13 +4,13 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class a
 {
-  public Object[] LiZ;
+  public Object[] LFB;
   
   public static <$1, $2> c<$1, $2> N($1 param$1, $2 param$2)
   {
     AppMethodBeat.i(74900);
     c localc = new c();
-    localc.LiZ = new Object[] { param$1, param$2 };
+    localc.LFB = new Object[] { param$1, param$2 };
     param$1 = (c)localc;
     AppMethodBeat.o(74900);
     return param$1;
@@ -20,17 +20,17 @@ public class a
   {
     AppMethodBeat.i(74902);
     e locale = new e();
-    locale.LiZ = new Object[] { param$1, param$2, param$3, param$4 };
+    locale.LFB = new Object[] { param$1, param$2, param$3, param$4 };
     param$1 = (e)locale;
     AppMethodBeat.o(74902);
     return param$1;
   }
   
-  public static <$1> b<$1> ek($1 param$1)
+  public static <$1> b<$1> el($1 param$1)
   {
     AppMethodBeat.i(74899);
     b localb = new b();
-    localb.LiZ = new Object[] { param$1 };
+    localb.LFB = new Object[] { param$1 };
     param$1 = (b)localb;
     AppMethodBeat.o(74899);
     return param$1;
@@ -40,7 +40,7 @@ public class a
   {
     AppMethodBeat.i(74901);
     d locald = new d();
-    locald.LiZ = new Object[] { param$1, param$2, param$3 };
+    locald.LFB = new Object[] { param$1, param$2, param$3 };
     param$1 = (d)locald;
     AppMethodBeat.o(74901);
     return param$1;
@@ -48,18 +48,18 @@ public class a
   
   public final <T> T get(int paramInt)
   {
-    if (this.LiZ.length <= paramInt) {
+    if (this.LFB.length <= paramInt) {
       return null;
     }
-    return this.LiZ[paramInt];
+    return this.LFB[paramInt];
   }
   
   public final int size()
   {
-    if (this.LiZ == null) {
+    if (this.LFB == null) {
       return 0;
     }
-    return this.LiZ.length;
+    return this.LFB.length;
   }
   
   public String toString()
@@ -67,7 +67,7 @@ public class a
     AppMethodBeat.i(74903);
     Object localObject1 = new StringBuilder();
     int j = 1;
-    Object[] arrayOfObject = this.LiZ;
+    Object[] arrayOfObject = this.LFB;
     int k = arrayOfObject.length;
     int i = 0;
     if (i < k)

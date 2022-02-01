@@ -12,62 +12,62 @@ import java.util.List;
 public final class d
   implements b, c
 {
-  private static d uJz;
+  private static d uVm;
   
-  public static String azA()
+  public static String azQ()
   {
     AppMethodBeat.i(151494);
     Object localObject = new StringBuilder();
-    g.ajD();
-    localObject = g.ajC().gBm + "image/";
+    g.ajS();
+    localObject = g.ajR().gDT + "image/";
     AppMethodBeat.o(151494);
     return localObject;
   }
   
-  public static String azB()
+  public static String azR()
   {
     AppMethodBeat.i(151495);
     Object localObject = new StringBuilder();
-    g.ajD();
-    localObject = g.ajC().gBm + "image2/";
+    g.ajS();
+    localObject = g.ajR().gDT + "image2/";
     AppMethodBeat.o(151495);
     return localObject;
   }
   
-  public static d dcS()
+  public static d dfK()
   {
     try
     {
       AppMethodBeat.i(151492);
-      if (uJz == null) {
-        uJz = new d();
+      if (uVm == null) {
+        uVm = new d();
       }
-      d locald = uJz;
+      d locald = uVm;
       AppMethodBeat.o(151492);
       return locald;
     }
     finally {}
   }
   
-  public static String dcT()
+  public static String dfL()
   {
     AppMethodBeat.i(151496);
     AppMethodBeat.o(151496);
     return "wcf://bizimg/";
   }
   
-  public final List<String> ajJ()
+  public final List<String> ajY()
   {
     AppMethodBeat.i(151493);
     LinkedList localLinkedList = new LinkedList();
-    Collections.addAll(localLinkedList, new String[] { "image/", "image2/", "bizimg/" });
+    Collections.addAll(localLinkedList, new String[] { "image/", "image2/", "bizimg/", "webcanvascache/" });
     AppMethodBeat.o(151493);
     return localLinkedList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.image.d
  * JD-Core Version:    0.7.0.1
  */

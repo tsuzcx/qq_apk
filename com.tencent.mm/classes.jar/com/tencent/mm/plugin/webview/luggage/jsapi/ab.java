@@ -10,7 +10,7 @@ import com.tencent.mm.ipcinvoker.h;
 import com.tencent.mm.ipcinvoker.type.IPCString;
 import com.tencent.mm.plugin.webview.luggage.g;
 import com.tencent.mm.plugin.webview.modeltools.j;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.HashMap;
 import java.util.Map;
 import org.json.JSONArray;
@@ -34,7 +34,7 @@ public class ab
     Object localObject = localJSONObject.optJSONArray("urls");
     if ((localObject == null) || (((JSONArray)localObject).length() == 0))
     {
-      ad.e("MicroMsg.JsApiImagePreview", "fail, urls is null");
+      ae.e("MicroMsg.JsApiImagePreview", "fail, urls is null");
       paramb.a("invalid_url", null);
       AppMethodBeat.o(78565);
       return;
@@ -46,7 +46,7 @@ public class ab
     AppMethodBeat.o(78565);
   }
   
-  public final int ccO()
+  public final int ced()
   {
     return 0;
   }

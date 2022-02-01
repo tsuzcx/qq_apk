@@ -8,87 +8,87 @@ public abstract class cb
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eDc;
-  private static final int eDo;
-  private static final int eEB;
-  private static final int eEU;
-  private static final int eFq;
-  private static final int eHa;
-  private static final int eKz;
-  private static final int eMZ;
-  private static final int eNa;
-  private static final int eNc;
-  private static final int eSP;
-  private static final int eWY = "downloadId".hashCode();
-  private static final int eWZ;
-  private static final int eXA = "rawAppId".hashCode();
-  private static final int eXa;
-  private static final int eXb;
-  private static final int eXc;
-  private static final int eXd;
-  private static final int eXe;
-  private static final int eXf;
-  private static final int eXg;
-  private static final int eXh;
-  private static final int eXi;
-  private static final int eXj;
-  private static final int eXk;
-  private static final int eXl;
-  private static final int eXm;
-  private static final int eXn;
-  private static final int eXo;
-  private static final int eXp;
-  private static final int eXq;
-  private static final int eXr;
-  private static final int eXs;
-  private static final int eXt;
-  private static final int eXu;
-  private static final int eXv;
-  private static final int eXw;
-  private static final int eXx;
-  private static final int eXy;
-  private static final int eXz;
+  private static final int eEL;
+  private static final int eEX;
+  private static final int eGD;
+  private static final int eGZ = "updateTime".hashCode();
+  private static final int eGk;
+  private static final int eIJ;
+  private static final int eMi;
+  private static final int eOK;
+  private static final int eOL;
+  private static final int eON;
+  private static final int eUA;
+  private static final int eYJ = "downloadId".hashCode();
+  private static final int eYK;
+  private static final int eYL;
+  private static final int eYM;
+  private static final int eYN;
+  private static final int eYO;
+  private static final int eYP;
+  private static final int eYQ;
+  private static final int eYR;
+  private static final int eYS;
+  private static final int eYT;
+  private static final int eYU;
+  private static final int eYV;
+  private static final int eYW;
+  private static final int eYX;
+  private static final int eYY;
+  private static final int eYZ;
+  private static final int eZa;
+  private static final int eZb;
+  private static final int eZc;
+  private static final int eZd;
+  private static final int eZe = "reserveInWifi".hashCode();
+  private static final int eZf = "ssid".hashCode();
+  private static final int eZg = "uiarea".hashCode();
+  private static final int eZh = "noticeId".hashCode();
+  private static final int eZi = "downloadType".hashCode();
+  private static final int eZj = "startScene".hashCode();
+  private static final int eZk = "sectionMd5Byte".hashCode();
+  private static final int eZl = "rawAppId".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eCZ = true;
-  private boolean eDh = true;
-  private boolean eED = true;
-  private boolean eEz = true;
-  private boolean eFn = true;
-  private boolean eGE = true;
-  private boolean eKl = true;
-  private boolean eMR = true;
-  private boolean eMS = true;
-  private boolean eMU = true;
-  private boolean eSd = true;
-  private boolean eWA = true;
-  private boolean eWB = true;
-  private boolean eWC = true;
-  private boolean eWD = true;
-  private boolean eWE = true;
-  private boolean eWF = true;
-  private boolean eWG = true;
-  private boolean eWH = true;
-  private boolean eWI = true;
-  private boolean eWJ = true;
-  private boolean eWK = true;
-  private boolean eWL = true;
-  private boolean eWM = true;
-  private boolean eWN = true;
-  private boolean eWO = true;
-  private boolean eWP = true;
-  private boolean eWQ = true;
-  private boolean eWR = true;
-  private boolean eWS = true;
-  private boolean eWT = true;
-  private boolean eWU = true;
-  private boolean eWV = true;
-  private boolean eWW = true;
-  private boolean eWX = true;
-  private boolean eWv = true;
-  private boolean eWw = true;
-  private boolean eWx = true;
-  private boolean eWy = true;
-  private boolean eWz = true;
+  private boolean eEI = true;
+  private boolean eEQ = true;
+  private boolean eGW = true;
+  private boolean eGi = true;
+  private boolean eGm = true;
+  private boolean eIn = true;
+  private boolean eLU = true;
+  private boolean eOC = true;
+  private boolean eOD = true;
+  private boolean eOF = true;
+  private boolean eTO = true;
+  private boolean eYA = true;
+  private boolean eYB = true;
+  private boolean eYC = true;
+  private boolean eYD = true;
+  private boolean eYE = true;
+  private boolean eYF = true;
+  private boolean eYG = true;
+  private boolean eYH = true;
+  private boolean eYI = true;
+  private boolean eYg = true;
+  private boolean eYh = true;
+  private boolean eYi = true;
+  private boolean eYj = true;
+  private boolean eYk = true;
+  private boolean eYl = true;
+  private boolean eYm = true;
+  private boolean eYn = true;
+  private boolean eYo = true;
+  private boolean eYp = true;
+  private boolean eYq = true;
+  private boolean eYr = true;
+  private boolean eYs = true;
+  private boolean eYt = true;
+  private boolean eYu = true;
+  private boolean eYv = true;
+  private boolean eYw = true;
+  private boolean eYx = true;
+  private boolean eYy = true;
+  private boolean eYz = true;
   public String field_appId;
   public boolean field_autoDownload;
   public boolean field_autoInstall;
@@ -132,44 +132,36 @@ public abstract class cb
   
   static
   {
-    eNa = "downloadUrl".hashCode();
-    eWZ = "secondaryUrl".hashCode();
-    eXa = "fileSize".hashCode();
-    eXb = "fileName".hashCode();
-    eNc = "filePath".hashCode();
-    eXc = "fileType".hashCode();
-    eDc = "status".hashCode();
-    eSP = "md5".hashCode();
-    eXd = "autoInstall".hashCode();
-    eXe = "showNotification".hashCode();
-    eXf = "sysDownloadId".hashCode();
-    eXg = "downloaderType".hashCode();
-    eEU = "appId".hashCode();
-    eMZ = "downloadUrlHashCode".hashCode();
-    eHa = "packageName".hashCode();
-    eXh = "downloadedSize".hashCode();
-    eXi = "totalSize".hashCode();
-    eXj = "autoDownload".hashCode();
-    eXk = "channelId".hashCode();
-    eEB = "scene".hashCode();
-    eXl = "errCode".hashCode();
-    eDo = "startTime".hashCode();
-    eXm = "startSize".hashCode();
-    eXn = "startState".hashCode();
-    eXo = "fromWeApp".hashCode();
-    eXp = "downloadInWifi".hashCode();
-    eKz = "extInfo".hashCode();
-    eXq = "finishTime".hashCode();
-    eXr = "isSecondDownload".hashCode();
-    eXs = "fromDownloadApp".hashCode();
-    eFq = "updateTime".hashCode();
-    eXt = "reserveInWifi".hashCode();
-    eXu = "ssid".hashCode();
-    eXv = "uiarea".hashCode();
-    eXw = "noticeId".hashCode();
-    eXx = "downloadType".hashCode();
-    eXy = "startScene".hashCode();
-    eXz = "sectionMd5Byte".hashCode();
+    eOL = "downloadUrl".hashCode();
+    eYK = "secondaryUrl".hashCode();
+    eYL = "fileSize".hashCode();
+    eYM = "fileName".hashCode();
+    eON = "filePath".hashCode();
+    eYN = "fileType".hashCode();
+    eEL = "status".hashCode();
+    eUA = "md5".hashCode();
+    eYO = "autoInstall".hashCode();
+    eYP = "showNotification".hashCode();
+    eYQ = "sysDownloadId".hashCode();
+    eYR = "downloaderType".hashCode();
+    eGD = "appId".hashCode();
+    eOK = "downloadUrlHashCode".hashCode();
+    eIJ = "packageName".hashCode();
+    eYS = "downloadedSize".hashCode();
+    eYT = "totalSize".hashCode();
+    eYU = "autoDownload".hashCode();
+    eYV = "channelId".hashCode();
+    eGk = "scene".hashCode();
+    eYW = "errCode".hashCode();
+    eEX = "startTime".hashCode();
+    eYX = "startSize".hashCode();
+    eYY = "startState".hashCode();
+    eYZ = "fromWeApp".hashCode();
+    eZa = "downloadInWifi".hashCode();
+    eMi = "extInfo".hashCode();
+    eZb = "finishTime".hashCode();
+    eZc = "isSecondDownload".hashCode();
+    eZd = "fromDownloadApp".hashCode();
   }
   
   public void convertFrom(Cursor paramCursor)
@@ -185,11 +177,11 @@ public abstract class cb
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eWY != k) {
+      if (eYJ != k) {
         break label65;
       }
       this.field_downloadId = paramCursor.getLong(i);
-      this.eWv = true;
+      this.eYg = true;
     }
     for (;;)
     {
@@ -197,42 +189,42 @@ public abstract class cb
       break label20;
       break;
       label65:
-      if (eNa == k)
+      if (eOL == k)
       {
         this.field_downloadUrl = paramCursor.getString(i);
       }
-      else if (eWZ == k)
+      else if (eYK == k)
       {
         this.field_secondaryUrl = paramCursor.getString(i);
       }
-      else if (eXa == k)
+      else if (eYL == k)
       {
         this.field_fileSize = paramCursor.getLong(i);
       }
-      else if (eXb == k)
+      else if (eYM == k)
       {
         this.field_fileName = paramCursor.getString(i);
       }
-      else if (eNc == k)
+      else if (eON == k)
       {
         this.field_filePath = paramCursor.getString(i);
       }
-      else if (eXc == k)
+      else if (eYN == k)
       {
         this.field_fileType = paramCursor.getInt(i);
       }
-      else if (eDc == k)
+      else if (eEL == k)
       {
         this.field_status = paramCursor.getInt(i);
       }
-      else if (eSP == k)
+      else if (eUA == k)
       {
         this.field_md5 = paramCursor.getString(i);
       }
       else
       {
         boolean bool;
-        if (eXd == k)
+        if (eYO == k)
         {
           if (paramCursor.getInt(i) != 0) {}
           for (bool = true;; bool = false)
@@ -241,7 +233,7 @@ public abstract class cb
             break;
           }
         }
-        if (eXe == k)
+        if (eYP == k)
         {
           if (paramCursor.getInt(i) != 0) {}
           for (bool = true;; bool = false)
@@ -250,37 +242,37 @@ public abstract class cb
             break;
           }
         }
-        if (eXf == k)
+        if (eYQ == k)
         {
           this.field_sysDownloadId = paramCursor.getLong(i);
         }
-        else if (eXg == k)
+        else if (eYR == k)
         {
           this.field_downloaderType = paramCursor.getInt(i);
         }
-        else if (eEU == k)
+        else if (eGD == k)
         {
           this.field_appId = paramCursor.getString(i);
         }
-        else if (eMZ == k)
+        else if (eOK == k)
         {
           this.field_downloadUrlHashCode = paramCursor.getInt(i);
         }
-        else if (eHa == k)
+        else if (eIJ == k)
         {
           this.field_packageName = paramCursor.getString(i);
         }
-        else if (eXh == k)
+        else if (eYS == k)
         {
           this.field_downloadedSize = paramCursor.getLong(i);
         }
-        else if (eXi == k)
+        else if (eYT == k)
         {
           this.field_totalSize = paramCursor.getLong(i);
         }
         else
         {
-          if (eXj == k)
+          if (eYU == k)
           {
             if (paramCursor.getInt(i) != 0) {}
             for (bool = true;; bool = false)
@@ -289,33 +281,33 @@ public abstract class cb
               break;
             }
           }
-          if (eXk == k)
+          if (eYV == k)
           {
             this.field_channelId = paramCursor.getString(i);
           }
-          else if (eEB == k)
+          else if (eGk == k)
           {
             this.field_scene = paramCursor.getInt(i);
           }
-          else if (eXl == k)
+          else if (eYW == k)
           {
             this.field_errCode = paramCursor.getInt(i);
           }
-          else if (eDo == k)
+          else if (eEX == k)
           {
             this.field_startTime = paramCursor.getLong(i);
           }
-          else if (eXm == k)
+          else if (eYX == k)
           {
             this.field_startSize = paramCursor.getLong(i);
           }
-          else if (eXn == k)
+          else if (eYY == k)
           {
             this.field_startState = paramCursor.getInt(i);
           }
           else
           {
-            if (eXo == k)
+            if (eYZ == k)
             {
               if (paramCursor.getInt(i) != 0) {}
               for (bool = true;; bool = false)
@@ -324,7 +316,7 @@ public abstract class cb
                 break;
               }
             }
-            if (eXp == k)
+            if (eZa == k)
             {
               if (paramCursor.getInt(i) != 0) {}
               for (bool = true;; bool = false)
@@ -333,17 +325,17 @@ public abstract class cb
                 break;
               }
             }
-            if (eKz == k)
+            if (eMi == k)
             {
               this.field_extInfo = paramCursor.getString(i);
             }
-            else if (eXq == k)
+            else if (eZb == k)
             {
               this.field_finishTime = paramCursor.getLong(i);
             }
             else
             {
-              if (eXr == k)
+              if (eZc == k)
               {
                 if (paramCursor.getInt(i) != 0) {}
                 for (bool = true;; bool = false)
@@ -352,7 +344,7 @@ public abstract class cb
                   break;
                 }
               }
-              if (eXs == k)
+              if (eZd == k)
               {
                 if (paramCursor.getInt(i) != 0) {}
                 for (bool = true;; bool = false)
@@ -361,13 +353,13 @@ public abstract class cb
                   break;
                 }
               }
-              if (eFq == k)
+              if (eGZ == k)
               {
                 this.field_updateTime = paramCursor.getLong(i);
               }
               else
               {
-                if (eXt == k)
+                if (eZe == k)
                 {
                   if (paramCursor.getInt(i) != 0) {}
                   for (bool = true;; bool = false)
@@ -376,19 +368,19 @@ public abstract class cb
                     break;
                   }
                 }
-                if (eXu == k) {
+                if (eZf == k) {
                   this.field_ssid = paramCursor.getInt(i);
-                } else if (eXv == k) {
+                } else if (eZg == k) {
                   this.field_uiarea = paramCursor.getInt(i);
-                } else if (eXw == k) {
+                } else if (eZh == k) {
                   this.field_noticeId = paramCursor.getInt(i);
-                } else if (eXx == k) {
+                } else if (eZi == k) {
                   this.field_downloadType = paramCursor.getInt(i);
-                } else if (eXy == k) {
+                } else if (eZj == k) {
                   this.field_startScene = paramCursor.getInt(i);
-                } else if (eXz == k) {
+                } else if (eZk == k) {
                   this.field_sectionMd5Byte = paramCursor.getBlob(i);
-                } else if (eXA == k) {
+                } else if (eZl == k) {
                   this.field_rawAppId = paramCursor.getString(i);
                 } else if (rowid_HASHCODE == k) {
                   this.systemRowid = paramCursor.getLong(i);
@@ -404,154 +396,154 @@ public abstract class cb
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eWv) {
+    if (this.eYg) {
       localContentValues.put("downloadId", Long.valueOf(this.field_downloadId));
     }
     if (this.field_downloadUrl == null) {
       this.field_downloadUrl = "";
     }
-    if (this.eMS) {
+    if (this.eOD) {
       localContentValues.put("downloadUrl", this.field_downloadUrl);
     }
     if (this.field_secondaryUrl == null) {
       this.field_secondaryUrl = "";
     }
-    if (this.eWw) {
+    if (this.eYh) {
       localContentValues.put("secondaryUrl", this.field_secondaryUrl);
     }
-    if (this.eWx) {
+    if (this.eYi) {
       localContentValues.put("fileSize", Long.valueOf(this.field_fileSize));
     }
     if (this.field_fileName == null) {
       this.field_fileName = "";
     }
-    if (this.eWy) {
+    if (this.eYj) {
       localContentValues.put("fileName", this.field_fileName);
     }
     if (this.field_filePath == null) {
       this.field_filePath = "";
     }
-    if (this.eMU) {
+    if (this.eOF) {
       localContentValues.put("filePath", this.field_filePath);
     }
-    if (this.eWz) {
+    if (this.eYk) {
       localContentValues.put("fileType", Integer.valueOf(this.field_fileType));
     }
-    if (this.eCZ) {
+    if (this.eEI) {
       localContentValues.put("status", Integer.valueOf(this.field_status));
     }
     if (this.field_md5 == null) {
       this.field_md5 = "";
     }
-    if (this.eSd) {
+    if (this.eTO) {
       localContentValues.put("md5", this.field_md5);
     }
-    if (this.eWA) {
+    if (this.eYl) {
       localContentValues.put("autoInstall", Boolean.valueOf(this.field_autoInstall));
     }
-    if (this.eWB) {
+    if (this.eYm) {
       localContentValues.put("showNotification", Boolean.valueOf(this.field_showNotification));
     }
-    if (this.eWC) {
+    if (this.eYn) {
       localContentValues.put("sysDownloadId", Long.valueOf(this.field_sysDownloadId));
     }
-    if (this.eWD) {
+    if (this.eYo) {
       localContentValues.put("downloaderType", Integer.valueOf(this.field_downloaderType));
     }
     if (this.field_appId == null) {
       this.field_appId = "";
     }
-    if (this.eED) {
+    if (this.eGm) {
       localContentValues.put("appId", this.field_appId);
     }
-    if (this.eMR) {
+    if (this.eOC) {
       localContentValues.put("downloadUrlHashCode", Integer.valueOf(this.field_downloadUrlHashCode));
     }
     if (this.field_packageName == null) {
       this.field_packageName = "";
     }
-    if (this.eGE) {
+    if (this.eIn) {
       localContentValues.put("packageName", this.field_packageName);
     }
-    if (this.eWE) {
+    if (this.eYp) {
       localContentValues.put("downloadedSize", Long.valueOf(this.field_downloadedSize));
     }
-    if (this.eWF) {
+    if (this.eYq) {
       localContentValues.put("totalSize", Long.valueOf(this.field_totalSize));
     }
-    if (this.eWG) {
+    if (this.eYr) {
       localContentValues.put("autoDownload", Boolean.valueOf(this.field_autoDownload));
     }
     if (this.field_channelId == null) {
       this.field_channelId = "";
     }
-    if (this.eWH) {
+    if (this.eYs) {
       localContentValues.put("channelId", this.field_channelId);
     }
-    if (this.eEz) {
+    if (this.eGi) {
       localContentValues.put("scene", Integer.valueOf(this.field_scene));
     }
-    if (this.eWI) {
+    if (this.eYt) {
       localContentValues.put("errCode", Integer.valueOf(this.field_errCode));
     }
-    if (this.eDh) {
+    if (this.eEQ) {
       localContentValues.put("startTime", Long.valueOf(this.field_startTime));
     }
-    if (this.eWJ) {
+    if (this.eYu) {
       localContentValues.put("startSize", Long.valueOf(this.field_startSize));
     }
-    if (this.eWK) {
+    if (this.eYv) {
       localContentValues.put("startState", Integer.valueOf(this.field_startState));
     }
-    if (this.eWL) {
+    if (this.eYw) {
       localContentValues.put("fromWeApp", Boolean.valueOf(this.field_fromWeApp));
     }
-    if (this.eWM) {
+    if (this.eYx) {
       localContentValues.put("downloadInWifi", Boolean.valueOf(this.field_downloadInWifi));
     }
     if (this.field_extInfo == null) {
       this.field_extInfo = "";
     }
-    if (this.eKl) {
+    if (this.eLU) {
       localContentValues.put("extInfo", this.field_extInfo);
     }
-    if (this.eWN) {
+    if (this.eYy) {
       localContentValues.put("finishTime", Long.valueOf(this.field_finishTime));
     }
-    if (this.eWO) {
+    if (this.eYz) {
       localContentValues.put("isSecondDownload", Boolean.valueOf(this.field_isSecondDownload));
     }
-    if (this.eWP) {
+    if (this.eYA) {
       localContentValues.put("fromDownloadApp", Boolean.valueOf(this.field_fromDownloadApp));
     }
-    if (this.eFn) {
+    if (this.eGW) {
       localContentValues.put("updateTime", Long.valueOf(this.field_updateTime));
     }
-    if (this.eWQ) {
+    if (this.eYB) {
       localContentValues.put("reserveInWifi", Boolean.valueOf(this.field_reserveInWifi));
     }
-    if (this.eWR) {
+    if (this.eYC) {
       localContentValues.put("ssid", Integer.valueOf(this.field_ssid));
     }
-    if (this.eWS) {
+    if (this.eYD) {
       localContentValues.put("uiarea", Integer.valueOf(this.field_uiarea));
     }
-    if (this.eWT) {
+    if (this.eYE) {
       localContentValues.put("noticeId", Integer.valueOf(this.field_noticeId));
     }
-    if (this.eWU) {
+    if (this.eYF) {
       localContentValues.put("downloadType", Integer.valueOf(this.field_downloadType));
     }
-    if (this.eWV) {
+    if (this.eYG) {
       localContentValues.put("startScene", Integer.valueOf(this.field_startScene));
     }
-    if (this.eWW) {
+    if (this.eYH) {
       localContentValues.put("sectionMd5Byte", this.field_sectionMd5Byte);
     }
     if (this.field_rawAppId == null) {
       this.field_rawAppId = "";
     }
-    if (this.eWX) {
+    if (this.eYI) {
       localContentValues.put("rawAppId", this.field_rawAppId);
     }
     if (this.systemRowid > 0L) {

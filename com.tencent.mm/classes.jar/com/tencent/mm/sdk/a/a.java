@@ -2,7 +2,7 @@ package com.tencent.mm.sdk.a;
 
 public abstract interface a
 {
-  public abstract void wT(String paramString);
+  public abstract void xC(String paramString);
 }
 
 

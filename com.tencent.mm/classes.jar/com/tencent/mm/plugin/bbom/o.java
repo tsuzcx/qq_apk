@@ -1,49 +1,49 @@
 package com.tencent.mm.plugin.bbom;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.am.a.e;
-import com.tencent.mm.am.g;
+import com.tencent.mm.al.a.e;
+import com.tencent.mm.al.g;
 import com.tencent.mm.g.c.ei;
 import com.tencent.mm.m.a;
 import com.tencent.mm.m.a.a;
-import com.tencent.mm.model.bl;
+import com.tencent.mm.model.bn;
 import com.tencent.mm.plugin.messenger.foundation.a.h;
-import com.tencent.mm.protocal.protobuf.byy;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.bu;
+import com.tencent.mm.protocal.protobuf.bzs;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.bv;
 
 public final class o
   implements h, com.tencent.mm.plugin.messenger.foundation.a.o
 {
-  public final String Q(bu parambu)
+  public final String Q(bv parambv)
   {
     AppMethodBeat.i(22376);
-    if (g.vd(parambu.field_talker))
+    if (g.vz(parambv.field_talker))
     {
-      parambu = e.VW();
+      parambv = e.We();
       AppMethodBeat.o(22376);
-      return parambu;
+      return parambv;
     }
-    parambu = bl.aCi();
+    parambv = bn.aCy();
     AppMethodBeat.o(22376);
-    return parambu;
+    return parambv;
   }
   
-  public final void a(byy parambyy, bu parambu)
+  public final void a(bzs parambzs, bv parambv)
   {
     AppMethodBeat.i(22375);
-    if (g.vd(parambu.field_talker))
+    if (g.vz(parambv.field_talker))
     {
-      parambyy.Fvn = parambu.eLs;
-      if (bt.isNullOrNil(parambyy.Fvn))
+      parambzs.FNL = parambv.eNd;
+      if (bu.isNullOrNil(parambzs.FNL))
       {
-        parambyy.Fvn = a.a.ZG().o(parambu);
+        parambzs.FNL = a.a.ZP().o(parambv);
         AppMethodBeat.o(22375);
       }
     }
     else
     {
-      parambyy.Fvn = parambu.eLs;
+      parambzs.FNL = parambv.eNd;
     }
     AppMethodBeat.o(22375);
   }

@@ -1,10 +1,10 @@
 package com.tencent.luggage.game.d.b;
 
 import com.tencent.mm.plugin.appbrand.jsapi.a;
-import com.tencent.mm.plugin.appbrand.q;
+import com.tencent.mm.plugin.appbrand.r;
 
 public final class f
-  extends a<q>
+  extends a<r>
 {
   private static final int CTRL_INDEX = 463;
   private static final String NAME = "updateKeyboard";

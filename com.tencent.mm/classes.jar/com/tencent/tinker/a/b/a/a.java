@@ -4,26 +4,26 @@ import com.tencent.tinker.a.c.b;
 
 public abstract class a
 {
-  final b Mel = new b();
+  final b MBi = new b();
   public int aoY = 0;
   
-  public final int fYq()
+  public final int gcP()
   {
-    int i = this.Mel.indexOfKey(this.aoY);
+    int i = this.MBi.indexOfKey(this.aoY);
     if (i < 0) {
       return this.aoY;
     }
-    return this.Mel.Mew[i];
+    return this.MBi.MBt[i];
   }
   
-  protected final void fYr()
+  protected final void gcQ()
   {
     this.aoY += 1;
   }
   
-  public final void la(int paramInt1, int paramInt2)
+  public final void lh(int paramInt1, int paramInt2)
   {
-    this.Mel.put(paramInt1, paramInt2);
+    this.MBi.put(paramInt1, paramInt2);
   }
 }
 

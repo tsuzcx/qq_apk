@@ -7,8 +7,8 @@ import com.tencent.mm.storage.emotion.EmojiInfo;
 public final class bg
   extends b
 {
-  public a dmg;
-  public b dmh;
+  public a dni;
+  public b dnj;
   
   public bg()
   {
@@ -18,17 +18,17 @@ public final class bg
   private bg(byte paramByte)
   {
     AppMethodBeat.i(104409);
-    this.dmg = new a();
-    this.dmh = new b();
-    this.IbR = false;
+    this.dni = new a();
+    this.dnj = new b();
+    this.IvZ = false;
     this.callback = null;
     AppMethodBeat.o(104409);
   }
   
   public static final class a
   {
-    public EmojiInfo dmi;
-    public String dmj;
+    public EmojiInfo dnk;
+    public String dnl;
     public int type;
   }
   
@@ -39,7 +39,7 @@ public final class bg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.g.a.bg
  * JD-Core Version:    0.7.0.1
  */

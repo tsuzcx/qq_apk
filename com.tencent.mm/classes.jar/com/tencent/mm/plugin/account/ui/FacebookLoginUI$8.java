@@ -12,7 +12,7 @@ final class FacebookLoginUI$8
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     AppMethodBeat.i(127991);
-    this.jjZ.finish();
+    this.jmS.finish();
     AppMethodBeat.o(127991);
   }
 }

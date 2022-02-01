@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.x;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.y;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -9,31 +9,31 @@ import java.util.Map;
 
 public final class g
 {
+  public String AcO;
+  public boolean AcP;
+  public LinkedList<y> AcQ;
+  public Map<String, y> AcR;
+  public boolean AcS;
+  public ArrayList<String> AcT;
+  public boolean AcU;
   public int id;
-  public String jVX;
-  public boolean tTr;
-  public String zLH;
-  public boolean zLI;
-  public LinkedList<x> zLJ;
-  public Map<String, x> zLK;
-  public boolean zLL;
-  public ArrayList<String> zLM;
-  public boolean zLN;
+  public String jZm;
+  public boolean uej;
   
   public g()
   {
     AppMethodBeat.i(97317);
-    this.zLJ = new LinkedList();
-    this.zLK = new HashMap();
-    this.zLL = true;
-    this.zLM = new ArrayList();
-    this.zLN = false;
+    this.AcQ = new LinkedList();
+    this.AcR = new HashMap();
+    this.AcS = true;
+    this.AcT = new ArrayList();
+    this.AcU = false;
     AppMethodBeat.o(97317);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.g
  * JD-Core Version:    0.7.0.1
  */

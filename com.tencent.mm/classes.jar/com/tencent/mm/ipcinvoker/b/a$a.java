@@ -17,7 +17,7 @@ public abstract class a$a
     attachInterface(this, "com.tencent.mm.ipcinvoker.aidl.AIDL_IPCInvokeBridge");
   }
   
-  public static a k(IBinder paramIBinder)
+  public static a l(IBinder paramIBinder)
   {
     if (paramIBinder == null) {
       return null;

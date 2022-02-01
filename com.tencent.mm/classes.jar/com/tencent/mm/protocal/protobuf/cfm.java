@@ -3,44 +3,41 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class cfm
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public int GYZ;
-  public String iHB;
+  public String userName;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(152653);
+    AppMethodBeat.i(152635);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.iHB != null) {
-        paramVarArgs.d(1, this.iHB);
+      if (this.userName != null) {
+        paramVarArgs.d(1, this.userName);
       }
-      paramVarArgs.aS(2, this.GYZ);
-      AppMethodBeat.o(152653);
+      AppMethodBeat.o(152635);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.iHB == null) {
-        break label258;
+      if (this.userName == null) {
+        break label213;
       }
     }
-    label258:
-    for (paramInt = f.a.a.b.b.a.e(1, this.iHB) + 0;; paramInt = 0)
+    label213:
+    for (paramInt = f.a.a.b.b.a.e(1, this.userName) + 0;; paramInt = 0)
     {
-      int i = f.a.a.b.b.a.bz(2, this.GYZ);
-      AppMethodBeat.o(152653);
-      return paramInt + i;
+      AppMethodBeat.o(152635);
+      return paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
-        AppMethodBeat.o(152653);
+        AppMethodBeat.o(152635);
         return 0;
       }
       if (paramInt == 3)
@@ -50,18 +47,14 @@ public final class cfm
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(152653);
+          AppMethodBeat.o(152635);
           return -1;
-        case 1: 
-          localcfm.iHB = locala.NPN.readString();
-          AppMethodBeat.o(152653);
-          return 0;
         }
-        localcfm.GYZ = locala.NPN.zc();
-        AppMethodBeat.o(152653);
+        localcfm.userName = locala.OmT.readString();
+        AppMethodBeat.o(152635);
         return 0;
       }
-      AppMethodBeat.o(152653);
+      AppMethodBeat.o(152635);
       return -1;
     }
   }

@@ -9,7 +9,7 @@ import com.tencent.mm.plugin.appbrand.jsapi.e;
 public abstract interface g
   extends f
 {
-  public static final g kIc = new g()
+  public static final g kLr = new g()
   {
     public final void ap(String paramAnonymousString, boolean paramAnonymousBoolean) {}
     
@@ -18,15 +18,15 @@ public abstract interface g
       return 0.0F;
     }
     
-    public final void bjF() {}
+    public final void bko() {}
     
-    public final void bjH() {}
+    public final void bkq() {}
     
-    public final void bjI() {}
+    public final void bkr() {}
     
-    public final void bjO() {}
+    public final void bkx() {}
     
-    public final void bjP() {}
+    public final void bky() {}
     
     public final boolean dO(int paramAnonymousInt1, int paramAnonymousInt2)
     {
@@ -98,7 +98,7 @@ public abstract interface g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.camera.g
  * JD-Core Version:    0.7.0.1
  */

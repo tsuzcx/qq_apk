@@ -1,14 +1,12 @@
 package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
 import com.tencent.mm.sdk.b.b;
 
 public final class dn
   extends b
 {
-  public a don;
-  public b doo;
+  public a dpr;
   
   public dn()
   {
@@ -17,25 +15,16 @@ public final class dn
   
   private dn(byte paramByte)
   {
-    AppMethodBeat.i(115975);
-    this.don = new a();
-    this.doo = new b();
-    this.IbR = false;
+    AppMethodBeat.i(115974);
+    this.dpr = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(115975);
+    AppMethodBeat.o(115974);
   }
   
   public static final class a
   {
-    public String dop;
-    public int doq = 0;
-    public n dor;
-    public int opType = 0;
-  }
-  
-  public static final class b
-  {
-    public n dor;
+    public boolean enable;
   }
 }
 

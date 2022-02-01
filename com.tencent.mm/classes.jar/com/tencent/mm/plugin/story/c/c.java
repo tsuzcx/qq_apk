@@ -6,47 +6,47 @@ import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.expt.b.b;
 import com.tencent.mm.plugin.expt.b.b.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.al.a;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.storage.aj;
+import com.tencent.mm.storage.am.a;
 
 public final class c
 {
-  public static boolean xxH = false;
+  public static boolean xNE = false;
   
-  public static long AE(long paramLong)
+  public static long Bc(long paramLong)
   {
     AppMethodBeat.i(118529);
-    long l = ((b)g.ab(b.class)).a(b.a.qvW, 40000L);
-    ad.i("MicroMsg.X264Config", "updateByCostTime, costTime:%s, max:%s", new Object[] { Long.valueOf(paramLong), Long.valueOf(l) });
+    long l = ((b)g.ab(b.class)).a(b.a.qCV, 40000L);
+    ae.i("MicroMsg.X264Config", "updateByCostTime, costTime:%s, max:%s", new Object[] { Long.valueOf(paramLong), Long.valueOf(l) });
     if (paramLong > l)
     {
-      paramLong = ehk();
+      paramLong = ekS();
       AppMethodBeat.o(118529);
       return paramLong;
     }
-    l = g.ajC().ajl().a(al.a.IFS, 0L);
+    l = g.ajR().ajA().a(am.a.Jas, 0L);
     if (l <= 0L) {}
     for (l = 0L;; l -= 1L)
     {
-      g.ajC().ajl().set(al.a.IFS, Long.valueOf(l));
-      ad.i("MicroMsg.X264Config", "update succ, costTime:%s, cur:%s", new Object[] { Long.valueOf(paramLong), Long.valueOf(l) });
+      g.ajR().ajA().set(am.a.Jas, Long.valueOf(l));
+      ae.i("MicroMsg.X264Config", "update succ, costTime:%s, cur:%s", new Object[] { Long.valueOf(paramLong), Long.valueOf(l) });
       AppMethodBeat.o(118529);
       return l;
     }
   }
   
-  public static long ehk()
+  public static long ekS()
   {
     long l1 = 0L;
     AppMethodBeat.i(118530);
-    long l2 = g.ajC().ajl().a(al.a.IFS, 0L);
+    long l2 = g.ajR().ajA().a(am.a.Jas, 0L);
     if (l2 < 0L) {}
     for (;;)
     {
       l1 += 1L;
-      g.ajC().ajl().set(al.a.IFS, Long.valueOf(l1));
-      ad.i("MicroMsg.X264Config", "updateFailedTimes, cur:%s", new Object[] { Long.valueOf(l1) });
+      g.ajR().ajA().set(am.a.Jas, Long.valueOf(l1));
+      ae.i("MicroMsg.X264Config", "updateFailedTimes, cur:%s", new Object[] { Long.valueOf(l1) });
       AppMethodBeat.o(118530);
       return l1;
       l1 = l2;
@@ -56,18 +56,18 @@ public final class c
   public static boolean isEnable()
   {
     AppMethodBeat.i(118528);
-    if (xxH)
+    if (xNE)
     {
       AppMethodBeat.o(118528);
       return true;
     }
-    if (((b)g.ab(b.class)).a(b.a.qvW, 0L) > 0L)
+    if (((b)g.ab(b.class)).a(b.a.qCV, 0L) > 0L)
     {
       i = 1;
-      if ((i == 0) || (!d.ly(28))) {
+      if ((i == 0) || (!d.lA(28))) {
         break label97;
       }
-      if (g.ajC().ajl().a(al.a.IFS, 0L) < 3L) {
+      if (g.ajR().ajA().a(am.a.Jas, 0L) < 3L) {
         break label92;
       }
     }

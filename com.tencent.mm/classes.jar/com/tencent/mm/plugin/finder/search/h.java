@@ -8,38 +8,38 @@ import android.text.TextUtils;
 import android.text.TextUtils.TruncateAt;
 import android.text.style.ForegroundColorSpan;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cc.a;
+import com.tencent.mm.cb.a;
 import com.tencent.mm.plugin.finder.storage.FinderItem;
-import com.tencent.mm.protocal.protobuf.amu;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.protocal.protobuf.ang;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
 import d.g.b.p;
 import d.l;
 import d.n.k;
 import java.util.concurrent.ConcurrentHashMap;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/search/FinderSearchLogic;", "", "()V", "FeedItemWidth", "", "getFeedItemWidth", "()I", "HighLightWordEnd", "", "getHighLightWordEnd", "()Ljava/lang/String;", "HighLightWordReplaceEnd", "getHighLightWordReplaceEnd", "HighLightWordReplaceStart", "getHighLightWordReplaceStart", "HighLightWordStart", "getHighLightWordStart", "finderDataCache", "Lcom/tencent/mm/protocal/protobuf/FinderFeedSearchObj;", "getFinderDataCache", "()Lcom/tencent/mm/protocal/protobuf/FinderFeedSearchObj;", "setFinderDataCache", "(Lcom/tencent/mm/protocal/protobuf/FinderFeedSearchObj;)V", "finderFeedCacheMap", "Ljava/util/concurrent/ConcurrentHashMap;", "", "Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "getFinderFeedCacheMap", "()Ljava/util/concurrent/ConcurrentHashMap;", "setFinderFeedCacheMap", "(Ljava/util/concurrent/ConcurrentHashMap;)V", "processHighLight", "Landroid/text/Spanned;", "origin", "textPaint", "Landroid/text/TextPaint;", "width", "removeHighLightTag", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/search/FinderSearchLogic;", "", "()V", "FeedItemWidth", "", "getFeedItemWidth", "()I", "HighLightWordEnd", "", "getHighLightWordEnd", "()Ljava/lang/String;", "HighLightWordReplaceEnd", "getHighLightWordReplaceEnd", "HighLightWordReplaceStart", "getHighLightWordReplaceStart", "HighLightWordStart", "getHighLightWordStart", "finderDataCache", "Lcom/tencent/mm/protocal/protobuf/FinderFeedSearchObj;", "getFinderDataCache", "()Lcom/tencent/mm/protocal/protobuf/FinderFeedSearchObj;", "setFinderDataCache", "(Lcom/tencent/mm/protocal/protobuf/FinderFeedSearchObj;)V", "finderFeedCacheMap", "Ljava/util/concurrent/ConcurrentHashMap;", "", "Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "getFinderFeedCacheMap", "()Ljava/util/concurrent/ConcurrentHashMap;", "setFinderFeedCacheMap", "(Ljava/util/concurrent/ConcurrentHashMap;)V", "processHighLight", "Landroid/text/Spanned;", "origin", "textPaint", "Landroid/text/TextPaint;", "width", "removeHighLightTag", "plugin-finder_release"})
 public final class h
 {
-  private static ConcurrentHashMap<Long, FinderItem> sdo;
-  private static final String stN = "<em class=\"highlight\">";
-  private static final String stO = "</em>";
-  private static final String stP = "<font color=\"#06AD56\">";
-  private static final String stQ = "</font>";
-  private static final int stR;
-  private static amu stS;
-  public static final h stT;
+  private static final String sDY = "<em class=\"highlight\">";
+  private static final String sDZ = "</em>";
+  private static final String sEa = "<font color=\"#06AD56\">";
+  private static final String sEb = "</font>";
+  private static final int sEc;
+  private static ang sEd;
+  public static final h sEe;
+  private static ConcurrentHashMap<Long, FinderItem> smf;
   
   static
   {
     AppMethodBeat.i(166868);
-    stT = new h();
-    stN = "<em class=\"highlight\">";
-    stO = "</em>";
-    stP = "<font color=\"#06AD56\">";
-    stQ = "</font>";
-    stR = a.ip(aj.getContext()) - a.fromDPToPix(aj.getContext(), 72);
-    sdo = new ConcurrentHashMap();
+    sEe = new h();
+    sDY = "<em class=\"highlight\">";
+    sDZ = "</em>";
+    sEa = "<font color=\"#06AD56\">";
+    sEb = "</font>";
+    sEc = a.iu(ak.getContext()) - a.fromDPToPix(ak.getContext(), 72);
+    smf = new ConcurrentHashMap();
     AppMethodBeat.o(166868);
   }
   
@@ -49,8 +49,8 @@ public final class h
     p.h(paramString, "origin");
     p.h(paramTextPaint, "textPaint");
     paramString = (CharSequence)paramString;
-    paramString = (CharSequence)new k(stN).e(paramString, stP);
-    Object localObject2 = Html.fromHtml(new k(stO).e(paramString, stQ));
+    paramString = (CharSequence)new k(sDY).e(paramString, sEa);
+    Object localObject2 = Html.fromHtml(new k(sDZ).e(paramString, sEb));
     if ((paramTextPaint.measureText(localObject2.toString()) > paramInt) && ((localObject2 instanceof SpannableStringBuilder)))
     {
       float f1 = paramInt - paramTextPaint.getTextSize() * 2.0F;
@@ -124,30 +124,30 @@ public final class h
     return localObject2;
   }
   
-  public static void a(amu paramamu)
+  public static void a(ang paramang)
   {
-    stS = paramamu;
+    sEd = paramang;
   }
   
-  public static String ahX(String paramString)
+  public static String aiV(String paramString)
   {
     AppMethodBeat.i(166865);
     p.h(paramString, "origin");
     paramString = (CharSequence)paramString;
-    paramString = (CharSequence)new k(stN).e(paramString, "");
-    paramString = new k(stO).e(paramString, "");
+    paramString = (CharSequence)new k(sDY).e(paramString, "");
+    paramString = new k(sDZ).e(paramString, "");
     AppMethodBeat.o(166865);
     return paramString;
   }
   
-  public static Spanned ahY(String paramString)
+  public static Spanned aiW(String paramString)
   {
     int i = 0;
     AppMethodBeat.i(166866);
     p.h(paramString, "origin");
     paramString = (CharSequence)paramString;
-    paramString = (CharSequence)new k(stN).e(paramString, stP);
-    paramString = Html.fromHtml(new k(stO).e(paramString, stQ));
+    paramString = (CharSequence)new k(sDY).e(paramString, sEa);
+    paramString = Html.fromHtml(new k(sDZ).e(paramString, sEb));
     if ((paramString instanceof SpannableStringBuilder))
     {
       ForegroundColorSpan[] arrayOfForegroundColorSpan = (ForegroundColorSpan[])paramString.getSpans(0, paramString.length(), ForegroundColorSpan.class);
@@ -159,7 +159,7 @@ public final class h
           ForegroundColorSpan localForegroundColorSpan = arrayOfForegroundColorSpan[i];
           int k = paramString.getSpanStart(localForegroundColorSpan);
           int m = paramString.getSpanEnd(localForegroundColorSpan);
-          ad.i("Finder.Hightlight", k + ' ' + m);
+          ae.i("Finder.Hightlight", k + ' ' + m);
           i += 1;
         }
       }
@@ -169,24 +169,24 @@ public final class h
     return paramString;
   }
   
-  public static int cEO()
+  public static int cGK()
   {
-    return stR;
+    return sEc;
   }
   
-  public static amu cEP()
+  public static ang cGL()
   {
-    return stS;
+    return sEd;
   }
   
-  public static ConcurrentHashMap<Long, FinderItem> cEQ()
+  public static ConcurrentHashMap<Long, FinderItem> cGM()
   {
-    return sdo;
+    return smf;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.search.h
  * JD-Core Version:    0.7.0.1
  */

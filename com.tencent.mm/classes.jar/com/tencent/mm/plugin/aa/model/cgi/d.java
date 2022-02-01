@@ -1,11 +1,11 @@
 package com.tencent.mm.plugin.aa.model.cgi;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.a;
-import com.tencent.mm.al.b.a;
+import com.tencent.mm.ak.a;
+import com.tencent.mm.ak.b.a;
 import com.tencent.mm.protocal.protobuf.b;
 import com.tencent.mm.protocal.protobuf.c;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class d
   extends a<c>
@@ -15,16 +15,16 @@ public final class d
     AppMethodBeat.i(63374);
     b.a locala = new b.a();
     b localb = new b();
-    localb.FpG = paramString1;
-    localb.FpH = paramString2;
-    locala.hNM = localb;
-    locala.hNN = new c();
+    localb.FIe = paramString1;
+    localb.FIf = paramString2;
+    locala.hQF = localb;
+    locala.hQG = new c();
     locala.uri = "/cgi-bin/mmpay-bin/newaaclosenotify";
     locala.funcId = 1672;
-    locala.hNO = 0;
+    locala.hQH = 0;
     locala.respCmdId = 0;
-    c(locala.aDC());
-    ad.i("MicroMsg.CgiCloseAAUrgeNotify", "CgiCloseAAUrgeNotify, billNo: %s, chatroom: %s", new Object[] { paramString1, paramString2 });
+    c(locala.aDS());
+    ae.i("MicroMsg.CgiCloseAAUrgeNotify", "CgiCloseAAUrgeNotify, billNo: %s, chatroom: %s", new Object[] { paramString1, paramString2 });
     AppMethodBeat.o(63374);
   }
 }

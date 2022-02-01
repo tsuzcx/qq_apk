@@ -7,11 +7,11 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 import d.v;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/multitalk/ui/widget/SmallAvatarLayoutHolder;", "Landroid/support/v7/widget/RecyclerView$ViewHolder;", "itemView", "Landroid/view/View;", "(Landroid/view/View;)V", "avatarLayout", "Landroid/widget/RelativeLayout;", "plugin-multitalk_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/multitalk/ui/widget/SmallAvatarLayoutHolder;", "Landroid/support/v7/widget/RecyclerView$ViewHolder;", "itemView", "Landroid/view/View;", "(Landroid/view/View;)V", "avatarLayout", "Landroid/widget/RelativeLayout;", "plugin-multitalk_release"})
 public final class n
   extends RecyclerView.w
 {
-  public RelativeLayout whx;
+  public RelativeLayout wxb;
   
   public n(View paramView)
   {
@@ -24,7 +24,7 @@ public final class n
       AppMethodBeat.o(178992);
       throw paramView;
     }
-    this.whx = ((RelativeLayout)paramView);
+    this.wxb = ((RelativeLayout)paramView);
     AppMethodBeat.o(178992);
   }
 }

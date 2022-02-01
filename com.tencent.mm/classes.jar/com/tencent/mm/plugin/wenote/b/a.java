@@ -7,29 +7,29 @@ import com.tencent.mm.plugin.wenote.ui.nativenote.NoteEditorUI;
 public final class a
   extends e
 {
-  private NoteEditorUI Eyt;
+  private NoteEditorUI EQP;
   
   public a(NoteEditorUI paramNoteEditorUI)
   {
     super(paramNoteEditorUI);
-    this.Eyt = paramNoteEditorUI;
+    this.EQP = paramNoteEditorUI;
   }
   
-  public final boolean bgz()
+  public final boolean bhh()
   {
     AppMethodBeat.i(30264);
-    boolean bool = super.bgz();
+    boolean bool = super.bhh();
     AppMethodBeat.o(30264);
     return bool;
   }
   
-  public final void gg(boolean paramBoolean)
+  public final void ge(boolean paramBoolean)
   {
     AppMethodBeat.i(30265);
-    if (this.Eyt != null)
+    if (this.EQP != null)
     {
-      this.Eyt.goBack();
-      super.gg(paramBoolean);
+      this.EQP.goBack();
+      super.ge(paramBoolean);
     }
     AppMethodBeat.o(30265);
   }

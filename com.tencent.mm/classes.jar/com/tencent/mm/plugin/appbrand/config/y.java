@@ -8,21 +8,21 @@ import android.net.Uri;
 import com.tencent.luggage.wxa.storage.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.protocal.protobuf.kv;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.Arrays;
 
 public final class y
 {
   private static final Uri URI;
-  private static final y kap;
+  private static final y kdG;
   
   static
   {
     AppMethodBeat.i(146063);
     URI = Uri.parse("content://" + a.AUTHORITY + "/WxaAttributesTable");
-    kap = new y();
+    kdG = new y();
     AppMethodBeat.o(146063);
   }
   
@@ -78,7 +78,7 @@ public final class y
     //   87: ldc 108
     //   89: invokestatic 113	org/apache/commons/b/g:a	(Ljava/util/Collection;Ljava/lang/String;)Ljava/lang/String;
     //   92: astore 4
-    //   94: invokestatic 119	com/tencent/mm/sdk/platformtools/aj:getContext	()Landroid/content/Context;
+    //   94: invokestatic 119	com/tencent/mm/sdk/platformtools/ak:getContext	()Landroid/content/Context;
     //   97: invokevirtual 125	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
     //   100: astore 5
     //   102: getstatic 49	com/tencent/mm/plugin/appbrand/config/y:URI	Landroid/net/Uri;
@@ -173,7 +173,7 @@ public final class y
     //   287: iconst_1
     //   288: aload_1
     //   289: aastore
-    //   290: invokestatic 177	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   290: invokestatic 177	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   293: ldc 63
     //   295: invokestatic 56	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   298: aconst_null
@@ -233,30 +233,30 @@ public final class y
       paramkv = paramkv.toByteArray();
       ContentValues localContentValues = new ContentValues();
       localContentValues.put("CONTENT_KEY_BATCH_SYNC_PROTO", paramkv);
-      aj.getContext().getContentResolver().insert(URI, localContentValues);
+      ak.getContext().getContentResolver().insert(URI, localContentValues);
       AppMethodBeat.o(182791);
       return true;
     }
     catch (Exception paramkv)
     {
-      ad.e("Luggage.WxaAttrsContentResolver", "batchUpdateWithProto insert failed");
+      ae.e("Luggage.WxaAttrsContentResolver", "batchUpdateWithProto insert failed");
       AppMethodBeat.o(182791);
     }
     return false;
   }
   
-  public static y bes()
+  public static y bfa()
   {
-    return kap;
+    return kdG;
   }
   
   public static WxaAttributes e(String paramString, String... paramVarArgs)
   {
-    AppMethodBeat.i(190882);
-    long l = bt.HI();
+    AppMethodBeat.i(220755);
+    long l = bu.HQ();
     WxaAttributes localWxaAttributes = f(String.format("%s=?", new Object[] { "appId" }), new String[] { paramString });
-    ad.i("Luggage.WxaAttrsContentResolver", "queryWithAppId appId:%s, cost:%dms, columns:%s", new Object[] { paramString, Long.valueOf(bt.HI() - l), Arrays.toString(paramVarArgs) });
-    AppMethodBeat.o(190882);
+    ae.i("Luggage.WxaAttrsContentResolver", "queryWithAppId appId:%s, cost:%dms, columns:%s", new Object[] { paramString, Long.valueOf(bu.HQ() - l), Arrays.toString(paramVarArgs) });
+    AppMethodBeat.o(220755);
     return localWxaAttributes;
   }
   
@@ -264,7 +264,7 @@ public final class y
   {
     Object localObject = null;
     AppMethodBeat.i(146062);
-    paramArrayOfString = aj.getContext().getContentResolver().query(URI, null, paramString, paramArrayOfString, null);
+    paramArrayOfString = ak.getContext().getContentResolver().query(URI, null, paramString, paramArrayOfString, null);
     if (paramArrayOfString == null)
     {
       AppMethodBeat.o(146062);

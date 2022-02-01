@@ -16,44 +16,44 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.j;
-import com.tencent.mm.ak.p;
+import com.tencent.mm.aj.i;
+import com.tencent.mm.aj.j;
+import com.tencent.mm.aj.p;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.model.as.a;
-import com.tencent.mm.model.as.b;
-import com.tencent.mm.model.u;
+import com.tencent.mm.model.au.a;
+import com.tencent.mm.model.au.b;
+import com.tencent.mm.model.v;
 import com.tencent.mm.plugin.exdevice.model.f.1;
 import com.tencent.mm.pluginsdk.ui.a.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.base.MMHorList;
 import java.util.ArrayList;
 
 public class ExdeviceProfileAffectedUserView
   extends LinearLayout
 {
-  private String lEN;
-  private TextView qkZ;
-  private MMHorList qla;
-  private a qlb;
-  private ArrayList<String> qlc;
+  private String lJm;
+  private TextView qrE;
+  private MMHorList qrF;
+  private a qrG;
+  private ArrayList<String> qrH;
   
   public ExdeviceProfileAffectedUserView(final Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(24088);
     paramAttributeSet = LayoutInflater.from(paramContext).inflate(2131493873, this, true);
-    this.qkZ = ((TextView)paramAttributeSet.findViewById(2131303446));
-    this.qla = ((MMHorList)paramAttributeSet.findViewById(2131303445));
-    this.qla.setCenterInParent(true);
-    int i = com.tencent.mm.cc.a.fromDPToPix(paramContext, 44);
-    this.qla.setOverScrollEnabled(true);
-    this.qla.setItemWidth(i);
-    this.qla.setCenterInParent(true);
-    this.qlb = new a((byte)0);
-    this.qla.setAdapter(this.qlb);
-    this.qla.setOnItemClickListener(new AdapterView.OnItemClickListener()
+    this.qrE = ((TextView)paramAttributeSet.findViewById(2131303446));
+    this.qrF = ((MMHorList)paramAttributeSet.findViewById(2131303445));
+    this.qrF.setCenterInParent(true);
+    int i = com.tencent.mm.cb.a.fromDPToPix(paramContext, 44);
+    this.qrF.setOverScrollEnabled(true);
+    this.qrF.setItemWidth(i);
+    this.qrF.setCenterInParent(true);
+    this.qrG = new a((byte)0);
+    this.qrF.setAdapter(this.qrG);
+    this.qrF.setOnItemClickListener(new AdapterView.OnItemClickListener()
     {
       public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
       {
@@ -61,14 +61,14 @@ public class ExdeviceProfileAffectedUserView
         b localb = new b();
         localb.bd(paramAnonymousAdapterView);
         localb.bd(paramAnonymousView);
-        localb.mr(paramAnonymousInt);
-        localb.qY(paramAnonymousLong);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/exdevice/ui/ExdeviceProfileAffectedUserView$1", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.ahq());
+        localb.mu(paramAnonymousInt);
+        localb.rl(paramAnonymousLong);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/exdevice/ui/ExdeviceProfileAffectedUserView$1", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.ahF());
         paramAnonymousView = (String)paramAnonymousAdapterView.getAdapter().getItem(paramAnonymousInt);
-        ad.d("MicroMsg.ExdeviceProfileAffectedUserView", "onItemClick, username : %s", new Object[] { paramAnonymousView });
-        if (bt.isNullOrNil(paramAnonymousView))
+        ae.d("MicroMsg.ExdeviceProfileAffectedUserView", "onItemClick, username : %s", new Object[] { paramAnonymousView });
+        if (bu.isNullOrNil(paramAnonymousView))
         {
-          ad.w("MicroMsg.ExdeviceProfileAffectedUserView", "username is null.");
+          ae.w("MicroMsg.ExdeviceProfileAffectedUserView", "username is null.");
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/exdevice/ui/ExdeviceProfileAffectedUserView$1", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
           AppMethodBeat.o(24079);
           return;
@@ -77,22 +77,22 @@ public class ExdeviceProfileAffectedUserView
         paramAnonymousAdapterView.putExtra("username", paramAnonymousView);
         paramAnonymousView = paramContext;
         paramAnonymousAdapterView = new com.tencent.mm.hellhoundlib.b.a().bc(paramAnonymousAdapterView);
-        com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, paramAnonymousAdapterView.ahp(), "com/tencent/mm/plugin/exdevice/ui/ExdeviceProfileAffectedUserView$1", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        paramAnonymousView.startActivity((Intent)paramAnonymousAdapterView.mq(0));
+        com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, paramAnonymousAdapterView.ahE(), "com/tencent/mm/plugin/exdevice/ui/ExdeviceProfileAffectedUserView$1", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramAnonymousView.startActivity((Intent)paramAnonymousAdapterView.mt(0));
         com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, "com/tencent/mm/plugin/exdevice/ui/ExdeviceProfileAffectedUserView$1", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/exdevice/ui/ExdeviceProfileAffectedUserView$1", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
         AppMethodBeat.o(24079);
       }
     });
-    this.qkZ.setOnClickListener(new View.OnClickListener()
+    this.qrE.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(24080);
         b localb = new b();
         localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/exdevice/ui/ExdeviceProfileAffectedUserView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-        paramAnonymousView = u.aAm();
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/exdevice/ui/ExdeviceProfileAffectedUserView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        paramAnonymousView = v.aAC();
         if ((paramAnonymousView != null) && (paramAnonymousView.equals(ExdeviceProfileAffectedUserView.a(ExdeviceProfileAffectedUserView.this))))
         {
           paramAnonymousView = ExdeviceProfileAffectedUserView.b(ExdeviceProfileAffectedUserView.this);
@@ -117,7 +117,7 @@ public class ExdeviceProfileAffectedUserView
         AppMethodBeat.i(24081);
         b localb = new b();
         localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/exdevice/ui/ExdeviceProfileAffectedUserView$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/exdevice/ui/ExdeviceProfileAffectedUserView$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
         ExdeviceProfileAffectedUserView.c(ExdeviceProfileAffectedUserView.this).performClick();
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/exdevice/ui/ExdeviceProfileAffectedUserView$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(24081);
@@ -130,34 +130,34 @@ public class ExdeviceProfileAffectedUserView
   public void setAffectedUserInfo(ArrayList<String> paramArrayList)
   {
     AppMethodBeat.i(24089);
-    this.qlc = paramArrayList;
-    if ((this.qlc == null) || (this.qlc.size() == 0))
+    this.qrH = paramArrayList;
+    if ((this.qrH == null) || (this.qrH.size() == 0))
     {
-      this.qkZ.setText("");
+      this.qrE.setText("");
       setVisibility(8);
       AppMethodBeat.o(24089);
       return;
     }
     setVisibility(0);
-    this.qkZ.setText(getResources().getString(2131758572, new Object[] { Integer.valueOf(this.qlc.size()) }));
-    this.qlb.notifyDataSetChanged();
+    this.qrE.setText(getResources().getString(2131758572, new Object[] { Integer.valueOf(this.qrH.size()) }));
+    this.qrG.notifyDataSetChanged();
     AppMethodBeat.o(24089);
   }
   
   public void setUsername(String paramString)
   {
-    this.lEN = paramString;
+    this.lJm = paramString;
   }
   
   final class a
     extends BaseAdapter
   {
-    private Runnable qle;
+    private Runnable qrJ;
     
     private a()
     {
       AppMethodBeat.i(24083);
-      this.qle = new Runnable()
+      this.qrJ = new Runnable()
       {
         public final void run()
         {
@@ -203,23 +203,23 @@ public class ExdeviceProfileAffectedUserView
       {
         paramView = LayoutInflater.from(ExdeviceProfileAffectedUserView.this.getContext()).inflate(2131493879, paramViewGroup, false);
         paramViewGroup = new a();
-        paramViewGroup.jdF = ((ImageView)paramView.findViewById(2131296996));
+        paramViewGroup.jgy = ((ImageView)paramView.findViewById(2131296996));
         paramView.setTag(paramViewGroup);
       }
       for (;;)
       {
-        Runnable localRunnable = this.qle;
-        Object localObject = p.aEx();
+        Runnable localRunnable = this.qrJ;
+        Object localObject = p.aEN();
         if (localObject != null)
         {
-          localObject = ((j)localObject).Dj(str);
-          if ((localObject == null) || (bt.isNullOrNil(((i)localObject).aEr())))
+          localObject = ((j)localObject).DL(str);
+          if ((localObject == null) || (bu.isNullOrNil(((i)localObject).aEH())))
           {
-            long l = bt.flT();
-            as.a.hFO.a(str, "", new f.1(l, localRunnable));
+            long l = bu.fpO();
+            au.a.hIG.a(str, "", new f.1(l, localRunnable));
           }
         }
-        a.b.v(paramViewGroup.jdF, str);
+        a.b.v(paramViewGroup.jgy, str);
         AppMethodBeat.o(24086);
         return paramView;
         paramViewGroup = (a)paramView.getTag();
@@ -228,7 +228,7 @@ public class ExdeviceProfileAffectedUserView
     
     final class a
     {
-      ImageView jdF;
+      ImageView jgy;
       
       a() {}
     }

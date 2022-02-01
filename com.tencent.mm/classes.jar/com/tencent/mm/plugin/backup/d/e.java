@@ -2,83 +2,83 @@ package com.tencent.mm.plugin.backup.d;
 
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
-import com.tencent.mm.model.ba;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.model.bc;
 import com.tencent.mm.plugin.backup.b.g;
 import com.tencent.mm.pointers.PInt;
 import com.tencent.mm.pointers.PString;
 import com.tencent.mm.protocal.k.b;
 import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.aba;
+import com.tencent.mm.protocal.protobuf.abj;
 import com.tencent.mm.protocal.protobuf.id;
 import com.tencent.mm.protocal.protobuf.ie;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.av;
-import com.tencent.mm.sdk.platformtools.av.a;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.aw;
+import com.tencent.mm.sdk.platformtools.aw.a;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.LinkedList;
 
 public final class e
 {
-  com.tencent.mm.plugin.backup.b.e nsE;
-  LinkedList<aba> nvX;
-  String nvY;
-  private String nvZ;
-  private boolean nwa;
-  a nwb;
-  private av nwc;
-  final f nwd;
-  final f nwe;
+  LinkedList<abj> nBs;
+  String nBt;
+  private String nBu;
+  private boolean nBv;
+  a nBw;
+  private aw nBx;
+  final f nBy;
+  final f nBz;
+  com.tencent.mm.plugin.backup.b.e nxZ;
   
   public e(a parama, com.tencent.mm.plugin.backup.b.e parame)
   {
     AppMethodBeat.i(21363);
-    this.nvZ = "";
-    this.nwa = false;
-    this.nwc = new av(Looper.getMainLooper(), new av.a()
+    this.nBu = "";
+    this.nBv = false;
+    this.nBx = new aw(Looper.getMainLooper(), new aw.a()
     {
       public final boolean onTimerExpired()
       {
         AppMethodBeat.i(21360);
-        e.this.bHY();
+        e.this.bIW();
         AppMethodBeat.o(21360);
         return true;
       }
     }, true);
-    this.nwd = new f()
+    this.nBy = new f()
     {
       public final void onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, n paramAnonymousn)
       {
         AppMethodBeat.i(21361);
-        com.tencent.mm.plugin.backup.g.b.b(704, e.this.nwd);
-        ad.i("MicroMsg.CheckNetworkGenQrCodeHandler", "backup move receive createQrcode response.[%d,%d,%s]", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString });
+        com.tencent.mm.plugin.backup.g.b.b(704, e.this.nBy);
+        ae.i("MicroMsg.CheckNetworkGenQrCodeHandler", "backup move receive createQrcode response.[%d,%d,%s]", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString });
         if ((paramAnonymousInt1 != 0) || (paramAnonymousInt2 != 0))
         {
-          ad.e("MicroMsg.CheckNetworkGenQrCodeHandler", "create qrcode failed, errMsg:".concat(String.valueOf(paramAnonymousString)));
-          ad.i("MicroMsg.CheckNetworkGenQrCodeHandler", "err: %d, %d, %s", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString });
+          ae.e("MicroMsg.CheckNetworkGenQrCodeHandler", "create qrcode failed, errMsg:".concat(String.valueOf(paramAnonymousString)));
+          ae.i("MicroMsg.CheckNetworkGenQrCodeHandler", "err: %d, %d, %s", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString });
           if (paramAnonymousInt2 == -100)
           {
-            ba.aiU().a(1000, e.this.nwe);
-            paramAnonymousString = new com.tencent.mm.plugin.backup.e.a(e.this.nvX, e.this.nvY, b.bHG().nuX);
-            ba.aiU().a(paramAnonymousString, 0);
+            bc.ajj().a(1000, e.this.nBz);
+            paramAnonymousString = new com.tencent.mm.plugin.backup.e.a(e.this.nBs, e.this.nBt, b.bIE().nAs);
+            bc.ajj().a(paramAnonymousString, 0);
             AppMethodBeat.o(21361);
             return;
           }
-          e.this.nsE.nsJ = -11;
-          e.this.nwb.n(-11, null);
+          e.this.nxZ.nye = -11;
+          e.this.nBw.n(-11, null);
           AppMethodBeat.o(21361);
           return;
         }
         paramAnonymousString = (com.tencent.mm.plugin.backup.e.b)paramAnonymousn;
-        paramAnonymousn = (ie)paramAnonymousString.rr.hNL.hNQ;
-        b.bHG().nsB = "";
-        b.bHG().nsC = paramAnonymousn.FAG;
-        b.bHG().nsD = paramAnonymousn.FAH;
-        b.bHG().nuX = paramAnonymousn.FAC;
-        paramAnonymousString = (ie)paramAnonymousString.rr.hNL.hNQ;
+        paramAnonymousn = (ie)paramAnonymousString.rr.hQE.hQJ;
+        b.bIE().nxW = "";
+        b.bIE().nxX = paramAnonymousn.FTc;
+        b.bIE().nxY = paramAnonymousn.FTd;
+        b.bIE().nAs = paramAnonymousn.FSY;
+        paramAnonymousString = (ie)paramAnonymousString.rr.hQE.hQJ;
         if (paramAnonymousString == null) {
           paramAnonymousString = null;
         }
@@ -86,39 +86,39 @@ public final class e
         {
           if (paramAnonymousString != null)
           {
-            e.this.nsE.nsJ = 51;
-            e.this.nwb.n(51, paramAnonymousString);
+            e.this.nxZ.nye = 51;
+            e.this.nBw.n(51, paramAnonymousString);
           }
           AppMethodBeat.o(21361);
           return;
-          if (paramAnonymousString.FAD == null) {
+          if (paramAnonymousString.FSZ == null) {
             paramAnonymousString = null;
           } else {
-            paramAnonymousString = paramAnonymousString.FAD.getBufferToBytes();
+            paramAnonymousString = paramAnonymousString.FSZ.getBufferToBytes();
           }
         }
       }
     };
-    this.nwe = new f()
+    this.nBz = new f()
     {
       public final void onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, n paramAnonymousn)
       {
         AppMethodBeat.i(21362);
-        com.tencent.mm.plugin.backup.g.b.b(1000, e.this.nwe);
-        ad.i("MicroMsg.CheckNetworkGenQrCodeHandler", "backup move receive createOffilineQrcode response.[%d,%d,%s]", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString });
+        com.tencent.mm.plugin.backup.g.b.b(1000, e.this.nBz);
+        ae.i("MicroMsg.CheckNetworkGenQrCodeHandler", "backup move receive createOffilineQrcode response.[%d,%d,%s]", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString });
         if ((paramAnonymousInt1 != 0) || (paramAnonymousInt2 != 0))
         {
-          ad.e("MicroMsg.CheckNetworkGenQrCodeHandler", "create offline qrcode failed, errMsg:".concat(String.valueOf(paramAnonymousString)));
-          e.this.nsE.nsJ = -11;
-          e.this.nwb.n(-11, null);
+          ae.e("MicroMsg.CheckNetworkGenQrCodeHandler", "create offline qrcode failed, errMsg:".concat(String.valueOf(paramAnonymousString)));
+          e.this.nxZ.nye = -11;
+          e.this.nBw.n(-11, null);
           AppMethodBeat.o(21362);
           return;
         }
-        paramAnonymousn = ((k.b)((com.tencent.mm.plugin.backup.e.a)paramAnonymousn).hON.getRespObj()).FnW;
+        paramAnonymousn = ((k.b)((com.tencent.mm.plugin.backup.e.a)paramAnonymousn).hRG.getRespObj()).FGu;
         if (paramAnonymousn == null)
         {
           paramAnonymousString = "null";
-          ad.i("MicroMsg.BackupCreateQRCodeOfflineScene", "onGYNetEnd QRCodeUrl:%s", new Object[] { paramAnonymousString });
+          ae.i("MicroMsg.BackupCreateQRCodeOfflineScene", "onGYNetEnd QRCodeUrl:%s", new Object[] { paramAnonymousString });
           if (paramAnonymousn != null) {
             break label202;
           }
@@ -128,94 +128,94 @@ public final class e
         {
           if (paramAnonymousString != null)
           {
-            e.this.nsE.nsJ = 51;
-            e.this.nwb.n(51, paramAnonymousString);
+            e.this.nxZ.nye = 51;
+            e.this.nBw.n(51, paramAnonymousString);
           }
           AppMethodBeat.o(21362);
           return;
-          paramAnonymousString = paramAnonymousn.FAE;
+          paramAnonymousString = paramAnonymousn.FTa;
           break;
           label202:
-          if (paramAnonymousn.FAD == null) {
+          if (paramAnonymousn.FSZ == null) {
             paramAnonymousString = null;
           } else {
-            paramAnonymousString = paramAnonymousn.FAD.getBufferToBytes();
+            paramAnonymousString = paramAnonymousn.FSZ.getBufferToBytes();
           }
         }
       }
     };
-    this.nwb = parama;
-    this.nsE = parame;
+    this.nBw = parama;
+    this.nxZ = parame;
     AppMethodBeat.o(21363);
   }
   
-  private boolean bHZ()
+  private boolean bIX()
   {
     AppMethodBeat.i(21367);
-    this.nvX = new LinkedList();
+    this.nBs = new LinkedList();
     PString localPString = new PString();
     PInt localPInt = new PInt();
-    this.nvY = g.eh(aj.getContext());
-    ad.i("MicroMsg.CheckNetworkGenQrCodeHandler", "wifiName :%s", new Object[] { this.nvY });
-    if (bt.isNullOrNil(this.nvY))
+    this.nBt = g.el(ak.getContext());
+    ae.i("MicroMsg.CheckNetworkGenQrCodeHandler", "wifiName :%s", new Object[] { this.nBt });
+    if (bu.isNullOrNil(this.nBt))
     {
-      this.nsE.nsJ = -4;
-      this.nwb.n(-4, null);
-      this.nvZ = "";
+      this.nxZ.nye = -4;
+      this.nBw.n(-4, null);
+      this.nBu = "";
       AppMethodBeat.o(21367);
       return false;
     }
-    if (!b.bHG().bHH().a(localPString, localPInt))
+    if (!b.bIE().bIF().a(localPString, localPInt))
     {
-      this.nsE.nsJ = -4;
-      this.nwb.n(-4, null);
-      this.nvZ = "";
+      this.nxZ.nye = -4;
+      this.nBw.n(-4, null);
+      this.nBu = "";
       AppMethodBeat.o(21367);
       return false;
     }
-    ad.i("MicroMsg.CheckNetworkGenQrCodeHandler", "server listen result: %s, %d", new Object[] { localPString.value, Integer.valueOf(localPInt.value) });
-    aba localaba = new aba();
-    localaba.FWO = localPString.value;
-    localaba.Gaw = new LinkedList();
-    localaba.Gaw.add(Integer.valueOf(localPInt.value));
-    this.nvX.add(localaba);
+    ae.i("MicroMsg.CheckNetworkGenQrCodeHandler", "server listen result: %s, %d", new Object[] { localPString.value, Integer.valueOf(localPInt.value) });
+    abj localabj = new abj();
+    localabj.Gpn = localPString.value;
+    localabj.Gtd = new LinkedList();
+    localabj.Gtd.add(Integer.valueOf(localPInt.value));
+    this.nBs.add(localabj);
     AppMethodBeat.o(21367);
     return true;
   }
   
-  final void bHY()
+  final void bIW()
   {
     AppMethodBeat.i(21366);
-    Object localObject = g.eh(aj.getContext());
-    ad.i("MicroMsg.CheckNetworkGenQrCodeHandler", "checkNetStatus newWifiName:%s  preWifiName:%s acc:%b hold:%b", new Object[] { localObject, this.nvZ, Boolean.valueOf(ba.ajx()), Boolean.valueOf(ba.aiE()) });
-    if (!((String)localObject).equals(this.nvZ))
+    Object localObject = g.el(ak.getContext());
+    ae.i("MicroMsg.CheckNetworkGenQrCodeHandler", "checkNetStatus newWifiName:%s  preWifiName:%s acc:%b hold:%b", new Object[] { localObject, this.nBu, Boolean.valueOf(bc.ajM()), Boolean.valueOf(bc.aiT()) });
+    if (!((String)localObject).equals(this.nBu))
     {
-      if (!ba.ajx())
+      if (!bc.ajM())
       {
         AppMethodBeat.o(21366);
         return;
       }
-      this.nvZ = ((String)localObject);
-      if (!bHZ())
+      this.nBu = ((String)localObject);
+      if (!bIX())
       {
-        this.nwa = false;
+        this.nBv = false;
         AppMethodBeat.o(21366);
         return;
       }
-      this.nwa = false;
-      if (!ba.aiE())
+      this.nBv = false;
+      if (!bc.aiT())
       {
-        ad.i("MicroMsg.CheckNetworkGenQrCodeHandler", "begin to netscene create QRCode online ");
-        ba.aiU().a(704, this.nwd);
-        localObject = new com.tencent.mm.plugin.backup.e.b(this.nvX, this.nvY);
-        ba.aiU().a((n)localObject, 0);
+        ae.i("MicroMsg.CheckNetworkGenQrCodeHandler", "begin to netscene create QRCode online ");
+        bc.ajj().a(704, this.nBy);
+        localObject = new com.tencent.mm.plugin.backup.e.b(this.nBs, this.nBt);
+        bc.ajj().a((n)localObject, 0);
         AppMethodBeat.o(21366);
         return;
       }
-      ad.i("MicroMsg.CheckNetworkGenQrCodeHandler", "begin to netscene create QRCode offline");
-      ba.aiU().a(1000, this.nwe);
-      localObject = new com.tencent.mm.plugin.backup.e.a(this.nvX, this.nvY, b.bHG().nuX);
-      ba.aiU().a((n)localObject, 0);
+      ae.i("MicroMsg.CheckNetworkGenQrCodeHandler", "begin to netscene create QRCode offline");
+      bc.ajj().a(1000, this.nBz);
+      localObject = new com.tencent.mm.plugin.backup.e.a(this.nBs, this.nBt, b.bIE().nAs);
+      bc.ajj().a((n)localObject, 0);
     }
     AppMethodBeat.o(21366);
   }
@@ -223,36 +223,36 @@ public final class e
   public final void start()
   {
     AppMethodBeat.i(21364);
-    ad.i("MicroMsg.CheckNetworkGenQrCodeHandler", "start check network and gen qrcode handler starting:%b stop:%b .%s %s", new Object[] { Boolean.valueOf(this.nwa), Boolean.valueOf(this.nwc.fkZ()), this, bt.flS() });
-    if (this.nwa)
+    ae.i("MicroMsg.CheckNetworkGenQrCodeHandler", "start check network and gen qrcode handler starting:%b stop:%b .%s %s", new Object[] { Boolean.valueOf(this.nBv), Boolean.valueOf(this.nBx.foU()), this, bu.fpN() });
+    if (this.nBv)
     {
       AppMethodBeat.o(21364);
       return;
     }
-    this.nwa = true;
-    if (bHZ())
+    this.nBv = true;
+    if (bIX())
     {
-      this.nvZ = null;
-      bHY();
+      this.nBu = null;
+      bIW();
     }
     for (;;)
     {
-      this.nwc.az(500L, 500L);
+      this.nBx.ay(500L, 500L);
       AppMethodBeat.o(21364);
       return;
-      this.nsE.nsJ = -4;
-      this.nwb.n(-4, null);
+      this.nxZ.nye = -4;
+      this.nBw.n(-4, null);
     }
   }
   
   public final void stop()
   {
     AppMethodBeat.i(21365);
-    ad.i("MicroMsg.CheckNetworkGenQrCodeHandler", "stop check network and gen qrcode handler.");
-    this.nwa = false;
-    ba.aiU().b(704, this.nwd);
-    ba.aiU().b(1000, this.nwe);
-    this.nwc.stopTimer();
+    ae.i("MicroMsg.CheckNetworkGenQrCodeHandler", "stop check network and gen qrcode handler.");
+    this.nBv = false;
+    bc.ajj().b(704, this.nBy);
+    bc.ajj().b(1000, this.nBz);
+    this.nBx.stopTimer();
     AppMethodBeat.o(21365);
   }
   
@@ -263,7 +263,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.d.e
  * JD-Core Version:    0.7.0.1
  */

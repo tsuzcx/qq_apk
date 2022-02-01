@@ -1,11 +1,11 @@
 package com.tencent.mm.modelvoiceaddr;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bx.b;
+import com.tencent.mm.bw.b;
 import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.cwt;
-import com.tencent.mm.protocal.protobuf.dwm;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.cxn;
+import com.tencent.mm.protocal.protobuf.dyd;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
@@ -18,68 +18,68 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 public final class h
 {
-  String iyD;
-  LinkedHashMap<String, a> iyE;
-  final ReadWriteLock iyF;
-  private StringBuilder iyG;
+  String iBw;
+  LinkedHashMap<String, a> iBx;
+  final ReadWriteLock iBy;
+  private StringBuilder iBz;
   
   public h(String paramString)
   {
     AppMethodBeat.i(148591);
-    this.iyF = new ReentrantReadWriteLock();
-    this.iyG = new StringBuilder();
-    this.iyE = new LinkedHashMap();
-    this.iyD = paramString;
+    this.iBy = new ReentrantReadWriteLock();
+    this.iBz = new StringBuilder();
+    this.iBx = new LinkedHashMap();
+    this.iBw = paramString;
     AppMethodBeat.o(148591);
   }
   
   public final boolean a(h paramh)
   {
     AppMethodBeat.i(148599);
-    this.iyF.readLock().lock();
-    Iterator localIterator = this.iyE.values().iterator();
+    this.iBy.readLock().lock();
+    Iterator localIterator = this.iBx.values().iterator();
     while (localIterator.hasNext())
     {
       a locala1 = (a)localIterator.next();
-      a locala2 = new a(paramh.iyD);
-      locala2.iyK = locala1.iyK;
-      paramh.iyE.put(locala2.iyH, locala2);
+      a locala2 = new a(paramh.iBw);
+      locala2.iBD = locala1.iBD;
+      paramh.iBx.put(locala2.iBA, locala2);
     }
-    this.iyF.readLock().unlock();
+    this.iBy.readLock().unlock();
     AppMethodBeat.o(148599);
     return true;
   }
   
-  public final LinkedList<cwt> aNV()
+  public final LinkedList<cxn> aOt()
   {
     AppMethodBeat.i(148592);
     LinkedList localLinkedList = new LinkedList();
-    this.iyF.readLock().lock();
-    Iterator localIterator = this.iyE.values().iterator();
+    this.iBy.readLock().lock();
+    Iterator localIterator = this.iBx.values().iterator();
     while (localIterator.hasNext())
     {
       a locala = (a)localIterator.next();
-      if (locala.iyI) {
-        localLinkedList.add(new cwt().aPy(locala.iyH));
+      if (locala.iBB) {
+        localLinkedList.add(new cxn().aQV(locala.iBA));
       }
     }
-    this.iyF.readLock().unlock();
+    this.iBy.readLock().unlock();
     AppMethodBeat.o(148592);
     return localLinkedList;
   }
   
-  public final boolean aNW()
+  public final boolean aOu()
   {
     AppMethodBeat.i(148594);
-    this.iyF.readLock().lock();
-    if (this.iyE.size() == 0)
+    this.iBy.readLock().lock();
+    if (this.iBx.size() == 0)
     {
-      ad.i("MicroMsg.ShortSentenceContainer", "isAllRespEnd innerContainer.size() == 0");
-      this.iyF.readLock().unlock();
+      ae.i("MicroMsg.ShortSentenceContainer", "isAllRespEnd innerContainer.size() == 0");
+      this.iBy.readLock().unlock();
       AppMethodBeat.o(148594);
       return true;
     }
-    Iterator localIterator = this.iyE.values().iterator();
+    Iterator localIterator = this.iBx.values().iterator();
     a locala;
     do
     {
@@ -87,28 +87,28 @@ public final class h
         break;
       }
       locala = (a)localIterator.next();
-      ad.d("MicroMsg.ShortSentenceContainer", "isAllRespEnd voiceId:%s isRequestEnd:%s isResponseEnd:%s", new Object[] { locala.iyH, Boolean.valueOf(locala.iyJ), Boolean.valueOf(locala.iyN) });
-    } while (locala.iyN);
+      ae.d("MicroMsg.ShortSentenceContainer", "isAllRespEnd voiceId:%s isRequestEnd:%s isResponseEnd:%s", new Object[] { locala.iBA, Boolean.valueOf(locala.iBC), Boolean.valueOf(locala.iBG) });
+    } while (locala.iBG);
     for (boolean bool = false;; bool = true)
     {
-      this.iyF.readLock().unlock();
+      this.iBy.readLock().unlock();
       AppMethodBeat.o(148594);
       return bool;
     }
   }
   
-  public final void aNX()
+  public final void aOv()
   {
     AppMethodBeat.i(148597);
-    ad.i("MicroMsg.ShortSentenceContainer", "createNewShortSentence");
-    this.iyF.writeLock().lock();
+    ae.i("MicroMsg.ShortSentenceContainer", "createNewShortSentence");
+    this.iBy.writeLock().lock();
     a locala = new a();
-    this.iyE.put(locala.iyH, locala);
-    this.iyF.writeLock().unlock();
+    this.iBx.put(locala.iBA, locala);
+    this.iBy.writeLock().unlock();
     AppMethodBeat.o(148597);
   }
   
-  public final void az(List<dwm> paramList)
+  public final void az(List<dyd> paramList)
   {
     AppMethodBeat.i(148595);
     int i;
@@ -116,20 +116,20 @@ public final class h
     if (paramList == null)
     {
       i = 0;
-      this.iyF.readLock().lock();
-      if (this.iyE.size() != 0) {
+      this.iBy.readLock().lock();
+      if (this.iBx.size() != 0) {
         break label112;
       }
-      this.iyF.readLock().unlock();
+      this.iBy.readLock().unlock();
       localObject = "[]";
     }
     for (;;)
     {
-      ad.d("MicroMsg.ShortSentenceContainer", "updateVoiceInfoResult respVTList size %s innerContainer %s", new Object[] { Integer.valueOf(i), localObject });
+      ae.d("MicroMsg.ShortSentenceContainer", "updateVoiceInfoResult respVTList size %s innerContainer %s", new Object[] { Integer.valueOf(i), localObject });
       if ((paramList != null) && (paramList.size() != 0)) {
         break label259;
       }
-      ad.i("MicroMsg.ShortSentenceContainer", "respList == null");
+      ae.i("MicroMsg.ShortSentenceContainer", "respList == null");
       AppMethodBeat.o(148595);
       return;
       i = paramList.size();
@@ -137,47 +137,47 @@ public final class h
       label112:
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("[");
-      localIterator = this.iyE.values().iterator();
+      localIterator = this.iBx.values().iterator();
       while (localIterator.hasNext()) {
-        ((StringBuilder)localObject).append(((a)localIterator.next()).iyH).append(", ");
+        ((StringBuilder)localObject).append(((a)localIterator.next()).iBA).append(", ");
       }
       if (((StringBuilder)localObject).length() <= 3)
       {
-        this.iyF.readLock().unlock();
+        this.iBy.readLock().unlock();
         localObject = "]";
       }
       else
       {
         ((StringBuilder)localObject).setLength(((StringBuilder)localObject).length() - 2);
-        this.iyF.readLock().unlock();
+        this.iBy.readLock().unlock();
         localObject = "]";
       }
     }
     label259:
-    this.iyF.readLock().lock();
+    this.iBy.readLock().lock();
     Iterator localIterator = paramList.iterator();
     while (localIterator.hasNext())
     {
-      dwm localdwm = (dwm)localIterator.next();
-      if (localdwm == null)
+      dyd localdyd = (dyd)localIterator.next();
+      if (localdyd == null)
       {
-        ad.i("MicroMsg.ShortSentenceContainer", "setFetchedVoiceInfoResult voiceTransCell is null.");
+        ae.i("MicroMsg.ShortSentenceContainer", "setFetchedVoiceInfoResult voiceTransCell is null.");
       }
       else
       {
-        a locala = (a)this.iyE.get(localdwm.FKD);
+        a locala = (a)this.iBx.get(localdyd.Gdc);
         if (locala == null)
         {
-          ad.i("MicroMsg.ShortSentenceContainer", "voiceInfoContainer not found the voiceId %s", new Object[] { localdwm.FKD });
+          ae.i("MicroMsg.ShortSentenceContainer", "voiceInfoContainer not found the voiceId %s", new Object[] { localdyd.Gdc });
         }
-        else if (localdwm == null)
+        else if (localdyd == null)
         {
-          ad.d("MicroMsg.ShortSentenceContainer", "update VoiceInfo cell is null");
+          ae.d("MicroMsg.ShortSentenceContainer", "update VoiceInfo cell is null");
         }
         else
         {
-          String str1 = localdwm.FKD;
-          i = localdwm.HIU;
+          String str1 = localdyd.Gdc;
+          i = localdyd.Idc;
           label411:
           boolean bool1;
           label422:
@@ -187,19 +187,19 @@ public final class h
           boolean bool3;
           int k;
           int m;
-          if ((localdwm.HFw == null) || (localdwm.HFw.getBuffer() == null))
+          if ((localdyd.HZj == null) || (localdyd.HZj.getBuffer() == null))
           {
             paramList = null;
-            if (localdwm.ihf == 0) {
+            if (localdyd.ijY == 0) {
               break label622;
             }
             bool1 = true;
-            j = localdwm.ihf;
-            str2 = locala.iyH;
-            bool2 = locala.iyI;
-            bool3 = locala.iyJ;
-            k = locala.iyK;
-            m = locala.iyM;
+            j = localdyd.ijY;
+            str2 = locala.iBA;
+            bool2 = locala.iBB;
+            bool3 = locala.iBC;
+            k = locala.iBD;
+            m = locala.iBF;
             if (locala.data != null) {
               break label628;
             }
@@ -208,33 +208,33 @@ public final class h
           label628:
           for (localObject = null;; localObject = Integer.valueOf(locala.data.length()))
           {
-            ad.d("MicroMsg.ShortSentenceContainer", "update VoiceInfo get {cell} %s, seq %s, text %s, endFlag %s, endFlag %s {currentInfo} %s, isRequestStart %s, isRequestEnd %s, voiceFileMark %s, seq %s, data %s, isResponseEnd %s", new Object[] { str1, Integer.valueOf(i), paramList, Boolean.valueOf(bool1), Integer.valueOf(j), str2, Boolean.valueOf(bool2), Boolean.valueOf(bool3), Integer.valueOf(k), Integer.valueOf(m), localObject, Boolean.valueOf(locala.iyN) });
-            if ((localdwm.HIU >= locala.iyM) && (!locala.iyN)) {
+            ae.d("MicroMsg.ShortSentenceContainer", "update VoiceInfo get {cell} %s, seq %s, text %s, endFlag %s, endFlag %s {currentInfo} %s, isRequestStart %s, isRequestEnd %s, voiceFileMark %s, seq %s, data %s, isResponseEnd %s", new Object[] { str1, Integer.valueOf(i), paramList, Boolean.valueOf(bool1), Integer.valueOf(j), str2, Boolean.valueOf(bool2), Boolean.valueOf(bool3), Integer.valueOf(k), Integer.valueOf(m), localObject, Boolean.valueOf(locala.iBG) });
+            if ((localdyd.Idc >= locala.iBF) && (!locala.iBG)) {
               break label644;
             }
-            ad.d("MicroMsg.ShortSentenceContainer", "update seq not fit.");
+            ae.d("MicroMsg.ShortSentenceContainer", "update seq not fit.");
             break;
-            paramList = Integer.valueOf(localdwm.HFw.getILen());
+            paramList = Integer.valueOf(localdyd.HZj.getILen());
             break label411;
             bool1 = false;
             break label422;
           }
           label644:
-          locala.iyM = localdwm.HIU;
-          if ((localdwm.HFw == null) || (localdwm.HFw.getBuffer() == null))
+          locala.iBF = localdyd.Idc;
+          if ((localdyd.HZj == null) || (localdyd.HZj.getBuffer() == null))
           {
             paramList = null;
             label675:
             locala.data = paramList;
-            if (localdwm.ihf == 0) {
+            if (localdyd.ijY == 0) {
               break label813;
             }
             bool1 = true;
             label692:
-            locala.iyN = bool1;
-            paramList = localdwm.FKD;
-            j = locala.iyM;
-            bool1 = locala.iyN;
+            locala.iBG = bool1;
+            paramList = localdyd.Gdc;
+            j = locala.iBF;
+            bool1 = locala.iBG;
             if (locala.data != null) {
               break label819;
             }
@@ -243,13 +243,13 @@ public final class h
           label819:
           for (i = -1;; i = locala.data.length())
           {
-            ad.i("MicroMsg.ShortSentenceContainer", "update VoiceId = %s,respSeq = %s,isResponseEnd = %s,data.length = %s", new Object[] { paramList, Integer.valueOf(j), Boolean.valueOf(bool1), Integer.valueOf(i) });
-            if (localdwm.ihf != 2) {
+            ae.i("MicroMsg.ShortSentenceContainer", "update VoiceId = %s,respSeq = %s,isResponseEnd = %s,data.length = %s", new Object[] { paramList, Integer.valueOf(j), Boolean.valueOf(bool1), Integer.valueOf(i) });
+            if (localdyd.ijY != 2) {
               break;
             }
-            ad.e("MicroMsg.ShortSentenceContainer", "update cell.EndFlag = 2 VoiceId = %s", new Object[] { localdwm.FKD });
+            ae.e("MicroMsg.ShortSentenceContainer", "update cell.EndFlag = 2 VoiceId = %s", new Object[] { localdyd.Gdc });
             break;
-            paramList = localdwm.HFw.getBuffer().ffY();
+            paramList = localdyd.HZj.getBuffer().fjO();
             break label675;
             bool1 = false;
             break label692;
@@ -257,25 +257,25 @@ public final class h
         }
       }
     }
-    this.iyF.readLock().unlock();
+    this.iBy.readLock().unlock();
     AppMethodBeat.o(148595);
   }
   
   public final String getResult()
   {
     AppMethodBeat.i(148593);
-    this.iyG.setLength(0);
-    this.iyF.readLock().lock();
-    Object localObject = this.iyE.values().iterator();
+    this.iBz.setLength(0);
+    this.iBy.readLock().lock();
+    Object localObject = this.iBx.values().iterator();
     while (((Iterator)localObject).hasNext())
     {
       a locala = (a)((Iterator)localObject).next();
       if (locala.data != null) {
-        this.iyG.append(locala.data);
+        this.iBz.append(locala.data);
       }
     }
-    this.iyF.readLock().unlock();
-    localObject = this.iyG.toString();
+    this.iBy.readLock().unlock();
+    localObject = this.iBz.toString();
     AppMethodBeat.o(148593);
     return localObject;
   }
@@ -283,7 +283,7 @@ public final class h
   public final boolean isValid()
   {
     AppMethodBeat.i(185490);
-    if ((this.iyE == null) || (this.iyE.isEmpty()))
+    if ((this.iBx == null) || (this.iBx.isEmpty()))
     {
       AppMethodBeat.o(185490);
       return false;
@@ -292,25 +292,25 @@ public final class h
     return true;
   }
   
-  public final void qt(int paramInt)
+  public final void qw(int paramInt)
   {
     AppMethodBeat.i(148596);
-    ad.i("MicroMsg.ShortSentenceContainer", "cutShortSentence markEnd:%s", new Object[] { Integer.valueOf(paramInt) });
+    ae.i("MicroMsg.ShortSentenceContainer", "cutShortSentence markEnd:%s", new Object[] { Integer.valueOf(paramInt) });
     if (paramInt < 0)
     {
       localObject = new IllegalStateException("splitShortSentence file mark less than zero. mark: ".concat(String.valueOf(paramInt)));
       AppMethodBeat.o(148596);
       throw ((Throwable)localObject);
     }
-    this.iyF.readLock().lock();
-    if (this.iyE.size() == 0)
+    this.iBy.readLock().lock();
+    if (this.iBx.size() == 0)
     {
-      ad.e("MicroMsg.ShortSentenceContainer", "splitShortSentence there is no last one");
-      this.iyF.readLock().unlock();
+      ae.e("MicroMsg.ShortSentenceContainer", "splitShortSentence there is no last one");
+      this.iBy.readLock().unlock();
       AppMethodBeat.o(148596);
       return;
     }
-    Iterator localIterator = this.iyE.values().iterator();
+    Iterator localIterator = this.iBx.values().iterator();
     for (Object localObject = null; localIterator.hasNext(); localObject = (a)localIterator.next()) {}
     if (localObject == null)
     {
@@ -318,23 +318,23 @@ public final class h
       AppMethodBeat.o(148596);
       throw ((Throwable)localObject);
     }
-    ad.d("MicroMsg.ShortSentenceContainer", "cutShortSentence voiceFileMarkEnd:%s voiceId:%s markEnd:%s", new Object[] { Integer.valueOf(((a)localObject).iyK), ((a)localObject).iyH, Integer.valueOf(paramInt) });
-    ((a)localObject).iyK = paramInt;
-    this.iyF.readLock().unlock();
+    ae.d("MicroMsg.ShortSentenceContainer", "cutShortSentence voiceFileMarkEnd:%s voiceId:%s markEnd:%s", new Object[] { Integer.valueOf(((a)localObject).iBD), ((a)localObject).iBA, Integer.valueOf(paramInt) });
+    ((a)localObject).iBD = paramInt;
+    this.iBy.readLock().unlock();
     AppMethodBeat.o(148596);
   }
   
-  public final a qu(int paramInt)
+  public final a qx(int paramInt)
   {
     AppMethodBeat.i(148598);
-    this.iyF.readLock().lock();
-    if (this.iyE.size() == 0)
+    this.iBy.readLock().lock();
+    if (this.iBx.size() == 0)
     {
-      this.iyF.readLock().unlock();
+      this.iBy.readLock().unlock();
       AppMethodBeat.o(148598);
       return null;
     }
-    Iterator localIterator = this.iyE.values().iterator();
+    Iterator localIterator = this.iBx.values().iterator();
     a locala;
     do
     {
@@ -342,11 +342,11 @@ public final class h
         break;
       }
       locala = (a)localIterator.next();
-      ad.d("MicroMsg.ShortSentenceContainer", "locateCurrentShortSentence oldOffset = %s voiceFileMarkEnd = %s info.isRequestEnd = %s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(locala.iyK), Boolean.valueOf(locala.iyJ) });
-    } while ((locala.iyJ) || (paramInt > locala.iyK));
+      ae.d("MicroMsg.ShortSentenceContainer", "locateCurrentShortSentence oldOffset = %s voiceFileMarkEnd = %s info.isRequestEnd = %s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(locala.iBD), Boolean.valueOf(locala.iBC) });
+    } while ((locala.iBC) || (paramInt > locala.iBD));
     for (;;)
     {
-      this.iyF.readLock().unlock();
+      this.iBy.readLock().unlock();
       AppMethodBeat.o(148598);
       return locala;
       locala = null;
@@ -356,43 +356,43 @@ public final class h
   public final class a
   {
     public String data;
-    public String iyH;
-    public boolean iyI;
-    public boolean iyJ;
-    public int iyK;
-    public int iyL;
-    public int iyM;
-    public boolean iyN;
+    public String iBA;
+    public boolean iBB;
+    public boolean iBC;
+    public int iBD;
+    public int iBE;
+    public int iBF;
+    public boolean iBG;
     
     public a()
     {
       AppMethodBeat.i(148588);
-      this.iyI = false;
-      this.iyJ = false;
-      this.iyK = 2147483647;
-      this.iyL = 0;
-      this.iyM = -1;
+      this.iBB = false;
+      this.iBC = false;
+      this.iBD = 2147483647;
+      this.iBE = 0;
+      this.iBF = -1;
       this.data = null;
-      this.iyN = false;
-      this.iyH = Ie(h.this.iyD);
+      this.iBG = false;
+      this.iBA = IG(h.this.iBw);
       AppMethodBeat.o(148588);
     }
     
     public a(String paramString)
     {
       AppMethodBeat.i(148589);
-      this.iyI = false;
-      this.iyJ = false;
-      this.iyK = 2147483647;
-      this.iyL = 0;
-      this.iyM = -1;
+      this.iBB = false;
+      this.iBC = false;
+      this.iBD = 2147483647;
+      this.iBE = 0;
+      this.iBF = -1;
       this.data = null;
-      this.iyN = false;
-      this.iyH = Ie(paramString);
+      this.iBG = false;
+      this.iBA = IG(paramString);
       AppMethodBeat.o(148589);
     }
     
-    private static String Ie(String paramString)
+    private static String IG(String paramString)
     {
       AppMethodBeat.i(148590);
       long l3 = 0xFFFFFFFF & System.currentTimeMillis();
@@ -403,7 +403,7 @@ public final class h
         l1 = Math.abs(l2);
       }
       String str = paramString + l1;
-      ad.i("MicroMsg.ShortSentenceContainer", "finally random = %s(%s) time = %s(%s) id = %s(%s) session = %s strId = %s", new Object[] { Long.valueOf(l4), Long.toBinaryString(l4), Long.valueOf(l3), Long.toBinaryString(l3), Long.valueOf(l1), Long.toBinaryString(l1), paramString, str });
+      ae.i("MicroMsg.ShortSentenceContainer", "finally random = %s(%s) time = %s(%s) id = %s(%s) session = %s strId = %s", new Object[] { Long.valueOf(l4), Long.toBinaryString(l4), Long.valueOf(l3), Long.toBinaryString(l3), Long.valueOf(l1), Long.toBinaryString(l1), paramString, str });
       AppMethodBeat.o(148590);
       return str;
     }

@@ -1,89 +1,87 @@
 package com.tencent.mm.live.b.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
-import com.tencent.mm.bx.a;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.bw.a;
 import com.tencent.mm.live.b.c;
 import com.tencent.mm.live.b.g;
 import com.tencent.mm.live.b.i;
-import com.tencent.mm.model.u;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.bdh;
-import com.tencent.mm.protocal.protobuf.bdi;
-import com.tencent.mm.protocal.protobuf.buo;
-import com.tencent.mm.protocal.protobuf.bup;
-import com.tencent.mm.protocal.protobuf.buq;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.bdx;
+import com.tencent.mm.protocal.protobuf.bdy;
+import com.tencent.mm.protocal.protobuf.bvi;
+import com.tencent.mm.protocal.protobuf.bvj;
+import com.tencent.mm.protocal.protobuf.bvk;
+import com.tencent.mm.sdk.platformtools.ae;
 import d.g.b.p;
 import d.l;
-import d.v;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/live/model/cgi/NetSceneLiveGetLiveMessage;", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Lcom/tencent/mm/network/IOnGYNetEnd;", "liveId", "", "wechatRoomId", "", "offline", "", "(JLjava/lang/String;Z)V", "callback", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "duration", "getDuration", "()J", "setDuration", "(J)V", "reqResp", "Lcom/tencent/mm/modelbase/CommReqResp;", "request", "Lcom/tencent/mm/protocal/protobuf/GetLiveMessageRequest;", "response", "Lcom/tencent/mm/protocal/protobuf/GetLiveMessageResponse;", "doScene", "", "dispatcher", "Lcom/tencent/mm/network/IDispatcher;", "getResponse", "getType", "onGYNetEnd", "", "netId", "errType", "errCode", "errMsg", "rr", "Lcom/tencent/mm/network/IReqResp;", "cookie", "", "Companion", "plugin-logic_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/live/model/cgi/NetSceneLiveGetLiveMessage;", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Lcom/tencent/mm/network/IOnGYNetEnd;", "liveId", "", "wechatRoomId", "", "offline", "", "(JLjava/lang/String;Z)V", "callback", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "duration", "getDuration", "()J", "setDuration", "(J)V", "reqResp", "Lcom/tencent/mm/modelbase/CommReqResp;", "request", "Lcom/tencent/mm/protocal/protobuf/GetLiveMessageRequest;", "response", "Lcom/tencent/mm/protocal/protobuf/GetLiveMessageResponse;", "doScene", "", "dispatcher", "Lcom/tencent/mm/network/IDispatcher;", "getResponse", "getType", "onGYNetEnd", "", "netId", "errType", "errCode", "errMsg", "rr", "Lcom/tencent/mm/network/IReqResp;", "cookie", "", "Companion", "plugin-logic_release"})
 public final class m
   extends n
   implements k
 {
-  public static final a gQe;
+  public static final a gSM;
   private f callback;
   public long duration;
-  private com.tencent.mm.al.b gPp;
-  private final bdh gQc;
-  private bdi gQd;
+  private com.tencent.mm.ak.b gRX;
+  private final bdx gSK;
+  private bdy gSL;
   
   static
   {
-    AppMethodBeat.i(212216);
-    gQe = new a((byte)0);
-    AppMethodBeat.o(212216);
+    AppMethodBeat.i(215836);
+    gSM = new a((byte)0);
+    AppMethodBeat.o(215836);
   }
   
   public m(long paramLong, String paramString, boolean paramBoolean)
   {
-    AppMethodBeat.i(212215);
+    AppMethodBeat.i(215835);
     Object localObject = new b.a();
-    ((b.a)localObject).c((a)new bdh());
-    ((b.a)localObject).d((a)new bdi());
-    ((b.a)localObject).oP(3767);
-    ((b.a)localObject).Dl("/cgi-bin/micromsg-bin/getlivemessage");
-    ((b.a)localObject).oR(0);
-    ((b.a)localObject).oS(0);
-    ((b.a)localObject).aEG();
-    ((b.a)localObject).aEH();
-    localObject = ((b.a)localObject).aDC();
+    ((b.a)localObject).c((a)new bdx());
+    ((b.a)localObject).d((a)new bdy());
+    ((b.a)localObject).oS(3767);
+    ((b.a)localObject).DN("/cgi-bin/micromsg-bin/getlivemessage");
+    ((b.a)localObject).oU(0);
+    ((b.a)localObject).oV(0);
+    ((b.a)localObject).aEW();
+    ((b.a)localObject).aEX();
+    localObject = ((b.a)localObject).aDS();
     p.g(localObject, "builder.buildInstance()");
-    this.gPp = ((com.tencent.mm.al.b)localObject);
-    localObject = this.gPp.aEE();
+    this.gRX = ((com.tencent.mm.ak.b)localObject);
+    localObject = this.gRX.aEU();
     if (localObject == null)
     {
-      paramString = new v("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.GetLiveMessageRequest");
-      AppMethodBeat.o(212215);
+      paramString = new d.v("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.GetLiveMessageRequest");
+      AppMethodBeat.o(215835);
       throw paramString;
     }
-    this.gQc = ((bdh)localObject);
-    this.gQc.Fsa = paramLong;
-    this.gQc.Fsb = paramString;
-    localObject = this.gQc;
-    g localg = g.gOr;
-    ((bdh)localObject).GzS = com.tencent.mm.bx.b.cj(g.anq());
-    this.gQc.GzT = paramBoolean;
-    ad.i("MicroMsg.LiveNetScene.NetSceneLiveGetLiveMessage", "get live message:" + paramLong + " wechatRoomId:" + paramString + " offline:" + paramBoolean);
-    AppMethodBeat.o(212215);
+    this.gSK = ((bdx)localObject);
+    this.gSK.FKy = paramLong;
+    this.gSK.FKz = paramString;
+    localObject = this.gSK;
+    g localg = g.gQZ;
+    ((bdx)localObject).GTs = com.tencent.mm.bw.b.cm(g.anG());
+    this.gSK.GTt = paramBoolean;
+    ae.i("MicroMsg.LiveNetScene.NetSceneLiveGetLiveMessage", "get live message:" + paramLong + " wechatRoomId:" + paramString + " offline:" + paramBoolean);
+    AppMethodBeat.o(215835);
   }
   
   public final int doScene(com.tencent.mm.network.e parame, f paramf)
   {
-    AppMethodBeat.i(212213);
+    AppMethodBeat.i(215833);
     this.duration = System.currentTimeMillis();
     this.callback = paramf;
-    int i = dispatch(parame, (q)this.gPp, (k)this);
-    AppMethodBeat.o(212213);
+    int i = dispatch(parame, (q)this.gRX, (k)this);
+    AppMethodBeat.o(215833);
     return i;
   }
   
@@ -95,35 +93,35 @@ public final class m
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     paramArrayOfByte = null;
-    AppMethodBeat.i(212214);
+    AppMethodBeat.i(215834);
     p.h(paramq, "rr");
-    ad.i("MicroMsg.LiveNetScene.NetSceneLiveGetLiveMessage", "onGYNetEnd, errType: %s, errCode: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    ae.i("MicroMsg.LiveNetScene.NetSceneLiveGetLiveMessage", "onGYNetEnd, errType: %s, errCode: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
     this.duration = (System.currentTimeMillis() - this.duration);
-    Object localObject1 = com.tencent.mm.live.b.e.gMR;
+    Object localObject1 = com.tencent.mm.live.b.e.gPA;
     if (com.tencent.mm.live.b.e.cV(paramInt2, paramInt3))
     {
-      i.a(i.gPh);
+      i.a(i.gRP);
       paramq = this.callback;
       if (paramq != null)
       {
         paramq.onSceneEnd(paramInt2, paramInt3, paramString, (n)this);
-        AppMethodBeat.o(212214);
+        AppMethodBeat.o(215834);
         return;
       }
-      AppMethodBeat.o(212214);
+      AppMethodBeat.o(215834);
       return;
     }
-    paramq = ((com.tencent.mm.al.b)paramq).aEF();
+    paramq = ((com.tencent.mm.ak.b)paramq).aEV();
     if (paramq == null)
     {
-      paramString = new v("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.GetLiveMessageResponse");
-      AppMethodBeat.o(212214);
+      paramString = new d.v("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.GetLiveMessageResponse");
+      AppMethodBeat.o(215834);
       throw paramString;
     }
-    this.gQd = ((bdi)paramq);
+    this.gSL = ((bdy)paramq);
     if ((paramInt2 != 0) || (paramInt3 != 0))
     {
-      ad.e("MicroMsg.LiveNetScene.NetSceneLiveGetLiveMessage", "onGYNetEnd error");
+      ae.e("MicroMsg.LiveNetScene.NetSceneLiveGetLiveMessage", "onGYNetEnd error");
       switch (paramInt3)
       {
       }
@@ -134,50 +132,50 @@ public final class m
       if (paramq != null)
       {
         paramq.onSceneEnd(paramInt2, paramInt3, paramString, (n)this);
-        AppMethodBeat.o(212214);
+        AppMethodBeat.o(215834);
         return;
-        paramq = c.gMO;
-        c.amP();
+        paramq = c.gPx;
+        c.ane();
         continue;
-        localObject1 = this.gQd;
+        localObject1 = this.gSL;
         if (localObject1 == null) {
           continue;
         }
         Object localObject2;
-        if (((bdi)localObject1).GzY)
+        if (((bdy)localObject1).GTy)
         {
-          paramq = g.gOr;
-          if (g.ans().GzV != ((bdi)localObject1).GzV)
+          paramq = g.gQZ;
+          if (g.anH().GTv != ((bdy)localObject1).GTv)
           {
-            paramq = c.gMO;
-            c.amQ();
+            paramq = c.gPx;
+            c.anf();
           }
-          paramq = g.gOr;
-          g.ans().GzV = ((bdi)localObject1).GzV;
-          paramq = g.gOr;
-          paramq = g.ans();
-          localObject2 = g.gOr;
-          paramq.GzX = Math.max(g.ans().GzX, ((bdi)localObject1).GzX);
-          paramq = g.gOr;
-          g.ann().clear();
-          paramq = g.gOr;
-          localObject2 = g.ann();
-          paramq = ((bdi)localObject1).GzW;
+          paramq = g.gQZ;
+          g.anH().GTv = ((bdy)localObject1).GTv;
+          paramq = g.gQZ;
+          paramq = g.anH();
+          localObject2 = g.gQZ;
+          paramq.GTx = Math.max(g.anH().GTx, ((bdy)localObject1).GTx);
+          paramq = g.gQZ;
+          g.anD().clear();
+          paramq = g.gQZ;
+          localObject2 = g.anD();
+          paramq = ((bdy)localObject1).GTw;
           if (paramq == null) {
             break label700;
           }
           paramq = (Collection)paramq;
           label367:
           ((ArrayList)localObject2).addAll(paramq);
-          paramq = g.gOr;
-          g.a(new buo());
-          paramq = g.gOr;
-          localObject2 = (a)g.any();
-          paramq = ((bdi)localObject1).GzZ;
+          paramq = g.gQZ;
+          g.a(new bvi());
+          paramq = g.gQZ;
+          localObject2 = (a)g.anN();
+          paramq = ((bdy)localObject1).GTz;
           if (paramq == null) {
             break label715;
           }
-          paramq = paramq.GOD;
+          paramq = paramq.Hid;
           if (paramq == null) {
             break label715;
           }
@@ -188,38 +186,38 @@ public final class m
           for (;;)
           {
             ((a)localObject2).parseFrom(paramq);
-            paramq = com.tencent.mm.live.b.d.b.gRj;
-            paramq = g.gOr;
-            localObject2 = g.anp();
-            paramq = ((bdi)localObject1).GzU;
+            paramq = com.tencent.mm.live.b.d.b.gTR;
+            paramq = g.gQZ;
+            localObject2 = g.anF();
+            paramq = ((bdy)localObject1).GTu;
             if (paramq == null) {
               break label744;
             }
             paramq = (List)paramq;
-            Object localObject3 = u.aAm();
+            Object localObject3 = com.tencent.mm.model.v.aAC();
             p.g(localObject3, "ConfigStorageLogic.getUsernameFromUserInfo()");
             com.tencent.mm.live.b.d.b.a((ArrayList)localObject2, paramq, (String)localObject3);
-            paramq = c.gMO;
-            c.amO();
-            paramq = g.gOr;
-            paramq = ((bdi)localObject1).GzS;
+            paramq = c.gPx;
+            c.and();
+            paramq = g.gQZ;
+            paramq = ((bdy)localObject1).GTs;
             p.g(paramq, "it.live_cookies");
             g.P(paramq.getBytes());
             paramq = new StringBuilder("onlineCount:");
-            localObject2 = g.gOr;
-            paramq = paramq.append(g.ans().GzV).append(" headerList:");
-            localObject2 = g.gOr;
-            localObject2 = paramq.append(g.ann().size()).append(" remoteMsgSize:");
-            localObject3 = ((bdi)localObject1).GzU;
+            localObject2 = g.gQZ;
+            paramq = paramq.append(g.anH().GTv).append(" headerList:");
+            localObject2 = g.gQZ;
+            localObject2 = paramq.append(g.anD().size()).append(" remoteMsgSize:");
+            localObject3 = ((bdy)localObject1).GTu;
             paramq = paramArrayOfByte;
             if (localObject3 != null) {
               paramq = Integer.valueOf(((LinkedList)localObject3).size());
             }
             paramq = ((StringBuilder)localObject2).append(paramq).append(", msgSize:");
-            paramArrayOfByte = g.gOr;
-            paramq = paramq.append(g.anp().size()).append(" likeCount:");
-            paramArrayOfByte = g.gOr;
-            ad.i("MicroMsg.LiveNetScene.NetSceneLiveGetLiveMessage", g.ans().GzX + ", needUpdate:" + ((bdi)localObject1).GzY);
+            paramArrayOfByte = g.gQZ;
+            paramq = paramq.append(g.anF().size()).append(" likeCount:");
+            paramArrayOfByte = g.gQZ;
+            ae.i("MicroMsg.LiveNetScene.NetSceneLiveGetLiveMessage", g.anH().GTx + ", needUpdate:" + ((bdy)localObject1).GTy);
             break;
             label700:
             paramq = (Collection)new ArrayList();
@@ -232,7 +230,7 @@ public final class m
         {
           for (;;)
           {
-            ad.l("safeParser", "", new Object[] { paramq });
+            ae.l("safeParser", "", new Object[] { paramq });
             continue;
             label744:
             paramq = (List)new ArrayList();
@@ -240,10 +238,10 @@ public final class m
         }
       }
     }
-    AppMethodBeat.o(212214);
+    AppMethodBeat.o(215834);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/live/model/cgi/NetSceneLiveGetLiveMessage$Companion;", "", "()V", "TAG", "", "plugin-logic_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/live/model/cgi/NetSceneLiveGetLiveMessage$Companion;", "", "()V", "TAG", "", "plugin-logic_release"})
   public static final class a {}
 }
 

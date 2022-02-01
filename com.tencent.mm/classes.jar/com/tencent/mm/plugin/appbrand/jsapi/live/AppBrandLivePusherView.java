@@ -8,10 +8,10 @@ import android.util.AttributeSet;
 import android.view.Display;
 import android.view.WindowManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.utils.aa;
-import com.tencent.mm.plugin.appbrand.utils.aa.a;
-import com.tencent.mm.plugin.appbrand.utils.aa.b;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.plugin.appbrand.utils.ad;
+import com.tencent.mm.plugin.appbrand.utils.ad.a;
+import com.tencent.mm.plugin.appbrand.utils.ad.b;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.rtmp.ITXLivePushListener;
 import com.tencent.rtmp.TXLivePusher.ITXAudioVolumeEvaluationListener;
 import com.tencent.rtmp.TXLivePusher.ITXSnapshotListener;
@@ -24,15 +24,15 @@ import org.json.JSONObject;
 public class AppBrandLivePusherView
   extends TXCloudVideoView
 {
-  public String ctf;
-  public String ctg;
-  public int ctl;
-  aa kOT;
-  private a kOU;
-  m kOV;
-  private ITXLivePushListener kOW;
-  private c kOX;
-  private AppBrandLivePusherView.b kOY;
+  public String ctJ;
+  public String ctK;
+  public int ctP;
+  ad kSB;
+  private a kSC;
+  m kSD;
+  private ITXLivePushListener kSE;
+  private c kSF;
+  private AppBrandLivePusherView.b kSG;
   private Handler mHandler;
   
   public AppBrandLivePusherView(Context paramContext)
@@ -40,9 +40,9 @@ public class AppBrandLivePusherView
     super(paramContext);
     AppMethodBeat.i(145833);
     this.mHandler = new Handler(getContext().getMainLooper());
-    this.ctl = 0;
-    this.kOU = new a();
-    this.ctf = "";
+    this.ctP = 0;
+    this.kSC = new a();
+    this.ctJ = "";
     init(paramContext);
     AppMethodBeat.o(145833);
   }
@@ -52,9 +52,9 @@ public class AppBrandLivePusherView
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(145834);
     this.mHandler = new Handler(getContext().getMainLooper());
-    this.ctl = 0;
-    this.kOU = new a();
-    this.ctf = "";
+    this.ctP = 0;
+    this.kSC = new a();
+    this.ctJ = "";
     init(paramContext);
     AppMethodBeat.o(145834);
   }
@@ -70,15 +70,15 @@ public class AppBrandLivePusherView
   private void init(Context paramContext)
   {
     AppMethodBeat.i(145835);
-    this.kOV = new m(paramContext);
+    this.kSD = new m(paramContext);
     setBackgroundColor(-16777216);
-    this.kOT = new aa(getContext(), new aa.b()
+    this.kSB = new ad(getContext(), new ad.b()
     {
-      public final void a(aa.a paramAnonymousa1, aa.a paramAnonymousa2)
+      public final void a(ad.a paramAnonymousa1, ad.a paramAnonymousa2)
       {
         AppMethodBeat.i(145829);
         int i;
-        switch (AppBrandLivePusherView.2.cts[paramAnonymousa2.ordinal()])
+        switch (AppBrandLivePusherView.2.ctW[paramAnonymousa2.ordinal()])
         {
         default: 
           i = 0;
@@ -87,10 +87,10 @@ public class AppBrandLivePusherView
         {
           paramAnonymousa1 = AppBrandLivePusherView.a(AppBrandLivePusherView.this);
           paramAnonymousa1.number = 0;
-          AppBrandLivePusherView.b(paramAnonymousa1.kOZ).removeCallbacks(paramAnonymousa1);
-          AppBrandLivePusherView.a(AppBrandLivePusherView.this).ctu = i;
+          AppBrandLivePusherView.b(paramAnonymousa1.kSH).removeCallbacks(paramAnonymousa1);
+          AppBrandLivePusherView.a(AppBrandLivePusherView.this).ctY = i;
           paramAnonymousa1 = AppBrandLivePusherView.a(AppBrandLivePusherView.this);
-          AppBrandLivePusherView.b(paramAnonymousa1.kOZ).postDelayed(paramAnonymousa1, 250L);
+          AppBrandLivePusherView.b(paramAnonymousa1.kSH).postDelayed(paramAnonymousa1, 250L);
           AppMethodBeat.o(145829);
           return;
           i = 1;
@@ -103,19 +103,19 @@ public class AppBrandLivePusherView
         }
       }
     });
-    this.kOT.enable();
-    tf(getRotationAngle());
+    this.kSB.enable();
+    ti(getRotationAngle());
     AppMethodBeat.o(145835);
   }
   
-  private boolean tf(int paramInt)
+  private boolean ti(int paramInt)
   {
     AppMethodBeat.i(145837);
-    if (paramInt != this.ctl)
+    if (paramInt != this.ctP)
     {
-      this.ctl = paramInt;
-      ad.i("MicroMsg.AppBrandLivePusherView", "orientation changed senorAngle = ".concat(String.valueOf(paramInt)));
-      this.kOV.gK(paramInt);
+      this.ctP = paramInt;
+      ae.i("MicroMsg.AppBrandLivePusherView", "orientation changed senorAngle = ".concat(String.valueOf(paramInt)));
+      this.kSD.gL(paramInt);
       AppMethodBeat.o(145837);
       return true;
     }
@@ -123,16 +123,16 @@ public class AppBrandLivePusherView
     return false;
   }
   
-  public final void I(Bundle paramBundle)
+  public final void J(Bundle paramBundle)
   {
     AppMethodBeat.i(145838);
-    m localm = this.kOV;
+    m localm = this.kSD;
     if (paramBundle == null) {
       paramBundle = new i(-1, "invalid params");
     }
     for (;;)
     {
-      ad.i("MicroMsg.AppBrandLivePusherView", "onUpdate code:%d info:%s", new Object[] { Integer.valueOf(paramBundle.errorCode), paramBundle.crF });
+      ae.i("MicroMsg.AppBrandLivePusherView", "onUpdate code:%d info:%s", new Object[] { Integer.valueOf(paramBundle.errorCode), paramBundle.csi });
       AppMethodBeat.o(145838);
       return;
       m.l("updateLivePusher", paramBundle);
@@ -143,23 +143,23 @@ public class AppBrandLivePusherView
       else
       {
         localm.a(paramBundle, false);
-        String str = paramBundle.getString("pushUrl", localm.ctA);
-        if ((str != null) && (!str.isEmpty()) && (localm.ctA != null) && (!localm.ctA.equalsIgnoreCase(str)) && (localm.cty.isPushing()))
+        String str = paramBundle.getString("pushUrl", localm.cud);
+        if ((str != null) && (!str.isEmpty()) && (localm.cud != null) && (!localm.cud.equalsIgnoreCase(str)) && (localm.cub.isPushing()))
         {
-          ad.i("TXLivePusherJSAdapter", "updateLivePusher: stopPusher");
+          ae.i("TXLivePusherJSAdapter", "updateLivePusher: stopPusher");
           localm.stopPreview();
-          localm.cty.stopAudioRecord();
-          localm.cty.stopPusher();
+          localm.cub.stopAudioRecord();
+          localm.cub.stopPusher();
         }
-        localm.ctA = str;
-        localm.cty.setPusherUrl(localm.ctA);
-        localm.ctK = paramBundle.getBoolean("autopush", localm.ctK);
-        if ((localm.ctK) && (localm.ctA != null) && (!localm.ctA.isEmpty()) && (!localm.cty.isPushing()))
+        localm.cud = str;
+        localm.cub.setPusherUrl(localm.cud);
+        localm.cun = paramBundle.getBoolean("autopush", localm.cun);
+        if ((localm.cun) && (localm.cud != null) && (!localm.cud.isEmpty()) && (!localm.cub.isPushing()))
         {
-          ad.i("TXLivePusherJSAdapter", "updateLivePusher: startPusher");
-          localm.bB(localm.ctQ);
-          localm.bC(localm.ctR);
-          localm.cty.startPusher(localm.ctA);
+          ae.i("TXLivePusherJSAdapter", "updateLivePusher: startPusher");
+          localm.bB(localm.cut);
+          localm.bC(localm.cuu);
+          localm.cub.startPusher(localm.cud);
         }
         paramBundle = new i();
       }
@@ -169,9 +169,9 @@ public class AppBrandLivePusherView
   public final void a(int paramInt, String paramString, HashMap<String, Object> paramHashMap)
   {
     AppMethodBeat.i(145841);
-    ad.w("MicroMsg.AppBrandLivePusherView", "onError code:%d msg:%s", new Object[] { Integer.valueOf(paramInt), paramString });
-    if (this.kOY != null) {
-      this.kOY.a(paramInt, paramString, paramHashMap);
+    ae.w("MicroMsg.AppBrandLivePusherView", "onError code:%d msg:%s", new Object[] { Integer.valueOf(paramInt), paramString });
+    if (this.kSG != null) {
+      this.kSG.a(paramInt, paramString, paramHashMap);
     }
     AppMethodBeat.o(145841);
   }
@@ -179,8 +179,8 @@ public class AppBrandLivePusherView
   public final boolean g(String paramString, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(145839);
-    paramString = this.kOV.i(paramString, paramJSONObject);
-    ad.i("MicroMsg.AppBrandLivePusherView", "onOperate code:%d info:%s", new Object[] { Integer.valueOf(paramString.errorCode), paramString.crF });
+    paramString = this.kSD.i(paramString, paramJSONObject);
+    ae.i("MicroMsg.AppBrandLivePusherView", "onOperate code:%d info:%s", new Object[] { Integer.valueOf(paramString.errorCode), paramString.csi });
     if (paramString.errorCode == 0)
     {
       AppMethodBeat.o(145839);
@@ -194,67 +194,67 @@ public class AppBrandLivePusherView
   {
     AppMethodBeat.i(145832);
     super.onConfigurationChanged(paramConfiguration);
-    tf(getRotationAngle());
+    ti(getRotationAngle());
     AppMethodBeat.o(145832);
   }
   
   public final void onExit()
   {
     AppMethodBeat.i(145840);
-    Object localObject = this.kOV;
+    Object localObject = this.kSD;
     if (!((m)localObject).mInited) {}
     for (localObject = new i(-3, "uninited livePusher");; localObject = new i())
     {
-      ad.i("MicroMsg.AppBrandLivePusherView", "onDestroy code:%d info:%s", new Object[] { Integer.valueOf(((i)localObject).errorCode), ((i)localObject).crF });
-      if (this.kOX != null) {
-        this.kOX.bkH();
+      ae.i("MicroMsg.AppBrandLivePusherView", "onDestroy code:%d info:%s", new Object[] { Integer.valueOf(((i)localObject).errorCode), ((i)localObject).csi });
+      if (this.kSF != null) {
+        this.kSF.blr();
       }
       AppMethodBeat.o(145840);
       return;
-      ((m)localObject).cty.stopBGM();
+      ((m)localObject).cub.stopBGM();
       ((m)localObject).stopPreview();
-      ((m)localObject).cty.stopAudioRecord();
-      ((m)localObject).cty.stopPusher();
-      ((m)localObject).cty.setPushListener(null);
+      ((m)localObject).cub.stopAudioRecord();
+      ((m)localObject).cub.stopPusher();
+      ((m)localObject).cub.setPushListener(null);
       ((m)localObject).mInited = false;
     }
   }
   
   public void setAudioVolumeNotifyListener(TXLivePusher.ITXAudioVolumeEvaluationListener paramITXAudioVolumeEvaluationListener)
   {
-    this.kOV.ctH = paramITXAudioVolumeEvaluationListener;
+    this.kSD.cuk = paramITXAudioVolumeEvaluationListener;
   }
   
   public void setBGMNotifyListener(TXLivePusher.OnBGMNotify paramOnBGMNotify)
   {
-    this.kOV.ctG = paramOnBGMNotify;
+    this.kSD.cuj = paramOnBGMNotify;
   }
   
   public void setOnErrorListener(AppBrandLivePusherView.b paramb)
   {
-    this.kOY = paramb;
+    this.kSG = paramb;
   }
   
   public void setOnExitListener(c paramc)
   {
-    this.kOX = paramc;
+    this.kSF = paramc;
   }
   
   public void setOnPushEventListener(ITXLivePushListener paramITXLivePushListener)
   {
-    this.kOW = paramITXLivePushListener;
-    this.kOV.ctz = this.kOW;
+    this.kSE = paramITXLivePushListener;
+    this.kSD.cuc = this.kSE;
   }
   
   public void setSnapshotListener(TXLivePusher.ITXSnapshotListener paramITXSnapshotListener)
   {
-    this.kOV.ctF = paramITXSnapshotListener;
+    this.kSD.cui = paramITXSnapshotListener;
   }
   
   final class a
     implements Runnable
   {
-    int ctu;
+    int ctY;
     int number = 0;
     
     a() {}
@@ -263,9 +263,9 @@ public class AppBrandLivePusherView
     {
       AppMethodBeat.i(145831);
       this.number += 1;
-      ad.i("MicroMsg.AppBrandLivePusherView", "[CheckRotateTask] number=" + this.number + "  senorAngle=" + this.ctu);
+      ae.i("MicroMsg.AppBrandLivePusherView", "[CheckRotateTask] number=" + this.number + "  senorAngle=" + this.ctY);
       int i = AppBrandLivePusherView.c(AppBrandLivePusherView.this);
-      if (i == this.ctu)
+      if (i == this.ctY)
       {
         AppBrandLivePusherView.a(AppBrandLivePusherView.this, i);
         AppMethodBeat.o(145831);
@@ -280,7 +280,7 @@ public class AppBrandLivePusherView
   
   public static abstract interface c
   {
-    public abstract void bkH();
+    public abstract void blr();
   }
 }
 

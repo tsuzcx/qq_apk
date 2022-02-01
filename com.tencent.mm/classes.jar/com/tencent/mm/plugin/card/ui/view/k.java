@@ -6,26 +6,26 @@ import android.view.ViewStub;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aw.a.a;
-import com.tencent.mm.aw.a.a.c;
-import com.tencent.mm.aw.a.a.c.a;
-import com.tencent.mm.aw.q;
+import com.tencent.mm.av.a.a;
+import com.tencent.mm.av.a.a.c;
+import com.tencent.mm.av.a.a.c.a;
+import com.tencent.mm.av.q;
 import com.tencent.mm.plugin.card.model.m;
 import com.tencent.mm.plugin.card.ui.n;
-import com.tencent.mm.protocal.protobuf.ael;
-import com.tencent.mm.protocal.protobuf.ts;
+import com.tencent.mm.protocal.protobuf.aeu;
+import com.tencent.mm.protocal.protobuf.tu;
 import java.util.LinkedList;
 
 public final class k
   extends i
 {
-  private View oOC;
+  private View oVe;
   
-  public final void bYr()
+  public final void bZG()
   {
     AppMethodBeat.i(113680);
-    if (this.oOC != null) {
-      this.oOC.setVisibility(8);
+    if (this.oVe != null) {
+      this.oVe.setVisibility(8);
     }
     AppMethodBeat.o(113680);
   }
@@ -35,35 +35,35 @@ public final class k
   public final void update()
   {
     AppMethodBeat.i(113679);
-    if (this.oOC == null) {
-      this.oOC = ((ViewStub)findViewById(2131297784)).inflate();
+    if (this.oVe == null) {
+      this.oVe = ((ViewStub)findViewById(2131297784)).inflate();
     }
-    this.oOC.setOnClickListener(this.oOB.bWp());
-    Object localObject1 = this.oOB.bWl().bTN().FRQ;
-    if (!TextUtils.isEmpty(((ael)localObject1).detail))
+    this.oVe.setOnClickListener(this.oVd.bXE());
+    Object localObject1 = this.oVd.bXA().bVc().Gkp;
+    if (!TextUtils.isEmpty(((aeu)localObject1).detail))
     {
-      ((TextView)findViewById(2131297778)).setText(((ael)localObject1).detail);
+      ((TextView)findViewById(2131297778)).setText(((aeu)localObject1).detail);
       findViewById(2131297779).setVisibility(0);
     }
     ImageView localImageView;
     for (;;)
     {
       localImageView = (ImageView)findViewById(2131297783);
-      if ((((ael)localObject1).Gcp == null) || (((ael)localObject1).Gcp.size() <= 0) || (TextUtils.isEmpty((CharSequence)((ael)localObject1).Gcp.get(0)))) {
+      if ((((aeu)localObject1).GuW == null) || (((aeu)localObject1).GuW.size() <= 0) || (TextUtils.isEmpty((CharSequence)((aeu)localObject1).GuW.get(0)))) {
         break;
       }
-      localObject1 = (String)((ael)localObject1).Gcp.get(0);
+      localObject1 = (String)((aeu)localObject1).GuW.get(0);
       localImageView.setVisibility(0);
       Object localObject2 = new c.a();
-      ((c.a)localObject2).prefixPath = com.tencent.mm.loader.j.b.arU();
-      q.aIK();
-      ((c.a)localObject2).idJ = null;
-      ((c.a)localObject2).hdP = m.Yt((String)localObject1);
-      ((c.a)localObject2).idr = true;
-      ((c.a)localObject2).hfi = false;
-      ((c.a)localObject2).idp = true;
-      localObject2 = ((c.a)localObject2).aJc();
-      q.aIJ().a((String)localObject1, localImageView, (c)localObject2);
+      ((c.a)localObject2).prefixPath = com.tencent.mm.loader.j.b.asj();
+      q.aJc();
+      ((c.a)localObject2).igB = null;
+      ((c.a)localObject2).hgD = m.Zk((String)localObject1);
+      ((c.a)localObject2).igk = true;
+      ((c.a)localObject2).hhW = false;
+      ((c.a)localObject2).igi = true;
+      localObject2 = ((c.a)localObject2).aJu();
+      q.aJb().a((String)localObject1, localImageView, (c)localObject2);
       AppMethodBeat.o(113679);
       return;
       findViewById(2131297779).setVisibility(8);

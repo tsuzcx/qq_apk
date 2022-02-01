@@ -11,8 +11,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.webview.luggage.g;
 import com.tencent.mm.pluginsdk.wallet.WalletJsapiData;
 import com.tencent.mm.pluginsdk.wallet.f;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.MMActivity.a;
 import com.tencent.mm.ui.e.m;
@@ -29,7 +29,7 @@ public class s
   public final void b(final b<g>.a paramb)
   {
     AppMethodBeat.i(78553);
-    ad.i("MicroMsg.JsApiGetBrandWCPayRequest", "invokeInOwn");
+    ae.i("MicroMsg.JsApiGetBrandWCPayRequest", "invokeInOwn");
     MMActivity localMMActivity = (MMActivity)((g)paramb.chg).mContext;
     Object localObject = new JSONObject();
     try
@@ -38,9 +38,9 @@ public class s
       ((JSONObject)localObject).put("pay_scene", 3);
       label59:
       localObject = new WalletJsapiData(paramb.chh.cgn);
-      ((WalletJsapiData)localObject).Fme = 1;
-      ((WalletJsapiData)localObject).Fml = ((g)paramb.chg).mParams.getString(e.m.IUZ);
-      ad.i("MicroMsg.JsApiGetBrandWCPayRequest", "pay channel: %s, scene: %s, adUxInfo: %s", new Object[] { Integer.valueOf(((WalletJsapiData)localObject).dnX), Integer.valueOf(((WalletJsapiData)localObject).dCC), ((WalletJsapiData)localObject).Fml });
+      ((WalletJsapiData)localObject).FEC = 1;
+      ((WalletJsapiData)localObject).FEJ = ((g)paramb.chg).mParams.getString(e.m.JpH);
+      ae.i("MicroMsg.JsApiGetBrandWCPayRequest", "pay channel: %s, scene: %s, adUxInfo: %s", new Object[] { Integer.valueOf(((WalletJsapiData)localObject).dpc), Integer.valueOf(((WalletJsapiData)localObject).dDH), ((WalletJsapiData)localObject).FEJ });
       MMActivity.a local1 = new MMActivity.a()
       {
         public final void c(int paramAnonymousInt1, int paramAnonymousInt2, Intent paramAnonymousIntent)
@@ -61,11 +61,11 @@ public class s
           {
             HashMap localHashMap = new HashMap();
             paramAnonymousInt1 = paramAnonymousIntent.getIntExtra("key_jsapi_pay_err_code", 0);
-            paramAnonymousIntent = bt.nullAsNil(paramAnonymousIntent.getStringExtra("key_jsapi_pay_err_msg"));
+            paramAnonymousIntent = bu.nullAsNil(paramAnonymousIntent.getStringExtra("key_jsapi_pay_err_msg"));
             localHashMap.put("err_code", Integer.valueOf(paramAnonymousInt1));
             localHashMap.put("err_desc", paramAnonymousIntent);
-            ad.e("MicroMsg.JsApiGetBrandWCPayRequest", "errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramAnonymousInt1), paramAnonymousIntent });
-            paramb.d("fail", localHashMap);
+            ae.e("MicroMsg.JsApiGetBrandWCPayRequest", "errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramAnonymousInt1), paramAnonymousIntent });
+            paramb.e("fail", localHashMap);
             AppMethodBeat.o(78552);
             return;
           }
@@ -85,7 +85,7 @@ public class s
     }
   }
   
-  public final int ccO()
+  public final int ced()
   {
     return 0;
   }

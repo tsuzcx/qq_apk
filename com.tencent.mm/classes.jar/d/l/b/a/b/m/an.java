@@ -8,30 +8,30 @@ import d.l.b.a.b.m.a.i;
 public final class an
   extends aw
 {
-  private final ab NCt;
+  private final ab NZA;
   
   public an(g paramg)
   {
     AppMethodBeat.i(60809);
-    paramg = paramg.ghe();
+    paramg = paramg.glG();
     p.g(paramg, "kotlinBuiltIns.nullableAnyType");
-    this.NCt = ((ab)paramg);
+    this.NZA = ((ab)paramg);
     AppMethodBeat.o(60809);
   }
   
-  public final ab gju()
+  public final ab gnW()
   {
-    return this.NCt;
+    return this.NZA;
   }
   
-  public final boolean guc()
+  public final boolean gyE()
   {
     return true;
   }
   
-  public final bh gud()
+  public final bh gyF()
   {
-    return bh.NCR;
+    return bh.NZY;
   }
   
   public final av m(i parami)
@@ -45,7 +45,7 @@ public final class an
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.m.an
  * JD-Core Version:    0.7.0.1
  */

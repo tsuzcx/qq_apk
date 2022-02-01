@@ -17,9 +17,9 @@ final class WalletPayUI$21
     AppMethodBeat.i(69410);
     b localb = new b();
     localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/wallet/pay/ui/WalletPayUI$28", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-    paramView = this.CKo;
-    if (!this.CKo.isChecked()) {}
+    a.b("com/tencent/mm/plugin/wallet/pay/ui/WalletPayUI$28", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+    paramView = this.DbU;
+    if (!this.DbU.isChecked()) {}
     for (boolean bool = true;; bool = false)
     {
       paramView.setChecked(bool);

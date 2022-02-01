@@ -6,86 +6,86 @@ import com.tencent.mm.plugin.report.a;
 public final class k
   extends a
 {
-  public int dRQ = 0;
-  public int dRR = 0;
-  public int dRS = 0;
-  public int dRT = 0;
-  private String dRU;
-  public int dRV;
-  public long dRW = 0L;
-  public long dRX = 0L;
-  private String dRY;
-  public long dRZ = 0L;
+  public int dTg = 0;
+  public int dTh = 0;
+  public int dTi = 0;
+  public int dTj = 0;
+  private String dTk = "";
+  public int dTl;
+  public long dTm = 0L;
+  public long dTn = 0L;
+  private String dTo = "";
+  public long dTp = 0L;
   
-  public final String RD()
+  public final String RC()
   {
     AppMethodBeat.i(149905);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dRQ);
+    ((StringBuffer)localObject).append(this.dTg);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dRR);
+    ((StringBuffer)localObject).append(this.dTh);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dRS);
+    ((StringBuffer)localObject).append(this.dTi);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dRT);
+    ((StringBuffer)localObject).append(this.dTj);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dRU);
+    ((StringBuffer)localObject).append(this.dTk);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dRV);
+    ((StringBuffer)localObject).append(this.dTl);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dRW);
+    ((StringBuffer)localObject).append(this.dTm);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dRX);
+    ((StringBuffer)localObject).append(this.dTn);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dRY);
+    ((StringBuffer)localObject).append(this.dTo);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dRZ);
+    ((StringBuffer)localObject).append(this.dTp);
     localObject = ((StringBuffer)localObject).toString();
-    awz((String)localObject);
+    axO((String)localObject);
     AppMethodBeat.o(149905);
     return localObject;
   }
   
-  public final String RE()
+  public final String RD()
   {
     AppMethodBeat.i(149906);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("optype:").append(this.dRQ);
+    ((StringBuffer)localObject).append("optype:").append(this.dTg);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("errtype:").append(this.dRR);
+    ((StringBuffer)localObject).append("errtype:").append(this.dTh);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("errcode:").append(this.dRS);
+    ((StringBuffer)localObject).append("errcode:").append(this.dTi);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("mapederror:").append(this.dRT);
+    ((StringBuffer)localObject).append("mapederror:").append(this.dTj);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("filekey:").append(this.dRU);
+    ((StringBuffer)localObject).append("filekey:").append(this.dTk);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("filetype:").append(this.dRV);
+    ((StringBuffer)localObject).append("filetype:").append(this.dTl);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("TryWritenBytes:").append(this.dRW);
+    ((StringBuffer)localObject).append("TryWritenBytes:").append(this.dTm);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("AvailableBytes:").append(this.dRX);
+    ((StringBuffer)localObject).append("AvailableBytes:").append(this.dTn);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("SystemErrorDescribe:").append(this.dRY);
+    ((StringBuffer)localObject).append("SystemErrorDescribe:").append(this.dTo);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("CurrentFileSize:").append(this.dRZ);
+    ((StringBuffer)localObject).append("CurrentFileSize:").append(this.dTp);
     localObject = ((StringBuffer)localObject).toString();
     AppMethodBeat.o(149906);
     return localObject;
   }
   
-  public final k gG(String paramString)
+  public final k gM(String paramString)
   {
     AppMethodBeat.i(149903);
-    this.dRU = t("filekey", paramString, true);
+    this.dTk = t("filekey", paramString, true);
     AppMethodBeat.o(149903);
     return this;
   }
   
-  public final k gH(String paramString)
+  public final k gN(String paramString)
   {
     AppMethodBeat.i(149904);
-    this.dRY = t("SystemErrorDescribe", paramString, true);
+    this.dTo = t("SystemErrorDescribe", paramString, true);
     AppMethodBeat.o(149904);
     return this;
   }

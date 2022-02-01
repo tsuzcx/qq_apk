@@ -5,11 +5,11 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class m
   implements com.tencent.tencentmap.mapsdk.map.UiSettings
 {
-  private com.tencent.tencentmap.mapsdk.maps.UiSettings MAg;
+  private com.tencent.tencentmap.mapsdk.maps.UiSettings MXn;
   
   public m(com.tencent.tencentmap.mapsdk.maps.UiSettings paramUiSettings)
   {
-    this.MAg = paramUiSettings;
+    this.MXn = paramUiSettings;
   }
   
   public final boolean isAnimationEnabled()
@@ -19,164 +19,164 @@ public final class m
   
   public final boolean isCompassEnabled()
   {
-    AppMethodBeat.i(200212);
-    if (this.MAg == null)
+    AppMethodBeat.i(212906);
+    if (this.MXn == null)
     {
-      AppMethodBeat.o(200212);
+      AppMethodBeat.o(212906);
       return false;
     }
-    boolean bool = this.MAg.isCompassEnabled();
-    AppMethodBeat.o(200212);
+    boolean bool = this.MXn.isCompassEnabled();
+    AppMethodBeat.o(212906);
     return bool;
   }
   
   public final boolean isIndoorLevelPickerEnabled()
   {
-    AppMethodBeat.i(200210);
-    if (this.MAg == null)
+    AppMethodBeat.i(212904);
+    if (this.MXn == null)
     {
-      AppMethodBeat.o(200210);
+      AppMethodBeat.o(212904);
       return false;
     }
-    boolean bool = this.MAg.isIndoorLevelPickerEnabled();
-    AppMethodBeat.o(200210);
+    boolean bool = this.MXn.isIndoorLevelPickerEnabled();
+    AppMethodBeat.o(212904);
     return bool;
   }
   
   public final boolean isRotateGesturesEnabled()
   {
-    AppMethodBeat.i(200207);
-    if (this.MAg == null)
+    AppMethodBeat.i(212901);
+    if (this.MXn == null)
     {
-      AppMethodBeat.o(200207);
+      AppMethodBeat.o(212901);
       return false;
     }
-    boolean bool = this.MAg.isRotateGesturesEnabled();
-    AppMethodBeat.o(200207);
+    boolean bool = this.MXn.isRotateGesturesEnabled();
+    AppMethodBeat.o(212901);
     return bool;
   }
   
   public final boolean isScaleControlsEnabled()
   {
-    AppMethodBeat.i(200202);
-    if (this.MAg != null)
+    AppMethodBeat.i(212896);
+    if (this.MXn != null)
     {
-      boolean bool = this.MAg.isScaleViewEnabled();
-      AppMethodBeat.o(200202);
+      boolean bool = this.MXn.isScaleViewEnabled();
+      AppMethodBeat.o(212896);
       return bool;
     }
-    AppMethodBeat.o(200202);
+    AppMethodBeat.o(212896);
     return false;
   }
   
   public final boolean isTiltGesturesEnabled()
   {
-    AppMethodBeat.i(200205);
-    if (this.MAg == null)
+    AppMethodBeat.i(212899);
+    if (this.MXn == null)
     {
-      AppMethodBeat.o(200205);
+      AppMethodBeat.o(212899);
       return false;
     }
-    boolean bool = this.MAg.isTiltGesturesEnabled();
-    AppMethodBeat.o(200205);
+    boolean bool = this.MXn.isTiltGesturesEnabled();
+    AppMethodBeat.o(212899);
     return bool;
   }
   
   public final void setAllGesturesEnabled(boolean paramBoolean)
   {
-    AppMethodBeat.i(200199);
-    if (this.MAg != null) {
-      this.MAg.setAllGesturesEnabled(paramBoolean);
+    AppMethodBeat.i(212893);
+    if (this.MXn != null) {
+      this.MXn.setAllGesturesEnabled(paramBoolean);
     }
-    AppMethodBeat.o(200199);
+    AppMethodBeat.o(212893);
   }
   
   public final void setAnimationEnabled(boolean paramBoolean) {}
   
   public final void setCompassEnabled(boolean paramBoolean)
   {
-    AppMethodBeat.i(200211);
-    if (this.MAg == null)
+    AppMethodBeat.i(212905);
+    if (this.MXn == null)
     {
-      AppMethodBeat.o(200211);
+      AppMethodBeat.o(212905);
       return;
     }
-    this.MAg.setCompassEnabled(paramBoolean);
-    AppMethodBeat.o(200211);
+    this.MXn.setCompassEnabled(paramBoolean);
+    AppMethodBeat.o(212905);
   }
   
   public final void setIndoorLevelPickerEnabled(boolean paramBoolean)
   {
-    AppMethodBeat.i(200209);
-    if (this.MAg != null) {
-      this.MAg.setIndoorLevelPickerEnabled(paramBoolean);
+    AppMethodBeat.i(212903);
+    if (this.MXn != null) {
+      this.MXn.setIndoorLevelPickerEnabled(paramBoolean);
     }
-    AppMethodBeat.o(200209);
+    AppMethodBeat.o(212903);
   }
   
   public final void setLogoPosition(int paramInt)
   {
-    AppMethodBeat.i(200200);
-    if (this.MAg != null) {
-      this.MAg.setLogoPosition(paramInt);
+    AppMethodBeat.i(212894);
+    if (this.MXn != null) {
+      this.MXn.setLogoPosition(paramInt);
     }
-    AppMethodBeat.o(200200);
+    AppMethodBeat.o(212894);
   }
   
   public final void setLogoPosition(int paramInt, int[] paramArrayOfInt)
   {
-    AppMethodBeat.i(200208);
-    if (this.MAg != null) {
-      this.MAg.setLogoPosition(paramInt, paramArrayOfInt);
+    AppMethodBeat.i(212902);
+    if (this.MXn != null) {
+      this.MXn.setLogoPosition(paramInt, paramArrayOfInt);
     }
-    AppMethodBeat.o(200208);
+    AppMethodBeat.o(212902);
   }
   
   public final void setLogoScale(float paramFloat)
   {
-    AppMethodBeat.i(200206);
-    if (this.MAg == null)
+    AppMethodBeat.i(212900);
+    if (this.MXn == null)
     {
-      AppMethodBeat.o(200206);
+      AppMethodBeat.o(212900);
       return;
     }
-    this.MAg.setLogoScale(paramFloat);
-    AppMethodBeat.o(200206);
+    this.MXn.setLogoScale(paramFloat);
+    AppMethodBeat.o(212900);
   }
   
   public final void setRotateGesturesEnabled(boolean paramBoolean)
   {
-    AppMethodBeat.i(200204);
-    if (this.MAg == null)
+    AppMethodBeat.i(212898);
+    if (this.MXn == null)
     {
-      AppMethodBeat.o(200204);
+      AppMethodBeat.o(212898);
       return;
     }
-    this.MAg.setRotateGesturesEnabled(paramBoolean);
-    AppMethodBeat.o(200204);
+    this.MXn.setRotateGesturesEnabled(paramBoolean);
+    AppMethodBeat.o(212898);
   }
   
   public final void setScaleControlsEnabled(boolean paramBoolean)
   {
-    AppMethodBeat.i(200196);
-    if (this.MAg != null) {
-      this.MAg.setScaleViewEnabled(paramBoolean);
+    AppMethodBeat.i(212890);
+    if (this.MXn != null) {
+      this.MXn.setScaleViewEnabled(paramBoolean);
     }
-    AppMethodBeat.o(200196);
+    AppMethodBeat.o(212890);
   }
   
   public final void setScaleViewPosition(int paramInt)
   {
-    AppMethodBeat.i(200201);
-    if (this.MAg != null) {
+    AppMethodBeat.i(212895);
+    if (this.MXn != null) {
       switch (paramInt)
       {
       }
     }
     for (;;)
     {
-      this.MAg.setScaleViewPosition(paramInt);
-      AppMethodBeat.o(200201);
+      this.MXn.setScaleViewPosition(paramInt);
+      AppMethodBeat.o(212895);
       return;
       paramInt = 4;
       continue;
@@ -186,37 +186,37 @@ public final class m
   
   public final void setScrollGesturesEnabled(boolean paramBoolean)
   {
-    AppMethodBeat.i(200197);
-    if (this.MAg != null) {
-      this.MAg.setScrollGesturesEnabled(paramBoolean);
+    AppMethodBeat.i(212891);
+    if (this.MXn != null) {
+      this.MXn.setScrollGesturesEnabled(paramBoolean);
     }
-    AppMethodBeat.o(200197);
+    AppMethodBeat.o(212891);
   }
   
   public final void setTiltGesturesEnabled(boolean paramBoolean)
   {
-    AppMethodBeat.i(200203);
-    if (this.MAg == null)
+    AppMethodBeat.i(212897);
+    if (this.MXn == null)
     {
-      AppMethodBeat.o(200203);
+      AppMethodBeat.o(212897);
       return;
     }
-    this.MAg.setTiltGesturesEnabled(paramBoolean);
-    AppMethodBeat.o(200203);
+    this.MXn.setTiltGesturesEnabled(paramBoolean);
+    AppMethodBeat.o(212897);
   }
   
   public final void setZoomGesturesEnabled(boolean paramBoolean)
   {
-    AppMethodBeat.i(200198);
-    if (this.MAg != null) {
-      this.MAg.setZoomGesturesEnabled(paramBoolean);
+    AppMethodBeat.i(212892);
+    if (this.MXn != null) {
+      this.MXn.setZoomGesturesEnabled(paramBoolean);
     }
-    AppMethodBeat.o(200198);
+    AppMethodBeat.o(212892);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.f.a.a.a.a.m
  * JD-Core Version:    0.7.0.1
  */

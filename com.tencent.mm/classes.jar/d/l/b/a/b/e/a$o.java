@@ -15,26 +15,26 @@ public final class a$o
   extends i
   implements q
 {
-  public static s<o> NjZ;
-  private static final o Nmz;
-  private final d NjY;
-  private byte Nkd = -1;
-  private int Nke = -1;
-  private o NmA;
+  public static s<o> NHf;
+  private static final o NJF;
+  private final d NHe;
+  private byte NHj = -1;
+  private int NHk = -1;
+  private o NJG;
   
   static
   {
     AppMethodBeat.i(58800);
-    NjZ = new b() {};
+    NHf = new b() {};
     o localo = new o();
-    Nmz = localo;
-    localo.NmA = n.Nrw;
+    NJF = localo;
+    localo.NJG = n.NOC;
     AppMethodBeat.o(58800);
   }
   
   private a$o()
   {
-    this.NjY = d.NqI;
+    this.NHe = d.NNO;
   }
   
   /* Error */
@@ -47,14 +47,14 @@ public final class a$o
     //   6: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   9: aload_0
     //   10: iconst_m1
-    //   11: putfield 57	d/l/b/a/b/e/a$o:Nkd	B
+    //   11: putfield 57	d/l/b/a/b/e/a$o:NHj	B
     //   14: aload_0
     //   15: iconst_m1
-    //   16: putfield 59	d/l/b/a/b/e/a$o:Nke	I
+    //   16: putfield 59	d/l/b/a/b/e/a$o:NHk	I
     //   19: aload_0
-    //   20: getstatic 49	d/l/b/a/b/h/n:Nrw	Ld/l/b/a/b/h/o;
-    //   23: putfield 51	d/l/b/a/b/e/a$o:NmA	Ld/l/b/a/b/h/o;
-    //   26: invokestatic 76	d/l/b/a/b/h/d:grr	()Ld/l/b/a/b/h/d$b;
+    //   20: getstatic 49	d/l/b/a/b/h/n:NOC	Ld/l/b/a/b/h/o;
+    //   23: putfield 51	d/l/b/a/b/e/a$o:NJG	Ld/l/b/a/b/h/o;
+    //   26: invokestatic 76	d/l/b/a/b/h/d:gvT	()Ld/l/b/a/b/h/d$b;
     //   29: astore 9
     //   31: aload 9
     //   33: iconst_1
@@ -99,7 +99,7 @@ public final class a$o
     //   126: iload_3
     //   127: istore 8
     //   129: aload_1
-    //   130: invokevirtual 95	d/l/b/a/b/h/e:grx	()Ld/l/b/a/b/h/d;
+    //   130: invokevirtual 95	d/l/b/a/b/h/e:gvZ	()Ld/l/b/a/b/h/d;
     //   133: astore 11
     //   135: iload_3
     //   136: istore 4
@@ -118,7 +118,7 @@ public final class a$o
     //   155: new 46	d/l/b/a/b/h/n
     //   158: dup
     //   159: invokespecial 96	d/l/b/a/b/h/n:<init>	()V
-    //   162: putfield 51	d/l/b/a/b/e/a$o:NmA	Ld/l/b/a/b/h/o;
+    //   162: putfield 51	d/l/b/a/b/e/a$o:NJG	Ld/l/b/a/b/h/o;
     //   165: iload_3
     //   166: iconst_1
     //   167: ior
@@ -130,7 +130,7 @@ public final class a$o
     //   178: iload 4
     //   180: istore 8
     //   182: aload_0
-    //   183: getfield 51	d/l/b/a/b/e/a$o:NmA	Ld/l/b/a/b/h/o;
+    //   183: getfield 51	d/l/b/a/b/e/a$o:NJG	Ld/l/b/a/b/h/o;
     //   186: aload 11
     //   188: invokeinterface 101 2 0
     //   193: iload 4
@@ -141,7 +141,7 @@ public final class a$o
     //   202: istore 5
     //   204: aload_1
     //   205: aload_0
-    //   206: putfield 105	d/l/b/a/b/h/k:Nrq	Ld/l/b/a/b/h/q;
+    //   206: putfield 105	d/l/b/a/b/h/k:NOw	Ld/l/b/a/b/h/q;
     //   209: iload 7
     //   211: istore 5
     //   213: ldc 72
@@ -158,17 +158,17 @@ public final class a$o
     //   230: if_icmpne +16 -> 246
     //   233: aload_0
     //   234: aload_0
-    //   235: getfield 51	d/l/b/a/b/e/a$o:NmA	Ld/l/b/a/b/h/o;
+    //   235: getfield 51	d/l/b/a/b/e/a$o:NJG	Ld/l/b/a/b/h/o;
     //   238: invokeinterface 109 1 0
-    //   243: putfield 51	d/l/b/a/b/e/a$o:NmA	Ld/l/b/a/b/h/o;
+    //   243: putfield 51	d/l/b/a/b/e/a$o:NJG	Ld/l/b/a/b/h/o;
     //   246: aload 10
     //   248: invokevirtual 112	d/l/b/a/b/h/f:flush	()V
     //   251: aload_0
     //   252: aload 9
-    //   254: invokevirtual 117	d/l/b/a/b/h/d$b:grv	()Ld/l/b/a/b/h/d;
-    //   257: putfield 66	d/l/b/a/b/e/a$o:NjY	Ld/l/b/a/b/h/d;
+    //   254: invokevirtual 117	d/l/b/a/b/h/d$b:gvX	()Ld/l/b/a/b/h/d;
+    //   257: putfield 66	d/l/b/a/b/e/a$o:NHe	Ld/l/b/a/b/h/d;
     //   260: aload_0
-    //   261: invokevirtual 120	d/l/b/a/b/e/a$o:grN	()V
+    //   261: invokevirtual 120	d/l/b/a/b/e/a$o:gwp	()V
     //   264: ldc 72
     //   266: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   269: aload_1
@@ -180,31 +180,31 @@ public final class a$o
     //   275: if_icmpne +16 -> 291
     //   278: aload_0
     //   279: aload_0
-    //   280: getfield 51	d/l/b/a/b/e/a$o:NmA	Ld/l/b/a/b/h/o;
+    //   280: getfield 51	d/l/b/a/b/e/a$o:NJG	Ld/l/b/a/b/h/o;
     //   283: invokeinterface 109 1 0
-    //   288: putfield 51	d/l/b/a/b/e/a$o:NmA	Ld/l/b/a/b/h/o;
+    //   288: putfield 51	d/l/b/a/b/e/a$o:NJG	Ld/l/b/a/b/h/o;
     //   291: aload 10
     //   293: invokevirtual 112	d/l/b/a/b/h/f:flush	()V
     //   296: aload_0
     //   297: aload 9
-    //   299: invokevirtual 117	d/l/b/a/b/h/d$b:grv	()Ld/l/b/a/b/h/d;
-    //   302: putfield 66	d/l/b/a/b/e/a$o:NjY	Ld/l/b/a/b/h/d;
+    //   299: invokevirtual 117	d/l/b/a/b/h/d$b:gvX	()Ld/l/b/a/b/h/d;
+    //   302: putfield 66	d/l/b/a/b/e/a$o:NHe	Ld/l/b/a/b/h/d;
     //   305: aload_0
-    //   306: invokevirtual 120	d/l/b/a/b/e/a$o:grN	()V
+    //   306: invokevirtual 120	d/l/b/a/b/e/a$o:gwp	()V
     //   309: ldc 72
     //   311: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   314: return
     //   315: astore_1
     //   316: aload_0
     //   317: aload 9
-    //   319: invokevirtual 117	d/l/b/a/b/h/d$b:grv	()Ld/l/b/a/b/h/d;
-    //   322: putfield 66	d/l/b/a/b/e/a$o:NjY	Ld/l/b/a/b/h/d;
+    //   319: invokevirtual 117	d/l/b/a/b/h/d$b:gvX	()Ld/l/b/a/b/h/d;
+    //   322: putfield 66	d/l/b/a/b/e/a$o:NHe	Ld/l/b/a/b/h/d;
     //   325: goto -20 -> 305
     //   328: astore_1
     //   329: aload_0
     //   330: aload 9
-    //   332: invokevirtual 117	d/l/b/a/b/h/d$b:grv	()Ld/l/b/a/b/h/d;
-    //   335: putfield 66	d/l/b/a/b/e/a$o:NjY	Ld/l/b/a/b/h/d;
+    //   332: invokevirtual 117	d/l/b/a/b/h/d$b:gvX	()Ld/l/b/a/b/h/d;
+    //   335: putfield 66	d/l/b/a/b/e/a$o:NHe	Ld/l/b/a/b/h/d;
     //   338: ldc 72
     //   340: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   343: aload_1
@@ -222,7 +222,7 @@ public final class a$o
     //   364: istore 5
     //   366: aload_1
     //   367: aload_0
-    //   368: putfield 105	d/l/b/a/b/h/k:Nrq	Ld/l/b/a/b/h/q;
+    //   368: putfield 105	d/l/b/a/b/h/k:NOw	Ld/l/b/a/b/h/q;
     //   371: iload 8
     //   373: istore 5
     //   375: ldc 72
@@ -234,14 +234,14 @@ public final class a$o
     //   386: astore_2
     //   387: aload_0
     //   388: aload 9
-    //   390: invokevirtual 117	d/l/b/a/b/h/d$b:grv	()Ld/l/b/a/b/h/d;
-    //   393: putfield 66	d/l/b/a/b/e/a$o:NjY	Ld/l/b/a/b/h/d;
+    //   390: invokevirtual 117	d/l/b/a/b/h/d$b:gvX	()Ld/l/b/a/b/h/d;
+    //   393: putfield 66	d/l/b/a/b/e/a$o:NHe	Ld/l/b/a/b/h/d;
     //   396: goto -136 -> 260
     //   399: astore_1
     //   400: aload_0
     //   401: aload 9
-    //   403: invokevirtual 117	d/l/b/a/b/h/d$b:grv	()Ld/l/b/a/b/h/d;
-    //   406: putfield 66	d/l/b/a/b/e/a$o:NjY	Ld/l/b/a/b/h/d;
+    //   403: invokevirtual 117	d/l/b/a/b/h/d$b:gvX	()Ld/l/b/a/b/h/d;
+    //   406: putfield 66	d/l/b/a/b/e/a$o:NHe	Ld/l/b/a/b/h/d;
     //   409: ldc 72
     //   411: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   414: aload_1
@@ -297,20 +297,20 @@ public final class a$o
   private a$o(i.a parama)
   {
     super((byte)0);
-    this.NjY = parama.NjY;
+    this.NHe = parama.NHe;
   }
   
   public static a b(o paramo)
   {
     AppMethodBeat.i(58797);
-    paramo = a.goS().e(paramo);
+    paramo = a.gtu().e(paramo);
     AppMethodBeat.o(58797);
     return paramo;
   }
   
-  public static o goO()
+  public static o gtq()
   {
-    return Nmz;
+    return NJF;
   }
   
   public final void a(f paramf)
@@ -318,45 +318,45 @@ public final class a$o
     AppMethodBeat.i(58795);
     zp();
     int i = 0;
-    while (i < this.NmA.size())
+    while (i < this.NJG.size())
     {
-      paramf.a(1, this.NmA.alg(i));
+      paramf.a(1, this.NJG.alQ(i));
       i += 1;
     }
-    paramf.e(this.NjY);
+    paramf.e(this.NHe);
     AppMethodBeat.o(58795);
   }
   
   public final String getString(int paramInt)
   {
     AppMethodBeat.i(58794);
-    String str = (String)this.NmA.get(paramInt);
+    String str = (String)this.NJG.get(paramInt);
     AppMethodBeat.o(58794);
     return str;
   }
   
-  public final s<o> gmo()
+  public final s<o> gqQ()
   {
-    return NjZ;
+    return NHf;
   }
   
   public final boolean isInitialized()
   {
-    int i = this.Nkd;
+    int i = this.NHj;
     if (i == 1) {
       return true;
     }
     if (i == 0) {
       return false;
     }
-    this.Nkd = 1;
+    this.NHj = 1;
     return true;
   }
   
   public final int zp()
   {
     AppMethodBeat.i(58796);
-    int i = this.Nke;
+    int i = this.NHk;
     if (i != -1)
     {
       AppMethodBeat.o(58796);
@@ -364,13 +364,13 @@ public final class a$o
     }
     int j = 0;
     int k;
-    for (i = 0; j < this.NmA.size(); i = k + i)
+    for (i = 0; j < this.NJG.size(); i = k + i)
     {
-      k = f.d(this.NmA.alg(j));
+      k = f.d(this.NJG.alQ(j));
       j += 1;
     }
-    i = i + 0 + this.NmA.size() * 1 + this.NjY.size();
-    this.Nke = i;
+    i = i + 0 + this.NJG.size() * 1 + this.NHe.size();
+    this.NHk = i;
     AppMethodBeat.o(58796);
     return i;
   }
@@ -379,24 +379,24 @@ public final class a$o
     extends i.a<a.o, a>
     implements q
   {
-    private int Nka;
-    private o NmA = n.Nrw;
+    private int NHg;
+    private o NJG = n.NOC;
     
-    private a goP()
+    private a gtr()
     {
       AppMethodBeat.i(58778);
-      a locala = new a().e(goQ());
+      a locala = new a().e(gts());
       AppMethodBeat.o(58778);
       return locala;
     }
     
-    private void goR()
+    private void gtt()
     {
       AppMethodBeat.i(58782);
-      if ((this.Nka & 0x1) != 1)
+      if ((this.NHg & 0x1) != 1)
       {
-        this.NmA = new n(this.NmA);
-        this.Nka |= 0x1;
+        this.NJG = new n(this.NJG);
+        this.NHg |= 0x1;
       }
       AppMethodBeat.o(58782);
     }
@@ -409,7 +409,7 @@ public final class a$o
       //   2: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
       //   5: aconst_null
       //   6: astore_3
-      //   7: getstatic 67	d/l/b/a/b/e/a$o:NjZ	Ld/l/b/a/b/h/s;
+      //   7: getstatic 67	d/l/b/a/b/e/a$o:NHf	Ld/l/b/a/b/h/s;
       //   10: aload_1
       //   11: aload_2
       //   12: invokeinterface 72 3 0
@@ -425,7 +425,7 @@ public final class a$o
       //   33: areturn
       //   34: astore_1
       //   35: aload_1
-      //   36: getfield 76	d/l/b/a/b/h/k:Nrq	Ld/l/b/a/b/h/q;
+      //   36: getfield 76	d/l/b/a/b/h/k:NOw	Ld/l/b/a/b/h/q;
       //   39: checkcast 9	d/l/b/a/b/e/a$o
       //   42: astore_2
       //   43: ldc 63
@@ -464,40 +464,40 @@ public final class a$o
     public final a e(a.o paramo)
     {
       AppMethodBeat.i(58780);
-      if (paramo == a.o.goO())
+      if (paramo == a.o.gtq())
       {
         AppMethodBeat.o(58780);
         return this;
       }
       if (!a.o.c(paramo).isEmpty())
       {
-        if (!this.NmA.isEmpty()) {
+        if (!this.NJG.isEmpty()) {
           break label84;
         }
-        this.NmA = a.o.c(paramo);
-        this.Nka &= 0xFFFFFFFE;
+        this.NJG = a.o.c(paramo);
+        this.NHg &= 0xFFFFFFFE;
       }
       for (;;)
       {
-        this.NjY = this.NjY.a(a.o.d(paramo));
+        this.NHe = this.NHe.a(a.o.d(paramo));
         AppMethodBeat.o(58780);
         return this;
         label84:
-        goR();
-        this.NmA.addAll(a.o.c(paramo));
+        gtt();
+        this.NJG.addAll(a.o.c(paramo));
       }
     }
     
-    public final a.o goQ()
+    public final a.o gts()
     {
       AppMethodBeat.i(58779);
       a.o localo = new a.o(this, (byte)0);
-      if ((this.Nka & 0x1) == 1)
+      if ((this.NHg & 0x1) == 1)
       {
-        this.NmA = this.NmA.grZ();
-        this.Nka &= 0xFFFFFFFE;
+        this.NJG = this.NJG.gwB();
+        this.NHg &= 0xFFFFFFFE;
       }
-      a.o.a(localo, this.NmA);
+      a.o.a(localo, this.NJG);
       AppMethodBeat.o(58779);
       return localo;
     }
@@ -510,7 +510,7 @@ public final class a$o
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     d.l.b.a.b.e.a.o
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.mm.plugin.honey_pay;
 
-import com.tencent.mm.model.ax;
+import com.tencent.mm.model.az;
 import com.tencent.mm.pluginsdk.b.c;
 import com.tencent.mm.pluginsdk.b.d;
 import com.tencent.mm.pluginsdk.n;
@@ -13,7 +13,7 @@ public final class Plugin
     return null;
   }
   
-  public final ax createSubCore()
+  public final az createSubCore()
   {
     return null;
   }

@@ -11,18 +11,18 @@ import android.view.View.OnTouchListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.aq;
 
 public class MaskImageView
   extends TagImageView
 {
+  private aq AfN;
+  private Runnable AfO;
   private int a;
   private int b;
   private boolean enable;
   private int g;
   private int r;
-  private ap zOG;
-  private Runnable zOH;
   
   public MaskImageView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -33,8 +33,8 @@ public class MaskImageView
     this.g = 0;
     this.b = 0;
     this.enable = true;
-    this.zOG = new ap(Looper.getMainLooper());
-    this.zOH = new Runnable()
+    this.AfN = new aq(Looper.getMainLooper());
+    this.AfO = new Runnable()
     {
       public final void run()
       {
@@ -52,7 +52,7 @@ public class MaskImageView
         b localb = new b();
         localb.bd(paramAnonymousView);
         localb.bd(paramAnonymousMotionEvent);
-        a.b("com/tencent/mm/plugin/sns/ui/MaskImageView$2", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahq());
+        a.b("com/tencent/mm/plugin/sns/ui/MaskImageView$2", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahF());
         if (!MaskImageView.a(MaskImageView.this))
         {
           a.a(false, this, "com/tencent/mm/plugin/sns/ui/MaskImageView$2", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
@@ -81,9 +81,9 @@ public class MaskImageView
       return true;
       paramView.setPressed(true);
       paramView.invalidate();
-      this.zOG.removeCallbacks(this.zOH);
+      this.AfN.removeCallbacks(this.AfO);
       continue;
-      this.zOG.post(this.zOH);
+      this.AfN.post(this.AfO);
     }
     AppMethodBeat.o(97962);
     return false;

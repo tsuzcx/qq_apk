@@ -11,7 +11,7 @@ import com.tencent.mm.pluginsdk.ui.i.b;
 import com.tencent.mm.pluginsdk.ui.i.e;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/video/IFinderVideoView;", "", "animate", "Landroid/view/ViewPropertyAnimator;", "getAlpha", "", "getBitmap", "Landroid/graphics/Bitmap;", "getCurrentPlaySecond", "", "getHeight", "getIsNeverStart", "", "getIsShouldPlayResume", "getParentView", "Landroid/view/ViewParent;", "getTag", "id", "getVideoDuration", "getVideoMediaId", "", "getVideoMediaInfo", "Lcom/tencent/mm/plugin/finder/video/MediaInfo;", "getVideoView", "Landroid/view/View;", "getVideoViewFocused", "getWidth", "isPlaying", "isPreviewing", "onRelease", "", "onUIDestroy", "pause", "pauseWithCancel", "play", "prepareToPlay", "removeVideoFooterView", "seekTo", "timestamp", "", "afterSeekPlay", "setAlpha", "alpha", "setFinderVideoCore", "videoCore", "Lcom/tencent/mm/plugin/finder/video/FinderVideoCore;", "setIMMVideoViewCallback", "_callback", "Lcom/tencent/mm/pluginsdk/ui/IMMVideoView$IMMVideoViewCallback;", "setIOnlineVideoProxy", "_proxy", "Lcom/tencent/mm/modelvideo/IOnlineVideoProxy;", "setInterceptDetach", "isInterceptDetach", "setIsShouldPlayResume", "shouldPlayResume", "setIsShowBasicControls", "isShow", "setKeepScreenOn", "keepScreenOn", "setLoop", "loop", "setMute", "isMute", "setPreview", "isPreview", "setScaleType", "scaleType", "Lcom/tencent/mm/pluginsdk/ui/IMMVideoView$ScaleType;", "setTag", "tag", "setVideoMediaInfo", "video", "Lcom/tencent/mm/plugin/finder/loader/FinderVideo;", "isLocal", "finderItem", "Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "setVideoMuteListener", "muteListener", "Lcom/tencent/mm/plugin/finder/video/OnMuteListener;", "setVideoPlayLifecycle", "lifecycle", "Lcom/tencent/mm/plugin/finder/video/VideoPlayLifecycle;", "setVideoViewFocused", "focused", "startOrPlay", "stop", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/video/IFinderVideoView;", "", "animate", "Landroid/view/ViewPropertyAnimator;", "getAlpha", "", "getBitmap", "Landroid/graphics/Bitmap;", "getCurrentPlaySecond", "", "getHeight", "getIsNeverStart", "", "getIsShouldPlayResume", "getParentView", "Landroid/view/ViewParent;", "getTag", "id", "getVideoDuration", "getVideoMediaId", "", "getVideoMediaInfo", "Lcom/tencent/mm/plugin/finder/video/MediaInfo;", "getVideoView", "Landroid/view/View;", "getVideoViewFocused", "getWidth", "isPlaying", "isPreviewing", "onRelease", "", "onUIDestroy", "pause", "pauseWithCancel", "play", "prepareToPlay", "removeVideoFooterView", "seekTo", "timestamp", "", "afterSeekPlay", "setAlpha", "alpha", "setFinderVideoCore", "videoCore", "Lcom/tencent/mm/plugin/finder/video/FinderVideoCore;", "setIMMVideoViewCallback", "_callback", "Lcom/tencent/mm/pluginsdk/ui/IMMVideoView$IMMVideoViewCallback;", "setIOnlineVideoProxy", "_proxy", "Lcom/tencent/mm/modelvideo/IOnlineVideoProxy;", "setInterceptDetach", "isInterceptDetach", "setIsShouldPlayResume", "shouldPlayResume", "setIsShowBasicControls", "isShow", "setKeepScreenOn", "keepScreenOn", "setLoop", "loop", "setMute", "isMute", "setPreview", "isPreview", "setScaleType", "scaleType", "Lcom/tencent/mm/pluginsdk/ui/IMMVideoView$ScaleType;", "setTag", "tag", "setVideoMediaInfo", "video", "Lcom/tencent/mm/plugin/finder/loader/FinderVideo;", "isLocal", "finderItem", "Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "setVideoMuteListener", "muteListener", "Lcom/tencent/mm/plugin/finder/video/OnMuteListener;", "setVideoPlayLifecycle", "lifecycle", "Lcom/tencent/mm/plugin/finder/video/VideoPlayLifecycle;", "setVideoViewFocused", "focused", "startOrPlay", "stop", "plugin-finder_release"})
 public abstract interface o
 {
   public abstract void a(m paramm, boolean paramBoolean, FinderItem paramFinderItem);
@@ -20,15 +20,15 @@ public abstract interface o
   
   public abstract boolean c(double paramDouble, boolean paramBoolean);
   
-  public abstract boolean cLS();
+  public abstract boolean cOA();
   
-  public abstract boolean cLT();
+  public abstract boolean cOB();
   
-  public abstract boolean cMf();
+  public abstract boolean cON();
   
-  public abstract int cMg();
+  public abstract int cOO();
   
-  public abstract void cMk();
+  public abstract void cOS();
   
   public abstract float getAlpha();
   
@@ -106,7 +106,7 @@ public abstract interface o
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.video.o
  * JD-Core Version:    0.7.0.1
  */

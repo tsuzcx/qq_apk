@@ -6,7 +6,7 @@ import com.tencent.mm.plugin.appbrand.widget.AppBrandPipContainerView;
 import com.tencent.mm.plugin.appbrand.widget.AppBrandPipContainerView.a;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/pip/AppBrandPipStablePosLogic;", "", "appId", "", "pipContainerView", "Lcom/tencent/mm/plugin/appbrand/widget/AppBrandPipContainerView;", "(Ljava/lang/String;Lcom/tencent/mm/plugin/appbrand/widget/AppBrandPipContainerView;)V", "getAppId", "()Ljava/lang/String;", "getStablePosAsync", "", "callback", "Lcom/tencent/mm/plugin/appbrand/pip/AppBrandPipStablePosCallback;", "saveStablePos", "point", "Landroid/graphics/Point;", "luggage-wxa-app_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/pip/AppBrandPipStablePosLogic;", "", "appId", "", "pipContainerView", "Lcom/tencent/mm/plugin/appbrand/widget/AppBrandPipContainerView;", "(Ljava/lang/String;Lcom/tencent/mm/plugin/appbrand/widget/AppBrandPipContainerView;)V", "getAppId", "()Ljava/lang/String;", "getStablePosAsync", "", "callback", "Lcom/tencent/mm/plugin/appbrand/pip/AppBrandPipStablePosCallback;", "saveStablePos", "point", "Landroid/graphics/Point;", "luggage-wxa-app_release"})
 public abstract class i
 {
   final String appId;
@@ -18,9 +18,9 @@ public abstract class i
     {
       public final void eh(int paramAnonymousInt1, int paramAnonymousInt2)
       {
-        AppMethodBeat.i(197525);
-        this.moi.f(new Point(paramAnonymousInt1, paramAnonymousInt2));
-        AppMethodBeat.o(197525);
+        AppMethodBeat.i(208134);
+        this.mtg.f(new Point(paramAnonymousInt1, paramAnonymousInt2));
+        AppMethodBeat.o(208134);
       }
     });
   }

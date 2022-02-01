@@ -16,10 +16,10 @@ final class b$2
     AppMethodBeat.i(66803);
     com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
     localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/order/ui/preference/FetchOrderPrefFactory$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-    paramView = this.wCn.desc + "\n" + this.wCn.wCv;
-    this.wEM.setContent(paramView);
-    this.mAu.notifyDataSetChanged();
+    a.b("com/tencent/mm/plugin/order/ui/preference/FetchOrderPrefFactory$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+    paramView = this.wRY.desc + "\n" + this.wRY.wSg;
+    this.wUx.setContent(paramView);
+    this.mFv.notifyDataSetChanged();
     a.a(this, "com/tencent/mm/plugin/order/ui/preference/FetchOrderPrefFactory$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(66803);
   }

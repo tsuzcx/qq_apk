@@ -678,11 +678,11 @@ public class e
   
   public void a(o paramo)
   {
-    AppMethodBeat.i(187211);
+    AppMethodBeat.i(221340);
     if (this.f != null) {
       this.f.a(paramo);
     }
-    AppMethodBeat.o(187211);
+    AppMethodBeat.o(221340);
   }
   
   public void a(g paramg)
@@ -697,7 +697,7 @@ public class e
   
   public void a(n paramn, b paramb, Object paramObject)
   {
-    AppMethodBeat.i(187210);
+    AppMethodBeat.i(221339);
     this.H = paramb;
     this.I = paramObject;
     if ((c()) && (this.H == b.c) && (this.i == null) && (paramn != null) && (this.f != null)) {
@@ -706,11 +706,11 @@ public class e
     if (this.e != null)
     {
       this.e.setVideoFrameListener(paramn, paramb);
-      AppMethodBeat.o(187210);
+      AppMethodBeat.o(221339);
       return;
     }
     TXCLog.w("TXCLivePlayer", "setVideoFrameListener->enter with renderAndDec is empty");
-    AppMethodBeat.o(187210);
+    AppMethodBeat.o(221339);
   }
   
   public void a(TXLivePlayer.ITXAudioRawDataListener paramITXAudioRawDataListener)

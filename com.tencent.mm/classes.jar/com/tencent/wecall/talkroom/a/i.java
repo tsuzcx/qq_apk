@@ -19,11 +19,11 @@ public final class i
     try
     {
       localg.groupId = paramString;
-      localg.CcE = paramInt1;
-      localg.CcF = paramLong;
+      localg.Cuf = paramInt1;
+      localg.Cug = paramLong;
       localg.reason = paramInt2;
       this.mNetType = 3;
-      this.LFq = c.fZv().bac(paramString);
+      this.Mcu = c.gdW().bbF(paramString);
       c(181, localg);
       AppMethodBeat.o(62526);
       return;
@@ -37,7 +37,7 @@ public final class i
     }
   }
   
-  public final Object cI(byte[] paramArrayOfByte)
+  public final Object cL(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(62527);
     b.d("MicroMsg.Voip", new Object[] { this.TAG2, "data2Resp" });
@@ -60,7 +60,7 @@ public final class i
     }
   }
   
-  public final String fSQ()
+  public final String fXq()
   {
     return "CsCmd.Cmd_V_CSRejectEnterVoiceRoomReq";
   }

@@ -5,32 +5,32 @@ import d.g.b.q;
 import d.l;
 import d.z;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/serialization/PolymorphicSerializer;", "T", "", "Lkotlinx/serialization/internal/AbstractPolymorphicSerializer;", "baseClass", "Lkotlin/reflect/KClass;", "(Lkotlin/reflect/KClass;)V", "getBaseClass", "()Lkotlin/reflect/KClass;", "descriptor", "Lkotlinx/serialization/SerialDescriptor;", "getDescriptor", "()Lkotlinx/serialization/SerialDescriptor;", "kotlinx-serialization-runtime"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/serialization/PolymorphicSerializer;", "T", "", "Lkotlinx/serialization/internal/AbstractPolymorphicSerializer;", "baseClass", "Lkotlin/reflect/KClass;", "(Lkotlin/reflect/KClass;)V", "getBaseClass", "()Lkotlin/reflect/KClass;", "descriptor", "Lkotlinx/serialization/SerialDescriptor;", "getDescriptor", "()Lkotlinx/serialization/SerialDescriptor;", "kotlinx-serialization-runtime"})
 public final class k<T>
   extends kotlinx.a.b.b<T>
 {
-  private final n NLm;
-  final d.l.b<T> NLn;
+  private final n Ois;
+  final d.l.b<T> Oit;
   
   public k(d.l.b<T> paramb)
   {
-    AppMethodBeat.i(191519);
-    this.NLn = paramb;
-    this.NLm = p.a("kotlinx.serialization.Polymorphic", (s)j.a.NLk, (d.g.a.b)new a(this));
-    AppMethodBeat.o(191519);
+    AppMethodBeat.i(200107);
+    this.Oit = paramb;
+    this.Ois = p.a("kotlinx.serialization.Polymorphic", (s)j.a.Oiq, (d.g.a.b)new a(this));
+    AppMethodBeat.o(200107);
   }
   
-  public final n eLj()
+  public final n eOR()
   {
-    return this.NLm;
+    return this.Ois;
   }
   
-  public final d.l.b<T> gwP()
+  public final d.l.b<T> gBr()
   {
-    return this.NLn;
+    return this.Oit;
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "T", "", "Lkotlinx/serialization/SerialDescriptorBuilder;", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "T", "", "Lkotlinx/serialization/SerialDescriptorBuilder;", "invoke"})
   static final class a
     extends q
     implements d.g.a.b<o, z>

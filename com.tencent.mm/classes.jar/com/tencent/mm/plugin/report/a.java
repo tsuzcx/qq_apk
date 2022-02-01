@@ -4,19 +4,19 @@ import android.os.Process;
 import com.tencent.mm.b.f;
 import com.tencent.mm.b.h;
 import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.sdk.platformtools.i;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.j;
 import java.util.ArrayList;
 import java.util.List;
 import junit.framework.Assert;
 
 public abstract class a
 {
-  private static final f<Integer, Long> rbH = new h(50);
-  private static int ygB = 1;
+  private static final f<Integer, Long> rjN = new h(50);
+  private static int yws = 1;
   
-  public static List<String> awA(String paramString)
+  public static List<String> axP(String paramString)
   {
     ArrayList localArrayList2 = new ArrayList();
     try
@@ -37,39 +37,39 @@ public abstract class a
     }
     catch (Exception paramString)
     {
-      ad.printErrStackTrace("MicroMsg.AbsReportStruct", paramString, "check to report list error [%s]", new Object[] { paramString.toString() });
+      ae.printErrStackTrace("MicroMsg.AbsReportStruct", paramString, "check to report list error [%s]", new Object[] { paramString.toString() });
       localArrayList1 = null;
     }
   }
   
-  public static int dJZ()
+  public static int dNr()
   {
     int i = Process.myPid();
-    StringBuilder localStringBuilder = new StringBuilder().append(i).append("_").append(bt.flT()).append("_");
-    i = ygB;
-    ygB = i + 1;
+    StringBuilder localStringBuilder = new StringBuilder().append(i).append("_").append(bu.fpO()).append("_");
+    i = yws;
+    yws = i + 1;
     return Math.abs(i.hashCode());
   }
   
   protected static boolean getBoolean(String paramString)
   {
     boolean bool = false;
-    if (bt.getInt(paramString, 0) != 0) {
+    if (bu.getInt(paramString, 0) != 0) {
       bool = true;
     }
     return bool;
   }
   
-  private void iW(String paramString1, String paramString2)
+  private void jc(String paramString1, String paramString2)
   {
-    ad.w("MicroMsg.AbsReportStruct", "error report [%d] msg[%s %s]", new Object[] { Integer.valueOf(getId()), paramString1, paramString2 });
+    ae.w("MicroMsg.AbsReportStruct", "error report [%d] msg[%s %s]", new Object[] { Integer.valueOf(getId()), paramString1, paramString2 });
   }
   
-  public static String u(Object... paramVarArgs)
+  public static String t(Object... paramVarArgs)
   {
     if (paramVarArgs.length <= 0)
     {
-      ad.w("MicroMsg.AbsReportStruct", "vals is null, use '' as value");
+      ae.w("MicroMsg.AbsReportStruct", "vals is null, use '' as value");
       return "";
     }
     StringBuilder localStringBuilder = new StringBuilder();
@@ -84,48 +84,33 @@ public abstract class a
     return localStringBuilder.toString();
   }
   
+  public abstract String RC();
+  
   public abstract String RD();
   
-  public abstract String RE();
-  
-  public final boolean aLk()
+  public final boolean aLH()
   {
     int i = getId();
-    String str = RD();
-    ad.v("MicroMsg.AbsReportStruct", "report %d %s", new Object[] { Integer.valueOf(getId()), RD() });
-    if ((i > 0) && (!bt.isNullOrNil(str)))
+    String str = RC();
+    ae.v("MicroMsg.AbsReportStruct", "report %d %s", new Object[] { Integer.valueOf(getId()), RC() });
+    if ((i > 0) && (!bu.isNullOrNil(str)))
     {
-      g.yhR.kvStat(getId(), RD());
+      g.yxI.kvStat(getId(), RC());
       return true;
     }
     return false;
   }
   
-  protected final boolean awz(String paramString)
+  protected final boolean axO(String paramString)
   {
-    if (bt.isNullOrNil(paramString))
+    if (bu.isNullOrNil(paramString))
     {
-      iW("", "check rpt value is null.");
+      jc("", "check rpt value is null.");
       return false;
     }
     if (paramString.length() >= 7168)
     {
-      iW("", "check rpt value more than 7k.");
-      return false;
-    }
-    return true;
-  }
-  
-  protected final boolean bf(String paramString, long paramLong)
-  {
-    if (paramLong <= 0L)
-    {
-      iW(paramString, String.valueOf(paramLong));
-      return false;
-    }
-    if (paramLong >= 3600000L)
-    {
-      iW(paramString, String.valueOf(paramLong));
+      jc("", "check rpt value more than 7k.");
       return false;
     }
     return true;
@@ -133,50 +118,65 @@ public abstract class a
   
   protected final boolean bg(String paramString, long paramLong)
   {
-    boolean bool = true;
-    if (paramLong <= 151473600000L)
+    if (paramLong <= 0L)
     {
-      bool = false;
-      iW(paramString, String.valueOf(paramLong));
+      jc(paramString, String.valueOf(paramLong));
+      return false;
     }
-    return bool;
+    if (paramLong >= 3600000L)
+    {
+      jc(paramString, String.valueOf(paramLong));
+      return false;
+    }
+    return true;
   }
   
   protected final boolean bh(String paramString, long paramLong)
   {
     boolean bool = true;
-    if (paramLong <= 151473600L)
+    if (paramLong <= 151473600000L)
     {
       bool = false;
-      iW(paramString, String.valueOf(paramLong));
+      jc(paramString, String.valueOf(paramLong));
     }
     return bool;
   }
   
-  public final boolean dJX()
+  protected final boolean bi(String paramString, long paramLong)
+  {
+    boolean bool = true;
+    if (paramLong <= 151473600L)
+    {
+      bool = false;
+      jc(paramString, String.valueOf(paramLong));
+    }
+    return bool;
+  }
+  
+  public final boolean dNp()
   {
     int i = getId();
-    Object localObject = RD();
-    ad.v("MicroMsg.AbsReportStruct", "report %d %s", new Object[] { Integer.valueOf(getId()), RD() });
-    if ((i > 0) && (!bt.isNullOrNil((String)localObject)))
+    Object localObject = RC();
+    ae.v("MicroMsg.AbsReportStruct", "report %d %s", new Object[] { Integer.valueOf(getId()), RC() });
+    if ((i > 0) && (!bu.isNullOrNil((String)localObject)))
     {
-      localObject = g.yhR;
-      g.c(getId(), RD(), false, true);
+      localObject = g.yxI;
+      g.c(getId(), RC(), false, true);
       return true;
     }
     return false;
   }
   
-  public final boolean dJY()
+  public final boolean dNq()
   {
     int i = getId();
-    String str = RD();
+    String str = RC();
     Long localLong;
-    if ((i > 0) && (!bt.isNullOrNil(str)))
+    if ((i > 0) && (!bu.isNullOrNil(str)))
     {
       str = i + "," + str;
       i = str.hashCode();
-      localLong = (Long)rbH.get(Integer.valueOf(i));
+      localLong = (Long)rjN.get(Integer.valueOf(i));
       if (localLong == null) {
         break label138;
       }
@@ -184,13 +184,13 @@ public abstract class a
     label138:
     for (long l = localLong.longValue();; l = 0L)
     {
-      if (bt.Df(l) < 300000L)
+      if (bu.DD(l) < 300000L)
       {
-        ad.v("MicroMsg.AbsReportStruct", "clock report [%s] less than 5 min, don't report", new Object[] { str });
+        ae.v("MicroMsg.AbsReportStruct", "clock report [%s] less than 5 min, don't report", new Object[] { str });
         return false;
       }
-      rbH.put(Integer.valueOf(i), Long.valueOf(bt.flT()));
-      return aLk();
+      rjN.put(Integer.valueOf(i), Long.valueOf(bu.fpO()));
+      return aLH();
       return false;
     }
   }
@@ -199,17 +199,17 @@ public abstract class a
   
   public final String t(String paramString1, String paramString2, boolean paramBoolean)
   {
-    if (bt.isNullOrNil(paramString2)) {}
+    if (bu.isNullOrNil(paramString2)) {}
     while (!paramString2.contains(",")) {
       return paramString2;
     }
-    if ((paramBoolean) && ((i.DEBUG) || (i.IS_FLAVOR_RED))) {
+    if ((paramBoolean) && ((j.DEBUG) || (j.IS_FLAVOR_RED))) {
       Assert.assertTrue("value contain comma, please confirm your logic.log id:" + getId() + " field:" + paramString1 + " value:" + paramString2, false);
     }
     for (;;)
     {
       return paramString2.replace(',', ' ');
-      iW(paramString1, "value contain comma, please confirm your logic. value :".concat(String.valueOf(paramString2)));
+      jc(paramString1, "value contain comma, please confirm your logic. value :".concat(String.valueOf(paramString2)));
     }
   }
 }

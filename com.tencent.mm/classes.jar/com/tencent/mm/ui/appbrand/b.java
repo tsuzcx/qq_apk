@@ -25,10 +25,10 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.appbrand.appusage.ah;
 import com.tencent.mm.plugin.voip.ui.MMCheckBox;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.at;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.platformtools.au;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.al;
 import com.tencent.mm.ui.base.i;
 import com.tencent.mm.ui.z;
@@ -39,164 +39,164 @@ public final class b
   extends i
   implements DialogInterface
 {
-  private LinearLayout IaU;
-  private int Jhe;
-  private ImageView Jhf;
-  private ImageView Jhg;
-  private Button Jhh;
-  private ViewGroup Jhi;
-  private TextView Jhj;
-  private TextView Jhk;
-  private TextView Jhl;
-  private TextView Jhm;
-  public List<b> Jhn;
-  public a Jho;
-  CompoundButton.OnCheckedChangeListener Jhp;
-  private View.OnClickListener gMe;
-  private String lEN;
+  private LinearLayout Ivb;
+  private int JBP;
+  private ImageView JBQ;
+  private ImageView JBR;
+  private Button JBS;
+  private ViewGroup JBT;
+  private TextView JBU;
+  private TextView JBV;
+  private TextView JBW;
+  private TextView JBX;
+  public List<b> JBY;
+  public a JBZ;
+  CompoundButton.OnCheckedChangeListener JCa;
+  private View.OnClickListener gON;
+  private String lJm;
+  private boolean mEW;
   private int mMode;
-  private boolean mzW;
-  private TextView pqe;
+  private TextView pwK;
   
   public b(Context paramContext, int paramInt, String paramString)
   {
     super(paramContext, 2131821484);
-    AppMethodBeat.i(193767);
-    this.Jhn = new ArrayList();
-    this.gMe = new View.OnClickListener()
+    AppMethodBeat.i(187058);
+    this.JBY = new ArrayList();
+    this.gON = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(193764);
+        AppMethodBeat.i(187055);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
         localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/appbrand/AppBrandNoticeMoreDialog$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/appbrand/AppBrandNoticeMoreDialog$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
         int i = paramAnonymousView.getId();
         if (b.a(b.this) != null)
         {
           if (i != 2131297999) {
             break label85;
           }
-          b.a(b.this).fyh();
+          b.a(b.this).fCj();
         }
         for (;;)
         {
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/appbrand/AppBrandNoticeMoreDialog$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-          AppMethodBeat.o(193764);
+          AppMethodBeat.o(187055);
           return;
           label85:
           if ((i == 2131297989) || (i == 2131297994)) {
-            b.a(b.this).fyi();
+            b.a(b.this).fCk();
           } else if ((i == 2131297990) || (i == 2131297995)) {
-            b.a(b.this).fyj();
+            b.a(b.this).fCl();
           } else if (i == 2131297996) {
-            b.a(b.this).fyk();
+            b.a(b.this).fCm();
           }
         }
       }
     };
-    this.Jhp = new CompoundButton.OnCheckedChangeListener()
+    this.JCa = new CompoundButton.OnCheckedChangeListener()
     {
       public final void onCheckedChanged(CompoundButton paramAnonymousCompoundButton, boolean paramAnonymousBoolean)
       {
-        AppMethodBeat.i(193765);
-        ((b.b)paramAnonymousCompoundButton.getTag()).oBZ = paramAnonymousBoolean;
+        AppMethodBeat.i(187056);
+        ((b.b)paramAnonymousCompoundButton.getTag()).oIB = paramAnonymousBoolean;
         if (paramAnonymousBoolean) {
           b.b(b.this);
         }
         for (;;)
         {
           b.d(b.this);
-          AppMethodBeat.o(193765);
+          AppMethodBeat.o(187056);
           return;
           b.c(b.this);
         }
       }
     };
     this.mMode = paramInt;
-    this.lEN = paramString;
-    this.Jhe = 0;
-    if (!bt.isNullOrNil(paramString))
+    this.lJm = paramString;
+    this.JBP = 0;
+    if (!bu.isNullOrNil(paramString))
     {
-      if ((bb(paramString, 0)) || (bb(paramString, 1)) || (bb(paramString, 2))) {
+      if ((be(paramString, 0)) || (be(paramString, 1)) || (be(paramString, 2))) {
         bool = true;
       }
-      this.mzW = bool;
+      this.mEW = bool;
     }
-    this.IaU = ((LinearLayout)z.jO(paramContext).inflate(2131493389, null));
-    this.Jhf = ((ImageView)this.IaU.findViewById(2131297988));
-    this.Jhf.setColorFilter(paramContext.getResources().getColor(2131099650));
-    this.Jhg = ((ImageView)this.IaU.findViewById(2131297987));
-    this.Jhg.setColorFilter(paramContext.getResources().getColor(2131099650));
+    this.Ivb = ((LinearLayout)z.jV(paramContext).inflate(2131493389, null));
+    this.JBQ = ((ImageView)this.Ivb.findViewById(2131297988));
+    this.JBQ.setColorFilter(paramContext.getResources().getColor(2131099650));
+    this.JBR = ((ImageView)this.Ivb.findViewById(2131297987));
+    this.JBR.setColorFilter(paramContext.getResources().getColor(2131099650));
     setCanceledOnTouchOutside(true);
     if (this.mMode == 0)
     {
-      ((ViewStub)this.IaU.findViewById(2131297993)).inflate();
-      this.Jhh = ((Button)this.IaU.findViewById(2131297999));
-      this.Jhi = ((ViewGroup)this.IaU.findViewById(2131297992));
-      this.Jhj = ((TextView)this.IaU.findViewById(2131297989));
-      this.pqe = ((TextView)this.IaU.findViewById(2131297990));
-      this.Jhh.setOnClickListener(this.gMe);
-      this.Jhj.setOnClickListener(this.gMe);
-      this.pqe.setOnClickListener(this.gMe);
+      ((ViewStub)this.Ivb.findViewById(2131297993)).inflate();
+      this.JBS = ((Button)this.Ivb.findViewById(2131297999));
+      this.JBT = ((ViewGroup)this.Ivb.findViewById(2131297992));
+      this.JBU = ((TextView)this.Ivb.findViewById(2131297989));
+      this.pwK = ((TextView)this.Ivb.findViewById(2131297990));
+      this.JBS.setOnClickListener(this.gON);
+      this.JBU.setOnClickListener(this.gON);
+      this.pwK.setOnClickListener(this.gON);
       paramContext = new ArrayList();
-      paramString = this.IaU.getContext();
+      paramString = this.Ivb.getContext();
       paramContext.add(new b(1, paramString.getString(2131757121)));
       paramContext.add(new b(2, paramString.getString(2131757120)));
       paramContext.add(new b(3, paramString.getString(2131757122)));
-      hP(paramContext);
-      AppMethodBeat.o(193767);
+      hZ(paramContext);
+      AppMethodBeat.o(187058);
       return;
     }
-    ((ViewStub)this.IaU.findViewById(2131297997)).inflate();
-    this.Jhk = ((TextView)this.IaU.findViewById(2131297996));
-    this.Jhl = ((TextView)this.IaU.findViewById(2131297994));
-    this.Jhm = ((TextView)this.IaU.findViewById(2131297995));
-    if (this.mzW) {
-      this.Jhk.setOnClickListener(this.gMe);
+    ((ViewStub)this.Ivb.findViewById(2131297997)).inflate();
+    this.JBV = ((TextView)this.Ivb.findViewById(2131297996));
+    this.JBW = ((TextView)this.Ivb.findViewById(2131297994));
+    this.JBX = ((TextView)this.Ivb.findViewById(2131297995));
+    if (this.mEW) {
+      this.JBV.setOnClickListener(this.gON);
     }
     for (;;)
     {
-      this.Jhl.setOnClickListener(this.gMe);
-      this.Jhm.setOnClickListener(this.gMe);
-      AppMethodBeat.o(193767);
+      this.JBW.setOnClickListener(this.gON);
+      this.JBX.setOnClickListener(this.gON);
+      AppMethodBeat.o(187058);
       return;
-      this.Jhk.setVisibility(8);
+      this.JBV.setVisibility(8);
     }
   }
   
   private MMCheckBox a(Context paramContext, b paramb)
   {
-    AppMethodBeat.i(193770);
+    AppMethodBeat.i(187061);
     MMCheckBox localMMCheckBox = new MMCheckBox(new ContextThemeWrapper(paramContext, 2131820561), null, 2131820561);
-    localMMCheckBox.setText(paramb.fVj);
+    localMMCheckBox.setText(paramb.fXp);
     localMMCheckBox.setTag(paramb);
-    localMMCheckBox.setTextSize(0, com.tencent.mm.cc.a.ax(paramContext, 2131165569));
-    localMMCheckBox.setOnCheckedChangeListener(this.Jhp);
-    AppMethodBeat.o(193770);
+    localMMCheckBox.setTextSize(0, com.tencent.mm.cb.a.ax(paramContext, 2131165569));
+    localMMCheckBox.setOnCheckedChangeListener(this.JCa);
+    AppMethodBeat.o(187061);
     return localMMCheckBox;
   }
   
-  private static boolean bb(String paramString, int paramInt)
+  private static boolean be(String paramString, int paramInt)
   {
-    AppMethodBeat.i(193773);
-    boolean bool = ((ah)g.ab(ah.class)).aX(paramString, paramInt);
-    AppMethodBeat.o(193773);
+    AppMethodBeat.i(187064);
+    boolean bool = ((ah)g.ab(ah.class)).ba(paramString, paramInt);
+    AppMethodBeat.o(187064);
     return bool;
   }
   
-  private void hP(List<b> paramList)
+  private void hZ(List<b> paramList)
   {
-    AppMethodBeat.i(193769);
+    AppMethodBeat.i(187060);
     if (paramList.isEmpty())
     {
-      ad.i("MicroMsg.AppBrandNoticeMoreDialog", "has no reason data");
-      AppMethodBeat.o(193769);
+      ae.i("MicroMsg.AppBrandNoticeMoreDialog", "has no reason data");
+      AppMethodBeat.o(187060);
       return;
     }
-    this.Jhn.clear();
-    this.Jhn.addAll(paramList);
-    Context localContext = this.IaU.getContext();
+    this.JBY.clear();
+    this.JBY.addAll(paramList);
+    Context localContext = this.Ivb.getContext();
     LinearLayout localLinearLayout = new LinearLayout(localContext);
     int i = 0;
     LinearLayout.LayoutParams localLayoutParams;
@@ -217,7 +217,7 @@ public final class b
       }
       i += 1;
     }
-    this.Jhi.addView(localLinearLayout);
+    this.JBT.addView(localLinearLayout);
     localLinearLayout = new LinearLayout(localContext);
     int j = 0;
     while (j < paramList.size() - i * 3)
@@ -232,61 +232,61 @@ public final class b
       localLinearLayout.addView((View)localObject, localLayoutParams);
       j += 1;
     }
-    this.Jhi.addView(localLinearLayout);
-    AppMethodBeat.o(193769);
+    this.JBT.addView(localLinearLayout);
+    AppMethodBeat.o(187060);
   }
   
-  private void xx(boolean paramBoolean)
+  private void xF(boolean paramBoolean)
   {
-    AppMethodBeat.i(193771);
+    AppMethodBeat.i(187062);
     if (paramBoolean)
     {
-      this.Jhf.setVisibility(0);
-      this.Jhg.setVisibility(8);
-      AppMethodBeat.o(193771);
+      this.JBQ.setVisibility(0);
+      this.JBR.setVisibility(8);
+      AppMethodBeat.o(187062);
       return;
     }
-    this.Jhf.setVisibility(8);
-    this.Jhg.setVisibility(0);
-    AppMethodBeat.o(193771);
+    this.JBQ.setVisibility(8);
+    this.JBR.setVisibility(0);
+    AppMethodBeat.o(187062);
   }
   
   public final void dismiss()
   {
-    AppMethodBeat.i(193774);
+    AppMethodBeat.i(187065);
     if (Looper.myLooper() != Looper.getMainLooper())
     {
-      aq.f(new Runnable()
+      ar.f(new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(193766);
+          AppMethodBeat.i(187057);
           b.this.dismiss();
-          AppMethodBeat.o(193766);
+          AppMethodBeat.o(187057);
         }
       });
-      ad.e("MicroMsg.AppBrandNoticeMoreDialog", bt.flS().toString());
-      AppMethodBeat.o(193774);
+      ae.e("MicroMsg.AppBrandNoticeMoreDialog", bu.fpN().toString());
+      AppMethodBeat.o(187065);
       return;
     }
     try
     {
       super.dismiss();
-      AppMethodBeat.o(193774);
+      AppMethodBeat.o(187065);
       return;
     }
     catch (Exception localException)
     {
-      ad.e("MicroMsg.AppBrandNoticeMoreDialog", "dismiss exception, e = " + localException.getMessage());
-      AppMethodBeat.o(193774);
+      ae.e("MicroMsg.AppBrandNoticeMoreDialog", "dismiss exception, e = " + localException.getMessage());
+      AppMethodBeat.o(187065);
     }
   }
   
-  public final void ge(View paramView)
+  public final void gd(View paramView)
   {
-    AppMethodBeat.i(193772);
+    AppMethodBeat.i(187063);
     Context localContext = paramView.getContext();
-    Point localPoint = al.ci(localContext);
+    Point localPoint = al.ck(localContext);
     int i;
     Window localWindow;
     WindowManager.LayoutParams localLayoutParams;
@@ -296,7 +296,7 @@ public final class b
     int m;
     if (this.mMode == 0)
     {
-      i = com.tencent.mm.cc.a.ay(localContext, 2131166013) + com.tencent.mm.cc.a.ay(localContext, 2131166009) + com.tencent.mm.cc.a.ay(localContext, 2131166008);
+      i = com.tencent.mm.cb.a.ay(localContext, 2131166013) + com.tencent.mm.cb.a.ay(localContext, 2131166009) + com.tencent.mm.cb.a.ay(localContext, 2131166008);
       localWindow = getWindow();
       if (localWindow != null)
       {
@@ -306,15 +306,15 @@ public final class b
         localLayoutParams.horizontalMargin = 0.0F;
         arrayOfInt = new int[2];
         paramView.getLocationOnScreen(arrayOfInt);
-        localLayoutParams.x = (localPoint.x - arrayOfInt[0] - paramView.getMeasuredWidth() / 2 - com.tencent.mm.cc.a.ay(localContext, 2131166007) - com.tencent.mm.cc.a.ay(localContext, 2131166009) / 2);
-        j = al.jH(localContext);
-        k = com.tencent.mm.cc.a.ay(localContext, 2131166015);
-        m = com.tencent.mm.cc.a.ay(localContext, 2131166010);
-        if (arrayOfInt[1] + paramView.getMeasuredHeight() + i + k - m <= localPoint.y - al.ej(localContext)) {
+        localLayoutParams.x = (localPoint.x - arrayOfInt[0] - paramView.getMeasuredWidth() / 2 - com.tencent.mm.cb.a.ay(localContext, 2131166007) - com.tencent.mm.cb.a.ay(localContext, 2131166009) / 2);
+        j = al.jO(localContext);
+        k = com.tencent.mm.cb.a.ay(localContext, 2131166015);
+        m = com.tencent.mm.cb.a.ay(localContext, 2131166010);
+        if (arrayOfInt[1] + paramView.getMeasuredHeight() + i + k - m <= localPoint.y - al.en(localContext)) {
           break label293;
         }
         localLayoutParams.y = (arrayOfInt[1] - j - i - k + m);
-        xx(false);
+        xF(false);
       }
     }
     for (;;)
@@ -323,57 +323,57 @@ public final class b
       try
       {
         super.show();
-        AppMethodBeat.o(193772);
+        AppMethodBeat.o(187063);
         return;
       }
       catch (Exception paramView)
       {
-        ad.printErrStackTrace("MicroMsg.AppBrandNoticeMoreDialog", paramView, "", new Object[0]);
-        AppMethodBeat.o(193772);
+        ae.printErrStackTrace("MicroMsg.AppBrandNoticeMoreDialog", paramView, "", new Object[0]);
+        AppMethodBeat.o(187063);
       }
-      j = com.tencent.mm.cc.a.ay(localContext, 2131166016) + com.tencent.mm.cc.a.ay(localContext, 2131166009) + com.tencent.mm.cc.a.ay(localContext, 2131166008);
+      j = com.tencent.mm.cb.a.ay(localContext, 2131166016) + com.tencent.mm.cb.a.ay(localContext, 2131166009) + com.tencent.mm.cb.a.ay(localContext, 2131166008);
       i = j;
-      if (this.mzW) {
+      if (this.mEW) {
         break;
       }
-      i = j - com.tencent.mm.cc.a.ay(localContext, 2131167029);
+      i = j - com.tencent.mm.cb.a.ay(localContext, 2131167029);
       break;
       label293:
       localLayoutParams.y = (arrayOfInt[1] - j + paramView.getMeasuredHeight() + k - m);
-      xx(true);
+      xF(true);
     }
   }
   
   protected final void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(193768);
+    AppMethodBeat.i(187059);
     super.onCreate(paramBundle);
-    setContentView(this.IaU);
-    AppMethodBeat.o(193768);
+    setContentView(this.Ivb);
+    AppMethodBeat.o(187059);
   }
   
   public static abstract interface a
   {
-    public abstract void fyh();
+    public abstract void fCj();
     
-    public abstract void fyi();
+    public abstract void fCk();
     
-    public abstract void fyj();
+    public abstract void fCl();
     
-    public abstract void fyk();
+    public abstract void fCm();
   }
   
   public final class b
   {
-    public int Jhr;
-    public String fVj;
-    public boolean oBZ;
+    public int JCc;
+    public String fXp;
+    public boolean oIB;
     
     public b(int paramInt, String paramString)
     {
-      this.Jhr = paramInt;
-      this.fVj = paramString;
-      this.oBZ = false;
+      this.JCc = paramInt;
+      this.fXp = paramString;
+      this.oIB = false;
     }
   }
 }

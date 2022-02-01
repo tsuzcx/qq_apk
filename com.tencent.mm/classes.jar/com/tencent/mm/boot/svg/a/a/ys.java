@@ -44,6 +44,7 @@ public final class ys
       localPaint2.setStrokeMiter(4.0F);
       localPaint2.setPathEffect(null);
       c.a(localPaint2, paramVarArgs).setStrokeWidth(1.0F);
+      localCanvas.saveLayerAlpha(null, 76, 31);
       localCanvas.save();
       localPaint1 = c.a(localPaint1, paramVarArgs);
       localPaint1.setColor(-436207616);
@@ -81,6 +82,7 @@ public final class ys
       ((Path)localObject2).close();
       WeChatSVGRenderC2Java.setFillType((Path)localObject2, 2);
       localCanvas.drawPath((Path)localObject2, (Paint)localObject1);
+      localCanvas.restore();
       localCanvas.restore();
       localCanvas.restore();
       c.l(paramVarArgs);

@@ -16,7 +16,7 @@ public final class e
   private boolean btK;
   private final k btk;
   private final c bue;
-  private final e.a bug;
+  private final a bug;
   private final Handler buh;
   private final d bui;
   private final Metadata[] buj;
@@ -25,16 +25,16 @@ public final class e
   private int bum;
   private a bun;
   
-  public e(e.a parama, Looper paramLooper)
+  public e(a parama, Looper paramLooper)
   {
     this(parama, paramLooper, c.bud);
   }
   
-  private e(e.a parama, Looper paramLooper, c paramc)
+  private e(a parama, Looper paramLooper, c paramc)
   {
     super(4);
     AppMethodBeat.i(92471);
-    this.bug = ((e.a)com.google.android.exoplayer2.i.a.checkNotNull(parama));
+    this.bug = ((a)com.google.android.exoplayer2.i.a.checkNotNull(parama));
     if (paramLooper == null) {}
     for (parama = null;; parama = new Handler(paramLooper, this))
     {
@@ -181,10 +181,15 @@ public final class e
   {
     return this.btK;
   }
+  
+  public static abstract interface a
+  {
+    public abstract void b(Metadata paramMetadata);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.exoplayer2.metadata.e
  * JD-Core Version:    0.7.0.1
  */

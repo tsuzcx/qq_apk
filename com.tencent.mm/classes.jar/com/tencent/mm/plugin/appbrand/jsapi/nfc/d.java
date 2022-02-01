@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.appbrand.jsapi.nfc;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.HashMap;
 import java.util.Map;
 import org.json.JSONObject;
@@ -21,16 +21,16 @@ public final class d
       public final void y(int paramAnonymousInt, String paramAnonymousString)
       {
         AppMethodBeat.i(136102);
-        ad.i("MicroMsg.JsApiGetHCEState", "alvinluo checkIsSupport onResult errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramAnonymousInt), paramAnonymousString });
+        ae.i("MicroMsg.JsApiGetHCEState", "alvinluo checkIsSupport onResult errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramAnonymousInt), paramAnonymousString });
         HashMap localHashMap = new HashMap();
         localHashMap.put("errCode", Integer.valueOf(paramAnonymousInt));
         if (paramAnonymousInt == 0)
         {
-          paramc.h(paramInt, d.this.m("ok", localHashMap));
+          paramc.h(paramInt, d.this.n("ok", localHashMap));
           AppMethodBeat.o(136102);
           return;
         }
-        paramc.h(paramInt, d.this.m("fail ".concat(String.valueOf(paramAnonymousString)), localHashMap));
+        paramc.h(paramInt, d.this.n("fail ".concat(String.valueOf(paramAnonymousString)), localHashMap));
         AppMethodBeat.o(136102);
       }
     });

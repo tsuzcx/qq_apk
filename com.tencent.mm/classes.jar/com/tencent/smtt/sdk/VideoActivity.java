@@ -14,7 +14,7 @@ public class VideoActivity
   {
     AppMethodBeat.i(55103);
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    r.a(this).a(paramInt1, paramInt2, paramIntent);
+    t.a(this).a(paramInt1, paramInt2, paramIntent);
     AppMethodBeat.o(55103);
   }
   
@@ -31,7 +31,7 @@ public class VideoActivity
       if (paramBundle != null)
       {
         paramBundle.putInt("callMode", 1);
-        r.a(super.getApplicationContext()).a(null, paramBundle, null);
+        t.a(super.getApplicationContext()).a(null, paramBundle, null);
       }
       AppMethodBeat.o(55098);
       return;
@@ -42,7 +42,7 @@ public class VideoActivity
   {
     AppMethodBeat.i(55102);
     super.onDestroy();
-    r.a(this).a(this, 4);
+    t.a(this).a(this, 4);
     AppMethodBeat.o(55102);
   }
   
@@ -50,7 +50,7 @@ public class VideoActivity
   {
     AppMethodBeat.i(55101);
     super.onPause();
-    r.a(this).a(this, 3);
+    t.a(this).a(this, 3);
     AppMethodBeat.o(55101);
   }
   
@@ -58,7 +58,7 @@ public class VideoActivity
   {
     AppMethodBeat.i(55099);
     super.onResume();
-    r.a(this).a(this, 2);
+    t.a(this).a(this, 2);
     AppMethodBeat.o(55099);
   }
   
@@ -66,7 +66,7 @@ public class VideoActivity
   {
     AppMethodBeat.i(55100);
     super.onStop();
-    r.a(this).a(this, 1);
+    t.a(this).a(this, 1);
     AppMethodBeat.o(55100);
   }
   

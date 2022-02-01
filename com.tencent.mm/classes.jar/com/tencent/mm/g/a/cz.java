@@ -12,7 +12,7 @@ public final class cz
   
   private cz(byte paramByte)
   {
-    this.IbR = false;
+    this.IvZ = false;
     this.callback = null;
   }
 }

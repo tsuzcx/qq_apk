@@ -9,12 +9,12 @@ import java.util.List;
 public final class h
   implements g
 {
-  private final List<c> MVS;
+  private final List<c> NsX;
   
   public h(List<? extends c> paramList)
   {
     AppMethodBeat.i(56952);
-    this.MVS = paramList;
+    this.NsX = paramList;
     AppMethodBeat.o(56952);
   }
   
@@ -39,7 +39,7 @@ public final class h
   public final boolean isEmpty()
   {
     AppMethodBeat.i(56949);
-    boolean bool = this.MVS.isEmpty();
+    boolean bool = this.NsX.isEmpty();
     AppMethodBeat.o(56949);
     return bool;
   }
@@ -47,7 +47,7 @@ public final class h
   public final Iterator<c> iterator()
   {
     AppMethodBeat.i(56950);
-    Iterator localIterator = this.MVS.iterator();
+    Iterator localIterator = this.NsX.iterator();
     AppMethodBeat.o(56950);
     return localIterator;
   }
@@ -55,7 +55,7 @@ public final class h
   public final String toString()
   {
     AppMethodBeat.i(56951);
-    String str = this.MVS.toString();
+    String str = this.NsX.toString();
     AppMethodBeat.o(56951);
     return str;
   }

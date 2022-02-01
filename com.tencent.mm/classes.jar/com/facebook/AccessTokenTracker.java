@@ -20,7 +20,7 @@ public abstract class AccessTokenTracker
   {
     Validate.sdkInitialized();
     this.receiver = new CurrentAccessTokenBroadcastReceiver(null);
-    this.broadcastManager = d.U(FacebookSdk.getApplicationContext());
+    this.broadcastManager = d.V(FacebookSdk.getApplicationContext());
     startTracking();
   }
   

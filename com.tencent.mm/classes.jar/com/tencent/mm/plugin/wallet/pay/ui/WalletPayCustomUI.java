@@ -6,13 +6,13 @@ import android.content.DialogInterface.OnCancelListener;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.plugin.wallet_core.c.ab;
 import com.tencent.mm.plugin.wallet_core.ui.r;
 import com.tencent.mm.plugin.wallet_core.ui.r.a;
 import com.tencent.mm.plugin.wallet_core.ui.r.b;
-import com.tencent.mm.protocal.protobuf.dnn;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.dok;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.ui.base.a;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
 
@@ -20,12 +20,12 @@ import com.tencent.mm.wallet_core.ui.WalletBaseUI;
 public class WalletPayCustomUI
   extends WalletBaseUI
 {
-  protected r CJd;
-  private String CJe = "";
-  private boolean CJf = false;
+  protected r DaJ;
+  private String DaK = "";
+  private boolean DaL = false;
   private int mScene = 0;
   private String mTitle = "";
-  private dnn uFJ;
+  private dok uRw;
   
   public int getLayoutId()
   {
@@ -37,7 +37,7 @@ public class WalletPayCustomUI
     AppMethodBeat.i(69364);
     super.onCreate(paramBundle);
     setContentViewVisibility(8);
-    this.CJe = getIntent().getStringExtra("INTENT_PAYFEE");
+    this.DaK = getIntent().getStringExtra("INTENT_PAYFEE");
     this.mTitle = getIntent().getStringExtra("INTENT_TITLE");
     boolean bool;
     if (getIntent().getIntExtra("INTENT_CAN_TOUCH", 0) == 1) {
@@ -45,23 +45,23 @@ public class WalletPayCustomUI
     }
     for (;;)
     {
-      this.CJf = bool;
+      this.DaL = bool;
       paramBundle = getIntent().getByteArrayExtra("INTENT_TOKENMESS");
-      this.uFJ = new dnn();
+      this.uRw = new dok();
       try
       {
-        this.uFJ.parseFrom(paramBundle);
-        ad.i("MicroMsg.WalletPayCustomUI", "mTokeMess packageex:%s busi_id:%s sign:%s can_use_touch %s mPayFee %s mTitle %s", new Object[] { this.uFJ.HBz, this.uFJ.GuJ, this.uFJ.sign, Boolean.valueOf(this.CJf), this.CJe, this.mTitle });
-        this.CJd = r.a(this, this.mTitle, this.CJe, "", this.CJf, new r.b()new DialogInterface.OnCancelListener
+        this.uRw.parseFrom(paramBundle);
+        ae.i("MicroMsg.WalletPayCustomUI", "mTokeMess packageex:%s busi_id:%s sign:%s can_use_touch %s mPayFee %s mTitle %s", new Object[] { this.uRw.HVm, this.uRw.GOi, this.uRw.sign, Boolean.valueOf(this.DaL), this.DaK, this.mTitle });
+        this.DaJ = r.a(this, this.mTitle, this.DaK, "", this.DaL, new r.b()new DialogInterface.OnCancelListener
         {
           public final void h(String paramAnonymousString1, boolean paramAnonymousBoolean, String paramAnonymousString2)
           {
             AppMethodBeat.i(69361);
-            int j = WalletPayCustomUI.a(WalletPayCustomUI.this).HBA;
-            String str1 = WalletPayCustomUI.a(WalletPayCustomUI.this).HBz;
+            int j = WalletPayCustomUI.a(WalletPayCustomUI.this).HVn;
+            String str1 = WalletPayCustomUI.a(WalletPayCustomUI.this).HVm;
             String str2 = WalletPayCustomUI.a(WalletPayCustomUI.this).sign;
-            String str3 = WalletPayCustomUI.a(WalletPayCustomUI.this).oIu;
-            String str4 = WalletPayCustomUI.a(WalletPayCustomUI.this).GuJ;
+            String str3 = WalletPayCustomUI.a(WalletPayCustomUI.this).oOW;
+            String str4 = WalletPayCustomUI.a(WalletPayCustomUI.this).GOi;
             if (paramAnonymousBoolean) {}
             for (int i = 1;; i = 0)
             {
@@ -81,7 +81,7 @@ public class WalletPayCustomUI
           }
         }, new r.a()
         {
-          public final void dwF()
+          public final void dzV()
           {
             AppMethodBeat.i(69363);
             WalletPayCustomUI.this.finish();
@@ -96,7 +96,7 @@ public class WalletPayCustomUI
       {
         for (;;)
         {
-          ad.printErrStackTrace("MicroMsg.WalletPayCustomUI", paramBundle, "", new Object[0]);
+          ae.printErrStackTrace("MicroMsg.WalletPayCustomUI", paramBundle, "", new Object[0]);
         }
       }
     }
@@ -126,14 +126,14 @@ public class WalletPayCustomUI
   public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     AppMethodBeat.i(69368);
-    ad.i("MicroMsg.WalletPayCustomUI", "errorType %s errCode %s, errmsg %s, scene %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString, paramn });
+    ae.i("MicroMsg.WalletPayCustomUI", "errorType %s errCode %s, errmsg %s, scene %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString, paramn });
     if ((paramn instanceof ab))
     {
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
         paramString = (ab)paramn;
         paramn = new Intent();
-        paramn.putExtra("INTENT_RESULT_TOKEN", paramString.CPp);
+        paramn.putExtra("INTENT_RESULT_TOKEN", paramString.DgT);
         paramn.putExtras(getIntent());
         setResult(-1, paramn);
       }
@@ -151,7 +151,7 @@ public class WalletPayCustomUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.pay.ui.WalletPayCustomUI
  * JD-Core Version:    0.7.0.1
  */

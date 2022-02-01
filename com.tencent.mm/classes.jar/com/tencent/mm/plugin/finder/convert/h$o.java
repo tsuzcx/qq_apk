@@ -9,7 +9,7 @@ import d.g.b.p;
 import d.l;
 import d.v;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "T", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "run"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "T", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "run"})
 final class h$o
   implements Runnable
 {
@@ -17,21 +17,21 @@ final class h$o
   
   public final void run()
   {
-    AppMethodBeat.i(201330);
+    AppMethodBeat.i(201757);
     Object localObject1 = new Rect();
-    this.rNi.getHitRect((Rect)localObject1);
+    this.rVw.getHitRect((Rect)localObject1);
     ((Rect)localObject1).inset(((Rect)localObject1).width() * -2, -((Rect)localObject1).width());
-    Object localObject2 = this.rNi;
+    Object localObject2 = this.rVw;
     p.g(localObject2, "avatarView");
     localObject2 = ((ImageView)localObject2).getParent();
     if (localObject2 == null)
     {
       localObject1 = new v("null cannot be cast to non-null type android.view.View");
-      AppMethodBeat.o(201330);
+      AppMethodBeat.o(201757);
       throw ((Throwable)localObject1);
     }
-    ((View)localObject2).setTouchDelegate(new TouchDelegate((Rect)localObject1, (View)this.rNi));
-    AppMethodBeat.o(201330);
+    ((View)localObject2).setTouchDelegate(new TouchDelegate((Rect)localObject1, (View)this.rVw));
+    AppMethodBeat.o(201757);
   }
 }
 

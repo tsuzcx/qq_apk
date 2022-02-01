@@ -12,13 +12,13 @@ import com.tencent.mm.hellhoundlib.b.b;
 public final class a
   extends LinearLayout
 {
-  private ImageView ETp;
-  private FTSEditTextView KCG;
-  private View KCH;
-  private boolean KCI;
-  private b KCJ;
-  private a KCK;
-  private View vfC;
+  private ImageView FlK;
+  private FTSEditTextView KZa;
+  private View KZb;
+  private boolean KZc;
+  private b KZd;
+  private a KZe;
+  private View vrJ;
   
   public a(Context paramContext)
   {
@@ -28,18 +28,18 @@ public final class a
   private a(Context paramContext, byte paramByte)
   {
     super(paramContext);
-    AppMethodBeat.i(186490);
-    this.KCI = false;
+    AppMethodBeat.i(193747);
+    this.KZc = false;
     ((LayoutInflater)getContext().getSystemService("layout_inflater")).inflate(2131494183, this, true);
-    this.vfC = findViewById(2131297690);
-    this.vfC.setOnClickListener(new View.OnClickListener()
+    this.vrJ = findViewById(2131297690);
+    this.vrJ.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(164204);
         b localb = new b();
         localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/search/FTSSearchView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/search/FTSSearchView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
         if (a.a(a.this) != null) {
           a.a(a.this).onClickBackBtn(paramAnonymousView);
         }
@@ -47,21 +47,21 @@ public final class a
         AppMethodBeat.o(164204);
       }
     });
-    this.ETp = ((ImageView)findViewById(2131304422));
-    this.ETp.setVisibility(0);
-    this.KCG = ((FTSEditTextView)findViewById(2131300315));
-    if (this.KCI)
+    this.FlK = ((ImageView)findViewById(2131304422));
+    this.FlK.setVisibility(0);
+    this.KZa = ((FTSEditTextView)findViewById(2131300315));
+    if (this.KZc)
     {
-      this.KCH = findViewById(2131300316);
-      this.KCH.setVisibility(0);
-      this.KCH.setOnClickListener(new View.OnClickListener()
+      this.KZb = findViewById(2131300316);
+      this.KZb.setVisibility(0);
+      this.KZb.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(164205);
           b localb = new b();
           localb.bd(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/search/FTSSearchView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/search/FTSSearchView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
           if (a.b(a.this) != null) {
             a.b(a.this);
           }
@@ -70,22 +70,22 @@ public final class a
         }
       });
     }
-    AppMethodBeat.o(186490);
+    AppMethodBeat.o(193747);
   }
   
   public final FTSEditTextView getFtsEditText()
   {
-    return this.KCG;
+    return this.KZa;
   }
   
   public final void setImageSearchListener(a parama)
   {
-    this.KCK = parama;
+    this.KZe = parama;
   }
   
   public final void setSearchViewListener(b paramb)
   {
-    this.KCJ = paramb;
+    this.KZd = paramb;
   }
   
   public static abstract interface a {}
@@ -93,12 +93,6 @@ public final class a
   public static abstract interface b
   {
     public abstract void onClickBackBtn(View paramView);
-  }
-  
-  public static abstract interface c
-    extends Comparable
-  {
-    public abstract String getTagName();
   }
 }
 

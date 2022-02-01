@@ -9,47 +9,47 @@ import java.util.concurrent.atomic.AtomicReference;
 public final class d
   implements j
 {
-  private static final ScheduledExecutorService[] NZk;
-  private static final ScheduledExecutorService NZl;
-  public static final d NZm;
-  private static int NZo;
-  private final AtomicReference<ScheduledExecutorService[]> NZn;
+  private static final ScheduledExecutorService[] Owp;
+  private static final ScheduledExecutorService Owq;
+  public static final d Owr;
+  private static int Owt;
+  private final AtomicReference<ScheduledExecutorService[]> Ows;
   
   static
   {
     AppMethodBeat.i(90373);
-    NZk = new ScheduledExecutorService[0];
+    Owp = new ScheduledExecutorService[0];
     ScheduledExecutorService localScheduledExecutorService = Executors.newScheduledThreadPool(0);
-    NZl = localScheduledExecutorService;
+    Owq = localScheduledExecutorService;
     localScheduledExecutorService.shutdown();
-    NZm = new d();
+    Owr = new d();
     AppMethodBeat.o(90373);
   }
   
   private d()
   {
     AppMethodBeat.i(90369);
-    this.NZn = new AtomicReference(NZk);
+    this.Ows = new AtomicReference(Owp);
     start();
     AppMethodBeat.o(90369);
   }
   
-  public static ScheduledExecutorService gzb()
+  public static ScheduledExecutorService gDD()
   {
     AppMethodBeat.i(90372);
-    Object localObject = (ScheduledExecutorService[])NZm.NZn.get();
-    if (localObject == NZk)
+    Object localObject = (ScheduledExecutorService[])Owr.Ows.get();
+    if (localObject == Owp)
     {
-      localObject = NZl;
+      localObject = Owq;
       AppMethodBeat.o(90372);
       return localObject;
     }
-    int j = NZo + 1;
+    int j = Owt + 1;
     int i = j;
     if (j >= localObject.length) {
       i = 0;
     }
-    NZo = i;
+    Owt = i;
     localObject = localObject[i];
     AppMethodBeat.o(90372);
     return localObject;
@@ -61,13 +61,13 @@ public final class d
     ScheduledExecutorService[] arrayOfScheduledExecutorService;
     do
     {
-      arrayOfScheduledExecutorService = (ScheduledExecutorService[])this.NZn.get();
-      if (arrayOfScheduledExecutorService == NZk)
+      arrayOfScheduledExecutorService = (ScheduledExecutorService[])this.Ows.get();
+      if (arrayOfScheduledExecutorService == Owp)
       {
         AppMethodBeat.o(90371);
         return;
       }
-    } while (!this.NZn.compareAndSet(arrayOfScheduledExecutorService, NZk));
+    } while (!this.Ows.compareAndSet(arrayOfScheduledExecutorService, Owp));
     int j = arrayOfScheduledExecutorService.length;
     int i = 0;
     while (i < j)
@@ -99,10 +99,10 @@ public final class d
       j = 0;
       while (j < i)
       {
-        arrayOfScheduledExecutorService[j] = e.gzc();
+        arrayOfScheduledExecutorService[j] = e.gDE();
         j += 1;
       }
-      if (this.NZn.compareAndSet(NZk, arrayOfScheduledExecutorService))
+      if (this.Ows.compareAndSet(Owp, arrayOfScheduledExecutorService))
       {
         j = arrayOfScheduledExecutorService.length;
         i = k;
@@ -131,7 +131,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     rx.internal.c.d
  * JD-Core Version:    0.7.0.1
  */

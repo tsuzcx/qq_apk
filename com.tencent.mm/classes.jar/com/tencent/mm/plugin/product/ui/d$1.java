@@ -18,14 +18,14 @@ final class d$1
     b localb = new b();
     localb.bd(paramAdapterView);
     localb.bd(paramView);
-    localb.mr(paramInt);
-    localb.qY(paramLong);
-    a.b("com/tencent/mm/plugin/product/ui/MallListDialog$1", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.ahq());
-    if (this.wNp != null) {
-      this.wNp.onItemClick(paramAdapterView, paramView, paramInt, paramLong);
+    localb.mu(paramInt);
+    localb.rl(paramLong);
+    a.b("com/tencent/mm/plugin/product/ui/MallListDialog$1", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.ahF());
+    if (this.xdd != null) {
+      this.xdd.onItemClick(paramAdapterView, paramView, paramInt, paramLong);
     }
-    this.wNq.wNr = paramInt;
-    this.wNq.notifyDataSetChanged();
+    this.xde.xdf = paramInt;
+    this.xde.notifyDataSetChanged();
     a.a(this, "com/tencent/mm/plugin/product/ui/MallListDialog$1", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
     AppMethodBeat.o(66956);
   }

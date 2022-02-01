@@ -4,21 +4,21 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.g;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/webview/ui/tools/media/KV18589Report;", "", "()V", "OP_CANCEL", "", "OP_FAV", "OP_SEND_TO_FRIEND", "OP_SNS", "SCENE_CHAT", "SCENE_FAV", "SCENE_MP", "SCENE_SNS", "SHOW_MENU_FROM_JSAPI", "SHOW_MENU_FROM_JSAPI_SHARE", "SHOW_MENU_FROM_LONG_PRESS", "SHOW_MENU_FROM_MORE", "SHOW_MENU_FROM_SHARE", "TAG", "", "reportMenuClick", "", "opType", "from", "scene", "reportShowMenu", "plugin-webview_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/webview/ui/tools/media/KV18589Report;", "", "()V", "OP_CANCEL", "", "OP_FAV", "OP_SEND_TO_FRIEND", "OP_SNS", "SCENE_CHAT", "SCENE_FAV", "SCENE_MP", "SCENE_SNS", "SHOW_MENU_FROM_JSAPI", "SHOW_MENU_FROM_JSAPI_SHARE", "SHOW_MENU_FROM_LONG_PRESS", "SHOW_MENU_FROM_MORE", "SHOW_MENU_FROM_SHARE", "TAG", "", "reportMenuClick", "", "opType", "from", "scene", "reportShowMenu", "plugin-webview_release"})
 public final class a
 {
-  public static final a EnZ;
+  public static final a EGd;
   private static final String TAG = "MicroMsg.KV18589Report";
   
   static
   {
     AppMethodBeat.i(82580);
-    EnZ = new a();
+    EGd = new a();
     TAG = "MicroMsg.KV18589Report";
     AppMethodBeat.o(82580);
   }
   
-  public static void aE(int paramInt1, int paramInt2, int paramInt3)
+  public static void aF(int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(82579);
     g localg;
@@ -26,7 +26,7 @@ public final class a
     {
     case 3: 
     default: 
-      localg = g.yhR;
+      localg = g.yxI;
       switch (paramInt2)
       {
       case 4: 
@@ -40,7 +40,7 @@ public final class a
       localg.f(18589, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt3) });
       AppMethodBeat.o(82579);
       return;
-      localg = g.yhR;
+      localg = g.yxI;
       switch (paramInt2)
       {
       case 4: 
@@ -60,7 +60,7 @@ public final class a
         continue;
         paramInt1 = 19;
       }
-      localg = g.yhR;
+      localg = g.yxI;
       switch (paramInt2)
       {
       case 2: 
@@ -76,7 +76,7 @@ public final class a
         continue;
         paramInt1 = 4;
       }
-      localg = g.yhR;
+      localg = g.yxI;
       switch (paramInt2)
       {
       case 4: 
@@ -106,11 +106,11 @@ public final class a
     }
   }
   
-  public static void jf(int paramInt1, int paramInt2)
+  public static void jj(int paramInt1, int paramInt2)
   {
     int i = 2;
     AppMethodBeat.i(82578);
-    g localg = g.yhR;
+    g localg = g.yxI;
     switch (paramInt1)
     {
     }

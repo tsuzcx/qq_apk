@@ -1,26 +1,26 @@
 package com.tencent.mm.plugin.card.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
 import com.tencent.mm.platformtools.z;
 import com.tencent.mm.plugin.card.b.l;
-import com.tencent.mm.protocal.protobuf.btj;
-import com.tencent.mm.protocal.protobuf.tq;
-import com.tencent.mm.protocal.protobuf.tr;
-import com.tencent.mm.protocal.protobuf.tu;
-import com.tencent.mm.protocal.protobuf.zu;
-import com.tencent.mm.protocal.protobuf.zv;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.al.a;
+import com.tencent.mm.protocal.protobuf.bud;
+import com.tencent.mm.protocal.protobuf.ts;
+import com.tencent.mm.protocal.protobuf.tt;
+import com.tencent.mm.protocal.protobuf.tw;
+import com.tencent.mm.protocal.protobuf.zx;
+import com.tencent.mm.protocal.protobuf.zy;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.aj;
+import com.tencent.mm.storage.am.a;
 import java.util.Iterator;
 import java.util.List;
 
@@ -29,79 +29,79 @@ public final class w
   implements k
 {
   private f callback;
-  private byte[] ieX;
-  private int ozZ;
-  private final com.tencent.mm.al.b rr;
+  private byte[] ihP;
+  private int oGB;
+  private final com.tencent.mm.ak.b rr;
   
   public w(int paramInt)
   {
     AppMethodBeat.i(112824);
-    this.ozZ = 0;
-    ad.d("MicroMsg.NetSceneCardSync", "<init>, selector = %d", new Object[] { Integer.valueOf(1) });
+    this.oGB = 0;
+    ae.d("MicroMsg.NetSceneCardSync", "<init>, selector = %d", new Object[] { Integer.valueOf(1) });
     Object localObject = new b.a();
-    ((b.a)localObject).hNM = new tq();
-    ((b.a)localObject).hNN = new tr();
+    ((b.a)localObject).hQF = new ts();
+    ((b.a)localObject).hQG = new tt();
     ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/cardsync";
     ((b.a)localObject).funcId = 1047;
-    ((b.a)localObject).hNO = 0;
+    ((b.a)localObject).hQH = 0;
     ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).aDC();
-    localObject = new btj();
-    ((btj)localObject).oBD = ((String)g.ajC().ajl().get(al.a.Iru, null));
-    ((btj)localObject).latitude = am.bUT().fFf;
-    ((btj)localObject).longitude = am.bUT().fFg;
-    tq localtq = (tq)this.rr.hNK.hNQ;
-    localtq.FRq = 1;
-    localtq.FRs = ((btj)localObject);
-    localtq.FRt = paramInt;
-    this.ozZ = paramInt;
+    this.rr = ((b.a)localObject).aDS();
+    localObject = new bud();
+    ((bud)localObject).oIf = ((String)g.ajR().ajA().get(am.a.ILQ, null));
+    ((bud)localObject).latitude = am.bWi().fHj;
+    ((bud)localObject).longitude = am.bWi().fHk;
+    ts localts = (ts)this.rr.hQD.hQJ;
+    localts.GjP = 1;
+    localts.GjR = ((bud)localObject);
+    localts.GjS = paramInt;
+    this.oGB = paramInt;
     AppMethodBeat.o(112824);
   }
   
-  private static boolean a(zu paramzu)
+  private static boolean a(zx paramzx)
   {
     AppMethodBeat.i(112827);
-    if (paramzu == null)
+    if (paramzx == null)
     {
-      ad.e("MicroMsg.NetSceneCardSync", "processCmdItem fail, null cmd");
+      ae.e("MicroMsg.NetSceneCardSync", "processCmdItem fail, null cmd");
       AppMethodBeat.o(112827);
       return false;
     }
-    byte[] arrayOfByte = z.a(paramzu.FYV);
+    byte[] arrayOfByte = z.a(paramzx.Grv);
     if ((arrayOfByte == null) || (arrayOfByte.length == 0))
     {
-      ad.e("MicroMsg.NetSceneCardSync", "processCmdItem fail, null buf");
+      ae.e("MicroMsg.NetSceneCardSync", "processCmdItem fail, null buf");
       AppMethodBeat.o(112827);
       return false;
     }
-    ad.d("MicroMsg.NetSceneCardSync", "processCmdItem, buf length = %d, cmdId = %d", new Object[] { Integer.valueOf(arrayOfByte.length), Integer.valueOf(paramzu.FYU) });
+    ae.d("MicroMsg.NetSceneCardSync", "processCmdItem, buf length = %d, cmdId = %d", new Object[] { Integer.valueOf(arrayOfByte.length), Integer.valueOf(paramzx.Gru) });
     try
     {
-      switch (paramzu.FYU)
+      switch (paramzx.Gru)
       {
       case 1: 
-        ad.w("MicroMsg.NetSceneCardSync", "processCmdItem, unknown cmdId = %d", new Object[] { Integer.valueOf(paramzu.FYU) });
+        ae.w("MicroMsg.NetSceneCardSync", "processCmdItem, unknown cmdId = %d", new Object[] { Integer.valueOf(paramzx.Gru) });
         AppMethodBeat.o(112827);
         return false;
       }
     }
-    catch (Exception paramzu)
+    catch (Exception paramzx)
     {
-      ad.e("MicroMsg.NetSceneCardSync", "processCmdItem fail, ex = %s", new Object[] { paramzu.getMessage() });
+      ae.e("MicroMsg.NetSceneCardSync", "processCmdItem fail, ex = %s", new Object[] { paramzx.getMessage() });
       AppMethodBeat.o(112827);
       return false;
     }
-    paramzu = (tu)new tu().parseFrom(arrayOfByte);
-    ad.i("MicroMsg.NetSceneCardSync", "processCmdIem, card user item, Status = %d", new Object[] { Integer.valueOf(paramzu.nDG) });
-    switch (paramzu.nDG)
+    paramzx = (tw)new tw().parseFrom(arrayOfByte);
+    ae.i("MicroMsg.NetSceneCardSync", "processCmdIem, card user item, Status = %d", new Object[] { Integer.valueOf(paramzx.nJb) });
+    switch (paramzx.nJb)
     {
     }
     for (;;)
     {
-      ad.e("MicroMsg.NetSceneCardSync", "processCmdIem, card user item, unknown StateFlag = %d", new Object[] { Integer.valueOf(paramzu.FSn) });
+      ae.e("MicroMsg.NetSceneCardSync", "processCmdIem, card user item, unknown StateFlag = %d", new Object[] { Integer.valueOf(paramzx.GkM) });
       AppMethodBeat.o(112827);
       return false;
-      am.bUM().a(paramzu);
+      am.bWb().a(paramzx);
       AppMethodBeat.o(112827);
       return true;
       break;
@@ -112,16 +112,16 @@ public final class w
   {
     AppMethodBeat.i(112825);
     this.callback = paramf;
-    paramf = (tq)this.rr.hNK.hNQ;
-    this.ieX = bt.aRa(bt.nullAsNil((String)g.ajC().ajl().get(282880, null)));
-    if ((this.ieX == null) || (this.ieX.length == 0)) {
-      ad.e("MicroMsg.NetSceneCardSync", "doScene, keyBuf is null, init card sync~~~");
+    paramf = (ts)this.rr.hQD.hQJ;
+    this.ihP = bu.aSx(bu.nullAsNil((String)g.ajR().ajA().get(282880, null)));
+    if ((this.ihP == null) || (this.ihP.length == 0)) {
+      ae.e("MicroMsg.NetSceneCardSync", "doScene, keyBuf is null, init card sync~~~");
     }
-    paramf.FRr = z.al(this.ieX);
-    if (this.ieX == null) {}
-    for (int i = 0;; i = this.ieX.length)
+    paramf.GjQ = z.al(this.ihP);
+    if (this.ihP == null) {}
+    for (int i = 0;; i = this.ihP.length)
     {
-      ad.i("MicroMsg.NetSceneCardSync", "doScene, keyBuf.length = %d", new Object[] { Integer.valueOf(i) });
+      ae.i("MicroMsg.NetSceneCardSync", "doScene, keyBuf.length = %d", new Object[] { Integer.valueOf(i) });
       i = dispatch(parame, this.rr, this);
       AppMethodBeat.o(112825);
       return i;
@@ -136,20 +136,20 @@ public final class w
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q arg5, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(112826);
-    ad.d("MicroMsg.NetSceneCardSync", "onGYNetEnd, errType = %d, errCode = %d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    ae.d("MicroMsg.NetSceneCardSync", "onGYNetEnd, errType = %d, errCode = %d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
     if ((paramInt2 != 0) || (paramInt3 != 0))
     {
-      ad.e("MicroMsg.NetSceneCardSync", "onGYNetEnd, card sync fail, errType = %d, errCode = %d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+      ae.e("MicroMsg.NetSceneCardSync", "onGYNetEnd, card sync fail, errType = %d, errCode = %d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
       AppMethodBeat.o(112826);
       return;
     }
-    paramArrayOfByte = (tr)this.rr.hNL.hNQ;
-    if (paramArrayOfByte.FRv == 1) {
-      ad.i("MicroMsg.NetSceneCardSync", "need do getCardsLayoutScene");
+    paramArrayOfByte = (tt)this.rr.hQE.hQJ;
+    if (paramArrayOfByte.GjU == 1) {
+      ae.i("MicroMsg.NetSceneCardSync", "need do getCardsLayoutScene");
     }
-    this.ieX = z.a(paramArrayOfByte.FRr, new byte[0]);
-    if (paramArrayOfByte.FRu == null)
+    this.ihP = z.a(paramArrayOfByte.GjQ, new byte[0]);
+    if (paramArrayOfByte.GjT == null)
     {
       ??? = null;
       if (??? != null) {
@@ -157,12 +157,12 @@ public final class w
       }
       paramInt1 = 0;
       label152:
-      if (this.ieX != null) {
+      if (this.ihP != null) {
         break label281;
       }
       paramInt2 = 0;
       label161:
-      ad.i("MicroMsg.NetSceneCardSync", "onGYNetEnd, cmd list size = %d, synckey length = %d, continueFlag = %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramArrayOfByte.FMr) });
+      ae.i("MicroMsg.NetSceneCardSync", "onGYNetEnd, cmd list size = %d, synckey length = %d, continueFlag = %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramArrayOfByte.GeQ) });
       if ((??? == null) || (???.size() <= 0)) {
         break label421;
       }
@@ -172,7 +172,7 @@ public final class w
       if (!???.hasNext()) {
         break label290;
       }
-      if (a((zu)???.next())) {
+      if (a((zx)???.next())) {
         break label535;
       }
       paramInt1 += 1;
@@ -182,39 +182,39 @@ public final class w
     for (;;)
     {
       break label224;
-      ??? = paramArrayOfByte.FRu.nDj;
+      ??? = paramArrayOfByte.GjT.nIE;
       break;
       paramInt1 = ???.size();
       break label152;
       label281:
-      paramInt2 = this.ieX.length;
+      paramInt2 = this.ihP.length;
       break label161;
       label290:
-      ad.i("MicroMsg.NetSceneCardSync", "onGYNetEnd, %d fail cmds", new Object[] { Integer.valueOf(paramInt1) });
-      am.bUM().bUa();
+      ae.i("MicroMsg.NetSceneCardSync", "onGYNetEnd, %d fail cmds", new Object[] { Integer.valueOf(paramInt1) });
+      am.bWb().bVp();
       for (;;)
       {
-        g.ajC().ajl().set(282880, bt.cE(this.ieX));
-        if (paramArrayOfByte.FMr > 0)
+        g.ajR().ajA().set(282880, bu.cH(this.ihP));
+        if (paramArrayOfByte.GeQ > 0)
         {
-          ad.d("MicroMsg.NetSceneCardSync", "onGYNetEnd, should continue, continueFlag = %d", new Object[] { Integer.valueOf(paramArrayOfByte.FMr) });
+          ae.d("MicroMsg.NetSceneCardSync", "onGYNetEnd, should continue, continueFlag = %d", new Object[] { Integer.valueOf(paramArrayOfByte.GeQ) });
           paramInt1 = doScene(dispatcher(), this.callback);
           if (paramInt1 <= 0)
           {
-            ad.e("MicroMsg.NetSceneCardSync", "onGYNetEnd, doScene again fail, ret = %d", new Object[] { Integer.valueOf(paramInt1) });
+            ae.e("MicroMsg.NetSceneCardSync", "onGYNetEnd, doScene again fail, ret = %d", new Object[] { Integer.valueOf(paramInt1) });
             this.callback.onSceneEnd(3, -1, paramString, this);
           }
           AppMethodBeat.o(112826);
           return;
           label421:
-          ad.i("MicroMsg.NetSceneCardSync", "cmdList == null or size is 0");
-          com.tencent.mm.plugin.card.b.b localb = am.bUM();
-          ad.i("MicroMsg.BatchGetCardMgr", "retryAll, getNow = %b", new Object[] { Boolean.TRUE });
+          ae.i("MicroMsg.NetSceneCardSync", "cmdList == null or size is 0");
+          com.tencent.mm.plugin.card.b.b localb = am.bWb();
+          ae.i("MicroMsg.BatchGetCardMgr", "retryAll, getNow = %b", new Object[] { Boolean.TRUE });
           synchronized (localb.lock)
           {
-            localb.pendingList.addAll(localb.owt);
-            localb.owt.clear();
-            localb.bUa();
+            localb.pendingList.addAll(localb.oCV);
+            localb.oCV.clear();
+            localb.bVp();
           }
         }
       }

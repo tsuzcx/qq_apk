@@ -3,13 +3,11 @@ package com.facebook.yoga.android;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.content.res.Resources;
-import android.content.res.TypedArray;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.os.Build.VERSION;
 import android.util.AttributeSet;
 import android.util.SparseArray;
-import android.util.TypedValue;
 import android.view.View;
 import android.view.View.MeasureSpec;
 import android.view.ViewGroup;
@@ -25,7 +23,6 @@ import com.facebook.yoga.YogaNodeFactory;
 import com.facebook.yoga.YogaOverflow;
 import com.facebook.yoga.YogaPositionType;
 import com.facebook.yoga.YogaWrap;
-import com.tencent.kinda.R.styleable;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.HashMap;
 import java.util.Map;
@@ -55,7 +52,7 @@ public class YogaLayout
     this.mYogaNode.setData(this);
     this.mYogaNode.setMeasureFunction(new YogaLayout.ViewMeasureFunction());
     if (paramAttributeSet != null) {}
-    for (paramContext = new LayoutParams(paramContext, paramAttributeSet);; paramContext = (LayoutParams)generateDefaultLayoutParams())
+    for (paramContext = new YogaLayout.LayoutParams(paramContext, paramAttributeSet);; paramContext = (YogaLayout.LayoutParams)generateDefaultLayoutParams())
     {
       applyLayoutParams(paramContext, this.mYogaNode, this);
       AppMethodBeat.o(18237);
@@ -63,7 +60,7 @@ public class YogaLayout
     }
   }
   
-  protected static void applyLayoutParams(LayoutParams paramLayoutParams, YogaNode paramYogaNode, View paramView)
+  protected static void applyLayoutParams(YogaLayout.LayoutParams paramLayoutParams, YogaNode paramYogaNode, View paramView)
   {
     AppMethodBeat.i(18254);
     if ((Build.VERSION.SDK_INT >= 17) && (paramView.getResources().getConfiguration().getLayoutDirection() == 1)) {
@@ -464,7 +461,7 @@ public class YogaLayout
     if ((paramView instanceof YogaLayout))
     {
       paramLayoutParams = ((YogaLayout)paramView).getYogaNode();
-      applyLayoutParams((LayoutParams)paramView.getLayoutParams(), paramLayoutParams, paramView);
+      applyLayoutParams((YogaLayout.LayoutParams)paramView.getLayoutParams(), paramLayoutParams, paramView);
       this.mYogaNodes.put(paramView, paramLayoutParams);
       this.mYogaNode.addChildAt(paramLayoutParams, this.mYogaNode.getChildCount());
       AppMethodBeat.o(18239);
@@ -481,7 +478,7 @@ public class YogaLayout
   
   public void addView(View paramView, YogaNode paramYogaNode)
   {
-    AppMethodBeat.i(190319);
+    AppMethodBeat.i(221793);
     this.mYogaNode.setMeasureFunction(null);
     if (!(paramView instanceof YogaLayout))
     {
@@ -490,19 +487,19 @@ public class YogaLayout
     }
     this.mYogaNodes.put(paramView, paramYogaNode);
     this.mYogaNode.addChildAt(paramYogaNode, this.mYogaNode.getChildCount());
-    super.addView(paramView, getChildCount(), new LayoutParams(-1, -1));
-    AppMethodBeat.o(190319);
+    super.addView(paramView, getChildCount(), new YogaLayout.LayoutParams(-1, -1));
+    AppMethodBeat.o(221793);
   }
   
   protected boolean checkLayoutParams(ViewGroup.LayoutParams paramLayoutParams)
   {
-    return paramLayoutParams instanceof LayoutParams;
+    return paramLayoutParams instanceof YogaLayout.LayoutParams;
   }
   
   protected ViewGroup.LayoutParams generateDefaultLayoutParams()
   {
     AppMethodBeat.i(18256);
-    LayoutParams localLayoutParams = new LayoutParams(-1, -1);
+    YogaLayout.LayoutParams localLayoutParams = new YogaLayout.LayoutParams(-1, -1);
     AppMethodBeat.o(18256);
     return localLayoutParams;
   }
@@ -510,7 +507,7 @@ public class YogaLayout
   public ViewGroup.LayoutParams generateLayoutParams(AttributeSet paramAttributeSet)
   {
     AppMethodBeat.i(18255);
-    paramAttributeSet = new LayoutParams(getContext(), paramAttributeSet);
+    paramAttributeSet = new YogaLayout.LayoutParams(getContext(), paramAttributeSet);
     AppMethodBeat.o(18255);
     return paramAttributeSet;
   }
@@ -518,7 +515,7 @@ public class YogaLayout
   protected ViewGroup.LayoutParams generateLayoutParams(ViewGroup.LayoutParams paramLayoutParams)
   {
     AppMethodBeat.i(18257);
-    paramLayoutParams = new LayoutParams(paramLayoutParams);
+    paramLayoutParams = new YogaLayout.LayoutParams(paramLayoutParams);
     AppMethodBeat.o(18257);
     return paramLayoutParams;
   }
@@ -656,92 +653,10 @@ public class YogaLayout
     super.removeViewsInLayout(paramInt1, paramInt2);
     AppMethodBeat.o(18245);
   }
-  
-  public static class LayoutParams
-    extends ViewGroup.LayoutParams
-  {
-    SparseArray<Float> numericAttributes;
-    SparseArray<String> stringAttributes;
-    
-    public LayoutParams(int paramInt1, int paramInt2)
-    {
-      super(paramInt2);
-      AppMethodBeat.i(18234);
-      this.numericAttributes = new SparseArray();
-      this.stringAttributes = new SparseArray();
-      if (paramInt1 >= 0) {
-        this.numericAttributes.put(55, Float.valueOf(paramInt1));
-      }
-      if (paramInt2 >= 0) {
-        this.numericAttributes.put(20, Float.valueOf(paramInt2));
-      }
-      AppMethodBeat.o(18234);
-    }
-    
-    public LayoutParams(Context paramContext, AttributeSet paramAttributeSet)
-    {
-      super(paramAttributeSet);
-      AppMethodBeat.i(18235);
-      this.numericAttributes = new SparseArray();
-      this.stringAttributes = new SparseArray();
-      paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.yoga);
-      if (this.width >= 0) {
-        this.numericAttributes.put(55, Float.valueOf(this.width));
-      }
-      if (this.height >= 0) {
-        this.numericAttributes.put(20, Float.valueOf(this.height));
-      }
-      int j = paramContext.getIndexCount();
-      int i = 0;
-      if (i < j)
-      {
-        int k = paramContext.getIndex(i);
-        paramAttributeSet = new TypedValue();
-        paramContext.getValue(k, paramAttributeSet);
-        if (paramAttributeSet.type == 5) {
-          this.numericAttributes.put(k, Float.valueOf(paramContext.getDimensionPixelSize(k, 0)));
-        }
-        for (;;)
-        {
-          i += 1;
-          break;
-          if (paramAttributeSet.type == 3) {
-            this.stringAttributes.put(k, paramContext.getString(k));
-          } else {
-            this.numericAttributes.put(k, Float.valueOf(paramContext.getFloat(k, 0.0F)));
-          }
-        }
-      }
-      paramContext.recycle();
-      AppMethodBeat.o(18235);
-    }
-    
-    public LayoutParams(ViewGroup.LayoutParams paramLayoutParams)
-    {
-      super();
-      AppMethodBeat.i(18233);
-      if ((paramLayoutParams instanceof LayoutParams))
-      {
-        this.numericAttributes = ((LayoutParams)paramLayoutParams).numericAttributes.clone();
-        this.stringAttributes = ((LayoutParams)paramLayoutParams).stringAttributes.clone();
-        AppMethodBeat.o(18233);
-        return;
-      }
-      this.numericAttributes = new SparseArray();
-      this.stringAttributes = new SparseArray();
-      if (paramLayoutParams.width >= 0) {
-        this.numericAttributes.put(55, Float.valueOf(this.width));
-      }
-      if (paramLayoutParams.height >= 0) {
-        this.numericAttributes.put(20, Float.valueOf(this.height));
-      }
-      AppMethodBeat.o(18233);
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.facebook.yoga.android.YogaLayout
  * JD-Core Version:    0.7.0.1
  */

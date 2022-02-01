@@ -9,18 +9,19 @@ import android.view.View;
 import android.view.ViewParent;
 import android.view.inputmethod.InputMethodManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
 import java.util.Locale;
 import org.a.a;
 
 public enum aj
 {
-  static final Class ngF;
+  static final Class nlN;
   
   static
   {
     AppMethodBeat.i(136598);
-    ngG = new aj[0];
+    nlO = new aj[0];
     Object localObject = null;
     try
     {
@@ -31,14 +32,14 @@ public enum aj
     {
       for (;;)
       {
-        ad.e("MicroMsg.AppBrand.InputUtil", "class for ComposingText e = %s", new Object[] { localClassNotFoundException });
+        ae.e("MicroMsg.AppBrand.InputUtil", "class for ComposingText e = %s", new Object[] { localClassNotFoundException });
       }
     }
-    ngF = localObject;
+    nlN = localObject;
     AppMethodBeat.o(136598);
   }
   
-  static Spannable E(CharSequence paramCharSequence)
+  static Spannable D(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(136590);
     if (paramCharSequence == null) {
@@ -58,13 +59,13 @@ public enum aj
     }
   }
   
-  public static boolean F(CharSequence paramCharSequence)
+  public static boolean E(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(136591);
     if ((paramCharSequence instanceof Spanned))
     {
       paramCharSequence = (Spanned)paramCharSequence;
-      paramCharSequence = paramCharSequence.getSpans(0, paramCharSequence.length(), ngF);
+      paramCharSequence = paramCharSequence.getSpans(0, paramCharSequence.length(), nlN);
       if ((paramCharSequence != null) && (paramCharSequence.length > 0))
       {
         AppMethodBeat.o(136591);
@@ -77,10 +78,10 @@ public enum aj
     return false;
   }
   
-  static boolean cN(Object paramObject)
+  static boolean cO(Object paramObject)
   {
     AppMethodBeat.i(136592);
-    boolean bool = ngF.isInstance(paramObject);
+    boolean bool = nlN.isInstance(paramObject);
     AppMethodBeat.o(136592);
     return bool;
   }
@@ -96,7 +97,7 @@ public enum aj
     }
     else
     {
-      paramView = com.tencent.mm.sdk.platformtools.aj.getContext();
+      paramView = ak.getContext();
     }
     paramView = (InputMethodManager)paramView.getSystemService("input_method");
     AppMethodBeat.o(136593);
@@ -108,7 +109,7 @@ public enum aj
     AppMethodBeat.i(136594);
     if (Build.VERSION.SDK_INT >= 30)
     {
-      ad.w("MicroMsg.AppBrand.InputUtil", "dumpImmDebugInfo skip >=30");
+      ae.w("MicroMsg.AppBrand.InputUtil", "dumpImmDebugInfo skip >=30");
       AppMethodBeat.o(136594);
       return;
     }
@@ -118,18 +119,18 @@ public enum aj
     }
     for (;;)
     {
-      ad.i("MicroMsg.AppBrand.InputUtil", "dumpImmDebugInfo: %s", new Object[] { paramView });
+      ae.i("MicroMsg.AppBrand.InputUtil", "dumpImmDebugInfo: %s", new Object[] { paramView });
       AppMethodBeat.o(136594);
       return;
       try
       {
-        paramView = (View)a.gy(localObject).get("mServedView");
-        localObject = (View)a.gy(localObject).get("mNextServedView");
+        paramView = (View)a.gB(localObject).get("mServedView");
+        localObject = (View)a.gB(localObject).get("mNextServedView");
         paramView = String.format(Locale.US, "mServedView=%s, mNextServedView=%s", new Object[] { paramView, localObject });
       }
       catch (Exception paramView)
       {
-        ad.e("MicroMsg.AppBrand.InputUtil", "dumpImmDebugInfo reflect failed %s", new Object[] { paramView });
+        ae.e("MicroMsg.AppBrand.InputUtil", "dumpImmDebugInfo reflect failed %s", new Object[] { paramView });
         AppMethodBeat.o(136594);
       }
     }
@@ -171,7 +172,7 @@ public enum aj
     return false;
   }
   
-  static int j(Integer paramInteger)
+  static int k(Integer paramInteger)
   {
     AppMethodBeat.i(136597);
     if (paramInteger != null)
@@ -186,7 +187,7 @@ public enum aj
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.aj
  * JD-Core Version:    0.7.0.1
  */

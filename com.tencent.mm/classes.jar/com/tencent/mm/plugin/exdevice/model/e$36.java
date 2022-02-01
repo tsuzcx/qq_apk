@@ -1,80 +1,80 @@
 package com.tencent.mm.plugin.exdevice.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
-import com.tencent.mm.g.a.ea;
-import com.tencent.mm.model.ba;
-import com.tencent.mm.protocal.protobuf.bcc;
-import com.tencent.mm.protocal.protobuf.bcd;
-import com.tencent.mm.protocal.protobuf.bnj;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.g.a.eb;
+import com.tencent.mm.model.bc;
+import com.tencent.mm.protocal.protobuf.bcs;
+import com.tencent.mm.protocal.protobuf.bct;
+import com.tencent.mm.protocal.protobuf.bob;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 final class e$36
   implements f
 {
-  e$36(e parame, ea paramea) {}
+  e$36(e parame, eb parameb) {}
   
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     AppMethodBeat.i(23268);
     if ((paramn != null) && (paramn.getType() == 543))
     {
-      ba.aiU().b(543, this);
+      bc.ajj().b(543, this);
       if ((paramInt1 != 0) || (paramInt2 != 0))
       {
-        ad.e("MicroMsg.exdevice.ExdeviceEventManager", "getTicketSceneEndImpl errType = [%s], errCode = [%s]， errMsg = [%s]", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-        this.qbK.dpc.dpe = true;
-        this.qbK.dpc.dpf = null;
-        if (this.qbK.callback != null) {
-          this.qbK.callback.run();
+        ae.e("MicroMsg.exdevice.ExdeviceEventManager", "getTicketSceneEndImpl errType = [%s], errCode = [%s]， errMsg = [%s]", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+        this.qip.dqh.dqj = true;
+        this.qip.dqh.dqk = null;
+        if (this.qip.callback != null) {
+          this.qip.callback.run();
         }
         AppMethodBeat.o(23268);
         return;
       }
-      ad.i("MicroMsg.exdevice.ExdeviceEventManager", "getTicketSceneEndImpl errType = [%s], errCode = [%s]， errMsg = [%s]", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+      ae.i("MicroMsg.exdevice.ExdeviceEventManager", "getTicketSceneEndImpl errType = [%s], errCode = [%s]， errMsg = [%s]", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
       paramString = (z)paramn;
-      if ((paramString.grW == null) || (paramString.grW.hNL.hNQ == null)) {}
-      bcd localbcd;
-      for (paramString = null;; paramString = (bcc)paramString.grW.hNL.hNQ)
+      if ((paramString.gux == null) || (paramString.gux.hQE.hQJ == null)) {}
+      bct localbct;
+      for (paramString = null;; paramString = (bcs)paramString.gux.hQE.hQJ)
       {
-        Iterator localIterator = paramString.GyQ.iterator();
+        Iterator localIterator = paramString.GSq.iterator();
         paramInt1 = 0;
         for (;;)
         {
           if (!localIterator.hasNext()) {
             break label413;
           }
-          localbcd = (bcd)localIterator.next();
-          if (localbcd != null)
+          localbct = (bct)localIterator.next();
+          if (localbct != null)
           {
             paramn = null;
             paramString = null;
-            if (localbcd.FCT != null)
+            if (localbct.FVo != null)
             {
-              paramn = localbcd.FCT.nDr;
-              paramString = localbcd.FCT.FzJ;
+              paramn = localbct.FVo.nIM;
+              paramString = localbct.FVo.FSh;
             }
-            if ((localbcd.Ret == 0) && (!bt.isNullOrNil(localbcd.xbo))) {
+            if ((localbct.Ret == 0) && (!bu.isNullOrNil(localbct.xrf))) {
               break;
             }
-            ad.e("MicroMsg.exdevice.ExdeviceEventManager", "deviceId(%s) get ticket fail. ret=%d, ticket=%s", new Object[] { paramn, Integer.valueOf(localbcd.Ret), localbcd.xbo });
+            ae.e("MicroMsg.exdevice.ExdeviceEventManager", "deviceId(%s) get ticket fail. ret=%d, ticket=%s", new Object[] { paramn, Integer.valueOf(localbct.Ret), localbct.xrf });
           }
         }
       }
-      ad.i("MicroMsg.exdevice.ExdeviceEventManager", "GetHardDeviceOperTicket end. deviceId=%s, deviceType=%s, ticket=%s, oper=%d", new Object[] { paramn, paramString, localbcd.xbo, Integer.valueOf(localbcd.GyM) });
-      this.qbK.dpc.dpe = true;
-      this.qbK.dpc.dpf = localbcd.xbo;
-      if (this.qbK.callback == null) {
+      ae.i("MicroMsg.exdevice.ExdeviceEventManager", "GetHardDeviceOperTicket end. deviceId=%s, deviceType=%s, ticket=%s, oper=%d", new Object[] { paramn, paramString, localbct.xrf, Integer.valueOf(localbct.GSm) });
+      this.qip.dqh.dqj = true;
+      this.qip.dqh.dqk = localbct.xrf;
+      if (this.qip.callback == null) {
         break label519;
       }
-      this.qbK.callback.run();
+      this.qip.callback.run();
       paramInt1 = 1;
     }
     label519:
@@ -84,18 +84,18 @@ final class e$36
       label413:
       if (paramInt1 == 0)
       {
-        this.qbK.dpc.dpe = true;
-        this.qbK.dpc.dpf = null;
-        if (this.qbK.callback != null) {
-          this.qbK.callback.run();
+        this.qip.dqh.dqj = true;
+        this.qip.dqh.dqk = null;
+        if (this.qip.callback != null) {
+          this.qip.callback.run();
         }
       }
       AppMethodBeat.o(23268);
       return;
-      this.qbK.dpc.dpe = true;
-      this.qbK.dpc.dpf = null;
-      if (this.qbK.callback != null) {
-        this.qbK.callback.run();
+      this.qip.dqh.dqj = true;
+      this.qip.dqh.dqk = null;
+      if (this.qip.callback != null) {
+        this.qip.callback.run();
       }
       AppMethodBeat.o(23268);
       return;

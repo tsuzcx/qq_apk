@@ -3,7 +3,7 @@ package com.tencent.mm.ui.g.a;
 public final class e
   extends Throwable
 {
-  public String KAi;
+  public String KWC;
   public int mErrorCode = 0;
   
   public e(String paramString)
@@ -14,7 +14,7 @@ public final class e
   public e(String paramString1, String paramString2, int paramInt)
   {
     super(paramString1);
-    this.KAi = paramString2;
+    this.KWC = paramString2;
     this.mErrorCode = paramInt;
   }
 }

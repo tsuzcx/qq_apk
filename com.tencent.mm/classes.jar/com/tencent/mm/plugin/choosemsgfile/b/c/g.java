@@ -6,13 +6,13 @@ import com.tencent.mm.plugin.choosemsgfile.ui.c;
 
 public abstract interface g
 {
-  public abstract a AS(int paramInt);
+  public abstract a Be(int paramInt);
   
   public abstract void a(boolean paramBoolean, a parama, RecyclerView.w paramw);
   
-  public abstract c bZx();
+  public abstract c caM();
   
-  public abstract boolean bZy();
+  public abstract boolean caN();
   
   public abstract int getItemCount();
   

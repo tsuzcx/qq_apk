@@ -8,11 +8,11 @@ public abstract class bm
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eEm = "content".hashCode();
-  private static final int eTM = "designerIDAndType".hashCode();
+  private static final int eFV = "content".hashCode();
+  private static final int eVx = "designerIDAndType".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eDP = true;
-  private boolean eTL = true;
+  private boolean eFy = true;
+  private boolean eVw = true;
   public byte[] field_content;
   public String field_designerIDAndType;
   
@@ -29,11 +29,11 @@ public abstract class bm
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eTM != k) {
+      if (eVx != k) {
         break label65;
       }
       this.field_designerIDAndType = paramCursor.getString(i);
-      this.eTL = true;
+      this.eVw = true;
     }
     for (;;)
     {
@@ -41,7 +41,7 @@ public abstract class bm
       break label20;
       break;
       label65:
-      if (eEm == k) {
+      if (eFV == k) {
         this.field_content = paramCursor.getBlob(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
@@ -52,10 +52,10 @@ public abstract class bm
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eTL) {
+    if (this.eVw) {
       localContentValues.put("designerIDAndType", this.field_designerIDAndType);
     }
-    if (this.eDP) {
+    if (this.eFy) {
       localContentValues.put("content", this.field_content);
     }
     if (this.systemRowid > 0L) {

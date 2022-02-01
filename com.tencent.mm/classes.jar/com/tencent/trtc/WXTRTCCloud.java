@@ -59,7 +59,7 @@ public class WXTRTCCloud
   
   public static void destroySharedInstance()
   {
-    AppMethodBeat.i(187552);
+    AppMethodBeat.i(221681);
     try
     {
       if (sInstance != null)
@@ -72,7 +72,7 @@ public class WXTRTCCloud
     }
     finally
     {
-      AppMethodBeat.o(187552);
+      AppMethodBeat.o(221681);
     }
   }
   
@@ -132,7 +132,7 @@ public class WXTRTCCloud
   
   public void enableBlackStream(final boolean paramBoolean)
   {
-    AppMethodBeat.i(187555);
+    AppMethodBeat.i(221684);
     runOnMainThread(new Runnable()
     {
       public final void run()
@@ -156,7 +156,7 @@ public class WXTRTCCloud
         AppMethodBeat.o(14292);
       }
     });
-    AppMethodBeat.o(187555);
+    AppMethodBeat.o(221684);
   }
   
   public void enterRoom(TRTCCloudDef.TRTCParams paramTRTCParams, int paramInt)
@@ -187,9 +187,9 @@ public class WXTRTCCloud
   
   public int getMaxZoom()
   {
-    AppMethodBeat.i(187553);
+    AppMethodBeat.i(221682);
     int i = this.mCaptureAndEnc.q();
-    AppMethodBeat.o(187553);
+    AppMethodBeat.o(221682);
     return i;
   }
   
@@ -437,7 +437,7 @@ public class WXTRTCCloud
   
   public void notifyUserVoiceVolume(final ArrayList<TRTCCloudDef.TRTCVolumeInfo> paramArrayList, int paramInt)
   {
-    AppMethodBeat.i(187556);
+    AppMethodBeat.i(221685);
     runOnSDKThread(new Runnable()
     {
       public final void run()
@@ -482,8 +482,8 @@ public class WXTRTCCloud
               continue;
             }
             ((WXTRTCCloud.a)localObject1).a = i;
-            if (((WXTRTCCloud.a)localObject1).MkA != null) {
-              localObject1 = (WXTRTCCloud.ITXAudioVolumeEvaluationListener)((WXTRTCCloud.a)localObject1).MkA.get();
+            if (((WXTRTCCloud.a)localObject1).MHx != null) {
+              localObject1 = (WXTRTCCloud.ITXAudioVolumeEvaluationListener)((WXTRTCCloud.a)localObject1).MHx.get();
             }
           }
           for (;;)
@@ -541,7 +541,7 @@ public class WXTRTCCloud
         }
       }
     });
-    AppMethodBeat.o(187556);
+    AppMethodBeat.o(221685);
   }
   
   public void pausePusher()
@@ -591,7 +591,7 @@ public class WXTRTCCloud
           locala.a = 0;
           break;
           label107:
-          locala.MkA = new WeakReference(paramITXAudioVolumeEvaluationListener);
+          locala.MHx = new WeakReference(paramITXAudioVolumeEvaluationListener);
         }
       }
     });
@@ -651,9 +651,9 @@ public class WXTRTCCloud
   
   public void setFocusPosition(float paramFloat1, float paramFloat2)
   {
-    AppMethodBeat.i(187554);
+    AppMethodBeat.i(221683);
     this.mCaptureAndEnc.a(paramFloat1, paramFloat2);
-    AppMethodBeat.o(187554);
+    AppMethodBeat.o(221683);
   }
   
   public void setLocalSurface(final Surface paramSurface)
@@ -690,9 +690,9 @@ public class WXTRTCCloud
   
   public void setPushListener(ITXLivePushListener paramITXLivePushListener)
   {
-    AppMethodBeat.i(187557);
+    AppMethodBeat.i(221686);
     this.mPushListener = new WeakReference(paramITXLivePushListener);
-    AppMethodBeat.o(187557);
+    AppMethodBeat.o(221686);
   }
   
   public void setRemoteSubStreamSurface(final String paramString, final Surface paramSurface)
@@ -867,12 +867,12 @@ public class WXTRTCCloud
             if (paramBoolean) {
               locala.c = null;
             }
-            while ((locala.MkA == null) && (locala.c == null))
+            while ((locala.MHx == null) && (locala.c == null))
             {
               WXTRTCCloud.this.mMapAudioVolumeListener.remove(paramString);
               AppMethodBeat.o(14296);
               return;
-              locala.MkA = null;
+              locala.MHx = null;
             }
           }
           WXTRTCCloud.this.mMapAudioVolumeListener.remove(paramString);
@@ -911,7 +911,7 @@ public class WXTRTCCloud
   
   static final class a
   {
-    public WeakReference<WXTRTCCloud.ITXAudioVolumeEvaluationListener> MkA = null;
+    public WeakReference<WXTRTCCloud.ITXAudioVolumeEvaluationListener> MHx = null;
     public int a;
     public WeakReference<WXTRTCCloud.ITXAudioVolumeEvaluationListener> c = null;
   }

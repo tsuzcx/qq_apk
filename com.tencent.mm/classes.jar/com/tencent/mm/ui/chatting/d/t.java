@@ -5,79 +5,81 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.ui.chat.ChatFooter;
 import com.tencent.mm.ui.MMFragment;
 import com.tencent.mm.ui.chatting.ChatFooterCustom;
-import com.tencent.mm.ui.chatting.d.b.ai;
-import com.tencent.mm.ui.chatting.d.b.as;
+import com.tencent.mm.ui.chatting.d.b.aj;
+import com.tencent.mm.ui.chatting.d.b.at;
 import com.tencent.mm.ui.chatting.d.b.k;
+import com.tencent.mm.ui.chatting.d.b.o;
 import com.tencent.mm.ui.chatting.d.b.q;
 import com.tencent.mm.ui.chatting.d.b.s;
+import com.tencent.mm.ui.chatting.p;
 
-@com.tencent.mm.ui.chatting.d.a.a(fFo=q.class)
+@com.tencent.mm.ui.chatting.d.a.a(fJv=q.class)
 public class t
   extends a
   implements q
 {
-  private long[] JAK = null;
-  private boolean JIJ = false;
-  private com.tencent.mm.ui.chatting.o JIK = null;
+  private long[] JVB = null;
+  private boolean KdF = false;
+  private p KdG = null;
   
-  public final boolean fDB()
-  {
-    return this.JIJ;
-  }
-  
-  public final void fws()
+  public final void fAs()
   {
     AppMethodBeat.i(35297);
-    this.JIJ = this.cWM.JOR.getBooleanExtra("expose_edit_mode", false).booleanValue();
-    this.JAK = this.cWM.JOR.getArguments().getLongArray("expose_selected_ids");
+    this.KdF = this.cXJ.Kkd.getBooleanExtra("expose_edit_mode", false).booleanValue();
+    this.JVB = this.cXJ.Kkd.getArguments().getLongArray("expose_selected_ids");
     AppMethodBeat.o(35297);
   }
   
-  public final void fwt()
+  public final void fAt()
   {
     AppMethodBeat.i(35298);
-    if ((this.JIJ) && (this.JIK == null)) {
-      this.JIK = new com.tencent.mm.ui.chatting.o(this.cWM, this.JAK);
+    if ((this.KdF) && (this.KdG == null)) {
+      this.KdG = new p(this.cXJ, this.JVB);
     }
     AppMethodBeat.o(35298);
   }
   
-  public final void fwu()
+  public final void fAu()
   {
     AppMethodBeat.i(35299);
-    super.fwu();
-    if (this.JIK != null)
+    super.fAu();
+    if (this.KdG != null)
     {
-      com.tencent.mm.ui.chatting.o localo = this.JIK;
-      Object localObject = (k)localo.cWM.bh(k.class);
-      ((ai)localo.cWM.bh(ai.class)).fEJ();
-      ((k)localObject).fCr();
-      ((k)localObject).fCl();
-      if (localo.JAK != null)
+      p localp = this.KdG;
+      Object localObject = (k)localp.cXJ.bh(k.class);
+      ((aj)localp.cXJ.bh(aj.class)).fIM();
+      ((k)localObject).fGt();
+      ((k)localObject).fGn();
+      if (localp.JVB != null)
       {
-        long[] arrayOfLong = localo.JAK;
+        long[] arrayOfLong = localp.JVB;
         int j = arrayOfLong.length;
         int i = 0;
         while (i < j)
         {
-          ((k)localObject).DR(arrayOfLong[i]);
+          ((k)localObject).Eq(arrayOfLong[i]);
           i += 1;
         }
       }
-      localObject = ((s)localo.cWM.bh(s.class)).fDC();
+      localObject = ((s)localp.cXJ.bh(s.class)).fHF();
       if (localObject != null) {
         ((ChatFooter)localObject).setVisibility(8);
       }
-      localObject = ((s)localo.cWM.bh(s.class)).fDD();
+      localObject = ((s)localp.cXJ.bh(s.class)).fHG();
       if (localObject != null) {
         ((ChatFooterCustom)localObject).setVisibility(8);
       }
-      ((com.tencent.mm.ui.chatting.d.b.o)localo.cWM.bh(com.tencent.mm.ui.chatting.d.b.o.class)).fDA();
-      localo.cWM.hideVKB();
-      ((as)localo.cWM.bh(as.class)).fFl();
-      localo.cWM.ya(true);
+      ((o)localp.cXJ.bh(o.class)).fHD();
+      localp.cXJ.hideVKB();
+      ((at)localp.cXJ.bh(at.class)).fJo();
+      localp.cXJ.yh(true);
     }
     AppMethodBeat.o(35299);
+  }
+  
+  public final boolean fHE()
+  {
+    return this.KdF;
   }
 }
 

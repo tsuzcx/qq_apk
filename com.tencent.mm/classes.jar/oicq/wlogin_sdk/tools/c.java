@@ -107,7 +107,7 @@ public final class c
     return i;
   }
   
-  public static byte[] bdC(String paramString)
+  public static byte[] bfg(String paramString)
   {
     AppMethodBeat.i(88151);
     try
@@ -127,7 +127,7 @@ public final class c
     return paramString;
   }
   
-  public static byte[] dp(byte[] paramArrayOfByte)
+  public static byte[] ds(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(88150);
     paramArrayOfByte = new c().getMD5(paramArrayOfByte);

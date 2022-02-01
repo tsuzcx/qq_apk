@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.wenote;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.ax;
+import com.tencent.mm.model.az;
 import com.tencent.mm.pluginsdk.b.d;
 import com.tencent.mm.pluginsdk.n;
 
@@ -16,7 +16,7 @@ public final class Plugin
     return locala;
   }
   
-  public final ax createSubCore()
+  public final az createSubCore()
   {
     AppMethodBeat.i(30257);
     com.tencent.mm.plugin.wenote.model.c localc = new com.tencent.mm.plugin.wenote.model.c();

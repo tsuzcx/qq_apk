@@ -16,16 +16,16 @@ public final class r
   {
     AppMethodBeat.i(105127);
     c.a locala = new c.a();
-    locala.IhA = new Field[2];
+    locala.IBL = new Field[2];
     locala.columns = new String[3];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "reqType";
-    locala.IhC.put("reqType", "TEXT PRIMARY KEY ");
+    locala.IBN.put("reqType", "TEXT PRIMARY KEY ");
     localStringBuilder.append(" reqType TEXT PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.IhB = "reqType";
+    locala.IBM = "reqType";
     locala.columns[1] = "cache";
-    locala.IhC.put("cache", "BLOB default '' ");
+    locala.IBN.put("cache", "BLOB default '' ");
     localStringBuilder.append(" cache BLOB default '' ");
     locala.columns[2] = "rowid";
     locala.sql = localStringBuilder.toString();

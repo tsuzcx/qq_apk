@@ -17,7 +17,7 @@ public final class b
   extends SQLiteOpenHelper
   implements d
 {
-  private SQLiteDatabase LUj;
+  private SQLiteDatabase Mre;
   
   public b(Context paramContext)
   {
@@ -25,13 +25,13 @@ public final class b
     AppMethodBeat.i(183214);
     try
     {
-      this.LUj = getWritableDatabase();
+      this.Mre = getWritableDatabase();
       AppMethodBeat.o(183214);
       return;
     }
     catch (Exception paramContext)
     {
-      com.tencent.e.d.LTy.e("ExperienceStorage", "%s", new Object[] { paramContext.toString() });
+      com.tencent.e.d.Mqv.e("ExperienceStorage", "%s", new Object[] { paramContext.toString() });
       AppMethodBeat.o(183214);
     }
   }
@@ -39,7 +39,7 @@ public final class b
   public final void delete(long paramLong)
   {
     AppMethodBeat.i(183217);
-    if (this.LUj == null)
+    if (this.Mre == null)
     {
       AppMethodBeat.o(183217);
       return;
@@ -48,30 +48,30 @@ public final class b
     for (paramLong = System.currentTimeMillis();; paramLong = System.currentTimeMillis() + paramLong) {
       try
       {
-        this.LUj.delete("DisposedTask", "timestamp<?", new String[] { String.valueOf(paramLong) });
+        this.Mre.delete("DisposedTask", "timestamp<?", new String[] { String.valueOf(paramLong) });
         AppMethodBeat.o(183217);
         return;
       }
       catch (Exception localException)
       {
-        com.tencent.e.d.LTy.e("ExperienceStorage", "%s", new Object[] { localException.toString() });
+        com.tencent.e.d.Mqv.e("ExperienceStorage", "%s", new Object[] { localException.toString() });
         AppMethodBeat.o(183217);
       }
     }
   }
   
-  public final Map<String, a.a> fVB()
+  public final Map<String, a.a> gaa()
   {
     AppMethodBeat.i(183218);
     localObject3 = new HashMap();
-    if (this.LUj == null)
+    if (this.Mre == null)
     {
       AppMethodBeat.o(183218);
       return localObject3;
     }
     try
     {
-      localObject1 = this.LUj.query("DisposedTask", new String[] { "taskName", String.format("avg(%s)", new Object[] { "rate" }), String.format("avg(%s)", new Object[] { "threadTime" }) }, null, null, "taskName", null, null);
+      localObject1 = this.Mre.query("DisposedTask", new String[] { "taskName", String.format("avg(%s)", new Object[] { "rate" }), String.format("avg(%s)", new Object[] { "threadTime" }) }, null, null, "taskName", null, null);
       try
       {
         ((Cursor)localObject1).moveToFirst();
@@ -117,39 +117,39 @@ public final class b
   public final void n(Collection<a.a> paramCollection)
   {
     AppMethodBeat.i(183216);
-    if ((this.LUj == null) || (paramCollection.size() <= 0))
+    if ((this.Mre == null) || (paramCollection.size() <= 0))
     {
       AppMethodBeat.o(183216);
       return;
     }
     try
     {
-      this.LUj.beginTransaction();
+      this.Mre.beginTransaction();
       paramCollection = paramCollection.iterator();
       while (paramCollection.hasNext())
       {
         Object localObject = (a.a)paramCollection.next();
-        localObject = new a.b(((a.a)localObject).name, ((a.a)localObject).LUc, ((a.a)localObject).dej, "");
+        localObject = new a.b(((a.a)localObject).name, ((a.a)localObject).MqX, ((a.a)localObject).dfl, "");
         ((a.b)localObject).timestamp = System.currentTimeMillis();
-        SQLiteDatabase localSQLiteDatabase = this.LUj;
+        SQLiteDatabase localSQLiteDatabase = this.Mre;
         ContentValues localContentValues = new ContentValues();
         localContentValues.put("taskName", ((a.b)localObject).name);
-        localContentValues.put("threadTime", Long.valueOf(((a.b)localObject).wIM));
+        localContentValues.put("threadTime", Long.valueOf(((a.b)localObject).wYx));
         localContentValues.put("time", Long.valueOf(((a.b)localObject).time));
         localContentValues.put("timestamp", Long.valueOf(((a.b)localObject).timestamp));
         localContentValues.put("rate", Float.valueOf(((a.b)localObject).rate));
-        localContentValues.put("scheduler", ((a.b)localObject).LUi);
+        localContentValues.put("scheduler", ((a.b)localObject).Mrd);
         localSQLiteDatabase.insert("DisposedTask", null, localContentValues);
       }
-      this.LUj.setTransactionSuccessful();
+      this.Mre.setTransactionSuccessful();
     }
     finally
     {
-      this.LUj.setTransactionSuccessful();
-      this.LUj.endTransaction();
+      this.Mre.setTransactionSuccessful();
+      this.Mre.endTransaction();
       AppMethodBeat.o(183216);
     }
-    this.LUj.endTransaction();
+    this.Mre.endTransaction();
     AppMethodBeat.o(183216);
   }
   

@@ -5,12 +5,12 @@ import com.tencent.mm.loader.l.b;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/loader/cache/disk/IDiskCache;", "T", "R", "", "()V", "mFileNameCreator", "Lcom/tencent/mm/loader/listener/ILoadFileNameCreator;", "buildFilePath", "", "url", "Lcom/tencent/mm/loader/model/data/DataItem;", "opts", "Lcom/tencent/mm/loader/cfg/ImageLoaderOptions;", "reaper", "Lcom/tencent/mm/loader/Reaper;", "clear", "", "configure", "Lcom/tencent/mm/loader/impr/transcoder/ResourceTranscoder;", "delete", "", "diskGet", "Lcom/tencent/mm/loader/model/datasource/DataSource;", "exists", "get", "makeConfig", "onSaveCompleted", "diskResource", "Lcom/tencent/mm/loader/model/Resource;", "onSaveStarted", "httpResponse", "Lcom/tencent/mm/loader/model/Response;", "resource", "save", "source", "Companion", "libimageloader_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/loader/cache/disk/IDiskCache;", "T", "R", "", "()V", "mFileNameCreator", "Lcom/tencent/mm/loader/listener/ILoadFileNameCreator;", "buildFilePath", "", "url", "Lcom/tencent/mm/loader/model/data/DataItem;", "opts", "Lcom/tencent/mm/loader/cfg/ImageLoaderOptions;", "reaper", "Lcom/tencent/mm/loader/Reaper;", "clear", "", "configure", "Lcom/tencent/mm/loader/impr/transcoder/ResourceTranscoder;", "delete", "", "diskGet", "Lcom/tencent/mm/loader/model/datasource/DataSource;", "exists", "get", "makeConfig", "onSaveCompleted", "diskResource", "Lcom/tencent/mm/loader/model/Resource;", "onSaveStarted", "httpResponse", "Lcom/tencent/mm/loader/model/Response;", "resource", "save", "source", "Companion", "libimageloader_release"})
 public abstract class d<T, R>
 {
   private static final String TAG = "MicroMsg.Loader.IDiskCache";
-  public static final d.a hdb = new d.a((byte)0);
-  private g hcX;
+  public static final d.a hfP = new d.a((byte)0);
+  private g hfL;
   
   public abstract boolean a(com.tencent.mm.loader.h.a.a<T> parama, com.tencent.mm.loader.c.e parame, com.tencent.mm.loader.f<?, R> paramf);
   
@@ -25,7 +25,7 @@ public abstract class d<T, R>
     p.h(parama, "url");
     p.h(parame, "opts");
     p.h(paramf, "reaper");
-    String str = parame.hdP;
+    String str = parame.hgD;
     if (str != null)
     {
       paramf = str;
@@ -33,7 +33,7 @@ public abstract class d<T, R>
     }
     else
     {
-      paramf = parame.hdP;
+      paramf = parame.hgD;
     }
     if (paramf != null)
     {
@@ -42,10 +42,10 @@ public abstract class d<T, R>
     }
     else
     {
-      parame = new StringBuilder().append(b.hhj).append("/");
-      paramf = this.hcX;
+      parame = new StringBuilder().append(b.hjX).append("/");
+      paramf = this.hfL;
       if (paramf == null) {
-        p.gfZ();
+        p.gkB();
       }
       parame = paramf.b(parama);
     }
@@ -63,7 +63,7 @@ public abstract class d<T, R>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.loader.b.a.d
  * JD-Core Version:    0.7.0.1
  */

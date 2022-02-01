@@ -7,7 +7,8 @@ import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.ball.f.f;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.plugin.game.commlib.a;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.MMActivity;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -15,13 +16,13 @@ import org.json.JSONException;
 public class GameTabGalleryUI
   extends MMActivity
 {
-  private static final int tYg;
-  private m tYh;
+  private static final int uji;
+  private m ujj;
   
   static
   {
     AppMethodBeat.i(41075);
-    tYg = "GameTabGalleryUI".hashCode() & 0xFFFF;
+    uji = "GameTabGalleryUI".hashCode() & 0xFFFF;
     AppMethodBeat.o(41075);
   }
   
@@ -34,7 +35,7 @@ public class GameTabGalleryUI
   {
     AppMethodBeat.i(41074);
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    if ((paramInt1 == tYg) && (paramInt2 == -1))
+    if ((paramInt1 == uji) && (paramInt2 == -1))
     {
       setResult(paramInt2, paramIntent);
       finish();
@@ -46,20 +47,24 @@ public class GameTabGalleryUI
   {
     AppMethodBeat.i(41070);
     super.onCreate(paramBundle);
-    this.tYh = new m(getContext(), tYg);
+    this.ujj = new m(getContext(), uji);
     boolean bool = getIntent().getBooleanExtra("game_haowan_ignore_video_preview", true);
-    this.tYh.setIgnoreVideoPreview(bool);
+    this.ujj.setIgnoreVideoPreview(bool);
     Object localObject = getIntent().getStringExtra("game_haowan_local_albums_info");
     paramBundle = new JSONArray();
-    if (!bt.isNullOrNil((String)localObject)) {}
+    if (!bu.isNullOrNil((String)localObject)) {}
     for (;;)
     {
       try
       {
         localObject = new JSONArray((String)localObject);
         paramBundle = (Bundle)localObject;
-        this.tYh.setLocalAlbumInfos(paramBundle);
-        setContentView(this.tYh);
+        localObject = paramBundle;
+        if (paramBundle.length() == 0) {
+          localObject = a.cZB();
+        }
+        this.ujj.setLocalAlbumInfos((JSONArray)localObject);
+        setContentView(this.ujj);
         setMMTitle(2131759882);
         setBackBtn(new MenuItem.OnMenuItemClickListener()
         {
@@ -109,7 +114,7 @@ public class GameTabGalleryUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.game.media.GameTabGalleryUI
  * JD-Core Version:    0.7.0.1
  */

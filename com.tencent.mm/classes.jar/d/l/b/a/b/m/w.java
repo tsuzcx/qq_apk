@@ -11,14 +11,14 @@ public final class w
   extends v
   implements k
 {
-  public static final a NBY;
-  public static boolean NBk;
-  private boolean NBX;
+  public static boolean NYr;
+  public static final a NZf;
+  private boolean NZe;
   
   static
   {
     AppMethodBeat.i(60738);
-    NBY = new a((byte)0);
+    NZf = new a((byte)0);
     AppMethodBeat.o(60738);
   }
   
@@ -33,7 +33,7 @@ public final class w
   {
     AppMethodBeat.i(60734);
     p.h(parami, "kotlinTypeRefiner");
-    Object localObject = parami.aL((ab)this.NBV);
+    Object localObject = parami.aL((ab)this.NZc);
     if (localObject == null)
     {
       parami = new d.v("null cannot be cast to non-null type org.jetbrains.kotlin.types.SimpleType");
@@ -41,7 +41,7 @@ public final class w
       throw parami;
     }
     localObject = (aj)localObject;
-    parami = parami.aL((ab)this.NBW);
+    parami = parami.aL((ab)this.NZd);
     if (parami == null)
     {
       parami = new d.v("null cannot be cast to non-null type org.jetbrains.kotlin.types.SimpleType");
@@ -53,10 +53,10 @@ public final class w
     return parami;
   }
   
-  public final bg Ab(boolean paramBoolean)
+  public final bg Ao(boolean paramBoolean)
   {
     AppMethodBeat.i(60733);
-    bg localbg = ac.a(this.NBV.Ac(paramBoolean), this.NBW.Ac(paramBoolean));
+    bg localbg = ac.a(this.NZc.Ap(paramBoolean), this.NZd.Ap(paramBoolean));
     AppMethodBeat.o(60733);
     return localbg;
   }
@@ -65,9 +65,9 @@ public final class w
   {
     AppMethodBeat.i(60730);
     p.h(paramab, "replacement");
-    bg localbg = paramab.gua();
+    bg localbg = paramab.gyC();
     if ((localbg instanceof v)) {}
-    for (paramab = localbg;; paramab = ac.a((aj)localbg, ((aj)localbg).Ac(true)))
+    for (paramab = localbg;; paramab = ac.a((aj)localbg, ((aj)localbg).Ap(true)))
     {
       paramab = (ab)be.a(paramab, (ab)localbg);
       AppMethodBeat.o(60730);
@@ -86,13 +86,13 @@ public final class w
     AppMethodBeat.i(60732);
     p.h(paramc, "renderer");
     p.h(parami, "options");
-    if (parami.gsr())
+    if (parami.gwT())
     {
-      paramc = "(" + paramc.b((ab)this.NBV) + ".." + paramc.b((ab)this.NBW) + ')';
+      paramc = "(" + paramc.b((ab)this.NZc) + ".." + paramc.b((ab)this.NZd) + ')';
       AppMethodBeat.o(60732);
       return paramc;
     }
-    paramc = paramc.a(paramc.b((ab)this.NBV), paramc.b((ab)this.NBW), a.aN(this));
+    paramc = paramc.a(paramc.b((ab)this.NZc), paramc.b((ab)this.NZd), a.aN(this));
     AppMethodBeat.o(60732);
     return paramc;
   }
@@ -101,55 +101,55 @@ public final class w
   {
     AppMethodBeat.i(60731);
     p.h(paramg, "newAnnotations");
-    paramg = ac.a(this.NBV.d(paramg), this.NBW.d(paramg));
+    paramg = ac.a(this.NZc.d(paramg), this.NZd.d(paramg));
     AppMethodBeat.o(60731);
     return paramg;
   }
   
-  public final aj glS()
+  public final aj gqu()
   {
     int j = 1;
     AppMethodBeat.i(60728);
-    if ((!NBk) || (this.NBX)) {}
+    if ((!NYr) || (this.NZe)) {}
     boolean bool;
     do
     {
-      localObject = this.NBV;
+      localObject = this.NZc;
       AppMethodBeat.o(60728);
       return localObject;
-      this.NBX = true;
-      if (!y.am((ab)this.NBV)) {}
-      for (int i = 1; (d.ac.MKp) && (i == 0); i = 0)
+      this.NZe = true;
+      if (!y.am((ab)this.NZc)) {}
+      for (int i = 1; (d.ac.Nhs) && (i == 0); i = 0)
       {
-        localObject = (Throwable)new AssertionError("Lower bound of a flexible type can not be flexible: " + this.NBV);
+        localObject = (Throwable)new AssertionError("Lower bound of a flexible type can not be flexible: " + this.NZc);
         AppMethodBeat.o(60728);
         throw ((Throwable)localObject);
       }
-      if (!y.am((ab)this.NBW)) {}
-      for (i = j; (d.ac.MKp) && (i == 0); i = 0)
+      if (!y.am((ab)this.NZd)) {}
+      for (i = j; (d.ac.Nhs) && (i == 0); i = 0)
       {
-        localObject = (Throwable)new AssertionError("Upper bound of a flexible type can not be flexible: " + this.NBW);
+        localObject = (Throwable)new AssertionError("Upper bound of a flexible type can not be flexible: " + this.NZd);
         AppMethodBeat.o(60728);
         throw ((Throwable)localObject);
       }
-      bool = p.i(this.NBV, this.NBW);
-      if ((d.ac.MKp) && (!(bool ^ true)))
+      bool = p.i(this.NZc, this.NZd);
+      if ((d.ac.Nhs) && (!(bool ^ true)))
       {
-        localObject = (Throwable)new AssertionError("Lower and upper bounds are equal: " + this.NBV + " == " + this.NBW);
+        localObject = (Throwable)new AssertionError("Lower and upper bounds are equal: " + this.NZc + " == " + this.NZd);
         AppMethodBeat.o(60728);
         throw ((Throwable)localObject);
       }
-      bool = d.l.b.a.b.m.a.g.NDb.c((ab)this.NBV, (ab)this.NBW);
-    } while ((!d.ac.MKp) || (bool));
-    Object localObject = (Throwable)new AssertionError("Lower bound " + this.NBV + " of a flexible type must be a subtype of the upper bound " + this.NBW);
+      bool = d.l.b.a.b.m.a.g.Oai.c((ab)this.NZc, (ab)this.NZd);
+    } while ((!d.ac.Nhs) || (bool));
+    Object localObject = (Throwable)new AssertionError("Lower bound " + this.NZc + " of a flexible type must be a subtype of the upper bound " + this.NZd);
     AppMethodBeat.o(60728);
     throw ((Throwable)localObject);
   }
   
-  public final boolean glV()
+  public final boolean gqx()
   {
     AppMethodBeat.i(60729);
-    if (((this.NBV.gsZ().ghO() instanceof as)) && (p.i(this.NBV.gsZ(), this.NBW.gsZ())))
+    if (((this.NZc.gxB().gmq() instanceof as)) && (p.i(this.NZc.gxB(), this.NZd.gxB())))
     {
       AppMethodBeat.o(60729);
       return true;
@@ -162,7 +162,7 @@ public final class w
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.m.w
  * JD-Core Version:    0.7.0.1
  */

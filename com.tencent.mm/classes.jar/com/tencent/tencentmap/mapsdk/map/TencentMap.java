@@ -135,6 +135,8 @@ public abstract interface TencentMap
   
   public abstract void set3DEnable(boolean paramBoolean);
   
+  public abstract void setBuilding3dEffectEnable(boolean paramBoolean);
+  
   public abstract void setErrorListener(TencentMap.OnErrorListener paramOnErrorListener);
   
   public abstract void setForeignLanguage(Language paramLanguage);
@@ -186,6 +188,8 @@ public abstract interface TencentMap
   public abstract void setTencentMapGestureListener(TencentMapGestureListener paramTencentMapGestureListener);
   
   public abstract void setTrafficEnabled(boolean paramBoolean);
+  
+  public abstract void showBuilding(boolean paramBoolean);
   
   public abstract void stopAnimation();
   

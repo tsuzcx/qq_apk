@@ -7,24 +7,24 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.modelvideo.MMVideoView;
 import com.tencent.mm.pluginsdk.ui.tools.VideoPlayerTextureView;
 import com.tencent.mm.pluginsdk.ui.tools.h;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.vfs.i;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.vfs.o;
 
 public class EnvelopeStoryVideoView
   extends MMVideoView
 {
   public static final String ROOT_PATH;
-  private boolean dCQ;
+  private boolean dDV;
   private String sessionId;
-  boolean vtV;
-  private boolean vtW;
-  public a vtX;
+  boolean vFZ;
+  private boolean vGa;
+  public a vGb;
   
   static
   {
     AppMethodBeat.i(174376);
-    ROOT_PATH = com.tencent.mm.loader.j.b.arU() + "hbstoryvideo/";
+    ROOT_PATH = com.tencent.mm.loader.j.b.asj() + "hbstoryvideo/";
     AppMethodBeat.o(174376);
   }
   
@@ -32,7 +32,7 @@ public class EnvelopeStoryVideoView
   {
     super(paramContext);
     AppMethodBeat.i(163671);
-    this.vtW = false;
+    this.vGa = false;
     init();
     AppMethodBeat.o(163671);
   }
@@ -41,7 +41,7 @@ public class EnvelopeStoryVideoView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(163672);
-    this.vtW = false;
+    this.vGa = false;
     init();
     AppMethodBeat.o(163672);
   }
@@ -50,7 +50,7 @@ public class EnvelopeStoryVideoView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(163673);
-    this.vtW = false;
+    this.vGa = false;
     init();
     AppMethodBeat.o(163673);
   }
@@ -58,26 +58,26 @@ public class EnvelopeStoryVideoView
   private void init()
   {
     AppMethodBeat.i(163674);
-    if (this.lte != null) {
-      this.lte.setVisibility(8);
+    if (this.lxD != null) {
+      this.lxD.setVisibility(8);
     }
     setRootPath(ROOT_PATH);
-    i.aYu(ROOT_PATH);
+    o.aZX(ROOT_PATH);
     setLoop(true);
     AppMethodBeat.o(163674);
   }
   
-  public final boolean OI()
+  public final boolean OG()
   {
     AppMethodBeat.i(174375);
-    if ((this.oHt instanceof VideoPlayerTextureView))
+    if ((this.oNV instanceof VideoPlayerTextureView))
     {
-      boolean bool = ((VideoPlayerTextureView)this.oHt).OI();
+      boolean bool = ((VideoPlayerTextureView)this.oNV).OG();
       AppMethodBeat.o(174375);
       return bool;
     }
-    ad.e(this.TAG, "videoview not VideoPlayerTextureView");
-    if (this.irQ == 4)
+    ae.e(this.TAG, "videoview not VideoPlayerTextureView");
+    if (this.iuK == 4)
     {
       AppMethodBeat.o(174375);
       return true;
@@ -93,7 +93,7 @@ public class EnvelopeStoryVideoView
     AppMethodBeat.o(163676);
   }
   
-  public final boolean diZ()
+  public final boolean dlY()
   {
     return false;
   }
@@ -101,7 +101,7 @@ public class EnvelopeStoryVideoView
   public int getRealPlayDurationSec()
   {
     AppMethodBeat.i(174374);
-    if (this.vtW)
+    if (this.vGa)
     {
       i = getVideoDurationSec();
       AppMethodBeat.o(174374);
@@ -120,9 +120,9 @@ public class EnvelopeStoryVideoView
   public final void onCompletion()
   {
     AppMethodBeat.i(174373);
-    this.vtW = true;
-    if ((this.isd) && (this.vtX != null)) {
-      this.vtX.a(this);
+    this.vGa = true;
+    if ((this.iuX) && (this.vGb != null)) {
+      this.vGb.a(this);
     }
     super.onCompletion();
     AppMethodBeat.o(174373);
@@ -131,17 +131,17 @@ public class EnvelopeStoryVideoView
   public final void onUIPause()
   {
     AppMethodBeat.i(163679);
-    ad.i(this.TAG, "%s onUIPause", new Object[] { boQ() });
-    if (this.lsZ)
+    ae.i(this.TAG, "%s onUIPause", new Object[] { bpA() });
+    if (this.lxy)
     {
-      this.ltk = getCurrPosSec();
-      this.ltl = true;
-      this.ltr = 0;
-      this.ltq = 0L;
+      this.lxJ = getCurrPosSec();
+      this.lxK = true;
+      this.lxQ = 0;
+      this.lxP = 0L;
       pause();
       stopTimer();
-      this.lsZ = false;
-      qQ(getReportIdkey() + 11);
+      this.lxy = false;
+      rd(getReportIdkey() + 11);
     }
     AppMethodBeat.o(163679);
   }
@@ -149,12 +149,12 @@ public class EnvelopeStoryVideoView
   public final void onUIResume()
   {
     AppMethodBeat.i(163678);
-    if (!this.lsZ)
+    if (!this.lxy)
     {
-      this.lsZ = true;
-      if (this.oHt != null)
+      this.lxy = true;
+      if (this.oNV != null)
       {
-        if (!this.ltl) {
+        if (!this.lxK) {
           break label54;
         }
         play();
@@ -162,24 +162,24 @@ public class EnvelopeStoryVideoView
     }
     for (;;)
     {
-      qQ(getReportIdkey() + 10);
+      rd(getReportIdkey() + 10);
       AppMethodBeat.o(163678);
       return;
       label54:
-      ((VideoPlayerTextureView)this.oHt).boO();
+      ((VideoPlayerTextureView)this.oNV).bpy();
     }
   }
   
   public void setLocal(boolean paramBoolean)
   {
-    this.dCQ = paramBoolean;
+    this.dDV = paramBoolean;
   }
   
   public void setMute(boolean paramBoolean)
   {
     AppMethodBeat.i(163675);
     super.setMute(paramBoolean);
-    this.vtV = paramBoolean;
+    this.vFZ = paramBoolean;
     AppMethodBeat.o(163675);
   }
   
@@ -191,33 +191,33 @@ public class EnvelopeStoryVideoView
   public final void start()
   {
     AppMethodBeat.i(163677);
-    ad.i(this.TAG, "%s start cdnMediaId[%s] timeDuration[%d] isLocal[%s]", new Object[] { boQ(), this.irM, Integer.valueOf(this.irS), Boolean.valueOf(this.dCQ) });
-    if (this.oHt != null)
+    ae.i(this.TAG, "%s start cdnMediaId[%s] timeDuration[%d] isLocal[%s]", new Object[] { bpA(), this.iuG, Integer.valueOf(this.iuM), Boolean.valueOf(this.dDV) });
+    if (this.oNV != null)
     {
-      if (!bt.isNullOrNil(this.oHt.getVideoPath())) {
+      if (!bu.isNullOrNil(this.oNV.getVideoPath())) {
         break label174;
       }
-      if (this.dCQ)
+      if (this.dDV)
       {
-        aMv();
-        this.irP = 3;
+        aMT();
+        this.iuJ = 3;
         AppMethodBeat.o(163677);
         return;
       }
       showLoading();
-      this.isc = true;
-      this.irS = 0;
-      this.irP = 1;
-      if (this.irL != null)
+      this.iuW = true;
+      this.iuM = 0;
+      this.iuJ = 1;
+      if (this.iuF != null)
       {
-        this.irL.p(this.irM, this.irN, this.url);
-        this.irL.a(this);
+        this.iuF.p(this.iuG, this.iuH, this.url);
+        this.iuF.a(this);
       }
-      eaE();
+      eek();
     }
     for (;;)
     {
-      qQ(getReportIdkey() + 1);
+      rd(getReportIdkey() + 1);
       AppMethodBeat.o(163677);
       return;
       label174:

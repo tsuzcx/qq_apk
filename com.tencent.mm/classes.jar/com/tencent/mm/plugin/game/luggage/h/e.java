@@ -12,12 +12,12 @@ import com.tencent.mm.appbrand.v8.f;
 import com.tencent.mm.appbrand.v8.m;
 import com.tencent.mm.appbrand.v8.m.b;
 import com.tencent.mm.appbrand.v8.m.c;
-import com.tencent.mm.cc.a;
-import com.tencent.mm.plugin.appbrand.z.p.a;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.cb.a;
+import com.tencent.mm.plugin.appbrand.y.p.a;
 import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.az;
 import com.tencent.mm.ui.ar;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -26,21 +26,21 @@ public class e
   implements g
 {
   private Context mContext;
-  private boolean pqo;
-  private m tWk;
+  private boolean pwU;
+  private m uhi;
   
   public e(Context paramContext)
   {
-    AppMethodBeat.i(211718);
-    this.pqo = true;
+    AppMethodBeat.i(193117);
+    this.pwU = true;
     this.mContext = paramContext;
-    this.tWk = f.b(null).Nt();
-    this.tWk.a(1, new com.tencent.mm.plugin.appbrand.jsruntime.h()
+    this.uhi = f.b(null).No();
+    this.uhi.a(1, new com.tencent.mm.plugin.appbrand.jsruntime.h()
     {
       public final void u(final String paramAnonymousString1, final String paramAnonymousString2)
       {
-        AppMethodBeat.i(211715);
-        ad.e("MicroMsg.LuggageGameJsRuntimeImpl", "handleException, message : %s\n, stackTrace : %s", new Object[] { paramAnonymousString1, paramAnonymousString2 });
+        AppMethodBeat.i(193114);
+        ae.e("MicroMsg.LuggageGameJsRuntimeImpl", "handleException, message : %s\n, stackTrace : %s", new Object[] { paramAnonymousString1, paramAnonymousString2 });
         if (e.a(e.this))
         {
           e.b(e.this);
@@ -48,68 +48,68 @@ public class e
           {
             public final void run()
             {
-              AppMethodBeat.i(211714);
+              AppMethodBeat.i(193113);
               e.a(e.this, paramAnonymousString1 + "\n" + paramAnonymousString2);
-              AppMethodBeat.o(211714);
+              AppMethodBeat.o(193113);
             }
           }, 3000L);
-          AppMethodBeat.o(211715);
+          AppMethodBeat.o(193114);
           return;
         }
         e.a(e.this, paramAnonymousString1 + "\n" + paramAnonymousString2);
-        AppMethodBeat.o(211715);
+        AppMethodBeat.o(193114);
       }
     });
     addJavascriptInterface(new c(), "WxGameJsCoreNative");
-    AppMethodBeat.o(211718);
+    AppMethodBeat.o(193117);
   }
   
-  public final void BP()
+  public final void BQ()
   {
-    AppMethodBeat.i(211722);
-    Object localObject = com.tencent.mm.plugin.appbrand.z.d.UT("luggage_mm_adapter.js");
-    this.tWk.a((String)localObject, null);
-    localObject = ar.ci(aj.getContext());
+    AppMethodBeat.i(193121);
+    Object localObject = com.tencent.mm.plugin.appbrand.y.d.VE("luggage_mm_adapter.js");
+    this.uhi.a((String)localObject, null);
+    localObject = ar.ck(ak.getContext());
     int i = ((Point)localObject).y;
-    int j = ar.dT(aj.getContext());
-    int k = ar.jG(aj.getContext());
-    int m = ar.ej(aj.getContext());
-    float f = a.getDensity(aj.getContext());
-    String str = ay.iR(aj.getContext());
-    evaluateJavascript(String.format(com.tencent.mm.plugin.appbrand.z.d.UT("game_jscore_system_info.js"), new Object[] { String.valueOf(((Point)localObject).x), String.valueOf(i - j - k - m), String.valueOf(((Point)localObject).x), String.valueOf(((Point)localObject).y), String.valueOf(f), str, Build.BRAND, Build.MODEL, String.format("0x%08X", new Object[] { Integer.valueOf(com.tencent.mm.protocal.d.Fnj) }), "Android-" + Build.VERSION.SDK_INT, ac.iM(aj.getContext()) }), null);
-    AppMethodBeat.o(211722);
+    int j = ar.dX(ak.getContext());
+    int k = ar.jN(ak.getContext());
+    int m = ar.en(ak.getContext());
+    float f = a.getDensity(ak.getContext());
+    String str = az.iW(ak.getContext());
+    evaluateJavascript(String.format(com.tencent.mm.plugin.appbrand.y.d.VE("game_jscore_system_info.js"), new Object[] { String.valueOf(((Point)localObject).x), String.valueOf(i - j - k - m), String.valueOf(((Point)localObject).x), String.valueOf(((Point)localObject).y), String.valueOf(f), str, Build.BRAND, Build.MODEL, String.format("0x%08X", new Object[] { Integer.valueOf(com.tencent.mm.protocal.d.FFH) }), "Android-" + Build.VERSION.SDK_INT, ad.iR(ak.getContext()) }), null);
+    AppMethodBeat.o(193121);
   }
   
   public void addJavascriptInterface(Object paramObject, String paramString)
   {
-    AppMethodBeat.i(211720);
-    this.tWk.a(paramObject, paramString, JavascriptInterface.class);
-    AppMethodBeat.o(211720);
+    AppMethodBeat.i(193119);
+    this.uhi.a(paramObject, paramString, JavascriptInterface.class);
+    AppMethodBeat.o(193119);
   }
   
   public final void destroy()
   {
-    AppMethodBeat.i(211723);
-    this.tWk.destroy();
+    AppMethodBeat.i(193122);
+    this.uhi.destroy();
     this.mContext = null;
-    AppMethodBeat.o(211723);
+    AppMethodBeat.o(193122);
   }
   
   public void evaluateJavascript(String paramString, final ValueCallback<String> paramValueCallback)
   {
-    AppMethodBeat.i(211721);
-    this.tWk.a(paramString, new m.b()
+    AppMethodBeat.i(193120);
+    this.uhi.a(paramString, new m.b()
     {
       public final void a(String paramAnonymousString, m.c paramAnonymousc)
       {
-        AppMethodBeat.i(211717);
+        AppMethodBeat.i(193116);
         if (paramValueCallback != null) {
           paramValueCallback.onReceiveValue(paramAnonymousString);
         }
-        AppMethodBeat.o(211717);
+        AppMethodBeat.o(193116);
       }
     });
-    AppMethodBeat.o(211721);
+    AppMethodBeat.o(193120);
   }
   
   public Context getContext()
@@ -119,9 +119,9 @@ public class e
   
   public String getUserAgent()
   {
-    AppMethodBeat.i(211719);
-    String str = com.tencent.mm.plugin.appbrand.z.p.a(this.mContext, "", (p.a)com.tencent.luggage.a.e.K(p.a.class)) + " luggage";
-    AppMethodBeat.o(211719);
+    AppMethodBeat.i(193118);
+    String str = com.tencent.mm.plugin.appbrand.y.p.a(this.mContext, "", (p.a)com.tencent.luggage.a.e.K(p.a.class)) + " luggage";
+    AppMethodBeat.o(193118);
     return str;
   }
 }

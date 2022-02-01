@@ -4,8 +4,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
 {
-  private static Object[] gcV = new Object[0];
-  private static Object[] gcW = new Object[73];
+  private static Object[] gfd = new Object[0];
+  private static Object[] gfe = new Object[73];
   
   public static boolean contains(int[] paramArrayOfInt, int paramInt)
   {

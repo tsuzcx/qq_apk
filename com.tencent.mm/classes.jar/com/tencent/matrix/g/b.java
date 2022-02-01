@@ -15,41 +15,41 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class b
 {
-  public static boolean cFj = false;
-  private static volatile HandlerThread cNL;
-  private static volatile Handler cNM;
-  private static volatile Handler cNN = new Handler(Looper.getMainLooper());
-  private static HashSet<HandlerThread> cNO = new HashSet();
+  public static boolean cFS = false;
+  private static volatile HandlerThread cOv;
+  private static volatile Handler cOw;
+  private static volatile Handler cOx = new Handler(Looper.getMainLooper());
+  private static HashSet<HandlerThread> cOy = new HashSet();
   
-  public static Handler Js()
+  public static Handler JA()
   {
-    return cNN;
+    return cOx;
   }
   
-  public static HandlerThread Jt()
+  public static HandlerThread JB()
   {
     for (;;)
     {
       try
       {
         Object localObject1;
-        if (cNL == null)
+        if (cOv == null)
         {
           localObject1 = new HandlerThread("default_matrix_thread");
-          cNL = (HandlerThread)localObject1;
+          cOv = (HandlerThread)localObject1;
           ((HandlerThread)localObject1).start();
-          cNM = new Handler(cNL.getLooper());
-          Looper localLooper = cNL.getLooper();
-          if (cFj)
+          cOw = new Handler(cOv.getLooper());
+          Looper localLooper = cOv.getLooper();
+          if (cFS)
           {
             localObject1 = new a();
             localLooper.setMessageLogging((Printer)localObject1);
-            c.w("Matrix.HandlerThread", "create default handler thread, we should use these thread normal, isDebug:%s", new Object[] { Boolean.valueOf(cFj) });
+            c.w("Matrix.HandlerThread", "create default handler thread, we should use these thread normal, isDebug:%s", new Object[] { Boolean.valueOf(cFS) });
           }
         }
         else
         {
-          localObject1 = cNL;
+          localObject1 = cOv;
           return localObject1;
         }
       }
@@ -58,17 +58,17 @@ public class b
     }
   }
   
-  public static Handler Ju()
+  public static Handler JC()
   {
-    if (cNM == null) {
-      Jt();
+    if (cOw == null) {
+      JB();
     }
-    return cNM;
+    return cOw;
   }
   
-  public static HandlerThread ed(String paramString)
+  public static HandlerThread ei(String paramString)
   {
-    Object localObject = cNO.iterator();
+    Object localObject = cOy.iterator();
     while (((Iterator)localObject).hasNext()) {
       if (!((HandlerThread)((Iterator)localObject).next()).isAlive())
       {
@@ -79,31 +79,31 @@ public class b
     localObject = new HandlerThread(paramString);
     ((HandlerThread)localObject).setPriority(3);
     ((HandlerThread)localObject).start();
-    cNO.add(localObject);
-    c.w("Matrix.HandlerThread", "warning: create new handler thread with name %s, alive thread size:%d", new Object[] { paramString, Integer.valueOf(cNO.size()) });
+    cOy.add(localObject);
+    c.w("Matrix.HandlerThread", "warning: create new handler thread with name %s, alive thread size:%d", new Object[] { paramString, Integer.valueOf(cOy.size()) });
     return localObject;
   }
   
   static final class a
     implements Printer, com.tencent.matrix.b.b
   {
-    private boolean cBJ;
-    private ConcurrentHashMap<String, a> cNP = new ConcurrentHashMap();
+    private boolean cCq;
+    private ConcurrentHashMap<String, a> cOz = new ConcurrentHashMap();
     
     a()
     {
-      a.cAS.a(this);
-      this.cBJ = a.cAS.cAU;
+      a.cBz.a(this);
+      this.cCq = a.cBz.cBB;
     }
     
     public final void onForeground(boolean paramBoolean)
     {
-      this.cBJ = paramBoolean;
+      this.cCq = paramBoolean;
       if (paramBoolean)
       {
         long l = System.currentTimeMillis();
         LinkedList localLinkedList = new LinkedList();
-        Iterator localIterator = this.cNP.values().iterator();
+        Iterator localIterator = this.cOz.values().iterator();
         while (localIterator.hasNext())
         {
           a locala = (a)localIterator.next();
@@ -112,18 +112,18 @@ public class b
           }
         }
         Collections.sort(localLinkedList, new Comparator() {});
-        this.cNP.clear();
+        this.cOz.clear();
         if (!localLinkedList.isEmpty()) {
           c.i("Matrix.HandlerThread", "matrix default thread has exec in background! %s cost:%s", new Object[] { localLinkedList, Long.valueOf(System.currentTimeMillis() - l) });
         }
         return;
       }
-      this.cNP.clear();
+      this.cOz.clear();
     }
     
     public final void println(String paramString)
     {
-      if (this.cBJ) {}
+      if (this.cCq) {}
       int i;
       int j;
       do
@@ -136,13 +136,13 @@ public class b
         j = paramString.indexOf("@", i);
       } while ((i < 0) || (j < 0));
       String str = paramString.substring(i, j);
-      a locala = (a)this.cNP.get(str);
+      a locala = (a)this.cOz.get(str);
       paramString = locala;
       if (locala == null)
       {
         paramString = new a();
         paramString.key = str;
-        this.cNP.put(str, paramString);
+        this.cOz.put(str, paramString);
       }
       paramString.count += 1;
     }

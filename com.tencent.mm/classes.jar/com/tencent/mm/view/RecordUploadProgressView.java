@@ -12,64 +12,64 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/view/RecordUploadProgressView;", "Landroid/view/View;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "backColor", "", "getBackColor", "()I", "setBackColor", "(I)V", "foreColor", "getForeColor", "setForeColor", "paint", "Landroid/graphics/Paint;", "getPaint", "()Landroid/graphics/Paint;", "setPaint", "(Landroid/graphics/Paint;)V", "progress", "getProgress", "setProgress", "draw", "", "canvas", "Landroid/graphics/Canvas;", "init", "ui-selectcontact_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/view/RecordUploadProgressView;", "Landroid/view/View;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "backColor", "", "getBackColor", "()I", "setBackColor", "(I)V", "foreColor", "getForeColor", "setForeColor", "paint", "Landroid/graphics/Paint;", "getPaint", "()Landroid/graphics/Paint;", "setPaint", "(Landroid/graphics/Paint;)V", "progress", "getProgress", "setProgress", "draw", "", "canvas", "Landroid/graphics/Canvas;", "init", "ui-selectcontact_release"})
 public final class RecordUploadProgressView
   extends View
 {
   public Paint paint;
   private int progress;
-  private int sVo;
-  private int sVp;
+  private int tgE;
+  private int tgF;
   
   public RecordUploadProgressView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(219080);
+    AppMethodBeat.i(188638);
     this.paint = new Paint();
     paramContext = this.paint;
     if (paramContext == null) {
-      p.bcb("paint");
+      p.bdF("paint");
     }
     paramContext.setStyle(Paint.Style.STROKE);
     paramContext = this.paint;
     if (paramContext == null) {
-      p.bcb("paint");
+      p.bdF("paint");
     }
     paramContext.setStrokeWidth(getResources().getDimension(2131167072));
     paramContext = this.paint;
     if (paramContext == null) {
-      p.bcb("paint");
+      p.bdF("paint");
     }
     paramContext.setAntiAlias(true);
-    this.sVo = getResources().getColor(2131099656);
-    this.sVp = getResources().getColor(2131099700);
-    AppMethodBeat.o(219080);
+    this.tgE = getResources().getColor(2131099656);
+    this.tgF = getResources().getColor(2131099700);
+    AppMethodBeat.o(188638);
   }
   
   public final void draw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(219079);
+    AppMethodBeat.i(188637);
     super.draw(paramCanvas);
     int i = getWidth() / 2;
     Object localObject = this.paint;
     if (localObject == null) {
-      p.bcb("paint");
+      p.bdF("paint");
     }
     float f1 = ((Paint)localObject).getStrokeWidth();
     int j = (int)(i - f1 / 2.0F);
     localObject = this.paint;
     if (localObject == null) {
-      p.bcb("paint");
+      p.bdF("paint");
     }
-    ((Paint)localObject).setColor(this.sVo);
+    ((Paint)localObject).setColor(this.tgE);
     localObject = this.paint;
     if (localObject == null) {
-      p.bcb("paint");
+      p.bdF("paint");
     }
     ((Paint)localObject).setAntiAlias(true);
     localObject = this.paint;
     if (localObject == null) {
-      p.bcb("paint");
+      p.bdF("paint");
     }
     ((Paint)localObject).setStyle(Paint.Style.STROKE);
     if (paramCanvas != null)
@@ -79,48 +79,48 @@ public final class RecordUploadProgressView
       float f3 = j;
       localObject = this.paint;
       if (localObject == null) {
-        p.bcb("paint");
+        p.bdF("paint");
       }
       paramCanvas.drawCircle(f1, f2, f3, (Paint)localObject);
     }
     localObject = this.paint;
     if (localObject == null) {
-      p.bcb("paint");
+      p.bdF("paint");
     }
-    ((Paint)localObject).setColor(this.sVp);
+    ((Paint)localObject).setColor(this.tgF);
     localObject = new RectF(i - j, i - j, i + j, i + j);
     f1 = this.progress * 360 / 100.0F;
     if (paramCanvas != null)
     {
       Paint localPaint = this.paint;
       if (localPaint == null) {
-        p.bcb("paint");
+        p.bdF("paint");
       }
       paramCanvas.drawArc((RectF)localObject, -90.0F, f1, false, localPaint);
-      AppMethodBeat.o(219079);
+      AppMethodBeat.o(188637);
       return;
     }
-    AppMethodBeat.o(219079);
+    AppMethodBeat.o(188637);
   }
   
   public final int getBackColor()
   {
-    return this.sVo;
+    return this.tgE;
   }
   
   public final int getForeColor()
   {
-    return this.sVp;
+    return this.tgF;
   }
   
   public final Paint getPaint()
   {
-    AppMethodBeat.i(219077);
+    AppMethodBeat.i(188635);
     Paint localPaint = this.paint;
     if (localPaint == null) {
-      p.bcb("paint");
+      p.bdF("paint");
     }
-    AppMethodBeat.o(219077);
+    AppMethodBeat.o(188635);
     return localPaint;
   }
   
@@ -131,20 +131,20 @@ public final class RecordUploadProgressView
   
   public final void setBackColor(int paramInt)
   {
-    this.sVo = paramInt;
+    this.tgE = paramInt;
   }
   
   public final void setForeColor(int paramInt)
   {
-    this.sVp = paramInt;
+    this.tgF = paramInt;
   }
   
   public final void setPaint(Paint paramPaint)
   {
-    AppMethodBeat.i(219078);
+    AppMethodBeat.i(188636);
     p.h(paramPaint, "<set-?>");
     this.paint = paramPaint;
-    AppMethodBeat.o(219078);
+    AppMethodBeat.o(188636);
   }
   
   public final void setProgress(int paramInt)

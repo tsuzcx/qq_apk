@@ -4,10 +4,10 @@ import android.net.Uri;
 
 public final class aq
 {
-  public static aq EOh = null;
-  public static long EOi = -1L;
-  public String EOf = "";
-  public String[] EOg = null;
+  public static aq FgD = null;
+  public static long FgE = -1L;
+  public String FgB = "";
+  public String[] FgC = null;
   public int code = -1;
   public String[] projection = null;
   public String selection = "";
@@ -20,14 +20,14 @@ public final class aq
     this.projection = paramArrayOfString1;
     this.selection = paramString1;
     this.selectionArgs = paramArrayOfString2;
-    this.EOf = paramString2;
+    this.FgB = paramString2;
     this.code = paramInt;
-    this.EOg = paramArrayOfString3;
+    this.FgC = paramArrayOfString3;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.model.app.aq
  * JD-Core Version:    0.7.0.1
  */

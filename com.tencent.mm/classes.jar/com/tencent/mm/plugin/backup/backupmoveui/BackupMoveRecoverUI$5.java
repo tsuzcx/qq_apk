@@ -5,7 +5,7 @@ import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 final class BackupMoveRecoverUI$5
   implements View.OnClickListener
@@ -17,9 +17,9 @@ final class BackupMoveRecoverUI$5
     AppMethodBeat.i(21447);
     b localb = new b();
     localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/backup/backupmoveui/BackupMoveRecoverUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-    ad.i("MicroMsg.BackupMoveRecoverUI", "minimize BackupMoveRecoverUI");
-    BackupMoveRecoverUI.j(this.nwV);
+    a.b("com/tencent/mm/plugin/backup/backupmoveui/BackupMoveRecoverUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+    ae.i("MicroMsg.BackupMoveRecoverUI", "minimize BackupMoveRecoverUI");
+    BackupMoveRecoverUI.j(this.nCq);
     a.a(this, "com/tencent/mm/plugin/backup/backupmoveui/BackupMoveRecoverUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(21447);
   }

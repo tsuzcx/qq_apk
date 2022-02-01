@@ -9,11 +9,11 @@ import com.tencent.mm.g.c.f;
 import com.tencent.mm.modelsns.h;
 import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
 import com.tencent.mm.protocal.protobuf.TimeLineObject;
-import com.tencent.mm.protocal.protobuf.abf;
+import com.tencent.mm.protocal.protobuf.abo;
 import com.tencent.mm.protocal.protobuf.ca;
-import com.tencent.mm.protocal.protobuf.cte;
+import com.tencent.mm.protocal.protobuf.cty;
 import com.tencent.mm.sdk.e.c.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.lang.reflect.Field;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -21,136 +21,136 @@ import java.util.concurrent.ConcurrentHashMap;
 public final class e
   extends f
 {
+  protected static Map<String, b> AdK;
+  protected static Map<String, a> AdL;
   protected static c.a info;
-  protected static Map<String, b> zMD;
-  protected static Map<String, a> zME;
-  public String zMB = null;
-  protected int zMC;
+  public String AdI = null;
+  protected int AdJ;
   
   static
   {
     AppMethodBeat.i(97433);
     c.a locala = new c.a();
-    locala.IhA = new Field[24];
+    locala.IBL = new Field[24];
     locala.columns = new String[25];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "snsId";
-    locala.IhC.put("snsId", "LONG");
+    locala.IBN.put("snsId", "LONG");
     localStringBuilder.append(" snsId LONG");
     localStringBuilder.append(", ");
     locala.columns[1] = "userName";
-    locala.IhC.put("userName", "TEXT");
+    locala.IBN.put("userName", "TEXT");
     localStringBuilder.append(" userName TEXT");
     localStringBuilder.append(", ");
     locala.columns[2] = "localFlag";
-    locala.IhC.put("localFlag", "INTEGER");
+    locala.IBN.put("localFlag", "INTEGER");
     localStringBuilder.append(" localFlag INTEGER");
     localStringBuilder.append(", ");
     locala.columns[3] = "createTime";
-    locala.IhC.put("createTime", "INTEGER");
+    locala.IBN.put("createTime", "INTEGER");
     localStringBuilder.append(" createTime INTEGER");
     localStringBuilder.append(", ");
     locala.columns[4] = "head";
-    locala.IhC.put("head", "INTEGER");
+    locala.IBN.put("head", "INTEGER");
     localStringBuilder.append(" head INTEGER");
     localStringBuilder.append(", ");
     locala.columns[5] = "localPrivate";
-    locala.IhC.put("localPrivate", "INTEGER");
+    locala.IBN.put("localPrivate", "INTEGER");
     localStringBuilder.append(" localPrivate INTEGER");
     localStringBuilder.append(", ");
     locala.columns[6] = "type";
-    locala.IhC.put("type", "INTEGER");
+    locala.IBN.put("type", "INTEGER");
     localStringBuilder.append(" type INTEGER");
     localStringBuilder.append(", ");
     locala.columns[7] = "sourceType";
-    locala.IhC.put("sourceType", "INTEGER");
+    locala.IBN.put("sourceType", "INTEGER");
     localStringBuilder.append(" sourceType INTEGER");
     localStringBuilder.append(", ");
     locala.columns[8] = "likeFlag";
-    locala.IhC.put("likeFlag", "INTEGER");
+    locala.IBN.put("likeFlag", "INTEGER");
     localStringBuilder.append(" likeFlag INTEGER");
     localStringBuilder.append(", ");
     locala.columns[9] = "pravited";
-    locala.IhC.put("pravited", "INTEGER");
+    locala.IBN.put("pravited", "INTEGER");
     localStringBuilder.append(" pravited INTEGER");
     localStringBuilder.append(", ");
     locala.columns[10] = "stringSeq";
-    locala.IhC.put("stringSeq", "TEXT");
+    locala.IBN.put("stringSeq", "TEXT");
     localStringBuilder.append(" stringSeq TEXT");
     localStringBuilder.append(", ");
     locala.columns[11] = "content";
-    locala.IhC.put("content", "BLOB");
+    locala.IBN.put("content", "BLOB");
     localStringBuilder.append(" content BLOB");
     localStringBuilder.append(", ");
     locala.columns[12] = "attrBuf";
-    locala.IhC.put("attrBuf", "BLOB");
+    locala.IBN.put("attrBuf", "BLOB");
     localStringBuilder.append(" attrBuf BLOB");
     localStringBuilder.append(", ");
     locala.columns[13] = "postBuf";
-    locala.IhC.put("postBuf", "BLOB");
+    locala.IBN.put("postBuf", "BLOB");
     localStringBuilder.append(" postBuf BLOB");
     localStringBuilder.append(", ");
     locala.columns[14] = "adinfo";
-    locala.IhC.put("adinfo", "TEXT");
+    locala.IBN.put("adinfo", "TEXT");
     localStringBuilder.append(" adinfo TEXT");
     localStringBuilder.append(", ");
     locala.columns[15] = "adxml";
-    locala.IhC.put("adxml", "TEXT");
+    locala.IBN.put("adxml", "TEXT");
     localStringBuilder.append(" adxml TEXT");
     localStringBuilder.append(", ");
     locala.columns[16] = "createAdTime";
-    locala.IhC.put("createAdTime", "INTEGER");
+    locala.IBN.put("createAdTime", "INTEGER");
     localStringBuilder.append(" createAdTime INTEGER");
     localStringBuilder.append(", ");
     locala.columns[17] = "exposureTime";
-    locala.IhC.put("exposureTime", "INTEGER");
+    locala.IBN.put("exposureTime", "INTEGER");
     localStringBuilder.append(" exposureTime INTEGER");
     localStringBuilder.append(", ");
     locala.columns[18] = "firstControlTime";
-    locala.IhC.put("firstControlTime", "INTEGER");
+    locala.IBN.put("firstControlTime", "INTEGER");
     localStringBuilder.append(" firstControlTime INTEGER");
     localStringBuilder.append(", ");
     locala.columns[19] = "recxml";
-    locala.IhC.put("recxml", "TEXT");
+    locala.IBN.put("recxml", "TEXT");
     localStringBuilder.append(" recxml TEXT");
     localStringBuilder.append(", ");
     locala.columns[20] = "subType";
-    locala.IhC.put("subType", "INTEGER");
+    locala.IBN.put("subType", "INTEGER");
     localStringBuilder.append(" subType INTEGER");
     localStringBuilder.append(", ");
     locala.columns[21] = "exposureCount";
-    locala.IhC.put("exposureCount", "INTEGER");
+    locala.IBN.put("exposureCount", "INTEGER");
     localStringBuilder.append(" exposureCount INTEGER");
     localStringBuilder.append(", ");
     locala.columns[22] = "atAdinfo";
-    locala.IhC.put("atAdinfo", "TEXT");
+    locala.IBN.put("atAdinfo", "TEXT");
     localStringBuilder.append(" atAdinfo TEXT");
     localStringBuilder.append(", ");
     locala.columns[23] = "remindInfoGroup";
-    locala.IhC.put("remindInfoGroup", "BLOB");
+    locala.IBN.put("remindInfoGroup", "BLOB");
     localStringBuilder.append(" remindInfoGroup BLOB");
     locala.columns[24] = "rowid";
     locala.sql = localStringBuilder.toString();
     info = locala;
-    zMD = new ConcurrentHashMap();
-    zME = new ConcurrentHashMap();
+    AdK = new ConcurrentHashMap();
+    AdL = new ConcurrentHashMap();
     AppMethodBeat.o(97433);
   }
   
-  private b dYh()
+  private b ebL()
   {
     AppMethodBeat.i(97411);
     b localb;
     if (this.field_recxml != null)
     {
-      if (zMD.containsKey(this.field_recxml))
+      if (AdK.containsKey(this.field_recxml))
       {
-        localb = (b)zMD.get(this.field_recxml);
+        localb = (b)AdK.get(this.field_recxml);
         AppMethodBeat.o(97411);
         return localb;
       }
       localb = new b(this.field_recxml);
-      zMD.put(this.field_recxml, localb);
+      AdK.put(this.field_recxml, localb);
     }
     for (;;)
     {
@@ -166,7 +166,7 @@ public final class e
     }
   }
   
-  public final void QJ(int paramInt)
+  public final void Rq(int paramInt)
   {
     this.field_sourceType |= paramInt;
   }
@@ -182,12 +182,31 @@ public final class e
     }
     catch (Exception paramca)
     {
-      ad.e("MicroMsg.AdSnsInfo", "remindInfo toBytes error! " + paramca.getMessage());
+      ae.e("MicroMsg.AdSnsInfo", "remindInfo toBytes error! " + paramca.getMessage());
       AppMethodBeat.o(97421);
     }
   }
   
-  public final void ao(Bundle paramBundle)
+  public final boolean aBp(String paramString)
+  {
+    AppMethodBeat.i(97419);
+    paramString = h.GZ(paramString);
+    try
+    {
+      this.field_content = paramString.toByteArray();
+      this.AdI = (g.getMessageDigest(this.field_content) + g.getMessageDigest(this.field_attrBuf));
+      AppMethodBeat.o(97419);
+      return true;
+    }
+    catch (Exception paramString)
+    {
+      ae.printErrStackTrace("MicroMsg.AdSnsInfo", paramString, "", new Object[0]);
+      AppMethodBeat.o(97419);
+    }
+    return false;
+  }
+  
+  public final void ap(Bundle paramBundle)
   {
     AppMethodBeat.i(97432);
     if (paramBundle == null)
@@ -220,34 +239,15 @@ public final class e
     this.systemRowid = localContentValues.getAsLong("rowid").longValue();
     this.field_atAdinfo = localContentValues.getAsString("atAdinfo");
     this.field_remindInfoGroup = localContentValues.getAsByteArray("remindInfoGroup");
-    this.zMC = paramBundle.getInt("localid");
+    this.AdJ = paramBundle.getInt("localid");
     AppMethodBeat.o(97432);
   }
   
-  public final boolean azY(String paramString)
-  {
-    AppMethodBeat.i(97419);
-    paramString = h.Gx(paramString);
-    try
-    {
-      this.field_content = paramString.toByteArray();
-      this.zMB = (g.getMessageDigest(this.field_content) + g.getMessageDigest(this.field_attrBuf));
-      AppMethodBeat.o(97419);
-      return true;
-    }
-    catch (Exception paramString)
-    {
-      ad.printErrStackTrace("MicroMsg.AdSnsInfo", paramString, "", new Object[0]);
-      AppMethodBeat.o(97419);
-    }
-    return false;
-  }
-  
-  public final void bI(byte[] paramArrayOfByte)
+  public final void bL(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(97427);
     this.field_attrBuf = paramArrayOfByte;
-    this.zMB = (g.getMessageDigest(this.field_content) + g.getMessageDigest(this.field_attrBuf));
+    this.AdI = (g.getMessageDigest(this.field_content) + g.getMessageDigest(this.field_attrBuf));
     AppMethodBeat.o(97427);
   }
   
@@ -255,24 +255,24 @@ public final class e
   {
     AppMethodBeat.i(97430);
     super.convertFrom(paramCursor);
-    this.zMC = ((int)this.systemRowid);
+    this.AdJ = ((int)this.systemRowid);
     AppMethodBeat.o(97430);
   }
   
-  public final a dRK()
+  public final a dVi()
   {
     AppMethodBeat.i(97412);
     a locala;
     if (this.field_adinfo != null)
     {
-      if (zME.containsKey(this.field_adinfo))
+      if (AdL.containsKey(this.field_adinfo))
       {
-        locala = (a)zME.get(this.field_adinfo);
+        locala = (a)AdL.get(this.field_adinfo);
         AppMethodBeat.o(97412);
         return locala;
       }
       locala = new a(this.field_adinfo);
-      zME.put(this.field_adinfo, locala);
+      AdL.put(this.field_adinfo, locala);
     }
     for (;;)
     {
@@ -288,20 +288,20 @@ public final class e
     }
   }
   
-  public final b dRL()
+  public final b dVj()
   {
     AppMethodBeat.i(97410);
     b localb;
     if (this.field_adxml != null)
     {
-      if (zMD.containsKey(this.field_adxml))
+      if (AdK.containsKey(this.field_adxml))
       {
-        localb = (b)zMD.get(this.field_adxml);
+        localb = (b)AdK.get(this.field_adxml);
         AppMethodBeat.o(97410);
         return localb;
       }
       localb = new b(this.field_adxml);
-      zMD.put(this.field_adxml, localb);
+      AdK.put(this.field_adxml, localb);
     }
     for (;;)
     {
@@ -317,13 +317,13 @@ public final class e
     }
   }
   
-  public final boolean dWk()
+  public final boolean dZL()
   {
     AppMethodBeat.i(97414);
-    b localb = dRL();
+    b localb = dVj();
     if (localb != null)
     {
-      boolean bool = localb.dWk();
+      boolean bool = localb.dZL();
       AppMethodBeat.o(97414);
       return bool;
     }
@@ -331,20 +331,20 @@ public final class e
     return false;
   }
   
-  public final a dYi()
+  public final a ebM()
   {
     AppMethodBeat.i(97413);
     a locala;
     if (this.field_atAdinfo != null)
     {
-      if (zME.containsKey(this.field_atAdinfo))
+      if (AdL.containsKey(this.field_atAdinfo))
       {
-        locala = (a)zME.get(this.field_atAdinfo);
+        locala = (a)AdL.get(this.field_atAdinfo);
         AppMethodBeat.o(97413);
         return locala;
       }
       locala = new a(this.field_atAdinfo);
-      zME.put(this.field_atAdinfo, locala);
+      AdL.put(this.field_atAdinfo, locala);
     }
     for (;;)
     {
@@ -360,50 +360,50 @@ public final class e
     }
   }
   
-  public final int dYj()
+  public final int ebN()
   {
     AppMethodBeat.i(97415);
-    b localb = dYh();
+    b localb = ebL();
     if (localb == null)
     {
       AppMethodBeat.o(97415);
       return 0;
     }
-    int i = localb.zvR;
+    int i = localb.zNm;
     AppMethodBeat.o(97415);
     return i;
   }
   
-  public final int dYk()
+  public final int ebO()
   {
     AppMethodBeat.i(97417);
-    b localb = dYh();
+    b localb = ebL();
     if (localb == null)
     {
       AppMethodBeat.o(97417);
       return 0;
     }
-    int i = localb.zvS;
+    int i = localb.zNn;
     AppMethodBeat.o(97417);
     return i;
   }
   
-  public final TimeLineObject dYl()
+  public final TimeLineObject ebP()
   {
     AppMethodBeat.i(97420);
     TimeLineObject localTimeLineObject1;
     if (this.field_content == null)
     {
-      localTimeLineObject1 = h.aLm();
+      localTimeLineObject1 = h.aLJ();
       AppMethodBeat.o(97420);
       return localTimeLineObject1;
     }
-    if (this.zMB == null) {
-      this.zMB = (g.getMessageDigest(this.field_content) + g.getMessageDigest(this.field_attrBuf));
+    if (this.AdI == null) {
+      this.AdI = (g.getMessageDigest(this.field_content) + g.getMessageDigest(this.field_attrBuf));
     }
-    if (p.zMM.containsKey(this.zMB))
+    if (p.AdT.containsKey(this.AdI))
     {
-      localTimeLineObject1 = (TimeLineObject)p.zMM.get(this.zMB);
+      localTimeLineObject1 = (TimeLineObject)p.AdT.get(this.AdI);
       if (localTimeLineObject1 != null)
       {
         AppMethodBeat.o(97420);
@@ -413,21 +413,21 @@ public final class e
     try
     {
       localTimeLineObject1 = (TimeLineObject)new TimeLineObject().parseFrom(this.field_content);
-      p.zMM.put(this.zMB, localTimeLineObject1);
+      p.AdT.put(this.AdI, localTimeLineObject1);
       AppMethodBeat.o(97420);
       return localTimeLineObject1;
     }
     catch (Exception localException)
     {
-      ad.e("MicroMsg.AdSnsInfo", "error get snsinfo timeline!");
-      TimeLineObject localTimeLineObject2 = h.aLm();
+      ae.e("MicroMsg.AdSnsInfo", "error get snsinfo timeline!");
+      TimeLineObject localTimeLineObject2 = h.aLJ();
       AppMethodBeat.o(97420);
       return localTimeLineObject2;
     }
   }
   
   /* Error */
-  public final ca dYm()
+  public final ca ebQ()
   {
     // Byte code:
     //   0: ldc_w 437
@@ -442,7 +442,7 @@ public final class e
     //   21: aload_1
     //   22: aload_0
     //   23: getfield 226	com/tencent/mm/plugin/sns/storage/e:field_remindInfoGroup	[B
-    //   26: invokevirtual 439	com/tencent/mm/protocal/protobuf/ca:parseFrom	([B)Lcom/tencent/mm/bx/a;
+    //   26: invokevirtual 439	com/tencent/mm/protocal/protobuf/ca:parseFrom	([B)Lcom/tencent/mm/bw/a;
     //   29: pop
     //   30: ldc_w 437
     //   33: invokestatic 184	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -460,7 +460,7 @@ public final class e
     //   54: invokevirtual 234	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   57: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   60: invokevirtual 169	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   63: invokestatic 240	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   63: invokestatic 240	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   66: goto -36 -> 30
     //   69: astore_2
     //   70: goto -29 -> 41
@@ -479,12 +479,12 @@ public final class e
     //   21	30	69	java/lang/Exception
   }
   
-  public final com.tencent.mm.bx.b dYn()
+  public final com.tencent.mm.bw.b ebR()
   {
     AppMethodBeat.i(97423);
-    if ((dYm() != null) && (dYm().FuA != null) && (dYm().FuA.Hlv != null))
+    if ((ebQ() != null) && (ebQ().FMY != null) && (ebQ().FMY.HEV != null))
     {
-      com.tencent.mm.bx.b localb = dYm().FuA.Hlv.getBuffer();
+      com.tencent.mm.bw.b localb = ebQ().FMY.HEV.getBuffer();
       AppMethodBeat.o(97423);
       return localb;
     }
@@ -492,12 +492,12 @@ public final class e
     return null;
   }
   
-  public final com.tencent.mm.bx.b dYo()
+  public final com.tencent.mm.bw.b ebS()
   {
     AppMethodBeat.i(97424);
-    if ((dYm() != null) && (dYm().FuA != null) && (dYm().FuA.Hlw != null))
+    if ((ebQ() != null) && (ebQ().FMY != null) && (ebQ().FMY.HEW != null))
     {
-      com.tencent.mm.bx.b localb = dYm().FuA.Hlw.getBuffer();
+      com.tencent.mm.bw.b localb = ebQ().FMY.HEW.getBuffer();
       AppMethodBeat.o(97424);
       return localb;
     }
@@ -505,12 +505,12 @@ public final class e
     return null;
   }
   
-  public final com.tencent.mm.bx.b dYp()
+  public final com.tencent.mm.bw.b ebT()
   {
     AppMethodBeat.i(97425);
-    if ((dYm() != null) && (dYm().FuB != null) && (dYm().FuB.Hlv != null))
+    if ((ebQ() != null) && (ebQ().FMZ != null) && (ebQ().FMZ.HEV != null))
     {
-      com.tencent.mm.bx.b localb = dYm().FuB.Hlv.getBuffer();
+      com.tencent.mm.bw.b localb = ebQ().FMZ.HEV.getBuffer();
       AppMethodBeat.o(97425);
       return localb;
     }
@@ -518,12 +518,12 @@ public final class e
     return null;
   }
   
-  public final com.tencent.mm.bx.b dYq()
+  public final com.tencent.mm.bw.b ebU()
   {
     AppMethodBeat.i(97426);
-    if ((dYm() != null) && (dYm().FuB != null) && (dYm().FuB.Hlw != null))
+    if ((ebQ() != null) && (ebQ().FMZ != null) && (ebQ().FMZ.HEW != null))
     {
-      com.tencent.mm.bx.b localb = dYm().FuB.Hlw.getBuffer();
+      com.tencent.mm.bw.b localb = ebQ().FMZ.HEW.getBuffer();
       AppMethodBeat.o(97426);
       return localb;
     }
@@ -531,43 +531,43 @@ public final class e
     return null;
   }
   
-  public final p dYr()
+  public final p ebV()
   {
     AppMethodBeat.i(97429);
     p localp = new p();
-    localp.f(dYl());
-    ad.d("MicroMsg.AdSnsInfo", "from server xml ok %d", new Object[] { Long.valueOf(this.field_snsId) });
-    localp.zMC = this.zMC;
+    localp.f(ebP());
+    ae.d("MicroMsg.AdSnsInfo", "from server xml ok %d", new Object[] { Long.valueOf(this.field_snsId) });
+    localp.AdJ = this.AdJ;
     localp.field_userName = this.field_userName;
     localp.setCreateTime(this.field_createTime);
     localp.field_likeFlag = this.field_likeFlag;
-    localp.Ae(this.field_snsId);
+    localp.AC(this.field_snsId);
     localp.field_sourceType = this.field_sourceType;
     localp.field_content = this.field_content;
-    localp.QJ(2);
-    localp.QJ(32);
+    localp.Rq(2);
+    localp.Rq(32);
     localp.field_attrBuf = this.field_attrBuf;
-    TimeLineObject localTimeLineObject = localp.dYl();
-    localTimeLineObject.nDo = this.field_userName;
-    localp.field_pravited = localTimeLineObject.GSK;
-    localp.dYH();
+    TimeLineObject localTimeLineObject = localp.ebP();
+    localTimeLineObject.nIJ = this.field_userName;
+    localp.field_pravited = localTimeLineObject.Hml;
+    localp.ecl();
     localp.f(localTimeLineObject);
-    if (localTimeLineObject.HAT != null)
+    if (localTimeLineObject.HUG != null)
     {
-      localp.field_type = localTimeLineObject.HAT.GaP;
-      localp.field_subType = localTimeLineObject.HAT.GaR;
+      localp.field_type = localTimeLineObject.HUG.Gtw;
+      localp.field_subType = localTimeLineObject.HUG.Gty;
     }
-    localp.zMP = this;
+    localp.AdW = this;
     AppMethodBeat.o(97429);
     return localp;
   }
   
-  public final Bundle dYs()
+  public final Bundle ebW()
   {
     AppMethodBeat.i(97431);
     Bundle localBundle = new Bundle();
     localBundle.putParcelable("values", super.convertTo());
-    localBundle.putInt("localid", this.zMC);
+    localBundle.putInt("localid", this.AdJ);
     AppMethodBeat.o(97431);
     return localBundle;
   }
@@ -583,7 +583,7 @@ public final class e
     }
     catch (Exception paramTimeLineObject)
     {
-      ad.printErrStackTrace("MicroMsg.AdSnsInfo", paramTimeLineObject, "", new Object[0]);
+      ae.printErrStackTrace("MicroMsg.AdSnsInfo", paramTimeLineObject, "", new Object[0]);
       AppMethodBeat.o(97418);
     }
   }
@@ -596,7 +596,7 @@ public final class e
   public final String getSnsId()
   {
     AppMethodBeat.i(97428);
-    String str = x.bm("ad_table_", this.field_snsId);
+    String str = x.bn("ad_table_", this.field_snsId);
     AppMethodBeat.o(97428);
     return str;
   }
@@ -604,13 +604,13 @@ public final class e
   public final int getSource()
   {
     AppMethodBeat.i(97416);
-    b localb = dYh();
+    b localb = ebL();
     if (localb == null)
     {
       AppMethodBeat.o(97416);
       return 0;
     }
-    int i = localb.zvR;
+    int i = localb.zNm;
     AppMethodBeat.o(97416);
     return i;
   }

@@ -12,11 +12,11 @@ import android.view.Window;
 import android.view.WindowManager.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bs.d;
+import com.tencent.mm.br.d;
 import com.tencent.mm.hellhoundlib.a.a;
-import com.tencent.mm.protocal.protobuf.akz;
-import com.tencent.mm.protocal.protobuf.dob;
-import com.tencent.mm.protocal.protobuf.dod;
+import com.tencent.mm.protocal.protobuf.alj;
+import com.tencent.mm.protocal.protobuf.doy;
+import com.tencent.mm.protocal.protobuf.dpa;
 import com.tencent.mm.ui.base.FlowLayout;
 import com.tencent.mm.ui.base.i;
 import java.util.HashSet;
@@ -27,51 +27,51 @@ import java.util.Set;
 public final class b
   extends i
 {
-  private Set<akz> ByC;
-  private View ByD;
-  private View ByE;
-  private TextView ByF;
-  private FlowLayout ByG;
-  private final akz ByH;
+  private Set<alj> BQa;
+  private View BQb;
+  private View BQc;
+  private TextView BQd;
+  private FlowLayout BQe;
+  private final alj BQf;
   private View contentView;
-  private TextView yGJ;
+  private TextView yWS;
   
-  public b(final Context paramContext, final dod paramdod, final a parama)
+  public b(final Context paramContext, final dpa paramdpa, final a parama)
   {
     super(paramContext, 2131821484);
     AppMethodBeat.i(126636);
-    this.ByC = new HashSet();
-    this.ByH = new akz();
-    this.ByH.id = "101";
-    this.ByH.dxD = paramContext.getString(2131764467);
-    final akz localakz;
-    if (paramdod.HCK != null)
+    this.BQa = new HashSet();
+    this.BQf = new alj();
+    this.BQf.id = "101";
+    this.BQf.dyI = paramContext.getString(2131764467);
+    final alj localalj;
+    if (paramdpa.HWx != null)
     {
-      localIterator = paramdod.HCK.HCr.iterator();
+      localIterator = paramdpa.HWx.HWe.iterator();
       while (localIterator.hasNext())
       {
-        localakz = (akz)localIterator.next();
-        if (localakz.GkR)
+        localalj = (alj)localIterator.next();
+        if (localalj.GDB)
         {
-          this.ByH.id = localakz.id;
-          this.ByH.dxD = localakz.dxD;
-          paramdod.HCK.HCr.remove(localakz);
+          this.BQf.id = localalj.id;
+          this.BQf.dyI = localalj.dyI;
+          paramdpa.HWx.HWe.remove(localalj);
         }
       }
     }
     this.contentView = LayoutInflater.from(paramContext).inflate(2131495772, null, false);
-    this.ByD = this.contentView.findViewById(2131299892);
-    this.ByE = this.contentView.findViewById(2131299899);
-    this.yGJ = ((TextView)this.contentView.findViewById(2131299889));
-    this.ByF = ((TextView)this.contentView.findViewById(2131306191));
-    this.ByF.setOnClickListener(new View.OnClickListener()
+    this.BQb = this.contentView.findViewById(2131299892);
+    this.BQc = this.contentView.findViewById(2131299899);
+    this.yWS = ((TextView)this.contentView.findViewById(2131299889));
+    this.BQd = ((TextView)this.contentView.findViewById(2131306191));
+    this.BQd.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(126632);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
         localb.bd(paramAnonymousView);
-        a.b("com/tencent/mm/plugin/topstory/ui/widget/FeedbackPopupWindow$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        a.b("com/tencent/mm/plugin/topstory/ui/widget/FeedbackPopupWindow$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
         if (b.a(b.this).isEmpty()) {
           b.a(b.this).add(b.b(b.this));
         }
@@ -81,14 +81,14 @@ public final class b
         AppMethodBeat.o(126632);
       }
     });
-    this.ByG = ((FlowLayout)this.contentView.findViewById(2131299894));
-    Iterator localIterator = paramdod.HCK.HCr.iterator();
+    this.BQe = ((FlowLayout)this.contentView.findViewById(2131299894));
+    Iterator localIterator = paramdpa.HWx.HWe.iterator();
     while (localIterator.hasNext())
     {
-      localakz = (akz)localIterator.next();
-      View localView = LayoutInflater.from(paramContext).inflate(2131495773, this.ByG, false);
+      localalj = (alj)localIterator.next();
+      View localView = LayoutInflater.from(paramContext).inflate(2131495773, this.BQe, false);
       final TextView localTextView = (TextView)localView.findViewById(2131299896);
-      localTextView.setText(localakz.dxD);
+      localTextView.setText(localalj.dyI);
       localTextView.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
@@ -96,23 +96,23 @@ public final class b
           AppMethodBeat.i(126633);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
           localb.bd(paramAnonymousView);
-          a.b("com/tencent/mm/plugin/topstory/ui/widget/FeedbackPopupWindow$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-          if (b.a(b.this).contains(localakz))
+          a.b("com/tencent/mm/plugin/topstory/ui/widget/FeedbackPopupWindow$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+          if (b.a(b.this).contains(localalj))
           {
-            b.a(b.this).remove(localakz);
+            b.a(b.this).remove(localalj);
             localTextView.setTextColor(paramContext.getResources().getColor(2131101045));
             localTextView.setBackgroundResource(2131234409);
             if (!b.a(b.this).isEmpty()) {
               break label199;
             }
-            b.c(b.this).setText(b.b(b.this).dxD);
+            b.c(b.this).setText(b.b(b.this).dyI);
           }
           for (;;)
           {
             a.a(this, "com/tencent/mm/plugin/topstory/ui/widget/FeedbackPopupWindow$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
             AppMethodBeat.o(126633);
             return;
-            b.a(b.this).add(localakz);
+            b.a(b.this).add(localalj);
             localTextView.setTextColor(paramContext.getResources().getColor(2131101044));
             localTextView.setBackgroundResource(2131234408);
             break;
@@ -121,19 +121,19 @@ public final class b
           }
         }
       });
-      this.ByG.addView(localView);
+      this.BQe.addView(localView);
     }
-    this.yGJ.setText(paramdod.HCK.HCp);
-    this.yGJ.setOnClickListener(new View.OnClickListener()
+    this.yWS.setText(paramdpa.HWx.HWc);
+    this.yWS.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(126634);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
         localb.bd(paramAnonymousView);
-        a.b("com/tencent/mm/plugin/topstory/ui/widget/FeedbackPopupWindow$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        a.b("com/tencent/mm/plugin/topstory/ui/widget/FeedbackPopupWindow$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
         paramAnonymousView = new Intent();
-        paramAnonymousView.putExtra("rawUrl", paramdod.HCK.HCq);
+        paramAnonymousView.putExtra("rawUrl", paramdpa.HWx.HWd);
         d.b(b.this.getContext(), "webview", ".ui.tools.WebViewUI", paramAnonymousView);
         a.a(this, "com/tencent/mm/plugin/topstory/ui/widget/FeedbackPopupWindow$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(126634);
@@ -160,8 +160,8 @@ public final class b
     paramView = e.a(paramView.getContext(), paramView, this.contentView, paramBoolean);
     if (paramBoolean)
     {
-      this.ByE.setVisibility(0);
-      this.ByD.setVisibility(8);
+      this.BQc.setVisibility(0);
+      this.BQb.setVisibility(8);
     }
     for (;;)
     {
@@ -178,8 +178,8 @@ public final class b
       localWindow.setAttributes(localLayoutParams);
       AppMethodBeat.o(126637);
       return;
-      this.ByE.setVisibility(8);
-      this.ByD.setVisibility(0);
+      this.BQc.setVisibility(8);
+      this.BQb.setVisibility(0);
     }
   }
   
@@ -187,12 +187,12 @@ public final class b
   {
     public abstract void onDismiss();
     
-    public abstract void p(Set<akz> paramSet);
+    public abstract void p(Set<alj> paramSet);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.ui.widget.b
  * JD-Core Version:    0.7.0.1
  */

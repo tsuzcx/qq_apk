@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.ext.b;
 
 public final class a
 {
-  public static final String[] rcM = { "retCode" };
+  public static final String[] rkS = { "retCode" };
 }
 
 

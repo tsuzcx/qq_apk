@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.drr;
-import com.tencent.mm.protocal.protobuf.drs;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.dso;
+import com.tencent.mm.protocal.protobuf.dsp;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class i
   extends n
@@ -24,12 +24,12 @@ public final class i
   {
     AppMethodBeat.i(97158);
     b.a locala = new b.a();
-    locala.hNM = new drr();
-    locala.hNN = new drs();
+    locala.hQF = new dso();
+    locala.hQG = new dsp();
     locala.uri = "/cgi-bin/mmoc-bin/adplayinfo/update_shared_uxinfo";
     locala.funcId = 2883;
-    this.rr = locala.aDC();
-    ((drr)this.rr.hNK.hNQ).HEQ = paramString;
+    this.rr = locala.aDS();
+    ((dso)this.rr.hQD.hQJ).HYD = paramString;
     AppMethodBeat.o(97158);
   }
   
@@ -53,7 +53,7 @@ public final class i
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(97159);
-    ad.i("NetSceneUpdateUxInfo", "errType=" + paramInt2 + ", errCode=" + paramInt3 + ", errMsg=" + paramString);
+    ae.i("NetSceneUpdateUxInfo", "errType=" + paramInt2 + ", errCode=" + paramInt3 + ", errMsg=" + paramString);
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }

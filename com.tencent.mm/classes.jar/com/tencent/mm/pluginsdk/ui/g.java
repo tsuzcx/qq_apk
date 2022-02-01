@@ -8,7 +8,7 @@ import com.tencent.mm.ui.base.o;
 public final class g
 {
   private static final Drawable backgroundDrawable;
-  public o ESL;
+  public o Flg;
   
   static
   {
@@ -19,7 +19,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.g
  * JD-Core Version:    0.7.0.1
  */

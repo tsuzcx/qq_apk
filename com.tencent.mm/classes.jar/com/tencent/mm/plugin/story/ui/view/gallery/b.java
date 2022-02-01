@@ -10,25 +10,25 @@ import android.support.v7.widget.RecyclerView.i;
 import android.support.v7.widget.RecyclerView.t;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cc.a;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.cb.a;
+import com.tencent.mm.sdk.platformtools.ak;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/story/ui/view/gallery/GalleryDividerDecoration;", "Landroid/support/v7/widget/RecyclerView$ItemDecoration;", "orientation", "", "(I)V", "bounds", "Landroid/graphics/Rect;", "divider", "Landroid/graphics/drawable/Drawable;", "dividerSize", "getOrientation", "()I", "drawHorizontal", "", "canvas", "Landroid/graphics/Canvas;", "parent", "Landroid/support/v7/widget/RecyclerView;", "drawVertical", "getItemOffsets", "outRect", "view", "Landroid/view/View;", "state", "Landroid/support/v7/widget/RecyclerView$State;", "onDraw", "c", "Companion", "plugin-story_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/story/ui/view/gallery/GalleryDividerDecoration;", "Landroid/support/v7/widget/RecyclerView$ItemDecoration;", "orientation", "", "(I)V", "bounds", "Landroid/graphics/Rect;", "divider", "Landroid/graphics/drawable/Drawable;", "dividerSize", "getOrientation", "()I", "drawHorizontal", "", "canvas", "Landroid/graphics/Canvas;", "parent", "Landroid/support/v7/widget/RecyclerView;", "drawVertical", "getItemOffsets", "outRect", "view", "Landroid/view/View;", "state", "Landroid/support/v7/widget/RecyclerView$State;", "onDraw", "c", "Companion", "plugin-story_release"})
 public final class b
   extends RecyclerView.h
 {
-  public static final b.a Bcy;
-  private int Bcx;
+  public static final b.a BtW;
+  private int BtV;
   private final Rect hL;
-  private final Drawable jiP;
+  private final Drawable jlI;
   private final int orientation;
   
   static
   {
     AppMethodBeat.i(120329);
-    Bcy = new b.a((byte)0);
+    BtW = new b.a((byte)0);
     AppMethodBeat.o(120329);
   }
   
@@ -36,9 +36,9 @@ public final class b
   {
     AppMethodBeat.i(120328);
     this.orientation = paramInt;
-    this.jiP = ((Drawable)new ColorDrawable(-16777216));
+    this.jlI = ((Drawable)new ColorDrawable(-16777216));
     this.hL = new Rect();
-    this.Bcx = a.fromDPToPix(aj.getContext(), 16);
+    this.BtV = a.fromDPToPix(ak.getContext(), 16);
     AppMethodBeat.o(120328);
   }
   
@@ -78,9 +78,9 @@ public final class b
           n = this.hL.bottom;
           p.g(paramt, "child");
           n = Math.round(paramt.getTranslationY()) + n;
-          i1 = this.Bcx;
-          this.jiP.setBounds(j, n - i1, i, n);
-          this.jiP.draw(paramCanvas);
+          i1 = this.BtV;
+          this.jlI.setBounds(j, n - i1, i, n);
+          this.jlI.draw(paramCanvas);
           k += 1;
         }
         i = paramRecyclerView.getWidth();
@@ -110,9 +110,9 @@ public final class b
         m = this.hL.right;
         p.g(paramt, "child");
         m = Math.round(paramt.getTranslationX()) + m;
-        i1 = this.Bcx;
-        this.jiP.setBounds(m - i1, j, m, i);
-        this.jiP.draw(paramCanvas);
+        i1 = this.BtV;
+        this.jlI.setBounds(m - i1, j, m, i);
+        this.jlI.draw(paramCanvas);
         k += 1;
       }
       i = paramRecyclerView.getHeight();
@@ -154,18 +154,18 @@ public final class b
     {
       if (this.orientation == 0)
       {
-        paramRect.set(0, 0, this.Bcx, 0);
+        paramRect.set(0, 0, this.BtV, 0);
         AppMethodBeat.o(120327);
         return;
       }
-      paramRect.set(0, 0, 0, this.Bcx);
+      paramRect.set(0, 0, 0, this.BtV);
     }
     AppMethodBeat.o(120327);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.story.ui.view.gallery.b
  * JD-Core Version:    0.7.0.1
  */

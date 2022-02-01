@@ -15,7 +15,7 @@ final class w$a$2
   {
     AppMethodBeat.i(133676);
     Looper.myQueue().removeIdleHandler(this);
-    w.a.hr(this.val$context);
+    w.a.hx(this.val$context);
     AppMethodBeat.o(133676);
     return false;
   }

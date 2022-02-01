@@ -2,27 +2,27 @@ package com.tencent.mm.emoji.loader;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.b.g;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import d.g.b.p;
 import d.l;
 import d.n.d;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/emoji/loader/EmojiGroupDiskCache$Companion;", "", "()V", "TAG", "", "getIconPath", "rootPath", "productId", "url", "getMD5", "plugin-emojisdk_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/emoji/loader/EmojiGroupDiskCache$Companion;", "", "()V", "TAG", "", "getIconPath", "rootPath", "productId", "url", "getMD5", "plugin-emojisdk_release"})
 public final class b$a
 {
-  private static String al(String paramString1, String paramString2)
+  private static String am(String paramString1, String paramString2)
   {
     AppMethodBeat.i(183952);
     p.h(paramString1, "productId");
     p.h(paramString2, "url");
-    if ((bt.isNullOrNil(paramString1)) && (bt.isNullOrNil(paramString2)))
+    if ((bu.isNullOrNil(paramString1)) && (bu.isNullOrNil(paramString2)))
     {
-      ad.e(b.access$getTAG$cp(), "[cpan] product id and url are null.");
+      ae.e(b.access$getTAG$cp(), "[cpan] product id and url are null.");
       AppMethodBeat.o(183952);
       return null;
     }
-    if (bt.isNullOrNil(paramString2))
+    if (bu.isNullOrNil(paramString2))
     {
       paramString1 = paramString1.getBytes(d.UTF_8);
       p.g(paramString1, "(this as java.lang.String).getBytes(charset)");
@@ -43,22 +43,22 @@ public final class b$a
     p.h(paramString1, "rootPath");
     p.h(paramString2, "productId");
     p.h(paramString3, "url");
-    if ((bt.isNullOrNil(paramString2)) && (bt.isNullOrNil(paramString3)))
+    if ((bu.isNullOrNil(paramString2)) && (bu.isNullOrNil(paramString3)))
     {
-      ad.w(b.access$getTAG$cp(), "[cpan] get icon path failed. productid and url are null.");
+      ae.w(b.access$getTAG$cp(), "[cpan] get icon path failed. productid and url are null.");
       AppMethodBeat.o(183951);
       return null;
     }
-    String str = al(paramString2, paramString3);
+    String str = am(paramString2, paramString3);
     paramString3 = localObject;
-    if (!bt.isNullOrNil(str))
+    if (!bu.isNullOrNil(str))
     {
-      if (!bt.isNullOrNil(paramString2)) {
+      if (!bu.isNullOrNil(paramString2)) {
         break label115;
       }
       paramString1 = new StringBuilder().append(paramString1);
       if (str == null) {
-        p.gfZ();
+        p.gkB();
       }
     }
     label115:
@@ -71,7 +71,7 @@ public final class b$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.emoji.loader.b.a
  * JD-Core Version:    0.7.0.1
  */

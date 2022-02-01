@@ -5,33 +5,33 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class f
   implements Comparable<f>
 {
-  public final boolean Nqp;
+  public final boolean NNv;
   private final String name;
   
   private f(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(59320);
     this.name = paramString;
-    this.Nqp = paramBoolean;
+    this.NNv = paramBoolean;
     AppMethodBeat.o(59320);
   }
   
-  public static f bcE(String paramString)
+  public static f bei(String paramString)
   {
     AppMethodBeat.i(59324);
     if (paramString == null) {
-      ajm(3);
+      ajW(3);
     }
     paramString = new f(paramString, false);
     AppMethodBeat.o(59324);
     return paramString;
   }
   
-  public static boolean bcF(String paramString)
+  public static boolean bej(String paramString)
   {
     AppMethodBeat.i(59325);
     if (paramString == null) {
-      ajm(4);
+      ajW(4);
     }
     if ((paramString.isEmpty()) || (paramString.startsWith("<")))
     {
@@ -53,11 +53,11 @@ public final class f
     return true;
   }
   
-  public static f bcG(String paramString)
+  public static f bek(String paramString)
   {
     AppMethodBeat.i(59326);
     if (paramString == null) {
-      ajm(5);
+      ajW(5);
     }
     if (!paramString.startsWith("<"))
     {
@@ -70,19 +70,19 @@ public final class f
     return paramString;
   }
   
-  public static f bcH(String paramString)
+  public static f bel(String paramString)
   {
     AppMethodBeat.i(59327);
     if (paramString == null) {
-      ajm(6);
+      ajW(6);
     }
     if (paramString.startsWith("<"))
     {
-      paramString = bcG(paramString);
+      paramString = bek(paramString);
       AppMethodBeat.o(59327);
       return paramString;
     }
-    paramString = bcE(paramString);
+    paramString = bei(paramString);
     AppMethodBeat.o(59327);
     return paramString;
   }
@@ -101,7 +101,7 @@ public final class f
       return false;
     }
     paramObject = (f)paramObject;
-    if (this.Nqp != paramObject.Nqp)
+    if (this.NNv != paramObject.NNv)
     {
       AppMethodBeat.o(59328);
       return false;
@@ -118,7 +118,7 @@ public final class f
   public final String getIdentifier()
   {
     AppMethodBeat.i(59322);
-    if (this.Nqp)
+    if (this.NNv)
     {
       localObject = new IllegalStateException("not identifier: ".concat(String.valueOf(this)));
       AppMethodBeat.o(59322);
@@ -126,7 +126,7 @@ public final class f
     }
     Object localObject = sD();
     if (localObject == null) {
-      ajm(2);
+      ajW(2);
     }
     AppMethodBeat.o(59322);
     return localObject;
@@ -136,7 +136,7 @@ public final class f
   {
     AppMethodBeat.i(59329);
     int j = this.name.hashCode();
-    if (this.Nqp) {}
+    if (this.NNv) {}
     for (int i = 1;; i = 0)
     {
       AppMethodBeat.o(59329);
@@ -149,7 +149,7 @@ public final class f
     AppMethodBeat.i(59321);
     String str = this.name;
     if (str == null) {
-      ajm(1);
+      ajW(1);
     }
     AppMethodBeat.o(59321);
     return str;
@@ -170,7 +170,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.f.f
  * JD-Core Version:    0.7.0.1
  */

@@ -7,12 +7,12 @@ import java.util.Iterator;
 
 public final class n
 {
-  final ArrayList<a> pxq;
+  final ArrayList<a> pDU;
   
   public n()
   {
     AppMethodBeat.i(181949);
-    this.pxq = new ArrayList();
+    this.pDU = new ArrayList();
     AppMethodBeat.o(181949);
   }
   
@@ -20,7 +20,7 @@ public final class n
   {
     AppMethodBeat.i(181951);
     if ((paramObject instanceof g)) {
-      this.pxq.add(new a(paramObject, paraml, true));
+      this.pDU.add(new a(paramObject, paraml, true));
     }
     AppMethodBeat.o(181951);
   }
@@ -38,33 +38,33 @@ public final class n
   public final void b(Object paramObject, l paraml)
   {
     AppMethodBeat.i(181952);
-    this.pxq.add(new a(paramObject, paraml, false));
+    this.pDU.add(new a(paramObject, paraml, false));
     AppMethodBeat.o(181952);
   }
   
   public final void c(Spannable paramSpannable)
   {
     AppMethodBeat.i(181953);
-    Iterator localIterator = this.pxq.iterator();
+    Iterator localIterator = this.pDU.iterator();
     while (localIterator.hasNext())
     {
       a locala = (a)localIterator.next();
-      g localg = locala.pxr;
-      int m = locala.pxs.avj;
+      g localg = locala.pDV;
+      int m = locala.pDW.avj;
       int i;
-      if (locala.pxt)
+      if (locala.pDX)
       {
         i = paramSpannable.getSpanStart(localg);
         if ((i >= 0) && (i < m)) {
-          paramSpannable.setSpan(localg.cfq(), i, m, 34);
+          paramSpannable.setSpan(localg.cgG(), i, m, 34);
         }
         paramSpannable.removeSpan(localg);
       }
       else
       {
-        l locall = locala.pxs;
-        int k = locala.pxs.OQ;
-        if ((locall.pxp) && (locall.isEmpty())) {
+        l locall = locala.pDW;
+        int k = locala.pDW.OQ;
+        if ((locall.pDT) && (locall.isEmpty())) {
           i = 34;
         }
         for (;;)
@@ -75,9 +75,9 @@ public final class n
           }
           paramSpannable.setSpan(localg, m, j, i);
           break;
-          if ((locall.pxp) && (locall.pxo)) {
+          if ((locall.pDT) && (locall.pDS)) {
             i = 18;
-          } else if (locall.pxp) {
+          } else if (locall.pDT) {
             i = 34;
           } else {
             i = 33;
@@ -90,16 +90,16 @@ public final class n
   
   static final class a
   {
-    final g pxr;
-    final l pxs;
-    final boolean pxt;
+    final g pDV;
+    final l pDW;
+    final boolean pDX;
     
     a(Object paramObject, l paraml, boolean paramBoolean)
     {
       AppMethodBeat.i(181948);
-      this.pxr = ((g)paramObject);
-      this.pxs = paraml;
-      this.pxt = paramBoolean;
+      this.pDV = ((g)paramObject);
+      this.pDW = paraml;
+      this.pDX = paramBoolean;
       AppMethodBeat.o(181948);
     }
   }

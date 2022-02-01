@@ -7,34 +7,34 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
-import com.tencent.mm.ax.b;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.aw.b;
+import com.tencent.mm.sdk.platformtools.ak;
 import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.base.preference.PreferenceCategory;
 
 public class RegByMobileVoiceVerifySelectUI
   extends MMPreference
-  implements com.tencent.mm.al.f
+  implements com.tencent.mm.ak.f
 {
-  private LanguagePreference.a[] jpK;
+  private LanguagePreference.a[] jsD;
   private String languageCode;
   private com.tencent.mm.ui.base.preference.f screen;
   
-  public static String Ka(String paramString)
+  public static String Kz(String paramString)
   {
     AppMethodBeat.i(128622);
-    LanguagePreference.a[] arrayOfa = aUx();
-    paramString = b.FT(paramString);
+    LanguagePreference.a[] arrayOfa = aUW();
+    paramString = b.Gv(paramString);
     int j = arrayOfa.length;
     int i = 0;
     while (i < j)
     {
       LanguagePreference.a locala = arrayOfa[i];
-      if (locala.jko.equalsIgnoreCase(paramString))
+      if (locala.jnh.equalsIgnoreCase(paramString))
       {
-        paramString = locala.jkm;
+        paramString = locala.jnf;
         AppMethodBeat.o(128622);
         return paramString;
       }
@@ -44,10 +44,10 @@ public class RegByMobileVoiceVerifySelectUI
     return "English";
   }
   
-  private static LanguagePreference.a[] aUx()
+  private static LanguagePreference.a[] aUW()
   {
     AppMethodBeat.i(128623);
-    String[] arrayOfString1 = aj.getContext().getString(2131756516).trim().split(",");
+    String[] arrayOfString1 = ak.getContext().getString(2131756516).trim().split(",");
     LanguagePreference.a[] arrayOfa = new LanguagePreference.a[arrayOfString1.length];
     int i = 0;
     while (i < arrayOfString1.length)
@@ -82,8 +82,8 @@ public class RegByMobileVoiceVerifySelectUI
         return true;
       }
     });
-    this.jpK = aUx();
-    if ((this.jpK == null) || (this.jpK.length <= 0))
+    this.jsD = aUW();
+    if ((this.jsD == null) || (this.jsD.length <= 0))
     {
       AppMethodBeat.o(128621);
       return;
@@ -91,18 +91,18 @@ public class RegByMobileVoiceVerifySelectUI
     this.screen.removeAll();
     Object localObject = new PreferenceCategory(this);
     this.screen.b((Preference)localObject);
-    localObject = this.jpK;
+    localObject = this.jsD;
     int j = localObject.length;
     int i = 0;
     while (i < j)
     {
       LanguagePreference.a locala = localObject[i];
-      if (locala.jko.equalsIgnoreCase(this.languageCode)) {
+      if (locala.jnh.equalsIgnoreCase(this.languageCode)) {
         locala.isSelected = true;
       }
       LanguagePreference localLanguagePreference = new LanguagePreference(this);
       localLanguagePreference.a(locala);
-      localLanguagePreference.setKey(locala.jko);
+      localLanguagePreference.setKey(locala.jnh);
       this.screen.b(localLanguagePreference);
       i += 1;
     }
@@ -130,7 +130,7 @@ public class RegByMobileVoiceVerifySelectUI
     AppMethodBeat.i(128620);
     if ((paramPreference instanceof LanguagePreference))
     {
-      paramf = ((LanguagePreference)paramPreference).jkl;
+      paramf = ((LanguagePreference)paramPreference).jne;
       if (paramf == null)
       {
         AppMethodBeat.o(128620);
@@ -138,8 +138,8 @@ public class RegByMobileVoiceVerifySelectUI
       }
       paramPreference = new Intent();
       Bundle localBundle = new Bundle();
-      localBundle.putString("voice_verify_language", paramf.jkm);
-      localBundle.putString("voice_verify_code", paramf.jko);
+      localBundle.putString("voice_verify_language", paramf.jnf);
+      localBundle.putString("voice_verify_code", paramf.jnh);
       paramPreference.putExtras(localBundle);
       setResult(0, paramPreference);
       finish();

@@ -4,19 +4,19 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class e
 {
-  private static volatile e LQp = null;
-  public String LQq = b.LQn;
+  private static volatile e Mnm = null;
+  public String Mnn = b.Mnk;
   
-  public static e fUI()
+  public static e fZh()
   {
     AppMethodBeat.i(88659);
-    if (LQp == null) {
+    if (Mnm == null) {
       try
       {
-        if (LQp == null) {
-          LQp = new e();
+        if (Mnm == null) {
+          Mnm = new e();
         }
-        e locale1 = LQp;
+        e locale1 = Mnm;
         return locale1;
       }
       finally
@@ -24,14 +24,14 @@ public class e
         AppMethodBeat.o(88659);
       }
     }
-    e locale2 = LQp;
+    e locale2 = Mnm;
     AppMethodBeat.o(88659);
     return locale2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.soter.core.c.e
  * JD-Core Version:    0.7.0.1
  */

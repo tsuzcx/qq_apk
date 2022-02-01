@@ -13,57 +13,57 @@ import com.tencent.mm.plugin.gallery.model.c;
 import com.tencent.mm.plugin.gallery.model.d.b;
 import com.tencent.mm.plugin.gallery.model.e;
 import com.tencent.mm.plugin.gallery.model.s.e;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.lang.ref.WeakReference;
 
 public final class h
   extends Drawable
 {
-  private static final Paint hxL;
-  private ImageView cum;
+  private static final Paint hAz;
+  private ImageView cuP;
   private Bitmap mBitmap;
   private String mFilePath;
   private int mPosition;
   private int mediaType;
-  private String tFR;
-  private long tFS;
-  private long tFU;
-  private s.e tFV;
-  public a tQk;
-  private Rect tQl;
-  private boolean tQm;
-  private boolean tQn;
-  private boolean tQo;
+  private String tQI;
+  private long tQJ;
+  private long tQL;
+  private s.e tQM;
+  public a ubb;
+  private Rect ubc;
+  private boolean ubd;
+  private boolean ube;
+  private boolean ubf;
   
   static
   {
     AppMethodBeat.i(111733);
     Paint localPaint = new Paint();
-    hxL = localPaint;
+    hAz = localPaint;
     localPaint.setAntiAlias(true);
-    hxL.setFilterBitmap(true);
+    hAz.setFilterBitmap(true);
     AppMethodBeat.o(111733);
   }
   
   private h(ImageView paramImageView)
   {
     AppMethodBeat.i(111722);
-    this.tQl = new Rect();
-    this.tQm = false;
-    this.tQn = false;
-    this.tQo = false;
-    this.cum = paramImageView;
+    this.ubc = new Rect();
+    this.ubd = false;
+    this.ube = false;
+    this.ubf = false;
+    this.cuP = paramImageView;
     this.mFilePath = "";
-    this.tFR = "";
+    this.tQI = "";
     AppMethodBeat.o(111722);
   }
   
-  private void Hw(int paramInt)
+  private void HT(int paramInt)
   {
     if (this.mPosition != paramInt)
     {
-      this.tQn = true;
+      this.ube = true;
       this.mPosition = paramInt;
     }
   }
@@ -83,9 +83,9 @@ public final class h
     for (localObject = (h)localObject;; localObject = new h(paramImageView))
     {
       ((h)localObject).a(parame);
-      ((h)localObject).Hw(paramInt2);
-      ((h)localObject).xC(paramLong2);
-      ((h)localObject).tQk = parama;
+      ((h)localObject).HT(paramInt2);
+      ((h)localObject).xW(paramLong2);
+      ((h)localObject).ubb = parama;
       ((h)localObject).b(paramInt1, paramString1, paramString2, paramLong1);
       paramImageView.setImageDrawable((Drawable)localObject);
       AppMethodBeat.o(179479);
@@ -119,15 +119,15 @@ public final class h
     AppMethodBeat.i(111732);
     if (parame == null)
     {
-      this.tFV = null;
-      this.tQm = false;
+      this.tQM = null;
+      this.ubd = false;
       AppMethodBeat.o(111732);
       return;
     }
-    if (!parame.equals(this.tFV))
+    if (!parame.equals(this.tQM))
     {
-      this.tQm = true;
-      this.tFV = parame;
+      this.ubd = true;
+      this.tQM = parame;
     }
     AppMethodBeat.o(111732);
   }
@@ -136,37 +136,37 @@ public final class h
   {
     AppMethodBeat.i(111723);
     String str = paramString1;
-    if (bt.isNullOrNil(paramString1)) {
+    if (bu.isNullOrNil(paramString1)) {
       str = paramString2;
     }
-    if (bt.isNullOrNil(str))
+    if (bu.isNullOrNil(str))
     {
-      ad.e("MicroMsg.ThumbDrawable", "filepath is null or nil");
+      ae.e("MicroMsg.ThumbDrawable", "filepath is null or nil");
       AppMethodBeat.o(111723);
       return;
     }
-    if ((!this.mFilePath.equals(str)) || (this.mBitmap == null) || (this.mBitmap.isRecycled()) || (this.tQm) || (this.tQn) || (this.tQo))
+    if ((!this.mFilePath.equals(str)) || (this.mBitmap == null) || (this.mBitmap.isRecycled()) || (this.ubd) || (this.ube) || (this.ubf))
     {
-      boolean bool = this.tQm;
-      if (this.tFV == null)
+      boolean bool = this.ubd;
+      if (this.tQM == null)
       {
         paramString1 = "";
-        ad.d("MicroMsg.ThumbDrawable", "setMediaFeature, crop area: %s %s.", new Object[] { Boolean.valueOf(bool), paramString1 });
-        if (this.tQm) {
-          this.tQm = false;
+        ae.d("MicroMsg.ThumbDrawable", "setMediaFeature, crop area: %s %s.", new Object[] { Boolean.valueOf(bool), paramString1 });
+        if (this.ubd) {
+          this.ubd = false;
         }
-        ad.d("MicroMsg.ThumbDrawable", "setMediaFeature, path equal? [%s] isPositionUpdate? [%s] isDateModified? [%s] mModifyDate [%s].", new Object[] { Boolean.valueOf(this.mFilePath.equals(str)), Boolean.valueOf(this.tQn), Boolean.valueOf(this.tQo), Long.valueOf(this.tFU) });
-        if (this.tQn) {
-          this.tQn = false;
+        ae.d("MicroMsg.ThumbDrawable", "setMediaFeature, path equal? [%s] isPositionUpdate? [%s] isDateModified? [%s] mModifyDate [%s].", new Object[] { Boolean.valueOf(this.mFilePath.equals(str)), Boolean.valueOf(this.ube), Boolean.valueOf(this.ubf), Long.valueOf(this.tQL) });
+        if (this.ube) {
+          this.ube = false;
         }
-        if (this.tQo) {
-          this.tQo = false;
+        if (this.ubf) {
+          this.ubf = false;
         }
         this.mFilePath = str;
-        this.tFR = paramString2;
-        this.tFS = paramLong;
+        this.tQI = paramString2;
+        this.tQJ = paramLong;
         this.mediaType = paramInt;
-        this.mBitmap = e.cUL().a(this.mFilePath, this.tFR, this.tFV, this.tFU);
+        this.mBitmap = e.cXq().a(this.mFilePath, this.tQI, this.tQM, this.tQL);
         if (this.mBitmap != null) {
           break label529;
         }
@@ -177,14 +177,14 @@ public final class h
         }
         paramString1 = Boolean.valueOf(this.mBitmap.isRecycled());
         label296:
-        ad.d("MicroMsg.ThumbDrawable", "pennqin, set bitmap 1, filePath:[%s] mBitmap is null:[%s], mBitmap.isRecycled():[%s], this: %s.", new Object[] { str, Boolean.valueOf(bool), paramString1, this });
+        ae.d("MicroMsg.ThumbDrawable", "pennqin, set bitmap 1, filePath:[%s] mBitmap is null:[%s], mBitmap.isRecycled():[%s], this: %s.", new Object[] { str, Boolean.valueOf(bool), paramString1, this });
         if ((this.mBitmap != null) && (!this.mBitmap.isRecycled())) {
           break label553;
         }
-        paramString1 = d.a(this.mFilePath, this.tFV, this.mPosition);
-        ad.d("MicroMsg.ThumbDrawable", "traceGetLis, create & add listener 1: %s.", new Object[] { paramString1 });
-        e.cUL().a(new c(this.cum, paramString1));
-        this.mBitmap = e.cUL().a(this.mFilePath, paramInt, paramString2, paramLong, this.tFV, this.mPosition, this.tFU);
+        paramString1 = d.a(this.mFilePath, this.tQM, this.mPosition);
+        ae.d("MicroMsg.ThumbDrawable", "traceGetLis, create & add listener 1: %s.", new Object[] { paramString1 });
+        e.cXq().a(new c(this.cuP, paramString1));
+        this.mBitmap = e.cXq().a(this.mFilePath, paramInt, paramString2, paramLong, this.tQM, this.mPosition, this.tQL);
         paramString2 = this.mFilePath;
         if (this.mBitmap != null) {
           break label541;
@@ -201,14 +201,14 @@ public final class h
       label547:
       for (paramString1 = Boolean.valueOf(this.mBitmap.isRecycled());; paramString1 = "")
       {
-        ad.d("MicroMsg.ThumbDrawable", "pennqin, set bitmap 2, filePath:[%s] mBitmap is null:[%s], mBitmap.isRecycled():[%s], this: %s.", new Object[] { paramString2, Boolean.valueOf(bool), paramString1, this });
+        ae.d("MicroMsg.ThumbDrawable", "pennqin, set bitmap 2, filePath:[%s] mBitmap is null:[%s], mBitmap.isRecycled():[%s], this: %s.", new Object[] { paramString2, Boolean.valueOf(bool), paramString1, this });
         if ((this.mBitmap == null) || (this.mBitmap.isRecycled())) {
           break label674;
         }
-        this.cum.invalidate();
+        this.cuP.invalidate();
         AppMethodBeat.o(111723);
         return;
-        paramString1 = this.tFV.toString();
+        paramString1 = this.tQM.toString();
         break;
         bool = false;
         break label278;
@@ -230,7 +230,7 @@ public final class h
       label626:
       for (paramString1 = Boolean.valueOf(this.mBitmap.isRecycled());; paramString1 = "")
       {
-        ad.d("MicroMsg.ThumbDrawable", "pennqin, set bitmap 1 ok!!! filePath:[%s] mBitmap is null:[%s], mBitmap.isRecycled():[%s], this: %s.", new Object[] { paramString2, Boolean.valueOf(bool), paramString1, this });
+        ae.d("MicroMsg.ThumbDrawable", "pennqin, set bitmap 1 ok!!! filePath:[%s] mBitmap is null:[%s], mBitmap.isRecycled():[%s], this: %s.", new Object[] { paramString2, Boolean.valueOf(bool), paramString1, this });
         break;
         bool = false;
         break label568;
@@ -240,19 +240,19 @@ public final class h
     if (this.mBitmap != null) {}
     for (paramString1 = Boolean.valueOf(this.mBitmap.isRecycled());; paramString1 = "bitmap is null.")
     {
-      ad.d("MicroMsg.ThumbDrawable", "setMediaFeature filePath:[%s], mBitmap.isRecycled():[%s].", new Object[] { paramString2, paramString1 });
+      ae.d("MicroMsg.ThumbDrawable", "setMediaFeature filePath:[%s], mBitmap.isRecycled():[%s].", new Object[] { paramString2, paramString1 });
       label674:
       AppMethodBeat.o(111723);
       return;
     }
   }
   
-  private void xC(long paramLong)
+  private void xW(long paramLong)
   {
-    if (this.tFU != paramLong)
+    if (this.tQL != paramLong)
     {
-      this.tQo = true;
-      this.tFU = paramLong;
+      this.ubf = true;
+      this.tQL = paramLong;
     }
   }
   
@@ -270,11 +270,11 @@ public final class h
       if (this.mBitmap == null)
       {
         bool = true;
-        ad.d("MicroMsg.ThumbDrawable", "[duanyi] get bitmap is null: %s.", new Object[] { Boolean.valueOf(bool) });
-        localObject1 = d.a(this.mFilePath, this.tFV, this.mPosition);
-        ad.d("MicroMsg.ThumbDrawable", "traceGetLis, create & add listener 3: %s.", new Object[] { localObject1 });
-        e.cUL().a(new c(this.cum, (String)localObject1));
-        this.mBitmap = e.cUL().a(this.mFilePath, this.mediaType, this.tFR, this.tFS, this.tFV, this.mPosition, this.tFU);
+        ae.d("MicroMsg.ThumbDrawable", "[duanyi] get bitmap is null: %s.", new Object[] { Boolean.valueOf(bool) });
+        localObject1 = d.a(this.mFilePath, this.tQM, this.mPosition);
+        ae.d("MicroMsg.ThumbDrawable", "traceGetLis, create & add listener 3: %s.", new Object[] { localObject1 });
+        e.cXq().a(new c(this.cuP, (String)localObject1));
+        this.mBitmap = e.cXq().a(this.mFilePath, this.mediaType, this.tQI, this.tQJ, this.tQM, this.mPosition, this.tQL);
         str = "pennqin, set bitmap 4, filePath:[%s] mBitmap is null:[%s], mBitmap.isRecycled():[%s], this: %s.";
         localObject2 = new Object[4];
         localObject2[0] = this.mFilePath;
@@ -298,11 +298,11 @@ public final class h
     for (;;)
     {
       localObject2[i] = localObject1;
-      ad.d("MicroMsg.ThumbDrawable", str, localObject3);
+      ae.d("MicroMsg.ThumbDrawable", str, localObject3);
       if ((this.mBitmap != null) && (!this.mBitmap.isRecycled())) {
         break label363;
       }
-      ad.d("MicroMsg.ThumbDrawable", "pennqin, get bitmap 4 fail!!! %s.", new Object[] { this.mFilePath });
+      ae.d("MicroMsg.ThumbDrawable", "pennqin, get bitmap 4 fail!!! %s.", new Object[] { this.mFilePath });
       AppMethodBeat.o(111726);
       return;
       bool = false;
@@ -316,9 +316,9 @@ public final class h
       str = "[duanyi test] get bitmap ok: %s crop area id: %s.";
       localObject1 = new Object[2];
       localObject1[0] = this.mFilePath;
-      if (this.tFV != null)
+      if (this.tQM != null)
       {
-        localObject4 = this.tFV.id;
+        localObject4 = this.tQM.id;
         i = 1;
         localObject2 = localObject1;
         localObject3 = localObject1;
@@ -334,11 +334,11 @@ public final class h
       }
     }
     label363:
-    if (this.tQk != null) {
-      this.tQk.cWp();
+    if (this.ubb != null) {
+      this.ubb.cYU();
     }
     Object localObject1 = this.mBitmap;
-    Object localObject2 = this.tQl;
+    Object localObject2 = this.ubc;
     if (((Bitmap)localObject1).getWidth() > ((Bitmap)localObject1).getHeight())
     {
       ((Rect)localObject2).top = 0;
@@ -349,8 +349,8 @@ public final class h
     }
     for (;;)
     {
-      paramCanvas.drawBitmap(this.mBitmap, this.tQl, getBounds(), hxL);
-      ad.d("MicroMsg.ThumbDrawable", "bounds:%s", new Object[] { getBounds().toString() });
+      paramCanvas.drawBitmap(this.mBitmap, this.ubc, getBounds(), hAz);
+      ae.d("MicroMsg.ThumbDrawable", "bounds:%s", new Object[] { getBounds().toString() });
       AppMethodBeat.o(111726);
       return;
       ((Rect)localObject2).left = 0;
@@ -381,7 +381,7 @@ public final class h
   public final void setBounds(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     AppMethodBeat.i(111724);
-    ad.d("MicroMsg.ThumbDrawable", "setBoundsLTRB:%d %d - %d %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4) });
+    ae.d("MicroMsg.ThumbDrawable", "setBoundsLTRB:%d %d - %d %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4) });
     super.setBounds(paramInt1, paramInt2, paramInt3, paramInt4);
     AppMethodBeat.o(111724);
   }
@@ -389,7 +389,7 @@ public final class h
   public final void setBounds(Rect paramRect)
   {
     AppMethodBeat.i(111725);
-    ad.d("MicroMsg.ThumbDrawable", "setBoundsRECT:%s", new Object[] { paramRect.toString() });
+    ae.d("MicroMsg.ThumbDrawable", "setBoundsRECT:%s", new Object[] { paramRect.toString() });
     super.setBounds(paramRect);
     AppMethodBeat.o(111725);
   }
@@ -398,35 +398,35 @@ public final class h
   
   public static abstract interface a
   {
-    public abstract void cWp();
+    public abstract void cYU();
   }
   
   static final class b
     implements Runnable
   {
-    final WeakReference<ImageView> tQp;
+    final WeakReference<ImageView> ubg;
     
     b(ImageView paramImageView)
     {
       AppMethodBeat.i(111714);
-      this.tQp = new WeakReference(paramImageView);
+      this.ubg = new WeakReference(paramImageView);
       AppMethodBeat.o(111714);
     }
     
     public final void run()
     {
       AppMethodBeat.i(111715);
-      Object localObject1 = (ImageView)this.tQp.get();
+      Object localObject1 = (ImageView)this.ubg.get();
       if (localObject1 == null) {}
       for (localObject1 = null; !(localObject1 instanceof h); localObject1 = ((ImageView)localObject1).getDrawable())
       {
-        ad.w("MicroMsg.ThumbDrawable", "[tomys] ownerView is null or not a ThumbDrawable, ignore this task.");
+        ae.w("MicroMsg.ThumbDrawable", "[tomys] ownerView is null or not a ThumbDrawable, ignore this task.");
         AppMethodBeat.o(111715);
         return;
       }
       localObject1 = (h)localObject1;
-      ad.d("MicroMsg.ThumbDrawable", "invalidateSelf, mFilePath: %s.", new Object[] { h.a((h)localObject1) });
-      Object localObject2 = e.cUL();
+      ae.d("MicroMsg.ThumbDrawable", "invalidateSelf, mFilePath: %s.", new Object[] { h.a((h)localObject1) });
+      Object localObject2 = e.cXq();
       String str1 = h.a((h)localObject1);
       String str2 = h.d((h)localObject1);
       h.e((h)localObject1);
@@ -434,14 +434,14 @@ public final class h
       if (h.g((h)localObject1) == null) {}
       for (boolean bool = true;; bool = false)
       {
-        ad.d("MicroMsg.ThumbDrawable", "pennqin, set bitmap 3, bitmap is null %s filepath: %s.", new Object[] { Boolean.valueOf(bool), h.a((h)localObject1) });
+        ae.d("MicroMsg.ThumbDrawable", "pennqin, set bitmap 3, bitmap is null %s filepath: %s.", new Object[] { Boolean.valueOf(bool), h.a((h)localObject1) });
         if ((h.g((h)localObject1) == null) || (h.g((h)localObject1).isRecycled()))
         {
           localObject2 = d.a(h.a((h)localObject1), h.b((h)localObject1), h.c((h)localObject1));
-          ad.d("MicroMsg.ThumbDrawable", "traceGetLis, create & add listener 2: %s.", new Object[] { localObject2 });
-          e.cUL().a(new h.c(h.h((h)localObject1), (String)localObject2));
-          e.cUL().a(h.a((h)localObject1), h.i((h)localObject1), h.d((h)localObject1), h.e((h)localObject1), h.b((h)localObject1), h.c((h)localObject1), h.f((h)localObject1));
-          ad.d("MicroMsg.ThumbDrawable", "invalidateSelf! mBitmap is invalid! path:%s.", new Object[] { h.a((h)localObject1) });
+          ae.d("MicroMsg.ThumbDrawable", "traceGetLis, create & add listener 2: %s.", new Object[] { localObject2 });
+          e.cXq().a(new h.c(h.h((h)localObject1), (String)localObject2));
+          e.cXq().a(h.a((h)localObject1), h.i((h)localObject1), h.d((h)localObject1), h.e((h)localObject1), h.b((h)localObject1), h.c((h)localObject1), h.f((h)localObject1));
+          ae.d("MicroMsg.ThumbDrawable", "invalidateSelf! mBitmap is invalid! path:%s.", new Object[] { h.a((h)localObject1) });
         }
         ((h)localObject1).invalidateSelf();
         AppMethodBeat.o(111715);
@@ -453,21 +453,21 @@ public final class h
   static final class c
     implements d.b
   {
-    final WeakReference<ImageView> tQq;
-    final String tQr;
+    final WeakReference<ImageView> ubh;
+    final String ubi;
     
     c(ImageView paramImageView, String paramString)
     {
       AppMethodBeat.i(111716);
-      this.tQq = new WeakReference(paramImageView);
-      this.tQr = paramString;
+      this.ubh = new WeakReference(paramImageView);
+      this.ubi = paramString;
       AppMethodBeat.o(111716);
     }
     
-    private Drawable cWr()
+    private Drawable cYW()
     {
       AppMethodBeat.i(111720);
-      Object localObject = (ImageView)this.tQq.get();
+      Object localObject = (ImageView)this.ubh.get();
       if (localObject != null)
       {
         localObject = ((ImageView)localObject).getDrawable();
@@ -478,18 +478,18 @@ public final class h
       return null;
     }
     
-    public final void akP(String paramString)
+    public final void alN(String paramString)
     {
       AppMethodBeat.i(111717);
-      ad.d("MicroMsg.ThumbDrawable", "onImageGet fileKey: %s.", new Object[] { paramString });
-      Object localObject = cWr();
+      ae.d("MicroMsg.ThumbDrawable", "onImageGet fileKey: %s.", new Object[] { paramString });
+      Object localObject = cYW();
       if ((localObject instanceof h))
       {
         localObject = (h)localObject;
         if (d.a(h.a((h)localObject), h.b((h)localObject), h.c((h)localObject)).equals(paramString))
         {
-          ad.d("MicroMsg.ThumbDrawable", "match!!! start invalidate, fileKey: %s. ", new Object[] { paramString });
-          paramString = (ImageView)this.tQq.get();
+          ae.d("MicroMsg.ThumbDrawable", "match!!! start invalidate, fileKey: %s. ", new Object[] { paramString });
+          paramString = (ImageView)this.ubh.get();
           if (paramString != null) {
             paramString.post(new h.b(paramString));
           }
@@ -497,13 +497,13 @@ public final class h
         AppMethodBeat.o(111717);
         return;
       }
-      ad.w("MicroMsg.ThumbDrawable", "drawable [%s] in ownerRef [%s] is not a ThumbDrawable, ignore.", new Object[] { localObject, this.tQq });
+      ae.w("MicroMsg.ThumbDrawable", "drawable [%s] in ownerRef [%s] is not a ThumbDrawable, ignore.", new Object[] { localObject, this.ubh });
       AppMethodBeat.o(111717);
     }
     
-    public final String cUI()
+    public final String cXn()
     {
-      return this.tQr;
+      return this.ubi;
     }
     
     public final boolean equals(Object paramObject)
@@ -514,9 +514,9 @@ public final class h
         AppMethodBeat.o(111719);
         return false;
       }
-      Drawable localDrawable = cWr();
+      Drawable localDrawable = cYW();
       if ((paramObject instanceof c)) {
-        paramObject = ((c)paramObject).cWr();
+        paramObject = ((c)paramObject).cYW();
       }
       while ((localDrawable != null) && (paramObject != null))
       {
@@ -540,7 +540,7 @@ public final class h
     public final int hashCode()
     {
       AppMethodBeat.i(111718);
-      Drawable localDrawable = cWr();
+      Drawable localDrawable = cYW();
       if (localDrawable != null)
       {
         i = localDrawable.hashCode();
@@ -555,7 +555,7 @@ public final class h
     public final String toString()
     {
       AppMethodBeat.i(111721);
-      String str = "decodeTaskKey:" + this.tQr + " ownerRef:" + this.tQq;
+      String str = "decodeTaskKey:" + this.ubi + " ownerRef:" + this.ubh;
       AppMethodBeat.o(111721);
       return str;
     }
@@ -563,7 +563,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.gallery.ui.h
  * JD-Core Version:    0.7.0.1
  */

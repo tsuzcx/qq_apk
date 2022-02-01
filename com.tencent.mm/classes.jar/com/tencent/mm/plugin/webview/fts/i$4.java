@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.webview.fts;
 
 import com.tencent.e.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -16,26 +16,26 @@ public final class i$4
   public final void run()
   {
     AppMethodBeat.i(77954);
-    c.g localg = com.tencent.mm.plugin.webview.modeltools.g.eQR().Ww(this.fLl);
+    c.g localg = com.tencent.mm.plugin.webview.modeltools.g.eUD().Xd(this.fNp);
     if ((localg == null) || (localg.isExpired()))
     {
-      h.LTJ.aP(new Runnable()
+      h.MqF.aM(new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(207815);
+          AppMethodBeat.i(197991);
           Object localObject = new HashMap();
-          ((Map)localObject).put("scene", Integer.valueOf(i.4.this.fLl));
-          ((Map)localObject).put("statSessionId", i.4.this.kgO);
-          localObject = new e((Map)localObject, i.4.this.fLl, 1);
-          com.tencent.mm.kernel.g.aiU().a((n)localObject, 0);
-          AppMethodBeat.o(207815);
+          ((Map)localObject).put("scene", Integer.valueOf(i.4.this.fNp));
+          ((Map)localObject).put("statSessionId", i.4.this.kke);
+          localObject = new e((Map)localObject, i.4.this.fNp, 1);
+          com.tencent.mm.kernel.g.ajj().a((n)localObject, 0);
+          AppMethodBeat.o(197991);
         }
       });
       AppMethodBeat.o(77954);
       return;
     }
-    ad.i("MicroMsg.WebSearch.WebSearchLogic", "guide data not expired %d %s", new Object[] { Integer.valueOf(this.fLl), this.kgO });
+    ae.i("MicroMsg.WebSearch.WebSearchLogic", "guide data not expired %d %s", new Object[] { Integer.valueOf(this.fNp), this.kke });
     AppMethodBeat.o(77954);
   }
 }

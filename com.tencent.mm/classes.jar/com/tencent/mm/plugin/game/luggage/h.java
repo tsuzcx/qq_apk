@@ -7,8 +7,8 @@ import android.text.TextUtils;
 import com.tencent.luggage.webview.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ipcinvoker.d;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -16,23 +16,23 @@ import java.util.LinkedList;
 
 public final class h
 {
-  private static HashMap<String, a> gpP;
-  private static HashMap<String, com.tencent.luggage.d.p> tTB;
-  private static LinkedList<String> tTC;
+  private static HashMap<String, a> gsk;
+  private static HashMap<String, com.tencent.luggage.d.p> uet;
+  private static LinkedList<String> ueu;
   
   static
   {
     AppMethodBeat.i(83024);
-    tTB = new HashMap();
-    gpP = new HashMap();
-    tTC = new LinkedList();
+    uet = new HashMap();
+    gsk = new HashMap();
+    ueu = new LinkedList();
     AppMethodBeat.o(83024);
   }
   
   public static void a(Class<? extends a> paramClass, final String paramString, final a parama)
   {
     AppMethodBeat.i(83020);
-    if ((!aj.fkI()) && (!aj.fkJ()))
+    if ((!ak.foC()) && (!ak.foD()))
     {
       Bundle localBundle = new Bundle();
       localBundle.putInt("action_id", 1);
@@ -42,29 +42,29 @@ public final class h
       AppMethodBeat.o(83020);
       return;
     }
-    if (tTC.contains(paramString))
+    if (ueu.contains(paramString))
     {
-      ad.i("MicroMsg.PreloadGameWebCoreHelp", "preload ing, return");
-      parama.BJ();
+      ae.i("MicroMsg.PreloadGameWebCoreHelp", "preload ing, return");
+      parama.BK();
       AppMethodBeat.o(83020);
       return;
     }
-    tTC.add(paramString);
-    com.tencent.mm.ipcinvoker.p.z(new Runnable()
+    ueu.add(paramString);
+    com.tencent.mm.ipcinvoker.p.x(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(83017);
-        com.tencent.luggage.d.p localp = new com.tencent.luggage.d.p(aj.getContext(), this.tTE);
-        h.tTB.put(paramString, localp);
-        h.bSk().remove(paramString);
+        com.tencent.luggage.d.p localp = new com.tencent.luggage.d.p(ak.getContext(), this.uew);
+        h.uet.put(paramString, localp);
+        h.bTx().remove(paramString);
         if (!TextUtils.isEmpty(paramString))
         {
-          ad.i("MicroMsg.PreloadGameWebCoreHelp", "loadUrl: %s", new Object[] { paramString });
+          ae.i("MicroMsg.PreloadGameWebCoreHelp", "loadUrl: %s", new Object[] { paramString });
           localp.loadUrl(paramString);
         }
         if (parama != null) {
-          parama.BJ();
+          parama.BK();
         }
         AppMethodBeat.o(83017);
       }
@@ -72,18 +72,18 @@ public final class h
     AppMethodBeat.o(83020);
   }
   
-  public static com.tencent.luggage.d.p alt(String paramString)
+  public static com.tencent.luggage.d.p amr(String paramString)
   {
     AppMethodBeat.i(83022);
-    paramString = (com.tencent.luggage.d.p)tTB.get(paramString);
+    paramString = (com.tencent.luggage.d.p)uet.get(paramString);
     AppMethodBeat.o(83022);
     return paramString;
   }
   
-  public static com.tencent.luggage.d.p at(Context paramContext, String paramString)
+  public static com.tencent.luggage.d.p av(Context paramContext, String paramString)
   {
     AppMethodBeat.i(83021);
-    paramString = (com.tencent.luggage.d.p)tTB.remove(paramString);
+    paramString = (com.tencent.luggage.d.p)uet.remove(paramString);
     if (paramString != null) {
       paramString.setContext(paramContext);
     }
@@ -94,13 +94,13 @@ public final class h
   public static void destroy()
   {
     AppMethodBeat.i(83023);
-    if ((aj.fkI()) || (aj.fkJ()))
+    if ((ak.foC()) || (ak.foD()))
     {
-      localObject = tTB.values().iterator();
+      localObject = uet.values().iterator();
       while (((Iterator)localObject).hasNext()) {
         ((com.tencent.luggage.d.p)((Iterator)localObject).next()).destroy();
       }
-      tTB.clear();
+      uet.clear();
       AppMethodBeat.o(83023);
       return;
     }
@@ -112,7 +112,7 @@ public final class h
   
   public static abstract interface a
   {
-    public abstract void BJ();
+    public abstract void BK();
   }
   
   static class b

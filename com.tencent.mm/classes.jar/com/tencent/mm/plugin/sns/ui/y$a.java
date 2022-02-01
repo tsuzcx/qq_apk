@@ -8,14 +8,14 @@ import com.tencent.mm.hellhoundlib.b.b;
 
 public abstract class y$a
 {
-  public View.OnClickListener zRv = new View.OnClickListener()
+  public View.OnClickListener AiC = new View.OnClickListener()
   {
     public final void onClick(View paramAnonymousView)
     {
       AppMethodBeat.i(97924);
       b localb = new b();
       localb.bd(paramAnonymousView);
-      a.b("com/tencent/mm/plugin/sns/ui/IPreviewImageView$PreviewImageClick$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+      a.b("com/tencent/mm/plugin/sns/ui/IPreviewImageView$PreviewImageClick$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
       if (paramAnonymousView.getTag() == null)
       {
         a.a(this, "com/tencent/mm/plugin/sns/ui/IPreviewImageView$PreviewImageClick$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
@@ -23,13 +23,13 @@ public abstract class y$a
         return;
       }
       int i = ((Integer)paramAnonymousView.getTag()).intValue();
-      y.a.this.Fq(i);
+      y.a.this.FN(i);
       a.a(this, "com/tencent/mm/plugin/sns/ui/IPreviewImageView$PreviewImageClick$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(97924);
     }
   };
   
-  public abstract void Fq(int paramInt);
+  public abstract void FN(int paramInt);
 }
 
 

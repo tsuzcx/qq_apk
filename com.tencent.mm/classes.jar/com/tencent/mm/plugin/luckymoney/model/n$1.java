@@ -15,7 +15,7 @@ public final class n$1
     if (paramDialogInterface != null) {
       paramDialogInterface.dismiss();
     }
-    this.voX.cancel();
+    this.vBc.cancel();
     AppMethodBeat.o(163568);
   }
 }

@@ -5,10 +5,10 @@ import f.a.a.b;
 import java.util.LinkedList;
 
 public final class gt
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public String FqV;
-  public EmotionPrice FyL;
+  public String FJt;
+  public EmotionPrice FRj;
   public String ProductID;
   
   public final int op(int paramInt, Object... paramVarArgs)
@@ -23,7 +23,7 @@ public final class gt
         AppMethodBeat.o(104745);
         throw paramVarArgs;
       }
-      if (this.FyL == null)
+      if (this.FRj == null)
       {
         paramVarArgs = new b("Not all required fields were included: Price");
         AppMethodBeat.o(104745);
@@ -32,13 +32,13 @@ public final class gt
       if (this.ProductID != null) {
         paramVarArgs.d(1, this.ProductID);
       }
-      if (this.FyL != null)
+      if (this.FRj != null)
       {
-        paramVarArgs.lC(2, this.FyL.computeSize());
-        this.FyL.writeFields(paramVarArgs);
+        paramVarArgs.lJ(2, this.FRj.computeSize());
+        this.FRj.writeFields(paramVarArgs);
       }
-      if (this.FqV != null) {
-        paramVarArgs.d(3, this.FqV);
+      if (this.FJt != null) {
+        paramVarArgs.d(3, this.FJt);
       }
       AppMethodBeat.o(104745);
       return 0;
@@ -52,21 +52,21 @@ public final class gt
     for (int i = f.a.a.b.b.a.e(1, this.ProductID) + 0;; i = 0)
     {
       paramInt = i;
-      if (this.FyL != null) {
-        paramInt = i + f.a.a.a.lB(2, this.FyL.computeSize());
+      if (this.FRj != null) {
+        paramInt = i + f.a.a.a.lI(2, this.FRj.computeSize());
       }
       i = paramInt;
-      if (this.FqV != null) {
-        i = paramInt + f.a.a.b.b.a.e(3, this.FqV);
+      if (this.FJt != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.FJt);
       }
       AppMethodBeat.o(104745);
       return i;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
         if (this.ProductID == null)
@@ -75,7 +75,7 @@ public final class gt
           AppMethodBeat.o(104745);
           throw paramVarArgs;
         }
-        if (this.FyL == null)
+        if (this.FRj == null)
         {
           paramVarArgs = new b("Not all required fields were included: Price");
           AppMethodBeat.o(104745);
@@ -95,11 +95,11 @@ public final class gt
           AppMethodBeat.o(104745);
           return -1;
         case 1: 
-          localgt.ProductID = ((f.a.a.a.a)localObject1).NPN.readString();
+          localgt.ProductID = ((f.a.a.a.a)localObject1).OmT.readString();
           AppMethodBeat.o(104745);
           return 0;
         case 2: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
+          paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
@@ -107,14 +107,14 @@ public final class gt
             Object localObject2 = (byte[])paramVarArgs.get(paramInt);
             localObject1 = new EmotionPrice();
             localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((EmotionPrice)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, com.tencent.mm.bx.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-            localgt.FyL = ((EmotionPrice)localObject1);
+            for (boolean bool = true; bool; bool = ((EmotionPrice)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            localgt.FRj = ((EmotionPrice)localObject1);
             paramInt += 1;
           }
           AppMethodBeat.o(104745);
           return 0;
         }
-        localgt.FqV = ((f.a.a.a.a)localObject1).NPN.readString();
+        localgt.FJt = ((f.a.a.a.a)localObject1).OmT.readString();
         AppMethodBeat.o(104745);
         return 0;
       }

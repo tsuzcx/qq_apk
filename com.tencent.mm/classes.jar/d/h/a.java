@@ -2,7 +2,7 @@ package d.h;
 
 import d.l;
 
-@l(gfA=1, gfx={1, 1, 16}, gfy={"kotlin/math/MathKt__MathHKt", "kotlin/math/MathKt__MathJVMKt"})
+@l(gjZ={1, 1, 16}, gka={"kotlin/math/MathKt__MathHKt", "kotlin/math/MathKt__MathJVMKt"}, gkc=1)
 public final class a
   extends c
 {}

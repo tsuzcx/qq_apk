@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class if
   extends b
 {
-  public a duL;
+  public a dvN;
   
   public if()
   {
@@ -15,20 +15,18 @@ public final class if
   
   private if(byte paramByte)
   {
-    AppMethodBeat.i(89642);
-    this.duL = new a();
-    this.IbR = false;
+    AppMethodBeat.i(89641);
+    this.dvN = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(89642);
+    AppMethodBeat.o(89641);
   }
   
   public static final class a
   {
-    public String appId;
-    public String extInfo;
-    public String md5;
-    public int scene;
-    public String url;
+    public String countryCode;
+    public int dvO;
+    public int dvP;
   }
 }
 

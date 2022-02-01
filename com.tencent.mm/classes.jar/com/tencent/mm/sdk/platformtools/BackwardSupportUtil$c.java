@@ -16,12 +16,12 @@ public final class BackwardSupportUtil$c
     }
     if (Build.VERSION.SDK_INT >= 8)
     {
-      new bn();
-      bn.c(paramListView);
+      new bo();
+      bo.c(paramListView);
       AppMethodBeat.o(156073);
       return;
     }
-    new bm();
+    new bn();
     paramListView.setSelection(0);
     AppMethodBeat.o(156073);
   }
@@ -36,12 +36,12 @@ public final class BackwardSupportUtil$c
     }
     if (Build.VERSION.SDK_INT >= 8)
     {
-      new bn();
-      bn.c(paramListView, paramInt);
+      new bo();
+      bo.c(paramListView, paramInt);
       AppMethodBeat.o(156074);
       return;
     }
-    new bm();
+    new bn();
     paramListView.setSelection(paramInt);
     AppMethodBeat.o(156074);
   }

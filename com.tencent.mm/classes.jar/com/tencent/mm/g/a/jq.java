@@ -1,16 +1,14 @@
 package com.tencent.mm.g.a;
 
-import android.widget.ImageView;
-import android.widget.ProgressBar;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.protocal.protobuf.TimeLineObject;
 import com.tencent.mm.sdk.b.b;
-import com.tencent.mm.storage.bu;
 
 public final class jq
   extends b
 {
-  public a dww;
-  public b dwx;
+  public a dxy;
+  public b dxz;
   
   public jq()
   {
@@ -19,26 +17,23 @@ public final class jq
   
   private jq(byte paramByte)
   {
-    AppMethodBeat.i(55663);
-    this.dww = new a();
-    this.dwx = new b();
-    this.IbR = false;
+    AppMethodBeat.i(125621);
+    this.dxy = new a();
+    this.dxz = new b();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(55663);
+    AppMethodBeat.o(125621);
   }
   
   public static final class a
   {
-    public bu dku;
-    public ProgressBar dwA;
-    public int dwB;
-    public ImageView dwy;
-    public ImageView dwz;
-    public int h;
-    public int w;
+    public String dqc;
   }
   
-  public static final class b {}
+  public static final class b
+  {
+    public TimeLineObject dxA;
+  }
 }
 
 

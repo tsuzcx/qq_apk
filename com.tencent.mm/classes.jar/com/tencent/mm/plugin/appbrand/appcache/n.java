@@ -5,23 +5,22 @@ import android.os.Build.VERSION;
 import android.os.StatFs;
 import android.util.Log;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.b.a.hu;
+import com.tencent.mm.g.b.a.hw;
 import com.tencent.mm.platformtools.r.a;
 import com.tencent.mm.plugin.appbrand.config.AppBrandGlobalSystemConfig;
 import com.tencent.mm.plugin.appbrand.config.AppBrandGlobalSystemConfig.PackageManager;
 import com.tencent.mm.plugin.appbrand.config.WxaAttributes;
 import com.tencent.mm.plugin.appbrand.config.WxaAttributes.WxaVersionInfo;
-import com.tencent.mm.plugin.appbrand.config.w;
-import com.tencent.mm.plugin.appbrand.page.bg.a;
-import com.tencent.mm.plugin.appbrand.ui.c.a.b;
+import com.tencent.mm.plugin.appbrand.page.bf;
+import com.tencent.mm.plugin.appbrand.page.bf.a;
 import com.tencent.mm.plugin.appbrand.ui.c.a.b.b.c;
+import com.tencent.mm.plugin.expt.b.b.a;
 import com.tencent.mm.sdk.e.c;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.storagebase.h;
-import com.tencent.mm.vfs.e;
-import com.tencent.mm.vfs.i;
-import com.tencent.mm.vfs.q;
+import com.tencent.mm.vfs.k;
+import com.tencent.mm.vfs.o;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -40,10 +39,10 @@ public abstract interface n
 {
   public static final class a
   {
-    static void Li(String paramString)
+    static void LJ(String paramString)
     {
       AppMethodBeat.i(44240);
-      i.deleteFile(paramString);
+      o.deleteFile(paramString);
       try
       {
         Runtime.getRuntime().exec("rm -r " + paramString + "_xdir");
@@ -52,7 +51,7 @@ public abstract interface n
       }
       catch (Exception localException)
       {
-        ad.e("MicroMsg.AppBrand.PkgCleanupLogic.CleanupUtil", "rm -r %s, e = %s", new Object[] { paramString + "_xdir", localException });
+        ae.e("MicroMsg.AppBrand.PkgCleanupLogic.CleanupUtil", "rm -r %s, e = %s", new Object[] { paramString + "_xdir", localException });
         AppMethodBeat.o(44240);
       }
     }
@@ -60,10 +59,10 @@ public abstract interface n
   
   public static final class b
   {
-    public static long aZC()
+    public static long aZZ()
     {
       AppMethodBeat.i(44241);
-      long l = com.tencent.mm.plugin.appbrand.appstorage.m.r(new e(ay.baz()));
+      long l = com.tencent.mm.plugin.appbrand.appstorage.n.r(new k(az.baY()));
       AppMethodBeat.o(44241);
       return l;
     }
@@ -71,19 +70,19 @@ public abstract interface n
   
   public static final class c
   {
-    private static final n.d jFH;
+    private static final n.d jIG;
     
     static
     {
       AppMethodBeat.i(44244);
-      jFH = new n.d();
+      jIG = new n.d();
       AppMethodBeat.o(44244);
     }
     
-    public static n aZD()
+    public static n baa()
     {
       AppMethodBeat.i(44242);
-      n.d locald = jFH;
+      n.d locald = jIG;
       AppMethodBeat.o(44242);
       return locald;
     }
@@ -91,11 +90,11 @@ public abstract interface n
     public static void interrupt()
     {
       AppMethodBeat.i(44243);
-      n.d locald = jFH;
+      n.d locald = jIG;
       try
       {
-        com.tencent.mm.plugin.report.service.g.yhR.dD(1007, 2);
-        locald.jFI.set(true);
+        com.tencent.mm.plugin.report.service.g.yxI.dD(1007, 2);
+        locald.jIH.set(true);
         AppMethodBeat.o(44243);
         return;
       }
@@ -103,7 +102,7 @@ public abstract interface n
       {
         for (;;)
         {
-          ad.printErrStackTrace("MicroMsg.AppBrand.PkgCleanupNewLogic", localThrowable, "cleanup interrupted report", new Object[0]);
+          ae.printErrStackTrace("MicroMsg.AppBrand.PkgCleanupNewLogic", localThrowable, "cleanup interrupted report", new Object[0]);
         }
       }
     }
@@ -112,12 +111,12 @@ public abstract interface n
   public static final class d
     implements n
   {
-    final AtomicBoolean jFI;
+    final AtomicBoolean jIH;
     
     public d()
     {
       AppMethodBeat.i(44248);
-      this.jFI = new AtomicBoolean();
+      this.jIH = new AtomicBoolean();
       AppMethodBeat.o(44248);
     }
     
@@ -128,16 +127,16 @@ public abstract interface n
       //   0: ldc 40
       //   2: invokestatic 26	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
       //   5: aload_0
-      //   6: invokestatic 46	com/tencent/mm/sdk/platformtools/bt:hj	(Ljava/util/List;)Z
+      //   6: invokestatic 46	com/tencent/mm/sdk/platformtools/bu:ht	(Ljava/util/List;)Z
       //   9: ifeq +9 -> 18
       //   12: ldc 40
       //   14: invokestatic 34	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   17: return
-      //   18: invokestatic 50	com/tencent/mm/sdk/platformtools/bt:aQJ	()J
+      //   18: invokestatic 50	com/tencent/mm/sdk/platformtools/bu:aRi	()J
       //   21: lstore_1
-      //   22: invokestatic 56	com/tencent/mm/plugin/appbrand/config/AppBrandGlobalSystemConfig:bdT	()Lcom/tencent/mm/plugin/appbrand/config/AppBrandGlobalSystemConfig;
-      //   25: getfield 60	com/tencent/mm/plugin/appbrand/config/AppBrandGlobalSystemConfig:jWS	Lcom/tencent/mm/plugin/appbrand/config/AppBrandGlobalSystemConfig$PackageManager;
-      //   28: getfield 66	com/tencent/mm/plugin/appbrand/config/AppBrandGlobalSystemConfig$PackageManager:jXj	J
+      //   22: invokestatic 56	com/tencent/mm/plugin/appbrand/config/AppBrandGlobalSystemConfig:bez	()Lcom/tencent/mm/plugin/appbrand/config/AppBrandGlobalSystemConfig;
+      //   25: getfield 60	com/tencent/mm/plugin/appbrand/config/AppBrandGlobalSystemConfig:kah	Lcom/tencent/mm/plugin/appbrand/config/AppBrandGlobalSystemConfig$PackageManager;
+      //   28: getfield 66	com/tencent/mm/plugin/appbrand/config/AppBrandGlobalSystemConfig$PackageManager:kay	J
       //   31: lstore_3
       //   32: aload_0
       //   33: invokeinterface 72 1 0
@@ -150,7 +149,7 @@ public abstract interface n
       //   54: checkcast 84	java/lang/String
       //   57: astore 5
       //   59: aload 5
-      //   61: invokestatic 88	com/tencent/mm/sdk/platformtools/bt:isNullOrNil	(Ljava/lang/String;)Z
+      //   61: invokestatic 88	com/tencent/mm/sdk/platformtools/bu:isNullOrNil	(Ljava/lang/String;)Z
       //   64: ifne +13 -> 77
       //   67: aload 5
       //   69: ldc 90
@@ -158,7 +157,7 @@ public abstract interface n
       //   74: ifne -35 -> 39
       //   77: aload 5
       //   79: iconst_0
-      //   80: invokestatic 99	com/tencent/mm/plugin/appbrand/launching/m:bK	(Ljava/lang/String;I)Lcom/tencent/mm/plugin/appbrand/appcache/WxaPkgWrappingInfo;
+      //   80: invokestatic 99	com/tencent/mm/plugin/appbrand/launching/m:bN	(Ljava/lang/String;I)Lcom/tencent/mm/plugin/appbrand/appcache/WxaPkgWrappingInfo;
       //   83: astore 6
       //   85: aload 6
       //   87: ifnonnull +38 -> 125
@@ -173,16 +172,16 @@ public abstract interface n
       //   109: invokevirtual 106	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
       //   112: invokevirtual 115	java/lang/StringBuilder:toString	()Ljava/lang/String;
       //   115: iconst_0
-      //   116: invokestatic 99	com/tencent/mm/plugin/appbrand/launching/m:bK	(Ljava/lang/String;I)Lcom/tencent/mm/plugin/appbrand/appcache/WxaPkgWrappingInfo;
+      //   116: invokestatic 99	com/tencent/mm/plugin/appbrand/launching/m:bN	(Ljava/lang/String;I)Lcom/tencent/mm/plugin/appbrand/appcache/WxaPkgWrappingInfo;
       //   119: ifnonnull -80 -> 39
       //   122: goto -83 -> 39
       //   125: getstatic 121	java/util/concurrent/TimeUnit:MILLISECONDS	Ljava/util/concurrent/TimeUnit;
-      //   128: new 123	com/tencent/mm/vfs/e
+      //   128: new 123	com/tencent/mm/vfs/k
       //   131: dup
       //   132: aload 6
       //   134: getfield 129	com/tencent/mm/plugin/appbrand/appcache/WxaPkgWrappingInfo:pkgPath	Ljava/lang/String;
-      //   137: invokespecial 132	com/tencent/mm/vfs/e:<init>	(Ljava/lang/String;)V
-      //   140: invokevirtual 135	com/tencent/mm/vfs/e:lastModified	()J
+      //   137: invokespecial 132	com/tencent/mm/vfs/k:<init>	(Ljava/lang/String;)V
+      //   140: invokevirtual 135	com/tencent/mm/vfs/k:lastModified	()J
       //   143: invokevirtual 139	java/util/concurrent/TimeUnit:toSeconds	(J)J
       //   146: lload_1
       //   147: lload_3
@@ -203,18 +202,18 @@ public abstract interface n
       //   170: getfield 147	com/tencent/mm/plugin/appbrand/appcache/WxaPkgWrappingInfo:pkgVersion	I
       //   173: invokestatic 153	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
       //   176: aastore
-      //   177: invokestatic 158	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-      //   180: invokestatic 164	com/tencent/mm/plugin/appbrand/app/j:aYX	()Lcom/tencent/mm/plugin/appbrand/appcache/bg;
+      //   177: invokestatic 158	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+      //   180: invokestatic 164	com/tencent/mm/plugin/appbrand/app/j:aZu	()Lcom/tencent/mm/plugin/appbrand/appcache/bh;
       //   183: aload 5
       //   185: aload 6
       //   187: getfield 147	com/tencent/mm/plugin/appbrand/appcache/WxaPkgWrappingInfo:pkgVersion	I
-      //   190: invokevirtual 170	com/tencent/mm/plugin/appbrand/appcache/bg:aR	(Ljava/lang/String;I)I
+      //   190: invokevirtual 170	com/tencent/mm/plugin/appbrand/appcache/bh:aU	(Ljava/lang/String;I)I
       //   193: pop
-      //   194: invokestatic 164	com/tencent/mm/plugin/appbrand/app/j:aYX	()Lcom/tencent/mm/plugin/appbrand/appcache/bg;
+      //   194: invokestatic 164	com/tencent/mm/plugin/appbrand/app/j:aZu	()Lcom/tencent/mm/plugin/appbrand/appcache/bh;
       //   197: aload 5
       //   199: aload 6
       //   201: getfield 147	com/tencent/mm/plugin/appbrand/appcache/WxaPkgWrappingInfo:pkgVersion	I
-      //   204: invokevirtual 173	com/tencent/mm/plugin/appbrand/appcache/bg:aS	(Ljava/lang/String;I)I
+      //   204: invokevirtual 173	com/tencent/mm/plugin/appbrand/appcache/bh:aV	(Ljava/lang/String;I)I
       //   207: pop
       //   208: ldc 175
       //   210: invokestatic 179	com/tencent/mm/plugin/appbrand/app/j:T	(Ljava/lang/Class;)Ljava/lang/Object;
@@ -241,10 +240,10 @@ public abstract interface n
       //   83	141	6	localWxaPkgWrappingInfo	WxaPkgWrappingInfo
     }
     
-    private void aZE()
+    private void bab()
     {
       AppMethodBeat.i(44249);
-      if (this.jFI.get())
+      if (this.jIH.get())
       {
         InterruptedException localInterruptedException = new InterruptedException();
         AppMethodBeat.o(44249);
@@ -253,16 +252,17 @@ public abstract interface n
       AppMethodBeat.o(44249);
     }
     
-    private void aZF()
+    private void bac()
     {
-      AppMethodBeat.i(188009);
-      aZE();
-      Object localObject1 = com.tencent.mm.plugin.appbrand.app.j.aYL();
-      Object localObject2 = com.tencent.mm.plugin.appbrand.task.f.byF();
+      AppMethodBeat.i(222126);
+      bab();
+      Object localObject1 = com.tencent.mm.plugin.appbrand.app.j.aZh();
+      Object localObject2 = com.tencent.mm.plugin.appbrand.task.f.bzz();
+      int i = 2147483647;
       int m = localObject2.length;
       int j = 0;
       int k;
-      for (int i = 2147483647; j < m; i = k)
+      while (j < m)
       {
         int n = localObject2[j];
         k = i;
@@ -270,10 +270,11 @@ public abstract interface n
           k = Math.min(i, n);
         }
         j += 1;
+        i = k;
       }
       if (2147483647 == i)
       {
-        localObject2 = com.tencent.mm.plugin.appbrand.launching.m.bK("@LibraryAppId", 0);
+        localObject2 = com.tencent.mm.plugin.appbrand.launching.m.bN("@LibraryAppId", 0);
         if (localObject2 == null) {
           i = 0;
         }
@@ -282,22 +283,24 @@ public abstract interface n
       {
         if (i > 0)
         {
-          ad.i("MicroMsg.AppBrand.PkgCleanupNewLogic", "processRelease, delete libraries record < %d", new Object[] { Integer.valueOf(i) });
-          localObject2 = com.tencent.mm.plugin.appbrand.app.j.aYX().LH("@LibraryAppId");
-          com.tencent.mm.plugin.appbrand.app.j.aYX().aR("@LibraryAppId", i);
+          ae.i("MicroMsg.AppBrand.PkgCleanupNewLogic", "processRelease, library.minValidVersion = %d", new Object[] { Integer.valueOf(i) });
+          j = i - Math.max(0, ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qBF, 3) - 1);
+          ae.i("MicroMsg.AppBrand.PkgCleanupNewLogic", "processRelease, delete libraries record < %d", new Object[] { Integer.valueOf(j) });
+          localObject2 = com.tencent.mm.plugin.appbrand.app.j.aZu().Mk("@LibraryAppId");
+          com.tencent.mm.plugin.appbrand.app.j.aZu().aU("@LibraryAppId", j);
           if ((localObject2 != null) && (localObject2.length > 0))
           {
             k = localObject2.length;
-            j = 0;
+            i = 0;
             for (;;)
             {
-              if (j < k)
+              if (i < k)
               {
-                m = localObject2[j];
-                if (m < i) {
-                  i.cZ(com.tencent.mm.plugin.appbrand.page.bg.uV(m), true);
+                m = localObject2[i];
+                if (m < j) {
+                  o.dd(bf.uZ(m), true);
                 }
-                j += 1;
+                i += 1;
                 continue;
                 i = ((WxaPkgWrappingInfo)localObject2).pkgVersion;
                 break;
@@ -308,7 +311,7 @@ public abstract interface n
         localObject1 = ((h)localObject1).a("select distinct appId from AppBrandWxaPkgManifestRecord where debugType=? and appId!=? and appId not like '%%$%%'", new String[] { "0", "@LibraryAppId" }, 0);
         if ((localObject1 == null) || (((Cursor)localObject1).isClosed()))
         {
-          AppMethodBeat.o(188009);
+          AppMethodBeat.o(222126);
           return;
         }
         localObject2 = new LinkedList();
@@ -316,12 +319,12 @@ public abstract interface n
         if (((Cursor)localObject1).moveToFirst())
         {
           str = ((Cursor)localObject1).getString(0);
-          if (com.tencent.mm.plugin.appbrand.task.f.UF(str))
+          if (com.tencent.mm.plugin.appbrand.task.f.Vq(str))
           {
-            ad.i("MicroMsg.AppBrand.PkgCleanupNewLogic", "processRelease appID(%s) is running, skip", new Object[] { str });
-            label286:
+            ae.i("MicroMsg.AppBrand.PkgCleanupNewLogic", "processRelease appID(%s) is running, skip", new Object[] { str });
+            label332:
             if (((Cursor)localObject1).moveToNext()) {
-              break label407;
+              break label453;
             }
           }
         }
@@ -329,44 +332,44 @@ public abstract interface n
         {
           ((Cursor)localObject1).close();
           localObject1 = new LinkedList();
-          aZE();
+          bab();
           localObject2 = ((List)localObject2).iterator();
         }
         for (;;)
         {
           if (!((Iterator)localObject2).hasNext()) {
-            break label634;
+            break label680;
           }
           str = (String)((Iterator)localObject2).next();
-          Object localObject3 = com.tencent.mm.plugin.appbrand.app.j.aYP().e(str, new String[] { "versionInfo" });
-          if ((localObject3 == null) || (bt.isNullOrNil(((WxaAttributes)localObject3).field_versionInfo)))
+          Object localObject3 = com.tencent.mm.plugin.appbrand.app.j.aZl().e(str, new String[] { "versionInfo" });
+          if ((localObject3 == null) || (bu.isNullOrNil(((WxaAttributes)localObject3).field_versionInfo)))
           {
             ((List)localObject1).add(str);
             continue;
             ((List)localObject2).add(str);
-            break label286;
-            label407:
+            break label332;
+            label453:
             break;
           }
-          aZE();
-          if (((WxaAttributes)localObject3).ben() == null) {}
-          for (i = 0; i > 0; i = ((WxaAttributes)localObject3).ben().aDD)
+          bab();
+          if (((WxaAttributes)localObject3).beV() == null) {}
+          for (i = 0; i > 0; i = ((WxaAttributes)localObject3).beV().aDD)
           {
-            localObject3 = com.tencent.mm.plugin.appbrand.app.j.aYX().LG(str);
-            j = com.tencent.mm.plugin.appbrand.app.j.aYX().aR(str, i);
+            localObject3 = com.tencent.mm.plugin.appbrand.app.j.aZu().Mj(str);
+            j = com.tencent.mm.plugin.appbrand.app.j.aZu().aU(str, i);
             if (j <= 0) {
-              break label598;
+              break label644;
             }
-            ad.i("MicroMsg.AppBrand.PkgCleanupNewLogic", "processRelease, delete record(%s) < %d, count(%d)", new Object[] { str, Integer.valueOf(i), Integer.valueOf(j) });
-            hu localhu = new hu();
-            localhu.eto = 2L;
-            localhu = localhu.qB(str);
-            localhu.etp = 0L;
-            localhu.etq = j;
-            localhu.etm = 1L;
-            localhu.aLk();
+            ae.i("MicroMsg.AppBrand.PkgCleanupNewLogic", "processRelease, delete record(%s) < %d, count(%d)", new Object[] { str, Integer.valueOf(i), Integer.valueOf(j) });
+            hw localhw = new hw();
+            localhw.euV = 2L;
+            localhw = localhw.qW(str);
+            localhw.euW = 0L;
+            localhw.euX = j;
+            localhw.euT = 1L;
+            localhw.aLH();
             if ((localObject3 == null) || (localObject3.length <= 0)) {
-              break label598;
+              break label644;
             }
             k = localObject3.length;
             j = 0;
@@ -374,30 +377,30 @@ public abstract interface n
             {
               m = localObject3[j];
               if (m < i) {
-                i.cZ(com.tencent.mm.plugin.appbrand.page.bg.bQ(str, m), true);
+                o.dd(bf.bU(str, m), true);
               }
               j += 1;
             }
           }
           continue;
-          label598:
-          com.tencent.mm.plugin.appbrand.app.j.aYX().aS(str, i);
-          ((b)com.tencent.mm.plugin.appbrand.app.j.T(b.class)).a(str, 0, new b.b.c(i));
+          label644:
+          com.tencent.mm.plugin.appbrand.app.j.aZu().aV(str, i);
+          ((com.tencent.mm.plugin.appbrand.ui.c.a.b)com.tencent.mm.plugin.appbrand.app.j.T(com.tencent.mm.plugin.appbrand.ui.c.a.b.class)).a(str, 0, new b.b.c(i));
         }
-        label634:
+        label680:
         aT((List)localObject1);
-        AppMethodBeat.o(188009);
+        AppMethodBeat.o(222126);
         return;
       }
     }
     
-    private void aZG()
+    private void bad()
     {
       AppMethodBeat.i(44252);
-      aZE();
-      long l1 = bt.aQJ();
-      long l2 = AppBrandGlobalSystemConfig.bdT().jWS.jXj;
-      Object localObject1 = ((am)com.tencent.mm.plugin.appbrand.app.j.T(am.class)).getAll();
+      bab();
+      long l1 = bu.aRi();
+      long l2 = AppBrandGlobalSystemConfig.bez().kah.kay;
+      Object localObject1 = ((an)com.tencent.mm.plugin.appbrand.app.j.T(an.class)).getAll();
       if ((localObject1 == null) || (((Cursor)localObject1).isClosed()))
       {
         AppMethodBeat.o(44252);
@@ -407,46 +410,46 @@ public abstract interface n
       if (((Cursor)localObject1).moveToFirst()) {
         do
         {
-          al localal = new al();
-          localal.convertFrom((Cursor)localObject1);
-          ((List)localObject2).add(localal);
+          am localam = new am();
+          localam.convertFrom((Cursor)localObject1);
+          ((List)localObject2).add(localam);
         } while (((Cursor)localObject1).moveToNext());
       }
       ((Cursor)localObject1).close();
-      aZE();
+      bab();
       localObject1 = ((List)localObject2).iterator();
       while (((Iterator)localObject1).hasNext())
       {
-        localObject2 = (al)((Iterator)localObject1).next();
-        if (i.fv(((al)localObject2).field_pkgPath))
+        localObject2 = (am)((Iterator)localObject1).next();
+        if (o.fB(((am)localObject2).field_pkgPath))
         {
-          aZE();
-          if (TimeUnit.MILLISECONDS.toSeconds(new e(((al)localObject2).field_pkgPath).lastModified()) < l1 - l2)
+          bab();
+          if (TimeUnit.MILLISECONDS.toSeconds(new k(((am)localObject2).field_pkgPath).lastModified()) < l1 - l2)
           {
-            ad.i("MicroMsg.AppBrand.PkgCleanupNewLogic", "processEncrypted, delete record(%s %d %d)", new Object[] { ((al)localObject2).field_appId, Integer.valueOf(((al)localObject2).field_type), Integer.valueOf(((al)localObject2).field_version) });
-            ((am)com.tencent.mm.plugin.appbrand.app.j.T(am.class)).delete((c)localObject2, new String[0]);
-            i.cZ(((al)localObject2).field_pkgPath, true);
+            ae.i("MicroMsg.AppBrand.PkgCleanupNewLogic", "processEncrypted, delete record(%s %d %d)", new Object[] { ((am)localObject2).field_appId, Integer.valueOf(((am)localObject2).field_type), Integer.valueOf(((am)localObject2).field_version) });
+            ((an)com.tencent.mm.plugin.appbrand.app.j.T(an.class)).delete((c)localObject2, new String[0]);
+            o.dd(((am)localObject2).field_pkgPath, true);
           }
         }
       }
       AppMethodBeat.o(44252);
     }
     
-    private void aZH()
+    private void bae()
     {
       AppMethodBeat.i(44253);
-      Object localObject1 = new e(ay.baz());
-      if ((!((e)localObject1).exists()) || (!((e)localObject1).isDirectory()))
+      Object localObject1 = new k(az.baY());
+      if ((!((k)localObject1).exists()) || (!((k)localObject1).isDirectory()))
       {
         AppMethodBeat.o(44253);
         return;
       }
-      localObject1 = ((e)localObject1).a(new com.tencent.mm.vfs.g()
+      localObject1 = ((k)localObject1).a(new com.tencent.mm.vfs.m()
       {
-        public final boolean accept(e paramAnonymouse)
+        public final boolean accept(k paramAnonymousk)
         {
           AppMethodBeat.i(174706);
-          boolean bool = paramAnonymouse.isFile();
+          boolean bool = paramAnonymousk.isFile();
           AppMethodBeat.o(174706);
           return bool;
         }
@@ -456,9 +459,9 @@ public abstract interface n
       if (i < j)
       {
         Object localObject2 = localObject1[i];
-        Object localObject4 = com.tencent.mm.plugin.appbrand.app.j.aYX();
-        Object localObject3 = q.B(localObject2.fOK());
-        localObject4 = ((bg)localObject4).jIJ;
+        Object localObject4 = com.tencent.mm.plugin.appbrand.app.j.aZu();
+        Object localObject3 = com.tencent.mm.vfs.w.B(localObject2.fTh());
+        localObject4 = ((bh)localObject4).jLK;
         String str = String.format("%s=?", new Object[] { "pkgPath" });
         localObject3 = ((com.tencent.mm.sdk.e.f)localObject4).a("AppBrandWxaPkgManifestRecord", new String[] { "appId" }, str, new String[] { localObject3 }, null, null, null, 2);
         boolean bool;
@@ -468,7 +471,7 @@ public abstract interface n
         for (;;)
         {
           if (!bool) {
-            n.a.Li(q.B(localObject2.fOK()));
+            n.a.LJ(com.tencent.mm.vfs.w.B(localObject2.fTh()));
           }
           i += 1;
           break;
@@ -479,31 +482,31 @@ public abstract interface n
       AppMethodBeat.o(44253);
     }
     
-    private static void aZI()
+    private static void baf()
     {
       AppMethodBeat.i(44254);
-      Object localObject1 = com.tencent.mm.plugin.appbrand.page.bg.meG;
-      localObject1 = new e(bg.a.CP());
-      if ((!((e)localObject1).exists()) || (!((e)localObject1).isDirectory()))
+      Object localObject1 = bf.mja;
+      localObject1 = new k(bf.a.CS());
+      if ((!((k)localObject1).exists()) || (!((k)localObject1).isDirectory()))
       {
-        ((e)localObject1).delete();
+        ((k)localObject1).delete();
         AppMethodBeat.o(44254);
         return;
       }
       HashMap localHashMap = new HashMap();
-      e[] arrayOfe = ((e)localObject1).fOM();
-      int j = arrayOfe.length;
+      k[] arrayOfk = ((k)localObject1).fTj();
+      int j = arrayOfk.length;
       int i = 0;
-      e locale;
+      k localk;
       Object localObject2;
       while (i < j)
       {
-        locale = arrayOfe[i];
-        localObject1 = locale.getName().split(Pattern.quote("-"));
+        localk = arrayOfk[i];
+        localObject1 = localk.getName().split(Pattern.quote("-"));
         if ((localObject1 == null) || (localObject1.length < 2))
         {
-          i.deleteFile(q.B(locale.fOK()));
-          i.cZ(q.B(locale.fOK()), true);
+          o.deleteFile(com.tencent.mm.vfs.w.B(localk.fTh()));
+          o.dd(com.tencent.mm.vfs.w.B(localk.fTh()), true);
           i += 1;
         }
         else
@@ -524,19 +527,19 @@ public abstract interface n
         }
         for (;;)
         {
-          int k = bt.getInt((String)localObject1, 0);
+          int k = bu.getInt((String)localObject1, 0);
           int[] arrayOfInt = (int[])localHashMap.get(localObject2);
           localObject1 = arrayOfInt;
           if (arrayOfInt == null)
           {
-            localObject1 = com.tencent.mm.plugin.appbrand.app.j.aYX().LG((String)localObject2);
+            localObject1 = com.tencent.mm.plugin.appbrand.app.j.aZu().Mj((String)localObject2);
             localHashMap.put(localObject2, localObject1);
           }
           if (a.contains((int[])localObject1, k)) {
             break;
           }
-          i.deleteFile(q.B(locale.fOK()));
-          i.cZ(q.B(locale.fOK()), true);
+          o.deleteFile(com.tencent.mm.vfs.w.B(localk.fTh()));
+          o.dd(com.tencent.mm.vfs.w.B(localk.fTh()), true);
           break;
           if (1 > ((String)localObject1).length()) {
             localObject1 = "";
@@ -552,13 +555,13 @@ public abstract interface n
     public final void run()
     {
       AppMethodBeat.i(44250);
-      if (com.tencent.mm.plugin.appbrand.app.j.aYX() == null)
+      if (com.tencent.mm.plugin.appbrand.app.j.aZu() == null)
       {
-        ad.e("MicroMsg.AppBrand.PkgCleanupNewLogic", "run() entered but storage not ready");
+        ae.e("MicroMsg.AppBrand.PkgCleanupNewLogic", "run() entered but storage not ready");
         AppMethodBeat.o(44250);
         return;
       }
-      this.jFI.set(false);
+      this.jIH.set(false);
       long l3;
       long l1;
       label325:
@@ -568,17 +571,17 @@ public abstract interface n
         Object localObject3;
         try
         {
-          com.tencent.mm.plugin.report.service.g.yhR.dD(1007, 1);
-          l3 = bt.HI();
+          com.tencent.mm.plugin.report.service.g.yxI.dD(1007, 1);
+          l3 = bu.HQ();
         }
         catch (Throwable localThrowable1)
         {
           try
           {
-            bg localbg = com.tencent.mm.plugin.appbrand.app.j.aYX();
+            bh localbh = com.tencent.mm.plugin.appbrand.app.j.aZu();
             localObject3 = new StringBuilder("debugType");
             ((StringBuilder)localObject3).append(" in (");
-            localObject4 = j.jFA;
+            localObject4 = j.jIz;
             int j = localObject4.length;
             int i = 0;
             if (i < j)
@@ -587,12 +590,12 @@ public abstract interface n
               i += 1;
               continue;
               localThrowable1 = localThrowable1;
-              ad.printErrStackTrace("MicroMsg.AppBrand.PkgCleanupNewLogic", localThrowable1, "cleanup start report", new Object[0]);
+              ae.printErrStackTrace("MicroMsg.AppBrand.PkgCleanupNewLogic", localThrowable1, "cleanup start report", new Object[0]);
               continue;
             }
             ((StringBuilder)localObject3).append(-1).append(')');
             localObject3 = ((StringBuilder)localObject3).toString();
-            localObject3 = localThrowable1.jIJ.a("AppBrandWxaPkgManifestRecord", null, (String)localObject3, null, null, null, null, 2);
+            localObject3 = localThrowable1.jLK.a("AppBrandWxaPkgManifestRecord", null, (String)localObject3, null, null, null, null, 2);
             if (localObject3 != null) {
               break label325;
             }
@@ -602,7 +605,7 @@ public abstract interface n
           {
             Object localObject4;
             Object localObject1;
-            ad.i("MicroMsg.AppBrand.PkgCleanupNewLogic", "interrupted %s", new Object[] { Log.getStackTraceString(localInterruptedException) });
+            ae.i("MicroMsg.AppBrand.PkgCleanupNewLogic", "interrupted %s", new Object[] { Log.getStackTraceString(localInterruptedException) });
             return;
             if (((Cursor)localObject3).moveToFirst()) {
               break label348;
@@ -613,8 +616,8 @@ public abstract interface n
             localArrayList = new ArrayList();
             do
             {
-              localObject4 = new bc();
-              ((bc)localObject4).convertFrom((Cursor)localObject3);
+              localObject4 = new bd();
+              ((bd)localObject4).convertFrom((Cursor)localObject3);
               localArrayList.add(localObject4);
             } while (((Cursor)localObject3).moveToNext());
             ((Cursor)localObject3).close();
@@ -622,52 +625,52 @@ public abstract interface n
           }
           catch (Throwable localThrowable2)
           {
-            ad.e("MicroMsg.AppBrand.PkgCleanupNewLogic", "process occur exception %s", new Object[] { localThrowable2 });
+            ae.e("MicroMsg.AppBrand.PkgCleanupNewLogic", "process occur exception %s", new Object[] { localThrowable2 });
             return;
-            aZE();
-            if ((((bc)localObject3).field_endTime <= 0L) || (((bc)localObject3).field_endTime > l1)) {
+            bab();
+            if ((((bd)localObject3).field_endTime <= 0L) || (((bd)localObject3).field_endTime > l1)) {
               break label597;
             }
-            if (((bc)localObject3).field_debugType != 999) {
+            if (((bd)localObject3).field_debugType != 999) {
               continue;
             }
-            n.a.Li(((bc)localObject3).field_pkgPath);
-            com.tencent.mm.plugin.appbrand.app.j.aYX().a((bc)localObject3);
-            ad.i("MicroMsg.AppBrand.PkgCleanupNewLogic", "processDebug, (%s, %d) exceed time range[%d, %d]", new Object[] { ((bc)localObject3).field_appId, Integer.valueOf(((bc)localObject3).field_debugType), Long.valueOf(((bc)localObject3).field_startTime), Long.valueOf(((bc)localObject3).field_endTime) });
+            n.a.LJ(((bd)localObject3).field_pkgPath);
+            com.tencent.mm.plugin.appbrand.app.j.aZu().a((bd)localObject3);
+            ae.i("MicroMsg.AppBrand.PkgCleanupNewLogic", "processDebug, (%s, %d) exceed time range[%d, %d]", new Object[] { ((bd)localObject3).field_appId, Integer.valueOf(((bd)localObject3).field_debugType), Long.valueOf(((bd)localObject3).field_startTime), Long.valueOf(((bd)localObject3).field_endTime) });
             continue;
           }
           finally
           {
-            ad.i("MicroMsg.AppBrand.PkgCleanupNewLogic", "run() cost %dms", new Object[] { Long.valueOf(bt.HI() - l3) });
+            ae.i("MicroMsg.AppBrand.PkgCleanupNewLogic", "run() cost %dms", new Object[] { Long.valueOf(bu.HQ() - l3) });
             AppMethodBeat.o(44250);
           }
-          if (bt.hj((List)localObject1)) {
+          if (bu.ht((List)localObject1)) {
             break;
           }
-          aZE();
-          l1 = bt.aQJ();
+          bab();
+          l1 = bu.aRi();
           localObject1 = ((List)localObject1).iterator();
           if (!((Iterator)localObject1).hasNext()) {
             break;
           }
-          localObject3 = (bc)((Iterator)localObject1).next();
-          if (com.tencent.mm.plugin.appbrand.task.f.UF(((bc)localObject3).field_appId))
+          localObject3 = (bd)((Iterator)localObject1).next();
+          if (com.tencent.mm.plugin.appbrand.task.f.Vq(((bd)localObject3).field_appId))
           {
-            ad.i("MicroMsg.AppBrand.PkgCleanupNewLogic", "processDebug appID(%s) is running, skip", new Object[] { ((bc)localObject3).field_appId });
+            ae.i("MicroMsg.AppBrand.PkgCleanupNewLogic", "processDebug appID(%s) is running, skip", new Object[] { ((bd)localObject3).field_appId });
             continue;
           }
         }
         label348:
-        if (((bc)localObject3).field_debugType == 999) {
-          ad.i("MicroMsg.AppBrand.PkgCleanupNewLogic", "processDebug, debug library not exceed time range[%d %d]", new Object[] { Long.valueOf(((bc)localObject3).field_startTime), Long.valueOf(((bc)localObject3).field_endTime) });
+        if (((bd)localObject3).field_debugType == 999) {
+          ae.i("MicroMsg.AppBrand.PkgCleanupNewLogic", "processDebug, debug library not exceed time range[%d %d]", new Object[] { Long.valueOf(((bd)localObject3).field_startTime), Long.valueOf(((bd)localObject3).field_endTime) });
         }
       }
-      aZF();
-      aZG();
-      aZH();
-      aZI();
-      aZE();
-      StatFs localStatFs = new StatFs(ay.baz());
+      bac();
+      bad();
+      bae();
+      baf();
+      bab();
+      StatFs localStatFs = new StatFs(az.baY());
       long l4;
       long l2;
       label711:
@@ -676,14 +679,14 @@ public abstract interface n
       if (Build.VERSION.SDK_INT >= 18)
       {
         l1 = localStatFs.getBlockCountLong();
-        l4 = n.b.aZC();
+        l4 = n.b.aZZ();
         if (Build.VERSION.SDK_INT < 18) {
           break label944;
         }
         l2 = localStatFs.getBlockSizeLong();
         d1 = l4 / l2 / l1;
-        d2 = AppBrandGlobalSystemConfig.bdT().jWS.jXl / 100.0F;
-        if ((d1 <= d2) || (l4 <= AppBrandGlobalSystemConfig.bdT().jWS.jXk * 1048576L)) {
+        d2 = AppBrandGlobalSystemConfig.bez().kah.kaA / 100.0F;
+        if ((d1 <= d2) || (l4 <= AppBrandGlobalSystemConfig.bez().kah.kaz * 1048576L)) {
           break label1011;
         }
       }
@@ -691,10 +694,10 @@ public abstract interface n
       label1011:
       for (boolean bool = true;; bool = false)
       {
-        ad.i("MicroMsg.AppBrand.PkgCleanupNewLogic", "processByFilesystemUsage, usedPercent(%f), maxPercent(%f), usedBytes(%d), maxMB(%d), shouldCleanup=%B", new Object[] { Double.valueOf(d1), Double.valueOf(d2), Long.valueOf(l4), Long.valueOf(AppBrandGlobalSystemConfig.bdT().jWS.jXk), Boolean.valueOf(bool) });
+        ae.i("MicroMsg.AppBrand.PkgCleanupNewLogic", "processByFilesystemUsage, usedPercent(%f), maxPercent(%f), usedBytes(%d), maxMB(%d), shouldCleanup=%B", new Object[] { Double.valueOf(d1), Double.valueOf(d2), Long.valueOf(l4), Long.valueOf(AppBrandGlobalSystemConfig.bez().kah.kaz), Boolean.valueOf(bool) });
         if (bool)
         {
-          ad.i("MicroMsg.AppBrand.PkgCleanupNewLogic", "processByFilesystemUsage, cleanup by conditions usedPercent(%f) > maxPercent(%f)", new Object[] { Double.valueOf(d1), Double.valueOf(d2) });
+          ae.i("MicroMsg.AppBrand.PkgCleanupNewLogic", "processByFilesystemUsage, cleanup by conditions usedPercent(%f) > maxPercent(%f)", new Object[] { Double.valueOf(d1), Double.valueOf(d2) });
           double d3 = l1;
           if (Build.VERSION.SDK_INT < 18) {
             break label955;
@@ -704,11 +707,11 @@ public abstract interface n
           if (l1 >= 0L) {
             break label966;
           }
-          ad.e("MicroMsg.AppBrand.PkgCleanupNewLogic", "processByFilesystemUsage, calculated bytesToTrim is minus");
+          ae.e("MicroMsg.AppBrand.PkgCleanupNewLogic", "processByFilesystemUsage, calculated bytesToTrim is minus");
         }
         for (;;)
         {
-          ad.i("MicroMsg.AppBrand.PkgCleanupNewLogic", "run() cost %dms", new Object[] { Long.valueOf(bt.HI() - l3) });
+          ae.i("MicroMsg.AppBrand.PkgCleanupNewLogic", "run() cost %dms", new Object[] { Long.valueOf(bu.HQ() - l3) });
           AppMethodBeat.o(44250);
           return;
           l1 = localStatFs.getBlockCount();
@@ -717,10 +720,10 @@ public abstract interface n
           break label711;
           l1 = localStatFs.getBlockSize();
           break label874;
-          aZE();
-          ab.a(l1, new ab.a()
+          bab();
+          ac.a(l1, new ac.a()
           {
-            public final boolean aVB()
+            public final boolean aWa()
             {
               AppMethodBeat.i(44246);
               boolean bool = n.d.a(n.d.this).get();
@@ -728,10 +731,10 @@ public abstract interface n
               return bool;
             }
           });
-          if (u.aZT()) {
-            aj.a(l1 / 5L, new aj.a()
+          if (v.bas()) {
+            ak.a(l1 / 5L, new ak.a()
             {
-              public final boolean aVB()
+              public final boolean aWa()
               {
                 AppMethodBeat.i(44247);
                 boolean bool = n.d.a(n.d.this).get();
@@ -747,12 +750,12 @@ public abstract interface n
   
   public static final class e
   {
-    public static int aZJ()
+    public static int bag()
     {
       AppMethodBeat.i(44255);
       HashSet localHashSet = new HashSet();
       Object localObject = "select distinct appId from AppBrandWxaPkgManifestRecord where  ( appId not like '%%$%%' or appId like " + String.format(Locale.US, "'%%$%s'", new Object[] { "__APP__" }) + " )  and  ( pkgPath is not null  and pkgPath != ''  ) ";
-      Cursor localCursor = com.tencent.mm.plugin.appbrand.app.j.aYL().a((String)localObject, null, 2);
+      Cursor localCursor = com.tencent.mm.plugin.appbrand.app.j.aZh().a((String)localObject, null, 2);
       if ((localCursor != null) && (!localCursor.isClosed()))
       {
         if (localCursor.moveToFirst()) {
@@ -769,7 +772,7 @@ public abstract interface n
         }
         localCursor.close();
       }
-      localObject = com.tencent.mm.plugin.appbrand.app.j.aYL().a("select distinct appId from PredownloadEncryptPkgInfo where pkgPath is not null  and pkgPath != '' ", null, 2);
+      localObject = com.tencent.mm.plugin.appbrand.app.j.aZh().a("select distinct appId from PredownloadEncryptPkgInfo where pkgPath is not null  and pkgPath != '' ", null, 2);
       if ((localObject != null) && (!((Cursor)localObject).isClosed()))
       {
         if (((Cursor)localObject).moveToFirst()) {

@@ -8,12 +8,12 @@ import java.util.concurrent.locks.Lock;
 final class e
   implements Lock
 {
-  public static final Lock NBg;
+  public static final Lock NYn;
   
   static
   {
     AppMethodBeat.i(60555);
-    NBg = new e();
+    NYn = new e();
     AppMethodBeat.o(60555);
   }
   

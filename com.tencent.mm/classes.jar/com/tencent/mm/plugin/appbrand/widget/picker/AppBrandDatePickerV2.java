@@ -17,13 +17,13 @@ public class AppBrandDatePickerV2
 {
   private Context context;
   private View mView;
-  private boolean nkn;
-  private boolean nko;
-  public Date nks;
-  public Date nkt;
-  private int nkx;
-  private int nky;
-  private int nkz;
+  public Date npA;
+  public Date npB;
+  private int npF;
+  private int npG;
+  private int npH;
+  private boolean npv;
+  private boolean npw;
   private com.tencent.mm.picker.f.c pvTime;
   
   @Keep
@@ -39,14 +39,14 @@ public class AppBrandDatePickerV2
   public final void a(int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
     AppMethodBeat.i(137988);
-    this.nko = paramBoolean3;
-    this.nkn = paramBoolean2;
+    this.npw = paramBoolean3;
+    this.npv = paramBoolean2;
     Object localObject = Calendar.getInstance();
     ((Calendar)localObject).set(paramInt1, paramInt2 - 1, paramInt3);
     Calendar localCalendar1 = Calendar.getInstance();
-    localCalendar1.setTime(this.nks);
+    localCalendar1.setTime(this.npA);
     Calendar localCalendar2 = Calendar.getInstance();
-    localCalendar2.setTime(this.nkt);
+    localCalendar2.setTime(this.npB);
     com.tencent.mm.picker.b.b localb = new com.tencent.mm.picker.b.b(this.context, new com.tencent.mm.picker.d.e()
     {
       public final void a(Date paramAnonymousDate)
@@ -57,22 +57,22 @@ public class AppBrandDatePickerV2
       }
     });
     d local1 = new d() {};
-    localb.iLi.iLl = local1;
-    localObject = localb.aPV().b(new boolean[] { paramBoolean1, paramBoolean2, paramBoolean3, false, false, false }).a((Calendar)localObject).a(localCalendar1, localCalendar2);
+    localb.iOb.iOe = local1;
+    localObject = localb.aQu().b(new boolean[] { paramBoolean1, paramBoolean2, paramBoolean3, false, false, false }).a((Calendar)localObject).a(localCalendar1, localCalendar2);
     paramInt1 = this.context.getResources().getDimensionPixelSize(2131166681);
-    ((com.tencent.mm.picker.b.b)localObject).iLi.kl = paramInt1;
+    ((com.tencent.mm.picker.b.b)localObject).iOb.kl = paramInt1;
     ((com.tencent.mm.picker.b.b)localObject).a(this.pvTime);
     this.pvTime.setDividerHeight(this.context.getResources().getDimensionPixelSize(2131165923));
     this.context.getResources().getDimensionPixelSize(2131166681);
     localObject = this.pvTime;
     paramInt1 = android.support.v4.content.b.n(this.context, 2131099656);
-    ((com.tencent.mm.picker.f.c)localObject).iMb.setDividerColor(paramInt1);
+    ((com.tencent.mm.picker.f.c)localObject).iOU.setDividerColor(paramInt1);
     this.pvTime.du(this.context.getResources().getDimensionPixelSize(2131165289), this.context.getResources().getDimensionPixelSize(2131165289));
-    localObject = this.pvTime.iMb.aQh().iterator();
+    localObject = this.pvTime.iOU.aQG().iterator();
     while (((Iterator)localObject).hasNext()) {
-      ((WheelView)((Iterator)localObject).next()).qQ(android.support.v4.content.b.n(this.context, 2131099664)).qP(this.context.getResources().getDimensionPixelSize(2131165289)).setBackgroundColor(android.support.v4.content.b.n(this.context, 2131099653));
+      ((WheelView)((Iterator)localObject).next()).qT(android.support.v4.content.b.n(this.context, 2131099664)).qS(this.context.getResources().getDimensionPixelSize(2131165289)).setBackgroundColor(android.support.v4.content.b.n(this.context, 2131099653));
     }
-    localObject = this.pvTime.iMb.aQh();
+    localObject = this.pvTime.iOU.aQG();
     if (((List)localObject).size() == 1)
     {
       ((WheelView)((List)localObject).get(0)).setPadding(0, this.context.getResources().getDimensionPixelSize(2131165289), 0, this.context.getResources().getDimensionPixelSize(2131165289));
@@ -99,7 +99,7 @@ public class AppBrandDatePickerV2
   {
     AppMethodBeat.i(137987);
     if (this.mView == null) {
-      this.mView = this.pvTime.aQe();
+      this.mView = this.pvTime.aQD();
     }
     View localView = this.mView;
     AppMethodBeat.o(137987);
@@ -116,7 +116,7 @@ public class AppBrandDatePickerV2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.picker.AppBrandDatePickerV2
  * JD-Core Version:    0.7.0.1
  */

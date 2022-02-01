@@ -17,12 +17,12 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.plugin.wallet.a.s;
 import com.tencent.mm.plugin.wallet_core.model.Bankcard;
 import com.tencent.mm.plugin.wallet_core.model.an;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -30,24 +30,24 @@ import java.util.Iterator;
 public class WalletSelectBankcardModeUI
   extends WalletBaseUI
 {
-  private TextView CAi;
-  private b CAj;
-  private ArrayList<Bankcard> CyC;
-  private Bankcard CyD;
-  private String CyE;
-  private int CyQ;
+  private ArrayList<Bankcard> CQh;
+  private Bankcard CQi;
+  private String CQj;
+  private int CQv;
+  private TextView CRN;
+  private b CRO;
   private ListView GF;
-  private int fPp;
+  private int fRv;
   private ArrayList<a> mData;
-  private int sQX;
+  private int tci;
   
   public WalletSelectBankcardModeUI()
   {
     AppMethodBeat.i(68732);
-    this.fPp = 0;
-    this.CyQ = 0;
+    this.fRv = 0;
+    this.CQv = 0;
     this.mData = new ArrayList();
-    this.sQX = -1;
+    this.tci = -1;
     AppMethodBeat.o(68732);
   }
   
@@ -81,19 +81,19 @@ public class WalletSelectBankcardModeUI
         return true;
       }
     });
-    this.CAi = ((TextView)findViewById(2131306832));
+    this.CRN = ((TextView)findViewById(2131306832));
     Object localObject;
     label200:
     int i;
     label254:
     Bankcard localBankcard;
     a locala;
-    if (this.fPp == 0)
+    if (this.fRv == 0)
     {
-      this.CAi.setText(2131765863);
+      this.CRN.setText(2131765863);
       this.GF = ((ListView)findViewById(2131306687));
-      this.CAj = new b();
-      this.GF.setAdapter(this.CAj);
+      this.CRO = new b();
+      this.GF.setAdapter(this.CRO);
       this.GF.setOnItemClickListener(new AdapterView.OnItemClickListener()
       {
         public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
@@ -102,39 +102,39 @@ public class WalletSelectBankcardModeUI
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
           localb.bd(paramAnonymousAdapterView);
           localb.bd(paramAnonymousView);
-          localb.mr(paramAnonymousInt);
-          localb.qY(paramAnonymousLong);
-          a.b("com/tencent/mm/plugin/wallet/balance/ui/WalletSelectBankcardModeUI$2", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.ahq());
+          localb.mu(paramAnonymousInt);
+          localb.rl(paramAnonymousLong);
+          a.b("com/tencent/mm/plugin/wallet/balance/ui/WalletSelectBankcardModeUI$2", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.ahF());
           WalletSelectBankcardModeUI.a(WalletSelectBankcardModeUI.this, paramAnonymousInt);
           WalletSelectBankcardModeUI.a(WalletSelectBankcardModeUI.this).notifyDataSetChanged();
           paramAnonymousAdapterView = new Intent();
           paramAnonymousAdapterView.putExtra("key_select_index", paramAnonymousInt);
           WalletSelectBankcardModeUI.this.setResult(-1, paramAnonymousAdapterView);
-          ad.i("MicroMsg.WalletSelectBankcardModeUI", "onItemClick pos is ".concat(String.valueOf(paramAnonymousInt)));
+          ae.i("MicroMsg.WalletSelectBankcardModeUI", "onItemClick pos is ".concat(String.valueOf(paramAnonymousInt)));
           WalletSelectBankcardModeUI.this.finish();
           a.a(this, "com/tencent/mm/plugin/wallet/balance/ui/WalletSelectBankcardModeUI$2", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
           AppMethodBeat.o(68728);
         }
       });
       this.mData.clear();
-      this.CyE = getString(2131765025);
-      if (this.fPp != 0) {
+      this.CQj = getString(2131765025);
+      if (this.fRv != 0) {
         break label557;
       }
-      s.eDp();
-      localObject = s.eDq();
-      this.CyC = ((an)localObject).eGw();
-      this.CyD = ((an)localObject).a(this.CyC, null, false, true);
-      if (((an)localObject).DaY == null) {
+      s.eGW();
+      localObject = s.eGX();
+      this.CQh = ((an)localObject).eKd();
+      this.CQi = ((an)localObject).a(this.CQh, null, false, true);
+      if (((an)localObject).DsC == null) {
         break label396;
       }
-      this.CyQ = ((an)localObject).DaY.CyQ;
-      ad.e("MicroMsg.WalletSelectBankcardModeUI", "is_show_charge is " + this.CyQ);
-      if ((this.CyC == null) || (this.CyC.size() <= 0)) {
+      this.CQv = ((an)localObject).DsC.CQv;
+      ae.e("MicroMsg.WalletSelectBankcardModeUI", "is_show_charge is " + this.CQv);
+      if ((this.CQh == null) || (this.CQh.size() <= 0)) {
         break label570;
       }
-      ad.i("MicroMsg.WalletSelectBankcardModeUI", "mBankcardList size is " + this.CyC.size());
-      localObject = this.CyC.iterator();
+      ae.i("MicroMsg.WalletSelectBankcardModeUI", "mBankcardList size is " + this.CQh.size());
+      localObject = this.CQh.iterator();
       i = 0;
       if (!((Iterator)localObject).hasNext()) {
         break label505;
@@ -142,53 +142,53 @@ public class WalletSelectBankcardModeUI
       localBankcard = (Bankcard)((Iterator)localObject).next();
       locala = new a((byte)0);
       locala.title = localBankcard.field_desc;
-      if ((localBankcard.field_fetch_charge_rate <= 0.0D) || (this.CyQ != 1)) {
+      if ((localBankcard.field_fetch_charge_rate <= 0.0D) || (this.CQv != 1)) {
         break label454;
       }
       if (TextUtils.isEmpty(localBankcard.field_fetch_charge_info)) {
         break label411;
       }
-      locala.oBP = localBankcard.field_fetch_charge_info;
+      locala.oIr = localBankcard.field_fetch_charge_info;
     }
     for (;;)
     {
       this.mData.add(locala);
-      if ((this.sQX == -1) && (this.CyD != null) && (this.CyD.equals(localBankcard))) {
-        this.sQX = i;
+      if ((this.tci == -1) && (this.CQi != null) && (this.CQi.equals(localBankcard))) {
+        this.tci = i;
       }
       i += 1;
       break label254;
-      if (this.fPp != 1) {
+      if (this.fRv != 1) {
         break;
       }
-      this.CAi.setText(2131765864);
+      this.CRN.setText(2131765864);
       break;
       label396:
-      this.CyQ = 0;
-      ad.e("MicroMsg.WalletSelectBankcardModeUI", "userInfo.getBalanceFetchInfo() is null");
+      this.CQv = 0;
+      ae.e("MicroMsg.WalletSelectBankcardModeUI", "userInfo.getBalanceFetchInfo() is null");
       break label200;
       label411:
-      locala.oBP = (getString(2131764982) + localBankcard.field_fetch_charge_rate * 100.0D + "%");
+      locala.oIr = (getString(2131764982) + localBankcard.field_fetch_charge_rate * 100.0D + "%");
       continue;
       label454:
-      ad.i("MicroMsg.WalletSelectBankcardModeUI", "the bank " + localBankcard.field_desc + " field_fetch_charge_rate is " + localBankcard.field_fetch_charge_rate + " is_show_charge is " + this.CyQ);
+      ae.i("MicroMsg.WalletSelectBankcardModeUI", "the bank " + localBankcard.field_desc + " field_fetch_charge_rate is " + localBankcard.field_fetch_charge_rate + " is_show_charge is " + this.CQv);
     }
     label505:
-    if ((this.sQX == -1) && (this.CyD == null)) {
-      this.sQX = i;
+    if ((this.tci == -1) && (this.CQi == null)) {
+      this.tci = i;
     }
     for (;;)
     {
       localObject = new a((byte)0);
-      ((a)localObject).title = this.CyE;
-      ((a)localObject).oBP = "";
+      ((a)localObject).title = this.CQj;
+      ((a)localObject).oIr = "";
       this.mData.add(localObject);
       label557:
-      this.CAj.notifyDataSetChanged();
+      this.CRO.notifyDataSetChanged();
       AppMethodBeat.o(68734);
       return;
       label570:
-      ad.i("MicroMsg.WalletSelectBankcardModeUI", "hy: no bankcard show new only");
+      ae.i("MicroMsg.WalletSelectBankcardModeUI", "hy: no bankcard show new only");
     }
   }
   
@@ -197,9 +197,9 @@ public class WalletSelectBankcardModeUI
     AppMethodBeat.i(68733);
     super.onCreate(paramBundle);
     setResult(0);
-    this.fPp = getIntent().getIntExtra("key_scene_select_bankcard_mode_ui", 0);
-    this.sQX = getIntent().getIntExtra("key_select_index", -1);
-    ad.i("MicroMsg.WalletSelectBankcardModeUI", "onCreate() mFromScene is " + this.fPp);
+    this.fRv = getIntent().getIntExtra("key_scene_select_bankcard_mode_ui", 0);
+    this.tci = getIntent().getIntExtra("key_select_index", -1);
+    ae.i("MicroMsg.WalletSelectBankcardModeUI", "onCreate() mFromScene is " + this.fRv);
     initView();
     AppMethodBeat.o(68733);
   }
@@ -230,7 +230,7 @@ public class WalletSelectBankcardModeUI
   
   static final class a
   {
-    public String oBP = "";
+    public String oIr = "";
     public String title = "";
   }
   
@@ -262,10 +262,10 @@ public class WalletSelectBankcardModeUI
       TextView localTextView2 = (TextView)paramView.findViewById(2131297174);
       ImageView localImageView = (ImageView)paramView.findViewById(2131304542);
       localTextView1.setText(paramViewGroup.title);
-      if (!TextUtils.isEmpty(paramViewGroup.oBP))
+      if (!TextUtils.isEmpty(paramViewGroup.oIr))
       {
         localTextView2.setVisibility(0);
-        localTextView2.setText(paramViewGroup.oBP);
+        localTextView2.setText(paramViewGroup.oIr);
         if (WalletSelectBankcardModeUI.c(WalletSelectBankcardModeUI.this) != paramInt) {
           break label133;
         }

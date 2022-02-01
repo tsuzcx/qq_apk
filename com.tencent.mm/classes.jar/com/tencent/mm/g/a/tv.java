@@ -1,15 +1,13 @@
 package com.tencent.mm.g.a;
 
-import android.content.Context;
-import android.content.DialogInterface.OnDismissListener;
-import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.wallet_core.model.a;
 import com.tencent.mm.sdk.b.b;
 
 public final class tv
   extends b
 {
-  public a dIl;
+  public a dJn;
   
   public tv()
   {
@@ -18,24 +16,21 @@ public final class tv
   
   private tv(byte paramByte)
   {
-    AppMethodBeat.i(77798);
-    this.dIl = new a();
-    this.IbR = false;
+    AppMethodBeat.i(63292);
+    this.dJn = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(77798);
+    AppMethodBeat.o(63292);
   }
   
   public static final class a
   {
-    public Context context;
-    public String dIm;
-    public DialogInterface.OnDismissListener dIn;
-    public Bundle dIo;
+    public a dJo;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.a.tv
  * JD-Core Version:    0.7.0.1
  */

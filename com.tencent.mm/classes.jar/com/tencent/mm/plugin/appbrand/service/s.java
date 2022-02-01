@@ -6,24 +6,17 @@ import java.util.List;
 public abstract interface s
   extends a
 {
-  public abstract a bcB();
+  public abstract void Mr(String paramString);
   
-  public static final class a
-  {
-    public String dxD;
-    public List<s.b> hJj;
-    public int mws;
-  }
+  public abstract void Mt(String paramString);
   
-  public static final class b
-  {
-    public String jPZ;
-    public String username;
-  }
+  public abstract void aW(List<String> paramList);
+  
+  public abstract void bby();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.service.s
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,15 @@
 package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.btq;
+import com.tencent.mm.protocal.protobuf.bue;
 import com.tencent.mm.sdk.b.b;
-import java.util.LinkedList;
+import java.util.List;
 
 public final class mp
   extends b
 {
-  public a dAx;
-  public b dAy;
+  public a dBs;
+  public b dBt;
   
   public mp()
   {
@@ -18,24 +18,32 @@ public final class mp
   
   private mp(byte paramByte)
   {
-    AppMethodBeat.i(138164);
-    this.dAx = new a();
-    this.dAy = new b();
-    this.IbR = false;
+    AppMethodBeat.i(89749);
+    this.dBs = new a();
+    this.dBt = new b();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(138164);
+    AppMethodBeat.o(89749);
   }
   
   public static final class a
   {
-    public String dyr;
-    public boolean dzW = false;
+    public boolean dBb = false;
+    public float dBu = 0.0F;
+    public int dBv = 0;
+    public int dBw = 0;
+    public String dBx;
+    public String dBy;
+    public int dsO = 0;
+    public float dzE = 0.0F;
   }
   
   public static final class b
   {
-    public LinkedList<btq> dAk;
-    public int dyW = 0;
+    public List<bue> dBA;
+    public int dBB = -1;
+    public boolean dBz = false;
+    public int dsO = 0;
   }
 }
 

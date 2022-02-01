@@ -6,17 +6,16 @@ import android.graphics.Rect;
 import android.os.Bundle;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.sns.data.q;
+import com.tencent.mm.plugin.sns.data.r;
 import com.tencent.mm.plugin.sns.j.b;
-import com.tencent.mm.plugin.sns.model.ag;
-import com.tencent.mm.plugin.sns.model.f;
+import com.tencent.mm.plugin.sns.model.ah;
+import com.tencent.mm.plugin.sns.model.ba;
 import com.tencent.mm.plugin.sns.storage.h;
 import com.tencent.mm.plugin.sns.storage.p;
 import com.tencent.mm.protocal.protobuf.TimeLineObject;
-import com.tencent.mm.protocal.protobuf.abf;
-import com.tencent.mm.protocal.protobuf.byn;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.abo;
+import com.tencent.mm.protocal.protobuf.bzh;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -24,50 +23,50 @@ import java.util.List;
 
 public final class ay
 {
-  private Activity dsa;
-  private List<byn> list;
+  private Activity dtg;
+  private List<bzh> list;
   
   public ay(Activity paramActivity)
   {
     AppMethodBeat.i(98728);
     this.list = new ArrayList();
-    this.dsa = paramActivity;
+    this.dtg = paramActivity;
     AppMethodBeat.o(98728);
   }
   
-  private boolean fd(String paramString, int paramInt)
+  private boolean fm(String paramString, int paramInt)
   {
     AppMethodBeat.i(98731);
-    Object localObject = h.aAa(paramString);
+    Object localObject = h.aBr(paramString);
     if (localObject == null)
     {
-      ad.e("MicroMsg.SnsImageDialogShowerMgr", "[initDataMediaList] snsinfo is null! localId:%s index:%ss", new Object[] { paramString, Integer.valueOf(paramInt) });
+      ae.e("MicroMsg.SnsImageDialogShowerMgr", "[initDataMediaList] snsinfo is null! localId:%s index:%ss", new Object[] { paramString, Integer.valueOf(paramInt) });
       AppMethodBeat.o(98731);
       return false;
     }
-    paramString = ((p)localObject).dYl();
-    if (paramString.HAT == null)
+    paramString = ((p)localObject).ebP();
+    if (paramString.HUG == null)
     {
-      ad.e("MicroMsg.SnsImageDialogShowerMgr", "[initDataMediaList] timeline.ContentObj is null!");
+      ae.e("MicroMsg.SnsImageDialogShowerMgr", "[initDataMediaList] timeline.ContentObj is null!");
       AppMethodBeat.o(98731);
       return false;
     }
-    if (paramString.HAT.GaQ.size() == 0)
+    if (paramString.HUG.Gtx.size() == 0)
     {
-      ad.e("MicroMsg.SnsImageDialogShowerMgr", "[initDataMediaList] timeline.ContentObj.MediaObjList.size() == 0");
+      ae.e("MicroMsg.SnsImageDialogShowerMgr", "[initDataMediaList] timeline.ContentObj.MediaObjList.size() == 0");
       AppMethodBeat.o(98731);
       return false;
     }
     this.list.clear();
-    paramString = paramString.HAT.GaQ.iterator();
+    paramString = paramString.HUG.Gtx.iterator();
     int i = 0;
     while (paramString.hasNext())
     {
-      localObject = (byn)paramString.next();
+      localObject = (bzh)paramString.next();
       this.list.add(localObject);
-      if ((paramInt == i) && (!ag.dUb().B((byn)localObject)))
+      if ((paramInt == i) && (!ah.dXB().B((bzh)localObject)))
       {
-        ad.e("MicroMsg.SnsImageDialogShowerMgr", "[initDataMediaList] is not exists");
+        ae.e("MicroMsg.SnsImageDialogShowerMgr", "[initDataMediaList] is not exists");
         AppMethodBeat.o(98731);
         return false;
       }
@@ -77,12 +76,12 @@ public final class ay
     return true;
   }
   
-  public final void a(View paramView, int paramInt1, int paramInt2, com.tencent.mm.plugin.sns.model.az paramaz, long paramLong)
+  public final void a(View paramView, int paramInt1, int paramInt2, ba paramba, long paramLong)
   {
     AppMethodBeat.i(98730);
     if (paramView == null)
     {
-      ad.e("MicroMsg.SnsImageDialogShowerMgr", "[showImg] view is null! scene:%s", new Object[] { Integer.valueOf(paramInt1) });
+      ae.e("MicroMsg.SnsImageDialogShowerMgr", "[showImg] view is null! scene:%s", new Object[] { Integer.valueOf(paramInt1) });
       AppMethodBeat.o(98730);
       return;
     }
@@ -95,26 +94,26 @@ public final class ay
     if ((localObject instanceof az))
     {
       localaz = (az)localObject;
-      str = localaz.drH;
+      str = localaz.dsN;
       i = localaz.index;
       j = localaz.position;
-      if (!fd(str, i))
+      if (!fm(str, i))
       {
-        ad.e("MicroMsg.SnsImageDialogShowerMgr", "[showImg] initDataMediaList, localId:%s position:%s", new Object[] { str, Integer.valueOf(i) });
+        ae.e("MicroMsg.SnsImageDialogShowerMgr", "[showImg] initDataMediaList, localId:%s position:%s", new Object[] { str, Integer.valueOf(i) });
         AppMethodBeat.o(98730);
         return;
       }
-      g.ajD();
-      if (!g.ajC().isSDCardAvailable())
+      com.tencent.mm.kernel.g.ajS();
+      if (!com.tencent.mm.kernel.g.ajR().isSDCardAvailable())
       {
-        ad.e("MicroMsg.SnsImageDialogShowerMgr", "[showImg] isSDCardAvailable:false");
+        ae.e("MicroMsg.SnsImageDialogShowerMgr", "[showImg] isSDCardAvailable:false");
         AppMethodBeat.o(98730);
         return;
       }
-      p localp = h.aAa(str);
-      if (!fd(str, i))
+      p localp = h.aBr(str);
+      if (!fm(str, i))
       {
-        ad.e("MicroMsg.SnsImageDialogShowerMgr", "[showImg] initDataMediaList, localId:%s position:%s", new Object[] { str, Integer.valueOf(i) });
+        ae.e("MicroMsg.SnsImageDialogShowerMgr", "[showImg] initDataMediaList, localId:%s position:%s", new Object[] { str, Integer.valueOf(i) });
         AppMethodBeat.o(98730);
         return;
       }
@@ -122,38 +121,38 @@ public final class ay
       if (localp == null) {
         break label799;
       }
-      if (paramaz != null) {
-        paramaz.zkL.F(localp);
+      if (paramba != null) {
+        paramba.zCa.F(localp);
       }
-      TimeLineObject localTimeLineObject = localp.dYl();
-      if (localaz.index >= localTimeLineObject.HAT.GaQ.size()) {
+      TimeLineObject localTimeLineObject = localp.ebP();
+      if (localaz.index >= localTimeLineObject.HUG.Gtx.size()) {
         break label765;
       }
-      paramaz = (byn)localTimeLineObject.HAT.GaQ.get(localaz.index);
+      paramba = (bzh)localTimeLineObject.HUG.Gtx.get(localaz.index);
       if (paramInt1 != 1) {
         break label777;
       }
-      localObject = com.tencent.mm.modelsns.e.pV(716);
+      localObject = com.tencent.mm.modelsns.e.pY(716);
       label279:
-      ((com.tencent.mm.modelsns.e)localObject).Gs(q.n(localp)).pY(localp.field_type).eS(localp.QM(32)).Gs(localp.dYT()).Gs(paramaz.Id).pY(localaz.index).pY(localTimeLineObject.HAT.GaQ.size());
-      ((com.tencent.mm.modelsns.e)localObject).aLk();
+      ((com.tencent.mm.modelsns.e)localObject).GU(r.o(localp)).qb(localp.field_type).eV(localp.Rt(32)).GU(localp.ecx()).GU(paramba.Id).qb(localaz.index).qb(localTimeLineObject.HUG.Gtx.size());
+      ((com.tencent.mm.modelsns.e)localObject).aLH();
       if (paramInt1 != 1) {
         break label788;
       }
-      paramaz = com.tencent.mm.modelsns.e.pV(744);
+      paramba = com.tencent.mm.modelsns.e.pY(744);
       label365:
-      paramaz.Gs(q.n(localp)).pY(localp.field_type).eS(localp.QM(32)).Gs(localp.dYT());
-      paramaz.b(localIntent, "intent_key_StatisticsOplog");
-      paramaz = new Bundle();
-      paramaz.putInt("stat_scene", 3);
-      paramaz.putString("stat_msg_id", "sns_" + q.zw(localp.field_snsId));
-      paramaz.putString("stat_send_msg_user", localp.field_userName);
-      localIntent.putExtra("_stat_obj", paramaz);
+      paramba.GU(r.o(localp)).qb(localp.field_type).eV(localp.Rt(32)).GU(localp.ecx());
+      paramba.b(localIntent, "intent_key_StatisticsOplog");
+      paramba = new Bundle();
+      paramba.putInt("stat_scene", 3);
+      paramba.putString("stat_msg_id", "sns_" + r.zV(localp.field_snsId));
+      paramba.putString("stat_send_msg_user", localp.field_userName);
+      localIntent.putExtra("_stat_obj", paramba);
     }
     for (;;)
     {
-      paramaz = new int[2];
-      paramView.getLocationInWindow(paramaz);
+      paramba = new int[2];
+      paramView.getLocationInWindow(paramba);
       int k = paramView.getWidth();
       int m = paramView.getHeight();
       if (paramInt1 == -1) {
@@ -166,33 +165,33 @@ public final class ay
       localIntent.putExtra("K_ad_scene", paramInt1);
       localIntent.putExtra("K_source", paramInt1);
       localIntent.putExtra("K_ad_source", paramInt2);
-      localIntent.putExtra("k_is_from_sns_main_timeline", localaz.Aae);
-      localIntent.putExtra("sns_gallery_thumb_location", new Rect(paramaz[0], paramaz[1], k + paramaz[0], paramaz[1] + m));
+      localIntent.putExtra("k_is_from_sns_main_timeline", localaz.Arr);
+      localIntent.putExtra("sns_gallery_thumb_location", new Rect(paramba[0], paramba[1], k + paramba[0], paramba[1] + m));
       localIntent.putExtra("sns_ad_exposure_start_time", paramLong);
-      localIntent.setClass(this.dsa, SnsBrowseUI.class);
-      paramView = this.dsa;
-      paramaz = new com.tencent.mm.hellhoundlib.b.a().bc(localIntent);
-      com.tencent.mm.hellhoundlib.a.a.a(paramView, paramaz.ahp(), "com/tencent/mm/plugin/sns/ui/SnsImageDialogShowerMgr", "showImg", "(Landroid/view/View;IILcom/tencent/mm/plugin/sns/model/TimelineContext;J)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramView.startActivity((Intent)paramaz.mq(0));
+      localIntent.setClass(this.dtg, SnsBrowseUI.class);
+      paramView = this.dtg;
+      paramba = new com.tencent.mm.hellhoundlib.b.a().bc(localIntent);
+      com.tencent.mm.hellhoundlib.a.a.a(paramView, paramba.ahE(), "com/tencent/mm/plugin/sns/ui/SnsImageDialogShowerMgr", "showImg", "(Landroid/view/View;IILcom/tencent/mm/plugin/sns/model/TimelineContext;J)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramView.startActivity((Intent)paramba.mt(0));
       com.tencent.mm.hellhoundlib.a.a.a(paramView, "com/tencent/mm/plugin/sns/ui/SnsImageDialogShowerMgr", "showImg", "(Landroid/view/View;IILcom/tencent/mm/plugin/sns/model/TimelineContext;J)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      this.dsa.overridePendingTransition(0, 0);
+      this.dtg.overridePendingTransition(0, 0);
       AppMethodBeat.o(98730);
       return;
       label765:
-      paramaz = new byn();
+      paramba = new bzh();
       break;
       label777:
-      localObject = com.tencent.mm.modelsns.e.pW(716);
+      localObject = com.tencent.mm.modelsns.e.pZ(716);
       break label279;
       label788:
-      paramaz = com.tencent.mm.modelsns.e.pW(744);
+      paramba = com.tencent.mm.modelsns.e.pZ(744);
       break label365;
       label799:
-      ad.e("MicroMsg.SnsImageDialogShowerMgr", "[showImg] info is null!");
+      ae.e("MicroMsg.SnsImageDialogShowerMgr", "[showImg] info is null!");
     }
   }
   
-  final void w(View paramView, int paramInt1, int paramInt2)
+  final void v(View paramView, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(98729);
     a(paramView, paramInt1, paramInt2, null, 0L);

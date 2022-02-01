@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.k.b;
+import com.tencent.mm.ah.k.b;
 import com.tencent.mm.opensdk.modelmsg.WXMediaMessage;
 import com.tencent.mm.plugin.fav.a.ab;
 import com.tencent.mm.plugin.fav.a.g;
@@ -37,26 +37,19 @@ public final class e
   {
     AppMethodBeat.i(24608);
     o.a locala = new o.a(paramContext);
-    locala.dP(paramString);
+    locala.dQ(paramString);
     d.a(locala, paramContext, paramg);
     d.b(locala, paramContext, paramg);
-    locala.l(Boolean.valueOf(paramBoolean)).YR(2131755884).a(parama).jcs.show();
+    locala.l(Boolean.valueOf(paramBoolean)).Zx(2131755884).a(parama).jfl.show();
     AppMethodBeat.o(24608);
   }
   
-  public final int agy(String paramString)
+  public final int ahv(String paramString)
   {
     AppMethodBeat.i(24607);
-    int i = q.aLB(paramString);
+    int i = q.aMX(paramString);
     AppMethodBeat.o(24607);
     return i;
-  }
-  
-  public final void b(Activity paramActivity, int paramInt1, int paramInt2, Intent paramIntent)
-  {
-    AppMethodBeat.i(24606);
-    a.a(paramActivity, paramInt1, paramInt2, paramIntent, true, 2131761623, 2131761624, 2);
-    AppMethodBeat.o(24606);
   }
   
   public final void b(Activity paramActivity, String paramString1, String paramString2)
@@ -64,6 +57,13 @@ public final class e
     AppMethodBeat.i(24605);
     a.b(paramActivity, paramString1, paramString2, 2);
     AppMethodBeat.o(24605);
+  }
+  
+  public final void c(Activity paramActivity, int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    AppMethodBeat.i(24606);
+    a.a(paramActivity, paramInt1, paramInt2, paramIntent, true, 2131761623, 2131761624, 2);
+    AppMethodBeat.o(24606);
   }
 }
 

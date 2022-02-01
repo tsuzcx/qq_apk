@@ -10,12 +10,12 @@ public final class b
     super(paramMMActivity);
   }
   
-  public final boolean bXG()
+  public final boolean bYV()
   {
     return true;
   }
   
-  public final boolean bXH()
+  public final boolean bYW()
   {
     return false;
   }

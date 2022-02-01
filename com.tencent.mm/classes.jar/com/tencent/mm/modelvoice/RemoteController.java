@@ -6,29 +6,29 @@ import android.content.Context;
 import android.content.Intent;
 import android.media.AudioManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.av;
-import com.tencent.mm.sdk.platformtools.av.a;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aw;
+import com.tencent.mm.sdk.platformtools.aw.a;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 public final class RemoteController
 {
-  private static Method iwn;
-  private static Method iwo;
-  private AudioManager iwl;
-  private ComponentName iwm;
+  private static Method izg;
+  private static Method izh;
+  private AudioManager ize;
+  private ComponentName izf;
   
   static
   {
     AppMethodBeat.i(148427);
     try
     {
-      if (iwn == null) {
-        iwn = AudioManager.class.getMethod("registerMediaButtonEventReceiver", new Class[] { ComponentName.class });
+      if (izg == null) {
+        izg = AudioManager.class.getMethod("registerMediaButtonEventReceiver", new Class[] { ComponentName.class });
       }
-      if (iwo == null) {
-        iwo = AudioManager.class.getMethod("unregisterMediaButtonEventReceiver", new Class[] { ComponentName.class });
+      if (izh == null) {
+        izh = AudioManager.class.getMethod("unregisterMediaButtonEventReceiver", new Class[] { ComponentName.class });
       }
       AppMethodBeat.o(148427);
       return;
@@ -46,15 +46,15 @@ public final class RemoteController
     {
       try
       {
-        Method localMethod = iwo;
+        Method localMethod = izh;
         if (localMethod == null)
         {
           super.finalize();
           AppMethodBeat.o(148426);
           return;
         }
-        iwo.invoke(this.iwl, new Object[] { this.iwm });
-        RemoteControlReceiver.aNo();
+        izh.invoke(this.ize, new Object[] { this.izf });
+        RemoteControlReceiver.aNM();
       }
       catch (InvocationTargetException localInvocationTargetException)
       {
@@ -77,7 +77,7 @@ public final class RemoteController
       }
       catch (IllegalAccessException localIllegalAccessException)
       {
-        ad.e("MicroMsg.RemoteControlReceiver", "unexpected ".concat(String.valueOf(localIllegalAccessException)));
+        ae.e("MicroMsg.RemoteControlReceiver", "unexpected ".concat(String.valueOf(localIllegalAccessException)));
       }
     }
   }
@@ -85,17 +85,17 @@ public final class RemoteController
   public static class RemoteControlReceiver
     extends BroadcastReceiver
   {
-    private static av cXg;
-    private static RemoteController.a iwp;
+    private static aw cYd;
+    private static RemoteController.a izi;
     
-    public static void aNo()
+    public static void aNM()
     {
       AppMethodBeat.i(148425);
-      iwp = null;
-      if (cXg != null)
+      izi = null;
+      if (cYd != null)
       {
-        cXg.stopTimer();
-        cXg = null;
+        cYd.stopTimer();
+        cYd = null;
       }
       AppMethodBeat.o(148425);
     }
@@ -110,30 +110,30 @@ public final class RemoteController
       }
       if (!"android.intent.action.MEDIA_BUTTON".equals(paramIntent.getAction()))
       {
-        ad.d("MicroMsg.RemoteControlReceiver", "unknown action, ignore" + paramIntent.getAction());
+        ae.d("MicroMsg.RemoteControlReceiver", "unknown action, ignore" + paramIntent.getAction());
         AppMethodBeat.o(148424);
         return;
       }
-      if ((cXg == null) && (iwp != null))
+      if ((cYd == null) && (izi != null))
       {
-        ad.d("MicroMsg.RemoteControlReceiver", "got remote key event down");
-        cXg = new av(new av.a()
+        ae.d("MicroMsg.RemoteControlReceiver", "got remote key event down");
+        cYd = new aw(new aw.a()
         {
           public final boolean onTimerExpired()
           {
             AppMethodBeat.i(148423);
-            ad.d("MicroMsg.RemoteControlReceiver", "got remote key event up");
-            if (RemoteController.RemoteControlReceiver.aNp() != null) {
-              RemoteController.RemoteControlReceiver.aNp();
+            ae.d("MicroMsg.RemoteControlReceiver", "got remote key event up");
+            if (RemoteController.RemoteControlReceiver.aNN() != null) {
+              RemoteController.RemoteControlReceiver.aNN();
             }
-            RemoteController.RemoteControlReceiver.aNq();
+            RemoteController.RemoteControlReceiver.aNO();
             AppMethodBeat.o(148423);
             return false;
           }
         }, true);
       }
-      if (cXg != null) {
-        cXg.az(1000L, 1000L);
+      if (cYd != null) {
+        cYd.ay(1000L, 1000L);
       }
       AppMethodBeat.o(148424);
     }
@@ -143,7 +143,7 @@ public final class RemoteController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.modelvoice.RemoteController
  * JD-Core Version:    0.7.0.1
  */

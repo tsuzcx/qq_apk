@@ -13,13 +13,13 @@ final class VoipCSMainUI$11
   {
     AppMethodBeat.i(125452);
     paramDialogInterface.dismiss();
-    this.Cwj.Vb(0);
+    this.CNO.VI(0);
     AppMethodBeat.o(125452);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.voip_cs.ui.VoipCSMainUI.11
  * JD-Core Version:    0.7.0.1
  */

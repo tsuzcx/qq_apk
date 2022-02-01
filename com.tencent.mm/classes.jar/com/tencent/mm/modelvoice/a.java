@@ -1,8 +1,8 @@
 package com.tencent.mm.modelvoice;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.vfs.i;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.vfs.o;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 import junit.framework.Assert;
@@ -18,7 +18,7 @@ public final class a
     this.fileName = paramString;
   }
   
-  private boolean eZ(boolean paramBoolean)
+  private boolean fc(boolean paramBoolean)
   {
     AppMethodBeat.i(130034);
     if (this.fileName.length() >= 0)
@@ -33,16 +33,16 @@ public final class a
     for (boolean bool = true;; bool = false)
     {
       Assert.assertTrue(bool);
-      ad.d("MicroMsg.AmrFileOperator", "Open file:" + this.file + " forWrite:" + paramBoolean);
+      ae.d("MicroMsg.AmrFileOperator", "Open file:" + this.file + " forWrite:" + paramBoolean);
       try
       {
-        this.file = i.dd(this.fileName, paramBoolean);
+        this.file = o.dg(this.fileName, paramBoolean);
         AppMethodBeat.o(130034);
         return true;
       }
       catch (Exception localException)
       {
-        ad.e("MicroMsg.AmrFileOperator", "ERR: OpenFile[" + this.fileName + "] failed:[" + localException.getMessage() + "]");
+        ae.e("MicroMsg.AmrFileOperator", "ERR: OpenFile[" + this.fileName + "] failed:[" + localException.getMessage() + "]");
         this.file = null;
         AppMethodBeat.o(130034);
       }
@@ -52,7 +52,7 @@ public final class a
     return false;
   }
   
-  public final void aNm()
+  public final void aNK()
   {
     AppMethodBeat.i(130033);
     if (this.file != null) {
@@ -60,7 +60,7 @@ public final class a
       {
         this.file.close();
         this.file = null;
-        ad.d("MicroMsg.AmrFileOperator", "Close :" + this.fileName);
+        ae.d("MicroMsg.AmrFileOperator", "Close :" + this.fileName);
         AppMethodBeat.o(130033);
         return;
       }
@@ -79,7 +79,7 @@ public final class a
       AppMethodBeat.o(130035);
       return localg;
     }
-    if ((this.file == null) && (!eZ(false)))
+    if ((this.file == null) && (!fc(false)))
     {
       localg.ret = -2;
       AppMethodBeat.o(130035);
@@ -92,21 +92,21 @@ public final class a
       long l = this.file.length();
       this.file.seek(i);
       paramInt2 = this.file.read(localg.buf, 0, paramInt2);
-      ad.d("MicroMsg.AmrFileOperator", "DBG: ReadFile[" + this.fileName + "] readOffset:" + i + " readRet:" + paramInt2 + " fileNow:" + this.file.getFilePointer() + " fileSize:" + l);
+      ae.d("MicroMsg.AmrFileOperator", "DBG: ReadFile[" + this.fileName + "] readOffset:" + i + " readRet:" + paramInt2 + " fileNow:" + this.file.getFilePointer() + " fileSize:" + l);
       paramInt1 = paramInt2;
       if (paramInt2 < 0) {
         paramInt1 = 0;
       }
-      localg.dhO = paramInt1;
-      localg.iuI = (paramInt1 + i - 6);
+      localg.diR = paramInt1;
+      localg.ixC = (paramInt1 + i - 6);
       localg.ret = 0;
       AppMethodBeat.o(130035);
       return localg;
     }
     catch (Exception localException)
     {
-      ad.e("MicroMsg.AmrFileOperator", "ERR: ReadFile[" + this.fileName + "] Offset:" + i + "  failed:[" + localException.getMessage() + "] ");
-      aNm();
+      ae.e("MicroMsg.AmrFileOperator", "ERR: ReadFile[" + this.fileName + "] Offset:" + i + "  failed:[" + localException.getMessage() + "] ");
+      aNK();
       localg.ret = -1;
       AppMethodBeat.o(130035);
     }
@@ -126,7 +126,7 @@ public final class a
     for (boolean bool1 = true;; bool1 = false)
     {
       Assert.assertTrue(bool1);
-      if ((this.file != null) || (eZ(true))) {
+      if ((this.file != null) || (fc(true))) {
         break;
       }
       AppMethodBeat.o(130036);
@@ -167,14 +167,14 @@ public final class a
         }
         catch (Exception paramArrayOfByte)
         {
-          ad.e("MicroMsg.AmrFileOperator", "ERR: WriteFile[" + this.fileName + "] Offset:" + i + " failed:[" + paramArrayOfByte.getMessage() + "]");
-          aNm();
+          ae.e("MicroMsg.AmrFileOperator", "ERR: WriteFile[" + this.fileName + "] Offset:" + i + " failed:[" + paramArrayOfByte.getMessage() + "]");
+          aNK();
           AppMethodBeat.o(130036);
           return -3;
         }
         paramArrayOfByte = paramArrayOfByte;
-        ad.e("MicroMsg.AmrFileOperator", "ERR: WriteHeadToFile[" + this.fileName + "] failed:[" + paramArrayOfByte.getMessage() + "]");
-        aNm();
+        ae.e("MicroMsg.AmrFileOperator", "ERR: WriteHeadToFile[" + this.fileName + "] failed:[" + paramArrayOfByte.getMessage() + "]");
+        aNK();
         AppMethodBeat.o(130036);
         return -2;
       }

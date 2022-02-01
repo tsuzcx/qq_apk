@@ -23,71 +23,68 @@ import android.view.animation.AccelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.RelativeLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.plugin.box.webview.BoxWebView;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.ui.ar;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.ui.widget.MMWebView.e;
 import d.g.b.p;
 import d.l;
 import d.v;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/scanner/box/BoxDialogView;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attributeSet", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "animator", "Landroid/animation/ValueAnimator;", "backgroundListener", "Lcom/tencent/mm/plugin/scanner/box/BoxDialogMoveListener;", "backgroundViewModel", "Lcom/tencent/mm/plugin/scanner/box/BoxDialogBackgroundViewModel;", "bgViewCurrentTranslationY", "", "boxWebView", "Lcom/tencent/mm/plugin/box/webview/BoxWebView;", "canMeasured", "", "closeButton", "Landroid/view/View;", "closeButtonLayoutHeight", "dialog", "Lcom/tencent/mm/plugin/scanner/box/BoxDialogModel;", "dialogBg", "dialogContainer", "dialogContainerCurrentTranslationY", "dialogContainerHalfTranslationY", "dialogContainerHeight", "dialogContainerMinTranslationY", "dialogState", "enableScrollRightClose", "enableScrollVertical", "fixedWebViewHeight", "fullScreenAnimationInfo", "Lcom/tencent/mm/plugin/scanner/box/BoxDialogView$AnimationInfo;", "halfScreenAnimationInfo", "isAnimating", "isAtWebViewTop", "isExpand", "isFixedWebViewHeight", "mDownX", "mDownY", "mInterceptTracker", "Landroid/view/VelocityTracker;", "mInterceptXDown", "mInterceptYDown", "mStatusBarHeight", "mTopEmptyHeight", "markViewOriginTranslationY", "maxWebViewHeight", "minWebViewHeight", "moveOffsetXFactor", "moveOffsetY", "navigationBarHeight", "screenHeight", "scrollingHorizontal", "scrollingVertical", "showAnimationInterpolator", "Landroid/view/animation/DecelerateInterpolator;", "webViewContainer", "Lcom/tencent/mm/plugin/scanner/box/BoxWebViewContainer;", "webViewScrollHeight", "windowVisibleHeight", "animateDialogVerticalTranslation", "", "fromTranslationY", "targetTranslationY", "duration", "", "switchToFullScreen", "animateShowBackground", "attachDialog", "dialogModel", "canCloseWhenFullScreen", "canCloseWhenHalfScreen", "canOpenWhenHalfScreen", "computeAnimationInfo", "computeFullScreenAnimationInfo", "computeHalfScreenAnimationInfo", "computeTargetValueByRef", "refStart", "refEnd", "refCurrent", "targetStart", "targetEnd", "dismiss", "exitType", "getBoxWebView", "getMaxTranslationY", "getMoveDistanceByOffsetX", "offsetX", "getMoveDistanceByOffsetY", "offsetY", "handleScroll", "offset", "vertical", "init", "initMoveOffsetXFactor", "initWebViewHeight", "onBackPressed", "onDialogContainerTranslationYChanged", "transY", "onInterceptTouchEvent", "ev", "Landroid/view/MotionEvent;", "onMeasure", "widthMeasureSpec", "heightMeasureSpec", "onPause", "onResume", "onTouchEvent", "onTouchUp", "setBackgroundListener", "listener", "setBackgroundTranslationY", "setBackgroundViewModel", "model", "setFixWebViewHeight", "fixedHeight", "setIsFixWebViewHeight", "fixed", "setWebViewEnableScroll", "enableScroll", "show", "switchToHalfScreen", "updateDialogContainerTranslationY", "updateLayoutHeight", "layout", "targetHeight", "needRequestLayout", "AnimationInfo", "Companion", "plugin-scan_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/scanner/box/BoxDialogView;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attributeSet", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "animator", "Landroid/animation/ValueAnimator;", "backgroundListener", "Lcom/tencent/mm/plugin/scanner/box/BoxDialogMoveListener;", "backgroundViewModel", "Lcom/tencent/mm/plugin/scanner/box/BoxDialogBackgroundViewModel;", "bgViewCurrentTranslationY", "", "boxWebView", "Lcom/tencent/mm/plugin/box/webview/BoxWebView;", "canMeasured", "", "closeButton", "Landroid/view/View;", "closeButtonLayoutHeight", "dialog", "Lcom/tencent/mm/plugin/scanner/box/BoxDialogModel;", "dialogBg", "dialogContainer", "dialogContainerCurrentTranslationY", "dialogContainerHalfTranslationY", "dialogContainerHeight", "dialogContainerMinTranslationY", "dialogState", "enableScrollRightClose", "enableScrollVertical", "fixedWebViewHeight", "fullScreenAnimationInfo", "Lcom/tencent/mm/plugin/scanner/box/BoxDialogView$AnimationInfo;", "halfScreenAnimationInfo", "isAnimating", "isAtWebViewTop", "isExpand", "isFixedWebViewHeight", "mDownX", "mDownY", "mInterceptTracker", "Landroid/view/VelocityTracker;", "mInterceptXDown", "mInterceptYDown", "mStatusBarHeight", "mTopEmptyHeight", "markViewOriginTranslationY", "maxWebViewHeight", "minWebViewHeight", "moveOffsetXFactor", "moveOffsetY", "navigationBarHeight", "screenHeight", "scrollingHorizontal", "scrollingVertical", "showAnimationInterpolator", "Landroid/view/animation/DecelerateInterpolator;", "webViewContainer", "Lcom/tencent/mm/plugin/scanner/box/BoxWebViewContainer;", "webViewScrollHeight", "windowVisibleHeight", "animateDialogVerticalTranslation", "", "fromTranslationY", "targetTranslationY", "duration", "", "switchToFullScreen", "animateShowBackground", "attachDialog", "dialogModel", "canCloseWhenFullScreen", "canCloseWhenHalfScreen", "canOpenWhenHalfScreen", "computeAnimationInfo", "computeFullScreenAnimationInfo", "computeHalfScreenAnimationInfo", "computeTargetValueByRef", "refStart", "refEnd", "refCurrent", "targetStart", "targetEnd", "dismiss", "exitType", "getBoxWebView", "getMaxTranslationY", "getMoveDistanceByOffsetX", "offsetX", "getMoveDistanceByOffsetY", "offsetY", "handleScroll", "offset", "vertical", "init", "initMoveOffsetXFactor", "initWebViewHeight", "onBackPressed", "onDialogContainerTranslationYChanged", "transY", "onInterceptTouchEvent", "ev", "Landroid/view/MotionEvent;", "onMeasure", "widthMeasureSpec", "heightMeasureSpec", "onPause", "onResume", "onTouchEvent", "onTouchUp", "setBackgroundListener", "listener", "setBackgroundTranslationY", "setBackgroundViewModel", "model", "setFixWebViewHeight", "fixedHeight", "setIsFixWebViewHeight", "fixed", "setWebViewEnableScroll", "enableScroll", "show", "switchToHalfScreen", "updateDialogContainerTranslationY", "updateLayoutHeight", "layout", "targetHeight", "needRequestLayout", "AnimationInfo", "Companion", "plugin-scan_release"})
 public final class BoxDialogView
   extends RelativeLayout
 {
-  public static final BoxDialogView.b ykI;
+  public static final BoxDialogView.b yAH;
   final ValueAnimator animator;
   boolean isAnimating;
-  private int ltB;
-  private int mFF;
-  private float mXI;
-  private BoxWebView nVn;
-  boolean viL;
-  private float yjW;
-  private float yjX;
-  private float yjY;
-  private VelocityTracker yjZ;
-  private boolean ykA;
-  private boolean ykB;
-  private boolean ykC;
-  private boolean ykD;
-  a ykE;
-  private a ykF;
-  final DecelerateInterpolator ykG;
-  int ykH;
-  c yka;
-  private View ykb;
-  View ykc;
-  private BoxWebViewContainer ykd;
-  private View yke;
-  private d ykf;
-  private a ykg;
-  private float ykh;
-  private float yki;
-  private int ykj;
-  private float ykk;
-  private float ykl;
-  float ykm;
-  private int ykn;
-  private int yko;
-  private int ykp;
-  private int ykq;
-  public boolean ykr;
-  private int yks;
-  private int ykt;
-  private int yku;
-  private boolean ykv;
-  private int ykw;
-  private float ykx;
-  private float yky;
-  private boolean ykz;
+  private int lya;
+  private int mKJ;
+  private float ncP;
+  private BoxWebView oaU;
+  boolean vuQ;
+  private boolean yAA;
+  private boolean yAB;
+  private boolean yAC;
+  a yAD;
+  private a yAE;
+  final DecelerateInterpolator yAF;
+  int yAG;
+  private View yAa;
+  View yAb;
+  private BoxWebViewContainer yAc;
+  private View yAd;
+  private d yAe;
+  private a yAf;
+  private float yAg;
+  private float yAh;
+  private int yAi;
+  private float yAj;
+  private float yAk;
+  float yAl;
+  private int yAm;
+  private int yAn;
+  private int yAo;
+  private int yAp;
+  public boolean yAq;
+  private int yAr;
+  private int yAs;
+  private int yAt;
+  private boolean yAu;
+  private int yAv;
+  private float yAw;
+  private float yAx;
+  private boolean yAy;
+  private boolean yAz;
+  private float yzV;
+  private float yzW;
+  private float yzX;
+  private VelocityTracker yzY;
+  c yzZ;
   
   static
   {
     AppMethodBeat.i(52114);
-    ykI = new BoxDialogView.b((byte)0);
+    yAH = new BoxDialogView.b((byte)0);
     AppMethodBeat.o(52114);
   }
   
@@ -109,59 +106,59 @@ public final class BoxDialogView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(52113);
-    this.ykr = true;
-    this.yky = 1.0F;
-    this.ykz = true;
-    this.ykC = true;
+    this.yAq = true;
+    this.yAx = 1.0F;
+    this.yAy = true;
+    this.yAB = true;
     this.animator = new ValueAnimator();
-    this.ykE = new a();
-    this.ykF = new a();
-    this.ykG = new DecelerateInterpolator();
+    this.yAD = new a();
+    this.yAE = new a();
+    this.yAF = new DecelerateInterpolator();
     setFitsSystemWindows(true);
     paramAttributeSet = LayoutInflater.from(paramContext).inflate(2131494563, (ViewGroup)this, true);
     Object localObject = paramAttributeSet.findViewById(2131299120);
     p.g(localObject, "view.findViewById(R.id.dialog_container)");
-    this.ykc = ((View)localObject);
+    this.yAb = ((View)localObject);
     localObject = paramAttributeSet.findViewById(2131299116);
     p.g(localObject, "view.findViewById(R.id.dialog_bg)");
-    this.ykb = ((View)localObject);
+    this.yAa = ((View)localObject);
     localObject = paramAttributeSet.findViewById(2131298372);
     p.g(localObject, "view.findViewById(R.id.close_img)");
-    this.yke = ((View)localObject);
+    this.yAd = ((View)localObject);
     paramAttributeSet = paramAttributeSet.findViewById(2131306912);
     p.g(paramAttributeSet, "view.findViewById(R.id.webview_container)");
-    this.ykd = ((BoxWebViewContainer)paramAttributeSet);
-    this.nVn = new BoxWebView(paramContext);
-    paramAttributeSet = this.nVn;
+    this.yAc = ((BoxWebViewContainer)paramAttributeSet);
+    this.oaU = new BoxWebView(paramContext);
+    paramAttributeSet = this.oaU;
     if (paramAttributeSet == null) {
-      p.bcb("boxWebView");
+      p.bdF("boxWebView");
     }
-    paramAttributeSet.a((MMWebView.e)new i(this));
-    this.ykq = ar.ej(paramContext);
-    paramAttributeSet = this.ykd;
+    paramAttributeSet.a((MMWebView.e)new BoxDialogView.i(this));
+    this.yAp = com.tencent.mm.ui.ar.en(paramContext);
+    paramAttributeSet = this.yAc;
     if (paramAttributeSet == null) {
-      p.bcb("webViewContainer");
+      p.bdF("webViewContainer");
     }
-    localObject = this.nVn;
+    localObject = this.oaU;
     if (localObject == null) {
-      p.bcb("boxWebView");
+      p.bdF("boxWebView");
     }
     paramAttributeSet.addView((View)localObject);
-    paramAttributeSet = this.ykb;
+    paramAttributeSet = this.yAa;
     if (paramAttributeSet == null) {
-      p.bcb("dialogBg");
+      p.bdF("dialogBg");
     }
-    paramAttributeSet.setOnClickListener((View.OnClickListener)new j(this));
-    paramAttributeSet = this.yke;
+    paramAttributeSet.setOnClickListener((View.OnClickListener)new BoxDialogView.j(this));
+    paramAttributeSet = this.yAd;
     if (paramAttributeSet == null) {
-      p.bcb("closeButton");
+      p.bdF("closeButton");
     }
-    paramAttributeSet.setOnClickListener((View.OnClickListener)new k(this));
-    this.mFF = ar.jG(paramContext);
-    this.ltB = (com.tencent.mm.cc.a.iq(paramContext) + this.mFF);
-    this.ykn = paramContext.getResources().getDimensionPixelSize(2131166757);
-    this.ykp = com.tencent.mm.cc.a.fromDPToPix(paramContext, 50);
-    ad.i("MicroMsg.BoxDialogView", "alvinluo initBoxDialogView getScreenHeight: %d, statusBarHeight: %d, topEmptyHeight: %d", new Object[] { Integer.valueOf(this.ltB), Integer.valueOf(this.mFF), Integer.valueOf(this.ykp) });
+    paramAttributeSet.setOnClickListener((View.OnClickListener)new BoxDialogView.k(this));
+    this.mKJ = com.tencent.mm.ui.ar.jN(paramContext);
+    this.lya = (com.tencent.mm.cb.a.iv(paramContext) + this.mKJ);
+    this.yAm = paramContext.getResources().getDimensionPixelSize(2131166757);
+    this.yAo = com.tencent.mm.cb.a.fromDPToPix(paramContext, 50);
+    ae.i("MicroMsg.BoxDialogView", "alvinluo initBoxDialogView getScreenHeight: %d, statusBarHeight: %d, topEmptyHeight: %d", new Object[] { Integer.valueOf(this.lya), Integer.valueOf(this.mKJ), Integer.valueOf(this.yAo) });
     if ((paramContext instanceof Activity))
     {
       paramAttributeSet = new Rect();
@@ -173,13 +170,13 @@ public final class BoxDialogView
           paramContext.getWindowVisibleDisplayFrame(paramAttributeSet);
         }
       }
-      this.yko = paramAttributeSet.height();
-      paramContext = this.ykc;
+      this.yAn = paramAttributeSet.height();
+      paramContext = this.yAb;
       if (paramContext == null) {
-        p.bcb("dialogContainer");
+        p.bdF("dialogContainer");
       }
-      paramContext.setTranslationY(this.yko);
-      ad.i("MicroMsg.BoxDialogView", "alvinluo initBoxDialogView windowVisibleDisplayFrame: %s, height: %d, windowVisibleHeight: %d, navigationBarHeight: %d", new Object[] { paramAttributeSet, Integer.valueOf(paramAttributeSet.height()), Integer.valueOf(this.yko), Integer.valueOf(this.ykq) });
+      paramContext.setTranslationY(this.yAn);
+      ae.i("MicroMsg.BoxDialogView", "alvinluo initBoxDialogView windowVisibleDisplayFrame: %s, height: %d, windowVisibleHeight: %d, navigationBarHeight: %d", new Object[] { paramAttributeSet, Integer.valueOf(paramAttributeSet.height()), Integer.valueOf(this.yAn), Integer.valueOf(this.yAp) });
     }
     AppMethodBeat.o(52113);
   }
@@ -192,9 +189,9 @@ public final class BoxDialogView
   private final void bw(float paramFloat)
   {
     AppMethodBeat.i(52105);
-    View localView = this.ykc;
+    View localView = this.yAb;
     if (localView == null) {
-      p.bcb("dialogContainer");
+      p.bdF("dialogContainer");
     }
     localView.setTranslationY(paramFloat);
     bx(paramFloat);
@@ -204,84 +201,84 @@ public final class BoxDialogView
   private final void bx(float paramFloat)
   {
     AppMethodBeat.i(52106);
-    float f = 1.0F * paramFloat / this.ykj;
-    d locald = this.ykf;
+    float f = 1.0F * paramFloat / this.yAi;
+    d locald = this.yAe;
     if (locald != null) {
-      locald.c(this.ykH, paramFloat, f);
+      locald.c(this.yAG, paramFloat, f);
     }
-    ad.v("MicroMsg.BoxDialogView", "alvinluo onDialogContainerTranslationYChanged: %f", new Object[] { Float.valueOf(paramFloat) });
+    ae.v("MicroMsg.BoxDialogView", "alvinluo onDialogContainerTranslationYChanged: %f", new Object[] { Float.valueOf(paramFloat) });
     AppMethodBeat.o(52106);
   }
   
   private final void c(float paramFloat, boolean paramBoolean)
   {
     AppMethodBeat.i(52103);
-    Object localObject = this.nVn;
+    Object localObject = this.oaU;
     if (localObject == null) {
-      p.bcb("boxWebView");
+      p.bdF("boxWebView");
     }
-    this.yks = ((BoxWebView)localObject).getScrollHeight();
+    this.yAr = ((BoxWebView)localObject).getScrollHeight();
     int i;
-    if ((dKB()) && (this.ykt > this.ykw))
+    if ((dNT()) && (this.yAs > this.yAv))
     {
-      i = Math.max(this.ykw, this.yku);
-      ad.d("MicroMsg.BoxDialogView", "alvinluo handleScroll fixedWebViewHeight: %d, target: %d", new Object[] { Integer.valueOf(this.ykw), Integer.valueOf(i) });
-      this.ykl = Math.max(this.ykl, this.ykt - i);
+      i = Math.max(this.yAv, this.yAt);
+      ae.d("MicroMsg.BoxDialogView", "alvinluo handleScroll fixedWebViewHeight: %d, target: %d", new Object[] { Integer.valueOf(this.yAv), Integer.valueOf(i) });
+      this.yAk = Math.max(this.yAk, this.yAs - i);
       if (!paramBoolean) {
         break label365;
       }
     }
     label365:
-    for (float f1 = 0.68F * paramFloat;; f1 = this.yky * paramFloat)
+    for (float f1 = 0.68F * paramFloat;; f1 = this.yAx * paramFloat)
     {
-      float f2 = this.ykk;
-      f2 = Math.max(this.ykl, f2 + f1);
-      f2 = Math.min(this.ykj, f2);
-      ad.d("MicroMsg.BoxDialogView", "alvinluo handleScroll vertical: %b, offset: %f, moveDis: %f, currentTranslationY: %f, targetTranslationY: %f, minTranslationY: %f", new Object[] { Boolean.valueOf(paramBoolean), Float.valueOf(paramFloat), Float.valueOf(f1), Float.valueOf(this.ykk), Float.valueOf(f2), Float.valueOf(this.ykl) });
-      this.ykx = f1;
+      float f2 = this.yAj;
+      f2 = Math.max(this.yAk, f2 + f1);
+      f2 = Math.min(this.yAi, f2);
+      ae.d("MicroMsg.BoxDialogView", "alvinluo handleScroll vertical: %b, offset: %f, moveDis: %f, currentTranslationY: %f, targetTranslationY: %f, minTranslationY: %f", new Object[] { Boolean.valueOf(paramBoolean), Float.valueOf(paramFloat), Float.valueOf(f1), Float.valueOf(this.yAj), Float.valueOf(f2), Float.valueOf(this.yAk) });
+      this.yAw = f1;
       bw(f2);
       if (f1 < 0.0F) {
         break label375;
       }
-      paramFloat = this.ykk;
-      f1 = this.ykj;
-      localObject = this.ykc;
+      paramFloat = this.yAj;
+      f1 = this.yAi;
+      localObject = this.yAb;
       if (localObject == null) {
-        p.bcb("dialogContainer");
+        p.bdF("dialogContainer");
       }
-      setBackgroundTranslationY(a(paramFloat, f1, ((View)localObject).getTranslationY(), this.ykh, 0.0F));
+      setBackgroundTranslationY(a(paramFloat, f1, ((View)localObject).getTranslationY(), this.yAg, 0.0F));
       AppMethodBeat.o(52103);
       return;
-      if (this.ykt <= this.yks) {
+      if (this.yAs <= this.yAr) {
         break;
       }
-      i = Math.max(this.yks, this.yku);
-      ad.d("MicroMsg.BoxDialogView", "alvinluo handleScroll webViewScrollHeight: %d, target: %d", new Object[] { Integer.valueOf(this.yks), Integer.valueOf(i) });
-      this.ykl = Math.max(this.ykl, this.ykt - i);
+      i = Math.max(this.yAr, this.yAt);
+      ae.d("MicroMsg.BoxDialogView", "alvinluo handleScroll webViewScrollHeight: %d, target: %d", new Object[] { Integer.valueOf(this.yAr), Integer.valueOf(i) });
+      this.yAk = Math.max(this.yAk, this.yAs - i);
       break;
     }
     label375:
-    if (this.ykk > 0.0F)
+    if (this.yAj > 0.0F)
     {
-      paramFloat = this.ykk;
-      localObject = this.ykc;
+      paramFloat = this.yAj;
+      localObject = this.yAb;
       if (localObject == null) {
-        p.bcb("dialogContainer");
+        p.bdF("dialogContainer");
       }
-      setBackgroundTranslationY(a(paramFloat, 0.0F, ((View)localObject).getTranslationY(), this.ykF.ykJ, this.ykF.ykK));
+      setBackgroundTranslationY(a(paramFloat, 0.0F, ((View)localObject).getTranslationY(), this.yAE.yAI, this.yAE.yAJ));
     }
     AppMethodBeat.o(52103);
   }
   
-  private final boolean dKB()
+  private final boolean dNT()
   {
-    return (this.ykv) && (this.ykw > 0);
+    return (this.yAu) && (this.yAv > 0);
   }
   
-  private final boolean dKC()
+  private final boolean dNU()
   {
     AppMethodBeat.i(52107);
-    if ((this.ykx > 0.0F) && (Math.abs(this.ykx) >= this.ykt * 0.15F))
+    if ((this.yAw > 0.0F) && (Math.abs(this.yAw) >= this.yAs * 0.15F))
     {
       AppMethodBeat.o(52107);
       return true;
@@ -290,10 +287,10 @@ public final class BoxDialogView
     return false;
   }
   
-  private final boolean dKD()
+  private final boolean dNV()
   {
     AppMethodBeat.i(52108);
-    if ((this.ykx < 0.0F) && (Math.abs(this.ykx) >= this.ykt * 0.05F))
+    if ((this.yAw < 0.0F) && (Math.abs(this.yAw) >= this.yAs * 0.05F))
     {
       AppMethodBeat.o(52108);
       return true;
@@ -302,10 +299,10 @@ public final class BoxDialogView
     return false;
   }
   
-  private final boolean dKE()
+  private final boolean dNW()
   {
     AppMethodBeat.i(52109);
-    if ((this.ykx > 0.0F) && (Math.abs(this.ykx) >= this.ykt * 0.15F))
+    if ((this.yAw > 0.0F) && (Math.abs(this.yAw) >= this.yAs * 0.15F))
     {
       AppMethodBeat.o(52109);
       return true;
@@ -317,14 +314,14 @@ public final class BoxDialogView
   private final void e(final float paramFloat1, final float paramFloat2, final boolean paramBoolean)
   {
     AppMethodBeat.i(52110);
-    ad.v("MicroMsg.BoxDialogView", "alvinluo animateDialogVerticalTranslation from: %f, to: %f", new Object[] { Float.valueOf(paramFloat1), Float.valueOf(paramFloat2) });
+    ae.v("MicroMsg.BoxDialogView", "alvinluo animateDialogVerticalTranslation from: %f, to: %f", new Object[] { Float.valueOf(paramFloat1), Float.valueOf(paramFloat2) });
     if (paramFloat1 == paramFloat2)
     {
-      ad.w("MicroMsg.BoxDialogView", "alvinluo animateDialogVerticalTranslation start equals end and ignore");
+      ae.w("MicroMsg.BoxDialogView", "alvinluo animateDialogVerticalTranslation start equals end and ignore");
       AppMethodBeat.o(52110);
       return;
     }
-    Object localObject = this.ykg;
+    Object localObject = this.yAf;
     if (localObject != null) {}
     for (final float f = ((a)localObject).getBackgroundTransY();; f = 0.0F)
     {
@@ -343,33 +340,33 @@ public final class BoxDialogView
   private final void setBackgroundTranslationY(float paramFloat)
   {
     AppMethodBeat.i(52104);
-    ad.v("MicroMsg.BoxDialogView", "alvinluo setBackgroundTranslationY: %f", new Object[] { Float.valueOf(paramFloat) });
-    a locala = this.ykg;
+    ae.v("MicroMsg.BoxDialogView", "alvinluo setBackgroundTranslationY: %f", new Object[] { Float.valueOf(paramFloat) });
+    a locala = this.yAf;
     if (locala != null) {
       locala.setBackgroundTransY(paramFloat);
     }
-    locala = this.ykg;
+    locala = this.yAf;
     if (locala != null)
     {
-      locala.setMarkViewTransY(this.yki + paramFloat);
+      locala.setMarkViewTransY(this.yAh + paramFloat);
       AppMethodBeat.o(52104);
       return;
     }
     AppMethodBeat.o(52104);
   }
   
-  public final void Op(final int paramInt)
+  public final void OV(final int paramInt)
   {
     AppMethodBeat.i(52100);
     float f2 = getMaxTranslationY();
-    Object localObject = this.ykg;
+    Object localObject = this.yAf;
     if (localObject != null) {}
-    for (final float f1 = ((a)localObject).getBackgroundTransY();; f1 = 0.0F)
+    for (float f1 = ((a)localObject).getBackgroundTransY();; f1 = 0.0F)
     {
       this.isAnimating = true;
-      localObject = this.ykc;
+      localObject = this.yAb;
       if (localObject == null) {
-        p.bcb("dialogContainer");
+        p.bdF("dialogContainer");
       }
       localObject = ((View)localObject).animate();
       if (localObject == null) {
@@ -391,7 +388,7 @@ public final class BoxDialogView
       if (localObject == null) {
         break;
       }
-      localObject = ((ViewPropertyAnimator)localObject).setUpdateListener((ValueAnimator.AnimatorUpdateListener)new h(this, f1));
+      localObject = ((ViewPropertyAnimator)localObject).setUpdateListener((ValueAnimator.AnimatorUpdateListener)new BoxDialogView.h(this, f1));
       if (localObject == null) {
         break;
       }
@@ -405,9 +402,9 @@ public final class BoxDialogView
   public final BoxWebView getBoxWebView()
   {
     AppMethodBeat.i(52099);
-    BoxWebView localBoxWebView = this.nVn;
+    BoxWebView localBoxWebView = this.oaU;
     if (localBoxWebView == null) {
-      p.bcb("boxWebView");
+      p.bdF("boxWebView");
     }
     AppMethodBeat.o(52099);
     return localBoxWebView;
@@ -415,7 +412,7 @@ public final class BoxDialogView
   
   final int getMaxTranslationY()
   {
-    return this.ykj;
+    return this.yAi;
   }
   
   public final boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
@@ -425,7 +422,7 @@ public final class BoxDialogView
     boolean bool1;
     for (Object localObject = Integer.valueOf(paramMotionEvent.getAction());; localObject = null)
     {
-      ad.d("MicroMsg.BoxDialogView", "alvinluo onInterceptTouchEvent %s", new Object[] { localObject });
+      ae.d("MicroMsg.BoxDialogView", "alvinluo onInterceptTouchEvent %s", new Object[] { localObject });
       bool1 = super.onInterceptTouchEvent(paramMotionEvent);
       if (!bool1) {
         break;
@@ -438,27 +435,27 @@ public final class BoxDialogView
       AppMethodBeat.o(52101);
       return false;
     }
-    if (this.yjZ == null) {
-      this.yjZ = VelocityTracker.obtain();
+    if (this.yzY == null) {
+      this.yzY = VelocityTracker.obtain();
     }
-    localObject = this.yjZ;
+    localObject = this.yzY;
     if (localObject == null) {
-      p.gfZ();
+      p.gkB();
     }
     ((VelocityTracker)localObject).addMovement(paramMotionEvent);
-    localObject = this.yjZ;
+    localObject = this.yzY;
     if (localObject == null) {
-      p.gfZ();
+      p.gkB();
     }
     ((VelocityTracker)localObject).computeCurrentVelocity(1000);
-    localObject = this.yjZ;
+    localObject = this.yzY;
     if (localObject == null) {
-      p.gfZ();
+      p.gkB();
     }
     int i = (int)((VelocityTracker)localObject).getXVelocity();
-    localObject = this.yjZ;
+    localObject = this.yzY;
     if (localObject == null) {
-      p.gfZ();
+      p.gkB();
     }
     int j = (int)((VelocityTracker)localObject).getYVelocity();
     switch (paramMotionEvent.getAction() & 0xFF)
@@ -468,35 +465,35 @@ public final class BoxDialogView
     }
     for (;;)
     {
-      ad.v("MicroMsg.BoxDialogView", "alvinluo onInterceptTouchEvent action: %s, isIntercept: %b, scrollingVertical: %b, scrollingHorizontal: %b", new Object[] { Integer.valueOf(paramMotionEvent.getAction()), Boolean.valueOf(bool1), Boolean.valueOf(this.ykA), Boolean.valueOf(this.ykB) });
+      ae.v("MicroMsg.BoxDialogView", "alvinluo onInterceptTouchEvent action: %s, isIntercept: %b, scrollingVertical: %b, scrollingHorizontal: %b", new Object[] { Integer.valueOf(paramMotionEvent.getAction()), Boolean.valueOf(bool1), Boolean.valueOf(this.yAz), Boolean.valueOf(this.yAA) });
       AppMethodBeat.o(52101);
       return bool1;
       float f1 = paramMotionEvent.getRawX();
       float f2 = paramMotionEvent.getRawY();
-      localObject = this.ykc;
+      localObject = this.yAb;
       if (localObject == null) {
-        p.bcb("dialogContainer");
+        p.bdF("dialogContainer");
       }
-      ad.d("MicroMsg.BoxDialogView", "alvinluo onInterceptTouchEvent down: %f, %f, dialogContainer translationY: %f", new Object[] { Float.valueOf(f1), Float.valueOf(f2), Float.valueOf(((View)localObject).getTranslationY()) });
-      this.yjX = paramMotionEvent.getRawX();
-      this.yjY = paramMotionEvent.getRawY();
+      ae.d("MicroMsg.BoxDialogView", "alvinluo onInterceptTouchEvent down: %f, %f, dialogContainer translationY: %f", new Object[] { Float.valueOf(f1), Float.valueOf(f2), Float.valueOf(((View)localObject).getTranslationY()) });
+      this.yzW = paramMotionEvent.getRawX();
+      this.yzX = paramMotionEvent.getRawY();
       bool1 = false;
       continue;
-      f1 = paramMotionEvent.getRawX() - this.yjX;
-      f2 = paramMotionEvent.getRawY() - this.yjY;
-      ad.d("MicroMsg.BoxDialogView", "alvinluo onInterceptTouchEvent action_move tx: %f, ty: %f, velocityX: %d, velocityY: %d", new Object[] { Float.valueOf(f1), Float.valueOf(f2), Integer.valueOf(i), Integer.valueOf(j) });
+      f1 = paramMotionEvent.getRawX() - this.yzW;
+      f2 = paramMotionEvent.getRawY() - this.yzX;
+      ae.d("MicroMsg.BoxDialogView", "alvinluo onInterceptTouchEvent action_move tx: %f, ty: %f, velocityX: %d, velocityY: %d", new Object[] { Float.valueOf(f1), Float.valueOf(f2), Integer.valueOf(i), Integer.valueOf(j) });
       float f3 = paramMotionEvent.getRawY();
-      localObject = this.ykc;
+      localObject = this.yAb;
       if (localObject == null) {
-        p.bcb("dialogContainer");
+        p.bdF("dialogContainer");
       }
       if (f3 >= ((View)localObject).getTranslationY())
       {
-        if ((Math.abs(f2) >= 5.0F) && (this.ykC) && (Math.abs(f1) <= 250.0F) && (Math.abs(j) > Math.abs(i)) && (Math.abs(j) > 0) && (Math.abs(f2) > Math.abs(f1)))
+        if ((Math.abs(f2) >= 5.0F) && (this.yAB) && (Math.abs(f1) <= 250.0F) && (Math.abs(j) > Math.abs(i)) && (Math.abs(j) > 0) && (Math.abs(f2) > Math.abs(f1)))
         {
-          ad.i("MicroMsg.BoxDialogView", "alvinluo ViewPager onInterceptTouchEvent action: %d, dialogContainerCurrentTranslationY: %s", new Object[] { Integer.valueOf(paramMotionEvent.getAction()), Float.valueOf(this.ykk) });
-          if (this.ykk <= this.ykl) {
-            if (this.ykz) {
+          ae.i("MicroMsg.BoxDialogView", "alvinluo ViewPager onInterceptTouchEvent action: %d, dialogContainerCurrentTranslationY: %s", new Object[] { Integer.valueOf(paramMotionEvent.getAction()), Float.valueOf(this.yAj) });
+          if (this.yAj <= this.yAk) {
+            if (this.yAy) {
               if (f2 >= 0.0F) {
                 bool2 = true;
               }
@@ -508,7 +505,7 @@ public final class BoxDialogView
             if (!bool2) {
               break;
             }
-            this.ykA = true;
+            this.yAz = true;
             bool1 = bool2;
             break;
             bool2 = false;
@@ -518,18 +515,18 @@ public final class BoxDialogView
             bool2 = true;
           }
         }
-        if (!this.ykD) {
+        if (!this.yAC) {
           break;
         }
-        if ((Math.abs(i) > Math.abs(j)) && (f1 > 0.0F) && (Math.abs(f1) > Math.abs(f2)) && (this.yjX <= 20.0F)) {}
+        if ((Math.abs(i) > Math.abs(j)) && (f1 > 0.0F) && (Math.abs(f1) > Math.abs(f2)) && (this.yzW <= 20.0F)) {}
         for (boolean bool2 = true;; bool2 = false)
         {
-          ad.d("MicroMsg.BoxDialogView", "alvinluo onInterceptTouchEvent interceptXDown: %f, scrollLeftRight: %b", new Object[] { Float.valueOf(this.yjX), Boolean.valueOf(bool2) });
+          ae.d("MicroMsg.BoxDialogView", "alvinluo onInterceptTouchEvent interceptXDown: %f, scrollLeftRight: %b", new Object[] { Float.valueOf(this.yzW), Boolean.valueOf(bool2) });
           bool1 = bool2;
           if (!bool2) {
             break;
           }
-          this.ykB = true;
+          this.yAA = true;
           bool1 = bool2;
           break;
         }
@@ -543,54 +540,54 @@ public final class BoxDialogView
     float f3 = 0.0F;
     AppMethodBeat.i(52096);
     super.onMeasure(paramInt1, paramInt2);
-    Object localObject1 = this.ykc;
+    Object localObject1 = this.yAb;
     if (localObject1 == null) {
-      p.bcb("dialogContainer");
+      p.bdF("dialogContainer");
     }
     float f1;
     label626:
     float f2;
-    if ((((View)localObject1).getMeasuredHeight() != this.ykj) && (this.ykr))
+    if ((((View)localObject1).getMeasuredHeight() != this.yAi) && (this.yAq))
     {
-      localObject1 = this.ykc;
+      localObject1 = this.yAb;
       if (localObject1 == null) {
-        p.bcb("dialogContainer");
+        p.bdF("dialogContainer");
       }
-      this.ykj = ((View)localObject1).getMeasuredHeight();
-      paramInt1 = Math.max(0, this.yko - this.ykj);
-      paramInt2 = Math.max(0, this.ykp - paramInt1);
-      this.ykt = (this.ykj - this.ykn - paramInt2);
-      ad.v("MicroMsg.BoxDialogView", "alvinluo onMeasure dialogContainerHeight: %d, extraHeight: %d, diff: %d", new Object[] { Integer.valueOf(this.ykj), Integer.valueOf(paramInt2), Integer.valueOf(paramInt1) });
-      this.yku = (this.yko / 2 - this.ykn);
-      localObject1 = this.ykb;
+      this.yAi = ((View)localObject1).getMeasuredHeight();
+      paramInt1 = Math.max(0, this.yAn - this.yAi);
+      paramInt2 = Math.max(0, this.yAo - paramInt1);
+      this.yAs = (this.yAi - this.yAm - paramInt2);
+      ae.v("MicroMsg.BoxDialogView", "alvinluo onMeasure dialogContainerHeight: %d, extraHeight: %d, diff: %d", new Object[] { Integer.valueOf(this.yAi), Integer.valueOf(paramInt2), Integer.valueOf(paramInt1) });
+      this.yAt = (this.yAn / 2 - this.yAm);
+      localObject1 = this.yAa;
       if (localObject1 == null) {
-        p.bcb("dialogBg");
+        p.bdF("dialogBg");
       }
-      Object localObject2 = this.ykb;
+      Object localObject2 = this.yAa;
       if (localObject2 == null) {
-        p.bcb("dialogBg");
+        p.bdF("dialogBg");
       }
       localObject2 = ((View)localObject2).getLayoutParams();
-      ((ViewGroup.LayoutParams)localObject2).height = (this.yko / 2);
+      ((ViewGroup.LayoutParams)localObject2).height = (this.yAn / 2);
       ((View)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
-      boolean bool = dKB();
+      boolean bool = dNT();
       if (bool)
       {
-        this.ykw = Math.min(this.ykt, this.ykw);
-        this.yku = this.ykw;
+        this.yAv = Math.min(this.yAs, this.yAv);
+        this.yAt = this.yAv;
       }
-      localObject1 = this.ykd;
+      localObject1 = this.yAc;
       if (localObject1 == null) {
-        p.bcb("webViewContainer");
+        p.bdF("webViewContainer");
       }
-      if (((BoxWebViewContainer)localObject1).getLayoutParams().height != this.ykt)
+      if (((BoxWebViewContainer)localObject1).getLayoutParams().height != this.yAs)
       {
-        localObject1 = this.nVn;
+        localObject1 = this.oaU;
         if (localObject1 == null) {
-          p.bcb("boxWebView");
+          p.bdF("boxWebView");
         }
         localObject2 = (View)localObject1;
-        paramInt1 = this.ykt;
+        paramInt1 = this.yAs;
         if (localObject2 != null)
         {
           localObject1 = ((View)localObject2).getLayoutParams();
@@ -607,38 +604,38 @@ public final class BoxDialogView
       }
       else
       {
-        localObject1 = this.ykc;
+        localObject1 = this.yAb;
         if (localObject1 == null) {
-          p.bcb("dialogContainer");
+          p.bdF("dialogContainer");
         }
-        if (((View)localObject1).getTranslationY() != this.ykt - this.yku)
+        if (((View)localObject1).getTranslationY() != this.yAs - this.yAt)
         {
-          this.ykk = (this.ykt - this.yku);
-          this.ykm = this.ykk;
+          this.yAj = (this.yAs - this.yAt);
+          this.yAl = this.yAj;
         }
-        paramInt1 = this.ykt;
-        paramInt2 = this.yku;
-        localObject1 = this.ykc;
+        paramInt1 = this.yAs;
+        paramInt2 = this.yAt;
+        localObject1 = this.yAb;
         if (localObject1 == null) {
-          p.bcb("dialogContainer");
+          p.bdF("dialogContainer");
         }
-        ad.i("MicroMsg.BoxDialogView", "alvinluo initWebViewHeight maxWebViewHeight: %d, minWebVieHeight: %d, translationY: %s, dialogContainerCurrentTranslationY: %s, fixedWebView: %b", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Float.valueOf(((View)localObject1).getTranslationY()), Float.valueOf(this.ykk), Boolean.valueOf(bool) });
-        paramInt1 = com.tencent.mm.cc.a.ip(getContext());
-        localObject1 = this.ykc;
+        ae.i("MicroMsg.BoxDialogView", "alvinluo initWebViewHeight maxWebViewHeight: %d, minWebVieHeight: %d, translationY: %s, dialogContainerCurrentTranslationY: %s, fixedWebView: %b", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Float.valueOf(((View)localObject1).getTranslationY()), Float.valueOf(this.yAj), Boolean.valueOf(bool) });
+        paramInt1 = com.tencent.mm.cb.a.iu(getContext());
+        localObject1 = this.yAb;
         if (localObject1 == null) {
-          p.bcb("dialogContainer");
+          p.bdF("dialogContainer");
         }
-        this.yky = (((View)localObject1).getMeasuredHeight() / (paramInt1 * 0.5F));
-        ad.d("MicroMsg.BoxDialogView", "alvinluo initMoveOffsetXFactor %f", new Object[] { Float.valueOf(this.yky) });
-        this.ykE.ykJ = 0.0F;
-        this.ykE.ykL = true;
-        paramInt1 = this.yko - this.yku - this.ykn;
-        localObject1 = this.ykg;
+        this.yAx = (((View)localObject1).getMeasuredHeight() / (paramInt1 * 0.5F));
+        ae.d("MicroMsg.BoxDialogView", "alvinluo initMoveOffsetXFactor %f", new Object[] { Float.valueOf(this.yAx) });
+        this.yAD.yAI = 0.0F;
+        this.yAD.yAK = true;
+        paramInt1 = this.yAn - this.yAt - this.yAm;
+        localObject1 = this.yAf;
         if (localObject1 == null) {
           break label802;
         }
         f1 = ((a)localObject1).getMarkViewHeight();
-        localObject1 = this.ykg;
+        localObject1 = this.yAf;
         if (localObject1 == null) {
           break label807;
         }
@@ -647,20 +644,20 @@ public final class BoxDialogView
       label807:
       for (f2 = ((a)localObject1).getMarkViewTransY();; f2 = 0.0F)
       {
-        ad.i("MicroMsg.BoxDialogView", "alvinluo computeHalfScreenAnimationInfo temp: %f, %f, markViewTransY: %f", new Object[] { Float.valueOf(paramInt1 / 2.0F), Float.valueOf(this.yko / 4.0F), Float.valueOf(f2) });
+        ae.i("MicroMsg.BoxDialogView", "alvinluo computeHalfScreenAnimationInfo temp: %f, %f, markViewTransY: %f", new Object[] { Float.valueOf(paramInt1 / 2.0F), Float.valueOf(this.yAn / 4.0F), Float.valueOf(f2) });
         if (f2 > paramInt1 / 2.0F - f1 / 2.0F) {
           break label813;
         }
-        ad.d("MicroMsg.BoxDialogView", "alvinluo computeHalfScreenAnimationInfo not need animation");
-        this.ykE.ykL = false;
-        this.ykF.ykL = true;
-        this.ykF.ykJ = this.ykE.ykK;
-        f2 = this.ykE.ykK + this.yki;
-        if (f2 > this.ykp / 2.0F) {
+        ae.d("MicroMsg.BoxDialogView", "alvinluo computeHalfScreenAnimationInfo not need animation");
+        this.yAD.yAK = false;
+        this.yAE.yAK = true;
+        this.yAE.yAI = this.yAD.yAJ;
+        f2 = this.yAD.yAJ + this.yAh;
+        if (f2 > this.yAo / 2.0F) {
           break label910;
         }
-        ad.d("MicroMsg.BoxDialogView", "alvinluo computeFullScreenAnimationInfo not need animation");
-        this.ykF.ykL = false;
+        ae.d("MicroMsg.BoxDialogView", "alvinluo computeFullScreenAnimationInfo not need animation");
+        this.yAE.yAK = false;
         AppMethodBeat.o(52096);
         return;
         localObject1 = null;
@@ -669,24 +666,24 @@ public final class BoxDialogView
         break label626;
       }
       label813:
-      if (f2 >= this.yko - paramInt1 / 2.0F - f1 / 2.0F) {}
-      for (this.ykE.ykK = (-this.ykm);; this.ykE.ykK = (paramInt1 / 2.0F - f1 / 2.0F - this.yki))
+      if (f2 >= this.yAn - paramInt1 / 2.0F - f1 / 2.0F) {}
+      for (this.yAD.yAJ = (-this.yAl);; this.yAD.yAJ = (paramInt1 / 2.0F - f1 / 2.0F - this.yAh))
       {
-        ad.d("MicroMsg.BoxDialogView", "alvinluo computeHalfScreenAnimationInfo current: %f, target: %f", new Object[] { Float.valueOf(this.ykE.ykJ), Float.valueOf(this.ykE.ykK) });
+        ae.d("MicroMsg.BoxDialogView", "alvinluo computeHalfScreenAnimationInfo current: %f, target: %f", new Object[] { Float.valueOf(this.yAD.yAI), Float.valueOf(this.yAD.yAJ) });
         break;
       }
       label910:
-      if (f2 < this.ykj / 2.0F - this.ykp / 2.0F) {
+      if (f2 < this.yAi / 2.0F - this.yAo / 2.0F) {
         break label990;
       }
     }
-    for (this.ykF.ykK = (-this.ykj);; this.ykF.ykK = (this.ykE.ykK - f2 - (f1 - this.ykp) / 2.0F))
+    for (this.yAE.yAJ = (-this.yAi);; this.yAE.yAJ = (this.yAD.yAJ - f2 - (f1 - this.yAo) / 2.0F))
     {
-      ad.d("MicroMsg.BoxDialogView", "alvinluo computeFullScreenAnimationInfo start: %f, target: %f", new Object[] { Float.valueOf(this.ykF.ykJ), Float.valueOf(this.ykF.ykK) });
+      ae.d("MicroMsg.BoxDialogView", "alvinluo computeFullScreenAnimationInfo start: %f, target: %f", new Object[] { Float.valueOf(this.yAE.yAI), Float.valueOf(this.yAE.yAJ) });
       AppMethodBeat.o(52096);
       return;
       label990:
-      localObject1 = this.ykg;
+      localObject1 = this.yAf;
       f1 = f3;
       if (localObject1 != null) {
         f1 = ((a)localObject1).getMarkViewHeight();
@@ -706,7 +703,7 @@ public final class BoxDialogView
       AppMethodBeat.o(52102);
       return bool;
     }
-    ad.d("MicroMsg.BoxDialogView", "alvinluo onTouchEvent %s", new Object[] { Integer.valueOf(paramMotionEvent.getAction()) });
+    ae.d("MicroMsg.BoxDialogView", "alvinluo onTouchEvent %s", new Object[] { Integer.valueOf(paramMotionEvent.getAction()) });
     switch (paramMotionEvent.getAction() & 0xFF)
     {
     default: 
@@ -717,76 +714,76 @@ public final class BoxDialogView
         bool = super.onTouchEvent(paramMotionEvent);
         AppMethodBeat.o(52102);
         return bool;
-        this.yjW = paramMotionEvent.getRawX();
-        this.mXI = paramMotionEvent.getRawY();
+        this.yzV = paramMotionEvent.getRawX();
+        this.ncP = paramMotionEvent.getRawY();
         AppMethodBeat.o(52102);
         return true;
-        if ((this.yjW == 0.0F) && (this.mXI == 0.0F))
+        if ((this.yzV == 0.0F) && (this.ncP == 0.0F))
         {
-          this.yjW = paramMotionEvent.getRawX();
-          this.mXI = paramMotionEvent.getRawY();
+          this.yzV = paramMotionEvent.getRawX();
+          this.ncP = paramMotionEvent.getRawY();
         }
         else
         {
-          float f1 = paramMotionEvent.getRawX() - this.yjW;
-          float f2 = paramMotionEvent.getRawY() - this.mXI;
+          float f1 = paramMotionEvent.getRawX() - this.yzV;
+          float f2 = paramMotionEvent.getRawY() - this.ncP;
           if (Math.abs(f2) > Math.abs(f1)) {
-            this.ykA = true;
+            this.yAz = true;
           }
-          if (this.ykA) {
+          if (this.yAz) {
             c(f2, true);
-          } else if (this.ykB) {
+          } else if (this.yAA) {
             c(f1, false);
           } else {
-            ad.v("MicroMsg.BoxDialogView", "alvinluo handleScroll ignore");
+            ae.v("MicroMsg.BoxDialogView", "alvinluo handleScroll ignore");
           }
         }
       }
     }
-    this.yjW = 0.0F;
-    this.mXI = 0.0F;
-    ad.i("MicroMsg.BoxDialogView", "alvinluo onTouchUp isExpand: %b", new Object[] { Boolean.valueOf(this.viL) });
-    if (!this.viL)
+    this.yzV = 0.0F;
+    this.ncP = 0.0F;
+    ae.i("MicroMsg.BoxDialogView", "alvinluo onTouchUp isExpand: %b", new Object[] { Boolean.valueOf(this.vuQ) });
+    if (!this.vuQ)
     {
-      ad.d("MicroMsg.BoxDialogView", "alvinluo onTouchUp canClose: %b, canOpen: %b", new Object[] { Boolean.valueOf(dKC()), Boolean.valueOf(dKD()) });
-      if (dKC()) {
-        if (this.ykA) {
+      ae.d("MicroMsg.BoxDialogView", "alvinluo onTouchUp canClose: %b, canOpen: %b", new Object[] { Boolean.valueOf(dNU()), Boolean.valueOf(dNV()) });
+      if (dNU()) {
+        if (this.yAz) {
           label333:
-          Op(i);
+          OV(i);
         }
       }
     }
     for (;;)
     {
-      this.ykA = false;
-      this.ykB = false;
+      this.yAz = false;
+      this.yAA = false;
       break;
       i = 2;
       break label333;
-      if (!dKD())
+      if (!dNV())
       {
-        localView = this.ykc;
+        localView = this.yAb;
         if (localView == null) {
-          p.bcb("dialogContainer");
+          p.bdF("dialogContainer");
         }
-        e(localView.getTranslationY(), this.ykm, false);
+        e(localView.getTranslationY(), this.yAl, false);
         continue;
-        ad.d("MicroMsg.BoxDialogView", "alvinluo onTouchUp canClose: %b", new Object[] { Boolean.valueOf(dKE()) });
-        if (dKE())
+        ae.d("MicroMsg.BoxDialogView", "alvinluo onTouchUp canClose: %b", new Object[] { Boolean.valueOf(dNW()) });
+        if (dNW())
         {
-          if (this.ykA) {}
+          if (this.yAz) {}
           for (i = j;; i = 2)
           {
-            Op(i);
+            OV(i);
             break;
           }
         }
       }
-      View localView = this.ykc;
+      View localView = this.yAb;
       if (localView == null) {
-        p.bcb("dialogContainer");
+        p.bdF("dialogContainer");
       }
-      e(localView.getTranslationY(), this.ykl, true);
+      e(localView.getTranslationY(), this.yAk, true);
     }
   }
   
@@ -794,7 +791,7 @@ public final class BoxDialogView
   {
     AppMethodBeat.i(52097);
     p.h(paramd, "listener");
-    this.ykf = paramd;
+    this.yAe = paramd;
     AppMethodBeat.o(52097);
   }
   
@@ -802,29 +799,29 @@ public final class BoxDialogView
   {
     AppMethodBeat.i(52098);
     p.h(parama, "model");
-    this.ykg = parama;
-    parama = this.ykg;
+    this.yAf = parama;
+    parama = this.yAf;
     float f;
     if (parama != null)
     {
       f = parama.getMarkViewTransY();
-      this.yki = f;
-      if (this.ykg != null)
+      this.yAh = f;
+      if (this.yAf != null)
       {
-        parama = this.ykg;
+        parama = this.yAf;
         if (parama == null) {
-          p.gfZ();
+          p.gkB();
         }
-        if (parama.getMarkViewHeight() > this.ykp)
+        if (parama.getMarkViewHeight() > this.yAo)
         {
-          parama = this.ykg;
+          parama = this.yAf;
           if (parama == null) {
-            p.gfZ();
+            p.gkB();
           }
-          this.ykp = ((int)parama.getMarkViewHeight());
+          this.yAo = ((int)parama.getMarkViewHeight());
         }
       }
-      parama = this.ykg;
+      parama = this.yAf;
       if (parama == null) {
         break label144;
       }
@@ -832,7 +829,7 @@ public final class BoxDialogView
     label144:
     for (parama = Float.valueOf(parama.getMarkViewTransY());; parama = null)
     {
-      ad.v("MicroMsg.BoxDialogView", "alvinluo setMarkView translationY: %s", new Object[] { parama });
+      ae.v("MicroMsg.BoxDialogView", "alvinluo setMarkView translationY: %s", new Object[] { parama });
       AppMethodBeat.o(52098);
       return;
       f = 0.0F;
@@ -842,37 +839,37 @@ public final class BoxDialogView
   
   public final void setFixWebViewHeight(int paramInt)
   {
-    AppMethodBeat.i(186241);
-    ad.v("MicroMsg.BoxDialogView", "alvinluo setFixWebViewHeight: %d", new Object[] { Integer.valueOf(paramInt) });
-    this.ykw = paramInt;
-    AppMethodBeat.o(186241);
+    AppMethodBeat.i(189523);
+    ae.v("MicroMsg.BoxDialogView", "alvinluo setFixWebViewHeight: %d", new Object[] { Integer.valueOf(paramInt) });
+    this.yAv = paramInt;
+    AppMethodBeat.o(189523);
   }
   
   public final void setIsFixWebViewHeight(boolean paramBoolean)
   {
-    this.ykv = paramBoolean;
+    this.yAu = paramBoolean;
   }
   
   public final void setWebViewEnableScroll(boolean paramBoolean)
   {
-    AppMethodBeat.i(186242);
-    BoxWebViewContainer localBoxWebViewContainer = this.ykd;
+    AppMethodBeat.i(189524);
+    BoxWebViewContainer localBoxWebViewContainer = this.yAc;
     if (localBoxWebViewContainer == null) {
-      p.bcb("webViewContainer");
+      p.bdF("webViewContainer");
     }
     localBoxWebViewContainer.setEnableScroll(paramBoolean);
-    AppMethodBeat.o(186242);
+    AppMethodBeat.o(189524);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/scanner/box/BoxDialogView$AnimationInfo;", "", "(Lcom/tencent/mm/plugin/scanner/box/BoxDialogView;)V", "bgViewEndTranslationY", "", "getBgViewEndTranslationY", "()F", "setBgViewEndTranslationY", "(F)V", "bgViewNeedAnimation", "", "getBgViewNeedAnimation", "()Z", "setBgViewNeedAnimation", "(Z)V", "bgViewStartTranslationY", "getBgViewStartTranslationY", "setBgViewStartTranslationY", "plugin-scan_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/scanner/box/BoxDialogView$AnimationInfo;", "", "(Lcom/tencent/mm/plugin/scanner/box/BoxDialogView;)V", "bgViewEndTranslationY", "", "getBgViewEndTranslationY", "()F", "setBgViewEndTranslationY", "(F)V", "bgViewNeedAnimation", "", "getBgViewNeedAnimation", "()Z", "setBgViewNeedAnimation", "(Z)V", "bgViewStartTranslationY", "getBgViewStartTranslationY", "setBgViewStartTranslationY", "plugin-scan_release"})
   final class a
   {
-    float ykJ;
-    float ykK;
-    boolean ykL;
+    float yAI;
+    float yAJ;
+    boolean yAK;
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "animation", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "animation", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate"})
   static final class c
     implements ValueAnimator.AnimatorUpdateListener
   {
@@ -890,19 +887,19 @@ public final class BoxDialogView
         throw paramValueAnimator;
       }
       float f2 = ((Float)paramValueAnimator).floatValue();
-      BoxDialogView.e(this.ykM, f2);
+      BoxDialogView.e(this.yAL, f2);
       if (paramBoolean) {}
-      for (float f1 = BoxDialogView.f(this.ykM).ykK;; f1 = BoxDialogView.g(this.ykM).ykK)
+      for (float f1 = BoxDialogView.f(this.yAL).yAJ;; f1 = BoxDialogView.g(this.yAL).yAJ)
       {
         f1 = BoxDialogView.b(paramFloat1, paramFloat2, f2, f, f1);
-        BoxDialogView.b(this.ykM, f1);
+        BoxDialogView.b(this.yAL, f1);
         AppMethodBeat.o(52084);
         return;
       }
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/scanner/box/BoxDialogView$animateDialogVerticalTranslation$2", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "plugin-scan_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/scanner/box/BoxDialogView$animateDialogVerticalTranslation$2", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "plugin-scan_release"})
   public static final class d
     implements Animator.AnimatorListener
   {
@@ -913,16 +910,16 @@ public final class BoxDialogView
     public final void onAnimationEnd(Animator paramAnimator)
     {
       AppMethodBeat.i(52085);
-      BoxDialogView.b(this.ykM, paramBoolean);
-      BoxDialogView.c(this.ykM, BoxDialogView.d(this.ykM).getTranslationY());
-      paramAnimator = this.ykM;
-      a locala = BoxDialogView.e(this.ykM);
+      BoxDialogView.b(this.yAL, paramBoolean);
+      BoxDialogView.c(this.yAL, BoxDialogView.d(this.yAL).getTranslationY());
+      paramAnimator = this.yAL;
+      a locala = BoxDialogView.e(this.yAL);
       float f;
       if (locala != null)
       {
         f = locala.getBackgroundTransY();
         BoxDialogView.d(paramAnimator, f);
-        paramAnimator = this.ykM;
+        paramAnimator = this.yAL;
         if (!paramBoolean) {
           break label95;
         }
@@ -943,30 +940,7 @@ public final class BoxDialogView
     public final void onAnimationStart(Animator paramAnimator) {}
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "animation", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate", "com/tencent/mm/plugin/scanner/box/BoxDialogView$animateShowBackground$1$1"})
-  static final class e
-    implements ValueAnimator.AnimatorUpdateListener
-  {
-    e(BoxDialogView paramBoxDialogView) {}
-    
-    public final void onAnimationUpdate(ValueAnimator paramValueAnimator)
-    {
-      AppMethodBeat.i(52086);
-      BoxDialogView localBoxDialogView = this.ykM;
-      p.g(paramValueAnimator, "animation");
-      paramValueAnimator = paramValueAnimator.getAnimatedValue();
-      if (paramValueAnimator == null)
-      {
-        paramValueAnimator = new v("null cannot be cast to non-null type kotlin.Float");
-        AppMethodBeat.o(52086);
-        throw paramValueAnimator;
-      }
-      BoxDialogView.b(localBoxDialogView, ((Float)paramValueAnimator).floatValue());
-      AppMethodBeat.o(52086);
-    }
-  }
-  
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/scanner/box/BoxDialogView$animateShowBackground$1$2", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "plugin-scan_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/scanner/box/BoxDialogView$animateShowBackground$1$2", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "plugin-scan_release"})
   public static final class f
     implements Animator.AnimatorListener
   {
@@ -978,15 +952,15 @@ public final class BoxDialogView
     {
       Float localFloat = null;
       AppMethodBeat.i(52087);
-      BoxDialogView.a(this.ykM, 1);
-      paramAnimator = this.ykM;
-      a locala = BoxDialogView.e(this.ykM);
+      BoxDialogView.a(this.yAL, 1);
+      paramAnimator = this.yAL;
+      a locala = BoxDialogView.e(this.yAL);
       float f;
       if (locala != null)
       {
         f = locala.getBackgroundTransY();
         BoxDialogView.d(paramAnimator, f);
-        paramAnimator = BoxDialogView.e(this.ykM);
+        paramAnimator = BoxDialogView.e(this.yAL);
         if (paramAnimator == null) {
           break label124;
         }
@@ -994,11 +968,11 @@ public final class BoxDialogView
       label124:
       for (paramAnimator = Float.valueOf(paramAnimator.getBackgroundTransY());; paramAnimator = null)
       {
-        locala = BoxDialogView.e(this.ykM);
+        locala = BoxDialogView.e(this.yAL);
         if (locala != null) {
           localFloat = Float.valueOf(locala.getMarkViewTransY());
         }
-        ad.d("MicroMsg.BoxDialogView", "alvinluo animateShowBackground onAnimationEnd bgTranslationY: %s, markViewTranslationY: %s", new Object[] { paramAnimator, localFloat });
+        ae.d("MicroMsg.BoxDialogView", "alvinluo animateShowBackground onAnimationEnd bgTranslationY: %s, markViewTranslationY: %s", new Object[] { paramAnimator, localFloat });
         AppMethodBeat.o(52087);
         return;
         f = 0.0F;
@@ -1011,7 +985,7 @@ public final class BoxDialogView
     public final void onAnimationStart(Animator paramAnimator) {}
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/scanner/box/BoxDialogView$dismiss$1", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "plugin-scan_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/scanner/box/BoxDialogView$dismiss$1", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "plugin-scan_release"})
   public static final class g
     implements Animator.AnimatorListener
   {
@@ -1020,17 +994,17 @@ public final class BoxDialogView
     public final void onAnimationCancel(Animator paramAnimator)
     {
       AppMethodBeat.i(161052);
-      BoxDialogView.a(this.ykM);
+      BoxDialogView.a(this.yAL);
       AppMethodBeat.o(161052);
     }
     
     public final void onAnimationEnd(Animator paramAnimator)
     {
       AppMethodBeat.i(52089);
-      BoxDialogView.a(this.ykM);
-      BoxDialogView.a(this.ykM, 0);
-      BoxDialogView.b(this.ykM);
-      aq.f((Runnable)new a(this));
+      BoxDialogView.a(this.yAL);
+      BoxDialogView.a(this.yAL, 0);
+      BoxDialogView.b(this.yAL);
+      com.tencent.mm.sdk.platformtools.ar.f((Runnable)new a(this));
       AppMethodBeat.o(52089);
     }
     
@@ -1038,7 +1012,7 @@ public final class BoxDialogView
     
     public final void onAnimationStart(Animator paramAnimator) {}
     
-    @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
+    @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
     static final class a
       implements Runnable
     {
@@ -1047,146 +1021,16 @@ public final class BoxDialogView
       public final void run()
       {
         AppMethodBeat.i(52088);
-        c localc = BoxDialogView.c(this.ykS.ykM);
+        c localc = BoxDialogView.c(this.yAR.yAL);
         if (localc != null)
         {
-          localc.dismissDialog(this.ykS.ykR);
+          localc.dismissDialog(this.yAR.yAQ);
           AppMethodBeat.o(52088);
           return;
         }
         AppMethodBeat.o(52088);
       }
     }
-  }
-  
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/scanner/box/BoxDialogView$dismiss$2", "Landroid/animation/ValueAnimator$AnimatorUpdateListener;", "onAnimationUpdate", "", "animation", "Landroid/animation/ValueAnimator;", "plugin-scan_release"})
-  public static final class h
-    implements ValueAnimator.AnimatorUpdateListener
-  {
-    h(float paramFloat1, float paramFloat2) {}
-    
-    public final void onAnimationUpdate(ValueAnimator paramValueAnimator)
-    {
-      AppMethodBeat.i(52090);
-      BoxDialogView.a(this.ykM, BoxDialogView.d(this.ykM).getTranslationY());
-      if (paramValueAnimator == null)
-      {
-        AppMethodBeat.o(52090);
-        return;
-      }
-      paramValueAnimator = paramValueAnimator.getAnimatedValue();
-      if (paramValueAnimator == null)
-      {
-        paramValueAnimator = new v("null cannot be cast to non-null type kotlin.Float");
-        AppMethodBeat.o(52090);
-        throw paramValueAnimator;
-      }
-      float f1 = ((Float)paramValueAnimator).floatValue();
-      float f2 = f1;
-      float f3 = this.ykU;
-      float f4 = f1;
-      BoxDialogView.b(this.ykM, f1 * (f3 - f4) + f2);
-      AppMethodBeat.o(52090);
-    }
-  }
-  
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "l", "", "t", "oldl", "oldt", "onWebViewScrollChanged"})
-  static final class i
-    implements MMWebView.e
-  {
-    i(BoxDialogView paramBoxDialogView) {}
-    
-    public final void onWebViewScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-    {
-      boolean bool = true;
-      AppMethodBeat.i(52091);
-      ad.v("MicroMsg.BoxDialogView", "alvinluo onWebViewScrollChanged l: %d, t: %d, oldl: %d, oldt: %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4) });
-      BoxDialogView localBoxDialogView = this.ykM;
-      if (paramInt2 == 0) {}
-      for (;;)
-      {
-        BoxDialogView.a(localBoxDialogView, bool);
-        AppMethodBeat.o(52091);
-        return;
-        bool = false;
-      }
-    }
-  }
-  
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class j
-    implements View.OnClickListener
-  {
-    j(BoxDialogView paramBoxDialogView) {}
-    
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(52092);
-      b localb = new b();
-      localb.bd(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/scanner/box/BoxDialogView$init$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-      this.ykM.Op(3);
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/scanner/box/BoxDialogView$init$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(52092);
-    }
-  }
-  
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class k
-    implements View.OnClickListener
-  {
-    k(BoxDialogView paramBoxDialogView) {}
-    
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(52093);
-      b localb = new b();
-      localb.bd(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/scanner/box/BoxDialogView$init$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-      this.ykM.Op(4);
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/scanner/box/BoxDialogView$init$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(52093);
-    }
-  }
-  
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate"})
-  static final class l
-    implements ValueAnimator.AnimatorUpdateListener
-  {
-    l(BoxDialogView paramBoxDialogView) {}
-    
-    public final void onAnimationUpdate(ValueAnimator paramValueAnimator)
-    {
-      AppMethodBeat.i(52094);
-      BoxDialogView.c(this.ykM, BoxDialogView.d(this.ykM).getTranslationY());
-      BoxDialogView.a(this.ykM, BoxDialogView.d(this.ykM).getTranslationY());
-      AppMethodBeat.o(52094);
-    }
-  }
-  
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/scanner/box/BoxDialogView$show$2", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "plugin-scan_release"})
-  public static final class m
-    implements Animator.AnimatorListener
-  {
-    public final void onAnimationCancel(Animator paramAnimator)
-    {
-      AppMethodBeat.i(161053);
-      BoxDialogView.a(this.ykM);
-      AppMethodBeat.o(161053);
-    }
-    
-    public final void onAnimationEnd(Animator paramAnimator)
-    {
-      AppMethodBeat.i(52095);
-      BoxDialogView.b(this.ykM);
-      BoxDialogView.a(this.ykM);
-      ad.v("MicroMsg.BoxDialogView", "alvinluo show onAnimationEnd current translationY: %f", new Object[] { Float.valueOf(BoxDialogView.d(this.ykM).getTranslationY()) });
-      AppMethodBeat.o(52095);
-    }
-    
-    public final void onAnimationRepeat(Animator paramAnimator) {}
-    
-    public final void onAnimationStart(Animator paramAnimator) {}
   }
 }
 

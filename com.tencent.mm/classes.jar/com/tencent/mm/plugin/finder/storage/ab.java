@@ -2,175 +2,190 @@ package com.tencent.mm.plugin.finder.storage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.protocal.protobuf.FinderCommentInfo;
-import com.tencent.mm.protocal.protobuf.alh;
-import com.tencent.mm.protocal.protobuf.bvi;
-import com.tencent.mm.protocal.protobuf.bvj;
+import com.tencent.mm.protocal.protobuf.alr;
+import com.tencent.mm.protocal.protobuf.bwc;
+import com.tencent.mm.protocal.protobuf.bwd;
 import d.g.b.ad;
 import d.l;
 import d.v;
 import java.util.Arrays;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/storage/LocalFinderCommentObject;", "Lcom/tencent/mm/plugin/finder/storage/LocalFinderAction;", "()V", "value", "", "blacklist_flag", "getBlacklist_flag", "()I", "setBlacklist_flag", "(I)V", "canRemove", "getCanRemove", "setCanRemove", "", "clientId", "getClientId", "()Ljava/lang/String;", "setClientId", "(Ljava/lang/String;)V", "", "commentId", "getCommentId", "()J", "setCommentId", "(J)V", "Lcom/tencent/mm/protocal/protobuf/FinderCommentInfo;", "kotlin.jvm.PlatformType", "commentInfo", "getCommentInfo", "()Lcom/tencent/mm/protocal/protobuf/FinderCommentInfo;", "setCommentInfo", "(Lcom/tencent/mm/protocal/protobuf/FinderCommentInfo;)V", "content", "getContent", "setContent", "continueFlag", "getContinueFlag", "setContinueFlag", "createtime", "getCreatetime", "setCreatetime", "deleteFlag", "getDeleteFlag", "setDeleteFlag", "displayFlag", "getDisplayFlag", "setDisplayFlag", "displayid", "getDisplayid", "setDisplayid", "displayidDiscarded", "getDisplayidDiscarded", "setDisplayidDiscarded", "expandCommentCount", "getExpandCommentCount", "setExpandCommentCount", "extFlag", "getExtFlag", "setExtFlag", "failedFlag", "getFailedFlag", "setFailedFlag", "feedId", "getFeedId", "setFeedId", "headUrl", "getHeadUrl", "setHeadUrl", "Lcom/tencent/mm/protobuf/ByteString;", "lastBuffer", "getLastBuffer", "()Lcom/tencent/mm/protobuf/ByteString;", "setLastBuffer", "(Lcom/tencent/mm/protobuf/ByteString;)V", "Ljava/util/LinkedList;", "levelTwoComment", "getLevelTwoComment", "()Ljava/util/LinkedList;", "setLevelTwoComment", "(Ljava/util/LinkedList;)V", "likeCount", "getLikeCount", "setLikeCount", "likeFlag", "getLikeFlag", "setLikeFlag", "nickname", "getNickname", "setNickname", "objectNonceId", "getObjectNonceId", "setObjectNonceId", "postCommentReason", "getPostCommentReason", "setPostCommentReason", "replyCommentId", "getReplyCommentId", "setReplyCommentId", "replyNickname", "getReplyNickname", "setReplyNickname", "reply_content", "getReply_content", "setReply_content", "reply_username", "getReply_username", "setReply_username", "rootCommentId", "getRootCommentId", "setRootCommentId", "state", "getState", "setState", "upContinueFlag", "getUpContinueFlag", "setUpContinueFlag", "username", "getUsername", "setUsername", "isAuthorMentioned", "", "isCommentCanDelete", "isCommentSent", "isExtFlagFriend", "isFinderComment", "isPoster", "isReplyerFinder", "isReplyerPoster", "toString", "Companion", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/storage/LocalFinderCommentObject;", "Lcom/tencent/mm/plugin/finder/storage/LocalFinderAction;", "()V", "value", "", "blacklist_flag", "getBlacklist_flag", "()I", "setBlacklist_flag", "(I)V", "canRemove", "getCanRemove", "setCanRemove", "", "clientId", "getClientId", "()Ljava/lang/String;", "setClientId", "(Ljava/lang/String;)V", "", "commentId", "getCommentId", "()J", "setCommentId", "(J)V", "Lcom/tencent/mm/protocal/protobuf/FinderCommentInfo;", "commentInfo", "getCommentInfo", "()Lcom/tencent/mm/protocal/protobuf/FinderCommentInfo;", "setCommentInfo", "(Lcom/tencent/mm/protocal/protobuf/FinderCommentInfo;)V", "content", "getContent", "setContent", "continueFlag", "getContinueFlag", "setContinueFlag", "createtime", "getCreatetime", "setCreatetime", "deleteFlag", "getDeleteFlag", "setDeleteFlag", "displayFlag", "getDisplayFlag", "setDisplayFlag", "displayid", "getDisplayid", "setDisplayid", "displayidDiscarded", "getDisplayidDiscarded", "setDisplayidDiscarded", "expandCommentCount", "getExpandCommentCount", "setExpandCommentCount", "extFlag", "getExtFlag", "setExtFlag", "failedFlag", "getFailedFlag", "setFailedFlag", "feedId", "getFeedId", "setFeedId", "headUrl", "getHeadUrl", "setHeadUrl", "Lcom/tencent/mm/protobuf/ByteString;", "lastBuffer", "getLastBuffer", "()Lcom/tencent/mm/protobuf/ByteString;", "setLastBuffer", "(Lcom/tencent/mm/protobuf/ByteString;)V", "Ljava/util/LinkedList;", "kotlin.jvm.PlatformType", "levelTwoComment", "getLevelTwoComment", "()Ljava/util/LinkedList;", "setLevelTwoComment", "(Ljava/util/LinkedList;)V", "likeCount", "getLikeCount", "setLikeCount", "likeFlag", "getLikeFlag", "setLikeFlag", "nickname", "getNickname", "setNickname", "objectNonceId", "getObjectNonceId", "setObjectNonceId", "postCommentReason", "getPostCommentReason", "setPostCommentReason", "replyCommentId", "getReplyCommentId", "setReplyCommentId", "replyNickname", "getReplyNickname", "setReplyNickname", "reply_content", "getReply_content", "setReply_content", "reply_username", "getReply_username", "setReply_username", "rootCommentId", "getRootCommentId", "setRootCommentId", "state", "getState", "setState", "upContinueFlag", "getUpContinueFlag", "setUpContinueFlag", "username", "getUsername", "setUsername", "isAuthorMentioned", "", "isCommentCanDelete", "isCommentSent", "isExtFlagFriend", "isFinderComment", "isPoster", "isReplyerFinder", "isReplyerPoster", "toString", "Companion", "plugin-finder_release"})
 public final class ab
   extends aa
 {
-  public static final a szq;
+  public static final ab.a sKh;
   
   static
   {
     AppMethodBeat.i(167037);
-    szq = new a((byte)0);
+    sKh = new ab.a((byte)0);
     AppMethodBeat.o(167037);
   }
   
   public ab()
   {
     AppMethodBeat.i(167036);
-    alh localalh = new alh();
-    localalh.Gla = new FinderCommentInfo();
-    localalh.Glb = new bvi();
-    localalh.Glc = new bvj();
-    this.field_actionInfo = localalh;
+    alr localalr = new alr();
+    localalr.GDK = new FinderCommentInfo();
+    localalr.GDL = new bwc();
+    localalr.GDM = new bwd();
+    this.field_actionInfo = localalr;
     AppMethodBeat.o(167036);
   }
   
-  public final void Fo(int paramInt)
+  public final void FL(int paramInt)
   {
-    this.field_actionInfo.Gla.expandCommentCount = paramInt;
+    AppMethodBeat.i(204326);
+    cLl().expandCommentCount = paramInt;
+    AppMethodBeat.o(204326);
   }
   
-  public final void Fp(int paramInt)
+  public final void FM(int paramInt)
   {
-    this.field_actionInfo.Gla.displayFlag = paramInt;
+    AppMethodBeat.i(204327);
+    cLl().displayFlag = paramInt;
+    AppMethodBeat.o(204327);
   }
   
-  public final String VC()
+  public final String VK()
   {
-    String str2 = this.field_actionInfo.Gla.nickname;
+    AppMethodBeat.i(204320);
+    String str2 = cLl().nickname;
     String str1 = str2;
     if (str2 == null) {
       str1 = "";
     }
+    d.g.b.p.g(str1, "commentInfo.nickname?:\"\"");
+    AppMethodBeat.o(204320);
     return str1;
   }
   
-  public final void aiz(String paramString)
+  public final void ajw(String paramString)
   {
     AppMethodBeat.i(167034);
     d.g.b.p.h(paramString, "value");
-    this.field_actionInfo.Gla.headUrl = paramString;
+    cLl().headUrl = paramString;
     AppMethodBeat.o(167034);
   }
   
-  public final long cIG()
+  public final FinderCommentInfo cLl()
   {
-    return this.field_actionInfo.Gla.commentId;
+    AppMethodBeat.i(204318);
+    FinderCommentInfo localFinderCommentInfo2 = this.field_actionInfo.GDK;
+    FinderCommentInfo localFinderCommentInfo1 = localFinderCommentInfo2;
+    if (localFinderCommentInfo2 == null) {
+      localFinderCommentInfo1 = new FinderCommentInfo();
+    }
+    d.g.b.p.g(localFinderCommentInfo1, "field_actionInfo.comment…fo ?: FinderCommentInfo()");
+    AppMethodBeat.o(204318);
+    return localFinderCommentInfo1;
   }
   
-  public final String cIH()
+  public final String cLm()
   {
-    String str2 = this.field_actionInfo.Gla.headUrl;
+    AppMethodBeat.i(204322);
+    String str2 = cLl().headUrl;
     String str1 = str2;
     if (str2 == null) {
       str1 = "";
     }
+    d.g.b.p.g(str1, "commentInfo.headUrl?:\"\"");
+    AppMethodBeat.o(204322);
     return str1;
   }
   
-  public final long cII()
+  public final String cLn()
   {
-    return this.field_actionInfo.Gla.createtime;
-  }
-  
-  public final String cIJ()
-  {
-    String str2 = this.field_actionInfo.Gla.replyNickname;
+    AppMethodBeat.i(204324);
+    String str2 = cLl().replyNickname;
     String str1 = str2;
     if (str2 == null) {
       str1 = "";
     }
+    d.g.b.p.g(str1, "commentInfo.replyNickname?:\"\"");
+    AppMethodBeat.o(204324);
     return str1;
   }
   
-  public final int cIK()
+  public final String cLo()
   {
-    return this.field_actionInfo.Gla.displayFlag;
-  }
-  
-  public final String cIL()
-  {
-    String str2 = this.field_actionInfo.Gla.reply_content;
+    AppMethodBeat.i(204328);
+    String str2 = cLl().reply_content;
     String str1 = str2;
     if (str2 == null) {
       str1 = "";
     }
+    d.g.b.p.g(str1, "commentInfo.reply_content?:\"\"");
+    AppMethodBeat.o(204328);
     return str1;
   }
   
-  public final String cIM()
+  public final String cLp()
   {
-    String str2 = this.field_actionInfo.Gla.reply_username;
+    AppMethodBeat.i(204329);
+    String str2 = cLl().reply_username;
     String str1 = str2;
     if (str2 == null) {
       str1 = "";
     }
+    d.g.b.p.g(str1, "commentInfo.reply_username?:\"\"");
+    AppMethodBeat.o(204329);
     return str1;
   }
   
-  public final String cIN()
+  public final String cLq()
   {
-    String str2 = this.field_actionInfo.Gla.client_id;
+    AppMethodBeat.i(204330);
+    String str2 = cLl().client_id;
     String str1 = str2;
     if (str2 == null) {
       str1 = "";
     }
+    d.g.b.p.g(str1, "commentInfo.client_id?:\"\"");
+    AppMethodBeat.o(204330);
     return str1;
   }
   
-  public final int cIO()
+  public final boolean cLr()
   {
-    return this.field_actionInfo.Gla.extFlag;
-  }
-  
-  public final boolean cIP()
-  {
-    AppMethodBeat.i(203751);
-    if ((cIO() & 0x1) > 0)
+    AppMethodBeat.i(204331);
+    if ((cLl().extFlag & 0x1) > 0)
     {
-      AppMethodBeat.o(203751);
+      AppMethodBeat.o(204331);
       return true;
     }
-    AppMethodBeat.o(203751);
+    AppMethodBeat.o(204331);
     return false;
   }
   
-  public final boolean cIQ()
+  public final boolean cLs()
   {
     return (this.field_state != 1) && (this.field_state != -1);
   }
   
-  public final boolean cIR()
+  public final boolean cLt()
   {
     AppMethodBeat.i(178419);
-    com.tencent.mm.plugin.finder.utils.p localp = com.tencent.mm.plugin.finder.utils.p.sMo;
-    boolean bool = com.tencent.mm.plugin.finder.utils.p.FP(cIK());
+    com.tencent.mm.plugin.finder.utils.p localp = com.tencent.mm.plugin.finder.utils.p.sXz;
+    boolean bool = com.tencent.mm.plugin.finder.utils.p.Gn(cLl().displayFlag);
     AppMethodBeat.o(178419);
     return bool;
   }
   
-  public final boolean cIS()
+  public final boolean cLu()
   {
     AppMethodBeat.i(178420);
-    com.tencent.mm.plugin.finder.utils.p localp = com.tencent.mm.plugin.finder.utils.p.sMo;
-    boolean bool = com.tencent.mm.plugin.finder.utils.p.FQ(cIK());
+    com.tencent.mm.plugin.finder.utils.p localp = com.tencent.mm.plugin.finder.utils.p.sXz;
+    boolean bool = com.tencent.mm.plugin.finder.utils.p.Go(cLl().displayFlag);
     AppMethodBeat.o(178420);
     return bool;
   }
   
-  public final boolean cIT()
+  public final boolean cLv()
   {
     AppMethodBeat.i(178421);
-    if ((cIK() & 0x4) != 0)
+    if ((cLl().displayFlag & 0x4) != 0)
     {
       AppMethodBeat.o(178421);
       return true;
@@ -179,29 +194,17 @@ public final class ab
     return false;
   }
   
-  public final int eQt()
-  {
-    return this.field_actionInfo.Gla.blacklist_flag;
-  }
-  
   public final String getContent()
   {
-    String str2 = this.field_actionInfo.Gla.content;
+    AppMethodBeat.i(204321);
+    String str2 = cLl().content;
     String str1 = str2;
     if (str2 == null) {
       str1 = "";
     }
+    d.g.b.p.g(str1, "commentInfo.content?:\"\"");
+    AppMethodBeat.o(204321);
     return str1;
-  }
-  
-  public final int getLikeCount()
-  {
-    return this.field_actionInfo.Gla.likeCount;
-  }
-  
-  public final int getLikeFlag()
-  {
-    return this.field_actionInfo.Gla.likeFlag;
   }
   
   public final String getObjectNonceId()
@@ -216,69 +219,93 @@ public final class ab
   
   public final String getUsername()
   {
-    String str2 = this.field_actionInfo.Gla.username;
+    AppMethodBeat.i(204319);
+    String str2 = cLl().username;
     String str1 = str2;
     if (str2 == null) {
       str1 = "";
     }
+    d.g.b.p.g(str1, "commentInfo.username?:\"\"");
+    AppMethodBeat.o(204319);
     return str1;
   }
   
   public final void setLikeCount(int paramInt)
   {
-    this.field_actionInfo.Gla.likeCount = paramInt;
+    AppMethodBeat.i(204325);
+    cLl().likeCount = paramInt;
+    AppMethodBeat.o(204325);
   }
   
   public final void setUsername(String paramString)
   {
     AppMethodBeat.i(167033);
     d.g.b.p.h(paramString, "value");
-    this.field_actionInfo.Gla.username = paramString;
+    cLl().username = paramString;
     AppMethodBeat.o(167033);
   }
   
   public final String toString()
   {
     AppMethodBeat.i(167035);
-    Object localObject = ad.MLZ;
-    String str2 = "field_commentInfo{commentId:" + this.field_actionInfo.Gla.commentId + ", displayid:" + this.field_actionInfo.Gla.displayid + " try_count " + this.field_tryCount + " conetent:%s}";
-    localObject = this.field_actionInfo.Gla.content;
-    d.g.b.p.g(localObject, "it");
-    int i = Math.min(((String)localObject).length(), 2);
-    if (localObject == null)
+    Object localObject1 = ad.Njc;
+    Object localObject2 = new StringBuilder("field_commentInfo{commentId:").append(cLl().commentId).append(", displayid:");
+    localObject1 = cLl();
+    if (localObject1 != null) {}
+    Object[] arrayOfObject;
+    int i;
+    for (localObject1 = Long.valueOf(((FinderCommentInfo)localObject1).displayid);; localObject1 = null)
     {
-      localObject = new v("null cannot be cast to non-null type java.lang.String");
+      localObject2 = ((Long)localObject1).longValue() + " try_count " + this.field_tryCount + " conetent:%s}";
+      arrayOfObject = new Object[1];
+      localObject1 = cLl();
+      if (localObject1 == null) {
+        break label171;
+      }
+      localObject1 = ((FinderCommentInfo)localObject1).content;
+      if (localObject1 == null) {
+        break label171;
+      }
+      d.g.b.p.g(localObject1, "it");
+      i = Math.min(((String)localObject1).length(), 2);
+      if (localObject1 != null) {
+        break;
+      }
+      localObject1 = new v("null cannot be cast to non-null type java.lang.String");
       AppMethodBeat.o(167035);
-      throw ((Throwable)localObject);
+      throw ((Throwable)localObject1);
     }
-    String str1 = ((String)localObject).substring(0, i);
-    d.g.b.p.g(str1, "(this as java.lang.Strin…ing(startIndex, endIndex)");
-    localObject = str1;
-    if (str1 == null) {
-      localObject = "";
+    localObject1 = ((String)localObject1).substring(0, i);
+    d.g.b.p.g(localObject1, "(this as java.lang.Strin…ing(startIndex, endIndex)");
+    if (localObject1 == null) {
+      label171:
+      localObject1 = "";
     }
-    localObject = String.format(str2, Arrays.copyOf(new Object[] { localObject }, 1));
-    d.g.b.p.g(localObject, "java.lang.String.format(format, *args)");
-    AppMethodBeat.o(167035);
-    return localObject;
+    for (;;)
+    {
+      arrayOfObject[0] = localObject1;
+      localObject1 = String.format((String)localObject2, Arrays.copyOf(arrayOfObject, 1));
+      d.g.b.p.g(localObject1, "java.lang.String.format(format, *args)");
+      AppMethodBeat.o(167035);
+      return localObject1;
+    }
   }
   
-  public final void wR(long paramLong)
+  public final void xi(long paramLong)
   {
-    this.field_actionInfo.rID = paramLong;
+    this.field_actionInfo.rQN = paramLong;
   }
   
-  public final void wS(long paramLong)
+  public final void xj(long paramLong)
   {
-    this.field_actionInfo.Gla.createtime = paramLong;
+    AppMethodBeat.i(204323);
+    cLl().createtime = paramLong;
+    AppMethodBeat.o(204323);
   }
-  
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/storage/LocalFinderCommentObject$Companion;", "", "()V", "FAILED_BAN", "", "FAILED_NORMAL", "STATE_ERROR", "STATE_REPLIED", "STATE_REPLYING", "plugin-finder_release"})
-  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.storage.ab
  * JD-Core Version:    0.7.0.1
  */

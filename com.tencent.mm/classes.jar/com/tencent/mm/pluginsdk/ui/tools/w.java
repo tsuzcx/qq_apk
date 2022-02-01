@@ -2,18 +2,18 @@ package com.tencent.mm.pluginsdk.ui.tools;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.ArrayList;
 import java.util.List;
 
 public final class w
 {
-  private static List<a> Flp;
+  private static List<a> FDN;
   
   static
   {
     AppMethodBeat.i(152428);
-    Flp = new ArrayList();
+    FDN = new ArrayList();
     AppMethodBeat.o(152428);
   }
   
@@ -22,9 +22,9 @@ public final class w
     AppMethodBeat.i(152426);
     if (parama != null)
     {
-      ad.d("MicroMsg.WebViewPluginCenter", "add, plugin name = " + parama.getName());
-      if (!Flp.contains(parama)) {
-        Flp.add(parama);
+      ae.d("MicroMsg.WebViewPluginCenter", "add, plugin name = " + parama.getName());
+      if (!FDN.contains(parama)) {
+        FDN.add(parama);
       }
     }
     AppMethodBeat.o(152426);
@@ -33,23 +33,23 @@ public final class w
   public static void clear()
   {
     AppMethodBeat.i(152427);
-    ad.d("MicroMsg.WebViewPluginCenter", "clear");
-    Flp.clear();
+    ae.d("MicroMsg.WebViewPluginCenter", "clear");
+    FDN.clear();
     AppMethodBeat.o(152427);
   }
   
-  public static List<a> fft()
+  public static List<a> fjj()
   {
-    return Flp;
+    return FDN;
   }
   
   public static abstract interface a
   {
-    public abstract void eOW();
+    public abstract void eSH();
     
-    public abstract void eOX();
+    public abstract void eSI();
     
-    public abstract void gT(Context paramContext);
+    public abstract void gZ(Context paramContext);
     
     public abstract String getName();
   }

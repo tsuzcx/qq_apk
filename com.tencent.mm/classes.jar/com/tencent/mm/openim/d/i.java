@@ -5,14 +5,14 @@ import com.tencent.mm.plugin.messenger.foundation.a.a.k.b;
 public class i
   extends k.b
 {
-  private int iIg;
+  private int iKZ;
   
   public i(int paramInt)
   {
     super(0);
-    this.iIg = paramInt;
-    this.vKi = paramInt;
-    this.vKk = "@openim";
+    this.iKZ = paramInt;
+    this.vWm = paramInt;
+    this.vWo = "@openim";
   }
 }
 

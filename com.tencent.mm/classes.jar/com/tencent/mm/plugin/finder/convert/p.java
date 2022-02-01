@@ -5,42 +5,28 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.finder.model.d;
 import com.tencent.mm.view.recyclerview.b;
 import com.tencent.mm.view.recyclerview.e;
-import d.g.a.a;
-import d.g.b.q;
 import d.l;
-import d.z;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/convert/FinderFeedNoMreFooterConvert;", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "Lcom/tencent/mm/plugin/finder/model/FeedFooterNoMoreData;", "()V", "getLayoutId", "", "onBindViewHolder", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "position", "type", "isHotPatch", "", "payloads", "", "", "onCreateViewHolder", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/convert/FinderFeedNoMreFooterConvert;", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "Lcom/tencent/mm/plugin/finder/model/FeedFooterNoMoreData;", "()V", "getLayoutId", "", "onBindViewHolder", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "position", "type", "isHotPatch", "", "payloads", "", "", "onCreateViewHolder", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "plugin-finder_release"})
 public final class p
   extends b<d>
 {
   public final void a(RecyclerView paramRecyclerView, e parame, int paramInt)
   {
-    AppMethodBeat.i(201389);
+    AppMethodBeat.i(201822);
     d.g.b.p.h(paramRecyclerView, "recyclerView");
     d.g.b.p.h(parame, "holder");
-    AppMethodBeat.o(201389);
+    AppMethodBeat.o(201822);
   }
   
   public final int getLayoutId()
   {
     return 2131496264;
   }
-  
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
-  static final class a
-    extends q
-    implements a<z>
-  {
-    a(e parame)
-    {
-      super();
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.convert.p
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,23 @@
 package com.tencent.mm.plugin.wallet_index.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.f;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.f;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.aup;
-import com.tencent.mm.protocal.protobuf.auq;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.avf;
+import com.tencent.mm.protocal.protobuf.avg;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.wallet_core.c.w;
 
 public final class d
   extends w
 {
-  public String DpR;
-  public String DpS;
+  public String DHx;
+  public String DHy;
   private f callback;
   private b rr;
   
@@ -25,28 +25,28 @@ public final class d
   {
     AppMethodBeat.i(71813);
     Object localObject = new b.a();
-    ((b.a)localObject).hNM = new aup();
-    ((b.a)localObject).hNN = new auq();
+    ((b.a)localObject).hQF = new avf();
+    ((b.a)localObject).hQG = new avg();
     ((b.a)localObject).uri = "/cgi-bin/mmpay-bin/genmallprepay";
     ((b.a)localObject).funcId = 2755;
-    ((b.a)localObject).hNO = 189;
+    ((b.a)localObject).hQH = 189;
     ((b.a)localObject).respCmdId = 1000000189;
-    this.rr = ((b.a)localObject).aDC();
-    localObject = (aup)this.rr.hNK.hNQ;
-    ((aup)localObject).iht = paramString1;
-    ((aup)localObject).FXf = paramString4;
-    ((aup)localObject).FXe = paramString3;
-    ((aup)localObject).FXg = paramString5;
-    ((aup)localObject).FXh = paramString2;
-    ((aup)localObject).FDD = paramString6;
-    ((aup)localObject).FWa = paramString7;
-    ((aup)localObject).GsQ = paramString8;
-    ((aup)localObject).FqH = paramInt1;
-    ((aup)localObject).ukw = paramString9;
+    this.rr = ((b.a)localObject).aDS();
+    localObject = (avf)this.rr.hQD.hQJ;
+    ((avf)localObject).ikm = paramString1;
+    ((avf)localObject).GpE = paramString4;
+    ((avf)localObject).GpD = paramString3;
+    ((avf)localObject).GpF = paramString5;
+    ((avf)localObject).GpG = paramString2;
+    ((avf)localObject).FVY = paramString6;
+    ((avf)localObject).Goz = paramString7;
+    ((avf)localObject).GMo = paramString8;
+    ((avf)localObject).FJf = paramInt1;
+    ((avf)localObject).uvT = paramString9;
     if (paramInt2 > 0) {
-      ((aup)localObject).Scene = paramInt2;
+      ((avf)localObject).Scene = paramInt2;
     }
-    ad.d("MicroMsg.NetSceneGenMallPrepay", String.format("appid:%s,packageExt:%s,nonceStr:%s,paySignature:%s,signtype:%s,timeStamp:%s,url:%s,bizUsername:%s,channel:%s,scene:%s", new Object[] { paramString1, paramString4, paramString3, paramString5, paramString2, paramString6, paramString7, paramString8, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }));
+    ae.d("MicroMsg.NetSceneGenMallPrepay", String.format("appid:%s,packageExt:%s,nonceStr:%s,paySignature:%s,signtype:%s,timeStamp:%s,url:%s,bizUsername:%s,channel:%s,scene:%s", new Object[] { paramString1, paramString4, paramString3, paramString5, paramString2, paramString6, paramString7, paramString8, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }));
     AppMethodBeat.o(71813);
   }
   
@@ -67,17 +67,17 @@ public final class d
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte, long paramLong)
   {
     AppMethodBeat.i(71814);
-    ad.d("MicroMsg.NetSceneGenMallPrepay", "errType:" + paramInt2 + ",errCode:" + paramInt3 + ",errMsg" + paramString);
-    paramString = (auq)((b)paramq).hNL.hNQ;
-    ad.i("MicroMsg.NetSceneGenMallPrepay", "hy: errCode and errMsg in proto: errCode: %d, errMsg:%s", new Object[] { Integer.valueOf(paramString.qel), paramString.qem });
+    ae.d("MicroMsg.NetSceneGenMallPrepay", "errType:" + paramInt2 + ",errCode:" + paramInt3 + ",errMsg" + paramString);
+    paramString = (avg)((b)paramq).hQE.hQJ;
+    ae.i("MicroMsg.NetSceneGenMallPrepay", "hy: errCode and errMsg in proto: errCode: %d, errMsg:%s", new Object[] { Integer.valueOf(paramString.qkQ), paramString.qkR });
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      ad.d("MicroMsg.NetSceneGenMallPrepay", "rr " + paramString.GsR);
-      this.DpR = paramString.GsR;
-      this.DpS = paramString.GsS;
+      ae.d("MicroMsg.NetSceneGenMallPrepay", "rr " + paramString.GMp);
+      this.DHx = paramString.GMp;
+      this.DHy = paramString.GMq;
     }
-    paramq = paramString.qem;
-    paramInt1 = paramString.qel;
+    paramq = paramString.qkR;
+    paramInt1 = paramString.qkQ;
     this.callback.onSceneEnd(paramInt2, paramInt1, paramq, this);
     AppMethodBeat.o(71814);
   }

@@ -6,30 +6,30 @@ import com.tencent.tinker.a.a.b.e;
 public final class q
   extends s.a.a<q>
 {
-  public int MdC;
-  public int MdD;
-  public int MdE;
+  public int MAx;
+  public int MAy;
+  public int MAz;
   
   public q(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super(paramInt1);
-    this.MdC = paramInt2;
-    this.MdD = paramInt3;
-    this.MdE = paramInt4;
+    this.MAx = paramInt2;
+    this.MAy = paramInt3;
+    this.MAz = paramInt4;
   }
   
   private int b(q paramq)
   {
-    int i = c.kY(this.MdC, paramq.MdC);
+    int i = c.lf(this.MAx, paramq.MAx);
     if (i != 0) {}
     int j;
     do
     {
       return i;
-      j = c.kY(this.MdD, paramq.MdD);
+      j = c.lf(this.MAy, paramq.MAy);
       i = j;
     } while (j != 0);
-    return c.kZ(this.MdE, paramq.MdE);
+    return c.lg(this.MAz, paramq.MAz);
   }
   
   public final boolean equals(Object paramObject)
@@ -43,7 +43,7 @@ public final class q
   
   public final int hashCode()
   {
-    return e.hash(new Object[] { Integer.valueOf(this.MdC), Integer.valueOf(this.MdD), Integer.valueOf(this.MdE) });
+    return e.hash(new Object[] { Integer.valueOf(this.MAx), Integer.valueOf(this.MAy), Integer.valueOf(this.MAz) });
   }
 }
 

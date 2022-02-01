@@ -16,8 +16,8 @@ final class LuckyMoneyMyRecordUI$7
     AppMethodBeat.i(65642);
     b localb = new b();
     localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/luckymoney/ui/LuckyMoneyMyRecordUI$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-    this.vxG.showDialog(1);
+    a.b("com/tencent/mm/plugin/luckymoney/ui/LuckyMoneyMyRecordUI$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+    this.vJK.showDialog(1);
     a.a(this, "com/tencent/mm/plugin/luckymoney/ui/LuckyMoneyMyRecordUI$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(65642);
   }

@@ -9,12 +9,12 @@ import d.z;
 import java.util.LinkedList;
 import java.util.List;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"forEachIndexed", "", "Lcom/tencent/mm/json/JSONArray;", "block", "Lkotlin/Function2;", "", "htmlEncode", "", "kotlin.jvm.PlatformType", "map", "", "T", "toJsString", "webview-sdk_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"forEachIndexed", "", "Lcom/tencent/mm/json/JSONArray;", "block", "Lkotlin/Function2;", "", "htmlEncode", "", "kotlin.jvm.PlatformType", "map", "", "T", "toJsString", "webview-sdk_release"})
 public final class a
 {
-  public static final void a(com.tencent.mm.ac.f paramf, m<? super Integer, ? super com.tencent.mm.ac.f, z> paramm)
+  public static final void a(com.tencent.mm.ab.f paramf, m<? super Integer, ? super com.tencent.mm.ab.f, z> paramm)
   {
-    AppMethodBeat.i(214380);
+    AppMethodBeat.i(214221);
     p.h(paramf, "$this$forEachIndexed");
     p.h(paramm, "block");
     int i = 0;
@@ -24,19 +24,19 @@ public final class a
       paramm.p(Integer.valueOf(i), paramf);
       i += 1;
     }
-    AppMethodBeat.o(214380);
+    AppMethodBeat.o(214221);
   }
   
-  public static final String aJG(String paramString)
+  public static final String aLc(String paramString)
   {
     AppMethodBeat.i(82770);
     p.h(paramString, "$this$toJsString");
-    paramString = "'" + org.apache.commons.b.f.bdK(paramString) + '\'';
+    paramString = "'" + org.apache.commons.b.f.bfo(paramString) + '\'';
     AppMethodBeat.o(82770);
     return paramString;
   }
   
-  public static final <T> List<T> b(com.tencent.mm.ac.f paramf, m<? super Integer, ? super com.tencent.mm.ac.f, ? extends T> paramm)
+  public static final <T> List<T> b(com.tencent.mm.ab.f paramf, m<? super Integer, ? super com.tencent.mm.ab.f, ? extends T> paramm)
   {
     AppMethodBeat.i(82768);
     p.h(paramf, "$this$map");

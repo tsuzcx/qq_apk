@@ -3,52 +3,86 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class nb
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public String FHc;
-  public String oBW;
+  public String FZq;
+  public String FZr;
+  public int FZs;
+  public int FZt;
+  public String FZu;
+  public String FZv;
+  public int FZw;
+  public String name;
+  public int type;
   public int ver;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(124418);
+    AppMethodBeat.i(124416);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.FHc != null) {
-        paramVarArgs.d(1, this.FHc);
+      if (this.FZq != null) {
+        paramVarArgs.d(1, this.FZq);
       }
-      if (this.oBW != null) {
-        paramVarArgs.d(2, this.oBW);
+      paramVarArgs.aS(2, this.type);
+      if (this.FZr != null) {
+        paramVarArgs.d(3, this.FZr);
       }
-      paramVarArgs.aS(3, this.ver);
-      AppMethodBeat.o(124418);
+      if (this.name != null) {
+        paramVarArgs.d(4, this.name);
+      }
+      paramVarArgs.aS(5, this.ver);
+      paramVarArgs.aS(6, this.FZs);
+      paramVarArgs.aS(7, this.FZt);
+      if (this.FZu != null) {
+        paramVarArgs.d(8, this.FZu);
+      }
+      if (this.FZv != null) {
+        paramVarArgs.d(9, this.FZv);
+      }
+      paramVarArgs.aS(10, this.FZw);
+      AppMethodBeat.o(124416);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.FHc == null) {
-        break label318;
+      if (this.FZq == null) {
+        break label682;
       }
     }
-    label318:
-    for (paramInt = f.a.a.b.b.a.e(1, this.FHc) + 0;; paramInt = 0)
+    label682:
+    for (paramInt = f.a.a.b.b.a.e(1, this.FZq) + 0;; paramInt = 0)
     {
-      int i = paramInt;
-      if (this.oBW != null) {
-        i = paramInt + f.a.a.b.b.a.e(2, this.oBW);
+      int i = paramInt + f.a.a.b.b.a.bz(2, this.type);
+      paramInt = i;
+      if (this.FZr != null) {
+        paramInt = i + f.a.a.b.b.a.e(3, this.FZr);
       }
-      paramInt = f.a.a.b.b.a.bz(3, this.ver);
-      AppMethodBeat.o(124418);
+      i = paramInt;
+      if (this.name != null) {
+        i = paramInt + f.a.a.b.b.a.e(4, this.name);
+      }
+      i = i + f.a.a.b.b.a.bz(5, this.ver) + f.a.a.b.b.a.bz(6, this.FZs) + f.a.a.b.b.a.bz(7, this.FZt);
+      paramInt = i;
+      if (this.FZu != null) {
+        paramInt = i + f.a.a.b.b.a.e(8, this.FZu);
+      }
+      i = paramInt;
+      if (this.FZv != null) {
+        i = paramInt + f.a.a.b.b.a.e(9, this.FZv);
+      }
+      paramInt = f.a.a.b.b.a.bz(10, this.FZw);
+      AppMethodBeat.o(124416);
       return i + paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
-        AppMethodBeat.o(124418);
+        AppMethodBeat.o(124416);
         return 0;
       }
       if (paramInt == 3)
@@ -58,22 +92,50 @@ public final class nb
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(124418);
+          AppMethodBeat.o(124416);
           return -1;
         case 1: 
-          localnb.FHc = locala.NPN.readString();
-          AppMethodBeat.o(124418);
+          localnb.FZq = locala.OmT.readString();
+          AppMethodBeat.o(124416);
           return 0;
         case 2: 
-          localnb.oBW = locala.NPN.readString();
-          AppMethodBeat.o(124418);
+          localnb.type = locala.OmT.zc();
+          AppMethodBeat.o(124416);
+          return 0;
+        case 3: 
+          localnb.FZr = locala.OmT.readString();
+          AppMethodBeat.o(124416);
+          return 0;
+        case 4: 
+          localnb.name = locala.OmT.readString();
+          AppMethodBeat.o(124416);
+          return 0;
+        case 5: 
+          localnb.ver = locala.OmT.zc();
+          AppMethodBeat.o(124416);
+          return 0;
+        case 6: 
+          localnb.FZs = locala.OmT.zc();
+          AppMethodBeat.o(124416);
+          return 0;
+        case 7: 
+          localnb.FZt = locala.OmT.zc();
+          AppMethodBeat.o(124416);
+          return 0;
+        case 8: 
+          localnb.FZu = locala.OmT.readString();
+          AppMethodBeat.o(124416);
+          return 0;
+        case 9: 
+          localnb.FZv = locala.OmT.readString();
+          AppMethodBeat.o(124416);
           return 0;
         }
-        localnb.ver = locala.NPN.zc();
-        AppMethodBeat.o(124418);
+        localnb.FZw = locala.OmT.zc();
+        AppMethodBeat.o(124416);
         return 0;
       }
-      AppMethodBeat.o(124418);
+      AppMethodBeat.o(124416);
       return -1;
     }
   }

@@ -9,11 +9,11 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.b.g;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandMainProcessService;
 import com.tencent.mm.plugin.wepkg.model.WepkgCrossProcessTask;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.vfs.e;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.vfs.k;
 import java.util.GregorianCalendar;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -22,44 +22,44 @@ import java.util.Set;
 
 public final class d
 {
-  private static final Set<Object> kpY;
-  private static final Object mOt;
-  private static volatile ap tSX;
+  private static final Set<Object> ktn;
+  private static final Object mTx;
+  private static volatile aq udO;
   
   static
   {
     AppMethodBeat.i(110824);
-    mOt = new Object();
-    kpY = new HashSet();
+    mTx = new Object();
+    ktn = new HashSet();
     AppMethodBeat.o(110824);
   }
   
-  public static String aKY(String paramString)
+  public static String aMu(String paramString)
   {
     AppMethodBeat.i(110816);
-    if (bt.isNullOrNil(paramString))
+    if (bu.isNullOrNil(paramString))
     {
       AppMethodBeat.o(110816);
       return "";
     }
     try
     {
-      paramString = bt.nullAsNil(Uri.parse(paramString).getQueryParameter("wechat_pkgid"));
+      paramString = bu.nullAsNil(Uri.parse(paramString).getQueryParameter("wechat_pkgid"));
       AppMethodBeat.o(110816);
       return paramString;
     }
     catch (UnsupportedOperationException paramString)
     {
-      ad.e("MicroMsg.Wepkg.WepkgUtil", paramString.getMessage());
+      ae.e("MicroMsg.Wepkg.WepkgUtil", paramString.getMessage());
       AppMethodBeat.o(110816);
     }
     return "";
   }
   
-  public static String aKZ(String paramString)
+  public static String aMv(String paramString)
   {
     AppMethodBeat.i(110817);
-    if (bt.isNullOrNil(paramString))
+    if (bu.isNullOrNil(paramString))
     {
       AppMethodBeat.o(110817);
       return "";
@@ -70,13 +70,13 @@ public final class d
   }
   
   /* Error */
-  public static String aLa(String paramString)
+  public static String aMw(String paramString)
   {
     // Byte code:
     //   0: ldc 86
     //   2: invokestatic 24	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: aload_0
-    //   6: invokestatic 49	com/tencent/mm/sdk/platformtools/bt:isNullOrNil	(Ljava/lang/String;)Z
+    //   6: invokestatic 49	com/tencent/mm/sdk/platformtools/bu:isNullOrNil	(Ljava/lang/String;)Z
     //   9: ifne +10 -> 19
     //   12: aload_0
     //   13: invokestatic 91	android/webkit/URLUtil:isNetworkUrl	(Ljava/lang/String;)Z
@@ -135,23 +135,23 @@ public final class d
     //   63	84	95	java/lang/Exception
   }
   
-  public static boolean aLb(String paramString)
+  public static boolean aMx(String paramString)
   {
     AppMethodBeat.i(110819);
-    if (!bt.isNullOrNil(aKY(paramString)))
+    if (!bu.isNullOrNil(aMu(paramString)))
     {
-      SharedPreferences localSharedPreferences = aj.getContext().getSharedPreferences("we_pkg_sp", 4);
+      SharedPreferences localSharedPreferences = ak.getContext().getSharedPreferences("we_pkg_sp", 4);
       if ((localSharedPreferences != null) && (localSharedPreferences.getBoolean("disable_we_pkg", false)))
       {
-        ad.i("MicroMsg.Wepkg.WepkgUtil", "disable wepkg");
-        a.b("EnterWeb", paramString, aKY(paramString), null, 0L, 0L, a.Ya(11));
+        ae.i("MicroMsg.Wepkg.WepkgUtil", "disable wepkg");
+        a.b("EnterWeb", paramString, aMu(paramString), null, 0L, 0L, a.YG(11));
         AppMethodBeat.o(110819);
         return false;
       }
-      if (b.EFR)
+      if (b.EYn)
       {
-        ad.i("MicroMsg.Wepkg.WepkgUtil", "config wepkg disable");
-        a.b("EnterWeb", paramString, aKY(paramString), null, 0L, 0L, a.Ya(12));
+        ae.i("MicroMsg.Wepkg.WepkgUtil", "config wepkg disable");
+        a.b("EnterWeb", paramString, aMu(paramString), null, 0L, 0L, a.YG(12));
         AppMethodBeat.o(110819);
         return false;
       }
@@ -162,12 +162,12 @@ public final class d
     return false;
   }
   
-  public static boolean aLc(String paramString)
+  public static boolean aMy(String paramString)
   {
     AppMethodBeat.i(110821);
     try
     {
-      paramString = new e(paramString);
+      paramString = new k(paramString);
       if ((!paramString.exists()) || (!paramString.isDirectory())) {
         paramString.mkdirs();
       }
@@ -187,17 +187,17 @@ public final class d
     long l = System.currentTimeMillis();
     final WepkgCrossProcessTask localWepkgCrossProcessTask = new WepkgCrossProcessTask();
     localWepkgCrossProcessTask.EN = 1001;
-    localWepkgCrossProcessTask.EEY = paramString;
-    if (aj.cnC())
+    localWepkgCrossProcessTask.EXu = paramString;
+    if (ak.cpe())
     {
-      bZb().postToWorker(new Runnable()
+      caq().postToWorker(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(110808);
-          this.EFf.aOA();
+          this.EXB.aOX();
           if (parama != null) {
-            parama.a(this.EFf);
+            parama.a(this.EXB);
           }
           AppMethodBeat.o(110808);
         }
@@ -205,75 +205,60 @@ public final class d
       AppMethodBeat.o(110815);
       return;
     }
-    localWepkgCrossProcessTask.krg = new Runnable()
+    localWepkgCrossProcessTask.kuv = new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(110809);
-        ad.i("MicroMsg.Wepkg.WepkgUtil", "bind service time:%s", new Object[] { Long.valueOf(System.currentTimeMillis() - this.EGe) });
+        ae.i("MicroMsg.Wepkg.WepkgUtil", "bind service time:%s", new Object[] { Long.valueOf(System.currentTimeMillis() - this.EYA) });
         if (localWepkgCrossProcessTask != null) {
-          localWepkgCrossProcessTask.a(this.EFf);
+          localWepkgCrossProcessTask.a(this.EXB);
         }
-        this.EFf.bhO();
+        this.EXB.bix();
         AppMethodBeat.o(110809);
       }
     };
-    localWepkgCrossProcessTask.bhN();
+    localWepkgCrossProcessTask.biw();
     AppBrandMainProcessService.a(localWepkgCrossProcessTask);
     AppMethodBeat.o(110815);
   }
   
-  public static void bBo()
+  public static void bCi()
   {
     AppMethodBeat.i(110813);
-    if (tSX == null)
+    if (udO == null)
     {
       AppMethodBeat.o(110813);
       return;
     }
-    synchronized (mOt)
+    synchronized (mTx)
     {
-      if (tSX != null)
+      if (udO != null)
       {
-        tSX.quit();
-        tSX = null;
+        udO.quit();
+        udO = null;
       }
       AppMethodBeat.o(110813);
       return;
-    }
-  }
-  
-  public static ap bZb()
-  {
-    AppMethodBeat.i(184500);
-    if (tSX == null) {}
-    synchronized (mOt)
-    {
-      if (tSX == null) {
-        tSX = new ap("WebviewCache#WorkerThread");
-      }
-      ??? = tSX;
-      AppMethodBeat.o(184500);
-      return ???;
     }
   }
   
   public static void bj(Object paramObject)
   {
     AppMethodBeat.i(110812);
-    kpY.remove(paramObject);
+    ktn.remove(paramObject);
     AppMethodBeat.o(110812);
   }
   
-  public static <T> T cH(T paramT)
+  public static <T> T cI(T paramT)
   {
     AppMethodBeat.i(110811);
-    kpY.add(paramT);
+    ktn.add(paramT);
     AppMethodBeat.o(110811);
     return paramT;
   }
   
-  public static boolean cH(Context paramContext)
+  public static boolean cJ(Context paramContext)
   {
     AppMethodBeat.i(110823);
     paramContext = ((ActivityManager)paramContext.getSystemService("activity")).getRunningAppProcesses();
@@ -296,15 +281,30 @@ public final class d
     return false;
   }
   
+  public static aq caq()
+  {
+    AppMethodBeat.i(184500);
+    if (udO == null) {}
+    synchronized (mTx)
+    {
+      if (udO == null) {
+        udO = new aq("WebviewCache#WorkerThread");
+      }
+      ??? = udO;
+      AppMethodBeat.o(184500);
+      return ???;
+    }
+  }
+  
   public static long currentTime()
   {
     AppMethodBeat.i(110810);
-    long l = bt.aQJ();
+    long l = bu.aRi();
     AppMethodBeat.o(110810);
     return l;
   }
   
-  public static boolean eYg()
+  public static boolean fbS()
   {
     AppMethodBeat.i(110822);
     GregorianCalendar localGregorianCalendar = new GregorianCalendar();
@@ -332,7 +332,7 @@ public final class d
     return false;
   }
   
-  public static String lp(String paramString1, String paramString2)
+  public static String lw(String paramString1, String paramString2)
   {
     AppMethodBeat.i(110820);
     paramString1 = g.getMessageDigest((paramString1 + "_" + paramString2).getBytes());

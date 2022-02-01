@@ -13,7 +13,7 @@ public final class g
   g(m paramm)
   {
     AppMethodBeat.i(140323);
-    paramm = paramm.BH();
+    paramm = paramm.BI();
     this.cgz = paramm.getString("method");
     this.cgn = paramm.optJSONObject("data");
     if (this.cgn == null) {

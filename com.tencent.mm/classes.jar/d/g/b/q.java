@@ -3,7 +3,7 @@ package d.g.b;
 import d.l;
 import java.io.Serializable;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlin/jvm/internal/Lambda;", "R", "Lkotlin/jvm/internal/FunctionBase;", "Ljava/io/Serializable;", "arity", "", "(I)V", "getArity", "()I", "toString", "", "kotlin-stdlib"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlin/jvm/internal/Lambda;", "R", "Lkotlin/jvm/internal/FunctionBase;", "Ljava/io/Serializable;", "arity", "", "(I)V", "getArity", "()I", "toString", "", "kotlin-stdlib"})
 public abstract class q<R>
   implements m<R>, Serializable
 {

@@ -14,27 +14,27 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ipcinvoker.wx_extension.service.ToolsProcessIPCService;
 import com.tencent.mm.plugin.game.model.GameTabData;
 import com.tencent.mm.plugin.game.ui.GameCenterActivity;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.widget.SwipeBackLayout;
 
 @com.tencent.mm.ui.base.a(19)
 public class GameTabBridgeUI
   extends GameCenterActivity
 {
-  private BroadcastReceiver utE;
+  private BroadcastReceiver uEX;
   
   public GameTabBridgeUI()
   {
     AppMethodBeat.i(42439);
-    this.utE = new BroadcastReceiver()
+    this.uEX = new BroadcastReceiver()
     {
       public final void onReceive(Context paramAnonymousContext, Intent paramAnonymousIntent)
       {
         AppMethodBeat.i(42438);
         if ((paramAnonymousIntent != null) && ("com.tencent.mm.game.ACTION_EXIT".equals(paramAnonymousIntent.getAction())) && (GameTabBridgeUI.this != null) && (!GameTabBridgeUI.this.isFinishing()))
         {
-          ad.i("MicroMsg.GameTabBridgeUI", "GameTabBridgeUI exit!");
+          ae.i("MicroMsg.GameTabBridgeUI", "GameTabBridgeUI exit!");
           GameTabBridgeUI.this.finish();
         }
         AppMethodBeat.o(42438);
@@ -43,18 +43,18 @@ public class GameTabBridgeUI
     AppMethodBeat.o(42439);
   }
   
-  private void dao()
+  private void dda()
   {
     AppMethodBeat.i(42446);
-    if (bt.nullAsNil(getIntent().getStringExtra("jump_find_more_friends")).equals("jump_find_more_friends"))
+    if (bu.nullAsNil(getIntent().getStringExtra("jump_find_more_friends")).equals("jump_find_more_friends"))
     {
       Intent localIntent = new Intent();
       localIntent.addFlags(67108864);
       localIntent.putExtra("preferred_tab", 2);
-      com.tencent.mm.bs.d.f(this, ".ui.LauncherUI", localIntent);
+      com.tencent.mm.br.d.f(this, ".ui.LauncherUI", localIntent);
       finish();
       overridePendingTransition(2130772140, 2130772145);
-      ad.i("MicroMsg.GameTabBridgeUI", "back to FindMoreFriendsUI");
+      ae.i("MicroMsg.GameTabBridgeUI", "back to FindMoreFriendsUI");
     }
     AppMethodBeat.o(42446);
   }
@@ -62,23 +62,23 @@ public class GameTabBridgeUI
   private void goBack()
   {
     AppMethodBeat.i(42445);
-    ad.i("MicroMsg.GameTabBridgeUI", "GameTabHomeUI goBack!");
-    dao();
+    ae.i("MicroMsg.GameTabBridgeUI", "GameTabHomeUI goBack!");
+    dda();
     sendBroadcast(new Intent("com.tencent.mm.game.ACTION_EXIT"), "com.tencent.mm.permission.MM_MESSAGE");
     AppMethodBeat.o(42445);
   }
   
-  public final boolean cZP()
+  public final boolean dcA()
   {
     return false;
   }
   
-  public final int cZQ()
+  public final int dcB()
   {
     return 0;
   }
   
-  public final int cZR()
+  public final int dcC()
   {
     return 0;
   }
@@ -114,12 +114,12 @@ public class GameTabBridgeUI
   {
     AppMethodBeat.i(42440);
     super.onCreate(paramBundle);
-    ad.i("MicroMsg.GameTabBridgeUI", "%s create", new Object[] { getClass().getSimpleName() });
-    GameTabWidget.kFo = hashCode();
+    ae.i("MicroMsg.GameTabBridgeUI", "%s create", new Object[] { getClass().getSimpleName() });
+    GameTabWidget.kID = hashCode();
     initView();
     paramBundle = new IntentFilter();
     paramBundle.addAction("com.tencent.mm.game.ACTION_EXIT");
-    registerReceiver(this.utE, paramBundle, "com.tencent.mm.permission.MM_MESSAGE", null);
+    registerReceiver(this.uEX, paramBundle, "com.tencent.mm.permission.MM_MESSAGE", null);
     paramBundle = getIntent();
     GameTabData localGameTabData = (GameTabData)paramBundle.getParcelableExtra("tab_data");
     String str = paramBundle.getStringExtra("tab_key");
@@ -136,7 +136,7 @@ public class GameTabBridgeUI
   {
     AppMethodBeat.i(42443);
     super.onDestroy();
-    unregisterReceiver(this.utE);
+    unregisterReceiver(this.uEX);
     AppMethodBeat.o(42443);
   }
   
@@ -172,7 +172,7 @@ public class GameTabBridgeUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.tab.GameTabBridgeUI
  * JD-Core Version:    0.7.0.1
  */

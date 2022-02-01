@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.scanner.f;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.g.c.fp;
-import com.tencent.mm.plugin.scanner.model.af;
+import com.tencent.mm.plugin.scanner.model.ag;
 import com.tencent.mm.sdk.e.e;
 import com.tencent.mm.sdk.e.j;
 
@@ -15,39 +15,39 @@ public final class b
   static
   {
     AppMethodBeat.i(120862);
-    SQL_CREATE = new String[] { j.getCreateSQLs(af.info, "ScanTranslationResult") };
+    SQL_CREATE = new String[] { j.getCreateSQLs(ag.info, "ScanTranslationResult") };
     AppMethodBeat.o(120862);
   }
   
   public b(e parame)
   {
-    super(parame, af.info, "ScanTranslationResult", null);
+    super(parame, ag.info, "ScanTranslationResult", null);
     this.db = parame;
   }
   
-  public final boolean a(af paramaf)
+  public final boolean a(ag paramag)
   {
     AppMethodBeat.i(120861);
-    if (awM(paramaf.field_originMD5) != null)
+    if (ayb(paramag.field_originMD5) != null)
     {
-      bool = replace(paramaf);
+      bool = replace(paramag);
       AppMethodBeat.o(120861);
       return bool;
     }
-    boolean bool = super.insert(paramaf);
+    boolean bool = super.insert(paramag);
     AppMethodBeat.o(120861);
     return bool;
   }
   
-  public final fp awM(String paramString)
+  public final fp ayb(String paramString)
   {
     AppMethodBeat.i(120860);
-    af localaf = new af();
-    localaf.field_originMD5 = paramString;
-    if (get(localaf, new String[0]))
+    ag localag = new ag();
+    localag.field_originMD5 = paramString;
+    if (get(localag, new String[0]))
     {
       AppMethodBeat.o(120860);
-      return localaf;
+      return localag;
     }
     AppMethodBeat.o(120860);
     return null;

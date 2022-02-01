@@ -67,7 +67,7 @@ public class b
     return (int)(this.cfC % this.cfz);
   }
   
-  public final long Bx()
+  public final long By()
   {
     return this.cfB - this.cfC;
   }

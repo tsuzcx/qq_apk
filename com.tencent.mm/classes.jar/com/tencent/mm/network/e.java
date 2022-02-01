@@ -6,11 +6,11 @@ import java.util.List;
 
 public abstract interface e
 {
-  public abstract void Dr(String paramString);
+  public abstract void DT(String paramString);
   
-  public abstract void Ds(String paramString);
+  public abstract void DU(String paramString);
   
-  public abstract void Dt(String paramString);
+  public abstract void DV(String paramString);
   
   public abstract int a(r paramr, l paraml);
   
@@ -28,15 +28,15 @@ public abstract interface e
   
   public abstract void a(boolean paramBoolean, String paramString1, String paramString2, int[] paramArrayOfInt1, int[] paramArrayOfInt2, int paramInt1, int paramInt2, String paramString3, String paramString4);
   
-  public abstract boolean aEO();
+  public abstract boolean aFe();
   
-  public abstract c aFc();
+  public abstract c aFs();
   
-  public abstract i aFd();
+  public abstract i aFt();
   
-  public abstract void aFe();
+  public abstract void aFu();
   
-  public abstract void aFf();
+  public abstract void aFv();
   
   public abstract void addHostInfo(String[] paramArrayOfString1, String[] paramArrayOfString2, int[] paramArrayOfInt);
   
@@ -44,13 +44,13 @@ public abstract interface e
   
   public abstract void d(String paramString1, long paramLong, String paramString2);
   
-  public abstract void eF(boolean paramBoolean);
-  
-  public abstract void eG(boolean paramBoolean);
-  
   public abstract void eH(boolean paramBoolean);
   
   public abstract void eI(boolean paramBoolean);
+  
+  public abstract void eJ(boolean paramBoolean);
+  
+  public abstract void eK(boolean paramBoolean);
   
   public abstract void forceUseV6(boolean paramBoolean);
   

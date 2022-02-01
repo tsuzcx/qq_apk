@@ -1,53 +1,53 @@
 package com.tencent.mm.plugin.finder.storage.data;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.amw;
+import com.tencent.mm.protocal.protobuf.ani;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/storage/data/CachePage;", "", "type", "", "name", "", "page", "Lcom/tencent/mm/protocal/protobuf/FinderFirstPage;", "read", "", "(ILjava/lang/String;Lcom/tencent/mm/protocal/protobuf/FinderFirstPage;Z)V", "getName", "()Ljava/lang/String;", "getPage", "()Lcom/tencent/mm/protocal/protobuf/FinderFirstPage;", "setPage", "(Lcom/tencent/mm/protocal/protobuf/FinderFirstPage;)V", "getRead", "()Z", "setRead", "(Z)V", "getType", "()I", "component1", "component2", "component3", "component4", "copy", "equals", "other", "hashCode", "toString", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/storage/data/CachePage;", "", "type", "", "name", "", "page", "Lcom/tencent/mm/protocal/protobuf/FinderFirstPage;", "read", "", "(ILjava/lang/String;Lcom/tencent/mm/protocal/protobuf/FinderFirstPage;Z)V", "getName", "()Ljava/lang/String;", "getPage", "()Lcom/tencent/mm/protocal/protobuf/FinderFirstPage;", "setPage", "(Lcom/tencent/mm/protocal/protobuf/FinderFirstPage;)V", "getRead", "()Z", "setRead", "(Z)V", "getType", "()I", "component1", "component2", "component3", "component4", "copy", "equals", "other", "hashCode", "toString", "plugin-finder_release"})
 public final class a
 {
-  boolean kFr;
+  boolean kIG;
   final String name;
-  public amw szD;
+  public ani sKx;
   final int type;
   
-  private a(int paramInt, String paramString, amw paramamw)
+  private a(int paramInt, String paramString, ani paramani)
   {
-    AppMethodBeat.i(203781);
+    AppMethodBeat.i(204365);
     this.type = paramInt;
     this.name = paramString;
-    this.szD = paramamw;
-    this.kFr = false;
-    AppMethodBeat.o(203781);
+    this.sKx = paramani;
+    this.kIG = false;
+    AppMethodBeat.o(204365);
   }
   
-  public final void a(amw paramamw)
+  public final void a(ani paramani)
   {
-    AppMethodBeat.i(203780);
-    p.h(paramamw, "<set-?>");
-    this.szD = paramamw;
-    AppMethodBeat.o(203780);
+    AppMethodBeat.i(204364);
+    p.h(paramani, "<set-?>");
+    this.sKx = paramani;
+    AppMethodBeat.o(204364);
   }
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(203784);
+    AppMethodBeat.i(204368);
     if (this != paramObject)
     {
       if ((paramObject instanceof a))
       {
         paramObject = (a)paramObject;
-        if ((this.type != paramObject.type) || (!p.i(this.name, paramObject.name)) || (!p.i(this.szD, paramObject.szD)) || (this.kFr != paramObject.kFr)) {}
+        if ((this.type != paramObject.type) || (!p.i(this.name, paramObject.name)) || (!p.i(this.sKx, paramObject.sKx)) || (this.kIG != paramObject.kIG)) {}
       }
     }
     else
     {
-      AppMethodBeat.o(203784);
+      AppMethodBeat.o(204368);
       return true;
     }
-    AppMethodBeat.o(203784);
+    AppMethodBeat.o(204368);
     return false;
   }
   
@@ -58,9 +58,9 @@ public final class a
   
   public final String toString()
   {
-    AppMethodBeat.i(203782);
-    String str = "CachePage(type=" + this.type + ", name=" + this.name + ", page=" + this.szD + ", read=" + this.kFr + ")";
-    AppMethodBeat.o(203782);
+    AppMethodBeat.i(204366);
+    String str = "CachePage(type=" + this.type + ", name=" + this.name + ", page=" + this.sKx + ", read=" + this.kIG + ")";
+    AppMethodBeat.o(204366);
     return str;
   }
 }

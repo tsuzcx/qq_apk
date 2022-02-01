@@ -2,7 +2,7 @@ package com.tencent.mm.pluginsdk.ui.tools;
 
 public abstract interface h$e
 {
-  public abstract void boT();
+  public abstract void bpD();
 }
 
 

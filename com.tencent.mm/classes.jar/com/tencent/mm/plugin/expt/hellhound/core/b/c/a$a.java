@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.expt.hellhound.core.b.c;
 
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/expt/hellhound/core/v2/view/GestureCallback$Companion;", "", "()V", "gGestureFirst", "", "getGGestureFirst", "()Z", "setGGestureFirst", "(Z)V", "plugin-expt_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/expt/hellhound/core/v2/view/GestureCallback$Companion;", "", "()V", "gGestureFirst", "", "getGGestureFirst", "()Z", "setGGestureFirst", "(Z)V", "plugin-expt_release"})
 public final class a$a {}
 
 

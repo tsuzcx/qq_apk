@@ -6,15 +6,15 @@ import android.os.Bundle;
 import android.os.Looper;
 import android.os.Message;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bb.i.a;
+import com.tencent.mm.ba.i.a;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.plugin.messenger.foundation.a.l;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
 import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ai;
+import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.aj;
 import com.tencent.mm.ui.g.a.f;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,28 +27,28 @@ import org.b.g.d;
 public final class a
   implements b.a
 {
-  org.b.e.b KPa;
-  public org.b.d.i KPb;
-  org.b.d.i KPc;
-  private boolean KPd;
-  boolean KPe;
-  public a.b KPf;
-  public a.a KPg;
+  aq AfN;
+  org.b.d.i LlA;
+  private boolean LlB;
+  boolean LlC;
+  public a.b LlD;
+  public a.a LlE;
+  org.b.e.b Lly;
+  public org.b.d.i Llz;
   Context context;
-  ap zOG;
   
   public a()
   {
     AppMethodBeat.i(152862);
-    this.KPa = null;
-    this.KPb = null;
-    this.KPc = null;
-    this.KPd = false;
-    this.KPe = false;
-    this.KPf = null;
-    this.KPg = null;
+    this.Lly = null;
+    this.Llz = null;
+    this.LlA = null;
+    this.LlB = false;
+    this.LlC = false;
+    this.LlD = null;
+    this.LlE = null;
     this.context = null;
-    this.zOG = new ap()
+    this.AfN = new aq()
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
@@ -75,14 +75,14 @@ public final class a
           {
             paramAnonymousMessage = (a.c)paramAnonymousMessage.obj;
             localObject = a.this;
-            ((a)localObject).KPe = false;
-            if (paramAnonymousMessage == a.c.KPl)
+            ((a)localObject).LlC = false;
+            if (paramAnonymousMessage == a.c.LlJ)
             {
-              ((a)localObject).KPc = null;
+              ((a)localObject).LlA = null;
               a.a(null);
             }
-            if (((a)localObject).KPg != null) {
-              ((a)localObject).KPg.b(paramAnonymousMessage);
+            if (((a)localObject).LlE != null) {
+              ((a)localObject).LlE.b(paramAnonymousMessage);
             }
           }
           AppMethodBeat.o(152852);
@@ -91,39 +91,39 @@ public final class a
           new b(localContext, (String)localObject, locala).show();
           continue;
           label142:
-          a.this.c(a.c.KPl);
+          a.this.c(a.c.LlJ);
         }
       }
     };
     Object localObject = new org.b.a.a();
-    ((org.b.a.a)localObject).NWc = org.b.a.a.bH(c.a.class);
-    d.nO("XMr2y8FEVEqZBcZ1TU3gLA", "Invalid Api key");
-    ((org.b.a.a)localObject).NVZ = "XMr2y8FEVEqZBcZ1TU3gLA";
-    d.nO("kyWwA5vbB6H1NDQFufR9hD5vWGStxhweIbatclCo", "Invalid Api secret");
-    ((org.b.a.a)localObject).NWa = "kyWwA5vbB6H1NDQFufR9hD5vWGStxhweIbatclCo";
+    ((org.b.a.a)localObject).Oth = org.b.a.a.bH(c.a.class);
+    d.nU("XMr2y8FEVEqZBcZ1TU3gLA", "Invalid Api key");
+    ((org.b.a.a)localObject).Ote = "XMr2y8FEVEqZBcZ1TU3gLA";
+    d.nU("kyWwA5vbB6H1NDQFufR9hD5vWGStxhweIbatclCo", "Invalid Api secret");
+    ((org.b.a.a)localObject).Otf = "kyWwA5vbB6H1NDQFufR9hD5vWGStxhweIbatclCo";
     d.j("wechatapp://sign-in-twitter.wechatapp.com/", "Callback can't be null");
-    ((org.b.a.a)localObject).NWb = "wechatapp://sign-in-twitter.wechatapp.com/";
-    d.j(((org.b.a.a)localObject).NWc, "You must specify a valid api through the provider() method");
-    d.nO(((org.b.a.a)localObject).NVZ, "You must provide an api key");
-    d.nO(((org.b.a.a)localObject).NWa, "You must provide an api secret");
-    this.KPa = ((org.b.a.a)localObject).NWc.a(new org.b.d.a(((org.b.a.a)localObject).NVZ, ((org.b.a.a)localObject).NWa, ((org.b.a.a)localObject).NWb, ((org.b.a.a)localObject).NWd, ((org.b.a.a)localObject).scope, ((org.b.a.a)localObject).NWe));
+    ((org.b.a.a)localObject).Otg = "wechatapp://sign-in-twitter.wechatapp.com/";
+    d.j(((org.b.a.a)localObject).Oth, "You must specify a valid api through the provider() method");
+    d.nU(((org.b.a.a)localObject).Ote, "You must provide an api key");
+    d.nU(((org.b.a.a)localObject).Otf, "You must provide an api secret");
+    this.Lly = ((org.b.a.a)localObject).Oth.a(new org.b.d.a(((org.b.a.a)localObject).Ote, ((org.b.a.a)localObject).Otf, ((org.b.a.a)localObject).Otg, ((org.b.a.a)localObject).Oti, ((org.b.a.a)localObject).scope, ((org.b.a.a)localObject).Otj));
     String str;
-    if (com.tencent.mm.kernel.g.ajA().aiK())
+    if (com.tencent.mm.kernel.g.ajP().aiZ())
     {
-      localObject = (String)com.tencent.mm.kernel.g.ajC().ajl().get(69377, null);
-      str = (String)com.tencent.mm.kernel.g.ajC().ajl().get(69378, null);
-      if ((bt.isNullOrNil((String)localObject)) || (bt.isNullOrNil(str))) {
+      localObject = (String)com.tencent.mm.kernel.g.ajR().ajA().get(69377, null);
+      str = (String)com.tencent.mm.kernel.g.ajR().ajA().get(69378, null);
+      if ((bu.isNullOrNil((String)localObject)) || (bu.isNullOrNil(str))) {
         localObject = null;
       }
     }
     for (;;)
     {
-      this.KPb = ((org.b.d.i)localObject);
+      this.Llz = ((org.b.d.i)localObject);
       AppMethodBeat.o(152862);
       return;
       localObject = new org.b.d.i((String)localObject, str);
       continue;
-      ad.e("Twitter", "acchas not ready for restoreTwitterAccessToken");
+      ae.e("Twitter", "acchas not ready for restoreTwitterAccessToken");
       localObject = null;
     }
   }
@@ -131,20 +131,20 @@ public final class a
   static void a(org.b.d.i parami)
   {
     AppMethodBeat.i(152865);
-    aj.getContext().getSharedPreferences(aj.fkC(), 0);
+    ak.getContext().getSharedPreferences(ak.fow(), 0);
     if (parami == null)
     {
-      com.tencent.mm.kernel.g.ajC().ajl().set(69377, "");
-      com.tencent.mm.kernel.g.ajC().ajl().set(69378, "");
+      com.tencent.mm.kernel.g.ajR().ajA().set(69377, "");
+      com.tencent.mm.kernel.g.ajR().ajA().set(69378, "");
       AppMethodBeat.o(152865);
       return;
     }
-    com.tencent.mm.kernel.g.ajC().ajl().set(69377, parami.token);
-    com.tencent.mm.kernel.g.ajC().ajl().set(69378, parami.GTp);
+    com.tencent.mm.kernel.g.ajR().ajA().set(69377, parami.token);
+    com.tencent.mm.kernel.g.ajR().ajA().set(69378, parami.HmQ);
     AppMethodBeat.o(152865);
   }
   
-  static void yG(boolean paramBoolean)
+  static void yU(boolean paramBoolean)
   {
     AppMethodBeat.i(152870);
     ArrayList localArrayList = new ArrayList();
@@ -152,7 +152,7 @@ public final class a
     for (String str = "1";; str = "2")
     {
       localArrayList.add(new i.a(10251, str));
-      ((l)com.tencent.mm.kernel.g.ab(l.class)).azo().c(new com.tencent.mm.bb.i(localArrayList));
+      ((l)com.tencent.mm.kernel.g.ab(l.class)).azE().d(new com.tencent.mm.ba.i(localArrayList));
       AppMethodBeat.o(152870);
       return;
     }
@@ -161,40 +161,40 @@ public final class a
   public final void a(a.a parama)
   {
     AppMethodBeat.i(152864);
-    if (this.KPe)
+    if (this.LlC)
     {
       AppMethodBeat.o(152864);
       return;
     }
-    this.KPg = parama;
-    this.KPe = true;
+    this.LlE = parama;
+    this.LlC = true;
     com.tencent.mm.sdk.g.b.c(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(152854);
-        Object localObject = a.c.KPk;
-        if (a.this.KPb == null) {
-          localObject = a.c.KPl;
+        Object localObject = a.c.LlI;
+        if (a.this.Llz == null) {
+          localObject = a.c.LlJ;
         }
         for (;;)
         {
-          localObject = a.this.zOG.obtainMessage(1010, localObject);
-          a.this.zOG.sendMessage((Message)localObject);
+          localObject = a.this.AfN.obtainMessage(1010, localObject);
+          a.this.AfN.sendMessage((Message)localObject);
           AppMethodBeat.o(152854);
           return;
-          c localc1 = new c(org.b.d.j.NWv, "https://api.twitter.com/1.1/account/verify_credentials.json");
-          a.this.KPa.a(a.this.KPb, localc1);
+          c localc1 = new c(org.b.d.j.OtA, "https://api.twitter.com/1.1/account/verify_credentials.json");
+          a.this.Lly.a(a.this.Llz, localc1);
           try
           {
-            if (localc1.gyz().code != 200) {
-              localObject = a.c.KPl;
+            if (localc1.gDb().code != 200) {
+              localObject = a.c.LlJ;
             }
           }
           catch (Exception localException)
           {
-            ad.printErrStackTrace("MicroMsg.Twitter", localException, "request error.", new Object[0]);
-            a.c localc = a.c.KPl;
+            ae.printErrStackTrace("MicroMsg.Twitter", localException, "request error.", new Object[0]);
+            a.c localc = a.c.LlJ;
           }
         }
       }
@@ -205,15 +205,15 @@ public final class a
   public final void a(a.b paramb, Context paramContext)
   {
     AppMethodBeat.i(152863);
-    if (this.KPd)
+    if (this.LlB)
     {
       AppMethodBeat.o(152863);
       return;
     }
-    com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(583L, 0L, 1L, false);
-    this.KPf = paramb;
+    com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(583L, 0L, 1L, false);
+    this.LlD = paramb;
     this.context = paramContext;
-    this.KPd = true;
+    this.LlB = true;
     com.tencent.mm.sdk.g.b.c(new Runnable()
     {
       public final void run()
@@ -222,8 +222,8 @@ public final class a
         AppMethodBeat.i(152853);
         try
         {
-          a.this.KPc = a.this.KPa.gyF();
-          String str = a.this.KPa.b(a.this.KPc);
+          a.this.LlA = a.this.Lly.gDh();
+          String str = a.this.Lly.b(a.this.LlA);
           localObject = str;
         }
         catch (org.b.b.b localb)
@@ -235,8 +235,8 @@ public final class a
           label48:
           break label48;
         }
-        localObject = a.this.zOG.obtainMessage(1000, localObject);
-        a.this.zOG.sendMessage((Message)localObject);
+        localObject = a.this.AfN.obtainMessage(1000, localObject);
+        a.this.AfN.sendMessage((Message)localObject);
         AppMethodBeat.o(152853);
       }
     }, "Twitter_doOAuth");
@@ -246,52 +246,52 @@ public final class a
   final void c(c paramc)
   {
     AppMethodBeat.i(152866);
-    this.KPd = false;
-    this.KPc = null;
-    if (this.KPf != null) {
-      this.KPf.a(paramc);
+    this.LlB = false;
+    this.LlA = null;
+    if (this.LlD != null) {
+      this.LlD.a(paramc);
     }
     AppMethodBeat.o(152866);
   }
   
-  public final boolean fLk()
+  public final boolean fPD()
   {
-    return this.KPb != null;
+    return this.Llz != null;
   }
   
-  public final void fLl()
+  public final void fPE()
   {
     AppMethodBeat.i(152868);
-    yG(false);
-    c(c.KPl);
-    com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(583L, 2L, 1L, false);
+    yU(false);
+    c(c.LlJ);
+    com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(583L, 2L, 1L, false);
     AppMethodBeat.o(152868);
   }
   
   public final void onCancel()
   {
     AppMethodBeat.i(152869);
-    yG(false);
-    c(c.KPm);
-    com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(583L, 3L, 1L, false);
+    yU(false);
+    c(c.LlK);
+    com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(583L, 3L, 1L, false);
     AppMethodBeat.o(152869);
   }
   
-  public final void x(final Bundle paramBundle)
+  public final void y(final Bundle paramBundle)
   {
     AppMethodBeat.i(152867);
-    com.tencent.mm.kernel.g.ajF().ay(new Runnable()
+    com.tencent.mm.kernel.g.ajU().aw(new Runnable()
     {
       public final void run()
       {
         Object localObject3 = null;
         AppMethodBeat.i(152857);
-        if (a.this.KPc == null)
+        if (a.this.LlA == null)
         {
           AppMethodBeat.o(152857);
           return;
         }
-        a.yG(true);
+        a.yU(true);
         String str = paramBundle.getString("oauth_verifier");
         Object localObject1 = localObject3;
         if (str != null) {
@@ -299,31 +299,31 @@ public final class a
         }
         try
         {
-          localObject1 = a.this.KPa.a(a.this.KPc, (k)localObject1);
+          localObject1 = a.this.Lly.a(a.this.LlA, (k)localObject1);
           if (localObject1 != null)
           {
-            a.this.KPb = ((org.b.d.i)localObject1);
-            a.a(a.this.KPb);
-            new ap(Looper.getMainLooper()).post(new Runnable()
+            a.this.Llz = ((org.b.d.i)localObject1);
+            a.a(a.this.Llz);
+            new aq(Looper.getMainLooper()).post(new Runnable()
             {
               public final void run()
               {
                 AppMethodBeat.i(152855);
-                a.this.c(a.c.KPk);
-                com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(583L, 1L, 1L, false);
+                a.this.c(a.c.LlI);
+                com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(583L, 1L, 1L, false);
                 AppMethodBeat.o(152855);
               }
             });
             AppMethodBeat.o(152857);
             return;
           }
-          new ap(Looper.getMainLooper()).post(new Runnable()
+          new aq(Looper.getMainLooper()).post(new Runnable()
           {
             public final void run()
             {
               AppMethodBeat.i(152856);
-              a.this.c(a.c.KPl);
-              com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(583L, 4L, 1L, false);
+              a.this.c(a.c.LlJ);
+              com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(583L, 4L, 1L, false);
               AppMethodBeat.o(152856);
             }
           });
@@ -355,10 +355,10 @@ public final class a
     static
     {
       AppMethodBeat.i(152861);
-      KPk = new c("Finished", 0);
-      KPl = new c("Failed", 1);
-      KPm = new c("Canceled", 2);
-      KPn = new c[] { KPk, KPl, KPm };
+      LlI = new c("Finished", 0);
+      LlJ = new c("Failed", 1);
+      LlK = new c("Canceled", 2);
+      LlL = new c[] { LlI, LlJ, LlK };
       AppMethodBeat.o(152861);
     }
     

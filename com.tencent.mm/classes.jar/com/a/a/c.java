@@ -12,40 +12,40 @@ final class c
   
   static
   {
-    AppMethodBeat.i(214733);
+    AppMethodBeat.i(212964);
     try
     {
       aPC = ((Integer)Canvas.class.getField("MATRIX_SAVE_FLAG").get(null)).intValue();
       aPD = Canvas.class.getMethod("save", new Class[] { Integer.TYPE });
-      AppMethodBeat.o(214733);
+      AppMethodBeat.o(212964);
       return;
     }
     catch (Throwable localThrowable)
     {
-      AppMethodBeat.o(214733);
+      AppMethodBeat.o(212964);
       throw localThrowable;
     }
   }
   
   static void c(Canvas paramCanvas, int paramInt)
   {
-    AppMethodBeat.i(214732);
+    AppMethodBeat.i(212963);
     try
     {
       aPD.invoke(paramCanvas, new Object[] { Integer.valueOf(paramInt) });
-      AppMethodBeat.o(214732);
+      AppMethodBeat.o(212963);
       return;
     }
     catch (Throwable paramCanvas)
     {
-      AppMethodBeat.o(214732);
+      AppMethodBeat.o(212963);
       throw paramCanvas;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.a.a.c
  * JD-Core Version:    0.7.0.1
  */

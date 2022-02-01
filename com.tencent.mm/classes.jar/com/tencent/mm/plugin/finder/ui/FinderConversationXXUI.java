@@ -7,38 +7,38 @@ import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.finder.conv.c;
 import com.tencent.mm.plugin.finder.conv.d;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import d.l;
 import java.util.HashMap;
 import java.util.LinkedList;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/ui/FinderConversationXXUI;", "Lcom/tencent/mm/plugin/finder/ui/FinderConversationParentUI;", "()V", "tipDialog", "Landroid/app/ProgressDialog;", "getTipDialog", "()Landroid/app/ProgressDialog;", "setTipDialog", "(Landroid/app/ProgressDialog;)V", "doSomethingOnConvDel", "", "getLayoutId", "", "getTitleResId", "isLastHiSession", "", "onChattingUIExit", "showMoreSheet", "updateActionBar", "talkerType", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/ui/FinderConversationXXUI;", "Lcom/tencent/mm/plugin/finder/ui/FinderConversationParentUI;", "()V", "tipDialog", "Landroid/app/ProgressDialog;", "getTipDialog", "()Landroid/app/ProgressDialog;", "setTipDialog", "(Landroid/app/ProgressDialog;)V", "doSomethingOnConvDel", "", "getLayoutId", "", "getTitleResId", "isLastHiSession", "", "onChattingUIExit", "showMoreSheet", "updateActionBar", "talkerType", "plugin-finder_release"})
 public final class FinderConversationXXUI
   extends FinderConversationParentUI
 {
   private HashMap _$_findViewCache;
-  private ProgressDialog fMu;
+  private ProgressDialog fOC;
   
-  public final boolean ZC()
+  public final boolean ZL()
   {
-    AppMethodBeat.i(203942);
-    if ((this.sAZ.nZa.size() == 1) && (((c)this.sAZ.nZa.get(0)).field_type != 1)) {}
+    AppMethodBeat.i(204538);
+    if ((this.sLZ.oeJ.size() == 1) && (((c)this.sLZ.oeJ.get(0)).field_type != 1)) {}
     for (int i = 1; i != 0; i = 0)
     {
       setResult(1);
       finish();
       overridePendingTransition(0, 0);
-      AppMethodBeat.o(203942);
+      AppMethodBeat.o(204538);
       return true;
     }
-    boolean bool = super.ZC();
-    AppMethodBeat.o(203942);
+    boolean bool = super.ZL();
+    AppMethodBeat.o(204538);
     return bool;
   }
   
   public final View _$_findCachedViewById(int paramInt)
   {
-    AppMethodBeat.i(203943);
+    AppMethodBeat.i(204539);
     if (this._$_findViewCache == null) {
       this._$_findViewCache = new HashMap();
     }
@@ -49,35 +49,35 @@ public final class FinderConversationXXUI
       localView1 = findViewById(paramInt);
       this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
     }
-    AppMethodBeat.o(203943);
+    AppMethodBeat.o(204539);
     return localView1;
   }
   
-  public final int cJA()
+  public final void cMb()
   {
-    return 2131766544;
-  }
-  
-  public final void cJy()
-  {
-    AppMethodBeat.i(203941);
-    ProgressDialog localProgressDialog = this.fMu;
+    AppMethodBeat.i(204537);
+    ProgressDialog localProgressDialog = this.fOC;
     if (localProgressDialog != null)
     {
-      ad.i("Finder.FinderConversationParentUI", "datasize " + this.sAZ.nZa.isEmpty());
-      if ((this.sAZ.nZa.isEmpty()) && (localProgressDialog.isShowing()))
+      ae.i("Finder.FinderConversationParentUI", "datasize " + this.sLZ.oeJ.isEmpty());
+      if ((this.sLZ.oeJ.isEmpty()) && (localProgressDialog.isShowing()))
       {
-        ad.i("Finder.FinderConversationParentUI", "clear hello conv finish");
-        localProgressDialog = this.fMu;
+        ae.i("Finder.FinderConversationParentUI", "clear hello conv finish");
+        localProgressDialog = this.fOC;
         if (localProgressDialog != null) {
           localProgressDialog.dismiss();
         }
-        this.fMu = null;
+        this.fOC = null;
       }
-      AppMethodBeat.o(203941);
+      AppMethodBeat.o(204537);
       return;
     }
-    AppMethodBeat.o(203941);
+    AppMethodBeat.o(204537);
+  }
+  
+  public final int cMd()
+  {
+    return 2131766544;
   }
   
   public final int getLayoutId()

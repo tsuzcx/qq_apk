@@ -2,34 +2,34 @@ package com.tencent.mm.plugin.appbrand.jsapi.g;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.plugin.appbrand.q;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.plugin.appbrand.r;
+import com.tencent.mm.sdk.platformtools.ae;
 import org.json.JSONObject;
 
 public class f
-  extends d<q>
+  extends d<r>
 {
   private static final int CTRL_INDEX = 587;
   private static final String NAME = "disableLocationUpdate";
   
-  public void a(q paramq, JSONObject paramJSONObject, int paramInt)
+  public void a(r paramr, JSONObject paramJSONObject, int paramInt)
   {
     AppMethodBeat.i(138192);
-    super.a(paramq, paramJSONObject, paramInt);
-    if (!(this.kOt instanceof r))
+    super.a(paramr, paramJSONObject, paramInt);
+    if (!(this.kRV instanceof s))
     {
-      ad.w("MicroMsg.AppBrand.JsApiDisableLocationUpdateWxa", "state manager not RuntimeLocationUpdateStateManagerWxa");
-      paramq.h(paramInt, e("fail:system error", null));
+      ae.w("MicroMsg.AppBrand.JsApiDisableLocationUpdateWxa", "state manager not RuntimeLocationUpdateStateManagerWxa");
+      paramr.h(paramInt, e("fail:system error", null));
       AppMethodBeat.o(138192);
       return;
     }
-    ((r)this.kOt).X(paramq.getRuntime());
+    ((s)this.kRV).W(paramr.getRuntime());
     AppMethodBeat.o(138192);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.g.f
  * JD-Core Version:    0.7.0.1
  */

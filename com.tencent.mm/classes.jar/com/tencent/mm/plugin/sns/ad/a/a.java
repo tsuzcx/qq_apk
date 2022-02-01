@@ -1,27 +1,26 @@
 package com.tencent.mm.plugin.sns.ad.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.ad.e.c;
-import com.tencent.mm.plugin.sns.ad.e.e;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.plugin.sns.ad.f.d;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import org.json.JSONObject;
 
 public final class a
 {
-  public static String aaC()
+  public static String aaL()
   {
-    AppMethodBeat.i(221436);
+    AppMethodBeat.i(218277);
     String str = "";
-    if (e.ftm()) {
-      str = c.aaC();
+    if (com.tencent.mm.plugin.sns.ad.f.a.dVz()) {
+      str = d.aaL();
     }
-    AppMethodBeat.o(221436);
+    AppMethodBeat.o(218277);
     return str;
   }
   
   /* Error */
-  public static String dRf()
+  public static String dUB()
   {
     // Byte code:
     //   0: iconst_0
@@ -36,61 +35,61 @@ public final class a
     //   17: astore 5
     //   19: invokestatic 44	java/lang/System:currentTimeMillis	()J
     //   22: lstore_1
-    //   23: invokestatic 24	com/tencent/mm/plugin/sns/ad/e/e:ftm	()Z
+    //   23: invokestatic 24	com/tencent/mm/plugin/sns/ad/f/a:dVz	()Z
     //   26: ifeq +11 -> 37
     //   29: aload 5
-    //   31: invokestatic 28	com/tencent/mm/plugin/sns/ad/e/c:aaC	()Ljava/lang/String;
-    //   34: putfield 48	com/tencent/mm/plugin/sns/ad/a/a$a:yWM	Ljava/lang/String;
-    //   37: invokestatic 51	com/tencent/mm/plugin/sns/ad/e/e:ftn	()Z
+    //   31: invokestatic 28	com/tencent/mm/plugin/sns/ad/f/d:aaL	()Ljava/lang/String;
+    //   34: putfield 48	com/tencent/mm/plugin/sns/ad/a/a$a:zmV	Ljava/lang/String;
+    //   37: invokestatic 51	com/tencent/mm/plugin/sns/ad/f/a:dVA	()Z
     //   40: ifeq +97 -> 137
     //   43: aload 5
-    //   45: invokestatic 54	com/tencent/mm/plugin/sns/ad/e/c:dSb	()Ljava/lang/String;
-    //   48: putfield 57	com/tencent/mm/plugin/sns/ad/a/a$a:yWN	Ljava/lang/String;
+    //   45: invokestatic 54	com/tencent/mm/plugin/sns/ad/f/d:dVD	()Ljava/lang/String;
+    //   48: putfield 57	com/tencent/mm/plugin/sns/ad/a/a$a:zmW	Ljava/lang/String;
     //   51: aload 5
-    //   53: invokestatic 60	com/tencent/mm/plugin/sns/ad/e/c:getDeviceId	()Ljava/lang/String;
-    //   56: putfield 63	com/tencent/mm/plugin/sns/ad/a/a$a:cUi	Ljava/lang/String;
+    //   53: invokestatic 60	com/tencent/mm/plugin/sns/ad/f/d:getDeviceId	()Ljava/lang/String;
+    //   56: putfield 63	com/tencent/mm/plugin/sns/ad/a/a$a:cVh	Ljava/lang/String;
     //   59: aload 5
     //   61: iconst_0
-    //   62: invokestatic 66	com/tencent/mm/plugin/sns/ad/e/c:getDeviceId	(I)Ljava/lang/String;
-    //   65: putfield 69	com/tencent/mm/plugin/sns/ad/a/a$a:yWO	Ljava/lang/String;
+    //   62: invokestatic 66	com/tencent/mm/plugin/sns/ad/f/d:getDeviceId	(I)Ljava/lang/String;
+    //   65: putfield 69	com/tencent/mm/plugin/sns/ad/a/a$a:zmX	Ljava/lang/String;
     //   68: aload 5
     //   70: iconst_1
-    //   71: invokestatic 66	com/tencent/mm/plugin/sns/ad/e/c:getDeviceId	(I)Ljava/lang/String;
-    //   74: putfield 72	com/tencent/mm/plugin/sns/ad/a/a$a:yWP	Ljava/lang/String;
+    //   71: invokestatic 66	com/tencent/mm/plugin/sns/ad/f/d:getDeviceId	(I)Ljava/lang/String;
+    //   74: putfield 72	com/tencent/mm/plugin/sns/ad/a/a$a:zmY	Ljava/lang/String;
     //   77: aload 5
-    //   79: invokestatic 75	com/tencent/mm/plugin/sns/ad/e/c:aar	()Ljava/lang/String;
+    //   79: invokestatic 75	com/tencent/mm/plugin/sns/ad/f/d:aaA	()Ljava/lang/String;
     //   82: putfield 78	com/tencent/mm/plugin/sns/ad/a/a$a:imei	Ljava/lang/String;
     //   85: aload 5
     //   87: iconst_0
-    //   88: invokestatic 81	com/tencent/mm/plugin/sns/ad/e/c:PC	(I)Ljava/lang/String;
-    //   91: putfield 84	com/tencent/mm/plugin/sns/ad/a/a$a:yWQ	Ljava/lang/String;
+    //   88: invokestatic 81	com/tencent/mm/plugin/sns/ad/f/d:Qj	(I)Ljava/lang/String;
+    //   91: putfield 84	com/tencent/mm/plugin/sns/ad/a/a$a:zmZ	Ljava/lang/String;
     //   94: aload 5
     //   96: iconst_1
-    //   97: invokestatic 81	com/tencent/mm/plugin/sns/ad/e/c:PC	(I)Ljava/lang/String;
-    //   100: putfield 87	com/tencent/mm/plugin/sns/ad/a/a$a:yWR	Ljava/lang/String;
+    //   97: invokestatic 81	com/tencent/mm/plugin/sns/ad/f/d:Qj	(I)Ljava/lang/String;
+    //   100: putfield 87	com/tencent/mm/plugin/sns/ad/a/a$a:zna	Ljava/lang/String;
     //   103: aload 5
-    //   105: invokestatic 90	com/tencent/mm/plugin/sns/ad/e/c:dSa	()Ljava/lang/String;
-    //   108: putfield 93	com/tencent/mm/plugin/sns/ad/a/a$a:yWS	Ljava/lang/String;
+    //   105: invokestatic 90	com/tencent/mm/plugin/sns/ad/f/d:dVC	()Ljava/lang/String;
+    //   108: putfield 93	com/tencent/mm/plugin/sns/ad/a/a$a:znb	Ljava/lang/String;
     //   111: aload 5
     //   113: iconst_0
-    //   114: invokestatic 96	com/tencent/mm/plugin/sns/ad/e/c:PD	(I)Ljava/lang/String;
-    //   117: putfield 99	com/tencent/mm/plugin/sns/ad/a/a$a:yWT	Ljava/lang/String;
+    //   114: invokestatic 96	com/tencent/mm/plugin/sns/ad/f/d:Qk	(I)Ljava/lang/String;
+    //   117: putfield 99	com/tencent/mm/plugin/sns/ad/a/a$a:znc	Ljava/lang/String;
     //   120: aload 5
     //   122: iconst_1
-    //   123: invokestatic 96	com/tencent/mm/plugin/sns/ad/e/c:PD	(I)Ljava/lang/String;
-    //   126: putfield 102	com/tencent/mm/plugin/sns/ad/a/a$a:yWU	Ljava/lang/String;
+    //   123: invokestatic 96	com/tencent/mm/plugin/sns/ad/f/d:Qk	(I)Ljava/lang/String;
+    //   126: putfield 102	com/tencent/mm/plugin/sns/ad/a/a$a:znd	Ljava/lang/String;
     //   129: aload 5
-    //   131: invokestatic 105	com/tencent/mm/plugin/sns/ad/e/c:aas	()Ljava/lang/String;
-    //   134: putfield 108	com/tencent/mm/plugin/sns/ad/a/a$a:yWV	Ljava/lang/String;
-    //   137: invokestatic 111	com/tencent/mm/plugin/sns/ad/e/e:fto	()Z
+    //   131: invokestatic 105	com/tencent/mm/plugin/sns/ad/f/d:aaB	()Ljava/lang/String;
+    //   134: putfield 108	com/tencent/mm/plugin/sns/ad/a/a$a:zne	Ljava/lang/String;
+    //   137: invokestatic 111	com/tencent/mm/plugin/sns/ad/f/a:dVB	()Z
     //   140: ifeq +11 -> 151
     //   143: aload 5
-    //   145: invokestatic 114	com/tencent/mm/plugin/sns/ad/e/c:dSe	()Ljava/lang/String;
+    //   145: invokestatic 114	com/tencent/mm/plugin/sns/ad/f/d:dVF	()Ljava/lang/String;
     //   148: putfield 117	com/tencent/mm/plugin/sns/ad/a/a$a:uuid	Ljava/lang/String;
-    //   151: invokestatic 120	com/tencent/mm/plugin/sns/ad/e/e:ftl	()Z
+    //   151: invokestatic 120	com/tencent/mm/plugin/sns/ad/f/a:dVy	()Z
     //   154: ifeq +11 -> 165
     //   157: aload 5
-    //   159: invokestatic 123	com/tencent/mm/plugin/sns/ad/e/c:getAndroidId	()Ljava/lang/String;
+    //   159: invokestatic 123	com/tencent/mm/plugin/sns/ad/f/d:getAndroidId	()Ljava/lang/String;
     //   162: putfield 126	com/tencent/mm/plugin/sns/ad/a/a$a:androidId	Ljava/lang/String;
     //   165: invokestatic 44	java/lang/System:currentTimeMillis	()J
     //   168: lstore_3
@@ -104,10 +103,10 @@ public final class a
     //   182: lsub
     //   183: invokevirtual 139	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   186: invokevirtual 142	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   189: invokestatic 148	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   189: invokestatic 148	com/tencent/mm/sdk/platformtools/ae:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   192: aload 5
-    //   194: invokevirtual 151	com/tencent/mm/plugin/sns/ad/a/a$a:dRh	()Ljava/lang/String;
-    //   197: invokestatic 157	com/tencent/mm/sdk/platformtools/bt:nullAsNil	(Ljava/lang/String;)Ljava/lang/String;
+    //   194: invokevirtual 151	com/tencent/mm/plugin/sns/ad/a/a$a:dUE	()Ljava/lang/String;
+    //   197: invokestatic 157	com/tencent/mm/sdk/platformtools/bu:nullAsNil	(Ljava/lang/String;)Ljava/lang/String;
     //   200: astore 5
     //   202: new 130	java/lang/StringBuilder
     //   205: dup
@@ -121,7 +120,7 @@ public final class a
     //   222: iload_0
     //   223: invokevirtual 162	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   226: invokevirtual 142	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   229: invokestatic 164	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   229: invokestatic 164	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   232: ldc 34
     //   234: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   237: ldc 2
@@ -156,13 +155,13 @@ public final class a
     //   243	249	252	finally
   }
   
-  public static String dRg()
+  public static String dUC()
   {
     try
     {
-      AppMethodBeat.i(213125);
-      String str = c.dSe();
-      AppMethodBeat.o(213125);
+      AppMethodBeat.i(218276);
+      String str = d.dVF();
+      AppMethodBeat.o(218276);
       return str;
     }
     finally
@@ -172,93 +171,93 @@ public final class a
     }
   }
   
-  public static String ftk()
+  public static String dUD()
   {
-    AppMethodBeat.i(221437);
+    AppMethodBeat.i(218278);
     String str = "";
-    if (e.ftn()) {
-      str = c.dSb();
+    if (com.tencent.mm.plugin.sns.ad.f.a.dVA()) {
+      str = d.dVD();
     }
-    AppMethodBeat.o(221437);
+    AppMethodBeat.o(218278);
     return str;
   }
   
   public static final class a
   {
     String androidId;
-    String cUi;
+    String cVh;
     String imei;
     String uuid;
-    String yWM;
-    String yWN;
-    String yWO;
-    String yWP;
-    String yWQ;
-    String yWR;
-    String yWS;
-    String yWT;
-    String yWU;
-    String yWV;
+    String zmV;
+    String zmW;
+    String zmX;
+    String zmY;
+    String zmZ;
+    String zna;
+    String znb;
+    String znc;
+    String znd;
+    String zne;
     
-    final String dRh()
+    final String dUE()
     {
-      AppMethodBeat.i(213122);
+      AppMethodBeat.i(218274);
       try
       {
         long l1 = System.currentTimeMillis();
         Object localObject = new JSONObject();
-        if (!bt.isNullOrNil(this.yWM)) {
-          ((JSONObject)localObject).put("oaid", this.yWM);
+        if (!bu.isNullOrNil(this.zmV)) {
+          ((JSONObject)localObject).put("oaid", this.zmV);
         }
-        if (!bt.isNullOrNil(this.yWN)) {
-          ((JSONObject)localObject).put("imeiWx", this.yWN);
+        if (!bu.isNullOrNil(this.zmW)) {
+          ((JSONObject)localObject).put("imeiWx", this.zmW);
         }
-        if (!bt.isNullOrNil(this.cUi)) {
-          ((JSONObject)localObject).put("deviceId", this.cUi);
+        if (!bu.isNullOrNil(this.cVh)) {
+          ((JSONObject)localObject).put("deviceId", this.cVh);
         }
-        if (!bt.isNullOrNil(this.yWO)) {
-          ((JSONObject)localObject).put("deviceId0", this.yWO);
+        if (!bu.isNullOrNil(this.zmX)) {
+          ((JSONObject)localObject).put("deviceId0", this.zmX);
         }
-        if (!bt.isNullOrNil(this.yWP)) {
-          ((JSONObject)localObject).put("deviceId1", this.yWP);
+        if (!bu.isNullOrNil(this.zmY)) {
+          ((JSONObject)localObject).put("deviceId1", this.zmY);
         }
-        if (!bt.isNullOrNil(this.imei)) {
+        if (!bu.isNullOrNil(this.imei)) {
           ((JSONObject)localObject).put("imei", this.imei);
         }
-        if (!bt.isNullOrNil(this.yWQ)) {
-          ((JSONObject)localObject).put("imei0", this.yWQ);
+        if (!bu.isNullOrNil(this.zmZ)) {
+          ((JSONObject)localObject).put("imei0", this.zmZ);
         }
-        if (!bt.isNullOrNil(this.yWR)) {
-          ((JSONObject)localObject).put("imei1", this.yWR);
+        if (!bu.isNullOrNil(this.zna)) {
+          ((JSONObject)localObject).put("imei1", this.zna);
         }
-        if (!bt.isNullOrNil(this.yWS)) {
-          ((JSONObject)localObject).put("meid", this.yWS);
+        if (!bu.isNullOrNil(this.znb)) {
+          ((JSONObject)localObject).put("meid", this.znb);
         }
-        if (!bt.isNullOrNil(this.yWT)) {
-          ((JSONObject)localObject).put("meid0", this.yWT);
+        if (!bu.isNullOrNil(this.znc)) {
+          ((JSONObject)localObject).put("meid0", this.znc);
         }
-        if (!bt.isNullOrNil(this.yWU)) {
-          ((JSONObject)localObject).put("meid1", this.yWU);
+        if (!bu.isNullOrNil(this.znd)) {
+          ((JSONObject)localObject).put("meid1", this.znd);
         }
-        if (!bt.isNullOrNil(this.yWV)) {
-          ((JSONObject)localObject).put("subscriberId", this.yWV);
+        if (!bu.isNullOrNil(this.zne)) {
+          ((JSONObject)localObject).put("subscriberId", this.zne);
         }
-        if (!bt.isNullOrNil(this.uuid)) {
+        if (!bu.isNullOrNil(this.uuid)) {
           ((JSONObject)localObject).put("uuid", this.uuid);
         }
-        if (!bt.isNullOrNil(this.androidId)) {
+        if (!bu.isNullOrNil(this.androidId)) {
           ((JSONObject)localObject).put("androidId", this.androidId);
         }
         localObject = ((JSONObject)localObject).toString();
         long l2 = System.currentTimeMillis();
-        ad.d("AdDeviceInfo", "buildPartDeviceInfo, timeCost = " + (l2 - l1) + ", ret = " + (String)localObject);
-        AppMethodBeat.o(213122);
+        ae.d("AdDeviceInfo", "buildPartDeviceInfo, timeCost = " + (l2 - l1) + ", ret = " + (String)localObject);
+        AppMethodBeat.o(218274);
         return localObject;
       }
       catch (Throwable localThrowable)
       {
-        ad.e("AdDeviceInfo", localThrowable.toString());
-        AppMethodBeat.o(213122);
+        ae.e("AdDeviceInfo", localThrowable.toString());
+        AppMethodBeat.o(218274);
       }
       return "";
     }

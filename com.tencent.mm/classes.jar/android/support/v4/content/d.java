@@ -69,7 +69,7 @@ public final class d
     };
   }
   
-  public static d U(Context paramContext)
+  public static d V(Context paramContext)
   {
     synchronized (mLock)
     {
@@ -302,7 +302,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     android.support.v4.content.d
  * JD-Core Version:    0.7.0.1
  */

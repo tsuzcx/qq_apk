@@ -10,9 +10,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class b
 {
-  private static float cAF = -1.0F;
+  private static float cBm = -1.0F;
   
-  public static Point aL(Context paramContext)
+  public static Point aM(Context paramContext)
   {
     AppMethodBeat.i(140069);
     WindowManager localWindowManager = (WindowManager)paramContext.getSystemService("window");
@@ -36,10 +36,10 @@ public final class b
   public static float getDensity(Context paramContext)
   {
     AppMethodBeat.i(140067);
-    if (cAF < 0.0F) {
-      cAF = paramContext.getResources().getDisplayMetrics().density;
+    if (cBm < 0.0F) {
+      cBm = paramContext.getResources().getDisplayMetrics().density;
     }
-    float f = cAF;
+    float f = cBm;
     AppMethodBeat.o(140067);
     return f;
   }
@@ -54,7 +54,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.magicbrush.utils.b
  * JD-Core Version:    0.7.0.1
  */

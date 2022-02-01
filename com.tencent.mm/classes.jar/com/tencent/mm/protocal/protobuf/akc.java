@@ -1,59 +1,31 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.LinkedList;
 
 public final class akc
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public boolean GgK = false;
-  public boolean GgL = false;
-  public boolean Gjs = false;
-  public boolean Gjt = false;
-  public boolean Gju = false;
+  public String GBP;
+  public LinkedList<String> GBQ;
+  public String appId;
+  public akn dFV;
   public String desc;
-  public String info;
-  public String thumbUrl;
+  public String dkZ;
+  public String dzZ;
   public String title;
   public int type;
   
-  public final akc ZO(int paramInt)
+  public akc()
   {
-    this.type = paramInt;
-    this.Gju = true;
-    return this;
-  }
-  
-  public final akc aOY(String paramString)
-  {
-    this.title = paramString;
-    this.GgK = true;
-    return this;
-  }
-  
-  public final akc aOZ(String paramString)
-  {
-    this.desc = paramString;
-    this.GgL = true;
-    return this;
-  }
-  
-  public final akc aPa(String paramString)
-  {
-    this.thumbUrl = paramString;
-    this.Gjs = true;
-    return this;
-  }
-  
-  public final akc aPb(String paramString)
-  {
-    this.info = paramString;
-    this.Gjt = true;
-    return this;
+    AppMethodBeat.i(127463);
+    this.GBQ = new LinkedList();
+    AppMethodBeat.o(127463);
   }
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(127472);
+    AppMethodBeat.i(127464);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
@@ -63,24 +35,34 @@ public final class akc
       if (this.desc != null) {
         paramVarArgs.d(2, this.desc);
       }
-      if (this.thumbUrl != null) {
-        paramVarArgs.d(3, this.thumbUrl);
+      if (this.dzZ != null) {
+        paramVarArgs.d(3, this.dzZ);
       }
-      if (this.info != null) {
-        paramVarArgs.d(4, this.info);
+      if (this.GBP != null) {
+        paramVarArgs.d(4, this.GBP);
       }
-      if (this.Gju == true) {
-        paramVarArgs.aS(5, this.type);
+      if (this.appId != null) {
+        paramVarArgs.d(5, this.appId);
       }
-      AppMethodBeat.o(127472);
+      if (this.dkZ != null) {
+        paramVarArgs.d(6, this.dkZ);
+      }
+      paramVarArgs.e(7, 1, this.GBQ);
+      paramVarArgs.aS(8, this.type);
+      if (this.dFV != null)
+      {
+        paramVarArgs.lJ(9, this.dFV.computeSize());
+        this.dFV.writeFields(paramVarArgs);
+      }
+      AppMethodBeat.o(127464);
       return 0;
     }
     if (paramInt == 1) {
       if (this.title == null) {
-        break label488;
+        break label778;
       }
     }
-    label488:
+    label778:
     for (int i = f.a.a.b.b.a.e(1, this.title) + 0;; i = 0)
     {
       paramInt = i;
@@ -88,66 +70,100 @@ public final class akc
         paramInt = i + f.a.a.b.b.a.e(2, this.desc);
       }
       i = paramInt;
-      if (this.thumbUrl != null) {
-        i = paramInt + f.a.a.b.b.a.e(3, this.thumbUrl);
+      if (this.dzZ != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.dzZ);
       }
       paramInt = i;
-      if (this.info != null) {
-        paramInt = i + f.a.a.b.b.a.e(4, this.info);
+      if (this.GBP != null) {
+        paramInt = i + f.a.a.b.b.a.e(4, this.GBP);
       }
       i = paramInt;
-      if (this.Gju == true) {
-        i = paramInt + f.a.a.b.b.a.bz(5, this.type);
+      if (this.appId != null) {
+        i = paramInt + f.a.a.b.b.a.e(5, this.appId);
       }
-      AppMethodBeat.o(127472);
-      return i;
+      paramInt = i;
+      if (this.dkZ != null) {
+        paramInt = i + f.a.a.b.b.a.e(6, this.dkZ);
+      }
+      i = paramInt + f.a.a.a.c(7, 1, this.GBQ) + f.a.a.b.b.a.bz(8, this.type);
+      paramInt = i;
+      if (this.dFV != null) {
+        paramInt = i + f.a.a.a.lI(9, this.dFV.computeSize());
+      }
+      AppMethodBeat.o(127464);
+      return paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = (byte[])paramVarArgs[0];
+        this.GBQ.clear();
+        paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
-        AppMethodBeat.o(127472);
+        AppMethodBeat.o(127464);
         return 0;
       }
       if (paramInt == 3)
       {
-        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+        Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
         akc localakc = (akc)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(127472);
+          AppMethodBeat.o(127464);
           return -1;
         case 1: 
-          localakc.title = locala.NPN.readString();
-          localakc.GgK = true;
-          AppMethodBeat.o(127472);
+          localakc.title = ((f.a.a.a.a)localObject1).OmT.readString();
+          AppMethodBeat.o(127464);
           return 0;
         case 2: 
-          localakc.desc = locala.NPN.readString();
-          localakc.GgL = true;
-          AppMethodBeat.o(127472);
+          localakc.desc = ((f.a.a.a.a)localObject1).OmT.readString();
+          AppMethodBeat.o(127464);
           return 0;
         case 3: 
-          localakc.thumbUrl = locala.NPN.readString();
-          localakc.Gjs = true;
-          AppMethodBeat.o(127472);
+          localakc.dzZ = ((f.a.a.a.a)localObject1).OmT.readString();
+          AppMethodBeat.o(127464);
           return 0;
         case 4: 
-          localakc.info = locala.NPN.readString();
-          localakc.Gjt = true;
-          AppMethodBeat.o(127472);
+          localakc.GBP = ((f.a.a.a.a)localObject1).OmT.readString();
+          AppMethodBeat.o(127464);
+          return 0;
+        case 5: 
+          localakc.appId = ((f.a.a.a.a)localObject1).OmT.readString();
+          AppMethodBeat.o(127464);
+          return 0;
+        case 6: 
+          localakc.dkZ = ((f.a.a.a.a)localObject1).OmT.readString();
+          AppMethodBeat.o(127464);
+          return 0;
+        case 7: 
+          localakc.GBQ.add(((f.a.a.a.a)localObject1).OmT.readString());
+          AppMethodBeat.o(127464);
+          return 0;
+        case 8: 
+          localakc.type = ((f.a.a.a.a)localObject1).OmT.zc();
+          AppMethodBeat.o(127464);
           return 0;
         }
-        localakc.type = locala.NPN.zc();
-        localakc.Gju = true;
-        AppMethodBeat.o(127472);
+        paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
+        i = paramVarArgs.size();
+        paramInt = 0;
+        while (paramInt < i)
+        {
+          Object localObject2 = (byte[])paramVarArgs.get(paramInt);
+          localObject1 = new akn();
+          localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
+          for (boolean bool = true; bool; bool = ((akn)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+          localakc.dFV = ((akn)localObject1);
+          paramInt += 1;
+        }
+        AppMethodBeat.o(127464);
         return 0;
       }
-      AppMethodBeat.o(127472);
+      AppMethodBeat.o(127464);
       return -1;
     }
   }

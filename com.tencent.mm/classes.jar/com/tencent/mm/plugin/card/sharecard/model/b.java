@@ -1,47 +1,47 @@
 package com.tencent.mm.plugin.card.sharecard.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.ayr;
-import com.tencent.mm.protocal.protobuf.ays;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.al.a;
+import com.tencent.mm.protocal.protobuf.azh;
+import com.tencent.mm.protocal.protobuf.azi;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.storage.aj;
+import com.tencent.mm.storage.am.a;
 
 public final class b
   extends n
   implements k
 {
   private f callback;
-  public String oBD;
-  public String ozQ;
-  private final com.tencent.mm.al.b rr;
+  public String oGs;
+  public String oIf;
+  private final com.tencent.mm.ak.b rr;
   
   public b(double paramDouble1, double paramDouble2, String paramString)
   {
     AppMethodBeat.i(112957);
-    this.oBD = "";
+    this.oIf = "";
     Object localObject = new b.a();
-    ((b.a)localObject).hNM = new ayr();
-    ((b.a)localObject).hNN = new ays();
+    ((b.a)localObject).hQF = new azh();
+    ((b.a)localObject).hQG = new azi();
     ((b.a)localObject).uri = "/cgi-bin/mmbiz-bin/card/getcardshomepage";
     ((b.a)localObject).funcId = 1164;
-    ((b.a)localObject).hNO = 0;
+    ((b.a)localObject).hQH = 0;
     ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).aDC();
-    localObject = (ayr)this.rr.hNK.hNQ;
-    ((ayr)localObject).latitude = paramDouble1;
-    ((ayr)localObject).longitude = paramDouble2;
-    ((ayr)localObject).oBD = paramString;
-    ((ayr)localObject).GvX = ((String)g.ajC().ajl().get(al.a.Irx, ""));
-    ad.d("MicroMsg.NetSceneGetCardsHomePageLayout", "red_buff:" + ((ayr)localObject).GvX);
+    this.rr = ((b.a)localObject).aDS();
+    localObject = (azh)this.rr.hQD.hQJ;
+    ((azh)localObject).latitude = paramDouble1;
+    ((azh)localObject).longitude = paramDouble2;
+    ((azh)localObject).oIf = paramString;
+    ((azh)localObject).GPw = ((String)g.ajR().ajA().get(am.a.ILT, ""));
+    ae.d("MicroMsg.NetSceneGetCardsHomePageLayout", "red_buff:" + ((azh)localObject).GPw);
     AppMethodBeat.o(112957);
   }
   
@@ -62,13 +62,13 @@ public final class b
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(112958);
-    ad.i("MicroMsg.NetSceneGetCardsHomePageLayout", "onGYNetEnd, cmdType = %d, errType = %d, errCode = %d", new Object[] { Integer.valueOf(getType()), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    ae.i("MicroMsg.NetSceneGetCardsHomePageLayout", "onGYNetEnd, cmdType = %d, errType = %d, errCode = %d", new Object[] { Integer.valueOf(getType()), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      paramq = (ays)this.rr.hNL.hNQ;
-      ad.v("MicroMsg.NetSceneGetCardsHomePageLayout", "json:" + paramq.ozQ);
-      this.ozQ = paramq.ozQ;
-      this.oBD = paramq.oBD;
+      paramq = (azi)this.rr.hQE.hQJ;
+      ae.v("MicroMsg.NetSceneGetCardsHomePageLayout", "json:" + paramq.oGs);
+      this.oGs = paramq.oGs;
+      this.oIf = paramq.oIf;
     }
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(112958);

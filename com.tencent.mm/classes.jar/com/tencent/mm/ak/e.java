@@ -1,884 +1,134 @@
 package com.tencent.mm.ak;
 
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.BitmapFactory.Options;
-import android.os.Looper;
-import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.b.f;
-import com.tencent.mm.by.a.a.a;
-import com.tencent.mm.cache.g.a;
-import com.tencent.mm.sdk.e.l;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.vfs.i;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import com.tencent.mm.protocal.protobuf.cv;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.storage.bv;
 import java.util.concurrent.ConcurrentHashMap;
 
-public final class e
+public abstract interface e
 {
-  private static a hMA;
-  private static int hMu;
-  private static int hMv;
-  static final Map<String, Integer> hMw;
-  private l<a, String> hMx;
-  private final List<WeakReference<a>> hMy;
-  private final a hMz;
+  public abstract b b(a parama);
   
-  static
-  {
-    AppMethodBeat.i(150268);
-    hMu = 100;
-    hMv = 100;
-    ConcurrentHashMap localConcurrentHashMap = new ConcurrentHashMap();
-    hMw = localConcurrentHashMap;
-    localConcurrentHashMap.put("voipapp", Integer.valueOf(2131690041));
-    hMw.put("qqmail", Integer.valueOf(2131690034));
-    hMw.put("fmessage", Integer.valueOf(2131690021));
-    hMw.put("floatbottle", Integer.valueOf(2131690014));
-    hMw.put("lbsapp", Integer.valueOf(2131690028));
-    hMw.put("shakeapp", Integer.valueOf(2131690038));
-    hMw.put("medianote", Integer.valueOf(2131690026));
-    hMw.put("qqfriend", Integer.valueOf(2131690033));
-    hMw.put("masssendapp", Integer.valueOf(2131690025));
-    hMw.put("feedsapp", Integer.valueOf(2131690020));
-    hMw.put("facebookapp", Integer.valueOf(2131690019));
-    hMw.put("newsapp", Integer.valueOf(2131690036));
-    hMw.put("helper_entry", Integer.valueOf(2131690030));
-    hMw.put("voicevoipapp", Integer.valueOf(2131690040));
-    hMw.put("voiceinputapp", Integer.valueOf(2131690039));
-    hMw.put("findersayhisessionholder", Integer.valueOf(2131235059));
-    hMw.put("officialaccounts", Integer.valueOf(2131690015));
-    hMw.put("service_officialaccounts", Integer.valueOf(2131690037));
-    hMw.put("linkedinplugin", Integer.valueOf(2131690024));
-    hMw.put("notifymessage", Integer.valueOf(2131690029));
-    hMw.put("appbrandcustomerservicemsg", Integer.valueOf(2131690012));
-    hMw.put("appbrand_notify_message", Integer.valueOf(2131690011));
-    hMw.put("downloaderapp", Integer.valueOf(2131690018));
-    hMA = new a(hMv);
-    AppMethodBeat.o(150268);
-  }
+  public abstract void b(c paramc);
   
-  public e()
+  public static final class a
   {
-    AppMethodBeat.i(150243);
-    this.hMx = new l() {};
-    this.hMy = new ArrayList();
-    this.hMz = new a()
+    public cv gte;
+    public boolean hQN = false;
+    public boolean hQO = false;
+    public boolean hQP = false;
+    public long hQQ = 0L;
+    public boolean hQR = false;
+    public Object hQS;
+    public int what;
+    
+    public a(cv paramcv, Object paramObject)
     {
-      public final void De(String paramAnonymousString)
-      {
-        AppMethodBeat.i(150238);
-        ad.d("MicroMsg.AvatarStorage", "notifyChanged user:%s clonesize:%d watchers:%d", new Object[] { paramAnonymousString, Integer.valueOf(e.a(e.this).size()), Integer.valueOf(e.a(e.this).size()) });
-        ArrayList localArrayList = new ArrayList();
-        for (;;)
-        {
-          Iterator localIterator;
-          synchronized (e.a(e.this))
-          {
-            localIterator = e.a(e.this).iterator();
-            if (!localIterator.hasNext()) {
-              break;
-            }
-            Object localObject2 = (WeakReference)localIterator.next();
-            if (localObject2 == null) {
-              continue;
-            }
-            localObject2 = (e.a)((WeakReference)localObject2).get();
-            if (localObject2 != null) {
-              localArrayList.add(localObject2);
-            }
-          }
-          localIterator.remove();
-        }
-        ??? = localArrayList.iterator();
-        while (((Iterator)???).hasNext()) {
-          ((e.a)((Iterator)???).next()).De(paramAnonymousString);
-        }
-        AppMethodBeat.o(150238);
-      }
-    };
-    reset();
-    this.hMx.a(this.hMz, null);
-    AppMethodBeat.o(150243);
-  }
-  
-  public static Bitmap CY(String paramString)
-  {
-    AppMethodBeat.i(150250);
-    if (bt.isNullOrNil(paramString))
+      this.gte = paramcv;
+      this.hQR = true;
+      this.hQS = paramObject;
+    }
+    
+    public a(cv paramcv, boolean paramBoolean, long paramLong)
     {
-      AppMethodBeat.o(150250);
-      return null;
+      this.gte = paramcv;
+      this.hQN = true;
+      this.hQO = false;
+      this.hQP = paramBoolean;
+      this.hQQ = paramLong;
     }
-    Object localObject = hMA;
-    if (((a)localObject).hLX != null) {}
-    for (localObject = (Bitmap)((a)localObject).hLX.aL(paramString); localObject == null; localObject = (Bitmap)g.a.U("avatar_cache", paramString))
+    
+    public a(cv paramcv, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
     {
-      AppMethodBeat.o(150250);
-      return null;
+      this.gte = paramcv;
+      this.hQN = paramBoolean1;
+      this.hQO = paramBoolean2;
+      this.hQP = paramBoolean3;
     }
-    if (((Bitmap)localObject).isRecycled())
+    
+    public final String toString()
     {
-      localObject = hMA;
-      if (((a)localObject).hLX != null) {
-        ((a)localObject).hLX.remove(paramString);
-      }
-      for (;;)
-      {
-        AppMethodBeat.o(150250);
-        return null;
-        g.a.V("avatar_cache", paramString);
-      }
+      AppMethodBeat.i(43002);
+      String str = String.format("AddMsgInfo(%d), get[%b], fault[%b], up[%b] fixTime[%s]", new Object[] { Integer.valueOf(hashCode()), Boolean.valueOf(this.hQN), Boolean.valueOf(this.hQO), Boolean.valueOf(this.hQP), Long.valueOf(this.hQQ) });
+      AppMethodBeat.o(43002);
+      return str;
     }
-    AppMethodBeat.o(150250);
-    return localObject;
   }
   
-  public static boolean CZ(String paramString)
+  public static final class b
   {
-    AppMethodBeat.i(150256);
-    paramString = J(paramString, false);
-    if ((i.fv(paramString)) || (i.fv(paramString + ".bm")))
+    public bv dlw;
+    public boolean hQT;
+    
+    public b(bv parambv, boolean paramBoolean)
     {
-      AppMethodBeat.o(150256);
-      return true;
+      this.dlw = parambv;
+      this.hQT = paramBoolean;
     }
-    AppMethodBeat.o(150256);
-    return false;
   }
   
-  public static Bitmap Da(String paramString)
+  public static final class c
   {
-    AppMethodBeat.i(150258);
-    paramString = Dd(J(paramString, false));
-    AppMethodBeat.o(150258);
-    return paramString;
-  }
-  
-  public static Bitmap Db(String paramString)
-  {
-    AppMethodBeat.i(150264);
-    ad.d("MicroMsg.AvatarStorage", "getHDBitmap user:%s", new Object[] { paramString });
-    if (bt.isNullOrNil(paramString))
+    public bv dCi;
+    public cv gte;
+    public Object hQU;
+    public Object hQV;
+    public String hQW;
+    public String hQX;
+    
+    public c(cv paramcv, Object paramObject1, Object paramObject2)
     {
-      AppMethodBeat.o(150264);
-      return null;
+      this.gte = paramcv;
+      this.hQU = paramObject1;
+      this.hQV = paramObject2;
     }
-    paramString = com.tencent.mm.sdk.platformtools.g.aM(J(paramString, true), 1080, 1080);
-    AppMethodBeat.o(150264);
-    return paramString;
-  }
-  
-  public static Bitmap Dc(String paramString)
-  {
-    AppMethodBeat.i(150265);
-    int i = 0;
-    if (hMw.containsKey(paramString)) {
-      i = ((Integer)hMw.get(paramString)).intValue();
-    }
-    if (i != 0) {
-      p.aEw();
-    }
-    for (paramString = com.tencent.mm.compatible.e.a.decodeResource(p.getContext().getResources(), i);; paramString = null)
+    
+    public c(bv parambv)
     {
-      paramString = com.tencent.mm.sdk.platformtools.g.a(paramString, true, 1.0F, true);
-      AppMethodBeat.o(150265);
-      return paramString;
+      this.dCi = parambv;
     }
   }
   
-  public static Bitmap Dd(String paramString)
+  public static final class d
   {
-    AppMethodBeat.i(150267);
-    if (i.fv(paramString)) {}
-    for (Bitmap localBitmap2 = com.tencent.mm.sdk.platformtools.g.decodeFile(paramString, null);; localBitmap2 = null)
+    private static ConcurrentHashMap<Object, e> hQK;
+    
+    static
     {
-      Bitmap localBitmap1 = localBitmap2;
-      if (localBitmap2 == null) {
-        localBitmap1 = e.b.Dg(paramString);
-      }
-      paramString = localBitmap1;
-      int i;
-      int j;
-      if (I(localBitmap1))
-      {
-        i = localBitmap1.getWidth();
-        j = localBitmap1.getHeight();
-        paramString = localBitmap1;
-        if (i != j) {
-          if (i <= j) {
-            break label92;
-          }
-        }
-      }
-      label92:
-      for (paramString = Bitmap.createBitmap(localBitmap1, (i - j) / 2, 0, j, j); I(paramString); paramString = Bitmap.createBitmap(localBitmap1, 0, (j - i) / 2, i, i))
-      {
-        AppMethodBeat.o(150267);
-        return paramString;
-      }
-      AppMethodBeat.o(150267);
-      return null;
+      AppMethodBeat.i(43006);
+      hQK = new ConcurrentHashMap();
+      AppMethodBeat.o(43006);
     }
-  }
-  
-  private static boolean I(Bitmap paramBitmap)
-  {
-    AppMethodBeat.i(150266);
-    if ((paramBitmap != null) && (!paramBitmap.isRecycled()))
+    
+    public static void a(Object paramObject, e parame)
     {
-      AppMethodBeat.o(150266);
-      return true;
+      AppMethodBeat.i(43003);
+      ae.i("MicroMsg.IMessageExtension.Factory", "registerExtensionFor %s, %s", new Object[] { paramObject, parame });
+      hQK.put(paramObject, parame);
+      AppMethodBeat.o(43003);
     }
-    AppMethodBeat.o(150266);
-    return false;
-  }
-  
-  public static String J(String paramString, boolean paramBoolean)
-  {
-    AppMethodBeat.i(150254);
-    paramString = a(new StringBuilder(64).append("wcf://avatar/"), paramString, paramBoolean).toString();
-    i.aYg(i.aYr(paramString));
-    AppMethodBeat.o(150254);
-    return paramString;
-  }
-  
-  public static String K(String paramString, boolean paramBoolean)
-  {
-    AppMethodBeat.i(150255);
-    if (bt.isNullOrNil(paramString))
+    
+    public static void b(Object paramObject, e parame)
     {
-      AppMethodBeat.o(150255);
-      return null;
+      AppMethodBeat.i(43004);
+      ae.i("MicroMsg.IMessageExtension.Factory", "unregisterExtensionFor %s, %s", new Object[] { paramObject, parame });
+      hQK.remove(paramObject);
+      AppMethodBeat.o(43004);
     }
-    paramString = a(new StringBuilder(128).append(com.tencent.mm.kernel.g.ajC().cachePath).append("avatar/"), paramString, paramBoolean).toString();
-    if (i.aYg(i.aYr(paramString)))
+    
+    public static e ca(Object paramObject)
     {
-      AppMethodBeat.o(150255);
-      return paramString;
+      AppMethodBeat.i(43005);
+      paramObject = (e)hQK.get(paramObject);
+      AppMethodBeat.o(43005);
+      return paramObject;
     }
-    AppMethodBeat.o(150255);
-    return null;
-  }
-  
-  public static boolean L(String paramString, boolean paramBoolean)
-  {
-    AppMethodBeat.i(150257);
-    String str = J(paramString, paramBoolean);
-    ad.i("MicroMsg.AvatarStorage", "Removed avatar: %s, hd: %b, path: %s", new Object[] { paramString, Boolean.valueOf(paramBoolean), str });
-    boolean bool2 = i.deleteFile(str);
-    boolean bool1 = bool2;
-    if (!paramBoolean) {
-      bool1 = bool2 | e.b.remove(str);
-    }
-    AppMethodBeat.o(150257);
-    return bool1;
-  }
-  
-  private static StringBuilder a(StringBuilder paramStringBuilder, String paramString, boolean paramBoolean)
-  {
-    AppMethodBeat.i(150253);
-    paramString = com.tencent.mm.b.g.getMessageDigest(paramString.getBytes());
-    paramStringBuilder.append(paramString.substring(0, 2)).append('/').append(paramString.substring(2, 4)).append('/').append("user_");
-    if (paramBoolean) {
-      paramStringBuilder.append("hd_");
-    }
-    paramStringBuilder = paramStringBuilder.append(paramString).append(".png");
-    AppMethodBeat.o(150253);
-    return paramStringBuilder;
-  }
-  
-  public static void a(Context paramContext, ImageView paramImageView, int paramInt)
-  {
-    AppMethodBeat.i(150242);
-    try
-    {
-      paramImageView.setImageBitmap(com.tencent.mm.sdk.platformtools.g.a(com.tencent.mm.compatible.e.a.decodeResource(paramContext.getResources(), paramInt), true, 1.0F));
-      AppMethodBeat.o(150242);
-      return;
-    }
-    catch (Exception paramContext)
-    {
-      ad.e("MicroMsg.AvatarStorage", "exception:%s", new Object[] { bt.n(paramContext) });
-      AppMethodBeat.o(150242);
-    }
-  }
-  
-  private WeakReference<a> c(a parama)
-  {
-    AppMethodBeat.i(150246);
-    List localList = this.hMy;
-    int i = 0;
-    try
-    {
-      while (i < this.hMy.size())
-      {
-        WeakReference localWeakReference = (WeakReference)this.hMy.get(i);
-        if (localWeakReference != null)
-        {
-          a locala = (a)localWeakReference.get();
-          if ((locala != null) && (locala.equals(parama))) {
-            return localWeakReference;
-          }
-        }
-        i += 1;
-      }
-      return null;
-    }
-    finally
-    {
-      AppMethodBeat.o(150246);
-    }
-  }
-  
-  /* Error */
-  public static Bitmap g(String paramString, byte[] paramArrayOfByte)
-  {
-    // Byte code:
-    //   0: ldc_w 432
-    //   3: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   6: aload_1
-    //   7: sipush 156
-    //   10: sipush 156
-    //   13: invokestatic 436	com/tencent/mm/sdk/platformtools/g:decodeByteArray	([BII)Landroid/graphics/Bitmap;
-    //   16: astore 5
-    //   18: aload 5
-    //   20: invokestatic 299	com/tencent/mm/ak/e:I	(Landroid/graphics/Bitmap;)Z
-    //   23: ifne +27 -> 50
-    //   26: ldc 236
-    //   28: ldc_w 438
-    //   31: iconst_1
-    //   32: anewarray 4	java/lang/Object
-    //   35: dup
-    //   36: iconst_0
-    //   37: aload_0
-    //   38: aastore
-    //   39: invokestatic 406	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   42: ldc_w 432
-    //   45: invokestatic 139	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   48: aconst_null
-    //   49: areturn
-    //   50: aload 5
-    //   52: invokevirtual 302	android/graphics/Bitmap:getWidth	()I
-    //   55: istore_2
-    //   56: aload 5
-    //   58: invokevirtual 305	android/graphics/Bitmap:getHeight	()I
-    //   61: istore_3
-    //   62: aload 5
-    //   64: astore 4
-    //   66: iload_2
-    //   67: iload_3
-    //   68: if_icmpeq +23 -> 91
-    //   71: iload_2
-    //   72: iload_3
-    //   73: if_icmple +81 -> 154
-    //   76: aload 5
-    //   78: iload_2
-    //   79: iload_3
-    //   80: isub
-    //   81: iconst_2
-    //   82: idiv
-    //   83: iconst_0
-    //   84: iload_3
-    //   85: iload_3
-    //   86: invokestatic 309	android/graphics/Bitmap:createBitmap	(Landroid/graphics/Bitmap;IIII)Landroid/graphics/Bitmap;
-    //   89: astore 4
-    //   91: aload_0
-    //   92: iconst_0
-    //   93: invokestatic 209	com/tencent/mm/ak/e:J	(Ljava/lang/String;Z)Ljava/lang/String;
-    //   96: astore 5
-    //   98: aload 5
-    //   100: iconst_0
-    //   101: invokestatic 442	com/tencent/mm/vfs/i:cX	(Ljava/lang/String;Z)Ljava/io/OutputStream;
-    //   104: astore 6
-    //   106: aload 6
-    //   108: astore 5
-    //   110: aload 6
-    //   112: aload_1
-    //   113: iconst_0
-    //   114: aload_1
-    //   115: arraylength
-    //   116: invokevirtual 448	java/io/OutputStream:write	([BII)V
-    //   119: aload 6
-    //   121: ifnull +8 -> 129
-    //   124: aload 6
-    //   126: invokevirtual 451	java/io/OutputStream:close	()V
-    //   129: ldc 236
-    //   131: ldc_w 453
-    //   134: iconst_1
-    //   135: anewarray 4	java/lang/Object
-    //   138: dup
-    //   139: iconst_0
-    //   140: aload_0
-    //   141: aastore
-    //   142: invokestatic 352	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   145: ldc_w 432
-    //   148: invokestatic 139	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   151: aload 4
-    //   153: areturn
-    //   154: aload 5
-    //   156: iconst_0
-    //   157: iload_3
-    //   158: iload_2
-    //   159: isub
-    //   160: iconst_2
-    //   161: idiv
-    //   162: iload_2
-    //   163: iload_2
-    //   164: invokestatic 309	android/graphics/Bitmap:createBitmap	(Landroid/graphics/Bitmap;IIII)Landroid/graphics/Bitmap;
-    //   167: astore 4
-    //   169: goto -78 -> 91
-    //   172: astore_1
-    //   173: aconst_null
-    //   174: astore 6
-    //   176: aload 6
-    //   178: astore 5
-    //   180: ldc 236
-    //   182: aload_1
-    //   183: ldc_w 455
-    //   186: iconst_1
-    //   187: anewarray 4	java/lang/Object
-    //   190: dup
-    //   191: iconst_0
-    //   192: aload_0
-    //   193: aastore
-    //   194: invokestatic 459	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   197: aload 6
-    //   199: ifnull +8 -> 207
-    //   202: aload 6
-    //   204: invokevirtual 451	java/io/OutputStream:close	()V
-    //   207: ldc_w 432
-    //   210: invokestatic 139	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   213: aconst_null
-    //   214: areturn
-    //   215: astore_0
-    //   216: aconst_null
-    //   217: astore 5
-    //   219: aload 5
-    //   221: ifnull +8 -> 229
-    //   224: aload 5
-    //   226: invokevirtual 451	java/io/OutputStream:close	()V
-    //   229: ldc_w 432
-    //   232: invokestatic 139	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   235: aload_0
-    //   236: athrow
-    //   237: astore_1
-    //   238: goto -109 -> 129
-    //   241: astore_0
-    //   242: goto -35 -> 207
-    //   245: astore_1
-    //   246: goto -17 -> 229
-    //   249: astore_0
-    //   250: goto -31 -> 219
-    //   253: astore_1
-    //   254: goto -78 -> 176
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	257	0	paramString	String
-    //   0	257	1	paramArrayOfByte	byte[]
-    //   55	109	2	i	int
-    //   61	99	3	j	int
-    //   64	104	4	localObject1	Object
-    //   16	209	5	localObject2	Object
-    //   104	99	6	localOutputStream	java.io.OutputStream
-    // Exception table:
-    //   from	to	target	type
-    //   98	106	172	java/io/IOException
-    //   98	106	215	finally
-    //   124	129	237	java/io/IOException
-    //   202	207	241	java/io/IOException
-    //   224	229	245	java/io/IOException
-    //   110	119	249	finally
-    //   180	197	249	finally
-    //   110	119	253	java/io/IOException
-  }
-  
-  public static Bitmap o(String paramString, int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(150263);
-    ad.d("MicroMsg.AvatarStorage", "getHDBitmap user:%s, width:%d, height:%d", new Object[] { paramString, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    if (bt.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(150263);
-      return null;
-    }
-    paramString = com.tencent.mm.sdk.platformtools.g.aM(J(paramString, true), paramInt1, paramInt2);
-    AppMethodBeat.o(150263);
-    return paramString;
-  }
-  
-  public static void reset()
-  {
-    AppMethodBeat.i(150249);
-    if (hMA == null) {
-      hMA = new a(hMv);
-    }
-    AppMethodBeat.o(150249);
-  }
-  
-  public final void a(a parama)
-  {
-    AppMethodBeat.i(150244);
-    synchronized (this.hMy)
-    {
-      this.hMy.add(new WeakReference(parama));
-      AppMethodBeat.o(150244);
-      return;
-    }
-  }
-  
-  public final boolean aX(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(150261);
-    try
-    {
-      BitmapFactory.Options localOptions = com.tencent.mm.sdk.platformtools.g.aQc(paramString1);
-      int k = localOptions.outWidth;
-      int m = localOptions.outHeight;
-      int i;
-      int j;
-      if (m < k)
-      {
-        i = k * 156 / m;
-        j = 156;
-      }
-      for (;;)
-      {
-        ad.d("MicroMsg.AvatarStorage", "inJustDecodeBounds old [w:%d h:%d]  new [w:%d h:%d] corner:%d", new Object[] { Integer.valueOf(k), Integer.valueOf(m), Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(1) });
-        localOptions = new BitmapFactory.Options();
-        localOptions.inPreferredConfig = Bitmap.Config.ARGB_8888;
-        localOptions.inSampleSize = 1;
-        boolean bool = e(paramString2, com.tencent.mm.sdk.platformtools.g.decodeFile(paramString1, localOptions));
-        AppMethodBeat.o(150261);
-        return bool;
-        j = m * 156 / k;
-        i = 156;
-      }
-      return false;
-    }
-    catch (Exception paramString1)
-    {
-      ad.e("MicroMsg.AvatarStorage", "exception:%s", new Object[] { bt.n(paramString1) });
-      AppMethodBeat.o(150261);
-    }
-  }
-  
-  public final void b(a parama)
-  {
-    AppMethodBeat.i(150245);
-    synchronized (this.hMy)
-    {
-      parama = c(parama);
-      if (parama != null) {
-        this.hMy.remove(parama);
-      }
-      AppMethodBeat.o(150245);
-      return;
-    }
-  }
-  
-  public final Bitmap cy(Context paramContext)
-  {
-    AppMethodBeat.i(150252);
-    paramContext.getResources();
-    Bitmap localBitmap = CY("I_AM_NO_SDCARD_USER_NAME");
-    paramContext = localBitmap;
-    if (!I(localBitmap))
-    {
-      paramContext = localBitmap;
-      if (localBitmap != null)
-      {
-        ad.i("MicroMsg.AvatarStorage", "not cached, recycled=%b, reload=%s", new Object[] { Boolean.valueOf(localBitmap.isRecycled()), "I_AM_NO_SDCARD_USER_NAME" });
-        paramContext = com.tencent.mm.sdk.platformtools.g.a(localBitmap, true, 1.0F);
-        d("I_AM_NO_SDCARD_USER_NAME", paramContext);
-      }
-    }
-    AppMethodBeat.o(150252);
-    return paramContext;
-  }
-  
-  @Deprecated
-  public final void d(a parama)
-  {
-    AppMethodBeat.i(150247);
-    this.hMx.a(parama, Looper.getMainLooper());
-    AppMethodBeat.o(150247);
-  }
-  
-  public final void d(String paramString, Bitmap paramBitmap)
-  {
-    AppMethodBeat.i(150251);
-    hMA.c(paramString, paramBitmap);
-    paramBitmap = a.a.HTy;
-    if (paramBitmap != null) {
-      paramBitmap.TT(paramString);
-    }
-    this.hMx.dV(paramString);
-    this.hMx.doNotify();
-    ad.d("MicroMsg.AvatarStorage", "setToCache %s", new Object[] { paramString });
-    AppMethodBeat.o(150251);
-  }
-  
-  @Deprecated
-  public final void e(a parama)
-  {
-    AppMethodBeat.i(150248);
-    this.hMx.remove(parama);
-    AppMethodBeat.o(150248);
-  }
-  
-  /* Error */
-  final boolean e(String paramString, Bitmap paramBitmap)
-  {
-    // Byte code:
-    //   0: ldc_w 560
-    //   3: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   6: aload_2
-    //   7: invokestatic 299	com/tencent/mm/ak/e:I	(Landroid/graphics/Bitmap;)Z
-    //   10: ifne +11 -> 21
-    //   13: ldc_w 560
-    //   16: invokestatic 139	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   19: iconst_0
-    //   20: ireturn
-    //   21: aload_2
-    //   22: invokevirtual 302	android/graphics/Bitmap:getWidth	()I
-    //   25: sipush 156
-    //   28: if_icmpne +107 -> 135
-    //   31: aload_2
-    //   32: invokevirtual 305	android/graphics/Bitmap:getHeight	()I
-    //   35: sipush 156
-    //   38: if_icmpne +97 -> 135
-    //   41: aload_2
-    //   42: astore 5
-    //   44: aload_2
-    //   45: astore 6
-    //   47: aload 5
-    //   49: ifnull +39 -> 88
-    //   52: aload_2
-    //   53: astore 6
-    //   55: aload 5
-    //   57: aload_2
-    //   58: if_acmpeq +30 -> 88
-    //   61: ldc 236
-    //   63: ldc_w 562
-    //   66: iconst_1
-    //   67: anewarray 4	java/lang/Object
-    //   70: dup
-    //   71: iconst_0
-    //   72: aload_2
-    //   73: invokevirtual 563	java/lang/Object:toString	()Ljava/lang/String;
-    //   76: aastore
-    //   77: invokestatic 352	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   80: aload_2
-    //   81: invokevirtual 566	android/graphics/Bitmap:recycle	()V
-    //   84: aload 5
-    //   86: astore 6
-    //   88: aload_1
-    //   89: iconst_0
-    //   90: invokestatic 209	com/tencent/mm/ak/e:J	(Ljava/lang/String;Z)Ljava/lang/String;
-    //   93: astore_2
-    //   94: aload_2
-    //   95: iconst_0
-    //   96: invokestatic 442	com/tencent/mm/vfs/i:cX	(Ljava/lang/String;Z)Ljava/io/OutputStream;
-    //   99: astore_2
-    //   100: aload 6
-    //   102: getstatic 572	android/graphics/Bitmap$CompressFormat:PNG	Landroid/graphics/Bitmap$CompressFormat;
-    //   105: bipush 100
-    //   107: aload_2
-    //   108: invokevirtual 576	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
-    //   111: pop
-    //   112: aload_2
-    //   113: ifnull +7 -> 120
-    //   116: aload_2
-    //   117: invokevirtual 451	java/io/OutputStream:close	()V
-    //   120: aload_0
-    //   121: aload_1
-    //   122: aload 6
-    //   124: invokevirtual 522	com/tencent/mm/ak/e:d	(Ljava/lang/String;Landroid/graphics/Bitmap;)V
-    //   127: ldc_w 560
-    //   130: invokestatic 139	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   133: iconst_1
-    //   134: ireturn
-    //   135: aload_2
-    //   136: invokevirtual 302	android/graphics/Bitmap:getWidth	()I
-    //   139: istore_3
-    //   140: aload_2
-    //   141: invokevirtual 305	android/graphics/Bitmap:getHeight	()I
-    //   144: istore 4
-    //   146: iload_3
-    //   147: iload 4
-    //   149: if_icmpeq +61 -> 210
-    //   152: iload_3
-    //   153: iload 4
-    //   155: if_icmple +37 -> 192
-    //   158: aload_2
-    //   159: iload_3
-    //   160: iload 4
-    //   162: isub
-    //   163: iconst_2
-    //   164: idiv
-    //   165: iconst_0
-    //   166: iload 4
-    //   168: iload 4
-    //   170: invokestatic 309	android/graphics/Bitmap:createBitmap	(Landroid/graphics/Bitmap;IIII)Landroid/graphics/Bitmap;
-    //   173: astore 5
-    //   175: aload 5
-    //   177: sipush 156
-    //   180: sipush 156
-    //   183: iconst_1
-    //   184: invokestatic 580	android/graphics/Bitmap:createScaledBitmap	(Landroid/graphics/Bitmap;IIZ)Landroid/graphics/Bitmap;
-    //   187: astore 5
-    //   189: goto -145 -> 44
-    //   192: aload_2
-    //   193: iconst_0
-    //   194: iload 4
-    //   196: iload_3
-    //   197: isub
-    //   198: iconst_2
-    //   199: idiv
-    //   200: iload_3
-    //   201: iload_3
-    //   202: invokestatic 309	android/graphics/Bitmap:createBitmap	(Landroid/graphics/Bitmap;IIII)Landroid/graphics/Bitmap;
-    //   205: astore 5
-    //   207: goto -32 -> 175
-    //   210: aload_2
-    //   211: sipush 156
-    //   214: sipush 156
-    //   217: iconst_1
-    //   218: invokestatic 580	android/graphics/Bitmap:createScaledBitmap	(Landroid/graphics/Bitmap;IIZ)Landroid/graphics/Bitmap;
-    //   221: astore 5
-    //   223: goto -179 -> 44
-    //   226: astore 5
-    //   228: ldc 236
-    //   230: ldc_w 582
-    //   233: iconst_1
-    //   234: anewarray 4	java/lang/Object
-    //   237: dup
-    //   238: iconst_0
-    //   239: aload_1
-    //   240: aastore
-    //   241: invokestatic 406	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   244: aload_2
-    //   245: invokestatic 299	com/tencent/mm/ak/e:I	(Landroid/graphics/Bitmap;)Z
-    //   248: ifeq +26 -> 274
-    //   251: ldc 236
-    //   253: ldc_w 562
-    //   256: iconst_1
-    //   257: anewarray 4	java/lang/Object
-    //   260: dup
-    //   261: iconst_0
-    //   262: aload_2
-    //   263: invokevirtual 563	java/lang/Object:toString	()Ljava/lang/String;
-    //   266: aastore
-    //   267: invokestatic 352	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   270: aload_2
-    //   271: invokevirtual 566	android/graphics/Bitmap:recycle	()V
-    //   274: ldc_w 560
-    //   277: invokestatic 139	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   280: iconst_0
-    //   281: ireturn
-    //   282: astore 5
-    //   284: aconst_null
-    //   285: astore_2
-    //   286: ldc 236
-    //   288: aload 5
-    //   290: ldc_w 455
-    //   293: iconst_1
-    //   294: anewarray 4	java/lang/Object
-    //   297: dup
-    //   298: iconst_0
-    //   299: aload_1
-    //   300: aastore
-    //   301: invokestatic 459	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   304: aload_2
-    //   305: ifnull +7 -> 312
-    //   308: aload_2
-    //   309: invokevirtual 451	java/io/OutputStream:close	()V
-    //   312: ldc_w 560
-    //   315: invokestatic 139	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   318: iconst_0
-    //   319: ireturn
-    //   320: astore_1
-    //   321: aconst_null
-    //   322: astore_2
-    //   323: aload_2
-    //   324: ifnull +7 -> 331
-    //   327: aload_2
-    //   328: invokevirtual 451	java/io/OutputStream:close	()V
-    //   331: ldc_w 560
-    //   334: invokestatic 139	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   337: aload_1
-    //   338: athrow
-    //   339: astore_2
-    //   340: goto -220 -> 120
-    //   343: astore_1
-    //   344: goto -32 -> 312
-    //   347: astore_2
-    //   348: goto -17 -> 331
-    //   351: astore_1
-    //   352: goto -29 -> 323
-    //   355: astore_1
-    //   356: goto -33 -> 323
-    //   359: astore 5
-    //   361: goto -75 -> 286
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	364	0	this	e
-    //   0	364	1	paramString	String
-    //   0	364	2	paramBitmap	Bitmap
-    //   139	63	3	i	int
-    //   144	54	4	j	int
-    //   42	180	5	localBitmap1	Bitmap
-    //   226	1	5	localOutOfMemoryError	java.lang.OutOfMemoryError
-    //   282	7	5	localIOException1	java.io.IOException
-    //   359	1	5	localIOException2	java.io.IOException
-    //   45	78	6	localBitmap2	Bitmap
-    // Exception table:
-    //   from	to	target	type
-    //   135	146	226	java/lang/OutOfMemoryError
-    //   158	175	226	java/lang/OutOfMemoryError
-    //   175	189	226	java/lang/OutOfMemoryError
-    //   192	207	226	java/lang/OutOfMemoryError
-    //   210	223	226	java/lang/OutOfMemoryError
-    //   94	100	282	java/io/IOException
-    //   94	100	320	finally
-    //   116	120	339	java/io/IOException
-    //   308	312	343	java/io/IOException
-    //   327	331	347	java/io/IOException
-    //   100	112	351	finally
-    //   286	304	355	finally
-    //   100	112	359	java/io/IOException
-  }
-  
-  public final boolean h(String paramString, byte[] paramArrayOfByte)
-  {
-    AppMethodBeat.i(150260);
-    paramArrayOfByte = g(paramString, paramArrayOfByte);
-    if (!I(paramArrayOfByte))
-    {
-      AppMethodBeat.o(150260);
-      return false;
-    }
-    d(paramString, paramArrayOfByte);
-    AppMethodBeat.o(150260);
-    return true;
-  }
-  
-  public static abstract interface a
-  {
-    public abstract void De(String paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ak.e
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,18 @@
 package com.tencent.mm.live.b.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
-import com.tencent.mm.bx.a;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.bw.a;
 import com.tencent.mm.live.b.g;
+import com.tencent.mm.model.r;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
-import com.tencent.mm.protocal.protobuf.bdf;
-import com.tencent.mm.protocal.protobuf.bdg;
-import com.tencent.mm.protocal.protobuf.buq;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.network.q;
+import com.tencent.mm.protocal.protobuf.bdv;
+import com.tencent.mm.protocal.protobuf.bdw;
+import com.tencent.mm.protocal.protobuf.bvk;
+import com.tencent.mm.sdk.platformtools.ae;
 import d.g.b.p;
 import d.l;
 import d.o;
@@ -21,69 +23,69 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/live/model/cgi/NetSceneGetLiveInfo;", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Lcom/tencent/mm/network/IOnGYNetEnd;", "liveId", "", "roomId", "", "isForCheck", "", "(JLjava/lang/String;Z)V", "callback", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "()Z", "reqResp", "Lcom/tencent/mm/modelbase/CommReqResp;", "request", "Lcom/tencent/mm/protocal/protobuf/GetLiveInfoRequest;", "response", "Lcom/tencent/mm/protocal/protobuf/GetLiveInfoResponse;", "doScene", "", "dispatcher", "Lcom/tencent/mm/network/IDispatcher;", "getLiveInfo", "Lcom/tencent/mm/protocal/protobuf/LiveInfo;", "getType", "onGYNetEnd", "", "netId", "errType", "errCode", "errMsg", "rr", "Lcom/tencent/mm/network/IReqResp;", "cookie", "", "Companion", "plugin-logic_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/live/model/cgi/NetSceneGetLiveInfo;", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Lcom/tencent/mm/network/IOnGYNetEnd;", "liveId", "", "roomId", "", "isForCheck", "", "(JLjava/lang/String;Z)V", "callback", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "()Z", "reqResp", "Lcom/tencent/mm/modelbase/CommReqResp;", "request", "Lcom/tencent/mm/protocal/protobuf/GetLiveInfoRequest;", "response", "Lcom/tencent/mm/protocal/protobuf/GetLiveInfoResponse;", "doScene", "", "dispatcher", "Lcom/tencent/mm/network/IDispatcher;", "getLiveInfo", "Lcom/tencent/mm/protocal/protobuf/LiveInfo;", "getType", "onGYNetEnd", "", "netId", "errType", "errCode", "errMsg", "rr", "Lcom/tencent/mm/network/IReqResp;", "cookie", "", "Companion", "plugin-logic_release"})
 public final class b
   extends n
   implements k
 {
-  public static final a gPw;
+  public static final a gSe;
   private f callback;
-  private com.tencent.mm.al.b gPp;
-  private bdf gPt;
-  private bdg gPu;
-  private final boolean gPv;
+  private com.tencent.mm.ak.b gRX;
+  private bdv gSb;
+  private bdw gSc;
+  private final boolean gSd;
   
   static
   {
-    AppMethodBeat.i(212172);
-    gPw = new a((byte)0);
-    AppMethodBeat.o(212172);
+    AppMethodBeat.i(215792);
+    gSe = new a((byte)0);
+    AppMethodBeat.o(215792);
   }
   
   public b(long paramLong, String paramString, boolean paramBoolean)
   {
-    AppMethodBeat.i(212171);
-    this.gPv = paramBoolean;
-    Object localObject = new com.tencent.mm.al.b.a();
-    ((com.tencent.mm.al.b.a)localObject).c((a)new bdf());
-    ((com.tencent.mm.al.b.a)localObject).d((a)new bdg());
-    ((com.tencent.mm.al.b.a)localObject).oP(3806);
-    ((com.tencent.mm.al.b.a)localObject).Dl("/cgi-bin/micromsg-bin/getliveinfo");
-    ((com.tencent.mm.al.b.a)localObject).oR(0);
-    ((com.tencent.mm.al.b.a)localObject).oS(0);
-    localObject = ((com.tencent.mm.al.b.a)localObject).aDC();
+    AppMethodBeat.i(215791);
+    this.gSd = paramBoolean;
+    Object localObject = new com.tencent.mm.ak.b.a();
+    ((com.tencent.mm.ak.b.a)localObject).c((a)new bdv());
+    ((com.tencent.mm.ak.b.a)localObject).d((a)new bdw());
+    ((com.tencent.mm.ak.b.a)localObject).oS(3806);
+    ((com.tencent.mm.ak.b.a)localObject).DN("/cgi-bin/micromsg-bin/getliveinfo");
+    ((com.tencent.mm.ak.b.a)localObject).oU(0);
+    ((com.tencent.mm.ak.b.a)localObject).oV(0);
+    localObject = ((com.tencent.mm.ak.b.a)localObject).aDS();
     p.g(localObject, "builder.buildInstance()");
-    this.gPp = ((com.tencent.mm.al.b)localObject);
-    localObject = this.gPp.aEE();
+    this.gRX = ((com.tencent.mm.ak.b)localObject);
+    localObject = this.gRX.aEU();
     if (localObject == null)
     {
       paramString = new v("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.GetLiveInfoRequest");
-      AppMethodBeat.o(212171);
+      AppMethodBeat.o(215791);
       throw paramString;
     }
-    this.gPt = ((bdf)localObject);
-    this.gPt.Fsa = paramLong;
-    this.gPt.Fsb = paramString;
-    ad.i("MicroMsg.LiveNetScene.NetSceneGetLiveInfo", "get live info liveId:" + paramLong + ", roomId:" + paramString);
-    AppMethodBeat.o(212171);
+    this.gSb = ((bdv)localObject);
+    this.gSb.FKy = paramLong;
+    this.gSb.FKz = paramString;
+    ae.i("MicroMsg.LiveNetScene.NetSceneGetLiveInfo", "get live info liveId:" + paramLong + ", roomId:" + paramString);
+    AppMethodBeat.o(215791);
   }
   
-  public final buq ans()
+  public final bvk anH()
   {
-    bdg localbdg = this.gPu;
-    if (localbdg != null) {
-      return localbdg.Gbx;
+    bdw localbdw = this.gSc;
+    if (localbdw != null) {
+      return localbdw.Gue;
     }
     return null;
   }
   
   public final int doScene(e parame, f paramf)
   {
-    AppMethodBeat.i(212169);
-    ad.i("MicroMsg.LiveNetScene.NetSceneGetLiveInfo", "doScene");
+    AppMethodBeat.i(215789);
+    ae.i("MicroMsg.LiveNetScene.NetSceneGetLiveInfo", "doScene");
     this.callback = paramf;
-    int i = dispatch(parame, (com.tencent.mm.network.q)this.gPp, (k)this);
-    AppMethodBeat.o(212169);
+    int i = dispatch(parame, (q)this.gRX, (k)this);
+    AppMethodBeat.o(215789);
     return i;
   }
   
@@ -92,30 +94,30 @@ public final class b
     return 3806;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, com.tencent.mm.network.q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(212170);
-    paramArrayOfByte = new StringBuilder("onGYNetEnd, errType:").append(paramInt2).append(", errCode:").append(paramInt3).append(", isForCheck:").append(this.gPv).append(", LiveAnchorTRTCCore.hasInstance:");
-    Object localObject1 = com.tencent.mm.live.core.core.a.b.gHl;
-    paramArrayOfByte = paramArrayOfByte.append(com.tencent.mm.live.core.core.a.b.a.alz()).append(" LiveVisitorTRTCCore.hasInstance:");
-    localObject1 = com.tencent.mm.live.core.core.c.b.gKd;
-    ad.i("MicroMsg.LiveNetScene.NetSceneGetLiveInfo", com.tencent.mm.live.core.core.c.b.a.alz());
+    AppMethodBeat.i(215790);
+    paramArrayOfByte = new StringBuilder("onGYNetEnd, errType:").append(paramInt2).append(", errCode:").append(paramInt3).append(", isForCheck:").append(this.gSd).append(", LiveAnchorTRTCCore.hasInstance:");
+    Object localObject1 = com.tencent.mm.live.core.core.a.b.gJU;
+    paramArrayOfByte = paramArrayOfByte.append(com.tencent.mm.live.core.core.a.b.a.alO()).append(" LiveVisitorTRTCCore.hasInstance:");
+    localObject1 = com.tencent.mm.live.core.core.c.b.gMM;
+    ae.i("MicroMsg.LiveNetScene.NetSceneGetLiveInfo", com.tencent.mm.live.core.core.c.b.a.alO());
     if (paramq == null)
     {
       paramString = new v("null cannot be cast to non-null type com.tencent.mm.modelbase.CommReqResp");
-      AppMethodBeat.o(212170);
+      AppMethodBeat.o(215790);
       throw paramString;
     }
-    paramq = ((com.tencent.mm.al.b)paramq).aEF();
+    paramq = ((com.tencent.mm.ak.b)paramq).aEV();
     if (paramq == null)
     {
       paramString = new v("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.GetLiveInfoResponse");
-      AppMethodBeat.o(212170);
+      AppMethodBeat.o(215790);
       throw paramString;
     }
-    this.gPu = ((bdg)paramq);
+    this.gSc = ((bdw)paramq);
     if ((paramInt2 != 0) || (paramInt3 != 0)) {
-      ad.e("MicroMsg.LiveNetScene.NetSceneGetLiveInfo", "onGYNetEnd error");
+      ae.e("MicroMsg.LiveNetScene.NetSceneGetLiveInfo", "onGYNetEnd error");
     }
     for (;;)
     {
@@ -124,22 +126,22 @@ public final class b
         break;
       }
       paramq.onSceneEnd(paramInt2, paramInt3, paramString, (n)this);
-      AppMethodBeat.o(212170);
+      AppMethodBeat.o(215790);
       return;
-      if (!this.gPv)
+      if (!this.gSd)
       {
-        paramq = com.tencent.mm.live.core.core.c.b.gKd;
-        if (!com.tencent.mm.live.core.core.c.b.a.alz())
+        paramq = com.tencent.mm.live.core.core.c.b.gMM;
+        if (!com.tencent.mm.live.core.core.c.b.a.alO())
         {
-          paramq = com.tencent.mm.live.core.core.a.b.gHl;
-          if (!com.tencent.mm.live.core.core.a.b.a.alz()) {}
+          paramq = com.tencent.mm.live.core.core.a.b.gJU;
+          if (!com.tencent.mm.live.core.core.a.b.a.alO()) {}
         }
         else
         {
-          paramq = ans();
+          paramq = anH();
           if (paramq != null)
           {
-            paramArrayOfByte = paramq.GOG;
+            paramArrayOfByte = paramq.Hig;
             localObject1 = (Collection)paramArrayOfByte;
             if ((localObject1 == null) || (((Collection)localObject1).isEmpty())) {}
             for (paramInt1 = 1; paramInt1 == 0; paramInt1 = 0)
@@ -148,28 +150,28 @@ public final class b
               while (((Iterator)localObject1).hasNext())
               {
                 String str = (String)((Iterator)localObject1).next();
-                paramInt1 = com.tencent.mm.model.q.yS(str);
-                Object localObject2 = g.gOr;
-                if (g.ano().get(str) == null)
+                paramInt1 = r.zC(str);
+                Object localObject2 = g.gQZ;
+                if (g.anE().get(str) == null)
                 {
-                  localObject2 = g.gOr;
-                  localObject2 = (Map)g.ano();
+                  localObject2 = g.gQZ;
+                  localObject2 = (Map)g.anE();
                   p.g(str, "it");
                   ((Map)localObject2).put(str, new o(new ArrayList(), Integer.valueOf(paramInt1)));
                 }
               }
             }
-            ad.i("MicroMsg.LiveNetScene.NetSceneGetLiveInfo", "roomList:".concat(String.valueOf(paramArrayOfByte)));
-            paramArrayOfByte = g.gOr;
+            ae.i("MicroMsg.LiveNetScene.NetSceneGetLiveInfo", "roomList:".concat(String.valueOf(paramArrayOfByte)));
+            paramArrayOfByte = g.gQZ;
             g.a(paramq);
           }
         }
       }
     }
-    AppMethodBeat.o(212170);
+    AppMethodBeat.o(215790);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/live/model/cgi/NetSceneGetLiveInfo$Companion;", "", "()V", "TAG", "", "plugin-logic_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/live/model/cgi/NetSceneGetLiveInfo$Companion;", "", "()V", "TAG", "", "plugin-logic_release"})
   public static final class a {}
 }
 

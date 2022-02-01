@@ -21,7 +21,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cc.a;
+import com.tencent.mm.cb.a;
 import com.tencent.mm.plugin.appbrand.appcache.j.a;
 import com.tencent.mm.plugin.appbrand.appusage.LocalUsageInfo;
 import com.tencent.mm.plugin.appbrand.widget.desktop.b.g;
@@ -31,8 +31,8 @@ import com.tencent.mm.plugin.appbrand.widget.desktop.b.k.a;
 import com.tencent.mm.plugin.appbrand.widget.desktop.b.l;
 import com.tencent.mm.plugin.appbrand.widget.desktop.b.m;
 import com.tencent.mm.plugin.appbrand.widget.header.HeaderContainer;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.z;
 import java.util.List;
 
@@ -40,19 +40,19 @@ public class AppBrandDesktopDragView
   extends DragFeatureView
 {
   private int aYS;
-  private ValueAnimator cPJ;
-  private List mHf;
-  private HeaderContainer mUr;
-  private List mWq;
-  private int mWr;
-  private boolean mWs;
-  private boolean mWt;
-  private b mWu;
-  private int mWv;
-  private boolean mWw;
-  private boolean mWx;
-  private a mWy;
-  private f mWz;
+  private ValueAnimator cQt;
+  private List mMj;
+  private HeaderContainer mZy;
+  private b nbA;
+  private int nbB;
+  private boolean nbC;
+  private boolean nbD;
+  private a nbE;
+  private f nbF;
+  private List nbw;
+  private int nbx;
+  private boolean nby;
+  private boolean nbz;
   private int paddingLeft;
   private int paddingTop;
   
@@ -60,15 +60,15 @@ public class AppBrandDesktopDragView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(49501);
-    this.mWr = 0;
-    this.mWs = false;
-    this.mWt = false;
-    this.mWu = null;
-    this.mWv = 0;
+    this.nbx = 0;
+    this.nby = false;
+    this.nbz = false;
+    this.nbA = null;
+    this.nbB = 0;
     this.paddingLeft = 0;
     this.paddingTop = 0;
-    this.mWw = false;
-    this.mWx = false;
+    this.nbC = false;
+    this.nbD = false;
     this.aYS = 0;
     init();
     AppMethodBeat.o(49501);
@@ -78,37 +78,37 @@ public class AppBrandDesktopDragView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(49502);
-    this.mWr = 0;
-    this.mWs = false;
-    this.mWt = false;
-    this.mWu = null;
-    this.mWv = 0;
+    this.nbx = 0;
+    this.nby = false;
+    this.nbz = false;
+    this.nbA = null;
+    this.nbB = 0;
     this.paddingLeft = 0;
     this.paddingTop = 0;
-    this.mWw = false;
-    this.mWx = false;
+    this.nbC = false;
+    this.nbD = false;
     this.aYS = 0;
     init();
     AppMethodBeat.o(49502);
   }
   
-  private int cJ(Object paramObject)
+  private int cK(Object paramObject)
   {
     AppMethodBeat.i(49508);
     int i;
-    if (this.mWs) {
-      if ((this.mWy != null) && (this.mWy.bCS() - 1 >= b.bcu())) {
+    if (this.nby) {
+      if ((this.nbE != null) && (this.nbE.bDK() - 1 >= b.bcZ())) {
         i = 1;
       }
     }
     while (i != 0)
     {
-      ad.i("MicroMsg.AppBrandDesktopDragView", "alvinluo checkCanInsert current: %d, over limit: %d", new Object[] { Integer.valueOf(this.mWy.bCS()), Integer.valueOf(b.bcu()) });
+      ae.i("MicroMsg.AppBrandDesktopDragView", "alvinluo checkCanInsert current: %d, over limit: %d", new Object[] { Integer.valueOf(this.nbE.bDK()), Integer.valueOf(b.bcZ()) });
       AppMethodBeat.o(49508);
       return 2;
       i = 0;
       continue;
-      if ((this.mWy != null) && (this.mWy.bCS() >= b.bcu())) {
+      if ((this.nbE != null) && (this.nbE.bDK() >= b.bcZ())) {
         i = 1;
       } else {
         i = 0;
@@ -117,11 +117,11 @@ public class AppBrandDesktopDragView
     if ((paramObject instanceof AppBrandDesktopView.c))
     {
       paramObject = (AppBrandDesktopView.c)paramObject;
-      if (paramObject.mXW != null)
+      if (paramObject.ndd != null)
       {
-        if (j.a.rQ(paramObject.mXW.hQh))
+        if (j.a.rT(paramObject.ndd.hSZ))
         {
-          if (paramObject.mXW.jQb <= System.currentTimeMillis() / 1000L)
+          if (paramObject.ndd.jTt <= System.currentTimeMillis() / 1000L)
           {
             AppMethodBeat.o(49508);
             return 0;
@@ -140,7 +140,7 @@ public class AppBrandDesktopDragView
   private float getOffsetX()
   {
     AppMethodBeat.i(49511);
-    float f2 = d.dX(getContext());
+    float f2 = d.eb(getContext());
     float f1 = this.aYS / 2;
     f2 /= 2.0F;
     float f3 = this.paddingLeft;
@@ -151,7 +151,7 @@ public class AppBrandDesktopDragView
   private float getOffsetY()
   {
     AppMethodBeat.i(49512);
-    float f = -(a.fromDPToPix(getContext(), 32) + (d.ea(getContext()) * 1.5F - d.ea(getContext())) / 2.0F);
+    float f = -(a.fromDPToPix(getContext(), 32) + (d.ee(getContext()) * 1.5F - d.ee(getContext())) / 2.0F);
     AppMethodBeat.o(49512);
     return f;
   }
@@ -171,7 +171,7 @@ public class AppBrandDesktopDragView
       AppMethodBeat.o(49505);
       return;
     }
-    if ((paramBoolean) && (this.mWx))
+    if ((paramBoolean) && (this.nbD))
     {
       AppMethodBeat.o(49505);
       return;
@@ -181,14 +181,14 @@ public class AppBrandDesktopDragView
       AppMethodBeat.o(49505);
       return;
     }
-    if ((!paramBoolean) && (this.mWw))
+    if ((!paramBoolean) && (this.nbC))
     {
       AppMethodBeat.o(49505);
       return;
     }
     if (paramBoolean)
     {
-      this.mWx = true;
+      this.nbD = true;
       paramView.setScaleX(0.1F);
       paramView.setScaleY(0.1F);
       paramView.setVisibility(0);
@@ -215,7 +215,7 @@ public class AppBrandDesktopDragView
       AppMethodBeat.o(49505);
       return;
     }
-    this.mWw = true;
+    this.nbC = true;
     paramView.setScaleX(1.0F);
     paramView.setScaleY(1.0F);
     paramView.setVisibility(0);
@@ -249,8 +249,8 @@ public class AppBrandDesktopDragView
     AppMethodBeat.i(49504);
     if ((paramw != null) && (paramw.auy == 2))
     {
-      this.mWs = false;
-      paramw = new k(this, this.mWq, this.mHf, new k.a()
+      this.nby = false;
+      paramw = new k(this, this.nbw, this.mMj, new k.a()
       {
         public final boolean E(Object paramAnonymousObject1, Object paramAnonymousObject2)
         {
@@ -264,7 +264,7 @@ public class AppBrandDesktopDragView
           {
             paramAnonymousObject2 = (AppBrandDesktopView.c)paramAnonymousObject2;
             paramAnonymousObject1 = (AppBrandDesktopView.c)paramAnonymousObject1;
-            if ((paramAnonymousObject2.mXW != null) && (paramAnonymousObject1.mXW != null) && (!bt.isNullOrNil(paramAnonymousObject2.mXW.username)) && (!bt.isNullOrNil(paramAnonymousObject1.mXW.username)) && (paramAnonymousObject1.mXW.f(paramAnonymousObject2.mXW))) {}
+            if ((paramAnonymousObject2.ndd != null) && (paramAnonymousObject1.ndd != null) && (!bu.isNullOrNil(paramAnonymousObject2.ndd.username)) && (!bu.isNullOrNil(paramAnonymousObject1.ndd.username)) && (paramAnonymousObject1.ndd.f(paramAnonymousObject2.ndd))) {}
             for (int i = 1; i != 0; i = 0)
             {
               AppMethodBeat.o(49481);
@@ -275,7 +275,7 @@ public class AppBrandDesktopDragView
           return false;
         }
         
-        public final float bAn()
+        public final float bBi()
         {
           AppMethodBeat.i(49477);
           float f = AppBrandDesktopDragView.a(AppBrandDesktopDragView.this);
@@ -283,7 +283,7 @@ public class AppBrandDesktopDragView
           return f;
         }
         
-        public final float bAo()
+        public final float bBj()
         {
           AppMethodBeat.i(49478);
           float f = AppBrandDesktopDragView.b(AppBrandDesktopDragView.this);
@@ -291,30 +291,30 @@ public class AppBrandDesktopDragView
           return f;
         }
         
-        public final void bCQ()
+        public final void bDI()
         {
           AppMethodBeat.i(49479);
-          ad.d("MicroMsg.AppBrandDesktopDragView", "alvinluo onInsert");
+          ae.d("MicroMsg.AppBrandDesktopDragView", "alvinluo onInsert");
           AppBrandDesktopDragView.a(AppBrandDesktopDragView.this, true);
           AppMethodBeat.o(49479);
         }
         
-        public final void bCR()
+        public final void bDJ()
         {
           AppMethodBeat.i(49480);
-          ad.d("MicroMsg.AppBrandDesktopDragView", "alvinluo onCancelInsert");
+          ae.d("MicroMsg.AppBrandDesktopDragView", "alvinluo onCancelInsert");
           AppBrandDesktopDragView.a(AppBrandDesktopDragView.this, false);
           AppMethodBeat.o(49480);
         }
         
-        public final Object cC(Object paramAnonymousObject)
+        public final Object cD(Object paramAnonymousObject)
         {
           AppMethodBeat.i(49475);
           if ((paramAnonymousObject instanceof AppBrandDesktopView.c))
           {
             paramAnonymousObject = (AppBrandDesktopView.c)paramAnonymousObject;
             AppBrandDesktopView.c localc = new AppBrandDesktopView.c(1);
-            localc.mXW = paramAnonymousObject.mXW;
+            localc.ndd = paramAnonymousObject.ndd;
             localc.position = paramAnonymousObject.position;
             AppMethodBeat.o(49475);
             return localc;
@@ -323,7 +323,7 @@ public class AppBrandDesktopDragView
           return paramAnonymousObject;
         }
         
-        public final View cQ(View paramAnonymousView)
+        public final View cR(View paramAnonymousView)
         {
           AppMethodBeat.i(49476);
           paramAnonymousView = paramAnonymousView.findViewById(2131300892);
@@ -342,8 +342,8 @@ public class AppBrandDesktopDragView
       j = this.paddingLeft;
       paramw.paddingTop = i;
       paramw.paddingLeft = j;
-      paramw.mYA = getRecyclerScrollComputer();
-      paramw.nay = new g()
+      paramw.ndH = getRecyclerScrollComputer();
+      paramw.nfG = new g()
       {
         public final boolean O(RecyclerView.w paramAnonymousw)
         {
@@ -375,7 +375,7 @@ public class AppBrandDesktopDragView
           AppMethodBeat.i(49486);
           if (AppBrandDesktopDragView.a(AppBrandDesktopDragView.this, paramAnonymousObject) != 0)
           {
-            ad.e("MicroMsg.AppBrandDesktopDragView", "alvinluo checkCanInsert can't insert");
+            ae.e("MicroMsg.AppBrandDesktopDragView", "alvinluo checkCanInsert can't insert");
             AppMethodBeat.o(49486);
             return false;
           }
@@ -392,25 +392,25 @@ public class AppBrandDesktopDragView
         {
           AppMethodBeat.i(49485);
           if ((paramAnonymousBoolean) && (AppBrandDesktopDragView.c(AppBrandDesktopDragView.this) != null)) {
-            AppBrandDesktopDragView.c(AppBrandDesktopDragView.this).cK(paramAnonymousObject);
+            AppBrandDesktopDragView.c(AppBrandDesktopDragView.this).cL(paramAnonymousObject);
           }
           AppMethodBeat.o(49485);
         }
         
-        public final void cB(Object paramAnonymousObject)
+        public final void cC(Object paramAnonymousObject)
         {
           AppMethodBeat.i(49487);
           if ((paramAnonymousObject instanceof AppBrandDesktopView.c))
           {
             ((AppBrandDesktopView.c)paramAnonymousObject).type = 2;
             if (AppBrandDesktopDragView.c(AppBrandDesktopDragView.this) != null) {
-              AppBrandDesktopDragView.c(AppBrandDesktopDragView.this).cM(paramAnonymousObject);
+              AppBrandDesktopDragView.c(AppBrandDesktopDragView.this).cN(paramAnonymousObject);
             }
           }
           AppMethodBeat.o(49487);
         }
         
-        public final void cP(View paramAnonymousView)
+        public final void cQ(View paramAnonymousView)
         {
           AppMethodBeat.i(49484);
           if (paramAnonymousView != null)
@@ -443,10 +443,10 @@ public class AppBrandDesktopDragView
       AppMethodBeat.o(49504);
       return paramw;
     }
-    this.mWs = true;
-    paramw = new l(this, this.mHf, new m()
+    this.nby = true;
+    paramw = new l(this, this.mMj, new m()
     {
-      public final float bAn()
+      public final float bBi()
       {
         AppMethodBeat.i(49490);
         float f = AppBrandDesktopDragView.a(AppBrandDesktopDragView.this);
@@ -454,7 +454,7 @@ public class AppBrandDesktopDragView
         return f;
       }
       
-      public final float bAo()
+      public final float bBj()
       {
         AppMethodBeat.i(49491);
         float f = AppBrandDesktopDragView.b(AppBrandDesktopDragView.this);
@@ -462,14 +462,14 @@ public class AppBrandDesktopDragView
         return f;
       }
       
-      public final Object cC(Object paramAnonymousObject)
+      public final Object cD(Object paramAnonymousObject)
       {
         AppMethodBeat.i(49488);
         if ((paramAnonymousObject instanceof AppBrandDesktopView.c))
         {
           paramAnonymousObject = (AppBrandDesktopView.c)paramAnonymousObject;
           AppBrandDesktopView.c localc = new AppBrandDesktopView.c(1);
-          localc.mXW = paramAnonymousObject.mXW;
+          localc.ndd = paramAnonymousObject.ndd;
           AppMethodBeat.o(49488);
           return localc;
         }
@@ -477,7 +477,7 @@ public class AppBrandDesktopDragView
         return paramAnonymousObject;
       }
       
-      public final View cQ(View paramAnonymousView)
+      public final View cR(View paramAnonymousView)
       {
         AppMethodBeat.i(49489);
         paramAnonymousView = paramAnonymousView.findViewById(2131300892);
@@ -492,8 +492,8 @@ public class AppBrandDesktopDragView
         }
       }
     });
-    paramw.mYA = getRecyclerScrollComputer();
-    paramw.nay = new g()
+    paramw.ndH = getRecyclerScrollComputer();
+    paramw.nfG = new g()
     {
       public final boolean O(RecyclerView.w paramAnonymousw)
       {
@@ -521,16 +521,16 @@ public class AppBrandDesktopDragView
         AppMethodBeat.o(49493);
       }
       
-      public final void cB(Object paramAnonymousObject)
+      public final void cC(Object paramAnonymousObject)
       {
         AppMethodBeat.i(49494);
         if (((paramAnonymousObject instanceof AppBrandDesktopView.c)) && (AppBrandDesktopDragView.c(AppBrandDesktopDragView.this) != null)) {
-          AppBrandDesktopDragView.c(AppBrandDesktopDragView.this).cL(paramAnonymousObject);
+          AppBrandDesktopDragView.c(AppBrandDesktopDragView.this).cM(paramAnonymousObject);
         }
         AppMethodBeat.o(49494);
       }
       
-      public final void cP(View paramAnonymousView) {}
+      public final void cQ(View paramAnonymousView) {}
       
       public final View e(RecyclerView paramAnonymousRecyclerView, RecyclerView.w paramAnonymousw)
       {
@@ -551,10 +551,10 @@ public class AppBrandDesktopDragView
   protected final View a(f paramf)
   {
     AppMethodBeat.i(49510);
-    View localView1 = z.jO(getContext()).inflate(2131494553, null, false);
+    View localView1 = z.jV(getContext()).inflate(2131494553, null, false);
     localView1.setLayoutParams(new RecyclerView.LayoutParams(-2, -2));
-    this.mWz = new f(localView1);
-    f localf = this.mWz;
+    this.nbF = new f(localView1);
+    f localf = this.nbF;
     View localView2 = paramf.auu;
     localView1 = localf.auu;
     localView1.setScaleX(1.0F);
@@ -563,34 +563,34 @@ public class AppBrandDesktopDragView
     localView1.setVisibility(0);
     int[] arrayOfInt = new int[2];
     localView2.getLocationOnScreen(arrayOfInt);
-    localf.lZa.setImageDrawable(paramf.lZa.getDrawable());
-    localf.lZa.setBackground(paramf.lZa.getBackground());
-    localf.mYj.setText(paramf.mYj.getText());
-    localf.mYj.setVisibility(paramf.mYj.getVisibility());
-    localf.mYk.setVisibility(4);
-    float f1 = d.ea(getContext());
+    localf.mdt.setImageDrawable(paramf.mdt.getDrawable());
+    localf.mdt.setBackground(paramf.mdt.getBackground());
+    localf.ndq.setText(paramf.ndq.getText());
+    localf.ndq.setVisibility(paramf.ndq.getVisibility());
+    localf.ndr.setVisibility(4);
+    float f1 = d.ee(getContext());
     float f2 = f1 * 1.5F + a.fromDPToPix(getContext(), 8) * 2;
-    ad.i("MicroMsg.AppBrandDesktopDragView", "alvinluo fillFloatView iconLayout: %f", new Object[] { Float.valueOf(f2) });
+    ae.i("MicroMsg.AppBrandDesktopDragView", "alvinluo fillFloatView iconLayout: %f", new Object[] { Float.valueOf(f2) });
     localView1.findViewById(2131300899).getLayoutParams().height = ((int)f2);
-    localf.mYi.getLayoutParams().height = ((int)f2);
-    localf.mYi.getLayoutParams().width = ((int)f1 + (int)(a.ay(getContext(), 2131165568) * 2 * d.eb(getContext())));
-    localf.lZa.getLayoutParams().width = ((int)f1);
-    localf.lZa.getLayoutParams().height = ((int)f1);
-    localf.mYh.getLayoutParams().width = ((int)f1);
-    localf.mYh.getLayoutParams().height = ((int)f1);
-    paramf = localf.mYk.getLayoutParams();
+    localf.ndp.getLayoutParams().height = ((int)f2);
+    localf.ndp.getLayoutParams().width = ((int)f1 + (int)(a.ay(getContext(), 2131165568) * 2 * d.ef(getContext())));
+    localf.mdt.getLayoutParams().width = ((int)f1);
+    localf.mdt.getLayoutParams().height = ((int)f1);
+    localf.ndo.getLayoutParams().width = ((int)f1);
+    localf.ndo.getLayoutParams().height = ((int)f1);
+    paramf = localf.ndr.getLayoutParams();
     if ((paramf instanceof RelativeLayout.LayoutParams))
     {
       ((RelativeLayout.LayoutParams)paramf).topMargin = (a.fromDPToPix(getContext(), 6) + (int)(f1 * 0.5F / 2.0F));
-      paramf.width = ((int)(getContext().getResources().getDimensionPixelSize(2131165480) * d.eb(getContext())));
-      paramf.height = ((int)(getContext().getResources().getDimensionPixelSize(2131165480) * d.eb(getContext())));
+      paramf.width = ((int)(getContext().getResources().getDimensionPixelSize(2131165480) * d.ef(getContext())));
+      paramf.height = ((int)(getContext().getResources().getDimensionPixelSize(2131165480) * d.ef(getContext())));
     }
     float f3 = (f1 * 1.5F - f1) / 2.0F;
     f2 = arrayOfInt[0] + getOffsetX();
     f3 = arrayOfInt[1] + this.paddingTop - f3 - a.fromDPToPix(getContext(), 48);
     localView1.findViewById(2131296835).setVisibility(4);
     localView1.findViewById(2131300892).animate().alpha(0.5F).setDuration(300L).setListener(null).start();
-    gB(false);
+    gA(false);
     localView1.findViewById(2131300892).animate().scaleX(1.5F).scaleY(1.5F).setDuration(300L).setListener(new Animator.AnimatorListener()
     {
       public final void onAnimationCancel(Animator paramAnonymousAnimator) {}
@@ -598,7 +598,7 @@ public class AppBrandDesktopDragView
       public final void onAnimationEnd(Animator paramAnonymousAnimator)
       {
         AppMethodBeat.i(49499);
-        AppBrandDesktopDragView.this.gB(true);
+        AppBrandDesktopDragView.this.gA(true);
         AppMethodBeat.o(49499);
       }
       
@@ -607,13 +607,13 @@ public class AppBrandDesktopDragView
       public final void onAnimationStart(Animator paramAnonymousAnimator) {}
     }).start();
     paramf = (ImageView)localView1.findViewById(2131305201);
-    paramf.getLayoutParams().height = ((int)(a.fromDPToPix(getContext(), 24) * d.eb(getContext())));
-    paramf.getLayoutParams().width = ((int)(a.fromDPToPix(getContext(), 24) * d.eb(getContext())));
+    paramf.getLayoutParams().height = ((int)(a.fromDPToPix(getContext(), 24) * d.ef(getContext())));
+    paramf.getLayoutParams().width = ((int)(a.fromDPToPix(getContext(), 24) * d.ef(getContext())));
     paramf.setTranslationY(-f1 * 0.5F / 2.0F);
     paramf.setTranslationX(f1 * 0.5F / 2.0F);
     localView1.setTranslationX(f2);
     localView1.setTranslationY(f3);
-    ad.i("MicroMsg.AppBrandDesktopDragView", "alvinluo fillFloatView offsetX: %f, transX: %f, transY: %f", new Object[] { Float.valueOf(getOffsetX()), Float.valueOf(f2), Float.valueOf(f3) });
+    ae.i("MicroMsg.AppBrandDesktopDragView", "alvinluo fillFloatView offsetX: %f, transX: %f, transY: %f", new Object[] { Float.valueOf(getOffsetX()), Float.valueOf(f2), Float.valueOf(f3) });
     AppMethodBeat.o(49510);
     return localView1;
   }
@@ -708,7 +708,7 @@ public class AppBrandDesktopDragView
         while (i >= 0)
         {
           localObject1 = getRecyclerView().bh(getRecyclerView().getChildAt(i));
-          if (this.mWs)
+          if (this.nby)
           {
             if (((RecyclerView.w)localObject1).auy == 1)
             {
@@ -733,37 +733,37 @@ public class AppBrandDesktopDragView
   {
     AppMethodBeat.i(49507);
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    getGlobalVisibleRect(this.mYt);
-    this.mYt.set(this.mYt.left, this.mYt.bottom - this.mYn - (int)(getContext().getResources().getDimensionPixelSize(2131166416) * 1.0F) - 40, this.mYt.right, this.mYt.bottom - this.mYn);
-    ad.i("MicroMsg.AppBrandDesktopDragView", "alvinluo bottomRect: %s", new Object[] { this.mYt });
-    getRecyclerView().getGlobalVisibleRect(this.mYu);
-    this.mYu.set(this.mYu.left, 0, this.mYu.right, this.mYu.top + this.mYn);
+    getGlobalVisibleRect(this.ndA);
+    this.ndA.set(this.ndA.left, this.ndA.bottom - this.ndu - (int)(getContext().getResources().getDimensionPixelSize(2131166416) * 1.0F) - 40, this.ndA.right, this.ndA.bottom - this.ndu);
+    ae.i("MicroMsg.AppBrandDesktopDragView", "alvinluo bottomRect: %s", new Object[] { this.ndA });
+    getRecyclerView().getGlobalVisibleRect(this.ndB);
+    this.ndB.set(this.ndB.left, 0, this.ndB.right, this.ndB.top + this.ndu);
     AppMethodBeat.o(49507);
   }
   
   public void setAppBrandCounter(a parama)
   {
-    this.mWy = parama;
+    this.nbE = parama;
   }
   
   public void setCollectionCallback(b paramb)
   {
-    this.mWu = paramb;
+    this.nbA = paramb;
   }
   
   public void setCollectionStartPosition(int paramInt)
   {
-    this.mWr = paramInt;
+    this.nbx = paramInt;
   }
   
   public void setCopyList(List paramList)
   {
-    this.mWq = paramList;
+    this.nbw = paramList;
   }
   
   public void setHeaderContainer(HeaderContainer paramHeaderContainer)
   {
-    this.mUr = paramHeaderContainer;
+    this.mZy = paramHeaderContainer;
   }
   
   public void setItemPadding(int paramInt)
@@ -773,7 +773,7 @@ public class AppBrandDesktopDragView
   
   public void setList(List paramList)
   {
-    this.mHf = paramList;
+    this.mMj = paramList;
   }
   
   protected void setRubbishViewVisible(final int paramInt)
@@ -797,13 +797,13 @@ public class AppBrandDesktopDragView
       if (bool) {}
       for (paramInt = 0;; paramInt = (int)f)
       {
-        ad.v("MicroMsg.AppBrandDesktopDragView", "alvinluo transBackFooterAnim isShow: %b, offset: %f, extraBottomHeight: %d", new Object[] { Boolean.valueOf(bool), Float.valueOf(f), Integer.valueOf(paramInt) });
-        this.cPJ = ValueAnimator.ofPropertyValuesHolder(new PropertyValuesHolder[] { PropertyValuesHolder.ofFloat("transY", new float[] { 0.0F, f }) });
-        final int i = this.mUr.getBackUpFooterRect().top;
-        this.cPJ.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
+        ae.v("MicroMsg.AppBrandDesktopDragView", "alvinluo transBackFooterAnim isShow: %b, offset: %f, extraBottomHeight: %d", new Object[] { Boolean.valueOf(bool), Float.valueOf(f), Integer.valueOf(paramInt) });
+        this.cQt = ValueAnimator.ofPropertyValuesHolder(new PropertyValuesHolder[] { PropertyValuesHolder.ofFloat("transY", new float[] { 0.0F, f }) });
+        final int i = this.mZy.getBackUpFooterRect().top;
+        this.cQt.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
         {
-          float mWC = 0.0F;
-          float mWD = 0.0F;
+          float nbI = 0.0F;
+          float nbJ = 0.0F;
           
           public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
           {
@@ -811,12 +811,12 @@ public class AppBrandDesktopDragView
             try
             {
               float f = ((Float)paramAnonymousValueAnimator.getAnimatedValue("transY")).floatValue();
-              this.mWD += f - this.mWC;
+              this.nbJ += f - this.nbI;
               AppBrandDesktopDragView.f(AppBrandDesktopDragView.this).getBackUpFooterRect().top = ((int)(i + f));
-              ad.v("MicroMsg.AppBrandDesktopDragView", "alvinluo transBackFooterAnim totalValue: %f, top: %d", new Object[] { Float.valueOf(this.mWD), Integer.valueOf(AppBrandDesktopDragView.f(AppBrandDesktopDragView.this).getBackUpFooterRect().top) });
-              AppBrandDesktopDragView.f(AppBrandDesktopDragView.this).setExtraBottomHeight(paramInt - (int)this.mWD);
+              ae.v("MicroMsg.AppBrandDesktopDragView", "alvinluo transBackFooterAnim totalValue: %f, top: %d", new Object[] { Float.valueOf(this.nbJ), Integer.valueOf(AppBrandDesktopDragView.f(AppBrandDesktopDragView.this).getBackUpFooterRect().top) });
+              AppBrandDesktopDragView.f(AppBrandDesktopDragView.this).setExtraBottomHeight(paramInt - (int)this.nbJ);
               AppBrandDesktopDragView.f(AppBrandDesktopDragView.this).requestLayout();
-              this.mWC = f;
+              this.nbI = f;
               if (AppBrandDesktopDragView.f(AppBrandDesktopDragView.this).getParent() != null) {
                 ((ViewGroup)AppBrandDesktopDragView.f(AppBrandDesktopDragView.this).getParent()).invalidate();
               }
@@ -829,8 +829,8 @@ public class AppBrandDesktopDragView
             }
           }
         });
-        this.cPJ.setDuration(300L);
-        this.cPJ.start();
+        this.cQt.setDuration(300L);
+        this.cQt.start();
         AppMethodBeat.o(49506);
         return;
         bool = false;
@@ -846,16 +846,16 @@ public class AppBrandDesktopDragView
   
   public static abstract interface a
   {
-    public abstract int bCS();
+    public abstract int bDK();
   }
   
   public static abstract interface b
   {
-    public abstract void cK(Object paramObject);
-    
     public abstract void cL(Object paramObject);
     
     public abstract void cM(Object paramObject);
+    
+    public abstract void cN(Object paramObject);
     
     public abstract void g(int paramInt1, int paramInt2, Object paramObject);
   }

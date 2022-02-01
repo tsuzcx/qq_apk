@@ -15,16 +15,16 @@ public class h
   
   public boolean a()
   {
-    AppMethodBeat.i(187265);
+    AppMethodBeat.i(221394);
     if (this.a != null) {
       e.a().a(null, this.a);
     }
     if (e.a().b() >= 2)
     {
-      AppMethodBeat.o(187265);
+      AppMethodBeat.o(221394);
       return true;
     }
-    AppMethodBeat.o(187265);
+    AppMethodBeat.o(221394);
     return false;
   }
 }

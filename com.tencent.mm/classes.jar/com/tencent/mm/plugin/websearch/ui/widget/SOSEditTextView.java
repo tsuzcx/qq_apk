@@ -13,9 +13,9 @@ import com.tencent.mm.ui.search.FTSEditTextView;
 public class SOSEditTextView
   extends FTSEditTextView
 {
-  private View DDv;
-  private View DDw;
-  private View DDx;
+  private View DVt;
+  private View DVu;
+  private View DVv;
   
   public SOSEditTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -27,10 +27,10 @@ public class SOSEditTextView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public final void eMI()
+  public final void eQt()
   {
     AppMethodBeat.i(116571);
-    getEditText().setOnFocusChangeListener(this.mmc);
+    getEditText().setOnFocusChangeListener(this.mqZ);
     AppMethodBeat.o(116571);
   }
   
@@ -44,9 +44,9 @@ public class SOSEditTextView
   {
     AppMethodBeat.i(116570);
     super.init();
-    this.DDv = findViewById(2131306483);
-    this.DDw = findViewById(2131305721);
-    this.DDx = findViewById(2131304392);
+    this.DVt = findViewById(2131306483);
+    this.DVu = findViewById(2131305721);
+    this.DVv = findViewById(2131304392);
     getEditText().setOnFocusChangeListener(null);
     getEditText().setHintTextColor(getResources().getColor(2131100538));
     getEditText().setTextColor(getResources().getColor(2131100711));
@@ -56,8 +56,8 @@ public class SOSEditTextView
   public void setCancelTextViewClickListener(View.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(116576);
-    if (this.DDw != null) {
-      this.DDw.setOnClickListener(paramOnClickListener);
+    if (this.DVu != null) {
+      this.DVu.setOnClickListener(paramOnClickListener);
     }
     AppMethodBeat.o(116576);
   }
@@ -65,8 +65,8 @@ public class SOSEditTextView
   public void setCancelTextViewVisibile(int paramInt)
   {
     AppMethodBeat.i(116575);
-    if (this.DDw != null) {
-      this.DDw.setVisibility(paramInt);
+    if (this.DVu != null) {
+      this.DVu.setVisibility(paramInt);
     }
     AppMethodBeat.o(116575);
   }
@@ -74,8 +74,8 @@ public class SOSEditTextView
   public void setSearchBarCancelTextContainerVisibile(int paramInt)
   {
     AppMethodBeat.i(116572);
-    if (this.DDx != null) {
-      this.DDx.setVisibility(paramInt);
+    if (this.DVv != null) {
+      this.DVv.setVisibility(paramInt);
     }
     AppMethodBeat.o(116572);
   }
@@ -83,8 +83,8 @@ public class SOSEditTextView
   public void setVoiceBtnClickListener(View.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(116574);
-    if (this.DDv != null) {
-      this.DDv.setOnClickListener(paramOnClickListener);
+    if (this.DVt != null) {
+      this.DVt.setOnClickListener(paramOnClickListener);
     }
     AppMethodBeat.o(116574);
   }
@@ -92,15 +92,15 @@ public class SOSEditTextView
   public void setVoiceImageButtonVisibile(int paramInt)
   {
     AppMethodBeat.i(116573);
-    if (this.DDv != null) {
-      this.DDv.setVisibility(paramInt);
+    if (this.DVt != null) {
+      this.DVt.setVisibility(paramInt);
     }
     AppMethodBeat.o(116573);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.websearch.ui.widget.SOSEditTextView
  * JD-Core Version:    0.7.0.1
  */

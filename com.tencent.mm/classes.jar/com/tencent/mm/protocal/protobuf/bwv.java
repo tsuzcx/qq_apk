@@ -3,71 +3,49 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class bwv
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public int FFN;
-  public int GLq;
-  public int GQN;
-  public int GQO;
-  public String GQP;
-  public int GQQ;
-  public int Scene;
-  public String duW;
-  public String username;
+  public String HjK;
+  public String url;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(147770);
+    AppMethodBeat.i(177341);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.duW != null) {
-        paramVarArgs.d(1, this.duW);
+      if (this.url != null) {
+        paramVarArgs.d(1, this.url);
       }
-      if (this.username != null) {
-        paramVarArgs.d(2, this.username);
+      if (this.HjK != null) {
+        paramVarArgs.d(2, this.HjK);
       }
-      paramVarArgs.aS(3, this.GLq);
-      paramVarArgs.aS(4, this.FFN);
-      paramVarArgs.aS(5, this.Scene);
-      paramVarArgs.aS(6, this.GQN);
-      paramVarArgs.aS(7, this.GQO);
-      if (this.GQP != null) {
-        paramVarArgs.d(8, this.GQP);
-      }
-      paramVarArgs.aS(9, this.GQQ);
-      AppMethodBeat.o(147770);
+      AppMethodBeat.o(177341);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.duW == null) {
-        break label598;
+      if (this.url == null) {
+        break label274;
       }
     }
-    label598:
-    for (paramInt = f.a.a.b.b.a.e(1, this.duW) + 0;; paramInt = 0)
+    label274:
+    for (paramInt = f.a.a.b.b.a.e(1, this.url) + 0;; paramInt = 0)
     {
       int i = paramInt;
-      if (this.username != null) {
-        i = paramInt + f.a.a.b.b.a.e(2, this.username);
+      if (this.HjK != null) {
+        i = paramInt + f.a.a.b.b.a.e(2, this.HjK);
       }
-      i = i + f.a.a.b.b.a.bz(3, this.GLq) + f.a.a.b.b.a.bz(4, this.FFN) + f.a.a.b.b.a.bz(5, this.Scene) + f.a.a.b.b.a.bz(6, this.GQN) + f.a.a.b.b.a.bz(7, this.GQO);
-      paramInt = i;
-      if (this.GQP != null) {
-        paramInt = i + f.a.a.b.b.a.e(8, this.GQP);
-      }
-      i = f.a.a.b.b.a.bz(9, this.GQQ);
-      AppMethodBeat.o(147770);
-      return paramInt + i;
+      AppMethodBeat.o(177341);
+      return i;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
-        AppMethodBeat.o(147770);
+        AppMethodBeat.o(177341);
         return 0;
       }
       if (paramInt == 3)
@@ -77,46 +55,18 @@ public final class bwv
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(147770);
+          AppMethodBeat.o(177341);
           return -1;
         case 1: 
-          localbwv.duW = locala.NPN.readString();
-          AppMethodBeat.o(147770);
-          return 0;
-        case 2: 
-          localbwv.username = locala.NPN.readString();
-          AppMethodBeat.o(147770);
-          return 0;
-        case 3: 
-          localbwv.GLq = locala.NPN.zc();
-          AppMethodBeat.o(147770);
-          return 0;
-        case 4: 
-          localbwv.FFN = locala.NPN.zc();
-          AppMethodBeat.o(147770);
-          return 0;
-        case 5: 
-          localbwv.Scene = locala.NPN.zc();
-          AppMethodBeat.o(147770);
-          return 0;
-        case 6: 
-          localbwv.GQN = locala.NPN.zc();
-          AppMethodBeat.o(147770);
-          return 0;
-        case 7: 
-          localbwv.GQO = locala.NPN.zc();
-          AppMethodBeat.o(147770);
-          return 0;
-        case 8: 
-          localbwv.GQP = locala.NPN.readString();
-          AppMethodBeat.o(147770);
+          localbwv.url = locala.OmT.readString();
+          AppMethodBeat.o(177341);
           return 0;
         }
-        localbwv.GQQ = locala.NPN.zc();
-        AppMethodBeat.o(147770);
+        localbwv.HjK = locala.OmT.readString();
+        AppMethodBeat.o(177341);
         return 0;
       }
-      AppMethodBeat.o(147770);
+      AppMethodBeat.o(177341);
       return -1;
     }
   }

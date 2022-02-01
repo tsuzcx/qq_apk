@@ -5,21 +5,21 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class g
 {
   private int enterScene;
-  private int fFu;
-  private int iVz;
-  int vhg;
+  private int fHy;
+  private int iYs;
+  int vtn;
   
   private g()
   {
     AppMethodBeat.i(56107);
-    this.iVz = b.vhq.ordinal();
+    this.iYs = b.vtx.ordinal();
     AppMethodBeat.o(56107);
   }
   
   private void report()
   {
     AppMethodBeat.i(56111);
-    com.tencent.mm.plugin.report.service.g.yhR.f(17993, new Object[] { Integer.valueOf(this.fFu), Integer.valueOf(this.enterScene), Integer.valueOf(this.iVz), Integer.valueOf(this.vhg) });
+    com.tencent.mm.plugin.report.service.g.yxI.f(17993, new Object[] { Integer.valueOf(this.fHy), Integer.valueOf(this.enterScene), Integer.valueOf(this.iYs), Integer.valueOf(this.vtn) });
     reset();
     AppMethodBeat.o(56111);
   }
@@ -28,16 +28,16 @@ public final class g
   {
     AppMethodBeat.i(56110);
     this.enterScene = 0;
-    this.iVz = b.vhq.ordinal();
-    this.vhg = 0;
-    this.fFu = 0;
+    this.iYs = b.vtx.ordinal();
+    this.vtn = 0;
+    this.fHy = 0;
     AppMethodBeat.o(56110);
   }
   
   public final void a(g.a parama)
   {
     AppMethodBeat.i(56109);
-    this.fFu = parama.ordinal();
+    this.fHy = parama.ordinal();
     report();
     AppMethodBeat.o(56109);
   }
@@ -45,7 +45,7 @@ public final class g
   public final void a(b paramb)
   {
     AppMethodBeat.i(56108);
-    this.iVz = paramb.ordinal();
+    this.iYs = paramb.ordinal();
     AppMethodBeat.o(56108);
   }
   
@@ -72,13 +72,13 @@ public final class g
     static
     {
       AppMethodBeat.i(56105);
-      vhl = new b("UNKNOWN", 0);
-      vhm = new b("SEARCH_LIST", 1);
-      vhn = new b("SEARCH_MAP", 2);
-      vho = new b("DRAG_MAP", 3);
-      vhp = new b("LIST", 4);
-      vhq = new b("DIRECT", 5);
-      vhr = new b[] { vhl, vhm, vhn, vho, vhp, vhq };
+      vts = new b("UNKNOWN", 0);
+      vtt = new b("SEARCH_LIST", 1);
+      vtu = new b("SEARCH_MAP", 2);
+      vtv = new b("DRAG_MAP", 3);
+      vtw = new b("LIST", 4);
+      vtx = new b("DIRECT", 5);
+      vty = new b[] { vts, vtt, vtu, vtv, vtw, vtx };
       AppMethodBeat.o(56105);
     }
     
@@ -87,12 +87,12 @@ public final class g
   
   static final class c
   {
-    static g vhs;
+    static g vtz;
     
     static
     {
       AppMethodBeat.i(56106);
-      vhs = new g((byte)0);
+      vtz = new g((byte)0);
       AppMethodBeat.o(56106);
     }
   }

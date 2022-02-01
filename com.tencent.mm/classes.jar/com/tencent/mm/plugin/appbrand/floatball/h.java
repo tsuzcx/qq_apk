@@ -7,19 +7,18 @@ import android.os.Handler;
 import android.os.Looper;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
 import com.tencent.mm.plugin.appbrand.backgroundrunning.AppBrandBackgroundRunningOperationParcel;
 import com.tencent.mm.plugin.appbrand.backgroundrunning.MMBackgroundRunningOperationParcel;
-import com.tencent.mm.plugin.appbrand.backgroundrunning.g.b;
+import com.tencent.mm.plugin.appbrand.backgroundrunning.f.b;
 import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfig;
 import com.tencent.mm.plugin.appbrand.jsapi.k;
 import com.tencent.mm.plugin.appbrand.jsapi.openvoice.AppBrandVoIP1v1FloatBallEvent;
-import com.tencent.mm.plugin.appbrand.o;
 import com.tencent.mm.plugin.ball.f.c.a;
 import com.tencent.mm.plugin.ball.model.BallInfo;
-import com.tencent.mm.plugin.cloudvoip.cloudvoice.d.p;
 import com.tencent.mm.plugin.cloudvoip.cloudvoice.d.p.d;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.ui.base.t;
 import com.tencent.mm.ui.widget.a.f.a;
 import com.tencent.mm.ui.widget.a.f.c;
@@ -29,115 +28,97 @@ public final class h
   extends com.tencent.mm.plugin.ball.service.f
   implements k
 {
-  private static com.tencent.mm.plugin.ball.c.f kjw;
+  private static com.tencent.mm.plugin.ball.c.f kmM;
   private Handler handler;
-  o jCo;
-  private com.tencent.mm.plugin.appbrand.backgroundrunning.g kjL;
-  private g.b kjM;
-  private final String kjO;
+  com.tencent.mm.plugin.appbrand.p jFm;
+  private com.tencent.mm.plugin.appbrand.backgroundrunning.f knb;
+  private f.b knc;
+  private final String kne;
   
   static
   {
-    AppMethodBeat.i(188214);
-    kjw = new com.tencent.mm.plugin.ball.c.f()
+    AppMethodBeat.i(222340);
+    kmM = new com.tencent.mm.plugin.ball.c.f()
     {
       public final void c(BallInfo paramAnonymousBallInfo)
       {
-        AppMethodBeat.i(188189);
+        AppMethodBeat.i(222315);
         h.g(paramAnonymousBallInfo);
-        AppMethodBeat.o(188189);
+        AppMethodBeat.o(222315);
       }
       
       public final void d(BallInfo paramAnonymousBallInfo)
       {
-        AppMethodBeat.i(188190);
+        AppMethodBeat.i(222316);
         if ((paramAnonymousBallInfo != null) && (paramAnonymousBallInfo.type == 19))
         {
-          ad.i("MicroMsg.AppBrand.AppBrandVoIP1v1FloatBallHelper", "handleBallInfoClicked, appbrand voip float ball");
-          paramAnonymousBallInfo = paramAnonymousBallInfo.ime.getString("appId");
+          ae.i("MicroMsg.AppBrand.AppBrandVoIP1v1FloatBallHelper", "handleBallInfoClicked, appbrand voip float ball");
+          paramAnonymousBallInfo = paramAnonymousBallInfo.ioY.getString("appId");
           AppBrandVoIP1v1FloatBallEvent localAppBrandVoIP1v1FloatBallEvent = new AppBrandVoIP1v1FloatBallEvent();
-          localAppBrandVoIP1v1FloatBallEvent.dyx = 1;
+          localAppBrandVoIP1v1FloatBallEvent.dzC = 1;
           com.tencent.mm.plugin.appbrand.ipc.e.b(paramAnonymousBallInfo, localAppBrandVoIP1v1FloatBallEvent);
         }
-        AppMethodBeat.o(188190);
+        AppMethodBeat.o(222316);
       }
       
       public final void e(BallInfo paramAnonymousBallInfo) {}
       
       public final void h(BallInfo paramAnonymousBallInfo) {}
     };
-    AppMethodBeat.o(188214);
+    AppMethodBeat.o(222340);
   }
   
-  public h(com.tencent.mm.plugin.ball.a.f paramf, o paramo)
+  public h(com.tencent.mm.plugin.ball.a.f paramf, com.tencent.mm.plugin.appbrand.p paramp)
   {
     super(paramf);
-    AppMethodBeat.i(188192);
-    this.kjO = "has_shown_appbrand_voip_1v1_tip";
-    this.kjM = new g.b()
+    AppMethodBeat.i(222318);
+    this.kne = "has_shown_appbrand_voip_1v1_tip";
+    this.knc = new f.b()
     {
       public final void b(AppBrandBackgroundRunningOperationParcel paramAnonymousAppBrandBackgroundRunningOperationParcel)
       {
-        AppMethodBeat.i(188191);
-        if ((paramAnonymousAppBrandBackgroundRunningOperationParcel != null) && (h.g(h.this) != null) && (h.g(h.this).mAppId.equals(paramAnonymousAppBrandBackgroundRunningOperationParcel.appId)) && (h.g(h.this).jwG.dPf == paramAnonymousAppBrandBackgroundRunningOperationParcel.hQh) && (paramAnonymousAppBrandBackgroundRunningOperationParcel.beO == 16) && (paramAnonymousAppBrandBackgroundRunningOperationParcel.dkM == 1)) {
+        AppMethodBeat.i(222317);
+        if ((paramAnonymousAppBrandBackgroundRunningOperationParcel != null) && (h.g(h.this) != null) && (h.g(h.this).mAppId.equals(paramAnonymousAppBrandBackgroundRunningOperationParcel.appId)) && (h.g(h.this).jzC.dQv == paramAnonymousAppBrandBackgroundRunningOperationParcel.hSZ) && (paramAnonymousAppBrandBackgroundRunningOperationParcel.beO == 16) && (paramAnonymousAppBrandBackgroundRunningOperationParcel.dlO == 1)) {
           h.h(h.this);
         }
-        AppMethodBeat.o(188191);
+        AppMethodBeat.o(222317);
       }
     };
-    this.jCo = paramo;
-    paramo.a(this);
-    ad.i("MicroMsg.AppBrand.AppBrandVoIP1v1FloatBallHelper", "create, runtime:%s", new Object[] { Integer.valueOf(paramo.hashCode()) });
-    this.kjL = ((com.tencent.mm.plugin.appbrand.backgroundrunning.g)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.appbrand.backgroundrunning.g.class));
+    this.jFm = paramp;
+    paramp.a(this);
+    ae.i("MicroMsg.AppBrand.AppBrandVoIP1v1FloatBallHelper", "create, runtime:%s", new Object[] { Integer.valueOf(paramp.hashCode()) });
+    this.knb = ((com.tencent.mm.plugin.appbrand.backgroundrunning.f)g.ab(com.tencent.mm.plugin.appbrand.backgroundrunning.f.class));
     this.handler = new Handler(Looper.getMainLooper());
-    AppMethodBeat.o(188192);
+    AppMethodBeat.o(222318);
   }
   
-  public static void bgQ()
+  private void bhA()
   {
-    AppMethodBeat.i(188204);
-    if (com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.ball.c.c.class) != null) {
-      ((com.tencent.mm.plugin.ball.c.c)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.ball.c.c.class)).a(19, kjw);
-    }
-    AppMethodBeat.o(188204);
-  }
-  
-  public static void bgR()
-  {
-    AppMethodBeat.i(188205);
-    if (com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.ball.c.c.class) != null) {
-      ((com.tencent.mm.plugin.ball.c.c)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.ball.c.c.class)).b(19, kjw);
-    }
-    AppMethodBeat.o(188205);
-  }
-  
-  private void bgS()
-  {
-    AppMethodBeat.i(188206);
-    if (com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.appbrand.backgroundrunning.g.class) != null)
+    AppMethodBeat.i(222332);
+    if (g.ab(com.tencent.mm.plugin.appbrand.backgroundrunning.f.class) != null)
     {
       MMBackgroundRunningOperationParcel localMMBackgroundRunningOperationParcel = new MMBackgroundRunningOperationParcel();
-      localMMBackgroundRunningOperationParcel.appId = this.jCo.mAppId;
+      localMMBackgroundRunningOperationParcel.appId = this.jFm.mAppId;
       localMMBackgroundRunningOperationParcel.beO = 16;
-      localMMBackgroundRunningOperationParcel.dkM = 2;
-      ad.i("MicroMsg.AppBrand.AppBrandVoIP1v1FloatBallHelper", "stopVOIP, appId:%s", new Object[] { this.jCo.mAppId });
-      ((com.tencent.mm.plugin.appbrand.backgroundrunning.g)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.appbrand.backgroundrunning.g.class)).a(localMMBackgroundRunningOperationParcel);
+      localMMBackgroundRunningOperationParcel.dlO = 2;
+      ae.i("MicroMsg.AppBrand.AppBrandVoIP1v1FloatBallHelper", "stopVOIP, appId:%s", new Object[] { this.jFm.mAppId });
+      ((com.tencent.mm.plugin.appbrand.backgroundrunning.f)g.ab(com.tencent.mm.plugin.appbrand.backgroundrunning.f.class)).a(localMMBackgroundRunningOperationParcel);
     }
-    AppMethodBeat.o(188206);
+    AppMethodBeat.o(222332);
   }
   
-  private int bgT()
+  private int bhB()
   {
-    AppMethodBeat.i(188207);
-    if (this.jCo != null)
+    AppMethodBeat.i(222333);
+    if (this.jFm != null)
     {
-      Object localObject = p.oXv;
-      if (((p)localObject).oXB == p.d.oZn)
+      Object localObject = com.tencent.mm.plugin.cloudvoip.cloudvoice.d.p.pdY;
+      if (((com.tencent.mm.plugin.cloudvoip.cloudvoice.d.p)localObject).pee == p.d.pfR)
       {
-        localObject = ((p)localObject).oXy;
-        if (((com.tencent.mm.plugin.cloudvoip.cloudvoice.d.e)localObject).oWf != null)
+        localObject = ((com.tencent.mm.plugin.cloudvoip.cloudvoice.d.p)localObject).peb;
+        if (((com.tencent.mm.plugin.cloudvoip.cloudvoice.d.e)localObject).pcI != null)
         {
-          bool = ((com.tencent.mm.plugin.cloudvoip.cloudvoice.d.e)localObject).oWr;
+          bool = ((com.tencent.mm.plugin.cloudvoip.cloudvoice.d.e)localObject).pcU;
           if (bool) {
             break label84;
           }
@@ -146,244 +127,262 @@ public final class h
       label84:
       for (boolean bool = true;; bool = false)
       {
-        ad.i("MicroMsg.AppBrand.AppBrandVoIP1v1FloatBallHelper", "getCurrentVOIPState, enableMic:%s", new Object[] { Boolean.valueOf(bool) });
+        ae.i("MicroMsg.AppBrand.AppBrandVoIP1v1FloatBallHelper", "getCurrentVOIPState, enableMic:%s", new Object[] { Boolean.valueOf(bool) });
         if (!bool) {
           break label89;
         }
-        AppMethodBeat.o(188207);
+        AppMethodBeat.o(222333);
         return 32;
         bool = false;
         break;
       }
       label89:
-      AppMethodBeat.o(188207);
+      AppMethodBeat.o(222333);
       return 64;
     }
-    AppMethodBeat.o(188207);
+    AppMethodBeat.o(222333);
     return 32;
   }
   
-  private void sw(int paramInt)
+  public static void bhy()
   {
-    AppMethodBeat.i(188198);
-    bKG().opType = ya(paramInt);
-    bKC();
-    Point localPoint = this.nGl.getBallPosition();
-    com.tencent.mm.plugin.ball.ui.c.a(this.nHb, localPoint, new com.tencent.mm.plugin.ball.d.a()
+    AppMethodBeat.i(222330);
+    if (g.ab(com.tencent.mm.plugin.ball.c.c.class) != null) {
+      ((com.tencent.mm.plugin.ball.c.c)g.ab(com.tencent.mm.plugin.ball.c.c.class)).a(19, kmM);
+    }
+    AppMethodBeat.o(222330);
+  }
+  
+  public static void bhz()
+  {
+    AppMethodBeat.i(222331);
+    if (g.ab(com.tencent.mm.plugin.ball.c.c.class) != null) {
+      ((com.tencent.mm.plugin.ball.c.c)g.ab(com.tencent.mm.plugin.ball.c.c.class)).b(19, kmM);
+    }
+    AppMethodBeat.o(222331);
+  }
+  
+  private void sC(final int paramInt)
+  {
+    AppMethodBeat.i(222323);
+    if (!com.tencent.mm.compatible.d.b.cc(this.nME.getActivity()))
     {
-      public final void bgH()
+      AppBrandFloatBallPermissionHelper.a(this.nME.getActivity(), 19, new c.a()
       {
-        AppMethodBeat.i(188186);
-        ad.i("MicroMsg.AppBrand.AppBrandVoIP1v1FloatBallHelper", "onCloseInternal, transform to float ball animation cancel");
-        h.d(h.this).gg(true);
-        AppMethodBeat.o(188186);
+        public final void gd(boolean paramAnonymousBoolean)
+        {
+          AppMethodBeat.i(222310);
+          ae.i("MicroMsg.AppBrand.AppBrandVoIP1v1FloatBallHelper", "onCloseAfterCheckingTip, checkFloatBallPermission isOK:%b", new Object[] { Boolean.valueOf(paramAnonymousBoolean) });
+          if (paramAnonymousBoolean)
+          {
+            h.b(h.this, paramInt);
+            AppMethodBeat.o(222310);
+            return;
+          }
+          ae.w("MicroMsg.AppBrand.AppBrandVoIP1v1FloatBallHelper", "onCloseAfterCheckingTip, refuse permission, remove ball and stop voip");
+          h.this.bLx();
+          h.a(h.this);
+          h.b(h.this).ge(true);
+          AppMethodBeat.o(222310);
+        }
+      });
+      AppMethodBeat.o(222323);
+      return;
+    }
+    sz(paramInt);
+    AppMethodBeat.o(222323);
+  }
+  
+  private void sz(int paramInt)
+  {
+    AppMethodBeat.i(222324);
+    bLD().opType = yd(paramInt);
+    bLz();
+    Point localPoint = this.nLM.getBallPosition();
+    com.tencent.mm.plugin.ball.ui.c.a(this.nME, localPoint, new com.tencent.mm.plugin.ball.d.a()
+    {
+      public final void bhp()
+      {
+        AppMethodBeat.i(222312);
+        ae.i("MicroMsg.AppBrand.AppBrandVoIP1v1FloatBallHelper", "onCloseInternal, transform to float ball animation cancel");
+        h.d(h.this).ge(true);
+        AppMethodBeat.o(222312);
       }
       
       public final void onAnimationEnd()
       {
-        AppMethodBeat.i(188185);
-        ad.i("MicroMsg.AppBrand.AppBrandVoIP1v1FloatBallHelper", "onCloseInternal, transform to float ball animation end");
-        h.c(h.this).gg(false);
-        AppMethodBeat.o(188185);
+        AppMethodBeat.i(222311);
+        ae.i("MicroMsg.AppBrand.AppBrandVoIP1v1FloatBallHelper", "onCloseInternal, transform to float ball animation end");
+        h.c(h.this).ge(false);
+        AppMethodBeat.o(222311);
       }
     });
-    AppMethodBeat.o(188198);
-  }
-  
-  private void sz(final int paramInt)
-  {
-    AppMethodBeat.i(188197);
-    if (!com.tencent.mm.compatible.d.b.ca(this.nHb.getActivity()))
-    {
-      AppBrandFloatBallPermissionHelper.a(this.nHb.getActivity(), 19, new c.a()
-      {
-        public final void ge(boolean paramAnonymousBoolean)
-        {
-          AppMethodBeat.i(188184);
-          ad.i("MicroMsg.AppBrand.AppBrandVoIP1v1FloatBallHelper", "onCloseAfterCheckingTip, checkFloatBallPermission isOK:%b", new Object[] { Boolean.valueOf(paramAnonymousBoolean) });
-          if (paramAnonymousBoolean)
-          {
-            h.b(h.this, paramInt);
-            AppMethodBeat.o(188184);
-            return;
-          }
-          ad.w("MicroMsg.AppBrand.AppBrandVoIP1v1FloatBallHelper", "onCloseAfterCheckingTip, refuse permission, remove ball and stop voip");
-          h.this.bKA();
-          h.a(h.this);
-          h.b(h.this).gg(true);
-          AppMethodBeat.o(188184);
-        }
-      });
-      AppMethodBeat.o(188197);
-      return;
-    }
-    sw(paramInt);
-    AppMethodBeat.o(188197);
+    AppMethodBeat.o(222324);
   }
   
   public final void a(Context paramContext, final a parama)
   {
-    AppMethodBeat.i(188196);
+    AppMethodBeat.i(222322);
     f.a locala = new f.a(paramContext);
-    locala.aXO(paramContext.getString(2131756064));
-    locala.EgK = true;
-    locala.afp(2131756065);
+    locala.aZq(paramContext.getString(2131756064));
+    locala.EyN = true;
+    locala.afY(2131756065);
     locala.b(new f.c()
     {
       public final void d(boolean paramAnonymousBoolean, String paramAnonymousString)
       {
-        AppMethodBeat.i(188183);
-        ad.i("MicroMsg.AppBrand.AppBrandVoIP1v1FloatBallHelper", "showVOIPTip, has shown tip");
+        AppMethodBeat.i(222309);
+        ae.i("MicroMsg.AppBrand.AppBrandVoIP1v1FloatBallHelper", "showVOIPTip, has shown tip");
         MMKV.defaultMMKV().encode("has_shown_appbrand_voip_1v1_tip", true);
         if (parama != null) {
-          parama.bgL();
+          parama.bht();
         }
-        AppMethodBeat.o(188183);
+        AppMethodBeat.o(222309);
       }
     });
     locala.show();
-    AppMethodBeat.o(188196);
+    AppMethodBeat.o(222322);
   }
   
   public final void ac(int paramInt, String paramString)
   {
-    AppMethodBeat.i(188193);
-    ad.i("MicroMsg.AppBrand.AppBrandVoIP1v1FloatBallHelper", "onCreate, type:%s, key:%s", new Object[] { Integer.valueOf(paramInt), paramString });
+    AppMethodBeat.i(222319);
+    ae.i("MicroMsg.AppBrand.AppBrandVoIP1v1FloatBallHelper", "onCreate, type:%s, key:%s", new Object[] { Integer.valueOf(paramInt), paramString });
     super.ac(paramInt, paramString);
-    if (this.kjL != null) {
-      this.kjL.a(this.kjM);
+    if (this.knb != null) {
+      this.knb.a(this.knc);
     }
-    AppMethodBeat.o(188193);
+    AppMethodBeat.o(222319);
   }
   
-  public final boolean bgA()
+  public final boolean bhh()
   {
     return false;
   }
   
-  public final void bgB()
+  public final boolean bhi()
   {
-    AppMethodBeat.i(188200);
-    ad.i("MicroMsg.AppBrand.AppBrandVoIP1v1FloatBallHelper", "onEnterPage, runtime:%s", new Object[] { Integer.valueOf(this.jCo.hashCode()) });
-    if (bKx() != null) {
-      V(false);
-    }
-    AppMethodBeat.o(188200);
+    return false;
   }
   
-  public final void bgC()
+  public final void bhj()
   {
-    AppMethodBeat.i(188201);
-    ad.i("MicroMsg.AppBrand.AppBrandVoIP1v1FloatBallHelper", "onExitPage, runtime:%s", new Object[] { Integer.valueOf(this.jCo.hashCode()) });
-    if (bKx() != null)
+    AppMethodBeat.i(222326);
+    ae.i("MicroMsg.AppBrand.AppBrandVoIP1v1FloatBallHelper", "onEnterPage, runtime:%s", new Object[] { Integer.valueOf(this.jFm.hashCode()) });
+    if (bLu() != null) {
+      V(false);
+    }
+    AppMethodBeat.o(222326);
+  }
+  
+  public final void bhk()
+  {
+    AppMethodBeat.i(222327);
+    ae.i("MicroMsg.AppBrand.AppBrandVoIP1v1FloatBallHelper", "onExitPage, runtime:%s", new Object[] { Integer.valueOf(this.jFm.hashCode()) });
+    if (bLu() != null)
     {
       V(true);
-      t.makeText(com.tencent.mm.sdk.f.a.jq(this.jCo.mContext), 2131756066, 0).show();
+      t.makeText(com.tencent.mm.sdk.f.a.jw(this.jFm.mContext), 2131756066, 0).show();
     }
-    if (this.nGl != null) {
-      this.nGl.r(this.nGj);
+    if (this.nLM != null) {
+      this.nLM.r(this.nLK);
     }
     com.tencent.mm.sdk.g.b.c(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(188188);
+        AppMethodBeat.i(222314);
         final int i = h.e(h.this);
         if (h.f(h.this) != null) {
           h.f(h.this).post(new Runnable()
           {
             public final void run()
             {
-              AppMethodBeat.i(188187);
-              h.this.xY(i);
-              AppMethodBeat.o(188187);
+              AppMethodBeat.i(222313);
+              h.this.yc(i);
+              AppMethodBeat.o(222313);
             }
           });
         }
-        AppMethodBeat.o(188188);
+        AppMethodBeat.o(222314);
       }
     }, "");
-    AppMethodBeat.o(188201);
+    AppMethodBeat.o(222327);
   }
   
-  public final void bgD()
+  public final void bhl()
   {
-    AppMethodBeat.i(188202);
-    ad.i("MicroMsg.AppBrand.AppBrandVoIP1v1FloatBallHelper", "onReceivedFinishWhenSwitchBallEvent, runtime:%s", new Object[] { Integer.valueOf(this.jCo.hashCode()) });
-    this.nHb.gg(true);
-    AppMethodBeat.o(188202);
+    AppMethodBeat.i(222328);
+    ae.i("MicroMsg.AppBrand.AppBrandVoIP1v1FloatBallHelper", "onReceivedFinishWhenSwitchBallEvent, runtime:%s", new Object[] { Integer.valueOf(this.jFm.hashCode()) });
+    this.nME.ge(true);
+    AppMethodBeat.o(222328);
   }
   
-  public final void bgE()
+  public final void bhm()
   {
-    AppMethodBeat.i(188203);
-    ad.i("MicroMsg.AppBrand.AppBrandVoIP1v1FloatBallHelper", "onReceivedBallInfoRemovedEvent, runtime:%s", new Object[] { Integer.valueOf(this.jCo.hashCode()) });
-    super.bgE();
-    bgS();
-    AppMethodBeat.o(188203);
+    AppMethodBeat.i(222329);
+    ae.i("MicroMsg.AppBrand.AppBrandVoIP1v1FloatBallHelper", "onReceivedBallInfoRemovedEvent, runtime:%s", new Object[] { Integer.valueOf(this.jFm.hashCode()) });
+    super.bhm();
+    bhA();
+    AppMethodBeat.o(222329);
   }
   
-  public final boolean bgP()
+  public final boolean bhx()
   {
-    AppMethodBeat.i(188195);
+    AppMethodBeat.i(222321);
     boolean bool = MMKV.defaultMMKV().decodeBool("has_shown_appbrand_voip_1v1_tip", false);
-    if ((bKz()) && (!bool))
+    if ((bLw()) && (!bool))
     {
-      AppMethodBeat.o(188195);
+      AppMethodBeat.o(222321);
       return true;
     }
-    AppMethodBeat.o(188195);
-    return false;
-  }
-  
-  public final boolean bgz()
-  {
+    AppMethodBeat.o(222321);
     return false;
   }
   
   public final void onDestroy()
   {
-    AppMethodBeat.i(188199);
-    ad.i("MicroMsg.AppBrand.AppBrandVoIP1v1FloatBallHelper", "onDestroy, runtime:%s", new Object[] { Integer.valueOf(this.jCo.hashCode()) });
+    AppMethodBeat.i(222325);
+    ae.i("MicroMsg.AppBrand.AppBrandVoIP1v1FloatBallHelper", "onDestroy, runtime:%s", new Object[] { Integer.valueOf(this.jFm.hashCode()) });
     super.onDestroy();
-    if (this.kjL != null) {
-      this.kjL.b(this.kjM);
+    if (this.knb != null) {
+      this.knb.b(this.knc);
     }
-    AppMethodBeat.o(188199);
+    AppMethodBeat.o(222325);
   }
   
-  public final boolean sv(final int paramInt)
+  public final boolean sy(final int paramInt)
   {
-    AppMethodBeat.i(188194);
-    ad.i("MicroMsg.AppBrand.AppBrandVoIP1v1FloatBallHelper", "onClose, runtime:%s", new Object[] { Integer.valueOf(this.jCo.hashCode()) });
-    if (bKz())
+    AppMethodBeat.i(222320);
+    ae.i("MicroMsg.AppBrand.AppBrandVoIP1v1FloatBallHelper", "onClose, runtime:%s", new Object[] { Integer.valueOf(this.jFm.hashCode()) });
+    if (bLw())
     {
-      if (!bgP()) {
+      if (!bhx()) {
         break label83;
       }
-      ad.i("MicroMsg.AppBrand.AppBrandVoIP1v1FloatBallHelper", "onClose, should show voip tip");
-      a(this.nHb.getActivity(), new a()
+      ae.i("MicroMsg.AppBrand.AppBrandVoIP1v1FloatBallHelper", "onClose, should show voip tip");
+      a(this.nME.getActivity(), new a()
       {
-        public final void bgL()
+        public final void bht()
         {
-          AppMethodBeat.i(188182);
+          AppMethodBeat.i(222308);
           h.a(h.this, paramInt);
-          AppMethodBeat.o(188182);
+          AppMethodBeat.o(222308);
         }
       });
     }
     for (;;)
     {
-      AppMethodBeat.o(188194);
+      AppMethodBeat.o(222320);
       return false;
       label83:
-      sz(paramInt);
+      sC(paramInt);
     }
   }
   
   public static abstract interface a
   {
-    public abstract void bgL();
+    public abstract void bht();
   }
 }
 

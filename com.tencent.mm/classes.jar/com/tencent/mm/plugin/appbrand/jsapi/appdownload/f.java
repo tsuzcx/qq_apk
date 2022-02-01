@@ -5,10 +5,10 @@ import com.tencent.mm.ipcinvoker.d;
 import com.tencent.mm.ipcinvoker.type.IPCString;
 import com.tencent.mm.ipcinvoker.type.IPCVoid;
 import com.tencent.mm.plugin.appbrand.jsapi.a;
-import com.tencent.mm.plugin.appbrand.q;
+import com.tencent.mm.plugin.appbrand.r;
 
 public final class f
-  extends a<q>
+  extends a<r>
 {
   public static final int CTRL_INDEX = 670;
   public static final String NAME = "getDownloadWidgetTaskInfoForNative";

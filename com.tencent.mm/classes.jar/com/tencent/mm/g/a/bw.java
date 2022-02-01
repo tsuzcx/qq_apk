@@ -12,7 +12,7 @@ public final class bw
   
   private bw(byte paramByte)
   {
-    this.IbR = false;
+    this.IvZ = false;
     this.callback = null;
   }
 }

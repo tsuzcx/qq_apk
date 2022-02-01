@@ -4,22 +4,22 @@ import com.tencent.matrix.g.c;
 
 public final class a
 {
-  private final com.tencent.c.a.a cBC;
+  private final com.tencent.c.a.a cCj;
   
   private a(com.tencent.c.a.a parama)
   {
-    this.cBC = parama;
+    this.cCj = parama;
     c.i("Matrix.MemoryConfig", "MemoryConfig()", new Object[0]);
   }
   
   public final float getThreshold()
   {
-    return this.cBC.dK(com.tencent.c.a.a.a.LCU.name());
+    return this.cCj.dN(com.tencent.c.a.a.a.LZY.name());
   }
   
   public static final class a
   {
-    public com.tencent.c.a.a cEm;
+    public com.tencent.c.a.a cET;
   }
 }
 

@@ -16,9 +16,9 @@ public abstract interface e
   
   public abstract void b(MigrateResultCallback paramMigrateResultCallback);
   
-  public abstract boolean fjn();
+  public abstract boolean fnf();
   
-  public abstract void fjr();
+  public abstract void fnj();
   
   public static abstract class a
     extends Binder
@@ -29,7 +29,7 @@ public abstract interface e
       attachInterface(this, "com.tencent.mm.sdcard_migrate.IMigrateServiceController");
     }
     
-    public static e M(IBinder paramIBinder)
+    public static e N(IBinder paramIBinder)
     {
       if (paramIBinder == null) {
         return null;
@@ -60,7 +60,7 @@ public abstract interface e
         return true;
       case 1: 
         paramParcel1.enforceInterface("com.tencent.mm.sdcard_migrate.IMigrateServiceController");
-        boolean bool = fjn();
+        boolean bool = fnf();
         paramParcel2.writeNoException();
         if (bool) {}
         for (paramInt1 = 1;; paramInt1 = 0)
@@ -96,7 +96,7 @@ public abstract interface e
         return true;
       }
       paramParcel1.enforceInterface("com.tencent.mm.sdcard_migrate.IMigrateServiceController");
-      fjr();
+      fnj();
       paramParcel2.writeNoException();
       return true;
     }
@@ -315,7 +315,7 @@ public abstract interface e
       }
       
       /* Error */
-      public final boolean fjn()
+      public final boolean fnf()
       {
         // Byte code:
         //   0: iconst_1
@@ -377,9 +377,9 @@ public abstract interface e
         //   16	48	73	finally
       }
       
-      public final void fjr()
+      public final void fnj()
       {
-        AppMethodBeat.i(211099);
+        AppMethodBeat.i(211883);
         Parcel localParcel1 = Parcel.obtain();
         Parcel localParcel2 = Parcel.obtain();
         try
@@ -393,7 +393,7 @@ public abstract interface e
         {
           localParcel2.recycle();
           localParcel1.recycle();
-          AppMethodBeat.o(211099);
+          AppMethodBeat.o(211883);
         }
       }
     }

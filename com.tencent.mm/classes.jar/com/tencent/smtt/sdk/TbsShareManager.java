@@ -51,8 +51,8 @@ public class TbsShareManager
     try
     {
       TbsLinuxToolsJni localTbsLinuxToolsJni = new TbsLinuxToolsJni(paramContext);
-      a(paramContext, localTbsLinuxToolsJni, o.a().q(paramContext));
-      paramContext = o.a().r(paramContext);
+      a(paramContext, localTbsLinuxToolsJni, q.a().r(paramContext));
+      paramContext = q.a().s(paramContext);
       TbsLog.i("TbsShareManager", "shareTbsCore tbsShareDir is " + paramContext.getAbsolutePath());
       localTbsLinuxToolsJni.a(paramContext.getAbsolutePath(), "755");
       AppMethodBeat.o(54896);
@@ -70,7 +70,7 @@ public class TbsShareManager
     AppMethodBeat.i(54918);
     String str1;
     int m;
-    if ((!TbsPVConfig.getInstance(a).isDisableHostBackupCore()) && (o.a().t(paramContext)))
+    if ((!TbsPVConfig.getInstance(a).isDisableHostBackupCore()) && (q.a().u(paramContext)))
     {
       str1 = paramContext.getPackageName();
       TbsLog.i("TbsShareManager", "find host backup core to unzip #1" + Log.getStackTraceString(new Throwable()));
@@ -87,7 +87,7 @@ public class TbsShareManager
           break label204;
         }
         localObject = getPackageContext(paramContext, str2, false);
-        if (!o.a().f((Context)localObject)) {
+        if (!q.a().g((Context)localObject)) {
           break label298;
         }
         localObject = getBackupCoreFile(paramContext, str2);
@@ -95,11 +95,11 @@ public class TbsShareManager
           break label298;
         }
         TbsLog.i("TbsShareManager", "find host backup core to unzip normal coreVersion is " + paramInt + " packageName is " + str2);
-        o.a().b(paramContext, (File)localObject, paramInt);
+        q.a().b(paramContext, (File)localObject, paramInt);
       }
       for (;;)
       {
-        o.a().b();
+        q.a().b();
         AppMethodBeat.o(54918);
         return;
         label204:
@@ -107,7 +107,7 @@ public class TbsShareManager
           break;
         }
         localObject = getPackageContext(paramContext, str2, false);
-        if (!o.a().f((Context)localObject)) {
+        if (!q.a().g((Context)localObject)) {
           break;
         }
         localObject = getBackupDecoupleCoreFile(paramContext, str2);
@@ -115,7 +115,7 @@ public class TbsShareManager
           break;
         }
         TbsLog.i("TbsShareManager", "find host backup core to unzip decouple coreVersion is " + paramInt + " packageName is " + str2);
-        o.a().b(paramContext, (File)localObject, paramInt);
+        q.a().b(paramContext, (File)localObject, paramInt);
       }
       label298:
       m += 1;
@@ -165,7 +165,7 @@ public class TbsShareManager
     AppMethodBeat.i(54897);
     try
     {
-      a(paramContext, new TbsLinuxToolsJni(paramContext), o.a().p(paramContext));
+      a(paramContext, new TbsLinuxToolsJni(paramContext), q.a().q(paramContext));
       AppMethodBeat.o(54897);
       return;
     }
@@ -236,9 +236,9 @@ public class TbsShareManager
     //   70: pop
     //   71: iload_1
     //   72: ifeq +64 -> 136
-    //   75: invokestatic 86	com/tencent/smtt/sdk/o:a	()Lcom/tencent/smtt/sdk/o;
+    //   75: invokestatic 86	com/tencent/smtt/sdk/q:a	()Lcom/tencent/smtt/sdk/q;
     //   78: aload_0
-    //   79: invokevirtual 90	com/tencent/smtt/sdk/o:q	(Landroid/content/Context;)Ljava/io/File;
+    //   79: invokevirtual 90	com/tencent/smtt/sdk/q:r	(Landroid/content/Context;)Ljava/io/File;
     //   82: invokevirtual 108	java/io/File:getAbsolutePath	()Ljava/lang/String;
     //   85: astore 6
     //   87: aload_0
@@ -246,7 +246,7 @@ public class TbsShareManager
     //   91: invokevirtual 157	android/content/Context:getPackageName	()Ljava/lang/String;
     //   94: astore 7
     //   96: aload_0
-    //   97: invokestatic 306	com/tencent/smtt/utils/b:b	(Landroid/content/Context;)I
+    //   97: invokestatic 306	com/tencent/smtt/utils/b:d	(Landroid/content/Context;)I
     //   100: istore_2
     //   101: aload 4
     //   103: ldc_w 308
@@ -435,7 +435,7 @@ public class TbsShareManager
     if (e != null)
     {
       localObject1 = getPackageContext(paramContext, e, true);
-      if (o.a().f((Context)localObject1)) {
+      if (q.a().g((Context)localObject1)) {
         break label68;
       }
       localObject1 = localObject2;
@@ -602,12 +602,12 @@ public class TbsShareManager
     int m;
     if ((e != null) && (e.equals("AppDefined")))
     {
-      if (d != o.a().a(b))
+      if (d != q.a().a(b))
       {
         d = 0;
         c = null;
         e = null;
-        TbsLog.i("TbsShareManager", "check AppDefined core is error src is " + d + " dest is " + o.a().a(b));
+        TbsLog.i("TbsShareManager", "check AppDefined core is error src is " + d + " dest is " + q.a().a(b));
       }
       if (d > 0)
       {
@@ -652,7 +652,7 @@ public class TbsShareManager
   public static boolean forceLoadX5FromTBSDemo(Context paramContext)
   {
     AppMethodBeat.i(54915);
-    if ((paramContext == null) || (o.a().a(paramContext, null)))
+    if ((paramContext == null) || (q.a().a(paramContext, null)))
     {
       AppMethodBeat.o(54915);
       return false;
@@ -661,7 +661,7 @@ public class TbsShareManager
     if (m > 0)
     {
       Object localObject = getPackageContext(paramContext, "com.tencent.tbs", true);
-      localObject = o.a().q((Context)localObject).getAbsolutePath();
+      localObject = q.a().r((Context)localObject).getAbsolutePath();
       writeProperties(paramContext, Integer.toString(m), "com.tencent.tbs", (String)localObject, "1");
       AppMethodBeat.o(54915);
       return true;
@@ -697,7 +697,7 @@ public class TbsShareManager
           AppMethodBeat.o(54924);
           return;
         }
-        Object localObject = o.a().r(paramContext);
+        Object localObject = q.a().s(paramContext);
         if (localObject == null)
         {
           AppMethodBeat.o(54924);
@@ -714,7 +714,7 @@ public class TbsShareManager
         }
         if (b != null)
         {
-          m = o.a().a(b);
+          m = q.a().a(b);
           if (m > 0)
           {
             c = b;
@@ -728,7 +728,7 @@ public class TbsShareManager
         }
         TbsLog.i("TbsShareManager", "forceToLoadX5ForThirdApp #1");
         int i1 = h(paramContext);
-        int i2 = o.a().i(paramContext);
+        int i2 = q.a().j(paramContext);
         TbsLog.i("TbsShareManager", "forceToLoadX5ForThirdApp coreVersionFromConfig is ".concat(String.valueOf(i1)));
         TbsLog.i("TbsShareManager", "forceToLoadX5ForThirdApp coreVersionFromCoreShare is ".concat(String.valueOf(i2)));
         localObject = getCoreProviderAppList();
@@ -745,13 +745,13 @@ public class TbsShareManager
             break label905;
           }
           localContext = getPackageContext(paramContext, str, true);
-          c = o.a().c(paramContext, localContext).getAbsolutePath();
+          c = q.a().c(paramContext, localContext).getAbsolutePath();
           e = str;
           d = i4;
           TbsLog.i("TbsShareManager", "forceToLoadX5ForThirdApp #2 -- mAvailableCoreVersion: " + d + " " + Log.getStackTraceString(new Throwable("#")));
           if (QbSdk.canLoadX5FirstTimeThirdApp(paramContext))
           {
-            m = b.b(paramContext);
+            m = b.d(paramContext);
             TbsLog.i("TbsShareManager", "forceToLoadX5ForThirdApp #2");
             writeProperties(paramContext, Integer.toString(d), e, c, Integer.toString(m));
             AppMethodBeat.o(54924);
@@ -772,13 +772,13 @@ public class TbsShareManager
             break label912;
           }
           localContext = getPackageContext(paramContext, str, true);
-          c = o.a().b(paramContext, localContext).getAbsolutePath();
+          c = q.a().b(paramContext, localContext).getAbsolutePath();
           e = str;
           d = i4;
           TbsLog.i("TbsShareManager", "forceToLoadX5ForThirdApp #3 -- mAvailableCoreVersion: " + d + " " + Log.getStackTraceString(new Throwable("#")));
           if (QbSdk.canLoadX5FirstTimeThirdApp(paramContext))
           {
-            m = b.b(paramContext);
+            m = b.d(paramContext);
             writeProperties(paramContext, Integer.toString(d), e, c, Integer.toString(m));
             AppMethodBeat.o(54924);
             return;
@@ -803,7 +803,7 @@ public class TbsShareManager
             {
               TbsLog.i("TbsShareManager", "find host backup core to unzip forceload coreVersion is " + n + " packageName is " + str);
               localObject = getBackupCoreFile(paramContext, str);
-              o.a().a(paramContext, (File)localObject, n);
+              q.a().a(paramContext, (File)localObject, n);
               TbsLog.i("TbsShareManager", "find host backup core to unzip forceload after unzip ");
               AppMethodBeat.o(54924);
               return;
@@ -813,7 +813,7 @@ public class TbsShareManager
             {
               TbsLog.i("TbsShareManager", "find host backup core to unzip forceload decouple coreVersion is " + n + " packageName is " + str);
               localObject = getBackupCoreFile(paramContext, str);
-              o.a().a(paramContext, (File)localObject, n);
+              q.a().a(paramContext, (File)localObject, n);
               TbsLog.i("TbsShareManager", "find host backup decouple core to unzip forceload after unzip ");
               AppMethodBeat.o(54924);
               return;
@@ -974,7 +974,7 @@ public class TbsShareManager
     paramContext = getPackageContext(paramContext, paramString, true);
     if (paramContext != null)
     {
-      int m = o.a().h(paramContext);
+      int m = q.a().i(paramContext);
       AppMethodBeat.o(54901);
       return m;
     }
@@ -1057,7 +1057,7 @@ public class TbsShareManager
     paramContext = getPackageContext(paramContext, paramString, true);
     if (paramContext != null)
     {
-      int m = o.a().i(paramContext);
+      int m = q.a().j(paramContext);
       AppMethodBeat.o(54900);
       return m;
     }
@@ -1068,7 +1068,7 @@ public class TbsShareManager
   public static File getTbsShareFile(Context paramContext, String paramString)
   {
     AppMethodBeat.i(54925);
-    paramContext = o.a().r(paramContext);
+    paramContext = q.a().s(paramContext);
     if (paramContext == null)
     {
       AppMethodBeat.o(54925);
@@ -1101,10 +1101,10 @@ public class TbsShareManager
     //   1: istore_1
     //   2: ldc 2
     //   4: monitorenter
-    //   5: ldc_w 571
+    //   5: ldc_w 572
     //   8: invokestatic 57	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   11: ldc 70
-    //   13: ldc_w 573
+    //   13: ldc_w 574
     //   16: invokestatic 77	com/tencent/smtt/utils/TbsLog:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   19: aload_0
     //   20: ldc_w 270
@@ -1113,9 +1113,9 @@ public class TbsShareManager
     //   27: aload_0
     //   28: ifnonnull +22 -> 50
     //   31: ldc 70
-    //   33: ldc_w 575
+    //   33: ldc_w 576
     //   36: invokestatic 77	com/tencent/smtt/utils/TbsLog:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   39: ldc_w 571
+    //   39: ldc_w 572
     //   42: invokestatic 63	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   45: ldc 2
     //   47: monitorexit
@@ -1137,7 +1137,7 @@ public class TbsShareManager
     //   75: aload_0
     //   76: invokevirtual 289	java/util/Properties:load	(Ljava/io/InputStream;)V
     //   79: aload_2
-    //   80: ldc_w 577
+    //   80: ldc_w 578
     //   83: ldc_w 349
     //   86: invokevirtual 353	java/util/Properties:getProperty	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   89: astore_2
@@ -1146,16 +1146,16 @@ public class TbsShareManager
     //   94: invokevirtual 357	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   97: ifne +39 -> 136
     //   100: ldc 70
-    //   102: ldc_w 579
+    //   102: ldc_w 580
     //   105: invokestatic 77	com/tencent/smtt/utils/TbsLog:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   108: aload_2
-    //   109: invokestatic 582	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   109: invokestatic 583	java/lang/Integer:parseInt	(Ljava/lang/String;)I
     //   112: iconst_0
-    //   113: invokestatic 588	java/lang/Math:max	(II)I
+    //   113: invokestatic 589	java/lang/Math:max	(II)I
     //   116: istore_1
     //   117: aload_0
     //   118: invokevirtual 331	java/io/BufferedInputStream:close	()V
-    //   121: ldc_w 571
+    //   121: ldc_w 572
     //   124: invokestatic 63	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   127: goto -82 -> 45
     //   130: astore_0
@@ -1164,11 +1164,11 @@ public class TbsShareManager
     //   134: aload_0
     //   135: athrow
     //   136: ldc 70
-    //   138: ldc_w 590
+    //   138: ldc_w 591
     //   141: invokestatic 77	com/tencent/smtt/utils/TbsLog:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   144: aload_0
     //   145: invokevirtual 331	java/io/BufferedInputStream:close	()V
-    //   148: ldc_w 571
+    //   148: ldc_w 572
     //   151: invokestatic 63	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   154: goto -109 -> 45
     //   157: astore_0
@@ -1179,11 +1179,11 @@ public class TbsShareManager
     //   164: aload_0
     //   165: invokevirtual 331	java/io/BufferedInputStream:close	()V
     //   168: ldc 70
-    //   170: ldc_w 592
+    //   170: ldc_w 593
     //   173: invokestatic 77	com/tencent/smtt/utils/TbsLog:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   176: bipush 254
     //   178: istore_1
-    //   179: ldc_w 571
+    //   179: ldc_w 572
     //   182: invokestatic 63	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   185: goto -140 -> 45
     //   188: astore_2
@@ -1193,7 +1193,7 @@ public class TbsShareManager
     //   192: ifnull +7 -> 199
     //   195: aload_0
     //   196: invokevirtual 331	java/io/BufferedInputStream:close	()V
-    //   199: ldc_w 571
+    //   199: ldc_w 572
     //   202: invokestatic 63	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   205: aload_2
     //   206: athrow
@@ -1277,7 +1277,7 @@ public class TbsShareManager
       }
       else if (d != 0)
       {
-        m = o.a().a(b);
+        m = q.a().a(b);
         n = d;
         if (m == n)
         {
@@ -1361,9 +1361,9 @@ public class TbsShareManager
       if ((d > 0) && (d == getSharedTbsCoreVersion(paramContext, str)))
       {
         localContext = getPackageContext(paramContext, str, true);
-        if (o.a().f(paramContext))
+        if (q.a().g(paramContext))
         {
-          c = o.a().b(paramContext, localContext).getAbsolutePath();
+          c = q.a().b(paramContext, localContext).getAbsolutePath();
           e = str;
           AppMethodBeat.o(54911);
           return true;
@@ -1379,9 +1379,9 @@ public class TbsShareManager
       if ((d > 0) && (d == getCoreShareDecoupleCoreVersion(paramContext, str)))
       {
         localContext = getPackageContext(paramContext, str, true);
-        if (o.a().f(paramContext))
+        if (q.a().g(paramContext))
         {
-          c = o.a().c(paramContext, localContext).getAbsolutePath();
+          c = q.a().c(paramContext, localContext).getAbsolutePath();
           e = str;
           AppMethodBeat.o(54911);
           return true;
@@ -1410,11 +1410,11 @@ public class TbsShareManager
   private static void n(Context paramContext)
   {
     // Byte code:
-    //   0: ldc_w 629
+    //   0: ldc_w 630
     //   3: invokestatic 57	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: getstatic 46	com/tencent/smtt/sdk/TbsShareManager:k	Z
     //   9: ifeq +10 -> 19
-    //   12: ldc_w 629
+    //   12: ldc_w 630
     //   15: invokestatic 63	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   18: return
     //   19: ldc 2
@@ -1423,7 +1423,7 @@ public class TbsShareManager
     //   25: ifeq +13 -> 38
     //   28: ldc 2
     //   30: monitorexit
-    //   31: ldc_w 629
+    //   31: ldc_w 630
     //   34: invokestatic 63	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   37: return
     //   38: aload_0
@@ -1434,7 +1434,7 @@ public class TbsShareManager
     //   47: ifnonnull +13 -> 60
     //   50: ldc 2
     //   52: monitorexit
-    //   53: ldc_w 629
+    //   53: ldc_w 630
     //   56: invokestatic 63	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   59: return
     //   60: new 275	java/io/BufferedInputStream
@@ -1453,7 +1453,7 @@ public class TbsShareManager
     //   85: aload_0
     //   86: invokevirtual 289	java/util/Properties:load	(Ljava/io/InputStream;)V
     //   89: aload_1
-    //   90: ldc_w 577
+    //   90: ldc_w 578
     //   93: ldc_w 349
     //   96: invokevirtual 353	java/util/Properties:getProperty	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   99: astore_2
@@ -1462,14 +1462,14 @@ public class TbsShareManager
     //   104: invokevirtual 357	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   107: ifne +60 -> 167
     //   110: aload_2
-    //   111: invokestatic 582	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   111: invokestatic 583	java/lang/Integer:parseInt	(Ljava/lang/String;)I
     //   114: iconst_0
-    //   115: invokestatic 588	java/lang/Math:max	(II)I
+    //   115: invokestatic 589	java/lang/Math:max	(II)I
     //   118: putstatic 32	com/tencent/smtt/sdk/TbsShareManager:d	I
     //   121: ldc 70
     //   123: new 98	java/lang/StringBuilder
     //   126: dup
-    //   127: ldc_w 631
+    //   127: ldc_w 632
     //   130: invokespecial 103	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   133: getstatic 32	com/tencent/smtt/sdk/TbsShareManager:d	I
     //   136: invokevirtual 200	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
@@ -1531,7 +1531,7 @@ public class TbsShareManager
     //   274: ldc_w 291
     //   277: ldc_w 293
     //   280: invokevirtual 353	java/util/Properties:getProperty	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   283: invokestatic 636	java/lang/Boolean:parseBoolean	(Ljava/lang/String;)Z
+    //   283: invokestatic 637	java/lang/Boolean:parseBoolean	(Ljava/lang/String;)Z
     //   286: putstatic 36	com/tencent/smtt/sdk/TbsShareManager:f	Z
     //   289: iconst_1
     //   290: putstatic 46	com/tencent/smtt/sdk/TbsShareManager:k	Z
@@ -1539,7 +1539,7 @@ public class TbsShareManager
     //   294: invokevirtual 331	java/io/BufferedInputStream:close	()V
     //   297: ldc 2
     //   299: monitorexit
-    //   300: ldc_w 629
+    //   300: ldc_w 630
     //   303: invokestatic 63	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   306: return
     //   307: iconst_0
@@ -1560,14 +1560,14 @@ public class TbsShareManager
     //   334: ifnull +7 -> 341
     //   337: aload_1
     //   338: invokevirtual 331	java/io/BufferedInputStream:close	()V
-    //   341: ldc_w 629
+    //   341: ldc_w 630
     //   344: invokestatic 63	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   347: aload_0
     //   348: athrow
     //   349: astore_0
     //   350: ldc 2
     //   352: monitorexit
-    //   353: ldc_w 629
+    //   353: ldc_w 630
     //   356: invokestatic 63	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   359: aload_0
     //   360: athrow
@@ -1683,7 +1683,7 @@ public class TbsShareManager
       }
       else
       {
-        m = o.a().i(paramContext);
+        m = q.a().j(paramContext);
         TbsLog.i("TbsShareManager", "writeCoreInfoForThirdPartyApp coreVersionFromCoreShare is ".concat(String.valueOf(m)));
         if (paramInt < m)
         {
@@ -1697,7 +1697,7 @@ public class TbsShareManager
           if (b == null) {
             break label597;
           }
-          if (paramInt != o.a().a(b)) {
+          if (paramInt != q.a().a(b)) {
             break;
           }
           writeProperties(paramContext, Integer.toString(paramInt), "AppDefined", b, Integer.toString(1));
@@ -1708,7 +1708,7 @@ public class TbsShareManager
             {
               localObject2 = new TbsLinuxToolsJni(a);
               ((TbsLinuxToolsJni)localObject2).a(((File)localObject1).getAbsolutePath(), "644");
-              ((TbsLinuxToolsJni)localObject2).a(o.a().r(paramContext).getAbsolutePath(), "755");
+              ((TbsLinuxToolsJni)localObject2).a(q.a().s(paramContext).getAbsolutePath(), "755");
               h = true;
             }
             AppMethodBeat.o(54916);
@@ -1721,7 +1721,7 @@ public class TbsShareManager
       }
     }
     int i1;
-    if (paramInt > o.a().a(b))
+    if (paramInt > q.a().a(b))
     {
       i1 = localObject1.length;
       m = 0;
@@ -1739,9 +1739,9 @@ public class TbsShareManager
           break label1053;
         }
         localObject3 = getPackageContext(paramContext, (String)localObject2, true);
-        localObject2 = o.a().q((Context)localObject3).getAbsolutePath();
-        b.b(paramContext);
-        if (!o.a().f((Context)localObject3)) {
+        localObject2 = q.a().r((Context)localObject3).getAbsolutePath();
+        b.d(paramContext);
+        if (!q.a().g((Context)localObject3)) {
           break label1053;
         }
         localObject1 = new File(b);
@@ -1769,7 +1769,7 @@ public class TbsShareManager
           {
             localObject2 = new TbsLinuxToolsJni(a);
             ((TbsLinuxToolsJni)localObject2).a(((File)localObject1).getAbsolutePath(), "644");
-            ((TbsLinuxToolsJni)localObject2).a(o.a().r(paramContext).getAbsolutePath(), "755");
+            ((TbsLinuxToolsJni)localObject2).a(q.a().s(paramContext).getAbsolutePath(), "755");
             h = true;
           }
           AppMethodBeat.o(54916);
@@ -1791,15 +1791,15 @@ public class TbsShareManager
         if (paramInt == getSharedTbsCoreVersion(paramContext, (String)localObject2))
         {
           localObject3 = getPackageContext(paramContext, (String)localObject2, true);
-          localObject4 = o.a().q((Context)localObject3).getAbsolutePath();
-          i2 = b.b(paramContext);
-          if (!o.a().f((Context)localObject3)) {
+          localObject4 = q.a().r((Context)localObject3).getAbsolutePath();
+          i2 = b.d(paramContext);
+          if (!q.a().g((Context)localObject3)) {
             break label1028;
           }
           if (!((String)localObject2).equals(paramContext.getApplicationContext().getPackageName()))
           {
             TbsLog.i("TbsShareManager", "thirdAPP pre--> delete old core_share Directory:".concat(String.valueOf(paramInt)));
-            l.a(a).a("remove_old_core", 1);
+            n.a(a).a("remove_old_core", 1);
           }
           writeProperties(paramContext, Integer.toString(paramInt), (String)localObject2, (String)localObject4, Integer.toString(i2));
         }
@@ -1819,7 +1819,7 @@ public class TbsShareManager
               {
                 localObject2 = new TbsLinuxToolsJni(a);
                 ((TbsLinuxToolsJni)localObject2).a(((File)localObject1).getAbsolutePath(), "644");
-                ((TbsLinuxToolsJni)localObject2).a(o.a().r(paramContext).getAbsolutePath(), "755");
+                ((TbsLinuxToolsJni)localObject2).a(q.a().s(paramContext).getAbsolutePath(), "755");
                 h = true;
                 m = n;
               }
@@ -1839,13 +1839,13 @@ public class TbsShareManager
           if (paramInt == getCoreShareDecoupleCoreVersion(paramContext, (String)localObject2))
           {
             localObject4 = getPackageContext(paramContext, (String)localObject2, true);
-            localObject3 = o.a().p((Context)localObject4).getAbsolutePath();
-            i2 = b.b(paramContext);
-            if (o.a().f((Context)localObject4)) {
+            localObject3 = q.a().q((Context)localObject4).getAbsolutePath();
+            i2 = b.d(paramContext);
+            if (q.a().g((Context)localObject4)) {
               if (!((String)localObject2).equals(paramContext.getApplicationContext().getPackageName()))
               {
                 TbsLog.i("TbsShareManager", "thirdAPP pre--> delete old core_share Directory:".concat(String.valueOf(paramInt)));
-                localObject1 = o.a().q(paramContext);
+                localObject1 = q.a().r(paramContext);
               }
             }
           }
@@ -1867,7 +1867,7 @@ public class TbsShareManager
               }
               localObject2 = new TbsLinuxToolsJni(a);
               ((TbsLinuxToolsJni)localObject2).a(((File)localObject1).getAbsolutePath(), "644");
-              ((TbsLinuxToolsJni)localObject2).a(o.a().r(paramContext).getAbsolutePath(), "755");
+              ((TbsLinuxToolsJni)localObject2).a(q.a().s(paramContext).getAbsolutePath(), "755");
               h = true;
               m = n;
             }
@@ -1932,9 +1932,9 @@ public class TbsShareManager
     //   93: aload_0
     //   94: ifnonnull +22 -> 116
     //   97: getstatic 138	com/tencent/smtt/sdk/TbsShareManager:a	Landroid/content/Context;
-    //   100: invokestatic 649	com/tencent/smtt/sdk/TbsDownloadConfig:getInstance	(Landroid/content/Context;)Lcom/tencent/smtt/sdk/TbsDownloadConfig;
+    //   100: invokestatic 650	com/tencent/smtt/sdk/TbsDownloadConfig:getInstance	(Landroid/content/Context;)Lcom/tencent/smtt/sdk/TbsDownloadConfig;
     //   103: sipush -405
-    //   106: invokevirtual 652	com/tencent/smtt/sdk/TbsDownloadConfig:setDownloadInterruptCode	(I)V
+    //   106: invokevirtual 653	com/tencent/smtt/sdk/TbsDownloadConfig:setDownloadInterruptCode	(I)V
     //   109: ldc_w 685
     //   112: invokestatic 63	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   115: return
@@ -1954,14 +1954,14 @@ public class TbsShareManager
     //   144: aload 7
     //   146: invokevirtual 289	java/util/Properties:load	(Ljava/io/InputStream;)V
     //   149: aload_1
-    //   150: invokestatic 582	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   150: invokestatic 583	java/lang/Integer:parseInt	(Ljava/lang/String;)I
     //   153: istore 6
     //   155: iload 6
     //   157: istore 5
     //   159: iload 5
     //   161: ifeq +111 -> 272
     //   164: aload 8
-    //   166: ldc_w 577
+    //   166: ldc_w 578
     //   169: aload_1
     //   170: invokevirtual 297	java/util/Properties:setProperty	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/Object;
     //   173: pop
@@ -2000,9 +2000,9 @@ public class TbsShareManager
     //   240: iconst_0
     //   241: putstatic 46	com/tencent/smtt/sdk/TbsShareManager:k	Z
     //   244: getstatic 138	com/tencent/smtt/sdk/TbsShareManager:a	Landroid/content/Context;
-    //   247: invokestatic 649	com/tencent/smtt/sdk/TbsDownloadConfig:getInstance	(Landroid/content/Context;)Lcom/tencent/smtt/sdk/TbsDownloadConfig;
+    //   247: invokestatic 650	com/tencent/smtt/sdk/TbsDownloadConfig:getInstance	(Landroid/content/Context;)Lcom/tencent/smtt/sdk/TbsDownloadConfig;
     //   250: sipush -406
-    //   253: invokevirtual 652	com/tencent/smtt/sdk/TbsDownloadConfig:setDownloadInterruptCode	(I)V
+    //   253: invokevirtual 653	com/tencent/smtt/sdk/TbsDownloadConfig:setDownloadInterruptCode	(I)V
     //   256: aload 7
     //   258: invokevirtual 331	java/io/BufferedInputStream:close	()V
     //   261: aload_0

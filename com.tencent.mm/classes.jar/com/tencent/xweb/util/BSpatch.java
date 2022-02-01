@@ -11,9 +11,9 @@ public class BSpatch
   {
     AppMethodBeat.i(156988);
     BSpatch.class.getClassLoader();
-    if (p.MpG != null)
+    if (p.MMK != null)
     {
-      p.MpG.vr("bspatch_utils");
+      p.MMK.vN("bspatch_utils");
       AppMethodBeat.o(156988);
       return;
     }
@@ -21,12 +21,12 @@ public class BSpatch
     AppMethodBeat.o(156988);
   }
   
-  public static int bm(String paramString1, String paramString2, String paramString3)
+  public static int bn(String paramString1, String paramString2, String paramString3)
   {
     AppMethodBeat.i(156987);
     Log.i("BSpatch", "doPatch oldFile:" + paramString1 + ",patchFile:" + paramString2 + ",newFile:" + paramString3);
     long l = System.currentTimeMillis();
-    g.gcx();
+    g.ggZ();
     int i = 0;
     String str = paramString3;
     if (paramString1.equals(paramString3))
@@ -38,7 +38,7 @@ public class BSpatch
     if (j < 0)
     {
       Log.i("BSpatch", "doPatch failed");
-      g.gcy();
+      g.gha();
     }
     for (;;)
     {
@@ -47,7 +47,7 @@ public class BSpatch
       Log.i("BSpatch", "doPatch successful");
       if (i != 0)
       {
-        if (!c.lL(str, paramString1))
+        if (!c.lS(str, paramString1))
         {
           Log.e("BSpatch", "doPatch same path, copy failed");
           AppMethodBeat.o(156987);
@@ -55,7 +55,7 @@ public class BSpatch
         }
         c.deleteFile(str);
       }
-      g.Fo(System.currentTimeMillis() - l);
+      g.FQ(System.currentTimeMillis() - l);
     }
   }
   

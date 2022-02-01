@@ -1,18 +1,18 @@
 package com.tencent.mm.storage;
 
-import com.tencent.mm.protocal.protobuf.dlt;
+import com.tencent.mm.protocal.protobuf.dmq;
 import d.g.a.a;
 import d.g.b.q;
 import d.l;
 import d.z;
 import java.util.Map;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"<no name provided>", "", "invoke"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"<no name provided>", "", "invoke"})
 final class aa$a
   extends q
   implements a<z>
 {
-  aa$a(dlt paramdlt, Map paramMap)
+  aa$a(dmq paramdmq, Map paramMap)
   {
     super(0);
   }

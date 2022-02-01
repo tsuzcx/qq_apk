@@ -17,8 +17,8 @@ import com.tencent.mm.plugin.finder.storage.ac;
 import com.tencent.mm.plugin.finder.utils.a;
 import com.tencent.mm.plugin.finder.viewmodel.component.FinderReporterUIC;
 import com.tencent.mm.plugin.finder.viewmodel.component.FinderReporterUIC.a;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.al.a;
+import com.tencent.mm.storage.aj;
+import com.tencent.mm.storage.am.a;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.n.d;
 import com.tencent.mm.ui.base.n.e;
@@ -26,37 +26,37 @@ import com.tencent.mm.view.recyclerview.WxRecyclerAdapter;
 import d.g.b.p;
 import java.util.HashMap;
 
-@d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/ui/FinderFinderMsgUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "Lcom/tencent/mm/plugin/finder/presenter/contract/FinderMsgContract$MsgViewCallback$UICallbackListener;", "()V", "TAG", "", "msgPresenter", "Lcom/tencent/mm/plugin/finder/presenter/contract/FinderMsgContract$MsgPresenter;", "viewCallback", "Lcom/tencent/mm/plugin/finder/presenter/contract/FinderMsgContract$MsgViewCallback;", "getCommentScene", "", "getLayoutId", "initView", "", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onItemClick", "mention", "Lcom/tencent/mm/plugin/finder/storage/LocalFinderMention;", "onPause", "onResume", "onStop", "Companion", "plugin-finder_release"})
+@d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/ui/FinderFinderMsgUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "Lcom/tencent/mm/plugin/finder/presenter/contract/FinderMsgContract$MsgViewCallback$UICallbackListener;", "()V", "TAG", "", "msgPresenter", "Lcom/tencent/mm/plugin/finder/presenter/contract/FinderMsgContract$MsgPresenter;", "viewCallback", "Lcom/tencent/mm/plugin/finder/presenter/contract/FinderMsgContract$MsgViewCallback;", "getCommentScene", "", "getLayoutId", "initView", "", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onItemClick", "mention", "Lcom/tencent/mm/plugin/finder/storage/LocalFinderMention;", "onPause", "onResume", "onStop", "Companion", "plugin-finder_release"})
 public final class FinderFinderMsgUI
   extends MMFinderUI
   implements FinderMsgContract.MsgViewCallback.UICallbackListener
 {
-  public static final a sCA;
-  private static final int sCz = 1;
+  private static final int sNy = 1;
+  public static final FinderFinderMsgUI.a sNz;
   private final String TAG;
   private HashMap _$_findViewCache;
-  private final FinderMsgContract.MsgPresenter sCy;
-  private FinderMsgContract.MsgViewCallback smC;
+  private final FinderMsgContract.MsgPresenter sNx;
+  private FinderMsgContract.MsgViewCallback swt;
   
   static
   {
-    AppMethodBeat.i(203973);
-    sCA = new a((byte)0);
-    sCz = 1;
-    AppMethodBeat.o(203973);
+    AppMethodBeat.i(204569);
+    sNz = new FinderFinderMsgUI.a((byte)0);
+    sNy = 1;
+    AppMethodBeat.o(204569);
   }
   
   public FinderFinderMsgUI()
   {
-    AppMethodBeat.i(203972);
+    AppMethodBeat.i(204568);
     this.TAG = "Finder.FinderFinderMsgUI";
-    this.sCy = new FinderMsgContract.MsgPresenter(1, new int[] { 1, 2, 3, 5, 10 });
-    AppMethodBeat.o(203972);
+    this.sNx = new FinderMsgContract.MsgPresenter(1, new int[] { 1, 2, 3, 5, 10 });
+    AppMethodBeat.o(204568);
   }
   
   public final View _$_findCachedViewById(int paramInt)
   {
-    AppMethodBeat.i(203974);
+    AppMethodBeat.i(204570);
     if (this._$_findViewCache == null) {
       this._$_findViewCache = new HashMap();
     }
@@ -67,18 +67,18 @@ public final class FinderFinderMsgUI
       localView1 = findViewById(paramInt);
       this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
     }
-    AppMethodBeat.o(203974);
+    AppMethodBeat.o(204570);
     return localView1;
   }
   
   public final void a(ac paramac)
   {
-    AppMethodBeat.i(203971);
+    AppMethodBeat.i(204567);
     p.h(paramac, "mention");
-    AppMethodBeat.o(203971);
+    AppMethodBeat.o(204567);
   }
   
-  public final int cAZ()
+  public final int cCL()
   {
     return 7;
   }
@@ -90,82 +90,82 @@ public final class FinderFinderMsgUI
   
   public final void initView()
   {
-    AppMethodBeat.i(203966);
+    AppMethodBeat.i(204562);
     setMMTitle(getString(2131766445));
     setBackBtn((MenuItem.OnMenuItemClickListener)new b(this));
     Object localObject = (MMActivity)this;
     View localView = getContentView();
     p.g(localView, "contentView");
-    localObject = new FinderMsgContract.MsgViewCallback((MMActivity)localObject, localView, this.sCy, (FinderMsgContract.MsgViewCallback.UICallbackListener)this);
-    this.sCy.a((FinderMsgContract.MsgViewCallback)localObject);
+    localObject = new FinderMsgContract.MsgViewCallback((MMActivity)localObject, localView, this.sNx, (FinderMsgContract.MsgViewCallback.UICallbackListener)this);
+    this.sNx.a((FinderMsgContract.MsgViewCallback)localObject);
     ((FinderMsgContract.MsgViewCallback)localObject).initView();
-    this.smC = ((FinderMsgContract.MsgViewCallback)localObject);
+    this.swt = ((FinderMsgContract.MsgViewCallback)localObject);
     addIconOptionMenu(0, 2131233291, (MenuItem.OnMenuItemClickListener)new c(this));
-    localObject = g.ajC();
+    localObject = g.ajR();
     p.g(localObject, "MMKernel.storage()");
-    ((com.tencent.mm.kernel.e)localObject).ajl().set(al.a.IIB, Integer.valueOf(0));
-    AppMethodBeat.o(203966);
+    ((com.tencent.mm.kernel.e)localObject).ajA().set(am.a.Jde, Integer.valueOf(0));
+    AppMethodBeat.o(204562);
   }
   
   public final void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(203965);
+    AppMethodBeat.i(204561);
     super.onCreate(paramBundle);
     initView();
-    AppMethodBeat.o(203965);
+    AppMethodBeat.o(204561);
   }
   
   public final void onDestroy()
   {
-    AppMethodBeat.i(203969);
+    AppMethodBeat.i(204565);
     super.onDestroy();
-    this.sCy.onDetach();
-    AppMethodBeat.o(203969);
+    this.sNx.onDetach();
+    AppMethodBeat.o(204565);
   }
   
   public final void onPause()
   {
-    AppMethodBeat.i(203968);
+    AppMethodBeat.i(204564);
     super.onPause();
-    Object localObject = this.smC;
+    Object localObject = this.swt;
     if (localObject != null)
     {
-      localObject = ((FinderMsgContract.MsgViewCallback)localObject).rPu;
+      localObject = ((FinderMsgContract.MsgViewCallback)localObject).rXV;
       if (localObject != null)
       {
         ((WxRecyclerAdapter)localObject).onPause();
-        AppMethodBeat.o(203968);
+        AppMethodBeat.o(204564);
         return;
       }
     }
-    AppMethodBeat.o(203968);
+    AppMethodBeat.o(204564);
   }
   
   public final void onResume()
   {
-    AppMethodBeat.i(203967);
+    AppMethodBeat.i(204563);
     super.onResume();
-    this.sCy.smE = System.currentTimeMillis();
-    Object localObject = this.smC;
+    this.sNx.swv = System.currentTimeMillis();
+    Object localObject = this.swt;
     if (localObject != null)
     {
-      localObject = ((FinderMsgContract.MsgViewCallback)localObject).rPu;
+      localObject = ((FinderMsgContract.MsgViewCallback)localObject).rXV;
       if (localObject != null)
       {
         ((WxRecyclerAdapter)localObject).onResume();
-        AppMethodBeat.o(203967);
+        AppMethodBeat.o(204563);
         return;
       }
     }
-    AppMethodBeat.o(203967);
+    AppMethodBeat.o(204563);
   }
   
   public final void onStop()
   {
-    AppMethodBeat.i(203970);
+    AppMethodBeat.i(204566);
     super.onStop();
-    this.sCy.onStop();
-    AppMethodBeat.o(203970);
+    this.sNx.onStop();
+    AppMethodBeat.o(204566);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -174,10 +174,7 @@ public final class FinderFinderMsgUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/ui/FinderFinderMsgUI$Companion;", "", "()V", "MENU_ID_AT_TIMELINE", "", "getMENU_ID_AT_TIMELINE", "()I", "plugin-finder_release"})
-  public static final class a {}
-  
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
   static final class b
     implements MenuItem.OnMenuItemClickListener
   {
@@ -185,14 +182,14 @@ public final class FinderFinderMsgUI
     
     public final boolean onMenuItemClick(MenuItem paramMenuItem)
     {
-      AppMethodBeat.i(203960);
-      this.sCB.finish();
-      AppMethodBeat.o(203960);
+      AppMethodBeat.i(204556);
+      this.sNA.finish();
+      AppMethodBeat.o(204556);
       return true;
     }
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
   static final class c
     implements MenuItem.OnMenuItemClickListener
   {
@@ -200,38 +197,38 @@ public final class FinderFinderMsgUI
     
     public final boolean onMenuItemClick(MenuItem paramMenuItem)
     {
-      AppMethodBeat.i(203964);
-      paramMenuItem = new com.tencent.mm.ui.widget.a.e((Context)this.sCB, 1, false);
-      paramMenuItem.a((n.d)1.sCC);
+      AppMethodBeat.i(204560);
+      paramMenuItem = new com.tencent.mm.ui.widget.a.e((Context)this.sNA, 1, false);
+      paramMenuItem.a((n.d)1.sNB);
       paramMenuItem.a((n.e)new n.e()
       {
         public final void onMMMenuItemSelected(MenuItem paramAnonymousMenuItem, int paramAnonymousInt)
         {
-          AppMethodBeat.i(203963);
+          AppMethodBeat.i(204559);
           p.g(paramAnonymousMenuItem, "menuItem");
           paramAnonymousInt = paramAnonymousMenuItem.getItemId();
-          paramAnonymousMenuItem = FinderFinderMsgUI.sCA;
-          if (paramAnonymousInt == FinderFinderMsgUI.cJK())
+          paramAnonymousMenuItem = FinderFinderMsgUI.sNz;
+          if (paramAnonymousInt == FinderFinderMsgUI.cMn())
           {
             paramAnonymousMenuItem = new Intent();
             paramAnonymousMenuItem.putExtra("KEY_CACHE_ID", System.currentTimeMillis());
-            Object localObject = FinderReporterUIC.tcM;
-            FinderReporterUIC.a.a((Context)this.sCD.sCB, paramAnonymousMenuItem, 0L, 0, false, 124);
-            localObject = a.sKD;
-            a.V((Context)this.sCD.sCB, paramAnonymousMenuItem);
+            Object localObject = FinderReporterUIC.tnG;
+            FinderReporterUIC.a.a((Context)this.sNC.sNA, paramAnonymousMenuItem, 0L, 0, false, 124);
+            localObject = a.sVQ;
+            a.V((Context)this.sNC.sNA, paramAnonymousMenuItem);
           }
-          AppMethodBeat.o(203963);
+          AppMethodBeat.o(204559);
         }
       });
-      paramMenuItem.cMW();
-      AppMethodBeat.o(203964);
+      paramMenuItem.cPF();
+      AppMethodBeat.o(204560);
       return true;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.ui.FinderFinderMsgUI
  * JD-Core Version:    0.7.0.1
  */

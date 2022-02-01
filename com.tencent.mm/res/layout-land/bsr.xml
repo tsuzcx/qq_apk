@@ -19,6 +19,7 @@
                 <RelativeLayout android:gravity="center_horizontal" android:id="@id/hlx" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cd" android:layout_marginBottom="@dimen/cg" android:layout_below="@id/hlu">
                     <TextView android:textSize="15.0dip" android:textColor="@color/to" android:id="@id/hlw" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/hnj" />
                     <TextView android:textSize="15.0dip" android:textColor="@color/to" android:id="@id/hly" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/hnk" android:layout_marginStart="@dimen/ch" android:layout_toEndOf="@id/hlw" />
+                    <TextView android:textSize="15.0dip" android:textColor="@color/to" android:id="@id/i7s" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/i41" android:layout_marginStart="@dimen/ch" android:layout_toEndOf="@id/hlw" />
                 </RelativeLayout>
             </RelativeLayout>
         </android.support.v4.widget.NestedScrollView>

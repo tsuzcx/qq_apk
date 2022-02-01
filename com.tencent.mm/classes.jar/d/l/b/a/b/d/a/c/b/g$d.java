@@ -8,12 +8,12 @@ final class g$d
   extends q
   implements b<String, String>
 {
-  public static final d NgQ;
+  public static final d NDV;
   
   static
   {
     AppMethodBeat.i(57998);
-    NgQ = new d();
+    NDV = new d();
     AppMethodBeat.o(57998);
   }
   

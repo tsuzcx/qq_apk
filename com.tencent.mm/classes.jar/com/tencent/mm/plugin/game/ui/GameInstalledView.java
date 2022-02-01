@@ -16,8 +16,8 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aw.a.a.c.a;
-import com.tencent.mm.aw.q;
+import com.tencent.mm.av.a.a.c.a;
+import com.tencent.mm.av.q;
 import com.tencent.mm.g.c.y;
 import com.tencent.mm.plugin.downloader.model.FileDownloadTaskInfo;
 import com.tencent.mm.plugin.downloader.model.g.a;
@@ -25,10 +25,10 @@ import com.tencent.mm.plugin.game.model.k;
 import com.tencent.mm.plugin.game.model.k.a;
 import com.tencent.mm.pluginsdk.model.app.r;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.vfs.i;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.vfs.o;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -39,32 +39,32 @@ public class GameInstalledView
   extends LinearLayout
   implements View.OnClickListener
 {
-  private static Map<String, Integer> upT;
-  private static int upV;
-  private static int upW;
+  private static Map<String, Integer> uBp;
+  private static int uBr;
+  private static int uBs;
   private int count;
   private Context mContext;
-  private LinkedList<com.tencent.mm.pluginsdk.model.app.g> udU;
-  private int udq;
-  private k.a unm;
-  private LinearLayout upP;
-  private ImageView upQ;
-  private TextView upR;
-  private TextView upS;
-  private final DisplayMetrics upU;
-  private int upX;
-  private int upY;
-  private int upZ;
-  private a uqa;
-  private LinkedList<com.tencent.mm.plugin.game.model.c> uqb;
-  LinearLayout.LayoutParams uqc;
+  private LinearLayout uBl;
+  private ImageView uBm;
+  private TextView uBn;
+  private TextView uBo;
+  private final DisplayMetrics uBq;
+  private int uBt;
+  private int uBu;
+  private int uBv;
+  private a uBw;
+  private LinkedList<com.tencent.mm.plugin.game.model.c> uBx;
+  LinearLayout.LayoutParams uBy;
+  private int uoy;
+  private LinkedList<com.tencent.mm.pluginsdk.model.app.g> upc;
+  private k.a uyI;
   
   static
   {
     AppMethodBeat.i(42192);
-    upT = new HashMap();
-    upV = 6;
-    upW = 7;
+    uBp = new HashMap();
+    uBr = 6;
+    uBs = 7;
     AppMethodBeat.o(42192);
   }
   
@@ -72,15 +72,15 @@ public class GameInstalledView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(42186);
-    this.udU = new LinkedList();
-    this.upU = new DisplayMetrics();
-    this.upX = 4;
+    this.upc = new LinkedList();
+    this.uBq = new DisplayMetrics();
+    this.uBt = 4;
     this.count = 0;
-    this.udq = 0;
-    this.upY = 1;
-    this.upZ = 999;
-    this.uqc = new LinearLayout.LayoutParams(-1, -2);
-    this.unm = new k.a()
+    this.uoy = 0;
+    this.uBu = 1;
+    this.uBv = 999;
+    this.uBy = new LinearLayout.LayoutParams(-1, -2);
+    this.uyI = new k.a()
     {
       public final void e(int paramAnonymousInt, String paramAnonymousString, boolean paramAnonymousBoolean)
       {
@@ -94,7 +94,7 @@ public class GameInstalledView
           return;
           AppMethodBeat.o(42185);
           return;
-          ((com.tencent.mm.plugin.game.api.e)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.game.api.e.class)).cWF().init(GameInstalledView.d(GameInstalledView.this));
+          ((com.tencent.mm.plugin.game.api.e)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.game.api.e.class)).cZj().init(GameInstalledView.d(GameInstalledView.this));
           GameInstalledView.this.refresh(false);
         }
       }
@@ -103,17 +103,17 @@ public class GameInstalledView
     AppMethodBeat.o(42186);
   }
   
-  private void cZZ()
+  private void dcK()
   {
     AppMethodBeat.i(42189);
-    if (bt.hj(this.udU))
+    if (bu.ht(this.upc))
     {
       setVisibility(8);
       AppMethodBeat.o(42189);
       return;
     }
     setVisibility(0);
-    this.upP.removeAllViews();
+    this.uBl.removeAllViews();
     this.count = 0;
     Object localObject1 = (LayoutInflater)getContext().getSystemService("layout_inflater");
     int j;
@@ -124,118 +124,118 @@ public class GameInstalledView
     Object localObject3;
     Object localObject4;
     Object localObject5;
-    if (this.udU.size() >= this.upX - 1)
+    if (this.upc.size() >= this.uBt - 1)
     {
-      upW = 7;
-      upV = 6;
-      j = BackwardSupportUtil.b.g(this.mContext, (upV << 1) + 84);
-      ((WindowManager)this.mContext.getSystemService("window")).getDefaultDisplay().getMetrics(this.upU);
-      i = (int)(this.upU.widthPixels * 160 / this.upU.densityDpi);
-      this.upX = ((this.upU.widthPixels - 1) / j + 1);
-      if (this.upX == 3) {
-        upW = 3;
+      uBs = 7;
+      uBr = 6;
+      j = BackwardSupportUtil.b.h(this.mContext, (uBr << 1) + 84);
+      ((WindowManager)this.mContext.getSystemService("window")).getDefaultDisplay().getMetrics(this.uBq);
+      i = (int)(this.uBq.widthPixels * 160 / this.uBq.densityDpi);
+      this.uBt = ((this.uBq.widthPixels - 1) / j + 1);
+      if (this.uBt == 3) {
+        uBs = 3;
       }
-      j = (upV << 1) + 84;
-      k = upV + 6 + upW;
+      j = (uBr << 1) + 84;
+      k = uBr + 6 + uBs;
       i = (i - 16) % j;
       if (i < k)
       {
-        upV -= 2;
-        BackwardSupportUtil.b.g(this.mContext, (upV << 1) + 84);
+        uBr -= 2;
+        BackwardSupportUtil.b.h(this.mContext, (uBr << 1) + 84);
       }
     }
     else
     {
-      this.uqc.setMargins(BackwardSupportUtil.b.g(this.mContext, upV), 0, BackwardSupportUtil.b.g(this.mContext, upV), 0);
-      localObject2 = this.udU.iterator();
+      this.uBy.setMargins(BackwardSupportUtil.b.h(this.mContext, uBr), 0, BackwardSupportUtil.b.h(this.mContext, uBr), 0);
+      localObject2 = this.upc.iterator();
       if (!((Iterator)localObject2).hasNext()) {
         break label700;
       }
       localObject3 = (com.tencent.mm.pluginsdk.model.app.g)((Iterator)localObject2).next();
       localObject4 = ((LayoutInflater)localObject1).inflate(2131494485, null);
-      this.upQ = ((ImageView)((View)localObject4).findViewById(2131300462));
-      this.upR = ((TextView)((View)localObject4).findViewById(2131300524));
-      this.upS = ((TextView)((View)localObject4).findViewById(2131300548));
-      localObject5 = com.tencent.mm.pluginsdk.model.app.h.c(((com.tencent.mm.pluginsdk.model.app.g)localObject3).field_appId, 1, com.tencent.mm.cc.a.getDensity(this.mContext));
+      this.uBm = ((ImageView)((View)localObject4).findViewById(2131300462));
+      this.uBn = ((TextView)((View)localObject4).findViewById(2131300524));
+      this.uBo = ((TextView)((View)localObject4).findViewById(2131300548));
+      localObject5 = com.tencent.mm.pluginsdk.model.app.h.c(((com.tencent.mm.pluginsdk.model.app.g)localObject3).field_appId, 1, com.tencent.mm.cb.a.getDensity(this.mContext));
       if (localObject5 == null) {
         break label582;
       }
-      this.upQ.setImageBitmap((Bitmap)localObject5);
+      this.uBm.setImageBitmap((Bitmap)localObject5);
       label380:
-      this.upR.setText(com.tencent.mm.pluginsdk.model.app.h.a(this.mContext, (com.tencent.mm.pluginsdk.model.app.g)localObject3, null));
+      this.uBn.setText(com.tencent.mm.pluginsdk.model.app.h.a(this.mContext, (com.tencent.mm.pluginsdk.model.app.g)localObject3, null));
       if (!com.tencent.mm.pluginsdk.model.app.h.a(this.mContext, (com.tencent.mm.pluginsdk.model.app.g)localObject3)) {
         break label667;
       }
-      i = com.tencent.mm.plugin.game.f.c.ams(((com.tencent.mm.pluginsdk.model.app.g)localObject3).field_packageName);
-      if ((!upT.containsKey(((com.tencent.mm.pluginsdk.model.app.g)localObject3).field_appId)) || (((Integer)upT.get(((com.tencent.mm.pluginsdk.model.app.g)localObject3).field_appId)).intValue() <= i)) {
+      i = com.tencent.mm.plugin.game.f.c.anq(((com.tencent.mm.pluginsdk.model.app.g)localObject3).field_packageName);
+      if ((!uBp.containsKey(((com.tencent.mm.pluginsdk.model.app.g)localObject3).field_appId)) || (((Integer)uBp.get(((com.tencent.mm.pluginsdk.model.app.g)localObject3).field_appId)).intValue() <= i)) {
         break label608;
       }
-      localObject5 = com.tencent.mm.plugin.downloader.model.f.ccl().aai(((com.tencent.mm.pluginsdk.model.app.g)localObject3).field_appId);
-      this.upS.setTextColor(this.mContext.getResources().getColor(2131100436));
+      localObject5 = com.tencent.mm.plugin.downloader.model.f.cdA().aaZ(((com.tencent.mm.pluginsdk.model.app.g)localObject3).field_appId);
+      this.uBo.setTextColor(this.mContext.getResources().getColor(2131100436));
       if (((FileDownloadTaskInfo)localObject5).status != 1) {
         break label595;
       }
-      this.upS.setText(2131759832);
+      this.uBo.setText(2131759832);
     }
     label667:
     for (;;)
     {
       ((View)localObject4).setTag(localObject3);
       ((View)localObject4).setOnClickListener(this);
-      this.upP.addView((View)localObject4, this.uqc);
+      this.uBl.addView((View)localObject4, this.uBy);
       break label274;
       if (i <= j - k) {
         break;
       }
-      upV = (i - (j >> 1)) / this.upX + upV;
-      BackwardSupportUtil.b.g(this.mContext, (upV << 1) + 84);
+      uBr = (i - (j >> 1)) / this.uBt + uBr;
+      BackwardSupportUtil.b.h(this.mContext, (uBr << 1) + 84);
       break;
       label582:
-      this.upQ.setImageResource(2131231052);
+      this.uBm.setImageResource(2131231052);
       break label380;
       label595:
-      this.upS.setText(2131759831);
+      this.uBo.setText(2131759831);
       continue;
       label608:
-      if (!bt.isNullOrNil(((y)localObject3).eHx))
+      if (!bu.isNullOrNil(((y)localObject3).eJg))
       {
-        this.upS.setText(((y)localObject3).eHx);
-        this.upS.setTextColor(this.mContext.getResources().getColor(2131100453));
+        this.uBo.setText(((y)localObject3).eJg);
+        this.uBo.setTextColor(this.mContext.getResources().getColor(2131100453));
       }
       else
       {
-        this.upS.setText("");
+        this.uBo.setText("");
         continue;
-        this.upS.setTextColor(this.mContext.getResources().getColor(2131100436));
-        this.upS.setText(2131759906);
+        this.uBo.setTextColor(this.mContext.getResources().getColor(2131100436));
+        this.uBo.setText(2131759906);
       }
     }
     label700:
-    if ((this.uqa != null) && (this.uqa.iconUrl != null) && (this.uqa.title != null))
+    if ((this.uBw != null) && (this.uBw.iconUrl != null) && (this.uBw.title != null))
     {
       localObject1 = ((LayoutInflater)localObject1).inflate(2131494485, null);
-      this.upQ = ((ImageView)((View)localObject1).findViewById(2131300462));
-      this.upR = ((TextView)((View)localObject1).findViewById(2131300524));
-      this.upS = ((TextView)((View)localObject1).findViewById(2131300548));
-      localObject2 = q.aIJ();
-      localObject3 = this.uqa.iconUrl;
-      localObject4 = this.upQ;
+      this.uBm = ((ImageView)((View)localObject1).findViewById(2131300462));
+      this.uBn = ((TextView)((View)localObject1).findViewById(2131300524));
+      this.uBo = ((TextView)((View)localObject1).findViewById(2131300548));
+      localObject2 = q.aJb();
+      localObject3 = this.uBw.iconUrl;
+      localObject4 = this.uBm;
       localObject5 = new c.a();
-      ((c.a)localObject5).idq = true;
-      ((com.tencent.mm.aw.a.a)localObject2).a((String)localObject3, (ImageView)localObject4, ((c.a)localObject5).aJc(), new com.tencent.mm.aw.a.c.h()
+      ((c.a)localObject5).igj = true;
+      ((com.tencent.mm.av.a.a)localObject2).a((String)localObject3, (ImageView)localObject4, ((c.a)localObject5).aJu(), new com.tencent.mm.av.a.c.h()
       {
-        public final Bitmap a(String paramAnonymousString, View paramAnonymousView, com.tencent.mm.aw.a.d.b paramAnonymousb)
+        public final Bitmap a(String paramAnonymousString, View paramAnonymousView, com.tencent.mm.av.a.d.b paramAnonymousb)
         {
           return null;
         }
         
         public final void b(String paramAnonymousString, View paramAnonymousView) {}
         
-        public final void b(String paramAnonymousString, View paramAnonymousView, com.tencent.mm.aw.a.d.b paramAnonymousb)
+        public final void b(String paramAnonymousString, View paramAnonymousView, com.tencent.mm.av.a.d.b paramAnonymousb)
         {
           AppMethodBeat.i(42184);
           if (paramAnonymousb.status == 0) {
-            aq.f(new Runnable()
+            ar.f(new Runnable()
             {
               public final void run()
               {
@@ -243,7 +243,7 @@ public class GameInstalledView
                 if (GameInstalledView.a(GameInstalledView.this) == 0)
                 {
                   GameInstalledView.b(GameInstalledView.this);
-                  GameInstalledView.c(GameInstalledView.this).addView(GameInstalledView.1.this.val$view, GameInstalledView.this.uqc);
+                  GameInstalledView.c(GameInstalledView.this).addView(GameInstalledView.1.this.val$view, GameInstalledView.this.uBy);
                 }
                 AppMethodBeat.o(42183);
               }
@@ -252,9 +252,9 @@ public class GameInstalledView
           AppMethodBeat.o(42184);
         }
       });
-      this.upR.setText(this.uqa.title);
-      this.upS.setVisibility(8);
-      ((View)localObject1).setTag(this.uqa);
+      this.uBn.setText(this.uBw.title);
+      this.uBo.setVisibility(8);
+      ((View)localObject1).setTag(this.uBw);
       ((View)localObject1).setOnClickListener(this);
     }
     AppMethodBeat.o(42189);
@@ -265,7 +265,7 @@ public class GameInstalledView
     AppMethodBeat.i(42191);
     Object localObject = new com.tencent.mm.hellhoundlib.b.b();
     ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramView);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/game/ui/GameInstalledView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahq());
+    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/game/ui/GameInstalledView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahF());
     if (paramView.getTag() == null)
     {
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/game/ui/GameInstalledView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
@@ -275,21 +275,21 @@ public class GameInstalledView
     if ((paramView.getTag() instanceof com.tencent.mm.pluginsdk.model.app.g))
     {
       paramView = (com.tencent.mm.pluginsdk.model.app.g)paramView.getTag();
-      if ((paramView == null) || (bt.isNullOrNil(paramView.field_appId)))
+      if ((paramView == null) || (bu.isNullOrNil(paramView.field_appId)))
       {
-        ad.e("MicroMsg.GameInstalledView", "appinfo is null or appid is null");
+        ae.e("MicroMsg.GameInstalledView", "appinfo is null or appid is null");
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/game/ui/GameInstalledView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(42191);
         return;
       }
       if (com.tencent.mm.pluginsdk.model.app.h.a(this.mContext, paramView))
       {
-        i = com.tencent.mm.plugin.game.f.c.ams(paramView.field_packageName);
-        if ((upT.containsKey(paramView.field_appId)) && (((Integer)upT.get(paramView.field_appId)).intValue() > i))
+        i = com.tencent.mm.plugin.game.f.c.anq(paramView.field_packageName);
+        if ((uBp.containsKey(paramView.field_appId)) && (((Integer)uBp.get(paramView.field_appId)).intValue() > i))
         {
-          localObject = com.tencent.mm.plugin.downloader.model.f.ccl().aai(paramView.field_appId);
+          localObject = com.tencent.mm.plugin.downloader.model.f.cdA().aaZ(paramView.field_appId);
           if (((FileDownloadTaskInfo)localObject).status == 1) {
-            com.tencent.mm.plugin.downloader.model.f.ccl().tR(((FileDownloadTaskInfo)localObject).id);
+            com.tencent.mm.plugin.downloader.model.f.cdA().ui(((FileDownloadTaskInfo)localObject).id);
           }
         }
         for (;;)
@@ -300,35 +300,35 @@ public class GameInstalledView
           return;
           if (((FileDownloadTaskInfo)localObject).status == 3)
           {
-            if ((i.fv(((FileDownloadTaskInfo)localObject).path)) && (com.tencent.mm.plugin.game.f.c.amt(((FileDownloadTaskInfo)localObject).path) > i)) {
+            if ((o.fB(((FileDownloadTaskInfo)localObject).path)) && (com.tencent.mm.plugin.game.f.c.anr(((FileDownloadTaskInfo)localObject).path) > i)) {
               r.b(this.mContext, ((FileDownloadTaskInfo)localObject).path, null, false);
             } else {
-              com.tencent.mm.plugin.downloader.model.f.ccl().tR(((FileDownloadTaskInfo)localObject).id);
+              com.tencent.mm.plugin.downloader.model.f.cdA().ui(((FileDownloadTaskInfo)localObject).id);
             }
           }
           else
           {
-            k.n(paramView.eHt, paramView.eHy, paramView.field_appId, "");
+            k.n(paramView.eJc, paramView.eJh, paramView.field_appId, "");
             localObject = new g.a();
-            ((g.a)localObject).aak(paramView.eHt);
-            ((g.a)localObject).aam(com.tencent.mm.pluginsdk.model.app.h.a(this.mContext, paramView, null));
+            ((g.a)localObject).abb(paramView.eJc);
+            ((g.a)localObject).abd(com.tencent.mm.pluginsdk.model.app.h.a(this.mContext, paramView, null));
             ((g.a)localObject).setAppId(paramView.field_appId);
-            ((g.a)localObject).aan(paramView.eHy);
-            ((g.a)localObject).jQ(true);
-            ((g.a)localObject).Bp(1);
-            com.tencent.mm.plugin.downloader.model.f.ccl().a(((g.a)localObject).pmN);
+            ((g.a)localObject).abe(paramView.eJh);
+            ((g.a)localObject).jP(true);
+            ((g.a)localObject).BB(1);
+            com.tencent.mm.plugin.downloader.model.f.cdA().a(((g.a)localObject).ptu);
             continue;
-            com.tencent.mm.plugin.game.model.e.ai(this.mContext, paramView.field_appId);
-            com.tencent.mm.game.report.f.a(this.mContext, 10, 1002, this.upY, 3, 0, paramView.field_appId, this.udq, 0, null, null, null);
-            this.udU.remove(paramView);
-            this.udU.addFirst(paramView);
+            com.tencent.mm.plugin.game.model.e.ak(this.mContext, paramView.field_appId);
+            com.tencent.mm.game.report.f.a(this.mContext, 10, 1002, this.uBu, 3, 0, paramView.field_appId, this.uoy, 0, null, null, null);
+            this.upc.remove(paramView);
+            this.upc.addFirst(paramView);
           }
         }
       }
-      localObject = com.tencent.mm.plugin.downloader.model.f.ccl().aai(paramView.field_appId);
+      localObject = com.tencent.mm.plugin.downloader.model.f.cdA().aaZ(paramView.field_appId);
       if ((localObject != null) && (((FileDownloadTaskInfo)localObject).status == 3))
       {
-        if ((!bt.isNullOrNil(((FileDownloadTaskInfo)localObject).path)) && (i.fv(((FileDownloadTaskInfo)localObject).path))) {
+        if ((!bu.isNullOrNil(((FileDownloadTaskInfo)localObject).path)) && (o.fB(((FileDownloadTaskInfo)localObject).path))) {
           r.b(this.mContext, ((FileDownloadTaskInfo)localObject).path, null, false);
         }
         for (;;)
@@ -336,12 +336,12 @@ public class GameInstalledView
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/game/ui/GameInstalledView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(42191);
           return;
-          ad.e("MicroMsg.GameInstalledView", "file status is success, while the download file not exsit:[%s]", new Object[] { ((FileDownloadTaskInfo)localObject).path });
-          com.tencent.mm.plugin.downloader.model.f.ccl().tR(((FileDownloadTaskInfo)localObject).id);
+          ae.e("MicroMsg.GameInstalledView", "file status is success, while the download file not exsit:[%s]", new Object[] { ((FileDownloadTaskInfo)localObject).path });
+          com.tencent.mm.plugin.downloader.model.f.cdA().ui(((FileDownloadTaskInfo)localObject).id);
           refresh(false);
         }
       }
-      ad.i("MicroMsg.GameInstalledView", "app not installed or download sucess : [%s]", new Object[] { paramView.field_appName });
+      ae.i("MicroMsg.GameInstalledView", "app not installed or download sucess : [%s]", new Object[] { paramView.field_appName });
       refresh(false);
     }
     while (!(paramView.getTag() instanceof a))
@@ -352,19 +352,19 @@ public class GameInstalledView
     }
     localObject = (a)paramView.getTag();
     paramView = new Intent();
-    if (bt.isNullOrNil(((a)localObject).kwk))
+    if (bu.isNullOrNil(((a)localObject).kzz))
     {
       paramView.setClass(this.mContext, GameLibraryUI.class);
       paramView.putExtra("game_report_from_scene", 1002);
       localObject = this.mContext;
       paramView = new com.tencent.mm.hellhoundlib.b.a().bc(paramView);
-      com.tencent.mm.hellhoundlib.a.a.a(localObject, paramView.ahp(), "com/tencent/mm/plugin/game/ui/GameInstalledView", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      ((Context)localObject).startActivity((Intent)paramView.mq(0));
+      com.tencent.mm.hellhoundlib.a.a.a(localObject, paramView.ahE(), "com/tencent/mm/plugin/game/ui/GameInstalledView", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      ((Context)localObject).startActivity((Intent)paramView.mt(0));
       com.tencent.mm.hellhoundlib.a.a.a(localObject, "com/tencent/mm/plugin/game/ui/GameInstalledView", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     }
-    for (int i = 6;; i = com.tencent.mm.plugin.game.f.c.B(this.mContext, ((a)localObject).kwk, "game_center_installed_more"))
+    for (int i = 6;; i = com.tencent.mm.plugin.game.f.c.B(this.mContext, ((a)localObject).kzz, "game_center_installed_more"))
     {
-      com.tencent.mm.game.report.f.a(this.mContext, 10, 1002, this.upZ, i, 0, null, this.udq, 0, null, null, null);
+      com.tencent.mm.game.report.f.a(this.mContext, 10, 1002, this.uBv, i, 0, null, this.uoy, 0, null, null, null);
       break;
     }
   }
@@ -373,15 +373,15 @@ public class GameInstalledView
   {
     AppMethodBeat.i(42187);
     super.onFinishInflate();
-    this.upP = ((LinearLayout)findViewById(2131300473));
-    k.a(this.unm);
+    this.uBl = ((LinearLayout)findViewById(2131300473));
+    k.a(this.uyI);
     AppMethodBeat.o(42187);
   }
   
   public final void refresh(boolean paramBoolean)
   {
     AppMethodBeat.i(42188);
-    if (bt.hj(this.uqb))
+    if (bu.ht(this.uBx))
     {
       setVisibility(8);
       AppMethodBeat.o(42188);
@@ -392,17 +392,17 @@ public class GameInstalledView
     Object localObject2;
     if (paramBoolean)
     {
-      this.udU = com.tencent.mm.plugin.game.model.e.cYz();
-      if ((!bt.hj(this.uqb)) && (!bt.hj(this.udU)))
+      this.upc = com.tencent.mm.plugin.game.model.e.dbj();
+      if ((!bu.ht(this.uBx)) && (!bu.ht(this.upc)))
       {
-        localObject1 = this.uqb.iterator();
+        localObject1 = this.uBx.iterator();
         while (((Iterator)localObject1).hasNext())
         {
           localObject2 = (com.tencent.mm.plugin.game.model.c)((Iterator)localObject1).next();
-          if (this.udU.contains(localObject2))
+          if (this.upc.contains(localObject2))
           {
-            this.udU.remove(localObject2);
-            this.udU.addFirst(localObject2);
+            this.upc.remove(localObject2);
+            this.upc.addFirst(localObject2);
           }
         }
       }
@@ -410,9 +410,9 @@ public class GameInstalledView
     else
     {
       localObject1 = new LinkedList();
-      ((LinkedList)localObject1).addAll(this.udU);
+      ((LinkedList)localObject1).addAll(this.upc);
       Object localObject3 = new LinkedList();
-      ((LinkedList)localObject3).addAll(com.tencent.mm.plugin.game.model.e.cYz());
+      ((LinkedList)localObject3).addAll(com.tencent.mm.plugin.game.model.e.dbj());
       localObject2 = new LinkedList();
       Object localObject4 = ((LinkedList)localObject1).iterator();
       com.tencent.mm.pluginsdk.model.app.g localg;
@@ -452,25 +452,25 @@ public class GameInstalledView
       while (((Iterator)localObject1).hasNext()) {
         ((LinkedList)localObject2).add(com.tencent.mm.pluginsdk.model.app.h.m(((com.tencent.mm.pluginsdk.model.app.g)((Iterator)localObject1).next()).field_appId, true, false));
       }
-      this.udU = ((LinkedList)localObject2);
+      this.upc = ((LinkedList)localObject2);
     }
-    cZZ();
+    dcK();
     AppMethodBeat.o(42188);
   }
   
   public void setInstalledGameInfo(LinkedList<com.tencent.mm.plugin.game.model.c> paramLinkedList)
   {
-    this.uqb = paramLinkedList;
+    this.uBx = paramLinkedList;
   }
   
   public void setMoreGameInfo(a parama)
   {
-    this.uqa = parama;
+    this.uBw = parama;
   }
   
   public void setSourceScene(int paramInt)
   {
-    this.udq = paramInt;
+    this.uoy = paramInt;
   }
   
   public void setVersionCodes(Map<String, Integer> paramMap)
@@ -481,20 +481,20 @@ public class GameInstalledView
       AppMethodBeat.o(42190);
       return;
     }
-    upT = paramMap;
+    uBp = paramMap;
     AppMethodBeat.o(42190);
   }
   
   public static final class a
   {
     public String iconUrl = "";
-    public String kwk = "";
+    public String kzz = "";
     public String title = "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.GameInstalledView
  * JD-Core Version:    0.7.0.1
  */

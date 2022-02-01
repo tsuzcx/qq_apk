@@ -5,13 +5,13 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bs.d;
-import com.tencent.mm.model.ba;
+import com.tencent.mm.br.d;
+import com.tencent.mm.model.bc;
 import com.tencent.mm.platformtools.t;
 import com.tencent.mm.plugin.report.service.g;
 import com.tencent.mm.protocal.GeneralControlWrapper;
 import com.tencent.mm.protocal.JsapiPermissionWrapper;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.base.b;
 
 final class y$5
@@ -22,22 +22,22 @@ final class y$5
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     AppMethodBeat.i(33441);
-    g.yhR.idkeyStat(322L, 23L, 1L, true);
-    g.yhR.f(11098, new Object[] { Integer.valueOf(4023), String.format("%b|%s", new Object[] { Boolean.valueOf(bt.isNullOrNil(this.val$url)), this.val$url }) });
-    ba.hold();
-    if (bt.isNullOrNil(this.val$url))
+    g.yxI.idkeyStat(322L, 23L, 1L, true);
+    g.yxI.f(11098, new Object[] { Integer.valueOf(4023), String.format("%b|%s", new Object[] { Boolean.valueOf(bu.isNullOrNil(this.val$url)), this.val$url }) });
+    bc.hold();
+    if (bu.isNullOrNil(this.val$url))
     {
       paramDialogInterface = this.val$activity;
-      Object localObject = this.Jcr;
+      Object localObject = this.Jxb;
       localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
-      com.tencent.mm.hellhoundlib.a.a.a(paramDialogInterface, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahp(), "com/tencent/mm/ui/MMErrorProcessor$6", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramDialogInterface.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mq(0));
+      com.tencent.mm.hellhoundlib.a.a.a(paramDialogInterface, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahE(), "com/tencent/mm/ui/MMErrorProcessor$6", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramDialogInterface.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mt(0));
       com.tencent.mm.hellhoundlib.a.a.a(paramDialogInterface, "com/tencent/mm/ui/MMErrorProcessor$6", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      b.am(this.val$activity, this.Jcr);
+      b.am(this.val$activity, this.Jxb);
     }
     for (;;)
     {
-      t.cV(this.val$activity);
+      t.cX(this.val$activity);
       AppMethodBeat.o(33441);
       return;
       paramDialogInterface = new Intent();
@@ -46,8 +46,8 @@ final class y$5
       paramDialogInterface.putExtra("show_bottom", false);
       paramDialogInterface.putExtra("needRedirect", false);
       paramDialogInterface.putExtra("neverGetA8Key", true);
-      paramDialogInterface.putExtra("hardcode_jspermission", JsapiPermissionWrapper.FnD);
-      paramDialogInterface.putExtra("hardcode_general_ctrl", GeneralControlWrapper.Fnz);
+      paramDialogInterface.putExtra("hardcode_jspermission", JsapiPermissionWrapper.FGb);
+      paramDialogInterface.putExtra("hardcode_general_ctrl", GeneralControlWrapper.FFX);
       d.b(this.val$activity, "webview", ".ui.tools.WebViewUI", paramDialogInterface);
     }
   }

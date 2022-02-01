@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.appbrand.q.a;
 
-import com.tencent.mm.ac.g;
-import com.tencent.mm.ac.i;
+import com.tencent.mm.ab.g;
+import com.tencent.mm.ab.i;
 
 public abstract class b
   implements a
@@ -15,7 +15,7 @@ public abstract class b
       return null;
     }
     catch (g paramString) {}
-    return paramc.btC();
+    return paramc.bun();
   }
   
   protected abstract void a(i parami, c paramc);
@@ -27,7 +27,7 @@ public abstract class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.q.a.b
  * JD-Core Version:    0.7.0.1
  */

@@ -22,7 +22,7 @@ public final class t
   {
     AppMethodBeat.i(58246);
     p.h(paramab, "$this$mapToJvmType");
-    paramab = (k)aa.a(paramab, (l)m.Njb, y.Njt, (w)x.Nji);
+    paramab = (k)aa.a(paramab, (l)m.NGh, y.NGz, (w)x.NGo);
     AppMethodBeat.o(58246);
     return paramab;
   }
@@ -45,17 +45,17 @@ public final class t
     {
       localStringBuilder.append((String)localObject1);
       localStringBuilder.append("(");
-      localObject1 = paramt.gis().iterator();
+      localObject1 = paramt.gmU().iterator();
       while (((Iterator)localObject1).hasNext())
       {
         localObject2 = (av)((Iterator)localObject1).next();
         p.g(localObject2, "parameter");
-        localObject2 = ((av)localObject2).gju();
+        localObject2 = ((av)localObject2).gnW();
         p.g(localObject2, "parameter.type");
         a(localStringBuilder, (ab)localObject2);
       }
       label119:
-      localObject1 = paramt.giD().sD();
+      localObject1 = paramt.gnf().sD();
       p.g(localObject1, "name.asString()");
     }
     localStringBuilder.append(")");
@@ -80,15 +80,15 @@ public final class t
       AppMethodBeat.o(58241);
       return paramt;
       label206:
-      localObject2 = ((d.l.b.a.b.b.a)localObject1).giq();
+      localObject2 = ((d.l.b.a.b.b.a)localObject1).gmS();
       if (localObject2 == null) {
-        p.gfZ();
+        p.gkB();
       }
       if (g.C((ab)localObject2))
       {
-        localObject2 = ((d.l.b.a.b.b.a)localObject1).giq();
+        localObject2 = ((d.l.b.a.b.b.a)localObject1).gmS();
         if (localObject2 == null) {
-          p.gfZ();
+          p.gkB();
         }
         if ((!bc.aF((ab)localObject2)) && (!(localObject1 instanceof ai)))
         {
@@ -99,9 +99,9 @@ public final class t
       i = 0;
       break;
       label274:
-      paramt = paramt.giq();
+      paramt = paramt.gmS();
       if (paramt == null) {
-        p.gfZ();
+        p.gkB();
       }
       p.g(paramt, "returnType!!");
       a(localStringBuilder, paramt);
@@ -125,18 +125,18 @@ public final class t
       AppMethodBeat.o(58243);
       return false;
     }
-    if ((((d.l.b.a.b.b.t)parama).gis().size() != 1) || (d.l.b.a.b.d.a.t.r((d.l.b.a.b.b.b)parama)) || ((p.i(((d.l.b.a.b.b.t)parama).giD().sD(), "remove") ^ true)))
+    if ((((d.l.b.a.b.b.t)parama).gmU().size() != 1) || (d.l.b.a.b.d.a.t.r((d.l.b.a.b.b.b)parama)) || ((p.i(((d.l.b.a.b.b.t)parama).gnf().sD(), "remove") ^ true)))
     {
       AppMethodBeat.o(58243);
       return false;
     }
-    Object localObject1 = ((d.l.b.a.b.b.t)parama).giP();
+    Object localObject1 = ((d.l.b.a.b.b.t)parama).gnr();
     p.g(localObject1, "f.original");
-    localObject1 = ((d.l.b.a.b.b.t)localObject1).gis();
+    localObject1 = ((d.l.b.a.b.b.t)localObject1).gmU();
     p.g(localObject1, "f.original.valueParameters");
-    localObject1 = j.jg((List)localObject1);
+    localObject1 = j.jp((List)localObject1);
     p.g(localObject1, "f.original.valueParameters.single()");
-    localObject1 = ((av)localObject1).gju();
+    localObject1 = ((av)localObject1).gnW();
     p.g(localObject1, "f.original.valueParameters.single().type");
     Object localObject3 = V((ab)localObject1);
     localObject1 = localObject3;
@@ -146,9 +146,9 @@ public final class t
     localObject3 = (k.c)localObject1;
     localObject1 = localObject2;
     if (localObject3 != null) {
-      localObject1 = ((k.c)localObject3).Nja;
+      localObject1 = ((k.c)localObject3).NGg;
     }
-    if (localObject1 != d.l.b.a.b.j.e.d.NwX)
+    if (localObject1 != d.l.b.a.b.j.e.d.NUd)
     {
       AppMethodBeat.o(58243);
       return false;
@@ -159,18 +159,18 @@ public final class t
       AppMethodBeat.o(58243);
       return false;
     }
-    localObject1 = parama.giP();
+    localObject1 = parama.gnr();
     p.g(localObject1, "overridden.original");
-    localObject1 = ((d.l.b.a.b.b.t)localObject1).gis();
+    localObject1 = ((d.l.b.a.b.b.t)localObject1).gmU();
     p.g(localObject1, "overridden.original.valueParameters");
-    localObject1 = j.jg((List)localObject1);
+    localObject1 = j.jp((List)localObject1);
     p.g(localObject1, "overridden.original.valueParameters.single()");
-    localObject1 = ((av)localObject1).gju();
+    localObject1 = ((av)localObject1).gnW();
     p.g(localObject1, "overridden.original.valueParameters.single().type");
     localObject1 = V((ab)localObject1);
-    parama = parama.ghs();
+    parama = parama.glU();
     p.g(parama, "overridden.containingDeclaration");
-    if ((p.i(d.l.b.a.b.j.d.a.q(parama), g.MQb.MRa.grf())) && ((localObject1 instanceof k.b)) && (p.i(((k.b)localObject1).NiZ, "java/lang/Object")))
+    if ((p.i(d.l.b.a.b.j.d.a.q(parama), g.Nng.Nof.gvH())) && ((localObject1 instanceof k.b)) && (p.i(((k.b)localObject1).NGf, "java/lang/Object")))
     {
       AppMethodBeat.o(58243);
       return true;
@@ -183,13 +183,13 @@ public final class t
   {
     AppMethodBeat.i(58244);
     p.h(parama, "$this$computeJvmSignature");
-    Object localObject1 = v.Njg;
+    Object localObject1 = v.NGm;
     if (c.m((d.l.b.a.b.b.l)parama))
     {
       AppMethodBeat.o(58244);
       return null;
     }
-    Object localObject2 = parama.ghs();
+    Object localObject2 = parama.glU();
     localObject1 = localObject2;
     if (!(localObject2 instanceof e)) {
       localObject1 = null;
@@ -200,14 +200,14 @@ public final class t
       AppMethodBeat.o(58244);
       return null;
     }
-    localObject1 = ((e)localObject2).giD();
+    localObject1 = ((e)localObject2).gnf();
     p.g(localObject1, "classDescriptor.name");
-    if (((f)localObject1).Nqp)
+    if (((f)localObject1).NNv)
     {
       AppMethodBeat.o(58244);
       return null;
     }
-    localObject1 = parama.gir();
+    localObject1 = parama.gmT();
     parama = (d.l.b.a.b.b.a)localObject1;
     if (!(localObject1 instanceof am)) {
       parama = null;
@@ -225,7 +225,7 @@ public final class t
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.d.b.t
  * JD-Core Version:    0.7.0.1
  */

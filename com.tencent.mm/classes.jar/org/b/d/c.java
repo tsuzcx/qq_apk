@@ -7,20 +7,20 @@ import java.util.Map;
 public final class c
   extends f
 {
-  public Map<String, String> NWi;
+  public Map<String, String> Otn;
   
   public c(j paramj, String paramString)
   {
     super(paramj, paramString);
     AppMethodBeat.i(40548);
-    this.NWi = new HashMap();
+    this.Otn = new HashMap();
     AppMethodBeat.o(40548);
   }
   
-  public final void nM(String paramString1, String paramString2)
+  public final void nS(String paramString1, String paramString2)
   {
     AppMethodBeat.i(40549);
-    Map localMap = this.NWi;
+    Map localMap = this.Otn;
     if ((paramString1.startsWith("oauth_")) || (paramString1.equals("scope")))
     {
       localMap.put(paramString1, paramString2);
@@ -35,7 +35,7 @@ public final class c
   public final String toString()
   {
     AppMethodBeat.i(40550);
-    String str = String.format("@OAuthRequest(%s, %s)", new Object[] { super.gyw(), super.getUrl() });
+    String str = String.format("@OAuthRequest(%s, %s)", new Object[] { super.gCY(), super.getUrl() });
     AppMethodBeat.o(40550);
     return str;
   }

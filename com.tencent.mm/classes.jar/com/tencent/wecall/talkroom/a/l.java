@@ -11,9 +11,9 @@ import com.tencent.wecall.talkroom.model.c;
 public final class l
   extends d
 {
-  public long Clq;
-  public int uRy;
-  public String ukT;
+  public long CCU;
+  public String uwq;
+  public int vdk;
   
   public l(String paramString1, int paramInt, long paramLong, String paramString2)
   {
@@ -23,16 +23,16 @@ public final class l
     try
     {
       localh.groupId = paramString1;
-      this.ukT = paramString1;
+      this.uwq = paramString1;
       localh.roomId = paramInt;
-      this.uRy = paramInt;
-      localh.uLt = paramLong;
-      this.Clq = paramLong;
-      localh.fSO = paramString2;
+      this.vdk = paramInt;
+      localh.uXg = paramLong;
+      this.CCU = paramLong;
+      localh.fUU = paramString2;
       localh.timestamp = System.currentTimeMillis();
-      b.i("MicroMsg.Voip", new Object[] { "roomId: %d, roomKey: %d, groupId: %s, ownerUserName: %s, timestamp: %d", Integer.valueOf(localh.roomId), Long.valueOf(localh.uLt), localh.groupId, localh.fSO, Long.valueOf(localh.timestamp) });
+      b.i("MicroMsg.Voip", new Object[] { "roomId: %d, roomKey: %d, groupId: %s, ownerUserName: %s, timestamp: %d", Integer.valueOf(localh.roomId), Long.valueOf(localh.uXg), localh.groupId, localh.fUU, Long.valueOf(localh.timestamp) });
       this.mNetType = 3;
-      this.LFq = c.fZv().bac(paramString1);
+      this.Mcu = c.gdW().bbF(paramString1);
       c(245, localh);
       AppMethodBeat.o(62540);
       return;
@@ -46,7 +46,7 @@ public final class l
     }
   }
   
-  public final Object cI(byte[] paramArrayOfByte)
+  public final Object cL(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(62541);
     b.d("MicroMsg.Voip", new Object[] { this.TAG2, "data2Resp" });
@@ -69,7 +69,7 @@ public final class l
     }
   }
   
-  public final String fSQ()
+  public final String fXq()
   {
     return "CsCmd.Cmd_V_CSSubscribeLargeVideoReq";
   }

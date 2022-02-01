@@ -10,9 +10,9 @@ import java.util.Map;
 public final class m
   implements b<l>
 {
-  protected l iTk;
-  public final a iTl;
-  public final b iTm;
+  protected l iWd;
+  public final a iWe;
+  public final b iWf;
   
   public m()
   {
@@ -24,15 +24,15 @@ public final class m
   private m(l paraml)
   {
     AppMethodBeat.i(63369);
-    this.iTl = new a();
-    this.iTm = new b();
-    this.iTk = paraml;
+    this.iWe = new a();
+    this.iWf = new b();
+    this.iWd = paraml;
     AppMethodBeat.o(63369);
   }
   
-  public final l aRj()
+  public final l aRI()
   {
-    return this.iTk;
+    return this.iWd;
   }
   
   public final class a
@@ -40,7 +40,7 @@ public final class m
   {
     public a() {}
     
-    public final String Wr()
+    public final String Wz()
     {
       return "Vending.LOGIC";
     }
@@ -51,7 +51,7 @@ public final class m
   {
     public b() {}
     
-    public final String Wr()
+    public final String Wz()
     {
       return "Vending.LOGIC";
     }

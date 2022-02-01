@@ -6,7 +6,7 @@ import d.l;
 import d.z;
 import java.util.ArrayList;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "changed", "Ljava/util/ArrayList;", "", "Lkotlin/collections/ArrayList;", "invoke", "com/tencent/mm/plugin/appbrand/widget/dialog/WxaUserInfoListAdapter$onBindViewHolder$1$1"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "changed", "Ljava/util/ArrayList;", "", "Lkotlin/collections/ArrayList;", "invoke", "com/tencent/mm/plugin/appbrand/widget/dialog/WxaUserInfoListAdapter$onBindViewHolder$1$1"})
 final class o$e
   extends q
   implements b<ArrayList<Integer>, z>

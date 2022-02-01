@@ -2,12 +2,12 @@ package com.tencent.mm.plugin.appbrand.jsapi.q;
 
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/pip/AppBrandPipJsApiEventFactory;", "", "createEnterPipJsApiEvent", "Lcom/tencent/mm/plugin/appbrand/jsapi/pip/AppBrandPipEvent;", "viewId", "", "createLeavePipJsApiEvent", "luggage-wxa-app_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsapi/pip/AppBrandPipJsApiEventFactory;", "", "createEnterPipJsApiEvent", "Lcom/tencent/mm/plugin/appbrand/jsapi/pip/AppBrandPipEvent;", "viewId", "", "createLeavePipJsApiEvent", "luggage-wxa-app_release"})
 public abstract interface c
 {
-  public abstract a gG(int paramInt);
-  
   public abstract a gH(int paramInt);
+  
+  public abstract a gI(int paramInt);
 }
 
 

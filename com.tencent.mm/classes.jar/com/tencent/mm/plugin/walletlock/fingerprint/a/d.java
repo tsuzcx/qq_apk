@@ -12,12 +12,12 @@ public abstract interface d
   
   public static abstract interface a
   {
-    public abstract void bc(int paramInt, String paramString);
+    public abstract void bb(int paramInt, String paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.walletlock.fingerprint.a.d
  * JD-Core Version:    0.7.0.1
  */

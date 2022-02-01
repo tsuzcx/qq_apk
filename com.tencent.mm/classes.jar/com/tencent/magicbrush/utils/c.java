@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-@l(gfx={1, 1, 13}, gfy={""}, gfz={"Lcom/tencent/magicbrush/utils/ListenerList;", "T", "", "()V", "listeners", "", "add", "", "l", "(Ljava/lang/Object;)V", "clear", "dispatch", "", "R", "block", "Lkotlin/Function1;", "dispatchNoThrow", "default", "(Ljava/lang/Object;Lkotlin/jvm/functions/Function1;)Ljava/util/List;", "remove", "lib-magicbrush-nano_release"})
+@l(gjZ={1, 1, 13}, gka={""}, gkb={"Lcom/tencent/magicbrush/utils/ListenerList;", "T", "", "()V", "listeners", "", "add", "", "l", "(Ljava/lang/Object;)V", "clear", "dispatch", "", "R", "block", "Lkotlin/Function1;", "dispatchNoThrow", "default", "(Ljava/lang/Object;Lkotlin/jvm/functions/Function1;)Ljava/util/List;", "remove", "lib-magicbrush-nano_release"})
 public final class c<T>
 {
   public final List<T> listeners;
@@ -45,7 +45,7 @@ public final class c<T>
         ((List)localObject1).add(((Iterator)localObject2).next());
       }
     }
-    Object localObject2 = z.MKo;
+    Object localObject2 = z.Nhr;
     ??? = (List)new ArrayList();
     localObject1 = ((Iterable)localObject1).iterator();
     while (((Iterator)localObject1).hasNext()) {
@@ -69,13 +69,13 @@ public final class c<T>
     synchronized (this.listeners)
     {
       this.listeners.clear();
-      z localz = z.MKo;
+      z localz = z.Nhr;
       AppMethodBeat.o(140290);
       return;
     }
   }
   
-  @l(gfx={1, 1, 13}, gfy={""}, gfz={"<anonymous>", "", "T", "it", "invoke", "(Ljava/lang/Object;)V"})
+  @l(gjZ={1, 1, 13}, gka={""}, gkb={"<anonymous>", "", "T", "it", "invoke", "(Ljava/lang/Object;)V"})
   static final class a
     extends q
     implements b<T, z>
@@ -88,7 +88,7 @@ public final class c<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.magicbrush.utils.c
  * JD-Core Version:    0.7.0.1
  */

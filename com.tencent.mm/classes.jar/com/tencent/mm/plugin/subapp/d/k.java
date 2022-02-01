@@ -3,10 +3,10 @@ package com.tencent.mm.plugin.subapp.d;
 import android.content.ContentValues;
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.gp;
+import com.tencent.mm.g.c.gq;
 import com.tencent.mm.sdk.e.e;
 import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -16,29 +16,29 @@ import junit.framework.Assert;
 public final class k
   extends j<g>
 {
-  private static long Big;
+  private static long BzE;
   public static final String[] SQL_CREATE;
-  private Map<String, c> Bih;
+  private Map<String, c> BzF;
   e db;
   
   static
   {
     AppMethodBeat.i(29002);
     SQL_CREATE = new String[] { j.getCreateSQLs(g.info, "VoiceRemindInfo") };
-    Big = 0L;
+    BzE = 0L;
     AppMethodBeat.o(29002);
   }
   
   public k(e parame)
   {
-    super(parame, g.info, "VoiceRemindInfo", gp.INDEX_CREATE);
+    super(parame, g.info, "VoiceRemindInfo", gq.INDEX_CREATE);
     AppMethodBeat.i(28995);
-    this.Bih = new HashMap();
+    this.BzF = new HashMap();
     this.db = parame;
     AppMethodBeat.o(28995);
   }
   
-  public static String Hg(String paramString)
+  public static String HI(String paramString)
   {
     AppMethodBeat.i(28996);
     long l = System.currentTimeMillis();
@@ -53,14 +53,14 @@ public final class k
     }
     paramString = str1 + l % 10000L;
     paramString = new StringBuilder().append(paramString);
-    l = Big;
-    Big = 1L + l;
+    l = BzE;
+    BzE = 1L + l;
     paramString = l;
     AppMethodBeat.o(28996);
     return paramString;
   }
   
-  public final boolean CA(String paramString)
+  public final boolean Dc(String paramString)
   {
     AppMethodBeat.i(28997);
     if (paramString.length() > 0) {}
@@ -68,21 +68,21 @@ public final class k
     {
       Assert.assertTrue(bool);
       if (this.db.delete("VoiceRemindInfo", "filename= ?", new String[] { paramString }) <= 0) {
-        ad.w("MicroMsg.VoiceRemindStorage", "delete failed, no such file:".concat(String.valueOf(paramString)));
+        ae.w("MicroMsg.VoiceRemindStorage", "delete failed, no such file:".concat(String.valueOf(paramString)));
       }
       AppMethodBeat.o(28997);
       return true;
     }
   }
   
-  public final void HS(String paramString)
+  public final void Iu(String paramString)
   {
     AppMethodBeat.i(28999);
-    c localc = (c)this.Bih.get(paramString);
+    c localc = (c)this.BzF.get(paramString);
     if (localc != null)
     {
-      localc.aNm();
-      this.Bih.remove(paramString);
+      localc.aNK();
+      this.BzF.remove(paramString);
     }
     AppMethodBeat.o(28999);
   }
@@ -105,7 +105,7 @@ public final class k
       if (paramg.size() > 0) {
         break label66;
       }
-      ad.e("MicroMsg.VoiceRemindStorage", "update failed, no values set");
+      ae.e("MicroMsg.VoiceRemindStorage", "update failed, no values set");
     }
     label61:
     label66:
@@ -123,18 +123,18 @@ public final class k
     return true;
   }
   
-  public final c aCA(String paramString)
+  public final c aDT(String paramString)
   {
     AppMethodBeat.i(28998);
-    if (this.Bih.get(paramString) == null) {
-      this.Bih.put(paramString, new c(paramString));
+    if (this.BzF.get(paramString) == null) {
+      this.BzF.put(paramString, new c(paramString));
     }
-    paramString = (c)this.Bih.get(paramString);
+    paramString = (c)this.BzF.get(paramString);
     AppMethodBeat.o(28998);
     return paramString;
   }
   
-  public final g aCB(String paramString)
+  public final g aDU(String paramString)
   {
     AppMethodBeat.i(29000);
     Object localObject1 = null;

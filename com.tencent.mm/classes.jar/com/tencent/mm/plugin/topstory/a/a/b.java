@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public final class b
 {
-  public static void eoP()
+  public static void esw()
   {
     AppMethodBeat.i(91001);
     try
@@ -23,7 +23,7 @@ public final class b
       localIDKey2.SetKey(1);
       localArrayList.add(localIDKey1);
       localArrayList.add(localIDKey2);
-      g.yhR.b(localArrayList, false);
+      g.yxI.b(localArrayList, false);
       AppMethodBeat.o(91001);
       return;
     }

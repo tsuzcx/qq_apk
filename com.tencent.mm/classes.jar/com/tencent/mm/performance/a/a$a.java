@@ -4,7 +4,7 @@ package com.tencent.mm.performance.a;
 public abstract interface a$a
 {
   @Deprecated
-  public abstract void aPN();
+  public abstract void aQm();
 }
 
 

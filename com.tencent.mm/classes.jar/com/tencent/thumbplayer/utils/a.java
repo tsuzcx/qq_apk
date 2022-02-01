@@ -9,9 +9,9 @@ import java.util.regex.PatternSyntaxException;
 
 public final class a
 {
-  public static String aCg(String paramString)
+  public static String aDz(String paramString)
   {
-    AppMethodBeat.i(192149);
+    AppMethodBeat.i(194827);
     for (;;)
     {
       StringBuilder localStringBuilder;
@@ -35,59 +35,59 @@ public final class a
       catch (Exception paramString)
       {
         d.e("TPCommonUtils", paramString.toString());
-        AppMethodBeat.o(192149);
+        AppMethodBeat.o(194827);
         return null;
       }
       paramString = localStringBuilder.toString();
-      AppMethodBeat.o(192149);
+      AppMethodBeat.o(194827);
       return paramString;
       i += 1;
     }
   }
   
-  public static boolean aXf(String paramString)
+  public static boolean aYG(String paramString)
   {
-    AppMethodBeat.i(192150);
+    AppMethodBeat.i(194828);
     if (TextUtils.isEmpty(paramString))
     {
-      AppMethodBeat.o(192150);
+      AppMethodBeat.o(194828);
       return false;
     }
     try
     {
       paramString = paramString.split(":");
       boolean bool = paramString[0].matches("^((https|http|ftp|rtsp|mms)?)");
-      AppMethodBeat.o(192150);
+      AppMethodBeat.o(194828);
       return bool;
     }
     catch (PatternSyntaxException paramString)
     {
-      AppMethodBeat.o(192150);
+      AppMethodBeat.o(194828);
     }
     return false;
   }
   
   public static boolean isEmpty(Collection<? extends Object> paramCollection)
   {
-    AppMethodBeat.i(192147);
+    AppMethodBeat.i(194825);
     if ((paramCollection == null) || (paramCollection.size() <= 0))
     {
-      AppMethodBeat.o(192147);
+      AppMethodBeat.o(194825);
       return true;
     }
-    AppMethodBeat.o(192147);
+    AppMethodBeat.o(194825);
     return false;
   }
   
   public static boolean isEmpty(Map<? extends Object, ? extends Object> paramMap)
   {
-    AppMethodBeat.i(192148);
+    AppMethodBeat.i(194826);
     if ((paramMap == null) || (paramMap.size() <= 0))
     {
-      AppMethodBeat.o(192148);
+      AppMethodBeat.o(194826);
       return true;
     }
-    AppMethodBeat.o(192148);
+    AppMethodBeat.o(194826);
     return false;
   }
 }

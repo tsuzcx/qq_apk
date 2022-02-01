@@ -1,23 +1,21 @@
 package com.tencent.mm.ui.conversation;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.cx;
-import com.tencent.mm.g.a.hw;
+import com.tencent.mm.g.a.cy;
+import com.tencent.mm.g.a.hx;
 import com.tencent.mm.g.c.aw;
 import com.tencent.mm.g.c.ba;
-import com.tencent.mm.model.w;
 import com.tencent.mm.model.x;
-import com.tencent.mm.o.b;
+import com.tencent.mm.model.y;
 import com.tencent.mm.plugin.messenger.foundation.a.l;
-import com.tencent.mm.sdk.b.c;
 import com.tencent.mm.sdk.e.n;
 import com.tencent.mm.sdk.e.n.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.am;
-import com.tencent.mm.storage.at;
-import com.tencent.mm.storage.bp;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.an;
+import com.tencent.mm.storage.au;
 import com.tencent.mm.storage.bq;
+import com.tencent.mm.storage.br;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -27,146 +25,146 @@ import java.util.Set;
 public final class h
   implements n.b
 {
-  public static h KtJ;
-  private static HashMap<String, Integer> KtK;
-  private volatile boolean EOS;
-  private c<cx> EOT;
-  private c<hw> KtL;
+  public static h KQd;
+  private static HashMap<String, Integer> KQe;
+  private volatile boolean Fhn;
+  private com.tencent.mm.sdk.b.c<cy> Fho;
+  private com.tencent.mm.sdk.b.c<hx> KQf;
   
   static
   {
-    AppMethodBeat.i(194661);
-    KtJ = new h();
-    KtK = new HashMap();
-    AppMethodBeat.o(194661);
+    AppMethodBeat.i(188062);
+    KQd = new h();
+    KQe = new HashMap();
+    AppMethodBeat.o(188062);
   }
   
   private h()
   {
-    AppMethodBeat.i(194656);
-    this.EOT = new c() {};
-    this.KtL = new c() {};
-    this.EOT.alive();
-    this.KtL.alive();
-    AppMethodBeat.o(194656);
+    AppMethodBeat.i(188058);
+    this.Fho = new com.tencent.mm.sdk.b.c() {};
+    this.KQf = new com.tencent.mm.sdk.b.c() {};
+    this.Fho.alive();
+    this.KQf.alive();
+    AppMethodBeat.o(188058);
   }
   
-  public static int fIP()
+  public static int fNg()
   {
-    AppMethodBeat.i(194659);
-    ad.i("MicroMsg.ConversationUnreadHelper", "getTotalUnread %s", new Object[] { bt.flS() });
-    com.tencent.mm.plugin.report.service.g.yhR.dD(931, 25);
+    AppMethodBeat.i(188060);
+    ae.i("MicroMsg.ConversationUnreadHelper", "getTotalUnread %s", new Object[] { bu.fpN() });
+    com.tencent.mm.plugin.report.service.g.yxI.dD(931, 25);
     Object localObject2;
     int i;
-    synchronized (KtK)
+    synchronized (KQe)
     {
-      if (!KtK.isEmpty()) {
+      if (!KQe.isEmpty()) {
         break label191;
       }
-      HashMap localHashMap2 = x.AB(w.hFd);
+      HashMap localHashMap2 = y.Bl(x.hHV);
       localObject2 = localHashMap2.keySet().iterator();
       if (((Iterator)localObject2).hasNext())
       {
         String str = (String)((Iterator)localObject2).next();
-        i = ((at)localHashMap2.get(str)).field_unReadCount;
-        KtK.put(str, Integer.valueOf(i));
+        i = ((au)localHashMap2.get(str)).field_unReadCount;
+        KQe.put(str, Integer.valueOf(i));
       }
     }
-    com.tencent.mm.plugin.report.service.g.yhR.dD(931, 26);
+    com.tencent.mm.plugin.report.service.g.yxI.dD(931, 26);
     for (;;)
     {
-      Iterator localIterator = KtK.keySet().iterator();
-      for (i = 0; localIterator.hasNext(); i = ((Integer)KtK.get(localObject2)).intValue() + i) {
+      Iterator localIterator = KQe.keySet().iterator();
+      for (i = 0; localIterator.hasNext(); i = ((Integer)KQe.get(localObject2)).intValue() + i) {
         localObject2 = (String)localIterator.next();
       }
       label191:
-      com.tencent.mm.plugin.report.service.g.yhR.dD(931, 27);
+      com.tencent.mm.plugin.report.service.g.yxI.dD(931, 27);
     }
-    AppMethodBeat.o(194659);
+    AppMethodBeat.o(188060);
     return i;
   }
   
   public final void a(int paramInt, n arg2, Object paramObject)
   {
-    AppMethodBeat.i(194657);
+    AppMethodBeat.i(188059);
     if (!(paramObject instanceof String))
     {
-      ad.d("MicroMsg.ConversationUnreadHelper", "onNotifyChange obj not String event:%d stg:%s obj:%s", new Object[] { Integer.valueOf(paramInt), ???, paramObject });
-      AppMethodBeat.o(194657);
+      ae.d("MicroMsg.ConversationUnreadHelper", "onNotifyChange obj not String event:%d stg:%s obj:%s", new Object[] { Integer.valueOf(paramInt), ???, paramObject });
+      AppMethodBeat.o(188059);
       return;
     }
     paramObject = (String)paramObject;
-    ad.i("MicroMsg.ConversationUnreadHelper", "onNotifyChange %s", new Object[] { paramObject });
+    ae.i("MicroMsg.ConversationUnreadHelper", "onNotifyChange %s", new Object[] { paramObject });
     long l;
-    if ((??? instanceof bq))
+    if ((??? instanceof br))
     {
-      if (x.aBp().contains(paramObject)) {
+      if (y.aBF().contains(paramObject)) {
         break label434;
       }
       if (paramInt == 5) {
-        synchronized (KtK)
+        synchronized (KQe)
         {
-          KtK.clear();
-          AppMethodBeat.o(194657);
+          KQe.clear();
+          AppMethodBeat.o(188059);
           return;
         }
       }
-      l = bt.HI();
+      l = bu.HQ();
     }
     for (;;)
     {
-      synchronized (KtK)
+      synchronized (KQe)
       {
-        ad.i("MicroMsg.ConversationUnreadHelper", "refreshPartial start");
-        if (KtK.isEmpty())
+        ae.i("MicroMsg.ConversationUnreadHelper", "refreshPartial start");
+        if (KQe.isEmpty())
         {
-          AppMethodBeat.o(194657);
+          AppMethodBeat.o(188059);
           return;
         }
-        if (!KtK.containsKey(paramObject)) {
+        if (!KQe.containsKey(paramObject)) {
           break label446;
         }
-        paramInt = ((Integer)KtK.get(paramObject)).intValue();
-        ad.i("MicroMsg.ConversationUnreadHelper", "refreshPartial getUnread %s", new Object[] { paramObject });
-        if (x.AD(paramObject)) {
+        paramInt = ((Integer)KQe.get(paramObject)).intValue();
+        ae.i("MicroMsg.ConversationUnreadHelper", "refreshPartial getUnread %s", new Object[] { paramObject });
+        if (y.Bn(paramObject)) {
           break label440;
         }
-        i = x.aF(paramObject, w.hFd);
-        KtK.put(paramObject, Integer.valueOf(i));
-        ad.i("MicroMsg.ConversationUnreadHelper", "refreshPartial username %s, preUnread %d, unread %d", new Object[] { paramObject, Integer.valueOf(paramInt), Integer.valueOf(i) });
-        ad.i("MicroMsg.ConversationUnreadHelper", "refreshPartial cost %d ms", new Object[] { Long.valueOf(bt.aO(l)) });
-        AppMethodBeat.o(194657);
+        i = y.aG(paramObject, x.hHV);
+        KQe.put(paramObject, Integer.valueOf(i));
+        ae.i("MicroMsg.ConversationUnreadHelper", "refreshPartial username %s, preUnread %d, unread %d", new Object[] { paramObject, Integer.valueOf(paramInt), Integer.valueOf(i) });
+        ae.i("MicroMsg.ConversationUnreadHelper", "refreshPartial cost %d ms", new Object[] { Long.valueOf(bu.aO(l)) });
+        AppMethodBeat.o(188059);
         return;
       }
-      if ((??? instanceof bp))
+      if ((??? instanceof bq))
       {
-        if (!bt.isNullOrNil(paramObject))
+        if (!bu.isNullOrNil(paramObject))
         {
-          ??? = ((l)com.tencent.mm.kernel.g.ab(l.class)).azp().Bf(paramObject);
-          if ((??? != null) && ((int)???.gfj > 0) && (!w.zC(paramObject))) {
-            ad.i("MicroMsg.ConversationUnreadHelper", "onContactStorageNotifyChange contact isMute %s, ChatRoomNotify %d", new Object[] { Boolean.valueOf(???.Pf()), Integer.valueOf(???.ePs) });
+          ??? = ((l)com.tencent.mm.kernel.g.ab(l.class)).azF().BH(paramObject);
+          if ((??? != null) && ((int)???.ght > 0) && (!x.Am(paramObject))) {
+            ae.i("MicroMsg.ConversationUnreadHelper", "onContactStorageNotifyChange contact isMute %s, ChatRoomNotify %d", new Object[] { Boolean.valueOf(???.Pd()), Integer.valueOf(???.eRd) });
           }
         }
         else
         {
-          if ((paramInt != 5) && (paramInt != 2) && (!this.EOS)) {
+          if ((paramInt != 5) && (paramInt != 2) && (!this.Fhn)) {
             break label404;
           }
-          AppMethodBeat.o(194657);
+          AppMethodBeat.o(188059);
           return;
         }
-        AppMethodBeat.o(194657);
+        AppMethodBeat.o(188059);
         return;
-        synchronized (KtK)
+        synchronized (KQe)
         {
           label404:
-          KtK.clear();
-          AppMethodBeat.o(194657);
+          KQe.clear();
+          AppMethodBeat.o(188059);
           return;
         }
       }
       label434:
-      AppMethodBeat.o(194657);
+      AppMethodBeat.o(188059);
       return;
       label440:
       int i = 0;

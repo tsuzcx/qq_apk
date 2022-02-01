@@ -5,11 +5,11 @@ import com.tencent.mm.ui.tools.b.c.a;
 public abstract class p$a
   implements c.a
 {
-  public final void JZ(String paramString) {}
+  public final void Ky(String paramString) {}
   
-  public final void aUu() {}
+  public final void aUT() {}
   
-  public void cU(String paramString) {}
+  public void cW(String paramString) {}
 }
 
 

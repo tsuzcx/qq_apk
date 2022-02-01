@@ -3,13 +3,13 @@ package com.tencent.mm.media.j;
 import android.graphics.SurfaceTexture.OnFrameAvailableListener;
 import d.l;
 
-@l(gfx={1, 1, 16})
+@l(gjZ={1, 1, 16})
 public final class b
   implements SurfaceTexture.OnFrameAvailableListener
 {
   public b(d.g.a.b paramb)
   {
-    this.hcc = paramb;
+    this.heQ = paramb;
   }
 }
 

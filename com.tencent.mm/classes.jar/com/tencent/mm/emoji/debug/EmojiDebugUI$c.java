@@ -2,7 +2,7 @@ package com.tencent.mm.emoji.debug;
 
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/emoji/debug/EmojiDebugUI$Companion;", "", "()V", "stopCDN", "", "getStopCDN", "()Z", "setStopCDN", "(Z)V", "stopCGI", "getStopCGI", "setStopCGI", "plugin-emojisdk_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/emoji/debug/EmojiDebugUI$Companion;", "", "()V", "stopCDN", "", "getStopCDN", "()Z", "setStopCDN", "(Z)V", "stopCGI", "getStopCGI", "setStopCGI", "plugin-emojisdk_release"})
 public final class EmojiDebugUI$c {}
 
 

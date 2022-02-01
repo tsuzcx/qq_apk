@@ -8,14 +8,14 @@ final class c
     super(parama2, (byte)0);
   }
   
-  public final a cr(String paramString)
+  public final a cs(String paramString)
   {
     throw new UnsupportedOperationException("already specified useForNull");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.e.a.a.a.c
  * JD-Core Version:    0.7.0.1
  */

@@ -11,55 +11,55 @@ import android.graphics.Rect;
 import android.os.Looper;
 import android.os.SystemClock;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aq;
 
 public final class e
   extends b
 {
   private final Rect Ko;
-  private ap gKD;
+  private aq gNm;
   private Context mContext;
   private int mHeight;
   boolean mIsPlaying;
   private final Paint mPaint;
   private Resources mResources;
   private int mWidth;
-  int pPf;
-  private int[] uAA;
-  private Bitmap uAB;
-  private boolean uAC;
-  boolean uAD;
-  private String uAE;
-  int uAF;
-  private k uAG;
-  private long uAi;
-  private final Runnable uAq;
-  private final Runnable uAr;
-  private volatile boolean uAx;
-  private int uAy;
-  private int uAz;
-  private float uzV;
-  private float uzW;
-  private boolean uzX;
+  int pVK;
+  private float uLA;
+  private float uLB;
+  private boolean uLC;
+  private long uLN;
+  private final Runnable uLV;
+  private final Runnable uLW;
+  private volatile boolean uMc;
+  private int uMd;
+  private int uMe;
+  private int[] uMf;
+  private Bitmap uMg;
+  private boolean uMh;
+  boolean uMi;
+  private String uMj;
+  int uMk;
+  private k uMl;
   
   public e(Context paramContext, boolean paramBoolean1, boolean paramBoolean2, int paramInt, int[] paramArrayOfInt, String paramString)
   {
     AppMethodBeat.i(104644);
-    this.uAx = false;
-    this.pPf = 0;
-    this.uAB = null;
-    this.uAC = false;
+    this.uMc = false;
+    this.pVK = 0;
+    this.uMg = null;
+    this.uMh = false;
     this.mIsPlaying = true;
-    this.uAD = true;
-    this.uAF = 0;
-    this.uzV = 1.0F;
-    this.uzW = 1.0F;
+    this.uMi = true;
+    this.uMk = 0;
+    this.uLA = 1.0F;
+    this.uLB = 1.0F;
     this.Ko = new Rect();
     this.mPaint = new Paint(6);
-    this.gKD = new ap(Looper.getMainLooper());
-    this.uAi = 0L;
-    this.uAr = new Runnable()
+    this.gNm = new aq(Looper.getMainLooper());
+    this.uLN = 0L;
+    this.uLW = new Runnable()
     {
       public final void run()
       {
@@ -70,7 +70,7 @@ public final class e
         AppMethodBeat.o(104642);
       }
     };
-    this.uAq = new Runnable()
+    this.uLV = new Runnable()
     {
       public final void run()
       {
@@ -83,33 +83,33 @@ public final class e
     };
     this.mContext = paramContext;
     this.mResources = this.mContext.getResources();
-    this.uAC = false;
+    this.uMh = false;
     this.mIsPlaying = paramBoolean1;
-    this.uAD = paramBoolean2;
-    this.uAE = paramString;
-    this.uAz = paramInt;
-    this.uAA = paramArrayOfInt;
+    this.uMi = paramBoolean2;
+    this.uMj = paramString;
+    this.uMe = paramInt;
+    this.uMf = paramArrayOfInt;
     if (!paramBoolean1)
     {
-      this.uAB = Ih(amK(paramString));
-      this.mWidth = this.uAB.getWidth();
-      this.mHeight = this.uAB.getHeight();
-      if (this.uAA.length != 3) {
+      this.uMg = IF(anL(paramString));
+      this.mWidth = this.uMg.getWidth();
+      this.mHeight = this.uMg.getHeight();
+      if (this.uMf.length != 3) {
         break label254;
       }
     }
     label254:
-    for (this.uAy = 300;; this.uAy = 100)
+    for (this.uMd = 300;; this.uMd = 100)
     {
-      this.uAF = 0;
+      this.uMk = 0;
       AppMethodBeat.o(104644);
       return;
-      this.uAB = Ih(this.uAA[0]);
+      this.uMg = IF(this.uMf[0]);
       break;
     }
   }
   
-  private Bitmap Ih(int paramInt)
+  private Bitmap IF(int paramInt)
   {
     AppMethodBeat.i(104651);
     Bitmap localBitmap = BitmapFactory.decodeResource(this.mResources, paramInt);
@@ -117,7 +117,7 @@ public final class e
     return localBitmap;
   }
   
-  private int amK(String paramString)
+  private int anL(String paramString)
   {
     AppMethodBeat.i(104652);
     paramString = paramString.split("\\.")[0];
@@ -129,9 +129,9 @@ public final class e
   private void m(Runnable paramRunnable, long paramLong)
   {
     AppMethodBeat.i(104646);
-    this.uAi = (SystemClock.uptimeMillis() + paramLong);
-    if (this.gKD != null) {
-      this.gKD.postDelayed(paramRunnable, paramLong);
+    this.uLN = (SystemClock.uptimeMillis() + paramLong);
+    if (this.gNm != null) {
+      this.gNm.postDelayed(paramRunnable, paramLong);
     }
     AppMethodBeat.o(104646);
   }
@@ -139,67 +139,67 @@ public final class e
   public final void draw(Canvas paramCanvas)
   {
     AppMethodBeat.i(104645);
-    if (this.uzX)
+    if (this.uLC)
     {
       this.Ko.set(getBounds());
-      this.uzV = (this.Ko.width() / this.mWidth);
-      this.uzW = (this.Ko.height() / this.mHeight);
-      this.uzX = false;
+      this.uLA = (this.Ko.width() / this.mWidth);
+      this.uLB = (this.Ko.height() / this.mHeight);
+      this.uLC = false;
     }
     if (this.mPaint.getShader() == null)
     {
-      paramCanvas.scale(this.uzV, this.uzW);
-      if (this.uAC)
+      paramCanvas.scale(this.uLA, this.uLB);
+      if (this.uMh)
       {
-        this.uAB = Ih(this.uAz);
-        if ((this.uAB != null) && (!this.uAB.isRecycled()))
+        this.uMg = IF(this.uMe);
+        if ((this.uMg != null) && (!this.uMg.isRecycled()))
         {
-          paramCanvas.drawBitmap(this.uAB, 0.0F, 0.0F, this.mPaint);
+          paramCanvas.drawBitmap(this.uMg, 0.0F, 0.0F, this.mPaint);
           AppMethodBeat.o(104645);
         }
       }
       else if (!this.mIsPlaying)
       {
-        this.uAB = Ih(amK(this.uAE));
-        if ((this.uAB != null) && (!this.uAB.isRecycled()))
+        this.uMg = IF(anL(this.uMj));
+        if ((this.uMg != null) && (!this.uMg.isRecycled()))
         {
-          paramCanvas.drawBitmap(this.uAB, 0.0F, 0.0F, this.mPaint);
+          paramCanvas.drawBitmap(this.uMg, 0.0F, 0.0F, this.mPaint);
           AppMethodBeat.o(104645);
         }
       }
       else
       {
-        this.uAB = Ih(this.uAA[this.pPf]);
-        if ((this.uAB != null) && (!this.uAB.isRecycled())) {
-          paramCanvas.drawBitmap(this.uAB, 0.0F, 0.0F, this.mPaint);
+        this.uMg = IF(this.uMf[this.pVK]);
+        if ((this.uMg != null) && (!this.uMg.isRecycled())) {
+          paramCanvas.drawBitmap(this.uMg, 0.0F, 0.0F, this.mPaint);
         }
-        this.pPf += 1;
-        if (this.uAF < 3)
+        this.pVK += 1;
+        if (this.uMk < 3)
         {
-          if (this.pPf >= this.uAA.length)
+          if (this.pVK >= this.uMf.length)
           {
-            this.pPf = 0;
-            if (this.uAD) {
+            this.pVK = 0;
+            if (this.uMi) {
               break label316;
             }
           }
           label316:
-          for (this.uAF = 0;; this.uAF += 1)
+          for (this.uMk = 0;; this.uMk += 1)
           {
-            m(this.uAr, this.uAy);
+            m(this.uLW, this.uMd);
             AppMethodBeat.o(104645);
             return;
           }
         }
         this.mIsPlaying = false;
-        m(this.uAr, this.uAy);
-        m(this.uAq, 0L);
+        m(this.uLW, this.uMd);
+        m(this.uLV, 0L);
         AppMethodBeat.o(104645);
       }
     }
     else
     {
-      ad.i("MicroMsg.GIF.MMGIFGameDrawable", "shader is not null.");
+      ae.i("MicroMsg.GIF.MMGIFGameDrawable", "shader is not null.");
       paramCanvas.drawRect(this.Ko, this.mPaint);
     }
     AppMethodBeat.o(104645);
@@ -208,7 +208,7 @@ public final class e
   protected final void finalize()
   {
     AppMethodBeat.i(104653);
-    this.uAG = null;
+    this.uMl = null;
     super.finalize();
     AppMethodBeat.o(104653);
   }
@@ -230,14 +230,14 @@ public final class e
   
   public final boolean isRunning()
   {
-    return this.uAx;
+    return this.uMc;
   }
   
   protected final void onBoundsChange(Rect paramRect)
   {
     AppMethodBeat.i(104649);
     super.onBoundsChange(paramRect);
-    this.uzX = true;
+    this.uLC = true;
     AppMethodBeat.o(104649);
   }
   
@@ -266,19 +266,19 @@ public final class e
   public final void start()
   {
     AppMethodBeat.i(104650);
-    this.uAx = true;
-    this.gKD.post(this.uAr);
+    this.uMc = true;
+    this.gNm.post(this.uLW);
     AppMethodBeat.o(104650);
   }
   
   public final void stop()
   {
-    this.uAx = false;
+    this.uMc = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.gif.e
  * JD-Core Version:    0.7.0.1
  */

@@ -4,26 +4,26 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class c<T>
 {
-  private static final c<Void> NWY;
-  private final a NWX;
+  private static final c<Void> Oud;
+  private final a Ouc;
   public final Throwable throwable = null;
   private final T value = null;
   
   static
   {
     AppMethodBeat.i(90087);
-    NWY = new c(a.NXb);
+    Oud = new c(a.Oug);
     AppMethodBeat.o(90087);
   }
   
   private c(a parama)
   {
-    this.NWX = parama;
+    this.Ouc = parama;
   }
   
-  private boolean gyN()
+  private boolean gDp()
   {
-    if (this.NWX == a.NXa) {}
+    if (this.Ouc == a.Ouf) {}
     for (int i = 1; (i != 0) && (this.throwable != null); i = 0) {
       return true;
     }
@@ -32,7 +32,7 @@ public final class c<T>
   
   private boolean hasValue()
   {
-    if (this.NWX == a.NWZ) {}
+    if (this.Ouc == a.Oue) {}
     for (int i = 1; (i != 0) && (this.value != null); i = 0) {
       return true;
     }
@@ -58,7 +58,7 @@ public final class c<T>
       return false;
     }
     paramObject = (c)paramObject;
-    if (paramObject.NWX != this.NWX)
+    if (paramObject.Ouc != this.Ouc)
     {
       AppMethodBeat.o(90086);
       return false;
@@ -80,13 +80,13 @@ public final class c<T>
   public final int hashCode()
   {
     AppMethodBeat.i(90085);
-    int j = this.NWX.hashCode();
+    int j = this.Ouc.hashCode();
     int i = j;
     if (hasValue()) {
       i = j * 31 + this.value.hashCode();
     }
     j = i;
-    if (gyN()) {
+    if (gDp()) {
       j = i * 31 + this.throwable.hashCode();
     }
     AppMethodBeat.o(90085);
@@ -96,11 +96,11 @@ public final class c<T>
   public final String toString()
   {
     AppMethodBeat.i(90084);
-    Object localObject = new StringBuilder(64).append('[').append(super.toString()).append(' ').append(this.NWX);
+    Object localObject = new StringBuilder(64).append('[').append(super.toString()).append(' ').append(this.Ouc);
     if (hasValue()) {
       ((StringBuilder)localObject).append(' ').append(this.value);
     }
-    if (gyN()) {
+    if (gDp()) {
       ((StringBuilder)localObject).append(' ').append(this.throwable.getMessage());
     }
     ((StringBuilder)localObject).append(']');
@@ -114,10 +114,10 @@ public final class c<T>
     static
     {
       AppMethodBeat.i(90083);
-      NWZ = new a("OnNext", 0);
-      NXa = new a("OnError", 1);
-      NXb = new a("OnCompleted", 2);
-      NXc = new a[] { NWZ, NXa, NXb };
+      Oue = new a("OnNext", 0);
+      Ouf = new a("OnError", 1);
+      Oug = new a("OnCompleted", 2);
+      Ouh = new a[] { Oue, Ouf, Oug };
       AppMethodBeat.o(90083);
     }
     

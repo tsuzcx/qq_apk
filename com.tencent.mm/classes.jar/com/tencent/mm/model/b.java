@@ -6,21 +6,21 @@ import com.tencent.mm.kernel.a;
 public final class b
   extends RuntimeException
 {
-  private final int ddo;
+  private final int deq;
   
   public b()
   {
-    super(a.aiv());
+    super(a.aiK());
     AppMethodBeat.i(132231);
-    this.ddo = 0;
+    this.deq = 0;
     AppMethodBeat.o(132231);
   }
   
   public b(byte paramByte)
   {
-    super(a.aiv());
+    super(a.aiK());
     AppMethodBeat.i(132232);
-    this.ddo = 1;
+    this.deq = 1;
     AppMethodBeat.o(132232);
   }
 }

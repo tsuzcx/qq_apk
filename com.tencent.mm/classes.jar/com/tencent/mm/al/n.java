@@ -1,278 +1,57 @@
 package com.tencent.mm.al;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.bm;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bt;
-import junit.framework.Assert;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.kernel.b;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.protocal.protobuf.ecl;
+import com.tencent.mm.protocal.protobuf.ecm;
+import com.tencent.mm.protocal.protobuf.eco;
+import com.tencent.mm.sdk.platformtools.ay;
 
-public abstract class n
+public final class n
 {
-  private static final long DEFAULT_RETURN_TIMEOUT = 600000L;
-  private static final int LIMIT_NOT_INITIALIZED = -99;
-  private static final String TAG = "MicroMsg.NetSceneBase";
-  private e dispatcher;
-  private boolean hasCallbackToQueue;
-  private q irr;
-  private boolean isCanceled = false;
-  private boolean isKinda = false;
-  protected long lastdispatch = bt.HI();
-  private int limit = -99;
-  private int netId = -1;
-  private int priority = 0;
-  private f queueCallback;
-  private t remoteCB;
-  
-  protected boolean accept(n paramn)
+  public static eco EF(String paramString)
   {
-    return false;
-  }
-  
-  protected boolean acceptConcurrent(n paramn)
-  {
-    return false;
-  }
-  
-  protected void cancel()
-  {
-    ad.i("MicroMsg.NetSceneBase", "cancel: %d, hash:%d, type:%d", new Object[] { Integer.valueOf(this.netId), Integer.valueOf(hashCode()), Integer.valueOf(getType()) });
-    this.isCanceled = true;
-    if (this.remoteCB != null) {
-      this.remoteCB.cancel();
-    }
-    if ((this.netId != -1) && (this.dispatcher != null))
+    AppMethodBeat.i(188883);
+    try
     {
-      int i = this.netId;
-      this.netId = -1;
-      this.dispatcher.cancel(i);
+      paramString = ay.gq("brandService", 1).decodeBytes(EH(paramString));
+      eco localeco = new eco();
+      localeco.parseFrom(paramString);
+      AppMethodBeat.o(188883);
+      return localeco;
     }
-  }
-  
-  protected int dispatch(e parame, final q paramq, final k paramk)
-  {
-    prepareDispatcher(parame);
-    this.irr = paramq;
-    paramk = bm.a(paramk);
-    int i = bm.aCj();
-    if (i != 0) {
-      return i;
-    }
-    if (this.limit == -99)
+    catch (Throwable paramString)
     {
-      this.limit = securityLimitCount();
-      ad.i("MicroMsg.NetSceneBase", "initilized security limit count to " + this.limit);
+      AppMethodBeat.o(188883);
     }
-    if (securityLimitCount() > 1) {
-      switch (2.hOk[securityVerificationChecked(paramq).ordinal()])
-      {
-      default: 
-        Assert.assertTrue("invalid security verification status", false);
-      }
-    }
-    while (securityLimitCountReach())
-    {
-      ad.e("MicroMsg.NetSceneBase", "dispatch failed, scene limited for security, current limit=" + securityLimitCount());
-      setSecurityCheckError(a.hOm);
-      this.netId = -1;
-      return this.netId;
-      Assert.assertTrue("scene security verification not passed, type=" + paramq.getType() + ", uri=" + paramq.getUri() + ", CHECK NOW", false);
-      continue;
-      ad.e("MicroMsg.NetSceneBase", "scene security verification not passed, type=" + paramq.getType() + ", uri=" + paramq.getUri());
-      this.limit -= 1;
-      setSecurityCheckError(a.hOl);
-      this.netId = -1;
-      return this.netId;
-    }
-    this.limit -= 1;
-    v localv = new v(paramq);
-    if ((this.remoteCB != null) && (!isSupportConcurrent())) {
-      this.remoteCB.cancel();
-    }
-    this.remoteCB = new t(paramq, paramk, this, this.queueCallback, parame);
-    this.netId = parame.a(localv, this.remoteCB);
-    ad.i("MicroMsg.NetSceneBase", "dispatcher send, %s", new Object[] { Integer.valueOf(this.netId) });
-    if (this.netId < 0)
-    {
-      ad.i("MicroMsg.NetSceneBase", "dispatcher send, %s, ThreadID:%s, getType:%s", new Object[] { Integer.valueOf(this.netId), Long.valueOf(Thread.currentThread().getId()), Integer.valueOf(paramq.getType()) });
-      new ap().post(new Runnable()
-      {
-        public final void run()
-        {
-          AppMethodBeat.i(132308);
-          ad.i("MicroMsg.NetSceneBase", "dispatcher send, %s, ThreadID:%s, getType:%s", new Object[] { Integer.valueOf(n.this.netId), Long.valueOf(Thread.currentThread().getId()), Integer.valueOf(paramq.getType()) });
-          paramk.onGYNetEnd(-1, 3, -1, "send to network failed", paramq, null);
-          ad.i("MicroMsg.NetSceneBase", "dispatcher send, %s, ThreadID:%s, getType:%s", new Object[] { Integer.valueOf(n.this.netId), Long.valueOf(Thread.currentThread().getId()), Integer.valueOf(paramq.getType()) });
-          AppMethodBeat.o(132308);
-        }
-      });
-      return 99999999;
-    }
-    parame = this.remoteCB;
-    parame.handler.postDelayed(parame.hOQ, 330000L);
-    return this.netId;
+    return null;
   }
   
-  public e dispatcher()
+  public static void EG(final String paramString)
   {
-    return this.dispatcher;
+    AppMethodBeat.i(188884);
+    ecl localecl = new ecl();
+    localecl.IhJ = 0;
+    g.ajQ().gDv.a(new v(paramString, localecl, new v.a(new ecm()) {}), 0);
+    AppMethodBeat.o(188884);
   }
   
-  public abstract int doScene(e parame, f paramf);
-  
-  public String getInfo()
+  static String EH(String paramString)
   {
-    return "";
-  }
-  
-  public boolean getIsKinda()
-  {
-    return this.isKinda;
-  }
-  
-  public int getMMReqRespHash()
-  {
-    if (this.irr == null) {
-      return 0;
-    }
-    return this.irr.hashCode();
-  }
-  
-  public int getPriority()
-  {
-    return this.priority;
-  }
-  
-  public q getReqResp()
-  {
-    return this.irr;
-  }
-  
-  protected long getReturnTimeout()
-  {
-    return 600000L;
-  }
-  
-  public abstract int getType();
-  
-  public boolean hasCallBackToQueue()
-  {
-    return this.hasCallbackToQueue;
-  }
-  
-  public boolean isCanceled()
-  {
-    return this.isCanceled;
-  }
-  
-  protected boolean isSupportConcurrent()
-  {
-    return false;
-  }
-  
-  public boolean needCheckCallback()
-  {
-    return securityLimitCount() == 1;
-  }
-  
-  protected void prepareDispatcher(e parame)
-  {
-    this.lastdispatch = bt.HI();
-    this.dispatcher = parame;
-  }
-  
-  public void reset()
-  {
-    this.lastdispatch = bt.HI();
-    this.netId = -1;
-    this.limit = -99;
-  }
-  
-  protected int securityLimitCount()
-  {
-    return 1;
-  }
-  
-  protected boolean securityLimitCountReach()
-  {
-    return this.limit <= 0;
-  }
-  
-  protected b securityVerificationChecked(q paramq)
-  {
-    return b.hOo;
-  }
-  
-  public void setHasCallbackToQueue(boolean paramBoolean)
-  {
-    this.hasCallbackToQueue = paramBoolean;
-  }
-  
-  public void setIsKinda(boolean paramBoolean)
-  {
-    this.isKinda = paramBoolean;
-  }
-  
-  public void setOnSceneEnd(f paramf)
-  {
-    this.queueCallback = paramf;
-  }
-  
-  public void setPriority(int paramInt)
-  {
-    this.priority = paramInt;
-  }
-  
-  protected void setSecurityCheckError(a parama) {}
-  
-  public boolean uniqueInNetsceneQueue()
-  {
-    return false;
-  }
-  
-  @Deprecated
-  protected void updateDispatchId(int paramInt) {}
-  
-  protected void updateDispatchIdNew(int paramInt)
-  {
-    this.netId = paramInt;
-  }
-  
-  public static enum a
-  {
-    static
-    {
-      AppMethodBeat.i(132312);
-      hOl = new a("EStatusCheckFailed", 0);
-      hOm = new a("EReachMaxLimit", 1);
-      hOn = new a[] { hOl, hOm };
-      AppMethodBeat.o(132312);
-    }
-    
-    private a() {}
-  }
-  
-  public static enum b
-  {
-    static
-    {
-      AppMethodBeat.i(132315);
-      hOo = new b("EUnchecked", 0);
-      hOp = new b("EOk", 1);
-      hOq = new b("EFailed", 2);
-      hOr = new b[] { hOo, hOp, hOq };
-      AppMethodBeat.o(132315);
-    }
-    
-    private b() {}
+    AppMethodBeat.i(188885);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("mmkv_biztransfer").append(paramString);
+    localStringBuilder.append("_2");
+    paramString = localStringBuilder.toString();
+    AppMethodBeat.o(188885);
+    return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.al.n
  * JD-Core Version:    0.7.0.1
  */

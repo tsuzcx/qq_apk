@@ -121,7 +121,7 @@ public abstract interface TPDownloadProxyFactoryAidl
       
       public String getNativeVersion()
       {
-        AppMethodBeat.i(190006);
+        AppMethodBeat.i(207219);
         Parcel localParcel1 = Parcel.obtain();
         Parcel localParcel2 = Parcel.obtain();
         try
@@ -136,13 +136,13 @@ public abstract interface TPDownloadProxyFactoryAidl
         {
           localParcel2.recycle();
           localParcel1.recycle();
-          AppMethodBeat.o(190006);
+          AppMethodBeat.o(207219);
         }
       }
       
       public ITPDownloadProxyAidl getTPDownloadProxy(int paramInt)
       {
-        AppMethodBeat.i(190003);
+        AppMethodBeat.i(207216);
         Parcel localParcel1 = Parcel.obtain();
         Parcel localParcel2 = Parcel.obtain();
         try
@@ -158,14 +158,14 @@ public abstract interface TPDownloadProxyFactoryAidl
         {
           localParcel2.recycle();
           localParcel1.recycle();
-          AppMethodBeat.o(190003);
+          AppMethodBeat.o(207216);
         }
       }
       
       public boolean isReadyForDownload()
       {
         boolean bool = false;
-        AppMethodBeat.i(190005);
+        AppMethodBeat.i(207218);
         Parcel localParcel1 = Parcel.obtain();
         Parcel localParcel2 = Parcel.obtain();
         try
@@ -183,14 +183,14 @@ public abstract interface TPDownloadProxyFactoryAidl
         {
           localParcel2.recycle();
           localParcel1.recycle();
-          AppMethodBeat.o(190005);
+          AppMethodBeat.o(207218);
         }
       }
       
       public boolean isReadyForPlay()
       {
         boolean bool = false;
-        AppMethodBeat.i(190004);
+        AppMethodBeat.i(207217);
         Parcel localParcel1 = Parcel.obtain();
         Parcel localParcel2 = Parcel.obtain();
         try
@@ -208,7 +208,7 @@ public abstract interface TPDownloadProxyFactoryAidl
         {
           localParcel2.recycle();
           localParcel1.recycle();
-          AppMethodBeat.o(190004);
+          AppMethodBeat.o(207217);
         }
       }
     }

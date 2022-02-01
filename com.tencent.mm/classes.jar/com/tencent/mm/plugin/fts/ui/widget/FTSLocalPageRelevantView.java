@@ -8,7 +8,7 @@ import android.widget.LinearLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.protocal.protobuf.cvs;
+import com.tencent.mm.protocal.protobuf.cwm;
 import java.util.Iterator;
 import java.util.List;
 
@@ -16,10 +16,10 @@ public class FTSLocalPageRelevantView
   extends LinearLayout
   implements View.OnClickListener
 {
-  private String keN = null;
+  private String kid = null;
   private String query = null;
-  private b tCY = null;
-  private List<cvs> tCZ = null;
+  private b tNP = null;
+  private List<cwm> tNQ = null;
   
   public FTSLocalPageRelevantView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -41,8 +41,8 @@ public class FTSLocalPageRelevantView
   
   public String getSearchId()
   {
-    if (this.keN != null) {
-      return this.keN;
+    if (this.kid != null) {
+      return this.kid;
     }
     return "";
   }
@@ -51,16 +51,16 @@ public class FTSLocalPageRelevantView
   {
     AppMethodBeat.i(112265);
     Object localObject = new StringBuilder("");
-    if (this.tCZ != null)
+    if (this.tNQ != null)
     {
-      Iterator localIterator = this.tCZ.iterator();
+      Iterator localIterator = this.tNQ.iterator();
       while (localIterator.hasNext())
       {
-        cvs localcvs = (cvs)localIterator.next();
+        cwm localcwm = (cwm)localIterator.next();
         if (((StringBuilder)localObject).length() > 0) {
           ((StringBuilder)localObject).append("|");
         }
-        ((StringBuilder)localObject).append(localcvs.HdP);
+        ((StringBuilder)localObject).append(localcwm.Hxp);
       }
     }
     localObject = ((StringBuilder)localObject).toString();
@@ -73,8 +73,8 @@ public class FTSLocalPageRelevantView
     AppMethodBeat.i(112264);
     b localb = new b();
     localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/fts/ui/widget/FTSLocalPageRelevantView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-    if ((this.tCY != null) && (paramView.getTag() != null) && ((paramView.getTag() instanceof a))) {
+    a.b("com/tencent/mm/plugin/fts/ui/widget/FTSLocalPageRelevantView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+    if ((this.tNP != null) && (paramView.getTag() != null) && ((paramView.getTag() instanceof a))) {
       paramView.getTag();
     }
     a.a(this, "com/tencent/mm/plugin/fts/ui/widget/FTSLocalPageRelevantView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
@@ -83,7 +83,7 @@ public class FTSLocalPageRelevantView
   
   public void setOnRelevantClickListener(b paramb)
   {
-    this.tCY = paramb;
+    this.tNP = paramb;
   }
   
   final class a {}

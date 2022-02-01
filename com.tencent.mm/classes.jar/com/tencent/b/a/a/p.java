@@ -8,23 +8,23 @@ import java.lang.reflect.Method;
 
 public class p
 {
-  private static volatile p cOR = null;
-  private boolean cOS;
+  private static volatile p cPB = null;
+  private boolean cPC;
   private Context context;
   
   private p(Context paramContext)
   {
     AppMethodBeat.i(87604);
     this.context = null;
-    this.cOS = false;
+    this.cPC = false;
     this.context = paramContext.getApplicationContext();
-    this.cOS = s.checkPermission(this.context, "android.permission.WRITE_SETTINGS");
+    this.cPC = s.checkPermission(this.context, "android.permission.WRITE_SETTINGS");
     if (Build.VERSION.SDK_INT >= 23) {
       try
       {
         paramContext = Settings.System.class.getDeclaredMethod("canWrite", new Class[] { Context.class });
         paramContext.setAccessible(true);
-        this.cOS = ((Boolean)paramContext.invoke(null, new Object[] { this.context })).booleanValue();
+        this.cPC = ((Boolean)paramContext.invoke(null, new Object[] { this.context })).booleanValue();
         AppMethodBeat.o(87604);
         return;
       }
@@ -33,16 +33,16 @@ public class p
     AppMethodBeat.o(87604);
   }
   
-  public static p aW(Context paramContext)
+  public static p aX(Context paramContext)
   {
     AppMethodBeat.i(87605);
-    if (cOR == null) {}
+    if (cPB == null) {}
     try
     {
-      if (cOR == null) {
-        cOR = new p(paramContext);
+      if (cPB == null) {
+        cPB = new p(paramContext);
       }
-      paramContext = cOR;
+      paramContext = cPB;
       AppMethodBeat.o(87605);
       return paramContext;
     }
@@ -55,7 +55,7 @@ public class p
   public final boolean K(String paramString1, String paramString2)
   {
     AppMethodBeat.i(87603);
-    if (this.cOS) {
+    if (this.cPC) {
       try
       {
         boolean bool = Settings.System.putString(this.context.getContentResolver(), paramString1, paramString2);

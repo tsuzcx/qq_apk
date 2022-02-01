@@ -8,14 +8,14 @@ import java.util.List;
 
 public class a
 {
-  protected int LJT;
-  protected QbarNative LJU;
+  protected int MgS;
+  protected QbarNative MgT;
   
   public a()
   {
     AppMethodBeat.i(88393);
-    this.LJT = -1;
-    this.LJU = new QbarNative();
+    this.MgS = -1;
+    this.MgT = new QbarNative();
     AppMethodBeat.o(88393);
   }
   
@@ -35,15 +35,15 @@ public class a
     return str;
   }
   
-  public int G(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  public int H(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(88397);
     try
     {
-      if (this.LJT < 0) {
+      if (this.MgS < 0) {
         return -1;
       }
-      paramInt1 = this.LJU.ScanImage(paramArrayOfByte, paramInt1, paramInt2, this.LJT);
+      paramInt1 = this.MgT.ScanImage(paramArrayOfByte, paramInt1, paramInt2, this.MgS);
       return paramInt1;
     }
     finally
@@ -52,7 +52,7 @@ public class a
     }
   }
   
-  public final int K(List<QbarNative.QBarCodeDetectInfo> paramList, List<QbarNative.QBarPoint> paramList1)
+  public final int J(List<QbarNative.QBarCodeDetectInfo> paramList, List<QbarNative.QBarPoint> paramList1)
   {
     int k = 0;
     AppMethodBeat.i(88401);
@@ -62,7 +62,7 @@ public class a
       int j;
       try
       {
-        if (this.LJT < 0) {
+        if (this.MgS < 0) {
           return 0;
         }
         QbarNative.QBarCodeDetectInfo[] arrayOfQBarCodeDetectInfo = new QbarNative.QBarCodeDetectInfo[3];
@@ -77,7 +77,7 @@ public class a
         }
         paramList.clear();
         paramList1.clear();
-        this.LJU.GetCodeDetectInfo(arrayOfQBarCodeDetectInfo, arrayOfQBarPoint, this.LJT);
+        this.MgT.GetCodeDetectInfo(arrayOfQBarCodeDetectInfo, arrayOfQBarPoint, this.MgS);
         i = 0;
         j = k;
         if (i < 3)
@@ -118,11 +118,11 @@ public class a
     AppMethodBeat.i(88395);
     try
     {
-      if (this.LJT < 0) {
-        this.LJT = this.LJU.Init(1, paramInt, paramString1, paramString2, paramQbarAiModelParam);
+      if (this.MgS < 0) {
+        this.MgS = this.MgT.Init(1, paramInt, paramString1, paramString2, paramQbarAiModelParam);
       }
-      System.out.println("qbarId:" + this.LJT);
-      if (this.LJT < 0) {
+      System.out.println("qbarId:" + this.MgS);
+      if (this.MgS < 0) {
         return -1;
       }
       return 0;
@@ -133,7 +133,7 @@ public class a
     }
   }
   
-  public final List<a> fTq()
+  public final List<a> fXQ()
   {
     int j = 0;
     AppMethodBeat.i(88399);
@@ -142,7 +142,7 @@ public class a
       int i;
       try
       {
-        if (this.LJT < 0) {
+        if (this.MgS < 0) {
           return null;
         }
         QbarNative.QBarResultJNI[] arrayOfQBarResultJNI = new QbarNative.QBarResultJNI[3];
@@ -156,7 +156,7 @@ public class a
           i += 1;
           continue;
         }
-        this.LJU.GetResults(arrayOfQBarResultJNI, this.LJT);
+        this.MgT.GetResults(arrayOfQBarResultJNI, this.MgS);
         ArrayList localArrayList = new ArrayList();
         i = j;
         if (i < 3)
@@ -198,16 +198,16 @@ public class a
     }
   }
   
-  public final QbarNative.QBarZoomInfo fTr()
+  public final QbarNative.QBarZoomInfo fXR()
   {
     AppMethodBeat.i(88400);
     try
     {
-      if (this.LJT < 0) {
+      if (this.MgS < 0) {
         return null;
       }
       QbarNative.QBarZoomInfo localQBarZoomInfo = new QbarNative.QBarZoomInfo();
-      this.LJU.GetZoomInfo(localQBarZoomInfo, this.LJT);
+      this.MgT.GetZoomInfo(localQBarZoomInfo, this.MgS);
       return localQBarZoomInfo;
     }
     finally
@@ -221,10 +221,10 @@ public class a
     AppMethodBeat.i(88396);
     try
     {
-      if (this.LJT < 0) {
+      if (this.MgS < 0) {
         return -1;
       }
-      paramInt = this.LJU.SetReaders(paramArrayOfInt, paramInt, this.LJT);
+      paramInt = this.MgT.SetReaders(paramArrayOfInt, paramInt, this.MgS);
       return paramInt;
     }
     finally
@@ -238,11 +238,11 @@ public class a
     AppMethodBeat.i(88398);
     try
     {
-      if (this.LJT < 0) {
+      if (this.MgS < 0) {
         return 0;
       }
-      int i = this.LJU.Release(this.LJT);
-      this.LJT = -1;
+      int i = this.MgT.Release(this.MgS);
+      this.MgS = -1;
       return i;
     }
     finally
@@ -263,7 +263,7 @@ public class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.qbar.a
  * JD-Core Version:    0.7.0.1
  */

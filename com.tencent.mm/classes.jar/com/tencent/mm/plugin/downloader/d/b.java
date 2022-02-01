@@ -1,9 +1,9 @@
 package com.tencent.mm.plugin.downloader.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.vfs.e;
-import com.tencent.mm.vfs.q;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.vfs.k;
+import com.tencent.mm.vfs.w;
 import java.nio.ByteBuffer;
 import java.util.Arrays;
 import java.util.Map;
@@ -11,13 +11,13 @@ import java.util.Properties;
 
 public final class b
 {
-  public static String E(e parame)
+  public static String E(k paramk)
   {
     AppMethodBeat.i(177457);
     try
     {
-      ad.i("MicroMsg.Channel.ChannelReader", "get channel by v1");
-      Object localObject = g.aac(q.B(parame.fOK()));
+      ae.i("MicroMsg.Channel.ChannelReader", "get channel by v1");
+      Object localObject = g.aaT(w.B(paramk.fTh()));
       if (localObject == null)
       {
         AppMethodBeat.o(177457);
@@ -25,72 +25,72 @@ public final class b
       }
       c localc = new c();
       localc.I((byte[])localObject);
-      localObject = localc.plq.getProperty("channelId");
+      localObject = localc.prV.getProperty("channelId");
       AppMethodBeat.o(177457);
       return localObject;
     }
     catch (Exception localException)
     {
-      ad.e("MicroMsg.Channel.ChannelReader", "APK : %s not have channel info from zip comment", new Object[] { q.B(parame.fOK()) });
+      ae.e("MicroMsg.Channel.ChannelReader", "APK : %s not have channel info from zip comment", new Object[] { w.B(paramk.fTh()) });
       AppMethodBeat.o(177457);
     }
     return null;
   }
   
-  public static String F(e parame)
+  public static String F(k paramk)
   {
     AppMethodBeat.i(177458);
-    ad.i("MicroMsg.Channel.ChannelReader", "get channel by v2");
-    if ((!parame.exists()) || (!parame.isFile())) {
-      parame = null;
+    ae.i("MicroMsg.Channel.ChannelReader", "get channel by v2");
+    if ((!paramk.exists()) || (!paramk.isFile())) {
+      paramk = null;
     }
-    while (parame == null)
+    while (paramk == null)
     {
       AppMethodBeat.o(177458);
       return null;
-      if ((!parame.exists()) || (!parame.isFile())) {
-        parame = null;
+      if ((!paramk.exists()) || (!paramk.isFile())) {
+        paramk = null;
       }
       for (;;)
       {
-        if (parame == null) {
+        if (paramk == null) {
           break label130;
         }
-        localObject = parame.array();
-        int i = parame.arrayOffset();
-        int j = parame.position();
-        int k = parame.arrayOffset();
-        parame = Arrays.copyOfRange((byte[])localObject, i + j, parame.limit() + k);
+        localObject = paramk.array();
+        int i = paramk.arrayOffset();
+        int j = paramk.position();
+        int k = paramk.arrayOffset();
+        paramk = Arrays.copyOfRange((byte[])localObject, i + j, paramk.limit() + k);
         break;
-        parame = d.G(parame);
-        if (parame != null) {
-          parame = (ByteBuffer)parame.get(Integer.valueOf(1903261812));
+        paramk = d.G(paramk);
+        if (paramk != null) {
+          paramk = (ByteBuffer)paramk.get(Integer.valueOf(1903261812));
         } else {
-          parame = null;
+          paramk = null;
         }
       }
       label130:
-      parame = null;
+      paramk = null;
     }
     Object localObject = new c();
-    ((c)localObject).I(parame);
-    parame = ((c)localObject).plq.getProperty("channelId");
+    ((c)localObject).I(paramk);
+    paramk = ((c)localObject).prV.getProperty("channelId");
     AppMethodBeat.o(177458);
-    return parame;
+    return paramk;
   }
   
-  public static boolean aab(String paramString)
+  public static boolean aaS(String paramString)
   {
     AppMethodBeat.i(88860);
     try
     {
-      boolean bool = a.aaa(paramString);
+      boolean bool = a.aaR(paramString);
       AppMethodBeat.o(88860);
       return bool;
     }
     catch (Exception paramString)
     {
-      ad.e("MicroMsg.Channel.ChannelReader", "isV2ChannelApk error: %s", new Object[] { paramString.getMessage() });
+      ae.e("MicroMsg.Channel.ChannelReader", "isV2ChannelApk error: %s", new Object[] { paramString.getMessage() });
       AppMethodBeat.o(88860);
     }
     return false;

@@ -2,11 +2,11 @@ package com.tencent.mm.plugin.sns.h;
 
 public final class a
 {
-  public int zoX;
-  public String zoY;
-  public String zoZ;
-  public String zpa;
-  public int zpb;
+  public int zGm;
+  public String zGn;
+  public String zGo;
+  public String zGp;
+  public int zGq;
 }
 
 

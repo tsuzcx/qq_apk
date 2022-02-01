@@ -1,27 +1,25 @@
 package com.tencent.mm.ui.chatting.d.b;
 
-import com.tencent.mm.storage.bu;
 import com.tencent.mm.ui.chatting.d.ad;
-import com.tencent.mm.ui.chatting.viewitems.ChattingItemTranslate.b;
 
 public abstract interface ap
   extends ad
 {
-  public abstract ChattingItemTranslate.b DZ(long paramLong);
+  public abstract void aE(Runnable paramRunnable);
   
-  public abstract boolean Ea(long paramLong);
+  public abstract void aXK(String paramString);
   
-  public abstract boolean Ed(long paramLong);
+  public abstract void cV(String paramString, boolean paramBoolean);
   
-  public abstract String N(long paramLong, String paramString);
+  public abstract boolean fIX();
   
-  public abstract void a(bu parambu, boolean paramBoolean, int paramInt1, int paramInt2);
+  public abstract boolean fIY();
   
-  public abstract void ado(int paramInt);
+  public abstract boolean fIZ();
   
-  public abstract boolean fFf();
+  public abstract int fJa();
   
-  public abstract void fFg();
+  public abstract void yf(boolean paramBoolean);
 }
 
 

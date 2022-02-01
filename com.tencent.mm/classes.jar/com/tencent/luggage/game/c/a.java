@@ -16,10 +16,10 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 final class a
   extends AppCompatButton
 {
-  private RectF ciM;
-  private boolean ciN;
-  private float ciO;
-  private float ciP;
+  private RectF ciO;
+  private boolean ciP;
+  private float ciQ;
+  private float ciR;
   
   public a(Context paramContext)
   {
@@ -37,12 +37,12 @@ final class a
   private boolean r(float paramFloat1, float paramFloat2)
   {
     AppMethodBeat.i(130485);
-    if (this.ciM == null)
+    if (this.ciO == null)
     {
       AppMethodBeat.o(130485);
       return false;
     }
-    boolean bool = this.ciM.contains(paramFloat1, paramFloat2);
+    boolean bool = this.ciO.contains(paramFloat1, paramFloat2);
     AppMethodBeat.o(130485);
     return bool;
   }
@@ -55,21 +55,21 @@ final class a
     }
     for (;;)
     {
-      this.ciO = paramMotionEvent.getRawX();
-      this.ciP = paramMotionEvent.getRawY();
+      this.ciQ = paramMotionEvent.getRawX();
+      this.ciR = paramMotionEvent.getRawY();
       AppMethodBeat.o(130486);
       return true;
-      this.ciM = new RectF(getX(), getY(), getX() + getWidth(), getY() + getHeight());
-      this.ciN = false;
+      this.ciO = new RectF(getX(), getY(), getX() + getWidth(), getY() + getHeight());
+      this.ciP = false;
       continue;
-      if ((this.ciN) || (!r(paramMotionEvent.getRawX(), paramMotionEvent.getRawY())))
+      if ((this.ciP) || (!r(paramMotionEvent.getRawX(), paramMotionEvent.getRawY())))
       {
-        setX(getX() + (paramMotionEvent.getRawX() - this.ciO));
-        setY(getY() + (paramMotionEvent.getRawY() - this.ciP));
+        setX(getX() + (paramMotionEvent.getRawX() - this.ciQ));
+        setY(getY() + (paramMotionEvent.getRawY() - this.ciR));
         requestLayout();
-        this.ciN = true;
+        this.ciP = true;
         continue;
-        if ((!this.ciN) && (r(paramMotionEvent.getRawX(), paramMotionEvent.getRawY()))) {
+        if ((!this.ciP) && (r(paramMotionEvent.getRawX(), paramMotionEvent.getRawY()))) {
           performClick();
         }
       }
@@ -79,14 +79,14 @@ final class a
   final class a
     extends Drawable
   {
-    RectF ciQ;
+    RectF ciS;
     Paint paint;
     
     private a()
     {
       AppMethodBeat.i(130482);
       this.paint = new Paint(1);
-      this.ciQ = new RectF();
+      this.ciS = new RectF();
       this.paint.setColor(-12748166);
       this.paint.setStyle(Paint.Style.FILL);
       AppMethodBeat.o(130482);
@@ -96,20 +96,20 @@ final class a
     {
       AppMethodBeat.i(130483);
       float f1 = paramCanvas.getHeight() / 2.0F;
-      RectF localRectF1 = this.ciQ;
-      this.ciQ.top = 0.0F;
+      RectF localRectF1 = this.ciS;
+      this.ciS.top = 0.0F;
       localRectF1.left = 0.0F;
-      localRectF1 = this.ciQ;
-      RectF localRectF2 = this.ciQ;
+      localRectF1 = this.ciS;
+      RectF localRectF2 = this.ciS;
       float f2 = f1 * 2.0F;
       localRectF2.bottom = f2;
       localRectF1.right = f2;
-      paramCanvas.drawArc(this.ciQ, 90.0F, 180.0F, false, this.paint);
-      this.ciQ.left = (paramCanvas.getWidth() - f1 * 2.0F);
-      this.ciQ.top = 0.0F;
-      this.ciQ.right = paramCanvas.getWidth();
-      this.ciQ.bottom = paramCanvas.getHeight();
-      paramCanvas.drawArc(this.ciQ, -90.0F, 180.0F, false, this.paint);
+      paramCanvas.drawArc(this.ciS, 90.0F, 180.0F, false, this.paint);
+      this.ciS.left = (paramCanvas.getWidth() - f1 * 2.0F);
+      this.ciS.top = 0.0F;
+      this.ciS.right = paramCanvas.getWidth();
+      this.ciS.bottom = paramCanvas.getHeight();
+      paramCanvas.drawArc(this.ciS, -90.0F, 180.0F, false, this.paint);
       paramCanvas.drawRect(f1 - 1.0F, 0.0F, a.this.getWidth() - f1 + 1.0F, a.this.getHeight(), this.paint);
       AppMethodBeat.o(130483);
     }

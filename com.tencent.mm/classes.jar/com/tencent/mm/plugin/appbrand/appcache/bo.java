@@ -1,17 +1,38 @@
 package com.tencent.mm.plugin.appbrand.appcache;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.blq;
+import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
+import com.tencent.mm.plugin.appbrand.config.k;
 
 public final class bo
-  implements com.tencent.mm.plugin.appbrand.widget.a.a
 {
-  public final com.tencent.mm.al.a<blq> a(String paramString1, int paramInt1, String paramString2, int paramInt2)
+  private static a jMv = null;
+  
+  static q a(AppBrandRuntime paramAppBrandRuntime, bg parambg)
   {
-    AppMethodBeat.i(188016);
-    paramString1 = new h(paramString1, paramInt1, paramString2, paramInt2, (byte)0);
-    AppMethodBeat.o(188016);
-    return paramString1;
+    AppMethodBeat.i(178571);
+    if (jMv != null)
+    {
+      parambg = jMv.a(paramAppBrandRuntime, parambg);
+      if (parambg != null)
+      {
+        AppMethodBeat.o(178571);
+        return parambg;
+      }
+    }
+    paramAppBrandRuntime = new z(paramAppBrandRuntime.mAppId, paramAppBrandRuntime.Fm().kbw);
+    AppMethodBeat.o(178571);
+    return paramAppBrandRuntime;
+  }
+  
+  public static void a(a parama)
+  {
+    jMv = parama;
+  }
+  
+  public static abstract interface a
+  {
+    public abstract q a(AppBrandRuntime paramAppBrandRuntime, bg parambg);
   }
 }
 

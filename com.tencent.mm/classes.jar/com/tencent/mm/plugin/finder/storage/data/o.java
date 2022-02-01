@@ -1,25 +1,25 @@
 package com.tencent.mm.plugin.finder.storage.data;
 
-import com.tencent.mm.plugin.finder.model.al;
-import com.tencent.mm.protocal.protobuf.amo;
+import com.tencent.mm.plugin.finder.model.am;
+import com.tencent.mm.protocal.protobuf.ana;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/storage/data/PageItem;", "", "()V", "source", "Lcom/tencent/mm/protocal/protobuf/FinderFPItem;", "(Lcom/tencent/mm/protocal/protobuf/FinderFPItem;)V", "getSource", "()Lcom/tencent/mm/protocal/protobuf/FinderFPItem;", "setSource", "extract", "targetDataType", "", "toRVFeed", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/storage/data/PageItem;", "", "()V", "source", "Lcom/tencent/mm/protocal/protobuf/FinderFPItem;", "(Lcom/tencent/mm/protocal/protobuf/FinderFPItem;)V", "getSource", "()Lcom/tencent/mm/protocal/protobuf/FinderFPItem;", "setSource", "extract", "targetDataType", "", "toRVFeed", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "plugin-finder_release"})
 public abstract class o
 {
-  amo sAk;
+  ana sLi;
   
   public o()
   {
-    this.sAk = new amo();
+    this.sLi = new ana();
   }
   
-  public o(amo paramamo)
+  public o(ana paramana)
   {
-    this.sAk = paramamo;
+    this.sLi = paramana;
   }
   
-  public abstract al cJk();
+  public abstract am cLN();
 }
 
 

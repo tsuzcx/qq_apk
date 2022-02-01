@@ -2,12 +2,12 @@ package com.tencent.mm.plugin.fav.ui.detail;
 
 import android.text.format.DateFormat;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.u;
+import com.tencent.mm.model.v;
 import com.tencent.mm.plugin.fav.a.b;
 import com.tencent.mm.plugin.fav.a.g;
-import com.tencent.mm.protocal.protobuf.akd;
-import com.tencent.mm.protocal.protobuf.akj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.akn;
+import com.tencent.mm.protocal.protobuf.akt;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.MMActivity;
 
 public final class a
@@ -16,7 +16,7 @@ public final class a
   {
     AppMethodBeat.i(107255);
     Object localObject;
-    if ((14 == paramg.field_type) && (!bt.isNullOrNil(paramg.field_favProto.title))) {
+    if ((14 == paramg.field_type) && (!bu.isNullOrNil(paramg.field_favProto.title))) {
       localObject = paramg.field_favProto.title;
     }
     for (;;)
@@ -25,31 +25,31 @@ public final class a
       paramMMActivity.setMMSubTitle(String.format(paramMMActivity.getString(2131758857), new Object[] { localObject, paramg }));
       AppMethodBeat.o(107255);
       return;
-      akj localakj = paramg.field_favProto.Gjv;
-      if ((localakj != null) && (!bt.isNullOrNil(localakj.GiV)))
+      akt localakt = paramg.field_favProto.GCe;
+      if ((localakt != null) && (!bu.isNullOrNil(localakt.GBE)))
       {
-        String str1 = b.agg(localakj.GiV);
+        String str1 = b.ahd(localakt.GBE);
         String str2;
-        if (u.aAm().equals(localakj.dyU))
+        if (v.aAC().equals(localakt.dzZ))
         {
-          str2 = b.zg(localakj.toUser);
+          str2 = b.zQ(localakt.toUser);
           localObject = str1;
-          if (!bt.bI(str2, "").equals(localakj.toUser)) {
+          if (!bu.bI(str2, "").equals(localakt.toUser)) {
             localObject = str1 + " - " + str2;
           }
         }
         else
         {
-          str2 = b.zg(localakj.dyU);
+          str2 = b.zQ(localakt.dzZ);
           localObject = str1;
-          if (!bt.bI(str2, "").equals(localakj.dyU)) {
+          if (!bu.bI(str2, "").equals(localakt.dzZ)) {
             localObject = str1 + " - " + str2;
           }
         }
       }
       else
       {
-        localObject = b.zg(paramg.field_fromUser);
+        localObject = b.zQ(paramg.field_fromUser);
       }
     }
   }

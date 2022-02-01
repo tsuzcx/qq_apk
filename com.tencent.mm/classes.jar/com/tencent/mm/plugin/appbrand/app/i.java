@@ -3,8 +3,8 @@ package com.tencent.mm.plugin.appbrand.app;
 import android.annotation.SuppressLint;
 import android.os.Parcel;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cn.f;
-import com.tencent.mm.cn.g;
+import com.tencent.mm.cm.f;
+import com.tencent.mm.cm.g;
 import com.tencent.mm.ipcinvoker.d;
 import com.tencent.mm.ipcinvoker.extension.XIPCInvoker;
 import com.tencent.mm.ipcinvoker.type.IPCString;
@@ -16,21 +16,21 @@ import d.l;
 import java.util.List;
 import org.json.JSONObject;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/app/ServiceForWebViewAnyProcess;", "Lcom/tencent/mm/plugin/appbrand/app/ServiceForWebView;", "()V", "batchSyncWxaAttr", "", "usernameList", "", "", "html_bridge_invokeMiniProgramAPI", "binderID", "", "name", "args", "", "preloadEnv", "appId", "privateOpenWeappFunctionalPage", "uuid", "transferJson", "reportMiniProgramPageData", "Lcom/tencent/mm/vending/pipeline/Pipeline;", "sendDataToMiniProgram", "data", "webviewId", "BatchSyncWxaAttr", "PreloadCdnEnv", "PrivateOpenFunctionalPage", "SendDataToMiniProgram", "plugin-appbrand-integration_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/app/ServiceForWebViewAnyProcess;", "Lcom/tencent/mm/plugin/appbrand/app/ServiceForWebView;", "()V", "batchSyncWxaAttr", "", "usernameList", "", "", "html_bridge_invokeMiniProgramAPI", "binderID", "", "name", "args", "", "preloadEnv", "appId", "privateOpenWeappFunctionalPage", "uuid", "transferJson", "reportMiniProgramPageData", "Lcom/tencent/mm/vending/pipeline/Pipeline;", "sendDataToMiniProgram", "data", "webviewId", "BatchSyncWxaAttr", "PreloadCdnEnv", "PrivateOpenFunctionalPage", "SendDataToMiniProgram", "plugin-appbrand-integration_release"})
 public final class i
   extends h
 {
-  public final e<Integer> Lb(String paramString)
+  public final e<Integer> LB(String paramString)
   {
     AppMethodBeat.i(50172);
-    paramString = g.fSm().b((com.tencent.mm.vending.c.a)f.jEa);
+    paramString = g.fWL().b((com.tencent.mm.vending.c.a)f.jGY);
     p.g(paramString, "pipelineExt().`$ui` {\n  …turn@`$ui` null\n        }");
     paramString = (e)paramString;
     AppMethodBeat.o(50172);
     return paramString;
   }
   
-  public final void Lc(String paramString)
+  public final void LC(String paramString)
   {
     AppMethodBeat.i(50173);
     XIPCInvoker.a("com.tencent.mm", new IPCString(paramString), i.b.class, null);
@@ -40,14 +40,14 @@ public final class i
   public final void a(int paramInt, String paramString, Object paramObject)
   {
     AppMethodBeat.i(175113);
-    Object localObject = com.tencent.mm.plugin.appbrand.jsapi.ab.b.lvp;
-    localObject = com.tencent.mm.plugin.appbrand.jsapi.ab.b.tI(paramInt);
+    Object localObject = com.tencent.mm.plugin.appbrand.jsapi.ac.b.lzN;
+    localObject = com.tencent.mm.plugin.appbrand.jsapi.ac.b.tN(paramInt);
     if (localObject != null)
     {
       JSONObject localJSONObject = new JSONObject();
       localJSONObject.put("name", paramString);
       localJSONObject.put("arg", paramObject);
-      ((com.tencent.mm.plugin.appbrand.jsapi.ab.a)localObject).X(localJSONObject);
+      ((com.tencent.mm.plugin.appbrand.jsapi.ac.a)localObject).X(localJSONObject);
       AppMethodBeat.o(175113);
       return;
     }
@@ -98,35 +98,35 @@ public final class i
   {
     AppMethodBeat.i(50174);
     SendDataToMiniProgramFromH5Event localSendDataToMiniProgramFromH5Event = new SendDataToMiniProgramFromH5Event();
-    localSendDataToMiniProgramFromH5Event.kND = paramString1;
+    localSendDataToMiniProgramFromH5Event.kRa = paramString1;
     localSendDataToMiniProgramFromH5Event.data = paramString2;
-    localSendDataToMiniProgramFromH5Event.kNE = paramInt;
+    localSendDataToMiniProgramFromH5Event.kRb = paramInt;
     XIPCInvoker.a("com.tencent.mm", localSendDataToMiniProgramFromH5Event, d.class, null);
     AppMethodBeat.o(50174);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/app/ServiceForWebViewAnyProcess$SendDataToMiniProgram;", "Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;", "Lcom/tencent/mm/plugin/appbrand/jsapi/h5_interact/SendDataToMiniProgramFromH5Event;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "()V", "invoke", "", "data", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "plugin-appbrand-integration_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/app/ServiceForWebViewAnyProcess$SendDataToMiniProgram;", "Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;", "Lcom/tencent/mm/plugin/appbrand/jsapi/h5_interact/SendDataToMiniProgramFromH5Event;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "()V", "invoke", "", "data", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "plugin-appbrand-integration_release"})
   static final class d
     implements com.tencent.mm.ipcinvoker.b<SendDataToMiniProgramFromH5Event, IPCVoid>
   {}
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "kotlin.jvm.PlatformType", "onCallback"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "kotlin.jvm.PlatformType", "onCallback"})
   static final class e<T>
     implements d<ResultType>
   {
     e(Parcel paramParcel) {}
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Ljava/lang/Void;", "kotlin.jvm.PlatformType", "call"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Ljava/lang/Void;", "kotlin.jvm.PlatformType", "call"})
   static final class f<_Ret, _Var>
     implements com.tencent.mm.vending.c.a<_Ret, _Var>
   {
-    public static final f jEa;
+    public static final f jGY;
     
     static
     {
       AppMethodBeat.i(50171);
-      jEa = new f();
+      jGY = new f();
       AppMethodBeat.o(50171);
     }
   }

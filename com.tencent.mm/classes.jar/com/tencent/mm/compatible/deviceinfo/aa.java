@@ -4,15 +4,15 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class aa
 {
-  public boolean gcr;
-  public int gcs;
-  public int gct;
-  public int gcu;
-  public int gcv;
-  public int gcw;
-  public int gcx;
-  public int gcy;
-  public int gcz;
+  public int geA;
+  public int geB;
+  public int geC;
+  public int geD;
+  public int geE;
+  public int geF;
+  public int geG;
+  public int geH;
+  public boolean gez;
   public int mVideoHeight;
   public int mVideoWidth;
   
@@ -25,17 +25,17 @@ public final class aa
   
   public final void reset()
   {
-    this.gcr = false;
+    this.gez = false;
     this.mVideoHeight = 224;
     this.mVideoWidth = 288;
-    this.gcs = 10;
-    this.gct = 3000000;
-    this.gcu = 1;
-    this.gcv = 1;
-    this.gcw = 1;
-    this.gcx = 0;
-    this.gcy = 1;
-    this.gcz = 0;
+    this.geA = 10;
+    this.geB = 3000000;
+    this.geC = 1;
+    this.geD = 1;
+    this.geE = 1;
+    this.geF = 0;
+    this.geG = 1;
+    this.geH = 0;
   }
 }
 

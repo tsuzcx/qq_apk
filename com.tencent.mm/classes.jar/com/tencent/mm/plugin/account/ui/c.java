@@ -17,10 +17,10 @@ public final class c
   extends BaseAdapter
   implements Filterable
 {
-  private List<String> jiW;
-  private ArrayList<String> jiX;
-  private a jiY;
-  private String jiZ;
+  private List<String> jlP;
+  private ArrayList<String> jlQ;
+  private a jlR;
+  private String jlS;
   private Context mContext;
   private final Object mLock;
   
@@ -29,15 +29,15 @@ public final class c
     AppMethodBeat.i(127871);
     this.mLock = new Object();
     this.mContext = paramContext;
-    this.jiW = Arrays.asList(paramArrayOfString);
-    this.jiZ = paramString;
+    this.jlP = Arrays.asList(paramArrayOfString);
+    this.jlS = paramString;
     AppMethodBeat.o(127871);
   }
   
   private String getItem(int paramInt)
   {
     AppMethodBeat.i(127873);
-    String str = (String)this.jiW.get(paramInt);
+    String str = (String)this.jlP.get(paramInt);
     AppMethodBeat.o(127873);
     return str;
   }
@@ -45,7 +45,7 @@ public final class c
   public final int getCount()
   {
     AppMethodBeat.i(127872);
-    int i = this.jiW.size();
+    int i = this.jlP.size();
     AppMethodBeat.o(127872);
     return i;
   }
@@ -53,10 +53,10 @@ public final class c
   public final Filter getFilter()
   {
     AppMethodBeat.i(127875);
-    if (this.jiY == null) {
-      this.jiY = new a((byte)0);
+    if (this.jlR == null) {
+      this.jlR = new a((byte)0);
     }
-    a locala = this.jiY;
+    a locala = this.jlR;
     AppMethodBeat.o(127875);
     return locala;
   }
@@ -172,7 +172,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.account.ui.c
  * JD-Core Version:    0.7.0.1
  */

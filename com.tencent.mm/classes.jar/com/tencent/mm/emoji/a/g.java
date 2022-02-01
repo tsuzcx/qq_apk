@@ -1,30 +1,30 @@
 package com.tencent.mm.emoji.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bc.d;
-import com.tencent.mm.bc.e;
-import com.tencent.mm.bc.j;
-import com.tencent.mm.bc.m;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.bb.d;
+import com.tencent.mm.bb.e;
+import com.tencent.mm.bb.j;
+import com.tencent.mm.bb.m;
+import com.tencent.mm.sdk.platformtools.bu;
 import d.g.b.p;
 import d.l;
 import java.util.LinkedList;
 import org.xmlpull.v1.XmlPullParser;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/emoji/model/EggItemParser;", "Lcom/tencent/mm/emoji/model/BaseXmlContent;", "isNewItem", "", "(Z)V", "defaultAnim", "Lcom/tencent/mm/modelpackage/NewAnim;", "info", "Lcom/tencent/mm/modelpackage/EggInfo;", "getInfo", "()Lcom/tencent/mm/modelpackage/EggInfo;", "luckyBagValid", "luckyBag", "Lcom/tencent/mm/modelpackage/LuckyBag;", "parse", "", "parser", "Lorg/xmlpull/v1/XmlPullParser;", "parseTag", "tag", "", "plugin-emojisdk_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/emoji/model/EggItemParser;", "Lcom/tencent/mm/emoji/model/BaseXmlContent;", "isNewItem", "", "(Z)V", "defaultAnim", "Lcom/tencent/mm/modelpackage/NewAnim;", "info", "Lcom/tencent/mm/modelpackage/EggInfo;", "getInfo", "()Lcom/tencent/mm/modelpackage/EggInfo;", "luckyBagValid", "luckyBag", "Lcom/tencent/mm/modelpackage/LuckyBag;", "parse", "", "parser", "Lorg/xmlpull/v1/XmlPullParser;", "parseTag", "tag", "", "plugin-emojisdk_release"})
 public final class g
   extends a
 {
-  final d gjP;
-  private final m gjQ;
-  private final boolean gjR;
+  final d gmi;
+  private final m gmj;
+  private final boolean gmk;
   
   public g(boolean paramBoolean)
   {
     AppMethodBeat.i(105504);
-    this.gjR = paramBoolean;
-    this.gjP = new d();
-    this.gjQ = new m();
+    this.gmk = paramBoolean;
+    this.gmi = new d();
+    this.gmj = new m();
     AppMethodBeat.o(105504);
   }
   
@@ -49,24 +49,24 @@ public final class g
       if (!paramString.equals("Type")) {
         break;
       }
-      this.gjP.type = d(paramXmlPullParser);
+      this.gmi.type = d(paramXmlPullParser);
       AppMethodBeat.o(105503);
       return;
       if (!paramString.equals("AnimType")) {
         break;
       }
-      this.gjQ.ijp = e(paramXmlPullParser, "viewcount");
-      this.gjQ.ijq = e(paramXmlPullParser, "minSize");
-      this.gjQ.maxSize = e(paramXmlPullParser, "maxSize");
-      this.gjQ.ijo = d(paramXmlPullParser);
+      this.gmj.imi = e(paramXmlPullParser, "viewcount");
+      this.gmj.imj = e(paramXmlPullParser, "minSize");
+      this.gmj.maxSize = e(paramXmlPullParser, "maxSize");
+      this.gmj.imh = d(paramXmlPullParser);
       AppMethodBeat.o(105503);
       return;
       if (!paramString.equals("ClientEggVersion")) {
         break;
       }
-      if (this.gjR)
+      if (this.gmk)
       {
-        this.gjP.iiU = d(paramXmlPullParser);
+        this.gmi.ilN = d(paramXmlPullParser);
         AppMethodBeat.o(105503);
         return;
         if (!paramString.equals("KeyWord")) {
@@ -74,8 +74,8 @@ public final class g
         }
         paramString = new e();
         paramString.lang = d(paramXmlPullParser, "lang");
-        paramString.iiW = c(paramXmlPullParser);
-        paramXmlPullParser = paramString.iiW;
+        paramString.ilP = c(paramXmlPullParser);
+        paramXmlPullParser = paramString.ilP;
         p.g(paramXmlPullParser, "eggKeyWord.keyWord");
         if (((CharSequence)paramXmlPullParser).length() <= 0) {
           break label586;
@@ -83,26 +83,26 @@ public final class g
         if (i == 0) {
           continue;
         }
-        this.gjP.iiP.add(paramString);
+        this.gmi.ilI.add(paramString);
         AppMethodBeat.o(105503);
         return;
         if (!paramString.equals("FileName")) {
           break;
         }
-        this.gjP.iiV.add(this.gjQ);
-        this.gjQ.fileName = c(paramXmlPullParser);
+        this.gmi.ilO.add(this.gmj);
+        this.gmj.fileName = c(paramXmlPullParser);
         AppMethodBeat.o(105503);
         return;
         if (!paramString.equals("NewAnimType")) {
           break;
         }
         paramString = new m();
-        paramString.ijp = e(paramXmlPullParser, "viewcount");
-        paramString.ijq = e(paramXmlPullParser, "minSize");
+        paramString.imi = e(paramXmlPullParser, "viewcount");
+        paramString.imj = e(paramXmlPullParser, "minSize");
         paramString.maxSize = e(paramXmlPullParser, "maxSize");
         paramString.fileName = d(paramXmlPullParser, "fileName");
-        paramString.ijo = d(paramXmlPullParser);
-        this.gjP.iiV.add(paramString);
+        paramString.imh = d(paramXmlPullParser);
+        this.gmi.ilO.add(paramString);
         AppMethodBeat.o(105503);
         return;
         if (!paramString.equals("LuckyBag")) {
@@ -110,18 +110,18 @@ public final class g
         }
         paramString = new n();
         paramString.e(paramXmlPullParser);
-        paramXmlPullParser = paramString.gkH;
-        if ((!bt.isNullOrNil(paramXmlPullParser.appId)) && (!bt.isNullOrNil(paramXmlPullParser.ijf)) && (!bt.isNullOrNil(paramXmlPullParser.doD)) && (!bt.isNullOrNil(paramXmlPullParser.ijb)) && (!bt.isNullOrNil(paramXmlPullParser.ijd)) && (!bt.isNullOrNil(paramXmlPullParser.iji)) && (!bt.isNullOrNil(paramXmlPullParser.ijj)) && (!bt.isNullOrNil(paramXmlPullParser.ijk)) && (!bt.isNullOrNil(paramXmlPullParser.ijl))) {
+        paramXmlPullParser = paramString.gnb;
+        if ((!bu.isNullOrNil(paramXmlPullParser.appId)) && (!bu.isNullOrNil(paramXmlPullParser.ilY)) && (!bu.isNullOrNil(paramXmlPullParser.dpI)) && (!bu.isNullOrNil(paramXmlPullParser.ilU)) && (!bu.isNullOrNil(paramXmlPullParser.ilW)) && (!bu.isNullOrNil(paramXmlPullParser.imb)) && (!bu.isNullOrNil(paramXmlPullParser.imc)) && (!bu.isNullOrNil(paramXmlPullParser.imd)) && (!bu.isNullOrNil(paramXmlPullParser.ime))) {
           break label591;
         }
-        com.tencent.mm.plugin.report.service.g.yhR.dD(1263, 0);
+        com.tencent.mm.plugin.report.service.g.yxI.dD(1263, 0);
       }
       for (i = 0;; i = 1)
       {
         if (i == 0) {
           break label594;
         }
-        this.gjP.gkH = paramString.gkH;
+        this.gmi.gnb = paramString.gnb;
         AppMethodBeat.o(105503);
         return;
         skip(paramXmlPullParser);
@@ -137,18 +137,18 @@ public final class g
   {
     AppMethodBeat.i(105502);
     p.h(paramXmlPullParser, "parser");
-    this.gjP.name = d(paramXmlPullParser, "name");
-    this.gjP.dFx = e(paramXmlPullParser, "reportType");
-    this.gjP.iiT = d(paramXmlPullParser, "langs");
-    this.gjP.iiR = bt.aQX(d(paramXmlPullParser, "BeginDate"));
-    this.gjP.iiS = bt.aQX(d(paramXmlPullParser, "EndDate"));
+    this.gmi.name = d(paramXmlPullParser, "name");
+    this.gmi.dGC = e(paramXmlPullParser, "reportType");
+    this.gmi.ilM = d(paramXmlPullParser, "langs");
+    this.gmi.ilK = bu.aSu(d(paramXmlPullParser, "BeginDate"));
+    this.gmi.ilL = bu.aSu(d(paramXmlPullParser, "EndDate"));
     super.e(paramXmlPullParser);
     AppMethodBeat.o(105502);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.emoji.a.g
  * JD-Core Version:    0.7.0.1
  */

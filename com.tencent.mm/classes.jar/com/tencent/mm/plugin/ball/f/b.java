@@ -1,36 +1,36 @@
 package com.tencent.mm.plugin.ball.f;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.aj;
 import java.util.Locale;
 
 public final class b
 {
-  public static String Wp(String paramString)
+  public static String Xb(String paramString)
   {
     AppMethodBeat.i(127558);
-    paramString = ai.ee(String.format("%s#%s", new Object[] { Long.valueOf(System.currentTimeMillis()), paramString }));
+    paramString = aj.ej(String.format("%s#%s", new Object[] { Long.valueOf(System.currentTimeMillis()), paramString }));
     AppMethodBeat.o(127558);
     return paramString;
   }
   
-  public static String Wq(String paramString)
+  public static String Xc(String paramString)
   {
     AppMethodBeat.i(127560);
-    paramString = ai.ee(String.format("%s", new Object[] { paramString }));
+    paramString = aj.ej(String.format("%s", new Object[] { paramString }));
     AppMethodBeat.o(127560);
     return paramString;
   }
   
-  public static String cp(String paramString, int paramInt)
+  public static String ct(String paramString, int paramInt)
   {
-    AppMethodBeat.i(189772);
+    AppMethodBeat.i(200288);
     paramString = String.format(Locale.US, "%s#%d", new Object[] { paramString, Integer.valueOf(paramInt) });
-    AppMethodBeat.o(189772);
+    AppMethodBeat.o(200288);
     return paramString;
   }
   
-  public static String cq(String paramString, int paramInt)
+  public static String cu(String paramString, int paramInt)
   {
     AppMethodBeat.i(127559);
     paramString = String.format(Locale.US, "%s#%d", new Object[] { paramString, Integer.valueOf(paramInt) });

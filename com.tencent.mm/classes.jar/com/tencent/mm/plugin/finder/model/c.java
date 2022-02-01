@@ -8,58 +8,58 @@ import com.tencent.mm.plugin.finder.storage.logic.b.a;
 import com.tencent.mm.plugin.finder.storage.m;
 import com.tencent.mm.plugin.finder.storage.t;
 import com.tencent.mm.plugin.finder.storage.u;
-import com.tencent.mm.protocal.protobuf.apj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.apw;
+import com.tencent.mm.sdk.platformtools.bu;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/model/BaseMixFeed;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "mixItem", "Lcom/tencent/mm/plugin/finder/storage/FinderMixItem;", "(Lcom/tencent/mm/plugin/finder/storage/FinderMixItem;)V", "baseFinderFeed", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "getBaseFinderFeed", "()Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "setBaseFinderFeed", "(Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;)V", "getMixItem", "()Lcom/tencent/mm/plugin/finder/storage/FinderMixItem;", "compare", "", "obj", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "getItemId", "", "getItemType", "toString", "", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/model/BaseMixFeed;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "mixItem", "Lcom/tencent/mm/plugin/finder/storage/FinderMixItem;", "(Lcom/tencent/mm/plugin/finder/storage/FinderMixItem;)V", "baseFinderFeed", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "getBaseFinderFeed", "()Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "setBaseFinderFeed", "(Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;)V", "getMixItem", "()Lcom/tencent/mm/plugin/finder/storage/FinderMixItem;", "compare", "", "obj", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "getItemId", "", "getItemType", "toString", "", "plugin-finder_release"})
 public final class c
-  implements al
+  implements am
 {
-  public BaseFinderFeed sjQ;
-  public final t sjR;
+  public BaseFinderFeed ssN;
+  public final t ssO;
   
   public c(t paramt)
   {
-    AppMethodBeat.i(202939);
-    this.sjR = paramt;
-    paramt = this.sjR.syU;
+    AppMethodBeat.i(203419);
+    this.ssO = paramt;
+    paramt = this.ssO.sJL;
     if (paramt != null) {
-      b.a locala = b.sAs;
+      b.a locala = b.sLq;
     }
     for (paramt = b.a.j(paramt);; paramt = null)
     {
-      this.sjQ = paramt;
-      AppMethodBeat.o(202939);
+      this.ssN = paramt;
+      AppMethodBeat.o(203419);
       return;
     }
   }
   
   public final int a(i parami)
   {
-    AppMethodBeat.i(202937);
+    AppMethodBeat.i(203417);
     d.g.b.p.h(parami, "obj");
     if (!(parami instanceof c)) {}
     for (Object localObject = null;; localObject = parami)
     {
       if ((c)localObject != null)
       {
-        localObject = this.sjR;
-        parami = ((c)parami).sjR;
+        localObject = this.ssO;
+        parami = ((c)parami).ssO;
         d.g.b.p.h(parami, "otherItem");
         int i;
         com.tencent.mm.plugin.finder.utils.p localp;
         boolean bool;
-        if (parami.syW.dataType == ((t)localObject).syW.dataType)
+        if (parami.sJN.dataType == ((t)localObject).sJN.dataType)
         {
-          i = parami.syW.dataType;
-          if (i == t.syX)
+          i = parami.sJN.dataType;
+          if (i == t.sJO)
           {
-            localp = com.tencent.mm.plugin.finder.utils.p.sMo;
-            localObject = ((t)localObject).syT;
-            parami = parami.syT;
+            localp = com.tencent.mm.plugin.finder.utils.p.sXz;
+            localObject = ((t)localObject).sJK;
+            parami = parami.sJK;
             if ((localObject != null) && (parami != null)) {
-              if ((!bt.isNullOrNil(((m)localObject).cIv())) && (d.g.b.p.i(((m)localObject).cIv(), parami.cIv()))) {
+              if ((!bu.isNullOrNil(((m)localObject).cLa())) && (d.g.b.p.i(((m)localObject).cLa(), parami.cLa()))) {
                 bool = true;
               }
             }
@@ -67,17 +67,17 @@ public final class c
         }
         while (bool)
         {
-          AppMethodBeat.o(202937);
+          AppMethodBeat.o(203417);
           return 0;
           bool = false;
           continue;
           bool = false;
           continue;
-          if (i == t.syY)
+          if (i == t.sJP)
           {
-            localp = com.tencent.mm.plugin.finder.utils.p.sMo;
-            localObject = ((t)localObject).syU;
-            parami = parami.syU;
+            localp = com.tencent.mm.plugin.finder.utils.p.sXz;
+            localObject = ((t)localObject).sJL;
+            parami = parami.sJL;
             if ((localObject != null) && (parami != null))
             {
               if ((((FinderItem)localObject).field_id != 0L) && (parami.field_id != 0L) && (((FinderItem)localObject).field_id == parami.field_id))
@@ -90,11 +90,11 @@ public final class c
               }
             }
           }
-          else if (i == t.syZ)
+          else if (i == t.sJQ)
           {
-            localp = com.tencent.mm.plugin.finder.utils.p.sMo;
-            localObject = ((t)localObject).sjP;
-            parami = parami.sjP;
+            localp = com.tencent.mm.plugin.finder.utils.p.sXz;
+            localObject = ((t)localObject).ssM;
+            parami = parami.ssM;
             if ((localObject != null) && (parami != null))
             {
               bool = ((u)localObject).a(parami);
@@ -106,26 +106,26 @@ public final class c
           bool = false;
         }
       }
-      AppMethodBeat.o(202937);
+      AppMethodBeat.o(203417);
       return -1;
     }
   }
   
-  public final int bYk()
+  public final int bZz()
   {
-    return this.sjR.oIb;
+    return this.ssO.oOD;
   }
   
   public final long lP()
   {
-    return this.sjR.syV;
+    return this.ssO.sJM;
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(202938);
-    String str = "ItemId=" + this.sjR.syV + ",ItemType=" + this.sjR.oIb + ' ';
-    AppMethodBeat.o(202938);
+    AppMethodBeat.i(203418);
+    String str = "ItemId=" + this.ssO.sJM + ",ItemType=" + this.ssO.oOD + ' ';
+    AppMethodBeat.o(203418);
     return str;
   }
 }

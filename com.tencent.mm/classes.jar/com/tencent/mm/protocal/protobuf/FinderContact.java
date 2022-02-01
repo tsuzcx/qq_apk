@@ -4,20 +4,21 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 public class FinderContact
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
   public FinderAuthInfo authInfo;
   public String coverImgUrl;
   public int extFlag;
-  public alx extInfo;
+  public amj extInfo;
   public int followFlag;
   public int followTime;
   public String headUrl;
   public int liveStatus;
-  public alz msgInfo;
+  public aml msgInfo;
   public String nickname;
+  public int originalEntranceFlag;
   public int originalFlag;
-  public aqe originalInfo;
+  public aqt originalInfo;
   public long seq;
   public String signature;
   public int spamStatus;
@@ -38,7 +39,7 @@ public class FinderContact
       if (this.headUrl != null) {
         paramVarArgs.d(3, this.headUrl);
       }
-      paramVarArgs.aY(4, this.seq);
+      paramVarArgs.aZ(4, this.seq);
       if (this.signature != null) {
         paramVarArgs.d(5, this.signature);
       }
@@ -46,7 +47,7 @@ public class FinderContact
       paramVarArgs.aS(7, this.followTime);
       if (this.authInfo != null)
       {
-        paramVarArgs.lC(8, this.authInfo.computeSize());
+        paramVarArgs.lJ(8, this.authInfo.computeSize());
         this.authInfo.writeFields(paramVarArgs);
       }
       if (this.coverImgUrl != null) {
@@ -56,30 +57,31 @@ public class FinderContact
       paramVarArgs.aS(11, this.extFlag);
       if (this.extInfo != null)
       {
-        paramVarArgs.lC(12, this.extInfo.computeSize());
+        paramVarArgs.lJ(12, this.extInfo.computeSize());
         this.extInfo.writeFields(paramVarArgs);
       }
       paramVarArgs.aS(13, this.originalFlag);
       if (this.originalInfo != null)
       {
-        paramVarArgs.lC(14, this.originalInfo.computeSize());
+        paramVarArgs.lJ(14, this.originalInfo.computeSize());
         this.originalInfo.writeFields(paramVarArgs);
       }
       paramVarArgs.aS(15, this.liveStatus);
       if (this.msgInfo != null)
       {
-        paramVarArgs.lC(16, this.msgInfo.computeSize());
+        paramVarArgs.lJ(16, this.msgInfo.computeSize());
         this.msgInfo.writeFields(paramVarArgs);
       }
+      paramVarArgs.aS(17, this.originalEntranceFlag);
       AppMethodBeat.o(168945);
       return 0;
     }
     if (paramInt == 1) {
       if (this.username == null) {
-        break label1398;
+        break label1446;
       }
     }
-    label1398:
+    label1446:
     for (int i = f.a.a.b.b.a.e(1, this.username) + 0;; i = 0)
     {
       paramInt = i;
@@ -98,7 +100,7 @@ public class FinderContact
       i = paramInt + f.a.a.b.b.a.bz(6, this.followFlag) + f.a.a.b.b.a.bz(7, this.followTime);
       paramInt = i;
       if (this.authInfo != null) {
-        paramInt = i + f.a.a.a.lB(8, this.authInfo.computeSize());
+        paramInt = i + f.a.a.a.lI(8, this.authInfo.computeSize());
       }
       i = paramInt;
       if (this.coverImgUrl != null) {
@@ -107,26 +109,27 @@ public class FinderContact
       i = i + f.a.a.b.b.a.bz(10, this.spamStatus) + f.a.a.b.b.a.bz(11, this.extFlag);
       paramInt = i;
       if (this.extInfo != null) {
-        paramInt = i + f.a.a.a.lB(12, this.extInfo.computeSize());
+        paramInt = i + f.a.a.a.lI(12, this.extInfo.computeSize());
       }
       i = paramInt + f.a.a.b.b.a.bz(13, this.originalFlag);
       paramInt = i;
       if (this.originalInfo != null) {
-        paramInt = i + f.a.a.a.lB(14, this.originalInfo.computeSize());
+        paramInt = i + f.a.a.a.lI(14, this.originalInfo.computeSize());
       }
       i = paramInt + f.a.a.b.b.a.bz(15, this.liveStatus);
       paramInt = i;
       if (this.msgInfo != null) {
-        paramInt = i + f.a.a.a.lB(16, this.msgInfo.computeSize());
+        paramInt = i + f.a.a.a.lI(16, this.msgInfo.computeSize());
       }
+      i = f.a.a.b.b.a.bz(17, this.originalEntranceFlag);
       AppMethodBeat.o(168945);
-      return paramInt;
+      return paramInt + i;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
         AppMethodBeat.o(168945);
@@ -145,35 +148,35 @@ public class FinderContact
           AppMethodBeat.o(168945);
           return -1;
         case 1: 
-          localFinderContact.username = ((f.a.a.a.a)localObject1).NPN.readString();
+          localFinderContact.username = ((f.a.a.a.a)localObject1).OmT.readString();
           AppMethodBeat.o(168945);
           return 0;
         case 2: 
-          localFinderContact.nickname = ((f.a.a.a.a)localObject1).NPN.readString();
+          localFinderContact.nickname = ((f.a.a.a.a)localObject1).OmT.readString();
           AppMethodBeat.o(168945);
           return 0;
         case 3: 
-          localFinderContact.headUrl = ((f.a.a.a.a)localObject1).NPN.readString();
+          localFinderContact.headUrl = ((f.a.a.a.a)localObject1).OmT.readString();
           AppMethodBeat.o(168945);
           return 0;
         case 4: 
-          localFinderContact.seq = ((f.a.a.a.a)localObject1).NPN.zd();
+          localFinderContact.seq = ((f.a.a.a.a)localObject1).OmT.zd();
           AppMethodBeat.o(168945);
           return 0;
         case 5: 
-          localFinderContact.signature = ((f.a.a.a.a)localObject1).NPN.readString();
+          localFinderContact.signature = ((f.a.a.a.a)localObject1).OmT.readString();
           AppMethodBeat.o(168945);
           return 0;
         case 6: 
-          localFinderContact.followFlag = ((f.a.a.a.a)localObject1).NPN.zc();
+          localFinderContact.followFlag = ((f.a.a.a.a)localObject1).OmT.zc();
           AppMethodBeat.o(168945);
           return 0;
         case 7: 
-          localFinderContact.followTime = ((f.a.a.a.a)localObject1).NPN.zc();
+          localFinderContact.followTime = ((f.a.a.a.a)localObject1).OmT.zc();
           AppMethodBeat.o(168945);
           return 0;
         case 8: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
+          paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
@@ -181,75 +184,79 @@ public class FinderContact
             localObject2 = (byte[])paramVarArgs.get(paramInt);
             localObject1 = new FinderAuthInfo();
             localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (bool = true; bool; bool = ((FinderAuthInfo)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, com.tencent.mm.bx.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            for (bool = true; bool; bool = ((FinderAuthInfo)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
             localFinderContact.authInfo = ((FinderAuthInfo)localObject1);
             paramInt += 1;
           }
           AppMethodBeat.o(168945);
           return 0;
         case 9: 
-          localFinderContact.coverImgUrl = ((f.a.a.a.a)localObject1).NPN.readString();
+          localFinderContact.coverImgUrl = ((f.a.a.a.a)localObject1).OmT.readString();
           AppMethodBeat.o(168945);
           return 0;
         case 10: 
-          localFinderContact.spamStatus = ((f.a.a.a.a)localObject1).NPN.zc();
+          localFinderContact.spamStatus = ((f.a.a.a.a)localObject1).OmT.zc();
           AppMethodBeat.o(168945);
           return 0;
         case 11: 
-          localFinderContact.extFlag = ((f.a.a.a.a)localObject1).NPN.zc();
+          localFinderContact.extFlag = ((f.a.a.a.a)localObject1).OmT.zc();
           AppMethodBeat.o(168945);
           return 0;
         case 12: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
+          paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
             localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new alx();
+            localObject1 = new amj();
             localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (bool = true; bool; bool = ((alx)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, com.tencent.mm.bx.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-            localFinderContact.extInfo = ((alx)localObject1);
+            for (bool = true; bool; bool = ((amj)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            localFinderContact.extInfo = ((amj)localObject1);
             paramInt += 1;
           }
           AppMethodBeat.o(168945);
           return 0;
         case 13: 
-          localFinderContact.originalFlag = ((f.a.a.a.a)localObject1).NPN.zc();
+          localFinderContact.originalFlag = ((f.a.a.a.a)localObject1).OmT.zc();
           AppMethodBeat.o(168945);
           return 0;
         case 14: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
+          paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
             localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new aqe();
+            localObject1 = new aqt();
             localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (bool = true; bool; bool = ((aqe)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, com.tencent.mm.bx.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-            localFinderContact.originalInfo = ((aqe)localObject1);
+            for (bool = true; bool; bool = ((aqt)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            localFinderContact.originalInfo = ((aqt)localObject1);
             paramInt += 1;
           }
           AppMethodBeat.o(168945);
           return 0;
         case 15: 
-          localFinderContact.liveStatus = ((f.a.a.a.a)localObject1).NPN.zc();
+          localFinderContact.liveStatus = ((f.a.a.a.a)localObject1).OmT.zc();
+          AppMethodBeat.o(168945);
+          return 0;
+        case 16: 
+          paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject2 = (byte[])paramVarArgs.get(paramInt);
+            localObject1 = new aml();
+            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
+            for (bool = true; bool; bool = ((aml)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            localFinderContact.msgInfo = ((aml)localObject1);
+            paramInt += 1;
+          }
           AppMethodBeat.o(168945);
           return 0;
         }
-        paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
-        i = paramVarArgs.size();
-        paramInt = 0;
-        while (paramInt < i)
-        {
-          localObject2 = (byte[])paramVarArgs.get(paramInt);
-          localObject1 = new alz();
-          localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-          for (bool = true; bool; bool = ((alz)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, com.tencent.mm.bx.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-          localFinderContact.msgInfo = ((alz)localObject1);
-          paramInt += 1;
-        }
+        localFinderContact.originalEntranceFlag = ((f.a.a.a.a)localObject1).OmT.zc();
         AppMethodBeat.o(168945);
         return 0;
       }

@@ -3,7 +3,7 @@ package com.tencent.mm.pluginsdk.model.app;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.b.f;
 import com.tencent.mm.kernel.b.g;
-import com.tencent.mm.vfs.o;
+import com.tencent.mm.vfs.u;
 
 public class PluginAppMsg
   extends f
@@ -12,10 +12,10 @@ public class PluginAppMsg
   public void configure(g paramg)
   {
     AppMethodBeat.i(169778);
-    if (paramg.akw())
+    if (paramg.akL())
     {
-      o.an("attachment", "attachment", 19);
-      o.an("Download", "Download", 23);
+      u.ap("attachment", "attachment", 19);
+      u.ap("Download", "Download", 23);
     }
     AppMethodBeat.o(169778);
   }
@@ -29,7 +29,7 @@ public class PluginAppMsg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.model.app.PluginAppMsg
  * JD-Core Version:    0.7.0.1
  */

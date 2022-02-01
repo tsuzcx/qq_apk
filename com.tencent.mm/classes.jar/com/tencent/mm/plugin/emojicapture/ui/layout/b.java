@@ -12,17 +12,17 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/emojicapture/ui/layout/RecommendStickerDecoration;", "Landroid/support/v7/widget/RecyclerView$ItemDecoration;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "itemPadding", "", "itemWidth", "getItemOffsets", "", "outRect", "Landroid/graphics/Rect;", "view", "Landroid/view/View;", "parent", "Landroid/support/v7/widget/RecyclerView;", "state", "Landroid/support/v7/widget/RecyclerView$State;", "plugin-emojicapture_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/emojicapture/ui/layout/RecommendStickerDecoration;", "Landroid/support/v7/widget/RecyclerView$ItemDecoration;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "itemPadding", "", "itemWidth", "getItemOffsets", "", "outRect", "Landroid/graphics/Rect;", "view", "Landroid/view/View;", "parent", "Landroid/support/v7/widget/RecyclerView;", "state", "Landroid/support/v7/widget/RecyclerView$State;", "plugin-emojicapture_release"})
 public final class b
   extends RecyclerView.h
 {
   private final int itemPadding;
-  private final int oQH;
+  private final int oXj;
   
   public b(Context paramContext)
   {
     AppMethodBeat.i(883);
-    this.oQH = paramContext.getResources().getDimensionPixelSize(2131166206);
+    this.oXj = paramContext.getResources().getDimensionPixelSize(2131166206);
     this.itemPadding = paramContext.getResources().getDimensionPixelSize(2131165303);
     AppMethodBeat.o(883);
   }
@@ -51,7 +51,7 @@ public final class b
       if (j != 0) {
         break label115;
       }
-      paramRect.set((paramRecyclerView.getWidth() - this.oQH) / 2, 0, this.itemPadding, 0);
+      paramRect.set((paramRecyclerView.getWidth() - this.oXj) / 2, 0, this.itemPadding, 0);
       AppMethodBeat.o(882);
       return;
       i = 0;
@@ -61,7 +61,7 @@ public final class b
     if (j == i - 1)
     {
       if (paramView == null) {}
-      for (i = (paramRecyclerView.getWidth() - this.oQH) / 2;; i = paramRecyclerView.getWidth() / 2 - this.oQH / 2 * 3 - this.itemPadding * 2)
+      for (i = (paramRecyclerView.getWidth() - this.oXj) / 2;; i = paramRecyclerView.getWidth() / 2 - this.oXj / 2 * 3 - this.itemPadding * 2)
       {
         paramRect.set(this.itemPadding, 0, i, 0);
         AppMethodBeat.o(882);
@@ -77,7 +77,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.emojicapture.ui.layout.b
  * JD-Core Version:    0.7.0.1
  */

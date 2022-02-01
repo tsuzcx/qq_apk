@@ -3,12 +3,14 @@ package com.tencent.mm.plugin.appbrand.jsapi.container;
 import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.base.d;
 import com.tencent.mm.plugin.appbrand.jsapi.e;
-import com.tencent.mm.plugin.appbrand.z.g;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.plugin.appbrand.y.g;
+import com.tencent.mm.sdk.platformtools.ae;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -26,7 +28,7 @@ public final class c
     return i;
   }
   
-  public final boolean c(e parame, int paramInt, View paramView, JSONObject paramJSONObject)
+  public final boolean c(final e parame, int paramInt, View paramView, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(137514);
     if (!(paramView instanceof WrapperNativeContainerView))
@@ -54,13 +56,31 @@ public final class c
       break label71;
     }
     parame = (AppBrandNativeContainerView)parame.ax(AppBrandNativeContainerView.class);
-    ad.i("MicroMsg.JsApiUpdatePositioningContainer", "scrollLeft:%d, scrollTop:%d, animation:%d", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k) });
+    ae.i("MicroMsg.JsApiUpdatePositioningContainer", "scrollLeft:%d, scrollTop:%d, animation:%d", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k) });
     if (k == 1)
     {
       paramView = ObjectAnimator.ofFloat(parame, "x", new float[] { parame.getX(), -i });
       localObjectAnimator = ObjectAnimator.ofFloat(parame, "y", new float[] { parame.getY(), -j });
-      paramView.addUpdateListener(new c.1(this, parame));
-      localObjectAnimator.addUpdateListener(new c.2(this, parame));
+      paramView.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
+      {
+        public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
+        {
+          AppMethodBeat.i(137509);
+          float f = ((Float)paramAnonymousValueAnimator.getAnimatedValue()).floatValue();
+          parame.setX(f);
+          AppMethodBeat.o(137509);
+        }
+      });
+      localObjectAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
+      {
+        public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
+        {
+          AppMethodBeat.i(137510);
+          float f = ((Float)paramAnonymousValueAnimator.getAnimatedValue()).floatValue();
+          parame.setY(f);
+          AppMethodBeat.o(137510);
+        }
+      });
       localAnimatorSet = new AnimatorSet();
       localAnimatorSet.setDuration(1000L);
       localAnimatorSet.setInterpolator(new c.a(this));
@@ -72,7 +92,7 @@ public final class c
     {
       paramInt = g.a(paramJSONObject, "innerHeight", parame.getHeight());
       i = g.a(paramJSONObject, "innerWidth", parame.getWidth());
-      ad.i("MicroMsg.JsApiUpdatePositioningContainer", "innerHeight:%d, innerWidth:%d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i) });
+      ae.i("MicroMsg.JsApiUpdatePositioningContainer", "innerHeight:%d, innerWidth:%d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i) });
       paramView = parame.getLayoutParams();
       paramView.height = paramInt;
       paramView.width = i;
@@ -89,7 +109,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.container.c
  * JD-Core Version:    0.7.0.1
  */

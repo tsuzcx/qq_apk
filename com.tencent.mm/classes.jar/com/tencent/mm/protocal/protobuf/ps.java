@@ -1,69 +1,62 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import f.a.a.b;
-import java.util.LinkedList;
 
 public final class ps
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public String FHb;
-  public LinkedList<String> FKU;
-  
-  public ps()
-  {
-    AppMethodBeat.i(124465);
-    this.FKU = new LinkedList();
-    AppMethodBeat.o(124465);
-  }
+  public String Gdj;
+  public String Gdk;
+  public String Url;
+  public int nJA;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(124466);
+    AppMethodBeat.i(152989);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.FHb == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: brand_user_name");
-        AppMethodBeat.o(124466);
-        throw paramVarArgs;
+      if (this.Gdj != null) {
+        paramVarArgs.d(1, this.Gdj);
       }
-      if (this.FHb != null) {
-        paramVarArgs.d(2, this.FHb);
+      if (this.Gdk != null) {
+        paramVarArgs.d(2, this.Gdk);
       }
-      paramVarArgs.e(3, 1, this.FKU);
-      AppMethodBeat.o(124466);
+      if (this.Url != null) {
+        paramVarArgs.d(3, this.Url);
+      }
+      paramVarArgs.aS(4, this.nJA);
+      AppMethodBeat.o(152989);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.FHb == null) {
-        break label322;
+      if (this.Gdj == null) {
+        break label378;
       }
     }
-    label322:
-    for (paramInt = f.a.a.b.b.a.e(2, this.FHb) + 0;; paramInt = 0)
+    label378:
+    for (int i = f.a.a.b.b.a.e(1, this.Gdj) + 0;; i = 0)
     {
-      int i = f.a.a.a.c(3, 1, this.FKU);
-      AppMethodBeat.o(124466);
-      return paramInt + i;
+      paramInt = i;
+      if (this.Gdk != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.Gdk);
+      }
+      i = paramInt;
+      if (this.Url != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.Url);
+      }
+      paramInt = f.a.a.b.b.a.bz(4, this.nJA);
+      AppMethodBeat.o(152989);
+      return i + paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = (byte[])paramVarArgs[0];
-        this.FKU.clear();
-        paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
-        if (this.FHb == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: brand_user_name");
-          AppMethodBeat.o(124466);
-          throw paramVarArgs;
-        }
-        AppMethodBeat.o(124466);
+        AppMethodBeat.o(152989);
         return 0;
       }
       if (paramInt == 3)
@@ -73,25 +66,33 @@ public final class ps
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(124466);
+          AppMethodBeat.o(152989);
           return -1;
+        case 1: 
+          localps.Gdj = locala.OmT.readString();
+          AppMethodBeat.o(152989);
+          return 0;
         case 2: 
-          localps.FHb = locala.NPN.readString();
-          AppMethodBeat.o(124466);
+          localps.Gdk = locala.OmT.readString();
+          AppMethodBeat.o(152989);
+          return 0;
+        case 3: 
+          localps.Url = locala.OmT.readString();
+          AppMethodBeat.o(152989);
           return 0;
         }
-        localps.FKU.add(locala.NPN.readString());
-        AppMethodBeat.o(124466);
+        localps.nJA = locala.OmT.zc();
+        AppMethodBeat.o(152989);
         return 0;
       }
-      AppMethodBeat.o(124466);
+      AppMethodBeat.o(152989);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.ps
  * JD-Core Version:    0.7.0.1
  */

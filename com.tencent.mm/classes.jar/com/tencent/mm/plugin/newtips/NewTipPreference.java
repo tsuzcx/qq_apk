@@ -10,8 +10,8 @@ import com.tencent.mm.plugin.newtips.a.a;
 import com.tencent.mm.plugin.newtips.a.g;
 import com.tencent.mm.plugin.newtips.a.i;
 import com.tencent.mm.plugin.newtips.a.k;
-import com.tencent.mm.protocal.protobuf.dnc;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.dnz;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.base.preference.f;
 import java.lang.ref.WeakReference;
@@ -21,11 +21,11 @@ public class NewTipPreference
   implements a
 {
   private Context context;
-  private View fOB;
-  private View goo;
+  private View fQH;
+  private View gqK;
   private View mView;
   private String path;
-  private WeakReference<f> wrM;
+  private WeakReference<f> wHv;
   
   public NewTipPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -36,13 +36,13 @@ public class NewTipPreference
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(184011);
-    this.wrM = null;
+    this.wHv = null;
     this.context = paramContext;
     setLayoutResource(2131494804);
     paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, b.a.NormalIconNewTipPreference, paramInt, 0);
     this.path = paramContext.getString(0);
     paramContext.recycle();
-    ad.i("MicroMsg.NewTips.NewTipPreference", "NewTipPreference() path:%s", new Object[] { this.path });
+    ae.i("MicroMsg.NewTips.NewTipPreference", "NewTipPreference() path:%s", new Object[] { this.path });
     AppMethodBeat.o(184011);
   }
   
@@ -56,32 +56,49 @@ public class NewTipPreference
   public final void a(f paramf)
   {
     AppMethodBeat.i(184018);
-    this.wrM = new WeakReference(paramf);
+    this.wHv = new WeakReference(paramf);
     AppMethodBeat.o(184018);
   }
   
-  public final boolean a(boolean paramBoolean, dnc paramdnc)
+  public final boolean a(boolean paramBoolean, dnz paramdnz)
   {
     return false;
   }
   
-  public final boolean b(boolean paramBoolean, dnc paramdnc)
+  public final boolean b(boolean paramBoolean, dnz paramdnz)
   {
     return false;
   }
   
-  public final boolean c(boolean paramBoolean, dnc paramdnc)
+  public final boolean c(boolean paramBoolean, dnz paramdnz)
   {
     return false;
   }
   
-  public final boolean d(boolean paramBoolean, dnc paramdnc)
+  public final boolean d(boolean paramBoolean, dnz paramdnz)
   {
     return false;
   }
   
-  public final boolean dkD()
+  public final boolean dnD()
   {
+    return false;
+  }
+  
+  public final boolean dxA()
+  {
+    AppMethodBeat.i(200587);
+    if (this.gqK == null)
+    {
+      AppMethodBeat.o(200587);
+      return false;
+    }
+    if (this.gqK.getVisibility() == 0)
+    {
+      AppMethodBeat.o(200587);
+      return true;
+    }
+    AppMethodBeat.o(200587);
     return false;
   }
   
@@ -93,70 +110,20 @@ public class NewTipPreference
   public final View getRoot()
   {
     AppMethodBeat.i(184014);
-    if (this.fOB == null) {
-      this.fOB = new View(this.context);
+    if (this.fQH == null) {
+      this.fQH = new View(this.context);
     }
-    View localView = this.fOB;
+    View localView = this.fQH;
     AppMethodBeat.o(184014);
     return localView;
-  }
-  
-  public final boolean ol(boolean paramBoolean)
-  {
-    AppMethodBeat.i(184016);
-    paramBoolean = g.a(paramBoolean, this);
-    AppMethodBeat.o(184016);
-    return paramBoolean;
-  }
-  
-  public final boolean om(boolean paramBoolean)
-  {
-    AppMethodBeat.i(184017);
-    ad.d("MicroMsg.NewTips.NewTipPreference", "showRedPoint() show:%s", new Object[] { Boolean.valueOf(paramBoolean) });
-    int i;
-    if (this.goo == null)
-    {
-      i = 0;
-      if (i != 0)
-      {
-        if (this.wrM != null)
-        {
-          f localf = (f)this.wrM.get();
-          if (localf != null) {
-            localf.notifyDataSetChanged();
-          }
-        }
-        AppMethodBeat.o(184017);
-        return true;
-      }
-    }
-    else
-    {
-      if (paramBoolean) {
-        this.goo.setVisibility(0);
-      }
-      for (;;)
-      {
-        i = 1;
-        break;
-        this.goo.setVisibility(8);
-      }
-    }
-    AppMethodBeat.o(184017);
-    return false;
-  }
-  
-  public final boolean on(boolean paramBoolean)
-  {
-    return false;
   }
   
   public final void onBindView(View paramView)
   {
     AppMethodBeat.i(184013);
     super.onBindView(paramView);
-    this.goo = paramView.findViewById(2131303917);
-    i.LR(g.atf(this.path));
+    this.gqK = paramView.findViewById(2131303917);
+    i.Mw(g.aus(this.path));
     AppMethodBeat.o(184013);
   }
   
@@ -171,6 +138,56 @@ public class NewTipPreference
     paramViewGroup = this.mView;
     AppMethodBeat.o(184012);
     return paramViewGroup;
+  }
+  
+  public final boolean oq(boolean paramBoolean)
+  {
+    AppMethodBeat.i(184016);
+    paramBoolean = g.a(paramBoolean, this);
+    AppMethodBeat.o(184016);
+    return paramBoolean;
+  }
+  
+  public final boolean or(boolean paramBoolean)
+  {
+    AppMethodBeat.i(184017);
+    ae.d("MicroMsg.NewTips.NewTipPreference", "showRedPoint() show:%s", new Object[] { Boolean.valueOf(paramBoolean) });
+    int i;
+    if (this.gqK == null)
+    {
+      i = 0;
+      if (i != 0)
+      {
+        if (this.wHv != null)
+        {
+          f localf = (f)this.wHv.get();
+          if (localf != null) {
+            localf.notifyDataSetChanged();
+          }
+        }
+        AppMethodBeat.o(184017);
+        return true;
+      }
+    }
+    else
+    {
+      if (paramBoolean) {
+        this.gqK.setVisibility(0);
+      }
+      for (;;)
+      {
+        i = 1;
+        break;
+        this.gqK.setVisibility(8);
+      }
+    }
+    AppMethodBeat.o(184017);
+    return false;
+  }
+  
+  public final boolean os(boolean paramBoolean)
+  {
+    return false;
   }
 }
 

@@ -7,17 +7,17 @@ import java.util.LinkedList;
 
 public abstract class j
 {
-  abstract p BZ();
+  abstract p Ca();
   
-  abstract Class<? extends a> Ca();
+  abstract Class<? extends a> Cb();
   
-  public abstract LinkedList<h> Cd();
+  public abstract LinkedList<h> Cg();
   
-  public abstract k Ce();
+  public abstract k Ch();
   
-  abstract LinkedList<Class<? extends b>> Cf();
+  abstract LinkedList<Class<? extends b>> Ci();
   
-  public abstract e Cg();
+  public abstract e Cj();
   
   abstract Context getContext();
 }

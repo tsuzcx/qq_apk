@@ -6,18 +6,18 @@ import d.g.b.a.a;
 import d.l;
 import java.util.Iterator;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlin/sequences/TransformingSequence;", "T", "R", "Lkotlin/sequences/Sequence;", "sequence", "transformer", "Lkotlin/Function1;", "(Lkotlin/sequences/Sequence;Lkotlin/jvm/functions/Function1;)V", "flatten", "E", "iterator", "", "flatten$kotlin_stdlib", "kotlin-stdlib"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlin/sequences/TransformingSequence;", "T", "R", "Lkotlin/sequences/Sequence;", "sequence", "transformer", "Lkotlin/Function1;", "(Lkotlin/sequences/Sequence;Lkotlin/jvm/functions/Function1;)V", "flatten", "E", "iterator", "", "flatten$kotlin_stdlib", "kotlin-stdlib"})
 public final class p<T, R>
   implements h<R>
 {
-  public final b<T, R> NGB;
-  public final h<T> NGt;
+  public final b<T, R> OdH;
+  public final h<T> Odz;
   
   public p(h<? extends T> paramh, b<? super T, ? extends R> paramb)
   {
     AppMethodBeat.i(129526);
-    this.NGt = paramh;
-    this.NGB = paramb;
+    this.Odz = paramh;
+    this.OdH = paramb;
     AppMethodBeat.o(129526);
   }
   
@@ -29,23 +29,23 @@ public final class p<T, R>
     return localIterator;
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"kotlin/sequences/TransformingSequence$iterator$1", "", "iterator", "getIterator", "()Ljava/util/Iterator;", "hasNext", "", "next", "()Ljava/lang/Object;", "kotlin-stdlib"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"kotlin/sequences/TransformingSequence$iterator$1", "", "iterator", "getIterator", "()Ljava/util/Iterator;", "hasNext", "", "next", "()Ljava/lang/Object;", "kotlin-stdlib"})
   public static final class a
     implements a, Iterator<R>
   {
-    private final Iterator<T> MKI;
+    private final Iterator<T> NhL;
     
     a()
     {
       AppMethodBeat.i(129484);
-      this.MKI = localObject.NGt.iterator();
+      this.NhL = localObject.Odz.iterator();
       AppMethodBeat.o(129484);
     }
     
     public final boolean hasNext()
     {
       AppMethodBeat.i(129483);
-      boolean bool = this.MKI.hasNext();
+      boolean bool = this.NhL.hasNext();
       AppMethodBeat.o(129483);
       return bool;
     }
@@ -53,7 +53,7 @@ public final class p<T, R>
     public final R next()
     {
       AppMethodBeat.i(129482);
-      Object localObject = this.NGR.NGB.invoke(this.MKI.next());
+      Object localObject = this.OdX.OdH.invoke(this.NhL.next());
       AppMethodBeat.o(129482);
       return localObject;
     }

@@ -3,7 +3,7 @@ package com.tencent.mm.ui.chatting.d;
 public abstract interface ag
   extends ad
 {
-  public abstract void fEr();
+  public abstract void fIv();
 }
 
 

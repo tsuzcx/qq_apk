@@ -2,15 +2,15 @@ package com.tencent.thumbplayer.b;
 
 public final class o
 {
-  public long LYL;
+  public long MvG;
   public byte[][] data;
   public int format;
-  public int ivD;
-  public int ivE;
+  public int iyw;
+  public int iyx;
   public int[] lineSize;
   public int rotation;
-  public int vRS;
-  public int vRT;
+  public int wdW;
+  public int wdX;
 }
 
 

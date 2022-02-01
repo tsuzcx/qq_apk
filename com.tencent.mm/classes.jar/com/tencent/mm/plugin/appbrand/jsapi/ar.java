@@ -3,14 +3,14 @@ package com.tencent.mm.plugin.appbrand.jsapi;
 import android.content.Intent;
 import com.tencent.luggage.h.e.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.q;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.plugin.appbrand.r;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.HashMap;
 import java.util.Map;
 
 public final class ar
-  extends a<q>
+  extends a<r>
 {
   public static final int CTRL_INDEX = 286;
   public static final String NAME = "chooseInvoiceTitle";

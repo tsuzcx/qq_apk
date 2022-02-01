@@ -6,7 +6,7 @@ import com.tencent.mm.plugin.appbrand.canvas.a.a;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.BaseDrawActionArg;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.DrawActionArg;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.SetFontSizeActionArg;
-import com.tencent.mm.plugin.appbrand.z.g;
+import com.tencent.mm.plugin.appbrand.y.g;
 import org.json.JSONArray;
 
 public final class s
@@ -15,8 +15,8 @@ public final class s
   private static boolean a(com.tencent.mm.plugin.appbrand.canvas.d paramd, int paramInt)
   {
     AppMethodBeat.i(144923);
-    paramd.jSZ.setTextSize(paramInt);
-    paramd.jSY.setTextSize(paramInt);
+    paramd.jWq.setTextSize(paramInt);
+    paramd.jWp.setTextSize(paramInt);
     AppMethodBeat.o(144923);
     return true;
   }
@@ -48,7 +48,7 @@ public final class s
     return bool;
   }
   
-  public final BaseDrawActionArg bdn()
+  public final BaseDrawActionArg bdS()
   {
     AppMethodBeat.i(144921);
     SetFontSizeActionArg localSetFontSizeActionArg = new SetFontSizeActionArg();

@@ -6,31 +6,31 @@ import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.g.c.aw;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.ak;
+import com.tencent.mm.model.al;
 import com.tencent.mm.plugin.chatroom.a.c;
 import com.tencent.mm.pluginsdk.ui.span.k;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ab;
-import com.tencent.mm.storage.am;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.ac;
+import com.tencent.mm.storage.an;
 
 public final class d
   extends f
 {
-  public CharSequence KqP;
-  public boolean KqQ;
-  private a KqR;
-  public am contact;
+  public CharSequence KNj;
+  public boolean KNk;
+  private a KNl;
+  public an contact;
   
-  public d(int paramInt, am paramam)
+  public d(int paramInt, an paraman)
   {
     super(paramInt);
     AppMethodBeat.i(102941);
-    this.KqR = new a();
-    this.contact = paramam;
-    if (paramam.ePk == 1) {}
+    this.KNl = new a();
+    this.contact = paraman;
+    if (paraman.eQV == 1) {}
     for (;;)
     {
-      this.KqQ = bool;
+      this.KNk = bool;
       AppMethodBeat.o(102941);
       return;
       bool = false;
@@ -42,20 +42,20 @@ public final class d
     boolean bool = true;
     AppMethodBeat.i(102942);
     super.a(paramContext, parama);
-    if (this.contact.ePk == 1) {}
+    if (this.contact.eQV == 1) {}
     for (;;)
     {
-      this.KqQ = bool;
-      this.KqP = ((c)g.ab(c.class)).azz().AO(this.contact.field_username).zf(this.contact.field_username);
+      this.KNk = bool;
+      this.KNj = ((c)g.ab(c.class)).azP().By(this.contact.field_username).zP(this.contact.field_username);
       AppMethodBeat.o(102942);
       return;
       bool = false;
     }
   }
   
-  public final a.b aRs()
+  public final a.b aRR()
   {
-    return this.KqR;
+    return this.KNl;
   }
   
   final class a
@@ -71,21 +71,21 @@ public final class d
       AppMethodBeat.i(102940);
       super.a(paramContext, parama, parama1, paramBoolean1, paramBoolean2);
       parama = (f.a)parama;
-      if (!bt.ai(d.this.KqP))
+      if (!bu.ah(d.this.KNj))
       {
-        parama.iCV.setVisibility(0);
-        d.this.KqP = k.b(paramContext, d.this.KqP, com.tencent.mm.cc.a.ax(paramContext, 2131165517));
-        paramContext = parama.iCV;
-        parama = parama.iCV.getContext().getResources();
-        if (d.this.KqQ) {}
+        parama.iFO.setVisibility(0);
+        d.this.KNj = k.b(paramContext, d.this.KNj, com.tencent.mm.cb.a.ax(paramContext, 2131165517));
+        paramContext = parama.iFO;
+        parama = parama.iFO.getContext().getResources();
+        if (d.this.KNk) {}
         for (int i = 2131757636;; i = 2131757635)
         {
-          paramContext.setText(parama.getString(i, new Object[] { d.this.KqP }));
+          paramContext.setText(parama.getString(i, new Object[] { d.this.KNj }));
           AppMethodBeat.o(102940);
           return;
         }
       }
-      parama.iCV.setVisibility(8);
+      parama.iFO.setVisibility(8);
       AppMethodBeat.o(102940);
     }
   }

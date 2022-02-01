@@ -15,7 +15,7 @@ public abstract class o$a
     attachInterface(this, "com.tencent.mm.plugin.exdevice.service.IExDeviceTaskReq_AIDL");
   }
   
-  public static o A(IBinder paramIBinder)
+  public static o B(IBinder paramIBinder)
   {
     if (paramIBinder == null) {
       return null;
@@ -43,31 +43,31 @@ public abstract class o$a
       return true;
     case 1: 
       paramParcel1.enforceInterface("com.tencent.mm.plugin.exdevice.service.IExDeviceTaskReq_AIDL");
-      long l = clM();
+      long l = cnc();
       paramParcel2.writeNoException();
       paramParcel2.writeLong(l);
       return true;
     case 2: 
       paramParcel1.enforceInterface("com.tencent.mm.plugin.exdevice.service.IExDeviceTaskReq_AIDL");
-      paramParcel1 = clN();
+      paramParcel1 = cnd();
       paramParcel2.writeNoException();
       paramParcel2.writeByteArray(paramParcel1);
       return true;
     case 3: 
       paramParcel1.enforceInterface("com.tencent.mm.plugin.exdevice.service.IExDeviceTaskReq_AIDL");
-      paramInt1 = clO();
+      paramInt1 = cne();
       paramParcel2.writeNoException();
       paramParcel2.writeInt(paramInt1);
       return true;
     case 4: 
       paramParcel1.enforceInterface("com.tencent.mm.plugin.exdevice.service.IExDeviceTaskReq_AIDL");
-      paramInt1 = clP();
+      paramInt1 = cnf();
       paramParcel2.writeNoException();
       paramParcel2.writeInt(paramInt1);
       return true;
     }
     paramParcel1.enforceInterface("com.tencent.mm.plugin.exdevice.service.IExDeviceTaskReq_AIDL");
-    paramInt1 = clQ();
+    paramInt1 = cng();
     paramParcel2.writeNoException();
     paramParcel2.writeInt(paramInt1);
     return true;
@@ -88,7 +88,7 @@ public abstract class o$a
       return this.mRemote;
     }
     
-    public final long clM()
+    public final long cnc()
     {
       AppMethodBeat.i(23684);
       Parcel localParcel1 = Parcel.obtain();
@@ -109,7 +109,7 @@ public abstract class o$a
       }
     }
     
-    public final byte[] clN()
+    public final byte[] cnd()
     {
       AppMethodBeat.i(23685);
       Parcel localParcel1 = Parcel.obtain();
@@ -130,7 +130,7 @@ public abstract class o$a
       }
     }
     
-    public final int clO()
+    public final int cne()
     {
       AppMethodBeat.i(23686);
       Parcel localParcel1 = Parcel.obtain();
@@ -151,7 +151,7 @@ public abstract class o$a
       }
     }
     
-    public final int clP()
+    public final int cnf()
     {
       AppMethodBeat.i(23687);
       Parcel localParcel1 = Parcel.obtain();
@@ -172,7 +172,7 @@ public abstract class o$a
       }
     }
     
-    public final int clQ()
+    public final int cng()
     {
       AppMethodBeat.i(23688);
       Parcel localParcel1 = Parcel.obtain();

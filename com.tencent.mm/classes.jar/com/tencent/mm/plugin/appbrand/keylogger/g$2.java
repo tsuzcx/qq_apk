@@ -3,17 +3,17 @@ package com.tencent.mm.plugin.appbrand.keylogger;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ak;
 
 final class g$2
   implements Runnable
 {
   public final void run()
   {
-    AppMethodBeat.i(192227);
+    AppMethodBeat.i(220800);
     g.access$100();
-    aj.fkD().edit().putLong("MMTempKeyStepLogger-Last-Clean-Time", System.currentTimeMillis()).commit();
-    AppMethodBeat.o(192227);
+    ak.fox().edit().putLong("MMTempKeyStepLogger-Last-Clean-Time", System.currentTimeMillis()).commit();
+    AppMethodBeat.o(220800);
   }
 }
 

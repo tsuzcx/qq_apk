@@ -5,8 +5,8 @@ import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.g.c.aw;
 import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.storage.am;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.storage.an;
 import com.tencent.mm.ui.base.preference.Preference.b;
 
 public final class a {}

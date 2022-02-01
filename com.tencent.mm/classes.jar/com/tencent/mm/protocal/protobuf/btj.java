@@ -3,71 +3,72 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class btj
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public double latitude;
-  public double longitude;
-  public String oBD;
+  public String HgJ;
+  public String yxn;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(93333);
+    AppMethodBeat.i(32334);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.e(1, this.latitude);
-      paramVarArgs.e(2, this.longitude);
-      if (this.oBD != null) {
-        paramVarArgs.d(3, this.oBD);
+      if (this.yxn != null) {
+        paramVarArgs.d(1, this.yxn);
       }
-      AppMethodBeat.o(93333);
+      if (this.HgJ != null) {
+        paramVarArgs.d(2, this.HgJ);
+      }
+      AppMethodBeat.o(32334);
       return 0;
     }
-    if (paramInt == 1)
-    {
-      int i = f.a.a.b.b.a.alT(1) + 0 + f.a.a.b.b.a.alT(2);
-      paramInt = i;
-      if (this.oBD != null) {
-        paramInt = i + f.a.a.b.b.a.e(3, this.oBD);
+    if (paramInt == 1) {
+      if (this.yxn == null) {
+        break label282;
       }
-      AppMethodBeat.o(93333);
-      return paramInt;
     }
-    if (paramInt == 2)
+    label282:
+    for (paramInt = f.a.a.b.b.a.e(1, this.yxn) + 0;; paramInt = 0)
     {
-      paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gxE();
-        }
+      int i = paramInt;
+      if (this.HgJ != null) {
+        i = paramInt + f.a.a.b.b.a.e(2, this.HgJ);
       }
-      AppMethodBeat.o(93333);
-      return 0;
-    }
-    if (paramInt == 3)
-    {
-      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
-      btj localbtj = (btj)paramVarArgs[1];
-      switch (((Integer)paramVarArgs[2]).intValue())
+      AppMethodBeat.o(32334);
+      return i;
+      if (paramInt == 2)
       {
-      default: 
-        AppMethodBeat.o(93333);
-        return -1;
-      case 1: 
-        localbtj.latitude = Double.longBitsToDouble(locala.NPN.grA());
-        AppMethodBeat.o(93333);
-        return 0;
-      case 2: 
-        localbtj.longitude = Double.longBitsToDouble(locala.NPN.grA());
-        AppMethodBeat.o(93333);
+        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.gCg();
+          }
+        }
+        AppMethodBeat.o(32334);
         return 0;
       }
-      localbtj.oBD = locala.NPN.readString();
-      AppMethodBeat.o(93333);
-      return 0;
+      if (paramInt == 3)
+      {
+        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+        btj localbtj = (btj)paramVarArgs[1];
+        switch (((Integer)paramVarArgs[2]).intValue())
+        {
+        default: 
+          AppMethodBeat.o(32334);
+          return -1;
+        case 1: 
+          localbtj.yxn = locala.OmT.readString();
+          AppMethodBeat.o(32334);
+          return 0;
+        }
+        localbtj.HgJ = locala.OmT.readString();
+        AppMethodBeat.o(32334);
+        return 0;
+      }
+      AppMethodBeat.o(32334);
+      return -1;
     }
-    AppMethodBeat.o(93333);
-    return -1;
   }
 }
 

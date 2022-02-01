@@ -6,17 +6,17 @@ import com.tencent.luggage.bridge.impl.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.canvas.e;
 import com.tencent.mm.plugin.appbrand.jsapi.base.g;
-import com.tencent.mm.plugin.appbrand.luggage.b.p;
+import com.tencent.mm.plugin.appbrand.luggage.b.q;
 
 public final class b
   extends a
 {
-  private final g lNY;
+  private final g lSz;
   
   public b()
   {
     AppMethodBeat.i(121605);
-    this.lNY = new p();
+    this.lSz = new q();
     AppMethodBeat.o(121605);
   }
   
@@ -24,7 +24,7 @@ public final class b
   {
     AppMethodBeat.i(121607);
     super.a(parama);
-    parama.a(g.class, this.lNY);
+    parama.a(g.class, this.lSz);
     AppMethodBeat.o(121607);
   }
   
@@ -32,14 +32,14 @@ public final class b
   {
     AppMethodBeat.i(121606);
     super.a(paramc);
-    paramc.a(g.class, this.lNY);
-    paramc.a(e.class, com.tencent.mm.plugin.appbrand.dynamic.b.b.bfW());
+    paramc.a(g.class, this.lSz);
+    paramc.a(e.class, com.tencent.mm.plugin.appbrand.dynamic.b.b.bgE());
     AppMethodBeat.o(121606);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.luggage.b
  * JD-Core Version:    0.7.0.1
  */

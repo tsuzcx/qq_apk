@@ -18,7 +18,7 @@ public final class a
       public final void run()
       {
         AppMethodBeat.i(147228);
-        ((com.tencent.luggage.sdk.customize.a)e.K(com.tencent.luggage.sdk.customize.a.class)).dg(paramh.getAppId()).U(paramInt, paramh.getAppId());
+        ((com.tencent.luggage.sdk.customize.a)e.K(com.tencent.luggage.sdk.customize.a.class)).dl(paramh.getAppId()).U(paramInt, paramh.getAppId());
         AppMethodBeat.o(147228);
       }
     }, "JsApiClearStorage");

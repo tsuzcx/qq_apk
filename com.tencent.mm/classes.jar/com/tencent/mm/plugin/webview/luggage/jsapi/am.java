@@ -10,11 +10,11 @@ import com.tencent.luggage.d.h;
 import com.tencent.luggage.d.j;
 import com.tencent.luggage.d.s;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bs.d;
+import com.tencent.mm.br.d;
 import com.tencent.mm.plugin.webview.luggage.g;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.platformtools.bu;
 import org.json.JSONObject;
 
 public class am
@@ -25,17 +25,17 @@ public class am
   public final void b(final b<g>.a paramb)
   {
     AppMethodBeat.i(78590);
-    ad.i("MicroMsg.JsApiOpenUrlWithExtraWebview", "invokeInOwn");
+    ae.i("MicroMsg.JsApiOpenUrlWithExtraWebview", "invokeInOwn");
     final String str = paramb.chh.cgn.optString("url");
-    ad.i("MicroMsg.JsApiOpenUrlWithExtraWebview", "url: %s", new Object[] { str });
-    if (bt.isNullOrNil(str))
+    ae.i("MicroMsg.JsApiOpenUrlWithExtraWebview", "url: %s", new Object[] { str });
+    if (bu.isNullOrNil(str))
     {
       paramb.a("fail", null);
       AppMethodBeat.o(78590);
       return;
     }
     Object localObject = Uri.parse(str);
-    if ((bt.nullAsNil(((Uri)localObject).getQueryParameter("not_in_game_luggage")).equals("1")) || ((((Uri)localObject).getHost() != null) && (!((Uri)localObject).getHost().equals("game.weixin.qq.com"))))
+    if ((bu.nullAsNil(((Uri)localObject).getQueryParameter("not_in_game_luggage")).equals("1")) || ((((Uri)localObject).getHost() != null) && (!((Uri)localObject).getHost().equals("game.weixin.qq.com"))))
     {
       localObject = new Intent();
       ((Intent)localObject).putExtra("rawUrl", str);
@@ -44,7 +44,7 @@ public class am
       AppMethodBeat.o(78590);
       return;
     }
-    aq.f(new Runnable()
+    ar.f(new Runnable()
     {
       public final void run()
       {
@@ -52,7 +52,7 @@ public class am
         Bundle localBundle = new Bundle();
         localBundle.putString("rawUrl", str);
         localBundle.putBoolean("from_find_more_friend", ((g)paramb.chg).mParams.getBoolean("from_find_more_friend", false));
-        ((g)paramb.chg).chm.Ce().h(str, localBundle);
+        ((g)paramb.chg).chm.Ch().h(str, localBundle);
         AppMethodBeat.o(78589);
       }
     });
@@ -60,7 +60,7 @@ public class am
     AppMethodBeat.o(78590);
   }
   
-  public final int ccO()
+  public final int ced()
   {
     return 0;
   }

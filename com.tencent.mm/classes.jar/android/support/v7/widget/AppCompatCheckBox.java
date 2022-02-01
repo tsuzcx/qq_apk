@@ -22,7 +22,7 @@ public class AppCompatCheckBox
   
   public AppCompatCheckBox(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
-    super(aw.ac(paramContext), paramAttributeSet, paramInt);
+    super(aw.ad(paramContext), paramAttributeSet, paramInt);
     this.ajW.a(paramAttributeSet, paramInt);
   }
   

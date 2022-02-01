@@ -17,20 +17,20 @@ import d.l;
 import d.v;
 import d.z;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/story/ui/sns/StoryBigMouthGuideDialog;", "Landroid/support/v7/app/AppCompatDialog;", "mContext", "Landroid/content/Context;", "(Landroid/content/Context;)V", "getMContext", "()Landroid/content/Context;", "setMContext", "onOkBtnClick", "Lkotlin/Function0;", "", "getOnOkBtnClick", "()Lkotlin/jvm/functions/Function0;", "setOnOkBtnClick", "(Lkotlin/jvm/functions/Function0;)V", "targetView", "Landroid/view/View;", "cancel", "isLandscape", "", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onStart", "setContentView", "view", "setTranslucentStatus", "wrapSheet", "layoutResId", "", "params", "Landroid/view/ViewGroup$LayoutParams;", "Companion", "plugin-story_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/story/ui/sns/StoryBigMouthGuideDialog;", "Landroid/support/v7/app/AppCompatDialog;", "mContext", "Landroid/content/Context;", "(Landroid/content/Context;)V", "getMContext", "()Landroid/content/Context;", "setMContext", "onOkBtnClick", "Lkotlin/Function0;", "", "getOnOkBtnClick", "()Lkotlin/jvm/functions/Function0;", "setOnOkBtnClick", "(Lkotlin/jvm/functions/Function0;)V", "targetView", "Landroid/view/View;", "cancel", "isLandscape", "", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onStart", "setContentView", "view", "setTranslucentStatus", "wrapSheet", "layoutResId", "", "params", "Landroid/view/ViewGroup$LayoutParams;", "Companion", "plugin-story_release"})
 public final class b
   extends e
 {
-  public static final b.a AXG;
+  public static final b.a Bpe;
   private static final String TAG = "MicroMsg.StoryBigMouthGuideDialog";
-  public d.g.a.a<z> AXF;
+  public d.g.a.a<z> Bpd;
   private Context mContext;
   private View targetView;
   
   static
   {
     AppMethodBeat.i(119949);
-    AXG = new b.a((byte)0);
+    Bpe = new b.a((byte)0);
     TAG = "MicroMsg.StoryBigMouthGuideDialog";
     AppMethodBeat.o(119949);
   }
@@ -93,13 +93,13 @@ public final class b
     paramView.findViewById(2131305273).setOnClickListener((View.OnClickListener)new b.d(this));
     RelativeLayout localRelativeLayout = (RelativeLayout)paramView.findViewById(2131305270);
     if (localRelativeLayout != null) {
-      localRelativeLayout.setTranslationY(ar.ci(getContext()).y);
+      localRelativeLayout.setTranslationY(ar.ck(getContext()).y);
     }
     super.setContentView(paramView);
     this.targetView = paramView;
     paramView = getWindow();
     if (paramView == null) {
-      p.gfZ();
+      p.gkB();
     }
     paramView.setLayout(-1, -1);
     if (getWindow() != null)
@@ -127,7 +127,7 @@ public final class b
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
   static final class b
     implements Runnable
   {
@@ -136,7 +136,7 @@ public final class b
     public final void run()
     {
       AppMethodBeat.i(119941);
-      ViewPropertyAnimator localViewPropertyAnimator = this.AXH.animate();
+      ViewPropertyAnimator localViewPropertyAnimator = this.Bpf.animate();
       if (localViewPropertyAnimator != null)
       {
         localViewPropertyAnimator = localViewPropertyAnimator.translationY(0.0F);
@@ -153,7 +153,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.story.ui.sns.b
  * JD-Core Version:    0.7.0.1
  */

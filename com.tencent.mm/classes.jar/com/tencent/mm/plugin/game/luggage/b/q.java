@@ -8,7 +8,7 @@ import com.tencent.mm.plugin.downloader_app.api.a.c;
 import com.tencent.mm.plugin.downloader_app.api.c;
 import com.tencent.mm.plugin.webview.luggage.jsapi.bq;
 import com.tencent.mm.plugin.webview.luggage.jsapi.bq.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import org.json.JSONObject;
 
 public class q
@@ -29,7 +29,7 @@ public class q
         localIntent.addFlags(268435456);
         ((c)com.tencent.mm.kernel.g.ab(c.class)).a(paramContext, localIntent, new a.c()
         {
-          public final void biA()
+          public final void bjj()
           {
             AppMethodBeat.i(83075);
             parama.f(null, null);
@@ -44,7 +44,7 @@ public class q
     {
       for (;;)
       {
-        ad.printErrStackTrace("MicroMsg.JsApiJumpDownloaderWidget", paramString, "", new Object[0]);
+        ae.printErrStackTrace("MicroMsg.JsApiJumpDownloaderWidget", paramString, "", new Object[0]);
         paramString = null;
         continue;
         paramString = "";
@@ -54,7 +54,7 @@ public class q
   
   public final void b(b<com.tencent.mm.plugin.game.luggage.f.g>.a paramb) {}
   
-  public final int ccO()
+  public final int ced()
   {
     return 2;
   }

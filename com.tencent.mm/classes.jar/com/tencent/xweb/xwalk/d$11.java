@@ -18,10 +18,10 @@ final class d$11
     AppMethodBeat.i(154162);
     b localb = new b();
     localb.bd(paramView);
-    a.b("com/tencent/xweb/xwalk/WebDebugPage$19", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-    if (this.MvZ.getVisibility() == 8)
+    a.b("com/tencent/xweb/xwalk/WebDebugPage$19", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+    if (this.MTd.getVisibility() == 8)
     {
-      this.MvZ.setVisibility(0);
+      this.MTd.setVisibility(0);
       ((Button)paramView).setText("隐藏插件设置");
     }
     for (;;)
@@ -29,7 +29,7 @@ final class d$11
       a.a(this, "com/tencent/xweb/xwalk/WebDebugPage$19", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(154162);
       return;
-      this.MvZ.setVisibility(8);
+      this.MTd.setVisibility(8);
       ((Button)paramView).setText("插件设置");
     }
   }

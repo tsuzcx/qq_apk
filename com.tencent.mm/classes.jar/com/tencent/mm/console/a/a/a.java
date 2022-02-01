@@ -2,7 +2,7 @@ package com.tencent.mm.console.a.a;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public final class a
   implements com.tencent.mm.pluginsdk.cmd.a
@@ -15,8 +15,8 @@ public final class a
       AppMethodBeat.o(20197);
       return false;
     }
-    if (bt.getInt(paramArrayOfString[1], 0) > 0) {}
-    for (com.tencent.mm.plugin.hardcoder.a.uEM = true;; com.tencent.mm.plugin.hardcoder.a.uEM = false)
+    if (bu.getInt(paramArrayOfString[1], 0) > 0) {}
+    for (com.tencent.mm.plugin.hardcoder.a.uQz = true;; com.tencent.mm.plugin.hardcoder.a.uQz = false)
     {
       AppMethodBeat.o(20197);
       return true;

@@ -19,43 +19,43 @@ public class GridBasedAlgorithm<T extends ClusterItem>
   
   public GridBasedAlgorithm()
   {
-    AppMethodBeat.i(192929);
+    AppMethodBeat.i(217599);
     this.a = Collections.synchronizedSet(new HashSet());
-    AppMethodBeat.o(192929);
+    AppMethodBeat.o(217599);
   }
   
   private static long a(long paramLong, double paramDouble1, double paramDouble2)
   {
-    AppMethodBeat.i(192935);
+    AppMethodBeat.i(217605);
     paramLong = (paramLong * Math.floor(paramDouble1) + Math.floor(paramDouble2));
-    AppMethodBeat.o(192935);
+    AppMethodBeat.o(217605);
     return paramLong;
   }
   
   public void addItem(T paramT)
   {
-    AppMethodBeat.i(192930);
+    AppMethodBeat.i(217600);
     this.a.add(paramT);
-    AppMethodBeat.o(192930);
+    AppMethodBeat.o(217600);
   }
   
   public void addItems(Collection<T> paramCollection)
   {
-    AppMethodBeat.i(192931);
+    AppMethodBeat.i(217601);
     this.a.addAll(paramCollection);
-    AppMethodBeat.o(192931);
+    AppMethodBeat.o(217601);
   }
   
   public void clearItems()
   {
-    AppMethodBeat.i(192932);
+    AppMethodBeat.i(217602);
     this.a.clear();
-    AppMethodBeat.o(192932);
+    AppMethodBeat.o(217602);
   }
   
   public Set<? extends Cluster<T>> getClusters(double paramDouble)
   {
-    AppMethodBeat.i(192934);
+    AppMethodBeat.i(217604);
     long l1 = Math.ceil(256.0D * Math.pow(2.0D, paramDouble) / 100.0D);
     c localc = new c(l1);
     HashSet localHashSet = new HashSet();
@@ -79,7 +79,7 @@ public class GridBasedAlgorithm<T extends ClusterItem>
         localStaticCluster1.add(localClusterItem);
       }
     }
-    AppMethodBeat.o(192934);
+    AppMethodBeat.o(217604);
     return localHashSet;
   }
   
@@ -90,9 +90,9 @@ public class GridBasedAlgorithm<T extends ClusterItem>
   
   public void removeItem(T paramT)
   {
-    AppMethodBeat.i(192933);
+    AppMethodBeat.i(217603);
     this.a.remove(paramT);
-    AppMethodBeat.o(192933);
+    AppMethodBeat.o(217603);
   }
 }
 

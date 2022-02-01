@@ -5,22 +5,22 @@ import com.tencent.mm.sdk.d.c;
 public abstract class g
   extends c
 {
-  private final h jLL;
+  private final h jOX;
   
   public g(h paramh)
   {
-    this.jLL = paramh;
+    this.jOX = paramh;
   }
   
   public void enter()
   {
     super.enter();
-    this.jLL.a(this);
+    this.jOX.a(this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.a.g
  * JD-Core Version:    0.7.0.1
  */

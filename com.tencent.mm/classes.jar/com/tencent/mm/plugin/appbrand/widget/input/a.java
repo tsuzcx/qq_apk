@@ -10,23 +10,23 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.view.WindowManager.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.ui.q;
 import java.lang.reflect.Method;
 
 public final class a
 {
-  public static final boolean ncH;
+  public static final boolean nhQ;
   public final Activity activity;
-  public boolean ncI = false;
-  public int ncJ = 0;
+  public boolean nhR = false;
+  public int nhS = 0;
   
   static
   {
     if (Build.VERSION.SDK_INT < 20) {}
     for (boolean bool = true;; bool = false)
     {
-      ncH = bool;
+      nhQ = bool;
       return;
     }
   }
@@ -36,7 +36,7 @@ public final class a
     this.activity = paramActivity;
   }
   
-  private boolean bDJ()
+  private boolean bEB()
   {
     AppMethodBeat.i(136300);
     if ((this.activity.getWindow() != null) && ((this.activity.getWindow().getAttributes().flags & 0x400) > 0))
@@ -48,24 +48,24 @@ public final class a
     return false;
   }
   
-  public static boolean bDK()
+  public static boolean bEC()
   {
     AppMethodBeat.i(136302);
     try
     {
-      boolean bool = ((Boolean)org.a.a.gy(org.a.a.bF(org.a.a.forName("android.view.WindowManagerGlobal")).bdZ("getWindowManagerService").object).bdZ("hasNavigationBar").object).booleanValue();
+      boolean bool = ((Boolean)org.a.a.gB(org.a.a.bF(org.a.a.forName("android.view.WindowManagerGlobal")).bfD("getWindowManagerService").object).bfD("hasNavigationBar").object).booleanValue();
       AppMethodBeat.o(136302);
       return bool;
     }
     catch (Throwable localThrowable)
     {
-      ad.e("MicroMsg.AppBrandFixInputIssuesActivityHelper", "checkDeviceHasNavigationBar2 e=%s", new Object[] { localThrowable });
+      ae.e("MicroMsg.AppBrandFixInputIssuesActivityHelper", "checkDeviceHasNavigationBar2 e=%s", new Object[] { localThrowable });
       AppMethodBeat.o(136302);
     }
     return false;
   }
   
-  public static boolean ee(Context paramContext)
+  public static boolean ei(Context paramContext)
   {
     AppMethodBeat.i(136301);
     paramContext = paramContext.getResources();
@@ -100,42 +100,42 @@ public final class a
     }
   }
   
-  public final void bDH()
+  public final void bEA()
+  {
+    AppMethodBeat.i(183096);
+    n localn = n.I(this.activity);
+    Point localPoint = new Point();
+    this.activity.getWindowManager().getDefaultDisplay().getSize(localPoint);
+    int i = q.jO(this.activity);
+    int j = localPoint.y;
+    if (bEB()) {
+      i = 0;
+    }
+    i = j - i;
+    ae.i("MicroMsg.AppBrandFixInputIssuesActivityHelper", "fixLayoutHeightBelow20 forceHeight %d", new Object[] { Integer.valueOf(i) });
+    localn.setForceHeight(i);
+    AppMethodBeat.o(183096);
+  }
+  
+  public final void bEz()
   {
     AppMethodBeat.i(136298);
-    if ((!this.ncI) || (this.activity.isFinishing()))
+    if ((!this.nhR) || (this.activity.isFinishing()))
     {
       AppMethodBeat.o(136298);
       return;
     }
-    if (ncH)
+    if (nhQ)
     {
-      if (n.H(this.activity) == null)
+      if (n.I(this.activity) == null)
       {
-        ad.w("MicroMsg.AppBrandFixInputIssuesActivityHelper", "fixLayoutHeightIfNeed get null rootLayout");
+        ae.w("MicroMsg.AppBrandFixInputIssuesActivityHelper", "fixLayoutHeightIfNeed get null rootLayout");
         AppMethodBeat.o(136298);
         return;
       }
-      bDI();
+      bEA();
     }
     AppMethodBeat.o(136298);
-  }
-  
-  public final void bDI()
-  {
-    AppMethodBeat.i(183096);
-    n localn = n.H(this.activity);
-    Point localPoint = new Point();
-    this.activity.getWindowManager().getDefaultDisplay().getSize(localPoint);
-    int i = q.jH(this.activity);
-    int j = localPoint.y;
-    if (bDJ()) {
-      i = 0;
-    }
-    i = j - i;
-    ad.i("MicroMsg.AppBrandFixInputIssuesActivityHelper", "fixLayoutHeightBelow20 forceHeight %d", new Object[] { Integer.valueOf(i) });
-    localn.setForceHeight(i);
-    AppMethodBeat.o(183096);
   }
 }
 

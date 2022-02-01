@@ -5,87 +5,62 @@ import f.a.a.b;
 import java.util.LinkedList;
 
 public final class azf
-  extends cvp
+  extends cvw
 {
-  public String GwA;
-  public vv GwB;
-  public int nDf;
+  public String dJb;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(101815);
+    AppMethodBeat.i(114017);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.BaseResponse == null)
+      if (this.dJb == null)
       {
-        paramVarArgs = new b("Not all required fields were included: BaseResponse");
-        AppMethodBeat.o(101815);
+        paramVarArgs = new b("Not all required fields were included: card_id");
+        AppMethodBeat.o(114017);
         throw paramVarArgs;
       }
-      if (this.GwB == null)
+      if (this.BaseRequest != null)
       {
-        paramVarArgs = new b("Not all required fields were included: NewChatroomData");
-        AppMethodBeat.o(101815);
-        throw paramVarArgs;
+        paramVarArgs.lJ(1, this.BaseRequest.computeSize());
+        this.BaseRequest.writeFields(paramVarArgs);
       }
-      if (this.BaseResponse != null)
-      {
-        paramVarArgs.lC(1, this.BaseResponse.computeSize());
-        this.BaseResponse.writeFields(paramVarArgs);
+      if (this.dJb != null) {
+        paramVarArgs.d(2, this.dJb);
       }
-      if (this.GwA != null) {
-        paramVarArgs.d(2, this.GwA);
-      }
-      paramVarArgs.aS(3, this.nDf);
-      if (this.GwB != null)
-      {
-        paramVarArgs.lC(4, this.GwB.computeSize());
-        this.GwB.writeFields(paramVarArgs);
-      }
-      AppMethodBeat.o(101815);
+      AppMethodBeat.o(114017);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.BaseResponse == null) {
-        break label666;
+      if (this.BaseRequest == null) {
+        break label418;
       }
     }
-    label666:
-    for (paramInt = f.a.a.a.lB(1, this.BaseResponse.computeSize()) + 0;; paramInt = 0)
+    label418:
+    for (paramInt = f.a.a.a.lI(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
     {
       int i = paramInt;
-      if (this.GwA != null) {
-        i = paramInt + f.a.a.b.b.a.e(2, this.GwA);
+      if (this.dJb != null) {
+        i = paramInt + f.a.a.b.b.a.e(2, this.dJb);
       }
-      i += f.a.a.b.b.a.bz(3, this.nDf);
-      paramInt = i;
-      if (this.GwB != null) {
-        paramInt = i + f.a.a.a.lB(4, this.GwB.computeSize());
-      }
-      AppMethodBeat.o(101815);
-      return paramInt;
+      AppMethodBeat.o(114017);
+      return i;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = cvp.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cvp.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = cvw.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cvw.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
-        if (this.BaseResponse == null)
+        if (this.dJb == null)
         {
-          paramVarArgs = new b("Not all required fields were included: BaseResponse");
-          AppMethodBeat.o(101815);
+          paramVarArgs = new b("Not all required fields were included: card_id");
+          AppMethodBeat.o(114017);
           throw paramVarArgs;
         }
-        if (this.GwB == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: NewChatroomData");
-          AppMethodBeat.o(101815);
-          throw paramVarArgs;
-        }
-        AppMethodBeat.o(101815);
+        AppMethodBeat.o(114017);
         return 0;
       }
       if (paramInt == 3)
@@ -93,53 +68,32 @@ public final class azf
         Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
         azf localazf = (azf)paramVarArgs[1];
         paramInt = ((Integer)paramVarArgs[2]).intValue();
-        Object localObject2;
-        boolean bool;
         switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(101815);
+          AppMethodBeat.o(114017);
           return -1;
         case 1: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
+          paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
-            localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new BaseResponse();
+            Object localObject2 = (byte[])paramVarArgs.get(paramInt);
+            localObject1 = new jc();
             localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (bool = true; bool; bool = ((BaseResponse)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, cvp.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-            localazf.BaseResponse = ((BaseResponse)localObject1);
+            for (boolean bool = true; bool; bool = ((jc)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cvw.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            localazf.BaseRequest = ((jc)localObject1);
             paramInt += 1;
           }
-          AppMethodBeat.o(101815);
-          return 0;
-        case 2: 
-          localazf.GwA = ((f.a.a.a.a)localObject1).NPN.readString();
-          AppMethodBeat.o(101815);
-          return 0;
-        case 3: 
-          localazf.nDf = ((f.a.a.a.a)localObject1).NPN.zc();
-          AppMethodBeat.o(101815);
+          AppMethodBeat.o(114017);
           return 0;
         }
-        paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
-        i = paramVarArgs.size();
-        paramInt = 0;
-        while (paramInt < i)
-        {
-          localObject2 = (byte[])paramVarArgs.get(paramInt);
-          localObject1 = new vv();
-          localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-          for (bool = true; bool; bool = ((vv)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, cvp.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-          localazf.GwB = ((vv)localObject1);
-          paramInt += 1;
-        }
-        AppMethodBeat.o(101815);
+        localazf.dJb = ((f.a.a.a.a)localObject1).OmT.readString();
+        AppMethodBeat.o(114017);
         return 0;
       }
-      AppMethodBeat.o(101815);
+      AppMethodBeat.o(114017);
       return -1;
     }
   }

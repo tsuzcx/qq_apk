@@ -4,18 +4,18 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.tav.coremedia.TextureInfo;
 import d.l;
 
-@l(gfx={1, 1, 15}, gfy={""}, gfz={"Lcom/tencent/mm/videocomposition/TrackRenderInfo;", "", "track", "Lcom/tencent/mm/videocomposition/CompositionTrack;", "texture", "Lcom/tencent/tav/coremedia/TextureInfo;", "(Lcom/tencent/mm/videocomposition/CompositionTrack;Lcom/tencent/tav/coremedia/TextureInfo;)V", "getTexture", "()Lcom/tencent/tav/coremedia/TextureInfo;", "setTexture", "(Lcom/tencent/tav/coremedia/TextureInfo;)V", "getTrack", "()Lcom/tencent/mm/videocomposition/CompositionTrack;", "setTrack", "(Lcom/tencent/mm/videocomposition/CompositionTrack;)V", "video_composition_release"})
+@l(gjZ={1, 1, 15}, gka={""}, gkb={"Lcom/tencent/mm/videocomposition/TrackRenderInfo;", "", "track", "Lcom/tencent/mm/videocomposition/CompositionTrack;", "texture", "Lcom/tencent/tav/coremedia/TextureInfo;", "(Lcom/tencent/mm/videocomposition/CompositionTrack;Lcom/tencent/tav/coremedia/TextureInfo;)V", "getTexture", "()Lcom/tencent/tav/coremedia/TextureInfo;", "setTexture", "(Lcom/tencent/tav/coremedia/TextureInfo;)V", "getTrack", "()Lcom/tencent/mm/videocomposition/CompositionTrack;", "setTrack", "(Lcom/tencent/mm/videocomposition/CompositionTrack;)V", "video_composition_release"})
 public final class f
 {
-  public b BGw;
+  public b BXV;
   public TextureInfo texture;
   
   public f(b paramb, TextureInfo paramTextureInfo)
   {
-    AppMethodBeat.i(220829);
-    this.BGw = paramb;
+    AppMethodBeat.i(194965);
+    this.BXV = paramb;
     this.texture = paramTextureInfo;
-    AppMethodBeat.o(220829);
+    AppMethodBeat.o(194965);
   }
 }
 

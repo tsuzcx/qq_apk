@@ -23,7 +23,7 @@ final class HoneyPayReceiveCardUI$1
     {
       paramu = paramu.data;
       if ((paramu != null) && ((paramu instanceof Bundle)) && (((Bundle)paramu).getBoolean("click_help", false))) {
-        g.yhR.f(15191, new Object[] { Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) });
+        g.yxI.f(15191, new Object[] { Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) });
       }
     }
     AppMethodBeat.o(64824);

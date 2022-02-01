@@ -6,24 +6,24 @@ import java.util.Set;
 
 public final class z
 {
-  private static final Set<String> cUU;
+  private static final Set<String> cVR;
   
   static
   {
     AppMethodBeat.i(160098);
     HashSet localHashSet = new HashSet();
-    cUU = localHashSet;
+    cVR = localHashSet;
     localHashSet.add(":nospace");
-    cUU.add(":cuploader");
-    cUU.add(":dexopt");
-    cUU.add(":recovery");
-    cUU.add(":fallback");
-    cUU.add(":isolated_process0");
-    cUU.add(":extmig");
+    cVR.add(":cuploader");
+    cVR.add(":dexopt");
+    cVR.add(":recovery");
+    cVR.add(":fallback");
+    cVR.add(":isolated_process0");
+    cVR.add(":extmig");
     AppMethodBeat.o(160098);
   }
   
-  public static String fq(String paramString)
+  public static String fw(String paramString)
   {
     AppMethodBeat.i(160095);
     int i = paramString.indexOf(':');
@@ -37,16 +37,16 @@ public final class z
     return "";
   }
   
-  public static boolean fr(String paramString)
+  public static boolean fx(String paramString)
   {
     AppMethodBeat.i(160096);
-    paramString = fq(paramString);
-    boolean bool = cUU.contains(paramString);
+    paramString = fw(paramString);
+    boolean bool = cVR.contains(paramString);
     AppMethodBeat.o(160096);
     return bool;
   }
   
-  public static boolean fs(String paramString)
+  public static boolean fy(String paramString)
   {
     AppMethodBeat.i(160097);
     boolean bool = paramString.endsWith(":nospace");

@@ -1,13 +1,13 @@
 package com.tencent.mm.protocal;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bx.b;
+import com.tencent.mm.bw.b;
 import com.tencent.mm.pointers.PByteArray;
 import com.tencent.mm.protocal.protobuf.BaseResponse;
-import com.tencent.mm.protocal.protobuf.cwt;
+import com.tencent.mm.protocal.protobuf.cxn;
 import com.tencent.mm.protocal.protobuf.jc;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public final class l
 {
@@ -15,20 +15,20 @@ public final class l
   {
     AppMethodBeat.i(133100);
     jc localjc = new jc();
-    localjc.FCf = paramd.getClientVersion();
+    localjc.FUA = paramd.getClientVersion();
     localjc.Scene = paramd.getSceneStatus();
-    localjc.qdX = paramd.getUin();
-    localjc.FCe = b.cj(paramd.getDeviceID().getBytes());
-    if (localjc.FCe.zr.length >= 16) {
-      localjc.FCe = localjc.FCe.Zz(16);
+    localjc.qkC = paramd.getUin();
+    localjc.FUz = b.cm(paramd.getDeviceID().getBytes());
+    if (localjc.FUz.zr.length >= 16) {
+      localjc.FUz = localjc.FUz.aaf(16);
     }
-    localjc.FCg = b.cj(paramd.getDeviceType().getBytes());
-    if (localjc.FCg.zr.length >= 132) {
-      localjc.FCg = localjc.FCg.Zz(132);
+    localjc.FUB = b.cm(paramd.getDeviceType().getBytes());
+    if (localjc.FUB.zr.length >= 132) {
+      localjc.FUB = localjc.FUB.aaf(132);
     }
-    localjc.FCd = b.cj(paramd.getSessionKey());
-    if (localjc.FCd.zr.length >= 36) {
-      localjc.FCd = localjc.FCd.Zz(36);
+    localjc.FUy = b.cm(paramd.getSessionKey());
+    if (localjc.FUy.zr.length >= 36) {
+      localjc.FUy = localjc.FUy.aaf(36);
     }
     AppMethodBeat.o(133100);
     return localjc;
@@ -39,12 +39,12 @@ public final class l
     AppMethodBeat.i(133101);
     if (paramBaseResponse.ErrMsg != null)
     {
-      parame.setErrMsg(paramBaseResponse.ErrMsg.HoB);
+      parame.setErrMsg(paramBaseResponse.ErrMsg.HId);
       AppMethodBeat.o(133101);
       return;
     }
     parame.setErrMsg("");
-    ad.e("MicroMsg.MMBase", "ErrMsg is Null!!!!!!");
+    ae.e("MicroMsg.MMBase", "ErrMsg is Null!!!!!!");
     AppMethodBeat.o(133101);
   }
   
@@ -242,8 +242,8 @@ public final class l
     {
       AppMethodBeat.i(133098);
       this.rsaInfo = paramac;
-      ad.i("MicroMsg.MMBase.Req", "summerauths setRsaInfo cgi[%s], USE_ECDH[%b], stack[%s]", new Object[] { Integer.valueOf(getCmdId()), Boolean.valueOf(f.Fns), bt.flS() });
-      if (f.Fns) {
+      ae.i("MicroMsg.MMBase.Req", "summerauths setRsaInfo cgi[%s], USE_ECDH[%b], stack[%s]", new Object[] { Integer.valueOf(getCmdId()), Boolean.valueOf(f.FFQ), bu.fpN() });
+      if (f.FFQ) {
         setUseECDH(true);
       }
       AppMethodBeat.o(133098);
@@ -284,7 +284,7 @@ public final class l
     {
       AppMethodBeat.i(133099);
       this.useECDH = paramBoolean;
-      ad.i("MicroMsg.MMBase.Req", "summerauths setUseECDH[%s]  cgi[%s], stack[%s]", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(getCmdId()), bt.flS() });
+      ae.i("MicroMsg.MMBase.Req", "summerauths setUseECDH[%s]  cgi[%s], stack[%s]", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(getCmdId()), bu.fpN() });
       AppMethodBeat.o(133099);
     }
     

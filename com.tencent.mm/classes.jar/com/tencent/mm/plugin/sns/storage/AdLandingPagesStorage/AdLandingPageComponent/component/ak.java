@@ -1,203 +1,309 @@
 package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component;
 
+import android.annotation.TargetApi;
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.graphics.Color;
-import android.text.Spannable;
-import android.util.Log;
+import android.graphics.drawable.Drawable;
+import android.text.Html;
+import android.text.Html.ImageGetter;
+import android.text.Spanned;
+import android.text.TextPaint;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.view.ViewGroup.MarginLayoutParams;
+import android.widget.TextView;
 import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.al;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.chart.view.RadarChart;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.x;
+import com.tencent.mm.ce.g;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.y;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.f.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.sdk.platformtools.g;
-import java.util.concurrent.CountDownLatch;
+import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.vfs.o;
 
 public final class ak
-  extends l
+  extends m
 {
-  private static final int zHE;
-  private CountDownLatch qfM;
-  private RadarChart zHF;
-  private Bitmap zHG;
-  private Bitmap zHH;
+  TextView vk;
+  private com.tencent.e.i.b zYD;
+  volatile boolean zYE = false;
   
-  static
+  public ak(Context paramContext, com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ae paramae, ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(96818);
-    zHE = Color.parseColor("#26eae9e2");
-    AppMethodBeat.o(96818);
+    super(paramContext, paramae, paramViewGroup);
   }
   
-  public ak(Context paramContext, al paramal, ViewGroup paramViewGroup)
+  @TargetApi(17)
+  public final void dUI()
   {
-    super(paramContext, paramal, paramViewGroup);
-    AppMethodBeat.i(96811);
-    this.qfM = new CountDownLatch(2);
-    AppMethodBeat.o(96811);
+    AppMethodBeat.i(96802);
+    View localView = this.contentView;
+    localView.setBackgroundColor(this.backgroundColor);
+    localView.findViewById(2131304897).setBackgroundColor(this.backgroundColor);
+    localView.findViewById(2131304898).setBackgroundColor(this.backgroundColor);
+    this.vk = ((TextView)localView.findViewById(2131304898));
+    AppMethodBeat.o(96802);
   }
   
-  private static void a(Spannable paramSpannable, int paramInt1, int paramInt2, Object... paramVarArgs)
+  protected final void dUJ()
   {
-    AppMethodBeat.i(96816);
-    int i = 0;
-    while (i < 2)
-    {
-      paramSpannable.setSpan(paramVarArgs[i], paramInt1, paramInt2, 18);
-      i += 1;
+    AppMethodBeat.i(96801);
+    if (((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ae)this.zUP).textSize > 0.0F) {
+      this.vk.setTextSize(0, ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ae)this.zUP).textSize);
     }
-    AppMethodBeat.o(96816);
-  }
-  
-  public final void dRk()
-  {
-    AppMethodBeat.i(96812);
-    this.zHF = ((RadarChart)this.contentView.findViewById(2131297955));
-    AppMethodBeat.o(96812);
-  }
-  
-  protected final void dRl()
-  {
-    AppMethodBeat.i(96814);
-    com.tencent.e.h.LTJ.aR(new com.tencent.e.i.h()
+    Object localObject;
+    if (((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ae)this.zUP).subType == 1)
     {
-      public final String getKey()
+      if (!bu.isNullOrNil(((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ae)this.zUP).zRI))
       {
-        return "AdlandingRadarComp";
-      }
-      
-      public final void run()
-      {
-        AppMethodBeat.i(96806);
-        try
+        localObject = ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ae)this.zUP).zRI.trim().replace("<icon", "<img");
+        if (this.zYD != null) {
+          this.zYD.cancel();
+        }
+        this.zYD = new com.tencent.e.i.b()
         {
-          ak.a(ak.this).await();
-          label15:
-          if ((ak.b(ak.this) != null) && (ak.c(ak.this) != null)) {
-            ak.this.contentView.post(new Runnable()
+          public final String getKey()
+          {
+            return "MicroMsg.Sns.AdLandingPageTextComponent";
+          }
+          
+          public final void run()
+          {
+            AppMethodBeat.i(96798);
+            if (ak.this.zYE)
+            {
+              AppMethodBeat.o(96798);
+              return;
+            }
+            ar.f(new Runnable()
+            {
+              public final Drawable getDrawable(String paramAnonymous2String)
+              {
+                AppMethodBeat.i(96796);
+                Object localObject = null;
+                String str = com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.h.jL("adId", paramAnonymous2String);
+                int i;
+                int j;
+                if ((!bu.isNullOrNil(str)) && (o.fB(str)))
+                {
+                  paramAnonymous2String = com.tencent.mm.plugin.sns.ad.f.b.a(ak.this.vk.getResources(), str);
+                  if (paramAnonymous2String == null) {
+                    break label162;
+                  }
+                  if (paramAnonymous2String.getIntrinsicHeight() != 0)
+                  {
+                    i = paramAnonymous2String.getIntrinsicWidth() * (int)ak.a(ak.this).textSize / paramAnonymous2String.getIntrinsicHeight();
+                    if (paramAnonymous2String.getIntrinsicHeight() == 0) {
+                      break label132;
+                    }
+                    j = (int)ak.a(ak.this).textSize;
+                    label109:
+                    paramAnonymous2String.setBounds(0, 0, i, j);
+                  }
+                }
+                label132:
+                label162:
+                for (;;)
+                {
+                  AppMethodBeat.o(96796);
+                  return paramAnonymous2String;
+                  i = paramAnonymous2String.getIntrinsicWidth();
+                  break;
+                  j = paramAnonymous2String.getIntrinsicHeight();
+                  break label109;
+                  com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.h.c("adId", paramAnonymous2String, false, 0, new f.a()
+                  {
+                    public final void ayY(String paramAnonymous3String)
+                    {
+                      AppMethodBeat.i(96795);
+                      try
+                      {
+                        ar.f(new Runnable()
+                        {
+                          public final Drawable getDrawable(String paramAnonymous4String)
+                          {
+                            AppMethodBeat.i(96793);
+                            Object localObject = null;
+                            String str = com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.h.jL("adId", paramAnonymous4String);
+                            paramAnonymous4String = localObject;
+                            int i;
+                            if (!bu.isNullOrNil(str))
+                            {
+                              paramAnonymous4String = localObject;
+                              if (o.fB(str))
+                              {
+                                paramAnonymous4String = com.tencent.mm.plugin.sns.ad.f.b.a(ak.this.vk.getResources(), str);
+                                if (paramAnonymous4String != null)
+                                {
+                                  if (paramAnonymous4String.getIntrinsicHeight() == 0) {
+                                    break label148;
+                                  }
+                                  i = paramAnonymous4String.getIntrinsicWidth() * (int)ak.a(ak.this).textSize / paramAnonymous4String.getIntrinsicHeight();
+                                  if (paramAnonymous4String.getIntrinsicHeight() == 0) {
+                                    break label156;
+                                  }
+                                }
+                              }
+                            }
+                            label148:
+                            label156:
+                            for (int j = (int)ak.a(ak.this).textSize;; j = paramAnonymous4String.getIntrinsicHeight())
+                            {
+                              paramAnonymous4String.setBounds(0, 0, i, j);
+                              AppMethodBeat.o(96793);
+                              return paramAnonymous4String;
+                              i = paramAnonymous4String.getIntrinsicWidth();
+                              break;
+                            }
+                          }
+                        }
+                        {
+                          public final void run()
+                          {
+                            AppMethodBeat.i(96794);
+                            ak.this.vk.setText(this.zYK);
+                            AppMethodBeat.o(96794);
+                          }
+                        });
+                        AppMethodBeat.o(96795);
+                        return;
+                      }
+                      catch (Exception paramAnonymous3String)
+                      {
+                        com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.Sns.AdLandingPageTextComponent", "the backgroundCoverUrl is set error ,because " + paramAnonymous3String.toString());
+                        AppMethodBeat.o(96795);
+                      }
+                    }
+                    
+                    public final void dVu() {}
+                    
+                    public final void dVv() {}
+                  });
+                  paramAnonymous2String = localObject;
+                }
+              }
+            }
             {
               public final void run()
               {
-                AppMethodBeat.i(96805);
-                ak.a(ak.this, ak.b(ak.this), ak.c(ak.this));
-                AppMethodBeat.o(96805);
+                AppMethodBeat.i(96797);
+                ak.this.vk.setText(g.fqZ().b(this.zYK, ak.this.vk.getTextSize()));
+                AppMethodBeat.o(96797);
               }
             });
+            AppMethodBeat.o(96798);
           }
-          AppMethodBeat.o(96806);
-          return;
-        }
-        catch (InterruptedException localInterruptedException)
-        {
-          break label15;
-        }
+        };
+        com.tencent.e.h.MqF.aO(this.zYD);
       }
-    });
-    al localal = (al)dWY();
-    if (localal != null)
-    {
-      com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.h.a(localal.zAX, localal.zAh, new f.a()
-      {
-        public final void axG(String paramAnonymousString)
-        {
-          AppMethodBeat.i(96808);
-          try
-          {
-            paramAnonymousString = g.decodeFile(paramAnonymousString);
-            ak.a(ak.this, paramAnonymousString);
-            ak.a(ak.this).countDown();
-            AppMethodBeat.o(96808);
-            return;
-          }
-          catch (Exception paramAnonymousString)
-          {
-            ad.e("AdlandingRadarChartComp", "%s" + bt.n(paramAnonymousString));
-            AppMethodBeat.o(96808);
-          }
-        }
-        
-        public final void dRW() {}
-        
-        public final void dRX()
-        {
-          AppMethodBeat.i(96807);
-          ak.a(ak.this, null);
-          ak.a(ak.this).countDown();
-          AppMethodBeat.o(96807);
-        }
-      });
-      com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.h.a(localal.zBd, localal.zAh, new f.a()
-      {
-        public final void axG(String paramAnonymousString)
-        {
-          AppMethodBeat.i(96810);
-          try
-          {
-            ak.b(ak.this, g.decodeFile(paramAnonymousString));
-            ak.a(ak.this).countDown();
-            AppMethodBeat.o(96810);
-            return;
-          }
-          catch (Exception paramAnonymousString)
-          {
-            ad.e("AdlandingRadarChartComp", "%s" + bt.n(paramAnonymousString));
-            AppMethodBeat.o(96810);
-          }
-        }
-        
-        public final void dRW() {}
-        
-        public final void dRX()
-        {
-          AppMethodBeat.i(96809);
-          ak.b(ak.this, null);
-          ak.a(ak.this).countDown();
-          AppMethodBeat.o(96809);
-        }
-      });
-      dWF();
-      AppMethodBeat.o(96814);
-      return;
+      if (((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ae)this.zUP).textAlignment != 0) {
+        break label418;
+      }
+      this.vk.setGravity(3);
+      label151:
+      if ((((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ae)this.zUP).wdx == null) || (((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ae)this.zUP).wdx.length() <= 0)) {
+        break label503;
+      }
     }
-    Log.wtf("AdlandingRadarChartComp", "null info");
-    AppMethodBeat.o(96814);
+    for (;;)
+    {
+      try
+      {
+        i = Color.parseColor(((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ae)this.zUP).wdx);
+        this.vk.setTextColor(i);
+        if (((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ae)this.zUP).zRM > 0.0F) {
+          this.vk.setLineSpacing(0.0F, ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ae)this.zUP).zRM + 1.0F);
+        }
+        localObject = this.vk.getPaint();
+        if (((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ae)this.zUP).zRJ) {
+          ((TextPaint)localObject).setFakeBoldText(true);
+        }
+        if (((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ae)this.zUP).zRK) {
+          ((TextPaint)localObject).setTextSkewX(-0.25F);
+        }
+        if (((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ae)this.zUP).zRL) {
+          ((TextPaint)localObject).setUnderlineText(true);
+        }
+        if (((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ae)this.zUP).maxLines > 0) {
+          this.vk.setMaxLines(((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ae)this.zUP).maxLines);
+        }
+        if (((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ae)this.zUP).zQw == com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ae.zRH) {
+          this.vk.setTypeface(an.gr(this.context));
+        }
+        AppMethodBeat.o(96801);
+        return;
+        if (bu.isNullOrNil(((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ae)this.zUP).zRI)) {
+          break;
+        }
+        this.vk.setText(g.fqZ().b(((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ae)this.zUP).zRI.trim(), this.vk.getTextSize()));
+        break;
+        label418:
+        if (((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ae)this.zUP).textAlignment == 1)
+        {
+          this.vk.setGravity(17);
+          break label151;
+        }
+        if (((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ae)this.zUP).textAlignment != 2) {
+          break label151;
+        }
+        this.vk.setGravity(5);
+      }
+      catch (Exception localException)
+      {
+        com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.Sns.AdLandingPageTextComponent", "parse the color is error : " + ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ae)this.zUP).wdx);
+        continue;
+      }
+      label503:
+      int i = Color.parseColor("#FFFFFF");
+      this.vk.setTextColor(i);
+    }
   }
   
-  public final void dRo()
+  public final void dUK()
   {
-    AppMethodBeat.i(96815);
-    super.dRo();
-    this.qfM.countDown();
-    this.qfM.countDown();
-    AppMethodBeat.o(96815);
+    AppMethodBeat.i(96803);
+    super.dUK();
+    AppMethodBeat.o(96803);
   }
   
-  protected final void dWF()
+  public final void dUL()
   {
-    AppMethodBeat.i(96813);
+    AppMethodBeat.i(96804);
+    super.dUL();
+    AppMethodBeat.o(96804);
+  }
+  
+  public final void dUM()
+  {
+    AppMethodBeat.i(96799);
+    super.dUM();
+    if (this.zYD != null) {
+      this.zYD.cancel();
+    }
+    this.zYE = true;
+    AppMethodBeat.o(96799);
+  }
+  
+  protected final void eah()
+  {
+    AppMethodBeat.i(96800);
     ViewGroup.LayoutParams localLayoutParams = this.contentView.getLayoutParams();
     if ((localLayoutParams instanceof ViewGroup.MarginLayoutParams)) {
-      ((ViewGroup.MarginLayoutParams)localLayoutParams).setMargins((int)this.zDK.paddingLeft, (int)this.zDK.paddingTop, (int)this.zDK.paddingRight, (int)this.zDK.paddingBottom);
+      ((ViewGroup.MarginLayoutParams)localLayoutParams).setMargins((int)this.zUP.paddingLeft, (int)this.zUP.paddingTop, (int)this.zUP.paddingRight, (int)this.zUP.paddingBottom);
     }
     this.contentView.setLayoutParams(localLayoutParams);
-    AppMethodBeat.o(96813);
+    AppMethodBeat.o(96800);
   }
   
   protected final int getLayout()
   {
-    return 2131495493;
+    return 2131495510;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.ak
  * JD-Core Version:    0.7.0.1
  */

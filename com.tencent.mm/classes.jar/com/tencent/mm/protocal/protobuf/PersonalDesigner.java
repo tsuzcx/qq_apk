@@ -3,7 +3,7 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class PersonalDesigner
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
   public int DesignerUin;
   public String HeadUrl;
@@ -42,9 +42,9 @@ public class PersonalDesigner
     if (paramInt == 2)
     {
       paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gxE();
+          paramVarArgs.gCg();
         }
       }
       AppMethodBeat.o(104828);
@@ -60,15 +60,15 @@ public class PersonalDesigner
         AppMethodBeat.o(104828);
         return -1;
       case 1: 
-        localPersonalDesigner.DesignerUin = locala.NPN.zc();
+        localPersonalDesigner.DesignerUin = locala.OmT.zc();
         AppMethodBeat.o(104828);
         return 0;
       case 2: 
-        localPersonalDesigner.Name = locala.NPN.readString();
+        localPersonalDesigner.Name = locala.OmT.readString();
         AppMethodBeat.o(104828);
         return 0;
       }
-      localPersonalDesigner.HeadUrl = locala.NPN.readString();
+      localPersonalDesigner.HeadUrl = locala.OmT.readString();
       AppMethodBeat.o(104828);
       return 0;
     }
@@ -78,7 +78,7 @@ public class PersonalDesigner
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.PersonalDesigner
  * JD-Core Version:    0.7.0.1
  */

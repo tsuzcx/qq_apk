@@ -14,81 +14,81 @@ import com.tencent.magicbrush.ui.MagicBrushView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.appstorage.ICommLibReader;
 import com.tencent.mm.plugin.appbrand.jsapi.h;
-import com.tencent.mm.plugin.appbrand.utils.p;
+import com.tencent.mm.plugin.appbrand.utils.r;
 import java.io.InputStream;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 public final class b
 {
-  public g ciS;
-  h ciT;
-  boolean ciU;
-  public View ciV;
-  LinkedList<String> ciW;
-  boolean ciX;
-  private d ciY;
+  public g ciU;
+  h ciV;
+  boolean ciW;
+  public View ciX;
+  LinkedList<String> ciY;
+  boolean ciZ;
+  private d cja;
   private Context mContext;
   
   public b(g paramg, d paramd, Context paramContext, h paramh)
   {
     AppMethodBeat.i(130495);
-    this.ciU = false;
-    this.ciX = false;
-    this.ciT = paramh;
-    this.ciS = paramg;
+    this.ciW = false;
+    this.ciZ = false;
+    this.ciV = paramh;
+    this.ciU = paramg;
     this.mContext = paramContext;
-    this.ciY = paramd;
-    this.ciS.av(paramContext);
-    this.ciS.CB().CC();
-    this.ciV = new a(this.mContext);
-    this.ciV.setOnClickListener(new View.OnClickListener()
+    this.cja = paramd;
+    this.ciU.aw(paramContext);
+    this.ciU.CE().CF();
+    this.ciX = new a(this.mContext);
+    this.ciX.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(130487);
         Object localObject = new com.tencent.mm.hellhoundlib.b.b();
         ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/luggage/game/inspector/ConsoleViewWrapper$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahq());
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/luggage/game/inspector/ConsoleViewWrapper$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahF());
         paramAnonymousView = b.this;
-        if (paramAnonymousView.ciU)
+        if (paramAnonymousView.ciW)
         {
           localObject = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
           ((ValueAnimator)localObject).addUpdateListener(new b.3(paramAnonymousView));
           ((ValueAnimator)localObject).start();
         }
-        for (paramAnonymousView.ciU = false;; paramAnonymousView.ciU = true)
+        for (paramAnonymousView.ciW = false;; paramAnonymousView.ciW = true)
         {
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/luggage/game/inspector/ConsoleViewWrapper$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(130487);
           return;
-          paramAnonymousView.ciS.setTranslationY(paramAnonymousView.getDisplayHeight());
-          paramAnonymousView.ciS.setVisibility(0);
+          paramAnonymousView.ciU.setTranslationY(paramAnonymousView.getDisplayHeight());
+          paramAnonymousView.ciU.setVisibility(0);
           localObject = ValueAnimator.ofFloat(new float[] { 1.0F, 0.0F });
           ((ValueAnimator)localObject).addUpdateListener(new b.4(paramAnonymousView));
           ((ValueAnimator)localObject).start();
         }
       }
     });
-    this.ciS.a(new g.b()
+    this.ciU.a(new g.b()
     {
-      public final void CA()
+      public final void CD()
       {
         AppMethodBeat.i(130489);
-        b.this.ciX = true;
-        if ((b.this.ciW != null) && (!b.this.ciW.isEmpty()))
+        b.this.ciZ = true;
+        if ((b.this.ciY != null) && (!b.this.ciY.isEmpty()))
         {
-          Iterator localIterator = b.this.ciW.iterator();
+          Iterator localIterator = b.this.ciY.iterator();
           while (localIterator.hasNext())
           {
             String str = (String)localIterator.next();
-            b.this.cL(str);
+            b.this.cN(str);
           }
         }
         AppMethodBeat.o(130489);
       }
       
-      public final boolean cM(String paramAnonymousString)
+      public final boolean cO(String paramAnonymousString)
       {
         AppMethodBeat.i(130488);
         boolean bool = "wagame://servicewechat.com/WAGameVConsole.html".equals(paramAnonymousString);
@@ -96,70 +96,70 @@ public final class b
         return bool;
       }
       
-      public final InputStream cN(String paramAnonymousString)
+      public final InputStream cP(String paramAnonymousString)
       {
         AppMethodBeat.i(130490);
-        paramAnonymousString = b.this.ciT.aVF().openRead(paramAnonymousString);
+        paramAnonymousString = b.this.ciV.aWe().openRead(paramAnonymousString);
         AppMethodBeat.o(130490);
         return paramAnonymousString;
       }
     });
-    this.ciS.loadUrl("wagame://servicewechat.com/WAGameVConsole.html");
-    this.ciS.setTranslationY(100000.0F);
-    this.ciS.setVisibility(8);
+    this.ciU.loadUrl("wagame://servicewechat.com/WAGameVConsole.html");
+    this.ciU.setTranslationY(100000.0F);
+    this.ciU.setVisibility(8);
     AppMethodBeat.o(130495);
   }
   
-  final void cL(String paramString)
+  final void cN(String paramString)
   {
     AppMethodBeat.i(130498);
-    paramString = p.Vc(paramString);
+    paramString = r.VN(paramString);
     if (Build.VERSION.SDK_INT >= 19)
     {
-      this.ciS.cO("console._log('" + paramString + "')");
+      this.ciU.cQ("console._log('" + paramString + "')");
       AppMethodBeat.o(130498);
       return;
     }
-    this.ciS.loadUrl("javascript:console._log('" + paramString + "')");
+    this.ciU.loadUrl("javascript:console._log('" + paramString + "')");
     AppMethodBeat.o(130498);
   }
   
   final int getDisplayHeight()
   {
     AppMethodBeat.i(130496);
-    int i = (int)(this.ciY.cwM.find(0).getWidth() * this.mContext.getResources().getDisplayMetrics().density);
+    int i = (int)(this.cja.cxr.find(0).getWidth() * this.mContext.getResources().getDisplayMetrics().density);
     AppMethodBeat.o(130496);
     return i + 1;
   }
   
   public final View getView()
   {
-    AppMethodBeat.i(190401);
-    View localView = this.ciS.getView();
-    AppMethodBeat.o(190401);
+    AppMethodBeat.i(220715);
+    View localView = this.ciU.getView();
+    AppMethodBeat.o(220715);
     return localView;
   }
   
   public final void log(String paramString)
   {
     AppMethodBeat.i(130497);
-    if (this.ciX)
+    if (this.ciZ)
     {
-      cL(paramString);
+      cN(paramString);
       AppMethodBeat.o(130497);
       return;
     }
-    if (this.ciW == null) {
-      this.ciW = new LinkedList();
+    if (this.ciY == null) {
+      this.ciY = new LinkedList();
     }
-    this.ciW.add(paramString);
+    this.ciY.add(paramString);
     AppMethodBeat.o(130497);
   }
   
   public final void post(Runnable paramRunnable)
   {
     AppMethodBeat.i(130499);
-    this.ciS.getView().post(paramRunnable);
+    this.ciU.getView().post(paramRunnable);
     AppMethodBeat.o(130499);
   }
 }

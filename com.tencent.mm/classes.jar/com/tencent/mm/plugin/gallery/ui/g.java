@@ -23,8 +23,8 @@ import com.tencent.mm.plugin.gallery.model.GalleryItem.MediaItem;
 import com.tencent.mm.plugin.gallery.model.GalleryItem.VideoMediaItem;
 import com.tencent.mm.plugin.gallery.model.e;
 import com.tencent.mm.plugin.gallery.model.o;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
@@ -35,28 +35,28 @@ public final class g
   implements View.OnClickListener
 {
   private Context mContext;
-  private int sDu;
-  private int sDv;
-  private int sDw;
-  private boolean tNv;
-  private ArrayList<String> tOq;
-  d tPf;
-  private int tPg;
-  ArrayList<String> tPh;
-  b tPi;
-  private int tPj;
-  private Drawable tPk;
-  android.support.v7.widget.a.a tPl;
+  private int sOt;
+  private int sOu;
+  private int sOv;
+  private boolean tYm;
+  d tZW;
+  private int tZX;
+  ArrayList<String> tZY;
+  b tZZ;
+  private ArrayList<String> tZh;
+  private int uaa;
+  private Drawable uab;
+  android.support.v7.widget.a.a uac;
   
   public g(Context paramContext, ArrayList<String> paramArrayList, int paramInt, boolean paramBoolean)
   {
     AppMethodBeat.i(111646);
-    this.tPh = new ArrayList();
-    this.sDu = -1;
-    this.sDv = -1;
-    this.tPl = new android.support.v7.widget.a.a(new a.a()
+    this.tZY = new ArrayList();
+    this.sOt = -1;
+    this.sOu = -1;
+    this.uac = new android.support.v7.widget.a.a(new a.a()
     {
-      int dLx = -1;
+      int dMM = -1;
       
       public final float K(RecyclerView.w paramAnonymousw)
       {
@@ -109,25 +109,25 @@ public final class g
               com.tencent.mm.plugin.gallery.a.d.swap(g.d(g.this), g.e(g.this), g.f(g.this));
               if (g.a(g.this) != null)
               {
-                if ((g.1.this.dLx > g.e(g.this)) && (g.1.this.dLx <= g.f(g.this)))
+                if ((g.1.this.dMM > g.e(g.this)) && (g.1.this.dMM <= g.f(g.this)))
                 {
-                  g.a(g.this).af(g.e(g.this), g.f(g.this), g.1.this.dLx - 1);
+                  g.a(g.this).af(g.e(g.this), g.f(g.this), g.1.this.dMM - 1);
                   AppMethodBeat.o(111639);
                   return;
                 }
-                if ((g.1.this.dLx < g.e(g.this)) && (g.1.this.dLx >= g.f(g.this)))
+                if ((g.1.this.dMM < g.e(g.this)) && (g.1.this.dMM >= g.f(g.this)))
                 {
-                  g.a(g.this).af(g.e(g.this), g.f(g.this), g.1.this.dLx + 1);
+                  g.a(g.this).af(g.e(g.this), g.f(g.this), g.1.this.dMM + 1);
                   AppMethodBeat.o(111639);
                   return;
                 }
-                if (g.e(g.this) == g.1.this.dLx)
+                if (g.e(g.this) == g.1.this.dMM)
                 {
                   g.a(g.this).af(g.e(g.this), g.f(g.this), g.f(g.this));
                   AppMethodBeat.o(111639);
                   return;
                 }
-                g.a(g.this).af(g.e(g.this), g.f(g.this), g.1.this.dLx);
+                g.a(g.this).af(g.e(g.this), g.f(g.this), g.1.this.dMM);
               }
               AppMethodBeat.o(111639);
             }
@@ -136,7 +136,7 @@ public final class g
             
             public final void onAnimationStart(Animation paramAnonymous2Animation) {}
           });
-          ((g.a)paramAnonymousw).tPw.startAnimation(paramAnonymousRecyclerView);
+          ((g.a)paramAnonymousw).uan.startAnimation(paramAnonymousRecyclerView);
         }
         AppMethodBeat.o(111642);
       }
@@ -156,8 +156,8 @@ public final class g
               if (paramAnonymousInt == 2)
               {
                 g.b(g.this, g.a(g.this, paramAnonymousw.lN()));
-                g.1.this.dLx = g.c(g.this);
-                ad.i("MicroMsg.PreviewSelectedImageAdapter", "lastVisiblePos:%s", new Object[] { Integer.valueOf(g.1.this.dLx) });
+                g.1.this.dMM = g.c(g.this);
+                ae.i("MicroMsg.PreviewSelectedImageAdapter", "lastVisiblePos:%s", new Object[] { Integer.valueOf(g.1.this.dMM) });
               }
               AppMethodBeat.o(111638);
             }
@@ -166,7 +166,7 @@ public final class g
             
             public final void onAnimationStart(Animation paramAnonymous2Animation) {}
           });
-          ((g.a)paramAnonymousw).tPw.startAnimation(localAnimation);
+          ((g.a)paramAnonymousw).uan.startAnimation(localAnimation);
         }
         AppMethodBeat.o(111641);
       }
@@ -182,48 +182,48 @@ public final class g
       }
     });
     this.mContext = paramContext;
-    this.tOq = paramArrayList;
-    this.tPh.addAll(paramArrayList);
-    this.tPg = paramInt;
-    this.tNv = paramBoolean;
-    if (e.cUM().kTx == 15)
+    this.tZh = paramArrayList;
+    this.tZY.addAll(paramArrayList);
+    this.tZX = paramInt;
+    this.tYm = paramBoolean;
+    if (e.cXr().kXg == 15)
     {
-      this.tPk = paramContext.getResources().getDrawable(2131232558);
+      this.uab = paramContext.getResources().getDrawable(2131232558);
       AppMethodBeat.o(111646);
       return;
     }
-    this.tPk = paramContext.getResources().getDrawable(2131231942);
+    this.uab = paramContext.getResources().getDrawable(2131231942);
     AppMethodBeat.o(111646);
   }
   
   private GalleryItem.MediaItem a(int paramInt, a parama)
   {
     AppMethodBeat.i(111654);
-    if ((paramInt < 0) || (paramInt >= this.tPh.size()))
+    if ((paramInt < 0) || (paramInt >= this.tZY.size()))
     {
-      ad.w("MicroMsg.PreviewSelectedImageAdapter", "error position %d, imagePaths size %d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.tPh.size()) });
+      ae.w("MicroMsg.PreviewSelectedImageAdapter", "error position %d, imagePaths size %d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.tZY.size()) });
       AppMethodBeat.o(111654);
       return null;
     }
-    Object localObject = (String)this.tPh.get(paramInt);
-    if (this.tNv)
+    Object localObject = (String)this.tZY.get(paramInt);
+    if (this.tYm)
     {
-      if (this.tPf.tLn == null) {
+      if (this.tZW.tWe == null) {
         break label321;
       }
       localObject = GalleryItem.MediaItem.a(0, 0L, (String)localObject, (String)localObject, "");
-      paramInt = this.tPf.tLn.indexOf(localObject);
+      paramInt = this.tZW.tWe.indexOf(localObject);
       if (paramInt >= 0)
       {
-        parama.tPx = paramInt;
-        parama = (GalleryItem.MediaItem)this.tPf.tLn.get(paramInt);
+        parama.uao = paramInt;
+        parama = (GalleryItem.MediaItem)this.tZW.tWe.get(paramInt);
       }
     }
     for (;;)
     {
       AppMethodBeat.o(111654);
       return parama;
-      Iterator localIterator = e.cUR().iterator();
+      Iterator localIterator = e.cXw().iterator();
       for (;;)
       {
         if (localIterator.hasNext())
@@ -231,24 +231,24 @@ public final class g
           parama = (GalleryItem.MediaItem)localIterator.next();
           if (parama.equals(localObject))
           {
-            ad.i("MicroMsg.PreviewSelectedImageAdapter", "[getMediaItem] %s", new Object[] { parama.tGS });
+            ae.i("MicroMsg.PreviewSelectedImageAdapter", "[getMediaItem] %s", new Object[] { parama.tRJ });
             break;
           }
         }
       }
       parama = null;
       continue;
-      if (e.cUO() != null)
+      if (e.cXt() != null)
       {
         localObject = GalleryItem.MediaItem.a(0, 0L, (String)localObject, (String)localObject, "");
-        paramInt = e.cUO().indexOf(localObject);
+        paramInt = e.cXt().indexOf(localObject);
         if (paramInt >= 0)
         {
-          parama = (GalleryItem.MediaItem)e.cUO().get(paramInt);
+          parama = (GalleryItem.MediaItem)e.cXt().get(paramInt);
         }
         else
         {
-          localIterator = e.cUR().iterator();
+          localIterator = e.cXw().iterator();
           for (;;)
           {
             if (localIterator.hasNext())
@@ -256,7 +256,7 @@ public final class g
               parama = (GalleryItem.MediaItem)localIterator.next();
               if (parama.equals(localObject))
               {
-                ad.i("MicroMsg.PreviewSelectedImageAdapter", "[getMediaItem] %s", new Object[] { parama.tGS });
+                ae.i("MicroMsg.PreviewSelectedImageAdapter", "[getMediaItem] %s", new Object[] { parama.tRJ });
                 break;
               }
             }
@@ -280,137 +280,137 @@ public final class g
     GalleryItem.MediaItem localMediaItem = a(paramInt, parama);
     if (localMediaItem == null)
     {
-      ad.e("MicroMsg.PreviewSelectedImageAdapter", "get item failed");
+      ae.e("MicroMsg.PreviewSelectedImageAdapter", "get item failed");
       AppMethodBeat.o(111650);
       return;
     }
-    Object localObject = parama.tPw.getLayoutParams();
-    int i = this.tPg;
+    Object localObject = parama.uan.getLayoutParams();
+    int i = this.tZX;
     ((ViewGroup.LayoutParams)localObject).width = i;
     ((ViewGroup.LayoutParams)localObject).height = i;
-    c(parama.tPq, localMediaItem.tGS, paramInt);
-    parama.tPw.setOnClickListener(this);
-    if (this.tNv)
+    c(parama.uah, localMediaItem.tRJ, paramInt);
+    parama.uan.setOnClickListener(this);
+    if (this.tYm)
     {
-      parama.tPw.setTag(Integer.valueOf(parama.tPx));
+      parama.uan.setTag(Integer.valueOf(parama.uao));
       if (localMediaItem.getType() != 2) {
         break label241;
       }
-      parama.tPr.setVisibility(0);
-      i = Math.round((float)((GalleryItem.VideoMediaItem)localMediaItem).imR / 1000.0F);
-      parama.tPs.setText(String.format(Locale.CHINA, "%d:%02d", new Object[] { Integer.valueOf(i / 60), Integer.valueOf(i % 60) }));
+      parama.uai.setVisibility(0);
+      i = Math.round((float)((GalleryItem.VideoMediaItem)localMediaItem).ipL / 1000.0F);
+      parama.uaj.setText(String.format(Locale.CHINA, "%d:%02d", new Object[] { Integer.valueOf(i / 60), Integer.valueOf(i % 60) }));
     }
     String str;
     for (;;)
     {
-      localObject = localMediaItem.axA();
-      str = localMediaItem.tGS;
-      if ((!bt.isNullOrNil((String)localObject)) || (!bt.isNullOrNil(str))) {
+      localObject = localMediaItem.axP();
+      str = localMediaItem.tRJ;
+      if ((!bu.isNullOrNil((String)localObject)) || (!bu.isNullOrNil(str))) {
         break label253;
       }
-      ad.e("MicroMsg.PreviewSelectedImageAdapter", "null or nil filepath: ".concat(String.valueOf(paramInt)));
+      ae.e("MicroMsg.PreviewSelectedImageAdapter", "null or nil filepath: ".concat(String.valueOf(paramInt)));
       AppMethodBeat.o(111650);
       return;
-      parama.tPw.setTag(localMediaItem.tGS);
+      parama.uan.setTag(localMediaItem.tRJ);
       break;
       label241:
-      parama.tPr.setVisibility(8);
+      parama.uai.setVisibility(8);
     }
     label253:
-    h.a(parama.tCh, localMediaItem.getType(), (String)localObject, str, localMediaItem.tGV, new h.a()
+    h.a(parama.tMY, localMediaItem.getType(), (String)localObject, str, localMediaItem.tRM, new h.a()
     {
-      public final void cWp()
+      public final void cYU()
       {
         AppMethodBeat.i(111644);
-        ad.i("MicroMsg.PreviewSelectedImageAdapter", "%s %s", new Object[] { Integer.valueOf(parama.tCh.getWidth()), Integer.valueOf(parama.tCh.getHeight()) });
+        ae.i("MicroMsg.PreviewSelectedImageAdapter", "%s %s", new Object[] { Integer.valueOf(parama.tMY.getWidth()), Integer.valueOf(parama.tMY.getHeight()) });
         AppMethodBeat.o(111644);
       }
-    }, localMediaItem.tGW);
-    if (((e.cUM().kTx == 3) || (e.cUM().kTx == 11)) && (localMediaItem != null) && (localMediaItem.mMimeType.equalsIgnoreCase("image/gif")))
+    }, localMediaItem.tRN);
+    if (((e.cXr().kXg == 3) || (e.cXr().kXg == 11)) && (localMediaItem != null) && (localMediaItem.mMimeType.equalsIgnoreCase("image/gif")))
     {
-      parama.tPt.setVisibility(0);
+      parama.uak.setVisibility(0);
       if (!localMediaItem.mMimeType.equalsIgnoreCase("edit")) {
         break label385;
       }
-      parama.tPu.setVisibility(0);
+      parama.ual.setVisibility(0);
     }
     for (;;)
     {
-      parama.tPv.setVisibility(8);
+      parama.uam.setVisibility(8);
       AppMethodBeat.o(111650);
       return;
-      parama.tPt.setVisibility(8);
+      parama.uak.setVisibility(8);
       break;
       label385:
-      parama.tPu.setVisibility(8);
+      parama.ual.setVisibility(8);
     }
   }
   
   private void c(ImageView paramImageView, String paramString, int paramInt)
   {
     AppMethodBeat.i(111651);
-    if (this.tOq.contains(paramString))
+    if (this.tZh.contains(paramString))
     {
       paramImageView.setBackground(null);
-      paramImageView.setImageDrawable(this.tPk);
+      paramImageView.setImageDrawable(this.uab);
     }
     for (int i = 0;; i = 1)
     {
       paramImageView.setVisibility(0);
-      if ((bt.isNullOrNil(this.tPf.getItem(this.tPj))) || (!this.tPf.getItem(this.tPj).equals(paramString))) {
+      if ((bu.isNullOrNil(this.tZW.getItem(this.uaa))) || (!this.tZW.getItem(this.uaa).equals(paramString))) {
         break;
       }
       paramImageView.setVisibility(0);
-      if ((i == 0) || (paramInt != this.sDw)) {
+      if ((i == 0) || (paramInt != this.sOv)) {
         break label206;
       }
-      paramImageView.setImageDrawable(this.tPk);
+      paramImageView.setImageDrawable(this.uab);
       AppMethodBeat.o(111651);
       return;
       paramImageView.setBackgroundColor(-1090519041);
       paramImageView.setImageDrawable(null);
     }
-    if ((!bt.isNullOrNil(this.tPf.getItem(this.tPj))) && (!this.tPf.getItem(this.tPj).equals(paramString)))
+    if ((!bu.isNullOrNil(this.tZW.getItem(this.uaa))) && (!this.tZW.getItem(this.uaa).equals(paramString)))
     {
-      if ((paramInt != this.sDw) && (i == 0))
+      if ((paramInt != this.sOv) && (i == 0))
       {
         paramImageView.setVisibility(8);
         AppMethodBeat.o(111651);
         return;
       }
-      if ((paramInt == this.sDw) && (i == 0)) {
-        paramImageView.setImageDrawable(this.tPk);
+      if ((paramInt == this.sOv) && (i == 0)) {
+        paramImageView.setImageDrawable(this.uab);
       }
     }
     label206:
     AppMethodBeat.o(111651);
   }
   
-  public final void ald(String paramString)
+  public final void amb(String paramString)
   {
     AppMethodBeat.i(111647);
-    this.tPh.add(paramString);
+    this.tZY.add(paramString);
     AppMethodBeat.o(111647);
   }
   
   public final int getItemCount()
   {
     AppMethodBeat.i(111652);
-    int i = this.tPh.size();
+    int i = this.tZY.size();
     AppMethodBeat.o(111652);
     return i;
   }
   
   public final void gk(int paramInt1, int paramInt2)
   {
-    this.sDw = paramInt1;
-    this.tPj = paramInt2;
+    this.sOv = paramInt1;
+    this.uaa = paramInt2;
   }
   
   public final int indexOf(String paramString)
   {
     AppMethodBeat.i(111648);
-    int i = this.tPh.indexOf(paramString);
+    int i = this.tZY.indexOf(paramString);
     AppMethodBeat.o(111648);
     return i;
   }
@@ -420,13 +420,13 @@ public final class g
     AppMethodBeat.i(111653);
     b localb = new b();
     localb.bd(paramView);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/gallery/ui/PreviewSelectedImageAdapter", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-    if (this.tPi != null)
+    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/gallery/ui/PreviewSelectedImageAdapter", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+    if (this.tZZ != null)
     {
-      if (!this.tNv) {
+      if (!this.tYm) {
         break label95;
       }
-      this.tPi.Hv(((Integer)paramView.getTag()).intValue());
+      this.tZZ.HS(((Integer)paramView.getTag()).intValue());
     }
     for (;;)
     {
@@ -434,53 +434,53 @@ public final class g
       AppMethodBeat.o(111653);
       return;
       label95:
-      this.tPi.Hv(this.tPh.indexOf(paramView.getTag()));
+      this.tZZ.HS(this.tZY.indexOf(paramView.getTag()));
     }
   }
   
   public final void remove(int paramInt)
   {
     AppMethodBeat.i(111649);
-    this.tPh.remove(paramInt);
+    this.tZY.remove(paramInt);
     AppMethodBeat.o(111649);
   }
   
   public static final class a
     extends RecyclerView.w
   {
-    public ImageView tCh;
-    public ImageView tLy;
-    public ImageView tPq;
-    public RelativeLayout tPr;
-    public TextView tPs;
-    public ImageView tPt;
-    public ImageView tPu;
-    public ImageView tPv;
-    public View tPw;
-    public int tPx;
+    public ImageView tMY;
+    public ImageView tWp;
+    public ImageView uah;
+    public RelativeLayout uai;
+    public TextView uaj;
+    public ImageView uak;
+    public ImageView ual;
+    public ImageView uam;
+    public View uan;
+    public int uao;
     
     public a(View paramView)
     {
       super();
       AppMethodBeat.i(111645);
-      this.tPw = paramView;
-      this.tPt = ((ImageView)paramView.findViewById(2131300586));
-      this.tPu = ((ImageView)paramView.findViewById(2131299258));
-      this.tPv = ((ImageView)paramView.findViewById(2131299519));
-      this.tPq = ((ImageView)paramView.findViewById(2131302216));
-      this.tCh = ((ImageView)paramView.findViewById(2131302221));
-      this.tPr = ((RelativeLayout)paramView.findViewById(2131306355));
-      this.tPs = ((TextView)paramView.findViewById(2131306357));
-      this.tLy = ((ImageView)paramView.findViewById(2131302212));
-      this.tLy.setBackgroundResource(2131100482);
-      this.tLy.setVisibility(8);
+      this.uan = paramView;
+      this.uak = ((ImageView)paramView.findViewById(2131300586));
+      this.ual = ((ImageView)paramView.findViewById(2131299258));
+      this.uam = ((ImageView)paramView.findViewById(2131299519));
+      this.uah = ((ImageView)paramView.findViewById(2131302216));
+      this.tMY = ((ImageView)paramView.findViewById(2131302221));
+      this.uai = ((RelativeLayout)paramView.findViewById(2131306355));
+      this.uaj = ((TextView)paramView.findViewById(2131306357));
+      this.tWp = ((ImageView)paramView.findViewById(2131302212));
+      this.tWp.setBackgroundResource(2131100482);
+      this.tWp.setVisibility(8);
       AppMethodBeat.o(111645);
     }
   }
   
   public static abstract interface b
   {
-    public abstract void Hv(int paramInt);
+    public abstract void HS(int paramInt);
     
     public abstract void af(int paramInt1, int paramInt2, int paramInt3);
     
@@ -489,7 +489,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.gallery.ui.g
  * JD-Core Version:    0.7.0.1
  */

@@ -6,7 +6,7 @@ import com.google.b.a.e;
 public final class a$bd
   extends e
 {
-  public a.an LJn = null;
+  public a.an Mgr = null;
   public int type = 0;
   
   public a$bd()
@@ -19,8 +19,8 @@ public final class a$bd
     if (this.type != 0) {
       paramb.bx(1, this.type);
     }
-    if (this.LJn != null) {
-      paramb.a(2, this.LJn);
+    if (this.Mgr != null) {
+      paramb.a(2, this.Mgr);
     }
     super.a(paramb);
   }
@@ -33,8 +33,8 @@ public final class a$bd
       i = j + b.bz(1, this.type);
     }
     j = i;
-    if (this.LJn != null) {
-      j = i + b.b(2, this.LJn);
+    if (this.Mgr != null) {
+      j = i + b.b(2, this.Mgr);
     }
     return j;
   }

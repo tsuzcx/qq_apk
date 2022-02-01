@@ -9,30 +9,30 @@ import java.util.LinkedList;
 
 public final class i
 {
-  private static LinkedList<View> kSL;
-  private static LinkedList<d> kSM;
-  private static LinkedList<b> kSN;
+  private static LinkedList<View> kWu;
+  private static LinkedList<d> kWv;
+  private static LinkedList<b> kWw;
   
   static
   {
     AppMethodBeat.i(146564);
-    kSL = new LinkedList();
-    kSM = new LinkedList();
-    kSN = new LinkedList();
+    kWu = new LinkedList();
+    kWv = new LinkedList();
+    kWw = new LinkedList();
     AppMethodBeat.o(146564);
   }
   
   public static boolean a(b paramb)
   {
     AppMethodBeat.i(146560);
-    synchronized (kSN)
+    synchronized (kWw)
     {
-      if (kSN.size() > 0)
+      if (kWw.size() > 0)
       {
         AppMethodBeat.o(146560);
         return false;
       }
-      kSN.push(paramb);
+      kWw.push(paramb);
       AppMethodBeat.o(146560);
       return true;
     }
@@ -41,54 +41,54 @@ public final class i
   public static boolean a(d paramd)
   {
     AppMethodBeat.i(146562);
-    synchronized (kSM)
+    synchronized (kWv)
     {
-      if (kSM.size() > 0)
+      if (kWv.size() > 0)
       {
         AppMethodBeat.o(146562);
         return false;
       }
-      kSM.push(paramd);
+      kWv.push(paramd);
       AppMethodBeat.o(146562);
       return true;
     }
   }
   
-  public static b blf()
+  public static b blP()
   {
     AppMethodBeat.i(146559);
-    synchronized (kSN)
+    synchronized (kWw)
     {
-      if (kSN.size() <= 0)
+      if (kWw.size() <= 0)
       {
         AppMethodBeat.o(146559);
         return null;
       }
-      b localb = (b)kSN.removeFirst();
-      cD(localb);
+      b localb = (b)kWw.removeFirst();
+      cE(localb);
       AppMethodBeat.o(146559);
       return localb;
     }
   }
   
-  public static d blg()
+  public static d blQ()
   {
     AppMethodBeat.i(146561);
-    synchronized (kSM)
+    synchronized (kWv)
     {
-      if (kSM.size() <= 0)
+      if (kWv.size() <= 0)
       {
         AppMethodBeat.o(146561);
         return null;
       }
-      d locald = (d)kSM.removeFirst();
-      cD(locald);
+      d locald = (d)kWv.removeFirst();
+      cE(locald);
       AppMethodBeat.o(146561);
       return locald;
     }
   }
   
-  private static void cD(View paramView)
+  private static void cE(View paramView)
   {
     AppMethodBeat.i(146563);
     if (paramView == null)

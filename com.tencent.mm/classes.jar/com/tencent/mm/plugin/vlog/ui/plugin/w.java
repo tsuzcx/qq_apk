@@ -6,16 +6,16 @@ import com.tencent.mm.ui.widget.cropview.CropLayout;
 import com.tencent.mm.videocomposition.play.VideoCompositionPlayView;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/vlog/ui/plugin/PreviewProvider;", "", "getCropLayout", "Lcom/tencent/mm/ui/widget/cropview/CropLayout;", "getOperationLayout", "Lcom/tencent/mm/plugin/recordvideo/ui/WxCropOperationLayout;", "getParentLayout", "Landroid/view/ViewGroup;", "getVideoView", "Lcom/tencent/mm/videocomposition/play/VideoCompositionPlayView;", "tryPlayVideo", "", "plugin-vlog_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/vlog/ui/plugin/PreviewProvider;", "", "getCropLayout", "Lcom/tencent/mm/ui/widget/cropview/CropLayout;", "getOperationLayout", "Lcom/tencent/mm/plugin/recordvideo/ui/WxCropOperationLayout;", "getParentLayout", "Landroid/view/ViewGroup;", "getVideoView", "Lcom/tencent/mm/videocomposition/play/VideoCompositionPlayView;", "tryPlayVideo", "", "plugin-vlog_release"})
 public abstract interface w
 {
-  public abstract VideoCompositionPlayView eth();
+  public abstract VideoCompositionPlayView ewO();
   
-  public abstract ViewGroup etm();
+  public abstract ViewGroup ewT();
   
-  public abstract CropLayout etn();
+  public abstract CropLayout ewU();
   
-  public abstract void eto();
+  public abstract void ewV();
   
   public abstract WxCropOperationLayout getOperationLayout();
 }

@@ -6,30 +6,30 @@ import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.ui.v;
+import com.tencent.mm.plugin.appbrand.ui.w;
 import com.tencent.mm.ui.statusbar.b;
 import d.g.a.a;
 import d.l;
 import d.z;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/FunctionalLoadingSplash;", "Lcom/tencent/mm/ui/statusbar/DrawStatusBarFrameLayout;", "Lcom/tencent/mm/plugin/appbrand/ui/IAppBrandLoadingSplash;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "isHide", "", "progresDialog", "Lcom/tencent/mm/ui/base/MMProgressDialog;", "animateHide", "", "listener", "Lkotlin/Function0;", "backgroundColor", "color", "", "getView", "Landroid/view/View;", "onAttachedToWindow", "onDetachedFromWindow", "onViewAdded", "child", "setAppInfo", "icon", "", "name", "setProgress", "progress", "plugin-appbrand-integration_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/FunctionalLoadingSplash;", "Lcom/tencent/mm/ui/statusbar/DrawStatusBarFrameLayout;", "Lcom/tencent/mm/plugin/appbrand/ui/IAppBrandLoadingSplash;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "isHide", "", "progresDialog", "Lcom/tencent/mm/ui/base/MMProgressDialog;", "animateHide", "", "listener", "Lkotlin/Function0;", "backgroundColor", "color", "", "getView", "Landroid/view/View;", "onAttachedToWindow", "onDetachedFromWindow", "onViewAdded", "child", "setAppInfo", "icon", "", "name", "setProgress", "progress", "plugin-appbrand-integration_release"})
 public final class h
   extends b
-  implements v
+  implements w
 {
-  private boolean dKW;
-  private com.tencent.mm.ui.base.p lOu;
+  private boolean dMl;
+  private com.tencent.mm.ui.base.p lSV;
   
   public h(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(50875);
-    L(0, true);
+    M(0, true);
     setBackgroundColor(0);
     AppMethodBeat.o(50875);
   }
   
-  public final void dV(String paramString1, String paramString2)
+  public final void dX(String paramString1, String paramString2)
   {
     AppMethodBeat.i(50874);
     d.g.b.p.h(paramString1, "icon");
@@ -46,14 +46,14 @@ public final class h
   {
     AppMethodBeat.i(50872);
     super.onAttachedToWindow();
-    if (this.dKW)
+    if (this.dMl)
     {
       AppMethodBeat.o(50872);
       return;
     }
     Context localContext = getContext();
     getResources().getString(2131755906);
-    this.lOu = com.tencent.mm.ui.base.h.b(localContext, getResources().getString(2131760709), false, null);
+    this.lSV = com.tencent.mm.ui.base.h.b(localContext, getResources().getString(2131760709), false, null);
     AppMethodBeat.o(50872);
   }
   
@@ -61,12 +61,12 @@ public final class h
   {
     AppMethodBeat.i(50873);
     super.onDetachedFromWindow();
-    com.tencent.mm.ui.base.p localp = this.lOu;
+    com.tencent.mm.ui.base.p localp = this.lSV;
     if (localp != null)
     {
       if (localp.isShowing() == true)
       {
-        localp = this.lOu;
+        localp = this.lSV;
         if (localp != null)
         {
           localp.dismiss();
@@ -109,14 +109,16 @@ public final class h
   
   public final void setProgress(int paramInt) {}
   
-  public final void u(a<z> parama)
+  public final void uD(int paramInt) {}
+  
+  public final void v(a<z> parama)
   {
-    AppMethodBeat.i(189355);
-    this.dKW = true;
-    com.tencent.mm.ui.base.p localp = this.lOu;
+    AppMethodBeat.i(223615);
+    this.dMl = true;
+    com.tencent.mm.ui.base.p localp = this.lSV;
     if ((localp != null) && (localp.isShowing() == true))
     {
-      localp = this.lOu;
+      localp = this.lSV;
       if (localp != null) {
         localp.dismiss();
       }
@@ -124,17 +126,15 @@ public final class h
     if (parama != null)
     {
       parama.invoke();
-      AppMethodBeat.o(189355);
+      AppMethodBeat.o(223615);
       return;
     }
-    AppMethodBeat.o(189355);
+    AppMethodBeat.o(223615);
   }
-  
-  public final void ux(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.luggage.export.functionalpage.h
  * JD-Core Version:    0.7.0.1
  */

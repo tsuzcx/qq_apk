@@ -13,24 +13,24 @@ public final class c
   {
     AppMethodBeat.i(146243);
     paramIntent.setClass(paramContext, WelabMainUI.class);
-    if ((eWr()) || (eWs())) {}
+    if ((fad()) || (fae())) {}
     for (int i = 1;; i = 0)
     {
       paramIntent.putExtra("para_from_with_red_point", i);
       paramIntent = new com.tencent.mm.hellhoundlib.b.a().bc(paramIntent);
-      com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramIntent.ahp(), "com/tencent/mm/plugin/welab/api/LabUIExporter", "startWelabUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramContext.startActivity((Intent)paramIntent.mq(0));
+      com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramIntent.ahE(), "com/tencent/mm/plugin/welab/api/LabUIExporter", "startWelabUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramContext.startActivity((Intent)paramIntent.mt(0));
       com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/plugin/welab/api/LabUIExporter", "startWelabUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       AppMethodBeat.o(146243);
       return;
     }
   }
   
-  public final boolean eWr()
+  public final boolean fad()
   {
     AppMethodBeat.i(146244);
-    b.eWD();
-    if ((b.eWG()) && (!eWs()))
+    b.fap();
+    if ((b.fas()) && (!fae()))
     {
       AppMethodBeat.o(146244);
       return true;
@@ -39,14 +39,14 @@ public final class c
     return false;
   }
   
-  public final boolean eWs()
+  public final boolean fae()
   {
     AppMethodBeat.i(146245);
-    b.eWD();
-    if (!b.eWH())
+    b.fap();
+    if (!b.fat())
     {
-      b.eWD();
-      if (b.eWG())
+      b.fap();
+      if (b.fas())
       {
         AppMethodBeat.o(146245);
         return true;
@@ -56,10 +56,10 @@ public final class c
     return false;
   }
   
-  public final boolean eWt()
+  public final boolean faf()
   {
     AppMethodBeat.i(146246);
-    if (!eWs())
+    if (!fae())
     {
       AppMethodBeat.o(146246);
       return true;
@@ -70,7 +70,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.welab.a.c
  * JD-Core Version:    0.7.0.1
  */

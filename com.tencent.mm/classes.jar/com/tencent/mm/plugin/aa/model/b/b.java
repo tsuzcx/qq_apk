@@ -9,8 +9,8 @@ import java.util.List;
 public class b
   implements com.tencent.mm.vending.c.b<a>
 {
-  protected a iUd;
-  public final a iUe;
+  protected a iWW;
+  public final a iWX;
   
   public b()
   {
@@ -22,8 +22,8 @@ public class b
   private b(a parama)
   {
     AppMethodBeat.i(63437);
-    this.iUe = new a();
-    this.iUd = parama;
+    this.iWX = new a();
+    this.iWW = parama;
     AppMethodBeat.o(63437);
   }
   
@@ -32,7 +32,7 @@ public class b
   {
     public a() {}
     
-    public final String Wr()
+    public final String Wz()
     {
       return "Vending.ANY";
     }

@@ -2,11 +2,11 @@ package com.tencent.wxperf.jni.egl;
 
 public final class a
 {
-  public long MoH;
+  public long MLD;
   
   public a(long paramLong)
   {
-    this.MoH = paramLong;
+    this.MLD = paramLong;
   }
 }
 

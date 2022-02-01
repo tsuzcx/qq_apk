@@ -22,10 +22,10 @@ import java.util.WeakHashMap;
 @TargetApi(21)
 public final class am
 {
-  private static final boolean JgH;
-  private static final WeakHashMap<Activity, am> JgI;
-  private WindowInsets JgJ;
-  private final Set<View.OnApplyWindowInsetsListener> pjv;
+  private static final boolean JBs;
+  private static final WeakHashMap<Activity, am> JBt;
+  private WindowInsets JBu;
+  private final Set<View.OnApplyWindowInsetsListener> pqa;
   
   static
   {
@@ -33,8 +33,8 @@ public final class am
     if (Build.VERSION.SDK_INT < 23) {}
     for (boolean bool = true;; bool = false)
     {
-      JgH = bool;
-      JgI = new WeakHashMap();
+      JBs = bool;
+      JBt = new WeakHashMap();
       AppMethodBeat.o(153549);
       return;
     }
@@ -43,7 +43,7 @@ public final class am
   private am(final Activity paramActivity)
   {
     AppMethodBeat.i(153547);
-    this.pjv = new HashSet();
+    this.pqa = new HashSet();
     paramActivity.runOnUiThread(new Runnable()
     {
       public final void run()
@@ -83,7 +83,7 @@ public final class am
   }
   
   @TargetApi(21)
-  public static am bg(Activity paramActivity)
+  public static am bh(Activity paramActivity)
   {
     AppMethodBeat.i(153544);
     paramActivity = d(paramActivity, true);
@@ -91,10 +91,10 @@ public final class am
     return paramActivity;
   }
   
-  public static WindowInsets bh(Activity paramActivity)
+  public static WindowInsets bi(Activity paramActivity)
   {
     AppMethodBeat.i(153545);
-    if (JgH)
+    if (JBs)
     {
       paramActivity = d(paramActivity, false);
       if (paramActivity == null)
@@ -102,7 +102,7 @@ public final class am
         AppMethodBeat.o(153545);
         return null;
       }
-      paramActivity = paramActivity.fyc();
+      paramActivity = paramActivity.fCe();
       AppMethodBeat.o(153545);
       return paramActivity;
     }
@@ -119,9 +119,9 @@ public final class am
   private static am d(Activity paramActivity, boolean paramBoolean)
   {
     AppMethodBeat.i(153546);
-    synchronized (JgI)
+    synchronized (JBt)
     {
-      am localam2 = (am)JgI.get(paramActivity);
+      am localam2 = (am)JBt.get(paramActivity);
       am localam1 = localam2;
       if (localam2 == null)
       {
@@ -129,7 +129,7 @@ public final class am
         if (paramBoolean)
         {
           localam1 = new am(paramActivity);
-          JgI.put(paramActivity, localam1);
+          JBt.put(paramActivity, localam1);
         }
       }
       AppMethodBeat.o(153546);
@@ -137,17 +137,17 @@ public final class am
     }
   }
   
-  private WindowInsets fyc()
+  private WindowInsets fCe()
   {
     try
     {
-      WindowInsets localWindowInsets = this.JgJ;
+      WindowInsets localWindowInsets = this.JBu;
       return localWindowInsets;
     }
     finally {}
   }
   
-  public static void i(Application paramApplication)
+  public static void j(Application paramApplication)
   {
     AppMethodBeat.i(153543);
     paramApplication.registerActivityLifecycleCallbacks(new Application.ActivityLifecycleCallbacks() {}
@@ -155,16 +155,16 @@ public final class am
       public final void onActivityCreated(Activity paramAnonymousActivity, Bundle paramAnonymousBundle)
       {
         AppMethodBeat.i(153538);
-        this.JgK.apply(paramAnonymousActivity);
+        this.JBv.apply(paramAnonymousActivity);
         AppMethodBeat.o(153538);
       }
       
       public final void onActivityDestroyed(Activity paramAnonymousActivity)
       {
         AppMethodBeat.i(153540);
-        synchronized (am.fyd())
+        synchronized (am.fCf())
         {
-          paramAnonymousActivity = (am)am.fyd().remove(paramAnonymousActivity);
+          paramAnonymousActivity = (am)am.fCf().remove(paramAnonymousActivity);
           if (paramAnonymousActivity == null) {
             break label72;
           }
@@ -191,7 +191,7 @@ public final class am
       public final void onActivityStarted(Activity paramAnonymousActivity)
       {
         AppMethodBeat.i(153539);
-        this.JgK.apply(paramAnonymousActivity);
+        this.JBv.apply(paramAnonymousActivity);
         AppMethodBeat.o(153539);
       }
       
@@ -203,9 +203,9 @@ public final class am
   public final void a(View.OnApplyWindowInsetsListener paramOnApplyWindowInsetsListener)
   {
     AppMethodBeat.i(153548);
-    synchronized (this.pjv)
+    synchronized (this.pqa)
     {
-      this.pjv.add(paramOnApplyWindowInsetsListener);
+      this.pqa.add(paramOnApplyWindowInsetsListener);
       AppMethodBeat.o(153548);
       return;
     }
@@ -214,9 +214,9 @@ public final class am
   public final void b(View.OnApplyWindowInsetsListener paramOnApplyWindowInsetsListener)
   {
     AppMethodBeat.i(175981);
-    synchronized (this.pjv)
+    synchronized (this.pqa)
     {
-      this.pjv.remove(paramOnApplyWindowInsetsListener);
+      this.pqa.remove(paramOnApplyWindowInsetsListener);
       AppMethodBeat.o(175981);
       return;
     }

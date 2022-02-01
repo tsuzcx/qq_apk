@@ -5,9 +5,7 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.f.a;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.h;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.g;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.ui.widget.imageview.WeImageView;
 
 final class b$1
@@ -15,57 +13,57 @@ final class b$1
 {
   b$1(WeImageView paramWeImageView, String paramString, TextView paramTextView) {}
   
-  public final void axG(String paramString)
+  public final void ayY(String paramString)
   {
-    AppMethodBeat.i(198605);
+    AppMethodBeat.i(220152);
     try
     {
-      String str = (String)this.ACW.getTag(2131304892);
+      String str = (String)this.AUx.getTag(2131304892);
       if (TextUtils.isEmpty(str)) {
         str = "";
       }
       while ((!TextUtils.isEmpty(paramString)) && (paramString.equals(str)))
       {
-        paramString = g.decodeFile(paramString, null);
+        paramString = com.tencent.mm.sdk.platformtools.h.decodeFile(paramString, null);
         if (paramString != null)
         {
-          this.ACW.setImageBitmap(paramString);
-          this.ACW.setVisibility(0);
-          if ((this.ogz != null) && ((this.ogz.getLayoutParams() instanceof LinearLayout.LayoutParams))) {
-            ((LinearLayout.LayoutParams)this.ogz.getLayoutParams()).leftMargin = 0;
+          this.AUx.setImageBitmap(paramString);
+          this.AUx.setVisibility(0);
+          if ((this.omy != null) && ((this.omy.getLayoutParams() instanceof LinearLayout.LayoutParams))) {
+            ((LinearLayout.LayoutParams)this.omy.getLayoutParams()).leftMargin = 0;
           }
-          ad.d("SnsCardAdTagUtils", "onDownloaded succ, hash=" + this.ACW.hashCode());
-          AppMethodBeat.o(198605);
+          ae.d("SnsCardAdTagUtils", "onDownloaded succ, hash=" + this.AUx.hashCode());
+          AppMethodBeat.o(220152);
           return;
-          str = h.jF("adId", str);
+          str = com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.h.jL("adId", str);
         }
         else
         {
-          ad.e("SnsCardAdTagUtils", "onDownloaded, bitmap==null");
-          AppMethodBeat.o(198605);
+          ae.e("SnsCardAdTagUtils", "onDownloaded, bitmap==null");
+          AppMethodBeat.o(220152);
           return;
         }
       }
     }
     catch (Throwable paramString)
     {
-      ad.e("SnsCardAdTagUtils", "onDownloaded, exp=" + paramString.toString());
-      AppMethodBeat.o(198605);
+      ae.e("SnsCardAdTagUtils", "onDownloaded, exp=" + paramString.toString());
+      AppMethodBeat.o(220152);
       return;
     }
-    ad.d("SnsCardAdTagUtils", "onDownloaded, url changed");
-    AppMethodBeat.o(198605);
+    ae.d("SnsCardAdTagUtils", "onDownloaded, url changed");
+    AppMethodBeat.o(220152);
   }
   
-  public final void dRW() {}
+  public final void dVu() {}
   
-  public final void dRX()
+  public final void dVv()
   {
-    AppMethodBeat.i(198604);
-    this.ACW.setTag(2131304892, "");
-    this.ACW.setVisibility(8);
-    ad.e("SnsCardAdTagUtils", "onDownloadError, hash=" + this.ACW.hashCode() + ", url=" + this.zbw);
-    AppMethodBeat.o(198604);
+    AppMethodBeat.i(220151);
+    this.AUx.setTag(2131304892, "");
+    this.AUx.setVisibility(8);
+    ae.e("SnsCardAdTagUtils", "onDownloadError, hash=" + this.AUx.hashCode() + ", url=" + this.zsa);
+    AppMethodBeat.o(220151);
   }
 }
 

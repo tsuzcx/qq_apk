@@ -1,13 +1,15 @@
 package com.tencent.mm.ui.chatting.gallery.a;
 
-import android.animation.AnimatorListenerAdapter;
-import android.graphics.PointF;
+import com.tencent.mm.g.a.qe;
+import com.tencent.mm.g.a.qf;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/ui/chatting/gallery/scan/ImageScanCodeViewModel;", "", "showSuccessView", "", "point", "Landroid/graphics/PointF;", "listenerAdapter", "Landroid/animation/AnimatorListenerAdapter;", "app_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/ui/chatting/gallery/scan/ImageScanCodeCallback;", "", "onScanFailed", "", "event", "Lcom/tencent/mm/autogen/events/RecogQBarOfImageFileFailedEvent;", "onScanSuccess", "Lcom/tencent/mm/autogen/events/RecogQBarOfImageFileResultEvent;", "app_release"})
 public abstract interface h
 {
-  public abstract void a(PointF paramPointF, AnimatorListenerAdapter paramAnimatorListenerAdapter);
+  public abstract void b(qe paramqe);
+  
+  public abstract void b(qf paramqf);
 }
 
 

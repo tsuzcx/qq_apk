@@ -17,9 +17,9 @@ import android.view.Window;
 import android.widget.FrameLayout;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
 import com.tencent.mm.ipcinvoker.wx_extension.IPCRunCgi;
 import com.tencent.mm.ipcinvoker.wx_extension.IPCRunCgi.a;
 import com.tencent.mm.plugin.appbrand.jsapi.pay.AppBrandJsApiPayService;
@@ -27,21 +27,21 @@ import com.tencent.mm.plugin.appbrand.jsapi.pay.a.d;
 import com.tencent.mm.plugin.appbrand.phonenumber.PhoneItem;
 import com.tencent.mm.plugin.appbrand.phonenumber.r;
 import com.tencent.mm.plugin.appbrand.widget.dialog.e;
-import com.tencent.mm.protocal.protobuf.dag;
-import com.tencent.mm.protocal.protobuf.dah;
-import com.tencent.mm.protocal.protobuf.ded;
-import com.tencent.mm.protocal.protobuf.dee;
-import com.tencent.mm.protocal.protobuf.dkk;
-import com.tencent.mm.protocal.protobuf.dkl;
-import com.tencent.mm.protocal.protobuf.dux;
-import com.tencent.mm.protocal.protobuf.duy;
-import com.tencent.mm.protocal.protobuf.dvj;
+import com.tencent.mm.protocal.protobuf.dba;
+import com.tencent.mm.protocal.protobuf.dbb;
+import com.tencent.mm.protocal.protobuf.dex;
+import com.tencent.mm.protocal.protobuf.dey;
+import com.tencent.mm.protocal.protobuf.dlf;
+import com.tencent.mm.protocal.protobuf.dlg;
+import com.tencent.mm.protocal.protobuf.dvu;
+import com.tencent.mm.protocal.protobuf.dvv;
+import com.tencent.mm.protocal.protobuf.dwg;
 import com.tencent.mm.protocal.protobuf.hd;
 import com.tencent.mm.protocal.protobuf.he;
 import com.tencent.mm.protocal.protobuf.hh;
 import com.tencent.mm.protocal.protobuf.hi;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.MMFragment;
 import com.tencent.mm.ui.al;
@@ -59,48 +59,48 @@ import org.json.JSONObject;
 public class AppBrandIDCardUI
   extends MMActivity
 {
-  public static final int mHh = 2131296738;
+  public static final int mMl = 2131296738;
   private String appId;
-  private int hGk;
-  private e iDP;
-  private AppBrandIDCardUI.a mGT;
-  public MMFragment mHi;
-  private dee mHj;
-  private hi mHk;
-  private LinkedList<Integer> mHl;
-  private String mHm;
-  private String mHn;
-  private String mHo;
-  private int mHp;
-  private com.tencent.mm.plugin.appbrand.jsapi.autofill.a.a mHq;
-  private p mHr;
-  private PhoneItem mHs;
+  private int hJc;
+  private e iGI;
+  private a mLX;
+  public MMFragment mMm;
+  private dey mMn;
+  private hi mMo;
+  private LinkedList<Integer> mMp;
+  private String mMq;
+  private String mMr;
+  private String mMs;
+  private int mMt;
+  private com.tencent.mm.plugin.appbrand.jsapi.autofill.a.a mMu;
+  private p mMv;
+  private PhoneItem mMw;
   
   public AppBrandIDCardUI()
   {
     AppMethodBeat.i(48952);
-    this.mGT = new AppBrandIDCardUI.a()
+    this.mLX = new a()
     {
-      public final void UM(String paramAnonymousString)
+      public final void Vx(String paramAnonymousString)
       {
         AppMethodBeat.i(48932);
-        ad.i("MicroMsg.AppBrandIDCardUI", "protocalUrl click");
+        ae.i("MicroMsg.AppBrandIDCardUI", "protocalUrl click");
         AppBrandIDCardUI.a(AppBrandIDCardUI.this, paramAnonymousString);
         AppMethodBeat.o(48932);
       }
       
-      public final void UN(String paramAnonymousString)
+      public final void Vy(String paramAnonymousString)
       {
         AppMethodBeat.i(48933);
-        ad.i("MicroMsg.AppBrandIDCardUI", "urlJump click");
+        ae.i("MicroMsg.AppBrandIDCardUI", "urlJump click");
         AppBrandIDCardUI.a(AppBrandIDCardUI.this, paramAnonymousString);
         AppMethodBeat.o(48933);
       }
       
-      public final void UO(String paramAnonymousString)
+      public final void Vz(String paramAnonymousString)
       {
         AppMethodBeat.i(48934);
-        ad.i("MicroMsg.AppBrandIDCardUI", "url2Jump click");
+        ae.i("MicroMsg.AppBrandIDCardUI", "url2Jump click");
         AppBrandIDCardUI.a(AppBrandIDCardUI.this, paramAnonymousString);
         AppMethodBeat.o(48934);
       }
@@ -108,46 +108,46 @@ public class AppBrandIDCardUI
       public final void a(hh paramAnonymoushh)
       {
         AppMethodBeat.i(48937);
-        com.tencent.mm.plugin.report.service.g.yhR.f(14943, new Object[] { AppBrandIDCardUI.a(AppBrandIDCardUI.this), Integer.valueOf(7), AppBrandIDCardUI.i(AppBrandIDCardUI.this).dpf });
-        ad.i("MicroMsg.AppBrandIDCardUI", "sendSms");
+        com.tencent.mm.plugin.report.service.g.yxI.f(14943, new Object[] { AppBrandIDCardUI.a(AppBrandIDCardUI.this), Integer.valueOf(7), AppBrandIDCardUI.i(AppBrandIDCardUI.this).dqk });
+        ae.i("MicroMsg.AppBrandIDCardUI", "sendSms");
         Object localObject = new b.a();
-        ((b.a)localObject).hNM = new dag();
-        ((b.a)localObject).hNN = new dah();
+        ((b.a)localObject).hQF = new dba();
+        ((b.a)localObject).hQG = new dbb();
         ((b.a)localObject).uri = "/cgi-bin/mmbiz-bin/userdata/sendsms";
         ((b.a)localObject).funcId = 1762;
-        ((b.a)localObject).hNO = 0;
+        ((b.a)localObject).hQH = 0;
         ((b.a)localObject).respCmdId = 0;
-        localObject = ((b.a)localObject).aDC();
-        dag localdag = (dag)((com.tencent.mm.al.b)localObject).hNK.hNQ;
-        localdag.duW = AppBrandIDCardUI.a(AppBrandIDCardUI.this);
-        localdag.HqA = AppBrandIDCardUI.b(AppBrandIDCardUI.this);
-        localdag.HqB = AppBrandIDCardUI.l(AppBrandIDCardUI.this);
-        localdag.FzC = paramAnonymoushh.FzC;
-        localdag.dkR = paramAnonymoushh.dkR;
-        localdag.dpf = AppBrandIDCardUI.i(AppBrandIDCardUI.this).dpf;
-        if ((AppBrandIDCardUI.e(AppBrandIDCardUI.this) == 1) && (AppBrandIDCardUI.j(AppBrandIDCardUI.this) != null) && (!AppBrandIDCardUI.j(AppBrandIDCardUI.this).mjP)) {
-          localdag.HqC = bt.nullAsNil(AppBrandIDCardUI.j(AppBrandIDCardUI.this).dzn);
+        localObject = ((b.a)localObject).aDS();
+        dba localdba = (dba)((com.tencent.mm.ak.b)localObject).hQD.hQJ;
+        localdba.dwb = AppBrandIDCardUI.a(AppBrandIDCardUI.this);
+        localdba.HKc = AppBrandIDCardUI.b(AppBrandIDCardUI.this);
+        localdba.HKd = AppBrandIDCardUI.l(AppBrandIDCardUI.this);
+        localdba.FSa = paramAnonymoushh.FSa;
+        localdba.dlT = paramAnonymoushh.dlT;
+        localdba.dqk = AppBrandIDCardUI.i(AppBrandIDCardUI.this).dqk;
+        if ((AppBrandIDCardUI.e(AppBrandIDCardUI.this) == 1) && (AppBrandIDCardUI.j(AppBrandIDCardUI.this) != null) && (!AppBrandIDCardUI.j(AppBrandIDCardUI.this).moM)) {
+          localdba.HKe = bu.nullAsNil(AppBrandIDCardUI.j(AppBrandIDCardUI.this).dAs);
         }
-        IPCRunCgi.a((com.tencent.mm.al.b)localObject, new IPCRunCgi.a()
+        IPCRunCgi.a((com.tencent.mm.ak.b)localObject, new IPCRunCgi.a()
         {
-          public final void a(int paramAnonymous2Int1, int paramAnonymous2Int2, String paramAnonymous2String, com.tencent.mm.al.b paramAnonymous2b)
+          public final void a(int paramAnonymous2Int1, int paramAnonymous2Int2, String paramAnonymous2String, com.tencent.mm.ak.b paramAnonymous2b)
           {
             AppMethodBeat.i(48926);
-            if ((paramAnonymous2Int1 != 0) || (paramAnonymous2Int2 != 0) || (paramAnonymous2b.hNL.hNQ == null))
+            if ((paramAnonymous2Int1 != 0) || (paramAnonymous2Int2 != 0) || (paramAnonymous2b.hQE.hQJ == null))
             {
-              ad.e("MicroMsg.AppBrandIDCardUI", "sendSms cgi failed, errType = %d, errCode = %d, errMsg = %s, rr.resp = %s", new Object[] { Integer.valueOf(paramAnonymous2Int1), Integer.valueOf(paramAnonymous2Int2), paramAnonymous2String, paramAnonymous2b.hNL.hNQ });
+              ae.e("MicroMsg.AppBrandIDCardUI", "sendSms cgi failed, errType = %d, errCode = %d, errMsg = %s, rr.resp = %s", new Object[] { Integer.valueOf(paramAnonymous2Int1), Integer.valueOf(paramAnonymous2Int2), paramAnonymous2String, paramAnonymous2b.hQE.hQJ });
               Toast.makeText(AppBrandIDCardUI.this, AppBrandIDCardUI.this.getString(2131755458), 0).show();
               AppMethodBeat.o(48926);
               return;
             }
-            paramAnonymous2String = (dah)paramAnonymous2b.hNL.hNQ;
-            if (paramAnonymous2String.HqD != null)
+            paramAnonymous2String = (dbb)paramAnonymous2b.hQE.hQJ;
+            if (paramAnonymous2String.HKf != null)
             {
-              ad.i("MicroMsg.AppBrandIDCardUI", "SendSmsResp.auth_base_response.err_code:%d", new Object[] { Integer.valueOf(paramAnonymous2String.HqD.dvY) });
-              if (paramAnonymous2String.HqD.dvY == 0)
+              ae.i("MicroMsg.AppBrandIDCardUI", "SendSmsResp.auth_base_response.err_code:%d", new Object[] { Integer.valueOf(paramAnonymous2String.HKf.dxd) });
+              if (paramAnonymous2String.HKf.dxd == 0)
               {
-                AppBrandIDCardUI.c(AppBrandIDCardUI.this, paramAnonymous2String.HqE);
-                ad.i("MicroMsg.AppBrandIDCardUI", "send success, verifyToken:%s", new Object[] { paramAnonymous2String.HqE });
+                AppBrandIDCardUI.c(AppBrandIDCardUI.this, paramAnonymous2String.HKg);
+                ae.i("MicroMsg.AppBrandIDCardUI", "send success, verifyToken:%s", new Object[] { paramAnonymous2String.HKg });
                 AppMethodBeat.o(48926);
                 return;
               }
@@ -155,7 +155,7 @@ public class AppBrandIDCardUI
               AppMethodBeat.o(48926);
               return;
             }
-            ad.i("MicroMsg.AppBrandIDCardUI", "SendSmsResp.auth_base_response is null");
+            ae.i("MicroMsg.AppBrandIDCardUI", "SendSmsResp.auth_base_response is null");
             AppBrandIDCardUI.1.a(AppBrandIDCardUI.1.this, AppBrandIDCardUI.this.getString(2131755464));
             AppMethodBeat.o(48926);
           }
@@ -166,69 +166,69 @@ public class AppBrandIDCardUI
       public final void a(String paramAnonymousString, hh paramAnonymoushh)
       {
         AppMethodBeat.i(48938);
-        if (bt.isNullOrNil(paramAnonymousString))
+        if (bu.isNullOrNil(paramAnonymousString))
         {
-          ad.e("MicroMsg.AppBrandIDCardUI", "verifyCode is null, err, return");
+          ae.e("MicroMsg.AppBrandIDCardUI", "verifyCode is null, err, return");
           AppMethodBeat.o(48938);
           return;
         }
-        ad.i("MicroMsg.AppBrandIDCardUI", "verifySms");
+        ae.i("MicroMsg.AppBrandIDCardUI", "verifySms");
         Object localObject = new b.a();
-        ((b.a)localObject).hNM = new dux();
-        ((b.a)localObject).hNN = new duy();
+        ((b.a)localObject).hQF = new dvu();
+        ((b.a)localObject).hQG = new dvv();
         ((b.a)localObject).uri = "/cgi-bin/mmbiz-bin/userdata/verifysmscode";
         ((b.a)localObject).funcId = 1721;
-        ((b.a)localObject).hNO = 0;
+        ((b.a)localObject).hQH = 0;
         ((b.a)localObject).respCmdId = 0;
-        localObject = ((b.a)localObject).aDC();
-        dux localdux = (dux)((com.tencent.mm.al.b)localObject).hNK.hNQ;
-        localdux.duW = AppBrandIDCardUI.a(AppBrandIDCardUI.this);
-        localdux.HqA = AppBrandIDCardUI.b(AppBrandIDCardUI.this);
-        localdux.HqB = AppBrandIDCardUI.l(AppBrandIDCardUI.this);
-        localdux.FzC = paramAnonymoushh.FzC;
-        localdux.dpf = AppBrandIDCardUI.i(AppBrandIDCardUI.this).dpf;
-        localdux.Daf = paramAnonymousString;
-        localdux.HqE = AppBrandIDCardUI.m(AppBrandIDCardUI.this);
-        localdux.dkR = paramAnonymoushh.dkR;
-        if ((AppBrandIDCardUI.e(AppBrandIDCardUI.this) == 1) && (AppBrandIDCardUI.j(AppBrandIDCardUI.this) != null) && (!AppBrandIDCardUI.j(AppBrandIDCardUI.this).mjP)) {
-          localdux.HqC = bt.nullAsNil(AppBrandIDCardUI.j(AppBrandIDCardUI.this).dzn);
+        localObject = ((b.a)localObject).aDS();
+        dvu localdvu = (dvu)((com.tencent.mm.ak.b)localObject).hQD.hQJ;
+        localdvu.dwb = AppBrandIDCardUI.a(AppBrandIDCardUI.this);
+        localdvu.HKc = AppBrandIDCardUI.b(AppBrandIDCardUI.this);
+        localdvu.HKd = AppBrandIDCardUI.l(AppBrandIDCardUI.this);
+        localdvu.FSa = paramAnonymoushh.FSa;
+        localdvu.dqk = AppBrandIDCardUI.i(AppBrandIDCardUI.this).dqk;
+        localdvu.DrK = paramAnonymousString;
+        localdvu.HKg = AppBrandIDCardUI.m(AppBrandIDCardUI.this);
+        localdvu.dlT = paramAnonymoushh.dlT;
+        if ((AppBrandIDCardUI.e(AppBrandIDCardUI.this) == 1) && (AppBrandIDCardUI.j(AppBrandIDCardUI.this) != null) && (!AppBrandIDCardUI.j(AppBrandIDCardUI.this).moM)) {
+          localdvu.HKe = bu.nullAsNil(AppBrandIDCardUI.j(AppBrandIDCardUI.this).dAs);
         }
-        IPCRunCgi.a((com.tencent.mm.al.b)localObject, new IPCRunCgi.a()
+        IPCRunCgi.a((com.tencent.mm.ak.b)localObject, new IPCRunCgi.a()
         {
-          public final void a(int paramAnonymous2Int1, int paramAnonymous2Int2, String paramAnonymous2String, com.tencent.mm.al.b paramAnonymous2b)
+          public final void a(int paramAnonymous2Int1, int paramAnonymous2Int2, String paramAnonymous2String, com.tencent.mm.ak.b paramAnonymous2b)
           {
             AppMethodBeat.i(48927);
-            if ((paramAnonymous2Int1 != 0) || (paramAnonymous2Int2 != 0) || (paramAnonymous2b.hNL.hNQ == null))
+            if ((paramAnonymous2Int1 != 0) || (paramAnonymous2Int2 != 0) || (paramAnonymous2b.hQE.hQJ == null))
             {
-              ad.e("MicroMsg.AppBrandIDCardUI", "SubmitAuthorizeUserID cgi failed, errType = %d, errCode = %d, errMsg = %s, rr.resp = %s", new Object[] { Integer.valueOf(paramAnonymous2Int1), Integer.valueOf(paramAnonymous2Int2), paramAnonymous2String, paramAnonymous2b.hNL.hNQ });
+              ae.e("MicroMsg.AppBrandIDCardUI", "SubmitAuthorizeUserID cgi failed, errType = %d, errCode = %d, errMsg = %s, rr.resp = %s", new Object[] { Integer.valueOf(paramAnonymous2Int1), Integer.valueOf(paramAnonymous2Int2), paramAnonymous2String, paramAnonymous2b.hQE.hQJ });
               Toast.makeText(AppBrandIDCardUI.this, AppBrandIDCardUI.this.getString(2131755458), 0).show();
               AppMethodBeat.o(48927);
               return;
             }
-            paramAnonymous2String = (duy)paramAnonymous2b.hNL.hNQ;
-            if (paramAnonymous2String.HqD != null)
+            paramAnonymous2String = (dvv)paramAnonymous2b.hQE.hQJ;
+            if (paramAnonymous2String.HKf != null)
             {
-              ad.i("MicroMsg.AppBrandIDCardUI", "VerifySmsCodeResp.auth_base_response errcode:%s, errMsg:%s", new Object[] { Integer.valueOf(paramAnonymous2String.HqD.dvY), bt.nullAsNil(paramAnonymous2String.HqD.dvZ) });
-              com.tencent.mm.plugin.report.service.g.yhR.f(14943, new Object[] { AppBrandIDCardUI.a(AppBrandIDCardUI.this), Integer.valueOf(8), AppBrandIDCardUI.i(AppBrandIDCardUI.this).dpf });
-              if (paramAnonymous2String.HqD.dvY == 0)
+              ae.i("MicroMsg.AppBrandIDCardUI", "VerifySmsCodeResp.auth_base_response errcode:%s, errMsg:%s", new Object[] { Integer.valueOf(paramAnonymous2String.HKf.dxd), bu.nullAsNil(paramAnonymous2String.HKf.dxe) });
+              com.tencent.mm.plugin.report.service.g.yxI.f(14943, new Object[] { AppBrandIDCardUI.a(AppBrandIDCardUI.this), Integer.valueOf(8), AppBrandIDCardUI.i(AppBrandIDCardUI.this).dqk });
+              if (paramAnonymous2String.HKf.dxd == 0)
               {
-                com.tencent.mm.plugin.report.service.g.yhR.f(14943, new Object[] { AppBrandIDCardUI.a(AppBrandIDCardUI.this), Integer.valueOf(9), AppBrandIDCardUI.i(AppBrandIDCardUI.this).dpf });
-                ad.i("MicroMsg.AppBrandIDCardUI", "verify success");
-                ad.d("MicroMsg.AppBrandIDCardUI", "resq.auth_token", new Object[] { paramAnonymous2String.Gbt });
+                com.tencent.mm.plugin.report.service.g.yxI.f(14943, new Object[] { AppBrandIDCardUI.a(AppBrandIDCardUI.this), Integer.valueOf(9), AppBrandIDCardUI.i(AppBrandIDCardUI.this).dqk });
+                ae.i("MicroMsg.AppBrandIDCardUI", "verify success");
+                ae.d("MicroMsg.AppBrandIDCardUI", "resq.auth_token", new Object[] { paramAnonymous2String.Gua });
                 if ((AppBrandIDCardUI.e(AppBrandIDCardUI.this) == 1) && (AppBrandIDCardUI.j(AppBrandIDCardUI.this) != null))
                 {
-                  paramAnonymous2b = r.mjT;
+                  paramAnonymous2b = r.moQ;
                   r.b(AppBrandIDCardUI.j(AppBrandIDCardUI.this));
                 }
                 paramAnonymous2b = new Intent();
-                paramAnonymous2b.putExtra("intent_err_code", paramAnonymous2String.HqD.dvY);
-                paramAnonymous2b.putExtra("intent_auth_token", paramAnonymous2String.Gbt);
+                paramAnonymous2b.putExtra("intent_err_code", paramAnonymous2String.HKf.dxd);
+                paramAnonymous2b.putExtra("intent_auth_token", paramAnonymous2String.Gua);
                 AppBrandIDCardUI.this.setResult(-1, paramAnonymous2b);
                 AppBrandIDCardUI.this.finish();
                 AppMethodBeat.o(48927);
                 return;
               }
-              if (paramAnonymous2String.HqD.dvY == 40013)
+              if (paramAnonymous2String.HKf.dxd == 40013)
               {
                 AppBrandIDCardUI.1.a(AppBrandIDCardUI.1.this, AppBrandIDCardUI.this.getString(2131755463));
                 AppMethodBeat.o(48927);
@@ -238,46 +238,39 @@ public class AppBrandIDCardUI
               AppMethodBeat.o(48927);
               return;
             }
-            ad.e("MicroMsg.AppBrandIDCardUI", "VerifySmsCodeResp.auth_base_response is null");
+            ae.e("MicroMsg.AppBrandIDCardUI", "VerifySmsCodeResp.auth_base_response is null");
             AppMethodBeat.o(48927);
           }
         });
         AppMethodBeat.o(48938);
       }
       
-      public final void back()
-      {
-        AppMethodBeat.i(48931);
-        AppBrandIDCardUI.h(AppBrandIDCardUI.this);
-        AppMethodBeat.o(48931);
-      }
-      
-      public final void bzR()
+      public final void bAM()
       {
         AppMethodBeat.i(48929);
         Object localObject = new b.a();
-        ((b.a)localObject).hNM = new ded();
-        ((b.a)localObject).hNN = new dee();
+        ((b.a)localObject).hQF = new dex();
+        ((b.a)localObject).hQG = new dey();
         ((b.a)localObject).uri = "/cgi-bin/mmbiz-bin/userdata/showauthorizeuserid";
         ((b.a)localObject).funcId = 1774;
-        ((b.a)localObject).hNO = 0;
+        ((b.a)localObject).hQH = 0;
         ((b.a)localObject).respCmdId = 0;
-        localObject = ((b.a)localObject).aDC();
-        ded localded = (ded)((com.tencent.mm.al.b)localObject).hNK.hNQ;
-        localded.duW = AppBrandIDCardUI.a(AppBrandIDCardUI.this);
-        localded.HqA = AppBrandIDCardUI.b(AppBrandIDCardUI.this);
-        localded.Hsu = AppBrandIDCardUI.c(AppBrandIDCardUI.this);
-        IPCRunCgi.a((com.tencent.mm.al.b)localObject, new IPCRunCgi.a()
+        localObject = ((b.a)localObject).aDS();
+        dex localdex = (dex)((com.tencent.mm.ak.b)localObject).hQD.hQJ;
+        localdex.dwb = AppBrandIDCardUI.a(AppBrandIDCardUI.this);
+        localdex.HKc = AppBrandIDCardUI.b(AppBrandIDCardUI.this);
+        localdex.HLX = AppBrandIDCardUI.c(AppBrandIDCardUI.this);
+        IPCRunCgi.a((com.tencent.mm.ak.b)localObject, new IPCRunCgi.a()
         {
-          public final void a(int paramAnonymous2Int1, int paramAnonymous2Int2, String paramAnonymous2String, com.tencent.mm.al.b paramAnonymous2b)
+          public final void a(int paramAnonymous2Int1, int paramAnonymous2Int2, String paramAnonymous2String, com.tencent.mm.ak.b paramAnonymous2b)
           {
             AppMethodBeat.i(48922);
             if ((AppBrandIDCardUI.d(AppBrandIDCardUI.this) != null) && (AppBrandIDCardUI.d(AppBrandIDCardUI.this).isShowing())) {
               AppBrandIDCardUI.d(AppBrandIDCardUI.this).dismiss();
             }
-            if ((paramAnonymous2Int1 != 0) || (paramAnonymous2Int2 != 0) || (paramAnonymous2b.hNL.hNQ == null))
+            if ((paramAnonymous2Int1 != 0) || (paramAnonymous2Int2 != 0) || (paramAnonymous2b.hQE.hQJ == null))
             {
-              ad.e("MicroMsg.AppBrandIDCardUI", "getIDCardInfo cgi failed, errType = %d, errCode = %d, errMsg = %s, rr.resp = %s", new Object[] { Integer.valueOf(paramAnonymous2Int1), Integer.valueOf(paramAnonymous2Int2), paramAnonymous2String, paramAnonymous2b.hNL.hNQ });
+              ae.e("MicroMsg.AppBrandIDCardUI", "getIDCardInfo cgi failed, errType = %d, errCode = %d, errMsg = %s, rr.resp = %s", new Object[] { Integer.valueOf(paramAnonymous2Int1), Integer.valueOf(paramAnonymous2Int2), paramAnonymous2String, paramAnonymous2b.hQE.hQJ });
               paramAnonymous2String = new Intent();
               paramAnonymous2String.putExtra("intent_err_code", 40000);
               paramAnonymous2String.putExtra("intent_err_msg", "network err");
@@ -286,10 +279,10 @@ public class AppBrandIDCardUI
               AppMethodBeat.o(48922);
               return;
             }
-            paramAnonymous2String = (dee)paramAnonymous2b.hNL.hNQ;
-            if (paramAnonymous2String.HqD == null)
+            paramAnonymous2String = (dey)paramAnonymous2b.hQE.hQJ;
+            if (paramAnonymous2String.HKf == null)
             {
-              ad.e("MicroMsg.AppBrandIDCardUI", "ShowAuthorizeUserIDResp.auth_base_response is err");
+              ae.e("MicroMsg.AppBrandIDCardUI", "ShowAuthorizeUserIDResp.auth_base_response is err");
               paramAnonymous2String = new Intent();
               paramAnonymous2String.putExtra("intent_err_code", 40000);
               paramAnonymous2String.putExtra("intent_err_msg", "network err");
@@ -298,23 +291,23 @@ public class AppBrandIDCardUI
               AppMethodBeat.o(48922);
               return;
             }
-            ad.e("MicroMsg.AppBrandIDCardUI", "ShowAuthorizeUserIDResp.auth_base_response.err_code is %d", new Object[] { Integer.valueOf(paramAnonymous2String.HqD.dvY) });
-            ad.i("MicroMsg.AppBrandIDCardUI", "ShowAuthorizeUserIDResp.show_status:%d", new Object[] { Integer.valueOf(paramAnonymous2String.Hsv) });
-            switch (paramAnonymous2String.Hsv)
+            ae.e("MicroMsg.AppBrandIDCardUI", "ShowAuthorizeUserIDResp.auth_base_response.err_code is %d", new Object[] { Integer.valueOf(paramAnonymous2String.HKf.dxd) });
+            ae.i("MicroMsg.AppBrandIDCardUI", "ShowAuthorizeUserIDResp.show_status:%d", new Object[] { Integer.valueOf(paramAnonymous2String.HLY) });
+            switch (paramAnonymous2String.HLY)
             {
             default: 
-              ad.e("MicroMsg.AppBrandIDCardUI", "ShowAuthorizeUserIDResp.show_status error");
+              ae.e("MicroMsg.AppBrandIDCardUI", "ShowAuthorizeUserIDResp.show_status error");
             case 0: 
               do
               {
                 AppMethodBeat.o(48922);
                 return;
-                if (paramAnonymous2String.HqD.dvY != 0)
+                if (paramAnonymous2String.HKf.dxd != 0)
                 {
-                  ad.e("MicroMsg.AppBrandIDCardUI", "ShowAuthorizeUserIDResp.auth_base_response is not ok");
+                  ae.e("MicroMsg.AppBrandIDCardUI", "ShowAuthorizeUserIDResp.auth_base_response is not ok");
                   paramAnonymous2b = new Intent();
-                  paramAnonymous2b.putExtra("intent_err_code", paramAnonymous2String.HqD.dvY);
-                  paramAnonymous2b.putExtra("intent_err_msg", paramAnonymous2String.HqD.dvZ);
+                  paramAnonymous2b.putExtra("intent_err_code", paramAnonymous2String.HKf.dxd);
+                  paramAnonymous2b.putExtra("intent_err_msg", paramAnonymous2String.HKf.dxe);
                   AppBrandIDCardUI.this.setResult(1, paramAnonymous2b);
                   AppBrandIDCardUI.this.finish();
                   AppMethodBeat.o(48922);
@@ -332,112 +325,112 @@ public class AppBrandIDCardUI
               AppMethodBeat.o(48922);
               return;
             }
-            ad.i("MicroMsg.AppBrandIDCardUI", "showAlert errCode:%d, errMsg:%s", new Object[] { Integer.valueOf(paramAnonymous2String.HqD.dvY), paramAnonymous2String.HqD.dvZ });
+            ae.i("MicroMsg.AppBrandIDCardUI", "showAlert errCode:%d, errMsg:%s", new Object[] { Integer.valueOf(paramAnonymous2String.HKf.dxd), paramAnonymous2String.HKf.dxe });
             paramAnonymous2b = AppBrandIDCardUI.1.this;
-            paramAnonymous2Int1 = paramAnonymous2String.HqD.dvY;
-            String str = paramAnonymous2String.HqD.dvZ;
-            h.a(paramAnonymous2b.mHt, false, paramAnonymous2String.Hsw.desc, paramAnonymous2String.Hsw.title, paramAnonymous2b.mHt.getString(2131755459), "", new AppBrandIDCardUI.1.2(paramAnonymous2b, paramAnonymous2Int1, str), new AppBrandIDCardUI.1.3(paramAnonymous2b));
+            paramAnonymous2Int1 = paramAnonymous2String.HKf.dxd;
+            String str = paramAnonymous2String.HKf.dxe;
+            h.a(paramAnonymous2b.mMx, false, paramAnonymous2String.HLZ.desc, paramAnonymous2String.HLZ.title, paramAnonymous2b.mMx.getString(2131755459), "", new AppBrandIDCardUI.1.2(paramAnonymous2b, paramAnonymous2Int1, str), new AppBrandIDCardUI.1.3(paramAnonymous2b));
             AppMethodBeat.o(48922);
           }
         });
         AppMethodBeat.o(48929);
       }
       
-      public final void bzS()
+      public final void bAN()
       {
         AppMethodBeat.i(48935);
-        ad.i("MicroMsg.AppBrandIDCardUI", "verifyPassword");
-        com.tencent.mm.plugin.report.service.g.yhR.f(14943, new Object[] { AppBrandIDCardUI.a(AppBrandIDCardUI.this), Integer.valueOf(2), AppBrandIDCardUI.i(AppBrandIDCardUI.this).dpf });
-        if (AppBrandIDCardUI.i(AppBrandIDCardUI.this).HsD == null)
+        ae.i("MicroMsg.AppBrandIDCardUI", "verifyPassword");
+        com.tencent.mm.plugin.report.service.g.yxI.f(14943, new Object[] { AppBrandIDCardUI.a(AppBrandIDCardUI.this), Integer.valueOf(2), AppBrandIDCardUI.i(AppBrandIDCardUI.this).dqk });
+        if (AppBrandIDCardUI.i(AppBrandIDCardUI.this).HMg == null)
         {
-          ad.e("MicroMsg.AppBrandIDCardUI", "showAuthorizeUserIDResp.verify_pay_req is null");
+          ae.e("MicroMsg.AppBrandIDCardUI", "showAuthorizeUserIDResp.verify_pay_req is null");
           AppMethodBeat.o(48935);
           return;
         }
         JSONObject localJSONObject = new JSONObject();
         try
         {
-          localJSONObject.put("appId", AppBrandIDCardUI.i(AppBrandIDCardUI.this).HsD.duW);
-          localJSONObject.put("timeStamp", AppBrandIDCardUI.i(AppBrandIDCardUI.this).HsD.cUM);
-          localJSONObject.put("nonceStr", AppBrandIDCardUI.i(AppBrandIDCardUI.this).HsD.GKK);
-          localJSONObject.put("package", AppBrandIDCardUI.i(AppBrandIDCardUI.this).HsD.HHM);
-          localJSONObject.put("signType", AppBrandIDCardUI.i(AppBrandIDCardUI.this).HsD.oIu);
-          localJSONObject.put("paySign", AppBrandIDCardUI.i(AppBrandIDCardUI.this).HsD.GKj);
-          com.tencent.mm.plugin.report.service.g.yhR.f(14943, new Object[] { AppBrandIDCardUI.a(AppBrandIDCardUI.this), Integer.valueOf(3), AppBrandIDCardUI.i(AppBrandIDCardUI.this).dpf });
-          AppBrandJsApiPayService.lcw.verifyPassword(AppBrandIDCardUI.this, null, localJSONObject, new a.d()
+          localJSONObject.put("appId", AppBrandIDCardUI.i(AppBrandIDCardUI.this).HMg.dwb);
+          localJSONObject.put("timeStamp", AppBrandIDCardUI.i(AppBrandIDCardUI.this).HMg.cVJ);
+          localJSONObject.put("nonceStr", AppBrandIDCardUI.i(AppBrandIDCardUI.this).HMg.Hel);
+          localJSONObject.put("package", AppBrandIDCardUI.i(AppBrandIDCardUI.this).HMg.Ibz);
+          localJSONObject.put("signType", AppBrandIDCardUI.i(AppBrandIDCardUI.this).HMg.oOW);
+          localJSONObject.put("paySign", AppBrandIDCardUI.i(AppBrandIDCardUI.this).HMg.HdK);
+          com.tencent.mm.plugin.report.service.g.yxI.f(14943, new Object[] { AppBrandIDCardUI.a(AppBrandIDCardUI.this), Integer.valueOf(3), AppBrandIDCardUI.i(AppBrandIDCardUI.this).dqk });
+          AppBrandJsApiPayService.lgh.verifyPassword(AppBrandIDCardUI.this, null, localJSONObject, new a.d()
           {
             public final void p(boolean paramAnonymous2Boolean, final String paramAnonymous2String)
             {
               AppMethodBeat.i(48925);
               if (paramAnonymous2Boolean)
               {
-                com.tencent.mm.plugin.report.service.g.yhR.f(14943, new Object[] { AppBrandIDCardUI.a(AppBrandIDCardUI.this), Integer.valueOf(4), AppBrandIDCardUI.i(AppBrandIDCardUI.this).dpf });
+                com.tencent.mm.plugin.report.service.g.yxI.f(14943, new Object[] { AppBrandIDCardUI.a(AppBrandIDCardUI.this), Integer.valueOf(4), AppBrandIDCardUI.i(AppBrandIDCardUI.this).dqk });
                 Object localObject = new b.a();
-                ((b.a)localObject).hNM = new dkk();
-                ((b.a)localObject).hNN = new dkl();
+                ((b.a)localObject).hQF = new dlf();
+                ((b.a)localObject).hQG = new dlg();
                 ((b.a)localObject).uri = "/cgi-bin/mmbiz-bin/userdata/submitauthorizeuserid";
                 ((b.a)localObject).funcId = 1721;
-                ((b.a)localObject).hNO = 0;
+                ((b.a)localObject).hQH = 0;
                 ((b.a)localObject).respCmdId = 0;
-                localObject = ((b.a)localObject).aDC();
-                dkk localdkk = (dkk)((com.tencent.mm.al.b)localObject).hNK.hNQ;
-                localdkk.duW = AppBrandIDCardUI.a(AppBrandIDCardUI.this);
-                localdkk.HqA = AppBrandIDCardUI.b(AppBrandIDCardUI.this);
-                localdkk.HqB = paramAnonymous2String;
-                localdkk.dpf = AppBrandIDCardUI.i(AppBrandIDCardUI.this).dpf;
-                if ((AppBrandIDCardUI.e(AppBrandIDCardUI.this) == 1) && (AppBrandIDCardUI.j(AppBrandIDCardUI.this) != null) && (!AppBrandIDCardUI.j(AppBrandIDCardUI.this).mjP)) {
-                  localdkk.HqC = bt.nullAsNil(AppBrandIDCardUI.j(AppBrandIDCardUI.this).dzn);
+                localObject = ((b.a)localObject).aDS();
+                dlf localdlf = (dlf)((com.tencent.mm.ak.b)localObject).hQD.hQJ;
+                localdlf.dwb = AppBrandIDCardUI.a(AppBrandIDCardUI.this);
+                localdlf.HKc = AppBrandIDCardUI.b(AppBrandIDCardUI.this);
+                localdlf.HKd = paramAnonymous2String;
+                localdlf.dqk = AppBrandIDCardUI.i(AppBrandIDCardUI.this).dqk;
+                if ((AppBrandIDCardUI.e(AppBrandIDCardUI.this) == 1) && (AppBrandIDCardUI.j(AppBrandIDCardUI.this) != null) && (!AppBrandIDCardUI.j(AppBrandIDCardUI.this).moM)) {
+                  localdlf.HKe = bu.nullAsNil(AppBrandIDCardUI.j(AppBrandIDCardUI.this).dAs);
                 }
                 if ((AppBrandIDCardUI.d(AppBrandIDCardUI.this) != null) && (!AppBrandIDCardUI.d(AppBrandIDCardUI.this).isShowing())) {
                   AppBrandIDCardUI.d(AppBrandIDCardUI.this).show();
                 }
-                IPCRunCgi.a((com.tencent.mm.al.b)localObject, new IPCRunCgi.a()
+                IPCRunCgi.a((com.tencent.mm.ak.b)localObject, new IPCRunCgi.a()
                 {
-                  public final void a(int paramAnonymous3Int1, int paramAnonymous3Int2, String paramAnonymous3String, com.tencent.mm.al.b paramAnonymous3b)
+                  public final void a(int paramAnonymous3Int1, int paramAnonymous3Int2, String paramAnonymous3String, com.tencent.mm.ak.b paramAnonymous3b)
                   {
                     AppMethodBeat.i(48924);
                     if ((AppBrandIDCardUI.d(AppBrandIDCardUI.this) != null) && (AppBrandIDCardUI.d(AppBrandIDCardUI.this).isShowing())) {
                       AppBrandIDCardUI.d(AppBrandIDCardUI.this).dismiss();
                     }
-                    if ((paramAnonymous3Int1 != 0) || (paramAnonymous3Int2 != 0) || (paramAnonymous3b.hNL.hNQ == null))
+                    if ((paramAnonymous3Int1 != 0) || (paramAnonymous3Int2 != 0) || (paramAnonymous3b.hQE.hQJ == null))
                     {
-                      ad.e("MicroMsg.AppBrandIDCardUI", "SubmitAuthorizeUserID cgi failed, errType = %d, errCode = %d, errMsg = %s, rr.resp = %s", new Object[] { Integer.valueOf(paramAnonymous3Int1), Integer.valueOf(paramAnonymous3Int2), paramAnonymous3String, paramAnonymous3b.hNL.hNQ });
+                      ae.e("MicroMsg.AppBrandIDCardUI", "SubmitAuthorizeUserID cgi failed, errType = %d, errCode = %d, errMsg = %s, rr.resp = %s", new Object[] { Integer.valueOf(paramAnonymous3Int1), Integer.valueOf(paramAnonymous3Int2), paramAnonymous3String, paramAnonymous3b.hQE.hQJ });
                       AppMethodBeat.o(48924);
                       return;
                     }
-                    paramAnonymous3String = (dkl)paramAnonymous3b.hNL.hNQ;
-                    if (paramAnonymous3String.HqD == null)
+                    paramAnonymous3String = (dlg)paramAnonymous3b.hQE.hQJ;
+                    if (paramAnonymous3String.HKf == null)
                     {
-                      ad.e("MicroMsg.AppBrandIDCardUI", "ShowAuthorizeUserIDResp.auth_base_response is err");
+                      ae.e("MicroMsg.AppBrandIDCardUI", "ShowAuthorizeUserIDResp.auth_base_response is err");
                       Toast.makeText(AppBrandIDCardUI.this, AppBrandIDCardUI.this.getString(2131755458), 0).show();
                       AppMethodBeat.o(48924);
                       return;
                     }
-                    ad.i("MicroMsg.AppBrandIDCardUI", "resp.auth_status:%d", new Object[] { Integer.valueOf(paramAnonymous3String.Fzq) });
-                    switch (paramAnonymous3String.Fzq)
+                    ae.i("MicroMsg.AppBrandIDCardUI", "resp.auth_status:%d", new Object[] { Integer.valueOf(paramAnonymous3String.FRO) });
+                    switch (paramAnonymous3String.FRO)
                     {
                     }
                     for (;;)
                     {
                       AppMethodBeat.o(48924);
                       return;
-                      ad.d("MicroMsg.AppBrandIDCardUI", "resq.auth_token", new Object[] { paramAnonymous3String.Gbt });
-                      com.tencent.mm.plugin.report.service.g.yhR.f(14943, new Object[] { AppBrandIDCardUI.a(AppBrandIDCardUI.this), Integer.valueOf(9), AppBrandIDCardUI.i(AppBrandIDCardUI.this).dpf });
+                      ae.d("MicroMsg.AppBrandIDCardUI", "resq.auth_token", new Object[] { paramAnonymous3String.Gua });
+                      com.tencent.mm.plugin.report.service.g.yxI.f(14943, new Object[] { AppBrandIDCardUI.a(AppBrandIDCardUI.this), Integer.valueOf(9), AppBrandIDCardUI.i(AppBrandIDCardUI.this).dqk });
                       if ((AppBrandIDCardUI.e(AppBrandIDCardUI.this) == 1) && (AppBrandIDCardUI.j(AppBrandIDCardUI.this) != null))
                       {
-                        paramAnonymous3b = r.mjT;
+                        paramAnonymous3b = r.moQ;
                         r.b(AppBrandIDCardUI.j(AppBrandIDCardUI.this));
                       }
                       paramAnonymous3b = new Intent();
-                      paramAnonymous3b.putExtra("intent_err_code", paramAnonymous3String.HqD.dvY);
-                      paramAnonymous3b.putExtra("intent_auth_token", paramAnonymous3String.Gbt);
+                      paramAnonymous3b.putExtra("intent_err_code", paramAnonymous3String.HKf.dxd);
+                      paramAnonymous3b.putExtra("intent_auth_token", paramAnonymous3String.Gua);
                       AppBrandIDCardUI.this.setResult(-1, paramAnonymous3b);
                       AppBrandIDCardUI.this.finish();
                       AppMethodBeat.o(48924);
                       return;
-                      com.tencent.mm.plugin.report.service.g.yhR.f(14943, new Object[] { AppBrandIDCardUI.a(AppBrandIDCardUI.this), Integer.valueOf(5), AppBrandIDCardUI.i(AppBrandIDCardUI.this).dpf });
+                      com.tencent.mm.plugin.report.service.g.yxI.f(14943, new Object[] { AppBrandIDCardUI.a(AppBrandIDCardUI.this), Integer.valueOf(5), AppBrandIDCardUI.i(AppBrandIDCardUI.this).dqk });
                       AppBrandIDCardUI.b(AppBrandIDCardUI.this, paramAnonymous2String);
-                      AppBrandIDCardUI.a(AppBrandIDCardUI.this, paramAnonymous3String.Hzb);
+                      AppBrandIDCardUI.a(AppBrandIDCardUI.this, paramAnonymous3String.HSM);
                       AppBrandIDCardUI.k(AppBrandIDCardUI.this);
                     }
                   }
@@ -445,7 +438,7 @@ public class AppBrandIDCardUI
               }
               for (;;)
               {
-                ad.i("MicroMsg.AppBrandIDCardUI", "verifyOk:%b", new Object[] { Boolean.valueOf(paramAnonymous2Boolean) });
+                ae.i("MicroMsg.AppBrandIDCardUI", "verifyOk:%b", new Object[] { Boolean.valueOf(paramAnonymous2Boolean) });
                 AppMethodBeat.o(48925);
                 return;
                 if (AppBrandIDCardUI.e(AppBrandIDCardUI.this) == 1)
@@ -461,32 +454,39 @@ public class AppBrandIDCardUI
         }
         catch (JSONException localJSONException)
         {
-          ad.printErrStackTrace("MicroMsg.AppBrandIDCardUI", localJSONException, "", new Object[0]);
+          ae.printErrStackTrace("MicroMsg.AppBrandIDCardUI", localJSONException, "", new Object[0]);
           AppMethodBeat.o(48935);
         }
       }
       
-      public final void bzT()
+      public final void bAO()
       {
         AppMethodBeat.i(48936);
-        com.tencent.mm.plugin.report.service.g.yhR.f(14943, new Object[] { AppBrandIDCardUI.a(AppBrandIDCardUI.this), Integer.valueOf(6), AppBrandIDCardUI.i(AppBrandIDCardUI.this).dpf });
+        com.tencent.mm.plugin.report.service.g.yxI.f(14943, new Object[] { AppBrandIDCardUI.a(AppBrandIDCardUI.this), Integer.valueOf(6), AppBrandIDCardUI.i(AppBrandIDCardUI.this).dqk });
         AppMethodBeat.o(48936);
       }
       
-      public final dee bzU()
+      public final dey bAP()
       {
         AppMethodBeat.i(48939);
-        dee localdee = AppBrandIDCardUI.i(AppBrandIDCardUI.this);
+        dey localdey = AppBrandIDCardUI.i(AppBrandIDCardUI.this);
         AppMethodBeat.o(48939);
-        return localdee;
+        return localdey;
       }
       
-      public final hi bzV()
+      public final hi bAQ()
       {
         AppMethodBeat.i(48940);
         hi localhi = AppBrandIDCardUI.n(AppBrandIDCardUI.this);
         AppMethodBeat.o(48940);
         return localhi;
+      }
+      
+      public final void back()
+      {
+        AppMethodBeat.i(48931);
+        AppBrandIDCardUI.h(AppBrandIDCardUI.this);
+        AppMethodBeat.o(48931);
       }
       
       public final void onSwipeBack()
@@ -499,14 +499,14 @@ public class AppBrandIDCardUI
     AppMethodBeat.o(48952);
   }
   
-  private static LinkedList<Integer> M(Bundle paramBundle)
+  private static LinkedList<Integer> N(Bundle paramBundle)
   {
     AppMethodBeat.i(48960);
     LinkedList localLinkedList = new LinkedList();
     try
     {
       paramBundle = paramBundle.getString("intent_category_id");
-      ad.i("MicroMsg.AppBrandIDCardUI", "[processCategoryId] categoryIdStr:%s", new Object[] { paramBundle });
+      ae.i("MicroMsg.AppBrandIDCardUI", "[processCategoryId] categoryIdStr:%s", new Object[] { paramBundle });
       paramBundle = new JSONArray(paramBundle);
       int i = 0;
       while (i < paramBundle.length())
@@ -519,48 +519,48 @@ public class AppBrandIDCardUI
     }
     catch (JSONException paramBundle)
     {
-      ad.printErrStackTrace("MicroMsg.AppBrandIDCardUI", paramBundle, "", new Object[0]);
+      ae.printErrStackTrace("MicroMsg.AppBrandIDCardUI", paramBundle, "", new Object[0]);
       AppMethodBeat.o(48960);
     }
     return null;
   }
   
+  private void bAL()
+  {
+    AppMethodBeat.i(48961);
+    ae.i("MicroMsg.AppBrandIDCardUI", "switchToShowFragment");
+    this.mMm = new AppBrandIDCardShowFrag();
+    ((AppBrandIDCardShowFrag)this.mMm).mLX = this.mLX;
+    getSupportFragmentManager().beginTransaction().b(mMl, this.mMm).commitAllowingStateLoss();
+    AppMethodBeat.o(48961);
+  }
+  
   private void back()
   {
     AppMethodBeat.i(48956);
-    if (((this.mHi instanceof AppBrandIDCardVerifyPwdFrag)) && (this.mHp == 0))
+    if (((this.mMm instanceof AppBrandIDCardVerifyPwdFrag)) && (this.mMt == 0))
     {
-      bzQ();
+      bAL();
       AppMethodBeat.o(48956);
       return;
     }
-    if ((this.mHp != 1) || (this.iDP == null) || (!this.iDP.onBackPressed())) {
+    if ((this.mMt != 1) || (this.iGI == null) || (!this.iGI.onBackPressed())) {
       finish();
     }
     AppMethodBeat.o(48956);
   }
   
-  private void bzQ()
-  {
-    AppMethodBeat.i(48961);
-    ad.i("MicroMsg.AppBrandIDCardUI", "switchToShowFragment");
-    this.mHi = new AppBrandIDCardShowFrag();
-    ((AppBrandIDCardShowFrag)this.mHi).mGT = this.mGT;
-    getSupportFragmentManager().beginTransaction().b(mHh, this.mHi).commitAllowingStateLoss();
-    AppMethodBeat.o(48961);
-  }
-  
   public void finish()
   {
     AppMethodBeat.i(48958);
-    if ((this.mHr != null) && (this.mHr.isShowing())) {
-      this.mHr.dismiss();
+    if ((this.mMv != null) && (this.mMv.isShowing())) {
+      this.mMv.dismiss();
     }
-    if ((this.iDP != null) && (this.mHq != null)) {
-      this.iDP.c(this.mHq);
+    if ((this.iGI != null) && (this.mMu != null)) {
+      this.iGI.c(this.mMu);
     }
     super.finish();
-    if (this.mHp == 1) {
+    if (this.mMt == 1) {
       overridePendingTransition(0, 0);
     }
     AppMethodBeat.o(48958);
@@ -580,7 +580,7 @@ public class AppBrandIDCardUI
   {
     AppMethodBeat.i(48959);
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    ad.i("MicroMsg.AppBrandIDCardUI", "onActivityResult, requestcode: %d", new Object[] { Integer.valueOf(paramInt1) });
+    ae.i("MicroMsg.AppBrandIDCardUI", "onActivityResult, requestcode: %d", new Object[] { Integer.valueOf(paramInt1) });
     switch (paramInt1)
     {
     }
@@ -588,15 +588,15 @@ public class AppBrandIDCardUI
     {
       AppMethodBeat.o(48959);
       return;
-      if (this.mHq != null)
+      if (this.mMu != null)
       {
-        paramIntent = this.mHq;
-        r localr = r.mjT;
-        paramIntent.setPhoneItems((ArrayList)r.bwx());
+        paramIntent = this.mMu;
+        r localr = r.moQ;
+        paramIntent.setPhoneItems((ArrayList)r.bxo());
         AppMethodBeat.o(48959);
         return;
       }
-      ad.e("MicroMsg.AppBrandIDCardUI", "onActivityResult, AuthDialog is null");
+      ae.e("MicroMsg.AppBrandIDCardUI", "onActivityResult, AuthDialog is null");
     }
   }
   
@@ -612,28 +612,28 @@ public class AppBrandIDCardUI
     AppMethodBeat.i(48954);
     Object localObject = getIntent().getExtras();
     if (localObject != null) {
-      this.mHp = ((Bundle)localObject).getInt("id_ui_theme", 0);
+      this.mMt = ((Bundle)localObject).getInt("id_ui_theme", 0);
     }
     super.onCreate(paramBundle);
     if (localObject == null)
     {
-      ad.e("MicroMsg.AppBrandIDCardUI", "bundle is null, return");
+      ae.e("MicroMsg.AppBrandIDCardUI", "bundle is null, return");
       finish();
       AppMethodBeat.o(48954);
       return;
     }
     this.appId = ((Bundle)localObject).getString("intent_appid", "");
-    if (bt.isNullOrNil(this.appId))
+    if (bu.isNullOrNil(this.appId))
     {
-      ad.e("MicroMsg.AppBrandIDCardUI", "appId is null, return");
+      ae.e("MicroMsg.AppBrandIDCardUI", "appId is null, return");
       finish();
       AppMethodBeat.o(48954);
       return;
     }
-    this.mHl = M((Bundle)localObject);
-    if ((bt.hj(this.mHl)) || (this.mHl.size() <= 0))
+    this.mMp = N((Bundle)localObject);
+    if ((bu.ht(this.mMp)) || (this.mMp.size() <= 0))
     {
-      ad.e("MicroMsg.AppBrandIDCardUI", "categoryId is null, return");
+      ae.e("MicroMsg.AppBrandIDCardUI", "categoryId is null, return");
       paramBundle = new Intent();
       paramBundle.putExtra("intent_err_code", 40003);
       paramBundle.putExtra("intent_err_msg", "category_id is null");
@@ -642,11 +642,11 @@ public class AppBrandIDCardUI
       AppMethodBeat.o(48954);
       return;
     }
-    this.hGk = ((Bundle)localObject).getInt("intent_auth_type", 1);
+    this.hJc = ((Bundle)localObject).getInt("intent_auth_type", 1);
     getContentView().setBackgroundColor(getResources().getColor(2131100705));
     paramBundle = new ViewGroup.LayoutParams(-1, -1);
     localObject = new FrameLayout(this);
-    ((View)localObject).setId(mHh);
+    ((View)localObject).setId(mMl);
     ((ViewGroup)getContentView()).addView((View)localObject, paramBundle);
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
@@ -659,7 +659,7 @@ public class AppBrandIDCardUI
       }
     });
     getString(2131755906);
-    this.mHr = h.b(this, getString(2131760709), true, new DialogInterface.OnCancelListener()
+    this.mMv = h.b(this, getString(2131760709), true, new DialogInterface.OnCancelListener()
     {
       public final void onCancel(DialogInterface paramAnonymousDialogInterface)
       {
@@ -669,26 +669,26 @@ public class AppBrandIDCardUI
         AppMethodBeat.o(48945);
       }
     });
-    this.mHr.show();
-    if (this.mHp == 1)
+    this.mMv.show();
+    if (this.mMt == 1)
     {
       al.b(getWindow());
       getContentView().setBackgroundColor(0);
-      getContentView().findViewById(mHh).setBackgroundColor(0);
-      this.iDP = new e(getContext());
+      getContentView().findViewById(mMl).setBackgroundColor(0);
+      this.iGI = new e(getContext());
       paramBundle = ((ViewGroup)getWindow().getDecorView()).getChildAt(0);
       if (!(((ViewGroup)getWindow().getDecorView()).getChildAt(0) instanceof ViewGroup)) {
         break label480;
       }
-      ad.i("MicroMsg.AppBrandIDCardUI", "find sub viewgroup in decorview");
+      ae.i("MicroMsg.AppBrandIDCardUI", "find sub viewgroup in decorview");
       paramBundle.setFitsSystemWindows(false);
     }
     for (;;)
     {
       try
       {
-        ((ViewGroup)paramBundle).addView(this.iDP);
-        this.mGT.bzR();
+        ((ViewGroup)paramBundle).addView(this.iGI);
+        this.mLX.bAM();
         if (isSupportNavigationSwipeBack()) {
           getSwipeBackLayout().setEnableGesture(false);
         }
@@ -697,13 +697,13 @@ public class AppBrandIDCardUI
       }
       catch (Exception paramBundle)
       {
-        ad.w("MicroMsg.AppBrandIDCardUI", "add view to decorSubView error", new Object[] { paramBundle });
-        ((ViewGroup)getContentView()).addView(this.iDP);
+        ae.w("MicroMsg.AppBrandIDCardUI", "add view to decorSubView error", new Object[] { paramBundle });
+        ((ViewGroup)getContentView()).addView(this.iGI);
         continue;
       }
       label480:
-      ad.i("MicroMsg.AppBrandIDCardUI", "can't find sub viewgroup in decorview");
-      ((ViewGroup)getContentView()).addView(this.iDP);
+      ae.i("MicroMsg.AppBrandIDCardUI", "can't find sub viewgroup in decorview");
+      ((ViewGroup)getContentView()).addView(this.iGI);
     }
   }
   
@@ -711,7 +711,7 @@ public class AppBrandIDCardUI
   {
     AppMethodBeat.i(48953);
     super.onCreateBeforeSetContentView();
-    if (this.mHp == 1) {
+    if (this.mMt == 1) {
       setTheme(2131821149);
     }
     getWindow().requestFeature(10);
@@ -733,10 +733,37 @@ public class AppBrandIDCardUI
     super.onWindowFocusChanged(paramBoolean);
     AppMethodBeat.at(this, paramBoolean);
   }
+  
+  public static abstract interface a
+  {
+    public abstract void Vx(String paramString);
+    
+    public abstract void Vy(String paramString);
+    
+    public abstract void Vz(String paramString);
+    
+    public abstract void a(hh paramhh);
+    
+    public abstract void a(String paramString, hh paramhh);
+    
+    public abstract void bAM();
+    
+    public abstract void bAN();
+    
+    public abstract void bAO();
+    
+    public abstract dey bAP();
+    
+    public abstract hi bAQ();
+    
+    public abstract void back();
+    
+    public abstract void onSwipeBack();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.autofill.AppBrandIDCardUI
  * JD-Core Version:    0.7.0.1
  */

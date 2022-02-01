@@ -3,13 +3,13 @@ package com.tencent.mm.plugin.webview.luggage.jsapi;
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.q;
-import com.tencent.mm.g.a.vm;
-import com.tencent.mm.g.a.vm.a;
-import com.tencent.mm.g.a.vm.b;
+import com.tencent.mm.g.a.vq;
+import com.tencent.mm.g.a.vq.a;
+import com.tencent.mm.g.a.vq.b;
 import com.tencent.mm.plugin.webview.luggage.g;
 import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import org.json.JSONObject;
 
 public class an
@@ -18,8 +18,8 @@ public class an
   public final void a(Context paramContext, String paramString, bq.a parama)
   {
     AppMethodBeat.i(78591);
-    ad.i("MicroMsg.JsApiOpenWeApp", "invokeInMM");
-    paramString = com.tencent.mm.plugin.webview.luggage.c.b.Pe(paramString);
+    ae.i("MicroMsg.JsApiOpenWeApp", "invokeInMM");
+    paramString = com.tencent.mm.plugin.webview.luggage.c.b.PM(paramString);
     if (paramString == null)
     {
       parama.f("fail_invalid_data", null);
@@ -28,42 +28,42 @@ public class an
     }
     String str1 = paramString.optString("currentUrl");
     String str2 = paramString.optString("preVerifyAppId");
-    vm localvm = new vm();
-    localvm.dJF.context = paramContext;
-    localvm.dJF.userName = paramString.optString("userName");
-    localvm.dJF.appId = paramString.optString("appId");
-    localvm.dJF.dJH = paramString.optString("relativeURL");
-    localvm.dJF.aDD = paramString.optInt("appVersion", 0);
-    localvm.dJF.scene = paramString.optInt("scene", 1018);
-    localvm.dJF.dkh = paramString.optString("sceneNote");
-    if (bt.isNullOrNil(localvm.dJF.dkh)) {
-      localvm.dJF.dkh = q.encode(bt.nullAsNil(str1));
+    vq localvq = new vq();
+    localvq.dKT.context = paramContext;
+    localvq.dKT.userName = paramString.optString("userName");
+    localvq.dKT.appId = paramString.optString("appId");
+    localvq.dKT.dKV = paramString.optString("relativeURL");
+    localvq.dKT.aDD = paramString.optInt("appVersion", 0);
+    localvq.dKT.scene = paramString.optInt("scene", 1018);
+    localvq.dKT.dlj = paramString.optString("sceneNote");
+    if (bu.isNullOrNil(localvq.dKT.dlj)) {
+      localvq.dKT.dlj = q.encode(bu.nullAsNil(str1));
     }
-    localvm.dJF.dJJ = paramString.optString("downloadURL");
-    localvm.dJF.dJI = paramString.optInt("openType", 0);
-    localvm.dJF.dJK = paramString.optString("checkSumMd5");
-    localvm.dJF.dJM = false;
-    localvm.dJF.dJN.hKu = paramString.optString("extJsonInfo");
-    localvm.dJF.dJS = str2;
-    if (bt.isNullOrNil(localvm.dJF.dJS)) {
-      localvm.dJF.dJS = paramString.optString("sourceAppId");
+    localvq.dKT.dKY = paramString.optString("downloadURL");
+    localvq.dKT.dKW = paramString.optInt("openType", 0);
+    localvq.dKT.dKZ = paramString.optString("checkSumMd5");
+    localvq.dKT.dLb = false;
+    localvq.dKT.dLc.hNn = paramString.optString("extJsonInfo");
+    localvq.dKT.dLh = str2;
+    if (bu.isNullOrNil(localvq.dKT.dLh)) {
+      localvq.dKT.dLh = paramString.optString("sourceAppId");
     }
-    localvm.dJF.dJT = str1;
-    localvm.dJF.dJU = paramString.optString("privateExtraData");
-    a.IbL.l(localvm);
-    if (localvm.dJG.dJY)
+    localvq.dKT.dLi = str1;
+    localvq.dKT.dLj = paramString.optString("privateExtraData");
+    a.IvT.l(localvq);
+    if (localvq.dKU.dLn)
     {
       parama.f(null, null);
       AppMethodBeat.o(78591);
       return;
     }
-    parama.f(bt.nullAsNil(localvm.dJG.dJZ), null);
+    parama.f(bu.nullAsNil(localvq.dKU.dLo), null);
     AppMethodBeat.o(78591);
   }
   
   public final void b(com.tencent.luggage.d.b<g>.a paramb) {}
   
-  public final int ccO()
+  public final int ced()
   {
     return 1;
   }

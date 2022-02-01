@@ -13,23 +13,23 @@ public abstract interface x
   public static final class a
     extends Error
   {
-    final String lHI;
+    final String lMi;
     
     a(String paramString1, String paramString2)
     {
       super();
-      this.lHI = paramString2;
+      this.lMi = paramString2;
     }
     
     static final class a
     {
       String errorMessage;
-      String lHI;
+      String lMi;
       
-      final x.a brg()
+      final x.a brQ()
       {
         AppMethodBeat.i(47167);
-        x.a locala = new x.a(this.errorMessage, this.lHI);
+        x.a locala = new x.a(this.errorMessage, this.lMi);
         AppMethodBeat.o(47167);
         return locala;
       }
@@ -37,7 +37,7 @@ public abstract interface x
       final a p(String paramString, Object... paramVarArgs)
       {
         AppMethodBeat.i(47165);
-        this.lHI = String.format(Locale.US, paramString, paramVarArgs);
+        this.lMi = String.format(Locale.US, paramString, paramVarArgs);
         AppMethodBeat.o(47165);
         return this;
       }

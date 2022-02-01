@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.vlog.ui.plugin;
 
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/vlog/ui/plugin/ThumbLoadingPlugin$Companion;", "", "()V", "STATE_DO_SHOW", "", "STATE_HIDE", "STATE_START_SHOW", "TAG", "", "plugin-vlog_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/vlog/ui/plugin/ThumbLoadingPlugin$Companion;", "", "()V", "STATE_DO_SHOW", "", "STATE_HIDE", "STATE_START_SHOW", "TAG", "", "plugin-vlog_release"})
 public final class z$a {}
 
 

@@ -14,115 +14,119 @@ import com.tencent.mm.g.b.a.da;
 import com.tencent.mm.g.b.a.db;
 import com.tencent.mm.live.b.g;
 import com.tencent.mm.live.core.core.trtc.a.a;
-import com.tencent.mm.model.u;
+import com.tencent.mm.model.v;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/live/report/LiveReportHappenUtil;", "", "()V", "LIVE_ICON_LOCATE", "", "liveRoomId", "", "entranceShow", "", "reportAnchorFinishLive", "roomId", "liveId", "", "topic", "audienceCount", "audienceCountMax", "commentCount", "heartCount", "connectCount", "allowReplay", "", "costTime", "reportEnterReplayUi", "liveUserName", "scene", "replayStatusEnd", "replayStatusBegin", "reportErrorCode", "micId", "linkStatus", "audienceMode", "errorCode", "reportLiveAnchorLinkMic", "waitCount", "allowConnect", "linkMicCount", "reportLiveComplain", "reportLiveLinkMicFinish", "lastTime", "closeRole", "hasVideo", "reportLiveUserOp", "anchorName", "action", "actionResult", "audienceUserName", "reportReplayOp", "wholeTime", "viewTime", "reportVisitorEnterLive", "enterRoomCount", "exitRoomCount", "connectReqCount", "startLiveReport", "isRulePop", "isRuleCheck", "isCustomTopic", "deviceOrientation", "exitType", "plugin-logic_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/live/report/LiveReportHappenUtil;", "", "()V", "LIVE_ICON_LOCATE", "", "liveRoomId", "", "visitorEnterLiveStruct", "Lcom/tencent/mm/autogen/mmdata/rpt/LiveVisitorEnterLiveStruct;", "getVisitorEnterLiveStruct", "()Lcom/tencent/mm/autogen/mmdata/rpt/LiveVisitorEnterLiveStruct;", "setVisitorEnterLiveStruct", "(Lcom/tencent/mm/autogen/mmdata/rpt/LiveVisitorEnterLiveStruct;)V", "entranceShow", "", "reportAnchorFinishLive", "roomId", "liveId", "", "topic", "audienceCount", "audienceCountMax", "commentCount", "heartCount", "connectCount", "allowReplay", "", "costTime", "reportEnterReplayUi", "liveUserName", "scene", "replayStatusEnd", "replayStatusBegin", "reportErrorCode", "micId", "linkStatus", "audienceMode", "errorCode", "reportLiveAnchorLinkMic", "waitCount", "allowConnect", "linkMicCount", "reportLiveComplain", "reportLiveLinkMicFinish", "lastTime", "closeRole", "hasVideo", "reportLiveUserOp", "anchorName", "action", "actionResult", "audienceUserName", "onlineCnt", "reportReplayOp", "wholeTime", "viewTime", "reportVisitorEnterLive", "enterRoomCount", "exitRoomCount", "connectReqCount", "startLiveReport", "isRulePop", "isRuleCheck", "isCustomTopic", "deviceOrientation", "exitType", "plugin-logic_release"})
 public final class e
 {
-  public static String gYi;
-  public static final e gYj;
+  public static String haU;
+  private static db haV;
+  public static final e haW;
   
   static
   {
-    AppMethodBeat.i(212761);
-    gYj = new e();
-    gYi = "";
-    AppMethodBeat.o(212761);
+    AppMethodBeat.i(216389);
+    haW = new e();
+    haU = "";
+    haV = new db();
+    AppMethodBeat.o(216389);
   }
   
   public static final void a(String paramString1, long paramLong, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, String paramString2)
   {
-    AppMethodBeat.i(212752);
-    Object localObject = g.gOr;
-    if (g.anX())
+    AppMethodBeat.i(216380);
+    Object localObject = g.gQZ;
+    if (g.aom())
     {
-      AppMethodBeat.o(212752);
+      AppMethodBeat.o(216380);
       return;
     }
-    localObject = g.gOr;
-    g.ny(-1);
-    localObject = new db();
-    g localg = g.gOr;
-    ((db)localObject).jg(g.anY());
-    ((db)localObject).ml(paramString1);
-    ((db)localObject).jh(paramLong);
-    ((db)localObject).ji(paramInt1);
+    localObject = g.gQZ;
+    g.nB(-1);
+    localObject = haV;
+    g localg = g.gQZ;
+    ((db)localObject).jm(g.aon());
+    haV.mD(paramString1);
+    haV.jn(paramLong);
+    haV.jo(paramInt1);
+    paramString1 = haV;
     if (paramInt2 < 0) {}
     for (paramLong = 0L;; paramLong = paramInt2)
     {
-      ((db)localObject).jj(paramLong);
-      ((db)localObject).jk(paramInt3);
-      ((db)localObject).jl(paramInt4);
-      ((db)localObject).jm(paramInt5);
-      ((db)localObject).jn(paramInt6);
-      ((db)localObject).jo(paramInt7);
-      ((db)localObject).mm(paramString2);
-      ((db)localObject).aLk();
-      paramString1 = g.gOr;
-      g.dP(true);
-      paramString1 = g.gOr;
-      g.nw(0);
-      paramString1 = g.gOr;
-      g.nx(0);
-      paramString1 = g.gOr;
+      paramString1.jp(paramLong);
+      haV.jq(paramInt3);
+      haV.jr(paramInt4);
+      haV.js(paramInt5);
+      haV.jt(paramInt6);
+      haV.ju(paramInt7);
+      haV.mE(paramString2);
+      haV.aLH();
+      paramString1 = g.gQZ;
+      g.dQ(true);
+      paramString1 = g.gQZ;
       g.nz(0);
-      paramString1 = g.gOr;
+      paramString1 = g.gQZ;
       g.nA(0);
-      paramString1 = g.gOr;
-      g.nB(0);
-      paramString1 = g.gOr;
+      paramString1 = g.gQZ;
       g.nC(0);
-      paramString1 = g.gOr;
+      paramString1 = g.gQZ;
       g.nD(0);
-      AppMethodBeat.o(212752);
+      paramString1 = g.gQZ;
+      g.nE(0);
+      paramString1 = g.gQZ;
+      g.nF(0);
+      paramString1 = g.gQZ;
+      g.nG(0);
+      haV = new db();
+      AppMethodBeat.o(216380);
       return;
     }
   }
   
   public static final void a(String paramString, long paramLong, int paramInt1, boolean paramBoolean, int paramInt2)
   {
-    AppMethodBeat.i(212755);
+    AppMethodBeat.i(216383);
     p.h(paramString, "roomId");
     cs localcs = new cs();
-    g localg = g.gOr;
-    g.nF(0);
-    localcs.lS(paramString);
-    localcs.ip(paramLong);
-    localcs.iq(paramInt1);
+    g localg = g.gQZ;
+    g.nI(0);
+    localcs.mj(paramString);
+    localcs.iu(paramLong);
+    localcs.iv(paramInt1);
     if (paramBoolean) {}
     for (paramLong = 1L;; paramLong = 0L)
     {
-      localcs.ir(paramLong);
-      localcs.is(paramInt2);
-      localcs.aLk();
-      AppMethodBeat.o(212755);
+      localcs.iw(paramLong);
+      localcs.ix(paramInt2);
+      localcs.aLH();
+      AppMethodBeat.o(216383);
       return;
     }
   }
   
   public static final void a(String paramString1, long paramLong1, String paramString2, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, boolean paramBoolean, long paramLong2)
   {
-    AppMethodBeat.i(212751);
+    AppMethodBeat.i(216379);
     p.h(paramString1, "roomId");
     cr localcr = new cr();
-    g localg = g.gOr;
-    g.nx(0);
-    localg = g.gOr;
-    g.nv(-1);
-    localcr.SQ();
-    localcr.lQ(paramString1);
-    localcr.jdMethod_if(paramLong1);
-    localcr.lR(paramString2);
-    localcr.ih(paramInt1);
+    g localg = g.gQZ;
+    g.nA(0);
+    localg = g.gQZ;
+    g.ny(-1);
+    localcr.SU();
+    localcr.mh(paramString1);
+    localcr.ik(paramLong1);
+    localcr.mi(paramString2);
+    localcr.im(paramInt1);
     if (paramInt2 <= 0)
     {
       paramLong1 = paramInt1;
-      localcr.ii(paramLong1);
-      localcr.il(paramInt5);
-      localcr.ij(paramInt3);
-      localcr.ik(paramInt4);
+      localcr.in(paramLong1);
+      localcr.iq(paramInt5);
+      localcr.io(paramInt3);
+      localcr.ip(paramInt4);
       if (!paramBoolean) {
         break label200;
       }
@@ -130,181 +134,183 @@ public final class e
     label200:
     for (paramLong1 = 1L;; paramLong1 = 0L)
     {
-      localcr.im(paramLong1);
-      localcr.io(paramLong2);
-      paramString2 = b.gYf;
-      paramString2 = u.aAm();
+      localcr.ir(paramLong1);
+      localcr.it(paramLong2);
+      paramString2 = b.haR;
+      paramString2 = v.aAC();
       p.g(paramString2, "ConfigStorageLogic.getUsernameFromUserInfo()");
-      localcr.ig(b.a.au(paramString2, paramString1));
-      paramString2 = b.gYf;
-      localcr.in(b.a.xU(paramString1));
-      localcr.aLk();
-      AppMethodBeat.o(212751);
+      localcr.il(b.a.av(paramString2, paramString1));
+      paramString2 = b.haR;
+      localcr.is(b.a.yE(paramString1));
+      localcr.aLH();
+      AppMethodBeat.o(216379);
       return;
       paramLong1 = paramInt2;
       break;
     }
   }
   
-  public static final void a(String paramString1, long paramLong, String paramString2, int paramInt1, int paramInt2, String paramString3)
+  public static final void a(String paramString1, long paramLong, String paramString2, int paramInt1, int paramInt2, String paramString3, int paramInt3)
   {
-    AppMethodBeat.i(212753);
+    AppMethodBeat.i(216381);
     p.h(paramString1, "roomId");
     p.h(paramString2, "anchorName");
     p.h(paramString3, "audienceUserName");
     cz localcz = new cz();
-    localcz.mg(paramString1);
-    localcz.iV(paramLong);
-    localcz.iZ(paramInt2);
-    localcz.iY(paramInt1);
-    Object localObject = b.gYf;
-    localObject = u.aAm();
+    localcz.mx(paramString1);
+    localcz.ja(paramLong);
+    localcz.je(paramInt2);
+    localcz.jd(paramInt1);
+    Object localObject = b.haR;
+    localObject = v.aAC();
     p.g(localObject, "ConfigStorageLogic.getUsernameFromUserInfo()");
-    localcz.iW(b.a.av((String)localObject, paramString2));
-    paramString2 = b.gYf;
-    paramString2 = u.aAm();
-    p.g(paramString2, "ConfigStorageLogic.getUsernameFromUserInfo()");
-    localcz.iX(b.a.au(paramString2, paramString1));
-    localcz.ja(System.currentTimeMillis());
-    localcz.mh(paramString3);
-    localcz.aLk();
-    AppMethodBeat.o(212753);
+    localcz.jb(b.a.aw((String)localObject, paramString2));
+    localObject = b.haR;
+    localObject = v.aAC();
+    p.g(localObject, "ConfigStorageLogic.getUsernameFromUserInfo()");
+    localcz.jc(b.a.av((String)localObject, paramString1));
+    localcz.jf(System.currentTimeMillis());
+    localcz.my(paramString3);
+    localcz.mz(paramString2);
+    localcz.jg(paramInt3);
+    localcz.aLH();
+    AppMethodBeat.o(216381);
   }
   
   public static final void a(String paramString1, long paramLong, String paramString2, int paramInt, String paramString3)
   {
-    AppMethodBeat.i(212757);
+    AppMethodBeat.i(216385);
     p.h(paramString1, "roomId");
     p.h(paramString3, "liveUserName");
     cu localcu = new cu();
-    localcu.lV(paramString1);
-    localcu.iC(paramLong);
-    localcu.lX(paramString3);
-    localcu.SS();
-    localcu.lW(paramString2);
-    localcu.iE(paramInt);
-    paramString2 = b.gYf;
-    paramString2 = u.aAm();
+    localcu.mm(paramString1);
+    localcu.iH(paramLong);
+    localcu.mo(paramString3);
+    localcu.SW();
+    localcu.mn(paramString2);
+    localcu.iJ(paramInt);
+    paramString2 = b.haR;
+    paramString2 = v.aAC();
     p.g(paramString2, "ConfigStorageLogic.getUsernameFromUserInfo()");
-    localcu.iD(b.a.au(paramString2, paramString1));
-    localcu.aLk();
-    AppMethodBeat.o(212757);
+    localcu.iI(b.a.av(paramString2, paramString1));
+    localcu.aLH();
+    AppMethodBeat.o(216385);
   }
   
   public static final void a(String paramString1, long paramLong1, String paramString2, long paramLong2, int paramInt1, int paramInt2, String paramString3)
   {
-    AppMethodBeat.i(212756);
+    AppMethodBeat.i(216384);
     p.h(paramString1, "roomId");
     p.h(paramString2, "micId");
     p.h(paramString3, "liveUserName");
     cy localcy = new cy();
-    g localg = g.gOr;
-    g.dQ(false);
-    localcy.md(paramString1);
-    localcy.iR(paramLong1);
-    localcy.mf(paramString2);
-    localcy.iS(paramLong2);
-    localcy.iT(paramInt1);
-    localcy.iU(paramInt2);
-    localcy.me(paramString3);
-    localcy.aLk();
-    AppMethodBeat.o(212756);
+    g localg = g.gQZ;
+    g.dR(false);
+    localcy.mu(paramString1);
+    localcy.iW(paramLong1);
+    localcy.mw(paramString2);
+    localcy.iX(paramLong2);
+    localcy.iY(paramInt1);
+    localcy.iZ(paramInt2);
+    localcy.mv(paramString3);
+    localcy.aLH();
+    AppMethodBeat.o(216384);
   }
   
   public static final void a(String paramString1, long paramLong, String paramString2, String paramString3, int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(212758);
+    AppMethodBeat.i(216386);
     p.h(paramString1, "roomId");
     p.h(paramString3, "liveUserName");
     cv localcv = new cv();
-    localcv.lY(paramString1);
-    localcv.iF(paramLong);
-    Object localObject = b.gYf;
-    localObject = u.aAm();
+    localcv.mp(paramString1);
+    localcv.iK(paramLong);
+    Object localObject = b.haR;
+    localObject = v.aAC();
     p.g(localObject, "ConfigStorageLogic.getUsernameFromUserInfo()");
-    localcv.iH(b.a.av((String)localObject, paramString3));
-    localcv.iG(paramInt1);
-    localcv.ma(paramString3);
-    localcv.lZ(paramString2);
-    localcv.iJ(paramInt2);
-    localcv.iK(paramInt3);
-    paramString2 = b.gYf;
-    paramString2 = u.aAm();
+    localcv.iM(b.a.aw((String)localObject, paramString3));
+    localcv.iL(paramInt1);
+    localcv.mr(paramString3);
+    localcv.mq(paramString2);
+    localcv.iO(paramInt2);
+    localcv.iP(paramInt3);
+    paramString2 = b.haR;
+    paramString2 = v.aAC();
     p.g(paramString2, "ConfigStorageLogic.getUsernameFromUserInfo()");
-    localcv.iI(b.a.au(paramString2, paramString1));
-    localcv.aLk();
-    AppMethodBeat.o(212758);
+    localcv.iN(b.a.av(paramString2, paramString1));
+    localcv.aLH();
+    AppMethodBeat.o(216386);
   }
   
   public static final void a(String paramString1, long paramLong1, String paramString2, String paramString3, long paramLong2, long paramLong3)
   {
-    AppMethodBeat.i(212759);
+    AppMethodBeat.i(216387);
     p.h(paramString1, "roomId");
     p.h(paramString3, "liveUserName");
     da localda = new da();
-    localda.mi(paramString1);
-    localda.jb(paramLong1);
-    localda.mj(paramString2);
-    localda.mk(paramString3);
-    localda.je(paramLong2);
-    localda.jf(paramLong3);
-    paramString2 = b.gYf;
-    paramString2 = u.aAm();
+    localda.mA(paramString1);
+    localda.jh(paramLong1);
+    localda.mB(paramString2);
+    localda.mC(paramString3);
+    localda.jk(paramLong2);
+    localda.jl(paramLong3);
+    paramString2 = b.haR;
+    paramString2 = v.aAC();
     p.g(paramString2, "ConfigStorageLogic.getUsernameFromUserInfo()");
-    localda.jc(b.a.av(paramString2, paramString3));
-    paramString2 = b.gYf;
-    paramString2 = u.aAm();
+    localda.ji(b.a.aw(paramString2, paramString3));
+    paramString2 = b.haR;
+    paramString2 = v.aAC();
     p.g(paramString2, "ConfigStorageLogic.getUsernameFromUserInfo()");
-    localda.jd(b.a.au(paramString2, paramString1));
-    localda.aLk();
-    AppMethodBeat.o(212759);
+    localda.jj(b.a.av(paramString2, paramString1));
+    localda.aLH();
+    AppMethodBeat.o(216387);
   }
   
   public static final void a(String paramString1, boolean paramBoolean1, boolean paramBoolean2, String paramString2, boolean paramBoolean3, int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(212749);
+    AppMethodBeat.i(216377);
     p.h(paramString1, "roomId");
-    Object localObject = g.gOr;
-    if (g.anN())
+    Object localObject = g.gQZ;
+    if (g.aoc())
     {
-      AppMethodBeat.o(212749);
+      AppMethodBeat.o(216377);
       return;
     }
-    localObject = g.gOr;
-    g.dL(false);
-    localObject = g.gOr;
+    localObject = g.gQZ;
     g.dM(false);
-    localObject = g.gOr;
-    g.dN(true);
-    localObject = g.gOr;
-    g.dO(false);
-    localObject = g.gOr;
-    g.dK(false);
+    localObject = g.gQZ;
+    g.dN(false);
+    localObject = g.gQZ;
+    g.dO(true);
+    localObject = g.gQZ;
+    g.dP(false);
+    localObject = g.gQZ;
+    g.dL(false);
     localObject = new ct();
-    ((ct)localObject).SR();
-    ((ct)localObject).lT(paramString1);
+    ((ct)localObject).SV();
+    ((ct)localObject).mk(paramString1);
     long l;
     label119:
     int i;
     if (paramBoolean1)
     {
       l = 1L;
-      ((ct)localObject).it(l);
+      ((ct)localObject).iy(l);
       if (!paramBoolean2) {
         break label292;
       }
       l = 1L;
-      ((ct)localObject).iu(l);
-      ((ct)localObject).lU(paramString2);
+      ((ct)localObject).iz(l);
+      ((ct)localObject).ml(paramString2);
       if (!paramBoolean3) {
         break label298;
       }
       l = 1L;
       label142:
-      ((ct)localObject).iv(l);
-      paramString2 = a.alJ();
+      ((ct)localObject).iA(l);
+      paramString2 = a.alY();
       p.g(paramString2, "ConfigHelper.getInstance()");
-      switch (paramString2.alN().gJh)
+      switch (paramString2.amc().gLQ)
       {
       default: 
         i = 0;
@@ -312,18 +318,18 @@ public final class e
     }
     for (;;)
     {
-      ((ct)localObject).iw(i);
-      ((ct)localObject).ix(paramInt1);
-      ((ct)localObject).iy(paramInt2);
-      ((ct)localObject).iz(paramInt3);
-      paramString2 = b.gYf;
-      paramString2 = u.aAm();
+      ((ct)localObject).iB(i);
+      ((ct)localObject).iC(paramInt1);
+      ((ct)localObject).iD(paramInt2);
+      ((ct)localObject).iE(paramInt3);
+      paramString2 = b.haR;
+      paramString2 = v.aAC();
       p.g(paramString2, "ConfigStorageLogic.getUsernameFromUserInfo()");
-      ((ct)localObject).iA(b.a.au(paramString2, paramString1));
-      paramString2 = b.gYf;
-      ((ct)localObject).iB(b.a.xU(paramString1));
-      ((ct)localObject).aLk();
-      AppMethodBeat.o(212749);
+      ((ct)localObject).iF(b.a.av(paramString2, paramString1));
+      paramString2 = b.haR;
+      ((ct)localObject).iG(b.a.yE(paramString1));
+      ((ct)localObject).aLH();
+      AppMethodBeat.o(216377);
       return;
       l = 0L;
       break;
@@ -339,47 +345,52 @@ public final class e
     }
   }
   
-  public static final void apX()
+  public static final void aql()
   {
-    AppMethodBeat.i(212748);
+    AppMethodBeat.i(216376);
     cw localcw = new cw();
-    Object localObject = b.gYf;
-    localObject = u.aAm();
+    Object localObject = b.haR;
+    localObject = v.aAC();
     p.g(localObject, "ConfigStorageLogic.getUsernameFromUserInfo()");
-    localcw.iL(b.a.au((String)localObject, gYi));
-    localcw.mb(gYi);
-    localcw.ST();
-    localcw.aLk();
-    AppMethodBeat.o(212748);
+    localcw.iQ(b.a.av((String)localObject, haU));
+    localcw.ms(haU);
+    localcw.SX();
+    localcw.aLH();
+    AppMethodBeat.o(216376);
+  }
+  
+  public static db aqm()
+  {
+    return haV;
   }
   
   public static final void b(String paramString1, long paramLong, String paramString2, String paramString3, int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(212760);
+    AppMethodBeat.i(216388);
     p.h(paramString1, "roomId");
     p.h(paramString2, "micId");
     p.h(paramString3, "liveUserName");
     cx localcx = new cx();
-    Object localObject = b.gYf;
-    localObject = u.aAm();
+    Object localObject = b.haR;
+    localObject = v.aAC();
     p.g(localObject, "ConfigStorageLogic.getUsernameFromUserInfo()");
-    localcx.iN(b.a.av((String)localObject, paramString3));
-    paramString3 = b.gYf;
-    paramString3 = u.aAm();
+    localcx.iS(b.a.aw((String)localObject, paramString3));
+    paramString3 = b.haR;
+    paramString3 = v.aAC();
     p.g(paramString3, "ConfigStorageLogic.getUsernameFromUserInfo()");
-    localcx.iO(b.a.au(paramString3, paramString1));
-    localcx.iM(paramLong);
-    localcx.mc(paramString2);
-    localcx.iP(paramInt1);
-    localcx.iQ(paramInt2);
-    localcx.iC(paramInt3);
-    localcx.aLk();
-    AppMethodBeat.o(212760);
+    localcx.iT(b.a.av(paramString3, paramString1));
+    localcx.iR(paramLong);
+    localcx.mt(paramString2);
+    localcx.iU(paramInt1);
+    localcx.iV(paramInt2);
+    localcx.iE(paramInt3);
+    localcx.aLH();
+    AppMethodBeat.o(216388);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.live.d.e
  * JD-Core Version:    0.7.0.1
  */

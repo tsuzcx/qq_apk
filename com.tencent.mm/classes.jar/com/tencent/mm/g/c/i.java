@@ -8,13 +8,13 @@ public abstract class i
   extends c
 {
   public static final String[] INDEX_CREATE = { "CREATE INDEX IF NOT EXISTS AppBrandAppLaunchRecordUpdateTimeIndex ON AppBrandAppLaunchUsernameDuplicateRecord2(updateTime)" };
-  private static final int eFo = "usernameHash".hashCode();
-  private static final int eFp = "username".hashCode();
-  private static final int eFq = "updateTime".hashCode();
+  private static final int eGX = "usernameHash".hashCode();
+  private static final int eGY = "username".hashCode();
+  private static final int eGZ = "updateTime".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eFl = true;
-  private boolean eFm = true;
-  private boolean eFn = true;
+  private boolean eGU = true;
+  private boolean eGV = true;
+  private boolean eGW = true;
   public long field_updateTime;
   public String field_username;
   public int field_usernameHash;
@@ -32,11 +32,11 @@ public abstract class i
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eFo != k) {
+      if (eGX != k) {
         break label65;
       }
       this.field_usernameHash = paramCursor.getInt(i);
-      this.eFl = true;
+      this.eGU = true;
     }
     for (;;)
     {
@@ -44,9 +44,9 @@ public abstract class i
       break label20;
       break;
       label65:
-      if (eFp == k) {
+      if (eGY == k) {
         this.field_username = paramCursor.getString(i);
-      } else if (eFq == k) {
+      } else if (eGZ == k) {
         this.field_updateTime = paramCursor.getLong(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
@@ -57,13 +57,13 @@ public abstract class i
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eFl) {
+    if (this.eGU) {
       localContentValues.put("usernameHash", Integer.valueOf(this.field_usernameHash));
     }
-    if (this.eFm) {
+    if (this.eGV) {
       localContentValues.put("username", this.field_username);
     }
-    if (this.eFn) {
+    if (this.eGW) {
       localContentValues.put("updateTime", Long.valueOf(this.field_updateTime));
     }
     if (this.systemRowid > 0L) {

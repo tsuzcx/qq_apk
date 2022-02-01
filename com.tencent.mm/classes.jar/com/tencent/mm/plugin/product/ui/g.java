@@ -13,7 +13,7 @@ import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.platformtools.u;
 import com.tencent.mm.platformtools.u.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -22,10 +22,10 @@ public final class g
   extends q
 {
   Context mContext;
-  private ArrayList<b> wNF;
-  private boolean wNG;
-  a wNH;
-  private List<String> wNk;
+  private List<String> xcY;
+  private ArrayList<b> xdt;
+  private boolean xdu;
+  a xdv;
   
   public g(Context paramContext)
   {
@@ -35,29 +35,29 @@ public final class g
   private g(Context paramContext, byte paramByte)
   {
     AppMethodBeat.i(66978);
-    this.wNG = false;
-    this.wNH = null;
+    this.xdu = false;
+    this.xdv = null;
     this.mContext = paramContext;
-    this.wNk = null;
-    setData(this.wNk);
+    this.xcY = null;
+    setData(this.xcY);
     AppMethodBeat.o(66978);
   }
   
-  private void dzU()
+  private void dDl()
   {
     AppMethodBeat.i(66979);
-    if (this.wNF == null) {
-      this.wNF = new ArrayList();
+    if (this.xdt == null) {
+      this.xdt = new ArrayList();
     }
     for (;;)
     {
-      Iterator localIterator = this.wNk.iterator();
+      Iterator localIterator = this.xcY.iterator();
       while (localIterator.hasNext())
       {
         b localb = new b((String)localIterator.next());
-        this.wNF.add(localb);
+        this.xdt.add(localb);
       }
-      this.wNF.clear();
+      this.xdt.clear();
     }
     AppMethodBeat.o(66979);
   }
@@ -65,9 +65,9 @@ public final class g
   public final void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
   {
     AppMethodBeat.i(66982);
-    ad.d("MicroMsg.MallProductImageAdapter", "destroy item");
-    if (this.wNF != null) {
-      paramViewGroup.removeView(((b)this.wNF.get(paramInt)).dwy);
+    ae.d("MicroMsg.MallProductImageAdapter", "destroy item");
+    if (this.xdt != null) {
+      paramViewGroup.removeView(((b)this.xdt.get(paramInt)).dxD);
     }
     AppMethodBeat.o(66982);
   }
@@ -75,17 +75,17 @@ public final class g
   public final int getCount()
   {
     AppMethodBeat.i(66981);
-    if (this.wNk == null)
+    if (this.xcY == null)
     {
       AppMethodBeat.o(66981);
       return 0;
     }
-    if (this.wNG)
+    if (this.xdu)
     {
       AppMethodBeat.o(66981);
       return 2147483647;
     }
-    int i = this.wNk.size();
+    int i = this.xcY.size();
     AppMethodBeat.o(66981);
     return i;
   }
@@ -98,11 +98,11 @@ public final class g
   public final Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
   {
     AppMethodBeat.i(66983);
-    if (this.wNF != null)
+    if (this.xdt != null)
     {
-      ad.d("MicroMsg.MallProductImageAdapter", "data valid");
-      paramViewGroup.addView(((b)this.wNF.get(paramInt)).dwy, 0);
-      paramViewGroup = ((b)this.wNF.get(paramInt)).dwy;
+      ae.d("MicroMsg.MallProductImageAdapter", "data valid");
+      paramViewGroup.addView(((b)this.xdt.get(paramInt)).dxD, 0);
+      paramViewGroup = ((b)this.xdt.get(paramInt)).dxD;
       AppMethodBeat.o(66983);
       return paramViewGroup;
     }
@@ -122,43 +122,43 @@ public final class g
     if (paramList != null)
     {
       if (paramList.size() > 0) {
-        this.wNk = paramList;
+        this.xcY = paramList;
       }
-      dzU();
+      dDl();
     }
     AppMethodBeat.o(66980);
   }
   
   public static abstract interface a
   {
-    public abstract void dzQ();
+    public abstract void dDh();
   }
   
   final class b
     implements u.a
   {
-    public ImageView dwy;
+    public ImageView dxD;
     public String url;
     
     public b(String paramString)
     {
       AppMethodBeat.i(66976);
-      this.dwy = null;
+      this.dxD = null;
       this.url = paramString;
-      this.dwy = ((ImageView)((LayoutInflater)g.this.mContext.getSystemService("layout_inflater")).inflate(2131495119, null));
+      this.dxD = ((ImageView)((LayoutInflater)g.this.mContext.getSystemService("layout_inflater")).inflate(2131495119, null));
       paramString = u.a(new c(paramString));
-      this.dwy.setImageBitmap(paramString);
-      this.dwy.setOnClickListener(new View.OnClickListener()
+      this.dxD.setImageBitmap(paramString);
+      this.dxD.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(66974);
           b localb = new b();
           localb.bd(paramAnonymousView);
-          a.b("com/tencent/mm/plugin/product/ui/MallProductImageAdapter$ViewHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-          ad.i("MicroMsg.MallProductImageAdapter", "henryyr user: clicked the ImageView");
-          if (g.this.wNH != null) {
-            g.this.wNH.dzQ();
+          a.b("com/tencent/mm/plugin/product/ui/MallProductImageAdapter$ViewHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+          ae.i("MicroMsg.MallProductImageAdapter", "henryyr user: clicked the ImageView");
+          if (g.this.xdv != null) {
+            g.this.xdv.dDh();
           }
           a.a(this, "com/tencent/mm/plugin/product/ui/MallProductImageAdapter$ViewHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(66974);
@@ -175,7 +175,7 @@ public final class g
       if (paramBitmap == null) {}
       for (boolean bool = true;; bool = false)
       {
-        ad.d("MicroMsg.MallProductImageAdapter", bool);
+        ae.d("MicroMsg.MallProductImageAdapter", bool);
         if (this.url != null) {
           break;
         }
@@ -183,12 +183,12 @@ public final class g
         return;
       }
       if (paramString.equals(this.url)) {
-        this.dwy.post(new Runnable()
+        this.dxD.post(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(66975);
-            g.b.this.dwy.setImageBitmap(paramBitmap);
+            g.b.this.dxD.setImageBitmap(paramBitmap);
             AppMethodBeat.o(66975);
           }
         });

@@ -5,9 +5,9 @@ import android.graphics.Canvas;
 public abstract interface f<T>
   extends Cloneable
 {
-  public abstract void NQ();
+  public abstract void NO();
   
-  public abstract void XF();
+  public abstract void XP();
   
   public abstract void a(Canvas paramCanvas, boolean paramBoolean);
   
@@ -27,7 +27,7 @@ public abstract interface f<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.cache.f
  * JD-Core Version:    0.7.0.1
  */

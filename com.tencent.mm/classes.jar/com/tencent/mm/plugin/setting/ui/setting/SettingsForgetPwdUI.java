@@ -16,7 +16,7 @@ import com.tencent.mm.ui.MMActivity;
 public class SettingsForgetPwdUI
   extends MMActivity
 {
-  private Button fQh;
+  private Button fSn;
   
   public int getLayoutId()
   {
@@ -25,7 +25,7 @@ public class SettingsForgetPwdUI
   
   public void initView()
   {
-    AppMethodBeat.i(220996);
+    AppMethodBeat.i(190371);
     setMMTitle("");
     hideActionbarLine();
     setActionbarColor(getResources().getColor(2131101179));
@@ -33,35 +33,35 @@ public class SettingsForgetPwdUI
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
-        AppMethodBeat.i(220993);
+        AppMethodBeat.i(190368);
         SettingsForgetPwdUI.this.onBackPressed();
-        AppMethodBeat.o(220993);
+        AppMethodBeat.o(190368);
         return true;
       }
     });
-    this.fQh = ((Button)findViewById(2131302852));
-    this.fQh.setOnClickListener(new View.OnClickListener()
+    this.fSn = ((Button)findViewById(2131302852));
+    this.fSn.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(220994);
+        AppMethodBeat.i(190369);
         b localb = new b();
         localb.bd(paramAnonymousView);
-        a.b("com/tencent/mm/plugin/setting/ui/setting/SettingsForgetPwdUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        a.b("com/tencent/mm/plugin/setting/ui/setting/SettingsForgetPwdUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
         SettingsForgetPwdUI.this.onBackPressed();
         a.a(this, "com/tencent/mm/plugin/setting/ui/setting/SettingsForgetPwdUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(220994);
+        AppMethodBeat.o(190369);
       }
     });
-    AppMethodBeat.o(220996);
+    AppMethodBeat.o(190371);
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(220995);
+    AppMethodBeat.i(190370);
     super.onCreate(paramBundle);
     initView();
-    AppMethodBeat.o(220995);
+    AppMethodBeat.o(190370);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)

@@ -5,31 +5,31 @@ import d.g.a.a;
 import d.l;
 import d.z;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/storage/config/FinderSimpleClickConfig;", "Lcom/tencent/mm/plugin/finder/storage/config/FinderFakeConfig;", "", "title", "onClick", "Lkotlin/Function0;", "", "(Ljava/lang/String;Lkotlin/jvm/functions/Function0;)V", "getOnClick", "()Lkotlin/jvm/functions/Function0;", "onItemClick", "index", "", "reset", "value", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/storage/config/FinderSimpleClickConfig;", "Lcom/tencent/mm/plugin/finder/storage/config/FinderFakeConfig;", "", "title", "onClick", "Lkotlin/Function0;", "", "(Ljava/lang/String;Lkotlin/jvm/functions/Function0;)V", "getOnClick", "()Lkotlin/jvm/functions/Function0;", "onItemClick", "index", "", "reset", "value", "plugin-finder_release"})
 public final class c
   extends b<String>
 {
-  private final a<z> ghF;
+  private final a<z> gjX;
   
   public c(String paramString, a<z> parama)
   {
     super("", paramString);
-    AppMethodBeat.i(203767);
-    this.ghF = parama;
-    AppMethodBeat.o(203767);
+    AppMethodBeat.i(204350);
+    this.gjX = parama;
+    AppMethodBeat.o(204350);
   }
   
-  public final void Fq(int paramInt)
+  public final void FN(int paramInt)
   {
-    AppMethodBeat.i(203766);
-    a locala = this.ghF;
+    AppMethodBeat.i(204349);
+    a locala = this.gjX;
     if (locala != null)
     {
       locala.invoke();
-      AppMethodBeat.o(203766);
+      AppMethodBeat.o(204349);
       return;
     }
-    AppMethodBeat.o(203766);
+    AppMethodBeat.o(204349);
   }
   
   public final void reset() {}

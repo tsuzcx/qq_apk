@@ -1,18 +1,18 @@
 package com.tencent.mm.plugin.account.bind.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
 import com.tencent.mm.protocal.protobuf.lm;
 import com.tencent.mm.protocal.protobuf.ln;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.storage.ai;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.storage.aj;
 
 public final class a
   extends n
@@ -25,23 +25,23 @@ public final class a
   {
     AppMethodBeat.i(109742);
     Object localObject = new b.a();
-    ((b.a)localObject).hNM = new lm();
-    ((b.a)localObject).hNN = new ln();
+    ((b.a)localObject).hQF = new lm();
+    ((b.a)localObject).hQG = new ln();
     ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/bindlinkedincontact";
     ((b.a)localObject).funcId = getType();
-    ((b.a)localObject).hNO = 0;
+    ((b.a)localObject).hQH = 0;
     ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).aDC();
-    localObject = (lm)this.rr.hNK.hNQ;
-    ((lm)localObject).FAt = 1;
-    ((lm)localObject).FDz = paramInt;
-    ((lm)localObject).FDA = paramString1;
-    ((lm)localObject).FDB = paramString2;
-    ((lm)localObject).FDC = paramString3;
-    ((lm)localObject).FDD = paramString4;
-    ((lm)localObject).FDE = paramString5;
-    ((lm)localObject).FDF = paramString6;
-    ((lm)localObject).FDG = paramString7;
+    this.rr = ((b.a)localObject).aDS();
+    localObject = (lm)this.rr.hQD.hQJ;
+    ((lm)localObject).FSQ = 1;
+    ((lm)localObject).FVU = paramInt;
+    ((lm)localObject).FVV = paramString1;
+    ((lm)localObject).FVW = paramString2;
+    ((lm)localObject).FVX = paramString3;
+    ((lm)localObject).FVY = paramString4;
+    ((lm)localObject).FVZ = paramString5;
+    ((lm)localObject).FWa = paramString6;
+    ((lm)localObject).FWb = paramString7;
     AppMethodBeat.o(109742);
   }
   
@@ -62,13 +62,13 @@ public final class a
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(109744);
-    ad.d("MicroMsg.NetSceneBindLinkedinContact", "onGYNetEnd errType:" + paramInt2 + " errCode:" + paramInt3);
-    paramq = (lm)this.rr.hNK.hNQ;
+    ae.d("MicroMsg.NetSceneBindLinkedinContact", "onGYNetEnd errType:" + paramInt2 + " errCode:" + paramInt3);
+    paramq = (lm)this.rr.hQD.hQJ;
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      g.ajC().ajl().set(286722, paramq.FDB);
-      g.ajC().ajl().set(286721, paramq.FDA);
-      g.ajC().ajl().set(286723, paramq.FDC);
+      g.ajR().ajA().set(286722, paramq.FVW);
+      g.ajR().ajA().set(286721, paramq.FVV);
+      g.ajR().ajA().set(286723, paramq.FVX);
     }
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(109744);

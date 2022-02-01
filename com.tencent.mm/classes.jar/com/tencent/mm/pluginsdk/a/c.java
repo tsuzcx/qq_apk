@@ -5,23 +5,23 @@ import com.tencent.mm.pluginsdk.o.b;
 public final class c
   implements o.b
 {
-  public final int dOH()
+  public final int dSe()
   {
     return 0;
   }
   
-  public final void dOI() {}
+  public final void dSf() {}
   
-  public final boolean dOJ()
+  public final boolean dSg()
   {
     return false;
   }
   
-  public final void dOK() {}
+  public final void dSh() {}
   
-  public final void dOL() {}
+  public final void dSi() {}
   
-  public final boolean dOM()
+  public final boolean dSj()
   {
     return false;
   }

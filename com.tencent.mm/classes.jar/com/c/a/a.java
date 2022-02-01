@@ -14,11 +14,11 @@ public final class a
     AppMethodBeat.i(130925);
     if (paramj.method.equals("getPlatformVersion"))
     {
-      paramd.de("Android " + Build.VERSION.RELEASE);
+      paramd.df("Android " + Build.VERSION.RELEASE);
       AppMethodBeat.o(130925);
       return;
     }
-    paramd.djR();
+    paramd.dmQ();
     AppMethodBeat.o(130925);
   }
 }

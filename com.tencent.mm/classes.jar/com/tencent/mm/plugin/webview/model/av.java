@@ -3,47 +3,47 @@ package com.tencent.mm.plugin.webview.model;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.webview.stub.f;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class av
 {
-  public static av DUy;
-  public f DNO = null;
+  public static av Emx;
+  public f EfN = null;
   public boolean hasInit;
   
   static
   {
     AppMethodBeat.i(79045);
-    DUy = new av();
+    Emx = new av();
     AppMethodBeat.o(79045);
   }
   
-  public static av eQu()
+  public static av eUg()
   {
-    return DUy;
+    return Emx;
   }
   
   public final void setNetWorkState(int paramInt)
   {
     AppMethodBeat.i(79044);
-    if (this.DNO == null) {}
+    if (this.EfN == null) {}
     for (boolean bool = true;; bool = false)
     {
-      ad.i("MicroMsg.WebViewVideoProxy", "set networkd state = %d, callbacker == null ? %b", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(bool) });
-      if (this.DNO == null) {
+      ae.i("MicroMsg.WebViewVideoProxy", "set networkd state = %d, callbacker == null ? %b", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(bool) });
+      if (this.EfN == null) {
         break label105;
       }
       Bundle localBundle = new Bundle();
       localBundle.putInt("webview_video_proxy_net_state", paramInt);
       try
       {
-        this.DNO.k(5005, localBundle);
+        this.EfN.k(5005, localBundle);
         AppMethodBeat.o(79044);
         return;
       }
       catch (Exception localException)
       {
-        ad.e("MicroMsg.WebViewVideoProxy", "set network state failed : %s", new Object[] { localException.getMessage() });
+        ae.e("MicroMsg.WebViewVideoProxy", "set network state failed : %s", new Object[] { localException.getMessage() });
       }
     }
     label105:

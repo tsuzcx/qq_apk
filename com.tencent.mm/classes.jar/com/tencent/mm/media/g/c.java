@@ -3,7 +3,7 @@ package com.tencent.mm.media.g;
 import android.annotation.SuppressLint;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.matrix.trace.g.b;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import d.l;
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
@@ -12,22 +12,22 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/media/globject/GLObjectFactory;", "", "()V", "TAG", "", "allocatedFramebuffer", "Ljava/util/HashMap;", "", "Ljava/lang/ref/WeakReference;", "Lcom/tencent/mm/media/globject/GLFrameBufferObject;", "Lkotlin/collections/HashMap;", "allocatedTexture", "Lcom/tencent/mm/media/globject/GLTextureObject;", "newFrameBuffer", "scene", "", "newTexture", "sampler2D", "", "printAllocatedGLObjectInfo", "", "plugin-mediaeditor_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/media/globject/GLObjectFactory;", "", "()V", "TAG", "", "allocatedFramebuffer", "Ljava/util/HashMap;", "", "Ljava/lang/ref/WeakReference;", "Lcom/tencent/mm/media/globject/GLFrameBufferObject;", "Lkotlin/collections/HashMap;", "allocatedTexture", "Lcom/tencent/mm/media/globject/GLTextureObject;", "newFrameBuffer", "scene", "", "newTexture", "sampler2D", "", "printAllocatedGLObjectInfo", "", "plugin-mediaeditor_release"})
 public final class c
 {
   private static final String TAG = "MicroMsg.GLObjectFactory";
   @SuppressLint({"UseSparseArrays"})
-  private static final HashMap<Integer, WeakReference<d>> hkl;
-  private static final HashMap<Integer, WeakReference<a>> hkm;
-  public static final c hkn;
+  private static final HashMap<Integer, WeakReference<d>> hmZ;
+  private static final HashMap<Integer, WeakReference<a>> hna;
+  public static final c hnb;
   
   static
   {
     AppMethodBeat.i(93698);
-    hkn = new c();
+    hnb = new c();
     TAG = "MicroMsg.GLObjectFactory";
-    hkl = new HashMap();
-    hkm = new HashMap();
+    hmZ = new HashMap();
+    hna = new HashMap();
     AppMethodBeat.o(93698);
   }
   
@@ -35,21 +35,21 @@ public final class c
   {
     AppMethodBeat.i(93694);
     d locald = new d(paramBoolean, paramLong);
-    ((Map)hkl).put(Integer.valueOf(locald.hashCode()), new WeakReference(locald));
+    ((Map)hmZ).put(Integer.valueOf(locald.hashCode()), new WeakReference(locald));
     AppMethodBeat.o(93694);
     return locald;
   }
   
-  public static a rq(long paramLong)
+  public static a rD(long paramLong)
   {
     AppMethodBeat.i(93696);
     a locala = new a(paramLong);
-    ((Map)hkm).put(Integer.valueOf(locala.hashCode()), new WeakReference(locala));
+    ((Map)hna).put(Integer.valueOf(locala.hashCode()), new WeakReference(locala));
     AppMethodBeat.o(93696);
     return locala;
   }
   
-  public final void atJ()
+  public final void atY()
   {
     Object localObject2;
     Integer localInteger;
@@ -58,9 +58,9 @@ public final class c
       try
       {
         AppMethodBeat.i(93697);
-        ad.i(TAG, "--------printAllocatedGLObjectInfo, current allocated tex size:" + hkl.size() + ", frameBuffer size:" + hkm.size() + " calledStack:" + b.getStack());
-        ad.i(TAG, "--------------------------------------------");
-        Iterator localIterator1 = ((Map)new HashMap((Map)hkl)).entrySet().iterator();
+        ae.i(TAG, "--------printAllocatedGLObjectInfo, current allocated tex size:" + hmZ.size() + ", frameBuffer size:" + hna.size() + " calledStack:" + b.getStack());
+        ae.i(TAG, "--------------------------------------------");
+        Iterator localIterator1 = ((Map)new HashMap((Map)hmZ)).entrySet().iterator();
         if (!localIterator1.hasNext()) {
           break;
         }
@@ -70,21 +70,21 @@ public final class c
         if (localObject2 == null) {
           break label281;
         }
-        if (!((d)localObject2).hkg)
+        if (!((d)localObject2).hmU)
         {
-          ad.i(TAG, localInteger + " tex leak, texId:" + ((d)localObject2).hko + ", external:" + ((d)localObject2).atM() + ", allocatedTid:" + ((d)localObject2).tid);
+          ae.i(TAG, localInteger + " tex leak, texId:" + ((d)localObject2).hnc + ", external:" + ((d)localObject2).aub() + ", allocatedTid:" + ((d)localObject2).tid);
           continue;
         }
-        hkl.remove(localInteger);
+        hmZ.remove(localInteger);
       }
       finally {}
-      ad.i(TAG, localInteger + " tex released, texId:" + ((d)localObject2).hko + ", external:" + ((d)localObject2).atM() + ", allocatedTid:" + ((d)localObject2).tid);
+      ae.i(TAG, localInteger + " tex released, texId:" + ((d)localObject2).hnc + ", external:" + ((d)localObject2).aub() + ", allocatedTid:" + ((d)localObject2).tid);
       continue;
       label281:
-      ad.i(TAG, localInteger + " tex recycled");
-      hkl.remove(localInteger);
+      ae.i(TAG, localInteger + " tex recycled");
+      hmZ.remove(localInteger);
     }
-    Iterator localIterator2 = ((Map)new HashMap((Map)hkm)).entrySet().iterator();
+    Iterator localIterator2 = ((Map)new HashMap((Map)hna)).entrySet().iterator();
     while (localIterator2.hasNext())
     {
       localObject2 = (Map.Entry)localIterator2.next();
@@ -92,23 +92,23 @@ public final class c
       localObject2 = (a)((WeakReference)((Map.Entry)localObject2).getValue()).get();
       if (localObject2 != null)
       {
-        if (!((a)localObject2).hkg)
+        if (!((a)localObject2).hmU)
         {
-          ad.i(TAG, localInteger + " fbo leak, fbo:" + ((a)localObject2).hkh + ", allocatedTid:" + ((a)localObject2).tid);
+          ae.i(TAG, localInteger + " fbo leak, fbo:" + ((a)localObject2).hmV + ", allocatedTid:" + ((a)localObject2).tid);
         }
         else
         {
-          hkm.remove(localInteger);
-          ad.i(TAG, localInteger + " fbo released, fbo:" + ((a)localObject2).hkh + ", allocatedTid:" + ((a)localObject2).tid);
+          hna.remove(localInteger);
+          ae.i(TAG, localInteger + " fbo released, fbo:" + ((a)localObject2).hmV + ", allocatedTid:" + ((a)localObject2).tid);
         }
       }
       else
       {
-        ad.i(TAG, localInteger + " fbo recycled");
-        hkm.remove(localInteger);
+        ae.i(TAG, localInteger + " fbo recycled");
+        hna.remove(localInteger);
       }
     }
-    ad.i(TAG, "--------finish printAllocatedGLObjectInfo--------");
+    ae.i(TAG, "--------finish printAllocatedGLObjectInfo--------");
     AppMethodBeat.o(93697);
   }
 }

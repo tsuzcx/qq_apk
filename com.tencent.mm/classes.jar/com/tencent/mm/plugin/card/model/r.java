@@ -2,18 +2,18 @@ package com.tencent.mm.plugin.card.model;
 
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
 import com.tencent.mm.protocal.protobuf.jf;
 import com.tencent.mm.protocal.protobuf.jg;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.Iterator;
 import java.util.LinkedList;
 
@@ -22,22 +22,22 @@ public final class r
   implements k
 {
   private f callback;
-  private int gcp;
+  private int gex;
   private final b rr;
   
   public r(LinkedList<String> paramLinkedList)
   {
     AppMethodBeat.i(112808);
-    this.gcp = 0;
+    this.gex = 0;
     b.a locala = new b.a();
-    locala.hNM = new jf();
-    locala.hNN = new jg();
+    locala.hQF = new jf();
+    locala.hQG = new jg();
     locala.uri = "/cgi-bin/micromsg-bin/batchdelcarditem";
     locala.funcId = 1077;
-    locala.hNO = 0;
+    locala.hQH = 0;
     locala.respCmdId = 0;
-    this.rr = locala.aDC();
-    ((jf)this.rr.hNK.hNQ).FCh = paramLinkedList;
+    this.rr = locala.aDS();
+    ((jf)this.rr.hQD.hQJ).FUC = paramLinkedList;
     AppMethodBeat.o(112808);
   }
   
@@ -58,19 +58,19 @@ public final class r
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(112810);
-    ad.i("MicroMsg.NetSceneBatchDelCardItem", "onGYNetEnd, errType = %d, errCode = %d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    ae.i("MicroMsg.NetSceneBatchDelCardItem", "onGYNetEnd, errType = %d, errCode = %d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      paramq = ((jg)this.rr.hNL.hNQ).FCi;
+      paramq = ((jg)this.rr.hQE.hQJ).FUD;
       if (paramq != null) {
         break label121;
       }
       paramInt1 = 0;
-      ad.i("MicroMsg.NetSceneBatchDelCardItem", "onGYNetEnd, resp list count = %d", new Object[] { Integer.valueOf(paramInt1) });
+      ae.i("MicroMsg.NetSceneBatchDelCardItem", "onGYNetEnd, resp list count = %d", new Object[] { Integer.valueOf(paramInt1) });
       if ((paramq != null) && (paramq.size() != 0)) {
         break label130;
       }
-      ad.e("MicroMsg.NetSceneBatchDelCardItem", "onGYNetEnd fail, resp list is null");
+      ae.e("MicroMsg.NetSceneBatchDelCardItem", "onGYNetEnd fail, resp list is null");
     }
     for (;;)
     {
@@ -81,7 +81,7 @@ public final class r
       paramInt1 = paramq.size();
       break;
       label130:
-      this.gcp = 0;
+      this.gex = 0;
       paramq = paramq.iterator();
       label250:
       while (paramq.hasNext())
@@ -90,7 +90,7 @@ public final class r
         boolean bool;
         if (TextUtils.isEmpty(paramArrayOfByte))
         {
-          ad.e("MicroMsg.NetSceneBatchDelCardItem", "processDelCardItem fail, id is null");
+          ae.e("MicroMsg.NetSceneBatchDelCardItem", "processDelCardItem fail, id is null");
           bool = false;
         }
         for (;;)
@@ -98,15 +98,15 @@ public final class r
           if (bool) {
             break label250;
           }
-          this.gcp += 1;
+          this.gex += 1;
           break;
           CardInfo localCardInfo = new CardInfo();
           localCardInfo.field_card_id = paramArrayOfByte;
-          bool = am.bUN().delete(localCardInfo, new String[0]);
-          ad.i("MicroMsg.NetSceneBatchDelCardItem", "processDelCardItem, delRet = %b", new Object[] { Boolean.valueOf(bool) });
+          bool = am.bWc().delete(localCardInfo, new String[0]);
+          ae.i("MicroMsg.NetSceneBatchDelCardItem", "processDelCardItem, delRet = %b", new Object[] { Boolean.valueOf(bool) });
         }
       }
-      ad.d("MicroMsg.NetSceneBatchDelCardItem", "onGYNetEnd, %d fail items", new Object[] { Integer.valueOf(this.gcp) });
+      ae.d("MicroMsg.NetSceneBatchDelCardItem", "onGYNetEnd, %d fail items", new Object[] { Integer.valueOf(this.gex) });
     }
   }
 }

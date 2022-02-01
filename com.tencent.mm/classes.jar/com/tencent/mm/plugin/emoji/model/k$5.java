@@ -9,10 +9,10 @@ final class k$5
 {
   public final String[] getSQLs()
   {
-    AppMethodBeat.i(198745);
-    Object localObject = g.IOj;
-    localObject = g.eln();
-    AppMethodBeat.o(198745);
+    AppMethodBeat.i(194863);
+    Object localObject = g.JiP;
+    localObject = g.eoW();
+    AppMethodBeat.o(194863);
     return localObject;
   }
 }

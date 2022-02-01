@@ -3,62 +3,62 @@ package com.tencent.mm.storage;
 import com.tencent.e.h;
 import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.x.a;
-import com.tencent.mm.protocal.protobuf.ob;
-import com.tencent.mm.protocal.protobuf.oc;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ax;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.x.a;
+import com.tencent.mm.protocal.protobuf.od;
+import com.tencent.mm.protocal.protobuf.oe;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ay;
 
 final class y$2
   implements x.a
 {
-  y$2(ob paramob, ax paramax, int paramInt) {}
+  y$2(od paramod, ay paramay, int paramInt) {}
   
   public final int a(int paramInt1, int paramInt2, final String paramString, b paramb, n paramn)
   {
     AppMethodBeat.i(124658);
-    ad.i("MicroMsg.BizTimeLineInfoStorageLogic", "reSortBizMsgIfNeed CGI callback errType=%d, errCode=%d, bitFlag=%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(this.Ipd.FJk) });
-    this.wVq.encode("ReSortBizMsgLastTime", System.currentTimeMillis() / 1000L);
+    ae.i("MicroMsg.BizTimeLineInfoStorageLogic", "reSortBizMsgIfNeed CGI callback errType=%d, errCode=%d, bitFlag=%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(this.IJv.GbJ) });
+    this.xlh.encode("ReSortBizMsgLastTime", System.currentTimeMillis() / 1000L);
     if ((paramInt1 != 0) || (paramInt2 != 0))
     {
-      y.aaL(2);
-      y.aZZ();
+      y.abt(2);
+      y.bay();
       AppMethodBeat.o(124658);
       return 0;
     }
-    y.aaL(1);
-    paramString = (oc)paramb.hNL.hNQ;
+    y.abt(1);
+    paramString = (oe)paramb.hQE.hQJ;
     if (paramString == null)
     {
-      y.aZZ();
+      y.bay();
       AppMethodBeat.o(124658);
       return 0;
     }
-    if (this.Ipc == y.IoQ) {
-      this.wVq.encode("ReSortBizMsgNextForeGroundReqTime", paramString.FJl);
+    if (this.IJu == y.IJg) {
+      this.xlh.encode("ReSortBizMsgNextForeGroundReqTime", paramString.GbK);
     }
     for (;;)
     {
-      this.wVq.encode("ReSortBizMsgMinUnExposedCount", paramString.FJm);
-      this.wVq.encode("ReSortBizMsgMinUnReadCount", paramString.FJn);
-      this.wVq.encode("ReSortBizMsgLimitTime", paramString.FJo);
-      this.wVq.encode("ReSortBizMsgReqCount", paramString.FJp);
-      h.LTJ.f(new Runnable()
+      this.xlh.encode("ReSortBizMsgMinUnExposedCount", paramString.GbL);
+      this.xlh.encode("ReSortBizMsgMinUnReadCount", paramString.GbM);
+      this.xlh.encode("ReSortBizMsgLimitTime", paramString.GbN);
+      this.xlh.encode("ReSortBizMsgReqCount", paramString.GbO);
+      h.MqF.f(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(124657);
           y.a(paramString);
-          y.aZZ();
+          y.bay();
           AppMethodBeat.o(124657);
         }
       }, "BizTimeLineInfoStorageThread");
       AppMethodBeat.o(124658);
       return 0;
-      this.wVq.encode("ReSortBizMsgNextReqTime", paramString.FJl);
+      this.xlh.encode("ReSortBizMsgNextReqTime", paramString.GbK);
     }
   }
 }

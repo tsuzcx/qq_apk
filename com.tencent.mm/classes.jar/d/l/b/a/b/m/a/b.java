@@ -5,7 +5,7 @@ import d.g.b.z;
 
 public final class b
 {
-  static final String fy(Object paramObject)
+  static final String fB(Object paramObject)
   {
     AppMethodBeat.i(60987);
     paramObject = "ClassicTypeCheckerContext couldn't handle " + z.bp(paramObject.getClass()) + ' ' + paramObject;

@@ -5,35 +5,35 @@ import java.util.Set;
 
 public final class b
 {
-  public a cEm;
-  public boolean cFj;
-  public boolean cJD;
-  public boolean cJE;
-  public boolean cJF;
-  public boolean cJG;
-  public boolean cJH;
-  public String cJI;
-  public Set<String> cJJ;
-  public boolean cJK = true;
+  public a cET;
+  public boolean cFS;
+  public boolean cKm;
+  public boolean cKn;
+  public boolean cKo;
+  public boolean cKp;
+  public boolean cKq;
+  public String cKr;
+  public Set<String> cKs;
+  public boolean cKt = true;
   
   public final String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder(" \n");
     localStringBuilder.append("# TraceConfig\n");
-    localStringBuilder.append("* isDebug:\t").append(this.cFj).append("\n");
-    localStringBuilder.append("* isDevEnv:\t").append(this.cJH).append("\n");
-    localStringBuilder.append("* isHasActivity:\t").append(this.cJK).append("\n");
-    localStringBuilder.append("* defaultFpsEnable:\t").append(this.cJD).append("\n");
-    localStringBuilder.append("* defaultMethodTraceEnable:\t").append(this.cJE).append("\n");
-    localStringBuilder.append("* defaultStartupEnable:\t").append(this.cJF).append("\n");
-    localStringBuilder.append("* defaultAnrEnable:\t").append(this.cJG).append("\n");
-    localStringBuilder.append("* splashActivities:\t").append(this.cJI).append("\n");
+    localStringBuilder.append("* isDebug:\t").append(this.cFS).append("\n");
+    localStringBuilder.append("* isDevEnv:\t").append(this.cKq).append("\n");
+    localStringBuilder.append("* isHasActivity:\t").append(this.cKt).append("\n");
+    localStringBuilder.append("* defaultFpsEnable:\t").append(this.cKm).append("\n");
+    localStringBuilder.append("* defaultMethodTraceEnable:\t").append(this.cKn).append("\n");
+    localStringBuilder.append("* defaultStartupEnable:\t").append(this.cKo).append("\n");
+    localStringBuilder.append("* defaultAnrEnable:\t").append(this.cKp).append("\n");
+    localStringBuilder.append("* splashActivities:\t").append(this.cKr).append("\n");
     return localStringBuilder.toString();
   }
   
   public static final class a
   {
-    public b cJL = new b((byte)0);
+    public b cKu = new b((byte)0);
   }
 }
 

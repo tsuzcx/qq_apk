@@ -1,23 +1,23 @@
 package com.tencent.mm.compatible.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public enum a
 {
-  private static volatile a fWd;
+  private static volatile a fYj;
   
   static
   {
     AppMethodBeat.i(155631);
-    fWc = new a("INSTANCE");
-    fWe = new a[] { fWc };
-    fWd = new a()
+    fYi = new a("INSTANCE");
+    fYk = new a[] { fYi };
+    fYj = new a()
     {
       public final void u(long paramAnonymousLong1, long paramAnonymousLong2)
       {
         AppMethodBeat.i(155626);
-        ad.w("MicroMsg.ReportDelegate", "hy: dummy reportIDKey, do nothing");
+        ae.w("MicroMsg.ReportDelegate", "hy: dummy reportIDKey, do nothing");
         AppMethodBeat.o(155626);
       }
     };
@@ -30,7 +30,7 @@ public enum a
   {
     try
     {
-      fWd = parama;
+      fYj = parama;
       return;
     }
     finally
@@ -40,17 +40,17 @@ public enum a
     }
   }
   
-  public static void qO(long paramLong)
+  public static void rb(long paramLong)
   {
     AppMethodBeat.i(155629);
-    fWd.u(853L, paramLong);
+    fYj.u(853L, paramLong);
     AppMethodBeat.o(155629);
   }
   
-  public static void qP(long paramLong)
+  public static void rc(long paramLong)
   {
     AppMethodBeat.i(155630);
-    fWd.u(650L, paramLong);
+    fYj.u(650L, paramLong);
     AppMethodBeat.o(155630);
   }
   

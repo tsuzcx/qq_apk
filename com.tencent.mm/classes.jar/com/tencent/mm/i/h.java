@@ -5,25 +5,25 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class h
   extends g
 {
-  public String cSu = "";
+  public String cTe = "";
   public int concurrentCount = 1;
-  public long dAY = 0L;
-  public String dyU;
-  public int dyW;
-  public String dzb = "";
-  public long fJC;
-  public String fJD;
-  public int fJE;
-  public int fJF;
-  public String fJG;
-  public int fJH;
-  public int fJI = 0;
-  public long fJJ = 0L;
-  public int fJK = 0;
-  public long fJL = 0L;
-  public int fJM = 1;
-  public h.a fJN;
-  public String[] fJa;
+  public int dAb;
+  public String dAg = "";
+  public long dCd = 0L;
+  public String dzZ;
+  public long fLF;
+  public String fLG;
+  public int fLH;
+  public int fLI;
+  public String fLJ;
+  public int fLK;
+  public int fLL = 0;
+  public long fLM = 0L;
+  public int fLN = 0;
+  public long fLO = 0L;
+  public int fLP = 1;
+  public a fLQ;
+  public String[] fLe;
   public String filename;
   public String host;
   public boolean isColdSnsData = false;
@@ -39,28 +39,28 @@ public class h
     AppMethodBeat.i(120678);
     Object localObject = new StringBuffer();
     ((StringBuffer)localObject).append("{");
-    ((StringBuffer)localObject).append("isPlayMode: ").append(this.fJF);
+    ((StringBuffer)localObject).append("isPlayMode: ").append(this.fLI);
     ((StringBuffer)localObject).append(" videoFormat: ").append(this.field_requestVideoFormat);
-    ((StringBuffer)localObject).append(" initialDownloadLength : ").append(this.fJk);
-    ((StringBuffer)localObject).append(" initialDownloadOffset : ").append(this.fJl);
-    ((StringBuffer)localObject).append(" videoXmlTotalLen : ").append(this.fJE);
-    ((StringBuffer)localObject).append(" videoTaskType : ").append(this.fJA);
+    ((StringBuffer)localObject).append(" initialDownloadLength : ").append(this.fLn);
+    ((StringBuffer)localObject).append(" initialDownloadOffset : ").append(this.fLo);
+    ((StringBuffer)localObject).append(" videoXmlTotalLen : ").append(this.fLH);
+    ((StringBuffer)localObject).append(" videoTaskType : ").append(this.fLD);
     ((StringBuffer)localObject).append(" filename : ").append(this.filename);
     int i;
-    if (XR())
+    if (Yb())
     {
       ((StringBuffer)localObject).append(" url : ").append(this.url);
       ((StringBuffer)localObject).append(" host : ").append(this.host);
       ((StringBuffer)localObject).append(" referer : ").append(this.referer);
       StringBuffer localStringBuffer = ((StringBuffer)localObject).append(" ip size : ");
-      if (this.fJa != null)
+      if (this.fLe != null)
       {
-        i = this.fJa.length;
+        i = this.fLe.length;
         localStringBuffer.append(i);
         ((StringBuffer)localObject).append(" isColdSnsData : ").append(this.isColdSnsData);
         ((StringBuffer)localObject).append(" signalQuality : ").append(this.signalQuality);
         ((StringBuffer)localObject).append(" snsScene : ").append(this.snsScene);
-        ((StringBuffer)localObject).append(" snsId : ").append(this.dzb);
+        ((StringBuffer)localObject).append(" snsId : ").append(this.dAg);
       }
     }
     for (;;)
@@ -68,7 +68,7 @@ public class h
       ((StringBuffer)localObject).append(" fileid : ").append(this.field_fileId);
       ((StringBuffer)localObject).append(" fileaeskey: ").append(this.field_aesKey);
       ((StringBuffer)localObject).append(" field_preloadRatio:").append(this.field_preloadRatio);
-      ((StringBuffer)localObject).append(" newmd5: ").append(this.cSu);
+      ((StringBuffer)localObject).append(" newmd5: ").append(this.cTe);
       ((StringBuffer)localObject).append(" snsCipherKey: ").append(this.snsCipherKey);
       ((StringBuffer)localObject).append("}");
       localObject = ((StringBuffer)localObject).toString();
@@ -78,6 +78,17 @@ public class h
       break;
       ((StringBuffer)localObject).append(" field_mediaId : ").append(this.field_mediaId);
     }
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void a(String paramString, int paramInt, d paramd);
+    
+    public abstract void a(String paramString1, long paramLong1, long paramLong2, String paramString2);
+    
+    public abstract void i(String paramString, long paramLong1, long paramLong2);
+    
+    public abstract void onDataAvailable(String paramString, long paramLong1, long paramLong2);
   }
 }
 

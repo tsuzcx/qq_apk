@@ -10,7 +10,7 @@ import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.aq;
 import com.tencent.mm.ui.base.n.d;
 import com.tencent.mm.ui.widget.RoundedCornerFrameLayout;
@@ -19,53 +19,53 @@ import com.tencent.mm.ui.widget.a.e.b;
 import d.g.b.p;
 import d.v;
 
-@d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/view/FinderBottomDialogHelper;", "", "()V", "Companion", "plugin-finder_release"})
+@d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/view/FinderBottomDialogHelper;", "", "()V", "Companion", "plugin-finder_release"})
 public final class c
 {
   private static final String TAG = "FinderBottomDialogHelper";
-  public static final a sSb;
+  public static final a tdm;
   
   static
   {
     AppMethodBeat.i(168222);
-    sSb = new a((byte)0);
+    tdm = new a((byte)0);
     TAG = "FinderBottomDialogHelper";
     AppMethodBeat.o(168222);
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/view/FinderBottomDialogHelper$Companion;", "", "()V", "TAG", "", "showConfirmDialog", "Lcom/tencent/mm/ui/widget/dialog/MMBottomSheet;", "context", "Landroid/content/Context;", "title", "msg", "lok", "Landroid/content/DialogInterface$OnClickListener;", "lcancel", "ldismiss", "Landroid/content/DialogInterface$OnDismissListener;", "ok", "cancel", "plugin-finder_release"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/view/FinderBottomDialogHelper$Companion;", "", "()V", "TAG", "", "showConfirmDialog", "Lcom/tencent/mm/ui/widget/dialog/MMBottomSheet;", "context", "Landroid/content/Context;", "title", "msg", "lok", "Landroid/content/DialogInterface$OnClickListener;", "lcancel", "ldismiss", "Landroid/content/DialogInterface$OnDismissListener;", "ok", "cancel", "plugin-finder_release"})
   public static final class a
   {
     public static e a(Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4, final DialogInterface.OnClickListener paramOnClickListener1, final DialogInterface.OnClickListener paramOnClickListener2, DialogInterface.OnDismissListener paramOnDismissListener)
     {
-      AppMethodBeat.i(205048);
+      AppMethodBeat.i(205673);
       p.h(paramContext, "context");
       e locale = new e(paramContext, 1, false);
       Object localObject = View.inflate(paramContext, 2131494011, null);
       if (localObject == null)
       {
         paramContext = new v("null cannot be cast to non-null type com.tencent.mm.ui.widget.RoundedCornerFrameLayout");
-        AppMethodBeat.o(205048);
+        AppMethodBeat.o(205673);
         throw paramContext;
       }
       localObject = (RoundedCornerFrameLayout)localObject;
       TextView localTextView = (TextView)((RoundedCornerFrameLayout)localObject).findViewById(2131300013);
       p.g(localTextView, "msgTv");
-      localTextView.setText((CharSequence)bt.nullAsNil(paramString2));
+      localTextView.setText((CharSequence)bu.nullAsNil(paramString2));
       paramString2 = (TextView)((RoundedCornerFrameLayout)localObject).findViewById(2131300077);
-      if (!bt.isNullOrNil(paramString1))
+      if (!bu.isNullOrNil(paramString1))
       {
         p.g(paramString2, "titleTv");
         paramString2.setText((CharSequence)paramString1);
       }
       paramString1 = (Button)((RoundedCornerFrameLayout)localObject).findViewById(2131302999);
-      if (!bt.isNullOrNil(paramString3))
+      if (!bu.isNullOrNil(paramString3))
       {
         p.g(paramString1, "okBtn");
         paramString1.setText((CharSequence)paramString3);
       }
       paramString2 = (Button)((RoundedCornerFrameLayout)localObject).findViewById(2131297690);
-      if (!bt.isNullOrNil(paramString4))
+      if (!bu.isNullOrNil(paramString4))
       {
         p.g(paramString2, "cancelBtn");
         paramString2.setText((CharSequence)paramString4);
@@ -75,13 +75,13 @@ public final class c
       paramString2.setOnClickListener((View.OnClickListener)new b(locale, paramOnClickListener2));
       locale.b((e.b)new c(paramOnDismissListener));
       locale.a((n.d)new d(locale, (RoundedCornerFrameLayout)localObject));
-      locale.fMc();
-      locale.cMW();
-      AppMethodBeat.o(205048);
+      locale.fQw();
+      locale.cPF();
+      AppMethodBeat.o(205673);
       return locale;
     }
     
-    @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+    @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
     static final class a
       implements View.OnClickListener
     {
@@ -89,21 +89,21 @@ public final class c
       
       public final void onClick(View paramView)
       {
-        AppMethodBeat.i(205044);
+        AppMethodBeat.i(205669);
         b localb = new b();
         localb.bd(paramView);
-        a.b("com/tencent/mm/plugin/finder/view/FinderBottomDialogHelper$Companion$showConfirmDialog$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-        this.sSc.bpT();
+        a.b("com/tencent/mm/plugin/finder/view/FinderBottomDialogHelper$Companion$showConfirmDialog$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        this.tdn.bqD();
         paramView = paramOnClickListener1;
         if (paramView != null) {
           paramView.onClick(null, -1);
         }
         a.a(this, "com/tencent/mm/plugin/finder/view/FinderBottomDialogHelper$Companion$showConfirmDialog$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(205044);
+        AppMethodBeat.o(205669);
       }
     }
     
-    @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+    @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
     static final class b
       implements View.OnClickListener
     {
@@ -111,21 +111,21 @@ public final class c
       
       public final void onClick(View paramView)
       {
-        AppMethodBeat.i(205045);
+        AppMethodBeat.i(205670);
         b localb = new b();
         localb.bd(paramView);
-        a.b("com/tencent/mm/plugin/finder/view/FinderBottomDialogHelper$Companion$showConfirmDialog$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-        this.sSc.bpT();
+        a.b("com/tencent/mm/plugin/finder/view/FinderBottomDialogHelper$Companion$showConfirmDialog$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        this.tdn.bqD();
         paramView = paramOnClickListener2;
         if (paramView != null) {
           paramView.onClick(null, -2);
         }
         a.a(this, "com/tencent/mm/plugin/finder/view/FinderBottomDialogHelper$Companion$showConfirmDialog$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(205045);
+        AppMethodBeat.o(205670);
       }
     }
     
-    @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "onDismiss"})
+    @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "onDismiss"})
     static final class c
       implements e.b
     {
@@ -133,19 +133,19 @@ public final class c
       
       public final void onDismiss()
       {
-        AppMethodBeat.i(205046);
-        DialogInterface.OnDismissListener localOnDismissListener = this.sSf;
+        AppMethodBeat.i(205671);
+        DialogInterface.OnDismissListener localOnDismissListener = this.tdq;
         if (localOnDismissListener != null)
         {
           localOnDismissListener.onDismiss(null);
-          AppMethodBeat.o(205046);
+          AppMethodBeat.o(205671);
           return;
         }
-        AppMethodBeat.o(205046);
+        AppMethodBeat.o(205671);
       }
     }
     
-    @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "menu", "Lcom/tencent/mm/ui/base/MMMenu;", "kotlin.jvm.PlatformType", "onCreateMMMenu"})
+    @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "menu", "Lcom/tencent/mm/ui/base/MMMenu;", "kotlin.jvm.PlatformType", "onCreateMMMenu"})
     static final class d
       implements n.d
     {
@@ -153,11 +153,11 @@ public final class c
       
       public final void onCreateMMMenu(com.tencent.mm.ui.base.l paraml)
       {
-        AppMethodBeat.i(205047);
+        AppMethodBeat.i(205672);
         paraml.clear();
-        this.sSc.setFooterView(null);
-        this.sSc.setFooterView((View)this.sSg);
-        AppMethodBeat.o(205047);
+        this.tdn.setFooterView(null);
+        this.tdn.setFooterView((View)this.tdr);
+        AppMethodBeat.o(205672);
       }
     }
   }

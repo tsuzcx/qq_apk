@@ -2,45 +2,48 @@ package com.tencent.mm.plugin.expt.d.i;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.platformtools.r.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.List;
 
 public final class b
 {
-  public r.a qQu;
+  public r.a qYs;
   
-  public final boolean a(List<com.tencent.mm.plugin.expt.d.e.b> paramList, com.tencent.mm.plugin.expt.d.e.a.b paramb)
+  public final boolean a(List<List<com.tencent.mm.plugin.expt.d.e.b>> paramList, com.tencent.mm.plugin.expt.d.e.a.b paramb)
   {
-    AppMethodBeat.i(210294);
-    if ((this.qQu == null) || (paramList == null) || (paramList.size() <= 0) || (paramb == null))
+    AppMethodBeat.i(195954);
+    if ((this.qYs == null) || (paramList == null) || (paramList.size() <= 0) || (paramb == null))
     {
-      AppMethodBeat.o(210294);
+      AppMethodBeat.o(195954);
       return false;
     }
-    ad.d("EdgeComputingDataStorage", "[EdgeComputingDataStorage] saveResult, configID : %s", new Object[] { paramb.qQf });
-    paramb = new a(this.qQu, paramb.qQf, paramb.qQj);
-    if (!paramb.cno())
+    ae.d("EdgeComputingDataStorage", "[EdgeComputingDataStorage] saveResult, configID : %s", new Object[] { paramb.qXW });
+    paramb = new a(this.qYs, paramb.qXW, paramb.qYc);
+    if (!paramb.coP())
     {
-      ad.i("EdgeComputingDataStorage", "[EdgeComputingDataStorage] saveResult create table for isnot exist!");
-      if (!paramb.cnp())
+      ae.i("EdgeComputingDataStorage", "[EdgeComputingDataStorage] saveResult create table for isnot exist!");
+      if (!paramb.coQ())
       {
-        ad.e("EdgeComputingDataStorage", "[EdgeComputingDataStorage] saveResult createTable fail!");
-        AppMethodBeat.o(210294);
+        ae.e("EdgeComputingDataStorage", "[EdgeComputingDataStorage] saveResult createTable fail!");
+        AppMethodBeat.o(195954);
         return false;
       }
+      if (!paramb.coR()) {
+        ae.e("EdgeComputingDataStorage", "[EdgeComputingDataStorage] saveResult createIndex fail!");
+      }
     }
-    else
+    for (;;)
     {
-      paramb.cnq();
+      boolean bool = paramb.db(paramList);
+      AppMethodBeat.o(195954);
+      return bool;
+      paramb.coS();
     }
-    boolean bool = paramb.cY(paramList);
-    AppMethodBeat.o(210294);
-    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.d.i.b
  * JD-Core Version:    0.7.0.1
  */

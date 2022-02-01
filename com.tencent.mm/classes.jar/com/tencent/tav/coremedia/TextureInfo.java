@@ -40,10 +40,10 @@ public class TextureInfo
   
   public TextureInfo clone()
   {
-    AppMethodBeat.i(219465);
+    AppMethodBeat.i(200258);
     TextureInfo localTextureInfo = new TextureInfo(this.textureID, this.textureType, this.width, this.height, this.textureMatrix, this.preferRotation);
     localTextureInfo.needRelease = true;
-    AppMethodBeat.o(219465);
+    AppMethodBeat.o(200258);
     return localTextureInfo;
   }
   
@@ -79,7 +79,7 @@ public class TextureInfo
   
   public void release()
   {
-    AppMethodBeat.i(219466);
+    AppMethodBeat.i(200259);
     this.released = true;
     if (this.frameBuffer != -1)
     {
@@ -87,7 +87,7 @@ public class TextureInfo
       this.frameBuffer = -1;
     }
     GLES20.glDeleteTextures(1, new int[] { this.textureID }, 0);
-    AppMethodBeat.o(219466);
+    AppMethodBeat.o(200259);
   }
   
   public void setFormat(int paramInt)
@@ -112,9 +112,9 @@ public class TextureInfo
   
   public String toString()
   {
-    AppMethodBeat.i(219467);
+    AppMethodBeat.i(200260);
     String str = "TextureInfo{textureID=" + this.textureID + ", textureType=" + this.textureType + ", width=" + this.width + ", height=" + this.height + ", preferRotation=" + this.preferRotation + ", textureMatrix=" + this.textureMatrix + ", frameBuffer=" + this.frameBuffer + ", needRelease=" + this.needRelease + ", mixAlpha=" + this.mixAlpha + ", format=" + this.format + '}';
-    AppMethodBeat.o(219467);
+    AppMethodBeat.o(200260);
     return str;
   }
 }

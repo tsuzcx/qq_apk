@@ -4,48 +4,48 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.config.d;
 import com.tencent.mm.plugin.appbrand.service.g;
 import com.tencent.mm.plugin.appbrand.service.g.a;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.aj;
 
 public final class b
   implements g
 {
-  private String jDl;
-  private g.a jDm;
+  private String jGj;
+  private g.a jGk;
   
-  public final void KW(String paramString)
+  public final void Lw(String paramString)
   {
-    AppMethodBeat.i(187972);
-    this.jDl = ai.ee(paramString + String.valueOf(System.currentTimeMillis()));
-    AppMethodBeat.o(187972);
+    AppMethodBeat.i(222086);
+    this.jGj = aj.ej(paramString + String.valueOf(System.currentTimeMillis()));
+    AppMethodBeat.o(222086);
   }
   
   public final void a(g.a parama)
   {
-    this.jDm = parama;
+    this.jGk = parama;
   }
   
-  public final String aYA()
+  public final String aYW()
   {
-    return this.jDl;
+    return this.jGj;
   }
   
-  public final g.a aYB()
+  public final g.a aYX()
   {
-    return this.jDm;
+    return this.jGk;
   }
   
   public final String cc(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(187971);
-    paramString1 = j.Ej().get(paramString1, paramString2);
-    AppMethodBeat.o(187971);
+    AppMethodBeat.i(222085);
+    paramString1 = j.Em().get(paramString1, paramString2);
+    AppMethodBeat.o(222085);
     return paramString1;
   }
   
   public final void clear()
   {
-    this.jDl = null;
-    this.jDm = null;
+    this.jGj = null;
+    this.jGk = null;
   }
 }
 

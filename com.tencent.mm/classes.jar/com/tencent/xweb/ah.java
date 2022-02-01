@@ -12,9 +12,9 @@ import org.xwalk.core.XWalkEnvironment;
 
 public final class ah
 {
-  static c MqO;
-  private static boolean MqP = false;
-  static boolean MqQ = false;
+  static c MNS;
+  private static boolean MNT = false;
+  static boolean MNU = false;
   
   public static a B(String paramString, Object paramObject)
   {
@@ -59,7 +59,7 @@ public final class ah
       continue;
       try
       {
-        paramString = j.g(WebView.c.Mqu);
+        paramString = j.g(WebView.c.MNy);
         if (paramString != null)
         {
           paramString.excute("BASE_CONTEXT_CHANGED", new Object[] { paramObject });
@@ -73,21 +73,21 @@ public final class ah
     }
   }
   
-  public static boolean Fe(long paramLong)
+  public static boolean FG(long paramLong)
   {
-    AppMethodBeat.i(197088);
+    AppMethodBeat.i(217406);
     if (!WebView.isXWalk())
     {
       Log.e("XWebSdk", "bind_native_trans is  not xwalk now");
-      AppMethodBeat.o(197088);
+      AppMethodBeat.o(217406);
       return false;
     }
     try
     {
-      j.a locala = j.g(WebView.c.Mqu);
+      j.a locala = j.g(WebView.c.MNy);
       if (locala == null)
       {
-        AppMethodBeat.o(197088);
+        AppMethodBeat.o(217406);
         return false;
       }
       locala.excute("STR_CMD_NATIVE_TRANS_INIT", new Object[] { Long.valueOf(paramLong) });
@@ -99,7 +99,7 @@ public final class ah
         Log.e("XWebSdk", "invokeExtension failed");
       }
     }
-    AppMethodBeat.o(197088);
+    AppMethodBeat.o(217406);
     return true;
   }
   
@@ -107,7 +107,7 @@ public final class ah
   {
     try
     {
-      MqO = paramc;
+      MNS = paramc;
       return;
     }
     finally
@@ -141,31 +141,31 @@ public final class ah
     }
   }
   
-  public static boolean gbj()
+  public static boolean gfL()
   {
-    AppMethodBeat.i(197087);
+    AppMethodBeat.i(217405);
     if (!WebView.isXWalk())
     {
       Log.e("XWebSdk", "hasXWebFeature not xwalk now");
-      AppMethodBeat.o(197087);
+      AppMethodBeat.o(217405);
       return false;
     }
     Object localObject = l(80003, new Object[] { Integer.valueOf(2009) });
     if ((localObject instanceof Boolean))
     {
       boolean bool = ((Boolean)localObject).booleanValue();
-      AppMethodBeat.o(197087);
+      AppMethodBeat.o(217405);
       return bool;
     }
-    AppMethodBeat.o(197087);
+    AppMethodBeat.o(217405);
     return false;
   }
   
-  public static c gbk()
+  public static c gfM()
   {
     try
     {
-      c localc = MqO;
+      c localc = MNS;
       return localc;
     }
     finally
@@ -176,7 +176,7 @@ public final class ah
   }
   
   /* Error */
-  public static void gbl()
+  public static void gfN()
   {
     // Byte code:
     //   0: iconst_0
@@ -185,7 +185,7 @@ public final class ah
     //   4: monitorenter
     //   5: ldc 170
     //   7: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   10: getstatic 16	com/tencent/xweb/ah:MqP	Z
+    //   10: getstatic 16	com/tencent/xweb/ah:MNT	Z
     //   13: ifeq +12 -> 25
     //   16: ldc 170
     //   18: invokestatic 50	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -326,7 +326,7 @@ public final class ah
     //   318: invokestatic 275	com/tencent/xweb/util/f:b	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Class;[Ljava/lang/Object;)Ljava/lang/Object;
     //   321: pop
     //   322: iconst_1
-    //   323: putstatic 16	com/tencent/xweb/ah:MqP	Z
+    //   323: putstatic 16	com/tencent/xweb/ah:MNT	Z
     //   326: ldc 170
     //   328: invokestatic 50	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   331: goto -310 -> 21
@@ -533,36 +533,36 @@ public final class ah
     //   365	385	648	java/lang/Exception
   }
   
-  public static void gbm()
+  public static void gfO()
   {
     AppMethodBeat.i(185176);
     Log.i("XWebSdk", "set wati for xweb = true");
-    MqQ = true;
+    MNU = true;
     AppMethodBeat.o(185176);
   }
   
-  public static boolean gbn()
+  public static boolean gfP()
   {
-    return MqQ;
+    return MNU;
   }
   
   public static Object l(int paramInt, Object[] paramArrayOfObject)
   {
-    AppMethodBeat.i(197086);
+    AppMethodBeat.i(217404);
     try
     {
-      j.a locala = j.g(WebView.c.Mqu);
+      j.a locala = j.g(WebView.c.MNy);
       if (locala != null)
       {
         paramArrayOfObject = locala.excute("STR_CMD_INVOKE_TO_RUNTIME", new Object[] { Integer.valueOf(paramInt), paramArrayOfObject });
-        AppMethodBeat.o(197086);
+        AppMethodBeat.o(217404);
         return paramArrayOfObject;
       }
     }
     catch (Exception paramArrayOfObject)
     {
       Log.e("XWebSdk", "invokeExtension failed");
-      AppMethodBeat.o(197086);
+      AppMethodBeat.o(217404);
     }
     return null;
   }

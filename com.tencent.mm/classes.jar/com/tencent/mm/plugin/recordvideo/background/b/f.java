@@ -10,35 +10,35 @@ import java.util.Arrays;
 public final class f
   extends a
 {
-  public final float[] xvH;
-  private final float[] xvf;
-  private final float[] xvg;
-  private FloatBuffer xvh;
-  private FloatBuffer xvi;
-  private int xvj;
-  private int xvl;
+  public final float[] xLE;
+  private final float[] xLc;
+  private final float[] xLd;
+  private FloatBuffer xLe;
+  private FloatBuffer xLf;
+  private int xLg;
+  private int xLi;
   
   public f()
   {
     AppMethodBeat.i(75012);
-    this.xvf = new float[] { -1.0F, -1.0F, 0.0F, 1.0F, -1.0F, 0.0F, -1.0F, 1.0F, 0.0F, 1.0F, 1.0F, 0.0F };
-    this.xvg = new float[] { 0.0F, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 1.0F, 0.0F };
-    this.xvH = new float[] { 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F };
+    this.xLc = new float[] { -1.0F, -1.0F, 0.0F, 1.0F, -1.0F, 0.0F, -1.0F, 1.0F, 0.0F, 1.0F, 1.0F, 0.0F };
+    this.xLd = new float[] { 0.0F, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 1.0F, 0.0F };
+    this.xLE = new float[] { 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F };
     AppMethodBeat.o(75012);
   }
   
-  public static void dFf()
+  public static void dIw()
   {
     AppMethodBeat.i(75016);
     GLES20.glDrawArrays(5, 0, 4);
     AppMethodBeat.o(75016);
   }
   
-  public final void NE(int paramInt)
+  public final void Ok(int paramInt)
   {
     AppMethodBeat.i(75014);
     GLES20.glBindTexture(3553, paramInt);
-    GLES20.glUniform1f(this.xvj, 0.0F);
+    GLES20.glUniform1f(this.xLg, 0.0F);
     AppMethodBeat.o(75014);
   }
   
@@ -54,10 +54,10 @@ public final class f
     float f5 = -1.0F;
     float f4 = 0.0F;
     float f3 = 1.0F;
-    float[] arrayOfFloat1 = Arrays.copyOf(this.xvg, this.xvg.length);
-    float[] arrayOfFloat2 = Arrays.copyOf(this.xvf, this.xvf.length);
+    float[] arrayOfFloat1 = Arrays.copyOf(this.xLd, this.xLd.length);
+    float[] arrayOfFloat2 = Arrays.copyOf(this.xLc, this.xLc.length);
     float f1;
-    switch (1.xvI[parama.ordinal()])
+    switch (1.xLF[parama.ordinal()])
     {
     default: 
       f1 = 1.0F;
@@ -78,13 +78,13 @@ public final class f
       arrayOfFloat2[7] = f6;
       arrayOfFloat2[9] = f7;
       arrayOfFloat2[10] = f6;
-      this.xvh = ByteBuffer.allocateDirect(arrayOfFloat2.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
-      this.xvh.put(arrayOfFloat2).position(0);
-      GLES20.glVertexAttribPointer(0, 3, 5126, false, 0, this.xvh);
+      this.xLe = ByteBuffer.allocateDirect(arrayOfFloat2.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
+      this.xLe.put(arrayOfFloat2).position(0);
+      GLES20.glVertexAttribPointer(0, 3, 5126, false, 0, this.xLe);
       GLES20.glEnableVertexAttribArray(0);
-      this.xvi = ByteBuffer.allocateDirect(arrayOfFloat1.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
-      this.xvi.put(arrayOfFloat1).position(0);
-      GLES20.glVertexAttribPointer(1, 2, 5126, false, 0, this.xvi);
+      this.xLf = ByteBuffer.allocateDirect(arrayOfFloat1.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
+      this.xLf.put(arrayOfFloat1).position(0);
+      GLES20.glVertexAttribPointer(1, 2, 5126, false, 0, this.xLf);
       GLES20.glEnableVertexAttribArray(1);
       new StringBuilder("scale cost:").append(System.currentTimeMillis() - l);
       AppMethodBeat.o(75017);
@@ -133,7 +133,7 @@ public final class f
     }
   }
   
-  public final void dFe()
+  public final void dIv()
   {
     AppMethodBeat.i(75013);
     int[] arrayOfInt = new int[1];
@@ -158,16 +158,16 @@ public final class f
       AppMethodBeat.o(75013);
       return;
     }
-    this.xvl = GLES20.glGetUniformLocation(k, "uMVPMatrix");
-    this.xvj = GLES20.glGetUniformLocation(k, "u_Texture");
-    this.xva = k;
+    this.xLi = GLES20.glGetUniformLocation(k, "uMVPMatrix");
+    this.xLg = GLES20.glGetUniformLocation(k, "u_Texture");
+    this.xKX = k;
     AppMethodBeat.o(75013);
   }
   
   public final void m(float[] paramArrayOfFloat)
   {
     AppMethodBeat.i(75015);
-    GLES20.glUniformMatrix4fv(this.xvl, 1, false, paramArrayOfFloat, 0);
+    GLES20.glUniformMatrix4fv(this.xLi, 1, false, paramArrayOfFloat, 0);
     AppMethodBeat.o(75015);
   }
 }

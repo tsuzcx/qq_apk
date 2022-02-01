@@ -9,10 +9,10 @@ import com.tencent.mm.plugin.mmsight.model.g;
 import d.l;
 import d.z;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/media/widget/camera/ICommonCamera;", "", "onHDRCheckerResult", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "ret", "", "getOnHDRCheckerResult", "()Lkotlin/jvm/functions/Function1;", "setOnHDRCheckerResult", "(Lkotlin/jvm/functions/Function1;)V", "addFrameDataCallback", "callback", "Lcom/tencent/mm/plugin/mmsight/model/MMSightCameraFrameDataCallback;", "calcScrollZoomStep", "recordButtonTopLocation", "", "stepInterval", "configVendorTagValue", "tag", "", "value", "generateCameraConfig", "Lcom/tencent/mm/media/widget/camera/CameraConfig;", "getCameraOrientation", "getCurrentCameraId", "getFlashMode", "getPreviewSize", "Landroid/graphics/Point;", "cropSizeIfCan", "getSupportZoomRatios", "", "initCamera", "context", "Landroid/content/Context;", "useBack", "isCameraPreviewing", "onDestroy", "postFocusOnTouch", "x", "", "y", "surfaceWidth", "surfaceHeight", "delay", "", "release", "removeFocusOnTouch", "removeFrameDataCallback", "setCameraPreviewFps", "fpsValue", "setDisplayScreenSize", "screenSize", "Landroid/util/Size;", "setFlashMode", "mode", "setFlashOn", "isOn", "setForceZoomTargetRatio", "ratio", "setPreviewDisplayRatio", "setReturnFrameCallback", "startPreview", "surfaceTexture", "Landroid/graphics/SurfaceTexture;", "useCpuCrop", "resolutionLimit", "surface", "Landroid/view/SurfaceHolder;", "switchCamera", "switchRecordStream", "switchVendorTag", "isChecked", "takePhoto", "dataCallback", "Landroid/graphics/Bitmap;", "bitmap", "triggerCameraZoom", "zoom", "isScrollZoom", "factor", "Companion", "plugin-mediaeditor_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/media/widget/camera/ICommonCamera;", "", "onHDRCheckerResult", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "ret", "", "getOnHDRCheckerResult", "()Lkotlin/jvm/functions/Function1;", "setOnHDRCheckerResult", "(Lkotlin/jvm/functions/Function1;)V", "addFrameDataCallback", "callback", "Lcom/tencent/mm/plugin/mmsight/model/MMSightCameraFrameDataCallback;", "calcScrollZoomStep", "recordButtonTopLocation", "", "stepInterval", "configVendorTagValue", "tag", "", "value", "generateCameraConfig", "Lcom/tencent/mm/media/widget/camera/CameraConfig;", "getCameraOrientation", "getCurrentCameraId", "getFlashMode", "getPreviewSize", "Landroid/graphics/Point;", "cropSizeIfCan", "getSupportZoomRatios", "", "initCamera", "context", "Landroid/content/Context;", "useBack", "isCameraPreviewing", "onDestroy", "postFocusOnTouch", "x", "", "y", "surfaceWidth", "surfaceHeight", "delay", "", "release", "removeFocusOnTouch", "removeFrameDataCallback", "setCameraPreviewFps", "fpsValue", "setDisplayScreenSize", "screenSize", "Landroid/util/Size;", "setFlashMode", "mode", "setFlashOn", "isOn", "setForceZoomTargetRatio", "ratio", "setPreviewDisplayRatio", "setReturnFrameCallback", "startPreview", "surfaceTexture", "Landroid/graphics/SurfaceTexture;", "useCpuCrop", "resolutionLimit", "surface", "Landroid/view/SurfaceHolder;", "switchCamera", "switchRecordStream", "switchVendorTag", "isChecked", "takePhoto", "dataCallback", "Landroid/graphics/Bitmap;", "bitmap", "triggerCameraZoom", "zoom", "isScrollZoom", "factor", "Companion", "plugin-mediaeditor_release"})
 public abstract interface e
 {
-  public static final e.a hqh = e.a.hqi;
+  public static final e.a hsV = e.a.hsW;
   
   public abstract void A(String paramString, boolean paramBoolean);
   
@@ -20,33 +20,33 @@ public abstract interface e
   
   public abstract void a(g paramg);
   
-  public abstract void aa(String paramString, int paramInt);
+  public abstract void ab(String paramString, int paramInt);
   
-  public abstract boolean avZ();
+  public abstract b awA();
   
-  public abstract boolean awa();
+  public abstract int awE();
   
-  public abstract boolean awb();
+  public abstract int awF();
   
-  public abstract void awc();
+  public abstract void awG();
   
-  public abstract void awk();
+  public abstract boolean awo();
   
-  public abstract b awl();
+  public abstract boolean awp();
   
-  public abstract int awp();
-  
-  public abstract int awq();
+  public abstract boolean awq();
   
   public abstract void awr();
+  
+  public abstract void awz();
   
   public abstract void b(float paramFloat1, float paramFloat2, int paramInt1, int paramInt2);
   
   public abstract void b(g paramg);
   
-  public abstract Point ei(boolean paramBoolean);
+  public abstract Point ek(boolean paramBoolean);
   
-  public abstract void ej(boolean paramBoolean);
+  public abstract void el(boolean paramBoolean);
   
   public abstract int getFlashMode();
   
@@ -56,7 +56,7 @@ public abstract interface e
   
   public abstract boolean n(d.g.a.b<? super Bitmap, z> paramb);
   
-  public abstract void nW(int paramInt);
+  public abstract void nZ(int paramInt);
   
   public abstract void o(d.g.a.b<? super Boolean, z> paramb);
   

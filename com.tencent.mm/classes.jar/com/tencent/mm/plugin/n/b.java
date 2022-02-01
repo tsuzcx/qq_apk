@@ -6,17 +6,17 @@ import com.tencent.mm.kernel.b.c;
 public final class b
   implements c
 {
-  private static b vIs;
+  private static b vUw;
   
-  public static b dlB()
+  public static b doA()
   {
     try
     {
       AppMethodBeat.i(151500);
-      if (vIs == null) {
-        vIs = new b();
+      if (vUw == null) {
+        vUw = new b();
       }
-      b localb = vIs;
+      b localb = vUw;
       AppMethodBeat.o(151500);
       return localb;
     }

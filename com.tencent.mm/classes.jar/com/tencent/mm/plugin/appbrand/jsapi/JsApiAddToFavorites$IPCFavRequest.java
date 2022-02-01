@@ -11,14 +11,14 @@ final class JsApiAddToFavorites$IPCFavRequest
 {
   public static final Parcelable.Creator<IPCFavRequest> CREATOR;
   String appId;
-  String dJW;
-  String dki;
-  int hQh;
+  String dLl;
+  String dlk;
+  int hSZ;
   String iconUrl;
-  int jXI;
-  String krn;
-  int kro;
-  boolean krp;
+  int kaX;
+  String kuD;
+  int kuE;
+  boolean kuF;
   int scene;
   int subType;
   String title;
@@ -27,47 +27,47 @@ final class JsApiAddToFavorites$IPCFavRequest
   
   static
   {
-    AppMethodBeat.i(188251);
+    AppMethodBeat.i(222377);
     CREATOR = new Parcelable.Creator() {};
-    AppMethodBeat.o(188251);
+    AppMethodBeat.o(222377);
   }
   
   protected JsApiAddToFavorites$IPCFavRequest() {}
   
   protected JsApiAddToFavorites$IPCFavRequest(Parcel paramParcel)
   {
-    AppMethodBeat.i(188249);
+    AppMethodBeat.i(222375);
     this.username = paramParcel.readString();
     this.appId = paramParcel.readString();
-    this.dki = paramParcel.readString();
+    this.dlk = paramParcel.readString();
     this.iconUrl = paramParcel.readString();
     this.version = paramParcel.readInt();
-    this.hQh = paramParcel.readInt();
+    this.hSZ = paramParcel.readInt();
     this.title = paramParcel.readString();
-    this.krn = paramParcel.readString();
-    this.kro = paramParcel.readInt();
-    this.jXI = paramParcel.readInt();
+    this.kuD = paramParcel.readString();
+    this.kuE = paramParcel.readInt();
+    this.kaX = paramParcel.readInt();
     this.scene = paramParcel.readInt();
-    this.dJW = paramParcel.readString();
+    this.dLl = paramParcel.readString();
     this.subType = paramParcel.readInt();
     if (paramParcel.readInt() == 1) {}
     for (;;)
     {
-      this.krp = bool;
-      AppMethodBeat.o(188249);
+      this.kuF = bool;
+      AppMethodBeat.o(222375);
       return;
       bool = false;
     }
   }
   
-  public final Class<? extends AppBrandProxyUIProcessTask> bgN()
+  public final Class<? extends AppBrandProxyUIProcessTask> bhv()
   {
     return JsApiAddToFavorites.a.class;
   }
   
-  public final boolean bhU()
+  public final boolean biD()
   {
-    return this.krp;
+    return this.kuF;
   }
   
   public final int describeContents()
@@ -77,25 +77,25 @@ final class JsApiAddToFavorites$IPCFavRequest
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(188250);
+    AppMethodBeat.i(222376);
     paramParcel.writeString(this.username);
     paramParcel.writeString(this.appId);
-    paramParcel.writeString(this.dki);
+    paramParcel.writeString(this.dlk);
     paramParcel.writeString(this.iconUrl);
     paramParcel.writeInt(this.version);
-    paramParcel.writeInt(this.hQh);
+    paramParcel.writeInt(this.hSZ);
     paramParcel.writeString(this.title);
-    paramParcel.writeString(this.krn);
-    paramParcel.writeInt(this.kro);
-    paramParcel.writeInt(this.jXI);
+    paramParcel.writeString(this.kuD);
+    paramParcel.writeInt(this.kuE);
+    paramParcel.writeInt(this.kaX);
     paramParcel.writeInt(this.scene);
-    paramParcel.writeString(this.dJW);
+    paramParcel.writeString(this.dLl);
     paramParcel.writeInt(this.subType);
-    if (this.krp) {}
+    if (this.kuF) {}
     for (paramInt = 1;; paramInt = 0)
     {
       paramParcel.writeInt(paramInt);
-      AppMethodBeat.o(188250);
+      AppMethodBeat.o(222376);
       return;
     }
   }

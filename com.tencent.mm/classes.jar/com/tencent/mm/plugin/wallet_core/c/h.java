@@ -1,43 +1,43 @@
 package com.tencent.mm.plugin.wallet_core.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.awv;
-import com.tencent.mm.protocal.protobuf.aww;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.axl;
+import com.tencent.mm.protocal.protobuf.axm;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class h
   extends n
   implements k
 {
-  public aww COH;
-  private f callback;
+  public axm Dgm;
+  private com.tencent.mm.ak.f callback;
   private b rr;
   
   public h(String paramString)
   {
     AppMethodBeat.i(69902);
     Object localObject = new b.a();
-    ((b.a)localObject).hNM = new awv();
-    ((b.a)localObject).hNN = new aww();
+    ((b.a)localObject).hQF = new axl();
+    ((b.a)localObject).hQG = new axm();
     ((b.a)localObject).uri = "/cgi-bin/mmpay-bin/tenpay/getbanpaymobileinfo";
     ((b.a)localObject).funcId = getType();
-    ((b.a)localObject).routeInfo = com.tencent.mm.wallet_core.ui.e.aYP(paramString);
-    this.rr = ((b.a)localObject).aDC();
-    localObject = (awv)this.rr.hNK.hNQ;
-    ad.d("MicroMsg.NetSceneGetBanpayMobileInfo", "req_key: %s", new Object[] { paramString });
-    ((awv)localObject).dve = paramString;
+    ((b.a)localObject).routeInfo = com.tencent.mm.wallet_core.ui.f.bas(paramString);
+    this.rr = ((b.a)localObject).aDS();
+    localObject = (axl)this.rr.hQD.hQJ;
+    ae.d("MicroMsg.NetSceneGetBanpayMobileInfo", "req_key: %s", new Object[] { paramString });
+    ((axl)localObject).dwj = paramString;
     AppMethodBeat.o(69902);
   }
   
-  public final int doScene(com.tencent.mm.network.e parame, f paramf)
+  public final int doScene(e parame, com.tencent.mm.ak.f paramf)
   {
     AppMethodBeat.i(69903);
     this.callback = paramf;
@@ -54,8 +54,8 @@ public final class h
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(69904);
-    ad.i("MicroMsg.NetSceneGetBanpayMobileInfo", "NetSceneGetBanpayMobileInfo, netId: %s, errType: %s, errCode: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
-    this.COH = ((aww)this.rr.hNL.hNQ);
+    ae.i("MicroMsg.NetSceneGetBanpayMobileInfo", "NetSceneGetBanpayMobileInfo, netId: %s, errType: %s, errCode: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    this.Dgm = ((axm)this.rr.hQE.hQJ);
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }

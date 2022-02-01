@@ -1,25 +1,25 @@
 package com.tencent.mm.plugin.wallet_index.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.avy;
-import com.tencent.mm.protocal.protobuf.avz;
-import com.tencent.mm.protocal.protobuf.bpk;
-import com.tencent.mm.protocal.protobuf.bpl;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.awo;
+import com.tencent.mm.protocal.protobuf.awp;
+import com.tencent.mm.protocal.protobuf.bqc;
+import com.tencent.mm.protocal.protobuf.bqd;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.wallet_core.c.w;
 
 public final class f
   extends w
 {
-  public bpk DpV;
-  public bpl DpW;
-  private com.tencent.mm.al.f callback;
+  public bqc DHB;
+  public bqd DHC;
+  private com.tencent.mm.ak.f callback;
   public int errCode;
   private b rr;
   
@@ -27,28 +27,28 @@ public final class f
   {
     AppMethodBeat.i(71819);
     Object localObject = new b.a();
-    ((b.a)localObject).hNM = new avy();
-    ((b.a)localObject).hNN = new avz();
+    ((b.a)localObject).hQF = new awo();
+    ((b.a)localObject).hQG = new awp();
     ((b.a)localObject).uri = "/cgi-bin/mmbiz-bin/boss/getandroidiappackage";
     ((b.a)localObject).funcId = 1130;
-    ((b.a)localObject).hNO = 0;
+    ((b.a)localObject).hQH = 0;
     ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).aDC();
-    localObject = (avy)this.rr.hNK.hNQ;
-    ((avy)localObject).duW = paramString1;
-    ((avy)localObject).GuG = paramInt1;
-    ((avy)localObject).GuH = Integer.parseInt(paramString2);
-    ((avy)localObject).desc = paramString3;
-    ((avy)localObject).count = paramInt2;
-    ((avy)localObject).scene = 13;
-    ((avy)localObject).GuI = paramString4;
-    ((avy)localObject).GuJ = paramString5;
-    ((avy)localObject).sign = paramString6;
-    ((avy)localObject).GuK = paramString7;
+    this.rr = ((b.a)localObject).aDS();
+    localObject = (awo)this.rr.hQD.hQJ;
+    ((awo)localObject).dwb = paramString1;
+    ((awo)localObject).GOf = paramInt1;
+    ((awo)localObject).GOg = Integer.parseInt(paramString2);
+    ((awo)localObject).desc = paramString3;
+    ((awo)localObject).count = paramInt2;
+    ((awo)localObject).scene = 13;
+    ((awo)localObject).GOh = paramString4;
+    ((awo)localObject).GOi = paramString5;
+    ((awo)localObject).sign = paramString6;
+    ((awo)localObject).GOj = paramString7;
     AppMethodBeat.o(71819);
   }
   
-  public final int doScene(e parame, com.tencent.mm.al.f paramf)
+  public final int doScene(e parame, com.tencent.mm.ak.f paramf)
   {
     AppMethodBeat.i(71821);
     this.callback = paramf;
@@ -65,21 +65,21 @@ public final class f
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte, long paramLong)
   {
     AppMethodBeat.i(71820);
-    ad.e("MicroMsg.NetSceneGetAndroidIapPackage", "ErrType:" + paramInt2 + ",errCode:" + paramInt3 + ",errMsg:" + paramString);
+    ae.e("MicroMsg.NetSceneGetAndroidIapPackage", "ErrType:" + paramInt2 + ",errCode:" + paramInt3 + ",errMsg:" + paramString);
     if ((paramInt2 != 0) || (paramInt3 != 0))
     {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
       AppMethodBeat.o(71820);
       return;
     }
-    paramString = (avz)this.rr.hNL.hNQ;
-    ad.e("MicroMsg.NetSceneGetAndroidIapPackage", "business: errCode:" + paramString.dvY + ",errMsg:" + paramString.dvZ);
-    paramInt1 = paramString.dvY;
-    paramq = paramString.dvZ;
+    paramString = (awp)this.rr.hQE.hQJ;
+    ae.e("MicroMsg.NetSceneGetAndroidIapPackage", "business: errCode:" + paramString.dxd + ",errMsg:" + paramString.dxe);
+    paramInt1 = paramString.dxd;
+    paramq = paramString.dxe;
     if (paramInt1 == 0)
     {
-      this.DpV = paramString.GuL;
-      this.DpW = paramString.GuM;
+      this.DHB = paramString.GOk;
+      this.DHC = paramString.GOl;
     }
     this.callback.onSceneEnd(paramInt2, paramInt1, paramq, this);
     AppMethodBeat.o(71820);

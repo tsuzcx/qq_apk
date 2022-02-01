@@ -28,11 +28,11 @@ public class WWMediaLink
   
   public final void fromBundle(Bundle paramBundle)
   {
-    AppMethodBeat.i(190358);
+    AppMethodBeat.i(193330);
     this.thumbUrl = paramBundle.getString("_wwwebpageobject_thumbUrl");
     this.webpageUrl = paramBundle.getString("_wwwebpageobject_webpageUrl");
     super.fromBundle(paramBundle);
-    AppMethodBeat.o(190358);
+    AppMethodBeat.o(193330);
   }
   
   public final void toBundle(Bundle paramBundle)

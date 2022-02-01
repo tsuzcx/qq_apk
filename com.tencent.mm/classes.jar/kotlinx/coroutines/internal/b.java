@@ -3,17 +3,17 @@ package kotlinx.coroutines.internal;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"NO_DECISION", "", "NO_DECISION$annotations", "()V", "RETRY_ATOMIC", "RETRY_ATOMIC$annotations", "kotlinx-coroutines-core"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"NO_DECISION", "", "NO_DECISION$annotations", "()V", "RETRY_ATOMIC", "RETRY_ATOMIC$annotations", "kotlinx-coroutines-core"})
 public final class b
 {
-  private static final Object NJw;
-  public static final Object NJx;
+  private static final Object OgC;
+  public static final Object OgD;
   
   static
   {
     AppMethodBeat.i(118089);
-    NJw = new t("NO_DECISION");
-    NJx = new t("RETRY_ATOMIC");
+    OgC = new t("NO_DECISION");
+    OgD = new t("RETRY_ATOMIC");
     AppMethodBeat.o(118089);
   }
 }

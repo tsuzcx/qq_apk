@@ -5,7 +5,7 @@ import com.tencent.mm.plugin.report.service.g;
 
 public final class a
 {
-  public static void In(int paramInt)
+  public static void IL(int paramInt)
   {
     AppMethodBeat.i(117379);
     switch (paramInt)
@@ -15,16 +15,16 @@ public final class a
     {
       AppMethodBeat.o(117379);
       return;
-      g.yhR.idkeyStat(614L, 41L, 1L, false);
+      g.yxI.idkeyStat(614L, 41L, 1L, false);
       AppMethodBeat.o(117379);
       return;
-      g.yhR.idkeyStat(614L, 40L, 1L, false);
+      g.yxI.idkeyStat(614L, 40L, 1L, false);
       AppMethodBeat.o(117379);
       return;
-      g.yhR.idkeyStat(614L, 42L, 1L, false);
+      g.yxI.idkeyStat(614L, 42L, 1L, false);
       AppMethodBeat.o(117379);
       return;
-      g.yhR.idkeyStat(614L, 43L, 1L, false);
+      g.yxI.idkeyStat(614L, 43L, 1L, false);
     }
   }
   
@@ -44,60 +44,60 @@ public final class a
         AppMethodBeat.o(117380);
         return;
       case 0: 
-        g.yhR.idkeyStat(614L, 10L, 1L, false);
+        g.yxI.idkeyStat(614L, 10L, 1L, false);
         AppMethodBeat.o(117380);
         return;
       case 1: 
-        g.yhR.idkeyStat(614L, 11L, 1L, false);
+        g.yxI.idkeyStat(614L, 11L, 1L, false);
         AppMethodBeat.o(117380);
         return;
       case 2: 
-        g.yhR.idkeyStat(614L, 12L, 1L, false);
+        g.yxI.idkeyStat(614L, 12L, 1L, false);
         AppMethodBeat.o(117380);
         return;
       case 3: 
-        g.yhR.idkeyStat(614L, 13L, 1L, false);
+        g.yxI.idkeyStat(614L, 13L, 1L, false);
         AppMethodBeat.o(117380);
         return;
       case 4: 
-        g.yhR.idkeyStat(614L, 14L, 1L, false);
+        g.yxI.idkeyStat(614L, 14L, 1L, false);
         AppMethodBeat.o(117380);
         return;
       case 5: 
-        g.yhR.idkeyStat(614L, 15L, 1L, false);
+        g.yxI.idkeyStat(614L, 15L, 1L, false);
         AppMethodBeat.o(117380);
         return;
       case 6: 
-        g.yhR.idkeyStat(614L, 16L, 1L, false);
+        g.yxI.idkeyStat(614L, 16L, 1L, false);
         AppMethodBeat.o(117380);
         return;
       case 7: 
-        g.yhR.idkeyStat(614L, 17L, 1L, false);
+        g.yxI.idkeyStat(614L, 17L, 1L, false);
         AppMethodBeat.o(117380);
         return;
       }
-      g.yhR.idkeyStat(614L, 18L, 1L, false);
+      g.yxI.idkeyStat(614L, 18L, 1L, false);
       AppMethodBeat.o(117380);
       return;
-      g.yhR.idkeyStat(614L, 20L, 1L, false);
+      g.yxI.idkeyStat(614L, 20L, 1L, false);
       AppMethodBeat.o(117380);
       return;
-      g.yhR.idkeyStat(614L, 21L, 1L, false);
+      g.yxI.idkeyStat(614L, 21L, 1L, false);
       AppMethodBeat.o(117380);
       return;
-      g.yhR.idkeyStat(614L, 22L, 1L, false);
+      g.yxI.idkeyStat(614L, 22L, 1L, false);
       AppMethodBeat.o(117380);
       return;
-      g.yhR.idkeyStat(614L, 23L, 1L, false);
+      g.yxI.idkeyStat(614L, 23L, 1L, false);
       AppMethodBeat.o(117380);
       return;
-      g.yhR.idkeyStat(614L, 28L, 1L, false);
+      g.yxI.idkeyStat(614L, 28L, 1L, false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.hp.b.a
  * JD-Core Version:    0.7.0.1
  */

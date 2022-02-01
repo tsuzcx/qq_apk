@@ -1,20 +1,20 @@
 package com.tencent.mm.plugin.brandservice.ui.timeline.preload;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ax;
+import com.tencent.mm.sdk.platformtools.ay;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"kvCommand", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "getKvCommand", "()Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "toast", "", "", "plugin-brandservice_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"kvCommand", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "getKvCommand", "()Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "toast", "", "", "plugin-brandservice_release"})
 public final class i
 {
-  public static final ax bFO()
+  public static final ay bGK()
   {
     AppMethodBeat.i(6634);
-    ax localax = ax.aQz("_webview_tmpl_command");
-    p.g(localax, "MultiProcessMMKV.getMMKV…MKV_WEBVIEW_TMPL_COMMAND)");
+    ay localay = ay.aRW("_webview_tmpl_command");
+    p.g(localay, "MultiProcessMMKV.getMMKV…MKV_WEBVIEW_TMPL_COMMAND)");
     AppMethodBeat.o(6634);
-    return localax;
+    return localay;
   }
 }
 

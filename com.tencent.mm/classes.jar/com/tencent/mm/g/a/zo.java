@@ -1,14 +1,12 @@
 package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.a.a;
-import com.tencent.mm.plugin.appbrand.appcache.h;
 import com.tencent.mm.sdk.b.b;
 
 public final class zo
   extends b
 {
-  public a dOU;
+  public a dPI;
   
   public zo()
   {
@@ -17,24 +15,21 @@ public final class zo
   
   private zo(byte paramByte)
   {
-    AppMethodBeat.i(90538);
-    this.dOU = new a();
-    this.IbR = false;
+    AppMethodBeat.i(91236);
+    this.dPI = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(90538);
+    AppMethodBeat.o(91236);
   }
   
   public static final class a
   {
-    public long cLe;
-    public h dOV;
-    public a.a dOW;
-    public long dOX;
+    public String der;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.a.zo
  * JD-Core Version:    0.7.0.1
  */

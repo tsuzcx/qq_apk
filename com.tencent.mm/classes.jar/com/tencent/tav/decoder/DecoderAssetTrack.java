@@ -24,21 +24,21 @@ public class DecoderAssetTrack
   
   public static DecoderAssetTrack create(AssetTrack paramAssetTrack, AssetTrackSegment paramAssetTrackSegment)
   {
-    AppMethodBeat.i(218173);
+    AppMethodBeat.i(214813);
     if ((paramAssetTrackSegment instanceof CompositionTrackSegment))
     {
       paramAssetTrack = createFromCompositionTrackSegment(paramAssetTrack, (CompositionTrackSegment)paramAssetTrackSegment);
-      AppMethodBeat.o(218173);
+      AppMethodBeat.o(214813);
       return paramAssetTrack;
     }
     paramAssetTrack = createFromTrackSegment(paramAssetTrack, paramAssetTrackSegment);
-    AppMethodBeat.o(218173);
+    AppMethodBeat.o(214813);
     return paramAssetTrack;
   }
   
   private static DecoderAssetTrack createFromCompositionTrackSegment(AssetTrack paramAssetTrack, CompositionTrackSegment paramCompositionTrackSegment)
   {
-    AppMethodBeat.i(218171);
+    AppMethodBeat.i(214811);
     DecoderAssetTrack localDecoderAssetTrack = null;
     if (!paramCompositionTrackSegment.isEmpty())
     {
@@ -58,13 +58,13 @@ public class DecoderAssetTrack
       localDecoderAssetTrack.preferredVolume = 1.0F;
       localDecoderAssetTrack.frameRate = 30;
     }
-    AppMethodBeat.o(218171);
+    AppMethodBeat.o(214811);
     return localDecoderAssetTrack;
   }
   
   private static DecoderAssetTrack createFromTrackSegment(AssetTrack paramAssetTrack, AssetTrackSegment paramAssetTrackSegment)
   {
-    AppMethodBeat.i(218172);
+    AppMethodBeat.i(214812);
     DecoderAssetTrack localDecoderAssetTrack = null;
     if (!paramAssetTrackSegment.isEmpty())
     {
@@ -81,7 +81,7 @@ public class DecoderAssetTrack
       localDecoderAssetTrack.preferRotation = paramAssetTrack.getPreferredRotation();
       localDecoderAssetTrack.frameRate = ((int)paramAssetTrack.getNominalFrameRate());
     }
-    AppMethodBeat.o(218172);
+    AppMethodBeat.o(214812);
     return localDecoderAssetTrack;
   }
 }

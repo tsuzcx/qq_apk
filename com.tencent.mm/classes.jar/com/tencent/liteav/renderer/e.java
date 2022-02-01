@@ -493,7 +493,7 @@ public class e
   
   public void a(final o paramo)
   {
-    AppMethodBeat.i(187381);
+    AppMethodBeat.i(221510);
     final TextureView localTextureView = this.d;
     if (localTextureView != null) {
       try
@@ -532,7 +532,7 @@ public class e
             }
           });
         }
-        AppMethodBeat.o(187381);
+        AppMethodBeat.o(221510);
         return;
       }
       catch (OutOfMemoryError localOutOfMemoryError)
@@ -556,13 +556,13 @@ public class e
           AppMethodBeat.o(16920);
         }
       });
-      AppMethodBeat.o(187381);
+      AppMethodBeat.o(221510);
       return;
     }
     if (paramo != null) {
       paramo.onTakePhotoComplete(null);
     }
-    AppMethodBeat.o(187381);
+    AppMethodBeat.o(221510);
   }
   
   public void a(TXSVideoFrame paramTXSVideoFrame, int paramInt1, int paramInt2, int paramInt3)
@@ -585,7 +585,7 @@ public class e
   
   protected void a(Object paramObject, int paramInt, float[] paramArrayOfFloat, boolean paramBoolean)
   {
-    AppMethodBeat.i(187385);
+    AppMethodBeat.i(221514);
     if (this.l == 1)
     {
       paramArrayOfFloat = a(paramInt, this.h, this.i, paramArrayOfFloat, paramBoolean);
@@ -638,14 +638,14 @@ public class e
         }
         finally
         {
-          AppMethodBeat.o(187385);
+          AppMethodBeat.o(221514);
         }
         TXCLog.i("TXCVideoRender", "surface-render: onDrawTextureToSurface stop render thread " + this.q);
         this.q.a();
         this.q = null;
       }
     }
-    AppMethodBeat.o(187385);
+    AppMethodBeat.o(221514);
   }
   
   public void a(boolean paramBoolean)
@@ -787,7 +787,7 @@ public class e
   
   public void f()
   {
-    AppMethodBeat.i(187382);
+    AppMethodBeat.i(221511);
     Monitor.a(2, String.format("Remote-VideoRender[%d]: Start [tinyID:%s] [streamType:%d]", new Object[] { Integer.valueOf(hashCode()), getID(), Integer.valueOf(this.j) }), "streamType: 2-big, 3-small, 7-sub", 0);
     this.C = true;
     if (Build.VERSION.SDK_INT >= 21) {}
@@ -795,28 +795,28 @@ public class e
     {
       this.D = false;
       m();
-      AppMethodBeat.o(187382);
+      AppMethodBeat.o(221511);
       return;
     }
   }
   
   public int g()
   {
-    AppMethodBeat.i(187383);
+    AppMethodBeat.i(221512);
     int i1;
     if (this.d != null)
     {
       i1 = this.d.getWidth();
-      AppMethodBeat.o(187383);
+      AppMethodBeat.o(221512);
       return i1;
     }
     if (this.s != null)
     {
       i1 = this.m;
-      AppMethodBeat.o(187383);
+      AppMethodBeat.o(221512);
       return i1;
     }
-    AppMethodBeat.o(187383);
+    AppMethodBeat.o(221512);
     return 0;
   }
   
@@ -857,7 +857,7 @@ public class e
   
   protected void l()
   {
-    AppMethodBeat.i(187384);
+    AppMethodBeat.i(221513);
     try
     {
       if (this.q != null)
@@ -871,12 +871,12 @@ public class e
         this.r.c();
         this.r = null;
       }
-      AppMethodBeat.o(187384);
+      AppMethodBeat.o(221513);
       return;
     }
     finally
     {
-      AppMethodBeat.o(187384);
+      AppMethodBeat.o(221513);
     }
   }
   

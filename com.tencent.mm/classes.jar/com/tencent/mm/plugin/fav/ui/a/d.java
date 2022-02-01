@@ -14,8 +14,8 @@ import android.widget.TextView;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.pluginsdk.ui.span.k;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -24,9 +24,9 @@ public abstract class d
   implements View.OnClickListener
 {
   private Context context;
-  public String ppR;
-  public List<String> rzJ = new LinkedList();
-  public SparseArray<SpannableString> rzK = new SparseArray();
+  public String pwx;
+  public List<String> rHU = new LinkedList();
+  public SparseArray<SpannableString> rHV = new SparseArray();
   
   public d(Context paramContext)
   {
@@ -35,14 +35,14 @@ public abstract class d
   
   private String getItem(int paramInt)
   {
-    return (String)this.rzJ.get(paramInt);
+    return (String)this.rHU.get(paramInt);
   }
   
-  protected abstract void acW(String paramString);
+  protected abstract void adN(String paramString);
   
   public int getCount()
   {
-    return this.rzJ.size();
+    return this.rHU.size();
   }
   
   public long getItemId(int paramInt)
@@ -59,27 +59,27 @@ public abstract class d
       paramViewGroup.setOnClickListener(this);
     }
     TextView localTextView = (TextView)paramViewGroup.findViewById(2131304424);
-    String str = bt.bI(getItem(paramInt), "");
+    String str = bu.bI(getItem(paramInt), "");
     int i = (int)localTextView.getTextSize();
     paramInt = str.hashCode();
-    paramView = (SpannableString)this.rzK.get(paramInt);
+    paramView = (SpannableString)this.rHV.get(paramInt);
     if (paramView != null) {}
     for (;;)
     {
       localTextView.setText(paramView);
       return paramViewGroup;
       paramView = new SpannableString(k.b(this.context, str, i));
-      i = str.indexOf(this.ppR);
+      i = str.indexOf(this.pwx);
       if (-1 == i)
       {
-        ad.w("MicroMsg.FavoriteTagSearchAdapter", "high light %s error", new Object[] { str });
+        ae.w("MicroMsg.FavoriteTagSearchAdapter", "high light %s error", new Object[] { str });
       }
       else
       {
-        int j = this.ppR.length() + i;
+        int j = this.pwx.length() + i;
         paramView.setSpan(new ForegroundColorSpan(this.context.getResources().getColor(2131101171)), i, j, 33);
         paramView.setSpan(new StyleSpan(1), i, j, 33);
-        this.rzK.put(paramInt, paramView);
+        this.rHV.put(paramInt, paramView);
       }
     }
   }
@@ -88,10 +88,10 @@ public abstract class d
   {
     b localb = new b();
     localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/fav/ui/adapter/FavoriteTagSearchAdapter", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+    a.b("com/tencent/mm/plugin/fav/ui/adapter/FavoriteTagSearchAdapter", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
     paramView = ((TextView)paramView.findViewById(2131304424)).getText().toString();
-    ad.d("MicroMsg.FavoriteTagSearchAdapter", "select search tag %s", new Object[] { paramView });
-    acW(paramView);
+    ae.d("MicroMsg.FavoriteTagSearchAdapter", "select search tag %s", new Object[] { paramView });
+    adN(paramView);
     a.a(this, "com/tencent/mm/plugin/fav/ui/adapter/FavoriteTagSearchAdapter", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
   }
 }

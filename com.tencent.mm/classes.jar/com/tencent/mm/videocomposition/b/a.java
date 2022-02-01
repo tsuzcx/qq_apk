@@ -36,23 +36,23 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
-@l(gfx={1, 1, 15}, gfy={""}, gfz={"Lcom/tencent/mm/videocomposition/render/BaseMultiVideoCompositionEffect;", "Lcom/tencent/tavkit/composition/video/TAVVideoMixEffect$Filter;", "()V", "assetSize", "Landroid/util/Size;", "getAssetSize", "()Landroid/util/Size;", "setAssetSize", "(Landroid/util/Size;)V", "cacheTextureInfo", "Landroid/util/ArrayMap;", "Lkotlin/Pair;", "", "Ljava/util/LinkedList;", "Lcom/tencent/tav/coremedia/TextureInfo;", "frameRenderCallback", "Lkotlin/Function0;", "", "renderContext", "Landroid/opengl/EGLContext;", "getRenderContext", "()Landroid/opengl/EGLContext;", "setRenderContext", "(Landroid/opengl/EGLContext;)V", "setThreadPriority", "", "apply", "Lcom/tencent/tavkit/ciimage/CIImage;", "effect", "Lcom/tencent/tavkit/composition/video/TAVVideoMixEffect;", "imageCollection", "Lcom/tencent/tavkit/composition/video/ImageCollection;", "renderInfo", "Lcom/tencent/tavkit/composition/video/RenderInfo;", "createInputTrackList", "", "Lcom/tencent/mm/videocomposition/TrackRenderInfo;", "context", "Lcom/tencent/tavkit/ciimage/CIContext;", "pts", "", "release", "renderTracks", "trackList", "setFrameRenderCallback", "callback", "updateAssetSize", "width", "height", "Companion", "video_composition_release"})
+@l(gjZ={1, 1, 15}, gka={""}, gkb={"Lcom/tencent/mm/videocomposition/render/BaseMultiVideoCompositionEffect;", "Lcom/tencent/tavkit/composition/video/TAVVideoMixEffect$Filter;", "()V", "assetSize", "Landroid/util/Size;", "getAssetSize", "()Landroid/util/Size;", "setAssetSize", "(Landroid/util/Size;)V", "cacheTextureInfo", "Landroid/util/ArrayMap;", "Lkotlin/Pair;", "", "Ljava/util/LinkedList;", "Lcom/tencent/tav/coremedia/TextureInfo;", "frameRenderCallback", "Lkotlin/Function0;", "", "renderContext", "Landroid/opengl/EGLContext;", "getRenderContext", "()Landroid/opengl/EGLContext;", "setRenderContext", "(Landroid/opengl/EGLContext;)V", "setThreadPriority", "", "apply", "Lcom/tencent/tavkit/ciimage/CIImage;", "effect", "Lcom/tencent/tavkit/composition/video/TAVVideoMixEffect;", "imageCollection", "Lcom/tencent/tavkit/composition/video/ImageCollection;", "renderInfo", "Lcom/tencent/tavkit/composition/video/RenderInfo;", "createInputTrackList", "", "Lcom/tencent/mm/videocomposition/TrackRenderInfo;", "context", "Lcom/tencent/tavkit/ciimage/CIContext;", "pts", "", "release", "renderTracks", "trackList", "setFrameRenderCallback", "callback", "updateAssetSize", "width", "height", "Companion", "video_composition_release"})
 public abstract class a
   implements TAVVideoMixEffect.Filter
 {
-  public static final a.a Lnr = new a.a((byte)0);
-  private ArrayMap<o<Integer, Integer>, LinkedList<TextureInfo>> Lnn = new ArrayMap();
-  private EGLContext Lno;
-  Size Lnp;
-  private boolean Lnq;
-  private volatile d.g.a.a<z> htq;
+  public static final a.a LKc = new a.a((byte)0);
+  private ArrayMap<o<Integer, Integer>, LinkedList<TextureInfo>> LJY = new ArrayMap();
+  private EGLContext LJZ;
+  Size LKa;
+  private boolean LKb;
+  private volatile d.g.a.a<z> hwe;
   
   public a()
   {
     EGLContext localEGLContext = EGL14.EGL_NO_CONTEXT;
     p.g(localEGLContext, "EGL14.EGL_NO_CONTEXT");
-    this.Lno = localEGLContext;
-    this.Lnp = new Size(0, 0);
+    this.LJZ = localEGLContext;
+    this.LKa = new Size(0, 0);
     com.tencent.mm.videocomposition.c.b.i("BaseMultiVideoCompositionEffect", "init: ".concat(String.valueOf(this)), new Object[0]);
   }
   
@@ -71,20 +71,20 @@ public abstract class a
       return null;
     }
     p.g(localObject1, "renderInfo?.ciContext ?: return null");
-    if (!this.Lnq)
+    if (!this.LKb)
     {
       com.tencent.mm.videocomposition.c.b.i("BaseMultiVideoCompositionEffect", "set render thread priority ".concat(String.valueOf(this)), new Object[0]);
       Process.setThreadPriority(-4);
-      this.Lnq = true;
+      this.LKb = true;
     }
-    if ((this.Lnp.getWidth() == 0) || (this.Lnp.getHeight() == 0))
+    if ((this.LKa.getWidth() == 0) || (this.LKa.getHeight() == 0))
     {
-      kt(paramRenderInfo.getRenderWidth(), paramRenderInfo.getRenderHeight());
-      com.tencent.mm.videocomposition.c.b.e("BaseMultiVideoCompositionEffect", "assetsSize error %s, update as renderSize", new Object[] { this.Lnp });
+      kA(paramRenderInfo.getRenderWidth(), paramRenderInfo.getRenderHeight());
+      com.tencent.mm.videocomposition.c.b.e("BaseMultiVideoCompositionEffect", "assetsSize error %s, update as renderSize", new Object[] { this.LKa });
     }
     paramTAVVideoMixEffect = ((CIContext)localObject1).getRenderContext().eglContext();
     p.g(paramTAVVideoMixEffect, "context.renderContext.eglContext()");
-    this.Lno = paramTAVVideoMixEffect;
+    this.LJZ = paramTAVVideoMixEffect;
     paramTAVVideoMixEffect = paramRenderInfo.getTime();
     p.g(paramTAVVideoMixEffect, "renderInfo.time");
     long l1 = paramTAVVideoMixEffect.getTimeUs() / 1000L;
@@ -136,7 +136,7 @@ public abstract class a
         if ((i > 0) && (j > 0))
         {
           paramTAVVideoMixEffect = new o(Integer.valueOf(i), Integer.valueOf(j));
-          localObject4 = (LinkedList)this.Lnn.get(paramTAVVideoMixEffect);
+          localObject4 = (LinkedList)this.LJY.get(paramTAVVideoMixEffect);
           Collection localCollection = (Collection)localObject4;
           if ((localCollection == null) || (localCollection.isEmpty()))
           {
@@ -166,7 +166,7 @@ public abstract class a
       {
         localObject2 = (f)((Iterator)localObject1).next();
         localObject3 = new o(Integer.valueOf(((f)localObject2).texture.width), Integer.valueOf(((f)localObject2).texture.height));
-        localObject4 = (Map)this.Lnn;
+        localObject4 = (Map)this.LJY;
         paramTAVVideoMixEffect = ((Map)localObject4).get(localObject3);
         if (paramTAVVideoMixEffect != null) {
           break label777;
@@ -180,7 +180,7 @@ public abstract class a
     {
       ((LinkedList)paramTAVVideoMixEffect).add(((f)localObject2).texture);
       break;
-      paramTAVVideoMixEffect = this.htq;
+      paramTAVVideoMixEffect = this.hwe;
       if (paramTAVVideoMixEffect != null) {
         paramTAVVideoMixEffect.invoke();
       }
@@ -191,16 +191,16 @@ public abstract class a
     }
   }
   
-  public void kt(int paramInt1, int paramInt2)
+  public void kA(int paramInt1, int paramInt2)
   {
     com.tencent.mm.videocomposition.c.b.i("BaseMultiVideoCompositionEffect", "updateRenderSize width:" + paramInt1 + ", height:" + paramInt2, new Object[0]);
-    this.Lnp = new Size(paramInt1, paramInt2);
+    this.LKa = new Size(paramInt1, paramInt2);
   }
   
   public void release()
   {
     com.tencent.mm.videocomposition.c.b.i("BaseMultiVideoCompositionEffect", "release: ".concat(String.valueOf(this)), new Object[0]);
-    Object localObject2 = (Map)this.Lnn;
+    Object localObject2 = (Map)this.LJY;
     Object localObject1 = (Collection)new ArrayList();
     localObject2 = ((Map)localObject2).entrySet().iterator();
     while (((Iterator)localObject2).hasNext()) {
@@ -210,7 +210,7 @@ public abstract class a
     while (((Iterator)localObject1).hasNext()) {
       ((TextureInfo)((Iterator)localObject1).next()).release();
     }
-    this.Lnn.clear();
+    this.LJY.clear();
   }
 }
 

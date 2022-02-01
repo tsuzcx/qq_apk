@@ -9,8 +9,8 @@ public class ShareInfo
   implements Parcelable
 {
   public static final Parcelable.Creator<ShareInfo> CREATOR;
-  public String cmt;
-  public String cmu;
+  public String cmv;
+  public String cmw;
   
   static
   {
@@ -22,15 +22,15 @@ public class ShareInfo
   private ShareInfo(Parcel paramParcel)
   {
     AppMethodBeat.i(46817);
-    this.cmu = paramParcel.readString();
-    this.cmt = paramParcel.readString();
+    this.cmw = paramParcel.readString();
+    this.cmv = paramParcel.readString();
     AppMethodBeat.o(46817);
   }
   
   public ShareInfo(String paramString1, String paramString2)
   {
-    this.cmu = paramString1;
-    this.cmt = paramString2;
+    this.cmw = paramString1;
+    this.cmv = paramString2;
   }
   
   public int describeContents()
@@ -41,14 +41,14 @@ public class ShareInfo
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(46816);
-    paramParcel.writeString(this.cmu);
-    paramParcel.writeString(this.cmt);
+    paramParcel.writeString(this.cmw);
+    paramParcel.writeString(this.cmv);
     AppMethodBeat.o(46816);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.share.ShareInfo
  * JD-Core Version:    0.7.0.1
  */

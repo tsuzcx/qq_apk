@@ -9,14 +9,14 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class k
   implements GestureDetector.OnGestureListener
 {
-  public a KJd;
-  private final float KJe;
-  private final float KJf;
+  public a Lfx;
+  private final float Lfy;
+  private final float Lfz;
   private final int Ph;
   private final int Pi;
   public final GestureDetector aYl;
@@ -30,8 +30,8 @@ public final class k
     ViewConfiguration localViewConfiguration = ViewConfiguration.get(paramContext);
     this.Ph = localViewConfiguration.getScaledMinimumFlingVelocity();
     this.Pi = localViewConfiguration.getScaledMaximumFlingVelocity();
-    this.KJe = BackwardSupportUtil.b.g(paramContext, 70.0F);
-    this.KJf = BackwardSupportUtil.b.g(paramContext, 50.0F);
+    this.Lfy = BackwardSupportUtil.b.h(paramContext, 70.0F);
+    this.Lfz = BackwardSupportUtil.b.h(paramContext, 50.0F);
     AppMethodBeat.o(143111);
   }
   
@@ -43,30 +43,30 @@ public final class k
   public final boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
     AppMethodBeat.i(143112);
-    if (this.KJd == null)
+    if (this.Lfx == null)
     {
       AppMethodBeat.o(143112);
       return true;
     }
-    ad.v("MicroMsg.MMGestureDetector", "lastX:%f, curX:%f, lastY:%f, curY:%f, vX:%f, vY:%f", new Object[] { Float.valueOf(paramMotionEvent1.getX()), Float.valueOf(paramMotionEvent2.getX()), Float.valueOf(paramMotionEvent1.getY()), Float.valueOf(paramMotionEvent2.getY()), Float.valueOf(paramFloat1), Float.valueOf(paramFloat2) });
+    ae.v("MicroMsg.MMGestureDetector", "lastX:%f, curX:%f, lastY:%f, curY:%f, vX:%f, vY:%f", new Object[] { Float.valueOf(paramMotionEvent1.getX()), Float.valueOf(paramMotionEvent2.getX()), Float.valueOf(paramMotionEvent1.getY()), Float.valueOf(paramMotionEvent2.getY()), Float.valueOf(paramFloat1), Float.valueOf(paramFloat2) });
     float f1 = Math.abs(paramMotionEvent2.getY() - paramMotionEvent1.getY());
     float f2 = Math.abs(paramMotionEvent2.getX() - paramMotionEvent1.getX());
-    if ((f1 < this.KJf) && (paramFloat1 > 800.0F) && (f2 > this.KJe))
+    if ((f1 < this.Lfz) && (paramFloat1 > 800.0F) && (f2 > this.Lfy))
     {
       AppMethodBeat.o(143112);
       return true;
     }
-    if ((f1 < this.KJf) && (paramFloat1 < -800.0F) && (f2 < -this.KJe))
+    if ((f1 < this.Lfz) && (paramFloat1 < -800.0F) && (f2 < -this.Lfy))
     {
       AppMethodBeat.o(143112);
       return true;
     }
-    if ((f2 < this.KJf) && (paramFloat2 > 800.0F))
+    if ((f2 < this.Lfz) && (paramFloat2 > 800.0F))
     {
       AppMethodBeat.o(143112);
       return true;
     }
-    if ((f2 < this.KJf) && (paramFloat2 < -800.0F))
+    if ((f2 < this.Lfz) && (paramFloat2 < -800.0F))
     {
       AppMethodBeat.o(143112);
       return true;
@@ -77,12 +77,12 @@ public final class k
   
   public final void onLongPress(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(186494);
+    AppMethodBeat.i(193751);
     b localb = new b();
     localb.bd(paramMotionEvent);
-    a.b("com/tencent/mm/ui/tools/MMGestureDetector", "android/view/GestureDetector$OnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V", this, localb.ahq());
+    a.b("com/tencent/mm/ui/tools/MMGestureDetector", "android/view/GestureDetector$OnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V", this, localb.ahF());
     a.a(this, "com/tencent/mm/ui/tools/MMGestureDetector", "android/view/GestureDetector$OnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V");
-    AppMethodBeat.o(186494);
+    AppMethodBeat.o(193751);
   }
   
   public final boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
@@ -94,12 +94,12 @@ public final class k
   
   public final boolean onSingleTapUp(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(186493);
+    AppMethodBeat.i(193750);
     b localb = new b();
     localb.bd(paramMotionEvent);
-    a.b("com/tencent/mm/ui/tools/MMGestureDetector", "android/view/GestureDetector$OnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z", this, localb.ahq());
+    a.b("com/tencent/mm/ui/tools/MMGestureDetector", "android/view/GestureDetector$OnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z", this, localb.ahF());
     a.a(false, this, "com/tencent/mm/ui/tools/MMGestureDetector", "android/view/GestureDetector$OnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z");
-    AppMethodBeat.o(186493);
+    AppMethodBeat.o(193750);
     return false;
   }
   

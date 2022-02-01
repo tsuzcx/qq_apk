@@ -1,27 +1,27 @@
 package com.tencent.mm.n;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.db;
+import com.tencent.mm.g.a.dc;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.sdk.platformtools.bw;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.vfs.i;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.bx;
+import com.tencent.mm.storage.aj;
+import com.tencent.mm.vfs.o;
 import java.util.HashMap;
 import java.util.Map;
 
 public class e
 {
-  private HashMap<String, String> gex;
-  protected boolean gey;
+  private HashMap<String, String> ggF;
+  protected boolean ggG;
   
   public e()
   {
     AppMethodBeat.i(131992);
-    this.gex = new HashMap();
-    this.gey = false;
+    this.ggF = new HashMap();
+    this.ggG = false;
     AppMethodBeat.o(131992);
   }
   
@@ -34,7 +34,7 @@ public class e
       return;
     }
     if (!paramBoolean) {
-      this.gex.clear();
+      this.ggF.clear();
     }
     int i = 0;
     if (i < 10000)
@@ -54,10 +54,10 @@ public class e
           str1 = (String)localObject1 + ".$key";
           localObject2 = (String)paramMap.get(localObject1);
           str1 = (String)paramMap.get(str1);
-          if ((str1 == null) || (bt.isNullOrNil(str1.trim()))) {
+          if ((str1 == null) || (bu.isNullOrNil(str1.trim()))) {
             break label256;
           }
-          localHashMap = this.gex;
+          localHashMap = this.ggF;
           str2 = str1.trim();
           if (localObject2 == null) {
             break label249;
@@ -68,7 +68,7 @@ public class e
       for (Object localObject1 = localObject2;; localObject1 = "")
       {
         localHashMap.put(str2, localObject1);
-        ad.d("MicroMsg.DynamicConfig", "put %s %s", new Object[] { str1.trim(), localObject2 });
+        ae.d("MicroMsg.DynamicConfig", "put %s %s", new Object[] { str1.trim(), localObject2 });
         i += 1;
         break;
         localObject1 = Integer.valueOf(i);
@@ -83,7 +83,7 @@ public class e
       }
     }
     label256:
-    ad.d("MicroMsg.DynamicConfig", "All dynamicConfig:%s", new Object[] { this.gex.toString() });
+    ae.d("MicroMsg.DynamicConfig", "All dynamicConfig:%s", new Object[] { this.ggF.toString() });
     AppMethodBeat.o(132000);
   }
   
@@ -94,31 +94,31 @@ public class e
       try
       {
         AppMethodBeat.i(131998);
-        if (bt.isNullOrNil(paramString))
+        if (bu.isNullOrNil(paramString))
         {
           AppMethodBeat.o(131998);
           return;
         }
-        ad.i("MicroMsg.DynamicConfig", "update dynacfg. increment:%b, md5:%s", new Object[] { Boolean.valueOf(paramBoolean), i.aPK(paramString) });
+        ae.i("MicroMsg.DynamicConfig", "update dynacfg. increment:%b, md5:%s", new Object[] { Boolean.valueOf(paramBoolean), o.aRh(paramString) });
         if (paramBoolean)
         {
-          g.ajD();
-          g.ajC().ajl().set(278530, paramString);
+          g.ajS();
+          g.ajR().ajA().set(278530, paramString);
           if (paramMap == null) {
             break label142;
           }
           a(paramMap, paramBoolean);
-          paramString = new db();
-          a.IbL.l(paramString);
+          paramString = new dc();
+          a.IvT.l(paramString);
           AppMethodBeat.o(131998);
           continue;
         }
-        g.ajD();
+        g.ajS();
       }
       finally {}
-      g.ajC().ajl().set(278529, paramString);
-      g.ajD();
-      g.ajC().ajl().set(278530, "");
+      g.ajR().ajA().set(278529, paramString);
+      g.ajS();
+      g.ajR().ajA().set(278530, "");
       continue;
       label142:
       r(paramString, paramBoolean);
@@ -137,7 +137,7 @@ public class e
     {
       for (;;)
       {
-        ad.e("MicroMsg.DynamicConfig", "parseInt failed, val: ".concat(String.valueOf(paramString)));
+        ae.e("MicroMsg.DynamicConfig", "parseInt failed, val: ".concat(String.valueOf(paramString)));
       }
     }
     AppMethodBeat.o(131994);
@@ -149,13 +149,13 @@ public class e
     try
     {
       AppMethodBeat.i(131993);
-      if (!this.gey)
+      if (!this.ggG)
       {
-        ad.e("MicroMsg.DynamicConfig", "DynamicConfig hadnot load");
+        ae.e("MicroMsg.DynamicConfig", "DynamicConfig hadnot load");
         vw();
       }
-      ad.d("MicroMsg.DynamicConfig", "get configs.get(config) %s %s", new Object[] { paramString.trim(), this.gex.get(paramString) });
-      paramString = (String)this.gex.get(paramString);
+      ae.d("MicroMsg.DynamicConfig", "get configs.get(config) %s %s", new Object[] { paramString.trim(), this.ggF.get(paramString) });
+      paramString = (String)this.ggF.get(paramString);
       AppMethodBeat.o(131993);
       return paramString;
     }
@@ -170,8 +170,8 @@ public class e
       AppMethodBeat.i(131996);
       if ((paramString1 != null) && (paramString2 != null))
       {
-        ad.d("MicroMsg.DynamicConfig", "put configs.put(key,value) %s %s", new Object[] { paramString1.trim(), paramString2 });
-        this.gex.put(paramString1, paramString2);
+        ae.d("MicroMsg.DynamicConfig", "put configs.put(key,value) %s %s", new Object[] { paramString1.trim(), paramString2 });
+        this.ggF.put(paramString1, paramString2);
       }
       AppMethodBeat.o(131996);
       return;
@@ -182,12 +182,12 @@ public class e
   protected final void r(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(131999);
-    a(bw.M(paramString, "sysmsg"), paramBoolean);
+    a(bx.M(paramString, "sysmsg"), paramBoolean);
     AppMethodBeat.o(131999);
   }
   
   /* Error */
-  public final java.util.List<String> vA(String paramString)
+  public final java.util.List<String> vW(String paramString)
   {
     // Byte code:
     //   0: aload_0
@@ -195,11 +195,11 @@ public class e
     //   2: ldc 215
     //   4: invokestatic 20	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   7: aload_0
-    //   8: getfield 27	com/tencent/mm/n/e:gey	Z
+    //   8: getfield 27	com/tencent/mm/n/e:ggG	Z
     //   11: ifne +14 -> 25
     //   14: ldc 83
     //   16: ldc 192
-    //   18: invokestatic 189	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   18: invokestatic 189	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   21: aload_0
     //   22: invokevirtual 195	com/tencent/mm/n/e:vw	()V
     //   25: new 217	java/util/ArrayList
@@ -207,10 +207,10 @@ public class e
     //   29: invokespecial 218	java/util/ArrayList:<init>	()V
     //   32: astore_2
     //   33: aload_1
-    //   34: invokestatic 77	com/tencent/mm/sdk/platformtools/bt:isNullOrNil	(Ljava/lang/String;)Z
+    //   34: invokestatic 77	com/tencent/mm/sdk/platformtools/bu:isNullOrNil	(Ljava/lang/String;)Z
     //   37: ifne +69 -> 106
     //   40: aload_0
-    //   41: getfield 25	com/tencent/mm/n/e:gex	Ljava/util/HashMap;
+    //   41: getfield 25	com/tencent/mm/n/e:ggF	Ljava/util/HashMap;
     //   44: invokevirtual 222	java/util/HashMap:keySet	()Ljava/util/Set;
     //   47: invokeinterface 228 1 0
     //   52: astore_3
@@ -227,7 +227,7 @@ public class e
     //   79: ifeq -26 -> 53
     //   82: aload_2
     //   83: aload_0
-    //   84: getfield 25	com/tencent/mm/n/e:gex	Ljava/util/HashMap;
+    //   84: getfield 25	com/tencent/mm/n/e:ggF	Ljava/util/HashMap;
     //   87: aload 4
     //   89: invokevirtual 198	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
     //   92: invokeinterface 247 2 0
@@ -252,7 +252,7 @@ public class e
     //   121: invokeinterface 253 1 0
     //   126: invokestatic 97	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   129: aastore
-    //   130: invokestatic 91	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   130: invokestatic 91	com/tencent/mm/sdk/platformtools/ae:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   133: ldc 215
     //   135: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   138: aload_0
@@ -279,26 +279,26 @@ public class e
     try
     {
       AppMethodBeat.i(131997);
-      g.ajD();
-      if (g.ajC() != null)
+      g.ajS();
+      if (g.ajR() != null)
       {
-        g.ajD();
-        if (g.ajC().ajl() != null)
+        g.ajS();
+        if (g.ajR().ajA() != null)
         {
-          this.gey = true;
-          g.ajD();
-          r((String)g.ajC().ajl().get(278529, null), false);
+          this.ggG = true;
+          g.ajS();
+          r((String)g.ajR().ajA().get(278529, null), false);
         }
       }
-      g.ajD();
-      if (g.ajC() != null)
+      g.ajS();
+      if (g.ajR() != null)
       {
-        g.ajD();
-        if (g.ajC().ajl() != null)
+        g.ajS();
+        if (g.ajR().ajA() != null)
         {
-          this.gey = true;
-          g.ajD();
-          r((String)g.ajC().ajl().get(278530, null), true);
+          this.ggG = true;
+          g.ajS();
+          r((String)g.ajR().ajA().get(278530, null), true);
         }
       }
       AppMethodBeat.o(131997);

@@ -10,50 +10,47 @@ import java.util.Map;
 public abstract class ch
   extends c
 {
-  public static final String[] INDEX_CREATE = { "CREATE INDEX IF NOT EXISTS Finder_MediaCache_media_id ON FinderMediaCacheInfo(mediaId)", "CREATE INDEX IF NOT EXISTS Finder_MediaCache_state ON FinderMediaCacheInfo(state)", "CREATE INDEX IF NOT EXISTS Finder_MediaCache_origin_media_id ON FinderMediaCacheInfo(originMediaId)", "CREATE INDEX IF NOT EXISTS Finder_MediaCache_fileFormat ON FinderMediaCacheInfo(fileFormat)", "CREATE INDEX IF NOT EXISTS Finder_MediaCache_updateTime ON FinderMediaCacheInfo(updateTime)" };
-  private static final int eEX = "mediaId".hashCode();
-  private static final int eFq = "updateTime".hashCode();
-  private static final int eIm = "url".hashCode();
-  private static final int eNc = "filePath".hashCode();
-  private static final int eST;
-  private static final int eXi = "totalSize".hashCode();
-  private static final int eZd = "cacheSize".hashCode();
-  private static final int eZe;
-  private static final int eZf;
-  private static final int eZg;
-  private static final int eZh;
-  private static final int eZi = "moovReady".hashCode();
-  private static final int eZj = "videoBitrate".hashCode();
-  private static final int eZk = "audioBitrate".hashCode();
-  private static final int eZl = "frameRate".hashCode();
-  private static final int eZm = "duration".hashCode();
-  private static final int eZn = "urlToken".hashCode();
-  private static final int eZo = "decodeKey".hashCode();
+  public static final String[] INDEX_CREATE = { "CREATE INDEX IF NOT EXISTS Finder_MediaCache_media_id ON FinderMediaCacheInfoV2(mediaId)", "CREATE INDEX IF NOT EXISTS Finder_MediaCache_state ON FinderMediaCacheInfoV2(state)", "CREATE INDEX IF NOT EXISTS Finder_MediaCache_origin_media_id ON FinderMediaCacheInfoV2(originMediaId)", "CREATE INDEX IF NOT EXISTS Finder_MediaCache_fileFormat ON FinderMediaCacheInfoV2(fileFormat)", "CREATE INDEX IF NOT EXISTS Finder_MediaCache_updateTime ON FinderMediaCacheInfoV2(updateTime)" };
+  private static final int eGG = "mediaId".hashCode();
+  private static final int eGZ = "updateTime".hashCode();
+  private static final int eJV = "url".hashCode();
+  private static final int eUE;
+  private static final int eYT = "totalSize".hashCode();
+  private static final int faQ = "cacheSize".hashCode();
+  private static final int faR;
+  private static final int faS;
+  private static final int faT;
+  private static final int faU;
+  private static final int faV = "moovReady".hashCode();
+  private static final int faW = "videoBitrate".hashCode();
+  private static final int faX = "audioBitrate".hashCode();
+  private static final int faY = "frameRate".hashCode();
+  private static final int faZ = "duration".hashCode();
+  private static final int fba = "urlToken".hashCode();
+  private static final int fbb = "decodeKey".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eEG = true;
-  private boolean eFn = true;
-  private boolean eIi = true;
-  private boolean eMU = true;
-  private boolean eSh = true;
-  private boolean eWF = true;
-  private boolean eYR = true;
-  private boolean eYS = true;
-  private boolean eYT = true;
-  private boolean eYU = true;
-  private boolean eYV = true;
-  private boolean eYW = true;
-  private boolean eYX = true;
-  private boolean eYY = true;
-  private boolean eYZ = true;
-  private boolean eZa = true;
-  private boolean eZb = true;
-  private boolean eZc = true;
+  private boolean eGW = true;
+  private boolean eGp = true;
+  private boolean eJR = true;
+  private boolean eTS = true;
+  private boolean eYq = true;
+  private boolean faE = true;
+  private boolean faF = true;
+  private boolean faG = true;
+  private boolean faH = true;
+  private boolean faI = true;
+  private boolean faJ = true;
+  private boolean faK = true;
+  private boolean faL = true;
+  private boolean faM = true;
+  private boolean faN = true;
+  private boolean faO = true;
+  private boolean faP = true;
   public int field_audioBitrate;
   public long field_cacheSize;
   public String field_decodeKey;
   public int field_duration;
   public String field_fileFormat;
-  public String field_filePath;
   public int field_frameRate;
   public boolean field_hasPlayed;
   public String field_mediaId;
@@ -69,92 +66,88 @@ public abstract class ch
   
   static
   {
-    eST = "state".hashCode();
-    eZe = "hasPlayed".hashCode();
-    eZf = "reqFormat".hashCode();
-    eZg = "originMediaId".hashCode();
-    eZh = "fileFormat".hashCode();
+    eUE = "state".hashCode();
+    faR = "hasPlayed".hashCode();
+    faS = "reqFormat".hashCode();
+    faT = "originMediaId".hashCode();
+    faU = "fileFormat".hashCode();
   }
   
-  public static c.a Vv()
+  public static c.a VD()
   {
     c.a locala = new c.a();
-    locala.IhA = new Field[18];
-    locala.columns = new String[19];
+    locala.IBL = new Field[17];
+    locala.columns = new String[18];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "mediaId";
-    locala.IhC.put("mediaId", "TEXT PRIMARY KEY ");
+    locala.IBN.put("mediaId", "TEXT PRIMARY KEY ");
     localStringBuilder.append(" mediaId TEXT PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.IhB = "mediaId";
+    locala.IBM = "mediaId";
     locala.columns[1] = "url";
-    locala.IhC.put("url", "TEXT");
+    locala.IBN.put("url", "TEXT");
     localStringBuilder.append(" url TEXT");
     localStringBuilder.append(", ");
-    locala.columns[2] = "filePath";
-    locala.IhC.put("filePath", "TEXT");
-    localStringBuilder.append(" filePath TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[3] = "totalSize";
-    locala.IhC.put("totalSize", "LONG");
+    locala.columns[2] = "totalSize";
+    locala.IBN.put("totalSize", "LONG");
     localStringBuilder.append(" totalSize LONG");
     localStringBuilder.append(", ");
-    locala.columns[4] = "cacheSize";
-    locala.IhC.put("cacheSize", "LONG");
+    locala.columns[3] = "cacheSize";
+    locala.IBN.put("cacheSize", "LONG");
     localStringBuilder.append(" cacheSize LONG");
     localStringBuilder.append(", ");
-    locala.columns[5] = "state";
-    locala.IhC.put("state", "INTEGER");
+    locala.columns[4] = "state";
+    locala.IBN.put("state", "INTEGER");
     localStringBuilder.append(" state INTEGER");
     localStringBuilder.append(", ");
-    locala.columns[6] = "hasPlayed";
-    locala.IhC.put("hasPlayed", "INTEGER");
+    locala.columns[5] = "hasPlayed";
+    locala.IBN.put("hasPlayed", "INTEGER");
     localStringBuilder.append(" hasPlayed INTEGER");
     localStringBuilder.append(", ");
-    locala.columns[7] = "reqFormat";
-    locala.IhC.put("reqFormat", "INTEGER default '-1' ");
+    locala.columns[6] = "reqFormat";
+    locala.IBN.put("reqFormat", "INTEGER default '-1' ");
     localStringBuilder.append(" reqFormat INTEGER default '-1' ");
     localStringBuilder.append(", ");
-    locala.columns[8] = "originMediaId";
-    locala.IhC.put("originMediaId", "TEXT");
+    locala.columns[7] = "originMediaId";
+    locala.IBN.put("originMediaId", "TEXT");
     localStringBuilder.append(" originMediaId TEXT");
     localStringBuilder.append(", ");
-    locala.columns[9] = "fileFormat";
-    locala.IhC.put("fileFormat", "TEXT");
+    locala.columns[8] = "fileFormat";
+    locala.IBN.put("fileFormat", "TEXT");
     localStringBuilder.append(" fileFormat TEXT");
     localStringBuilder.append(", ");
-    locala.columns[10] = "updateTime";
-    locala.IhC.put("updateTime", "LONG");
+    locala.columns[9] = "updateTime";
+    locala.IBN.put("updateTime", "LONG");
     localStringBuilder.append(" updateTime LONG");
     localStringBuilder.append(", ");
-    locala.columns[11] = "moovReady";
-    locala.IhC.put("moovReady", "INTEGER default 'false' ");
+    locala.columns[10] = "moovReady";
+    locala.IBN.put("moovReady", "INTEGER default 'false' ");
     localStringBuilder.append(" moovReady INTEGER default 'false' ");
     localStringBuilder.append(", ");
-    locala.columns[12] = "videoBitrate";
-    locala.IhC.put("videoBitrate", "INTEGER default '0' ");
+    locala.columns[11] = "videoBitrate";
+    locala.IBN.put("videoBitrate", "INTEGER default '0' ");
     localStringBuilder.append(" videoBitrate INTEGER default '0' ");
     localStringBuilder.append(", ");
-    locala.columns[13] = "audioBitrate";
-    locala.IhC.put("audioBitrate", "INTEGER default '0' ");
+    locala.columns[12] = "audioBitrate";
+    locala.IBN.put("audioBitrate", "INTEGER default '0' ");
     localStringBuilder.append(" audioBitrate INTEGER default '0' ");
     localStringBuilder.append(", ");
-    locala.columns[14] = "frameRate";
-    locala.IhC.put("frameRate", "INTEGER default '0' ");
+    locala.columns[13] = "frameRate";
+    locala.IBN.put("frameRate", "INTEGER default '0' ");
     localStringBuilder.append(" frameRate INTEGER default '0' ");
     localStringBuilder.append(", ");
-    locala.columns[15] = "duration";
-    locala.IhC.put("duration", "INTEGER default '0' ");
+    locala.columns[14] = "duration";
+    locala.IBN.put("duration", "INTEGER default '0' ");
     localStringBuilder.append(" duration INTEGER default '0' ");
     localStringBuilder.append(", ");
-    locala.columns[16] = "urlToken";
-    locala.IhC.put("urlToken", "TEXT default '' ");
+    locala.columns[15] = "urlToken";
+    locala.IBN.put("urlToken", "TEXT default '' ");
     localStringBuilder.append(" urlToken TEXT default '' ");
     localStringBuilder.append(", ");
-    locala.columns[17] = "decodeKey";
-    locala.IhC.put("decodeKey", "TEXT default '' ");
+    locala.columns[16] = "decodeKey";
+    locala.IBN.put("decodeKey", "TEXT default '' ");
     localStringBuilder.append(" decodeKey TEXT default '' ");
-    locala.columns[18] = "rowid";
+    locala.columns[17] = "rowid";
     locala.sql = localStringBuilder.toString();
     return locala;
   }
@@ -172,11 +165,11 @@ public abstract class ch
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eEX != k) {
+      if (eGG != k) {
         break label65;
       }
       this.field_mediaId = paramCursor.getString(i);
-      this.eEG = true;
+      this.eGp = true;
     }
     for (;;)
     {
@@ -184,30 +177,26 @@ public abstract class ch
       break label20;
       break;
       label65:
-      if (eIm == k)
+      if (eJV == k)
       {
         this.field_url = paramCursor.getString(i);
       }
-      else if (eNc == k)
-      {
-        this.field_filePath = paramCursor.getString(i);
-      }
-      else if (eXi == k)
+      else if (eYT == k)
       {
         this.field_totalSize = paramCursor.getLong(i);
       }
-      else if (eZd == k)
+      else if (faQ == k)
       {
         this.field_cacheSize = paramCursor.getLong(i);
       }
-      else if (eST == k)
+      else if (eUE == k)
       {
         this.field_state = paramCursor.getInt(i);
       }
       else
       {
         boolean bool;
-        if (eZe == k)
+        if (faR == k)
         {
           if (paramCursor.getInt(i) != 0) {}
           for (bool = true;; bool = false)
@@ -216,25 +205,25 @@ public abstract class ch
             break;
           }
         }
-        if (eZf == k)
+        if (faS == k)
         {
           this.field_reqFormat = paramCursor.getInt(i);
         }
-        else if (eZg == k)
+        else if (faT == k)
         {
           this.field_originMediaId = paramCursor.getString(i);
         }
-        else if (eZh == k)
+        else if (faU == k)
         {
           this.field_fileFormat = paramCursor.getString(i);
         }
-        else if (eFq == k)
+        else if (eGZ == k)
         {
           this.field_updateTime = paramCursor.getLong(i);
         }
         else
         {
-          if (eZi == k)
+          if (faV == k)
           {
             if (paramCursor.getInt(i) != 0) {}
             for (bool = true;; bool = false)
@@ -243,17 +232,17 @@ public abstract class ch
               break;
             }
           }
-          if (eZj == k) {
+          if (faW == k) {
             this.field_videoBitrate = paramCursor.getInt(i);
-          } else if (eZk == k) {
+          } else if (faX == k) {
             this.field_audioBitrate = paramCursor.getInt(i);
-          } else if (eZl == k) {
+          } else if (faY == k) {
             this.field_frameRate = paramCursor.getInt(i);
-          } else if (eZm == k) {
+          } else if (faZ == k) {
             this.field_duration = paramCursor.getInt(i);
-          } else if (eZn == k) {
+          } else if (fba == k) {
             this.field_urlToken = paramCursor.getString(i);
-          } else if (eZo == k) {
+          } else if (fbb == k) {
             this.field_decodeKey = paramCursor.getString(i);
           } else if (rowid_HASHCODE == k) {
             this.systemRowid = paramCursor.getLong(i);
@@ -266,64 +255,61 @@ public abstract class ch
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eEG) {
+    if (this.eGp) {
       localContentValues.put("mediaId", this.field_mediaId);
     }
-    if (this.eIi) {
+    if (this.eJR) {
       localContentValues.put("url", this.field_url);
     }
-    if (this.eMU) {
-      localContentValues.put("filePath", this.field_filePath);
-    }
-    if (this.eWF) {
+    if (this.eYq) {
       localContentValues.put("totalSize", Long.valueOf(this.field_totalSize));
     }
-    if (this.eYR) {
+    if (this.faE) {
       localContentValues.put("cacheSize", Long.valueOf(this.field_cacheSize));
     }
-    if (this.eSh) {
+    if (this.eTS) {
       localContentValues.put("state", Integer.valueOf(this.field_state));
     }
-    if (this.eYS) {
+    if (this.faF) {
       localContentValues.put("hasPlayed", Boolean.valueOf(this.field_hasPlayed));
     }
-    if (this.eYT) {
+    if (this.faG) {
       localContentValues.put("reqFormat", Integer.valueOf(this.field_reqFormat));
     }
-    if (this.eYU) {
+    if (this.faH) {
       localContentValues.put("originMediaId", this.field_originMediaId);
     }
-    if (this.eYV) {
+    if (this.faI) {
       localContentValues.put("fileFormat", this.field_fileFormat);
     }
-    if (this.eFn) {
+    if (this.eGW) {
       localContentValues.put("updateTime", Long.valueOf(this.field_updateTime));
     }
-    if (this.eYW) {
+    if (this.faJ) {
       localContentValues.put("moovReady", Boolean.valueOf(this.field_moovReady));
     }
-    if (this.eYX) {
+    if (this.faK) {
       localContentValues.put("videoBitrate", Integer.valueOf(this.field_videoBitrate));
     }
-    if (this.eYY) {
+    if (this.faL) {
       localContentValues.put("audioBitrate", Integer.valueOf(this.field_audioBitrate));
     }
-    if (this.eYZ) {
+    if (this.faM) {
       localContentValues.put("frameRate", Integer.valueOf(this.field_frameRate));
     }
-    if (this.eZa) {
+    if (this.faN) {
       localContentValues.put("duration", Integer.valueOf(this.field_duration));
     }
     if (this.field_urlToken == null) {
       this.field_urlToken = "";
     }
-    if (this.eZb) {
+    if (this.faO) {
       localContentValues.put("urlToken", this.field_urlToken);
     }
     if (this.field_decodeKey == null) {
       this.field_decodeKey = "";
     }
-    if (this.eZc) {
+    if (this.faP) {
       localContentValues.put("decodeKey", this.field_decodeKey);
     }
     if (this.systemRowid > 0L) {
@@ -336,7 +322,7 @@ public abstract class ch
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.c.ch
  * JD-Core Version:    0.7.0.1
  */

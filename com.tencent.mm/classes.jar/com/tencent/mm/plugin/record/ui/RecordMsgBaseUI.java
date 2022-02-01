@@ -20,18 +20,18 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.k.b;
-import com.tencent.mm.g.a.gv;
-import com.tencent.mm.g.a.xc;
+import com.tencent.mm.ah.k.b;
+import com.tencent.mm.g.a.gw;
+import com.tencent.mm.g.a.xg;
 import com.tencent.mm.g.c.ei;
-import com.tencent.mm.model.ba;
+import com.tencent.mm.model.bc;
 import com.tencent.mm.plugin.fav.ui.detail.BaseFavDetailReportUI;
 import com.tencent.mm.plugin.messenger.foundation.a.a.i;
 import com.tencent.mm.pluginsdk.model.app.g;
 import com.tencent.mm.pluginsdk.ui.span.k;
 import com.tencent.mm.sdk.b.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -40,13 +40,13 @@ public abstract class RecordMsgBaseUI
   extends BaseFavDetailReportUI
 {
   protected String appId = "";
-  protected ListView jpT = null;
+  protected ListView jsM = null;
   protected long msgId = -1L;
-  protected h xrX;
-  private View xrY;
-  private com.tencent.mm.sdk.b.c<gv> xrZ = new com.tencent.mm.sdk.b.c() {};
+  protected h xHU;
+  private View xHV;
+  private com.tencent.mm.sdk.b.c<gw> xHW = new com.tencent.mm.sdk.b.c() {};
   
-  private String avu(String paramString)
+  private String awJ(String paramString)
   {
     try
     {
@@ -66,41 +66,41 @@ public abstract class RecordMsgBaseUI
     paramImageView.setImageDrawable(paramBitmap);
   }
   
-  protected void dEo()
+  protected void dHF()
   {
-    this.xrX = dEp();
+    this.xHU = dHG();
     this.msgId = getIntent().getLongExtra("message_id", -1L);
     this.appId = getIntent().getStringExtra("record_app_id");
-    this.jpT = ((ListView)findViewById(2131303902));
-    dEw();
-    Object localObject2 = dEr();
-    Object localObject3 = dEs();
+    this.jsM = ((ListView)findViewById(2131303902));
+    dHN();
+    Object localObject2 = dHI();
+    Object localObject3 = dHJ();
     Object localObject1;
     Object localObject4;
-    if ((bt.isNullOrNil((String)localObject2)) || (bt.isNullOrNil((String)localObject3)))
+    if ((bu.isNullOrNil((String)localObject2)) || (bu.isNullOrNil((String)localObject3)))
     {
-      ad.i("MicroMsg.RecordMsgBaseUI", "subtitle time error!");
+      ae.i("MicroMsg.RecordMsgBaseUI", "subtitle time error!");
       localObject2 = View.inflate(getContext(), 2131496420, null);
       localObject3 = (TextView)((View)localObject2).findViewById(2131308221);
-      localObject1 = dEr();
-      localObject4 = dEs();
-      if ((!bt.isNullOrNil((String)localObject1)) && (!bt.isNullOrNil((String)localObject4))) {
+      localObject1 = dHI();
+      localObject4 = dHJ();
+      if ((!bu.isNullOrNil((String)localObject1)) && (!bu.isNullOrNil((String)localObject4))) {
         break label631;
       }
-      ad.i("MicroMsg.RecordMsgBaseUI", "subtitle time error!");
-      this.jpT.addHeaderView((View)localObject2, null, false);
+      ae.i("MicroMsg.RecordMsgBaseUI", "subtitle time error!");
+      this.jsM.addHeaderView((View)localObject2, null, false);
       localObject3 = View.inflate(getContext(), 2131495221, null);
-      if (!bt.isNullOrNil(this.appId)) {
+      if (!bu.isNullOrNil(this.appId)) {
         break label732;
       }
-      ba.aBQ();
-      localObject1 = com.tencent.mm.model.c.azs().xY(this.msgId);
-      localObject1 = k.b.aA(((ei)localObject1).field_content, ((ei)localObject1).field_reserved);
+      bc.aCg();
+      localObject1 = com.tencent.mm.model.c.azI().ys(this.msgId);
+      localObject1 = k.b.aB(((ei)localObject1).field_content, ((ei)localObject1).field_reserved);
       if (localObject1 == null) {
         break label799;
       }
       this.appId = ((k.b)localObject1).appId;
-      localObject2 = com.tencent.mm.pluginsdk.model.app.h.fX(this.appId, ((k.b)localObject1).aDD);
+      localObject2 = com.tencent.mm.pluginsdk.model.app.h.gg(this.appId, ((k.b)localObject1).aDD);
       if ((localObject2 != null) && (((g)localObject2).field_appName != null) && (((g)localObject2).field_appName.trim().length() > 0)) {
         break label724;
       }
@@ -109,10 +109,10 @@ public abstract class RecordMsgBaseUI
     for (;;)
     {
       label256:
-      if ((!bt.isNullOrNil(this.appId)) && (localObject2 != null))
+      if ((!bu.isNullOrNil(this.appId)) && (localObject2 != null))
       {
-        this.xrY = ((View)localObject3).findViewById(2131303034);
-        this.xrY.setVisibility(0);
+        this.xHV = ((View)localObject3).findViewById(2131303034);
+        this.xHV.setVisibility(0);
         localObject4 = (ImageView)((View)localObject3).findViewById(2131296932);
         TextView localTextView = (TextView)((View)localObject3).findViewById(2131296933);
         ViewGroup.LayoutParams localLayoutParams = ((ImageView)localObject4).getLayoutParams();
@@ -122,7 +122,7 @@ public abstract class RecordMsgBaseUI
         ((ImageView)localObject4).setLayoutParams(localLayoutParams);
         localObject1 = com.tencent.mm.pluginsdk.model.app.h.a(getContext(), (g)localObject2, (String)localObject1);
         localTextView.setText(getResources().getString(2131761823, new Object[] { localObject1 }));
-        localObject1 = com.tencent.mm.pluginsdk.model.app.h.c(this.appId, 1, com.tencent.mm.cc.a.getDensity(getContext()));
+        localObject1 = com.tencent.mm.pluginsdk.model.app.h.c(this.appId, 1, com.tencent.mm.cb.a.getDensity(getContext()));
         if ((localObject1 == null) || (((Bitmap)localObject1).isRecycled())) {
           break label780;
         }
@@ -130,11 +130,11 @@ public abstract class RecordMsgBaseUI
       }
       for (;;)
       {
-        this.jpT.addFooterView((View)localObject3, null, false);
-        this.jpT.setAdapter(this.xrX);
-        this.xrX.mListView = this.jpT;
-        this.xrX.dEu();
-        this.jpT.setOnScrollListener(new AbsListView.OnScrollListener()
+        this.jsM.addFooterView((View)localObject3, null, false);
+        this.jsM.setAdapter(this.xHU);
+        this.xHU.mListView = this.jsM;
+        this.xHU.dHL();
+        this.jsM.setOnScrollListener(new AbsListView.OnScrollListener()
         {
           public final void onScroll(AbsListView paramAnonymousAbsListView, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3)
           {
@@ -142,7 +142,7 @@ public abstract class RecordMsgBaseUI
             AppMethodBeat.i(27873);
             if (paramAnonymousInt1 == 0)
             {
-              paramAnonymousAbsListView = RecordMsgBaseUI.this.jpT.getChildAt(0);
+              paramAnonymousAbsListView = RecordMsgBaseUI.this.jsM.getChildAt(0);
               if (paramAnonymousAbsListView == null) {}
               for (paramAnonymousInt1 = paramAnonymousInt2; paramAnonymousInt1 == 0; paramAnonymousInt1 = paramAnonymousAbsListView.getTop())
               {
@@ -160,12 +160,12 @@ public abstract class RecordMsgBaseUI
             AppMethodBeat.i(27872);
             if (paramAnonymousInt == 0)
             {
-              paramAnonymousAbsListView = new xc();
-              paramAnonymousAbsListView.dLv.type = 5;
-              paramAnonymousAbsListView.dLv.dLw = RecordMsgBaseUI.this.jpT.getFirstVisiblePosition();
-              paramAnonymousAbsListView.dLv.dLx = RecordMsgBaseUI.this.jpT.getLastVisiblePosition();
-              paramAnonymousAbsListView.dLv.dLy = RecordMsgBaseUI.this.jpT.getHeaderViewsCount();
-              com.tencent.mm.sdk.b.a.IbL.l(paramAnonymousAbsListView);
+              paramAnonymousAbsListView = new xg();
+              paramAnonymousAbsListView.dMK.type = 5;
+              paramAnonymousAbsListView.dMK.dML = RecordMsgBaseUI.this.jsM.getFirstVisiblePosition();
+              paramAnonymousAbsListView.dMK.dMM = RecordMsgBaseUI.this.jsM.getLastVisiblePosition();
+              paramAnonymousAbsListView.dMK.dMN = RecordMsgBaseUI.this.jsM.getHeaderViewsCount();
+              com.tencent.mm.sdk.b.a.IvT.l(paramAnonymousAbsListView);
             }
             AppMethodBeat.o(27872);
           }
@@ -180,23 +180,23 @@ public abstract class RecordMsgBaseUI
             return true;
           }
         });
-        dEt();
-        this.jpT.postDelayed(new Runnable()
+        dHK();
+        this.jsM.postDelayed(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(27875);
-            View localView = RecordMsgBaseUI.this.jpT.getChildAt(RecordMsgBaseUI.this.jpT.getLastVisiblePosition());
+            View localView = RecordMsgBaseUI.this.jsM.getChildAt(RecordMsgBaseUI.this.jsM.getLastVisiblePosition());
             if ((localView != null) && (RecordMsgBaseUI.a(RecordMsgBaseUI.this) != null) && (RecordMsgBaseUI.a(RecordMsgBaseUI.this).getVisibility() == 0))
             {
               int j = localView.getBottom();
-              int k = RecordMsgBaseUI.this.jpT.getBottom();
-              ad.d("MicroMsg.RecordMsgBaseUI", "footerBotm %d, listBotm %d", new Object[] { Integer.valueOf(j), Integer.valueOf(k) });
-              int i = com.tencent.mm.cc.a.fromDPToPix(RecordMsgBaseUI.this.getContext(), 64);
+              int k = RecordMsgBaseUI.this.jsM.getBottom();
+              ae.d("MicroMsg.RecordMsgBaseUI", "footerBotm %d, listBotm %d", new Object[] { Integer.valueOf(j), Integer.valueOf(k) });
+              int i = com.tencent.mm.cb.a.fromDPToPix(RecordMsgBaseUI.this.getContext(), 64);
               if (k - j > 0)
               {
-                j = k - j + com.tencent.mm.cc.a.fromDPToPix(RecordMsgBaseUI.this.getContext(), 15);
-                ad.d("MicroMsg.RecordMsgBaseUI", "offset %d", new Object[] { Integer.valueOf(j) });
+                j = k - j + com.tencent.mm.cb.a.fromDPToPix(RecordMsgBaseUI.this.getContext(), 15);
+                ae.d("MicroMsg.RecordMsgBaseUI", "offset %d", new Object[] { Integer.valueOf(j) });
                 if (j > i) {
                   RecordMsgBaseUI.a(RecordMsgBaseUI.this).setPadding(0, j, 0, 0);
                 }
@@ -210,7 +210,7 @@ public abstract class RecordMsgBaseUI
         localObject4 = localObject3.split(" ")[0];
         if (!localObject2.split("-")[0].equals(localObject3.split("-")[0]))
         {
-          this.xrX.xrQ = true;
+          this.xHU.xHN = true;
           localObject1 = null;
         }
         for (;;)
@@ -219,17 +219,17 @@ public abstract class RecordMsgBaseUI
           break;
           if (((String)localObject1).equals(localObject4))
           {
-            this.xrX.xrR = false;
+            this.xHU.xHO = false;
           }
           else
           {
             localObject1 = (String)localObject1 + "~" + (String)localObject4;
-            this.xrX.xrR = true;
+            this.xHU.xHO = true;
           }
         }
         label631:
-        localObject1 = avu(localObject1.split(" ")[0]);
-        localObject4 = avu(localObject4.split(" ")[0]);
+        localObject1 = awJ(localObject1.split(" ")[0]);
+        localObject4 = awJ(localObject4.split(" ")[0]);
         if (((String)localObject1).equals(localObject4)) {}
         for (;;)
         {
@@ -255,19 +255,19 @@ public abstract class RecordMsgBaseUI
     }
   }
   
-  protected abstract h dEp();
+  protected abstract h dHG();
   
-  protected abstract String dEq();
+  protected abstract String dHH();
   
-  protected abstract String dEr();
+  protected abstract String dHI();
   
-  protected abstract String dEs();
+  protected abstract String dHJ();
   
-  protected abstract void dEt();
+  protected abstract void dHK();
   
-  protected final void dEw()
+  protected final void dHN()
   {
-    String str2 = dEq();
+    String str2 = dHH();
     String str3 = getContext().getString(2131758637);
     String str1 = str2;
     if (str2 != null)
@@ -284,7 +284,7 @@ public abstract class RecordMsgBaseUI
     setMMTitle(k.b(getContext(), str1, getResources().getDimensionPixelSize(2131165192)));
   }
   
-  protected abstract void e(int paramInt1, int paramInt2, Intent paramIntent);
+  protected abstract void f(int paramInt1, int paramInt2, Intent paramIntent);
   
   public int getForceOrientation()
   {
@@ -298,59 +298,59 @@ public abstract class RecordMsgBaseUI
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    e(paramInt1, paramInt2, paramIntent);
+    f(paramInt1, paramInt2, paramIntent);
   }
   
   public void onCreate(Bundle paramBundle)
   {
     com.tencent.mm.pluginsdk.h.q(this);
     super.onCreate(paramBundle);
-    dEo();
-    this.xrZ.alive();
+    dHF();
+    this.xHW.alive();
     com.tencent.mm.pluginsdk.h.r(this);
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    this.xrZ.dead();
-    if (this.xrX != null) {
-      this.xrX.destroy();
+    this.xHW.dead();
+    if (this.xHU != null) {
+      this.xHU.destroy();
     }
   }
   
   public void onPause()
   {
     super.onPause();
-    if (this.xrX != null)
+    if (this.xHU != null)
     {
-      localObject = this.xrX;
+      localObject = this.xHU;
       int i = 0;
-      while (i < ((h)localObject).xrP.size())
+      while (i < ((h)localObject).xHM.size())
       {
-        h.b localb = (h.b)((h)localObject).xrP.valueAt(i);
+        h.b localb = (h.b)((h)localObject).xHM.valueAt(i);
         if (localb != null) {
           localb.pause();
         }
         i += 1;
       }
     }
-    Object localObject = new xc();
-    ((xc)localObject).dLv.type = 1;
-    com.tencent.mm.sdk.b.a.IbL.l((b)localObject);
+    Object localObject = new xg();
+    ((xg)localObject).dMK.type = 1;
+    com.tencent.mm.sdk.b.a.IvT.l((b)localObject);
   }
   
   public void onResume()
   {
     super.onResume();
-    xc localxc = new xc();
-    if (this.jpT != null)
+    xg localxg = new xg();
+    if (this.jsM != null)
     {
-      localxc.dLv.type = 0;
-      localxc.dLv.dLw = this.jpT.getFirstVisiblePosition();
-      localxc.dLv.dLx = this.jpT.getLastVisiblePosition();
-      localxc.dLv.dLy = this.jpT.getHeaderViewsCount();
-      com.tencent.mm.sdk.b.a.IbL.l(localxc);
+      localxg.dMK.type = 0;
+      localxg.dMK.dML = this.jsM.getFirstVisiblePosition();
+      localxg.dMK.dMM = this.jsM.getLastVisiblePosition();
+      localxg.dMK.dMN = this.jsM.getHeaderViewsCount();
+      com.tencent.mm.sdk.b.a.IvT.l(localxg);
     }
   }
   

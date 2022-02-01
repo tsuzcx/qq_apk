@@ -13,9 +13,9 @@ public final class h
   {
     try
     {
-      AppMethodBeat.i(206348);
+      AppMethodBeat.i(211378);
       g localg = new g(this.bhU);
-      AppMethodBeat.o(206348);
+      AppMethodBeat.o(211378);
       return new e[] { localg };
     }
     finally {}
@@ -23,7 +23,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.video.e.b.h
  * JD-Core Version:    0.7.0.1
  */

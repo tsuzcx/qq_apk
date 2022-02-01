@@ -1,15 +1,16 @@
 package com.tencent.mm.plugin.exdevice.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.q;
-import com.tencent.mm.model.ba;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.model.bc;
 import com.tencent.mm.model.c;
 import com.tencent.mm.plugin.exdevice.g.a.h;
 import com.tencent.mm.plugin.exdevice.g.b.b.a;
 import com.tencent.mm.sdk.e.n;
 import com.tencent.mm.sdk.e.n.b;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.storage.bp;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.storage.bq;
 
 final class ad$9
   implements n.b
@@ -21,24 +22,24 @@ final class ad$9
     AppMethodBeat.i(23452);
     try
     {
-      if (!ba.ajx())
+      if (!bc.ajM())
       {
-        com.tencent.mm.sdk.platformtools.ad.w("MicroMsg.exdevice.SubCoreExDevice", "onNotifyChange,acc has not ready");
+        ae.w("MicroMsg.exdevice.SubCoreExDevice", "onNotifyChange,acc has not ready");
         AppMethodBeat.o(23452);
         return;
       }
       if ((paramObject instanceof String)) {
-        ba.ajF().n(new Runnable()
+        bc.ajU().n(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(23451);
             String str = (String)paramObject;
-            if (ad.clv().acD(str))
+            if (ad.cmL().adu(str))
             {
-              ba.aBQ();
-              if (!c.azp().aTg(str)) {
-                ba.aiU().a(new h(str, null), 0);
+              bc.aCg();
+              if (!c.azF().aUH(str)) {
+                bc.ajj().a(new h(str, null), 0);
               }
             }
             AppMethodBeat.o(23451);
@@ -50,7 +51,7 @@ final class ad$9
     }
     catch (Exception paramn)
     {
-      com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.exdevice.SubCoreExDevice", "ap : onNotifyChange exception %s", new Object[] { paramn.getMessage() });
+      ae.e("MicroMsg.exdevice.SubCoreExDevice", "ap : onNotifyChange exception %s", new Object[] { paramn.getMessage() });
       AppMethodBeat.o(23452);
     }
   }

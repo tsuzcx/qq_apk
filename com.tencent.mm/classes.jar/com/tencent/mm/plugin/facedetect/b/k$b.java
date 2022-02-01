@@ -5,27 +5,27 @@ import com.tencent.mm.protocal.l;
 import com.tencent.mm.protocal.l.c;
 import com.tencent.mm.protocal.l.e;
 import com.tencent.mm.protocal.protobuf.BaseResponse;
-import com.tencent.mm.protocal.protobuf.dun;
+import com.tencent.mm.protocal.protobuf.dvk;
 
 public final class k$b
   extends l.e
   implements l.c
 {
-  public dun rge;
+  public dvk roh;
   
   public k$b()
   {
     AppMethodBeat.i(103601);
-    this.rge = new dun();
+    this.roh = new dvk();
     AppMethodBeat.o(103601);
   }
   
   public final int fromProtoBuf(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(103602);
-    this.rge = ((dun)new dun().parseFrom(paramArrayOfByte));
-    l.a(this, this.rge.getBaseResponse());
-    int i = this.rge.getBaseResponse().Ret;
+    this.roh = ((dvk)new dvk().parseFrom(paramArrayOfByte));
+    l.a(this, this.roh.getBaseResponse());
+    int i = this.roh.getBaseResponse().Ret;
     AppMethodBeat.o(103602);
     return i;
   }

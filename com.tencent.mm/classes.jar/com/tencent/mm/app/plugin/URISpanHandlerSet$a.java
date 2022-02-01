@@ -9,7 +9,7 @@ import java.lang.annotation.Target;
 @Target({java.lang.annotation.ElementType.TYPE})
 @interface URISpanHandlerSet$a
 {
-  URISpanHandlerSet.PRIORITY Nj() default URISpanHandlerSet.PRIORITY.NORMAL;
+  URISpanHandlerSet.PRIORITY Ne() default URISpanHandlerSet.PRIORITY.NORMAL;
 }
 
 

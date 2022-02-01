@@ -17,9 +17,9 @@ final class c$15
     AppMethodBeat.i(182063);
     b localb = new b();
     localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/location/ui/impl/MMPoiMapUI$22", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-    c.P(this.vgy).setText("");
-    c.A(this.vgy);
+    a.b("com/tencent/mm/plugin/location/ui/impl/MMPoiMapUI$22", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+    c.P(this.vsF).setText("");
+    c.A(this.vsF);
     a.a(this, "com/tencent/mm/plugin/location/ui/impl/MMPoiMapUI$22", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(182063);
   }

@@ -10,7 +10,7 @@ import com.tencent.mm.plugin.appbrand.ipc.MMToClientEvent;
 import com.tencent.mm.plugin.appbrand.ipc.MMToClientEvent.c;
 import com.tencent.mm.plugin.appbrand.ipc.e;
 import com.tencent.mm.plugin.appbrand.jsapi.p;
-import com.tencent.mm.plugin.appbrand.q;
+import com.tencent.mm.plugin.appbrand.r;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -22,22 +22,22 @@ public class b
 {
   public static final int CTRL_INDEX = 662;
   public static final String NAME = "onDownloadAppStateChangeForNative";
-  public static HashMap<String, b> kvn;
-  private static Set<String> kvo;
-  private MMToClientEvent.c kvm;
+  public static HashMap<String, b> kyC;
+  private static Set<String> kyD;
+  private MMToClientEvent.c kyB;
   
   static
   {
     AppMethodBeat.i(45740);
-    kvn = new HashMap();
-    kvo = new HashSet();
+    kyC = new HashMap();
+    kyD = new HashSet();
     AppMethodBeat.o(45740);
   }
   
-  public b(final q paramq)
+  public b(final r paramr)
   {
     AppMethodBeat.i(45736);
-    this.kvm = new MMToClientEvent.c()
+    this.kyB = new MMToClientEvent.c()
     {
       public final void ch(Object paramAnonymousObject)
       {
@@ -45,23 +45,23 @@ public class b
         if ((paramAnonymousObject instanceof AppbrandDownloadState))
         {
           paramAnonymousObject = (AppbrandDownloadState)paramAnonymousObject;
-          if (paramq != null) {
-            b.this.g(paramq).Ph(paramAnonymousObject.biz().toString()).bir();
+          if (paramr != null) {
+            b.this.g(paramr).PP(paramAnonymousObject.bji().toString()).bja();
           }
         }
         AppMethodBeat.o(45732);
       }
     };
-    MMToClientEvent.a(paramq.getAppId(), this.kvm);
-    paramq.getRuntime().jwS.a(new c.a()
+    MMToClientEvent.a(paramr.getAppId(), this.kyB);
+    paramr.getRuntime().jzQ.a(new c.a()
     {
       public final void a(String paramAnonymousString, com.tencent.mm.plugin.appbrand.a.b paramAnonymousb)
       {
         AppMethodBeat.i(45733);
-        if (paramAnonymousb == com.tencent.mm.plugin.appbrand.a.b.jKR)
+        if (paramAnonymousb == com.tencent.mm.plugin.appbrand.a.b.jOd)
         {
-          MMToClientEvent.b(paramq.getAppId(), b.a(b.this));
-          b.k(paramq);
+          MMToClientEvent.b(paramr.getAppId(), b.a(b.this));
+          b.k(paramr);
         }
         AppMethodBeat.o(45733);
       }
@@ -72,24 +72,24 @@ public class b
   public static void a(AppbrandDownloadState paramAppbrandDownloadState)
   {
     AppMethodBeat.i(45737);
-    Iterator localIterator = kvo.iterator();
+    Iterator localIterator = kyD.iterator();
     while (localIterator.hasNext()) {
       e.b((String)localIterator.next(), paramAppbrandDownloadState);
     }
     AppMethodBeat.o(45737);
   }
   
-  public static void a(q paramq, b paramb)
+  public static void a(r paramr, b paramb)
   {
     AppMethodBeat.i(45738);
-    kvn.put(paramq.getAppId(), paramb);
-    h.a("com.tencent.mm", new IPCString(paramq.getAppId()), b.a.class, null);
+    kyC.put(paramr.getAppId(), paramb);
+    h.a("com.tencent.mm", new IPCString(paramr.getAppId()), b.a.class, null);
     AppMethodBeat.o(45738);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.appdownload.b
  * JD-Core Version:    0.7.0.1
  */

@@ -4,31 +4,31 @@ import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.x.f;
 import com.tencent.mm.plugin.appbrand.jsapi.x.f.c;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ak;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/report/ReportUtilKt;", "", "()V", "getNetworkTypeForReport", "", "context", "Landroid/content/Context;", "plugin-appbrand-integration_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/report/ReportUtilKt;", "", "()V", "getNetworkTypeForReport", "", "context", "Landroid/content/Context;", "plugin-appbrand-integration_release"})
 public final class q
 {
-  public static final q mrM;
+  public static final q mwK;
   
   static
   {
     AppMethodBeat.i(51027);
-    mrM = new q();
+    mwK = new q();
     AppMethodBeat.o(51027);
   }
   
-  public static final String dK(Context paramContext)
+  public static final String dO(Context paramContext)
   {
     AppMethodBeat.i(51026);
     Context localContext = paramContext;
     if (paramContext == null) {
-      localContext = aj.getContext();
+      localContext = ak.getContext();
     }
-    paramContext = f.dt(localContext);
-    switch (r.cpQ[paramContext.ordinal()])
+    paramContext = f.dx(localContext);
+    switch (r.cqt[paramContext.ordinal()])
     {
     default: 
       paramContext = paramContext.value;
@@ -42,7 +42,7 @@ public final class q
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.report.q
  * JD-Core Version:    0.7.0.1
  */

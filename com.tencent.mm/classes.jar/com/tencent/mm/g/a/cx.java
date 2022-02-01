@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class cx
   extends b
 {
-  public a dnR;
+  public a doU;
   
   public cx()
   {
@@ -15,16 +15,16 @@ public final class cx
   
   private cx(byte paramByte)
   {
-    AppMethodBeat.i(192511);
-    this.dnR = new a();
-    this.IbR = false;
+    AppMethodBeat.i(91203);
+    this.doU = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(192511);
+    AppMethodBeat.o(91203);
   }
   
   public static final class a
   {
-    public int action;
+    public int doV = 0;
   }
 }
 

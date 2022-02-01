@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.o;
 import android.util.Pair;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.a.n;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.nio.ByteBuffer;
@@ -11,17 +11,17 @@ import java.util.List;
 
 public final class g
 {
-  List<n> iQK;
-  List<Pair> iQL;
-  private RandomAccessFile vLh;
-  n vLi;
-  int vLj;
-  int vLk;
+  List<n> iTD;
+  List<Pair> iTE;
+  private RandomAccessFile vXl;
+  n vXm;
+  int vXn;
+  int vXo;
   
   public final int H(ByteBuffer paramByteBuffer)
   {
     AppMethodBeat.i(133909);
-    if (this.vLj >= this.vLk)
+    if (this.vXn >= this.vXo)
     {
       AppMethodBeat.o(133909);
       return -1;
@@ -33,9 +33,9 @@ public final class g
       int j;
       try
       {
-        this.vLh.seek(this.vLi.start);
-        arrayOfByte = new byte[this.vLi.size];
-        i = this.vLh.read(arrayOfByte);
+        this.vXl.seek(this.vXm.start);
+        arrayOfByte = new byte[this.vXm.size];
+        i = this.vXl.read(arrayOfByte);
       }
       catch (Exception paramByteBuffer)
       {
@@ -43,7 +43,7 @@ public final class g
       }
       try
       {
-        j = this.vLi.size;
+        j = this.vXm.size;
         if (i < j)
         {
           AppMethodBeat.o(133909);
@@ -64,7 +64,7 @@ public final class g
       AppMethodBeat.o(133909);
       return i;
       label130:
-      ad.printErrStackTrace("MicroMsg.Mp4Extractor", paramByteBuffer, "read sample data error", new Object[0]);
+      ae.printErrStackTrace("MicroMsg.Mp4Extractor", paramByteBuffer, "read sample data error", new Object[0]);
       continue;
       while (j < i)
       {
@@ -81,16 +81,16 @@ public final class g
   public final void release()
   {
     AppMethodBeat.i(133908);
-    if (this.vLh != null) {}
+    if (this.vXl != null) {}
     try
     {
-      this.vLh.close();
+      this.vXl.close();
       label19:
-      this.iQK.clear();
-      this.iQK = null;
-      this.iQL.clear();
-      this.iQL = null;
-      this.vLi = null;
+      this.iTD.clear();
+      this.iTD = null;
+      this.iTE.clear();
+      this.iTE = null;
+      this.vXm = null;
       AppMethodBeat.o(133908);
       return;
     }
@@ -102,7 +102,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.o.g
  * JD-Core Version:    0.7.0.1
  */

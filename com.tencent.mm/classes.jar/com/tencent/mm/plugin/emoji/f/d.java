@@ -1,19 +1,19 @@
 package com.tencent.mm.plugin.emoji.f;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.q;
 import com.tencent.mm.plugin.emoji.c.a;
 import com.tencent.mm.protocal.protobuf.jj;
 import com.tencent.mm.protocal.protobuf.jk;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.al.a;
-import com.tencent.mm.storage.bd;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.storage.aj;
+import com.tencent.mm.storage.am.a;
+import com.tencent.mm.storage.be;
 import com.tencent.mm.storage.emotion.EmojiInfo;
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -23,34 +23,34 @@ public final class d
   extends n
   implements com.tencent.mm.network.k
 {
-  private com.tencent.mm.al.f callback;
-  private ArrayList<String> pFx;
+  private com.tencent.mm.ak.f callback;
+  private ArrayList<String> pMb;
   private final b rr;
   
   public d(ArrayList<String> paramArrayList)
   {
     AppMethodBeat.i(108671);
     b.a locala = new b.a();
-    locala.hNM = new jj();
-    locala.hNN = new jk();
+    locala.hQF = new jj();
+    locala.hQG = new jk();
     locala.uri = "/cgi-bin/micromsg-bin/mmbatchemojibackup";
     locala.funcId = 696;
-    locala.hNO = 0;
+    locala.hQH = 0;
     locala.respCmdId = 0;
-    this.rr = locala.aDC();
-    this.pFx = paramArrayList;
+    this.rr = locala.aDS();
+    this.pMb = paramArrayList;
     AppMethodBeat.o(108671);
   }
   
-  public final int doScene(com.tencent.mm.network.e parame, com.tencent.mm.al.f paramf)
+  public final int doScene(com.tencent.mm.network.e parame, com.tencent.mm.ak.f paramf)
   {
     AppMethodBeat.i(108673);
     this.callback = paramf;
-    ((jj)this.rr.hNK.hNQ).FAs = new LinkedList(this.pFx);
-    if ((this.pFx == null) || (this.pFx.size() <= 0))
+    ((jj)this.rr.hQD.hQJ).FSP = new LinkedList(this.pMb);
+    if ((this.pMb == null) || (this.pMb.size() <= 0))
     {
-      ad.i("MicroMsg.emoji.NetSceneBatchEmojiBackup", "need no backup custom emoji, list is null.");
-      com.tencent.mm.kernel.g.ajC().ajl().set(348162, Boolean.FALSE);
+      ae.i("MicroMsg.emoji.NetSceneBatchEmojiBackup", "need no backup custom emoji, list is null.");
+      com.tencent.mm.kernel.g.ajR().ajA().set(348162, Boolean.FALSE);
       AppMethodBeat.o(108673);
       return -1;
     }
@@ -67,45 +67,45 @@ public final class d
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(108672);
-    ad.i("MicroMsg.emoji.NetSceneBatchEmojiBackup", "netId:%d, errType:%d, errCode:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    ae.i("MicroMsg.emoji.NetSceneBatchEmojiBackup", "netId:%d, errType:%d, errCode:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
     if (paramInt3 == -434)
     {
-      ad.w("MicroMsg.emoji.NetSceneBatchEmojiBackup", "[cpan] batch backup emoji failed. over size.");
-      com.tencent.mm.kernel.g.ajC().ajl().set(al.a.Iqn, Boolean.TRUE);
-      com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(164L, 4L, 1L, false);
+      ae.w("MicroMsg.emoji.NetSceneBatchEmojiBackup", "[cpan] batch backup emoji failed. over size.");
+      com.tencent.mm.kernel.g.ajR().ajA().set(am.a.IKJ, Boolean.TRUE);
+      com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(164L, 4L, 1L, false);
     }
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      com.tencent.mm.kernel.g.ajC().ajl().set(al.a.Iqn, Boolean.FALSE);
-      paramq = com.tencent.mm.plugin.emoji.model.k.getEmojiStorageMgr().ILn;
-      paramArrayOfByte = this.pFx;
+      com.tencent.mm.kernel.g.ajR().ajA().set(am.a.IKJ, Boolean.FALSE);
+      paramq = com.tencent.mm.plugin.emoji.model.k.getEmojiStorageMgr().JfU;
+      paramArrayOfByte = this.pMb;
       if ((paramArrayOfByte == null) || (paramArrayOfByte.size() <= 0))
       {
-        ad.i("MicroMsg.emoji.EmojiInfoStorage", "[cpan] LocalCustomEmoji failed. list is null");
-        com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(164L, 2L, 1L, false);
+        ae.i("MicroMsg.emoji.EmojiInfoStorage", "[cpan] LocalCustomEmoji failed. list is null");
+        com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(164L, 2L, 1L, false);
       }
     }
     for (;;)
     {
-      paramq = (jk)this.rr.hNL.hNQ;
-      if ((paramq.FAv != null) && (paramq.FAv.size() > 0))
+      paramq = (jk)this.rr.hQE.hQJ;
+      if ((paramq.FSR != null) && (paramq.FSR.size() > 0))
       {
-        ad.i("MicroMsg.emoji.NetSceneBatchEmojiBackup", "[cpan] there are some emoji need to upload.");
-        com.tencent.mm.plugin.emoji.model.k.getEmojiStorageMgr().ILn.bn(paramq.FAv);
-        com.tencent.mm.kernel.g.ajC().ajl().set(348165, Boolean.TRUE);
-        a.kq(true);
+        ae.i("MicroMsg.emoji.NetSceneBatchEmojiBackup", "[cpan] there are some emoji need to upload.");
+        com.tencent.mm.plugin.emoji.model.k.getEmojiStorageMgr().JfU.bo(paramq.FSR);
+        com.tencent.mm.kernel.g.ajR().ajA().set(348165, Boolean.TRUE);
+        a.kp(true);
       }
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
       AppMethodBeat.o(108672);
       return;
-      ad.i("MicroMsg.emoji.EmojiInfoStorage", "[cpan] LocalCustomEmoji list size :%d.", new Object[] { Integer.valueOf(paramArrayOfByte.size()) });
+      ae.i("MicroMsg.emoji.EmojiInfoStorage", "[cpan] LocalCustomEmoji list size :%d.", new Object[] { Integer.valueOf(paramArrayOfByte.size()) });
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("UPDATE");
       localStringBuilder.append(" EmojiInfo ");
       localStringBuilder.append(" SET ");
       localStringBuilder.append("source");
       localStringBuilder.append("=");
-      localStringBuilder.append(EmojiInfo.Off);
+      localStringBuilder.append(EmojiInfo.OAm);
       localStringBuilder.append(" where ");
       localStringBuilder.append("md5");
       localStringBuilder.append(" IN (");
@@ -119,10 +119,10 @@ public final class d
         paramInt1 += 1;
       }
       localStringBuilder.append(")");
-      ad.d("MicroMsg.emoji.EmojiInfoStorage", localStringBuilder.toString());
+      ae.d("MicroMsg.emoji.EmojiInfoStorage", localStringBuilder.toString());
       paramq.db.execSQL("EmojiInfo", localStringBuilder.toString());
       break;
-      com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(164L, 3L, 1L, false);
+      com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(164L, 3L, 1L, false);
     }
   }
 }

@@ -19,18 +19,18 @@ import java.util.List;
 
 public final class c
 {
-  private LinkedList<b.h> njI;
-  Marker njJ;
-  private SoSoMapView njK;
-  f njL;
+  private LinkedList<b.h> noQ;
+  Marker noR;
+  private SoSoMapView noS;
+  f noT;
   public AnimatorSet wV;
   
   public c(LinkedList<b.h> paramLinkedList, Marker paramMarker, SoSoMapView paramSoSoMapView)
   {
     AppMethodBeat.i(146584);
-    this.njI = paramLinkedList;
-    this.njJ = paramMarker;
-    this.njK = paramSoSoMapView;
+    this.noQ = paramLinkedList;
+    this.noR = paramMarker;
+    this.noS = paramSoSoMapView;
     init();
     AppMethodBeat.o(146584);
   }
@@ -39,12 +39,12 @@ public final class c
   {
     AppMethodBeat.i(146586);
     Object localObject = new LatLng[2];
-    localObject[0] = new LatLng(paramh.kRL, paramh.kRK);
+    localObject[0] = new LatLng(paramh.kVu, paramh.kVt);
     localObject[1] = new LatLng(paramh.latitude, paramh.longitude);
-    final e locale1 = this.njL.b(localObject[0]);
-    final e locale2 = this.njL.b(localObject[1]);
+    final e locale1 = this.noT.b(localObject[0]);
+    final e locale2 = this.noT.b(localObject[1]);
     final double[] arrayOfDouble = new double[1];
-    Projection localProjection = this.njK.getProjection();
+    Projection localProjection = this.noS.getProjection();
     int i = 0;
     double d = 0.0D;
     while (i <= 0)
@@ -72,11 +72,11 @@ public final class c
         double d2 = (locale2.x - locale1.x) * d4 / arrayOfDouble[0];
         double d3 = locale1.y;
         d4 = d4 * (locale2.y - locale1.y) / arrayOfDouble[0];
-        paramAnonymousValueAnimator = c.this.njJ;
-        f localf = c.this.njL;
+        paramAnonymousValueAnimator = c.this.noR;
+        f localf = c.this.noT;
         e locale = new e(d1 + d2, d4 + d3);
-        d1 = locale.x / localf.njX;
-        paramAnonymousValueAnimator.setPosition(new LatLng(90.0D - Math.toDegrees(Math.atan(Math.exp(-(0.5D - locale.y / localf.njX) * 2.0D * 3.141592653589793D)) * 2.0D), (d1 - 0.5D) * 360.0D));
+        d1 = locale.x / localf.npf;
+        paramAnonymousValueAnimator.setPosition(new LatLng(90.0D - Math.toDegrees(Math.atan(Math.exp(-(0.5D - locale.y / localf.npf) * 2.0D * 3.141592653589793D)) * 2.0D), (d1 - 0.5D) * 360.0D));
         AppMethodBeat.o(146582);
       }
     });
@@ -86,8 +86,8 @@ public final class c
   
   private ValueAnimator b(b.h paramh)
   {
-    AppMethodBeat.i(199909);
-    ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { this.njJ.getRotation(), this.njJ.getRotation() + paramh.kRD });
+    AppMethodBeat.i(212601);
+    ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { this.noR.getRotation(), this.noR.getRotation() + paramh.kVl });
     localValueAnimator.setDuration(paramh.duration);
     localValueAnimator.setInterpolator(new LinearInterpolator());
     localValueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
@@ -96,11 +96,11 @@ public final class c
       {
         AppMethodBeat.i(146583);
         double d = Double.parseDouble(String.valueOf(paramAnonymousValueAnimator.getAnimatedValue()));
-        c.this.njJ.setRotation((float)d);
+        c.this.noR.setRotation((float)d);
         AppMethodBeat.o(146583);
       }
     });
-    AppMethodBeat.o(199909);
+    AppMethodBeat.o(212601);
     return localValueAnimator;
   }
   
@@ -108,13 +108,13 @@ public final class c
   {
     AppMethodBeat.i(146585);
     this.wV = new AnimatorSet();
-    this.njL = new f();
+    this.noT = new f();
     ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = this.njI.iterator();
+    Iterator localIterator = this.noQ.iterator();
     while (localIterator.hasNext())
     {
       Object localObject = (b.h)localIterator.next();
-      if ((((b.h)localObject).kRD != 0.0F) && (((b.h)localObject).latitude != 0.0D) && (((b.h)localObject).longitude != 0.0D))
+      if ((((b.h)localObject).kVl != 0.0F) && (((b.h)localObject).latitude != 0.0D) && (((b.h)localObject).longitude != 0.0D))
       {
         ValueAnimator localValueAnimator = a((b.h)localObject);
         localObject = b((b.h)localObject);
@@ -122,7 +122,7 @@ public final class c
         localAnimatorSet.play((Animator)localObject).with(localValueAnimator);
         localArrayList.add(localAnimatorSet);
       }
-      else if (((b.h)localObject).kRD != 0.0F)
+      else if (((b.h)localObject).kVl != 0.0F)
       {
         localArrayList.add(b((b.h)localObject));
       }

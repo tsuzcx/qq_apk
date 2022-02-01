@@ -23,10 +23,10 @@ public class TAVTimeEffectBuilder
   
   public TAVTimeEffectBuilder(TAVClip paramTAVClip, List<TAVTimeEffect> paramList)
   {
-    AppMethodBeat.i(219727);
+    AppMethodBeat.i(200758);
     this.clip = paramTAVClip;
     this.timeEffects = ((TAVTimeEffect[])paramList.toArray());
-    AppMethodBeat.o(219727);
+    AppMethodBeat.o(200758);
   }
   
   public TAVTimeEffectBuilder(TAVClip paramTAVClip, TAVTimeEffect... paramVarArgs)
@@ -37,17 +37,17 @@ public class TAVTimeEffectBuilder
   
   private void addSegmentToChannel(TAVClip paramTAVClip, TAVClipSegment paramTAVClipSegment, List<TAVClip> paramList)
   {
-    AppMethodBeat.i(219730);
+    AppMethodBeat.i(200761);
     paramTAVClip = paramTAVClip.clone();
     paramTAVClip.getResource().setSourceTimeRange(paramTAVClipSegment.timeRange);
     paramTAVClip.getResource().setScaledDuration(paramTAVClipSegment.timeRange.getDuration());
     paramList.add(paramTAVClip);
-    AppMethodBeat.o(219730);
+    AppMethodBeat.o(200761);
   }
   
   private void addSegmentToChannelWithTimeEffect(TAVClip paramTAVClip, TAVClipSegment paramTAVClipSegment, List<TAVClip> paramList)
   {
-    AppMethodBeat.i(219731);
+    AppMethodBeat.i(200762);
     int i = 0;
     if (i < paramTAVClipSegment.timeEffect.getLoopCount())
     {
@@ -103,15 +103,15 @@ public class TAVTimeEffectBuilder
         ((TAVResource)localObject1).setScaledDuration(paramTAVClipSegment.timeEffect.getScaledDuration().divide(paramTAVClipSegment.timeEffect.getLoopCount()));
       }
     }
-    AppMethodBeat.o(219731);
+    AppMethodBeat.o(200762);
   }
   
   private List<TAVTimeEffect> availableTimeEffectsFromClip(TAVClip paramTAVClip)
   {
-    AppMethodBeat.i(219734);
+    AppMethodBeat.i(200765);
     if (this.timeEffects == null)
     {
-      AppMethodBeat.o(219734);
+      AppMethodBeat.o(200765);
       return null;
     }
     ArrayList localArrayList = new ArrayList();
@@ -148,31 +148,31 @@ public class TAVTimeEffectBuilder
       {
         public int compare(TAVTimeEffect paramAnonymousTAVTimeEffect1, TAVTimeEffect paramAnonymousTAVTimeEffect2)
         {
-          AppMethodBeat.i(219725);
+          AppMethodBeat.i(200756);
           paramAnonymousTAVTimeEffect1 = paramAnonymousTAVTimeEffect1.getTimeRange().getStart();
           paramAnonymousTAVTimeEffect2 = paramAnonymousTAVTimeEffect2.getTimeRange().getStart();
           if (paramAnonymousTAVTimeEffect1.equalsTo(paramAnonymousTAVTimeEffect2))
           {
-            AppMethodBeat.o(219725);
+            AppMethodBeat.o(200756);
             return 0;
           }
           if (paramAnonymousTAVTimeEffect1.bigThan(paramAnonymousTAVTimeEffect2))
           {
-            AppMethodBeat.o(219725);
+            AppMethodBeat.o(200756);
             return 1;
           }
-          AppMethodBeat.o(219725);
+          AppMethodBeat.o(200756);
           return -1;
         }
       });
-      AppMethodBeat.o(219734);
+      AppMethodBeat.o(200765);
       return localArrayList;
     }
   }
   
   private void initChannelWithClip(TAVClip paramTAVClip, List<TAVClip> paramList)
   {
-    AppMethodBeat.i(219729);
+    AppMethodBeat.i(200760);
     Iterator localIterator = segmentsWithClip(paramTAVClip).iterator();
     while (localIterator.hasNext())
     {
@@ -183,12 +183,12 @@ public class TAVTimeEffectBuilder
         addSegmentToChannelWithTimeEffect(paramTAVClip, localTAVClipSegment, paramList);
       }
     }
-    AppMethodBeat.o(219729);
+    AppMethodBeat.o(200760);
   }
   
   private List<TAVClipSegment> segmentsWithClip(TAVClip paramTAVClip)
   {
-    AppMethodBeat.i(219732);
+    AppMethodBeat.i(200763);
     Object localObject1 = paramTAVClip.getResource();
     Object localObject2 = ((TAVResource)localObject1).getSourceTimeRange().getStart();
     ArrayList localArrayList = new ArrayList();
@@ -200,17 +200,17 @@ public class TAVTimeEffectBuilder
       TAVClipSegment.access$102((TAVClipSegment)localObject2, new CMTimeRange(paramTAVClip, (CMTime)localObject1));
       localArrayList.add(localObject2);
     }
-    AppMethodBeat.o(219732);
+    AppMethodBeat.o(200763);
     return localArrayList;
   }
   
   private CMTime traverseTimeEffect(TAVClip paramTAVClip, TAVResource paramTAVResource, List<TAVClipSegment> paramList, CMTime paramCMTime)
   {
-    AppMethodBeat.i(219733);
+    AppMethodBeat.i(200764);
     paramTAVClip = availableTimeEffectsFromClip(paramTAVClip);
     if (paramTAVClip == null)
     {
-      AppMethodBeat.o(219733);
+      AppMethodBeat.o(200764);
       return paramCMTime;
     }
     paramTAVClip = paramTAVClip.iterator();
@@ -230,22 +230,22 @@ public class TAVTimeEffectBuilder
       paramList.add(paramCMTime);
       paramCMTime = paramCMTime.timeRange.getEnd();
     }
-    AppMethodBeat.o(219733);
+    AppMethodBeat.o(200764);
     return paramCMTime;
   }
   
   public List<TAVClip> build()
   {
-    AppMethodBeat.i(219728);
+    AppMethodBeat.i(200759);
     ArrayList localArrayList = new ArrayList();
     CMTimeRange localCMTimeRange = this.clip.getResource().getSourceTimeRange();
     if ((localCMTimeRange == null) || (localCMTimeRange.getDuration().value == 0L))
     {
-      AppMethodBeat.o(219728);
+      AppMethodBeat.o(200759);
       return null;
     }
     initChannelWithClip(this.clip, localArrayList);
-    AppMethodBeat.o(219728);
+    AppMethodBeat.o(200759);
     return localArrayList;
   }
   

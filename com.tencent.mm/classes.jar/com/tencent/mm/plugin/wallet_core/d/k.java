@@ -5,7 +5,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wallet_core.model.am;
 import com.tencent.mm.sdk.e.e;
 import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -29,12 +29,12 @@ public final class k
     super(parame, am.info, "WalletUserInfo", null);
     AppMethodBeat.i(70627);
     this.listeners = new LinkedList();
-    ad.i("MicroMsg.WalletUserInfoStorage", "already call constructor.");
+    ae.i("MicroMsg.WalletUserInfoStorage", "already call constructor.");
     this.db = parame;
     AppMethodBeat.o(70627);
   }
   
-  public final boolean aSJ()
+  public final boolean aTi()
   {
     AppMethodBeat.i(70630);
     boolean bool = this.db.execSQL("WalletUserInfo", "delete from WalletUserInfo");
@@ -58,7 +58,7 @@ public final class k
     return false;
   }
   
-  public final am eHg()
+  public final am eKO()
   {
     AppMethodBeat.i(70628);
     am localam = new am();
@@ -79,7 +79,7 @@ public final class k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.d.k
  * JD-Core Version:    0.7.0.1
  */

@@ -4,18 +4,18 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory.Options;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.graphics.MMBitmapFactory;
-import com.tencent.mm.sdk.platformtools.g;
+import com.tencent.mm.sdk.platformtools.h;
 import java.io.InputStream;
 
 public final class p
   implements e
 {
-  public static final p kVv;
+  public static final p kZd;
   
   static
   {
     AppMethodBeat.i(46601);
-    kVv = new p();
+    kZd = new p();
     AppMethodBeat.o(46601);
   }
   
@@ -37,15 +37,15 @@ public final class p
   
   public final Bitmap decodeStream(InputStream paramInputStream)
   {
-    AppMethodBeat.i(217128);
-    paramInputStream = g.decodeStream(paramInputStream);
-    AppMethodBeat.o(217128);
+    AppMethodBeat.i(217737);
+    paramInputStream = h.decodeStream(paramInputStream);
+    AppMethodBeat.o(217737);
     return paramInputStream;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.media.p
  * JD-Core Version:    0.7.0.1
  */

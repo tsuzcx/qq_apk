@@ -46,7 +46,7 @@ public final class vx
       c.a(localPaint, paramVarArgs).setStrokeWidth(1.0F);
       localCanvas.save();
       localObject2 = c.a((Paint)localObject2, paramVarArgs);
-      ((Paint)localObject2).setColor(-2130706433);
+      ((Paint)localObject2).setColor(-2147483648);
       arrayOfFloat = c.a(arrayOfFloat, 1.0F, 0.0F, -301.0F, 0.0F, 1.0F, -288.0F);
       ((Matrix)localObject1).reset();
       ((Matrix)localObject1).setValues(arrayOfFloat);

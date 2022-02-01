@@ -3,9 +3,9 @@ package com.tencent.mm.plugin.appbrand.jsapi;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.vr;
+import com.tencent.mm.g.a.vv;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class JsApiMakeVoIPCall
   extends a<com.tencent.mm.plugin.appbrand.service.c>
@@ -17,10 +17,10 @@ public final class JsApiMakeVoIPCall
     extends MainProcessTask
   {
     public static final Parcelable.Creator<StartVoIPCall> CREATOR;
-    private int kje;
-    private m kry;
-    private c ktc;
-    private com.tencent.mm.sdk.b.c ktd;
+    private int kmu;
+    private m kuO;
+    private c kws;
+    private com.tencent.mm.sdk.b.c kwt;
     public int status;
     
     static
@@ -33,7 +33,7 @@ public final class JsApiMakeVoIPCall
     public StartVoIPCall(Parcel paramParcel)
     {
       AppMethodBeat.i(45544);
-      this.ktd = new com.tencent.mm.sdk.b.c() {};
+      this.kwt = new com.tencent.mm.sdk.b.c() {};
       e(paramParcel);
       AppMethodBeat.o(45544);
     }
@@ -41,50 +41,50 @@ public final class JsApiMakeVoIPCall
     public StartVoIPCall(m paramm, c paramc, int paramInt)
     {
       AppMethodBeat.i(45543);
-      this.ktd = new com.tencent.mm.sdk.b.c() {};
-      this.kry = paramm;
-      this.ktc = paramc;
-      this.kje = paramInt;
+      this.kwt = new com.tencent.mm.sdk.b.c() {};
+      this.kuO = paramm;
+      this.kws = paramc;
+      this.kmu = paramInt;
       AppMethodBeat.o(45543);
     }
     
-    public final void aOA()
+    public final void aOX()
     {
       AppMethodBeat.i(45545);
-      com.tencent.mm.sdk.b.a.IbL.c(this.ktd);
+      com.tencent.mm.sdk.b.a.IvT.c(this.kwt);
       AppMethodBeat.o(45545);
     }
     
-    public final void aOB()
+    public final void aOY()
     {
       AppMethodBeat.i(45546);
-      bhO();
-      ad.i("MicroMsg.JsApiMakeVoIPCall", "makeVoIPCall = %d", new Object[] { Integer.valueOf(this.status) });
+      bix();
+      ae.i("MicroMsg.JsApiMakeVoIPCall", "makeVoIPCall = %d", new Object[] { Integer.valueOf(this.status) });
       if (this.status == 1)
       {
-        this.ktc.h(this.kje, this.kry.e("cancel", null));
+        this.kws.h(this.kmu, this.kuO.e("cancel", null));
         AppMethodBeat.o(45546);
         return;
       }
       if (this.status == 2)
       {
-        this.ktc.h(this.kje, this.kry.e("ok", null));
+        this.kws.h(this.kmu, this.kuO.e("ok", null));
         AppMethodBeat.o(45546);
         return;
       }
       if (this.status == 3)
       {
-        this.ktc.h(this.kje, this.kry.e("fail:network error", null));
+        this.kws.h(this.kmu, this.kuO.e("fail:network error", null));
         AppMethodBeat.o(45546);
         return;
       }
       if (this.status == 4)
       {
-        this.ktc.h(this.kje, this.kry.e("fail:param not match", null));
+        this.kws.h(this.kmu, this.kuO.e("fail:param not match", null));
         AppMethodBeat.o(45546);
         return;
       }
-      this.ktc.h(this.kje, this.kry.e("fail:unknow", null));
+      this.kws.h(this.kmu, this.kuO.e("fail:unknow", null));
       AppMethodBeat.o(45546);
     }
     

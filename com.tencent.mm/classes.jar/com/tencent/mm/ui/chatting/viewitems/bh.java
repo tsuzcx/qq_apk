@@ -5,8 +5,8 @@ import android.widget.TextView;
 
 final class bh
 {
-  TextView Khj;
-  TextView gnM;
+  TextView KDE;
+  TextView gqi;
   ImageView ka;
 }
 

@@ -10,25 +10,25 @@ import d.o;
 
 public abstract interface k
 {
-  public static final a NyF = a.NyH;
+  public static final a NVM = a.NVO;
   
   public abstract o<a.a<?>, Object> a(a.h paramh, t paramt, h paramh1, ad paramad);
   
   public static final class a
   {
-    private static final k NyG;
+    private static final k NVN;
     
     static
     {
       AppMethodBeat.i(60302);
-      NyH = new a();
-      NyG = (k)new a();
+      NVO = new a();
+      NVN = (k)new a();
       AppMethodBeat.o(60302);
     }
     
-    public static k gty()
+    public static k gya()
     {
-      return NyG;
+      return NVN;
     }
     
     public static final class a
@@ -49,7 +49,7 @@ public abstract interface k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.k.a.k
  * JD-Core Version:    0.7.0.1
  */

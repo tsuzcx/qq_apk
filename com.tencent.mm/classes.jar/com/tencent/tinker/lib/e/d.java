@@ -6,20 +6,20 @@ import java.util.HashMap;
 
 public final class d
 {
-  public String Mhf;
-  public boolean Mhg;
-  public boolean Mhh;
-  public File Mhi;
-  public File Mhj;
-  public File Mhk;
-  public File Mhl;
-  public File Mhm;
-  public File Mhn;
-  public HashMap<String, String> Mho;
-  public HashMap<String, String> Mhp;
-  public HashMap<String, String> Mhq;
-  public int Mhr;
-  public long msQ;
+  public String MEc;
+  public boolean MEd;
+  public boolean MEe;
+  public File MEf;
+  public File MEg;
+  public File MEh;
+  public File MEi;
+  public File MEj;
+  public File MEk;
+  public HashMap<String, String> MEl;
+  public HashMap<String, String> MEm;
+  public HashMap<String, String> MEn;
+  public int MEo;
+  public long mxN;
   public String oatDir;
   public SharePatchInfo patchInfo;
   public boolean useInterpretMode;

@@ -10,20 +10,18 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.g.c.aw;
-import com.tencent.mm.model.ba;
-import com.tencent.mm.model.c;
-import com.tencent.mm.o.b;
+import com.tencent.mm.model.bc;
 import com.tencent.mm.plugin.messenger.foundation.a.a.n;
 import com.tencent.mm.pluginsdk.ui.span.k;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.cf;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.cg;
 import org.xwalk.core.Log;
 
 public class ProfileDescribeView
   extends ProfileItemView
 {
-  public TextView ETt;
-  public TextView ETu;
+  public TextView FlO;
+  public TextView FlP;
   
   public ProfileDescribeView(Context paramContext)
   {
@@ -40,61 +38,61 @@ public class ProfileDescribeView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public final boolean dBj()
+  public final boolean dEA()
   {
     AppMethodBeat.i(31211);
-    if (this.ETu != null)
+    if (this.FlP != null)
     {
-      localObject1 = this.ETu.getLayoutParams();
-      ((ViewGroup.LayoutParams)localObject1).width = com.tencent.mm.cc.a.ax(getContext(), 2131165370);
-      this.ETu.setLayoutParams((ViewGroup.LayoutParams)localObject1);
+      localObject1 = this.FlP.getLayoutParams();
+      ((ViewGroup.LayoutParams)localObject1).width = com.tencent.mm.cb.a.ax(getContext(), 2131165370);
+      this.FlP.setLayoutParams((ViewGroup.LayoutParams)localObject1);
     }
-    if (this.pMt == null)
+    if (this.pSY == null)
     {
       setVisibility(8);
       AppMethodBeat.o(31211);
       return false;
     }
-    Object localObject2 = this.pMt.ePD;
+    Object localObject2 = this.pSY.eRo;
     int i;
-    if (!bt.isNullOrNil(this.pMt.ePE)) {
+    if (!bu.isNullOrNil(this.pSY.eRp)) {
       i = 1;
     }
-    while (b.lM(this.pMt.field_type)) {
-      if ((!bt.isNullOrNil((String)localObject2)) && (i != 0))
+    while (com.tencent.mm.contact.c.lO(this.pSY.field_type)) {
+      if ((!bu.isNullOrNil((String)localObject2)) && (i != 0))
       {
         Drawable localDrawable = getContext().getResources().getDrawable(2131689872);
         localDrawable.setBounds(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
         localObject1 = new com.tencent.mm.ui.widget.a(localDrawable);
-        ((com.tencent.mm.ui.widget.a)localObject1).KQg = ((int)((localDrawable.getIntrinsicHeight() - this.ETt.getTextSize()) / 2.0F));
+        ((com.tencent.mm.ui.widget.a)localObject1).LmE = ((int)((localDrawable.getIntrinsicHeight() - this.FlO.getTextSize()) / 2.0F));
         localObject2 = new SpannableString("  ".concat(String.valueOf(localObject2)));
         ((SpannableString)localObject2).setSpan(localObject1, 0, 1, 33);
-        this.ETt.setText(k.b(getContext(), (CharSequence)localObject2, this.ETt.getTextSize()));
+        this.FlO.setText(k.b(getContext(), (CharSequence)localObject2, this.FlO.getTextSize()));
         AppMethodBeat.o(31211);
         return true;
         i = 0;
       }
       else
       {
-        if ((!bt.isNullOrNil((String)localObject2)) && (i == 0))
+        if ((!bu.isNullOrNil((String)localObject2)) && (i == 0))
         {
-          this.ETt.setText(k.b(getContext(), bt.nullAsNil((String)localObject2), this.ETt.getTextSize()));
+          this.FlO.setText(k.b(getContext(), bu.nullAsNil((String)localObject2), this.FlO.getTextSize()));
           AppMethodBeat.o(31211);
           return true;
         }
-        if ((bt.isNullOrNil((String)localObject2)) && (i != 0))
+        if ((bu.isNullOrNil((String)localObject2)) && (i != 0))
         {
           localObject2 = getContext().getResources().getDrawable(2131689872);
           ((Drawable)localObject2).setBounds(0, 0, ((Drawable)localObject2).getIntrinsicWidth(), ((Drawable)localObject2).getIntrinsicHeight());
           localObject1 = new com.tencent.mm.ui.widget.a((Drawable)localObject2);
-          ((com.tencent.mm.ui.widget.a)localObject1).KQg = ((int)((((Drawable)localObject2).getIntrinsicHeight() - this.ETt.getTextSize()) / 2.0F));
+          ((com.tencent.mm.ui.widget.a)localObject1).LmE = ((int)((((Drawable)localObject2).getIntrinsicHeight() - this.FlO.getTextSize()) / 2.0F));
           localObject2 = new SpannableString("  " + getContext().getString(2131757793));
           ((SpannableString)localObject2).setSpan(localObject1, 0, 1, 33);
-          this.ETt.setText(k.b(getContext(), (CharSequence)localObject2, this.ETt.getTextSize()));
+          this.FlO.setText(k.b(getContext(), (CharSequence)localObject2, this.FlO.getTextSize()));
           AppMethodBeat.o(31211);
           return true;
         }
-        if ((bt.isNullOrNil((String)localObject2)) && (i == 0))
+        if ((bu.isNullOrNil((String)localObject2)) && (i == 0))
         {
           Log.i("MicroMsg.ProfileDescribeView", "ProfileDescribeView gone,isContact");
           setVisibility(8);
@@ -108,25 +106,25 @@ public class ProfileDescribeView
       }
     }
     Object localObject1 = null;
-    localObject2 = this.pMt.field_encryptUsername;
-    if (!bt.isNullOrNil((String)localObject2))
+    localObject2 = this.pSY.field_encryptUsername;
+    if (!bu.isNullOrNil((String)localObject2))
     {
-      ba.aBQ();
-      localObject1 = c.azq().aqz((String)localObject2);
+      bc.aCg();
+      localObject1 = com.tencent.mm.model.c.azG().arE((String)localObject2);
     }
     localObject2 = localObject1;
     if (localObject1 != null)
     {
       localObject2 = localObject1;
-      if (((cf)localObject1).systemRowid < 0L)
+      if (((cg)localObject1).systemRowid < 0L)
       {
-        ba.aBQ();
-        localObject2 = c.azq().aqz(this.pMt.field_username);
+        bc.aCg();
+        localObject2 = com.tencent.mm.model.c.azG().arE(this.pSY.field_username);
       }
     }
-    if ((localObject2 != null) && (!bt.isNullOrNil(((cf)localObject2).field_conDescription)))
+    if ((localObject2 != null) && (!bu.isNullOrNil(((cg)localObject2).field_conDescription)))
     {
-      this.ETt.setText(k.b(getContext(), bt.nullAsNil(((cf)localObject2).field_conDescription), this.ETt.getTextSize()));
+      this.FlO.setText(k.b(getContext(), bu.nullAsNil(((cg)localObject2).field_conDescription), this.FlO.getTextSize()));
       AppMethodBeat.o(31211);
       return true;
     }
@@ -149,8 +147,8 @@ public class ProfileDescribeView
   public final void init()
   {
     AppMethodBeat.i(31210);
-    this.ETt = ((TextView)findViewById(2131298609));
-    this.ETu = ((TextView)findViewById(2131298610));
+    this.FlO = ((TextView)findViewById(2131298609));
+    this.FlP = ((TextView)findViewById(2131298610));
     setClickable(true);
     AppMethodBeat.o(31210);
   }

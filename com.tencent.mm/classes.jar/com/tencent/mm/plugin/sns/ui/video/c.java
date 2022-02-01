@@ -1,13 +1,13 @@
 package com.tencent.mm.plugin.sns.ui.video;
 
-import com.tencent.mm.protocal.protobuf.byn;
+import com.tencent.mm.protocal.protobuf.bzh;
 
 public final class c
 {
-  public byn dIQ;
-  public String doX;
-  public String dzb = "";
-  public int hZE;
+  public String dAg = "";
+  public bzh dKe;
+  public String dqc;
+  public int icw;
 }
 
 

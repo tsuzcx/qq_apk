@@ -18,7 +18,7 @@ import com.tencent.scanlib.ui.ScanCodeView.a;
 public class ScanSampleActivity
   extends MMActivity
 {
-  private ScanCodeView ysH;
+  private ScanCodeView yIH;
   
   public int getLayoutId()
   {
@@ -28,10 +28,10 @@ public class ScanSampleActivity
   public void initView()
   {
     AppMethodBeat.i(91053);
-    this.ysH = ((ScanCodeView)findViewById(2131304344));
-    this.ysH.setScanCallBack(new ScanCodeView.a()
+    this.yIH = ((ScanCodeView)findViewById(2131304344));
+    this.yIH.setScanCallBack(new ScanCodeView.a()
     {
-      public final void an(Bundle paramAnonymousBundle)
+      public final void ao(Bundle paramAnonymousBundle)
       {
         AppMethodBeat.i(91051);
         paramAnonymousBundle = paramAnonymousBundle.getString("result_content", "");
@@ -41,7 +41,7 @@ public class ScanSampleActivity
         AppMethodBeat.o(91051);
       }
     });
-    this.ysH.onCreate();
+    this.yIH.onCreate();
     overridePendingTransition(2130771986, 2130771986);
     AppMethodBeat.o(91053);
   }
@@ -68,7 +68,7 @@ public class ScanSampleActivity
   {
     AppMethodBeat.i(91057);
     super.onDestroy();
-    this.ysH.onDestroy();
+    this.yIH.onDestroy();
     AppMethodBeat.o(91057);
   }
   
@@ -76,7 +76,7 @@ public class ScanSampleActivity
   {
     AppMethodBeat.i(91055);
     super.onPause();
-    this.ysH.onPause();
+    this.yIH.onPause();
     AppMethodBeat.o(91055);
   }
   
@@ -84,7 +84,7 @@ public class ScanSampleActivity
   {
     AppMethodBeat.i(91054);
     super.onResume();
-    this.ysH.onResume();
+    this.yIH.onResume();
     AppMethodBeat.o(91054);
   }
   
@@ -92,7 +92,7 @@ public class ScanSampleActivity
   {
     AppMethodBeat.i(91056);
     super.onStop();
-    this.ysH.onStop();
+    this.yIH.onStop();
     AppMethodBeat.o(91056);
   }
   

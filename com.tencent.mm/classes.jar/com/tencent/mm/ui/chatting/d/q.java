@@ -5,305 +5,237 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.view.KeyEvent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.am.a.b;
-import com.tencent.mm.am.ag;
+import com.tencent.mm.al.a.b;
+import com.tencent.mm.al.ag;
 import com.tencent.mm.g.c.aw;
-import com.tencent.mm.model.c;
+import com.tencent.mm.g.c.ba;
+import com.tencent.mm.model.bc;
 import com.tencent.mm.pluginsdk.ui.chat.ChatFooter;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.at;
-import com.tencent.mm.storage.bq;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.au;
+import com.tencent.mm.storage.br;
 import com.tencent.mm.ui.chatting.BaseChattingUIFragment;
 import com.tencent.mm.ui.chatting.d.b.aa;
 import com.tencent.mm.ui.chatting.d.b.ac;
-import com.tencent.mm.ui.chatting.d.b.ai;
-import com.tencent.mm.ui.chatting.d.b.an;
+import com.tencent.mm.ui.chatting.d.b.aj;
+import com.tencent.mm.ui.chatting.d.b.ao;
 import com.tencent.mm.ui.chatting.d.b.d;
 import com.tencent.mm.ui.chatting.d.b.h;
+import com.tencent.mm.ui.chatting.d.b.i;
 import com.tencent.mm.ui.chatting.d.b.s;
 import com.tencent.mm.ui.widget.MMEditText;
 
-@com.tencent.mm.ui.chatting.d.a.a(fFo=an.class)
+@com.tencent.mm.ui.chatting.d.a.a(fJv=ao.class)
 public class q
   extends a
-  implements an
+  implements ao
 {
-  private boolean JIr = false;
-  private boolean JIs = false;
-  private String JIt;
-  private String JIu;
-  private long JIv;
-  private long JIw = -1L;
-  private q.a JIx = q.a.JIy;
+  private boolean Kdn = false;
+  private boolean Kdo = false;
+  private String Kdp;
+  private String Kdq;
+  private long Kdr;
+  private long Kds = -1L;
+  private q.a Kdt = q.a.Kdu;
   
-  private void fDy()
+  private void fHB()
   {
     AppMethodBeat.i(35274);
-    s locals = (s)this.cWM.bh(s.class);
-    if (locals.fDC() == null)
+    s locals = (s)this.cXJ.bh(s.class);
+    if (locals.fHF() == null)
     {
       AppMethodBeat.o(35274);
       return;
     }
-    if (this.JIx == q.a.JIz) {}
+    if (this.Kdt == q.a.Kdv) {}
     for (boolean bool = true;; bool = false)
     {
-      locals.fDC().wd(bool);
+      locals.fHF().wl(bool);
       AppMethodBeat.o(35274);
       return;
     }
   }
   
-  private void fDz()
+  private void fHC()
   {
     AppMethodBeat.i(35275);
-    s locals = (s)this.cWM.bh(s.class);
-    if (locals.fDC() == null)
+    s locals = (s)this.cXJ.bh(s.class);
+    if (locals.fHF() == null)
     {
       AppMethodBeat.o(35275);
       return;
     }
-    locals.fDC().fdL();
+    locals.fHF().fhA();
     AppMethodBeat.o(35275);
   }
   
-  public final void fDx()
-  {
-    AppMethodBeat.i(35273);
-    if (bt.isNullOrNil(this.cWM.getTalkerUserName()))
-    {
-      AppMethodBeat.o(35273);
-      return;
-    }
-    s locals = (s)this.cWM.bh(s.class);
-    if (locals.fDC() != null)
-    {
-      if ((!bt.isNullOrNil(this.JIt)) || (this.JIv != 0L))
-      {
-        int i;
-        boolean bool1;
-        if ((locals.fDC().getMode() == 1) && (bt.isNullOrNil(locals.fDF())))
-        {
-          i = 1;
-          bool1 = ((ai)this.cWM.bh(ai.class)).fEO();
-          if ((i == 0) || (bool1)) {
-            break label375;
-          }
-          fDz();
-          label126:
-          if (this.JIv != 0L) {
-            locals.fDC().setLastQuoteMsgId(this.JIv);
-          }
-          boolean bool2 = ((d)this.cWM.bh(d.class)).fCI();
-          if (((!this.cWM.fFu()) && (!bool2)) || (!this.JIr)) {
-            break label382;
-          }
-          this.JIr = false;
-          String str1 = locals.fDC().getAtSomebody();
-          if (!bt.isNullOrNil(str1))
-          {
-            int j = locals.fDC().getInsertPos();
-            i = j;
-            if (j > this.JIt.length()) {
-              i = this.JIt.length();
-            }
-            Object localObject = new StringBuilder().append(this.JIt.substring(0, i)).append(str1).append(' ');
-            String str2 = this.JIt;
-            localObject = str2.substring(i, str2.length());
-            j = str1.length();
-            locals.fDC().setLastContent((String)localObject);
-            locals.fDC().w((String)localObject, i + j + 1, false);
-            locals.fDC().setAtSomebody(null);
-            fDz();
-          }
-        }
-        for (;;)
-        {
-          locals.fDI();
-          AppMethodBeat.o(35273);
-          return;
-          i = 0;
-          break;
-          label375:
-          fDy();
-          break label126;
-          label382:
-          locals.fDC().setLastContent(this.JIt);
-          locals.fDC().setLastText(this.JIt);
-          if (((!bt.isNullOrNil(this.JIt)) || (this.JIv != 0L)) && (!bool1) && (bt.isNullOrNil(locals.fDF()))) {
-            locals.fDM();
-          }
-        }
-      }
-      if (((aa)this.cWM.bh(aa.class)).fEs())
-      {
-        locals.fDC().setLastText(this.JIt);
-        locals.fDC().setHint(this.cWM.JOR.getMMResources().getString(2131757331));
-        locals.fDC().setLastQuoteMsgId(this.JIv);
-        AppMethodBeat.o(35273);
-        return;
-      }
-      if (locals.fDC().getIsVoiceInputPanleShow())
-      {
-        locals.fDI();
-        AppMethodBeat.o(35273);
-        return;
-      }
-      fDy();
-    }
-    AppMethodBeat.o(35273);
-  }
-  
-  public final void fwt()
+  public final void fAt()
   {
     AppMethodBeat.i(35271);
-    ad.d("MicroMsg.ChattingUI.SearchComponent", "jacks mark reset keybord state");
-    this.JIx = q.a.JIy;
-    if (this.cWM.BYG != null)
+    ae.d("MicroMsg.ChattingUI.SearchComponent", "jacks mark reset keybord state");
+    this.Kdt = q.a.Kdu;
+    if (this.cXJ.Cqh != null)
     {
-      Object localObject = (d)this.cWM.bh(d.class);
-      if (((d)localObject).fCH())
+      Object localObject = (d)this.cXJ.bh(d.class);
+      if (((d)localObject).fGJ())
       {
-        localObject = ag.aGc().rS(((d)localObject).fCU()).field_editingMsg;
-        this.JIt = ((String)localObject);
-        this.JIu = ((String)localObject);
+        localObject = ag.aGs().sf(((d)localObject).fGW()).field_editingMsg;
+        this.Kdp = ((String)localObject);
+        this.Kdq = ((String)localObject);
         AppMethodBeat.o(35271);
         return;
       }
-      if (((h)this.cWM.bh(h.class)).fDl())
+      if (((h)this.cXJ.bh(h.class)).fHo())
       {
-        localObject = ((com.tencent.mm.plugin.i.a.g)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.i.a.g.class)).aih(this.cWM.getTalkerUserName());
-        this.JIt = ((String)localObject);
-        this.JIu = ((String)localObject);
+        localObject = ((com.tencent.mm.plugin.i.a.g)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.i.a.g.class)).aje(this.cXJ.getTalkerUserName());
+        this.Kdp = ((String)localObject);
+        this.Kdq = ((String)localObject);
         AppMethodBeat.o(35271);
         return;
       }
-      com.tencent.mm.model.ba.aBQ();
-      localObject = c.azv().aTz(this.cWM.getTalkerUserName());
+      if (((i)this.cXJ.bh(i.class)).fHq())
+      {
+        localObject = ((com.tencent.mm.plugin.gamelife.a.c)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.gamelife.a.c.class)).aje(this.cXJ.getTalkerUserName());
+        this.Kdp = ((String)localObject);
+        this.Kdq = ((String)localObject);
+        AppMethodBeat.o(35271);
+        return;
+      }
+      bc.aCg();
+      localObject = com.tencent.mm.model.c.azL().aVa(this.cXJ.getTalkerUserName());
       if (localObject != null)
       {
-        String str = ((com.tencent.mm.g.c.ba)localObject).field_editingMsg;
-        this.JIt = str;
-        this.JIu = str;
-        long l = ((com.tencent.mm.g.c.ba)localObject).field_editingQuoteMsgId;
-        this.JIv = l;
-        this.JIw = l;
+        String str = ((ba)localObject).field_editingMsg;
+        this.Kdp = str;
+        this.Kdq = str;
+        long l = ((ba)localObject).field_editingQuoteMsgId;
+        this.Kdr = l;
+        this.Kds = l;
       }
     }
     AppMethodBeat.o(35271);
   }
   
-  public final void fwu() {}
+  public final void fAu() {}
   
-  public final void fwv() {}
+  public final void fAv() {}
   
-  public final void fww()
+  public final void fAw()
   {
     AppMethodBeat.i(35272);
-    Object localObject = (s)this.cWM.bh(s.class);
+    Object localObject = (s)this.cXJ.bh(s.class);
     s locals;
-    if (((s)localObject).fDC() != null)
+    if (((s)localObject).fHF() != null)
     {
-      if (((s)localObject).fDC().uCj)
+      if (((s)localObject).fHF().uNO)
       {
-        this.JIx = q.a.JIz;
-        ad.d("MicroMsg.ChattingUI.SearchComponent", "jacks mark refreshKeyBordState keybord state: show");
-        this.JIt = ((s)localObject).fDC().getLastText();
-        this.JIv = ((s)localObject).fDC().getLastQuoteMsgId();
+        this.Kdt = q.a.Kdv;
+        ae.d("MicroMsg.ChattingUI.SearchComponent", "jacks mark refreshKeyBordState keybord state: show");
+        this.Kdp = ((s)localObject).fHF().getLastText();
+        this.Kdr = ((s)localObject).fHF().getLastQuoteMsgId();
       }
     }
     else
     {
-      locals = (s)this.cWM.bh(s.class);
-      localObject = (d)this.cWM.bh(d.class);
-      if (!((d)localObject).fCH()) {
-        break label283;
+      locals = (s)this.cXJ.bh(s.class);
+      localObject = (d)this.cXJ.bh(d.class);
+      if (!((d)localObject).fGJ()) {
+        break label278;
       }
-      localObject = ag.aGc().rS(((d)localObject).fCU());
-      if ((locals.fDC() != null) && ((this.JIu == null) || (!locals.fDC().getLastText().trim().equals(this.JIu))))
+      localObject = ag.aGs().sf(((d)localObject).fGW());
+      if ((locals.fHF() != null) && ((this.Kdq == null) || (!locals.fHF().getLastText().trim().equals(this.Kdq))))
       {
-        this.JIu = locals.fDC().getLastText().trim();
-        ((com.tencent.mm.am.a.a)localObject).field_editingMsg = this.JIu;
-        if (!bt.isNullOrNil(((com.tencent.mm.am.a.a)localObject).field_editingMsg)) {
-          break label276;
+        this.Kdq = locals.fHF().getLastText().trim();
+        ((com.tencent.mm.al.a.a)localObject).field_editingMsg = this.Kdq;
+        if (!bu.isNullOrNil(((com.tencent.mm.al.a.a)localObject).field_editingMsg)) {
+          break label271;
         }
       }
     }
-    label276:
-    for (long l = ((com.tencent.mm.am.a.a)localObject).field_lastMsgTime;; l = System.currentTimeMillis())
+    label271:
+    for (long l = ((com.tencent.mm.al.a.a)localObject).field_lastMsgTime;; l = System.currentTimeMillis())
     {
-      ((com.tencent.mm.am.a.a)localObject).field_flag = b.a((com.tencent.mm.am.a.a)localObject, 1, l);
-      ag.aGc().b((com.tencent.mm.am.a.a)localObject);
-      ad.v("MicroMsg.ChattingUI.SearchComponent", "set editMsg history");
+      ((com.tencent.mm.al.a.a)localObject).field_flag = b.a((com.tencent.mm.al.a.a)localObject, 1, l);
+      ag.aGs().b((com.tencent.mm.al.a.a)localObject);
+      ae.v("MicroMsg.ChattingUI.SearchComponent", "set editMsg history");
       AppMethodBeat.o(35272);
       return;
-      this.JIx = q.a.JIy;
-      ad.d("MicroMsg.ChattingUI.SearchComponent", "jacks mark refreshKeyBordState keybord state: hide");
+      this.Kdt = q.a.Kdu;
+      ae.d("MicroMsg.ChattingUI.SearchComponent", "jacks mark refreshKeyBordState keybord state: hide");
       break;
     }
-    label283:
-    if (((h)this.cWM.bh(h.class)).fDl())
+    label278:
+    if (((h)this.cXJ.bh(h.class)).fHo())
     {
-      if ((locals.fDC() != null) && ((this.JIu == null) || (!locals.fDC().getLastText().trim().equals(this.JIu))))
+      if ((locals.fHF() != null) && ((this.Kdq == null) || (!locals.fHF().getLastText().trim().equals(this.Kdq))))
       {
-        this.JIu = locals.fDC().getLastText().trim();
-        ((com.tencent.mm.plugin.i.a.g)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.i.a.g.class)).go(this.cWM.getTalkerUserName(), this.JIu);
+        this.Kdq = locals.fHF().getLastText().trim();
+        ((com.tencent.mm.plugin.i.a.g)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.i.a.g.class)).gt(this.cXJ.getTalkerUserName(), this.Kdq);
+        AppMethodBeat.o(35272);
+      }
+    }
+    else if (((i)this.cXJ.bh(i.class)).fHq())
+    {
+      if ((locals.fHF() != null) && ((this.Kdq == null) || (!locals.fHF().getLastText().trim().equals(this.Kdq))))
+      {
+        this.Kdq = locals.fHF().getLastText().trim();
+        ((com.tencent.mm.plugin.gamelife.a.c)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.gamelife.a.c.class)).gt(this.cXJ.getTalkerUserName(), this.Kdq);
         AppMethodBeat.o(35272);
       }
     }
     else
     {
       localObject = null;
-      if (com.tencent.mm.kernel.g.ajA().aiK())
+      if (com.tencent.mm.kernel.g.ajP().aiZ())
       {
-        com.tencent.mm.model.ba.aBQ();
-        localObject = c.azv().aTz(this.cWM.getTalkerUserName());
+        bc.aCg();
+        localObject = com.tencent.mm.model.c.azL().aVa(this.cXJ.getTalkerUserName());
       }
-      if ((localObject != null) || (locals.fDC() == null) || (bt.isNullOrNil(locals.fDC().getLastText().trim()))) {
-        break label799;
+      if ((localObject != null) || (locals.fHF() == null) || (bu.isNullOrNil(locals.fHF().getLastText().trim()))) {
+        break label900;
       }
-      localObject = new at(this.cWM.BYG.field_username);
-      ((at)localObject).qu(System.currentTimeMillis());
-      if (((ac)this.cWM.bh(ac.class)).fEy()) {
-        ((at)localObject).lO(4194304);
+      localObject = new au(this.cXJ.Cqh.field_username);
+      ((au)localObject).qH(System.currentTimeMillis());
+      if (((ac)this.cXJ.bh(ac.class)).fIC()) {
+        ((au)localObject).lQ(4194304);
       }
-      com.tencent.mm.model.ba.aBQ();
-      c.azv().e((at)localObject);
+      bc.aCg();
+      com.tencent.mm.model.c.azL().e((au)localObject);
     }
-    label787:
-    label794:
-    label799:
+    label900:
     for (;;)
     {
-      if ((localObject != null) && (locals.fDC() != null))
+      if ((localObject != null) && (locals.fHF() != null))
       {
-        if ((this.JIu != null) && (locals.fDC().getLastText().trim().equals(this.JIu))) {
-          break label794;
+        if ((this.Kdq != null) && (locals.fHF().getLastText().trim().equals(this.Kdq))) {
+          break label895;
         }
-        this.JIu = locals.fDC().getLastText().trim();
-        ((at)localObject).tE(locals.fDC().getLastText().trim());
+        this.Kdq = locals.fHF().getLastText().trim();
+        ((au)localObject).tZ(locals.fHF().getLastText().trim());
       }
+      label888:
+      label895:
       for (int i = 1;; i = 0)
       {
-        if ((this.JIw == -1L) || (!bt.aA(locals.fDC().getLastQuoteMsgId(), this.JIw)))
+        if ((this.Kds == -1L) || (!bu.az(locals.fHF().getLastQuoteMsgId(), this.Kds)))
         {
-          this.JIw = locals.fDC().getLastQuoteMsgId();
-          ((com.tencent.mm.g.c.ba)localObject).field_editingQuoteMsgId = this.JIw;
-          ((com.tencent.mm.g.c.ba)localObject).eQu = true;
+          this.Kds = locals.fHF().getLastQuoteMsgId();
+          ((ba)localObject).field_editingQuoteMsgId = this.Kds;
+          ((ba)localObject).eSf = true;
           i = 1;
         }
         if (i != 0) {
-          if ((!bt.isNullOrNil(((com.tencent.mm.g.c.ba)localObject).field_editingMsg)) || (((com.tencent.mm.g.c.ba)localObject).field_editingQuoteMsgId != 0L)) {
-            break label787;
+          if ((!bu.isNullOrNil(((ba)localObject).field_editingMsg)) || (((ba)localObject).field_editingQuoteMsgId != 0L)) {
+            break label888;
           }
         }
-        for (l = ((com.tencent.mm.g.c.ba)localObject).field_conversationTime;; l = System.currentTimeMillis())
+        for (l = ((ba)localObject).field_conversationTime;; l = System.currentTimeMillis())
         {
-          ((at)localObject).qv(com.tencent.mm.plugin.messenger.foundation.a.a.a.a((at)localObject, 1, l));
-          com.tencent.mm.model.ba.aBQ();
-          c.azv().a((at)localObject, ((com.tencent.mm.g.c.ba)localObject).field_username, false);
-          ad.i("MicroMsg.ChattingUI.SearchComponent", "[doDestroy] set editMsg history! content:%s quoteMsgId:%s username:%s", new Object[] { bt.aRp(this.JIu), Long.valueOf(this.JIw), this.cWM.getTalkerUserName() });
+          ((au)localObject).qI(com.tencent.mm.plugin.messenger.foundation.a.a.a.a((au)localObject, 1, l));
+          bc.aCg();
+          com.tencent.mm.model.c.azL().a((au)localObject, ((ba)localObject).field_username, false);
+          ae.i("MicroMsg.ChattingUI.SearchComponent", "[doDestroy] set editMsg history! content:%s quoteMsgId:%s username:%s", new Object[] { bu.aSM(this.Kdq), Long.valueOf(this.Kds), this.cXJ.getTalkerUserName() });
           AppMethodBeat.o(35272);
           return;
         }
@@ -311,7 +243,94 @@ public class q
     }
   }
   
-  public final void fwx() {}
+  public final void fAx() {}
+  
+  public final void fHA()
+  {
+    AppMethodBeat.i(35273);
+    if (bu.isNullOrNil(this.cXJ.getTalkerUserName()))
+    {
+      AppMethodBeat.o(35273);
+      return;
+    }
+    s locals = (s)this.cXJ.bh(s.class);
+    if (locals.fHF() != null)
+    {
+      if ((!bu.isNullOrNil(this.Kdp)) || (this.Kdr != 0L))
+      {
+        int i;
+        boolean bool1;
+        if ((locals.fHF().getMode() == 1) && (bu.isNullOrNil(locals.fHI())))
+        {
+          i = 1;
+          bool1 = ((aj)this.cXJ.bh(aj.class)).fIR();
+          if ((i == 0) || (bool1)) {
+            break label379;
+          }
+          fHC();
+          label129:
+          if (this.Kdr != 0L) {
+            locals.fHF().setLastQuoteMsgId(this.Kdr);
+          }
+          boolean bool2 = ((d)this.cXJ.bh(d.class)).fGK();
+          if (((!this.cXJ.fJB()) && (!bool2)) || (!this.Kdn)) {
+            break label386;
+          }
+          this.Kdn = false;
+          String str1 = locals.fHF().getAtSomebody();
+          if (!bu.isNullOrNil(str1))
+          {
+            int j = locals.fHF().getInsertPos();
+            i = j;
+            if (j > this.Kdp.length()) {
+              i = this.Kdp.length();
+            }
+            Object localObject = new StringBuilder().append(this.Kdp.substring(0, i)).append(str1).append(' ');
+            String str2 = this.Kdp;
+            localObject = str2.substring(i, str2.length());
+            j = str1.length();
+            locals.fHF().setLastContent((String)localObject);
+            locals.fHF().w((String)localObject, i + j + 1, false);
+            locals.fHF().setAtSomebody(null);
+            fHC();
+          }
+        }
+        for (;;)
+        {
+          locals.fHL();
+          AppMethodBeat.o(35273);
+          return;
+          i = 0;
+          break;
+          label379:
+          fHB();
+          break label129;
+          label386:
+          locals.fHF().setLastContent(this.Kdp);
+          locals.fHF().setLastText(this.Kdp);
+          if (((!bu.isNullOrNil(this.Kdp)) || (this.Kdr != 0L)) && (!bool1) && (bu.isNullOrNil(locals.fHI()))) {
+            locals.fHP();
+          }
+        }
+      }
+      if (((aa)this.cXJ.bh(aa.class)).fIw())
+      {
+        locals.fHF().setLastText(this.Kdp);
+        locals.fHF().setHint(this.cXJ.Kkd.getMMResources().getString(2131757331));
+        locals.fHF().setLastQuoteMsgId(this.Kdr);
+        AppMethodBeat.o(35273);
+        return;
+      }
+      if (locals.fHF().getIsVoiceInputPanleShow())
+      {
+        locals.fHL();
+        AppMethodBeat.o(35273);
+        return;
+      }
+      fHB();
+    }
+    AppMethodBeat.o(35273);
+  }
   
   public final void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
@@ -326,21 +345,21 @@ public class q
       return;
       if (paramIntent != null)
       {
-        s locals = (s)this.cWM.bh(s.class);
+        s locals = (s)this.cXJ.bh(s.class);
         String str = paramIntent.getStringExtra("select_raw_user_name");
         paramIntent = paramIntent.getStringExtra("Select_Conv_User");
-        if (bt.isNullOrNil(paramIntent))
+        if (bu.isNullOrNil(paramIntent))
         {
-          ad.d("MicroMsg.ChattingUI.SearchComponent", "@ %s", new Object[] { "[nobody]" });
-          locals.fDC().setAtSomebody("");
-          this.JIr = false;
+          ae.d("MicroMsg.ChattingUI.SearchComponent", "@ %s", new Object[] { "[nobody]" });
+          locals.fHF().setAtSomebody("");
+          this.Kdn = false;
           AppMethodBeat.o(35268);
           return;
         }
-        ad.d("MicroMsg.ChattingUI.SearchComponent", "@ %s", new Object[] { paramIntent });
-        locals.fDC().setAtSomebody(paramIntent);
-        locals.fDC().aY(this.cWM.getTalkerUserName(), str, paramIntent);
-        this.JIr = true;
+        ae.d("MicroMsg.ChattingUI.SearchComponent", "@ %s", new Object[] { paramIntent });
+        locals.fHF().setAtSomebody(paramIntent);
+        locals.fHF().aZ(this.cXJ.getTalkerUserName(), str, paramIntent);
+        this.Kdn = true;
       }
     }
   }
@@ -348,10 +367,10 @@ public class q
   public final void onConfigurationChanged(Configuration paramConfiguration)
   {
     AppMethodBeat.i(35270);
-    paramConfiguration = (s)this.cWM.bh(s.class);
-    this.JIt = paramConfiguration.fDC().getLastText();
-    this.JIv = paramConfiguration.fDC().getLastQuoteMsgId();
-    fDx();
+    paramConfiguration = (s)this.cXJ.bh(s.class);
+    this.Kdp = paramConfiguration.fHF().getLastText();
+    this.Kdr = paramConfiguration.fHF().getLastQuoteMsgId();
+    fHA();
     AppMethodBeat.o(35270);
   }
   
@@ -362,18 +381,18 @@ public class q
     int i;
     if (paramKeyEvent.getKeyCode() == 67)
     {
-      localObject = (s)this.cWM.bh(s.class);
+      localObject = (s)this.cXJ.bh(s.class);
       if (paramKeyEvent.getAction() == 0)
       {
-        if (((s)localObject).fDC().getCharAtCursor() != ' ') {
+        if (((s)localObject).fHF().getCharAtCursor() != ' ') {
           break label130;
         }
-        this.JIs = true;
+        this.Kdo = true;
       }
-      if ((paramKeyEvent.getAction() == 1) && (this.JIs))
+      if ((paramKeyEvent.getAction() == 1) && (this.Kdo))
       {
-        this.JIs = false;
-        paramKeyEvent = ((s)localObject).fDC();
+        this.Kdo = false;
+        paramKeyEvent = ((s)localObject).fHF();
         paramInt = paramKeyEvent.getSelectionStart();
         localObject = paramKeyEvent.getLastText().substring(0, paramInt);
         i = ((String)localObject).lastIndexOf('@');
@@ -387,7 +406,7 @@ public class q
       AppMethodBeat.o(35269);
       return false;
       label130:
-      this.JIs = false;
+      this.Kdo = false;
       break;
       label138:
       localObject = ((String)localObject).substring(0, i);
@@ -395,7 +414,7 @@ public class q
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append((String)localObject).append(str);
       paramKeyEvent.setLastText(localStringBuilder.toString());
-      paramKeyEvent.vBp.setSelection(i);
+      paramKeyEvent.vNt.setSelection(i);
     }
   }
 }

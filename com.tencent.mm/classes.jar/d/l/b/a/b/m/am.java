@@ -14,7 +14,7 @@ public final class am
   {
     AppMethodBeat.i(60807);
     int i = 0;
-    paramaa = (Iterable)paramaa.NCe;
+    paramaa = (Iterable)paramaa.NZl;
     Collection localCollection = (Collection)new ArrayList(j.a(paramaa, 10));
     Iterator localIterator = paramaa.iterator();
     while (localIterator.hasNext())
@@ -24,7 +24,7 @@ public final class am
       if (bc.aF(localab))
       {
         i = 1;
-        paramaa = (ab)b(localab.gua());
+        paramaa = (ab)b(localab.gyC());
       }
       localCollection.add(paramaa);
     }
@@ -44,7 +44,7 @@ public final class am
     AppMethodBeat.i(60802);
     p.h(paramab, "$this$getAbbreviation");
     p.h(paramab, "$this$getAbbreviatedType");
-    bg localbg = paramab.gua();
+    bg localbg = paramab.gyC();
     paramab = localbg;
     if (!(localbg instanceof a)) {
       paramab = null;
@@ -52,7 +52,7 @@ public final class am
     paramab = (a)paramab;
     if (paramab != null)
     {
-      paramab = paramab.NBh;
+      paramab = paramab.NYo;
       AppMethodBeat.o(60802);
       return paramab;
     }
@@ -64,7 +64,7 @@ public final class am
   {
     AppMethodBeat.i(60804);
     p.h(paramab, "$this$isDefinitelyNotNullType");
-    boolean bool = paramab.gua() instanceof l;
+    boolean bool = paramab.gyC() instanceof l;
     AppMethodBeat.o(60804);
     return bool;
   }
@@ -72,7 +72,7 @@ public final class am
   public static final aj at(ab paramab)
   {
     AppMethodBeat.i(60806);
-    at localat = paramab.gsZ();
+    at localat = paramab.gxB();
     paramab = localat;
     if (!(localat instanceof aa)) {
       paramab = null;
@@ -89,7 +89,7 @@ public final class am
       AppMethodBeat.o(60806);
       return null;
     }
-    paramab = paramab.gtZ();
+    paramab = paramab.gyB();
     AppMethodBeat.o(60806);
     return paramab;
   }
@@ -113,14 +113,14 @@ public final class am
   {
     AppMethodBeat.i(60805);
     p.h(parambg, "$this$makeDefinitelyNotNullOrNotNull");
-    Object localObject1 = l.NBF;
+    Object localObject1 = l.NYM;
     localObject1 = l.a.a(parambg);
     if (localObject1 != null) {}
     for (localObject1 = (bg)localObject1;; localObject1 = (bg)at((ab)parambg))
     {
       Object localObject2 = localObject1;
       if (localObject1 == null) {
-        localObject2 = parambg.Ab(false);
+        localObject2 = parambg.Ao(false);
       }
       AppMethodBeat.o(60805);
       return localObject2;
@@ -129,7 +129,7 @@ public final class am
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.m.am
  * JD-Core Version:    0.7.0.1
  */

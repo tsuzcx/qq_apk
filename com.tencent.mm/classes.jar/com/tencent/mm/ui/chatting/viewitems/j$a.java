@@ -13,52 +13,50 @@ import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.k.b;
+import com.tencent.mm.ah.k.b;
 import com.tencent.mm.app.d;
-import com.tencent.mm.aw.a.c.h;
-import com.tencent.mm.aw.a.d.b;
-import com.tencent.mm.aw.i;
-import com.tencent.mm.aw.q;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.sdk.platformtools.g;
+import com.tencent.mm.av.a.d.b;
+import com.tencent.mm.av.i;
+import com.tencent.mm.av.q;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.MMImageView;
 import com.tencent.tinker.entry.ApplicationLike;
 
 final class j$a
   extends c.a
 {
-  public static final int Kbo;
-  public TextView AtQ;
-  public MMImageView JZc;
-  public int Kaq = 0;
-  public boolean Kbn;
-  public TextView iCV;
-  public TextView iVq;
-  public View kBQ;
+  public static final int KxG;
+  public TextView ALf;
+  public MMImageView Kvv;
+  public int KwJ = 0;
+  public boolean KxF;
+  public TextView iFO;
+  public TextView iYj;
+  public View kFf;
   
   static
   {
     AppMethodBeat.i(36902);
-    Kbo = (int)com.tencent.mm.cc.a.getDensity(d.cTo.getApplication()) * 64;
+    KxG = (int)com.tencent.mm.cb.a.getDensity(d.cTZ.getApplication()) * 64;
     AppMethodBeat.o(36902);
   }
   
-  public final a A(View paramView, boolean paramBoolean)
+  public final a F(View paramView, boolean paramBoolean)
   {
     AppMethodBeat.i(36900);
-    super.gn(paramView);
-    this.Kbn = paramBoolean;
-    this.fTP = ((TextView)this.tPw.findViewById(2131298178));
-    this.iCK = ((CheckBox)paramView.findViewById(2131298068));
-    this.gZU = this.tPw.findViewById(2131298147);
-    this.yEk = ((TextView)this.tPw.findViewById(2131298185));
-    this.JZc = ((MMImageView)this.tPw.findViewById(2131296926));
-    this.iVq = ((TextView)this.tPw.findViewById(2131296927));
-    this.iCV = ((TextView)this.tPw.findViewById(2131296925));
-    this.AtQ = ((TextView)this.tPw.findViewById(2131296923));
-    this.kBQ = this.tPw.findViewById(2131296924);
-    this.Kaq = c.kn(aj.getContext());
+    super.gs(paramView);
+    this.KxF = paramBoolean;
+    this.fVV = ((TextView)this.uan.findViewById(2131298178));
+    this.iFD = ((CheckBox)paramView.findViewById(2131298068));
+    this.hcH = this.uan.findViewById(2131298147);
+    this.yUp = ((TextView)this.uan.findViewById(2131298185));
+    this.Kvv = ((MMImageView)this.uan.findViewById(2131296926));
+    this.iYj = ((TextView)this.uan.findViewById(2131296927));
+    this.iFO = ((TextView)this.uan.findViewById(2131296925));
+    this.ALf = ((TextView)this.uan.findViewById(2131296923));
+    this.kFf = this.uan.findViewById(2131296924);
+    this.KwJ = c.ku(ak.getContext());
     AppMethodBeat.o(36900);
     return this;
   }
@@ -66,72 +64,72 @@ final class j$a
   public final void a(final Context paramContext, k.b paramb, final String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(36901);
-    aI(this.ofK, this.Kaq);
+    aI(this.olI, this.KwJ);
     Object localObject1;
     int i;
     switch (paramb.type)
     {
     default: 
-      this.iVq.setText(paramb.description);
-      this.iCV.setText(paramb.hBb);
-      this.JZc.setVisibility(0);
+      this.iYj.setText(paramb.description);
+      this.iFO.setText(paramb.hDP);
+      this.Kvv.setVisibility(0);
       if (paramBoolean)
       {
-        paramContext = q.aIJ();
-        paramb = q.aIF().R(paramString, true);
-        paramString = this.JZc;
-        localObject1 = new com.tencent.mm.aw.a.a.c.a();
-        ((com.tencent.mm.aw.a.a.c.a)localObject1).idu = 1;
-        i = Kbo;
-        localObject1 = ((com.tencent.mm.aw.a.a.c.a)localObject1).dh(i, i);
-        ((com.tencent.mm.aw.a.a.c.a)localObject1).idD = 2131689584;
-        ((com.tencent.mm.aw.a.a.c.a)localObject1).hfi = true;
-        paramContext.a(paramb, paramString, ((com.tencent.mm.aw.a.a.c.a)localObject1).aJc());
+        paramContext = q.aJb();
+        paramb = q.aIX().R(paramString, true);
+        paramString = this.Kvv;
+        localObject1 = new com.tencent.mm.av.a.a.c.a();
+        ((com.tencent.mm.av.a.a.c.a)localObject1).ign = 1;
+        i = KxG;
+        localObject1 = ((com.tencent.mm.av.a.a.c.a)localObject1).dh(i, i);
+        ((com.tencent.mm.av.a.a.c.a)localObject1).igv = 2131689584;
+        ((com.tencent.mm.av.a.a.c.a)localObject1).hhW = true;
+        paramContext.a(paramb, paramString, ((com.tencent.mm.av.a.a.c.a)localObject1).aJu());
         AppMethodBeat.o(36901);
         return;
       }
       break;
     case 16: 
-      this.iVq.setText(paramb.description);
-      this.iCV.setText(paramb.hBb);
-      this.JZc.setVisibility(0);
+      this.iYj.setText(paramb.description);
+      this.iFO.setText(paramb.hDP);
+      this.Kvv.setVisibility(0);
       if (paramBoolean)
       {
-        paramContext = q.aIJ();
+        paramContext = q.aJb();
         paramb = paramb.thumburl;
-        paramString = this.JZc;
-        localObject1 = new com.tencent.mm.aw.a.a.c.a();
-        i = Kbo;
-        localObject1 = ((com.tencent.mm.aw.a.a.c.a)localObject1).dh(i, i);
-        ((com.tencent.mm.aw.a.a.c.a)localObject1).idD = 2131689584;
-        ((com.tencent.mm.aw.a.a.c.a)localObject1).hfi = true;
-        paramContext.a(paramb, paramString, ((com.tencent.mm.aw.a.a.c.a)localObject1).aJc());
+        paramString = this.Kvv;
+        localObject1 = new com.tencent.mm.av.a.a.c.a();
+        i = KxG;
+        localObject1 = ((com.tencent.mm.av.a.a.c.a)localObject1).dh(i, i);
+        ((com.tencent.mm.av.a.a.c.a)localObject1).igv = 2131689584;
+        ((com.tencent.mm.av.a.a.c.a)localObject1).hhW = true;
+        paramContext.a(paramb, paramString, ((com.tencent.mm.av.a.a.c.a)localObject1).aJu());
         AppMethodBeat.o(36901);
         return;
       }
-      this.JZc.setImageResource(2131233475);
+      this.Kvv.setImageResource(2131233475);
       AppMethodBeat.o(36901);
       return;
     case 34: 
       if ((paramb.title != null) && (paramb.title.length() > 0))
       {
-        this.iVq.setVisibility(0);
-        this.iVq.setText(paramb.title);
-        if (!bt.isNullOrNil(paramb.titleColor))
+        this.iYj.setVisibility(0);
+        this.iYj.setText(paramb.title);
+        if (!bu.isNullOrNil(paramb.titleColor))
         {
-          this.iVq.setTextColor(bt.cJ(paramb.titleColor, paramContext.getResources().getColor(2131100711)));
-          this.iCV.setMaxLines(2);
-          this.iCV.setVisibility(0);
-          this.iCV.setText(paramb.description);
-          if (bt.isNullOrNil(paramb.hBk)) {
+          this.iYj.setTextColor(bu.cN(paramb.titleColor, paramContext.getResources().getColor(2131100711)));
+          this.iFO.setMaxLines(2);
+          this.iFO.setVisibility(0);
+          this.iFO.setText(paramb.description);
+          if (bu.isNullOrNil(paramb.hDY)) {
             break label605;
           }
-          this.iCV.setTextColor(bt.cJ(paramb.hBk, paramContext.getResources().getColor(2131100469)));
+          this.iFO.setTextColor(bu.cN(paramb.hDY, paramContext.getResources().getColor(2131100469)));
           label410:
-          if (bt.isNullOrNil(paramb.hBg)) {
+          if (bu.isNullOrNil(paramb.hDU)) {
             break label624;
           }
-          this.AtQ.setText(paramb.hBg);
+          this.ALf.setText(paramb.hDU);
         }
       }
       for (;;)
@@ -139,24 +137,24 @@ final class j$a
         if (paramBoolean)
         {
           Object localObject2;
-          com.tencent.mm.aw.a.a.c.a locala;
-          if (!bt.isNullOrNil(paramb.hBj))
+          com.tencent.mm.av.a.a.c.a locala;
+          if (!bu.isNullOrNil(paramb.hDX))
           {
-            paramString = q.aIJ();
+            paramString = q.aJb();
             localObject1 = paramb.thumburl;
-            localObject2 = this.JZc;
-            locala = new com.tencent.mm.aw.a.a.c.a();
-            i = Kbo;
+            localObject2 = this.Kvv;
+            locala = new com.tencent.mm.av.a.a.c.a();
+            i = KxG;
             locala = locala.dh(i, i);
-            locala.idD = 2131689584;
-            locala.hfi = true;
-            paramString.a((String)localObject1, (ImageView)localObject2, locala.aJc());
-            paramString = q.aIJ();
-            paramb = paramb.hBj;
+            locala.igv = 2131689584;
+            locala.hhW = true;
+            paramString.a((String)localObject1, (ImageView)localObject2, locala.aJu());
+            paramString = q.aJb();
+            paramb = paramb.hDX;
             localObject1 = new ImageView(paramContext);
-            localObject2 = new com.tencent.mm.aw.a.a.c.a();
-            ((com.tencent.mm.aw.a.a.c.a)localObject2).idr = true;
-            paramString.a(paramb, (ImageView)localObject1, ((com.tencent.mm.aw.a.a.c.a)localObject2).aJc(), new h()
+            localObject2 = new com.tencent.mm.av.a.a.c.a();
+            ((com.tencent.mm.av.a.a.c.a)localObject2).igk = true;
+            paramString.a(paramb, (ImageView)localObject1, ((com.tencent.mm.av.a.a.c.a)localObject2).aJu(), new com.tencent.mm.av.a.c.h()
             {
               public final Bitmap a(String paramAnonymousString, View paramAnonymousView, b paramAnonymousb)
               {
@@ -171,27 +169,27 @@ final class j$a
                 if (paramAnonymousb.bitmap != null)
                 {
                   paramAnonymousString = paramAnonymousb.bitmap;
-                  j.a.this.kBQ.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener()
+                  j.a.this.kFf.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener()
                   {
                     public final boolean onPreDraw()
                     {
                       AppMethodBeat.i(36897);
-                      j.a.this.kBQ.getViewTreeObserver().removeOnPreDrawListener(this);
-                      int j = j.a.this.kBQ.getHeight();
-                      int k = j.a.this.kBQ.getWidth();
+                      j.a.this.kFf.getViewTreeObserver().removeOnPreDrawListener(this);
+                      int j = j.a.this.kFf.getHeight();
+                      int k = j.a.this.kFf.getWidth();
                       int i = j;
                       if (j == 0) {
-                        i = com.tencent.mm.cc.a.ax(j.a.1.this.val$context, 2131166036);
+                        i = com.tencent.mm.cb.a.ax(j.a.1.this.val$context, 2131166036);
                       }
                       j = k;
                       if (k == 0) {
-                        j = com.tencent.mm.cc.a.ax(j.a.1.this.val$context, 2131166037);
+                        j = com.tencent.mm.cb.a.ax(j.a.1.this.val$context, 2131166037);
                       }
-                      if (j.a.this.Kbn) {}
-                      for (Object localObject = g.b(paramAnonymousString, 2131231553, j, i);; localObject = g.b(paramAnonymousString, 2131231589, j, i))
+                      if (j.a.this.KxF) {}
+                      for (Object localObject = com.tencent.mm.sdk.platformtools.h.b(paramAnonymousString, 2131231553, j, i);; localObject = com.tencent.mm.sdk.platformtools.h.b(paramAnonymousString, 2131231589, j, i))
                       {
                         localObject = new BitmapDrawable((Bitmap)localObject);
-                        j.a.this.kBQ.setBackgroundDrawable((Drawable)localObject);
+                        j.a.this.kFf.setBackgroundDrawable((Drawable)localObject);
                         AppMethodBeat.o(36897);
                         return true;
                       }
@@ -203,41 +201,41 @@ final class j$a
             });
             AppMethodBeat.o(36901);
             return;
-            this.iVq.setTextColor(paramContext.getResources().getColor(2131100711));
+            this.iYj.setTextColor(paramContext.getResources().getColor(2131100711));
             break;
-            this.iVq.setVisibility(8);
+            this.iYj.setVisibility(8);
             break;
             label605:
-            this.iCV.setTextColor(paramContext.getResources().getColor(2131100469));
+            this.iFO.setTextColor(paramContext.getResources().getColor(2131100469));
             break label410;
             label624:
-            this.AtQ.setText(2131757206);
+            this.ALf.setText(2131757206);
             continue;
           }
-          paramString = q.aIF().a(paramString, com.tencent.mm.cc.a.getDensity(paramContext), false);
+          paramString = q.aIX().a(paramString, com.tencent.mm.cb.a.getDensity(paramContext), false);
           if ((paramString != null) && (!paramString.isRecycled()))
           {
-            paramb = g.a(paramString, false, paramString.getWidth() / 2);
-            this.JZc.setImageBitmap(paramb);
+            paramb = com.tencent.mm.sdk.platformtools.h.a(paramString, false, paramString.getWidth() / 2);
+            this.Kvv.setImageBitmap(paramb);
           }
           for (;;)
           {
-            this.kBQ.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener()
+            this.kFf.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener()
             {
-              private boolean Kaz = false;
+              private boolean KwS = false;
               
               public final boolean onPreDraw()
               {
                 AppMethodBeat.i(36899);
-                if (this.Kaz)
+                if (this.KwS)
                 {
-                  j.a.this.kBQ.getViewTreeObserver().removeOnPreDrawListener(this);
+                  j.a.this.kFf.getViewTreeObserver().removeOnPreDrawListener(this);
                   AppMethodBeat.o(36899);
                   return true;
                 }
-                j.a.this.kBQ.getViewTreeObserver().removeOnPreDrawListener(this);
-                this.Kaz = true;
-                int i = com.tencent.mm.cc.a.fromDPToPix(paramContext, 24);
+                j.a.this.kFf.getViewTreeObserver().removeOnPreDrawListener(this);
+                this.KwS = true;
+                int i = com.tencent.mm.cb.a.fromDPToPix(paramContext, 24);
                 Bitmap localBitmap = paramString;
                 if (localBitmap != null)
                 {
@@ -246,32 +244,32 @@ final class j$a
                 }
                 else
                 {
-                  localObject = g.aJ(paramContext.getResources().getColor(2131100129), i, i);
+                  localObject = com.tencent.mm.sdk.platformtools.h.aK(paramContext.getResources().getColor(2131100129), i, i);
                 }
                 int j = ((Bitmap)localObject).getHeight();
                 if (i > j)
                 {
                   i = j;
-                  localObject = g.l(g.aD(Bitmap.createScaledBitmap((Bitmap)localObject, i, i, true)), 20);
-                  j = j.a.this.kBQ.getHeight();
-                  int k = j.a.this.kBQ.getWidth();
+                  localObject = com.tencent.mm.sdk.platformtools.h.l(com.tencent.mm.sdk.platformtools.h.aE(Bitmap.createScaledBitmap((Bitmap)localObject, i, i, true)), 20);
+                  j = j.a.this.kFf.getHeight();
+                  int k = j.a.this.kFf.getWidth();
                   i = j;
                   if (j == 0) {
-                    i = com.tencent.mm.cc.a.ax(paramContext, 2131166036);
+                    i = com.tencent.mm.cb.a.ax(paramContext, 2131166036);
                   }
                   j = k;
                   if (k == 0) {
-                    j = com.tencent.mm.cc.a.ax(paramContext, 2131166037);
+                    j = com.tencent.mm.cb.a.ax(paramContext, 2131166037);
                   }
-                  if (!j.a.this.Kbn) {
+                  if (!j.a.this.KxF) {
                     break label243;
                   }
                 }
                 label243:
-                for (Object localObject = g.b((Bitmap)localObject, 2131231553, j, i);; localObject = g.b((Bitmap)localObject, 2131231589, j, i))
+                for (Object localObject = com.tencent.mm.sdk.platformtools.h.b((Bitmap)localObject, 2131231553, j, i);; localObject = com.tencent.mm.sdk.platformtools.h.b((Bitmap)localObject, 2131231589, j, i))
                 {
                   localObject = new BitmapDrawable((Bitmap)localObject);
-                  j.a.this.kBQ.setBackgroundDrawable((Drawable)localObject);
+                  j.a.this.kFf.setBackgroundDrawable((Drawable)localObject);
                   AppMethodBeat.o(36899);
                   return true;
                   break;
@@ -280,23 +278,23 @@ final class j$a
             });
             AppMethodBeat.o(36901);
             return;
-            localObject1 = q.aIJ();
+            localObject1 = q.aJb();
             paramb = paramb.thumburl;
-            localObject2 = this.JZc;
-            locala = new com.tencent.mm.aw.a.a.c.a();
-            i = Kbo;
+            localObject2 = this.Kvv;
+            locala = new com.tencent.mm.av.a.a.c.a();
+            i = KxG;
             locala = locala.dh(i, i);
-            locala.idD = 2131689584;
-            locala.hfi = true;
-            ((com.tencent.mm.aw.a.a)localObject1).a(paramb, (ImageView)localObject2, locala.aJc());
+            locala.igv = 2131689584;
+            locala.hhW = true;
+            ((com.tencent.mm.av.a.a)localObject1).a(paramb, (ImageView)localObject2, locala.aJu());
           }
         }
       }
-      this.JZc.setImageBitmap(BitmapFactory.decodeResource(paramContext.getResources(), 2131233475));
+      this.Kvv.setImageBitmap(BitmapFactory.decodeResource(paramContext.getResources(), 2131233475));
       AppMethodBeat.o(36901);
       return;
     }
-    this.JZc.setImageResource(2131233475);
+    this.Kvv.setImageResource(2131233475);
     AppMethodBeat.o(36901);
   }
 }

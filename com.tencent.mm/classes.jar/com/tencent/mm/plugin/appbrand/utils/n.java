@@ -1,62 +1,84 @@
 package com.tencent.mm.plugin.appbrand.utils;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.service.k;
+import com.tencent.mm.plugin.appbrand.ui.AppBrandLauncherFolderUI;
 
 public final class n
+  implements k
 {
-  private long mON;
-  private long mOO;
-  private a mOP;
-  
-  public n() {}
-  
-  public n(long paramLong, a parama)
+  public final void X(Context paramContext, String paramString)
   {
-    this.mON = paramLong;
-    this.mOP = parama;
+    AppMethodBeat.i(49315);
+    Intent localIntent = new Intent(paramContext, AppBrandLauncherFolderUI.class);
+    localIntent.putExtra("extra_use_system_default_enter_exit_anim", true);
+    localIntent.putExtra("extra_enter_scene", 4);
+    localIntent.putExtra("extra_enter_scene_note", paramString);
+    localIntent.putExtra("KEY_MODE", 2);
+    if ((paramContext instanceof Activity)) {}
+    for (int i = 0;; i = 268435456)
+    {
+      localIntent.addFlags(i);
+      localIntent.addFlags(536870912);
+      localIntent.addFlags(134217728);
+      paramString = new com.tencent.mm.hellhoundlib.b.a().bc(localIntent);
+      com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramString.ahE(), "com/tencent/mm/plugin/appbrand/utils/ExtOpenWxaDesktopFavoriteHelperImpl", "openWxaMyFavorite", "(Landroid/content/Context;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramContext.startActivity((Intent)paramString.mt(0));
+      com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/plugin/appbrand/utils/ExtOpenWxaDesktopFavoriteHelperImpl", "openWxaMyFavorite", "(Landroid/content/Context;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      AppMethodBeat.o(49315);
+      return;
+    }
   }
   
-  private boolean bBt()
+  public final void a(Context paramContext, int paramInt, String paramString)
   {
-    AppMethodBeat.i(137914);
-    if (System.currentTimeMillis() - this.mOO < this.mON)
+    int j = 14;
+    AppMethodBeat.i(49314);
+    int i;
+    Intent localIntent;
+    if (1 == paramInt)
     {
-      AppMethodBeat.o(137914);
-      return true;
+      i = 15;
+      localIntent = new Intent(paramContext, AppBrandLauncherFolderUI.class);
+      localIntent.putExtra("extra_use_system_default_enter_exit_anim", true);
+      localIntent.putExtra("extra_enter_scene", i);
+      localIntent.putExtra("extra_enter_scene_note", paramString);
+      localIntent.putExtra("KEY_MODE", 1);
+      if (!(paramContext instanceof Activity)) {
+        break label189;
+      }
     }
-    AppMethodBeat.o(137914);
-    return false;
-  }
-  
-  public final boolean m(Object... paramVarArgs)
-  {
-    AppMethodBeat.i(137915);
-    if (bBt())
+    label189:
+    for (paramInt = 0;; paramInt = 268435456)
     {
-      AppMethodBeat.o(137915);
-      return false;
+      localIntent.addFlags(paramInt);
+      localIntent.addFlags(536870912);
+      localIntent.addFlags(134217728);
+      paramString = new com.tencent.mm.hellhoundlib.b.a().bc(localIntent);
+      com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramString.ahE(), "com/tencent/mm/plugin/appbrand/utils/ExtOpenWxaDesktopFavoriteHelperImpl", "openWxaDesktop", "(Landroid/content/Context;ILjava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramContext.startActivity((Intent)paramString.mt(0));
+      com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/plugin/appbrand/utils/ExtOpenWxaDesktopFavoriteHelperImpl", "openWxaDesktop", "(Landroid/content/Context;ILjava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      AppMethodBeat.o(49314);
+      return;
+      i = j;
+      if (2 == paramInt) {
+        break;
+      }
+      i = j;
+      if (paramInt == 0) {
+        break;
+      }
+      i = -1;
+      break;
     }
-    if (this.mOP == null)
-    {
-      AppMethodBeat.o(137915);
-      return false;
-    }
-    boolean bool = this.mOP.k(paramVarArgs);
-    if (bool) {
-      this.mOO = System.currentTimeMillis();
-    }
-    AppMethodBeat.o(137915);
-    return bool;
-  }
-  
-  public static abstract interface a
-  {
-    public abstract boolean k(Object... paramVarArgs);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.utils.n
  * JD-Core Version:    0.7.0.1
  */

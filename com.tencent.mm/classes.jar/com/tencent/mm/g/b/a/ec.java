@@ -6,109 +6,47 @@ import com.tencent.mm.plugin.report.a;
 public final class ec
   extends a
 {
-  public int dSg;
-  private String dTi;
-  private String ehA;
-  private String ehB;
-  public int ehC;
-  public int ehD;
-  public int ehE;
-  public long ehx;
-  public long ehy;
-  private String ehz;
+  public long dQX;
+  public long eiV;
+  public long eiW;
+  public long eiX = 0L;
   
-  public final String RD()
+  public final String RC()
   {
-    AppMethodBeat.i(215647);
+    AppMethodBeat.i(88783);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dSg);
+    ((StringBuffer)localObject).append(this.dQX);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ehx);
+    ((StringBuffer)localObject).append(this.eiV);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ehy);
+    ((StringBuffer)localObject).append(this.eiW);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dTi);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ehz);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ehA);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ehB);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ehC);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ehD);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ehE);
+    ((StringBuffer)localObject).append(this.eiX);
     localObject = ((StringBuffer)localObject).toString();
-    awz((String)localObject);
-    AppMethodBeat.o(215647);
+    axO((String)localObject);
+    AppMethodBeat.o(88783);
     return localObject;
   }
   
-  public final String RE()
+  public final String RD()
   {
-    AppMethodBeat.i(215648);
+    AppMethodBeat.i(88784);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("Scene:").append(this.dSg);
+    ((StringBuffer)localObject).append("action:").append(this.dQX);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("PatTime:").append(this.ehx);
+    ((StringBuffer)localObject).append("msgid:").append(this.eiV);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("RevokeTime:").append(this.ehy);
+    ((StringBuffer)localObject).append("msgType:").append(this.eiW);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("UserName:").append(this.dTi);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("PattedUserName:").append(this.ehz);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("PatSuffix:").append(this.ehA);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ChatRoomName:").append(this.ehB);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("RevokeMethod:").append(this.ehC);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("IsSuccess:").append(this.ehD);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("RevokeAction:").append(this.ehE);
+    ((StringBuffer)localObject).append("appMsgType:").append(this.eiX);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(215648);
+    AppMethodBeat.o(88784);
     return localObject;
   }
   
   public final int getId()
   {
-    return 20590;
-  }
-  
-  public final ec nq(String paramString)
-  {
-    AppMethodBeat.i(215643);
-    this.dTi = t("UserName", paramString, true);
-    AppMethodBeat.o(215643);
-    return this;
-  }
-  
-  public final ec nr(String paramString)
-  {
-    AppMethodBeat.i(215644);
-    this.ehz = t("PattedUserName", paramString, true);
-    AppMethodBeat.o(215644);
-    return this;
-  }
-  
-  public final ec ns(String paramString)
-  {
-    AppMethodBeat.i(215645);
-    this.ehA = t("PatSuffix", paramString, true);
-    AppMethodBeat.o(215645);
-    return this;
-  }
-  
-  public final ec nt(String paramString)
-  {
-    AppMethodBeat.i(215646);
-    this.ehB = t("ChatRoomName", paramString, true);
-    AppMethodBeat.o(215646);
-    return this;
+    return 18754;
   }
 }
 

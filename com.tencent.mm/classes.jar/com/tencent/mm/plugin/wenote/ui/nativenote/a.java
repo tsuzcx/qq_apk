@@ -5,11 +5,11 @@ import android.support.v7.widget.RecyclerView;
 
 public abstract interface a
 {
-  public abstract RecyclerView cdD();
+  public abstract RecyclerView ceS();
   
-  public abstract Context cdE();
+  public abstract Context ceT();
   
-  public abstract com.tencent.mm.plugin.wenote.model.nativenote.b.a eXo();
+  public abstract com.tencent.mm.plugin.wenote.model.nativenote.b.a fba();
 }
 
 

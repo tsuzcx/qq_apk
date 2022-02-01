@@ -15,13 +15,13 @@ import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.widget.FrameLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.af.a.a;
+import com.tencent.mm.ae.a.a;
 
 public class RoundedCornerFrameLayout
   extends FrameLayout
 {
-  private a KTk;
-  private Bitmap KTl;
+  private a LpI;
+  private Bitmap LpJ;
   private Paint paint;
   
   public RoundedCornerFrameLayout(Context paramContext)
@@ -52,7 +52,7 @@ public class RoundedCornerFrameLayout
   {
     AppMethodBeat.i(143453);
     float f = paramContext.obtainStyledAttributes(paramAttributeSet, a.a.RoundedCornerFrameLayout, paramInt, 0).getDimension(0, 0.0F);
-    this.KTk = new a(f, f, f, f);
+    this.LpI = new a(f, f, f, f);
     this.paint = new Paint(1);
     this.paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_IN));
     setWillNotDraw(false);
@@ -69,9 +69,9 @@ public class RoundedCornerFrameLayout
     }
     int i = paramCanvas.saveLayer(new RectF(0.0F, 0.0F, paramCanvas.getWidth(), paramCanvas.getHeight()), null, 31);
     super.draw(paramCanvas);
-    if ((this.KTk.KTm > 0.0F) || (this.KTk.KTn > 0.0F) || (this.KTk.KTo > 0.0F) || (this.KTk.KTp > 0.0F))
+    if ((this.LpI.LpK > 0.0F) || (this.LpI.LpL > 0.0F) || (this.LpI.LpM > 0.0F) || (this.LpI.LpN > 0.0F))
     {
-      if (this.KTl == null)
+      if (this.LpJ == null)
       {
         int j = paramCanvas.getWidth();
         int k = paramCanvas.getHeight();
@@ -79,21 +79,21 @@ public class RoundedCornerFrameLayout
         Canvas localCanvas = new Canvas(localBitmap);
         Path localPath = new Path();
         RectF localRectF = new RectF(0.0F, 0.0F, j, k);
-        float f1 = this.KTk.KTm;
-        float f2 = this.KTk.KTm;
-        float f3 = this.KTk.KTn;
-        float f4 = this.KTk.KTn;
-        float f5 = this.KTk.KTp;
-        float f6 = this.KTk.KTp;
-        float f7 = this.KTk.KTo;
-        float f8 = this.KTk.KTo;
+        float f1 = this.LpI.LpK;
+        float f2 = this.LpI.LpK;
+        float f3 = this.LpI.LpL;
+        float f4 = this.LpI.LpL;
+        float f5 = this.LpI.LpN;
+        float f6 = this.LpI.LpN;
+        float f7 = this.LpI.LpM;
+        float f8 = this.LpI.LpM;
         Path.Direction localDirection = Path.Direction.CCW;
         localPath.addRoundRect(localRectF, new float[] { f1, f2, f3, f4, f5, f6, f7, f8 }, localDirection);
         localPath.setFillType(Path.FillType.WINDING);
         localCanvas.drawPath(localPath, new Paint(1));
-        this.KTl = localBitmap;
+        this.LpJ = localBitmap;
       }
-      paramCanvas.drawBitmap(this.KTl, 0.0F, 0.0F, this.paint);
+      paramCanvas.drawBitmap(this.LpJ, 0.0F, 0.0F, this.paint);
     }
     paramCanvas.restoreToCount(i);
     AppMethodBeat.o(143457);
@@ -103,20 +103,20 @@ public class RoundedCornerFrameLayout
   {
     AppMethodBeat.i(143456);
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    this.KTl = null;
+    this.LpJ = null;
     AppMethodBeat.o(143456);
   }
   
   public final void p(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
     AppMethodBeat.i(143455);
-    this.KTk.KTm = paramFloat1;
-    this.KTk.KTn = paramFloat2;
-    this.KTk.KTo = paramFloat3;
-    this.KTk.KTp = paramFloat4;
-    if (this.KTl != null)
+    this.LpI.LpK = paramFloat1;
+    this.LpI.LpL = paramFloat2;
+    this.LpI.LpM = paramFloat3;
+    this.LpI.LpN = paramFloat4;
+    if (this.LpJ != null)
     {
-      this.KTl = null;
+      this.LpJ = null;
       postInvalidate();
     }
     AppMethodBeat.o(143455);
@@ -131,23 +131,23 @@ public class RoundedCornerFrameLayout
   
   final class a
   {
-    float KTm;
-    float KTn;
-    float KTo;
-    float KTp;
+    float LpK;
+    float LpL;
+    float LpM;
+    float LpN;
     
     a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
     {
-      this.KTm = paramFloat1;
-      this.KTn = paramFloat2;
-      this.KTo = paramFloat3;
-      this.KTp = paramFloat4;
+      this.LpK = paramFloat1;
+      this.LpL = paramFloat2;
+      this.LpM = paramFloat3;
+      this.LpN = paramFloat4;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.widget.RoundedCornerFrameLayout
  * JD-Core Version:    0.7.0.1
  */

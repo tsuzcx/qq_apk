@@ -5,14 +5,14 @@ import java.util.concurrent.Future;
 public abstract class b
   implements e, g, j, Runnable
 {
-  private Future djn;
+  private Future dkp;
   
   public final void a(Future paramFuture)
   {
-    this.djn = paramFuture;
+    this.dkp = paramFuture;
   }
   
-  public boolean ahh()
+  public boolean ahw()
   {
     return true;
   }
@@ -21,29 +21,29 @@ public abstract class b
   {
     boolean bool2 = false;
     boolean bool1 = bool2;
-    if (this.djn != null)
+    if (this.dkp != null)
     {
       bool1 = bool2;
-      if (!this.djn.isDone()) {
-        bool1 = this.djn.cancel(false);
+      if (!this.dkp.isDone()) {
+        bool1 = this.dkp.cancel(false);
       }
     }
     return bool1;
   }
   
-  public final void fVO()
+  public final void gan()
   {
-    if ((this.djn != null) && (!this.djn.isCancelled())) {
-      this.djn.get();
+    if ((this.dkp != null) && (!this.dkp.isCancelled())) {
+      this.dkp.get();
     }
   }
   
   public final boolean isDone()
   {
-    if (this.djn == null) {
+    if (this.dkp == null) {
       return false;
     }
-    return this.djn.isDone();
+    return this.dkp.isDone();
   }
 }
 

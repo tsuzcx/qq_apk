@@ -8,18 +8,18 @@ import java.util.List;
 
 public final class e
   extends h
-  implements Iterable<e.b>
+  implements Iterable<b>
 {
   public final List<h> aIx;
   public final List<String> aZO;
-  public transient e.a aZP;
+  public transient a aZP;
   
   public e()
   {
     AppMethodBeat.i(74726);
     this.aZO = new ArrayList();
     this.aIx = new ArrayList();
-    this.aZP = new e.a();
+    this.aZP = new a();
     AppMethodBeat.o(74726);
   }
   
@@ -29,7 +29,7 @@ public final class e
     {
       AppMethodBeat.i(74741);
       paramObjectInputStream.defaultReadObject();
-      this.aZP = new e.a();
+      this.aZP = new a();
       int j = this.aZO.size();
       int i = 0;
       while (i < j)
@@ -195,9 +195,9 @@ public final class e
   
   public final e g(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(192582);
+    AppMethodBeat.i(212499);
     a(paramString1, a.aQ(paramString2));
-    AppMethodBeat.o(192582);
+    AppMethodBeat.o(212499);
     return this;
   }
   
@@ -245,10 +245,27 @@ public final class e
     return true;
   }
   
-  public final Iterator<e.b> iterator()
+  public final Iterator<b> iterator()
   {
     AppMethodBeat.i(74736);
-    e.1 local1 = new e.1(this, this.aZO.iterator(), this.aIx.iterator());
+    Iterator local1 = new Iterator()
+    {
+      public final boolean hasNext()
+      {
+        AppMethodBeat.i(74717);
+        boolean bool = this.aZQ.hasNext();
+        AppMethodBeat.o(74717);
+        return bool;
+      }
+      
+      public final void remove()
+      {
+        AppMethodBeat.i(74718);
+        UnsupportedOperationException localUnsupportedOperationException = new UnsupportedOperationException();
+        AppMethodBeat.o(74718);
+        throw localUnsupportedOperationException;
+      }
+    };
     AppMethodBeat.o(74736);
     return local1;
   }
@@ -257,10 +274,124 @@ public final class e
   {
     return this;
   }
+  
+  public static final class a
+  {
+    private final byte[] aZT;
+    
+    public a()
+    {
+      AppMethodBeat.i(74720);
+      this.aZT = new byte[32];
+      AppMethodBeat.o(74720);
+    }
+    
+    private int ac(Object paramObject)
+    {
+      AppMethodBeat.i(74723);
+      int i = paramObject.hashCode();
+      int j = this.aZT.length;
+      AppMethodBeat.o(74723);
+      return i & j - 1;
+    }
+    
+    final int get(Object paramObject)
+    {
+      AppMethodBeat.i(74722);
+      int i = ac(paramObject);
+      i = this.aZT[i];
+      AppMethodBeat.o(74722);
+      return (i & 0xFF) - 1;
+    }
+    
+    final void i(String paramString, int paramInt)
+    {
+      AppMethodBeat.i(74721);
+      int i = ac(paramString);
+      if (paramInt < 255)
+      {
+        this.aZT[i] = ((byte)(paramInt + 1));
+        AppMethodBeat.o(74721);
+        return;
+      }
+      this.aZT[i] = 0;
+      AppMethodBeat.o(74721);
+    }
+    
+    public final void remove(int paramInt)
+    {
+      int i = 0;
+      if (i < this.aZT.length)
+      {
+        if (this.aZT[i] == paramInt + 1) {
+          this.aZT[i] = 0;
+        }
+        for (;;)
+        {
+          i += 1;
+          break;
+          if (this.aZT[i] > paramInt + 1)
+          {
+            byte[] arrayOfByte = this.aZT;
+            arrayOfByte[i] = ((byte)(arrayOfByte[i] - 1));
+          }
+        }
+      }
+    }
+  }
+  
+  public static final class b
+  {
+    private final h aZU;
+    private final String name;
+    
+    b(String paramString, h paramh)
+    {
+      this.name = paramString;
+      this.aZU = paramh;
+    }
+    
+    public final boolean equals(Object paramObject)
+    {
+      AppMethodBeat.i(74725);
+      if (this == paramObject)
+      {
+        AppMethodBeat.o(74725);
+        return true;
+      }
+      if (paramObject == null)
+      {
+        AppMethodBeat.o(74725);
+        return false;
+      }
+      if (getClass() != paramObject.getClass())
+      {
+        AppMethodBeat.o(74725);
+        return false;
+      }
+      paramObject = (b)paramObject;
+      if ((this.name.equals(paramObject.name)) && (this.aZU.equals(paramObject.aZU)))
+      {
+        AppMethodBeat.o(74725);
+        return true;
+      }
+      AppMethodBeat.o(74725);
+      return false;
+    }
+    
+    public final int hashCode()
+    {
+      AppMethodBeat.i(74724);
+      int i = this.name.hashCode();
+      int j = this.aZU.hashCode();
+      AppMethodBeat.o(74724);
+      return (i + 31) * 31 + j;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.eclipsesource.a.e
  * JD-Core Version:    0.7.0.1
  */

@@ -9,56 +9,56 @@ import android.provider.ContactsContract.Data;
 import android.provider.ContactsContract.RawContacts;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bs.d;
-import com.tencent.mm.g.a.yb;
+import com.tencent.mm.br.d;
+import com.tencent.mm.g.a.yh;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.plugin.messenger.foundation.a.l;
 import com.tencent.mm.pluginsdk.m;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.bp;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.aj;
+import com.tencent.mm.storage.bq;
 
 public final class b$b
   implements b.a
 {
-  private String jhp;
+  private String jki;
   private int toScene;
   private Uri uri;
   
   public b$b(int paramInt, String paramString, Uri paramUri)
   {
     this.toScene = paramInt;
-    this.jhp = paramString;
+    this.jki = paramString;
     this.uri = paramUri;
   }
   
   private int b(Context paramContext, String paramString1, String paramString2, String paramString3)
   {
     AppMethodBeat.i(127813);
-    Object localObject = com.tencent.mm.plugin.account.a.getAddrUploadStg().Jx(paramString1);
+    Object localObject = com.tencent.mm.plugin.account.a.getAddrUploadStg().JW(paramString1);
     if (paramContext == null)
     {
-      ad.e("MicroMsg.ProcessorToChattingOrTimeLineByPhone", "null context");
+      ae.e("MicroMsg.ProcessorToChattingOrTimeLineByPhone", "null context");
       AppMethodBeat.o(127813);
       return 1;
     }
     if (localObject == null)
     {
-      ad.e("MicroMsg.ProcessorToChattingOrTimeLineByPhone", "this user is not my friend");
+      ae.e("MicroMsg.ProcessorToChattingOrTimeLineByPhone", "this user is not my friend");
       AppMethodBeat.o(127813);
       return 1;
     }
     localObject = ((com.tencent.mm.plugin.account.friend.a.a)localObject).getUsername();
-    if (bt.isNullOrNil((String)localObject))
+    if (bu.isNullOrNil((String)localObject))
     {
-      ad.e("MicroMsg.ProcessorToChattingOrTimeLineByPhone", "get username failed, phonenum md5 is ".concat(String.valueOf(paramString1)));
+      ae.e("MicroMsg.ProcessorToChattingOrTimeLineByPhone", "get username failed, phonenum md5 is ".concat(String.valueOf(paramString1)));
       AppMethodBeat.o(127813);
       return 1;
     }
-    if (((l)com.tencent.mm.kernel.g.ab(l.class)).azp().aTg((String)localObject))
+    if (((l)com.tencent.mm.kernel.g.ab(l.class)).azF().aUH((String)localObject))
     {
-      com.tencent.mm.plugin.report.service.g.yhR.f(11157, new Object[] { Integer.valueOf(this.toScene) });
+      com.tencent.mm.plugin.report.service.g.yxI.f(11157, new Object[] { Integer.valueOf(this.toScene) });
       switch (this.toScene)
       {
       }
@@ -71,23 +71,23 @@ public final class b$b
       paramString1.putExtra("Chat_User", (String)localObject);
       paramString1.putExtra("finish_direct", true);
       paramString1.addFlags(67108864);
-      com.tencent.mm.plugin.account.a.a.iRG.d(paramString1, paramContext);
+      com.tencent.mm.plugin.account.a.a.iUz.d(paramString1, paramContext);
       AppMethodBeat.o(127813);
       return 0;
-      paramString1 = new yb();
-      paramString1.dMo.dsi = 5;
-      paramString1.dMo.talker = ((String)localObject);
-      paramString1.dMo.context = paramContext;
-      paramString1.dMo.dMk = 3;
-      com.tencent.mm.sdk.b.a.IbL.l(paramString1);
+      paramString1 = new yh();
+      paramString1.dNE.dto = 5;
+      paramString1.dNE.talker = ((String)localObject);
+      paramString1.dNE.context = paramContext;
+      paramString1.dNE.dNA = 3;
+      com.tencent.mm.sdk.b.a.IvT.l(paramString1);
       AppMethodBeat.o(127813);
       return 0;
-      paramString1 = new yb();
-      paramString1.dMo.dsi = 5;
-      paramString1.dMo.talker = ((String)localObject);
-      paramString1.dMo.context = paramContext;
-      paramString1.dMo.dMk = 2;
-      com.tencent.mm.sdk.b.a.IbL.l(paramString1);
+      paramString1 = new yh();
+      paramString1.dNE.dto = 5;
+      paramString1.dNE.talker = ((String)localObject);
+      paramString1.dNE.context = paramContext;
+      paramString1.dNE.dNA = 2;
+      com.tencent.mm.sdk.b.a.IvT.l(paramString1);
       AppMethodBeat.o(127813);
       return 0;
       paramString1 = new Intent();
@@ -97,11 +97,11 @@ public final class b$b
       d.b(paramContext, "sns", ".ui.SnsUserUI", paramString1);
       AppMethodBeat.o(127813);
       return 0;
-      if ((!bt.isNullOrNil(paramString3)) && (!bt.isNullOrNil(paramString2)))
+      if ((!bu.isNullOrNil(paramString3)) && (!bu.isNullOrNil(paramString2)))
       {
         if (!com.tencent.mm.pluginsdk.permission.b.n(paramContext, "android.permission.READ_CONTACTS"))
         {
-          ad.e("MicroMsg.ProcessorToChattingOrTimeLineByPhone", "no contact permission");
+          ae.e("MicroMsg.ProcessorToChattingOrTimeLineByPhone", "no contact permission");
           AppMethodBeat.o(127813);
           return 1;
         }
@@ -112,25 +112,25 @@ public final class b$b
     }
   }
   
-  public final int df(Context paramContext)
+  public final int dh(Context paramContext)
   {
     AppMethodBeat.i(127812);
-    com.tencent.mm.kernel.g.ajA();
-    if ((!com.tencent.mm.kernel.a.aiJ()) || (com.tencent.mm.kernel.a.aiE()))
+    com.tencent.mm.kernel.g.ajP();
+    if ((!com.tencent.mm.kernel.a.aiY()) || (com.tencent.mm.kernel.a.aiT()))
     {
-      ad.d("MicroMsg.ProcessorToChattingOrTimeLineByPhone", "not login, start bind login");
+      ae.d("MicroMsg.ProcessorToChattingOrTimeLineByPhone", "not login, start bind login");
       AppMethodBeat.o(127812);
       return 3;
     }
-    if (bt.isNullOrNil((String)com.tencent.mm.kernel.g.ajC().ajl().get(6, "")))
+    if (bu.isNullOrNil((String)com.tencent.mm.kernel.g.ajR().ajA().get(6, "")))
     {
-      ad.d("MicroMsg.ProcessorToChattingOrTimeLineByPhone", "not bind mobile, start bind mobie");
+      ae.d("MicroMsg.ProcessorToChattingOrTimeLineByPhone", "not bind mobile, start bind mobie");
       AppMethodBeat.o(127812);
       return 2;
     }
     if (!com.tencent.mm.pluginsdk.permission.b.n(paramContext, "android.permission.READ_CONTACTS"))
     {
-      ad.e("MicroMsg.ProcessorToChattingOrTimeLineByPhone", "no contacts permission");
+      ae.e("MicroMsg.ProcessorToChattingOrTimeLineByPhone", "no contacts permission");
       AppMethodBeat.o(127812);
       return 1;
     }
@@ -140,13 +140,13 @@ public final class b$b
       Cursor localCursor = paramContext.getContentResolver().query(this.uri, new String[] { "contact_id", "_id", "data4" }, null, null, null);
       if (localCursor == null)
       {
-        ad.e("MicroMsg.ProcessorToChattingOrTimeLineByPhone", "query database err");
+        ae.e("MicroMsg.ProcessorToChattingOrTimeLineByPhone", "query database err");
         AppMethodBeat.o(127812);
         return 1;
       }
       if (!localCursor.moveToFirst())
       {
-        ad.e("MicroMsg.ProcessorToChattingOrTimeLineByPhone", "query database err, move to first fail");
+        ae.e("MicroMsg.ProcessorToChattingOrTimeLineByPhone", "query database err, move to first fail");
         localCursor.close();
         AppMethodBeat.o(127812);
         return 1;
@@ -154,7 +154,7 @@ public final class b$b
       i = localCursor.getColumnIndex("data4");
       if (i == -1)
       {
-        ad.e("MicroMsg.ProcessorToChattingOrTimeLineByPhone", "no data4 segment exist");
+        ae.e("MicroMsg.ProcessorToChattingOrTimeLineByPhone", "no data4 segment exist");
         localCursor.close();
         AppMethodBeat.o(127812);
         return 1;
@@ -188,10 +188,10 @@ public final class b$b
         for (localObject1 = str3;; localObject1 = "")
         {
           localCursor.close();
-          if (!bt.isNullOrNil(str2)) {
+          if (!bu.isNullOrNil(str2)) {
             break label465;
           }
-          ad.e("MicroMsg.ProcessorToChattingOrTimeLineByPhone", "null friendmobile");
+          ae.e("MicroMsg.ProcessorToChattingOrTimeLineByPhone", "null friendmobile");
           AppMethodBeat.o(127812);
           return 1;
           str1 = "";
@@ -201,8 +201,8 @@ public final class b$b
       }
       catch (Exception paramContext)
       {
-        ad.e("MicroMsg.ProcessorToChattingOrTimeLineByPhone", "match error, %s\n%s", new Object[] { paramContext.getMessage(), bt.n(paramContext) });
-        ad.e("MicroMsg.ProcessorToChattingOrTimeLineByPhone", "result friendMobileMd5 %s contact_id %s data_id %s", new Object[] { localObject2, localObject1, "" });
+        ae.e("MicroMsg.ProcessorToChattingOrTimeLineByPhone", "match error, %s\n%s", new Object[] { paramContext.getMessage(), bu.o(paramContext) });
+        ae.e("MicroMsg.ProcessorToChattingOrTimeLineByPhone", "result friendMobileMd5 %s contact_id %s data_id %s", new Object[] { localObject2, localObject1, "" });
         return 1;
       }
       finally
@@ -214,13 +214,13 @@ public final class b$b
       AppMethodBeat.o(127812);
       return i;
     }
-    if (!bt.isNullOrNil(this.jhp))
+    if (!bu.isNullOrNil(this.jki))
     {
-      i = b(paramContext, com.tencent.mm.b.g.getMessageDigest(com.tencent.mm.pluginsdk.b.JV(this.jhp).getBytes()), null, null);
+      i = b(paramContext, com.tencent.mm.b.g.getMessageDigest(com.tencent.mm.pluginsdk.b.Ku(this.jki).getBytes()), null, null);
       AppMethodBeat.o(127812);
       return i;
     }
-    ad.e("MicroMsg.ProcessorToChattingOrTimeLineByPhone", "uri is null and the phone num is null");
+    ae.e("MicroMsg.ProcessorToChattingOrTimeLineByPhone", "uri is null and the phone num is null");
     AppMethodBeat.o(127812);
     return 1;
   }

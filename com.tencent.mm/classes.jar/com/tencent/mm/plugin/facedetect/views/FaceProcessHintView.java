@@ -15,14 +15,14 @@ import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.facedetect.model.h;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public class FaceProcessHintView
   extends LinearLayout
 {
   private int abZ;
-  private h roF;
-  private Animation roG;
+  private h rwJ;
+  private Animation rwK;
   
   public FaceProcessHintView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -33,13 +33,13 @@ public class FaceProcessHintView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(104182);
-    this.roF = null;
+    this.rwJ = null;
     this.abZ = 0;
-    this.roG = null;
+    this.rwK = null;
     setOrientation(0);
-    setMinimumHeight(BackwardSupportUtil.b.g(getContext(), 36.0F));
-    this.roG = AnimationUtils.loadAnimation(paramContext, 2130772037);
-    this.roG.setInterpolator(new AccelerateDecelerateInterpolator());
+    setMinimumHeight(BackwardSupportUtil.b.h(getContext(), 36.0F));
+    this.rwK = AnimationUtils.loadAnimation(paramContext, 2130772037);
+    this.rwK.setInterpolator(new AccelerateDecelerateInterpolator());
     AppMethodBeat.o(104182);
   }
   
@@ -56,16 +56,16 @@ public class FaceProcessHintView
   public void setDataAndInvalidate(h paramh)
   {
     AppMethodBeat.i(104183);
-    this.roF = paramh;
-    if ((this.roF == null) || (this.roF.rhq <= 0))
+    this.rwJ = paramh;
+    if ((this.rwJ == null) || (this.rwJ.rpu <= 0))
     {
-      ad.e("MicroMsg.FaceProcessHintView", "hy: model invalid");
+      ae.e("MicroMsg.FaceProcessHintView", "hy: model invalid");
       AppMethodBeat.o(104183);
       return;
     }
     removeAllViews();
     int i = 0;
-    while (i < this.roF.rhq)
+    while (i < this.rwJ.rpu)
     {
       paramh = LayoutInflater.from(getContext()).inflate(2131493919, null, false);
       LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-2, -1);

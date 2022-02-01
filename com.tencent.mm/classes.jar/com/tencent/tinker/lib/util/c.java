@@ -9,31 +9,48 @@ import java.io.IOException;
 
 public final class c
 {
-  private static c Mhx;
-  public File MhA = null;
-  public boolean Mhy = true;
-  public File Mhz = null;
+  private static c MEu;
+  public boolean MEv = true;
+  public File MEw = null;
+  public File MEx = null;
   private Context context = null;
-  public int uEz = 20;
+  public int uQm = 20;
   
   private c(Context paramContext)
   {
     this.context = paramContext;
-    this.Mhz = new File(SharePatchFileUtil.getPatchTempDirectory(paramContext), "patch.retry");
-    this.MhA = new File(SharePatchFileUtil.getPatchTempDirectory(paramContext), "temp.apk");
+    this.MEw = new File(SharePatchFileUtil.getPatchTempDirectory(paramContext), "patch.retry");
+    this.MEx = new File(SharePatchFileUtil.getPatchTempDirectory(paramContext), "temp.apk");
   }
   
-  public static c lp(Context paramContext)
+  public static c lv(Context paramContext)
   {
-    if (Mhx == null) {
-      Mhx = new c(paramContext);
+    if (MEu == null) {
+      MEu = new c(paramContext);
     }
-    return Mhx;
+    return MEu;
   }
   
-  public final boolean aZR(String paramString)
+  public final void ad(File paramFile)
   {
-    if (!this.Mhy) {
+    if (paramFile.getAbsolutePath().equals(this.MEx.getAbsolutePath())) {
+      return;
+    }
+    ShareTinkerLog.w("Tinker.UpgradePatchRetry", "try copy file: %s to %s", new Object[] { paramFile.getAbsolutePath(), this.MEx.getAbsolutePath() });
+    try
+    {
+      SharePatchFileUtil.copyFileUsingStream(paramFile, this.MEx);
+      return;
+    }
+    catch (IOException localIOException)
+    {
+      ShareTinkerLog.e("Tinker.UpgradePatchRetry", "fail to copy file: %s to %s", new Object[] { paramFile.getAbsolutePath(), this.MEx.getAbsolutePath() });
+    }
+  }
+  
+  public final boolean bbu(String paramString)
+  {
+    if (!this.MEv) {
       ShareTinkerLog.w("Tinker.UpgradePatchRetry", "onPatchListenerCheck retry disabled, just return", new Object[0]);
     }
     int i;
@@ -43,7 +60,7 @@ public final class c
       do
       {
         return true;
-        if (!this.Mhz.exists())
+        if (!this.MEw.exists())
         {
           ShareTinkerLog.w("Tinker.UpgradePatchRetry", "onPatchListenerCheck retry file is not exist, just return", new Object[0]);
           return true;
@@ -53,25 +70,25 @@ public final class c
           ShareTinkerLog.w("Tinker.UpgradePatchRetry", "onPatchListenerCheck md5 is null, just return", new Object[0]);
           return true;
         }
-        locala = a.af(this.Mhz);
+        locala = a.ae(this.MEw);
       } while (!paramString.equals(locala.md5));
-      i = Integer.parseInt(locala.MhB);
-    } while (i < this.uEz);
+      i = Integer.parseInt(locala.MEy);
+    } while (i < this.uQm);
     ShareTinkerLog.w("Tinker.UpgradePatchRetry", "onPatchListenerCheck, retry count %d must exceed than max retry count", new Object[] { Integer.valueOf(i) });
-    SharePatchFileUtil.safeDeleteFile(this.MhA);
+    SharePatchFileUtil.safeDeleteFile(this.MEx);
     return false;
   }
   
-  public final boolean aZS(String paramString)
+  public final boolean bbv(String paramString)
   {
-    if (!this.Mhy) {
+    if (!this.MEv) {
       ShareTinkerLog.w("Tinker.UpgradePatchRetry", "onPatchResetMaxCheck retry disabled, just return", new Object[0]);
     }
     a locala;
     do
     {
       return true;
-      if (!this.Mhz.exists())
+      if (!this.MEw.exists())
       {
         ShareTinkerLog.w("Tinker.UpgradePatchRetry", "onPatchResetMaxCheck retry file is not exist, just return", new Object[0]);
         return true;
@@ -81,73 +98,56 @@ public final class c
         ShareTinkerLog.w("Tinker.UpgradePatchRetry", "onPatchResetMaxCheck md5 is null, just return", new Object[0]);
         return true;
       }
-      locala = a.af(this.Mhz);
+      locala = a.ae(this.MEw);
     } while (!paramString.equals(locala.md5));
     ShareTinkerLog.i("Tinker.UpgradePatchRetry", "onPatchResetMaxCheck, reset max check to 1", new Object[0]);
-    locala.MhB = "1";
-    a.a(this.Mhz, locala);
+    locala.MEy = "1";
+    a.a(this.MEw, locala);
     return true;
   }
   
-  public final void ae(File paramFile)
+  public final boolean gdb()
   {
-    if (paramFile.getAbsolutePath().equals(this.MhA.getAbsolutePath())) {
-      return;
-    }
-    ShareTinkerLog.w("Tinker.UpgradePatchRetry", "try copy file: %s to %s", new Object[] { paramFile.getAbsolutePath(), this.MhA.getAbsolutePath() });
-    try
-    {
-      SharePatchFileUtil.copyFileUsingStream(paramFile, this.MhA);
-      return;
-    }
-    catch (IOException localIOException)
-    {
-      ShareTinkerLog.e("Tinker.UpgradePatchRetry", "fail to copy file: %s to %s", new Object[] { paramFile.getAbsolutePath(), this.MhA.getAbsolutePath() });
-    }
-  }
-  
-  public final boolean fYC()
-  {
-    if (!this.Mhy)
+    if (!this.MEv)
     {
       ShareTinkerLog.w("Tinker.UpgradePatchRetry", "onPatchRetryLoad retry disabled, just return", new Object[0]);
       return false;
     }
-    if (!a.lk(this.context).AEC)
+    if (!a.lq(this.context).AWf)
     {
       ShareTinkerLog.w("Tinker.UpgradePatchRetry", "onPatchRetryLoad retry is not main process, just return", new Object[0]);
       return false;
     }
-    if (!this.Mhz.exists())
+    if (!this.MEw.exists())
     {
       ShareTinkerLog.w("Tinker.UpgradePatchRetry", "onPatchRetryLoad retry info not exist, just return", new Object[0]);
       return false;
     }
-    if (b.lm(this.context))
+    if (b.ls(this.context))
     {
       ShareTinkerLog.w("Tinker.UpgradePatchRetry", "onPatchRetryLoad tinker service is running, just return", new Object[0]);
       return false;
     }
-    String str = this.MhA.getAbsolutePath();
+    String str = this.MEx.getAbsolutePath();
     if ((str == null) || (!new File(str).exists()))
     {
       ShareTinkerLog.w("Tinker.UpgradePatchRetry", "onPatchRetryLoad patch file: %s is not exist, just return", new Object[] { str });
       return false;
     }
     ShareTinkerLog.w("Tinker.UpgradePatchRetry", "onPatchRetryLoad patch file: %s is exist, retry to patch", new Object[] { str });
-    com.tencent.tinker.lib.e.c.cD(this.context, str);
+    com.tencent.tinker.lib.e.c.cE(this.context, str);
     return true;
   }
   
   public static final class a
   {
-    public String MhB;
+    public String MEy;
     public String md5;
     
     public a(String paramString1, String paramString2)
     {
       this.md5 = paramString1;
-      this.MhB = paramString2;
+      this.MEy = paramString2;
     }
     
     /* Error */
@@ -179,7 +179,7 @@ public final class c
       //   41: aload_2
       //   42: ldc 46
       //   44: aload_1
-      //   45: getfield 19	com/tencent/tinker/lib/util/c$a:MhB	Ljava/lang/String;
+      //   45: getfield 19	com/tencent/tinker/lib/util/c$a:MEy	Ljava/lang/String;
       //   48: invokevirtual 44	java/util/Properties:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
       //   51: pop
       //   52: new 48	java/io/FileOutputStream
@@ -239,7 +239,7 @@ public final class c
     }
     
     /* Error */
-    public static a af(File paramFile)
+    public static a ae(File paramFile)
     {
       // Byte code:
       //   0: aconst_null

@@ -4,16 +4,16 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
 {
-  public static int BqS = 0;
+  public static int BIr = 0;
   
   public static final class a
   {
-    public static final Long BqT;
+    public static final Long BIs;
     
     static
     {
       AppMethodBeat.i(90972);
-      BqT = Long.valueOf(2097152L);
+      BIs = Long.valueOf(2097152L);
       AppMethodBeat.o(90972);
     }
   }

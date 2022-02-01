@@ -1,9 +1,9 @@
 package com.tencent.mm.plugin.wallet.balance.model.lqt;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.a.a;
-import com.tencent.mm.protocal.protobuf.bxr;
-import com.tencent.mm.protocal.protobuf.cko;
+import com.tencent.mm.ak.a.a;
+import com.tencent.mm.protocal.protobuf.byl;
+import com.tencent.mm.protocal.protobuf.cli;
 import com.tencent.mm.vending.g.b;
 
 public final class y

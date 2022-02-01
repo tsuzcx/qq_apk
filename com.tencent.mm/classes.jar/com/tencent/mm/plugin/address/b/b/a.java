@@ -2,39 +2,39 @@ package com.tencent.mm.plugin.address.b.b;
 
 import android.app.Dialog;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.HashSet;
 
 public final class a
   implements f
 {
-  private HashSet<n> jrG;
-  private HashSet<n> jrH;
+  private HashSet<n> juA;
+  private HashSet<n> juz;
   private Dialog tipDialog;
   
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     AppMethodBeat.i(20764);
-    if (this.jrH.contains(paramn))
+    if (this.juA.contains(paramn))
     {
-      this.jrH.remove(paramn);
-      ad.d("MicroMsg.InvoiceNetSceneMgr", "has find scene ");
+      this.juA.remove(paramn);
+      ae.d("MicroMsg.InvoiceNetSceneMgr", "has find scene ");
     }
     for (;;)
     {
-      if ((this.jrH.isEmpty()) && (this.jrG.isEmpty()) && (this.tipDialog != null))
+      if ((this.juA.isEmpty()) && (this.juz.isEmpty()) && (this.tipDialog != null))
       {
         this.tipDialog.dismiss();
         this.tipDialog = null;
       }
       AppMethodBeat.o(20764);
       return;
-      if (this.jrG.contains(paramn))
+      if (this.juz.contains(paramn))
       {
-        this.jrG.remove(paramn);
-        ad.d("MicroMsg.InvoiceNetSceneMgr", "has find forcescenes ");
+        this.juz.remove(paramn);
+        ae.d("MicroMsg.InvoiceNetSceneMgr", "has find forcescenes ");
       }
     }
   }

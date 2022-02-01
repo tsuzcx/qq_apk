@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.card.model.a;
 
-import com.tencent.mm.protocal.protobuf.azv;
+import com.tencent.mm.protocal.protobuf.bal;
 import d.g.a.a;
 import d.g.b.q;
 import d.l;
 import d.z;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
 public final class a$a$a
   extends q
   implements a<z>
 {
-  public a$a$a(azv paramazv)
+  public a$a$a(bal parambal)
   {
     super(0);
   }

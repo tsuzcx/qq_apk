@@ -8,10 +8,10 @@ public class PAGImageLayer
 {
   static
   {
-    AppMethodBeat.i(220169);
+    AppMethodBeat.i(216923);
     b.loadLibrary("libpag");
     nativeInit();
-    AppMethodBeat.o(220169);
+    AppMethodBeat.o(216923);
   }
   
   public PAGImageLayer(long paramLong)
@@ -21,15 +21,15 @@ public class PAGImageLayer
   
   public static PAGImageLayer Make(int paramInt1, int paramInt2, long paramLong)
   {
-    AppMethodBeat.i(220167);
+    AppMethodBeat.i(216921);
     paramLong = nativeMake(paramInt1, paramInt2, paramLong);
     if (paramLong == 0L)
     {
-      AppMethodBeat.o(220167);
+      AppMethodBeat.o(216921);
       return null;
     }
     PAGImageLayer localPAGImageLayer = new PAGImageLayer(paramLong);
-    AppMethodBeat.o(220167);
+    AppMethodBeat.o(216921);
     return localPAGImageLayer;
   }
   
@@ -45,12 +45,12 @@ public class PAGImageLayer
   
   public void replaceImage(PAGImage paramPAGImage)
   {
-    AppMethodBeat.i(220168);
+    AppMethodBeat.i(216922);
     if (paramPAGImage == null) {}
     for (long l = 0L;; l = paramPAGImage.nativeContext)
     {
       replaceImage(l);
-      AppMethodBeat.o(220168);
+      AppMethodBeat.o(216922);
       return;
     }
   }

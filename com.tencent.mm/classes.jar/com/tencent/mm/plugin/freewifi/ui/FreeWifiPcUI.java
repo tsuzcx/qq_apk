@@ -11,7 +11,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bs.d;
+import com.tencent.mm.br.d;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.plugin.freewifi.g;
@@ -23,20 +23,20 @@ public class FreeWifiPcUI
   extends MMActivity
 {
   private String appId;
-  private String dpf;
-  private Button gUt;
-  private String tnF;
-  private Button tpH;
-  private String tpM;
-  private TextView tqE;
-  private int tqF;
-  private p tqG = null;
+  private String dqk;
+  private Button gXc;
+  private String tAD;
+  private Button tAy;
+  private TextView tBv;
+  private int tBw;
+  private p tBx = null;
+  private String tyx;
   
   private void goBack()
   {
     AppMethodBeat.i(25127);
     Intent localIntent = new Intent();
-    g.iRG.h(localIntent, this);
+    g.iUz.h(localIntent, this);
     finish();
     AppMethodBeat.o(25127);
   }
@@ -67,23 +67,23 @@ public class FreeWifiPcUI
       }
     });
     this.appId = getIntent().getStringExtra("free_wifi_appid");
-    this.tqF = getIntent().getIntExtra("ConstantsFreeWifi.FREE_WIFI_PC_ENCRYPTED_SHOPID", 0);
-    this.dpf = getIntent().getStringExtra("ConstantsFreeWifi.FREE_WIFI_PC_TICKET");
-    this.tnF = getIntent().getStringExtra("free_wifi_app_nickname");
-    this.tpM = getIntent().getStringExtra("free_wifi_privacy_url");
-    this.tqE = ((TextView)findViewById(2131300270));
-    this.gUt = ((Button)findViewById(2131300271));
-    this.tqE.setText("由" + this.tnF + "提供");
-    this.gUt.setOnClickListener(new FreeWifiPcUI.2(this));
-    this.tpH = ((Button)findViewById(2131300272));
-    this.tpH.setOnClickListener(new View.OnClickListener()
+    this.tBw = getIntent().getIntExtra("ConstantsFreeWifi.FREE_WIFI_PC_ENCRYPTED_SHOPID", 0);
+    this.dqk = getIntent().getStringExtra("ConstantsFreeWifi.FREE_WIFI_PC_TICKET");
+    this.tyx = getIntent().getStringExtra("free_wifi_app_nickname");
+    this.tAD = getIntent().getStringExtra("free_wifi_privacy_url");
+    this.tBv = ((TextView)findViewById(2131300270));
+    this.gXc = ((Button)findViewById(2131300271));
+    this.tBv.setText("由" + this.tyx + "提供");
+    this.gXc.setOnClickListener(new FreeWifiPcUI.2(this));
+    this.tAy = ((Button)findViewById(2131300272));
+    this.tAy.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(25124);
         b localb = new b();
         localb.bd(paramAnonymousView);
-        a.b("com/tencent/mm/plugin/freewifi/ui/FreeWifiPcUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        a.b("com/tencent/mm/plugin/freewifi/ui/FreeWifiPcUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
         paramAnonymousView = new Intent();
         paramAnonymousView.putExtra("rawUrl", FreeWifiPcUI.f(FreeWifiPcUI.this));
         paramAnonymousView.putExtra("showShare", false);

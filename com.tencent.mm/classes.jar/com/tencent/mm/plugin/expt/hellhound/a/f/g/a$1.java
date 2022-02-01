@@ -10,7 +10,7 @@ final class a$1
   public final void a(String paramString1, String paramString2, String paramString3, Object paramObject, Object[] paramArrayOfObject)
   {
     AppMethodBeat.i(184386);
-    com.tencent.mm.plugin.expt.hellhound.core.a.a.c.cnO().l(220, Long.valueOf(System.currentTimeMillis()));
+    com.tencent.mm.plugin.expt.hellhound.core.a.a.c.cpq().l(220, Long.valueOf(System.currentTimeMillis()));
     AppMethodBeat.o(184386);
   }
 }

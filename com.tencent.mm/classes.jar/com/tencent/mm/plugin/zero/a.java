@@ -4,38 +4,40 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e.c;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.loader.j.b;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.n.e;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.vfs.k;
 
 public final class a
   implements com.tencent.mm.kernel.api.bucket.c, com.tencent.mm.plugin.zero.b.a
 {
-  private com.tencent.mm.n.e EIr;
-  private com.tencent.mm.n.c EIs;
+  private e FaP;
+  private com.tencent.mm.n.c FaQ;
   
   public a()
   {
     AppMethodBeat.i(132988);
-    this.EIr = new com.tencent.mm.n.e();
-    this.EIs = new com.tencent.mm.n.c();
+    this.FaP = new e();
+    this.FaQ = new com.tencent.mm.n.c();
     AppMethodBeat.o(132988);
   }
   
-  public final com.tencent.mm.n.e acA()
+  public final e acL()
   {
     AppMethodBeat.i(132989);
-    g.ajD();
-    g.ajA().aiF();
-    com.tencent.mm.n.e locale = this.EIr;
+    g.ajS();
+    g.ajP().aiU();
+    e locale = this.FaP;
     AppMethodBeat.o(132989);
     return locale;
   }
   
-  public final com.tencent.mm.n.c acB()
+  public final com.tencent.mm.n.c acM()
   {
     AppMethodBeat.i(132990);
-    g.ajD();
-    g.ajA().aiF();
-    com.tencent.mm.n.c localc = this.EIs;
+    g.ajS();
+    g.ajP().aiU();
+    com.tencent.mm.n.c localc = this.FaQ;
     AppMethodBeat.o(132990);
     return localc;
   }
@@ -43,22 +45,22 @@ public final class a
   public final void onAccountInitialized(e.c paramc)
   {
     AppMethodBeat.i(132991);
-    if (paramc.gBH)
+    if (paramc.gEo)
     {
-      paramc = this.EIs;
-      com.tencent.mm.vfs.e locale1 = new com.tencent.mm.vfs.e(b.arU() + "configlist/");
-      if (locale1.exists())
+      paramc = this.FaQ;
+      k localk1 = new k(b.asj() + "configlist/");
+      if (localk1.exists())
       {
-        com.tencent.mm.vfs.e locale2 = new com.tencent.mm.vfs.e(com.tencent.mm.n.c.ges);
-        if (!locale2.exists())
+        k localk2 = new k(com.tencent.mm.n.c.ggA);
+        if (!localk2.exists())
         {
-          ad.d("MicroMsg.ConfigListDecoder", "bugfix");
-          paramc.a(locale1, locale2);
+          ae.d("MicroMsg.ConfigListDecoder", "bugfix");
+          paramc.a(localk1, localk2);
         }
       }
     }
-    this.EIr.vw();
-    this.EIs.init();
+    this.FaP.vw();
+    this.FaQ.init();
     AppMethodBeat.o(132991);
   }
   

@@ -3,11 +3,11 @@ package com.tencent.mm.plugin.appbrand.jsapi.fakenative;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.g.a.mh;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.c;
 import com.tencent.mm.g.a.mi;
+import com.tencent.mm.g.a.mj;
 import com.tencent.mm.ipcinvoker.wx_extension.IPCRunCgi;
 import com.tencent.mm.ipcinvoker.wx_extension.IPCRunCgi.a;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
@@ -16,30 +16,30 @@ import com.tencent.mm.plugin.appbrand.config.AppBrandLaunchReferrer;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandMainProcessService;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
 import com.tencent.mm.plugin.appbrand.jsapi.JsApiNavigateBackApplication.NavigateBackAppTask;
-import com.tencent.mm.plugin.appbrand.n;
 import com.tencent.mm.plugin.appbrand.o;
-import com.tencent.mm.protocal.protobuf.btd;
-import com.tencent.mm.protocal.protobuf.bte;
+import com.tencent.mm.plugin.appbrand.p;
+import com.tencent.mm.protocal.protobuf.btx;
+import com.tencent.mm.protocal.protobuf.bty;
 import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public final class OpenBusinessViewUtil
 {
   public static void A(String paramString1, String paramString2, int paramInt)
   {
     AppMethodBeat.i(46308);
-    ad.i("MicroMsg.OpenBusinessViewUtil", "navigateBackApplication, appId:%s, businessType:%s, errCode:%d", new Object[] { paramString1, paramString2, Integer.valueOf(paramInt) });
-    AppBrandMainProcessService.a(new JsApiNavigateBackApplication.NavigateBackAppTask(paramString1, bt.bI(null, "{}"), paramString2, paramInt));
+    ae.i("MicroMsg.OpenBusinessViewUtil", "navigateBackApplication, appId:%s, businessType:%s, errCode:%d", new Object[] { paramString1, paramString2, Integer.valueOf(paramInt) });
+    AppBrandMainProcessService.a(new JsApiNavigateBackApplication.NavigateBackAppTask(paramString1, bu.bI(null, "{}"), paramString2, paramInt));
     AppMethodBeat.o(46308);
   }
   
   public static void B(String paramString1, String paramString2, int paramInt)
   {
     AppMethodBeat.i(46311);
-    ad.i("MicroMsg.OpenBusinessViewUtil", "navigateBackH5, businessType:%s, errCode:%d", new Object[] { paramString1, Integer.valueOf(paramInt) });
-    if (aj.cnC())
+    ae.i("MicroMsg.OpenBusinessViewUtil", "navigateBackH5, businessType:%s, errCode:%d", new Object[] { paramString1, Integer.valueOf(paramInt) });
+    if (ak.cpe())
     {
       C(paramString1, paramString2, paramInt);
       AppMethodBeat.o(46311);
@@ -52,46 +52,46 @@ public final class OpenBusinessViewUtil
   public static void C(String paramString1, String paramString2, int paramInt)
   {
     AppMethodBeat.i(46312);
-    mh localmh = new mh();
-    localmh.dzO.businessType = paramString1;
-    localmh.dzO.errCode = paramInt;
-    localmh.dzO.dzP = paramString2;
-    a.IbL.l(localmh);
+    mi localmi = new mi();
+    localmi.dAT.businessType = paramString1;
+    localmi.dAT.errCode = paramInt;
+    localmi.dAT.dAU = paramString2;
+    a.IvT.l(localmi);
     AppMethodBeat.o(46312);
   }
   
   public static void a(int paramInt, String paramString1, String paramString2, String paramString3, String paramString4, a parama)
   {
     AppMethodBeat.i(46305);
-    btd localbtd = new btd();
-    localbtd.dnh = paramInt;
-    localbtd.GNv = paramString1;
-    localbtd.GNw = paramString3;
-    localbtd.GNx = paramString4;
-    localbtd.query = paramString2;
+    btx localbtx = new btx();
+    localbtx.doj = paramInt;
+    localbtx.HgV = paramString1;
+    localbtx.HgW = paramString3;
+    localbtx.HgX = paramString4;
+    localbtx.query = paramString2;
     paramString1 = new b.a();
     paramString1.funcId = 1268;
     paramString1.uri = "/cgi-bin/mmbiz-bin/wxabusiness/launchbizwxaapp";
-    paramString1.hNM = localbtd;
-    paramString1.hNN = new bte();
-    IPCRunCgi.a(paramString1.aDC(), new IPCRunCgi.a()
+    paramString1.hQF = localbtx;
+    paramString1.hQG = new bty();
+    IPCRunCgi.a(paramString1.aDS(), new IPCRunCgi.a()
     {
       public final void a(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, b paramAnonymousb)
       {
         AppMethodBeat.i(46299);
-        if ((paramAnonymousInt1 == 0) && (paramAnonymousInt2 == 0) && (paramAnonymousb != null) && (paramAnonymousb.hNL.hNQ != null) && ((paramAnonymousb.hNL.hNQ instanceof bte)))
+        if ((paramAnonymousInt1 == 0) && (paramAnonymousInt2 == 0) && (paramAnonymousb != null) && (paramAnonymousb.hQE.hQJ != null) && ((paramAnonymousb.hQE.hQJ instanceof bty)))
         {
-          paramAnonymousString = (bte)paramAnonymousb.hNL.hNQ;
-          ad.i("MicroMsg.OpenBusinessViewUtil", "transBusinessAppInfo, request success, appId:%s, path:%s", new Object[] { paramAnonymousString.duW, paramAnonymousString.GNy });
-          if (this.kMp != null) {
-            this.kMp.da(paramAnonymousString.duW, paramAnonymousString.GNy);
+          paramAnonymousString = (bty)paramAnonymousb.hQE.hQJ;
+          ae.i("MicroMsg.OpenBusinessViewUtil", "transBusinessAppInfo, request success, appId:%s, path:%s", new Object[] { paramAnonymousString.dwb, paramAnonymousString.HgY });
+          if (this.kPF != null) {
+            this.kPF.dc(paramAnonymousString.dwb, paramAnonymousString.HgY);
           }
           AppMethodBeat.o(46299);
           return;
         }
-        ad.e("MicroMsg.OpenBusinessViewUtil", "transBusinessAppInfo, request fail");
-        if (this.kMp != null) {
-          this.kMp.ah(paramAnonymousInt2, paramAnonymousString);
+        ae.e("MicroMsg.OpenBusinessViewUtil", "transBusinessAppInfo, request fail");
+        if (this.kPF != null) {
+          this.kPF.ah(paramAnonymousInt2, paramAnonymousString);
         }
         AppMethodBeat.o(46299);
       }
@@ -99,63 +99,63 @@ public final class OpenBusinessViewUtil
     AppMethodBeat.o(46305);
   }
   
-  public static void q(String paramString1, int paramInt, String paramString2)
+  public static void s(String paramString1, int paramInt, String paramString2)
   {
     AppMethodBeat.i(46309);
-    ad.i("MicroMsg.OpenBusinessViewUtil", "navigateBackMiniProgram, businessType:%s, errCode:%d", new Object[] { paramString1, Integer.valueOf(paramInt) });
-    r(paramString1, paramInt, paramString2);
+    ae.i("MicroMsg.OpenBusinessViewUtil", "navigateBackMiniProgram, businessType:%s, errCode:%d", new Object[] { paramString1, Integer.valueOf(paramInt) });
+    t(paramString1, paramInt, paramString2);
     AppMethodBeat.o(46309);
   }
   
-  private static void r(String paramString1, int paramInt, String paramString2)
+  private static void t(String paramString1, int paramInt, String paramString2)
   {
     AppMethodBeat.i(46310);
-    mi localmi = new mi();
-    localmi.dzQ.errCode = paramInt;
-    localmi.dzQ.businessType = paramString1;
-    localmi.dzQ.dzP = paramString2;
-    a.IbL.l(localmi);
+    mj localmj = new mj();
+    localmj.dAV.errCode = paramInt;
+    localmj.dAV.businessType = paramString1;
+    localmj.dAV.dAU = paramString2;
+    a.IvT.l(localmj);
     AppMethodBeat.o(46310);
   }
   
-  public static void u(o paramo)
+  public static void v(p paramp)
   {
     AppMethodBeat.i(174786);
-    AppBrandLaunchReferrer localAppBrandLaunchReferrer = paramo.aXc().cmv;
-    if ((localAppBrandLaunchReferrer != null) && (!bt.isNullOrNil(localAppBrandLaunchReferrer.businessType)))
+    AppBrandLaunchReferrer localAppBrandLaunchReferrer = paramp.aXx().cmx;
+    if ((localAppBrandLaunchReferrer != null) && (!bu.isNullOrNil(localAppBrandLaunchReferrer.businessType)))
     {
-      paramo = paramo.mAppId;
-      n.KF(paramo).jzd = localAppBrandLaunchReferrer.jXR;
-      n.KF(paramo).jzc = localAppBrandLaunchReferrer.businessType;
-      n.KF(paramo).jze = false;
-      n.KF(paramo).jzg = false;
-      n.KF(paramo).jzf = false;
-      ad.i("MicroMsg.OpenBusinessViewUtil", "recordOpenBusinessViewInfo, app:%s, businessType:%s, launchScene:%s", new Object[] { paramo, localAppBrandLaunchReferrer.businessType, Integer.valueOf(localAppBrandLaunchReferrer.jXR) });
+      paramp = paramp.mAppId;
+      o.Le(paramp).jCd = localAppBrandLaunchReferrer.kbg;
+      o.Le(paramp).jCc = localAppBrandLaunchReferrer.businessType;
+      o.Le(paramp).jCe = false;
+      o.Le(paramp).jCg = false;
+      o.Le(paramp).jCf = false;
+      ae.i("MicroMsg.OpenBusinessViewUtil", "recordOpenBusinessViewInfo, app:%s, businessType:%s, launchScene:%s", new Object[] { paramp, localAppBrandLaunchReferrer.businessType, Integer.valueOf(localAppBrandLaunchReferrer.kbg) });
       AppMethodBeat.o(174786);
       return;
     }
-    ad.i("MicroMsg.OpenBusinessViewUtil", "recordOpenBusinessViewInfo, referrer businessType is null");
+    ae.i("MicroMsg.OpenBusinessViewUtil", "recordOpenBusinessViewInfo, referrer businessType is null");
     AppMethodBeat.o(174786);
   }
   
-  public static void v(o paramo)
+  public static void w(p paramp)
   {
     AppMethodBeat.i(174787);
-    if (paramo == null)
+    if (paramp == null)
     {
       AppMethodBeat.o(174787);
       return;
     }
-    int i = n.KE(paramo.mAppId).jzd;
-    String str = n.KE(paramo.mAppId).jzc;
-    ad.i("MicroMsg.OpenBusinessViewUtil", "navigateBackCancelResultIfNeed, appId:%s, businessType:%s, launchScene:%s", new Object[] { paramo.mAppId, str, Integer.valueOf(i) });
-    if (!bt.isNullOrNil(str))
+    int i = o.Ld(paramp.mAppId).jCd;
+    String str = o.Ld(paramp.mAppId).jCc;
+    ae.i("MicroMsg.OpenBusinessViewUtil", "navigateBackCancelResultIfNeed, appId:%s, businessType:%s, launchScene:%s", new Object[] { paramp.mAppId, str, Integer.valueOf(i) });
+    if (!bu.isNullOrNil(str))
     {
       if (i == 2)
       {
-        if (!n.KE(paramo.mAppId).jze)
+        if (!o.Ld(paramp.mAppId).jCe)
         {
-          ad.i("MicroMsg.OpenBusinessViewUtil", "navigateBackCancelResultIfNeed, return cancel to H5, businessType:%s", new Object[] { str });
+          ae.i("MicroMsg.OpenBusinessViewUtil", "navigateBackCancelResultIfNeed, return cancel to H5, businessType:%s", new Object[] { str });
           B(str, null, -3);
         }
         AppMethodBeat.o(174787);
@@ -163,20 +163,20 @@ public final class OpenBusinessViewUtil
       }
       if (i == 4)
       {
-        if (!n.KE(paramo.mAppId).jzg)
+        if (!o.Ld(paramp.mAppId).jCg)
         {
-          ad.i("MicroMsg.OpenBusinessViewUtil", "navigateBackCancelResultIfNeed, return cancel to Application, businessType:%s", new Object[] { str });
-          if ((paramo.aXc().cmv != null) && (!bt.isNullOrNil(paramo.aXc().cmv.appId))) {
-            A(paramo.aXc().cmv.appId, str, -2);
+          ae.i("MicroMsg.OpenBusinessViewUtil", "navigateBackCancelResultIfNeed, return cancel to Application, businessType:%s", new Object[] { str });
+          if ((paramp.aXx().cmx != null) && (!bu.isNullOrNil(paramp.aXx().cmx.appId))) {
+            A(paramp.aXx().cmx.appId, str, -2);
           }
         }
         AppMethodBeat.o(174787);
         return;
       }
-      if ((i == 1) && (!n.KE(paramo.mAppId).jzf))
+      if ((i == 1) && (!o.Ld(paramp.mAppId).jCf))
       {
-        ad.i("MicroMsg.OpenBusinessViewUtil", "navigateBackCancelResultIfNeed, return cancel to MiniProgram, businessType:%s", new Object[] { str });
-        q(str, g.kMl.errCode, null);
+        ae.i("MicroMsg.OpenBusinessViewUtil", "navigateBackCancelResultIfNeed, return cancel to MiniProgram, businessType:%s", new Object[] { str });
+        s(str, f.kPB.errCode, null);
       }
     }
     AppMethodBeat.o(174787);
@@ -206,7 +206,7 @@ public final class OpenBusinessViewUtil
       this.errCode = paramInt;
     }
     
-    public final void aOA()
+    public final void aOX()
     {
       AppMethodBeat.i(46301);
       OpenBusinessViewUtil.C(this.businessType, this.extra, this.errCode);
@@ -236,7 +236,7 @@ public final class OpenBusinessViewUtil
   {
     public abstract void ah(int paramInt, String paramString);
     
-    public abstract void da(String paramString1, String paramString2);
+    public abstract void dc(String paramString1, String paramString2);
   }
 }
 

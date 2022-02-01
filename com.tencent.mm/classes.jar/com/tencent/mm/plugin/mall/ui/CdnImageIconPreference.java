@@ -6,7 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.ui.applet.CdnImageView;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.base.preference.IconPreference;
 import com.tencent.mm.ui.base.preference.Preference;
 
@@ -14,7 +14,7 @@ public class CdnImageIconPreference
   extends IconPreference
 {
   String iconUrl;
-  private CdnImageView vDG;
+  private CdnImageView vPK;
   
   public CdnImageIconPreference(Context paramContext)
   {
@@ -35,12 +35,12 @@ public class CdnImageIconPreference
   {
     AppMethodBeat.i(66029);
     super.onBindView(paramView);
-    this.vDG = ((CdnImageView)paramView.findViewById(2131300943));
-    if (!bt.isNullOrNil(this.iconUrl))
+    this.vPK = ((CdnImageView)paramView.findViewById(2131300943));
+    if (!bu.isNullOrNil(this.iconUrl))
     {
-      this.vDG.setUseSdcardCache(true);
-      this.vDG.setUrl(this.iconUrl);
-      this.vDG.setVisibility(0);
+      this.vPK.setUseSdcardCache(true);
+      this.vPK.setUrl(this.iconUrl);
+      this.vPK.setVisibility(0);
     }
     AppMethodBeat.o(66029);
   }
@@ -58,7 +58,7 @@ public class CdnImageIconPreference
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.mall.ui.CdnImageIconPreference
  * JD-Core Version:    0.7.0.1
  */

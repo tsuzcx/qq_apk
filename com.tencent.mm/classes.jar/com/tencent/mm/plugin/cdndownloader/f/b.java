@@ -2,34 +2,34 @@ package com.tencent.mm.plugin.cdndownloader.f;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class b
 {
-  public static void Zy(String paramString)
-  {
-    AppMethodBeat.i(120812);
-    c localc = bYP();
-    if (localc != null) {
-      ad.i("MicroMsg.CdnDownloadInfoDBHelp", "removeDownloadInfoByDownloadUrl: ".concat(String.valueOf(localc.Zz(paramString))));
-    }
-    AppMethodBeat.o(120812);
-  }
-  
   public static void a(a parama)
   {
     AppMethodBeat.i(120811);
-    c localc = bYP();
+    c localc = cae();
     if (localc != null) {
-      ad.i("MicroMsg.CdnDownloadInfoDBHelp", "insert: ".concat(String.valueOf(localc.insert(parama))));
+      ae.i("MicroMsg.CdnDownloadInfoDBHelp", "insert: ".concat(String.valueOf(localc.insert(parama))));
     }
     AppMethodBeat.o(120811);
   }
   
-  public static c bYP()
+  public static void aap(String paramString)
+  {
+    AppMethodBeat.i(120812);
+    c localc = cae();
+    if (localc != null) {
+      ae.i("MicroMsg.CdnDownloadInfoDBHelp", "removeDownloadInfoByDownloadUrl: ".concat(String.valueOf(localc.aaq(paramString))));
+    }
+    AppMethodBeat.o(120812);
+  }
+  
+  public static c cae()
   {
     AppMethodBeat.i(120813);
-    c localc = ((com.tencent.mm.plugin.cdndownloader.b.a)g.ab(com.tencent.mm.plugin.cdndownloader.b.a.class)).bYP();
+    c localc = ((com.tencent.mm.plugin.cdndownloader.b.a)g.ab(com.tencent.mm.plugin.cdndownloader.b.a.class)).cae();
     AppMethodBeat.o(120813);
     return localc;
   }

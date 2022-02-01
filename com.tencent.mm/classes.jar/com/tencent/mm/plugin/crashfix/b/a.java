@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.crashfix.b;
 import android.app.Dialog;
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class a
   extends Dialog
@@ -22,14 +22,14 @@ public final class a
         AppMethodBeat.i(145617);
         try
         {
-          ad.i("MicroMsg.SafeDismissDialog", "run on hijack runnable");
+          ae.i("MicroMsg.SafeDismissDialog", "run on hijack runnable");
           a.a(a.this).run();
           AppMethodBeat.o(145617);
           return;
         }
         catch (Exception localException)
         {
-          ad.e("MicroMsg.SafeDismissDialog", "protect : " + localException.getMessage());
+          ae.e("MicroMsg.SafeDismissDialog", "protect : " + localException.getMessage());
           AppMethodBeat.o(145617);
         }
       }
@@ -49,14 +49,14 @@ public final class a
         AppMethodBeat.i(145617);
         try
         {
-          ad.i("MicroMsg.SafeDismissDialog", "run on hijack runnable");
+          ae.i("MicroMsg.SafeDismissDialog", "run on hijack runnable");
           a.a(a.this).run();
           AppMethodBeat.o(145617);
           return;
         }
         catch (Exception localException)
         {
-          ad.e("MicroMsg.SafeDismissDialog", "protect : " + localException.getMessage());
+          ae.e("MicroMsg.SafeDismissDialog", "protect : " + localException.getMessage());
           AppMethodBeat.o(145617);
         }
       }
@@ -115,14 +115,14 @@ public final class a
     //   84: astore_1
     //   85: ldc 90
     //   87: ldc 92
-    //   89: invokestatic 98	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   89: invokestatic 98	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   92: ldc 48
     //   94: invokestatic 32	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   97: return
     //   98: astore_1
     //   99: ldc 90
     //   101: ldc 100
-    //   103: invokestatic 98	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   103: invokestatic 98	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   106: ldc 48
     //   108: invokestatic 32	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   111: return
@@ -158,7 +158,7 @@ public final class a
     }
     catch (Exception localException)
     {
-      ad.printErrStackTrace("MicroMsg.SafeDismissDialog", localException, "", new Object[0]);
+      ae.printErrStackTrace("MicroMsg.SafeDismissDialog", localException, "", new Object[0]);
       AppMethodBeat.o(145620);
     }
   }

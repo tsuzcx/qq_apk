@@ -7,33 +7,33 @@ import java.util.LinkedList;
 
 public final class e
 {
-  public final ViewGroup gqv;
-  public final LinkedList<View> mUp;
-  public a mUq;
+  public final ViewGroup gsV;
+  public final LinkedList<View> mZw;
+  public a mZx;
   
   public e(ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(131473);
-    this.mUp = new LinkedList();
-    this.gqv = paramViewGroup;
+    this.mZw = new LinkedList();
+    this.gsV = paramViewGroup;
     AppMethodBeat.o(131473);
   }
   
   public static final class a
   {
-    public final long gLY;
-    public final long kLa;
+    public final long gOH;
+    public final long kOp;
     
     private a(long paramLong1, long paramLong2)
     {
-      this.gLY = paramLong1;
-      this.kLa = paramLong2;
+      this.gOH = paramLong1;
+      this.kOp = paramLong2;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.base.e
  * JD-Core Version:    0.7.0.1
  */

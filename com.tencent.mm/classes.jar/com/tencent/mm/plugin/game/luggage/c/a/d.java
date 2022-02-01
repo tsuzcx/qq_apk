@@ -6,7 +6,7 @@ import com.tencent.mm.plugin.downloader_app.api.DownloadWidgetTaskInfo;
 import com.tencent.mm.plugin.downloader_app.api.c;
 import com.tencent.mm.plugin.lite.jsapi.a;
 import com.tencent.mm.plugin.lite.jsapi.a.a;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -17,19 +17,19 @@ import org.json.JSONObject;
 public class d
   extends a
 {
-  public final int cXg()
+  public final int cZP()
   {
     return 1;
   }
   
   public final void j(String paramString, JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(211635);
-    Object localObject = ((c)g.ab(c.class)).ccG();
-    if (bt.hj((List)localObject))
+    AppMethodBeat.i(193024);
+    Object localObject = ((c)g.ab(c.class)).cdV();
+    if (bu.ht((List)localObject))
     {
-      this.uYz.cXe();
-      AppMethodBeat.o(211635);
+      this.vko.cZN();
+      AppMethodBeat.o(193024);
       return;
     }
     paramString = new JSONObject();
@@ -47,11 +47,11 @@ public class d
       try
       {
         localJSONObject.put("appid", localDownloadWidgetTaskInfo.appId);
-        localJSONObject.put("status", localDownloadWidgetTaskInfo.poa);
-        localJSONObject.put("download_id", localDownloadWidgetTaskInfo.djM);
+        localJSONObject.put("status", localDownloadWidgetTaskInfo.puH);
+        localJSONObject.put("download_id", localDownloadWidgetTaskInfo.dkO);
         localJSONObject.put("progress", localDownloadWidgetTaskInfo.progress);
-        localJSONObject.put("progress_float", localDownloadWidgetTaskInfo.kvl);
-        if (localDownloadWidgetTaskInfo.pmW) {
+        localJSONObject.put("progress_float", localDownloadWidgetTaskInfo.kyA);
+        if (localDownloadWidgetTaskInfo.ptD) {
           localJSONObject.put("reserve_for_wifi", 1);
         }
         label172:
@@ -61,8 +61,8 @@ public class d
         {
           paramString.put("result", paramJSONObject.toString());
           label193:
-          this.uYz.aA(paramString);
-          AppMethodBeat.o(211635);
+          this.vko.aA(paramString);
+          AppMethodBeat.o(193024);
           return;
         }
         catch (JSONException paramJSONObject)

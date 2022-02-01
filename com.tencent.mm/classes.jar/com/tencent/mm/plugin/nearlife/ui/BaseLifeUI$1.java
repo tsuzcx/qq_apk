@@ -16,8 +16,8 @@ final class BaseLifeUI$1
     AppMethodBeat.i(26560);
     b localb = new b();
     localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/nearlife/ui/BaseLifeUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-    BaseLifeUI.a(this.wqQ);
+    a.b("com/tencent/mm/plugin/nearlife/ui/BaseLifeUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+    BaseLifeUI.a(this.wGz);
     a.a(this, "com/tencent/mm/plugin/nearlife/ui/BaseLifeUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(26560);
   }

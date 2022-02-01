@@ -4,7 +4,7 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 final class SnsCommentDetailUI$38
   implements Animation.AnimationListener
@@ -13,14 +13,14 @@ final class SnsCommentDetailUI$38
   
   public final void onAnimationEnd(Animation paramAnimation)
   {
-    AppMethodBeat.i(198335);
-    ad.d("MicroMsg.SnsCommentDetailUI", "onAnimationEnd");
-    if (SnsCommentDetailUI.H(this.AbL) != null)
+    AppMethodBeat.i(219870);
+    ae.d("MicroMsg.SnsCommentDetailUI", "onAnimationEnd");
+    if (SnsCommentDetailUI.H(this.AsY) != null)
     {
-      SnsCommentDetailUI.H(this.AbL).clearAnimation();
-      SnsCommentDetailUI.H(this.AbL).setVisibility(8);
+      SnsCommentDetailUI.H(this.AsY).clearAnimation();
+      SnsCommentDetailUI.H(this.AsY).setVisibility(8);
     }
-    AppMethodBeat.o(198335);
+    AppMethodBeat.o(219870);
   }
   
   public final void onAnimationRepeat(Animation paramAnimation) {}

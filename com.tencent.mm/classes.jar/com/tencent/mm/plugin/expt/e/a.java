@@ -7,139 +7,139 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.g.a.ai;
-import com.tencent.mm.g.a.kw;
-import com.tencent.mm.g.a.vp;
+import com.tencent.mm.g.a.kx;
+import com.tencent.mm.g.a.vt;
 import com.tencent.mm.kernel.e.c;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.expt.ui.KvInfoUI;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
 import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.sdk.platformtools.i;
+import com.tencent.mm.sdk.platformtools.bv;
+import com.tencent.mm.sdk.platformtools.j;
 import java.util.HashMap;
 import java.util.List;
 
 public final class a
   implements Application.ActivityLifecycleCallbacks, com.tencent.mm.kernel.api.c, com.tencent.mm.plugin.expt.b.a
 {
-  private static a rad;
-  private com.tencent.mm.sdk.b.c nEU;
-  public String rae;
-  private com.tencent.mm.sdk.b.c<kw> raf;
-  public boolean rag;
-  public HashMap<String, List<b>> rah;
+  private static a rij;
+  private com.tencent.mm.sdk.b.c nKp;
+  public String rik;
+  private com.tencent.mm.sdk.b.c<kx> ril;
+  public boolean rim;
+  public HashMap<String, List<b>> rin;
   
   public a()
   {
-    AppMethodBeat.i(210505);
-    this.nEU = new com.tencent.mm.sdk.b.c() {};
-    this.raf = new a.2(this);
-    this.rag = false;
-    this.rah = new HashMap();
-    AppMethodBeat.o(210505);
+    AppMethodBeat.i(196172);
+    this.nKp = new com.tencent.mm.sdk.b.c() {};
+    this.ril = new a.2(this);
+    this.rim = false;
+    this.rin = new HashMap();
+    AppMethodBeat.o(196172);
   }
   
-  public static a cqU()
+  public static a csw()
   {
-    AppMethodBeat.i(210506);
-    if (rad == null) {
-      rad = new a();
+    AppMethodBeat.i(196173);
+    if (rij == null) {
+      rij = new a();
     }
-    a locala = rad;
-    AppMethodBeat.o(210506);
+    a locala = rij;
+    AppMethodBeat.o(196173);
     return locala;
   }
   
-  private void cqW()
+  private void csy()
   {
-    AppMethodBeat.i(210512);
-    ad.i("MicroMsg.ExptReportService", "%d sendStopMonitor [%s]", new Object[] { Integer.valueOf(hashCode()), this.rae });
-    if ((aj.cnC()) && (!bt.isNullOrNil(this.rae)))
+    AppMethodBeat.i(196179);
+    ae.i("MicroMsg.ExptReportService", "%d sendStopMonitor [%s]", new Object[] { Integer.valueOf(hashCode()), this.rik });
+    if ((ak.cpe()) && (!bu.isNullOrNil(this.rik)))
     {
       c localc = new c();
-      localc.content = this.rae;
+      localc.content = this.rik;
       localc.type = 10000;
       localc.key = 2;
-      g.aiU().a(localc, 0);
+      g.ajj().a(localc, 0);
     }
-    this.rae = null;
-    AppMethodBeat.o(210512);
+    this.rik = null;
+    AppMethodBeat.o(196179);
   }
   
-  public final void add(String paramString)
+  public final void adU(String paramString)
   {
-    AppMethodBeat.i(210513);
-    long l = bt.HI();
-    if (((i.DEBUG) || (i.IS_FLAVOR_RED) || (i.IS_FLAVOR_PURPLE) || (bu.flY())) && (!bt.isNullOrNil(paramString)) && (paramString.startsWith(":exptdebug/")))
+    AppMethodBeat.i(196180);
+    long l = bu.HQ();
+    if (((j.DEBUG) || (j.IS_FLAVOR_RED) || (j.IS_FLAVOR_PURPLE) || (bv.fpT())) && (!bu.isNullOrNil(paramString)) && (paramString.startsWith(":exptdebug/")))
     {
       paramString = paramString.substring(11);
-      ad.i("MicroMsg.ExptReportService", "%d sendStartMonitor [%s]", new Object[] { Integer.valueOf(hashCode()), paramString });
-      this.rae = paramString;
-      if (aj.cnC())
+      ae.i("MicroMsg.ExptReportService", "%d sendStartMonitor [%s]", new Object[] { Integer.valueOf(hashCode()), paramString });
+      this.rik = paramString;
+      if (ak.cpe())
       {
         localObject = new c();
         ((c)localObject).content = paramString;
         ((c)localObject).type = 10000;
         ((c)localObject).key = 1;
-        g.aiU().a((n)localObject, 0);
+        g.ajj().a((n)localObject, 0);
       }
-      Object localObject = new vp();
-      ((vp)localObject).dKd.dKe = paramString;
-      com.tencent.mm.sdk.b.a.IbL.l((com.tencent.mm.sdk.b.b)localObject);
-      this.rag = true;
+      Object localObject = new vt();
+      ((vt)localObject).dLs.dLt = paramString;
+      com.tencent.mm.sdk.b.a.IvT.l((com.tencent.mm.sdk.b.b)localObject);
+      this.rim = true;
     }
-    ad.i("MicroMsg.ExptReportService", "start expt Debug tools cost time [%d]", new Object[] { Long.valueOf(bt.aO(l)) });
-    AppMethodBeat.o(210513);
+    ae.i("MicroMsg.ExptReportService", "start expt Debug tools cost time [%d]", new Object[] { Long.valueOf(bu.aO(l)) });
+    AppMethodBeat.o(196180);
   }
   
-  public final void cnb()
+  public final void cor()
   {
-    AppMethodBeat.i(210514);
-    cqW();
-    vp localvp = new vp();
-    localvp.dKd.dKe = "";
-    com.tencent.mm.sdk.b.a.IbL.l(localvp);
-    AppMethodBeat.o(210514);
+    AppMethodBeat.i(196181);
+    csy();
+    vt localvt = new vt();
+    localvt.dLs.dLt = "";
+    com.tencent.mm.sdk.b.a.IvT.l(localvt);
+    AppMethodBeat.o(196181);
   }
   
-  public final boolean cqV()
+  public final boolean csx()
   {
-    AppMethodBeat.i(210507);
-    if (!bt.isNullOrNil(this.rae))
+    AppMethodBeat.i(196174);
+    if (!bu.isNullOrNil(this.rik))
     {
-      AppMethodBeat.o(210507);
+      AppMethodBeat.o(196174);
       return true;
     }
-    AppMethodBeat.o(210507);
+    AppMethodBeat.o(196174);
     return false;
   }
   
   public final void onAccountInitialized(e.c paramc)
   {
-    AppMethodBeat.i(210508);
-    if (aj.cmR())
+    AppMethodBeat.i(196175);
+    if (ak.coh())
     {
-      com.tencent.mm.sdk.b.a.IbL.b(this.raf);
-      com.tencent.mm.sdk.b.a.IbL.b(this.nEU);
+      com.tencent.mm.sdk.b.a.IvT.b(this.ril);
+      com.tencent.mm.sdk.b.a.IvT.b(this.nKp);
     }
-    AppMethodBeat.o(210508);
+    AppMethodBeat.o(196175);
   }
   
   public final void onAccountRelease()
   {
-    AppMethodBeat.i(210509);
-    cnb();
-    com.tencent.mm.sdk.b.a.IbL.d(this.raf);
-    com.tencent.mm.sdk.b.a.IbL.d(this.nEU);
-    if (this.rah != null) {
-      this.rah.clear();
+    AppMethodBeat.i(196176);
+    cor();
+    com.tencent.mm.sdk.b.a.IvT.d(this.ril);
+    com.tencent.mm.sdk.b.a.IvT.d(this.nKp);
+    if (this.rin != null) {
+      this.rin.clear();
     }
-    this.rag = false;
-    AppMethodBeat.o(210509);
+    this.rim = false;
+    AppMethodBeat.o(196176);
   }
   
   public final void onActivityCreated(Activity paramActivity, Bundle paramBundle) {}
@@ -148,32 +148,32 @@ public final class a
   
   public final void onActivityPaused(Activity paramActivity)
   {
-    AppMethodBeat.i(210511);
+    AppMethodBeat.i(196178);
     paramActivity = paramActivity.getComponentName().getClassName();
-    if ((aj.cnC()) && (cqV()))
+    if ((ak.cpe()) && (csx()))
     {
       c localc = new c();
       localc.content = paramActivity;
       localc.type = 10002;
       localc.key = 2;
-      g.aiU().a(localc, 0);
+      g.ajj().a(localc, 0);
     }
-    AppMethodBeat.o(210511);
+    AppMethodBeat.o(196178);
   }
   
   public final void onActivityResumed(Activity paramActivity)
   {
-    AppMethodBeat.i(210510);
+    AppMethodBeat.i(196177);
     paramActivity = paramActivity.getComponentName().getClassName();
-    if ((aj.cnC()) && (cqV()))
+    if ((ak.cpe()) && (csx()))
     {
       c localc = new c();
       localc.content = paramActivity;
       localc.type = 10002;
       localc.key = 1;
-      g.aiU().a(localc, 0);
+      g.ajj().a(localc, 0);
     }
-    AppMethodBeat.o(210510);
+    AppMethodBeat.o(196177);
   }
   
   public final void onActivitySaveInstanceState(Activity paramActivity, Bundle paramBundle) {}
@@ -184,13 +184,13 @@ public final class a
   
   public final void r(Context paramContext, Intent paramIntent)
   {
-    AppMethodBeat.i(210515);
+    AppMethodBeat.i(196182);
     paramIntent.setClass(paramContext, KvInfoUI.class);
     paramIntent = new com.tencent.mm.hellhoundlib.b.a().bc(paramIntent);
-    com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramIntent.ahp(), "com/tencent/mm/plugin/expt/kvdebug/ExptReportService", "showKvDebugUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    paramContext.startActivity((Intent)paramIntent.mq(0));
+    com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramIntent.ahE(), "com/tencent/mm/plugin/expt/kvdebug/ExptReportService", "showKvDebugUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramContext.startActivity((Intent)paramIntent.mt(0));
     com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/plugin/expt/kvdebug/ExptReportService", "showKvDebugUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    AppMethodBeat.o(210515);
+    AppMethodBeat.o(196182);
   }
 }
 

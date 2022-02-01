@@ -1,14 +1,14 @@
 package com.tencent.mm.plugin.music.f.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class e
 {
-  public static int LA(int paramInt)
+  public static int Mf(int paramInt)
   {
     AppMethodBeat.i(137405);
-    ad.i("MicroMsg.PlayerErrorHandler", "getErrCodeType, errorCode: %d", new Object[] { Integer.valueOf(paramInt) });
+    ae.i("MicroMsg.PlayerErrorHandler", "getErrCodeType, errorCode: %d", new Object[] { Integer.valueOf(paramInt) });
     switch (paramInt)
     {
     default: 
@@ -48,7 +48,7 @@ public final class e
     return 10001;
   }
   
-  public static String uz(int paramInt)
+  public static String uF(int paramInt)
   {
     AppMethodBeat.i(137406);
     Object localObject = new StringBuilder();

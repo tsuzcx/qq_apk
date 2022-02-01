@@ -9,7 +9,7 @@ import java.io.OutputStream;
 public final class d
   extends c
 {
-  private com.tencent.mm.audio.mix.a.d dcN;
+  private com.tencent.mm.audio.mix.a.d ddP;
   private InputStream inputStream;
   private OutputStream outputStream;
   
@@ -45,14 +45,14 @@ public final class d
     //   40: invokestatic 38	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   43: aastore
     //   44: invokestatic 43	com/tencent/mm/audio/mix/h/b:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   47: invokestatic 48	com/tencent/mm/audio/mix/c/b:Oy	()V
+    //   47: invokestatic 48	com/tencent/mm/audio/mix/c/b:Ow	()V
     //   50: aload_0
     //   51: aload_1
-    //   52: putfield 50	com/tencent/mm/audio/mix/c/d:dcN	Lcom/tencent/mm/audio/mix/a/d;
+    //   52: putfield 50	com/tencent/mm/audio/mix/c/d:ddP	Lcom/tencent/mm/audio/mix/a/d;
     //   55: aload_0
     //   56: aload 5
-    //   58: invokestatic 56	com/tencent/mm/audio/mix/h/a:gv	(Ljava/lang/String;)Ljava/lang/String;
-    //   61: putfield 60	com/tencent/mm/audio/mix/c/d:dcH	Ljava/lang/String;
+    //   58: invokestatic 56	com/tencent/mm/audio/mix/h/a:gB	(Ljava/lang/String;)Ljava/lang/String;
+    //   61: putfield 60	com/tencent/mm/audio/mix/c/d:ddJ	Ljava/lang/String;
     //   64: ldc 28
     //   66: ldc 62
     //   68: iconst_1
@@ -60,37 +60,37 @@ public final class d
     //   72: dup
     //   73: iconst_0
     //   74: aload_0
-    //   75: getfield 60	com/tencent/mm/audio/mix/c/d:dcH	Ljava/lang/String;
+    //   75: getfield 60	com/tencent/mm/audio/mix/c/d:ddJ	Ljava/lang/String;
     //   78: aastore
     //   79: invokestatic 43	com/tencent/mm/audio/mix/h/b:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   82: aload_0
-    //   83: getfield 60	com/tencent/mm/audio/mix/c/d:dcH	Ljava/lang/String;
-    //   86: invokestatic 68	com/tencent/mm/vfs/i:deleteFile	(Ljava/lang/String;)Z
+    //   83: getfield 60	com/tencent/mm/audio/mix/c/d:ddJ	Ljava/lang/String;
+    //   86: invokestatic 68	com/tencent/mm/vfs/o:deleteFile	(Ljava/lang/String;)Z
     //   89: pop
     //   90: aload_0
     //   91: aload_0
-    //   92: getfield 60	com/tencent/mm/audio/mix/c/d:dcH	Ljava/lang/String;
-    //   95: invokestatic 72	com/tencent/mm/audio/mix/h/a:gw	(Ljava/lang/String;)Lcom/tencent/mm/vfs/e;
-    //   98: invokestatic 76	com/tencent/mm/vfs/i:aj	(Lcom/tencent/mm/vfs/e;)Ljava/io/OutputStream;
+    //   92: getfield 60	com/tencent/mm/audio/mix/c/d:ddJ	Ljava/lang/String;
+    //   95: invokestatic 72	com/tencent/mm/audio/mix/h/a:gC	(Ljava/lang/String;)Lcom/tencent/mm/vfs/k;
+    //   98: invokestatic 76	com/tencent/mm/vfs/o:aj	(Lcom/tencent/mm/vfs/k;)Ljava/io/OutputStream;
     //   101: putfield 78	com/tencent/mm/audio/mix/c/d:outputStream	Ljava/io/OutputStream;
     //   104: aload_0
     //   105: aload_0
-    //   106: getfield 60	com/tencent/mm/audio/mix/c/d:dcH	Ljava/lang/String;
-    //   109: invokestatic 72	com/tencent/mm/audio/mix/h/a:gw	(Ljava/lang/String;)Lcom/tencent/mm/vfs/e;
-    //   112: invokestatic 82	com/tencent/mm/vfs/i:ai	(Lcom/tencent/mm/vfs/e;)Ljava/io/InputStream;
+    //   106: getfield 60	com/tencent/mm/audio/mix/c/d:ddJ	Ljava/lang/String;
+    //   109: invokestatic 72	com/tencent/mm/audio/mix/h/a:gC	(Ljava/lang/String;)Lcom/tencent/mm/vfs/k;
+    //   112: invokestatic 82	com/tencent/mm/vfs/o:ai	(Lcom/tencent/mm/vfs/k;)Ljava/io/InputStream;
     //   115: putfield 84	com/tencent/mm/audio/mix/c/d:inputStream	Ljava/io/InputStream;
     //   118: aload_0
     //   119: aload 5
-    //   121: putfield 87	com/tencent/mm/audio/mix/c/d:dcG	Ljava/lang/String;
+    //   121: putfield 87	com/tencent/mm/audio/mix/c/d:ddI	Ljava/lang/String;
     //   124: aload_0
     //   125: ldc 88
-    //   127: putfield 92	com/tencent/mm/audio/mix/c/d:dcA	I
+    //   127: putfield 92	com/tencent/mm/audio/mix/c/d:ddC	I
     //   130: aload_0
     //   131: iconst_2
-    //   132: putfield 95	com/tencent/mm/audio/mix/c/d:dcB	I
+    //   132: putfield 95	com/tencent/mm/audio/mix/c/d:ddD	I
     //   135: aload_0
     //   136: iconst_2
-    //   137: putfield 98	com/tencent/mm/audio/mix/c/d:dcC	I
+    //   137: putfield 98	com/tencent/mm/audio/mix/c/d:ddE	I
     //   140: aload_0
     //   141: iload_2
     //   142: iload_3
@@ -181,7 +181,15 @@ public final class d
     return null;
   }
   
-  public final void OA()
+  public final h Ox()
+  {
+    AppMethodBeat.i(136773);
+    i locali = new i();
+    AppMethodBeat.o(136773);
+    return locali;
+  }
+  
+  public final void Oy()
   {
     AppMethodBeat.i(136769);
     b.i("MicroMsg.Mix.AudioFixedConvertProcess", "finishProcess");
@@ -206,7 +214,7 @@ public final class d
     }
   }
   
-  public final e OB()
+  public final e Oz()
   {
     AppMethodBeat.i(136770);
     if (this.inputStream == null)
@@ -221,8 +229,8 @@ public final class d
       int i = this.inputStream.read(arrayOfByte, 0, 3536);
       if (i > 0)
       {
-        e locale = com.tencent.mm.audio.mix.b.d.Os().Or();
-        locale.dbX = arrayOfByte;
+        e locale = com.tencent.mm.audio.mix.b.d.Oq().Op();
+        locale.dcZ = arrayOfByte;
         AppMethodBeat.o(136770);
         return locale;
       }
@@ -238,14 +246,6 @@ public final class d
     return null;
   }
   
-  public final h Oz()
-  {
-    AppMethodBeat.i(136773);
-    i locali = new i();
-    AppMethodBeat.o(136773);
-    return locali;
-  }
-  
   public final void flushCache()
   {
     AppMethodBeat.i(136771);
@@ -256,7 +256,7 @@ public final class d
       AppMethodBeat.o(136771);
       return;
     }
-    if (this.dcN.aBS)
+    if (this.ddP.aBS)
     {
       b.e("MicroMsg.Mix.AudioFixedConvertProcess", "flushCache, cache is complete");
       AppMethodBeat.o(136771);
@@ -284,13 +284,13 @@ public final class d
       }
       if (i > 0)
       {
-        locale = com.tencent.mm.audio.mix.b.d.Os().Or();
-        locale.dbX = arrayOfByte;
-        this.dcN.a(locale);
+        locale = com.tencent.mm.audio.mix.b.d.Oq().Op();
+        locale.dcZ = arrayOfByte;
+        this.ddP.a(locale);
       }
     }
     label131:
-    this.dcN.complete();
+    this.ddP.complete();
     AppMethodBeat.o(136771);
   }
   
@@ -335,7 +335,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.audio.mix.c.d
  * JD-Core Version:    0.7.0.1
  */

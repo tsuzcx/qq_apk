@@ -10,28 +10,28 @@ public final class k
   extends d
   implements h
 {
-  private final Class<?> MZV;
+  private final Class<?> Nxb;
   
   public k(f paramf, Class<?> paramClass)
   {
     super(paramf);
     AppMethodBeat.i(57469);
-    this.MZV = paramClass;
+    this.Nxb = paramClass;
     AppMethodBeat.o(57469);
   }
   
-  public final v gkO()
+  public final v gpq()
   {
     AppMethodBeat.i(57468);
-    Object localObject = w.NaG;
-    localObject = (v)w.a.j((Type)this.MZV);
+    Object localObject = w.NxM;
+    localObject = (v)w.a.j((Type)this.Nxb);
     AppMethodBeat.o(57468);
     return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.b.d.b.k
  * JD-Core Version:    0.7.0.1
  */

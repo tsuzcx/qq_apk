@@ -11,8 +11,8 @@ import android.widget.ListView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.g.c.aw;
 import com.tencent.mm.plugin.label.a.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.chatting.ChattingUI;
 import com.tencent.mm.ui.s.b;
@@ -22,17 +22,17 @@ import java.util.HashSet;
 public class SelectLabelContactUI
   extends MMBaseSelectContactUI
 {
-  private HashSet<String> KoR;
-  private int KoT;
-  private HashSet<String> iVx;
+  private HashSet<String> KLl;
+  private int KLn;
+  private HashSet<String> iYq;
   private String label;
   
-  private void Zm()
+  private void Zv()
   {
     AppMethodBeat.i(38034);
-    if ((u.hasAttr(this.KoT, 64)) && (this.iVx.size() > 0))
+    if ((u.hasAttr(this.KLn, 64)) && (this.iYq.size() > 0))
     {
-      updateOptionMenuText(1, getString(2131755835) + "(" + this.iVx.size() + ")");
+      updateOptionMenuText(1, getString(2131755835) + "(" + this.iYq.size() + ")");
       enableOptionMenu(1, true);
       AppMethodBeat.o(38034);
       return;
@@ -42,10 +42,10 @@ public class SelectLabelContactUI
     AppMethodBeat.o(38034);
   }
   
-  private void aWY(String paramString)
+  private void aYz(String paramString)
   {
     AppMethodBeat.i(38035);
-    if (u.hasAttr(this.KoT, 16384))
+    if (u.hasAttr(this.KLn, 16384))
     {
       localIntent = new Intent();
       localIntent.putExtra("Select_Contact", paramString);
@@ -59,28 +59,28 @@ public class SelectLabelContactUI
     localIntent.putExtra("Chat_User", paramString);
     localIntent.putExtra("finish_direct", true);
     paramString = new com.tencent.mm.hellhoundlib.b.a().bc(localIntent);
-    com.tencent.mm.hellhoundlib.a.a.a(this, paramString.ahp(), "com/tencent/mm/ui/contact/SelectLabelContactUI", "handleSelect", "(Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    startActivity((Intent)paramString.mq(0));
+    com.tencent.mm.hellhoundlib.a.a.a(this, paramString.ahE(), "com/tencent/mm/ui/contact/SelectLabelContactUI", "handleSelect", "(Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    startActivity((Intent)paramString.mt(0));
     com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/contact/SelectLabelContactUI", "handleSelect", "(Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     finish();
     AppMethodBeat.o(38035);
   }
   
-  protected final void Zd()
+  protected final void Zm()
   {
     AppMethodBeat.i(38031);
-    super.Zd();
+    super.Zm();
     this.label = getIntent().getStringExtra("label");
-    this.KoT = getIntent().getIntExtra("list_attr", 0);
-    this.iVx = new HashSet();
-    this.KoR = new HashSet();
+    this.KLn = getIntent().getIntExtra("list_attr", 0);
+    this.iYq = new HashSet();
+    this.KLl = new HashSet();
     String str = getIntent().getStringExtra("always_select_contact");
-    if (!bt.isNullOrNil(str)) {
-      this.KoR.addAll(bt.U(str.split(",")));
+    if (!bu.isNullOrNil(str)) {
+      this.KLl.addAll(bu.U(str.split(",")));
     }
     str = getIntent().getStringExtra("already_select_contact");
-    if (!bt.isNullOrNil(str)) {
-      this.iVx.addAll(bt.U(str.split(",")));
+    if (!bu.isNullOrNil(str)) {
+      this.iYq.addAll(bu.U(str.split(",")));
     }
     AppMethodBeat.o(38031);
   }
@@ -88,9 +88,9 @@ public class SelectLabelContactUI
   public final boolean a(com.tencent.mm.ui.contact.a.a parama)
   {
     AppMethodBeat.i(38037);
-    if ((parama.KmP) && (parama.contact != null))
+    if ((parama.KJj) && (parama.contact != null))
     {
-      boolean bool = this.iVx.contains(parama.contact.field_username);
+      boolean bool = this.iYq.contains(parama.contact.field_username);
       AppMethodBeat.o(38037);
       return bool;
     }
@@ -98,31 +98,31 @@ public class SelectLabelContactUI
     return false;
   }
   
-  protected final boolean aRu()
+  protected final boolean aRT()
   {
     return false;
   }
   
-  protected final boolean aRv()
+  protected final boolean aRU()
   {
     return false;
   }
   
-  protected final String aRw()
+  protected final String aRV()
   {
     return this.label;
   }
   
-  protected final q aRx()
+  protected final q aRW()
   {
     AppMethodBeat.i(38036);
-    Object localObject = com.tencent.mm.plugin.label.a.a.dfo().aom(this.label);
-    localObject = new i(this, u.hasAttr(this.KoT, 64), com.tencent.mm.plugin.label.a.a.dfo().aop((String)localObject));
+    Object localObject = com.tencent.mm.plugin.label.a.a.dig().apo(this.label);
+    localObject = new i(this, u.hasAttr(this.KLn, 64), com.tencent.mm.plugin.label.a.a.dig().apr((String)localObject));
     AppMethodBeat.o(38036);
     return localObject;
   }
   
-  protected final o aRy()
+  protected final o aRX()
   {
     return null;
   }
@@ -130,9 +130,9 @@ public class SelectLabelContactUI
   public final boolean b(com.tencent.mm.ui.contact.a.a parama)
   {
     AppMethodBeat.i(38038);
-    if ((parama.KmP) && (parama.contact != null))
+    if ((parama.KJj) && (parama.contact != null))
     {
-      boolean bool = this.KoR.contains(parama.contact.field_username);
+      boolean bool = this.KLl.contains(parama.contact.field_username);
       AppMethodBeat.o(38038);
       return bool;
     }
@@ -144,21 +144,21 @@ public class SelectLabelContactUI
   {
     AppMethodBeat.i(38032);
     super.onCreate(paramBundle);
-    if (u.hasAttr(this.KoT, 64)) {
+    if (u.hasAttr(this.KLn, 64)) {
       addTextOptionMenu(1, getString(2131755835), new MenuItem.OnMenuItemClickListener()
       {
         public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
         {
           AppMethodBeat.i(38030);
           paramAnonymousMenuItem = new ArrayList(SelectLabelContactUI.a(SelectLabelContactUI.this));
-          ad.i("MicroMsg.SelectLabelContactUI", "SelectUser: %s", new Object[] { paramAnonymousMenuItem.toString() });
-          SelectLabelContactUI.a(SelectLabelContactUI.this, bt.m(paramAnonymousMenuItem, ","));
+          ae.i("MicroMsg.SelectLabelContactUI", "SelectUser: %s", new Object[] { paramAnonymousMenuItem.toString() });
+          SelectLabelContactUI.a(SelectLabelContactUI.this, bu.m(paramAnonymousMenuItem, ","));
           AppMethodBeat.o(38030);
           return true;
         }
-      }, null, s.b.JbS);
+      }, null, s.b.JwA);
     }
-    Zm();
+    Zv();
     AppMethodBeat.o(38032);
   }
   
@@ -168,12 +168,12 @@ public class SelectLabelContactUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  public final void rg(int paramInt)
+  public final void rj(int paramInt)
   {
     AppMethodBeat.i(38033);
     int i = getContentLV().getHeaderViewsCount();
-    p localp = fId();
-    Object localObject = localp.aen(paramInt - i);
+    p localp = fMv();
+    Object localObject = localp.aeW(paramInt - i);
     if (localObject == null)
     {
       AppMethodBeat.o(38033);
@@ -185,10 +185,10 @@ public class SelectLabelContactUI
       return;
     }
     localObject = ((com.tencent.mm.ui.contact.a.a)localObject).contact.field_username;
-    ad.i("MicroMsg.SelectLabelContactUI", "ClickUser=%s", new Object[] { localObject });
-    if (u.hasAttr(this.KoT, 64))
+    ae.i("MicroMsg.SelectLabelContactUI", "ClickUser=%s", new Object[] { localObject });
+    if (u.hasAttr(this.KLn, 64))
     {
-      if ((!this.KoR.contains(localObject)) && (!this.iVx.contains(localObject)) && (u.hasAttr(this.KoT, 131072)) && (this.KoR.size() + this.iVx.size() >= getIntent().getIntExtra("max_limit_num", 2147483647)))
+      if ((!this.KLl.contains(localObject)) && (!this.iYq.contains(localObject)) && (u.hasAttr(this.KLn, 131072)) && (this.KLl.size() + this.iYq.size() >= getIntent().getIntExtra("max_limit_num", 2147483647)))
       {
         h.d(getContext(), getString(2131762994, new Object[] { Integer.valueOf(getIntent().getIntExtra("max_limit_num", 2147483647)) }), "", new DialogInterface.OnClickListener()
         {
@@ -197,24 +197,24 @@ public class SelectLabelContactUI
         AppMethodBeat.o(38033);
         return;
       }
-      if (!this.KoR.contains(localObject))
+      if (!this.KLl.contains(localObject))
       {
-        if (!this.iVx.contains(localObject)) {
+        if (!this.iYq.contains(localObject)) {
           break label268;
         }
-        this.iVx.remove(localObject);
+        this.iYq.remove(localObject);
       }
       for (;;)
       {
-        Zm();
+        Zv();
         localp.notifyDataSetChanged();
         AppMethodBeat.o(38033);
         return;
         label268:
-        this.iVx.add(localObject);
+        this.iYq.add(localObject);
       }
     }
-    aWY((String)localObject);
+    aYz((String)localObject);
     AppMethodBeat.o(38033);
   }
 }

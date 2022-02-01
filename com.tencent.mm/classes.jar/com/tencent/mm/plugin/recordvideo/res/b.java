@@ -2,28 +2,28 @@ package com.tencent.mm.plugin.recordvideo.res;
 
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/recordvideo/res/IVideoResReport;", "", "checkRes", "", "editExist", "editNotExist", "finishDownload", "initExist", "initNotExist", "unzipFail", "unzipSuccess", "plugin-recordvideo_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/recordvideo/res/IVideoResReport;", "", "checkRes", "", "editExist", "editNotExist", "finishDownload", "initExist", "initNotExist", "unzipFail", "unzipSuccess", "plugin-recordvideo_release"})
 public abstract interface b
 {
-  public abstract void aHq();
+  public abstract void aHH();
   
-  public abstract void dHa();
+  public abstract void dKr();
   
-  public abstract void dHb();
+  public abstract void dKs();
   
-  public abstract void dHc();
+  public abstract void dKt();
   
-  public abstract void dHd();
+  public abstract void dKu();
   
-  public abstract void dHe();
+  public abstract void dKv();
   
-  public abstract void dHf();
+  public abstract void dKw();
   
-  public abstract void dHg();
+  public abstract void dKx();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.res.b
  * JD-Core Version:    0.7.0.1
  */

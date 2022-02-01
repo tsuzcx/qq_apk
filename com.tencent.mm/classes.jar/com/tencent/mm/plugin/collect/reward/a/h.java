@@ -1,25 +1,25 @@
 package com.tencent.mm.plugin.collect.reward.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.f;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.f;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.q;
 import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.protocal.protobuf.vi;
-import com.tencent.mm.protocal.protobuf.vj;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.vk;
+import com.tencent.mm.protocal.protobuf.vl;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class h
   extends a
 {
   private final String TAG;
   private f callback;
-  public String nZO;
-  public vj pbQ;
+  public String ofy;
+  public vl piw;
   private b rr;
   
   public h(String paramString)
@@ -27,23 +27,23 @@ public final class h
     AppMethodBeat.i(63911);
     this.TAG = "MicroMsg.NetSceneQrRewardSetPhotoWord";
     b.a locala = new b.a();
-    locala.hNM = new vi();
-    locala.hNN = new vj();
+    locala.hQF = new vk();
+    locala.hQG = new vl();
     locala.funcId = 1649;
     locala.uri = "/cgi-bin/mmpay-bin/setrewardqrcodephotoword";
-    locala.hNO = 0;
+    locala.hQH = 0;
     locala.respCmdId = 0;
-    this.rr = locala.aDC();
-    ((vi)this.rr.hNK.hNQ).nZO = paramString;
-    this.nZO = paramString;
+    this.rr = locala.aDS();
+    ((vk)this.rr.hQD.hQJ).ofy = paramString;
+    this.ofy = paramString;
     if ((paramString.length() > 0) && (paramString.length() <= 3))
     {
-      g.yhR.idkeyStat(724L, 0L, 1L, false);
+      g.yxI.idkeyStat(724L, 0L, 1L, false);
       AppMethodBeat.o(63911);
       return;
     }
     if (paramString.length() > 3) {
-      g.yhR.idkeyStat(724L, 1L, 1L, false);
+      g.yxI.idkeyStat(724L, 1L, 1L, false);
     }
     AppMethodBeat.o(63911);
   }
@@ -51,11 +51,11 @@ public final class h
   public final void b(int paramInt1, int paramInt2, String paramString, q paramq)
   {
     AppMethodBeat.i(63913);
-    ad.i("MicroMsg.NetSceneQrRewardSetPhotoWord", "errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-    this.pbQ = ((vj)((b)paramq).hNL.hNQ);
-    ad.i("MicroMsg.NetSceneQrRewardSetPhotoWord", "retcode: %s, retmsg: %s", new Object[] { Integer.valueOf(this.pbQ.dlw), this.pbQ.paA });
-    if ((!this.pbG) && (this.pbQ.dlw != 0)) {
-      this.pbH = true;
+    ae.i("MicroMsg.NetSceneQrRewardSetPhotoWord", "errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    this.piw = ((vl)((b)paramq).hQE.hQJ);
+    ae.i("MicroMsg.NetSceneQrRewardSetPhotoWord", "retcode: %s, retmsg: %s", new Object[] { Integer.valueOf(this.piw.dmy), this.piw.phe });
+    if ((!this.pil) && (this.piw.dmy != 0)) {
+      this.pim = true;
     }
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt1, paramInt2, paramString, this);

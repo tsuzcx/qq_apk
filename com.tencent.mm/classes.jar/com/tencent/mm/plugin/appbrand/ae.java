@@ -5,27 +5,27 @@ import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
 
 public final class ae
 {
-  public static boolean KL(String paramString)
+  public static boolean Ll(String paramString)
   {
-    AppMethodBeat.i(187935);
+    AppMethodBeat.i(222045);
     if ((paramString != null) && (paramString.startsWith("__wx__")))
     {
-      AppMethodBeat.o(187935);
+      AppMethodBeat.o(222045);
       return true;
     }
-    AppMethodBeat.o(187935);
+    AppMethodBeat.o(222045);
     return false;
   }
   
-  public static boolean m(o paramo)
+  public static boolean n(p paramp)
   {
-    AppMethodBeat.i(187934);
-    if ((paramo != null) && (paramo.Eb()) && (paramo.aXc().jCN != null) && (paramo.aXc().jCN.startsWith("__wx__")))
+    AppMethodBeat.i(222044);
+    if ((paramp != null) && (paramp.Ee()) && (paramp.aXx().jFL != null) && (paramp.aXx().jFL.startsWith("__wx__")))
     {
-      AppMethodBeat.o(187934);
+      AppMethodBeat.o(222044);
       return true;
     }
-    AppMethodBeat.o(187934);
+    AppMethodBeat.o(222044);
     return false;
   }
 }

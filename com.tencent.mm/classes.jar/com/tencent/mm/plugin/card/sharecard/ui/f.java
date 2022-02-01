@@ -11,30 +11,30 @@ import com.tencent.mm.ui.MMActivity;
 
 public final class f
 {
-  View iCR;
-  b oDc;
-  ImageView oDg;
-  TextView oDh;
-  TextView oDi;
-  private MMActivity owO;
+  View iFK;
+  private MMActivity oDq;
+  b oJE;
+  ImageView oJI;
+  TextView oJJ;
+  TextView oJK;
   
   public f(MMActivity paramMMActivity, View paramView)
   {
-    this.owO = paramMMActivity;
-    this.iCR = paramView;
+    this.oDq = paramMMActivity;
+    this.iFK = paramView;
   }
   
   public final void updateView()
   {
     AppMethodBeat.i(113091);
-    this.oDh.setVisibility(0);
-    this.oDg.setImageDrawable(this.owO.getResources().getDrawable(2131231458));
-    this.oDh.setText(2131756970);
-    this.oDi.setText(2131756969);
-    LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)this.oDg.getLayoutParams();
-    localLayoutParams.topMargin = this.owO.getResources().getDimensionPixelOffset(2131165993);
-    this.oDg.setLayoutParams(localLayoutParams);
-    this.oDg.invalidate();
+    this.oJJ.setVisibility(0);
+    this.oJI.setImageDrawable(this.oDq.getResources().getDrawable(2131231458));
+    this.oJJ.setText(2131756970);
+    this.oJK.setText(2131756969);
+    LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)this.oJI.getLayoutParams();
+    localLayoutParams.topMargin = this.oDq.getResources().getDimensionPixelOffset(2131165993);
+    this.oJI.setLayoutParams(localLayoutParams);
+    this.oJI.invalidate();
     AppMethodBeat.o(113091);
   }
 }

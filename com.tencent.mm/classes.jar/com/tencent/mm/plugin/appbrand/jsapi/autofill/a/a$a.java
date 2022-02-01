@@ -6,17 +6,17 @@ import d.g.b.q;
 import d.l;
 import d.z;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
 final class a$a
   extends q
   implements a<z>
 {
-  public static final a kBI;
+  public static final a kEX;
   
   static
   {
     AppMethodBeat.i(50462);
-    kBI = new a();
+    kEX = new a();
     AppMethodBeat.o(50462);
   }
   

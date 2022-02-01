@@ -6,7 +6,7 @@ import com.tencent.luggage.h.e.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.a;
 import com.tencent.mm.plugin.appbrand.jsapi.h;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class c
   extends a<h>

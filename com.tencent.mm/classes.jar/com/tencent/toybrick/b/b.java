@@ -27,12 +27,12 @@ public final class b
   extends RecyclerView.a<com.tencent.toybrick.f.a>
   implements View.OnClickListener
 {
-  public ArrayList<g> Mii;
-  public LinkedList<g> Mij;
-  public HashMap<g, Integer> Mik;
-  private SparseArray<g> Mil;
-  private com.tencent.toybrick.e.b Mim;
-  public a.a Min;
+  public ArrayList<g> MFf;
+  public LinkedList<g> MFg;
+  public HashMap<g, Integer> MFh;
+  private SparseArray<g> MFi;
+  private com.tencent.toybrick.e.b MFj;
+  public a.a MFk;
   private Context mContext;
   
   public b(Context paramContext, a.a parama)
@@ -40,8 +40,8 @@ public final class b
     AppMethodBeat.i(159919);
     a(new a((byte)0));
     this.mContext = paramContext;
-    this.Min = parama;
-    paramContext = parama.Mjj;
+    this.MFk = parama;
+    paramContext = parama.MGg;
     parama = paramContext.iterator();
     int i = 0;
     while (parama.hasNext())
@@ -49,21 +49,21 @@ public final class b
       ((g)parama.next()).bJr = i;
       i += 1;
     }
-    this.Mij = paramContext;
-    this.Mil = new SparseArray();
-    this.Mik = new HashMap();
-    this.Mii = new ArrayList();
-    this.Mim = new com.tencent.toybrick.e.b(this);
-    paramContext = this.Mim;
-    paramContext.mMainHandler.removeCallbacks(paramContext.Mjr);
+    this.MFg = paramContext;
+    this.MFi = new SparseArray();
+    this.MFh = new HashMap();
+    this.MFf = new ArrayList();
+    this.MFj = new com.tencent.toybrick.e.b(this);
+    paramContext = this.MFj;
+    paramContext.mMainHandler.removeCallbacks(paramContext.MGo);
     parama = paramContext.mMainHandler;
     b.1 local1 = new b.1(paramContext);
-    paramContext.Mjr = local1;
+    paramContext.MGo = local1;
     parama.post(local1);
     AppMethodBeat.o(159919);
   }
   
-  private com.tencent.toybrick.f.a aim(int paramInt)
+  private com.tencent.toybrick.f.a aiV(int paramInt)
   {
     AppMethodBeat.i(159921);
     long l = System.currentTimeMillis();
@@ -72,22 +72,22 @@ public final class b
       Object localObject1 = LayoutInflater.from(this.mContext).inflate(paramInt, null);
       ((View)localObject1).setLayoutParams(new RecyclerView.LayoutParams(-1, -2));
       ((View)localObject1).setOnClickListener(this);
-      localObject1 = ((g)this.Mil.get(paramInt)).hp((View)localObject1);
+      localObject1 = ((g)this.MFi.get(paramInt)).hu((View)localObject1);
       return localObject1;
     }
     finally
     {
-      ap.d("VerticalToyAdapter", "[onCreateViewHolder] cost:%sms toyBrick:%s", new Object[] { Long.valueOf(System.currentTimeMillis() - l), ((g)this.Mil.get(paramInt)).MiV });
+      ap.d("VerticalToyAdapter", "[onCreateViewHolder] cost:%sms toyBrick:%s", new Object[] { Long.valueOf(System.currentTimeMillis() - l), ((g)this.MFi.get(paramInt)).MFS });
       AppMethodBeat.o(159921);
     }
   }
   
-  public final g ain(int paramInt)
+  public final g aiW(int paramInt)
   {
     AppMethodBeat.i(159924);
-    if (this.Mii.size() > paramInt)
+    if (this.MFf.size() > paramInt)
     {
-      g localg = (g)this.Mii.get(paramInt);
+      g localg = (g)this.MFf.get(paramInt);
       AppMethodBeat.o(159924);
       return localg;
     }
@@ -98,7 +98,7 @@ public final class b
   public final int getItemCount()
   {
     AppMethodBeat.i(159922);
-    int i = this.Mii.size();
+    int i = this.MFf.size();
     AppMethodBeat.o(159922);
     return i;
   }
@@ -106,9 +106,9 @@ public final class b
   public final int getItemViewType(int paramInt)
   {
     AppMethodBeat.i(159920);
-    g localg = ain(paramInt);
+    g localg = aiW(paramInt);
     paramInt = localg.getLayoutResource();
-    this.Mil.put(paramInt, localg);
+    this.MFi.put(paramInt, localg);
     AppMethodBeat.o(159920);
     return paramInt;
   }
@@ -118,8 +118,8 @@ public final class b
     AppMethodBeat.i(159923);
     com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
     localb.bd(paramView);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/toybrick/adapter/VerticalToyAdapter", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-    ain(((com.tencent.toybrick.f.a)paramView.getTag()).lN());
+    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/toybrick/adapter/VerticalToyAdapter", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+    aiW(((com.tencent.toybrick.f.a)paramView.getTag()).lN());
     com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/toybrick/adapter/VerticalToyAdapter", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(159923);
   }
@@ -134,9 +134,9 @@ public final class b
       AppMethodBeat.i(159918);
       super.at(paramInt1, paramInt2);
       ap.d("NotifyObserver", "[onItemRangeChanged] positionStart:%d, itemCount:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-      g localg = b.this.ain(paramInt1);
-      if ((localg != null) && (localg.MiW != null)) {
-        c.execute(new c.d(c.MjA, localg, localg.MiW, new c.b() {}));
+      g localg = b.this.aiW(paramInt1);
+      if ((localg != null) && (localg.MFT != null)) {
+        c.execute(new c.d(c.MGx, localg, localg.MFT, new c.b() {}));
       }
       AppMethodBeat.o(159918);
     }

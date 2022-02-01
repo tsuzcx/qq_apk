@@ -8,10 +8,10 @@ public class PAGShapeLayer
 {
   static
   {
-    AppMethodBeat.i(220197);
+    AppMethodBeat.i(216951);
     b.loadLibrary("libpag");
     nativeInit();
-    AppMethodBeat.o(220197);
+    AppMethodBeat.o(216951);
   }
   
   public PAGShapeLayer(long paramLong)

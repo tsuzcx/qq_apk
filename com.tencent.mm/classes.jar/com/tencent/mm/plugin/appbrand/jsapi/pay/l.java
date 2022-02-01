@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.appbrand.jsapi.pay;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.h;
 import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import org.json.JSONObject;
 
 public final class l
@@ -14,25 +14,25 @@ public final class l
   
   public final void a(h paramh, JSONObject paramJSONObject, int paramInt)
   {
-    AppMethodBeat.i(188502);
+    AppMethodBeat.i(222652);
     if (paramJSONObject == null)
     {
       paramh.h(paramInt, e("fail:invalid data", null));
-      AppMethodBeat.o(188502);
+      AppMethodBeat.o(222652);
       return;
     }
     try
     {
       paramJSONObject.put("key_joint_pay", true);
       super.a(paramh, paramJSONObject, paramInt);
-      AppMethodBeat.o(188502);
+      AppMethodBeat.o(222652);
       return;
     }
     catch (Exception paramJSONObject)
     {
-      ad.e("MicroMsg.JsApiRequestJointPayment", paramJSONObject.getMessage());
+      ae.e("MicroMsg.JsApiRequestJointPayment", paramJSONObject.getMessage());
       paramh.h(paramInt, e("fail", null));
-      AppMethodBeat.o(188502);
+      AppMethodBeat.o(222652);
     }
   }
 }

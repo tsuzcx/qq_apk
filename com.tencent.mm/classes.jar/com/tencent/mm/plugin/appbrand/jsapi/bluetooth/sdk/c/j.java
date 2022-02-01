@@ -4,53 +4,53 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class j
 {
-  public static final j kFA;
-  public static final j kFB;
-  public static final j kFC;
-  public static final j kFD;
-  public static final j kFE;
-  public static final j kFF;
-  public static final j kFG;
-  public static final j kFH;
-  public static final j kFI;
-  public static final j kFJ;
-  public static final j kFK;
-  public static final j kFL;
-  public static final j kFM;
-  public static final j kFN;
-  public static final j kFO;
-  public static final j kFP;
-  public static final j kFQ;
-  public static final j kFR;
-  public static final j kFS;
-  public static final j kFT;
+  public static final j kIP;
+  public static final j kIQ;
+  public static final j kIR;
+  public static final j kIS;
+  public static final j kIT;
+  public static final j kIU;
+  public static final j kIV;
+  public static final j kIW;
+  public static final j kIX;
+  public static final j kIY;
+  public static final j kIZ;
+  public static final j kJa;
+  public static final j kJb;
+  public static final j kJc;
+  public static final j kJd;
+  public static final j kJe;
+  public static final j kJf;
+  public static final j kJg;
+  public static final j kJh;
+  public static final j kJi;
   public int errCode;
   public String errMsg;
-  public final Object kFU;
+  public final Object kJj;
   
   static
   {
     AppMethodBeat.i(144596);
-    kFA = new j(0, "");
-    kFB = new j(-1, "fail:internal error");
-    kFC = new j(10000, "fail:not init");
-    kFD = new j(10001, "fail:not available");
-    kFE = new j(10002, "fail:no device");
-    kFF = new j(10003, "fail:connection fail");
-    kFG = new j(10004, "fail:no service");
-    kFH = new j(10005, "fail:no characteristic");
-    kFI = new j(10006, "fail:no connection");
-    kFJ = new j(10007, "fail:property not support");
-    kFK = new j(10008, "fail:system error");
-    kFL = new j(10009, "fail:system not support");
-    kFM = new j(10008, "fail:no descriptor");
-    kFN = new j(10008, "fail:fail to set descriptor");
-    kFO = new j(10008, "fail:fail to write descriptor");
-    kFP = new j(10012, "fail:operate time out");
-    kFQ = new j(-1, "fail:already connect");
-    kFR = new j(10013, "fail:invalid data");
-    kFS = new j(10008, "fail:not found service");
-    kFT = new j(10014, "fail:need pin");
+    kIP = new j(0, "");
+    kIQ = new j(-1, "fail:internal error");
+    kIR = new j(10000, "fail:not init");
+    kIS = new j(10001, "fail:not available");
+    kIT = new j(10002, "fail:no device");
+    kIU = new j(10003, "fail:connection fail");
+    kIV = new j(10004, "fail:no service");
+    kIW = new j(10005, "fail:no characteristic");
+    kIX = new j(10006, "fail:no connection");
+    kIY = new j(10007, "fail:property not support");
+    kIZ = new j(10008, "fail:system error");
+    kJa = new j(10009, "fail:system not support");
+    kJb = new j(10008, "fail:no descriptor");
+    kJc = new j(10008, "fail:fail to set descriptor");
+    kJd = new j(10008, "fail:fail to write descriptor");
+    kJe = new j(10012, "fail:operate time out");
+    kJf = new j(-1, "fail:already connect");
+    kJg = new j(10013, "fail:invalid data");
+    kJh = new j(10008, "fail:not found service");
+    kJi = new j(10014, "fail:need pin");
     AppMethodBeat.o(144596);
   }
   
@@ -58,17 +58,17 @@ public final class j
   {
     this.errCode = paramInt;
     this.errMsg = paramString;
-    this.kFU = null;
+    this.kJj = null;
   }
   
   private j(String paramString, Object paramObject)
   {
     this.errCode = 0;
     this.errMsg = paramString;
-    this.kFU = paramObject;
+    this.kJj = paramObject;
   }
   
-  public static j cv(Object paramObject)
+  public static j cw(Object paramObject)
   {
     AppMethodBeat.i(175631);
     paramObject = new j("", paramObject);
@@ -79,7 +79,7 @@ public final class j
   public final String toString()
   {
     AppMethodBeat.i(144595);
-    String str = "Result{errCode=" + this.errCode + ", errMsg='" + this.errMsg + '\'' + ", retObj=" + this.kFU + '}';
+    String str = "Result{errCode=" + this.errCode + ", errMsg='" + this.errMsg + '\'' + ", retObj=" + this.kJj + '}';
     AppMethodBeat.o(144595);
     return str;
   }

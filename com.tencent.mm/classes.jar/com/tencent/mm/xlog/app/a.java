@@ -2,7 +2,7 @@ package com.tencent.mm.xlog.app;
 
 public final class a
 {
-  public static String LBF = "wechatxlog";
+  public static String LYI = "wechatxlog";
 }
 
 

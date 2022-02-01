@@ -15,7 +15,7 @@ public abstract interface n
   
   public static abstract class a
   {
-    public final p gmk()
+    public final p gqM()
     {
       Object localObject2 = null;
       if (!(this instanceof b)) {}
@@ -24,7 +24,7 @@ public abstract interface n
         b localb = (b)localObject1;
         localObject1 = localObject2;
         if (localb != null) {
-          localObject1 = localb.Njc;
+          localObject1 = localb.NGi;
         }
         return localObject1;
       }
@@ -81,13 +81,13 @@ public abstract interface n
     public static final class b
       extends n.a
     {
-      final p Njc;
+      final p NGi;
       
       public b(p paramp)
       {
         super();
         AppMethodBeat.i(58220);
-        this.Njc = paramp;
+        this.NGi = paramp;
         AppMethodBeat.o(58220);
       }
       
@@ -99,7 +99,7 @@ public abstract interface n
           if ((paramObject instanceof b))
           {
             paramObject = (b)paramObject;
-            if (!d.g.b.p.i(this.Njc, paramObject.Njc)) {}
+            if (!d.g.b.p.i(this.NGi, paramObject.NGi)) {}
           }
         }
         else
@@ -114,7 +114,7 @@ public abstract interface n
       public final int hashCode()
       {
         AppMethodBeat.i(58222);
-        p localp = this.Njc;
+        p localp = this.NGi;
         if (localp != null)
         {
           int i = localp.hashCode();
@@ -128,7 +128,7 @@ public abstract interface n
       public final String toString()
       {
         AppMethodBeat.i(58221);
-        String str = "KotlinClass(kotlinJvmBinaryClass=" + this.Njc + ")";
+        String str = "KotlinClass(kotlinJvmBinaryClass=" + this.NGi + ")";
         AppMethodBeat.o(58221);
         return str;
       }

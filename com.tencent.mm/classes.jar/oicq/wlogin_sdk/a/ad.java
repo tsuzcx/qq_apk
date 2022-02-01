@@ -6,24 +6,45 @@ import oicq.wlogin_sdk.tools.util;
 public final class ad
   extends a
 {
-  public int NRE = 0;
+  public int OoK = 0;
   
   public ad()
   {
-    this.NQs = 312;
+    this.Ony = 312;
   }
   
-  public final Boolean gxW()
+  public final int gCA()
+  {
+    AppMethodBeat.i(88117);
+    int i = 0;
+    for (;;)
+    {
+      if (i >= this.OoK)
+      {
+        AppMethodBeat.o(88117);
+        return 0;
+      }
+      if (util.am(this.Ons, this.Ooh + 4 + i * 10) == 266)
+      {
+        i = util.an(this.Ons, i * 10 + (this.Ooh + 4) + 2);
+        AppMethodBeat.o(88117);
+        return i;
+      }
+      i += 1;
+    }
+  }
+  
+  public final Boolean gCy()
   {
     AppMethodBeat.i(88116);
-    if (this.NRc < 4)
+    if (this.Ooi < 4)
     {
       localBoolean = Boolean.FALSE;
       AppMethodBeat.o(88116);
       return localBoolean;
     }
-    this.NRE = util.aj(this.NQm, this.NRb);
-    if (this.NRc < this.NRE * 10 + 4)
+    this.OoK = util.an(this.Ons, this.Ooh);
+    if (this.Ooi < this.OoK * 10 + 4)
     {
       localBoolean = Boolean.FALSE;
       AppMethodBeat.o(88116);
@@ -32,27 +53,6 @@ public final class ad
     Boolean localBoolean = Boolean.TRUE;
     AppMethodBeat.o(88116);
     return localBoolean;
-  }
-  
-  public final int gxY()
-  {
-    AppMethodBeat.i(88117);
-    int i = 0;
-    for (;;)
-    {
-      if (i >= this.NRE)
-      {
-        AppMethodBeat.o(88117);
-        return 0;
-      }
-      if (util.ai(this.NQm, this.NRb + 4 + i * 10) == 266)
-      {
-        i = util.aj(this.NQm, i * 10 + (this.NRb + 4) + 2);
-        AppMethodBeat.o(88117);
-        return i;
-      }
-      i += 1;
-    }
   }
 }
 

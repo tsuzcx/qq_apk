@@ -6,28 +6,28 @@ import android.os.Message;
 import android.util.AttributeSet;
 import android.widget.ProgressBar;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.az;
 
 public class MMFalseProgressBar
   extends ProgressBar
 {
-  private ap mHandler;
+  private aq mHandler;
   private boolean mIsStart;
   private float mProgress;
-  private float mTg;
-  private float mTh;
-  private float mTi;
-  private float mTj;
-  public boolean mTk;
+  private float mYo;
+  private float mYp;
+  private float mYq;
+  private float mYr;
+  public boolean mYs;
   
   public MMFalseProgressBar(Context paramContext)
   {
     this(paramContext, null);
     AppMethodBeat.i(141887);
-    fyE();
+    fCG();
     AppMethodBeat.o(141887);
   }
   
@@ -42,8 +42,8 @@ public class MMFalseProgressBar
     AppMethodBeat.i(141888);
     this.mIsStart = false;
     this.mProgress = 0.0F;
-    this.mTk = true;
-    this.mHandler = new ap(Looper.getMainLooper())
+    this.mYs = true;
+    this.mHandler = new aq(Looper.getMainLooper())
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
@@ -69,33 +69,33 @@ public class MMFalseProgressBar
       }
     };
     setMax(1000);
-    fyE();
+    fCG();
     AppMethodBeat.o(141888);
   }
   
-  private void fyE()
+  private void fCG()
   {
     AppMethodBeat.i(141891);
-    if (ay.iY(aj.getContext()))
+    if (az.jd(ak.getContext()))
     {
-      this.mTg = 4.0F;
-      this.mTh = 1.0F;
-      this.mTi = 0.3F;
-      this.mTj = 50.0F;
+      this.mYo = 4.0F;
+      this.mYp = 1.0F;
+      this.mYq = 0.3F;
+      this.mYr = 50.0F;
       AppMethodBeat.o(141891);
       return;
     }
-    this.mTg = 2.0F;
-    this.mTh = 0.5F;
-    this.mTi = 0.15F;
-    this.mTj = 50.0F;
+    this.mYo = 2.0F;
+    this.mYp = 0.5F;
+    this.mYq = 0.15F;
+    this.mYr = 50.0F;
     AppMethodBeat.o(141891);
   }
   
   public final void finish()
   {
     AppMethodBeat.i(141890);
-    ad.d("MicroMsg.MMFalseProgressBar", "[cpan] finish");
+    ae.d("MicroMsg.MMFalseProgressBar", "[cpan] finish");
     if (this.mHandler != null) {
       this.mHandler.sendEmptyMessage(1002);
     }
@@ -105,8 +105,8 @@ public class MMFalseProgressBar
   public final void start()
   {
     AppMethodBeat.i(141889);
-    ad.d("MicroMsg.MMFalseProgressBar", "[cpan] start");
-    if (!this.mTk)
+    ae.d("MicroMsg.MMFalseProgressBar", "[cpan] start");
+    if (!this.mYs)
     {
       AppMethodBeat.o(141889);
       return;
@@ -117,7 +117,7 @@ public class MMFalseProgressBar
       return;
     }
     this.mIsStart = true;
-    fyE();
+    fCG();
     if (this.mHandler != null)
     {
       this.mHandler.sendEmptyMessage(1000);

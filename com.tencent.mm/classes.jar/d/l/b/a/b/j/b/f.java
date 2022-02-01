@@ -6,14 +6,14 @@ import d.l.b.a.b.f.a;
 
 public final class f
 {
-  public final a MSw;
-  public final int Nwr;
+  public final int NTx;
+  public final a NpB;
   
   public f(a parama, int paramInt)
   {
     AppMethodBeat.i(60051);
-    this.MSw = parama;
-    this.Nwr = paramInt;
+    this.NpB = parama;
+    this.NTx = paramInt;
     AppMethodBeat.o(60051);
   }
   
@@ -25,7 +25,7 @@ public final class f
       if ((paramObject instanceof f))
       {
         paramObject = (f)paramObject;
-        if ((!p.i(this.MSw, paramObject.MSw)) || (this.Nwr != paramObject.Nwr)) {}
+        if ((!p.i(this.NpB, paramObject.NpB)) || (this.NTx != paramObject.NTx)) {}
       }
     }
     else
@@ -40,11 +40,11 @@ public final class f
   public final int hashCode()
   {
     AppMethodBeat.i(60052);
-    a locala = this.MSw;
+    a locala = this.NpB;
     if (locala != null) {}
     for (int i = locala.hashCode();; i = 0)
     {
-      int j = this.Nwr;
+      int j = this.NTx;
       AppMethodBeat.o(60052);
       return i * 31 + j;
     }
@@ -55,15 +55,15 @@ public final class f
     int j = 0;
     AppMethodBeat.i(60050);
     Object localObject = new StringBuilder();
-    int k = this.Nwr;
+    int k = this.NTx;
     int i = 0;
     while (i < k)
     {
       ((StringBuilder)localObject).append("kotlin/Array<");
       i += 1;
     }
-    ((StringBuilder)localObject).append(this.MSw);
-    k = this.Nwr;
+    ((StringBuilder)localObject).append(this.NpB);
+    k = this.NTx;
     i = j;
     while (i < k)
     {

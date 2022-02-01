@@ -9,21 +9,21 @@ final class h<T>
   
   h(T paramT)
   {
-    AppMethodBeat.i(187787);
+    AppMethodBeat.i(193311);
     this.value = paramT;
     this.thread = Thread.currentThread();
-    AppMethodBeat.o(187787);
+    AppMethodBeat.o(193311);
   }
   
   public final boolean hasValue()
   {
-    AppMethodBeat.i(187788);
+    AppMethodBeat.i(193312);
     if (this.thread == Thread.currentThread())
     {
-      AppMethodBeat.o(187788);
+      AppMethodBeat.o(193312);
       return true;
     }
-    AppMethodBeat.o(187788);
+    AppMethodBeat.o(193312);
     return false;
   }
 }

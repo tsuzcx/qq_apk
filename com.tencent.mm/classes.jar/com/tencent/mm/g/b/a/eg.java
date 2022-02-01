@@ -6,90 +6,91 @@ import com.tencent.mm.plugin.report.a;
 public final class eg
   extends a
 {
-  public long dPH;
-  public long dSy;
-  private String ecZ = "";
-  public long ehJ;
-  private String ehK = "";
-  private String ehL = "";
-  public long ehM;
-  public long ehm;
+  public long dTO;
+  public long dWm;
+  private String eeX = "";
+  public long eiW;
+  private long ejt;
+  private String eju = "";
+  private String ejv = "";
   
-  public final String RD()
+  public final String RC()
   {
-    AppMethodBeat.i(184776);
+    AppMethodBeat.i(184769);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.ecZ);
+    ((StringBuffer)localObject).append(this.eeX);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dSy);
+    ((StringBuffer)localObject).append(this.dTO);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ehJ);
+    ((StringBuffer)localObject).append(this.eiW);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ehm);
+    ((StringBuffer)localObject).append(this.dWm);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dPH);
+    ((StringBuffer)localObject).append(this.ejt);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ehM);
+    ((StringBuffer)localObject).append(this.eju);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ehK);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ehL);
+    ((StringBuffer)localObject).append(this.ejv);
     localObject = ((StringBuffer)localObject).toString();
-    awz((String)localObject);
-    AppMethodBeat.o(184776);
+    axO((String)localObject);
+    AppMethodBeat.o(184769);
     return localObject;
   }
   
-  public final String RE()
+  public final String RD()
   {
-    AppMethodBeat.i(184777);
+    AppMethodBeat.i(184770);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("roomid:").append(this.ecZ);
+    ((StringBuffer)localObject).append("roomId:").append(this.eeX);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("role:").append(this.dSy);
+    ((StringBuffer)localObject).append("role:").append(this.dTO);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("exit:").append(this.ehJ);
+    ((StringBuffer)localObject).append("msgType:").append(this.eiW);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("msgType:").append(this.ehm);
+    ((StringBuffer)localObject).append("scene:").append(this.dWm);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("action:").append(this.dPH);
+    ((StringBuffer)localObject).append("exit:").append(this.ejt);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("openHelp:").append(this.ehM);
+    ((StringBuffer)localObject).append("todoid:").append(this.eju);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("todoid:").append(this.ehK);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("appusername:").append(this.ehL);
+    ((StringBuffer)localObject).append("appusername:").append(this.ejv);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(184777);
+    AppMethodBeat.o(184770);
     return localObject;
+  }
+  
+  public final eg Tp()
+  {
+    this.ejt = 2L;
+    return this;
   }
   
   public final int getId()
   {
-    return 19442;
+    return 19443;
   }
   
-  public final eg nB(String paramString)
+  public final eg nQ(String paramString)
   {
-    AppMethodBeat.i(184775);
-    this.ecZ = t("roomid", paramString, true);
-    AppMethodBeat.o(184775);
+    AppMethodBeat.i(184767);
+    this.eeX = t("roomId", paramString, true);
+    AppMethodBeat.o(184767);
     return this;
   }
   
-  public final eg nC(String paramString)
+  public final eg nR(String paramString)
   {
-    AppMethodBeat.i(213377);
-    this.ehK = t("todoid", paramString, true);
-    AppMethodBeat.o(213377);
+    AppMethodBeat.i(184768);
+    this.eju = t("todoid", paramString, true);
+    AppMethodBeat.o(184768);
     return this;
   }
   
-  public final eg nD(String paramString)
+  public final eg nS(String paramString)
   {
-    AppMethodBeat.i(213378);
-    this.ehL = t("appusername", paramString, true);
-    AppMethodBeat.o(213378);
+    AppMethodBeat.i(217087);
+    this.ejv = t("appusername", paramString, true);
+    AppMethodBeat.o(217087);
     return this;
   }
 }

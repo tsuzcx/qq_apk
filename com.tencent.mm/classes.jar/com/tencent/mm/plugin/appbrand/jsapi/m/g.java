@@ -6,8 +6,8 @@ import com.tencent.mm.plugin.appbrand.jsapi.m;
 import com.tencent.mm.plugin.appbrand.jsapi.websocket.d;
 import com.tencent.mm.plugin.appbrand.o.k.c;
 import com.tencent.mm.plugin.appbrand.o.l;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.nio.ByteBuffer;
 import java.util.concurrent.atomic.AtomicBoolean;
 import org.json.JSONObject;
@@ -17,66 +17,66 @@ public final class g
 {
   public static final int CTRL_INDEX = 347;
   public static final String NAME = "operateSocketTask";
-  private k.c kXh;
-  private boolean kXl;
-  private boolean kXm;
-  private final AtomicBoolean kXn;
+  private k.c laQ;
+  private boolean laU;
+  private boolean laV;
+  private final AtomicBoolean laW;
   
   public g(k.c paramc)
   {
     AppMethodBeat.i(144243);
-    this.kXl = false;
-    this.kXm = false;
-    this.kXn = new AtomicBoolean(false);
-    this.kXh = paramc;
+    this.laU = false;
+    this.laV = false;
+    this.laW = new AtomicBoolean(false);
+    this.laQ = paramc;
     AppMethodBeat.o(144243);
   }
   
   public final void a(c paramc, JSONObject paramJSONObject, int paramInt)
   {
     AppMethodBeat.i(144244);
-    ad.d("MicroMsg.JsApiOperateSocketTask", "JsApiOperateSocketTask");
-    if ((!this.kXn.getAndSet(true)) && (this.kXh != null))
+    ae.d("MicroMsg.JsApiOperateSocketTask", "JsApiOperateSocketTask");
+    if ((!this.laW.getAndSet(true)) && (this.laQ != null))
     {
-      this.kXl = this.kXh.KN(paramc.getAppId());
-      this.kXm = this.kXh.aXT();
+      this.laU = this.laQ.Ln(paramc.getAppId());
+      this.laV = this.laQ.aYm();
     }
     if (paramJSONObject == null)
     {
       paramc.h(paramInt, e("fail:data is null", null));
-      ad.e("MicroMsg.JsApiOperateSocketTask", "data is null");
+      ae.e("MicroMsg.JsApiOperateSocketTask", "data is null");
       AppMethodBeat.o(144244);
       return;
     }
     String str1 = paramJSONObject.optString("socketTaskId");
-    if (bt.isNullOrNil(str1))
+    if (bu.isNullOrNil(str1))
     {
-      ad.e("MicroMsg.JsApiOperateSocketTask", "taskId is null");
+      ae.e("MicroMsg.JsApiOperateSocketTask", "taskId is null");
       paramc.h(paramInt, e("fail:taskId is null or nil", null));
       AppMethodBeat.o(144244);
       return;
     }
     String str2 = paramJSONObject.optString("operationType");
-    if (bt.isNullOrNil(str2))
+    if (bu.isNullOrNil(str2))
     {
-      ad.e("MicroMsg.JsApiOperateSocketTask", "operationType is null");
+      ae.e("MicroMsg.JsApiOperateSocketTask", "operationType is null");
       paramc.h(paramInt, e("fail:operationType is null or nil", null));
       AppMethodBeat.o(144244);
       return;
     }
-    d locald = l.btn().ST(paramc.getAppId());
+    d locald = l.btY().TC(paramc.getAppId());
     if (locald == null)
     {
       paramc.h(paramInt, e("fail:no task", null));
-      ad.w("MicroMsg.JsApiOperateSocketTask", "client is null");
+      ae.w("MicroMsg.JsApiOperateSocketTask", "client is null");
       AppMethodBeat.o(144244);
       return;
     }
-    com.tencent.mm.plugin.appbrand.jsapi.websocket.e locale = locald.Rk(str1);
+    com.tencent.mm.plugin.appbrand.jsapi.websocket.e locale = locald.RT(str1);
     if (locale == null)
     {
       paramc.h(paramInt, e("fail:taskID not exist", null));
-      ad.w("MicroMsg.JsApiOperateSocketTask", "webSocketClient is null");
+      ae.w("MicroMsg.JsApiOperateSocketTask", "webSocketClient is null");
       AppMethodBeat.o(144244);
       return;
     }
@@ -92,7 +92,7 @@ public final class g
       paramJSONObject = paramJSONObject.optString("reason", "");
       locald.a(locale, i, paramJSONObject);
       paramc.h(paramInt, e("ok", null));
-      ad.i("MicroMsg.JsApiOperateSocketTask", "closeSocket taskId:%s, code %d, reason %s", new Object[] { str1, Integer.valueOf(i), paramJSONObject });
+      ae.i("MicroMsg.JsApiOperateSocketTask", "closeSocket taskId:%s, code %d, reason %s", new Object[] { str1, Integer.valueOf(i), paramJSONObject });
       AppMethodBeat.o(144244);
       return;
     }
@@ -101,7 +101,7 @@ public final class g
       if (!locald.b(locale))
       {
         paramc.h(paramInt, e("fail:don't send before socket connected", null));
-        ad.w("MicroMsg.JsApiOperateSocketTask", "send fail taskId: %s", new Object[] { str1 });
+        ae.w("MicroMsg.JsApiOperateSocketTask", "send fail taskId: %s", new Object[] { str1 });
         AppMethodBeat.o(144244);
         return;
       }
@@ -111,9 +111,9 @@ public final class g
         {
           if ((paramJSONObject instanceof ByteBuffer))
           {
-            ad.d("MicroMsg.JsApiOperateSocketTask", "sendSocketMessage ok message:%s", new Object[] { paramJSONObject });
+            ae.d("MicroMsg.JsApiOperateSocketTask", "sendSocketMessage ok message:%s", new Object[] { paramJSONObject });
             locald.a(locale, (ByteBuffer)paramJSONObject);
-            ((com.tencent.mm.plugin.appbrand.t.a)com.tencent.luggage.a.e.L(com.tencent.mm.plugin.appbrand.t.a.class)).idkeyStat(972L, 4L, 1L, false);
+            ((com.tencent.mm.plugin.appbrand.s.a)com.tencent.luggage.a.e.L(com.tencent.mm.plugin.appbrand.s.a.class)).idkeyStat(972L, 4L, 1L, false);
           }
           for (;;)
           {
@@ -123,36 +123,36 @@ public final class g
             if (!(paramJSONObject instanceof String)) {
               break;
             }
-            ad.d("MicroMsg.JsApiOperateSocketTask", "sendSocketMessage ok message");
+            ae.d("MicroMsg.JsApiOperateSocketTask", "sendSocketMessage ok message");
             locald.a(locale, (String)paramJSONObject);
-            ((com.tencent.mm.plugin.appbrand.t.a)com.tencent.luggage.a.e.L(com.tencent.mm.plugin.appbrand.t.a.class)).idkeyStat(972L, 4L, 1L, false);
+            ((com.tencent.mm.plugin.appbrand.s.a)com.tencent.luggage.a.e.L(com.tencent.mm.plugin.appbrand.s.a.class)).idkeyStat(972L, 4L, 1L, false);
           }
           paramc.h(paramInt, e("fail:message is null or nil", null));
         }
         catch (Exception paramJSONObject)
         {
           paramc.h(paramInt, e("fail:" + paramJSONObject.getMessage(), null));
-          if ((this.kXl) || (this.kXm))
+          if ((this.laU) || (this.laV))
           {
-            ((com.tencent.mm.plugin.appbrand.t.a)com.tencent.luggage.a.e.L(com.tencent.mm.plugin.appbrand.t.a.class)).idkeyStat(972L, 6L, 1L, false);
+            ((com.tencent.mm.plugin.appbrand.s.a)com.tencent.luggage.a.e.L(com.tencent.mm.plugin.appbrand.s.a.class)).idkeyStat(972L, 6L, 1L, false);
             AppMethodBeat.o(144244);
             return;
-            ad.w("MicroMsg.JsApiOperateSocketTask", "sendSocketMessage error message type wrong");
+            ae.w("MicroMsg.JsApiOperateSocketTask", "sendSocketMessage error message type wrong");
             paramc.h(paramInt, e("fail:unknown data", null));
             AppMethodBeat.o(144244);
             return;
           }
-          ((com.tencent.mm.plugin.appbrand.t.a)com.tencent.luggage.a.e.L(com.tencent.mm.plugin.appbrand.t.a.class)).idkeyStat(972L, 5L, 1L, false);
+          ((com.tencent.mm.plugin.appbrand.s.a)com.tencent.luggage.a.e.L(com.tencent.mm.plugin.appbrand.s.a.class)).idkeyStat(972L, 5L, 1L, false);
           AppMethodBeat.o(144244);
           return;
         }
       }
-      ad.w("MicroMsg.JsApiOperateSocketTask", "sendSocketMessage fail:%s", new Object[] { paramJSONObject });
+      ae.w("MicroMsg.JsApiOperateSocketTask", "sendSocketMessage fail:%s", new Object[] { paramJSONObject });
       AppMethodBeat.o(144244);
       return;
     }
     paramc.h(paramInt, e("fail:unknown operationType", null));
-    ad.w("MicroMsg.JsApiOperateSocketTask", "sendSocketMessage fail:unknown operationType");
+    ae.w("MicroMsg.JsApiOperateSocketTask", "sendSocketMessage fail:unknown operationType");
     AppMethodBeat.o(144244);
   }
 }

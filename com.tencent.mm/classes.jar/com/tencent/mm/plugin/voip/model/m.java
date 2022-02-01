@@ -5,50 +5,50 @@ import java.util.concurrent.locks.ReentrantLock;
 
 public final class m
 {
-  private static m Cbp;
-  private l Cbq;
-  private ReentrantLock cPz;
+  private static m CsQ;
+  private l CsR;
+  private ReentrantLock cQj;
   
   static
   {
     AppMethodBeat.i(114940);
-    Cbp = new m();
+    CsQ = new m();
     AppMethodBeat.o(114940);
   }
   
   private m()
   {
     AppMethodBeat.i(114938);
-    this.cPz = new ReentrantLock();
+    this.cQj = new ReentrantLock();
     AppMethodBeat.o(114938);
   }
   
-  public static l ewp()
+  public static l ezW()
   {
     AppMethodBeat.i(114939);
-    if (Cbp.Cbq == null) {
-      Cbp.cPz.lock();
+    if (CsQ.CsR == null) {
+      CsQ.cQj.lock();
     }
     try
     {
-      if (Cbp.Cbq == null) {
-        Cbp.Cbq = new l();
+      if (CsQ.CsR == null) {
+        CsQ.CsR = new l();
       }
-      Cbp.cPz.unlock();
-      l locall = Cbp.Cbq;
+      CsQ.cQj.unlock();
+      l locall = CsQ.CsR;
       AppMethodBeat.o(114939);
       return locall;
     }
     finally
     {
-      Cbp.cPz.unlock();
+      CsQ.cQj.unlock();
       AppMethodBeat.o(114939);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.model.m
  * JD-Core Version:    0.7.0.1
  */

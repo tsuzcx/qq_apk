@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.game.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.auf;
-import com.tencent.mm.protocal.protobuf.aug;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.auv;
+import com.tencent.mm.protocal.protobuf.auw;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.LinkedList;
 
 public final class al
@@ -19,27 +19,27 @@ public final class al
   implements k
 {
   private f callback;
-  public String dld;
-  public final b grW;
+  public String dmf;
+  public final b gux;
   
   public al(String paramString1, String paramString2, LinkedList<String> paramLinkedList)
   {
     AppMethodBeat.i(41595);
     Object localObject = new b.a();
-    ((b.a)localObject).hNM = new auf();
-    ((b.a)localObject).hNN = new aug();
+    ((b.a)localObject).hQF = new auv();
+    ((b.a)localObject).hQG = new auw();
     ((b.a)localObject).uri = "/cgi-bin/mmgame-bin/gamecentersearchrecommend";
     ((b.a)localObject).funcId = getType();
-    ((b.a)localObject).hNO = 0;
+    ((b.a)localObject).hQH = 0;
     ((b.a)localObject).respCmdId = 0;
     if (paramString2 == null) {}
-    for (this.dld = "";; this.dld = paramString2.trim())
+    for (this.dmf = "";; this.dmf = paramString2.trim())
     {
-      this.grW = ((b.a)localObject).aDC();
-      localObject = (auf)this.grW.hNK.hNQ;
-      ((auf)localObject).uhu = paramString1;
-      ((auf)localObject).Gsr = paramString2;
-      ((auf)localObject).Gss = paramLinkedList;
+      this.gux = ((b.a)localObject).aDS();
+      localObject = (auv)this.gux.hQD.hQJ;
+      ((auv)localObject).usS = paramString1;
+      ((auv)localObject).GLP = paramString2;
+      ((auv)localObject).GLQ = paramLinkedList;
       AppMethodBeat.o(41595);
       return;
     }
@@ -49,7 +49,7 @@ public final class al
   {
     AppMethodBeat.i(41596);
     this.callback = paramf;
-    int i = dispatch(parame, this.grW, this);
+    int i = dispatch(parame, this.gux, this);
     AppMethodBeat.o(41596);
     return i;
   }
@@ -62,7 +62,7 @@ public final class al
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(41597);
-    ad.i("MicroMsg.NetSceneGameSearchRecmd", "errType = " + paramInt2 + ", errCode = " + paramInt3);
+    ae.i("MicroMsg.NetSceneGameSearchRecmd", "errType = " + paramInt2 + ", errCode = " + paramInt3);
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(41597);
   }

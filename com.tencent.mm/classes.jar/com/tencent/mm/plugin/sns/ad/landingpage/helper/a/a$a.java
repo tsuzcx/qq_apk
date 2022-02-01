@@ -4,7 +4,7 @@ import java.util.Map;
 
 public abstract interface a$a
 {
-  public abstract void aC(Map<String, Object> paramMap);
+  public abstract void aI(Map<String, Object> paramMap);
 }
 
 

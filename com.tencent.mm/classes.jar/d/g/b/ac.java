@@ -6,23 +6,23 @@ import java.util.Collections;
 
 public final class ac
 {
-  public final ArrayList<Object> dbZ;
+  public final ArrayList<Object> ddb;
   
   public ac(int paramInt)
   {
     AppMethodBeat.i(128982);
-    this.dbZ = new ArrayList(paramInt);
+    this.ddb = new ArrayList(paramInt);
     AppMethodBeat.o(128982);
   }
   
   public final void add(Object paramObject)
   {
     AppMethodBeat.i(128984);
-    this.dbZ.add(paramObject);
+    this.ddb.add(paramObject);
     AppMethodBeat.o(128984);
   }
   
-  public final void eO(Object paramObject)
+  public final void eR(Object paramObject)
   {
     AppMethodBeat.i(128983);
     if (paramObject == null)
@@ -35,8 +35,8 @@ public final class ac
       paramObject = (Object[])paramObject;
       if (paramObject.length > 0)
       {
-        this.dbZ.ensureCapacity(this.dbZ.size() + paramObject.length);
-        Collections.addAll(this.dbZ, paramObject);
+        this.ddb.ensureCapacity(this.ddb.size() + paramObject.length);
+        Collections.addAll(this.ddb, paramObject);
       }
       AppMethodBeat.o(128983);
       return;
@@ -49,7 +49,7 @@ public final class ac
   public final Object[] toArray(Object[] paramArrayOfObject)
   {
     AppMethodBeat.i(128985);
-    paramArrayOfObject = this.dbZ.toArray(paramArrayOfObject);
+    paramArrayOfObject = this.ddb.toArray(paramArrayOfObject);
     AppMethodBeat.o(128985);
     return paramArrayOfObject;
   }

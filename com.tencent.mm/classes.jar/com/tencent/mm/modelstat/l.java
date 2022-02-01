@@ -4,38 +4,41 @@ import android.content.Intent;
 import android.os.Looper;
 import com.tencent.mars.xlog.LogLogic;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.e.a;
-import com.tencent.mm.al.e.b;
-import com.tencent.mm.al.e.c;
-import com.tencent.mm.cj.c;
-import com.tencent.mm.cj.d.a;
-import com.tencent.mm.cn.f;
-import com.tencent.mm.g.a.ke;
-import com.tencent.mm.g.a.xs;
+import com.tencent.mm.ak.e.a;
+import com.tencent.mm.ak.e.b;
+import com.tencent.mm.ak.e.c;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.b.r;
+import com.tencent.mm.ci.c;
+import com.tencent.mm.ci.d.a;
+import com.tencent.mm.cm.f;
+import com.tencent.mm.g.a.kf;
+import com.tencent.mm.g.a.xw;
 import com.tencent.mm.kernel.h;
-import com.tencent.mm.model.u;
+import com.tencent.mm.model.v;
 import com.tencent.mm.modelstat.a.b.1;
 import com.tencent.mm.network.a.b.a;
-import com.tencent.mm.network.ae;
 import com.tencent.mm.platformtools.aa;
+import com.tencent.mm.plugin.messenger.foundation.a.s;
 import com.tencent.mm.protocal.MMProtocalJni;
 import com.tencent.mm.protocal.protobuf.cv;
-import com.tencent.mm.protocal.protobuf.cwt;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.an;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.sdk.platformtools.bw;
-import com.tencent.mm.storage.al;
-import com.tencent.mm.vfs.i;
+import com.tencent.mm.protocal.protobuf.cxn;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.bx;
+import com.tencent.mm.storage.am;
+import com.tencent.mm.vfs.k;
+import com.tencent.mm.vfs.o;
+import com.tencent.mm.vfs.w;
 import java.util.Map;
 
 public final class l
   extends b.a
-  implements com.tencent.mm.al.e
+  implements com.tencent.mm.ak.e
 {
-  public static long a(com.tencent.mm.vfs.e parame, long paramLong)
+  public static long a(k paramk, long paramLong)
   {
     AppMethodBeat.i(177293);
     long l1 = 0L;
@@ -45,35 +48,35 @@ public final class l
       int i;
       try
       {
-        parame = parame.fOM();
+        paramk = paramk.fTj();
         i = 0;
         l2 = l1;
         l3 = l1;
-        if (i < parame.length)
+        if (i < paramk.length)
         {
           l2 = l1;
-          if (parame[i].isDirectory())
+          if (paramk[i].isDirectory())
           {
             l2 = l1;
-            l1 += a(parame[i], paramLong);
+            l1 += a(paramk[i], paramLong);
           }
           else
           {
             l2 = l1;
-            if (parame[i].length() > paramLong)
+            if (paramk[i].length() > paramLong)
             {
               l2 = l1;
-              ad.i("MicroMsg.NetStatMsgExtension", "getFolderSize filesize:%s [%s]", new Object[] { Long.valueOf(parame[i].length()), com.tencent.mm.vfs.q.B(parame[i].mUri) });
+              com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.NetStatMsgExtension", "getFolderSize filesize:%s [%s]", new Object[] { Long.valueOf(paramk[i].length()), w.B(paramk[i].mUri) });
             }
             l2 = l1;
-            l3 = parame[i].length();
+            l3 = paramk[i].length();
             l1 += l3;
           }
         }
       }
-      catch (Exception parame)
+      catch (Exception paramk)
       {
-        ad.e("MicroMsg.NetStatMsgExtension", "getFolderSize :%s", new Object[] { bt.n(parame) });
+        com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.NetStatMsgExtension", "getFolderSize :%s", new Object[] { bu.o(paramk) });
         long l3 = l2;
         AppMethodBeat.o(177293);
         return l3;
@@ -85,7 +88,7 @@ public final class l
   public static void b(int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean)
   {
     AppMethodBeat.i(151096);
-    if (!com.tencent.mm.kernel.g.ajA().aiK())
+    if (!com.tencent.mm.kernel.g.ajP().aiZ())
     {
       AppMethodBeat.o(151096);
       return;
@@ -97,7 +100,7 @@ public final class l
     {
       AppMethodBeat.o(151096);
       return;
-      ad.d("MicroMsg.NetStatMsgExtension", "send bytes flow:".concat(String.valueOf(paramInt3)));
+      com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.NetStatMsgExtension", "send bytes flow:".concat(String.valueOf(paramInt3)));
       if (paramBoolean)
       {
         n.b(0L, paramInt3, paramInt2);
@@ -107,7 +110,7 @@ public final class l
       n.c(0L, paramInt3, paramInt2);
       AppMethodBeat.o(151096);
       return;
-      ad.d("MicroMsg.NetStatMsgExtension", "recv bytes flow:".concat(String.valueOf(paramInt3)));
+      com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.NetStatMsgExtension", "recv bytes flow:".concat(String.valueOf(paramInt3)));
       if (paramBoolean)
       {
         n.b(paramInt3, 0L, paramInt2);
@@ -117,14 +120,14 @@ public final class l
       n.c(paramInt3, 0L, paramInt2);
       AppMethodBeat.o(151096);
       return;
-      an.aQu("dns_failed_report");
+      ao.aRR("dns_failed_report");
     }
   }
   
   public final void a(final int paramInt1, final int paramInt2, final String paramString1, final int paramInt3, final String paramString2, final boolean paramBoolean)
   {
     AppMethodBeat.i(151094);
-    com.tencent.mm.kernel.g.ajF().n(new Runnable()
+    com.tencent.mm.kernel.g.ajU().n(new Runnable()
     {
       public final void run()
       {
@@ -147,108 +150,108 @@ public final class l
   public final e.b b(e.a parama)
   {
     AppMethodBeat.i(151093);
-    if (!com.tencent.mm.kernel.g.ajA().aiK())
+    if (!com.tencent.mm.kernel.g.ajP().aiZ())
     {
-      ad.e("MicroMsg.NetStatMsgExtension", "skip ipxx stat while account not set");
+      com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.NetStatMsgExtension", "skip ipxx stat while account not set");
       AppMethodBeat.o(151093);
       return null;
     }
-    parama = parama.gqE.Fvk.HoB;
-    ad.d("MicroMsg.NetStatMsgExtension", "onPreAddMessage %s", new Object[] { parama });
-    if (bt.isNullOrNil(parama))
+    parama = parama.gte.FNI.HId;
+    com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.NetStatMsgExtension", "onPreAddMessage %s", new Object[] { parama });
+    if (bu.isNullOrNil(parama))
     {
       AppMethodBeat.o(151093);
       return null;
     }
-    ad.i("MicroMsg.NetStatMsgExtension", "get ipxx cmd=%s", new Object[] { parama });
-    Object localObject1 = bw.M(parama, "cmd");
+    com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.NetStatMsgExtension", "get ipxx cmd=%s", new Object[] { parama });
+    Object localObject1 = bx.M(parama, "cmd");
     final long l;
     Object localObject2;
     if (localObject1 == null)
     {
-      localObject1 = bw.M(parama, "ClearCache");
+      localObject1 = bx.M(parama, "ClearCache");
       if (localObject1 != null)
       {
-        l = bt.getLong((String)((Map)localObject1).get(".ClearCache.androidCacheMask"), 0L);
+        l = bu.getLong((String)((Map)localObject1).get(".ClearCache.androidCacheMask"), 0L);
         localObject1 = (String)((Map)localObject1).get(".ClearCache.message");
         localObject2 = new Intent();
         ((Intent)localObject2).putExtra("key_mask", l);
         ((Intent)localObject2).putExtra("key_message", (String)localObject1);
-        com.tencent.mm.bs.d.f(aj.getContext(), ".ui.ClearCacheUI", (Intent)localObject2);
+        com.tencent.mm.br.d.f(ak.getContext(), ".ui.ClearCacheUI", (Intent)localObject2);
       }
     }
     for (;;)
     {
-      ad.fku();
-      com.tencent.mm.kernel.g.aiU().hOv.Dr(parama);
+      com.tencent.mm.sdk.platformtools.ae.foo();
+      com.tencent.mm.kernel.g.ajj().hRo.DT(parama);
       try
       {
         Thread.sleep(50L, 0);
         label202:
         LogLogic.initIPxxLogInfo();
-        MMProtocalJni.setProtocalJniLogLevel(ad.getLogLevel());
+        MMProtocalJni.setProtocalJniLogLevel(com.tencent.mm.sdk.platformtools.ae.getLogLevel());
         AppMethodBeat.o(151093);
         return null;
-        final int i = bt.getInt((String)((Map)localObject1).get(".cmd.trace.$code"), -1);
+        final int i = bu.getInt((String)((Map)localObject1).get(".cmd.trace.$code"), -1);
         if (i > 0)
         {
           if (i == 6)
           {
-            parama = new xs();
-            com.tencent.mm.sdk.b.a.IbL.l(parama);
+            parama = new xw();
+            com.tencent.mm.sdk.b.a.IvT.l(parama);
             AppMethodBeat.o(151093);
             return null;
           }
           parama = (String)((Map)localObject1).get(".cmd.trace.$class");
-          int j = bt.getInt((String)((Map)localObject1).get(".cmd.trace.$size"), 0);
-          int k = bt.getInt((String)((Map)localObject1).get(".cmd.trace.$type"), 0);
-          com.tencent.mm.cj.d.fux().c(new d.a(parama, i, j, k));
+          int j = bu.getInt((String)((Map)localObject1).get(".cmd.trace.$size"), 0);
+          int k = bu.getInt((String)((Map)localObject1).get(".cmd.trace.$type"), 0);
+          com.tencent.mm.ci.d.fyy().c(new d.a(parama, i, j, k));
           AppMethodBeat.o(151093);
           return null;
         }
-        i = bt.getInt((String)((Map)localObject1).get(".cmd.hprof.$type"), -1);
+        i = bu.getInt((String)((Map)localObject1).get(".cmd.hprof.$type"), -1);
         if (i > 0)
         {
-          ad.d("MicroMsg.NetStatMsgExtension", "hprof type: %d", new Object[] { Integer.valueOf(i) });
-          c.abo(i);
+          com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.NetStatMsgExtension", "hprof type: %d", new Object[] { Integer.valueOf(i) });
+          c.abW(i);
           AppMethodBeat.o(151093);
           return null;
         }
         if ("android".equalsIgnoreCase((String)((Map)localObject1).get(".cmd.prconfig.$os")))
         {
-          parama = new ke();
-          parama.dxd.dxe = ((String)((Map)localObject1).get(".cmd.prconfig.xml.$url"));
-          parama.dxd.dxf = ((String)((Map)localObject1).get(".cmd.prconfig.xml.$signature"));
-          parama.dxd.dxg = ((String)((Map)localObject1).get(".cmd.prconfig.$url"));
-          parama.dxd.dxh = ((String)((Map)localObject1).get(".cmd.prconfig.$signature"));
-          com.tencent.mm.sdk.b.a.IbL.a(parama, Looper.myLooper());
+          parama = new kf();
+          parama.dyi.dyj = ((String)((Map)localObject1).get(".cmd.prconfig.xml.$url"));
+          parama.dyi.dyk = ((String)((Map)localObject1).get(".cmd.prconfig.xml.$signature"));
+          parama.dyi.dyl = ((String)((Map)localObject1).get(".cmd.prconfig.$url"));
+          parama.dyi.dym = ((String)((Map)localObject1).get(".cmd.prconfig.$signature"));
+          com.tencent.mm.sdk.b.a.IvT.a(parama, Looper.myLooper());
           AppMethodBeat.o(151093);
           return null;
         }
-        i = bt.getInt((String)((Map)localObject1).get(".cmd.clearfile.$fb"), -1);
+        i = bu.getInt((String)((Map)localObject1).get(".cmd.clearfile.$fb"), -1);
         if (i == 1)
         {
-          l = bt.getInt((String)((Map)localObject1).get(".cmd.clearfile.$ps"), 1048576);
-          com.tencent.mm.kernel.g.ajF().ay(new Runnable()
+          l = bu.getInt((String)((Map)localObject1).get(".cmd.clearfile.$ps"), 1048576);
+          com.tencent.mm.kernel.g.ajU().aw(new Runnable()
           {
             public final void run()
             {
               AppMethodBeat.i(151087);
-              long l = bt.flT();
-              ad.i("MicroMsg.NetStatMsgExtension", "clearfile %s [%s]", new Object[] { Long.valueOf(l.a(new com.tencent.mm.vfs.e(com.tencent.mm.kernel.g.ajC().cachePath), l)), com.tencent.mm.kernel.g.ajC().cachePath });
-              ad.i("MicroMsg.NetStatMsgExtension", "clearfile %s [%s]", new Object[] { Long.valueOf(l.a(new com.tencent.mm.vfs.e(com.tencent.mm.kernel.g.ajC().gBl), l)), com.tencent.mm.kernel.g.ajC().gBl });
-              ad.i("MicroMsg.NetStatMsgExtension", "clearfile %s [%s]", new Object[] { Long.valueOf(l.a(new com.tencent.mm.vfs.e(com.tencent.mm.kernel.g.ajC().gBl), l)), com.tencent.mm.kernel.g.ajC().gBl });
-              ad.i("MicroMsg.NetStatMsgExtension", "clearfile %s [%s]", new Object[] { Long.valueOf(l.a(new com.tencent.mm.vfs.e(com.tencent.mm.kernel.g.ajC().gBm), l)), com.tencent.mm.kernel.g.ajC().gBm });
-              ad.i("MicroMsg.NetStatMsgExtension", "clearfile %s [%s]", new Object[] { Long.valueOf(l.a(new com.tencent.mm.vfs.e(al.IpN), l)), al.IpN });
-              ad.i("MicroMsg.NetStatMsgExtension", "clearfile finish %s", new Object[] { Long.valueOf(bt.flT() - l) });
+              long l = bu.fpO();
+              com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.NetStatMsgExtension", "clearfile %s [%s]", new Object[] { Long.valueOf(l.a(new k(com.tencent.mm.kernel.g.ajR().cachePath), l)), com.tencent.mm.kernel.g.ajR().cachePath });
+              com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.NetStatMsgExtension", "clearfile %s [%s]", new Object[] { Long.valueOf(l.a(new k(com.tencent.mm.kernel.g.ajR().gDS), l)), com.tencent.mm.kernel.g.ajR().gDS });
+              com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.NetStatMsgExtension", "clearfile %s [%s]", new Object[] { Long.valueOf(l.a(new k(com.tencent.mm.kernel.g.ajR().gDS), l)), com.tencent.mm.kernel.g.ajR().gDS });
+              com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.NetStatMsgExtension", "clearfile %s [%s]", new Object[] { Long.valueOf(l.a(new k(com.tencent.mm.kernel.g.ajR().gDT), l)), com.tencent.mm.kernel.g.ajR().gDT });
+              com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.NetStatMsgExtension", "clearfile %s [%s]", new Object[] { Long.valueOf(l.a(new k(am.IKh), l)), am.IKh });
+              com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.NetStatMsgExtension", "clearfile finish %s", new Object[] { Long.valueOf(bu.fpO() - l) });
               AppMethodBeat.o(151087);
             }
           });
-          i = bt.getInt((String)((Map)localObject1).get(".cmd.updzh.$pt"), -1);
+          i = bu.getInt((String)((Map)localObject1).get(".cmd.updzh.$pt"), -1);
           localObject2 = (String)((Map)localObject1).get(".cmd.updzh.$pd");
-          ad.d("MicroMsg.NetStatMsgExtension", "StackReportUploader pt:%d pd:%s", new Object[] { Integer.valueOf(i), localObject2 });
-          if ((i > 0) && (!bt.isNullOrNil((String)localObject2))) {
-            com.tencent.mm.kernel.g.ajF().ay(new Runnable()
+          com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.NetStatMsgExtension", "StackReportUploader pt:%d pd:%s", new Object[] { Integer.valueOf(i), localObject2 });
+          if ((i > 0) && (!bu.isNullOrNil((String)localObject2))) {
+            com.tencent.mm.kernel.g.ajU().aw(new Runnable()
             {
               public final void run()
               {
@@ -260,13 +263,13 @@ public final class l
                 {
                   AppMethodBeat.o(151088);
                   return;
-                  aa.a(com.tencent.mm.kernel.g.ajC().gBm + this.iqE, u.aAm(), false, true);
+                  aa.a(com.tencent.mm.kernel.g.ajR().gDT + this.itz, v.aAC(), false, true);
                   AppMethodBeat.o(151088);
                   return;
-                  aa.a(com.tencent.mm.kernel.g.ajC().cachePath + this.iqE, u.aAm(), false, true);
+                  aa.a(com.tencent.mm.kernel.g.ajR().cachePath + this.itz, v.aAC(), false, true);
                   AppMethodBeat.o(151088);
                   return;
-                  aa.a(this.iqE, u.aAm(), false, true);
+                  aa.a(this.itz, v.aAC(), false, true);
                 }
               }
               
@@ -279,20 +282,20 @@ public final class l
               }
             });
           }
-          i = bt.getInt((String)((Map)localObject1).get(".cmd.uploadx5log.type"), -1);
+          i = bu.getInt((String)((Map)localObject1).get(".cmd.uploadx5log.type"), -1);
           if (i <= 0) {
             break label1254;
           }
           parama = (String)((Map)localObject1).get(".cmd.uploadx5log.date");
           localObject1 = (String)((Map)localObject1).get(".cmd.uploadx5log.process");
-          ad.i("MicroMsg.UploadX5Log", "upload, date %s,process %s,type %d", new Object[] { parama, localObject1, Integer.valueOf(i) });
+          com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.UploadX5Log", "upload, date %s,process %s,type %d", new Object[] { parama, localObject1, Integer.valueOf(i) });
           if (i != 1) {
             break label1138;
           }
-          if ((!bt.isNullOrNil(parama)) && (!bt.isNullOrNil((String)localObject1))) {
+          if ((!bu.isNullOrNil(parama)) && (!bu.isNullOrNil((String)localObject1))) {
             break label1082;
           }
-          ad.w("MicroMsg.UploadX5Log", "date or process is null,date %s,process %s", new Object[] { parama, localObject1 });
+          com.tencent.mm.sdk.platformtools.ae.w("MicroMsg.UploadX5Log", "date or process is null,date %s,process %s", new Object[] { parama, localObject1 });
         }
         for (;;)
         {
@@ -301,22 +304,22 @@ public final class l
           if (i == 2)
           {
             localObject2 = (String)((Map)localObject1).get(".cmd.clearfile.$pd");
-            com.tencent.mm.vfs.e locale = new com.tencent.mm.vfs.e((String)localObject2);
-            if (locale.exists())
+            k localk = new k((String)localObject2);
+            if (localk.exists())
             {
-              l = locale.length();
+              l = localk.length();
               label849:
-              ad.i("MicroMsg.NetStatMsgExtension", "clearfile delete :[%s] length:%s", new Object[] { localObject2, Long.valueOf(l) });
-              i.deleteFile((String)localObject2);
-              locale = new com.tencent.mm.vfs.e((String)localObject2);
-              if (!locale.exists()) {
+              com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.NetStatMsgExtension", "clearfile delete :[%s] length:%s", new Object[] { localObject2, Long.valueOf(l) });
+              o.deleteFile((String)localObject2);
+              localk = new k((String)localObject2);
+              if (!localk.exists()) {
                 break label942;
               }
             }
             label942:
-            for (l = locale.length();; l = -1L)
+            for (l = localk.length();; l = -1L)
             {
-              ad.i("MicroMsg.NetStatMsgExtension", "clearfile delete finish :[%s] length:%s", new Object[] { localObject2, Long.valueOf(l) });
+              com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.NetStatMsgExtension", "clearfile delete finish :[%s] length:%s", new Object[] { localObject2, Long.valueOf(l) });
               break;
               l = -1L;
               break label849;
@@ -325,48 +328,48 @@ public final class l
           if (i != 3) {
             break;
           }
-          ad.i("MicroMsg.NetStatMsgExtension", "running  clearfile start:" + com.tencent.mm.kernel.g.ajC().aji() + ".tem");
-          i.deleteFile(com.tencent.mm.kernel.g.ajC().aji() + ".tem");
-          i.deleteFile(com.tencent.mm.kernel.g.ajC().ajj() + ".tem");
-          ad.i("MicroMsg.NetStatMsgExtension", "running  clearfile end:" + com.tencent.mm.kernel.g.ajC().aji() + ".tem");
+          com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.NetStatMsgExtension", "running  clearfile start:" + com.tencent.mm.kernel.g.ajR().ajx() + ".tem");
+          o.deleteFile(com.tencent.mm.kernel.g.ajR().ajx() + ".tem");
+          o.deleteFile(com.tencent.mm.kernel.g.ajR().ajy() + ".tem");
+          com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.NetStatMsgExtension", "running  clearfile end:" + com.tencent.mm.kernel.g.ajR().ajx() + ".tem");
           break;
           label1082:
           label1138:
-          for (parama = String.format("%s/tencent/tbs_live_log/com.tencent.mm/com.tencent.mm_%s_%s.livelog", new Object[] { com.tencent.mm.loader.j.b.arO(), localObject1, parama });; parama = com.tencent.mm.loader.j.b.arO() + "/Android/data/com.tencent.mm/files/tbslog/tbslog.txt")
+          for (parama = String.format("%s/tencent/tbs_live_log/com.tencent.mm/com.tencent.mm_%s_%s.livelog", new Object[] { com.tencent.mm.loader.j.b.asd(), localObject1, parama });; parama = com.tencent.mm.loader.j.b.asd() + "/Android/data/com.tencent.mm/files/tbslog/tbslog.txt")
           {
-            localObject1 = new com.tencent.mm.vfs.e(parama);
-            if (((com.tencent.mm.vfs.e)localObject1).exists()) {
+            localObject1 = new k(parama);
+            if (((k)localObject1).exists()) {
               break label1164;
             }
-            ad.i("MicroMsg.UploadX5Log", "upload file not exists");
+            com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.UploadX5Log", "upload file not exists");
             break;
           }
           label1164:
-          parama = com.tencent.mm.b.r.a((com.tencent.mm.vfs.e)localObject1, false, parama + ".zip");
+          parama = r.a((k)localObject1, false, parama + ".zip");
           if (parama == null)
           {
-            ad.i("MicroMsg.UploadX5Log", "zipPath is null");
+            com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.UploadX5Log", "zipPath is null");
           }
           else
           {
-            parama = new com.tencent.mm.vfs.e(parama);
+            parama = new k(parama);
             if (!parama.exists()) {
-              ad.i("MicroMsg.UploadX5Log", "upload zip file not exists");
+              com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.UploadX5Log", "upload zip file not exists");
             } else {
-              com.tencent.mm.cn.g.er(parama).h(new b.1(i));
+              com.tencent.mm.cm.g.eu(parama).h(new b.1(i));
             }
           }
         }
         label1254:
-        i = bt.getInt((String)((Map)localObject1).get(".cmd.testbizad.type"), -1);
+        i = bu.getInt((String)((Map)localObject1).get(".cmd.testbizad.type"), -1);
         if (i > 0)
         {
           parama = (String)((Map)localObject1).get(".cmd.testbizad.content");
-          ((com.tencent.mm.plugin.messenger.foundation.a.r)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.messenger.foundation.a.r.class)).getBizTimeLineCallback().az(i, parama);
+          ((s)com.tencent.mm.kernel.g.ad(s.class)).getBizTimeLineCallback().ay(i, parama);
           AppMethodBeat.o(151093);
           return null;
         }
-        com.tencent.mm.plugin.performance.a.a.wGn.au((Map)localObject1);
+        com.tencent.mm.plugin.performance.a.a.wWa.aA((Map)localObject1);
       }
       catch (Exception parama)
       {
@@ -381,19 +384,19 @@ public final class l
   {
     long l1 = 0L;
     AppMethodBeat.i(151095);
-    if (!com.tencent.mm.kernel.g.ajA().aiK())
+    if (!com.tencent.mm.kernel.g.ajP().aiZ())
     {
       AppMethodBeat.o(151095);
       return;
     }
-    if (!com.tencent.mm.kernel.g.ajD().gBM.gCg)
+    if (!com.tencent.mm.kernel.g.ajS().gEt.gEN)
     {
-      ad.i("MicroMsg.NetStatMsgExtension", "kernel has not startup");
+      com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.NetStatMsgExtension", "kernel has not startup");
       AppMethodBeat.o(151095);
       return;
     }
-    ad.i("MicroMsg.NetStatMsgExtension", "reportNetFlow wifi[%d, %d] mobile[%d, %d]", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4) });
-    if (ae.cP(aj.getContext()))
+    com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.NetStatMsgExtension", "reportNetFlow wifi[%d, %d] mobile[%d, %d]", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4) });
+    if (com.tencent.mm.network.ae.cR(ak.getContext()))
     {
       if (paramInt1 > 0) {}
       for (l2 = paramInt1;; l2 = 0L)

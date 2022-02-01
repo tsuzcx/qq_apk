@@ -6,60 +6,60 @@ import android.os.Process;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.media.k.c;
 import com.tencent.mm.media.k.c.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import d.l;
 import java.io.Closeable;
 import java.nio.Buffer;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/media/globject/GLTextureObject;", "Ljava/io/Closeable;", "sampler2D", "", "scene", "", "(ZJ)V", "height", "", "internalFormat", "memRelease", "texID", "tid", "width", "allocTexMem", "", "pixels", "Ljava/nio/Buffer;", "minMagFilter", "wrapST", "allocTexMemFromBitmap", "bitmap", "Landroid/graphics/Bitmap;", "allocatedTid", "bind", "bindFrameBuffer", "frameBuffer", "Lcom/tencent/mm/media/globject/GLFrameBufferObject;", "checkFrameBufferStatus", "close", "finalize", "initInGLThread", "isClosed", "isExternalTexture", "isSample2DTexture", "setSize", "texFormatByteSize", "texMemorySize", "toString", "", "Companion", "plugin-mediaeditor_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/media/globject/GLTextureObject;", "Ljava/io/Closeable;", "sampler2D", "", "scene", "", "(ZJ)V", "height", "", "internalFormat", "memRelease", "texID", "tid", "width", "allocTexMem", "", "pixels", "Ljava/nio/Buffer;", "minMagFilter", "wrapST", "allocTexMemFromBitmap", "bitmap", "Landroid/graphics/Bitmap;", "allocatedTid", "bind", "bindFrameBuffer", "frameBuffer", "Lcom/tencent/mm/media/globject/GLFrameBufferObject;", "checkFrameBufferStatus", "close", "finalize", "initInGLThread", "isClosed", "isExternalTexture", "isSample2DTexture", "setSize", "texFormatByteSize", "texMemorySize", "toString", "", "Companion", "plugin-mediaeditor_release"})
 public final class d
   implements Closeable
 {
-  public static final d.a hkr;
+  public static final d.a hnf;
   public int height;
-  volatile boolean hkg;
-  private long hki;
-  public int hko;
-  private boolean hkp;
-  private int hkq;
+  volatile boolean hmU;
+  private long hmW;
+  public int hnc;
+  private boolean hnd;
+  private int hne;
   int tid;
   public int width;
   
   static
   {
     AppMethodBeat.i(93708);
-    hkr = new d.a((byte)0);
+    hnf = new d.a((byte)0);
     AppMethodBeat.o(93708);
   }
   
   public d(boolean paramBoolean, long paramLong)
   {
     AppMethodBeat.i(93707);
-    this.hkg = true;
-    this.hko = -1;
-    this.hki = 2L;
+    this.hmU = true;
+    this.hnc = -1;
+    this.hmW = 2L;
     this.tid = -1;
     this.width = -1;
     this.height = -1;
-    this.hkq = 6408;
-    this.hki = paramLong;
-    if (this.hki < 0L) {
-      this.hki = 15L;
+    this.hne = 6408;
+    this.hmW = paramLong;
+    if (this.hmW < 0L) {
+      this.hmW = 15L;
     }
-    Object localObject = b.hkk;
-    b.atD();
-    this.hkg = false;
+    Object localObject = b.hmY;
+    b.atS();
+    this.hmU = false;
     this.tid = Process.myTid();
-    this.hkp = paramBoolean;
+    this.hnd = paramBoolean;
     if (paramBoolean) {
-      localObject = c.hoP;
+      localObject = c.hrD;
     }
-    for (this.hko = c.a.auh();; this.hko = localObject[0])
+    for (this.hnc = c.a.auw();; this.hnc = localObject[0])
     {
-      ad.i("MicroMsg.GLTextureObject", hashCode() + " create texID:" + this.hko + "  sampler2D:" + paramBoolean + " tid:" + this.tid + ", stackTrace:\t" + com.tencent.matrix.trace.g.b.getStack());
+      ae.i("MicroMsg.GLTextureObject", hashCode() + " create texID:" + this.hnc + "  sampler2D:" + paramBoolean + " tid:" + this.tid + ", stackTrace:\t" + com.tencent.matrix.trace.g.b.getStack());
       AppMethodBeat.o(93707);
       return;
-      localObject = c.hoP;
+      localObject = c.hrD;
       localObject = new int[1];
       GLES30.glGenTextures(1, (int[])localObject, 0);
       GLES30.glBindTexture(36197, localObject[0]);
@@ -68,18 +68,18 @@ public final class d
       GLES30.glTexParameteri(36197, 10242, 33071);
       GLES30.glTexParameteri(36197, 10243, 33071);
       GLES30.glBindTexture(36197, 0);
-      c.a.yi("glGenTextures");
+      c.a.yS("glGenTextures");
     }
   }
   
-  private int atK()
+  private int atZ()
   {
     AppMethodBeat.i(93703);
-    if (this.hkp)
+    if (this.hnd)
     {
       i = this.width;
       int j = this.height;
-      int k = atL();
+      int k = aua();
       AppMethodBeat.o(93703);
       return i * j * k;
     }
@@ -88,10 +88,10 @@ public final class d
     return i;
   }
   
-  private final int atL()
+  private final int aua()
   {
     int i = 32;
-    switch (this.hkq)
+    switch (this.hne)
     {
     default: 
       i = 24;
@@ -106,10 +106,10 @@ public final class d
   public final void a(int paramInt1, int paramInt2, int paramInt3, Buffer paramBuffer, int paramInt4, int paramInt5)
   {
     AppMethodBeat.i(93699);
-    if ((paramInt1 != this.width) || (paramInt2 != this.height) || (paramInt3 != this.hkq) || (paramBuffer != null))
+    if ((paramInt1 != this.width) || (paramInt2 != this.height) || (paramInt3 != this.hne) || (paramBuffer != null))
     {
-      ad.i("MicroMsg.GLTextureObject", hashCode() + " allocTexMem, width:" + paramInt1 + ", height:" + paramInt2 + ", internalFormat:" + paramInt3 + ", memorySize:" + atK());
-      GLES20.glBindTexture(3553, this.hko);
+      ae.i("MicroMsg.GLTextureObject", hashCode() + " allocTexMem, width:" + paramInt1 + ", height:" + paramInt2 + ", internalFormat:" + paramInt3 + ", memorySize:" + atZ());
+      GLES20.glBindTexture(3553, this.hnc);
       GLES20.glTexImage2D(3553, 0, paramInt3, paramInt1, paramInt2, 0, paramInt3, 5121, paramBuffer);
       GLES20.glTexParameterf(3553, 10241, paramInt4);
       GLES20.glTexParameterf(3553, 10240, paramInt4);
@@ -117,7 +117,7 @@ public final class d
       GLES20.glTexParameterf(3553, 10243, paramInt5);
       this.width = paramInt1;
       this.height = paramInt2;
-      this.hkq = paramInt3;
+      this.hne = paramInt3;
       AppMethodBeat.o(93699);
       return;
     }
@@ -129,7 +129,7 @@ public final class d
     AppMethodBeat.i(93702);
     if (parama != null)
     {
-      c.a locala = c.hoP;
+      c.a locala = c.hrD;
       c.a.a(parama, this, paramInt1, paramInt2);
     }
     paramInt1 = GLES20.glCheckFramebufferStatus(36160);
@@ -146,7 +146,7 @@ public final class d
     }
     for (;;)
     {
-      ad.e("MicroMsg.GLTextureObject", "bind framebuffer status not complete, status:" + paramInt1 + " error:" + parama);
+      ae.e("MicroMsg.GLTextureObject", "bind framebuffer status not complete, status:" + paramInt1 + " error:" + parama);
       AppMethodBeat.o(93702);
       return;
       parama = "GL_FRAMEBUFFER_INCOMPLETE_ATTACHMENT";
@@ -159,51 +159,51 @@ public final class d
     }
   }
   
-  public final boolean atM()
+  public final boolean aub()
   {
-    return !this.hkp;
+    return !this.hnd;
   }
   
   public final void close()
   {
     AppMethodBeat.i(93704);
-    if (this.hkg)
+    if (this.hmU)
     {
-      ad.i("MicroMsg.GLTextureObject", hashCode() + " tex already close");
+      ae.i("MicroMsg.GLTextureObject", hashCode() + " tex already close");
       AppMethodBeat.o(93704);
       return;
     }
     int i = Process.myTid();
     if (this.tid != i)
     {
-      ad.e("MicroMsg.GLTextureObject", hashCode() + " Leaked by different thread!!!  scene：" + this.hki + "  created in:" + this.tid + " release in:" + i + ", stackTrace:\t" + com.tencent.matrix.trace.g.b.getStack());
-      localObject = b.hkk;
-      b.atH();
-      this.hkg = false;
+      ae.e("MicroMsg.GLTextureObject", hashCode() + " Leaked by different thread!!!  scene：" + this.hmW + "  created in:" + this.tid + " release in:" + i + ", stackTrace:\t" + com.tencent.matrix.trace.g.b.getStack());
+      localObject = b.hmY;
+      b.atW();
+      this.hmU = false;
       AppMethodBeat.o(93704);
       return;
     }
-    this.hkg = true;
-    Object localObject = c.hoP;
-    GLES20.glDeleteTextures(1, new int[] { this.hko }, 0);
-    ad.i("MicroMsg.GLTextureObject", hashCode() + " close texID:" + this.hko + "  sampler2D:" + this.hkp + ", stacks:" + com.tencent.matrix.trace.g.b.getStack());
+    this.hmU = true;
+    Object localObject = c.hrD;
+    GLES20.glDeleteTextures(1, new int[] { this.hnc }, 0);
+    ae.i("MicroMsg.GLTextureObject", hashCode() + " close texID:" + this.hnc + "  sampler2D:" + this.hnd + ", stacks:" + com.tencent.matrix.trace.g.b.getStack());
     AppMethodBeat.o(93704);
   }
   
   protected final void finalize()
   {
     AppMethodBeat.i(93705);
-    if (!this.hkg)
+    if (!this.hmU)
     {
-      b localb = b.hkk;
-      b.atE();
-      localb = b.hkk;
-      b.ro(this.hki);
-      ad.e("MicroMsg.GLTextureObject", hashCode() + " Leaked !!!  scene：" + this.hki);
+      b localb = b.hmY;
+      b.atT();
+      localb = b.hmY;
+      b.rB(this.hmW);
+      ae.e("MicroMsg.GLTextureObject", hashCode() + " Leaked !!!  scene：" + this.hmW);
       AppMethodBeat.o(93705);
       return;
     }
-    ad.i("MicroMsg.GLTextureObject", hashCode() + " release success!");
+    ae.i("MicroMsg.GLTextureObject", hashCode() + " release success!");
     AppMethodBeat.o(93705);
   }
   
@@ -216,7 +216,7 @@ public final class d
   public final String toString()
   {
     AppMethodBeat.i(93706);
-    String str = "hashcode:" + hashCode() + " texID:" + this.hko + " sampler2D:" + this.hkp + " memRelease:" + this.hkg + " scene:" + this.hki + " create-tid:" + this.tid + " width:" + this.width + " height:" + this.height;
+    String str = "hashcode:" + hashCode() + " texID:" + this.hnc + " sampler2D:" + this.hnd + " memRelease:" + this.hmU + " scene:" + this.hmW + " create-tid:" + this.tid + " width:" + this.width + " height:" + this.height;
     AppMethodBeat.o(93706);
     return str;
   }

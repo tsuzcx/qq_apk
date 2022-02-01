@@ -10,9 +10,9 @@ import com.tencent.wework.api.util.SessionProvider;
 
 public abstract class BaseMessage
 {
-  protected static SessionProvider Mor = null;
+  protected static SessionProvider MLn = null;
   protected Context mContext = null;
-  protected String viB = "";
+  protected String vuG = "";
   
   public static BaseMessage C(Uri paramUri)
   {
@@ -40,7 +40,7 @@ public abstract class BaseMessage
     return localBundle;
   }
   
-  public static BaseMessage bn(Bundle paramBundle)
+  public static BaseMessage bo(Bundle paramBundle)
   {
     try
     {
@@ -56,9 +56,9 @@ public abstract class BaseMessage
     return null;
   }
   
-  public final void baq(String paramString)
+  public final void bbT(String paramString)
   {
-    this.viB = paramString;
+    this.vuG = paramString;
   }
   
   public abstract boolean checkArgs();

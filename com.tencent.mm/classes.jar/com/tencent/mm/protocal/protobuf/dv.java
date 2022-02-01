@@ -4,9 +4,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import f.a.a.b;
 
 public final class dv
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public String dxD;
+  public String dyI;
   public int type;
   public String url;
   
@@ -16,7 +16,7 @@ public final class dv
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.dxD == null)
+      if (this.dyI == null)
       {
         paramVarArgs = new b("Not all required fields were included: wording");
         AppMethodBeat.o(91350);
@@ -29,8 +29,8 @@ public final class dv
         throw paramVarArgs;
       }
       paramVarArgs.aS(1, this.type);
-      if (this.dxD != null) {
-        paramVarArgs.d(2, this.dxD);
+      if (this.dyI != null) {
+        paramVarArgs.d(2, this.dyI);
       }
       if (this.url != null) {
         paramVarArgs.d(3, this.url);
@@ -42,8 +42,8 @@ public final class dv
     {
       int i = f.a.a.b.b.a.bz(1, this.type) + 0;
       paramInt = i;
-      if (this.dxD != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.dxD);
+      if (this.dyI != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.dyI);
       }
       i = paramInt;
       if (this.url != null) {
@@ -55,12 +55,12 @@ public final class dv
     if (paramInt == 2)
     {
       paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gxE();
+          paramVarArgs.gCg();
         }
       }
-      if (this.dxD == null)
+      if (this.dyI == null)
       {
         paramVarArgs = new b("Not all required fields were included: wording");
         AppMethodBeat.o(91350);
@@ -85,15 +85,15 @@ public final class dv
         AppMethodBeat.o(91350);
         return -1;
       case 1: 
-        localdv.type = locala.NPN.zc();
+        localdv.type = locala.OmT.zc();
         AppMethodBeat.o(91350);
         return 0;
       case 2: 
-        localdv.dxD = locala.NPN.readString();
+        localdv.dyI = locala.OmT.readString();
         AppMethodBeat.o(91350);
         return 0;
       }
-      localdv.url = locala.NPN.readString();
+      localdv.url = locala.OmT.readString();
       AppMethodBeat.o(91350);
       return 0;
     }

@@ -7,8 +7,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.appbrand.appusage.ah;
 import com.tencent.mm.plugin.appbrand.widget.e.c;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ar;
 import com.tencent.mm.ui.widget.a.d;
 
 public final class h
@@ -21,9 +21,9 @@ public final class h
     {
       try
       {
-        if (((ah)g.ab(ah.class)).aZ(paramString, paramInt))
+        if (((ah)g.ab(ah.class)).bc(paramString, paramInt))
         {
-          new c(paramContext).H(paramContext.getResources().getString(2131755674)).show();
+          new c(paramContext).G(paramContext.getResources().getString(2131755674)).show();
           AppMethodBeat.o(49041);
           return true;
         }
@@ -33,7 +33,7 @@ public final class h
       {
         int i;
         d locald1;
-        ad.e("MicroMsg.CollectionModifyInteractLogic", "performClick, (%s %d) added = %b, modify e = %s", new Object[] { paramString, Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean), localException });
+        ae.e("MicroMsg.CollectionModifyInteractLogic", "performClick, (%s %d) added = %b, modify e = %s", new Object[] { paramString, Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean), localException });
         v(paramContext, paramBoolean);
         continue;
         if (i != -3) {
@@ -44,29 +44,29 @@ public final class h
           continue;
         }
         locald2.setCanceledOnTouchOutside(false);
-        locald2.yO(true);
+        locald2.zc(true);
         continue;
         v(paramContext, paramBoolean);
         continue;
       }
       AppMethodBeat.o(49041);
       return false;
-      i = ((ah)g.ab(ah.class)).aY(paramString, paramInt);
+      i = ((ah)g.ab(ah.class)).bb(paramString, paramInt);
       if (i == 0)
       {
-        new c(paramContext).H(paramContext.getResources().getString(2131755673)).show();
+        new c(paramContext).G(paramContext.getResources().getString(2131755673)).show();
         AppMethodBeat.o(49041);
         return true;
       }
       if (i != -2) {
         continue;
       }
-      i = ((ah)g.ab(ah.class)).bbO();
+      i = ((ah)g.ab(ah.class)).bcs();
       locald1 = com.tencent.mm.ui.base.h.a(paramContext, paramContext.getResources().getString(2131755380, new Object[] { Integer.valueOf(i) }), "", paramContext.getResources().getString(2131755835), null);
       if (locald1 != null)
       {
         locald1.setCanceledOnTouchOutside(false);
-        locald1.yO(true);
+        locald1.zc(true);
       }
     }
   }
@@ -74,7 +74,7 @@ public final class h
   private static void v(Context paramContext, final boolean paramBoolean)
   {
     AppMethodBeat.i(49042);
-    aq.f(new Runnable()
+    ar.f(new Runnable()
     {
       public final void run()
       {

@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.editor.model.nativenote.spans;
 
 public abstract interface g<V>
 {
-  public abstract g<V> cfq();
+  public abstract g<V> cgG();
 }
 
 

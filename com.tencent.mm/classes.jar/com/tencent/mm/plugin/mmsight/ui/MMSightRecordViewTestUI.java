@@ -18,15 +18,15 @@ import com.tencent.mm.plugin.mmsight.api.MMSightRecordView.a;
 import com.tencent.mm.plugin.mmsight.api.MMSightRecordView.e;
 import com.tencent.mm.plugin.mmsight.api.MMSightRecordView.g;
 import com.tencent.mm.plugin.mmsight.api.MMSightRecordView.h;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.ar;
 import com.tencent.mm.ui.MMActivity;
 
 public class MMSightRecordViewTestUI
   extends MMActivity
 {
-  private float hpf = 0.67F;
-  private int juM = 720;
-  private MMSightRecordView kHz;
+  private float hrT = 0.67F;
+  private int jxH = 720;
+  private MMSightRecordView kKO;
   
   public int getLayoutId()
   {
@@ -47,21 +47,21 @@ public class MMSightRecordViewTestUI
         return false;
       }
     });
-    this.kHz = ((MMSightRecordView)findViewById(2131303906));
-    this.kHz.setDisplayRatio(this.hpf);
-    this.kHz.setPreviewSizeLimit(this.juM);
-    this.kHz.setVideoPara$2e715812(100000);
-    this.kHz.setVideoFilePath(com.tencent.mm.loader.j.b.arU() + "mmsighttest.mp4");
-    this.kHz.setClipPictureSize(true);
-    this.kHz.setClipVideoSize(true);
-    this.kHz.vMS.aVr();
-    this.kHz.setFlashMode(3);
-    this.kHz.setFrameDataCallback(new MMSightRecordView.a()
+    this.kKO = ((MMSightRecordView)findViewById(2131303906));
+    this.kKO.setDisplayRatio(this.hrT);
+    this.kKO.setPreviewSizeLimit(this.jxH);
+    this.kKO.setVideoPara$2e715812(100000);
+    this.kKO.setVideoFilePath(com.tencent.mm.loader.j.b.asj() + "mmsighttest.mp4");
+    this.kKO.setClipPictureSize(true);
+    this.kKO.setClipVideoSize(true);
+    this.kKO.vYV.aVQ();
+    this.kKO.setFlashMode(3);
+    this.kKO.setFrameDataCallback(new MMSightRecordView.a()
     {
       public final void s(byte[] paramAnonymousArrayOfByte, int paramAnonymousInt1, int paramAnonymousInt2) {}
     });
-    this.kHz.vMS.startPreview();
-    this.kHz.vMS.aVm();
+    this.kKO.vYV.startPreview();
+    this.kKO.vYV.aVL();
     findViewById(2131305642).setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
@@ -69,10 +69,10 @@ public class MMSightRecordViewTestUI
         AppMethodBeat.i(94559);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
         localb.bd(paramAnonymousView);
-        a.b("com/tencent/mm/plugin/mmsight/ui/MMSightRecordViewTestUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        a.b("com/tencent/mm/plugin/mmsight/ui/MMSightRecordViewTestUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
         MMSightRecordViewTestUI.a(MMSightRecordViewTestUI.this).a(new MMSightRecordView.g()
         {
-          public final void N(Bitmap paramAnonymous2Bitmap)
+          public final void O(Bitmap paramAnonymous2Bitmap)
           {
             AppMethodBeat.i(94558);
             if (paramAnonymous2Bitmap != null) {
@@ -81,7 +81,7 @@ public class MMSightRecordViewTestUI
             AppMethodBeat.o(94558);
           }
           
-          public final void bjU() {}
+          public final void bkD() {}
         }, true);
         a.a(this, "com/tencent/mm/plugin/mmsight/ui/MMSightRecordViewTestUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(94559);
@@ -94,16 +94,16 @@ public class MMSightRecordViewTestUI
         AppMethodBeat.i(94562);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
         localb.bd(paramAnonymousView);
-        a.b("com/tencent/mm/plugin/mmsight/ui/MMSightRecordViewTestUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-        MMSightRecordViewTestUI.a(MMSightRecordViewTestUI.this).vMS.PP();
-        aq.o(new Runnable()
+        a.b("com/tencent/mm/plugin/mmsight/ui/MMSightRecordViewTestUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        MMSightRecordViewTestUI.a(MMSightRecordViewTestUI.this).vYV.PO();
+        ar.o(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(94561);
             MMSightRecordViewTestUI.a(MMSightRecordViewTestUI.this).a(new MMSightRecordView.h()
             {
-              public final void gw(boolean paramAnonymous3Boolean)
+              public final void gu(boolean paramAnonymous3Boolean)
               {
                 AppMethodBeat.i(94560);
                 Toast.makeText(MMSightRecordViewTestUI.this, "record finish, error: ".concat(String.valueOf(paramAnonymous3Boolean)), 0).show();
@@ -117,17 +117,17 @@ public class MMSightRecordViewTestUI
         AppMethodBeat.o(94562);
       }
     });
-    aq.o(new Runnable()
+    ar.o(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(94563);
-        this.vVp.setText("");
-        this.vVp.append(String.format("picture size: %s, ratio: %s\n", new Object[] { MMSightRecordViewTestUI.a(MMSightRecordViewTestUI.this).getPictureSize(), Float.valueOf(Math.min(MMSightRecordViewTestUI.a(MMSightRecordViewTestUI.this).getPictureSize().x, MMSightRecordViewTestUI.a(MMSightRecordViewTestUI.this).getPictureSize().y) / Math.max(MMSightRecordViewTestUI.a(MMSightRecordViewTestUI.this).getPictureSize().x, MMSightRecordViewTestUI.a(MMSightRecordViewTestUI.this).getPictureSize().y)) }));
-        this.vVp.append(String.format("video size: %s, ratio: %s\n", new Object[] { MMSightRecordViewTestUI.a(MMSightRecordViewTestUI.this).getVideoSize(), Float.valueOf(Math.min(MMSightRecordViewTestUI.a(MMSightRecordViewTestUI.this).getVideoSize().x, MMSightRecordViewTestUI.a(MMSightRecordViewTestUI.this).getVideoSize().y) / Math.max(MMSightRecordViewTestUI.a(MMSightRecordViewTestUI.this).getVideoSize().x, MMSightRecordViewTestUI.a(MMSightRecordViewTestUI.this).getVideoSize().y)) }));
-        this.vVp.append(String.format("preview size limit: %s\n", new Object[] { Integer.valueOf(MMSightRecordViewTestUI.b(MMSightRecordViewTestUI.this)) }));
-        this.vVp.append(String.format("display ratio: %s\n", new Object[] { Float.valueOf(MMSightRecordViewTestUI.c(MMSightRecordViewTestUI.this)) }));
-        this.vVp.append(String.format("view size: %s, ratio: %s\n", new Object[] { new Point(MMSightRecordViewTestUI.a(MMSightRecordViewTestUI.this).getWidth(), MMSightRecordViewTestUI.a(MMSightRecordViewTestUI.this).getHeight()), Float.valueOf(MMSightRecordViewTestUI.a(MMSightRecordViewTestUI.this).getWidth() / MMSightRecordViewTestUI.a(MMSightRecordViewTestUI.this).getHeight()) }));
+        this.wht.setText("");
+        this.wht.append(String.format("picture size: %s, ratio: %s\n", new Object[] { MMSightRecordViewTestUI.a(MMSightRecordViewTestUI.this).getPictureSize(), Float.valueOf(Math.min(MMSightRecordViewTestUI.a(MMSightRecordViewTestUI.this).getPictureSize().x, MMSightRecordViewTestUI.a(MMSightRecordViewTestUI.this).getPictureSize().y) / Math.max(MMSightRecordViewTestUI.a(MMSightRecordViewTestUI.this).getPictureSize().x, MMSightRecordViewTestUI.a(MMSightRecordViewTestUI.this).getPictureSize().y)) }));
+        this.wht.append(String.format("video size: %s, ratio: %s\n", new Object[] { MMSightRecordViewTestUI.a(MMSightRecordViewTestUI.this).getVideoSize(), Float.valueOf(Math.min(MMSightRecordViewTestUI.a(MMSightRecordViewTestUI.this).getVideoSize().x, MMSightRecordViewTestUI.a(MMSightRecordViewTestUI.this).getVideoSize().y) / Math.max(MMSightRecordViewTestUI.a(MMSightRecordViewTestUI.this).getVideoSize().x, MMSightRecordViewTestUI.a(MMSightRecordViewTestUI.this).getVideoSize().y)) }));
+        this.wht.append(String.format("preview size limit: %s\n", new Object[] { Integer.valueOf(MMSightRecordViewTestUI.b(MMSightRecordViewTestUI.this)) }));
+        this.wht.append(String.format("display ratio: %s\n", new Object[] { Float.valueOf(MMSightRecordViewTestUI.c(MMSightRecordViewTestUI.this)) }));
+        this.wht.append(String.format("view size: %s, ratio: %s\n", new Object[] { new Point(MMSightRecordViewTestUI.a(MMSightRecordViewTestUI.this).getWidth(), MMSightRecordViewTestUI.a(MMSightRecordViewTestUI.this).getHeight()), Float.valueOf(MMSightRecordViewTestUI.a(MMSightRecordViewTestUI.this).getWidth() / MMSightRecordViewTestUI.a(MMSightRecordViewTestUI.this).getHeight()) }));
         AppMethodBeat.o(94563);
       }
     }, 1000L);
@@ -138,8 +138,8 @@ public class MMSightRecordViewTestUI
         AppMethodBeat.i(94564);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
         localb.bd(paramAnonymousView);
-        a.b("com/tencent/mm/plugin/mmsight/ui/MMSightRecordViewTestUI$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-        MMSightRecordViewTestUI.a(MMSightRecordViewTestUI.this).vMS.switchCamera();
+        a.b("com/tencent/mm/plugin/mmsight/ui/MMSightRecordViewTestUI$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        MMSightRecordViewTestUI.a(MMSightRecordViewTestUI.this).vYV.switchCamera();
         a.a(this, "com/tencent/mm/plugin/mmsight/ui/MMSightRecordViewTestUI$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(94564);
       }
@@ -151,7 +151,7 @@ public class MMSightRecordViewTestUI
   {
     AppMethodBeat.i(94566);
     super.onDestroy();
-    this.kHz.vMS.release();
+    this.kKO.vYV.release();
     AppMethodBeat.o(94566);
   }
   
@@ -163,7 +163,7 @@ public class MMSightRecordViewTestUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.ui.MMSightRecordViewTestUI
  * JD-Core Version:    0.7.0.1
  */

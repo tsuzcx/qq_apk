@@ -8,7 +8,7 @@ import com.tencent.mm.ui.widget.MMEditText;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/webview/ui/tools/widget/MPWriteCommentLayout$7", "Landroid/text/TextWatcher;", "afterTextChanged", "", "s", "Landroid/text/Editable;", "beforeTextChanged", "", "start", "", "count", "after", "onTextChanged", "before", "plugin-webview_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/webview/ui/tools/widget/MPWriteCommentLayout$7", "Landroid/text/TextWatcher;", "afterTextChanged", "", "s", "Landroid/text/Editable;", "beforeTextChanged", "", "start", "", "count", "after", "onTextChanged", "before", "plugin-webview_release"})
 public final class n$7
   implements TextWatcher
 {
@@ -19,8 +19,8 @@ public final class n$7
   public final void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(82698);
-    paramCharSequence = n.l(this.Erx);
-    Editable localEditable = n.b(this.Erx).getText();
+    paramCharSequence = n.l(this.EJN);
+    Editable localEditable = n.b(this.EJN).getText();
     p.g(localEditable, "contentEt.text");
     if (((CharSequence)localEditable).length() > 0) {}
     for (boolean bool = true;; bool = false)

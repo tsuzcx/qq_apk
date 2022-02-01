@@ -11,50 +11,50 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public class SnsAdNativeLandingPagesVideoPlayerLoadingBar
   extends RelativeLayout
   implements a
 {
   private View contentView;
-  private boolean dtk;
-  private boolean kSw;
-  private float lrA;
-  private int lrB;
-  private int lrC;
-  private int lrD;
-  private int lrE;
-  private ImageView lrr;
-  private ImageView lrs;
-  private ImageView lrt;
-  private ImageView lru;
-  private TextView lrv;
-  private TextView lrw;
-  private int lrx;
-  private int lry;
+  private boolean duq;
+  private boolean kWf;
+  private ImageView lvR;
+  private ImageView lvS;
+  private ImageView lvT;
+  private ImageView lvU;
+  private TextView lvV;
+  private TextView lvW;
+  private int lvX;
+  private int lvY;
+  private float lwa;
+  private int lwb;
+  private int lwc;
+  private int lwd;
+  private int lwe;
   private int mPosition;
-  private b ySo;
+  private b ziy;
   
   public SnsAdNativeLandingPagesVideoPlayerLoadingBar(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(116139);
-    this.ySo = null;
+    this.ziy = null;
     this.contentView = null;
-    this.lrs = null;
-    this.lrt = null;
-    this.lru = null;
-    this.lrx = 0;
+    this.lvS = null;
+    this.lvT = null;
+    this.lvU = null;
+    this.lvX = 0;
     this.mPosition = 0;
-    this.lry = 0;
-    this.kSw = false;
-    this.lrA = 0.0F;
-    this.dtk = false;
-    this.lrB = -1;
-    this.lrC = -1;
-    this.lrD = -1;
-    this.lrE = -1;
+    this.lvY = 0;
+    this.kWf = false;
+    this.lwa = 0.0F;
+    this.duq = false;
+    this.lwb = -1;
+    this.lwc = -1;
+    this.lwd = -1;
+    this.lwe = -1;
     init();
     AppMethodBeat.o(116139);
   }
@@ -63,21 +63,21 @@ public class SnsAdNativeLandingPagesVideoPlayerLoadingBar
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(116140);
-    this.ySo = null;
+    this.ziy = null;
     this.contentView = null;
-    this.lrs = null;
-    this.lrt = null;
-    this.lru = null;
-    this.lrx = 0;
+    this.lvS = null;
+    this.lvT = null;
+    this.lvU = null;
+    this.lvX = 0;
     this.mPosition = 0;
-    this.lry = 0;
-    this.kSw = false;
-    this.lrA = 0.0F;
-    this.dtk = false;
-    this.lrB = -1;
-    this.lrC = -1;
-    this.lrD = -1;
-    this.lrE = -1;
+    this.lvY = 0;
+    this.kWf = false;
+    this.lwa = 0.0F;
+    this.duq = false;
+    this.lwb = -1;
+    this.lwc = -1;
+    this.lwd = -1;
+    this.lwe = -1;
     init();
     AppMethodBeat.o(116140);
   }
@@ -86,39 +86,39 @@ public class SnsAdNativeLandingPagesVideoPlayerLoadingBar
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(116141);
-    this.ySo = null;
+    this.ziy = null;
     this.contentView = null;
-    this.lrs = null;
-    this.lrt = null;
-    this.lru = null;
-    this.lrx = 0;
+    this.lvS = null;
+    this.lvT = null;
+    this.lvU = null;
+    this.lvX = 0;
     this.mPosition = 0;
-    this.lry = 0;
-    this.kSw = false;
-    this.lrA = 0.0F;
-    this.dtk = false;
-    this.lrB = -1;
-    this.lrC = -1;
-    this.lrD = -1;
-    this.lrE = -1;
+    this.lvY = 0;
+    this.kWf = false;
+    this.lwa = 0.0F;
+    this.duq = false;
+    this.lwb = -1;
+    this.lwc = -1;
+    this.lwd = -1;
+    this.lwe = -1;
     init();
     AppMethodBeat.o(116141);
   }
   
-  private void boy()
+  private void bpi()
   {
     AppMethodBeat.i(116150);
-    if (this.lrx == 0)
+    if (this.lvX == 0)
     {
       AppMethodBeat.o(116150);
       return;
     }
-    if (this.kSw)
+    if (this.kWf)
     {
       AppMethodBeat.o(116150);
       return;
     }
-    if (this.lrt == null)
+    if (this.lvT == null)
     {
       AppMethodBeat.o(116150);
       return;
@@ -128,24 +128,24 @@ public class SnsAdNativeLandingPagesVideoPlayerLoadingBar
       AppMethodBeat.o(116150);
       return;
     }
-    int i = (this.lrt.getWidth() - this.lrt.getPaddingLeft() - this.lrt.getPaddingRight()) / 2;
-    this.lrv.setText(tr(this.mPosition / 60) + ":" + tr(this.mPosition % 60));
-    int j = ((FrameLayout.LayoutParams)this.lrs.getLayoutParams()).leftMargin;
-    int k = this.lrt.getPaddingLeft();
-    FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.lrt.getLayoutParams();
-    localLayoutParams.leftMargin = (j - k + (int)(this.mPosition * 1.0D / this.lrx * getBarLen()) - i);
-    this.lrt.setLayoutParams(localLayoutParams);
-    localLayoutParams = (FrameLayout.LayoutParams)this.lrr.getLayoutParams();
-    localLayoutParams.width = ((int)(this.mPosition * 1.0D / this.lrx * getBarLen()));
-    this.lrr.setLayoutParams(localLayoutParams);
+    int i = (this.lvT.getWidth() - this.lvT.getPaddingLeft() - this.lvT.getPaddingRight()) / 2;
+    this.lvV.setText(tv(this.mPosition / 60) + ":" + tv(this.mPosition % 60));
+    int j = ((FrameLayout.LayoutParams)this.lvS.getLayoutParams()).leftMargin;
+    int k = this.lvT.getPaddingLeft();
+    FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.lvT.getLayoutParams();
+    localLayoutParams.leftMargin = (j - k + (int)(this.mPosition * 1.0D / this.lvX * getBarLen()) - i);
+    this.lvT.setLayoutParams(localLayoutParams);
+    localLayoutParams = (FrameLayout.LayoutParams)this.lvR.getLayoutParams();
+    localLayoutParams.width = ((int)(this.mPosition * 1.0D / this.lvX * getBarLen()));
+    this.lvR.setLayoutParams(localLayoutParams);
     AppMethodBeat.o(116150);
   }
   
   private int getBarLen()
   {
     AppMethodBeat.i(116149);
-    this.lry = this.lrs.getWidth();
-    int i = this.lry;
+    this.lvY = this.lvS.getWidth();
+    int i = this.lvY;
     AppMethodBeat.o(116149);
     return i;
   }
@@ -153,9 +153,9 @@ public class SnsAdNativeLandingPagesVideoPlayerLoadingBar
   private int getCurrentTimeByBarPoint()
   {
     AppMethodBeat.i(116146);
-    int i = ((FrameLayout.LayoutParams)this.lrs.getLayoutParams()).leftMargin;
-    int j = this.lrt.getPaddingLeft();
-    j = (int)((((FrameLayout.LayoutParams)this.lrt.getLayoutParams()).leftMargin - (i - j)) * 1.0D / getBarLen() * this.lrx);
+    int i = ((FrameLayout.LayoutParams)this.lvS.getLayoutParams()).leftMargin;
+    int j = this.lvT.getPaddingLeft();
+    j = (int)((((FrameLayout.LayoutParams)this.lvT.getLayoutParams()).leftMargin - (i - j)) * 1.0D / getBarLen() * this.lvX);
     i = j;
     if (j < 0) {
       i = 0;
@@ -168,13 +168,13 @@ public class SnsAdNativeLandingPagesVideoPlayerLoadingBar
   {
     AppMethodBeat.i(116142);
     this.contentView = View.inflate(getContext(), 2131495517, this);
-    this.lrr = ((ImageView)this.contentView.findViewById(2131303302));
-    this.lrs = ((ImageView)this.contentView.findViewById(2131303301));
-    this.lrt = ((ImageView)this.contentView.findViewById(2131303305));
-    this.lru = ((ImageView)this.contentView.findViewById(2131303281));
-    this.lrv = ((TextView)this.contentView.findViewById(2131303283));
-    this.lrw = ((TextView)this.contentView.findViewById(2131303289));
-    this.lrt.setOnTouchListener(new View.OnTouchListener()
+    this.lvR = ((ImageView)this.contentView.findViewById(2131303302));
+    this.lvS = ((ImageView)this.contentView.findViewById(2131303301));
+    this.lvT = ((ImageView)this.contentView.findViewById(2131303305));
+    this.lvU = ((ImageView)this.contentView.findViewById(2131303281));
+    this.lvV = ((TextView)this.contentView.findViewById(2131303283));
+    this.lvW = ((TextView)this.contentView.findViewById(2131303289));
+    this.lvT.setOnTouchListener(new View.OnTouchListener()
     {
       public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
       {
@@ -182,14 +182,14 @@ public class SnsAdNativeLandingPagesVideoPlayerLoadingBar
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
         localb.bd(paramAnonymousView);
         localb.bd(paramAnonymousMotionEvent);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/sight/decode/ui/SnsAdNativeLandingPagesVideoPlayerLoadingBar$1", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahq());
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/sight/decode/ui/SnsAdNativeLandingPagesVideoPlayerLoadingBar$1", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahF());
         if (paramAnonymousMotionEvent.getAction() == 0)
         {
-          ad.i("MicroMsg.SnsAdNativeLandingPagesVideoPlayerLoadingBar", "ontouch down");
+          ae.i("MicroMsg.SnsAdNativeLandingPagesVideoPlayerLoadingBar", "ontouch down");
           SnsAdNativeLandingPagesVideoPlayerLoadingBar.a(SnsAdNativeLandingPagesVideoPlayerLoadingBar.this, false);
           SnsAdNativeLandingPagesVideoPlayerLoadingBar.a(SnsAdNativeLandingPagesVideoPlayerLoadingBar.this, paramAnonymousMotionEvent.getX());
           if (SnsAdNativeLandingPagesVideoPlayerLoadingBar.a(SnsAdNativeLandingPagesVideoPlayerLoadingBar.this) != null) {
-            SnsAdNativeLandingPagesVideoPlayerLoadingBar.a(SnsAdNativeLandingPagesVideoPlayerLoadingBar.this).aqD();
+            SnsAdNativeLandingPagesVideoPlayerLoadingBar.a(SnsAdNativeLandingPagesVideoPlayerLoadingBar.this).aqS();
           }
         }
         for (;;)
@@ -213,7 +213,7 @@ public class SnsAdNativeLandingPagesVideoPlayerLoadingBar
               paramAnonymousView.width = ((int)(i * 1.0D / SnsAdNativeLandingPagesVideoPlayerLoadingBar.e(SnsAdNativeLandingPagesVideoPlayerLoadingBar.this) * SnsAdNativeLandingPagesVideoPlayerLoadingBar.g(SnsAdNativeLandingPagesVideoPlayerLoadingBar.this)));
               SnsAdNativeLandingPagesVideoPlayerLoadingBar.f(SnsAdNativeLandingPagesVideoPlayerLoadingBar.this).setLayoutParams(paramAnonymousView);
             }
-            SnsAdNativeLandingPagesVideoPlayerLoadingBar.h(SnsAdNativeLandingPagesVideoPlayerLoadingBar.this).setText(SnsAdNativeLandingPagesVideoPlayerLoadingBar.tr(i / 60) + ":" + SnsAdNativeLandingPagesVideoPlayerLoadingBar.tr(i % 60));
+            SnsAdNativeLandingPagesVideoPlayerLoadingBar.h(SnsAdNativeLandingPagesVideoPlayerLoadingBar.this).setText(SnsAdNativeLandingPagesVideoPlayerLoadingBar.tv(i / 60) + ":" + SnsAdNativeLandingPagesVideoPlayerLoadingBar.tv(i % 60));
             SnsAdNativeLandingPagesVideoPlayerLoadingBar.a(SnsAdNativeLandingPagesVideoPlayerLoadingBar.this, true);
           }
           else if (SnsAdNativeLandingPagesVideoPlayerLoadingBar.i(SnsAdNativeLandingPagesVideoPlayerLoadingBar.this))
@@ -221,8 +221,8 @@ public class SnsAdNativeLandingPagesVideoPlayerLoadingBar
             i = SnsAdNativeLandingPagesVideoPlayerLoadingBar.d(SnsAdNativeLandingPagesVideoPlayerLoadingBar.this);
             if (SnsAdNativeLandingPagesVideoPlayerLoadingBar.a(SnsAdNativeLandingPagesVideoPlayerLoadingBar.this) != null)
             {
-              ad.i("MicroMsg.SnsAdNativeLandingPagesVideoPlayerLoadingBar", "current time : ".concat(String.valueOf(i)));
-              SnsAdNativeLandingPagesVideoPlayerLoadingBar.a(SnsAdNativeLandingPagesVideoPlayerLoadingBar.this).nM(i);
+              ae.i("MicroMsg.SnsAdNativeLandingPagesVideoPlayerLoadingBar", "current time : ".concat(String.valueOf(i)));
+              SnsAdNativeLandingPagesVideoPlayerLoadingBar.a(SnsAdNativeLandingPagesVideoPlayerLoadingBar.this).nP(i);
             }
             SnsAdNativeLandingPagesVideoPlayerLoadingBar.a(SnsAdNativeLandingPagesVideoPlayerLoadingBar.this, false);
           }
@@ -232,7 +232,7 @@ public class SnsAdNativeLandingPagesVideoPlayerLoadingBar
     AppMethodBeat.o(116142);
   }
   
-  public static String tr(int paramInt)
+  public static String tv(int paramInt)
   {
     AppMethodBeat.i(116151);
     if (paramInt < 10)
@@ -245,32 +245,32 @@ public class SnsAdNativeLandingPagesVideoPlayerLoadingBar
     return String.valueOf(paramInt);
   }
   
-  public final void dQn()
+  public final void dTK()
   {
-    this.lry = 0;
+    this.lvY = 0;
   }
   
   public boolean getIsPlay()
   {
-    return this.dtk;
+    return this.duq;
   }
   
   public int getVideoTotalTime()
   {
-    return this.lrx;
+    return this.lvX;
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     AppMethodBeat.i(116143);
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    if ((paramInt1 != this.lrB) || (paramInt2 != this.lrC) || (paramInt3 != this.lrD) || (paramInt4 != this.lrE)) {
-      boy();
+    if ((paramInt1 != this.lwb) || (paramInt2 != this.lwc) || (paramInt3 != this.lwd) || (paramInt4 != this.lwe)) {
+      bpi();
     }
-    this.lrB = paramInt1;
-    this.lrC = paramInt2;
-    this.lrD = paramInt3;
-    this.lrE = paramInt4;
+    this.lwb = paramInt1;
+    this.lwc = paramInt2;
+    this.lwd = paramInt3;
+    this.lwe = paramInt4;
     AppMethodBeat.o(116143);
   }
   
@@ -278,40 +278,40 @@ public class SnsAdNativeLandingPagesVideoPlayerLoadingBar
   {
     AppMethodBeat.i(116147);
     this.mPosition = paramInt;
-    boy();
+    bpi();
     AppMethodBeat.o(116147);
   }
   
   public void setIplaySeekCallback(b paramb)
   {
-    this.ySo = paramb;
+    this.ziy = paramb;
   }
   
   public void setIsPlay(boolean paramBoolean)
   {
     AppMethodBeat.i(116145);
-    this.dtk = paramBoolean;
+    this.duq = paramBoolean;
     if (paramBoolean)
     {
-      this.lru.setImageResource(2131690795);
+      this.lvU.setImageResource(2131690795);
       AppMethodBeat.o(116145);
       return;
     }
-    this.lru.setImageResource(2131690796);
+    this.lvU.setImageResource(2131690796);
     AppMethodBeat.o(116145);
   }
   
   public void setOnPlayButtonClickListener(View.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(116144);
-    this.lru.setOnClickListener(paramOnClickListener);
+    this.lvU.setOnClickListener(paramOnClickListener);
     AppMethodBeat.o(116144);
   }
   
   public void setVideoTotalTime(final int paramInt)
   {
     AppMethodBeat.i(116148);
-    if ((this.lrt.isShown()) && (this.lrt.getWidth() == 0))
+    if ((this.lvT.isShown()) && (this.lvT.getWidth() == 0))
     {
       post(new Runnable()
       {
@@ -325,10 +325,10 @@ public class SnsAdNativeLandingPagesVideoPlayerLoadingBar
       AppMethodBeat.o(116148);
       return;
     }
-    this.lrx = paramInt;
+    this.lvX = paramInt;
     this.mPosition = 0;
-    this.lrw.setText(tr(this.lrx / 60) + ":" + tr(this.lrx % 60));
-    boy();
+    this.lvW.setText(tv(this.lvX / 60) + ":" + tv(this.lvX % 60));
+    bpi();
     AppMethodBeat.o(116148);
   }
 }

@@ -2,10 +2,10 @@ package kotlinx.coroutines;
 
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/coroutines/Incomplete;", "", "isActive", "", "()Z", "list", "Lkotlinx/coroutines/NodeList;", "getList", "()Lkotlinx/coroutines/NodeList;", "kotlinx-coroutines-core"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/coroutines/Incomplete;", "", "isActive", "", "()Z", "list", "Lkotlinx/coroutines/NodeList;", "getList", "()Lkotlinx/coroutines/NodeList;", "kotlinx-coroutines-core"})
 public abstract interface bm
 {
-  public abstract ca gvq();
+  public abstract ca gzS();
   
   public abstract boolean isActive();
 }

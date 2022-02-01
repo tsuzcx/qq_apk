@@ -2,7 +2,7 @@ package com.tencent.d.e.a.a;
 
 public final class a
 {
-  public String dFD = "";
+  public String dGI = "";
   public int versionCode = 0;
   public String versionName = "0.0.0";
 }

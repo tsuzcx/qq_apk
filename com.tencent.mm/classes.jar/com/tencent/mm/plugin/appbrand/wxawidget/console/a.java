@@ -18,14 +18,14 @@ import java.util.List;
 final class a
   extends RecyclerView.a
 {
-  private static final SimpleDateFormat nqf;
+  private static final SimpleDateFormat nvy;
   LayoutInflater mInflater;
-  List<LogInfo> nqg;
+  List<LogInfo> nvz;
   
   static
   {
     AppMethodBeat.i(121614);
-    nqf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS");
+    nvy = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS");
     AppMethodBeat.o(121614);
   }
   
@@ -33,7 +33,7 @@ final class a
   {
     AppMethodBeat.i(121609);
     this.mInflater = LayoutInflater.from(paramContext);
-    this.nqg = new LinkedList();
+    this.nvz = new LinkedList();
     AppMethodBeat.o(121609);
   }
   
@@ -48,15 +48,15 @@ final class a
   public final void a(RecyclerView.w paramw, int paramInt)
   {
     AppMethodBeat.i(121611);
-    LogInfo localLogInfo = (LogInfo)this.nqg.get(paramInt);
-    ((a)paramw).hca.setText(String.format("[%s] %s", new Object[] { nqf.format(new Date(localLogInfo.hKv)), localLogInfo.message }));
+    LogInfo localLogInfo = (LogInfo)this.nvz.get(paramInt);
+    ((a)paramw).heO.setText(String.format("[%s] %s", new Object[] { nvy.format(new Date(localLogInfo.hNo)), localLogInfo.message }));
     AppMethodBeat.o(121611);
   }
   
   public final int getItemCount()
   {
     AppMethodBeat.i(121612);
-    int i = this.nqg.size();
+    int i = this.nvz.size();
     AppMethodBeat.o(121612);
     return i;
   }
@@ -64,7 +64,7 @@ final class a
   public final int getItemViewType(int paramInt)
   {
     AppMethodBeat.i(121613);
-    paramInt = ((LogInfo)this.nqg.get(paramInt)).level;
+    paramInt = ((LogInfo)this.nvz.get(paramInt)).level;
     AppMethodBeat.o(121613);
     return paramInt;
   }
@@ -72,47 +72,47 @@ final class a
   static final class a
     extends RecyclerView.w
   {
-    TextView hca;
-    TextView nqh;
+    TextView heO;
+    TextView nvA;
     
     public a(View paramView, int paramInt)
     {
       super();
       AppMethodBeat.i(121608);
-      this.nqh = ((TextView)paramView.findViewById(2131301402));
-      this.hca = ((TextView)paramView.findViewById(2131298778));
+      this.nvA = ((TextView)paramView.findViewById(2131301402));
+      this.heO = ((TextView)paramView.findViewById(2131298778));
       switch (paramInt)
       {
       default: 
-        this.nqh.setText("L");
-        this.hca.setTextColor(-7829368);
+        this.nvA.setText("L");
+        this.heO.setTextColor(-7829368);
         AppMethodBeat.o(121608);
         return;
       case 1: 
-        this.nqh.setText("L");
-        this.hca.setTextColor(-7829368);
+        this.nvA.setText("L");
+        this.heO.setTextColor(-7829368);
         AppMethodBeat.o(121608);
         return;
       case 2: 
-        this.nqh.setText("I");
-        this.hca.setTextColor(-16777216);
+        this.nvA.setText("I");
+        this.heO.setTextColor(-16777216);
         AppMethodBeat.o(121608);
         return;
       case 3: 
-        this.nqh.setText("W");
-        this.hca.setTextColor(Color.rgb(0, 0, 204));
+        this.nvA.setText("W");
+        this.heO.setTextColor(Color.rgb(0, 0, 204));
         AppMethodBeat.o(121608);
         return;
       }
-      this.nqh.setText("E");
-      this.hca.setTextColor(-65536);
+      this.nvA.setText("E");
+      this.heO.setTextColor(-65536);
       AppMethodBeat.o(121608);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.wxawidget.console.a
  * JD-Core Version:    0.7.0.1
  */

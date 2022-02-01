@@ -4,27 +4,27 @@ import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "isPlay", "", "onPlayStatusChange"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "isPlay", "", "onPlayStatusChange"})
 final class VideoLiteUI$b
   implements VideoLiteControBar.a
 {
   VideoLiteUI$b(VideoLiteUI paramVideoLiteUI) {}
   
-  public final void jq(boolean paramBoolean)
+  public final void jp(boolean paramBoolean)
   {
-    AppMethodBeat.i(210107);
-    ImageView localImageView = VideoLiteUI.a(this.oqd);
+    AppMethodBeat.i(209141);
+    ImageView localImageView = VideoLiteUI.a(this.owz);
     if (localImageView != null)
     {
       if (paramBoolean) {}
       for (int i = 8;; i = 0)
       {
         localImageView.setVisibility(i);
-        AppMethodBeat.o(210107);
+        AppMethodBeat.o(209141);
         return;
       }
     }
-    AppMethodBeat.o(210107);
+    AppMethodBeat.o(209141);
   }
 }
 

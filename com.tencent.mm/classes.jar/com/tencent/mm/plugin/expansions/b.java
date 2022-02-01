@@ -8,14 +8,14 @@ import d.g.b.p;
 import d.l;
 import d.z;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/expansions/ExpansionsKtWrapper;", "", "()V", "assetsCallback", "Lkotlin/Function1;", "Landroid/content/res/AssetManager;", "", "getAssetsCallback", "()Lkotlin/jvm/functions/Function1;", "setAssetsCallback", "(Lkotlin/jvm/functions/Function1;)V", "callbackFail", "Lkotlin/Function0;", "getCallbackFail", "()Lkotlin/jvm/functions/Function0;", "setCallbackFail", "(Lkotlin/jvm/functions/Function0;)V", "installSuccess", "getInstallSuccess", "setInstallSuccess", "invoke", "onFail", "block", "onGetAssets", "onInstalled", "expansions-visitor_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/expansions/ExpansionsKtWrapper;", "", "()V", "assetsCallback", "Lkotlin/Function1;", "Landroid/content/res/AssetManager;", "", "getAssetsCallback", "()Lkotlin/jvm/functions/Function1;", "setAssetsCallback", "(Lkotlin/jvm/functions/Function1;)V", "callbackFail", "Lkotlin/Function0;", "getCallbackFail", "()Lkotlin/jvm/functions/Function0;", "setCallbackFail", "(Lkotlin/jvm/functions/Function0;)V", "installSuccess", "getInstallSuccess", "setInstallSuccess", "invoke", "onFail", "block", "onGetAssets", "onInstalled", "expansions-visitor_release"})
 public final class b
 {
-  public a<z> qpn;
-  a<z> qpo;
-  public d.g.a.b<? super AssetManager, z> qpp;
+  public a<z> qvT;
+  a<z> qvU;
+  public d.g.a.b<? super AssetManager, z> qvV;
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/expansions/ExpansionsKtWrapper$invoke$1", "Lcom/tencent/mm/plugin/expansions/Expansions$AssetsCallback;", "onFail", "", "onSuccess", "assetManager", "Landroid/content/res/AssetManager;", "expansions-visitor_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/expansions/ExpansionsKtWrapper$invoke$1", "Lcom/tencent/mm/plugin/expansions/Expansions$AssetsCallback;", "onFail", "", "onSuccess", "assetManager", "Landroid/content/res/AssetManager;", "expansions-visitor_release"})
   public static final class a
     implements a.a
   {
@@ -23,7 +23,7 @@ public final class b
     {
       AppMethodBeat.i(152981);
       p.h(paramAssetManager, "assetManager");
-      d.g.a.b localb = this.qpq.qpp;
+      d.g.a.b localb = this.qvW.qvV;
       if (localb != null)
       {
         localb.invoke(paramAssetManager);
@@ -34,7 +34,7 @@ public final class b
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/expansions/ExpansionsKtWrapper$invoke$2", "Lcom/tencent/mm/plugin/expansions/Expansions$Callback;", "onFail", "", "onSuccess", "behavior", "Lcom/tencent/mm/toolkit/frontia/ext/ShareLibrary$SoLibBehavior;", "expansions-visitor_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/expansions/ExpansionsKtWrapper$invoke$2", "Lcom/tencent/mm/plugin/expansions/Expansions$Callback;", "onFail", "", "onSuccess", "behavior", "Lcom/tencent/mm/toolkit/frontia/ext/ShareLibrary$SoLibBehavior;", "expansions-visitor_release"})
   public static final class b
     implements a.b
   {
@@ -42,7 +42,7 @@ public final class b
     {
       AppMethodBeat.i(152982);
       p.h(parama, "behavior");
-      parama = this.qpq.qpo;
+      parama = this.qvW.qvU;
       if (parama != null)
       {
         parama.invoke();
@@ -55,7 +55,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.expansions.b
  * JD-Core Version:    0.7.0.1
  */

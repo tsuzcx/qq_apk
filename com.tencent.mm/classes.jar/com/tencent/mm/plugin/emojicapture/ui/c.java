@@ -12,17 +12,17 @@ import d.a.e;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"DEFAULT_STROKE_COLOR", "", "DEFAULT_TEXT_COLOR", "STROKE_COLORS", "", "getSTROKE_COLORS", "()[I", "TEXT_COLORS", "getTEXT_COLORS", "findStrokeColor", "textColor", "findTextColor", "isRedPackageScene", "", "scene", "waitUploading", "waitingMixing", "getIconNorColor", "Landroid/view/View;", "getIconSelColor", "getTextColor", "setSvgDrawable", "", "Landroid/widget/ImageView;", "resId", "color", "plugin-emojicapture_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"DEFAULT_STROKE_COLOR", "", "DEFAULT_TEXT_COLOR", "STROKE_COLORS", "", "getSTROKE_COLORS", "()[I", "TEXT_COLORS", "getTEXT_COLORS", "findStrokeColor", "textColor", "findTextColor", "isRedPackageScene", "", "scene", "waitUploading", "waitingMixing", "getIconNorColor", "Landroid/view/View;", "getIconSelColor", "getTextColor", "setSvgDrawable", "", "Landroid/widget/ImageView;", "resId", "color", "plugin-emojicapture_release"})
 public final class c
 {
-  private static final int[] pUF = { -1, -16777216, -314573, -12493, -4920114, -4724993, -144437 };
-  private static final int[] pUG = { -16777216, -1, -15616, -2724096, -16339626, -15954996, -298125 };
+  private static final int[] qbk = { -1, -16777216, -314573, -12493, -4920114, -4724993, -144437 };
+  private static final int[] qbl = { -16777216, -1, -15616, -2724096, -16339626, -15954996, -298125 };
   
-  public static final int Cr(int paramInt)
+  public static final int CD(int paramInt)
   {
     int j = 1;
     AppMethodBeat.i(475);
-    Object localObject = pUF;
+    Object localObject = qbk;
     int i;
     if (localObject.length == 0)
     {
@@ -44,7 +44,7 @@ public final class c
       i = 0;
       break;
       i = localObject[0];
-      int m = e.O((int[])localObject);
+      int m = e.P((int[])localObject);
       k = i;
       if (m != 0)
       {
@@ -82,21 +82,21 @@ public final class c
     return -1;
   }
   
-  public static final int Cs(int paramInt)
+  public static final int CE(int paramInt)
   {
     AppMethodBeat.i(476);
-    paramInt = e.n(pUF, paramInt);
+    paramInt = e.n(qbk, paramInt);
     if (paramInt < 0)
     {
       AppMethodBeat.o(476);
       return -16777216;
     }
-    paramInt = pUG[paramInt];
+    paramInt = qbl[paramInt];
     AppMethodBeat.o(476);
     return paramInt;
   }
   
-  public static final boolean Ct(int paramInt)
+  public static final boolean CF(int paramInt)
   {
     switch (paramInt)
     {
@@ -106,10 +106,10 @@ public final class c
     return true;
   }
   
-  public static final boolean Cu(int paramInt)
+  public static final boolean CG(int paramInt)
   {
     AppMethodBeat.i(480);
-    if ((Ct(paramInt)) && ((paramInt == 4) || (paramInt == 5)))
+    if ((CF(paramInt)) && ((paramInt == 4) || (paramInt == 5)))
     {
       AppMethodBeat.o(480);
       return true;
@@ -126,14 +126,14 @@ public final class c
     AppMethodBeat.o(479);
   }
   
-  public static final int[] ckn()
+  public static final int[] clD()
   {
-    return pUF;
+    return qbk;
   }
   
-  public static final int[] cko()
+  public static final int[] clE()
   {
-    return pUG;
+    return qbl;
   }
   
   public static final int dP(View paramView)
@@ -142,7 +142,7 @@ public final class c
     p.h(paramView, "$this$getIconSelColor");
     Context localContext = paramView.getContext();
     p.g(localContext, "context");
-    int i = localContext.getResources().getColor(b.ck(paramView.getContext()));
+    int i = localContext.getResources().getColor(b.cm(paramView.getContext()));
     AppMethodBeat.o(477);
     return i;
   }
@@ -160,7 +160,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.emojicapture.ui.c
  * JD-Core Version:    0.7.0.1
  */

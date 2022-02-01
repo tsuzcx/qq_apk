@@ -14,13 +14,13 @@ class PreCachingAlgorithmDecorator$PrecacheRunnable
   
   public void run()
   {
-    AppMethodBeat.i(192946);
+    AppMethodBeat.i(217616);
     try
     {
       Thread.sleep((Math.random() * 500.0D + 500.0D));
       label20:
       PreCachingAlgorithmDecorator.a(this.a, this.b);
-      AppMethodBeat.o(192946);
+      AppMethodBeat.o(217616);
       return;
     }
     catch (InterruptedException localInterruptedException)

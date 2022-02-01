@@ -4,14 +4,14 @@ import android.content.Context;
 import android.text.TextWatcher;
 import android.view.View;
 import android.view.View.OnFocusChangeListener;
-import com.tencent.mm.plugin.appbrand.page.aa;
+import com.tencent.mm.plugin.appbrand.page.z;
 import com.tencent.mm.plugin.appbrand.widget.input.autofill.b;
 
 public abstract interface ab
 {
-  public abstract void A(aa paramaa);
+  public abstract void B(z paramz);
   
-  public abstract void B(aa paramaa);
+  public abstract void C(z paramz);
   
   public abstract void M(float paramFloat1, float paramFloat2);
   
@@ -25,17 +25,17 @@ public abstract interface ab
   
   public abstract void b(View.OnFocusChangeListener paramOnFocusChangeListener);
   
-  public abstract void bEI();
+  public abstract void bFA();
   
-  public abstract void bEJ();
+  public abstract void bFB();
   
-  public abstract void bEK();
+  public abstract void bFC();
   
-  public abstract boolean bEq();
+  public abstract boolean bFi();
   
-  public abstract boolean bEr();
+  public abstract boolean bFj();
   
-  public abstract boolean bEu();
+  public abstract boolean bFm();
   
   public abstract void destroy();
   
@@ -59,7 +59,7 @@ public abstract interface ab
   
   public abstract void setOnKeyUpPostImeListener(b paramb);
   
-  public abstract int wx(int paramInt);
+  public abstract int wC(int paramInt);
   
   public static abstract interface a
   {
@@ -68,12 +68,12 @@ public abstract interface ab
   
   public static abstract interface b
   {
-    public abstract boolean wn(int paramInt);
+    public abstract boolean ws(int paramInt);
   }
   
   public static abstract interface c
   {
-    public abstract void bEt();
+    public abstract void bFl();
   }
 }
 

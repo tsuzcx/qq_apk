@@ -4,7 +4,7 @@ import android.os.ConditionVariable;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.video.b.c.c;
 import com.tencent.mm.plugin.appbrand.jsapi.video.b.e.h;
-import com.tencent.mm.vfs.e;
+import com.tencent.mm.vfs.k;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -19,53 +19,53 @@ public final class i
   private final HashMap<String, f> bGo;
   private final HashMap<String, ArrayList<a.a>> bGq;
   private long bGr;
-  final e lmD;
-  private final d lmE;
-  private final HashMap<String, TreeSet<f>> lmF;
+  final k lrd;
+  private final d lre;
+  private final HashMap<String, TreeSet<f>> lrf;
   
-  public i(final e parame, d paramd)
+  public i(final k paramk, d paramd)
   {
-    AppMethodBeat.i(206000);
-    this.lmD = parame;
-    this.lmE = paramd;
+    AppMethodBeat.i(211027);
+    this.lrd = paramk;
+    this.lre = paramd;
     this.bGo = new HashMap();
-    this.lmF = new HashMap();
+    this.lrf = new HashMap();
     this.bGq = new HashMap();
-    parame = new ConditionVariable();
+    paramk = new ConditionVariable();
     new Thread()
     {
       public final void run()
       {
-        AppMethodBeat.i(205999);
+        AppMethodBeat.i(211026);
         for (;;)
         {
           int i;
           f localf;
           synchronized (i.this)
           {
-            parame.open();
+            paramk.open();
             i locali2 = i.this;
-            if (!locali2.lmD.exists()) {
-              locali2.lmD.mkdirs();
+            if (!locali2.lrd.exists()) {
+              locali2.lrd.mkdirs();
             }
-            e[] arrayOfe = locali2.lmD.fOM();
-            if (arrayOfe == null) {
+            k[] arrayOfk = locali2.lrd.fTj();
+            if (arrayOfk == null) {
               break label165;
             }
             i = 0;
-            if (i >= arrayOfe.length) {
+            if (i >= arrayOfk.length) {
               break label165;
             }
-            e locale = arrayOfe[i];
-            if (locale.length() == 0L)
+            k localk = arrayOfk[i];
+            if (localk.length() == 0L)
             {
-              locale.delete();
+              localk.delete();
             }
             else
             {
-              localf = f.C(locale);
+              localf = f.C(localk);
               if (localf == null) {
-                locale.delete();
+                localk.delete();
               }
             }
           }
@@ -75,7 +75,7 @@ public final class i
             localObject.b(localf);
             break label173;
             label165:
-            AppMethodBeat.o(205999);
+            AppMethodBeat.o(211026);
             return;
           }
           label173:
@@ -83,14 +83,14 @@ public final class i
         }
       }
     }.start();
-    parame.block();
-    AppMethodBeat.o(206000);
+    paramk.block();
+    AppMethodBeat.o(211027);
   }
   
-  private void bnD()
+  private void bon()
   {
-    AppMethodBeat.i(206010);
-    Iterator localIterator1 = this.lmF.entrySet().iterator();
+    AppMethodBeat.i(211037);
+    Iterator localIterator1 = this.lrf.entrySet().iterator();
     while (localIterator1.hasNext())
     {
       Iterator localIterator2 = ((TreeSet)((Map.Entry)localIterator1.next()).getValue()).iterator();
@@ -115,7 +115,7 @@ public final class i
         localIterator1.remove();
       }
     }
-    AppMethodBeat.o(206010);
+    AppMethodBeat.o(211037);
   }
   
   /* Error */
@@ -127,7 +127,7 @@ public final class i
     //   2: ldc 121
     //   4: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   7: aload_0
-    //   8: getfield 44	com/tencent/mm/plugin/appbrand/jsapi/video/b/a/i:lmF	Ljava/util/HashMap;
+    //   8: getfield 44	com/tencent/mm/plugin/appbrand/jsapi/video/b/a/i:lrf	Ljava/util/HashMap;
     //   11: aload_1
     //   12: invokevirtual 125	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
     //   15: checkcast 91	java/util/TreeSet
@@ -174,17 +174,17 @@ public final class i
       f localf;
       try
       {
-        AppMethodBeat.i(206004);
+        AppMethodBeat.i(211031);
         str = paramf.key;
         long l = paramf.position;
-        TreeSet localTreeSet = (TreeSet)this.lmF.get(str);
+        TreeSet localTreeSet = (TreeSet)this.lrf.get(str);
         if (localTreeSet == null)
         {
           localf = f.T(str, paramf.position);
           if (!localf.bFZ) {
             break label188;
           }
-          AppMethodBeat.o(206004);
+          AppMethodBeat.o(211031);
           return localf;
         }
         localf = (f)localTreeSet.floor(paramf);
@@ -193,7 +193,7 @@ public final class i
           if (localf.aXd.exists()) {
             continue;
           }
-          bnD();
+          bon();
           continue;
         }
         localf = (f)localTreeSet.ceiling(paramf);
@@ -211,12 +211,12 @@ public final class i
         if (!this.bGo.containsKey(paramf.key))
         {
           this.bGo.put(paramf.key, localf);
-          AppMethodBeat.o(206004);
+          AppMethodBeat.o(211031);
         }
         else
         {
           localf = null;
-          AppMethodBeat.o(206004);
+          AppMethodBeat.o(211031);
         }
       }
     }
@@ -224,7 +224,7 @@ public final class i
   
   private void g(f paramf)
   {
-    AppMethodBeat.i(206011);
+    AppMethodBeat.i(211038);
     ArrayList localArrayList = (ArrayList)this.bGq.get(paramf.key);
     if (localArrayList != null)
     {
@@ -235,13 +235,13 @@ public final class i
         i -= 1;
       }
     }
-    this.lmE.c(paramf);
-    AppMethodBeat.o(206011);
+    this.lre.c(paramf);
+    AppMethodBeat.o(211038);
   }
   
   private void h(f paramf)
   {
-    AppMethodBeat.i(206012);
+    AppMethodBeat.i(211039);
     ArrayList localArrayList = (ArrayList)this.bGq.get(paramf.key);
     if (localArrayList != null)
     {
@@ -252,26 +252,26 @@ public final class i
         i -= 1;
       }
     }
-    this.lmE.a(this, paramf);
-    AppMethodBeat.o(206012);
+    this.lre.a(this, paramf);
+    AppMethodBeat.o(211039);
   }
   
-  public final void B(e parame)
+  public final void B(k paramk)
   {
     for (;;)
     {
       try
       {
-        AppMethodBeat.i(206006);
-        f localf = f.C(parame);
+        AppMethodBeat.i(211033);
+        f localf = f.C(paramk);
         boolean bool;
         if (localf != null)
         {
           bool = true;
           com.tencent.mm.plugin.appbrand.jsapi.video.b.e.a.checkState(bool);
           com.tencent.mm.plugin.appbrand.jsapi.video.b.e.a.checkState(this.bGo.containsKey(localf.key));
-          if (!parame.exists()) {
-            AppMethodBeat.o(206006);
+          if (!paramk.exists()) {
+            AppMethodBeat.o(211033);
           }
         }
         else
@@ -279,17 +279,17 @@ public final class i
           bool = false;
           continue;
         }
-        if (parame.length() == 0L)
+        if (paramk.length() == 0L)
         {
-          parame.delete();
-          AppMethodBeat.o(206006);
+          paramk.delete();
+          AppMethodBeat.o(211033);
           continue;
         }
         f(localf);
       }
       finally {}
       notifyAll();
-      AppMethodBeat.o(206006);
+      AppMethodBeat.o(211033);
     }
   }
   
@@ -339,43 +339,59 @@ public final class i
     //   35	39	42	finally
   }
   
+  public final f R(String paramString, long paramLong)
+  {
+    try
+    {
+      AppMethodBeat.i(211030);
+      paramString = e(f.S(paramString, paramLong));
+      AppMethodBeat.o(211030);
+      return paramString;
+    }
+    finally
+    {
+      paramString = finally;
+      throw paramString;
+    }
+  }
+  
   /* Error */
-  public final long QI(String paramString)
+  public final long Rr(String paramString)
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc 228
+    //   2: ldc 230
     //   4: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   7: aload_0
     //   8: aload_1
-    //   9: invokespecial 230	com/tencent/mm/plugin/appbrand/jsapi/video/b/a/i:bu	(Ljava/lang/String;)Ljava/util/NavigableSet;
+    //   9: invokespecial 232	com/tencent/mm/plugin/appbrand/jsapi/video/b/a/i:bu	(Ljava/lang/String;)Ljava/util/NavigableSet;
     //   12: astore_1
     //   13: aload_1
     //   14: ifnull +40 -> 54
     //   17: aload_1
-    //   18: invokeinterface 235 1 0
+    //   18: invokeinterface 237 1 0
     //   23: checkcast 94	com/tencent/mm/plugin/appbrand/jsapi/video/b/a/f
     //   26: astore_1
     //   27: aload_1
     //   28: ifnull +26 -> 54
     //   31: aload_1
-    //   32: getfield 238	com/tencent/mm/plugin/appbrand/jsapi/video/b/a/f:jIt	J
+    //   32: getfield 240	com/tencent/mm/plugin/appbrand/jsapi/video/b/a/f:jLu	J
     //   35: lconst_0
     //   36: lcmp
     //   37: iflt +17 -> 54
     //   40: aload_1
-    //   41: getfield 238	com/tencent/mm/plugin/appbrand/jsapi/video/b/a/f:jIt	J
+    //   41: getfield 240	com/tencent/mm/plugin/appbrand/jsapi/video/b/a/f:jLu	J
     //   44: lstore_2
-    //   45: ldc 228
+    //   45: ldc 230
     //   47: invokestatic 61	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   50: aload_0
     //   51: monitorexit
     //   52: lload_2
     //   53: lreturn
-    //   54: ldc2_w 239
+    //   54: ldc2_w 241
     //   57: lstore_2
-    //   58: ldc 228
+    //   58: ldc 230
     //   60: invokestatic 61	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   63: goto -13 -> 50
     //   66: astore_1
@@ -397,42 +413,42 @@ public final class i
   }
   
   /* Error */
-  public final c QJ(String paramString)
+  public final c Rs(String paramString)
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc 243
+    //   2: ldc 245
     //   4: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   7: aload_0
     //   8: aload_1
-    //   9: invokespecial 230	com/tencent/mm/plugin/appbrand/jsapi/video/b/a/i:bu	(Ljava/lang/String;)Ljava/util/NavigableSet;
+    //   9: invokespecial 232	com/tencent/mm/plugin/appbrand/jsapi/video/b/a/i:bu	(Ljava/lang/String;)Ljava/util/NavigableSet;
     //   12: astore_1
     //   13: aload_1
     //   14: ifnull +40 -> 54
     //   17: aload_1
-    //   18: invokeinterface 235 1 0
+    //   18: invokeinterface 237 1 0
     //   23: checkcast 94	com/tencent/mm/plugin/appbrand/jsapi/video/b/a/f
     //   26: astore_1
     //   27: aload_1
     //   28: ifnull +26 -> 54
     //   31: aload_1
-    //   32: getfield 238	com/tencent/mm/plugin/appbrand/jsapi/video/b/a/f:jIt	J
+    //   32: getfield 240	com/tencent/mm/plugin/appbrand/jsapi/video/b/a/f:jLu	J
     //   35: lconst_0
     //   36: lcmp
     //   37: iflt +17 -> 54
     //   40: aload_1
-    //   41: getfield 247	com/tencent/mm/plugin/appbrand/jsapi/video/b/a/f:lmp	Lcom/tencent/mm/plugin/appbrand/jsapi/video/b/c/c;
+    //   41: getfield 249	com/tencent/mm/plugin/appbrand/jsapi/video/b/a/f:lqP	Lcom/tencent/mm/plugin/appbrand/jsapi/video/b/c/c;
     //   44: astore_1
-    //   45: ldc 243
+    //   45: ldc 245
     //   47: invokestatic 61	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   50: aload_0
     //   51: monitorexit
     //   52: aload_1
     //   53: areturn
-    //   54: getstatic 252	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/c:lnp	Lcom/tencent/mm/plugin/appbrand/jsapi/video/b/c/c;
+    //   54: getstatic 254	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/c:lrO	Lcom/tencent/mm/plugin/appbrand/jsapi/video/b/c/c;
     //   57: astore_1
-    //   58: ldc 243
+    //   58: ldc 245
     //   60: invokestatic 61	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   63: goto -13 -> 50
     //   66: astore_1
@@ -453,143 +469,127 @@ public final class i
   }
   
   /* Error */
-  public final long QK(String paramString)
+  public final long Rt(String paramString)
   {
     // Byte code:
     //   0: lconst_0
     //   1: lstore_2
     //   2: aload_0
     //   3: monitorenter
-    //   4: ldc 254
-    //   6: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   9: aload_0
-    //   10: aload_1
-    //   11: invokespecial 230	com/tencent/mm/plugin/appbrand/jsapi/video/b/a/i:bu	(Ljava/lang/String;)Ljava/util/NavigableSet;
-    //   14: astore_1
-    //   15: lload_2
-    //   16: lstore 4
-    //   18: aload_1
-    //   19: ifnull +136 -> 155
-    //   22: aload_1
-    //   23: invokeinterface 235 1 0
-    //   28: checkcast 94	com/tencent/mm/plugin/appbrand/jsapi/video/b/a/f
-    //   31: astore 6
-    //   33: aload 6
-    //   35: ifnull +42 -> 77
-    //   38: aload 6
-    //   40: getfield 109	com/tencent/mm/plugin/appbrand/jsapi/video/b/a/f:bFZ	Z
-    //   43: ifeq +34 -> 77
-    //   46: aload 6
-    //   48: getfield 238	com/tencent/mm/plugin/appbrand/jsapi/video/b/a/f:jIt	J
-    //   51: lconst_0
-    //   52: lcmp
-    //   53: iflt +24 -> 77
-    //   56: aload 6
-    //   58: getfield 140	com/tencent/mm/plugin/appbrand/jsapi/video/b/a/f:position	J
-    //   61: lconst_0
-    //   62: lcmp
-    //   63: ifeq +14 -> 77
-    //   66: ldc 254
-    //   68: invokestatic 61	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   71: lconst_0
-    //   72: lstore_2
-    //   73: aload_0
-    //   74: monitorexit
-    //   75: lload_2
-    //   76: lreturn
+    //   4: ldc_w 256
+    //   7: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   10: aload_0
+    //   11: aload_1
+    //   12: invokespecial 232	com/tencent/mm/plugin/appbrand/jsapi/video/b/a/i:bu	(Ljava/lang/String;)Ljava/util/NavigableSet;
+    //   15: astore_1
+    //   16: lload_2
+    //   17: lstore 4
+    //   19: aload_1
+    //   20: ifnull +138 -> 158
+    //   23: aload_1
+    //   24: invokeinterface 237 1 0
+    //   29: checkcast 94	com/tencent/mm/plugin/appbrand/jsapi/video/b/a/f
+    //   32: astore 6
+    //   34: aload 6
+    //   36: ifnull +43 -> 79
+    //   39: aload 6
+    //   41: getfield 109	com/tencent/mm/plugin/appbrand/jsapi/video/b/a/f:bFZ	Z
+    //   44: ifeq +35 -> 79
+    //   47: aload 6
+    //   49: getfield 240	com/tencent/mm/plugin/appbrand/jsapi/video/b/a/f:jLu	J
+    //   52: lconst_0
+    //   53: lcmp
+    //   54: iflt +25 -> 79
+    //   57: aload 6
+    //   59: getfield 140	com/tencent/mm/plugin/appbrand/jsapi/video/b/a/f:position	J
+    //   62: lconst_0
+    //   63: lcmp
+    //   64: ifeq +15 -> 79
+    //   67: ldc_w 256
+    //   70: invokestatic 61	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   73: lconst_0
+    //   74: lstore_2
+    //   75: aload_0
+    //   76: monitorexit
     //   77: lload_2
-    //   78: lstore 4
-    //   80: aload 6
-    //   82: ifnull +73 -> 155
-    //   85: lload_2
-    //   86: lstore 4
-    //   88: aload 6
-    //   90: getfield 238	com/tencent/mm/plugin/appbrand/jsapi/video/b/a/f:jIt	J
-    //   93: lconst_0
-    //   94: lcmp
-    //   95: iflt +60 -> 155
-    //   98: aload_1
-    //   99: invokeinterface 255 1 0
-    //   104: astore_1
-    //   105: lload_2
-    //   106: lstore 4
-    //   108: aload_1
-    //   109: invokeinterface 80 1 0
-    //   114: ifeq +41 -> 155
-    //   117: aload_1
-    //   118: invokeinterface 84 1 0
-    //   123: checkcast 94	com/tencent/mm/plugin/appbrand/jsapi/video/b/a/f
-    //   126: astore 6
-    //   128: aload 6
-    //   130: getfield 109	com/tencent/mm/plugin/appbrand/jsapi/video/b/a/f:bFZ	Z
-    //   133: ifne +11 -> 144
-    //   136: ldc 254
-    //   138: invokestatic 61	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   141: goto -68 -> 73
-    //   144: lload_2
-    //   145: aload 6
-    //   147: getfield 114	com/tencent/mm/plugin/appbrand/jsapi/video/b/a/f:length	J
-    //   150: ladd
-    //   151: lstore_2
-    //   152: goto -47 -> 105
-    //   155: lload 4
-    //   157: lstore_2
-    //   158: ldc 254
-    //   160: invokestatic 61	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   163: goto -90 -> 73
-    //   166: astore_1
-    //   167: aload_0
-    //   168: monitorexit
-    //   169: aload_1
-    //   170: athrow
+    //   78: lreturn
+    //   79: lload_2
+    //   80: lstore 4
+    //   82: aload 6
+    //   84: ifnull +74 -> 158
+    //   87: lload_2
+    //   88: lstore 4
+    //   90: aload 6
+    //   92: getfield 240	com/tencent/mm/plugin/appbrand/jsapi/video/b/a/f:jLu	J
+    //   95: lconst_0
+    //   96: lcmp
+    //   97: iflt +61 -> 158
+    //   100: aload_1
+    //   101: invokeinterface 257 1 0
+    //   106: astore_1
+    //   107: lload_2
+    //   108: lstore 4
+    //   110: aload_1
+    //   111: invokeinterface 80 1 0
+    //   116: ifeq +42 -> 158
+    //   119: aload_1
+    //   120: invokeinterface 84 1 0
+    //   125: checkcast 94	com/tencent/mm/plugin/appbrand/jsapi/video/b/a/f
+    //   128: astore 6
+    //   130: aload 6
+    //   132: getfield 109	com/tencent/mm/plugin/appbrand/jsapi/video/b/a/f:bFZ	Z
+    //   135: ifne +12 -> 147
+    //   138: ldc_w 256
+    //   141: invokestatic 61	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   144: goto -69 -> 75
+    //   147: lload_2
+    //   148: aload 6
+    //   150: getfield 114	com/tencent/mm/plugin/appbrand/jsapi/video/b/a/f:length	J
+    //   153: ladd
+    //   154: lstore_2
+    //   155: goto -48 -> 107
+    //   158: lload 4
+    //   160: lstore_2
+    //   161: ldc_w 256
+    //   164: invokestatic 61	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   167: goto -92 -> 75
+    //   170: astore_1
+    //   171: aload_0
+    //   172: monitorexit
+    //   173: aload_1
+    //   174: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	171	0	this	i
-    //   0	171	1	paramString	String
-    //   1	157	2	l1	long
-    //   16	140	4	l2	long
-    //   31	115	6	localf	f
+    //   0	175	0	this	i
+    //   0	175	1	paramString	String
+    //   1	160	2	l1	long
+    //   17	142	4	l2	long
+    //   32	117	6	localf	f
     // Exception table:
     //   from	to	target	type
-    //   4	15	166	finally
-    //   22	33	166	finally
-    //   38	71	166	finally
-    //   88	105	166	finally
-    //   108	141	166	finally
-    //   144	152	166	finally
-    //   158	163	166	finally
+    //   4	16	170	finally
+    //   23	34	170	finally
+    //   39	73	170	finally
+    //   90	107	170	finally
+    //   110	144	170	finally
+    //   147	155	170	finally
+    //   161	167	170	finally
   }
   
-  public final f R(String paramString, long paramLong)
+  public final k a(String paramString, long paramLong1, long paramLong2, c paramc, long paramLong3)
   {
     try
     {
-      AppMethodBeat.i(206003);
-      paramString = e(f.S(paramString, paramLong));
-      AppMethodBeat.o(206003);
-      return paramString;
-    }
-    finally
-    {
-      paramString = finally;
-      throw paramString;
-    }
-  }
-  
-  public final e a(String paramString, long paramLong1, long paramLong2, c paramc, long paramLong3)
-  {
-    try
-    {
-      AppMethodBeat.i(206005);
+      AppMethodBeat.i(211032);
       com.tencent.mm.plugin.appbrand.jsapi.video.b.e.a.checkState(this.bGo.containsKey(paramString));
-      if (!this.lmD.exists())
+      if (!this.lrd.exists())
       {
-        bnD();
-        this.lmD.mkdirs();
+        bon();
+        this.lrd.mkdirs();
       }
-      this.lmE.a(this, paramLong3);
-      paramString = f.a(this.lmD, paramString, paramLong1, paramLong2, paramc, System.currentTimeMillis());
-      AppMethodBeat.o(206005);
+      this.lre.a(this, paramLong3);
+      paramString = f.a(this.lrd, paramString, paramLong1, paramLong2, paramc, System.currentTimeMillis());
+      AppMethodBeat.o(211032);
       return paramString;
     }
     finally {}
@@ -644,15 +644,15 @@ public final class i
   {
     try
     {
-      AppMethodBeat.i(206009);
-      TreeSet localTreeSet = (TreeSet)this.lmF.get(paramf.key);
+      AppMethodBeat.i(211036);
+      TreeSet localTreeSet = (TreeSet)this.lrf.get(paramf.key);
       this.bGr -= paramf.length;
       paramf.aXd.delete();
       if ((localTreeSet == null) || (localTreeSet.isEmpty())) {
-        this.lmF.remove(paramf.key);
+        this.lrf.remove(paramf.key);
       }
       g(paramf);
-      AppMethodBeat.o(206009);
+      AppMethodBeat.o(211036);
       return;
     }
     finally {}
@@ -660,18 +660,18 @@ public final class i
   
   final boolean f(f paramf)
   {
-    AppMethodBeat.i(206008);
-    TreeSet localTreeSet2 = (TreeSet)this.lmF.get(paramf.key);
+    AppMethodBeat.i(211035);
+    TreeSet localTreeSet2 = (TreeSet)this.lrf.get(paramf.key);
     TreeSet localTreeSet1 = localTreeSet2;
     if (localTreeSet2 == null)
     {
       localTreeSet1 = new TreeSet();
-      this.lmF.put(paramf.key, localTreeSet1);
+      this.lrf.put(paramf.key, localTreeSet1);
     }
     boolean bool = localTreeSet1.add(paramf);
     this.bGr += paramf.length;
     h(paramf);
-    AppMethodBeat.o(206008);
+    AppMethodBeat.o(211035);
     return bool;
   }
   
@@ -682,21 +682,21 @@ public final class i
     {
       try
       {
-        AppMethodBeat.i(206015);
+        AppMethodBeat.i(211042);
         paramString = bu(paramString);
         if (paramString != null)
         {
           f localf = (f)paramString.first();
-          if ((localf != null) && (localf.jIt >= 0L))
+          if ((localf != null) && (localf.jLu >= 0L))
           {
-            long l2 = localf.jIt;
+            long l2 = localf.jLu;
             paramString = paramString.iterator();
             if (paramString.hasNext())
             {
               localf = (f)paramString.next();
               if (!localf.bFZ)
               {
-                AppMethodBeat.o(206015);
+                AppMethodBeat.o(211042);
                 bool = false;
                 return bool;
               }
@@ -706,12 +706,12 @@ public final class i
             if (l1 >= l2)
             {
               bool = true;
-              AppMethodBeat.o(206015);
+              AppMethodBeat.o(211042);
               continue;
             }
           }
         }
-        AppMethodBeat.o(206015);
+        AppMethodBeat.o(211042);
       }
       finally {}
       boolean bool = false;

@@ -6,9 +6,9 @@ import com.google.b.a.e;
 public final class a$ae
   extends e
 {
-  public int CcE = 0;
-  public long CcF = 0L;
-  public String LFV = "";
+  public int Cuf = 0;
+  public long Cug = 0L;
+  public String McZ = "";
   public String groupId = "";
   
   public a$ae()
@@ -21,14 +21,14 @@ public final class a$ae
     if (!this.groupId.equals("")) {
       paramb.d(1, this.groupId);
     }
-    if (this.CcE != 0) {
-      paramb.bx(2, this.CcE);
+    if (this.Cuf != 0) {
+      paramb.bx(2, this.Cuf);
     }
-    if (this.CcF != 0L) {
-      paramb.n(3, this.CcF);
+    if (this.Cug != 0L) {
+      paramb.n(3, this.Cug);
     }
-    if (!this.LFV.equals("")) {
-      paramb.d(4, this.LFV);
+    if (!this.McZ.equals("")) {
+      paramb.d(4, this.McZ);
     }
     super.a(paramb);
   }
@@ -41,16 +41,16 @@ public final class a$ae
       i = j + b.e(1, this.groupId);
     }
     j = i;
-    if (this.CcE != 0) {
-      j = i + b.bz(2, this.CcE);
+    if (this.Cuf != 0) {
+      j = i + b.bz(2, this.Cuf);
     }
     i = j;
-    if (this.CcF != 0L) {
-      i = j + b.p(3, this.CcF);
+    if (this.Cug != 0L) {
+      i = j + b.p(3, this.Cug);
     }
     j = i;
-    if (!this.LFV.equals("")) {
-      j = i + b.e(4, this.LFV);
+    if (!this.McZ.equals("")) {
+      j = i + b.e(4, this.McZ);
     }
     return j;
   }

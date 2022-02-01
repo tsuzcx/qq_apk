@@ -6,7 +6,7 @@ import javax.annotation.Nullable;
 
 public abstract interface k<K, V>
 {
-  public abstract Map<K, Collection<V>> AL();
+  public abstract Map<K, Collection<V>> AM();
   
   public abstract Collection<V> aq(@Nullable K paramK);
   
@@ -24,7 +24,7 @@ public abstract interface k<K, V>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.e.a.a.b.k
  * JD-Core Version:    0.7.0.1
  */

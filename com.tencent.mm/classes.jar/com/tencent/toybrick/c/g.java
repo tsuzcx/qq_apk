@@ -11,8 +11,8 @@ public abstract class g<S extends g, T extends a>
   implements Comparable<g>
 {
   CharSequence Hd;
-  public boolean MiZ;
-  private int[] Mja;
+  public boolean MFW;
+  private int[] MFX;
   public int bJr;
   
   public boolean equals(Object paramObject)
@@ -25,25 +25,25 @@ public abstract class g<S extends g, T extends a>
         return false;
       } while (!(paramObject instanceof g));
       paramObject = (g)paramObject;
-    } while ((paramObject.MiV == null) || (!paramObject.MiV.equals(this.MiV)) || (paramObject.Hd == null) || (!paramObject.Hd.equals(this.Hd)) || (paramObject.MiZ != this.MiZ) || (paramObject.isVisible != this.isVisible) || (paramObject.MiW != this.MiW));
+    } while ((paramObject.MFS == null) || (!paramObject.MFS.equals(this.MFS)) || (paramObject.Hd == null) || (!paramObject.Hd.equals(this.Hd)) || (paramObject.MFW != this.MFW) || (paramObject.isVisible != this.isVisible) || (paramObject.MFT != this.MFT));
     return true;
   }
   
-  public g.b fYH()
+  public g.b gdg()
   {
-    return g.b.Mjg;
+    return g.b.MGd;
   }
   
-  public final int[] hq(View paramView)
+  public final int[] hv(View paramView)
   {
     paramView = paramView.findViewById(16908310);
-    int[] arrayOfInt = this.Mja;
+    int[] arrayOfInt = this.MFX;
     if (paramView == null) {}
-    for (int i = (int)this.MiT.getResources().getDimension(2131165273);; i = paramView.getLeft())
+    for (int i = (int)this.MFQ.getResources().getDimension(2131165273);; i = paramView.getLeft())
     {
       arrayOfInt[0] = i;
-      this.Mja[1] = ((int)this.MiT.getResources().getDimension(2131165273));
-      return this.Mja;
+      this.MFX[1] = ((int)this.MFQ.getResources().getDimension(2131165273));
+      return this.MFX;
     }
   }
   
@@ -52,11 +52,11 @@ public abstract class g<S extends g, T extends a>
     static
     {
       AppMethodBeat.i(159957);
-      Mjb = new a("RED_NEW", 0);
-      Mjc = new a("RED_DOT", 1);
-      Mjd = new a("RED_NUM", 2);
-      Mje = new a("NONE", 3);
-      Mjf = new a[] { Mjb, Mjc, Mjd, Mje };
+      MFY = new a("RED_NEW", 0);
+      MFZ = new a("RED_DOT", 1);
+      MGa = new a("RED_NUM", 2);
+      MGb = new a("NONE", 3);
+      MGc = new a[] { MFY, MFZ, MGa, MGb };
       AppMethodBeat.o(159957);
     }
     

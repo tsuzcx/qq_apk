@@ -11,24 +11,24 @@ import com.tencent.mm.plugin.topstory.a.c.f;
 
 public final class c
 {
-  private View ByD;
-  private View ByE;
-  public f ByM;
-  a ByN;
-  private int ByO;
+  private View BQb;
+  private View BQc;
+  public f BQk;
+  a BQl;
+  private int BQm;
   public View contentView;
-  public String hzm;
+  public String hCa;
   
   public c(View paramView, a parama, f paramf, String paramString)
   {
     AppMethodBeat.i(126639);
-    this.ByO = 16;
+    this.BQm = 16;
     this.contentView = paramView;
-    this.ByM = paramf;
-    this.ByD = paramView.findViewById(2131299190);
-    this.ByE = paramView.findViewById(2131306200);
-    this.ByN = parama;
-    this.hzm = paramString;
+    this.BQk = paramf;
+    this.BQb = paramView.findViewById(2131299190);
+    this.BQc = paramView.findViewById(2131306200);
+    this.BQl = parama;
+    this.hCa = paramString;
     paramView.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
@@ -36,8 +36,8 @@ public final class c
         AppMethodBeat.i(126638);
         b localb = new b();
         localb.bd(paramAnonymousView);
-        a.b("com/tencent/mm/plugin/topstory/ui/widget/HaokanPopupWindow$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-        c.this.ByN.a(c.this.ByM);
+        a.b("com/tencent/mm/plugin/topstory/ui/widget/HaokanPopupWindow$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        c.this.BQl.a(c.this.BQk);
         a.a(this, "com/tencent/mm/plugin/topstory/ui/widget/HaokanPopupWindow$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(126638);
       }
@@ -51,17 +51,17 @@ public final class c
     int[] arrayOfInt = e.b(paramView.getContext(), paramView, this.contentView, paramBoolean);
     arrayOfInt[0] += 0;
     arrayOfInt[1] += paramInt;
-    if ((this.ByE != null) && (this.ByD != null))
+    if ((this.BQc != null) && (this.BQb != null))
     {
-      paramInt = e.fG(paramView) - e.dip2px(paramView.getContext(), this.ByO);
+      paramInt = e.fF(paramView) - e.dip2px(paramView.getContext(), this.BQm);
       if (!paramBoolean) {
         break label150;
       }
-      this.ByE.setVisibility(0);
-      this.ByD.setVisibility(8);
-      paramView = (RelativeLayout.LayoutParams)this.ByE.getLayoutParams();
+      this.BQc.setVisibility(0);
+      this.BQb.setVisibility(8);
+      paramView = (RelativeLayout.LayoutParams)this.BQc.getLayoutParams();
       paramView.leftMargin = paramInt;
-      this.ByE.setLayoutParams(paramView);
+      this.BQc.setLayoutParams(paramView);
     }
     for (;;)
     {
@@ -71,11 +71,11 @@ public final class c
       AppMethodBeat.o(126640);
       return;
       label150:
-      this.ByE.setVisibility(8);
-      this.ByD.setVisibility(0);
-      paramView = (RelativeLayout.LayoutParams)this.ByD.getLayoutParams();
+      this.BQc.setVisibility(8);
+      this.BQb.setVisibility(0);
+      paramView = (RelativeLayout.LayoutParams)this.BQb.getLayoutParams();
       paramView.leftMargin = paramInt;
-      this.ByD.setLayoutParams(paramView);
+      this.BQb.setLayoutParams(paramView);
     }
   }
   
@@ -86,7 +86,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.ui.widget.c
  * JD-Core Version:    0.7.0.1
  */

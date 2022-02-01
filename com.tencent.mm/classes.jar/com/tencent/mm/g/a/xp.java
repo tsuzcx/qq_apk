@@ -1,14 +1,14 @@
 package com.tencent.mm.g.a;
 
-import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.protocal.protobuf.chu;
 import com.tencent.mm.sdk.b.b;
+import java.util.List;
 
 public final class xp
   extends b
 {
-  public a dLU;
-  public b dLV;
+  public a dNc;
   
   public xp()
   {
@@ -17,28 +17,22 @@ public final class xp
   
   private xp(byte paramByte)
   {
-    AppMethodBeat.i(116056);
-    this.dLU = new a();
-    this.dLV = new b();
-    this.IbR = false;
+    AppMethodBeat.i(149893);
+    this.dNc = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(116056);
+    AppMethodBeat.o(149893);
   }
   
   public static final class a
   {
-    public Context context;
-    public int type;
-  }
-  
-  public static final class b
-  {
-    public boolean dLW;
+    public List<chu> dNd;
+    public int doK = -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.a.xp
  * JD-Core Version:    0.7.0.1
  */

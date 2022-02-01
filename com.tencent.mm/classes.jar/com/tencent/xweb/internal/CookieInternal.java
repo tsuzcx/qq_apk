@@ -9,7 +9,7 @@ public final class CookieInternal
   {
     public abstract void e(WebView paramWebView);
     
-    public abstract void gax();
+    public abstract void geZ();
     
     public abstract String getCookie(String paramString);
     

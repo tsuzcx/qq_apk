@@ -2,10 +2,10 @@ package kotlinx.coroutines;
 
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/coroutines/CopyableThrowable;", "T", "", "", "createCopy", "()Ljava/lang/Throwable;", "kotlinx-coroutines-core"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/coroutines/CopyableThrowable;", "T", "", "", "createCopy", "()Ljava/lang/Throwable;", "kotlinx-coroutines-core"})
 public abstract interface aa<T extends Throwable,  extends aa<T>>
 {
-  public abstract T guZ();
+  public abstract T gzB();
 }
 
 

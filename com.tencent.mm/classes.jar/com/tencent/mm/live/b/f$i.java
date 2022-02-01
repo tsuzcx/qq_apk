@@ -3,29 +3,29 @@ package com.tencent.mm.live.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/live/model/LiveConstants$TrtcRole;", "", "()V", "TRTC_ROLE_ANCHOR", "", "getTRTC_ROLE_ANCHOR", "()I", "TRTC_ROLE_AUDIENCE", "getTRTC_ROLE_AUDIENCE", "plugin-logic_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/live/model/LiveConstants$TrtcRole;", "", "()V", "TRTC_ROLE_ANCHOR", "", "getTRTC_ROLE_ANCHOR", "()I", "TRTC_ROLE_AUDIENCE", "getTRTC_ROLE_AUDIENCE", "plugin-logic_release"})
 public final class f$i
 {
-  private static final int gNv = 0;
-  private static final int gNw = 1;
-  public static final i gNx;
+  private static final int gQe = 0;
+  private static final int gQf = 1;
+  public static final i gQg;
   
   static
   {
-    AppMethodBeat.i(212047);
-    gNx = new i();
-    gNw = 1;
-    AppMethodBeat.o(212047);
+    AppMethodBeat.i(215666);
+    gQg = new i();
+    gQf = 1;
+    AppMethodBeat.o(215666);
   }
   
-  public static int ani()
+  public static int any()
   {
-    return gNv;
+    return gQe;
   }
   
-  public static int anj()
+  public static int anz()
   {
-    return gNw;
+    return gQf;
   }
 }
 

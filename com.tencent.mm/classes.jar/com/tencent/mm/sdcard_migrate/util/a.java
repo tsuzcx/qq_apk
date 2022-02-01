@@ -10,62 +10,62 @@ public final class a
 {
   public static void a(MigrateResultCallback paramMigrateResultCallback, int paramInt)
   {
-    AppMethodBeat.i(211151);
+    AppMethodBeat.i(211935);
     if (paramMigrateResultCallback != null) {
       try
       {
         if (paramMigrateResultCallback.asBinder().isBinderAlive()) {
-          paramMigrateResultCallback.aam(paramInt);
+          paramMigrateResultCallback.aaS(paramInt);
         }
-        AppMethodBeat.o(211151);
+        AppMethodBeat.o(211935);
         return;
       }
       catch (Throwable paramMigrateResultCallback)
       {
-        ExtStorageMigrateMonitor.fjf().printErrStackTrace("MicroMsg.MigrateResultCallbackHelper", paramMigrateResultCallback, "[-] Exception occurred.", new Object[0]);
+        ExtStorageMigrateMonitor.fmX().printErrStackTrace("MicroMsg.MigrateResultCallbackHelper", paramMigrateResultCallback, "[-] Exception occurred.", new Object[0]);
       }
     }
-    AppMethodBeat.o(211151);
+    AppMethodBeat.o(211935);
   }
   
   public static void a(MigrateResultCallback paramMigrateResultCallback, int paramInt, Throwable paramThrowable)
   {
-    AppMethodBeat.i(211153);
+    AppMethodBeat.i(211937);
     if (paramMigrateResultCallback != null) {
       try
       {
         if (paramMigrateResultCallback.asBinder().isBinderAlive()) {
           paramMigrateResultCallback.b(paramInt, new ExtStorageMigrateException(paramThrowable));
         }
-        AppMethodBeat.o(211153);
+        AppMethodBeat.o(211937);
         return;
       }
       catch (Throwable paramMigrateResultCallback)
       {
-        ExtStorageMigrateMonitor.fjf().printErrStackTrace("MicroMsg.MigrateResultCallbackHelper", paramMigrateResultCallback, "[-] Exception occurred.", new Object[0]);
+        ExtStorageMigrateMonitor.fmX().printErrStackTrace("MicroMsg.MigrateResultCallbackHelper", paramMigrateResultCallback, "[-] Exception occurred.", new Object[0]);
       }
     }
-    AppMethodBeat.o(211153);
+    AppMethodBeat.o(211937);
   }
   
   public static void b(MigrateResultCallback paramMigrateResultCallback, int paramInt)
   {
-    AppMethodBeat.i(211152);
+    AppMethodBeat.i(211936);
     if (paramMigrateResultCallback != null) {
       try
       {
         if (paramMigrateResultCallback.asBinder().isBinderAlive()) {
-          paramMigrateResultCallback.aan(paramInt);
+          paramMigrateResultCallback.aaT(paramInt);
         }
-        AppMethodBeat.o(211152);
+        AppMethodBeat.o(211936);
         return;
       }
       catch (Throwable paramMigrateResultCallback)
       {
-        ExtStorageMigrateMonitor.fjf().printErrStackTrace("MicroMsg.MigrateResultCallbackHelper", paramMigrateResultCallback, "[-] Exception occurred.", new Object[0]);
+        ExtStorageMigrateMonitor.fmX().printErrStackTrace("MicroMsg.MigrateResultCallbackHelper", paramMigrateResultCallback, "[-] Exception occurred.", new Object[0]);
       }
     }
-    AppMethodBeat.o(211152);
+    AppMethodBeat.o(211936);
   }
 }
 

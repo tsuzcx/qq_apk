@@ -4,13 +4,14 @@ import android.util.Pair;
 import android.webkit.ValueCallback;
 import com.tencent.luggage.sdk.config.AppBrandInitConfigLU;
 import com.tencent.luggage.sdk.config.AppBrandSysConfigLU;
+import com.tencent.luggage.sdk.d.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.o.a;
-import com.tencent.mm.protocal.protobuf.dza;
-import com.tencent.mm.protocal.protobuf.dzi;
-import com.tencent.mm.protocal.protobuf.dzp;
-import com.tencent.mm.protocal.protobuf.dzu;
-import com.tencent.mm.sdk.platformtools.i;
+import com.tencent.mm.protocal.protobuf.ear;
+import com.tencent.mm.protocal.protobuf.eaz;
+import com.tencent.mm.protocal.protobuf.ebg;
+import com.tencent.mm.protocal.protobuf.ebl;
+import com.tencent.mm.sdk.platformtools.j;
 import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -19,56 +20,56 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public final class m
 {
-  com.tencent.luggage.sdk.b.a.c.c kaO;
-  final dza kaP;
-  private String kaQ;
-  private int kaR;
-  private int kaS;
-  dzu kaT;
-  n kaU;
-  AtomicInteger kaV;
-  long kaW;
-  long kaX;
-  long kaY;
-  long kaZ;
-  AtomicInteger kba;
-  private boolean kbb;
-  private boolean kbc;
-  private final HashMap<String, Method> kbd;
-  private final HashMap<String, dzp> kbe;
-  LinkedList<Pair<String, ValueCallback<String>>> kbf;
-  final LinkedList<p> kbg;
-  final Map<String, l> kbh;
-  final LinkedList<dzi> kbi;
-  final HashMap<Integer, c> kbj;
-  int kbk;
-  long kbl;
+  final HashMap<Integer, c> keA;
+  int keB;
+  long keC;
+  com.tencent.luggage.sdk.b.a.c.c kee;
+  final ear kef;
+  private String keg;
+  private int keh;
+  private int kei;
+  ebl kej;
+  n kek;
+  AtomicInteger kel;
+  long kem;
+  long ken;
+  long keo;
+  long kep;
+  AtomicInteger keq;
+  private boolean ker;
+  private boolean kes;
+  private final HashMap<String, Method> ket;
+  private final HashMap<String, ebg> keu;
+  LinkedList<Pair<String, ValueCallback<String>>> kev;
+  final LinkedList<p> kew;
+  final Map<String, l> kex;
+  final LinkedList<eaz> kez;
   final Object mLock;
   private int mStatus;
   
   public m()
   {
     AppMethodBeat.i(147009);
-    this.kaR = 0;
-    this.kaS = 0;
+    this.keh = 0;
+    this.kei = 0;
     this.mStatus = 0;
-    this.kaV = new AtomicInteger(0);
-    this.kaW = 0L;
-    this.kaX = 0L;
-    this.kaZ = System.currentTimeMillis();
-    this.kba = new AtomicInteger(0);
-    this.kbd = new HashMap();
-    this.kbe = new HashMap();
-    this.kbf = new LinkedList();
-    this.kbg = new LinkedList();
-    this.kbh = new HashMap();
-    this.kbi = new LinkedList();
-    this.kbj = new HashMap();
+    this.kel = new AtomicInteger(0);
+    this.kem = 0L;
+    this.ken = 0L;
+    this.kep = System.currentTimeMillis();
+    this.keq = new AtomicInteger(0);
+    this.ket = new HashMap();
+    this.keu = new HashMap();
+    this.kev = new LinkedList();
+    this.kew = new LinkedList();
+    this.kex = new HashMap();
+    this.kez = new LinkedList();
+    this.keA = new HashMap();
     this.mLock = new Object();
-    this.kbk = 0;
-    this.kbl = 0L;
-    this.kaP = new dza();
-    this.kaP.FtC = i.Ics;
+    this.keB = 0;
+    this.keC = 0L;
+    this.kef = new ear();
+    this.kef.FMa = j.IwD;
     AppMethodBeat.o(147009);
   }
   
@@ -86,11 +87,11 @@ public final class m
     }
   }
   
-  public final void Oa(String paramString)
+  public final void OH(String paramString)
   {
     try
     {
-      this.kaQ = paramString;
+      this.keg = paramString;
       return;
     }
     finally
@@ -104,24 +105,24 @@ public final class m
   {
     boolean bool = true;
     AppMethodBeat.i(147010);
-    this.kaO = paramc;
-    v.setUin(this.kaO.En().Fb().uin);
-    this.kaU = v.Oh(paramString);
-    paramString = this.kaO.En().Fa();
+    this.kee = paramc;
+    v.setUin(this.kee.Eq().Fg().uin);
+    this.kek = v.OO(paramString);
+    paramString = this.kee.Eq().Ff();
     if (paramString != null)
     {
-      paramString.cmH = this.kaU.cmH;
-      paramString.cms = true;
-      paramc = (a)paramc.En().ar(a.class);
+      paramString.cmJ = this.kek.cmJ;
+      paramString.cmu = true;
+      paramc = (a)paramc.Eq().ar(a.class);
       if (paramc != null) {
-        if (paramString.cmH) {
+        if (paramString.cmJ) {
           break label102;
         }
       }
     }
     for (;;)
     {
-      paramc.lVl = bool;
+      paramc.lZO = bool;
       AppMethodBeat.o(147010);
       return;
       label102:
@@ -129,11 +130,11 @@ public final class m
     }
   }
   
-  public final String beE()
+  public final String bfm()
   {
     try
     {
-      String str = this.kaQ;
+      String str = this.keg;
       return str;
     }
     finally
@@ -143,11 +144,11 @@ public final class m
     }
   }
   
-  public final int beF()
+  public final int bfn()
   {
     try
     {
-      int i = this.kaR;
+      int i = this.keh;
       return i;
     }
     finally
@@ -157,11 +158,11 @@ public final class m
     }
   }
   
-  public final int beG()
+  public final int bfo()
   {
     try
     {
-      int i = this.kaS;
+      int i = this.kei;
       return i;
     }
     finally
@@ -171,11 +172,11 @@ public final class m
     }
   }
   
-  public final boolean beH()
+  public final boolean bfp()
   {
     try
     {
-      boolean bool = this.kbc;
+      boolean bool = this.kes;
       return bool;
     }
     finally
@@ -185,7 +186,7 @@ public final class m
     }
   }
   
-  public final boolean beI()
+  public final boolean bfq()
   {
     AppMethodBeat.i(147013);
     if (getStatus() == 5)
@@ -197,18 +198,32 @@ public final class m
     return false;
   }
   
-  public final boolean beJ()
+  public final boolean bfr()
   {
-    return this.kaU.kbp == 3;
+    return this.kek.keG == 3;
   }
   
   public final void dH(int paramInt1, int paramInt2)
   {
     try
     {
-      if ((this.kaS >= paramInt1) && (this.kaS <= paramInt2)) {
-        this.kaS = paramInt2;
+      if ((this.kei >= paramInt1) && (this.kei <= paramInt2)) {
+        this.kei = paramInt2;
       }
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public final void fZ(boolean paramBoolean)
+  {
+    try
+    {
+      this.ker = paramBoolean;
       return;
     }
     finally
@@ -222,21 +237,7 @@ public final class m
   {
     try
     {
-      this.kbb = paramBoolean;
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public final void gb(boolean paramBoolean)
-  {
-    try
-    {
-      this.kbc = paramBoolean;
+      this.kes = paramBoolean;
       return;
     }
     finally
@@ -250,7 +251,7 @@ public final class m
   {
     try
     {
-      boolean bool = this.kbb;
+      boolean bool = this.ker;
       return bool;
     }
     finally
@@ -328,11 +329,11 @@ public final class m
     }
   }
   
-  public final void sj(int paramInt)
+  public final void sm(int paramInt)
   {
     try
     {
-      this.kaR = paramInt;
+      this.keh = paramInt;
       return;
     }
     finally
@@ -342,12 +343,12 @@ public final class m
     }
   }
   
-  public final void sk(int paramInt)
+  public final void sn(int paramInt)
   {
     try
     {
-      if (this.kaS < paramInt) {
-        this.kaS = paramInt;
+      if (this.kei < paramInt) {
+        this.kei = paramInt;
       }
       return;
     }
@@ -358,9 +359,9 @@ public final class m
     }
   }
   
-  public final void sl(int paramInt)
+  public final void so(int paramInt)
   {
-    this.kbl += paramInt;
+    this.keC += paramInt;
   }
 }
 

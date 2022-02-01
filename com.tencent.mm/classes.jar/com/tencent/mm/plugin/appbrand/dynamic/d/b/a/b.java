@@ -6,17 +6,17 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class b
   implements e<String>
 {
-  private String khw;
+  private String kkM;
   
-  public final boolean OH(String paramString)
+  public final boolean Pp(String paramString)
   {
     AppMethodBeat.i(121373);
-    if (this.khw == null)
+    if (this.kkM == null)
     {
       AppMethodBeat.o(121373);
       return true;
     }
-    if ((!TextUtils.isEmpty(paramString)) && (paramString.hashCode() != this.khw.hashCode()))
+    if ((!TextUtils.isEmpty(paramString)) && (paramString.hashCode() != this.kkM.hashCode()))
     {
       AppMethodBeat.o(121373);
       return true;
@@ -25,7 +25,7 @@ public final class b
     return false;
   }
   
-  public final void T(Runnable paramRunnable)
+  public final void R(Runnable paramRunnable)
   {
     AppMethodBeat.i(121374);
     paramRunnable.run();
@@ -39,16 +39,16 @@ public final class b
     AppMethodBeat.o(121372);
   }
   
-  public final void bgc() {}
+  public final void bgK() {}
   
-  public final int bgd()
+  public final int bgL()
   {
     return 1;
   }
   
   public final void reset()
   {
-    this.khw = null;
+    this.kkM = null;
   }
 }
 

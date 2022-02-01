@@ -8,25 +8,25 @@ import android.support.v7.widget.RecyclerView.i;
 public abstract interface g$a
   extends a<g.b>
 {
-  public abstract void E(boolean paramBoolean, int paramInt);
+  public abstract void Ev(int paramInt);
   
-  public abstract void Ei(int paramInt);
+  public abstract void F(boolean paramBoolean, int paramInt);
   
   public abstract void a(f.b paramb);
   
-  public abstract RecyclerView.a bZA();
+  public abstract RecyclerView.a caP();
   
-  public abstract <T extends RecyclerView.i> T bZB();
+  public abstract <T extends RecyclerView.i> T caQ();
   
-  public abstract boolean cxc();
+  public abstract boolean cyD();
   
-  public abstract void cxd();
+  public abstract void cyE();
   
-  public abstract void cxe();
+  public abstract void cyF();
   
-  public abstract <T extends RecyclerView.a> T cxl();
+  public abstract <T extends RecyclerView.a> T cyM();
   
-  public abstract RecyclerView.h eK(Context paramContext);
+  public abstract RecyclerView.h eO(Context paramContext);
   
   public abstract void onResume();
 }

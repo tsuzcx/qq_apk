@@ -10,8 +10,8 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.v;
 import com.tencent.mm.model.w;
+import com.tencent.mm.model.x;
 import com.tencent.mm.plugin.backup.b.f.b;
 import com.tencent.mm.pluginsdk.ui.a.b;
 import com.tencent.mm.pluginsdk.ui.span.k;
@@ -21,29 +21,29 @@ import java.util.LinkedList;
 public final class a
   extends BaseAdapter
 {
-  static boolean nyx = false;
-  HashSet<Integer> nwm;
-  BackupPcChooseUI nyw;
+  static boolean nDS = false;
+  HashSet<Integer> nBH;
+  BackupPcChooseUI nDR;
   
   public a(BackupPcChooseUI paramBackupPcChooseUI)
   {
     AppMethodBeat.i(21627);
-    this.nyw = paramBackupPcChooseUI;
-    this.nwm = new HashSet();
-    nyx = false;
+    this.nDR = paramBackupPcChooseUI;
+    this.nBH = new HashSet();
+    nDS = false;
     AppMethodBeat.o(21627);
   }
   
   private static String getItem(int paramInt)
   {
     AppMethodBeat.i(21629);
-    Object localObject = com.tencent.mm.plugin.backup.backuppcmodel.b.bIj().bIn().bHC();
+    Object localObject = com.tencent.mm.plugin.backup.backuppcmodel.b.bJh().bJl().bIA();
     if (((LinkedList)localObject).get(paramInt) == null)
     {
       AppMethodBeat.o(21629);
       return null;
     }
-    localObject = ((f.b)((LinkedList)localObject).get(paramInt)).nsX;
+    localObject = ((f.b)((LinkedList)localObject).get(paramInt)).nys;
     AppMethodBeat.o(21629);
     return localObject;
   }
@@ -51,7 +51,7 @@ public final class a
   public final int getCount()
   {
     AppMethodBeat.i(21628);
-    LinkedList localLinkedList = com.tencent.mm.plugin.backup.backuppcmodel.b.bIj().bIn().bHC();
+    LinkedList localLinkedList = com.tencent.mm.plugin.backup.backuppcmodel.b.bJh().bJl().bIA();
     if (localLinkedList != null)
     {
       int i = localLinkedList.size();
@@ -73,21 +73,21 @@ public final class a
     String str;
     if (paramView == null)
     {
-      paramView = this.nyw.getLayoutInflater().inflate(2131493132, paramViewGroup, false);
+      paramView = this.nDR.getLayoutInflater().inflate(2131493132, paramViewGroup, false);
       paramViewGroup = new a();
-      paramViewGroup.fOf = ((ImageView)paramView.findViewById(2131297008));
-      paramViewGroup.iVq = ((TextView)paramView.findViewById(2131305948));
-      paramViewGroup.iVs = ((CheckBox)paramView.findViewById(2131304502));
-      paramViewGroup.nwo = ((RelativeLayout)paramView.findViewById(2131304503));
+      paramViewGroup.fQl = ((ImageView)paramView.findViewById(2131297008));
+      paramViewGroup.iYj = ((TextView)paramView.findViewById(2131305948));
+      paramViewGroup.iYl = ((CheckBox)paramView.findViewById(2131304502));
+      paramViewGroup.nBJ = ((RelativeLayout)paramView.findViewById(2131304503));
       paramView.setTag(paramViewGroup);
-      paramViewGroup.nwo.setOnClickListener(new View.OnClickListener()
+      paramViewGroup.nBJ.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(21626);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
           localb.bd(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/backup/backuppcui/BackupPcChooseAdapter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/backup/backuppcui/BackupPcChooseAdapter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
           if (a.a(a.this).contains(Integer.valueOf(paramInt))) {
             a.a(a.this).remove(Integer.valueOf(paramInt));
           }
@@ -103,16 +103,16 @@ public final class a
         }
       });
       str = getItem(paramInt);
-      a.b.c(paramViewGroup.fOf, str);
-      if (!w.vF(str)) {
+      a.b.c(paramViewGroup.fQl, str);
+      if (!x.wb(str)) {
         break label199;
       }
-      paramViewGroup.iVq.setText(k.b(this.nyw, v.getDisplayName(str, str), paramViewGroup.iVq.getTextSize()));
+      paramViewGroup.iYj.setText(k.b(this.nDR, w.getDisplayName(str, str), paramViewGroup.iYj.getTextSize()));
       label158:
-      if (!this.nwm.contains(Integer.valueOf(paramInt))) {
+      if (!this.nBH.contains(Integer.valueOf(paramInt))) {
         break label228;
       }
-      paramViewGroup.iVs.setChecked(true);
+      paramViewGroup.iYl.setChecked(true);
     }
     for (;;)
     {
@@ -121,19 +121,19 @@ public final class a
       paramViewGroup = (a)paramView.getTag();
       break;
       label199:
-      paramViewGroup.iVq.setText(k.b(this.nyw, v.zf(str), paramViewGroup.iVq.getTextSize()));
+      paramViewGroup.iYj.setText(k.b(this.nDR, w.zP(str), paramViewGroup.iYj.getTextSize()));
       break label158;
       label228:
-      paramViewGroup.iVs.setChecked(false);
+      paramViewGroup.iYl.setChecked(false);
     }
   }
   
   final class a
   {
-    ImageView fOf;
-    TextView iVq;
-    CheckBox iVs;
-    RelativeLayout nwo;
+    ImageView fQl;
+    TextView iYj;
+    CheckBox iYl;
+    RelativeLayout nBJ;
     
     a() {}
   }

@@ -19,7 +19,7 @@ import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.ViewGroup;
 import android.view.ViewParent;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.lang.ref.WeakReference;
 
 public class MMBottomSheetBehavior<V extends View>
@@ -379,7 +379,7 @@ public class MMBottomSheetBehavior<V extends View>
   
   public final boolean a(CoordinatorLayout paramCoordinatorLayout, V paramV, MotionEvent paramMotionEvent)
   {
-    ad.d("microMsg.MMBottomSheetBehavior", "onTouchEvent action: %d, x: %f, y: %f, rawX: %f, rawY: %f.", new Object[] { Integer.valueOf(paramMotionEvent.getAction()), Float.valueOf(paramMotionEvent.getX()), Float.valueOf(paramMotionEvent.getY()), Float.valueOf(paramMotionEvent.getRawX()), Float.valueOf(paramMotionEvent.getRawY()) });
+    ae.d("microMsg.MMBottomSheetBehavior", "onTouchEvent action: %d, x: %f, y: %f, rawX: %f, rawY: %f.", new Object[] { Integer.valueOf(paramMotionEvent.getAction()), Float.valueOf(paramMotionEvent.getX()), Float.valueOf(paramMotionEvent.getY()), Float.valueOf(paramMotionEvent.getRawX()), Float.valueOf(paramMotionEvent.getRawY()) });
     if (!paramV.isShown()) {}
     do
     {
@@ -520,12 +520,12 @@ public class MMBottomSheetBehavior<V extends View>
   
   public final boolean b(CoordinatorLayout paramCoordinatorLayout, V paramV, MotionEvent paramMotionEvent)
   {
-    ad.d("microMsg.MMBottomSheetBehavior", "onInterceptTouchEvent action: %d, x: %f, y: %f, rawX: %f, rawY: %f.", new Object[] { Integer.valueOf(paramMotionEvent.getAction()), Float.valueOf(paramMotionEvent.getX()), Float.valueOf(paramMotionEvent.getY()), Float.valueOf(paramMotionEvent.getRawX()), Float.valueOf(paramMotionEvent.getRawY()) });
+    ae.d("microMsg.MMBottomSheetBehavior", "onInterceptTouchEvent action: %d, x: %f, y: %f, rawX: %f, rawY: %f.", new Object[] { Integer.valueOf(paramMotionEvent.getAction()), Float.valueOf(paramMotionEvent.getX()), Float.valueOf(paramMotionEvent.getY()), Float.valueOf(paramMotionEvent.getRawX()), Float.valueOf(paramMotionEvent.getRawY()) });
     if (paramMotionEvent.getAction() == 0) {
       this.sX = false;
     }
     if (this.sX) {
-      ad.d("microMsg.MMBottomSheetBehavior", "external deal with, continue.");
+      ae.d("microMsg.MMBottomSheetBehavior", "external deal with, continue.");
     }
     int i;
     label310:
@@ -535,7 +535,7 @@ public class MMBottomSheetBehavior<V extends View>
       return false;
       if ((this.sZ != null) && (this.sZ.onInterceptTouchEvent(paramMotionEvent)))
       {
-        ad.d("microMsg.MMBottomSheetBehavior", "external deal with.");
+        ae.d("microMsg.MMBottomSheetBehavior", "external deal with.");
         this.sX = true;
         return false;
       }

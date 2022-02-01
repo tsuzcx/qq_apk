@@ -13,23 +13,23 @@ public abstract class b
 {
   public b(j paramj, l paraml, f paramf, bh parambh, boolean paramBoolean, int paramInt, an paraman, aq paramaq)
   {
-    super(paramj, paraml, g.a.gjL(), paramf, parambh, paramBoolean, paramInt, paraman, paramaq);
+    super(paramj, paraml, g.a.gon(), paramf, parambh, paramBoolean, paramInt, paraman, paramaq);
   }
   
   public String toString()
   {
     String str1;
-    if (this.MXr)
+    if (this.Nux)
     {
       str1 = "reified ";
-      if (giF() != bh.NCP) {
+      if (gnh() != bh.NZW) {
         break label54;
       }
     }
     label54:
-    for (String str2 = "";; str2 = giF() + " ")
+    for (String str2 = "";; str2 = gnh() + " ")
     {
-      return String.format("%s%s%s", new Object[] { str1, str2, giD() });
+      return String.format("%s%s%s", new Object[] { str1, str2, gnf() });
       str1 = "";
       break;
     }
@@ -37,7 +37,7 @@ public abstract class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.b.c.b
  * JD-Core Version:    0.7.0.1
  */

@@ -11,7 +11,7 @@ public final class n
   public static final d a(g paramg, e parame, boolean paramBoolean1, boolean paramBoolean2)
   {
     AppMethodBeat.i(58118);
-    if ((!paramBoolean2) || (paramg != g.Nhi))
+    if ((!paramBoolean2) || (paramg != g.NEn))
     {
       paramg = new d(paramg, parame, false, paramBoolean1);
       AppMethodBeat.o(58118);
@@ -26,13 +26,13 @@ public final class n
   {
     AppMethodBeat.i(58120);
     p.h(paramSet, "$this$select");
-    if (paramg == g.Nhj)
+    if (paramg == g.NEo)
     {
-      paramSet = g.Nhj;
+      paramSet = g.NEo;
       AppMethodBeat.o(58120);
       return paramSet;
     }
-    paramSet = (g)a(paramSet, g.Nhi, g.Nhh, paramg, paramBoolean);
+    paramSet = (g)a(paramSet, g.NEn, g.NEm, paramg, paramBoolean);
     AppMethodBeat.o(58120);
     return paramSet;
   }
@@ -86,7 +86,7 @@ public final class n
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.d.a.f.n
  * JD-Core Version:    0.7.0.1
  */

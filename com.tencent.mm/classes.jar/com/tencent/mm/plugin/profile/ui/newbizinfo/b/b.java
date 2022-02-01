@@ -3,19 +3,19 @@ package com.tencent.mm.plugin.profile.ui.newbizinfo.b;
 public final class b
 {
   public String coverImgUrl;
-  public int hbR;
-  public String hzm;
+  public String hCa;
+  public int heF;
   public String title;
   public int type;
   public int videoDuration;
   public int videoHeight;
   public int videoWidth;
-  public String wWA;
-  public String wWv;
-  public int wWw;
-  public String wWx;
-  public String wWy;
-  public String wWz;
+  public String xmm;
+  public int xmn;
+  public String xmo;
+  public String xmp;
+  public String xmq;
+  public String xmr;
 }
 
 

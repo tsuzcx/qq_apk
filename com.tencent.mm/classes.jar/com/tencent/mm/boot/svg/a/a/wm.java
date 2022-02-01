@@ -15,7 +15,7 @@ public final class wm
   extends c
 {
   private final int height = 24;
-  private final int width = 25;
+  private final int width = 24;
   
   public final int a(int paramInt, Object... paramVarArgs)
   {
@@ -25,7 +25,7 @@ public final class wm
     for (;;)
     {
       return 0;
-      return 25;
+      return 24;
       return 24;
       Canvas localCanvas = (Canvas)paramVarArgs[0];
       paramVarArgs = (Looper)paramVarArgs[1];
@@ -50,12 +50,12 @@ public final class wm
       ((Matrix)localObject1).setValues(arrayOfFloat);
       localCanvas.concat((Matrix)localObject1);
       localCanvas.save();
-      arrayOfFloat = c.a(arrayOfFloat, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, 256.0F);
+      arrayOfFloat = c.a(arrayOfFloat, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, 207.0F);
       ((Matrix)localObject1).reset();
       ((Matrix)localObject1).setValues(arrayOfFloat);
       localCanvas.concat((Matrix)localObject1);
       localCanvas.save();
-      arrayOfFloat = c.a(arrayOfFloat, 1.0F, 0.0F, 264.0F, 0.0F, 1.0F, 40.0F);
+      arrayOfFloat = c.a(arrayOfFloat, 1.0F, 0.0F, 264.0F, 0.0F, 1.0F, 89.0F);
       ((Matrix)localObject1).reset();
       ((Matrix)localObject1).setValues(arrayOfFloat);
       localCanvas.concat((Matrix)localObject1);
@@ -76,14 +76,14 @@ public final class wm
       localCanvas.restore();
       localCanvas.save();
       localObject2 = c.a((Paint)localObject2, paramVarArgs);
-      ((Paint)localObject2).setColor(-1);
+      ((Paint)localObject2).setColor(-16777216);
       arrayOfFloat = c.a(arrayOfFloat, 1.0F, 0.0F, 2.0F, 0.0F, 1.0F, 2.0F);
       ((Matrix)localObject1).reset();
       ((Matrix)localObject1).setValues(arrayOfFloat);
       localCanvas.concat((Matrix)localObject1);
       localCanvas.save();
       localObject3 = c.a((Paint)localObject2, paramVarArgs);
-      ((Paint)localObject3).setColor(436207615);
+      ((Paint)localObject3).setColor(419430400);
       localObject4 = c.n(paramVarArgs);
       ((Path)localObject4).moveTo(10.0F, 0.0F);
       ((Path)localObject4).cubicTo(15.522847F, 0.0F, 20.0F, 4.477152F, 20.0F, 10.0F);
@@ -102,7 +102,7 @@ public final class wm
       localCanvas.restore();
       localCanvas.save();
       localObject3 = c.a((Paint)localObject2, paramVarArgs);
-      ((Paint)localObject3).setColor(-2130706433);
+      ((Paint)localObject3).setColor(-2147483648);
       localObject4 = c.n(paramVarArgs);
       ((Path)localObject4).moveTo(10.000875F, 0.0F);
       ((Path)localObject4).cubicTo(15.522847F, 0.0F, 20.0F, 4.477152F, 20.0F, 10.0F);
@@ -127,7 +127,7 @@ public final class wm
       localCanvas.restore();
       localCanvas.save();
       localObject2 = c.a((Paint)localObject2, paramVarArgs);
-      ((Paint)localObject2).setColor(-2130706433);
+      ((Paint)localObject2).setColor(-2147483648);
       arrayOfFloat = c.a(arrayOfFloat, 1.0F, 0.0F, 4.451329F, 0.0F, 1.0F, 4.496923F);
       ((Matrix)localObject1).reset();
       ((Matrix)localObject1).setValues(arrayOfFloat);
@@ -135,7 +135,7 @@ public final class wm
       localCanvas.save();
       localObject1 = c.a((Paint)localObject2, paramVarArgs);
       localObject2 = c.n(paramVarArgs);
-      ((Path)localObject2).moveTo(6.400186F, -4.547474E-013F);
+      ((Path)localObject2).moveTo(6.400186F, -4.263256E-013F);
       ((Path)localObject2).lineTo(6.400015F, 8.271F);
       ((Path)localObject2).lineTo(8.856973F, 5.815717F);
       ((Path)localObject2).lineTo(10.104809F, 7.063553F);
@@ -145,8 +145,8 @@ public final class wm
       ((Path)localObject2).lineTo(0.954015F, 7.063553F);
       ((Path)localObject2).lineTo(2.20185F, 5.815717F);
       ((Path)localObject2).lineTo(4.635015F, 8.25F);
-      ((Path)localObject2).lineTo(4.63548F, -4.547474E-013F);
-      ((Path)localObject2).lineTo(6.400186F, -4.547474E-013F);
+      ((Path)localObject2).lineTo(4.63548F, -4.263256E-013F);
+      ((Path)localObject2).lineTo(6.400186F, -4.263256E-013F);
       ((Path)localObject2).close();
       WeChatSVGRenderC2Java.setFillType((Path)localObject2, 2);
       localCanvas.drawPath((Path)localObject2, (Paint)localObject1);

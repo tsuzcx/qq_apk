@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class fi
   extends b
 {
-  public a dqv;
+  public a drz;
   
   public fi()
   {
@@ -15,21 +15,21 @@ public final class fi
   
   private fi(byte paramByte)
   {
-    AppMethodBeat.i(116014);
-    this.dqv = new a();
-    this.IbR = false;
+    AppMethodBeat.i(116013);
+    this.drz = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(116014);
+    AppMethodBeat.o(116013);
   }
   
   public static final class a
   {
-    public String doD;
+    public boolean drc;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.g.a.fi
  * JD-Core Version:    0.7.0.1
  */

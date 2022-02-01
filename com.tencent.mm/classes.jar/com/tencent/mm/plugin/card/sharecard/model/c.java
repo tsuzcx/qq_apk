@@ -1,39 +1,39 @@
 package com.tencent.mm.plugin.card.sharecard.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.bim;
-import com.tencent.mm.protocal.protobuf.bin;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.bjc;
+import com.tencent.mm.protocal.protobuf.bjd;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class c
   extends n
   implements k
 {
   private f callback;
-  public String ozQ;
+  public String oGs;
   private final b rr;
   
   public c(String paramString)
   {
     AppMethodBeat.i(112960);
     b.a locala = new b.a();
-    locala.hNM = new bim();
-    locala.hNN = new bin();
+    locala.hQF = new bjc();
+    locala.hQG = new bjd();
     locala.uri = "/cgi-bin/micromsg-bin/getsharecard";
     locala.funcId = 1051;
-    locala.hNO = 0;
+    locala.hQH = 0;
     locala.respCmdId = 0;
-    this.rr = locala.aDC();
-    ((bim)this.rr.hNK.hNQ).dHX = paramString;
+    this.rr = locala.aDS();
+    ((bjc)this.rr.hQD.hQJ).dJb = paramString;
     AppMethodBeat.o(112960);
   }
   
@@ -54,12 +54,12 @@ public final class c
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(112961);
-    ad.i("MicroMsg.NetSceneGetShareCard", "onGYNetEnd, cmdType = %d, errType = %d, errCode = %d", new Object[] { Integer.valueOf(getType()), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    ae.i("MicroMsg.NetSceneGetShareCard", "onGYNetEnd, cmdType = %d, errType = %d, errCode = %d", new Object[] { Integer.valueOf(getType()), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      paramq = (bin)this.rr.hNL.hNQ;
-      ad.v("MicroMsg.NetSceneGetShareCard", "json:" + paramq.ozQ);
-      this.ozQ = paramq.ozQ;
+      paramq = (bjd)this.rr.hQE.hQJ;
+      ae.v("MicroMsg.NetSceneGetShareCard", "json:" + paramq.oGs);
+      this.oGs = paramq.oGs;
     }
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(112961);

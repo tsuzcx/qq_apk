@@ -4,8 +4,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.downloader.model.FileDownloadTaskInfo;
 import com.tencent.mm.plugin.downloader.model.f;
 import com.tencent.mm.plugin.lite.jsapi.a.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.Iterator;
 import java.util.LinkedList;
 import org.json.JSONArray;
@@ -16,10 +16,10 @@ public class j
 {
   private static void a(JSONObject paramJSONObject, LinkedList<String> paramLinkedList)
   {
-    AppMethodBeat.i(211649);
-    if (bt.hj(paramLinkedList))
+    AppMethodBeat.i(193038);
+    if (bu.ht(paramLinkedList))
     {
-      AppMethodBeat.o(211649);
+      AppMethodBeat.o(193038);
       return;
     }
     paramLinkedList = paramLinkedList.iterator();
@@ -35,30 +35,30 @@ public class j
       }
       catch (Exception localException)
       {
-        ad.e("LiteAppJsApiQueryDownloadTask", localException.getMessage());
+        ae.e("LiteAppJsApiQueryDownloadTask", localException.getMessage());
       }
     }
-    AppMethodBeat.o(211649);
+    AppMethodBeat.o(193038);
   }
   
-  public final int cXg()
+  public final int cZP()
   {
     return 1;
   }
   
   public final void j(String paramString, final JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(211648);
-    com.tencent.mm.ci.a.post(new Runnable()
+    AppMethodBeat.i(193037);
+    com.tencent.mm.ch.a.post(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(211647);
+        AppMethodBeat.i(193036);
         Object localObject = paramJSONObject.optJSONArray("appIdArray");
         if ((localObject != null) && (((JSONArray)localObject).length() > 0))
         {
           j.a(j.this, (JSONArray)localObject);
-          AppMethodBeat.o(211647);
+          AppMethodBeat.o(193036);
           return;
         }
         long l = paramJSONObject.optLong("download_id", -1L);
@@ -66,31 +66,31 @@ public class j
         FileDownloadTaskInfo localFileDownloadTaskInfo;
         if (l > 0L)
         {
-          localFileDownloadTaskInfo = f.ccl().tS(l);
+          localFileDownloadTaskInfo = f.cdA().uj(l);
           localObject = localFileDownloadTaskInfo;
           if (localFileDownloadTaskInfo == null) {
             localObject = new FileDownloadTaskInfo();
           }
           j.a(j.this, (FileDownloadTaskInfo)localObject);
-          AppMethodBeat.o(211647);
+          AppMethodBeat.o(193036);
           return;
         }
-        if (!bt.isNullOrNil((String)localObject))
+        if (!bu.isNullOrNil((String)localObject))
         {
-          localFileDownloadTaskInfo = f.ccl().aai((String)localObject);
+          localFileDownloadTaskInfo = f.cdA().aaZ((String)localObject);
           localObject = localFileDownloadTaskInfo;
           if (localFileDownloadTaskInfo == null) {
             localObject = new FileDownloadTaskInfo();
           }
           j.a(j.this, (FileDownloadTaskInfo)localObject);
-          AppMethodBeat.o(211647);
+          AppMethodBeat.o(193036);
           return;
         }
-        j.a(j.this).YL("fail");
-        AppMethodBeat.o(211647);
+        j.a(j.this).ZC("fail");
+        AppMethodBeat.o(193036);
       }
     });
-    AppMethodBeat.o(211648);
+    AppMethodBeat.o(193037);
   }
 }
 

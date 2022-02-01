@@ -31,14 +31,14 @@ public class n
     if ((paramObject instanceof n))
     {
       paramObject = (n)paramObject;
-      if (Hv() == null)
+      if (HD() == null)
       {
-        if (paramObject.Hv() != null) {}
+        if (paramObject.HD() != null) {}
       }
       else {
-        while (Hv().equals(paramObject.Hv()))
+        while (HD().equals(paramObject.HD()))
         {
-          if ((!getName().equals(paramObject.getName())) || (!Hu().equals(paramObject.Hu())) || (!p.i(gfP(), paramObject.gfP()))) {
+          if ((!getName().equals(paramObject.getName())) || (!HC().equals(paramObject.HC())) || (!p.i(gkr(), paramObject.gkr()))) {
             break;
           }
           AppMethodBeat.o(128938);
@@ -50,7 +50,7 @@ public class n
     }
     if ((paramObject instanceof d.l.e))
     {
-      boolean bool = paramObject.equals(gfQ());
+      boolean bool = paramObject.equals(gks());
       AppMethodBeat.o(128938);
       return bool;
     }
@@ -63,7 +63,7 @@ public class n
     return this.arity;
   }
   
-  protected final a gfO()
+  protected final a gkq()
   {
     AppMethodBeat.i(128937);
     d.l.e locale = z.a(this);
@@ -74,11 +74,11 @@ public class n
   public int hashCode()
   {
     AppMethodBeat.i(128939);
-    if (Hv() == null) {}
-    for (int i = 0;; i = Hv().hashCode() * 31)
+    if (HD() == null) {}
+    for (int i = 0;; i = HD().hashCode() * 31)
     {
       int j = getName().hashCode();
-      int k = Hu().hashCode();
+      int k = HC().hashCode();
       AppMethodBeat.o(128939);
       return (i + j) * 31 + k;
     }
@@ -87,7 +87,7 @@ public class n
   public String toString()
   {
     AppMethodBeat.i(128940);
-    Object localObject = gfQ();
+    Object localObject = gks();
     if (localObject != this)
     {
       localObject = localObject.toString();

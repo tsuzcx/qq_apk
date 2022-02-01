@@ -25,9 +25,9 @@ import com.tencent.mm.platformtools.u;
 import com.tencent.mm.plugin.card.d.a.a;
 import com.tencent.mm.plugin.card.model.CardGiftInfo;
 import com.tencent.mm.pluginsdk.ui.tools.q;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.MultiTouchImageView;
 import com.tencent.mm.ui.base.h;
@@ -43,47 +43,47 @@ public class CardGiftImageUI
   extends MMActivity
   implements a.a
 {
-  private String dyy;
-  private MMGestureGallery iUH;
+  private String dzD;
+  private MMGestureGallery iXA;
   private boolean isAnimated;
-  private com.tencent.mm.ui.tools.l lvx;
-  private CardGiftInfo oGi;
-  private ImageView oGj;
-  private RelativeLayout oGk;
-  private ProgressBar oGl;
-  private ap oGm;
-  private Bundle oGn;
-  private e oGo;
-  private int oGp;
-  private int oGq;
-  private int oGr;
-  private int oGs;
-  private a oGt;
+  private com.tencent.mm.ui.tools.l lzV;
+  private CardGiftInfo oMK;
+  private ImageView oML;
+  private RelativeLayout oMM;
+  private ProgressBar oMN;
+  private aq oMO;
+  private Bundle oMP;
+  private e oMQ;
+  private int oMR;
+  private int oMS;
+  private int oMT;
+  private int oMU;
+  private a oMV;
   
   public CardGiftImageUI()
   {
     AppMethodBeat.i(113328);
-    this.oGm = new ap(Looper.getMainLooper());
+    this.oMO = new aq(Looper.getMainLooper());
     this.isAnimated = false;
-    this.oGp = 0;
-    this.oGq = 0;
-    this.oGr = 0;
-    this.oGs = 0;
+    this.oMR = 0;
+    this.oMS = 0;
+    this.oMT = 0;
+    this.oMU = 0;
     AppMethodBeat.o(113328);
   }
   
-  public final void YL(String paramString) {}
+  public final void ZC(String paramString) {}
   
-  public final void bWL()
+  public final void bYa()
   {
     AppMethodBeat.i(113336);
-    this.oGo.R(this.oGq, this.oGp, this.oGr, this.oGs);
-    this.oGo.a(this.oGk, this.oGj, new e.c()
+    this.oMQ.R(this.oMS, this.oMR, this.oMT, this.oMU);
+    this.oMQ.a(this.oMM, this.oML, new e.c()
     {
       public final void onAnimationEnd()
       {
         AppMethodBeat.i(113324);
-        new ap().post(new Runnable()
+        new aq().post(new Runnable()
         {
           public final void run()
           {
@@ -101,10 +101,10 @@ public class CardGiftImageUI
     AppMethodBeat.o(113336);
   }
   
-  public final void cF(String paramString, int paramInt)
+  public final void cJ(String paramString, int paramInt)
   {
     AppMethodBeat.i(113337);
-    this.oGm.post(new Runnable()
+    this.oMO.post(new Runnable()
     {
       public final void run()
       {
@@ -123,8 +123,8 @@ public class CardGiftImageUI
     AppMethodBeat.i(113335);
     if ((paramKeyEvent.getKeyCode() == 4) && (paramKeyEvent.getAction() == 0))
     {
-      ad.d("MicroMsg.CardGiftImageUI", "dispatchKeyEvent");
-      bWL();
+      ae.d("MicroMsg.CardGiftImageUI", "dispatchKeyEvent");
+      bYa();
       AppMethodBeat.o(113335);
       return true;
     }
@@ -133,10 +133,10 @@ public class CardGiftImageUI
     return bool;
   }
   
-  public final void fb(String paramString1, final String paramString2)
+  public final void ff(String paramString1, final String paramString2)
   {
     AppMethodBeat.i(113338);
-    this.oGm.post(new Runnable()
+    this.oMO.post(new Runnable()
     {
       public final void run()
       {
@@ -161,34 +161,34 @@ public class CardGiftImageUI
   public void initView()
   {
     AppMethodBeat.i(113330);
-    this.oGj = ((ImageView)findViewById(2131300336));
-    this.oGl = ((ProgressBar)findViewById(2131300950));
-    this.oGk = ((RelativeLayout)findViewById(2131300960));
-    this.iUH = ((MMGestureGallery)findViewById(2131300335));
-    this.iUH.setVerticalFadingEdgeEnabled(false);
-    this.iUH.setHorizontalFadingEdgeEnabled(false);
-    this.oGt = new a((byte)0);
-    this.iUH.setAdapter(this.oGt);
-    this.iUH.setSingleClickOverListener(new MMGestureGallery.f()
+    this.oML = ((ImageView)findViewById(2131300336));
+    this.oMN = ((ProgressBar)findViewById(2131300950));
+    this.oMM = ((RelativeLayout)findViewById(2131300960));
+    this.iXA = ((MMGestureGallery)findViewById(2131300335));
+    this.iXA.setVerticalFadingEdgeEnabled(false);
+    this.iXA.setHorizontalFadingEdgeEnabled(false);
+    this.oMV = new a((byte)0);
+    this.iXA.setAdapter(this.oMV);
+    this.iXA.setSingleClickOverListener(new MMGestureGallery.f()
     {
-      public final void aRp()
+      public final void aRO()
       {
         AppMethodBeat.i(113318);
-        CardGiftImageUI.this.bWL();
+        CardGiftImageUI.this.bYa();
         AppMethodBeat.o(113318);
       }
     });
-    this.iUH.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener()
+    this.iXA.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener()
     {
       public final boolean onItemLongClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
       {
         AppMethodBeat.i(113319);
-        h.a(CardGiftImageUI.this, CardGiftImageUI.a(CardGiftImageUI.this).fKy());
+        h.a(CardGiftImageUI.this, CardGiftImageUI.a(CardGiftImageUI.this).fOP());
         AppMethodBeat.o(113319);
         return true;
       }
     });
-    this.oGo = new e(this);
+    this.oMQ = new e(this);
     AppMethodBeat.o(113330);
   }
   
@@ -200,26 +200,26 @@ public class CardGiftImageUI
     }
     super.onCreate(paramBundle);
     hideTitleView();
-    this.oGn = paramBundle;
+    this.oMP = paramBundle;
     if (Build.VERSION.SDK_INT >= 21) {
       getWindow().setFlags(1024, 1024);
     }
-    this.oGi = ((CardGiftInfo)getIntent().getParcelableExtra("key_gift_into"));
-    if (this.oGi == null) {}
-    for (paramBundle = "null";; paramBundle = this.oGi.toString())
+    this.oMK = ((CardGiftInfo)getIntent().getParcelableExtra("key_gift_into"));
+    if (this.oMK == null) {}
+    for (paramBundle = "null";; paramBundle = this.oMK.toString())
     {
-      ad.d("MicroMsg.CardGiftImageUI", "cardGiftInfo:%s", new Object[] { paramBundle });
-      ad.i("MicroMsg.CardGiftImageUI", "imgPath:%s", new Object[] { this.dyy });
+      ae.d("MicroMsg.CardGiftImageUI", "cardGiftInfo:%s", new Object[] { paramBundle });
+      ae.i("MicroMsg.CardGiftImageUI", "imgPath:%s", new Object[] { this.dzD });
       initView();
       com.tencent.mm.plugin.card.d.a.a(this);
-      if ((this.oGi == null) || (bt.isNullOrNil(this.oGi.oye))) {
+      if ((this.oMK == null) || (bu.isNullOrNil(this.oMK.oEG))) {
         break;
       }
-      com.tencent.mm.plugin.card.d.a.g(this.oGi.oye, this.oGi.oyh, this.oGi.oyp, 2);
+      com.tencent.mm.plugin.card.d.a.g(this.oMK.oEG, this.oMK.oEJ, this.oMK.oER, 2);
       AppMethodBeat.o(113329);
       return;
     }
-    ad.e("MicroMsg.CardGiftImageUI", "fromUserContentPicUrl is null");
+    ae.e("MicroMsg.CardGiftImageUI", "fromUserContentPicUrl is null");
     AppMethodBeat.o(113329);
   }
   
@@ -242,8 +242,8 @@ public class CardGiftImageUI
   {
     AppMethodBeat.i(113332);
     super.onResume();
-    if (this.oGt != null) {
-      this.oGt.notifyDataSetChanged();
+    if (this.oMV != null) {
+      this.oMV.notifyDataSetChanged();
     }
     AppMethodBeat.o(113332);
   }
@@ -251,14 +251,14 @@ public class CardGiftImageUI
   public void onStart()
   {
     AppMethodBeat.i(113331);
-    Bundle localBundle = this.oGn;
+    Bundle localBundle = this.oMP;
     if (!this.isAnimated)
     {
       this.isAnimated = true;
       if (Build.VERSION.SDK_INT >= 12) {
         break label63;
       }
-      ad.e("MicroMsg.CardGiftImageUI", "version is %d, no animation", new Object[] { Integer.valueOf(Build.VERSION.SDK_INT) });
+      ae.e("MicroMsg.CardGiftImageUI", "version is %d, no animation", new Object[] { Integer.valueOf(Build.VERSION.SDK_INT) });
     }
     for (;;)
     {
@@ -266,13 +266,13 @@ public class CardGiftImageUI
       AppMethodBeat.o(113331);
       return;
       label63:
-      this.oGp = getIntent().getIntExtra("img_top", 0);
-      this.oGq = getIntent().getIntExtra("img_left", 0);
-      this.oGr = getIntent().getIntExtra("img_width", 0);
-      this.oGs = getIntent().getIntExtra("img_height", 0);
-      this.oGo.R(this.oGq, this.oGp, this.oGr, this.oGs);
+      this.oMR = getIntent().getIntExtra("img_top", 0);
+      this.oMS = getIntent().getIntExtra("img_left", 0);
+      this.oMT = getIntent().getIntExtra("img_width", 0);
+      this.oMU = getIntent().getIntExtra("img_height", 0);
+      this.oMQ.R(this.oMS, this.oMR, this.oMT, this.oMU);
       if (localBundle == null) {
-        this.oGk.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener()
+        this.oMM.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener()
         {
           public final boolean onPreDraw()
           {
@@ -316,10 +316,10 @@ public class CardGiftImageUI
     public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
     {
       AppMethodBeat.i(113327);
-      Object localObject = u.IT(CardGiftImageUI.b(CardGiftImageUI.this));
+      Object localObject = u.Js(CardGiftImageUI.b(CardGiftImageUI.this));
       if (localObject == null)
       {
-        ad.w("MicroMsg.CardGiftImageUI", "get image fail");
+        ae.w("MicroMsg.CardGiftImageUI", "get image fail");
         if (paramView != null)
         {
           localObject = paramView;

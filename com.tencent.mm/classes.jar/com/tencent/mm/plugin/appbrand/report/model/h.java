@@ -1,56 +1,66 @@
 package com.tencent.mm.plugin.appbrand.report.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.page.aa;
-import com.tencent.mm.plugin.appbrand.page.ae;
-import com.tencent.mm.plugin.appbrand.page.bs;
+import com.tencent.mm.plugin.appbrand.page.ad;
+import com.tencent.mm.plugin.appbrand.page.br;
+import com.tencent.mm.plugin.appbrand.page.z;
 
 public abstract interface h
   extends g
 {
-  public static final h msF = new h()
+  public static final h mxC = new h()
   {
-    public final boolean Un(String paramAnonymousString)
+    public final boolean UY(String paramAnonymousString)
     {
       return false;
     }
     
-    public final void a(ae paramAnonymousae1, ae paramAnonymousae2, bs paramAnonymousbs) {}
+    public final void a(ad paramAnonymousad1, ad paramAnonymousad2, br paramAnonymousbr) {}
     
-    public final h.a bxw()
+    public final h.a byp()
     {
       return null;
     }
     
-    public final void d(ae paramAnonymousae) {}
+    public final void d(ad paramAnonymousad) {}
     
-    public final void e(ae paramAnonymousae) {}
+    public final void e(ad paramAnonymousad) {}
     
-    public final h.a r(ae paramAnonymousae)
+    public final h.a s(ad paramAnonymousad)
     {
       return null;
     }
   };
   
-  public abstract boolean Un(String paramString);
+  public abstract boolean UY(String paramString);
   
-  public abstract a bxw();
+  public abstract a byp();
   
-  public abstract a r(ae paramae);
+  public abstract a s(ad paramad);
   
   public static final class a
   {
-    int dsf;
-    public h.c msG;
-    public h.b msH;
+    int dtl;
+    public h.c mxD;
+    public h.b mxE;
     public String path;
     
-    a(ae paramae)
+    a(ad paramad)
     {
       AppMethodBeat.i(48118);
-      this.dsf = paramae.hashCode();
-      this.path = paramae.lYf;
+      this.dtl = paramad.hashCode();
+      this.path = paramad.mcM;
       AppMethodBeat.o(48118);
+    }
+  }
+  
+  public static final class b
+  {
+    public String path;
+    
+    b(String paramString)
+    {
+      this.path = paramString;
     }
   }
   
@@ -73,7 +83,7 @@ public abstract interface h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.report.model.h
  * JD-Core Version:    0.7.0.1
  */

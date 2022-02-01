@@ -9,42 +9,42 @@ import com.tencent.mm.plugin.fts.a.d.e.a;
 import com.tencent.mm.plugin.fts.a.d.e.b;
 import com.tencent.mm.plugin.fts.a.n;
 import com.tencent.mm.plugin.fts.ui.a.i;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aq;
 import java.util.HashSet;
 import java.util.List;
 
 public class k
   extends com.tencent.mm.plugin.fts.ui.a
 {
-  protected boolean tCT = false;
+  protected boolean tNK = false;
   
   public k(Context paramContext, e.b paramb, int paramInt)
   {
     super(paramContext, paramb, paramInt);
   }
   
-  public com.tencent.mm.plugin.fts.a.a.a a(ap paramap, HashSet<String> paramHashSet)
+  public com.tencent.mm.plugin.fts.a.a.a a(aq paramaq, HashSet<String> paramHashSet)
   {
     AppMethodBeat.i(112203);
-    this.tCT = false;
+    this.tNK = false;
     j localj = new j();
     localj.query = this.query;
-    localj.tvh = paramHashSet;
-    localj.tvj = this;
-    localj.handler = paramap;
-    localj.jQN = 1;
-    localj.tvg = 3;
-    paramap = ((n)com.tencent.mm.kernel.g.ad(n.class)).search(3, localj);
+    localj.tFY = paramHashSet;
+    localj.tGa = this;
+    localj.handler = paramaq;
+    localj.jUf = 1;
+    localj.tFX = 3;
+    paramaq = ((n)com.tencent.mm.kernel.g.ad(n.class)).search(3, localj);
     AppMethodBeat.o(112203);
-    return paramap;
+    return paramaq;
   }
   
   public com.tencent.mm.plugin.fts.a.d.a.a a(int paramInt, e.a parama)
   {
     AppMethodBeat.i(112205);
-    int i = paramInt - parama.tvN;
-    if (parama.tvO) {
+    int i = paramInt - parama.tGE;
+    if (parama.tGF) {
       i -= 1;
     }
     for (;;)
@@ -52,32 +52,32 @@ public class k
       com.tencent.mm.plugin.fts.a.a.m localm = null;
       Object localObject = localm;
       boolean bool;
-      if (i < parama.lKC.size())
+      if (i < parama.lPc.size())
       {
         localObject = localm;
         if (i >= 0)
         {
-          localm = (com.tencent.mm.plugin.fts.a.a.m)parama.lKC.get(i);
-          if (!localm.tuh.equals("create_talker_message​")) {
+          localm = (com.tencent.mm.plugin.fts.a.a.m)parama.lPc.get(i);
+          if (!localm.tEY.equals("create_talker_message​")) {
             break label174;
           }
           localObject = new i(paramInt);
-          if (parama.lKC.size() != 1) {
+          if (parama.lPc.size() != 1) {
             break label168;
           }
           bool = true;
-          ((i)localObject).tBn = bool;
-          this.tCT = true;
+          ((i)localObject).tMe = bool;
+          this.tNK = true;
         }
       }
       for (;;)
       {
         if (localObject != null)
         {
-          ((com.tencent.mm.plugin.fts.a.d.a.a)localObject).tvW = (i + 1);
-          ((com.tencent.mm.plugin.fts.a.d.a.a)localObject).tun = parama.tun;
-          if (i == parama.lKC.size() - 1) {
-            ((com.tencent.mm.plugin.fts.a.d.a.a)localObject).tvU = false;
+          ((com.tencent.mm.plugin.fts.a.d.a.a)localObject).tGN = (i + 1);
+          ((com.tencent.mm.plugin.fts.a.d.a.a)localObject).tFe = parama.tFe;
+          if (i == parama.lPc.size() - 1) {
+            ((com.tencent.mm.plugin.fts.a.d.a.a)localObject).tGL = false;
           }
         }
         AppMethodBeat.o(112205);
@@ -87,8 +87,8 @@ public class k
         break;
         label174:
         localObject = new com.tencent.mm.plugin.fts.ui.a.m(paramInt);
-        ((com.tencent.mm.plugin.fts.ui.a.m)localObject).kjY = localm;
-        ((com.tencent.mm.plugin.fts.ui.a.m)localObject).gf(localm.type, localm.tug);
+        ((com.tencent.mm.plugin.fts.ui.a.m)localObject).kno = localm;
+        ((com.tencent.mm.plugin.fts.ui.a.m)localObject).gf(localm.type, localm.tEX);
       }
     }
   }
@@ -96,33 +96,33 @@ public class k
   public void a(com.tencent.mm.plugin.fts.a.a.k paramk, HashSet<String> paramHashSet)
   {
     AppMethodBeat.i(112204);
-    if (dT(paramk.tvl))
+    if (dX(paramk.tGc))
     {
       paramHashSet = new e.a();
       paramHashSet.businessType = -2;
-      paramHashSet.tun = paramk.tun;
-      paramHashSet.lKC = paramk.tvl;
-      if (paramHashSet.lKC.size() <= 3) {
+      paramHashSet.tFe = paramk.tFe;
+      paramHashSet.lPc = paramk.tGc;
+      if (paramHashSet.lPc.size() <= 3) {
         break label142;
       }
-      if (!((com.tencent.mm.plugin.fts.a.a.m)paramk.tvl.get(3)).tuh.equals("create_talker_message​")) {
+      if (!((com.tencent.mm.plugin.fts.a.a.m)paramk.tGc.get(3)).tEY.equals("create_talker_message​")) {
         break label119;
       }
-      paramHashSet.rKf = false;
-      paramHashSet.lKC = paramHashSet.lKC.subList(0, 4);
+      paramHashSet.rRg = false;
+      paramHashSet.lPc = paramHashSet.lPc.subList(0, 4);
     }
     for (;;)
     {
-      this.txY.add(paramHashSet);
+      this.tIP.add(paramHashSet);
       AppMethodBeat.o(112204);
       return;
       label119:
-      paramHashSet.rKf = true;
-      paramHashSet.lKC = paramHashSet.lKC.subList(0, 3);
+      paramHashSet.rRg = true;
+      paramHashSet.lPc = paramHashSet.lPc.subList(0, 3);
       continue;
       label142:
-      if ((paramk.tvl.size() == 1) && (((com.tencent.mm.plugin.fts.a.a.m)paramk.tvl.get(0)).tuh.equals("create_talker_message​"))) {
-        paramHashSet.tvO = false;
+      if ((paramk.tGc.size() == 1) && (((com.tencent.mm.plugin.fts.a.a.m)paramk.tGc.get(0)).tEY.equals("create_talker_message​"))) {
+        paramHashSet.tGF = false;
       }
     }
   }
@@ -133,9 +133,9 @@ public class k
     int i;
     if ((parama instanceof com.tencent.mm.plugin.fts.ui.a.m))
     {
-      i = cTS();
-      paramBoolean = this.tCT;
-      if (parama.twa != 65536) {}
+      i = cWx();
+      paramBoolean = this.tNK;
+      if (parama.tGR != 65536) {}
     }
     label85:
     int k;
@@ -149,7 +149,7 @@ public class k
     case 3: 
     case 4: 
       i = parama.pageType;
-      k = parama.cSY();
+      k = parama.cVD();
       if (!paramBoolean) {
         break;
       }
@@ -157,8 +157,8 @@ public class k
     for (int j = 1;; j = 0)
     {
       paramView = String.format("%s,%s,%s", new Object[] { Integer.valueOf(k), Integer.valueOf(i), Integer.valueOf(j) });
-      ad.v("MicroMsg.FTS.FTSReportLogic", "reportFTSGlobalMsgResultClick: %d, %s", new Object[] { Integer.valueOf(14756), paramView });
-      com.tencent.mm.plugin.report.service.g.yhR.kvStat(14756, paramView);
+      ae.v("MicroMsg.FTS.FTSReportLogic", "reportFTSGlobalMsgResultClick: %d, %s", new Object[] { Integer.valueOf(14756), paramView });
+      com.tencent.mm.plugin.report.service.g.yxI.kvStat(14756, paramView);
       break;
       if (i == 1)
       {
@@ -178,18 +178,18 @@ public class k
     AppMethodBeat.i(112207);
     Object localObject2 = null;
     Object localObject1 = localObject2;
-    if (paramInt < parama.lKC.size())
+    if (paramInt < parama.lPc.size())
     {
       localObject1 = localObject2;
       if (paramInt >= 0)
       {
-        localObject1 = (com.tencent.mm.plugin.fts.a.a.m)parama.lKC.get(paramInt);
+        localObject1 = (com.tencent.mm.plugin.fts.a.a.m)parama.lPc.get(paramInt);
         parama = new c();
-        parama.dBg = String.valueOf(localObject1.hashCode());
-        if (!((com.tencent.mm.plugin.fts.a.a.m)localObject1).tuh.equals("create_talker_message​")) {
+        parama.dCl = String.valueOf(localObject1.hashCode());
+        if (!((com.tencent.mm.plugin.fts.a.a.m)localObject1).tEY.equals("create_talker_message​")) {
           break label91;
         }
-        parama.dBr = 22;
+        parama.dCw = 22;
       }
     }
     for (localObject1 = parama;; localObject1 = parama)
@@ -197,11 +197,11 @@ public class k
       AppMethodBeat.o(112207);
       return localObject1;
       label91:
-      parama.dBr = 11;
+      parama.dCw = 11;
     }
   }
   
-  protected int cTS()
+  protected int cWx()
   {
     return 0;
   }
@@ -213,7 +213,7 @@ public class k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.ui.d.k
  * JD-Core Version:    0.7.0.1
  */

@@ -5,7 +5,7 @@ public final class al
 {
   public al()
   {
-    this.NQs = 361;
+    this.Ony = 361;
   }
 }
 

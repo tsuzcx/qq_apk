@@ -1,10 +1,10 @@
 package com.tencent.mm.plugin.appbrand.menu.b;
 
 import com.tencent.mm.plugin.appbrand.menu.a.b;
-import com.tencent.mm.plugin.appbrand.page.ae;
+import com.tencent.mm.plugin.appbrand.page.ad;
 
 public final class e
-  implements b<ae>
+  implements b<ad>
 {}
 
 

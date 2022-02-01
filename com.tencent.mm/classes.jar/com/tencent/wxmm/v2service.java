@@ -11,6 +11,9 @@ public class v2service
   public int field_remoteImgHeight = 0;
   public int field_remoteImgLength = 0;
   public int field_remoteImgWidth = 0;
+  public int field_remoteScreenImgHeight = 0;
+  public int field_remoteScreenImgLength = 0;
+  public int field_remoteScreenImgWidth = 0;
   private IVoipCallBack mUiCallBack = null;
   public byte[] remoteImgBuffer = null;
   
@@ -110,7 +113,7 @@ public class v2service
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.wxmm.v2service
  * JD-Core Version:    0.7.0.1
  */

@@ -8,44 +8,44 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
-import com.tencent.mm.model.ba;
+import com.tencent.mm.model.bc;
 import com.tencent.mm.model.c;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.lang.ref.WeakReference;
 
 public final class g
   extends com.tencent.mm.pluginsdk.ui.b.b
 {
-  boolean Jxs;
-  String Jya;
-  String Kyl;
+  String JSQ;
+  boolean JSi;
+  String KUF;
   
   public g(Context paramContext, final String paramString1, String paramString2, boolean paramBoolean)
   {
     super(paramContext);
     AppMethodBeat.i(38781);
-    this.Jya = null;
-    this.Kyl = null;
-    this.Jxs = false;
-    this.Jya = paramString1;
-    this.Kyl = paramString2;
-    this.Jxs = paramBoolean;
+    this.JSQ = null;
+    this.KUF = null;
+    this.JSi = false;
+    this.JSQ = paramString1;
+    this.KUF = paramString2;
+    this.JSi = paramBoolean;
     if (this.view != null)
     {
       paramContext = (TextView)this.view.findViewById(2131298167);
-      paramString1 = ba.aBQ().azP().aQ(this.Jya, "wording");
-      paramString2 = ba.aBQ().azP().aQ(this.Kyl, "wording");
-      if (bt.isNullOrNil(paramString1)) {
+      paramString1 = bc.aCg().aAf().aQ(this.JSQ, "wording");
+      paramString2 = bc.aCg().aAf().aQ(this.KUF, "wording");
+      if (bu.isNullOrNil(paramString1)) {
         break label204;
       }
       paramContext.setText(paramString1);
     }
     for (;;)
     {
-      paramContext = ba.aBQ().azP().aQ(this.Jya, "linkname");
-      paramString1 = ba.aBQ().azP().aQ(this.Jya, "linksrc");
+      paramContext = bc.aCg().aAf().aQ(this.JSQ, "linkname");
+      paramString1 = bc.aCg().aAf().aQ(this.JSQ, "linksrc");
       paramString2 = (TextView)this.view.findViewById(2131298166);
-      if (!bt.isNullOrNil(paramContext)) {
+      if (!bu.isNullOrNil(paramContext)) {
         paramString2.setText(paramContext);
       }
       paramString2.setOnClickListener(new View.OnClickListener()
@@ -55,24 +55,24 @@ public final class g
           AppMethodBeat.i(38779);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
           localb.bd(paramAnonymousView);
-          a.b("com/tencent/mm/ui/conversation/banner/ChattingSecurityBanner$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+          a.b("com/tencent/mm/ui/conversation/banner/ChattingSecurityBanner$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
           paramAnonymousView = new Intent();
-          paramAnonymousView.putExtra("k_username", g.this.Jya);
+          paramAnonymousView.putExtra("k_username", g.this.JSQ);
           int i = 39;
-          if (g.this.Jxs) {
+          if (g.this.JSi) {
             i = 36;
           }
           paramAnonymousView.putExtra("showShare", false);
-          if (!bt.isNullOrNil(paramString1)) {
+          if (!bu.isNullOrNil(paramString1)) {
             paramAnonymousView.putExtra("rawUrl", paramString1);
           }
           for (;;)
           {
-            if (g.this.EXg.get() != null) {
-              com.tencent.mm.bs.d.b((Context)g.this.EXg.get(), "webview", ".ui.tools.WebViewUI", paramAnonymousView);
+            if (g.this.FpA.get() != null) {
+              com.tencent.mm.br.d.b((Context)g.this.FpA.get(), "webview", ".ui.tools.WebViewUI", paramAnonymousView);
             }
-            ba.aBQ().azP().BL(g.this.Jya);
-            ba.aBQ().azP().BL(g.this.Kyl);
+            bc.aCg().aAf().Cn(g.this.JSQ);
+            bc.aCg().aAf().Cn(g.this.KUF);
             a.a(this, "com/tencent/mm/ui/conversation/banner/ChattingSecurityBanner$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
             AppMethodBeat.o(38779);
             return;
@@ -87,9 +87,9 @@ public final class g
           AppMethodBeat.i(38780);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
           localb.bd(paramAnonymousView);
-          a.b("com/tencent/mm/ui/conversation/banner/ChattingSecurityBanner$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-          ba.aBQ().azP().BL(g.this.Jya);
-          ba.aBQ().azP().BL(g.this.Kyl);
+          a.b("com/tencent/mm/ui/conversation/banner/ChattingSecurityBanner$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+          bc.aCg().aAf().Cn(g.this.JSQ);
+          bc.aCg().aAf().Cn(g.this.KUF);
           a.a(this, "com/tencent/mm/ui/conversation/banner/ChattingSecurityBanner$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(38780);
         }
@@ -97,7 +97,7 @@ public final class g
       AppMethodBeat.o(38781);
       return;
       label204:
-      if (!bt.isNullOrNil(paramString2)) {
+      if (!bu.isNullOrNil(paramString2)) {
         paramContext.setText(paramString2);
       }
     }

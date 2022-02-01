@@ -3,8 +3,8 @@ package com.tencent.mm.openim.e;
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.storagebase.h;
 import java.util.LinkedList;
 import java.util.List;
@@ -13,7 +13,7 @@ public final class f
   extends j<e>
 {
   public static final String[] SQL_CREATE;
-  public h hHS;
+  public h hKK;
   
   static
   {
@@ -25,7 +25,7 @@ public final class f
   public f(h paramh)
   {
     super(paramh, e.info, "OpenIMWordingInfo", null);
-    this.hHS = paramh;
+    this.hKK = paramh;
   }
   
   public final List<String> P(int paramInt, String paramString)
@@ -33,18 +33,18 @@ public final class f
     AppMethodBeat.i(151336);
     LinkedList localLinkedList = new LinkedList();
     Object localObject = " select wordingId from OpenIMWordingInfo where language='" + paramString + "' order by updateTime limit " + paramInt;
-    ad.d("MicroMsg.Openim.OpenIMWordingInfoStg", "getLastWording sql:%s", new Object[] { localObject });
-    localObject = this.hHS.a((String)localObject, null, 2);
+    ae.d("MicroMsg.Openim.OpenIMWordingInfoStg", "getLastWording sql:%s", new Object[] { localObject });
+    localObject = this.hKK.a((String)localObject, null, 2);
     if (((Cursor)localObject).moveToFirst()) {
       do
       {
         String str = ((Cursor)localObject).getString(0);
-        if (!bt.isNullOrNil(str)) {
+        if (!bu.isNullOrNil(str)) {
           localLinkedList.add(str);
         }
       } while (((Cursor)localObject).moveToNext());
     }
-    ad.d("MicroMsg.Openim.OpenIMWordingInfoStg", "getLastWording result cnt: %d, language:%s", new Object[] { Integer.valueOf(localLinkedList.size()), paramString });
+    ae.d("MicroMsg.Openim.OpenIMWordingInfoStg", "getLastWording result cnt: %d, language:%s", new Object[] { Integer.valueOf(localLinkedList.size()), paramString });
     ((Cursor)localObject).close();
     AppMethodBeat.o(151336);
     return localLinkedList;
@@ -53,7 +53,7 @@ public final class f
   public final boolean a(e parame)
   {
     AppMethodBeat.i(151335);
-    parame.field_updateTime = bt.aQJ();
+    parame.field_updateTime = bu.aRi();
     boolean bool = super.replace(parame);
     AppMethodBeat.o(151335);
     return bool;
@@ -61,7 +61,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.openim.e.f
  * JD-Core Version:    0.7.0.1
  */

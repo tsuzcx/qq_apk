@@ -10,9 +10,9 @@ import java.util.List;
 public final class z
   extends ay
 {
-  public final as[] NCb;
-  public final av[] NCc;
-  private final boolean NCd;
+  public final as[] NZi;
+  public final av[] NZj;
+  private final boolean NZk;
   
   public z(List<? extends as> paramList, List<? extends av> paramList1)
   {
@@ -23,13 +23,13 @@ public final class z
   public z(as[] paramArrayOfas, av[] paramArrayOfav, boolean paramBoolean)
   {
     AppMethodBeat.i(60752);
-    this.NCb = paramArrayOfas;
-    this.NCc = paramArrayOfav;
-    this.NCd = paramBoolean;
-    if (this.NCb.length <= this.NCc.length) {}
-    for (int i = 1; (ac.MKp) && (i == 0); i = 0)
+    this.NZi = paramArrayOfas;
+    this.NZj = paramArrayOfav;
+    this.NZk = paramBoolean;
+    if (this.NZi.length <= this.NZj.length) {}
+    for (int i = 1; (ac.Nhs) && (i == 0); i = 0)
     {
-      paramArrayOfas = (Throwable)new AssertionError("Number of arguments should not be less then number of parameters, but: parameters=" + this.NCb.length + ", args=" + this.NCc.length);
+      paramArrayOfas = (Throwable)new AssertionError("Number of arguments should not be less then number of parameters, but: parameters=" + this.NZi.length + ", args=" + this.NZj.length);
       AppMethodBeat.o(60752);
       throw paramArrayOfas;
     }
@@ -40,7 +40,7 @@ public final class z
   {
     AppMethodBeat.i(60751);
     p.h(paramab, "key");
-    h localh = paramab.gsZ().ghO();
+    h localh = paramab.gxB().gmq();
     paramab = localh;
     if (!(localh instanceof as)) {
       paramab = null;
@@ -52,9 +52,9 @@ public final class z
       return null;
     }
     int i = paramab.getIndex();
-    if ((i < this.NCb.length) && (p.i(this.NCb[i].ghu(), paramab.ghu())))
+    if ((i < this.NZi.length) && (p.i(this.NZi[i].glW(), paramab.glW())))
     {
-      paramab = this.NCc[i];
+      paramab = this.NZj[i];
       AppMethodBeat.o(60751);
       return paramab;
     }
@@ -62,19 +62,19 @@ public final class z
     return null;
   }
   
-  public final boolean gtb()
+  public final boolean gxD()
   {
-    return this.NCd;
+    return this.NZk;
   }
   
   public final boolean isEmpty()
   {
-    return this.NCc.length == 0;
+    return this.NZj.length == 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.m.z
  * JD-Core Version:    0.7.0.1
  */

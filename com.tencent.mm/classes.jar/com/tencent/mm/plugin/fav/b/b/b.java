@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.fav.b.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.gu;
+import com.tencent.mm.g.a.gv;
 import com.tencent.mm.sdk.b.c;
 
 public final class b
-  extends c<gu>
+  extends c<gv>
 {
   public b()
   {
     AppMethodBeat.i(161113);
-    this.__eventId = gu.class.getName().hashCode();
+    this.__eventId = gv.class.getName().hashCode();
     AppMethodBeat.o(161113);
   }
 }

@@ -7,57 +7,57 @@ import android.os.SystemClock;
 import android.view.Surface;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.d;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.ap.a;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.aq.a;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public final class k
   implements c
 {
   long bdJ;
   public long bup;
-  boolean fMP;
+  boolean fOX;
   public int state;
-  ap vLQ;
-  ap vLR;
-  ap vLS;
-  long vLT;
-  boolean vLU;
-  public l vLV;
-  boolean vLW;
-  a vLX;
-  int vLY;
-  private ap.a vLZ;
-  public h vLw;
-  ap vLx;
-  private ap.a vMa;
-  private ap.a vMb;
+  public h vXA;
+  aq vXB;
+  aq vXU;
+  aq vXV;
+  aq vXW;
+  long vXX;
+  boolean vXY;
+  public l vXZ;
+  boolean vYa;
+  a vYb;
+  int vYc;
+  private aq.a vYd;
+  private aq.a vYe;
+  private aq.a vYf;
   
-  public k(ap paramap, com.tencent.e.j.a parama, Looper paramLooper1, Looper paramLooper2, int paramInt)
+  public k(aq paramaq, com.tencent.e.j.a parama, Looper paramLooper1, Looper paramLooper2, int paramInt)
   {
-    AppMethodBeat.i(197030);
-    this.vLU = false;
-    this.vLW = false;
-    this.vLY = -1;
-    this.vLZ = new ap.a()
+    AppMethodBeat.i(220264);
+    this.vXY = false;
+    this.vYa = false;
+    this.vYc = -1;
+    this.vYd = new aq.a()
     {
-      private int rQP = -1;
-      private int vMc = -1;
-      private int vMd = -1;
-      private long vMe = -1L;
+      private int rZr = -1;
+      private int vYg = -1;
+      private int vYh = -1;
+      private long vYi = -1L;
       
       public final boolean handleMessage(Message paramAnonymousMessage)
       {
         AppMethodBeat.i(133932);
         int i = paramAnonymousMessage.what;
-        if ((this.vMe <= 0L) || (bt.aO(this.vMe) > 500L) || (this.vMc != i) || (this.rQP != k.this.state) || (this.vMd != k.this.vLV.state))
+        if ((this.vYi <= 0L) || (bu.aO(this.vYi) > 500L) || (this.vYg != i) || (this.rZr != k.this.state) || (this.vYh != k.this.vXZ.state))
         {
-          ad.i("MicroMsg.VideoPlayerImpl", "%s inner callback %d %d [%d]", new Object[] { k.this.info(), Integer.valueOf(i), Integer.valueOf(k.this.state), Integer.valueOf(k.this.vLV.state) });
-          this.vMe = bt.HI();
-          this.vMc = i;
-          this.rQP = k.this.state;
-          this.vMd = k.this.vLV.state;
+          ae.i("MicroMsg.VideoPlayerImpl", "%s inner callback %d %d [%d]", new Object[] { k.this.info(), Integer.valueOf(i), Integer.valueOf(k.this.state), Integer.valueOf(k.this.vXZ.state) });
+          this.vYi = bu.HQ();
+          this.vYg = i;
+          this.rZr = k.this.state;
+          this.vYh = k.this.vXZ.state;
         }
         switch (i)
         {
@@ -72,49 +72,49 @@ public final class k
             AppMethodBeat.o(133932);
             return false;
           }
-          boolean bool2 = e.JS(k.this.vLV.state);
+          boolean bool2 = e.Ks(k.this.vXZ.state);
           boolean bool1 = bool2;
-          if (k.this.vLX != null) {
-            bool1 = bool2 & e.JS(k.this.vLX.state);
+          if (k.this.vYb != null) {
+            bool1 = bool2 & e.Ks(k.this.vYb.state);
           }
           if (bool1)
           {
             k.this.setState(2);
-            k.this.vLx.obtainMessage(1).sendToTarget();
+            k.this.vXB.obtainMessage(1).sendToTarget();
             continue;
             k.a(k.this);
             continue;
-            if (e.JW(k.this.state))
+            if (e.Kw(k.this.state))
             {
               AppMethodBeat.o(133932);
               return false;
             }
-            if ((e.JX(k.this.state)) || (e.JV(k.this.state)))
+            if ((e.Kx(k.this.state)) || (e.Kv(k.this.state)))
             {
               k.this.setState(9);
-              k.this.vLx.obtainMessage(2).sendToTarget();
+              k.this.vXB.obtainMessage(2).sendToTarget();
               AppMethodBeat.o(133932);
               return false;
             }
-            bool2 = e.JW(k.this.vLV.state);
+            bool2 = e.Kw(k.this.vXZ.state);
             bool1 = bool2;
-            if (k.this.vLX != null) {
-              bool1 = bool2 & e.JW(k.this.vLX.state);
+            if (k.this.vYb != null) {
+              bool1 = bool2 & e.Kw(k.this.vYb.state);
             }
             if (bool1)
             {
               k.this.setState(9);
-              k.this.vLx.obtainMessage(2).sendToTarget();
+              k.this.vXB.obtainMessage(2).sendToTarget();
               continue;
-              if ((k.this.vLU) && ((k.this.fMP) || (k.this.vLW))) {
-                k.this.vLx.obtainMessage(6).sendToTarget();
+              if ((k.this.vXY) && ((k.this.fOX) || (k.this.vYa))) {
+                k.this.vXB.obtainMessage(6).sendToTarget();
               }
             }
           }
         }
       }
     };
-    this.vMa = new ap.a()
+    this.vYe = new aq.a()
     {
       public final boolean handleMessage(Message paramAnonymousMessage)
       {
@@ -128,34 +128,34 @@ public final class k
           return false;
           label905:
           label911:
-          if (k.this.vLV.cQr())
+          if (k.this.vXZ.cSW())
           {
-            k.this.bup = k.this.vLV.bup;
-            k.a(k.this, k.this.vLQ, SystemClock.elapsedRealtime(), 0L);
+            k.this.bup = k.this.vXZ.bup;
+            k.a(k.this, k.this.vXU, SystemClock.elapsedRealtime(), 0L);
           }
           else
           {
-            k.this.vLx.obtainMessage(5, -1, -1).sendToTarget();
+            k.this.vXB.obtainMessage(5, -1, -1).sendToTarget();
             AppMethodBeat.o(133933);
             return false;
-            paramAnonymousMessage = k.this.vLw;
-            long l = bt.aO(paramAnonymousMessage.vLp);
-            if ((paramAnonymousMessage.vLp > 0L) && (l >= 30L))
+            paramAnonymousMessage = k.this.vXA;
+            long l = bu.aO(paramAnonymousMessage.vXt);
+            if ((paramAnonymousMessage.vXt > 0L) && (l >= 30L))
             {
-              ad.w("MicroMsg.PlayTimeLine", "%s do some work delay 30ms!!![%d, %d]", new Object[] { paramAnonymousMessage.info(), Long.valueOf(paramAnonymousMessage.vLp), Long.valueOf(l) });
-              paramAnonymousMessage.vLq = 0L;
+              ae.w("MicroMsg.PlayTimeLine", "%s do some work delay 30ms!!![%d, %d]", new Object[] { paramAnonymousMessage.info(), Long.valueOf(paramAnonymousMessage.vXt), Long.valueOf(l) });
+              paramAnonymousMessage.vXu = 0L;
             }
             label788:
-            if (e.JW(k.this.vLV.state))
+            if (e.Kw(k.this.vXZ.state))
             {
-              k.this.vLS.obtainMessage(9).sendToTarget();
-              k.this.vLQ.removeMessages(2);
+              k.this.vXW.obtainMessage(9).sendToTarget();
+              k.this.vXU.removeMessages(2);
             }
             else
             {
-              int j = k.this.vLV.W(k.this.bdJ, k.this.vLT);
-              if (e.JS(j)) {
-                k.this.vLS.obtainMessage(2).sendToTarget();
+              int j = k.this.vXZ.V(k.this.bdJ, k.this.vXX);
+              if (e.Ks(j)) {
+                k.this.vXW.obtainMessage(2).sendToTarget();
               }
               if (j == 7) {}
               for (int i = 1;; i = 0)
@@ -163,50 +163,50 @@ public final class k
                 if (i == 0) {
                   break label350;
                 }
-                k.this.vLS.obtainMessage(7).sendToTarget();
-                k.this.vLQ.removeMessages(2);
+                k.this.vXW.obtainMessage(7).sendToTarget();
+                k.this.vXU.removeMessages(2);
                 break;
               }
               label350:
-              if (e.JY(j))
+              if (e.Ky(j))
               {
-                k.a(k.this, k.this.vLQ, SystemClock.elapsedRealtime(), 0L);
-                k.this.vLw.vLp = bt.HI();
+                k.a(k.this, k.this.vXU, SystemClock.elapsedRealtime(), 0L);
+                k.this.vXA.vXt = bu.HQ();
               }
               else
               {
                 if (k.this.state == 3) {
-                  k.a(k.this, k.this.vLQ, SystemClock.elapsedRealtime(), k.this.vLw.vLq);
+                  k.a(k.this, k.this.vXU, SystemClock.elapsedRealtime(), k.this.vXA.vXu);
                 }
                 for (;;)
                 {
-                  k.this.vLw.vLp = bt.HI();
+                  k.this.vXA.vXt = bu.HQ();
                   break;
                   if (k.this.state == 5) {
-                    k.a(k.this, k.this.vLQ, SystemClock.elapsedRealtime(), 0L);
+                    k.a(k.this, k.this.vXU, SystemClock.elapsedRealtime(), 0L);
                   } else if (k.this.state == 1) {
-                    k.a(k.this, k.this.vLQ, SystemClock.elapsedRealtime(), 0L);
+                    k.a(k.this, k.this.vXU, SystemClock.elapsedRealtime(), 0L);
                   } else if (k.this.state == 0) {
-                    k.a(k.this, k.this.vLQ, SystemClock.elapsedRealtime(), 0L);
+                    k.a(k.this, k.this.vXU, SystemClock.elapsedRealtime(), 0L);
                   } else if (k.this.state == 6) {
-                    k.a(k.this, k.this.vLQ, SystemClock.elapsedRealtime(), 0L);
+                    k.a(k.this, k.this.vXU, SystemClock.elapsedRealtime(), 0L);
                   } else {
-                    k.this.vLQ.removeMessages(2);
+                    k.this.vXU.removeMessages(2);
                   }
                 }
-                k.this.Kc(3);
-                k.this.vLV.start();
-                k.a(k.this, k.this.vLQ, SystemClock.elapsedRealtime(), 0L);
+                k.this.KC(3);
+                k.this.vXZ.start();
+                k.a(k.this, k.this.vXU, SystemClock.elapsedRealtime(), 0L);
                 continue;
-                k.this.Kc(4);
-                k.a(k.this, k.this.vLQ, SystemClock.elapsedRealtime(), 0L);
-                k.this.vLV.pause();
+                k.this.KC(4);
+                k.a(k.this, k.this.vXU, SystemClock.elapsedRealtime(), 0L);
+                k.this.vXZ.pause();
                 continue;
-                k.this.vLV.release();
-                k.this.vLU = true;
-                k.this.vLS.obtainMessage(0).sendToTarget();
+                k.this.vXZ.release();
+                k.this.vXY = true;
+                k.this.vXW.obtainMessage(0).sendToTarget();
                 continue;
-                k.this.vLV.dmw();
+                k.this.vXZ.dpu();
                 continue;
                 if ((paramAnonymousMessage.obj instanceof int[]))
                 {
@@ -219,22 +219,22 @@ public final class k
                     if (paramAnonymousMessage[1] == 1)
                     {
                       i = 1;
-                      l = k.this.vLV.Ka(j);
+                      l = k.this.vXZ.KA(j);
                       if ((i == 0) || (l < 0L) || (l >= j)) {
                         break label905;
                       }
                       bool = true;
-                      ad.i("MicroMsg.VideoPlayerImpl", "%s can seek precision[%b] after seek [%d, %d]", new Object[] { k.this.info(), Boolean.valueOf(bool), Long.valueOf(l), Integer.valueOf(j) });
-                      k.this.vLV.setState(6);
+                      ae.i("MicroMsg.VideoPlayerImpl", "%s can seek precision[%b] after seek [%d, %d]", new Object[] { k.this.info(), Boolean.valueOf(bool), Long.valueOf(l), Integer.valueOf(j) });
+                      k.this.vXZ.setState(6);
                       k.this.setState(6);
                       if (!bool) {
                         break label911;
                       }
                     }
-                    for (k.this.vLw.vLm = j;; k.this.vLw.vLm = l)
+                    for (k.this.vXA.vXq = j;; k.this.vXA.vXq = l)
                     {
-                      k.this.Kc(6);
-                      k.a(k.this, k.this.vLQ, SystemClock.elapsedRealtime(), 0L);
+                      k.this.KC(6);
+                      k.a(k.this, k.this.vXU, SystemClock.elapsedRealtime(), 0L);
                       break;
                       i = 0;
                       break label753;
@@ -242,11 +242,11 @@ public final class k
                       break label788;
                     }
                   }
-                  ad.e("MicroMsg.VideoPlayerImpl", "seek data length error");
+                  ae.e("MicroMsg.VideoPlayerImpl", "seek data length error");
                 }
                 else
                 {
-                  ad.e("MicroMsg.VideoPlayerImpl", "seek data type error");
+                  ae.e("MicroMsg.VideoPlayerImpl", "seek data type error");
                 }
               }
             }
@@ -254,12 +254,12 @@ public final class k
         }
       }
     };
-    this.vMb = new ap.a()
+    this.vYf = new aq.a()
     {
       public final boolean handleMessage(Message paramAnonymousMessage)
       {
         AppMethodBeat.i(133934);
-        if (k.this.vLX == null)
+        if (k.this.vYb == null)
         {
           AppMethodBeat.o(133934);
           return false;
@@ -271,239 +271,239 @@ public final class k
         {
           AppMethodBeat.o(133934);
           return false;
-          if (!k.this.vLX.cQr())
+          if (!k.this.vYb.cSW())
           {
-            ad.i("MicroMsg.VideoPlayerImpl", "%s audio track prepare error, release now.", new Object[] { k.this.info() });
-            k.this.vLX.release();
-            k.this.vLW = true;
-            k.this.vLX = null;
+            ae.i("MicroMsg.VideoPlayerImpl", "%s audio track prepare error, release now.", new Object[] { k.this.info() });
+            k.this.vYb.release();
+            k.this.vYa = true;
+            k.this.vYb = null;
           }
-          k.a(k.this, k.this.vLR, SystemClock.elapsedRealtime(), 0L);
+          k.a(k.this, k.this.vXV, SystemClock.elapsedRealtime(), 0L);
           continue;
-          if (e.JW(k.this.vLX.state))
+          if (e.Kw(k.this.vYb.state))
           {
-            k.this.vLS.obtainMessage(9).sendToTarget();
-            k.this.vLR.removeMessages(2);
+            k.this.vXW.obtainMessage(9).sendToTarget();
+            k.this.vXV.removeMessages(2);
           }
           else
           {
-            if (e.JS(k.this.vLX.W(k.this.bdJ, k.this.vLT))) {
-              k.this.vLS.sendMessageDelayed(k.this.vLS.obtainMessage(2), 10L);
+            if (e.Ks(k.this.vYb.V(k.this.bdJ, k.this.vXX))) {
+              k.this.vXW.sendMessageDelayed(k.this.vXW.obtainMessage(2), 10L);
             }
             if (k.this.state == 3)
             {
-              k.a(k.this, k.this.vLR, SystemClock.elapsedRealtime(), k.this.vLw.vLq);
+              k.a(k.this, k.this.vXV, SystemClock.elapsedRealtime(), k.this.vXA.vXu);
             }
             else if (k.this.state == 5)
             {
-              k.a(k.this, k.this.vLR, SystemClock.elapsedRealtime(), 0L);
+              k.a(k.this, k.this.vXV, SystemClock.elapsedRealtime(), 0L);
             }
             else if (k.this.state == 1)
             {
-              k.a(k.this, k.this.vLR, SystemClock.elapsedRealtime(), 0L);
+              k.a(k.this, k.this.vXV, SystemClock.elapsedRealtime(), 0L);
             }
             else if (k.this.state == 0)
             {
-              k.a(k.this, k.this.vLR, SystemClock.elapsedRealtime(), 0L);
+              k.a(k.this, k.this.vXV, SystemClock.elapsedRealtime(), 0L);
             }
             else
             {
-              k.this.vLR.removeMessages(2);
+              k.this.vXV.removeMessages(2);
               continue;
-              k.this.vLX.start();
-              k.a(k.this, k.this.vLR, SystemClock.elapsedRealtime(), 0L);
+              k.this.vYb.start();
+              k.a(k.this, k.this.vXV, SystemClock.elapsedRealtime(), 0L);
               continue;
-              k.a(k.this, k.this.vLR, SystemClock.elapsedRealtime(), 0L);
-              k.this.vLX.pause();
+              k.a(k.this, k.this.vXV, SystemClock.elapsedRealtime(), 0L);
+              k.this.vYb.pause();
               continue;
-              k.this.vLX.release();
-              k.this.vLW = true;
-              k.this.vLS.obtainMessage(0).sendToTarget();
+              k.this.vYb.release();
+              k.this.vYa = true;
+              k.this.vXW.obtainMessage(0).sendToTarget();
             }
           }
         }
       }
     };
-    this.vLx = paramap;
-    this.fMP = false;
-    this.vLw = new h(this.fMP, paramInt);
-    this.vLS = new ap(parama, this.vLZ);
-    this.vLS.setLogging(false);
-    this.vLV = new l(this.vLw, this.vLx);
-    this.vLQ = new ap(paramLooper1, this.vMa);
+    this.vXB = paramaq;
+    this.fOX = false;
+    this.vXA = new h(this.fOX, paramInt);
+    this.vXW = new aq(parama, this.vYd);
+    this.vXW.setLogging(false);
+    this.vXZ = new l(this.vXA, this.vXB);
+    this.vXU = new aq(paramLooper1, this.vYe);
     if (paramLooper2 != null)
     {
-      this.vLX = new a(this.vLw, this.vLx);
-      this.vLR = new ap(paramLooper2, this.vMb);
-      this.vLR.setLogging(false);
+      this.vYb = new a(this.vXA, this.vXB);
+      this.vXV = new aq(paramLooper2, this.vYf);
+      this.vXV.setLogging(false);
     }
-    AppMethodBeat.o(197030);
+    AppMethodBeat.o(220264);
   }
   
-  private void a(ap paramap, long paramLong1, long paramLong2)
+  private void a(aq paramaq, long paramLong1, long paramLong2)
   {
     AppMethodBeat.i(133951);
-    if (e.JW(this.state))
+    if (e.Kw(this.state))
     {
-      ad.w("MicroMsg.VideoPlayerImpl", "isEnd state=%s", new Object[] { Integer.valueOf(this.state) });
+      ae.w("MicroMsg.VideoPlayerImpl", "isEnd state=%s", new Object[] { Integer.valueOf(this.state) });
       AppMethodBeat.o(133951);
       return;
     }
-    if (paramap.isQuit())
+    if (paramaq.isQuit())
     {
-      ad.w("MicroMsg.VideoPlayerImpl", "handler has quit");
+      ae.w("MicroMsg.VideoPlayerImpl", "handler has quit");
       AppMethodBeat.o(133951);
       return;
     }
-    paramap.removeMessages(2);
+    paramaq.removeMessages(2);
     paramLong1 = paramLong1 + paramLong2 - SystemClock.elapsedRealtime();
     if (paramLong1 <= 0L)
     {
-      paramap.sendEmptyMessage(2);
+      paramaq.sendEmptyMessage(2);
       AppMethodBeat.o(133951);
       return;
     }
-    paramap.sendEmptyMessageDelayed(2, paramLong1);
+    paramaq.sendEmptyMessageDelayed(2, paramLong1);
     AppMethodBeat.o(133951);
   }
   
-  private void dmB()
+  private void dpz()
   {
     AppMethodBeat.i(133945);
-    ad.i("MicroMsg.VideoPlayerImpl", "%s seek done", new Object[] { info() });
-    this.vLV.setState(5);
-    if (this.vLX != null)
+    ae.i("MicroMsg.VideoPlayerImpl", "%s seek done", new Object[] { info() });
+    this.vXZ.setState(5);
+    if (this.vYb != null)
     {
-      this.vLX.dmw();
-      this.vLw.vLo = this.vLX.Ka((int)this.vLw.vLm);
-      this.vLX.setState(5);
+      this.vYb.dpu();
+      this.vXA.vXs = this.vYb.KA((int)this.vXA.vXq);
+      this.vYb.setState(5);
     }
-    Kc(7);
+    KC(7);
     setState(4);
-    this.vLx.obtainMessage(3, 0, 0).sendToTarget();
-    this.vLw.vLn = (this.vLw.vLm * 1000L);
-    this.vLw.vLm = -1L;
+    this.vXB.obtainMessage(3, 0, 0).sendToTarget();
+    this.vXA.vXr = (this.vXA.vXq * 1000L);
+    this.vXA.vXq = -1L;
     AppMethodBeat.o(133945);
   }
   
-  public final void Kb(int paramInt)
+  public final void KB(int paramInt)
   {
     AppMethodBeat.i(133944);
-    ad.i("MicroMsg.VideoPlayerImpl", "%s seek to [%d] is precision[%b]", new Object[] { info(), Integer.valueOf(paramInt), Boolean.TRUE });
-    ad.l("MicroMsg.VideoPlayerImpl", "seek stack", new Object[0]);
+    ae.i("MicroMsg.VideoPlayerImpl", "%s seek to [%d] is precision[%b]", new Object[] { info(), Integer.valueOf(paramInt), Boolean.TRUE });
+    ae.l("MicroMsg.VideoPlayerImpl", "seek stack", new Object[0]);
     if (this.state < 2)
     {
-      ad.w("MicroMsg.VideoPlayerImpl", "%s player is not ready[%d], how to seek[%d]?", new Object[] { info(), Integer.valueOf(this.state), Integer.valueOf(paramInt) });
+      ae.w("MicroMsg.VideoPlayerImpl", "%s player is not ready[%d], how to seek[%d]?", new Object[] { info(), Integer.valueOf(this.state), Integer.valueOf(paramInt) });
       AppMethodBeat.o(133944);
       return;
     }
-    this.vLV.pause();
-    this.vLQ.removeMessages(4);
-    if (this.vLX != null)
+    this.vXZ.pause();
+    this.vXU.removeMessages(4);
+    if (this.vYb != null)
     {
-      this.vLX.pause();
-      this.vLR.removeMessages(4);
+      this.vYb.pause();
+      this.vXV.removeMessages(4);
     }
     if (paramInt >= this.bup)
     {
-      ad.i("MicroMsg.VideoPlayerImpl", "seekTo %d, duration %d ", new Object[] { Integer.valueOf(paramInt), Long.valueOf(this.bup) });
+      ae.i("MicroMsg.VideoPlayerImpl", "seekTo %d, duration %d ", new Object[] { Integer.valueOf(paramInt), Long.valueOf(this.bup) });
       setState(6);
-      this.vLS.obtainMessage(9).sendToTarget();
+      this.vXW.obtainMessage(9).sendToTarget();
       AppMethodBeat.o(133944);
       return;
     }
-    this.vLQ.obtainMessage(8).sendToTarget();
-    this.vLQ.obtainMessage(5, new int[] { paramInt, 1 }).sendToTarget();
+    this.vXU.obtainMessage(8).sendToTarget();
+    this.vXU.obtainMessage(5, new int[] { paramInt, 1 }).sendToTarget();
     AppMethodBeat.o(133944);
   }
   
-  final void Kc(int paramInt)
+  final void KC(int paramInt)
   {
     AppMethodBeat.i(133949);
-    ad.i("MicroMsg.VideoPlayerImpl", "%s update positions state %d timeline[%d %d %d]", new Object[] { info(), Integer.valueOf(paramInt), Long.valueOf(this.vLw.dOX), Long.valueOf(this.vLw.vLl), Long.valueOf(this.vLw.bdJ) });
+    ae.i("MicroMsg.VideoPlayerImpl", "%s update positions state %d timeline[%d %d %d]", new Object[] { info(), Integer.valueOf(paramInt), Long.valueOf(this.vXA.dQn), Long.valueOf(this.vXA.vXp), Long.valueOf(this.vXA.bdJ) });
     switch (paramInt)
     {
     }
     for (;;)
     {
-      this.vLT = this.vLw.dOX;
-      this.bdJ = this.vLw.bdJ;
-      ad.i("MicroMsg.VideoPlayerImpl", "%s update positions end state[%d] ms[%d, %d]", new Object[] { info(), Integer.valueOf(paramInt), Long.valueOf(this.vLT), Long.valueOf(this.bdJ) });
+      this.vXX = this.vXA.dQn;
+      this.bdJ = this.vXA.bdJ;
+      ae.i("MicroMsg.VideoPlayerImpl", "%s update positions end state[%d] ms[%d, %d]", new Object[] { info(), Integer.valueOf(paramInt), Long.valueOf(this.vXX), Long.valueOf(this.bdJ) });
       AppMethodBeat.o(133949);
       return;
       h localh;
-      if (this.vLw.vLl > 0L)
+      if (this.vXA.vXp > 0L)
       {
-        localh = this.vLw;
-        localh.bdJ += this.vLw.vLl - this.vLw.dOX;
-        this.vLw.vLl = 0L;
+        localh = this.vXA;
+        localh.bdJ += this.vXA.vXp - this.vXA.dQn;
+        this.vXA.vXp = 0L;
       }
-      this.vLw.dOX = SystemClock.elapsedRealtime();
+      this.vXA.dQn = SystemClock.elapsedRealtime();
       continue;
-      if (this.vLw.dOX <= 0L)
+      if (this.vXA.dQn <= 0L)
       {
-        this.vLw.vLl = 0L;
+        this.vXA.vXp = 0L;
       }
       else
       {
-        this.vLw.vLl = SystemClock.elapsedRealtime();
+        this.vXA.vXp = SystemClock.elapsedRealtime();
         continue;
-        this.vLw.bdJ = this.vLw.vLm;
-        this.vLw.dOX = SystemClock.elapsedRealtime();
-        this.vLw.vLl = 0L;
-        localh = this.vLw;
-        this.vLw.vLo = 0L;
-        localh.vLn = 0L;
+        this.vXA.bdJ = this.vXA.vXq;
+        this.vXA.dQn = SystemClock.elapsedRealtime();
+        this.vXA.vXp = 0L;
+        localh = this.vXA;
+        this.vXA.vXs = 0L;
+        localh.vXr = 0L;
         continue;
-        this.vLw.bdJ = this.vLw.vLm;
-        localh = this.vLw;
-        this.vLw.vLl = 0L;
-        localh.dOX = 0L;
-        localh = this.vLw;
-        this.vLw.vLo = 0L;
-        localh.vLn = 0L;
+        this.vXA.bdJ = this.vXA.vXq;
+        localh = this.vXA;
+        this.vXA.vXp = 0L;
+        localh.dQn = 0L;
+        localh = this.vXA;
+        this.vXA.vXs = 0L;
+        localh.vXr = 0L;
         continue;
-        this.vLw.bdJ = this.vLw.vLm;
-        localh = this.vLw;
-        this.vLw.vLl = 0L;
-        localh.dOX = 0L;
+        this.vXA.bdJ = this.vXA.vXq;
+        localh = this.vXA;
+        this.vXA.vXp = 0L;
+        localh.dQn = 0L;
       }
     }
   }
   
-  public final void boO()
+  public final void bpy()
   {
     AppMethodBeat.i(133940);
-    if (this.vLV != null)
+    if (this.vXZ != null)
     {
-      ad.i("MicroMsg.VideoPlayerImpl", "%s player flush surface", new Object[] { info() });
-      this.vLV.setState(10);
-      a(this.vLQ, SystemClock.elapsedRealtime(), 0L);
+      ae.i("MicroMsg.VideoPlayerImpl", "%s player flush surface", new Object[] { info() });
+      this.vXZ.setState(10);
+      a(this.vXU, SystemClock.elapsedRealtime(), 0L);
     }
     AppMethodBeat.o(133940);
   }
   
-  public final boolean cQr()
+  public final boolean cSW()
   {
     AppMethodBeat.i(133939);
-    ad.i("MicroMsg.VideoPlayerImpl", "%s player start to prepare ", new Object[] { info() });
-    this.vLQ.obtainMessage(1).sendToTarget();
-    if (this.vLX != null) {
-      this.vLR.obtainMessage(1).sendToTarget();
+    ae.i("MicroMsg.VideoPlayerImpl", "%s player start to prepare ", new Object[] { info() });
+    this.vXU.obtainMessage(1).sendToTarget();
+    if (this.vYb != null) {
+      this.vXV.obtainMessage(1).sendToTarget();
     }
     AppMethodBeat.o(133939);
     return true;
   }
   
-  public final void dmA()
+  public final void dpy()
   {
     AppMethodBeat.i(133937);
-    ad.i("MicroMsg.VideoPlayerImpl", "%s reset extractor time[%d]", new Object[] { info(), Long.valueOf(this.vLw.vLn) });
-    if (this.vLV != null)
+    ae.i("MicroMsg.VideoPlayerImpl", "%s reset extractor time[%d]", new Object[] { info(), Long.valueOf(this.vXA.vXr) });
+    if (this.vXZ != null)
     {
-      this.vLV.X(this.vLw.vLn, -1L);
-      this.vLV.dmw();
-      this.vLV.vLA = 0L;
+      this.vXZ.W(this.vXA.vXr, -1L);
+      this.vXZ.dpu();
+      this.vXZ.vXE = 0L;
     }
     AppMethodBeat.o(133937);
   }
@@ -516,7 +516,7 @@ public final class k
   public final String info()
   {
     AppMethodBeat.i(133950);
-    String str = this.vLw.info() + "_" + Process.myTid();
+    String str = this.vXA.info() + "_" + Process.myTid();
     AppMethodBeat.o(133950);
     return str;
   }
@@ -525,12 +525,12 @@ public final class k
   {
     AppMethodBeat.i(133942);
     setState(4);
-    this.vLQ.removeMessages(4);
-    this.vLQ.obtainMessage(4).sendToTarget();
-    if (this.vLX != null)
+    this.vXU.removeMessages(4);
+    this.vXU.obtainMessage(4).sendToTarget();
+    if (this.vYb != null)
     {
-      this.vLR.removeMessages(4);
-      this.vLR.obtainMessage(4).sendToTarget();
+      this.vXV.removeMessages(4);
+      this.vXV.obtainMessage(4).sendToTarget();
     }
     AppMethodBeat.o(133942);
   }
@@ -539,41 +539,41 @@ public final class k
   {
     AppMethodBeat.i(133947);
     setState(9);
-    this.vLS.removeMessages(2);
-    this.vLS.removeMessages(9);
-    this.vLQ.removeMessages(1);
-    this.vLQ.removeMessages(2);
-    this.vLQ.removeMessages(3);
-    this.vLQ.removeMessages(4);
-    this.vLQ.removeMessages(6);
-    this.vLQ.removeCallbacksAndMessages(null);
+    this.vXW.removeMessages(2);
+    this.vXW.removeMessages(9);
+    this.vXU.removeMessages(1);
+    this.vXU.removeMessages(2);
+    this.vXU.removeMessages(3);
+    this.vXU.removeMessages(4);
+    this.vXU.removeMessages(6);
+    this.vXU.removeCallbacksAndMessages(null);
     try
     {
-      this.vLV.setState(9);
-      Object localObject = this.vLV;
-      ad.i("MicroMsg.VideoTrackDataSource", "%s isConfigureSurface [%b]", new Object[] { ((l)localObject).info(), Boolean.valueOf(((l)localObject).vMg) });
-      if ((((l)localObject).vMg) && (d.lA(19))) {
-        this.vLV.releaseDecoder();
+      this.vXZ.setState(9);
+      Object localObject = this.vXZ;
+      ae.i("MicroMsg.VideoTrackDataSource", "%s isConfigureSurface [%b]", new Object[] { ((l)localObject).info(), Boolean.valueOf(((l)localObject).vYk) });
+      if ((((l)localObject).vYk) && (d.lC(19))) {
+        this.vXZ.releaseDecoder();
       }
-      this.vLQ.removeMessages(7);
-      this.vLQ.obtainMessage(7).sendToTarget();
-      if (this.vLR != null)
+      this.vXU.removeMessages(7);
+      this.vXU.obtainMessage(7).sendToTarget();
+      if (this.vXV != null)
       {
-        this.vLR.removeMessages(1);
-        this.vLR.removeMessages(2);
-        this.vLR.removeMessages(3);
-        this.vLR.removeMessages(4);
-        this.vLR.removeMessages(6);
-        this.vLR.removeMessages(7);
-        this.vLR.obtainMessage(7).sendToTarget();
+        this.vXV.removeMessages(1);
+        this.vXV.removeMessages(2);
+        this.vXV.removeMessages(3);
+        this.vXV.removeMessages(4);
+        this.vXV.removeMessages(6);
+        this.vXV.removeMessages(7);
+        this.vXV.obtainMessage(7).sendToTarget();
       }
-      localObject = this.vLw;
-      ((h)localObject).dOX = 0L;
-      ((h)localObject).vLl = 0L;
-      ((h)localObject).vLm = -1L;
+      localObject = this.vXA;
+      ((h)localObject).dQn = 0L;
+      ((h)localObject).vXp = 0L;
+      ((h)localObject).vXq = -1L;
       ((h)localObject).bdJ = 0L;
-      ((h)localObject).vLn = 0L;
-      ((h)localObject).vLo = 0L;
+      ((h)localObject).vXr = 0L;
+      ((h)localObject).vXs = 0L;
       AppMethodBeat.o(133947);
       return;
     }
@@ -581,7 +581,7 @@ public final class k
     {
       for (;;)
       {
-        ad.printErrStackTrace("MicroMsg.VideoPlayerImpl", localException, "%s release error %s", new Object[] { info(), localException.toString() });
+        ae.printErrStackTrace("MicroMsg.VideoPlayerImpl", localException, "%s release error %s", new Object[] { info(), localException.toString() });
       }
     }
   }
@@ -589,40 +589,40 @@ public final class k
   public final void seek(int paramInt)
   {
     AppMethodBeat.i(133943);
-    ad.i("MicroMsg.VideoPlayerImpl", "%s seek to mSeekSec %d", new Object[] { info(), Integer.valueOf(paramInt) });
-    ad.l("MicroMsg.VideoPlayerImpl", "seek stack", new Object[0]);
+    ae.i("MicroMsg.VideoPlayerImpl", "%s seek to mSeekSec %d", new Object[] { info(), Integer.valueOf(paramInt) });
+    ae.l("MicroMsg.VideoPlayerImpl", "seek stack", new Object[0]);
     if (this.state < 2)
     {
-      ad.w("MicroMsg.VideoPlayerImpl", "%s player is not ready[%d], how to seek[%d]?", new Object[] { info(), Integer.valueOf(this.state), Integer.valueOf(paramInt) });
+      ae.w("MicroMsg.VideoPlayerImpl", "%s player is not ready[%d], how to seek[%d]?", new Object[] { info(), Integer.valueOf(this.state), Integer.valueOf(paramInt) });
       AppMethodBeat.o(133943);
       return;
     }
-    this.vLV.pause();
-    if (this.vLX != null) {
-      this.vLX.pause();
+    this.vXZ.pause();
+    if (this.vYb != null) {
+      this.vYb.pause();
     }
     setState(5);
     if (paramInt >= this.bup)
     {
-      this.vLS.obtainMessage(9).sendToTarget();
+      this.vXW.obtainMessage(9).sendToTarget();
       AppMethodBeat.o(133943);
       return;
     }
-    this.vLV.dmw();
-    this.vLw.vLm = this.vLV.Ka(paramInt);
-    this.vLV.setState(5);
-    Kc(5);
-    dmB();
+    this.vXZ.dpu();
+    this.vXA.vXq = this.vXZ.KA(paramInt);
+    this.vXZ.setState(5);
+    KC(5);
+    dpz();
     AppMethodBeat.o(133943);
   }
   
   public final void setPath(String paramString)
   {
     AppMethodBeat.i(133936);
-    ad.i("MicroMsg.VideoPlayerImpl", "%s set path %s", new Object[] { info(), paramString });
-    this.vLV.setPath(paramString);
-    if (this.vLX != null) {
-      this.vLX.setPath(paramString);
+    ae.i("MicroMsg.VideoPlayerImpl", "%s set path %s", new Object[] { info(), paramString });
+    this.vXZ.setPath(paramString);
+    if (this.vYb != null) {
+      this.vYb.setPath(paramString);
     }
     AppMethodBeat.o(133936);
   }
@@ -630,17 +630,17 @@ public final class k
   protected final void setState(int paramInt)
   {
     AppMethodBeat.i(133948);
-    ad.i("MicroMsg.VideoPlayerImpl", "%s set state old %d new %d", new Object[] { info(), Integer.valueOf(this.state), Integer.valueOf(paramInt) });
+    ae.i("MicroMsg.VideoPlayerImpl", "%s set state old %d new %d", new Object[] { info(), Integer.valueOf(this.state), Integer.valueOf(paramInt) });
     this.state = paramInt;
-    this.vLw.vLp = 0L;
+    this.vXA.vXt = 0L;
     AppMethodBeat.o(133948);
   }
   
   public final void setSurface(Surface paramSurface)
   {
     AppMethodBeat.i(133938);
-    ad.i("MicroMsg.VideoPlayerImpl", "%s set surface[%d] ", new Object[] { info(), Integer.valueOf(paramSurface.hashCode()) });
-    this.vLV.surface = paramSurface;
+    ae.i("MicroMsg.VideoPlayerImpl", "%s set surface[%d] ", new Object[] { info(), Integer.valueOf(paramSurface.hashCode()) });
+    this.vXZ.surface = paramSurface;
     AppMethodBeat.o(133938);
   }
   
@@ -648,12 +648,12 @@ public final class k
   {
     AppMethodBeat.i(133941);
     setState(3);
-    this.vLQ.removeMessages(3);
-    this.vLQ.obtainMessage(3).sendToTarget();
-    if (this.vLX != null)
+    this.vXU.removeMessages(3);
+    this.vXU.obtainMessage(3).sendToTarget();
+    if (this.vYb != null)
     {
-      this.vLR.removeMessages(3);
-      this.vLR.obtainMessage(3).sendToTarget();
+      this.vXV.removeMessages(3);
+      this.vXV.obtainMessage(3).sendToTarget();
     }
     AppMethodBeat.o(133941);
   }

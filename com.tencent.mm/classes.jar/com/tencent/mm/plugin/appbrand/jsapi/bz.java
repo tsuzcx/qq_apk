@@ -1,9 +1,9 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
-import com.tencent.mm.plugin.appbrand.page.ae;
+import com.tencent.mm.plugin.appbrand.page.ad;
 
 public final class bz
-  extends a<ae>
+  extends a<ad>
 {
   public static final int CTRL_INDEX = 66;
   public static final String NAME = "reportSubmitForm";

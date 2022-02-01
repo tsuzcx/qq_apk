@@ -12,9 +12,9 @@ import com.tencent.mm.ui.base.preference.Preference;
 public class IconWidgetPreference
   extends Preference
 {
-  private int wSA;
-  private Bitmap wSB;
-  private ImageView wSz;
+  private ImageView xiq;
+  private int xir;
+  private Bitmap xis;
   
   public IconWidgetPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -25,20 +25,20 @@ public class IconWidgetPreference
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(27256);
-    this.wSz = null;
-    this.wSA = -1;
-    this.wSB = null;
+    this.xiq = null;
+    this.xir = -1;
+    this.xis = null;
     setLayoutResource(2131494804);
     setWidgetLayoutResource(0);
     AppMethodBeat.o(27256);
   }
   
-  public final void Z(Bitmap paramBitmap)
+  public final void aa(Bitmap paramBitmap)
   {
     AppMethodBeat.i(27258);
-    this.wSB = paramBitmap;
-    if (this.wSz != null) {
-      this.wSz.setImageBitmap(paramBitmap);
+    this.xis = paramBitmap;
+    if (this.xiq != null) {
+      this.xiq.setImageBitmap(paramBitmap);
     }
     AppMethodBeat.o(27258);
   }
@@ -47,21 +47,21 @@ public class IconWidgetPreference
   {
     AppMethodBeat.i(27259);
     super.onBindView(paramView);
-    this.wSz = ((ImageView)paramView.findViewById(2131303377));
-    if (this.wSz != null)
+    this.xiq = ((ImageView)paramView.findViewById(2131303377));
+    if (this.xiq != null)
     {
-      this.wSz.setVisibility(8);
-      if (this.wSA != -1)
+      this.xiq.setVisibility(8);
+      if (this.xir != -1)
       {
-        this.wSz.setImageResource(this.wSA);
-        this.wSz.setVisibility(0);
+        this.xiq.setImageResource(this.xir);
+        this.xiq.setVisibility(0);
         AppMethodBeat.o(27259);
         return;
       }
-      if (this.wSB != null)
+      if (this.xis != null)
       {
-        this.wSz.setImageBitmap(this.wSB);
-        this.wSz.setVisibility(0);
+        this.xiq.setImageBitmap(this.xis);
+        this.xiq.setVisibility(0);
       }
     }
     AppMethodBeat.o(27259);

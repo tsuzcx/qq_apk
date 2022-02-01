@@ -6,16 +6,16 @@ import d.l;
 import java.util.LinkedList;
 import java.util.List;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/event/base/SingleFeedFlowScrollEvent;", "Lcom/tencent/mm/plugin/finder/event/base/ScrollEvent;", "type", "", "(I)V", "acrossFeedList", "", "Lcom/tencent/mm/plugin/finder/event/base/FlowScrollEventFeedData;", "getAcrossFeedList", "()Ljava/util/List;", "setAcrossFeedList", "(Ljava/util/List;)V", "lastCenterFeedId", "", "getLastCenterFeedId", "()J", "setLastCenterFeedId", "(J)V", "lastFirstVisibleItemPosition", "getLastFirstVisibleItemPosition", "()I", "setLastFirstVisibleItemPosition", "lastLastVisibleItemPosition", "getLastLastVisibleItemPosition", "setLastLastVisibleItemPosition", "visibleFeedList", "getVisibleFeedList", "setVisibleFeedList", "visibleNotFeedList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/view/recyclerview/ConvertData;", "getVisibleNotFeedList", "()Ljava/util/LinkedList;", "setVisibleNotFeedList", "(Ljava/util/LinkedList;)V", "toString", "", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/event/base/SingleFeedFlowScrollEvent;", "Lcom/tencent/mm/plugin/finder/event/base/ScrollEvent;", "type", "", "(I)V", "acrossFeedList", "", "Lcom/tencent/mm/plugin/finder/event/base/FlowScrollEventFeedData;", "getAcrossFeedList", "()Ljava/util/List;", "setAcrossFeedList", "(Ljava/util/List;)V", "lastCenterFeedId", "", "getLastCenterFeedId", "()J", "setLastCenterFeedId", "(J)V", "lastFirstVisibleItemPosition", "getLastFirstVisibleItemPosition", "()I", "setLastFirstVisibleItemPosition", "lastLastVisibleItemPosition", "getLastLastVisibleItemPosition", "setLastLastVisibleItemPosition", "visibleFeedList", "getVisibleFeedList", "setVisibleFeedList", "visibleNotFeedList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/view/recyclerview/ConvertData;", "getVisibleNotFeedList", "()Ljava/util/LinkedList;", "setVisibleNotFeedList", "(Ljava/util/LinkedList;)V", "toString", "", "plugin-finder_release"})
 public final class j
   extends h
 {
-  public int obN = -1;
-  public int obO = -1;
-  public long rNl = -1L;
-  public List<g> rRp;
-  public List<g> rRq;
-  public LinkedList<a> rRr;
+  public int ohB = -1;
+  public int ohC = -1;
+  public long rVz = -1L;
+  public List<g> rZR;
+  public List<g> rZS;
+  public LinkedList<a> rZT;
   
   public j(int paramInt)
   {
@@ -24,14 +24,14 @@ public final class j
   
   public final String toString()
   {
-    AppMethodBeat.i(201571);
-    StringBuilder localStringBuilder = new StringBuilder("ScrollEvent(type=").append(this.type).append(", firstCompletelyVisibleItemPosition=").append(this.rRc).append(", firstVisibleItemPosition=").append(this.rRd).append(", lastCompletelyVisibleItemPosition=").append(this.rRe).append(", lastVisibleItemPosition=").append(this.rRf).append(", itemCount=").append(this.ajO).append(", newState=").append(this.rRi).append(") idleAcrossFeedList=");
-    Object localObject = this.rRp;
+    AppMethodBeat.i(202018);
+    StringBuilder localStringBuilder = new StringBuilder("ScrollEvent(type=").append(this.type).append(", firstCompletelyVisibleItemPosition=").append(this.rZE).append(", firstVisibleItemPosition=").append(this.rZF).append(", lastCompletelyVisibleItemPosition=").append(this.rZG).append(", lastVisibleItemPosition=").append(this.rZH).append(", itemCount=").append(this.ajO).append(", newState=").append(this.rZK).append(") idleAcrossFeedList=");
+    Object localObject = this.rZR;
     if (localObject != null) {}
     for (localObject = Integer.valueOf(((List)localObject).size());; localObject = null)
     {
       localObject = localObject;
-      AppMethodBeat.o(201571);
+      AppMethodBeat.o(202018);
       return localObject;
     }
   }

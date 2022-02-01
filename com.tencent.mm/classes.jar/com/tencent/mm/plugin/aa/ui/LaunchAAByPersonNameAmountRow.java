@@ -15,9 +15,9 @@ import com.tencent.mm.ui.z;
 public class LaunchAAByPersonNameAmountRow
   extends LinearLayout
 {
-  private TextView hbU;
-  private TextView iUX;
-  private View iVT;
+  private TextView heI;
+  private TextView iXQ;
+  private View iYM;
   
   public LaunchAAByPersonNameAmountRow(Context paramContext)
   {
@@ -46,25 +46,25 @@ public class LaunchAAByPersonNameAmountRow
   private void init(Context paramContext)
   {
     AppMethodBeat.i(63618);
-    z.jO(paramContext).inflate(2131494548, this, true);
-    this.hbU = ((TextView)findViewById(2131306252));
-    this.iUX = ((TextView)findViewById(2131296655));
-    this.iVT = findViewById(2131299154);
+    z.jV(paramContext).inflate(2131494548, this, true);
+    this.heI = ((TextView)findViewById(2131306252));
+    this.iXQ = ((TextView)findViewById(2131296655));
+    this.iYM = findViewById(2131299154);
     AppMethodBeat.o(63618);
   }
   
   public final void a(String paramString1, String paramString2, double paramDouble)
   {
     AppMethodBeat.i(63619);
-    this.hbU.setText(k.b(getContext(), ((b)g.ab(b.class)).getDisplayName(paramString1, paramString2), this.hbU.getTextSize()));
-    this.iUX.setText(getContext().getString(2131755021, new Object[] { Double.valueOf(paramDouble) }));
+    this.heI.setText(k.b(getContext(), ((b)g.ab(b.class)).getDisplayName(paramString1, paramString2), this.heI.getTextSize()));
+    this.iXQ.setText(getContext().getString(2131755021, new Object[] { Double.valueOf(paramDouble) }));
     AppMethodBeat.o(63619);
   }
   
   public void setDividerVisible(boolean paramBoolean)
   {
     AppMethodBeat.i(63620);
-    View localView = this.iVT;
+    View localView = this.iYM;
     if (paramBoolean) {}
     for (int i = 0;; i = 8)
     {

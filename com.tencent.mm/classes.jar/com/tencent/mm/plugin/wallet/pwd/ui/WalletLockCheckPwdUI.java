@@ -5,19 +5,22 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Build.VERSION;
 import android.os.Bundle;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
-import com.tencent.mm.g.a.vs;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.g.a.vw;
+import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.plugin.wallet.pwd.a.e;
 import com.tencent.mm.plugin.wallet.pwd.a.s;
 import com.tencent.mm.plugin.wallet_core.c.w;
-import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
 import com.tencent.mm.wallet_core.ui.formview.EditHintPasswdView;
 import com.tencent.mm.wallet_core.ui.formview.EditHintPasswdView.a;
@@ -25,12 +28,12 @@ import com.tencent.mm.wallet_core.ui.formview.EditHintPasswdView.a;
 public class WalletLockCheckPwdUI
   extends WalletBaseUI
 {
-  private w CFe;
-  private EditHintPasswdView CMD;
-  private int CME = -1;
+  private w CWK;
+  private EditHintPasswdView Del;
+  private int Dem = -1;
   private String Nb;
-  private TextView lCL;
-  private TextView oEG;
+  private TextView lHk;
+  private TextView oLi;
   
   private void M(int paramInt, String paramString1, String paramString2)
   {
@@ -44,7 +47,7 @@ public class WalletLockCheckPwdUI
     AppMethodBeat.o(69721);
   }
   
-  private void Vs(int paramInt)
+  private void Wa(int paramInt)
   {
     AppMethodBeat.i(69720);
     Intent localIntent = new Intent();
@@ -58,7 +61,7 @@ public class WalletLockCheckPwdUI
   {
     AppMethodBeat.i(69719);
     super.cleanUiData(paramInt);
-    this.CMD.dEe();
+    this.Del.dHv();
     AppMethodBeat.o(69719);
   }
   
@@ -74,7 +77,7 @@ public class WalletLockCheckPwdUI
     if (paramIntent == null) {}
     for (;;)
     {
-      ad.v("MicroMsg.WalletLockCheckPwdUI", "alvinluo WalletLockCheckPwdUI onActivityResult requestCode: %d, resultCode: %d, data == null: %b", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Boolean.valueOf(bool) });
+      ae.v("MicroMsg.WalletLockCheckPwdUI", "alvinluo WalletLockCheckPwdUI onActivityResult requestCode: %d, resultCode: %d, data == null: %b", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Boolean.valueOf(bool) });
       setResult(paramInt2, paramIntent);
       finish();
       AppMethodBeat.o(69723);
@@ -86,8 +89,8 @@ public class WalletLockCheckPwdUI
   public void onBackPressed()
   {
     AppMethodBeat.i(69718);
-    ad.i("MicroMsg.WalletLockCheckPwdUI", "alvinluo onBackPressed");
-    Vs(4);
+    ae.i("MicroMsg.WalletLockCheckPwdUI", "alvinluo onBackPressed");
+    Wa(4);
     AppMethodBeat.o(69718);
   }
   
@@ -96,23 +99,23 @@ public class WalletLockCheckPwdUI
     AppMethodBeat.i(69716);
     super.onCreate(paramBundle);
     hideTitleView();
-    this.CME = getIntent().getIntExtra("key_wallet_lock_type", -1);
+    this.Dem = getIntent().getIntExtra("key_wallet_lock_type", -1);
     this.Nb = getIntent().getStringExtra("action");
-    ad.v("MicroMsg.WalletLockCheckPwdUI", "alvinluo wallet lock type: %d, action: %s", new Object[] { Integer.valueOf(this.CME), this.Nb });
-    this.CMD = ((EditHintPasswdView)findViewById(2131301026));
-    this.lCL = ((TextView)findViewById(2131306825));
-    this.oEG = ((TextView)findViewById(2131306820));
+    ae.v("MicroMsg.WalletLockCheckPwdUI", "alvinluo wallet lock type: %d, action: %s", new Object[] { Integer.valueOf(this.Dem), this.Nb });
+    this.Del = ((EditHintPasswdView)findViewById(2131301026));
+    this.lHk = ((TextView)findViewById(2131306825));
+    this.oLi = ((TextView)findViewById(2131306820));
     paramBundle = getIntent().getStringExtra("key_wallet_lock_input_new_fp_tips");
-    if (this.CME == 2)
+    if (this.Dem == 2)
     {
-      this.lCL.setText(2131765990);
-      if ((this.Nb.equals("action.touchlock_need_verify_paypwd")) && (!bt.isNullOrNil(paramBundle))) {
-        this.oEG.setText(paramBundle);
+      this.lHk.setText(2131765990);
+      if ((this.Nb.equals("action.touchlock_need_verify_paypwd")) && (!bu.isNullOrNil(paramBundle))) {
+        this.oLi.setText(paramBundle);
       }
     }
     for (;;)
     {
-      this.CMD.setOnInputValidListener(new EditHintPasswdView.a()
+      this.Del.setOnInputValidListener(new EditHintPasswdView.a()
       {
         public final void onInputValidChange(boolean paramAnonymousBoolean)
         {
@@ -171,10 +174,33 @@ public class WalletLockCheckPwdUI
           }
         }
       });
-      setEditFocusListener(this.CMD, 0, false);
-      this.CMD.fSe();
-      setBackBtn(new WalletLockCheckPwdUI.1(this));
-      findViewById(2131298365).setOnClickListener(new WalletLockCheckPwdUI.2(this));
+      setEditFocusListener(this.Del, 0, false);
+      this.Del.fWA();
+      setBackBtn(new MenuItem.OnMenuItemClickListener()
+      {
+        public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
+        {
+          AppMethodBeat.i(69713);
+          ae.i("MicroMsg.WalletLockCheckPwdUI", "alvinluo cancel by BackBtn");
+          WalletLockCheckPwdUI.a(WalletLockCheckPwdUI.this);
+          AppMethodBeat.o(69713);
+          return true;
+        }
+      });
+      findViewById(2131298365).setOnClickListener(new View.OnClickListener()
+      {
+        public final void onClick(View paramAnonymousView)
+        {
+          AppMethodBeat.i(69714);
+          b localb = new b();
+          localb.bd(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/wallet/pwd/ui/WalletLockCheckPwdUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+          ae.i("MicroMsg.WalletLockCheckPwdUI", "alvinluo cancel by BackBtn");
+          WalletLockCheckPwdUI.a(WalletLockCheckPwdUI.this);
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/wallet/pwd/ui/WalletLockCheckPwdUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+          AppMethodBeat.o(69714);
+        }
+      });
       if (Build.VERSION.SDK_INT >= 21)
       {
         paramBundle = getWindow();
@@ -187,8 +213,8 @@ public class WalletLockCheckPwdUI
       getContentView().setFitsSystemWindows(true);
       AppMethodBeat.o(69716);
       return;
-      if (this.CME == 1) {
-        this.lCL.setText(2131765991);
+      if (this.Dem == 1) {
+        this.lHk.setText(2131765991);
       }
     }
   }
@@ -202,8 +228,8 @@ public class WalletLockCheckPwdUI
   {
     AppMethodBeat.i(69717);
     super.onResume();
-    if (this.CMD != null) {
-      this.CMD.dEe();
+    if (this.Del != null) {
+      this.Del.dHv();
     }
     AppMethodBeat.o(69717);
   }
@@ -211,7 +237,7 @@ public class WalletLockCheckPwdUI
   public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     AppMethodBeat.i(69722);
-    ad.i("MicroMsg.WalletLockCheckPwdUI", "alvinluo WalletLockCheckPwdUI errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    ae.i("MicroMsg.WalletLockCheckPwdUI", "alvinluo WalletLockCheckPwdUI errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
     if ((paramn instanceof w))
     {
       paramn = (w)paramn;
@@ -219,28 +245,28 @@ public class WalletLockCheckPwdUI
       {
         if ("next_action.switch_on_pattern".equals(getIntent().getStringExtra("next_action")))
         {
-          ad.i("MicroMsg.WalletLockCheckPwdUI", "alvinluo start to open wallet lock after check pwd");
+          ae.i("MicroMsg.WalletLockCheckPwdUI", "alvinluo start to open wallet lock after check pwd");
           paramString = new Intent();
           paramString.putExtra("action", "action.switch_on_pattern");
           paramString.putExtra("next_action", "next_action.switch_on_pattern");
           paramString.putExtra("token", paramn.token);
-          paramString.putExtra("type", paramn.CPc);
-          paramString.putExtra("key_wallet_lock_type", this.CME);
-          paramString.setPackage(aj.getPackageName());
-          if (this.CME == 2) {
-            paramString.putExtra("key_pay_passwd", this.CMD.getText());
+          paramString.putExtra("type", paramn.DgG);
+          paramString.putExtra("key_wallet_lock_type", this.Dem);
+          paramString.setPackage(ak.getPackageName());
+          if (this.Dem == 2) {
+            paramString.putExtra("key_pay_passwd", this.Del.getText());
           }
-          paramn = new vs();
-          paramn.dKg.dKi = paramString;
-          paramn.dKg.dsa = this;
-          paramn.dKg.requestCode = 1;
-          a.IbL.l(paramn);
+          paramn = new vw();
+          paramn.dLv.dLx = paramString;
+          paramn.dLv.dtg = this;
+          paramn.dLv.requestCode = 1;
+          com.tencent.mm.sdk.b.a.IvT.l(paramn);
         }
         for (;;)
         {
           AppMethodBeat.o(69722);
           return true;
-          M(0, paramn.token, paramn.CPc);
+          M(0, paramn.token, paramn.DgG);
         }
       }
       if ((paramInt1 == 1000) && (paramInt2 == 3))
@@ -255,13 +281,13 @@ public class WalletLockCheckPwdUI
       if ((paramn instanceof s))
       {
         if ((paramInt1 == 0) && (paramInt2 == 0)) {
-          Vs(0);
+          Wa(0);
         }
         for (;;)
         {
           AppMethodBeat.o(69722);
           return true;
-          Vs(-1);
+          Wa(-1);
         }
       }
       if ((paramn instanceof e))
@@ -269,7 +295,7 @@ public class WalletLockCheckPwdUI
         if ((paramInt1 != 0) || (paramInt2 != 0)) {
           break label347;
         }
-        Vs(0);
+        Wa(0);
       }
     }
     for (;;)
@@ -277,7 +303,7 @@ public class WalletLockCheckPwdUI
       AppMethodBeat.o(69722);
       return false;
       label347:
-      Vs(-1);
+      Wa(-1);
     }
   }
   
@@ -289,7 +315,7 @@ public class WalletLockCheckPwdUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.pwd.ui.WalletLockCheckPwdUI
  * JD-Core Version:    0.7.0.1
  */

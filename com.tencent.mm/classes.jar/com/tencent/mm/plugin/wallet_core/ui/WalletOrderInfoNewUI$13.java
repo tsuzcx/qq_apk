@@ -1,11 +1,11 @@
 package com.tencent.mm.plugin.wallet_core.ui;
 
-import com.tencent.mm.al.a.a;
-import com.tencent.mm.protocal.protobuf.atf;
+import com.tencent.mm.ak.a.a;
+import com.tencent.mm.protocal.protobuf.atv;
 import com.tencent.mm.vending.c.a;
 
 final class WalletOrderInfoNewUI$13
-  implements a<Object, a.a<atf>>
+  implements a<Object, a.a<atv>>
 {
   WalletOrderInfoNewUI$13(WalletOrderInfoNewUI paramWalletOrderInfoNewUI) {}
 }

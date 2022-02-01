@@ -1,113 +1,156 @@
 package com.tencent.smtt.sdk;
 
-import android.content.Context;
-import android.graphics.SurfaceTexture;
-import android.os.Bundle;
+import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.smtt.export.external.DexLoader;
+import com.tencent.smtt.export.external.interfaces.IX5CoreEntry;
+import com.tencent.smtt.export.external.interfaces.IX5CoreMessy;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+import org.json.JSONObject;
 
 class p
 {
-  private DexLoader a;
-  private Object b;
+  public boolean a;
+  public boolean b;
+  private Map<String, String> c;
   
-  public p(DexLoader paramDexLoader, Context paramContext)
+  public p()
   {
-    AppMethodBeat.i(55139);
-    this.a = null;
-    this.b = null;
-    this.a = paramDexLoader;
-    this.b = this.a.newInstance("com.tencent.tbs.player.TbsMediaPlayerProxy", new Class[] { Context.class }, new Object[] { paramContext });
-    AppMethodBeat.o(55139);
+    AppMethodBeat.i(192590);
+    this.a = false;
+    this.b = false;
+    this.c = null;
+    this.c = new HashMap();
+    AppMethodBeat.o(192590);
   }
   
-  public void a(float paramFloat)
+  public JSONObject a()
   {
-    AppMethodBeat.i(55143);
-    this.a.invokeMethod(this.b, "com.tencent.tbs.player.TbsMediaPlayerProxy", "setVolume", new Class[] { Float.TYPE }, new Object[] { Float.valueOf(paramFloat) });
-    AppMethodBeat.o(55143);
-  }
-  
-  public void a(int paramInt)
-  {
-    AppMethodBeat.i(55145);
-    this.a.invokeMethod(this.b, "com.tencent.tbs.player.TbsMediaPlayerProxy", "subtitle", new Class[] { Integer.TYPE }, new Object[] { Integer.valueOf(paramInt) });
-    AppMethodBeat.o(55145);
-  }
-  
-  public void a(long paramLong)
-  {
-    AppMethodBeat.i(55149);
-    this.a.invokeMethod(this.b, "com.tencent.tbs.player.TbsMediaPlayerProxy", "seek", new Class[] { Long.TYPE }, new Object[] { Long.valueOf(paramLong) });
-    AppMethodBeat.o(55149);
-  }
-  
-  public void a(SurfaceTexture paramSurfaceTexture)
-  {
-    AppMethodBeat.i(55140);
-    this.a.invokeMethod(this.b, "com.tencent.tbs.player.TbsMediaPlayerProxy", "setSurfaceTexture", new Class[] { SurfaceTexture.class }, new Object[] { paramSurfaceTexture });
-    AppMethodBeat.o(55140);
-  }
-  
-  public void a(TbsMediaPlayer.TbsMediaPlayerListener paramTbsMediaPlayerListener)
-  {
-    AppMethodBeat.i(55141);
-    this.a.invokeMethod(this.b, "com.tencent.tbs.player.TbsMediaPlayerProxy", "setPlayerListener", new Class[] { Object.class }, new Object[] { paramTbsMediaPlayerListener });
-    AppMethodBeat.o(55141);
-  }
-  
-  public void a(String paramString, Bundle paramBundle)
-  {
-    AppMethodBeat.i(55144);
-    this.a.invokeMethod(this.b, "com.tencent.tbs.player.TbsMediaPlayerProxy", "startPlay", new Class[] { String.class, Bundle.class }, new Object[] { paramString, paramBundle });
-    AppMethodBeat.o(55144);
-  }
-  
-  public boolean a()
-  {
-    return this.b != null;
-  }
-  
-  public float b()
-  {
-    AppMethodBeat.i(55142);
-    Float localFloat = (Float)this.a.invokeMethod(this.b, "com.tencent.tbs.player.TbsMediaPlayerProxy", "getVolume", new Class[0], new Object[0]);
-    if (localFloat != null)
-    {
-      float f = localFloat.floatValue();
-      AppMethodBeat.o(55142);
-      return f;
+    AppMethodBeat.i(192593);
+    JSONObject localJSONObject = new JSONObject();
+    if (this.c != null) {
+      try
+      {
+        Iterator localIterator = this.c.entrySet().iterator();
+        while (localIterator.hasNext())
+        {
+          Map.Entry localEntry = (Map.Entry)localIterator.next();
+          localJSONObject.put((String)localEntry.getKey(), localEntry.getValue());
+        }
+        AppMethodBeat.o(192593);
+      }
+      catch (Exception localException) {}
     }
-    AppMethodBeat.o(55142);
-    return 0.0F;
+    return localJSONObject;
   }
   
-  public void b(int paramInt)
+  public void a(String paramString, byte paramByte)
   {
-    AppMethodBeat.i(55146);
-    this.a.invokeMethod(this.b, "com.tencent.tbs.player.TbsMediaPlayerProxy", "audio", new Class[] { Integer.TYPE }, new Object[] { Integer.valueOf(paramInt) });
-    AppMethodBeat.o(55146);
+    for (;;)
+    {
+      try
+      {
+        AppMethodBeat.i(192591);
+        if (TextUtils.isEmpty(paramString))
+        {
+          AppMethodBeat.o(192591);
+          return;
+        }
+        str = "";
+        if (paramByte == 1)
+        {
+          str = "_begin";
+          this.c.put(paramString + str, String.valueOf(System.currentTimeMillis()));
+          AppMethodBeat.o(192591);
+          continue;
+        }
+        if (paramByte != 2) {
+          continue;
+        }
+      }
+      finally {}
+      String str = "_end";
+    }
   }
   
-  public void c()
+  /* Error */
+  public void a(String paramString, long paramLong)
   {
-    AppMethodBeat.i(55147);
-    this.a.invokeMethod(this.b, "com.tencent.tbs.player.TbsMediaPlayerProxy", "pause", new Class[0], new Object[0]);
-    AppMethodBeat.o(55147);
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: ldc 117
+    //   4: invokestatic 21	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   7: aload_1
+    //   8: invokestatic 85	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   11: ifeq +11 -> 22
+    //   14: ldc 117
+    //   16: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   19: aload_0
+    //   20: monitorexit
+    //   21: return
+    //   22: aload_0
+    //   23: getfield 27	com/tencent/smtt/sdk/p:c	Ljava/util/Map;
+    //   26: aload_1
+    //   27: lload_2
+    //   28: invokestatic 110	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   31: invokeinterface 113 3 0
+    //   36: pop
+    //   37: ldc 117
+    //   39: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   42: goto -23 -> 19
+    //   45: astore_1
+    //   46: aload_0
+    //   47: monitorexit
+    //   48: aload_1
+    //   49: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	50	0	this	p
+    //   0	50	1	paramString	String
+    //   0	50	2	paramLong	long
+    // Exception table:
+    //   from	to	target	type
+    //   2	19	45	finally
+    //   22	42	45	finally
   }
   
-  public void d()
+  public boolean a(int paramInt, String paramString)
   {
-    AppMethodBeat.i(55148);
-    this.a.invokeMethod(this.b, "com.tencent.tbs.player.TbsMediaPlayerProxy", "play", new Class[0], new Object[0]);
-    AppMethodBeat.o(55148);
-  }
-  
-  public void e()
-  {
-    AppMethodBeat.i(55150);
-    this.a.invokeMethod(this.b, "com.tencent.tbs.player.TbsMediaPlayerProxy", "close", new Class[0], new Object[0]);
-    AppMethodBeat.o(55150);
+    boolean bool = true;
+    for (;;)
+    {
+      try
+      {
+        AppMethodBeat.i(192594);
+        if (x.a().b())
+        {
+          if (((!this.b) || (!this.a)) && (System.currentTimeMillis() % 10L != 0L))
+          {
+            AppMethodBeat.o(192594);
+            return bool;
+          }
+          this.b = true;
+          this.a = true;
+          this.c.put("is_first_init_tbs", String.valueOf(this.b));
+          this.c.put("is_first_init_x5", String.valueOf(this.a));
+          this.c.put("x5_webview_id", Integer.toString(paramInt));
+          this.c.put("current_url", paramString);
+          if ((QbSdk.mSettings != null) && (QbSdk.mSettings.containsKey("app_scene_id"))) {
+            this.c.put("app_scene_id", QbSdk.mSettings.get("app_scene_id"));
+          }
+          TbsOneGreyInfoHelper.getCoreEntry().getX5CoreMessy().setTbsInitPerformanceData(paramInt, this.c);
+          AppMethodBeat.o(192594);
+          continue;
+        }
+        bool = false;
+      }
+      finally {}
+      AppMethodBeat.o(192594);
+    }
   }
 }
 

@@ -17,7 +17,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class AppBrandOptionButton
   extends FrameLayout
 {
-  private ImageButton mUj;
+  private ImageButton mZm;
   
   public AppBrandOptionButton(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -46,16 +46,25 @@ public class AppBrandOptionButton
   private void init(Context paramContext)
   {
     AppMethodBeat.i(135463);
-    this.mUj = new ImageButton(paramContext);
-    this.mUj.setClickable(false);
-    this.mUj.setBackground(null);
-    addView(this.mUj, new FrameLayout.LayoutParams(getActionBarHeight(), -1, 17));
+    this.mZm = new ImageButton(paramContext);
+    this.mZm.setClickable(false);
+    this.mZm.setBackground(null);
+    addView(this.mZm, new FrameLayout.LayoutParams(getActionBarHeight(), -1, 17));
+    setAccessibilityLabel(getDefaultAccessibilityLabel());
     AppMethodBeat.o(135463);
   }
   
-  ImageView getButtonImage()
+  public ImageView getButtonImage()
   {
-    return this.mUj;
+    return this.mZm;
+  }
+  
+  protected String getDefaultAccessibilityLabel()
+  {
+    AppMethodBeat.i(208020);
+    String str = getContext().getString(2131755290);
+    AppMethodBeat.o(208020);
+    return str;
   }
   
   protected Drawable getDefaultImageDrawable()
@@ -69,17 +78,17 @@ public class AppBrandOptionButton
   public final void reset()
   {
     AppMethodBeat.i(135467);
-    this.mUj.setVisibility(0);
-    this.mUj.setAlpha(1.0F);
-    this.mUj.setImageDrawable(getDefaultImageDrawable());
+    this.mZm.setVisibility(0);
+    this.mZm.setAlpha(1.0F);
+    this.mZm.setImageDrawable(getDefaultImageDrawable());
     AppMethodBeat.o(135467);
   }
   
-  public void setAccessibilityLabel(String paramString)
+  public final void setAccessibilityLabel(String paramString)
   {
     AppMethodBeat.i(135464);
-    if ((this.mUj != null) && (this.mUj.getVisibility() == 0)) {
-      this.mUj.setContentDescription(paramString);
+    if ((this.mZm != null) && (this.mZm.getVisibility() == 0)) {
+      this.mZm.setContentDescription(paramString);
     }
     AppMethodBeat.o(135464);
   }
@@ -87,11 +96,11 @@ public class AppBrandOptionButton
   public void setColor(int paramInt)
   {
     AppMethodBeat.i(135466);
-    this.mUj.setImageDrawable(getDefaultImageDrawable());
-    this.mUj.setColorFilter(paramInt, PorterDuff.Mode.SRC_ATOP);
-    this.mUj.setBackground(getBackground());
-    if (this.mUj.getBackground() != null) {
-      this.mUj.getBackground().setColorFilter(paramInt, PorterDuff.Mode.SRC_ATOP);
+    this.mZm.setImageDrawable(getDefaultImageDrawable());
+    this.mZm.setColorFilter(paramInt, PorterDuff.Mode.SRC_ATOP);
+    this.mZm.setBackground(getBackground());
+    if (this.mZm.getBackground() != null) {
+      this.mZm.getBackground().setColorFilter(paramInt, PorterDuff.Mode.SRC_ATOP);
     }
     AppMethodBeat.o(135466);
   }
@@ -104,8 +113,8 @@ public class AppBrandOptionButton
       AppMethodBeat.o(135465);
       return;
     }
-    this.mUj.setImageDrawable(new BitmapDrawable(getResources(), paramBitmap));
-    this.mUj.setVisibility(0);
+    this.mZm.setImageDrawable(new BitmapDrawable(getResources(), paramBitmap));
+    this.mZm.setVisibility(0);
     AppMethodBeat.o(135465);
   }
 }

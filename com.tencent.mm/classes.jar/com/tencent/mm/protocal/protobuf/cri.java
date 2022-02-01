@@ -4,69 +4,65 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 public final class cri
-  extends cvc
+  extends cvw
 {
-  public String CPf;
-  public String CUe;
-  public int HjI;
-  public String dve;
+  public SKBuiltinBuffer_t FRA;
+  public SKBuiltinBuffer_t HCF;
+  public int qq;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(174536);
+    AppMethodBeat.i(32398);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
       if (this.BaseRequest != null)
       {
-        paramVarArgs.lC(1, this.BaseRequest.computeSize());
+        paramVarArgs.lJ(1, this.BaseRequest.computeSize());
         this.BaseRequest.writeFields(paramVarArgs);
       }
-      if (this.CPf != null) {
-        paramVarArgs.d(2, this.CPf);
+      paramVarArgs.aS(2, this.qq);
+      if (this.FRA != null)
+      {
+        paramVarArgs.lJ(3, this.FRA.computeSize());
+        this.FRA.writeFields(paramVarArgs);
       }
-      if (this.CUe != null) {
-        paramVarArgs.d(3, this.CUe);
+      if (this.HCF != null)
+      {
+        paramVarArgs.lJ(4, this.HCF.computeSize());
+        this.HCF.writeFields(paramVarArgs);
       }
-      paramVarArgs.aS(4, this.HjI);
-      if (this.dve != null) {
-        paramVarArgs.d(5, this.dve);
-      }
-      AppMethodBeat.o(174536);
+      AppMethodBeat.o(32398);
       return 0;
     }
     if (paramInt == 1) {
       if (this.BaseRequest == null) {
-        break label534;
+        break label672;
       }
     }
-    label534:
-    for (int i = f.a.a.a.lB(1, this.BaseRequest.computeSize()) + 0;; i = 0)
+    label672:
+    for (paramInt = f.a.a.a.lI(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
     {
+      int i = paramInt + f.a.a.b.b.a.bz(2, this.qq);
       paramInt = i;
-      if (this.CPf != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.CPf);
+      if (this.FRA != null) {
+        paramInt = i + f.a.a.a.lI(3, this.FRA.computeSize());
       }
       i = paramInt;
-      if (this.CUe != null) {
-        i = paramInt + f.a.a.b.b.a.e(3, this.CUe);
+      if (this.HCF != null) {
+        i = paramInt + f.a.a.a.lI(4, this.HCF.computeSize());
       }
-      i += f.a.a.b.b.a.bz(4, this.HjI);
-      paramInt = i;
-      if (this.dve != null) {
-        paramInt = i + f.a.a.b.b.a.e(5, this.dve);
-      }
-      AppMethodBeat.o(174536);
-      return paramInt;
+      AppMethodBeat.o(32398);
+      return i;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = cvc.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cvc.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = cvw.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cvw.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
-        AppMethodBeat.o(174536);
+        AppMethodBeat.o(32398);
         return 0;
       }
       if (paramInt == 3)
@@ -74,44 +70,64 @@ public final class cri
         Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
         cri localcri = (cri)paramVarArgs[1];
         paramInt = ((Integer)paramVarArgs[2]).intValue();
+        Object localObject2;
+        boolean bool;
         switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(174536);
+          AppMethodBeat.o(32398);
           return -1;
         case 1: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
+          paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
-            Object localObject2 = (byte[])paramVarArgs.get(paramInt);
+            localObject2 = (byte[])paramVarArgs.get(paramInt);
             localObject1 = new jc();
             localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((jc)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, cvc.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            for (bool = true; bool; bool = ((jc)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cvw.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
             localcri.BaseRequest = ((jc)localObject1);
             paramInt += 1;
           }
-          AppMethodBeat.o(174536);
+          AppMethodBeat.o(32398);
           return 0;
         case 2: 
-          localcri.CPf = ((f.a.a.a.a)localObject1).NPN.readString();
-          AppMethodBeat.o(174536);
+          localcri.qq = ((f.a.a.a.a)localObject1).OmT.zc();
+          AppMethodBeat.o(32398);
           return 0;
         case 3: 
-          localcri.CUe = ((f.a.a.a.a)localObject1).NPN.readString();
-          AppMethodBeat.o(174536);
-          return 0;
-        case 4: 
-          localcri.HjI = ((f.a.a.a.a)localObject1).NPN.zc();
-          AppMethodBeat.o(174536);
+          paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject2 = (byte[])paramVarArgs.get(paramInt);
+            localObject1 = new SKBuiltinBuffer_t();
+            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
+            for (bool = true; bool; bool = ((SKBuiltinBuffer_t)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cvw.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            localcri.FRA = ((SKBuiltinBuffer_t)localObject1);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(32398);
           return 0;
         }
-        localcri.dve = ((f.a.a.a.a)localObject1).NPN.readString();
-        AppMethodBeat.o(174536);
+        paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
+        i = paramVarArgs.size();
+        paramInt = 0;
+        while (paramInt < i)
+        {
+          localObject2 = (byte[])paramVarArgs.get(paramInt);
+          localObject1 = new SKBuiltinBuffer_t();
+          localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
+          for (bool = true; bool; bool = ((SKBuiltinBuffer_t)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cvw.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+          localcri.HCF = ((SKBuiltinBuffer_t)localObject1);
+          paramInt += 1;
+        }
+        AppMethodBeat.o(32398);
         return 0;
       }
-      AppMethodBeat.o(174536);
+      AppMethodBeat.o(32398);
       return -1;
     }
   }

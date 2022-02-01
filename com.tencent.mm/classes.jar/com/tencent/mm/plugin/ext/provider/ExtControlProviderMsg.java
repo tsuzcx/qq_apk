@@ -8,76 +8,75 @@ import android.database.MatrixCursor;
 import android.net.Uri;
 import com.jg.JgClassChecked;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
-import com.tencent.mm.g.a.ft;
-import com.tencent.mm.g.a.ft.b;
-import com.tencent.mm.g.a.fv;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.g.a.fu;
+import com.tencent.mm.g.a.fu.b;
 import com.tencent.mm.g.a.fw;
-import com.tencent.mm.g.a.fw.b;
-import com.tencent.mm.g.a.gc;
-import com.tencent.mm.g.a.gc.b;
+import com.tencent.mm.g.a.fx;
+import com.tencent.mm.g.a.fx.b;
 import com.tencent.mm.g.a.gd;
 import com.tencent.mm.g.a.gd.b;
+import com.tencent.mm.g.a.ge;
+import com.tencent.mm.g.a.ge.b;
 import com.tencent.mm.g.c.aw;
 import com.tencent.mm.g.c.ei;
-import com.tencent.mm.model.ba;
-import com.tencent.mm.model.bj;
-import com.tencent.mm.model.c;
-import com.tencent.mm.model.v;
+import com.tencent.mm.model.bc;
+import com.tencent.mm.model.bl;
+import com.tencent.mm.model.x;
 import com.tencent.mm.modelvoice.o;
 import com.tencent.mm.modelvoice.r;
 import com.tencent.mm.modelvoice.s;
 import com.tencent.mm.plugin.ext.key.AESUtil;
 import com.tencent.mm.plugin.messenger.foundation.a.a.i;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ay;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.am;
-import com.tencent.mm.storage.bp;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.az;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.an;
 import com.tencent.mm.storage.bq;
-import com.tencent.mm.storage.bu;
-import com.tencent.mm.storage.cj;
+import com.tencent.mm.storage.br;
+import com.tencent.mm.storage.bv;
 import com.tencent.mm.storage.ck;
+import com.tencent.mm.storage.cl;
 
 @JgClassChecked(author=32, fComment="checked", lastDate="20141016", reviewer=20, vComment={com.jg.EType.PROVIDERCHECK})
 public class ExtControlProviderMsg
   extends ExtContentProviderBase
 {
-  private static final String[] rdA;
-  private static final String[] rdB;
-  private static final String[] rdC;
-  private static final UriMatcher rdu;
-  private static final String[] rdx;
-  private static final String[] rdy;
-  private static final String[] rdz;
-  private MatrixCursor rdD = null;
-  private String[] rdc = null;
-  private int rdd = -1;
-  private boolean rdv = false;
-  private Context rdw;
+  private static final UriMatcher rlA;
+  private static final String[] rlD;
+  private static final String[] rlE;
+  private static final String[] rlF;
+  private static final String[] rlG;
+  private static final String[] rlH;
+  private static final String[] rlI;
+  private boolean rlB = false;
+  private Context rlC;
+  private MatrixCursor rlJ = null;
+  private String[] rli = null;
+  private int rlj = -1;
   
   static
   {
     AppMethodBeat.i(24440);
-    rdx = new String[] { "msgId", "fromUserId", "fromUserNickName", "msgType", "contentType", "content", "status", "createTime" };
-    rdy = new String[] { "userId", "unReadCount" };
-    rdz = new String[] { "userId", "unReadCount" };
-    rdA = new String[] { "userId", "retCode", "msgId" };
-    rdB = new String[] { "msgId", "retCode" };
-    rdC = new String[] { "msgId", "retCode" };
+    rlD = new String[] { "msgId", "fromUserId", "fromUserNickName", "msgType", "contentType", "content", "status", "createTime" };
+    rlE = new String[] { "userId", "unReadCount" };
+    rlF = new String[] { "userId", "unReadCount" };
+    rlG = new String[] { "userId", "retCode", "msgId" };
+    rlH = new String[] { "msgId", "retCode" };
+    rlI = new String[] { "msgId", "retCode" };
     UriMatcher localUriMatcher = new UriMatcher(-1);
-    rdu = localUriMatcher;
+    rlA = localUriMatcher;
     localUriMatcher.addURI("com.tencent.mm.plugin.ext.message", "oneMsg", 7);
-    rdu.addURI("com.tencent.mm.plugin.ext.message", "unReadCount", 8);
-    rdu.addURI("com.tencent.mm.plugin.ext.message", "unReadMsgs", 9);
-    rdu.addURI("com.tencent.mm.plugin.ext.message", "unReadUserList", 10);
-    rdu.addURI("com.tencent.mm.plugin.ext.message", "recordMsg", 11);
-    rdu.addURI("com.tencent.mm.plugin.ext.message", "playVoice", 12);
-    rdu.addURI("com.tencent.mm.plugin.ext.message", "setReaded", 13);
-    rdu.addURI("com.tencent.mm.plugin.ext.message", "sendTextMsg", 14);
+    rlA.addURI("com.tencent.mm.plugin.ext.message", "unReadCount", 8);
+    rlA.addURI("com.tencent.mm.plugin.ext.message", "unReadMsgs", 9);
+    rlA.addURI("com.tencent.mm.plugin.ext.message", "unReadUserList", 10);
+    rlA.addURI("com.tencent.mm.plugin.ext.message", "recordMsg", 11);
+    rlA.addURI("com.tencent.mm.plugin.ext.message", "playVoice", 12);
+    rlA.addURI("com.tencent.mm.plugin.ext.message", "setReaded", 13);
+    rlA.addURI("com.tencent.mm.plugin.ext.message", "sendTextMsg", 14);
     AppMethodBeat.o(24440);
   }
   
@@ -85,46 +84,46 @@ public class ExtControlProviderMsg
   
   public ExtControlProviderMsg(String[] paramArrayOfString, int paramInt, Context paramContext)
   {
-    this.rdv = true;
-    this.rdc = paramArrayOfString;
-    this.rdd = paramInt;
-    this.rdw = paramContext;
+    this.rlB = true;
+    this.rli = paramArrayOfString;
+    this.rlj = paramInt;
+    this.rlC = paramContext;
   }
   
   private Cursor A(String[] paramArrayOfString)
   {
     AppMethodBeat.i(24431);
-    ad.d("MicroMsg.ExtControlProviderMsg", "getUnReadCount()");
+    ae.d("MicroMsg.ExtControlProviderMsg", "getUnReadCount()");
     if ((paramArrayOfString == null) || (paramArrayOfString.length <= 0))
     {
-      ad.e("MicroMsg.ExtControlProviderMsg", "wrong args");
-      DF(3);
+      ae.e("MicroMsg.ExtControlProviderMsg", "wrong args");
+      DS(3);
       AppMethodBeat.o(24431);
       return null;
     }
-    MatrixCursor localMatrixCursor = new MatrixCursor(rdy);
+    MatrixCursor localMatrixCursor = new MatrixCursor(rlE);
     try
     {
       if ("*".equals(paramArrayOfString[0]))
       {
-        ba.aBQ();
-        localMatrixCursor.addRow(new Object[] { "0", Integer.valueOf(c.azv().AA("")) });
+        bc.aCg();
+        localMatrixCursor.addRow(new Object[] { "0", Integer.valueOf(com.tencent.mm.model.c.azL().Bk("")) });
       }
       for (;;)
       {
-        DF(0);
+        DS(0);
         AppMethodBeat.o(24431);
         return localMatrixCursor;
         int i = 0;
         while (i < paramArrayOfString.length)
         {
-          long l = AESUtil.afI(paramArrayOfString[i]);
-          ba.aBQ();
-          am localam = c.azp().DE(l);
-          if ((localam != null) && ((int)localam.gfj > 0))
+          long l = AESUtil.agE(paramArrayOfString[i]);
+          bc.aCg();
+          an localan = com.tencent.mm.model.c.azF().Ed(l);
+          if ((localan != null) && ((int)localan.ght > 0))
           {
-            ba.aBQ();
-            localMatrixCursor.addRow(new Object[] { Long.valueOf(l), Integer.valueOf(c.azv().AA(" and ( rconversation.username='" + localam.field_username + "' );")) });
+            bc.aCg();
+            localMatrixCursor.addRow(new Object[] { Long.valueOf(l), Integer.valueOf(com.tencent.mm.model.c.azL().Bk(" and ( rconversation.username='" + localan.field_username + "' );")) });
           }
           i += 1;
         }
@@ -133,10 +132,10 @@ public class ExtControlProviderMsg
     }
     catch (Exception paramArrayOfString)
     {
-      ad.e("MicroMsg.ExtControlProviderMsg", paramArrayOfString.getMessage());
-      ad.printErrStackTrace("MicroMsg.ExtControlProviderMsg", paramArrayOfString, "", new Object[0]);
+      ae.e("MicroMsg.ExtControlProviderMsg", paramArrayOfString.getMessage());
+      ae.printErrStackTrace("MicroMsg.ExtControlProviderMsg", paramArrayOfString, "", new Object[0]);
       localMatrixCursor.close();
-      DF(4);
+      DS(4);
       AppMethodBeat.o(24431);
     }
   }
@@ -144,21 +143,21 @@ public class ExtControlProviderMsg
   private Cursor B(final String[] paramArrayOfString)
   {
     AppMethodBeat.i(24435);
-    ad.d("MicroMsg.ExtControlProviderMsg", "handleRecordMsg()");
+    ae.d("MicroMsg.ExtControlProviderMsg", "handleRecordMsg()");
     if ((paramArrayOfString == null) || (paramArrayOfString.length < 2))
     {
-      ad.w("MicroMsg.ExtControlProviderMsg", "wrong args");
-      DF(3);
+      ae.w("MicroMsg.ExtControlProviderMsg", "wrong args");
+      DS(3);
       AppMethodBeat.o(24435);
       return null;
     }
     try
     {
       final int i = Integer.valueOf(paramArrayOfString[0]).intValue();
-      final long l = AESUtil.afI(paramArrayOfString[1]);
+      final long l = AESUtil.agE(paramArrayOfString[1]);
       if (l <= 0L)
       {
-        DF(3);
+        DS(3);
         AppMethodBeat.o(24435);
         return null;
       }
@@ -172,31 +171,31 @@ public class ExtControlProviderMsg
           Object localObject2;
           if (i == 1)
           {
-            com.tencent.mm.plugin.ext.b.crV();
-            localObject1 = com.tencent.mm.plugin.ext.b.vg(l);
-            if ((localObject1 == null) || ((int)((com.tencent.mm.o.b)localObject1).gfj <= 0))
+            com.tencent.mm.plugin.ext.b.ctx();
+            localObject1 = com.tencent.mm.plugin.ext.b.vw(l);
+            if ((localObject1 == null) || ((int)((com.tencent.mm.contact.c)localObject1).ght <= 0))
             {
-              ExtControlProviderMsg.this.DF(3);
+              ExtControlProviderMsg.this.DS(3);
               paramArrayOfString.countDown();
               AppMethodBeat.o(24427);
               return;
             }
-            localObject2 = new fw();
-            ((fw)localObject2).dro.op = 1;
-            ((fw)localObject2).dro.username = ((aw)localObject1).field_username;
-            if (!com.tencent.mm.sdk.b.a.IbL.l((com.tencent.mm.sdk.b.b)localObject2))
+            localObject2 = new fx();
+            ((fx)localObject2).dsu.op = 1;
+            ((fx)localObject2).dsu.username = ((aw)localObject1).field_username;
+            if (!com.tencent.mm.sdk.b.a.IvT.l((com.tencent.mm.sdk.b.b)localObject2))
             {
-              ExtControlProviderMsg.this.DF(4);
+              ExtControlProviderMsg.this.DS(4);
               paramArrayOfString.countDown();
               AppMethodBeat.o(24427);
               return;
             }
-            ExtControlProviderMsg.a(ExtControlProviderMsg.this, new MatrixCursor(ExtControlProviderMsg.csm()));
-            if ((localObject1 != null) && ((int)((com.tencent.mm.o.b)localObject1).gfj > 0) && (((fw)localObject2).drp.dno))
+            ExtControlProviderMsg.a(ExtControlProviderMsg.this, new MatrixCursor(ExtControlProviderMsg.ctO()));
+            if ((localObject1 != null) && ((int)((com.tencent.mm.contact.c)localObject1).ght > 0) && (((fx)localObject2).dsv.doq))
             {
-              ExtControlProviderMsg.a(ExtControlProviderMsg.this).addRow(new Object[] { this.geX[1], Integer.valueOf(1), "0" });
-              ExtControlProviderMsg.this.DF(0);
-              ad.d("MicroMsg.ExtControlProviderMsg", "start record, ret=[%s], fileName=[%s]", new Object[] { Boolean.valueOf(((fw)localObject2).drp.dno), ((fw)localObject2).drp.fileName });
+              ExtControlProviderMsg.a(ExtControlProviderMsg.this).addRow(new Object[] { this.ghh[1], Integer.valueOf(1), "0" });
+              ExtControlProviderMsg.this.DS(0);
+              ae.d("MicroMsg.ExtControlProviderMsg", "start record, ret=[%s], fileName=[%s]", new Object[] { Boolean.valueOf(((fx)localObject2).dsv.doq), ((fx)localObject2).dsv.fileName });
             }
           }
           for (;;)
@@ -204,82 +203,82 @@ public class ExtControlProviderMsg
             paramArrayOfString.countDown();
             AppMethodBeat.o(24427);
             return;
-            ExtControlProviderMsg.a(ExtControlProviderMsg.this).addRow(new Object[] { this.geX[1], Integer.valueOf(2), "0" });
-            ExtControlProviderMsg.this.DF(3);
+            ExtControlProviderMsg.a(ExtControlProviderMsg.this).addRow(new Object[] { this.ghh[1], Integer.valueOf(2), "0" });
+            ExtControlProviderMsg.this.DS(3);
             break;
             if (i == 2)
             {
-              localObject1 = new fw();
-              ((fw)localObject1).dro.op = 2;
-              if (!com.tencent.mm.sdk.b.a.IbL.l((com.tencent.mm.sdk.b.b)localObject1))
+              localObject1 = new fx();
+              ((fx)localObject1).dsu.op = 2;
+              if (!com.tencent.mm.sdk.b.a.IvT.l((com.tencent.mm.sdk.b.b)localObject1))
               {
-                ExtControlProviderMsg.this.DF(4);
+                ExtControlProviderMsg.this.DS(4);
                 paramArrayOfString.countDown();
                 AppMethodBeat.o(24427);
                 return;
               }
-              localObject2 = ((fw)localObject1).drp.fileName;
-              ExtControlProviderMsg.a(ExtControlProviderMsg.this, new MatrixCursor(ExtControlProviderMsg.csm()));
-              gc localgc = new gc();
-              localgc.drK.fileName = ((String)localObject2);
-              if (!com.tencent.mm.sdk.b.a.IbL.l(localgc))
+              localObject2 = ((fx)localObject1).dsv.fileName;
+              ExtControlProviderMsg.a(ExtControlProviderMsg.this, new MatrixCursor(ExtControlProviderMsg.ctO()));
+              gd localgd = new gd();
+              localgd.dsQ.fileName = ((String)localObject2);
+              if (!com.tencent.mm.sdk.b.a.IvT.l(localgd))
               {
-                ExtControlProviderMsg.this.DF(4);
+                ExtControlProviderMsg.this.DS(4);
                 ExtControlProviderMsg.a(ExtControlProviderMsg.this).close();
                 paramArrayOfString.countDown();
                 AppMethodBeat.o(24427);
                 return;
               }
-              ad.d("MicroMsg.ExtControlProviderMsg", "stop record, msgId=[%s]", new Object[] { Long.valueOf(localgc.drL.msgId) });
-              long l = localgc.drL.msgId;
+              ae.d("MicroMsg.ExtControlProviderMsg", "stop record, msgId=[%s]", new Object[] { Long.valueOf(localgd.dsR.msgId) });
+              long l = localgd.dsR.msgId;
               if (l > 0L)
               {
                 try
                 {
-                  if (!((fw)localObject1).drp.dno) {
+                  if (!((fx)localObject1).dsv.doq) {
                     break label643;
                   }
-                  if ((aj.getContext() == null) || (!ay.isConnected(aj.getContext()))) {
+                  if ((ak.getContext() == null) || (!az.isConnected(ak.getContext()))) {
                     break label594;
                   }
-                  ExtControlProviderMsg.a(ExtControlProviderMsg.this).addRow(new Object[] { this.geX[1], Integer.valueOf(1), AESUtil.vi(l) });
-                  ExtControlProviderMsg.this.DF(0);
+                  ExtControlProviderMsg.a(ExtControlProviderMsg.this).addRow(new Object[] { this.ghh[1], Integer.valueOf(1), AESUtil.vy(l) });
+                  ExtControlProviderMsg.this.DS(0);
                 }
                 catch (Exception localException)
                 {
-                  ad.w("MicroMsg.ExtControlProviderMsg", localException.getMessage());
-                  ad.printErrStackTrace("MicroMsg.ExtControlProviderMsg", localException, "", new Object[0]);
-                  ExtControlProviderMsg.this.DF(4);
+                  ae.w("MicroMsg.ExtControlProviderMsg", localException.getMessage());
+                  ae.printErrStackTrace("MicroMsg.ExtControlProviderMsg", localException, "", new Object[0]);
+                  ExtControlProviderMsg.this.DS(4);
                 }
                 continue;
                 label594:
-                ExtControlProviderMsg.a(ExtControlProviderMsg.this).addRow(new Object[] { this.geX[1], Integer.valueOf(6), AESUtil.vi(l) });
-                ExtControlProviderMsg.this.DF(4);
+                ExtControlProviderMsg.a(ExtControlProviderMsg.this).addRow(new Object[] { this.ghh[1], Integer.valueOf(6), AESUtil.vy(l) });
+                ExtControlProviderMsg.this.DS(4);
                 continue;
                 label643:
-                ExtControlProviderMsg.a(ExtControlProviderMsg.this).addRow(new Object[] { this.geX[1], Integer.valueOf(4), AESUtil.vi(l) });
-                ExtControlProviderMsg.this.DF(4);
+                ExtControlProviderMsg.a(ExtControlProviderMsg.this).addRow(new Object[] { this.ghh[1], Integer.valueOf(4), AESUtil.vy(l) });
+                ExtControlProviderMsg.this.DS(4);
               }
               else
               {
-                ExtControlProviderMsg.this.DF(3);
+                ExtControlProviderMsg.this.DS(3);
               }
             }
           }
         }
       });
-      paramArrayOfString = this.rdD;
+      paramArrayOfString = this.rlJ;
       AppMethodBeat.o(24435);
       return paramArrayOfString;
     }
     catch (Exception paramArrayOfString)
     {
-      ad.e("MicroMsg.ExtControlProviderMsg", paramArrayOfString.getMessage());
-      ad.printErrStackTrace("MicroMsg.ExtControlProviderMsg", paramArrayOfString, "", new Object[0]);
-      if (this.rdD != null) {
-        this.rdD.close();
+      ae.e("MicroMsg.ExtControlProviderMsg", paramArrayOfString.getMessage());
+      ae.printErrStackTrace("MicroMsg.ExtControlProviderMsg", paramArrayOfString, "", new Object[0]);
+      if (this.rlJ != null) {
+        this.rlJ.close();
       }
-      DF(4);
+      DS(4);
       AppMethodBeat.o(24435);
     }
     return null;
@@ -288,11 +287,11 @@ public class ExtControlProviderMsg
   private Cursor C(String[] paramArrayOfString)
   {
     AppMethodBeat.i(24436);
-    ad.d("MicroMsg.ExtControlProviderMsg", "handlePlayVoice()");
+    ae.d("MicroMsg.ExtControlProviderMsg", "handlePlayVoice()");
     if ((paramArrayOfString == null) || (paramArrayOfString.length < 2))
     {
-      ad.e("MicroMsg.ExtControlProviderMsg", "wrong args");
-      DF(3);
+      ae.e("MicroMsg.ExtControlProviderMsg", "wrong args");
+      DS(3);
       AppMethodBeat.o(24436);
       return null;
     }
@@ -300,48 +299,48 @@ public class ExtControlProviderMsg
     try
     {
       i = Integer.valueOf(paramArrayOfString[0]).intValue();
-      long l = AESUtil.afI(paramArrayOfString[1]);
+      long l = AESUtil.agE(paramArrayOfString[1]);
       if (l <= 0L)
       {
-        DF(3);
+        DS(3);
         AppMethodBeat.o(24436);
         return null;
       }
       if (i != 3) {
         break label364;
       }
-      MatrixCursor localMatrixCursor = new MatrixCursor(rdB);
+      MatrixCursor localMatrixCursor = new MatrixCursor(rlH);
       try
       {
-        localObject = new gd();
-        ((gd)localObject).drM.msgId = l;
-        com.tencent.mm.sdk.b.a.IbL.l((com.tencent.mm.sdk.b.b)localObject);
-        if ((((gd)localObject).drN.fileName == null) || (((gd)localObject).drN.fileName.length() <= 0))
+        localObject = new ge();
+        ((ge)localObject).dsS.msgId = l;
+        com.tencent.mm.sdk.b.a.IvT.l((com.tencent.mm.sdk.b.b)localObject);
+        if ((((ge)localObject).dsT.fileName == null) || (((ge)localObject).dsT.fileName.length() <= 0))
         {
           localMatrixCursor.addRow(new Object[] { paramArrayOfString[1], Integer.valueOf(2) });
-          DF(4);
+          DS(4);
           AppMethodBeat.o(24436);
           return localMatrixCursor;
         }
-        fv localfv = new fv();
-        localfv.drj.op = 1;
-        localfv.drj.fileName = ((gd)localObject).drN.fileName;
-        if (com.tencent.mm.sdk.b.a.IbL.l(localfv))
+        fw localfw = new fw();
+        localfw.dso.op = 1;
+        localfw.dso.fileName = ((ge)localObject).dsT.fileName;
+        if (com.tencent.mm.sdk.b.a.IvT.l(localfw))
         {
           localMatrixCursor.addRow(new Object[] { paramArrayOfString[1], Integer.valueOf(1) });
-          DF(0);
+          DS(0);
         }
         for (;;)
         {
-          com.tencent.mm.plugin.ext.b.crV();
-          com.tencent.mm.plugin.ext.b.vh(l);
+          com.tencent.mm.plugin.ext.b.ctx();
+          com.tencent.mm.plugin.ext.b.vx(l);
           AppMethodBeat.o(24436);
           return localMatrixCursor;
-          ad.e("MicroMsg.ExtControlProviderMsg", "play failed");
+          ae.e("MicroMsg.ExtControlProviderMsg", "play failed");
           localMatrixCursor.addRow(new Object[] { paramArrayOfString[1], Integer.valueOf(2) });
-          DF(4);
+          DS(4);
         }
-        ad.e("MicroMsg.ExtControlProviderMsg", paramArrayOfString.getMessage());
+        ae.e("MicroMsg.ExtControlProviderMsg", paramArrayOfString.getMessage());
       }
       catch (Exception paramArrayOfString)
       {
@@ -354,43 +353,43 @@ public class ExtControlProviderMsg
       label320:
       break label320;
     }
-    ad.printErrStackTrace("MicroMsg.ExtControlProviderMsg", paramArrayOfString, "", new Object[0]);
+    ae.printErrStackTrace("MicroMsg.ExtControlProviderMsg", paramArrayOfString, "", new Object[0]);
     if (localObject != null) {
       ((MatrixCursor)localObject).close();
     }
-    DF(4);
+    DS(4);
     AppMethodBeat.o(24436);
     return null;
     label364:
     if (i == 4)
     {
-      paramArrayOfString = new fv();
-      paramArrayOfString.drj.op = 2;
-      if (!com.tencent.mm.sdk.b.a.IbL.l(paramArrayOfString)) {
+      paramArrayOfString = new fw();
+      paramArrayOfString.dso.op = 2;
+      if (!com.tencent.mm.sdk.b.a.IvT.l(paramArrayOfString)) {
         break label416;
       }
-      ad.i("MicroMsg.ExtControlProviderMsg", "stop last playing");
-      DF(0);
+      ae.i("MicroMsg.ExtControlProviderMsg", "stop last playing");
+      DS(0);
     }
     for (;;)
     {
       AppMethodBeat.o(24436);
       return null;
       label416:
-      ad.i("MicroMsg.ExtControlProviderMsg", "stop last playing fail");
-      DF(4);
+      ae.i("MicroMsg.ExtControlProviderMsg", "stop last playing fail");
+      DS(4);
     }
   }
   
   private Cursor D(String[] paramArrayOfString)
   {
     AppMethodBeat.i(24437);
-    ad.i("MicroMsg.ExtControlProviderMsg", "setMsgReaded()");
+    ae.i("MicroMsg.ExtControlProviderMsg", "setMsgReaded()");
     if ((paramArrayOfString == null) || (paramArrayOfString.length <= 0))
     {
-      ad.e("MicroMsg.ExtControlProviderMsg", "wrong args");
-      fB(3, 3801);
-      paramArrayOfString = com.tencent.mm.pluginsdk.d.a.a.Yf(3801);
+      ae.e("MicroMsg.ExtControlProviderMsg", "wrong args");
+      fz(3, 3801);
+      paramArrayOfString = com.tencent.mm.pluginsdk.d.a.a.YL(3801);
       AppMethodBeat.o(24437);
       return paramArrayOfString;
     }
@@ -402,27 +401,27 @@ public class ExtControlProviderMsg
         if (i < paramArrayOfString.length) {
           if ((paramArrayOfString[i] == null) || (paramArrayOfString[i].length() <= 0))
           {
-            ad.w("MicroMsg.ExtControlProviderMsg", "setMsgReaded() wrongArgs i = ".concat(String.valueOf(i)));
+            ae.w("MicroMsg.ExtControlProviderMsg", "setMsgReaded() wrongArgs i = ".concat(String.valueOf(i)));
           }
           else
           {
-            long l = AESUtil.afI(paramArrayOfString[i]);
-            com.tencent.mm.plugin.ext.b.crV();
-            com.tencent.mm.plugin.ext.b.vh(l);
+            long l = AESUtil.agE(paramArrayOfString[i]);
+            com.tencent.mm.plugin.ext.b.ctx();
+            com.tencent.mm.plugin.ext.b.vx(l);
           }
         }
       }
       catch (Exception paramArrayOfString)
       {
-        ad.e("MicroMsg.ExtControlProviderMsg", paramArrayOfString.getMessage());
-        ad.printErrStackTrace("MicroMsg.ExtControlProviderMsg", paramArrayOfString, "", new Object[0]);
-        fB(4, 12);
-        paramArrayOfString = com.tencent.mm.pluginsdk.d.a.a.Yf(12);
+        ae.e("MicroMsg.ExtControlProviderMsg", paramArrayOfString.getMessage());
+        ae.printErrStackTrace("MicroMsg.ExtControlProviderMsg", paramArrayOfString, "", new Object[0]);
+        fz(4, 12);
+        paramArrayOfString = com.tencent.mm.pluginsdk.d.a.a.YL(12);
         AppMethodBeat.o(24437);
         return paramArrayOfString;
       }
-      fB(0, 1);
-      paramArrayOfString = com.tencent.mm.pluginsdk.d.a.a.Yf(1);
+      fz(0, 1);
+      paramArrayOfString = com.tencent.mm.pluginsdk.d.a.a.YL(1);
       AppMethodBeat.o(24437);
       return paramArrayOfString;
       i += 1;
@@ -432,52 +431,52 @@ public class ExtControlProviderMsg
   private Cursor E(final String[] paramArrayOfString)
   {
     AppMethodBeat.i(24438);
-    ad.d("MicroMsg.ExtControlProviderMsg", "sendTextMsg()");
+    ae.d("MicroMsg.ExtControlProviderMsg", "sendTextMsg()");
     if ((paramArrayOfString == null) || (paramArrayOfString.length <= 0))
     {
-      ad.e("MicroMsg.ExtControlProviderMsg", "wrong args");
-      DF(3);
+      ae.e("MicroMsg.ExtControlProviderMsg", "wrong args");
+      DS(3);
       AppMethodBeat.o(24438);
       return null;
     }
     try
     {
-      long l = AESUtil.afI(paramArrayOfString[0]);
+      long l = AESUtil.agE(paramArrayOfString[0]);
       if (l <= 0L)
       {
-        DF(3);
+        DS(3);
         AppMethodBeat.o(24438);
         return null;
       }
-      com.tencent.mm.plugin.ext.b.crV();
-      final am localam = com.tencent.mm.plugin.ext.b.vg(l);
-      if ((localam == null) || ((int)localam.gfj <= 0))
+      com.tencent.mm.plugin.ext.b.ctx();
+      final an localan = com.tencent.mm.plugin.ext.b.vw(l);
+      if ((localan == null) || ((int)localan.ght <= 0))
       {
-        ad.e("MicroMsg.ExtControlProviderMsg", "toContact is null ");
-        DF(3);
+        ae.e("MicroMsg.ExtControlProviderMsg", "toContact is null ");
+        DS(3);
         AppMethodBeat.o(24438);
         return null;
       }
-      this.rdD = new MatrixCursor(rdC);
+      this.rlJ = new MatrixCursor(rlI);
       final com.tencent.mm.pluginsdk.d.a.b localb = new com.tencent.mm.pluginsdk.d.a.b();
       localb.c(15000L, new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(24429);
-          Object localObject = new ft();
-          ((ft)localObject).drd.drf = localam.field_username;
-          ((ft)localObject).drd.content = paramArrayOfString[1];
-          ((ft)localObject).drd.type = com.tencent.mm.model.w.Ar(localam.field_username);
-          ((ft)localObject).drd.flags = 0;
-          if (!com.tencent.mm.sdk.b.a.IbL.l((com.tencent.mm.sdk.b.b)localObject))
+          Object localObject = new fu();
+          ((fu)localObject).dsi.dsk = localan.field_username;
+          ((fu)localObject).dsi.content = paramArrayOfString[1];
+          ((fu)localObject).dsi.type = x.Bb(localan.field_username);
+          ((fu)localObject).dsi.flags = 0;
+          if (!com.tencent.mm.sdk.b.a.IvT.l((com.tencent.mm.sdk.b.b)localObject))
           {
-            ExtControlProviderMsg.this.DF(4);
+            ExtControlProviderMsg.this.DS(4);
             localb.countDown();
             AppMethodBeat.o(24429);
             return;
           }
-          n localn = ((ft)localObject).dre.drg;
+          n localn = ((fu)localObject).dsj.dsl;
           try
           {
             localObject = new f()
@@ -485,86 +484,86 @@ public class ExtControlProviderMsg
               public final void onSceneEnd(int paramAnonymous2Int1, int paramAnonymous2Int2, String paramAnonymous2String, n paramAnonymous2n)
               {
                 AppMethodBeat.i(24428);
-                ad.d("MicroMsg.ExtControlProviderMsg", "onSceneEnd errType=%s, errCode=%s", new Object[] { Integer.valueOf(paramAnonymous2Int1), Integer.valueOf(paramAnonymous2Int2) });
+                ae.d("MicroMsg.ExtControlProviderMsg", "onSceneEnd errType=%s, errCode=%s", new Object[] { Integer.valueOf(paramAnonymous2Int1), Integer.valueOf(paramAnonymous2Int2) });
                 if (paramAnonymous2n == null)
                 {
-                  ad.e("MicroMsg.ExtControlProviderMsg", "scene == null");
-                  ba.aiU().b(522, this);
-                  ExtControlProviderMsg.this.DF(4);
-                  ExtControlProviderMsg.2.this.nOc.countDown();
+                  ae.e("MicroMsg.ExtControlProviderMsg", "scene == null");
+                  bc.ajj().b(522, this);
+                  ExtControlProviderMsg.this.DS(4);
+                  ExtControlProviderMsg.2.this.nTH.countDown();
                   AppMethodBeat.o(24428);
                   return;
                 }
                 switch (paramAnonymous2n.getType())
                 {
                 default: 
-                  ExtControlProviderMsg.this.DF(0);
+                  ExtControlProviderMsg.this.DS(0);
                 }
                 for (;;)
                 {
-                  ExtControlProviderMsg.2.this.nOc.countDown();
-                  ba.aiU().b(522, this);
+                  ExtControlProviderMsg.2.this.nTH.countDown();
+                  bc.ajj().b(522, this);
                   AppMethodBeat.o(24428);
                   return;
                   if ((paramAnonymous2Int1 == 0) && (paramAnonymous2Int2 == 0))
                   {
-                    ad.d("MicroMsg.ExtControlProviderMsg", "rtSENDMSG onSceneEnd ok, ");
-                    ExtControlProviderMsg.a(ExtControlProviderMsg.this).addRow(new Object[] { this.rdH, Integer.valueOf(1) });
+                    ae.d("MicroMsg.ExtControlProviderMsg", "rtSENDMSG onSceneEnd ok, ");
+                    ExtControlProviderMsg.a(ExtControlProviderMsg.this).addRow(new Object[] { this.rlN, Integer.valueOf(1) });
                     break;
                   }
-                  ad.e("MicroMsg.ExtControlProviderMsg", "rtSENDMSG onSceneEnd err, errType = " + paramAnonymous2Int1 + ", errCode = " + paramAnonymous2Int2);
-                  ExtControlProviderMsg.a(ExtControlProviderMsg.this).addRow(new Object[] { this.rdH, Integer.valueOf(2) });
-                  ExtControlProviderMsg.this.DF(4);
+                  ae.e("MicroMsg.ExtControlProviderMsg", "rtSENDMSG onSceneEnd err, errType = " + paramAnonymous2Int1 + ", errCode = " + paramAnonymous2Int2);
+                  ExtControlProviderMsg.a(ExtControlProviderMsg.this).addRow(new Object[] { this.rlN, Integer.valueOf(2) });
+                  ExtControlProviderMsg.this.DS(4);
                 }
               }
             };
-            ba.aiU().a(522, (f)localObject);
-            ba.aiU().a(localn, 0);
+            bc.ajj().a(522, (f)localObject);
+            bc.ajj().a(localn, 0);
             AppMethodBeat.o(24429);
             return;
           }
           catch (Exception localException)
           {
-            ad.e("MicroMsg.ExtControlProviderMsg", localException.getMessage());
-            ad.printErrStackTrace("MicroMsg.ExtControlProviderMsg", localException, "", new Object[0]);
-            ExtControlProviderMsg.this.DF(4);
+            ae.e("MicroMsg.ExtControlProviderMsg", localException.getMessage());
+            ae.printErrStackTrace("MicroMsg.ExtControlProviderMsg", localException, "", new Object[0]);
+            ExtControlProviderMsg.this.DS(4);
             localb.countDown();
             AppMethodBeat.o(24429);
           }
         }
       });
-      paramArrayOfString = this.rdD;
+      paramArrayOfString = this.rlJ;
       AppMethodBeat.o(24438);
       return paramArrayOfString;
     }
     catch (Exception paramArrayOfString)
     {
-      ad.e("MicroMsg.ExtControlProviderMsg", paramArrayOfString.getMessage());
-      ad.printErrStackTrace("MicroMsg.ExtControlProviderMsg", paramArrayOfString, "", new Object[0]);
-      if (this.rdD != null) {
-        this.rdD.close();
+      ae.e("MicroMsg.ExtControlProviderMsg", paramArrayOfString.getMessage());
+      ae.printErrStackTrace("MicroMsg.ExtControlProviderMsg", paramArrayOfString, "", new Object[0]);
+      if (this.rlJ != null) {
+        this.rlJ.close();
       }
-      DF(4);
+      DS(4);
       AppMethodBeat.o(24438);
     }
     return null;
   }
   
-  private void a(MatrixCursor paramMatrixCursor, bu parambu, am paramam, boolean paramBoolean1, String paramString1, boolean paramBoolean2, String paramString2)
+  private void a(MatrixCursor paramMatrixCursor, bv parambv, an paraman, boolean paramBoolean1, String paramString1, boolean paramBoolean2, String paramString2)
   {
     AppMethodBeat.i(24439);
-    if (parambu == null)
+    if (parambv == null)
     {
       AppMethodBeat.o(24439);
       return;
     }
-    if (bt.isNullOrNil(paramString2))
+    if (bu.isNullOrNil(paramString2))
     {
-      ad.d("MicroMsg.ExtControlProviderMsg", "userOpenId is null");
+      ae.d("MicroMsg.ExtControlProviderMsg", "userOpenId is null");
       AppMethodBeat.o(24439);
       return;
     }
-    if ((parambu.getType() == 9999) || (parambu.getType() == 10000))
+    if ((parambv.getType() == 9999) || (parambv.getType() == 10000))
     {
       AppMethodBeat.o(24439);
       return;
@@ -576,16 +575,16 @@ public class ExtControlProviderMsg
     int i;
     if (paramBoolean1)
     {
-      i = bj.Bh(parambu.field_content);
+      i = bl.BJ(parambv.field_content);
       str1 = str3;
       localObject = str2;
       if (i != -1)
       {
         str1 = str3;
         localObject = str2;
-        if (parambu.field_content.length() > i)
+        if (parambv.field_content.length() > i)
         {
-          String str4 = parambu.field_content.substring(0, i).trim();
+          String str4 = parambv.field_content.substring(0, i).trim();
           str1 = str3;
           localObject = str2;
           if (str4 != null)
@@ -596,17 +595,17 @@ public class ExtControlProviderMsg
             {
               str1 = str3;
               localObject = str2;
-              if (parambu.field_content.length() >= i + 2)
+              if (parambv.field_content.length() >= i + 2)
               {
-                localObject = v.zf(str4);
-                str1 = parambu.field_content.substring(i + 2);
+                localObject = com.tencent.mm.model.w.zP(str4);
+                str1 = parambv.field_content.substring(i + 2);
               }
             }
           }
         }
       }
     }
-    int k = com.tencent.mm.plugin.ext.b.b.al(parambu);
+    int k = com.tencent.mm.plugin.ext.b.b.ak(parambv);
     if (k == 1) {
       if (paramBoolean1)
       {
@@ -622,44 +621,44 @@ public class ExtControlProviderMsg
     {
       try
       {
-        if (bt.isNullOrNil(paramString2))
+        if (bu.isNullOrNil(paramString2))
         {
-          ad.w("MicroMsg.ExtControlProviderMsg", "userId is null");
+          ae.w("MicroMsg.ExtControlProviderMsg", "userId is null");
           AppMethodBeat.o(24439);
           return;
-          localObject = parambu.field_content;
+          localObject = parambv.field_content;
           break;
           if (k == 2)
           {
-            localObject = o.aNy().qs((int)parambu.field_msgId);
+            localObject = o.aNW().qv((int)parambv.field_msgId);
             if ((localObject == null) || (((r)localObject).fileName == null)) {
               break label550;
             }
             localObject = s.getFullPath(((r)localObject).fileName);
-            ad.d("MicroMsg.ExtControlProviderMsg", "voice file = %s", new Object[] { localObject });
+            ae.d("MicroMsg.ExtControlProviderMsg", "voice file = %s", new Object[] { localObject });
             break;
           }
           if (paramBoolean1) {
             break;
           }
-          if (this.rdw != null)
+          if (this.rlC != null)
           {
-            localObject = this.rdw.getString(2131758655);
+            localObject = this.rlC.getString(2131758655);
             break;
           }
           localObject = "";
           break;
-          paramString2 = AESUtil.vi((int)paramam.gfj);
+          paramString2 = AESUtil.vy((int)paraman.ght);
           continue;
         }
-        paramam = AESUtil.vi(parambu.field_msgId);
-        if (parambu.field_isSend == 0)
+        paraman = AESUtil.vy(parambv.field_msgId);
+        if (parambv.field_isSend == 0)
         {
           i = 1;
-          if (parambu.field_status == 4)
+          if (parambv.field_status == 4)
           {
             j = 1;
-            paramMatrixCursor.addRow(new Object[] { paramam, paramString2, paramString1, Integer.valueOf(i), Integer.valueOf(k), localObject, Integer.valueOf(j), Long.valueOf(parambu.field_createTime) });
+            paramMatrixCursor.addRow(new Object[] { paraman, paramString2, paramString1, Integer.valueOf(i), Integer.valueOf(k), localObject, Integer.valueOf(j), Long.valueOf(parambv.field_createTime) });
             AppMethodBeat.o(24439);
           }
         }
@@ -674,8 +673,8 @@ public class ExtControlProviderMsg
       }
       catch (Exception paramMatrixCursor)
       {
-        ad.e("MicroMsg.ExtControlProviderMsg", paramMatrixCursor.getMessage());
-        ad.printErrStackTrace("MicroMsg.ExtControlProviderMsg", paramMatrixCursor, "", new Object[0]);
+        ae.e("MicroMsg.ExtControlProviderMsg", paramMatrixCursor.getMessage());
+        ae.printErrStackTrace("MicroMsg.ExtControlProviderMsg", paramMatrixCursor, "", new Object[0]);
         AppMethodBeat.o(24439);
         return;
       }
@@ -686,11 +685,11 @@ public class ExtControlProviderMsg
   {
     boolean bool2 = true;
     AppMethodBeat.i(24434);
-    ad.d("MicroMsg.ExtControlProviderMsg", "getOneMsg()");
+    ae.d("MicroMsg.ExtControlProviderMsg", "getOneMsg()");
     if ((paramArrayOfString == null) || (paramArrayOfString.length <= 0))
     {
-      ad.e("MicroMsg.ExtControlProviderMsg", "wrong args");
-      DF(3);
+      ae.e("MicroMsg.ExtControlProviderMsg", "wrong args");
+      DS(3);
       AppMethodBeat.o(24434);
       return null;
     }
@@ -698,46 +697,46 @@ public class ExtControlProviderMsg
     {
       try
       {
-        long l = AESUtil.afI(paramArrayOfString[0]);
-        ba.aBQ();
-        localbu = c.azs().xY(l);
-        ba.aBQ();
-        localam = c.azp().Bf(localbu.field_talker);
-        if ((localam == null) || ((int)localam.gfj <= 0))
+        long l = AESUtil.agE(paramArrayOfString[0]);
+        bc.aCg();
+        localbv = com.tencent.mm.model.c.azI().ys(l);
+        bc.aCg();
+        localan = com.tencent.mm.model.c.azF().BH(localbv.field_talker);
+        if ((localan == null) || ((int)localan.ght <= 0))
         {
-          DF(3);
+          DS(3);
           AppMethodBeat.o(24434);
           return null;
         }
-        str = localam.adv();
-        if (!com.tencent.mm.model.w.vF(localam.field_username)) {
+        str = localan.adG();
+        if (!x.wb(localan.field_username)) {
           break label256;
         }
-        str = v.zf(localam.field_username);
+        str = com.tencent.mm.model.w.zP(localan.field_username);
         bool1 = true;
         if ((paramString != null) && (paramString.equalsIgnoreCase("openapi"))) {
-          paramString = new MatrixCursor(rdx);
+          paramString = new MatrixCursor(rlD);
         }
       }
       catch (Exception paramArrayOfString)
       {
-        bu localbu;
-        am localam;
+        bv localbv;
+        an localan;
         String str;
         paramString = null;
-        ad.e("MicroMsg.ExtControlProviderMsg", paramArrayOfString.getMessage());
-        ad.printErrStackTrace("MicroMsg.ExtControlProviderMsg", paramArrayOfString, "", new Object[0]);
+        ae.e("MicroMsg.ExtControlProviderMsg", paramArrayOfString.getMessage());
+        ae.printErrStackTrace("MicroMsg.ExtControlProviderMsg", paramArrayOfString, "", new Object[0]);
         if (paramString != null) {
           paramString.close();
         }
-        DF(4);
+        DS(4);
         AppMethodBeat.o(24434);
         return null;
       }
       try
       {
-        a(paramString, localbu, localam, bool1, str, bool2, paramArrayOfString[0]);
-        DF(0);
+        a(paramString, localbv, localan, bool1, str, bool2, paramArrayOfString[0]);
+        DS(0);
         AppMethodBeat.o(24434);
         return paramString;
       }
@@ -755,29 +754,29 @@ public class ExtControlProviderMsg
   private Cursor b(String[] paramArrayOfString, String paramString1, String paramString2)
   {
     AppMethodBeat.i(24432);
-    ad.i("MicroMsg.ExtControlProviderMsg", "getUnReadMsgs() ");
-    ad.d("MicroMsg.ExtControlProviderMsg", "getUnReadMsgs(), %s, %s", new Object[] { paramString1, paramString2 });
+    ae.i("MicroMsg.ExtControlProviderMsg", "getUnReadMsgs() ");
+    ae.d("MicroMsg.ExtControlProviderMsg", "getUnReadMsgs(), %s, %s", new Object[] { paramString1, paramString2 });
     if ((paramArrayOfString == null) || (paramArrayOfString.length <= 0))
     {
-      ad.e("MicroMsg.ExtControlProviderMsg", "wrong args");
-      fB(3, 3701);
-      paramArrayOfString = com.tencent.mm.pluginsdk.d.a.a.Yf(3701);
+      ae.e("MicroMsg.ExtControlProviderMsg", "wrong args");
+      fz(3, 3701);
+      paramArrayOfString = com.tencent.mm.pluginsdk.d.a.a.YL(3701);
       AppMethodBeat.o(24432);
       return paramArrayOfString;
     }
-    if (bt.isNullOrNil(paramString1))
+    if (bu.isNullOrNil(paramString1))
     {
-      ad.e("MicroMsg.ExtControlProviderMsg", "callSource == null");
-      fB(3, 3702);
-      paramArrayOfString = com.tencent.mm.pluginsdk.d.a.a.Yf(3702);
+      ae.e("MicroMsg.ExtControlProviderMsg", "callSource == null");
+      fz(3, 3702);
+      paramArrayOfString = com.tencent.mm.pluginsdk.d.a.a.YL(3702);
       AppMethodBeat.o(24432);
       return paramArrayOfString;
     }
-    if (bt.isNullOrNil(paramString2))
+    if (bu.isNullOrNil(paramString2))
     {
-      ad.e("MicroMsg.ExtControlProviderMsg", "countStr == null");
-      fB(3, 3703);
-      paramArrayOfString = com.tencent.mm.pluginsdk.d.a.a.Yf(3703);
+      ae.e("MicroMsg.ExtControlProviderMsg", "countStr == null");
+      fz(3, 3703);
+      paramArrayOfString = com.tencent.mm.pluginsdk.d.a.a.YL(3703);
       AppMethodBeat.o(24432);
       return paramArrayOfString;
     }
@@ -793,76 +792,76 @@ public class ExtControlProviderMsg
     {
       try
       {
-        paramString1 = com.tencent.mm.plugin.ext.b.crY().aUy(paramArrayOfString[0]);
-        if ((paramString1 == null) || (bt.isNullOrNil(paramString1.field_openId)) || (bt.isNullOrNil(paramString1.field_username)))
+        paramString1 = com.tencent.mm.plugin.ext.b.ctA().aVZ(paramArrayOfString[0]);
+        if ((paramString1 == null) || (bu.isNullOrNil(paramString1.field_openId)) || (bu.isNullOrNil(paramString1.field_username)))
         {
-          ad.e("MicroMsg.ExtControlProviderMsg", "openidInApp is null");
-          fB(3, 3704);
-          paramArrayOfString = com.tencent.mm.pluginsdk.d.a.a.Yf(3704);
+          ae.e("MicroMsg.ExtControlProviderMsg", "openidInApp is null");
+          fz(3, 3704);
+          paramArrayOfString = com.tencent.mm.pluginsdk.d.a.a.YL(3704);
           AppMethodBeat.o(24432);
           return paramArrayOfString;
           bool1 = false;
           break;
         }
-        ba.aBQ();
-        am localam = c.azp().Bf(paramString1.field_username);
-        if ((localam == null) || (localam.field_username == null) || (localam.field_username.length() <= 0))
+        bc.aCg();
+        an localan = com.tencent.mm.model.c.azF().BH(paramString1.field_username);
+        if ((localan == null) || (localan.field_username == null) || (localan.field_username.length() <= 0))
         {
-          ad.e("MicroMsg.ExtControlProviderMsg", "contact is null");
-          fB(3, 3705);
-          paramArrayOfString = com.tencent.mm.pluginsdk.d.a.a.Yf(3705);
+          ae.e("MicroMsg.ExtControlProviderMsg", "contact is null");
+          fz(3, 3705);
+          paramArrayOfString = com.tencent.mm.pluginsdk.d.a.a.YL(3705);
           AppMethodBeat.o(24432);
           return paramArrayOfString;
           label315:
-          long l = AESUtil.afI(paramArrayOfString[0]);
-          ba.aBQ();
-          localam = c.azp().DE(l);
+          long l = AESUtil.agE(paramArrayOfString[0]);
+          bc.aCg();
+          localan = com.tencent.mm.model.c.azF().Ed(l);
         }
         else
         {
-          String str = localam.adv();
-          if (com.tencent.mm.model.w.vF(localam.field_username))
+          String str = localan.adG();
+          if (x.wb(localan.field_username))
           {
-            str = v.zf(localam.field_username);
+            str = com.tencent.mm.model.w.zP(localan.field_username);
             bool2 = true;
             if (bool1)
             {
               try
               {
-                i = bt.getInt(paramString2, 0);
+                i = bu.getInt(paramString2, 0);
                 if ((i <= 0) || (i >= 15))
                 {
-                  ba.aBQ();
-                  paramString1 = c.azs().ej(localam.field_username, 15);
+                  bc.aCg();
+                  paramString1 = com.tencent.mm.model.c.azI().eq(localan.field_username, 15);
                   if (paramString1 != null) {
                     continue;
                   }
-                  ad.e("MicroMsg.ExtControlProviderMsg", "msgCursor == null");
+                  ae.e("MicroMsg.ExtControlProviderMsg", "msgCursor == null");
                   ab(3, 4, 3706);
-                  paramArrayOfString = com.tencent.mm.pluginsdk.d.a.a.Yf(3706);
+                  paramArrayOfString = com.tencent.mm.pluginsdk.d.a.a.YL(3706);
                   AppMethodBeat.o(24432);
                   return paramArrayOfString;
                 }
               }
               catch (Exception paramString1)
               {
-                ad.e("MicroMsg.ExtControlProviderMsg", "exception in parseInt(%s)", new Object[] { paramString2 });
+                ae.e("MicroMsg.ExtControlProviderMsg", "exception in parseInt(%s)", new Object[] { paramString2 });
                 int i = 0;
                 continue;
-                ba.aBQ();
-                paramString1 = c.azs().ej(localam.field_username, i);
+                bc.aCg();
+                paramString1 = com.tencent.mm.model.c.azI().eq(localan.field_username, i);
                 continue;
               }
             }
             else
             {
-              ba.aBQ();
-              paramString1 = c.azs().ej(localam.field_username, 3);
+              bc.aCg();
+              paramString1 = com.tencent.mm.model.c.azI().eq(localan.field_username, 3);
               continue;
             }
-            paramString2 = new MatrixCursor(rdx);
+            paramString2 = new MatrixCursor(rlD);
           }
-          bu localbu;
+          bv localbv;
           boolean bool2 = false;
         }
       }
@@ -872,9 +871,9 @@ public class ExtControlProviderMsg
         {
           if ((paramString1.getCount() > 0) && (paramString1.moveToFirst()))
           {
-            localbu = new bu();
-            localbu.convertFrom(paramString1);
-            a(paramString2, localbu, localam, bool2, str, bool1, paramArrayOfString[0]);
+            localbv = new bv();
+            localbv.convertFrom(paramString1);
+            a(paramString2, localbv, localan, bool2, str, bool1, paramArrayOfString[0]);
             if (paramString1.moveToNext()) {
               continue;
             }
@@ -891,49 +890,49 @@ public class ExtControlProviderMsg
         }
         paramArrayOfString = paramArrayOfString;
         paramString1 = null;
-        ad.e("MicroMsg.ExtControlProviderMsg", paramArrayOfString.getMessage());
-        ad.printErrStackTrace("MicroMsg.ExtControlProviderMsg", paramArrayOfString, "", new Object[0]);
+        ae.e("MicroMsg.ExtControlProviderMsg", paramArrayOfString.getMessage());
+        ae.printErrStackTrace("MicroMsg.ExtControlProviderMsg", paramArrayOfString, "", new Object[0]);
         if (paramString1 != null) {
           paramString1.close();
         }
         ab(3, 4, 12);
-        paramArrayOfString = com.tencent.mm.pluginsdk.d.a.a.Yf(12);
+        paramArrayOfString = com.tencent.mm.pluginsdk.d.a.a.YL(12);
         AppMethodBeat.o(24432);
         return paramArrayOfString;
       }
     }
   }
   
-  private Cursor csl()
+  private Cursor ctN()
   {
     AppMethodBeat.i(24433);
-    ad.d("MicroMsg.ExtControlProviderMsg", "getUnReadUserList()");
-    MatrixCursor localMatrixCursor = new MatrixCursor(rdz);
+    ae.d("MicroMsg.ExtControlProviderMsg", "getUnReadUserList()");
+    MatrixCursor localMatrixCursor = new MatrixCursor(rlF);
     label267:
     for (;;)
     {
       try
       {
-        ba.aBQ();
-        Cursor localCursor = c.azs().dlY();
+        bc.aCg();
+        Cursor localCursor = com.tencent.mm.model.c.azI().doX();
         if (localCursor != null)
         {
           if (localCursor.moveToFirst())
           {
             String str = localCursor.getString(localCursor.getColumnIndex("talker"));
-            ba.aBQ();
-            am localam = c.azp().Bf(str);
-            if (!com.tencent.mm.model.w.vF(str))
+            bc.aCg();
+            an localan = com.tencent.mm.model.c.azF().BH(str);
+            if (!x.wb(str))
             {
-              if ((com.tencent.mm.model.w.Ap(localam.field_username)) || (com.tencent.mm.model.w.Al(localam.field_username)) || (am.aaR(localam.field_verifyFlag)) || (com.tencent.mm.model.w.Ad(localam.field_username))) {
+              if ((x.AZ(localan.field_username)) || (x.AV(localan.field_username)) || (an.abz(localan.field_verifyFlag)) || (x.AN(localan.field_username))) {
                 break label267;
               }
-              if (!com.tencent.mm.model.w.Ae(localam.field_username)) {
+              if (!x.AO(localan.field_username)) {
                 continue;
               }
               break label267;
               if (i == 0) {
-                localMatrixCursor.addRow(new Object[] { AESUtil.vi((int)localam.gfj), Integer.valueOf(localCursor.getInt(localCursor.getColumnIndex("unReadCount"))) });
+                localMatrixCursor.addRow(new Object[] { AESUtil.vy((int)localan.ght), Integer.valueOf(localCursor.getInt(localCursor.getColumnIndex("unReadCount"))) });
               }
             }
             if (localCursor.moveToNext()) {
@@ -947,7 +946,7 @@ public class ExtControlProviderMsg
         }
         else
         {
-          DF(0);
+          DS(0);
           AppMethodBeat.o(24433);
           return localMatrixCursor;
         }
@@ -957,10 +956,10 @@ public class ExtControlProviderMsg
       }
       catch (Exception localException)
       {
-        ad.e("MicroMsg.ExtControlProviderMsg", localException.getMessage());
-        ad.printErrStackTrace("MicroMsg.ExtControlProviderMsg", localException, "", new Object[0]);
+        ae.e("MicroMsg.ExtControlProviderMsg", localException.getMessage());
+        ae.printErrStackTrace("MicroMsg.ExtControlProviderMsg", localException, "", new Object[0]);
         localMatrixCursor.close();
-        DF(4);
+        DS(4);
         AppMethodBeat.o(24433);
         return null;
       }
@@ -990,76 +989,76 @@ public class ExtControlProviderMsg
   public Cursor query(Uri paramUri, String[] paramArrayOfString1, String paramString1, String[] paramArrayOfString2, String paramString2)
   {
     AppMethodBeat.i(24430);
-    ad.i("MicroMsg.ExtControlProviderMsg", "ExtControlProviderMsg query() mIsLocalUsed :" + this.rdv);
-    if (this.rdv)
+    ae.i("MicroMsg.ExtControlProviderMsg", "ExtControlProviderMsg query() mIsLocalUsed :" + this.rlB);
+    if (this.rlB)
     {
-      a(paramUri, this.rdw, this.rdd, this.rdc);
-      if (bt.isNullOrNil(this.rdo))
+      a(paramUri, this.rlC, this.rlj, this.rli);
+      if (bu.isNullOrNil(this.rlu))
       {
-        ad.e("MicroMsg.ExtControlProviderMsg", "AppID == null");
-        fB(3, 7);
-        paramUri = com.tencent.mm.pluginsdk.d.a.a.Yf(7);
+        ae.e("MicroMsg.ExtControlProviderMsg", "AppID == null");
+        fz(3, 7);
+        paramUri = com.tencent.mm.pluginsdk.d.a.a.YL(7);
         AppMethodBeat.o(24430);
         return paramUri;
       }
-      if (bt.isNullOrNil(csj()))
+      if (bu.isNullOrNil(ctL()))
       {
-        ad.e("MicroMsg.ExtControlProviderMsg", "PkgName == null");
-        fB(3, 6);
-        paramUri = com.tencent.mm.pluginsdk.d.a.a.Yf(6);
+        ae.e("MicroMsg.ExtControlProviderMsg", "PkgName == null");
+        fz(3, 6);
+        paramUri = com.tencent.mm.pluginsdk.d.a.a.YL(6);
         AppMethodBeat.o(24430);
         return paramUri;
       }
-      int i = csk();
+      int i = ctM();
       if (i != 1)
       {
-        ad.e("MicroMsg.ExtControlProviderMsg", "invalid appid ! return code = ".concat(String.valueOf(i)));
-        fB(2, i);
-        paramUri = com.tencent.mm.pluginsdk.d.a.a.Yf(i);
+        ae.e("MicroMsg.ExtControlProviderMsg", "invalid appid ! return code = ".concat(String.valueOf(i)));
+        fz(2, i);
+        paramUri = com.tencent.mm.pluginsdk.d.a.a.YL(i);
         AppMethodBeat.o(24430);
         return paramUri;
       }
     }
     else
     {
-      this.rdw = getContext();
-      a(paramUri, this.rdw, rdu);
+      this.rlC = getContext();
+      a(paramUri, this.rlC, rlA);
       if (paramUri == null)
       {
-        DF(3);
+        DS(3);
         AppMethodBeat.o(24430);
         return null;
       }
-      if ((bt.isNullOrNil(this.rdo)) || (bt.isNullOrNil(csj())))
+      if ((bu.isNullOrNil(this.rlu)) || (bu.isNullOrNil(ctL())))
       {
-        DF(3);
+        DS(3);
         AppMethodBeat.o(24430);
         return null;
       }
-      if (!bMn())
+      if (!bNl())
       {
-        DF(1);
-        paramUri = this.nNT;
+        DS(1);
+        paramUri = this.nTy;
         AppMethodBeat.o(24430);
         return paramUri;
       }
-      if (!eG(this.rdw))
+      if (!eK(this.rlC))
       {
-        ad.w("MicroMsg.ExtControlProviderMsg", "invalid appid ! return null");
-        DF(2);
+        ae.w("MicroMsg.ExtControlProviderMsg", "invalid appid ! return null");
+        DS(2);
         AppMethodBeat.o(24430);
         return null;
       }
     }
-    paramArrayOfString1 = bt.nullAsNil(paramUri.getQueryParameter("source"));
-    paramString1 = bt.nullAsNil(paramUri.getQueryParameter("count"));
-    if (!this.rdv) {
-      this.rdd = rdu.match(paramUri);
+    paramArrayOfString1 = bu.nullAsNil(paramUri.getQueryParameter("source"));
+    paramString1 = bu.nullAsNil(paramUri.getQueryParameter("count"));
+    if (!this.rlB) {
+      this.rlj = rlA.match(paramUri);
     }
-    switch (this.rdd)
+    switch (this.rlj)
     {
     default: 
-      fB(3, 15);
+      fz(3, 15);
       AppMethodBeat.o(24430);
       return null;
     case 7: 
@@ -1075,7 +1074,7 @@ public class ExtControlProviderMsg
       AppMethodBeat.o(24430);
       return paramUri;
     case 10: 
-      paramUri = csl();
+      paramUri = ctN();
       AppMethodBeat.o(24430);
       return paramUri;
     case 11: 

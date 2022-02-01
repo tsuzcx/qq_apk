@@ -6,12 +6,13 @@ import com.tencent.luggage.d.b;
 import com.tencent.luggage.d.b.a;
 import com.tencent.luggage.d.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cc.a;
+import com.tencent.mm.cb.a;
 import com.tencent.mm.plugin.webview.luggage.g;
 import com.tencent.mm.plugin.webview.luggage.g.9;
 import com.tencent.mm.plugin.webview.ui.tools.widget.input.WebViewInputFooter;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bp;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -24,19 +25,19 @@ public class bo
   {
     int i = 0;
     AppMethodBeat.i(78638);
-    ad.i("MicroMsg.JsApiShowSmileyPanel", "invokeInOwn");
+    ae.i("MicroMsg.JsApiShowSmileyPanel", "invokeInOwn");
     Object localObject = (g)paramb.chg;
-    if (((g)localObject).DOx != null) {
+    if (((g)localObject).Egx != null) {
       if (Thread.currentThread().getId() != ((g)localObject).mHandler.getLooper().getThread().getId()) {
         break label111;
       }
     }
     label111:
-    for (i = ((g)localObject).DOx.eVM(); i > 0; i = ((Integer)new g.9((g)localObject, Integer.valueOf(0)).b(((g)localObject).mHandler)).intValue())
+    for (i = ((g)localObject).Egx.eZz(); i > 0; i = ((Integer)new g.9((g)localObject, Integer.valueOf(0)).b(((g)localObject).mHandler)).intValue())
     {
       localObject = new HashMap();
       ((Map)localObject).put("height", Integer.valueOf(a.aA(((g)paramb.chg).mContext, i)));
-      paramb.d("", (Map)localObject);
+      paramb.e("", (Map)localObject);
       AppMethodBeat.o(78638);
       return;
     }
@@ -44,7 +45,7 @@ public class bo
     AppMethodBeat.o(78638);
   }
   
-  public final int ccO()
+  public final int ced()
   {
     return 0;
   }

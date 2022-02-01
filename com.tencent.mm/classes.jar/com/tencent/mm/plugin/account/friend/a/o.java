@@ -6,8 +6,8 @@ import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.e.e;
 import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.storagebase.g;
 import com.tencent.mm.storagebase.g.a;
 import com.tencent.mm.storagebase.h;
@@ -19,7 +19,7 @@ public final class o
 {
   public static final String[] SQL_CREATE;
   private e db;
-  public com.tencent.mm.sdk.e.n jdR;
+  public com.tencent.mm.sdk.e.n jgK;
   
   static
   {
@@ -32,17 +32,17 @@ public final class o
   {
     super(parame, n.info, "GoogleFriend", null);
     AppMethodBeat.i(131049);
-    this.jdR = new com.tencent.mm.sdk.e.n()
+    this.jgK = new com.tencent.mm.sdk.e.n()
     {
-      public final boolean aSH()
+      public final boolean aTg()
       {
         AppMethodBeat.i(131048);
-        if ((o.a(o.this) == null) || (o.a(o.this).fmj()))
+        if ((o.a(o.this) == null) || (o.a(o.this).fqe()))
         {
           if (o.a(o.this) == null) {}
-          for (Object localObject = "null";; localObject = Boolean.valueOf(o.a(o.this).fmj()))
+          for (Object localObject = "null";; localObject = Boolean.valueOf(o.a(o.this).fqe()))
           {
-            ad.w("MicroMsg.GoogleContact.GoogleFriendUI", "shouldProcessEvent db is close :%s", new Object[] { localObject });
+            ae.w("MicroMsg.GoogleContact.GoogleFriendUI", "shouldProcessEvent db is close :%s", new Object[] { localObject });
             AppMethodBeat.o(131048);
             return false;
           }
@@ -55,10 +55,10 @@ public final class o
     AppMethodBeat.o(131049);
   }
   
-  private boolean JH(String paramString)
+  private boolean Kg(String paramString)
   {
     AppMethodBeat.i(131057);
-    paramString = "SELECT GoogleFriend.googleid,GoogleFriend.googlename,GoogleFriend.googlephotourl,GoogleFriend.googlegmail,GoogleFriend.username,GoogleFriend.nickname,GoogleFriend.nicknameqp,GoogleFriend.usernamepy,GoogleFriend.small_url,GoogleFriend.big_url,GoogleFriend.ret,GoogleFriend.status,GoogleFriend.googleitemid,GoogleFriend.googlecgistatus,GoogleFriend.contecttype,GoogleFriend.googlenamepy FROM GoogleFriend   WHERE GoogleFriend.googleitemid = \"" + bt.aQN(String.valueOf(paramString)) + "\"";
+    paramString = "SELECT GoogleFriend.googleid,GoogleFriend.googlename,GoogleFriend.googlephotourl,GoogleFriend.googlegmail,GoogleFriend.username,GoogleFriend.nickname,GoogleFriend.nicknameqp,GoogleFriend.usernamepy,GoogleFriend.small_url,GoogleFriend.big_url,GoogleFriend.ret,GoogleFriend.status,GoogleFriend.googleitemid,GoogleFriend.googlecgistatus,GoogleFriend.contecttype,GoogleFriend.googlenamepy FROM GoogleFriend   WHERE GoogleFriend.googleitemid = \"" + bu.aSk(String.valueOf(paramString)) + "\"";
     paramString = this.db.a(paramString, null, 2);
     boolean bool = paramString.moveToFirst();
     paramString.close();
@@ -84,7 +84,7 @@ public final class o
     return false;
   }
   
-  public final Cursor JG(String paramString)
+  public final Cursor Kf(String paramString)
   {
     AppMethodBeat.i(131053);
     StringBuilder localStringBuilder = new StringBuilder();
@@ -105,7 +105,7 @@ public final class o
     return 0;
   }
   
-  public final boolean aA(String paramString, int paramInt)
+  public final boolean aB(String paramString, int paramInt)
   {
     AppMethodBeat.i(131055);
     paramString = "UPDATE GoogleFriend SET googlecgistatus='" + paramInt + "' WHERE googleitemid='" + paramString + "'";
@@ -114,7 +114,7 @@ public final class o
     return bool;
   }
   
-  public final boolean aB(String paramString, int paramInt)
+  public final boolean aC(String paramString, int paramInt)
   {
     AppMethodBeat.i(131056);
     if (!TextUtils.isEmpty(paramString))
@@ -131,7 +131,7 @@ public final class o
   public final boolean b(n paramn)
   {
     AppMethodBeat.i(131054);
-    if (!JH(paramn.field_googleitemid))
+    if (!Kg(paramn.field_googleitemid))
     {
       boolean bool = a(paramn);
       AppMethodBeat.o(131054);
@@ -179,7 +179,7 @@ public final class o
   {
     AppMethodBeat.i(131058);
     this.db.execSQL("GoogleFriend", " delete from GoogleFriend");
-    this.jdR.b(5, this.jdR, "");
+    this.jgK.b(5, this.jgK, "");
     AppMethodBeat.o(131058);
   }
   
@@ -193,7 +193,7 @@ public final class o
     AppMethodBeat.i(131051);
     if (paramArrayList.size() <= 0)
     {
-      ad.d("MicroMsg.GoogleContact.GoogleFriendUI", "insertList . list is null.");
+      ae.d("MicroMsg.GoogleContact.GoogleFriendUI", "insertList . list is null.");
       AppMethodBeat.o(131051);
       return false;
     }
@@ -202,8 +202,8 @@ public final class o
     if ((this.db instanceof h))
     {
       localh = (h)this.db;
-      l = localh.xO(Thread.currentThread().getId());
-      ad.i("MicroMsg.GoogleContact.GoogleFriendUI", "surround insertList in a transaction, ticket = %d", new Object[] { Long.valueOf(l) });
+      l = localh.yi(Thread.currentThread().getId());
+      ae.i("MicroMsg.GoogleContact.GoogleFriendUI", "surround insertList in a transaction, ticket = %d", new Object[] { Long.valueOf(l) });
     }
     for (;;)
     {
@@ -215,10 +215,10 @@ public final class o
       }
       if (localh != null)
       {
-        localh.sJ(l);
-        ad.i("MicroMsg.GoogleContact.GoogleFriendUI", "end updateList transaction");
+        localh.sW(l);
+        ae.i("MicroMsg.GoogleContact.GoogleFriendUI", "end updateList transaction");
       }
-      this.jdR.b(2, this.jdR, "");
+      this.jgK.b(2, this.jgK, "");
       AppMethodBeat.o(131051);
       return true;
       l = -1L;

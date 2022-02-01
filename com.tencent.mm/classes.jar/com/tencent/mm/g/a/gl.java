@@ -6,8 +6,8 @@ import com.tencent.mm.sdk.b.b;
 public final class gl
   extends b
 {
-  public a dsj;
-  public b dsk;
+  public a dtm;
+  public b dtn;
   
   public gl()
   {
@@ -16,23 +16,24 @@ public final class gl
   
   private gl(byte paramByte)
   {
-    AppMethodBeat.i(155366);
-    this.dsj = new a();
-    this.dsk = new b();
-    this.IbR = false;
+    AppMethodBeat.i(127288);
+    this.dtm = new a();
+    this.dtn = new b();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(155366);
+    AppMethodBeat.o(127288);
   }
   
   public static final class a
   {
-    public String dsl;
-    public String dsm;
+    public int dto = 0;
+    public int state = -1;
+    public String talker;
   }
   
   public static final class b
   {
-    public boolean dsn = true;
+    public int state = -1;
   }
 }
 

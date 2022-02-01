@@ -21,19 +21,19 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.g.c.aw;
+import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.ak;
-import com.tencent.mm.model.q;
-import com.tencent.mm.model.u;
-import com.tencent.mm.plugin.chatroom.a.c;
+import com.tencent.mm.model.al;
+import com.tencent.mm.model.r;
+import com.tencent.mm.model.v;
 import com.tencent.mm.plugin.messenger.foundation.a.l;
 import com.tencent.mm.pluginsdk.ui.a.b;
 import com.tencent.mm.pluginsdk.ui.span.k;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ab;
-import com.tencent.mm.storage.am;
-import com.tencent.mm.storage.bp;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.ac;
+import com.tencent.mm.storage.an;
+import com.tencent.mm.storage.bq;
 import com.tencent.mm.ui.MMActivity;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -43,36 +43,36 @@ import java.util.List;
 public class SnsChatRoomMemberUI
   extends MMActivity
 {
-  private static int fSG = 5;
-  private GridView Aat;
-  private b Aau;
-  private List<a> dAa;
-  private ab fLO;
-  private String fPi;
-  private String fQB;
-  private int fQC;
-  private String fQD;
-  private boolean fQE;
-  private l fSQ;
+  private static int fUM = 5;
+  private GridView ArG;
+  private b ArH;
+  private List<a> dBf;
+  private ac fNS;
+  private String fRo;
+  private String fSH;
+  private int fSI;
+  private String fSJ;
+  private boolean fSK;
+  private l fUW;
   private String mTitle;
   
   public SnsChatRoomMemberUI()
   {
     AppMethodBeat.i(98527);
-    this.Aat = null;
-    this.Aau = null;
-    this.dAa = new ArrayList();
+    this.ArG = null;
+    this.ArH = null;
+    this.dBf = new ArrayList();
     AppMethodBeat.o(98527);
   }
   
-  private static int bT(Context paramContext)
+  private static int bV(Context paramContext)
   {
     AppMethodBeat.i(98528);
     int i = ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay().getWidth();
     int j = (int)(paramContext.getResources().getDimension(2131165500) * 2.0F + paramContext.getResources().getDimension(2131165508));
     i = (int)((i - paramContext.getResources().getDimension(2131165489) * 1.0F) / j);
-    ad.i("MicroMsg.SnsChatRoomMemberUI", "[getWrapColNum] :%s", new Object[] { Integer.valueOf(i) });
-    fSG = i;
+    ae.i("MicroMsg.SnsChatRoomMemberUI", "[getWrapColNum] :%s", new Object[] { Integer.valueOf(i) });
+    fUM = i;
     AppMethodBeat.o(98528);
     return i;
   }
@@ -86,7 +86,7 @@ public class SnsChatRoomMemberUI
   {
     AppMethodBeat.i(98530);
     super.onConfigurationChanged(paramConfiguration);
-    this.Aat.setNumColumns(bT(this));
+    this.ArG.setNumColumns(bV(this));
     AppMethodBeat.o(98530);
   }
   
@@ -94,47 +94,47 @@ public class SnsChatRoomMemberUI
   {
     AppMethodBeat.i(98529);
     super.onCreate(paramBundle);
-    this.fSQ = ((l)g.ab(l.class));
-    this.fPi = getIntent().getStringExtra("RoomInfo_Id");
-    this.fQB = getIntent().getStringExtra("room_name");
+    this.fUW = ((l)g.ab(l.class));
+    this.fRo = getIntent().getStringExtra("RoomInfo_Id");
+    this.fSH = getIntent().getStringExtra("room_name");
     this.mTitle = getIntent().getStringExtra("Add_address_titile");
-    this.fQC = getIntent().getIntExtra("room_member_count", 0);
-    this.fLO = ((c)g.ab(c.class)).azz().AN(this.fPi);
-    if (this.fLO != null)
+    this.fSI = getIntent().getIntExtra("room_member_count", 0);
+    this.fNS = ((com.tencent.mm.plugin.chatroom.a.c)g.ab(com.tencent.mm.plugin.chatroom.a.c.class)).azP().Bx(this.fRo);
+    if (this.fNS != null)
     {
-      this.fQD = this.fLO.field_roomowner;
-      this.fQE = u.aAm().equals(this.fQD);
+      this.fSJ = this.fNS.field_roomowner;
+      this.fSK = v.aAC().equals(this.fSJ);
     }
-    this.Aat = ((GridView)findViewById(2131304951));
-    this.Aat.setNumColumns(bT(this));
-    this.Aat.setColumnWidth(getResources().getDimensionPixelSize(2131165489));
-    this.Aat.setOnItemClickListener(new AdapterView.OnItemClickListener()
+    this.ArG = ((GridView)findViewById(2131304951));
+    this.ArG.setNumColumns(bV(this));
+    this.ArG.setColumnWidth(getResources().getDimensionPixelSize(2131165489));
+    this.ArG.setOnItemClickListener(new AdapterView.OnItemClickListener()
     {
       public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
       {
         AppMethodBeat.i(98521);
-        Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-        ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramAnonymousAdapterView);
-        ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramAnonymousView);
-        ((com.tencent.mm.hellhoundlib.b.b)localObject).mr(paramAnonymousInt);
-        ((com.tencent.mm.hellhoundlib.b.b)localObject).qY(paramAnonymousLong);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/sns/ui/SnsChatRoomMemberUI$1", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahq());
-        if (SnsChatRoomMemberUI.a(SnsChatRoomMemberUI.this).Rd(paramAnonymousInt).type == 1)
+        Object localObject = new b();
+        ((b)localObject).bd(paramAnonymousAdapterView);
+        ((b)localObject).bd(paramAnonymousView);
+        ((b)localObject).mu(paramAnonymousInt);
+        ((b)localObject).rl(paramAnonymousLong);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/sns/ui/SnsChatRoomMemberUI$1", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, ((b)localObject).ahF());
+        if (SnsChatRoomMemberUI.a(SnsChatRoomMemberUI.this).RK(paramAnonymousInt).type == 1)
         {
-          am localam = SnsChatRoomMemberUI.a(SnsChatRoomMemberUI.this).Rd(paramAnonymousInt).contact;
-          if (localam == null)
+          an localan = SnsChatRoomMemberUI.a(SnsChatRoomMemberUI.this).RK(paramAnonymousInt).contact;
+          if (localan == null)
           {
-            ad.e("MicroMsg.SnsChatRoomMemberUI", "cont is null");
+            ae.e("MicroMsg.SnsChatRoomMemberUI", "cont is null");
             com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/sns/ui/SnsChatRoomMemberUI$1", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
             AppMethodBeat.o(98521);
             return;
           }
-          localObject = localam.field_username;
-          String str = localam.field_nickname;
+          localObject = localan.field_username;
+          String str = localan.field_nickname;
           paramAnonymousView = SnsChatRoomMemberUI.c(SnsChatRoomMemberUI.b(SnsChatRoomMemberUI.this), (String)localObject);
           paramAnonymousAdapterView = paramAnonymousView;
-          if (bt.isNullOrNil(paramAnonymousView)) {
-            paramAnonymousAdapterView = localam.adv();
+          if (bu.isNullOrNil(paramAnonymousView)) {
+            paramAnonymousAdapterView = localan.adG();
           }
           SnsChatRoomMemberUI.a(SnsChatRoomMemberUI.this, (String)localObject, paramAnonymousAdapterView, str);
         }
@@ -142,39 +142,39 @@ public class SnsChatRoomMemberUI
         AppMethodBeat.o(98521);
       }
     });
-    this.Aau = new b(this, this.fLO, this.fPi, this.fQD);
-    this.Aat.setAdapter(this.Aau);
-    paramBundle = q.yQ(this.fPi);
+    this.ArH = new b(this, this.fNS, this.fRo, this.fSJ);
+    this.ArG.setAdapter(this.ArH);
+    paramBundle = r.zA(this.fRo);
     if (paramBundle != null)
     {
-      this.dAa.clear();
+      this.dBf.clear();
       int i = 0;
       if (i < paramBundle.size())
       {
-        am localam = this.fSQ.azp().Bf((String)paramBundle.get(i));
-        if ((localam != null) && (com.tencent.mm.o.b.lM(localam.field_type)) && (!u.za(localam.field_username)))
+        an localan = this.fUW.azF().BH((String)paramBundle.get(i));
+        if ((localan != null) && (com.tencent.mm.contact.c.lO(localan.field_type)) && (!v.zK(localan.field_username)))
         {
-          if (!this.fLO.Az(localam.field_username)) {
+          if (!this.fNS.Bj(localan.field_username)) {
             break label353;
           }
-          this.dAa.add(new a(localam, 3));
+          this.dBf.add(new a(localan, 3));
         }
         for (;;)
         {
           i += 1;
           break;
           label353:
-          if (this.fLO.aSH(localam.field_username)) {
-            this.dAa.add(new a(localam, 2));
+          if (this.fNS.aUg(localan.field_username)) {
+            this.dBf.add(new a(localan, 2));
           } else {
-            this.dAa.add(new a(localam, 1));
+            this.dBf.add(new a(localan, 1));
           }
         }
       }
-      Collections.sort(this.dAa, new Comparator() {});
-      this.Aau.notifyDataSetChanged();
+      Collections.sort(this.dBf, new Comparator() {});
+      this.ArH.notifyDataSetChanged();
     }
-    setMMTitle(this.mTitle + "(" + this.dAa.size() + ")");
+    setMMTitle(this.mTitle + "(" + this.dBf.size() + ")");
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -197,13 +197,13 @@ public class SnsChatRoomMemberUI
   
   static final class a
   {
-    am contact;
+    an contact;
     int order = 0;
     int type = 1;
     
-    public a(am paramam, int paramInt)
+    public a(an paraman, int paramInt)
     {
-      this.contact = paramam;
+      this.contact = paraman;
       this.order = paramInt;
     }
   }
@@ -211,24 +211,24 @@ public class SnsChatRoomMemberUI
   final class b
     extends BaseAdapter
   {
-    private ab fLO;
-    private List<String> fSL;
-    private boolean fSN = false;
-    private String fSO = null;
+    private ac fNS;
+    private List<String> fUR;
+    private boolean fUT = false;
+    private String fUU = null;
     private Context mContext;
     private String roomId;
     
-    public b(ab paramab, String paramString, List<String> paramList)
+    public b(ac paramac, String paramString, List<String> paramList)
     {
-      this.fLO = paramString;
+      this.fNS = paramString;
       this.roomId = paramList;
-      this.fSL = null;
+      this.fUR = null;
       Object localObject;
-      this.fSO = localObject;
-      this.mContext = paramab;
+      this.fUU = localObject;
+      this.mContext = paramac;
     }
     
-    public final SnsChatRoomMemberUI.a Rd(int paramInt)
+    public final SnsChatRoomMemberUI.a RK(int paramInt)
     {
       AppMethodBeat.i(98523);
       SnsChatRoomMemberUI.a locala = (SnsChatRoomMemberUI.a)SnsChatRoomMemberUI.c(SnsChatRoomMemberUI.this).get(paramInt);
@@ -259,29 +259,29 @@ public class SnsChatRoomMemberUI
       {
         localView = View.inflate(this.mContext, 2131495532, null);
         localc = new SnsChatRoomMemberUI.c((byte)0);
-        localc.fOf = ((ImageView)localView.findViewById(2131304481));
-        localc.fPC = ((TextView)localView.findViewById(2131304483));
+        localc.fQl = ((ImageView)localView.findViewById(2131304481));
+        localc.fRI = ((TextView)localView.findViewById(2131304483));
         paramView = (WindowManager)this.mContext.getSystemService("window");
-        localc.fPC.setMaxWidth(paramView.getDefaultDisplay().getWidth() * 2 / 3);
-        localc.fST = ((TextView)localView.findViewById(2131304484));
+        localc.fRI.setMaxWidth(paramView.getDefaultDisplay().getWidth() * 2 / 3);
+        localc.fUZ = ((TextView)localView.findViewById(2131304484));
         localView.setTag(localc);
-        if (localc.fST != null) {
-          localc.fST.setVisibility(8);
+        if (localc.fUZ != null) {
+          localc.fUZ.setVisibility(8);
         }
         paramView = (SnsChatRoomMemberUI.a)SnsChatRoomMemberUI.c(SnsChatRoomMemberUI.this).get(paramInt);
         if ((paramView != null) && (paramView.type == 1))
         {
-          am localam = paramView.contact;
-          a.b.c(localc.fOf, localam.field_username);
-          str = SnsChatRoomMemberUI.c(this.fLO, localam.field_username);
-          if (bt.isNullOrNil(localam.field_conRemark)) {
+          an localan = paramView.contact;
+          a.b.c(localc.fQl, localan.field_username);
+          str = SnsChatRoomMemberUI.c(this.fNS, localan.field_username);
+          if (bu.isNullOrNil(localan.field_conRemark)) {
             break label376;
           }
-          paramViewGroup = localam.field_conRemark;
+          paramViewGroup = localan.field_conRemark;
           label214:
           paramView = paramViewGroup;
-          if (bt.isNullOrNil(paramViewGroup)) {
-            paramView = localam.adu();
+          if (bu.isNullOrNil(paramViewGroup)) {
+            paramView = localan.adF();
           }
           paramViewGroup = paramView;
           if (str != null)
@@ -295,15 +295,15 @@ public class SnsChatRoomMemberUI
               }
             }
           }
-          localc.fPC.setVisibility(0);
-          localc.fPC.setText(k.b(this.mContext, paramViewGroup, localc.fPC.getTextSize()));
-          if (localc.fST != null)
+          localc.fRI.setVisibility(0);
+          localc.fRI.setText(k.b(this.mContext, paramViewGroup, localc.fRI.getTextSize()));
+          if (localc.fUZ != null)
           {
-            paramView = com.tencent.mm.openim.room.a.a.H(localam);
+            paramView = com.tencent.mm.openim.room.a.a.O(localan);
             if (!TextUtils.isEmpty(paramView)) {
               break label382;
             }
-            localc.fST.setVisibility(8);
+            localc.fUZ.setVisibility(8);
           }
         }
       }
@@ -318,17 +318,17 @@ public class SnsChatRoomMemberUI
         paramViewGroup = str;
         break label214;
         label382:
-        localc.fST.setVisibility(0);
-        localc.fST.setText(paramView);
+        localc.fUZ.setVisibility(0);
+        localc.fUZ.setText(paramView);
       }
     }
   }
   
   static final class c
   {
-    public ImageView fOf;
-    public TextView fPC;
-    public TextView fST;
+    public ImageView fQl;
+    public TextView fRI;
+    public TextView fUZ;
   }
 }
 

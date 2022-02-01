@@ -5,17 +5,17 @@ import d.g.a.a;
 import d.g.b.q;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
 final class c$b
   extends q
   implements a<Boolean>
 {
-  public static final b nrf;
+  public static final b nwy;
   
   static
   {
     AppMethodBeat.i(51461);
-    nrf = new b();
+    nwy = new b();
     AppMethodBeat.o(51461);
   }
   

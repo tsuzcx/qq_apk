@@ -2,16 +2,16 @@ package com.tencent.mm.plugin.appbrand.report;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.service.l;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ak;
 
 public final class c
   implements l
 {
-  public final String bxa()
+  public final String bxT()
   {
-    AppMethodBeat.i(188710);
-    String str = h.getNetworkType(aj.getContext());
-    AppMethodBeat.o(188710);
+    AppMethodBeat.i(222926);
+    String str = h.getNetworkType(ak.getContext());
+    AppMethodBeat.o(222926);
     return str;
   }
 }

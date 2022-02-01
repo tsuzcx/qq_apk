@@ -6,9 +6,9 @@ import com.tencent.luggage.a.e;
 import com.tencent.luggage.sdk.customize.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.appstorage.d;
-import com.tencent.mm.plugin.appbrand.appstorage.o.a;
+import com.tencent.mm.plugin.appbrand.appstorage.p.a;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 class JsApiSetStorageTask
   extends MainProcessTask
@@ -16,12 +16,12 @@ class JsApiSetStorageTask
   public static final Parcelable.Creator<JsApiSetStorageTask> CREATOR;
   public String appId;
   private String key;
-  public Runnable krg;
-  public int liU;
-  private boolean lja;
-  private int ljb;
-  private int ljc;
-  private int ljd;
+  public Runnable kuv;
+  public int lmG;
+  private boolean lmM;
+  private int lmN;
+  private int lmO;
+  private int lmP;
   public String result;
   private String type;
   private String value;
@@ -33,7 +33,7 @@ class JsApiSetStorageTask
     AppMethodBeat.o(147296);
   }
   
-  private void bmA()
+  private void bnj()
   {
     this.key = null;
     this.value = null;
@@ -45,13 +45,13 @@ class JsApiSetStorageTask
     AppMethodBeat.i(147291);
     if (p.n(new String[] { paramString1, paramString2, paramString3 }) > 102400)
     {
-      this.ljb = p.n(new String[] { paramString1 });
-      this.ljc = p.n(new String[] { paramString2 });
-      this.ljd = p.n(new String[] { paramString3 });
+      this.lmN = p.n(new String[] { paramString1 });
+      this.lmO = p.n(new String[] { paramString2 });
+      this.lmP = p.n(new String[] { paramString3 });
       try
       {
-        p.g(this.iFB, new String[] { paramString1, paramString2, paramString3 });
-        this.lja = true;
+        p.g(this.iIu, new String[] { paramString1, paramString2, paramString3 });
+        this.lmM = true;
         AppMethodBeat.o(147291);
         return;
       }
@@ -59,62 +59,62 @@ class JsApiSetStorageTask
       {
         for (;;)
         {
-          ad.e("MicroMsg.JsApiSetStorageTask", paramString1.getMessage());
+          ae.e("MicroMsg.JsApiSetStorageTask", paramString1.getMessage());
         }
       }
     }
-    this.lja = false;
+    this.lmM = false;
     this.key = paramString1;
     this.value = paramString2;
     this.type = paramString3;
     AppMethodBeat.o(147291);
   }
   
-  public final void aOA()
+  public final void aOX()
   {
     AppMethodBeat.i(147293);
-    if (this.lja) {}
+    if (this.lmM) {}
     try
     {
-      str = p.QA(this.iFB);
-      if (str.length() == this.ljb + this.ljc + this.ljd)
+      str = p.Rj(this.iIu);
+      if (str.length() == this.lmN + this.lmO + this.lmP)
       {
-        this.key = str.substring(0, this.ljb);
-        this.value = str.substring(this.ljb, this.ljb + this.ljc);
-        this.type = str.substring(this.ljb + this.ljc, this.ljb + this.ljc + this.ljd);
+        this.key = str.substring(0, this.lmN);
+        this.value = str.substring(this.lmN, this.lmN + this.lmO);
+        this.type = str.substring(this.lmN + this.lmO, this.lmN + this.lmO + this.lmP);
       }
-      p.QB(this.iFB);
+      p.Rk(this.iIu);
     }
     catch (Exception localException)
     {
       for (;;)
       {
         String str;
-        ad.e("MicroMsg.JsApiSetStorageTask", localException.getMessage());
-        p.QB(this.iFB);
+        ae.e("MicroMsg.JsApiSetStorageTask", localException.getMessage());
+        p.Rk(this.iIu);
       }
     }
     finally
     {
-      p.QB(this.iFB);
+      p.Rk(this.iIu);
       AppMethodBeat.o(147293);
     }
     if (e.K(a.class) == null) {}
     Object localObject2;
-    for (str = null; str == null; localObject2 = ((a)e.K(a.class)).Ei())
+    for (str = null; str == null; localObject2 = ((a)e.K(a.class)).El())
     {
       this.result = "fail:internal error get DB fail";
-      bmA();
-      bhX();
+      bnj();
+      biG();
       AppMethodBeat.o(147293);
       return;
     }
     try
     {
-      localObject2 = ((d)localObject2).c(this.liU, this.appId, this.key, this.value, this.type);
-      this.result = p.a((o.a)localObject2);
-      bmA();
-      bhX();
+      localObject2 = ((d)localObject2).c(this.lmG, this.appId, this.key, this.value, this.type);
+      this.result = p.a((p.a)localObject2);
+      bnj();
+      biG();
       AppMethodBeat.o(147293);
       return;
     }
@@ -124,11 +124,11 @@ class JsApiSetStorageTask
     }
   }
   
-  public final void aOB()
+  public final void aOY()
   {
     AppMethodBeat.i(147292);
-    if (this.krg != null) {
-      this.krg.run();
+    if (this.kuv != null) {
+      this.kuv.run();
     }
     AppMethodBeat.o(147292);
   }
@@ -137,14 +137,14 @@ class JsApiSetStorageTask
   {
     AppMethodBeat.i(147294);
     this.appId = paramParcel.readString();
-    this.liU = paramParcel.readInt();
+    this.lmG = paramParcel.readInt();
     if (paramParcel.readByte() != 0) {}
     for (boolean bool = true;; bool = false)
     {
-      this.lja = bool;
-      this.ljb = paramParcel.readInt();
-      this.ljc = paramParcel.readInt();
-      this.ljd = paramParcel.readInt();
+      this.lmM = bool;
+      this.lmN = paramParcel.readInt();
+      this.lmO = paramParcel.readInt();
+      this.lmP = paramParcel.readInt();
       this.key = paramParcel.readString();
       this.value = paramParcel.readString();
       this.type = paramParcel.readString();
@@ -158,14 +158,14 @@ class JsApiSetStorageTask
   {
     AppMethodBeat.i(147295);
     paramParcel.writeString(this.appId);
-    paramParcel.writeInt(this.liU);
-    if (this.lja) {}
+    paramParcel.writeInt(this.lmG);
+    if (this.lmM) {}
     for (byte b = 1;; b = 0)
     {
       paramParcel.writeByte(b);
-      paramParcel.writeInt(this.ljb);
-      paramParcel.writeInt(this.ljc);
-      paramParcel.writeInt(this.ljd);
+      paramParcel.writeInt(this.lmN);
+      paramParcel.writeInt(this.lmO);
+      paramParcel.writeInt(this.lmP);
       paramParcel.writeString(this.key);
       paramParcel.writeString(this.value);
       paramParcel.writeString(this.type);
@@ -177,7 +177,7 @@ class JsApiSetStorageTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.storage.JsApiSetStorageTask
  * JD-Core Version:    0.7.0.1
  */

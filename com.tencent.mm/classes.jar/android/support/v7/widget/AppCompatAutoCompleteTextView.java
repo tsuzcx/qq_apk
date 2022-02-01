@@ -29,7 +29,7 @@ public class AppCompatAutoCompleteTextView
   
   public AppCompatAutoCompleteTextView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
-    super(aw.ac(paramContext), paramAttributeSet, paramInt);
+    super(aw.ad(paramContext), paramAttributeSet, paramInt);
     paramContext = az.a(getContext(), paramAttributeSet, afE, paramInt, 0);
     if (paramContext.hasValue(0)) {
       setDropDownBackgroundDrawable(paramContext.getDrawable(0));

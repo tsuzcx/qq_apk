@@ -6,15 +6,15 @@ import android.view.View;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.card.base.b;
-import com.tencent.mm.protocal.protobuf.aaf;
-import com.tencent.mm.protocal.protobuf.ts;
+import com.tencent.mm.protocal.protobuf.aai;
+import com.tencent.mm.protocal.protobuf.tu;
 import java.util.LinkedList;
 
 public final class c
   extends a
 {
-  protected TextView oQf;
-  protected TextView oQg;
+  protected TextView oWH;
+  protected TextView oWI;
   
   public c(Context paramContext)
   {
@@ -23,42 +23,42 @@ public final class c
   
   public final void I(boolean paramBoolean1, boolean paramBoolean2) {}
   
-  protected final void bYI()
+  protected final void bZX()
   {
     AppMethodBeat.i(113902);
-    this.oQg = ((TextView)bYH().findViewById(2131297733));
-    this.oQf = ((TextView)bYH().findViewById(2131297902));
+    this.oWI = ((TextView)bZW().findViewById(2131297733));
+    this.oWH = ((TextView)bZW().findViewById(2131297902));
     AppMethodBeat.o(113902);
   }
   
-  protected final void bYJ()
+  protected final void bZY()
   {
     AppMethodBeat.i(113903);
-    if ((this.owK.bTN().FRz != null) && (this.owK.bTN().FRz.size() > 0))
+    if ((this.oDm.bVc().GjY != null) && (this.oDm.bVc().GjY.size() > 0))
     {
-      aaf localaaf = (aaf)this.owK.bTN().FRz.get(0);
-      if (this.mMD != null) {
-        this.mMD.setText(localaaf.title);
+      aai localaai = (aai)this.oDm.bVc().GjY.get(0);
+      if (this.mRG != null) {
+        this.mRG.setText(localaai.title);
       }
-      if (this.oQf != null)
+      if (this.oWH != null)
       {
-        if (TextUtils.isEmpty(localaaf.oxN)) {
+        if (TextUtils.isEmpty(localaai.oEp)) {
           break label138;
         }
-        this.oQf.setText(localaaf.oxN);
+        this.oWH.setText(localaai.oEp);
       }
-      while (this.oQg != null) {
-        if (!TextUtils.isEmpty(localaaf.oxO))
+      while (this.oWI != null) {
+        if (!TextUtils.isEmpty(localaai.oEq))
         {
-          this.oQg.setText(localaaf.oxO);
+          this.oWI.setText(localaai.oEq);
           AppMethodBeat.o(113903);
           return;
           label138:
-          this.oQf.setVisibility(8);
+          this.oWH.setVisibility(8);
         }
         else
         {
-          this.oQg.setVisibility(8);
+          this.oWI.setVisibility(8);
         }
       }
     }

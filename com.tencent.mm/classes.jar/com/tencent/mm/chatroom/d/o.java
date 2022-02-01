@@ -1,18 +1,18 @@
 package com.tencent.mm.chatroom.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.bmo;
-import com.tencent.mm.protocal.protobuf.bmp;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.storage.ai;
+import com.tencent.mm.protocal.protobuf.bng;
+import com.tencent.mm.protocal.protobuf.bnh;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.storage.aj;
 
 public final class o
   extends n
@@ -26,15 +26,15 @@ public final class o
     AppMethodBeat.i(12482);
     this.callback = null;
     b.a locala = new b.a();
-    locala.hNM = new bmo();
-    locala.hNN = new bmp();
+    locala.hQF = new bng();
+    locala.hQG = new bnh();
     locala.uri = "/cgi-bin/micromsg-bin/grantbigchatroom";
     locala.funcId = 339;
-    locala.hNO = 0;
+    locala.hQH = 0;
     locala.respCmdId = 0;
-    this.rr = locala.aDC();
-    ((bmo)this.rr.hNK.hNQ).uki = paramString;
-    ad.d("MicroMsg.NetSceneGrantBigChatRoom", "grant to userName :".concat(String.valueOf(paramString)));
+    this.rr = locala.aDS();
+    ((bng)this.rr.hQD.hQJ).uvF = paramString;
+    ae.d("MicroMsg.NetSceneGrantBigChatRoom", "grant to userName :".concat(String.valueOf(paramString)));
     AppMethodBeat.o(12482);
   }
   
@@ -55,16 +55,16 @@ public final class o
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(12484);
-    ad.d("MicroMsg.NetSceneGrantBigChatRoom", "onGYNetEnd " + paramInt2 + " " + paramInt3 + "  " + paramString);
+    ae.d("MicroMsg.NetSceneGrantBigChatRoom", "onGYNetEnd " + paramInt2 + " " + paramInt3 + "  " + paramString);
     if ((paramInt2 != 0) || (paramInt3 != 0))
     {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
       AppMethodBeat.o(12484);
       return;
     }
-    paramInt1 = ((Integer)g.ajC().ajl().get(135176, Integer.valueOf(0))).intValue();
+    paramInt1 = ((Integer)g.ajR().ajA().get(135176, Integer.valueOf(0))).intValue();
     if (paramInt1 - 1 >= 0) {
-      g.ajC().ajl().set(135176, Integer.valueOf(paramInt1 - 1));
+      g.ajR().ajA().set(135176, Integer.valueOf(paramInt1 - 1));
     }
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(12484);

@@ -6,7 +6,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.appcache.WxaPkgWrappingInfo;
 import com.tencent.mm.plugin.appbrand.appcache.o;
 import com.tencent.mm.plugin.appbrand.d;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -22,17 +22,17 @@ public class ba
     AppMethodBeat.i(147134);
     HashMap localHashMap = new HashMap();
     AppBrandSysConfigLU localAppBrandSysConfigLU = (AppBrandSysConfigLU)paramd.ar(AppBrandSysConfigLU.class);
-    if (localAppBrandSysConfigLU.jYh.jIU != 0)
+    if (localAppBrandSysConfigLU.kbw.jLV != 0)
     {
       bool1 = true;
       localHashMap.put("appDebug", Boolean.valueOf(bool1));
-      localHashMap.put("appMd5", bt.nullAsNil(localAppBrandSysConfigLU.jYh.md5));
-      localHashMap.put("appVersion", Integer.valueOf(localAppBrandSysConfigLU.jYh.pkgVersion));
-      paramd = paramd.aVF();
+      localHashMap.put("appMd5", bu.nullAsNil(localAppBrandSysConfigLU.kbw.md5));
+      localHashMap.put("appVersion", Integer.valueOf(localAppBrandSysConfigLU.kbw.pkgVersion));
+      paramd = paramd.aWe();
       if (paramd != null)
       {
-        paramd = (WxaPkgWrappingInfo)paramd.aZq();
-        if (paramd.jIU == 0) {
+        paramd = (WxaPkgWrappingInfo)paramd.aZN();
+        if (paramd.jLV == 0) {
           break label213;
         }
       }
@@ -41,7 +41,7 @@ public class ba
     for (boolean bool1 = bool2;; bool1 = false)
     {
       localHashMap.put("libDebug", Boolean.valueOf(bool1));
-      localHashMap.put("libMd5", bt.nullAsNil(paramd.md5));
+      localHashMap.put("libMd5", bu.nullAsNil(paramd.md5));
       localHashMap.put("libVersion", Integer.valueOf(paramd.pkgVersion));
       localHashMap.put("system", "android");
       localHashMap.put("systemVersion", Integer.valueOf(Build.VERSION.SDK_INT));

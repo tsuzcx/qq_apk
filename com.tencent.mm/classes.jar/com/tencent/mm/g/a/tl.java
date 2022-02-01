@@ -1,14 +1,14 @@
 package com.tencent.mm.g.a;
 
+import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.bwo;
 import com.tencent.mm.sdk.b.b;
-import java.util.LinkedList;
 
 public final class tl
   extends b
 {
-  public a dHT;
+  public a dIV;
+  public b dIW;
   
   public tl()
   {
@@ -17,18 +17,21 @@ public final class tl
   
   private tl(byte paramByte)
   {
-    AppMethodBeat.i(5532);
-    this.dHT = new a();
-    this.IbR = false;
+    AppMethodBeat.i(155375);
+    this.dIV = new a();
+    this.dIW = new b();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(5532);
+    AppMethodBeat.o(155375);
   }
   
   public static final class a
   {
-    public String dFE;
-    public LinkedList<bwo> dHU;
+    public Intent intent;
+    public String username;
   }
+  
+  public static final class b {}
 }
 
 

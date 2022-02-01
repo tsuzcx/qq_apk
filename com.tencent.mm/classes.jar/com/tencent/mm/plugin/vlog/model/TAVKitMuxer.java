@@ -6,7 +6,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.sight.base.SightVideoJNI;
 import com.tencent.mm.plugin.sight.base.b;
 import com.tencent.mm.plugin.sight.base.c;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.tav.core.ExportConfig;
 import com.tencent.tav.decoder.muxer.IMediaMuxer;
 import com.tencent.tav.decoder.muxer.MediaMuxerFactory;
@@ -16,28 +16,28 @@ import d.l;
 import d.n.n;
 import java.nio.ByteBuffer;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/vlog/model/TAVKitMuxer;", "", "()V", "TAG", "", "setup", "", "SightVideoJNIMediaMuxer", "SightVideoJNIMediaMuxerFactory", "plugin-vlog_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/vlog/model/TAVKitMuxer;", "", "()V", "TAG", "", "setup", "", "SightVideoJNIMediaMuxer", "SightVideoJNIMediaMuxerFactory", "plugin-vlog_release"})
 public final class TAVKitMuxer
 {
-  public static final TAVKitMuxer BGg;
+  public static final TAVKitMuxer BXE;
   private static final String TAG = "MicroMsg.TAVKitMuxer";
   
   static
   {
-    AppMethodBeat.i(195781);
-    BGg = new TAVKitMuxer();
+    AppMethodBeat.i(191238);
+    BXE = new TAVKitMuxer();
     TAG = "MicroMsg.TAVKitMuxer";
-    AppMethodBeat.o(195781);
+    AppMethodBeat.o(191238);
   }
   
   public static void setup()
   {
-    AppMethodBeat.i(195780);
+    AppMethodBeat.i(191237);
     MediaMuxerFactory.setMuxerCreator((MediaMuxerFactory.MediaMuxerCreator)new SightVideoJNIMediaMuxerFactory());
-    AppMethodBeat.o(195780);
+    AppMethodBeat.o(191237);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/vlog/model/TAVKitMuxer$SightVideoJNIMediaMuxer;", "Lcom/tencent/tav/decoder/muxer/IMediaMuxer;", "path", "", "format", "", "(Ljava/lang/String;I)V", "audioChannelCount", "audioFormat", "Landroid/media/MediaFormat;", "audioId", "audioSampleRate", "bufId", "duration", "exportConfig", "Lcom/tencent/tav/core/ExportConfig;", "isUseFFMpegMuxer", "", "videoBitrate", "videoFormat", "videoFps", "videoFrameCount", "videoId", "addTrack", "mediaFormat", "getMediaFormatInt", "key", "defVal", "ignoreHeader", "release", "", "setExportConfig", "start", "stop", "writeSampleData", "trackId", "byteBuffer", "Ljava/nio/ByteBuffer;", "bufferInfo", "Landroid/media/MediaCodec$BufferInfo;", "plugin-vlog_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/vlog/model/TAVKitMuxer$SightVideoJNIMediaMuxer;", "Lcom/tencent/tav/decoder/muxer/IMediaMuxer;", "path", "", "format", "", "(Ljava/lang/String;I)V", "audioChannelCount", "audioFormat", "Landroid/media/MediaFormat;", "audioId", "audioSampleRate", "bufId", "duration", "exportConfig", "Lcom/tencent/tav/core/ExportConfig;", "isUseFFMpegMuxer", "", "videoBitrate", "videoFormat", "videoFps", "videoFrameCount", "videoId", "addTrack", "mediaFormat", "getMediaFormatInt", "key", "defVal", "ignoreHeader", "release", "", "setExportConfig", "start", "stop", "writeSampleData", "trackId", "byteBuffer", "Ljava/nio/ByteBuffer;", "bufferInfo", "Landroid/media/MediaCodec$BufferInfo;", "plugin-vlog_release"})
   static final class SightVideoJNIMediaMuxer
     implements IMediaMuxer
   {
@@ -59,40 +59,40 @@ public final class TAVKitMuxer
     
     public SightVideoJNIMediaMuxer(String paramString, int paramInt)
     {
-      AppMethodBeat.i(195778);
+      AppMethodBeat.i(191235);
       this.path = paramString;
       this.format = paramInt;
       this.videoId = -1;
       this.audioId = -1;
       this.bufId = SightVideoJNI.initDataBufferForRemux(false);
-      this.isUseFFMpegMuxer = b.af(false, false);
-      AppMethodBeat.o(195778);
+      this.isUseFFMpegMuxer = b.ae(false, false);
+      AppMethodBeat.o(191235);
     }
     
     private final int getMediaFormatInt(MediaFormat paramMediaFormat, String paramString, int paramInt)
     {
-      AppMethodBeat.i(195775);
+      AppMethodBeat.i(191232);
       if (paramMediaFormat == null)
       {
-        AppMethodBeat.o(195775);
+        AppMethodBeat.o(191232);
         return paramInt;
       }
       if (paramMediaFormat.containsKey(paramString))
       {
         paramInt = paramMediaFormat.getInteger(paramString);
-        AppMethodBeat.o(195775);
+        AppMethodBeat.o(191232);
         return paramInt;
       }
-      AppMethodBeat.o(195775);
+      AppMethodBeat.o(191232);
       return paramInt;
     }
     
     public final int addTrack(MediaFormat paramMediaFormat)
     {
-      AppMethodBeat.i(195777);
+      AppMethodBeat.i(191234);
       p.h(paramMediaFormat, "mediaFormat");
-      Object localObject = TAVKitMuxer.BGg;
-      ad.i(TAVKitMuxer.erZ(), "addTrack, format:".concat(String.valueOf(paramMediaFormat)));
+      Object localObject = TAVKitMuxer.BXE;
+      ae.i(TAVKitMuxer.evG(), "addTrack, format:".concat(String.valueOf(paramMediaFormat)));
       if (paramMediaFormat.containsKey("mime"))
       {
         localObject = paramMediaFormat.getString("mime");
@@ -106,7 +106,7 @@ public final class TAVKitMuxer
           this.videoId = 1;
         }
         i = this.videoId;
-        AppMethodBeat.o(195777);
+        AppMethodBeat.o(191234);
         return i;
       }
       this.audioFormat = paramMediaFormat;
@@ -114,7 +114,7 @@ public final class TAVKitMuxer
         this.audioId = 2;
       }
       i = this.audioId;
-      AppMethodBeat.o(195777);
+      AppMethodBeat.o(191234);
       return i;
     }
     
@@ -125,42 +125,42 @@ public final class TAVKitMuxer
     
     public final void release()
     {
-      AppMethodBeat.i(195776);
+      AppMethodBeat.i(191233);
       SightVideoJNI.releaseRecorderBufferRefLock("clear");
       SightVideoJNI.releaseBigSightDataBufferLock(this.bufId);
-      AppMethodBeat.o(195776);
+      AppMethodBeat.o(191233);
     }
     
     public final void setExportConfig(ExportConfig paramExportConfig)
     {
-      AppMethodBeat.i(195772);
+      AppMethodBeat.i(191229);
       p.h(paramExportConfig, "exportConfig");
       this.exportConfig = paramExportConfig;
-      AppMethodBeat.o(195772);
+      AppMethodBeat.o(191229);
     }
     
     public final void start()
     {
-      AppMethodBeat.i(195771);
-      TAVKitMuxer localTAVKitMuxer = TAVKitMuxer.BGg;
-      ad.i(TAVKitMuxer.erZ(), "start");
-      AppMethodBeat.o(195771);
+      AppMethodBeat.i(191228);
+      TAVKitMuxer localTAVKitMuxer = TAVKitMuxer.BXE;
+      ae.i(TAVKitMuxer.evG(), "start");
+      AppMethodBeat.o(191228);
     }
     
     public final void stop()
     {
-      AppMethodBeat.i(195773);
-      Object localObject = TAVKitMuxer.BGg;
-      ad.i(TAVKitMuxer.erZ(), "stop, duration:" + this.duration + "，frameCount:" + this.videoFrameCount);
-      localObject = TAVKitMuxer.BGg;
-      ad.i(TAVKitMuxer.erZ(), "stop videoFormat:" + this.videoFormat);
-      localObject = TAVKitMuxer.BGg;
-      ad.i(TAVKitMuxer.erZ(), "stop audioFormat:" + this.audioFormat);
+      AppMethodBeat.i(191230);
+      Object localObject = TAVKitMuxer.BXE;
+      ae.i(TAVKitMuxer.evG(), "stop, duration:" + this.duration + "，frameCount:" + this.videoFrameCount);
+      localObject = TAVKitMuxer.BXE;
+      ae.i(TAVKitMuxer.evG(), "stop videoFormat:" + this.videoFormat);
+      localObject = TAVKitMuxer.BXE;
+      ae.i(TAVKitMuxer.evG(), "stop audioFormat:" + this.audioFormat);
       if (this.duration <= 0)
       {
-        localObject = TAVKitMuxer.BGg;
-        ad.e(TAVKitMuxer.erZ(), "error duration is 0");
-        AppMethodBeat.o(195773);
+        localObject = TAVKitMuxer.BXE;
+        ae.e(TAVKitMuxer.evG(), "error duration is 0");
+        AppMethodBeat.o(191230);
         return;
       }
       this.audioSampleRate = getMediaFormatInt(this.audioFormat, "sample-rate", 0);
@@ -168,10 +168,10 @@ public final class TAVKitMuxer
       this.videoFps = getMediaFormatInt(this.videoFormat, "frame-rate", 0);
       this.videoBitrate = getMediaFormatInt(this.videoFormat, "bitrate", 0);
       int i = this.videoFrameCount * 1000 / this.duration;
-      localObject = TAVKitMuxer.BGg;
-      ad.i(TAVKitMuxer.erZ(), "audioSampleRate:" + this.audioSampleRate + ", audioChannelCount:" + this.audioChannelCount + ", videoFps:" + this.videoFps + ", videoBitrate:" + this.videoBitrate + ", duration:" + this.duration + ", countFps:" + i);
-      localObject = TAVKitMuxer.BGg;
-      String str = TAVKitMuxer.erZ();
+      localObject = TAVKitMuxer.BXE;
+      ae.i(TAVKitMuxer.evG(), "audioSampleRate:" + this.audioSampleRate + ", audioChannelCount:" + this.audioChannelCount + ", videoFps:" + this.videoFps + ", videoBitrate:" + this.videoBitrate + ", duration:" + this.duration + ", countFps:" + i);
+      localObject = TAVKitMuxer.BXE;
+      String str = TAVKitMuxer.evG();
       StringBuilder localStringBuilder = new StringBuilder("exportConfig: audioSampleRate:");
       localObject = this.exportConfig;
       if (localObject != null)
@@ -191,7 +191,7 @@ public final class TAVKitMuxer
         }
         localObject = Integer.valueOf(((ExportConfig)localObject).getVideoBitRate());
         label386:
-        ad.i(str, localObject);
+        ae.i(str, localObject);
         if (this.videoFps <= 0) {
           this.videoFps = i;
         }
@@ -237,10 +237,10 @@ public final class TAVKitMuxer
       label627:
       for (boolean bool = true;; bool = false)
       {
-        i = SightVideoJNI.muxingLock(this.bufId, null, this.audioSampleRate, 1024, 2, this.audioChannelCount, 0L, this.path, this.videoFps, Math.max(1000, this.duration), this.videoBitrate, c.yQZ, 8, 2, 23.0F, null, 0, false, bool, false, false, b.af(false, false));
-        localObject = TAVKitMuxer.BGg;
-        ad.i(TAVKitMuxer.erZ(), "stop ret:".concat(String.valueOf(i)));
-        AppMethodBeat.o(195773);
+        i = SightVideoJNI.muxingLock(this.bufId, null, this.audioSampleRate, 1024, 2, this.audioChannelCount, 0L, this.path, this.videoFps, Math.max(1000, this.duration), this.videoBitrate, c.zhj, 8, 2, 23.0F, null, 0, false, bool, false, false, b.ae(false, false));
+        localObject = TAVKitMuxer.BXE;
+        ae.i(TAVKitMuxer.evG(), "stop ret:".concat(String.valueOf(i)));
+        AppMethodBeat.o(191230);
         return;
         localObject = null;
         break;
@@ -259,7 +259,7 @@ public final class TAVKitMuxer
     
     public final void writeSampleData(int paramInt, ByteBuffer paramByteBuffer, MediaCodec.BufferInfo paramBufferInfo)
     {
-      AppMethodBeat.i(195774);
+      AppMethodBeat.i(191231);
       p.h(paramByteBuffer, "byteBuffer");
       p.h(paramBufferInfo, "bufferInfo");
       boolean bool;
@@ -267,8 +267,8 @@ public final class TAVKitMuxer
       if (paramInt == this.videoId)
       {
         bool = true;
-        localObject = TAVKitMuxer.BGg;
-        ad.i(TAVKitMuxer.erZ(), "writeSampleData, trackId:" + paramInt + ", isVideo:" + bool + ", pts:" + paramBufferInfo.presentationTimeUs);
+        localObject = TAVKitMuxer.BXE;
+        ae.i(TAVKitMuxer.evG(), "writeSampleData, trackId:" + paramInt + ", isVideo:" + bool + ", pts:" + paramBufferInfo.presentationTimeUs);
         if (paramInt != this.videoId) {
           break label156;
         }
@@ -278,11 +278,11 @@ public final class TAVKitMuxer
       label279:
       for (;;)
       {
-        paramInt = d.h.a.co((float)paramBufferInfo.presentationTimeUs / 1000.0F);
+        paramInt = d.h.a.cm((float)paramBufferInfo.presentationTimeUs / 1000.0F);
         if (paramInt > this.duration) {
           this.duration = paramInt;
         }
-        AppMethodBeat.o(195774);
+        AppMethodBeat.o(191231);
         return;
         bool = false;
         break;
@@ -300,7 +300,7 @@ public final class TAVKitMuxer
               {
                 localObject = this.audioFormat;
                 if (localObject == null) {
-                  p.gfZ();
+                  p.gkB();
                 }
                 paramInt = ((MediaFormat)localObject).getInteger("aac-profile");
                 if (this.audioFormat == null) {
@@ -312,9 +312,9 @@ public final class TAVKitMuxer
                 }
                 localObject = this.audioFormat;
                 if (localObject == null) {
-                  p.gfZ();
+                  p.gkB();
                 }
-                i = com.tencent.mm.plugin.mmsight.model.a.Kk(((MediaFormat)localObject).getInteger("sample-rate"));
+                i = com.tencent.mm.plugin.mmsight.model.a.KK(((MediaFormat)localObject).getInteger("sample-rate"));
                 if (this.audioFormat == null) {
                   break label366;
                 }
@@ -324,7 +324,7 @@ public final class TAVKitMuxer
                 }
                 localObject = this.audioFormat;
                 if (localObject == null) {
-                  p.gfZ();
+                  p.gkB();
                 }
               }
             }
@@ -346,16 +346,16 @@ public final class TAVKitMuxer
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/vlog/model/TAVKitMuxer$SightVideoJNIMediaMuxerFactory;", "Lcom/tencent/tav/decoder/muxer/MediaMuxerFactory$MediaMuxerCreator;", "()V", "createMediaMuxer", "Lcom/tencent/tav/decoder/muxer/IMediaMuxer;", "path", "", "format", "", "plugin-vlog_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/vlog/model/TAVKitMuxer$SightVideoJNIMediaMuxerFactory;", "Lcom/tencent/tav/decoder/muxer/MediaMuxerFactory$MediaMuxerCreator;", "()V", "createMediaMuxer", "Lcom/tencent/tav/decoder/muxer/IMediaMuxer;", "path", "", "format", "", "plugin-vlog_release"})
   static final class SightVideoJNIMediaMuxerFactory
     implements MediaMuxerFactory.MediaMuxerCreator
   {
     public final IMediaMuxer createMediaMuxer(String paramString, int paramInt)
     {
-      AppMethodBeat.i(195779);
+      AppMethodBeat.i(191236);
       p.h(paramString, "path");
       paramString = (IMediaMuxer)new TAVKitMuxer.SightVideoJNIMediaMuxer(paramString, paramInt);
-      AppMethodBeat.o(195779);
+      AppMethodBeat.o(191236);
       return paramString;
     }
   }

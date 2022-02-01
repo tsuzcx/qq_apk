@@ -3,16 +3,16 @@ package com.tencent.mm.plugin.finder.feed;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/feed/FinderSnsPostUIContract;", "", "()V", "Presenter", "ViewCallback", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/feed/FinderSnsPostUIContract;", "", "()V", "Presenter", "ViewCallback", "plugin-finder_release"})
 public final class aa
 {
-  public static final aa rXS;
+  public static final aa sgD;
   
   static
   {
-    AppMethodBeat.i(202043);
-    rXS = new aa();
-    AppMethodBeat.o(202043);
+    AppMethodBeat.i(202507);
+    sgD = new aa();
+    AppMethodBeat.o(202507);
   }
 }
 

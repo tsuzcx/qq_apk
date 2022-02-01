@@ -6,12 +6,12 @@ import d.g.b.p;
 import d.l;
 import d.z;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"ipcInvoke", "", "InputType", "Landroid/os/Parcelable;", "ResultType", "targetProcessName", "", "request", "process", "Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;", "callback", "Lkotlin/Function1;", "(Ljava/lang/String;Landroid/os/Parcelable;Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;Lkotlin/jvm/functions/Function1;)V", "ipcinvoker_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"ipcInvoke", "", "InputType", "Landroid/os/Parcelable;", "ResultType", "targetProcessName", "", "request", "process", "Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;", "callback", "Lkotlin/Function1;", "(Ljava/lang/String;Landroid/os/Parcelable;Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;Lkotlin/jvm/functions/Function1;)V", "ipcinvoker_release"})
 public final class a
 {
   public static final <InputType extends Parcelable, ResultType extends Parcelable> void a(String paramString, InputType paramInputType, b<InputType, ResultType> paramb, d.g.a.b<? super ResultType, z> paramb1)
   {
-    AppMethodBeat.i(186705);
+    AppMethodBeat.i(197954);
     p.h(paramString, "targetProcessName");
     p.h(paramb, "process");
     Class localClass = paramb.getClass();
@@ -19,12 +19,12 @@ public final class a
     for (paramb = null;; paramb = (d)new a(paramb1))
     {
       h.a(paramString, paramInputType, localClass, paramb);
-      AppMethodBeat.o(186705);
+      AppMethodBeat.o(197954);
       return;
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "InputType", "Landroid/os/Parcelable;", "ResultType", "data", "kotlin.jvm.PlatformType", "onCallback", "(Landroid/os/Parcelable;)V"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "InputType", "Landroid/os/Parcelable;", "ResultType", "data", "kotlin.jvm.PlatformType", "onCallback", "(Landroid/os/Parcelable;)V"})
   static final class a<T>
     implements d<ResultType>
   {

@@ -20,22 +20,22 @@ public final class j
   extends a
 {
   public int actionType;
-  public m kjY;
-  public CharSequence rBK;
-  public String rBN;
-  public CharSequence tBs;
-  public String tBt;
-  public d tBu;
-  private b tBv;
-  a tBw;
+  public m kno;
+  public CharSequence rJV;
+  public String rJY;
+  public CharSequence tMj;
+  public String tMk;
+  public d tMl;
+  private b tMm;
+  a tMn;
   
   public j(int paramInt)
   {
     super(3, paramInt);
     AppMethodBeat.i(112087);
     this.actionType = -1;
-    this.tBv = new b();
-    this.tBw = new a();
+    this.tMm = new b();
+    this.tMn = new a();
     AppMethodBeat.o(112087);
   }
   
@@ -44,19 +44,19 @@ public final class j
     boolean bool2 = true;
     AppMethodBeat.i(112088);
     super.a(paramContext, parama, paramVarArgs);
-    this.tBu = ((d)this.kjY.userData);
-    if (this.tBu == null)
+    this.tMl = ((d)this.kno.userData);
+    if (this.tMl == null)
     {
       AppMethodBeat.o(112088);
       return;
     }
-    this.rBK = this.tBu.field_title;
-    this.tBs = this.tBu.field_tag;
-    this.rBN = this.tBu.field_iconPath;
-    this.tBt = this.tBu.field_androidUrl;
-    this.actionType = this.tBu.field_actionType;
+    this.rJV = this.tMl.field_title;
+    this.tMj = this.tMl.field_tag;
+    this.rJY = this.tMl.field_iconPath;
+    this.tMk = this.tMl.field_androidUrl;
+    this.actionType = this.tMl.field_actionType;
     boolean bool1;
-    switch (this.kjY.tug)
+    switch (this.kno.tEX)
     {
     default: 
       AppMethodBeat.o(112088);
@@ -66,10 +66,10 @@ public final class j
     }
     for (;;)
     {
-      this.rBK = com.tencent.mm.plugin.fts.a.f.a(e.a(this.rBK, this.tun, bool2, bool1)).tuE;
+      this.rJV = com.tencent.mm.plugin.fts.a.f.a(e.a(this.rJV, this.tFe, bool2, bool1)).tFv;
       AppMethodBeat.o(112088);
       return;
-      this.tBs = com.tencent.mm.plugin.fts.a.f.a(e.a(this.tBs, this.tun)).tuE;
+      this.tMj = com.tencent.mm.plugin.fts.a.f.a(e.a(this.tMj, this.tFe)).tFv;
       break;
       bool1 = false;
       continue;
@@ -78,28 +78,28 @@ public final class j
     }
   }
   
-  public final a.b agC()
+  public final a.b agQ()
   {
-    return this.tBv;
+    return this.tMm;
   }
   
-  public final String bgV()
+  public final String bhD()
   {
-    return this.tBu.field_title;
+    return this.tMl.field_title;
   }
   
-  public final int bgW()
+  public final int bhE()
   {
-    return this.kjY.tvx;
+    return this.kno.tGo;
   }
   
   public final class a
     extends a.a
   {
     public View contentView;
-    public ImageView fOf;
-    public TextView iCV;
-    public TextView iVq;
+    public ImageView fQl;
+    public TextView iFO;
+    public TextView iYj;
     
     public a()
     {
@@ -119,10 +119,10 @@ public final class j
     {
       AppMethodBeat.i(112084);
       paramContext = LayoutInflater.from(paramContext).inflate(2131494192, paramViewGroup, false);
-      paramViewGroup = (j.a)j.this.tBw;
-      paramViewGroup.fOf = ((ImageView)paramContext.findViewById(2131297008));
-      paramViewGroup.iVq = ((TextView)paramContext.findViewById(2131305948));
-      paramViewGroup.iCV = ((TextView)paramContext.findViewById(2131299008));
+      paramViewGroup = (j.a)j.this.tMn;
+      paramViewGroup.fQl = ((ImageView)paramContext.findViewById(2131297008));
+      paramViewGroup.iYj = ((TextView)paramContext.findViewById(2131305948));
+      paramViewGroup.iFO = ((TextView)paramContext.findViewById(2131299008));
       paramViewGroup.contentView = paramContext.findViewById(2131304428);
       paramContext.setTag(paramViewGroup);
       AppMethodBeat.o(112084);
@@ -134,17 +134,17 @@ public final class j
       AppMethodBeat.i(112085);
       parama = (j.a)parama;
       parama1 = (j)parama1;
-      com.tencent.mm.plugin.fts.ui.n.q(parama.contentView, j.this.tvU);
-      com.tencent.mm.plugin.fts.ui.n.a(j.this.rBK, parama.iVq);
-      com.tencent.mm.plugin.fts.ui.n.a(j.this.tBs, parama.iCV);
-      com.tencent.mm.plugin.fts.ui.n.a(paramContext, parama.fOf, null, parama1.rBN, 2131690253, true);
+      com.tencent.mm.plugin.fts.ui.n.q(parama.contentView, j.this.tGL);
+      com.tencent.mm.plugin.fts.ui.n.a(j.this.rJV, parama.iYj);
+      com.tencent.mm.plugin.fts.ui.n.a(j.this.tMj, parama.iFO);
+      com.tencent.mm.plugin.fts.ui.n.a(paramContext, parama.fQl, null, parama1.rJY, 2131690253, true);
       AppMethodBeat.o(112085);
     }
     
     public final boolean a(Context paramContext, a paramVarArgs)
     {
       AppMethodBeat.i(112086);
-      boolean bool = ((com.tencent.mm.plugin.fts.a.n)g.ad(com.tencent.mm.plugin.fts.a.n.class)).getItemClickHandler(j.this.oIb).a(paramContext, paramVarArgs);
+      boolean bool = ((com.tencent.mm.plugin.fts.a.n)g.ad(com.tencent.mm.plugin.fts.a.n.class)).getItemClickHandler(j.this.oOD).a(paramContext, paramVarArgs);
       AppMethodBeat.o(112086);
       return bool;
     }

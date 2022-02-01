@@ -1,79 +1,97 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.LinkedList;
 
 public final class aat
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public String FxE;
-  public int Gan;
-  public int status;
+  public LinkedList<aas> FNS;
+  public long Gsf;
+  public long Gsg;
+  
+  public aat()
+  {
+    AppMethodBeat.i(184493);
+    this.FNS = new LinkedList();
+    AppMethodBeat.o(184493);
+  }
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(90961);
+    AppMethodBeat.i(184494);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aS(1, this.Gan);
-      if (this.FxE != null) {
-        paramVarArgs.d(2, this.FxE);
-      }
-      paramVarArgs.aS(3, this.status);
-      AppMethodBeat.o(90961);
+      paramVarArgs.aZ(1, this.Gsf);
+      paramVarArgs.aZ(2, this.Gsg);
+      paramVarArgs.e(3, 8, this.FNS);
+      AppMethodBeat.o(184494);
       return 0;
     }
+    int i;
     if (paramInt == 1)
     {
-      int i = f.a.a.b.b.a.bz(1, this.Gan) + 0;
-      paramInt = i;
-      if (this.FxE != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.FxE);
-      }
-      i = f.a.a.b.b.a.bz(3, this.status);
-      AppMethodBeat.o(90961);
-      return paramInt + i;
+      paramInt = f.a.a.b.b.a.p(1, this.Gsf);
+      i = f.a.a.b.b.a.p(2, this.Gsg);
+      int j = f.a.a.a.c(3, 8, this.FNS);
+      AppMethodBeat.o(184494);
+      return paramInt + 0 + i + j;
     }
     if (paramInt == 2)
     {
-      paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+      paramVarArgs = (byte[])paramVarArgs[0];
+      this.FNS.clear();
+      paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gxE();
+          paramVarArgs.gCg();
         }
       }
-      AppMethodBeat.o(90961);
+      AppMethodBeat.o(184494);
       return 0;
     }
     if (paramInt == 3)
     {
-      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+      Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
       aat localaat = (aat)paramVarArgs[1];
-      switch (((Integer)paramVarArgs[2]).intValue())
+      paramInt = ((Integer)paramVarArgs[2]).intValue();
+      switch (paramInt)
       {
       default: 
-        AppMethodBeat.o(90961);
+        AppMethodBeat.o(184494);
         return -1;
       case 1: 
-        localaat.Gan = locala.NPN.zc();
-        AppMethodBeat.o(90961);
+        localaat.Gsf = ((f.a.a.a.a)localObject1).OmT.zd();
+        AppMethodBeat.o(184494);
         return 0;
       case 2: 
-        localaat.FxE = locala.NPN.readString();
-        AppMethodBeat.o(90961);
+        localaat.Gsg = ((f.a.a.a.a)localObject1).OmT.zd();
+        AppMethodBeat.o(184494);
         return 0;
       }
-      localaat.status = locala.NPN.zc();
-      AppMethodBeat.o(90961);
+      paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
+      i = paramVarArgs.size();
+      paramInt = 0;
+      while (paramInt < i)
+      {
+        Object localObject2 = (byte[])paramVarArgs.get(paramInt);
+        localObject1 = new aas();
+        localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
+        for (boolean bool = true; bool; bool = ((aas)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+        localaat.FNS.add(localObject1);
+        paramInt += 1;
+      }
+      AppMethodBeat.o(184494);
       return 0;
     }
-    AppMethodBeat.o(90961);
+    AppMethodBeat.o(184494);
     return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.aat
  * JD-Core Version:    0.7.0.1
  */

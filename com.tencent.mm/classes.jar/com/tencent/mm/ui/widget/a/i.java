@@ -30,39 +30,39 @@ public final class i
   public i(Context paramContext)
   {
     super(paramContext, 2131820861);
-    AppMethodBeat.i(192632);
+    AppMethodBeat.i(200397);
     this.mContext = paramContext;
     gK();
-    AppMethodBeat.o(192632);
+    AppMethodBeat.o(200397);
   }
   
-  private boolean aol()
+  private boolean aoA()
   {
-    AppMethodBeat.i(192639);
+    AppMethodBeat.i(200404);
     if (this.mContext.getResources().getConfiguration().orientation == 2)
     {
-      AppMethodBeat.o(192639);
+      AppMethodBeat.o(200404);
       return true;
     }
-    AppMethodBeat.o(192639);
+    AppMethodBeat.o(200404);
     return false;
   }
   
   private View b(int paramInt, View paramView, ViewGroup.LayoutParams paramLayoutParams)
   {
-    AppMethodBeat.i(192637);
+    AppMethodBeat.i(200402);
     Object localObject1 = getWindow();
     Object localObject2;
     label71:
     ViewGroup localViewGroup;
     View localView;
-    if (aol())
+    if (aoA())
     {
       ((Window)localObject1).setGravity(1);
       ((Window)localObject1).setWindowAnimations(2131820790);
       ((Window)localObject1).getDecorView().setPadding(0, 0, 0, 0);
       localObject2 = ((Window)localObject1).getAttributes();
-      if (!aol()) {
+      if (!aoA()) {
         break label228;
       }
       ((WindowManager.LayoutParams)localObject2).width = -2;
@@ -78,15 +78,15 @@ public final class i
           localObject1 = getLayoutInflater().inflate(paramInt, localViewGroup, false);
         }
       }
-      if (!ar.jR(this.mContext)) {
+      if (!ar.jY(this.mContext)) {
         break label303;
       }
     }
     label168:
     label303:
-    for (paramInt = ar.ej(this.mContext);; paramInt = 0)
+    for (paramInt = ar.en(this.mContext);; paramInt = 0)
     {
-      if (aol())
+      if (aoA())
       {
         paramView = (FrameLayout)localViewGroup.findViewById(2131308358);
         paramView.setVisibility(0);
@@ -97,24 +97,24 @@ public final class i
       }
       for (;;)
       {
-        if (eUt()) {
+        if (eYg()) {
           localView.setOnClickListener(new View.OnClickListener()
           {
             public final void onClick(View paramAnonymousView)
             {
-              AppMethodBeat.i(192631);
+              AppMethodBeat.i(200396);
               b localb = new b();
               localb.bd(paramAnonymousView);
-              a.b("com/tencent/mm/ui/widget/dialog/NewBottomSheetDialog$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+              a.b("com/tencent/mm/ui/widget/dialog/NewBottomSheetDialog$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
               if (i.this.isShowing()) {
                 i.this.cancel();
               }
               a.a(this, "com/tencent/mm/ui/widget/dialog/NewBottomSheetDialog$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-              AppMethodBeat.o(192631);
+              AppMethodBeat.o(200396);
             }
           });
         }
-        AppMethodBeat.o(192637);
+        AppMethodBeat.o(200402);
         return localViewGroup;
         ((Window)localObject1).setGravity(80);
         ((Window)localObject1).setWindowAnimations(2131820790);
@@ -138,12 +138,12 @@ public final class i
     }
   }
   
-  private boolean eUt()
+  private boolean eYg()
   {
-    AppMethodBeat.i(192638);
+    AppMethodBeat.i(200403);
     if (Build.VERSION.SDK_INT < 11)
     {
-      AppMethodBeat.o(192638);
+      AppMethodBeat.o(200403);
       return true;
     }
     TypedValue localTypedValue = new TypedValue();
@@ -151,43 +151,43 @@ public final class i
     {
       if (localTypedValue.data != 0)
       {
-        AppMethodBeat.o(192638);
+        AppMethodBeat.o(200403);
         return true;
       }
-      AppMethodBeat.o(192638);
+      AppMethodBeat.o(200403);
       return false;
     }
-    AppMethodBeat.o(192638);
+    AppMethodBeat.o(200403);
     return false;
   }
   
   public final void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(192636);
+    AppMethodBeat.i(200401);
     super.onCreate(paramBundle);
     getWindow().setLayout(-1, -1);
-    AppMethodBeat.o(192636);
+    AppMethodBeat.o(200401);
   }
   
   public final void setContentView(int paramInt)
   {
-    AppMethodBeat.i(192635);
+    AppMethodBeat.i(200400);
     super.setContentView(b(paramInt, null, null));
-    AppMethodBeat.o(192635);
+    AppMethodBeat.o(200400);
   }
   
   public final void setContentView(View paramView)
   {
-    AppMethodBeat.i(192633);
+    AppMethodBeat.i(200398);
     super.setContentView(b(0, paramView, null));
-    AppMethodBeat.o(192633);
+    AppMethodBeat.o(200398);
   }
   
   public final void setContentView(View paramView, ViewGroup.LayoutParams paramLayoutParams)
   {
-    AppMethodBeat.i(192634);
+    AppMethodBeat.i(200399);
     super.setContentView(b(0, paramView, paramLayoutParams));
-    AppMethodBeat.o(192634);
+    AppMethodBeat.o(200399);
   }
 }
 

@@ -14,8 +14,8 @@ import com.tencent.mm.game.report.api.GameWebPerformanceInfo;
 import com.tencent.mm.plugin.downloader.model.DownloadChecker;
 import com.tencent.mm.plugin.game.luggage.c;
 import com.tencent.mm.plugin.wepkg.d;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.xweb.WebResourceRequest;
 import com.tencent.xweb.WebResourceResponse;
 import com.tencent.xweb.WebView;
@@ -31,20 +31,20 @@ public class f
 {
   private static final Object lock;
   private String mTitle;
-  String tTn;
-  protected d tVd;
-  private boolean tVe;
-  Map<String, String> tVf;
-  private String tVg;
-  private boolean tVh;
-  private boolean tVi;
-  private boolean tVj;
-  private boolean tVk;
-  private boolean tVl;
-  private GameWebPerformanceInfo tVm;
-  private boolean tVn;
-  private Object tVo;
-  private Runnable tVp;
+  String uee;
+  protected d ufZ;
+  private boolean uga;
+  Map<String, String> ugb;
+  private String ugc;
+  private boolean ugd;
+  private boolean uge;
+  private boolean ugf;
+  private boolean ugg;
+  private boolean ugh;
+  private GameWebPerformanceInfo ugi;
+  private boolean ugj;
+  private Object ugk;
+  private Runnable ugl;
   
   static
   {
@@ -57,15 +57,15 @@ public class f
   {
     super(paramContext);
     AppMethodBeat.i(83155);
-    this.tVe = false;
-    this.tVh = false;
-    this.tVi = false;
-    this.tVj = false;
-    this.tVk = false;
-    this.tVl = false;
-    this.tVn = false;
-    this.tVo = new Object();
-    this.tVp = new Runnable()
+    this.uga = false;
+    this.ugd = false;
+    this.uge = false;
+    this.ugf = false;
+    this.ugg = false;
+    this.ugh = false;
+    this.ugj = false;
+    this.ugk = new Object();
+    this.ugl = new Runnable()
     {
       public final void run()
       {
@@ -74,9 +74,9 @@ public class f
         {
           if (f.this.getSettings().getBlockNetworkImage())
           {
-            ad.i("MicroMsg.GameWebCoreImpl", "setBlockNetworkImage time out");
+            ae.i("MicroMsg.GameWebCoreImpl", "setBlockNetworkImage time out");
             f.this.getSettings().setBlockNetworkImage(false);
-            com.tencent.mm.plugin.report.service.g.yhR.n(949L, 0L, 1L);
+            com.tencent.mm.plugin.report.service.g.yxI.n(949L, 0L, 1L);
           }
           AppMethodBeat.o(83134);
           return;
@@ -84,24 +84,24 @@ public class f
       }
     };
     getSettings().setForceDarkBehavior(1);
-    this.tVd = new d();
-    ad.i("MicroMsg.GameWebCoreImpl", "create, hashCode: %d", new Object[] { Integer.valueOf(hashCode()) });
+    this.ufZ = new d();
+    ae.i("MicroMsg.GameWebCoreImpl", "create, hashCode: %d", new Object[] { Integer.valueOf(hashCode()) });
     AppMethodBeat.o(83155);
   }
   
-  private void cXs()
+  private void dac()
   {
     AppMethodBeat.i(83161);
-    if ((this.tVj) && (this.tVk)) {
-      postDelayed(this.tVp, 3000L);
+    if ((this.ugf) && (this.ugg)) {
+      postDelayed(this.ugl, 3000L);
     }
     AppMethodBeat.o(83161);
   }
   
-  public void Ck()
+  public void Cn()
   {
     AppMethodBeat.i(83159);
-    super.Ck();
+    super.Cn();
     getWebCore().chR.a(new c(this));
     AppMethodBeat.o(83159);
   }
@@ -114,24 +114,24 @@ public class f
     {
       public final void run()
       {
-        AppMethodBeat.i(211673);
+        AppMethodBeat.i(193068);
         f.this.init();
-        AppMethodBeat.o(211673);
+        AppMethodBeat.o(193068);
       }
     });
     AppMethodBeat.o(83158);
   }
   
-  public final boolean alw(String paramString)
+  public final boolean amu(String paramString)
   {
     AppMethodBeat.i(83168);
-    ad.d("MicroMsg.GameWebCoreImpl", "isWebCacheUrl, hasLoadWePkg: %b", new Object[] { Boolean.valueOf(this.tVe) });
-    if (!this.tVe)
+    ae.d("MicroMsg.GameWebCoreImpl", "isWebCacheUrl, hasLoadWePkg: %b", new Object[] { Boolean.valueOf(this.uga) });
+    if (!this.uga)
     {
-      this.tVd.k(paramString, true, false);
-      this.tVe = true;
+      this.ufZ.k(paramString, true, false);
+      this.uga = true;
     }
-    boolean bool = this.tVd.aKu(paramString);
+    boolean bool = this.ufZ.aLQ(paramString);
     AppMethodBeat.o(83168);
     return bool;
   }
@@ -139,21 +139,21 @@ public class f
   protected void b(WebView arg1, String paramString)
   {
     AppMethodBeat.i(83163);
-    ad.i("MicroMsg.GameWebCoreImpl", "onPageFinished, blockImg: %b", new Object[] { Boolean.valueOf(this.tVi) });
-    if (this.tVm.gsB == 0L)
+    ae.i("MicroMsg.GameWebCoreImpl", "onPageFinished, blockImg: %b", new Object[] { Boolean.valueOf(this.uge) });
+    if (this.ugi.gvc == 0L)
     {
-      this.tVm.gsB = System.currentTimeMillis();
-      ad.i("MicroMsg.GameWebCoreImpl", "onPageFinished, url: %s, time: %d", new Object[] { paramString, Long.valueOf(this.tVm.gsB) });
+      this.ugi.gvc = System.currentTimeMillis();
+      ae.i("MicroMsg.GameWebCoreImpl", "onPageFinished, url: %s, time: %d", new Object[] { paramString, Long.valueOf(this.ugi.gvc) });
     }
-    if (com.tencent.mm.plugin.webview.ui.tools.game.g.aJd(this.tVg).Ejs == 0L) {
-      com.tencent.mm.plugin.webview.ui.tools.game.g.aJd(this.tVg).Ejs = System.currentTimeMillis();
+    if (com.tencent.mm.plugin.webview.ui.tools.game.g.aKw(this.ugc).EBw == 0L) {
+      com.tencent.mm.plugin.webview.ui.tools.game.g.aKw(this.ugc).EBw = System.currentTimeMillis();
     }
     synchronized (lock)
     {
-      getSettings().setBlockNetworkImage(this.tVi);
-      this.tVh = true;
-      if (this.tVm.gsy == 0L) {
-        this.tVm.gsy = System.currentTimeMillis();
+      getSettings().setBlockNetworkImage(this.uge);
+      this.ugd = true;
+      if (this.ugi.guZ == 0L) {
+        this.ugi.guZ = System.currentTimeMillis();
       }
       AppMethodBeat.o(83163);
       return;
@@ -163,15 +163,15 @@ public class f
   protected void b(WebView paramWebView, String paramString, Bitmap paramBitmap)
   {
     AppMethodBeat.i(83162);
-    this.tVj = true;
-    cXs();
-    if (this.tVm.gsA == 0L)
+    this.ugf = true;
+    dac();
+    if (this.ugi.gvb == 0L)
     {
-      this.tVm.gsA = System.currentTimeMillis();
-      ad.i("MicroMsg.GameWebCoreImpl", "onPageStarted, url: %s, time: %d", new Object[] { paramString, Long.valueOf(this.tVm.gsA) });
+      this.ugi.gvb = System.currentTimeMillis();
+      ae.i("MicroMsg.GameWebCoreImpl", "onPageStarted, url: %s, time: %d", new Object[] { paramString, Long.valueOf(this.ugi.gvb) });
     }
-    if (com.tencent.mm.plugin.webview.ui.tools.game.g.aJd(this.tVg).Ejr == 0L) {
-      com.tencent.mm.plugin.webview.ui.tools.game.g.aJd(this.tVg).Ejr = System.currentTimeMillis();
+    if (com.tencent.mm.plugin.webview.ui.tools.game.g.aKw(this.ugc).EBv == 0L) {
+      com.tencent.mm.plugin.webview.ui.tools.game.g.aKw(this.ugc).EBv = System.currentTimeMillis();
     }
     AppMethodBeat.o(83162);
   }
@@ -179,7 +179,7 @@ public class f
   public void destroy()
   {
     AppMethodBeat.i(83165);
-    this.tVd.vz(this.tVl);
+    this.ufZ.vI(this.ugh);
     super.destroy();
     AppMethodBeat.o(83165);
   }
@@ -191,7 +191,7 @@ public class f
   
   public d getWePkgPlugin()
   {
-    return this.tVd;
+    return this.ufZ;
   }
   
   protected final void init()
@@ -205,51 +205,51 @@ public class f
   
   public void loadDataWithBaseURL(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
   {
-    AppMethodBeat.i(211675);
-    if (this.tVm == null)
+    AppMethodBeat.i(193070);
+    if (this.ugi == null)
     {
-      this.tVm = GameWebPerformanceInfo.wg(paramString1);
-      this.tVm.gsz = System.currentTimeMillis();
+      this.ugi = GameWebPerformanceInfo.wP(paramString1);
+      this.ugi.gva = System.currentTimeMillis();
     }
-    ad.d("MicroMsg.GameWebCoreImpl", "loadDataWithBaseURL, hasLoadWePkg: %b", new Object[] { Boolean.valueOf(this.tVe) });
-    if (!this.tVe)
+    ae.d("MicroMsg.GameWebCoreImpl", "loadDataWithBaseURL, hasLoadWePkg: %b", new Object[] { Boolean.valueOf(this.uga) });
+    if (!this.uga)
     {
-      this.tVd.k(paramString1, true, true);
-      this.tVe = true;
+      this.ufZ.k(paramString1, true, true);
+      this.uga = true;
     }
     super.loadDataWithBaseURL(paramString1, paramString2, paramString3, paramString4, paramString5);
-    AppMethodBeat.o(211675);
+    AppMethodBeat.o(193070);
   }
   
   public void loadUrl(String paramString)
   {
     AppMethodBeat.i(83166);
-    ad.i("MicroMsg.GameWebCoreImpl", "loadUrl, __Time__, time : %d, hashCode: %d", new Object[] { Long.valueOf(System.currentTimeMillis()), Integer.valueOf(hashCode()) });
-    if (this.tVm == null)
+    ae.i("MicroMsg.GameWebCoreImpl", "loadUrl, __Time__, time : %d, hashCode: %d", new Object[] { Long.valueOf(System.currentTimeMillis()), Integer.valueOf(hashCode()) });
+    if (this.ugi == null)
     {
-      this.tVm = GameWebPerformanceInfo.wg(this.tVg);
-      this.tVm.gsz = System.currentTimeMillis();
+      this.ugi = GameWebPerformanceInfo.wP(this.ugc);
+      this.ugi.gva = System.currentTimeMillis();
     }
-    ad.d("MicroMsg.GameWebCoreImpl", "loadUrl, hasLoadWePkg: %b", new Object[] { Boolean.valueOf(this.tVe) });
-    if (!this.tVe)
+    ae.d("MicroMsg.GameWebCoreImpl", "loadUrl, hasLoadWePkg: %b", new Object[] { Boolean.valueOf(this.uga) });
+    if (!this.uga)
     {
-      this.tVd.k(paramString, true, false);
-      this.tVe = true;
+      this.ufZ.k(paramString, true, false);
+      this.uga = true;
     }
-    String str = this.tVd.eXD();
-    ad.i("MicroMsg.GameWebCoreImpl", "loadUrl:%s", new Object[] { paramString });
-    if (bt.isNullOrNil(str)) {}
+    String str = this.ufZ.fbp();
+    ae.i("MicroMsg.GameWebCoreImpl", "loadUrl:%s", new Object[] { paramString });
+    if (bu.isNullOrNil(str)) {}
     try
     {
-      com.tencent.mm.game.report.api.a.gsb.a(5, URLEncoder.encode(paramString), "0", 0L);
+      com.tencent.mm.game.report.api.a.guC.a(5, URLEncoder.encode(paramString), "0", 0L);
       label156:
       super.loadUrl(paramString);
       AppMethodBeat.o(83166);
       return;
-      ad.d("MicroMsg.GameWebCoreImpl", "use PageCache:%s", new Object[] { str });
+      ae.d("MicroMsg.GameWebCoreImpl", "use PageCache:%s", new Object[] { str });
       try
       {
-        com.tencent.mm.game.report.api.a.gsb.a(5, URLEncoder.encode(paramString), "1", 0L);
+        com.tencent.mm.game.report.api.a.guC.a(5, URLEncoder.encode(paramString), "1", 0L);
         label199:
         super.loadDataWithBaseURL(paramString, str, "text/html", "utf-8", null);
         AppMethodBeat.o(83166);
@@ -269,29 +269,29 @@ public class f
   public void loadUrl(String paramString, Map<String, String> paramMap)
   {
     AppMethodBeat.i(83167);
-    ad.i("MicroMsg.GameWebCoreImpl", "loadUrl, __Time__, time: %d， HEADER", new Object[] { Long.valueOf(System.currentTimeMillis()) });
-    if (this.tVm == null)
+    ae.i("MicroMsg.GameWebCoreImpl", "loadUrl, __Time__, time: %d， HEADER", new Object[] { Long.valueOf(System.currentTimeMillis()) });
+    if (this.ugi == null)
     {
-      this.tVm = GameWebPerformanceInfo.wg(this.tVg);
-      this.tVm.gsz = System.currentTimeMillis();
+      this.ugi = GameWebPerformanceInfo.wP(this.ugc);
+      this.ugi.gva = System.currentTimeMillis();
     }
-    ad.d("MicroMsg.GameWebCoreImpl", "loadUrl, hasLoadWePkg: %b", new Object[] { Boolean.valueOf(this.tVe) });
-    if (!this.tVe)
+    ae.d("MicroMsg.GameWebCoreImpl", "loadUrl, hasLoadWePkg: %b", new Object[] { Boolean.valueOf(this.uga) });
+    if (!this.uga)
     {
-      this.tVd.k(paramString, true, false);
-      this.tVe = true;
+      this.ufZ.k(paramString, true, false);
+      this.uga = true;
     }
-    String str = this.tVd.eXD();
-    ad.i("MicroMsg.GameWebCoreImpl", "loadUrl:%s", new Object[] { paramString });
-    if (bt.isNullOrNil(str))
+    String str = this.ufZ.fbp();
+    ae.i("MicroMsg.GameWebCoreImpl", "loadUrl:%s", new Object[] { paramString });
+    if (bu.isNullOrNil(str))
     {
-      com.tencent.mm.game.report.api.a.gsb.a(5, URLEncoder.encode(paramString), "0", 0L);
+      com.tencent.mm.game.report.api.a.guC.a(5, URLEncoder.encode(paramString), "0", 0L);
       super.loadUrl(paramString, paramMap);
       AppMethodBeat.o(83167);
       return;
     }
-    ad.d("MicroMsg.GameWebCoreImpl", "use PageCache:%s", new Object[] { str });
-    com.tencent.mm.game.report.api.a.gsb.a(5, URLEncoder.encode(paramString), "1", 0L);
+    ae.d("MicroMsg.GameWebCoreImpl", "use PageCache:%s", new Object[] { str });
+    com.tencent.mm.game.report.api.a.guC.a(5, URLEncoder.encode(paramString), "1", 0L);
     super.loadDataWithBaseURL(paramString, str, "text/html", "utf-8", null);
     AppMethodBeat.o(83167);
   }
@@ -300,9 +300,9 @@ public class f
   {
     AppMethodBeat.i(83156);
     super.onAttachedToWindow();
-    ad.i("MicroMsg.GameWebCoreImpl", "onAttachedToWindow, hashCode: %d", new Object[] { Integer.valueOf(hashCode()) });
-    this.tVk = true;
-    cXs();
+    ae.i("MicroMsg.GameWebCoreImpl", "onAttachedToWindow, hashCode: %d", new Object[] { Integer.valueOf(hashCode()) });
+    this.ugg = true;
+    dac();
     AppMethodBeat.o(83156);
   }
   
@@ -310,17 +310,17 @@ public class f
   {
     AppMethodBeat.i(83157);
     super.onDetachedFromWindow();
-    ad.i("MicroMsg.GameWebCoreImpl", "onDetachedFromWindow, hashCode: %d", new Object[] { Integer.valueOf(hashCode()) });
-    removeCallbacks(this.tVp);
+    ae.i("MicroMsg.GameWebCoreImpl", "onDetachedFromWindow, hashCode: %d", new Object[] { Integer.valueOf(hashCode()) });
+    removeCallbacks(this.ugl);
     AppMethodBeat.o(83157);
   }
   
   public void setBlockNetworkImage(boolean paramBoolean)
   {
     AppMethodBeat.i(83164);
-    ad.i("MicroMsg.GameWebCoreImpl", "setBlockNetworkImage, blockImg: %b", new Object[] { Boolean.valueOf(paramBoolean) });
-    this.tVi = paramBoolean;
-    if (this.tVh) {
+    ae.i("MicroMsg.GameWebCoreImpl", "setBlockNetworkImage, blockImg: %b", new Object[] { Boolean.valueOf(paramBoolean) });
+    this.uge = paramBoolean;
+    if (this.ugd) {
       synchronized (lock)
       {
         getSettings().setBlockNetworkImage(paramBoolean);
@@ -333,12 +333,12 @@ public class f
   
   public void setRawUrl(String paramString)
   {
-    this.tVg = paramString;
+    this.ugc = paramString;
   }
   
   public void setShouldCleanPkgWhenDestroy(boolean paramBoolean)
   {
-    this.tVl = paramBoolean;
+    this.ugh = paramBoolean;
   }
   
   public final class a
@@ -349,8 +349,8 @@ public class f
     public final void d(WebView paramWebView, String paramString)
     {
       AppMethodBeat.i(83143);
-      ad.i("MicroMsg.GameWebCoreImpl", "onReceivedTitle, title = %s", new Object[] { paramString });
-      if (!com.tencent.mm.plugin.webview.luggage.c.b.UV(paramString)) {
+      ae.i("MicroMsg.GameWebCoreImpl", "onReceivedTitle, title = %s", new Object[] { paramString });
+      if (!com.tencent.mm.plugin.webview.luggage.c.b.VG(paramString)) {
         f.a(f.this, paramString);
       }
       super.d(paramWebView, paramString);
@@ -360,22 +360,22 @@ public class f
     public final boolean onConsoleMessage(ConsoleMessage paramConsoleMessage)
     {
       AppMethodBeat.i(83144);
-      if (f.this.tVd != null) {
-        f.this.tVd.a(paramConsoleMessage);
+      if (f.this.ufZ != null) {
+        f.this.ufZ.a(paramConsoleMessage);
       }
       if (paramConsoleMessage != null) {}
       for (final String str = paramConsoleMessage.message();; str = "")
       {
-        h.LTJ.aR(new Runnable()
+        h.MqF.aO(new Runnable()
         {
           public final void run()
           {
-            AppMethodBeat.i(211674);
+            AppMethodBeat.i(193069);
             if ((str.contains("luggage_err")) || (str.contains("luggageBridge is not defined")))
             {
-              ad.i("MicroMsg.GameWebCoreImpl", "luggage bridge error");
-              f.b(f.this).gsK = str;
-              AppMethodBeat.o(211674);
+              ae.i("MicroMsg.GameWebCoreImpl", "luggage bridge error");
+              f.b(f.this).gvl = str;
+              AppMethodBeat.o(193069);
               return;
             }
             Object localObject;
@@ -389,12 +389,12 @@ public class f
             try
             {
               long l = new JSONObject((String)localObject).optDouble("startTime", 0.0D);
-              com.tencent.mm.plugin.webview.ui.tools.game.g.bJ(f.c(f.this), l);
+              com.tencent.mm.plugin.webview.ui.tools.game.g.bK(f.c(f.this), l);
               for (;;)
               {
                 label128:
-                ad.i("MicroMsg.GameWebCoreImpl", str);
-                AppMethodBeat.o(211674);
+                ae.i("MicroMsg.GameWebCoreImpl", str);
+                AppMethodBeat.o(193069);
                 return;
                 label143:
                 if (str.contains("timing"))
@@ -405,16 +405,16 @@ public class f
                     localObject = new JSONObject((String)localObject).optJSONObject("timing");
                     if (localObject != null)
                     {
-                      com.tencent.mm.plugin.webview.ui.tools.game.g localg = com.tencent.mm.plugin.webview.ui.tools.game.g.aJe(f.c(f.this));
+                      com.tencent.mm.plugin.webview.ui.tools.game.g localg = com.tencent.mm.plugin.webview.ui.tools.game.g.aKx(f.c(f.this));
                       if (localg != null)
                       {
-                        localg.Ejz = (((JSONObject)localObject).optLong("domainLookupEnd") - ((JSONObject)localObject).optLong("domainLookupStart"));
-                        localg.EjA = (((JSONObject)localObject).optLong("connectEnd") - ((JSONObject)localObject).optLong("connectStart"));
-                        localg.mxj = (((JSONObject)localObject).optLong("responseEnd") - ((JSONObject)localObject).optLong("requestStart"));
-                        localg.EjB = (((JSONObject)localObject).optLong("domInteractive") - ((JSONObject)localObject).optLong("domLoading"));
-                        localg.EjD = (((JSONObject)localObject).optLong("domContentLoadedEventEnd") - ((JSONObject)localObject).optLong("responseEnd"));
-                        localg.EjE = (((JSONObject)localObject).optLong("domComplete") - ((JSONObject)localObject).optLong("responseEnd"));
-                        localg.EjF = ((JSONObject)localObject).optLong("navigationStart");
+                        localg.EBD = (((JSONObject)localObject).optLong("domainLookupEnd") - ((JSONObject)localObject).optLong("domainLookupStart"));
+                        localg.EBE = (((JSONObject)localObject).optLong("connectEnd") - ((JSONObject)localObject).optLong("connectStart"));
+                        localg.mCg = (((JSONObject)localObject).optLong("responseEnd") - ((JSONObject)localObject).optLong("requestStart"));
+                        localg.EBF = (((JSONObject)localObject).optLong("domInteractive") - ((JSONObject)localObject).optLong("domLoading"));
+                        localg.EBH = (((JSONObject)localObject).optLong("domContentLoadedEventEnd") - ((JSONObject)localObject).optLong("responseEnd"));
+                        localg.EBI = (((JSONObject)localObject).optLong("domComplete") - ((JSONObject)localObject).optLong("responseEnd"));
+                        localg.EBJ = ((JSONObject)localObject).optLong("navigationStart");
                       }
                     }
                   }
@@ -443,17 +443,17 @@ public class f
     public final WebResourceResponse a(WebView paramWebView, WebResourceRequest paramWebResourceRequest)
     {
       AppMethodBeat.i(83150);
-      ad.i("MicroMsg.GameWebCoreImpl", "shouldInterceptRequest, url: %s", new Object[] { paramWebResourceRequest.getUrl().toString() });
+      ae.i("MicroMsg.GameWebCoreImpl", "shouldInterceptRequest, url: %s", new Object[] { paramWebResourceRequest.getUrl().toString() });
       if (paramWebResourceRequest.getUrl().toString().equals("https://game.weixin.qq.com/favicon.ico"))
       {
         paramWebView = new WebResourceResponse("img/png", null, null);
         AppMethodBeat.o(83150);
         return paramWebView;
       }
-      WebResourceResponse localWebResourceResponse = f.this.tVd.o(paramWebView, paramWebResourceRequest.getUrl().toString());
+      WebResourceResponse localWebResourceResponse = f.this.ufZ.p(paramWebView, paramWebResourceRequest.getUrl().toString());
       if (localWebResourceResponse != null)
       {
-        ad.i("MicroMsg.GameWebCoreImpl", "shouldInterceptRequest response != null");
+        ae.i("MicroMsg.GameWebCoreImpl", "shouldInterceptRequest response != null");
         AppMethodBeat.o(83150);
         return localWebResourceResponse;
       }
@@ -465,17 +465,17 @@ public class f
     public final WebResourceResponse a(WebView paramWebView, WebResourceRequest paramWebResourceRequest, Bundle paramBundle)
     {
       AppMethodBeat.i(83151);
-      ad.i("MicroMsg.GameWebCoreImpl", "shouldInterceptRequest, url: %s", new Object[] { paramWebResourceRequest.getUrl().toString() });
+      ae.i("MicroMsg.GameWebCoreImpl", "shouldInterceptRequest, url: %s", new Object[] { paramWebResourceRequest.getUrl().toString() });
       if (paramWebResourceRequest.getUrl().toString().equals("https://game.weixin.qq.com/favicon.ico"))
       {
         paramWebView = new WebResourceResponse("img/png", null, null);
         AppMethodBeat.o(83151);
         return paramWebView;
       }
-      WebResourceResponse localWebResourceResponse = f.this.tVd.o(paramWebView, paramWebResourceRequest.getUrl().toString());
+      WebResourceResponse localWebResourceResponse = f.this.ufZ.p(paramWebView, paramWebResourceRequest.getUrl().toString());
       if (localWebResourceResponse != null)
       {
-        ad.i("MicroMsg.GameWebCoreImpl", "shouldInterceptRequest response != null");
+        ae.i("MicroMsg.GameWebCoreImpl", "shouldInterceptRequest response != null");
         AppMethodBeat.o(83151);
         return localWebResourceResponse;
       }
@@ -488,8 +488,8 @@ public class f
     {
       AppMethodBeat.i(83152);
       super.a(paramWebView, paramInt, paramString1, paramString2);
-      ad.e("MicroMsg.GameWebCoreImpl", "onReceivedError, desc: %s, url: %s", new Object[] { paramString1, paramString2 });
-      com.tencent.mm.plugin.report.service.g.yhR.n(949L, 1L, 1L);
+      ae.e("MicroMsg.GameWebCoreImpl", "onReceivedError, desc: %s, url: %s", new Object[] { paramString1, paramString2 });
+      com.tencent.mm.plugin.report.service.g.yxI.n(949L, 1L, 1L);
       AppMethodBeat.o(83152);
     }
     
@@ -497,8 +497,8 @@ public class f
     {
       AppMethodBeat.i(83154);
       super.a(paramWebView, paramWebResourceRequest, paramWebResourceResponse);
-      ad.e("MicroMsg.GameWebCoreImpl", "onReceivedHttpError， errorCode: %d", new Object[] { Integer.valueOf(paramWebResourceResponse.mStatusCode) });
-      com.tencent.mm.plugin.report.service.g.yhR.n(949L, 3L, 1L);
+      ae.e("MicroMsg.GameWebCoreImpl", "onReceivedHttpError， errorCode: %d", new Object[] { Integer.valueOf(paramWebResourceResponse.mStatusCode) });
+      com.tencent.mm.plugin.report.service.g.yxI.n(949L, 3L, 1L);
       AppMethodBeat.o(83154);
     }
     
@@ -506,18 +506,18 @@ public class f
     {
       AppMethodBeat.i(83153);
       super.a(paramWebView, paramr, paramSslError);
-      ad.e("MicroMsg.GameWebCoreImpl", "onReceivedSslError， error: ".concat(String.valueOf(paramSslError)));
-      com.tencent.mm.plugin.report.service.g.yhR.n(949L, 2L, 1L);
+      ae.e("MicroMsg.GameWebCoreImpl", "onReceivedSslError， error: ".concat(String.valueOf(paramSslError)));
+      com.tencent.mm.plugin.report.service.g.yxI.n(949L, 2L, 1L);
       AppMethodBeat.o(83153);
     }
     
     public final boolean a(WebView paramWebView, String paramString)
     {
       AppMethodBeat.i(83148);
-      ad.i("MicroMsg.GameWebCoreImpl", "shouldOverrideUrlLoading, url: %s", new Object[] { paramString });
+      ae.i("MicroMsg.GameWebCoreImpl", "shouldOverrideUrlLoading, url: %s", new Object[] { paramString });
       if (DownloadChecker.a(paramString, f.a(f.this), paramWebView))
       {
-        ad.i("MicroMsg.GameWebCoreImpl", "use the downloader to download");
+        ae.i("MicroMsg.GameWebCoreImpl", "use the downloader to download");
         AppMethodBeat.o(83148);
         return true;
       }
@@ -529,8 +529,8 @@ public class f
     public final void b(WebView paramWebView, String paramString)
     {
       AppMethodBeat.i(83146);
-      ad.i("MicroMsg.GameWebCoreImpl", "onPageFinished, __Time__, time: %d", new Object[] { Long.valueOf(System.currentTimeMillis()) });
-      f.this.tVd.n(paramWebView, paramString);
+      ae.i("MicroMsg.GameWebCoreImpl", "onPageFinished, __Time__, time: %d", new Object[] { Long.valueOf(System.currentTimeMillis()) });
+      f.this.ufZ.o(paramWebView, paramString);
       super.b(paramWebView, paramString);
       f.this.b(paramWebView, paramString);
       AppMethodBeat.o(83146);
@@ -539,8 +539,8 @@ public class f
     public final void b(WebView paramWebView, String paramString, Bitmap paramBitmap)
     {
       AppMethodBeat.i(83145);
-      ad.i("MicroMsg.GameWebCoreImpl", "onPageStarted, __Time__, time: %d", new Object[] { Long.valueOf(System.currentTimeMillis()) });
-      f.this.tVd.aKt(paramString);
+      ae.i("MicroMsg.GameWebCoreImpl", "onPageStarted, __Time__, time: %d", new Object[] { Long.valueOf(System.currentTimeMillis()) });
+      f.this.ufZ.aLP(paramString);
       super.b(paramWebView, paramString, paramBitmap);
       f.this.b(paramWebView, paramString, paramBitmap);
       AppMethodBeat.o(83145);
@@ -549,17 +549,17 @@ public class f
     public final WebResourceResponse c(WebView paramWebView, String paramString)
     {
       AppMethodBeat.i(83149);
-      ad.i("MicroMsg.GameWebCoreImpl", "shouldInterceptRequest, url: %s", new Object[] { paramString });
+      ae.i("MicroMsg.GameWebCoreImpl", "shouldInterceptRequest, url: %s", new Object[] { paramString });
       if (paramString.equals("https://game.weixin.qq.com/favicon.ico"))
       {
         paramWebView = new WebResourceResponse("img/png", null, null);
         AppMethodBeat.o(83149);
         return paramWebView;
       }
-      WebResourceResponse localWebResourceResponse = f.this.tVd.o(paramWebView, paramString);
+      WebResourceResponse localWebResourceResponse = f.this.ufZ.p(paramWebView, paramString);
       if (localWebResourceResponse != null)
       {
-        ad.i("MicroMsg.GameWebCoreImpl", "shouldInterceptRequest response != null");
+        ae.i("MicroMsg.GameWebCoreImpl", "shouldInterceptRequest response != null");
         AppMethodBeat.o(83149);
         return localWebResourceResponse;
       }
@@ -572,7 +572,7 @@ public class f
     {
       AppMethodBeat.i(83147);
       super.h(paramWebView, paramString);
-      ad.i("MicroMsg.GameWebCoreImpl", "onLoadResource, url: %s", new Object[] { paramString });
+      ae.i("MicroMsg.GameWebCoreImpl", "onLoadResource, url: %s", new Object[] { paramString });
       AppMethodBeat.o(83147);
     }
   }

@@ -5,16 +5,16 @@ import com.tencent.mm.wallet_core.c.l.a;
 public abstract class a<InputType>
   implements l.a<InputType>
 {
-  public void dIY() {}
+  public void dMp() {}
   
-  public final int dIZ()
+  public final int dMq()
   {
     return 1149;
   }
   
-  public void dJa() {}
+  public void dMr() {}
   
-  public final void dJb() {}
+  public final void dMs() {}
 }
 
 

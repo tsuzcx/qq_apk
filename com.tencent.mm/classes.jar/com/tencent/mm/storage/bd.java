@@ -1,195 +1,201 @@
 package com.tencent.mm.storage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.qo;
-import com.tencent.mm.kernel.a;
-import com.tencent.mm.plugin.emoji.b.d;
-import com.tencent.mm.sdk.e.k.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.emotion.EmojiGroupInfo;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.bx;
 import com.tencent.mm.storage.emotion.EmojiInfo;
-import com.tencent.mm.storage.emotion.b;
-import com.tencent.mm.storage.emotion.f;
-import com.tencent.mm.storage.emotion.k;
-import com.tencent.mm.storage.emotion.o;
-import com.tencent.mm.storage.emotion.q;
-import com.tencent.mm.storage.emotion.s;
-import com.tencent.mm.storage.emotion.t;
-import com.tencent.mm.storage.emotion.u;
-import com.tencent.mm.storage.emotion.w;
-import com.tencent.mm.storagebase.h;
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Map;
 
 public final class bd
 {
-  public static boolean ILC;
-  private static ArrayList<EmojiGroupInfo> ILD;
-  private static HashMap<String, ArrayList<EmojiInfo>> ILE;
-  private static bd ILJ;
-  public static int dOP;
-  private com.tencent.mm.storage.emotion.g ILA;
-  public com.tencent.mm.emoji.a.i ILB;
-  public final k.a ILF;
-  public final k.a ILG;
-  public final k.a ILH;
-  public final com.tencent.mm.sdk.b.c ILI;
-  public f ILn;
-  public com.tencent.mm.storage.emotion.c ILo;
-  public com.tencent.mm.storage.emotion.e ILp;
-  public s ILq;
-  public com.tencent.mm.storage.emotion.m ILr;
-  public o ILs;
-  public k ILt;
-  public q ILu;
-  public t ILv;
-  public u ILw;
-  public com.tencent.mm.storage.emotion.i ILx;
-  public w ILy;
-  private b ILz;
+  public int JfJ;
+  public int JfK;
+  public int JfL;
+  public int JfM;
+  public String JfN = "";
+  public String JfO;
+  public String JfP;
+  public String JfQ;
+  public boolean JfR = true;
+  public String JfS;
+  public String JfT;
+  public String aeskey;
+  public long createTime;
+  public long dCd;
+  public String dpp;
+  public String dtB;
+  public int eNc;
+  public String eNd = "";
+  public String gKg;
+  public String gmF;
+  public String hCI;
+  public String hCO;
+  public int height;
+  public int iAg;
+  public String id;
+  public String iwS;
+  public String md5;
+  public String pWT;
+  public String talker;
+  public String thumbUrl;
+  public int width;
   
-  static
+  public static bd H(EmojiInfo paramEmojiInfo)
   {
-    AppMethodBeat.i(104977);
-    ILC = false;
-    ILD = new ArrayList();
-    ILE = new HashMap();
-    dOP = -1;
-    AppMethodBeat.o(104977);
+    AppMethodBeat.i(104962);
+    if (paramEmojiInfo == null)
+    {
+      ae.i("MicroMsg.emoji.EmojiMsgInfo", "parserEmojiInfo failed. emojiinfo is null.");
+      AppMethodBeat.o(104962);
+      return null;
+    }
+    bd localbd = new bd();
+    localbd.md5 = paramEmojiInfo.field_md5;
+    localbd.JfJ = paramEmojiInfo.field_type;
+    localbd.JfK = paramEmojiInfo.field_size;
+    localbd.dpp = paramEmojiInfo.field_groupId;
+    localbd.JfO = paramEmojiInfo.field_designerID;
+    localbd.thumbUrl = paramEmojiInfo.field_thumbUrl;
+    localbd.dtB = paramEmojiInfo.field_encrypturl;
+    localbd.aeskey = paramEmojiInfo.field_aeskey;
+    localbd.width = paramEmojiInfo.field_width;
+    localbd.height = paramEmojiInfo.field_height;
+    localbd.gKg = paramEmojiInfo.field_cdnUrl;
+    localbd.JfP = paramEmojiInfo.field_externUrl;
+    localbd.JfQ = paramEmojiInfo.field_externMd5;
+    localbd.JfS = paramEmojiInfo.field_activityid;
+    localbd.hCI = paramEmojiInfo.field_tpurl;
+    localbd.hCO = paramEmojiInfo.field_tpauthkey;
+    localbd.gmF = paramEmojiInfo.field_attachedText;
+    localbd.pWT = paramEmojiInfo.field_lensId;
+    localbd.JfT = paramEmojiInfo.field_attachTextColor;
+    AppMethodBeat.o(104962);
+    return localbd;
   }
   
-  private bd()
+  public static bd a(Map<String, String> paramMap, String paramString1, String paramString2, String paramString3)
   {
-    AppMethodBeat.i(104971);
-    this.ILF = new k.a()
+    AppMethodBeat.i(104965);
+    if (paramMap == null)
     {
-      public final void a(String paramAnonymousString, com.tencent.mm.sdk.e.m paramAnonymousm)
-      {
-        AppMethodBeat.i(104966);
-        if ((!bt.isNullOrNil(paramAnonymousString)) && (paramAnonymousString.equals("event_update_group")))
-        {
-          ad.d("MicroMsg.emoji.EmojiStorageMgr", "onNotifyChange event:%s", new Object[] { (String)paramAnonymousm.obj });
-          if (!com.tencent.mm.kernel.g.ajA().aiK())
-          {
-            AppMethodBeat.o(104966);
-            return;
-          }
-          ((d)com.tencent.mm.kernel.g.ad(d.class)).getEmojiDescMgr().fqZ();
-        }
-        if ((!bt.isNullOrNil(paramAnonymousString)) && ((paramAnonymousString.equals("event_update_group")) || (paramAnonymousString.equalsIgnoreCase("productID"))))
-        {
-          ad.d("MicroMsg.emoji.EmojiStorageMgr", "modify emoji gorup .");
-          bd.ILC = true;
-          bd.a(bd.this).dn(true);
-        }
-        AppMethodBeat.o(104966);
-      }
-    };
-    this.ILG = new k.a()
-    {
-      public final void a(String paramAnonymousString, com.tencent.mm.sdk.e.m paramAnonymousm)
-      {
-        AppMethodBeat.i(104967);
-        ((d)com.tencent.mm.kernel.g.ad(d.class)).getEmojiDescMgr().fqZ();
-        AppMethodBeat.o(104967);
-      }
-    };
-    this.ILH = new k.a()
-    {
-      public final void a(String paramAnonymousString, com.tencent.mm.sdk.e.m paramAnonymousm)
-      {
-        AppMethodBeat.i(104968);
-        if (paramAnonymousString == null)
-        {
-          AppMethodBeat.o(104968);
-          return;
-        }
-        bd.a(bd.this).dl(true);
-        bd.a(bd.this).dm(true);
-        bd.a(bd.this).jdMethod_do(true);
-        AppMethodBeat.o(104968);
-      }
-    };
-    this.ILI = new com.tencent.mm.sdk.b.c() {};
-    ad.i("MicroMsg.emoji.EmojiStorageMgr", "EmojiStorageMgr: %s", new Object[] { bt.flS() });
-    AppMethodBeat.o(104971);
-  }
-  
-  public static bd frc()
-  {
+      AppMethodBeat.o(104965);
+      return null;
+    }
+    bd localbd = new bd();
+    localbd.JfN = paramString2;
+    localbd.talker = paramString1;
+    localbd.id = ((String)paramMap.get(".msg.emoji.$idbuffer"));
+    localbd.iwS = ((String)paramMap.get(".msg.emoji.$fromusername"));
+    paramString1 = (String)paramMap.get(".msg.emoji.$androidmd5");
+    localbd.md5 = paramString1;
+    if (paramString1 == null) {
+      localbd.md5 = ((String)paramMap.get(".msg.emoji.$md5"));
+    }
+    if (!bu.isNullOrNil(localbd.md5)) {
+      localbd.md5 = localbd.md5.toLowerCase();
+    }
     try
     {
-      AppMethodBeat.i(104970);
-      if (ILJ == null)
+      localbd.JfJ = Integer.valueOf((String)paramMap.get(".msg.emoji.$type")).intValue();
+      if (paramMap.get(".msg.emoji.$androidlen") != null) {
+        localbd.JfK = Integer.valueOf((String)paramMap.get(".msg.emoji.$androidlen")).intValue();
+      }
+      for (;;)
       {
-        localbd = new bd();
-        ILJ = localbd;
-        ad.i("MicroMsg.emoji.EmojiStorageMgr", "checkInitStorage: ");
-        if (localbd.ILn == null) {
-          localbd.frd();
+        if (paramMap.get(".msg.gameext.$type") != null) {
+          localbd.JfL = Integer.valueOf((String)paramMap.get(".msg.gameext.$type")).intValue();
+        }
+        if (paramMap.get(".msg.gameext.$content") != null) {
+          localbd.JfM = Integer.valueOf((String)paramMap.get(".msg.gameext.$content")).intValue();
+        }
+        if (paramMap.get(".msg.emoji.$productid") != null) {
+          localbd.dpp = ((String)paramMap.get(".msg.emoji.$productid"));
+        }
+        if (paramMap.get(".msg.emoji.$cdnurl") != null) {
+          localbd.gKg = ((String)paramMap.get(".msg.emoji.$cdnurl"));
+        }
+        if (paramMap.get(".msg.emoji.$tpurl") != null) {
+          localbd.hCI = ((String)paramMap.get(".msg.emoji.$tpurl"));
+        }
+        if (paramMap.get(".msg.emoji.$tpauthkey") != null) {
+          localbd.hCO = ((String)paramMap.get(".msg.emoji.$tpauthkey"));
+        }
+        if (paramMap.get(".msg.emoji.$designerid") != null) {
+          localbd.JfO = ((String)paramMap.get(".msg.emoji.$designerid"));
+        }
+        if (paramMap.get(".msg.emoji.$thumburl") != null) {
+          localbd.thumbUrl = ((String)paramMap.get(".msg.emoji.$thumburl"));
+        }
+        if (paramMap.get(".msg.emoji.$encrypturl") != null) {
+          localbd.dtB = ((String)paramMap.get(".msg.emoji.$encrypturl"));
+        }
+        if (paramMap.get(".msg.emoji.$aeskey") != null) {
+          localbd.aeskey = ((String)paramMap.get(".msg.emoji.$aeskey"));
+        }
+        if (paramMap.get(".msg.emoji.$width") != null) {
+          localbd.width = Integer.valueOf((String)paramMap.get(".msg.emoji.$width")).intValue();
+        }
+        if (paramMap.get(".msg.emoji.$height") != null) {
+          localbd.height = Integer.valueOf((String)paramMap.get(".msg.emoji.$height")).intValue();
+        }
+        if (paramMap.get(".msg.emoji.$externurl") != null) {
+          localbd.JfP = ((String)paramMap.get(".msg.emoji.$externurl"));
+        }
+        if (paramMap.get(".msg.emoji.$externmd5") != null) {
+          localbd.JfQ = ((String)paramMap.get(".msg.emoji.$externmd5"));
+        }
+        if (paramMap.get(".msg.emoji.$activityid") != null) {
+          localbd.JfS = ((String)paramMap.get(".msg.emoji.$activityid"));
+        }
+        if (paramMap.get(".msg.emoji.$attachedtext") != null) {
+          localbd.gmF = ((String)paramMap.get(".msg.emoji.$attachedtext"));
+        }
+        if (paramMap.get(".msg.emoji.$attachedtextcolor") != null) {
+          localbd.JfT = ((String)paramMap.get(".msg.emoji.$attachedtextcolor"));
+        }
+        if (paramMap.get(".msg.emoji.$lensid") != null) {
+          localbd.pWT = ((String)paramMap.get(".msg.emoji.$lensid"));
+        }
+        if (!bu.isNullOrNil(paramString3)) {
+          localbd.eNd = paramString3;
+        }
+        ae.d("MicroMsg.emoji.EmojiMsgInfo", "parserEmojiXml id:%s  md5:%s  type:%d  len:%d  gameType:%d  gameContent:%d  productId:%s  cdnUrl:%s tpUrl:%s designerid:%s thumburl:%s encryptrul:%s width:%d height:%d externUrl:%s externMd5:%s", new Object[] { localbd.id, localbd.md5, Integer.valueOf(localbd.JfJ), Integer.valueOf(localbd.JfK), Integer.valueOf(localbd.JfL), Integer.valueOf(localbd.JfM), localbd.dpp, localbd.gKg, localbd.hCI, localbd.JfO, localbd.thumbUrl, localbd.dtB, Integer.valueOf(localbd.width), Integer.valueOf(localbd.height), localbd.JfP, localbd.JfQ });
+        AppMethodBeat.o(104965);
+        return localbd;
+        if (paramMap.get(".msg.emoji.$len") != null) {
+          localbd.JfK = Integer.valueOf((String)paramMap.get(".msg.emoji.$len")).intValue();
         }
       }
-      bd localbd = ILJ;
-      AppMethodBeat.o(104970);
-      return localbd;
+      return null;
     }
-    finally {}
-  }
-  
-  public final f bIW()
-  {
-    return this.ILn;
-  }
-  
-  public final void frd()
-  {
-    AppMethodBeat.i(104972);
-    ad.i("MicroMsg.emoji.EmojiStorageMgr", "initStorage: ");
-    if ((com.tencent.mm.kernel.g.ajC().gBq == null) || (!com.tencent.mm.kernel.g.ajC().gBq.isOpen())) {
-      ad.w("MicroMsg.emoji.EmojiStorageMgr", "initStorage: db close %s", new Object[] { com.tencent.mm.kernel.g.ajC().gBq });
+    catch (Exception paramMap)
+    {
+      ae.e("MicroMsg.emoji.EmojiMsgInfo", "exception:%s", new Object[] { bu.o(paramMap) });
+      AppMethodBeat.o(104965);
     }
-    this.ILn = new f(com.tencent.mm.kernel.g.ajC().gBq);
-    this.ILo = new com.tencent.mm.storage.emotion.c(com.tencent.mm.kernel.g.ajC().gBq);
-    this.ILp = new com.tencent.mm.storage.emotion.e(com.tencent.mm.kernel.g.ajC().gBq);
-    this.ILr = new com.tencent.mm.storage.emotion.m(com.tencent.mm.kernel.g.ajC().gBq);
-    this.ILs = new o(com.tencent.mm.kernel.g.ajC().gBq);
-    this.ILt = new k(com.tencent.mm.kernel.g.ajC().gBq);
-    this.ILq = new s(com.tencent.mm.kernel.g.ajC().gBq);
-    this.ILu = new q(com.tencent.mm.kernel.g.ajC().gBq);
-    this.ILv = new t(com.tencent.mm.kernel.g.ajC().gBq);
-    this.ILw = new u(com.tencent.mm.kernel.g.ajC().gBq);
-    this.ILx = new com.tencent.mm.storage.emotion.i(com.tencent.mm.kernel.g.ajC().gBq);
-    this.ILy = new w();
-    this.ILz = new b(com.tencent.mm.kernel.g.ajC().gBq);
-    this.ILA = new com.tencent.mm.storage.emotion.g(com.tencent.mm.kernel.g.ajC().gBq);
-    this.ILB = com.tencent.mm.emoji.a.i.aeL();
-    AppMethodBeat.o(104972);
   }
   
-  public final com.tencent.mm.storage.emotion.m fre()
+  public static bd e(Map<String, String> paramMap, String paramString1, String paramString2)
   {
-    return this.ILr;
+    AppMethodBeat.i(104964);
+    paramMap = a(paramMap, paramString1, paramString2, "");
+    AppMethodBeat.o(104964);
+    return paramMap;
   }
   
-  public final s frf()
+  public static bd mg(String paramString1, String paramString2)
   {
-    return this.ILq;
-  }
-  
-  public final b frg()
-  {
-    return this.ILz;
-  }
-  
-  public final com.tencent.mm.storage.emotion.g frh()
-  {
-    return this.ILA;
+    AppMethodBeat.i(104963);
+    ae.d("MicroMsg.emoji.EmojiMsgInfo", "parserEmojiXml ".concat(String.valueOf(paramString2)));
+    paramString1 = e(bx.M(paramString2, "msg"), paramString1, paramString2);
+    AppMethodBeat.o(104963);
+    return paramString1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.storage.bd
  * JD-Core Version:    0.7.0.1
  */

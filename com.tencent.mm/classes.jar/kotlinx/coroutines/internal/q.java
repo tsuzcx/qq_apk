@@ -3,22 +3,22 @@ package kotlinx.coroutines.internal;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/coroutines/internal/Removed;", "", "ref", "Lkotlinx/coroutines/internal/LockFreeLinkedListNode;", "Lkotlinx/coroutines/internal/Node;", "(Lkotlinx/coroutines/internal/LockFreeLinkedListNode;)V", "toString", "", "kotlinx-coroutines-core"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/coroutines/internal/Removed;", "", "ref", "Lkotlinx/coroutines/internal/LockFreeLinkedListNode;", "Lkotlinx/coroutines/internal/Node;", "(Lkotlinx/coroutines/internal/LockFreeLinkedListNode;)V", "toString", "", "kotlinx-coroutines-core"})
 final class q
 {
-  public final j NKa;
+  public final j Ohg;
   
   public q(j paramj)
   {
     AppMethodBeat.i(118077);
-    this.NKa = paramj;
+    this.Ohg = paramj;
     AppMethodBeat.o(118077);
   }
   
   public final String toString()
   {
     AppMethodBeat.i(118076);
-    String str = "Removed[" + this.NKa + ']';
+    String str = "Removed[" + this.Ohg + ']';
     AppMethodBeat.o(118076);
     return str;
   }

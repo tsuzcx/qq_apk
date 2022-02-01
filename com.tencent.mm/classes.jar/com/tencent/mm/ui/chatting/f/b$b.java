@@ -5,11 +5,11 @@ import com.tencent.mm.ui.chatting.view.a;
 public abstract interface b$b
   extends a<b.a>
 {
-  public abstract void B(boolean paramBoolean, int paramInt);
+  public abstract void C(boolean paramBoolean, int paramInt);
   
-  public abstract void cS(String paramString, boolean paramBoolean);
+  public abstract void cW(String paramString, boolean paramBoolean);
   
-  public abstract void fFI();
+  public abstract void fJP();
   
   public abstract void onFinish();
 }

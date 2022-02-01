@@ -6,8 +6,8 @@ import com.tencent.mm.sdk.b.b;
 public final class gm
   extends b
 {
-  public a dso;
-  public b dsp;
+  public a dtp;
+  public b dtq;
   
   public gm()
   {
@@ -16,23 +16,23 @@ public final class gm
   
   private gm(byte paramByte)
   {
-    AppMethodBeat.i(155367);
-    this.dso = new a();
-    this.dsp = new b();
-    this.IbR = false;
+    AppMethodBeat.i(155366);
+    this.dtp = new a();
+    this.dtq = new b();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(155367);
+    AppMethodBeat.o(155366);
   }
   
   public static final class a
   {
-    public String dsl;
-    public String dsm;
+    public String dtr;
+    public String dtt;
   }
   
   public static final class b
   {
-    public String dsq;
+    public boolean dtu = true;
   }
 }
 

@@ -2,10 +2,10 @@ package com.tencent.mm.plugin.webview.ui.tools.game;
 
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.id;
+import com.tencent.mm.g.a.ie;
 import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.Iterator;
 import java.util.Set;
 import java.util.regex.Matcher;
@@ -15,56 +15,56 @@ import org.json.JSONObject;
 
 public class c
 {
-  private long EiE;
-  Bundle EiF;
-  public a EiG;
+  private long EAI;
+  Bundle EAJ;
+  public a EAK;
   long mStartTime;
-  long ull;
-  long ulm;
+  long uwI;
+  long uwJ;
   
   public c()
   {
     AppMethodBeat.i(80856);
-    this.EiE = 0L;
-    this.ull = 0L;
+    this.EAI = 0L;
+    this.uwI = 0L;
     this.mStartTime = 0L;
-    this.ulm = 0L;
-    this.EiG = new a();
+    this.uwJ = 0L;
+    this.EAK = new a();
     AppMethodBeat.o(80856);
   }
   
-  private String aJb(String paramString)
+  private String aKu(String paramString)
   {
     AppMethodBeat.i(80858);
     Matcher localMatcher = Pattern.compile("\\(.*?\\)").matcher(paramString);
     while (localMatcher.find()) {
       try
       {
-        String str2 = bt.nullAsNil(localMatcher.group());
+        String str2 = bu.nullAsNil(localMatcher.group());
         String str1 = str2.replace("(", "").replace(")", "").replace(" ", "");
         String[] arrayOfString;
         if (str1.contains("__ALLSTAYTIME__"))
         {
-          str1 = str1.replace("__ALLSTAYTIME__", String.valueOf(this.EiE / 1000L));
+          str1 = str1.replace("__ALLSTAYTIME__", String.valueOf(this.EAI / 1000L));
           arrayOfString = str1.split("\\+");
           if (arrayOfString.length == 2) {
-            str1 = String.valueOf(bt.aRf(arrayOfString[0]) + bt.aRf(arrayOfString[1]));
+            str1 = String.valueOf(bu.aSC(arrayOfString[0]) + bu.aSC(arrayOfString[1]));
           }
           paramString = paramString.replace(str2, str1);
         }
         else if (str2.contains("__FOREGROUNDTIME__"))
         {
-          str1 = str1.replace("__FOREGROUNDTIME__", String.valueOf(this.ull / 1000L));
+          str1 = str1.replace("__FOREGROUNDTIME__", String.valueOf(this.uwI / 1000L));
           arrayOfString = str1.split("\\+");
           if (arrayOfString.length == 2) {
-            str1 = String.valueOf(bt.aRf(arrayOfString[0]) + bt.aRf(arrayOfString[1]));
+            str1 = String.valueOf(bu.aSC(arrayOfString[0]) + bu.aSC(arrayOfString[1]));
           }
           paramString = paramString.replace(str2, str1);
         }
       }
       catch (NumberFormatException paramString)
       {
-        ad.i("MicroMsg.GamePageTimeReport", "matchTimeMark, err:%s", new Object[] { paramString.getMessage() });
+        ae.i("MicroMsg.GamePageTimeReport", "matchTimeMark, err:%s", new Object[] { paramString.getMessage() });
         AppMethodBeat.o(80858);
         return null;
       }
@@ -73,7 +73,7 @@ public class c
     return paramString;
   }
   
-  public static void aY(Bundle paramBundle)
+  public static void aZ(Bundle paramBundle)
   {
     AppMethodBeat.i(80857);
     if (paramBundle == null)
@@ -96,61 +96,61 @@ public class c
         String str = (String)((Iterator)localObject).next();
         localJSONObject.put(str, paramBundle.get(str));
       }
-      paramBundle = new id();
+      paramBundle = new ie();
     }
     catch (JSONException paramBundle)
     {
       AppMethodBeat.o(80857);
       return;
     }
-    paramBundle.duG.EN = 4;
-    paramBundle.duG.param = localJSONObject.toString();
-    a.IbL.l(paramBundle);
+    paramBundle.dvL.EN = 4;
+    paramBundle.dvL.param = localJSONObject.toString();
+    a.IvT.l(paramBundle);
     AppMethodBeat.o(80857);
   }
   
-  protected void ag(Bundle paramBundle) {}
+  protected void ah(Bundle paramBundle) {}
   
   public final class a
   {
     public a() {}
     
-    public final void CA()
+    public final void CD()
     {
       AppMethodBeat.i(80852);
       c.this.mStartTime = System.currentTimeMillis();
-      c.this.ulm = System.currentTimeMillis();
+      c.this.uwJ = System.currentTimeMillis();
       AppMethodBeat.o(80852);
     }
     
-    public final void aZ(Bundle paramBundle)
+    public final void ba(Bundle paramBundle)
     {
       AppMethodBeat.i(80853);
-      c.this.EiF = paramBundle;
-      ad.i("MicroMsg.GamePageTimeReport", "setGamePageReportData");
+      c.this.EAJ = paramBundle;
+      ae.i("MicroMsg.GamePageTimeReport", "setGamePageReportData");
       if ((paramBundle != null) && (paramBundle.getBoolean("game_page_report_time_begin")))
       {
-        c.this.ull = 0L;
+        c.this.uwI = 0L;
         c.this.mStartTime = System.currentTimeMillis();
-        c.this.ulm = System.currentTimeMillis();
+        c.this.uwJ = System.currentTimeMillis();
       }
       AppMethodBeat.o(80853);
     }
     
-    public final void eUn()
+    public final void eYa()
     {
-      c.this.EiF = null;
+      c.this.EAJ = null;
       c.this.mStartTime = 0L;
-      c.this.ull = 0L;
+      c.this.uwI = 0L;
       c.this.mStartTime = 0L;
-      c.this.ulm = 0L;
+      c.this.uwJ = 0L;
     }
     
     public final void onPause()
     {
       AppMethodBeat.i(80855);
-      if (c.this.ulm != 0L) {
-        c.this.ull += System.currentTimeMillis() - c.this.ulm;
+      if (c.this.uwJ != 0L) {
+        c.this.uwI += System.currentTimeMillis() - c.this.uwJ;
       }
       AppMethodBeat.o(80855);
     }
@@ -158,8 +158,8 @@ public class c
     public final void onResume()
     {
       AppMethodBeat.i(80854);
-      if (c.this.ulm != 0L) {
-        c.this.ulm = System.currentTimeMillis();
+      if (c.this.uwJ != 0L) {
+        c.this.uwJ = System.currentTimeMillis();
       }
       AppMethodBeat.o(80854);
     }

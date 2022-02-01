@@ -15,15 +15,15 @@ public final class a
   {
     AppMethodBeat.i(143779);
     c.a locala = new c.a();
-    locala.IhA = new Field[2];
+    locala.IBL = new Field[2];
     locala.columns = new String[3];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "bakLogId";
-    locala.IhC.put("bakLogId", "INTEGER");
+    locala.IBN.put("bakLogId", "INTEGER");
     localStringBuilder.append(" bakLogId INTEGER");
     localStringBuilder.append(", ");
     locala.columns[1] = "valueStr";
-    locala.IhC.put("valueStr", "TEXT");
+    locala.IBN.put("valueStr", "TEXT");
     localStringBuilder.append(" valueStr TEXT");
     locala.columns[2] = "rowid";
     locala.sql = localStringBuilder.toString();

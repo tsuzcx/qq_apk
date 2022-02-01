@@ -16,8 +16,8 @@ final class CropImageNewUI$11
     AppMethodBeat.i(39016);
     b localb = new b();
     localb.bd(paramView);
-    a.b("com/tencent/mm/ui/tools/CropImageNewUI$19", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-    CropImageNewUI.r(this.KEn);
+    a.b("com/tencent/mm/ui/tools/CropImageNewUI$19", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+    CropImageNewUI.r(this.LaH);
     a.a(this, "com/tencent/mm/ui/tools/CropImageNewUI$19", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(39016);
   }

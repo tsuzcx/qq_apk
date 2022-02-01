@@ -12,7 +12,7 @@ import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cc.a;
+import com.tencent.mm.cb.a;
 
 public class AppBrandTabBarItem
   extends RelativeLayout
@@ -20,22 +20,22 @@ public class AppBrandTabBarItem
   public AppBrandTabBarItem(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(197474);
+    AppMethodBeat.i(208029);
     init();
-    AppMethodBeat.o(197474);
+    AppMethodBeat.o(208029);
   }
   
   public AppBrandTabBarItem(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(197475);
+    AppMethodBeat.i(208030);
     init();
-    AppMethodBeat.o(197475);
+    AppMethodBeat.o(208030);
   }
   
   private void init()
   {
-    AppMethodBeat.i(197476);
+    AppMethodBeat.i(208031);
     Object localObject1 = getContext();
     Object localObject2 = new LinearLayout.LayoutParams(0, 0);
     ((LinearLayout.LayoutParams)localObject2).gravity = 16;
@@ -90,7 +90,7 @@ public class AppBrandTabBarItem
     ((RelativeLayout.LayoutParams)localObject1).addRule(12, -1);
     ((View)localObject2).setLayoutParams((ViewGroup.LayoutParams)localObject1);
     addView((View)localObject2);
-    AppMethodBeat.o(197476);
+    AppMethodBeat.o(208031);
   }
 }
 

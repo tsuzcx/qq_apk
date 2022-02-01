@@ -5,8 +5,8 @@ import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bs.d.a;
-import com.tencent.mm.bs.d.b;
+import com.tencent.mm.br.d.a;
+import com.tencent.mm.br.d.b;
 import com.tencent.mm.ui.chatting.e.a;
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
@@ -15,32 +15,32 @@ import java.util.WeakHashMap;
 public final class b
   implements d.b
 {
-  private static WeakHashMap<Fragment, HashMap<Integer, d.a>> JVv;
-  private WeakReference<a> JVw;
+  private static WeakHashMap<Fragment, HashMap<Integer, d.a>> KrN;
+  private WeakReference<a> KrO;
   
   static
   {
     AppMethodBeat.i(36442);
-    JVv = new WeakHashMap();
+    KrN = new WeakHashMap();
     AppMethodBeat.o(36442);
   }
   
   public b(a parama)
   {
     AppMethodBeat.i(36436);
-    this.JVw = new WeakReference(parama);
+    this.KrO = new WeakReference(parama);
     AppMethodBeat.o(36436);
   }
   
   private static void a(Fragment paramFragment, int paramInt, d.a parama)
   {
     AppMethodBeat.i(36438);
-    HashMap localHashMap2 = (HashMap)JVv.get(paramFragment);
+    HashMap localHashMap2 = (HashMap)KrN.get(paramFragment);
     HashMap localHashMap1 = localHashMap2;
     if (localHashMap2 == null)
     {
       localHashMap1 = new HashMap();
-      JVv.put(paramFragment, localHashMap1);
+      KrN.put(paramFragment, localHashMap1);
     }
     localHashMap1.put(Integer.valueOf(paramInt), parama);
     AppMethodBeat.o(36438);
@@ -49,7 +49,7 @@ public final class b
   public static d.a d(Fragment paramFragment, int paramInt)
   {
     AppMethodBeat.i(36437);
-    paramFragment = (HashMap)JVv.get(paramFragment);
+    paramFragment = (HashMap)KrN.get(paramFragment);
     if (paramFragment != null)
     {
       paramFragment = (d.a)paramFragment.remove(Integer.valueOf(paramInt));
@@ -85,10 +85,10 @@ public final class b
   public final Fragment getFragment()
   {
     AppMethodBeat.i(36439);
-    Object localObject = (a)this.JVw.get();
+    Object localObject = (a)this.KrO.get();
     if (localObject != null)
     {
-      localObject = ((a)localObject).JOR;
+      localObject = ((a)localObject).Kkd;
       AppMethodBeat.o(36439);
       return localObject;
     }

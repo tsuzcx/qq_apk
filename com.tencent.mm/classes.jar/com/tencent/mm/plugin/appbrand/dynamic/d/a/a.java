@@ -1,23 +1,23 @@
 package com.tencent.mm.plugin.appbrand.dynamic.d.a;
 
 import android.os.Bundle;
-import com.tencent.mm.ab.b.b.a;
+import com.tencent.mm.aa.b.b.a;
 import org.json.JSONObject;
 
 public abstract class a
-  extends com.tencent.mm.ab.b.a
+  extends com.tencent.mm.aa.b.a
 {
   public a(String paramString, int paramInt)
   {
     super(paramString, paramInt);
   }
   
-  protected void a(com.tencent.mm.ab.c.a parama, JSONObject paramJSONObject, Bundle paramBundle, b.a<JSONObject> parama1)
+  protected void a(com.tencent.mm.aa.c.a parama, JSONObject paramJSONObject, Bundle paramBundle, b.a<JSONObject> parama1)
   {
     a(parama, paramJSONObject, parama1);
   }
   
-  protected abstract void a(com.tencent.mm.ab.c.a parama, JSONObject paramJSONObject, b.a<JSONObject> parama1);
+  protected abstract void a(com.tencent.mm.aa.c.a parama, JSONObject paramJSONObject, b.a<JSONObject> parama1);
 }
 
 

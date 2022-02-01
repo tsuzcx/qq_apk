@@ -1,14 +1,14 @@
 package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.k.b;
+import com.tencent.mm.ah.k.b;
 import com.tencent.mm.sdk.b.b;
-import com.tencent.mm.storage.bu;
+import com.tencent.mm.storage.bv;
 
 public final class t
   extends b
 {
-  public a dkt;
+  public a dlv;
   
   public t()
   {
@@ -18,16 +18,16 @@ public final class t
   private t(byte paramByte)
   {
     AppMethodBeat.i(19787);
-    this.dkt = new a();
-    this.IbR = false;
+    this.dlv = new a();
+    this.IvZ = false;
     this.callback = null;
     AppMethodBeat.o(19787);
   }
   
   public static final class a
   {
-    public bu dku;
-    public k.b dkv;
+    public bv dlw;
+    public k.b dlx;
   }
 }
 

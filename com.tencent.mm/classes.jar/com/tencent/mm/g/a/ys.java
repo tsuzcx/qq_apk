@@ -1,13 +1,13 @@
 package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.offline.a.s.h;
 import com.tencent.mm.sdk.b.b;
 
 public final class ys
   extends b
 {
-  public a dNE;
-  public b dNF;
+  public a dOG;
   
   public ys()
   {
@@ -16,21 +16,21 @@ public final class ys
   
   private ys(byte paramByte)
   {
-    AppMethodBeat.i(91230);
-    this.dNE = new a();
-    this.dNF = new b();
-    this.IbR = false;
+    AppMethodBeat.i(63294);
+    this.dOG = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(91230);
+    AppMethodBeat.o(63294);
   }
   
-  public static final class a {}
-  
-  public static final class b {}
+  public static final class a
+  {
+    public s.h dOH;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.a.ys
  * JD-Core Version:    0.7.0.1
  */

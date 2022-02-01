@@ -1,37 +1,24 @@
 package com.tencent.mm.plugin.sns.data;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.byn;
-import java.util.LinkedList;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public final class m
 {
-  public String dwW;
-  public List<byn> list;
-  public int zds;
+  public Map<String, Map<String, Long>> map;
+  public ArrayList<String> zug;
+  public ArrayList<List<String>> zuh;
   
   public m()
   {
-    AppMethodBeat.i(95086);
-    this.list = new LinkedList();
-    AppMethodBeat.o(95086);
-  }
-  
-  public m(byn parambyn)
-  {
-    AppMethodBeat.i(95087);
-    this.list = new LinkedList();
-    this.list.add(parambyn);
-    AppMethodBeat.o(95087);
-  }
-  
-  public m(List<byn> paramList)
-  {
-    AppMethodBeat.i(95088);
-    this.list = new LinkedList();
-    this.list = paramList;
-    AppMethodBeat.o(95088);
+    AppMethodBeat.i(95085);
+    this.zug = new ArrayList();
+    this.zuh = new ArrayList();
+    this.map = new HashMap();
+    AppMethodBeat.o(95085);
   }
 }
 

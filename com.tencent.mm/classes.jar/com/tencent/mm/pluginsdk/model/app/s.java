@@ -5,12 +5,12 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 final class s
 {
   public String appId;
-  public int ilN;
+  public int ioG;
   
   public s(String paramString, int paramInt)
   {
     this.appId = paramString;
-    this.ilN = paramInt;
+    this.ioG = paramInt;
   }
   
   public final boolean equals(Object paramObject)
@@ -27,7 +27,7 @@ final class s
       return false;
     }
     paramObject = (s)paramObject;
-    if ((paramObject.appId.equals(this.appId)) && (paramObject.ilN == this.ilN))
+    if ((paramObject.appId.equals(this.appId)) && (paramObject.ioG == this.ioG))
     {
       AppMethodBeat.o(151791);
       return true;
@@ -39,7 +39,7 @@ final class s
   public final String toString()
   {
     AppMethodBeat.i(151792);
-    String str = this.appId + this.ilN;
+    String str = this.appId + this.ioG;
     AppMethodBeat.o(151792);
     return str;
   }

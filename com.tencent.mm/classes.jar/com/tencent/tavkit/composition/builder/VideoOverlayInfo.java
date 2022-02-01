@@ -18,11 +18,11 @@ class VideoOverlayInfo
   
   TAVVideoCompositionLayerInstruction convertToLayerInstruction()
   {
-    AppMethodBeat.i(219853);
+    AppMethodBeat.i(200884);
     TAVVideoCompositionLayerInstruction localTAVVideoCompositionLayerInstruction = new TAVVideoCompositionLayerInstruction(this.track.getTrackID(), this.video.getVideoConfiguration(), this.video);
     localTAVVideoCompositionLayerInstruction.setPreferredTransform(this.track.getPreferredTransform());
     localTAVVideoCompositionLayerInstruction.setTimeRange(this.video.getTimeRange());
-    AppMethodBeat.o(219853);
+    AppMethodBeat.o(200884);
     return localTAVVideoCompositionLayerInstruction;
   }
 }

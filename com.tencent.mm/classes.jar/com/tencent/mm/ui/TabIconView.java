@@ -11,18 +11,18 @@ import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.g;
+import com.tencent.mm.sdk.platformtools.h;
 
 public class TabIconView
   extends ImageView
 {
-  private Bitmap Jge;
-  private Bitmap Jgf;
-  private Bitmap Jgg;
-  private Rect Jgh;
-  private Rect Jgi;
-  private Rect Jgj;
-  private int Jgk = 0;
+  private Bitmap JAP;
+  private Bitmap JAQ;
+  private Bitmap JAR;
+  private Rect JAS;
+  private Rect JAT;
+  private Rect JAU;
+  private int JAV = 0;
   private Paint bBH;
   private Context mContext;
   private Paint paint;
@@ -46,17 +46,17 @@ public class TabIconView
     if (paramBoolean) {
       this.scale *= 1.2F;
     }
-    this.Jge = g.v(paramInt1, this.scale);
-    this.Jgf = g.v(paramInt3, this.scale);
-    this.Jgg = g.v(paramInt2, this.scale);
-    if (this.Jge != null) {
-      this.Jgh = new Rect(0, 0, this.Jge.getWidth(), this.Jge.getHeight());
+    this.JAP = h.u(paramInt1, this.scale);
+    this.JAQ = h.u(paramInt3, this.scale);
+    this.JAR = h.u(paramInt2, this.scale);
+    if (this.JAP != null) {
+      this.JAS = new Rect(0, 0, this.JAP.getWidth(), this.JAP.getHeight());
     }
-    if (this.Jgf != null) {
-      this.Jgi = new Rect(0, 0, this.Jgf.getWidth(), this.Jgf.getHeight());
+    if (this.JAQ != null) {
+      this.JAT = new Rect(0, 0, this.JAQ.getWidth(), this.JAQ.getHeight());
     }
-    if (this.Jgg != null) {
-      this.Jgj = new Rect(0, 0, this.Jgg.getWidth(), this.Jgg.getHeight());
+    if (this.JAR != null) {
+      this.JAU = new Rect(0, 0, this.JAR.getWidth(), this.JAR.getHeight());
     }
     this.paint = new Paint(1);
     this.bBH = new Paint(1);
@@ -74,26 +74,26 @@ public class TabIconView
       AppMethodBeat.o(33780);
       return;
     }
-    if (this.Jgk < 128)
+    if (this.JAV < 128)
     {
-      this.bBH.setAlpha(255 - this.Jgk);
-      paramCanvas.drawBitmap(this.Jgf, null, this.Jgi, this.bBH);
-      this.paint.setAlpha(this.Jgk);
-      paramCanvas.drawBitmap(this.Jgg, null, this.Jgj, this.paint);
+      this.bBH.setAlpha(255 - this.JAV);
+      paramCanvas.drawBitmap(this.JAQ, null, this.JAT, this.bBH);
+      this.paint.setAlpha(this.JAV);
+      paramCanvas.drawBitmap(this.JAR, null, this.JAU, this.paint);
       AppMethodBeat.o(33780);
       return;
     }
-    this.paint.setAlpha(255 - this.Jgk);
-    paramCanvas.drawBitmap(this.Jgg, null, this.Jgj, this.paint);
-    this.paint.setAlpha(this.Jgk);
-    paramCanvas.drawBitmap(this.Jge, null, this.Jgh, this.paint);
+    this.paint.setAlpha(255 - this.JAV);
+    paramCanvas.drawBitmap(this.JAR, null, this.JAU, this.paint);
+    this.paint.setAlpha(this.JAV);
+    paramCanvas.drawBitmap(this.JAP, null, this.JAS, this.paint);
     AppMethodBeat.o(33780);
   }
   
   public void setFocusAlpha(int paramInt)
   {
     AppMethodBeat.i(33779);
-    this.Jgk = paramInt;
+    this.JAV = paramInt;
     invalidate();
     AppMethodBeat.o(33779);
   }

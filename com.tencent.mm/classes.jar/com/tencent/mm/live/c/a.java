@@ -14,15 +14,15 @@ import d.g.b.p;
 import d.l;
 import d.v;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/live/plugin/BaseLivePlugin;", "Lcom/tencent/mm/live/view/ILivePlugin;", "root", "Landroid/view/ViewGroup;", "broadcast", "Lcom/tencent/mm/live/plugin/ILiveStatus;", "(Landroid/view/ViewGroup;Lcom/tencent/mm/live/plugin/ILiveStatus;)V", "getRoot", "()Landroid/view/ViewGroup;", "getCurrentOrientation", "", "getVisible", "isLandscape", "", "keyboardChange", "", "show", "height", "mount", "name", "", "onActivityResult", "requestCode", "resultCode", "data", "Landroid/content/Intent;", "onBackPress", "pause", "resume", "setVisible", "visible", "start", "statusChange", "status", "Lcom/tencent/mm/live/plugin/ILiveStatus$LiveStatus;", "param", "Landroid/os/Bundle;", "stop", "unMount", "plugin-logic_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/live/plugin/BaseLivePlugin;", "Lcom/tencent/mm/live/view/ILivePlugin;", "root", "Landroid/view/ViewGroup;", "broadcast", "Lcom/tencent/mm/live/plugin/ILiveStatus;", "(Landroid/view/ViewGroup;Lcom/tencent/mm/live/plugin/ILiveStatus;)V", "getRoot", "()Landroid/view/ViewGroup;", "getCurrentOrientation", "", "getVisible", "isLandscape", "", "keyboardChange", "", "show", "height", "mount", "name", "", "onActivityResult", "requestCode", "resultCode", "data", "Landroid/content/Intent;", "onBackPress", "pause", "resume", "setVisible", "visible", "start", "statusChange", "status", "Lcom/tencent/mm/live/plugin/ILiveStatus$LiveStatus;", "param", "Landroid/os/Bundle;", "stop", "unMount", "plugin-logic_release"})
 public abstract class a
   implements com.tencent.mm.live.view.a
 {
-  public final ViewGroup gGK;
+  public final ViewGroup gJt;
   
   public a(ViewGroup paramViewGroup, b paramb)
   {
-    this.gGK = paramViewGroup;
+    this.gJt = paramViewGroup;
     paramb.a(this);
   }
   
@@ -31,27 +31,27 @@ public abstract class a
     p.h(paramc, "status");
   }
   
-  public void aoA() {}
-  
-  public boolean aoB()
+  public final boolean aoA()
   {
-    return false;
-  }
-  
-  public final boolean aol()
-  {
-    Object localObject = this.gGK.getContext();
+    Object localObject = this.gJt.getContext();
     p.g(localObject, "root.context");
     localObject = ((Context)localObject).getResources();
     p.g(localObject, "root.context.resources");
     return ((Resources)localObject).getConfiguration().orientation == 2;
   }
   
-  public void aoz() {}
+  public void aoO() {}
+  
+  public void aoP() {}
+  
+  public boolean aoQ()
+  {
+    return false;
+  }
   
   public final int getCurrentOrientation()
   {
-    Object localObject = this.gGK.getContext();
+    Object localObject = this.gJt.getContext();
     if (localObject == null) {
       throw new v("null cannot be cast to non-null type android.app.Activity");
     }
@@ -66,9 +66,9 @@ public abstract class a
   
   public void i(boolean paramBoolean, int paramInt) {}
   
-  public void nI(int paramInt)
+  public void nL(int paramInt)
   {
-    this.gGK.setVisibility(paramInt);
+    this.gJt.setVisibility(paramInt);
   }
   
   public String name()
@@ -90,7 +90,7 @@ public abstract class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.live.c.a
  * JD-Core Version:    0.7.0.1
  */

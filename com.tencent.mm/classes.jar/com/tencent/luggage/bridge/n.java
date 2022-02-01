@@ -1,24 +1,24 @@
 package com.tencent.luggage.bridge;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aq;
 import org.json.JSONObject;
 
 final class n
 {
   private o cgI;
-  private ap cgJ;
+  private aq cgJ;
   
   n(o paramo)
   {
     AppMethodBeat.i(140332);
     this.cgI = paramo;
-    this.cgJ = new ap("Js2JavaAsyncHandler_" + this.cgI.hashCode());
+    this.cgJ = new aq("Js2JavaAsyncHandler_" + this.cgI.hashCode());
     AppMethodBeat.o(140332);
   }
   
-  private static m cu(String paramString)
+  private static m cv(String paramString)
   {
     AppMethodBeat.i(140335);
     try
@@ -29,7 +29,7 @@ final class n
     }
     catch (Exception paramString)
     {
-      ad.e("Js2JavaMessageQueue", "Message parse failed, ex = %s", new Object[] { paramString.getMessage() });
+      ae.e("Js2JavaMessageQueue", "Message parse failed, ex = %s", new Object[] { paramString.getMessage() });
       AppMethodBeat.o(140335);
     }
     return null;
@@ -60,30 +60,30 @@ final class n
   final String j(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(140334);
-    Object localObject = cu(paramString);
+    Object localObject = cv(paramString);
     if (localObject == null)
     {
       AppMethodBeat.o(140334);
       return "";
     }
-    ad.i("Js2JavaMessageQueue", "processImpl, jsMsg.type = %s", new Object[] { ((m)localObject).BG().name() });
+    ae.i("Js2JavaMessageQueue", "processImpl, jsMsg.type = %s", new Object[] { ((m)localObject).BH().name() });
     paramString = null;
-    switch (2.cgL[localObject.BG().ordinal()])
+    switch (2.cgL[localObject.BH().ordinal()])
     {
     default: 
       if (paramString != null) {
         break;
       }
     }
-    for (localObject = "null";; localObject = paramString.BG().name())
+    for (localObject = "null";; localObject = paramString.BH().name())
     {
-      ad.v("Js2JavaMessageQueue", "processImpl, javaMsg.type = %s", new Object[] { localObject });
+      ae.v("Js2JavaMessageQueue", "processImpl, javaMsg.type = %s", new Object[] { localObject });
       if (paramString != null) {
         break label181;
       }
       AppMethodBeat.o(140334);
       return "";
-      this.cgI.cgO.BI();
+      this.cgI.cgO.BJ();
       break;
       paramString = this.cgI.a((m)localObject, paramBoolean);
       break;

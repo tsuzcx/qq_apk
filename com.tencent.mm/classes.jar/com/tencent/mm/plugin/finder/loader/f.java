@@ -4,12 +4,12 @@ import android.graphics.Bitmap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.loader.c.e;
 import com.tencent.mm.plugin.finder.storage.r;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.vfs.i;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.vfs.o;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/loader/FinderDiskCache;", "Lcom/tencent/mm/loader/cache/disk/BitmapDiskCache;", "Lcom/tencent/mm/plugin/finder/loader/FinderLoaderData;", "()V", "buildFilePath", "", "url", "Lcom/tencent/mm/loader/model/data/DataItem;", "opts", "Lcom/tencent/mm/loader/cfg/ImageLoaderOptions;", "reaper", "Lcom/tencent/mm/loader/Reaper;", "Landroid/graphics/Bitmap;", "clear", "", "get", "Lcom/tencent/mm/loader/model/datasource/DataSource;", "onSaveCompleted", "", "diskResource", "Lcom/tencent/mm/loader/model/Resource;", "onSaveStarted", "httpResponse", "Lcom/tencent/mm/loader/model/Response;", "resource", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/loader/FinderDiskCache;", "Lcom/tencent/mm/loader/cache/disk/BitmapDiskCache;", "Lcom/tencent/mm/plugin/finder/loader/FinderLoaderData;", "()V", "buildFilePath", "", "url", "Lcom/tencent/mm/loader/model/data/DataItem;", "opts", "Lcom/tencent/mm/loader/cfg/ImageLoaderOptions;", "reaper", "Lcom/tencent/mm/loader/Reaper;", "Landroid/graphics/Bitmap;", "clear", "", "get", "Lcom/tencent/mm/loader/model/datasource/DataSource;", "onSaveCompleted", "", "diskResource", "Lcom/tencent/mm/loader/model/Resource;", "onSaveStarted", "httpResponse", "Lcom/tencent/mm/loader/model/Response;", "resource", "plugin-finder_release"})
 public final class f
   extends com.tencent.mm.loader.b.a.a<k>
 {
@@ -41,25 +41,25 @@ public final class f
     p.h(parame, "opts");
     p.h(paramf, "reaper");
     parame = c(parama, parame, paramf);
-    ad.v("Finder.Loader", "url " + parama + " and path " + parame + " fileret " + i.fv(parame) + " type " + ((k)parama.value()).cCx());
-    if (i.fv(parame))
+    ae.v("Finder.Loader", "url " + parama + " and path " + parame + " fileret " + o.fB(parame) + " type " + ((k)parama.value()).cEj());
+    if (o.fB(parame))
     {
-      parama = com.tencent.mm.loader.h.b.a.yb(parame);
+      parama = com.tencent.mm.loader.h.b.a.yL(parame);
       AppMethodBeat.o(166314);
       return parama;
     }
-    if (((k)parama.value()).cCx() == r.syE)
+    if (((k)parama.value()).cEj() == r.sJv)
     {
-      if (i.fv(((k)parama.value()).akW()))
+      if (o.fB(((k)parama.value()).all()))
       {
-        parama = com.tencent.mm.loader.h.b.a.yb(((k)parama.value()).akW());
+        parama = com.tencent.mm.loader.h.b.a.yL(((k)parama.value()).all());
         AppMethodBeat.o(166314);
         return parama;
       }
     }
-    else if (i.fv(((k)parama.value()).getUrl()))
+    else if (o.fB(((k)parama.value()).getUrl()))
     {
-      parama = com.tencent.mm.loader.h.b.a.yb(((k)parama.value()).getUrl());
+      parama = com.tencent.mm.loader.h.b.a.yL(((k)parama.value()).getUrl());
       AppMethodBeat.o(166314);
       return parama;
     }

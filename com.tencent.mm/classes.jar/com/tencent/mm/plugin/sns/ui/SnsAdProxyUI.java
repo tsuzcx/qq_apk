@@ -5,10 +5,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.g.a.co;
-import com.tencent.mm.g.a.vm;
+import com.tencent.mm.g.a.vq;
 import com.tencent.mm.hellhoundlib.activities.HellActivity;
 import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public class SnsAdProxyUI
   extends HellActivity
@@ -20,13 +20,13 @@ public class SnsAdProxyUI
     Object localObject = getIntent();
     if (localObject == null)
     {
-      ad.e("MicroMsg.SnsAdBlankUI", "intent null!");
+      ae.e("MicroMsg.SnsAdBlankUI", "intent null!");
       finish();
       AppMethodBeat.o(98450);
       return;
     }
     int i = ((Intent)localObject).getIntExtra("action_type", -1);
-    ad.i("MicroMsg.SnsAdBlankUI", "action=".concat(String.valueOf(i)));
+    ae.i("MicroMsg.SnsAdBlankUI", "action=".concat(String.valueOf(i)));
     if (i < 0)
     {
       finish();
@@ -36,11 +36,11 @@ public class SnsAdProxyUI
     if (i == 1)
     {
       paramBundle = new co();
-      paramBundle.dns.activity = this;
-      paramBundle.dns.dlG = ((Intent)localObject).getStringExtra("qrcodeStr");
-      paramBundle.dns.dnt = ((Intent)localObject).getIntExtra("qrcodeType", 0);
-      paramBundle.dns.dnu = ((Intent)localObject).getIntExtra("qrcodeVer", 0);
-      a.IbL.l(paramBundle);
+      paramBundle.dou.activity = this;
+      paramBundle.dou.dmI = ((Intent)localObject).getStringExtra("qrcodeStr");
+      paramBundle.dou.dov = ((Intent)localObject).getIntExtra("qrcodeType", 0);
+      paramBundle.dou.dow = ((Intent)localObject).getIntExtra("qrcodeVer", 0);
+      a.IvT.l(paramBundle);
     }
     for (;;)
     {
@@ -52,13 +52,13 @@ public class SnsAdProxyUI
         paramBundle = ((Intent)localObject).getStringExtra("username");
         String str = ((Intent)localObject).getStringExtra("url");
         localObject = ((Intent)localObject).getStringExtra("sceneNote");
-        vm localvm = new vm();
-        localvm.dJF.userName = paramBundle;
-        localvm.dJF.dJH = str;
-        localvm.dJF.scene = 1084;
-        localvm.dJF.dkh = ((String)localObject);
-        localvm.dJF.context = this;
-        a.IbL.l(localvm);
+        vq localvq = new vq();
+        localvq.dKT.userName = paramBundle;
+        localvq.dKT.dKV = str;
+        localvq.dKT.scene = 1084;
+        localvq.dKT.dlj = ((String)localObject);
+        localvq.dKT.context = this;
+        a.IvT.l(localvq);
       }
     }
   }
@@ -71,7 +71,7 @@ public class SnsAdProxyUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.SnsAdProxyUI
  * JD-Core Version:    0.7.0.1
  */

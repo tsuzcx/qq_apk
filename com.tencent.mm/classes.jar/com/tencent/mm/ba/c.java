@@ -1,40 +1,14 @@
 package com.tencent.mm.ba;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.storage.bu;
-import java.util.LinkedList;
-import java.util.Map;
+import com.tencent.mm.plugin.messenger.foundation.a.a.k.b;
+import java.util.List;
 
 public final class c
-  extends a
+  extends b
 {
-  public c(Map<String, String> paramMap, bu parambu)
+  public c(List<k.b> paramList)
   {
-    super(paramMap, parambu);
-  }
-  
-  protected final boolean aAc()
-  {
-    AppMethodBeat.i(101784);
-    if (this.values == null)
-    {
-      AppMethodBeat.o(101784);
-      return false;
-    }
-    if (!this.TYPE.equals("chatroommuteexpt"))
-    {
-      AppMethodBeat.o(101784);
-      return false;
-    }
-    String str2 = (String)this.values.get(".sysmsg.chatroommuteexpt.text");
-    String str1 = (String)this.values.get(".sysmsg.chatroommuteexpt.link.text");
-    str2 = str2 + str1;
-    this.ihQ.add(str1);
-    this.ihR.addFirst(Integer.valueOf(str2.length() - str1.length()));
-    this.ihS.add(Integer.valueOf(str2.length()));
-    this.ihO = str2;
-    AppMethodBeat.o(101784);
-    return false;
+    super(paramList);
   }
 }
 

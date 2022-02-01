@@ -10,7 +10,7 @@ import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.Button;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bs.d;
+import com.tencent.mm.br.d;
 import com.tencent.mm.g.a.az;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.plugin.report.service.g;
@@ -20,9 +20,9 @@ import com.tencent.mm.ui.e.i;
 public class SnsSettingIntroduceUI
   extends MMActivity
 {
-  private Button Air;
-  private Button Ais;
-  private Intent Ait;
+  private Button AzD;
+  private Button AzE;
+  private Intent AzF;
   
   public int getLayoutId()
   {
@@ -36,17 +36,17 @@ public class SnsSettingIntroduceUI
     super.onCreate(paramBundle);
     getWindow().setFlags(1024, 1024);
     hideTitleView();
-    this.Ait = getIntent();
-    this.Air = ((Button)findViewById(2131297026));
-    this.Air.setOnClickListener(new View.OnClickListener()
+    this.AzF = getIntent();
+    this.AzD = ((Button)findViewById(2131297026));
+    this.AzD.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(99073);
         b localb = new b();
         localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/sns/ui/SnsSettingIntroduceUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-        g.yhR.f(14090, new Object[] { Integer.valueOf(3) });
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/sns/ui/SnsSettingIntroduceUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        g.yxI.f(14090, new Object[] { Integer.valueOf(3) });
         d.b(SnsSettingIntroduceUI.this, "sns", ".ui.SnsTimeLineUI", SnsSettingIntroduceUI.a(SnsSettingIntroduceUI.this));
         SnsSettingIntroduceUI.this.finish();
         SnsSettingIntroduceUI.this.overridePendingTransition(0, 0);
@@ -54,25 +54,25 @@ public class SnsSettingIntroduceUI
         AppMethodBeat.o(99073);
       }
     });
-    g.yhR.f(14090, new Object[] { Integer.valueOf(1) });
-    this.Ais = ((Button)findViewById(2131300595));
-    this.Ais.setOnClickListener(new View.OnClickListener()
+    g.yxI.f(14090, new Object[] { Integer.valueOf(1) });
+    this.AzE = ((Button)findViewById(2131300595));
+    this.AzE.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(99074);
         b localb = new b();
         localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/sns/ui/SnsSettingIntroduceUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/sns/ui/SnsSettingIntroduceUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
         paramAnonymousView = new az();
-        paramAnonymousView.dlT.index = 3;
-        com.tencent.mm.sdk.b.a.IbL.l(paramAnonymousView);
+        paramAnonymousView.dmV.index = 3;
+        com.tencent.mm.sdk.b.a.IvT.l(paramAnonymousView);
         paramAnonymousView = new Intent();
         d.b(SnsSettingIntroduceUI.this.getContext(), "setting", ".ui.setting.SettingsUI", paramAnonymousView);
         paramAnonymousView = new Intent();
-        paramAnonymousView.putExtra("enter_scene", e.i.IUD);
+        paramAnonymousView.putExtra("enter_scene", e.i.Jpl);
         d.b(SnsSettingIntroduceUI.this.getContext(), "setting", ".ui.setting.SettingsPrivacyUI", paramAnonymousView);
-        g.yhR.f(14090, new Object[] { Integer.valueOf(2) });
+        g.yxI.f(14090, new Object[] { Integer.valueOf(2) });
         SnsSettingIntroduceUI.this.finish();
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/sns/ui/SnsSettingIntroduceUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(99074);
@@ -94,7 +94,7 @@ public class SnsSettingIntroduceUI
     if ((paramInt == 4) && (paramKeyEvent.getAction() == 0))
     {
       finish();
-      g.yhR.f(14090, new Object[] { Integer.valueOf(3) });
+      g.yxI.f(14090, new Object[] { Integer.valueOf(3) });
       AppMethodBeat.o(99077);
       return true;
     }

@@ -6,18 +6,18 @@ import d.g.b.q;
 import d.l;
 import d.z;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
 final class FinderTimelineFeedLoader$f
   extends q
   implements a<z>
 {
-  public static final f scf;
+  public static final f skW;
   
   static
   {
-    AppMethodBeat.i(202469);
-    scf = new f();
-    AppMethodBeat.o(202469);
+    AppMethodBeat.i(202945);
+    skW = new f();
+    AppMethodBeat.o(202945);
   }
   
   FinderTimelineFeedLoader$f()

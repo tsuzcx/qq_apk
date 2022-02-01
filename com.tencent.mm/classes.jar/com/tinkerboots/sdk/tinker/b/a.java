@@ -29,7 +29,7 @@ public final class a
       public final boolean queueIdle()
       {
         AppMethodBeat.i(3442);
-        c.lp(a.this.context).fYC();
+        c.lv(a.this.context).gdb();
         AppMethodBeat.o(3442);
         return false;
       }
@@ -43,8 +43,8 @@ public final class a
     super.a(paramFile, paramInt, paramBoolean);
     if (paramInt == 1)
     {
-      paramFile = com.tencent.tinker.lib.e.a.lk(this.context).Mha;
-      if ((paramFile.Mhf != null) && ("00000000000000000000000000000000".equals(paramFile.Mhf)))
+      paramFile = com.tencent.tinker.lib.e.a.lq(this.context).MDX;
+      if ((paramFile.MEc != null) && ("00000000000000000000000000000000".equals(paramFile.MEc)))
       {
         ShareTinkerLog.v("Tinker.ServerLoadReporter", "Roll back patch when restarting main process, restart all other process also!", new Object[0]);
         ShareTinkerInternals.killAllOtherProcess(this.context);

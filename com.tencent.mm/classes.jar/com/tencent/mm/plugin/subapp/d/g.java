@@ -1,90 +1,90 @@
 package com.tencent.mm.plugin.subapp.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.gp;
+import com.tencent.mm.g.c.gq;
 import com.tencent.mm.sdk.e.c.a;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class g
-  extends gp
+  extends gq
 {
   protected static c.a info;
-  int dDp = -1;
+  int dEu = -1;
   
   static
   {
     AppMethodBeat.i(28963);
     c.a locala = new c.a();
-    locala.IhA = new Field[17];
+    locala.IBL = new Field[17];
     locala.columns = new String[18];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "filename";
-    locala.IhC.put("filename", "TEXT");
+    locala.IBN.put("filename", "TEXT");
     localStringBuilder.append(" filename TEXT");
     localStringBuilder.append(", ");
     locala.columns[1] = "user";
-    locala.IhC.put("user", "TEXT");
+    locala.IBN.put("user", "TEXT");
     localStringBuilder.append(" user TEXT");
     localStringBuilder.append(", ");
     locala.columns[2] = "msgid";
-    locala.IhC.put("msgid", "LONG");
+    locala.IBN.put("msgid", "LONG");
     localStringBuilder.append(" msgid LONG");
     localStringBuilder.append(", ");
     locala.columns[3] = "offset";
-    locala.IhC.put("offset", "INTEGER");
+    locala.IBN.put("offset", "INTEGER");
     localStringBuilder.append(" offset INTEGER");
     localStringBuilder.append(", ");
     locala.columns[4] = "filenowsize";
-    locala.IhC.put("filenowsize", "INTEGER");
+    locala.IBN.put("filenowsize", "INTEGER");
     localStringBuilder.append(" filenowsize INTEGER");
     localStringBuilder.append(", ");
     locala.columns[5] = "totallen";
-    locala.IhC.put("totallen", "INTEGER");
+    locala.IBN.put("totallen", "INTEGER");
     localStringBuilder.append(" totallen INTEGER");
     localStringBuilder.append(", ");
     locala.columns[6] = "status";
-    locala.IhC.put("status", "INTEGER");
+    locala.IBN.put("status", "INTEGER");
     localStringBuilder.append(" status INTEGER");
     localStringBuilder.append(", ");
     locala.columns[7] = "createtime";
-    locala.IhC.put("createtime", "LONG");
+    locala.IBN.put("createtime", "LONG");
     localStringBuilder.append(" createtime LONG");
     localStringBuilder.append(", ");
     locala.columns[8] = "lastmodifytime";
-    locala.IhC.put("lastmodifytime", "LONG");
+    locala.IBN.put("lastmodifytime", "LONG");
     localStringBuilder.append(" lastmodifytime LONG");
     localStringBuilder.append(", ");
     locala.columns[9] = "clientid";
-    locala.IhC.put("clientid", "TEXT");
+    locala.IBN.put("clientid", "TEXT");
     localStringBuilder.append(" clientid TEXT");
     localStringBuilder.append(", ");
     locala.columns[10] = "voicelenght";
-    locala.IhC.put("voicelenght", "INTEGER");
+    locala.IBN.put("voicelenght", "INTEGER");
     localStringBuilder.append(" voicelenght INTEGER");
     localStringBuilder.append(", ");
     locala.columns[11] = "msglocalid";
-    locala.IhC.put("msglocalid", "INTEGER");
+    locala.IBN.put("msglocalid", "INTEGER");
     localStringBuilder.append(" msglocalid INTEGER");
     localStringBuilder.append(", ");
     locala.columns[12] = "human";
-    locala.IhC.put("human", "TEXT");
+    locala.IBN.put("human", "TEXT");
     localStringBuilder.append(" human TEXT");
     localStringBuilder.append(", ");
     locala.columns[13] = "voiceformat";
-    locala.IhC.put("voiceformat", "INTEGER");
+    locala.IBN.put("voiceformat", "INTEGER");
     localStringBuilder.append(" voiceformat INTEGER");
     localStringBuilder.append(", ");
     locala.columns[14] = "nettimes";
-    locala.IhC.put("nettimes", "INTEGER");
+    locala.IBN.put("nettimes", "INTEGER");
     localStringBuilder.append(" nettimes INTEGER");
     localStringBuilder.append(", ");
     locala.columns[15] = "reserved1";
-    locala.IhC.put("reserved1", "INTEGER");
+    locala.IBN.put("reserved1", "INTEGER");
     localStringBuilder.append(" reserved1 INTEGER");
     localStringBuilder.append(", ");
     locala.columns[16] = "reserved2";
-    locala.IhC.put("reserved2", "TEXT");
+    locala.IBN.put("reserved2", "TEXT");
     localStringBuilder.append(" reserved2 TEXT");
     locala.columns[17] = "rowid";
     locala.sql = localStringBuilder.toString();
@@ -92,7 +92,7 @@ public final class g
     AppMethodBeat.o(28963);
   }
   
-  public final boolean aNC()
+  public final boolean aOa()
   {
     return ((this.field_status > 1) && (this.field_status <= 3)) || (this.field_status == 8);
   }
@@ -104,7 +104,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.subapp.d.g
  * JD-Core Version:    0.7.0.1
  */

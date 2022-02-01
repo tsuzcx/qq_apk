@@ -4,55 +4,55 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.j.a.c.a;
 import com.tencent.mm.pluginsdk.j.a.c.a.a;
 import com.tencent.mm.pluginsdk.j.a.c.s;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 
 final class g
   extends a
 {
-  final long DAq;
-  final byte[] EPJ;
-  final boolean EPK;
-  final boolean EPL;
-  private final int EPM;
-  private final String EPh;
-  final int EPi;
-  private final byte[] EPj;
-  private final String EPl;
-  final String dmA;
-  final boolean dmD;
-  final int dmx;
-  private final boolean dmz;
+  final long DRK;
+  private final String FhC;
+  final int FhD;
+  private final byte[] FhE;
+  private final String FhG;
+  final byte[] Fie;
+  final boolean Fif;
+  final boolean Fig;
+  private final int Fih;
+  private final boolean dnB;
+  final String dnC;
+  final boolean dnF;
+  final int dnz;
   final long fileSize;
   final int subType;
   
   public g(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, long paramLong1, String paramString3, int paramInt4, int paramInt5, long paramLong2, String paramString4, byte[] paramArrayOfByte1, String paramString5, boolean paramBoolean1, boolean paramBoolean2, String paramString6, int paramInt6, int paramInt7, byte[] paramArrayOfByte2, long paramLong3, boolean paramBoolean3, boolean paramBoolean4, int paramInt8) {}
   
-  public final int aLZ(String paramString)
+  public final int aNv(String paramString)
   {
     AppMethodBeat.i(151962);
-    int i = bt.getInt(this.EQv, 0);
-    int j = bt.getInt(paramString, 0);
+    int i = bu.getInt(this.FiQ, 0);
+    int j = bu.getInt(paramString, 0);
     AppMethodBeat.o(151962);
     return i - j;
   }
   
-  public final s faL()
+  public final s fez()
   {
     AppMethodBeat.i(151961);
-    s locals = super.faL();
-    locals.field_fileUpdated = this.dmz;
-    locals.field_resType = this.dmx;
+    s locals = super.fez();
+    locals.field_fileUpdated = this.dnB;
+    locals.field_resType = this.dnz;
     locals.field_subType = this.subType;
-    locals.field_reportId = this.DAq;
-    locals.field_sampleId = this.EPl;
-    locals.field_eccSignature = this.EPj;
-    locals.field_originalMd5 = this.dmA;
-    locals.field_fileCompress = this.EPK;
-    locals.field_fileEncrypt = this.EPL;
-    locals.field_encryptKey = this.EPh;
-    locals.field_keyVersion = this.EPi;
+    locals.field_reportId = this.DRK;
+    locals.field_sampleId = this.FhG;
+    locals.field_eccSignature = this.FhE;
+    locals.field_originalMd5 = this.dnC;
+    locals.field_fileCompress = this.Fif;
+    locals.field_fileEncrypt = this.Fig;
+    locals.field_encryptKey = this.FhC;
+    locals.field_keyVersion = this.FhD;
     locals.field_fileSize = this.fileSize;
-    locals.field_EID = this.EPM;
+    locals.field_EID = this.Fih;
     AppMethodBeat.o(151961);
     return locals;
   }
@@ -60,7 +60,7 @@ final class g
   public final String toString()
   {
     AppMethodBeat.i(151960);
-    String str = "CheckResUpdateRequest | fileUpdated=" + this.dmz + ", resType=" + this.dmx + ", subType=" + this.subType + ", reportId=" + this.DAq + ", sampleId='" + this.EPl + '\'' + ", originalMd5='" + this.dmA + '\'' + ", fileCompress=" + this.EPK + ", fileEncrypt=" + this.EPL + ", encryptKey='" + this.EPh + '\'' + ", keyVersion=" + this.EPi + ", EID=" + this.EPM + ", fileSize=" + this.fileSize + ", fromNewXml=" + this.dmD + " | " + super.toString();
+    String str = "CheckResUpdateRequest | fileUpdated=" + this.dnB + ", resType=" + this.dnz + ", subType=" + this.subType + ", reportId=" + this.DRK + ", sampleId='" + this.FhG + '\'' + ", originalMd5='" + this.dnC + '\'' + ", fileCompress=" + this.Fif + ", fileEncrypt=" + this.Fig + ", encryptKey='" + this.FhC + '\'' + ", keyVersion=" + this.FhD + ", EID=" + this.Fih + ", fileSize=" + this.fileSize + ", fromNewXml=" + this.dnF + " | " + super.toString();
     AppMethodBeat.o(151960);
     return str;
   }
@@ -68,20 +68,20 @@ final class g
   public static final class a
     extends a.a<g>
   {
-    long DAq;
-    byte[] EPJ;
-    boolean EPK;
-    boolean EPL;
-    int EPM;
-    String EPh;
-    int EPi;
-    byte[] EPj;
-    String EPl;
-    String dmA;
-    boolean dmD;
-    int dmx;
-    int dmy;
-    private boolean dmz;
+    long DRK;
+    String FhC;
+    int FhD;
+    byte[] FhE;
+    String FhG;
+    byte[] Fie;
+    boolean Fif;
+    boolean Fig;
+    int Fih;
+    int dnA;
+    private boolean dnB;
+    String dnC;
+    boolean dnF;
+    int dnz;
     long fileSize = 0L;
     int subType;
     
@@ -90,10 +90,10 @@ final class g
       super();
     }
     
-    public final g faM()
+    public final g feA()
     {
       AppMethodBeat.i(151958);
-      g localg = new g(this.url, this.EPe, this.dmy, this.networkType, this.EPm, this.ioS, this.md5, this.dmx, this.subType, this.DAq, this.EPl, this.EPj, this.dmA, this.EPK, this.EPL, this.EPh, this.EPi, this.EPM, this.EPJ, this.fileSize, this.dmD, this.dmz, this.priority);
+      g localg = new g(this.url, this.Fhz, this.dnA, this.networkType, this.FhH, this.irN, this.md5, this.dnz, this.subType, this.DRK, this.FhG, this.FhE, this.dnC, this.Fif, this.Fig, this.FhC, this.FhD, this.Fih, this.Fie, this.fileSize, this.dnF, this.dnB, this.priority);
       AppMethodBeat.o(151958);
       return localg;
     }
@@ -101,7 +101,7 @@ final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.j.a.a.g
  * JD-Core Version:    0.7.0.1
  */

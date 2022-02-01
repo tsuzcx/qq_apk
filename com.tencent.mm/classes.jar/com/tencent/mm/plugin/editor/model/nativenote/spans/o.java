@@ -6,61 +6,61 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public enum o
 {
   public String mStartTag;
-  public String pxA;
-  public String pxB;
-  public boolean pxC;
-  public boolean pxD = false;
-  public String pxy;
-  public boolean pxz;
+  public String pEc;
+  public boolean pEd;
+  public String pEe;
+  public String pEf;
+  public boolean pEg;
+  public boolean pEh = false;
   
   static
   {
     AppMethodBeat.i(181956);
-    pxu = new o("NONE", 0, "", "", "", "", false);
-    pxv = new o("NOTEUL", 1, "<wx-ul>", "</wx-ul>", "<wx-li>", "</wx-li>", true);
-    pxw = new o("NOTEOL", 2, "<wx-ol>", "</wx-ol>", "<wx-li>", "</wx-li>", true);
-    pxx = new o("NOTETODO", 3, "", "", "<wn-todo checked=\"1\" >", "</wn-todo>", true);
-    pxE = new o[] { pxu, pxv, pxw, pxx };
+    pDY = new o("NONE", 0, "", "", "", "", false);
+    pDZ = new o("NOTEUL", 1, "<wx-ul>", "</wx-ul>", "<wx-li>", "</wx-li>", true);
+    pEa = new o("NOTEOL", 2, "<wx-ol>", "</wx-ol>", "<wx-li>", "</wx-li>", true);
+    pEb = new o("NOTETODO", 3, "", "", "<wn-todo checked=\"1\" >", "</wn-todo>", true);
+    pEi = new o[] { pDY, pDZ, pEa, pEb };
     AppMethodBeat.o(181956);
   }
   
   private o(String paramString1, String paramString2, String paramString3, String paramString4, boolean paramBoolean1, boolean paramBoolean2)
   {
     this.mStartTag = paramString1;
-    this.pxy = paramString2;
-    this.pxA = paramString3;
-    this.pxB = paramString4;
-    this.pxz = false;
-    this.pxC = paramBoolean1;
+    this.pEc = paramString2;
+    this.pEe = paramString3;
+    this.pEf = paramString4;
+    this.pEd = false;
+    this.pEg = paramBoolean1;
   }
   
   public static o a(ParagraphStyle paramParagraphStyle)
   {
     if ((paramParagraphStyle instanceof d)) {
-      return pxv;
+      return pDZ;
     }
     if ((paramParagraphStyle instanceof k)) {
-      return pxw;
+      return pEa;
     }
     if ((paramParagraphStyle instanceof s)) {
-      return pxx;
+      return pEb;
     }
     return null;
   }
   
-  public final boolean cft()
+  public final boolean cgJ()
   {
-    return this == pxv;
+    return this == pDZ;
   }
   
-  public final boolean cfu()
+  public final boolean cgK()
   {
-    return this == pxw;
+    return this == pEa;
   }
   
-  public final boolean cfv()
+  public final boolean cgL()
   {
-    return this == pxx;
+    return this == pEb;
   }
 }
 

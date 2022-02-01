@@ -6,7 +6,7 @@ import java.util.Map;
 
 public class WebResourceResponse
 {
-  public boolean Mqd = false;
+  public boolean MNh = false;
   public String mEncoding;
   public InputStream mInputStream;
   public String mMimeType;
@@ -21,7 +21,7 @@ public class WebResourceResponse
     this.mStatusCode = paramInt;
     this.mReasonPhrase = paramString3;
     this.mResponseHeaders = paramMap;
-    this.Mqd = true;
+    this.MNh = true;
     AppMethodBeat.o(156796);
   }
   
@@ -30,7 +30,7 @@ public class WebResourceResponse
     this.mMimeType = paramString1;
     this.mEncoding = paramString2;
     this.mInputStream = paramInputStream;
-    this.Mqd = false;
+    this.MNh = false;
   }
   
   public final String getMimeType()

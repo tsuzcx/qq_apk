@@ -8,7 +8,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class VoiceInputScrollView
   extends ScrollView
 {
-  private a EUA;
+  private a FmV;
   
   public VoiceInputScrollView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -29,14 +29,14 @@ public class VoiceInputScrollView
   
   public void setOnScrollListener(a parama)
   {
-    this.EUA = parama;
+    this.FmV = parama;
   }
   
   public static abstract interface a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.VoiceInputScrollView
  * JD-Core Version:    0.7.0.1
  */

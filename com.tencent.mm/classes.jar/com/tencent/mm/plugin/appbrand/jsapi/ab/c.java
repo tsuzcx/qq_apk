@@ -1,16 +1,36 @@
 package com.tencent.mm.plugin.appbrand.jsapi.ab;
 
-import com.tencent.mm.plugin.appbrand.jsapi.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.jsapi.m.a;
 
 public final class c
-  extends p
+  extends m.a
 {
-  public static final int CTRL_INDEX = 301;
-  public static final String NAME = "WEB_INVOKE_APPSERVICE";
+  public static final c lyy;
+  
+  static
+  {
+    AppMethodBeat.i(137894);
+    lyy = new c("ok", new Object[0]);
+    AppMethodBeat.o(137894);
+  }
+  
+  public c(String paramString, Object... paramVarArgs)
+  {
+    super(paramString, paramVarArgs);
+  }
+  
+  public final String toString()
+  {
+    AppMethodBeat.i(137893);
+    String str = "VoiceCallResult{errMsg='" + this.errMsg + '\'' + '}';
+    AppMethodBeat.o(137893);
+    return str;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.ab.c
  * JD-Core Version:    0.7.0.1
  */

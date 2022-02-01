@@ -5,35 +5,35 @@ import android.util.Pair;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.expt.hellhound.a.b.b.j;
 import com.tencent.mm.plugin.expt.hellhound.a.f.c.k;
-import com.tencent.mm.protocal.protobuf.bob;
-import com.tencent.mm.protocal.protobuf.boc;
-import com.tencent.mm.protocal.protobuf.chk;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.bot;
+import com.tencent.mm.protocal.protobuf.bou;
+import com.tencent.mm.protocal.protobuf.cie;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
 public final class b
 {
-  private static void a(bob parambob, String paramString1, String paramString2, boolean paramBoolean)
+  private static void a(bot parambot, String paramString1, String paramString2, boolean paramBoolean)
   {
     AppMethodBeat.i(177397);
-    int j = parambob.GII.size();
+    int j = parambot.Hck.size();
     int i = j;
     if (!paramBoolean) {
       i = j - 1;
     }
     i -= 1;
-    boc localboc;
+    bou localbou;
     if (i >= 0)
     {
-      localboc = (boc)parambob.GII.get(i);
-      if (localboc != null)
+      localbou = (bou)parambot.Hck.get(i);
+      if (localbou != null)
       {
-        if (!localboc.dyV.equals(paramString1)) {
+        if (!localbou.dAa.equals(paramString1)) {
           break label144;
         }
-        localObject1 = com.tencent.mm.plugin.expt.hellhound.a.f.b.b.aeI(paramString1);
+        localObject1 = com.tencent.mm.plugin.expt.hellhound.a.f.b.b.afE(paramString1);
         if (localObject1 == null) {
           break label156;
         }
@@ -43,12 +43,12 @@ public final class b
     label156:
     for (Object localObject1 = (String)((com.tencent.mm.vending.j.c)localObject1).get(1);; localObject1 = null)
     {
-      Object localObject2 = com.tencent.mm.plugin.expt.hellhound.a.f.b.b.aeI(paramString2);
+      Object localObject2 = com.tencent.mm.plugin.expt.hellhound.a.f.b.b.afE(paramString2);
       if (localObject2 != null) {}
       for (localObject2 = (String)((com.tencent.mm.vending.j.c)localObject2).get(1);; localObject2 = null)
       {
         if ((localObject1 != null) && (((String)localObject1).equals(localObject2))) {
-          localboc.dyV = paramString2;
+          localbou.dAa = paramString2;
         }
         i -= 1;
         break;
@@ -58,48 +58,48 @@ public final class b
     }
   }
   
-  public static void a(boc paramboc, int paramInt)
+  public static void a(bou parambou, int paramInt)
   {
-    AppMethodBeat.i(210472);
-    if (paramboc == null)
+    AppMethodBeat.i(196139);
+    if (parambou == null)
     {
-      AppMethodBeat.o(210472);
+      AppMethodBeat.o(196139);
       return;
     }
-    bob localbob = a.cqx();
+    bot localbot = a.crZ();
     try
     {
-      localbob.GII.set(paramInt, paramboc);
-      a.a(localbob);
-      AppMethodBeat.o(210472);
+      localbot.Hck.set(paramInt, parambou);
+      a.a(localbot);
+      AppMethodBeat.o(196139);
       return;
     }
-    catch (Exception paramboc)
+    catch (Exception parambou)
     {
-      ad.printErrStackTrace("HABBYGE-MALI.HellPageFlowManager", paramboc, "updatePageFlow crash: %s", new Object[] { paramboc.getMessage() });
-      AppMethodBeat.o(210472);
+      ae.printErrStackTrace("HABBYGE-MALI.HellPageFlowManager", parambou, "updatePageFlow crash: %s", new Object[] { parambou.getMessage() });
+      AppMethodBeat.o(196139);
     }
   }
   
-  public static void a(chk paramchk, String paramString, int paramInt, long paramLong)
+  public static void a(cie paramcie, String paramString, int paramInt, long paramLong)
   {
-    AppMethodBeat.i(210468);
+    AppMethodBeat.i(196135);
     if (TextUtils.isEmpty(paramString))
     {
-      AppMethodBeat.o(210468);
+      AppMethodBeat.o(196135);
       return;
     }
-    if ((paramchk != null) && (com.tencent.mm.plugin.expt.hellhound.a.f.g.a.afu(paramchk.sessionId)))
+    if ((paramcie != null) && (com.tencent.mm.plugin.expt.hellhound.a.f.g.a.agq(paramcie.sessionId)))
     {
-      ad.i("HABBYGE-MALI.HellPageFlowManager", "addpageFlow scan-session, need filter !!");
-      AppMethodBeat.o(210468);
+      ae.i("HABBYGE-MALI.HellPageFlowManager", "addpageFlow scan-session, need filter !!");
+      AppMethodBeat.o(196135);
       return;
     }
-    b(paramchk, paramString, paramInt, paramLong);
-    AppMethodBeat.o(210468);
+    b(paramcie, paramString, paramInt, paramLong);
+    AppMethodBeat.o(196135);
   }
   
-  public static List<boc> afj(String paramString)
+  public static List<bou> agf(String paramString)
   {
     AppMethodBeat.i(122178);
     if (paramString == null)
@@ -108,14 +108,14 @@ public final class b
       return null;
     }
     ArrayList localArrayList = new ArrayList();
-    bob localbob = a.cqx();
-    int j = localbob.GII.size();
+    bot localbot = a.crZ();
+    int j = localbot.Hck.size();
     int i = 0;
     while (i < j)
     {
-      boc localboc = (boc)localbob.GII.get(i);
-      if (localboc.dyV.equals(paramString)) {
-        localArrayList.add(localboc);
+      bou localbou = (bou)localbot.Hck.get(i);
+      if (localbou.dAa.equals(paramString)) {
+        localArrayList.add(localbou);
       }
       i += 1;
     }
@@ -126,20 +126,20 @@ public final class b
   public static void aq(String paramString, long paramLong)
   {
     AppMethodBeat.i(122176);
-    bob localbob = a.cqx();
-    if (localbob.GII.isEmpty())
+    bot localbot = a.crZ();
+    if (localbot.Hck.isEmpty())
     {
-      ad.e("HABBYGE-MALI.HellPageFlowManager", "setEndTimeOfPageWhenEvent8, pageFlow.items == NULL");
+      ae.e("HABBYGE-MALI.HellPageFlowManager", "setEndTimeOfPageWhenEvent8, pageFlow.items == NULL");
       AppMethodBeat.o(122176);
       return;
     }
-    paramString = com.tencent.mm.plugin.expt.hellhound.core.b.adx(paramString);
+    paramString = com.tencent.mm.plugin.expt.hellhound.core.b.aer(paramString);
     if ((paramString == null) || (paramString.isEmpty()))
     {
       AppMethodBeat.o(122176);
       return;
     }
-    paramString = (boc)localbob.GII.getLast();
+    paramString = (bou)localbot.Hck.getLast();
     if (paramString == null)
     {
       AppMethodBeat.o(122176);
@@ -150,19 +150,19 @@ public final class b
     for (;;)
     {
       paramString.duration = paramLong;
-      a.a(localbob);
+      a.a(localbot);
       AppMethodBeat.o(122176);
       return;
       paramLong = 0L;
     }
   }
   
-  public static void b(chk paramchk, String paramString, int paramInt, long paramLong)
+  public static void b(cie paramcie, String paramString, int paramInt, long paramLong)
   {
-    AppMethodBeat.i(210469);
-    Object localObject1 = com.tencent.mm.plugin.expt.hellhound.core.b.adx(paramString);
-    bob localbob = a.cqx();
-    if (paramchk == null)
+    AppMethodBeat.i(196136);
+    Object localObject1 = com.tencent.mm.plugin.expt.hellhound.core.b.aer(paramString);
+    bot localbot = a.crZ();
+    if (paramcie == null)
     {
       if ((!"LauncherUI".equals(localObject1)) && (!"FinderHomeUI".equals(localObject1)))
       {
@@ -171,16 +171,16 @@ public final class b
       }
       else
       {
-        ad.i("HABBYGE-MALI.HellPageFlowManager", "Invalidate Page: LauncherUI/FinderHomeUI");
-        AppMethodBeat.o(210469);
+        ae.i("HABBYGE-MALI.HellPageFlowManager", "Invalidate Page: LauncherUI/FinderHomeUI");
+        AppMethodBeat.o(196136);
       }
     }
     else
     {
       if ("LauncherUI".equals(localObject1))
       {
-        ad.i("HABBYGE-MALI.HellPageFlowManager", "Invalidate Page: LauncherUI");
-        AppMethodBeat.o(210469);
+        ae.i("HABBYGE-MALI.HellPageFlowManager", "Invalidate Page: LauncherUI");
+        AppMethodBeat.o(196136);
         return;
       }
       if (!"FinderHomeUI".equals(localObject1))
@@ -190,7 +190,7 @@ public final class b
       }
       else
       {
-        paramString = j.cop();
+        paramString = j.cpR();
         if (paramString == null) {
           break label323;
         }
@@ -200,156 +200,156 @@ public final class b
     label323:
     for (paramString = paramString.getClass().getSimpleName();; paramString = "FinderFollowTabFragment")
     {
-      ad.i("HABBYGE-MALI.HellPageFlowManager", "maybe invalidate Page: FinderHomeUI in %s, %s", new Object[] { paramchk.sessionId, paramString });
-      localObject1 = (boc)localbob.GII.peekLast();
+      ae.i("HABBYGE-MALI.HellPageFlowManager", "maybe invalidate Page: FinderHomeUI in %s, %s", new Object[] { paramcie.sessionId, paramString });
+      localObject1 = (bou)localbot.Hck.peekLast();
       if (localObject1 == null) {
         break label483;
       }
-      if (!((boc)localObject1).dtL.equals(paramString)) {
+      if (!((bou)localObject1).duQ.equals(paramString)) {
         break;
       }
-      if ((paramchk != null) && (!paramchk.sessionId.equals(((boc)localObject1).dyV)))
+      if ((paramcie != null) && (!paramcie.sessionId.equals(((bou)localObject1).dAa)))
       {
-        localObject2 = ((boc)localObject1).dyV;
-        ((boc)localObject1).dyV = paramchk.sessionId;
-        localbob.GII.set(localbob.GII.size() - 1, localObject1);
-        a(localbob, (String)localObject2, paramchk.sessionId, false);
-        a.a(localbob);
+        localObject2 = ((bou)localObject1).dAa;
+        ((bou)localObject1).dAa = paramcie.sessionId;
+        localbot.Hck.set(localbot.Hck.size() - 1, localObject1);
+        a(localbot, (String)localObject2, paramcie.sessionId, false);
+        a.a(localbot);
       }
-      if ((((boc)localObject1).aHQ <= 0) && (paramInt > 0))
+      if ((((bou)localObject1).aHQ <= 0) && (paramInt > 0))
       {
-        ((boc)localObject1).aHQ = paramInt;
-        a.a(localbob);
+        ((bou)localObject1).aHQ = paramInt;
+        a.a(localbot);
       }
-      ad.i("HABBYGE-MALI.HellPageFlowManager", "repeated page, no need to add this page: %s, %d, %s, %d", new Object[] { ((boc)localObject1).dtL, Integer.valueOf(((boc)localObject1).aHQ), paramString, Integer.valueOf(paramInt) });
-      AppMethodBeat.o(210469);
+      ae.i("HABBYGE-MALI.HellPageFlowManager", "repeated page, no need to add this page: %s, %d, %s, %d", new Object[] { ((bou)localObject1).duQ, Integer.valueOf(((bou)localObject1).aHQ), paramString, Integer.valueOf(paramInt) });
+      AppMethodBeat.o(196136);
       return;
     }
-    if ((paramchk != null) && (!((boc)localObject1).dyV.equals(paramchk.sessionId))) {
-      a(localbob, ((boc)localObject1).dyV, paramchk.sessionId, true);
+    if ((paramcie != null) && (!((bou)localObject1).dAa.equals(paramcie.sessionId))) {
+      a(localbot, ((bou)localObject1).dAa, paramcie.sessionId, true);
     }
-    int i = localbob.GII.size();
+    int i = localbot.Hck.size();
     if (i > 2)
     {
-      localObject2 = (boc)localbob.GII.get(i - 2);
+      localObject2 = (bou)localbot.Hck.get(i - 2);
       if (localObject2 != null)
       {
-        if (("MsgRetransmitUI".equals(((boc)localObject2).dtL)) && ("SelectConversationUI".equals(((boc)localObject1).dtL)) && ("MsgRetransmitUI".equals(paramString)))
+        if (("MsgRetransmitUI".equals(((bou)localObject2).duQ)) && ("SelectConversationUI".equals(((bou)localObject1).duQ)) && ("MsgRetransmitUI".equals(paramString)))
         {
-          AppMethodBeat.o(210469);
+          AppMethodBeat.o(196136);
           return;
         }
-        if (("SelectConversationUI".equals(((boc)localObject2).dtL)) && ("MsgRetransmitUI".equals(((boc)localObject1).dtL)) && ("SelectConversationUI".equals(paramString)))
+        if (("SelectConversationUI".equals(((bou)localObject2).duQ)) && ("MsgRetransmitUI".equals(((bou)localObject1).duQ)) && ("SelectConversationUI".equals(paramString)))
         {
-          AppMethodBeat.o(210469);
+          AppMethodBeat.o(196136);
           return;
         }
       }
     }
     label483:
-    localObject1 = new boc();
-    ((boc)localObject1).dtL = paramString;
-    ((boc)localObject1).aHQ = paramInt;
-    ((boc)localObject1).startTime = paramLong;
-    if (paramchk == null)
+    localObject1 = new bou();
+    ((bou)localObject1).duQ = paramString;
+    ((bou)localObject1).aHQ = paramInt;
+    ((bou)localObject1).startTime = paramLong;
+    if (paramcie == null)
     {
-      ad.i("HABBYGE-MALI.HellPageFlowManager", "addPageFlow, Unknown Page: %s, %d", new Object[] { paramString, Integer.valueOf(paramInt) });
-      ((boc)localObject1).dyV = null;
-      k.cqr();
+      ae.i("HABBYGE-MALI.HellPageFlowManager", "addPageFlow, Unknown Page: %s, %d", new Object[] { paramString, Integer.valueOf(paramInt) });
+      ((bou)localObject1).dAa = null;
+      k.crT();
     }
     for (;;)
     {
-      localbob.GII.addLast(localObject1);
-      a.a(localbob);
-      AppMethodBeat.o(210469);
+      localbot.Hck.addLast(localObject1);
+      a.a(localbot);
+      AppMethodBeat.o(196136);
       return;
-      ((boc)localObject1).dyV = com.tencent.mm.plugin.expt.hellhound.a.f.b.b.f(paramchk);
-      ad.i("HABBYGE-MALI.HellPageFlowManager", "addPageFlow, session: %s, %d, %s", new Object[] { paramString, Integer.valueOf(paramInt), ((boc)localObject1).dyV });
-      k.a((boc)localObject1);
+      ((bou)localObject1).dAa = com.tencent.mm.plugin.expt.hellhound.a.f.b.b.j(paramcie);
+      ae.i("HABBYGE-MALI.HellPageFlowManager", "addPageFlow, session: %s, %d, %s", new Object[] { paramString, Integer.valueOf(paramInt), ((bou)localObject1).dAa });
+      k.a((bou)localObject1);
     }
   }
   
-  public static Pair<boc, Integer> cqz()
+  public static Pair<bou, Integer> csb()
   {
-    AppMethodBeat.i(210473);
-    Object localObject = a.cqx();
-    if (((bob)localObject).GII.isEmpty())
+    AppMethodBeat.i(196140);
+    Object localObject = a.crZ();
+    if (((bot)localObject).Hck.isEmpty())
     {
-      AppMethodBeat.o(210473);
+      AppMethodBeat.o(196140);
       return null;
     }
-    localObject = Pair.create(((bob)localObject).GII.getLast(), Integer.valueOf(((bob)localObject).GII.size() - 1));
-    AppMethodBeat.o(210473);
+    localObject = Pair.create(((bot)localObject).Hck.getLast(), Integer.valueOf(((bot)localObject).Hck.size() - 1));
+    AppMethodBeat.o(196140);
     return localObject;
   }
   
-  public static com.tencent.mm.vending.j.c<boc, Integer> fX(String paramString1, String paramString2)
+  public static com.tencent.mm.vending.j.c<bou, Integer> gc(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(210471);
+    AppMethodBeat.i(196138);
     if ((paramString1 == null) || (paramString2 == null) || (paramString2.isEmpty()))
     {
-      AppMethodBeat.o(210471);
+      AppMethodBeat.o(196138);
       return null;
     }
-    paramString2 = com.tencent.mm.plugin.expt.hellhound.core.b.adx(paramString2);
-    ad.i("HABBYGE-MALI.HellPageFlowManager", "getPageFlowItemOfCurSession: %s, %s", new Object[] { paramString2, paramString1 });
-    bob localbob = a.cqx();
-    int i = localbob.GII.size() - 1;
+    paramString2 = com.tencent.mm.plugin.expt.hellhound.core.b.aer(paramString2);
+    ae.i("HABBYGE-MALI.HellPageFlowManager", "getPageFlowItemOfCurSession: %s, %s", new Object[] { paramString2, paramString1 });
+    bot localbot = a.crZ();
+    int i = localbot.Hck.size() - 1;
     while (i >= 0)
     {
-      boc localboc = (boc)localbob.GII.get(i);
-      if (localboc.dyV.equals(paramString1))
+      bou localbou = (bou)localbot.Hck.get(i);
+      if (localbou.dAa.equals(paramString1))
       {
-        String str = com.tencent.mm.plugin.expt.hellhound.core.b.adx(localboc.dtL);
+        String str = com.tencent.mm.plugin.expt.hellhound.core.b.aer(localbou.duQ);
         if ((str != null) && (str.equals(paramString2)))
         {
-          paramString1 = com.tencent.mm.vending.j.a.N(localboc, Integer.valueOf(i));
-          AppMethodBeat.o(210471);
+          paramString1 = com.tencent.mm.vending.j.a.N(localbou, Integer.valueOf(i));
+          AppMethodBeat.o(196138);
           return paramString1;
         }
       }
       i -= 1;
     }
-    AppMethodBeat.o(210471);
+    AppMethodBeat.o(196138);
     return null;
   }
   
-  public static void z(String paramString, int paramInt, long paramLong)
+  public static void y(String paramString, int paramInt, long paramLong)
   {
-    AppMethodBeat.i(210470);
+    AppMethodBeat.i(196137);
     if (TextUtils.isEmpty(paramString))
     {
-      AppMethodBeat.o(210470);
+      AppMethodBeat.o(196137);
       return;
     }
-    Object localObject = com.tencent.mm.plugin.expt.hellhound.core.b.adx(paramString);
-    paramString = new boc();
-    paramString.dtL = ((String)localObject);
+    Object localObject = com.tencent.mm.plugin.expt.hellhound.core.b.aer(paramString);
+    paramString = new bou();
+    paramString.duQ = ((String)localObject);
     paramString.aHQ = paramInt;
     paramString.startTime = paramLong;
-    chk localchk = com.tencent.mm.plugin.expt.hellhound.a.f.c.c.cqe();
-    if (localchk == null)
+    cie localcie = com.tencent.mm.plugin.expt.hellhound.a.f.c.c.crG();
+    if (localcie == null)
     {
-      ad.i("HABBYGE-MALI.HellPageFlowManager", "addPageflow(addPage2Flow), Unknown Page: %s", new Object[] { localObject });
-      paramString.dyV = null;
-      k.cqr();
+      ae.i("HABBYGE-MALI.HellPageFlowManager", "addPageflow(addPage2Flow), Unknown Page: %s", new Object[] { localObject });
+      paramString.dAa = null;
+      k.crT();
     }
     for (;;)
     {
-      localObject = a.cqx();
-      ((bob)localObject).GII.addLast(paramString);
-      a.a((bob)localObject);
-      AppMethodBeat.o(210470);
+      localObject = a.crZ();
+      ((bot)localObject).Hck.addLast(paramString);
+      a.a((bot)localObject);
+      AppMethodBeat.o(196137);
       return;
-      paramString.dyV = com.tencent.mm.plugin.expt.hellhound.a.f.b.b.f(localchk);
-      ad.i("HABBYGE-MALI.HellPageFlowManager", "addPageflow(addPage2Flow), session: %s, %s", new Object[] { localObject, paramString.dyV });
+      paramString.dAa = com.tencent.mm.plugin.expt.hellhound.a.f.b.b.j(localcie);
+      ae.i("HABBYGE-MALI.HellPageFlowManager", "addPageflow(addPage2Flow), session: %s, %s", new Object[] { localObject, paramString.dAa });
       k.a(paramString);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.hellhound.a.f.d.b
  * JD-Core Version:    0.7.0.1
  */

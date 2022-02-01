@@ -6,8 +6,8 @@ import java.io.RandomAccessFile;
 public final class p
   extends a
 {
-  public g iRD;
-  public d iRE;
+  public g iUw;
+  public d iUx;
   
   public p(int paramInt1, long paramLong, int paramInt2)
   {
@@ -24,7 +24,7 @@ public final class p
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.a.p
  * JD-Core Version:    0.7.0.1
  */

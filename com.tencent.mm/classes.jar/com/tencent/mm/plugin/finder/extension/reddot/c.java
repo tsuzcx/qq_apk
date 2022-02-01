@@ -6,19 +6,19 @@ import com.tencent.mm.sdk.e.e;
 import com.tencent.mm.sdk.e.j;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotCtrInfoStorage;", "Lcom/tencent/mm/sdk/storage/MAutoStorage;", "Lcom/tencent/mm/plugin/finder/extension/reddot/LocalFinderRedDotCtrInfo;", "db", "Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "(Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;)V", "getDb", "()Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "delete", "", "item", "isNotify", "keys", "", "", "(Lcom/tencent/mm/plugin/finder/extension/reddot/LocalFinderRedDotCtrInfo;Z[Ljava/lang/String;)Z", "isExist", "id", "queryAll", "", "replace", "update", "Companion", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotCtrInfoStorage;", "Lcom/tencent/mm/sdk/storage/MAutoStorage;", "Lcom/tencent/mm/plugin/finder/extension/reddot/LocalFinderRedDotCtrInfo;", "db", "Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "(Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;)V", "getDb", "()Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "delete", "", "item", "isNotify", "keys", "", "", "(Lcom/tencent/mm/plugin/finder/extension/reddot/LocalFinderRedDotCtrInfo;Z[Ljava/lang/String;)Z", "isExist", "id", "queryAll", "", "replace", "update", "Companion", "plugin-finder_release"})
 public final class c
   extends j<i>
 {
   private static final String[] SQL_CREATE;
-  public static final a rRO;
+  public static final a saq;
   private final e db;
   
   static
   {
     AppMethodBeat.i(178147);
-    rRO = new a((byte)0);
-    i.a locala = i.rTe;
+    saq = new a((byte)0);
+    i.a locala = i.sbG;
     SQL_CREATE = new String[] { j.getCreateSQLs(i.access$getInfo$cp(), "FinderRedDotInfo") };
     AppMethodBeat.o(178147);
   }
@@ -32,7 +32,7 @@ public final class c
   }
   
   /* Error */
-  public final java.util.List<i> cns()
+  public final java.util.List<i> coU()
   {
     // Byte code:
     //   0: aconst_null
@@ -73,7 +73,7 @@ public final class c
     //   78: aload 6
     //   80: invokeinterface 140 1 0
     //   85: ifne -30 -> 55
-    //   88: getstatic 146	d/z:MKo	Ld/z;
+    //   88: getstatic 146	d/z:Nhr	Ld/z;
     //   91: astore 6
     //   93: aload 5
     //   95: aconst_null
@@ -90,7 +90,7 @@ public final class c
     //   118: ldc 166
     //   120: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   123: invokevirtual 173	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   126: invokestatic 178	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   126: invokestatic 178	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   129: aload_3
     //   130: checkcast 180	java/util/List
     //   133: astore_3
@@ -136,7 +136,7 @@ public final class c
     //   88	93	166	finally
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotCtrInfoStorage$Companion;", "", "()V", "SQL_CREATE", "", "", "kotlin.jvm.PlatformType", "getSQL_CREATE", "()[Ljava/lang/String;", "[Ljava/lang/String;", "TAG", "Table", "plugin-finder_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotCtrInfoStorage$Companion;", "", "()V", "SQL_CREATE", "", "", "kotlin.jvm.PlatformType", "getSQL_CREATE", "()[Ljava/lang/String;", "[Ljava/lang/String;", "TAG", "Table", "plugin-finder_release"})
   public static final class a {}
 }
 

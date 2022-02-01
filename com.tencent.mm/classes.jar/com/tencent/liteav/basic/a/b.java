@@ -6,14 +6,14 @@ public enum b
 {
   static
   {
-    AppMethodBeat.i(187271);
+    AppMethodBeat.i(221400);
     a = new b("UNKNOWN", 0);
     b = new b("I420", 1);
     c = new b("TEXTURE_2D", 2);
     d = new b("TEXTURE_EXTERNAL_OES", 3);
     e = new b("NV21", 4);
     f = new b[] { a, b, c, d, e };
-    AppMethodBeat.o(187271);
+    AppMethodBeat.o(221400);
   }
   
   private b() {}

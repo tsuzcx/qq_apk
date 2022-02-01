@@ -1,12 +1,12 @@
 package com.tencent.mm.plugin.finder.api;
 
-import com.tencent.mm.protocal.protobuf.alo;
+import com.tencent.mm.protocal.protobuf.ama;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/api/IFinderSyncHandler;", "", "handleCmd", "", "cmdItem", "Lcom/tencent/mm/protocal/protobuf/FinderCmdItem;", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/api/IFinderSyncHandler;", "", "handleCmd", "", "cmdItem", "Lcom/tencent/mm/protocal/protobuf/FinderCmdItem;", "plugin-finder_release"})
 public abstract interface f
 {
-  public abstract void a(alo paramalo);
+  public abstract void a(ama paramama);
 }
 
 

@@ -6,37 +6,37 @@ import com.tencent.mm.plugin.report.a;
 public final class hh
   extends a
 {
-  public long dVd = 0L;
-  public long ebY = 0L;
+  public long etA = 0L;
+  public long etB = 0L;
   
-  public final String RD()
+  public final String RC()
   {
-    AppMethodBeat.i(118318);
+    AppMethodBeat.i(91245);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dVd);
+    ((StringBuffer)localObject).append(this.etA);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ebY);
+    ((StringBuffer)localObject).append(this.etB);
     localObject = ((StringBuffer)localObject).toString();
-    awz((String)localObject);
-    AppMethodBeat.o(118318);
+    axO((String)localObject);
+    AppMethodBeat.o(91245);
     return localObject;
   }
   
-  public final String RE()
+  public final String RD()
   {
-    AppMethodBeat.i(118319);
+    AppMethodBeat.i(91246);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("Scene:").append(this.dVd);
+    ((StringBuffer)localObject).append("ReportScene:").append(this.etA);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("CostTime:").append(this.ebY);
+    ((StringBuffer)localObject).append("ResetScece:").append(this.etB);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(118319);
+    AppMethodBeat.o(91246);
     return localObject;
   }
   
   public final int getId()
   {
-    return 15509;
+    return 15522;
   }
 }
 

@@ -10,14 +10,14 @@ import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
 
 public abstract interface f
 {
-  public static final f lNC;
+  public static final f lSd;
   
   static
   {
-    if (((com.tencent.mm.kernel.b.h)g.ajz().ajb()).akw()) {}
+    if (((com.tencent.mm.kernel.b.h)g.ajO().ajq()).akL()) {}
     for (Object localObject = new h();; localObject = new b())
     {
-      lNC = (f)localObject;
+      lSd = (f)localObject;
       return;
     }
   }

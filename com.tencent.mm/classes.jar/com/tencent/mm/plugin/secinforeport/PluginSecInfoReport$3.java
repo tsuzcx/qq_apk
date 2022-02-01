@@ -10,9 +10,9 @@ final class PluginSecInfoReport$3
   
   public final void run()
   {
-    AppMethodBeat.i(197158);
-    d.yBQ.OY(-2147483646);
-    AppMethodBeat.o(197158);
+    AppMethodBeat.i(210876);
+    d.yRQ.PF(-2147483646);
+    AppMethodBeat.o(210876);
   }
 }
 

@@ -8,8 +8,8 @@ import com.tencent.luggage.d.b.a;
 import com.tencent.luggage.d.s;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.webview.luggage.g;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import org.json.JSONObject;
 
 public class bi
@@ -21,11 +21,11 @@ public class bi
   {
     int j = 1;
     AppMethodBeat.i(78628);
-    ad.i("MicroMsg.JsApiSetScreenOrientation", "invoke");
+    ae.i("MicroMsg.JsApiSetScreenOrientation", "invoke");
     Object localObject = paramb.chh.cgn.optString("orientation");
-    if (bt.isNullOrNil((String)localObject))
+    if (bu.isNullOrNil((String)localObject))
     {
-      ad.e("MicroMsg.JsApiSetScreenOrientation", "data is null");
+      ae.e("MicroMsg.JsApiSetScreenOrientation", "data is null");
       paramb.a("invalid_data", null);
       AppMethodBeat.o(78628);
       return;
@@ -38,7 +38,7 @@ public class bi
     {
       localObject = (g)paramb.chg;
       ((s)localObject).mParams.putInt("screen_orientation", i);
-      ((g)localObject).ePb();
+      ((g)localObject).eSN();
       paramb.a("", null);
       AppMethodBeat.o(78628);
       return;
@@ -63,7 +63,7 @@ public class bi
     }
   }
   
-  public final int ccO()
+  public final int ced()
   {
     return 0;
   }

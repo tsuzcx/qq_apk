@@ -1,102 +1,109 @@
 package com.tencent.mm.plugin.finder.cgi;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.bx.a;
-import com.tencent.mm.model.cf;
-import com.tencent.mm.model.u;
-import com.tencent.mm.plugin.finder.report.h;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.bw.a;
+import com.tencent.mm.model.ch;
 import com.tencent.mm.plugin.finder.storage.ab;
 import com.tencent.mm.plugin.finder.storage.b;
 import com.tencent.mm.protocal.protobuf.BaseResponse;
 import com.tencent.mm.protocal.protobuf.FinderCommentInfo;
-import com.tencent.mm.protocal.protobuf.alh;
-import com.tencent.mm.protocal.protobuf.alk;
-import com.tencent.mm.protocal.protobuf.aou;
-import com.tencent.mm.protocal.protobuf.aov;
-import com.tencent.mm.protocal.protobuf.aqy;
-import com.tencent.mm.protocal.protobuf.cwt;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.alw;
+import com.tencent.mm.protocal.protobuf.aph;
+import com.tencent.mm.protocal.protobuf.api;
+import com.tencent.mm.protocal.protobuf.arn;
+import com.tencent.mm.protocal.protobuf.cxn;
+import com.tencent.mm.sdk.platformtools.ae;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/cgi/CgiFinderLikeComment;", "Lcom/tencent/mm/plugin/finder/cgi/FinderCgi;", "Lcom/tencent/mm/protocal/protobuf/FinderLikeResponse;", "action", "Lcom/tencent/mm/plugin/finder/upload/action/LikeCommentAction;", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "(Lcom/tencent/mm/plugin/finder/upload/action/LikeCommentAction;Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;)V", "TAG", "", "getAction", "()Lcom/tencent/mm/plugin/finder/upload/action/LikeCommentAction;", "request", "Lcom/tencent/mm/protocal/protobuf/FinderLikeRequest;", "initCommReqResp", "", "onCgiBack", "errType", "", "errCode", "errMsg", "resp", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Companion", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/cgi/CgiFinderLikeComment;", "Lcom/tencent/mm/plugin/finder/cgi/FinderCgi;", "Lcom/tencent/mm/protocal/protobuf/FinderLikeResponse;", "action", "Lcom/tencent/mm/plugin/finder/upload/action/LikeCommentAction;", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "(Lcom/tencent/mm/plugin/finder/upload/action/LikeCommentAction;Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;)V", "TAG", "", "getAction", "()Lcom/tencent/mm/plugin/finder/upload/action/LikeCommentAction;", "request", "Lcom/tencent/mm/protocal/protobuf/FinderLikeRequest;", "initCommReqResp", "", "onCgiBack", "errType", "", "errCode", "errMsg", "resp", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Companion", "plugin-finder_release"})
 public final class i
-  extends w<aov>
+  extends w<api>
 {
-  private static long rHY;
-  public static final a rHZ;
+  private static long rQj;
+  public static final a rQk;
   private final String TAG;
-  private aou rHW;
-  private final com.tencent.mm.plugin.finder.upload.action.i rHX;
+  private aph rQh;
+  private final com.tencent.mm.plugin.finder.upload.action.i rQi;
   
   static
   {
     AppMethodBeat.i(165168);
-    rHZ = new a((byte)0);
+    rQk = new a((byte)0);
     AppMethodBeat.o(165168);
   }
   
-  public i(com.tencent.mm.plugin.finder.upload.action.i parami, aqy paramaqy)
+  public i(com.tencent.mm.plugin.finder.upload.action.i parami, arn paramarn)
   {
-    super(paramaqy);
-    AppMethodBeat.i(201030);
-    this.rHX = parami;
+    super(paramarn);
+    AppMethodBeat.i(201452);
+    this.rQi = parami;
     this.TAG = "Finder.CgiFinderLikeComment";
-    long l2 = cf.aCL();
+    long l2 = ch.aDb();
     long l1 = l2;
-    if (l2 < rHY)
+    if (l2 < rQj)
     {
-      l1 = rHY;
-      rHY = 1L + l1;
+      l1 = rQj;
+      rQj = 1L + l1;
     }
-    rHY = l1;
-    this.rHW = new aou();
-    parami = this.rHW;
-    Object localObject = b.sxa;
-    if (b.cFy())
+    rQj = l1;
+    this.rQh = new aph();
+    parami = this.rQh;
+    Object localObject = b.sHP;
+    if (b.cHv())
     {
       l2 = 0L;
-      parami.rIZ = l2;
-      this.rHW.objectNonceId = this.rHX.objectNonceId;
-      this.rHW.commentId = this.rHX.sKn.field_actionInfo.Gla.commentId;
-      this.rHW.rHI = l1;
-      if (this.rHX.scene == 1) {
-        this.rHW.username = u.aAu();
+      parami.rRn = l2;
+      this.rQh.objectNonceId = this.rQi.objectNonceId;
+      this.rQh.commentId = this.rQi.sVA.cLl().commentId;
+      this.rQh.rPT = l1;
+      if (this.rQi.scene == 1) {
+        this.rQh.username = com.tencent.mm.model.v.aAK();
       }
-      parami = this.rHW;
-      localObject = v.rIR;
-      parami.Glv = v.a(paramaqy);
-      this.rHW.scene = this.rHX.scene;
-      parami = this.rHW;
-      if (!this.rHX.sKc) {
-        break label412;
+      parami = this.rQh;
+      localObject = v.rRb;
+      parami.GDR = v.a(paramarn);
+      this.rQh.scene = this.rQi.scene;
+      parami = this.rQh;
+      if (!this.rQi.sVp) {
+        break label420;
+      }
+      i = 1;
+      label211:
+      parami.opType = i;
+      parami = this.rQh;
+      paramarn = com.tencent.mm.plugin.finder.report.i.syT;
+      l1 = this.rQi.duw;
+      paramarn = this.rQh.GDR;
+      if (paramarn == null) {
+        break label425;
       }
     }
-    label412:
-    for (int i = 1;; i = 2)
+    label420:
+    label425:
+    for (int i = paramarn.scene;; i = 0)
     {
-      parami.opType = i;
-      parami = this.rHW;
-      paramaqy = h.soM;
-      parami.sessionBuffer = h.I(this.rHX.dtq, this.rHW.Glv.scene);
+      parami.sessionBuffer = com.tencent.mm.plugin.finder.report.i.I(l1, i);
       parami = new b.a();
-      parami.c((a)this.rHW);
-      paramaqy = new aov();
-      paramaqy.setBaseResponse(new BaseResponse());
-      paramaqy.getBaseResponse().ErrMsg = new cwt();
-      parami.d((a)paramaqy);
-      parami.Dl("/cgi-bin/micromsg-bin/finderlike");
-      parami.oP(3710);
-      c(parami.aDC());
-      ad.i(this.TAG, "CgiFinderLikeComment init " + this.rHW.rIZ + " and userName " + this.rHW.username + " comment:" + this.rHX.sKn);
-      AppMethodBeat.o(201030);
+      parami.c((a)this.rQh);
+      paramarn = new api();
+      paramarn.setBaseResponse(new BaseResponse());
+      paramarn.getBaseResponse().ErrMsg = new cxn();
+      parami.d((a)paramarn);
+      parami.DN("/cgi-bin/micromsg-bin/finderlike");
+      parami.oS(3710);
+      c(parami.aDS());
+      ae.i(this.TAG, "CgiFinderLikeComment init " + this.rQh.rRn + " and userName " + this.rQh.username + " comment:" + this.rQi.sVA);
+      AppMethodBeat.o(201452);
       return;
-      l2 = this.rHX.dtq;
+      l2 = this.rQi.duw;
       break;
+      i = 2;
+      break label211;
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/cgi/CgiFinderLikeComment$Companion;", "", "()V", "GlobalLikeCommentId", "", "getGlobalLikeCommentId", "()J", "setGlobalLikeCommentId", "(J)V", "plugin-finder_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/cgi/CgiFinderLikeComment$Companion;", "", "()V", "GlobalLikeCommentId", "", "getGlobalLikeCommentId", "()J", "setGlobalLikeCommentId", "(J)V", "plugin-finder_release"})
   public static final class a {}
 }
 

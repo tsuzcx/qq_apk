@@ -3,7 +3,9 @@ package com.tencent.kinda.framework.widget.base;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.graphics.PorterDuff.Mode;
+import android.graphics.PorterDuffColorFilter;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.view.ViewGroup.LayoutParams;
@@ -15,8 +17,8 @@ import com.tencent.kinda.gen.KImageView;
 import com.tencent.kinda.gen.ScaleType;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.ui.applet.CdnImageView;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public class MMKImageView
   extends MMKView<CdnImageView>
@@ -35,6 +37,28 @@ public class MMKImageView
     this.defaultImage = new MMKImage();
     this.tintColor = new DynamicColor(0L, 0L);
     AppMethodBeat.o(19052);
+  }
+  
+  private void setIconColor(int paramInt, Drawable paramDrawable)
+  {
+    AppMethodBeat.i(224169);
+    if (paramDrawable != null) {
+      if (paramInt == 0) {
+        break label65;
+      }
+    }
+    label65:
+    for (int i = 0xFFFFFF & paramInt | 0xFF000000;; i = paramInt)
+    {
+      int j = Color.alpha(paramInt);
+      PorterDuffColorFilter localPorterDuffColorFilter = new PorterDuffColorFilter(i, PorterDuff.Mode.SRC_ATOP);
+      paramDrawable.mutate().setColorFilter(localPorterDuffColorFilter);
+      if (paramInt != 0) {
+        paramDrawable.setAlpha(j);
+      }
+      AppMethodBeat.o(224169);
+      return;
+    }
   }
   
   public CdnImageView createView(Context paramContext)
@@ -100,7 +124,7 @@ public class MMKImageView
       this.defaultImage = new MMKImage();
     }
     this.defaultImage.setUrl(paramString);
-    if (((this.image == null) || (bt.isNullOrNil(this.image.getUrl()))) && (!bt.isNullOrNil(this.defaultImage.getUrl())))
+    if (((this.image == null) || (bu.isNullOrNil(this.image.getUrl()))) && (!bu.isNullOrNil(this.defaultImage.getUrl())))
     {
       if (!this.defaultImage.isNetworkImage()) {
         break label104;
@@ -136,17 +160,21 @@ public class MMKImageView
       label63:
       if (this.image.getBitmap() != null)
       {
-        paramKImage = new BitmapDrawable(aj.getContext().getResources(), this.image.getBitmap());
-        if (ColorUtil.getColorByMode(this.tintColor) != 0L) {
+        paramKImage = new BitmapDrawable(ak.getContext().getResources(), this.image.getBitmap());
+        if (ColorUtil.getColorByMode(this.tintColor) != 0L)
+        {
           paramKImage.setColorFilter((int)ColorUtil.getColorByMode(this.tintColor), PorterDuff.Mode.SRC_ATOP);
+          setIconColor((int)ColorUtil.getColorByMode(this.tintColor), paramKImage);
         }
         ((CdnImageView)getView()).setImageDrawable(paramKImage);
       }
       else if (this.image.getDrawable() != null)
       {
         paramKImage = this.image.getDrawable();
-        if (ColorUtil.getColorByMode(this.tintColor) != 0L) {
+        if (ColorUtil.getColorByMode(this.tintColor) != 0L)
+        {
           paramKImage.setColorFilter((int)ColorUtil.getColorByMode(this.tintColor), PorterDuff.Mode.SRC_ATOP);
+          setIconColor((int)ColorUtil.getColorByMode(this.tintColor), paramKImage);
         }
         ((CdnImageView)getView()).setImageDrawable(paramKImage);
       }
@@ -198,6 +226,7 @@ public class MMKImageView
       if (paramDynamicColor != null)
       {
         paramDynamicColor.setColorFilter((int)ColorUtil.getColorByMode(this.tintColor), PorterDuff.Mode.SRC_ATOP);
+        setIconColor((int)ColorUtil.getColorByMode(this.tintColor), paramDynamicColor);
         ((CdnImageView)getView()).setImageDrawable(paramDynamicColor);
       }
       notifyChanged();
@@ -224,17 +253,21 @@ public class MMKImageView
       label60:
       if (this.image.getBitmap() != null)
       {
-        paramString = new BitmapDrawable(aj.getContext().getResources(), this.image.getBitmap());
-        if (ColorUtil.getColorByMode(this.tintColor) != 0L) {
+        paramString = new BitmapDrawable(ak.getContext().getResources(), this.image.getBitmap());
+        if (ColorUtil.getColorByMode(this.tintColor) != 0L)
+        {
           paramString.setColorFilter((int)ColorUtil.getColorByMode(this.tintColor), PorterDuff.Mode.SRC_ATOP);
+          setIconColor((int)ColorUtil.getColorByMode(this.tintColor), paramString);
         }
         ((CdnImageView)getView()).setImageDrawable(paramString);
       }
       else if (this.image.getDrawable() != null)
       {
         paramString = this.image.getDrawable();
-        if (ColorUtil.getColorByMode(this.tintColor) != 0L) {
+        if (ColorUtil.getColorByMode(this.tintColor) != 0L)
+        {
           paramString.setColorFilter((int)ColorUtil.getColorByMode(this.tintColor), PorterDuff.Mode.SRC_ATOP);
+          setIconColor((int)ColorUtil.getColorByMode(this.tintColor), paramString);
         }
         ((CdnImageView)getView()).setImageDrawable(paramString);
       }

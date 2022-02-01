@@ -23,7 +23,7 @@ public final class CompositingReportSession
   
   public CompositingReportSession(float paramFloat1, float paramFloat2)
   {
-    AppMethodBeat.i(219937);
+    AppMethodBeat.i(200968);
     this.beginTimeMs = 0L;
     this.successCount = 0;
     this.failureCount = 0;
@@ -32,7 +32,7 @@ public final class CompositingReportSession
     this.renderHeight = paramFloat2;
     this.filterChainReporter = new FilterChainReporter(null);
     FilterChainReportSession.setReporter(this.filterChainReporter);
-    AppMethodBeat.o(219937);
+    AppMethodBeat.o(200968);
   }
   
   private void commit() {}
@@ -60,17 +60,17 @@ public final class CompositingReportSession
   
   public final void flush()
   {
-    AppMethodBeat.i(219938);
+    AppMethodBeat.i(200969);
     if (this.beginTimeMs == 0L)
     {
-      AppMethodBeat.o(219938);
+      AppMethodBeat.o(200969);
       return;
     }
     if (this.successCount >= 10) {
       commit();
     }
     reset();
-    AppMethodBeat.o(219938);
+    AppMethodBeat.o(200969);
   }
   
   public final void tickFailed()
@@ -80,13 +80,13 @@ public final class CompositingReportSession
   
   public final void tickSuccess(long paramLong)
   {
-    AppMethodBeat.i(219939);
+    AppMethodBeat.i(200970);
     if (this.beginTimeMs == 0L) {
       this.beginTimeMs = (System.currentTimeMillis() - paramLong / 1000L / 1000L);
     }
     this.successCount += 1;
     this.totalCostUs += paramLong / 1000L;
-    AppMethodBeat.o(219939);
+    AppMethodBeat.o(200970);
   }
   
   static class FilterChainReporter
@@ -96,16 +96,16 @@ public final class CompositingReportSession
     
     private FilterChainReporter()
     {
-      AppMethodBeat.i(219935);
+      AppMethodBeat.i(200966);
       this.values = new HashMap();
-      AppMethodBeat.o(219935);
+      AppMethodBeat.o(200966);
     }
     
     public void onCommit(Map<String, Long> paramMap)
     {
-      AppMethodBeat.i(219936);
+      AppMethodBeat.i(200967);
       paramMap.putAll(paramMap);
-      AppMethodBeat.o(219936);
+      AppMethodBeat.o(200967);
     }
   }
 }

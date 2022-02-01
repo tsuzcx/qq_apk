@@ -21,13 +21,13 @@ final class j$1
     {
       public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
       {
-        AppMethodBeat.i(198647);
+        AppMethodBeat.i(188488);
         b localb = new b();
         localb.bd(paramAnonymousView);
         localb.bd(paramAnonymousMotionEvent);
-        a.b("com/tencent/mm/plugin/location/ui/impl/TrackMapUI$1$1", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahq());
+        a.b("com/tencent/mm/plugin/location/ui/impl/TrackMapUI$1$1", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahF());
         a.a(true, this, "com/tencent/mm/plugin/location/ui/impl/TrackMapUI$1$1", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
-        AppMethodBeat.o(198647);
+        AppMethodBeat.o(188488);
         return true;
       }
     });

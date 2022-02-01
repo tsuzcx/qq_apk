@@ -29,7 +29,7 @@ import android.widget.PopupWindow.OnDismissListener;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.ui.aq;
 import com.tencent.mm.ui.base.MMListPopupWindow;
 import com.tencent.mm.ui.base.o;
@@ -37,27 +37,27 @@ import com.tencent.mm.ui.base.o;
 public abstract class s
   implements View.OnKeyListener, ViewTreeObserver.OnGlobalLayoutListener, AdapterView.OnItemClickListener, PopupWindow.OnDismissListener
 {
-  private MMListPopupWindow Jzo;
-  private int Jzp = 2131820865;
-  private ViewGroup KLA;
-  private PopupWindow.OnDismissListener KLB;
-  private boolean KLC = true;
-  private View KLD;
-  private int KLE;
-  private int KLF = 0;
-  private int KLG = 0;
-  private float KLH = 0.0F;
-  private float KLI = 0.0F;
+  private MMListPopupWindow JUe;
+  private int JUf = 2131820865;
+  private ViewGroup LhU;
+  private PopupWindow.OnDismissListener LhV;
+  private boolean LhW = true;
+  private View LhX;
+  private int LhY;
+  private int LhZ = 0;
+  private int Lia = 0;
+  private float Lib = 0.0F;
+  private float Lic = 0.0F;
   private ViewTreeObserver afv;
   private int agV;
   private int dividerHeight;
-  private boolean lzE = false;
+  private boolean lEc = false;
   protected Context mContext;
-  private int nMf = 0;
-  private boolean nhI = false;
-  private BaseAdapter oDI;
+  private int nRK = 0;
+  private boolean nmQ = false;
+  private BaseAdapter oKk;
   private View qI;
-  private DialogInterface.OnCancelListener yps;
+  private DialogInterface.OnCancelListener yFr;
   
   public s(Context paramContext)
   {
@@ -75,16 +75,16 @@ public abstract class s
     label183:
     for (this.qI = localViewGroup.getChildAt(0);; this.qI = localViewGroup)
     {
-      this.dividerHeight = BackwardSupportUtil.b.g(this.mContext, 1.0F);
-      this.KLF = (paramContext.getDimensionPixelSize(2131165516) * 2);
-      this.nMf = paramContext.getDimensionPixelSize(2131165255);
-      this.KLG = BackwardSupportUtil.b.g(this.mContext, 36.0F);
-      this.oDI = Zp();
+      this.dividerHeight = BackwardSupportUtil.b.h(this.mContext, 1.0F);
+      this.LhZ = (paramContext.getDimensionPixelSize(2131165516) * 2);
+      this.nRK = paramContext.getDimensionPixelSize(2131165255);
+      this.Lia = BackwardSupportUtil.b.h(this.mContext, 36.0F);
+      this.oKk = Zy();
       return;
     }
   }
   
-  private boolean aol()
+  private boolean aoA()
   {
     DisplayMetrics localDisplayMetrics = this.mContext.getResources().getDisplayMetrics();
     return localDisplayMetrics.widthPixels > localDisplayMetrics.heightPixels;
@@ -111,10 +111,10 @@ public abstract class s
     label127:
     for (;;)
     {
-      if (this.KLA == null) {
-        this.KLA = new FrameLayout(this.mContext);
+      if (this.LhU == null) {
+        this.LhU = new FrameLayout(this.mContext);
       }
-      localView = paramListAdapter.getView(j, localView, this.KLA);
+      localView = paramListAdapter.getView(j, localView, this.LhU);
       localView.measure(n, i1);
       k = Math.max(k, localView.getMeasuredWidth());
       j += 1;
@@ -123,12 +123,12 @@ public abstract class s
     }
   }
   
-  protected abstract BaseAdapter Zp();
+  protected abstract BaseAdapter Zy();
   
   public final void dismiss()
   {
     if (isShowing()) {
-      this.Jzo.dismiss();
+      this.JUe.dismiss();
     }
   }
   
@@ -157,18 +157,18 @@ public abstract class s
         }
         j = i + (j - ((Rect)localObject1).height());
       }
-      this.lzE = aol();
-      if (this.Jzo == null) {
-        this.Jzo = new MMListPopupWindow(this.mContext, null, 0);
+      this.lEc = aoA();
+      if (this.JUe == null) {
+        this.JUe = new MMListPopupWindow(this.mContext, null, 0);
       }
-      this.Jzo.setOnDismissListener(this);
-      this.Jzo.arf = this;
-      this.Jzo.setAdapter(this.oDI);
-      this.Jzo.setModal(true);
-      this.Jzo.setBackgroundDrawable(this.mContext.getResources().getDrawable(2131233518));
-      this.Jzo.setAnimationStyle(this.Jzp);
-      this.Jzo.aqS = k;
-      this.Jzo.ard = this.qI;
+      this.JUe.setOnDismissListener(this);
+      this.JUe.arf = this;
+      this.JUe.setAdapter(this.oKk);
+      this.JUe.setModal(true);
+      this.JUe.setBackgroundDrawable(this.mContext.getResources().getDrawable(2131233518));
+      this.JUe.setAnimationStyle(this.JUf);
+      this.JUe.aqS = k;
+      this.JUe.ard = this.qI;
       if (this.qI != null)
       {
         if (this.afv != null) {
@@ -177,16 +177,16 @@ public abstract class s
         bool = true;
         label276:
         this.afv = this.qI.getViewTreeObserver();
-        ad.v("MicroMsg.SubMenuHelperBase", "tryshow addGlobalListener:%b", new Object[] { Boolean.valueOf(bool) });
+        ae.v("MicroMsg.SubMenuHelperBase", "tryshow addGlobalListener:%b", new Object[] { Boolean.valueOf(bool) });
         if (bool) {
           this.afv.addOnGlobalLayoutListener(this);
         }
       }
-      this.Jzo.setVerticalOffset(j);
-      this.Jzo.nhI = this.nhI;
-      this.Jzo.setContentWidth(Math.min(b(this.oDI), this.agV));
-      this.Jzo.kw();
-      if ((this.KLH != 0.0F) && (this.KLI != 0.0F))
+      this.JUe.setVerticalOffset(j);
+      this.JUe.nmQ = this.nmQ;
+      this.JUe.setContentWidth(Math.min(b(this.oKk), this.agV));
+      this.JUe.kw();
+      if ((this.Lib != 0.0F) && (this.Lic != 0.0F))
       {
         localObject1 = new DisplayMetrics();
         ((Activity)this.mContext).getWindowManager().getDefaultDisplay().getMetrics((DisplayMetrics)localObject1);
@@ -210,29 +210,29 @@ public abstract class s
     {
       if (i != 0)
       {
-        i = (int)(this.KLI * j);
+        i = (int)(this.Lic * j);
         label503:
-        ad.d("MicroMsg.SubMenuHelperBase", "menuHeightPercentPort(%f), menuHeightPercentLand(%f), frameHeight(%d), decorViewHeight(%d), menuHeight(%d)", new Object[] { Float.valueOf(this.KLH), Float.valueOf(this.KLI), Integer.valueOf(((Rect)localObject1).height()), Integer.valueOf(j), Integer.valueOf(i) });
-        i = Math.round(i / this.nMf);
-        if ((i <= 0) || (this.oDI == null)) {
+        ae.d("MicroMsg.SubMenuHelperBase", "menuHeightPercentPort(%f), menuHeightPercentLand(%f), frameHeight(%d), decorViewHeight(%d), menuHeight(%d)", new Object[] { Float.valueOf(this.Lib), Float.valueOf(this.Lic), Integer.valueOf(((Rect)localObject1).height()), Integer.valueOf(j), Integer.valueOf(i) });
+        i = Math.round(i / this.nRK);
+        if ((i <= 0) || (this.oKk == null)) {
           break label933;
         }
-        j = this.nMf * i + this.KLF;
-        if ((j == 0) || (j >= this.oDI.getCount() * this.nMf)) {
+        j = this.nRK * i + this.LhZ;
+        if ((j == 0) || (j >= this.oKk.getCount() * this.nRK)) {
           break label892;
         }
-        j = this.nMf;
-        k = this.KLF;
-        int m = this.KLG;
-        this.Jzo.aqR = ((i - 1) * j + k + m);
+        j = this.nRK;
+        k = this.LhZ;
+        int m = this.Lia;
+        this.JUe.aqR = ((i - 1) * j + k + m);
       }
       for (;;)
       {
-        if ((this.Jzo != null) && (this.KLD != null))
+        if ((this.JUe != null) && (this.LhX != null))
         {
-          localObject1 = this.Jzo;
-          localObject2 = this.KLD;
-          bool = ((MMListPopupWindow)localObject1).jtC.isShowing();
+          localObject1 = this.JUe;
+          localObject2 = this.LhX;
+          bool = ((MMListPopupWindow)localObject1).jwx.isShowing();
           if (bool) {
             ((MMListPopupWindow)localObject1).kv();
           }
@@ -240,22 +240,22 @@ public abstract class s
           if (bool) {
             ((MMListPopupWindow)localObject1).show();
           }
-          this.Jzo.arc = this.KLE;
+          this.JUe.arc = this.LhY;
         }
-        this.Jzo.show();
-        this.Jzo.JlR.setOnKeyListener(this);
-        this.Jzo.JlR.setSelector(new ColorDrawable(this.mContext.getResources().getColor(2131101053)));
-        this.Jzo.JlR.setDividerHeight(0);
-        this.Jzo.JlR.setVerticalScrollBarEnabled(true);
-        this.Jzo.JlR.setHorizontalScrollBarEnabled(false);
+        this.JUe.show();
+        this.JUe.JGF.setOnKeyListener(this);
+        this.JUe.JGF.setSelector(new ColorDrawable(this.mContext.getResources().getColor(2131101053)));
+        this.JUe.JGF.setDividerHeight(0);
+        this.JUe.JGF.setVerticalScrollBarEnabled(true);
+        this.JUe.JGF.setHorizontalScrollBarEnabled(false);
         return true;
         localObject2 = this.mContext.getResources().getDisplayMetrics();
         if (((DisplayMetrics)localObject2).widthPixels > ((DisplayMetrics)localObject2).heightPixels)
         {
-          i = BackwardSupportUtil.b.g(this.mContext, 40.0F);
+          i = BackwardSupportUtil.b.h(this.mContext, 40.0F);
           break;
         }
-        i = BackwardSupportUtil.b.g(this.mContext, 49.0F);
+        i = BackwardSupportUtil.b.h(this.mContext, 49.0F);
         break;
         label858:
         j = i + ((Rect)localObject1).top;
@@ -266,19 +266,19 @@ public abstract class s
         label875:
         i = 0;
         break label431;
-        i = (int)(this.KLH * j);
+        i = (int)(this.Lib * j);
         break label503;
         label892:
-        ad.w("MicroMsg.SubMenuHelperBase", "[cpan] menuheight:%d,listHeight:%d", new Object[] { Integer.valueOf(j), Integer.valueOf(this.oDI.getCount() * this.nMf) });
+        ae.w("MicroMsg.SubMenuHelperBase", "[cpan] menuheight:%d,listHeight:%d", new Object[] { Integer.valueOf(j), Integer.valueOf(this.oKk.getCount() * this.nRK) });
         continue;
-        ad.e("MicroMsg.SubMenuHelperBase", "[cpan] setpopuHeight error.");
+        ae.e("MicroMsg.SubMenuHelperBase", "[cpan] setpopuHeight error.");
       }
     }
   }
   
   public final boolean isShowing()
   {
-    return (this.Jzo != null) && (this.Jzo.jtC.isShowing());
+    return (this.JUe != null) && (this.JUe.jwx.isShowing());
   }
   
   public void onDismiss()
@@ -291,17 +291,17 @@ public abstract class s
       this.afv.removeGlobalOnLayoutListener(this);
       this.afv = null;
     }
-    if (this.yps != null) {
-      this.yps.onCancel(null);
+    if (this.yFr != null) {
+      this.yFr.onCancel(null);
     }
-    if (this.KLB != null) {
-      this.KLB.onDismiss();
+    if (this.LhV != null) {
+      this.LhV.onDismiss();
     }
   }
   
   public void onGlobalLayout()
   {
-    ad.v("MicroMsg.SubMenuHelperBase", "onGlobalLayout showing:%b, anchorshown:%b", new Object[] { Boolean.valueOf(isShowing()), Boolean.valueOf(this.qI.isShown()) });
+    ae.v("MicroMsg.SubMenuHelperBase", "onGlobalLayout showing:%b, anchorshown:%b", new Object[] { Boolean.valueOf(isShowing()), Boolean.valueOf(this.qI.isShown()) });
     if (isShowing())
     {
       View localView = this.qI;
@@ -311,10 +311,10 @@ public abstract class s
       dismiss();
     }
     label64:
-    while ((!isShowing()) || (this.lzE == aol())) {
+    while ((!isShowing()) || (this.lEc == aoA())) {
       return;
     }
-    this.Jzo.dismiss();
+    this.JUe.dismiss();
   }
   
   public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
@@ -322,9 +322,9 @@ public abstract class s
     b localb = new b();
     localb.bd(paramAdapterView);
     localb.bd(paramView);
-    localb.mr(paramInt);
-    localb.qY(paramLong);
-    a.b("com/tencent/mm/ui/tools/SubMenuHelperBase", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.ahq());
+    localb.mu(paramInt);
+    localb.rl(paramLong);
+    a.b("com/tencent/mm/ui/tools/SubMenuHelperBase", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.ahF());
     dismiss();
     a.a(this, "com/tencent/mm/ui/tools/SubMenuHelperBase", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
   }
@@ -333,10 +333,10 @@ public abstract class s
   {
     b localb = new b();
     localb.bd(paramView);
-    localb.mr(paramInt);
+    localb.mu(paramInt);
     localb.bd(paramKeyEvent);
-    a.b("com/tencent/mm/ui/tools/SubMenuHelperBase", "android/view/View$OnKeyListener", "onKey", "(Landroid/view/View;ILandroid/view/KeyEvent;)Z", this, localb.ahq());
-    ad.v("MicroMsg.SubMenuHelperBase", "onKey");
+    a.b("com/tencent/mm/ui/tools/SubMenuHelperBase", "android/view/View$OnKeyListener", "onKey", "(Landroid/view/View;ILandroid/view/KeyEvent;)Z", this, localb.ahF());
+    ae.v("MicroMsg.SubMenuHelperBase", "onKey");
     if ((paramKeyEvent.getAction() == 1) && (paramInt == 82))
     {
       dismiss();
@@ -347,15 +347,15 @@ public abstract class s
     return false;
   }
   
-  public final void yD(boolean paramBoolean)
+  public final void yQ(boolean paramBoolean)
   {
-    this.nhI = paramBoolean;
+    this.nmQ = paramBoolean;
     if (paramBoolean)
     {
-      this.Jzp = 2131820809;
+      this.JUf = 2131820809;
       return;
     }
-    this.Jzp = 2131820865;
+    this.JUf = 2131820865;
   }
 }
 

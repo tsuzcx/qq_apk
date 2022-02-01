@@ -6,7 +6,7 @@ import android.view.MotionEvent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 final class MobileRemitHistoryRecodUI$4
   implements RecyclerView.l
@@ -15,11 +15,11 @@ final class MobileRemitHistoryRecodUI$4
   
   public final boolean a(RecyclerView paramRecyclerView, MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(199127);
-    MobileRemitHistoryRecodUI.d(this.xVL)[0] = ((int)paramMotionEvent.getRawX());
-    MobileRemitHistoryRecodUI.d(this.xVL)[1] = ((int)paramMotionEvent.getRawY());
-    ad.d("MicroMsg.mobileRemit.MobileRemitHistoryRecodUI", "onTouchEvent() (%s, %s)", new Object[] { Integer.valueOf(MobileRemitHistoryRecodUI.d(this.xVL)[0]), Integer.valueOf(MobileRemitHistoryRecodUI.d(this.xVL)[1]) });
-    AppMethodBeat.o(199127);
+    AppMethodBeat.i(189969);
+    MobileRemitHistoryRecodUI.d(this.ylE)[0] = ((int)paramMotionEvent.getRawX());
+    MobileRemitHistoryRecodUI.d(this.ylE)[1] = ((int)paramMotionEvent.getRawY());
+    ae.d("MicroMsg.mobileRemit.MobileRemitHistoryRecodUI", "onTouchEvent() (%s, %s)", new Object[] { Integer.valueOf(MobileRemitHistoryRecodUI.d(this.ylE)[0]), Integer.valueOf(MobileRemitHistoryRecodUI.d(this.ylE)[1]) });
+    AppMethodBeat.o(189969);
     return false;
   }
   
@@ -27,13 +27,13 @@ final class MobileRemitHistoryRecodUI$4
   
   public final void b(RecyclerView paramRecyclerView, MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(199128);
+    AppMethodBeat.i(189970);
     b localb = new b();
     localb.bd(paramRecyclerView);
     localb.bd(paramMotionEvent);
-    a.b("com/tencent/mm/plugin/remittance/mobile/ui/MobileRemitHistoryRecodUI$4", "android/support/v7/widget/RecyclerView$OnItemTouchListener", "onTouchEvent", "(Landroid/support/v7/widget/RecyclerView;Landroid/view/MotionEvent;)V", this, localb.ahq());
+    a.b("com/tencent/mm/plugin/remittance/mobile/ui/MobileRemitHistoryRecodUI$4", "android/support/v7/widget/RecyclerView$OnItemTouchListener", "onTouchEvent", "(Landroid/support/v7/widget/RecyclerView;Landroid/view/MotionEvent;)V", this, localb.ahF());
     a.a(this, "com/tencent/mm/plugin/remittance/mobile/ui/MobileRemitHistoryRecodUI$4", "android/support/v7/widget/RecyclerView$OnItemTouchListener", "onTouchEvent", "(Landroid/support/v7/widget/RecyclerView;Landroid/view/MotionEvent;)V");
-    AppMethodBeat.o(199128);
+    AppMethodBeat.o(189970);
   }
 }
 

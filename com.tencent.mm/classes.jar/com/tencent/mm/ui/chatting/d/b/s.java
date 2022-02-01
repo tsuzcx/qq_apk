@@ -2,33 +2,33 @@ package com.tencent.mm.ui.chatting.d.b;
 
 import com.tencent.mm.pluginsdk.ui.chat.ChatFooter;
 import com.tencent.mm.pluginsdk.ui.chat.ChatFooter.d;
-import com.tencent.mm.storage.am;
-import com.tencent.mm.storage.bu;
+import com.tencent.mm.storage.an;
+import com.tencent.mm.storage.bv;
 import com.tencent.mm.ui.chatting.ChatFooterCustom;
 import com.tencent.mm.ui.chatting.d.ad;
 
 public abstract interface s
   extends ad
 {
-  public abstract boolean aH(bu parambu);
+  public abstract boolean aG(bv parambv);
   
-  public abstract boolean al(am paramam);
+  public abstract boolean as(an paraman);
   
-  public abstract ChatFooter fDC();
+  public abstract ChatFooter fHF();
   
-  public abstract ChatFooterCustom fDD();
+  public abstract ChatFooterCustom fHG();
   
-  public abstract String fDF();
+  public abstract String fHI();
   
-  public abstract void fDG();
+  public abstract void fHJ();
   
-  public abstract void fDI();
+  public abstract void fHL();
   
-  public abstract void fDK();
+  public abstract void fHN();
   
-  public abstract void fDL();
+  public abstract void fHO();
   
-  public abstract void fDM();
+  public abstract void fHP();
   
   public abstract void setVoiceInputShowCallback(ChatFooter.d paramd);
 }

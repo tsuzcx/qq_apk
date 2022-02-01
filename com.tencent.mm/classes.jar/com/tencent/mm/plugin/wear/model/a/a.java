@@ -23,8 +23,8 @@ import com.google.android.gms.wearable.Wearable;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.b.e;
 import com.tencent.mm.plugin.wear.model.h;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
@@ -33,23 +33,23 @@ import java.util.concurrent.TimeUnit;
 public final class a
   implements b
 {
-  private GoogleApiClient Dxq;
+  private GoogleApiClient DOV;
   
   public a()
   {
     AppMethodBeat.i(30038);
-    this.Dxq = new GoogleApiClient.Builder(aj.getContext()).addApi(Wearable.API).build();
+    this.DOV = new GoogleApiClient.Builder(ak.getContext()).addApi(Wearable.API).build();
     AppMethodBeat.o(30038);
   }
   
   public final byte[] a(Asset paramAsset)
   {
     AppMethodBeat.i(30042);
-    paramAsset = (DataApi.GetFdForAssetResult)Wearable.DataApi.getFdForAsset(eKJ(), paramAsset).await();
+    paramAsset = (DataApi.GetFdForAssetResult)Wearable.DataApi.getFdForAsset(eOr(), paramAsset).await();
     Status localStatus = paramAsset.getStatus();
     if (!localStatus.isSuccess())
     {
-      ad.e("MicroMsg.Wear.GlobalConnection", "read asset data not success errorCode=%d | errorMsg=%s", new Object[] { Integer.valueOf(localStatus.getStatusCode()), localStatus.getStatusMessage() });
+      ae.e("MicroMsg.Wear.GlobalConnection", "read asset data not success errorCode=%d | errorMsg=%s", new Object[] { Integer.valueOf(localStatus.getStatusCode()), localStatus.getStatusMessage() });
       AppMethodBeat.o(30042);
       return null;
     }
@@ -58,35 +58,35 @@ public final class a
     return paramAsset;
   }
   
-  public final void eKI()
+  public final void eOq()
   {
     AppMethodBeat.i(30040);
-    this.Dxq.disconnect();
-    eKJ();
+    this.DOV.disconnect();
+    eOr();
     AppMethodBeat.o(30040);
   }
   
-  public final GoogleApiClient eKJ()
+  public final GoogleApiClient eOr()
   {
     AppMethodBeat.i(30041);
-    if (!this.Dxq.isConnected())
+    if (!this.DOV.isConnected())
     {
-      ad.i("MicroMsg.Wear.GlobalConnection", "connect to google api client");
-      localObject = this.Dxq.blockingConnect(30L, TimeUnit.SECONDS);
+      ae.i("MicroMsg.Wear.GlobalConnection", "connect to google api client");
+      localObject = this.DOV.blockingConnect(30L, TimeUnit.SECONDS);
       if (!((ConnectionResult)localObject).isSuccess()) {
-        ad.e("MicroMsg.Wear.GlobalConnection", "google api client connect error, code=%d, ", new Object[] { Integer.valueOf(((ConnectionResult)localObject).getErrorCode()) });
+        ae.e("MicroMsg.Wear.GlobalConnection", "google api client connect error, code=%d, ", new Object[] { Integer.valueOf(((ConnectionResult)localObject).getErrorCode()) });
       }
     }
-    Object localObject = this.Dxq;
+    Object localObject = this.DOV;
     AppMethodBeat.o(30041);
     return localObject;
   }
   
-  public final HashSet<String> eKK()
+  public final HashSet<String> eOs()
   {
     AppMethodBeat.i(30044);
     HashSet localHashSet = new HashSet();
-    Object localObject = (NodeApi.GetConnectedNodesResult)Wearable.NodeApi.getConnectedNodes(eKJ()).await();
+    Object localObject = (NodeApi.GetConnectedNodesResult)Wearable.NodeApi.getConnectedNodes(eOr()).await();
     if (localObject != null)
     {
       localObject = ((NodeApi.GetConnectedNodesResult)localObject).getNodes().iterator();
@@ -98,15 +98,15 @@ public final class a
     return localHashSet;
   }
   
-  public final boolean eKL()
+  public final boolean eOt()
   {
     AppMethodBeat.i(30047);
-    if (!eKJ().isConnected())
+    if (!eOr().isConnected())
     {
       AppMethodBeat.o(30047);
       return false;
     }
-    if (eKK().size() == 0)
+    if (eOs().size() == 0)
     {
       AppMethodBeat.o(30047);
       return false;
@@ -115,10 +115,10 @@ public final class a
     return true;
   }
   
-  public final void eKM()
+  public final void eOu()
   {
     AppMethodBeat.i(30049);
-    DataItemBuffer localDataItemBuffer = (DataItemBuffer)Wearable.DataApi.getDataItems(eKJ()).await();
+    DataItemBuffer localDataItemBuffer = (DataItemBuffer)Wearable.DataApi.getDataItems(eOr()).await();
     Iterator localIterator = localDataItemBuffer.iterator();
     while (localIterator.hasNext())
     {
@@ -126,8 +126,8 @@ public final class a
       String str = localDataItem.getUri().toString();
       if (str.startsWith("/wechat"))
       {
-        ad.i("MicroMsg.Wear.GlobalConnection", "delete data item %s", new Object[] { str });
-        Wearable.DataApi.deleteDataItems(eKJ(), localDataItem.getUri());
+        ae.i("MicroMsg.Wear.GlobalConnection", "delete data item %s", new Object[] { str });
+        Wearable.DataApi.deleteDataItems(eOr(), localDataItem.getUri());
       }
     }
     localDataItemBuffer.release();
@@ -137,14 +137,14 @@ public final class a
   public final void finish()
   {
     AppMethodBeat.i(30048);
-    this.Dxq.disconnect();
+    this.DOV.disconnect();
     AppMethodBeat.o(30048);
   }
   
   public final boolean isAvailable()
   {
     AppMethodBeat.i(30039);
-    if ((h.afi()) || (h.afh()))
+    if ((h.afw()) || (h.afv()))
     {
       AppMethodBeat.o(30039);
       return true;
@@ -156,8 +156,8 @@ public final class a
   public final boolean t(Uri paramUri)
   {
     AppMethodBeat.i(30046);
-    Wearable.DataApi.deleteDataItems(eKJ(), paramUri);
-    ad.i("MicroMsg.Wear.GlobalConnection", "delete data item %s", new Object[] { paramUri });
+    Wearable.DataApi.deleteDataItems(eOr(), paramUri);
+    ae.i("MicroMsg.Wear.GlobalConnection", "delete data item %s", new Object[] { paramUri });
     AppMethodBeat.o(30046);
     return true;
   }
@@ -165,14 +165,14 @@ public final class a
   public final b.a w(String paramString, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(30043);
-    Object localObject = eKK();
+    Object localObject = eOs();
     b.a locala = new b.a();
     Iterator localIterator = ((HashSet)localObject).iterator();
     String str;
     if (localIterator.hasNext())
     {
       str = (String)localIterator.next();
-      if (!eKJ().isConnected())
+      if (!eOr().isConnected())
       {
         localObject = new b.a((byte)0);
         label70:
@@ -186,17 +186,17 @@ public final class a
       AppMethodBeat.o(30043);
       return localObject;
       localObject = new b.a();
-      Status localStatus = ((MessageApi.SendMessageResult)Wearable.MessageApi.sendMessage(eKJ(), str, paramString, paramArrayOfByte).await(2L, TimeUnit.SECONDS)).getStatus();
+      Status localStatus = ((MessageApi.SendMessageResult)Wearable.MessageApi.sendMessage(eOr(), str, paramString, paramArrayOfByte).await(2L, TimeUnit.SECONDS)).getStatus();
       if (!localStatus.isSuccess())
       {
         ((b.a)localObject).code = 131072;
         ((b.a)localObject).errMsg = localStatus.getStatusMessage();
-        ad.e("MicroMsg.Wear.GlobalConnection", "send message not success errorCode=%d | errorMsg=%s", new Object[] { Integer.valueOf(localStatus.getStatusCode()), localStatus.getStatusMessage() });
+        ae.e("MicroMsg.Wear.GlobalConnection", "send message not success errorCode=%d | errorMsg=%s", new Object[] { Integer.valueOf(localStatus.getStatusCode()), localStatus.getStatusMessage() });
       }
       if (paramArrayOfByte == null) {}
       for (int i = 0;; i = paramArrayOfByte.length)
       {
-        ad.d("MicroMsg.Wear.GlobalConnection", "send Message %s %s %d", new Object[] { str, paramString, Integer.valueOf(i) });
+        ae.d("MicroMsg.Wear.GlobalConnection", "send Message %s %s %d", new Object[] { str, paramString, Integer.valueOf(i) });
         break label70;
         label223:
         break;
@@ -208,7 +208,7 @@ public final class a
   public final b.a x(String paramString, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(30045);
-    if (!eKJ().isConnected())
+    if (!eOr().isConnected())
     {
       paramString = new b.a((byte)0);
       AppMethodBeat.o(30045);
@@ -218,8 +218,8 @@ public final class a
     paramString.getDataMap().putLong("key_timestamp", System.currentTimeMillis());
     paramString.getDataMap().putAsset("key_data", Asset.createFromBytes(paramArrayOfByte));
     paramString = paramString.asPutDataRequest();
-    Wearable.DataApi.putDataItem(eKJ(), paramString);
-    ad.d("MicroMsg.Wear.GlobalConnection", "send data request path=%s | length=%d", new Object[] { paramString.getUri().getPath(), Integer.valueOf(paramString.getData().length) });
+    Wearable.DataApi.putDataItem(eOr(), paramString);
+    ae.d("MicroMsg.Wear.GlobalConnection", "send data request path=%s | length=%d", new Object[] { paramString.getUri().getPath(), Integer.valueOf(paramString.getData().length) });
     paramString = new b.a();
     AppMethodBeat.o(30045);
     return paramString;

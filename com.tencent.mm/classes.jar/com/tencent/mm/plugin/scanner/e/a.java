@@ -3,149 +3,184 @@ package com.tencent.mm.plugin.scanner.e;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Parcelable;
-import com.tencent.e.h;
-import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.q;
-import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.scanner.api.ScanGoodsRequest;
 import com.tencent.mm.plugin.scanner.api.c;
-import com.tencent.mm.plugin.scanner.model.b.b;
-import com.tencent.mm.plugin.scanner.model.b.f;
-import com.tencent.mm.plugin.scanner.model.z;
+import com.tencent.mm.plugin.scanner.api.e;
+import com.tencent.mm.plugin.scanner.model.aa;
 import com.tencent.mm.plugin.scanner.ui.BaseScanUI;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import d.g.b.p;
 import d.l;
-import java.util.HashMap;
-import java.util.Map;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/scanner/service/ScanServiceImpl;", "Lcom/tencent/mm/plugin/scanner/api/IScanService;", "()V", "imageUploader", "Lcom/tencent/mm/plugin/scanner/model/AiScanImageSceneUploader;", "cancelUploadImage", "", "session", "", "getSearchImagePath", "", "msgId", "preloadResource", "request", "Lcom/tencent/mm/plugin/scanner/api/ScanGoodsRequest;", "startScanGoods", "context", "Landroid/content/Context;", "startScanGoodsForResult", "requestCode", "", "uploadImageForSearch", "Lcom/tencent/mm/plugin/scanner/api/ScanUploadImageRequest;", "callback", "Lcom/tencent/mm/plugin/scanner/api/ScanUploadImageResultCallback;", "Companion", "plugin-scan_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/scanner/service/ScanServiceImpl;", "Lcom/tencent/mm/plugin/scanner/api/IScanService;", "()V", "imageUploader", "Lcom/tencent/mm/plugin/scanner/model/AiScanImageSceneUploader;", "cancelPreviewImage", "", "session", "", "cancelUploadImage", "getSearchImagePath", "", "msgId", "canUseThumb", "", "preloadResource", "request", "Lcom/tencent/mm/plugin/scanner/api/ScanGoodsRequest;", "previewImageForSearch", "Lcom/tencent/mm/plugin/scanner/api/ScanOpImageRequest;", "callback", "Lcom/tencent/mm/plugin/scanner/api/ScanOpImageResultCallback;", "startScanGoods", "context", "Landroid/content/Context;", "startScanGoodsForResult", "requestCode", "", "uploadImageForSearch", "Companion", "plugin-scan_release"})
 public final class a
-  implements com.tencent.mm.plugin.scanner.api.a
+  implements com.tencent.mm.plugin.scanner.api.b
 {
-  public static final a.a ypi;
-  private com.tencent.mm.plugin.scanner.model.b yph;
+  public static final a.a yFh;
+  private com.tencent.mm.plugin.scanner.model.b yFg;
   
   static
   {
-    AppMethodBeat.i(186344);
-    ypi = new a.a((byte)0);
-    AppMethodBeat.o(186344);
+    AppMethodBeat.i(189639);
+    yFh = new a.a((byte)0);
+    AppMethodBeat.o(189639);
   }
   
-  public final long a(com.tencent.mm.plugin.scanner.api.b paramb, final com.tencent.mm.plugin.scanner.api.d paramd)
+  public final String Gt(long paramLong)
   {
-    AppMethodBeat.i(186341);
-    if (this.yph == null) {
-      this.yph = new com.tencent.mm.plugin.scanner.model.b();
+    AppMethodBeat.i(224246);
+    Object localObject = aa.yDM;
+    localObject = aa.A(paramLong, false);
+    AppMethodBeat.o(224246);
+    return localObject;
+  }
+  
+  public final long a(c paramc, e parame)
+  {
+    AppMethodBeat.i(189634);
+    paramc.yzN = 1;
+    if (paramc.sessionId == 0L) {
+      paramc.sessionId = System.currentTimeMillis();
     }
-    long l = System.currentTimeMillis();
-    Object localObject = (com.tencent.mm.plugin.scanner.api.d)new b(paramb, paramd);
-    paramd = this.yph;
-    if (paramd != null)
-    {
-      p.h(localObject, "callback");
-      ((Map)paramd.gpP).put(Long.valueOf(l), localObject);
-      localObject = (Map)paramd.kIV;
-      b.b localb = new b.b();
-      localb.yml = paramb;
-      ((Map)localObject).put(Long.valueOf(l), localb);
-      h.LTJ.aT((Runnable)new b.f(paramd, l));
+    if (this.yFg == null) {
+      this.yFg = new com.tencent.mm.plugin.scanner.model.b();
     }
-    AppMethodBeat.o(186341);
+    parame = (e)new c(parame);
+    com.tencent.mm.plugin.scanner.model.b localb = this.yFg;
+    if (localb != null) {
+      localb.a(paramc.sessionId, paramc, parame);
+    }
+    long l = paramc.sessionId;
+    AppMethodBeat.o(189634);
     return l;
   }
   
   public final void a(Context paramContext, ScanGoodsRequest paramScanGoodsRequest)
   {
-    AppMethodBeat.i(186339);
+    AppMethodBeat.i(189632);
     p.h(paramContext, "context");
     if (paramScanGoodsRequest == null)
     {
-      AppMethodBeat.o(186339);
+      AppMethodBeat.o(189632);
       return;
     }
-    ad.i("MicroMsg.ScanServiceImpl", "startScanGoods");
+    ae.i("MicroMsg.ScanServiceImpl", "startScanGoods");
     Intent localIntent = new Intent();
     localIntent.putExtra("BaseScanUI_select_scan_mode", 12);
     localIntent.putExtra("key_scan_request", (Parcelable)paramScanGoodsRequest);
     localIntent.setClass(paramContext, BaseScanUI.class);
     paramScanGoodsRequest = new com.tencent.mm.hellhoundlib.b.a().bc(localIntent);
-    com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramScanGoodsRequest.ahp(), "com/tencent/mm/plugin/scanner/service/ScanServiceImpl", "startScanGoods", "(Landroid/content/Context;Lcom/tencent/mm/plugin/scanner/api/ScanGoodsRequest;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    paramContext.startActivity((Intent)paramScanGoodsRequest.mq(0));
+    com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramScanGoodsRequest.ahE(), "com/tencent/mm/plugin/scanner/service/ScanServiceImpl", "startScanGoods", "(Landroid/content/Context;Lcom/tencent/mm/plugin/scanner/api/ScanGoodsRequest;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramContext.startActivity((Intent)paramScanGoodsRequest.mt(0));
     com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/plugin/scanner/service/ScanServiceImpl", "startScanGoods", "(Landroid/content/Context;Lcom/tencent/mm/plugin/scanner/api/ScanGoodsRequest;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    AppMethodBeat.o(186339);
+    AppMethodBeat.o(189632);
   }
   
   public final void a(Context paramContext, ScanGoodsRequest paramScanGoodsRequest, int paramInt)
   {
-    AppMethodBeat.i(186340);
+    AppMethodBeat.i(189633);
     p.h(paramContext, "context");
-    ad.i("MicroMsg.ScanServiceImpl", "startScanGoodsForResult requestCode: %d", new Object[] { Integer.valueOf(paramInt) });
+    ae.i("MicroMsg.ScanServiceImpl", "startScanGoodsForResult requestCode: %d", new Object[] { Integer.valueOf(paramInt) });
     Intent localIntent = new Intent();
     localIntent.putExtra("BaseScanUI_select_scan_mode", 12);
     localIntent.putExtra("key_scan_request", (Parcelable)paramScanGoodsRequest);
-    com.tencent.mm.bs.d.a(paramContext, "scanner", ".ui.BaseScanUI", localIntent, paramInt, false);
-    AppMethodBeat.o(186340);
+    com.tencent.mm.br.d.a(paramContext, "scanner", ".ui.BaseScanUI", localIntent, paramInt, false);
+    AppMethodBeat.o(189633);
   }
   
-  public final void yT(long paramLong)
+  public final long b(c paramc, e parame)
   {
-    AppMethodBeat.i(186342);
-    Object localObject = this.yph;
-    if (localObject != null)
+    AppMethodBeat.i(189637);
+    if (paramc == null)
     {
-      ad.i("MicroMsg.AiScanImageSceneUploader", "cancel");
-      ((com.tencent.mm.plugin.scanner.model.b)localObject).gpP.remove(Long.valueOf(paramLong));
-      localObject = (b.b)((com.tencent.mm.plugin.scanner.model.b)localObject).kIV.remove(Long.valueOf(paramLong));
-      if (localObject != null)
-      {
-        int i = ((b.b)localObject).ymm;
-        g.aiU().cancel(i);
-        AppMethodBeat.o(186342);
-        return;
-      }
-      AppMethodBeat.o(186342);
+      AppMethodBeat.o(189637);
+      return 0L;
+    }
+    paramc.yzN = 2;
+    if (paramc.sessionId == 0L) {
+      paramc.sessionId = System.currentTimeMillis();
+    }
+    if (this.yFg == null) {
+      this.yFg = new com.tencent.mm.plugin.scanner.model.b();
+    }
+    parame = (e)new b(parame);
+    com.tencent.mm.plugin.scanner.model.b localb = this.yFg;
+    if (localb != null) {
+      localb.a(paramc.sessionId, paramc, parame);
+    }
+    long l = paramc.sessionId;
+    AppMethodBeat.o(189637);
+    return l;
+  }
+  
+  public final void zr(long paramLong)
+  {
+    AppMethodBeat.i(189635);
+    com.tencent.mm.plugin.scanner.model.b localb = this.yFg;
+    if (localb != null)
+    {
+      localb.cancel(paramLong);
+      AppMethodBeat.o(189635);
       return;
     }
-    AppMethodBeat.o(186342);
+    AppMethodBeat.o(189635);
   }
   
-  public final String yU(long paramLong)
+  public final void zs(long paramLong)
   {
-    AppMethodBeat.i(186343);
-    Object localObject = z.ynN;
-    localObject = z.yY(paramLong);
-    AppMethodBeat.o(186343);
-    return localObject;
-  }
-  
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "session", "", "result", "Lcom/tencent/mm/plugin/scanner/api/ScanUploadImageResult;", "onUploadCallback"})
-  static final class b
-    implements com.tencent.mm.plugin.scanner.api.d
-  {
-    b(com.tencent.mm.plugin.scanner.api.b paramb, com.tencent.mm.plugin.scanner.api.d paramd) {}
-    
-    public final void a(long paramLong, c paramc)
+    AppMethodBeat.i(189638);
+    com.tencent.mm.plugin.scanner.model.b localb = this.yFg;
+    if (localb != null)
     {
-      AppMethodBeat.i(186338);
-      p.h(paramc, "result");
-      boolean bool = paramc.success;
-      Object localObject = this.ymo;
-      if (localObject != null) {}
-      for (localObject = ((com.tencent.mm.plugin.scanner.api.b)localObject).imagePath;; localObject = null)
+      localb.cancel(paramLong);
+      AppMethodBeat.o(189638);
+      return;
+    }
+    AppMethodBeat.o(189638);
+  }
+  
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "session", "", "result", "Lcom/tencent/mm/plugin/scanner/api/ScanOpImageResult;", "onCallback"})
+  static final class b
+    implements e
+  {
+    b(e parame) {}
+    
+    public final void a(long paramLong, com.tencent.mm.plugin.scanner.api.d paramd)
+    {
+      AppMethodBeat.i(189629);
+      p.h(paramd, "result");
+      ae.i("MicroMsg.ScanServiceImpl", "alvinluo previewImage onCallback success: %b, imagePath: %s, reqKey: %s, jumpType: %d", new Object[] { Boolean.valueOf(paramd.success), paramd.imagePath, paramd.dmw, Integer.valueOf(paramd.jumpType) });
+      e locale = this.yFi;
+      if (locale != null)
       {
-        ad.i("MicroMsg.ScanServiceImpl", "alvinluo onUploadCallback success: %b, imagePath: %s, reqKey: %s, jumpType: %d", new Object[] { Boolean.valueOf(bool), localObject, paramc.dlu, Integer.valueOf(paramc.jumpType) });
-        localObject = paramd;
-        if (localObject == null) {
-          break;
-        }
-        ((com.tencent.mm.plugin.scanner.api.d)localObject).a(paramLong, paramc);
-        AppMethodBeat.o(186338);
+        locale.a(paramLong, paramd);
+        AppMethodBeat.o(189629);
         return;
       }
-      AppMethodBeat.o(186338);
+      AppMethodBeat.o(189629);
+    }
+  }
+  
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "session", "", "result", "Lcom/tencent/mm/plugin/scanner/api/ScanOpImageResult;", "onCallback"})
+  static final class c
+    implements e
+  {
+    c(e parame) {}
+    
+    public final void a(long paramLong, com.tencent.mm.plugin.scanner.api.d paramd)
+    {
+      AppMethodBeat.i(189631);
+      p.h(paramd, "result");
+      ae.i("MicroMsg.ScanServiceImpl", "alvinluo uploadImage onCallback success: %b, imagePath: %s, reqKey: %s, jumpType: %d", new Object[] { Boolean.valueOf(paramd.success), paramd.imagePath, paramd.dmw, Integer.valueOf(paramd.jumpType) });
+      e locale = this.yFi;
+      if (locale != null)
+      {
+        locale.a(paramLong, paramd);
+        AppMethodBeat.o(189631);
+        return;
+      }
+      AppMethodBeat.o(189631);
     }
   }
 }

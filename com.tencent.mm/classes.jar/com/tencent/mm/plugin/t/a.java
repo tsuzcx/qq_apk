@@ -7,25 +7,25 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.e.m;
 
 public final class a
 {
-  private static final Application.ActivityLifecycleCallbacks wGc;
+  private static final Application.ActivityLifecycleCallbacks wVO;
   
   static
   {
     AppMethodBeat.i(116071);
-    wGc = new com.tencent.mm.plugin.appbrand.z.a()
+    wVO = new com.tencent.mm.plugin.appbrand.y.a()
     {
       public final void onActivityCreated(Activity paramAnonymousActivity, Bundle paramAnonymousBundle)
       {
         AppMethodBeat.i(116064);
         try
         {
-          if (bt.nullAsNil(paramAnonymousActivity.getLocalClassName()).contains("WebView"))
+          if (bu.nullAsNil(paramAnonymousActivity.getLocalClassName()).contains("WebView"))
           {
             paramAnonymousBundle = paramAnonymousActivity.getLocalClassName();
             if (paramAnonymousActivity.getIntent() != null) {
@@ -33,9 +33,9 @@ public final class a
             }
           }
           label59:
-          for (paramAnonymousActivity = null;; paramAnonymousActivity = paramAnonymousActivity.getIntent().getStringExtra(e.m.IUZ))
+          for (paramAnonymousActivity = null;; paramAnonymousActivity = paramAnonymousActivity.getIntent().getStringExtra(e.m.JpH))
           {
-            ad.i("MicroMsg.WxPayAdUxInfoTracer", "onActivityCreated-%s, adUxInfo=%s", new Object[] { paramAnonymousBundle, paramAnonymousActivity });
+            ae.i("MicroMsg.WxPayAdUxInfoTracer", "onActivityCreated-%s, adUxInfo=%s", new Object[] { paramAnonymousBundle, paramAnonymousActivity });
             AppMethodBeat.o(116064);
             return;
           }
@@ -63,7 +63,7 @@ public final class a
     if (paramPersistableBundle == null) {}
     for (paramPersistableBundle = null;; paramPersistableBundle = paramPersistableBundle.getString("adUxInfo"))
     {
-      ad.i("MicroMsg.WxPayAdUxInfoTracer", "AppBrandRuntime(%s)-%s, adUxInfo=%s", new Object[] { paramString2, paramString1, paramPersistableBundle });
+      ae.i("MicroMsg.WxPayAdUxInfoTracer", "AppBrandRuntime(%s)-%s, adUxInfo=%s", new Object[] { paramString2, paramString1, paramPersistableBundle });
       AppMethodBeat.o(116069);
       return;
     }
@@ -76,24 +76,24 @@ public final class a
     AppMethodBeat.o(116068);
   }
   
-  public static void m(Application paramApplication)
+  public static void n(Application paramApplication)
   {
     AppMethodBeat.i(116065);
-    paramApplication.registerActivityLifecycleCallbacks(wGc);
+    paramApplication.registerActivityLifecycleCallbacks(wVO);
     AppMethodBeat.o(116065);
   }
   
   public static void r(String paramString, Object... paramVarArgs)
   {
     AppMethodBeat.i(116066);
-    ad.i("MicroMsg.WxPayAdUxInfoTracer", "trace: ".concat(String.valueOf(paramString)), paramVarArgs);
+    ae.i("MicroMsg.WxPayAdUxInfoTracer", "trace: ".concat(String.valueOf(paramString)), paramVarArgs);
     AppMethodBeat.o(116066);
   }
   
   public static void t(String paramString1, String paramString2, String paramString3, String paramString4)
   {
     AppMethodBeat.i(116070);
-    ad.i("MicroMsg.WxPayAdUxInfoTracer", "trace: scene[%s] api[%s] udUxInfo[%s] source[%s]", new Object[] { paramString1, paramString2, paramString3, paramString4 });
+    ae.i("MicroMsg.WxPayAdUxInfoTracer", "trace: scene[%s] api[%s] udUxInfo[%s] source[%s]", new Object[] { paramString1, paramString2, paramString3, paramString4 });
     AppMethodBeat.o(116070);
   }
 }

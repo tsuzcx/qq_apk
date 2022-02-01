@@ -23,16 +23,16 @@ public final class w
   extends j
   implements y
 {
-  final d.l.b.a.b.l.j MQa;
-  private final d.l.b.a.b.a.g MVT;
-  private final Map<y.a<?>, Object> MYX;
-  u MYY;
-  d.l.b.a.b.b.ac MYZ;
-  private final c<d.l.b.a.b.f.b, ad> MZa;
-  private final d.f MZb;
-  private final d.l.b.a.b.g.b MZc;
-  private final d.l.b.a.b.f.f MZd;
-  private boolean cJS;
+  final d.l.b.a.b.l.j Nnf;
+  private final d.l.b.a.b.a.g NsZ;
+  private final Map<y.a<?>, Object> Nwd;
+  u Nwe;
+  d.l.b.a.b.b.ac Nwf;
+  private final c<d.l.b.a.b.f.b, ad> Nwg;
+  private final d.f Nwh;
+  private final d.l.b.a.b.g.b Nwi;
+  private final d.l.b.a.b.f.f Nwj;
+  private boolean cKB;
   
   public w(d.l.b.a.b.f.f paramf, d.l.b.a.b.l.j paramj, d.l.b.a.b.a.g paramg)
   {
@@ -41,24 +41,24 @@ public final class w
   
   private w(d.l.b.a.b.f.f paramf, d.l.b.a.b.l.j paramj, d.l.b.a.b.a.g paramg, Map<y.a<?>, ? extends Object> paramMap)
   {
-    super(g.a.gjL(), paramf);
+    super(g.a.gon(), paramf);
     AppMethodBeat.i(57188);
-    this.MQa = paramj;
-    this.MVT = paramg;
-    this.MZc = null;
-    this.MZd = null;
-    if (!paramf.Nqp)
+    this.Nnf = paramj;
+    this.NsZ = paramg;
+    this.Nwi = null;
+    this.Nwj = null;
+    if (!paramf.NNv)
     {
       paramf = (Throwable)new IllegalArgumentException("Module name must be special: ".concat(String.valueOf(paramf)));
       AppMethodBeat.o(57188);
       throw paramf;
     }
     p.h(paramMap, "$this$toMutableMap");
-    this.MYX = ((Map)new LinkedHashMap(paramMap));
-    this.MYX.put(d.l.b.a.b.m.a.j.gug(), new d.l.b.a.b.m.a.r());
-    this.cJS = true;
-    this.MZa = this.MQa.I((d.g.a.b)new b(this));
-    this.MZb = d.g.O((a)new a(this));
+    this.Nwd = ((Map)new LinkedHashMap(paramMap));
+    this.Nwd.put(d.l.b.a.b.m.a.j.gyI(), new d.l.b.a.b.m.a.r());
+    this.cKB = true;
+    this.Nwg = this.Nnf.L((d.g.a.b)new b(this));
+    this.Nwh = d.g.O((a)new a(this));
     AppMethodBeat.o(57188);
   }
   
@@ -66,14 +66,14 @@ public final class w
   {
     AppMethodBeat.i(57179);
     p.h(paramu, "dependencies");
-    if (this.MYY == null) {}
-    for (int i = 1; (d.ac.MKp) && (i == 0); i = 0)
+    if (this.Nwe == null) {}
+    for (int i = 1; (d.ac.Nhs) && (i == 0); i = 0)
     {
       paramu = (Throwable)new AssertionError("Dependencies of " + getId() + " were already set");
       AppMethodBeat.o(57179);
       throw paramu;
     }
-    this.MYY = paramu;
+    this.Nwe = paramu;
     AppMethodBeat.o(57179);
   }
   
@@ -82,14 +82,14 @@ public final class w
     AppMethodBeat.i(57182);
     p.h(paramList, "descriptors");
     p.h(paramSet, "friends");
-    a((u)new v(paramList, paramSet, (List)d.a.v.MKE));
+    a((u)new v(paramList, paramSet, (List)d.a.v.NhH));
     AppMethodBeat.o(57182);
   }
   
-  private void gkf()
+  private void goH()
   {
     AppMethodBeat.i(57174);
-    if (!this.cJS)
+    if (!this.cKB)
     {
       Throwable localThrowable = (Throwable)new d.l.b.a.b.b.u("Accessing invalid module descriptor ".concat(String.valueOf(this)));
       AppMethodBeat.o(57174);
@@ -98,19 +98,19 @@ public final class w
     AppMethodBeat.o(57174);
   }
   
-  private final i gkg()
+  private final i goI()
   {
     AppMethodBeat.i(57178);
-    i locali = (i)this.MZb.getValue();
+    i locali = (i)this.Nwh.getValue();
     AppMethodBeat.o(57178);
     return locali;
   }
   
-  private void jn(List<w> paramList)
+  private void jw(List<w> paramList)
   {
     AppMethodBeat.i(57181);
     p.h(paramList, "descriptors");
-    a(paramList, (Set)x.MKG);
+    a(paramList, (Set)x.NhJ);
     AppMethodBeat.o(57181);
   }
   
@@ -128,7 +128,7 @@ public final class w
   {
     AppMethodBeat.i(57187);
     p.h(parama, "capability");
-    Object localObject = this.MYX.get(parama);
+    Object localObject = this.Nwd.get(parama);
     parama = localObject;
     if (!(localObject instanceof Object)) {
       parama = null;
@@ -142,8 +142,8 @@ public final class w
     AppMethodBeat.i(57177);
     p.h(paramb, "fqName");
     p.h(paramb1, "nameFilter");
-    gkf();
-    paramb = gkh().a(paramb, paramb1);
+    goH();
+    paramb = goJ().a(paramb, paramb1);
     AppMethodBeat.o(57177);
     return paramb;
   }
@@ -153,13 +153,13 @@ public final class w
     AppMethodBeat.i(57185);
     p.h(paramac, "providerForModuleContent");
     if (!isInitialized()) {}
-    for (int i = 1; (d.ac.MKp) && (i == 0); i = 0)
+    for (int i = 1; (d.ac.Nhs) && (i == 0); i = 0)
     {
       paramac = (Throwable)new AssertionError("Attempt to initialize module " + getId() + " twice");
       AppMethodBeat.o(57185);
       throw paramac;
     }
-    this.MYZ = paramac;
+    this.Nwf = paramac;
     AppMethodBeat.o(57185);
   }
   
@@ -167,7 +167,7 @@ public final class w
   {
     AppMethodBeat.i(57180);
     p.h(paramVarArgs, "descriptors");
-    jn(e.W(paramVarArgs));
+    jw(e.V(paramVarArgs));
     AppMethodBeat.o(57180);
   }
   
@@ -180,21 +180,21 @@ public final class w
       AppMethodBeat.o(57183);
       return true;
     }
-    u localu = this.MYY;
+    u localu = this.Nwe;
     if (localu == null) {
-      p.gfZ();
+      p.gkB();
     }
-    if (d.a.j.a((Iterable)localu.gkd(), paramy))
+    if (d.a.j.a((Iterable)localu.goF(), paramy))
     {
       AppMethodBeat.o(57183);
       return true;
     }
-    if (gje().contains(paramy))
+    if (gnG().contains(paramy))
     {
       AppMethodBeat.o(57183);
       return true;
     }
-    if (paramy.gje().contains(this))
+    if (paramy.gnG().contains(this))
     {
       AppMethodBeat.o(57183);
       return true;
@@ -207,8 +207,8 @@ public final class w
   {
     AppMethodBeat.i(57176);
     p.h(paramb, "fqName");
-    gkf();
-    paramb = (ad)this.MZa.invoke(paramb);
+    goH();
+    paramb = (ad)this.Nwg.invoke(paramb);
     AppMethodBeat.o(57176);
     return paramb;
   }
@@ -216,49 +216,49 @@ public final class w
   final String getId()
   {
     AppMethodBeat.i(57184);
-    String str = giD().toString();
+    String str = gnf().toString();
     p.g(str, "name.toString()");
     AppMethodBeat.o(57184);
     return str;
   }
   
-  public final l ghs()
+  public final l glU()
   {
     return null;
   }
   
-  public final d.l.b.a.b.a.g gjd()
+  public final d.l.b.a.b.a.g gnF()
   {
-    return this.MVT;
+    return this.NsZ;
   }
   
-  public final List<y> gje()
+  public final List<y> gnG()
   {
     AppMethodBeat.i(57175);
-    Object localObject = this.MYY;
+    Object localObject = this.Nwe;
     if (localObject == null)
     {
       localObject = (Throwable)new AssertionError("Dependencies of module " + getId() + " were not set");
       AppMethodBeat.o(57175);
       throw ((Throwable)localObject);
     }
-    localObject = ((u)localObject).gke();
+    localObject = ((u)localObject).goG();
     AppMethodBeat.o(57175);
     return localObject;
   }
   
-  public final d.l.b.a.b.b.ac gkh()
+  public final d.l.b.a.b.b.ac goJ()
   {
     AppMethodBeat.i(57186);
-    gkf();
-    d.l.b.a.b.b.ac localac = (d.l.b.a.b.b.ac)gkg();
+    goH();
+    d.l.b.a.b.b.ac localac = (d.l.b.a.b.b.ac)goI();
     AppMethodBeat.o(57186);
     return localac;
   }
   
   final boolean isInitialized()
   {
-    return this.MYZ != null;
+    return this.Nwf != null;
   }
   
   static final class a
@@ -283,7 +283,7 @@ public final class w
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.b.c.w
  * JD-Core Version:    0.7.0.1
  */

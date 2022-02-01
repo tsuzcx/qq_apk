@@ -5,8 +5,8 @@ import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattService;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.d.a.b.h;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.util.Arrays;
@@ -20,26 +20,26 @@ import java.util.UUID;
 public class c
 {
   public static final String TAG;
-  private static HashMap<String, Long> nQU;
-  private static HashMap<String, Long> nSb;
+  private static HashMap<String, Long> nWA;
+  private static HashMap<String, Long> nXH;
   
   static
   {
     AppMethodBeat.i(22578);
     TAG = c.class.getName();
-    nQU = new HashMap();
+    nWA = new HashMap();
     HashMap localHashMap = new HashMap();
-    nSb = localHashMap;
-    localHashMap.put(h.nRj, Long.valueOf(1L));
-    nSb.put(h.nRk, Long.valueOf(1L));
-    nSb.put(h.nRl, Long.valueOf(16L));
-    nSb.put(h.nRm, Long.valueOf(16L));
-    nSb.put(h.nRn, Long.valueOf(16L));
-    nSb.put(h.nRo, Long.valueOf(16L));
-    nQU.put(h.nRg, Long.valueOf(0L));
-    nQU.put(h.nRp, Long.valueOf(2L));
-    nQU.put(h.nRs, Long.valueOf(4L));
-    nQU.put(h.nRw, Long.valueOf(8L));
+    nXH = localHashMap;
+    localHashMap.put(h.nWP, Long.valueOf(1L));
+    nXH.put(h.nWQ, Long.valueOf(1L));
+    nXH.put(h.nWR, Long.valueOf(16L));
+    nXH.put(h.nWS, Long.valueOf(16L));
+    nXH.put(h.nWT, Long.valueOf(16L));
+    nXH.put(h.nWU, Long.valueOf(16L));
+    nWA.put(h.nWM, Long.valueOf(0L));
+    nWA.put(h.nWV, Long.valueOf(2L));
+    nWA.put(h.nWY, Long.valueOf(4L));
+    nWA.put(h.nXc, Long.valueOf(8L));
     AppMethodBeat.o(22578);
   }
   
@@ -49,12 +49,12 @@ public class c
     AppMethodBeat.i(22575);
     if (paramBluetoothGattService == null)
     {
-      ad.e(TAG, "service is null");
+      ae.e(TAG, "service is null");
       AppMethodBeat.o(22575);
       return 0L;
     }
     Object localObject = paramBluetoothGattService.getUuid().toString();
-    if ((((String)localObject).equalsIgnoreCase(h.nRg)) && (paramBluetoothGattService.getCharacteristic(UUID.fromString(h.nRj)) != null))
+    if ((((String)localObject).equalsIgnoreCase(h.nWM)) && (paramBluetoothGattService.getCharacteristic(UUID.fromString(h.nWP)) != null))
     {
       paramBluetoothGattService = paramBluetoothGattService.getCharacteristics();
       l1 = 0L;
@@ -62,7 +62,7 @@ public class c
       if (i < paramBluetoothGattService.size())
       {
         localObject = ((BluetoothGattCharacteristic)paramBluetoothGattService.get(i)).getUuid().toString();
-        localObject = (Long)nSb.get(localObject);
+        localObject = (Long)nXH.get(localObject);
         if (localObject == null) {}
         for (long l2 = 0L;; l2 = ((Long)localObject).longValue())
         {
@@ -71,15 +71,15 @@ public class c
           break;
         }
       }
-      ad.d(TAG, "wechat service, profileType = %d", new Object[] { Long.valueOf(l1) });
+      ae.d(TAG, "wechat service, profileType = %d", new Object[] { Long.valueOf(l1) });
       AppMethodBeat.o(22575);
       return l1;
     }
-    paramBluetoothGattService = (Long)nQU.get(localObject);
+    paramBluetoothGattService = (Long)nWA.get(localObject);
     if (paramBluetoothGattService == null) {}
     for (;;)
     {
-      ad.d(TAG, "service uuid = %s, profileType = %d", new Object[] { localObject, Long.valueOf(l1) });
+      ae.d(TAG, "service uuid = %s, profileType = %d", new Object[] { localObject, Long.valueOf(l1) });
       AppMethodBeat.o(22575);
       return l1;
       l1 = paramBluetoothGattService.longValue();
@@ -94,7 +94,7 @@ public class c
     AppMethodBeat.i(22577);
     if ((paramBluetoothGattCharacteristic == null) || (paramArrayOfByte == null))
     {
-      ad.e(TAG, "characteristic or recvData is null");
+      ae.e(TAG, "characteristic or recvData is null");
       AppMethodBeat.o(22577);
       return null;
     }
@@ -105,37 +105,37 @@ public class c
     if (paramBluetoothGattCharacteristic != null)
     {
       l = a(paramBluetoothGattCharacteristic);
-      ad.d(TAG, "recv data. uuid = %s, data = %s", new Object[] { localObject1, com.tencent.mm.plugin.exdevice.k.b.bg(paramArrayOfByte) });
-      if ((0L == (1L & l)) || ((!((String)localObject1).equalsIgnoreCase(f.nSD)) && (!((String)localObject1).equalsIgnoreCase(f.nSE)))) {
+      ae.d(TAG, "recv data. uuid = %s, data = %s", new Object[] { localObject1, com.tencent.mm.plugin.exdevice.k.b.bf(paramArrayOfByte) });
+      if ((0L == (1L & l)) || ((!((String)localObject1).equalsIgnoreCase(f.nYj)) && (!((String)localObject1).equalsIgnoreCase(f.nYk)))) {
         break label504;
       }
       localObject2 = new f();
       if ((paramArrayOfByte.length > 0) && ((paramArrayOfByte[0] & 0x1) != 0)) {
         break label225;
       }
-      ad.e(f.TAG, "pase step data error");
+      ae.e(f.TAG, "pase step data error");
       i = 0;
       label151:
       if (i == 0) {
         break label491;
       }
-      paramBluetoothGattCharacteristic = com.tencent.mm.plugin.exdevice.k.b.cW(localObject2);
-      ad.d(TAG, "step info. stepCount=%d, stepDistance=%d, stepColarie=%d", new Object[] { Integer.valueOf(((f)localObject2).nSF), Integer.valueOf(((f)localObject2).nSG), Integer.valueOf(((f)localObject2).nSH) });
+      paramBluetoothGattCharacteristic = com.tencent.mm.plugin.exdevice.k.b.cX(localObject2);
+      ae.d(TAG, "step info. stepCount=%d, stepDistance=%d, stepColarie=%d", new Object[] { Integer.valueOf(((f)localObject2).nYl), Integer.valueOf(((f)localObject2).nYm), Integer.valueOf(((f)localObject2).nYn) });
     }
     for (;;)
     {
       AppMethodBeat.o(22577);
       return paramBluetoothGattCharacteristic;
-      ad.e(TAG, "the characteristic has no parent service");
+      ae.e(TAG, "the characteristic has no parent service");
       break;
       label225:
-      if ((localObject1 == null) || ((!((String)localObject1).equals(f.nSD)) && (!((String)localObject1).equals(f.nSE))))
+      if ((localObject1 == null) || ((!((String)localObject1).equals(f.nYj)) && (!((String)localObject1).equals(f.nYk))))
       {
-        ad.e(f.TAG, "uuid is not correct");
+        ae.e(f.TAG, "uuid is not correct");
         i = 0;
         break label151;
       }
-      ((f)localObject2).nRB = ((String)localObject1);
+      ((f)localObject2).nXh = ((String)localObject1);
       i = 4;
       if ((paramArrayOfByte[0] & 0x2) != 0) {
         i = 7;
@@ -146,23 +146,23 @@ public class c
       }
       if (j > paramArrayOfByte.length)
       {
-        ad.e(f.TAG, "data len is not enough");
+        ae.e(f.TAG, "data len is not enough");
         i = 0;
         break label151;
       }
-      ((f)localObject2).nSF = 0;
+      ((f)localObject2).nYl = 0;
       j = 0;
       i = 1;
       while (j < 3)
       {
-        ((f)localObject2).nSF += ((paramArrayOfByte[i] & 0xFF) << j * 8);
+        ((f)localObject2).nYl += ((paramArrayOfByte[i] & 0xFF) << j * 8);
         i += 1;
         j += 1;
       }
       j = i;
       if ((paramArrayOfByte[0] & 0x2) != 0)
       {
-        ((f)localObject2).nSG = 0;
+        ((f)localObject2).nYm = 0;
         k = 0;
         for (;;)
         {
@@ -170,18 +170,18 @@ public class c
           if (k >= 3) {
             break;
           }
-          ((f)localObject2).nSG += ((paramArrayOfByte[i] & 0xFF) << k * 8);
+          ((f)localObject2).nYm += ((paramArrayOfByte[i] & 0xFF) << k * 8);
           i += 1;
           k += 1;
         }
       }
       if ((paramArrayOfByte[0] & 0x4) != 0)
       {
-        ((f)localObject2).nSH = 0;
+        ((f)localObject2).nYn = 0;
         i = 0;
         while (i < 3)
         {
-          ((f)localObject2).nSH += ((paramArrayOfByte[j] & 0xFF) << i * 8);
+          ((f)localObject2).nYn += ((paramArrayOfByte[j] & 0xFF) << i * 8);
           j += 1;
           i += 1;
         }
@@ -189,17 +189,17 @@ public class c
       i = 1;
       break label151;
       label491:
-      ad.e(TAG, "parse step data error");
+      ae.e(TAG, "parse step data error");
       paramBluetoothGattCharacteristic = null;
     }
     label504:
     boolean bool;
-    if ((0L != (0x2 & l)) && ((((String)localObject1).equalsIgnoreCase(g.nRr)) || (((String)localObject1).equalsIgnoreCase(g.nRq))))
+    if ((0L != (0x2 & l)) && ((((String)localObject1).equalsIgnoreCase(g.nWX)) || (((String)localObject1).equalsIgnoreCase(g.nWW))))
     {
       localObject2 = new g();
       if ((localObject1 == null) || (((String)localObject1).length() <= 0) || (paramArrayOfByte == null) || (paramArrayOfByte.length <= 0))
       {
-        ad.e(g.TAG, "characteristicUuid or data is null or nil");
+        ae.e(g.TAG, "characteristicUuid or data is null or nil");
         i = 0;
       }
       label909:
@@ -212,55 +212,55 @@ public class c
         label578:
         if (i != 0)
         {
-          paramBluetoothGattCharacteristic = com.tencent.mm.plugin.exdevice.k.b.cW(localObject2);
-          ad.d(TAG, "weight info. weight = %d", new Object[] { Integer.valueOf(((g)localObject2).nSL.Jw) });
+          paramBluetoothGattCharacteristic = com.tencent.mm.plugin.exdevice.k.b.cX(localObject2);
+          ae.d(TAG, "weight info. weight = %d", new Object[] { Integer.valueOf(((g)localObject2).nYr.Jw) });
           break;
-          ((g)localObject2).nRB = ((String)localObject1);
-          if (((g)localObject2).nRB.equalsIgnoreCase(g.nRq))
+          ((g)localObject2).nXh = ((String)localObject1);
+          if (((g)localObject2).nXh.equalsIgnoreCase(g.nWW))
           {
             if (4 > paramArrayOfByte.length)
             {
-              ad.e(g.TAG, "weight scale feature characteristic data is a 32bit value, but current value len is %d", new Object[] { Integer.valueOf(paramArrayOfByte.length) });
+              ae.e(g.TAG, "weight scale feature characteristic data is a 32bit value, but current value len is %d", new Object[] { Integer.valueOf(paramArrayOfByte.length) });
               i = 0;
               continue;
             }
-            ((g)localObject2).nSK = new g.c();
-            paramBluetoothGattCharacteristic = ((g)localObject2).nSK;
+            ((g)localObject2).nYq = new g.c();
+            paramBluetoothGattCharacteristic = ((g)localObject2).nYq;
             if ((paramArrayOfByte[0] & 0x1) != 0)
             {
               bool = true;
-              paramBluetoothGattCharacteristic.nSP = bool;
-              paramBluetoothGattCharacteristic = ((g)localObject2).nSK;
+              paramBluetoothGattCharacteristic.nYv = bool;
+              paramBluetoothGattCharacteristic = ((g)localObject2).nYq;
               if ((paramArrayOfByte[0] & 0x2) == 0) {
                 break label909;
               }
               bool = true;
-              paramBluetoothGattCharacteristic.nSQ = bool;
-              paramBluetoothGattCharacteristic = ((g)localObject2).nSK;
+              paramBluetoothGattCharacteristic.nYw = bool;
+              paramBluetoothGattCharacteristic = ((g)localObject2).nYq;
               if ((paramArrayOfByte[0] & 0x4) == 0) {
                 break label915;
               }
               bool = true;
-              paramBluetoothGattCharacteristic.nSR = bool;
-              ((g)localObject2).nSK.nSS = ((byte)((paramArrayOfByte[0] & 0x78) >> 3));
-              ((g)localObject2).nSK.nST = ((byte)(((paramArrayOfByte[0] & 0x80) >> 7) + ((paramArrayOfByte[1] & 0x3) << 1)));
+              paramBluetoothGattCharacteristic.nYx = bool;
+              ((g)localObject2).nYq.nYy = ((byte)((paramArrayOfByte[0] & 0x78) >> 3));
+              ((g)localObject2).nYq.nYz = ((byte)(((paramArrayOfByte[0] & 0x80) >> 7) + ((paramArrayOfByte[1] & 0x3) << 1)));
               str = g.TAG;
-              if (!((g)localObject2).nSK.nSP) {
+              if (!((g)localObject2).nYq.nYv) {
                 break label921;
               }
               paramBluetoothGattCharacteristic = "true";
-              if (!((g)localObject2).nSK.nSQ) {
+              if (!((g)localObject2).nYq.nYw) {
                 break label928;
               }
               paramArrayOfByte = "true";
-              if (!((g)localObject2).nSK.nSR) {
+              if (!((g)localObject2).nYq.nYx) {
                 break label935;
               }
               localObject1 = "true";
-              ad.d(str, "timestampSupported = %s, multipleUsersSupported = %s, BMISupported = %s, weightResolution = %d, heightResolution = %d", new Object[] { paramBluetoothGattCharacteristic, paramArrayOfByte, localObject1, Byte.valueOf(((g)localObject2).nSK.nSS), Byte.valueOf(((g)localObject2).nSK.nST) });
+              ae.d(str, "timestampSupported = %s, multipleUsersSupported = %s, BMISupported = %s, weightResolution = %d, heightResolution = %d", new Object[] { paramBluetoothGattCharacteristic, paramArrayOfByte, localObject1, Byte.valueOf(((g)localObject2).nYq.nYy), Byte.valueOf(((g)localObject2).nYq.nYz) });
             }
           }
-          while (!((g)localObject2).nRB.equalsIgnoreCase(g.nRr)) {
+          while (!((g)localObject2).nXh.equalsIgnoreCase(g.nWX)) {
             for (;;)
             {
               String str;
@@ -302,62 +302,62 @@ public class c
       }
       if (j > paramArrayOfByte.length)
       {
-        ad.e(g.TAG, "data len is not enough for parse. current len = %d, needed len = %d", new Object[] { Integer.valueOf(paramArrayOfByte.length), Integer.valueOf(j) });
+        ae.e(g.TAG, "data len is not enough for parse. current len = %d, needed len = %d", new Object[] { Integer.valueOf(paramArrayOfByte.length), Integer.valueOf(j) });
         i = 0;
         break label578;
       }
-      ((g)localObject2).nSL = new g.b();
-      paramBluetoothGattCharacteristic = ((g)localObject2).nSL;
+      ((g)localObject2).nYr = new g.b();
+      paramBluetoothGattCharacteristic = ((g)localObject2).nYr;
       if ((k & 0x1) != 0)
       {
         bool = true;
-        paramBluetoothGattCharacteristic.nSM = bool;
-        ((g)localObject2).nSL.Jw = ((paramArrayOfByte[1] & 0xFF) + ((paramArrayOfByte[2] & 0xFF) << 8));
+        paramBluetoothGattCharacteristic.nYs = bool;
+        ((g)localObject2).nYr.Jw = ((paramArrayOfByte[1] & 0xFF) + ((paramArrayOfByte[2] & 0xFF) << 8));
         if ((k & 0x2) == 0) {
           break label3914;
         }
-        ((g)localObject2).nSL.nSN = new g.a();
-        paramBluetoothGattCharacteristic = ((g)localObject2).nSL.nSN;
+        ((g)localObject2).nYr.nYt = new g.a();
+        paramBluetoothGattCharacteristic = ((g)localObject2).nYr.nYt;
         localObject1 = g.TAG;
         if (paramArrayOfByte != null) {
           break label1420;
         }
         i = 0;
         label1140:
-        ad.d((String)localObject1, "data size = %d, offset = %d, lenght = %d", new Object[] { Integer.valueOf(i), Integer.valueOf(3), Integer.valueOf(7) });
+        ae.d((String)localObject1, "data size = %d, offset = %d, lenght = %d", new Object[] { Integer.valueOf(i), Integer.valueOf(3), Integer.valueOf(7) });
         if ((paramArrayOfByte != null) && (paramArrayOfByte.length >= 10)) {
           break label1426;
         }
-        ad.e(g.TAG, "data input error");
+        ae.e(g.TAG, "data input error");
       }
       for (i = 10;; i = 3)
       {
         j = i;
         if ((k & 0x4) != 0)
         {
-          ((g)localObject2).nSL.nRR = (paramArrayOfByte[i] & 0xFF);
+          ((g)localObject2).nYr.nXx = (paramArrayOfByte[i] & 0xFF);
           j = i + 1;
         }
         if ((k & 0x8) != 0)
         {
-          ((g)localObject2).nSL.nSO = ((paramArrayOfByte[j] & 0xFF) + ((paramArrayOfByte[(j + 1)] & 0xFF) << 8));
+          ((g)localObject2).nYr.nYu = ((paramArrayOfByte[j] & 0xFF) + ((paramArrayOfByte[(j + 1)] & 0xFF) << 8));
           i = j + 2;
-          paramBluetoothGattCharacteristic = ((g)localObject2).nSL;
+          paramBluetoothGattCharacteristic = ((g)localObject2).nYr;
           j = paramArrayOfByte[i];
           paramBluetoothGattCharacteristic.mHeight = (((paramArrayOfByte[(i + 1)] & 0xFF) << 8) + (j & 0xFF));
         }
         localObject1 = g.TAG;
-        if (((g)localObject2).nSL.nSM)
+        if (((g)localObject2).nYr.nYs)
         {
           paramBluetoothGattCharacteristic = "lb&inch";
-          i = ((g)localObject2).nSL.Jw;
-          if (((g)localObject2).nSL.nSN != null) {
+          i = ((g)localObject2).nYr.Jw;
+          if (((g)localObject2).nYr.nYt != null) {
             break label1591;
           }
         }
         for (paramArrayOfByte = "null";; paramArrayOfByte = "object")
         {
-          ad.d((String)localObject1, "WeightAndHeightUnit = %s, Weight = %d, TimeStamp = %s, UserId = %d, BMI = %d, Height = %d", new Object[] { paramBluetoothGattCharacteristic, Integer.valueOf(i), paramArrayOfByte, Integer.valueOf(((g)localObject2).nSL.nRR), Integer.valueOf(((g)localObject2).nSL.nSO), Integer.valueOf(((g)localObject2).nSL.mHeight) });
+          ae.d((String)localObject1, "WeightAndHeightUnit = %s, Weight = %d, TimeStamp = %s, UserId = %d, BMI = %d, Height = %d", new Object[] { paramBluetoothGattCharacteristic, Integer.valueOf(i), paramArrayOfByte, Integer.valueOf(((g)localObject2).nYr.nXx), Integer.valueOf(((g)localObject2).nYr.nYu), Integer.valueOf(((g)localObject2).nYr.mHeight) });
           break;
           bool = false;
           break label1066;
@@ -366,101 +366,101 @@ public class c
           paramBluetoothGattCharacteristic.mYear = ((paramArrayOfByte[3] & 0xFF) + ((paramArrayOfByte[4] & 0xFF) << 8));
           paramBluetoothGattCharacteristic.mMonth = (paramArrayOfByte[5] & 0xFF);
           paramBluetoothGattCharacteristic.mDay = (paramArrayOfByte[6] & 0xFF);
-          paramBluetoothGattCharacteristic.nRY = (paramArrayOfByte[7] & 0xFF);
-          paramBluetoothGattCharacteristic.nRZ = (paramArrayOfByte[8] & 0xFF);
-          paramBluetoothGattCharacteristic.nSa = (paramArrayOfByte[9] & 0xFF);
-          ad.d(g.TAG, "year = %d, month = %d, day = %d, hours = %d, minutes = %d, seconds = %d", new Object[] { Integer.valueOf(paramBluetoothGattCharacteristic.mYear), Integer.valueOf(paramBluetoothGattCharacteristic.mMonth), Integer.valueOf(paramBluetoothGattCharacteristic.mDay), Integer.valueOf(paramBluetoothGattCharacteristic.nRY), Integer.valueOf(paramBluetoothGattCharacteristic.nRZ), Integer.valueOf(paramBluetoothGattCharacteristic.nSa) });
+          paramBluetoothGattCharacteristic.nXE = (paramArrayOfByte[7] & 0xFF);
+          paramBluetoothGattCharacteristic.nXF = (paramArrayOfByte[8] & 0xFF);
+          paramBluetoothGattCharacteristic.nXG = (paramArrayOfByte[9] & 0xFF);
+          ae.d(g.TAG, "year = %d, month = %d, day = %d, hours = %d, minutes = %d, seconds = %d", new Object[] { Integer.valueOf(paramBluetoothGattCharacteristic.mYear), Integer.valueOf(paramBluetoothGattCharacteristic.mMonth), Integer.valueOf(paramBluetoothGattCharacteristic.mDay), Integer.valueOf(paramBluetoothGattCharacteristic.nXE), Integer.valueOf(paramBluetoothGattCharacteristic.nXF), Integer.valueOf(paramBluetoothGattCharacteristic.nXG) });
           break label1194;
           paramBluetoothGattCharacteristic = "kg&meter";
           break label1317;
         }
-        ad.e(TAG, "parse weight scale data error");
+        ae.e(TAG, "parse weight scale data error");
         paramBluetoothGattCharacteristic = null;
         break;
         int m;
-        if ((0L != (0x4 & l)) && ((((String)localObject1).equalsIgnoreCase(d.nRD)) || (((String)localObject1).equalsIgnoreCase(d.nSc)) || (((String)localObject1).equalsIgnoreCase(d.nSd))))
+        if ((0L != (0x4 & l)) && ((((String)localObject1).equalsIgnoreCase(d.nXj)) || (((String)localObject1).equalsIgnoreCase(d.nXI)) || (((String)localObject1).equalsIgnoreCase(d.nXJ))))
         {
           paramBluetoothGattCharacteristic = new d();
           if ((localObject1 == null) || (((String)localObject1).length() <= 0) || (paramArrayOfByte == null)) {
-            ad.e(d.TAG, "characteristicUuid or data is null");
+            ae.e(d.TAG, "characteristicUuid or data is null");
           }
           for (;;)
           {
             if (i != 0)
             {
-              paramBluetoothGattCharacteristic = com.tencent.mm.plugin.exdevice.k.b.cW(paramBluetoothGattCharacteristic);
+              paramBluetoothGattCharacteristic = com.tencent.mm.plugin.exdevice.k.b.cX(paramBluetoothGattCharacteristic);
               break;
-              paramBluetoothGattCharacteristic.nRB = ((String)localObject1);
+              paramBluetoothGattCharacteristic.nXh = ((String)localObject1);
               k = paramArrayOfByte.length;
-              if (paramBluetoothGattCharacteristic.nRB.equalsIgnoreCase(d.nRD))
+              if (paramBluetoothGattCharacteristic.nXh.equalsIgnoreCase(d.nXj))
               {
                 if (paramArrayOfByte.length < 2)
                 {
-                  ad.e(d.TAG, "Received data length is not right:".concat(String.valueOf(k)));
+                  ae.e(d.TAG, "Received data length is not right:".concat(String.valueOf(k)));
                   continue;
                 }
-                paramBluetoothGattCharacteristic.nSk = new d.a(paramBluetoothGattCharacteristic);
+                paramBluetoothGattCharacteristic.nXQ = new d.a(paramBluetoothGattCharacteristic);
                 m = paramArrayOfByte[0];
-                ad.d(d.TAG, "flag=".concat(String.valueOf(m)));
+                ae.d(d.TAG, "flag=".concat(String.valueOf(m)));
                 if (((m & 0x1) == 1) && (k >= 3))
                 {
-                  ad.d(d.TAG, "Value Format = uint16");
+                  ae.d(d.TAG, "Value Format = uint16");
                   i = paramArrayOfByte[2];
-                  paramBluetoothGattCharacteristic.nSk.nSl = ((i << 8 & 0xFF00 & 0xFF00) + (paramArrayOfByte[1] & 0xFF));
+                  paramBluetoothGattCharacteristic.nXQ.nXR = ((i << 8 & 0xFF00 & 0xFF00) + (paramArrayOfByte[1] & 0xFF));
                   i = 3;
-                  ad.v(d.TAG, "Data received from HR " + paramBluetoothGattCharacteristic.nSk.nSl);
+                  ae.v(d.TAG, "Data received from HR " + paramBluetoothGattCharacteristic.nXQ.nXR);
                   if ((m & 0x6) != 4) {
                     break label2153;
                   }
-                  ad.d(d.TAG, "Sensor Contact feature is supported, but contact is not detected");
-                  paramBluetoothGattCharacteristic.nSk.nSm = 1;
+                  ae.d(d.TAG, "Sensor Contact feature is supported, but contact is not detected");
+                  paramBluetoothGattCharacteristic.nXQ.nXS = 1;
                   j = i;
                   if ((m & 0x8) == 8)
                   {
                     j = i;
                     if (k >= i + 2)
                     {
-                      ad.d(d.TAG, "Energy Expend Present");
+                      ae.d(d.TAG, "Energy Expend Present");
                       j = paramArrayOfByte[(i + 1)] << 8 & 0xFF00;
-                      paramBluetoothGattCharacteristic.nSk.nSn = ((paramArrayOfByte[i] & 0xFF) + (j & 0xFF00));
-                      ad.v("H7ConnectThread", "energyExp from HR energyExph " + j + " " + paramBluetoothGattCharacteristic.nSk.nSn);
+                      paramBluetoothGattCharacteristic.nXQ.nXT = ((paramArrayOfByte[i] & 0xFF) + (j & 0xFF00));
+                      ae.v("H7ConnectThread", "energyExp from HR energyExph " + j + " " + paramBluetoothGattCharacteristic.nXQ.nXT);
                       j = i + 2;
                     }
                   }
                   if (((m & 0x10) == 16) && (k >= j + 2))
                   {
-                    ad.d(d.TAG, "RR Interval Present");
+                    ae.d(d.TAG, "RR Interval Present");
                     i = (paramArrayOfByte[(j + 1)] & 0xFF) << 8;
-                    paramBluetoothGattCharacteristic.nSk.nSo = ((paramArrayOfByte[j] & 0xFF) + (i & 0xFF00));
-                    ad.v(d.TAG, "rrInterval from HR rrIntervalh" + i + " " + paramBluetoothGattCharacteristic.nSk.nSo);
+                    paramBluetoothGattCharacteristic.nXQ.nXU = ((paramArrayOfByte[j] & 0xFF) + (i & 0xFF00));
+                    ae.v(d.TAG, "rrInterval from HR rrIntervalh" + i + " " + paramBluetoothGattCharacteristic.nXQ.nXU);
                   }
                 }
               }
               label2153:
-              while (!paramBluetoothGattCharacteristic.nRB.equalsIgnoreCase(d.nSc)) {
+              while (!paramBluetoothGattCharacteristic.nXh.equalsIgnoreCase(d.nXI)) {
                 for (;;)
                 {
                   i = 1;
                   break;
                   if (k >= 2)
                   {
-                    ad.d(d.TAG, "Value Format = uint8");
-                    paramBluetoothGattCharacteristic.nSk.nSl = (paramArrayOfByte[1] & 0xFF);
+                    ae.d(d.TAG, "Value Format = uint8");
+                    paramBluetoothGattCharacteristic.nXQ.nXR = (paramArrayOfByte[1] & 0xFF);
                     i = 2;
                   }
                   else
                   {
-                    ad.d(d.TAG, "receive data error");
+                    ae.d(d.TAG, "receive data error");
                     break;
                     if ((m & 0x6) == 6)
                     {
-                      ad.d(d.TAG, "Sensor Contact feature is supported and contact is detected");
-                      paramBluetoothGattCharacteristic.nSk.nSm = 2;
+                      ae.d(d.TAG, "Sensor Contact feature is supported and contact is detected");
+                      paramBluetoothGattCharacteristic.nXQ.nXS = 2;
                     }
                     else
                     {
-                      ad.d(d.TAG, "Sensor Contact feature is not supported in the current connection");
-                      paramBluetoothGattCharacteristic.nSk.nSm = 0;
+                      ae.d(d.TAG, "Sensor Contact feature is not supported in the current connection");
+                      paramBluetoothGattCharacteristic.nXQ.nXS = 0;
                     }
                   }
                 }
@@ -468,157 +468,157 @@ public class c
               switch (paramArrayOfByte[0])
               {
               default: 
-                paramBluetoothGattCharacteristic.nSj = "Unknown";
+                paramBluetoothGattCharacteristic.nXP = "Unknown";
               }
               for (;;)
               {
-                ad.d(d.TAG, "position=" + paramBluetoothGattCharacteristic.nSj);
+                ae.d(d.TAG, "position=" + paramBluetoothGattCharacteristic.nXP);
                 break;
-                paramBluetoothGattCharacteristic.nSj = "Other";
+                paramBluetoothGattCharacteristic.nXP = "Other";
                 continue;
-                paramBluetoothGattCharacteristic.nSj = "Chest";
+                paramBluetoothGattCharacteristic.nXP = "Chest";
                 continue;
-                paramBluetoothGattCharacteristic.nSj = "Wrist";
+                paramBluetoothGattCharacteristic.nXP = "Wrist";
                 continue;
-                paramBluetoothGattCharacteristic.nSj = "Finger";
+                paramBluetoothGattCharacteristic.nXP = "Finger";
                 continue;
-                paramBluetoothGattCharacteristic.nSj = "Hand";
+                paramBluetoothGattCharacteristic.nXP = "Hand";
                 continue;
-                paramBluetoothGattCharacteristic.nSj = "Ear Lobe";
+                paramBluetoothGattCharacteristic.nXP = "Ear Lobe";
                 continue;
-                paramBluetoothGattCharacteristic.nSj = "Foot";
+                paramBluetoothGattCharacteristic.nXP = "Foot";
               }
             }
           }
-          ad.e(TAG, "parse heart rate data error");
+          ae.e(TAG, "parse heart rate data error");
           paramBluetoothGattCharacteristic = null;
           break;
         }
-        if ((0L != (0x8 & l)) && ((((String)localObject1).equalsIgnoreCase(b.nRD)) || (((String)localObject1).equalsIgnoreCase(b.nRE)) || (((String)localObject1).equalsIgnoreCase(b.nRF))))
+        if ((0L != (0x8 & l)) && ((((String)localObject1).equalsIgnoreCase(b.nXj)) || (((String)localObject1).equalsIgnoreCase(b.nXk)) || (((String)localObject1).equalsIgnoreCase(b.nXl))))
         {
           paramBluetoothGattCharacteristic = new b();
           if ((localObject1 == null) || (((String)localObject1).length() <= 0) || (paramArrayOfByte == null))
           {
-            ad.e(b.TAG, "characteristicUuid or data is null");
+            ae.e(b.TAG, "characteristicUuid or data is null");
             i = j;
           }
           for (;;)
           {
             if (i != 0)
             {
-              paramBluetoothGattCharacteristic = com.tencent.mm.plugin.exdevice.k.b.cW(paramBluetoothGattCharacteristic);
+              paramBluetoothGattCharacteristic = com.tencent.mm.plugin.exdevice.k.b.cX(paramBluetoothGattCharacteristic);
               break;
-              paramBluetoothGattCharacteristic.nRB = ((String)localObject1);
+              paramBluetoothGattCharacteristic.nXh = ((String)localObject1);
               k = paramArrayOfByte.length;
-              if (paramBluetoothGattCharacteristic.nRB.equalsIgnoreCase(b.nRD))
+              if (paramBluetoothGattCharacteristic.nXh.equalsIgnoreCase(b.nXj))
               {
                 if (k < 7)
                 {
-                  ad.e(b.TAG, "data len is not right.");
+                  ae.e(b.TAG, "data len is not right.");
                   i = j;
                   continue;
                 }
-                paramBluetoothGattCharacteristic.nRL = new b.b(paramBluetoothGattCharacteristic);
+                paramBluetoothGattCharacteristic.nXr = new b.b(paramBluetoothGattCharacteristic);
                 m = paramArrayOfByte[0];
-                ad.d(b.TAG, "flag=".concat(String.valueOf(m)));
+                ae.d(b.TAG, "flag=".concat(String.valueOf(m)));
                 if ((m & 0x1) != 0)
                 {
-                  ad.d(b.TAG, "the value unit is kPa.");
-                  paramBluetoothGattCharacteristic.nRL.nRO = true;
-                  paramBluetoothGattCharacteristic.nRL.nRV = b.M(paramArrayOfByte, 1);
-                  paramBluetoothGattCharacteristic.nRL.nRW = b.M(paramArrayOfByte, 3);
-                  paramBluetoothGattCharacteristic.nRL.nRX = b.M(paramArrayOfByte, 5);
+                  ae.d(b.TAG, "the value unit is kPa.");
+                  paramBluetoothGattCharacteristic.nXr.nXu = true;
+                  paramBluetoothGattCharacteristic.nXr.nXB = b.M(paramArrayOfByte, 1);
+                  paramBluetoothGattCharacteristic.nXr.nXC = b.M(paramArrayOfByte, 3);
+                  paramBluetoothGattCharacteristic.nXr.nXD = b.M(paramArrayOfByte, 5);
                   i = 7;
                   if (((m & 0x2) == 0) || (k < 14)) {
                     break label2893;
                   }
-                  ad.d(b.TAG, "TimeStamp Present.");
-                  paramBluetoothGattCharacteristic.nRL.nRT.N(paramArrayOfByte, 7);
+                  ae.d(b.TAG, "TimeStamp Present.");
+                  paramBluetoothGattCharacteristic.nXr.nXz.N(paramArrayOfByte, 7);
                   i = 14;
                   label2653:
                   if (((m & 0x4) == 0) || (k < i + 2)) {
                     break label2905;
                   }
-                  ad.d(b.TAG, "PulseRate Present.");
-                  paramBluetoothGattCharacteristic.nRL.nRQ = ((int)b.M(paramArrayOfByte, i));
+                  ae.d(b.TAG, "PulseRate Present.");
+                  paramBluetoothGattCharacteristic.nXr.nXw = ((int)b.M(paramArrayOfByte, i));
                   i += 2;
-                  ad.d(b.TAG, "PulseRate =" + paramBluetoothGattCharacteristic.nRL.nRQ);
+                  ae.d(b.TAG, "PulseRate =" + paramBluetoothGattCharacteristic.nXr.nXw);
                   if ((m & 0x8) == 0) {
                     break label2917;
                   }
-                  ad.d(b.TAG, "UserId Present.");
-                  localObject1 = paramBluetoothGattCharacteristic.nRL;
+                  ae.d(b.TAG, "UserId Present.");
+                  localObject1 = paramBluetoothGattCharacteristic.nXr;
                   j = i + 1;
-                  ((b.b)localObject1).nRR = paramArrayOfByte[i];
-                  ad.d(b.TAG, "UserId = " + paramBluetoothGattCharacteristic.nRL.nRR);
+                  ((b.b)localObject1).nXx = paramArrayOfByte[i];
+                  ae.d(b.TAG, "UserId = " + paramBluetoothGattCharacteristic.nXr.nXx);
                   i = j;
                   label2789:
                   if ((m & 0x10) == 0) {
                     break label2929;
                   }
-                  ad.d(b.TAG, "MeasurementStatus Present.");
+                  ae.d(b.TAG, "MeasurementStatus Present.");
                   j = paramArrayOfByte[(i + 1)];
-                  paramBluetoothGattCharacteristic.nRL.nRS = ((paramArrayOfByte[i] & 0xFF) + (j << 8 & 0xFF00 & 0xFF00));
-                  ad.d(b.TAG, "MeasurementStatus = " + paramBluetoothGattCharacteristic.nRL.nRS);
+                  paramBluetoothGattCharacteristic.nXr.nXy = ((paramArrayOfByte[i] & 0xFF) + (j << 8 & 0xFF00 & 0xFF00));
+                  ae.d(b.TAG, "MeasurementStatus = " + paramBluetoothGattCharacteristic.nXr.nXy);
                 }
               }
               for (;;)
               {
                 i = 1;
                 break;
-                ad.d(b.TAG, "the value unit is mmHg.");
-                paramBluetoothGattCharacteristic.nRL.nRO = false;
+                ae.d(b.TAG, "the value unit is mmHg.");
+                paramBluetoothGattCharacteristic.nXr.nXu = false;
                 break label2574;
-                ad.d(b.TAG, "TimeStamp not Present.");
+                ae.d(b.TAG, "TimeStamp not Present.");
                 break label2653;
                 label2905:
-                ad.d(b.TAG, "PulseRate not Present.");
+                ae.d(b.TAG, "PulseRate not Present.");
                 break label2723;
                 label2917:
-                ad.d(b.TAG, "UserId not Present.");
+                ae.d(b.TAG, "UserId not Present.");
                 break label2789;
                 label2929:
-                ad.d(b.TAG, "MeasurementStatus not Present.");
+                ae.d(b.TAG, "MeasurementStatus not Present.");
                 continue;
-                if (paramBluetoothGattCharacteristic.nRB.equalsIgnoreCase(b.nRE))
+                if (paramBluetoothGattCharacteristic.nXh.equalsIgnoreCase(b.nXk))
                 {
                   if (k < 3)
                   {
-                    ad.e(b.TAG, "data len is not right.");
+                    ae.e(b.TAG, "data len is not right.");
                     i = j;
                     break;
                   }
-                  paramBluetoothGattCharacteristic.nRM = new b.a(paramBluetoothGattCharacteristic);
+                  paramBluetoothGattCharacteristic.nXs = new b.a(paramBluetoothGattCharacteristic);
                   m = paramArrayOfByte[0];
-                  ad.d(b.TAG, "flag=".concat(String.valueOf(m)));
+                  ae.d(b.TAG, "flag=".concat(String.valueOf(m)));
                   if ((m & 0x1) != 0)
                   {
-                    ad.d(b.TAG, "the value unit is kPa.");
-                    paramBluetoothGattCharacteristic.nRM.nRO = true;
+                    ae.d(b.TAG, "the value unit is kPa.");
+                    paramBluetoothGattCharacteristic.nXs.nXu = true;
                     label3032:
-                    paramBluetoothGattCharacteristic.nRM.nRP = b.M(paramArrayOfByte, 1);
+                    paramBluetoothGattCharacteristic.nXs.nXv = b.M(paramArrayOfByte, 1);
                     if (((m & 0x2) == 0) || (k < 10)) {
                       break label3321;
                     }
-                    ad.d(b.TAG, "TimeStamp Present.");
-                    paramBluetoothGattCharacteristic.nRM.nRT.N(paramArrayOfByte, 3);
+                    ae.d(b.TAG, "TimeStamp Present.");
+                    paramBluetoothGattCharacteristic.nXs.nXz.N(paramArrayOfByte, 3);
                     i = 10;
                     if (((m & 0x4) == 0) || (k < i + 2)) {
                       break label3335;
                     }
-                    ad.d(b.TAG, "PulseRate Present.");
-                    paramBluetoothGattCharacteristic.nRM.nRQ = ((int)b.M(paramArrayOfByte, i));
+                    ae.d(b.TAG, "PulseRate Present.");
+                    paramBluetoothGattCharacteristic.nXs.nXw = ((int)b.M(paramArrayOfByte, i));
                     i += 2;
-                    ad.d(b.TAG, "PulseRate =" + paramBluetoothGattCharacteristic.nRM.nRQ);
+                    ae.d(b.TAG, "PulseRate =" + paramBluetoothGattCharacteristic.nXs.nXw);
                     label3153:
                     if ((m & 0x8) == 0) {
                       break label3347;
                     }
-                    ad.d(b.TAG, "UserId Present.");
-                    localObject1 = paramBluetoothGattCharacteristic.nRM;
+                    ae.d(b.TAG, "UserId Present.");
+                    localObject1 = paramBluetoothGattCharacteristic.nXs;
                     j = i + 1;
-                    ((b.a)localObject1).nRR = paramArrayOfByte[i];
-                    ad.d(b.TAG, "UserId = " + paramBluetoothGattCharacteristic.nRM.nRR);
+                    ((b.a)localObject1).nXx = paramArrayOfByte[i];
+                    ae.d(b.TAG, "UserId = " + paramBluetoothGattCharacteristic.nXs.nXx);
                     i = j;
                   }
                   for (;;)
@@ -626,50 +626,50 @@ public class c
                     if ((m & 0x10) == 0) {
                       break label3359;
                     }
-                    ad.d(b.TAG, "MeasurementStatus Present.");
+                    ae.d(b.TAG, "MeasurementStatus Present.");
                     j = paramArrayOfByte[(i + 1)];
-                    paramBluetoothGattCharacteristic.nRM.nRS = ((paramArrayOfByte[i] & 0xFF) + (j << 8 & 0xFF00 & 0xFF00));
-                    ad.d(b.TAG, "MeasurementStatus = " + paramBluetoothGattCharacteristic.nRM.nRS);
+                    paramBluetoothGattCharacteristic.nXs.nXy = ((paramArrayOfByte[i] & 0xFF) + (j << 8 & 0xFF00 & 0xFF00));
+                    ae.d(b.TAG, "MeasurementStatus = " + paramBluetoothGattCharacteristic.nXs.nXy);
                     break;
-                    ad.d(b.TAG, "the value unit is mmHg.");
-                    paramBluetoothGattCharacteristic.nRM.nRO = false;
+                    ae.d(b.TAG, "the value unit is mmHg.");
+                    paramBluetoothGattCharacteristic.nXs.nXu = false;
                     break label3032;
                     label3321:
-                    ad.d(b.TAG, "TimeStamp not Present.");
+                    ae.d(b.TAG, "TimeStamp not Present.");
                     i = 3;
                     break label3083;
-                    ad.d(b.TAG, "PulseRate not Present.");
+                    ae.d(b.TAG, "PulseRate not Present.");
                     break label3153;
-                    ad.d(b.TAG, "UserId not Present.");
+                    ae.d(b.TAG, "UserId not Present.");
                   }
-                  ad.d(b.TAG, "MeasurementStatus not Present.");
+                  ae.d(b.TAG, "MeasurementStatus not Present.");
                   continue;
                 }
-                if (paramBluetoothGattCharacteristic.nRB.equalsIgnoreCase(b.nRF))
+                if (paramBluetoothGattCharacteristic.nXh.equalsIgnoreCase(b.nXl))
                 {
-                  ad.d(b.TAG, "Blood Pressure Feature Characteristic.");
+                  ae.d(b.TAG, "Blood Pressure Feature Characteristic.");
                   if (k < 2)
                   {
-                    ad.e(b.TAG, "data len is not right.");
+                    ae.e(b.TAG, "data len is not right.");
                     i = j;
                     break;
                   }
-                  paramBluetoothGattCharacteristic.nRN = ((paramArrayOfByte[1] << 8 & 0xFF00 & 0xFF00) + (paramArrayOfByte[0] & 0xFF));
-                  ad.d(b.TAG, "bloodPressureFeatureParameters=" + paramBluetoothGattCharacteristic.nRN);
+                  paramBluetoothGattCharacteristic.nXt = ((paramArrayOfByte[1] << 8 & 0xFF00 & 0xFF00) + (paramArrayOfByte[0] & 0xFF));
+                  ae.d(b.TAG, "bloodPressureFeatureParameters=" + paramBluetoothGattCharacteristic.nXt);
                 }
               }
             }
           }
-          ad.e(TAG, "parse blood pressure data error");
+          ae.e(TAG, "parse blood pressure data error");
           paramBluetoothGattCharacteristic = null;
           break;
         }
-        if ((0L != (l & 0x10)) && ((((String)localObject1).equalsIgnoreCase(e.nSq)) || (((String)localObject1).equalsIgnoreCase(e.nSr)) || (((String)localObject1).equalsIgnoreCase(e.nSs)) || (((String)localObject1).equalsIgnoreCase(e.nSt))))
+        if ((0L != (l & 0x10)) && ((((String)localObject1).equalsIgnoreCase(e.nXW)) || (((String)localObject1).equalsIgnoreCase(e.nXX)) || (((String)localObject1).equalsIgnoreCase(e.nXY)) || (((String)localObject1).equalsIgnoreCase(e.nXZ))))
         {
           paramBluetoothGattCharacteristic = new e();
           if ((localObject1 == null) || (((String)localObject1).length() <= 0) || (paramArrayOfByte == null))
           {
-            ad.e(e.TAG, "characteristicUuid or data is null");
+            ae.e(e.TAG, "characteristicUuid or data is null");
             i = k;
           }
           for (;;)
@@ -677,21 +677,21 @@ public class c
             if (i == 0) {
               break label3877;
             }
-            paramBluetoothGattCharacteristic = com.tencent.mm.plugin.exdevice.k.b.cW(paramBluetoothGattCharacteristic);
+            paramBluetoothGattCharacteristic = com.tencent.mm.plugin.exdevice.k.b.cX(paramBluetoothGattCharacteristic);
             break;
-            paramBluetoothGattCharacteristic.nRB = ((String)localObject1);
-            if (paramBluetoothGattCharacteristic.nRB.equalsIgnoreCase(e.nSq))
+            paramBluetoothGattCharacteristic.nXh = ((String)localObject1);
+            if (paramBluetoothGattCharacteristic.nXh.equalsIgnoreCase(e.nXW))
             {
               if (paramArrayOfByte.length != 3)
               {
-                ad.e(e.TAG, "Data length incorrect");
+                ae.e(e.TAG, "Data length incorrect");
                 i = k;
               }
               else
               {
-                paramBluetoothGattCharacteristic.nSu = paramArrayOfByte[0];
-                paramBluetoothGattCharacteristic.nSv = paramArrayOfByte[1];
-                paramBluetoothGattCharacteristic.nSw = paramArrayOfByte[2];
+                paramBluetoothGattCharacteristic.nYa = paramArrayOfByte[0];
+                paramBluetoothGattCharacteristic.nYb = paramArrayOfByte[1];
+                paramBluetoothGattCharacteristic.nYc = paramArrayOfByte[2];
               }
             }
             else
@@ -700,60 +700,60 @@ public class c
               {
                 i = 1;
                 break;
-                if (paramBluetoothGattCharacteristic.nRB.equalsIgnoreCase(e.nSr))
+                if (paramBluetoothGattCharacteristic.nXh.equalsIgnoreCase(e.nXX))
                 {
                   if (paramArrayOfByte.length != 1)
                   {
-                    ad.e(e.TAG, "Data length incorrect");
+                    ae.e(e.TAG, "Data length incorrect");
                     i = k;
                     break;
                   }
-                  paramBluetoothGattCharacteristic.nSx = paramArrayOfByte[0];
+                  paramBluetoothGattCharacteristic.nYd = paramArrayOfByte[0];
                   continue;
                 }
-                if (paramBluetoothGattCharacteristic.nRB.equalsIgnoreCase(e.nSs))
+                if (paramBluetoothGattCharacteristic.nXh.equalsIgnoreCase(e.nXY))
                 {
                   if (paramArrayOfByte.length < 2)
                   {
-                    ad.e(e.TAG, "Data length incorrect");
+                    ae.e(e.TAG, "Data length incorrect");
                     i = k;
                     break;
                   }
-                  paramBluetoothGattCharacteristic.nSy[0] = paramArrayOfByte[0];
-                  paramBluetoothGattCharacteristic.nSy[1] = paramArrayOfByte[1];
+                  paramBluetoothGattCharacteristic.nYe[0] = paramArrayOfByte[0];
+                  paramBluetoothGattCharacteristic.nYe[1] = paramArrayOfByte[1];
                   continue;
                 }
-                if (!paramBluetoothGattCharacteristic.nRB.equalsIgnoreCase(e.nSt)) {
+                if (!paramBluetoothGattCharacteristic.nXh.equalsIgnoreCase(e.nXZ)) {
                   break label3862;
                 }
                 if (paramArrayOfByte.length < 4)
                 {
-                  ad.e(e.TAG, "Data length incorrect");
+                  ae.e(e.TAG, "Data length incorrect");
                   i = k;
                   break;
                 }
-                paramBluetoothGattCharacteristic.nSz = ((paramArrayOfByte[0] & 0xFF) + ((paramArrayOfByte[1] & 0xFF) << 8));
-                paramBluetoothGattCharacteristic.nSB = paramArrayOfByte[2];
-                paramBluetoothGattCharacteristic.nSA = paramArrayOfByte[3];
+                paramBluetoothGattCharacteristic.nYf = ((paramArrayOfByte[0] & 0xFF) + ((paramArrayOfByte[1] & 0xFF) << 8));
+                paramBluetoothGattCharacteristic.nYh = paramArrayOfByte[2];
+                paramBluetoothGattCharacteristic.nYg = paramArrayOfByte[3];
                 if (paramArrayOfByte.length > 4)
                 {
-                  paramBluetoothGattCharacteristic.nSC = new byte[paramArrayOfByte.length - 4];
-                  System.arraycopy(paramArrayOfByte, 4, paramBluetoothGattCharacteristic.nSC, 0, paramArrayOfByte.length - 4);
+                  paramBluetoothGattCharacteristic.nYi = new byte[paramArrayOfByte.length - 4];
+                  System.arraycopy(paramArrayOfByte, 4, paramBluetoothGattCharacteristic.nYi, 0, paramArrayOfByte.length - 4);
                 }
                 else
                 {
-                  paramBluetoothGattCharacteristic.nSC = null;
+                  paramBluetoothGattCharacteristic.nYi = null;
                 }
               }
-              ad.e(e.TAG, "characteristicUuid is incorrect");
+              ae.e(e.TAG, "characteristicUuid is incorrect");
               i = k;
             }
           }
-          ad.e(TAG, "parse light data error");
+          ae.e(TAG, "parse light data error");
           paramBluetoothGattCharacteristic = null;
           break;
         }
-        ad.e(TAG, "unknown characteristic uuid = %s", new Object[] { localObject1 });
+        ae.e(TAG, "unknown characteristic uuid = %s", new Object[] { localObject1 });
         paramBluetoothGattCharacteristic = null;
         break;
       }
@@ -763,9 +763,9 @@ public class c
   public static boolean aH(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(22573);
-    if (bt.cC(paramArrayOfByte))
+    if (bu.cF(paramArrayOfByte))
     {
-      ad.e(TAG, "parseBroadcastServiceUuid error. broadcast data is null or nil");
+      ae.e(TAG, "parseBroadcastServiceUuid error. broadcast data is null or nil");
       AppMethodBeat.o(22573);
       return false;
     }
@@ -780,13 +780,13 @@ public class c
       i = paramArrayOfByte[i];
       if (k + i > paramArrayOfByte.length)
       {
-        ad.w(TAG, "broadcast data len is not enough. offset = %d, current len = %d, broadcast len = %d", new Object[] { Integer.valueOf(k), Integer.valueOf(i), Integer.valueOf(paramArrayOfByte.length) });
+        ae.w(TAG, "broadcast data len is not enough. offset = %d, current len = %d, broadcast len = %d", new Object[] { Integer.valueOf(k), Integer.valueOf(i), Integer.valueOf(paramArrayOfByte.length) });
         AppMethodBeat.o(22573);
         return false;
       }
       if (i <= 0)
       {
-        ad.w(TAG, "current part of data's len = %d.", new Object[] { Integer.valueOf(i) });
+        ae.w(TAG, "current part of data's len = %d.", new Object[] { Integer.valueOf(i) });
         AppMethodBeat.o(22573);
         return false;
       }
@@ -814,8 +814,8 @@ public class c
           m = paramArrayOfByte[m];
           i -= 2;
           localObject = String.format("%08x-0000-1000-8000-00805f9b34fb", new Object[] { Integer.valueOf((m & 0xFF) << 8 | j & 0xFF) });
-          ad.d(TAG, "find 16-bit broacast service = %s", new Object[] { localObject });
-          if (nQU.containsKey(localObject))
+          ae.d(TAG, "find 16-bit broacast service = %s", new Object[] { localObject });
+          if (nWA.containsKey(localObject))
           {
             AppMethodBeat.o(22573);
             return true;
@@ -837,8 +837,8 @@ public class c
             localObject = ByteBuffer.wrap(paramArrayOfByte, j, 16).order(ByteOrder.LITTLE_ENDIAN);
             long l = ((ByteBuffer)localObject).getLong();
             localObject = new UUID(((ByteBuffer)localObject).getLong(), l).toString();
-            ad.d(TAG, "find 128-bit broacast service = %s", new Object[] { localObject });
-            boolean bool = nQU.containsKey(localObject);
+            ae.d(TAG, "find 128-bit broacast service = %s", new Object[] { localObject });
+            boolean bool = nWA.containsKey(localObject);
             if (!bool) {
               break;
             }
@@ -846,7 +846,7 @@ public class c
           }
           catch (IndexOutOfBoundsException localIndexOutOfBoundsException)
           {
-            ad.e("BlueToothDeviceFilter.parseUUID", localIndexOutOfBoundsException.toString());
+            ae.e("BlueToothDeviceFilter.parseUUID", localIndexOutOfBoundsException.toString());
             j += 16;
             i -= 16;
           }
@@ -858,8 +858,8 @@ public class c
       }
       i = j + i;
       break;
-      ad.i(TAG, "Manufacturer Specific Data size = %s", new Object[] { Integer.valueOf(m) });
-      ad.i(TAG, "Manufacturer Specific Data = %s", new Object[] { com.tencent.mm.plugin.exdevice.k.b.bg(Arrays.copyOfRange(paramArrayOfByte, j, j + m)) });
+      ae.i(TAG, "Manufacturer Specific Data size = %s", new Object[] { Integer.valueOf(m) });
+      ae.i(TAG, "Manufacturer Specific Data = %s", new Object[] { com.tencent.mm.plugin.exdevice.k.b.bf(Arrays.copyOfRange(paramArrayOfByte, j, j + m)) });
       break label204;
       AppMethodBeat.o(22573);
       return false;
@@ -872,7 +872,7 @@ public class c
     AppMethodBeat.i(22576);
     if (paramBluetoothGattService == null)
     {
-      ad.e(TAG, "service is null");
+      ae.e(TAG, "service is null");
       AppMethodBeat.o(22576);
       return false;
     }
@@ -883,32 +883,32 @@ public class c
     {
       if (paramBluetoothGattService == null)
       {
-        ad.e(TAG, "service is null");
+        ae.e(TAG, "service is null");
         AppMethodBeat.o(22576);
         return false;
       }
-      localBluetoothGattCharacteristic = paramBluetoothGattService.getCharacteristic(UUID.fromString(h.nRj));
+      localBluetoothGattCharacteristic = paramBluetoothGattService.getCharacteristic(UUID.fromString(h.nWP));
       if (localBluetoothGattCharacteristic == null)
       {
-        ad.e(TAG, "no step measurement characteristic found");
+        ae.e(TAG, "no step measurement characteristic found");
         AppMethodBeat.o(22576);
         return false;
       }
       i = localBluetoothGattCharacteristic.getProperties();
-      ad.d(TAG, "step measurement characteristic properties = %d", new Object[] { Integer.valueOf(i) });
+      ae.d(TAG, "step measurement characteristic properties = %d", new Object[] { Integer.valueOf(i) });
       if (((i & 0x30) == 0) || ((i & 0x2) == 0))
       {
-        ad.e(TAG, "step measurement characteristic has incorrect proterties(%d)", new Object[] { Integer.valueOf(i) });
+        ae.e(TAG, "step measurement characteristic has incorrect proterties(%d)", new Object[] { Integer.valueOf(i) });
         AppMethodBeat.o(22576);
         return false;
       }
-      paramBluetoothGattService = paramBluetoothGattService.getCharacteristic(UUID.fromString(h.nRk));
+      paramBluetoothGattService = paramBluetoothGattService.getCharacteristic(UUID.fromString(h.nWQ));
       if (paramBluetoothGattService != null)
       {
         i = paramBluetoothGattService.getProperties();
         if (((i & 0x2) == 0) || ((i & 0x20) == 0))
         {
-          ad.e(TAG, "step target characteristic has incorrect proterties(%d)", new Object[] { Integer.valueOf(i) });
+          ae.e(TAG, "step target characteristic has incorrect proterties(%d)", new Object[] { Integer.valueOf(i) });
           AppMethodBeat.o(22576);
           return false;
         }
@@ -920,35 +920,35 @@ public class c
     {
       if (paramBluetoothGattService == null)
       {
-        ad.e(TAG, "service is null");
+        ae.e(TAG, "service is null");
         AppMethodBeat.o(22576);
         return false;
       }
-      localBluetoothGattCharacteristic = paramBluetoothGattService.getCharacteristic(UUID.fromString(h.nRq));
+      localBluetoothGattCharacteristic = paramBluetoothGattService.getCharacteristic(UUID.fromString(h.nWW));
       if (localBluetoothGattCharacteristic == null)
       {
-        ad.e(TAG, "weight scale feature characteristic not found");
+        ae.e(TAG, "weight scale feature characteristic not found");
         AppMethodBeat.o(22576);
         return false;
       }
       i = localBluetoothGattCharacteristic.getProperties();
       if ((i & 0x2) == 0)
       {
-        ad.e(TAG, "weight scale feature characteristic has incorrect properties(%d). properties(%d) needed", new Object[] { Integer.valueOf(i), Integer.valueOf(2) });
+        ae.e(TAG, "weight scale feature characteristic has incorrect properties(%d). properties(%d) needed", new Object[] { Integer.valueOf(i), Integer.valueOf(2) });
         AppMethodBeat.o(22576);
         return false;
       }
-      paramBluetoothGattService = paramBluetoothGattService.getCharacteristic(UUID.fromString(h.nRr));
+      paramBluetoothGattService = paramBluetoothGattService.getCharacteristic(UUID.fromString(h.nWX));
       if (paramBluetoothGattService == null)
       {
-        ad.e(TAG, "weight measurement characteristic not found");
+        ae.e(TAG, "weight measurement characteristic not found");
         AppMethodBeat.o(22576);
         return false;
       }
       i = paramBluetoothGattService.getProperties();
       if ((i & 0x20) == 0)
       {
-        ad.e(TAG, "weight measurement characteristic has incorrect properties(%d). properties(%d) needed", new Object[] { Integer.valueOf(i), Integer.valueOf(32) });
+        ae.e(TAG, "weight measurement characteristic has incorrect properties(%d). properties(%d) needed", new Object[] { Integer.valueOf(i), Integer.valueOf(32) });
         AppMethodBeat.o(22576);
         return false;
       }
@@ -959,42 +959,42 @@ public class c
     {
       if (paramBluetoothGattService == null)
       {
-        ad.e(TAG, "service is null");
+        ae.e(TAG, "service is null");
         AppMethodBeat.o(22576);
         return false;
       }
-      localBluetoothGattCharacteristic = paramBluetoothGattService.getCharacteristic(UUID.fromString(h.nRt));
+      localBluetoothGattCharacteristic = paramBluetoothGattService.getCharacteristic(UUID.fromString(h.nWZ));
       if (localBluetoothGattCharacteristic == null)
       {
-        ad.e(TAG, "heart rate measurement characteristic not found");
+        ae.e(TAG, "heart rate measurement characteristic not found");
         AppMethodBeat.o(22576);
         return false;
       }
       i = localBluetoothGattCharacteristic.getProperties();
       if ((i & 0x10) == 0)
       {
-        ad.e(TAG, "heart rate measurement characteristic has incorrect properties(%d). properties(%d) needed", new Object[] { Integer.valueOf(i), Integer.valueOf(16) });
+        ae.e(TAG, "heart rate measurement characteristic has incorrect properties(%d). properties(%d) needed", new Object[] { Integer.valueOf(i), Integer.valueOf(16) });
         AppMethodBeat.o(22576);
         return false;
       }
-      localBluetoothGattCharacteristic = paramBluetoothGattService.getCharacteristic(UUID.fromString(h.nRu));
+      localBluetoothGattCharacteristic = paramBluetoothGattService.getCharacteristic(UUID.fromString(h.nXa));
       if (localBluetoothGattCharacteristic != null)
       {
         i = localBluetoothGattCharacteristic.getProperties();
         if ((i & 0x2) == 0)
         {
-          ad.e(TAG, "heart rate body sensor location characteristic has incorrect properties(%d). properties(%d) needed", new Object[] { Integer.valueOf(i), Integer.valueOf(2) });
+          ae.e(TAG, "heart rate body sensor location characteristic has incorrect properties(%d). properties(%d) needed", new Object[] { Integer.valueOf(i), Integer.valueOf(2) });
           AppMethodBeat.o(22576);
           return false;
         }
       }
-      paramBluetoothGattService = paramBluetoothGattService.getCharacteristic(UUID.fromString(h.nRv));
+      paramBluetoothGattService = paramBluetoothGattService.getCharacteristic(UUID.fromString(h.nXb));
       if (paramBluetoothGattService != null)
       {
         i = paramBluetoothGattService.getProperties();
         if ((i & 0x8) == 0)
         {
-          ad.e(TAG, "heart rate control point characteristic has incorrect properties(%d). properties(%d) needed", new Object[] { Integer.valueOf(i), Integer.valueOf(8) });
+          ae.e(TAG, "heart rate control point characteristic has incorrect properties(%d). properties(%d) needed", new Object[] { Integer.valueOf(i), Integer.valueOf(8) });
           AppMethodBeat.o(22576);
           return false;
         }
@@ -1006,45 +1006,45 @@ public class c
     {
       if (paramBluetoothGattService == null)
       {
-        ad.e(TAG, "service is null");
+        ae.e(TAG, "service is null");
         AppMethodBeat.o(22576);
         return false;
       }
-      localBluetoothGattCharacteristic = paramBluetoothGattService.getCharacteristic(UUID.fromString(h.nRx));
+      localBluetoothGattCharacteristic = paramBluetoothGattService.getCharacteristic(UUID.fromString(h.nXd));
       if (localBluetoothGattCharacteristic == null)
       {
-        ad.e(TAG, "blood pressure measurement characteristic not found");
+        ae.e(TAG, "blood pressure measurement characteristic not found");
         AppMethodBeat.o(22576);
         return false;
       }
       i = localBluetoothGattCharacteristic.getProperties();
       if ((i & 0x20) == 0)
       {
-        ad.e(TAG, "blood pressure measurement characteristic has incorrect properties(%d). properties(%d) needed", new Object[] { Integer.valueOf(i), Integer.valueOf(32) });
+        ae.e(TAG, "blood pressure measurement characteristic has incorrect properties(%d). properties(%d) needed", new Object[] { Integer.valueOf(i), Integer.valueOf(32) });
         AppMethodBeat.o(22576);
         return false;
       }
-      localBluetoothGattCharacteristic = paramBluetoothGattService.getCharacteristic(UUID.fromString(h.nRz));
+      localBluetoothGattCharacteristic = paramBluetoothGattService.getCharacteristic(UUID.fromString(h.nXf));
       if (localBluetoothGattCharacteristic == null)
       {
-        ad.e(TAG, "blood pressure feature characteristic not found");
+        ae.e(TAG, "blood pressure feature characteristic not found");
         AppMethodBeat.o(22576);
         return false;
       }
       i = localBluetoothGattCharacteristic.getProperties();
       if ((i & 0x2) == 0)
       {
-        ad.e(TAG, "blood pressure feature characteristic has incorrect properties(%d). properties(%d) needed", new Object[] { Integer.valueOf(i), Integer.valueOf(2) });
+        ae.e(TAG, "blood pressure feature characteristic has incorrect properties(%d). properties(%d) needed", new Object[] { Integer.valueOf(i), Integer.valueOf(2) });
         AppMethodBeat.o(22576);
         return false;
       }
-      paramBluetoothGattService = paramBluetoothGattService.getCharacteristic(UUID.fromString(h.nRy));
+      paramBluetoothGattService = paramBluetoothGattService.getCharacteristic(UUID.fromString(h.nXe));
       if (paramBluetoothGattService != null)
       {
         i = paramBluetoothGattService.getProperties();
         if ((i & 0x10) == 0)
         {
-          ad.e(TAG, "blood pressure intermediate cuff pressure characteristic has incorrect properties(%d). properties(%d) needed", new Object[] { Integer.valueOf(i), Integer.valueOf(16) });
+          ae.e(TAG, "blood pressure intermediate cuff pressure characteristic has incorrect properties(%d). properties(%d) needed", new Object[] { Integer.valueOf(i), Integer.valueOf(16) });
           AppMethodBeat.o(22576);
           return false;
         }
@@ -1056,63 +1056,63 @@ public class c
     {
       if (paramBluetoothGattService == null)
       {
-        ad.e(TAG, "service is null");
+        ae.e(TAG, "service is null");
         AppMethodBeat.o(22576);
         return false;
       }
-      localBluetoothGattCharacteristic = paramBluetoothGattService.getCharacteristic(UUID.fromString(h.nRl));
+      localBluetoothGattCharacteristic = paramBluetoothGattService.getCharacteristic(UUID.fromString(h.nWR));
       if (localBluetoothGattCharacteristic == null)
       {
-        ad.e(TAG, "light color characteristic not found");
+        ae.e(TAG, "light color characteristic not found");
         AppMethodBeat.o(22576);
         return false;
       }
       i = localBluetoothGattCharacteristic.getProperties();
       if (((i & 0x20) == 0) || ((i & 0x10) == 0) || ((i & 0x2) == 0) || ((i & 0x8) == 0))
       {
-        ad.e(TAG, "light color characteristic has incorrect properties(%d). properties(%d) needed", new Object[] { Integer.valueOf(i), Integer.valueOf(32) });
+        ae.e(TAG, "light color characteristic has incorrect properties(%d). properties(%d) needed", new Object[] { Integer.valueOf(i), Integer.valueOf(32) });
         AppMethodBeat.o(22576);
         return false;
       }
-      localBluetoothGattCharacteristic = paramBluetoothGattService.getCharacteristic(UUID.fromString(h.nRm));
+      localBluetoothGattCharacteristic = paramBluetoothGattService.getCharacteristic(UUID.fromString(h.nWS));
       if (localBluetoothGattCharacteristic == null)
       {
-        ad.e(TAG, "light work state characteristic not found");
+        ae.e(TAG, "light work state characteristic not found");
         AppMethodBeat.o(22576);
         return false;
       }
       i = localBluetoothGattCharacteristic.getProperties();
       if (((i & 0x20) == 0) || ((i & 0x2) == 0) || ((i & 0x8) == 0))
       {
-        ad.e(TAG, "light work state characteristic has incorrect properties(%d). properties(%d) needed", new Object[] { Integer.valueOf(i), Integer.valueOf(32) });
+        ae.e(TAG, "light work state characteristic has incorrect properties(%d). properties(%d) needed", new Object[] { Integer.valueOf(i), Integer.valueOf(32) });
         AppMethodBeat.o(22576);
         return false;
       }
-      localBluetoothGattCharacteristic = paramBluetoothGattService.getCharacteristic(UUID.fromString(h.nRn));
+      localBluetoothGattCharacteristic = paramBluetoothGattService.getCharacteristic(UUID.fromString(h.nWT));
       if (localBluetoothGattCharacteristic == null)
       {
-        ad.e(TAG, "light state changed characteristic not found");
+        ae.e(TAG, "light state changed characteristic not found");
         AppMethodBeat.o(22576);
         return false;
       }
       i = localBluetoothGattCharacteristic.getProperties();
       if ((i & 0x20) == 0)
       {
-        ad.e(TAG, "light state changed characteristic has incorrect properties(%d). properties(%d) needed", new Object[] { Integer.valueOf(i), Integer.valueOf(32) });
+        ae.e(TAG, "light state changed characteristic has incorrect properties(%d). properties(%d) needed", new Object[] { Integer.valueOf(i), Integer.valueOf(32) });
         AppMethodBeat.o(22576);
         return false;
       }
-      paramBluetoothGattService = paramBluetoothGattService.getCharacteristic(UUID.fromString(h.nRo));
+      paramBluetoothGattService = paramBluetoothGattService.getCharacteristic(UUID.fromString(h.nWU));
       if (paramBluetoothGattService == null)
       {
-        ad.e(TAG, "control point characteristic not found");
+        ae.e(TAG, "control point characteristic not found");
         AppMethodBeat.o(22576);
         return false;
       }
       i = paramBluetoothGattService.getProperties();
       if (((i & 0x20) == 0) || ((i & 0x8) == 0))
       {
-        ad.e(TAG, "control point characteristic has incorrect properties(%d). properties(%d) needed", new Object[] { Integer.valueOf(i), Integer.valueOf(32) });
+        ae.e(TAG, "control point characteristic has incorrect properties(%d). properties(%d) needed", new Object[] { Integer.valueOf(i), Integer.valueOf(32) });
         AppMethodBeat.o(22576);
         return false;
       }
@@ -1123,22 +1123,22 @@ public class c
     return false;
   }
   
-  public static String tg(long paramLong)
+  public static String tu(long paramLong)
   {
     AppMethodBeat.i(22574);
-    Object localObject = nQU.keySet().iterator();
+    Object localObject = nWA.keySet().iterator();
     while (((Iterator)localObject).hasNext())
     {
       String str = (String)((Iterator)localObject).next();
-      if (((Long)nQU.get(str)).longValue() == paramLong)
+      if (((Long)nWA.get(str)).longValue() == paramLong)
       {
         AppMethodBeat.o(22574);
         return str;
       }
     }
-    if (nSb.containsValue(Long.valueOf(paramLong)))
+    if (nXH.containsValue(Long.valueOf(paramLong)))
     {
-      localObject = h.nRg;
+      localObject = h.nWM;
       AppMethodBeat.o(22574);
       return localObject;
     }

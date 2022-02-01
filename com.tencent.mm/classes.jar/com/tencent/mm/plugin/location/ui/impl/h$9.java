@@ -20,8 +20,8 @@ final class h$9
     AppMethodBeat.i(56123);
     b localb = new b();
     localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/location/ui/impl/ShareMapUI$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-    paramView = this.vhJ.vhy;
+    a.b("com/tencent/mm/plugin/location/ui/impl/ShareMapUI$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+    paramView = this.vtQ.vtF;
     com.tencent.mm.ui.base.h.e(paramView.mContext, paramView.mResources.getString(2131760734), "", paramView.mResources.getString(2131755728), paramView.mResources.getString(2131755691), new j.3(paramView), new j.4(paramView));
     a.a(this, "com/tencent/mm/plugin/location/ui/impl/ShareMapUI$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(56123);

@@ -1,15 +1,15 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bx.b;
+import com.tencent.mm.bw.b;
 import java.util.LinkedList;
 
 public final class ce
-  extends cvc
+  extends cvw
 {
-  public b FuE;
-  public int FuF;
-  public String duW;
+  public b FNc;
+  public int FNd;
+  public String dwb;
   public String fileid;
   public String nickname;
   
@@ -21,21 +21,21 @@ public final class ce
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
       if (this.BaseRequest != null)
       {
-        paramVarArgs.lC(1, this.BaseRequest.computeSize());
+        paramVarArgs.lJ(1, this.BaseRequest.computeSize());
         this.BaseRequest.writeFields(paramVarArgs);
       }
       if (this.nickname != null) {
         paramVarArgs.d(2, this.nickname);
       }
-      if (this.FuE != null) {
-        paramVarArgs.c(3, this.FuE);
+      if (this.FNc != null) {
+        paramVarArgs.c(3, this.FNc);
       }
       if (this.fileid != null) {
         paramVarArgs.d(4, this.fileid);
       }
-      paramVarArgs.aS(5, this.FuF);
-      if (this.duW != null) {
-        paramVarArgs.d(6, this.duW);
+      paramVarArgs.aS(5, this.FNd);
+      if (this.dwb != null) {
+        paramVarArgs.d(6, this.dwb);
       }
       AppMethodBeat.o(152481);
       return 0;
@@ -46,33 +46,33 @@ public final class ce
       }
     }
     label598:
-    for (int i = f.a.a.a.lB(1, this.BaseRequest.computeSize()) + 0;; i = 0)
+    for (int i = f.a.a.a.lI(1, this.BaseRequest.computeSize()) + 0;; i = 0)
     {
       paramInt = i;
       if (this.nickname != null) {
         paramInt = i + f.a.a.b.b.a.e(2, this.nickname);
       }
       i = paramInt;
-      if (this.FuE != null) {
-        i = paramInt + f.a.a.b.b.a.b(3, this.FuE);
+      if (this.FNc != null) {
+        i = paramInt + f.a.a.b.b.a.b(3, this.FNc);
       }
       paramInt = i;
       if (this.fileid != null) {
         paramInt = i + f.a.a.b.b.a.e(4, this.fileid);
       }
-      i = paramInt + f.a.a.b.b.a.bz(5, this.FuF);
+      i = paramInt + f.a.a.b.b.a.bz(5, this.FNd);
       paramInt = i;
-      if (this.duW != null) {
-        paramInt = i + f.a.a.b.b.a.e(6, this.duW);
+      if (this.dwb != null) {
+        paramInt = i + f.a.a.b.b.a.e(6, this.dwb);
       }
       AppMethodBeat.o(152481);
       return paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = cvc.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cvc.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = cvw.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cvw.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
         AppMethodBeat.o(152481);
@@ -89,7 +89,7 @@ public final class ce
           AppMethodBeat.o(152481);
           return -1;
         case 1: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
+          paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
@@ -97,30 +97,30 @@ public final class ce
             Object localObject2 = (byte[])paramVarArgs.get(paramInt);
             localObject1 = new jc();
             localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((jc)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, cvc.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            for (boolean bool = true; bool; bool = ((jc)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cvw.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
             localce.BaseRequest = ((jc)localObject1);
             paramInt += 1;
           }
           AppMethodBeat.o(152481);
           return 0;
         case 2: 
-          localce.nickname = ((f.a.a.a.a)localObject1).NPN.readString();
+          localce.nickname = ((f.a.a.a.a)localObject1).OmT.readString();
           AppMethodBeat.o(152481);
           return 0;
         case 3: 
-          localce.FuE = ((f.a.a.a.a)localObject1).NPN.gxI();
+          localce.FNc = ((f.a.a.a.a)localObject1).OmT.gCk();
           AppMethodBeat.o(152481);
           return 0;
         case 4: 
-          localce.fileid = ((f.a.a.a.a)localObject1).NPN.readString();
+          localce.fileid = ((f.a.a.a.a)localObject1).OmT.readString();
           AppMethodBeat.o(152481);
           return 0;
         case 5: 
-          localce.FuF = ((f.a.a.a.a)localObject1).NPN.zc();
+          localce.FNd = ((f.a.a.a.a)localObject1).OmT.zc();
           AppMethodBeat.o(152481);
           return 0;
         }
-        localce.duW = ((f.a.a.a.a)localObject1).NPN.readString();
+        localce.dwb = ((f.a.a.a.a)localObject1).OmT.readString();
         AppMethodBeat.o(152481);
         return 0;
       }

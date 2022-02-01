@@ -7,23 +7,23 @@ import java.util.Map;
 
 public final class d
 {
-  public float fFf;
-  public float fFg;
-  Map<String, Object> owN;
-  int yMp;
-  long yMq;
-  String yMr;
+  public float fHj;
+  public float fHk;
+  Map<String, Object> oDp;
+  long zcA;
+  String zcB;
+  int zcz;
   
   public d()
   {
     AppMethodBeat.i(28188);
-    this.owN = new HashMap();
-    this.yMp = 0;
-    this.yMq = 0L;
-    this.fFf = -85.0F;
-    this.fFg = -1000.0F;
-    this.yMr = "";
-    this.owN.clear();
+    this.oDp = new HashMap();
+    this.zcz = 0;
+    this.zcA = 0L;
+    this.fHj = -85.0F;
+    this.fHk = -1000.0F;
+    this.zcB = "";
+    this.oDp.clear();
     AppMethodBeat.o(28188);
   }
   
@@ -35,13 +35,13 @@ public final class d
       AppMethodBeat.o(28189);
       return;
     }
-    this.owN.put(paramString, paramObject);
+    this.oDp.put(paramString, paramObject);
     AppMethodBeat.o(28189);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.shake.c.a.d
  * JD-Core Version:    0.7.0.1
  */

@@ -10,22 +10,22 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/scanner/model/OfflineScanContext;", "Landroid/os/Parcelable;", "activity", "Landroid/app/Activity;", "networkType", "", "qBarString", "", "source", "codeType", "codeVersion", "typeName", "selectFromAlbum", "", "statObj", "Landroid/os/Bundle;", "(Landroid/app/Activity;ILjava/lang/String;IIILjava/lang/String;ZLandroid/os/Bundle;)V", "(Landroid/app/Activity;ILjava/lang/String;IILjava/lang/String;ZLandroid/os/Bundle;)V", "parcel", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "getActivity", "()Landroid/app/Activity;", "setActivity", "(Landroid/app/Activity;)V", "codeString", "getCodeString", "()Ljava/lang/String;", "setCodeString", "(Ljava/lang/String;)V", "getCodeType", "()I", "setCodeType", "(I)V", "getCodeVersion", "setCodeVersion", "getNetworkType", "setNetworkType", "resultType", "getResultType", "setResultType", "getSelectFromAlbum", "()Z", "setSelectFromAlbum", "(Z)V", "getSource", "setSource", "getStatObj", "()Landroid/os/Bundle;", "setStatObj", "(Landroid/os/Bundle;)V", "timestamp", "", "getTimestamp", "()J", "setTimestamp", "(J)V", "getTypeName", "setTypeName", "describeContents", "toString", "writeToParcel", "", "flags", "CREATOR", "plugin-scan_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/scanner/model/OfflineScanContext;", "Landroid/os/Parcelable;", "activity", "Landroid/app/Activity;", "networkType", "", "qBarString", "", "source", "codeType", "codeVersion", "typeName", "selectFromAlbum", "", "statObj", "Landroid/os/Bundle;", "(Landroid/app/Activity;ILjava/lang/String;IIILjava/lang/String;ZLandroid/os/Bundle;)V", "(Landroid/app/Activity;ILjava/lang/String;IILjava/lang/String;ZLandroid/os/Bundle;)V", "parcel", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "getActivity", "()Landroid/app/Activity;", "setActivity", "(Landroid/app/Activity;)V", "codeString", "getCodeString", "()Ljava/lang/String;", "setCodeString", "(Ljava/lang/String;)V", "getCodeType", "()I", "setCodeType", "(I)V", "getCodeVersion", "setCodeVersion", "getNetworkType", "setNetworkType", "resultType", "getResultType", "setResultType", "getSelectFromAlbum", "()Z", "setSelectFromAlbum", "(Z)V", "getSource", "setSource", "getStatObj", "()Landroid/os/Bundle;", "setStatObj", "(Landroid/os/Bundle;)V", "timestamp", "", "getTimestamp", "()J", "setTimestamp", "(J)V", "getTypeName", "setTypeName", "describeContents", "toString", "writeToParcel", "", "flags", "CREATOR", "plugin-scan_release"})
 public final class OfflineScanContext
   implements Parcelable
 {
   public static final a CREATOR;
   public Activity activity;
-  public int dnh;
-  public int dnt;
-  public int dnu;
-  public Bundle dnx;
+  public int doj;
+  public int dov;
+  public int dow;
+  public Bundle doz;
   public int networkType;
   public long timestamp;
   public String typeName;
-  private int ymU;
-  public String ymV;
-  public boolean ymW;
+  private int yCT;
+  public String yCU;
+  public boolean yCV;
   
   static
   {
@@ -37,65 +37,65 @@ public final class OfflineScanContext
   public OfflineScanContext(Activity paramActivity, int paramInt1, String paramString1, int paramInt2, int paramInt3, int paramInt4, String paramString2, boolean paramBoolean, Bundle paramBundle)
   {
     AppMethodBeat.i(52176);
-    this.ymV = "";
+    this.yCU = "";
     this.typeName = "";
     this.activity = paramActivity;
     this.networkType = paramInt1;
-    this.ymV = paramString1;
-    this.dnh = paramInt2;
-    this.dnt = paramInt3;
-    this.dnu = paramInt4;
+    this.yCU = paramString1;
+    this.doj = paramInt2;
+    this.dov = paramInt3;
+    this.dow = paramInt4;
     this.typeName = paramString2;
-    this.dnx = paramBundle;
+    this.doz = paramBundle;
     this.timestamp = System.currentTimeMillis();
-    this.ymW = paramBoolean;
+    this.yCV = paramBoolean;
     AppMethodBeat.o(52176);
   }
   
   public OfflineScanContext(Activity paramActivity, int paramInt1, String paramString1, int paramInt2, int paramInt3, String paramString2, boolean paramBoolean, Bundle paramBundle)
   {
     AppMethodBeat.i(52177);
-    this.ymV = "";
+    this.yCU = "";
     this.typeName = "";
     this.activity = paramActivity;
     this.networkType = paramInt1;
-    this.ymV = paramString1;
-    this.dnt = paramInt2;
-    this.dnu = paramInt3;
+    this.yCU = paramString1;
+    this.dov = paramInt2;
+    this.dow = paramInt3;
     this.typeName = paramString2;
-    this.dnx = paramBundle;
+    this.doz = paramBundle;
     this.timestamp = System.currentTimeMillis();
-    this.ymW = paramBoolean;
+    this.yCV = paramBoolean;
     AppMethodBeat.o(52177);
   }
   
   public OfflineScanContext(Parcel paramParcel)
   {
     AppMethodBeat.i(52178);
-    this.ymV = "";
+    this.yCU = "";
     this.typeName = "";
-    this.ymU = paramParcel.readInt();
+    this.yCT = paramParcel.readInt();
     String str2 = paramParcel.readString();
     String str1 = str2;
     if (str2 == null) {
       str1 = "";
     }
-    this.ymV = str1;
-    this.dnh = paramParcel.readInt();
-    this.dnt = paramParcel.readInt();
-    this.dnu = paramParcel.readInt();
+    this.yCU = str1;
+    this.doj = paramParcel.readInt();
+    this.dov = paramParcel.readInt();
+    this.dow = paramParcel.readInt();
     str2 = paramParcel.readString();
     str1 = str2;
     if (str2 == null) {
       str1 = "";
     }
     this.typeName = str1;
-    this.dnx = paramParcel.readBundle(Bundle.class.getClassLoader());
+    this.doz = paramParcel.readBundle(Bundle.class.getClassLoader());
     this.timestamp = paramParcel.readLong();
     if (paramParcel.readByte() != 0) {}
     for (boolean bool = true;; bool = false)
     {
-      this.ymW = bool;
+      this.yCV = bool;
       this.networkType = paramParcel.readInt();
       AppMethodBeat.o(52178);
       return;
@@ -110,8 +110,8 @@ public final class OfflineScanContext
   public final String toString()
   {
     AppMethodBeat.i(52174);
-    StringBuilder localStringBuilder = new StringBuilder("codeString: ").append(this.ymV).append(", source: ").append(this.dnh).append(", codeType: ").append(this.dnt).append(", codeVersion").append(this.dnu).append(", statObj: ");
-    Object localObject = this.dnx;
+    StringBuilder localStringBuilder = new StringBuilder("codeString: ").append(this.yCU).append(", source: ").append(this.doj).append(", codeType: ").append(this.dov).append(", codeVersion").append(this.dow).append(", statObj: ");
+    Object localObject = this.doz;
     if (localObject != null) {}
     for (localObject = ((Bundle)localObject).toString();; localObject = null)
     {
@@ -125,15 +125,15 @@ public final class OfflineScanContext
   {
     AppMethodBeat.i(52175);
     p.h(paramParcel, "parcel");
-    paramParcel.writeInt(this.ymU);
-    paramParcel.writeString(this.ymV);
-    paramParcel.writeInt(this.dnh);
-    paramParcel.writeInt(this.dnt);
-    paramParcel.writeInt(this.dnu);
+    paramParcel.writeInt(this.yCT);
+    paramParcel.writeString(this.yCU);
+    paramParcel.writeInt(this.doj);
+    paramParcel.writeInt(this.dov);
+    paramParcel.writeInt(this.dow);
     paramParcel.writeString(this.typeName);
-    paramParcel.writeBundle(this.dnx);
+    paramParcel.writeBundle(this.doz);
     paramParcel.writeLong(this.timestamp);
-    if (this.ymW) {}
+    if (this.yCV) {}
     for (byte b = 1;; b = 0)
     {
       paramParcel.writeByte(b);
@@ -143,7 +143,7 @@ public final class OfflineScanContext
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/scanner/model/OfflineScanContext$CREATOR;", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/scanner/model/OfflineScanContext;", "()V", "TAG", "", "convertFromString", "value", "convertToString", "context", "createFromParcel", "parcel", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/mm/plugin/scanner/model/OfflineScanContext;", "plugin-scan_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/scanner/model/OfflineScanContext$CREATOR;", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/scanner/model/OfflineScanContext;", "()V", "TAG", "", "convertFromString", "value", "convertToString", "context", "createFromParcel", "parcel", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/mm/plugin/scanner/model/OfflineScanContext;", "plugin-scan_release"})
   public static final class a
     implements Parcelable.Creator<OfflineScanContext>
   {
@@ -161,7 +161,7 @@ public final class OfflineScanContext
       return paramOfflineScanContext;
     }
     
-    public static OfflineScanContext awE(String paramString)
+    public static OfflineScanContext axT(String paramString)
     {
       AppMethodBeat.i(52173);
       p.h(paramString, "value");
@@ -187,7 +187,7 @@ public final class OfflineScanContext
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.model.OfflineScanContext
  * JD-Core Version:    0.7.0.1
  */

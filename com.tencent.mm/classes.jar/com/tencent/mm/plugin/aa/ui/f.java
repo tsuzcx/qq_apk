@@ -4,10 +4,10 @@ import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.messenger.foundation.a.l;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.am;
-import com.tencent.mm.storage.bp;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.an;
+import com.tencent.mm.storage.bq;
 import com.tencent.mm.ui.contact.MMBaseSelectContactUI;
 import com.tencent.mm.ui.contact.a.a;
 import com.tencent.mm.ui.contact.a.e;
@@ -18,18 +18,18 @@ import java.util.LinkedList;
 public final class f
   extends s
 {
-  private String[] iVI;
-  private Cursor iVJ;
-  private ArrayList<String> iVv;
+  private String[] iYB;
+  private Cursor iYC;
+  private ArrayList<String> iYo;
   private String query;
   
   public f(MMBaseSelectContactUI paramMMBaseSelectContactUI, ArrayList<String> paramArrayList)
   {
     super(paramMMBaseSelectContactUI, null, true, 0);
     AppMethodBeat.i(63557);
-    this.iVv = paramArrayList;
-    if (this.iVv != null) {
-      this.iVI = bt.hi(this.iVv);
+    this.iYo = paramArrayList;
+    if (this.iYo != null) {
+      this.iYB = bu.hs(this.iYo);
     }
     AppMethodBeat.o(63557);
   }
@@ -37,21 +37,21 @@ public final class f
   public final void b(String paramString, int[] paramArrayOfInt)
   {
     AppMethodBeat.i(63558);
-    ad.i("MicroMsg.AASelectSearchContactItem", "doSearch: %s", new Object[] { paramString });
+    ae.i("MicroMsg.AASelectSearchContactItem", "doSearch: %s", new Object[] { paramString });
     clearCache();
     this.query = paramString;
-    if (this.iVJ != null)
+    if (this.iYC != null)
     {
-      this.iVJ.close();
-      this.iVJ = null;
+      this.iYC.close();
+      this.iYC = null;
     }
-    if ((!bt.isNullOrNil(this.query)) && (this.iVI != null))
+    if ((!bu.isNullOrNil(this.query)) && (this.iYB != null))
     {
-      g.ajD();
-      this.iVJ = ((l)g.ab(l.class)).azp().a(this.iVI, "@all.chatroom", this.query, new LinkedList(), null);
+      g.ajS();
+      this.iYC = ((l)g.ab(l.class)).azF().a(this.iYB, "@all.chatroom", this.query, new LinkedList(), null);
     }
     notifyDataSetChanged();
-    cT(paramString, true);
+    cX(paramString, true);
     AppMethodBeat.o(63558);
   }
   
@@ -59,10 +59,10 @@ public final class f
   {
     AppMethodBeat.i(63560);
     super.finish();
-    if (this.iVJ != null)
+    if (this.iYC != null)
     {
-      this.iVJ.close();
-      this.iVJ = null;
+      this.iYC.close();
+      this.iYC = null;
     }
     AppMethodBeat.o(63560);
   }
@@ -70,27 +70,27 @@ public final class f
   public final int getCount()
   {
     AppMethodBeat.i(63561);
-    if (this.iVJ == null)
+    if (this.iYC == null)
     {
       AppMethodBeat.o(63561);
       return 0;
     }
-    int i = this.iVJ.getCount();
+    int i = this.iYC.getCount();
     AppMethodBeat.o(63561);
     return i;
   }
   
-  public final a rh(int paramInt)
+  public final a rk(int paramInt)
   {
     AppMethodBeat.i(63559);
     e locale = null;
-    if (this.iVJ.moveToPosition(paramInt))
+    if (this.iYC.moveToPosition(paramInt))
     {
-      am localam = new am();
-      localam.convertFrom(this.iVJ);
+      an localan = new an();
+      localan.convertFrom(this.iYC);
       locale = new e(paramInt);
-      locale.contact = localam;
-      locale.KmP = true;
+      locale.contact = localan;
+      locale.KJj = true;
     }
     AppMethodBeat.o(63559);
     return locale;

@@ -3,9 +3,9 @@ package com.tencent.mm.plugin.emoji.ui.v2;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.z.a;
-import com.tencent.mm.z.c;
+import com.tencent.mm.storage.aj;
+import com.tencent.mm.y.a;
+import com.tencent.mm.y.c;
 
 final class EmojiStoreV2UI$b
   implements Runnable
@@ -13,12 +13,12 @@ final class EmojiStoreV2UI$b
   public final void run()
   {
     AppMethodBeat.i(109399);
-    c.aht().w(262147, false);
-    c.aht().w(262149, false);
-    c.aht().cK(262147, 266244);
-    c.aht().cK(262149, 266244);
-    g.ajC().ajl().set(208899, Boolean.FALSE);
-    g.ajC().ajl().set(208913, Boolean.FALSE);
+    c.ahI().w(262147, false);
+    c.ahI().w(262149, false);
+    c.ahI().cK(262147, 266244);
+    c.ahI().cK(262149, 266244);
+    g.ajR().ajA().set(208899, Boolean.FALSE);
+    g.ajR().ajA().set(208913, Boolean.FALSE);
     AppMethodBeat.o(109399);
   }
 }

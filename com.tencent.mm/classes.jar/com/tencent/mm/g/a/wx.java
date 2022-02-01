@@ -6,8 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class wx
   extends b
 {
-  public a dLo;
-  public b dLp;
+  public a dMu;
   
   public wx()
   {
@@ -16,27 +15,22 @@ public final class wx
   
   private wx(byte paramByte)
   {
-    AppMethodBeat.i(116054);
-    this.dLo = new a();
-    this.dLp = new b();
-    this.IbR = false;
+    AppMethodBeat.i(140990);
+    this.dMu = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(116054);
+    AppMethodBeat.o(140990);
   }
   
   public static final class a
   {
-    public String id;
-  }
-  
-  public static final class b
-  {
-    public boolean dLq;
+    public String className;
+    public int dMv = -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.a.wx
  * JD-Core Version:    0.7.0.1
  */

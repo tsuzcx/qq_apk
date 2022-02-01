@@ -1,47 +1,47 @@
 package com.tencent.mm.plugin.appbrand.jsapi.i.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.t.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.plugin.appbrand.s.a;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.HashMap;
 import java.util.Map;
 
 public final class e
 {
-  private static final Map<String, Integer> kSx;
+  private static final Map<String, Integer> kWg;
   
   static
   {
     AppMethodBeat.i(143707);
     HashMap localHashMap = new HashMap();
-    kSx = localHashMap;
+    kWg = localHashMap;
     localHashMap.put("addMapCircles", Integer.valueOf(0));
-    kSx.put("addMapMarkers", Integer.valueOf(1));
-    kSx.put("removeMapMarkers", Integer.valueOf(2));
-    kSx.put("addMapLines", Integer.valueOf(3));
-    kSx.put("removeMapLines", Integer.valueOf(4));
-    kSx.put("includeMapPoints", Integer.valueOf(5));
-    kSx.put("addMapControls", Integer.valueOf(6));
-    kSx.put("addMapPolygons", Integer.valueOf(7));
-    kSx.put("getMapCenterLocation", Integer.valueOf(8));
-    kSx.put("moveToMapLocation", Integer.valueOf(9));
-    kSx.put("translateMapMarker", Integer.valueOf(10));
-    kSx.put("getMapScale", Integer.valueOf(11));
-    kSx.put("getMapRegion", Integer.valueOf(12));
-    kSx.put("getMapRotate", Integer.valueOf(13));
-    kSx.put("getMapSkew", Integer.valueOf(14));
-    kSx.put("getMapIndoorFloor", Integer.valueOf(15));
-    kSx.put("setMapIndoorFloor", Integer.valueOf(16));
-    kSx.put("eraseMapLines", Integer.valueOf(17));
-    kSx.put("moveMapMarkerAlong", Integer.valueOf(18));
+    kWg.put("addMapMarkers", Integer.valueOf(1));
+    kWg.put("removeMapMarkers", Integer.valueOf(2));
+    kWg.put("addMapLines", Integer.valueOf(3));
+    kWg.put("removeMapLines", Integer.valueOf(4));
+    kWg.put("includeMapPoints", Integer.valueOf(5));
+    kWg.put("addMapControls", Integer.valueOf(6));
+    kWg.put("addMapPolygons", Integer.valueOf(7));
+    kWg.put("getMapCenterLocation", Integer.valueOf(8));
+    kWg.put("moveToMapLocation", Integer.valueOf(9));
+    kWg.put("translateMapMarker", Integer.valueOf(10));
+    kWg.put("getMapScale", Integer.valueOf(11));
+    kWg.put("getMapRegion", Integer.valueOf(12));
+    kWg.put("getMapRotate", Integer.valueOf(13));
+    kWg.put("getMapSkew", Integer.valueOf(14));
+    kWg.put("getMapIndoorFloor", Integer.valueOf(15));
+    kWg.put("setMapIndoorFloor", Integer.valueOf(16));
+    kWg.put("eraseMapLines", Integer.valueOf(17));
+    kWg.put("moveMapMarkerAlong", Integer.valueOf(18));
     AppMethodBeat.o(143707);
   }
   
-  public static void PP(String paramString)
+  public static void Qy(String paramString)
   {
     AppMethodBeat.i(143704);
-    if (bt.isNullOrNil(paramString))
+    if (bu.isNullOrNil(paramString))
     {
       AppMethodBeat.o(143704);
       return;
@@ -55,8 +55,8 @@ public final class e
       {
       default: 
         label58:
-        if (kSx.containsKey(paramString)) {
-          i = ((Integer)kSx.get(paramString)).intValue() * 5 + 20 + 0;
+        if (kWg.containsKey(paramString)) {
+          i = ((Integer)kWg.get(paramString)).intValue() * 5 + 20 + 0;
         }
         break;
       }
@@ -66,7 +66,7 @@ public final class e
     {
       if (i == -1)
       {
-        ad.e("Luggage.MapReporter", "key is -1, may be err");
+        ae.e("Luggage.MapReporter", "key is -1, may be err");
         AppMethodBeat.o(143704);
         return;
         if (!paramString.equals("insertMap")) {
@@ -91,8 +91,8 @@ public final class e
         i = 6;
         continue;
       }
-      th(i);
-      ad.v("Luggage.MapReporter", "name:%s invoke key:%d", new Object[] { paramString, Integer.valueOf(i) });
+      tk(i);
+      ae.v("Luggage.MapReporter", "name:%s invoke key:%d", new Object[] { paramString, Integer.valueOf(i) });
       AppMethodBeat.o(143704);
       return;
       i = -1;
@@ -102,7 +102,7 @@ public final class e
   public static void d(String paramString, boolean paramBoolean1, boolean paramBoolean2)
   {
     AppMethodBeat.i(143705);
-    if (bt.isNullOrNil(paramString))
+    if (bu.isNullOrNil(paramString))
     {
       AppMethodBeat.o(143705);
       return;
@@ -116,9 +116,9 @@ public final class e
       {
       default: 
         label58:
-        if (kSx.containsKey(paramString))
+        if (kWg.containsKey(paramString))
         {
-          int j = ((Integer)kSx.get(paramString)).intValue();
+          int j = ((Integer)kWg.get(paramString)).intValue();
           if (paramBoolean2) {
             if (paramBoolean1)
             {
@@ -136,7 +136,7 @@ public final class e
     {
       if (i == -1)
       {
-        ad.e("Luggage.MapReporter", "key is -1, may be err");
+        ae.e("Luggage.MapReporter", "key is -1, may be err");
         AppMethodBeat.o(143705);
         return;
         if (!paramString.equals("insertMap")) {
@@ -185,18 +185,18 @@ public final class e
         i = 2;
         break label123;
       }
-      th(i);
-      ad.v("Luggage.MapReporter", "name:%s, isOk:%b, isOtherMap:%b, key:%d", new Object[] { paramString, Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2), Integer.valueOf(i) });
+      tk(i);
+      ae.v("Luggage.MapReporter", "name:%s, isOk:%b, isOtherMap:%b, key:%d", new Object[] { paramString, Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2), Integer.valueOf(i) });
       AppMethodBeat.o(143705);
       return;
       i = -1;
     }
   }
   
-  public static void th(int paramInt)
+  public static void tk(int paramInt)
   {
     AppMethodBeat.i(143706);
-    ad.v("Luggage.MapReporter", "reportKey:%d", new Object[] { Integer.valueOf(paramInt) });
+    ae.v("Luggage.MapReporter", "reportKey:%d", new Object[] { Integer.valueOf(paramInt) });
     ((a)com.tencent.luggage.a.e.L(a.class)).idkeyStat(1020L, paramInt, 1L, false);
     AppMethodBeat.o(143706);
   }

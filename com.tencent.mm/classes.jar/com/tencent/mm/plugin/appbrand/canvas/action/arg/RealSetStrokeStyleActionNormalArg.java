@@ -6,7 +6,7 @@ import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.canvas.a.a;
 import com.tencent.mm.plugin.appbrand.canvas.d;
-import com.tencent.mm.plugin.appbrand.z.g;
+import com.tencent.mm.plugin.appbrand.y.g;
 import java.util.Objects;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -34,7 +34,7 @@ public class RealSetStrokeStyleActionNormalArg
   public final boolean a(d paramd, Canvas paramCanvas)
   {
     AppMethodBeat.i(145093);
-    paramd.jSY.setColor(this.color);
+    paramd.jWp.setColor(this.color);
     AppMethodBeat.o(145093);
     return true;
   }
@@ -82,7 +82,7 @@ public class RealSetStrokeStyleActionNormalArg
       AppMethodBeat.o(145098);
       return;
     }
-    this.color = g.q(paramJSONArray);
+    this.color = g.r(paramJSONArray);
     AppMethodBeat.o(145098);
   }
   

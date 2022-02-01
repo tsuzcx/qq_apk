@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.m.a.a.a.a;
 
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/luggage/natives/flutter/channel/event/VideoComponentEventHandler$Companion;", "", "()V", "METHOD_ENTER_FULLSCREEN", "", "METHOD_EXIT_FULLSCREEN", "TAG", "luggage-native-view_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/luggage/natives/flutter/channel/event/VideoComponentEventHandler$Companion;", "", "()V", "METHOD_ENTER_FULLSCREEN", "", "METHOD_EXIT_FULLSCREEN", "TAG", "luggage-native-view_release"})
 public final class c$a {}
 
 

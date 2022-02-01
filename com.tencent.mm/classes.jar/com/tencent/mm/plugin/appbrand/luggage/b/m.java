@@ -1,116 +1,122 @@
 package com.tencent.mm.plugin.appbrand.luggage.b;
 
-import android.content.Context;
 import android.graphics.Bitmap;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
+import android.graphics.Rect;
+import android.text.TextUtils;
+import com.tencent.luggage.bridge.impl.a.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.s.c;
-import com.tencent.mm.plugin.appbrand.widget.b.a;
-import com.tencent.mm.plugin.appbrand.widget.b.b;
-import com.tencent.mm.plugin.gif.MMAnimateView;
+import com.tencent.mm.modelappbrand.a.b;
+import com.tencent.mm.modelappbrand.a.b.a;
+import com.tencent.mm.modelappbrand.a.b.e;
+import com.tencent.mm.modelappbrand.a.b.k;
+import com.tencent.mm.modelappbrand.a.b.p;
+import com.tencent.mm.plugin.appbrand.f.a.b;
+import com.tencent.mm.plugin.appbrand.f.a.c;
+import com.tencent.mm.sdk.platformtools.aq;
+import java.io.InputStream;
+import java.util.Map;
 
 public final class m
-  implements b
+  extends c
 {
-  public final a dE(Context paramContext)
+  public final void a(String paramString, Map<String, String> paramMap, final a.c paramc)
   {
-    AppMethodBeat.i(47492);
-    paramContext = new a(paramContext);
-    AppMethodBeat.o(47492);
-    return paramContext;
+    AppMethodBeat.i(207776);
+    b localb = b.aEl();
+    paramc = new android.arch.a.c.a() {};
+    if (TextUtils.isEmpty(paramString))
+    {
+      paramc.apply(null);
+      AppMethodBeat.o(207776);
+      return;
+    }
+    b.p localp = new b.p(paramString, (byte)0);
+    localb.hNF.hOa.post(new b.a(localb, localb, localp, paramc, paramString, paramMap));
+    AppMethodBeat.o(207776);
   }
   
-  public final class a
-    extends FrameLayout
-    implements a
+  public final Bitmap b(String paramString, Rect paramRect, final a.b paramb)
   {
-    private c crU;
-    private ImageView cum;
-    private MMAnimateView lOi;
-    private boolean lOj;
-    
-    public a(Context paramContext)
+    AppMethodBeat.i(207775);
+    if (!match(paramString))
     {
-      super();
-      AppMethodBeat.i(47486);
-      this.crU = null;
-      this.lOi = new MMAnimateView(paramContext);
-      addView(this.lOi, new ViewGroup.LayoutParams(-1, -1));
-      this.lOi.setVisibility(8);
-      this.cum = new ImageView(paramContext);
-      addView(this.cum, new ViewGroup.LayoutParams(-1, -1));
-      this.cum.setVisibility(8);
-      AppMethodBeat.o(47486);
+      AppMethodBeat.o(207775);
+      return null;
     }
-    
-    public final boolean biZ()
+    if (paramRect != null) {}
+    for (paramRect = new com.tencent.mm.plugin.appbrand.luggage.a.a(paramRect.left, paramRect.top, paramRect.width(), paramRect.height());; paramRect = null)
     {
-      return this.lOj;
+      Bitmap localBitmap = b.aEl().a(paramString, paramRect);
+      if (localBitmap == null) {
+        b.aEl().a(new b.k()
+        {
+          public final String BN()
+          {
+            AppMethodBeat.i(207772);
+            String str = "WxaIcon" + hashCode();
+            AppMethodBeat.o(207772);
+            return str;
+          }
+          
+          public final void F(Bitmap paramAnonymousBitmap)
+          {
+            AppMethodBeat.i(207770);
+            if (paramb == null)
+            {
+              AppMethodBeat.o(207770);
+              return;
+            }
+            if ((paramAnonymousBitmap == null) || (paramAnonymousBitmap.isRecycled()))
+            {
+              paramb.N(null);
+              AppMethodBeat.o(207770);
+              return;
+            }
+            paramb.N(paramAnonymousBitmap);
+            AppMethodBeat.o(207770);
+          }
+          
+          public final void aEt() {}
+          
+          public final void ox()
+          {
+            AppMethodBeat.i(207771);
+            if (paramb == null)
+            {
+              AppMethodBeat.o(207771);
+              return;
+            }
+            paramb.N(null);
+            AppMethodBeat.o(207771);
+          }
+        }, paramString, null, paramRect);
+      }
+      AppMethodBeat.o(207775);
+      return localBitmap;
     }
-    
-    public final c getReferrerPolicy()
+  }
+  
+  public final boolean match(String paramString)
+  {
+    AppMethodBeat.i(207774);
+    if ((paramString == null) || (paramString.length() == 0))
     {
-      return this.crU;
+      AppMethodBeat.o(207774);
+      return false;
     }
-    
-    public final View getView()
+    paramString = paramString.toLowerCase();
+    if ((paramString.startsWith("http://")) || (paramString.startsWith("https://")))
     {
-      return this;
+      AppMethodBeat.o(207774);
+      return true;
     }
-    
-    public final void setImageBitmap(Bitmap paramBitmap)
-    {
-      AppMethodBeat.i(47489);
-      this.lOi.setVisibility(8);
-      this.cum.setVisibility(0);
-      this.cum.setImageBitmap(paramBitmap);
-      AppMethodBeat.o(47489);
-    }
-    
-    public final void setImageByteArray(byte[] paramArrayOfByte)
-    {
-      AppMethodBeat.i(47488);
-      this.lOi.setVisibility(0);
-      this.cum.setVisibility(8);
-      this.lOi.g(paramArrayOfByte, "");
-      AppMethodBeat.o(47488);
-    }
-    
-    public final void setImageFilePath(String paramString)
-    {
-      AppMethodBeat.i(47487);
-      this.lOi.setVisibility(0);
-      this.cum.setVisibility(8);
-      this.lOi.setImageFilePath(paramString);
-      AppMethodBeat.o(47487);
-    }
-    
-    public final void setInterceptEvent(boolean paramBoolean)
-    {
-      this.lOj = paramBoolean;
-    }
-    
-    public final void setReferrerPolicy(c paramc)
-    {
-      this.crU = paramc;
-    }
-    
-    public final void setScaleType(ImageView.ScaleType paramScaleType)
-    {
-      AppMethodBeat.i(47490);
-      this.cum.setScaleType(paramScaleType);
-      this.lOi.setScaleType(paramScaleType);
-      AppMethodBeat.o(47490);
-    }
+    AppMethodBeat.o(207774);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.luggage.b.m
  * JD-Core Version:    0.7.0.1
  */

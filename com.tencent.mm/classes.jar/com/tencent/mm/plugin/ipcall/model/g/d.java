@@ -1,34 +1,34 @@
 package com.tencent.mm.plugin.ipcall.model.g;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.q;
-import com.tencent.mm.model.ba;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.model.bc;
 import com.tencent.mm.plugin.ipcall.model.b.a;
 import com.tencent.mm.plugin.ipcall.model.b.c;
 import com.tencent.mm.plugin.ipcall.model.e.i;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class d
   extends a
 {
-  public final void Dd() {}
+  public final void Dg() {}
   
   public final void b(c paramc)
   {
     AppMethodBeat.i(25519);
     if (paramc != null)
     {
-      if (paramc.uLv == 0) {
-        paramc.uLv = ((int)System.currentTimeMillis());
+      if (paramc.uXi == 0) {
+        paramc.uXi = ((int)System.currentTimeMillis());
       }
-      i locali = new i(paramc.dHz, paramc.uLU, paramc.uLv, paramc.uLw, paramc.uLx);
-      ba.aiU().a(locali, 0);
-      ad.d("MicroMsg.IPCallInviteService", "start invite, toUsername: %s, toPhoneNumber: %s, inviteid: %d", new Object[] { paramc.dHz, paramc.uLU, Integer.valueOf(paramc.uLv) });
+      i locali = new i(paramc.cUB, paramc.uXH, paramc.uXi, paramc.uXj, paramc.uXk);
+      bc.ajj().a(locali, 0);
+      ae.d("MicroMsg.IPCallInviteService", "start invite, toUsername: %s, toPhoneNumber: %s, inviteid: %d", new Object[] { paramc.cUB, paramc.uXH, Integer.valueOf(paramc.uXi) });
     }
     AppMethodBeat.o(25519);
   }
   
-  public final int[] ddT()
+  public final int[] dgL()
   {
     return new int[] { 991 };
   }
@@ -42,7 +42,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.model.g.d
  * JD-Core Version:    0.7.0.1
  */

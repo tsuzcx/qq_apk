@@ -12,52 +12,52 @@ import java.util.regex.Pattern;
 public final class j
   implements Serializable
 {
-  private static final Pattern pvL;
-  int pvM;
-  public final ArrayList<n> pvN;
+  private static final Pattern pCp;
+  int pCq;
+  public final ArrayList<n> pCr;
   
   static
   {
     AppMethodBeat.i(30523);
-    pvL = Pattern.compile("\\r\\n|\\r|\\n");
+    pCp = Pattern.compile("\\r\\n|\\r|\\n");
     AppMethodBeat.o(30523);
   }
   
   public j(Spanned paramSpanned)
   {
     AppMethodBeat.i(30520);
-    this.pvM = 0;
-    this.pvN = new ArrayList();
+    this.pCq = 0;
+    this.pCr = new ArrayList();
     if (paramSpanned != null)
     {
       paramSpanned = paramSpanned.toString();
-      this.pvM = 1;
-      Matcher localMatcher = pvL.matcher(paramSpanned);
+      this.pCq = 1;
+      Matcher localMatcher = pCp.matcher(paramSpanned);
       int i = 0;
       int j;
       boolean bool1;
       if (localMatcher.find())
       {
         j = localMatcher.end();
-        if (this.pvM == 1) {}
+        if (this.pCq == 1) {}
         for (bool1 = true;; bool1 = false)
         {
           n localn = new n(i, j, bool1, false);
-          this.pvN.add(localn);
+          this.pCr.add(localn);
           i = localMatcher.end();
-          this.pvM += 1;
+          this.pCq += 1;
           break;
         }
       }
-      if (this.pvN.size() < this.pvM)
+      if (this.pCr.size() < this.pCq)
       {
         j = paramSpanned.length();
         bool1 = bool2;
-        if (this.pvM == 1) {
+        if (this.pCq == 1) {
           bool1 = true;
         }
         paramSpanned = new n(i, j, bool1, true);
-        this.pvN.add(paramSpanned);
+        this.pCr.add(paramSpanned);
       }
     }
     AppMethodBeat.o(30520);
@@ -67,10 +67,10 @@ public final class j
   {
     AppMethodBeat.i(30521);
     int i = 0;
-    while ((i < this.pvM) && (paramInt >= ((n)this.pvN.get(i)).OQ)) {
+    while ((i < this.pCq) && (paramInt >= ((n)this.pCr.get(i)).OQ)) {
       i += 1;
     }
-    paramInt = Math.min(Math.max(0, i), this.pvN.size() - 1);
+    paramInt = Math.min(Math.max(0, i), this.pCr.size() - 1);
     AppMethodBeat.o(30521);
     return paramInt;
   }
@@ -79,13 +79,13 @@ public final class j
   {
     AppMethodBeat.i(30522);
     StringBuilder localStringBuilder1 = new StringBuilder();
-    Iterator localIterator = this.pvN.iterator();
+    Iterator localIterator = this.pCr.iterator();
     int i = 1;
     if (localIterator.hasNext())
     {
       localObject = (n)localIterator.next();
       StringBuilder localStringBuilder2 = localStringBuilder1.append(i).append(": ").append(((e)localObject).avj).append("-").append(((e)localObject).OQ);
-      if (((n)localObject).pxp) {}
+      if (((n)localObject).pDT) {}
       for (localObject = "";; localObject = ", ")
       {
         localStringBuilder2.append((String)localObject);

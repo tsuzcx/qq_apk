@@ -6,13 +6,13 @@ import android.webkit.WebResourceResponse;
 
 public abstract class q
 {
-  public abstract String Cp();
+  public abstract String Cs();
   
   public abstract WebResourceResponse a(WebResourceRequest paramWebResourceRequest, Bundle paramBundle);
   
-  public abstract void cD(String paramString);
-  
   public abstract void cE(String paramString);
+  
+  public abstract void cF(String paramString);
 }
 
 

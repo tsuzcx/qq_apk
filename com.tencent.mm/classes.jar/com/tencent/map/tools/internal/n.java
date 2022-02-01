@@ -11,22 +11,22 @@ import java.util.concurrent.TimeUnit;
 public class n
   implements Thread.UncaughtExceptionHandler
 {
-  private static final String c;
-  public volatile boolean a = false;
-  public ModuleUncaughtListener b;
-  private Context d;
-  private CountDownLatch e;
+  private static final String a;
+  private Context b;
+  private volatile boolean c = false;
+  private CountDownLatch d;
+  private ModuleUncaughtListener e;
   
   static
   {
     AppMethodBeat.i(180832);
-    c = n.class.getSimpleName();
+    a = n.class.getSimpleName();
     AppMethodBeat.o(180832);
   }
   
   public n(Context paramContext)
   {
-    this.d = paramContext;
+    this.b = paramContext;
   }
   
   private static String a(Throwable paramThrowable)
@@ -52,6 +52,18 @@ public class n
     paramThrowable = localStringBuffer.toString();
     AppMethodBeat.o(180831);
     return paramThrowable;
+  }
+  
+  public final void a(ModuleUncaughtListener paramModuleUncaughtListener)
+  {
+    AppMethodBeat.i(224092);
+    if (!this.c)
+    {
+      this.e = paramModuleUncaughtListener;
+      Thread.setDefaultUncaughtExceptionHandler(this);
+      this.c = true;
+    }
+    AppMethodBeat.o(224092);
   }
   
   public void uncaughtException(Thread paramThread, Throwable paramThrowable)
@@ -80,20 +92,20 @@ public class n
     }
     for (;;)
     {
-      if ((i != 0) && (this.d != null))
+      if ((i != 0) && (this.b != null))
       {
         localObject1 = a(paramThrowable);
-        if ((a.g != null) && (a.g.length > 0))
+        if ((a.h != null) && (a.h.length > 0))
         {
           j = 0;
           i = 0;
           for (;;)
           {
             k = i;
-            if (j >= a.g.length) {
+            if (j >= a.h.length) {
               break;
             }
-            if (((String)localObject1).contains(a.g[j])) {
+            if (((String)localObject1).contains(a.h[j])) {
               i = 1;
             }
             j += 1;
@@ -108,32 +120,32 @@ public class n
         int k = 0;
         if (k == 0)
         {
-          y.a(this.d, u.v, y.f);
-          y.a(this.d, u.y, Long.valueOf(System.currentTimeMillis() - z.a));
-          if (this.b != null) {
-            bool = this.b.onModuleSDKCrashed(paramThrowable);
+          x.a(this.b, t.v, x.f);
+          x.a(this.b, t.y, Long.valueOf(System.currentTimeMillis() - y.a));
+          if (this.e != null) {
+            bool = this.e.onModuleSDKCrashed(paramThrowable);
           }
           if (bool)
           {
             AppMethodBeat.o(180830);
             return;
           }
-          localObject2 = "EXP:" + y.f + "," + (String)localObject1;
+          localObject2 = "EXP:" + x.f + "," + (String)localObject1;
           localObject1 = localObject2;
           if (((String)localObject2).contains("\n")) {
             localObject1 = ((String)localObject2).replaceAll("\\n", "\\$");
           }
-          this.e = new CountDownLatch(1);
+          this.d = new CountDownLatch(1);
           new a((String)localObject1).start();
         }
       }
     }
     try
     {
-      this.e.await(3000L, TimeUnit.MILLISECONDS);
+      this.d.await(3000L, TimeUnit.MILLISECONDS);
       label316:
-      if (this.b != null) {
-        this.b.uncaughtException(paramThread, paramThrowable);
+      if (this.e != null) {
+        this.e.uncaughtException(paramThread, paramThrowable);
       }
       AppMethodBeat.o(180830);
       return;
@@ -162,10 +174,10 @@ public class n
       try
       {
         Object localObject = new StringBuffer();
-        String str1 = y.c(n.a(n.this));
-        String str2 = y.b() + "_" + y.a();
-        int i = y.c();
-        ((StringBuffer)localObject).append(str1).append(",").append(str2).append(",").append(i).append(",").append("").append(",").append(a.b).append(".").append(a.c).append(',').append(a.e).append(",").append(a.d);
+        String str1 = x.c(n.a(n.this));
+        String str2 = x.b() + "_" + x.a();
+        int i = x.c();
+        ((StringBuffer)localObject).append(str1).append(",").append(str2).append(",").append(i).append(",").append("").append(",").append(a.b).append(".").append(a.c).append(',').append(a.f).append(",").append(a.e);
         localObject = ((StringBuffer)localObject).toString();
         AppMethodBeat.o(180828);
         return localObject;
@@ -180,16 +192,7 @@ public class n
     public final void run()
     {
       AppMethodBeat.i(180827);
-      Object localObject2 = g.a(n.a(n.this));
-      Object localObject1 = this.b;
-      if ((a.h) && (((g)localObject2).e != null))
-      {
-        localObject2 = ((g)localObject2).e;
-        localObject1 = ((String)localObject1).getBytes();
-        if (a.h) {
-          ((k)localObject2).b.a((byte[])localObject1);
-        }
-      }
+      g.a(n.a(n.this)).a(this.b);
       n.b(n.this).countDown();
       AppMethodBeat.o(180827);
     }

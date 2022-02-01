@@ -1,34 +1,34 @@
 package com.tencent.mm.booter.notification.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.a;
+import com.tencent.mm.bq.a;
 import com.tencent.mm.n.f;
 
 public final class c
 {
-  public int fHc = -1;
+  public int fJg = -1;
   
-  public final int D(String paramString, int paramInt)
+  public final int E(String paramString, int paramInt)
   {
     AppMethodBeat.i(20042);
-    this.fHc = a.dwe();
-    if ((!f.lE(paramInt)) || (f.vB(paramString))) {}
+    this.fJg = a.dzu();
+    if ((!f.lG(paramInt)) || (f.vX(paramString))) {}
     try
     {
-      this.fHc = 2131234582;
+      this.fJg = 2131234582;
       for (;;)
       {
         label33:
-        if (this.fHc < 0) {
-          this.fHc = a.dwe();
+        if (this.fJg < 0) {
+          this.fJg = a.dzu();
         }
-        paramInt = this.fHc;
+        paramInt = this.fJg;
         AppMethodBeat.o(20042);
         return paramInt;
-        if (f.vC(paramString)) {
+        if (f.vY(paramString)) {
           try
           {
-            this.fHc = 2131234582;
+            this.fJg = 2131234582;
           }
           catch (Exception paramString) {}
         }

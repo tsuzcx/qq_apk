@@ -5,22 +5,22 @@ import com.tencent.mm.hardcoder.WXHardCoderJNI;
 
 public final class c
 {
-  private int fKT = 0;
-  public int fKU;
+  private int fMW = 0;
+  public int fMX;
   
-  public final void qI(int paramInt)
+  public final void qL(int paramInt)
   {
-    this.fKT |= paramInt;
+    this.fMW |= paramInt;
   }
   
-  final void qJ(int paramInt)
+  final void qM(int paramInt)
   {
     AppMethodBeat.i(151324);
-    this.fKT &= (paramInt ^ 0xFFFFFFFF);
-    if (this.fKT == 0)
+    this.fMW &= (paramInt ^ 0xFFFFFFFF);
+    if (this.fMW == 0)
     {
-      WXHardCoderJNI.stopPerformance(WXHardCoderJNI.hcUpdateChatroomEnable, this.fKU);
-      this.fKU = 0;
+      WXHardCoderJNI.stopPerformance(WXHardCoderJNI.hcUpdateChatroomEnable, this.fMX);
+      this.fMX = 0;
     }
     AppMethodBeat.o(151324);
   }

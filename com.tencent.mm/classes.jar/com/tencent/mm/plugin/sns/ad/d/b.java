@@ -1,94 +1,46 @@
 package com.tencent.mm.plugin.sns.ad.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.am;
-import com.tencent.mm.plugin.sns.storage.p;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.ui.al;
+import com.tencent.mm.plugin.report.service.g;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class b
+  implements a
 {
-  private static int ltA;
-  private static int ltB;
-  public int yXE;
-  public p yXF;
-  public int yXG;
-  public long yXH;
-  public long yXI;
-  
-  public static int dRw()
+  public final int dHw()
   {
-    AppMethodBeat.i(197600);
-    int i = 0;
-    try
-    {
-      boolean bool = al.isDarkMode();
-      i = bool;
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        ad.e("AdExposureParams", "getDarkModeStatus exp=" + localThrowable.toString());
-      }
-      AppMethodBeat.o(197600);
-    }
-    if (i != 0)
-    {
-      AppMethodBeat.o(197600);
-      return 2;
-    }
-    return 1;
+    return 11855;
   }
   
-  public static int getScreenHeight()
+  public final void f(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(197598);
-    if (ltB == 0) {}
-    try
+    AppMethodBeat.i(94967);
+    switch (paramInt)
     {
-      int[] arrayOfInt = am.gk(aj.getContext());
-      ltA = arrayOfInt[0];
-      ltB = arrayOfInt[1];
-      int i = ltB;
-      AppMethodBeat.o(197598);
-      return i;
+    default: 
+      ae.e("Kv_11855", "unknown type %d", new Object[] { Integer.valueOf(paramInt) });
+      AppMethodBeat.o(94967);
+      return;
+    case 0: 
+    case 1: 
+      g.yxI.f(11855, paramVarArgs);
+      AppMethodBeat.o(94967);
+      return;
     }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        ad.e("AdExposureParams", "getScreenHeight exp=" + localThrowable.toString());
-      }
-    }
+    g.yxI.f(14646, paramVarArgs);
+    AppMethodBeat.o(94967);
   }
   
-  public static int getScreenWidth()
+  public final void v(Object... paramVarArgs)
   {
-    AppMethodBeat.i(197599);
-    if (ltA == 0) {}
-    try
-    {
-      int[] arrayOfInt = am.gk(aj.getContext());
-      ltA = arrayOfInt[0];
-      ltB = arrayOfInt[1];
-      int i = ltA;
-      AppMethodBeat.o(197599);
-      return i;
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        ad.e("AdExposureParams", "getScreenWidth exp=" + localThrowable.toString());
-      }
-    }
+    AppMethodBeat.i(94966);
+    f(0, paramVarArgs);
+    AppMethodBeat.o(94966);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ad.d.b
  * JD-Core Version:    0.7.0.1
  */

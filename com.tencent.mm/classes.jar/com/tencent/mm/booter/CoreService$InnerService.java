@@ -5,7 +5,7 @@ import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public class CoreService$InnerService
   extends Service
@@ -30,7 +30,7 @@ public class CoreService$InnerService
     {
       for (;;)
       {
-        ad.e("MicroMsg.CoreService", "set service for push exception:%s.", new Object[] { localNullPointerException });
+        ae.e("MicroMsg.CoreService", "set service for push exception:%s.", new Object[] { localNullPointerException });
       }
     }
   }
@@ -45,7 +45,7 @@ public class CoreService$InnerService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.booter.CoreService.InnerService
  * JD-Core Version:    0.7.0.1
  */

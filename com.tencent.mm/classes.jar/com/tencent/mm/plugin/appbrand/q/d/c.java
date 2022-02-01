@@ -4,37 +4,37 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
 import com.tencent.mm.plugin.appbrand.a.b;
 import com.tencent.mm.plugin.appbrand.a.c.a;
-import com.tencent.mm.plugin.appbrand.q;
 import com.tencent.mm.plugin.appbrand.q.a.e;
 import com.tencent.mm.plugin.appbrand.q.a.e.a;
+import com.tencent.mm.plugin.appbrand.r;
 import java.util.HashMap;
 import java.util.Map;
 
 public final class c
   extends e
 {
-  private c.a lXZ;
+  private c.a mcG;
   
-  public c(e.a parama, q paramq)
+  public c(e.a parama, r paramr)
   {
-    super(parama, paramq);
+    super(parama, paramr);
   }
   
-  public final void btD()
+  public final void buo()
   {
     AppMethodBeat.i(147411);
-    this.lXZ = new c.a()
+    this.mcG = new c.a()
     {
       public final void a(String paramAnonymousString, b paramAnonymousb)
       {
         AppMethodBeat.i(147410);
         paramAnonymousString = new HashMap();
         paramAnonymousString.put("state", Integer.valueOf(paramAnonymousb.ordinal()));
-        c.this.Q(paramAnonymousString);
+        c.this.X(paramAnonymousString);
         AppMethodBeat.o(147410);
       }
     };
-    this.cox.getRuntime().jwS.a(this.lXZ);
+    this.coz.getRuntime().jzQ.a(this.mcG);
     AppMethodBeat.o(147411);
   }
   
@@ -46,23 +46,23 @@ public final class c
   public final void removeListener()
   {
     AppMethodBeat.i(147412);
-    if (this.lXZ == null)
+    if (this.mcG == null)
     {
       AppMethodBeat.o(147412);
       return;
     }
-    if (this.cox.getRuntime() == null)
+    if (this.coz.getRuntime() == null)
     {
       AppMethodBeat.o(147412);
       return;
     }
-    com.tencent.mm.plugin.appbrand.a.c localc = this.cox.getRuntime().jwS;
+    com.tencent.mm.plugin.appbrand.a.c localc = this.coz.getRuntime().jzQ;
     if (localc == null)
     {
       AppMethodBeat.o(147412);
       return;
     }
-    localc.b(this.lXZ);
+    localc.b(this.mcG);
     AppMethodBeat.o(147412);
   }
 }

@@ -4,50 +4,50 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.vfs.e;
-import com.tencent.mm.vfs.q;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.vfs.k;
+import com.tencent.mm.vfs.w;
 import java.io.File;
 
 public final class a
 {
-  private static void U(e parame)
+  private static void U(k paramk)
   {
     AppMethodBeat.i(175882);
-    if (parame == null)
+    if (paramk == null)
     {
       AppMethodBeat.o(175882);
       return;
     }
-    if (parame.isDirectory())
+    if (paramk.isDirectory())
     {
-      e[] arrayOfe = parame.fOM();
-      int j = arrayOfe.length;
+      k[] arrayOfk = paramk.fTj();
+      int j = arrayOfk.length;
       int i = 0;
       while (i < j)
       {
-        U(arrayOfe[i]);
+        U(arrayOfk[i]);
         i += 1;
       }
     }
-    ad.i("MicroMsg.ABI64WebViewCompat", "delete isSuccessDelete: %s fileName: %s", new Object[] { Boolean.valueOf(parame.delete()), q.B(parame.fOK()) });
+    ae.i("MicroMsg.ABI64WebViewCompat", "delete isSuccessDelete: %s fileName: %s", new Object[] { Boolean.valueOf(paramk.delete()), w.B(paramk.fTh()) });
     AppMethodBeat.o(175882);
   }
   
-  public static boolean hc(Context paramContext)
+  public static boolean hi(Context paramContext)
   {
     AppMethodBeat.i(82364);
     try
     {
-      U(new e(paramContext.getFilesDir().getParent() + "/app_webview/GPUCache"));
-      U(new e(paramContext.getFilesDir().getParent() + "/app_x5webview/GPUCache"));
+      U(new k(paramContext.getFilesDir().getParent() + "/app_webview/GPUCache"));
+      U(new k(paramContext.getFilesDir().getParent() + "/app_x5webview/GPUCache"));
       paramContext.getSharedPreferences("WebViewChromiumPrefs", 0).edit().clear().apply();
       AppMethodBeat.o(82364);
       return true;
     }
     catch (Throwable paramContext)
     {
-      ad.printErrStackTrace("MicroMsg.ABI64WebViewCompat", paramContext, "", new Object[0]);
+      ae.printErrStackTrace("MicroMsg.ABI64WebViewCompat", paramContext, "", new Object[0]);
       AppMethodBeat.o(82364);
     }
     return false;

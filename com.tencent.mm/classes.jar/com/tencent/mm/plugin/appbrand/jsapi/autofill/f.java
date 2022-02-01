@@ -5,14 +5,14 @@ import com.tencent.luggage.h.e.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.a;
 import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.plugin.appbrand.page.aa;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.plugin.appbrand.page.z;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.HashMap;
 import java.util.Map;
 
 public final class f
-  extends a<aa>
+  extends a<z>
 {
   public static final int CTRL_INDEX = 402;
   public static final String NAME = "openRealnameAuth";

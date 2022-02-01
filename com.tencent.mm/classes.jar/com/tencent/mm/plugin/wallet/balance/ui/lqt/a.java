@@ -7,26 +7,26 @@ import com.tencent.mm.pluginsdk.ui.span.o;
 public final class a
   extends o
 {
-  private a CAl;
+  private a CRQ;
   
   public a(a parama)
   {
     super(2, null);
-    this.CAl = parama;
+    this.CRQ = parama;
   }
   
   public final void onClick(View paramView)
   {
     AppMethodBeat.i(68736);
-    if (this.CAl != null) {
-      this.CAl.aRn();
+    if (this.CRQ != null) {
+      this.CRQ.aRM();
     }
     AppMethodBeat.o(68736);
   }
   
   public static abstract interface a
   {
-    public abstract void aRn();
+    public abstract void aRM();
   }
 }
 

@@ -12,7 +12,7 @@ final class FreeWifiFrontPageUI$4
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
     AppMethodBeat.i(25021);
-    FreeWifiFrontPageUI.a(this.tpQ);
+    FreeWifiFrontPageUI.a(this.tAH);
     AppMethodBeat.o(25021);
     return true;
   }

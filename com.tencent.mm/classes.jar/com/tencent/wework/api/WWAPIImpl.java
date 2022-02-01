@@ -28,11 +28,11 @@ import java.util.Map;
 public final class WWAPIImpl
   implements IWWAPI
 {
-  private static boolean BPH;
-  private static final ArrayList<String> Mol;
-  private static final ArrayList<String> Mom;
-  private String Mok;
-  private BroadcastReceiver Mon;
+  private static boolean Chg;
+  private static final ArrayList<String> MLh;
+  private static final ArrayList<String> MLi;
+  private String MLg;
+  private BroadcastReceiver MLj;
   private Map<String, Object> callbacks;
   private Context context;
   private SharedPreferences mPreferences;
@@ -40,9 +40,9 @@ public final class WWAPIImpl
   static
   {
     AppMethodBeat.i(106537);
-    Mol = new WWAPIImpl.1();
-    Mom = new WWAPIImpl.2();
-    BPH = false;
+    MLh = new WWAPIImpl.1();
+    MLi = new WWAPIImpl.2();
+    Chg = false;
     AppMethodBeat.o(106537);
   }
   
@@ -50,48 +50,48 @@ public final class WWAPIImpl
   {
     AppMethodBeat.i(106530);
     this.callbacks = new HashMap();
-    this.Mon = new BroadcastReceiver()
+    this.MLj = new BroadcastReceiver()
     {
       public void onReceive(final Context paramAnonymousContext, Intent paramAnonymousIntent)
       {
-        AppMethodBeat.i(190353);
+        AppMethodBeat.i(193325);
         try
         {
           boolean bool = WWAPIImpl.a(WWAPIImpl.this).equals(paramAnonymousIntent.getScheme());
           if (!bool)
           {
-            AppMethodBeat.o(190353);
+            AppMethodBeat.o(193325);
             return;
           }
           paramAnonymousContext = BaseMessage.C(paramAnonymousIntent.getData());
-          paramAnonymousContext.baq(WWAPIImpl.b(WWAPIImpl.this).getString("sk", ""));
+          paramAnonymousContext.bbT(WWAPIImpl.b(WWAPIImpl.this).getString("sk", ""));
           paramAnonymousContext.fromBundle(paramAnonymousIntent.getExtras());
           if ((paramAnonymousContext instanceof WWBaseRespMessage)) {
             new Handler(Looper.getMainLooper()).post(new Runnable()
             {
               public void run()
               {
-                AppMethodBeat.i(190352);
+                AppMethodBeat.i(193324);
                 try
                 {
                   WWAPIImpl.c(WWAPIImpl.this).get(((WWBaseRespMessage)paramAnonymousContext).transaction);
                   WWAPIImpl.c(WWAPIImpl.this).remove(((WWBaseRespMessage)paramAnonymousContext).transaction);
-                  AppMethodBeat.o(190352);
+                  AppMethodBeat.o(193324);
                   return;
                 }
                 catch (Throwable localThrowable)
                 {
-                  AppMethodBeat.o(190352);
+                  AppMethodBeat.o(193324);
                 }
               }
             });
           }
-          AppMethodBeat.o(190353);
+          AppMethodBeat.o(193325);
           return;
         }
         catch (Throwable paramAnonymousContext)
         {
-          AppMethodBeat.o(190353);
+          AppMethodBeat.o(193325);
         }
       }
     };
@@ -101,7 +101,7 @@ public final class WWAPIImpl
     AppMethodBeat.o(106530);
   }
   
-  private int bao(String paramString)
+  private int bbR(String paramString)
   {
     AppMethodBeat.i(106533);
     try
@@ -123,12 +123,12 @@ public final class WWAPIImpl
     return 0;
   }
   
-  private String bap(String paramString)
+  private String bbS(String paramString)
   {
     AppMethodBeat.i(106535);
     try
     {
-      paramString = cV(this.context.getPackageManager().getPackageInfo(paramString, 64).signatures[0].toByteArray());
+      paramString = cY(this.context.getPackageManager().getPackageInfo(paramString, 64).signatures[0].toByteArray());
       AppMethodBeat.o(106535);
       return paramString;
     }
@@ -139,7 +139,7 @@ public final class WWAPIImpl
     return "";
   }
   
-  private static String cV(byte[] paramArrayOfByte)
+  private static String cY(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(106536);
     try
@@ -169,29 +169,29 @@ public final class WWAPIImpl
     return "";
   }
   
-  private List<String> gad()
+  private List<String> geF()
   {
-    AppMethodBeat.i(190354);
-    ArrayList localArrayList2 = Mol;
+    AppMethodBeat.i(193326);
+    ArrayList localArrayList2 = MLh;
     ArrayList localArrayList1 = localArrayList2;
     if (this.context != null)
     {
       localArrayList1 = localArrayList2;
       if (!TextUtils.equals(this.context.getPackageName(), "com.tencent.mm")) {
-        localArrayList1 = Mom;
+        localArrayList1 = MLi;
       }
     }
-    AppMethodBeat.o(190354);
+    AppMethodBeat.o(193326);
     return localArrayList1;
   }
   
   public final boolean a(BaseMessage paramBaseMessage)
   {
     AppMethodBeat.i(106534);
-    paramBaseMessage.baq(this.mPreferences.getString("sk", ""));
-    Object localObject1 = Mom;
-    if (((paramBaseMessage instanceof WWBaseMessage)) && (TextUtils.equals(((WWBaseMessage)paramBaseMessage).Mos, "com.tencent.mm"))) {
-      localObject1 = Mol;
+    paramBaseMessage.bbT(this.mPreferences.getString("sk", ""));
+    Object localObject1 = MLi;
+    if (((paramBaseMessage instanceof WWBaseMessage)) && (TextUtils.equals(((WWBaseMessage)paramBaseMessage).MLo, "com.tencent.mm"))) {
+      localObject1 = MLh;
     }
     for (;;)
     {
@@ -200,7 +200,7 @@ public final class WWAPIImpl
       {
         localObject2 = localObject1;
         if (TextUtils.equals(this.context.getPackageName(), "com.tencent.mm")) {
-          localObject2 = Mol;
+          localObject2 = MLh;
         }
       }
       localObject1 = ((ArrayList)localObject2).iterator();
@@ -209,7 +209,7 @@ public final class WWAPIImpl
         if (((Iterator)localObject1).hasNext())
         {
           Object localObject3 = (String)((Iterator)localObject1).next();
-          if (!"011A40266C8C75D181DDD8E4DDC50075".equals(bap((String)localObject3))) {
+          if (!"011A40266C8C75D181DDD8E4DDC50075".equals(bbS((String)localObject3))) {
             continue;
           }
           localObject2 = new Intent("com.tencent.wework.apihost");
@@ -227,12 +227,12 @@ public final class WWAPIImpl
             }
             for (;;)
             {
-              ((Intent)localObject2).putExtra("PendingIntent", PendingIntent.getBroadcast(this.context, 0, new Intent(this.context, this.Mon.getClass()), 134217728));
+              ((Intent)localObject2).putExtra("PendingIntent", PendingIntent.getBroadcast(this.context, 0, new Intent(this.context, this.MLj.getClass()), 134217728));
               paramBaseMessage.x((Intent)localObject2, (String)localObject3);
               localObject3 = this.context;
               localObject2 = new com.tencent.mm.hellhoundlib.b.a().bc(localObject2);
-              com.tencent.mm.hellhoundlib.a.a.a(localObject3, ((com.tencent.mm.hellhoundlib.b.a)localObject2).ahp(), "com/tencent/wework/api/WWAPIImpl", "sendMessage", "(Lcom/tencent/wework/api/model/BaseMessage;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-              ((Context)localObject3).startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject2).mq(0));
+              com.tencent.mm.hellhoundlib.a.a.a(localObject3, ((com.tencent.mm.hellhoundlib.b.a)localObject2).ahE(), "com/tencent/wework/api/WWAPIImpl", "sendMessage", "(Lcom/tencent/wework/api/model/BaseMessage;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+              ((Context)localObject3).startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject2).mt(0));
               com.tencent.mm.hellhoundlib.a.a.a(localObject3, "com/tencent/wework/api/WWAPIImpl", "sendMessage", "(Lcom/tencent/wework/api/model/BaseMessage;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
               AppMethodBeat.o(106534);
               return true;
@@ -247,17 +247,17 @@ public final class WWAPIImpl
     }
   }
   
-  public final boolean gab()
+  public final boolean geD()
   {
     AppMethodBeat.i(106531);
-    Iterator localIterator = gad().iterator();
+    Iterator localIterator = geF().iterator();
     int i;
     do
     {
       if (!localIterator.hasNext()) {
         break;
       }
-      i = bao((String)localIterator.next());
+      i = bbR((String)localIterator.next());
     } while (i == 0);
     while (i >= 100)
     {
@@ -269,10 +269,10 @@ public final class WWAPIImpl
     return false;
   }
   
-  public final String gac()
+  public final String geE()
   {
     AppMethodBeat.i(106532);
-    Object localObject = gad().iterator();
+    Object localObject = geF().iterator();
     if (((Iterator)localObject).hasNext())
     {
       localObject = (String)((Iterator)localObject).next();

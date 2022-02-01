@@ -4,13 +4,13 @@ import android.os.Looper;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.ak;
-import com.tencent.mm.model.w;
+import com.tencent.mm.model.al;
+import com.tencent.mm.model.x;
 import com.tencent.mm.plugin.chatroom.a.c;
 import com.tencent.mm.plugin.fts.a.d.e.b;
 import com.tencent.mm.plugin.fts.a.n;
 import com.tencent.mm.plugin.fts.ui.d.f;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.aq;
 import java.util.HashSet;
 import java.util.LinkedList;
 
@@ -18,34 +18,34 @@ public final class h
   extends d
   implements e.b
 {
-  private ap tyn;
-  private f tzx;
-  private boolean tzy;
+  private aq tJe;
+  private f tKo;
+  private boolean tKp;
   
   public h(e parame, String paramString, int paramInt)
   {
     super(parame);
     AppMethodBeat.i(111906);
-    this.tyn = new ap(Looper.getMainLooper());
+    this.tJe = new aq(Looper.getMainLooper());
     parame = parame.getContext();
     HashSet localHashSet = new HashSet();
     localHashSet.add(Integer.valueOf(160));
     parame = (f)((n)g.ad(n.class)).createFTSUIUnitList(localHashSet, parame, this, paramInt).get(0);
-    parame.tvc = paramString;
-    if (w.vF(paramString)) {
-      parame.tzs = ((c)g.ab(c.class)).azz().AN(paramString);
+    parame.tFT = paramString;
+    if (x.wb(paramString)) {
+      parame.tKj = ((c)g.ab(c.class)).azP().Bx(paramString);
     }
-    this.tzx = parame;
+    this.tKo = parame;
     AppMethodBeat.o(111906);
   }
   
-  protected final com.tencent.mm.plugin.fts.a.d.a.a GR(int paramInt)
+  protected final com.tencent.mm.plugin.fts.a.d.a.a Ho(int paramInt)
   {
     AppMethodBeat.i(111908);
-    com.tencent.mm.plugin.fts.a.d.a.a locala = this.tzx.GR(paramInt);
+    com.tencent.mm.plugin.fts.a.d.a.a locala = this.tKo.Ho(paramInt);
     if (locala != null)
     {
-      locala.tvV = paramInt;
+      locala.tGM = paramInt;
       locala.pageType = 4;
     }
     AppMethodBeat.o(111908);
@@ -55,56 +55,56 @@ public final class h
   public final void a(com.tencent.mm.plugin.fts.a.d.e parame, String paramString)
   {
     AppMethodBeat.i(111907);
-    setCount(parame.GQ(0));
+    setCount(parame.Hn(0));
     notifyDataSetChanged();
-    al(getCount(), true);
+    ao(getCount(), true);
     AppMethodBeat.o(111907);
   }
   
   protected final boolean a(View paramView, com.tencent.mm.plugin.fts.a.d.a.a parama, boolean paramBoolean)
   {
     AppMethodBeat.i(111910);
-    this.tzx.a(paramView, parama, paramBoolean);
-    if ((parama.twd) && (!this.tzy))
+    this.tKo.a(paramView, parama, paramBoolean);
+    if ((parama.tGU) && (!this.tKp))
     {
-      this.tzy = true;
-      l.c(this.query, true, this.tzx.cTm(), -2);
+      this.tKp = true;
+      l.c(this.query, true, this.tKo.cVR(), -2);
     }
     AppMethodBeat.o(111910);
     return false;
   }
   
-  protected final int cSU()
-  {
-    AppMethodBeat.i(221186);
-    int i = this.tzx.cTm();
-    AppMethodBeat.o(221186);
-    return i;
-  }
-  
-  protected final void cTn()
+  protected final void cVS()
   {
     AppMethodBeat.i(111909);
-    this.tzy = false;
-    this.tzx.a(this.query, this.tyn, new HashSet(), 0L);
+    this.tKp = false;
+    this.tKo.a(this.query, this.tJe, new HashSet(), 0L);
     AppMethodBeat.o(111909);
+  }
+  
+  protected final int cVz()
+  {
+    AppMethodBeat.i(224510);
+    int i = this.tKo.cVR();
+    AppMethodBeat.o(224510);
+    return i;
   }
   
   public final void finish()
   {
     AppMethodBeat.i(111911);
     super.finish();
-    if (!this.tzy)
+    if (!this.tKp)
     {
-      this.tzy = true;
-      l.c(this.query, false, this.tzx.cTm(), -2);
+      this.tKp = true;
+      l.c(this.query, false, this.tKo.cVR(), -2);
     }
     AppMethodBeat.o(111911);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.ui.h
  * JD-Core Version:    0.7.0.1
  */

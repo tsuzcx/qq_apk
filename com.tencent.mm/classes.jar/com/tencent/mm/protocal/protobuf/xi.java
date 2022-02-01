@@ -1,142 +1,78 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import f.a.a.b;
+import com.tencent.mm.bw.b;
 import java.util.LinkedList;
 
 public final class xi
-  extends cvc
+  extends com.tencent.mm.bw.a
 {
-  public String FNC;
-  public int FWN;
-  public String fileid;
-  public String md5;
+  public b Gph;
+  public LinkedList<b> Gpi;
+  
+  public xi()
+  {
+    AppMethodBeat.i(123563);
+    this.Gpi = new LinkedList();
+    AppMethodBeat.o(123563);
+  }
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(9588);
+    AppMethodBeat.i(123564);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.fileid == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: fileid");
-        AppMethodBeat.o(9588);
-        throw paramVarArgs;
+      if (this.Gph != null) {
+        paramVarArgs.c(1, this.Gph);
       }
-      if (this.md5 == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: md5");
-        AppMethodBeat.o(9588);
-        throw paramVarArgs;
-      }
-      if (this.BaseRequest != null)
-      {
-        paramVarArgs.lC(1, this.BaseRequest.computeSize());
-        this.BaseRequest.writeFields(paramVarArgs);
-      }
-      if (this.fileid != null) {
-        paramVarArgs.d(2, this.fileid);
-      }
-      if (this.md5 != null) {
-        paramVarArgs.d(3, this.md5);
-      }
-      if (this.FNC != null) {
-        paramVarArgs.d(4, this.FNC);
-      }
-      paramVarArgs.aS(5, this.FWN);
-      AppMethodBeat.o(9588);
+      paramVarArgs.e(2, 6, this.Gpi);
+      AppMethodBeat.o(123564);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.BaseRequest == null) {
-        break label645;
+      if (this.Gph == null) {
+        break label274;
       }
     }
-    label645:
-    for (int i = f.a.a.a.lB(1, this.BaseRequest.computeSize()) + 0;; i = 0)
+    label274:
+    for (paramInt = f.a.a.b.b.a.b(1, this.Gph) + 0;; paramInt = 0)
     {
-      paramInt = i;
-      if (this.fileid != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.fileid);
-      }
-      i = paramInt;
-      if (this.md5 != null) {
-        i = paramInt + f.a.a.b.b.a.e(3, this.md5);
-      }
-      paramInt = i;
-      if (this.FNC != null) {
-        paramInt = i + f.a.a.b.b.a.e(4, this.FNC);
-      }
-      i = f.a.a.b.b.a.bz(5, this.FWN);
-      AppMethodBeat.o(9588);
+      int i = f.a.a.a.c(2, 6, this.Gpi);
+      AppMethodBeat.o(123564);
       return paramInt + i;
       if (paramInt == 2)
       {
-        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = cvc.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cvc.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = (byte[])paramVarArgs[0];
+        this.Gpi.clear();
+        paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
-        if (this.fileid == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: fileid");
-          AppMethodBeat.o(9588);
-          throw paramVarArgs;
-        }
-        if (this.md5 == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: md5");
-          AppMethodBeat.o(9588);
-          throw paramVarArgs;
-        }
-        AppMethodBeat.o(9588);
+        AppMethodBeat.o(123564);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
+        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
         xi localxi = (xi)paramVarArgs[1];
-        paramInt = ((Integer)paramVarArgs[2]).intValue();
-        switch (paramInt)
+        switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(9588);
+          AppMethodBeat.o(123564);
           return -1;
         case 1: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new jc();
-            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((jc)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, cvc.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-            localxi.BaseRequest = ((jc)localObject1);
-            paramInt += 1;
-          }
-          AppMethodBeat.o(9588);
-          return 0;
-        case 2: 
-          localxi.fileid = ((f.a.a.a.a)localObject1).NPN.readString();
-          AppMethodBeat.o(9588);
-          return 0;
-        case 3: 
-          localxi.md5 = ((f.a.a.a.a)localObject1).NPN.readString();
-          AppMethodBeat.o(9588);
-          return 0;
-        case 4: 
-          localxi.FNC = ((f.a.a.a.a)localObject1).NPN.readString();
-          AppMethodBeat.o(9588);
+          localxi.Gph = locala.OmT.gCk();
+          AppMethodBeat.o(123564);
           return 0;
         }
-        localxi.FWN = ((f.a.a.a.a)localObject1).NPN.zc();
-        AppMethodBeat.o(9588);
+        localxi.Gpi.add(locala.OmT.gCk());
+        AppMethodBeat.o(123564);
         return 0;
       }
-      AppMethodBeat.o(9588);
+      AppMethodBeat.o(123564);
       return -1;
     }
   }

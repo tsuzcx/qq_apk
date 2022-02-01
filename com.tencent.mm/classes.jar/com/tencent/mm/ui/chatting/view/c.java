@@ -13,8 +13,8 @@ import android.widget.NumberPicker;
 import android.widget.NumberPicker.OnValueChangeListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.i.i;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.widget.picker.OptionPicker;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -22,99 +22,99 @@ import java.util.List;
 
 public final class c
 {
-  OptionPicker JXO;
-  OptionPicker JXP;
-  public a JXQ;
-  ArrayList<Long> JXR;
-  private Button gUt;
-  private Button gWI;
-  private View kBS;
-  private int lzC;
-  private BottomSheetBehavior lzD;
+  OptionPicker Kuh;
+  OptionPicker Kui;
+  public a Kuj;
+  ArrayList<Long> Kuk;
+  private Button gXc;
+  private Button gZv;
+  private View kFh;
+  private int lEa;
+  private BottomSheetBehavior lEb;
   Context mContext;
-  android.support.design.widget.a uBI;
+  android.support.design.widget.a uNn;
   
   public c(Context paramContext)
   {
     AppMethodBeat.i(36725);
-    this.JXR = new ArrayList(42);
+    this.Kuk = new ArrayList(42);
     this.mContext = paramContext;
-    this.kBS = View.inflate(this.mContext, 2131495247, null);
-    this.uBI = new android.support.design.widget.a(this.mContext);
-    this.uBI.setContentView(this.kBS);
-    this.uBI.setOnDismissListener(new DialogInterface.OnDismissListener()
+    this.kFh = View.inflate(this.mContext, 2131495247, null);
+    this.uNn = new android.support.design.widget.a(this.mContext);
+    this.uNn.setContentView(this.kFh);
+    this.uNn.setOnDismissListener(new DialogInterface.OnDismissListener()
     {
       public final void onDismiss(DialogInterface paramAnonymousDialogInterface)
       {
-        c.this.uBI = null;
+        c.this.uNn = null;
       }
     });
-    this.JXO = ((OptionPicker)this.kBS.findViewById(2131303043));
-    this.JXP = ((OptionPicker)this.kBS.findViewById(2131303045));
-    this.JXO.setValue(0);
-    this.JXO.setMinWidth(com.tencent.mm.cc.a.fromDPToPix(this.mContext, 60));
-    this.JXP.setMinWidth(com.tencent.mm.cc.a.fromDPToPix(this.mContext, 60));
-    this.JXO.setOptionsArray(fHf());
-    this.JXP.setOptionsArray(aef(0));
-    this.JXO.setOnValueChangedListener(new NumberPicker.OnValueChangeListener()
+    this.Kuh = ((OptionPicker)this.kFh.findViewById(2131303043));
+    this.Kui = ((OptionPicker)this.kFh.findViewById(2131303045));
+    this.Kuh.setValue(0);
+    this.Kuh.setMinWidth(com.tencent.mm.cb.a.fromDPToPix(this.mContext, 60));
+    this.Kui.setMinWidth(com.tencent.mm.cb.a.fromDPToPix(this.mContext, 60));
+    this.Kuh.setOptionsArray(fLx());
+    this.Kui.setOptionsArray(aeO(0));
+    this.Kuh.setOnValueChangedListener(new NumberPicker.OnValueChangeListener()
     {
       public final void onValueChange(NumberPicker paramAnonymousNumberPicker, int paramAnonymousInt1, int paramAnonymousInt2)
       {
         AppMethodBeat.i(36722);
-        ad.d("MicroMsg.MMRemindDatePicker", "[onValueChange] oldVal:%s newVal:%s", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2) });
-        c.this.JXP.setOptionsArray(c.this.aef(paramAnonymousInt2));
+        ae.d("MicroMsg.MMRemindDatePicker", "[onValueChange] oldVal:%s newVal:%s", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2) });
+        c.this.Kui.setOptionsArray(c.this.aeO(paramAnonymousInt2));
         paramAnonymousInt1 = Calendar.getInstance().get(11);
         if (paramAnonymousInt2 == 0)
         {
-          c.this.JXP.setValue(0);
+          c.this.Kui.setValue(0);
           AppMethodBeat.o(36722);
           return;
         }
-        c.this.JXP.setValue(paramAnonymousInt1);
+        c.this.Kui.setValue(paramAnonymousInt1);
         AppMethodBeat.o(36722);
       }
     });
-    paramContext = (FrameLayout.LayoutParams)this.kBS.getLayoutParams();
-    paramContext.height = com.tencent.mm.cc.a.fromDPToPix(this.mContext, 288);
-    this.kBS.setLayoutParams(paramContext);
-    this.lzC = com.tencent.mm.cc.a.fromDPToPix(this.mContext, 350);
-    this.lzD = BottomSheetBehavior.l((View)this.kBS.getParent());
-    if (this.lzD != null)
+    paramContext = (FrameLayout.LayoutParams)this.kFh.getLayoutParams();
+    paramContext.height = com.tencent.mm.cb.a.fromDPToPix(this.mContext, 288);
+    this.kFh.setLayoutParams(paramContext);
+    this.lEa = com.tencent.mm.cb.a.fromDPToPix(this.mContext, 350);
+    this.lEb = BottomSheetBehavior.l((View)this.kFh.getParent());
+    if (this.lEb != null)
     {
-      this.lzD.J(this.lzC);
-      this.lzD.nZ = false;
+      this.lEb.J(this.lEa);
+      this.lEb.nZ = false;
     }
-    this.gUt = ((Button)this.kBS.findViewById(2131302999));
-    this.gUt.setOnClickListener(new View.OnClickListener()
+    this.gXc = ((Button)this.kFh.findViewById(2131302999));
+    this.gXc.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(36723);
         Object localObject = new com.tencent.mm.hellhoundlib.b.b();
         ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/chatting/view/MMRemindDatePicker$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahq());
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/chatting/view/MMRemindDatePicker$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahF());
         long l;
         int i;
         int j;
-        if (c.this.JXQ != null)
+        if (c.this.Kuj != null)
         {
-          paramAnonymousView = c.this.JXQ;
+          paramAnonymousView = c.this.Kuj;
           localObject = c.this;
           l = System.currentTimeMillis();
-          i = ((c)localObject).JXO.getValue();
-          j = ((c)localObject).JXP.getValue();
+          i = ((c)localObject).Kuh.getValue();
+          j = ((c)localObject).Kui.getValue();
           if (i != 0) {
             break label195;
           }
-          if (!com.tencent.mm.sdk.a.b.fjN()) {
+          if (!com.tencent.mm.sdk.a.b.fnF()) {
             break label179;
           }
           l += 360000L;
         }
         for (;;)
         {
-          ad.i("MicroMsg.MMRemindDatePicker", "[getTimestamp] date:%s", new Object[] { i.formatTime(((c)localObject).mContext.getString(2131759518) + "HH:mm", l / 1000L) });
-          paramAnonymousView.DQ(l);
+          ae.i("MicroMsg.MMRemindDatePicker", "[getTimestamp] date:%s", new Object[] { i.formatTime(((c)localObject).mContext.getString(2131759518) + "HH:mm", l / 1000L) });
+          paramAnonymousView.Ep(l);
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/chatting/view/MMRemindDatePicker$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(36723);
           return;
@@ -122,21 +122,21 @@ public final class c
           l += (j + 1) * 3600000L;
           continue;
           label195:
-          l = ((Long)((c)localObject).JXR.get(i)).longValue() + (j + 1) * 3600000L;
+          l = ((Long)((c)localObject).Kuk.get(i)).longValue() + (j + 1) * 3600000L;
         }
       }
     });
-    this.gWI = ((Button)this.kBS.findViewById(2131297690));
-    this.gWI.setOnClickListener(new View.OnClickListener()
+    this.gZv = ((Button)this.kFh.findViewById(2131297690));
+    this.gZv.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(36724);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
         localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/chatting/view/MMRemindDatePicker$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-        if (c.this.JXQ != null) {
-          c.this.JXQ.onCancel();
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/chatting/view/MMRemindDatePicker$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        if (c.this.Kuj != null) {
+          c.this.Kuj.onCancel();
         }
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/chatting/view/MMRemindDatePicker$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(36724);
@@ -145,27 +145,27 @@ public final class c
     AppMethodBeat.o(36725);
   }
   
-  private String[] fHf()
+  private String[] fLx()
   {
     int j = 0;
     AppMethodBeat.i(36729);
-    this.JXR.clear();
+    this.Kuk.clear();
     Object localObject = new ArrayList();
     Calendar localCalendar = Calendar.getInstance();
     int i = 0;
     if (i < localCalendar.getActualMaximum(5))
     {
-      if ((com.tencent.mm.sdk.a.b.fjN()) && (i == 0))
+      if ((com.tencent.mm.sdk.a.b.fnF()) && (i == 0))
       {
         ((ArrayList)localObject).add("test");
-        this.JXR.add(Long.valueOf(localCalendar.getTimeInMillis()));
+        this.Kuk.add(Long.valueOf(localCalendar.getTimeInMillis()));
       }
       label109:
       String str;
       if (i == 0)
       {
         localCalendar.setTimeInMillis(System.currentTimeMillis() + 86400000L * i);
-        this.JXR.add(Long.valueOf(localCalendar.getTimeInMillis()));
+        this.Kuk.add(Long.valueOf(localCalendar.getTimeInMillis()));
         str = i.formatTime(this.mContext.getString(2131759498), localCalendar.getTimeInMillis() / 1000L);
         if (i != 0) {
           break label227;
@@ -181,7 +181,7 @@ public final class c
         localCalendar.set(12, 0);
         localCalendar.set(13, 0);
         localCalendar.set(14, 0);
-        this.JXR.add(Long.valueOf(localCalendar.getTimeInMillis()));
+        this.Kuk.add(Long.valueOf(localCalendar.getTimeInMillis()));
         break label109;
         label227:
         if (i == 1) {
@@ -206,26 +206,26 @@ public final class c
       for (;;)
       {
         localCalendar.set(5, 1);
-        this.JXR.add(Long.valueOf(localCalendar.getTimeInMillis()));
+        this.Kuk.add(Long.valueOf(localCalendar.getTimeInMillis()));
         ((ArrayList)localObject).add(String.valueOf(i.formatTime(this.mContext.getString(2131759518), localCalendar.getTimeInMillis() / 1000L)));
         i += 1;
         break;
         localCalendar.set(2, m + i);
       }
     }
-    localObject = bt.hi((List)localObject);
+    localObject = bu.hs((List)localObject);
     AppMethodBeat.o(36729);
     return localObject;
   }
   
-  final String[] aef(int paramInt)
+  final String[] aeO(int paramInt)
   {
     AppMethodBeat.i(36728);
     ArrayList localArrayList = new ArrayList();
     int i;
     label50:
     StringBuilder localStringBuilder;
-    if (com.tencent.mm.sdk.a.b.fjN())
+    if (com.tencent.mm.sdk.a.b.fnF())
     {
       i = 1;
       switch (paramInt - i)
@@ -253,7 +253,7 @@ public final class c
       localArrayList.add("after 6 min");
       for (;;)
       {
-        localObject = bt.hi(localArrayList);
+        localObject = bu.hs(localArrayList);
         AppMethodBeat.o(36728);
         return localObject;
         i = Calendar.getInstance().get(11);
@@ -270,8 +270,8 @@ public final class c
   public final void hide()
   {
     AppMethodBeat.i(36727);
-    if (this.uBI != null) {
-      this.uBI.dismiss();
+    if (this.uNn != null) {
+      this.uNn.dismiss();
     }
     AppMethodBeat.o(36727);
   }
@@ -279,15 +279,15 @@ public final class c
   public final void show()
   {
     AppMethodBeat.i(36726);
-    if (this.uBI != null) {
-      this.uBI.show();
+    if (this.uNn != null) {
+      this.uNn.show();
     }
     AppMethodBeat.o(36726);
   }
   
   public static abstract interface a
   {
-    public abstract void DQ(long paramLong);
+    public abstract void Ep(long paramLong);
     
     public abstract void onCancel();
   }

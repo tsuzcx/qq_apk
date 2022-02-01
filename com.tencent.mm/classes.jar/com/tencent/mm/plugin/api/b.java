@@ -6,13 +6,13 @@ import com.tencent.mm.plugin.mmsight.model.CaptureMMProxy;
 import com.tencent.mm.plugin.mmsight.model.a.l;
 import com.tencent.mm.plugin.mmsight.model.a.m;
 import com.tencent.mm.plugin.mmsight.model.k;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class b
   extends com.tencent.mm.plugin.mmsight.api.b
 {
-  private com.tencent.mm.plugin.mmsight.model.a.d juo;
-  private VideoTransPara jup;
+  private com.tencent.mm.plugin.mmsight.model.a.d jxj;
+  private VideoTransPara jxk;
   
   public final void a(com.tencent.mm.remoteservice.d paramd, VideoTransPara paramVideoTransPara)
   {
@@ -21,25 +21,25 @@ public final class b
       CaptureMMProxy.createProxy(new CaptureMMProxy(paramd));
     }
     k.d(paramVideoTransPara);
-    this.jup = paramVideoTransPara;
+    this.jxk = paramVideoTransPara;
     AppMethodBeat.o(89187);
   }
   
-  public final com.tencent.mm.plugin.mmsight.model.a.d aVj()
+  public final com.tencent.mm.plugin.mmsight.model.a.d aVI()
   {
     AppMethodBeat.i(89189);
-    if (this.jup != null)
+    if (this.jxk != null)
     {
-      l.dno();
-      this.juo = l.q(this.jup);
+      l.dqm();
+      this.jxj = l.q(this.jxk);
     }
-    if ((this.juo instanceof m))
+    if ((this.jxj instanceof m))
     {
-      localObject = (m)this.juo;
-      ad.i("MicroMsg.MMSightFFMpegRecorder", "setStopOnCameraDataThread: %s", new Object[] { Boolean.TRUE });
-      ((m)localObject).hwf = true;
+      localObject = (m)this.jxj;
+      ae.i("MicroMsg.MMSightFFMpegRecorder", "setStopOnCameraDataThread: %s", new Object[] { Boolean.TRUE });
+      ((m)localObject).hyT = true;
     }
-    Object localObject = this.juo;
+    Object localObject = this.jxj;
     AppMethodBeat.o(89189);
     return localObject;
   }
@@ -51,15 +51,15 @@ public final class b
       CaptureMMProxy.createProxy(new CaptureMMProxy(paramd));
     }
     k.d(paramVideoTransPara);
-    k.vOq.gbj = 1;
-    this.jup = paramVideoTransPara;
+    k.wat.gdr = 1;
+    this.jxk = paramVideoTransPara;
     AppMethodBeat.o(89188);
   }
   
   public static final class a
     implements com.tencent.mm.plugin.mmsight.api.b.a
   {
-    public final com.tencent.mm.plugin.mmsight.api.b aVk()
+    public final com.tencent.mm.plugin.mmsight.api.b aVJ()
     {
       AppMethodBeat.i(89186);
       b localb = new b();

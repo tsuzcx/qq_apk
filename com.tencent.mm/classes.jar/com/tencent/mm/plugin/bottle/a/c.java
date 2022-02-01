@@ -4,28 +4,30 @@ import android.content.Context;
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.g.c.ei;
-import com.tencent.mm.model.ba;
-import com.tencent.mm.model.u;
+import com.tencent.mm.model.bc;
 import com.tencent.mm.model.v;
+import com.tencent.mm.model.w;
 import com.tencent.mm.modelvoice.p;
 import com.tencent.mm.modelvoice.s;
+import com.tencent.mm.plugin.messenger.foundation.a.a.i;
 import com.tencent.mm.pluginsdk.l;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.storage.RegionCodeDecoder;
-import com.tencent.mm.storage.am;
-import com.tencent.mm.storage.bu;
+import com.tencent.mm.storage.an;
+import com.tencent.mm.storage.bv;
 import com.tencent.mm.storagebase.h;
+import com.tencent.mm.vfs.o;
 
 public final class c
 {
-  private static int nUs = 1;
-  private static int nUt = 1;
+  private static int nZY = 1;
+  private static int nZZ = 1;
   
-  public static String WD(String paramString)
+  public static String Xp(String paramString)
   {
     AppMethodBeat.i(22644);
-    if (bt.isNullOrNil(paramString))
+    if (bu.isNullOrNil(paramString))
     {
       AppMethodBeat.o(22644);
       return null;
@@ -41,44 +43,44 @@ public final class c
     return paramString;
   }
   
-  public static void WE(String paramString)
+  public static void Xq(String paramString)
   {
     a locala = null;
     AppMethodBeat.i(22645);
-    com.tencent.mm.plugin.bottle.a.iRH.MR();
-    ba.aBQ();
-    if (com.tencent.mm.model.c.azs().aqm(paramString) != 1)
+    com.tencent.mm.plugin.bottle.a.iUA.MM();
+    bc.aCg();
+    if (com.tencent.mm.model.c.azI().arr(paramString) != 1)
     {
       AppMethodBeat.o(22645);
       return;
     }
-    ba.aBQ();
-    bu localbu = com.tencent.mm.model.c.azs().apX(paramString);
-    if ((localbu == null) || (!localbu.field_talker.equals(paramString)))
+    bc.aCg();
+    bv localbv = com.tencent.mm.model.c.azI().arc(paramString);
+    if ((localbv == null) || (!localbv.field_talker.equals(paramString)))
     {
       AppMethodBeat.o(22645);
       return;
     }
-    String str1 = WD(paramString);
-    if (bt.isNullOrNil(str1))
+    String str1 = Xp(paramString);
+    if (bu.isNullOrNil(str1))
     {
       AppMethodBeat.o(22645);
       return;
     }
-    Object localObject = d.bMW();
-    String str2 = "select bottleinfo1.parentclientid,bottleinfo1.childcount,bottleinfo1.bottleid,bottleinfo1.bottletype,bottleinfo1.msgtype,bottleinfo1.voicelen,bottleinfo1.content,bottleinfo1.createtime,bottleinfo1.reserved1,bottleinfo1.reserved2,bottleinfo1.reserved3,bottleinfo1.reserved4 from bottleinfo1   where bottleinfo1.bottleid = \"" + bt.aQN(String.valueOf(str1)) + "\"";
-    localObject = ((b)localObject).hHS.a(str2, null, 0);
+    Object localObject = d.bNU();
+    String str2 = "select bottleinfo1.parentclientid,bottleinfo1.childcount,bottleinfo1.bottleid,bottleinfo1.bottletype,bottleinfo1.msgtype,bottleinfo1.voicelen,bottleinfo1.content,bottleinfo1.createtime,bottleinfo1.reserved1,bottleinfo1.reserved2,bottleinfo1.reserved3,bottleinfo1.reserved4 from bottleinfo1   where bottleinfo1.bottleid = \"" + bu.aSk(String.valueOf(str1)) + "\"";
+    localObject = ((b)localObject).hKK.a(str2, null, 0);
     if (localObject == null)
     {
       locala = null;
       if (locala != null) {
-        if (locala.nUp != null) {
+        if (locala.nZV != null) {
           break label383;
         }
       }
     }
     label383:
-    for (localObject = "";; localObject = locala.nUp)
+    for (localObject = "";; localObject = locala.nZV)
     {
       if (((String)localObject).equals(str1)) {
         break label393;
@@ -88,36 +90,36 @@ public final class c
       if (((Cursor)localObject).moveToFirst())
       {
         locala = new a();
-        locala.nUn = ((Cursor)localObject).getString(0);
-        locala.nUo = ((Cursor)localObject).getInt(1);
-        locala.nUp = ((Cursor)localObject).getString(2);
-        locala.nUq = ((Cursor)localObject).getInt(3);
+        locala.nZT = ((Cursor)localObject).getString(0);
+        locala.nZU = ((Cursor)localObject).getInt(1);
+        locala.nZV = ((Cursor)localObject).getString(2);
+        locala.nZW = ((Cursor)localObject).getInt(3);
         locala.msgType = ((Cursor)localObject).getInt(4);
-        locala.nUr = ((Cursor)localObject).getInt(5);
+        locala.nZX = ((Cursor)localObject).getInt(5);
         locala.content = ((Cursor)localObject).getString(6);
         locala.createtime = ((Cursor)localObject).getLong(7);
-        locala.hHL = ((Cursor)localObject).getInt(8);
-        locala.hYt = ((Cursor)localObject).getInt(9);
-        locala.hHN = ((Cursor)localObject).getString(10);
-        locala.hHO = ((Cursor)localObject).getString(11);
+        locala.hKD = ((Cursor)localObject).getInt(8);
+        locala.ibl = ((Cursor)localObject).getInt(9);
+        locala.hKF = ((Cursor)localObject).getString(10);
+        locala.hKG = ((Cursor)localObject).getString(11);
       }
       ((Cursor)localObject).close();
       break;
     }
     label393:
-    if (locala.nUq != 1)
+    if (locala.nZW != 1)
     {
       AppMethodBeat.o(22645);
       return;
     }
-    localObject = new bu();
-    ((bu)localObject).tN(paramString);
+    localObject = new bv();
+    ((bv)localObject).ui(paramString);
     long l;
     int i;
-    if (localbu.field_createTime <= locala.createtime)
+    if (localbv.field_createTime <= locala.createtime)
     {
-      l = localbu.field_createTime - 1L;
-      ((bu)localObject).qA(l);
+      l = localbv.field_createTime - 1L;
+      ((bv)localObject).qN(l);
       switch (locala.msgType)
       {
       default: 
@@ -126,18 +128,18 @@ public final class c
     }
     for (;;)
     {
-      ((bu)localObject).setType(i);
-      ((bu)localObject).setStatus(2);
-      ((bu)localObject).kr(1);
-      if (((bu)localObject).getType() != 34) {
+      ((bv)localObject).setType(i);
+      ((bv)localObject).setStatus(2);
+      ((bv)localObject).kt(1);
+      if (((bv)localObject).getType() != 34) {
         break label674;
       }
-      ((bu)localObject).setContent(p.b(u.aAm(), locala.nUr, false));
-      paramString = locala.getContent() + bt.flT();
-      if (com.tencent.mm.vfs.i.mz(s.getFullPath(locala.getContent()), s.getFullPath(paramString)) >= 0L) {
+      ((bv)localObject).setContent(p.b(v.aAC(), locala.nZX, false));
+      paramString = locala.getContent() + bu.fpO();
+      if (o.mF(s.getFullPath(locala.getContent()), s.getFullPath(paramString)) >= 0L) {
         break label646;
       }
-      ad.e("MicroMsg.BottleLogic", "Copy Bottle Voice File Failed :" + locala.getContent());
+      ae.e("MicroMsg.BottleLogic", "Copy Bottle Voice File Failed :" + locala.getContent());
       AppMethodBeat.o(22645);
       return;
       l = locala.createtime;
@@ -151,43 +153,43 @@ public final class c
       i = 43;
     }
     label646:
-    ((bu)localObject).tO(paramString);
+    ((bv)localObject).uj(paramString);
     for (;;)
     {
-      ba.aBQ();
-      com.tencent.mm.model.c.azs().as((bu)localObject);
+      bc.aCg();
+      com.tencent.mm.model.c.azI().ar((bv)localObject);
       AppMethodBeat.o(22645);
       return;
       label674:
-      ((bu)localObject).setContent(locala.getContent());
+      ((bv)localObject).setContent(locala.getContent());
     }
   }
   
-  public static String a(Context paramContext, am paramam)
+  public static String a(Context paramContext, an paraman)
   {
     AppMethodBeat.i(22647);
-    if (paramam == null)
+    if (paraman == null)
     {
       paramContext = paramContext.getString(2131756727);
       AppMethodBeat.o(22647);
       return paramContext;
     }
-    if (RegionCodeDecoder.aUp(paramam.getCountryCode()))
+    if (RegionCodeDecoder.aVQ(paraman.getCountryCode()))
     {
-      paramContext = paramam.getCity();
-      if (!bt.isNullOrNil(paramContext))
+      paramContext = paraman.getCity();
+      if (!bu.isNullOrNil(paramContext))
       {
         AppMethodBeat.o(22647);
         return paramContext;
       }
-      paramContext = v.zh(paramam.getProvince());
-      if (!bt.isNullOrNil(paramContext))
+      paramContext = w.zR(paraman.getProvince());
+      if (!bu.isNullOrNil(paramContext))
       {
         AppMethodBeat.o(22647);
         return paramContext;
       }
-      RegionCodeDecoder.fsz();
-      paramContext = RegionCodeDecoder.getLocName(paramam.getCountryCode());
+      RegionCodeDecoder.fwA();
+      paramContext = RegionCodeDecoder.getLocName(paraman.getCountryCode());
       AppMethodBeat.o(22647);
       return paramContext;
     }
@@ -196,13 +198,13 @@ public final class c
     return paramContext;
   }
   
-  public static void bMU()
+  public static void bNS()
   {
     AppMethodBeat.i(22646);
-    b localb = d.bMW();
-    long l = bt.flT() - 7776000000L;
+    b localb = d.bNU();
+    long l = bu.fpO() - 7776000000L;
     Object localObject = "select distinct content , msgtype from bottleinfo1 where bottleinfo1.createtime < ".concat(String.valueOf(l));
-    Cursor localCursor = localb.hHS.a((String)localObject, null, 0);
+    Cursor localCursor = localb.hKK.a((String)localObject, null, 0);
     int j = localCursor.getCount();
     if (j > 0)
     {
@@ -229,7 +231,7 @@ public final class c
     }
     localCursor.close();
     if (j > 0) {
-      localb.hHS.delete("bottleinfo1", "createtime< ?", new String[] { String.valueOf(l) });
+      localb.hKK.delete("bottleinfo1", "createtime< ?", new String[] { String.valueOf(l) });
     }
     if (localObject == null)
     {
@@ -239,9 +241,9 @@ public final class c
     int i = 0;
     while (i < localObject.length)
     {
-      ad.d("MicroMsg.BottleLogic", "delete path:" + s.getFullPath(localObject[i]));
-      if (!bt.isNullOrNil(s.getFullPath(localObject[i]))) {
-        com.tencent.mm.vfs.i.deleteFile(s.getFullPath(localObject[i]));
+      ae.d("MicroMsg.BottleLogic", "delete path:" + s.getFullPath(localObject[i]));
+      if (!bu.isNullOrNil(s.getFullPath(localObject[i]))) {
+        o.deleteFile(s.getFullPath(localObject[i]));
       }
       i += 1;
     }

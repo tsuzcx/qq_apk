@@ -1,51 +1,51 @@
 package com.tencent.mm.plugin.exdevice.b;
 
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
-public abstract class a<RequestType extends com.tencent.mm.bx.a, ResponseType extends com.tencent.mm.bx.a>
+public abstract class a<RequestType extends com.tencent.mm.bw.a, ResponseType extends com.tencent.mm.bw.a>
   extends n
   implements k
 {
-  private f gzH;
-  protected b pZR;
+  private f gCo;
+  protected b qgw;
   
-  public final ResponseType bIz()
+  public final ResponseType bJx()
   {
-    if ((this.pZR != null) && (this.pZR.hNL.hNQ != null)) {
-      return this.pZR.hNL.hNQ;
+    if ((this.qgw != null) && (this.qgw.hQE.hQJ != null)) {
+      return this.qgw.hQE.hQJ;
     }
     return null;
   }
   
-  protected abstract RequestType ckK();
+  protected abstract RequestType cma();
   
-  protected abstract ResponseType ckL();
+  protected abstract ResponseType cmb();
   
   public final int doScene(e parame, f paramf)
   {
-    this.gzH = paramf;
-    if (this.pZR == null)
+    this.gCo = paramf;
+    if (this.qgw == null)
     {
       paramf = new b.a();
       paramf.funcId = getType();
       paramf.uri = getUri();
-      paramf.hNM = ckK();
-      paramf.hNN = ckL();
-      paramf.hNO = 0;
+      paramf.hQF = cma();
+      paramf.hQG = cmb();
+      paramf.hQH = 0;
       paramf.respCmdId = 0;
-      this.pZR = paramf.aDC();
-      i(this.pZR.hNK.hNQ);
+      this.qgw = paramf.aDS();
+      i(this.qgw.hQD.hQJ);
     }
-    return dispatch(parame, this.pZR, this);
+    return dispatch(parame, this.qgw, this);
   }
   
   protected abstract String getUri();
@@ -54,9 +54,9 @@ public abstract class a<RequestType extends com.tencent.mm.bx.a, ResponseType ex
   
   public void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
-    ad.i("MicroMsg.BaseNetScene", "onGYNetEnd netId %d, errType %d, errCode %d, errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    if (this.gzH != null) {
-      this.gzH.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    ae.i("MicroMsg.BaseNetScene", "onGYNetEnd netId %d, errType %d, errCode %d, errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    if (this.gCo != null) {
+      this.gCo.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }
   }
 }

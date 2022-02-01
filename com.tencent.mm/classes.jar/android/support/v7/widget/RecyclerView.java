@@ -2342,8 +2342,8 @@ public class RecyclerView
     } while (this.arR == null);
     i locali = this.arR;
     com.tencent.mm.hellhoundlib.b.a locala = com.tencent.mm.hellhoundlib.b.c.a(paramInt, new com.tencent.mm.hellhoundlib.b.a());
-    com.tencent.mm.hellhoundlib.a.a.a(locali, locala.ahp(), "android/support/v7/widget/RecyclerView", "scrollToPosition", "(I)V", "Undefined", "scrollToPosition", "(I)V");
-    locali.ca(((Integer)locala.mq(0)).intValue());
+    com.tencent.mm.hellhoundlib.a.a.a(locali, locala.ahE(), "android/support/v7/widget/RecyclerView", "scrollToPosition", "(I)V", "Undefined", "scrollToPosition", "(I)V");
+    locali.ca(((Integer)locala.mt(0)).intValue());
     com.tencent.mm.hellhoundlib.a.a.a(locali, "android/support/v7/widget/RecyclerView", "scrollToPosition", "(I)V", "Undefined", "scrollToPosition", "(I)V");
     awakenScrollBars();
   }
@@ -2355,8 +2355,8 @@ public class RecyclerView
     }
     i locali = this.arR;
     com.tencent.mm.hellhoundlib.b.a locala = com.tencent.mm.hellhoundlib.b.c.a(paramInt, new com.tencent.mm.hellhoundlib.b.a());
-    com.tencent.mm.hellhoundlib.a.a.a(locali, locala.ahp(), "android/support/v7/widget/RecyclerView", "jumpToPositionForSmoothScroller", "(I)V", "Undefined", "scrollToPosition", "(I)V");
-    locali.ca(((Integer)locala.mq(0)).intValue());
+    com.tencent.mm.hellhoundlib.a.a.a(locali, locala.ahE(), "android/support/v7/widget/RecyclerView", "jumpToPositionForSmoothScroller", "(I)V", "Undefined", "scrollToPosition", "(I)V");
+    locali.ca(((Integer)locala.mt(0)).intValue());
     com.tencent.mm.hellhoundlib.a.a.a(locali, "android/support/v7/widget/RecyclerView", "jumpToPositionForSmoothScroller", "(I)V", "Undefined", "scrollToPosition", "(I)V");
     awakenScrollBars();
   }

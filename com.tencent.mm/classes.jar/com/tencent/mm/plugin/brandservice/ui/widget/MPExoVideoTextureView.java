@@ -11,7 +11,7 @@ import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.ui.i.e;
 import com.tencent.mm.pluginsdk.ui.tools.u;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.ui.base.MMTextureView;
 import javax.microedition.khronos.egl.EGL10;
 import javax.microedition.khronos.egl.EGLConfig;
@@ -23,7 +23,7 @@ public class MPExoVideoTextureView
 {
   private int mVideoHeight;
   private int mVideoWidth;
-  private u osN;
+  private u ozo;
   
   public MPExoVideoTextureView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -34,7 +34,7 @@ public class MPExoVideoTextureView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(6261);
-    this.osN = new u();
+    this.ozo = new u();
     this.mVideoWidth = 0;
     this.mVideoHeight = 0;
     AppMethodBeat.o(6261);
@@ -64,7 +64,7 @@ public class MPExoVideoTextureView
     AppMethodBeat.o(6267);
   }
   
-  public final void bSn()
+  public final void bTA()
   {
     AppMethodBeat.i(6263);
     RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)getLayoutParams();
@@ -73,7 +73,7 @@ public class MPExoVideoTextureView
     AppMethodBeat.o(6263);
   }
   
-  public final void bSo()
+  public final void bTB()
   {
     AppMethodBeat.i(6266);
     try
@@ -81,7 +81,7 @@ public class MPExoVideoTextureView
       SurfaceTexture localSurfaceTexture = getSurfaceTexture();
       if (localSurfaceTexture != null)
       {
-        ad.i("MicroMsg.MPExoVideoTextureView", "%d releaseSurface", new Object[] { Integer.valueOf(hashCode()) });
+        ae.i("MicroMsg.MPExoVideoTextureView", "%d releaseSurface", new Object[] { Integer.valueOf(hashCode()) });
         h(localSurfaceTexture);
       }
       AppMethodBeat.o(6266);
@@ -89,36 +89,15 @@ public class MPExoVideoTextureView
     }
     catch (Exception localException)
     {
-      ad.printErrStackTrace("MicroMsg.MPExoVideoTextureView", localException, "release surface", new Object[0]);
+      ae.printErrStackTrace("MicroMsg.MPExoVideoTextureView", localException, "release surface", new Object[0]);
       AppMethodBeat.o(6266);
     }
   }
   
-  public final void h(final Surface paramSurface)
+  public final void h(Surface paramSurface)
   {
     AppMethodBeat.i(6268);
-    h.LTJ.aR(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(6260);
-        try
-        {
-          if ((paramSurface != null) && (paramSurface.isValid()))
-          {
-            ad.i("MicroMsg.MPExoVideoTextureView", "%d release surface [%d]", new Object[] { Integer.valueOf(hashCode()), Integer.valueOf(paramSurface.hashCode()) });
-            paramSurface.release();
-          }
-          AppMethodBeat.o(6260);
-          return;
-        }
-        catch (Exception localException)
-        {
-          ad.printErrStackTrace("MicroMsg.MPExoVideoTextureView", localException, "release Surface error", new Object[0]);
-          AppMethodBeat.o(6260);
-        }
-      }
-    });
+    h.MqF.aO(new MPExoVideoTextureView.1(this, paramSurface));
     AppMethodBeat.o(6268);
   }
   
@@ -135,15 +114,15 @@ public class MPExoVideoTextureView
     paramInt2 = getDefaultSize(1, paramInt2);
     int i = this.mVideoWidth;
     int j = this.mVideoHeight;
-    this.osN.y(paramInt1, paramInt2, i, j);
-    setMeasuredDimension(this.osN.ltC, this.osN.ltD);
+    this.ozo.y(paramInt1, paramInt2, i, j);
+    setMeasuredDimension(this.ozo.lyb, this.ozo.lyc);
     AppMethodBeat.o(6265);
   }
   
   public void setScaleType(i.e parame)
   {
     AppMethodBeat.i(6264);
-    this.osN.a(parame);
+    this.ozo.a(parame);
     requestLayout();
     AppMethodBeat.o(6264);
   }
@@ -157,14 +136,14 @@ public class MPExoVideoTextureView
   public final void stop()
   {
     AppMethodBeat.i(6262);
-    bSo();
-    this.osN.reset();
+    bTB();
+    this.ozo.reset();
     AppMethodBeat.o(6262);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.ui.widget.MPExoVideoTextureView
  * JD-Core Version:    0.7.0.1
  */

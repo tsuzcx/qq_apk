@@ -7,8 +7,8 @@ import android.provider.Settings.System;
 import android.view.Window;
 import android.view.WindowManager.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cc.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.cb.a;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.text.SimpleDateFormat;
 import java.util.TimeZone;
 import org.json.JSONArray;
@@ -87,14 +87,29 @@ public final class c
       }
       catch (JSONException paramJSONObject)
       {
-        ad.e("MicroMsg.FTS.FtsVideoPlayerUtils", "ex %s", new Object[] { paramJSONObject.getMessage() });
+        ae.e("MicroMsg.FTS.FtsVideoPlayerUtils", "ex %s", new Object[] { paramJSONObject.getMessage() });
       }
     }
     AppMethodBeat.o(78164);
     return "";
   }
   
-  private static float du(Context paramContext)
+  public static float dA(Context paramContext)
+  {
+    AppMethodBeat.i(78160);
+    WindowManager.LayoutParams localLayoutParams = ((Activity)paramContext).getWindow().getAttributes();
+    if (localLayoutParams.screenBrightness < 0.0F)
+    {
+      f = dy(paramContext);
+      AppMethodBeat.o(78160);
+      return f;
+    }
+    float f = localLayoutParams.screenBrightness;
+    AppMethodBeat.o(78160);
+    return f;
+  }
+  
+  private static float dy(Context paramContext)
   {
     AppMethodBeat.i(78159);
     paramContext = paramContext.getContentResolver();
@@ -108,29 +123,14 @@ public final class c
     {
       for (;;)
       {
-        ad.e("MicroMsg.FTS.FtsVideoPlayerUtils", "ex %s", new Object[] { paramContext.getMessage() });
+        ae.e("MicroMsg.FTS.FtsVideoPlayerUtils", "ex %s", new Object[] { paramContext.getMessage() });
       }
     }
     AppMethodBeat.o(78159);
     return f;
   }
   
-  public static float dw(Context paramContext)
-  {
-    AppMethodBeat.i(78160);
-    WindowManager.LayoutParams localLayoutParams = ((Activity)paramContext).getWindow().getAttributes();
-    if (localLayoutParams.screenBrightness < 0.0F)
-    {
-      f = du(paramContext);
-      AppMethodBeat.o(78160);
-      return f;
-    }
-    float f = localLayoutParams.screenBrightness;
-    AppMethodBeat.o(78160);
-    return f;
-  }
-  
-  public static String sm(long paramLong)
+  public static String sz(long paramLong)
   {
     AppMethodBeat.i(78161);
     if (paramLong < 3600000L) {}

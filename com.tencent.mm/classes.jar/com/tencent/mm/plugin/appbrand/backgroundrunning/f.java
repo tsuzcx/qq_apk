@@ -1,23 +1,25 @@
 package com.tencent.mm.plugin.appbrand.backgroundrunning;
 
-import android.content.Context;
-import android.content.Intent;
-import android.os.Parcelable;
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
+import com.tencent.mm.kernel.c.a;
 
-public final class f
+public abstract interface f
+  extends a
 {
-  static h.a jSm;
+  public abstract void a(AppBrandBackgroundRunningOperationParcel paramAppBrandBackgroundRunningOperationParcel);
+  
+  public abstract void a(MMBackgroundRunningOperationParcel paramMMBackgroundRunningOperationParcel);
+  
+  public abstract void a(f.a parama);
+  
+  public abstract void a(f.b paramb);
+  
+  public abstract void b(f.a parama);
+  
+  public abstract void b(f.b paramb);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.backgroundrunning.f
  * JD-Core Version:    0.7.0.1
  */

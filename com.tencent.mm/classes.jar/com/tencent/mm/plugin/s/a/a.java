@@ -8,46 +8,46 @@ import java.util.LinkedList;
 
 public abstract interface a
 {
-  public abstract Cursor C(int[] paramArrayOfInt);
+  public abstract Cursor D(int[] paramArrayOfInt);
   
   public abstract Bitmap a(String paramString, int paramInt, float paramFloat);
   
-  public abstract void aI(LinkedList<String> paramLinkedList);
+  public abstract void aJ(LinkedList<String> paramLinkedList);
   
-  public abstract g atV(String paramString);
+  public abstract g avk(String paramString);
   
-  public abstract g atW(String paramString);
+  public abstract g avl(String paramString);
   
-  public abstract void atX(String paramString);
+  public abstract void avm(String paramString);
   
-  public abstract Cursor dxU();
+  public abstract Cursor dBk();
   
-  public abstract j dxV();
+  public abstract j dBl();
   
-  public abstract Cursor dxW();
+  public abstract Cursor dBm();
   
   public abstract void e(g paramg);
   
-  public abstract void eB(String paramString, int paramInt);
+  public abstract void eJ(String paramString, int paramInt);
   
   public abstract void f(g paramg);
   
   public abstract void g(g paramg);
   
-  public abstract Cursor gU(int paramInt1, int paramInt2);
+  public abstract Cursor gV(int paramInt1, int paramInt2);
   
   public static final class a
   {
-    private static a wBU = null;
+    private static a wRF = null;
     
     public static void a(a parama)
     {
-      wBU = parama;
+      wRF = parama;
     }
     
-    public static a dxX()
+    public static a dBn()
     {
-      return wBU;
+      return wRF;
     }
   }
 }

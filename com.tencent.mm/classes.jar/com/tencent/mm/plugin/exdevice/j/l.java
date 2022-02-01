@@ -1,30 +1,30 @@
 package com.tencent.mm.plugin.exdevice.j;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.ba;
+import com.tencent.mm.model.bc;
 import com.tencent.mm.plugin.exdevice.service.l.a;
 import com.tencent.mm.plugin.exdevice.service.p;
-import com.tencent.mm.sdk.platformtools.ap;
 import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.ar;
 import junit.framework.Assert;
 
 public final class l
   extends l.a
 {
-  private final long hOM;
-  private c qha;
-  boolean qhb;
-  boolean qhc;
-  Runnable qhd;
+  private final long hRF;
+  private c qnF;
+  boolean qnG;
+  boolean qnH;
+  Runnable qnI;
   
   public l(c paramc)
   {
     AppMethodBeat.i(23817);
-    this.qha = null;
-    this.hOM = 15000L;
-    this.qhb = false;
-    this.qhc = false;
-    this.qhd = new Runnable()
+    this.qnF = null;
+    this.hRF = 15000L;
+    this.qnG = false;
+    this.qnH = false;
+    this.qnI = new Runnable()
     {
       public final void run()
       {
@@ -48,30 +48,30 @@ public final class l
       }
     };
     Assert.assertNotNull(paramc);
-    this.qha = paramc;
+    this.qnF = paramc;
     AppMethodBeat.o(23817);
   }
   
   public final void a(final long paramLong, int paramInt1, final int paramInt2, final String paramString, final p paramp)
   {
     AppMethodBeat.i(23818);
-    if (this.qhc)
+    if (this.qnH)
     {
       AppMethodBeat.o(23818);
       return;
     }
-    if (this.qhb)
+    if (this.qnG)
     {
       AppMethodBeat.o(23818);
       return;
     }
-    ba.ajF().cWY().removeCallbacks(this.qhd);
-    ba.ajF().cWY().post(new Runnable()
+    bc.ajU().cZF().removeCallbacks(this.qnI);
+    bc.ajU().cZF().post(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(23815);
-        l.c(l.this).a(paramLong, paramInt2, paramString, paramp, this.qhg);
+        l.c(l.this).a(paramLong, paramInt2, paramString, paramp, this.qnL);
         AppMethodBeat.o(23815);
       }
       

@@ -2,34 +2,34 @@ package com.tencent.mm.plugin.flutter.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ax;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ay;
 import d.g.b.p;
 import d.l;
 import d.v;
 import java.util.Map;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/flutter/lite/WxaLiteAppCrashReportHandler;", "", "()V", "TAG", "", "handleCrash", "", "crashInfoMap", "", "killSelf", "", "plugin-flutter_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/flutter/lite/WxaLiteAppCrashReportHandler;", "", "()V", "TAG", "", "handleCrash", "", "crashInfoMap", "", "killSelf", "", "plugin-flutter_release"})
 public final class a
 {
   private static final String TAG = "MicroMsg.WxaLiteAppCrashReportHandler";
-  public static final a tiD;
+  public static final a ttv;
   
   static
   {
-    AppMethodBeat.i(219130);
-    tiD = new a();
+    AppMethodBeat.i(213459);
+    ttv = new a();
     TAG = "MicroMsg.WxaLiteAppCrashReportHandler";
-    AppMethodBeat.o(219130);
+    AppMethodBeat.o(213459);
   }
   
   public static void b(Map<String, ? extends Object> paramMap, boolean paramBoolean)
   {
-    AppMethodBeat.i(219129);
+    AppMethodBeat.i(213458);
     p.h(paramMap, "crashInfoMap");
     Object localObject = (Map)paramMap.get("customParameters");
     if (localObject == null) {
-      p.gfZ();
+      p.gkB();
     }
     String str;
     label271:
@@ -37,22 +37,22 @@ public final class a
     g localg;
     if (((Map)localObject).containsKey("WxaLiteApp"))
     {
-      localObject = ax.flh();
-      str = ((ax)localObject).getString("wxa_lite_app_game_center_version", "");
+      localObject = ay.fpc();
+      str = ((ay)localObject).getString("wxa_lite_app_game_center_version", "");
       if (str != null)
       {
         int i;
         if (paramBoolean)
         {
-          i = ((ax)localObject).getInt("count_".concat(String.valueOf(str)), 0);
-          long l1 = ((ax)localObject).getLong("time_".concat(String.valueOf(str)), 0L);
+          i = ((ay)localObject).getInt("count_".concat(String.valueOf(str)), 0);
+          long l1 = ((ay)localObject).getLong("time_".concat(String.valueOf(str)), 0L);
           long l2 = System.currentTimeMillis();
           if (l2 - l1 > 3600000L)
           {
-            ((ax)localObject).putInt("count_".concat(String.valueOf(str)), 1);
-            ((ax)localObject).putLong("time_".concat(String.valueOf(str)), l2);
-            ad.i(TAG, "WxaLiteApp handle crash. version:%s count%d time:%s now:%s", new Object[] { str, Integer.valueOf(i), Long.valueOf(l1), Long.valueOf(l2) });
-            ((ax)localObject).commit();
+            ((ay)localObject).putInt("count_".concat(String.valueOf(str)), 1);
+            ((ay)localObject).putLong("time_".concat(String.valueOf(str)), l2);
+            ae.i(TAG, "WxaLiteApp handle crash. version:%s count%d time:%s now:%s", new Object[] { str, Integer.valueOf(i), Long.valueOf(l1), Long.valueOf(l2) });
+            ((ay)localObject).commit();
           }
         }
         for (;;)
@@ -62,11 +62,11 @@ public final class a
             break label271;
           }
           paramMap = new v("null cannot be cast to non-null type kotlin.String");
-          AppMethodBeat.o(219129);
+          AppMethodBeat.o(213458);
           throw paramMap;
-          ((ax)localObject).putInt("count_".concat(String.valueOf(str)), i + 1);
+          ((ay)localObject).putInt("count_".concat(String.valueOf(str)), i + 1);
           break;
-          ad.i(TAG, "WxaLiteApp handle state error . version:%s", new Object[] { str });
+          ae.i(TAG, "WxaLiteApp handle state error . version:%s", new Object[] { str });
         }
         paramMap = (String)paramMap;
         if (paramMap.length() >= 10) {
@@ -75,8 +75,8 @@ public final class a
         if (!paramBoolean) {
           break label385;
         }
-        g.yhR.n(1293L, 103L, 1L);
-        localg = g.yhR;
+        g.yxI.n(1293L, 103L, 1L);
+        localg = g.yxI;
         if (!paramBoolean) {
           break label401;
         }
@@ -87,19 +87,19 @@ public final class a
     for (localObject = "crash";; localObject = "bad state only")
     {
       localg.f(20315, new Object[] { str, localObject, paramMap });
-      AppMethodBeat.o(219129);
+      AppMethodBeat.o(213458);
       return;
       label347:
       if (paramMap == null)
       {
         paramMap = new v("null cannot be cast to non-null type java.lang.String");
-        AppMethodBeat.o(219129);
+        AppMethodBeat.o(213458);
         throw paramMap;
       }
       paramMap = paramMap.substring(0, 10);
       p.g(paramMap, "(this as java.lang.Strin…ing(startIndex, endIndex)");
       break;
-      g.yhR.n(1293L, 104L, 1L);
+      g.yxI.n(1293L, 104L, 1L);
       break label302;
     }
   }

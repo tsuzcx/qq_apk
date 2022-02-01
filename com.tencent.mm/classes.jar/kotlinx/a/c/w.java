@@ -8,24 +8,24 @@ import kotlinx.a.n;
 import kotlinx.a.p;
 import kotlinx.a.s;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/serialization/json/JsonPrimitiveSerializer;", "Lkotlinx/serialization/KSerializer;", "Lkotlinx/serialization/json/JsonPrimitive;", "()V", "descriptor", "Lkotlinx/serialization/SerialDescriptor;", "getDescriptor", "()Lkotlinx/serialization/SerialDescriptor;", "deserialize", "decoder", "Lkotlinx/serialization/Decoder;", "serialize", "", "encoder", "Lkotlinx/serialization/Encoder;", "value", "kotlinx-serialization-runtime"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/serialization/json/JsonPrimitiveSerializer;", "Lkotlinx/serialization/KSerializer;", "Lkotlinx/serialization/json/JsonPrimitive;", "()V", "descriptor", "Lkotlinx/serialization/SerialDescriptor;", "getDescriptor", "()Lkotlinx/serialization/SerialDescriptor;", "deserialize", "decoder", "Lkotlinx/serialization/Decoder;", "serialize", "", "encoder", "Lkotlinx/serialization/Encoder;", "value", "kotlinx-serialization-runtime"})
 public final class w
   implements h<v>
 {
-  static final n NLm;
-  public static final w NOa;
+  static final n Ois;
+  public static final w Olg;
   
   static
   {
-    AppMethodBeat.i(191269);
-    NOa = new w();
-    NLm = p.a("kotlinx.serialization.json.JsonPrimitive", (s)l.i.NLx);
-    AppMethodBeat.o(191269);
+    AppMethodBeat.i(199857);
+    Olg = new w();
+    Ois = p.a("kotlinx.serialization.json.JsonPrimitive", (s)l.i.OiD);
+    AppMethodBeat.o(199857);
   }
   
-  public final n eLj()
+  public final n eOR()
   {
-    return NLm;
+    return Ois;
   }
 }
 

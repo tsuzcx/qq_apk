@@ -1,9 +1,9 @@
 package com.tencent.mm.plugin.normsg.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.n.b;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.n.b;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
@@ -16,19 +16,19 @@ public final class b
 {
   private final String TAG;
   private f callback;
-  private final q hON;
-  private boolean wtN;
-  private int wtO;
+  private final q hRG;
+  private boolean wJx;
+  private int wJy;
   
   public b(boolean paramBoolean, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(149011);
-    this.wtN = true;
-    this.wtO = 0;
+    this.wJx = true;
+    this.wJy = 0;
     this.TAG = "NetSceneFPInit";
-    this.wtN = paramBoolean;
-    this.hON = new s.a(this.wtN);
-    ((s.b)this.hON.getReqObj()).For.GfZ = com.tencent.mm.bx.b.cj(paramArrayOfByte);
+    this.wJx = paramBoolean;
+    this.hRG = new s.a(this.wJx);
+    ((s.b)this.hRG.getReqObj()).FGP.GyI = com.tencent.mm.bw.b.cm(paramArrayOfByte);
     AppMethodBeat.o(149011);
   }
   
@@ -36,15 +36,15 @@ public final class b
   {
     AppMethodBeat.i(149012);
     this.callback = paramf;
-    this.wtO += 1;
-    int i = dispatch(parame, this.hON, this);
+    this.wJy += 1;
+    int i = dispatch(parame, this.hRG, this);
     AppMethodBeat.o(149012);
     return i;
   }
   
   public final int getType()
   {
-    if (this.wtN) {
+    if (this.wJx) {
       return 3789;
     }
     return 3644;
@@ -62,7 +62,7 @@ public final class b
       AppMethodBeat.o(149013);
       return;
     }
-    if (this.wtO < 2)
+    if (this.wJy < 2)
     {
       if (doScene(dispatcher(), this.callback) < 0)
       {
@@ -86,7 +86,7 @@ public final class b
   
   public final n.b securityVerificationChecked(q paramq)
   {
-    return n.b.hOp;
+    return n.b.hRi;
   }
 }
 

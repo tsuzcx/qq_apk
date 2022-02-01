@@ -11,11 +11,9 @@ import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.component.api.jumper.UICustomParam.a;
 import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.u;
+import com.tencent.mm.model.v;
 import com.tencent.mm.modelcontrol.VideoTransPara;
 import com.tencent.mm.plugin.expt.b.b.a;
-import com.tencent.mm.plugin.finder.report.f;
 import com.tencent.mm.plugin.finder.utils.r;
 import com.tencent.mm.plugin.finder.video.FinderRecordPluginLayout;
 import com.tencent.mm.plugin.finder.video.develop.DevFinderRecordPluginLayout;
@@ -30,11 +28,11 @@ import com.tencent.mm.plugin.recordvideo.jumper.RecordMediaReportInfo;
 import com.tencent.mm.plugin.vlog.ui.MultiVideoPluginLayout;
 import com.tencent.mm.plugin.vlog.ui.plugin.d;
 import com.tencent.mm.pluginsdk.ui.i.e;
-import com.tencent.mm.protocal.protobuf.bxm;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.al.a;
+import com.tencent.mm.protocal.protobuf.byg;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.aj;
+import com.tencent.mm.storage.am.a;
 import com.tencent.mm.ui.MMFragmentActivity.a;
 import d.a.j;
 import d.g.b.p;
@@ -47,69 +45,69 @@ import java.util.Iterator;
 import java.util.List;
 
 @com.tencent.mm.ui.base.a(7)
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/ui/FinderPostRouterUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "Lcom/tencent/mm/plugin/recordvideo/jumper/CaptureDataManager$IVideoGenerateCallback;", "()V", "fromRecordUI", "", "hasStopped", "postId", "", "router", "", "getLayoutId", "goRouter", "", "gotoMediaEdit", "onActivityResult", "requestCode", "resultCode", "data", "Landroid/content/Intent;", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onEditFinish", "forward", "reportInfo", "Lcom/tencent/mm/plugin/recordvideo/jumper/RecordMediaReportInfo;", "extData", "onFinishBtnClick", "context", "Landroid/content/Context;", "finishController", "Lcom/tencent/mm/plugin/recordvideo/jumper/CaptureDataManager$IVideoFinishController;", "onMediaGenerated", "model", "Lcom/tencent/mm/plugin/recordvideo/jumper/CaptureDataManager$CaptureVideoNormalModel;", "onRequestPermissionsResult", "permissions", "", "grantResults", "", "(I[Ljava/lang/String;[I)V", "onResume", "onStop", "takePhoto", "Companion", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/ui/FinderPostRouterUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "Lcom/tencent/mm/plugin/recordvideo/jumper/CaptureDataManager$IVideoGenerateCallback;", "()V", "fromRecordUI", "", "hasStopped", "postId", "", "router", "", "getLayoutId", "goRouter", "", "gotoMediaEdit", "onActivityResult", "requestCode", "resultCode", "data", "Landroid/content/Intent;", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onEditFinish", "forward", "reportInfo", "Lcom/tencent/mm/plugin/recordvideo/jumper/RecordMediaReportInfo;", "extData", "onFinishBtnClick", "context", "Landroid/content/Context;", "finishController", "Lcom/tencent/mm/plugin/recordvideo/jumper/CaptureDataManager$IVideoFinishController;", "onMediaGenerated", "model", "Lcom/tencent/mm/plugin/recordvideo/jumper/CaptureDataManager$CaptureVideoNormalModel;", "onRequestPermissionsResult", "permissions", "", "grantResults", "", "(I[Ljava/lang/String;[I)V", "onResume", "onStop", "takePhoto", "Companion", "plugin-finder_release"})
 public final class FinderPostRouterUI
   extends MMFinderUI
   implements CaptureDataManager.b
 {
-  public static final a sEN;
+  public static final FinderPostRouterUI.a sPM;
   private HashMap _$_findViewCache;
   private String postId = "";
-  private int sEK = -1;
-  private boolean sEL;
-  private boolean sEM;
+  private int sPJ = -1;
+  private boolean sPK;
+  private boolean sPL;
   
   static
   {
-    AppMethodBeat.i(204086);
-    sEN = new a((byte)0);
-    AppMethodBeat.o(204086);
+    AppMethodBeat.i(204682);
+    sPM = new FinderPostRouterUI.a((byte)0);
+    AppMethodBeat.o(204682);
   }
   
-  private void atV()
+  private void auk()
   {
     AppMethodBeat.i(167502);
-    Object localObject1 = com.tencent.mm.plugin.finder.storage.b.sxa;
-    localObject1 = com.tencent.mm.plugin.finder.storage.b.cEX();
-    Object localObject2 = d.BNj;
-    if (d.etr()) {
+    Object localObject1 = com.tencent.mm.plugin.finder.storage.b.sHP;
+    localObject1 = com.tencent.mm.plugin.finder.storage.b.cGT();
+    Object localObject2 = d.CeI;
+    if (d.ewY()) {
       ((VideoTransPara)localObject1).height = ((int)(((VideoTransPara)localObject1).width / 0.75F));
     }
-    ad.i("Finder.FinderPostRouterUI", "videoParams ".concat(String.valueOf(localObject1)));
-    localObject2 = r.sNc;
-    localObject1 = RecordConfigProvider.a(r.cLL(), "", (VideoTransPara)localObject1, ((VideoTransPara)localObject1).duration * 1000, 11);
-    ((RecordConfigProvider)localObject1).xyr = Boolean.FALSE;
-    ((RecordConfigProvider)localObject1).xyG.xyK = ((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qGN, true);
-    ((RecordConfigProvider)localObject1).xyG.xyM = ((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qGO, -1);
-    ((RecordConfigProvider)localObject1).xyG.xyN = ((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qGP, -1);
-    ((RecordConfigProvider)localObject1).xyG.xyO = ((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qGQ, -1);
-    ((RecordConfigProvider)localObject1).xyG.xyP = ((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qGR, -1);
-    ((RecordConfigProvider)localObject1).xyG.xyQ = ((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qGS, -1);
+    ae.i("Finder.FinderPostRouterUI", "videoParams ".concat(String.valueOf(localObject1)));
+    localObject2 = r.sYn;
+    localObject1 = RecordConfigProvider.a(r.cOt(), "", (VideoTransPara)localObject1, ((VideoTransPara)localObject1).duration * 1000, 11);
+    ((RecordConfigProvider)localObject1).xOo = Boolean.FALSE;
+    ((RecordConfigProvider)localObject1).xOC.xOG = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qOt, true);
+    ((RecordConfigProvider)localObject1).xOC.xOI = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qOu, -1);
+    ((RecordConfigProvider)localObject1).xOC.xOJ = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qOv, -1);
+    ((RecordConfigProvider)localObject1).xOC.xOK = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qOw, -1);
+    ((RecordConfigProvider)localObject1).xOC.xOL = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qOx, -1);
+    ((RecordConfigProvider)localObject1).xOC.xOM = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qOy, -1);
     localObject2 = new UICustomParam.a();
-    Object localObject3 = d.BNj;
-    if (d.etr())
+    Object localObject3 = d.CeI;
+    if (d.ewY())
     {
       ((UICustomParam.a)localObject2).ah(0.75F);
-      ((UICustomParam.a)localObject2).aby();
-      ((UICustomParam.a)localObject2).abx();
-      ((UICustomParam.a)localObject2).abw();
+      ((UICustomParam.a)localObject2).abH();
+      ((UICustomParam.a)localObject2).abG();
+      ((UICustomParam.a)localObject2).abF();
       ((UICustomParam.a)localObject2).cP(false);
-      ((UICustomParam.a)localObject2).abz();
+      ((UICustomParam.a)localObject2).abI();
       localObject3 = getContext();
       p.g(localObject3, "context");
-      ((UICustomParam.a)localObject2).lB(((AppCompatActivity)localObject3).getResources().getColor(2131100725));
+      ((UICustomParam.a)localObject2).lD(((AppCompatActivity)localObject3).getResources().getColor(2131100725));
       ((UICustomParam.a)localObject2).a(2131231368, 0, "", 0);
-      ((RecordConfigProvider)localObject1).xyk = ((UICustomParam.a)localObject2).abA();
-      ((RecordConfigProvider)localObject1).xyl = i.e.ESO;
-      ((RecordConfigProvider)localObject1).ime = new Bundle();
-      ((RecordConfigProvider)localObject1).ime.putString("post_id", this.postId);
+      ((RecordConfigProvider)localObject1).xOh = ((UICustomParam.a)localObject2).abJ();
+      ((RecordConfigProvider)localObject1).xOi = i.e.Flj;
+      ((RecordConfigProvider)localObject1).ioY = new Bundle();
+      ((RecordConfigProvider)localObject1).ioY.putString("post_id", this.postId);
       ((RecordConfigProvider)localObject1).D(4, MultiVideoPluginLayout.class.getName());
       ((RecordConfigProvider)localObject1).D(1, MultiVideoPluginLayout.class.getName());
       ((RecordConfigProvider)localObject1).D(3, MultiVideoPluginLayout.class.getName());
       ((RecordConfigProvider)localObject1).D(0, FinderRecordPluginLayout.class.getName());
-      localObject2 = g.ajC();
+      localObject2 = com.tencent.mm.kernel.g.ajR();
       p.g(localObject2, "MMKernel.storage()");
-      if (((e)localObject2).ajl().getInt(al.a.IIE, 0) != 1) {
+      if (((e)localObject2).ajA().getInt(am.a.Jdh, 0) != 1) {
         break label495;
       }
     }
@@ -119,8 +117,8 @@ public final class FinderPostRouterUI
       if (i != 0) {
         ((RecordConfigProvider)localObject1).D(0, DevFinderRecordPluginLayout.class.getName());
       }
-      CaptureDataManager.xxY.a((CaptureDataManager.b)this);
-      localObject2 = com.tencent.mm.plugin.recordvideo.jumper.a.xyI;
+      CaptureDataManager.xNV.a((CaptureDataManager.b)this);
+      localObject2 = com.tencent.mm.plugin.recordvideo.jumper.a.xOE;
       com.tencent.mm.plugin.recordvideo.jumper.a.a((Context)this, 233, 2130772137, 2130772138, (RecordConfigProvider)localObject1);
       AppMethodBeat.o(167502);
       return;
@@ -131,7 +129,7 @@ public final class FinderPostRouterUI
   
   public final View _$_findCachedViewById(int paramInt)
   {
-    AppMethodBeat.i(204087);
+    AppMethodBeat.i(204683);
     if (this._$_findViewCache == null) {
       this._$_findViewCache = new HashMap();
     }
@@ -142,7 +140,7 @@ public final class FinderPostRouterUI
       localView1 = findViewById(paramInt);
       this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
     }
-    AppMethodBeat.o(204087);
+    AppMethodBeat.o(204683);
     return localView1;
   }
   
@@ -152,14 +150,14 @@ public final class FinderPostRouterUI
     p.h(paramContext, "context");
     p.h(paramCaptureVideoNormalModel, "model");
     p.h(paramBundle, "extData");
-    ad.i("Finder.FinderPostRouterUI", "onMediaGenerated");
-    this.sEM = false;
-    Object localObject1 = new bxm();
-    ((bxm)localObject1).GRA = true;
-    ((bxm)localObject1).GRz = false;
+    ae.i("Finder.FinderPostRouterUI", "onMediaGenerated");
+    this.sPL = false;
+    Object localObject1 = new byg();
+    ((byg)localObject1).Hlb = true;
+    ((byg)localObject1).Hla = false;
     localObject1 = new Intent();
-    ArrayList localArrayList = (ArrayList)paramCaptureVideoNormalModel.dFF().v("KEY_IMAGE_QUALITY_INT_ARRAY", new ArrayList());
-    Object localObject2 = (Collection)paramCaptureVideoNormalModel.dFG();
+    ArrayList localArrayList = (ArrayList)paramCaptureVideoNormalModel.dIW().v("KEY_IMAGE_QUALITY_INT_ARRAY", new ArrayList());
+    Object localObject2 = (Collection)paramCaptureVideoNormalModel.dIX();
     int i;
     if ((localObject2 == null) || (((Collection)localObject2).isEmpty())) {
       i = 1;
@@ -169,8 +167,8 @@ public final class FinderPostRouterUI
       if (i == 0)
       {
         ((Intent)localObject1).putExtra("postType", 2);
-        ((Intent)localObject1).putExtra("postMediaList", (Serializable)new ArrayList((Collection)paramCaptureVideoNormalModel.dFG()));
-        paramBundle = paramCaptureVideoNormalModel.dFG();
+        ((Intent)localObject1).putExtra("postMediaList", (Serializable)new ArrayList((Collection)paramCaptureVideoNormalModel.dIX()));
+        paramBundle = paramCaptureVideoNormalModel.dIX();
         p.g(paramBundle, "model.multiImagePath");
         localObject2 = (Iterable)paramBundle;
         paramBundle = (Collection)new ArrayList();
@@ -187,7 +185,7 @@ public final class FinderPostRouterUI
           }
         }
         ((Intent)localObject1).putExtra("postTypeList", (Serializable)paramBundle);
-        if ((localArrayList != null) && (localArrayList.size() == paramCaptureVideoNormalModel.dFG().size())) {
+        if ((localArrayList != null) && (localArrayList.size() == paramCaptureVideoNormalModel.dIX().size())) {
           ((Intent)localObject1).putExtra("key_post_media_quality_list", (Serializable)localArrayList);
         }
       }
@@ -196,26 +194,26 @@ public final class FinderPostRouterUI
     {
       ((Intent)localObject1).putExtra("KEY_POST_FROM_CAMERA", true);
       ((Intent)localObject1).putExtra("post_id", this.postId);
-      ((Intent)localObject1).putExtra("edit_id", (String)paramCaptureVideoNormalModel.dFF().v("KEY_MULTI_MEDIA_EDIT_ID_STRING", ""));
-      paramBundle = com.tencent.mm.plugin.finder.utils.a.sKD;
+      ((Intent)localObject1).putExtra("edit_id", (String)paramCaptureVideoNormalModel.dIW().v("KEY_MULTI_MEDIA_EDIT_ID_STRING", ""));
+      paramBundle = com.tencent.mm.plugin.finder.utils.a.sVQ;
       paramBundle = getIntent();
       p.g(paramBundle, "getIntent()");
       com.tencent.mm.plugin.finder.utils.a.a((Intent)localObject1, paramBundle);
-      paramBundle = com.tencent.mm.plugin.finder.utils.a.sKD;
+      paramBundle = com.tencent.mm.plugin.finder.utils.a.sVQ;
       com.tencent.mm.plugin.finder.utils.a.enterFinderPostUI(paramContext, (Intent)localObject1);
-      paramContext = f.soC;
-      paramContext = paramCaptureVideoNormalModel.dFF();
+      paramContext = com.tencent.mm.plugin.finder.report.g.syJ;
+      paramContext = paramCaptureVideoNormalModel.dIW();
       p.g(paramContext, "model.reportInfo");
-      f.a(paramContext);
+      com.tencent.mm.plugin.finder.report.g.a(paramContext);
       AppMethodBeat.o(167503);
       return;
-      localObject2 = paramCaptureVideoNormalModel.dFE();
+      localObject2 = paramCaptureVideoNormalModel.dIV();
       p.g(localObject2, "model.photo");
       if (!((Boolean)localObject2).booleanValue()) {
         break;
       }
       paramBundle = new ArrayList();
-      paramBundle.add(paramCaptureVideoNormalModel.axA());
+      paramBundle.add(paramCaptureVideoNormalModel.axP());
       ((Intent)localObject1).putExtra("postType", 2);
       ((Intent)localObject1).putExtra("postMediaList", (Serializable)paramBundle);
       if ((localArrayList != null) && (localArrayList.size() == 1)) {
@@ -225,7 +223,7 @@ public final class FinderPostRouterUI
     if (paramBundle.getByteArray("video_composition") != null)
     {
       ((Intent)localObject1).putExtra("video_composition", paramBundle.getByteArray("video_composition"));
-      ((Intent)localObject1).putExtra("postThumbList", (Serializable)j.ac(new String[] { paramCaptureVideoNormalModel.axA() }));
+      ((Intent)localObject1).putExtra("postThumbList", (Serializable)j.ab(new String[] { paramCaptureVideoNormalModel.axP() }));
     }
     for (;;)
     {
@@ -239,12 +237,12 @@ public final class FinderPostRouterUI
   
   public final void a(RecordMediaReportInfo paramRecordMediaReportInfo, Bundle paramBundle)
   {
-    AppMethodBeat.i(204084);
+    AppMethodBeat.i(204680);
     p.h(paramRecordMediaReportInfo, "reportInfo");
     p.h(paramBundle, "extData");
-    paramBundle = f.soC;
-    f.b(paramRecordMediaReportInfo);
-    AppMethodBeat.o(204084);
+    paramBundle = com.tencent.mm.plugin.finder.report.g.syJ;
+    com.tencent.mm.plugin.finder.report.g.b(paramRecordMediaReportInfo);
+    AppMethodBeat.o(204680);
   }
   
   public final boolean a(Context paramContext, Bundle paramBundle, CaptureDataManager.a parama)
@@ -264,40 +262,40 @@ public final class FinderPostRouterUI
   
   public final void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    AppMethodBeat.i(204085);
+    AppMethodBeat.i(204681);
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
     switch (paramInt1)
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(204085);
+      AppMethodBeat.o(204681);
       return;
       if (paramInt2 == 0)
       {
-        ad.i("Finder.FinderPostRouterUI", "record cancel");
+        ae.i("Finder.FinderPostRouterUI", "record cancel");
         if (paramIntent != null)
         {
           paramIntent = (RecordMediaReportInfo)paramIntent.getParcelableExtra("report");
           if (paramIntent != null)
           {
-            localObject = f.soC;
-            f.a(paramIntent);
+            localObject = com.tencent.mm.plugin.finder.report.g.syJ;
+            com.tencent.mm.plugin.finder.report.g.a(paramIntent);
           }
         }
-        paramIntent = f.soC;
-        f.EW(1);
+        paramIntent = com.tencent.mm.plugin.finder.report.g.syJ;
+        com.tencent.mm.plugin.finder.report.g.Fs(1);
       }
       finish();
-      AppMethodBeat.o(204085);
+      AppMethodBeat.o(204681);
       return;
       if (paramInt2 != -1)
       {
-        AppMethodBeat.o(204085);
+        AppMethodBeat.o(204681);
         return;
       }
       if (paramIntent == null) {
-        p.gfZ();
+        p.gkB();
       }
       Object localObject = paramIntent.getParcelableExtra("KSEGMENTMEDIAINFO");
       p.g(localObject, "data!!.getParcelableExtr…mageUI.KSEGMENTMEDIAINFO)");
@@ -308,18 +306,18 @@ public final class FinderPostRouterUI
         ((Intent)localObject).putExtra("video_composition", paramIntent);
       }
       ((Intent)localObject).putExtra("postType", 4);
-      ((Intent)localObject).putExtra("postMediaList", (Serializable)j.ac(new String[] { localCaptureVideoNormalModel.getVideoPath() }));
-      ((Intent)localObject).putExtra("postTypeList", (Serializable)j.ac(new Integer[] { Integer.valueOf(4) }));
-      ((Intent)localObject).putExtra("postThumbList", (Serializable)j.ac(new String[] { localCaptureVideoNormalModel.axA() }));
+      ((Intent)localObject).putExtra("postMediaList", (Serializable)j.ab(new String[] { localCaptureVideoNormalModel.getVideoPath() }));
+      ((Intent)localObject).putExtra("postTypeList", (Serializable)j.ab(new Integer[] { Integer.valueOf(4) }));
+      ((Intent)localObject).putExtra("postThumbList", (Serializable)j.ab(new String[] { localCaptureVideoNormalModel.axP() }));
       ((Intent)localObject).putExtra("post_id", this.postId);
-      ((Intent)localObject).putExtra("edit_id", (String)localCaptureVideoNormalModel.dFF().v("KEY_MULTI_MEDIA_EDIT_ID_STRING", ""));
-      paramIntent = f.soC;
-      f.ai(4, false);
-      paramIntent = com.tencent.mm.plugin.finder.utils.a.sKD;
+      ((Intent)localObject).putExtra("edit_id", (String)localCaptureVideoNormalModel.dIW().v("KEY_MULTI_MEDIA_EDIT_ID_STRING", ""));
+      paramIntent = com.tencent.mm.plugin.finder.report.g.syJ;
+      com.tencent.mm.plugin.finder.report.g.am(4, false);
+      paramIntent = com.tencent.mm.plugin.finder.utils.a.sVQ;
       paramIntent = getIntent();
       p.g(paramIntent, "getIntent()");
       com.tencent.mm.plugin.finder.utils.a.a((Intent)localObject, paramIntent);
-      paramIntent = com.tencent.mm.plugin.finder.utils.a.sKD;
+      paramIntent = com.tencent.mm.plugin.finder.utils.a.sVQ;
       com.tencent.mm.plugin.finder.utils.a.enterFinderPostUI((Context)this, (Intent)localObject);
     }
   }
@@ -328,33 +326,33 @@ public final class FinderPostRouterUI
   {
     AppMethodBeat.i(167499);
     super.onCreate(paramBundle);
-    this.sEK = getIntent().getIntExtra("key_finder_post_router", -1);
+    this.sPJ = getIntent().getIntExtra("key_finder_post_router", -1);
     Object localObject = getIntent().getStringExtra("key_finder_post_id");
     paramBundle = (Bundle)localObject;
     if (localObject == null)
     {
       paramBundle = new StringBuilder();
-      p.g(g.ajA(), "MMKernel.account()");
-      paramBundle = com.tencent.mm.kernel.a.aiq() + '_' + bt.flT();
+      p.g(com.tencent.mm.kernel.g.ajP(), "MMKernel.account()");
+      paramBundle = com.tencent.mm.kernel.a.aiF() + '_' + bu.fpO();
     }
     this.postId = paramBundle;
-    paramBundle = f.soC;
-    f.ahM(this.postId);
-    ad.i("Finder.FinderPostRouterUI", "router " + this.sEK);
-    switch (this.sEK)
+    paramBundle = com.tencent.mm.plugin.finder.report.g.syJ;
+    com.tencent.mm.plugin.finder.report.g.aiJ(this.postId);
+    ae.i("Finder.FinderPostRouterUI", "router " + this.sPJ);
+    switch (this.sPJ)
     {
     default: 
-      ad.i("Finder.FinderPostRouterUI", "invalid router " + this.sEK + ", finish");
+      ae.i("Finder.FinderPostRouterUI", "invalid router " + this.sPJ + ", finish");
       finish();
       AppMethodBeat.o(167499);
       return;
     case 1: 
       paramBundle = new Intent();
-      paramBundle.putExtra("finder_username", u.aAu());
+      paramBundle.putExtra("finder_username", v.aAK());
       paramBundle.addFlags(67108864);
-      localObject = FinderReporterUIC.tcM;
+      localObject = FinderReporterUIC.tnG;
       FinderReporterUIC.a.a((Context)this, paramBundle, 0L, 0, false, 124);
-      localObject = com.tencent.mm.plugin.finder.utils.a.sKD;
+      localObject = com.tencent.mm.plugin.finder.utils.a.sVQ;
       com.tencent.mm.plugin.finder.utils.a.enterFinderProfileUI((Context)this, paramBundle);
       finish();
       AppMethodBeat.o(167499);
@@ -362,25 +360,25 @@ public final class FinderPostRouterUI
     case 3: 
       paramBundle = new Intent();
       paramBundle.putExtra("key_finder_post_id", this.postId);
-      localObject = com.tencent.mm.plugin.finder.utils.a.sKD;
+      localObject = com.tencent.mm.plugin.finder.utils.a.sVQ;
       localObject = getIntent();
       p.g(localObject, "getIntent()");
       com.tencent.mm.plugin.finder.utils.a.a(paramBundle, (Intent)localObject);
-      localObject = com.tencent.mm.plugin.finder.utils.a.sKD;
+      localObject = com.tencent.mm.plugin.finder.utils.a.sVQ;
       com.tencent.mm.plugin.finder.utils.a.G((Context)this, paramBundle);
-      paramBundle = f.soC;
-      f.EV(1);
+      paramBundle = com.tencent.mm.plugin.finder.report.g.syJ;
+      com.tencent.mm.plugin.finder.report.g.Fr(1);
       AppMethodBeat.o(167499);
       return;
     case 2: 
-      this.sEM = true;
-      atV();
-      paramBundle = f.soC;
-      f.EV(2);
+      this.sPL = true;
+      auk();
+      paramBundle = com.tencent.mm.plugin.finder.report.g.syJ;
+      com.tencent.mm.plugin.finder.report.g.Fr(2);
       AppMethodBeat.o(167499);
       return;
     case 4: 
-      paramBundle = com.tencent.mm.plugin.finder.utils.a.sKD;
+      paramBundle = com.tencent.mm.plugin.finder.utils.a.sVQ;
       com.tencent.mm.plugin.finder.utils.a.B((Context)this, getIntent());
       AppMethodBeat.o(167499);
       return;
@@ -389,21 +387,21 @@ public final class FinderPostRouterUI
       AppMethodBeat.o(167499);
       return;
     }
-    paramBundle = com.tencent.mm.plugin.finder.utils.a.sKD;
+    paramBundle = com.tencent.mm.plugin.finder.utils.a.sVQ;
     paramBundle = (Context)this;
     localObject = new Intent();
     ((Intent)localObject).putExtra("key_comment_scene", 41);
     com.tencent.mm.plugin.finder.utils.a.W(paramBundle, (Intent)localObject);
-    overridePendingTransition(MMFragmentActivity.a.mOe, MMFragmentActivity.a.mOf);
+    overridePendingTransition(MMFragmentActivity.a.mTi, MMFragmentActivity.a.mTj);
     AppMethodBeat.o(167499);
   }
   
   public final void onDestroy()
   {
-    AppMethodBeat.i(204083);
-    CaptureDataManager.xxY.a(null);
+    AppMethodBeat.i(204679);
+    CaptureDataManager.xNV.a(null);
     super.onDestroy();
-    AppMethodBeat.o(204083);
+    AppMethodBeat.o(204679);
   }
   
   public final void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
@@ -418,14 +416,14 @@ public final class FinderPostRouterUI
     {
       paramArrayOfString = Thread.currentThread();
       p.g(paramArrayOfString, "Thread.currentThread()");
-      ad.i("Finder.FinderPostRouterUI", "onRequestPermissionsResult grantResults length 0. requestCode[%d], tid[%d]", new Object[] { Integer.valueOf(paramInt), Long.valueOf(paramArrayOfString.getId()) });
+      ae.i("Finder.FinderPostRouterUI", "onRequestPermissionsResult grantResults length 0. requestCode[%d], tid[%d]", new Object[] { Integer.valueOf(paramInt), Long.valueOf(paramArrayOfString.getId()) });
       AppMethodBeat.o(167506);
       return;
     }
     i = paramArrayOfInt[0];
     paramArrayOfString = Thread.currentThread();
     p.g(paramArrayOfString, "Thread.currentThread()");
-    ad.i("Finder.FinderPostRouterUI", "onRequestPermissionsResult requestCode[%d],grantResults[%d] tid[%d]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i), Long.valueOf(paramArrayOfString.getId()) });
+    ae.i("Finder.FinderPostRouterUI", "onRequestPermissionsResult requestCode[%d],grantResults[%d] tid[%d]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i), Long.valueOf(paramArrayOfString.getId()) });
     switch (paramInt)
     {
     }
@@ -446,7 +444,7 @@ public final class FinderPostRouterUI
       label219:
       for (paramInt = j; (paramInt != 0) && (paramArrayOfInt[0] == 0); paramInt = 0)
       {
-        atV();
+        auk();
         AppMethodBeat.o(167506);
         return;
         paramInt = 0;
@@ -465,7 +463,7 @@ public final class FinderPostRouterUI
         if ((paramInt == 0) || (paramArrayOfInt[0] != 0)) {
           break label263;
         }
-        atV();
+        auk();
         break;
         paramInt = 0;
         break label231;
@@ -477,15 +475,15 @@ public final class FinderPostRouterUI
   {
     AppMethodBeat.i(167500);
     super.onResume();
-    ad.i("Finder.FinderPostRouterUI", "onResume");
-    if (this.sEL)
+    ae.i("Finder.FinderPostRouterUI", "onResume");
+    if (this.sPK)
     {
       finish();
-      if (this.sEM) {
+      if (this.sPL) {
         overridePendingTransition(0, 2130772138);
       }
-      if (this.sEK == 6) {
-        overridePendingTransition(MMFragmentActivity.a.mOg, MMFragmentActivity.a.mOh);
+      if (this.sPJ == 6) {
+        overridePendingTransition(MMFragmentActivity.a.mTk, MMFragmentActivity.a.mTl);
       }
     }
     AppMethodBeat.o(167500);
@@ -495,8 +493,8 @@ public final class FinderPostRouterUI
   {
     AppMethodBeat.i(167501);
     super.onStop();
-    ad.i("Finder.FinderPostRouterUI", "onStop");
-    this.sEL = true;
+    ae.i("Finder.FinderPostRouterUI", "onStop");
+    this.sPK = true;
     AppMethodBeat.o(167501);
   }
   
@@ -505,13 +503,10 @@ public final class FinderPostRouterUI
     super.onWindowFocusChanged(paramBoolean);
     AppMethodBeat.at(this, paramBoolean);
   }
-  
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/ui/FinderPostRouterUI$Companion;", "", "()V", "REQUEST_CODE", "", "TAG", "", "plugin-finder_release"})
-  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.ui.FinderPostRouterUI
  * JD-Core Version:    0.7.0.1
  */

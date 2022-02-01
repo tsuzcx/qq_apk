@@ -13,8 +13,8 @@ import com.tencent.mm.plugin.fav.a.x;
 import com.tencent.mm.plugin.fav.ui.e;
 import com.tencent.mm.plugin.fav.ui.widget.FavDetailScrollView;
 import com.tencent.mm.plugin.fav.ui.widget.FavDetailScrollView.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.widget.MMLoadScrollView;
 import com.tencent.mm.ui.widget.MMLoadScrollView.a;
@@ -22,30 +22,30 @@ import com.tencent.mm.ui.widget.MMLoadScrollView.a;
 public abstract class BaseFavDetailReportUI
   extends MMActivity
 {
-  public h.a rzL = new h.a();
-  protected boolean rzM;
-  private String rzN = null;
+  public h.a rHW = new h.a();
+  protected boolean rHX;
+  private String rHY = null;
   
   protected final void H(com.tencent.mm.plugin.fav.a.g paramg)
   {
-    if ((paramg != null) && (this.rzL.scene > 0))
+    if ((paramg != null) && (this.rHW.scene > 0))
     {
-      this.rzL.rst = paramg.field_id;
-      this.rzL.type = paramg.field_type;
-      this.rzL.dnh = paramg.field_sourceType;
-      this.rzL.timestamp = (paramg.field_sourceCreateTime / 1000L);
-      if (this.rzL.timestamp == 0L) {
-        this.rzL.timestamp = (paramg.field_updateTime / 1000L);
+      this.rHW.rAG = paramg.field_id;
+      this.rHW.type = paramg.field_type;
+      this.rHW.doj = paramg.field_sourceType;
+      this.rHW.timestamp = (paramg.field_sourceCreateTime / 1000L);
+      if (this.rHW.timestamp == 0L) {
+        this.rHW.timestamp = (paramg.field_updateTime / 1000L);
       }
-      if (this.rzL.timestamp == 0L) {
-        this.rzL.timestamp = paramg.field_edittime;
+      if (this.rHW.timestamp == 0L) {
+        this.rHW.timestamp = paramg.field_edittime;
       }
-      this.rzL.rsu = com.tencent.mm.plugin.fav.a.b.r(paramg);
-      this.rzM = true;
+      this.rHW.rAH = com.tencent.mm.plugin.fav.a.b.r(paramg);
+      this.rHX = true;
     }
   }
   
-  protected MMLoadScrollView cwM()
+  protected MMLoadScrollView cyn()
   {
     return null;
   }
@@ -55,9 +55,9 @@ public abstract class BaseFavDetailReportUI
     if ((paramInt1 == 1) && (paramIntent != null))
     {
       long l = paramIntent.getLongExtra("key_activity_browse_time", 0L);
-      h.a locala = this.rzL;
-      locala.rsw += l;
-      ad.v("MicroMsg.Fav.BaseFavDetailReportUI", "onActivityResult subDetailPeriod[%d] subUIBrowserTime[%d]", new Object[] { Long.valueOf(this.rzL.rsw), Long.valueOf(l) });
+      h.a locala = this.rHW;
+      locala.rAJ += l;
+      ae.v("MicroMsg.Fav.BaseFavDetailReportUI", "onActivityResult subDetailPeriod[%d] subUIBrowserTime[%d]", new Object[] { Long.valueOf(this.rHW.rAJ), Long.valueOf(l) });
     }
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
   }
@@ -65,55 +65,55 @@ public abstract class BaseFavDetailReportUI
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    this.rzL.scene = getIntent().getIntExtra("key_detail_fav_scene", 0);
-    this.rzL.ooi = getIntent().getIntExtra("key_detail_fav_sub_scene", 0);
-    this.rzL.index = getIntent().getIntExtra("key_detail_fav_index", 0);
-    this.rzL.query = getIntent().getStringExtra("key_detail_fav_query");
-    this.rzL.qXk = getIntent().getStringExtra("key_detail_fav_sessionid");
-    this.rzL.rsG = getIntent().getStringExtra("key_detail_fav_tags");
-    h.a locala = this.rzL;
-    if (this.rzL.query == null)
+    this.rHW.scene = getIntent().getIntExtra("key_detail_fav_scene", 0);
+    this.rHW.otZ = getIntent().getIntExtra("key_detail_fav_sub_scene", 0);
+    this.rHW.index = getIntent().getIntExtra("key_detail_fav_index", 0);
+    this.rHW.query = getIntent().getStringExtra("key_detail_fav_query");
+    this.rHW.rfp = getIntent().getStringExtra("key_detail_fav_sessionid");
+    this.rHW.rAT = getIntent().getStringExtra("key_detail_fav_tags");
+    h.a locala = this.rHW;
+    if (this.rHW.query == null)
     {
       paramBundle = "";
       locala.query = paramBundle;
-      locala = this.rzL;
-      if (this.rzL.qXk != null) {
+      locala = this.rHW;
+      if (this.rHW.rfp != null) {
         break label265;
       }
       paramBundle = "";
       label145:
-      locala.qXk = paramBundle;
-      locala = this.rzL;
-      if (this.rzL.rsG != null) {
+      locala.rfp = paramBundle;
+      locala = this.rHW;
+      if (this.rHW.rAT != null) {
         break label276;
       }
     }
     label265:
     label276:
-    for (paramBundle = "";; paramBundle = this.rzL.rsG)
+    for (paramBundle = "";; paramBundle = this.rHW.rAT)
     {
-      locala.rsG = paramBundle;
-      paramBundle = cwM();
+      locala.rAT = paramBundle;
+      paramBundle = cyn();
       if (paramBundle != null)
       {
         paramBundle.setOnTopOrBottomListerner(new MMLoadScrollView.a()
         {
-          public final void ciN()
+          public final void ckd()
           {
-            BaseFavDetailReportUI.this.rzL.rsE = true;
+            BaseFavDetailReportUI.this.rHW.rAR = true;
           }
         });
         if ((paramBundle instanceof FavDetailScrollView)) {
           ((FavDetailScrollView)paramBundle).setOnScrollChangeListener(new FavDetailScrollView.a()
           {
-            public final void cwN()
+            public final void cyo()
             {
               AppMethodBeat.i(107110);
               BaseFavDetailReportUI.this.showActionbarLine();
               AppMethodBeat.o(107110);
             }
             
-            public final void cwO()
+            public final void cyp()
             {
               AppMethodBeat.i(107111);
               BaseFavDetailReportUI.this.hideActionbarLine();
@@ -122,61 +122,61 @@ public abstract class BaseFavDetailReportUI
           });
         }
       }
-      if (this.rzL.scene == 0) {
-        ad.i("MicroMsg.Fav.BaseFavDetailReportUI", "report object scene is 0");
+      if (this.rHW.scene == 0) {
+        ae.i("MicroMsg.Fav.BaseFavDetailReportUI", "report object scene is 0");
       }
       setActionbarColor(getContext().getResources().getColor(2131101179));
       hideActionbarLine();
       return;
-      paramBundle = this.rzL.query;
+      paramBundle = this.rHW.query;
       break;
-      paramBundle = this.rzL.qXk;
+      paramBundle = this.rHW.rfp;
       break label145;
     }
   }
   
   public void onDestroy()
   {
-    if (this.rzM) {
+    if (this.rHX) {
       com.tencent.mm.sdk.g.b.c(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(107112);
-          BaseFavDetailReportUI.this.rzL.rsF = (((af)com.tencent.mm.kernel.g.ad(af.class)).getFavItemInfoStorage().DZ((int)BaseFavDetailReportUI.this.rzL.rst) + 1);
-          h.a(BaseFavDetailReportUI.this.rzL);
+          BaseFavDetailReportUI.this.rHW.rAS = (((af)com.tencent.mm.kernel.g.ad(af.class)).getFavItemInfoStorage().Em((int)BaseFavDetailReportUI.this.rHW.rAG) + 1);
+          h.a(BaseFavDetailReportUI.this.rHW);
           AppMethodBeat.o(107112);
         }
       }, "BaseFavReport");
     }
     setResult(-1, getIntent().putExtra("key_activity_browse_time", getActivityBrowseTimeMs()));
-    e.cwd();
+    e.cxE();
     super.onDestroy();
   }
   
   public void onPause()
   {
-    this.rzL.rsv = getActivityBrowseTimeMs();
-    String str1 = com.tencent.mm.modelstat.f.aLG().ipR;
+    this.rHW.rAI = getActivityBrowseTimeMs();
+    String str1 = com.tencent.mm.modelstat.f.aMd().isM;
     h.a locala;
     long l2;
     com.tencent.mm.modelstat.f localf;
     String str2;
-    if ((!bt.lQ(getClass().getName(), str1)) && (!bt.lQ(str1, this.rzN)))
+    if ((!bu.lX(getClass().getName(), str1)) && (!bu.lX(str1, this.rHY)))
     {
-      locala = this.rzL;
-      l2 = locala.rsw;
-      localf = com.tencent.mm.modelstat.f.aLG();
-      str2 = com.tencent.mm.modelstat.f.aLG().ipR;
-      if (localf.ipQ == null) {
+      locala = this.rHW;
+      l2 = locala.rAJ;
+      localf = com.tencent.mm.modelstat.f.aMd();
+      str2 = com.tencent.mm.modelstat.f.aMd().isM;
+      if (localf.isL == null) {
         break label154;
       }
     }
     label154:
-    for (long l1 = ((Long)localf.ipQ.get(str2)).longValue();; l1 = 0L)
+    for (long l1 = ((Long)localf.isL.get(str2)).longValue();; l1 = 0L)
     {
-      locala.rsw = (l1 + l2);
-      ad.v("MicroMsg.Fav.BaseFavDetailReportUI", "onPause lastClassname[%s] detailPeriod[%d] subDetailPeriod[%d]", new Object[] { str1, Long.valueOf(this.rzL.rsv), Long.valueOf(this.rzL.rsw) });
+      locala.rAJ = (l1 + l2);
+      ae.v("MicroMsg.Fav.BaseFavDetailReportUI", "onPause lastClassname[%s] detailPeriod[%d] subDetailPeriod[%d]", new Object[] { str1, Long.valueOf(this.rHW.rAI), Long.valueOf(this.rHW.rAJ) });
       super.onPause();
       return;
     }
@@ -185,10 +185,10 @@ public abstract class BaseFavDetailReportUI
   public void onResume()
   {
     super.onResume();
-    if (bt.isNullOrNil(this.rzN)) {
-      this.rzN = com.tencent.mm.modelstat.f.aLG().ipR;
+    if (bu.isNullOrNil(this.rHY)) {
+      this.rHY = com.tencent.mm.modelstat.f.aMd().isM;
     }
-    ad.v("MicroMsg.Fav.BaseFavDetailReportUI", "onResume firstResumeClassname[%s]", new Object[] { this.rzN });
+    ae.v("MicroMsg.Fav.BaseFavDetailReportUI", "onResume firstResumeClassname[%s]", new Object[] { this.rHY });
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -197,9 +197,9 @@ public abstract class BaseFavDetailReportUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  protected final void vK(long paramLong)
+  protected final void wa(long paramLong)
   {
-    com.tencent.mm.plugin.fav.a.g localg = ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavItemInfoStorage().vE(paramLong);
+    com.tencent.mm.plugin.fav.a.g localg = ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavItemInfoStorage().vU(paramLong);
     if (localg != null) {
       H(localg);
     }

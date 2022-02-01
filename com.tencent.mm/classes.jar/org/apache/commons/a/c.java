@@ -11,29 +11,29 @@ import java.util.List;
 
 public final class c
 {
-  public static final BigInteger NSp;
-  public static final BigInteger NSq;
-  public static final BigInteger NSr;
-  public static final BigInteger NSs;
-  public static final BigInteger NSt;
-  public static final BigInteger NSu;
-  public static final BigInteger NSv;
-  public static final File[] NSw;
-  public static final BigInteger lBe;
+  public static final BigInteger OpA;
+  public static final BigInteger OpB;
+  public static final File[] OpC;
+  public static final BigInteger Opv;
+  public static final BigInteger Opw;
+  public static final BigInteger Opx;
+  public static final BigInteger Opy;
+  public static final BigInteger Opz;
+  public static final BigInteger lFC;
   
   static
   {
     AppMethodBeat.i(10328);
     BigInteger localBigInteger = BigInteger.valueOf(1024L);
-    lBe = localBigInteger;
-    NSp = localBigInteger.multiply(localBigInteger);
-    NSq = lBe.multiply(NSp);
-    NSr = lBe.multiply(NSq);
-    NSs = lBe.multiply(NSr);
-    NSt = lBe.multiply(NSs);
-    NSu = BigInteger.valueOf(1024L).multiply(BigInteger.valueOf(1152921504606846976L));
-    NSv = lBe.multiply(NSu);
-    NSw = new File[0];
+    lFC = localBigInteger;
+    Opv = localBigInteger.multiply(localBigInteger);
+    Opw = lFC.multiply(Opv);
+    Opx = lFC.multiply(Opw);
+    Opy = lFC.multiply(Opx);
+    Opz = lFC.multiply(Opy);
+    OpA = BigInteger.valueOf(1024L).multiply(BigInteger.valueOf(1152921504606846976L));
+    OpB = lFC.multiply(OpA);
+    OpC = new File[0];
     AppMethodBeat.o(10328);
   }
   

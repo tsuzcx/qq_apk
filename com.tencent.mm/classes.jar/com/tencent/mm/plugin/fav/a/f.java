@@ -12,7 +12,7 @@ public final class f
   static
   {
     AppMethodBeat.i(103369);
-    info = bw.Vv();
+    info = bw.VD();
     AppMethodBeat.o(103369);
   }
   

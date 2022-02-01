@@ -6,8 +6,8 @@ import com.google.b.a.e;
 public final class a$ad
   extends e
 {
-  public a.aw LFX = null;
-  public int LHD = 0;
+  public a.aw Mdb = null;
+  public int MeH = 0;
   public String groupId = "";
   
   public a$ad()
@@ -20,11 +20,11 @@ public final class a$ad
     if (!this.groupId.equals("")) {
       paramb.d(1, this.groupId);
     }
-    if (this.LFX != null) {
-      paramb.a(2, this.LFX);
+    if (this.Mdb != null) {
+      paramb.a(2, this.Mdb);
     }
-    if (this.LHD != 0) {
-      paramb.bx(3, this.LHD);
+    if (this.MeH != 0) {
+      paramb.bx(3, this.MeH);
     }
     super.a(paramb);
   }
@@ -37,12 +37,12 @@ public final class a$ad
       i = j + b.e(1, this.groupId);
     }
     j = i;
-    if (this.LFX != null) {
-      j = i + b.b(2, this.LFX);
+    if (this.Mdb != null) {
+      j = i + b.b(2, this.Mdb);
     }
     i = j;
-    if (this.LHD != 0) {
-      i = j + b.bz(3, this.LHD);
+    if (this.MeH != 0) {
+      i = j + b.bz(3, this.MeH);
     }
     return i;
   }

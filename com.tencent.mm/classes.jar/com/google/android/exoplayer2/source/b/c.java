@@ -18,6 +18,7 @@ import com.google.android.exoplayer2.source.o;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.IOException;
 import java.math.BigInteger;
+import java.util.Arrays;
 import java.util.IdentityHashMap;
 import java.util.List;
 
@@ -231,7 +232,7 @@ final class c
           j = this.bxI.vK();
           localObject1 = this.bxI.vL();
           localObject2 = new j((Uri)localObject3, 0L, -1L, null, 1);
-          paramb.bxK = new c.a(this.bxv, (j)localObject2, this.bxx[i].bdI, j, localObject1, this.bxC, paramf);
+          paramb.bxK = new a(this.bxv, (j)localObject2, this.bxx[i].bdI, j, localObject1, this.bxC, paramf);
           AppMethodBeat.o(62829);
           return;
         }
@@ -286,6 +287,26 @@ final class c
       this.bxy.d(this.bxE);
     }
     AppMethodBeat.o(62828);
+  }
+  
+  static final class a
+    extends com.google.android.exoplayer2.source.a.c
+  {
+    public final String bxJ;
+    byte[] result;
+    
+    public a(g paramg, j paramj, Format paramFormat, int paramInt, Object paramObject, byte[] paramArrayOfByte, String paramString)
+    {
+      super(paramj, paramFormat, paramInt, paramObject, paramArrayOfByte);
+      this.bxJ = paramString;
+    }
+    
+    public final void f(byte[] paramArrayOfByte, int paramInt)
+    {
+      AppMethodBeat.i(62823);
+      this.result = Arrays.copyOf(paramArrayOfByte, paramInt);
+      AppMethodBeat.o(62823);
+    }
   }
   
   public static final class b
@@ -365,7 +386,7 @@ final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.exoplayer2.source.b.c
  * JD-Core Version:    0.7.0.1
  */

@@ -1,62 +1,62 @@
 package com.tencent.mm.plugin.multitalk.model;
 
 import android.content.Context;
-import com.tencent.mm.bi.f;
+import com.tencent.mm.bh.f;
 import com.tencent.mm.kernel.c.a;
 import java.util.List;
 
 public abstract interface d
   extends a
 {
-  public abstract boolean CA(String paramString);
+  public abstract boolean Dc(String paramString);
   
   public abstract void a(a parama);
   
-  public abstract void arf(String paramString);
+  public abstract void asn(String paramString);
   
-  public abstract boolean arg(String paramString);
+  public abstract boolean aso(String paramString);
   
-  public abstract f arh(String paramString);
+  public abstract f asp(String paramString);
   
-  public abstract boolean ari(String paramString);
+  public abstract boolean asq(String paramString);
   
-  public abstract List<String> arj(String paramString);
+  public abstract List<String> asr(String paramString);
   
-  public abstract boolean ark(String paramString);
+  public abstract boolean ass(String paramString);
   
-  public abstract boolean arl(String paramString);
+  public abstract boolean ast(String paramString);
   
-  public abstract boolean arm(String paramString);
+  public abstract boolean asu(String paramString);
   
-  public abstract void arn(String paramString);
+  public abstract void asv(String paramString);
   
-  public abstract boolean aro(String paramString);
+  public abstract boolean asw(String paramString);
   
-  public abstract void arp(String paramString);
+  public abstract void asx(String paramString);
   
   public abstract void b(a parama);
   
-  public abstract boolean cf(Context paramContext);
+  public abstract boolean ch(Context paramContext);
   
-  public abstract boolean doX();
+  public abstract boolean dsh();
   
-  public abstract boolean doY();
+  public abstract boolean dsi();
   
-  public abstract boolean doZ();
+  public abstract boolean dsj();
   
-  public abstract boolean dpa();
+  public abstract boolean dsk();
   
-  public abstract boolean hW(String paramString1, String paramString2);
+  public abstract boolean ic(String paramString1, String paramString2);
   
-  public abstract int hX(String paramString1, String paramString2);
+  public abstract int id(String paramString1, String paramString2);
   
-  public abstract String hY(String paramString1, String paramString2);
+  public abstract String ie(String paramString1, String paramString2);
   
-  public abstract String zf(String paramString);
+  public abstract String zP(String paramString);
   
   public static abstract interface a
   {
-    public abstract void arq(String paramString);
+    public abstract void asy(String paramString);
   }
 }
 

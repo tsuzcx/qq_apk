@@ -230,7 +230,7 @@ public abstract interface IX5WebViewBase
     public static final int SRC_IMAGE_ANCHOR_TYPE = 8;
     public static final int UNKNOWN_TYPE = 0;
     private Object mData;
-    private DeepImageData mDeepImageData;
+    private IX5WebViewBase.HitTestResult.DeepImageData mDeepImageData;
     private String mExtra;
     private boolean mIsFromSinglePress;
     private Point mPoint;
@@ -255,7 +255,7 @@ public abstract interface IX5WebViewBase
       return this.mData;
     }
     
-    public DeepImageData getDeepImageData()
+    public IX5WebViewBase.HitTestResult.DeepImageData getDeepImageData()
     {
       return this.mDeepImageData;
     }
@@ -288,7 +288,7 @@ public abstract interface IX5WebViewBase
       this.mData = paramObject;
     }
     
-    public void setDeepImageData(DeepImageData paramDeepImageData)
+    public void setDeepImageData(IX5WebViewBase.HitTestResult.DeepImageData paramDeepImageData)
     {
       this.mDeepImageData = paramDeepImageData;
     }
@@ -311,62 +311,6 @@ public abstract interface IX5WebViewBase
     public void setType(int paramInt)
     {
       this.mType = paramInt;
-    }
-    
-    public class DeepImageData
-    {
-      public Bitmap mBmp;
-      public long mHeight;
-      public String mPicUrl;
-      public long mRawDataSize;
-      public long mWidth;
-      
-      public DeepImageData() {}
-      
-      public Bitmap getBitmap()
-      {
-        AppMethodBeat.i(53219);
-        Bitmap localBitmap = IX5WebViewBase.HitTestResult.this.getBitmapData();
-        AppMethodBeat.o(53219);
-        return localBitmap;
-      }
-    }
-    
-    public class ImageAnchorData
-    {
-      public String mAHref;
-      public Bitmap mBmp;
-      public String mPicUrl;
-      public long mRawDataSize;
-      
-      public ImageAnchorData() {}
-      
-      public Bitmap getBitmap()
-      {
-        AppMethodBeat.i(53220);
-        Bitmap localBitmap = IX5WebViewBase.HitTestResult.this.getBitmapData();
-        AppMethodBeat.o(53220);
-        return localBitmap;
-      }
-    }
-    
-    public class ImageData
-    {
-      public Bitmap mBmp;
-      public int mImgHeight;
-      public int mImgWidth;
-      public String mPicUrl;
-      public long mRawDataSize;
-      
-      public ImageData() {}
-      
-      public Bitmap getBitmap()
-      {
-        AppMethodBeat.i(53221);
-        Bitmap localBitmap = IX5WebViewBase.HitTestResult.this.getBitmapData();
-        AppMethodBeat.o(53221);
-        return localBitmap;
-      }
     }
   }
   

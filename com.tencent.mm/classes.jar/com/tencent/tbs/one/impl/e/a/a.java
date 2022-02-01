@@ -49,7 +49,7 @@ public final class a
   
   public a(Context paramContext, String paramString1, String paramString2, String[] paramArrayOfString, d.a parama, File paramFile, Bundle paramBundle)
   {
-    AppMethodBeat.i(190680);
+    AppMethodBeat.i(192450);
     this.o = -1L;
     this.b = paramContext;
     this.c = paramString1;
@@ -65,7 +65,7 @@ public final class a
       this.p = paramBundle;
       this.q = parama;
       this.i = com.tencent.tbs.one.impl.common.f.a(this.b, this.b, paramString1, parama.a, parama.c);
-      AppMethodBeat.o(190680);
+      AppMethodBeat.o(192450);
       return;
       paramString2 = paramContext;
     }

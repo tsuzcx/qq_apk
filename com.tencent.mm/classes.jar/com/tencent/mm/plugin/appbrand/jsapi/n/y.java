@@ -3,23 +3,23 @@ package com.tencent.mm.plugin.appbrand.jsapi.n;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/page/JsApiSetPageOrientation;", "Lcom/tencent/mm/plugin/appbrand/jsapi/page/PrivateJsApiSetPageOrientation;", "()V", "Companion", "luggage-wechat-full-sdk_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsapi/page/JsApiSetPageOrientation;", "Lcom/tencent/mm/plugin/appbrand/jsapi/page/PrivateJsApiSetPageOrientation;", "()V", "Companion", "luggage-wechat-full-sdk_release"})
 public final class y
   extends al
 {
   public static final int CTRL_INDEX = 582;
   public static final String NAME = "setPageOrientation";
   @Deprecated
-  public static final a lbU;
+  public static final a lfF;
   
   static
   {
     AppMethodBeat.i(147947);
-    lbU = new a((byte)0);
+    lfF = new a((byte)0);
     AppMethodBeat.o(147947);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/page/JsApiSetPageOrientation$Companion;", "", "()V", "CTRL_INDEX", "", "NAME", "", "luggage-wechat-full-sdk_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsapi/page/JsApiSetPageOrientation$Companion;", "", "()V", "CTRL_INDEX", "", "NAME", "", "luggage-wechat-full-sdk_release"})
   static final class a {}
 }
 

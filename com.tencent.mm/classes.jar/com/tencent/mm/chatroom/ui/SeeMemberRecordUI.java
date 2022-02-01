@@ -15,7 +15,7 @@ import org.xwalk.core.Log;
 public class SeeMemberRecordUI
   extends SelectMemberUI
 {
-  public final boolean Zg()
+  public final boolean Zp()
   {
     return true;
   }
@@ -24,7 +24,7 @@ public class SeeMemberRecordUI
   {
     AppMethodBeat.i(12823);
     super.a(paramView, paramInt, paramLong);
-    paramView = this.fTn.lj(paramInt);
+    paramView = this.fVt.ll(paramInt);
     if (paramView == null)
     {
       Log.e("MicroMsg.SeeMemberRecordUI", "item is null!");
@@ -40,12 +40,12 @@ public class SeeMemberRecordUI
     paramView = paramView.contact.field_username;
     hideVKB();
     Intent localIntent = new Intent(this, SelectedMemberChattingRecordUI.class);
-    localIntent.putExtra("RoomInfo_Id", this.fPi);
+    localIntent.putExtra("RoomInfo_Id", this.fRo);
     localIntent.putExtra("room_member", paramView);
     localIntent.putExtra("title", getString(2131762976));
     paramView = new com.tencent.mm.hellhoundlib.b.a().bc(localIntent);
-    com.tencent.mm.hellhoundlib.a.a.a(this, paramView.ahp(), "com/tencent/mm/chatroom/ui/SeeMemberRecordUI", "doSeeMemberRecord", "(Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    startActivity((Intent)paramView.mq(0));
+    com.tencent.mm.hellhoundlib.a.a.a(this, paramView.ahE(), "com/tencent/mm/chatroom/ui/SeeMemberRecordUI", "doSeeMemberRecord", "(Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    startActivity((Intent)paramView.mt(0));
     com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/chatroom/ui/SeeMemberRecordUI", "doSeeMemberRecord", "(Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     AppMethodBeat.o(12823);
   }

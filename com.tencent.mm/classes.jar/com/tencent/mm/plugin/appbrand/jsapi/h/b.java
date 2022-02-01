@@ -6,10 +6,10 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.appbrand.jsapi.m;
 import com.tencent.mm.plugin.appbrand.jsapi.n;
-import com.tencent.mm.plugin.appbrand.page.aa;
-import com.tencent.mm.plugin.appbrand.q;
+import com.tencent.mm.plugin.appbrand.page.z;
+import com.tencent.mm.plugin.appbrand.r;
 import com.tencent.mm.plugin.appbrand.service.c;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.HashMap;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -23,29 +23,29 @@ public final class b
   public static final class a
     extends n
   {
-    public a(m paramm, q paramq, aa paramaa, JSONObject paramJSONObject, int paramInt)
+    public a(m paramm, r paramr, z paramz, JSONObject paramJSONObject, int paramInt)
     {
-      super(paramq, paramaa, paramJSONObject, paramInt);
+      super(paramr, paramz, paramJSONObject, paramInt);
     }
     
     public final void C(Intent paramIntent)
     {
       AppMethodBeat.i(46393);
-      ad.i("MicroMsg.JsApiSendRedPacket", "PrepareLuckyMoneyRequest.onResult ");
+      ae.i("MicroMsg.JsApiSendRedPacket", "PrepareLuckyMoneyRequest.onResult ");
       if ((paramIntent == null) || (paramIntent.getStringExtra("sendId") == null))
       {
-        ad.e("MicroMsg.JsApiSendRedPacket", "onResult data = [%s]", new Object[] { paramIntent });
+        ae.e("MicroMsg.JsApiSendRedPacket", "onResult data = [%s]", new Object[] { paramIntent });
         onError(-1, "fail:system error {{result data error or sendId is null}}");
         AppMethodBeat.o(46393);
         return;
       }
       String str = paramIntent.getStringExtra("sendId");
-      ad.i("MicroMsg.JsApiSendRedPacket", "PrepareLuckyMoneyRequest.onResult sendId = %s,share = %b", new Object[] { str, Boolean.valueOf(paramIntent.getBooleanExtra("result_share_msg", false)) });
-      ad.i("MicroMsg.JsApiSendRedPacket", "GetLuckMoneyRequest.onResult");
+      ae.i("MicroMsg.JsApiSendRedPacket", "PrepareLuckyMoneyRequest.onResult sendId = %s,share = %b", new Object[] { str, Boolean.valueOf(paramIntent.getBooleanExtra("result_share_msg", false)) });
+      ae.i("MicroMsg.JsApiSendRedPacket", "GetLuckMoneyRequest.onResult");
       paramIntent = new HashMap();
       paramIntent.put("errCode", Integer.valueOf(0));
       paramIntent.put("redPacketId", str);
-      z(paramIntent);
+      G(paramIntent);
       AppMethodBeat.o(46393);
     }
     
@@ -78,10 +78,10 @@ public final class b
         }
         for (;;)
         {
-          ((com.tencent.mm.plugin.luckymoney.appbrand.a)g.ab(com.tencent.mm.plugin.luckymoney.appbrand.a.class)).a(paramActivity, Ew().getAppId(), j, str, paramInt);
+          ((com.tencent.mm.plugin.luckymoney.appbrand.a)g.ab(com.tencent.mm.plugin.luckymoney.appbrand.a.class)).a(paramActivity, Ey().getAppId(), j, str, paramInt);
           AppMethodBeat.o(174840);
           return true;
-          ad.i("MicroMsg.JsApiSendRedPacket", "launch scope is nil");
+          ae.i("MicroMsg.JsApiSendRedPacket", "launch scope is nil");
         }
       }
     }
@@ -89,10 +89,10 @@ public final class b
     public final void onError(int paramInt, String paramString)
     {
       AppMethodBeat.i(46394);
-      ad.i("MicroMsg.JsApiSendRedPacket", "onError errCode: %d,errMsg: %s", new Object[] { Integer.valueOf(paramInt), paramString });
+      ae.i("MicroMsg.JsApiSendRedPacket", "onError errCode: %d,errMsg: %s", new Object[] { Integer.valueOf(paramInt), paramString });
       HashMap localHashMap = new HashMap();
       localHashMap.put("errCode", Integer.valueOf(paramInt));
-      n(paramString, localHashMap);
+      o(paramString, localHashMap);
       AppMethodBeat.o(46394);
     }
   }

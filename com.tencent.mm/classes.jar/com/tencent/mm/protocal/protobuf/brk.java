@@ -1,98 +1,76 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
 
 public final class brk
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public int GLK;
-  public LinkedList<String> GLL;
-  public String scope;
-  public String yDs;
-  
-  public brk()
-  {
-    AppMethodBeat.i(82449);
-    this.GLL = new LinkedList();
-    AppMethodBeat.o(82449);
-  }
+  public int GMw;
+  public int HeB;
+  public int HeC;
+  public int HeD;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(82450);
+    AppMethodBeat.i(152617);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.scope != null) {
-        paramVarArgs.d(1, this.scope);
-      }
-      paramVarArgs.aS(2, this.GLK);
-      if (this.yDs != null) {
-        paramVarArgs.d(3, this.yDs);
-      }
-      paramVarArgs.e(4, 1, this.GLL);
-      AppMethodBeat.o(82450);
+      paramVarArgs.aS(1, this.GMw);
+      paramVarArgs.aS(2, this.HeB);
+      paramVarArgs.aS(3, this.HeC);
+      paramVarArgs.aS(4, this.HeD);
+      AppMethodBeat.o(152617);
       return 0;
     }
-    if (paramInt == 1) {
-      if (this.scope == null) {
-        break label378;
-      }
-    }
-    label378:
-    for (paramInt = f.a.a.b.b.a.e(1, this.scope) + 0;; paramInt = 0)
+    if (paramInt == 1)
     {
-      int i = paramInt + f.a.a.b.b.a.bz(2, this.GLK);
-      paramInt = i;
-      if (this.yDs != null) {
-        paramInt = i + f.a.a.b.b.a.e(3, this.yDs);
-      }
-      i = f.a.a.a.c(4, 1, this.GLL);
-      AppMethodBeat.o(82450);
-      return paramInt + i;
-      if (paramInt == 2)
-      {
-        paramVarArgs = (byte[])paramVarArgs[0];
-        this.GLL.clear();
-        paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
-          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
-          }
-        }
-        AppMethodBeat.o(82450);
-        return 0;
-      }
-      if (paramInt == 3)
-      {
-        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
-        brk localbrk = (brk)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
-        {
-        default: 
-          AppMethodBeat.o(82450);
-          return -1;
-        case 1: 
-          localbrk.scope = locala.NPN.readString();
-          AppMethodBeat.o(82450);
-          return 0;
-        case 2: 
-          localbrk.GLK = locala.NPN.zc();
-          AppMethodBeat.o(82450);
-          return 0;
-        case 3: 
-          localbrk.yDs = locala.NPN.readString();
-          AppMethodBeat.o(82450);
-          return 0;
-        }
-        localbrk.GLL.add(locala.NPN.readString());
-        AppMethodBeat.o(82450);
-        return 0;
-      }
-      AppMethodBeat.o(82450);
-      return -1;
+      paramInt = f.a.a.b.b.a.bz(1, this.GMw);
+      int i = f.a.a.b.b.a.bz(2, this.HeB);
+      int j = f.a.a.b.b.a.bz(3, this.HeC);
+      int k = f.a.a.b.b.a.bz(4, this.HeD);
+      AppMethodBeat.o(152617);
+      return paramInt + 0 + i + j + k;
     }
+    if (paramInt == 2)
+    {
+      paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.gCg();
+        }
+      }
+      AppMethodBeat.o(152617);
+      return 0;
+    }
+    if (paramInt == 3)
+    {
+      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+      brk localbrk = (brk)paramVarArgs[1];
+      switch (((Integer)paramVarArgs[2]).intValue())
+      {
+      default: 
+        AppMethodBeat.o(152617);
+        return -1;
+      case 1: 
+        localbrk.GMw = locala.OmT.zc();
+        AppMethodBeat.o(152617);
+        return 0;
+      case 2: 
+        localbrk.HeB = locala.OmT.zc();
+        AppMethodBeat.o(152617);
+        return 0;
+      case 3: 
+        localbrk.HeC = locala.OmT.zc();
+        AppMethodBeat.o(152617);
+        return 0;
+      }
+      localbrk.HeD = locala.OmT.zc();
+      AppMethodBeat.o(152617);
+      return 0;
+    }
+    AppMethodBeat.o(152617);
+    return -1;
   }
 }
 

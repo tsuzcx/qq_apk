@@ -3,13 +3,13 @@ package com.tencent.mm.plugin.vlog.player;
 import d.g.a.a;
 import d.l;
 
-@l(gfx={1, 1, 16})
+@l(gjZ={1, 1, 16})
 final class h
   implements Runnable
 {
   h(a parama)
   {
-    this.civ = parama;
+    this.cix = parama;
   }
 }
 

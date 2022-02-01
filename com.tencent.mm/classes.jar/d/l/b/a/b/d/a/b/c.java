@@ -12,8 +12,8 @@ public class c
   extends d.l.b.a.b.b.c.f
   implements b
 {
-  private Boolean NdK;
-  private Boolean NdL;
+  private Boolean NAP;
+  private Boolean NAQ;
   
   static
   {
@@ -31,8 +31,8 @@ public class c
   {
     super(parame, paramc, paramg, paramBoolean, parama, paraman);
     AppMethodBeat.i(57696);
-    this.NdK = null;
-    this.NdL = null;
+    this.NAP = null;
+    this.NAQ = null;
     AppMethodBeat.o(57696);
   }
   
@@ -40,15 +40,15 @@ public class c
   {
     AppMethodBeat.i(57697);
     if (parame == null) {
-      ajm(4);
+      ajW(4);
     }
     if (paramg == null) {
-      ajm(5);
+      ajW(5);
     }
     if (paraman == null) {
-      ajm(6);
+      ajW(6);
     }
-    parame = new c(parame, null, paramg, paramBoolean, b.a.MUj, paraman);
+    parame = new c(parame, null, paramg, paramBoolean, b.a.Nro, paraman);
     AppMethodBeat.o(57697);
     return parame;
   }
@@ -57,18 +57,18 @@ public class c
   {
     AppMethodBeat.i(57702);
     if (paraml == null) {
-      ajm(7);
+      ajW(7);
     }
     if (parama == null) {
-      ajm(8);
+      ajW(8);
     }
     if (paramg == null) {
-      ajm(9);
+      ajW(9);
     }
     if (paraman == null) {
-      ajm(10);
+      ajW(10);
     }
-    if ((parama != b.a.MUj) && (parama != b.a.MUm))
+    if ((parama != b.a.Nro) && (parama != b.a.Nrr))
     {
       paraml = new IllegalStateException("Attempt at creating a constructor that is not a declaration: \ncopy from: " + this + "\nnewOwner: " + paraml + "\nkind: " + parama);
       AppMethodBeat.o(57702);
@@ -83,69 +83,69 @@ public class c
     paraml = (e)paraml;
     paramt = (c)paramt;
     if (paraml == null) {
-      ajm(12);
+      ajW(12);
     }
     if (parama == null) {
-      ajm(13);
+      ajW(13);
     }
     if (paraman == null) {
-      ajm(14);
+      ajW(14);
     }
     if (paramg == null) {
-      ajm(15);
+      ajW(15);
     }
-    paraml = new c(paraml, paramt, paramg, this.kFz, parama, paraman);
-    paraml.zY(gjY());
-    paraml.zZ(git());
+    paraml = new c(paraml, paramt, paramg, this.kIO, parama, paraman);
+    paraml.Al(goA());
+    paraml.Am(gmV());
     AppMethodBeat.o(57702);
     return paraml;
   }
   
-  public final boolean git()
+  public final void Al(boolean paramBoolean)
+  {
+    AppMethodBeat.i(57699);
+    this.NAP = Boolean.valueOf(paramBoolean);
+    AppMethodBeat.o(57699);
+  }
+  
+  public final void Am(boolean paramBoolean)
+  {
+    AppMethodBeat.i(57701);
+    this.NAQ = Boolean.valueOf(paramBoolean);
+    AppMethodBeat.o(57701);
+  }
+  
+  public final boolean gmV()
   {
     AppMethodBeat.i(57700);
-    if ((!$assertionsDisabled) && (this.NdL == null))
+    if ((!$assertionsDisabled) && (this.NAQ == null))
     {
       AssertionError localAssertionError = new AssertionError("hasSynthesizedParameterNames was not set: ".concat(String.valueOf(this)));
       AppMethodBeat.o(57700);
       throw localAssertionError;
     }
-    boolean bool = this.NdL.booleanValue();
+    boolean bool = this.NAQ.booleanValue();
     AppMethodBeat.o(57700);
     return bool;
   }
   
-  public final boolean gjY()
+  public final boolean goA()
   {
     AppMethodBeat.i(57698);
-    if ((!$assertionsDisabled) && (this.NdK == null))
+    if ((!$assertionsDisabled) && (this.NAP == null))
     {
       AssertionError localAssertionError = new AssertionError("hasStableParameterNames was not set: ".concat(String.valueOf(this)));
       AppMethodBeat.o(57698);
       throw localAssertionError;
     }
-    boolean bool = this.NdK.booleanValue();
+    boolean bool = this.NAP.booleanValue();
     AppMethodBeat.o(57698);
     return bool;
-  }
-  
-  public final void zY(boolean paramBoolean)
-  {
-    AppMethodBeat.i(57699);
-    this.NdK = Boolean.valueOf(paramBoolean);
-    AppMethodBeat.o(57699);
-  }
-  
-  public final void zZ(boolean paramBoolean)
-  {
-    AppMethodBeat.i(57701);
-    this.NdL = Boolean.valueOf(paramBoolean);
-    AppMethodBeat.o(57701);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.d.a.b.c
  * JD-Core Version:    0.7.0.1
  */

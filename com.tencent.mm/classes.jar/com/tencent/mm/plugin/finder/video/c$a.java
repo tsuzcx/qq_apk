@@ -5,18 +5,18 @@ import d.g.a.b;
 import d.g.b.q;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"valid", "", "size", "invoke"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"valid", "", "size", "invoke"})
 final class c$a
   extends q
   implements b<Float, Float>
 {
-  public static final a sNm;
+  public static final a sYx;
   
   static
   {
-    AppMethodBeat.i(204609);
-    sNm = new a();
-    AppMethodBeat.o(204609);
+    AppMethodBeat.i(205233);
+    sYx = new a();
+    AppMethodBeat.o(205233);
   }
   
   c$a()
@@ -40,7 +40,7 @@ final class c$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.video.c.a
  * JD-Core Version:    0.7.0.1
  */

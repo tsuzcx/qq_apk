@@ -13,80 +13,80 @@ import android.widget.CheckBox;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.q;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.g.c.ei;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.scanner.model.OfflineScanContext;
 import com.tencent.mm.plugin.scanner.model.OfflineScanContext.a;
-import com.tencent.mm.plugin.scanner.model.n;
+import com.tencent.mm.plugin.scanner.model.o;
 import com.tencent.mm.pluginsdk.e.d;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.bu;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.bv;
 import com.tencent.mm.ui.base.l;
 import com.tencent.mm.ui.chatting.BaseChattingUIFragment;
 
 public final class w
   extends c
 {
-  private com.tencent.mm.ui.chatting.e.a JBI;
-  private com.tencent.mm.plugin.scanner.util.a KcC;
-  private View.OnClickListener qkD;
-  private com.tencent.mm.plugin.scanner.util.c ypc;
+  private com.tencent.mm.ui.chatting.e.a JWz;
+  private com.tencent.mm.plugin.scanner.util.a KyU;
+  private View.OnClickListener qri;
+  private com.tencent.mm.plugin.scanner.util.c yFb;
   
   w()
   {
     AppMethodBeat.i(37039);
-    this.ypc = new com.tencent.mm.plugin.scanner.util.c();
-    this.KcC = new com.tencent.mm.plugin.scanner.util.a();
-    this.qkD = new View.OnClickListener()
+    this.yFb = new com.tencent.mm.plugin.scanner.util.c();
+    this.KyU = new com.tencent.mm.plugin.scanner.util.a();
+    this.qri = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(37037);
         Object localObject = new b();
         ((b)localObject).bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/chatting/viewitems/ChattingItemAppMsgOfflineScan$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahq());
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/chatting/viewitems/ChattingItemAppMsgOfflineScan$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahF());
         paramAnonymousView = (bk)paramAnonymousView.getTag();
         if (paramAnonymousView == null)
         {
-          ad.e("MicroMsg.ChattingItemAppMsgOfflineScan", "alvinluo OfflineScan tag not valid");
+          ae.e("MicroMsg.ChattingItemAppMsgOfflineScan", "alvinluo OfflineScan tag not valid");
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/chatting/viewitems/ChattingItemAppMsgOfflineScan$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(37037);
           return;
         }
-        paramAnonymousView = paramAnonymousView.dBd;
+        paramAnonymousView = paramAnonymousView.dCi;
         if (paramAnonymousView == null)
         {
-          ad.e("MicroMsg.ChattingItemAppMsgOfflineScan", "alvinluo OfflineScan msg not valid");
+          ae.e("MicroMsg.ChattingItemAppMsgOfflineScan", "alvinluo OfflineScan msg not valid");
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/chatting/viewitems/ChattingItemAppMsgOfflineScan$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(37037);
           return;
         }
         paramAnonymousView = paramAnonymousView.field_content;
-        if (bt.isNullOrNil(paramAnonymousView))
+        if (bu.isNullOrNil(paramAnonymousView))
         {
-          ad.e("MicroMsg.ChattingItemAppMsgOfflineScan", "alvinluo OfflineScan content not valid");
+          ae.e("MicroMsg.ChattingItemAppMsgOfflineScan", "alvinluo OfflineScan content not valid");
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/chatting/viewitems/ChattingItemAppMsgOfflineScan$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(37037);
           return;
         }
         localObject = OfflineScanContext.CREATOR;
-        paramAnonymousView = OfflineScanContext.a.awE(paramAnonymousView);
-        ad.i("MicroMsg.ChattingItemAppMsgOfflineScan", "alvinluo OfflineScan onClick codeType: %d, selectFromAlbum: %b", new Object[] { Integer.valueOf(paramAnonymousView.dnt), Boolean.valueOf(paramAnonymousView.ymW) });
-        localObject = n.ymX;
-        localObject = paramAnonymousView.ymV;
+        paramAnonymousView = OfflineScanContext.a.axT(paramAnonymousView);
+        ae.i("MicroMsg.ChattingItemAppMsgOfflineScan", "alvinluo OfflineScan onClick codeType: %d, selectFromAlbum: %b", new Object[] { Integer.valueOf(paramAnonymousView.dov), Boolean.valueOf(paramAnonymousView.yCV) });
+        localObject = o.yCW;
+        localObject = paramAnonymousView.yCU;
         String str = paramAnonymousView.typeName;
-        if (paramAnonymousView.ymW) {}
+        if (paramAnonymousView.yCV) {}
         for (int i = 2;; i = 1)
         {
-          n.d((String)localObject, str, i, paramAnonymousView.networkType, 1);
-          if (g.aiU().aEN() != 0) {
+          o.d((String)localObject, str, i, paramAnonymousView.networkType, 1);
+          if (g.ajj().aFd() != 0) {
             break;
           }
-          com.tencent.mm.ui.base.h.a(w.a(w.this).JOR.getContext(), w.a(w.this).JOR.getContext().getString(2131761792), "", w.a(w.this).JOR.getContext().getString(2131755793), new DialogInterface.OnClickListener()
+          com.tencent.mm.ui.base.h.a(w.a(w.this).Kkd.getContext(), w.a(w.this).Kkd.getContext().getString(2131761792), "", w.a(w.this).Kkd.getContext().getString(2131755793), new DialogInterface.OnClickListener()
           {
             public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
             {
@@ -99,31 +99,31 @@ public final class w
           AppMethodBeat.o(37037);
           return;
         }
-        if (e.d.aLh(paramAnonymousView.typeName))
+        if (e.d.aMD(paramAnonymousView.typeName))
         {
-          if (bt.isNullOrNil(paramAnonymousView.ymV))
+          if (bu.isNullOrNil(paramAnonymousView.yCU))
           {
-            ad.e("MicroMsg.ChattingItemAppMsgOfflineScan", "alvinluo OfflineScan qBar result invalid");
+            ae.e("MicroMsg.ChattingItemAppMsgOfflineScan", "alvinluo OfflineScan qBar result invalid");
             com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/chatting/viewitems/ChattingItemAppMsgOfflineScan$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
             AppMethodBeat.o(37037);
             return;
           }
-          w.b(w.this).a(w.a(w.this).JOR.getContext(), paramAnonymousView.ymV, paramAnonymousView.dnh, paramAnonymousView.typeName, paramAnonymousView.dnt, paramAnonymousView.dnu, null, null, paramAnonymousView.dnx, 3, true, paramAnonymousView.networkType, false);
+          w.b(w.this).a(w.a(w.this).Kkd.getContext(), paramAnonymousView.yCU, paramAnonymousView.doj, paramAnonymousView.typeName, paramAnonymousView.dov, paramAnonymousView.dow, null, null, paramAnonymousView.doz, 3, true, paramAnonymousView.networkType, false);
         }
         for (;;)
         {
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/chatting/viewitems/ChattingItemAppMsgOfflineScan$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(37037);
           return;
-          localObject = paramAnonymousView.ymV;
-          if (bt.isNullOrNil((String)localObject))
+          localObject = paramAnonymousView.yCU;
+          if (bu.isNullOrNil((String)localObject))
           {
-            ad.e("MicroMsg.ChattingItemAppMsgOfflineScan", "alvinluo OfflineScan zBar result invalid");
+            ae.e("MicroMsg.ChattingItemAppMsgOfflineScan", "alvinluo OfflineScan zBar result invalid");
             com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/chatting/viewitems/ChattingItemAppMsgOfflineScan$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
             AppMethodBeat.o(37037);
             return;
           }
-          w.c(w.this).a(w.a(w.this).JOR.getContext(), null, null, (String)localObject, paramAnonymousView.ymW, paramAnonymousView.dnu, paramAnonymousView.typeName, paramAnonymousView.dnx, 3, true, paramAnonymousView.networkType, false);
+          w.c(w.this).a(w.a(w.this).Kkd.getContext(), null, null, (String)localObject, paramAnonymousView.yCV, paramAnonymousView.dow, paramAnonymousView.typeName, paramAnonymousView.doz, 3, true, paramAnonymousView.networkType, false);
         }
       }
     };
@@ -142,86 +142,86 @@ public final class w
     else
     {
       localObject = new ah(paramLayoutInflater, 2131493470);
-      ((View)localObject).setTag(new a().gC((View)localObject));
+      ((View)localObject).setTag(new a().gH((View)localObject));
     }
     AppMethodBeat.o(37040);
     return localObject;
   }
   
-  public final void a(c.a parama, int paramInt, com.tencent.mm.ui.chatting.e.a parama1, bu parambu, String paramString)
+  public final void a(c.a parama, int paramInt, com.tencent.mm.ui.chatting.e.a parama1, bv parambv, String paramString)
   {
     AppMethodBeat.i(37041);
-    this.JBI = parama1;
+    this.JWz = parama1;
     parama = (a)parama;
-    paramString = parambu.field_content;
-    if (bt.isNullOrNil(paramString))
+    paramString = parambv.field_content;
+    if (bu.isNullOrNil(paramString))
     {
       AppMethodBeat.o(37041);
       return;
     }
     Object localObject = OfflineScanContext.CREATOR;
-    localObject = OfflineScanContext.a.awE(paramString);
-    ad.d("MicroMsg.ChattingItemAppMsgOfflineScan", "alvinluo filling OfflineScan context %s", new Object[] { ((OfflineScanContext)localObject).toString() });
-    paramString = parama.KcF;
+    localObject = OfflineScanContext.a.axT(paramString);
+    ae.d("MicroMsg.ChattingItemAppMsgOfflineScan", "alvinluo filling OfflineScan context %s", new Object[] { ((OfflineScanContext)localObject).toString() });
+    paramString = parama.KyX;
     long l = ((OfflineScanContext)localObject).timestamp;
     localObject = new Time();
     ((Time)localObject).set(l);
     localObject = com.tencent.mm.pluginsdk.i.h.a("yyyy-MM-dd kk:mm", (Time)localObject).toString();
-    paramString.setText(String.format(aj.getContext().getString(2131761794), new Object[] { localObject }));
-    parambu = new bk(parambu, parama1.fFv(), paramInt, null, '\000');
-    parama.ofK.setTag(parambu);
-    parama.ofK.setOnLongClickListener(c(parama1));
-    parama.ofK.setOnClickListener(this.qkD);
-    parama.KcG.setTag(parambu);
-    parama.KcG.setOnClickListener(this.qkD);
+    paramString.setText(String.format(ak.getContext().getString(2131761794), new Object[] { localObject }));
+    parambv = new bk(parambv, parama1.fJC(), paramInt, null, '\000');
+    parama.olI.setTag(parambv);
+    parama.olI.setOnLongClickListener(c(parama1));
+    parama.olI.setOnClickListener(this.qri);
+    parama.KyY.setTag(parambv);
+    parama.KyY.setOnClickListener(this.qri);
     AppMethodBeat.o(37041);
   }
   
-  public final boolean a(MenuItem paramMenuItem, com.tencent.mm.ui.chatting.e.a parama, bu parambu)
+  public final boolean a(MenuItem paramMenuItem, com.tencent.mm.ui.chatting.e.a parama, bv parambv)
   {
     return false;
   }
   
-  public final boolean a(l paraml, View paramView, bu parambu)
+  public final boolean a(l paraml, View paramView, bv parambv)
   {
-    AppMethodBeat.i(194385);
-    parambu = (bk)paramView.getTag();
-    if (parambu == null)
+    AppMethodBeat.i(187780);
+    parambv = (bk)paramView.getTag();
+    if (parambv == null)
     {
-      AppMethodBeat.o(194385);
+      AppMethodBeat.o(187780);
       return false;
     }
-    paraml.a(parambu.position, 100, paramView.getContext().getString(2131757221), 2131690384);
-    AppMethodBeat.o(194385);
+    paraml.a(parambv.position, 100, paramView.getContext().getString(2131757221), 2131690384);
+    AppMethodBeat.o(187780);
     return true;
   }
   
-  public final boolean b(View paramView, com.tencent.mm.ui.chatting.e.a parama, bu parambu)
+  public final boolean b(View paramView, com.tencent.mm.ui.chatting.e.a parama, bv parambv)
   {
     return false;
   }
   
-  public final boolean bi(int paramInt, boolean paramBoolean)
+  public final boolean br(int paramInt, boolean paramBoolean)
   {
     return (!paramBoolean) && (paramInt == 721420337);
   }
   
-  protected final boolean fHg()
+  final boolean fLA()
   {
     return false;
   }
   
-  public final boolean fHh()
+  protected final boolean fLC()
   {
     return false;
   }
   
-  final boolean fHi()
+  protected final boolean fLy()
   {
     return false;
   }
   
-  protected final boolean fHk()
+  public final boolean fLz()
   {
     return false;
   }
@@ -229,19 +229,19 @@ public final class w
   final class a
     extends c.a
   {
-    TextView KcF;
-    RelativeLayout KcG;
+    TextView KyX;
+    RelativeLayout KyY;
     
     a() {}
     
-    final a gC(View paramView)
+    final a gH(View paramView)
     {
       AppMethodBeat.i(37038);
-      super.gn(paramView);
-      this.iCK = ((CheckBox)paramView.findViewById(2131298068));
-      this.ofK = paramView.findViewById(2131298069);
-      this.KcF = ((TextView)paramView.findViewById(2131302994));
-      this.KcG = ((RelativeLayout)paramView.findViewById(2131302993));
+      super.gs(paramView);
+      this.iFD = ((CheckBox)paramView.findViewById(2131298068));
+      this.olI = paramView.findViewById(2131298069);
+      this.KyX = ((TextView)paramView.findViewById(2131302994));
+      this.KyY = ((RelativeLayout)paramView.findViewById(2131302993));
       AppMethodBeat.o(37038);
       return this;
     }
@@ -249,7 +249,7 @@ public final class w
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.viewitems.w
  * JD-Core Version:    0.7.0.1
  */

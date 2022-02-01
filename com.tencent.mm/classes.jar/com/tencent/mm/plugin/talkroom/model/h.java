@@ -3,46 +3,46 @@ package com.tencent.mm.plugin.talkroom.model;
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.g.c.aw;
-import com.tencent.mm.model.ba;
+import com.tencent.mm.model.bc;
 import com.tencent.mm.model.c;
-import com.tencent.mm.model.v;
 import com.tencent.mm.model.w;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.am;
-import com.tencent.mm.storage.bp;
+import com.tencent.mm.model.x;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.an;
+import com.tencent.mm.storage.bq;
 
 public final class h
 {
-  private static final int BmX = a.BmX;
+  private static final int BEw = a.BEw;
   
-  public static String bj(Context paramContext, String paramString)
+  public static String bl(Context paramContext, String paramString)
   {
     AppMethodBeat.i(29528);
-    if (bt.isNullOrNil(paramString))
+    if (bu.isNullOrNil(paramString))
     {
       AppMethodBeat.o(29528);
       return null;
     }
-    ba.aBQ();
-    am localam = c.azp().Bf(paramString);
-    if (localam == null)
+    bc.aCg();
+    an localan = c.azF().BH(paramString);
+    if (localan == null)
     {
       AppMethodBeat.o(29528);
       return null;
     }
-    if (w.vF(paramString))
+    if (x.wb(paramString))
     {
-      if (bt.isNullOrNil(localam.field_nickname))
+      if (bu.isNullOrNil(localan.field_nickname))
       {
         paramContext = paramContext.getString(2131764368);
         AppMethodBeat.o(29528);
         return paramContext;
       }
-      paramContext = localam.adu();
+      paramContext = localan.adF();
       AppMethodBeat.o(29528);
       return paramContext;
     }
-    paramContext = v.zf(paramString);
+    paramContext = w.zP(paramString);
     AppMethodBeat.o(29528);
     return paramContext;
   }

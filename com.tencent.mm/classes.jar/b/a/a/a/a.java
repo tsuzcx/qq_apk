@@ -16,22 +16,22 @@ import java.io.PrintStream;
 public final class a
   implements k.c
 {
-  private m.c MAB;
+  private m.c MXI;
   
   public a(m.c paramc)
   {
-    this.MAB = paramc;
+    this.MXI = paramc;
   }
   
-  private float cQo()
+  private float cST()
   {
     AppMethodBeat.i(160027);
-    float f2 = this.MAB.JQ().getWindow().getAttributes().screenBrightness;
+    float f2 = this.MXI.JY().getWindow().getAttributes().screenBrightness;
     f1 = f2;
     if (f2 < 0.0F) {}
     try
     {
-      int i = Settings.System.getInt(this.MAB.JR().getContentResolver(), "screen_brightness");
+      int i = Settings.System.getInt(this.MXI.JZ().getContentResolver(), "screen_brightness");
       f1 = i / 255.0F;
     }
     catch (Settings.SettingNotFoundException localSettingNotFoundException)
@@ -59,7 +59,7 @@ public final class a
       switch (i)
       {
       default: 
-        paramd.djR();
+        paramd.dmQ();
         AppMethodBeat.o(160026);
         return;
         if (str.equals("brightness"))
@@ -83,36 +83,36 @@ public final class a
         break;
       }
     }
-    paramd.de(Float.valueOf(cQo()));
+    paramd.df(Float.valueOf(cST()));
     AppMethodBeat.o(160026);
     return;
-    double d = ((Double)paramj.wd("brightness")).doubleValue();
-    paramj = this.MAB.JQ().getWindow().getAttributes();
+    double d = ((Double)paramj.wM("brightness")).doubleValue();
+    paramj = this.MXI.JY().getWindow().getAttributes();
     paramj.screenBrightness = ((float)d);
-    this.MAB.JQ().getWindow().setAttributes(paramj);
-    paramd.de(null);
+    this.MXI.JY().getWindow().setAttributes(paramj);
+    paramd.df(null);
     AppMethodBeat.o(160026);
     return;
-    if ((this.MAB.JQ().getWindow().getAttributes().flags & 0x80) != 0) {}
+    if ((this.MXI.JY().getWindow().getAttributes().flags & 0x80) != 0) {}
     for (;;)
     {
-      paramd.de(Boolean.valueOf(bool));
+      paramd.df(Boolean.valueOf(bool));
       AppMethodBeat.o(160026);
       return;
       bool = false;
     }
-    if (((Boolean)paramj.wd("on")).booleanValue())
+    if (((Boolean)paramj.wM("on")).booleanValue())
     {
       System.out.println("Keeping screen on ");
-      this.MAB.JQ().getWindow().addFlags(128);
+      this.MXI.JY().getWindow().addFlags(128);
     }
     for (;;)
     {
-      paramd.de(null);
+      paramd.df(null);
       AppMethodBeat.o(160026);
       return;
       System.out.println("Not keeping screen on");
-      this.MAB.JQ().getWindow().clearFlags(128);
+      this.MXI.JY().getWindow().clearFlags(128);
     }
   }
 }

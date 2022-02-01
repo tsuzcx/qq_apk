@@ -2,87 +2,78 @@ package com.tencent.mm.plugin.music.cache;
 
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ag;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ah;
 import com.tencent.qqmusic.mediaplayer.util.Logger;
 import java.util.ArrayList;
 import java.util.Map;
 
 public final class g
 {
-  private static ag<String, Integer> wjA;
-  private static ag<String, Long> wjB;
-  private static ag<String, String> wjC;
-  private static String wjD;
-  private static int wjE;
-  private static ag<String, String> wjx;
-  private static ag<String, Boolean> wjy;
-  private static ag<String, Integer> wjz;
+  private static ah<String, String> wzc;
+  private static ah<String, Boolean> wzd;
+  private static ah<String, Integer> wze;
+  private static ah<String, Integer> wzf;
+  private static ah<String, Long> wzg;
+  private static ah<String, String> wzh;
+  private static String wzi;
+  private static int wzj;
   
   static
   {
     AppMethodBeat.i(137194);
-    wjx = new ag(20);
-    wjy = new ag(20);
-    wjz = new ag(20);
-    wjA = new ag(20);
-    wjB = new ag(20);
-    wjC = new ag(20);
-    wjD = null;
-    wjE = 0;
+    wzc = new ah(20);
+    wzd = new ah(20);
+    wze = new ah(20);
+    wzf = new ah(20);
+    wzg = new ah(20);
+    wzh = new ah(20);
+    wzi = null;
+    wzj = 0;
     AppMethodBeat.o(137194);
   }
   
-  public static void B(String paramString, Map<String, String> paramMap)
+  public static void C(String paramString, Map<String, String> paramMap)
   {
     AppMethodBeat.i(137182);
     if (paramMap != null) {
-      asp(paramString);
+      atD(paramString);
     }
     AppMethodBeat.o(137182);
   }
   
-  public static void aZ(String paramString, long paramLong)
-  {
-    AppMethodBeat.i(137187);
-    if (paramLong > 0L) {
-      wjB.put(paramString, Long.valueOf(paramLong));
-    }
-    AppMethodBeat.o(137187);
-  }
-  
-  public static void asn(String paramString)
+  public static void atB(String paramString)
   {
     AppMethodBeat.i(137176);
-    if (!TextUtils.isEmpty(aso(paramString)))
+    if (!TextUtils.isEmpty(atC(paramString)))
     {
       AppMethodBeat.o(137176);
       return;
     }
-    if (e.dsB()) {}
-    for (String str = ((c)com.tencent.mm.plugin.music.f.c.b.aQ(c.class)).asi(paramString);; str = "")
+    if (e.dvQ()) {}
+    for (String str = ((c)com.tencent.mm.plugin.music.f.c.b.aQ(c.class)).atw(paramString);; str = "")
     {
       if (!TextUtils.isEmpty(str))
       {
         ArrayList localArrayList = new ArrayList(1);
         localArrayList.add(str);
-        new f(localArrayList).dst();
+        new f(localArrayList).dvI();
         if ((!TextUtils.isEmpty(paramString)) && (!TextUtils.isEmpty(str))) {
-          wjx.put(paramString, str);
+          wzc.put(paramString, str);
         }
       }
       AppMethodBeat.o(137176);
       return;
-      ad.e("MicroMsg.Music.MusicDataStorageImpl", "IMusicDataStorage service not exist");
+      ae.e("MicroMsg.Music.MusicDataStorageImpl", "IMusicDataStorage service not exist");
     }
   }
   
-  public static String aso(String paramString)
+  public static String atC(String paramString)
   {
     AppMethodBeat.i(137179);
-    if (wjx.aM(paramString))
+    if (wzc.aM(paramString))
     {
-      paramString = (String)wjx.get(paramString);
+      paramString = (String)wzc.get(paramString);
       AppMethodBeat.o(137179);
       return paramString;
     }
@@ -90,12 +81,12 @@ public final class g
     return "";
   }
   
-  public static boolean asp(String paramString)
+  public static boolean atD(String paramString)
   {
     AppMethodBeat.i(137181);
-    if (wjy.aM(paramString))
+    if (wzd.aM(paramString))
     {
-      boolean bool = ((Boolean)wjy.get(paramString)).booleanValue();
+      boolean bool = ((Boolean)wzd.get(paramString)).booleanValue();
       AppMethodBeat.o(137181);
       return bool;
     }
@@ -103,33 +94,33 @@ public final class g
     return false;
   }
   
-  public static String asq(String paramString)
+  public static String atE(String paramString)
   {
     AppMethodBeat.i(137184);
-    paramString = aso(paramString);
+    paramString = atC(paramString);
     if (TextUtils.isEmpty(paramString))
     {
-      ad.e("MicroMsg.Music.PieceCacheHelper", "getMusicMIMEType musicId is empty!");
+      ae.e("MicroMsg.Music.PieceCacheHelper", "getMusicMIMEType musicId is empty!");
       AppMethodBeat.o(137184);
       return null;
     }
-    if (e.dsB())
+    if (e.dvQ())
     {
-      paramString = ((c)com.tencent.mm.plugin.music.f.c.b.aQ(c.class)).ask(paramString);
+      paramString = ((c)com.tencent.mm.plugin.music.f.c.b.aQ(c.class)).aty(paramString);
       AppMethodBeat.o(137184);
       return paramString;
     }
-    ad.e("MicroMsg.Music.MusicDataStorageImpl", "IMusicDataStorage service not exist");
+    ae.e("MicroMsg.Music.MusicDataStorageImpl", "IMusicDataStorage service not exist");
     AppMethodBeat.o(137184);
     return null;
   }
   
-  public static String asr(String paramString)
+  public static String atF(String paramString)
   {
     AppMethodBeat.i(137185);
-    if (wjC.aM(paramString))
+    if (wzh.aM(paramString))
     {
-      paramString = (String)wjC.get(paramString);
+      paramString = (String)wzh.get(paramString);
       AppMethodBeat.o(137185);
       return paramString;
     }
@@ -137,12 +128,12 @@ public final class g
     return null;
   }
   
-  public static long ass(String paramString)
+  public static long atG(String paramString)
   {
     AppMethodBeat.i(137186);
-    if (wjB.aM(paramString))
+    if (wzg.aM(paramString))
     {
-      long l = ((Long)wjB.get(paramString)).longValue();
+      long l = ((Long)wzg.get(paramString)).longValue();
       AppMethodBeat.o(137186);
       return l;
     }
@@ -150,20 +141,20 @@ public final class g
     return -1L;
   }
   
-  public static void ast(String paramString)
+  public static void atH(String paramString)
   {
     AppMethodBeat.i(137189);
     Logger.i("MicroMsg.Music.PieceFileCache", "deleteFileByUrl");
-    h.ast(com.tencent.mm.plugin.music.h.b.asQ(paramString));
+    h.atH(com.tencent.mm.plugin.music.h.b.aud(paramString));
     AppMethodBeat.o(137189);
   }
   
-  public static int asu(String paramString)
+  public static int atI(String paramString)
   {
     AppMethodBeat.i(137191);
-    if ((paramString != null) && (wjz.aM(paramString)))
+    if ((paramString != null) && (wze.aM(paramString)))
     {
-      int i = ((Integer)wjz.get(paramString)).intValue();
+      int i = ((Integer)wze.get(paramString)).intValue();
       AppMethodBeat.o(137191);
       return i;
     }
@@ -171,12 +162,12 @@ public final class g
     return 0;
   }
   
-  public static int asv(String paramString)
+  public static int atJ(String paramString)
   {
     AppMethodBeat.i(137193);
-    if ((paramString != null) && (wjA.aM(paramString)))
+    if ((paramString != null) && (wzf.aM(paramString)))
     {
-      int i = ((Integer)wjA.get(paramString)).intValue();
+      int i = ((Integer)wzf.get(paramString)).intValue();
       AppMethodBeat.o(137193);
       return i;
     }
@@ -184,114 +175,123 @@ public final class g
     return 0;
   }
   
-  public static void by(String paramString, boolean paramBoolean)
+  public static void bC(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(137180);
     if (!TextUtils.isEmpty(paramString)) {
-      wjy.put(paramString, Boolean.valueOf(paramBoolean));
+      wzd.put(paramString, Boolean.valueOf(paramBoolean));
     }
     AppMethodBeat.o(137180);
   }
   
-  public static int dsv()
+  public static void ba(String paramString, long paramLong)
+  {
+    AppMethodBeat.i(137187);
+    if (paramLong > 0L) {
+      wzg.put(paramString, Long.valueOf(paramLong));
+    }
+    AppMethodBeat.o(137187);
+  }
+  
+  public static int dvK()
   {
     AppMethodBeat.i(137178);
-    if (wjE != 0)
+    if (wzj != 0)
     {
-      i = wjE;
+      i = wzj;
       AppMethodBeat.o(137178);
       return i;
     }
-    if (e.dsB()) {}
-    for (int i = ((c)com.tencent.mm.plugin.music.f.c.b.aQ(c.class)).dsv();; i = 3)
+    if (e.dvQ()) {}
+    for (int i = ((c)com.tencent.mm.plugin.music.f.c.b.aQ(c.class)).dvK();; i = 3)
     {
-      wjE = i;
-      ad.i("MicroMsg.Music.PieceCacheHelper", "sRemovePlayingAudioPlayerGroupCount:%d", new Object[] { Integer.valueOf(wjE) });
-      if (wjE == 0) {
-        wjE = 3;
+      wzj = i;
+      ae.i("MicroMsg.Music.PieceCacheHelper", "sRemovePlayingAudioPlayerGroupCount:%d", new Object[] { Integer.valueOf(wzj) });
+      if (wzj == 0) {
+        wzj = 3;
       }
-      i = wjE;
+      i = wzj;
       AppMethodBeat.o(137178);
       return i;
-      ad.e("MicroMsg.Music.MusicDataStorageImpl", "IMusicDataStorage service not exist");
+      ae.e("MicroMsg.Music.MusicDataStorageImpl", "IMusicDataStorage service not exist");
     }
   }
   
-  public static void ew(String paramString, int paramInt)
+  public static void eE(String paramString, int paramInt)
   {
     AppMethodBeat.i(137190);
     if (paramString != null) {
-      wjz.put(paramString, Integer.valueOf(paramInt));
+      wze.put(paramString, Integer.valueOf(paramInt));
     }
     AppMethodBeat.o(137190);
   }
   
-  public static void ex(String paramString, int paramInt)
+  public static void eF(String paramString, int paramInt)
   {
     AppMethodBeat.i(137192);
     if (paramString != null) {
-      wjA.put(paramString, Integer.valueOf(paramInt));
+      wzf.put(paramString, Integer.valueOf(paramInt));
     }
     AppMethodBeat.o(137192);
+  }
+  
+  public static long gE(String paramString)
+  {
+    AppMethodBeat.i(137188);
+    long l = h.gE(paramString);
+    AppMethodBeat.o(137188);
+    return l;
   }
   
   public static String getAccPath()
   {
     AppMethodBeat.i(137177);
-    if (wjD != null)
+    if (wzi != null)
     {
-      str = wjD;
+      str = wzi;
       AppMethodBeat.o(137177);
       return str;
     }
     String str = e.getAccPath();
     if (TextUtils.isEmpty(str))
     {
-      ad.i("MicroMsg.Music.PieceCacheHelper", "retAccPath:%s is invalid", new Object[] { str });
-      str = com.tencent.mm.loader.j.b.arU();
+      ae.i("MicroMsg.Music.PieceCacheHelper", "retAccPath:%s is invalid", new Object[] { str });
+      str = com.tencent.mm.loader.j.b.asj();
       AppMethodBeat.o(137177);
       return str;
     }
-    ad.i("MicroMsg.Music.PieceCacheHelper", "getAccPath retAccPath:%s", new Object[] { str });
-    wjD = str;
+    ae.i("MicroMsg.Music.PieceCacheHelper", "getAccPath retAccPath:%s", new Object[] { str });
+    wzi = str;
     AppMethodBeat.o(137177);
     return str;
   }
   
-  public static long gy(String paramString)
-  {
-    AppMethodBeat.i(137188);
-    long l = h.gy(paramString);
-    AppMethodBeat.o(137188);
-    return l;
-  }
-  
-  public static void ih(String paramString1, String paramString2)
+  public static void in(String paramString1, String paramString2)
   {
     AppMethodBeat.i(137183);
-    String str = aso(paramString1);
+    String str = atC(paramString1);
     if (TextUtils.isEmpty(str))
     {
-      ad.e("MicroMsg.Music.PieceCacheHelper", "setMusicMIMEType musicId is empty!");
+      ae.e("MicroMsg.Music.PieceCacheHelper", "setMusicMIMEType musicId is empty!");
       AppMethodBeat.o(137183);
       return;
     }
-    if (!TextUtils.isEmpty(asr(paramString1)))
+    if (!TextUtils.isEmpty(atF(paramString1)))
     {
       AppMethodBeat.o(137183);
       return;
     }
-    ad.i("MicroMsg.Music.PieceCacheHelper", "setMusicMIMEType url:%s mimeType:%s", new Object[] { paramString1, paramString2 });
+    ae.i("MicroMsg.Music.PieceCacheHelper", "setMusicMIMEType url:%s mimeType:%s", new Object[] { paramString1, paramString2 });
     if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2))) {
-      wjC.put(paramString1, paramString2);
+      wzh.put(paramString1, paramString2);
     }
-    if (e.dsB())
+    if (e.dvQ())
     {
-      ((c)com.tencent.mm.plugin.music.f.c.b.aQ(c.class)).jdMethod_if(str, paramString2);
+      ((c)com.tencent.mm.plugin.music.f.c.b.aQ(c.class)).il(str, paramString2);
       AppMethodBeat.o(137183);
       return;
     }
-    ad.e("MicroMsg.Music.MusicDataStorageImpl", "IMusicDataStorage service not exist");
+    ae.e("MicroMsg.Music.MusicDataStorageImpl", "IMusicDataStorage service not exist");
     AppMethodBeat.o(137183);
   }
 }

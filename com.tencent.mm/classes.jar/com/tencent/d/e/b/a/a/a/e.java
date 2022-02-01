@@ -17,7 +17,7 @@ public final class e
     int i = 0;
     AppMethodBeat.i(138444);
     String str = paramContext.getPackageName();
-    paramContext = b.cw(paramContext, str);
+    paramContext = b.cx(paramContext, str);
     if (paramContext != null)
     {
       int j = paramContext.length;

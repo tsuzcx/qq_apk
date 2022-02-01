@@ -12,13 +12,13 @@ public class AppBrandInitConfig
 {
   public static final Parcelable.Creator<AppBrandInitConfig> CREATOR;
   public String appId;
-  public int dPf;
-  public String doD;
+  public String cpm;
+  public int dQv;
+  public String dpI;
   public String iconUrl;
-  public String jCN;
-  public String jVL;
-  public String jXq;
-  public boolean jXr;
+  public String jFL;
+  public String kaF;
+  public boolean kaG;
   public int originalFlag;
   
   static
@@ -38,40 +38,40 @@ public class AppBrandInitConfig
   {
     AppMethodBeat.i(134787);
     this.appId = paramParcel.readString();
-    this.doD = paramParcel.readString();
+    this.dpI = paramParcel.readString();
     this.iconUrl = paramParcel.readString();
-    this.dPf = paramParcel.readInt();
-    this.jCN = paramParcel.readString();
-    this.jVL = paramParcel.readString();
+    this.dQv = paramParcel.readInt();
+    this.jFL = paramParcel.readString();
+    this.cpm = paramParcel.readString();
     if (paramParcel.readByte() != 0) {}
     for (boolean bool = true;; bool = false)
     {
-      this.jXr = bool;
+      this.kaG = bool;
       this.originalFlag = paramParcel.readInt();
-      this.jXq = paramParcel.readString();
+      this.kaF = paramParcel.readString();
       AppMethodBeat.o(134787);
       return;
     }
   }
   
-  public JSONObject Ef()
+  public JSONObject Ei()
   {
     AppMethodBeat.i(134785);
     AppMethodBeat.o(134785);
     return null;
   }
   
-  public AppBrandInitConfig Eh()
+  public AppBrandInitConfig Ek()
   {
     AppMethodBeat.i(134783);
-    Parcel localParcel = bdU();
-    AppBrandInitConfig localAppBrandInitConfig = (AppBrandInitConfig)a.bF(getClass()).aj(new Object[] { localParcel }).object;
+    Parcel localParcel = beA();
+    AppBrandInitConfig localAppBrandInitConfig = (AppBrandInitConfig)a.bF(getClass()).ai(new Object[] { localParcel }).object;
     localParcel.recycle();
     AppMethodBeat.o(134783);
     return localAppBrandInitConfig;
   }
   
-  public Parcel bdU()
+  public Parcel beA()
   {
     AppMethodBeat.i(134784);
     Parcel localParcel = Parcel.obtain();
@@ -82,9 +82,9 @@ public class AppBrandInitConfig
     return localParcel;
   }
   
-  public final int bdV()
+  public final int beB()
   {
-    return this.dPf;
+    return this.dQv;
   }
   
   public int describeContents()
@@ -96,17 +96,17 @@ public class AppBrandInitConfig
   {
     AppMethodBeat.i(134788);
     paramParcel.writeString(this.appId);
-    paramParcel.writeString(this.doD);
+    paramParcel.writeString(this.dpI);
     paramParcel.writeString(this.iconUrl);
-    paramParcel.writeInt(this.dPf);
-    paramParcel.writeString(this.jCN);
-    paramParcel.writeString(this.jVL);
-    if (this.jXr) {}
+    paramParcel.writeInt(this.dQv);
+    paramParcel.writeString(this.jFL);
+    paramParcel.writeString(this.cpm);
+    if (this.kaG) {}
     for (paramInt = 1;; paramInt = 0)
     {
       paramParcel.writeByte((byte)paramInt);
       paramParcel.writeInt(this.originalFlag);
-      paramParcel.writeString(this.jXq);
+      paramParcel.writeString(this.kaF);
       AppMethodBeat.o(134788);
       return;
     }

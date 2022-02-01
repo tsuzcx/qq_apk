@@ -5,7 +5,7 @@ import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
 import com.tencent.mm.plugin.appbrand.d;
 import com.tencent.mm.plugin.appbrand.jsapi.a;
 import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.plugin.appbrand.page.u;
+import com.tencent.mm.plugin.appbrand.page.t;
 
 public final class ai
   extends a<d>
@@ -13,7 +13,7 @@ public final class ai
   public static final int CTRL_INDEX = 150;
   public static final String NAME = "switchTab";
   
-  public final boolean bib()
+  public final boolean biK()
   {
     return true;
   }

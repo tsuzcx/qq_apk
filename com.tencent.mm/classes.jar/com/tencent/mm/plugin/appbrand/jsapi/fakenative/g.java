@@ -1,28 +1,26 @@
 package com.tencent.mm.plugin.appbrand.jsapi.fakenative;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.d;
+import com.tencent.mm.plugin.appbrand.jsapi.miniprogram_navigator.c.b;
+import com.tencent.mm.plugin.appbrand.jsapi.miniprogram_navigator.l;
+import com.tencent.mm.plugin.appbrand.launching.params.LaunchParcel;
 
-public enum g
+public final class g
+  extends l
 {
-  int errCode;
-  String errMsg;
+  public static final g kPE;
   
   static
   {
-    AppMethodBeat.i(46297);
-    kMi = new g("OK", 0, 0, "ok");
-    kMj = new g("SYSTEM_ERROR", 1, -1, "fail system error");
-    kMk = new g("CGI_ERROR", 2, -2, "fail CGI error");
-    kMl = new g("CANCEL", 3, -3, "fail cancel");
-    kMm = new g("INVALID_BUSINESS_TYPE", 4, -4, "fail invalid businessType");
-    kMn = new g[] { kMi, kMj, kMk, kMl, kMm };
-    AppMethodBeat.o(46297);
+    AppMethodBeat.i(46298);
+    kPE = new g();
+    AppMethodBeat.o(46298);
   }
   
-  private g(int paramInt, String paramString)
+  public final boolean a(d paramd, LaunchParcel paramLaunchParcel, c.b paramb)
   {
-    this.errCode = paramInt;
-    this.errMsg = paramString;
+    return false;
   }
 }
 

@@ -1,129 +1,129 @@
 package com.tencent.mm.plugin.appbrand.widget.input.d;
 
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public abstract class f
 {
-  public String cyI;
+  public String czp;
   public String fontFamily;
-  public String jTE = null;
-  public String niV;
-  public Integer niW;
-  public Integer niX;
-  public Integer niY;
-  public Integer niZ;
-  public Integer nja;
-  public Integer njb;
-  public Integer njc = null;
-  public Integer njd = null;
-  public Float nje = null;
-  public Integer njf;
-  public String njg;
-  public String njh;
-  public Integer nji;
-  public Integer njj;
-  public Boolean njk = Boolean.FALSE;
-  public Boolean njl = Boolean.FALSE;
-  public Boolean njm = Boolean.FALSE;
-  public Boolean njn = Boolean.FALSE;
-  public Boolean njo = null;
-  public Boolean njp = null;
-  public Integer njq = null;
-  public b njr = null;
-  public Boolean njs = null;
-  public Boolean njt = null;
-  public Integer nju = null;
-  public Integer njv = null;
+  public String jWV = null;
+  public Boolean noA = null;
+  public Boolean noB = null;
+  public Integer noC = null;
+  public Integer noD = null;
+  public String nod;
+  public Integer noe;
+  public Integer nof;
+  public Integer nog;
+  public Integer noh;
+  public Integer noi;
+  public Integer noj;
+  public Integer nok = null;
+  public Integer nol = null;
+  public Float nom = null;
+  public Integer non;
+  public String noo;
+  public String nop;
+  public Integer noq;
+  public Integer nor;
+  public Boolean nos = Boolean.FALSE;
+  public Boolean not = Boolean.FALSE;
+  public Boolean nou = Boolean.FALSE;
+  public Boolean nov = Boolean.FALSE;
+  public Boolean now = null;
+  public Boolean nox = null;
+  public Integer noy = null;
+  public b noz = null;
   
   public final void a(f paramf)
   {
-    this.niV = paramf.niV;
-    if (paramf.niW != null) {
-      this.niW = paramf.niW;
+    this.nod = paramf.nod;
+    if (paramf.noe != null) {
+      this.noe = paramf.noe;
     }
-    if (paramf.niX != null) {
-      this.niX = paramf.niX;
+    if (paramf.nof != null) {
+      this.nof = paramf.nof;
     }
-    if (paramf.niY != null) {
-      this.niY = paramf.niY;
+    if (paramf.nog != null) {
+      this.nog = paramf.nog;
     }
-    if (paramf.niZ != null) {
-      this.niZ = paramf.niZ;
+    if (paramf.noh != null) {
+      this.noh = paramf.noh;
     }
-    if (paramf.nja != null) {
-      this.nja = paramf.nja;
+    if (paramf.noi != null) {
+      this.noi = paramf.noi;
     }
-    if (paramf.njb != null) {
-      this.njb = paramf.njb;
+    if (paramf.noj != null) {
+      this.noj = paramf.noj;
     }
-    if (paramf.njc != null) {
-      this.njc = paramf.njc;
+    if (paramf.nok != null) {
+      this.nok = paramf.nok;
     }
-    if (paramf.njd != null) {
-      this.njd = paramf.njd;
+    if (paramf.nol != null) {
+      this.nol = paramf.nol;
     }
-    if (paramf.nje != null) {
-      this.nje = paramf.nje;
+    if (paramf.nom != null) {
+      this.nom = paramf.nom;
     }
-    if (!bt.isNullOrNil(paramf.fontFamily)) {
+    if (!bu.isNullOrNil(paramf.fontFamily)) {
       this.fontFamily = paramf.fontFamily;
     }
-    if (!bt.isNullOrNil(paramf.cyI)) {
-      this.cyI = paramf.cyI;
+    if (!bu.isNullOrNil(paramf.czp)) {
+      this.czp = paramf.czp;
     }
-    if (paramf.njf != null) {
-      this.njf = paramf.njf;
+    if (paramf.non != null) {
+      this.non = paramf.non;
     }
-    if (paramf.njg != null) {
-      this.njg = paramf.njg;
+    if (paramf.noo != null) {
+      this.noo = paramf.noo;
     }
-    if (!bt.isNullOrNil(paramf.njh)) {
-      this.njh = paramf.njh;
+    if (!bu.isNullOrNil(paramf.nop)) {
+      this.nop = paramf.nop;
     }
-    if (paramf.nji != null) {
-      this.nji = paramf.nji;
+    if (paramf.noq != null) {
+      this.noq = paramf.noq;
     }
-    if (paramf.njj != null) {
-      this.njj = paramf.njj;
+    if (paramf.nor != null) {
+      this.nor = paramf.nor;
     }
-    if (paramf.njk != null) {
-      this.njk = paramf.njk;
+    if (paramf.nos != null) {
+      this.nos = paramf.nos;
     }
-    if (paramf.njl != null) {
-      this.njl = paramf.njl;
+    if (paramf.not != null) {
+      this.not = paramf.not;
     }
-    if (paramf.njm != null) {
-      this.njm = paramf.njm;
+    if (paramf.nou != null) {
+      this.nou = paramf.nou;
     }
-    if (paramf.njn != null) {
-      this.njn = paramf.njn;
+    if (paramf.nov != null) {
+      this.nov = paramf.nov;
     }
-    if (paramf.njo != null) {
-      this.njo = paramf.njo;
+    if (paramf.now != null) {
+      this.now = paramf.now;
     }
-    if (!bt.isNullOrNil(paramf.jTE)) {
-      this.jTE = paramf.jTE;
+    if (!bu.isNullOrNil(paramf.jWV)) {
+      this.jWV = paramf.jWV;
     }
-    if (paramf.njp != null) {
-      this.njp = paramf.njp;
+    if (paramf.nox != null) {
+      this.nox = paramf.nox;
     }
-    if (paramf.njq != null) {
-      this.njq = paramf.njq;
+    if (paramf.noy != null) {
+      this.noy = paramf.noy;
     }
-    if (paramf.njr != null) {
-      this.njr = paramf.njr;
+    if (paramf.noz != null) {
+      this.noz = paramf.noz;
     }
-    if (paramf.njs != null) {
-      this.njs = paramf.njs;
+    if (paramf.noA != null) {
+      this.noA = paramf.noA;
     }
-    if (paramf.njt != null) {
-      this.njt = paramf.njt;
+    if (paramf.noB != null) {
+      this.noB = paramf.noB;
     }
-    if (paramf.nju != null) {
-      this.nju = paramf.nju;
+    if (paramf.noC != null) {
+      this.noC = paramf.noC;
     }
-    if (paramf.njv != null) {
-      this.njv = paramf.njv;
+    if (paramf.noD != null) {
+      this.noD = paramf.noD;
     }
   }
 }

@@ -1,22 +1,22 @@
 package com.tencent.mm.plugin.wallet.pay.a.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.q;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public final class b
 {
-  private static long CIx = 0L;
+  private static long Dad = 0L;
   
-  public static void aA(String paramString, int paramInt1, int paramInt2)
+  public static void aB(String paramString, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(69280);
     long l = System.currentTimeMillis();
-    if (l - CIx > 1000L)
+    if (l - Dad > 1000L)
     {
-      CIx = l;
-      if (bt.isNullOrNil(paramString)) {
+      Dad = l;
+      if (bu.isNullOrNil(paramString)) {
         break label269;
       }
       if (!paramString.startsWith("sns_aa_")) {
@@ -29,9 +29,9 @@ public final class b
     {
       if (paramString != null)
       {
-        ad.v("NetSceneCancelPayHelper", "start cancelPay request");
-        com.tencent.mm.kernel.g.ajD();
-        com.tencent.mm.kernel.g.ajB().gAO.a(paramString, 0);
+        ae.v("NetSceneCancelPayHelper", "start cancelPay request");
+        com.tencent.mm.kernel.g.ajS();
+        com.tencent.mm.kernel.g.ajQ().gDv.a(paramString, 0);
       }
       AppMethodBeat.o(69280);
       return;
@@ -60,7 +60,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.pay.a.b.b
  * JD-Core Version:    0.7.0.1
  */

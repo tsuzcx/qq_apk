@@ -8,16 +8,16 @@ import android.view.MenuItem;
 import android.webkit.ValueCallback;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.lw;
-import com.tencent.mm.g.a.lw.a;
+import com.tencent.mm.g.a.lx;
+import com.tencent.mm.g.a.lx.a;
 import com.tencent.mm.miniutil.MiniReaderLogic;
 import com.tencent.mm.miniutil.MiniReaderLogic.a;
 import com.tencent.mm.platformtools.p;
 import com.tencent.mm.platformtools.p.a;
 import com.tencent.mm.plugin.ball.f.d;
 import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.l;
 import com.tencent.mm.ui.base.n.d;
@@ -28,53 +28,53 @@ import com.tencent.xweb.util.g;
 public class ChooseMsgFileShowUI
   extends MMActivity
 {
-  private String fVf;
+  private String fXl;
   private String fileName;
   private String filePath;
-  private MiniReaderLogic.a<Integer> kNd;
-  private boolean kpG;
-  private boolean kpH;
-  private ValueCallback<String> kpJ;
-  private ValueCallback<Integer> kpK;
-  private int oTx;
-  private a oTy;
-  private c<lw> oTz;
+  private MiniReaderLogic.a<Integer> kQA;
+  private boolean ksV;
+  private boolean ksW;
+  private ValueCallback<String> ksY;
+  private ValueCallback<Integer> ksZ;
+  private int oZZ;
+  private a paa;
+  private c<lx> pab;
   private String token;
   
   public ChooseMsgFileShowUI()
   {
     AppMethodBeat.i(123410);
     this.filePath = "";
-    this.fVf = "";
+    this.fXl = "";
     this.fileName = "";
     this.token = Integer.toString(hashCode());
-    this.kpG = true;
-    this.kpH = false;
-    this.oTz = new c()
+    this.ksV = true;
+    this.ksW = false;
+    this.pab = new c()
     {
-      private boolean a(lw paramAnonymouslw)
+      private boolean a(lx paramAnonymouslx)
       {
         AppMethodBeat.i(123403);
-        if ((paramAnonymouslw != null) && (paramAnonymouslw.dzj != null) && (ChooseMsgFileShowUI.a(ChooseMsgFileShowUI.this) != null)) {
-          if (!bt.lQ(paramAnonymouslw.dzj.filePath, ChooseMsgFileShowUI.b(ChooseMsgFileShowUI.this))) {
-            ad.e("MicroMsg.ChooseMsgFileShowUI", "MiniQbFloatBallMenuActionEvent event.data.filePath:%s filePath:%s", new Object[] { paramAnonymouslw.dzj.filePath, ChooseMsgFileShowUI.b(ChooseMsgFileShowUI.this) });
+        if ((paramAnonymouslx != null) && (paramAnonymouslx.dAo != null) && (ChooseMsgFileShowUI.a(ChooseMsgFileShowUI.this) != null)) {
+          if (!bu.lX(paramAnonymouslx.dAo.filePath, ChooseMsgFileShowUI.b(ChooseMsgFileShowUI.this))) {
+            ae.e("MicroMsg.ChooseMsgFileShowUI", "MiniQbFloatBallMenuActionEvent event.data.filePath:%s filePath:%s", new Object[] { paramAnonymouslx.dAo.filePath, ChooseMsgFileShowUI.b(ChooseMsgFileShowUI.this) });
           }
         }
         for (;;)
         {
           AppMethodBeat.o(123403);
           return false;
-          ad.i("MicroMsg.ChooseMsgFileShowUI", "MiniQbFloatBallMenuActionEvent event.data.action:%s", new Object[] { Integer.valueOf(paramAnonymouslw.dzj.action) });
-          switch (paramAnonymouslw.dzj.action)
+          ae.i("MicroMsg.ChooseMsgFileShowUI", "MiniQbFloatBallMenuActionEvent event.data.action:%s", new Object[] { Integer.valueOf(paramAnonymouslx.dAo.action) });
+          switch (paramAnonymouslx.dAo.action)
           {
           case 3: 
           default: 
             break;
           case 1: 
-            ChooseMsgFileShowUI.a(ChooseMsgFileShowUI.this).gf(true);
+            ChooseMsgFileShowUI.a(ChooseMsgFileShowUI.this).o(true, 2);
             break;
           case 2: 
-            ChooseMsgFileShowUI.a(ChooseMsgFileShowUI.this).gf(false);
+            ChooseMsgFileShowUI.a(ChooseMsgFileShowUI.this).o(false, 2);
             if (ChooseMsgFileShowUI.c(ChooseMsgFileShowUI.this))
             {
               MiniReaderLogic.a(ChooseMsgFileShowUI.this, ChooseMsgFileShowUI.b(ChooseMsgFileShowUI.this), ChooseMsgFileShowUI.d(ChooseMsgFileShowUI.this), ChooseMsgFileShowUI.e(ChooseMsgFileShowUI.this), ChooseMsgFileShowUI.f(ChooseMsgFileShowUI.this), ChooseMsgFileShowUI.g(ChooseMsgFileShowUI.this), ChooseMsgFileShowUI.h(ChooseMsgFileShowUI.this), true, "");
@@ -82,7 +82,7 @@ public class ChooseMsgFileShowUI
             else
             {
               ChooseMsgFileShowUI.a(ChooseMsgFileShowUI.this, false);
-              com.tencent.mm.cq.a.V(ChooseMsgFileShowUI.this, ChooseMsgFileShowUI.f(ChooseMsgFileShowUI.this), ChooseMsgFileShowUI.b(ChooseMsgFileShowUI.this));
+              com.tencent.mm.cp.a.V(ChooseMsgFileShowUI.this, ChooseMsgFileShowUI.f(ChooseMsgFileShowUI.this), ChooseMsgFileShowUI.b(ChooseMsgFileShowUI.this));
               MiniReaderLogic.a(false, false, ChooseMsgFileShowUI.this, ChooseMsgFileShowUI.b(ChooseMsgFileShowUI.this), ChooseMsgFileShowUI.d(ChooseMsgFileShowUI.this), ChooseMsgFileShowUI.e(ChooseMsgFileShowUI.this), ChooseMsgFileShowUI.f(ChooseMsgFileShowUI.this), ChooseMsgFileShowUI.g(ChooseMsgFileShowUI.this), ChooseMsgFileShowUI.b(ChooseMsgFileShowUI.this, false));
             }
             break;
@@ -91,44 +91,44 @@ public class ChooseMsgFileShowUI
             {
               public final void bF(String paramAnonymous2String1, String paramAnonymous2String2)
               {
-                AppMethodBeat.i(213684);
-                Toast.makeText(ChooseMsgFileShowUI.this, ChooseMsgFileShowUI.this.getString(2131764447, new Object[] { com.tencent.mm.sdk.f.b.aRB(paramAnonymous2String2) }), 1).show();
-                AppMethodBeat.o(213684);
+                AppMethodBeat.i(209734);
+                Toast.makeText(ChooseMsgFileShowUI.this, ChooseMsgFileShowUI.this.getString(2131764447, new Object[] { com.tencent.mm.sdk.f.b.aSY(paramAnonymous2String2) }), 1).show();
+                AppMethodBeat.o(209734);
               }
               
               public final void bG(String paramAnonymous2String1, String paramAnonymous2String2)
               {
-                AppMethodBeat.i(213685);
+                AppMethodBeat.i(209735);
                 Toast.makeText(ChooseMsgFileShowUI.this, ChooseMsgFileShowUI.this.getString(2131764446), 1).show();
-                AppMethodBeat.o(213685);
+                AppMethodBeat.o(209735);
               }
             });
             continue;
-            ad.e("MicroMsg.ChooseMsgFileShowUI", "MiniQbFloatBallMenuActionEvent fail");
+            ae.e("MicroMsg.ChooseMsgFileShowUI", "MiniQbFloatBallMenuActionEvent fail");
           }
         }
       }
     };
-    this.kpK = new ValueCallback() {};
-    this.kNd = null;
-    this.kpJ = new ValueCallback() {};
+    this.ksZ = new ValueCallback() {};
+    this.kQA = null;
+    this.ksY = new ValueCallback() {};
     AppMethodBeat.o(123410);
   }
   
-  private MiniReaderLogic.a<Integer> jE(boolean paramBoolean)
+  private MiniReaderLogic.a<Integer> jD(boolean paramBoolean)
   {
     AppMethodBeat.i(123411);
-    if ((!paramBoolean) && (this.kNd != null))
+    if ((!paramBoolean) && (this.kQA != null))
     {
-      locala = this.kNd;
+      locala = this.kQA;
       AppMethodBeat.o(123411);
       return locala;
     }
-    if (this.kNd != null) {
-      this.kNd.hEh = true;
+    if (this.kQA != null) {
+      this.kQA.hGZ = true;
     }
-    this.kNd = new MiniReaderLogic.a() {};
-    MiniReaderLogic.a locala = this.kNd;
+    this.kQA = new MiniReaderLogic.a() {};
+    MiniReaderLogic.a locala = this.kQA;
     AppMethodBeat.o(123411);
     return locala;
   }
@@ -140,8 +140,8 @@ public class ChooseMsgFileShowUI
     localIntent.putExtra("key_filepath", paramString1);
     localIntent.putExtra("key_fileext", paramString2);
     paramString1 = new com.tencent.mm.hellhoundlib.b.a().bc(localIntent);
-    com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramString1.ahp(), "com/tencent/mm/plugin/choosemsgfile/ui/ChooseMsgFileShowUI", "showFile", "(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    paramContext.startActivity((Intent)paramString1.mq(0));
+    com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramString1.ahE(), "com/tencent/mm/plugin/choosemsgfile/ui/ChooseMsgFileShowUI", "showFile", "(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramContext.startActivity((Intent)paramString1.mt(0));
     com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/plugin/choosemsgfile/ui/ChooseMsgFileShowUI", "showFile", "(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     AppMethodBeat.o(123416);
   }
@@ -156,8 +156,8 @@ public class ChooseMsgFileShowUI
     AppMethodBeat.i(123412);
     super.onCreate(paramBundle);
     this.filePath = getIntent().getStringExtra("key_filepath");
-    this.fVf = getIntent().getStringExtra("key_fileext");
-    this.oTx = getIntent().getIntExtra("sence", 0);
+    this.fXl = getIntent().getStringExtra("key_fileext");
+    this.oZZ = getIntent().getIntExtra("sence", 0);
     try
     {
       int j = this.filePath.lastIndexOf('/') + 1;
@@ -174,43 +174,43 @@ public class ChooseMsgFileShowUI
         a locala;
         String str;
         Integer localInteger;
-        ad.e("MicroMsg.ChooseMsgFileShowUI", "get file name error " + paramBundle.getMessage());
+        ae.e("MicroMsg.ChooseMsgFileShowUI", "get file name error " + paramBundle.getMessage());
         this.fileName = "";
         continue;
         int i = 0;
       }
     }
     this.fileName = this.filePath.substring(i, this.filePath.length());
-    this.oTy = new a(new b(getContext()));
-    this.oTy.J(this.filePath, this.fVf, this.oTx);
-    locala = this.oTy;
-    paramBundle = this.fVf;
+    this.paa = new a(new b(getContext()));
+    this.paa.J(this.filePath, this.fXl, this.oZZ);
+    locala = this.paa;
+    paramBundle = this.fXl;
     str = this.fileName;
-    localInteger = d.Wr(paramBundle);
+    localInteger = d.Xd(paramBundle);
     paramBundle = localInteger;
     if (localInteger == null) {
-      paramBundle = d.Wr("unknown");
+      paramBundle = d.Xd("unknown");
     }
-    locala.nGj.lZt = paramBundle.intValue();
-    locala.nGj.name = str;
-    locala.bKC();
-    if (this.oTz != null) {
-      this.oTz.alive();
+    locala.nLK.mdM = paramBundle.intValue();
+    locala.nLK.name = str;
+    locala.bLz();
+    if (this.pab != null) {
+      this.pab.alive();
     }
-    MiniReaderLogic.a(this.oTy.bKz(), this, this.filePath, this.fileName, this.fVf, this.token, this.kpJ, jE(true), true, "");
+    MiniReaderLogic.a(this.paa.bLw(), this, this.filePath, this.fileName, this.fXl, this.token, this.ksY, jD(true), true, "");
     AppMethodBeat.o(123412);
   }
   
   public void onDestroy()
   {
     AppMethodBeat.i(123415);
-    com.tencent.mm.cq.a.V(this, this.token, this.filePath);
+    com.tencent.mm.cp.a.V(this, this.token, this.filePath);
     super.onDestroy();
-    if (this.oTz != null) {
-      this.oTz.dead();
+    if (this.pab != null) {
+      this.pab.dead();
     }
-    if (this.oTy != null) {
-      this.oTy.onDestroy();
+    if (this.paa != null) {
+      this.paa.onDestroy();
     }
     AppMethodBeat.o(123415);
   }
@@ -219,8 +219,8 @@ public class ChooseMsgFileShowUI
   {
     AppMethodBeat.i(123414);
     super.onPause();
-    if (this.oTy != null) {
-      this.oTy.bgC();
+    if (this.paa != null) {
+      this.paa.bhk();
     }
     AppMethodBeat.o(123414);
   }
@@ -229,8 +229,8 @@ public class ChooseMsgFileShowUI
   {
     AppMethodBeat.i(123413);
     super.onResume();
-    if (this.oTy != null) {
-      this.oTy.bgB();
+    if (this.paa != null) {
+      this.paa.bhj();
     }
     AppMethodBeat.o(123413);
   }
@@ -243,7 +243,7 @@ public class ChooseMsgFileShowUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.choosemsgfile.ui.ChooseMsgFileShowUI
  * JD-Core Version:    0.7.0.1
  */

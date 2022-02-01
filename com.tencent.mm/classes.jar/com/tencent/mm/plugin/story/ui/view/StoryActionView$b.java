@@ -8,7 +8,7 @@ import d.g.b.p;
 import d.l;
 import d.v;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate"})
 final class StoryActionView$b
   implements ValueAnimator.AnimatorUpdateListener
 {
@@ -17,7 +17,7 @@ final class StoryActionView$b
   public final void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
     AppMethodBeat.i(120067);
-    TextView localTextView = this.gZf;
+    TextView localTextView = this.hbS;
     p.g(paramValueAnimator, "it");
     paramValueAnimator = paramValueAnimator.getAnimatedValue();
     if (paramValueAnimator == null)

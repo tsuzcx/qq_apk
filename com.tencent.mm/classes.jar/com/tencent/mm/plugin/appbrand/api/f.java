@@ -10,22 +10,24 @@ import com.tencent.mm.plugin.appbrand.config.AppBrandLaunchReferrer;
 public final class f
 {
   public String appId;
-  public String dkh;
-  public int hQh;
-  public String jCN;
-  public d jCO;
-  public PersistableBundle jCP;
-  public int jCQ;
-  public String jCR;
-  public ValueCallback<String> jCS;
-  public int jCT;
-  public ActivityOptions jCU;
-  public String jCV;
-  public AppBrandLaunchReferrer jCW;
-  public String jCX;
-  public String jCY;
-  public AppBrandLaunchFromNotifyReferrer jCZ;
-  public WeAppOpenDeclarePromptBundle jDa;
+  public String cmv;
+  public String cmw;
+  public String dlj;
+  public int hSZ;
+  public String jFL;
+  public d jFM;
+  public PersistableBundle jFN;
+  public int jFO;
+  public String jFP;
+  public ValueCallback<String> jFQ;
+  public int jFR;
+  public ActivityOptions jFS;
+  public String jFT;
+  public AppBrandLaunchReferrer jFU;
+  public String jFV;
+  public String jFW;
+  public AppBrandLaunchFromNotifyReferrer jFX;
+  public WeAppOpenDeclarePromptBundle jFY;
   public int launchMode;
   public int scene;
   public String username;
@@ -35,19 +37,19 @@ public final class f
   {
     AppMethodBeat.i(153192);
     this.launchMode = 0;
-    this.hQh = 0;
+    this.hSZ = 0;
     this.version = 0;
-    this.jCN = "";
-    this.jCO = null;
-    if (this.jCP != null) {
-      this.jCP.clear();
+    this.jFL = "";
+    this.jFM = null;
+    if (this.jFN != null) {
+      this.jFN.clear();
     }
-    this.jCP = null;
+    this.jFN = null;
     this.scene = 1000;
-    this.jCT = -100;
-    this.jCU = null;
-    this.jCW = null;
-    this.jDa = null;
+    this.jFR = -100;
+    this.jFS = null;
+    this.jFU = null;
+    this.jFY = null;
     AppMethodBeat.o(153192);
   }
 }

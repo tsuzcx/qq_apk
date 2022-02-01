@@ -1,12 +1,12 @@
 package com.tencent.mm.plugin.webview.fts;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.az.h;
+import com.tencent.mm.ay.h;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.sns.b.n;
 import com.tencent.mm.protocal.protobuf.TimeLineObject;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.ArrayList;
 import java.util.List;
 import org.json.JSONArray;
@@ -14,7 +14,7 @@ import org.json.JSONArray;
 public final class c$a
   implements Runnable
 {
-  public boolean DKf;
+  public boolean Ecd;
   public String data;
   
   private c$a(c paramc) {}
@@ -29,32 +29,32 @@ public final class c$a
       int i = 0;
       while (i < localJSONArray.length())
       {
-        Object localObject = ((n)g.ab(n.class)).Gx(localJSONArray.getString(i));
-        g.ajD();
-        localObject = h.a(g.ajC().gBm, (TimeLineObject)localObject, 9);
+        Object localObject = ((n)g.ab(n.class)).GZ(localJSONArray.getString(i));
+        g.ajS();
+        localObject = h.a(g.ajR().gDT, (TimeLineObject)localObject, 9);
         if (localObject != null) {
           localArrayList.add(localObject);
         }
         i += 1;
       }
-      if (!this.DKf) {
+      if (!this.Ecd) {
         break label131;
       }
     }
     catch (Exception localException)
     {
-      ad.printErrStackTrace("MicroMsg.WebSearch.FTSWebViewLogic", localException, "", new Object[0]);
+      ae.printErrStackTrace("MicroMsg.WebSearch.FTSWebViewLogic", localException, "", new Object[0]);
       AppMethodBeat.o(77890);
       return;
     }
-    if (this.DKa.DJW == null)
+    if (this.EbY.EbU == null)
     {
       label131:
-      this.DKa.DJW = localException;
+      this.EbY.EbU = localException;
       AppMethodBeat.o(77890);
       return;
     }
-    this.DKa.DJW.addAll(localException);
+    this.EbY.EbU.addAll(localException);
     AppMethodBeat.o(77890);
   }
 }

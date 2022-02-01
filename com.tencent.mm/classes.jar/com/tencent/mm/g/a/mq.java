@@ -1,12 +1,15 @@
 package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.protocal.protobuf.buk;
 import com.tencent.mm.sdk.b.b;
+import java.util.LinkedList;
 
 public final class mq
   extends b
 {
-  public a dAz;
+  public a dBC;
+  public b dBD;
   
   public mq()
   {
@@ -15,19 +18,24 @@ public final class mq
   
   private mq(byte paramByte)
   {
-    AppMethodBeat.i(149875);
-    this.dAz = new a();
-    this.IbR = false;
+    AppMethodBeat.i(138164);
+    this.dBC = new a();
+    this.dBD = new b();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(149875);
+    AppMethodBeat.o(138164);
   }
   
   public static final class a
   {
-    public b dAA;
-    public int errCode = 0;
-    public String errMsg;
-    public int errType = 0;
+    public boolean dBb = false;
+    public String dzw;
+  }
+  
+  public static final class b
+  {
+    public int dAb = 0;
+    public LinkedList<buk> dBp;
   }
 }
 

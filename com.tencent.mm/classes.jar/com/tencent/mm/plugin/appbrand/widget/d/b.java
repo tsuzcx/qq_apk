@@ -10,15 +10,15 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class b
   extends LinearLayout
 {
-  public static final int njG;
-  public static final int njH;
-  private TextView gnM;
+  public static final int noO;
+  public static final int noP;
+  private TextView gqi;
   
   static
   {
     AppMethodBeat.i(146580);
-    njG = Color.parseColor("#000000");
-    njH = Color.parseColor("#000000");
+    noO = Color.parseColor("#000000");
+    noP = Color.parseColor("#000000");
     AppMethodBeat.o(146580);
   }
   
@@ -29,13 +29,13 @@ public final class b
     setLayoutParams(new ViewGroup.LayoutParams(-2, -2));
     setOrientation(1);
     setGravity(17);
-    this.gnM = new TextView(paramContext);
-    this.gnM.setLayoutParams(new ViewGroup.LayoutParams(-2, -2));
-    addView(this.gnM);
+    this.gqi = new TextView(paramContext);
+    this.gqi.setLayoutParams(new ViewGroup.LayoutParams(-2, -2));
+    addView(this.gqi);
     AppMethodBeat.o(146572);
   }
   
-  private void wD(int paramInt)
+  private void wI(int paramInt)
   {
     AppMethodBeat.i(146579);
     setPadding(paramInt, paramInt, paramInt, paramInt);
@@ -45,7 +45,7 @@ public final class b
   public final void A(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     AppMethodBeat.i(146578);
-    wD(paramInt2);
+    wI(paramInt2);
     a locala = new a();
     locala.borderRadius = paramInt1;
     locala.setColor(paramInt4);
@@ -59,46 +59,46 @@ public final class b
     AppMethodBeat.i(146577);
     if (paramString.equals("left"))
     {
-      this.gnM.setGravity(3);
+      this.gqi.setGravity(3);
       AppMethodBeat.o(146577);
       return;
     }
     if (paramString.equals("right"))
     {
-      this.gnM.setGravity(5);
+      this.gqi.setGravity(5);
       AppMethodBeat.o(146577);
       return;
     }
     paramString.equals("center");
-    this.gnM.setGravity(17);
+    this.gqi.setGravity(17);
     AppMethodBeat.o(146577);
   }
   
   public final void setText(String paramString)
   {
     AppMethodBeat.i(146573);
-    this.gnM.setText(paramString);
+    this.gqi.setText(paramString);
     AppMethodBeat.o(146573);
   }
   
   public final void setTextColor(int paramInt)
   {
     AppMethodBeat.i(146575);
-    this.gnM.setTextColor(paramInt);
+    this.gqi.setTextColor(paramInt);
     AppMethodBeat.o(146575);
   }
   
   public final void setTextSize(int paramInt)
   {
     AppMethodBeat.i(146574);
-    this.gnM.setTextSize(paramInt);
+    this.gqi.setTextSize(paramInt);
     AppMethodBeat.o(146574);
   }
   
   public final void setTitlePadding(int paramInt)
   {
     AppMethodBeat.i(146576);
-    this.gnM.setPadding(paramInt, paramInt, paramInt, paramInt);
+    this.gqi.setPadding(paramInt, paramInt, paramInt, paramInt);
     AppMethodBeat.o(146576);
   }
 }

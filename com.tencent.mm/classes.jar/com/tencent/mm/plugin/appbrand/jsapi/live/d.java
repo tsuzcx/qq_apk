@@ -4,14 +4,16 @@ import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.appstorage.l;
-import com.tencent.mm.plugin.appbrand.appstorage.p;
+import com.tencent.mm.loader.j.b;
+import com.tencent.mm.plugin.appbrand.appstorage.q;
 import com.tencent.mm.plugin.appbrand.jsapi.coverview.CoverViewContainer;
-import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.plugin.appbrand.utils.b.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.sdk.platformtools.g;
+import com.tencent.mm.plugin.appbrand.jsapi.e;
+import com.tencent.mm.plugin.appbrand.utils.c;
+import com.tencent.mm.plugin.appbrand.utils.c.a;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.h;
+import com.tencent.mm.vfs.k;
 import com.tencent.rtmp.TXLivePusher.ITXSnapshotListener;
 import java.io.IOException;
 import java.util.HashMap;
@@ -33,26 +35,26 @@ public final class d
     return i;
   }
   
-  public final boolean b(final com.tencent.mm.plugin.appbrand.jsapi.e parame, int paramInt, View paramView, JSONObject paramJSONObject, final com.tencent.mm.plugin.appbrand.jsapi.base.i parami)
+  public final boolean b(final e parame, int paramInt, View paramView, JSONObject paramJSONObject, final com.tencent.mm.plugin.appbrand.jsapi.base.i parami)
   {
     AppMethodBeat.i(145890);
-    ad.i("MicroMsg.JsApiOperateLivePusher", "onOperateView : livePusherId=%d", new Object[] { Integer.valueOf(paramInt) });
+    ae.i("MicroMsg.JsApiOperateLivePusher", "onOperateView : livePusherId=%d", new Object[] { Integer.valueOf(paramInt) });
     if (!(paramView instanceof CoverViewContainer))
     {
-      ad.w("MicroMsg.JsApiOperateLivePusher", "the view(%s) is not a instance of CoverViewContainer", new Object[] { Integer.valueOf(paramInt) });
+      ae.w("MicroMsg.JsApiOperateLivePusher", "the view(%s) is not a instance of CoverViewContainer", new Object[] { Integer.valueOf(paramInt) });
       AppMethodBeat.o(145890);
       return false;
     }
     Object localObject = (View)((CoverViewContainer)paramView).ax(View.class);
     if (!(localObject instanceof AppBrandLivePusherView))
     {
-      ad.e("MicroMsg.JsApiOperateLivePusher", "targetView not AppBrandLivePusherView");
+      ae.e("MicroMsg.JsApiOperateLivePusher", "targetView not AppBrandLivePusherView");
       AppMethodBeat.o(145890);
       return false;
     }
     localObject = (AppBrandLivePusherView)localObject;
     final String str = paramJSONObject.optString("type");
-    ad.i("MicroMsg.JsApiOperateLivePusher", "onOperateView operateType=%s", new Object[] { str });
+    ae.i("MicroMsg.JsApiOperateLivePusher", "onOperateView operateType=%s", new Object[] { str });
     if (str.equalsIgnoreCase("snapshot"))
     {
       ((AppBrandLivePusherView)localObject).setSnapshotListener(new TXLivePusher.ITXSnapshotListener()
@@ -62,49 +64,49 @@ public final class d
           AppMethodBeat.i(145888);
           if ((paramAnonymousBitmap == null) || (paramAnonymousBitmap.isRecycled()))
           {
-            ad.e("MicroMsg.JsApiOperateLivePusher", "onSnapshot: bitmap nil");
-            parami.Pr(d.this.e("fail:snapshot error", null));
+            ae.e("MicroMsg.JsApiOperateLivePusher", "onSnapshot: bitmap nil");
+            parami.PZ(d.this.e("fail:snapshot error", null));
             AppMethodBeat.o(145888);
             return;
           }
-          String str = com.tencent.mm.loader.j.b.asg() + String.format("%s%d.%s", new Object[] { "capture", Long.valueOf(System.currentTimeMillis()), "jpg" });
+          String str = b.asv() + String.format("%s%d.%s", new Object[] { "capture", Long.valueOf(System.currentTimeMillis()), "jpg" });
           int i = paramAnonymousBitmap.getWidth();
           int j = paramAnonymousBitmap.getHeight();
-          com.tencent.mm.plugin.appbrand.z.i locali;
+          com.tencent.mm.plugin.appbrand.y.i locali;
           try
           {
-            g.a(paramAnonymousBitmap, 90, Bitmap.CompressFormat.JPEG, str, true);
-            locali = new com.tencent.mm.plugin.appbrand.z.i();
-            if (parame.Fg().a(new com.tencent.mm.vfs.e(str), "jpg", true, locali) != l.jMv)
+            h.a(paramAnonymousBitmap, 90, Bitmap.CompressFormat.JPEG, str, true);
+            locali = new com.tencent.mm.plugin.appbrand.y.i();
+            if (parame.Fl().a(new k(str), "jpg", true, locali) != com.tencent.mm.plugin.appbrand.appstorage.m.jPM)
             {
-              parami.Pr(d.this.e("fail:snapshot error", null));
+              parami.PZ(d.this.e("fail:snapshot error", null));
               AppMethodBeat.o(145888);
               return;
             }
           }
           catch (IOException paramAnonymousBitmap)
           {
-            ad.e("MicroMsg.JsApiOperateLivePusher", "onSnapshot: exception %s", new Object[] { paramAnonymousBitmap.getMessage() });
-            parami.Pr(d.this.e("fail:snapshot error", null));
+            ae.e("MicroMsg.JsApiOperateLivePusher", "onSnapshot: exception %s", new Object[] { paramAnonymousBitmap.getMessage() });
+            parami.PZ(d.this.e("fail:snapshot error", null));
             AppMethodBeat.o(145888);
             return;
           }
           if ((paramAnonymousBitmap != null) && (!paramAnonymousBitmap.isRecycled()))
           {
-            ad.i("MicroMsg.JsApiOperateLivePusher", "bitmap recycle " + paramAnonymousBitmap.toString());
+            ae.i("MicroMsg.JsApiOperateLivePusher", "bitmap recycle " + paramAnonymousBitmap.toString());
             paramAnonymousBitmap.recycle();
           }
-          ad.i("MicroMsg.JsApiOperateLivePusher", "onSnapshot: actualPath:%s path:%s", new Object[] { str, locali.value });
+          ae.i("MicroMsg.JsApiOperateLivePusher", "onSnapshot: actualPath:%s path:%s", new Object[] { str, locali.value });
           paramAnonymousBitmap = new HashMap();
           paramAnonymousBitmap.put("tempImagePath", locali.value);
           paramAnonymousBitmap.put("width", Integer.valueOf(i));
           paramAnonymousBitmap.put("height", Integer.valueOf(j));
-          parami.Pr(d.this.m("ok", paramAnonymousBitmap));
+          parami.PZ(d.this.n("ok", paramAnonymousBitmap));
           AppMethodBeat.o(145888);
         }
       });
       if (!((AppBrandLivePusherView)localObject).g("snapshot", paramJSONObject)) {
-        parami.Pr(e("fail:snapshot error", null));
+        parami.PZ(e("fail:snapshot error", null));
       }
     }
     for (;;)
@@ -115,31 +117,31 @@ public final class d
       if (str.equalsIgnoreCase("playBGM"))
       {
         str = paramJSONObject.optString("url");
-        if (bt.isNullOrNil(str))
+        if (bu.isNullOrNil(str))
         {
-          ad.w("MicroMsg.JsApiOperateLivePusher", "operatePlayBgm, url is nil");
-          parami.Pr(e("fail:url is nil", null));
+          ae.w("MicroMsg.JsApiOperateLivePusher", "operatePlayBgm, url is nil");
+          parami.PZ(e("fail:url is nil", null));
         }
         else
         {
-          com.tencent.mm.plugin.appbrand.utils.b.a(parame, str, null, new b.a()
+          c.a(parame, str, null, new c.a()
           {
-            public final void MK(String paramAnonymousString)
+            public final void Nr(String paramAnonymousString)
             {
               AppMethodBeat.i(145887);
-              if (!bt.isNullOrNil(paramAnonymousString))
+              if (!bu.isNullOrNil(paramAnonymousString))
               {
-                ad.i("MicroMsg.JsApiOperateLivePusher", "operatePlayBgm, local file path:%s", new Object[] { paramAnonymousString });
+                ae.i("MicroMsg.JsApiOperateLivePusher", "operatePlayBgm, local file path:%s", new Object[] { paramAnonymousString });
                 JSONObject localJSONObject = new JSONObject();
                 try
                 {
                   localJSONObject.put("BGMFilePath", paramAnonymousString);
-                  if (!this.kPg.g("playBGM", localJSONObject))
+                  if (!this.kSO.g("playBGM", localJSONObject))
                   {
-                    ad.e("MicroMsg.JsApiOperateLivePusher", "operatePlayBgm, play bgm fail, url:%s", new Object[] { str });
+                    ae.e("MicroMsg.JsApiOperateLivePusher", "operatePlayBgm, play bgm fail, url:%s", new Object[] { str });
                     paramAnonymousString = new HashMap();
                     paramAnonymousString.put("url", str);
-                    this.kPg.a(10003, "download file fail", paramAnonymousString);
+                    this.kSO.a(10003, "download file fail", paramAnonymousString);
                   }
                   AppMethodBeat.o(145887);
                   return;
@@ -148,32 +150,32 @@ public final class d
                 {
                   for (;;)
                   {
-                    ad.e("MicroMsg.JsApiOperateLivePusher", "operatePlayBgm, set param fail", new Object[] { paramAnonymousString });
+                    ae.e("MicroMsg.JsApiOperateLivePusher", "operatePlayBgm, set param fail", new Object[] { paramAnonymousString });
                   }
                 }
               }
-              ad.e("MicroMsg.JsApiOperateLivePusher", "operatePlayBgm, download file fail, url:%s", new Object[] { str });
+              ae.e("MicroMsg.JsApiOperateLivePusher", "operatePlayBgm, download file fail, url:%s", new Object[] { str });
               paramAnonymousString = new HashMap();
               paramAnonymousString.put("url", str);
-              this.kPg.a(10003, "download file fail", paramAnonymousString);
+              this.kSO.a(10003, "download file fail", paramAnonymousString);
               AppMethodBeat.o(145887);
             }
           });
-          parami.Pr(e("ok", null));
+          parami.PZ(e("ok", null));
         }
       }
       else if (((AppBrandLivePusherView)localObject).g(str, paramJSONObject))
       {
-        parami.Pr(e("ok", null));
+        parami.PZ(e("ok", null));
       }
       else
       {
-        parami.Pr(e("fail", null));
+        parami.PZ(e("fail", null));
       }
     }
   }
   
-  public final boolean biW()
+  public final boolean bjF()
   {
     return true;
   }

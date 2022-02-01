@@ -18,26 +18,26 @@ import java.util.List;
 public class b
   implements g
 {
-  private final f NzT;
+  private final f NXa;
   
   static
   {
     AppMethodBeat.i(60390);
-    cwV = new k[] { (k)z.a(new x(z.bp(b.class), "annotations", "getAnnotations()Ljava/util/List;")) };
+    cxA = new k[] { (k)z.a(new x(z.bp(b.class), "annotations", "getAnnotations()Ljava/util/List;")) };
     AppMethodBeat.o(60390);
   }
   
   public b(j paramj, a<? extends List<? extends c>> parama)
   {
     AppMethodBeat.i(60394);
-    this.NzT = paramj.S(parama);
+    this.NXa = paramj.S(parama);
     AppMethodBeat.o(60394);
   }
   
-  private final List<c> gtC()
+  private final List<c> gye()
   {
     AppMethodBeat.i(60391);
-    List localList = (List)i.a(this.NzT, cwV[0]);
+    List localList = (List)i.a(this.NXa, cxA[0]);
     AppMethodBeat.o(60391);
     return localList;
   }
@@ -63,7 +63,7 @@ public class b
   public boolean isEmpty()
   {
     AppMethodBeat.i(60392);
-    boolean bool = gtC().isEmpty();
+    boolean bool = gye().isEmpty();
     AppMethodBeat.o(60392);
     return bool;
   }
@@ -71,14 +71,14 @@ public class b
   public Iterator<c> iterator()
   {
     AppMethodBeat.i(60393);
-    Iterator localIterator = gtC().iterator();
+    Iterator localIterator = gye().iterator();
     AppMethodBeat.o(60393);
     return localIterator;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.k.a.b.b
  * JD-Core Version:    0.7.0.1
  */

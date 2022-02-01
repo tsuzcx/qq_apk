@@ -1,64 +1,75 @@
 package com.tencent.mm.plugin.game.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
 
 public final class cg
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public String Title;
-  public String hDa;
-  public LinkedList<String> uiX;
-  
-  public cg()
-  {
-    AppMethodBeat.i(41799);
-    this.uiX = new LinkedList();
-    AppMethodBeat.o(41799);
-  }
+  public String desc;
+  public String hBq;
+  public String prb;
+  public String title;
+  public String uuk;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(41800);
+    AppMethodBeat.i(41792);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.Title != null) {
-        paramVarArgs.d(1, this.Title);
+      if (this.title != null) {
+        paramVarArgs.d(1, this.title);
       }
-      if (this.hDa != null) {
-        paramVarArgs.d(2, this.hDa);
+      if (this.hBq != null) {
+        paramVarArgs.d(2, this.hBq);
       }
-      paramVarArgs.e(3, 1, this.uiX);
-      AppMethodBeat.o(41800);
+      if (this.prb != null) {
+        paramVarArgs.d(3, this.prb);
+      }
+      if (this.desc != null) {
+        paramVarArgs.d(4, this.desc);
+      }
+      if (this.uuk != null) {
+        paramVarArgs.d(5, this.uuk);
+      }
+      AppMethodBeat.o(41792);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.Title == null) {
-        break label334;
+      if (this.title == null) {
+        break label454;
       }
     }
-    label334:
-    for (paramInt = f.a.a.b.b.a.e(1, this.Title) + 0;; paramInt = 0)
+    label454:
+    for (int i = f.a.a.b.b.a.e(1, this.title) + 0;; i = 0)
     {
-      int i = paramInt;
-      if (this.hDa != null) {
-        i = paramInt + f.a.a.b.b.a.e(2, this.hDa);
+      paramInt = i;
+      if (this.hBq != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.hBq);
       }
-      paramInt = f.a.a.a.c(3, 1, this.uiX);
-      AppMethodBeat.o(41800);
-      return i + paramInt;
+      i = paramInt;
+      if (this.prb != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.prb);
+      }
+      paramInt = i;
+      if (this.desc != null) {
+        paramInt = i + f.a.a.b.b.a.e(4, this.desc);
+      }
+      i = paramInt;
+      if (this.uuk != null) {
+        i = paramInt + f.a.a.b.b.a.e(5, this.uuk);
+      }
+      AppMethodBeat.o(41792);
+      return i;
       if (paramInt == 2)
       {
-        paramVarArgs = (byte[])paramVarArgs[0];
-        this.uiX.clear();
-        paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
-        AppMethodBeat.o(41800);
+        AppMethodBeat.o(41792);
         return 0;
       }
       if (paramInt == 3)
@@ -68,22 +79,30 @@ public final class cg
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(41800);
+          AppMethodBeat.o(41792);
           return -1;
         case 1: 
-          localcg.Title = locala.NPN.readString();
-          AppMethodBeat.o(41800);
+          localcg.title = locala.OmT.readString();
+          AppMethodBeat.o(41792);
           return 0;
         case 2: 
-          localcg.hDa = locala.NPN.readString();
-          AppMethodBeat.o(41800);
+          localcg.hBq = locala.OmT.readString();
+          AppMethodBeat.o(41792);
+          return 0;
+        case 3: 
+          localcg.prb = locala.OmT.readString();
+          AppMethodBeat.o(41792);
+          return 0;
+        case 4: 
+          localcg.desc = locala.OmT.readString();
+          AppMethodBeat.o(41792);
           return 0;
         }
-        localcg.uiX.add(locala.NPN.readString());
-        AppMethodBeat.o(41800);
+        localcg.uuk = locala.OmT.readString();
+        AppMethodBeat.o(41792);
         return 0;
       }
-      AppMethodBeat.o(41800);
+      AppMethodBeat.o(41792);
       return -1;
     }
   }

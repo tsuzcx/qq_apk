@@ -6,10 +6,10 @@ import android.text.Spanned;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wenote.model.nativenote.a.a;
 import com.tencent.mm.plugin.wenote.model.nativenote.a.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.vfs.i;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.vfs.o;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -17,69 +17,69 @@ import java.util.Set;
 
 public final class f
 {
-  public static ArrayList<com.tencent.mm.plugin.wenote.model.a.c> jfg;
-  private static String pus;
+  public static ArrayList<com.tencent.mm.plugin.wenote.model.a.c> jhZ;
+  private static String pAW;
   
   public static void c(Context paramContext, ArrayList<com.tencent.mm.plugin.wenote.model.a.c> paramArrayList)
   {
     AppMethodBeat.i(30463);
-    if (jfg != null) {
-      jfg.clear();
+    if (jhZ != null) {
+      jhZ.clear();
     }
-    jfg = paramArrayList;
+    jhZ = paramArrayList;
     paramArrayList = new HashSet();
-    if (jfg != null)
+    if (jhZ != null)
     {
-      Iterator localIterator = jfg.iterator();
+      Iterator localIterator = jhZ.iterator();
       while (localIterator.hasNext())
       {
         Object localObject = (com.tencent.mm.plugin.wenote.model.a.c)localIterator.next();
         String str = com.tencent.mm.plugin.wenote.c.c.d((com.tencent.mm.plugin.wenote.model.a.c)localObject);
-        if (!bt.isNullOrNil(str)) {
+        if (!bu.isNullOrNil(str)) {
           paramArrayList.add(str);
         }
         localObject = com.tencent.mm.plugin.wenote.c.c.e((com.tencent.mm.plugin.wenote.model.a.c)localObject);
-        if (!bt.isNullOrNil((String)localObject)) {
+        if (!bu.isNullOrNil((String)localObject)) {
           paramArrayList.add(localObject);
         }
       }
     }
-    com.tencent.mm.plugin.fav.a.ao.rtS = paramArrayList;
+    com.tencent.mm.plugin.fav.a.ao.rCe = paramArrayList;
     paramArrayList = new StringBuilder("");
-    if (jfg != null)
+    if (jhZ != null)
     {
       int i = 0;
-      if (i < jfg.size())
+      if (i < jhZ.size())
       {
-        if (i != jfg.size() - 1) {
-          paramArrayList.append(com.tencent.mm.plugin.wenote.c.c.a(paramContext, (com.tencent.mm.plugin.wenote.model.a.c)jfg.get(i))).append("<br/>");
+        if (i != jhZ.size() - 1) {
+          paramArrayList.append(com.tencent.mm.plugin.wenote.c.c.a(paramContext, (com.tencent.mm.plugin.wenote.model.a.c)jhZ.get(i))).append("<br/>");
         }
         for (;;)
         {
           i += 1;
           break;
-          paramArrayList.append(com.tencent.mm.plugin.wenote.c.c.a(paramContext, (com.tencent.mm.plugin.wenote.model.a.c)jfg.get(i)));
+          paramArrayList.append(com.tencent.mm.plugin.wenote.c.c.a(paramContext, (com.tencent.mm.plugin.wenote.model.a.c)jhZ.get(i)));
         }
       }
     }
-    pus = com.tencent.mm.plugin.wenote.c.c.aaP(paramArrayList.toString());
-    paramContext = (ClipboardManager)aj.getContext().getSystemService("clipboard");
+    pAW = com.tencent.mm.plugin.wenote.c.c.abG(paramArrayList.toString());
+    paramContext = (ClipboardManager)ak.getContext().getSystemService("clipboard");
     if (paramContext != null) {
-      paramContext.setText(a.aaV(pus));
+      paramContext.setText(a.abM(pAW));
     }
     AppMethodBeat.o(30463);
   }
   
-  public static ArrayList<com.tencent.mm.plugin.wenote.model.a.c> cef()
+  public static ArrayList<com.tencent.mm.plugin.wenote.model.a.c> cfu()
   {
     AppMethodBeat.i(30464);
     ArrayList localArrayList = new ArrayList();
-    if (jfg == null)
+    if (jhZ == null)
     {
       AppMethodBeat.o(30464);
       return localArrayList;
     }
-    Iterator localIterator = jfg.iterator();
+    Iterator localIterator = jhZ.iterator();
     label181:
     while (localIterator.hasNext())
     {
@@ -107,10 +107,10 @@ public final class f
         else
         {
           str = com.tencent.mm.plugin.wenote.c.c.d(localc);
-          if (!bt.isNullOrNil(str))
+          if (!bu.isNullOrNil(str))
           {
             i = j;
-            if (i.fv(str)) {}
+            if (o.fB(str)) {}
           }
           else
           {
@@ -125,10 +125,10 @@ public final class f
         else
         {
           str = com.tencent.mm.plugin.wenote.c.c.e(localc);
-          if (!bt.isNullOrNil(str))
+          if (!bu.isNullOrNil(str))
           {
             j = i;
-            if (i.fv(str)) {}
+            if (o.fB(str)) {}
           }
           else
           {
@@ -141,16 +141,16 @@ public final class f
     return localArrayList;
   }
   
-  public static boolean ceh()
+  public static boolean cfw()
   {
     AppMethodBeat.i(30466);
-    ClipboardManager localClipboardManager = (ClipboardManager)aj.getContext().getSystemService("clipboard");
+    ClipboardManager localClipboardManager = (ClipboardManager)ak.getContext().getSystemService("clipboard");
     if (localClipboardManager.getText().length() >= 16384)
     {
       AppMethodBeat.o(30466);
       return true;
     }
-    if (com.tencent.mm.plugin.wenote.c.c.aaN(localClipboardManager.getText().toString()) >= 16384)
+    if (com.tencent.mm.plugin.wenote.c.c.abE(localClipboardManager.getText().toString()) >= 16384)
     {
       AppMethodBeat.o(30466);
       return true;
@@ -159,14 +159,14 @@ public final class f
     return false;
   }
   
-  public static int cei()
+  public static int cfx()
   {
     AppMethodBeat.i(30467);
-    Object localObject = (ClipboardManager)aj.getContext().getSystemService("clipboard");
+    Object localObject = (ClipboardManager)ak.getContext().getSystemService("clipboard");
     if ((localObject == null) || (((ClipboardManager)localObject).getText() == null) || (((ClipboardManager)localObject).getText().length() <= 0)) {}
     for (int i = 1;; i = 0)
     {
-      if ((jfg == null) || (jfg.size() <= 0)) {}
+      if ((jhZ == null) || (jhZ.size() <= 0)) {}
       for (int j = 1;; j = 0)
       {
         if ((i != 0) && (j != 0))
@@ -188,7 +188,7 @@ public final class f
         {
           localObject = ((ClipboardManager)localObject).getText();
           if ((localObject instanceof Spanned)) {}
-          for (localObject = b.a((Spanned)localObject); ((String)localObject).equals(pus); localObject = ((CharSequence)localObject).toString())
+          for (localObject = b.a((Spanned)localObject); ((String)localObject).equals(pAW); localObject = ((CharSequence)localObject).toString())
           {
             AppMethodBeat.o(30467);
             return 3;
@@ -198,7 +198,7 @@ public final class f
         {
           for (;;)
           {
-            ad.e("WNNoteClipboardManager", "get clipboard data error : ", new Object[] { localException });
+            ae.e("WNNoteClipboardManager", "get clipboard data error : ", new Object[] { localException });
             String str = "";
           }
           AppMethodBeat.o(30467);
@@ -211,11 +211,11 @@ public final class f
   public static void clearData()
   {
     AppMethodBeat.i(30465);
-    if (jfg != null) {
-      jfg.clear();
+    if (jhZ != null) {
+      jhZ.clear();
     }
-    pus = "";
-    com.tencent.mm.plugin.fav.a.ao.rtS = null;
+    pAW = "";
+    com.tencent.mm.plugin.fav.a.ao.rCe = null;
     AppMethodBeat.o(30465);
   }
 }

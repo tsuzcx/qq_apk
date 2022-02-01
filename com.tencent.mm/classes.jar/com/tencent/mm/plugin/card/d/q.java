@@ -5,18 +5,18 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class q
 {
-  public static void Kh(String paramString)
+  public static void KG(String paramString)
   {
     AppMethodBeat.i(113870);
     if (Build.VERSION.SDK_INT >= 11)
     {
       new o();
-      o.Kh(paramString);
+      o.KG(paramString);
       AppMethodBeat.o(113870);
       return;
     }
     new p();
-    p.Kh(paramString);
+    p.KG(paramString);
     AppMethodBeat.o(113870);
   }
 }

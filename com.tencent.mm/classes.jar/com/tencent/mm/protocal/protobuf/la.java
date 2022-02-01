@@ -3,10 +3,10 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class la
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public long FDj;
-  public String FDk;
+  public long FVE;
+  public String FVF;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -14,19 +14,19 @@ public final class la
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aY(1, this.FDj);
-      if (this.FDk != null) {
-        paramVarArgs.d(2, this.FDk);
+      paramVarArgs.aZ(1, this.FVE);
+      if (this.FVF != null) {
+        paramVarArgs.d(2, this.FVF);
       }
       AppMethodBeat.o(110891);
       return 0;
     }
     if (paramInt == 1)
     {
-      int i = f.a.a.b.b.a.p(1, this.FDj) + 0;
+      int i = f.a.a.b.b.a.p(1, this.FVE) + 0;
       paramInt = i;
-      if (this.FDk != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.FDk);
+      if (this.FVF != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.FVF);
       }
       AppMethodBeat.o(110891);
       return paramInt;
@@ -34,9 +34,9 @@ public final class la
     if (paramInt == 2)
     {
       paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gxE();
+          paramVarArgs.gCg();
         }
       }
       AppMethodBeat.o(110891);
@@ -52,11 +52,11 @@ public final class la
         AppMethodBeat.o(110891);
         return -1;
       case 1: 
-        localla.FDj = locala.NPN.zd();
+        localla.FVE = locala.OmT.zd();
         AppMethodBeat.o(110891);
         return 0;
       }
-      localla.FDk = locala.NPN.readString();
+      localla.FVF = locala.OmT.readString();
       AppMethodBeat.o(110891);
       return 0;
     }

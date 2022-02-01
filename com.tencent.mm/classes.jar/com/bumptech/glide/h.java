@@ -56,7 +56,7 @@ public final class h
     List localList = this.aCR.P(paramModel);
     if (localList.isEmpty())
     {
-      paramModel = new h.c(paramModel);
+      paramModel = new c(paramModel);
       AppMethodBeat.o(76804);
       throw paramModel;
     }
@@ -211,12 +211,70 @@ public final class h
     Object localObject = this.aCX.pQ();
     if (((List)localObject).isEmpty())
     {
-      localObject = new h.b();
+      localObject = new b();
       AppMethodBeat.o(76805);
       throw ((Throwable)localObject);
     }
     AppMethodBeat.o(76805);
     return localObject;
+  }
+  
+  public static class a
+    extends RuntimeException
+  {
+    public a(String paramString)
+    {
+      super();
+    }
+  }
+  
+  public static final class b
+    extends h.a
+  {
+    public b()
+    {
+      super();
+    }
+  }
+  
+  public static final class c
+    extends h.a
+  {
+    public c(Class<?> paramClass1, Class<?> paramClass2)
+    {
+      super();
+      AppMethodBeat.i(76791);
+      AppMethodBeat.o(76791);
+    }
+    
+    public c(Object paramObject)
+    {
+      super();
+      AppMethodBeat.i(76790);
+      AppMethodBeat.o(76790);
+    }
+  }
+  
+  public static final class d
+    extends h.a
+  {
+    public d(Class<?> paramClass)
+    {
+      super();
+      AppMethodBeat.i(76792);
+      AppMethodBeat.o(76792);
+    }
+  }
+  
+  public static final class e
+    extends h.a
+  {
+    public e(Class<?> paramClass)
+    {
+      super();
+      AppMethodBeat.i(76793);
+      AppMethodBeat.o(76793);
+    }
   }
 }
 

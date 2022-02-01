@@ -12,28 +12,28 @@ import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.view.Window;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.a.a;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
-import com.tencent.mm.cb.a.b;
+import com.tencent.mm.ak.a.a;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.ca.a.b;
 import com.tencent.mm.emoji.a.j;
 import com.tencent.mm.emoji.c.d.a;
-import com.tencent.mm.g.a.dk;
-import com.tencent.mm.g.a.dk.b;
+import com.tencent.mm.g.a.dl;
+import com.tencent.mm.g.a.dl.b;
 import com.tencent.mm.kernel.e;
-import com.tencent.mm.model.u;
+import com.tencent.mm.model.v;
 import com.tencent.mm.plugin.emoji.model.k;
-import com.tencent.mm.protocal.protobuf.deu;
-import com.tencent.mm.protocal.protobuf.dev;
+import com.tencent.mm.protocal.protobuf.dfo;
+import com.tencent.mm.protocal.protobuf.dfp;
 import com.tencent.mm.protocal.protobuf.hy;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.ax;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.al.a;
-import com.tencent.mm.storage.bd;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.aj;
+import com.tencent.mm.storage.am.a;
+import com.tencent.mm.storage.be;
 import com.tencent.mm.storage.emotion.EmojiGroupInfo;
 import com.tencent.mm.storage.emotion.EmojiInfo;
 import com.tencent.mm.storage.emotion.s;
@@ -46,26 +46,26 @@ import java.util.LinkedList;
 
 public class EmojiAddCustomDialogUI
   extends MMBaseActivity
-  implements com.tencent.mm.al.f
+  implements com.tencent.mm.ak.f
 {
-  private ProgressDialog iYL;
-  private String ksR;
+  private ProgressDialog jbE;
+  private String kwh;
   private Context mContext;
   private int mScene;
-  private boolean obY;
-  private String pIm;
-  private EmojiInfo pIn;
-  private boolean pIo;
-  private com.tencent.mm.emoji.c.d pIp;
-  private com.tencent.mm.ui.widget.a.d pIq;
-  private com.tencent.mm.ui.widget.a.d pIr;
-  private c<com.tencent.mm.vending.e.a> pIs;
-  private Runnable pIt;
+  private boolean ohM;
+  private String pOR;
+  private EmojiInfo pOS;
+  private boolean pOT;
+  private com.tencent.mm.emoji.c.d pOU;
+  private com.tencent.mm.ui.widget.a.d pOV;
+  private com.tencent.mm.ui.widget.a.d pOW;
+  private c<com.tencent.mm.vending.e.a> pOX;
+  private Runnable pOY;
   
   public EmojiAddCustomDialogUI()
   {
     AppMethodBeat.i(108842);
-    this.pIt = new Runnable()
+    this.pOY = new Runnable()
     {
       public final void run()
       {
@@ -77,7 +77,7 @@ public class EmojiAddCustomDialogUI
     AppMethodBeat.o(108842);
   }
   
-  private void abY(String paramString)
+  private void acP(String paramString)
   {
     AppMethodBeat.i(108849);
     if (isFinishing())
@@ -85,49 +85,49 @@ public class EmojiAddCustomDialogUI
       AppMethodBeat.o(108849);
       return;
     }
-    this.pIr = com.tencent.mm.ui.base.h.c(this, paramString, "", true);
-    this.pIr.setOnDismissListener(new DialogInterface.OnDismissListener()
+    this.pOW = com.tencent.mm.ui.base.h.c(this, paramString, "", true);
+    this.pOW.setOnDismissListener(new DialogInterface.OnDismissListener()
     {
       public final void onDismiss(DialogInterface paramAnonymousDialogInterface)
       {
-        AppMethodBeat.i(198748);
+        AppMethodBeat.i(194867);
         EmojiAddCustomDialogUI.this.setResult(1);
         EmojiAddCustomDialogUI.this.finish();
-        AppMethodBeat.o(198748);
+        AppMethodBeat.o(194867);
       }
     });
     AppMethodBeat.o(108849);
   }
   
-  private static void chP()
+  private static void cjf()
   {
     AppMethodBeat.i(108846);
-    Object localObject = new dk();
-    ((dk)localObject).dog.type = 1;
-    com.tencent.mm.sdk.b.a.IbL.l((com.tencent.mm.sdk.b.b)localObject);
-    if (!((dk)localObject).doh.doi)
+    Object localObject = new dl();
+    ((dl)localObject).dpl.type = 1;
+    com.tencent.mm.sdk.b.a.IvT.l((com.tencent.mm.sdk.b.b)localObject);
+    if (!((dl)localObject).dpm.dpn)
     {
-      localObject = k.getEmojiStorageMgr().ILq.ftD();
+      localObject = k.getEmojiStorageMgr().JfX.fxE();
       if (localObject != null)
       {
-        Iterator localIterator = ((deu)localObject).Htk.iterator();
+        Iterator localIterator = ((dfo)localObject).HMN.iterator();
         while (localIterator.hasNext())
         {
-          dev localdev = (dev)localIterator.next();
-          if (localdev.ProductID.equals(String.valueOf(EmojiGroupInfo.OeL))) {
-            localdev.FCk = 0;
+          dfp localdfp = (dfp)localIterator.next();
+          if (localdfp.ProductID.equals(String.valueOf(EmojiGroupInfo.OzS))) {
+            localdfp.FUF = 0;
           }
         }
       }
-      k.getEmojiStorageMgr().ILq.a((deu)localObject);
-      com.tencent.mm.cb.a.fhy();
-      localObject = com.tencent.mm.cb.a.HVh;
-      a.b.aPD(String.valueOf(EmojiGroupInfo.OeL));
+      k.getEmojiStorageMgr().JfX.a((dfo)localObject);
+      com.tencent.mm.ca.a.flq();
+      localObject = com.tencent.mm.ca.a.Ipp;
+      a.b.aRa(String.valueOf(EmojiGroupInfo.OzS));
     }
     AppMethodBeat.o(108846);
   }
   
-  private void chQ()
+  private void cjg()
   {
     AppMethodBeat.i(108848);
     if (isFinishing())
@@ -135,21 +135,21 @@ public class EmojiAddCustomDialogUI
       AppMethodBeat.o(108848);
       return;
     }
-    this.pIq = com.tencent.mm.ui.base.h.a(this.mContext, 2131758413, 2131755726, 2131758337, 2131755691, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+    this.pOV = com.tencent.mm.ui.base.h.a(this.mContext, 2131758413, 2131755726, 2131758337, 2131755691, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
     {
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
-        AppMethodBeat.i(198758);
+        AppMethodBeat.i(194877);
         Object localObject = new Intent();
-        com.tencent.mm.plugin.report.service.g.yhR.f(11596, new Object[] { Integer.valueOf(3) });
+        com.tencent.mm.plugin.report.service.g.yxI.f(11596, new Object[] { Integer.valueOf(3) });
         ((Intent)localObject).setClass(EmojiAddCustomDialogUI.a(EmojiAddCustomDialogUI.this), EmojiCustomUI.class);
         ((Intent)localObject).putExtra("key_emoji_panel_type", 0);
         paramAnonymousDialogInterface = EmojiAddCustomDialogUI.this;
         localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
-        com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousDialogInterface, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahp(), "com/tencent/mm/plugin/emoji/ui/EmojiAddCustomDialogUI$6", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        paramAnonymousDialogInterface.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mq(0));
+        com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousDialogInterface, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahE(), "com/tencent/mm/plugin/emoji/ui/EmojiAddCustomDialogUI$6", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramAnonymousDialogInterface.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mt(0));
         com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousDialogInterface, "com/tencent/mm/plugin/emoji/ui/EmojiAddCustomDialogUI$6", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        AppMethodBeat.o(198758);
+        AppMethodBeat.o(194877);
       }
     }, new DialogInterface.OnClickListener()
     {
@@ -161,15 +161,15 @@ public class EmojiAddCustomDialogUI
         AppMethodBeat.o(108840);
       }
     });
-    if (this.pIq != null) {
-      this.pIq.setOnDismissListener(new DialogInterface.OnDismissListener()
+    if (this.pOV != null) {
+      this.pOV.setOnDismissListener(new DialogInterface.OnDismissListener()
       {
         public final void onDismiss(DialogInterface paramAnonymousDialogInterface)
         {
-          AppMethodBeat.i(198759);
+          AppMethodBeat.i(194878);
           EmojiAddCustomDialogUI.this.setResult(3);
           EmojiAddCustomDialogUI.this.finish();
-          AppMethodBeat.o(198759);
+          AppMethodBeat.o(194878);
         }
       });
     }
@@ -179,40 +179,40 @@ public class EmojiAddCustomDialogUI
   private void v(EmojiInfo paramEmojiInfo)
   {
     AppMethodBeat.i(108847);
-    ad.i("MicroMsg.emoji.EmojiAddCustomDialogUI", "[cpan] save emoji start.do NetSceneBackupEmojiOperate");
+    ae.i("MicroMsg.emoji.EmojiAddCustomDialogUI", "[cpan] save emoji start.do NetSceneBackupEmojiOperate");
     ArrayList localArrayList = new ArrayList();
-    localArrayList.add(paramEmojiInfo.Lb());
+    localArrayList.add(paramEmojiInfo.Lj());
     paramEmojiInfo = new com.tencent.mm.emoji.sync.a(0, localArrayList);
-    paramEmojiInfo.hNz = true;
-    paramEmojiInfo.aED().a(this.pIs).b(new com.tencent.mm.vending.c.a()
+    paramEmojiInfo.hQs = true;
+    paramEmojiInfo.aET().a(this.pOX).b(new com.tencent.mm.vending.c.a()
     {
       private Void a(a.a<hy> paramAnonymousa)
       {
-        AppMethodBeat.i(198753);
+        AppMethodBeat.i(194872);
         int i = paramAnonymousa.errType;
         int j = paramAnonymousa.errCode;
         if (j == -434)
         {
-          ad.i("MicroMsg.emoji.EmojiAddCustomDialogUI", "[cpan] save emoji onSceneEnd error over size.");
-          paramAnonymousa = j.gkf;
+          ae.i("MicroMsg.emoji.EmojiAddCustomDialogUI", "[cpan] save emoji onSceneEnd error over size.");
+          paramAnonymousa = j.gmz;
           j.dp(true);
-          com.tencent.mm.kernel.g.ajC().ajl().set(al.a.Iqv, Boolean.TRUE);
-          EmojiAddCustomDialogUI.this.chI();
+          com.tencent.mm.kernel.g.ajR().ajA().set(am.a.IKR, Boolean.TRUE);
+          EmojiAddCustomDialogUI.this.ciY();
           EmojiAddCustomDialogUI.b(EmojiAddCustomDialogUI.this);
-          com.tencent.mm.plugin.report.service.g.yhR.f(10431, new Object[] { Integer.valueOf(EmojiAddCustomDialogUI.c(EmojiAddCustomDialogUI.this)), EmojiAddCustomDialogUI.d(EmojiAddCustomDialogUI.this).Lb(), EmojiAddCustomDialogUI.d(EmojiAddCustomDialogUI.this).field_designerID, EmojiAddCustomDialogUI.d(EmojiAddCustomDialogUI.this).field_groupId, Integer.valueOf(1), Integer.valueOf(2), Integer.valueOf(EmojiAddCustomDialogUI.d(EmojiAddCustomDialogUI.this).field_size), EmojiAddCustomDialogUI.e(EmojiAddCustomDialogUI.this), EmojiAddCustomDialogUI.d(EmojiAddCustomDialogUI.this).field_activityid });
+          com.tencent.mm.plugin.report.service.g.yxI.f(10431, new Object[] { Integer.valueOf(EmojiAddCustomDialogUI.c(EmojiAddCustomDialogUI.this)), EmojiAddCustomDialogUI.d(EmojiAddCustomDialogUI.this).Lj(), EmojiAddCustomDialogUI.d(EmojiAddCustomDialogUI.this).field_designerID, EmojiAddCustomDialogUI.d(EmojiAddCustomDialogUI.this).field_groupId, Integer.valueOf(1), Integer.valueOf(2), Integer.valueOf(EmojiAddCustomDialogUI.d(EmojiAddCustomDialogUI.this).field_size), EmojiAddCustomDialogUI.e(EmojiAddCustomDialogUI.this), EmojiAddCustomDialogUI.d(EmojiAddCustomDialogUI.this).field_activityid });
         }
         for (;;)
         {
-          paramAnonymousa = LhQ;
-          AppMethodBeat.o(198753);
+          paramAnonymousa = LEs;
+          AppMethodBeat.o(194872);
           return paramAnonymousa;
           if ((i == 0) && (j == 0))
           {
-            ad.i("MicroMsg.emoji.EmojiAddCustomDialogUI", "[cpan] save emoji onSceneEnd ok.");
-            paramAnonymousa = (hy)paramAnonymousa.hNC;
-            if ((paramAnonymousa != null) && (paramAnonymousa.FAv != null) && (paramAnonymousa.FAv.size() > 0))
+            ae.i("MicroMsg.emoji.EmojiAddCustomDialogUI", "[cpan] save emoji onSceneEnd ok.");
+            paramAnonymousa = (hy)paramAnonymousa.hQv;
+            if ((paramAnonymousa != null) && (paramAnonymousa.FSR != null) && (paramAnonymousa.FSR.size() > 0))
             {
-              ad.i("MicroMsg.emoji.EmojiAddCustomDialogUI", "upload size is %d", new Object[] { Integer.valueOf(paramAnonymousa.FAv.size()) });
+              ae.i("MicroMsg.emoji.EmojiAddCustomDialogUI", "upload size is %d", new Object[] { Integer.valueOf(paramAnonymousa.FSR.size()) });
               EmojiAddCustomDialogUI.f(EmojiAddCustomDialogUI.this);
             }
             else
@@ -230,12 +230,12 @@ public class EmojiAddCustomDialogUI
     AppMethodBeat.o(108847);
   }
   
-  protected final void chI()
+  protected final void ciY()
   {
     AppMethodBeat.i(108850);
-    aq.aA(this.pIt);
-    if ((this.iYL != null) && (this.iYL.isShowing())) {
-      this.iYL.dismiss();
+    ar.ay(this.pOY);
+    if ((this.jbE != null) && (this.jbE.isShowing())) {
+      this.jbE.dismiss();
     }
     AppMethodBeat.o(108850);
   }
@@ -251,68 +251,68 @@ public class EmojiAddCustomDialogUI
       getWindow().setNavigationBarColor(0);
     }
     this.mContext = this;
-    this.pIs = new c();
-    this.ksR = getIntent().getStringExtra("extra_id");
+    this.pOX = new c();
+    this.kwh = getIntent().getStringExtra("extra_id");
     this.mScene = getIntent().getIntExtra("extra_scence", -1);
-    this.pIm = getIntent().getStringExtra("extra_username");
-    if ((getIntent().getBooleanExtra("extra_current", false)) && (this.pIm == null)) {
-      this.pIm = u.aAm();
+    this.pOR = getIntent().getStringExtra("extra_username");
+    if ((getIntent().getBooleanExtra("extra_current", false)) && (this.pOR == null)) {
+      this.pOR = v.aAC();
     }
-    this.obY = getIntent().getBooleanExtra("extra_move_to_top", true);
-    this.pIo = getIntent().getBooleanExtra("key_is_selfie", false);
-    if (bt.isNullOrNil(this.ksR))
+    this.ohM = getIntent().getBooleanExtra("extra_move_to_top", true);
+    this.pOT = getIntent().getBooleanExtra("key_is_selfie", false);
+    if (bu.isNullOrNil(this.kwh))
     {
-      ad.i("MicroMsg.emoji.EmojiAddCustomDialogUI", "md5 is null.");
+      ae.i("MicroMsg.emoji.EmojiAddCustomDialogUI", "md5 is null.");
       setResult(1);
       finish();
     }
-    this.pIn = k.getEmojiStorageMgr().ILn.aUK(this.ksR);
-    com.tencent.mm.kernel.g.ajB().gAO.a(423, this);
-    aq.o(this.pIt, 300L);
+    this.pOS = k.getEmojiStorageMgr().JfU.aWl(this.kwh);
+    com.tencent.mm.kernel.g.ajQ().gDv.a(423, this);
+    ar.o(this.pOY, 300L);
     Object localObject = this.mContext;
-    paramBundle = this.pIn;
+    paramBundle = this.pOS;
     if (localObject == null)
     {
-      ad.e("MicroMsg.emoji.EmojiAddCustomDialogUI", "[cpan] save emoji failed. context is null");
+      ae.e("MicroMsg.emoji.EmojiAddCustomDialogUI", "[cpan] save emoji failed. context is null");
       AppMethodBeat.o(108843);
       return;
     }
     if (paramBundle == null)
     {
-      ad.e("MicroMsg.emoji.EmojiAddCustomDialogUI", "[cpan] save emoji failed. emoji is null");
+      ae.e("MicroMsg.emoji.EmojiAddCustomDialogUI", "[cpan] save emoji failed. emoji is null");
       AppMethodBeat.o(108843);
       return;
     }
-    localObject = j.gkf;
+    localObject = j.gmz;
     if (j.getKV().getBoolean("custom_full", false))
     {
-      ad.i("MicroMsg.emoji.EmojiAddCustomDialogUI", "[cpan] save emoji failed. over max size.");
-      chI();
-      chQ();
-      com.tencent.mm.plugin.report.service.g.yhR.f(10431, new Object[] { Integer.valueOf(this.mScene), this.pIn.Lb(), this.pIn.field_designerID, this.pIn.field_groupId, Integer.valueOf(1), Integer.valueOf(2), Integer.valueOf(this.pIn.field_size), this.pIm, this.pIn.field_activityid });
+      ae.i("MicroMsg.emoji.EmojiAddCustomDialogUI", "[cpan] save emoji failed. over max size.");
+      ciY();
+      cjg();
+      com.tencent.mm.plugin.report.service.g.yxI.f(10431, new Object[] { Integer.valueOf(this.mScene), this.pOS.Lj(), this.pOS.field_designerID, this.pOS.field_groupId, Integer.valueOf(1), Integer.valueOf(2), Integer.valueOf(this.pOS.field_size), this.pOR, this.pOS.field_activityid });
       AppMethodBeat.o(108843);
       return;
     }
-    if ((paramBundle.field_catalog == EmojiInfo.OeT) || (bt.isNullOrNil(paramBundle.field_groupId)) || (bt.lQ(paramBundle.field_groupId, "capture")) || ((!bt.isNullOrNil(paramBundle.field_groupId)) && (((com.tencent.mm.plugin.emoji.b.d)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().abw(paramBundle.field_groupId))))
+    if ((paramBundle.field_catalog == EmojiInfo.OAa) || (bu.isNullOrNil(paramBundle.field_groupId)) || (bu.lX(paramBundle.field_groupId, "capture")) || ((!bu.isNullOrNil(paramBundle.field_groupId)) && (((com.tencent.mm.plugin.emoji.b.d)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().acn(paramBundle.field_groupId))))
     {
       v(paramBundle);
       AppMethodBeat.o(108843);
       return;
     }
     paramBundle = new com.tencent.mm.plugin.emoji.f.g(paramBundle.field_groupId, (byte)0);
-    com.tencent.mm.kernel.g.ajB().gAO.a(paramBundle, 0);
+    com.tencent.mm.kernel.g.ajQ().gDv.a(paramBundle, 0);
     AppMethodBeat.o(108843);
   }
   
   public void onDestroy()
   {
     AppMethodBeat.i(108844);
-    com.tencent.mm.kernel.g.ajB().gAO.b(423, this);
-    aq.aA(this.pIt);
+    com.tencent.mm.kernel.g.ajQ().gDv.b(423, this);
+    ar.ay(this.pOY);
     super.onDestroy();
-    this.pIs.dead();
-    if (this.pIp != null) {
-      this.pIp.gqa = null;
+    this.pOX.dead();
+    if (this.pOU != null) {
+      this.pOU.gsv = null;
     }
     AppMethodBeat.o(108844);
   }
@@ -328,85 +328,85 @@ public class EmojiAddCustomDialogUI
         return;
       }
       paramString = (com.tencent.mm.plugin.emoji.f.g)paramn;
-      if ((paramString != null) && (!bt.isNullOrNil(paramString.pFG)) && (this.pIn != null) && (!bt.isNullOrNil(this.pIn.field_groupId)) && (this.pIn.field_groupId.equalsIgnoreCase(paramString.pFG)))
+      if ((paramString != null) && (!bu.isNullOrNil(paramString.pMk)) && (this.pOS != null) && (!bu.isNullOrNil(this.pOS.field_groupId)) && (this.pOS.field_groupId.equalsIgnoreCase(paramString.pMk)))
       {
         if ((paramInt1 == 0) && (paramInt2 == 0))
         {
-          v(this.pIn);
+          v(this.pOS);
           AppMethodBeat.o(108845);
           return;
         }
         if (paramInt2 == 4)
         {
-          chI();
+          ciY();
           if (this.mScene == 0)
           {
-            paramString = this.pIn.field_groupId;
+            paramString = this.pOS.field_groupId;
             if (!isFinishing())
             {
-              this.pIr = com.tencent.mm.ui.base.h.c(this, getString(2131758208), "", true);
-              this.pIr.b(2131755691, new DialogInterface.OnClickListener()
+              this.pOW = com.tencent.mm.ui.base.h.c(this, getString(2131758208), "", true);
+              this.pOW.b(2131755691, new DialogInterface.OnClickListener()
               {
                 public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
                 {
-                  AppMethodBeat.i(198749);
+                  AppMethodBeat.i(194868);
                   EmojiAddCustomDialogUI.this.finish();
-                  AppMethodBeat.o(198749);
+                  AppMethodBeat.o(194868);
                 }
               });
-              this.pIr.a(2131758210, new DialogInterface.OnClickListener()
+              this.pOW.a(2131758210, new DialogInterface.OnClickListener()
               {
                 public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
                 {
-                  AppMethodBeat.i(198750);
+                  AppMethodBeat.i(194869);
                   Object localObject = new Intent();
                   ((Intent)localObject).setClass(EmojiAddCustomDialogUI.this, EmojiStoreDetailUI.class);
                   ((Intent)localObject).putExtra("extra_id", paramString);
                   ((Intent)localObject).putExtra("preceding_scence", 20);
                   paramAnonymousDialogInterface = EmojiAddCustomDialogUI.this;
                   localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
-                  com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousDialogInterface, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahp(), "com/tencent/mm/plugin/emoji/ui/EmojiAddCustomDialogUI$13", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-                  paramAnonymousDialogInterface.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mq(0));
+                  com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousDialogInterface, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahE(), "com/tencent/mm/plugin/emoji/ui/EmojiAddCustomDialogUI$13", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+                  paramAnonymousDialogInterface.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mt(0));
                   com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousDialogInterface, "com/tencent/mm/plugin/emoji/ui/EmojiAddCustomDialogUI$13", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
                   EmojiAddCustomDialogUI.this.finish();
-                  AppMethodBeat.o(198750);
+                  AppMethodBeat.o(194869);
                 }
               });
             }
             AppMethodBeat.o(108845);
             return;
           }
-          abY(getString(2131758208));
+          acP(getString(2131758208));
           AppMethodBeat.o(108845);
           return;
         }
         if (paramInt2 == 8)
         {
-          chI();
-          abY(getString(2131758207));
+          ciY();
+          acP(getString(2131758207));
           AppMethodBeat.o(108845);
           return;
         }
         if (paramInt2 == 9)
         {
-          chI();
-          abY(getString(2131758206));
+          ciY();
+          acP(getString(2131758206));
           AppMethodBeat.o(108845);
           return;
         }
         if (paramInt2 == -2)
         {
-          chI();
-          abY(getString(2131758209));
+          ciY();
+          acP(getString(2131758209));
           AppMethodBeat.o(108845);
           return;
         }
-        chI();
-        abY(getString(2131758205));
+        ciY();
+        acP(getString(2131758205));
         AppMethodBeat.o(108845);
         return;
       }
-      ad.i("MicroMsg.emoji.EmojiAddCustomDialogUI", "no the same product ID");
+      ae.i("MicroMsg.emoji.EmojiAddCustomDialogUI", "no the same product ID");
     }
     AppMethodBeat.o(108845);
   }
@@ -419,7 +419,7 @@ public class EmojiAddCustomDialogUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.ui.EmojiAddCustomDialogUI
  * JD-Core Version:    0.7.0.1
  */

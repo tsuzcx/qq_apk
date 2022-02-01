@@ -6,13 +6,13 @@ import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.plugin.scanner.model.ad;
+import com.tencent.mm.plugin.scanner.model.ae;
 import d.g.b.y.a;
 import d.g.b.y.f;
 import d.l;
 import java.util.Iterator;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick", "com/tencent/mm/plugin/scanner/ui/widget/ScanCodeMaskView$showSuccessView$1$1$1", "com/tencent/mm/plugin/scanner/ui/widget/ScanCodeMaskView$$special$$inlined$apply$lambda$1"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick", "com/tencent/mm/plugin/scanner/ui/widget/ScanCodeMaskView$showSuccessView$1$1$1", "com/tencent/mm/plugin/scanner/ui/widget/ScanCodeMaskView$$special$$inlined$apply$lambda$1"})
 final class ScanCodeMaskView$m
   implements View.OnClickListener
 {
@@ -23,13 +23,13 @@ final class ScanCodeMaskView$m
     AppMethodBeat.i(170054);
     b localb = new b();
     localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/scanner/ui/widget/ScanCodeMaskView$showSuccessView$$inlined$forEach$lambda$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-    ScanCodeMaskView.a(this.yxL, this.odp);
-    paramView = ScanCodeMaskView.d(this.yxL);
+    a.b("com/tencent/mm/plugin/scanner/ui/widget/ScanCodeMaskView$showSuccessView$$inlined$forEach$lambda$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+    ScanCodeMaskView.a(this.yNL, this.ojd);
+    paramView = ScanCodeMaskView.d(this.yNL);
     if (paramView != null) {
-      paramView.OG(this.odp);
+      paramView.Pn(this.ojd);
     }
-    paramView = ((Iterable)ScanCodeMaskView.e(this.yxL)).iterator();
+    paramView = ((Iterable)ScanCodeMaskView.e(this.yNL)).iterator();
     while (paramView.hasNext()) {
       ((View)paramView.next()).setOnClickListener(null);
     }

@@ -1,58 +1,56 @@
 package com.tencent.mm.storage;
 
+import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.gm;
-import com.tencent.mm.sdk.e.c.a;
-import java.lang.reflect.Field;
-import java.util.Map;
+import com.tencent.mm.g.c.gl;
+import com.tencent.mm.sdk.e.j;
+import com.tencent.mm.storagebase.h;
+import java.util.concurrent.ConcurrentHashMap;
 
 public final class cj
-  extends gm
+  extends j<gl>
 {
-  protected static c.a info;
+  public static final String[] SQL_CREATE;
+  public h hKK;
   
   static
   {
-    AppMethodBeat.i(32886);
-    c.a locala = new c.a();
-    locala.IhA = new Field[3];
-    locala.columns = new String[4];
-    StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "openId";
-    locala.IhC.put("openId", "TEXT PRIMARY KEY ");
-    localStringBuilder.append(" openId TEXT PRIMARY KEY ");
-    localStringBuilder.append(", ");
-    locala.IhB = "openId";
-    locala.columns[1] = "appId";
-    locala.IhC.put("appId", "TEXT");
-    localStringBuilder.append(" appId TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[2] = "username";
-    locala.IhC.put("username", "TEXT");
-    localStringBuilder.append(" username TEXT");
-    locala.columns[3] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    info = locala;
-    AppMethodBeat.o(32886);
+    AppMethodBeat.i(133310);
+    SQL_CREATE = new String[] { j.getCreateSQLs(ci.info, "TablesVersion") };
+    AppMethodBeat.o(133310);
   }
   
-  public cj() {}
-  
-  public cj(String paramString1, String paramString2, String paramString3)
+  public cj(h paramh)
   {
-    this.field_appId = paramString1;
-    this.field_username = paramString2;
-    this.field_openId = paramString3;
+    super(paramh, ci.info, "TablesVersion", gl.INDEX_CREATE);
+    this.hKK = paramh;
   }
   
-  public final c.a getDBInfo()
+  public final ConcurrentHashMap<Integer, String> fwM()
   {
-    return info;
+    AppMethodBeat.i(133309);
+    Cursor localCursor = this.hKK.a("select * from TablesVersion", new String[0], 0);
+    ConcurrentHashMap localConcurrentHashMap = new ConcurrentHashMap();
+    if (localCursor == null)
+    {
+      AppMethodBeat.o(133309);
+      return localConcurrentHashMap;
+    }
+    try
+    {
+      if (localCursor.moveToNext()) {}
+      return localConcurrentHashMap1;
+    }
+    finally
+    {
+      localCursor.close();
+      AppMethodBeat.o(133309);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.storage.cj
  * JD-Core Version:    0.7.0.1
  */

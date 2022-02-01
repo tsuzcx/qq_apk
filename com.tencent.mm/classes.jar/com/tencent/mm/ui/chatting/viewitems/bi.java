@@ -7,18 +7,18 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 final class bi
   extends c.a
 {
-  public ImageView JZr;
-  bj Khk;
-  bp Khl;
-  b Khm;
-  LinearLayout ofq;
+  bj KDF;
+  bp KDG;
+  b KDH;
+  public ImageView KvK;
+  LinearLayout olp;
   
   bi()
   {
     AppMethodBeat.i(37552);
-    this.Khk = new bj();
-    this.Khl = new bp();
-    this.Khm = new b();
+    this.KDF = new bj();
+    this.KDG = new bp();
+    this.KDH = new b();
     AppMethodBeat.o(37552);
   }
 }

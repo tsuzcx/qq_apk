@@ -20,10 +20,10 @@ import com.tencent.mm.plugin.fav.a.h.a;
 import com.tencent.mm.plugin.fav.a.x;
 import com.tencent.mm.plugin.fav.ui.j;
 import com.tencent.mm.pluginsdk.ui.span.k;
-import com.tencent.mm.protocal.protobuf.akd;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.protocal.protobuf.akn;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.aq;
 import com.tencent.mm.ui.base.n.d;
 import com.tencent.mm.ui.base.n.e;
 import com.tencent.mm.ui.base.p;
@@ -33,26 +33,26 @@ import com.tencent.mm.ui.widget.a.e;
 public class FavoriteTextDetailUI
   extends BaseFavDetailReportUI
 {
-  private static final int rBe;
+  private static final int rJp;
   private com.tencent.mm.ui.tools.l contextMenuHelper;
-  private long rAU;
-  private TextView rBf;
-  private ClipboardManager rBg;
-  private com.tencent.mm.plugin.fav.a.g rBh;
-  private n.e rBi;
-  private com.tencent.mm.plugin.fav.a.g ruY;
+  private com.tencent.mm.plugin.fav.a.g rDk;
+  private long rJf;
+  private TextView rJq;
+  private ClipboardManager rJr;
+  private com.tencent.mm.plugin.fav.a.g rJs;
+  private n.e rJt;
   
   static
   {
     AppMethodBeat.i(107254);
-    rBe = com.tencent.mm.n.b.acd();
+    rJp = com.tencent.mm.n.b.acm();
     AppMethodBeat.o(107254);
   }
   
   public FavoriteTextDetailUI()
   {
     AppMethodBeat.i(107244);
-    this.rBi = new n.e()
+    this.rJt = new n.e()
     {
       public final void onMMMenuItemSelected(MenuItem paramAnonymousMenuItem, int paramAnonymousInt)
       {
@@ -67,7 +67,7 @@ public class FavoriteTextDetailUI
           if ((FavoriteTextDetailUI.c(FavoriteTextDetailUI.this) != null) && (FavoriteTextDetailUI.a(FavoriteTextDetailUI.this) != null) && (FavoriteTextDetailUI.a(FavoriteTextDetailUI.this).field_favProto != null))
           {
             FavoriteTextDetailUI.c(FavoriteTextDetailUI.this).setText(FavoriteTextDetailUI.a(FavoriteTextDetailUI.this).field_favProto.desc);
-            com.tencent.mm.ui.base.h.cl(FavoriteTextDetailUI.this.getContext(), FavoriteTextDetailUI.this.getContext().getString(2131755702));
+            com.tencent.mm.ui.base.h.cm(FavoriteTextDetailUI.this.getContext(), FavoriteTextDetailUI.this.getContext().getString(2131755702));
           }
         }
       }
@@ -75,31 +75,31 @@ public class FavoriteTextDetailUI
     AppMethodBeat.o(107244);
   }
   
-  private void cxa()
+  private void cyB()
   {
     AppMethodBeat.i(107250);
-    this.ruY = ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavItemInfoStorage().vE(this.rAU);
-    H(this.ruY);
-    if ((this.ruY == null) || (this.ruY.field_favProto == null))
+    this.rDk = ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavItemInfoStorage().vU(this.rJf);
+    H(this.rDk);
+    if ((this.rDk == null) || (this.rDk.field_favProto == null))
     {
-      ad.w("MicroMsg.FavoriteTextDetailUI", "id[%d] info is null, return", new Object[] { Long.valueOf(this.rAU) });
+      ae.w("MicroMsg.FavoriteTextDetailUI", "id[%d] info is null, return", new Object[] { Long.valueOf(this.rJf) });
       AppMethodBeat.o(107250);
       return;
     }
-    a.a(this, this.ruY);
-    if ((this.rBh != null) && (this.rBh.field_edittime == this.ruY.field_edittime))
+    a.a(this, this.rDk);
+    if ((this.rJs != null) && (this.rJs.field_edittime == this.rDk.field_edittime))
     {
-      ad.w("MicroMsg.FavoriteTextDetailUI", "not change, return");
+      ae.w("MicroMsg.FavoriteTextDetailUI", "not change, return");
       AppMethodBeat.o(107250);
       return;
     }
-    this.rBh = this.ruY;
-    this.rBf.setText(this.ruY.field_favProto.desc);
-    k.n(this.rBf, 1);
+    this.rJs = this.rDk;
+    this.rJq.setText(this.rDk.field_favProto.desc);
+    k.o(this.rJq, 1);
     AppMethodBeat.o(107250);
   }
   
-  protected final MMLoadScrollView cwM()
+  protected final MMLoadScrollView cyn()
   {
     AppMethodBeat.i(107245);
     MMLoadScrollView localMMLoadScrollView = (MMLoadScrollView)findViewById(2131304376);
@@ -117,8 +117,8 @@ public class FavoriteTextDetailUI
     AppMethodBeat.i(107252);
     if ((1 == paramInt1) && (-1 == paramInt2))
     {
-      com.tencent.mm.ui.base.h.cl(getContext(), getString(2131755881));
-      new ap().postDelayed(new Runnable()
+      com.tencent.mm.ui.base.h.cm(getContext(), getString(2131755881));
+      new aq().postDelayed(new Runnable()
       {
         public final void run()
         {
@@ -138,12 +138,12 @@ public class FavoriteTextDetailUI
   {
     AppMethodBeat.i(107246);
     super.onCreate(paramBundle);
-    this.rBf = ((TextView)findViewById(2131297956));
-    this.rBg = ((ClipboardManager)aj.getContext().getSystemService("clipboard"));
-    this.rAU = getIntent().getLongExtra("key_detail_info_id", -1L);
-    com.tencent.mm.pluginsdk.wallet.h.Zx(5);
+    this.rJq = ((TextView)findViewById(2131297956));
+    this.rJr = ((ClipboardManager)ak.getContext().getSystemService("clipboard"));
+    this.rJf = getIntent().getLongExtra("key_detail_info_id", -1L);
+    com.tencent.mm.pluginsdk.wallet.h.aad(5);
     this.contextMenuHelper = new com.tencent.mm.ui.tools.l(getContext());
-    this.contextMenuHelper.a(this.rBf, this, this.rBi);
+    this.contextMenuHelper.a(this.rJq, this, this.rJt);
     setMMTitle(getString(2131758856));
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
@@ -161,22 +161,22 @@ public class FavoriteTextDetailUI
       {
         AppMethodBeat.i(107241);
         paramAnonymousMenuItem = new e(FavoriteTextDetailUI.this.getContext(), 1, false);
-        paramAnonymousMenuItem.KJy = new n.d()
+        paramAnonymousMenuItem.LfS = new n.d()
         {
           public final void onCreateMMMenu(com.tencent.mm.ui.base.l paramAnonymous2l)
           {
             AppMethodBeat.i(107237);
             if (FavoriteTextDetailUI.this.getIntent().getBooleanExtra("key_detail_can_share_to_friend", true)) {
-              paramAnonymous2l.c(2, FavoriteTextDetailUI.this.getString(2131759001));
+              paramAnonymous2l.d(2, FavoriteTextDetailUI.this.getString(2131759001));
             }
-            paramAnonymous2l.c(0, FavoriteTextDetailUI.this.getString(2131758873));
-            paramAnonymous2l.c(1, FavoriteTextDetailUI.this.getString(2131758988));
-            paramAnonymous2l.c(3, FavoriteTextDetailUI.this.getString(2131758875));
-            paramAnonymous2l.c(4, FavoriteTextDetailUI.this.getString(2131755707));
+            paramAnonymous2l.d(0, FavoriteTextDetailUI.this.getString(2131758873));
+            paramAnonymous2l.d(1, FavoriteTextDetailUI.this.getString(2131758988));
+            paramAnonymous2l.d(3, FavoriteTextDetailUI.this.getString(2131758875));
+            paramAnonymous2l.d(4, FavoriteTextDetailUI.this.getString(2131755707));
             AppMethodBeat.o(107237);
           }
         };
-        paramAnonymousMenuItem.KJz = new n.e()
+        paramAnonymousMenuItem.LfT = new n.e()
         {
           public final void onMMMenuItemSelected(MenuItem paramAnonymous2MenuItem, int paramAnonymous2Int)
           {
@@ -192,21 +192,21 @@ public class FavoriteTextDetailUI
               {
                 paramAnonymous2MenuItem = new Intent();
                 paramAnonymous2MenuItem.putExtra("key_value", FavoriteTextDetailUI.a(FavoriteTextDetailUI.this).field_favProto.desc);
-                paramAnonymous2MenuItem.putExtra("key_max_count", FavoriteTextDetailUI.rBe);
+                paramAnonymous2MenuItem.putExtra("key_max_count", FavoriteTextDetailUI.rJp);
                 paramAnonymous2MenuItem.putExtra("key_show_confirm", true);
                 paramAnonymous2MenuItem.putExtra("key_fav_item_id", FavoriteTextDetailUI.a(FavoriteTextDetailUI.this).field_id);
                 com.tencent.mm.plugin.fav.a.b.a(FavoriteTextDetailUI.this, ".ui.FavTextEditUI", paramAnonymous2MenuItem, 1);
-                paramAnonymous2MenuItem = FavoriteTextDetailUI.this.rzL;
-                paramAnonymous2MenuItem.rsB += 1;
+                paramAnonymous2MenuItem = FavoriteTextDetailUI.this.rHW;
+                paramAnonymous2MenuItem.rAO += 1;
                 AppMethodBeat.o(107240);
                 return;
-                j.a(FavoriteTextDetailUI.this, FavoriteTextDetailUI.b(FavoriteTextDetailUI.this), FavoriteTextDetailUI.this.rzL);
+                j.a(FavoriteTextDetailUI.this, FavoriteTextDetailUI.b(FavoriteTextDetailUI.this), FavoriteTextDetailUI.this.rHW);
                 AppMethodBeat.o(107240);
                 return;
                 if ((FavoriteTextDetailUI.a(FavoriteTextDetailUI.this) != null) && (FavoriteTextDetailUI.a(FavoriteTextDetailUI.this).field_favProto != null))
                 {
-                  paramAnonymous2MenuItem = FavoriteTextDetailUI.this.rzL;
-                  paramAnonymous2MenuItem.rsz += 1;
+                  paramAnonymous2MenuItem = FavoriteTextDetailUI.this.rHW;
+                  paramAnonymous2MenuItem.rAM += 1;
                   com.tencent.mm.plugin.fav.a.b.c(FavoriteTextDetailUI.a(FavoriteTextDetailUI.this).field_favProto.desc, FavoriteTextDetailUI.this);
                   com.tencent.mm.plugin.fav.a.h.i(FavoriteTextDetailUI.a(FavoriteTextDetailUI.this).field_localId, 1, 0);
                   AppMethodBeat.o(107240);
@@ -215,8 +215,8 @@ public class FavoriteTextDetailUI
                   paramAnonymous2MenuItem.putExtra("key_fav_scene", 2);
                   paramAnonymous2MenuItem.putExtra("key_fav_item_id", FavoriteTextDetailUI.a(FavoriteTextDetailUI.this).field_localId);
                   com.tencent.mm.plugin.fav.a.b.b(FavoriteTextDetailUI.this.getContext(), ".ui.FavTagEditUI", paramAnonymous2MenuItem);
-                  paramAnonymous2MenuItem = FavoriteTextDetailUI.this.rzL;
-                  paramAnonymous2MenuItem.rsC += 1;
+                  paramAnonymous2MenuItem = FavoriteTextDetailUI.this.rHW;
+                  paramAnonymous2MenuItem.rAP += 1;
                   AppMethodBeat.o(107240);
                   return;
                   com.tencent.mm.ui.base.h.a(FavoriteTextDetailUI.this.getContext(), FavoriteTextDetailUI.this.getString(2131755709), "", new DialogInterface.OnClickListener()
@@ -230,9 +230,9 @@ public class FavoriteTextDetailUI
                         public final void run()
                         {
                           AppMethodBeat.i(107238);
-                          FavoriteTextDetailUI.this.rzL.rsD = true;
+                          FavoriteTextDetailUI.this.rHW.rAQ = true;
                           paramAnonymous3DialogInterface.dismiss();
-                          ad.d("MicroMsg.FavoriteTextDetailUI", "do del, local id %d", new Object[] { Long.valueOf(FavoriteTextDetailUI.b(FavoriteTextDetailUI.this)) });
+                          ae.d("MicroMsg.FavoriteTextDetailUI", "do del, local id %d", new Object[] { Long.valueOf(FavoriteTextDetailUI.b(FavoriteTextDetailUI.this)) });
                           FavoriteTextDetailUI.this.finish();
                           AppMethodBeat.o(107238);
                         }
@@ -245,7 +245,7 @@ public class FavoriteTextDetailUI
             }
           }
         };
-        paramAnonymousMenuItem.cMW();
+        paramAnonymousMenuItem.cPF();
         AppMethodBeat.o(107241);
         return true;
       }
@@ -278,7 +278,7 @@ public class FavoriteTextDetailUI
   {
     AppMethodBeat.i(107248);
     super.onResume();
-    cxa();
+    cyB();
     AppMethodBeat.o(107248);
   }
   

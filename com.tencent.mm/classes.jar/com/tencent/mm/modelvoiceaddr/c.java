@@ -2,25 +2,25 @@ package com.tencent.mm.modelvoiceaddr;
 
 import android.os.HandlerThread;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.n.a;
-import com.tencent.mm.al.n.b;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.n.a;
+import com.tencent.mm.ak.n.b;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.protocal.l.d;
 import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.cwt;
-import com.tencent.mm.protocal.protobuf.dwn;
-import com.tencent.mm.protocal.protobuf.dwp;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.protocal.protobuf.cxn;
+import com.tencent.mm.protocal.protobuf.dye;
+import com.tencent.mm.protocal.protobuf.dyg;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.vfs.i;
+import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.vfs.o;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
@@ -34,20 +34,20 @@ public final class c
   extends a
   implements k
 {
-  private com.tencent.mm.al.f callback;
+  private com.tencent.mm.ak.f callback;
   private String filename;
-  private int guN;
-  private int inw;
-  private boolean iwe;
-  public h ixF;
-  private boolean ixG;
-  private boolean ixH;
-  private int ixI;
-  private cwt ixJ;
-  private int ixK;
-  private String[] ixL;
-  private int ixM;
-  private ap ixN;
+  private int gxu;
+  private boolean iAA;
+  private int iAB;
+  private cxn iAC;
+  private int iAD;
+  private String[] iAE;
+  private int iAF;
+  private aq iAG;
+  public h iAy;
+  private boolean iAz;
+  private int iqq;
+  private boolean iyX;
   private int retCode;
   private int scene;
   
@@ -55,24 +55,24 @@ public final class c
   {
     AppMethodBeat.i(148517);
     this.retCode = 0;
-    this.guN = 120;
-    this.iwe = false;
-    this.ixG = false;
-    this.ixH = false;
-    this.inw = 0;
-    this.ixI = 0;
+    this.gxu = 120;
+    this.iyX = false;
+    this.iAz = false;
+    this.iAA = false;
+    this.iqq = 0;
+    this.iAB = 0;
     this.filename = null;
-    this.ixJ = null;
+    this.iAC = null;
     this.scene = 0;
-    this.ixL = new String[0];
-    this.ixM = 3960;
-    this.ixN = new c.2(this, g.ajF().IdO.getLooper());
+    this.iAE = new String[0];
+    this.iAF = 3960;
+    this.iAG = new c.2(this, g.ajU().IxZ.getLooper());
     this.filename = paramString1;
-    this.ixF = paramh;
-    this.ixJ = new cwt().aPy(paramString2);
-    this.ixK = paramInt;
+    this.iAy = paramh;
+    this.iAC = new cxn().aQV(paramString2);
+    this.iAD = paramInt;
     this.scene = 10;
-    ad.i("MicroMsg.NetSceneNewVoiceInput", "NetSceneNewVoiceInput filename:%s,container:%s,vadVersion:%s, langType:%d, scene:%s", new Object[] { paramString1, paramh, paramString2, Integer.valueOf(paramInt), Integer.valueOf(10) });
+    ae.i("MicroMsg.NetSceneNewVoiceInput", "NetSceneNewVoiceInput filename:%s,container:%s,vadVersion:%s, langType:%d, scene:%s", new Object[] { paramString1, paramh, paramString2, Integer.valueOf(paramInt), Integer.valueOf(10) });
     AppMethodBeat.o(148517);
   }
   
@@ -80,249 +80,249 @@ public final class c
   {
     AppMethodBeat.i(148516);
     this.retCode = 0;
-    this.guN = 120;
-    this.iwe = false;
-    this.ixG = false;
-    this.ixH = false;
-    this.inw = 0;
-    this.ixI = 0;
+    this.gxu = 120;
+    this.iyX = false;
+    this.iAz = false;
+    this.iAA = false;
+    this.iqq = 0;
+    this.iAB = 0;
     this.filename = null;
-    this.ixJ = null;
+    this.iAC = null;
     this.scene = 0;
-    this.ixL = new String[0];
-    this.ixM = 3960;
-    this.ixN = new c.2(this, g.ajF().IdO.getLooper());
+    this.iAE = new String[0];
+    this.iAF = 3960;
+    this.iAG = new c.2(this, g.ajU().IxZ.getLooper());
     this.filename = paramString1;
-    this.ixF = new h(paramString2);
-    this.ixJ = new cwt().aPy(paramString3);
-    this.ixK = paramInt1;
+    this.iAy = new h(paramString2);
+    this.iAC = new cxn().aQV(paramString3);
+    this.iAD = paramInt1;
     this.scene = paramInt2;
-    ad.i("MicroMsg.NetSceneNewVoiceInput", "NetSceneNewVoiceInput filename:%s,session:%s,vadVersion:%s, langType:%d, scene:%s", new Object[] { paramString1, paramString2, paramString3, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    ae.i("MicroMsg.NetSceneNewVoiceInput", "NetSceneNewVoiceInput filename:%s,session:%s,vadVersion:%s, langType:%d, scene:%s", new Object[] { paramString1, paramString2, paramString3, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     AppMethodBeat.o(148516);
   }
   
-  private void aNO()
+  private void aOm()
   {
     AppMethodBeat.i(148523);
-    ad.d("MicroMsg.NetSceneNewVoiceInput", com.tencent.mm.compatible.util.f.abi());
-    if (this.ixN != null) {
-      this.ixN.removeMessages(291);
+    ae.d("MicroMsg.NetSceneNewVoiceInput", com.tencent.mm.compatible.util.f.abr());
+    if (this.iAG != null) {
+      this.iAG.removeMessages(291);
     }
-    this.ixG = true;
+    this.iAz = true;
     AppMethodBeat.o(148523);
   }
   
-  public final void aNH()
+  public final void aOf()
   {
-    this.iwe = true;
+    this.iyX = true;
   }
   
-  public final String[] aNI()
+  public final String[] aOg()
   {
-    return this.ixL;
+    return this.iAE;
   }
   
-  public final long aNJ()
+  public final long aOh()
   {
     return 0L;
   }
   
-  public final int aNK()
+  public final int aOi()
   {
     return this.retCode;
   }
   
-  public final List<String> aNL()
+  public final List<String> aOj()
   {
     AppMethodBeat.i(148515);
-    h localh = this.ixF;
+    h localh = this.iAy;
     ArrayList localArrayList = new ArrayList();
-    localh.iyF.readLock().lock();
-    Iterator localIterator = localh.iyE.values().iterator();
+    localh.iBy.readLock().lock();
+    Iterator localIterator = localh.iBx.values().iterator();
     while (localIterator.hasNext())
     {
       h.a locala = (h.a)localIterator.next();
-      if (locala.iyI) {
-        localArrayList.add(locala.iyH);
+      if (locala.iBB) {
+        localArrayList.add(locala.iBA);
       }
     }
-    localh.iyF.readLock().unlock();
+    localh.iBy.readLock().unlock();
     AppMethodBeat.o(148515);
     return localArrayList;
   }
   
-  public final boolean aNM()
+  public final boolean aOk()
   {
     AppMethodBeat.i(148518);
-    ad.d("MicroMsg.NetSceneNewVoiceInput", "preDoScene");
-    this.ixN.removeMessages(291);
-    if (((this.ixF.aNW()) && (this.iwe)) || (this.ixG))
+    ae.d("MicroMsg.NetSceneNewVoiceInput", "preDoScene");
+    this.iAG.removeMessages(291);
+    if (((this.iAy.aOu()) && (this.iyX)) || (this.iAz))
     {
-      ad.i("MicroMsg.NetSceneNewVoiceInput", "preDoScene return");
+      ae.i("MicroMsg.NetSceneNewVoiceInput", "preDoScene return");
       AppMethodBeat.o(148518);
       return false;
     }
-    h.a locala = this.ixF.qu(this.inw);
+    h.a locala = this.iAy.qx(this.iqq);
     if (locala != null)
     {
-      long l1 = i.aYo(this.filename);
-      long l2 = Math.min(l1, locala.iyK);
-      ad.d("MicroMsg.NetSceneNewVoiceInput", "fileLength %s info.voiceFileMark %s nowMarkLen %s", new Object[] { Long.valueOf(l1), Integer.valueOf(locala.iyK), Long.valueOf(l2) });
+      long l1 = o.aZR(this.filename);
+      long l2 = Math.min(l1, locala.iBD);
+      ae.d("MicroMsg.NetSceneNewVoiceInput", "fileLength %s info.voiceFileMark %s nowMarkLen %s", new Object[] { Long.valueOf(l1), Integer.valueOf(locala.iBD), Long.valueOf(l2) });
       if (l2 <= 0L)
       {
-        ad.e("MicroMsg.NetSceneNewVoiceInput", "nowMarkLen <= 0 read failed :%s", new Object[] { this.filename });
+        ae.e("MicroMsg.NetSceneNewVoiceInput", "nowMarkLen <= 0 read failed :%s", new Object[] { this.filename });
         this.retCode = (com.tencent.mm.compatible.util.f.getLine() + 40000);
-        this.ixI = 0;
-        aNN();
+        this.iAB = 0;
+        aOl();
         if (this.callback != null) {
           this.callback.onSceneEnd(3, -1, "ReadFileLengthError", this);
         }
         AppMethodBeat.o(148518);
         return false;
       }
-      this.ixI = ((int)(l2 - this.inw));
-      if (this.ixI < 0)
+      this.iAB = ((int)(l2 - this.iqq));
+      if (this.iAB < 0)
       {
-        ad.i("MicroMsg.NetSceneNewVoiceInput", "canReadLen < 0 length:%s ", new Object[] { Integer.valueOf(this.ixI) });
+        ae.i("MicroMsg.NetSceneNewVoiceInput", "canReadLen < 0 length:%s ", new Object[] { Integer.valueOf(this.iAB) });
         this.retCode = (com.tencent.mm.compatible.util.f.getLine() + 40000);
-        this.ixN.sendEmptyMessageDelayed(291, this.guN * 2);
+        this.iAG.sendEmptyMessageDelayed(291, this.gxu * 2);
         AppMethodBeat.o(148518);
         return false;
       }
-      ad.d("MicroMsg.NetSceneNewVoiceInput", "can read length : %s,reqSeq:%s,interval:%s", new Object[] { Integer.valueOf(this.ixI), Integer.valueOf(locala.iyL), Integer.valueOf(this.guN) });
-      if ((this.ixI < 500) && (locala.iyL > 5))
+      ae.d("MicroMsg.NetSceneNewVoiceInput", "can read length : %s,reqSeq:%s,interval:%s", new Object[] { Integer.valueOf(this.iAB), Integer.valueOf(locala.iBE), Integer.valueOf(this.gxu) });
+      if ((this.iAB < 500) && (locala.iBE > 5))
       {
-        ad.d("MicroMsg.NetSceneNewVoiceInput", "can read length : %s double interval", new Object[] { Integer.valueOf(this.ixI) });
-        this.ixN.sendEmptyMessageDelayed(291, this.guN * 2);
+        ae.d("MicroMsg.NetSceneNewVoiceInput", "can read length : %s double interval", new Object[] { Integer.valueOf(this.iAB) });
+        this.iAG.sendEmptyMessageDelayed(291, this.gxu * 2);
       }
       for (;;)
       {
         AppMethodBeat.o(148518);
         return true;
-        this.ixN.sendEmptyMessageDelayed(291, this.guN);
+        this.iAG.sendEmptyMessageDelayed(291, this.gxu);
       }
     }
-    this.ixN.sendEmptyMessageDelayed(291, this.guN * 2);
+    this.iAG.sendEmptyMessageDelayed(291, this.gxu * 2);
     AppMethodBeat.o(148518);
     return true;
   }
   
-  public final void aNN()
+  public final void aOl()
   {
     AppMethodBeat.i(148522);
-    ad.d("MicroMsg.NetSceneNewVoiceInput", com.tencent.mm.compatible.util.f.abi());
-    if (this.ixH)
+    ae.d("MicroMsg.NetSceneNewVoiceInput", com.tencent.mm.compatible.util.f.abr());
+    if (this.iAA)
     {
       AppMethodBeat.o(148522);
       return;
     }
-    this.ixH = true;
-    aNO();
-    g.aiU().oT(hashCode());
-    h.a locala = this.ixF.qu(this.inw);
+    this.iAA = true;
+    aOm();
+    g.ajj().oW(hashCode());
+    h.a locala = this.iAy.qx(this.iqq);
     if (locala != null)
     {
-      this.ixI = 0;
-      g.ajF().ay(new c.1(this, locala));
+      this.iAB = 0;
+      g.ajU().aw(new c.1(this, locala));
     }
     AppMethodBeat.o(148522);
   }
   
-  public final int doScene(e parame, com.tencent.mm.al.f paramf)
+  public final int doScene(e parame, com.tencent.mm.ak.f paramf)
   {
     AppMethodBeat.i(148519);
     this.callback = paramf;
     paramf = new b.a();
-    paramf.hNM = new dwn();
-    paramf.hNN = new dwp();
+    paramf.hQF = new dye();
+    paramf.hQG = new dyg();
     paramf.uri = "/cgi-bin/micromsg-bin/voicetrans";
     paramf.funcId = 235;
-    paramf.hNO = 381;
+    paramf.hQH = 381;
     paramf.respCmdId = 1000000381;
-    paramf = paramf.aDC();
+    paramf = paramf.aDS();
     paramf.getReqObj().setShortSupport(false);
-    Object localObject1 = (dwn)paramf.hNK.hNQ;
-    Object localObject2 = this.ixF.qu(this.inw);
-    ((dwn)localObject1).Scene = this.scene;
+    Object localObject1 = (dye)paramf.hQD.hQJ;
+    Object localObject2 = this.iAy.qx(this.iqq);
+    ((dye)localObject1).Scene = this.scene;
     if (localObject2 == null)
     {
-      ((dwn)localObject1).xcN = new SKBuiltinBuffer_t();
-      ((dwn)localObject1).FMu = this.inw;
-      ((dwn)localObject1).HFt = "0";
-      ((dwn)localObject1).ihf = 1;
-      ((dwn)localObject1).HFv = 2;
-      ((dwn)localObject1).FKZ = 0;
-      ((dwn)localObject1).HIW = this.ixF.aNV();
-      if (((dwn)localObject1).HIW == null) {}
-      for (i = 0;; i = ((dwn)localObject1).HIW.size())
+      ((dye)localObject1).xsE = new SKBuiltinBuffer_t();
+      ((dye)localObject1).GeT = this.iqq;
+      ((dye)localObject1).HZg = "0";
+      ((dye)localObject1).ijY = 1;
+      ((dye)localObject1).HZi = 2;
+      ((dye)localObject1).Gdy = 0;
+      ((dye)localObject1).Ide = this.iAy.aOt();
+      if (((dye)localObject1).Ide == null) {}
+      for (i = 0;; i = ((dye)localObject1).Ide.size())
       {
-        ((dwn)localObject1).HIV = i;
-        ((dwn)localObject1).Hnc = this.ixJ;
-        ((dwn)localObject1).HIX = this.ixK;
+        ((dye)localObject1).Idd = i;
+        ((dye)localObject1).HGC = this.iAC;
+        ((dye)localObject1).Idf = this.iAD;
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append("[");
-        localObject1 = ((dwn)localObject1).HIW.iterator();
+        localObject1 = ((dye)localObject1).Ide.iterator();
         while (((Iterator)localObject1).hasNext()) {
-          ((StringBuilder)localObject2).append(((cwt)((Iterator)localObject1).next()).HoB).append(", ");
+          ((StringBuilder)localObject2).append(((cxn)((Iterator)localObject1).next()).HId).append(", ");
         }
       }
       ((StringBuilder)localObject2).append("]");
-      ad.d("MicroMsg.NetSceneNewVoiceInput", "send empty packet fetch %s time %s", new Object[] { ((StringBuilder)localObject2).toString(), Long.valueOf(System.currentTimeMillis()) });
+      ae.d("MicroMsg.NetSceneNewVoiceInput", "send empty packet fetch %s time %s", new Object[] { ((StringBuilder)localObject2).toString(), Long.valueOf(System.currentTimeMillis()) });
       i = dispatch(parame, paramf, this);
       AppMethodBeat.o(148519);
       return i;
     }
-    ((h.a)localObject2).iyI = true;
-    if (this.ixH)
+    ((h.a)localObject2).iBB = true;
+    if (this.iAA)
     {
-      ((h.a)localObject2).iyJ = true;
-      ((dwn)localObject1).xcN = new SKBuiltinBuffer_t();
-      ad.i("MicroMsg.NetSceneNewVoiceInput", "send last packet");
-      ((dwn)localObject1).FMu = this.inw;
-      ((dwn)localObject1).HFt = ((h.a)localObject2).iyH;
-      if (!((h.a)localObject2).iyJ) {
+      ((h.a)localObject2).iBC = true;
+      ((dye)localObject1).xsE = new SKBuiltinBuffer_t();
+      ae.i("MicroMsg.NetSceneNewVoiceInput", "send last packet");
+      ((dye)localObject1).GeT = this.iqq;
+      ((dye)localObject1).HZg = ((h.a)localObject2).iBA;
+      if (!((h.a)localObject2).iBC) {
         break label836;
       }
       i = 1;
       label417:
-      ((dwn)localObject1).ihf = i;
-      ((dwn)localObject1).HFv = 2;
-      i = ((h.a)localObject2).iyL + 1;
-      ((h.a)localObject2).iyL = i;
-      ((dwn)localObject1).FKZ = i;
-      ((dwn)localObject1).HIW = this.ixF.aNV();
-      if (((dwn)localObject1).HIW != null) {
+      ((dye)localObject1).ijY = i;
+      ((dye)localObject1).HZi = 2;
+      i = ((h.a)localObject2).iBE + 1;
+      ((h.a)localObject2).iBE = i;
+      ((dye)localObject1).Gdy = i;
+      ((dye)localObject1).Ide = this.iAy.aOt();
+      if (((dye)localObject1).Ide != null) {
         break label841;
       }
     }
     label836:
     label841:
-    for (int i = 0;; i = ((dwn)localObject1).HIW.size())
+    for (int i = 0;; i = ((dye)localObject1).Ide.size())
     {
-      ((dwn)localObject1).HIV = i;
-      ((dwn)localObject1).Hnc = this.ixJ;
-      ((dwn)localObject1).HIX = this.ixK;
-      ad.d("MicroMsg.NetSceneNewVoiceInput", "%s, read filename: %s, voiceFileMarkEnd: %s, oldReadOffset: %s, canReadLen %s, getILen %s, isRequestEnd: %s, Seq %s, FetchVoiceIds %s, VadVersion %s, scene:%s", new Object[] { com.tencent.mm.compatible.util.f.abi(), this.filename, Integer.valueOf(((h.a)localObject2).iyK), Integer.valueOf(this.inw), Integer.valueOf(this.ixI), Integer.valueOf(((dwn)localObject1).xcN.getILen()), Boolean.valueOf(((h.a)localObject2).iyJ), Integer.valueOf(((dwn)localObject1).FKZ), ((dwn)localObject1).HIW, ((dwn)localObject1).Hnc, Integer.valueOf(((dwn)localObject1).Scene) });
-      i = this.inw;
-      this.inw = (((dwn)localObject1).xcN.getILen() + i);
-      ad.i("MicroMsg.NetSceneNewVoiceInput", "clientId %s oldReadOffset %s", new Object[] { ((h.a)localObject2).iyH, Integer.valueOf(this.inw) });
-      if (((h.a)localObject2).iyL == 1) {
-        ad.i("MicroMsg.NetSceneNewVoiceInput", "time flee send seq 1 time = %s", new Object[] { Long.valueOf(System.currentTimeMillis()) });
+      ((dye)localObject1).Idd = i;
+      ((dye)localObject1).HGC = this.iAC;
+      ((dye)localObject1).Idf = this.iAD;
+      ae.d("MicroMsg.NetSceneNewVoiceInput", "%s, read filename: %s, voiceFileMarkEnd: %s, oldReadOffset: %s, canReadLen %s, getILen %s, isRequestEnd: %s, Seq %s, FetchVoiceIds %s, VadVersion %s, scene:%s", new Object[] { com.tencent.mm.compatible.util.f.abr(), this.filename, Integer.valueOf(((h.a)localObject2).iBD), Integer.valueOf(this.iqq), Integer.valueOf(this.iAB), Integer.valueOf(((dye)localObject1).xsE.getILen()), Boolean.valueOf(((h.a)localObject2).iBC), Integer.valueOf(((dye)localObject1).Gdy), ((dye)localObject1).Ide, ((dye)localObject1).HGC, Integer.valueOf(((dye)localObject1).Scene) });
+      i = this.iqq;
+      this.iqq = (((dye)localObject1).xsE.getILen() + i);
+      ae.i("MicroMsg.NetSceneNewVoiceInput", "clientId %s oldReadOffset %s", new Object[] { ((h.a)localObject2).iBA, Integer.valueOf(this.iqq) });
+      if (((h.a)localObject2).iBE == 1) {
+        ae.i("MicroMsg.NetSceneNewVoiceInput", "time flee send seq 1 time = %s", new Object[] { Long.valueOf(System.currentTimeMillis()) });
       }
-      ad.d("MicroMsg.NetSceneNewVoiceInput", "send dispatch packet time %s", new Object[] { Long.valueOf(System.currentTimeMillis()) });
+      ae.d("MicroMsg.NetSceneNewVoiceInput", "send dispatch packet time %s", new Object[] { Long.valueOf(System.currentTimeMillis()) });
       i = dispatch(parame, paramf, this);
       AppMethodBeat.o(148519);
       return i;
-      if (this.ixI > this.ixM) {
-        this.ixI = this.ixM;
+      if (this.iAB > this.iAF) {
+        this.iAB = this.iAF;
       }
-      for (((h.a)localObject2).iyJ = false;; ((h.a)localObject2).iyJ = true) {
+      for (((h.a)localObject2).iBC = false;; ((h.a)localObject2).iBC = true) {
         do
         {
-          byte[] arrayOfByte = i.aY(this.filename, this.inw, this.ixI);
-          ((dwn)localObject1).xcN = new SKBuiltinBuffer_t().setBuffer(arrayOfByte);
+          byte[] arrayOfByte = o.bb(this.filename, this.iqq, this.iAB);
+          ((dye)localObject1).xsE = new SKBuiltinBuffer_t().setBuffer(arrayOfByte);
           break;
-        } while ((this.ixI > this.ixM) || ((((h.a)localObject2).iyK == 2147483647) && (!this.iwe)));
+        } while ((this.iAB > this.iAF) || ((((h.a)localObject2).iBD == 2147483647) && (!this.iyX)));
       }
       i = 0;
       break label417;
@@ -342,60 +342,60 @@ public final class c
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, com.tencent.mm.network.q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(148521);
-    ad.d("MicroMsg.NetSceneNewVoiceInput", "%s time:%s errType: %s, errCode: %s, errMsg: %s", new Object[] { com.tencent.mm.compatible.util.f.abi(), Long.valueOf(System.currentTimeMillis()), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    ae.d("MicroMsg.NetSceneNewVoiceInput", "%s time:%s errType: %s, errCode: %s, errMsg: %s", new Object[] { com.tencent.mm.compatible.util.f.abr(), Long.valueOf(System.currentTimeMillis()), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
     if ((paramInt2 == 3) && (paramInt3 == -1)) {
-      ad.i("MicroMsg.NetSceneNewVoiceInput", "getStack([ %s ]), ThreadID: %s", new Object[] { bt.flS(), Long.valueOf(Thread.currentThread().getId()) });
+      ae.i("MicroMsg.NetSceneNewVoiceInput", "getStack([ %s ]), ThreadID: %s", new Object[] { bu.fpN(), Long.valueOf(Thread.currentThread().getId()) });
     }
-    paramArrayOfByte = (dwn)((b)paramq).hNK.hNQ;
-    paramq = (dwp)((b)paramq).hNL.hNQ;
+    paramArrayOfByte = (dye)((b)paramq).hQD.hQJ;
+    paramq = (dyg)((b)paramq).hQE.hQJ;
     if ((paramInt2 != 0) || (paramInt3 != 0))
     {
-      ad.i("MicroMsg.NetSceneNewVoiceInput", com.tencent.mm.compatible.util.f.abi() + " onGYNetEnd file: %s errType:%s errCode:%s", new Object[] { this.filename, Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
-      aNN();
+      ae.i("MicroMsg.NetSceneNewVoiceInput", com.tencent.mm.compatible.util.f.abr() + " onGYNetEnd file: %s errType:%s errCode:%s", new Object[] { this.filename, Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+      aOl();
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
       AppMethodBeat.o(148521);
       return;
     }
-    ad.d("MicroMsg.NetSceneNewVoiceInput", "onGYNetEnd voiceId = %s, seq = %s, time = %s", new Object[] { paramArrayOfByte.HFt, Integer.valueOf(paramArrayOfByte.FKZ), Long.valueOf(System.currentTimeMillis()) });
-    this.ixF.az(paramq.HJa);
-    if ((this.ixF.aNW()) && (this.iwe))
+    ae.d("MicroMsg.NetSceneNewVoiceInput", "onGYNetEnd voiceId = %s, seq = %s, time = %s", new Object[] { paramArrayOfByte.HZg, Integer.valueOf(paramArrayOfByte.Gdy), Long.valueOf(System.currentTimeMillis()) });
+    this.iAy.az(paramq.Idi);
+    if ((this.iAy.aOu()) && (this.iyX))
     {
-      ad.d("MicroMsg.NetSceneNewVoiceInput", "onGYNetEnd isAllRespEnd && isRecordFinish");
-      aNO();
+      ae.d("MicroMsg.NetSceneNewVoiceInput", "onGYNetEnd isAllRespEnd && isRecordFinish");
+      aOm();
     }
-    this.ixL = new String[] { this.ixF.getResult() };
+    this.iAE = new String[] { this.iAy.getResult() };
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    if (paramq.HJb <= 0)
+    if (paramq.Idj <= 0)
     {
-      paramInt1 = this.ixM;
-      this.ixM = paramInt1;
-      if (paramq.Hix >= 0) {
+      paramInt1 = this.iAF;
+      this.iAF = paramInt1;
+      if (paramq.HBX >= 0) {
         break label404;
       }
     }
     label404:
-    for (paramInt1 = 120;; paramInt1 = paramq.Hix)
+    for (paramInt1 = 120;; paramInt1 = paramq.HBX)
     {
-      this.guN = paramInt1;
-      ad.d("MicroMsg.NetSceneNewVoiceInput", "onGYNetEnd max_send_byte_per_pack = %s, interval = %s", new Object[] { Integer.valueOf(this.ixM), Integer.valueOf(this.guN) });
+      this.gxu = paramInt1;
+      ae.d("MicroMsg.NetSceneNewVoiceInput", "onGYNetEnd max_send_byte_per_pack = %s, interval = %s", new Object[] { Integer.valueOf(this.iAF), Integer.valueOf(this.gxu) });
       AppMethodBeat.o(148521);
       return;
-      paramInt1 = paramq.HJb;
+      paramInt1 = paramq.Idj;
       break;
     }
   }
   
-  public final void qt(int paramInt)
+  public final void qw(int paramInt)
   {
     AppMethodBeat.i(148524);
-    ad.d("MicroMsg.NetSceneNewVoiceInput", "%s %s", new Object[] { com.tencent.mm.compatible.util.f.abi(), Integer.valueOf(paramInt) });
+    ae.d("MicroMsg.NetSceneNewVoiceInput", "%s %s", new Object[] { com.tencent.mm.compatible.util.f.abr(), Integer.valueOf(paramInt) });
     if (paramInt < 0)
     {
       IllegalStateException localIllegalStateException = new IllegalStateException();
       AppMethodBeat.o(148524);
       throw localIllegalStateException;
     }
-    this.ixF.qt(paramInt);
+    this.iAy.qw(paramInt);
     AppMethodBeat.o(148524);
   }
   
@@ -406,16 +406,16 @@ public final class c
   
   public final n.b securityVerificationChecked(com.tencent.mm.network.q paramq)
   {
-    return n.b.hOp;
+    return n.b.hRi;
   }
   
   public final void setSecurityCheckError(n.a parama)
   {
     AppMethodBeat.i(148520);
-    ad.w("MicroMsg.NetSceneNewVoiceInput", com.tencent.mm.compatible.util.f.abi() + " setSecurityCheckError e: %s", new Object[] { parama });
-    if (parama == n.a.hOm)
+    ae.w("MicroMsg.NetSceneNewVoiceInput", com.tencent.mm.compatible.util.f.abr() + " setSecurityCheckError e: %s", new Object[] { parama });
+    if (parama == n.a.hRf)
     {
-      aNN();
+      aOl();
       this.callback.onSceneEnd(3, -1, "SecurityCheckError", this);
     }
     AppMethodBeat.o(148520);

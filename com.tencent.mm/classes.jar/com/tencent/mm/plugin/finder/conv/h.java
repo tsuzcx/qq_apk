@@ -8,88 +8,88 @@ import com.tencent.mm.plugin.finder.storage.w.b;
 import com.tencent.mm.plugin.messenger.foundation.a.a.i.c;
 import com.tencent.mm.pointers.PInt;
 import com.tencent.mm.pointers.PString;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.storage.am;
-import com.tencent.mm.storage.at;
-import com.tencent.mm.storage.bq;
-import com.tencent.mm.storage.bq.b;
-import com.tencent.mm.storage.bu;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.storage.an;
+import com.tencent.mm.storage.au;
+import com.tencent.mm.storage.br;
+import com.tencent.mm.storage.br.b;
+import com.tencent.mm.storage.bv;
 import d.f;
 import d.g.b.p;
 import d.g.b.q;
 import d.z;
 
-@d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/conv/FinderConversationUpdater;", "Lcom/tencent/mm/plugin/messenger/foundation/api/IConversationUpdateCallback;", "()V", "sessionInfoStorage", "Lcom/tencent/mm/plugin/finder/storage/FinderSessionInfoStorage;", "getSessionInfoStorage", "()Lcom/tencent/mm/plugin/finder/storage/FinderSessionInfoStorage;", "sessionInfoStorage$delegate", "Lkotlin/Lazy;", "storage", "Lcom/tencent/mm/plugin/finder/storage/FinderConversationStorage;", "getStorage", "()Lcom/tencent/mm/plugin/finder/storage/FinderConversationStorage;", "storage$delegate", "afterConversationUpdate", "", "latestMsg", "Lcom/tencent/mm/storage/MsgInfo;", "conversation", "Lcom/tencent/mm/storage/Conversation;", "newCon", "", "notifyInfo", "Lcom/tencent/mm/plugin/messenger/foundation/api/storage/IMsgInfoStorage$NotifyInfo;", "assemble", "newConv", "beforeConversationUpdate", "isConsumed", "", "checkInsertHolder", "onConversationMsgEmpty", "sessionId", "", "updateFinderConversation", "pDigest", "Lcom/tencent/mm/pointers/PString;", "pDigestUser", "insertCount", "", "Companion", "plugin-finder_release"})
+@d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/conv/FinderConversationUpdater;", "Lcom/tencent/mm/plugin/messenger/foundation/api/IConversationUpdateCallback;", "()V", "sessionInfoStorage", "Lcom/tencent/mm/plugin/finder/storage/FinderSessionInfoStorage;", "getSessionInfoStorage", "()Lcom/tencent/mm/plugin/finder/storage/FinderSessionInfoStorage;", "sessionInfoStorage$delegate", "Lkotlin/Lazy;", "storage", "Lcom/tencent/mm/plugin/finder/storage/FinderConversationStorage;", "getStorage", "()Lcom/tencent/mm/plugin/finder/storage/FinderConversationStorage;", "storage$delegate", "afterConversationUpdate", "", "latestMsg", "Lcom/tencent/mm/storage/MsgInfo;", "conversation", "Lcom/tencent/mm/storage/Conversation;", "newCon", "", "notifyInfo", "Lcom/tencent/mm/plugin/messenger/foundation/api/storage/IMsgInfoStorage$NotifyInfo;", "assemble", "newConv", "beforeConversationUpdate", "isConsumed", "", "checkInsertHolder", "onConversationMsgEmpty", "sessionId", "", "updateFinderConversation", "pDigest", "Lcom/tencent/mm/pointers/PString;", "pDigestUser", "insertCount", "", "Companion", "plugin-finder_release"})
 public final class h
   implements com.tencent.mm.plugin.messenger.foundation.a.g
 {
-  public static final a rLK;
-  private final f moq;
-  private final f rLJ;
+  public static final a rTX;
+  private final f mto;
+  private final f rTW;
   
   static
   {
-    AppMethodBeat.i(201297);
-    rLK = new a((byte)0);
-    AppMethodBeat.o(201297);
+    AppMethodBeat.i(201724);
+    rTX = new a((byte)0);
+    AppMethodBeat.o(201724);
   }
   
   public h()
   {
-    AppMethodBeat.i(201296);
-    this.rLJ = d.g.O((d.g.a.a)c.rLM);
-    this.moq = d.g.O((d.g.a.a)d.rLN);
-    AppMethodBeat.o(201296);
+    AppMethodBeat.i(201723);
+    this.rTW = d.g.O((d.g.a.a)c.rTZ);
+    this.mto = d.g.O((d.g.a.a)d.rUa);
+    AppMethodBeat.o(201723);
   }
   
-  private final d cyU()
+  private final d cAy()
   {
-    AppMethodBeat.i(201295);
-    d locald = (d)this.moq.getValue();
-    AppMethodBeat.o(201295);
+    AppMethodBeat.i(201722);
+    d locald = (d)this.mto.getValue();
+    AppMethodBeat.o(201722);
     return locald;
   }
   
   private final w getSessionInfoStorage()
   {
-    AppMethodBeat.i(201294);
-    w localw = (w)this.rLJ.getValue();
-    AppMethodBeat.o(201294);
+    AppMethodBeat.i(201721);
+    w localw = (w)this.rTW.getValue();
+    AppMethodBeat.o(201721);
     return localw;
   }
   
-  public final void a(bu parambu, i.c paramc, boolean[] paramArrayOfBoolean)
+  public final void a(bv parambv, i.c paramc, boolean[] paramArrayOfBoolean)
   {
-    AppMethodBeat.i(201292);
+    AppMethodBeat.i(201719);
     p.h(paramc, "notifyInfo");
     p.h(paramArrayOfBoolean, "isConsumed");
     Object localObject1 = com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class);
     p.g(localObject1, "MMKernel.service(IMessengerStorage::class.java)");
-    Object localObject2 = ((com.tencent.mm.plugin.messenger.foundation.a.l)localObject1).azv();
+    Object localObject2 = ((com.tencent.mm.plugin.messenger.foundation.a.l)localObject1).azL();
     int i;
     int j;
     boolean bool;
-    if (am.ail(paramc.talker))
+    if (an.aji(paramc.talker))
     {
-      if ((parambu != null) && (parambu.VP() == 0L)) {
+      if ((parambv != null) && (parambv.VX() == 0L)) {
         break label889;
       }
-      if (!p.i(paramc.vKe, "insert")) {
+      if (!p.i(paramc.vWi, "insert")) {
         break label551;
       }
-      i = paramc.scY;
-      if (parambu == null) {
-        p.gfZ();
+      i = paramc.slP;
+      if (parambv == null) {
+        p.gkB();
       }
       localObject1 = new PString();
       PString localPString = new PString();
       Object localObject3 = new PInt();
       p.g(localObject2, "storage");
-      ((bq)localObject2).Na().a(parambu, (PString)localObject1, localPString, (PInt)localObject3, false);
+      ((br)localObject2).MV().a(parambv, (PString)localObject1, localPString, (PInt)localObject3, false);
       paramc = paramc.talker;
       p.g(paramc, "notifyInfo.talker");
-      localObject3 = getSessionInfoStorage().aiw(paramc);
+      localObject3 = getSessionInfoStorage().ajt(paramc);
       localObject2 = ((j)localObject3).field_talker;
       int m = ((j)localObject3).field_type;
       int n = ((j)localObject3).field_actionPermission;
@@ -98,11 +98,11 @@ public final class h
       int k = n;
       j = m;
       if (m == 1) {
-        if (parambu.VR() != 1)
+        if (parambv.VZ() != 1)
         {
           k = n;
           j = m;
-          if (!am.aSU((String)localObject2)) {}
+          if (!an.aUu((String)localObject2)) {}
         }
         else
         {
@@ -110,11 +110,11 @@ public final class h
           k = 1;
           localObject3 = getSessionInfoStorage();
           p.g(localObject2, "talker");
-          ((w)localObject3).a(paramc, (String)localObject2, 2, 1, w.b.szj, i1, i2);
-          ad.i("Finder.ConversationUpdater", "[updateFinderConversation] change type to normal. sessionId=".concat(String.valueOf(paramc)));
+          ((w)localObject3).a(paramc, (String)localObject2, 2, 1, w.b.sKa, i1, i2);
+          ae.i("Finder.ConversationUpdater", "[updateFinderConversation] change type to normal. sessionId=".concat(String.valueOf(paramc)));
         }
       }
-      paramc = cyU().aiq(paramc);
+      paramc = cAy().ajn(paramc);
       if (paramc.systemRowid > 0L) {
         break label557;
       }
@@ -123,16 +123,16 @@ public final class h
       m = paramc.field_unReadCount;
       paramc.field_digest = ((PString)localObject1).value;
       paramc.field_digestUser = localPString.value;
-      paramc.field_updateTime = parambu.getCreateTime();
-      paramc.field_digestType = String.valueOf(parambu.getType());
+      paramc.field_updateTime = parambv.getCreateTime();
+      paramc.field_digestType = String.valueOf(parambv.getType());
       paramc.field_unReadCount += i;
-      paramc.field_lastMsgID = parambu.VP();
-      paramc.field_isSend = parambu.VR();
-      paramc.field_status = parambu.getStatus();
+      paramc.field_lastMsgID = parambv.VX();
+      paramc.field_isSend = parambv.VZ();
+      paramc.field_status = parambv.getStatus();
       paramc.field_talker = ((String)localObject2);
       paramc.field_type = j;
       paramc.field_actionPermission = k;
-      if (!am.aSU((String)localObject2)) {
+      if (!an.aUu((String)localObject2)) {
         break label563;
       }
       j = 1;
@@ -142,20 +142,20 @@ public final class h
       if (!bool) {
         break label569;
       }
-      cyU().insertNotify((com.tencent.mm.sdk.e.c)paramc, false);
-      cyU().doNotify(paramc.field_sessionId, 2, paramc);
+      cAy().insertNotify((com.tencent.mm.sdk.e.c)paramc, false);
+      cAy().doNotify(paramc.field_sessionId, 2, paramc);
       label459:
       switch (paramc.field_scene)
       {
       default: 
         label484:
-        ad.i("Finder.ConversationUpdater", "[updateFinderConversation] isNew=" + bool + " beforeUnreadCount=" + m + " insertCount=" + i + ' ' + com.tencent.mm.plugin.finder.storage.e.b(paramc));
+        ae.i("Finder.ConversationUpdater", "[updateFinderConversation] isNew=" + bool + " beforeUnreadCount=" + m + " insertCount=" + i + ' ' + com.tencent.mm.plugin.finder.storage.e.b(paramc));
       }
     }
     for (;;)
     {
       paramArrayOfBoolean[0] = true;
-      AppMethodBeat.o(201292);
+      AppMethodBeat.o(201719);
       return;
       label551:
       i = 0;
@@ -167,83 +167,83 @@ public final class h
       j = 2;
       break label417;
       label569:
-      cyU().update(paramc.systemRowid, (com.tencent.mm.sdk.e.c)paramc, false);
-      cyU().doNotify(paramc.field_sessionId, 1, paramc);
+      cAy().update(paramc.systemRowid, (com.tencent.mm.sdk.e.c)paramc, false);
+      cAy().doNotify(paramc.field_sessionId, 1, paramc);
       break label459;
       if (i <= 0) {
         break label484;
       }
-      if (parambu.VR() == 0)
+      if (parambv.VZ() == 0)
       {
-        parambu = com.tencent.mm.kernel.g.ad(PluginFinder.class);
-        p.g(parambu, "MMKernel.plugin(PluginFinder::class.java)");
-        parambu = ((PluginFinder)parambu).getRedDotManager().rRV;
+        parambv = com.tencent.mm.kernel.g.ad(PluginFinder.class);
+        p.g(parambv, "MMKernel.plugin(PluginFinder::class.java)");
+        parambv = ((PluginFinder)parambv).getRedDotManager().sax;
         localObject1 = paramc.field_sessionId;
         p.g(localObject1, "conv.field_sessionId");
         p.h(localObject1, "<set-?>");
-        parambu.rRF = ((String)localObject1);
+        parambv.sah = ((String)localObject1);
       }
-      parambu = com.tencent.mm.kernel.g.ad(PluginFinder.class);
-      p.g(parambu, "MMKernel.plugin(PluginFinder::class.java)");
-      parambu = ((PluginFinder)parambu).getRedDotManager().rRV;
-      parambu.handler.removeMessages(3);
-      parambu.handler.sendEmptyMessage(3);
+      parambv = com.tencent.mm.kernel.g.ad(PluginFinder.class);
+      p.g(parambv, "MMKernel.plugin(PluginFinder::class.java)");
+      parambv = ((PluginFinder)parambv).getRedDotManager().sax;
+      parambv.handler.removeMessages(3);
+      parambv.handler.sendEmptyMessage(3);
       break label484;
       if (paramc.field_type == 1)
       {
         if (i > 0)
         {
-          parambu = com.tencent.mm.kernel.g.ad(PluginFinder.class);
-          p.g(parambu, "MMKernel.plugin(PluginFinder::class.java)");
-          parambu = ((PluginFinder)parambu).getRedDotManager().rRV;
-          parambu.handler.removeMessages(2);
-          parambu.handler.sendEmptyMessage(2);
+          parambv = com.tencent.mm.kernel.g.ad(PluginFinder.class);
+          p.g(parambv, "MMKernel.plugin(PluginFinder::class.java)");
+          parambv = ((PluginFinder)parambv).getRedDotManager().sax;
+          parambv.handler.removeMessages(2);
+          parambv.handler.sendEmptyMessage(2);
         }
-        parambu = cyU().aiq("findersayhisessionholder");
-        parambu.field_digest = ((PString)localObject1).value;
-        parambu.field_readStatus = 0;
-        parambu.field_unReadCount += i;
-        parambu.field_updateTime = paramc.field_updateTime;
-        cyU().update(parambu.systemRowid, (com.tencent.mm.sdk.e.c)parambu, false);
+        parambv = cAy().ajn("findersayhisessionholder");
+        parambv.field_digest = ((PString)localObject1).value;
+        parambv.field_readStatus = 0;
+        parambv.field_unReadCount += i;
+        parambv.field_updateTime = paramc.field_updateTime;
+        cAy().update(parambv.systemRowid, (com.tencent.mm.sdk.e.c)parambv, false);
         break label484;
       }
       if ((paramc.field_type != 2) || (i <= 0)) {
         break label484;
       }
-      parambu = com.tencent.mm.kernel.g.ad(PluginFinder.class);
-      p.g(parambu, "MMKernel.plugin(PluginFinder::class.java)");
-      parambu = ((PluginFinder)parambu).getRedDotManager().rRV;
-      parambu.handler.removeMessages(1);
-      parambu.handler.sendEmptyMessage(1);
+      parambv = com.tencent.mm.kernel.g.ad(PluginFinder.class);
+      p.g(parambv, "MMKernel.plugin(PluginFinder::class.java)");
+      parambv = ((PluginFinder)parambv).getRedDotManager().sax;
+      parambv.handler.removeMessages(1);
+      parambv.handler.sendEmptyMessage(1);
       break label484;
       label889:
-      parambu = paramc.talker;
-      p.g(parambu, "notifyInfo.talker");
-      parambu = cyU().aiq(parambu);
-      ad.i("Finder.ConversationUpdater", "[onConversationMsgEmpty] " + parambu.systemRowid);
-      if (parambu.systemRowid > 0L)
+      parambv = paramc.talker;
+      p.g(parambv, "notifyInfo.talker");
+      parambv = cAy().ajn(parambv);
+      ae.i("Finder.ConversationUpdater", "[onConversationMsgEmpty] " + parambv.systemRowid);
+      if (parambv.systemRowid > 0L)
       {
-        parambu.field_digest = "";
-        cyU().update(parambu.systemRowid, (com.tencent.mm.sdk.e.c)parambu, false);
-        cyU().doNotify(parambu.field_sessionId, 1, parambu);
+        parambv.field_digest = "";
+        cAy().update(parambv.systemRowid, (com.tencent.mm.sdk.e.c)parambv, false);
+        cAy().doNotify(parambv.field_sessionId, 1, parambv);
       }
     }
   }
   
-  public final void a(bu parambu, at paramat, boolean paramBoolean, i.c paramc)
+  public final void a(bv parambv, au paramau, boolean paramBoolean, i.c paramc)
   {
-    AppMethodBeat.i(201293);
-    p.h(paramat, "conversation");
+    AppMethodBeat.i(201720);
+    p.h(paramau, "conversation");
     p.h(paramc, "notifyInfo");
-    AppMethodBeat.o(201293);
+    AppMethodBeat.o(201720);
   }
   
-  public final void b(bu parambu, at paramat, boolean paramBoolean, i.c paramc) {}
+  public final void b(bv parambv, au paramau, boolean paramBoolean, i.c paramc) {}
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/conv/FinderConversationUpdater$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/conv/FinderConversationUpdater$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
   public static final class a {}
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
   public static final class b
     extends q
     implements d.g.a.a<z>
@@ -254,18 +254,18 @@ public final class h
     }
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "Lcom/tencent/mm/plugin/finder/storage/FinderSessionInfoStorage;", "invoke"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "Lcom/tencent/mm/plugin/finder/storage/FinderSessionInfoStorage;", "invoke"})
   static final class c
     extends q
     implements d.g.a.a<w>
   {
-    public static final c rLM;
+    public static final c rTZ;
     
     static
     {
-      AppMethodBeat.i(201289);
-      rLM = new c();
-      AppMethodBeat.o(201289);
+      AppMethodBeat.i(201716);
+      rTZ = new c();
+      AppMethodBeat.o(201716);
     }
     
     c()
@@ -274,18 +274,18 @@ public final class h
     }
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "Lcom/tencent/mm/plugin/finder/storage/FinderConversationStorage;", "invoke"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "Lcom/tencent/mm/plugin/finder/storage/FinderConversationStorage;", "invoke"})
   static final class d
     extends q
     implements d.g.a.a<d>
   {
-    public static final d rLN;
+    public static final d rUa;
     
     static
     {
-      AppMethodBeat.i(201291);
-      rLN = new d();
-      AppMethodBeat.o(201291);
+      AppMethodBeat.i(201718);
+      rUa = new d();
+      AppMethodBeat.o(201718);
     }
     
     d()

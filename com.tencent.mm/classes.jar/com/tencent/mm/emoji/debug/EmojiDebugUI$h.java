@@ -3,7 +3,7 @@ package com.tencent.mm.emoji.debug;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/emoji/debug/EmojiDebugUI$GroupItem;", "Lcom/tencent/mm/emoji/debug/EmojiDebugUI$AbsItem;", "Lcom/tencent/mm/emoji/debug/EmojiDebugUI;", "title", "", "(Lcom/tencent/mm/emoji/debug/EmojiDebugUI;Ljava/lang/String;)V", "getTitle", "()Ljava/lang/String;", "onClick", "", "value", "plugin-emojisdk_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/emoji/debug/EmojiDebugUI$GroupItem;", "Lcom/tencent/mm/emoji/debug/EmojiDebugUI$AbsItem;", "Lcom/tencent/mm/emoji/debug/EmojiDebugUI;", "title", "", "(Lcom/tencent/mm/emoji/debug/EmojiDebugUI;Ljava/lang/String;)V", "getTitle", "()Ljava/lang/String;", "onClick", "", "value", "plugin-emojisdk_release"})
 public final class EmojiDebugUI$h
   extends EmojiDebugUI.a
 {
@@ -12,12 +12,12 @@ public final class EmojiDebugUI$h
   public EmojiDebugUI$h(String paramString)
   {
     super(paramString);
-    AppMethodBeat.i(218926);
+    AppMethodBeat.i(188532);
     this.title = localObject;
-    AppMethodBeat.o(218926);
+    AppMethodBeat.o(188532);
   }
   
-  public final String aer()
+  public final String aeD()
   {
     return this.title;
   }

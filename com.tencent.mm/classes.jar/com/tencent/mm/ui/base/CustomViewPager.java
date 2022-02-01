@@ -4,7 +4,7 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.ui.mogic.WxViewPager;
 
 public class CustomViewPager
@@ -53,7 +53,7 @@ public class CustomViewPager
     }
     catch (Exception paramMotionEvent)
     {
-      ad.printErrStackTrace("MicroMsg.CustomViewPager", paramMotionEvent, "get a Exception", new Object[0]);
+      ae.printErrStackTrace("MicroMsg.CustomViewPager", paramMotionEvent, "get a Exception", new Object[0]);
       AppMethodBeat.o(141621);
     }
     return false;
@@ -75,7 +75,7 @@ public class CustomViewPager
     }
     catch (Exception paramMotionEvent)
     {
-      ad.printErrStackTrace("MicroMsg.CustomViewPager", paramMotionEvent, "get a Exception", new Object[0]);
+      ae.printErrStackTrace("MicroMsg.CustomViewPager", paramMotionEvent, "get a Exception", new Object[0]);
       AppMethodBeat.o(141622);
     }
     return false;

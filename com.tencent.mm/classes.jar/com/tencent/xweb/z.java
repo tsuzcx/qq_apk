@@ -2,38 +2,11 @@ package com.tencent.xweb;
 
 import android.webkit.WebSettings.LayoutAlgorithm;
 import android.webkit.WebSettings.RenderPriority;
+import java.util.Map;
 
 public abstract class z
 {
   public abstract void enableCustomizedLongPressTimeout(int paramInt);
-  
-  public abstract void gaR();
-  
-  public abstract void gaS();
-  
-  public abstract void gaT();
-  
-  @Deprecated
-  public abstract void gaU();
-  
-  public abstract void gaV();
-  
-  public abstract void gaW();
-  
-  public abstract void gaX();
-  
-  public abstract void gaY();
-  
-  @Deprecated
-  public abstract void gaZ();
-  
-  public abstract void gba();
-  
-  public abstract void gbb();
-  
-  public abstract void gbc();
-  
-  public abstract void gbd();
   
   public abstract boolean getBlockNetworkImage();
   
@@ -42,6 +15,36 @@ public abstract class z
   public abstract int getForceDarkMode();
   
   public abstract String getUserAgentString();
+  
+  public abstract void gfA();
+  
+  @Deprecated
+  public abstract void gfB();
+  
+  public abstract void gfC();
+  
+  public abstract void gfD();
+  
+  public abstract void gfE();
+  
+  public abstract void gfF();
+  
+  public abstract void gft();
+  
+  public abstract void gfu();
+  
+  public abstract void gfv();
+  
+  @Deprecated
+  public abstract void gfw();
+  
+  public abstract void gfx();
+  
+  public abstract void gfy();
+  
+  public abstract void gfz();
+  
+  public abstract void setAppBrandInfo(Map<String, String> paramMap);
   
   public abstract void setAppCachePath(String paramString);
   

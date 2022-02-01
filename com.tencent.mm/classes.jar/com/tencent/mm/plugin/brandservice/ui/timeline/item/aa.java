@@ -1,191 +1,166 @@
 package com.tencent.mm.plugin.brandservice.ui.timeline.item;
 
+import android.content.Context;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.v;
-import com.tencent.mm.hellhoundlib.a.a;
-import com.tencent.mm.plugin.brandservice.ui.timeline.g;
-import com.tencent.mm.plugin.brandservice.ui.timeline.preload.c;
-import com.tencent.mm.pluginsdk.ui.applet.m.a;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mm.ah.n;
+import com.tencent.mm.ah.o;
+import com.tencent.mm.ah.p;
+import com.tencent.mm.ah.v;
+import com.tencent.mm.al.ag;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.w;
+import com.tencent.mm.storage.x;
 
-public final class aa
-  extends z
+public class aa
 {
-  public LinearLayout oeH;
-  public LinearLayout oeI;
-  public ah ofA;
-  public View.OnClickListener ofB;
-  public LinearLayout ofq;
-  public LinearLayout ofr;
-  public TextView ofs;
-  public List<w> oft;
-  public ag ofu;
-  public ai ofv;
-  public ae ofw;
-  public af ofx;
-  public aj ofy;
-  public ad ofz;
+  public ImageView fQl;
+  public TextView fVV;
+  public Context mContext;
+  public View oiV;
+  public View oio;
+  public TextView ojK;
+  private View.OnClickListener ola;
+  public com.tencent.mm.plugin.brandservice.ui.timeline.b oll;
+  public View olm;
+  public View oln;
   
   public aa()
   {
-    AppMethodBeat.i(6030);
-    this.oft = new ArrayList();
-    this.ofu = new ag();
-    this.ofv = new ai();
-    this.ofw = new ae();
-    this.ofx = new af();
-    this.ofy = new aj();
-    this.ofz = new ad();
-    this.ofA = new ah();
-    this.ofB = new View.OnClickListener()
+    AppMethodBeat.i(6020);
+    this.ola = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(6028);
+        AppMethodBeat.i(6019);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
         localb.bd(paramAnonymousView);
-        a.b("com/tencent/mm/plugin/brandservice/ui/timeline/item/BizTimeLineItemHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-        paramAnonymousView = (com.tencent.mm.storage.w)paramAnonymousView.getTag();
-        paramAnonymousView.field_isExpand = true;
-        paramAnonymousView.field_status = 4;
-        paramAnonymousView.field_isRead = 1;
-        paramAnonymousView.field_hasShow = 1;
-        com.tencent.mm.am.ag.aGf().p(paramAnonymousView);
-        com.tencent.mm.plugin.brandservice.ui.timeline.b.cl(aa.this.ofm.mHf);
-        aa.this.ofm.oaB.d(paramAnonymousView, 0);
-        a.a(this, "com/tencent/mm/plugin/brandservice/ui/timeline/item/BizTimeLineItemHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(6028);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/brandservice/ui/timeline/item/BizTimeLineItem$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        long l = ((com.tencent.mm.plugin.brandservice.a.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.brandservice.a.a.class)).dz(paramAnonymousView);
+        paramAnonymousView = ag.aGv().N(l, "msgId");
+        if (paramAnonymousView != null) {
+          aa.this.oll.ogr.d(paramAnonymousView, 4);
+        }
+        for (;;)
+        {
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/brandservice/ui/timeline/item/BizTimeLineItem$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+          AppMethodBeat.o(6019);
+          return;
+          ae.w("MicroMsg.BizTimeLineItem", "mediaIconClickListener info is null");
+        }
       }
     };
-    AppMethodBeat.o(6030);
+    AppMethodBeat.o(6020);
   }
   
-  public static void Y(View paramView, int paramInt)
+  public static void X(View paramView, int paramInt)
   {
-    AppMethodBeat.i(6034);
-    LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)paramView.getLayoutParams();
-    localLayoutParams.rightMargin = paramInt;
+    AppMethodBeat.i(6024);
+    ViewGroup.LayoutParams localLayoutParams = paramView.getLayoutParams();
+    localLayoutParams.height = paramInt;
     paramView.setLayoutParams(localLayoutParams);
-    AppMethodBeat.o(6034);
+    AppMethodBeat.o(6024);
   }
   
-  private void a(View paramView, x paramx, boolean paramBoolean)
+  public void a(View paramView, com.tencent.mm.plugin.brandservice.ui.timeline.b paramb)
   {
-    AppMethodBeat.i(6031);
-    if (paramBoolean)
+    AppMethodBeat.i(6021);
+    b(paramView.getContext(), paramb);
+    AppMethodBeat.o(6021);
+  }
+  
+  public void a(ImageView paramImageView, w paramw, int paramInt, String paramString)
+  {
+    AppMethodBeat.i(6027);
+    ((com.tencent.mm.plugin.brandservice.a.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.brandservice.a.a.class)).a(paramImageView, paramw.field_msgId, paramString, paramw.field_content, paramInt);
+    paramImageView.setOnClickListener(this.ola);
+    AppMethodBeat.o(6027);
+  }
+  
+  public void a(w paramw, v paramv, View paramView, TextView paramTextView, int paramInt) {}
+  
+  public final boolean a(View paramView, TextView paramTextView, w paramw, v paramv)
+  {
+    AppMethodBeat.i(6026);
+    if ((paramv == null) || (bu.isNullOrNil(paramv.url)))
     {
-      if (paramx.odh == null) {
-        paramx.a(paramView, this.ofm);
-      }
-      if (paramx.odh != null)
+      paramView.setVisibility(8);
+      a(paramw, paramv, paramView, paramTextView, 0);
+      AppMethodBeat.o(6026);
+      return false;
+    }
+    p localp = ((com.tencent.mm.plugin.brandservice.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.brandservice.a.b.class)).Xz(paramv.url);
+    String str2 = "";
+    String str1;
+    if ((localp != null) && (localp.hFP != null) && (!bu.isNullOrNil(localp.hFP.hFN))) {
+      str1 = localp.hFP.hFN;
+    }
+    while (!bu.isNullOrNil(str1))
+    {
+      paramView.setVisibility(0);
+      paramTextView.setText(str1);
+      a(paramw, paramv, paramView, paramTextView, localp.hFQ.hFK);
+      AppMethodBeat.o(6026);
+      return true;
+      str1 = str2;
+      if (localp != null)
       {
-        paramx.odh.setVisibility(0);
-        AppMethodBeat.o(6031);
-      }
-    }
-    else if (paramx.odh != null)
-    {
-      paramx.odh.setVisibility(8);
-    }
-    AppMethodBeat.o(6031);
-  }
-  
-  public static void c(v paramv)
-  {
-    if (paramv.type == 6) {
-      paramv.type = 7;
-    }
-  }
-  
-  public static void t(View paramView, int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(6033);
-    paramView.setPadding(0, paramInt1 - com.tencent.mm.plugin.brandservice.ui.timeline.b.oam, 0, paramInt2 - com.tencent.mm.plugin.brandservice.ui.timeline.b.oam);
-    AppMethodBeat.o(6033);
-  }
-  
-  public final void a(aa paramaa, int paramInt1, int paramInt2)
-  {
-    boolean bool2 = true;
-    AppMethodBeat.i(6032);
-    boolean bool1;
-    if (paramInt1 == 5)
-    {
-      bool1 = true;
-      a(paramaa.ofq, paramaa.ofv, bool1);
-      if (!bool1) {
-        break label247;
-      }
-    }
-    label48:
-    label79:
-    label110:
-    label244:
-    label247:
-    for (int i = 1;; i = 0)
-    {
-      if (paramInt1 == 8)
-      {
-        bool1 = true;
-        a(paramaa.ofq, paramaa.ofx, bool1);
-        if (bool1) {
-          i = 1;
-        }
-        if (paramInt1 != 7) {
-          break label220;
-        }
-        bool1 = true;
-        a(paramaa.ofq, paramaa.ofy, bool1);
-        if (bool1) {
-          i = 1;
-        }
-        if (paramInt1 != 6) {
-          break label226;
-        }
-        bool1 = true;
-        a(paramaa.ofq, paramaa.ofz, bool1);
-        if (bool1) {
-          i = 1;
-        }
-        if (paramInt1 != 10) {
-          break label232;
-        }
-        bool1 = true;
-        a(paramaa.ofq, paramaa.ofA, bool1);
-        if (!bool1) {
-          break label244;
-        }
-        i = 1;
-      }
-      for (;;)
-      {
-        LinearLayout localLinearLayout = paramaa.ofq;
-        paramaa = paramaa.ofu;
-        if ((i == 0) && (paramInt2 > 0) && (paramInt1 != -1)) {}
-        for (bool1 = bool2;; bool1 = false)
+        str1 = str2;
+        if (localp.hFQ != null)
         {
-          a(localLinearLayout, paramaa, bool1);
-          AppMethodBeat.o(6032);
-          return;
-          bool1 = false;
-          break;
-          bool1 = false;
-          break label48;
-          bool1 = false;
-          break label79;
-          bool1 = false;
-          break label110;
-          bool1 = false;
-          break label141;
+          str1 = str2;
+          if (!bu.isNullOrNil(localp.hFQ.hFJ)) {
+            str1 = localp.hFQ.hFJ;
+          }
         }
       }
     }
+    paramView.setVisibility(8);
+    a(paramw, paramv, paramView, paramTextView, 0);
+    AppMethodBeat.o(6026);
+    return false;
+  }
+  
+  public final boolean a(y paramy, w paramw, v paramv)
+  {
+    AppMethodBeat.i(6025);
+    boolean bool = a(paramy.oiv, paramy.oiw, paramw, paramv);
+    AppMethodBeat.o(6025);
+    return bool;
+  }
+  
+  public final void b(Context paramContext, com.tencent.mm.plugin.brandservice.ui.timeline.b paramb)
+  {
+    this.mContext = paramContext;
+    this.oll = paramb;
+  }
+  
+  public void bPJ()
+  {
+    AppMethodBeat.i(6022);
+    if (this.oiV == null)
+    {
+      AppMethodBeat.o(6022);
+      return;
+    }
+    this.fQl = ((ImageView)this.oiV.findViewById(2131297008));
+    this.ojK = ((TextView)this.oiV.findViewById(2131302860));
+    this.oln = this.oiV.findViewById(2131297371);
+    this.fVV = ((TextView)this.oiV.findViewById(2131305822));
+    this.olm = this.oiV.findViewById(2131297276);
+    AppMethodBeat.o(6022);
+  }
+  
+  public void dF(View paramView)
+  {
+    AppMethodBeat.i(6023);
+    X(paramView, com.tencent.mm.plugin.brandservice.ui.timeline.b.ofT);
+    AppMethodBeat.o(6023);
   }
 }
 

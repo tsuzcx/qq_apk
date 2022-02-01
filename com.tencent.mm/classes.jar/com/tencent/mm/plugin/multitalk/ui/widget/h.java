@@ -17,78 +17,78 @@ public final class h
   implements View.OnClickListener
 {
   private Context context;
-  private int sPS;
   private int size;
-  private int wfH;
-  private int wfK;
-  private LinearLayout wgk;
-  private LinearLayout wgl;
-  private LinearLayout wgm;
-  private int wgn;
-  private int wgo;
-  private int wgp;
-  private int wgq;
-  public int wgr;
+  private int tbf;
+  private LinearLayout wvN;
+  private LinearLayout wvO;
+  private LinearLayout wvP;
+  private int wvQ;
+  private int wvR;
+  private int wvS;
+  private int wvT;
+  public int wvU;
+  private int wvk;
+  private int wvn;
   
   public h(Activity paramActivity)
   {
     AppMethodBeat.i(114726);
     this.size = 0;
-    this.sPS = f.sPS;
-    this.wgp = (f.sPS + f.wfB);
-    this.wgq = (f.sPS * 2 + f.wfB);
-    this.wfH = (f.sPS * 4);
-    this.wfK = f.wfK;
+    this.tbf = f.tbf;
+    this.wvS = (f.tbf + f.wve);
+    this.wvT = (f.tbf * 2 + f.wve);
+    this.wvk = (f.tbf * 4);
+    this.wvn = f.wvn;
     this.context = paramActivity.getBaseContext();
-    int i = com.tencent.mm.cc.a.ip(this.context) - this.wfH * 2;
-    this.wgn = ((i - this.wgp * 10) / 5);
-    this.wgo = ((i - this.wgq * 10) / 5);
-    this.wgk = ((LinearLayout)paramActivity.findViewById(2131297002));
-    paramActivity = (RelativeLayout.LayoutParams)this.wgk.getLayoutParams();
-    paramActivity.topMargin = (this.sPS * 2);
-    paramActivity.bottomMargin = (this.sPS * 2);
-    paramActivity.leftMargin = this.wfH;
-    paramActivity.rightMargin = this.wfH;
-    this.wgk.setLayoutParams(paramActivity);
-    this.wgl = new LinearLayout(this.context);
-    this.wgm = new LinearLayout(this.context);
+    int i = com.tencent.mm.cb.a.iu(this.context) - this.wvk * 2;
+    this.wvQ = ((i - this.wvS * 10) / 5);
+    this.wvR = ((i - this.wvT * 10) / 5);
+    this.wvN = ((LinearLayout)paramActivity.findViewById(2131297002));
+    paramActivity = (RelativeLayout.LayoutParams)this.wvN.getLayoutParams();
+    paramActivity.topMargin = (this.tbf * 2);
+    paramActivity.bottomMargin = (this.tbf * 2);
+    paramActivity.leftMargin = this.wvk;
+    paramActivity.rightMargin = this.wvk;
+    this.wvN.setLayoutParams(paramActivity);
+    this.wvO = new LinearLayout(this.context);
+    this.wvP = new LinearLayout(this.context);
     paramActivity = new LinearLayout.LayoutParams(-2, -2);
-    this.wgl.setLayoutParams(paramActivity);
+    this.wvO.setLayoutParams(paramActivity);
     paramActivity = new RelativeLayout.LayoutParams(-2, -2);
     paramActivity.addRule(14);
-    this.wgm.setLayoutParams(paramActivity);
+    this.wvP.setLayoutParams(paramActivity);
     paramActivity = new LinearLayout.LayoutParams(-1, -2);
     RelativeLayout localRelativeLayout = new RelativeLayout(this.context);
-    localRelativeLayout.addView(this.wgm);
+    localRelativeLayout.addView(this.wvP);
     localRelativeLayout.setLayoutParams(paramActivity);
-    this.wgk.addView(this.wgl);
-    this.wgk.addView(localRelativeLayout);
+    this.wvN.addView(this.wvO);
+    this.wvN.addView(localRelativeLayout);
     AppMethodBeat.o(114726);
   }
   
-  private void KM(int paramInt)
+  private void Lr(int paramInt)
   {
     AppMethodBeat.i(114728);
-    LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)this.wgl.getLayoutParams();
-    RelativeLayout.LayoutParams localLayoutParams1 = (RelativeLayout.LayoutParams)this.wgm.getLayoutParams();
+    LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)this.wvO.getLayoutParams();
+    RelativeLayout.LayoutParams localLayoutParams1 = (RelativeLayout.LayoutParams)this.wvP.getLayoutParams();
     if (paramInt <= 5)
     {
-      localLayoutParams.height = this.wgn;
-      this.wgm.setVisibility(8);
+      localLayoutParams.height = this.wvQ;
+      this.wvP.setVisibility(8);
       AppMethodBeat.o(114728);
       return;
     }
-    localLayoutParams.height = this.wgo;
-    localLayoutParams.topMargin = (this.sPS * 2);
-    localLayoutParams.bottomMargin = (this.sPS * 2);
-    this.wgm.setVisibility(0);
-    localLayoutParams1.height = this.wgo;
-    localLayoutParams1.topMargin = (this.sPS * 2);
-    localLayoutParams1.bottomMargin = (this.sPS * 2);
+    localLayoutParams.height = this.wvR;
+    localLayoutParams.topMargin = (this.tbf * 2);
+    localLayoutParams.bottomMargin = (this.tbf * 2);
+    this.wvP.setVisibility(0);
+    localLayoutParams1.height = this.wvR;
+    localLayoutParams1.topMargin = (this.tbf * 2);
+    localLayoutParams1.bottomMargin = (this.tbf * 2);
     AppMethodBeat.o(114728);
   }
   
-  private void KN(int paramInt)
+  private void Ls(int paramInt)
   {
     int k = 0;
     int j = 0;
@@ -101,23 +101,23 @@ public final class h
       for (;;)
       {
         i = j;
-        if (paramInt >= this.wgl.getChildCount()) {
+        if (paramInt >= this.wvO.getChildCount()) {
           break;
         }
-        localLayoutParams = (LinearLayout.LayoutParams)this.wgl.getChildAt(paramInt).getLayoutParams();
-        localLayoutParams.width = this.wgn;
-        localLayoutParams.height = this.wgn;
-        localLayoutParams.rightMargin = this.wgp;
-        localLayoutParams.leftMargin = this.wgp;
+        localLayoutParams = (LinearLayout.LayoutParams)this.wvO.getChildAt(paramInt).getLayoutParams();
+        localLayoutParams.width = this.wvQ;
+        localLayoutParams.height = this.wvQ;
+        localLayoutParams.rightMargin = this.wvS;
+        localLayoutParams.leftMargin = this.wvS;
         paramInt += 1;
       }
-      while (i < this.wgm.getChildCount())
+      while (i < this.wvP.getChildCount())
       {
-        localLayoutParams = (LinearLayout.LayoutParams)this.wgm.getChildAt(i).getLayoutParams();
-        localLayoutParams.width = this.wgo;
-        localLayoutParams.height = this.wgo;
-        localLayoutParams.rightMargin = this.wgp;
-        localLayoutParams.leftMargin = this.wgp;
+        localLayoutParams = (LinearLayout.LayoutParams)this.wvP.getChildAt(i).getLayoutParams();
+        localLayoutParams.width = this.wvR;
+        localLayoutParams.height = this.wvR;
+        localLayoutParams.rightMargin = this.wvS;
+        localLayoutParams.leftMargin = this.wvS;
         i += 1;
       }
       AppMethodBeat.o(114729);
@@ -127,29 +127,29 @@ public final class h
     for (;;)
     {
       i = k;
-      if (paramInt >= this.wgl.getChildCount()) {
+      if (paramInt >= this.wvO.getChildCount()) {
         break;
       }
-      localLayoutParams = (LinearLayout.LayoutParams)this.wgl.getChildAt(paramInt).getLayoutParams();
-      localLayoutParams.width = this.wgo;
-      localLayoutParams.height = this.wgo;
-      localLayoutParams.rightMargin = this.wgq;
-      localLayoutParams.leftMargin = this.wgq;
+      localLayoutParams = (LinearLayout.LayoutParams)this.wvO.getChildAt(paramInt).getLayoutParams();
+      localLayoutParams.width = this.wvR;
+      localLayoutParams.height = this.wvR;
+      localLayoutParams.rightMargin = this.wvT;
+      localLayoutParams.leftMargin = this.wvT;
       paramInt += 1;
     }
-    while (i < this.wgm.getChildCount())
+    while (i < this.wvP.getChildCount())
     {
-      localLayoutParams = (LinearLayout.LayoutParams)this.wgm.getChildAt(i).getLayoutParams();
-      localLayoutParams.width = this.wgo;
-      localLayoutParams.height = this.wgo;
-      localLayoutParams.rightMargin = this.wgq;
-      localLayoutParams.leftMargin = this.wgq;
+      localLayoutParams = (LinearLayout.LayoutParams)this.wvP.getChildAt(i).getLayoutParams();
+      localLayoutParams.width = this.wvR;
+      localLayoutParams.height = this.wvR;
+      localLayoutParams.rightMargin = this.wvT;
+      localLayoutParams.leftMargin = this.wvT;
       i += 1;
     }
     AppMethodBeat.o(114729);
   }
   
-  public final void BC(String paramString)
+  public final void Ce(String paramString)
   {
     int m = 1;
     AppMethodBeat.i(178927);
@@ -161,8 +161,8 @@ public final class h
     int j = -1;
     int i = 0;
     int k;
-    if (i < this.wgl.getChildCount()) {
-      if (this.wgl.getChildAt(i).getTag().equals(paramString)) {
+    if (i < this.wvO.getChildCount()) {
+      if (this.wvO.getChildAt(i).getTag().equals(paramString)) {
         k = 1;
       }
     }
@@ -172,8 +172,8 @@ public final class h
       {
         j = 0;
         label63:
-        if (j < this.wgm.getChildCount()) {
-          if (!this.wgm.getChildAt(j).getTag().equals(paramString)) {}
+        if (j < this.wvP.getChildCount()) {
+          if (!this.wvP.getChildAt(j).getTag().equals(paramString)) {}
         }
       }
       for (i = m;; i = m)
@@ -189,7 +189,7 @@ public final class h
         }
         if (i != 0)
         {
-          this.wgm.removeViewAt(j);
+          this.wvP.removeViewAt(j);
           this.size -= 1;
         }
         if (k != 0)
@@ -197,19 +197,19 @@ public final class h
           if (this.size > 5) {
             break label194;
           }
-          this.wgl.removeViewAt(j);
+          this.wvO.removeViewAt(j);
         }
         for (this.size -= 1;; this.size -= 1)
         {
-          KM(this.size);
-          KN(this.size);
+          Lr(this.size);
+          Ls(this.size);
           AppMethodBeat.o(178927);
           return;
           label194:
-          this.wgl.removeViewAt(j);
-          paramString = this.wgm.getChildAt(0);
-          this.wgm.removeViewAt(0);
-          this.wgl.addView(paramString);
+          this.wvO.removeViewAt(j);
+          paramString = this.wvP.getChildAt(0);
+          this.wvP.removeViewAt(0);
+          this.wvO.addView(paramString);
         }
         m = 0;
         j = i;
@@ -219,7 +219,7 @@ public final class h
     }
   }
   
-  public final void arG(String paramString)
+  public final void asT(String paramString)
   {
     AppMethodBeat.i(114727);
     this.size += 1;
@@ -229,15 +229,15 @@ public final class h
     localImageView.setOnClickListener(this);
     a.b.c(localImageView, paramString);
     if (this.size <= 5) {
-      this.wgl.addView(localImageView);
+      this.wvO.addView(localImageView);
     }
     for (;;)
     {
-      KM(this.size);
-      KN(this.size);
+      Lr(this.size);
+      Ls(this.size);
       AppMethodBeat.o(114727);
       return;
-      this.wgm.addView(localImageView);
+      this.wvP.addView(localImageView);
     }
   }
   
@@ -246,8 +246,8 @@ public final class h
     AppMethodBeat.i(114730);
     b localb = new b();
     localb.bd(paramView);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/multitalk/ui/widget/MultiTalkSelectContactGallery", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-    this.wgr += 1;
+    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/multitalk/ui/widget/MultiTalkSelectContactGallery", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+    this.wvU += 1;
     com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/multitalk/ui/widget/MultiTalkSelectContactGallery", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(114730);
   }

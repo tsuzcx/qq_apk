@@ -11,8 +11,8 @@ import java.util.List;
 
 public final class e
 {
-  private static boolean cBZ;
-  private static b.b cCa = new b.b()
+  private static boolean cCG;
+  private static b.b cCH = new b.b()
   {
     public final void b(Method paramAnonymousMethod, Object[] paramAnonymousArrayOfObject)
     {
@@ -20,8 +20,8 @@ public final class e
       e.a(paramAnonymousMethod, paramAnonymousArrayOfObject);
     }
   };
-  private static b cCb = new b("power", "android.os.IPowerManager", cCa);
-  private static List<b> cCc = new ArrayList();
+  private static b cCI = new b("power", "android.os.IPowerManager", cCH);
+  private static List<b> cCJ = new ArrayList();
   
   /* Error */
   public static void a(b paramb)
@@ -29,7 +29,7 @@ public final class e
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: getstatic 33	com/tencent/matrix/a/b/e:cCc	Ljava/util/List;
+    //   3: getstatic 33	com/tencent/matrix/a/b/e:cCJ	Ljava/util/List;
     //   6: aload_0
     //   7: invokeinterface 56 2 0
     //   12: istore_1
@@ -38,13 +38,13 @@ public final class e
     //   17: ldc 2
     //   19: monitorexit
     //   20: return
-    //   21: getstatic 33	com/tencent/matrix/a/b/e:cCc	Ljava/util/List;
+    //   21: getstatic 33	com/tencent/matrix/a/b/e:cCJ	Ljava/util/List;
     //   24: aload_0
     //   25: invokeinterface 59 2 0
     //   30: pop
-    //   31: getstatic 61	com/tencent/matrix/a/b/e:cBZ	Z
+    //   31: getstatic 61	com/tencent/matrix/a/b/e:cCG	Z
     //   34: ifne -17 -> 17
-    //   37: getstatic 33	com/tencent/matrix/a/b/e:cCc	Ljava/util/List;
+    //   37: getstatic 33	com/tencent/matrix/a/b/e:cCJ	Ljava/util/List;
     //   40: invokeinterface 65 1 0
     //   45: ifne -28 -> 17
     //   48: ldc 67
@@ -53,13 +53,13 @@ public final class e
     //   53: anewarray 4	java/lang/Object
     //   56: dup
     //   57: iconst_0
-    //   58: getstatic 47	com/tencent/matrix/a/b/e:cCb	Lcom/tencent/matrix/a/d/b;
+    //   58: getstatic 47	com/tencent/matrix/a/b/e:cCI	Lcom/tencent/matrix/a/d/b;
     //   61: invokevirtual 72	com/tencent/matrix/a/d/b:doHook	()Z
     //   64: invokestatic 78	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   67: aastore
     //   68: invokestatic 84	com/tencent/matrix/g/c:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   71: iconst_1
-    //   72: putstatic 61	com/tencent/matrix/a/b/e:cBZ	Z
+    //   72: putstatic 61	com/tencent/matrix/a/b/e:cCG	Z
     //   75: goto -58 -> 17
     //   78: astore_0
     //   79: ldc 2
@@ -80,11 +80,11 @@ public final class e
   {
     try
     {
-      cCc.remove(paramb);
-      if ((cBZ) && (cCc.isEmpty()))
+      cCJ.remove(paramb);
+      if ((cCG) && (cCJ.isEmpty()))
       {
-        c.i("Matrix.PowerManagerServiceHooker", "checkUnHook unHookRet:%b", new Object[] { Boolean.valueOf(cCb.doUnHook()) });
-        cBZ = false;
+        c.i("Matrix.PowerManagerServiceHooker", "checkUnHook unHookRet:%b", new Object[] { Boolean.valueOf(cCI.doUnHook()) });
+        cCG = false;
       }
       return;
     }
@@ -97,8 +97,8 @@ public final class e
   
   static final class a
   {
-    WorkSource cCx;
-    String cCy;
+    WorkSource cDe;
+    String cDf;
     int flags;
     String packageName;
     String tag;

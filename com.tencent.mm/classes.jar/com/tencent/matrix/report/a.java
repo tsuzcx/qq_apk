@@ -3,63 +3,63 @@ package com.tencent.matrix.report;
 import com.tencent.mars.smc.IDKey;
 import com.tencent.matrix.a.c.a.b.a;
 import com.tencent.matrix.a.c.b;
-import com.tencent.mm.plugin.messenger.foundation.a.aa;
-import com.tencent.mm.plugin.messenger.foundation.a.x;
+import com.tencent.mm.plugin.messenger.foundation.a.ab;
+import com.tencent.mm.plugin.messenger.foundation.a.y;
 import com.tencent.mm.plugin.report.e;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
 import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.ArrayList;
 
 public final class a
   extends b
 {
-  private long cER;
-  private long cES;
-  private long cET;
-  long cEU;
+  private long cFA;
+  long cFB;
+  private long cFy;
+  private long cFz;
   
   public a()
   {
-    aa.a(5, new x()
+    ab.a(5, new y()
     {
-      public final void a(com.tencent.mm.bx.a paramAnonymousa)
+      public final void a(com.tencent.mm.bw.a paramAnonymousa)
       {
         paramAnonymousa = a.this;
-        paramAnonymousa.cEU += 1L;
+        paramAnonymousa.cFB += 1L;
       }
       
-      public final void b(com.tencent.mm.bx.a paramAnonymousa) {}
+      public final void b(com.tencent.mm.bw.a paramAnonymousa) {}
     });
   }
   
-  public final void If()
+  public final void In()
   {
-    super.If();
-    ad.i("Matrix.BatteryReporter", "onTraceBegin");
-    this.cER = (bs.CZ(0L) + bs.Da(0L) + bs.CY(0L) + bs.Da(0L));
-    this.cES = com.tencent.mm.a.a.cPx;
-    this.cET = this.cEU;
+    super.In();
+    ae.i("Matrix.BatteryReporter", "onTraceBegin");
+    this.cFy = (bt.Dx(0L) + bt.Dy(0L) + bt.Dw(0L) + bt.Dy(0L));
+    this.cFz = com.tencent.mm.a.a.cQh;
+    this.cFA = this.cFB;
   }
   
-  public final void Ig()
+  public final void Io()
   {
-    super.Ig();
-    ad.i("Matrix.BatteryReporter", "onTraceEnd");
-    this.cER = (bs.CZ(0L) + bs.Da(0L) + bs.CY(0L) + bs.Da(0L) - this.cER);
-    this.cES = (com.tencent.mm.a.a.cPx - this.cES);
-    this.cET = (this.cEU - this.cET);
-    e.ygI.idkeyStat(1013L, 200L, this.cES, false);
+    super.Io();
+    ae.i("Matrix.BatteryReporter", "onTraceEnd");
+    this.cFy = (bt.Dx(0L) + bt.Dy(0L) + bt.Dw(0L) + bt.Dy(0L) - this.cFy);
+    this.cFz = (com.tencent.mm.a.a.cQh - this.cFz);
+    this.cFA = (this.cFB - this.cFA);
+    e.ywz.idkeyStat(1013L, 200L, this.cFz, false);
   }
   
-  public final StringBuilder Ih()
+  public final StringBuilder Ip()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("| extInfo:\n");
-    localStringBuilder.append("| ->diffTraffic=").append(bt.sy(this.cER)).append("\n");
-    localStringBuilder.append("| ->diffAlarmCount=").append(this.cES).append("\n");
-    localStringBuilder.append("| ->diffAddMsgCount=").append(this.cET).append("\n");
+    localStringBuilder.append("| ->diffTraffic=").append(bu.sL(this.cFy)).append("\n");
+    localStringBuilder.append("| ->diffAlarmCount=").append(this.cFz).append("\n");
+    localStringBuilder.append("| ->diffAddMsgCount=").append(this.cFA).append("\n");
     return localStringBuilder;
   }
   
@@ -67,17 +67,17 @@ public final class a
   {
     int k = 20;
     super.a(parama);
-    if (parama.cBJ) {
+    if (parama.cCq) {
       return;
     }
-    long l = parama.cDq;
+    long l = parama.cDX;
     parama = new ArrayList(4);
     IDKey localIDKey = new IDKey();
     localIDKey.SetID(1013);
     int m = -1;
     int i = -1;
     int j;
-    if (aj.cmR())
+    if (ak.coh())
     {
       i = 0;
       j = m;
@@ -95,7 +95,7 @@ public final class a
       localIDKey = new IDKey();
       localIDKey.SetValue(l);
       localIDKey.SetID(1013);
-      if (!aj.cmR()) {
+      if (!ak.coh()) {
         break label360;
       }
       i = 0;
@@ -107,7 +107,7 @@ public final class a
       parama.add(localIDKey);
       localIDKey = new IDKey();
       localIDKey.SetID(1013);
-      if (aj.cmR()) {
+      if (ak.coh()) {
         i = 0;
       }
       for (;;)
@@ -115,34 +115,34 @@ public final class a
         localIDKey.SetKey(i + 18);
         localIDKey.SetValue(1L);
         parama.add(localIDKey);
-        e.ygI.b(parama, false);
+        e.ywz.b(parama, false);
         return;
-        if (aj.fkI())
+        if (ak.foC())
         {
           i = 20;
           break;
         }
-        if (aj.fkG())
+        if (ak.foA())
         {
           i = 40;
           break;
         }
-        if (aj.fkL())
+        if (ak.foF())
         {
           i = 60;
           break;
         }
-        if (aj.fkK())
+        if (ak.foE())
         {
           i = 80;
           break;
         }
-        if (aj.isAppBrandProcess())
+        if (ak.isAppBrandProcess())
         {
           i = 100;
           break;
         }
-        if (!aj.fkJ()) {
+        if (!ak.foD()) {
           break;
         }
         i = 120;
@@ -175,47 +175,47 @@ public final class a
         j = i + 5;
         break label82;
         label360:
-        if (aj.fkI())
+        if (ak.foC())
         {
           i = 20;
           break label133;
         }
-        if (aj.fkG())
+        if (ak.foA())
         {
           i = 40;
           break label133;
         }
-        if (aj.fkL())
+        if (ak.foF())
         {
           i = 60;
           break label133;
         }
-        if (aj.fkK())
+        if (ak.foE())
         {
           i = 80;
           break label133;
         }
-        if (aj.isAppBrandProcess())
+        if (ak.isAppBrandProcess())
         {
           i = 100;
           break label133;
         }
-        if (!aj.fkJ()) {
+        if (!ak.foD()) {
           break label506;
         }
         i = 120;
         break label133;
         i = k;
-        if (!aj.fkI()) {
-          if (aj.fkG()) {
+        if (!ak.foC()) {
+          if (ak.foA()) {
             i = 40;
-          } else if (aj.fkL()) {
+          } else if (ak.foF()) {
             i = 60;
-          } else if (aj.fkK()) {
+          } else if (ak.foE()) {
             i = 80;
-          } else if (aj.isAppBrandProcess()) {
+          } else if (ak.isAppBrandProcess()) {
             i = 100;
-          } else if (aj.fkJ()) {
+          } else if (ak.foD()) {
             i = 120;
           } else {
             i = 0;
@@ -230,9 +230,9 @@ public final class a
   public final void e(String paramString1, String paramString2, int paramInt)
   {
     super.e(paramString1, paramString2, paramInt);
-    ad.w("Matrix.BatteryReporter", "[onWakeLockTimeout] tag=%s packageName=%s warningCount=%s", new Object[] { paramString1, paramString2, Integer.valueOf(paramInt) });
+    ae.w("Matrix.BatteryReporter", "[onWakeLockTimeout] tag=%s packageName=%s warningCount=%s", new Object[] { paramString1, paramString2, Integer.valueOf(paramInt) });
     if (paramInt <= 1) {
-      e.ygI.idkeyStat(1013L, 201L, 1L, false);
+      e.ywz.idkeyStat(1013L, 201L, 1L, false);
     }
   }
 }

@@ -8,11 +8,11 @@ import android.content.Intent;
 import android.os.Message;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.g.c.aw;
-import com.tencent.mm.model.ba;
-import com.tencent.mm.model.bj.a;
+import com.tencent.mm.model.bc;
+import com.tencent.mm.model.bl.a;
 import com.tencent.mm.model.c;
-import com.tencent.mm.model.u;
-import com.tencent.mm.model.w;
+import com.tencent.mm.model.v;
+import com.tencent.mm.model.x;
 import com.tencent.mm.n.e;
 import com.tencent.mm.n.g;
 import com.tencent.mm.plugin.profile.b;
@@ -21,11 +21,11 @@ import com.tencent.mm.pluginsdk.m;
 import com.tencent.mm.pluginsdk.ui.preference.HelperHeaderPreference;
 import com.tencent.mm.sdk.e.n;
 import com.tencent.mm.sdk.e.n.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.am;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.aj;
+import com.tencent.mm.storage.an;
 import com.tencent.mm.ui.base.p;
 import com.tencent.mm.ui.base.preference.CheckBoxPreference;
 import com.tencent.mm.ui.base.preference.f;
@@ -38,7 +38,7 @@ public final class j
   implements a, n.b
 {
   private static boolean isDeleteCancel = false;
-  private am contact;
+  private an contact;
   private Context context;
   private f screen;
   
@@ -47,37 +47,37 @@ public final class j
     this.context = paramContext;
   }
   
-  private void cdo()
+  private void ceD()
   {
     boolean bool2 = true;
     AppMethodBeat.i(27175);
     boolean bool3 = isOpen();
-    boolean bool4 = dAN();
-    Object localObject = (HelperHeaderPreference)this.screen.aVD("contact_info_header_helper");
-    ((HelperHeaderPreference)localObject).aZ(this.contact.field_username, this.contact.adv(), this.context.getString(2131757726));
+    boolean bool4 = dEe();
+    Object localObject = (HelperHeaderPreference)this.screen.aXe("contact_info_header_helper");
+    ((HelperHeaderPreference)localObject).ba(this.contact.field_username, this.contact.adG(), this.context.getString(2131757726));
     int i;
     boolean bool1;
     if (bool3)
     {
       i = 1;
       ((HelperHeaderPreference)localObject).updateStatus(i);
-      this.screen.cP("contact_info_medianote_install", bool3);
+      this.screen.cT("contact_info_medianote_install", bool3);
       localObject = this.screen;
       if (bool3) {
         break label251;
       }
       bool1 = true;
       label102:
-      ((f)localObject).cP("contact_info_medianote_view", bool1);
-      if ((!bool3) || (u.aAZ())) {
+      ((f)localObject).cT("contact_info_medianote_view", bool1);
+      if ((!bool3) || (v.aBp())) {
         break label276;
       }
-      if (bt.getInt(g.acA().getValue("BindQQSwitch"), 1) != 1) {
+      if (bu.getInt(g.acL().getValue("BindQQSwitch"), 1) != 1) {
         break label256;
       }
       bool1 = true;
       label142:
-      ad.i("MicroMsg.ContactWidgetMediaNote", "summerqq BindQQSwitch off");
+      ae.i("MicroMsg.ContactWidgetMediaNote", "summerqq BindQQSwitch off");
     }
     for (;;)
     {
@@ -86,14 +86,14 @@ public final class j
       {
         bool1 = true;
         label161:
-        ((f)localObject).cP("contact_info_medianote_sync_to_qqmail", bool1);
+        ((f)localObject).cT("contact_info_medianote_sync_to_qqmail", bool1);
         localObject = this.screen;
         if (bool3) {
           break label266;
         }
         bool1 = true;
         label185:
-        ((f)localObject).cP("contact_info_medianote_clear_data", bool1);
+        ((f)localObject).cT("contact_info_medianote_clear_data", bool1);
         localObject = this.screen;
         if (bool3) {
           break label271;
@@ -104,8 +104,8 @@ public final class j
       label271:
       for (bool1 = bool2;; bool1 = false)
       {
-        ((f)localObject).cP("contact_info_medianote_uninstall", bool1);
-        ((CheckBoxPreference)this.screen.aVD("contact_info_medianote_sync_to_qqmail")).oB = bool4;
+        ((f)localObject).cT("contact_info_medianote_uninstall", bool1);
+        ((CheckBoxPreference)this.screen.aXe("contact_info_medianote_sync_to_qqmail")).setChecked(bool4);
         AppMethodBeat.o(27175);
         return;
         i = 0;
@@ -125,16 +125,16 @@ public final class j
     }
   }
   
-  private static boolean dAN()
+  private static boolean dEe()
   {
     AppMethodBeat.i(27173);
-    int i = u.aAq();
-    if (!u.aAZ())
+    int i = v.aAG();
+    if (!v.aBp())
     {
       if ((i & 0x4000) != 0)
       {
-        ba.aBQ();
-        c.ajl().set(7, Integer.valueOf(i & 0xFFFFBFFF));
+        bc.aCg();
+        c.ajA().set(7, Integer.valueOf(i & 0xFFFFBFFF));
       }
       AppMethodBeat.o(27173);
       return false;
@@ -151,7 +151,7 @@ public final class j
   private static boolean isOpen()
   {
     AppMethodBeat.i(27172);
-    if ((u.aAy() & 0x10) == 0)
+    if ((v.aAO() & 0x10) == 0)
     {
       AppMethodBeat.o(27172);
       return true;
@@ -160,15 +160,15 @@ public final class j
     return false;
   }
   
-  static void ps(boolean paramBoolean)
+  static void pA(boolean paramBoolean)
   {
     AppMethodBeat.i(27179);
-    int i = u.aAq();
+    int i = v.aAG();
     if (paramBoolean)
     {
       i |= 0x4000;
-      ba.aBQ();
-      c.ajl().set(7, Integer.valueOf(i));
+      bc.aCg();
+      c.ajA().set(7, Integer.valueOf(i));
       if (!paramBoolean) {
         break label80;
       }
@@ -176,8 +176,8 @@ public final class j
     label80:
     for (i = 1;; i = 2)
     {
-      ba.aBQ();
-      c.azo().c(new com.tencent.mm.bb.h(13, i));
+      bc.aCg();
+      c.azE().d(new com.tencent.mm.ba.h(13, i));
       AppMethodBeat.o(27179);
       return;
       i &= 0xFFFFBFFF;
@@ -193,29 +193,29 @@ public final class j
     {
       paramContext.getString(2131755906);
       localObject = com.tencent.mm.ui.base.h.b(paramContext, (String)localObject, true, null);
-      paramContext = new ap()
+      paramContext = new aq()
       {
         public final void handleMessage(Message paramAnonymousMessage)
         {
           AppMethodBeat.i(27166);
-          if (this.prx) {
-            j.ps(true);
+          if (this.pyd) {
+            j.pA(true);
           }
-          int i = u.aAy();
-          if (this.prx) {
+          int i = v.aAO();
+          if (this.pyd) {
             i &= 0xFFFFFFEF;
           }
           for (;;)
           {
-            ba.aBQ();
-            c.ajl().set(34, Integer.valueOf(i));
-            ba.aBQ();
-            c.azo().c(new com.tencent.mm.bb.l("", "", "", "", "", "", "", "", i, "", ""));
-            if (!this.prx) {
+            bc.aCg();
+            c.ajA().set(34, Integer.valueOf(i));
+            bc.aCg();
+            c.azE().d(new com.tencent.mm.ba.l("", "", "", "", "", "", "", "", i, "", ""));
+            if (!this.pyd) {
               j.access$100(paramContext);
             }
-            if (this.vHr != null) {
-              this.vHr.a(null, null);
+            if (this.vTv != null) {
+              this.vTv.a(null, null);
             }
             AppMethodBeat.o(27166);
             return;
@@ -228,9 +228,9 @@ public final class j
         public final void run()
         {
           AppMethodBeat.i(27167);
-          if (this.pgW != null)
+          if (this.pnC != null)
           {
-            this.pgW.dismiss();
+            this.pnC.dismiss();
             paramContext.sendEmptyMessage(0);
           }
           AppMethodBeat.o(27167);
@@ -244,12 +244,12 @@ public final class j
   public final void a(int paramInt, n paramn, Object paramObject)
   {
     AppMethodBeat.i(27178);
-    int i = bt.m(paramObject, 0);
-    ad.d("MicroMsg.ContactWidgetMediaNote", "onNotifyChange event:%d obj:%d stg:%s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i), paramn });
-    ba.aBQ();
-    if ((paramn != c.ajl()) || (i <= 0))
+    int i = bu.m(paramObject, 0);
+    ae.d("MicroMsg.ContactWidgetMediaNote", "onNotifyChange event:%d obj:%d stg:%s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i), paramn });
+    bc.aCg();
+    if ((paramn != c.ajA()) || (i <= 0))
     {
-      ad.e("MicroMsg.ContactWidgetMediaNote", "onNotifyChange error obj:%d stg:%s", new Object[] { Integer.valueOf(i), paramn });
+      ae.e("MicroMsg.ContactWidgetMediaNote", "onNotifyChange error obj:%d stg:%s", new Object[] { Integer.valueOf(i), paramn });
       AppMethodBeat.o(27178);
       return;
     }
@@ -258,11 +258,11 @@ public final class j
       AppMethodBeat.o(27178);
       return;
     }
-    cdo();
+    ceD();
     AppMethodBeat.o(27178);
   }
   
-  public final boolean a(f paramf, am paramam, boolean paramBoolean, int paramInt)
+  public final boolean a(f paramf, an paraman, boolean paramBoolean, int paramInt)
   {
     boolean bool = false;
     AppMethodBeat.i(27174);
@@ -271,27 +271,27 @@ public final class j
     {
       Assert.assertTrue(paramBoolean);
       paramBoolean = bool;
-      if (paramam != null) {
+      if (paraman != null) {
         paramBoolean = true;
       }
       Assert.assertTrue(paramBoolean);
-      Assert.assertTrue(w.zT(paramam.field_username));
-      ba.aBQ();
-      c.ajl().a(this);
-      this.contact = paramam;
+      Assert.assertTrue(x.AD(paraman.field_username));
+      bc.aCg();
+      c.ajA().a(this);
+      this.contact = paraman;
       this.screen = paramf;
       paramf.addPreferencesFromResource(2131951646);
-      cdo();
+      ceD();
       AppMethodBeat.o(27174);
       return true;
     }
   }
   
-  public final boolean aaG(String paramString)
+  public final boolean abx(String paramString)
   {
     AppMethodBeat.i(27171);
-    ad.d("MicroMsg.ContactWidgetMediaNote", "handleEvent : key = ".concat(String.valueOf(paramString)));
-    if (bt.nullAsNil(paramString).length() <= 0)
+    ae.d("MicroMsg.ContactWidgetMediaNote", "handleEvent : key = ".concat(String.valueOf(paramString)));
+    if (bu.nullAsNil(paramString).length() <= 0)
     {
       AppMethodBeat.o(27171);
       return false;
@@ -300,31 +300,31 @@ public final class j
     {
       paramString = new Intent();
       paramString.putExtra("Chat_User", "medianote");
-      b.iRG.d(paramString, this.context);
-      b.iRH.MR();
+      b.iUz.d(paramString, this.context);
+      b.iUA.MM();
       AppMethodBeat.o(27171);
       return true;
     }
     if (paramString.equals("contact_info_medianote_sync_to_qqmail"))
     {
-      if (!u.aAZ())
+      if (!v.aBp())
       {
         com.tencent.mm.ui.base.h.a(this.context, 2131757725, 2131757724, new DialogInterface.OnClickListener()
         {
           public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
           {
             AppMethodBeat.i(27163);
-            b.iRG.g(new Intent(), j.a(j.this));
+            b.iUz.g(new Intent(), j.a(j.this));
             AppMethodBeat.o(27163);
           }
         }, null);
-        cdo();
+        ceD();
       }
       for (;;)
       {
         AppMethodBeat.o(27171);
         return true;
-        ps(((CheckBoxPreference)this.screen.aVD(paramString)).isChecked());
+        pA(((CheckBoxPreference)this.screen.aXe(paramString)).isChecked());
       }
     }
     if (paramString.equals("contact_info_medianote_clear_data"))
@@ -361,17 +361,17 @@ public final class j
       AppMethodBeat.o(27171);
       return true;
     }
-    ad.e("MicroMsg.ContactWidgetMediaNote", "handleEvent : unExpected key = ".concat(String.valueOf(paramString)));
+    ae.e("MicroMsg.ContactWidgetMediaNote", "handleEvent : unExpected key = ".concat(String.valueOf(paramString)));
     AppMethodBeat.o(27171);
     return false;
   }
   
-  public final boolean cdn()
+  public final boolean ceC()
   {
     AppMethodBeat.i(27177);
-    ba.aBQ();
-    c.ajl().b(this);
-    b.iRH.MR();
+    bc.aCg();
+    c.ajA().b(this);
+    b.iUA.MM();
     AppMethodBeat.o(27177);
     return true;
   }

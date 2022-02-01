@@ -8,8 +8,8 @@ import com.tencent.mm.plugin.webview.luggage.jsapi.bq;
 import com.tencent.mm.plugin.webview.luggage.jsapi.bq.a;
 import com.tencent.mm.plugin.wepkg.model.h;
 import com.tencent.mm.plugin.wepkg.model.h.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ar;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -19,8 +19,8 @@ public class m
   public final void a(Context paramContext, String paramString, final bq.a parama)
   {
     AppMethodBeat.i(83072);
-    ad.i("MicroMsg.JsApiGetLocalWePkgInfo", "invokeInMM");
-    aq.f(new Runnable()
+    ae.i("MicroMsg.JsApiGetLocalWePkgInfo", "invokeInMM");
+    ar.f(new Runnable()
     {
       public final void run()
       {
@@ -35,7 +35,7 @@ public class m
             {
               localJSONObject.put("wepkg_info", paramAnonymous2JSONObject);
               label21:
-              m.1.this.pou.f(null, localJSONObject);
+              m.1.this.pva.f(null, localJSONObject);
               AppMethodBeat.o(83070);
               return;
             }
@@ -53,7 +53,7 @@ public class m
   
   public final void b(b.a parama) {}
   
-  public final int ccO()
+  public final int ced()
   {
     return 1;
   }

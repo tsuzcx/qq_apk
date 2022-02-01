@@ -7,26 +7,26 @@ import android.arch.lifecycle.OnLifecycleEvent;
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
-import com.tencent.mm.plugin.sns.ad.e.j;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.l;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.x;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.plugin.sns.ad.f.j;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.m;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.y;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
 
-public abstract class FloatCompHelperWithLifecycle<INFO extends x, COMP extends l>
+public abstract class FloatCompHelperWithLifecycle<INFO extends y, COMP extends m>
   implements LifecycleObserver
 {
   protected Context mContext;
-  protected INFO yXm;
-  protected COMP yXn;
-  protected ViewGroup yXo;
+  protected INFO znN;
+  protected COMP znO;
+  protected ViewGroup znP;
   
   protected FloatCompHelperWithLifecycle(INFO paramINFO, ViewGroup paramViewGroup)
   {
-    this.yXm = paramINFO;
-    this.yXo = paramViewGroup;
+    this.znN = paramINFO;
+    this.znP = paramViewGroup;
     if (paramViewGroup != null) {}
-    for (paramINFO = paramViewGroup.getContext();; paramINFO = aj.getContext())
+    for (paramINFO = paramViewGroup.getContext();; paramINFO = ak.getContext())
     {
       this.mContext = paramINFO;
       return;
@@ -35,9 +35,9 @@ public abstract class FloatCompHelperWithLifecycle<INFO extends x, COMP extends 
   
   protected abstract COMP a(Context paramContext, INFO paramINFO, ViewGroup paramViewGroup);
   
-  public final COMP dRs()
+  public final COMP dUQ()
   {
-    return this.yXn;
+    return this.znO;
   }
   
   @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
@@ -45,16 +45,16 @@ public abstract class FloatCompHelperWithLifecycle<INFO extends x, COMP extends 
   {
     try
     {
-      paramLifecycleOwner = this.yXm;
-      Object localObject = this.yXo;
+      paramLifecycleOwner = this.znN;
+      Object localObject = this.znP;
       if ((paramLifecycleOwner != null) && (localObject != null))
       {
-        this.yXn = a(((ViewGroup)localObject).getContext(), paramLifecycleOwner, (ViewGroup)localObject);
-        paramLifecycleOwner = this.yXo;
-        localObject = this.yXn;
+        this.znO = a(((ViewGroup)localObject).getContext(), paramLifecycleOwner, (ViewGroup)localObject);
+        paramLifecycleOwner = this.znP;
+        localObject = this.znO;
         if ((paramLifecycleOwner != null) && (localObject != null))
         {
-          localObject = ((l)localObject).getView();
+          localObject = ((m)localObject).getView();
           if (localObject != null)
           {
             eL((View)localObject);
@@ -63,12 +63,12 @@ public abstract class FloatCompHelperWithLifecycle<INFO extends x, COMP extends 
         }
         else
         {
-          ad.w("FloatCompHelperWithLifecycle", "the comp is null, please check config!!!!");
+          ae.w("FloatCompHelperWithLifecycle", "the comp is null, please check config!!!!");
         }
       }
       else
       {
-        ad.w("FloatCompHelperWithLifecycle", "the info or container is null, please check input param");
+        ae.w("FloatCompHelperWithLifecycle", "the info or container is null, please check input param");
       }
       return;
     }
@@ -80,8 +80,8 @@ public abstract class FloatCompHelperWithLifecycle<INFO extends x, COMP extends 
   {
     try
     {
-      if (this.yXn != null) {
-        this.yXn.dRo();
+      if (this.znO != null) {
+        this.znO.dUM();
       }
       return;
     }
@@ -93,8 +93,8 @@ public abstract class FloatCompHelperWithLifecycle<INFO extends x, COMP extends 
   {
     try
     {
-      if (this.yXn != null) {
-        this.yXn.dRn();
+      if (this.znO != null) {
+        this.znO.dUL();
       }
       return;
     }
@@ -106,8 +106,8 @@ public abstract class FloatCompHelperWithLifecycle<INFO extends x, COMP extends 
   {
     try
     {
-      if (this.yXn != null) {
-        this.yXn.dRm();
+      if (this.znO != null) {
+        this.znO.dUK();
       }
       return;
     }

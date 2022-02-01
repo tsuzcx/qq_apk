@@ -2,7 +2,7 @@ package com.tencent.mm.pluginsdk.ui.applet;
 
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/pluginsdk/ui/applet/BizImageLoadTaskListener$Companion;", "", "()V", "TAG", "", "plugin-biz_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/pluginsdk/ui/applet/BizImageLoadTaskListener$Companion;", "", "()V", "TAG", "", "plugin-biz_release"})
 public final class l$a {}
 
 

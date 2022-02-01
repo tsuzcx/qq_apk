@@ -7,9 +7,9 @@ import com.tencent.d.e.a.b.d;
 public abstract interface a
   extends e
 {
-  public abstract d fTP();
+  public abstract d fYp();
   
-  public abstract c fTQ();
+  public abstract c fYq();
 }
 
 

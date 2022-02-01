@@ -5,9 +5,9 @@ import com.tencent.mm.plugin.backup.i.u;
 public final class h$a
 {
   public String md5;
-  public u nxq;
-  public long nxr;
-  public String nxs;
+  public u nCL;
+  public long nCM;
+  public String nCN;
 }
 
 

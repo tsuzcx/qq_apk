@@ -2,21 +2,21 @@ package com.tencent.mm.pluginsdk;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.a.c;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class o$a
 {
-  public static o.b EJA;
+  public static o.b FbY;
   
-  public static o.b eYW()
+  public static o.b fcK()
   {
     AppMethodBeat.i(30930);
-    if (EJA == null)
+    if (FbY == null)
     {
-      ad.w("MicroMsg.IPluginEvent.Factory", "get shake mgr is null, new default");
-      EJA = new c();
+      ae.w("MicroMsg.IPluginEvent.Factory", "get shake mgr is null, new default");
+      FbY = new c();
     }
-    o.b localb = EJA;
+    o.b localb = FbY;
     AppMethodBeat.o(30930);
     return localb;
   }

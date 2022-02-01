@@ -5,50 +5,50 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class g
   implements c
 {
-  public c DNk;
+  public c Efj;
   
   @android.webkit.JavascriptInterface
   @org.xwalk.core.JavascriptInterface
   public final void _getAllHosts(String paramString)
   {
-    AppMethodBeat.i(190872);
-    if (this.DNk != null) {
-      this.DNk._getAllHosts(paramString);
+    AppMethodBeat.i(193465);
+    if (this.Efj != null) {
+      this.Efj._getAllHosts(paramString);
     }
-    AppMethodBeat.o(190872);
+    AppMethodBeat.o(193465);
   }
   
   @android.webkit.JavascriptInterface
   @org.xwalk.core.JavascriptInterface
   public final void _getHtmlContent(String paramString)
   {
-    AppMethodBeat.i(190873);
-    if (this.DNk != null) {
-      this.DNk._getHtmlContent(paramString);
+    AppMethodBeat.i(193466);
+    if (this.Efj != null) {
+      this.Efj._getHtmlContent(paramString);
     }
-    AppMethodBeat.o(190873);
+    AppMethodBeat.o(193466);
   }
   
   @android.webkit.JavascriptInterface
   @org.xwalk.core.JavascriptInterface
   public final void _ready(boolean paramBoolean)
   {
-    AppMethodBeat.i(190874);
-    if (this.DNk != null) {
-      this.DNk._ready(paramBoolean);
+    AppMethodBeat.i(193467);
+    if (this.Efj != null) {
+      this.Efj._ready(paramBoolean);
     }
-    AppMethodBeat.o(190874);
+    AppMethodBeat.o(193467);
   }
   
   @android.webkit.JavascriptInterface
   @org.xwalk.core.JavascriptInterface
   public final void _sendMessage(String paramString)
   {
-    AppMethodBeat.i(190871);
-    if (this.DNk != null) {
-      this.DNk._sendMessage(paramString);
+    AppMethodBeat.i(193464);
+    if (this.Efj != null) {
+      this.Efj._sendMessage(paramString);
     }
-    AppMethodBeat.o(190871);
+    AppMethodBeat.o(193464);
   }
 }
 

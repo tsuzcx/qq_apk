@@ -25,15 +25,15 @@ public final class a
   
   public a(m.c paramc)
   {
-    AppMethodBeat.i(213210);
+    AppMethodBeat.i(195094);
     this.bbE = -1;
     this.bbB = paramc;
-    this.context = paramc.JR();
+    this.context = paramc.JZ();
     this.bbC = new OrientationEventListener(this.context)
     {
       public final void onOrientationChanged(int paramAnonymousInt)
       {
-        AppMethodBeat.i(213207);
+        AppMethodBeat.i(195091);
         d.a locala;
         Object localObject;
         if (a.this.bbD != null)
@@ -55,9 +55,9 @@ public final class a
         for (;;)
         {
           if (localObject != null) {
-            locala.de(localObject);
+            locala.df(localObject);
           }
-          AppMethodBeat.o(213207);
+          AppMethodBeat.o(195091);
           return;
           label161:
           if (((a)localObject).bbE == 1)
@@ -90,15 +90,15 @@ public final class a
         }
       }
     };
-    AppMethodBeat.o(213210);
+    AppMethodBeat.o(195094);
   }
   
   public final void a(j paramj, k.d paramd)
   {
     int j = 0;
-    AppMethodBeat.i(213211);
+    AppMethodBeat.i(195095);
     String str = paramj.method;
-    paramj = paramj.grf;
+    paramj = paramj.gtF;
     int k;
     int i;
     if (str.equals("SystemChrome.setEnabledSystemUIOverlays"))
@@ -121,11 +121,11 @@ public final class a
           }
         }
       }
-      if (this.bbB.JQ() != null) {
-        this.bbB.JQ().getWindow().getDecorView().setSystemUiVisibility(k);
+      if (this.bbB.JY() != null) {
+        this.bbB.JY().getWindow().getDecorView().setSystemUiVisibility(k);
       }
-      paramd.de(null);
-      AppMethodBeat.o(213211);
+      paramd.df(null);
+      AppMethodBeat.o(195095);
       return;
     }
     if (str.equals("SystemChrome.setPreferredOrientations"))
@@ -160,71 +160,71 @@ public final class a
           }
         }
       }
-      if (this.bbB.JQ() != null) {
+      if (this.bbB.JY() != null) {
         switch (k)
         {
         }
       }
       for (;;)
       {
-        paramd.de(null);
-        AppMethodBeat.o(213211);
+        paramd.df(null);
+        AppMethodBeat.o(195095);
         return;
-        this.bbB.JQ().setRequestedOrientation(-1);
+        this.bbB.JY().setRequestedOrientation(-1);
         continue;
-        this.bbB.JQ().setRequestedOrientation(1);
+        this.bbB.JY().setRequestedOrientation(1);
         continue;
-        this.bbB.JQ().setRequestedOrientation(0);
+        this.bbB.JY().setRequestedOrientation(0);
         continue;
-        this.bbB.JQ().setRequestedOrientation(9);
+        this.bbB.JY().setRequestedOrientation(9);
         continue;
-        this.bbB.JQ().setRequestedOrientation(12);
+        this.bbB.JY().setRequestedOrientation(12);
         continue;
-        this.bbB.JQ().setRequestedOrientation(8);
+        this.bbB.JY().setRequestedOrientation(8);
         continue;
-        this.bbB.JQ().setRequestedOrientation(11);
+        this.bbB.JY().setRequestedOrientation(11);
         continue;
-        this.bbB.JQ().setRequestedOrientation(2);
+        this.bbB.JY().setRequestedOrientation(2);
         continue;
-        this.bbB.JQ().setRequestedOrientation(13);
+        this.bbB.JY().setRequestedOrientation(13);
         continue;
-        this.bbB.JQ().setRequestedOrientation(13);
+        this.bbB.JY().setRequestedOrientation(13);
       }
     }
     if (str.equals("SystemChrome.forceOrientation"))
     {
       paramj = (String)paramj;
-      if (this.bbB.JQ() != null)
+      if (this.bbB.JY() != null)
       {
         if (!paramj.equals("DeviceOrientation.portraitUp")) {
           break label633;
         }
-        this.bbB.JQ().setRequestedOrientation(1);
+        this.bbB.JY().setRequestedOrientation(1);
       }
       for (;;)
       {
-        paramd.de(null);
-        AppMethodBeat.o(213211);
+        paramd.df(null);
+        AppMethodBeat.o(195095);
         return;
         label633:
         if (paramj.equals("DeviceOrientation.portraitDown")) {
-          this.bbB.JQ().setRequestedOrientation(9);
+          this.bbB.JY().setRequestedOrientation(9);
         } else if (paramj.equals("DeviceOrientation.landscapeLeft")) {
-          this.bbB.JQ().setRequestedOrientation(8);
+          this.bbB.JY().setRequestedOrientation(8);
         } else if (paramj.equals("DeviceOrientation.landscapeRight")) {
-          this.bbB.JQ().setRequestedOrientation(0);
+          this.bbB.JY().setRequestedOrientation(0);
         } else {
-          this.bbB.JQ().setRequestedOrientation(-1);
+          this.bbB.JY().setRequestedOrientation(-1);
         }
       }
     }
-    paramd.djR();
-    AppMethodBeat.o(213211);
+    paramd.dmQ();
+    AppMethodBeat.o(195095);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.github.a.a.a
  * JD-Core Version:    0.7.0.1
  */

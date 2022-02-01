@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.fts.a.a;
 public final class f
 {
   public int bZU;
-  public CharSequence tuE;
+  public CharSequence tFv;
 }
 
 

@@ -3,15 +3,15 @@ package com.tencent.mm.plugin.sns.storage;
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.sns.b.f;
-import com.tencent.mm.plugin.sns.data.q;
-import com.tencent.mm.protocal.protobuf.atu;
-import com.tencent.mm.protocal.protobuf.dhf;
-import com.tencent.mm.protocal.protobuf.dhg;
-import com.tencent.mm.protocal.protobuf.dhk;
+import com.tencent.mm.plugin.sns.data.r;
+import com.tencent.mm.protocal.protobuf.auk;
+import com.tencent.mm.protocal.protobuf.dhz;
+import com.tencent.mm.protocal.protobuf.dia;
+import com.tencent.mm.protocal.protobuf.die;
 import com.tencent.mm.sdk.e.e;
 import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedList;
@@ -22,9 +22,9 @@ public final class o
   implements f
 {
   public static final String[] SQL_CREATE;
+  private boolean AdR;
+  private g AdS;
   public e db;
-  private boolean zMK;
-  private g zML;
   
   static
   {
@@ -37,11 +37,11 @@ public final class o
   {
     super(parame, n.info, "snsExtInfo3", null);
     AppMethodBeat.i(97474);
-    this.zMK = false;
-    this.zML = null;
+    this.AdR = false;
+    this.AdS = null;
     this.db = parame;
-    this.zML = paramg;
-    ad.i("MicroMsg.SnsExtStorage", "createExtStorage " + parame + "  " + Thread.currentThread().getId());
+    this.AdS = paramg;
+    ae.i("MicroMsg.SnsExtStorage", "createExtStorage " + parame + "  " + Thread.currentThread().getId());
     AppMethodBeat.o(97474);
   }
   
@@ -71,7 +71,7 @@ public final class o
       paramn.close();
       if (i == 0)
       {
-        ad.v("MicroMsg.SnsExtStorage", "can not get snsextinfo2 %s", new Object[] { paramString });
+        ae.v("MicroMsg.SnsExtStorage", "can not get snsextinfo2 %s", new Object[] { paramString });
         AppMethodBeat.o(97487);
         return null;
         if ((paramn.field_iFlag & 0x1) > 0) {}
@@ -85,15 +85,15 @@ public final class o
           break label18;
         }
       }
-      paramn = "select * from snsExtInfo2 where userName=\"" + bt.aQN(paramString) + "\"";
-      ad.d("MicroMsg.SnsExtStorage", "get from snsextinfo2 sql %s", new Object[] { paramn });
+      paramn = "select * from snsExtInfo2 where userName=\"" + bu.aSk(paramString) + "\"";
+      ae.d("MicroMsg.SnsExtStorage", "get from snsextinfo2 sql %s", new Object[] { paramn });
       paramn = this.db.a(paramn, null, 2);
       n localn = new n();
       if (paramn.moveToFirst())
       {
         localn.convertFrom(paramn);
         paramn.close();
-        ad.i("MicroMsg.SnsExtStorage", "setSnsUserInfo fix newversion change snsextinfo3 %s", new Object[] { paramString });
+        ae.i("MicroMsg.SnsExtStorage", "setSnsUserInfo fix newversion change snsextinfo3 %s", new Object[] { paramString });
         AppMethodBeat.o(97487);
         return localn;
       }
@@ -106,11 +106,11 @@ public final class o
   public final boolean a(n paramn)
   {
     AppMethodBeat.i(97476);
-    if ((this.zMK) && (this.zML != null))
+    if ((this.AdR) && (this.AdS != null))
     {
-      bool = this.zML.a(paramn);
-      if (this.zML != null) {
-        this.zML.dUy();
+      bool = this.AdS.a(paramn);
+      if (this.AdS != null) {
+        this.AdS.dXY();
       }
       AppMethodBeat.o(97476);
       return bool;
@@ -120,47 +120,47 @@ public final class o
     return bool;
   }
   
-  public final boolean a(String paramString, dhg paramdhg)
+  public final boolean a(String paramString, dia paramdia)
   {
     AppMethodBeat.i(97485);
-    if (paramdhg == null)
+    if (paramdia == null)
     {
       AppMethodBeat.o(97485);
       return false;
     }
-    paramString = aAf(paramString);
-    String str = q.zw(paramdhg.jdp);
-    if ((!bt.isNullOrNil(paramdhg.jdo)) && ((paramString.field_bgUrl == null) || (!paramString.field_bgId.equals(str))))
+    paramString = aBw(paramString);
+    String str = r.zV(paramdia.jgi);
+    if ((!bu.isNullOrNil(paramdia.jgh)) && ((paramString.field_bgUrl == null) || (!paramString.field_bgId.equals(str))))
     {
       paramString.field_older_bgId = paramString.field_bgId;
       paramString.field_local_flag |= 0x1;
-      paramString.dYy();
-      ad.d("MicroMsg.SnsExtStorage", "bg change");
+      paramString.ecc();
+      ae.d("MicroMsg.SnsExtStorage", "bg change");
     }
     paramString.field_bgId = str;
-    paramString.field_bgUrl = paramdhg.jdo;
-    paramString.field_iFlag = paramdhg.jdn;
-    paramString.field_snsBgId = paramdhg.jdp;
+    paramString.field_bgUrl = paramdia.jgh;
+    paramString.field_iFlag = paramdia.jgg;
+    paramString.field_snsBgId = paramdia.jgi;
     paramString.field_local_flag |= 0x4;
-    if ((paramdhg.HvJ & 0x1000) == 0)
+    if ((paramdia.HPm & 0x1000) == 0)
     {
-      if ((paramdhg.HvJ & 0x200) <= 0) {
+      if ((paramdia.HPm & 0x200) <= 0) {
         break label185;
       }
-      paramdhg.HvJ |= 0x1000;
-      paramdhg.HvK = 4320;
+      paramdia.HPm |= 0x1000;
+      paramdia.HPn = 4320;
     }
     for (;;)
     {
-      paramString.a(paramdhg);
+      paramString.a(paramdia);
       a(paramString);
       AppMethodBeat.o(97485);
       return true;
       label185:
-      if ((paramdhg.HvJ & 0x400) > 0)
+      if ((paramdia.HPm & 0x400) > 0)
       {
-        paramdhg.HvJ |= 0x1000;
-        paramdhg.HvK = 72;
+        paramdia.HPm |= 0x1000;
+        paramdia.HPn = 72;
       }
     }
   }
@@ -168,10 +168,10 @@ public final class o
   public final boolean a(String paramString, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4)
   {
     AppMethodBeat.i(97491);
-    paramString = aAf(paramString);
+    paramString = aBw(paramString);
     int k = paramString.field_iFlag;
-    if (paramString.dYB() != null) {}
-    for (int i = paramString.dYB().HvJ;; i = 0)
+    if (paramString.ecf() != null) {}
+    for (int i = paramString.ecf().HPm;; i = 0)
     {
       int j = -1;
       k |= 0x1000;
@@ -194,12 +194,12 @@ public final class o
         for (j = m | 0x800;; j = m & 0xFFFFF7FF)
         {
           paramString.field_iFlag = k;
-          dhg localdhg = paramString.dYB();
-          if (localdhg != null)
+          dia localdia = paramString.ecf();
+          if (localdia != null)
           {
-            localdhg.HvJ = j;
-            localdhg.HvK = i;
-            paramString.a(localdhg);
+            localdia.HPm = j;
+            localdia.HPn = i;
+            paramString.a(localdia);
           }
           c(paramString);
           AppMethodBeat.o(97491);
@@ -210,29 +210,29 @@ public final class o
     }
   }
   
-  public final void aAc(String paramString)
+  public final void aBt(String paramString)
   {
     AppMethodBeat.i(97477);
-    n localn = aAf(paramString);
+    n localn = aBw(paramString);
     localn.field_userName = paramString;
     super.delete(localn, new String[] { getPrimaryKey() });
     AppMethodBeat.o(97477);
   }
   
-  public final atu aAd(String paramString)
+  public final auk aBu(String paramString)
   {
     AppMethodBeat.i(97481);
-    Object localObject = new atu();
+    Object localObject = new auk();
     new n();
-    paramString = aAf(paramString);
+    paramString = aBw(paramString);
     try
     {
-      if (!bt.cC(paramString.field_faultS))
+      if (!bu.cF(paramString.field_faultS))
       {
-        paramString = (atu)new atu().parseFrom(paramString.field_faultS);
+        paramString = (auk)new auk().parseFrom(paramString.field_faultS);
         localObject = paramString;
         if (paramString == null) {
-          localObject = new atu();
+          localObject = new auk();
         }
         AppMethodBeat.o(97481);
         return localObject;
@@ -242,34 +242,34 @@ public final class o
     {
       for (;;)
       {
-        ad.e("MicroMsg.SnsExtStorage", "parser field_faultS error");
+        ae.e("MicroMsg.SnsExtStorage", "parser field_faultS error");
         paramString = (String)localObject;
       }
     }
   }
   
-  public final void aAe(String paramString)
+  public final void aBv(String paramString)
   {
     AppMethodBeat.i(97482);
     new n();
-    n localn = aAf(paramString);
+    n localn = aBw(paramString);
     localn.field_userName = paramString;
     localn.field_local_flag &= 0xFFFFFFFE;
     c(localn);
     AppMethodBeat.o(97482);
   }
   
-  public final n aAf(String paramString)
+  public final n aBw(String paramString)
   {
     AppMethodBeat.i(97483);
     n localn2 = new n();
     n localn1 = localn2;
-    if (this.zML != null)
+    if (this.AdS != null)
     {
       localn1 = localn2;
-      if (this.zMK)
+      if (this.AdR)
       {
-        localn1 = this.zML.ayW(paramString);
+        localn1 = this.AdS.aAn(paramString);
         if (localn1 != null)
         {
           AppMethodBeat.o(97483);
@@ -284,57 +284,57 @@ public final class o
     return localn1;
   }
   
-  public final List<dhk> aAg(String paramString)
+  public final List<die> aBx(String paramString)
   {
     AppMethodBeat.i(97493);
-    paramString = aAf(paramString).dYz().HvI;
+    paramString = aBw(paramString).ecd().HPl;
     AppMethodBeat.o(97493);
     return paramString;
   }
   
-  public final dhg axI(String paramString)
+  public final dia ayZ(String paramString)
   {
     AppMethodBeat.i(97488);
-    paramString = aAf(paramString);
+    paramString = aBw(paramString);
     if (paramString == null)
     {
-      paramString = new dhg();
+      paramString = new dia();
       AppMethodBeat.o(97488);
       return paramString;
     }
-    paramString = paramString.dYB();
+    paramString = paramString.ecf();
     AppMethodBeat.o(97488);
     return paramString;
   }
   
-  public final dhg b(String paramString, dhg paramdhg)
+  public final dia b(String paramString, dia paramdia)
   {
     AppMethodBeat.i(97486);
-    n localn = aAf(paramString);
+    n localn = aBw(paramString);
     if (localn == null)
     {
       paramString = a(paramString, localn);
       if (paramString != null) {
-        if (paramdhg.jdn != -1) {
+        if (paramdia.jgg != -1) {
           break label56;
         }
       }
       label56:
-      for (i = paramString.field_iFlag;; i = paramdhg.jdn)
+      for (i = paramString.field_iFlag;; i = paramdia.jgg)
       {
-        paramdhg.jdn = i;
+        paramdia.jgg = i;
         AppMethodBeat.o(97486);
-        return paramdhg;
+        return paramdia;
       }
     }
     String str;
     label97:
     int j;
-    if (bt.isNullOrNil(paramdhg.jdo))
+    if (bu.isNullOrNil(paramdia.jgh))
     {
       str = localn.field_bgUrl;
-      paramdhg.jdo = str;
-      if (paramdhg.jdn != -1) {
+      paramdia.jgh = str;
+      if (paramdia.jgg != -1) {
         break label157;
       }
       i = 1;
@@ -343,7 +343,7 @@ public final class o
       }
       j = localn.field_iFlag;
       label108:
-      paramdhg.jdn = j;
+      paramdia.jgg = j;
       paramString = a(paramString, localn);
       if (paramString != null) {
         if (i == 0) {
@@ -354,31 +354,31 @@ public final class o
     label157:
     label162:
     label171:
-    for (int i = paramString.field_iFlag;; i = paramdhg.jdn)
+    for (int i = paramString.field_iFlag;; i = paramdia.jgg)
     {
-      paramdhg.jdn = i;
+      paramdia.jgg = i;
       AppMethodBeat.o(97486);
-      return paramdhg;
-      str = paramdhg.jdo;
+      return paramdia;
+      str = paramdia.jgh;
       break;
       i = 0;
       break label97;
-      j = paramdhg.jdn;
+      j = paramdia.jgg;
       break label108;
     }
   }
   
-  public final dhg b(String paramString, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4)
+  public final dia b(String paramString, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4)
   {
     AppMethodBeat.i(97492);
-    paramString = aAf(paramString).dYB();
+    paramString = aBw(paramString).ecf();
     if (paramString == null)
     {
-      ad.e("MicroMsg.SnsExtStorage", "userinfo is null");
+      ae.e("MicroMsg.SnsExtStorage", "userinfo is null");
       AppMethodBeat.o(97492);
       return null;
     }
-    int j = paramString.HvJ;
+    int j = paramString.HPm;
     int i = -1;
     j |= 0x1000;
     if (paramBoolean1) {
@@ -397,8 +397,8 @@ public final class o
       }
       for (;;)
       {
-        paramString.HvJ = j;
-        paramString.HvK = i;
+        paramString.HPm = j;
+        paramString.HPn = i;
         AppMethodBeat.o(97492);
         return paramString;
         j &= 0xFFFFF7FF;
@@ -414,10 +414,10 @@ public final class o
     return bool;
   }
   
-  public final boolean bJ(String paramString, boolean paramBoolean)
+  public final boolean bN(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(97489);
-    paramString = aAf(paramString);
+    paramString = aBw(paramString);
     int i = paramString.field_iFlag;
     if (paramBoolean) {
       i |= 0x1;
@@ -432,23 +432,23 @@ public final class o
     }
   }
   
-  public final dhg bK(String paramString, boolean paramBoolean)
+  public final dia bO(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(97490);
-    paramString = aAf(paramString).dYB();
+    paramString = aBw(paramString).ecf();
     if (paramString == null)
     {
-      ad.e("MicroMsg.SnsExtStorage", "userinfo is null");
+      ae.e("MicroMsg.SnsExtStorage", "userinfo is null");
       AppMethodBeat.o(97490);
       return null;
     }
-    int i = paramString.HvJ;
+    int i = paramString.HPm;
     if (paramBoolean) {
       i |= 0x1;
     }
     for (;;)
     {
-      paramString.HvJ = i;
+      paramString.HPm = i;
       AppMethodBeat.o(97490);
       return paramString;
       i &= 0xFFFFFFFE;
@@ -468,27 +468,27 @@ public final class o
     return bool;
   }
   
-  public final void dSA()
-  {
-    AppMethodBeat.i(97473);
-    this.zMK = false;
-    this.zML.dUz();
-    ad.d("MicroMsg.SnsExtStorage", "detchCache");
-    AppMethodBeat.o(97473);
-  }
-  
-  public final void dSz()
+  public final void dVX()
   {
     AppMethodBeat.i(97472);
-    ad.d("MicroMsg.SnsExtStorage", "attachCache");
-    this.zMK = true;
+    ae.d("MicroMsg.SnsExtStorage", "attachCache");
+    this.AdR = true;
     AppMethodBeat.o(97472);
+  }
+  
+  public final void dVY()
+  {
+    AppMethodBeat.i(97473);
+    this.AdR = false;
+    this.AdS.dXZ();
+    ae.d("MicroMsg.SnsExtStorage", "detchCache");
+    AppMethodBeat.o(97473);
   }
   
   public final int g(String paramString1, String paramString2, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(97479);
-    paramString1 = aAf(paramString1);
+    paramString1 = aBw(paramString1);
     paramString1.field_md5 = paramString2;
     paramString1.field_adsession = paramArrayOfByte;
     super.replace(paramString1);
@@ -496,20 +496,30 @@ public final class o
     return 0;
   }
   
-  public final boolean jP(String paramString1, String paramString2)
+  public final int jV(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(219638);
+    paramString1 = aBw(paramString1);
+    paramString1.field_md5 = paramString2;
+    super.replace(paramString1);
+    AppMethodBeat.o(219638);
+    return 0;
+  }
+  
+  public final boolean jW(String paramString1, String paramString2)
   {
     AppMethodBeat.i(97480);
-    paramString1 = aAf(paramString1);
+    paramString1 = aBw(paramString1);
     paramString1.field_newerIds = paramString2;
     boolean bool = super.replace(paramString1);
     AppMethodBeat.o(97480);
     return bool;
   }
   
-  public final int n(String paramString1, String paramString2, int paramInt1, int paramInt2)
+  public final int o(String paramString1, String paramString2, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(97478);
-    paramString1 = aAf(paramString1);
+    paramString1 = aBw(paramString1);
     paramString1.field_md5 = paramString2;
     paramString1.field_lastFirstPageRequestErrType = paramInt1;
     paramString1.field_lastFirstPageRequestErrCode = paramInt2;
@@ -518,10 +528,10 @@ public final class o
     return 0;
   }
   
-  public final int o(String paramString1, String paramString2, int paramInt1, int paramInt2)
+  public final int p(String paramString1, String paramString2, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(162060);
-    paramString1 = aAf(paramString1);
+    paramString1 = aBw(paramString1);
     paramString1.field_albumMd5 = paramString2;
     paramString1.field_lastFirstPageRequestErrType = paramInt1;
     paramString1.field_lastFirstPageRequestErrCode = paramInt2;
@@ -530,20 +540,20 @@ public final class o
     return 0;
   }
   
-  public final void x(String paramString, List<dhk> paramList)
+  public final void y(String paramString, List<die> paramList)
   {
     AppMethodBeat.i(97494);
     Object localObject = paramList;
     if (paramList == null)
     {
-      ad.i("MicroMsg.SnsExtStorage", "updateSnsYearMonthInfo info is null");
+      ae.i("MicroMsg.SnsExtStorage", "updateSnsYearMonthInfo info is null");
       localObject = new ArrayList();
     }
-    ad.i("MicroMsg.SnsExtStorage", "updateSnsYearMonthInfo size:%s", new Object[] { Integer.valueOf(((List)localObject).size()) });
-    paramString = aAf(paramString);
-    paramList = paramString.dYz();
-    paramList.HvI.clear();
-    paramList.HvI.addAll((Collection)localObject);
+    ae.i("MicroMsg.SnsExtStorage", "updateSnsYearMonthInfo size:%s", new Object[] { Integer.valueOf(((List)localObject).size()) });
+    paramString = aBw(paramString);
+    paramList = paramString.ecd();
+    paramList.HPl.clear();
+    paramList.HPl.addAll((Collection)localObject);
     paramString.a(paramList);
     c(paramString);
     AppMethodBeat.o(97494);

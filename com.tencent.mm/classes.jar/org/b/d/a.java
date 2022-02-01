@@ -5,24 +5,24 @@ import java.io.OutputStream;
 
 public final class a
 {
-  public final String NVZ;
-  public final String NWa;
-  public final String NWb;
-  public final h NWd;
-  private final OutputStream NWe;
+  public final String Ote;
+  public final String Otf;
+  public final String Otg;
+  public final h Oti;
+  private final OutputStream Otj;
   public final String scope;
   
   public a(String paramString1, String paramString2, String paramString3, h paramh, String paramString4, OutputStream paramOutputStream)
   {
-    this.NVZ = paramString1;
-    this.NWa = paramString2;
-    this.NWb = paramString3;
-    this.NWd = paramh;
+    this.Ote = paramString1;
+    this.Otf = paramString2;
+    this.Otg = paramString3;
+    this.Oti = paramh;
     this.scope = paramString4;
-    this.NWe = paramOutputStream;
+    this.Otj = paramOutputStream;
   }
   
-  public final boolean gyu()
+  public final boolean gCW()
   {
     return this.scope != null;
   }
@@ -30,12 +30,12 @@ public final class a
   public final void log(String paramString)
   {
     AppMethodBeat.i(40544);
-    if (this.NWe != null)
+    if (this.Otj != null)
     {
       paramString = paramString + "\n";
       try
       {
-        this.NWe.write(paramString.getBytes("UTF8"));
+        this.Otj.write(paramString.getBytes("UTF8"));
         AppMethodBeat.o(40544);
         return;
       }

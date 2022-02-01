@@ -1,56 +1,51 @@
 package com.tencent.mm.plugin.game.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import f.a.a.b;
 
 public final class db
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public String ufQ;
+  public String uqi;
+  public String uuM;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(149417);
+    AppMethodBeat.i(41815);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.ufQ == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: PkgId");
-        AppMethodBeat.o(149417);
-        throw paramVarArgs;
+      if (this.uuM != null) {
+        paramVarArgs.d(1, this.uuM);
       }
-      if (this.ufQ != null) {
-        paramVarArgs.d(1, this.ufQ);
+      if (this.uqi != null) {
+        paramVarArgs.d(2, this.uqi);
       }
-      AppMethodBeat.o(149417);
+      AppMethodBeat.o(41815);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.ufQ == null) {
-        break label261;
+      if (this.uuM == null) {
+        break label274;
       }
     }
-    label261:
-    for (paramInt = f.a.a.b.b.a.e(1, this.ufQ) + 0;; paramInt = 0)
+    label274:
+    for (paramInt = f.a.a.b.b.a.e(1, this.uuM) + 0;; paramInt = 0)
     {
-      AppMethodBeat.o(149417);
-      return paramInt;
+      int i = paramInt;
+      if (this.uqi != null) {
+        i = paramInt + f.a.a.b.b.a.e(2, this.uqi);
+      }
+      AppMethodBeat.o(41815);
+      return i;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
-        if (this.ufQ == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: PkgId");
-          AppMethodBeat.o(149417);
-          throw paramVarArgs;
-        }
-        AppMethodBeat.o(149417);
+        AppMethodBeat.o(41815);
         return 0;
       }
       if (paramInt == 3)
@@ -60,14 +55,18 @@ public final class db
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(149417);
+          AppMethodBeat.o(41815);
           return -1;
+        case 1: 
+          localdb.uuM = locala.OmT.readString();
+          AppMethodBeat.o(41815);
+          return 0;
         }
-        localdb.ufQ = locala.NPN.readString();
-        AppMethodBeat.o(149417);
+        localdb.uqi = locala.OmT.readString();
+        AppMethodBeat.o(41815);
         return 0;
       }
-      AppMethodBeat.o(149417);
+      AppMethodBeat.o(41815);
       return -1;
     }
   }

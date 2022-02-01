@@ -1,81 +1,81 @@
 package com.tencent.mm.plugin.appbrand.launching.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.a.a;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.cn.f;
-import com.tencent.mm.protocal.protobuf.btf;
-import com.tencent.mm.protocal.protobuf.btg;
+import com.tencent.mm.ak.a.a;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.cm.f;
+import com.tencent.mm.cm.g;
+import com.tencent.mm.protocal.protobuf.btz;
+import com.tencent.mm.protocal.protobuf.bua;
+import com.tencent.mm.vending.g.c.a;
 import d.g.b.p;
 import d.l;
 import d.v;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/launching/parallel/CgiLaunchWxaAppForPreFetch;", "Lcom/tencent/mm/plugin/appbrand/networking/AppBrandCgiWithSpeedReport;", "Lcom/tencent/mm/protocal/protobuf/LaunchWxaAppResponse;", "req", "Lcom/tencent/mm/protocal/protobuf/LaunchWxaAppRequest;", "isSync", "", "(Lcom/tencent/mm/protocal/protobuf/LaunchWxaAppRequest;Z)V", "getReq", "()Lcom/tencent/mm/protocal/protobuf/LaunchWxaAppRequest;", "rr", "Lcom/tencent/mm/modelbase/CommReqResp;", "run", "Lcom/tencent/mm/wx/WxPipeline;", "Lcom/tencent/mm/modelbase/Cgi$CgiBack;", "Companion", "plugin-appbrand-integration_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/launching/parallel/CgiLaunchWxaAppForPreFetch;", "Lcom/tencent/mm/plugin/appbrand/networking/AppBrandCgiWithSpeedReport;", "Lcom/tencent/mm/protocal/protobuf/LaunchWxaAppResponse;", "req", "Lcom/tencent/mm/protocal/protobuf/LaunchWxaAppRequest;", "isSync", "", "(Lcom/tencent/mm/protocal/protobuf/LaunchWxaAppRequest;Z)V", "getReq", "()Lcom/tencent/mm/protocal/protobuf/LaunchWxaAppRequest;", "rr", "Lcom/tencent/mm/modelbase/CommReqResp;", "onBeforeRunCgi", "Lcom/tencent/mm/wx/WxPipeline;", "Lcom/tencent/mm/modelbase/Cgi$CgiBack;", "run", "Companion", "plugin-appbrand-integration_release"})
 public final class d
-  extends com.tencent.mm.plugin.appbrand.networking.a<btg>
+  extends com.tencent.mm.plugin.appbrand.networking.b<bua>
 {
-  public static final a lMT;
-  private final boolean jpu;
-  private final btf lMS;
-  private final com.tencent.mm.al.b rr;
+  public static final a lRt;
+  private final boolean jsn;
+  private final btz lRs;
+  private final com.tencent.mm.ak.b rr;
   
   static
   {
     AppMethodBeat.i(50807);
-    lMT = new a((byte)0);
+    lRt = new a((byte)0);
     AppMethodBeat.o(50807);
   }
   
-  public d(btf parambtf, boolean paramBoolean)
+  public d(btz parambtz, boolean paramBoolean)
   {
-    super(parambtf.iht, parambtf.GNH);
+    super(parambtz.ikm, parambtz.Hhh);
     AppMethodBeat.i(50806);
-    this.lMS = parambtf;
-    this.jpu = paramBoolean;
-    parambtf = new b.a();
-    parambtf.oP(1122);
-    parambtf.Dl("/cgi-bin/mmbiz-bin/wxaattr/launchwxaapp");
-    parambtf.c((com.tencent.mm.bx.a)this.lMS);
-    parambtf.d((com.tencent.mm.bx.a)new btg());
-    parambtf = parambtf.aDC();
-    p.g(parambtf, "rrb.buildInstance()");
-    this.rr = parambtf;
+    this.lRs = parambtz;
+    this.jsn = paramBoolean;
+    parambtz = new b.a();
+    parambtz.oS(1122);
+    parambtz.DN("/cgi-bin/mmbiz-bin/wxaattr/launchwxaapp");
+    parambtz.c((com.tencent.mm.bw.a)this.lRs);
+    parambtz.d((com.tencent.mm.bw.a)new bua());
+    parambtz = parambtz.aDS();
+    p.g(parambtz, "rrb.buildInstance()");
+    this.rr = parambtz;
     c(this.rr);
     AppMethodBeat.o(50806);
   }
   
-  public final f<a.a<btg>> aED()
+  public final f<a.a<bua>> aET()
   {
     AppMethodBeat.i(50805);
     Object localObject = new com.tencent.mm.plugin.appbrand.launching.a.a();
-    com.tencent.mm.bx.a locala = this.rr.aEE();
+    com.tencent.mm.bw.a locala = this.rr.aEU();
     if (locala == null)
     {
       localObject = new v("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.LaunchWxaAppRequest");
       AppMethodBeat.o(50805);
       throw ((Throwable)localObject);
     }
-    localObject = ((com.tencent.mm.plugin.appbrand.launching.a.a)localObject).a((btf)locala, this.jpu, (com.tencent.mm.al.a)this);
-    locala = this.rr.aEE();
+    localObject = ((com.tencent.mm.plugin.appbrand.launching.a.a)localObject).a((btz)locala, this.jsn, (com.tencent.mm.ak.a)this);
+    locala = this.rr.aEU();
     if (locala == null)
     {
       localObject = new v("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.LaunchWxaAppRequest");
       AppMethodBeat.o(50805);
       throw ((Throwable)localObject);
     }
-    com.tencent.mm.plugin.appbrand.launching.a.b.a((btf)locala);
-    locala = this.rr.aEE();
+    com.tencent.mm.plugin.appbrand.launching.a.b.a((btz)locala);
+    locala = this.rr.aEU();
     if (locala == null)
     {
       localObject = new v("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.LaunchWxaAppRequest");
       AppMethodBeat.o(50805);
       throw ((Throwable)localObject);
     }
-    com.tencent.mm.plugin.appbrand.launching.a.b.b((btf)locala);
-    if (localObject == null)
-    {
-      localObject = super.aED();
-      p.g(localObject, "super.run()");
+    com.tencent.mm.plugin.appbrand.launching.a.b.b((btz)locala);
+    if (localObject == null) {
+      localObject = super.aET();
     }
     for (;;)
     {
@@ -84,8 +84,28 @@ public final class d
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/launching/parallel/CgiLaunchWxaAppForPreFetch$Companion;", "", "()V", "TAG", "", "createRequest", "Lcom/tencent/mm/plugin/appbrand/launching/parallel/CgiLaunchWxaAppForPreFetch;", "userName", "appId", "wxaAppBaseInfo", "Lcom/tencent/mm/protocal/protobuf/WxaAppBaseInfo;", "webLaunch", "Lcom/tencent/mm/protocal/protobuf/WxaWebLaunchInfo;", "appJump", "Lcom/tencent/mm/protocal/protobuf/WxaJumpInfo;", "libVersion", "", "wxaPushMsgInfo", "Lcom/tencent/mm/protocal/protobuf/WxaPushMsgInfo;", "isSync", "", "createRequestForCmdPreLaunch", "plugin-appbrand-integration_release"})
+  public final f<a.a<bua>> beN()
+  {
+    AppMethodBeat.i(223591);
+    if (!com.tencent.mm.plugin.appbrand.networking.a.ej(this.lRs.ikm, this.lRs.Hhh))
+    {
+      f localf = g.c((c.a)new b(this));
+      AppMethodBeat.o(223591);
+      return localf;
+    }
+    AppMethodBeat.o(223591);
+    return null;
+  }
+  
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/launching/parallel/CgiLaunchWxaAppForPreFetch$Companion;", "", "()V", "TAG", "", "createRequest", "Lcom/tencent/mm/plugin/appbrand/launching/parallel/CgiLaunchWxaAppForPreFetch;", "userName", "appId", "wxaAppBaseInfo", "Lcom/tencent/mm/protocal/protobuf/WxaAppBaseInfo;", "webLaunch", "Lcom/tencent/mm/protocal/protobuf/WxaWebLaunchInfo;", "appJump", "Lcom/tencent/mm/protocal/protobuf/WxaJumpInfo;", "libVersion", "", "wxaPushMsgInfo", "Lcom/tencent/mm/protocal/protobuf/WxaPushMsgInfo;", "isSync", "", "createRequestForCmdPreLaunch", "plugin-appbrand-integration_release"})
   public static final class a {}
+  
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "Lcom/tencent/mm/modelbase/Cgi$CgiBack;", "Lcom/tencent/mm/protocal/protobuf/LaunchWxaAppResponse;", "kotlin.jvm.PlatformType", "call"})
+  static final class b<_Ret>
+    implements c.a<_Var>
+  {
+    b(d paramd) {}
+  }
 }
 
 

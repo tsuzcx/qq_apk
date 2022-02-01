@@ -13,12 +13,12 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class CheckPreference
   extends Preference
 {
-  private TextView COs;
-  private int COt;
-  private String COu;
-  private int COv;
-  private CheckBox JrE;
-  public int JrF;
+  private int DcV;
+  private String DcW;
+  private int DcX;
+  private TextView Dga;
+  private CheckBox JMt;
+  public int JMu;
   public boolean oB;
   
   public CheckPreference(Context paramContext, AttributeSet paramAttributeSet)
@@ -31,10 +31,10 @@ public class CheckPreference
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(142518);
     this.oB = false;
-    this.COt = -1;
-    this.COu = "";
-    this.COv = 8;
-    this.JrF = -1;
+    this.DcV = -1;
+    this.DcW = "";
+    this.DcX = 8;
+    this.JMu = -1;
     setLayoutResource(2131494888);
     AppMethodBeat.o(142518);
   }
@@ -43,29 +43,29 @@ public class CheckPreference
   {
     AppMethodBeat.i(142520);
     super.onBindView(paramView);
-    this.JrE = ((CheckBox)paramView.findViewById(2131298255));
-    this.JrE.setChecked(this.oB);
-    this.COs = ((TextView)paramView.findViewById(2131305883));
-    paramView = this.COu;
-    int i = this.COt;
-    this.COt = i;
-    this.COu = paramView;
-    if (this.COs != null)
+    this.JMt = ((CheckBox)paramView.findViewById(2131298255));
+    this.JMt.setChecked(this.oB);
+    this.Dga = ((TextView)paramView.findViewById(2131305883));
+    paramView = this.DcW;
+    int i = this.DcV;
+    this.DcV = i;
+    this.DcW = paramView;
+    if (this.Dga != null)
     {
       if (i > 0) {
-        this.COs.setBackgroundResource(this.COt);
+        this.Dga.setBackgroundResource(this.DcV);
       }
-      if (!TextUtils.isEmpty(this.COu)) {
-        this.COs.setText(this.COu);
+      if (!TextUtils.isEmpty(this.DcW)) {
+        this.Dga.setText(this.DcW);
       }
     }
-    this.COv = this.COv;
-    if (this.COs != null) {
-      this.COs.setVisibility(this.COv);
+    this.DcX = this.DcX;
+    if (this.Dga != null) {
+      this.Dga.setVisibility(this.DcX);
     }
-    paramView = (LinearLayout.LayoutParams)this.JrE.getLayoutParams();
-    if (-1 != this.JrF) {
-      paramView.setMargins(paramView.leftMargin, paramView.topMargin, this.JrF, paramView.bottomMargin);
+    paramView = (LinearLayout.LayoutParams)this.JMt.getLayoutParams();
+    if (-1 != this.JMu) {
+      paramView.setMargins(paramView.leftMargin, paramView.topMargin, this.JMu, paramView.bottomMargin);
     }
     AppMethodBeat.o(142520);
   }
@@ -80,7 +80,7 @@ public class CheckPreference
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.base.preference.CheckPreference
  * JD-Core Version:    0.7.0.1
  */

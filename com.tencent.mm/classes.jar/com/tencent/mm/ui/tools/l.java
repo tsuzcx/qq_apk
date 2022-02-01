@@ -15,7 +15,7 @@ import android.widget.AdapterView.OnItemLongClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.ui.MMFragmentActivity;
 import com.tencent.mm.ui.base.m;
 import com.tencent.mm.ui.base.n.a;
@@ -32,14 +32,14 @@ import java.util.List;
 public final class l
   implements AdapterView.OnItemClickListener
 {
-  private com.tencent.mm.ui.base.l Ekt;
-  private e.b KJA;
-  private com.tencent.mm.ui.base.l KJB;
-  public n.a KJC;
-  public n.b KJD;
-  public e KJx;
-  public n.d KJy;
-  public n.e KJz;
+  private com.tencent.mm.ui.base.l ECx;
+  public e LfR;
+  public n.d LfS;
+  public n.e LfT;
+  private e.b LfU;
+  private com.tencent.mm.ui.base.l LfV;
+  public n.a LfW;
+  public n.b LfX;
   private Context mContext;
   private LayoutInflater mInflater;
   
@@ -48,9 +48,9 @@ public final class l
     AppMethodBeat.i(143164);
     this.mContext = paramContext;
     this.mInflater = LayoutInflater.from(paramContext);
-    this.KJx = new e(paramContext, 1, false);
-    this.Ekt = new com.tencent.mm.ui.base.l(paramContext);
-    this.KJB = new com.tencent.mm.ui.base.l(paramContext);
+    this.LfR = new e(paramContext, 1, false);
+    this.ECx = new com.tencent.mm.ui.base.l(paramContext);
+    this.LfV = new com.tencent.mm.ui.base.l(paramContext);
     AppMethodBeat.o(143164);
   }
   
@@ -59,56 +59,56 @@ public final class l
     AppMethodBeat.i(143166);
     if (((this.mContext instanceof MMFragmentActivity)) && (((MMFragmentActivity)this.mContext).isSwiping()))
     {
-      ad.w("MicroMsg.MMSubMenuHelper", "is swiping, PASS openContextMenuForAdapterView");
+      ae.w("MicroMsg.MMSubMenuHelper", "is swiping, PASS openContextMenuForAdapterView");
       AppMethodBeat.o(143166);
       return;
     }
-    this.KJz = parame;
-    this.KJB.clear();
+    this.LfT = parame;
+    this.LfV.clear();
     parame = new AdapterView.AdapterContextMenuInfo(paramView, paramInt, paramLong);
-    paramOnCreateContextMenuListener.onCreateContextMenu(this.KJB, paramView, parame);
-    paramView = this.KJB.JlY.iterator();
+    paramOnCreateContextMenuListener.onCreateContextMenu(this.LfV, paramView, parame);
+    paramView = this.LfV.JGM.iterator();
     while (paramView.hasNext()) {
-      ((m)paramView.next()).Jme = parame;
+      ((m)paramView.next()).JGS = parame;
     }
-    this.KJy = new n.d()
+    this.LfS = new n.d()
     {
       public final void onCreateMMMenu(com.tencent.mm.ui.base.l paramAnonymousl)
       {
         AppMethodBeat.i(143162);
         paramAnonymousl.clear();
-        Iterator localIterator = l.a(l.this).JlY.iterator();
+        Iterator localIterator = l.a(l.this).JGM.iterator();
         while (localIterator.hasNext()) {
           paramAnonymousl.g((MenuItem)localIterator.next());
         }
         AppMethodBeat.o(143162);
       }
     };
-    this.KJx.sSi = true;
-    fKy();
+    this.LfR.tdt = true;
+    fOP();
     AppMethodBeat.o(143166);
   }
   
   public final void a(View paramView, final View.OnCreateContextMenuListener paramOnCreateContextMenuListener, n.e parame)
   {
     AppMethodBeat.i(143165);
-    this.KJz = parame;
-    ad.v("MicroMsg.MMSubMenuHelper", "registerForContextMenu");
+    this.LfT = parame;
+    ae.v("MicroMsg.MMSubMenuHelper", "registerForContextMenu");
     if ((paramView instanceof AbsListView))
     {
-      ad.v("MicroMsg.MMSubMenuHelper", "registerForContextMenu AbsListView");
+      ae.v("MicroMsg.MMSubMenuHelper", "registerForContextMenu AbsListView");
       ((AbsListView)paramView).setOnItemLongClickListener(new AdapterView.OnItemLongClickListener()
       {
         public final boolean onItemLongClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
         {
           AppMethodBeat.i(143157);
           l.a(l.this).clear();
-          ad.v("MicroMsg.MMSubMenuHelper", "registerForContextMenu AbsListView long click");
+          ae.v("MicroMsg.MMSubMenuHelper", "registerForContextMenu AbsListView long click");
           paramAnonymousAdapterView = new AdapterView.AdapterContextMenuInfo(paramAnonymousView, paramAnonymousInt, paramAnonymousLong);
           paramOnCreateContextMenuListener.onCreateContextMenu(l.a(l.this), paramAnonymousView, paramAnonymousAdapterView);
-          paramAnonymousView = l.a(l.this).JlY.iterator();
+          paramAnonymousView = l.a(l.this).JGM.iterator();
           while (paramAnonymousView.hasNext()) {
-            ((m)paramAnonymousView.next()).Jme = paramAnonymousAdapterView;
+            ((m)paramAnonymousView.next()).JGS = paramAnonymousAdapterView;
           }
           l.a(l.this, new n.d()
           {
@@ -116,15 +116,15 @@ public final class l
             {
               AppMethodBeat.i(143156);
               paramAnonymous2l.clear();
-              Iterator localIterator = l.a(l.this).JlY.iterator();
+              Iterator localIterator = l.a(l.this).JGM.iterator();
               while (localIterator.hasNext()) {
                 paramAnonymous2l.g((MenuItem)localIterator.next());
               }
               AppMethodBeat.o(143156);
             }
           });
-          l.b(l.this).sSi = true;
-          l.this.fKy();
+          l.b(l.this).tdt = true;
+          l.this.fOP();
           AppMethodBeat.o(143157);
           return true;
         }
@@ -134,7 +134,7 @@ public final class l
     }
     if ((paramView instanceof MMWebView))
     {
-      ad.v("MicroMsg.MMSubMenuHelper", "registerForContextMenu for webview");
+      ae.v("MicroMsg.MMSubMenuHelper", "registerForContextMenu for webview");
       paramView.setOnLongClickListener(new View.OnLongClickListener()
       {
         public final boolean onLongClick(View paramAnonymousView)
@@ -142,8 +142,8 @@ public final class l
           AppMethodBeat.i(143159);
           b localb = new b();
           localb.bd(paramAnonymousView);
-          a.b("com/tencent/mm/ui/tools/MMListMenuHelper$2", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.ahq());
-          ad.v("MicroMsg.MMSubMenuHelper", "registerForContextMenu normal view long click");
+          a.b("com/tencent/mm/ui/tools/MMListMenuHelper$2", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.ahF());
+          ae.v("MicroMsg.MMSubMenuHelper", "registerForContextMenu normal view long click");
           l.a(l.this).clear();
           paramOnCreateContextMenuListener.onCreateContextMenu(l.a(l.this), paramAnonymousView, null);
           l.a(l.this, new n.d()
@@ -152,15 +152,15 @@ public final class l
             {
               AppMethodBeat.i(143158);
               paramAnonymous2l.clear();
-              Iterator localIterator = l.a(l.this).JlY.iterator();
+              Iterator localIterator = l.a(l.this).JGM.iterator();
               while (localIterator.hasNext()) {
                 paramAnonymous2l.g((MenuItem)localIterator.next());
               }
               AppMethodBeat.o(143158);
             }
           });
-          l.b(l.this).sSi = true;
-          l.this.fKy();
+          l.b(l.this).tdt = true;
+          l.this.fOP();
           if (l.a(l.this).size() > 0)
           {
             a.a(true, this, "com/tencent/mm/ui/tools/MMListMenuHelper$2", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
@@ -175,7 +175,7 @@ public final class l
       AppMethodBeat.o(143165);
       return;
     }
-    ad.v("MicroMsg.MMSubMenuHelper", "registerForContextMenu normal view");
+    ae.v("MicroMsg.MMSubMenuHelper", "registerForContextMenu normal view");
     paramView.setOnLongClickListener(new View.OnLongClickListener()
     {
       public final boolean onLongClick(View paramAnonymousView)
@@ -183,8 +183,8 @@ public final class l
         AppMethodBeat.i(143161);
         b localb = new b();
         localb.bd(paramAnonymousView);
-        a.b("com/tencent/mm/ui/tools/MMListMenuHelper$3", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.ahq());
-        ad.v("MicroMsg.MMSubMenuHelper", "registerForContextMenu normal view long click");
+        a.b("com/tencent/mm/ui/tools/MMListMenuHelper$3", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.ahF());
+        ae.v("MicroMsg.MMSubMenuHelper", "registerForContextMenu normal view long click");
         l.a(l.this).clear();
         paramOnCreateContextMenuListener.onCreateContextMenu(l.a(l.this), paramAnonymousView, null);
         l.a(l.this, new n.d()
@@ -193,15 +193,15 @@ public final class l
           {
             AppMethodBeat.i(143160);
             paramAnonymous2l.clear();
-            Iterator localIterator = l.a(l.this).JlY.iterator();
+            Iterator localIterator = l.a(l.this).JGM.iterator();
             while (localIterator.hasNext()) {
               paramAnonymous2l.g((MenuItem)localIterator.next());
             }
             AppMethodBeat.o(143160);
           }
         });
-        l.b(l.this).sSi = true;
-        l.this.fKy();
+        l.b(l.this).tdt = true;
+        l.this.fOP();
         a.a(true, this, "com/tencent/mm/ui/tools/MMListMenuHelper$3", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
         AppMethodBeat.o(143161);
         return true;
@@ -215,51 +215,51 @@ public final class l
     AppMethodBeat.i(143167);
     if (((this.mContext instanceof MMFragmentActivity)) && (((MMFragmentActivity)this.mContext).isSwiping()))
     {
-      ad.w("MicroMsg.MMSubMenuHelper", "is swiping, PASS openContextMenu");
+      ae.w("MicroMsg.MMSubMenuHelper", "is swiping, PASS openContextMenu");
       AppMethodBeat.o(143167);
       return;
     }
-    this.KJA = paramb;
-    this.KJz = parame;
-    this.KJB.clear();
-    paramOnCreateContextMenuListener.onCreateContextMenu(this.KJB, paramView, null);
-    this.KJy = new n.d()
+    this.LfU = paramb;
+    this.LfT = parame;
+    this.LfV.clear();
+    paramOnCreateContextMenuListener.onCreateContextMenu(this.LfV, paramView, null);
+    this.LfS = new n.d()
     {
       public final void onCreateMMMenu(com.tencent.mm.ui.base.l paramAnonymousl)
       {
         AppMethodBeat.i(143163);
         paramAnonymousl.clear();
-        Iterator localIterator = l.a(l.this).JlY.iterator();
+        Iterator localIterator = l.a(l.this).JGM.iterator();
         while (localIterator.hasNext()) {
           paramAnonymousl.g((MenuItem)localIterator.next());
         }
         AppMethodBeat.o(143163);
       }
     };
-    this.KJx.sSi = true;
-    fKy();
+    this.LfR.tdt = true;
+    fOP();
     AppMethodBeat.o(143167);
   }
   
   public final void a(n.d paramd)
   {
-    this.KJy = paramd;
+    this.LfS = paramd;
   }
   
   public final void a(n.e parame)
   {
-    this.KJz = parame;
+    this.LfT = parame;
   }
   
   public final void a(e.a parama)
   {
-    this.KJx.KWx = parama;
+    this.LfR.LsV = parama;
   }
   
   public final void a(e.b paramb)
   {
-    this.KJA = paramb;
-    this.KJx.JXC = paramb;
+    this.LfU = paramb;
+    this.LfR.KtV = paramb;
   }
   
   @Deprecated
@@ -273,32 +273,32 @@ public final class l
   public final void dismiss()
   {
     AppMethodBeat.i(143170);
-    if (this.KJx.isShowing()) {
-      this.KJx.bpT();
+    if (this.LfR.isShowing()) {
+      this.LfR.bqD();
     }
     AppMethodBeat.o(143170);
   }
   
-  public final Dialog fKy()
+  public final Dialog fOP()
   {
     AppMethodBeat.i(143171);
-    if (this.KJy != null)
+    if (this.LfS != null)
     {
-      this.Ekt.clear();
-      this.Ekt = new com.tencent.mm.ui.base.l(this.mContext);
-      this.KJy.onCreateMMMenu(this.Ekt);
+      this.ECx.clear();
+      this.ECx = new com.tencent.mm.ui.base.l(this.mContext);
+      this.LfS.onCreateMMMenu(this.ECx);
     }
-    if (this.Ekt.fyP())
+    if (this.ECx.fCR())
     {
-      ad.w("MicroMsg.MMSubMenuHelper", "show, menu empty");
+      ae.w("MicroMsg.MMSubMenuHelper", "show, menu empty");
       AppMethodBeat.o(143171);
       return null;
     }
-    this.KJx.KJy = this.KJy;
-    this.KJx.KJz = this.KJz;
-    this.KJx.JXC = this.KJA;
-    this.KJx.KJD = this.KJD;
-    this.KJx.cMW();
+    this.LfR.LfS = this.LfS;
+    this.LfR.LfT = this.LfT;
+    this.LfR.KtV = this.LfU;
+    this.LfR.LfX = this.LfX;
+    this.LfR.cPF();
     AppMethodBeat.o(143171);
     return null;
   }
@@ -309,20 +309,20 @@ public final class l
     b localb = new b();
     localb.bd(paramAdapterView);
     localb.bd(paramView);
-    localb.mr(paramInt);
-    localb.qY(paramLong);
-    a.b("com/tencent/mm/ui/tools/MMListMenuHelper", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.ahq());
-    paramAdapterView = (m)this.Ekt.JlY.get(paramInt);
+    localb.mu(paramInt);
+    localb.rl(paramLong);
+    a.b("com/tencent/mm/ui/tools/MMListMenuHelper", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.ahF());
+    paramAdapterView = (m)this.ECx.JGM.get(paramInt);
     if (paramAdapterView.performClick())
     {
-      ad.i("MicroMsg.MMSubMenuHelper", "onItemClick menu item has listener");
+      ae.i("MicroMsg.MMSubMenuHelper", "onItemClick menu item has listener");
       dismiss();
       a.a(this, "com/tencent/mm/ui/tools/MMListMenuHelper", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
       AppMethodBeat.o(143169);
       return;
     }
-    if (this.KJz != null) {
-      this.KJz.onMMMenuItemSelected(paramAdapterView, paramInt);
+    if (this.LfT != null) {
+      this.LfT.onMMMenuItemSelected(paramAdapterView, paramInt);
     }
     dismiss();
     a.a(this, "com/tencent/mm/ui/tools/MMListMenuHelper", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");

@@ -5,13 +5,13 @@ import android.view.View;
 
 public abstract interface g
 {
-  public abstract g.a CB();
+  public abstract g.a CE();
   
   public abstract void a(g.b paramb);
   
-  public abstract void av(Context paramContext);
+  public abstract void aw(Context paramContext);
   
-  public abstract void cO(String paramString);
+  public abstract void cQ(String paramString);
   
   public abstract void destroy();
   

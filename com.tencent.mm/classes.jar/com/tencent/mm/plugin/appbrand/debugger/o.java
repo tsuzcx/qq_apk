@@ -7,30 +7,28 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.ValueCallback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
-import com.tencent.mm.plugin.appbrand.g;
-import com.tencent.mm.plugin.appbrand.g.d;
+import com.tencent.mm.bw.b;
 import com.tencent.mm.plugin.appbrand.jsruntime.h;
 import com.tencent.mm.plugin.appbrand.jsruntime.i;
 import com.tencent.mm.plugin.appbrand.jsruntime.j;
 import com.tencent.mm.plugin.appbrand.o.k.b;
-import com.tencent.mm.plugin.appbrand.z.d;
-import com.tencent.mm.plugin.appbrand.z.m.a;
-import com.tencent.mm.protocal.protobuf.bhv;
-import com.tencent.mm.protocal.protobuf.bhw;
-import com.tencent.mm.protocal.protobuf.dzh;
-import com.tencent.mm.protocal.protobuf.dzm;
-import com.tencent.mm.protocal.protobuf.dzo;
-import com.tencent.mm.protocal.protobuf.dzu;
-import com.tencent.mm.protocal.protobuf.dzw;
-import com.tencent.mm.protocal.protobuf.dzz;
-import com.tencent.mm.protocal.protobuf.eaa;
-import com.tencent.mm.protocal.protobuf.eab;
-import com.tencent.mm.protocal.protobuf.ead;
-import com.tencent.mm.protocal.protobuf.eag;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.plugin.appbrand.y.d;
+import com.tencent.mm.plugin.appbrand.y.m.a;
+import com.tencent.mm.protocal.protobuf.bil;
+import com.tencent.mm.protocal.protobuf.bim;
+import com.tencent.mm.protocal.protobuf.eay;
+import com.tencent.mm.protocal.protobuf.ebd;
+import com.tencent.mm.protocal.protobuf.ebf;
+import com.tencent.mm.protocal.protobuf.ebl;
+import com.tencent.mm.protocal.protobuf.ebn;
+import com.tencent.mm.protocal.protobuf.ebq;
+import com.tencent.mm.protocal.protobuf.ebr;
+import com.tencent.mm.protocal.protobuf.ebs;
+import com.tencent.mm.protocal.protobuf.ebu;
+import com.tencent.mm.protocal.protobuf.ebx;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.net.URL;
 import java.nio.ByteBuffer;
 import java.util.HashMap;
@@ -43,33 +41,33 @@ import java.util.concurrent.atomic.AtomicInteger;
 public final class o
   implements i
 {
-  m coY;
-  public String kbs;
-  private Activity kbt;
-  u kbu;
-  q kbv;
-  com.tencent.luggage.sdk.b.a.c.c kbw;
-  public w kbx;
-  k.b kby;
+  m cpc;
+  public String keJ;
+  private Activity keK;
+  u keL;
+  q keM;
+  com.tencent.luggage.sdk.b.a.c.c keN;
+  public w keO;
+  k.b keP;
   
   public o()
   {
     AppMethodBeat.i(147025);
-    this.kbv = new q();
-    this.kby = new k.b()
+    this.keM = new q();
+    this.keP = new k.b()
     {
-      public final void Ob(String paramAnonymousString)
+      public final void OI(String paramAnonymousString)
       {
         AppMethodBeat.i(147017);
-        ad.i("MicroMsg.RemoteDebugJsEngine", "onSocketError message:%s ", new Object[] { paramAnonymousString });
-        o.this.kbx.Oi(paramAnonymousString);
+        ae.i("MicroMsg.RemoteDebugJsEngine", "onSocketError message:%s ", new Object[] { paramAnonymousString });
+        o.this.keO.OP(paramAnonymousString);
         AppMethodBeat.o(147017);
       }
       
-      public final void Oc(String paramAnonymousString)
+      public final void OJ(String paramAnonymousString)
       {
         AppMethodBeat.i(147021);
-        ad.i("MicroMsg.RemoteDebugJsEngine", "onSocketConnectFail reason:%s ", new Object[] { paramAnonymousString });
+        ae.i("MicroMsg.RemoteDebugJsEngine", "onSocketConnectFail reason:%s ", new Object[] { paramAnonymousString });
         AppMethodBeat.o(147021);
       }
       
@@ -77,14 +75,14 @@ public final class o
       {
         int i = 1;
         AppMethodBeat.i(147020);
-        ad.i("MicroMsg.RemoteDebugJsEngine", "onSocketClose code:%d reason:%s ", new Object[] { Integer.valueOf(paramAnonymousInt), paramAnonymousString });
-        m localm = o.this.coY;
-        if ((!localm.isQuit()) && (localm.kbk < 10L)) {}
+        ae.i("MicroMsg.RemoteDebugJsEngine", "onSocketClose code:%d reason:%s ", new Object[] { Integer.valueOf(paramAnonymousInt), paramAnonymousString });
+        m localm = o.this.cpc;
+        if ((!localm.isQuit()) && (localm.keB < 10L)) {}
         for (paramAnonymousInt = i;; paramAnonymousInt = 0)
         {
           if (paramAnonymousInt != 0)
           {
-            com.tencent.mm.plugin.appbrand.z.m.bBp().k(new Runnable()
+            com.tencent.mm.plugin.appbrand.y.m.bCj().k(new Runnable()
             {
               public final void run()
               {
@@ -93,158 +91,158 @@ public final class o
                 AppMethodBeat.o(147015);
               }
             }, 1000L);
-            localm = o.this.coY;
-            localm.kbk += 1;
+            localm = o.this.cpc;
+            localm.keB += 1;
           }
-          o.this.kbv.beU();
-          o.this.coY.kaY = System.currentTimeMillis();
-          o.this.kbx.bfe();
-          o.this.coY.setStatus(5);
-          o.this.kbx.Oi(paramAnonymousString);
+          o.this.keM.bfC();
+          o.this.cpc.keo = System.currentTimeMillis();
+          o.this.keO.bfM();
+          o.this.cpc.setStatus(5);
+          o.this.keO.OP(paramAnonymousString);
           AppMethodBeat.o(147020);
           return;
         }
       }
       
-      public final void beM()
+      public final void bfu()
       {
         AppMethodBeat.i(147016);
-        ad.i("MicroMsg.RemoteDebugJsEngine", "onSocketOpen");
-        o.this.coY.kaY = System.currentTimeMillis();
-        o.this.coY.kbk = 0;
-        if (!bt.isNullOrNil(o.this.coY.beE())) {
+        ae.i("MicroMsg.RemoteDebugJsEngine", "onSocketOpen");
+        o.this.cpc.keo = System.currentTimeMillis();
+        o.this.cpc.keB = 0;
+        if (!bu.isNullOrNil(o.this.cpc.bfm())) {
           o.a(o.this);
         }
-        q localq = o.this.kbv;
-        localq.beU();
+        q localq = o.this.keM;
+        localq.bfC();
         localq.mTimer = new Timer();
         q.4 local4 = new q.4(localq);
         localq.mTimer.schedule(local4, 100L, 1000L);
         AppMethodBeat.o(147016);
       }
       
-      public final void beN()
+      public final void bfv()
       {
         AppMethodBeat.i(147018);
-        o.this.coY.kaY = System.currentTimeMillis();
+        o.this.cpc.keo = System.currentTimeMillis();
         AppMethodBeat.o(147018);
       }
       
       public final void k(ByteBuffer paramAnonymousByteBuffer)
       {
         AppMethodBeat.i(147019);
-        o.this.coY.kaY = System.currentTimeMillis();
+        o.this.cpc.keo = System.currentTimeMillis();
         for (;;)
         {
           try
           {
             paramAnonymousByteBuffer = d.p(paramAnonymousByteBuffer);
-            paramAnonymousByteBuffer = (dzh)new dzh().parseFrom(paramAnonymousByteBuffer);
-            if (paramAnonymousByteBuffer.Gdx == null)
+            paramAnonymousByteBuffer = (eay)new eay().parseFrom(paramAnonymousByteBuffer);
+            if (paramAnonymousByteBuffer.Gwe == null)
             {
-              ad.w("MicroMsg.RemoteDebugJsEngine", "dataFormat.data is null");
+              ae.w("MicroMsg.RemoteDebugJsEngine", "dataFormat.data is null");
               AppMethodBeat.o(147019);
               return;
             }
-            localObject1 = paramAnonymousByteBuffer.Gdx.zr;
+            localObject1 = paramAnonymousByteBuffer.Gwe.zr;
             switch (paramAnonymousByteBuffer.EN)
             {
             case 1006: 
-              ad.i("MicroMsg.RemoteDebugJsEngine", "onSocketMessage cmd: %d", new Object[] { Integer.valueOf(paramAnonymousByteBuffer.EN) });
+              ae.i("MicroMsg.RemoteDebugJsEngine", "onSocketMessage cmd: %d", new Object[] { Integer.valueOf(paramAnonymousByteBuffer.EN) });
               AppMethodBeat.o(147019);
               return;
             }
           }
           catch (Throwable paramAnonymousByteBuffer)
           {
-            ad.e("MicroMsg.RemoteDebugJsEngine", "onSocketMessage %s", new Object[] { Log.getStackTraceString(paramAnonymousByteBuffer) });
+            ae.e("MicroMsg.RemoteDebugJsEngine", "onSocketMessage %s", new Object[] { Log.getStackTraceString(paramAnonymousByteBuffer) });
             AppMethodBeat.o(147019);
             return;
           }
-          Object localObject1 = (dzw)new dzw().parseFrom((byte[])localObject1);
-          Object localObject2 = o.this.kbv;
-          if (v.a(((q)localObject2).coY, paramAnonymousByteBuffer, ((dzw)localObject1).HMV, ((q)localObject2).kbx, (q)localObject2))
+          Object localObject1 = (ebn)new ebn().parseFrom((byte[])localObject1);
+          Object localObject2 = o.this.keM;
+          if (v.a(((q)localObject2).cpc, paramAnonymousByteBuffer, ((ebn)localObject1).Ihc, ((q)localObject2).keO, (q)localObject2))
           {
-            ad.d("MicroMsg.RemoteDebugMsgMrg", "onSendMsgResult %d/%d", new Object[] { Integer.valueOf(((dzw)localObject1).HMW), Integer.valueOf(((dzw)localObject1).HMX) });
-            ((q)localObject2).coY.dH(((dzw)localObject1).HMW, ((dzw)localObject1).HMX);
-            ((q)localObject2).dJ(((dzw)localObject1).HMW, ((dzw)localObject1).HMX);
+            ae.d("MicroMsg.RemoteDebugMsgMrg", "onSendMsgResult %d/%d", new Object[] { Integer.valueOf(((ebn)localObject1).Ihd), Integer.valueOf(((ebn)localObject1).Ihe) });
+            ((q)localObject2).cpc.dH(((ebn)localObject1).Ihd, ((ebn)localObject1).Ihe);
+            ((q)localObject2).dJ(((ebn)localObject1).Ihd, ((ebn)localObject1).Ihe);
           }
-          r.a(paramAnonymousByteBuffer, (l)o.this.coY.kbh.get(paramAnonymousByteBuffer.uuid));
+          r.a(paramAnonymousByteBuffer, (l)o.this.cpc.kex.get(paramAnonymousByteBuffer.uuid));
           continue;
-          localObject1 = (dzz)new dzz().parseFrom((byte[])localObject1);
-          v.a(o.this.coY, paramAnonymousByteBuffer, ((dzz)localObject1).HMV, o.this.kbx, o.this.kbv);
-          o.this.coY.kaY = System.currentTimeMillis();
+          localObject1 = (ebq)new ebq().parseFrom((byte[])localObject1);
+          v.a(o.this.cpc, paramAnonymousByteBuffer, ((ebq)localObject1).Ihc, o.this.keO, o.this.keM);
+          o.this.cpc.keo = System.currentTimeMillis();
           continue;
-          localObject2 = (ead)new ead().parseFrom((byte[])localObject1);
+          localObject2 = (ebu)new ebu().parseFrom((byte[])localObject1);
           localObject1 = o.this;
-          if (v.a(((o)localObject1).coY, paramAnonymousByteBuffer, ((ead)localObject2).HMV, ((o)localObject1).kbx, ((o)localObject1).kbv))
+          if (v.a(((o)localObject1).cpc, paramAnonymousByteBuffer, ((ebu)localObject2).Ihc, ((o)localObject1).keO, ((o)localObject1).keM))
           {
-            ad.i("MicroMsg.RemoteDebugJsEngine", "onLogin");
-            if (((ead)localObject2).HNf == null)
+            ae.i("MicroMsg.RemoteDebugJsEngine", "onLogin");
+            if (((ebu)localObject2).Ihm == null)
             {
-              ad.e("MicroMsg.RemoteDebugJsEngine", "onLogin room info is null");
+              ae.e("MicroMsg.RemoteDebugJsEngine", "onLogin room info is null");
             }
-            else if (((ead)localObject2).HNf.HMO)
+            else if (((ebu)localObject2).Ihm.IgV)
             {
-              ((o)localObject1).coY.kaT = ((ead)localObject2).HNf;
+              ((o)localObject1).cpc.kej = ((ebu)localObject2).Ihm;
               ((o)localObject1).onReady();
             }
             else
             {
-              ad.i("MicroMsg.RemoteDebugJsEngine", "joinRoom");
-              ((o)localObject1).coY.setStatus(2);
-              localObject2 = new eaa();
-              ((eaa)localObject2).HMT = ((o)localObject1).coY.kaP;
-              ((eaa)localObject2).Fsb = ((o)localObject1).coY.kaU.roomId;
-              ((eaa)localObject2).username = "";
-              ((eaa)localObject2).HNe = ((o)localObject1).coY.kaU.kbn;
-              localObject2 = v.a(1003, (com.tencent.mm.bx.a)localObject2);
-              ((o)localObject1).kbu.a((dzh)localObject2);
+              ae.i("MicroMsg.RemoteDebugJsEngine", "joinRoom");
+              ((o)localObject1).cpc.setStatus(2);
+              localObject2 = new ebr();
+              ((ebr)localObject2).Iha = ((o)localObject1).cpc.kef;
+              ((ebr)localObject2).FKz = ((o)localObject1).cpc.kek.roomId;
+              ((ebr)localObject2).username = "";
+              ((ebr)localObject2).Ihl = ((o)localObject1).cpc.kek.keE;
+              localObject2 = v.a(1003, (com.tencent.mm.bw.a)localObject2);
+              ((o)localObject1).keL.a((eay)localObject2);
               continue;
-              localObject1 = (eab)new eab().parseFrom((byte[])localObject1);
-              if (v.a(o.this.coY, paramAnonymousByteBuffer, ((eab)localObject1).HMV, o.this.kbx, o.this.kbv))
+              localObject1 = (ebs)new ebs().parseFrom((byte[])localObject1);
+              if (v.a(o.this.cpc, paramAnonymousByteBuffer, ((ebs)localObject1).Ihc, o.this.keO, o.this.keM))
               {
                 o.b(o.this);
                 continue;
-                if (o.this.kbw.isRunning())
+                if (o.this.keN.isRunning())
                 {
-                  localObject1 = o.this.kbv;
-                  ad.i("MicroMsg.RemoteDebugMsgMrg", "onQuit");
-                  ((q)localObject1).beS();
-                  localObject1 = ((q)localObject1).kbx;
-                  ((w)localObject1).bfe();
-                  aq.f(new w.6((w)localObject1));
+                  localObject1 = o.this.keM;
+                  ae.i("MicroMsg.RemoteDebugMsgMrg", "onQuit");
+                  ((q)localObject1).bfA();
+                  localObject1 = ((q)localObject1).keO;
+                  ((w)localObject1).bfM();
+                  ar.f(new w.6((w)localObject1));
                 }
                 else
                 {
-                  localObject1 = o.this.kbv;
-                  ad.i("MicroMsg.RemoteDebugMsgMrg", "onQuitSilent");
-                  ((q)localObject1).beS();
-                  localObject1 = ((q)localObject1).kbx;
+                  localObject1 = o.this.keM;
+                  ae.i("MicroMsg.RemoteDebugMsgMrg", "onQuitSilent");
+                  ((q)localObject1).bfA();
+                  localObject1 = ((q)localObject1).keO;
                   ((w)localObject1).setVisibility(8);
                   if ((((w)localObject1).getParent() instanceof ViewGroup))
                   {
                     ((ViewGroup)((w)localObject1).getParent()).removeView((View)localObject1);
                     ((w)localObject1).removeAllViews();
                   }
-                  ((w)localObject1).kca = null;
+                  ((w)localObject1).kfr = null;
                   continue;
-                  localObject1 = (eag)new eag().parseFrom((byte[])localObject1);
-                  localObject2 = o.this.kbv;
-                  ad.d("MicroMsg.RemoteDebugMsgMrg", "onSync");
-                  if (v.a(((q)localObject2).coY, paramAnonymousByteBuffer, ((eag)localObject1).HMV, ((q)localObject2).kbx, (q)localObject2))
+                  localObject1 = (ebx)new ebx().parseFrom((byte[])localObject1);
+                  localObject2 = o.this.keM;
+                  ae.d("MicroMsg.RemoteDebugMsgMrg", "onSync");
+                  if (v.a(((q)localObject2).cpc, paramAnonymousByteBuffer, ((ebx)localObject1).Ihc, ((q)localObject2).keO, (q)localObject2))
                   {
-                    ((q)localObject2).v(((eag)localObject1).HMK);
-                    ((q)localObject2).coY.sk(((eag)localObject1).HNi);
-                    ((q)localObject2).beT();
+                    ((q)localObject2).v(((ebx)localObject1).IgR);
+                    ((q)localObject2).cpc.sn(((ebx)localObject1).Ihp);
+                    ((q)localObject2).bfB();
                     continue;
-                    localObject1 = (dzo)new dzo().parseFrom((byte[])localObject1);
-                    o.this.kbv.v(((dzo)localObject1).HMK);
+                    localObject1 = (ebf)new ebf().parseFrom((byte[])localObject1);
+                    o.this.keM.v(((ebf)localObject1).IgR);
                     continue;
                     o.this.onReady();
                     continue;
-                    o.this.coY.setStatus(4);
-                    o.this.kbv.quit();
+                    o.this.cpc.setStatus(4);
+                    o.this.keM.quit();
                   }
                 }
               }
@@ -253,16 +251,16 @@ public final class o
         }
       }
     };
-    com.tencent.mm.sdk.b.a.IbL.b(new o.4(this));
+    com.tencent.mm.sdk.b.a.IvT.b(new o.4(this));
     AppMethodBeat.o(147025);
   }
   
-  private void beK()
+  private void bfs()
   {
     AppMethodBeat.i(147035);
-    ad.i("MicroMsg.RemoteDebugJsEngine", "getRemoteDebugTicket");
-    bhv localbhv = new bhv();
-    ((com.tencent.mm.plugin.appbrand.networking.b)this.kbw.K(com.tencent.mm.plugin.appbrand.networking.b.class)).a("/cgi-bin/mmbiz-bin/wxabusiness/getremotedebugticket", localbhv, bhw.class).c(new o.3(this));
+    ae.i("MicroMsg.RemoteDebugJsEngine", "getRemoteDebugTicket");
+    bil localbil = new bil();
+    ((com.tencent.mm.plugin.appbrand.networking.c)this.keN.K(com.tencent.mm.plugin.appbrand.networking.c.class)).a("/cgi-bin/mmbiz-bin/wxabusiness/getremotedebugticket", localbil, bim.class).c(new com.tencent.mm.vending.c.a() {});
     AppMethodBeat.o(147035);
   }
   
@@ -274,33 +272,21 @@ public final class o
   public final void Z(int paramInt, String paramString)
   {
     AppMethodBeat.i(147033);
-    this.kbv.Z(paramInt, paramString);
+    this.keM.Z(paramInt, paramString);
     AppMethodBeat.o(147033);
   }
   
   public final void a(m paramm)
   {
     AppMethodBeat.i(147026);
-    this.coY = paramm;
-    this.kbw = this.coY.kaO;
-    this.kbt = ((Activity)this.kbw.getContext());
-    this.kbx = new w(this.kbt, this.coY, new w.a()
-    {
-      public final void beL()
-      {
-        AppMethodBeat.i(147014);
-        o.this.destroy();
-        g.a(o.this.kbw.getAppId(), g.d.jwl);
-        if (o.this.kbw.En() != null) {
-          o.this.kbw.En().finish();
-        }
-        AppMethodBeat.o(147014);
-      }
-    });
-    this.kbx.c(this.kbw.En().jwJ);
+    this.cpc = paramm;
+    this.keN = this.cpc.kee;
+    this.keK = ((Activity)this.keN.getContext());
+    this.keO = new w(this.keK, this.cpc, new o.1(this));
+    this.keO.S(this.keN.Eq());
     connect();
-    if (bt.isNullOrNil(this.coY.beE())) {
-      beK();
+    if (bu.isNullOrNil(this.cpc.bfm())) {
+      bfs();
     }
     AppMethodBeat.o(147026);
   }
@@ -308,7 +294,7 @@ public final class o
   public final void a(p paramp)
   {
     AppMethodBeat.i(147034);
-    this.kbv.a(paramp);
+    this.keM.a(paramp);
     AppMethodBeat.o(147034);
   }
   
@@ -331,33 +317,33 @@ public final class o
   final void connect()
   {
     AppMethodBeat.i(147031);
-    if (this.kbu == null)
+    if (this.keL == null)
     {
-      this.kbu = new u((com.tencent.mm.plugin.appbrand.o.a)this.kbw.ar(com.tencent.mm.plugin.appbrand.o.a.class));
-      this.kbv.a(this.kbu, this.coY, this.kbx);
+      this.keL = new u((com.tencent.mm.plugin.appbrand.o.a)this.keN.ar(com.tencent.mm.plugin.appbrand.o.a.class));
+      this.keM.a(this.keL, this.cpc, this.keO);
     }
-    if (this.coY.beJ())
+    if (this.cpc.bfr())
     {
-      this.kbu.a("ws://localhost:" + this.coY.kaU.kbq, this.kby);
+      this.keL.a("ws://localhost:" + this.cpc.kek.keH, this.keP);
       AppMethodBeat.o(147031);
       return;
     }
-    this.kbu.a("wss://wxagame.weixin.qq.com/remote/", this.kby);
+    this.keL.a("wss://wxagame.weixin.qq.com/remote/", this.keP);
     AppMethodBeat.o(147031);
   }
   
   public final void destroy()
   {
     AppMethodBeat.i(147030);
-    this.kbv.quit();
-    this.kbv.beU();
+    this.keM.quit();
+    this.keM.bfC();
     AppMethodBeat.o(147030);
   }
   
   public final void evaluateJavascript(String paramString, ValueCallback<String> paramValueCallback)
   {
     AppMethodBeat.i(147027);
-    if (this.coY == null)
+    if (this.cpc == null)
     {
       if (paramValueCallback != null) {
         paramValueCallback.onReceiveValue("FATAL");
@@ -365,57 +351,57 @@ public final class o
       AppMethodBeat.o(147027);
       return;
     }
-    if (this.coY.beH())
+    if (this.cpc.bfp())
     {
       AppMethodBeat.o(147027);
       return;
     }
-    if (!this.coY.isReady())
+    if (!this.cpc.isReady())
     {
-      this.coY.kbf.add(new Pair(paramString, paramValueCallback));
-      this.kbs = null;
+      this.cpc.kev.add(new Pair(paramString, paramValueCallback));
+      this.keJ = null;
       AppMethodBeat.o(147027);
       return;
     }
-    Object localObject = new dzm();
-    ((dzm)localObject).HMJ = this.coY.kba.incrementAndGet();
-    ((dzm)localObject).script = paramString;
-    p localp = v.a((com.tencent.mm.bx.a)localObject, this.coY, "evaluateJavascript");
-    this.kbv.a(localp);
-    int i = ((dzm)localObject).HMJ;
+    Object localObject = new ebd();
+    ((ebd)localObject).IgQ = this.cpc.keq.incrementAndGet();
+    ((ebd)localObject).script = paramString;
+    p localp = v.a((com.tencent.mm.bw.a)localObject, this.cpc, "evaluateJavascript");
+    this.keM.a(localp);
+    int i = ((ebd)localObject).IgQ;
     localObject = new c();
-    if (!bt.isNullOrNil(this.kbs))
+    if (!bu.isNullOrNil(this.keJ))
     {
-      ((c)localObject).dln = this.kbs;
-      this.kbs = null;
+      ((c)localObject).dmp = this.keJ;
+      this.keJ = null;
     }
     for (;;)
     {
-      ((c)localObject).kaJ = System.currentTimeMillis();
+      ((c)localObject).kdZ = System.currentTimeMillis();
       ((c)localObject).size = paramString.length();
-      ((c)localObject).kaI = paramValueCallback;
-      this.coY.kbj.put(Integer.valueOf(i), localObject);
+      ((c)localObject).kdY = paramValueCallback;
+      this.cpc.keA.put(Integer.valueOf(i), localObject);
       AppMethodBeat.o(147027);
       return;
-      ((c)localObject).dln = r.Oe(paramString);
+      ((c)localObject).dmp = r.OL(paramString);
     }
   }
   
   final void onReady()
   {
     AppMethodBeat.i(147032);
-    ad.i("MicroMsg.RemoteDebugJsEngine", "onReady");
-    this.coY.setStatus(3);
-    ad.i("MicroMsg.RemoteDebugJsEngine", "clearPendingScript");
-    Iterator localIterator = this.coY.kbf.iterator();
+    ae.i("MicroMsg.RemoteDebugJsEngine", "onReady");
+    this.cpc.setStatus(3);
+    ae.i("MicroMsg.RemoteDebugJsEngine", "clearPendingScript");
+    Iterator localIterator = this.cpc.kev.iterator();
     while (localIterator.hasNext())
     {
       Pair localPair = (Pair)localIterator.next();
       evaluateJavascript((String)localPair.first, (ValueCallback)localPair.second);
     }
-    this.coY.kbf.clear();
-    this.kbv.dI(this.coY.beF(), 2147483647);
-    this.kbx.bfe();
+    this.cpc.kev.clear();
+    this.keM.dI(this.cpc.bfn(), 2147483647);
+    this.keO.bfM();
     AppMethodBeat.o(147032);
   }
   

@@ -7,27 +7,27 @@ import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
 final class FinderProfileTimeLineUI$c
   implements View.OnClickListener
 {
-  public static final c sfK;
+  public static final c soD;
   
   static
   {
-    AppMethodBeat.i(202811);
-    sfK = new c();
-    AppMethodBeat.o(202811);
+    AppMethodBeat.i(203290);
+    soD = new c();
+    AppMethodBeat.o(203290);
   }
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(202810);
+    AppMethodBeat.i(203289);
     b localb = new b();
     localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/finder/feed/ui/FinderProfileTimeLineUI$refreshProfile$1$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+    a.b("com/tencent/mm/plugin/finder/feed/ui/FinderProfileTimeLineUI$refreshProfile$1$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
     a.a(this, "com/tencent/mm/plugin/finder/feed/ui/FinderProfileTimeLineUI$refreshProfile$1$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-    AppMethodBeat.o(202810);
+    AppMethodBeat.o(203289);
   }
 }
 

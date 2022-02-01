@@ -2,22 +2,22 @@ package com.tencent.mm.plugin.appbrand.debugger;
 
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.vm;
-import com.tencent.mm.g.a.vm.a;
+import com.tencent.mm.g.a.vq;
+import com.tencent.mm.g.a.vq.a;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.appbrand.app.j;
-import com.tencent.mm.plugin.appbrand.appcache.bd.c;
-import com.tencent.mm.plugin.appbrand.appcache.bg;
+import com.tencent.mm.plugin.appbrand.appcache.be.c;
+import com.tencent.mm.plugin.appbrand.appcache.bh;
 import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
-import com.tencent.mm.plugin.appbrand.service.o;
+import com.tencent.mm.plugin.appbrand.service.p;
 import com.tencent.mm.plugin.appbrand.task.f;
 import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.Map;
 
 public final class e
-  implements bd.c, DebuggerShell.a
+  implements be.c, DebuggerShell.a
 {
   public final void A(Intent paramIntent)
   {
@@ -26,13 +26,13 @@ public final class e
     int i = paramIntent.getIntExtra("versionType", 0);
     paramIntent = new AppBrandStatObject();
     paramIntent.scene = 1030;
-    ((o)g.ab(o.class)).a(null, null, str, i, 0, null, paramIntent);
+    ((p)g.ab(p.class)).a(null, null, str, i, 0, null, paramIntent);
     AppMethodBeat.o(44949);
   }
   
-  public final void k(String paramString, Map<String, String> paramMap)
+  public final void l(String paramString, Map<String, String> paramMap)
   {
-    AppMethodBeat.i(188123);
+    AppMethodBeat.i(222248);
     String str1;
     int i;
     int j;
@@ -40,13 +40,13 @@ public final class e
     String str3;
     String str4;
     String str5;
-    if (DebuggerShell.bew())
+    if (DebuggerShell.bfe())
     {
-      ad.i("MicroMsg.AppBrand.ForceOpenAppNotify", "handleMessage %s", new Object[] { paramString });
+      ae.i("MicroMsg.AppBrand.ForceOpenAppNotify", "handleMessage %s", new Object[] { paramString });
       paramString = (String)paramMap.get(".sysmsg.ForceOpenAppNotify.OpenAppInfo.AppID");
       str1 = (String)paramMap.get(".sysmsg.ForceOpenAppNotify.OpenAppInfo.UserName");
-      i = bt.getInt((String)paramMap.get(".sysmsg.ForceOpenAppNotify.OpenAppInfo.VersionType"), -1);
-      j = bt.getInt((String)paramMap.get(".sysmsg.ForceOpenAppNotify.OpenAppInfo.AppVersion"), -1);
+      i = bu.getInt((String)paramMap.get(".sysmsg.ForceOpenAppNotify.OpenAppInfo.VersionType"), -1);
+      j = bu.getInt((String)paramMap.get(".sysmsg.ForceOpenAppNotify.OpenAppInfo.AppVersion"), -1);
       str2 = (String)paramMap.get(".sysmsg.ForceOpenAppNotify.OpenAppInfo.Path");
       str3 = (String)paramMap.get(".sysmsg.ForceOpenAppNotify.OpenAppInfo.URL");
       str4 = (String)paramMap.get(".sysmsg.ForceOpenAppNotify.OpenAppInfo.MD5");
@@ -55,22 +55,22 @@ public final class e
       paramMap.get(".sysmsg.ForceOpenAppNotify.OpenAppInfo.WithoutPluginCodeUrls");
       if (i < 0)
       {
-        AppMethodBeat.o(188123);
+        AppMethodBeat.o(222248);
         return;
       }
       if (i != 0)
       {
-        if (j.aYX() == null)
+        if (j.aZu() == null)
         {
-          AppMethodBeat.o(188123);
+          AppMethodBeat.o(222248);
           return;
         }
-        if ((!bt.isNullOrNil(str3)) && (!bt.isNullOrNil(str4))) {
+        if ((!bu.isNullOrNil(str3)) && (!bu.isNullOrNil(str4))) {
           break label367;
         }
         if (i == 1)
         {
-          AppMethodBeat.o(188123);
+          AppMethodBeat.o(222248);
           return;
         }
         if (i != 2) {}
@@ -78,19 +78,19 @@ public final class e
     }
     for (;;)
     {
-      ad.i("MicroMsg.AppBrand.ForceOpenAppNotify", "before start weapp username[%s], appId[%s], versionType[%d]", new Object[] { str1, paramString, Integer.valueOf(i) });
-      paramMap = new vm();
-      paramMap.dJF.appId = paramString;
-      paramMap.dJF.userName = str1;
-      paramMap.dJF.dJI = i;
-      paramMap.dJF.dJH = str2;
-      paramMap.dJF.aDD = j;
-      paramMap.dJF.dJJ = str3;
-      paramMap.dJF.dJK = str4;
-      paramMap.dJF.dJL = false;
-      paramMap.dJF.scene = 1030;
-      paramMap.dJF.dJN.hKu = str5;
-      paramMap.dJF.dJP = new Runnable()
+      ae.i("MicroMsg.AppBrand.ForceOpenAppNotify", "before start weapp username[%s], appId[%s], versionType[%d]", new Object[] { str1, paramString, Integer.valueOf(i) });
+      paramMap = new vq();
+      paramMap.dKT.appId = paramString;
+      paramMap.dKT.userName = str1;
+      paramMap.dKT.dKW = i;
+      paramMap.dKT.dKV = str2;
+      paramMap.dKT.aDD = j;
+      paramMap.dKT.dKY = str3;
+      paramMap.dKT.dKZ = str4;
+      paramMap.dKT.dLa = false;
+      paramMap.dKT.scene = 1030;
+      paramMap.dKT.dLc.hNn = str5;
+      paramMap.dKT.dLe = new Runnable()
       {
         public final void run()
         {
@@ -98,12 +98,12 @@ public final class e
           AppMethodBeat.o(44947);
         }
       };
-      a.IbL.l(paramMap);
-      AppMethodBeat.o(188123);
+      a.IvT.l(paramMap);
+      AppMethodBeat.o(222248);
       return;
       label367:
-      if (j.aYX().a(paramString, i, str3, str4, bt.aQJ(), bt.aQJ() + 432000L)) {
-        f.bY(paramString, i);
+      if (j.aZu().a(paramString, i, str3, str4, bu.aRi(), bu.aRi() + 432000L)) {
+        f.cc(paramString, i);
       }
     }
   }

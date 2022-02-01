@@ -6,20 +6,20 @@ import android.graphics.SurfaceTexture;
 import android.util.AttributeSet;
 import android.view.TextureView.SurfaceTextureListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.ui.base.MMTextureView;
 
 public class VoIPVideoView
   extends MMTextureView
   implements TextureView.SurfaceTextureListener
 {
-  private static final int[] whg = { 452984831, 369098751, 268435455, 369098751, 268435455, 184549375, 268435455, 184549375, 100663295 };
-  private int CtY;
-  private int CtZ;
-  private int Cua;
-  private float Cub;
-  private Paint oZB;
-  private float rOY;
+  private static final int[] wwJ = { 452984831, 369098751, 268435455, 369098751, 268435455, 184549375, 268435455, 184549375, 100663295 };
+  private int CLC;
+  private int CLD;
+  private int CLE;
+  private float CLF;
+  private Paint pgf;
+  private float rXz;
   private int surfaceHeight;
   private SurfaceTexture surfaceTexture;
   private int surfaceWidth;
@@ -28,11 +28,11 @@ public class VoIPVideoView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(115781);
-    this.rOY = 0.4F;
-    this.CtY = 30;
-    this.CtZ = 30;
-    this.Cua = 15;
-    this.Cub = 0.02F;
+    this.rXz = 0.4F;
+    this.CLC = 30;
+    this.CLD = 30;
+    this.CLE = 15;
+    this.CLF = 0.02F;
     initView();
     AppMethodBeat.o(115781);
   }
@@ -41,11 +41,11 @@ public class VoIPVideoView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(115782);
-    this.rOY = 0.4F;
-    this.CtY = 30;
-    this.CtZ = 30;
-    this.Cua = 15;
-    this.Cub = 0.02F;
+    this.rXz = 0.4F;
+    this.CLC = 30;
+    this.CLD = 30;
+    this.CLE = 15;
+    this.CLF = 0.02F;
     initView();
     AppMethodBeat.o(115782);
   }
@@ -53,10 +53,10 @@ public class VoIPVideoView
   private void initView()
   {
     AppMethodBeat.i(115783);
-    this.oZB = new Paint();
-    this.oZB.setColor(-16777216);
-    this.oZB.setFilterBitmap(true);
-    this.oZB.setTextSize(40.0F);
+    this.pgf = new Paint();
+    this.pgf.setColor(-16777216);
+    this.pgf.setFilterBitmap(true);
+    this.pgf.setTextSize(40.0F);
     setSurfaceTextureListener(this);
     AppMethodBeat.o(115783);
   }
@@ -67,11 +67,11 @@ public class VoIPVideoView
     if (paramSurfaceTexture != null) {}
     for (boolean bool = true;; bool = false)
     {
-      ad.i("MicroMsg.VoIP.VoIPVideoView", "onSurfaceTextureAvailable %b %d %d", new Object[] { Boolean.valueOf(bool), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+      ae.i("MicroMsg.VoIP.VoIPVideoView", "onSurfaceTextureAvailable %b %d %d", new Object[] { Boolean.valueOf(bool), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
       this.surfaceTexture = paramSurfaceTexture;
       this.surfaceWidth = paramInt1;
       this.surfaceHeight = paramInt2;
-      fzf();
+      fDh();
       AppMethodBeat.o(115784);
       return;
     }
@@ -84,7 +84,7 @@ public class VoIPVideoView
     if (paramSurfaceTexture != null) {}
     for (;;)
     {
-      ad.i("MicroMsg.VoIP.VoIPVideoView", "onSurfaceTextureDestroyed %b", new Object[] { Boolean.valueOf(bool) });
+      ae.i("MicroMsg.VoIP.VoIPVideoView", "onSurfaceTextureDestroyed %b", new Object[] { Boolean.valueOf(bool) });
       this.surfaceTexture = null;
       this.surfaceHeight = 0;
       this.surfaceWidth = 0;
@@ -100,7 +100,7 @@ public class VoIPVideoView
     if (paramSurfaceTexture != null) {}
     for (boolean bool = true;; bool = false)
     {
-      ad.i("MicroMsg.VoIP.VoIPVideoView", "onSurfaceTextureSizeChanged %b %d %d", new Object[] { Boolean.valueOf(bool), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+      ae.i("MicroMsg.VoIP.VoIPVideoView", "onSurfaceTextureSizeChanged %b %d %d", new Object[] { Boolean.valueOf(bool), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
       this.surfaceWidth = paramInt1;
       this.surfaceHeight = paramInt2;
       AppMethodBeat.o(115785);
@@ -115,7 +115,7 @@ public class VoIPVideoView
     if (paramSurfaceTexture != null) {}
     for (;;)
     {
-      ad.v("MicroMsg.VoIP.VoIPVideoView", "onSurfaceTextureUpdated %b", new Object[] { Boolean.valueOf(bool) });
+      ae.v("MicroMsg.VoIP.VoIPVideoView", "onSurfaceTextureUpdated %b", new Object[] { Boolean.valueOf(bool) });
       AppMethodBeat.o(115787);
       return;
       bool = false;
@@ -124,7 +124,7 @@ public class VoIPVideoView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.widget.VoIPVideoView
  * JD-Core Version:    0.7.0.1
  */

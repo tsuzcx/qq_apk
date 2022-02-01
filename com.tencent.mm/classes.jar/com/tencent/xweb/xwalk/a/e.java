@@ -5,7 +5,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class e
   extends l
 {
-  public final String aiI(int paramInt)
+  public final String ajr(int paramInt)
   {
     AppMethodBeat.i(157184);
     String str = dd(paramInt, "pptreader.apk");
@@ -13,24 +13,27 @@ public final class e
     return str;
   }
   
-  public final String gdf()
+  public final int ajs(int paramInt)
   {
-    return "com.tencent.xweb.xfiles.ppt.PPTReader";
-  }
-  
-  public final String gdg()
-  {
-    return "com.tencent.xweb.xfiles.ppt.PPTReaderEnvironment";
-  }
-  
-  public final int gdh()
-  {
+    if (paramInt == 1) {
+      return 296;
+    }
     return 203;
   }
   
   public final String getPluginName()
   {
     return "XFilesPPTReader";
+  }
+  
+  public final String ghI()
+  {
+    return "com.tencent.xweb.xfiles.ppt.PPTReader";
+  }
+  
+  public final String ghJ()
+  {
+    return "com.tencent.xweb.xfiles.ppt.PPTReaderEnvironment";
   }
 }
 

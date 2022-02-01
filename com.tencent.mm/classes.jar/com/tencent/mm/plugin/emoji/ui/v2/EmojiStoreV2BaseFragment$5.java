@@ -17,15 +17,15 @@ final class EmojiStoreV2BaseFragment$5
     AppMethodBeat.i(109138);
     b localb = new b();
     localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/emoji/ui/v2/EmojiStoreV2BaseFragment$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-    if (!this.pMn.isScreenEnable())
+    a.b("com/tencent/mm/plugin/emoji/ui/v2/EmojiStoreV2BaseFragment$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+    if (!this.pSS.isScreenEnable())
     {
       a.a(this, "com/tencent/mm/plugin/emoji/ui/v2/EmojiStoreV2BaseFragment$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(109138);
       return;
     }
-    if (EmojiStoreV2BaseFragment.a(this.pMn) != null) {
-      EmojiStoreV2BaseFragment.a(this.pMn).onMenuItemClick(null);
+    if (EmojiStoreV2BaseFragment.a(this.pSS) != null) {
+      EmojiStoreV2BaseFragment.a(this.pSS).onMenuItemClick(null);
     }
     a.a(this, "com/tencent/mm/plugin/emoji/ui/v2/EmojiStoreV2BaseFragment$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(109138);

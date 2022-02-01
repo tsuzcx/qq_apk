@@ -4,59 +4,59 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class b
 {
-  public float cNg = -1.0F;
-  public float cNh = -1.0F;
-  public int oIb = 0;
-  public float pwh = -1.0F;
-  public float pwi = -1.0F;
-  public int pwj = -1;
-  public float pwk = -1.0F;
-  public float pwl = -1.0F;
-  public float pwm = -1.0F;
-  public float pwn = -1.0F;
-  public int pwo = -1;
+  public float cNQ = -1.0F;
+  public float cNR = -1.0F;
+  public int oOD = 0;
+  public float pCL = -1.0F;
+  public float pCM = -1.0F;
+  public int pCN = -1;
+  public float pCO = -1.0F;
+  public float pCP = -1.0F;
+  public float pCQ = -1.0F;
+  public float pCR = -1.0F;
+  public int pCS = -1;
   
-  private boolean ceM()
+  private boolean cgb()
   {
-    return (this.pwh >= 0.0F) && (this.pwi >= 0.0F) && (this.cNg >= 0.0F) && (this.cNh >= 0.0F) && (this.pwj >= 0);
+    return (this.pCL >= 0.0F) && (this.pCM >= 0.0F) && (this.cNQ >= 0.0F) && (this.cNR >= 0.0F) && (this.pCN >= 0);
   }
   
-  private boolean ceN()
+  private boolean cgc()
   {
-    return (this.pwk >= 0.0F) && (this.pwl >= 0.0F) && (this.pwm >= 0.0F) && (this.pwn >= 0.0F) && (this.pwo >= 0);
+    return (this.pCO >= 0.0F) && (this.pCP >= 0.0F) && (this.pCQ >= 0.0F) && (this.pCR >= 0.0F) && (this.pCS >= 0);
   }
   
   public final void a(int paramInt1, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, int paramInt2)
   {
-    this.oIb = paramInt1;
-    this.pwh = paramFloat1;
-    this.pwi = paramFloat2;
-    this.cNg = paramFloat3;
-    this.cNh = paramFloat4;
-    if (this.oIb == 1)
+    this.oOD = paramInt1;
+    this.pCL = paramFloat1;
+    this.pCM = paramFloat2;
+    this.cNQ = paramFloat3;
+    this.cNR = paramFloat4;
+    if (this.oOD == 1)
     {
-      this.pwj = paramInt2;
+      this.pCN = paramInt2;
       return;
     }
-    this.pwj = 0;
+    this.pCN = 0;
   }
   
   public final int getType()
   {
     AppMethodBeat.i(30548);
-    if (!ceM())
+    if (!cgb())
     {
       AppMethodBeat.o(30548);
       return 0;
     }
-    if (!ceN())
+    if (!cgc())
     {
       AppMethodBeat.o(30548);
       return 1;
     }
-    int i = Math.abs((int)(this.cNg - this.pwm));
-    int j = Math.abs((int)(this.cNh - this.pwn));
-    if ((i > 30) || (j > 30) || (this.pwj != this.pwo))
+    int i = Math.abs((int)(this.cNQ - this.pCQ));
+    int j = Math.abs((int)(this.cNR - this.pCR));
+    if ((i > 30) || (j > 30) || (this.pCN != this.pCS))
     {
       AppMethodBeat.o(30548);
       return 3;
@@ -67,17 +67,17 @@ public final class b
   
   public final void reset()
   {
-    this.oIb = 0;
-    this.pwh = -1.0F;
-    this.pwi = -1.0F;
-    this.cNg = -1.0F;
-    this.cNh = -1.0F;
-    this.pwj = -1;
-    this.pwk = -1.0F;
-    this.pwl = -1.0F;
-    this.pwm = -1.0F;
-    this.pwn = -1.0F;
-    this.pwo = -1;
+    this.oOD = 0;
+    this.pCL = -1.0F;
+    this.pCM = -1.0F;
+    this.cNQ = -1.0F;
+    this.cNR = -1.0F;
+    this.pCN = -1;
+    this.pCO = -1.0F;
+    this.pCP = -1.0F;
+    this.pCQ = -1.0F;
+    this.pCR = -1.0F;
+    this.pCS = -1;
   }
 }
 

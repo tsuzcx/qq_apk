@@ -11,47 +11,47 @@ public abstract class m
   extends c
 {
   public static final String[] INDEX_CREATE = { "CREATE INDEX IF NOT EXISTS AppBrandFakeNativeSplashScreenshotAPPIDINDEX ON AppBrandFakeNativeSplashScreenshot(appId)" };
-  private static final int eEU = "appId".hashCode();
-  private static final int eFF = "versionType".hashCode();
-  private static final int eFG = "appVersion".hashCode();
-  private static final int eFH = "isDarkMode".hashCode();
-  private static final int eFI = "screenshotFilePath".hashCode();
+  private static final int eGD = "appId".hashCode();
+  private static final int eHo = "versionType".hashCode();
+  private static final int eHp = "appVersion".hashCode();
+  private static final int eHq = "isDarkMode".hashCode();
+  private static final int eHr = "screenshotFilePath".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eED = true;
-  private boolean eFB = true;
-  private boolean eFC = true;
-  private boolean eFD = true;
-  private boolean eFE = true;
+  private boolean eGm = true;
+  private boolean eHk = true;
+  private boolean eHl = true;
+  private boolean eHm = true;
+  private boolean eHn = true;
   public String field_appId;
   public int field_appVersion;
   public boolean field_isDarkMode;
   public String field_screenshotFilePath;
   public int field_versionType;
   
-  public static c.a Vv()
+  public static c.a VD()
   {
     c.a locala = new c.a();
-    locala.IhA = new Field[5];
+    locala.IBL = new Field[5];
     locala.columns = new String[6];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "appId";
-    locala.IhC.put("appId", "TEXT");
+    locala.IBN.put("appId", "TEXT");
     localStringBuilder.append(" appId TEXT");
     localStringBuilder.append(", ");
     locala.columns[1] = "versionType";
-    locala.IhC.put("versionType", "INTEGER default '0' ");
+    locala.IBN.put("versionType", "INTEGER default '0' ");
     localStringBuilder.append(" versionType INTEGER default '0' ");
     localStringBuilder.append(", ");
     locala.columns[2] = "appVersion";
-    locala.IhC.put("appVersion", "INTEGER default '0' ");
+    locala.IBN.put("appVersion", "INTEGER default '0' ");
     localStringBuilder.append(" appVersion INTEGER default '0' ");
     localStringBuilder.append(", ");
     locala.columns[3] = "isDarkMode";
-    locala.IhC.put("isDarkMode", "INTEGER default 'false' ");
+    locala.IBN.put("isDarkMode", "INTEGER default 'false' ");
     localStringBuilder.append(" isDarkMode INTEGER default 'false' ");
     localStringBuilder.append(", ");
     locala.columns[4] = "screenshotFilePath";
-    locala.IhC.put("screenshotFilePath", "TEXT");
+    locala.IBN.put("screenshotFilePath", "TEXT");
     localStringBuilder.append(" screenshotFilePath TEXT");
     locala.columns[5] = "rowid";
     locala.sql = localStringBuilder.toString();
@@ -71,7 +71,7 @@ public abstract class m
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eEU != k) {
+      if (eGD != k) {
         break label60;
       }
       this.field_appId = paramCursor.getString(i);
@@ -82,17 +82,17 @@ public abstract class m
       break label20;
       break;
       label60:
-      if (eFF == k)
+      if (eHo == k)
       {
         this.field_versionType = paramCursor.getInt(i);
       }
-      else if (eFG == k)
+      else if (eHp == k)
       {
         this.field_appVersion = paramCursor.getInt(i);
       }
       else
       {
-        if (eFH == k)
+        if (eHq == k)
         {
           if (paramCursor.getInt(i) != 0) {}
           for (boolean bool = true;; bool = false)
@@ -101,7 +101,7 @@ public abstract class m
             break;
           }
         }
-        if (eFI == k) {
+        if (eHr == k) {
           this.field_screenshotFilePath = paramCursor.getString(i);
         } else if (rowid_HASHCODE == k) {
           this.systemRowid = paramCursor.getLong(i);
@@ -113,19 +113,19 @@ public abstract class m
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eED) {
+    if (this.eGm) {
       localContentValues.put("appId", this.field_appId);
     }
-    if (this.eFB) {
+    if (this.eHk) {
       localContentValues.put("versionType", Integer.valueOf(this.field_versionType));
     }
-    if (this.eFC) {
+    if (this.eHl) {
       localContentValues.put("appVersion", Integer.valueOf(this.field_appVersion));
     }
-    if (this.eFD) {
+    if (this.eHm) {
       localContentValues.put("isDarkMode", Boolean.valueOf(this.field_isDarkMode));
     }
-    if (this.eFE) {
+    if (this.eHn) {
       localContentValues.put("screenshotFilePath", this.field_screenshotFilePath);
     }
     if (this.systemRowid > 0L) {

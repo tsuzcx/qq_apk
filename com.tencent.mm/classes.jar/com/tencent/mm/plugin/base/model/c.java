@@ -15,10 +15,10 @@ import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.deviceinfo.q;
 import com.tencent.mm.plugin.y.a.a.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.widget.a.f.a;
 import com.tencent.mm.ui.widget.a.f.b;
 import com.tencent.mm.ui.widget.a.f.c;
@@ -26,10 +26,10 @@ import com.tencent.mm.ui.widget.snackbar.a.b;
 
 public final class c
 {
-  public static String Wv(String paramString)
+  public static String Xh(String paramString)
   {
     AppMethodBeat.i(151465);
-    paramString = eD(paramString, q.cH(true));
+    paramString = eG(paramString, q.cH(true));
     AppMethodBeat.o(151465);
     return paramString;
   }
@@ -37,9 +37,9 @@ public final class c
   public static Pair<Integer, Integer> a(final Context paramContext, final String paramString, boolean paramBoolean1, final boolean paramBoolean2, final a parama)
   {
     AppMethodBeat.i(151469);
-    a.a locala = com.tencent.mm.plugin.y.a.a.dPP();
-    int j = locala.dPQ();
-    boolean bool = locala.dPR();
+    a.a locala = com.tencent.mm.plugin.y.a.a.dTm();
+    int j = locala.dTn();
+    boolean bool = locala.dTo();
     final f.a locala1 = new f.a(paramContext);
     Object localObject1 = paramContext.getResources();
     Object localObject3;
@@ -47,10 +47,10 @@ public final class c
     int i;
     if (j == -1)
     {
-      locala1.aXR(((Resources)localObject1).getString(2131763675));
+      locala1.aZt(((Resources)localObject1).getString(2131763675));
       localObject3 = ((Resources)localObject1).getString(2131763677);
       localObject2 = ((Resources)localObject1).getString(2131763674);
-      locala1.av((CharSequence)localObject3);
+      locala1.au((CharSequence)localObject3);
       if (bool)
       {
         localObject3 = (LinearLayout)LayoutInflater.from(paramContext).inflate(2131492944, null);
@@ -58,9 +58,9 @@ public final class c
         TextView localTextView2 = (TextView)((LinearLayout)localObject3).findViewById(2131301273);
         localTextView1.setText((CharSequence)localObject2);
         localTextView2.setText(2131763672);
-        locala1.hb((View)localObject3);
-        locala1.afp(2131763671);
-        locala1.aXT(((Resources)localObject1).getString(2131755281));
+        locala1.hg((View)localObject3);
+        locala1.afY(2131763671);
+        locala1.aZv(((Resources)localObject1).getString(2131755281));
         localTextView2.setOnClickListener(new View.OnClickListener()
         {
           public final void onClick(View paramAnonymousView)
@@ -68,8 +68,8 @@ public final class c
             AppMethodBeat.i(151459);
             com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
             localb.bd(paramAnonymousView);
-            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/base/model/ShortcutUtil$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-            c.a(this.val$context, false, this.lSB, paramString, paramBoolean2);
+            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/base/model/ShortcutUtil$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+            c.a(this.val$context, false, this.lXc, paramString, paramBoolean2);
             com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/base/model/ShortcutUtil$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
             AppMethodBeat.o(151459);
           }
@@ -81,17 +81,17 @@ public final class c
             AppMethodBeat.i(151460);
             if (paramAnonymousBoolean1)
             {
-              this.nMR.gg(paramContext);
+              this.nSw.gl(paramContext);
               if (paramBoolean2) {
-                com.tencent.mm.plugin.report.service.g.yhR.f(15783, new Object[] { Integer.valueOf(this.lSB), Integer.valueOf(0), paramString });
+                com.tencent.mm.plugin.report.service.g.yxI.f(15783, new Object[] { Integer.valueOf(this.lXc), Integer.valueOf(0), paramString });
               }
             }
             for (;;)
             {
-              parama.d(paramAnonymousBoolean2, paramString, this.lSB);
+              parama.d(paramAnonymousBoolean2, paramString, this.lXc);
               AppMethodBeat.o(151460);
               return;
-              c.a(locala1, this.lSB, paramString, paramBoolean2);
+              c.a(locala1, this.lXc, paramString, paramBoolean2);
             }
           }
         });
@@ -103,23 +103,23 @@ public final class c
       paramContext = new Pair(Integer.valueOf(j), Integer.valueOf(i));
       AppMethodBeat.o(151469);
       return paramContext;
-      locala1.aXO((String)localObject2);
-      locala1.afp(2131763672);
-      locala1.aXT(((Resources)localObject1).getString(2131755281));
+      locala1.aZq((String)localObject2);
+      locala1.afY(2131763672);
+      locala1.aZv(((Resources)localObject1).getString(2131755281));
       locala1.a(new f.b()
       {
         public final void E(boolean paramAnonymousBoolean1, boolean paramAnonymousBoolean2)
         {
           AppMethodBeat.i(151461);
           if (paramAnonymousBoolean1) {
-            c.a(this.val$context, false, this.lSB, paramString, paramBoolean2);
+            c.a(this.val$context, false, this.lXc, paramString, paramBoolean2);
           }
           for (;;)
           {
-            parama.d(paramAnonymousBoolean2, paramString, this.lSB);
+            parama.d(paramAnonymousBoolean2, paramString, this.lXc);
             AppMethodBeat.o(151461);
             return;
-            c.a(locala1, this.lSB, paramString, paramBoolean2);
+            c.a(locala1, this.lXc, paramString, paramBoolean2);
           }
         }
       });
@@ -129,8 +129,8 @@ public final class c
       {
         localObject2 = ((Resources)localObject1).getString(2131763676);
         parama = ((Resources)localObject1).getString(2131763673);
-        locala1.aXT(((Resources)localObject1).getString(2131755691));
-        locala1.av((CharSequence)localObject2);
+        locala1.aZv(((Resources)localObject1).getString(2131755691));
+        locala1.au((CharSequence)localObject2);
         if (bool)
         {
           localObject1 = (LinearLayout)LayoutInflater.from(paramContext).inflate(2131492944, null);
@@ -138,8 +138,8 @@ public final class c
           localObject3 = (TextView)((LinearLayout)localObject1).findViewById(2131301273);
           ((TextView)localObject2).setText(parama);
           ((TextView)localObject3).setText(2131763672);
-          locala1.hb((View)localObject1);
-          locala1.afp(2131763671);
+          locala1.hg((View)localObject1);
+          locala1.afY(2131763671);
           ((TextView)localObject3).setOnClickListener(new View.OnClickListener()
           {
             public final void onClick(View paramAnonymousView)
@@ -147,8 +147,8 @@ public final class c
               AppMethodBeat.i(151462);
               com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
               localb.bd(paramAnonymousView);
-              com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/base/model/ShortcutUtil$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-              c.a(this.val$context, false, this.lSB, paramString, paramBoolean2);
+              com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/base/model/ShortcutUtil$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+              c.a(this.val$context, false, this.lXc, paramString, paramBoolean2);
               com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/base/model/ShortcutUtil$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
               AppMethodBeat.o(151462);
             }
@@ -158,7 +158,7 @@ public final class c
             public final void d(boolean paramAnonymousBoolean, String paramAnonymousString)
             {
               AppMethodBeat.i(151463);
-              c.a(this.nMM, this.lSB, paramString, paramBoolean2);
+              c.a(this.nSr, this.lXc, paramString, paramBoolean2);
               AppMethodBeat.o(151463);
             }
           }, new f.c()
@@ -166,9 +166,9 @@ public final class c
             public final void d(boolean paramAnonymousBoolean, String paramAnonymousString)
             {
               AppMethodBeat.i(151464);
-              this.nMR.gg(paramContext);
+              this.nSw.gl(paramContext);
               if (paramBoolean2) {
-                com.tencent.mm.plugin.report.service.g.yhR.f(15783, new Object[] { Integer.valueOf(this.lSB), Integer.valueOf(0), paramString });
+                com.tencent.mm.plugin.report.service.g.yxI.f(15783, new Object[] { Integer.valueOf(this.lXc), Integer.valueOf(0), paramString });
               }
               AppMethodBeat.o(151464);
             }
@@ -177,15 +177,15 @@ public final class c
         }
         else
         {
-          locala1.aXO(parama);
-          locala1.afp(2131763672);
-          locala1.aXT(((Resources)localObject1).getString(2131755691));
+          locala1.aZq(parama);
+          locala1.afY(2131763672);
+          locala1.aZv(((Resources)localObject1).getString(2131755691));
           locala1.a(new f.c()new f.c
           {
             public final void d(boolean paramAnonymousBoolean, String paramAnonymousString)
             {
               AppMethodBeat.i(151455);
-              c.a(this.nMM, this.lSB, paramString, paramBoolean2);
+              c.a(this.nSr, this.lXc, paramString, paramBoolean2);
               AppMethodBeat.o(151455);
             }
           }, new f.c()
@@ -193,7 +193,7 @@ public final class c
             public final void d(boolean paramAnonymousBoolean, String paramAnonymousString)
             {
               AppMethodBeat.i(151456);
-              c.a(this.val$context, false, this.lSB, paramString, paramBoolean2);
+              c.a(this.val$context, false, this.lXc, paramString, paramBoolean2);
               AppMethodBeat.o(151456);
             }
           });
@@ -207,9 +207,9 @@ public final class c
     }
     locala1.show();
     if (paramBoolean2) {
-      com.tencent.mm.plugin.report.service.g.yhR.f(15788, new Object[] { Integer.valueOf(i), Integer.valueOf(0), paramString });
+      com.tencent.mm.plugin.report.service.g.yxI.f(15788, new Object[] { Integer.valueOf(i), Integer.valueOf(0), paramString });
     }
-    ad.i("MicroMsg.ShortcutUtil", "permissionJumpStatus = ".concat(String.valueOf(i)));
+    ae.i("MicroMsg.ShortcutUtil", "permissionJumpStatus = ".concat(String.valueOf(i)));
     paramContext = new Pair(Integer.valueOf(j), Integer.valueOf(i));
     AppMethodBeat.o(151469);
     return paramContext;
@@ -224,7 +224,7 @@ public final class c
       com.tencent.mm.ui.widget.snackbar.b.n((Activity)paramContext, localResources.getString(2131763679));
       if (paramBoolean2)
       {
-        com.tencent.mm.plugin.report.service.g.yhR.f(15787, new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(0), paramString });
+        com.tencent.mm.plugin.report.service.g.yxI.f(15787, new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(0), paramString });
         AppMethodBeat.o(151470);
       }
     }
@@ -233,7 +233,7 @@ public final class c
       localResources = paramContext.getResources();
       com.tencent.mm.ui.widget.snackbar.b.a((Activity)paramContext, localResources.getString(2131763679), localResources.getString(2131763672), new a.b()
       {
-        public final void bip()
+        public final void biY()
         {
           AppMethodBeat.i(151457);
           c.a(this.val$context, true, paramInt2, paramString, paramBoolean2);
@@ -241,7 +241,7 @@ public final class c
         }
       });
       if (paramBoolean2) {
-        com.tencent.mm.plugin.report.service.g.yhR.f(15787, new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(0), paramString });
+        com.tencent.mm.plugin.report.service.g.yxI.f(15787, new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(0), paramString });
       }
     }
     AppMethodBeat.o(151470);
@@ -249,44 +249,44 @@ public final class c
   
   public static void a(final Context paramContext, b paramb)
   {
-    AppMethodBeat.i(195321);
-    ad.i("MicroMsg.ShortcutUtil", "addShortCut()");
-    final boolean bool = aj.getContext().getSharedPreferences(aj.fkC(), 0).getBoolean("no_more_show_add_short_cut_dialog", false);
+    AppMethodBeat.i(218774);
+    ae.i("MicroMsg.ShortcutUtil", "addShortCut()");
+    final boolean bool = ak.getContext().getSharedPreferences(ak.fow(), 0).getBoolean("no_more_show_add_short_cut_dialog", false);
     final Pair localPair = a(paramContext, null, bool, false, new a()
     {
       public final void d(boolean paramAnonymousBoolean, String paramAnonymousString, int paramAnonymousInt)
       {
         AppMethodBeat.i(151454);
         if (paramAnonymousBoolean) {
-          this.val$context.getSharedPreferences(aj.fkC(), 0).edit().putBoolean("no_more_show_add_short_cut_dialog", true).commit();
+          this.val$context.getSharedPreferences(ak.fow(), 0).edit().putBoolean("no_more_show_add_short_cut_dialog", true).commit();
         }
         AppMethodBeat.o(151454);
       }
     });
-    paramb.bLX();
-    aq.f(new Runnable()
+    paramb.bMV();
+    ar.f(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(151458);
         try
         {
-          this.nMO.bLY();
+          this.nSt.bMW();
           c.a(paramContext, ((Integer)localPair.first).intValue(), ((Integer)localPair.second).intValue(), bool, null, false);
           AppMethodBeat.o(151458);
           return;
         }
         catch (IllegalStateException localIllegalStateException)
         {
-          ad.w("MicroMsg.ShortcutUtil", localIllegalStateException.toString());
+          ae.w("MicroMsg.ShortcutUtil", localIllegalStateException.toString());
           AppMethodBeat.o(151458);
         }
       }
     });
-    AppMethodBeat.o(195321);
+    AppMethodBeat.o(218774);
   }
   
-  public static String aC(String paramString, boolean paramBoolean)
+  public static String aE(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(151468);
     if ((paramString == null) || (paramString.length() <= 0))
@@ -294,12 +294,12 @@ public final class c
       AppMethodBeat.o(151468);
       return null;
     }
-    ad.i("MicroMsg.ShortcutUtil", "process name: %s", new Object[] { bt.getProcessNameByPid(aj.getContext(), Process.myPid()) });
+    ae.i("MicroMsg.ShortcutUtil", "process name: %s", new Object[] { bu.getProcessNameByPid(ak.getContext(), Process.myPid()) });
     if (paramBoolean) {}
     for (String str = q.getAndroidId();; str = q.cH(true))
     {
-      paramString = b.eC(paramString, str);
-      if (!bt.isNullOrNil(paramString)) {
+      paramString = b.eF(paramString, str);
+      if (!bu.isNullOrNil(paramString)) {
         break;
       }
       AppMethodBeat.o(151468);
@@ -310,21 +310,21 @@ public final class c
     return paramString;
   }
   
-  public static String eD(String paramString1, String paramString2)
+  public static String eG(String paramString1, String paramString2)
   {
     AppMethodBeat.i(151466);
-    if ((paramString1 == null) || (paramString1.length() <= 0) || (bt.isNullOrNil(paramString2)))
+    if ((paramString1 == null) || (paramString1.length() <= 0) || (bu.isNullOrNil(paramString2)))
     {
       AppMethodBeat.o(151466);
       return null;
     }
-    ad.i("MicroMsg.ShortcutUtil", "process name: %s", new Object[] { bt.getProcessNameByPid(aj.getContext(), Process.myPid()) });
+    ae.i("MicroMsg.ShortcutUtil", "process name: %s", new Object[] { bu.getProcessNameByPid(ak.getContext(), Process.myPid()) });
     if ((paramString1.startsWith("shortcut_")) && (paramString1.length() > 9))
     {
       String str = paramString1.substring(9);
       if ((str != null) && (str.length() > 0))
       {
-        paramString1 = b.eC(new String(b.Wu(str)), paramString2);
+        paramString1 = b.eF(new String(b.Xg(str)), paramString2);
         AppMethodBeat.o(151466);
         return paramString1;
       }
@@ -333,10 +333,10 @@ public final class c
     return paramString1;
   }
   
-  public static String eE(String paramString1, String paramString2)
+  public static String eH(String paramString1, String paramString2)
   {
     AppMethodBeat.i(151467);
-    paramString1 = com.tencent.mm.b.g.getMessageDigest((com.tencent.mm.b.g.getMessageDigest(paramString1.getBytes()) + b.eC(paramString2, paramString1)).getBytes());
+    paramString1 = com.tencent.mm.b.g.getMessageDigest((com.tencent.mm.b.g.getMessageDigest(paramString1.getBytes()) + b.eF(paramString2, paramString1)).getBytes());
     AppMethodBeat.o(151467);
     return paramString1;
   }
@@ -348,9 +348,9 @@ public final class c
   
   public static abstract interface b
   {
-    public abstract void bLX();
+    public abstract void bMV();
     
-    public abstract void bLY();
+    public abstract void bMW();
   }
 }
 

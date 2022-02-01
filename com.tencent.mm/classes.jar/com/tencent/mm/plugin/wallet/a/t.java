@@ -1,33 +1,33 @@
 package com.tencent.mm.plugin.wallet.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bx.b;
+import com.tencent.mm.bw.b;
 import java.util.LinkedList;
 
 public final class t
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public String CGT;
-  public String CGU;
-  public String CGV;
-  public int CHO;
-  public int CHP;
-  public long CHQ;
-  public String CHR;
-  public String CHS;
-  public String CHT;
-  public double CHU;
-  public double CHV;
-  public int CHW;
-  public String CHX;
-  public String CHY;
-  public LinkedList<b> CHZ;
-  public String wCD;
+  public String CYA;
+  public String CYB;
+  public String CYz;
+  public double CZA;
+  public double CZB;
+  public int CZC;
+  public String CZD;
+  public String CZE;
+  public LinkedList<b> CZF;
+  public int CZu;
+  public int CZv;
+  public long CZw;
+  public String CZx;
+  public String CZy;
+  public String CZz;
+  public String wSo;
   
   public t()
   {
     AppMethodBeat.i(91304);
-    this.CHZ = new LinkedList();
+    this.CZF = new LinkedList();
     AppMethodBeat.o(91304);
   }
   
@@ -37,95 +37,95 @@ public final class t
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aS(1, this.CHO);
-      paramVarArgs.aS(2, this.CHP);
-      paramVarArgs.aY(3, this.CHQ);
-      if (this.CHR != null) {
-        paramVarArgs.d(4, this.CHR);
+      paramVarArgs.aS(1, this.CZu);
+      paramVarArgs.aS(2, this.CZv);
+      paramVarArgs.aZ(3, this.CZw);
+      if (this.CZx != null) {
+        paramVarArgs.d(4, this.CZx);
       }
-      if (this.CGT != null) {
-        paramVarArgs.d(5, this.CGT);
+      if (this.CYz != null) {
+        paramVarArgs.d(5, this.CYz);
       }
-      if (this.CHS != null) {
-        paramVarArgs.d(6, this.CHS);
+      if (this.CZy != null) {
+        paramVarArgs.d(6, this.CZy);
       }
-      if (this.CHT != null) {
-        paramVarArgs.d(7, this.CHT);
+      if (this.CZz != null) {
+        paramVarArgs.d(7, this.CZz);
       }
-      if (this.CGU != null) {
-        paramVarArgs.d(8, this.CGU);
+      if (this.CYA != null) {
+        paramVarArgs.d(8, this.CYA);
       }
-      if (this.CGV != null) {
-        paramVarArgs.d(9, this.CGV);
+      if (this.CYB != null) {
+        paramVarArgs.d(9, this.CYB);
       }
-      paramVarArgs.e(10, this.CHU);
-      paramVarArgs.e(11, this.CHV);
-      paramVarArgs.aS(12, this.CHW);
-      if (this.CHX != null) {
-        paramVarArgs.d(13, this.CHX);
+      paramVarArgs.e(10, this.CZA);
+      paramVarArgs.e(11, this.CZB);
+      paramVarArgs.aS(12, this.CZC);
+      if (this.CZD != null) {
+        paramVarArgs.d(13, this.CZD);
       }
-      if (this.wCD != null) {
-        paramVarArgs.d(14, this.wCD);
+      if (this.wSo != null) {
+        paramVarArgs.d(14, this.wSo);
       }
-      if (this.CHY != null) {
-        paramVarArgs.d(16, this.CHY);
+      if (this.CZE != null) {
+        paramVarArgs.d(16, this.CZE);
       }
-      paramVarArgs.e(17, 6, this.CHZ);
+      paramVarArgs.e(17, 6, this.CZF);
       AppMethodBeat.o(91305);
       return 0;
     }
     if (paramInt == 1)
     {
-      int i = f.a.a.b.b.a.bz(1, this.CHO) + 0 + f.a.a.b.b.a.bz(2, this.CHP) + f.a.a.b.b.a.p(3, this.CHQ);
+      int i = f.a.a.b.b.a.bz(1, this.CZu) + 0 + f.a.a.b.b.a.bz(2, this.CZv) + f.a.a.b.b.a.p(3, this.CZw);
       paramInt = i;
-      if (this.CHR != null) {
-        paramInt = i + f.a.a.b.b.a.e(4, this.CHR);
+      if (this.CZx != null) {
+        paramInt = i + f.a.a.b.b.a.e(4, this.CZx);
       }
       i = paramInt;
-      if (this.CGT != null) {
-        i = paramInt + f.a.a.b.b.a.e(5, this.CGT);
+      if (this.CYz != null) {
+        i = paramInt + f.a.a.b.b.a.e(5, this.CYz);
       }
       paramInt = i;
-      if (this.CHS != null) {
-        paramInt = i + f.a.a.b.b.a.e(6, this.CHS);
+      if (this.CZy != null) {
+        paramInt = i + f.a.a.b.b.a.e(6, this.CZy);
       }
       i = paramInt;
-      if (this.CHT != null) {
-        i = paramInt + f.a.a.b.b.a.e(7, this.CHT);
+      if (this.CZz != null) {
+        i = paramInt + f.a.a.b.b.a.e(7, this.CZz);
       }
       paramInt = i;
-      if (this.CGU != null) {
-        paramInt = i + f.a.a.b.b.a.e(8, this.CGU);
+      if (this.CYA != null) {
+        paramInt = i + f.a.a.b.b.a.e(8, this.CYA);
       }
       i = paramInt;
-      if (this.CGV != null) {
-        i = paramInt + f.a.a.b.b.a.e(9, this.CGV);
+      if (this.CYB != null) {
+        i = paramInt + f.a.a.b.b.a.e(9, this.CYB);
       }
-      i = i + f.a.a.b.b.a.alT(10) + f.a.a.b.b.a.alT(11) + f.a.a.b.b.a.bz(12, this.CHW);
+      i = i + f.a.a.b.b.a.amD(10) + f.a.a.b.b.a.amD(11) + f.a.a.b.b.a.bz(12, this.CZC);
       paramInt = i;
-      if (this.CHX != null) {
-        paramInt = i + f.a.a.b.b.a.e(13, this.CHX);
+      if (this.CZD != null) {
+        paramInt = i + f.a.a.b.b.a.e(13, this.CZD);
       }
       i = paramInt;
-      if (this.wCD != null) {
-        i = paramInt + f.a.a.b.b.a.e(14, this.wCD);
+      if (this.wSo != null) {
+        i = paramInt + f.a.a.b.b.a.e(14, this.wSo);
       }
       paramInt = i;
-      if (this.CHY != null) {
-        paramInt = i + f.a.a.b.b.a.e(16, this.CHY);
+      if (this.CZE != null) {
+        paramInt = i + f.a.a.b.b.a.e(16, this.CZE);
       }
-      i = f.a.a.a.c(17, 6, this.CHZ);
+      i = f.a.a.a.c(17, 6, this.CZF);
       AppMethodBeat.o(91305);
       return paramInt + i;
     }
     if (paramInt == 2)
     {
       paramVarArgs = (byte[])paramVarArgs[0];
-      this.CHZ.clear();
+      this.CZF.clear();
       paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gxE();
+          paramVarArgs.gCg();
         }
       }
       AppMethodBeat.o(91305);
@@ -142,67 +142,67 @@ public final class t
         AppMethodBeat.o(91305);
         return -1;
       case 1: 
-        localt.CHO = locala.NPN.zc();
+        localt.CZu = locala.OmT.zc();
         AppMethodBeat.o(91305);
         return 0;
       case 2: 
-        localt.CHP = locala.NPN.zc();
+        localt.CZv = locala.OmT.zc();
         AppMethodBeat.o(91305);
         return 0;
       case 3: 
-        localt.CHQ = locala.NPN.zd();
+        localt.CZw = locala.OmT.zd();
         AppMethodBeat.o(91305);
         return 0;
       case 4: 
-        localt.CHR = locala.NPN.readString();
+        localt.CZx = locala.OmT.readString();
         AppMethodBeat.o(91305);
         return 0;
       case 5: 
-        localt.CGT = locala.NPN.readString();
+        localt.CYz = locala.OmT.readString();
         AppMethodBeat.o(91305);
         return 0;
       case 6: 
-        localt.CHS = locala.NPN.readString();
+        localt.CZy = locala.OmT.readString();
         AppMethodBeat.o(91305);
         return 0;
       case 7: 
-        localt.CHT = locala.NPN.readString();
+        localt.CZz = locala.OmT.readString();
         AppMethodBeat.o(91305);
         return 0;
       case 8: 
-        localt.CGU = locala.NPN.readString();
+        localt.CYA = locala.OmT.readString();
         AppMethodBeat.o(91305);
         return 0;
       case 9: 
-        localt.CGV = locala.NPN.readString();
+        localt.CYB = locala.OmT.readString();
         AppMethodBeat.o(91305);
         return 0;
       case 10: 
-        localt.CHU = Double.longBitsToDouble(locala.NPN.grA());
+        localt.CZA = Double.longBitsToDouble(locala.OmT.gwc());
         AppMethodBeat.o(91305);
         return 0;
       case 11: 
-        localt.CHV = Double.longBitsToDouble(locala.NPN.grA());
+        localt.CZB = Double.longBitsToDouble(locala.OmT.gwc());
         AppMethodBeat.o(91305);
         return 0;
       case 12: 
-        localt.CHW = locala.NPN.zc();
+        localt.CZC = locala.OmT.zc();
         AppMethodBeat.o(91305);
         return 0;
       case 13: 
-        localt.CHX = locala.NPN.readString();
+        localt.CZD = locala.OmT.readString();
         AppMethodBeat.o(91305);
         return 0;
       case 14: 
-        localt.wCD = locala.NPN.readString();
+        localt.wSo = locala.OmT.readString();
         AppMethodBeat.o(91305);
         return 0;
       case 16: 
-        localt.CHY = locala.NPN.readString();
+        localt.CZE = locala.OmT.readString();
         AppMethodBeat.o(91305);
         return 0;
       }
-      localt.CHZ.add(locala.NPN.gxI());
+      localt.CZF.add(locala.OmT.gCk());
       AppMethodBeat.o(91305);
       return 0;
     }
@@ -212,7 +212,7 @@ public final class t
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.a.t
  * JD-Core Version:    0.7.0.1
  */

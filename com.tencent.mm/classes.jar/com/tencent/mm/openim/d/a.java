@@ -1,20 +1,20 @@
 package com.tencent.mm.openim.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.cex;
+import com.tencent.mm.protocal.protobuf.cfr;
 
 public final class a
   extends i
 {
-  cex iHY;
+  cfr iKR;
   
   public a(String paramString)
   {
     super(4);
     AppMethodBeat.i(151265);
-    this.iHY = new cex();
-    this.iHY.iHA = paramString;
-    this.vKm = this.iHY;
+    this.iKR = new cfr();
+    this.iKR.iKt = paramString;
+    this.vWq = this.iKR;
     AppMethodBeat.o(151265);
   }
 }

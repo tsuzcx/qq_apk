@@ -5,7 +5,7 @@ import android.view.MotionEvent;
 public abstract class a
   implements SwipeBackLayout.a
 {
-  public final void Cs() {}
+  public final void Cv() {}
   
   public int bq(boolean paramBoolean)
   {
@@ -18,7 +18,7 @@ public abstract class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     me.imid.swipebacklayout.lib.a
  * JD-Core Version:    0.7.0.1
  */

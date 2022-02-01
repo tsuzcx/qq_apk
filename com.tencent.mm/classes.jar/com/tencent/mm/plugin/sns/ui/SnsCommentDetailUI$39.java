@@ -9,26 +9,26 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 final class SnsCommentDetailUI$39
   implements Animation.AnimationListener
 {
-  boolean Ace = false;
+  boolean Atr = false;
   
   SnsCommentDetailUI$39(SnsCommentDetailUI paramSnsCommentDetailUI, LinearLayout paramLinearLayout) {}
   
   public final void onAnimationEnd(Animation paramAnimation)
   {
-    AppMethodBeat.i(198336);
-    if (this.Acf != null) {
-      this.Acf.setPressed(false);
+    AppMethodBeat.i(219871);
+    if (this.Ats != null) {
+      this.Ats.setPressed(false);
     }
-    if (!this.Ace)
+    if (!this.Atr)
     {
-      this.Ace = true;
-      if (SnsCommentDetailUI.H(this.AbL) != null)
+      this.Atr = true;
+      if (SnsCommentDetailUI.H(this.AsY) != null)
       {
-        SnsCommentDetailUI.H(this.AbL).clearAnimation();
-        SnsCommentDetailUI.H(this.AbL).setVisibility(8);
+        SnsCommentDetailUI.H(this.AsY).clearAnimation();
+        SnsCommentDetailUI.H(this.AsY).setVisibility(8);
       }
     }
-    AppMethodBeat.o(198336);
+    AppMethodBeat.o(219871);
   }
   
   public final void onAnimationRepeat(Animation paramAnimation) {}

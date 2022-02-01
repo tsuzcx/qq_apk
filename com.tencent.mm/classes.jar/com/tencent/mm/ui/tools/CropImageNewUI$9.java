@@ -6,12 +6,12 @@ import android.view.View.OnTouchListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.sdk.platformtools.av;
+import com.tencent.mm.sdk.platformtools.aw;
 
 final class CropImageNewUI$9
   implements View.OnTouchListener
 {
-  CropImageNewUI$9(CropImageNewUI paramCropImageNewUI, av paramav) {}
+  CropImageNewUI$9(CropImageNewUI paramCropImageNewUI, aw paramaw) {}
   
   public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
@@ -19,7 +19,7 @@ final class CropImageNewUI$9
     b localb = new b();
     localb.bd(paramView);
     localb.bd(paramMotionEvent);
-    a.b("com/tencent/mm/ui/tools/CropImageNewUI$17", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahq());
+    a.b("com/tencent/mm/ui/tools/CropImageNewUI$17", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahF());
     switch (paramMotionEvent.getAction())
     {
     }
@@ -28,9 +28,9 @@ final class CropImageNewUI$9
       a.a(false, this, "com/tencent/mm/ui/tools/CropImageNewUI$17", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
       AppMethodBeat.o(39014);
       return false;
-      this.KEo.az(200L, 200L);
+      this.LaI.ay(200L, 200L);
       continue;
-      this.KEo.stopTimer();
+      this.LaI.stopTimer();
     }
   }
 }

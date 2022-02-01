@@ -17,65 +17,65 @@ public class SnsPostDescPreloadTextView
 {
   private static int hitCount = 0;
   private static int missCount = 0;
-  private boolean ADs;
-  private int ADt;
-  private b ADu;
-  private int ADv;
-  private Map<String, Integer> ADw;
-  private a ADx;
+  private boolean AUT;
+  private int AUU;
+  private b AUV;
+  private int AUW;
+  private Map<String, Integer> AUX;
+  private a AUY;
   private boolean isAd;
-  private boolean mVq;
-  private boolean mYz;
+  private boolean naw;
+  private boolean ndG;
   
   public SnsPostDescPreloadTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(198611);
-    this.ADs = true;
-    this.ADt = 0;
-    this.mYz = false;
-    this.mVq = false;
+    AppMethodBeat.i(220158);
+    this.AUT = true;
+    this.AUU = 0;
+    this.ndG = false;
+    this.naw = false;
     this.isAd = false;
-    this.ADu = null;
-    this.ADv = ViewConfiguration.getLongPressTimeout();
-    this.ADx = new a();
-    AppMethodBeat.o(198611);
+    this.AUV = null;
+    this.AUW = ViewConfiguration.getLongPressTimeout();
+    this.AUY = new a();
+    AppMethodBeat.o(220158);
   }
   
   public SnsPostDescPreloadTextView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(198612);
-    this.ADs = true;
-    this.ADt = 0;
-    this.mYz = false;
-    this.mVq = false;
+    AppMethodBeat.i(220159);
+    this.AUT = true;
+    this.AUU = 0;
+    this.ndG = false;
+    this.naw = false;
     this.isAd = false;
-    this.ADu = null;
-    this.ADv = ViewConfiguration.getLongPressTimeout();
-    this.ADx = new a();
-    AppMethodBeat.o(198612);
+    this.AUV = null;
+    this.AUW = ViewConfiguration.getLongPressTimeout();
+    this.AUY = new a();
+    AppMethodBeat.o(220159);
   }
   
   private int getPostDescWidth()
   {
     AppMethodBeat.i(100551);
-    if (this.ADt > 0)
+    if (this.AUU > 0)
     {
-      i = this.ADt;
+      i = this.AUU;
       AppMethodBeat.o(100551);
       return i;
     }
-    int i = f.efe().getViewWidth();
+    int i = f.eiL().getViewWidth();
     AppMethodBeat.o(100551);
     return i;
   }
   
-  public final a akH()
+  public final a akW()
   {
     AppMethodBeat.i(100547);
-    this.ADs = true;
-    a locala = f.efe().getTextViewConfig();
+    this.AUT = true;
+    a locala = f.eiL().getTextViewConfig();
     AppMethodBeat.o(100547);
     return locala;
   }
@@ -89,57 +89,57 @@ public class SnsPostDescPreloadTextView
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(198613);
+    AppMethodBeat.i(220160);
     switch (paramMotionEvent.getActionMasked())
     {
     }
     for (;;)
     {
       boolean bool = super.onTouchEvent(paramMotionEvent);
-      AppMethodBeat.o(198613);
+      AppMethodBeat.o(220160);
       return bool;
-      this.mVq = true;
-      postDelayed(this.ADx, this.ADv);
+      this.naw = true;
+      postDelayed(this.AUY, this.AUW);
       continue;
       bd localbd;
-      if ((!this.mYz) && (this.mVq) && (!this.isAd) && ((getTag() instanceof bd)))
+      if ((!this.ndG) && (this.naw) && (!this.isAd) && ((getTag() instanceof bd)))
       {
         localbd = (bd)getTag();
-        if ((localbd != null) && (this.ADw != null) && ((!this.ADw.containsKey(localbd.drH)) || (!((Integer)this.ADw.get(localbd.drH)).equals(Integer.valueOf(0))))) {
+        if ((localbd != null) && (this.AUX != null) && ((!this.AUX.containsKey(localbd.dsN)) || (!((Integer)this.AUX.get(localbd.dsN)).equals(Integer.valueOf(0))))) {
           break label189;
         }
       }
       for (;;)
       {
-        this.mYz = false;
-        this.mVq = false;
-        removeCallbacks(this.ADx);
+        this.ndG = false;
+        this.naw = false;
+        removeCallbacks(this.AUY);
         break;
         label189:
-        if ((this.ADw.containsKey(localbd.drH)) && (((Integer)this.ADw.get(localbd.drH)).equals(Integer.valueOf(1))))
+        if ((this.AUX.containsKey(localbd.dsN)) && (((Integer)this.AUX.get(localbd.dsN)).equals(Integer.valueOf(1))))
         {
-          this.ADw.put(localbd.drH, Integer.valueOf(2));
-          if (this.ADu != null) {
-            this.ADu.ecO();
+          this.AUX.put(localbd.dsN, Integer.valueOf(2));
+          if (this.AUV != null) {
+            this.AUV.egv();
           }
         }
         else
         {
-          this.ADw.put(localbd.drH, Integer.valueOf(1));
-          if (this.ADu != null) {
-            this.ADu.ecO();
+          this.AUX.put(localbd.dsN, Integer.valueOf(1));
+          if (this.AUV != null) {
+            this.AUV.egv();
           }
         }
       }
-      this.mYz = false;
-      this.mVq = false;
-      removeCallbacks(this.ADx);
+      this.ndG = false;
+      this.naw = false;
+      removeCallbacks(this.AUY);
     }
   }
   
   public void setCollapseibleMap(Map<String, Integer> paramMap)
   {
-    this.ADw = paramMap;
+    this.AUX = paramMap;
   }
   
   public void setIsAd(boolean paramBoolean)
@@ -156,25 +156,25 @@ public class SnsPostDescPreloadTextView
     }
     if (paramInt < 7)
     {
-      if (!this.ADs) {
+      if (!this.AUT) {
         break label147;
       }
-      setConfig(f.efe().eff());
-      this.ADs = false;
+      setConfig(f.eiL().eiM());
+      this.AUT = false;
       paramInt = i;
     }
     for (;;)
     {
       if (paramInt != 0)
       {
-        com.tencent.mm.kiss.widget.textview.f localf2 = c.gEJ.a(getConfig(), getText());
+        com.tencent.mm.kiss.widget.textview.f localf2 = c.gHq.a(getConfig(), getText());
         com.tencent.mm.kiss.widget.textview.f localf1 = localf2;
         if (localf2 == null)
         {
           paramInt = getPostDescWidth();
           localf1 = localf2;
           if (paramInt > 0) {
-            localf1 = d.a(getText(), paramInt, getConfig()).akF();
+            localf1 = d.a(getText(), paramInt, getConfig()).akU();
           }
         }
         if (localf1 != null) {
@@ -183,10 +183,10 @@ public class SnsPostDescPreloadTextView
       }
       AppMethodBeat.o(100548);
       return;
-      if (!this.ADs)
+      if (!this.AUT)
       {
-        setConfig(f.efe().getTextViewConfig());
-        this.ADs = true;
+        setConfig(f.eiL().getTextViewConfig());
+        this.AUT = true;
         paramInt = i;
       }
       else
@@ -199,12 +199,12 @@ public class SnsPostDescPreloadTextView
   
   public void setShrinkOrSpreadListener(b paramb)
   {
-    this.ADu = paramb;
+    this.AUV = paramb;
   }
   
   public void setSpecialWidth(int paramInt)
   {
-    this.ADt = paramInt;
+    this.AUU = paramInt;
   }
   
   public final void x(CharSequence paramCharSequence)
@@ -232,15 +232,15 @@ public class SnsPostDescPreloadTextView
     
     public final void run()
     {
-      AppMethodBeat.i(198610);
+      AppMethodBeat.i(220157);
       SnsPostDescPreloadTextView.a(SnsPostDescPreloadTextView.this);
-      AppMethodBeat.o(198610);
+      AppMethodBeat.o(220157);
     }
   }
   
   public static abstract interface b
   {
-    public abstract void ecO();
+    public abstract void egv();
   }
 }
 

@@ -6,12 +6,12 @@ import java.util.Set;
 
 public final class d
 {
-  public static final Set<Class> grg;
+  public static final Set<Class> gtG;
   
   static
   {
     AppMethodBeat.i(159067);
-    grg = new HashSet();
+    gtG = new HashSet();
     AppMethodBeat.o(159067);
   }
 }

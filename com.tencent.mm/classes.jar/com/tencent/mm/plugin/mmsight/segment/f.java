@@ -4,9 +4,9 @@ import com.tencent.mm.modelcontrol.VideoTransPara;
 
 public abstract interface f
 {
-  public abstract int Y(long paramLong1, long paramLong2);
+  public abstract int X(long paramLong1, long paramLong2);
   
-  public abstract void b(String paramString1, String paramString2, VideoTransPara paramVideoTransPara);
+  public abstract void c(String paramString1, String paramString2, VideoTransPara paramVideoTransPara);
   
   public abstract void release();
 }

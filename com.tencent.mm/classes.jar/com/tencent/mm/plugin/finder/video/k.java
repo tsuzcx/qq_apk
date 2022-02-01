@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.finder.video;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/video/FinderVideoMixRenderer;", "Lcom/tencent/mm/media/render/MixRenderer;", "textureWidth", "", "textureHeight", "drawWidth", "drawHeight", "renderOutputType", "scaleType", "(IIIIII)V", "TAG", "", "videoHeight", "videoWidth", "doInitRenderProc", "Lcom/tencent/mm/media/render/proc/GLTextureRenderProc;", "setVideoSize", "", "width", "height", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/video/FinderVideoMixRenderer;", "Lcom/tencent/mm/media/render/MixRenderer;", "textureWidth", "", "textureHeight", "drawWidth", "drawHeight", "renderOutputType", "scaleType", "(IIIIII)V", "TAG", "", "videoHeight", "videoWidth", "doInitRenderProc", "Lcom/tencent/mm/media/render/proc/GLTextureRenderProc;", "setVideoSize", "", "width", "height", "plugin-finder_release"})
 public final class k
   extends com.tencent.mm.media.j.c
 {
@@ -16,17 +16,17 @@ public final class k
     super(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, 4);
   }
   
-  public final com.tencent.mm.media.j.b.a amr()
+  public final com.tencent.mm.media.j.b.a amG()
   {
-    AppMethodBeat.i(204823);
-    Object localObject = new c(this.gKJ, this.gKK, this.gLD, this.gLE, this.hnp, this.scaleType);
-    ((com.tencent.mm.media.j.b.a)localObject).hnr = this.hnr;
+    AppMethodBeat.i(205448);
+    Object localObject = new c(this.gNs, this.gNt, this.gOm, this.gOn, this.hqd, this.scaleType);
+    ((com.tencent.mm.media.j.b.a)localObject).hqf = this.hqf;
     int i = this.videoWidth;
     int j = this.videoHeight;
     ((c)localObject).videoWidth = i;
     ((c)localObject).videoHeight = j;
     localObject = (com.tencent.mm.media.j.b.a)localObject;
-    AppMethodBeat.o(204823);
+    AppMethodBeat.o(205448);
     return localObject;
   }
 }

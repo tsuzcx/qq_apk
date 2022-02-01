@@ -1,62 +1,62 @@
 package com.tencent.mm.plugin.appbrand.appcache.b.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.a.a;
-import com.tencent.mm.g.b.a.gz;
+import com.tencent.mm.ak.a.a;
+import com.tencent.mm.g.b.a.hb;
 import com.tencent.mm.plugin.appbrand.appcache.WxaPkgWrappingInfo;
 import com.tencent.mm.plugin.appbrand.appcache.b.e.d;
 import com.tencent.mm.plugin.appbrand.launching.aa.e;
-import com.tencent.mm.protocal.protobuf.blq;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.bmi;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.Locale;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public enum j
 {
-  private volatile boolean jKt = false;
-  private volatile com.tencent.mm.cn.f<Void> jKu;
+  private volatile boolean jNF = false;
+  private volatile com.tencent.mm.cm.f<Void> jNG;
   
   static
   {
     AppMethodBeat.i(44417);
-    jKs = new j("INSTANCE");
-    jKv = new j[] { jKs };
+    jNE = new j("INSTANCE");
+    jNH = new j[] { jNE };
     AppMethodBeat.o(44417);
   }
   
   private j() {}
   
-  public final void bbc()
+  public final void bbE()
   {
     for (;;)
     {
       try
       {
         AppMethodBeat.i(44414);
-        if (!com.tencent.mm.kernel.g.ajA().gAD)
+        if (!com.tencent.mm.kernel.g.ajP().gDk)
         {
-          ad.e("MicroMsg.AppBrand.Predownload.GetCodeRetryLogic", "triggerRetry, account not ready");
-          if (this.jKu != null) {
-            this.jKu.fOb();
+          ae.e("MicroMsg.AppBrand.Predownload.GetCodeRetryLogic", "triggerRetry, account not ready");
+          if (this.jNG != null) {
+            this.jNG.fSw();
           }
-          this.jKt = false;
+          this.jNF = false;
           AppMethodBeat.o(44414);
           return;
         }
-        if (this.jKt)
+        if (this.jNF)
         {
-          ad.d("MicroMsg.AppBrand.Predownload.GetCodeRetryLogic", "triggerRetry, queueRunning, skip");
+          ae.d("MicroMsg.AppBrand.Predownload.GetCodeRetryLogic", "triggerRetry, queueRunning, skip");
           AppMethodBeat.o(44414);
           continue;
         }
-        ad.i("MicroMsg.AppBrand.Predownload.GetCodeRetryLogic", "triggerRetry, set flag queue running");
+        ae.i("MicroMsg.AppBrand.Predownload.GetCodeRetryLogic", "triggerRetry, set flag queue running");
       }
       finally {}
-      this.jKt = true;
-      this.jKu = com.tencent.mm.cn.g.fSm();
-      this.jKu.i(new com.tencent.mm.vending.c.a()
+      this.jNF = true;
+      this.jNG = com.tencent.mm.cm.g.fWL();
+      this.jNG.i(new com.tencent.mm.vending.c.a()
       {
-        private Void aYJ()
+        private Void aZf()
         {
           AppMethodBeat.i(44404);
           try
@@ -69,8 +69,8 @@ public enum j
           {
             for (;;)
             {
-              ad.printErrStackTrace("MicroMsg.AppBrand.Predownload.GetCodeRetryLogic", localThrowable, "handleRetry()", new Object[0]);
-              com.tencent.mm.vending.g.g.fOa().ee(null);
+              ae.printErrStackTrace("MicroMsg.AppBrand.Predownload.GetCodeRetryLogic", localThrowable, "handleRetry()", new Object[0]);
+              com.tencent.mm.vending.g.g.fSv().ef(null);
               synchronized (j.this)
               {
                 j.b(j.this);
@@ -88,10 +88,10 @@ public enum j
     try
     {
       AppMethodBeat.i(44415);
-      if (this.jKu != null) {
-        this.jKu.fOb();
+      if (this.jNG != null) {
+        this.jNG.fSw();
       }
-      this.jKt = false;
+      this.jNF = false;
       AppMethodBeat.o(44415);
       return;
     }

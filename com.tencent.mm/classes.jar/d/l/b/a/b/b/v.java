@@ -3,19 +3,19 @@ package d.l.b.a.b.b;
 public abstract interface v
   extends m, p
 {
-  public abstract boolean ghE();
+  public abstract w glZ();
   
-  public abstract boolean ghF();
+  public abstract ba gmb();
   
-  public abstract boolean ghG();
+  public abstract boolean gmg();
   
-  public abstract w ghx();
+  public abstract boolean gmh();
   
-  public abstract ba ghz();
+  public abstract boolean gmi();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.b.v
  * JD-Core Version:    0.7.0.1
  */

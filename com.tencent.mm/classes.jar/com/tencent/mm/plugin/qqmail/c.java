@@ -1,7 +1,8 @@
 package com.tencent.mm.plugin.qqmail;
 
+import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -13,15 +14,15 @@ public abstract class c
   public static String USER_AGENT;
   protected static String host = "";
   protected static int timeout = 0;
-  protected static String xaM;
+  protected static String xqD;
   
   static
   {
     USER_AGENT = "weixin/android";
-    xaM = "";
+    xqD = "";
   }
   
-  public static String aA(Map<String, String> paramMap)
+  public static String aG(Map<String, String> paramMap)
   {
     if ((paramMap == null) || (paramMap.size() == 0)) {
       return "";
@@ -41,7 +42,7 @@ public abstract class c
     return localStringBuilder.toString();
   }
   
-  public static Map<String, String> auU(String paramString)
+  public static Map<String, String> awj(String paramString)
   {
     HashMap localHashMap = new HashMap();
     if ((paramString == null) || (paramString.length() == 0)) {}
@@ -82,7 +83,7 @@ public abstract class c
       if (i != 0) {}
       for (paramString1 = "";; paramString1 = "&")
       {
-        localStringBuilder.append(paramString1).append(URLEncoder.encode(str1, "utf-8")).append('=').append(URLEncoder.encode(bt.nullAsNil(str2), "utf-8"));
+        localStringBuilder.append(paramString1).append(URLEncoder.encode(str1, "utf-8")).append('=').append(URLEncoder.encode(bu.nullAsNil(str2), "utf-8"));
         i = 0;
         break;
       }
@@ -94,64 +95,94 @@ public abstract class c
   
   public abstract void cancel();
   
+  public static abstract class a
+  {
+    public void onComplete() {}
+    
+    public abstract void onError(int paramInt, String paramString);
+    
+    public boolean onReady()
+    {
+      return true;
+    }
+    
+    public abstract void onSuccess(String paramString, Map<String, String> paramMap);
+  }
+  
+  public static final class b
+  {
+    public boolean xqE = false;
+    public boolean xqF = true;
+    public boolean xqG = true;
+    
+    public final void fromBundle(Bundle paramBundle)
+    {
+      AppMethodBeat.i(217911);
+      this.xqE = paramBundle.getBoolean("qqmail_httpoptions_expired");
+      this.xqF = paramBundle.getBoolean("qqmail_httpoptions_needcache");
+      this.xqG = paramBundle.getBoolean("qqmail_httpoptions_needparse");
+      AppMethodBeat.o(217911);
+    }
+  }
+  
   public static final class c
   {
     public long id;
     public String uri;
-    public c.b xaQ;
-    public c.e xaR;
-    public c.f xaS;
-    public Map<String, String> xaT;
-    public c.a xaU;
+    public c.b xqH;
+    public c.e xqI;
+    public c.f xqJ;
+    public Map<String, String> xqK;
+    public c.a xqL;
     
     public c(String paramString, c.e parame, c.a parama)
     {
-      AppMethodBeat.i(215166);
+      AppMethodBeat.i(217912);
       this.id = System.currentTimeMillis();
       this.uri = paramString;
-      this.xaR = parame;
-      this.xaU = parama;
-      AppMethodBeat.o(215166);
+      this.xqI = parame;
+      this.xqL = parama;
+      AppMethodBeat.o(217912);
     }
   }
   
   public static abstract interface d
   {
-    public abstract void dCd();
+    public abstract void dFu();
   }
   
   public static final class e
   {
-    public int xaV;
-    public Map<String, String> xaW;
-    public Map<String, String> xaX;
-    public c.g xaY;
+    public int xqM;
+    public Map<String, String> xqN;
+    public Map<String, String> xqO;
+    public c.g xqP;
     
     public e(int paramInt, Map<String, String> paramMap1, Map<String, String> paramMap2)
     {
-      this.xaV = paramInt;
-      this.xaW = paramMap1;
-      this.xaX = paramMap2;
-      this.xaY = null;
+      this.xqM = paramInt;
+      this.xqN = paramMap1;
+      this.xqO = paramMap2;
+      this.xqP = null;
     }
     
     public final String toString()
     {
-      AppMethodBeat.i(215167);
-      StringBuilder localStringBuilder = new StringBuilder("Request method:").append(this.xaV).append(", params:");
-      if (this.xaW != null)
+      AppMethodBeat.i(217913);
+      StringBuilder localStringBuilder = new StringBuilder("Request method:").append(this.xqM).append(", params:");
+      if (this.xqN != null)
       {
-        localObject = this.xaW;
+        localObject = this.xqN;
         localStringBuilder = localStringBuilder.append(localObject).append(", cookie:");
-        if (this.xaX == null) {
+        if (this.xqO == null) {
           break label84;
         }
       }
       label84:
-      for (Object localObject = this.xaX;; localObject = "")
+      for (Object localObject = this.xqO;; localObject = "")
       {
         localObject = localObject;
-        AppMethodBeat.o(215167);
+        AppMethodBeat.o(217913);
         return localObject;
         localObject = "";
         break;
@@ -163,23 +194,23 @@ public abstract class c
   {
     public String content;
     public int status = 0;
-    public Map<String, String> xaX;
+    public Map<String, String> xqO;
     
     public f(int paramInt, Map<String, String> paramMap, String paramString)
     {
       this.status = paramInt;
-      this.xaX = paramMap;
+      this.xqO = paramMap;
       this.content = paramString;
     }
     
     public final String toString()
     {
-      AppMethodBeat.i(215168);
+      AppMethodBeat.i(217914);
       StringBuilder localStringBuilder = new StringBuilder("Response status:").append(this.status).append(", cookie:");
       Object localObject;
-      if (this.xaX != null)
+      if (this.xqO != null)
       {
-        localObject = this.xaX;
+        localObject = this.xqO;
         localObject = localStringBuilder.append(localObject).append(", content length :");
         if (this.content == null) {
           break label87;
@@ -189,7 +220,7 @@ public abstract class c
       for (int i = this.content.length();; i = 0)
       {
         localObject = i;
-        AppMethodBeat.o(215168);
+        AppMethodBeat.o(217914);
         return localObject;
         localObject = "";
         break;

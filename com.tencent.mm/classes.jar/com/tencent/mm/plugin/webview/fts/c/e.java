@@ -6,13 +6,13 @@ public abstract interface e
   
   public abstract void P(int paramInt, String paramString1, String paramString2);
   
-  public abstract void WC(int paramInt);
+  public abstract void Xj(int paramInt);
   
   public abstract void cy(int paramInt, String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.fts.c.e
  * JD-Core Version:    0.7.0.1
  */

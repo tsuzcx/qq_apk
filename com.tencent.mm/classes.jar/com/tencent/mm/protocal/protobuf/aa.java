@@ -4,20 +4,20 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 public final class aa
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public String FqA;
-  public LinkedList<String> FqB;
-  public String Fqx;
-  public String Fqy;
-  public String Fqz;
-  public String nDT;
-  public String nDt;
+  public String FIV;
+  public String FIW;
+  public String FIX;
+  public String FIY;
+  public LinkedList<String> FIZ;
+  public String nIO;
+  public String nJo;
   
   public aa()
   {
     AppMethodBeat.i(145665);
-    this.FqB = new LinkedList();
+    this.FIZ = new LinkedList();
     AppMethodBeat.o(145665);
   }
   
@@ -27,67 +27,67 @@ public final class aa
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.nDT != null) {
-        paramVarArgs.d(1, this.nDT);
+      if (this.nJo != null) {
+        paramVarArgs.d(1, this.nJo);
       }
-      if (this.nDt != null) {
-        paramVarArgs.d(2, this.nDt);
+      if (this.nIO != null) {
+        paramVarArgs.d(2, this.nIO);
       }
-      if (this.Fqx != null) {
-        paramVarArgs.d(3, this.Fqx);
+      if (this.FIV != null) {
+        paramVarArgs.d(3, this.FIV);
       }
-      if (this.Fqy != null) {
-        paramVarArgs.d(4, this.Fqy);
+      if (this.FIW != null) {
+        paramVarArgs.d(4, this.FIW);
       }
-      if (this.Fqz != null) {
-        paramVarArgs.d(5, this.Fqz);
+      if (this.FIX != null) {
+        paramVarArgs.d(5, this.FIX);
       }
-      if (this.FqA != null) {
-        paramVarArgs.d(6, this.FqA);
+      if (this.FIY != null) {
+        paramVarArgs.d(6, this.FIY);
       }
-      paramVarArgs.e(7, 1, this.FqB);
+      paramVarArgs.e(7, 1, this.FIZ);
       AppMethodBeat.o(145666);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.nDT == null) {
+      if (this.nJo == null) {
         break label578;
       }
     }
     label578:
-    for (int i = f.a.a.b.b.a.e(1, this.nDT) + 0;; i = 0)
+    for (int i = f.a.a.b.b.a.e(1, this.nJo) + 0;; i = 0)
     {
       paramInt = i;
-      if (this.nDt != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.nDt);
+      if (this.nIO != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.nIO);
       }
       i = paramInt;
-      if (this.Fqx != null) {
-        i = paramInt + f.a.a.b.b.a.e(3, this.Fqx);
+      if (this.FIV != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.FIV);
       }
       paramInt = i;
-      if (this.Fqy != null) {
-        paramInt = i + f.a.a.b.b.a.e(4, this.Fqy);
+      if (this.FIW != null) {
+        paramInt = i + f.a.a.b.b.a.e(4, this.FIW);
       }
       i = paramInt;
-      if (this.Fqz != null) {
-        i = paramInt + f.a.a.b.b.a.e(5, this.Fqz);
+      if (this.FIX != null) {
+        i = paramInt + f.a.a.b.b.a.e(5, this.FIX);
       }
       paramInt = i;
-      if (this.FqA != null) {
-        paramInt = i + f.a.a.b.b.a.e(6, this.FqA);
+      if (this.FIY != null) {
+        paramInt = i + f.a.a.b.b.a.e(6, this.FIY);
       }
-      i = f.a.a.a.c(7, 1, this.FqB);
+      i = f.a.a.a.c(7, 1, this.FIZ);
       AppMethodBeat.o(145666);
       return paramInt + i;
       if (paramInt == 2)
       {
         paramVarArgs = (byte[])paramVarArgs[0];
-        this.FqB.clear();
+        this.FIZ.clear();
         paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
         AppMethodBeat.o(145666);
@@ -103,31 +103,31 @@ public final class aa
           AppMethodBeat.o(145666);
           return -1;
         case 1: 
-          localaa.nDT = locala.NPN.readString();
+          localaa.nJo = locala.OmT.readString();
           AppMethodBeat.o(145666);
           return 0;
         case 2: 
-          localaa.nDt = locala.NPN.readString();
+          localaa.nIO = locala.OmT.readString();
           AppMethodBeat.o(145666);
           return 0;
         case 3: 
-          localaa.Fqx = locala.NPN.readString();
+          localaa.FIV = locala.OmT.readString();
           AppMethodBeat.o(145666);
           return 0;
         case 4: 
-          localaa.Fqy = locala.NPN.readString();
+          localaa.FIW = locala.OmT.readString();
           AppMethodBeat.o(145666);
           return 0;
         case 5: 
-          localaa.Fqz = locala.NPN.readString();
+          localaa.FIX = locala.OmT.readString();
           AppMethodBeat.o(145666);
           return 0;
         case 6: 
-          localaa.FqA = locala.NPN.readString();
+          localaa.FIY = locala.OmT.readString();
           AppMethodBeat.o(145666);
           return 0;
         }
-        localaa.FqB.add(locala.NPN.readString());
+        localaa.FIZ.add(locala.OmT.readString());
         AppMethodBeat.o(145666);
         return 0;
       }
@@ -138,7 +138,7 @@ public final class aa
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.aa
  * JD-Core Version:    0.7.0.1
  */

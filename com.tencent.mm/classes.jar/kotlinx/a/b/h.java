@@ -4,24 +4,24 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import kotlinx.a.l.a;
 import kotlinx.a.n;
 
-@d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/serialization/internal/BooleanSerializer;", "Lkotlinx/serialization/KSerializer;", "", "()V", "descriptor", "Lkotlinx/serialization/SerialDescriptor;", "getDescriptor", "()Lkotlinx/serialization/SerialDescriptor;", "deserialize", "decoder", "Lkotlinx/serialization/Decoder;", "(Lkotlinx/serialization/Decoder;)Ljava/lang/Boolean;", "serialize", "", "encoder", "Lkotlinx/serialization/Encoder;", "value", "kotlinx-serialization-runtime"})
+@d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/serialization/internal/BooleanSerializer;", "Lkotlinx/serialization/KSerializer;", "", "()V", "descriptor", "Lkotlinx/serialization/SerialDescriptor;", "getDescriptor", "()Lkotlinx/serialization/SerialDescriptor;", "deserialize", "decoder", "Lkotlinx/serialization/Decoder;", "(Lkotlinx/serialization/Decoder;)Ljava/lang/Boolean;", "serialize", "", "encoder", "Lkotlinx/serialization/Encoder;", "value", "kotlinx-serialization-runtime"})
 public final class h
   implements kotlinx.a.h<Boolean>
 {
-  private static final n NLm;
-  public static final h NMf;
+  private static final n Ois;
+  public static final h Ojl;
   
   static
   {
-    AppMethodBeat.i(191125);
-    NMf = new h();
-    NLm = (n)new ay("kotlin.Boolean", (kotlinx.a.l)l.a.NLp);
-    AppMethodBeat.o(191125);
+    AppMethodBeat.i(199713);
+    Ojl = new h();
+    Ois = (n)new ay("kotlin.Boolean", (kotlinx.a.l)l.a.Oiv);
+    AppMethodBeat.o(199713);
   }
   
-  public final n eLj()
+  public final n eOR()
   {
-    return NLm;
+    return Ois;
   }
 }
 

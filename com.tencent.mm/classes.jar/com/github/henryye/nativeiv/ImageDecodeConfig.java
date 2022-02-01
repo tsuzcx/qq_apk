@@ -34,7 +34,7 @@ public class ImageDecodeConfig
   @Keep
   public static Object createConfig(int paramInt1, boolean paramBoolean, int paramInt2, int paramInt3, int paramInt4, double paramDouble)
   {
-    AppMethodBeat.i(194931);
+    AppMethodBeat.i(209416);
     ImageDecodeConfig localImageDecodeConfig = new ImageDecodeConfig();
     localImageDecodeConfig.mPremultiplyAlpha = paramBoolean;
     if (paramInt1 == 8)
@@ -50,7 +50,7 @@ public class ImageDecodeConfig
       localImageDecodeConfig.mPreferredWidth = paramInt3;
       localImageDecodeConfig.mPreferredHeight = paramInt4;
       localImageDecodeConfig.mPreferredScale = paramDouble;
-      AppMethodBeat.o(194931);
+      AppMethodBeat.o(209416);
       return localImageDecodeConfig;
       if (paramInt1 == 4)
       {
@@ -99,25 +99,25 @@ public class ImageDecodeConfig
   @Keep
   public int getNativeReferrerPolicy()
   {
-    AppMethodBeat.i(194930);
+    AppMethodBeat.i(209415);
     switch (1.baF[this.mReferrerPolicy.ordinal()])
     {
     default: 
-      AppMethodBeat.o(194930);
+      AppMethodBeat.o(209415);
       return 0;
     case 1: 
-      AppMethodBeat.o(194930);
+      AppMethodBeat.o(209415);
       return 1;
     }
-    AppMethodBeat.o(194930);
+    AppMethodBeat.o(209415);
     return 2;
   }
   
   public String toString()
   {
-    AppMethodBeat.i(194932);
+    AppMethodBeat.i(209417);
     String str = "ImageDecodeConfig{mConfig=" + this.mConfig + ", mPremultiplyAlpha=" + this.mPremultiplyAlpha + ", mReferrerPolicy=" + this.mReferrerPolicy + ", mPreferredWidth=" + this.mPreferredWidth + ", mPreferredHeight=" + this.mPreferredHeight + ", mPreferredScale=" + this.mPreferredScale + '}';
-    AppMethodBeat.o(194932);
+    AppMethodBeat.o(209417);
     return str;
   }
   
@@ -126,12 +126,12 @@ public class ImageDecodeConfig
   {
     static
     {
-      AppMethodBeat.i(194929);
+      AppMethodBeat.i(209414);
       NOT_SET = new ReferrerPolicy("NOT_SET", 0);
       NO_REFERRER = new ReferrerPolicy("NO_REFERRER", 1);
       ORIGIN = new ReferrerPolicy("ORIGIN", 2);
       $VALUES = new ReferrerPolicy[] { NOT_SET, NO_REFERRER, ORIGIN };
-      AppMethodBeat.o(194929);
+      AppMethodBeat.o(209414);
     }
     
     private ReferrerPolicy() {}
@@ -139,7 +139,7 @@ public class ImageDecodeConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.github.henryye.nativeiv.ImageDecodeConfig
  * JD-Core Version:    0.7.0.1
  */

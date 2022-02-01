@@ -1,23 +1,23 @@
 package com.tencent.mm.plugin.account.friend.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
 import com.tencent.mm.protocal.protobuf.lo;
 import com.tencent.mm.protocal.protobuf.lp;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class y
   extends n
   implements k
 {
   private f callback;
-  public b gPp;
+  public b gRX;
   
   public y(String paramString)
   {
@@ -25,11 +25,11 @@ public final class y
     b.a locala = new b.a();
     locala.funcId = getType();
     lo locallo = new lo();
-    locallo.dAD = paramString;
-    locala.hNM = locallo;
+    locallo.dBI = paramString;
+    locala.hQF = locallo;
     locala.uri = "/cgi-bin/micromsg-bin/bindoldwx";
-    locala.hNN = new lp();
-    this.gPp = locala.aDC();
+    locala.hQG = new lp();
+    this.gRX = locala.aDS();
     AppMethodBeat.o(184422);
   }
   
@@ -37,7 +37,7 @@ public final class y
   {
     AppMethodBeat.i(184423);
     this.callback = paramf;
-    int i = dispatch(parame, this.gPp, this);
+    int i = dispatch(parame, this.gRX, this);
     AppMethodBeat.o(184423);
     return i;
   }
@@ -50,7 +50,7 @@ public final class y
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(184424);
-    ad.i("MicroMsg.NetSceneBindOldWx", "errType %d, errCode %d, errMsg %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    ae.i("MicroMsg.NetSceneBindOldWx", "errType %d, errCode %d, errMsg %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(184424);
   }

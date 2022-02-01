@@ -2,30 +2,30 @@ package com.tencent.mm.plugin.appbrand.report;
 
 import android.util.SparseIntArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/report/AppBrandServiceTypeCache;", "", "()V", "TAG", "", "serviceTypeMap", "Landroid/util/SparseIntArray;", "addServiceTypeMap", "", "appId", "serviceType", "", "getServiceTypeMap", "default", "plugin-appbrand-integration_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/report/AppBrandServiceTypeCache;", "", "()V", "TAG", "", "serviceTypeMap", "Landroid/util/SparseIntArray;", "addServiceTypeMap", "", "appId", "serviceType", "", "getServiceTypeMap", "default", "plugin-appbrand-integration_release"})
 public final class i
 {
-  private static final SparseIntArray mrs;
-  public static final i mrt;
+  private static final SparseIntArray mwq;
+  public static final i mwr;
   
   static
   {
     AppMethodBeat.i(51006);
-    mrt = new i();
-    mrs = new SparseIntArray();
+    mwr = new i();
+    mwq = new SparseIntArray();
     AppMethodBeat.o(51006);
   }
   
-  public static final int Uj(String paramString)
+  public static final int UU(String paramString)
   {
     AppMethodBeat.i(51005);
     if (paramString != null)
     {
-      int i = mrs.get(paramString.hashCode(), -1);
-      ad.d("MicroMsg.AppBrandServiceTypeCache", "getServiceTypeMap appId: " + paramString + ", ret " + i);
+      int i = mwq.get(paramString.hashCode(), -1);
+      ae.d("MicroMsg.AppBrandServiceTypeCache", "getServiceTypeMap appId: " + paramString + ", ret " + i);
       AppMethodBeat.o(51005);
       return i;
     }
@@ -33,13 +33,13 @@ public final class i
     return -1;
   }
   
-  public static final void bT(String paramString, int paramInt)
+  public static final void bX(String paramString, int paramInt)
   {
     AppMethodBeat.i(51004);
     if (paramString != null)
     {
-      ad.d("MicroMsg.AppBrandServiceTypeCache", "addServiceTypeMap appId: " + paramString + ", serviceType: " + paramInt);
-      mrs.put(paramString.hashCode(), paramInt);
+      ae.d("MicroMsg.AppBrandServiceTypeCache", "addServiceTypeMap appId: " + paramString + ", serviceType: " + paramInt);
+      mwq.put(paramString.hashCode(), paramInt);
     }
     AppMethodBeat.o(51004);
   }

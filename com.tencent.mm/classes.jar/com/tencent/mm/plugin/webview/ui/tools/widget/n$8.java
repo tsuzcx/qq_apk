@@ -11,7 +11,7 @@ import com.tencent.mm.ui.widget.MMEditText;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/webview/ui/tools/widget/MPWriteCommentLayout$8", "Landroid/view/View$OnTouchListener;", "onTouch", "", "view", "Landroid/view/View;", "event", "Landroid/view/MotionEvent;", "plugin-webview_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/webview/ui/tools/widget/MPWriteCommentLayout$8", "Landroid/view/View$OnTouchListener;", "onTouch", "", "view", "Landroid/view/View;", "event", "Landroid/view/MotionEvent;", "plugin-webview_release"})
 public final class n$8
   implements View.OnTouchListener
 {
@@ -21,10 +21,10 @@ public final class n$8
     b localb = new b();
     localb.bd(paramView);
     localb.bd(paramMotionEvent);
-    a.b("com/tencent/mm/plugin/webview/ui/tools/widget/MPWriteCommentLayout$8", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahq());
+    a.b("com/tencent/mm/plugin/webview/ui/tools/widget/MPWriteCommentLayout$8", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahF());
     p.h(paramView, "view");
     p.h(paramMotionEvent, "event");
-    if ((paramView.getId() == 2131302503) && (n.b(this.Erx).getLineCount() >= 5))
+    if ((paramView.getId() == 2131302503) && (n.b(this.EJN).getLineCount() >= 5))
     {
       paramView.getParent().requestDisallowInterceptTouchEvent(true);
       if (paramMotionEvent.getAction() == 1) {

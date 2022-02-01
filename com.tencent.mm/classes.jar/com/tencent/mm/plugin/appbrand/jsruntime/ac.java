@@ -1,82 +1,70 @@
 package com.tencent.mm.plugin.appbrand.jsruntime;
 
-import android.os.Environment;
+import android.annotation.SuppressLint;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ipcinvoker.extension.XIPCInvoker;
-import com.tencent.mm.ipcinvoker.k;
-import com.tencent.mm.ipcinvoker.type.IPCString;
-import com.tencent.mm.ipcinvoker.type.IPCVoid;
-import com.tencent.mm.loader.j.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.vfs.i;
-import java.io.File;
+import com.tencent.mm.model.ao;
+import com.tencent.mm.plugin.appbrand.app.PluginAppBrand;
+import com.tencent.mm.vfs.o;
 
+@d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsruntime/V8CodeCacheDirectoryTransfer;", "Lcom/tencent/mm/model/IDataTransfer;", "()V", "getTag", "", "needTransfer", "", "sVer", "", "transfer", "", "transferIfNeed", "Companion", "plugin-appbrand-integration_release"})
 public final class ac
+  extends ao
 {
-  public static String bhw()
-  {
-    AppMethodBeat.i(47023);
-    String str = bqo();
-    i.aYg(str);
-    AppMethodBeat.o(47023);
-    return str;
-  }
-  
-  public static String bqo()
-  {
-    AppMethodBeat.i(47024);
-    String str = b.arM() + "appbrand/jscache";
-    AppMethodBeat.o(47024);
-    return str;
-  }
-  
   @Deprecated
-  public static String bqp()
+  public static final a lGt;
+  
+  static
   {
-    AppMethodBeat.i(47025);
-    try
-    {
-      IPCString localIPCString = (IPCString)XIPCInvoker.a("com.tencent.mm", IPCVoid.gyi, a.class);
-      if (localIPCString == null)
-      {
-        AppMethodBeat.o(47025);
-        return null;
-      }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        ad.e("MicroMsg.V8CodeCachePathRetriever", "retrieve ipc ex = %s", new Object[] { localException });
-        str = null;
-      }
-      String str = str.value;
-      AppMethodBeat.o(47025);
-      return str;
-    }
+    AppMethodBeat.i(50726);
+    lGt = new a((byte)0);
+    AppMethodBeat.o(50726);
   }
   
-  @Deprecated
-  public static String bqq()
+  public final String getTag()
   {
-    AppMethodBeat.i(47026);
-    String str2 = Environment.getExternalStorageDirectory().getAbsolutePath();
-    String str1 = str2;
-    if (!str2.endsWith("/")) {
-      str1 = str2 + "/";
-    }
-    str1 = str1 + "tencent/MicroMsg/wxajscache";
-    AppMethodBeat.o(47026);
-    return str1;
+    return "MicroMsg.AppBrand.V8CodeCacheDirectoryTransfer";
   }
   
-  static final class a
-    implements k<IPCVoid, IPCString>
-  {}
+  public final boolean os(int paramInt)
+  {
+    AppMethodBeat.i(50725);
+    if (!PluginAppBrand.getProcessSharedPrefs().getBoolean("MicroMsg.AppBrand.V8CodeCacheDirectoryTransfer_transfer_finished", false))
+    {
+      AppMethodBeat.o(50725);
+      return true;
+    }
+    AppMethodBeat.o(50725);
+    return false;
+  }
+  
+  @SuppressLint({"ApplySharedPref"})
+  public final void transfer(int paramInt)
+  {
+    AppMethodBeat.i(50724);
+    o.deleteDir(ad.bra());
+    String str1 = ad.bqZ();
+    if (str1 != null)
+    {
+      String str2 = ad.bqY();
+      if ((o.fB(str1)) && (!o.fB(str2)) && (!com.tencent.mm.plugin.appbrand.appstorage.l.cq(str1, str2)))
+      {
+        o.aZI(str2);
+        o.mH(str1, str2);
+      }
+      o.deleteDir(str1);
+    }
+    PluginAppBrand.getProcessSharedPrefs().edit().putBoolean("MicroMsg.AppBrand.V8CodeCacheDirectoryTransfer_transfer_finished", true).commit();
+    AppMethodBeat.o(50724);
+  }
+  
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsruntime/V8CodeCacheDirectoryTransfer$Companion;", "", "()V", "PREF_KEY_TRANSFER_FINISHED", "", "TAG", "plugin-appbrand-integration_release"})
+  static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsruntime.ac
  * JD-Core Version:    0.7.0.1
  */

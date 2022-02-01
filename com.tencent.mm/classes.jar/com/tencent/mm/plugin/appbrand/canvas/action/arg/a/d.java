@@ -7,28 +7,28 @@ import com.tencent.mm.sdk.c;
 
 public final class d
 {
-  private static d jTP;
-  public c<DrawCanvasArg> jTN;
-  public c<DrawActionWrapper> jTO;
+  private static d jXg;
+  public c<DrawCanvasArg> jXe;
+  public c<DrawActionWrapper> jXf;
   
   static
   {
     AppMethodBeat.i(145320);
-    jTP = new d();
+    jXg = new d();
     AppMethodBeat.o(145320);
   }
   
   private d()
   {
     AppMethodBeat.i(145319);
-    this.jTN = new c(5);
-    this.jTO = new c(500);
+    this.jXe = new c(5);
+    this.jXf = new c(500);
     AppMethodBeat.o(145319);
   }
   
-  public static d bds()
+  public static d bdX()
   {
-    return jTP;
+    return jXg;
   }
 }
 

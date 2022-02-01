@@ -19,57 +19,57 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aw.a.a.c.a;
+import com.tencent.mm.av.a.a.c.a;
 import com.tencent.mm.b.g;
-import com.tencent.mm.g.a.tm;
-import com.tencent.mm.g.a.tm.b;
 import com.tencent.mm.g.a.tn;
-import com.tencent.mm.model.ba;
+import com.tencent.mm.g.a.tn.b;
+import com.tencent.mm.g.a.to;
+import com.tencent.mm.model.bc;
 import com.tencent.mm.plugin.shake.c.a.e;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.base.i;
 
 public final class a
   extends i
 {
-  private static final String ozF;
-  private View iCR;
-  private ProgressBar jqx;
-  private View.OnClickListener jtG;
+  private static final String oGh;
+  private View iFK;
+  private ProgressBar jtq;
+  private View.OnClickListener jwB;
   private Resources mResources;
-  private ImageView oCJ;
-  private Button oCK;
+  private String oCY;
+  private ImageView oJl;
+  private Button oJm;
   private boolean ov;
-  private String oww;
-  private ImageView vmZ;
-  private View wTn;
-  private e yML;
-  private View yMP;
-  private TextView yMQ;
-  private TextView yMR;
-  private TextView yMS;
-  private TextView yMT;
-  private View yMU;
-  private View yMV;
-  private TextView yMW;
-  private TextView yMX;
-  private TextView yMY;
-  private View yMZ;
-  private ImageView yNa;
-  public boolean yNb;
-  private boolean yNc;
-  private int yNd;
-  private tm.b yNe;
-  private a yNf;
-  private b yNg;
-  private com.tencent.mm.sdk.b.c yNh;
-  private TextView ydZ;
+  private ImageView vze;
+  private View xje;
+  private TextView ytQ;
+  private e zcV;
+  private View zcZ;
+  private TextView zda;
+  private TextView zdb;
+  private TextView zdc;
+  private TextView zdd;
+  private View zde;
+  private View zdf;
+  private TextView zdg;
+  private TextView zdh;
+  private TextView zdi;
+  private View zdj;
+  private ImageView zdk;
+  public boolean zdl;
+  private boolean zdm;
+  private int zdn;
+  private tn.b zdo;
+  private a zdp;
+  private b zdq;
+  private com.tencent.mm.sdk.b.c zdr;
   
   static
   {
     AppMethodBeat.i(28239);
-    ozF = com.tencent.mm.loader.j.b.arU() + "card";
+    oGh = com.tencent.mm.loader.j.b.asj() + "card";
     AppMethodBeat.o(28239);
   }
   
@@ -77,27 +77,27 @@ public final class a
   {
     super(paramContext, 2131821724);
     AppMethodBeat.i(28223);
-    this.yNb = false;
-    this.yNc = false;
-    this.yNd = 0;
-    this.oww = "";
-    this.yNf = a.yNk;
-    this.yNh = new com.tencent.mm.sdk.b.c() {};
-    this.jtG = new View.OnClickListener()
+    this.zdl = false;
+    this.zdm = false;
+    this.zdn = 0;
+    this.oCY = "";
+    this.zdp = a.zdu;
+    this.zdr = new com.tencent.mm.sdk.b.c() {};
+    this.jwB = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(28218);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
         localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/shake/shakecard/ui/ShakeCardDialog$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/shake/shakecard/ui/ShakeCardDialog$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
         if (paramAnonymousView.getId() == 2131297757)
         {
           a.this.dismiss();
           if (a.a(a.this) != null) {
-            a.a(a.this).dur();
+            a.a(a.this).dxH();
           }
-          ad.i("MicroMsg.ShakeCardDialog", "close ShakeCardDialog");
+          ae.i("MicroMsg.ShakeCardDialog", "close ShakeCardDialog");
         }
         for (;;)
         {
@@ -105,22 +105,22 @@ public final class a
           AppMethodBeat.o(28218);
           return;
           if (paramAnonymousView.getId() == 2131297710) {
-            if (a.b(a.this) == a.a.yNk)
+            if (a.b(a.this) == a.a.zdu)
             {
-              a.a(a.this, a.a.yNl);
+              a.a(a.this, a.a.zdv);
               a.a(a.this, 0);
               a.c(a.this);
               a.d(a.this);
             }
-            else if (a.b(a.this) != a.a.yNl)
+            else if (a.b(a.this) != a.a.zdv)
             {
-              if (a.b(a.this) == a.a.yNn)
+              if (a.b(a.this) == a.a.zdx)
               {
                 a.d(a.this);
               }
-              else if (a.b(a.this) == a.a.yNm)
+              else if (a.b(a.this) == a.a.zdw)
               {
-                com.tencent.mm.sdk.b.a.IbL.c(a.e(a.this));
+                com.tencent.mm.sdk.b.a.IvT.c(a.e(a.this));
                 a.f(a.this);
               }
             }
@@ -128,32 +128,32 @@ public final class a
         }
       }
     };
-    ad.i("MicroMsg.ShakeCardDialog", "init shake card dialog");
+    ae.i("MicroMsg.ShakeCardDialog", "init shake card dialog");
     this.mResources = paramContext.getResources();
     setCanceledOnTouchOutside(true);
     getWindow().setSoftInputMode(2);
-    this.iCR = View.inflate(paramContext, 2131495411, null);
-    this.yMP = this.iCR.findViewById(2131304674);
-    this.yMQ = ((TextView)this.iCR.findViewById(2131297918));
-    this.yMR = ((TextView)this.iCR.findViewById(2131297902));
-    this.yMS = ((TextView)this.iCR.findViewById(2131297776));
-    this.vmZ = ((ImageView)this.iCR.findViewById(2131297757));
-    this.oCK = ((Button)this.iCR.findViewById(2131297710));
-    this.yMT = ((TextView)this.iCR.findViewById(2131297716));
-    this.jqx = ((ProgressBar)this.iCR.findViewById(2131297881));
-    this.vmZ.setOnClickListener(this.jtG);
-    this.oCK.setOnClickListener(this.jtG);
-    this.wTn = this.iCR.findViewById(2131297736);
-    this.yMU = this.iCR.findViewById(2131306991);
-    this.yMV = this.iCR.findViewById(2131297921);
-    this.oCJ = ((ImageView)this.iCR.findViewById(2131297855));
-    this.yMW = ((TextView)this.iCR.findViewById(2131297911));
-    this.yMX = ((TextView)this.iCR.findViewById(2131297743));
-    this.yMY = ((TextView)this.iCR.findViewById(2131297907));
-    this.yMZ = this.iCR.findViewById(2131297886);
-    this.yNa = ((ImageView)this.iCR.findViewById(2131304143));
-    this.ydZ = ((TextView)this.iCR.findViewById(2131304141));
-    this.yNd = com.tencent.mm.plugin.shake.c.c.a.dPf();
+    this.iFK = View.inflate(paramContext, 2131495411, null);
+    this.zcZ = this.iFK.findViewById(2131304674);
+    this.zda = ((TextView)this.iFK.findViewById(2131297918));
+    this.zdb = ((TextView)this.iFK.findViewById(2131297902));
+    this.zdc = ((TextView)this.iFK.findViewById(2131297776));
+    this.vze = ((ImageView)this.iFK.findViewById(2131297757));
+    this.oJm = ((Button)this.iFK.findViewById(2131297710));
+    this.zdd = ((TextView)this.iFK.findViewById(2131297716));
+    this.jtq = ((ProgressBar)this.iFK.findViewById(2131297881));
+    this.vze.setOnClickListener(this.jwB);
+    this.oJm.setOnClickListener(this.jwB);
+    this.xje = this.iFK.findViewById(2131297736);
+    this.zde = this.iFK.findViewById(2131306991);
+    this.zdf = this.iFK.findViewById(2131297921);
+    this.oJl = ((ImageView)this.iFK.findViewById(2131297855));
+    this.zdg = ((TextView)this.iFK.findViewById(2131297911));
+    this.zdh = ((TextView)this.iFK.findViewById(2131297743));
+    this.zdi = ((TextView)this.iFK.findViewById(2131297907));
+    this.zdj = this.iFK.findViewById(2131297886);
+    this.zdk = ((ImageView)this.iFK.findViewById(2131304143));
+    this.ytQ = ((TextView)this.iFK.findViewById(2131304141));
+    this.zdn = com.tencent.mm.plugin.shake.c.c.a.dSC();
     AppMethodBeat.o(28223);
   }
   
@@ -168,154 +168,154 @@ public final class a
     a locala = new a(paramContext);
     locala.setOnCancelListener(paramOnCancelListener);
     locala.setCancelable(true);
-    locala.yML = parame;
-    if (locala.yML == null) {
-      ad.e("MicroMsg.ShakeCardDialog", "updateView() mCardItem == null");
+    locala.zcV = parame;
+    if (locala.zcV == null) {
+      ae.e("MicroMsg.ShakeCardDialog", "updateView() mCardItem == null");
     }
     for (;;)
     {
-      locala.yNg = paramb;
+      locala.zdq = paramb;
       locala.show();
       h.a(paramContext, locala);
       AppMethodBeat.o(28231);
       return locala;
-      if (TextUtils.isEmpty(locala.yML.title)) {
-        locala.yMQ.setText(locala.yML.title);
+      if (TextUtils.isEmpty(locala.zcV.title)) {
+        locala.zda.setText(locala.zcV.title);
       }
-      ad.i("MicroMsg.ShakeCardDialog", "updateView() action_type is has card");
-      locala.yNf = a.yNk;
+      ae.i("MicroMsg.ShakeCardDialog", "updateView() action_type is has card");
+      locala.zdp = a.zdu;
       locala.updateLayout();
-      locala.dPb();
-      if (locala.yNd == 0)
+      locala.dSy();
+      if (locala.zdn == 0)
       {
-        locala.yMP.setBackgroundResource(2131233966);
-        locala.yMU.setBackgroundResource(2131233967);
-        locala.yMQ.setTextColor(locala.mResources.getColor(2131100711));
-        locala.yMR.setTextColor(locala.mResources.getColor(2131100694));
-        locala.yMS.setTextColor(locala.mResources.getColor(2131100694));
-        locala.ydZ.setTextColor(locala.getContext().getResources().getColor(2131100711));
-        locala.oCK.setBackgroundResource(2131231365);
-        locala.oCK.setTextColor(locala.getContext().getResources().getColor(2131101182));
-        locala.yMT.setTextColor(locala.getContext().getResources().getColor(2131100704));
+        locala.zcZ.setBackgroundResource(2131233966);
+        locala.zde.setBackgroundResource(2131233967);
+        locala.zda.setTextColor(locala.mResources.getColor(2131100711));
+        locala.zdb.setTextColor(locala.mResources.getColor(2131100694));
+        locala.zdc.setTextColor(locala.mResources.getColor(2131100694));
+        locala.ytQ.setTextColor(locala.getContext().getResources().getColor(2131100711));
+        locala.oJm.setBackgroundResource(2131231365);
+        locala.oJm.setTextColor(locala.getContext().getResources().getColor(2131101182));
+        locala.zdd.setTextColor(locala.getContext().getResources().getColor(2131100704));
       }
     }
   }
   
-  private void dPa()
+  private void dSx()
   {
     AppMethodBeat.i(28229);
-    if ((this.yNf == a.yNk) || (this.yNf == a.yNn))
+    if ((this.zdp == a.zdu) || (this.zdp == a.zdx))
     {
-      if (TextUtils.isEmpty(this.yML.yMv))
+      if (TextUtils.isEmpty(this.zcV.zcF))
       {
-        this.oCK.setText(2131756801);
+        this.oJm.setText(2131756801);
         AppMethodBeat.o(28229);
         return;
       }
-      this.oCK.setText(this.yML.yMv);
+      this.oJm.setText(this.zcV.zcF);
       AppMethodBeat.o(28229);
       return;
     }
-    if (this.yNf == a.yNl)
+    if (this.zdp == a.zdv)
     {
-      this.oCK.setText("");
+      this.oJm.setText("");
       AppMethodBeat.o(28229);
       return;
     }
-    if (this.yNf == a.yNm) {
-      this.oCK.setText(2131763553);
+    if (this.zdp == a.zdw) {
+      this.oJm.setText(2131763553);
     }
     AppMethodBeat.o(28229);
   }
   
-  private void dPb()
+  private void dSy()
   {
     AppMethodBeat.i(28230);
     int i = getContext().getResources().getDimensionPixelOffset(2131166792);
     Object localObject1 = new ShapeDrawable(new RoundRectShape(new float[] { i, i, i, i, 0.0F, 0.0F, 0.0F, 0.0F }, null, null));
-    ((ShapeDrawable)localObject1).getPaint().setColor(com.tencent.mm.plugin.shake.c.c.a.Zh(this.yML.hAD));
-    this.yMV.setBackgroundDrawable((Drawable)localObject1);
-    dPa();
-    if (!TextUtils.isEmpty(this.yML.yMt)) {
-      this.yMQ.setText(this.yML.yMt);
+    ((ShapeDrawable)localObject1).getPaint().setColor(com.tencent.mm.plugin.shake.c.c.a.ZY(this.zcV.hDr));
+    this.zdf.setBackgroundDrawable((Drawable)localObject1);
+    dSx();
+    if (!TextUtils.isEmpty(this.zcV.zcD)) {
+      this.zda.setText(this.zcV.zcD);
     }
-    if (!TextUtils.isEmpty(this.yML.yMx))
+    if (!TextUtils.isEmpty(this.zcV.zcH))
     {
-      this.yMR.setText(this.yML.yMx);
-      this.yMR.setVisibility(0);
+      this.zdb.setText(this.zcV.zcH);
+      this.zdb.setVisibility(0);
     }
-    if (!TextUtils.isEmpty(this.yML.yMu))
+    if (!TextUtils.isEmpty(this.zcV.zcE))
     {
-      this.yMS.setText(this.yML.yMu);
-      this.yMS.setVisibility(0);
+      this.zdc.setText(this.zcV.zcE);
+      this.zdc.setVisibility(0);
     }
     String str;
-    if (!TextUtils.isEmpty(this.yML.hzB))
+    if (!TextUtils.isEmpty(this.zcV.hCp))
     {
       i = getContext().getResources().getDimensionPixelSize(2131166791);
-      localObject1 = this.oCJ;
-      str = this.yML.hzB;
+      localObject1 = this.oJl;
+      str = this.zcV.hCp;
       if ((localObject1 != null) && (!TextUtils.isEmpty(str))) {
         break label380;
       }
     }
     for (;;)
     {
-      if (!TextUtils.isEmpty(this.yML.title)) {
-        this.yMW.setText(this.yML.title);
+      if (!TextUtils.isEmpty(this.zcV.title)) {
+        this.zdg.setText(this.zcV.title);
       }
-      if (!TextUtils.isEmpty(this.yML.oze)) {
-        this.yMX.setText(this.yML.oze);
+      if (!TextUtils.isEmpty(this.zcV.oFG)) {
+        this.zdh.setText(this.zcV.oFG);
       }
-      if (this.yML.oxQ > 0) {
-        this.yMY.setText(getContext().getString(2131757024, new Object[] { com.tencent.mm.plugin.shake.c.c.a.sm(this.yML.oxQ) }));
+      if (this.zcV.oEs > 0) {
+        this.zdi.setText(getContext().getString(2131757024, new Object[] { com.tencent.mm.plugin.shake.c.c.a.sz(this.zcV.oEs) }));
       }
-      if (this.yNf != a.yNn) {
+      if (this.zdp != a.zdx) {
         break;
       }
-      this.yMT.setVisibility(0);
+      this.zdd.setVisibility(0);
       AppMethodBeat.o(28230);
       return;
       label380:
       if (!TextUtils.isEmpty(str))
       {
         Object localObject2 = new c.a();
-        ((c.a)localObject2).prefixPath = com.tencent.mm.loader.j.b.arU();
-        com.tencent.mm.aw.q.aIK();
-        ((c.a)localObject2).idJ = null;
-        ((c.a)localObject2).hdP = String.format("%s/%s", new Object[] { ozF, g.getMessageDigest(str.getBytes()) });
-        ((c.a)localObject2).idr = true;
-        ((c.a)localObject2).hfi = true;
-        ((c.a)localObject2).idp = true;
-        ((c.a)localObject2).hdS = i;
-        ((c.a)localObject2).hdR = i;
-        ((c.a)localObject2).idD = 2131691160;
-        localObject2 = ((c.a)localObject2).aJc();
-        com.tencent.mm.aw.q.aIJ().a(str, (ImageView)localObject1, (com.tencent.mm.aw.a.a.c)localObject2);
+        ((c.a)localObject2).prefixPath = com.tencent.mm.loader.j.b.asj();
+        com.tencent.mm.av.q.aJc();
+        ((c.a)localObject2).igB = null;
+        ((c.a)localObject2).hgD = String.format("%s/%s", new Object[] { oGh, g.getMessageDigest(str.getBytes()) });
+        ((c.a)localObject2).igk = true;
+        ((c.a)localObject2).hhW = true;
+        ((c.a)localObject2).igi = true;
+        ((c.a)localObject2).hgG = i;
+        ((c.a)localObject2).hgF = i;
+        ((c.a)localObject2).igv = 2131691160;
+        localObject2 = ((c.a)localObject2).aJu();
+        com.tencent.mm.av.q.aJb().a(str, (ImageView)localObject1, (com.tencent.mm.av.a.a.c)localObject2);
       }
       else
       {
         ((ImageView)localObject1).setImageResource(2131691160);
       }
     }
-    this.yMT.setVisibility(8);
+    this.zdd.setVisibility(8);
     AppMethodBeat.o(28230);
   }
   
   private void updateLayout()
   {
     AppMethodBeat.i(28228);
-    if (this.yNf == a.yNm)
+    if (this.zdp == a.zdw)
     {
-      this.wTn.setVisibility(8);
-      this.yMZ.setVisibility(0);
+      this.xje.setVisibility(8);
+      this.zdj.setVisibility(0);
       AppMethodBeat.o(28228);
       return;
     }
-    if ((this.yNf == a.yNk) || (this.yNf == a.yNl) || (this.yNf == a.yNn))
+    if ((this.zdp == a.zdu) || (this.zdp == a.zdv) || (this.zdp == a.zdx))
     {
-      this.wTn.setVisibility(0);
-      this.yMZ.setVisibility(8);
+      this.xje.setVisibility(0);
+      this.zdj.setVisibility(8);
     }
     AppMethodBeat.o(28228);
   }
@@ -325,24 +325,24 @@ public final class a
     AppMethodBeat.i(28227);
     try
     {
-      if (this.yNg != null) {
-        this.yNg.dur();
+      if (this.zdq != null) {
+        this.zdq.dxH();
       }
-      if ((this.yNf != a.yNm) && (!this.yNc))
+      if ((this.zdp != a.zdw) && (!this.zdm))
       {
-        this.yNc = true;
-        ad.i("MicroMsg.ShakeCardDialog", "ShakeCardDialog card is not cancel accepte");
-        ba.aiU().a(new com.tencent.mm.plugin.shake.c.a.a(this.yML.oxM, this.yML.dHY), 0);
+        this.zdm = true;
+        ae.i("MicroMsg.ShakeCardDialog", "ShakeCardDialog card is not cancel accepte");
+        bc.ajj().a(new com.tencent.mm.plugin.shake.c.a.a(this.zcV.oEo, this.zcV.dJc), 0);
       }
-      com.tencent.mm.sdk.b.a.IbL.d(this.yNh);
-      ad.i("MicroMsg.ShakeCardDialog", "dismiss ShakeCardDialog");
+      com.tencent.mm.sdk.b.a.IvT.d(this.zdr);
+      ae.i("MicroMsg.ShakeCardDialog", "dismiss ShakeCardDialog");
       super.dismiss();
       AppMethodBeat.o(28227);
       return;
     }
     catch (Exception localException)
     {
-      ad.e("MicroMsg.ShakeCardDialog", "dismiss exception, e = " + localException.getMessage());
+      ae.e("MicroMsg.ShakeCardDialog", "dismiss exception, e = " + localException.getMessage());
       AppMethodBeat.o(28227);
     }
   }
@@ -351,7 +351,7 @@ public final class a
   {
     AppMethodBeat.i(28225);
     super.onCreate(paramBundle);
-    setContentView(this.iCR);
+    setContentView(this.iFK);
     AppMethodBeat.o(28225);
   }
   
@@ -360,10 +360,10 @@ public final class a
     AppMethodBeat.i(28224);
     if (paramInt == 4)
     {
-      ad.i("MicroMsg.ShakeCardDialog", "back key in shake card dialog");
+      ae.i("MicroMsg.ShakeCardDialog", "back key in shake card dialog");
       dismiss();
-      if (this.yNg != null) {
-        this.yNg.dur();
+      if (this.zdq != null) {
+        this.zdq.dxH();
       }
     }
     boolean bool = super.onKeyUp(paramInt, paramKeyEvent);
@@ -385,11 +385,11 @@ public final class a
     static
     {
       AppMethodBeat.i(28222);
-      yNk = new a("PRE_ACCEPT", 0);
-      yNl = new a("ACCEPTING", 1);
-      yNm = new a("ACCEPTED_SUCCES", 2);
-      yNn = new a("ACCEPTED_FAIL", 3);
-      yNo = new a[] { yNk, yNl, yNm, yNn };
+      zdu = new a("PRE_ACCEPT", 0);
+      zdv = new a("ACCEPTING", 1);
+      zdw = new a("ACCEPTED_SUCCES", 2);
+      zdx = new a("ACCEPTED_FAIL", 3);
+      zdy = new a[] { zdu, zdv, zdw, zdx };
       AppMethodBeat.o(28222);
     }
     
@@ -398,12 +398,12 @@ public final class a
   
   public static abstract interface b
   {
-    public abstract void dur();
+    public abstract void dxH();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.shake.c.b.a
  * JD-Core Version:    0.7.0.1
  */

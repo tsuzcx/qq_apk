@@ -10,7 +10,7 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class NormsgDataProvider
   extends ContentProvider
@@ -24,7 +24,7 @@ public final class NormsgDataProvider
     AppMethodBeat.o(148937);
   }
   
-  public static String G(Context paramContext, String paramString)
+  public static String H(Context paramContext, String paramString)
   {
     AppMethodBeat.i(148934);
     paramContext = paramContext.getContentResolver().call(CONTENT_URI, "m0", paramString, null);
@@ -38,7 +38,7 @@ public final class NormsgDataProvider
     return "";
   }
   
-  private String atl(String paramString)
+  private String auy(String paramString)
   {
     AppMethodBeat.i(148935);
     try
@@ -55,32 +55,32 @@ public final class NormsgDataProvider
     return "";
   }
   
-  public static boolean cQ(Context paramContext)
+  public static boolean cS(Context paramContext)
   {
-    AppMethodBeat.i(219052);
+    AppMethodBeat.i(189700);
     paramContext = paramContext.getContentResolver().call(CONTENT_URI, "m1", null, null);
     if (paramContext != null)
     {
       boolean bool = paramContext.getBoolean("result", false);
-      AppMethodBeat.o(219052);
+      AppMethodBeat.o(189700);
       return bool;
     }
-    AppMethodBeat.o(219052);
+    AppMethodBeat.o(189700);
     return false;
   }
   
-  private static boolean duG()
+  private static boolean dxW()
   {
-    AppMethodBeat.i(219053);
+    AppMethodBeat.i(189701);
     try
     {
-      boolean bool = com.tencent.mm.plugin.normsg.a.b.wtJ.duS();
-      AppMethodBeat.o(219053);
+      boolean bool = com.tencent.mm.plugin.normsg.a.b.wJt.dyi();
+      AppMethodBeat.o(189701);
       return bool;
     }
     catch (Throwable localThrowable)
     {
-      AppMethodBeat.o(219053);
+      AppMethodBeat.o(189701);
     }
     return false;
   }
@@ -88,22 +88,22 @@ public final class NormsgDataProvider
   public final Bundle call(String paramString1, String paramString2, Bundle paramBundle)
   {
     AppMethodBeat.i(148936);
-    ad.i("MicroMsg.NormsgDP", "invoke method: %s, with arg: %s, extras: %s", new Object[] { paramString1, paramString2, paramBundle });
+    ae.i("MicroMsg.NormsgDP", "invoke method: %s, with arg: %s, extras: %s", new Object[] { paramString1, paramString2, paramBundle });
     if ("m0".equals(paramString1))
     {
       paramString1 = new Bundle();
-      paramString1.putString("result", atl(paramString2));
+      paramString1.putString("result", auy(paramString2));
       AppMethodBeat.o(148936);
       return paramString1;
     }
     if ("m1".equals(paramString1))
     {
       paramString1 = new Bundle();
-      paramString1.putBoolean("result", duG());
+      paramString1.putBoolean("result", dxW());
       AppMethodBeat.o(148936);
       return paramString1;
     }
-    ad.w("MicroMsg.NormsgDP", "unknown method: %s", new Object[] { paramString1 });
+    ae.w("MicroMsg.NormsgDP", "unknown method: %s", new Object[] { paramString1 });
     AppMethodBeat.o(148936);
     return null;
   }
@@ -125,9 +125,9 @@ public final class NormsgDataProvider
   
   public final boolean onCreate()
   {
-    AppMethodBeat.i(219051);
-    com.tencent.mm.plugin.normsg.a.b.a(b.wty);
-    AppMethodBeat.o(219051);
+    AppMethodBeat.i(189699);
+    com.tencent.mm.plugin.normsg.a.b.a(b.wJi);
+    AppMethodBeat.o(189699);
     return true;
   }
   

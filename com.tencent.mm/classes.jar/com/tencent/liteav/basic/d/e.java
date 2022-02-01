@@ -50,7 +50,7 @@ public class e
   
   private void a(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(187317);
+    AppMethodBeat.i(221446);
     final int i3;
     final int i1;
     label56:
@@ -90,7 +90,7 @@ public class e
         {
           public void run()
           {
-            AppMethodBeat.i(187294);
+            AppMethodBeat.i(221423);
             localByteBuffer.position(0);
             localBitmap.copyPixelsFromBuffer(localByteBuffer);
             Object localObject = new Matrix();
@@ -98,13 +98,13 @@ public class e
             localObject = Bitmap.createBitmap(localBitmap, 0, 0, i1, i3, (Matrix)localObject, false);
             localo.onTakePhotoComplete((Bitmap)localObject);
             localBitmap.recycle();
-            AppMethodBeat.o(187294);
+            AppMethodBeat.o(221423);
           }
         }).start();
       }
       this.m = null;
       this.l = false;
-      AppMethodBeat.o(187317);
+      AppMethodBeat.o(221446);
       return;
       label183:
       i3 = 0;
@@ -143,16 +143,16 @@ public class e
   
   private void b(int paramInt1, boolean paramBoolean1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, boolean paramBoolean2, boolean paramBoolean3)
   {
-    AppMethodBeat.i(187316);
+    AppMethodBeat.i(221445);
     if ((paramInt5 == 0) || (paramInt6 == 0) || (this.c == null))
     {
-      AppMethodBeat.o(187316);
+      AppMethodBeat.o(221445);
       return;
     }
     if (this.n)
     {
       this.n = false;
-      AppMethodBeat.o(187316);
+      AppMethodBeat.o(221445);
       return;
     }
     if (paramBoolean2)
@@ -265,7 +265,7 @@ public class e
         if (this.b != null) {
           this.b.c();
         }
-        AppMethodBeat.o(187316);
+        AppMethodBeat.o(221445);
         return;
         paramInt3 = paramInt5;
         break;
@@ -453,7 +453,7 @@ public class e
   
   private void c(int paramInt)
   {
-    AppMethodBeat.i(187315);
+    AppMethodBeat.i(221444);
     try
     {
       if (this.b != null) {
@@ -463,7 +463,7 @@ public class e
     }
     finally
     {
-      AppMethodBeat.o(187315);
+      AppMethodBeat.o(221444);
     }
   }
   
@@ -502,11 +502,11 @@ public class e
     {
       public void run()
       {
-        AppMethodBeat.i(187364);
+        AppMethodBeat.i(221493);
         e.a(e.this, paramInt);
         GLES20.glClearColor(0.0F, 0.0F, 0.0F, 1.0F);
         GLES20.glClear(16640);
-        AppMethodBeat.o(187364);
+        AppMethodBeat.o(221493);
       }
     });
     AppMethodBeat.o(14606);
@@ -514,7 +514,7 @@ public class e
   
   public void a(final int paramInt1, final boolean paramBoolean1, final int paramInt2, final int paramInt3, final int paramInt4, final int paramInt5, final int paramInt6, final boolean paramBoolean2, final boolean paramBoolean3)
   {
-    AppMethodBeat.i(187313);
+    AppMethodBeat.i(221442);
     GLES20.glFinish();
     try
     {
@@ -523,17 +523,17 @@ public class e
         {
           public void run()
           {
-            AppMethodBeat.i(187272);
+            AppMethodBeat.i(221401);
             try
             {
               e.a(e.this, paramInt1, paramBoolean1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramBoolean2, paramBoolean3);
-              AppMethodBeat.o(187272);
+              AppMethodBeat.o(221401);
               return;
             }
             catch (Exception localException)
             {
               TXCLog.e("TXGLSurfaceRenderThread", "surface-render: render texture error occurred!");
-              AppMethodBeat.o(187272);
+              AppMethodBeat.o(221401);
             }
           }
         });
@@ -542,7 +542,7 @@ public class e
     }
     finally
     {
-      AppMethodBeat.o(187313);
+      AppMethodBeat.o(221442);
     }
   }
   
@@ -554,10 +554,10 @@ public class e
   
   public void a(Object paramObject, Surface paramSurface)
   {
-    AppMethodBeat.i(187310);
+    AppMethodBeat.i(221439);
     TXCLog.i("TXGLSurfaceRenderThread", "surface-render: surface render start " + paramSurface + ", " + this);
     b(paramObject, paramSurface);
-    AppMethodBeat.o(187310);
+    AppMethodBeat.o(221439);
   }
   
   public void a(Runnable paramRunnable)
@@ -621,19 +621,19 @@ public class e
   
   public void b(final int paramInt)
   {
-    AppMethodBeat.i(187312);
+    AppMethodBeat.i(221441);
     a(new Runnable()
     {
       public void run()
       {
-        AppMethodBeat.i(187288);
+        AppMethodBeat.i(221417);
         e.b(e.this, paramInt);
         GLES20.glClearColor(0.0F, 0.0F, 0.0F, 1.0F);
         GLES20.glClear(16640);
-        AppMethodBeat.o(187288);
+        AppMethodBeat.o(221417);
       }
     });
-    AppMethodBeat.o(187312);
+    AppMethodBeat.o(221441);
   }
   
   public void c()

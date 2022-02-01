@@ -4,31 +4,31 @@ import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.modelgeo.b.a;
 import com.tencent.mm.modelgeo.d;
-import com.tencent.mm.plugin.appbrand.utils.e;
+import com.tencent.mm.plugin.appbrand.utils.f;
 import com.tencent.mm.pointers.PBool;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.av;
-import com.tencent.mm.sdk.platformtools.av.a;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aw;
+import com.tencent.mm.sdk.platformtools.aw.a;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.concurrent.TimeUnit;
 
 public final class c
 {
-  private static float jQx = 0.0F;
-  private static float jQy = 0.0F;
-  private static volatile long jQz = 0L;
-  private boolean jQA = false;
-  private a jQB;
+  private static float jTP = 0.0F;
+  private static float jTQ = 0.0F;
+  private static volatile long jTR = 0L;
+  private boolean jTS = false;
+  private a jTT;
   
-  public static boolean bcG()
+  public static boolean bdl()
   {
     AppMethodBeat.i(44671);
-    if ((jQy == -85.0F) || (jQx == -1000.0F))
+    if ((jTQ == -85.0F) || (jTP == -1000.0F))
     {
       AppMethodBeat.o(44671);
       return false;
     }
-    if (bt.flT() - jQz < 300000L) {}
+    if (bu.fpO() - jTR < 300000L) {}
     for (int i = 1; i == 0; i = 0)
     {
       AppMethodBeat.o(44671);
@@ -38,41 +38,41 @@ public final class c
     return true;
   }
   
-  public static float bcH()
+  public static float bdm()
   {
-    return jQx;
+    return jTP;
   }
   
-  public static float bcI()
+  public static float bdn()
   {
-    return jQy;
+    return jTQ;
   }
   
   public final void a(a parama)
   {
-    this.jQB = parama;
+    this.jTT = parama;
   }
   
-  public final boolean bcF()
+  public final boolean bdk()
   {
-    return this.jQB != null;
+    return this.jTT != null;
   }
   
-  public final void bcJ()
+  public final void bdo()
   {
     AppMethodBeat.i(44672);
-    if (this.jQA)
+    if (this.jTS)
     {
       AppMethodBeat.o(44672);
       return;
     }
-    ad.i("MicroMsg.Recommend.AppBrandRecommendLocationGet", "startLocation");
-    this.jQA = true;
+    ae.i("MicroMsg.Recommend.AppBrandRecommendLocationGet", "startLocation");
+    this.jTS = true;
     Object localObject = new PBool();
     final PBool localPBool = new PBool();
     ((PBool)localObject).value = false;
     localPBool.value = false;
-    av localav = new av(Looper.getMainLooper(), new av.a()
+    aw localaw = new aw(Looper.getMainLooper(), new aw.a()
     {
       public final boolean onTimerExpired()
       {
@@ -82,30 +82,30 @@ public final class c
           AppMethodBeat.o(44669);
           return false;
         }
-        this.jQD.value = true;
+        this.jTV.value = true;
         c.a(c.this);
-        ad.i("MicroMsg.Recommend.AppBrandRecommendLocationGet", "onTimerExpired");
+        ae.i("MicroMsg.Recommend.AppBrandRecommendLocationGet", "onTimerExpired");
         if (c.b(c.this) != null) {
-          c.b(c.this).F(c.bcK(), c.bcL());
+          c.b(c.this).F(c.bdp(), c.bdq());
         }
         AppMethodBeat.o(44669);
         return false;
       }
     }, false);
     long l = TimeUnit.SECONDS.toMillis(20L);
-    localav.az(l, l);
-    localObject = (b.a)e.cH(new b.a()
+    localaw.ay(l, l);
+    localObject = (b.a)f.cI(new b.a()
     {
-      private int jQF = 0;
+      private int jTX = 0;
       
       public final boolean a(boolean paramAnonymousBoolean, float paramAnonymousFloat1, float paramAnonymousFloat2, int paramAnonymousInt, double paramAnonymousDouble1, double paramAnonymousDouble2)
       {
         AppMethodBeat.i(44670);
-        e.bj(this);
-        d.aHQ().c(this);
-        paramAnonymousInt = this.jQF + 1;
-        this.jQF = paramAnonymousInt;
-        if ((paramAnonymousInt > 1) || (this.jQD.value))
+        f.bj(this);
+        d.aIh().c(this);
+        paramAnonymousInt = this.jTX + 1;
+        this.jTX = paramAnonymousInt;
+        if ((paramAnonymousInt > 1) || (this.jTV.value))
         {
           AppMethodBeat.o(44670);
           return false;
@@ -114,17 +114,17 @@ public final class c
         c.a(c.this);
         if (!paramAnonymousBoolean)
         {
-          ad.i("MicroMsg.Recommend.AppBrandRecommendLocationGet", "onGetLocation, fail");
+          ae.i("MicroMsg.Recommend.AppBrandRecommendLocationGet", "onGetLocation, fail");
           if (c.b(c.this) != null) {
             c.b(c.this).F(paramAnonymousFloat1, paramAnonymousFloat2);
           }
           AppMethodBeat.o(44670);
           return false;
         }
-        ad.i("MicroMsg.Recommend.AppBrandRecommendLocationGet", "onGetLocation, success");
+        ae.i("MicroMsg.Recommend.AppBrandRecommendLocationGet", "onGetLocation, success");
         c.au(paramAnonymousFloat2);
         c.av(paramAnonymousFloat1);
-        c.sG(bt.flT());
+        c.sT(bu.fpO());
         if (c.b(c.this) != null) {
           c.b(c.this).F(paramAnonymousFloat1, paramAnonymousFloat2);
         }
@@ -132,7 +132,7 @@ public final class c
         return true;
       }
     });
-    d.aHQ().b((b.a)localObject, false);
+    d.aIh().b((b.a)localObject, false);
     AppMethodBeat.o(44672);
   }
   
@@ -143,7 +143,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appusage.a.c
  * JD-Core Version:    0.7.0.1
  */

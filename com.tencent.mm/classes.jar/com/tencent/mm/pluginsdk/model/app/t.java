@@ -2,22 +2,22 @@ package com.tencent.mm.pluginsdk.model.app;
 
 import android.os.Message;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bu;
 
 final class t
   implements Runnable
 {
   private String appId = null;
-  private ap handler = null;
-  private int ilN = 0;
+  private aq handler = null;
+  private int ioG = 0;
   private String url = null;
   
-  public t(ap paramap, String paramString1, int paramInt, String paramString2)
+  public t(aq paramaq, String paramString1, int paramInt, String paramString2)
   {
-    this.handler = paramap;
+    this.handler = paramaq;
     this.appId = paramString1;
-    this.ilN = paramInt;
+    this.ioG = paramInt;
     this.url = paramString2;
   }
   
@@ -29,8 +29,8 @@ final class t
       AppMethodBeat.o(151793);
       return;
     }
-    Object localObject = bt.aRi(this.url);
-    localObject = new x(this.appId, this.ilN, (byte[])localObject);
+    Object localObject = bu.aSF(this.url);
+    localObject = new x(this.appId, this.ioG, (byte[])localObject);
     Message localMessage = Message.obtain();
     localMessage.obj = localObject;
     this.handler.sendMessage(localMessage);

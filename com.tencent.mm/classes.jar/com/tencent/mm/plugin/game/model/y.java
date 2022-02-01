@@ -1,9 +1,9 @@
 package com.tencent.mm.plugin.game.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bx.a;
-import com.tencent.mm.plugin.game.d.br;
-import com.tencent.mm.plugin.game.d.f;
+import com.tencent.mm.bw.a;
+import com.tencent.mm.plugin.game.d.by;
+import com.tencent.mm.plugin.game.d.g;
 import com.tencent.mm.plugin.game.f.d;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -12,33 +12,33 @@ public final class y
   extends x
 {
   private int mType;
-  public br udt;
-  public LinkedList<c> udu;
-  private int udv;
+  public by uoB;
+  public LinkedList<c> uoC;
+  private int uoD;
   
   public y(a parama, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(41524);
     this.mType = 0;
-    this.udv = 0;
+    this.uoD = 0;
     if (parama == null)
     {
-      this.udt = new br();
+      this.uoB = new by();
       AppMethodBeat.o(41524);
       return;
     }
-    this.udt = ((br)parama);
+    this.uoB = ((by)parama);
     this.mType = paramInt1;
-    this.udv = paramInt2;
+    this.uoD = paramInt2;
     parama = new LinkedList();
-    if (this.udt.uiF != null)
+    if (this.uoB.uud != null)
     {
-      paramInt1 = this.udv;
-      Iterator localIterator = this.udt.uiF.iterator();
+      paramInt1 = this.uoD;
+      Iterator localIterator = this.uoB.uud.iterator();
       paramInt1 += 1;
       while (localIterator.hasNext())
       {
-        c localc = a((f)localIterator.next());
+        c localc = a((g)localIterator.next());
         if (localc != null)
         {
           switch (this.mType)
@@ -49,13 +49,13 @@ public final class y
             parama.add(localc);
             break;
             localc.scene = 16;
-            localc.dFG = 1601;
+            localc.dGL = 1601;
             paramInt2 = paramInt1 + 1;
             localc.position = paramInt1;
             paramInt1 = paramInt2;
             continue;
             localc.scene = 15;
-            localc.dFG = 1501;
+            localc.dGL = 1501;
             paramInt2 = paramInt1 + 1;
             localc.position = paramInt1;
             paramInt1 = paramInt2;
@@ -63,8 +63,8 @@ public final class y
         }
       }
     }
-    this.udu = parama;
-    d.aE(this.udu);
+    this.uoC = parama;
+    d.aE(this.uoC);
     AppMethodBeat.o(41524);
   }
 }

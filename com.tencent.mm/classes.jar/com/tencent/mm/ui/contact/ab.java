@@ -6,13 +6,13 @@ import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.g.c.ba;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.w;
+import com.tencent.mm.model.x;
 import com.tencent.mm.plugin.messenger.foundation.a.l;
 import com.tencent.mm.sdk.e.n.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.storage.at;
-import com.tencent.mm.storage.bp;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.storage.au;
 import com.tencent.mm.storage.bq;
+import com.tencent.mm.storage.br;
 import com.tencent.mm.ui.contact.a.a;
 import com.tencent.mm.ui.contact.a.b;
 import com.tencent.mm.ui.contact.a.f;
@@ -23,12 +23,12 @@ public final class ab
   extends q
   implements n.b
 {
-  private List<String> KoX;
-  private int KoY;
-  private boolean KoZ;
-  private int Kpa;
-  private Cursor iVJ;
-  private int ydU;
+  private List<String> KLr;
+  private int KLs;
+  private boolean KLt;
+  private int KLu;
+  private Cursor iYC;
+  private int ytL;
   
   public ab(MMBaseSelectContactUI paramMMBaseSelectContactUI, List<String> paramList)
   {
@@ -39,49 +39,49 @@ public final class ab
   {
     super(paramMMBaseSelectContactUI, paramList, paramBoolean1, paramBoolean2);
     AppMethodBeat.i(102921);
-    this.Kpa = 0;
-    ad.i("MicroMsg.RecentConversationAdapter", "create!");
-    this.KoZ = paramBoolean3;
-    this.Kpa = paramInt;
-    Zh();
-    ((l)g.ab(l.class)).azv().a(this);
+    this.KLu = 0;
+    ae.i("MicroMsg.RecentConversationAdapter", "create!");
+    this.KLt = paramBoolean3;
+    this.KLu = paramInt;
+    Zq();
+    ((l)g.ab(l.class)).azL().a(this);
     AppMethodBeat.o(102921);
   }
   
-  public final void Zh()
+  public final void Zq()
   {
     int j = 0;
     AppMethodBeat.i(102922);
-    ad.i("MicroMsg.RecentConversationAdapter", "resetData");
-    if (this.iVJ != null)
+    ae.i("MicroMsg.RecentConversationAdapter", "resetData");
+    if (this.iYC != null)
     {
-      this.iVJ.close();
-      this.iVJ = null;
+      this.iYC.close();
+      this.iYC = null;
     }
-    if (u.hasAttr(this.Kpa, 4))
+    if (u.hasAttr(this.KLu, 4))
     {
-      this.iVJ = ((l)g.ab(l.class)).azv().a(w.hFi, this.fSL, this.Knh, "");
-      if (!this.KoZ) {
+      this.iYC = ((l)g.ab(l.class)).azL().a(x.hIa, this.fUR, this.KJB, "");
+      if (!this.KLt) {
         break label220;
       }
     }
     label220:
     for (int i = 2;; i = 0)
     {
-      if (this.KoX != null) {
-        j = this.KoX.size();
+      if (this.KLr != null) {
+        j = this.KLr.size();
       }
-      this.KoY = j;
-      this.ydU = (i + this.KoY);
+      this.KLs = j;
+      this.ytL = (i + this.KLs);
       clearCache();
       AppMethodBeat.o(102922);
       return;
-      if (u.hasAttr(this.Kpa, 16))
+      if (u.hasAttr(this.KLu, 16))
       {
-        this.iVJ = ((l)g.ab(l.class)).azv().a(w.hFk, this.fSL, this.Knh, "");
+        this.iYC = ((l)g.ab(l.class)).azL().a(x.hIc, this.fUR, this.KJB, "");
         break;
       }
-      this.iVJ = ((l)g.ab(l.class)).azv().a(w.hFd, this.fSL, this.Knh, "");
+      this.iYC = ((l)g.ab(l.class)).azL().a(x.hHV, this.fUR, this.KJB, "");
       break;
     }
   }
@@ -89,7 +89,7 @@ public final class ab
   public final void a(int paramInt, com.tencent.mm.sdk.e.n paramn, Object paramObject)
   {
     AppMethodBeat.i(102926);
-    Zh();
+    Zq();
     notifyDataSetChanged();
     AppMethodBeat.o(102926);
   }
@@ -98,93 +98,93 @@ public final class ab
   {
     AppMethodBeat.i(102925);
     super.finish();
-    ad.i("MicroMsg.RecentConversationAdapter", "finish!");
-    if (this.iVJ != null)
+    ae.i("MicroMsg.RecentConversationAdapter", "finish!");
+    if (this.iYC != null)
     {
-      this.iVJ.close();
-      this.iVJ = null;
+      this.iYC.close();
+      this.iYC = null;
     }
-    ((l)g.ab(l.class)).azv().b(this);
+    ((l)g.ab(l.class)).azL().b(this);
     AppMethodBeat.o(102925);
   }
   
   public final int getCount()
   {
     AppMethodBeat.i(102923);
-    int j = this.ydU + 1;
+    int j = this.ytL + 1;
     int i = j;
-    if (this.iVJ != null) {
-      i = j + this.iVJ.getCount();
+    if (this.iYC != null) {
+      i = j + this.iYC.getCount();
     }
     AppMethodBeat.o(102923);
     return i;
   }
   
-  protected final a rh(int paramInt)
+  protected final a rk(int paramInt)
   {
-    at localat = null;
+    au localau = null;
     AppMethodBeat.i(102924);
     Object localObject;
-    if (this.ydU > this.KoY) {
-      if (paramInt == this.KoY)
+    if (this.ytL > this.KLs) {
+      if (paramInt == this.KLs)
       {
         localObject = new h(paramInt);
-        ((h)localObject).header = this.KmO.getActivity().getResources().getString(2131762997);
+        ((h)localObject).header = this.KJi.getActivity().getResources().getString(2131762997);
       }
     }
     for (;;)
     {
-      if (paramInt == this.ydU)
+      if (paramInt == this.ytL)
       {
         localObject = new h(paramInt);
-        ((h)localObject).header = this.KmO.getActivity().getResources().getString(2131762982);
+        ((h)localObject).header = this.KJi.getActivity().getResources().getString(2131762982);
       }
       for (;;)
       {
         AppMethodBeat.o(102924);
         return localObject;
-        if (paramInt != this.KoY + 1) {
+        if (paramInt != this.KLs + 1) {
           break label373;
         }
         localObject = new b(paramInt);
-        String str = this.KmO.getActivity().getResources().getString(2131762997);
+        String str = this.KJi.getActivity().getResources().getString(2131762997);
         ((b)localObject).resId = 2131690037;
         ((b)localObject).bVF = str;
         break;
-        if (paramInt < this.KoY)
+        if (paramInt < this.KLs)
         {
-          localObject = localat;
-          if (this.KoX != null)
+          localObject = localau;
+          if (this.KLr != null)
           {
-            localObject = localat;
+            localObject = localau;
             if (paramInt >= 0)
             {
-              localObject = localat;
-              if (paramInt < this.KoX.size())
+              localObject = localau;
+              if (paramInt < this.KLr.size())
               {
                 localObject = new b(paramInt);
-                ((b)localObject).username = ((String)this.KoX.get(paramInt));
+                ((b)localObject).username = ((String)this.KLr.get(paramInt));
               }
             }
           }
         }
-        else if ((paramInt > this.ydU) && (this.iVJ.moveToPosition(paramInt - this.ydU - 1)))
+        else if ((paramInt > this.ytL) && (this.iYC.moveToPosition(paramInt - this.ytL - 1)))
         {
           localObject = new f(paramInt);
-          localat = new at();
-          localat.convertFrom(this.iVJ);
-          g.ajD();
-          ((a)localObject).contact = ((l)g.ab(l.class)).azp().aTf(localat.field_username);
+          localau = new au();
+          localau.convertFrom(this.iYC);
+          g.ajS();
+          ((a)localObject).contact = ((l)g.ab(l.class)).azF().aUG(localau.field_username);
           if (((a)localObject).contact == null)
           {
-            g.ajD();
-            ((a)localObject).contact = ((l)g.ab(l.class)).azp().aTk(localat.field_username);
+            g.ajS();
+            ((a)localObject).contact = ((l)g.ab(l.class)).azF().aUL(localau.field_username);
           }
-          ((a)localObject).KmP = dQK();
+          ((a)localObject).KJj = dUh();
         }
         else
         {
-          ad.e("MicroMsg.RecentConversationAdapter", "create Data Item Error position=%d", new Object[] { Integer.valueOf(paramInt) });
+          ae.e("MicroMsg.RecentConversationAdapter", "create Data Item Error position=%d", new Object[] { Integer.valueOf(paramInt) });
         }
       }
       label373:

@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.scanner.ui.widget;
 
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/scanner/ui/widget/ScanSharedMaskView$Companion;", "", "()V", "TAG", "", "TITLE_SHOW_DURATION", "", "plugin-scan_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/scanner/ui/widget/ScanSharedMaskView$Companion;", "", "()V", "TAG", "", "TITLE_SHOW_DURATION", "", "plugin-scan_release"})
 public final class ScanSharedMaskView$a {}
 
 

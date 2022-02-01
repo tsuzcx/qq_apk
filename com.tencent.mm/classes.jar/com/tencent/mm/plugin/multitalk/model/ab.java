@@ -3,14 +3,14 @@ package com.tencent.mm.plugin.multitalk.model;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
-import android.os.Handler;
 import android.os.HandlerThread;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ad.c;
+import com.tencent.mm.ac.c;
+import com.tencent.mm.plugin.multitalk.d.d;
 import com.tencent.mm.pluginsdk.ui.a.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
 import d.g.b.p;
 import d.l;
 import d.z;
@@ -18,109 +18,135 @@ import java.nio.ByteBuffer;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/multitalk/model/VideoDisplayDataMuxer;", "Lcom/tencent/mm/plugin/multitalk/model/VideoDisplayDataHandler;", "()V", "avcCodec", "Lcom/tencent/mm/plugin/multitalk/model/MultiAvcDecoder;", "bReStart", "", "bitmapHolders", "Ljava/util/concurrent/ConcurrentHashMap;", "", "Lcom/tencent/mm/plugin/multitalk/model/VideoDisplayDataMuxer$BitmapHolder;", "canDraw", "curAngle", "", "curUserName", "defaultAvatar", "Landroid/graphics/Bitmap;", "largeTargetBitmapHolder", "largeTargetHostName", "largeTargetState", "screenCastHWRenderHelper", "Lcom/tencent/mm/plugin/multitalk/model/ScreenCastHWRenderHelper;", "targetContainer", "Lcom/tencent/mm/plugin/multitalk/model/IRenderTargetContainer;", "close", "", "isMini", "closeAvCodec", "disableDrawing", "drawAvatar", "target", "Lcom/tencent/mm/plugin/multitalk/model/IRenderTarget;", "width", "height", "forceUpdate", "userName", "drawVideo", "enableDrawing", "getBitmapHolder", "getDefaultAvatar", "getVideoRenderTarget", "hasTargetContainer", "loadAvatarBitmap", "onScreenDataArrive", "pBuffer", "", "w", "h", "mirror", "angle", "onScreenHwDataArrive", "", "onVideoDataArrive", "refreshBitmap", "bmHolder", "Ljava/nio/ByteBuffer;", "registerTargetContainer", "screenDrawAtLargeTarget", "setLargeTargetState", "state", "largeHostName", "videoDrawAtLargeTarget", "BitmapHolder", "Companion", "plugin-multitalk_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/multitalk/model/VideoDisplayDataMuxer;", "Lcom/tencent/mm/plugin/multitalk/model/VideoDisplayDataHandler;", "()V", "avcCodec", "Lcom/tencent/mm/plugin/multitalk/model/MultiAvcDecoder;", "bReStart", "", "bitmapHolders", "Ljava/util/concurrent/ConcurrentHashMap;", "", "Lcom/tencent/mm/plugin/multitalk/model/VideoDisplayDataMuxer$BitmapHolder;", "canDraw", "curAngle", "", "curUserName", "defaultAvatar", "Landroid/graphics/Bitmap;", "largeTargetBitmapHolder", "largeTargetHostName", "largeTargetState", "screenCastHWRenderHelper", "Lcom/tencent/mm/plugin/multitalk/model/ScreenCastHWRenderHelper;", "targetContainer", "Lcom/tencent/mm/plugin/multitalk/model/IRenderTargetContainer;", "close", "", "isMini", "closeAvCodec", "disableDrawing", "drawAvatar", "target", "Lcom/tencent/mm/plugin/multitalk/model/IRenderTarget;", "width", "height", "forceUpdate", "userName", "drawVideo", "enableDrawing", "getBitmapHolder", "getDefaultAvatar", "getVideoRenderTarget", "hasTargetContainer", "loadAvatarBitmap", "onScreenDataArrive", "pBuffer", "", "w", "h", "mirror", "angle", "onScreenHwDataArrive", "", "onVideoDataArrive", "refreshBitmap", "bmHolder", "Ljava/nio/ByteBuffer;", "registerTargetContainer", "screenDrawAtLargeTarget", "setLargeTargetState", "state", "largeHostName", "videoDrawAtLargeTarget", "BitmapHolder", "Companion", "plugin-multitalk_release"})
 public final class ab
   implements aa
 {
-  public static final ab.b wdu;
-  private volatile boolean juJ;
-  private Bitmap nZT;
-  g wdk;
-  private volatile int wdl;
-  private String wdm;
-  private final ab.a wdn;
-  private final ConcurrentHashMap<String, ab.a> wdo;
-  private x wdp;
-  private j wdq;
-  private boolean wdr;
-  private int wds;
-  private String wdt;
+  public static final ab.b wsW;
+  private volatile boolean jxE;
+  private Bitmap ofD;
+  g wsM;
+  private volatile int wsN;
+  private String wsO;
+  private final ab.a wsP;
+  private final ConcurrentHashMap<String, ab.a> wsQ;
+  private x wsR;
+  private j wsS;
+  private boolean wsT;
+  private int wsU;
+  private String wsV;
   
   static
   {
-    AppMethodBeat.i(206717);
-    wdu = new ab.b((byte)0);
-    AppMethodBeat.o(206717);
+    AppMethodBeat.i(190990);
+    wsW = new ab.b((byte)0);
+    AppMethodBeat.o(190990);
   }
   
   public ab()
   {
-    AppMethodBeat.i(206716);
-    this.juJ = true;
-    this.wdm = "";
-    this.wdn = new ab.a("", (byte)0);
-    this.wdo = new ConcurrentHashMap();
-    this.wdr = true;
-    this.wdt = "";
-    AppMethodBeat.o(206716);
+    AppMethodBeat.i(190989);
+    this.jxE = true;
+    this.wsO = "";
+    this.wsP = new ab.a("", (byte)0);
+    this.wsQ = new ConcurrentHashMap();
+    this.wsT = true;
+    this.wsV = "";
+    AppMethodBeat.o(190989);
   }
   
   private static void a(ab.a parama, int[] paramArrayOfInt, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(206710);
+    AppMethodBeat.i(190982);
     System.currentTimeMillis();
-    if (parama.wdv != null)
+    if (parama.wsX != null)
     {
-      Bitmap localBitmap = parama.wdv;
+      Bitmap localBitmap = parama.wsX;
       if (localBitmap == null) {
-        p.gfZ();
+        p.gkB();
       }
       if (localBitmap.getWidth() == paramInt1)
       {
-        localBitmap = parama.wdv;
+        localBitmap = parama.wsX;
         if (localBitmap == null) {
-          p.gfZ();
+          p.gkB();
         }
         if (localBitmap.getHeight() == paramInt2) {
           break label74;
         }
       }
     }
-    parama.wdv = Bitmap.createBitmap(paramInt1, paramInt2, Bitmap.Config.ARGB_8888);
+    parama.wsX = Bitmap.createBitmap(paramInt1, paramInt2, Bitmap.Config.ARGB_8888);
     label74:
-    parama = parama.wdv;
+    parama = parama.wsX;
     if (parama != null) {
       parama.setPixels(paramArrayOfInt, 0, paramInt1, 0, 0, paramInt1, paramInt2);
     }
     System.currentTimeMillis();
-    AppMethodBeat.o(206710);
+    AppMethodBeat.o(190982);
   }
   
-  private final boolean arC(String paramString)
+  private final boolean asO(String paramString)
   {
-    AppMethodBeat.i(206713);
-    if ((this.wdl == 1) && (p.i(paramString, this.wdm)))
+    AppMethodBeat.i(190985);
+    if ((this.wsN == 1) && (p.i(paramString, this.wsO)))
     {
-      AppMethodBeat.o(206713);
+      AppMethodBeat.o(190985);
       return true;
     }
-    AppMethodBeat.o(206713);
+    AppMethodBeat.o(190985);
     return false;
   }
   
-  private final boolean arD(String paramString)
+  private final boolean asP(String paramString)
   {
-    AppMethodBeat.i(206714);
-    if ((this.wdl == 2) && (p.i(paramString, this.wdm)))
+    AppMethodBeat.i(190986);
+    if ((this.wsN == 2) && (p.i(paramString, this.wsO)))
     {
-      AppMethodBeat.o(206714);
+      AppMethodBeat.o(190986);
       return true;
     }
-    AppMethodBeat.o(206714);
+    AppMethodBeat.o(190986);
     return false;
+  }
+  
+  private final f asR(String paramString)
+  {
+    AppMethodBeat.i(190988);
+    if (asO(paramString))
+    {
+      paramString = this.wsM;
+      if (paramString != null)
+      {
+        paramString = paramString.Lc(0);
+        AppMethodBeat.o(190988);
+        return paramString;
+      }
+      AppMethodBeat.o(190988);
+      return null;
+    }
+    g localg = this.wsM;
+    if (localg != null)
+    {
+      paramString = localg.ash(paramString);
+      AppMethodBeat.o(190988);
+      return paramString;
+    }
+    AppMethodBeat.o(190988);
+    return null;
   }
   
   public final void a(f paramf, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(206711);
+    AppMethodBeat.i(190983);
     p.h(paramf, "target");
-    ab.a locala = arE(paramf.getUsername());
-    Object localObject2 = locala.joW;
+    ab.a locala = asQ(paramf.getUsername());
+    Object localObject2 = locala.jrP;
     Object localObject1 = localObject2;
     if (localObject2 == null)
     {
       localObject1 = locala.userName;
-      localObject1 = a.b.fbx().a((String)localObject1, paramInt1, paramInt2, 1);
+      localObject1 = a.b.ffl().a((String)localObject1, paramInt1, paramInt2, 1);
       if (localObject1 != null)
       {
         localObject2 = localObject1;
@@ -132,99 +158,79 @@ public final class ab
       }
       else
       {
-        localObject2 = this.nZT;
+        localObject2 = this.ofD;
         localObject1 = localObject2;
         if (localObject2 == null)
         {
-          localObject1 = com.tencent.mm.compatible.e.a.decodeResource(aj.getContext().getResources(), 2131690013);
-          this.nZT = ((Bitmap)localObject1);
+          localObject1 = com.tencent.mm.compatible.e.a.decodeResource(ak.getContext().getResources(), 2131690013);
+          this.ofD = ((Bitmap)localObject1);
           p.g(localObject1, "CBitmapFactory.decodeRes…ltAvatar = this\n        }");
         }
       }
     }
-    locala.joW = ((Bitmap)localObject1);
-    localObject1 = locala.joW;
+    locala.jrP = ((Bitmap)localObject1);
+    localObject1 = locala.jrP;
     if (localObject1 != null)
     {
       paramf.e((Bitmap)localObject1, 0, 0);
-      AppMethodBeat.o(206711);
+      AppMethodBeat.o(190983);
       return;
     }
-    AppMethodBeat.o(206711);
+    AppMethodBeat.o(190983);
   }
   
   public final void a(final String paramString, final byte[] paramArrayOfByte, final int paramInt1, final int paramInt2)
   {
-    AppMethodBeat.i(206708);
+    AppMethodBeat.i(190980);
     p.h(paramString, "userName");
     p.h(paramArrayOfByte, "pBuffer");
-    Object localObject = Boolean.valueOf(arD(paramString));
-    x localx;
-    if (((Boolean)localObject).booleanValue())
+    Object localObject = Boolean.valueOf(asP(paramString));
+    if (((Boolean)localObject).booleanValue()) {}
+    while (localObject != null)
     {
-      if (localObject == null) {
-        break label317;
-      }
       ((Boolean)localObject).booleanValue();
-      localObject = this.wdk;
-      if ((localObject == null) || (((g)localObject).Kx(0) == null)) {
-        break label310;
-      }
-      this.wds = paramInt2;
-      this.wdt = paramString;
-      if ((this.wdq == null) || (this.wdp == null))
+      localObject = this.wsM;
+      if ((localObject != null) && (((g)localObject).Lc(0) != null))
       {
-        localx = new x();
-        if (localx.handlerThread == null)
+        this.wsU = paramInt2;
+        this.wsV = paramString;
+        if ((this.wsS == null) || (this.wsR == null))
         {
-          localObject = com.tencent.e.c.d.gW("multatalk_HW_render_thread", -4);
-          if (localObject == null) {
-            break label304;
-          }
-          ((HandlerThread)localObject).start();
-          localx.handler = new Handler(((HandlerThread)localObject).getLooper());
+          localObject = new x();
+          ((x)localObject).dtE();
+          ((x)localObject).d((d.g.a.q)new d(this, paramInt2, paramString, paramArrayOfByte, paramInt1));
+          ((x)localObject).B((d.g.a.a)new e((x)localObject, this, paramInt2, paramString, paramArrayOfByte, paramInt1));
+          this.wsR = ((x)localObject);
+          this.wsT = false;
         }
+        long l = bu.HQ();
+        paramString = this.wsS;
+        if (paramString != null) {
+          paramString.f(paramArrayOfByte, paramInt1, this.wsT);
+        }
+        paramString = d.wxl;
+        d.append(2, bu.aO(l));
+        AppMethodBeat.o(190980);
+        return;
+        localObject = null;
+      }
+      else
+      {
+        AppMethodBeat.o(190980);
+        return;
       }
     }
-    for (;;)
-    {
-      localx.handlerThread = ((HandlerThread)localObject);
-      localx.B((d.g.a.a)new x.a(localx));
-      localObject = (d.g.a.q)new d(this, paramInt2, paramString, paramArrayOfByte, paramInt1);
-      p.h(localObject, "listener");
-      localx.B((d.g.a.a)new x.d(localx, (d.g.a.q)localObject));
-      localx.B((d.g.a.a)new e(localx, this, paramInt2, paramString, paramArrayOfByte, paramInt1));
-      this.wdp = localx;
-      this.wdr = false;
-      long l = bt.HI();
-      paramString = this.wdq;
-      if (paramString != null) {
-        paramString.f(paramArrayOfByte, paramInt1, this.wdr);
-      }
-      paramString = com.tencent.mm.plugin.multitalk.c.d.whH;
-      com.tencent.mm.plugin.multitalk.c.d.append(2, bt.aO(l));
-      AppMethodBeat.o(206708);
-      return;
-      localObject = null;
-      break;
-      label304:
-      localObject = null;
-    }
-    label310:
-    AppMethodBeat.o(206708);
-    return;
-    label317:
-    AppMethodBeat.o(206708);
+    AppMethodBeat.o(190980);
   }
   
   public final void a(final String paramString, final int[] paramArrayOfInt, final int paramInt1, final int paramInt2, final int paramInt3)
   {
     int i = 1;
-    AppMethodBeat.i(206707);
+    AppMethodBeat.i(190979);
     p.h(paramString, "userName");
     p.h(paramArrayOfInt, "pBuffer");
-    this.wdr = true;
-    paramString = Boolean.valueOf(arD(paramString));
+    this.wsT = true;
+    paramString = Boolean.valueOf(asP(paramString));
     if ((paramString.booleanValue()) && (paramInt1 > 0) && (paramInt2 > 0)) {
       if (i == 0) {
         break label171;
@@ -235,22 +241,22 @@ public final class ab
       if (paramString != null)
       {
         paramString.booleanValue();
-        paramString = this.wdk;
+        paramString = this.wsM;
         if (paramString != null)
         {
-          paramString = paramString.Kx(paramInt3);
+          paramString = paramString.Lc(paramInt3);
           if (paramString != null)
           {
-            this.wds = paramInt3;
-            Object localObject = this.wdn;
+            this.wsU = paramInt3;
+            Object localObject = this.wsP;
             a((ab.a)localObject, paramArrayOfInt, paramInt1, paramInt2);
             ((ab.a)localObject).mirror = 0;
             ((ab.a)localObject).angle = paramInt3;
-            localObject = ((ab.a)localObject).wdv;
+            localObject = ((ab.a)localObject).wsX;
             if (localObject != null)
             {
-              c.g((d.g.a.a)new c((Bitmap)localObject, paramString, this, paramInt3, paramArrayOfInt, paramInt1, paramInt2));
-              AppMethodBeat.o(206707);
+              c.h((d.g.a.a)new c((Bitmap)localObject, paramString, this, paramInt3, paramArrayOfInt, paramInt1, paramInt2));
+              AppMethodBeat.o(190979);
               return;
               i = 0;
               break;
@@ -258,123 +264,105 @@ public final class ab
               paramString = null;
               continue;
             }
-            AppMethodBeat.o(206707);
+            AppMethodBeat.o(190979);
             return;
           }
         }
-        AppMethodBeat.o(206707);
+        AppMethodBeat.o(190979);
         return;
       }
     }
-    AppMethodBeat.o(206707);
+    AppMethodBeat.o(190979);
   }
   
   public final void a(final String paramString, final int[] paramArrayOfInt, final int paramInt1, final int paramInt2, final int paramInt3, final int paramInt4)
   {
-    AppMethodBeat.i(206706);
+    AppMethodBeat.i(190978);
     p.h(paramString, "userName");
     p.h(paramArrayOfInt, "pBuffer");
-    Object localObject1;
-    if (arC(paramString))
+    final f localf = asR(paramString);
+    if (localf != null)
     {
-      localObject1 = this.wdk;
-      if (localObject1 != null) {
-        localObject1 = ((g)localObject1).Kx(0);
-      }
-    }
-    while (localObject1 != null)
-    {
-      Object localObject2 = arE(paramString);
-      a((ab.a)localObject2, paramArrayOfInt, paramInt1, paramInt2);
-      ((ab.a)localObject2).mirror = paramInt3;
-      ((ab.a)localObject2).angle = paramInt4;
-      localObject2 = ((ab.a)localObject2).wdv;
-      if (localObject2 != null)
+      Object localObject = asQ(paramString);
+      a((ab.a)localObject, paramArrayOfInt, paramInt1, paramInt2);
+      ((ab.a)localObject).mirror = paramInt3;
+      ((ab.a)localObject).angle = paramInt4;
+      localObject = ((ab.a)localObject).wsX;
+      if (localObject != null)
       {
-        c.g((d.g.a.a)new f((Bitmap)localObject2, (f)localObject1, this, paramString, paramArrayOfInt, paramInt1, paramInt2, paramInt3, paramInt4));
-        AppMethodBeat.o(206706);
-        return;
-        localObject1 = null;
-        continue;
-        localObject1 = this.wdk;
-        if (localObject1 != null) {
-          localObject1 = ((g)localObject1).aqZ(paramString);
-        } else {
-          localObject1 = null;
-        }
-      }
-      else
-      {
-        AppMethodBeat.o(206706);
+        c.h((d.g.a.a)new f((Bitmap)localObject, localf, this, paramString, paramArrayOfInt, paramInt1, paramInt2, paramInt3, paramInt4));
+        AppMethodBeat.o(190978);
         return;
       }
+      AppMethodBeat.o(190978);
+      return;
     }
-    AppMethodBeat.o(206706);
+    AppMethodBeat.o(190978);
   }
   
   public final void ab(boolean paramBoolean)
   {
-    AppMethodBeat.i(206712);
-    this.wdk = null;
+    AppMethodBeat.i(190984);
+    this.wsM = null;
     a(this);
     if (!paramBoolean) {
-      this.wdo.clear();
+      this.wsQ.clear();
     }
-    ab.a locala = this.wdn;
-    locala.wdv = null;
-    locala.joW = null;
-    dqC();
-    AppMethodBeat.o(206712);
+    ab.a locala = this.wsP;
+    locala.wsX = null;
+    locala.jrP = null;
+    dtP();
+    AppMethodBeat.o(190984);
   }
   
-  public final ab.a arE(String paramString)
+  public final ab.a asQ(String paramString)
   {
-    AppMethodBeat.i(206715);
-    if (arC(paramString))
+    AppMethodBeat.i(190987);
+    if (asO(paramString))
     {
-      paramString = this.wdn;
-      AppMethodBeat.o(206715);
+      paramString = this.wsP;
+      AppMethodBeat.o(190987);
       return paramString;
     }
-    ab.a locala2 = (ab.a)this.wdo.get(paramString);
+    ab.a locala2 = (ab.a)this.wsQ.get(paramString);
     ab.a locala1 = locala2;
     if (locala2 == null)
     {
       locala1 = new ab.a(paramString, (byte)0);
-      ((Map)this.wdo).put(paramString, locala1);
+      ((Map)this.wsQ).put(paramString, locala1);
     }
-    AppMethodBeat.o(206715);
+    AppMethodBeat.o(190987);
     return locala1;
   }
   
   public final void bx(int paramInt, String paramString)
   {
-    AppMethodBeat.i(206704);
+    AppMethodBeat.i(190976);
     p.h(paramString, "largeHostName");
-    ad.i("VideoDisplayDataMuxer", "setLargeTargetState ".concat(String.valueOf(paramInt)));
-    this.wdl = paramInt;
-    this.wdm = paramString;
-    AppMethodBeat.o(206704);
+    ae.i("VideoDisplayDataMuxer", "setLargeTargetState ".concat(String.valueOf(paramInt)));
+    this.wsN = paramInt;
+    this.wsO = paramString;
+    AppMethodBeat.o(190976);
   }
   
-  public final void dqA()
+  public final void dtN()
   {
-    this.juJ = true;
+    this.jxE = true;
   }
   
-  public final void dqB()
+  public final void dtO()
   {
-    this.juJ = false;
+    this.jxE = false;
   }
   
-  public final void dqC()
+  public final void dtP()
   {
-    AppMethodBeat.i(206709);
-    Object localObject = this.wdq;
+    AppMethodBeat.i(190981);
+    Object localObject = this.wsS;
     if (localObject != null)
     {
-      ((j)localObject).dpf();
-      localObject = this.wdp;
+      ((j)localObject).dsq();
+      localObject = this.wsR;
       if (localObject != null)
       {
         ((x)localObject).B((d.g.a.a)new x.b((x)localObject));
@@ -383,13 +371,13 @@ public final class ab
           ((HandlerThread)localObject).quitSafely();
         }
       }
-      this.wdp = null;
+      this.wsR = null;
     }
-    this.wdq = null;
-    AppMethodBeat.o(206709);
+    this.wsS = null;
+    AppMethodBeat.o(190981);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke", "com/tencent/mm/plugin/multitalk/model/VideoDisplayDataMuxer$onScreenDataArrive$2$1$2$1", "com/tencent/mm/plugin/multitalk/model/VideoDisplayDataMuxer$$special$$inlined$let$lambda$2", "com/tencent/mm/plugin/multitalk/model/VideoDisplayDataMuxer$$special$$inlined$let$lambda$3"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke", "com/tencent/mm/plugin/multitalk/model/VideoDisplayDataMuxer$onScreenDataArrive$2$1$2$1", "com/tencent/mm/plugin/multitalk/model/VideoDisplayDataMuxer$$special$$inlined$let$lambda$2", "com/tencent/mm/plugin/multitalk/model/VideoDisplayDataMuxer$$special$$inlined$let$lambda$3"})
   static final class c
     extends d.g.b.q
     implements d.g.a.a<z>
@@ -400,7 +388,7 @@ public final class ab
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "byteBuffer", "Ljava/nio/ByteBuffer;", "width", "", "height", "invoke", "com/tencent/mm/plugin/multitalk/model/VideoDisplayDataMuxer$onScreenHwDataArrive$2$1$1$1", "com/tencent/mm/plugin/multitalk/model/VideoDisplayDataMuxer$$special$$inlined$apply$lambda$1", "com/tencent/mm/plugin/multitalk/model/VideoDisplayDataMuxer$$special$$inlined$let$lambda$4"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "byteBuffer", "Ljava/nio/ByteBuffer;", "width", "", "height", "invoke", "com/tencent/mm/plugin/multitalk/model/VideoDisplayDataMuxer$onScreenHwDataArrive$2$1$1$1", "com/tencent/mm/plugin/multitalk/model/VideoDisplayDataMuxer$$special$$inlined$apply$lambda$1", "com/tencent/mm/plugin/multitalk/model/VideoDisplayDataMuxer$$special$$inlined$let$lambda$4"})
   static final class d
     extends d.g.b.q
     implements d.g.a.q<ByteBuffer, Integer, Integer, z>
@@ -411,7 +399,7 @@ public final class ab
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke", "com/tencent/mm/plugin/multitalk/model/VideoDisplayDataMuxer$onScreenHwDataArrive$2$1$1$2", "com/tencent/mm/plugin/multitalk/model/VideoDisplayDataMuxer$$special$$inlined$apply$lambda$2", "com/tencent/mm/plugin/multitalk/model/VideoDisplayDataMuxer$$special$$inlined$let$lambda$5"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke", "com/tencent/mm/plugin/multitalk/model/VideoDisplayDataMuxer$onScreenHwDataArrive$2$1$1$2", "com/tencent/mm/plugin/multitalk/model/VideoDisplayDataMuxer$$special$$inlined$apply$lambda$2", "com/tencent/mm/plugin/multitalk/model/VideoDisplayDataMuxer$$special$$inlined$let$lambda$5"})
   static final class e
     extends d.g.b.q
     implements d.g.a.a<z>
@@ -422,7 +410,7 @@ public final class ab
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke", "com/tencent/mm/plugin/multitalk/model/VideoDisplayDataMuxer$onVideoDataArrive$1$2$1", "com/tencent/mm/plugin/multitalk/model/VideoDisplayDataMuxer$$special$$inlined$let$lambda$1"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke", "com/tencent/mm/plugin/multitalk/model/VideoDisplayDataMuxer$onVideoDataArrive$1$2$1", "com/tencent/mm/plugin/multitalk/model/VideoDisplayDataMuxer$$special$$inlined$let$lambda$1"})
   static final class f
     extends d.g.b.q
     implements d.g.a.a<z>

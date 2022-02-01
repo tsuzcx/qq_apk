@@ -3,10 +3,10 @@ package com.tencent.mm.plugin.order.model;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class d
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
   public int month;
-  public String wDi;
+  public String wST;
   public int year;
   
   public final int op(int paramInt, Object... paramVarArgs)
@@ -17,8 +17,8 @@ public final class d
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
       paramVarArgs.aS(1, this.year);
       paramVarArgs.aS(2, this.month);
-      if (this.wDi != null) {
-        paramVarArgs.d(3, this.wDi);
+      if (this.wST != null) {
+        paramVarArgs.d(3, this.wST);
       }
       AppMethodBeat.o(91260);
       return 0;
@@ -27,8 +27,8 @@ public final class d
     {
       int i = f.a.a.b.b.a.bz(1, this.year) + 0 + f.a.a.b.b.a.bz(2, this.month);
       paramInt = i;
-      if (this.wDi != null) {
-        paramInt = i + f.a.a.b.b.a.e(3, this.wDi);
+      if (this.wST != null) {
+        paramInt = i + f.a.a.b.b.a.e(3, this.wST);
       }
       AppMethodBeat.o(91260);
       return paramInt;
@@ -36,9 +36,9 @@ public final class d
     if (paramInt == 2)
     {
       paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gxE();
+          paramVarArgs.gCg();
         }
       }
       AppMethodBeat.o(91260);
@@ -54,15 +54,15 @@ public final class d
         AppMethodBeat.o(91260);
         return -1;
       case 1: 
-        locald.year = locala.NPN.zc();
+        locald.year = locala.OmT.zc();
         AppMethodBeat.o(91260);
         return 0;
       case 2: 
-        locald.month = locala.NPN.zc();
+        locald.month = locala.OmT.zc();
         AppMethodBeat.o(91260);
         return 0;
       }
-      locald.wDi = locala.NPN.readString();
+      locald.wST = locala.OmT.readString();
       AppMethodBeat.o(91260);
       return 0;
     }

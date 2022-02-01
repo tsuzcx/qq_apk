@@ -12,12 +12,12 @@ public abstract interface m
   public static final class a
     implements m
   {
-    public static final a NeS;
+    public static final a NBX;
     
     static
     {
       AppMethodBeat.i(57771);
-      NeS = new a();
+      NBX = new a();
       AppMethodBeat.o(57771);
     }
     
@@ -32,7 +32,7 @@ public abstract interface m
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.d.a.c.m
  * JD-Core Version:    0.7.0.1
  */

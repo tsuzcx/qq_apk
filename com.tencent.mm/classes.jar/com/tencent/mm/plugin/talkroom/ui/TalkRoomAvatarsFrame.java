@@ -5,11 +5,11 @@ import android.os.Looper;
 import android.util.AttributeSet;
 import android.widget.FrameLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cc.a;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.av;
-import com.tencent.mm.sdk.platformtools.av.a;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.cb.a;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.aw;
+import com.tencent.mm.sdk.platformtools.aw.a;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.base.MMHorList;
 import com.tencent.mm.ui.base.MMHorList.a;
 import java.util.List;
@@ -17,22 +17,22 @@ import java.util.List;
 public class TalkRoomAvatarsFrame
   extends FrameLayout
 {
-  private final int BoH;
-  private final int BoI;
-  private MMHorList BoJ;
-  private TalkRoomAvatarsFrame.a BoK;
-  private av BoL;
-  private ap mHandler;
-  private final int vcJ;
-  private String vcX;
+  private final int BGg;
+  private final int BGh;
+  private MMHorList BGi;
+  private TalkRoomAvatarsFrame.a BGj;
+  private aw BGk;
+  private aq mHandler;
+  private final int voU;
+  private String vpi;
   
   public TalkRoomAvatarsFrame(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(29582);
-    this.BoH = 2000;
-    this.BoI = 5;
-    this.vcJ = a.fromDPToPix(null, 58);
+    this.BGg = 2000;
+    this.BGh = 5;
+    this.voU = a.fromDPToPix(null, 58);
     initView();
     AppMethodBeat.o(29582);
   }
@@ -41,43 +41,43 @@ public class TalkRoomAvatarsFrame
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(29583);
-    this.BoH = 2000;
-    this.BoI = 5;
-    this.vcJ = a.fromDPToPix(null, 58);
+    this.BGg = 2000;
+    this.BGh = 5;
+    this.voU = a.fromDPToPix(null, 58);
     initView();
     AppMethodBeat.o(29583);
   }
   
-  private void dfw()
+  private void dio()
   {
     AppMethodBeat.i(29587);
-    this.BoK.vcX = this.vcX;
-    if (bt.isNullOrNil(this.vcX))
+    this.BGj.vpi = this.vpi;
+    if (bu.isNullOrNil(this.vpi))
     {
-      this.BoK.notifyDataSetChanged();
+      this.BGj.notifyDataSetChanged();
       AppMethodBeat.o(29587);
       return;
     }
-    if (this.BoJ.getIsTouching())
+    if (this.BGi.getIsTouching())
     {
       AppMethodBeat.o(29587);
       return;
     }
-    int i = this.BoK.indexOf(this.vcX) * this.vcJ;
-    int j = this.BoJ.getCurrentPosition();
+    int i = this.BGj.indexOf(this.vpi) * this.voU;
+    int j = this.BGi.getCurrentPosition();
     if (i < j)
     {
-      this.BoJ.acj(i);
+      this.BGi.acQ(i);
       AppMethodBeat.o(29587);
       return;
     }
-    if (i > j + this.vcJ * 4)
+    if (i > j + this.voU * 4)
     {
-      this.BoJ.acj(i - this.vcJ * 4);
+      this.BGi.acQ(i - this.voU * 4);
       AppMethodBeat.o(29587);
       return;
     }
-    this.BoK.notifyDataSetChanged();
+    this.BGj.notifyDataSetChanged();
     AppMethodBeat.o(29587);
   }
   
@@ -85,16 +85,16 @@ public class TalkRoomAvatarsFrame
   {
     AppMethodBeat.i(29584);
     inflate(getContext(), 2131495741, this);
-    this.BoJ = ((MMHorList)findViewById(2131300761));
-    this.BoJ.setOverScrollEnabled(true);
-    this.BoJ.setCenterInParent(true);
-    this.BoJ.setItemWidth(this.vcJ);
-    this.BoK = new TalkRoomAvatarsFrame.a(getContext());
-    this.BoJ.setAdapter(this.BoK);
-    this.mHandler = new ap(Looper.getMainLooper());
-    this.BoJ.setHorListLitener(new MMHorList.a()
+    this.BGi = ((MMHorList)findViewById(2131300761));
+    this.BGi.setOverScrollEnabled(true);
+    this.BGi.setCenterInParent(true);
+    this.BGi.setItemWidth(this.voU);
+    this.BGj = new TalkRoomAvatarsFrame.a(getContext());
+    this.BGi.setAdapter(this.BGj);
+    this.mHandler = new aq(Looper.getMainLooper());
+    this.BGi.setHorListLitener(new MMHorList.a()
     {
-      public final void bDw()
+      public final void bEo()
       {
         AppMethodBeat.i(29575);
         TalkRoomAvatarsFrame.c(TalkRoomAvatarsFrame.this).post(new Runnable()
@@ -109,21 +109,21 @@ public class TalkRoomAvatarsFrame
         AppMethodBeat.o(29575);
       }
       
-      public final void dXt()
+      public final void eaW()
       {
         AppMethodBeat.i(29574);
-        TalkRoomAvatarsFrame.a(TalkRoomAvatarsFrame.this).az(2000L, 2000L);
+        TalkRoomAvatarsFrame.a(TalkRoomAvatarsFrame.this).ay(2000L, 2000L);
         AppMethodBeat.o(29574);
       }
       
-      public final void eoa()
+      public final void erH()
       {
         AppMethodBeat.i(29573);
         TalkRoomAvatarsFrame.a(TalkRoomAvatarsFrame.this).stopTimer();
         AppMethodBeat.o(29573);
       }
     });
-    this.BoL = new av(new av.a()
+    this.BGk = new aw(new aw.a()
     {
       public final boolean onTimerExpired()
       {
@@ -139,50 +139,50 @@ public class TalkRoomAvatarsFrame
   public void setCurMemeber(String paramString)
   {
     AppMethodBeat.i(29586);
-    if (this.BoJ == null)
+    if (this.BGi == null)
     {
       AppMethodBeat.o(29586);
       return;
     }
-    if ((bt.isNullOrNil(this.vcX)) && (bt.isNullOrNil(paramString)))
+    if ((bu.isNullOrNil(this.vpi)) && (bu.isNullOrNil(paramString)))
     {
       AppMethodBeat.o(29586);
       return;
     }
-    if ((!bt.isNullOrNil(this.vcX)) && (this.vcX.equals(paramString)))
+    if ((!bu.isNullOrNil(this.vpi)) && (this.vpi.equals(paramString)))
     {
       AppMethodBeat.o(29586);
       return;
     }
-    this.vcX = paramString;
-    dfw();
+    this.vpi = paramString;
+    dio();
     AppMethodBeat.o(29586);
   }
   
   public void setMembersList(List<String> paramList)
   {
     AppMethodBeat.i(29585);
-    if (this.BoK == null)
+    if (this.BGj == null)
     {
       AppMethodBeat.o(29585);
       return;
     }
-    TalkRoomAvatarsFrame.a locala = this.BoK;
+    TalkRoomAvatarsFrame.a locala = this.BGj;
     if (paramList == null) {
-      locala.BoO.clear();
+      locala.BGn.clear();
     }
     for (;;)
     {
       locala.notifyDataSetChanged();
       AppMethodBeat.o(29585);
       return;
-      locala.BoO = paramList;
+      locala.BGn = paramList;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.talkroom.ui.TalkRoomAvatarsFrame
  * JD-Core Version:    0.7.0.1
  */

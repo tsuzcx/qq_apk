@@ -1,19 +1,19 @@
 package com.tencent.mm.modelmulti;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.clf;
-import com.tencent.mm.protocal.protobuf.clg;
-import com.tencent.mm.protocal.protobuf.dqc;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.clz;
+import com.tencent.mm.protocal.protobuf.cma;
+import com.tencent.mm.protocal.protobuf.dqz;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.k.a;
 import org.b.d.i;
 
@@ -22,41 +22,41 @@ public final class h
   implements k
 {
   private f callback;
-  private int ieI;
+  private int ihA;
   private b rr;
   
   public h(int paramInt, String paramString)
   {
     AppMethodBeat.i(20546);
-    this.ieI = 0;
+    this.ihA = 0;
     Object localObject = new b.a();
-    ((b.a)localObject).hNM = new clf();
-    ((b.a)localObject).hNN = new clg();
+    ((b.a)localObject).hQF = new clz();
+    ((b.a)localObject).hQG = new cma();
     ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/postinvitefriendsmsg";
     ((b.a)localObject).funcId = 1804;
-    this.rr = ((b.a)localObject).aDC();
-    clf localclf = (clf)this.rr.hNK.hNQ;
-    localclf.Gzf = paramInt;
-    localclf.Gzh = paramString;
+    this.rr = ((b.a)localObject).aDS();
+    clz localclz = (clz)this.rr.hQD.hQJ;
+    localclz.GSF = paramInt;
+    localclz.GSH = paramString;
     if ((paramInt & 0x10) > 0)
     {
       a locala = new a();
-      localObject = new dqc();
-      if (locala.KPb == null) {
+      localObject = new dqz();
+      if (locala.Llz == null) {
         break label185;
       }
       paramString = (String)localObject;
-      if (!bt.isNullOrNil(locala.KPb.token))
+      if (!bu.isNullOrNil(locala.Llz.token))
       {
-        ((dqc)localObject).HEl = locala.KPb.token;
-        ((dqc)localObject).HEm = locala.KPb.GTp;
+        ((dqz)localObject).HXY = locala.Llz.token;
+        ((dqz)localObject).HXZ = locala.Llz.HmQ;
       }
     }
     label185:
     for (paramString = (String)localObject;; paramString = null)
     {
-      localclf.Hex = paramString;
-      this.ieI = paramInt;
+      localclz.HxX = paramString;
+      this.ihA = paramInt;
       AppMethodBeat.o(20546);
       return;
     }
@@ -65,7 +65,7 @@ public final class h
   public final int doScene(e parame, f paramf)
   {
     AppMethodBeat.i(20548);
-    ad.d("MicroMsg.NetScenePostInviteFriendsMsg", "doScene");
+    ae.d("MicroMsg.NetScenePostInviteFriendsMsg", "doScene");
     this.callback = paramf;
     int i = dispatch(parame, this.rr, this);
     AppMethodBeat.o(20548);
@@ -80,7 +80,7 @@ public final class h
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(20547);
-    ad.d("MicroMsg.NetScenePostInviteFriendsMsg", "onGYNetEnd errType:" + paramInt2 + " errCode:" + paramInt3);
+    ae.d("MicroMsg.NetScenePostInviteFriendsMsg", "onGYNetEnd errType:" + paramInt2 + " errCode:" + paramInt3);
     if ((paramInt2 != 0) || (paramInt3 != 0))
     {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);

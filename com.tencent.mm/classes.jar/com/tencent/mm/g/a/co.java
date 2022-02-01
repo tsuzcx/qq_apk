@@ -8,7 +8,7 @@ import com.tencent.mm.sdk.b.b;
 public final class co
   extends b
 {
-  public a dns;
+  public a dou;
   
   public co()
   {
@@ -18,8 +18,8 @@ public final class co
   private co(byte paramByte)
   {
     AppMethodBeat.i(115973);
-    this.dns = new a();
-    this.IbR = false;
+    this.dou = new a();
+    this.IvZ = false;
     this.callback = null;
     AppMethodBeat.o(115973);
   }
@@ -27,12 +27,12 @@ public final class co
   public static final class a
   {
     public Activity activity;
-    public String dlG;
-    public int dnt;
-    public int dnu;
-    public String dnv;
-    public String dnw;
-    public Bundle dnx;
+    public String dmI;
+    public int dov;
+    public int dow;
+    public String dox;
+    public String doy;
+    public Bundle doz;
     public int from = -1;
     public String imagePath;
     public int scene = -1;
@@ -42,7 +42,7 @@ public final class co
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.a.co
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.appbrand.ui.recents;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.appusage.AppBrandRecentTaskInfo;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -18,7 +18,7 @@ final class k
   final ArrayList<AppBrandRecentTaskInfo> F(ArrayList<AppBrandRecentTaskInfo> paramArrayList)
   {
     AppMethodBeat.i(49208);
-    if ((!this.enable) || (bt.hj(paramArrayList)))
+    if ((!this.enable) || (bu.ht(paramArrayList)))
     {
       AppMethodBeat.o(49208);
       return paramArrayList;
@@ -28,7 +28,7 @@ final class k
     while (paramArrayList.hasNext())
     {
       AppBrandRecentTaskInfo localAppBrandRecentTaskInfo = (AppBrandRecentTaskInfo)paramArrayList.next();
-      if (!localAppBrandRecentTaskInfo.jPn) {
+      if (!localAppBrandRecentTaskInfo.jSF) {
         localArrayList.add(localAppBrandRecentTaskInfo);
       }
     }

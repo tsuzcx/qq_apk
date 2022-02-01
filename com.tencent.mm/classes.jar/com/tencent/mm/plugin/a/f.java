@@ -9,9 +9,9 @@ public abstract interface f
   
   public abstract boolean a(int paramInt1, int paramInt2, PInt paramPInt1, PInt paramPInt2);
   
-  public abstract int aQO();
+  public abstract int aRn();
   
-  public abstract int aQP();
+  public abstract int aRo();
   
   @TargetApi(5)
   public abstract boolean b(int paramInt, PInt paramPInt1, PInt paramPInt2);
@@ -22,7 +22,7 @@ public abstract interface f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.a.f
  * JD-Core Version:    0.7.0.1
  */

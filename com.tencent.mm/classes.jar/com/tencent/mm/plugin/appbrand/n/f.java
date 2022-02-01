@@ -1,53 +1,53 @@
 package com.tencent.mm.plugin.appbrand.n;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.n;
-import com.tencent.mm.bx.a;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.bw.a;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.cuj;
-import com.tencent.mm.protocal.protobuf.cuk;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.cvd;
+import com.tencent.mm.protocal.protobuf.cve;
+import com.tencent.mm.sdk.platformtools.ae;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/netscene/NetSceneReportOpenWxaOrder;", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Lcom/tencent/mm/network/IOnGYNetEnd;", "destroyRedDot", "", "(Z)V", "TAG", "", "mCallback", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "rr", "Lcom/tencent/mm/modelbase/CommReqResp;", "doScene", "", "dispatcher", "Lcom/tencent/mm/network/IDispatcher;", "callback", "getType", "onGYNetEnd", "", "netId", "errType", "errCode", "errMsg", "Lcom/tencent/mm/network/IReqResp;", "cookie", "", "plugin-appbrand-integration_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/netscene/NetSceneReportOpenWxaOrder;", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Lcom/tencent/mm/network/IOnGYNetEnd;", "destroyRedDot", "", "(Z)V", "TAG", "", "mCallback", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "rr", "Lcom/tencent/mm/modelbase/CommReqResp;", "doScene", "", "dispatcher", "Lcom/tencent/mm/network/IDispatcher;", "callback", "getType", "onGYNetEnd", "", "netId", "errType", "errCode", "errMsg", "Lcom/tencent/mm/network/IReqResp;", "cookie", "", "plugin-appbrand-integration_release"})
 public final class f
   extends n
   implements k
 {
   private final String TAG;
-  private com.tencent.mm.al.f gzH;
-  private final boolean lVj;
+  private com.tencent.mm.ak.f gCo;
+  private final boolean lZM;
   private final b rr;
   
   public f(boolean paramBoolean)
   {
     AppMethodBeat.i(50895);
-    this.lVj = paramBoolean;
+    this.lZM = paramBoolean;
     this.TAG = "MicroMsg.webview.NetSceneReportOpenWxaOrder";
     Object localObject = new b.a();
-    cuj localcuj = new cuj();
-    localcuj.Hmh = this.lVj;
-    ((b.a)localObject).c((a)localcuj);
-    ((b.a)localObject).d((a)new cuk());
-    ((b.a)localObject).Dl("/cgi-bin/mmbiz-bin/wxaboss/reportopenwxaorder");
-    ((b.a)localObject).oP(1954);
-    ((b.a)localObject).oR(0);
-    ((b.a)localObject).oS(0);
-    localObject = ((b.a)localObject).aDC();
+    cvd localcvd = new cvd();
+    localcvd.HFH = this.lZM;
+    ((b.a)localObject).c((a)localcvd);
+    ((b.a)localObject).d((a)new cve());
+    ((b.a)localObject).DN("/cgi-bin/mmbiz-bin/wxaboss/reportopenwxaorder");
+    ((b.a)localObject).oS(1954);
+    ((b.a)localObject).oU(0);
+    ((b.a)localObject).oV(0);
+    localObject = ((b.a)localObject).aDS();
     p.g(localObject, "builder.buildInstance()");
     this.rr = ((b)localObject);
     AppMethodBeat.o(50895);
   }
   
-  public final int doScene(e parame, com.tencent.mm.al.f paramf)
+  public final int doScene(e parame, com.tencent.mm.ak.f paramf)
   {
     AppMethodBeat.i(50893);
-    this.gzH = paramf;
+    this.gCo = paramf;
     int i = dispatch(parame, (q)this.rr, (k)this);
     AppMethodBeat.o(50893);
     return i;
@@ -61,8 +61,8 @@ public final class f
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(50894);
-    ad.i(this.TAG, "errType = %d, errCode = %d, errMsg = %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    paramq = this.gzH;
+    ae.i(this.TAG, "errType = %d, errCode = %d, errMsg = %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    paramq = this.gCo;
     if (paramq != null)
     {
       paramq.onSceneEnd(paramInt2, paramInt3, paramString, (n)this);

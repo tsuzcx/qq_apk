@@ -19,14 +19,14 @@ public class PlayerLayer
   
   public PlayerLayer(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(218626);
+    AppMethodBeat.i(215266);
     this.needReleaseSurface = false;
     this.readyListener = null;
     this.surface = new Surface(paramSurfaceTexture);
     this.needReleaseSurface = true;
     this.surfaceWidth = paramInt1;
     this.surfaceHeight = paramInt2;
-    AppMethodBeat.o(218626);
+    AppMethodBeat.o(215266);
   }
   
   public PlayerLayer(Surface paramSurface, int paramInt1, int paramInt2)
@@ -75,21 +75,21 @@ public class PlayerLayer
   
   void release()
   {
-    AppMethodBeat.i(218628);
+    AppMethodBeat.i(215268);
     if (this.needReleaseSurface) {
       this.surface.release();
     }
-    AppMethodBeat.o(218628);
+    AppMethodBeat.o(215268);
   }
   
   public void setPlayer(Player paramPlayer)
   {
-    AppMethodBeat.i(218627);
+    AppMethodBeat.i(215267);
     this.player = paramPlayer;
     if (paramPlayer != null) {
       paramPlayer.bindLayer(this);
     }
-    AppMethodBeat.o(218627);
+    AppMethodBeat.o(215267);
   }
   
   public void setReadyForDisplay(PlayerLayerReadyListener paramPlayerLayerReadyListener)

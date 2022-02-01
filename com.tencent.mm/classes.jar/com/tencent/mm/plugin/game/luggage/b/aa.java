@@ -10,8 +10,8 @@ import com.tencent.mm.plugin.webview.luggage.jsapi.bq.a;
 import com.tencent.mm.plugin.webview.luggage.jsapi.br;
 import com.tencent.mm.plugin.webview.ui.tools.game.c;
 import com.tencent.mm.plugin.webview.ui.tools.game.c.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import org.json.JSONObject;
 
 public class aa
@@ -38,10 +38,10 @@ public class aa
     {
       str2 = ((JSONObject)localObject).optString("reportFormatData");
       localObject = ((JSONObject)localObject).optString("reportTabsFormatData");
-      if (!bt.isNullOrNil(str1)) {
+      if (!bu.isNullOrNil(str1)) {
         break label107;
       }
-      ad.e("MicroMsg.JsApiReportGamePageTime", "reportId is null or nil");
+      ae.e("MicroMsg.JsApiReportGamePageTime", "reportId is null or nil");
       parama.a("invalid_reportId", null);
       AppMethodBeat.o(83087);
       return;
@@ -49,26 +49,26 @@ public class aa
       break;
     }
     label107:
-    if ((bt.isNullOrNil(str2)) && (bt.isNullOrNil((String)localObject)))
+    if ((bu.isNullOrNil(str2)) && (bu.isNullOrNil((String)localObject)))
     {
-      ad.e("MicroMsg.JsApiReportGamePageTime", "reportFormatData && reportTabsFormatData is null or nil");
+      ae.e("MicroMsg.JsApiReportGamePageTime", "reportFormatData && reportTabsFormatData is null or nil");
       parama.a("invalid_reportFormatData_reportTabsFormatData", null);
       AppMethodBeat.o(83087);
       return;
     }
-    ad.i("MicroMsg.JsApiReportGamePageTime", "reportGamePageTime, reportId:%s, reportInstantly:%b, reportTimeBegin:%b, reportFormatData:(%s), reportTabsFormatData(%s)", new Object[] { str1, Boolean.valueOf(bool1), Boolean.valueOf(bool2), str2, localObject });
+    ae.i("MicroMsg.JsApiReportGamePageTime", "reportGamePageTime, reportId:%s, reportInstantly:%b, reportTimeBegin:%b, reportFormatData:(%s), reportTabsFormatData(%s)", new Object[] { str1, Boolean.valueOf(bool1), Boolean.valueOf(bool2), str2, localObject });
     Bundle localBundle = new Bundle();
     localBundle.putString("game_page_report_id", str1);
     localBundle.putBoolean("game_page_report_instantly", bool1);
     localBundle.putBoolean("game_page_report_time_begin", bool2);
     localBundle.putString("game_page_report_format_data", str2);
     localBundle.putString("game_page_report_tabs_format_data", (String)localObject);
-    ((g)parama.chg).tVy.EiG.aZ(localBundle);
+    ((g)parama.chg).ugv.EAK.ba(localBundle);
     parama.a("", null);
     AppMethodBeat.o(83087);
   }
   
-  public final int ccO()
+  public final int ced()
   {
     return 0;
   }

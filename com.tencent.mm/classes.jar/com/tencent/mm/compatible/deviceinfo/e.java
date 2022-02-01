@@ -12,9 +12,9 @@ final class e
     d.a.a locala = new d.a.a();
     try
     {
-      locala.fYS = w.e(paramLooper);
-      locala.dGc = 0;
-      if (locala.fYS == null)
+      locala.gaZ = w.e(paramLooper);
+      locala.dHi = 0;
+      if (locala.gaZ == null)
       {
         AppMethodBeat.o(155648);
         return null;

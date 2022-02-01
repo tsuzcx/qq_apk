@@ -2,14 +2,14 @@ package kotlinx.coroutines;
 
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"DefaultDelay", "Lkotlinx/coroutines/Delay;", "getDefaultDelay", "()Lkotlinx/coroutines/Delay;", "kotlinx-coroutines-core"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"DefaultDelay", "Lkotlinx/coroutines/Delay;", "getDefaultDelay", "()Lkotlinx/coroutines/Delay;", "kotlinx-coroutines-core"})
 public final class ap
 {
-  private static final as NIg = (as)ao.NIf;
+  private static final as Ofm = (as)ao.Ofl;
   
-  public static final as gvk()
+  public static final as gzM()
   {
-    return NIg;
+    return Ofm;
   }
 }
 

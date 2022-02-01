@@ -3,11 +3,11 @@ package com.tencent.mm.plugin.downloader.c.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public long pjZ;
-  public long pka;
-  public String pkb;
+  public long pqE;
+  public long pqF;
+  public String pqG;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -15,20 +15,20 @@ public final class a
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aY(1, this.pjZ);
-      paramVarArgs.aY(2, this.pka);
-      if (this.pkb != null) {
-        paramVarArgs.d(3, this.pkb);
+      paramVarArgs.aZ(1, this.pqE);
+      paramVarArgs.aZ(2, this.pqF);
+      if (this.pqG != null) {
+        paramVarArgs.d(3, this.pqG);
       }
       AppMethodBeat.o(153058);
       return 0;
     }
     if (paramInt == 1)
     {
-      int i = f.a.a.b.b.a.p(1, this.pjZ) + 0 + f.a.a.b.b.a.p(2, this.pka);
+      int i = f.a.a.b.b.a.p(1, this.pqE) + 0 + f.a.a.b.b.a.p(2, this.pqF);
       paramInt = i;
-      if (this.pkb != null) {
-        paramInt = i + f.a.a.b.b.a.e(3, this.pkb);
+      if (this.pqG != null) {
+        paramInt = i + f.a.a.b.b.a.e(3, this.pqG);
       }
       AppMethodBeat.o(153058);
       return paramInt;
@@ -36,9 +36,9 @@ public final class a
     if (paramInt == 2)
     {
       paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gxE();
+          paramVarArgs.gCg();
         }
       }
       AppMethodBeat.o(153058);
@@ -54,15 +54,15 @@ public final class a
         AppMethodBeat.o(153058);
         return -1;
       case 1: 
-        locala1.pjZ = locala.NPN.zd();
+        locala1.pqE = locala.OmT.zd();
         AppMethodBeat.o(153058);
         return 0;
       case 2: 
-        locala1.pka = locala.NPN.zd();
+        locala1.pqF = locala.OmT.zd();
         AppMethodBeat.o(153058);
         return 0;
       }
-      locala1.pkb = locala.NPN.readString();
+      locala1.pqG = locala.OmT.readString();
       AppMethodBeat.o(153058);
       return 0;
     }

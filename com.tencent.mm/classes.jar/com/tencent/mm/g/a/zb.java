@@ -6,7 +6,8 @@ import com.tencent.mm.sdk.b.b;
 public final class zb
   extends b
 {
-  public a dOh;
+  public a dPf;
+  public b dPg;
   
   public zb()
   {
@@ -15,17 +16,23 @@ public final class zb
   
   private zb(byte paramByte)
   {
-    AppMethodBeat.i(104423);
-    this.dOh = new a();
-    this.IbR = false;
+    AppMethodBeat.i(116059);
+    this.dPf = new a();
+    this.dPg = new b();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(104423);
+    AppMethodBeat.o(116059);
   }
   
   public static final class a
   {
-    public String[] dOi;
-    public int dkM;
+    public String dyA;
+  }
+  
+  public static final class b
+  {
+    public boolean dPh;
+    public int status;
   }
 }
 

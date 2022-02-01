@@ -12,25 +12,25 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/emojicapture/ui/layout/StickerLayoutManager;", "Landroid/support/v7/widget/LinearLayoutManager;", "context", "Landroid/content/Context;", "orientation", "", "(Landroid/content/Context;I)V", "TAG", "", "itemPadding", "itemWidth", "onLayoutChildren", "", "recycler", "Landroid/support/v7/widget/RecyclerView$Recycler;", "Landroid/support/v7/widget/RecyclerView;", "state", "Landroid/support/v7/widget/RecyclerView$State;", "scrollHorizontallyBy", "dx", "scrollToPosition", "position", "smoothScrollToPosition", "recyclerView", "updateChild", "plugin-emojicapture_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/emojicapture/ui/layout/StickerLayoutManager;", "Landroid/support/v7/widget/LinearLayoutManager;", "context", "Landroid/content/Context;", "orientation", "", "(Landroid/content/Context;I)V", "TAG", "", "itemPadding", "itemWidth", "onLayoutChildren", "", "recycler", "Landroid/support/v7/widget/RecyclerView$Recycler;", "Landroid/support/v7/widget/RecyclerView;", "state", "Landroid/support/v7/widget/RecyclerView$State;", "scrollHorizontallyBy", "dx", "scrollToPosition", "position", "smoothScrollToPosition", "recyclerView", "updateChild", "plugin-emojicapture_release"})
 public final class StickerLayoutManager
   extends LinearLayoutManager
 {
   private final String TAG;
   private final int itemPadding;
-  private final int oQH;
+  private final int oXj;
   
   public StickerLayoutManager(Context paramContext)
   {
     super(0);
     AppMethodBeat.i(889);
     this.TAG = "MicroMsg.StickerLayoutManager";
-    this.oQH = paramContext.getResources().getDimensionPixelSize(2131166206);
+    this.oXj = paramContext.getResources().getDimensionPixelSize(2131166206);
     this.itemPadding = paramContext.getResources().getDimensionPixelSize(2131165303);
     AppMethodBeat.o(889);
   }
   
-  private final void ckJ()
+  private final void clZ()
   {
     AppMethodBeat.i(888);
     int i = 0;
@@ -65,7 +65,7 @@ public final class StickerLayoutManager
     p.h(paramo, "recycler");
     p.h(paramt, "state");
     paramInt = super.a(paramInt, paramo, paramt);
-    ckJ();
+    clZ();
     AppMethodBeat.o(885);
     return paramInt;
   }
@@ -89,20 +89,20 @@ public final class StickerLayoutManager
     p.h(paramo, "recycler");
     p.h(paramt, "state");
     super.c(paramo, paramt);
-    ckJ();
+    clZ();
     AppMethodBeat.o(884);
   }
   
   public final void ca(int paramInt)
   {
     AppMethodBeat.i(887);
-    ag(paramInt, (getWidth() - this.oQH) / 2 - this.itemPadding);
+    ag(paramInt, (getWidth() - this.oXj) / 2 - this.itemPadding);
     AppMethodBeat.o(887);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.emojicapture.ui.layout.StickerLayoutManager
  * JD-Core Version:    0.7.0.1
  */

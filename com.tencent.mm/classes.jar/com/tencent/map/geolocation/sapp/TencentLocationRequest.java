@@ -26,7 +26,7 @@ public final class TencentLocationRequest
   
   public TencentLocationRequest(TencentLocationRequest paramTencentLocationRequest)
   {
-    AppMethodBeat.i(190571);
+    AppMethodBeat.i(210836);
     this.mInterval = paramTencentLocationRequest.mInterval;
     this.mRequestLevel = paramTencentLocationRequest.mRequestLevel;
     this.mAllowCache = paramTencentLocationRequest.mAllowCache;
@@ -39,12 +39,12 @@ public final class TencentLocationRequest
     this.mSmallAppKey = paramTencentLocationRequest.mSmallAppKey;
     this.mExtras = new Bundle();
     this.mExtras.putAll(paramTencentLocationRequest.mExtras);
-    AppMethodBeat.o(190571);
+    AppMethodBeat.o(210836);
   }
   
   public static void copy(TencentLocationRequest paramTencentLocationRequest1, TencentLocationRequest paramTencentLocationRequest2)
   {
-    AppMethodBeat.i(190572);
+    AppMethodBeat.i(210837);
     paramTencentLocationRequest1.mInterval = paramTencentLocationRequest2.mInterval;
     paramTencentLocationRequest1.mRequestLevel = paramTencentLocationRequest2.mRequestLevel;
     paramTencentLocationRequest1.mAllowCache = paramTencentLocationRequest2.mAllowCache;
@@ -57,12 +57,12 @@ public final class TencentLocationRequest
     paramTencentLocationRequest1.mSmallAppKey = paramTencentLocationRequest2.mSmallAppKey;
     paramTencentLocationRequest1.mExtras.clear();
     paramTencentLocationRequest1.mExtras.putAll(paramTencentLocationRequest2.mExtras);
-    AppMethodBeat.o(190572);
+    AppMethodBeat.o(210837);
   }
   
   public static TencentLocationRequest create()
   {
-    AppMethodBeat.i(190573);
+    AppMethodBeat.i(210838);
     TencentLocationRequest localTencentLocationRequest = new TencentLocationRequest();
     localTencentLocationRequest.mInterval = 10000L;
     localTencentLocationRequest.mRequestLevel = 1;
@@ -75,7 +75,7 @@ public final class TencentLocationRequest
     localTencentLocationRequest.mQQ = "";
     localTencentLocationRequest.mSmallAppKey = "";
     localTencentLocationRequest.mExtras = new Bundle();
-    AppMethodBeat.o(190573);
+    AppMethodBeat.o(210838);
     return localTencentLocationRequest;
   }
   
@@ -96,13 +96,13 @@ public final class TencentLocationRequest
   
   public final String getPhoneNumber()
   {
-    AppMethodBeat.i(190578);
+    AppMethodBeat.i(210843);
     String str2 = this.mExtras.getString("phoneNumber");
     String str1 = str2;
     if (str2 == null) {
       str1 = "";
     }
-    AppMethodBeat.o(190578);
+    AppMethodBeat.o(210843);
     return str1;
   }
   
@@ -172,27 +172,27 @@ public final class TencentLocationRequest
   
   public final TencentLocationRequest setInterval(long paramLong)
   {
-    AppMethodBeat.i(190574);
+    AppMethodBeat.i(210839);
     if (paramLong >= 0L)
     {
       this.mInterval = paramLong;
-      AppMethodBeat.o(190574);
+      AppMethodBeat.o(210839);
       return this;
     }
     IllegalArgumentException localIllegalArgumentException = new IllegalArgumentException("interval should >= 0");
-    AppMethodBeat.o(190574);
+    AppMethodBeat.o(210839);
     throw localIllegalArgumentException;
   }
   
   public final TencentLocationRequest setPhoneNumber(String paramString)
   {
-    AppMethodBeat.i(190577);
+    AppMethodBeat.i(210842);
     String str = paramString;
     if (paramString == null) {
       str = "";
     }
     this.mExtras.putString("phoneNumber", str);
-    AppMethodBeat.o(190577);
+    AppMethodBeat.o(210842);
     return this;
   }
   
@@ -204,25 +204,25 @@ public final class TencentLocationRequest
   
   public final TencentLocationRequest setRequestLevel(int paramInt)
   {
-    AppMethodBeat.i(190575);
+    AppMethodBeat.i(210840);
     if (isAllowedLevel(paramInt))
     {
       this.mRequestLevel = paramInt;
-      AppMethodBeat.o(190575);
+      AppMethodBeat.o(210840);
       return this;
     }
     IllegalArgumentException localIllegalArgumentException = new IllegalArgumentException("request_level: " + paramInt + " not supported!");
-    AppMethodBeat.o(190575);
+    AppMethodBeat.o(210840);
     throw localIllegalArgumentException;
   }
   
   public final TencentLocationRequest setSmallAppKey(String paramString)
   {
-    AppMethodBeat.i(190576);
+    AppMethodBeat.i(210841);
     if (!TextUtils.isEmpty(paramString)) {
       this.mSmallAppKey = paramString;
     }
-    AppMethodBeat.o(190576);
+    AppMethodBeat.o(210841);
     return this;
   }
   
@@ -233,9 +233,9 @@ public final class TencentLocationRequest
   
   public final String toString()
   {
-    AppMethodBeat.i(190579);
+    AppMethodBeat.i(210844);
     String str = "TencentLocationRequest {interval=" + this.mInterval + "ms,level=" + this.mRequestLevel + ",allowCache=" + this.mAllowCache + ",allowGps=" + this.mAllowGps + ",allowDirection=" + this.mAllowDirection + ",QQ=" + this.mQQ + "}";
-    AppMethodBeat.o(190579);
+    AppMethodBeat.o(210844);
     return str;
   }
 }

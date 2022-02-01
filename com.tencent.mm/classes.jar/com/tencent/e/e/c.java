@@ -10,7 +10,7 @@ public final class c
   public final void execute(Runnable paramRunnable)
   {
     AppMethodBeat.i(183281);
-    h.LTJ.aS(paramRunnable);
+    h.MqF.aP(paramRunnable);
     AppMethodBeat.o(183281);
   }
   

@@ -4,14 +4,14 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.loader.j.b;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.ar;
 
 public final class c
 {
-  private static boolean[] ERx = new boolean[21];
+  private static boolean[] FjS = new boolean[21];
   
   /* Error */
-  private static boolean aMo(java.lang.String paramString)
+  private static boolean aNK(java.lang.String paramString)
   {
     // Byte code:
     //   0: iconst_1
@@ -19,7 +19,7 @@ public final class c
     //   2: sipush 31176
     //   5: invokestatic 23	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: aload_0
-    //   9: invokestatic 28	com/tencent/mm/vfs/i:fv	(Ljava/lang/String;)Z
+    //   9: invokestatic 28	com/tencent/mm/vfs/o:fB	(Ljava/lang/String;)Z
     //   12: ifne +11 -> 23
     //   15: sipush 31176
     //   18: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -37,37 +37,37 @@ public final class c
     //   44: iload_3
     //   45: istore_2
     //   46: aload 9
-    //   48: invokestatic 28	com/tencent/mm/vfs/i:fv	(Ljava/lang/String;)Z
+    //   48: invokestatic 28	com/tencent/mm/vfs/o:fB	(Ljava/lang/String;)Z
     //   51: ifeq +30 -> 81
     //   54: iload_3
     //   55: istore_2
     //   56: aload 9
-    //   58: invokestatic 49	com/tencent/mm/vfs/i:deleteFile	(Ljava/lang/String;)Z
+    //   58: invokestatic 49	com/tencent/mm/vfs/o:deleteFile	(Ljava/lang/String;)Z
     //   61: ifne +20 -> 81
     //   64: ldc 51
     //   66: ldc 53
     //   68: aload 9
     //   70: invokestatic 59	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
     //   73: invokevirtual 63	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   76: invokestatic 69	com/tencent/mm/sdk/platformtools/ad:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   76: invokestatic 69	com/tencent/mm/sdk/platformtools/ae:w	(Ljava/lang/String;Ljava/lang/String;)V
     //   79: iconst_0
     //   80: istore_2
     //   81: aload 9
-    //   83: invokestatic 72	com/tencent/mm/vfs/i:aYs	(Ljava/lang/String;)Z
+    //   83: invokestatic 72	com/tencent/mm/vfs/o:aZV	(Ljava/lang/String;)Z
     //   86: ifne +20 -> 106
     //   89: ldc 51
     //   91: ldc 74
     //   93: aload 9
     //   95: invokestatic 59	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
     //   98: invokevirtual 63	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   101: invokestatic 69	com/tencent/mm/sdk/platformtools/ad:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   101: invokestatic 69	com/tencent/mm/sdk/platformtools/ae:w	(Ljava/lang/String;Ljava/lang/String;)V
     //   104: iconst_0
     //   105: istore_2
     //   106: new 76	java/io/DataOutputStream
     //   109: dup
     //   110: aload 9
     //   112: iconst_0
-    //   113: invokestatic 80	com/tencent/mm/vfs/i:cX	(Ljava/lang/String;Z)Ljava/io/OutputStream;
+    //   113: invokestatic 80	com/tencent/mm/vfs/o:db	(Ljava/lang/String;Z)Ljava/io/OutputStream;
     //   116: invokespecial 83	java/io/DataOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   119: astore 5
     //   121: aload 5
@@ -78,7 +78,7 @@ public final class c
     //   132: new 91	java/io/DataInputStream
     //   135: dup
     //   136: aload 9
-    //   138: invokestatic 95	com/tencent/mm/vfs/i:openRead	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   138: invokestatic 95	com/tencent/mm/vfs/o:openRead	(Ljava/lang/String;)Ljava/io/InputStream;
     //   141: invokespecial 98	java/io/DataInputStream:<init>	(Ljava/io/InputStream;)V
     //   144: astore 4
     //   146: aload 4
@@ -96,7 +96,7 @@ public final class c
     //   168: astore 6
     //   170: iconst_1
     //   171: iload_1
-    //   172: invokestatic 108	com/tencent/mm/sdk/platformtools/bt:jx	(II)Z
+    //   172: invokestatic 108	com/tencent/mm/sdk/platformtools/bu:jB	(II)Z
     //   175: ifne +27 -> 202
     //   178: aload 4
     //   180: astore 7
@@ -107,7 +107,7 @@ public final class c
     //   190: iload_1
     //   191: invokestatic 113	java/lang/String:valueOf	(I)Ljava/lang/String;
     //   194: invokevirtual 63	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   197: invokestatic 69	com/tencent/mm/sdk/platformtools/ad:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   197: invokestatic 69	com/tencent/mm/sdk/platformtools/ae:w	(Ljava/lang/String;Ljava/lang/String;)V
     //   200: iconst_0
     //   201: istore_3
     //   202: iload_3
@@ -117,7 +117,7 @@ public final class c
     //   208: aload 5
     //   210: astore 6
     //   212: aload 9
-    //   214: invokestatic 49	com/tencent/mm/vfs/i:deleteFile	(Ljava/lang/String;)Z
+    //   214: invokestatic 49	com/tencent/mm/vfs/o:deleteFile	(Ljava/lang/String;)Z
     //   217: ifne +138 -> 355
     //   220: aload 4
     //   222: astore 7
@@ -128,7 +128,7 @@ public final class c
     //   232: aload 9
     //   234: invokestatic 59	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
     //   237: invokevirtual 63	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   240: invokestatic 69	com/tencent/mm/sdk/platformtools/ad:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   240: invokestatic 69	com/tencent/mm/sdk/platformtools/ae:w	(Ljava/lang/String;Ljava/lang/String;)V
     //   243: aload 4
     //   245: astore 7
     //   247: aload 5
@@ -142,7 +142,7 @@ public final class c
     //   265: astore 6
     //   267: getstatic 127	android/os/Build:MANUFACTURER	Ljava/lang/String;
     //   270: ldc 129
-    //   272: invokestatic 133	com/tencent/mm/sdk/platformtools/bt:bI	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   272: invokestatic 133	com/tencent/mm/sdk/platformtools/bu:bI	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   275: invokevirtual 136	java/lang/String:toLowerCase	()Ljava/lang/String;
     //   278: ldc 138
     //   280: invokevirtual 136	java/lang/String:toLowerCase	()Ljava/lang/String;
@@ -154,7 +154,7 @@ public final class c
     //   295: astore 6
     //   297: ldc 51
     //   299: ldc 144
-    //   301: invokestatic 69	com/tencent/mm/sdk/platformtools/ad:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   301: invokestatic 69	com/tencent/mm/sdk/platformtools/ae:w	(Ljava/lang/String;Ljava/lang/String;)V
     //   304: aload 4
     //   306: astore 7
     //   308: aload 5
@@ -196,7 +196,7 @@ public final class c
     //   384: ldc 165
     //   386: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   389: invokevirtual 46	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   392: invokestatic 69	com/tencent/mm/sdk/platformtools/ad:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   392: invokestatic 69	com/tencent/mm/sdk/platformtools/ae:w	(Ljava/lang/String;Ljava/lang/String;)V
     //   395: sipush 31176
     //   398: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   401: iload_2
@@ -210,7 +210,7 @@ public final class c
     //   414: ldc 129
     //   416: iconst_0
     //   417: anewarray 4	java/lang/Object
-    //   420: invokestatic 169	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   420: invokestatic 169	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   423: goto -63 -> 360
     //   426: astore 4
     //   428: ldc 51
@@ -218,7 +218,7 @@ public final class c
     //   432: ldc 129
     //   434: iconst_0
     //   435: anewarray 4	java/lang/Object
-    //   438: invokestatic 169	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   438: invokestatic 169	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   441: goto -76 -> 365
     //   444: astore 8
     //   446: aconst_null
@@ -237,7 +237,7 @@ public final class c
     //   471: invokevirtual 63	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
     //   474: iconst_0
     //   475: anewarray 4	java/lang/Object
-    //   478: invokestatic 169	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   478: invokestatic 169	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   481: aload 5
     //   483: ifnull +8 -> 491
     //   486: aload 5
@@ -255,7 +255,7 @@ public final class c
     //   512: ldc 129
     //   514: iconst_0
     //   515: anewarray 4	java/lang/Object
-    //   518: invokestatic 169	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   518: invokestatic 169	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   521: goto -30 -> 491
     //   524: astore 4
     //   526: ldc 51
@@ -263,7 +263,7 @@ public final class c
     //   530: ldc 129
     //   532: iconst_0
     //   533: anewarray 4	java/lang/Object
-    //   536: invokestatic 169	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   536: invokestatic 169	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   539: iconst_0
     //   540: istore_2
     //   541: goto -176 -> 365
@@ -290,7 +290,7 @@ public final class c
     //   585: ldc 129
     //   587: iconst_0
     //   588: anewarray 4	java/lang/Object
-    //   591: invokestatic 169	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   591: invokestatic 169	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   594: goto -33 -> 561
     //   597: astore 4
     //   599: ldc 51
@@ -298,7 +298,7 @@ public final class c
     //   603: ldc 129
     //   605: iconst_0
     //   606: anewarray 4	java/lang/Object
-    //   609: invokestatic 169	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   609: invokestatic 169	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   612: goto -41 -> 571
     //   615: astore_0
     //   616: aconst_null
@@ -385,17 +385,17 @@ public final class c
     //   349	355	638	java/io/IOException
   }
   
-  public static boolean fbl()
+  public static boolean feZ()
   {
     AppMethodBeat.i(31175);
-    g.ajD();
-    if (!g.ajC().isSDCardAvailable())
+    g.ajS();
+    if (!g.ajR().isSDCardAvailable())
     {
       AppMethodBeat.o(31175);
       return true;
     }
-    boolean bool = aMo(b.arU());
-    g.ajF().ay(new Runnable()
+    boolean bool = aNK(b.asj());
+    g.ajU().aw(new Runnable()
     {
       public final void run()
       {

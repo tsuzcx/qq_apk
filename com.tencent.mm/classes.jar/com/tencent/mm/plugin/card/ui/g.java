@@ -16,32 +16,32 @@ import java.util.List;
 public final class g
   extends BaseAdapter
 {
-  private View.OnClickListener jtG;
+  private View.OnClickListener jwB;
   Context mContext;
-  c oCY;
-  List<CardInfo> oDj;
-  private boolean oIf;
-  List<Boolean> oIg;
-  a oIh;
-  private boolean ozb;
+  private boolean oFD;
+  c oJA;
+  List<CardInfo> oJL;
+  private boolean oOH;
+  List<Boolean> oOI;
+  a oOJ;
   
   public g(Context paramContext)
   {
     AppMethodBeat.i(113473);
-    this.oDj = new ArrayList();
-    this.oIf = false;
-    this.oIg = new ArrayList();
-    this.ozb = true;
-    this.jtG = new g.1(this);
-    this.oCY = new l(paramContext, this);
+    this.oJL = new ArrayList();
+    this.oOH = false;
+    this.oOI = new ArrayList();
+    this.oFD = true;
+    this.jwB = new g.1(this);
+    this.oJA = new l(paramContext, this);
     this.mContext = paramContext;
     AppMethodBeat.o(113473);
   }
   
-  public final CardInfo Ay(int paramInt)
+  public final CardInfo AK(int paramInt)
   {
     AppMethodBeat.i(113475);
-    CardInfo localCardInfo = (CardInfo)this.oDj.get(paramInt);
+    CardInfo localCardInfo = (CardInfo)this.oJL.get(paramInt);
     AppMethodBeat.o(113475);
     return localCardInfo;
   }
@@ -49,7 +49,7 @@ public final class g
   public final int getCount()
   {
     AppMethodBeat.i(113474);
-    int i = this.oDj.size();
+    int i = this.oJL.size();
     AppMethodBeat.o(113474);
     return i;
   }
@@ -62,25 +62,25 @@ public final class g
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(113476);
-    paramViewGroup = Ay(paramInt);
-    paramViewGroup.ozb = this.ozb;
-    paramView = this.oCY.a(paramInt, paramView, paramViewGroup);
-    if ((this.oIf) && (paramViewGroup.bTz()))
+    paramViewGroup = AK(paramInt);
+    paramViewGroup.oFD = this.oFD;
+    paramView = this.oJA.a(paramInt, paramView, paramViewGroup);
+    if ((this.oOH) && (paramViewGroup.bUO()))
     {
-      this.oCY.aa(paramView, 0);
-      if (((Boolean)this.oIg.get(paramInt)).booleanValue())
+      this.oJA.aa(paramView, 0);
+      if (((Boolean)this.oOI.get(paramInt)).booleanValue())
       {
-        this.oCY.Z(paramView, 2131231424);
-        this.oCY.a(paramView, paramInt, this.jtG);
+        this.oJA.Z(paramView, 2131231424);
+        this.oJA.a(paramView, paramInt, this.jwB);
       }
     }
     for (;;)
     {
       AppMethodBeat.o(113476);
       return paramView;
-      this.oCY.Z(paramView, 2131231425);
+      this.oJA.Z(paramView, 2131231425);
       break;
-      this.oCY.aa(paramView, 8);
+      this.oJA.aa(paramView, 8);
     }
   }
   

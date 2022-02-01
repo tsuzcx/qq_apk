@@ -50,53 +50,53 @@ import java.util.List;
 public class a
   implements View.OnKeyListener, AdapterView.OnItemClickListener, PopupWindow.OnDismissListener
 {
-  private static boolean sKx = false;
-  private static int sPX;
-  private static int sPY;
-  private l Ekt;
-  private View JYz;
-  private MMListPopupWindow Jzo;
-  public n.e KJz;
-  public PopupWindow.OnDismissListener KLB;
-  private b Lac;
-  private o Lad;
-  private o Lae;
-  private int Laf;
-  private boolean Lag;
-  public View Lah;
-  public View.OnCreateContextMenuListener Lai;
-  public n.c Laj;
-  public boolean Lak;
-  public boolean Lal;
-  public boolean Lam;
-  public boolean Lan;
-  public boolean Lao;
-  private boolean Lap;
-  public a Laq;
-  public boolean Lar;
-  public boolean Las;
-  private DisplayMetrics cOq;
+  private static int jwh;
+  private static int jwi;
+  private static boolean sVK = false;
+  private l ECx;
+  private MMListPopupWindow JUe;
+  private View KuS;
+  public n.e LfT;
+  public PopupWindow.OnDismissListener LhV;
+  private b LwA;
+  private o LwB;
+  private o LwC;
+  private int LwD;
+  private boolean LwE;
+  public View LwF;
+  public View.OnCreateContextMenuListener LwG;
+  public n.c LwH;
+  public boolean LwI;
+  public boolean LwJ;
+  public boolean LwK;
+  public boolean LwL;
+  public boolean LwM;
+  private boolean LwN;
+  public a LwO;
+  public boolean LwP;
+  public boolean LwQ;
+  private DisplayMetrics cPa;
   private Context mContext;
   private LayoutInflater mInflater;
   public long startTime;
-  private View vno;
+  private View vzt;
   
   public a(Context paramContext)
   {
     AppMethodBeat.i(159475);
     this.mContext = null;
-    this.JYz = null;
-    this.Lac = null;
-    this.Lag = false;
-    this.Lak = false;
-    this.Lal = false;
-    this.Lam = false;
-    this.Lan = false;
-    this.Lao = true;
-    this.Lap = true;
+    this.KuS = null;
+    this.LwA = null;
+    this.LwE = false;
+    this.LwI = false;
+    this.LwJ = false;
+    this.LwK = false;
+    this.LwL = false;
+    this.LwM = true;
+    this.LwN = true;
     this.startTime = 0L;
-    this.Lar = true;
-    this.Las = false;
+    this.LwP = true;
+    this.LwQ = false;
     this.mContext = paramContext;
     this.mInflater = ((LayoutInflater)paramContext.getSystemService("layout_inflater"));
     initView();
@@ -107,23 +107,23 @@ public class a
   {
     AppMethodBeat.i(159474);
     this.mContext = null;
-    this.JYz = null;
-    this.Lac = null;
-    this.Lag = false;
-    this.Lak = false;
-    this.Lal = false;
-    this.Lam = false;
-    this.Lan = false;
-    this.Lao = true;
-    this.Lap = true;
+    this.KuS = null;
+    this.LwA = null;
+    this.LwE = false;
+    this.LwI = false;
+    this.LwJ = false;
+    this.LwK = false;
+    this.LwL = false;
+    this.LwM = true;
+    this.LwN = true;
     this.startTime = 0L;
-    this.Lar = true;
-    this.Las = false;
+    this.LwP = true;
+    this.LwQ = false;
     this.mContext = paramContext;
-    this.JYz = paramView;
+    this.KuS = paramView;
     this.mInflater = ((LayoutInflater)paramContext.getSystemService("layout_inflater"));
     initView();
-    fMI();
+    fRc();
     AppMethodBeat.o(159474);
   }
   
@@ -165,10 +165,10 @@ public class a
     }
   }
   
-  private boolean fMG()
+  private boolean fRa()
   {
     AppMethodBeat.i(159482);
-    if ((this.Lad != null) && (this.Lad.isShowing()))
+    if ((this.LwB != null) && (this.LwB.isShowing()))
     {
       AppMethodBeat.o(159482);
       return true;
@@ -177,43 +177,43 @@ public class a
     return false;
   }
   
-  private boolean fMH()
+  private boolean fRb()
   {
-    AppMethodBeat.i(192653);
-    if ((this.Lae != null) && (this.Lae.isShowing()))
+    AppMethodBeat.i(200423);
+    if ((this.LwC != null) && (this.LwC.isShowing()))
     {
-      AppMethodBeat.o(192653);
+      AppMethodBeat.o(200423);
       return true;
     }
-    AppMethodBeat.o(192653);
+    AppMethodBeat.o(200423);
     return false;
   }
   
-  private void fMI()
+  private void fRc()
   {
     AppMethodBeat.i(159486);
-    this.JYz.setOnTouchListener(new View.OnTouchListener()
+    this.KuS.setOnTouchListener(new View.OnTouchListener()
     {
       public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
       {
-        AppMethodBeat.i(192649);
+        AppMethodBeat.i(200419);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
         localb.bd(paramAnonymousView);
         localb.bd(paramAnonymousMotionEvent);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/widget/menu/MMPopupMenu$8", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahq());
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/widget/menu/MMPopupMenu$8", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahF());
         switch (paramAnonymousMotionEvent.getAction() & 0xFF)
         {
         }
         for (;;)
         {
           com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/mm/ui/widget/menu/MMPopupMenu$8", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
-          AppMethodBeat.o(192649);
+          AppMethodBeat.o(200419);
           return false;
-          a.afB((int)paramAnonymousMotionEvent.getRawX());
-          a.zt((int)paramAnonymousMotionEvent.getRawY());
+          a.agk((int)paramAnonymousMotionEvent.getRawX());
+          a.zC((int)paramAnonymousMotionEvent.getRawY());
           a.b(a.this, a.f(a.this));
-          a.Qc();
-          ap.i("MicroMsg.MMPopupMenu", "popmenu view set , x_down=" + a.dCV() + "y_down=" + a.bIU(), new Object[0]);
+          a.Qb();
+          ap.i("MicroMsg.MMPopupMenu", "popmenu view set , x_down=" + a.dGm() + "y_down=" + a.bJS(), new Object[0]);
         }
       }
     });
@@ -223,17 +223,17 @@ public class a
   private void initView()
   {
     AppMethodBeat.i(159485);
-    fBg();
-    this.Ekt = new l(this.mContext);
-    this.Lac = new b((byte)0);
-    this.cOq = this.mContext.getResources().getDisplayMetrics();
+    fFi();
+    this.ECx = new l(this.mContext);
+    this.LwA = new b((byte)0);
+    this.cPa = this.mContext.getResources().getDisplayMetrics();
     AppMethodBeat.o(159485);
   }
   
   private boolean isShowing()
   {
     AppMethodBeat.i(159481);
-    if ((this.Jzo != null) && (this.Jzo.jtC.isShowing()))
+    if ((this.JUe != null) && (this.JUe.jwx.isShowing()))
     {
       AppMethodBeat.o(159481);
       return true;
@@ -242,10 +242,10 @@ public class a
     return false;
   }
   
-  private boolean kh(int paramInt1, int paramInt2)
+  private boolean ko(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(159479);
-    if ((isShowing()) || (fMG()) || (fMH()))
+    if ((isShowing()) || (fRa()) || (fRb()))
     {
       AppMethodBeat.o(159479);
       return false;
@@ -267,29 +267,29 @@ public class a
       AppMethodBeat.o(159479);
       return false;
     }
-    if ((this.Lal) && (this.Laj != null)) {
-      this.Laj.a(this.Ekt, this.JYz);
+    if ((this.LwJ) && (this.LwH != null)) {
+      this.LwH.a(this.ECx, this.KuS);
     }
     int k;
     for (;;)
     {
-      k = this.Lac.getCount() * this.mContext.getResources().getDimensionPixelSize(2131165567);
-      if ((k != 0) || (this.Lak) || (this.Lal)) {
+      k = this.LwA.getCount() * this.mContext.getResources().getDimensionPixelSize(2131165567);
+      if ((k != 0) || (this.LwI) || (this.LwJ)) {
         break;
       }
       AppMethodBeat.o(159479);
       return false;
-      if (this.Lai != null) {
-        this.Lai.onCreateContextMenu(this.Ekt, this.JYz, null);
+      if (this.LwG != null) {
+        this.LwG.onCreateContextMenu(this.ECx, this.KuS, null);
       }
     }
     int m = this.mContext.getResources().getDimensionPixelSize(2131166166);
-    i = b(this.Lac);
+    i = b(this.LwA);
     int j = aq.ay(this.mContext, 2131166572);
     if (i < j)
     {
       i = j;
-      if (this.Ekt.size() < 3) {
+      if (this.ECx.size() < 3) {
         break label742;
       }
     }
@@ -298,78 +298,78 @@ public class a
     label742:
     for (boolean bool = false;; bool = true)
     {
-      if (!this.Lag)
+      if (!this.LwE)
       {
-        if (this.Lah != null) {
-          this.Lah.setSelected(true);
+        if (this.LwF != null) {
+          this.LwF.setSelected(true);
         }
       }
       else
       {
-        if (!this.Lak) {
+        if (!this.LwI) {
           break label356;
         }
-        ki(paramInt1, paramInt2);
+        kp(paramInt1, paramInt2);
       }
       for (;;)
       {
         AppMethodBeat.o(159479);
         return true;
         break;
-        this.JYz.setSelected(true);
+        this.KuS.setSelected(true);
         break label321;
-        if (this.Lal)
+        if (this.LwJ)
         {
-          kj(paramInt1, paramInt2);
+          kq(paramInt1, paramInt2);
         }
         else
         {
           localObject = b.a(this.mContext, i, paramInt1, paramInt2, k, m, bool);
-          this.Laf = (paramInt2 - this.mContext.getResources().getDimensionPixelSize(2131166166));
-          ap.d("MicroMsg.MMPopupMenu", "showPointY=" + paramInt2 + "verticalOffset=" + this.Laf, new Object[0]);
-          this.Jzo = new MMListPopupWindow(this.mContext, null, 0);
-          this.Jzo.setOnDismissListener(this);
-          this.Jzo.arf = new AdapterView.OnItemClickListener()
+          this.LwD = (paramInt2 - this.mContext.getResources().getDimensionPixelSize(2131166166));
+          ap.d("MicroMsg.MMPopupMenu", "showPointY=" + paramInt2 + "verticalOffset=" + this.LwD, new Object[0]);
+          this.JUe = new MMListPopupWindow(this.mContext, null, 0);
+          this.JUe.setOnDismissListener(this);
+          this.JUe.arf = new AdapterView.OnItemClickListener()
           {
             public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
             {
-              AppMethodBeat.i(192646);
+              AppMethodBeat.i(200416);
               com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
               localb.bd(paramAnonymousAdapterView);
               localb.bd(paramAnonymousView);
-              localb.mr(paramAnonymousInt);
-              localb.qY(paramAnonymousLong);
-              com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/widget/menu/MMPopupMenu$5", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.ahq());
+              localb.mu(paramAnonymousInt);
+              localb.rl(paramAnonymousLong);
+              com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/widget/menu/MMPopupMenu$5", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.ahF());
               if (a.b(a.this) != null) {
                 a.b(a.this).onMMMenuItemSelected(a.a(a.this).getItem(paramAnonymousInt), paramAnonymousInt);
               }
-              if ((a.c(a.this) != null) && (a.c(a.this).jtC.isShowing())) {
+              if ((a.c(a.this) != null) && (a.c(a.this).jwx.isShowing())) {
                 a.c(a.this).dismiss();
               }
               com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/widget/menu/MMPopupMenu$5", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
-              AppMethodBeat.o(192646);
+              AppMethodBeat.o(200416);
             }
           };
-          this.Jzo.setAdapter(this.Lac);
-          this.Jzo.setModal(this.Lar);
-          this.Jzo.aqZ = this.Las;
-          this.Jzo.setBackgroundDrawable(this.mContext.getResources().getDrawable(2131234275));
-          this.Jzo.setAnimationStyle(((b.a)localObject).Law);
-          this.Jzo.aqS = ((b.a)localObject).niD;
-          this.Jzo.setVerticalOffset(((b.a)localObject).Aqx);
-          this.Jzo.ard = this.JYz;
-          this.Jzo.setContentWidth(i);
-          this.Jzo.kw();
+          this.JUe.setAdapter(this.LwA);
+          this.JUe.setModal(this.LwP);
+          this.JUe.aqZ = this.LwQ;
+          this.JUe.setBackgroundDrawable(this.mContext.getResources().getDrawable(2131234275));
+          this.JUe.setAnimationStyle(((b.a)localObject).LwU);
+          this.JUe.aqS = ((b.a)localObject).nnL;
+          this.JUe.setVerticalOffset(((b.a)localObject).AHL);
+          this.JUe.ard = this.KuS;
+          this.JUe.setContentWidth(i);
+          this.JUe.kw();
           if ((!(this.mContext instanceof Activity)) || (((Activity)this.mContext).isFinishing())) {
             break label734;
           }
-          this.Jzo.show();
-          this.Jzo.JlR.setOnKeyListener(this);
-          this.Jzo.JlR.setDivider(new ColorDrawable(this.mContext.getResources().getColor(2131100886)));
-          this.Jzo.JlR.setSelector(this.mContext.getResources().getDrawable(2131233634));
-          this.Jzo.JlR.setDividerHeight(0);
-          this.Jzo.JlR.setVerticalScrollBarEnabled(false);
-          this.Jzo.JlR.setHorizontalScrollBarEnabled(false);
+          this.JUe.show();
+          this.JUe.JGF.setOnKeyListener(this);
+          this.JUe.JGF.setDivider(new ColorDrawable(this.mContext.getResources().getColor(2131100886)));
+          this.JUe.JGF.setSelector(this.mContext.getResources().getDrawable(2131233634));
+          this.JUe.JGF.setDividerHeight(0);
+          this.JUe.JGF.setVerticalScrollBarEnabled(false);
+          this.JUe.JGF.setHorizontalScrollBarEnabled(false);
         }
       }
       AppMethodBeat.o(159479);
@@ -377,24 +377,24 @@ public class a
     }
   }
   
-  private void ki(int paramInt1, int paramInt2)
+  private void kp(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(159480);
     int j = this.mContext.getResources().getDimensionPixelOffset(2131165516);
     int k = this.mContext.getResources().getDimensionPixelOffset(2131165480);
-    this.Lad = new o(this.mContext);
-    this.Lad.setOnDismissListener(this);
-    this.Lad.setWidth(-2);
-    this.Lad.setHeight(-2);
-    this.Lad.setBackgroundDrawable(this.mContext.getResources().getDrawable(2131234275));
-    this.Lad.setFocusable(this.Lam);
-    this.Lad.setOutsideTouchable(this.Lan);
+    this.LwB = new o(this.mContext);
+    this.LwB.setOnDismissListener(this);
+    this.LwB.setWidth(-2);
+    this.LwB.setHeight(-2);
+    this.LwB.setBackgroundDrawable(this.mContext.getResources().getDrawable(2131234275));
+    this.LwB.setFocusable(this.LwK);
+    this.LwB.setOutsideTouchable(this.LwL);
     LinearLayout localLinearLayout = new LinearLayout(this.mContext);
     localLinearLayout.setLayoutParams(new LinearLayout.LayoutParams(-2, -2));
     localLinearLayout.setOrientation(0);
     localLinearLayout.setBackgroundColor(this.mContext.getResources().getColor(2131099653));
     final int i = 0;
-    if (i < this.Ekt.size())
+    if (i < this.ECx.size())
     {
       TextView localTextView = (TextView)this.mInflater.inflate(2131494456, null, false);
       localTextView.setBackgroundResource(2131233634);
@@ -403,52 +403,52 @@ public class a
       }
       for (;;)
       {
-        localTextView.setText(((MenuItem)this.Ekt.JlY.get(i)).getTitle());
+        localTextView.setText(((MenuItem)this.ECx.JGM.get(i)).getTitle());
         localTextView.setOnClickListener(new View.OnClickListener()
         {
           public final void onClick(View paramAnonymousView)
           {
-            AppMethodBeat.i(192647);
+            AppMethodBeat.i(200417);
             com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
             localb.bd(paramAnonymousView);
-            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/widget/menu/MMPopupMenu$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/widget/menu/MMPopupMenu$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
             if (a.b(a.this) != null) {
               a.b(a.this).onMMMenuItemSelected(a.a(a.this).getItem(i), i);
             }
             a.d(a.this).dismiss();
             com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/widget/menu/MMPopupMenu$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-            AppMethodBeat.o(192647);
+            AppMethodBeat.o(200417);
           }
         });
         localLinearLayout.addView(localTextView);
         i += 1;
         break;
-        if (i == this.Ekt.size() - 1) {
+        if (i == this.ECx.size() - 1) {
           localTextView.setPadding(j, 0, k, 0);
         }
       }
     }
     localLinearLayout.measure(View.MeasureSpec.makeMeasureSpec(0, 0), View.MeasureSpec.makeMeasureSpec(0, 0));
     i = localLinearLayout.getMeasuredHeight();
-    this.Lad.setWidth(localLinearLayout.getMeasuredWidth() + aq.fromDPToPix(this.mContext, 24));
-    this.Lad.setContentView(localLinearLayout);
+    this.LwB.setWidth(localLinearLayout.getMeasuredWidth() + aq.fromDPToPix(this.mContext, 24));
+    this.LwB.setContentView(localLinearLayout);
     if (((this.mContext instanceof Activity)) && (!((Activity)this.mContext).isFinishing())) {
-      this.Lad.showAtLocation(this.JYz, 0, paramInt1, paramInt2 - i);
+      this.LwB.showAtLocation(this.KuS, 0, paramInt1, paramInt2 - i);
     }
     AppMethodBeat.o(159480);
   }
   
-  private void kj(int paramInt1, int paramInt2)
+  private void kq(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(192652);
-    this.Lae = new o(this.mContext);
-    this.Lae.setOnDismissListener(this);
-    this.Lae.setWidth(-2);
-    this.Lae.setHeight(-2);
-    this.Lae.setFocusable(this.Lao);
-    this.Lae.setOutsideTouchable(true);
-    this.Lae.setAnimationStyle(2131821786);
-    this.Lae.setInputMethodMode(2);
+    AppMethodBeat.i(200422);
+    this.LwC = new o(this.mContext);
+    this.LwC.setOnDismissListener(this);
+    this.LwC.setWidth(-2);
+    this.LwC.setHeight(-2);
+    this.LwC.setFocusable(this.LwM);
+    this.LwC.setOutsideTouchable(true);
+    this.LwC.setAnimationStyle(2131821786);
+    this.LwC.setInputMethodMode(2);
     View localView = View.inflate(this.mContext, 2131496410, null);
     localView.setLayoutParams(new LinearLayout.LayoutParams(-2, -2));
     LinearLayout localLinearLayout1 = (LinearLayout)localView.findViewById(2131308152);
@@ -458,18 +458,18 @@ public class a
     ImageView localImageView2 = (ImageView)localView.findViewById(2131308080);
     localLinearLayout1.setVisibility(0);
     localLinearLayout1.removeAllViews();
-    if (this.Ekt.size() > 5)
+    if (this.ECx.size() > 5)
     {
       localLinearLayout2.setVisibility(0);
       localLinearLayout2.removeAllViews();
       ((View)localObject1).setVisibility(0);
     }
     final int i = 0;
-    if (i < this.Ekt.size())
+    if (i < this.ECx.size())
     {
       localObject1 = null;
-      if (this.Laq != null) {
-        localObject1 = this.Laq.a(this.mContext, (MenuItem)this.Ekt.JlY.get(i));
+      if (this.LwO != null) {
+        localObject1 = this.LwO.a(this.mContext, (MenuItem)this.ECx.JGM.get(i));
       }
       Object localObject2 = localObject1;
       if (localObject1 == null)
@@ -477,23 +477,23 @@ public class a
         localObject2 = View.inflate(this.mContext, 2131496418, null);
         localObject1 = (WeImageView)((View)localObject2).findViewById(2131300874);
         TextView localTextView = (TextView)((View)localObject2).findViewById(2131305902);
-        ((WeImageView)localObject1).setImageDrawable(((MenuItem)this.Ekt.JlY.get(i)).getIcon());
-        localTextView.setText(((MenuItem)this.Ekt.JlY.get(i)).getTitle());
+        ((WeImageView)localObject1).setImageDrawable(((MenuItem)this.ECx.JGM.get(i)).getIcon());
+        localTextView.setText(((MenuItem)this.ECx.JGM.get(i)).getTitle());
       }
       ((View)localObject2).setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
-          AppMethodBeat.i(192648);
+          AppMethodBeat.i(200418);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
           localb.bd(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/widget/menu/MMPopupMenu$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/widget/menu/MMPopupMenu$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
           if (a.b(a.this) != null) {
             a.b(a.this).onMMMenuItemSelected(a.a(a.this).getItem(i), i);
           }
           a.e(a.this).dismiss();
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/widget/menu/MMPopupMenu$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-          AppMethodBeat.o(192648);
+          AppMethodBeat.o(200418);
         }
       });
       if (i < 5) {
@@ -508,20 +508,20 @@ public class a
         }
       }
     }
-    this.Lae.setContentView(localView);
+    this.LwC.setContentView(localView);
     localView.measure(View.MeasureSpec.makeMeasureSpec(0, 0), View.MeasureSpec.makeMeasureSpec(0, 0));
     int m = localView.getMeasuredHeight();
     i = localView.getMeasuredWidth();
     int j = aq.fromDPToPix(this.mContext, 12);
     int k = paramInt1 - (int)(i / 2.0F);
-    if (k + i > this.cOq.widthPixels - j)
+    if (k + i > this.cPa.widthPixels - j)
     {
-      i = this.cOq.widthPixels - j - i;
+      i = this.cPa.widthPixels - j - i;
       j = paramInt2 - m - aq.ay(this.mContext, 2131165274);
       if (j >= 0) {
         break label697;
       }
-      j = this.JYz.getHeight();
+      j = this.KuS.getHeight();
       paramInt2 = aq.ay(this.mContext, 2131165274) + (j + paramInt2);
       localImageView2.setVisibility(0);
       localImageView1.setVisibility(8);
@@ -531,17 +531,17 @@ public class a
     }
     for (paramInt1 = paramInt2;; paramInt1 = j)
     {
-      if (this.Ekt.size() == 0)
+      if (this.ECx.size() == 0)
       {
         localImageView1.setVisibility(8);
         localImageView2.setVisibility(8);
       }
       if (((this.mContext instanceof Activity)) && (!((Activity)this.mContext).isFinishing()))
       {
-        this.Lae.showAtLocation(this.JYz, 0, i, paramInt1);
+        this.LwC.showAtLocation(this.KuS, 0, i, paramInt1);
         this.startTime = System.currentTimeMillis();
       }
-      AppMethodBeat.o(192652);
+      AppMethodBeat.o(200422);
       return;
       i = k;
       if (k >= j) {
@@ -560,21 +560,21 @@ public class a
   
   public final void a(View.OnCreateContextMenuListener paramOnCreateContextMenuListener)
   {
-    this.Lai = paramOnCreateContextMenuListener;
+    this.LwG = paramOnCreateContextMenuListener;
   }
   
   public final void a(View paramView, int paramInt1, long paramLong, View.OnCreateContextMenuListener paramOnCreateContextMenuListener, n.e parame, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(159477);
-    this.KJz = parame;
-    this.JYz = paramView;
-    fMI();
-    this.Ekt.clear();
+    this.LfT = parame;
+    this.KuS = paramView;
+    fRc();
+    this.ECx.clear();
     parame = new AdapterView.AdapterContextMenuInfo(paramView, paramInt1, paramLong);
-    paramOnCreateContextMenuListener.onCreateContextMenu(this.Ekt, paramView, parame);
-    paramView = this.Ekt.JlY.iterator();
+    paramOnCreateContextMenuListener.onCreateContextMenu(this.ECx, paramView, parame);
+    paramView = this.ECx.JGM.iterator();
     while (paramView.hasNext()) {
-      ((m)paramView.next()).Jme = parame;
+      ((m)paramView.next()).JGS = parame;
     }
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
@@ -589,13 +589,13 @@ public class a
   public final void a(View paramView, View.OnCreateContextMenuListener paramOnCreateContextMenuListener, n.e parame, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(159478);
-    this.KJz = parame;
-    this.JYz = paramView;
+    this.LfT = parame;
+    this.KuS = paramView;
     if ((!(paramView instanceof TextView)) && ((paramInt1 == 0) || (paramInt2 == 0))) {
-      fMI();
+      fRc();
     }
-    this.Ekt.clear();
-    paramOnCreateContextMenuListener.onCreateContextMenu(this.Ekt, paramView, null);
+    this.ECx.clear();
+    paramOnCreateContextMenuListener.onCreateContextMenu(this.ECx, paramView, null);
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
       el(0, 0);
@@ -608,10 +608,10 @@ public class a
   
   public final void a(final View paramView, final n.c paramc, n.e parame)
   {
-    AppMethodBeat.i(192650);
-    this.JYz = paramView;
-    fMI();
-    this.KJz = parame;
+    AppMethodBeat.i(200420);
+    this.KuS = paramView;
+    fRc();
+    this.LfT = parame;
     if ((paramView instanceof AbsListView))
     {
       ap.v("MicroMsg.MMPopupMenu", "registerForPopupMenu AbsListView", new Object[0]);
@@ -619,21 +619,21 @@ public class a
       {
         public final boolean onItemLongClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
         {
-          AppMethodBeat.i(192644);
+          AppMethodBeat.i(200414);
           a.a(a.this).clear();
           ap.v("MicroMsg.MMPopupMenu", "registerForPopupMenu AbsListView long click", new Object[0]);
           paramAnonymousAdapterView = new AdapterView.AdapterContextMenuInfo(paramAnonymousView, paramAnonymousInt, paramAnonymousLong);
           paramc.a(a.a(a.this), paramAnonymousView);
-          paramAnonymousView = a.a(a.this).JlY.iterator();
+          paramAnonymousView = a.a(a.this).JGM.iterator();
           while (paramAnonymousView.hasNext()) {
-            ((m)paramAnonymousView.next()).Jme = paramAnonymousAdapterView;
+            ((m)paramAnonymousView.next()).JGS = paramAnonymousAdapterView;
           }
           a.this.el(0, 0);
-          AppMethodBeat.o(192644);
+          AppMethodBeat.o(200414);
           return true;
         }
       });
-      AppMethodBeat.o(192650);
+      AppMethodBeat.o(200420);
       return;
     }
     ap.v("MicroMsg.MMPopupMenu", "registerForPopupMenu normal view", new Object[0]);
@@ -641,10 +641,10 @@ public class a
     {
       public final boolean onLongClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(192645);
+        AppMethodBeat.i(200415);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
         localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/widget/menu/MMPopupMenu$4", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.ahq());
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/widget/menu/MMPopupMenu$4", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.ahF());
         ap.v("MicroMsg.MMPopupMenu", "registerForPopupMenu normal view long click", new Object[0]);
         a.a(a.this).clear();
         a.a(a.this, paramAnonymousView);
@@ -659,46 +659,46 @@ public class a
         for (;;)
         {
           com.tencent.mm.hellhoundlib.a.a.a(true, this, "com/tencent/mm/ui/widget/menu/MMPopupMenu$4", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
-          AppMethodBeat.o(192645);
+          AppMethodBeat.o(200415);
           return true;
           a.this.el(i, j);
         }
       }
     });
-    AppMethodBeat.o(192650);
+    AppMethodBeat.o(200420);
   }
   
   public final void a(View paramView, n.c paramc, n.e parame, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(192651);
-    this.KJz = parame;
-    this.JYz = paramView;
+    AppMethodBeat.i(200421);
+    this.LfT = parame;
+    this.KuS = paramView;
     if ((!(paramView instanceof TextView)) && ((paramInt1 == 0) || (paramInt2 == 0))) {
-      fMI();
+      fRc();
     }
-    this.Ekt.clear();
-    paramc.a(this.Ekt, paramView);
+    this.ECx.clear();
+    paramc.a(this.ECx, paramView);
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
       el(0, 0);
-      AppMethodBeat.o(192651);
+      AppMethodBeat.o(200421);
       return;
     }
     el(paramInt1, paramInt2);
-    AppMethodBeat.o(192651);
+    AppMethodBeat.o(200421);
   }
   
   public final void a(n.e parame)
   {
-    this.KJz = parame;
+    this.LfT = parame;
   }
   
   public final void c(View paramView, final View.OnCreateContextMenuListener paramOnCreateContextMenuListener, n.e parame)
   {
     AppMethodBeat.i(159476);
-    this.JYz = paramView;
-    fMI();
-    this.KJz = parame;
+    this.KuS = paramView;
+    fRc();
+    this.LfT = parame;
     if ((paramView instanceof AbsListView))
     {
       ap.v("MicroMsg.MMPopupMenu", "registerForPopupMenu AbsListView", new Object[0]);
@@ -711,9 +711,9 @@ public class a
           ap.v("MicroMsg.MMPopupMenu", "registerForPopupMenu AbsListView long click", new Object[0]);
           paramAnonymousAdapterView = new AdapterView.AdapterContextMenuInfo(paramAnonymousView, paramAnonymousInt, paramAnonymousLong);
           paramOnCreateContextMenuListener.onCreateContextMenu(a.a(a.this), paramAnonymousView, paramAnonymousAdapterView);
-          paramAnonymousView = a.a(a.this).JlY.iterator();
+          paramAnonymousView = a.a(a.this).JGM.iterator();
           while (paramAnonymousView.hasNext()) {
-            ((m)paramAnonymousView.next()).Jme = paramAnonymousAdapterView;
+            ((m)paramAnonymousView.next()).JGS = paramAnonymousAdapterView;
           }
           a.this.el(0, 0);
           AppMethodBeat.o(159465);
@@ -731,7 +731,7 @@ public class a
         AppMethodBeat.i(159466);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
         localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/widget/menu/MMPopupMenu$2", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.ahq());
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/widget/menu/MMPopupMenu$2", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.ahF());
         ap.v("MicroMsg.MMPopupMenu", "registerForPopupMenu normal view long click", new Object[0]);
         a.a(a.this).clear();
         a.a(a.this, paramAnonymousView);
@@ -760,38 +760,38 @@ public class a
   public boolean el(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(159484);
-    if (((this.JYz != null) && (!this.JYz.equals(this.vno))) || ((!sKx) && ((paramInt1 != 0) || (paramInt2 != 0))))
+    if (((this.KuS != null) && (!this.KuS.equals(this.vzt))) || ((!sVK) && ((paramInt1 != 0) || (paramInt2 != 0))))
     {
-      sPX = paramInt1;
-      sPY = paramInt2;
+      jwh = paramInt1;
+      jwi = paramInt2;
     }
-    this.vno = null;
-    int k = sPX;
-    int n = sPY;
-    sKx = false;
-    if (this.cOq == null) {
-      this.cOq = this.mContext.getResources().getDisplayMetrics();
+    this.vzt = null;
+    int k = jwh;
+    int n = jwi;
+    sVK = false;
+    if (this.cPa == null) {
+      this.cPa = this.mContext.getResources().getDisplayMetrics();
     }
     int j = k;
     int i;
     int m;
-    if (this.JYz != null)
+    if (this.KuS != null)
     {
       int[] arrayOfInt = new int[2];
-      this.JYz.getLocationOnScreen(arrayOfInt);
+      this.KuS.getLocationOnScreen(arrayOfInt);
       i = k;
       if (k == 0) {
-        i = arrayOfInt[0] + this.JYz.getWidth() / 2;
+        i = arrayOfInt[0] + this.KuS.getWidth() / 2;
       }
       m = arrayOfInt[1];
-      j = arrayOfInt[1] + this.JYz.getHeight();
+      j = arrayOfInt[1] + this.KuS.getHeight();
       k = m;
       if (m < 0) {
         k = 0;
       }
       m = j;
-      if (j > this.cOq.heightPixels) {
-        m = this.cOq.heightPixels;
+      if (j > this.cPa.heightPixels) {
+        m = this.cPa.heightPixels;
       }
       j = i;
       if (n != 0) {}
@@ -799,14 +799,14 @@ public class a
     for (j = (k + m) / 2;; j = k)
     {
       ap.i("MicroMsg.MMPopupMenu", "show popMenu , xDown:%s, yDown:%s, showPointX:%s, showPointY:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(i), Integer.valueOf(j) });
-      if ((!isShowing()) || (!fMG()) || (!fMH()))
+      if ((!isShowing()) || (!fRa()) || (!fRb()))
       {
-        bool1 = kh(i, j);
+        bool1 = ko(i, j);
         AppMethodBeat.o(159484);
         return bool1;
       }
-      boolean bool1 = fBg();
-      boolean bool2 = kh(i, j);
+      boolean bool1 = fFi();
+      boolean bool2 = ko(i, j);
       AppMethodBeat.o(159484);
       return bool2 & bool1;
       k = n;
@@ -814,29 +814,29 @@ public class a
     }
   }
   
-  public final boolean fBg()
+  public final boolean fFi()
   {
     AppMethodBeat.i(159483);
     if (isShowing())
     {
-      if (this.Jzo != null) {
-        this.Jzo.dismiss();
+      if (this.JUe != null) {
+        this.JUe.dismiss();
       }
       AppMethodBeat.o(159483);
       return true;
     }
-    if (fMG())
+    if (fRa())
     {
-      if (this.Lad != null) {
-        this.Lad.dismiss();
+      if (this.LwB != null) {
+        this.LwB.dismiss();
       }
       AppMethodBeat.o(159483);
       return true;
     }
-    if (fMH())
+    if (fRb())
     {
-      if (this.Lae != null) {
-        this.Lae.dismiss();
+      if (this.LwC != null) {
+        this.LwC.dismiss();
       }
       AppMethodBeat.o(159483);
       return true;
@@ -845,65 +845,65 @@ public class a
     return false;
   }
   
-  public final boolean fGP()
+  public final boolean fLf()
   {
-    AppMethodBeat.i(221679);
+    AppMethodBeat.i(224517);
     boolean bool = el(0, 0);
-    AppMethodBeat.o(221679);
+    AppMethodBeat.o(224517);
     return bool;
   }
   
   public void onDismiss()
   {
     AppMethodBeat.i(159488);
-    if (!this.Lag)
+    if (!this.LwE)
     {
-      if (this.Lah == null) {
+      if (this.LwF == null) {
         break label51;
       }
-      this.Lah.setSelected(false);
+      this.LwF.setSelected(false);
     }
     for (;;)
     {
-      if (this.KLB != null) {
-        this.KLB.onDismiss();
+      if (this.LhV != null) {
+        this.LhV.onDismiss();
       }
       AppMethodBeat.o(159488);
       return;
       label51:
-      this.JYz.setSelected(false);
+      this.KuS.setSelected(false);
     }
   }
   
   public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    AppMethodBeat.i(192656);
+    AppMethodBeat.i(200426);
     com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
     localb.bd(paramAdapterView);
     localb.bd(paramView);
-    localb.mr(paramInt);
-    localb.qY(paramLong);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/widget/menu/MMPopupMenu", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.ahq());
+    localb.mu(paramInt);
+    localb.rl(paramLong);
+    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/widget/menu/MMPopupMenu", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.ahF());
     com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/widget/menu/MMPopupMenu", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
-    AppMethodBeat.o(192656);
+    AppMethodBeat.o(200426);
   }
   
   public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
   {
-    AppMethodBeat.i(192655);
+    AppMethodBeat.i(200425);
     com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
     localb.bd(paramView);
-    localb.mr(paramInt);
+    localb.mu(paramInt);
     localb.bd(paramKeyEvent);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/widget/menu/MMPopupMenu", "android/view/View$OnKeyListener", "onKey", "(Landroid/view/View;ILandroid/view/KeyEvent;)Z", this, localb.ahq());
+    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/widget/menu/MMPopupMenu", "android/view/View$OnKeyListener", "onKey", "(Landroid/view/View;ILandroid/view/KeyEvent;)Z", this, localb.ahF());
     com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/mm/ui/widget/menu/MMPopupMenu", "android/view/View$OnKeyListener", "onKey", "(Landroid/view/View;ILandroid/view/KeyEvent;)Z");
-    AppMethodBeat.o(192655);
+    AppMethodBeat.o(200425);
     return false;
   }
   
   public final void setOnDismissListener(PopupWindow.OnDismissListener paramOnDismissListener)
   {
-    this.KLB = paramOnDismissListener;
+    this.LhV = paramOnDismissListener;
   }
   
   public static abstract interface a
@@ -919,7 +919,7 @@ public class a
     private String getItem(int paramInt)
     {
       AppMethodBeat.i(159471);
-      String str = (String)((MenuItem)a.a(a.this).JlY.get(paramInt)).getTitle();
+      String str = (String)((MenuItem)a.a(a.this).JGM.get(paramInt)).getTitle();
       AppMethodBeat.o(159471);
       return str;
     }

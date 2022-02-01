@@ -10,12 +10,12 @@ import com.tencent.mm.plugin.downloader.model.c;
 import com.tencent.mm.plugin.downloader.model.d;
 import com.tencent.mm.plugin.downloader.model.f;
 import com.tencent.mm.plugin.downloader.model.m;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.ay;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.vfs.i;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.platformtools.az;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.vfs.o;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -26,28 +26,28 @@ import org.json.JSONObject;
 public final class k
   implements m
 {
-  private static Set<a> pjv;
-  private static k ubp;
-  private static HashMap<String, b> ubq;
+  private static Set<a> pqa;
+  private static k umr;
+  private static HashMap<String, b> ums;
   
   static
   {
     AppMethodBeat.i(41432);
-    ubp = null;
-    pjv = Collections.synchronizedSet(new HashSet());
-    ubq = new HashMap();
+    umr = null;
+    pqa = Collections.synchronizedSet(new HashSet());
+    ums = new HashMap();
     AppMethodBeat.o(41432);
   }
   
   private void Q(long paramLong, final int paramInt)
   {
     AppMethodBeat.i(41417);
-    com.tencent.mm.plugin.downloader.g.a locala = d.ua(paramLong);
+    com.tencent.mm.plugin.downloader.g.a locala = d.ur(paramLong);
     b localb;
     int i;
     if (locala != null)
     {
-      localb = (b)ubq.get(locala.field_downloadUrl);
+      localb = (b)ums.get(locala.field_downloadUrl);
       switch (paramInt)
       {
       default: 
@@ -58,8 +58,8 @@ public final class k
         if ((locala.field_status == 2) || (locala.field_status == 5) || (locala.field_status == 4) || (locala.field_status == 3) || (locala.field_status == 0))
         {
           paramLong = locala.field_downloadId;
-          ad.d("MicroMsg.FileDownloadSP", "clearDownloadSpeedStr");
-          localObject = aj.getContext().getSharedPreferences("download_pref", 0);
+          ae.d("MicroMsg.FileDownloadSP", "clearDownloadSpeedStr");
+          localObject = ak.getContext().getSharedPreferences("download_pref", 0);
           if (localObject != null) {
             ((SharedPreferences)localObject).edit().remove(String.valueOf(paramLong)).apply();
           }
@@ -72,16 +72,16 @@ public final class k
     }
     for (;;)
     {
-      aq.f(new Runnable()
+      ar.f(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(41410);
-          synchronized (k.pjv)
+          synchronized (k.pqa)
           {
-            Iterator localIterator = k.pjv.iterator();
+            Iterator localIterator = k.pqa.iterator();
             if (localIterator.hasNext()) {
-              ((k.a)localIterator.next()).e(paramInt, this.cCk, this.ubr);
+              ((k.a)localIterator.next()).e(paramInt, this.cCR, this.umt);
             }
           }
           AppMethodBeat.o(41410);
@@ -95,7 +95,7 @@ public final class k
       if (localb == null) {
         break;
       }
-      if (localb.ubu)
+      if (localb.umw)
       {
         com.tencent.mm.plugin.downloader.f.a.ab(locala.field_appId, 1L);
         i = j;
@@ -119,16 +119,16 @@ public final class k
       i = 8;
       com.tencent.mm.plugin.downloader.f.a.ab(locala.field_appId, 7L);
       break;
-      com.tencent.mm.plugin.downloader.f.a.a(localb.appId, localb.scene, i, localb.md5, locala.field_downloadUrl, localb.ubt, localb.dnv);
+      com.tencent.mm.plugin.downloader.f.a.a(localb.appId, localb.scene, i, localb.md5, locala.field_downloadUrl, localb.umv, localb.dox);
     }
   }
   
   public static void a(a parama)
   {
     AppMethodBeat.i(41413);
-    synchronized (pjv)
+    synchronized (pqa)
     {
-      pjv.add(parama);
+      pqa.add(parama);
       AppMethodBeat.o(41413);
       return;
     }
@@ -138,18 +138,18 @@ public final class k
   {
     AppMethodBeat.i(41429);
     if ((paramInt == 710) || (paramInt == 711)) {
-      paramInt = com.tencent.mm.plugin.downloader.a.a.pjk;
+      paramInt = com.tencent.mm.plugin.downloader.a.a.ppP;
     }
     for (;;)
     {
-      ad.i("MicroMsg.GameDownloadEventBus", "appid = %s, errCode = %d", new Object[] { paramString1, Integer.valueOf(paramInt) });
+      ae.i("MicroMsg.GameDownloadEventBus", "appid = %s, errCode = %d", new Object[] { paramString1, Integer.valueOf(paramInt) });
       if (!paramBoolean)
       {
-        com.tencent.mm.game.report.api.a.gsb.c(paramString1, 2, paramInt, null, paramString2);
+        com.tencent.mm.game.report.api.a.guC.c(paramString1, 2, paramInt, null, paramString2);
         AppMethodBeat.o(41429);
         return;
       }
-      com.tencent.mm.game.report.api.a.gsb.c(paramString1, 4, paramInt, null, paramString2);
+      com.tencent.mm.game.report.api.a.guC.c(paramString1, 4, paramInt, null, paramString2);
       AppMethodBeat.o(41429);
       return;
     }
@@ -158,22 +158,22 @@ public final class k
   public static void a(String paramString1, String paramString2, int paramInt, String paramString3, String paramString4, String paramString5)
   {
     AppMethodBeat.i(41420);
-    if (bt.isNullOrNil(paramString1))
+    if (bu.isNullOrNil(paramString1))
     {
       AppMethodBeat.o(41420);
       return;
     }
-    ubq.put(paramString1, new b(paramString2, paramInt, paramString3, paramString4, paramString5));
+    ums.put(paramString1, new b(paramString2, paramInt, paramString3, paramString4, paramString5));
     AppMethodBeat.o(41420);
   }
   
   public static void b(a parama)
   {
     AppMethodBeat.i(41414);
-    synchronized (pjv)
+    synchronized (pqa)
     {
-      pjv.remove(parama);
-      ad.d("MicroMsg.GameDownloadEventBus", "removeListener, size:%d, listener:%s", new Object[] { Integer.valueOf(pjv.size()), parama });
+      pqa.remove(parama);
+      ae.d("MicroMsg.GameDownloadEventBus", "removeListener, size:%d, listener:%s", new Object[] { Integer.valueOf(pqa.size()), parama });
       AppMethodBeat.o(41414);
       return;
     }
@@ -182,37 +182,26 @@ public final class k
   public static void b(String paramString1, String paramString2, int paramInt, String paramString3, String paramString4)
   {
     AppMethodBeat.i(41418);
-    if (bt.isNullOrNil(paramString1))
+    if (bu.isNullOrNil(paramString1))
     {
       AppMethodBeat.o(41418);
       return;
     }
     paramString2 = new b(paramString2, paramInt, paramString3, "", paramString4);
-    paramString2.ubu = true;
-    ubq.put(paramString1, paramString2);
+    paramString2.umw = true;
+    ums.put(paramString1, paramString2);
     AppMethodBeat.o(41418);
   }
   
-  public static k cYR()
-  {
-    AppMethodBeat.i(41412);
-    if (ubp == null) {
-      ubp = new k();
-    }
-    k localk = ubp;
-    AppMethodBeat.o(41412);
-    return localk;
-  }
-  
-  public static void ccd()
+  public static void cds()
   {
     AppMethodBeat.i(41415);
-    if (ubp == null) {
-      ubp = new k();
+    if (umr == null) {
+      umr = new k();
     }
     com.tencent.mm.plugin.downloader.b.a.a(new a.b()
     {
-      public final void M(int paramAnonymousInt, long paramAnonymousLong)
+      public final void L(int paramAnonymousInt, long paramAnonymousLong)
       {
         AppMethodBeat.i(41409);
         if (paramAnonymousInt == 9) {
@@ -221,33 +210,33 @@ public final class k
         AppMethodBeat.o(41409);
       }
     });
-    f.ccl();
-    c.a(ubp);
+    f.cdA();
+    c.a(umr);
     AppMethodBeat.o(41415);
   }
   
-  public static void cce()
+  public static void cdt()
   {
     AppMethodBeat.i(41416);
-    f.ccl();
-    c.b(ubp);
-    ubp = null;
-    pjv.clear();
-    ubq.clear();
+    f.cdA();
+    c.b(umr);
+    umr = null;
+    pqa.clear();
+    ums.clear();
     AppMethodBeat.o(41416);
   }
   
   private static void d(long paramLong, int paramInt, boolean paramBoolean)
   {
     AppMethodBeat.i(41428);
-    com.tencent.mm.plugin.downloader.g.a locala = d.ua(paramLong);
+    com.tencent.mm.plugin.downloader.g.a locala = d.ur(paramLong);
     String str2;
     String str1;
     if (locala != null)
     {
       str2 = null;
       str1 = null;
-      if (paramInt == com.tencent.mm.plugin.downloader.a.a.pji) {
+      if (paramInt == com.tencent.mm.plugin.downloader.a.a.ppN) {
         str1 = str2;
       }
     }
@@ -259,48 +248,59 @@ public final class k
       str1 = str2;
       localJSONObject.put("DownloadSize", locala.field_downloadedSize);
       str1 = str2;
-      str2 = com.tencent.mm.plugin.game.e.a.wk(localJSONObject.toString());
+      str2 = com.tencent.mm.plugin.game.e.a.wT(localJSONObject.toString());
       str1 = str2;
-      ad.d("MicroMsg.GameDownloadEventBus", "extInfo = " + localJSONObject.toString());
+      ae.d("MicroMsg.GameDownloadEventBus", "extInfo = " + localJSONObject.toString());
       str1 = str2;
     }
     catch (Exception localException)
     {
       for (;;)
       {
-        ad.e("MicroMsg.GameDownloadEventBus", "reportDownloadFailed, e = " + localException.getMessage());
+        ae.e("MicroMsg.GameDownloadEventBus", "reportDownloadFailed, e = " + localException.getMessage());
       }
     }
     a(locala.field_appId, paramInt, paramBoolean, str1);
     AppMethodBeat.o(41428);
   }
   
-  public static void gY(String paramString1, String paramString2)
+  public static k dbB()
+  {
+    AppMethodBeat.i(41412);
+    if (umr == null) {
+      umr = new k();
+    }
+    k localk = umr;
+    AppMethodBeat.o(41412);
+    return localk;
+  }
+  
+  public static void hd(String paramString1, String paramString2)
   {
     AppMethodBeat.i(41430);
-    com.tencent.mm.game.report.api.a.gsb.c(paramString1, 6, 0, null, paramString2);
+    com.tencent.mm.game.report.api.a.guC.c(paramString1, 6, 0, null, paramString2);
     AppMethodBeat.o(41430);
   }
   
   public static void n(String paramString1, String paramString2, String paramString3, String paramString4)
   {
     AppMethodBeat.i(41419);
-    if (bt.isNullOrNil(paramString1))
+    if (bu.isNullOrNil(paramString1))
     {
       AppMethodBeat.o(41419);
       return;
     }
-    ubq.put(paramString1, new b(paramString2, 1002, paramString3, "", paramString4));
+    ums.put(paramString1, new b(paramString2, 1002, paramString3, "", paramString4));
     AppMethodBeat.o(41419);
   }
   
   public final void a(long paramLong, int paramInt, boolean paramBoolean)
   {
     AppMethodBeat.i(41423);
-    com.tencent.mm.plugin.downloader.g.a locala = d.ua(paramLong);
-    if ((locala != null) && (locala.field_downloadInWifi) && (!ay.isWifi(aj.getContext())))
+    com.tencent.mm.plugin.downloader.g.a locala = d.ur(paramLong);
+    if ((locala != null) && (locala.field_downloadInWifi) && (!az.isWifi(ak.getContext())))
     {
-      ad.i("MicroMsg.GameDownloadEventBus", "wifi pause, return");
+      ae.i("MicroMsg.GameDownloadEventBus", "wifi pause, return");
       locala.field_status = 2;
       locala.field_errCode = 0;
       d.e(locala);
@@ -313,45 +313,45 @@ public final class k
     Q(paramLong, 5);
     d(paramLong, paramInt, paramBoolean);
     com.tencent.mm.plugin.game.c.a.report(paramLong);
-    com.tencent.mm.plugin.downloader.model.a.tQ(paramLong);
+    com.tencent.mm.plugin.downloader.model.a.uh(paramLong);
     AppMethodBeat.o(41423);
   }
   
   public final void a(long paramLong1, String paramString, long paramLong2, long paramLong3)
   {
-    AppMethodBeat.i(206825);
+    AppMethodBeat.i(195640);
     Q(paramLong1, 6);
-    AppMethodBeat.o(206825);
+    AppMethodBeat.o(195640);
   }
   
   public final void b(long paramLong, String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(41422);
-    ad.i("MicroMsg.GameDownloadEventBus", "onTaskFinished, path = %s, fileExists = %b", new Object[] { paramString, Boolean.valueOf(i.fv(paramString)) });
-    if ((!bt.isNullOrNil(paramString)) && (i.fv(paramString)))
+    ae.i("MicroMsg.GameDownloadEventBus", "onTaskFinished, path = %s, fileExists = %b", new Object[] { paramString, Boolean.valueOf(o.fB(paramString)) });
+    if ((!bu.isNullOrNil(paramString)) && (o.fB(paramString)))
     {
       Q(paramLong, 3);
       if (paramBoolean)
       {
-        paramString = d.ua(paramLong);
+        paramString = d.ur(paramLong);
         if (paramString != null)
         {
           paramString = paramString.field_appId;
-          com.tencent.mm.game.report.api.a.gsb.c(paramString, 5, 0, null, null);
+          com.tencent.mm.game.report.api.a.guC.c(paramString, 5, 0, null, null);
         }
       }
       com.tencent.mm.plugin.game.c.a.report(paramLong);
       AppMethodBeat.o(41422);
       return;
     }
-    paramString = d.ua(paramLong);
+    paramString = d.ur(paramLong);
     if (paramString != null)
     {
       paramString.field_status = 4;
-      paramString.field_errCode = com.tencent.mm.plugin.downloader.a.a.pjl;
+      paramString.field_errCode = com.tencent.mm.plugin.downloader.a.a.ppQ;
       d.e(paramString);
     }
-    a(paramLong, com.tencent.mm.plugin.downloader.a.a.pjl, paramBoolean);
+    a(paramLong, com.tencent.mm.plugin.downloader.a.a.ppQ, paramBoolean);
     if (paramString != null) {
       com.tencent.mm.plugin.downloader.f.a.ab(paramString.field_appId, 9L);
     }
@@ -372,25 +372,25 @@ public final class k
     AppMethodBeat.o(41427);
   }
   
-  public final void sL(long paramLong)
+  public final void sY(long paramLong)
   {
     AppMethodBeat.i(41424);
     Q(paramLong, 4);
-    com.tencent.mm.plugin.downloader.g.a locala = d.ua(paramLong);
+    com.tencent.mm.plugin.downloader.g.a locala = d.ur(paramLong);
     if (locala != null) {
-      e.aw(aj.getContext(), locala.field_appId);
+      e.ay(ak.getContext(), locala.field_appId);
     }
     AppMethodBeat.o(41424);
   }
   
-  public final void sM(long paramLong)
+  public final void sZ(long paramLong)
   {
     AppMethodBeat.i(41425);
     Q(paramLong, 2);
     AppMethodBeat.o(41425);
   }
   
-  public final void sN(long paramLong) {}
+  public final void ta(long paramLong) {}
   
   public static abstract interface a
   {
@@ -400,19 +400,19 @@ public final class k
   static final class b
   {
     String appId = "";
-    String dnv = "";
+    String dox = "";
     String md5 = "";
     int scene = 0;
-    String ubt = "";
-    boolean ubu = false;
+    String umv = "";
+    boolean umw = false;
     
     b(String paramString1, int paramInt, String paramString2, String paramString3, String paramString4)
     {
       this.md5 = paramString1;
       this.scene = paramInt;
       this.appId = paramString2;
-      this.ubt = paramString3;
-      this.dnv = paramString4;
+      this.umv = paramString3;
+      this.dox = paramString4;
     }
   }
 }

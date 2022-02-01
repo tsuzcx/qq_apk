@@ -59,20 +59,20 @@ public class b
   
   public final void a(String paramString, a.c paramc)
   {
-    AppMethodBeat.i(187574);
+    AppMethodBeat.i(201141);
     a(paramString, null, paramc);
-    AppMethodBeat.o(187574);
+    AppMethodBeat.o(201141);
   }
   
   public final void a(String paramString, Map<String, String> paramMap, a.c paramc)
   {
-    AppMethodBeat.i(187575);
+    AppMethodBeat.i(201142);
     if (TextUtils.isEmpty(paramString))
     {
       if (paramc != null)
       {
         paramc.D(null);
-        AppMethodBeat.o(187575);
+        AppMethodBeat.o(201142);
       }
     }
     else
@@ -84,15 +84,15 @@ public class b
         if (locala.match(paramString))
         {
           locala.a(paramString, paramMap, paramc);
-          AppMethodBeat.o(187575);
+          AppMethodBeat.o(201142);
           return;
         }
       }
     }
-    AppMethodBeat.o(187575);
+    AppMethodBeat.o(201142);
   }
   
-  public final Bitmap cz(String paramString)
+  public final Bitmap cA(String paramString)
   {
     AppMethodBeat.i(140363);
     paramString = a(paramString, null, null);
@@ -102,7 +102,7 @@ public class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.luggage.bridge.impl.a.b
  * JD-Core Version:    0.7.0.1
  */

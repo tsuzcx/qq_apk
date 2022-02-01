@@ -10,93 +10,93 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
-import com.tencent.mm.bs.d;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.br.d;
 import com.tencent.mm.g.a.av;
 import com.tencent.mm.g.a.co;
-import com.tencent.mm.g.a.eb;
-import com.tencent.mm.g.a.eb.b;
-import com.tencent.mm.g.a.mx;
-import com.tencent.mm.g.a.qc;
-import com.tencent.mm.g.a.qe;
-import com.tencent.mm.g.a.vf;
+import com.tencent.mm.g.a.ec;
+import com.tencent.mm.g.a.ec.b;
+import com.tencent.mm.g.a.my;
+import com.tencent.mm.g.a.qd;
+import com.tencent.mm.g.a.qf;
+import com.tencent.mm.g.a.vj;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.scanner.ScanCodeSheetItemLogic;
 import com.tencent.mm.plugin.scanner.ScanCodeSheetItemLogic.a;
 import com.tencent.mm.plugin.sns.data.SnsCmdList;
-import com.tencent.mm.plugin.sns.model.ae;
-import com.tencent.mm.plugin.sns.model.ag;
-import com.tencent.mm.plugin.sns.model.ao;
+import com.tencent.mm.plugin.sns.model.af;
+import com.tencent.mm.plugin.sns.model.ah;
+import com.tencent.mm.plugin.sns.model.ap;
 import com.tencent.mm.plugin.sns.storage.x;
 import com.tencent.mm.pluginsdk.m;
 import com.tencent.mm.protocal.protobuf.TimeLineObject;
-import com.tencent.mm.protocal.protobuf.abf;
-import com.tencent.mm.protocal.protobuf.byn;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.abo;
+import com.tencent.mm.protocal.protobuf.bzh;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.base.l;
 import com.tencent.mm.ui.base.n.d;
 import com.tencent.mm.ui.base.n.e;
 import com.tencent.mm.ui.widget.a.e;
 import com.tencent.mm.ui.widget.a.e.b;
-import com.tencent.mm.vfs.i;
+import com.tencent.mm.vfs.o;
 import java.util.ArrayList;
 import java.util.List;
 
 public final class v
   implements f
 {
+  String AhJ;
+  String AhM;
+  String AhN;
+  String AhO;
+  String AhP;
+  String AhQ;
+  long AhR;
+  boolean AhT;
+  com.tencent.mm.sdk.b.c AhV;
+  e Ahc;
+  SnsCmdList Ait;
+  private final a Aiu;
+  boolean Aiv;
+  int Aiw;
+  private final String Aix;
   String LS;
   final Context context;
-  int dnt;
-  int dnu;
-  ScanCodeSheetItemLogic lvI;
-  public int nEc;
-  com.tencent.mm.sdk.b.c rwO;
+  int dov;
+  int dow;
+  ScanCodeSheetItemLogic lAg;
+  public int nJx;
+  com.tencent.mm.sdk.b.c rFa;
   public com.tencent.mm.ui.base.p tipDialog;
-  com.tencent.mm.plugin.sns.storage.p yVM;
-  e zPV;
-  String zQC;
-  String zQF;
-  String zQG;
-  String zQH;
-  String zQI;
-  String zQJ;
-  long zQK;
-  boolean zQM;
-  com.tencent.mm.sdk.b.c zQO;
-  SnsCmdList zRm;
-  private final a zRn;
-  boolean zRo;
-  int zRp;
-  private final String zRq;
-  byn zbu;
+  com.tencent.mm.plugin.sns.storage.p zlW;
+  bzh zrY;
   
   public v(Context paramContext, a parama)
   {
     AppMethodBeat.i(97910);
-    this.zRm = new SnsCmdList();
+    this.Ait = new SnsCmdList();
     this.tipDialog = null;
-    this.nEc = 0;
-    this.zPV = null;
-    this.zRp = 0;
-    this.zQM = false;
-    this.rwO = new com.tencent.mm.sdk.b.c() {};
-    this.zQO = new com.tencent.mm.sdk.b.c() {};
+    this.nJx = 0;
+    this.Ahc = null;
+    this.Aiw = 0;
+    this.AhT = false;
+    this.rFa = new com.tencent.mm.sdk.b.c() {};
+    this.AhV = new com.tencent.mm.sdk.b.c() {};
     this.context = paramContext;
-    this.zRn = parama;
-    this.zRq = ((Activity)paramContext).getIntent().getStringExtra("sns_gallery_pre_title");
-    this.lvI = new ScanCodeSheetItemLogic(paramContext, new ScanCodeSheetItemLogic.a()
+    this.Aiu = parama;
+    this.Aix = ((Activity)paramContext).getIntent().getStringExtra("sns_gallery_pre_title");
+    this.lAg = new ScanCodeSheetItemLogic(paramContext, new ScanCodeSheetItemLogic.a()
     {
-      public final void bpj()
+      public final void bpT()
       {
         AppMethodBeat.i(97895);
-        if ((v.this.zPV != null) && (v.this.zPV.isShowing()))
+        if ((v.this.Ahc != null) && (v.this.Ahc.isShowing()))
         {
-          v.this.zQM = true;
-          v.this.a(v.this.zRo, v.this.yVM, v.this.zbu);
+          v.this.AhT = true;
+          v.this.a(v.this.Aiv, v.this.zlW, v.this.zrY);
         }
         AppMethodBeat.o(97895);
       }
@@ -104,45 +104,45 @@ public final class v
     AppMethodBeat.o(97910);
   }
   
-  private void a(final List<String> paramList, final List<Integer> paramList1, final com.tencent.mm.plugin.sns.storage.p paramp, final byn parambyn, final int paramInt)
+  private void a(final List<String> paramList, final List<Integer> paramList1, final com.tencent.mm.plugin.sns.storage.p paramp, final bzh parambzh, final int paramInt)
   {
     AppMethodBeat.i(97914);
-    if ((this.zPV != null) && (this.zQM)) {
-      this.zQM = false;
+    if ((this.Ahc != null) && (this.AhT)) {
+      this.AhT = false;
     }
     for (;;)
     {
-      this.zPV.KJy = new n.d()
+      this.Ahc.LfS = new n.d()
       {
         public final void onCreateMMMenu(l paramAnonymousl)
         {
           AppMethodBeat.i(97899);
-          v.this.zPV.setFooterView(null);
+          v.this.Ahc.setFooterView(null);
           paramAnonymousl.clear();
           int i = 0;
           if (i < paramList.size())
           {
             if (((Integer)paramList1.get(i)).intValue() == 7) {
-              v.this.zPV.setFooterView(v.a(v.this, paramp));
+              v.this.Ahc.setFooterView(v.a(v.this, paramp));
             }
             for (;;)
             {
               i += 1;
               break;
-              paramAnonymousl.c(((Integer)paramList1.get(i)).intValue(), (CharSequence)paramList.get(i));
+              paramAnonymousl.d(((Integer)paramList1.get(i)).intValue(), (CharSequence)paramList.get(i));
             }
           }
-          paramAnonymousl.c(-1, v.this.context.getString(2131763797));
+          paramAnonymousl.d(-1, v.this.context.getString(2131763797));
           AppMethodBeat.o(97899);
         }
       };
-      this.zPV.KJz = new n.e()
+      this.Ahc.LfT = new n.e()
       {
         public final void onMMMenuItemSelected(MenuItem paramAnonymousMenuItem, int paramAnonymousInt)
         {
           AppMethodBeat.i(97902);
           paramAnonymousInt = paramAnonymousMenuItem.getItemId();
-          ad.d("MicroMsg.GalleryTitleManager", "showAlertWithDel ".concat(String.valueOf(paramAnonymousInt)));
+          ae.d("MicroMsg.GalleryTitleManager", "showAlertWithDel ".concat(String.valueOf(paramAnonymousInt)));
           switch (paramAnonymousInt)
           {
           }
@@ -150,49 +150,49 @@ public final class v
           {
             AppMethodBeat.o(97902);
             return;
-            if ((paramp != null) && (paramp.dYl().HAT != null))
+            if ((paramp != null) && (paramp.ebP().HUG != null))
             {
-              v.a(v.this, paramp, parambyn);
+              v.a(v.this, paramp, parambzh);
               AppMethodBeat.o(97902);
               return;
-              v.b(v.this, paramp, parambyn);
+              v.b(v.this, paramp, parambzh);
               AppMethodBeat.o(97902);
               return;
               paramAnonymousMenuItem = v.this;
-              Object localObject = new com.tencent.mm.plugin.sns.model.q(paramp.field_snsId, 3);
-              g.ajD();
-              g.ajB().gAO.a((n)localObject, 0);
+              Object localObject = new com.tencent.mm.plugin.sns.model.r(paramp.field_snsId, 3);
+              g.ajS();
+              g.ajQ().gDv.a((n)localObject, 0);
               Context localContext = paramAnonymousMenuItem.context;
               paramAnonymousMenuItem.context.getString(2131755906);
-              paramAnonymousMenuItem.tipDialog = h.b(localContext, paramAnonymousMenuItem.context.getString(2131763964), true, new v.2(paramAnonymousMenuItem, (com.tencent.mm.plugin.sns.model.q)localObject));
+              paramAnonymousMenuItem.tipDialog = h.b(localContext, paramAnonymousMenuItem.context.getString(2131763964), true, new v.2(paramAnonymousMenuItem, (com.tencent.mm.plugin.sns.model.r)localObject));
               AppMethodBeat.o(97902);
               return;
               paramAnonymousMenuItem = v.this;
               localObject = paramp;
-              if ((((com.tencent.mm.plugin.sns.storage.p)localObject).dYL()) || (((com.tencent.mm.plugin.sns.storage.p)localObject).dYM()))
+              if ((((com.tencent.mm.plugin.sns.storage.p)localObject).ecp()) || (((com.tencent.mm.plugin.sns.storage.p)localObject).ecq()))
               {
-                ag.dUe().QQ(((com.tencent.mm.plugin.sns.storage.p)localObject).zMC);
+                ah.dXE().Rx(((com.tencent.mm.plugin.sns.storage.p)localObject).AdJ);
                 AppMethodBeat.o(97902);
                 return;
               }
-              localObject = new com.tencent.mm.plugin.sns.model.q(((com.tencent.mm.plugin.sns.storage.p)localObject).field_snsId, 2);
-              g.ajD();
-              g.ajB().gAO.a((n)localObject, 0);
+              localObject = new com.tencent.mm.plugin.sns.model.r(((com.tencent.mm.plugin.sns.storage.p)localObject).field_snsId, 2);
+              g.ajS();
+              g.ajQ().gDv.a((n)localObject, 0);
               localContext = paramAnonymousMenuItem.context;
               paramAnonymousMenuItem.context.getString(2131755906);
-              paramAnonymousMenuItem.tipDialog = h.b(localContext, paramAnonymousMenuItem.context.getString(2131763964), true, new v.12(paramAnonymousMenuItem, (com.tencent.mm.plugin.sns.model.q)localObject));
+              paramAnonymousMenuItem.tipDialog = h.b(localContext, paramAnonymousMenuItem.context.getString(2131763964), true, new v.12(paramAnonymousMenuItem, (com.tencent.mm.plugin.sns.model.r)localObject));
               AppMethodBeat.o(97902);
               return;
-              if ((paramp != null) && (paramp.dYl().HAT != null))
+              if ((paramp != null) && (paramp.ebP().HUG != null))
               {
                 if (paramp.field_type != 15)
                 {
-                  paramAnonymousMenuItem = ao.jo(ag.getAccSnsPath(), parambyn.Id) + com.tencent.mm.plugin.sns.data.q.k(parambyn);
-                  if (com.tencent.mm.plugin.sns.data.q.ans(paramAnonymousMenuItem) == 4)
+                  paramAnonymousMenuItem = ap.jv(ah.getAccSnsPath(), parambzh.Id) + com.tencent.mm.plugin.sns.data.r.k(parambzh);
+                  if (com.tencent.mm.plugin.sns.data.r.aou(paramAnonymousMenuItem) == 4)
                   {
-                    localObject = i.k(paramAnonymousMenuItem, false) + "_tmp";
-                    i.aYg(i.aYr((String)localObject));
-                    ((com.tencent.mm.plugin.emoji.b.c)g.ab(com.tencent.mm.plugin.emoji.b.c.class)).nativeWxam2Pic(i.k(paramAnonymousMenuItem, false), (String)localObject);
+                    localObject = o.k(paramAnonymousMenuItem, false) + "_tmp";
+                    o.aZI(o.aZU((String)localObject));
+                    ((com.tencent.mm.plugin.emoji.b.c)g.ab(com.tencent.mm.plugin.emoji.b.c.class)).nativeWxam2Pic(o.k(paramAnonymousMenuItem, false), (String)localObject);
                     com.tencent.mm.pluginsdk.ui.tools.q.j((String)localObject, v.this.context);
                     AppMethodBeat.o(97902);
                     return;
@@ -201,29 +201,29 @@ public final class v
                   AppMethodBeat.o(97902);
                   return;
                 }
-                v.aAG(paramp.dYK());
+                v.aBX(paramp.eco());
                 AppMethodBeat.o(97902);
                 return;
-                if ((paramp != null) && (paramp.dYl().HAT != null))
+                if ((paramp != null) && (paramp.ebP().HUG != null))
                 {
-                  if (paramp.dYl().HAT.GaP == 1)
+                  if (paramp.ebP().HUG.Gtw == 1)
                   {
-                    paramAnonymousMenuItem = ao.jo(ag.getAccSnsPath(), parambyn.Id) + com.tencent.mm.plugin.sns.data.q.k(parambyn);
-                    v.this.aAF(paramAnonymousMenuItem);
+                    paramAnonymousMenuItem = ap.jv(ah.getAccSnsPath(), parambzh.Id) + com.tencent.mm.plugin.sns.data.r.k(parambzh);
+                    v.this.aBW(paramAnonymousMenuItem);
                     AppMethodBeat.o(97902);
                     return;
                   }
-                  v.aAH(paramp.dYK());
+                  v.aBY(paramp.eco());
                   AppMethodBeat.o(97902);
                   return;
-                  if (paramp.dYl().HAT.GaQ.size() > 1)
+                  if (paramp.ebP().HUG.Gtx.size() > 1)
                   {
                     h.a(v.this.context, v.this.context.getString(2131763940), "", new DialogInterface.OnClickListener()
                     {
                       public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
                       {
                         AppMethodBeat.i(97900);
-                        v.this.O(v.6.this.zPY);
+                        v.this.O(v.6.this.Ahf);
                         AppMethodBeat.o(97900);
                       }
                     }, null);
@@ -235,54 +235,54 @@ public final class v
                     public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
                     {
                       AppMethodBeat.i(97901);
-                      v.this.O(v.6.this.zPY);
+                      v.this.O(v.6.this.Ahf);
                       AppMethodBeat.o(97901);
                     }
                   }, null);
                   AppMethodBeat.o(97902);
                   return;
-                  paramAnonymousMenuItem = new vf();
-                  paramAnonymousMenuItem.dJs.mediaId = v.this.LS;
-                  com.tencent.mm.sdk.b.a.IbL.l(paramAnonymousMenuItem);
+                  paramAnonymousMenuItem = new vj();
+                  paramAnonymousMenuItem.dKG.mediaId = v.this.LS;
+                  com.tencent.mm.sdk.b.a.IvT.l(paramAnonymousMenuItem);
                 }
               }
             }
           }
         }
       };
-      this.zPV.JXC = new e.b()
+      this.Ahc.KtV = new e.b()
       {
         public final void onDismiss()
         {
           AppMethodBeat.i(97903);
           Object localObject = new av();
-          ((av)localObject).dlH.dlI = v.this.zQK;
-          ((av)localObject).dlH.filePath = v.this.zQC;
-          com.tencent.mm.sdk.b.a.IbL.l((com.tencent.mm.sdk.b.b)localObject);
-          v.this.zPV = null;
-          v.this.zQC = null;
-          v.this.yVM = null;
+          ((av)localObject).dmJ.dmK = v.this.AhR;
+          ((av)localObject).dmJ.filePath = v.this.AhJ;
+          com.tencent.mm.sdk.b.a.IvT.l((com.tencent.mm.sdk.b.b)localObject);
+          v.this.Ahc = null;
+          v.this.AhJ = null;
+          v.this.zlW = null;
           v.this.LS = null;
-          v.this.zQF = null;
-          v.this.zQG = null;
-          v.this.zQH = null;
-          v.this.zQJ = null;
-          v.this.zQI = null;
+          v.this.AhM = null;
+          v.this.AhN = null;
+          v.this.AhO = null;
+          v.this.AhQ = null;
+          v.this.AhP = null;
           localObject = v.this;
-          v.this.dnu = 0;
-          ((v)localObject).dnt = 0;
-          v.this.zRp = 0;
+          v.this.dow = 0;
+          ((v)localObject).dov = 0;
+          v.this.Aiw = 0;
           AppMethodBeat.o(97903);
         }
       };
-      this.zPV.cMW();
+      this.Ahc.cPF();
       AppMethodBeat.o(97914);
       return;
-      this.zPV = new e(this.context, 1, false);
+      this.Ahc = new e(this.context, 1, false);
     }
   }
   
-  private void b(final List<String> paramList, final List<Integer> paramList1, final com.tencent.mm.plugin.sns.storage.p paramp, final byn parambyn, final int paramInt)
+  private void b(final List<String> paramList, final List<Integer> paramList1, final com.tencent.mm.plugin.sns.storage.p paramp, final bzh parambzh, final int paramInt)
   {
     AppMethodBeat.i(97915);
     if (paramList.size() == 0)
@@ -290,41 +290,41 @@ public final class v
       AppMethodBeat.o(97915);
       return;
     }
-    if ((this.zPV != null) && (this.zQM)) {
-      this.zQM = false;
+    if ((this.Ahc != null) && (this.AhT)) {
+      this.AhT = false;
     }
     for (;;)
     {
-      this.zPV.KJy = new n.d()
+      this.Ahc.LfS = new n.d()
       {
         public final void onCreateMMMenu(l paramAnonymousl)
         {
           AppMethodBeat.i(97904);
-          v.this.zPV.setFooterView(null);
+          v.this.Ahc.setFooterView(null);
           paramAnonymousl.clear();
           int i = 0;
           if (i < paramList.size())
           {
             if (((Integer)paramList1.get(i)).intValue() == 7) {
-              v.this.zPV.setFooterView(v.a(v.this, paramp));
+              v.this.Ahc.setFooterView(v.a(v.this, paramp));
             }
             for (;;)
             {
               i += 1;
               break;
-              paramAnonymousl.c(((Integer)paramList1.get(i)).intValue(), (CharSequence)paramList.get(i));
+              paramAnonymousl.d(((Integer)paramList1.get(i)).intValue(), (CharSequence)paramList.get(i));
             }
           }
           AppMethodBeat.o(97904);
         }
       };
-      this.zPV.KJz = new n.e()
+      this.Ahc.LfT = new n.e()
       {
         public final void onMMMenuItemSelected(MenuItem paramAnonymousMenuItem, int paramAnonymousInt)
         {
           AppMethodBeat.i(97905);
           paramAnonymousInt = paramAnonymousMenuItem.getItemId();
-          ad.d("MicroMsg.GalleryTitleManager", "showAlert ".concat(String.valueOf(paramAnonymousInt)));
+          ae.d("MicroMsg.GalleryTitleManager", "showAlert ".concat(String.valueOf(paramAnonymousInt)));
           switch (paramAnonymousInt)
           {
           }
@@ -332,40 +332,40 @@ public final class v
           {
             AppMethodBeat.o(97905);
             return;
-            if ((paramp != null) && (paramp.dYl().HAT != null))
+            if ((paramp != null) && (paramp.ebP().HUG != null))
             {
-              v.a(v.this, paramp, parambyn);
+              v.a(v.this, paramp, parambzh);
               AppMethodBeat.o(97905);
               return;
-              v.b(v.this, paramp, parambyn);
+              v.b(v.this, paramp, parambzh);
               AppMethodBeat.o(97905);
               return;
-              if ((paramp != null) && (paramp.dYl().HAT != null))
+              if ((paramp != null) && (paramp.ebP().HUG != null))
               {
-                if (paramp.dYl().HAT.GaP == 1)
+                if (paramp.ebP().HUG.Gtw == 1)
                 {
-                  paramAnonymousMenuItem = ao.jo(ag.getAccSnsPath(), parambyn.Id) + com.tencent.mm.plugin.sns.data.q.k(parambyn);
-                  v.this.aAF(paramAnonymousMenuItem);
+                  paramAnonymousMenuItem = ap.jv(ah.getAccSnsPath(), parambzh.Id) + com.tencent.mm.plugin.sns.data.r.k(parambzh);
+                  v.this.aBW(paramAnonymousMenuItem);
                   AppMethodBeat.o(97905);
                   return;
                 }
-                v.aAH(paramp.dYK());
+                v.aBY(paramp.eco());
                 AppMethodBeat.o(97905);
                 return;
-                if ((paramp != null) && (paramp.dYl().HAT != null))
+                if ((paramp != null) && (paramp.ebP().HUG != null))
                 {
                   if (paramp.field_type != 15)
                   {
-                    com.tencent.mm.pluginsdk.ui.tools.q.j(ao.jo(ag.getAccSnsPath(), parambyn.Id) + com.tencent.mm.plugin.sns.data.q.k(parambyn), v.this.context);
+                    com.tencent.mm.pluginsdk.ui.tools.q.j(ap.jv(ah.getAccSnsPath(), parambzh.Id) + com.tencent.mm.plugin.sns.data.r.k(parambzh), v.this.context);
                     AppMethodBeat.o(97905);
                     return;
                   }
-                  v.aAG(paramp.dYK());
+                  v.aBX(paramp.eco());
                   AppMethodBeat.o(97905);
                   return;
                   paramAnonymousMenuItem = v.this;
                   long l = paramp.field_snsId;
-                  com.tencent.mm.plugin.sns.storage.p localp = ag.dUe().Ai(l);
+                  com.tencent.mm.plugin.sns.storage.p localp = ah.dXE().AG(l);
                   if ((l == 0L) || (localp == null))
                   {
                     AppMethodBeat.o(97905);
@@ -379,43 +379,43 @@ public final class v
                   d.b(paramAnonymousMenuItem.context, "webview", ".ui.tools.WebViewUI", localIntent);
                   AppMethodBeat.o(97905);
                   return;
-                  paramAnonymousMenuItem = new vf();
-                  paramAnonymousMenuItem.dJs.mediaId = v.this.LS;
-                  com.tencent.mm.sdk.b.a.IbL.l(paramAnonymousMenuItem);
+                  paramAnonymousMenuItem = new vj();
+                  paramAnonymousMenuItem.dKG.mediaId = v.this.LS;
+                  com.tencent.mm.sdk.b.a.IvT.l(paramAnonymousMenuItem);
                 }
               }
             }
           }
         }
       };
-      this.zPV.cMW();
+      this.Ahc.cPF();
       AppMethodBeat.o(97915);
       return;
-      this.zPV = new e(this.context, 1, false);
+      this.Ahc = new e(this.context, 1, false);
     }
   }
   
   protected final void O(com.tencent.mm.plugin.sns.storage.p paramp)
   {
     AppMethodBeat.i(97916);
-    if ((paramp.dYL()) || (paramp.dYM()))
+    if ((paramp.ecp()) || (paramp.ecq()))
     {
-      ag.dUe().QQ(paramp.zMC);
-      this.zRm.PH(paramp.zMC);
+      ah.dXE().Rx(paramp.AdJ);
+      this.Ait.Qo(paramp.AdJ);
       AppMethodBeat.o(97916);
       return;
     }
-    ag.dUd().zN(paramp.field_snsId);
-    paramp = new com.tencent.mm.plugin.sns.model.q(paramp.field_snsId, 1);
-    g.ajD();
-    g.ajB().gAO.a(paramp, 0);
+    ah.dXD().Al(paramp.field_snsId);
+    paramp = new com.tencent.mm.plugin.sns.model.r(paramp.field_snsId, 1);
+    g.ajS();
+    g.ajQ().gDv.a(paramp, 0);
     Context localContext = this.context;
     this.context.getString(2131755906);
     this.tipDialog = h.b(localContext, this.context.getString(2131763798), true, new v.11(this, paramp));
     AppMethodBeat.o(97916);
   }
   
-  public final void QS(int paramInt)
+  public final void Rz(int paramInt)
   {
     AppMethodBeat.i(97909);
     if (paramInt == 0)
@@ -423,27 +423,27 @@ public final class v
       AppMethodBeat.o(97909);
       return;
     }
-    this.zRm.PH(paramInt);
+    this.Ait.Qo(paramInt);
     AppMethodBeat.o(97909);
   }
   
-  public final void a(boolean paramBoolean, com.tencent.mm.plugin.sns.storage.p paramp, byn parambyn)
+  public final void a(boolean paramBoolean, com.tencent.mm.plugin.sns.storage.p paramp, bzh parambzh)
   {
     AppMethodBeat.i(97912);
-    a(paramBoolean, paramp, parambyn, false, false, 0);
+    a(paramBoolean, paramp, parambzh, false, false, 0);
     AppMethodBeat.o(97912);
   }
   
-  public final void a(boolean paramBoolean1, com.tencent.mm.plugin.sns.storage.p paramp, byn parambyn, boolean paramBoolean2, boolean paramBoolean3, int paramInt)
+  public final void a(boolean paramBoolean1, com.tencent.mm.plugin.sns.storage.p paramp, bzh parambzh, boolean paramBoolean2, boolean paramBoolean3, int paramInt)
   {
     AppMethodBeat.i(97913);
-    this.zRo = paramBoolean1;
-    this.yVM = paramp;
-    this.zbu = parambyn;
-    this.LS = parambyn.Id;
+    this.Aiv = paramBoolean1;
+    this.zlW = paramp;
+    this.zrY = parambzh;
+    this.LS = parambzh.Id;
     ArrayList localArrayList1 = new ArrayList();
     ArrayList localArrayList2 = new ArrayList();
-    eb localeb;
+    ec localec;
     if (paramBoolean1)
     {
       if (paramp == null)
@@ -453,14 +453,14 @@ public final class v
       }
       if (paramp.field_localPrivate > 0)
       {
-        if ((!bt.isNullOrNil(ag.dTJ())) && (ag.dTJ().equals(paramp.field_userName)))
+        if ((!bu.isNullOrNil(ah.dXj())) && (ah.dXj().equals(paramp.field_userName)))
         {
           localArrayList1.add(this.context.getString(2131763967));
           localArrayList2.add(Integer.valueOf(5));
         }
         localArrayList1.add(this.context.getString(2131763948));
         localArrayList2.add(Integer.valueOf(3));
-        if (d.aIu("favorite"))
+        if (d.aJN("favorite"))
         {
           localArrayList1.add(this.context.getString(2131761941));
           localArrayList2.add(Integer.valueOf(6));
@@ -473,32 +473,32 @@ public final class v
       }
       for (;;)
       {
-        localeb = new eb();
-        localeb.dpg.doX = paramp.dYK();
-        com.tencent.mm.sdk.b.a.IbL.l(localeb);
-        if (localeb.dph.doF)
+        localec = new ec();
+        localec.dql.dqc = paramp.eco();
+        com.tencent.mm.sdk.b.a.IvT.l(localec);
+        if (localec.dqm.dpK)
         {
           localArrayList1.add(this.context.getString(2131755836));
           localArrayList2.add(Integer.valueOf(8));
         }
-        if (this.zQF != null)
+        if (this.AhM != null)
         {
           localArrayList1.add("");
           localArrayList2.add(Integer.valueOf(7));
         }
-        a(localArrayList1, localArrayList2, paramp, parambyn, paramInt);
+        a(localArrayList1, localArrayList2, paramp, parambzh, paramInt);
         if (true == paramBoolean3)
         {
-          g.ajD();
-          if (g.ajB().gAO.aEN() != 0)
+          g.ajS();
+          if (g.ajQ().gDv.aFd() != 0)
           {
-            paramp = new qc();
-            parambyn = ao.jo(ag.getAccSnsPath(), this.LS) + com.tencent.mm.plugin.sns.data.q.k(parambyn);
-            paramp.dEC.filePath = parambyn;
-            this.zQK = System.currentTimeMillis();
-            paramp.dEC.dlI = this.zQK;
-            this.zQC = parambyn;
-            com.tencent.mm.sdk.b.a.IbL.l(paramp);
+            paramp = new qd();
+            parambzh = ap.jv(ah.getAccSnsPath(), this.LS) + com.tencent.mm.plugin.sns.data.r.k(parambzh);
+            paramp.dFH.filePath = parambzh;
+            this.AhR = System.currentTimeMillis();
+            paramp.dFH.dmK = this.AhR;
+            this.AhJ = parambzh;
+            com.tencent.mm.sdk.b.a.IvT.l(paramp);
           }
         }
         AppMethodBeat.o(97913);
@@ -526,10 +526,10 @@ public final class v
         }
       }
     }
-    paramp.dYl();
+    paramp.ebP();
     localArrayList1.add(this.context.getString(2131763948));
     localArrayList2.add(Integer.valueOf(3));
-    if (d.aIu("favorite"))
+    if (d.aJN("favorite"))
     {
       localArrayList1.add(this.context.getString(2131761941));
       localArrayList2.add(Integer.valueOf(6));
@@ -541,20 +541,20 @@ public final class v
     }
     for (;;)
     {
-      localeb = new eb();
-      localeb.dpg.doX = paramp.dYK();
-      com.tencent.mm.sdk.b.a.IbL.l(localeb);
-      if (localeb.dph.doF)
+      localec = new ec();
+      localec.dql.dqc = paramp.eco();
+      com.tencent.mm.sdk.b.a.IvT.l(localec);
+      if (localec.dqm.dpK)
       {
         localArrayList1.add(this.context.getString(2131755836));
         localArrayList2.add(Integer.valueOf(8));
       }
-      if (this.zQF != null)
+      if (this.AhM != null)
       {
         localArrayList1.add("");
         localArrayList2.add(Integer.valueOf(7));
       }
-      b(localArrayList1, localArrayList2, paramp, parambyn, paramInt);
+      b(localArrayList1, localArrayList2, paramp, parambzh, paramInt);
       break;
       if (paramp.field_type == 1)
       {
@@ -574,22 +574,22 @@ public final class v
     }
   }
   
-  protected final void aAF(String paramString)
+  protected final void aBW(String paramString)
   {
     AppMethodBeat.i(97917);
     Intent localIntent = new Intent();
     localIntent.putExtra("Retr_File_Name", paramString);
     localIntent.putExtra("Retr_Compress_Type", 0);
     localIntent.putExtra("Retr_Msg_Type", 0);
-    com.tencent.mm.plugin.sns.c.a.iRG.k(localIntent, this.context);
+    com.tencent.mm.plugin.sns.c.a.iUz.k(localIntent, this.context);
     AppMethodBeat.o(97917);
   }
   
-  public final void dZL()
+  public final void edr()
   {
     AppMethodBeat.i(97911);
     Intent localIntent = new Intent();
-    localIntent.putExtra("sns_cmd_list", this.zRm);
+    localIntent.putExtra("sns_cmd_list", this.Ait);
     ((Activity)this.context).setResult(-1, localIntent);
     ((Activity)this.context).finish();
     AppMethodBeat.o(97911);
@@ -603,11 +603,11 @@ public final class v
       AppMethodBeat.o(97918);
       return;
     }
-    ad.i("MicroMsg.GalleryTitleManager", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString + " type = " + paramn.getType() + " @" + hashCode());
+    ae.i("MicroMsg.GalleryTitleManager", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString + " type = " + paramn.getType() + " @" + hashCode());
     if (this.tipDialog != null) {
       this.tipDialog.dismiss();
     }
-    paramString = (com.tencent.mm.plugin.sns.model.q)paramn;
+    paramString = (com.tencent.mm.plugin.sns.model.r)paramn;
     switch (paramString.type)
     {
     }
@@ -615,31 +615,31 @@ public final class v
     {
       AppMethodBeat.o(97918);
       return;
-      this.zRm.PH(paramString.dJd);
-      this.zRn.fa(x.bn("sns_table_", paramString.dJd), paramString.type);
+      this.Ait.Qo(paramString.dKr);
+      this.Aiu.fj(x.bo("sns_table_", paramString.dKr), paramString.type);
       AppMethodBeat.o(97918);
       return;
-      this.zRm.PI(paramString.dJd);
-      this.zRn.fa("", paramString.type);
+      this.Ait.Qp(paramString.dKr);
+      this.Aiu.fj("", paramString.type);
       AppMethodBeat.o(97918);
       return;
-      this.zRn.fa("", paramString.type);
+      this.Aiu.fj("", paramString.type);
       AppMethodBeat.o(97918);
       return;
-      this.zRm.PI(paramString.dJd);
-      this.zRn.fa(x.bn("sns_table_", paramString.dJd), paramString.type);
+      this.Ait.Qp(paramString.dKr);
+      this.Aiu.fj(x.bo("sns_table_", paramString.dKr), paramString.type);
     }
   }
   
   public static abstract interface a
   {
-    public abstract void dZM();
+    public abstract void eds();
     
-    public abstract void fa(String paramString, int paramInt);
+    public abstract void fj(String paramString, int paramInt);
     
-    public abstract void fb(String paramString, int paramInt);
+    public abstract void fk(String paramString, int paramInt);
     
-    public abstract void jV(String paramString1, String paramString2);
+    public abstract void kc(String paramString1, String paramString2);
   }
 }
 

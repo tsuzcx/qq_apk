@@ -3,40 +3,43 @@ package com.tencent.mm.plugin.vlog.remux;
 import android.media.MediaFormat;
 import android.os.HandlerThread;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.media.d.e;
+import com.tencent.mm.media.d.h;
 import com.tencent.mm.plugin.vlog.model.ab;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aq;
 import d.g.a.m;
 import d.g.b.p;
 import d.g.b.q;
+import d.k.i;
 import d.z;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
-@d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/vlog/remux/VLogAudioBackgroundDecoder;", "Lcom/tencent/mm/media/decoder/IAudioDecoder;", "materials", "", "Lcom/tencent/mm/plugin/vlog/model/Material;", "(Ljava/util/List;)V", "curDecoderIndex", "", "curMaterialIndex", "currentAudioFrameInterval", "", "currentChannelCount", "currentPts", "currentSampleRate", "decoderList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/vlog/remux/VLogAudioBackgroundDecoder$VideoDecoder;", "Lkotlin/collections/ArrayList;", "defaultMediaFormat", "Landroid/media/MediaFormat;", "lastAudioFramePts", "getMaterials", "()Ljava/util/List;", "sendVideoFrameDataHandler", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "sendVideoFrameDataThread", "Landroid/os/HandlerThread;", "dumpFakeMaterialDecodeData", "", "material", "getChannelCount", "getMediaFormat", "getSampleRate", "hasVideo", "", "onVideoFrameDecode", "pcmData", "", "pts", "index", "Lcom/tencent/mm/plugin/vlog/model/VideoMaterial;", "startDecoder", "stopDecoder", "videoDecodeEnd", "decoder", "mediaExtractor", "Lcom/tencent/mm/media/extractor/MediaExtractorWrapper;", "Companion", "VideoDecoder", "plugin-vlog_release"})
+@d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/vlog/remux/VLogAudioBackgroundDecoder;", "Lcom/tencent/mm/media/decoder/IAudioDecoder;", "materials", "", "Lcom/tencent/mm/plugin/vlog/model/Material;", "(Ljava/util/List;)V", "curDecoderIndex", "", "curMaterialIndex", "currentAudioFrameInterval", "", "currentChannelCount", "currentPts", "currentSampleRate", "decoderList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/vlog/remux/VLogAudioBackgroundDecoder$VideoDecoder;", "Lkotlin/collections/ArrayList;", "defaultMediaFormat", "Landroid/media/MediaFormat;", "lastAudioFramePts", "getMaterials", "()Ljava/util/List;", "sendVideoFrameDataHandler", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "sendVideoFrameDataThread", "Landroid/os/HandlerThread;", "dumpFakeMaterialDecodeData", "", "material", "getChannelCount", "getMediaFormat", "getSampleRate", "hasVideo", "", "onVideoFrameDecode", "pcmData", "", "pts", "index", "Lcom/tencent/mm/plugin/vlog/model/VideoMaterial;", "startDecoder", "stopDecoder", "videoDecodeEnd", "decoder", "mediaExtractor", "Lcom/tencent/mm/media/extractor/MediaExtractorWrapper;", "Companion", "VideoDecoder", "plugin-vlog_release"})
 public final class a
-  extends com.tencent.mm.media.d.e
+  extends e
 {
-  public static final c BJr;
-  private final List<com.tencent.mm.plugin.vlog.model.l> BGM;
-  private ArrayList<d> BJg;
-  private volatile int BJh;
-  private volatile int BJi;
-  private ap BJj;
-  private HandlerThread BJk;
-  MediaFormat BJl;
-  private volatile int BJm;
-  private volatile int BJn;
-  private long BJo;
-  private long BJp;
-  private long BJq;
+  public static final c CaQ;
+  private final List<com.tencent.mm.plugin.vlog.model.l> BYl;
+  private ArrayList<d> CaF;
+  private volatile int CaG;
+  private volatile int CaH;
+  private aq CaI;
+  private HandlerThread CaJ;
+  MediaFormat CaK;
+  private volatile int CaL;
+  private volatile int CaM;
+  private long CaN;
+  private long CaO;
+  private long CaP;
   
   static
   {
     AppMethodBeat.i(111019);
-    BJr = new c((byte)0);
+    CaQ = new c((byte)0);
     AppMethodBeat.o(111019);
   }
   
@@ -44,20 +47,20 @@ public final class a
   {
     super(null, "background", -1L, -1L, null, null);
     AppMethodBeat.i(111018);
-    this.BGM = paramList;
-    this.BJg = new ArrayList();
-    this.BJm = 1;
-    this.BJn = 44100;
-    this.BJo = 23L;
-    this.BJp = -1L;
-    paramList = (Iterable)this.BGM;
+    this.BYl = paramList;
+    this.CaF = new ArrayList();
+    this.CaL = 1;
+    this.CaM = 44100;
+    this.CaN = 23L;
+    this.CaO = -1L;
+    paramList = (Iterable)this.BYl;
     int i = 0;
     Iterator localIterator = paramList.iterator();
     if (localIterator.hasNext())
     {
       paramList = localIterator.next();
       if (i < 0) {
-        d.a.j.gfB();
+        d.a.j.gkd();
       }
       final com.tencent.mm.plugin.vlog.model.l locall = (com.tencent.mm.plugin.vlog.model.l)paramList;
       final com.tencent.mm.media.f.a locala;
@@ -66,42 +69,42 @@ public final class a
       if ((locall instanceof ab))
       {
         locala = new com.tencent.mm.media.f.a(locall.path);
-        paramList = locala.hkb;
+        paramList = locala.hmP;
         if ((paramList != null) && (paramList.containsKey("frame-rate")))
         {
           int j = paramList.getInteger("frame-rate");
-          ad.i("MicroMsg.VLogAudioBackgroundDecoder", "index:" + i + ", material:" + locall.path + ", audioFps:" + j);
+          ae.i("MicroMsg.VLogAudioBackgroundDecoder", "index:" + i + ", material:" + locall.path + ", audioFps:" + j);
         }
-        l1 = ((ab)locall).BGQ;
+        l1 = ((ab)locall).BYp;
         l2 = locall.endTime - locall.startTime + l1;
-        if (!com.tencent.mm.compatible.util.d.lz(23)) {
+        if (!com.tencent.mm.compatible.util.d.lB(23)) {
           break label417;
         }
       }
       label417:
-      for (paramList = (com.tencent.mm.media.d.e)new com.tencent.mm.media.d.g(locala, "background", l1, l2);; paramList = (com.tencent.mm.media.d.e)new com.tencent.mm.media.d.h(locala, "background", l1, l2))
+      for (paramList = (e)new com.tencent.mm.media.d.g(locala, "background", l1, l2);; paramList = (e)new h(locala, "background", l1, l2))
       {
-        paramList.hiz = ((m)new a(i, locall, this));
-        paramList.hiA = ((d.g.a.a)new b(i, locall, paramList, locala, this));
-        this.BJg.add(new d(i, (ab)locall, paramList, locala, l1, l2));
-        ad.i("MicroMsg.VLogAudioBackgroundDecoder", "add video decoder, index:" + i + ", material:" + locall.path + ", start:" + l1 + ',' + locall.startTime + ", end:" + l2 + ',' + locall.endTime);
+        paramList.hln = ((m)new a(i, locall, this));
+        paramList.hlo = ((d.g.a.a)new b(i, locall, paramList, locala, this));
+        this.CaF.add(new d(i, (ab)locall, paramList, locala, l1, l2));
+        ae.i("MicroMsg.VLogAudioBackgroundDecoder", "add video decoder, index:" + i + ", material:" + locall.path + ", start:" + l1 + ',' + locall.startTime + ", end:" + l2 + ',' + locall.endTime);
         i += 1;
         break;
       }
     }
-    ad.i("MicroMsg.VLogAudioBackgroundDecoder", "init finish, decoderList:" + this.BJg.size());
-    if (esL())
+    ae.i("MicroMsg.VLogAudioBackgroundDecoder", "init finish, decoderList:" + this.CaF.size());
+    if (ews())
     {
-      this.BJm = ((d)this.BJg.get(0)).BJz.getChannelCount();
-      this.BJn = ((d)this.BJg.get(0)).BJz.getSampleRate();
-      this.BJo = 23L;
-      ad.i("MicroMsg.VLogAudioBackgroundDecoder", "init currentChannelCount:" + this.BJm + ", currentSampleRate:" + this.BJn + ", currentAudioFrameInterval:" + this.BJo);
+      this.CaL = ((d)this.CaF.get(0)).CaY.getChannelCount();
+      this.CaM = ((d)this.CaF.get(0)).CaY.getSampleRate();
+      this.CaN = 23L;
+      ae.i("MicroMsg.VLogAudioBackgroundDecoder", "init currentChannelCount:" + this.CaL + ", currentSampleRate:" + this.CaM + ", currentAudioFrameInterval:" + this.CaN);
     }
-    paramList = com.tencent.e.c.d.gY("VLogAudioBackgroundDecoder_sendVideoFrameDataThread", 5);
+    paramList = com.tencent.e.c.d.hh("VLogAudioBackgroundDecoder_sendVideoFrameDataThread", 5);
     p.g(paramList, "SpecialThreadFactory.cre…ad\",Thread.NORM_PRIORITY)");
-    this.BJk = paramList;
-    this.BJk.start();
-    this.BJj = new ap(this.BJk.getLooper());
+    this.CaJ = paramList;
+    this.CaJ.start();
+    this.CaI = new aq(this.CaJ.getLooper());
     paramList = new MediaFormat();
     paramList.setString("mime", "audio/mp4a-latm");
     paramList.setInteger("aac-profile", 2);
@@ -109,34 +112,34 @@ public final class a
     paramList.setInteger("channel-count", 1);
     paramList.setInteger("bitrate", 64000);
     paramList.setInteger("max-input-size", 16384);
-    this.BJl = paramList;
-    this.BJh = 0;
-    this.BJi = 0;
-    ad.i("MicroMsg.VLogAudioBackgroundDecoder", "init finish, defaultMediaFormat:" + this.BJl);
+    this.CaK = paramList;
+    this.CaG = 0;
+    this.CaH = 0;
+    ae.i("MicroMsg.VLogAudioBackgroundDecoder", "init finish, defaultMediaFormat:" + this.CaK);
     AppMethodBeat.o(111018);
   }
   
-  private final void a(int paramInt, com.tencent.mm.plugin.vlog.model.l paraml, com.tencent.mm.media.d.e parame, com.tencent.mm.media.f.a parama)
+  private final void a(int paramInt, com.tencent.mm.plugin.vlog.model.l paraml, e parame, com.tencent.mm.media.f.a parama)
   {
     AppMethodBeat.i(111017);
     for (;;)
     {
-      ad.i("MicroMsg.VLogAudioBackgroundDecoder", "videoDecodeEnd, index:" + paramInt + ", material:" + paraml.path + ", currentPts:" + this.BJq);
+      ae.i("MicroMsg.VLogAudioBackgroundDecoder", "videoDecodeEnd, index:" + paramInt + ", material:" + paraml.path + ", currentPts:" + this.CaP);
       if (parame != null) {}
       try
       {
-        parame.atm();
+        parame.atB();
         if (parama != null) {
           parama.release();
         }
-        if (paramInt + 1 < this.BGM.size())
+        if (paramInt + 1 < this.BYl.size())
         {
-          paraml = (com.tencent.mm.plugin.vlog.model.l)this.BGM.get(paramInt + 1);
-          this.BJi = (paramInt + 1);
-          ad.i("MicroMsg.VLogAudioBackgroundDecoder", "nextMaterial:" + paraml.path);
+          paraml = (com.tencent.mm.plugin.vlog.model.l)this.BYl.get(paramInt + 1);
+          this.CaH = (paramInt + 1);
+          ae.i("MicroMsg.VLogAudioBackgroundDecoder", "nextMaterial:" + paraml.path);
           if ((paraml instanceof ab))
           {
-            parame = ((Iterable)this.BJg).iterator();
+            parame = ((Iterable)this.CaF).iterator();
             for (;;)
             {
               if (parame.hasNext())
@@ -151,16 +154,16 @@ public final class a
                   paraml = (d)paraml;
                   if (paraml != null)
                   {
-                    ad.i("MicroMsg.VLogAudioBackgroundDecoder", "find start next decoder index:" + (paramInt + 1) + ", hasAudio:" + paraml.hlB.aty());
-                    if (paraml.hlB.aty()) {
+                    ae.i("MicroMsg.VLogAudioBackgroundDecoder", "find start next decoder index:" + (paramInt + 1) + ", hasAudio:" + paraml.hoq.atN());
+                    if (paraml.hoq.atN()) {
                       break label374;
                     }
-                    ad.i("MicroMsg.VLogAudioBackgroundDecoder", "next material not have audio: " + paraml.BJy.path);
-                    a((com.tencent.mm.plugin.vlog.model.l)paraml.BJy);
-                    ad.i("MicroMsg.VLogAudioBackgroundDecoder", "finish process mute video material, index:" + this.BJh);
-                    a(this.BJi, (com.tencent.mm.plugin.vlog.model.l)paraml.BJy, paraml.BJz, paraml.hlB);
+                    ae.i("MicroMsg.VLogAudioBackgroundDecoder", "next material not have audio: " + paraml.CaX.path);
+                    a((com.tencent.mm.plugin.vlog.model.l)paraml.CaX);
+                    ae.i("MicroMsg.VLogAudioBackgroundDecoder", "finish process mute video material, index:" + this.CaG);
+                    a(this.CaH, (com.tencent.mm.plugin.vlog.model.l)paraml.CaX, paraml.CaY, paraml.hoq);
                   }
-                  this.BJh = (paramInt + 1);
+                  this.CaG = (paramInt + 1);
                   AppMethodBeat.o(111017);
                 }
               }
@@ -172,37 +175,37 @@ public final class a
       {
         for (;;)
         {
-          ad.i("MicroMsg.VLogAudioBackgroundDecoder", "videoDecodeEnd release decoder and extractor error");
+          ae.i("MicroMsg.VLogAudioBackgroundDecoder", "videoDecodeEnd release decoder and extractor error");
           continue;
           int i = 0;
           continue;
           paraml = null;
           continue;
           label374:
-          this.BJm = paraml.BJz.getChannelCount();
-          this.BJn = paraml.BJz.getSampleRate();
-          this.BJp = -1L;
-          paraml.BJz.startDecoder();
+          this.CaL = paraml.CaY.getChannelCount();
+          this.CaM = paraml.CaY.getSampleRate();
+          this.CaO = -1L;
+          paraml.CaY.startDecoder();
         }
         if ((paraml instanceof com.tencent.mm.plugin.vlog.model.j))
         {
-          ad.i("MicroMsg.VLogAudioBackgroundDecoder", "next material is image, startTime:" + paraml.startTime + ", endTime:" + paraml.endTime);
+          ae.i("MicroMsg.VLogAudioBackgroundDecoder", "next material is image, startTime:" + paraml.startTime + ", endTime:" + paraml.endTime);
           a(paraml);
-          ad.i("MicroMsg.VLogAudioBackgroundDecoder", "finish process image material, index:" + this.BJh);
-          paramInt = this.BJi;
+          ae.i("MicroMsg.VLogAudioBackgroundDecoder", "finish process image material, index:" + this.CaG);
+          paramInt = this.CaH;
           parama = null;
           parame = null;
         }
         else
         {
-          ad.i("MicroMsg.VLogAudioBackgroundDecoder", "cannot find next material");
+          ae.i("MicroMsg.VLogAudioBackgroundDecoder", "cannot find next material");
           AppMethodBeat.o(111017);
           return;
         }
       }
     }
-    ad.i("MicroMsg.VLogAudioBackgroundDecoder", "finish decode all material");
-    paraml = this.hiA;
+    ae.i("MicroMsg.VLogAudioBackgroundDecoder", "finish decode all material");
+    paraml = this.hlo;
     if (paraml != null)
     {
       paraml.invoke();
@@ -215,11 +218,11 @@ public final class a
   private final void a(com.tencent.mm.plugin.vlog.model.l paraml)
   {
     AppMethodBeat.i(111016);
-    ad.i("MicroMsg.VLogAudioBackgroundDecoder", "dumpFakeMaterialDecodeData, currentChannelCount:" + this.BJm + ", currentSampleRate:" + this.BJn + ", currentAudioFrameInterval:" + this.BJo);
-    paraml = d.k.h.a((d.k.e)new d.k.g(paraml.startTime, paraml.endTime), this.BJo);
+    ae.i("MicroMsg.VLogAudioBackgroundDecoder", "dumpFakeMaterialDecodeData, currentChannelCount:" + this.CaL + ", currentSampleRate:" + this.CaM + ", currentAudioFrameInterval:" + this.CaN);
+    paraml = d.k.j.a((d.k.g)new i(paraml.startTime, paraml.endTime), this.CaN);
     long l1 = paraml.first;
-    long l2 = paraml.MMp;
-    long l3 = paraml.xwe;
+    long l2 = paraml.Nju;
+    long l3 = paraml.xMb;
     if (l3 >= 0L)
     {
       if (l1 > l2) {}
@@ -228,7 +231,7 @@ public final class a
       while (l1 >= l2) {
         for (;;)
         {
-          this.BJj.post((Runnable)new e(this));
+          this.CaI.post((Runnable)new e(this));
           if (l1 == l2) {
             break;
           }
@@ -239,28 +242,28 @@ public final class a
     AppMethodBeat.o(111016);
   }
   
-  public final void atm()
+  public final void atB()
   {
     AppMethodBeat.i(111015);
-    ad.m("MicroMsg.VLogAudioBackgroundDecoder", "stopDecoder, decoderStop:" + this.his, new Object[0]);
-    if (!this.his)
+    ae.m("MicroMsg.VLogAudioBackgroundDecoder", "stopDecoder, decoderStop:" + this.hlg, new Object[0]);
+    if (!this.hlg)
     {
-      Iterator localIterator = ((Iterable)this.BJg).iterator();
+      Iterator localIterator = ((Iterable)this.CaF).iterator();
       while (localIterator.hasNext()) {
-        ((d)localIterator.next()).BJz.atm();
+        ((d)localIterator.next()).CaY.atB();
       }
-      this.BJg.clear();
+      this.CaF.clear();
     }
-    this.BJk.quitSafely();
-    this.BJh = 0;
-    this.BJi = 0;
+    this.CaJ.quitSafely();
+    this.CaG = 0;
+    this.CaH = 0;
     AppMethodBeat.o(111015);
   }
   
-  public final boolean esL()
+  public final boolean ews()
   {
     AppMethodBeat.i(111013);
-    if (!((Collection)this.BJg).isEmpty())
+    if (!((Collection)this.CaF).isEmpty())
     {
       AppMethodBeat.o(111013);
       return true;
@@ -271,51 +274,51 @@ public final class a
   
   public final int getChannelCount()
   {
-    return this.BJm;
+    return this.CaL;
   }
   
   public final int getSampleRate()
   {
-    return this.BJn;
+    return this.CaM;
   }
   
   public final void startDecoder()
   {
     AppMethodBeat.i(111014);
-    ad.i("MicroMsg.VLogAudioBackgroundDecoder", "startDecoder: " + this.BJg.size());
-    if (esL())
+    ae.i("MicroMsg.VLogAudioBackgroundDecoder", "startDecoder: " + this.CaF.size());
+    if (ews())
     {
-      this.BJq = 0L;
-      this.BJi = 0;
-      this.BJh = 0;
-      com.tencent.mm.plugin.vlog.model.l locall = (com.tencent.mm.plugin.vlog.model.l)this.BGM.get(0);
+      this.CaP = 0L;
+      this.CaH = 0;
+      this.CaG = 0;
+      com.tencent.mm.plugin.vlog.model.l locall = (com.tencent.mm.plugin.vlog.model.l)this.BYl.get(0);
       if ((locall instanceof com.tencent.mm.plugin.vlog.model.j))
       {
-        ad.i("MicroMsg.VLogAudioBackgroundDecoder", "firstMaterial is image, startTime:" + locall.startTime + ", endTime:" + locall.endTime);
+        ae.i("MicroMsg.VLogAudioBackgroundDecoder", "firstMaterial is image, startTime:" + locall.startTime + ", endTime:" + locall.endTime);
         a(locall);
-        ad.i("MicroMsg.VLogAudioBackgroundDecoder", "finish process first image material, index:" + this.BJh);
-        a(this.BJi, locall, null, null);
+        ae.i("MicroMsg.VLogAudioBackgroundDecoder", "finish process first image material, index:" + this.CaG);
+        a(this.CaH, locall, null, null);
         AppMethodBeat.o(111014);
         return;
       }
-      if (((d)this.BJg.get(0)).hlB.aty())
+      if (((d)this.CaF.get(0)).hoq.atN())
       {
-        this.BJm = ((d)this.BJg.get(0)).BJz.getChannelCount();
-        this.BJn = ((d)this.BJg.get(0)).BJz.getSampleRate();
-        this.BJp = -1L;
-        ((d)this.BJg.get(0)).BJz.startDecoder();
+        this.CaL = ((d)this.CaF.get(0)).CaY.getChannelCount();
+        this.CaM = ((d)this.CaF.get(0)).CaY.getSampleRate();
+        this.CaO = -1L;
+        ((d)this.CaF.get(0)).CaY.startDecoder();
         AppMethodBeat.o(111014);
         return;
       }
-      ad.i("MicroMsg.VLogAudioBackgroundDecoder", "first video not have audio:" + ((d)this.BJg.get(0)).BJy.path);
-      a((com.tencent.mm.plugin.vlog.model.l)((d)this.BJg.get(0)).BJy);
-      ad.i("MicroMsg.VLogAudioBackgroundDecoder", "finish process first mute video material");
-      a(this.BJi, (com.tencent.mm.plugin.vlog.model.l)((d)this.BJg.get(0)).BJy, ((d)this.BJg.get(0)).BJz, ((d)this.BJg.get(0)).hlB);
+      ae.i("MicroMsg.VLogAudioBackgroundDecoder", "first video not have audio:" + ((d)this.CaF.get(0)).CaX.path);
+      a((com.tencent.mm.plugin.vlog.model.l)((d)this.CaF.get(0)).CaX);
+      ae.i("MicroMsg.VLogAudioBackgroundDecoder", "finish process first mute video material");
+      a(this.CaH, (com.tencent.mm.plugin.vlog.model.l)((d)this.CaF.get(0)).CaX, ((d)this.CaF.get(0)).CaY, ((d)this.CaF.get(0)).hoq);
     }
     AppMethodBeat.o(111014);
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "pcmData", "", "pts", "", "invoke", "com/tencent/mm/plugin/vlog/remux/VLogAudioBackgroundDecoder$1$2"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "pcmData", "", "pts", "", "invoke", "com/tencent/mm/plugin/vlog/remux/VLogAudioBackgroundDecoder$1$2"})
   static final class a
     extends q
     implements m<byte[], Long, z>
@@ -326,37 +329,37 @@ public final class a
     }
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke", "com/tencent/mm/plugin/vlog/remux/VLogAudioBackgroundDecoder$1$3"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke", "com/tencent/mm/plugin/vlog/remux/VLogAudioBackgroundDecoder$1$3"})
   static final class b
     extends q
     implements d.g.a.a<z>
   {
-    b(int paramInt, com.tencent.mm.plugin.vlog.model.l paraml, com.tencent.mm.media.d.e parame, com.tencent.mm.media.f.a parama, a parama1)
+    b(int paramInt, com.tencent.mm.plugin.vlog.model.l paraml, e parame, com.tencent.mm.media.f.a parama, a parama1)
     {
       super();
     }
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/vlog/remux/VLogAudioBackgroundDecoder$Companion;", "", "()V", "DEFAULT_AUDIO_FRAME_INTERVAL", "", "TAG", "", "plugin-vlog_release"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/vlog/remux/VLogAudioBackgroundDecoder$Companion;", "", "()V", "DEFAULT_AUDIO_FRAME_INTERVAL", "", "TAG", "", "plugin-vlog_release"})
   public static final class c {}
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/vlog/remux/VLogAudioBackgroundDecoder$VideoDecoder;", "", "index", "", "material", "Lcom/tencent/mm/plugin/vlog/model/VideoMaterial;", "decoder", "Lcom/tencent/mm/media/decoder/IAudioDecoder;", "mediaExtractor", "Lcom/tencent/mm/media/extractor/MediaExtractorWrapper;", "startTime", "", "endTime", "(ILcom/tencent/mm/plugin/vlog/model/VideoMaterial;Lcom/tencent/mm/media/decoder/IAudioDecoder;Lcom/tencent/mm/media/extractor/MediaExtractorWrapper;JJ)V", "getDecoder", "()Lcom/tencent/mm/media/decoder/IAudioDecoder;", "getEndTime", "()J", "getIndex", "()I", "getMaterial", "()Lcom/tencent/mm/plugin/vlog/model/VideoMaterial;", "getMediaExtractor", "()Lcom/tencent/mm/media/extractor/MediaExtractorWrapper;", "getStartTime", "component1", "component2", "component3", "component4", "component5", "component6", "copy", "equals", "", "other", "hashCode", "toString", "", "plugin-vlog_release"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/vlog/remux/VLogAudioBackgroundDecoder$VideoDecoder;", "", "index", "", "material", "Lcom/tencent/mm/plugin/vlog/model/VideoMaterial;", "decoder", "Lcom/tencent/mm/media/decoder/IAudioDecoder;", "mediaExtractor", "Lcom/tencent/mm/media/extractor/MediaExtractorWrapper;", "startTime", "", "endTime", "(ILcom/tencent/mm/plugin/vlog/model/VideoMaterial;Lcom/tencent/mm/media/decoder/IAudioDecoder;Lcom/tencent/mm/media/extractor/MediaExtractorWrapper;JJ)V", "getDecoder", "()Lcom/tencent/mm/media/decoder/IAudioDecoder;", "getEndTime", "()J", "getIndex", "()I", "getMaterial", "()Lcom/tencent/mm/plugin/vlog/model/VideoMaterial;", "getMediaExtractor", "()Lcom/tencent/mm/media/extractor/MediaExtractorWrapper;", "getStartTime", "component1", "component2", "component3", "component4", "component5", "component6", "copy", "equals", "", "other", "hashCode", "toString", "", "plugin-vlog_release"})
   public static final class d
   {
-    final ab BJy;
-    final com.tencent.mm.media.d.e BJz;
+    final ab CaX;
+    final e CaY;
     private final long endTime;
-    final com.tencent.mm.media.f.a hlB;
+    final com.tencent.mm.media.f.a hoq;
     final int index;
     private final long startTime;
     
-    public d(int paramInt, ab paramab, com.tencent.mm.media.d.e parame, com.tencent.mm.media.f.a parama, long paramLong1, long paramLong2)
+    public d(int paramInt, ab paramab, e parame, com.tencent.mm.media.f.a parama, long paramLong1, long paramLong2)
     {
       AppMethodBeat.i(111007);
       this.index = paramInt;
-      this.BJy = paramab;
-      this.BJz = parame;
-      this.hlB = parama;
+      this.CaX = paramab;
+      this.CaY = parame;
+      this.hoq = parama;
       this.startTime = paramLong1;
       this.endTime = paramLong2;
       AppMethodBeat.o(111007);
@@ -370,7 +373,7 @@ public final class a
         if ((paramObject instanceof d))
         {
           paramObject = (d)paramObject;
-          if ((this.index != paramObject.index) || (!p.i(this.BJy, paramObject.BJy)) || (!p.i(this.BJz, paramObject.BJz)) || (!p.i(this.hlB, paramObject.hlB)) || (this.startTime != paramObject.startTime) || (this.endTime != paramObject.endTime)) {}
+          if ((this.index != paramObject.index) || (!p.i(this.CaX, paramObject.CaX)) || (!p.i(this.CaY, paramObject.CaY)) || (!p.i(this.hoq, paramObject.hoq)) || (this.startTime != paramObject.startTime) || (this.endTime != paramObject.endTime)) {}
         }
       }
       else
@@ -387,12 +390,12 @@ public final class a
       int k = 0;
       AppMethodBeat.i(111009);
       int m = this.index;
-      Object localObject = this.BJy;
+      Object localObject = this.CaX;
       int i;
       if (localObject != null)
       {
         i = localObject.hashCode();
-        localObject = this.BJz;
+        localObject = this.CaY;
         if (localObject == null) {
           break label138;
         }
@@ -400,7 +403,7 @@ public final class a
       label138:
       for (int j = localObject.hashCode();; j = 0)
       {
-        localObject = this.hlB;
+        localObject = this.hoq;
         if (localObject != null) {
           k = localObject.hashCode();
         }
@@ -418,13 +421,13 @@ public final class a
     public final String toString()
     {
       AppMethodBeat.i(111008);
-      String str = "VideoDecoder(index=" + this.index + ", material=" + this.BJy + ", decoder=" + this.BJz + ", mediaExtractor=" + this.hlB + ", startTime=" + this.startTime + ", endTime=" + this.endTime + ")";
+      String str = "VideoDecoder(index=" + this.index + ", material=" + this.CaX + ", decoder=" + this.CaY + ", mediaExtractor=" + this.hoq + ", startTime=" + this.startTime + ", endTime=" + this.endTime + ")";
       AppMethodBeat.o(111008);
       return str;
     }
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
   static final class e
     implements Runnable
   {
@@ -433,18 +436,18 @@ public final class a
     public final void run()
     {
       AppMethodBeat.i(111011);
-      int i = a.c(this.BJt);
-      Object localObject = a.a(this.BJt);
+      int i = a.c(this.CaS);
+      Object localObject = a.a(this.CaS);
       if (localObject != null) {
-        ((m)localObject).p(new byte[i * 2048], Long.valueOf(a.b(this.BJt)));
+        ((m)localObject).p(new byte[i * 2048], Long.valueOf(a.b(this.CaS)));
       }
-      localObject = this.BJt;
-      a.a((a)localObject, a.b((a)localObject) + a.d(this.BJt) * 1000L);
+      localObject = this.CaS;
+      a.a((a)localObject, a.b((a)localObject) + a.d(this.CaS) * 1000L);
       AppMethodBeat.o(111011);
     }
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
   static final class f
     implements Runnable
   {
@@ -453,12 +456,12 @@ public final class a
     public final void run()
     {
       AppMethodBeat.i(111012);
-      long l = this.hlp - this.BJA.BGQ + this.BJA.startTime * 1000L;
-      m localm = a.a(this.BJt);
+      long l = this.hoe - this.CaZ.BYp + this.CaZ.startTime * 1000L;
+      m localm = a.a(this.CaS);
       if (localm != null) {
-        localm.p(this.BJB, Long.valueOf(l));
+        localm.p(this.Cba, Long.valueOf(l));
       }
-      a.a(this.BJt, l);
+      a.a(this.CaS, l);
       AppMethodBeat.o(111012);
     }
   }

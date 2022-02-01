@@ -4,26 +4,26 @@ import com.tencent.c.a.a.a;
 
 public final class a
 {
-  public final com.tencent.c.a.a cBC;
+  public final com.tencent.c.a.a cCj;
   
-  public final boolean HT()
+  public final boolean Ib()
   {
-    return this.cBC.get(a.a.LCJ.name(), true);
+    return this.cCj.get(a.a.LZN.name(), true);
   }
   
-  public final boolean HU()
+  public final boolean Ic()
   {
-    return this.cBC.get(a.a.LCK.name(), false);
+    return this.cCj.get(a.a.LZO.name(), false);
   }
   
-  public final boolean HV()
+  public final boolean Id()
   {
-    return this.cBC.get(a.a.LCP.name(), false);
+    return this.cCj.get(a.a.LZT.name(), false);
   }
   
   public final String toString()
   {
-    return String.format("[BatteryCanary.BatteryConfig], isDetectWakeLock:%b, isDetectAlarm:%b, isRecordWakeLock:%b, isRecordAlarm:%b", new Object[] { Boolean.valueOf(HT()), Boolean.valueOf(HT()), Boolean.valueOf(HU()), Boolean.valueOf(HV()) });
+    return String.format("[BatteryCanary.BatteryConfig], isDetectWakeLock:%b, isDetectAlarm:%b, isRecordWakeLock:%b, isRecordAlarm:%b", new Object[] { Boolean.valueOf(Ib()), Boolean.valueOf(Ib()), Boolean.valueOf(Ic()), Boolean.valueOf(Id()) });
   }
 }
 

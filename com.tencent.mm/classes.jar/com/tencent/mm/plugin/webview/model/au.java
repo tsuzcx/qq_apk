@@ -7,85 +7,85 @@ import com.tencent.mm.ipcinvoker.b;
 import com.tencent.mm.ipcinvoker.h;
 import com.tencent.mm.ipcinvoker.type.IPCVoid;
 import com.tencent.mm.modelsns.SnsAdClick;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import d.g.b.p;
 import d.l;
 import java.util.ArrayList;
 import java.util.Collection;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/webview/model/WebViewSnsAdReporter;", "Lcom/tencent/mm/plugin/webview/model/IWebviewReporter;", "()V", "errCode", "", "loadReportInfo", "Ljava/util/ArrayList;", "", "snsAdClick", "Lcom/tencent/mm/modelsns/SnsAdClick;", "report", "", "setErrorCode", "setLoadReportInfo", "loadReports", "", "([Ljava/lang/String;)V", "setSnsAdClick", "adClick", "plugin-webview_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/webview/model/WebViewSnsAdReporter;", "Lcom/tencent/mm/plugin/webview/model/IWebviewReporter;", "()V", "errCode", "", "loadReportInfo", "Ljava/util/ArrayList;", "", "snsAdClick", "Lcom/tencent/mm/modelsns/SnsAdClick;", "report", "", "setErrorCode", "setLoadReportInfo", "loadReports", "", "([Ljava/lang/String;)V", "setSnsAdClick", "adClick", "plugin-webview_release"})
 public final class au
 {
-  private final ArrayList<String> DUw;
+  private final ArrayList<String> Emv;
   public int errCode;
-  public SnsAdClick wRC;
+  public SnsAdClick xht;
   
   public au()
   {
-    AppMethodBeat.i(207592);
-    this.DUw = new ArrayList();
-    AppMethodBeat.o(207592);
+    AppMethodBeat.i(199348);
+    this.Emv = new ArrayList();
+    AppMethodBeat.o(199348);
   }
   
   public final void R(String... paramVarArgs)
   {
-    AppMethodBeat.i(207590);
+    AppMethodBeat.i(199346);
     p.h(paramVarArgs, "loadReports");
     int i = 0;
     while (i < 4)
     {
       String str = paramVarArgs[i];
-      this.DUw.add(str);
+      this.Emv.add(str);
       i += 1;
     }
-    AppMethodBeat.o(207590);
+    AppMethodBeat.o(199346);
   }
   
   public final void report()
   {
-    AppMethodBeat.i(207591);
+    AppMethodBeat.i(199347);
     for (;;)
     {
       try
       {
-        if (((Collection)this.DUw).isEmpty()) {
+        if (((Collection)this.Emv).isEmpty()) {
           continue;
         }
         i = 1;
         if (i != 0)
         {
           Bundle localBundle = new Bundle();
-          localBundle.putStringArrayList("reportAdH5Load", new ArrayList((Collection)this.DUw));
+          localBundle.putStringArrayList("reportAdH5Load", new ArrayList((Collection)this.Emv));
           localBundle.putInt("errCode", this.errCode);
-          localBundle.putParcelable("snsAdClick", (Parcelable)this.wRC);
-          h.a("com.tencent.mm", (Parcelable)localBundle, a.DUx.getClass(), null);
+          localBundle.putParcelable("snsAdClick", (Parcelable)this.xht);
+          h.a("com.tencent.mm", (Parcelable)localBundle, a.Emw.getClass(), null);
         }
       }
       catch (Exception localException)
       {
         int i;
-        ad.printErrStackTrace("MicroMsg.WebviewReporter", (Throwable)localException, "", new Object[0]);
+        ae.printErrStackTrace("MicroMsg.WebviewReporter", (Throwable)localException, "", new Object[0]);
         continue;
       }
-      this.wRC = null;
-      this.DUw.clear();
-      AppMethodBeat.o(207591);
+      this.xht = null;
+      this.Emv.clear();
+      AppMethodBeat.o(199347);
       return;
       i = 0;
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "data", "Landroid/os/Bundle;", "kotlin.jvm.PlatformType", "<anonymous parameter 1>", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "data", "Landroid/os/Bundle;", "kotlin.jvm.PlatformType", "<anonymous parameter 1>", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "invoke"})
   static final class a<InputType, ResultType>
     implements b<Bundle, IPCVoid>
   {
-    public static final a DUx;
+    public static final a Emw;
     
     static
     {
-      AppMethodBeat.i(207589);
-      DUx = new a();
-      AppMethodBeat.o(207589);
+      AppMethodBeat.i(199345);
+      Emw = new a();
+      AppMethodBeat.o(199345);
     }
   }
 }

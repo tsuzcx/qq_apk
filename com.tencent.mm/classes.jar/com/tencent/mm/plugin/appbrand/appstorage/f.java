@@ -1,38 +1,38 @@
 package com.tencent.mm.plugin.appbrand.appstorage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.storage.c;
 import d.g.b.p;
 import d.l;
 import java.util.Map;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/appstorage/AppBrandKVStorageTransferABTest;", "", "()V", "ABTEST_NEED_TRANSFER", "", "ABTEST_PHASES", "ABTEST_SWITCH", "PHASES_FINISH", "", "PHASES_ROLLBACK", "PHASES_TEST", "TAG", "isNeedTransfer", "", "isPerformanceReportOn", "phases", "isFinishPhases", "isRollbackPhases", "isTestPhases", "load", "", "onABTestUpdate", "plugin-appbrand-integration_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/appstorage/AppBrandKVStorageTransferABTest;", "", "()V", "ABTEST_NEED_TRANSFER", "", "ABTEST_PHASES", "ABTEST_SWITCH", "PHASES_FINISH", "", "PHASES_ROLLBACK", "PHASES_TEST", "TAG", "isNeedTransfer", "", "isPerformanceReportOn", "phases", "isFinishPhases", "isRollbackPhases", "isTestPhases", "load", "", "onABTestUpdate", "plugin-appbrand-integration_release"})
 public final class f
 {
-  private static volatile boolean jMc;
-  private static volatile int jMd;
-  private static volatile boolean jMe;
-  public static final f jMf;
+  private static volatile boolean jPo;
+  private static volatile int jPp;
+  private static volatile boolean jPq;
+  public static final f jPr;
   
   static
   {
     AppMethodBeat.i(50219);
     f localf = new f();
-    jMf = localf;
-    jMd = 1;
+    jPr = localf;
+    jPp = 1;
     localf.vw();
     AppMethodBeat.o(50219);
   }
   
   /* Error */
-  public final boolean bbq()
+  public final boolean bbS()
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: getstatic 52	com/tencent/mm/plugin/appbrand/appstorage/f:jMd	I
+    //   2: getstatic 52	com/tencent/mm/plugin/appbrand/appstorage/f:jPp	I
     //   5: istore_1
     //   6: iload_1
     //   7: iconst_3
@@ -63,12 +63,12 @@ public final class f
   }
   
   /* Error */
-  public final boolean bbr()
+  public final boolean bbT()
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: getstatic 52	com/tencent/mm/plugin/appbrand/appstorage/f:jMd	I
+    //   2: getstatic 52	com/tencent/mm/plugin/appbrand/appstorage/f:jPp	I
     //   5: istore_1
     //   6: iload_1
     //   7: iconst_2
@@ -98,11 +98,11 @@ public final class f
     //   2	6	22	finally
   }
   
-  public final boolean bbs()
+  public final boolean bbU()
   {
     try
     {
-      boolean bool = jMe;
+      boolean bool = jPq;
       return bool;
     }
     finally
@@ -112,11 +112,11 @@ public final class f
     }
   }
   
-  public final boolean bbt()
+  public final boolean bbV()
   {
     try
     {
-      boolean bool = jMc;
+      boolean bool = jPo;
       return bool;
     }
     finally
@@ -131,21 +131,21 @@ public final class f
     try
     {
       AppMethodBeat.i(50218);
-      ad.i("MicroMsg.AppBrandKVStorageTransferABTest", "[load]");
-      c localc1 = com.tencent.mm.model.c.d.aDs().wz("100478");
-      c localc2 = com.tencent.mm.model.c.d.aDs().wz("100483");
+      ae.i("MicroMsg.AppBrandKVStorageTransferABTest", "[load]");
+      c localc1 = com.tencent.mm.model.c.d.aDI().xi("100478");
+      c localc2 = com.tencent.mm.model.c.d.aDI().xi("100483");
       p.g(localc1, "transferTest");
       if (localc1.isValid())
       {
-        jMc = bt.getBoolean((String)localc1.foF().get("needTransfer"), false);
-        jMd = bt.getInt((String)localc1.foF().get("phases"), 1);
+        jPo = bu.getBoolean((String)localc1.fsy().get("needTransfer"), false);
+        jPp = bu.getInt((String)localc1.fsy().get("phases"), 1);
       }
       p.g(localc2, "performanceReportSwitchTest");
       if (localc2.isValid()) {
-        jMe = bt.getBoolean((String)localc2.foF().get("switch"), false);
+        jPq = bu.getBoolean((String)localc2.fsy().get("switch"), false);
       }
-      ad.i("MicroMsg.AppBrandKVStorageTransferABTest", "[load] isNeedTransfer=" + jMc + "  phases=" + jMd);
-      ad.i("MicroMsg.AppBrandKVStorageTransferABTest", "[load] isPerformanceReportOn=" + jMe);
+      ae.i("MicroMsg.AppBrandKVStorageTransferABTest", "[load] isNeedTransfer=" + jPo + "  phases=" + jPp);
+      ae.i("MicroMsg.AppBrandKVStorageTransferABTest", "[load] isPerformanceReportOn=" + jPq);
       AppMethodBeat.o(50218);
       return;
     }

@@ -9,52 +9,52 @@ import java.util.Map;
 public final class a
   extends fc
 {
-  static final c.a hEe;
+  static final c.a hGW;
   
   static
   {
     AppMethodBeat.i(44432);
     c.a locala = new c.a();
-    locala.IhA = new Field[7];
+    locala.IBL = new Field[7];
     locala.columns = new String[8];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "username";
-    locala.IhC.put("username", "TEXT PRIMARY KEY ");
+    locala.IBN.put("username", "TEXT PRIMARY KEY ");
     localStringBuilder.append(" username TEXT PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.IhB = "username";
+    locala.IBM = "username";
     locala.columns[1] = "appId";
-    locala.IhC.put("appId", "TEXT");
+    locala.IBN.put("appId", "TEXT");
     localStringBuilder.append(" appId TEXT");
     localStringBuilder.append(", ");
     locala.columns[2] = "startTime";
-    locala.IhC.put("startTime", "LONG");
+    locala.IBN.put("startTime", "LONG");
     localStringBuilder.append(" startTime LONG");
     localStringBuilder.append(", ");
     locala.columns[3] = "endTime";
-    locala.IhC.put("endTime", "LONG");
+    locala.IBN.put("endTime", "LONG");
     localStringBuilder.append(" endTime LONG");
     localStringBuilder.append(", ");
     locala.columns[4] = "sceneList";
-    locala.IhC.put("sceneList", "TEXT");
+    locala.IBN.put("sceneList", "TEXT");
     localStringBuilder.append(" sceneList TEXT");
     localStringBuilder.append(", ");
     locala.columns[5] = "cgiList";
-    locala.IhC.put("cgiList", "TEXT");
+    locala.IBN.put("cgiList", "TEXT");
     localStringBuilder.append(" cgiList TEXT");
     localStringBuilder.append(", ");
     locala.columns[6] = "reportId";
-    locala.IhC.put("reportId", "INTEGER");
+    locala.IBN.put("reportId", "INTEGER");
     localStringBuilder.append(" reportId INTEGER");
     locala.columns[7] = "rowid";
     locala.sql = localStringBuilder.toString();
-    hEe = locala;
+    hGW = locala;
     AppMethodBeat.o(44432);
   }
   
   public final c.a getDBInfo()
   {
-    return hEe;
+    return hGW;
   }
   
   public final String toString()

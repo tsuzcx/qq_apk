@@ -3,13 +3,13 @@ package com.tencent.mm.plugin.crashfix.jni;
 import android.support.annotation.Keep;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.lang.reflect.Method;
 
 public class NativeAllocationRegistryApplyFreeFunctionHook
 {
-  private static long pgu = 0L;
-  private static long pgv = 0L;
+  private static long pna = 0L;
+  private static long pnb = 0L;
   
   public static native long getTestMethodAddr();
   
@@ -24,15 +24,15 @@ public class NativeAllocationRegistryApplyFreeFunctionHook
       AppMethodBeat.o(145627);
       return true;
     }
-    if ((pgu == paramLong1) && (pgv == paramLong2))
+    if ((pna == paramLong1) && (pnb == paramLong2))
     {
-      ad.e("NativeAllocationRegistryApplyFreeFunctionHook", "protect succ");
-      g.yhR.idkeyStat(1113L, 7L, 1L, false);
+      ae.e("NativeAllocationRegistryApplyFreeFunctionHook", "protect succ");
+      g.yxI.idkeyStat(1113L, 7L, 1L, false);
       AppMethodBeat.o(145627);
       return false;
     }
-    pgu = paramLong1;
-    pgv = paramLong2;
+    pna = paramLong1;
+    pnb = paramLong2;
     AppMethodBeat.o(145627);
     return true;
   }

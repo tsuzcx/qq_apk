@@ -4,7 +4,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import f.a.a.b;
 
 public final class iy
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
   public int channel;
   public String uuid;
@@ -42,9 +42,9 @@ public final class iy
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
         if (this.uuid == null)
@@ -66,11 +66,11 @@ public final class iy
           AppMethodBeat.o(91361);
           return -1;
         case 1: 
-          localiy.uuid = locala.NPN.readString();
+          localiy.uuid = locala.OmT.readString();
           AppMethodBeat.o(91361);
           return 0;
         }
-        localiy.channel = locala.NPN.zc();
+        localiy.channel = locala.OmT.zc();
         AppMethodBeat.o(91361);
         return 0;
       }

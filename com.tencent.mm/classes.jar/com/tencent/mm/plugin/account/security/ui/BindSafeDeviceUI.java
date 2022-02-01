@@ -47,7 +47,7 @@ public class BindSafeDeviceUI
         AppMethodBeat.i(125541);
         b localb = new b();
         localb.bd(paramAnonymousView);
-        a.b("com/tencent/mm/plugin/account/security/ui/BindSafeDeviceUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        a.b("com/tencent/mm/plugin/account/security/ui/BindSafeDeviceUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
         paramAnonymousView = new Intent();
         paramAnonymousView.putExtra("bind_scene", 1);
         paramAnonymousView.setClass(BindSafeDeviceUI.this, BindMContactUI.class);

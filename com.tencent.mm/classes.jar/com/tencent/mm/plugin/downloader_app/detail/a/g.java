@@ -11,7 +11,7 @@ import com.tencent.mm.plugin.downloader_app.api.a.a;
 import com.tencent.mm.plugin.downloader_app.api.a.b;
 import com.tencent.mm.plugin.webview.luggage.jsapi.bq;
 import com.tencent.mm.plugin.webview.luggage.jsapi.bq.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -21,7 +21,7 @@ public class g
   public final void a(Context paramContext, String paramString, final bq.a parama)
   {
     AppMethodBeat.i(8835);
-    ad.i("MicroMsg.JsApiResumeDownloadTask", "invokeInMM");
+    ae.i("MicroMsg.JsApiResumeDownloadTask", "invokeInMM");
     long l;
     try
     {
@@ -29,7 +29,7 @@ public class g
       l = paramString.optLong("download_id");
       if (l <= 0L)
       {
-        ad.e("MicroMsg.JsApiResumeDownloadTask", "fail, invalid downloadId = ".concat(String.valueOf(l)));
+        ae.e("MicroMsg.JsApiResumeDownloadTask", "fail, invalid downloadId = ".concat(String.valueOf(l)));
         parama.f("invalid_downloadid", null);
         AppMethodBeat.o(8835);
         return;
@@ -37,17 +37,17 @@ public class g
     }
     catch (JSONException paramContext)
     {
-      ad.e("MicroMsg.JsApiResumeDownloadTask", "paras data error: " + paramContext.getMessage());
+      ae.e("MicroMsg.JsApiResumeDownloadTask", "paras data error: " + paramContext.getMessage());
       parama.f("fail", null);
       AppMethodBeat.o(8835);
       return;
     }
-    paramString = d.ua(l);
+    paramString = d.ur(l);
     if (paramString != null)
     {
       b localb = new b();
       localb.k(paramString);
-      localb.msQ = 0L;
+      localb.mxN = 0L;
       a.a(10, localb);
     }
     c.a(paramContext, paramString, null, new a.b()
@@ -55,19 +55,19 @@ public class g
       public final void a(a.a paramAnonymousa, long paramAnonymousLong)
       {
         AppMethodBeat.i(8834);
-        if (paramAnonymousa == a.a.pnV)
+        if (paramAnonymousa == a.a.puC)
         {
           parama.f(null, null);
           AppMethodBeat.o(8834);
           return;
         }
-        if (paramAnonymousa == a.a.pnW)
+        if (paramAnonymousa == a.a.puD)
         {
           parama.f("fail", null);
           AppMethodBeat.o(8834);
           return;
         }
-        if (paramAnonymousa == a.a.pnX) {
+        if (paramAnonymousa == a.a.puE) {
           parama.f("wait_for_wifi", null);
         }
         AppMethodBeat.o(8834);
@@ -78,7 +78,7 @@ public class g
   
   public final void b(b.a parama) {}
   
-  public final int ccO()
+  public final int ced()
   {
     return 2;
   }

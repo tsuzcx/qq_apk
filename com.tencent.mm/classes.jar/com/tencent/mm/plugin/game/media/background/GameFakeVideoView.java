@@ -29,8 +29,8 @@ public class GameFakeVideoView
   {
     AppMethodBeat.i(41208);
     super.k(paramSurfaceTexture);
-    if (this.pUM != null) {
-      this.pUM.eT(getCurrentPosition(), getDuration());
+    if (this.qbr != null) {
+      this.qbr.eU(getCurrentPosition(), getDuration());
     }
     AppMethodBeat.o(41208);
   }
@@ -44,7 +44,7 @@ public class GameFakeVideoView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.game.media.background.GameFakeVideoView
  * JD-Core Version:    0.7.0.1
  */

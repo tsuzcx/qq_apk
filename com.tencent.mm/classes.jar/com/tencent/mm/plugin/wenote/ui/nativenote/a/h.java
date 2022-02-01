@@ -6,29 +6,29 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class h
 {
-  public static final int ECE = 2131495031;
-  public static final int ECF = 2131495030;
-  public static final int psq = 2131495034;
-  public static final int psr = 2131495033;
-  public SparseArray<Integer> ECG;
+  public static final int EVa = 2131495031;
+  public static final int EVb = 2131495030;
+  public static final int pyW = 2131495034;
+  public static final int pyX = 2131495033;
+  public SparseArray<Integer> EVc;
   
   public h()
   {
     AppMethodBeat.i(30862);
-    this.ECG = new SparseArray();
-    this.ECG.put(1, Integer.valueOf(psq));
-    this.ECG.put(2, Integer.valueOf(psr));
-    this.ECG.put(4, Integer.valueOf(psr));
-    this.ECG.put(3, Integer.valueOf(psr));
-    this.ECG.put(5, Integer.valueOf(psr));
-    this.ECG.put(6, Integer.valueOf(psr));
-    this.ECG.put(0, Integer.valueOf(psr));
-    this.ECG.put(-1, Integer.valueOf(psr));
-    this.ECG.put(-3, Integer.valueOf(ECE));
-    this.ECG.put(-2, Integer.valueOf(psr));
-    this.ECG.put(-4, Integer.valueOf(psr));
-    this.ECG.put(20, Integer.valueOf(psr));
-    this.ECG.put(30, Integer.valueOf(ECF));
+    this.EVc = new SparseArray();
+    this.EVc.put(1, Integer.valueOf(pyW));
+    this.EVc.put(2, Integer.valueOf(pyX));
+    this.EVc.put(4, Integer.valueOf(pyX));
+    this.EVc.put(3, Integer.valueOf(pyX));
+    this.EVc.put(5, Integer.valueOf(pyX));
+    this.EVc.put(6, Integer.valueOf(pyX));
+    this.EVc.put(0, Integer.valueOf(pyX));
+    this.EVc.put(-1, Integer.valueOf(pyX));
+    this.EVc.put(-3, Integer.valueOf(EVa));
+    this.EVc.put(-2, Integer.valueOf(pyX));
+    this.EVc.put(-4, Integer.valueOf(pyX));
+    this.EVc.put(20, Integer.valueOf(pyX));
+    this.EVc.put(30, Integer.valueOf(EVb));
     AppMethodBeat.o(30862);
   }
   

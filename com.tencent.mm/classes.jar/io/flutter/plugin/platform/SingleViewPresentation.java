@@ -4,13 +4,17 @@ import android.annotation.TargetApi;
 import android.app.Presentation;
 import android.content.Context;
 import android.content.ContextWrapper;
+import android.graphics.Rect;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.support.annotation.Keep;
 import android.view.Display;
+import android.view.Gravity;
 import android.view.View;
+import android.view.View.MeasureSpec;
 import android.view.View.OnFocusChangeListener;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.WindowManager.LayoutParams;
@@ -81,10 +85,10 @@ class SingleViewPresentation
   
   public c getView()
   {
-    if (this.state.MGS == null) {
+    if (this.state.NdW == null) {
       return null;
     }
-    return this.state.MGS;
+    return this.state.NdW;
   }
   
   protected void onCreate(Bundle paramBundle)
@@ -92,24 +96,24 @@ class SingleViewPresentation
     AppMethodBeat.i(9920);
     super.onCreate(paramBundle);
     getWindow().setBackgroundDrawable(new ColorDrawable(0));
-    if (this.state.MGT == null) {
-      this.state.MGT = new SingleViewPresentation.b(getContext());
+    if (this.state.NdX == null) {
+      this.state.NdX = new b(getContext());
     }
-    if (this.state.MGR == null)
+    if (this.state.NdV == null)
     {
       paramBundle = (WindowManager)getContext().getSystemService("window");
-      this.state.MGR = new f(paramBundle, this.state.MGT);
+      this.state.NdV = new f(paramBundle, this.state.NdX);
     }
     this.container = new FrameLayout(getContext());
-    new d(getContext(), this.state.MGR);
-    if (this.state.MGS == null) {
-      this.state.MGS = this.viewFactory.gfk();
+    new d(getContext(), this.state.NdV);
+    if (this.state.NdW == null) {
+      this.state.NdW = this.viewFactory.gjM();
     }
-    paramBundle = this.state.MGS.getView();
+    paramBundle = this.state.NdW.getView();
     this.container.addView(paramBundle);
     this.rootView = new SingleViewPresentation.a(getContext(), this.accessibilityEventsDelegate, paramBundle);
     this.rootView.addView(this.container);
-    this.rootView.addView(this.state.MGT);
+    this.rootView.addView(this.state.NdX);
     paramBundle.setOnFocusChangeListener(this.focusChangeListener);
     this.rootView.setFocusableInTouchMode(true);
     if (this.startFocused) {
@@ -124,10 +128,63 @@ class SingleViewPresentation
     }
   }
   
+  static final class b
+    extends ViewGroup
+  {
+    private final Rect NdU;
+    private final Rect bWs;
+    
+    public b(Context paramContext)
+    {
+      super();
+      AppMethodBeat.i(9894);
+      this.bWs = new Rect();
+      this.NdU = new Rect();
+      AppMethodBeat.o(9894);
+    }
+    
+    private static int ajN(int paramInt)
+    {
+      AppMethodBeat.i(9897);
+      paramInt = View.MeasureSpec.makeMeasureSpec(View.MeasureSpec.getSize(paramInt), -2147483648);
+      AppMethodBeat.o(9897);
+      return paramInt;
+    }
+    
+    protected final void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+    {
+      AppMethodBeat.i(9895);
+      int i = 0;
+      while (i < getChildCount())
+      {
+        View localView = getChildAt(i);
+        WindowManager.LayoutParams localLayoutParams = (WindowManager.LayoutParams)localView.getLayoutParams();
+        this.bWs.set(paramInt1, paramInt2, paramInt3, paramInt4);
+        Gravity.apply(localLayoutParams.gravity, localView.getMeasuredWidth(), localView.getMeasuredHeight(), this.bWs, localLayoutParams.x, localLayoutParams.y, this.NdU);
+        localView.layout(this.NdU.left, this.NdU.top, this.NdU.right, this.NdU.bottom);
+        i += 1;
+      }
+      AppMethodBeat.o(9895);
+    }
+    
+    protected final void onMeasure(int paramInt1, int paramInt2)
+    {
+      AppMethodBeat.i(9896);
+      int i = 0;
+      while (i < getChildCount())
+      {
+        getChildAt(i).measure(ajN(paramInt1), ajN(paramInt2));
+        i += 1;
+      }
+      super.onMeasure(paramInt1, paramInt2);
+      AppMethodBeat.o(9896);
+    }
+  }
+  
   static final class c
     extends ContextWrapper
   {
-    private final InputMethodManager EZz;
+    private final InputMethodManager FrX;
     
     c(Context paramContext)
     {
@@ -137,12 +194,12 @@ class SingleViewPresentation
     private c(Context paramContext, InputMethodManager paramInputMethodManager)
     {
       super();
-      AppMethodBeat.i(213216);
+      AppMethodBeat.i(197798);
       if (paramInputMethodManager != null) {}
       for (;;)
       {
-        this.EZz = paramInputMethodManager;
-        AppMethodBeat.o(213216);
+        this.FrX = paramInputMethodManager;
+        AppMethodBeat.o(197798);
         return;
         paramInputMethodManager = (InputMethodManager)paramContext.getSystemService("input_method");
       }
@@ -150,23 +207,23 @@ class SingleViewPresentation
     
     public final Context createDisplayContext(Display paramDisplay)
     {
-      AppMethodBeat.i(213218);
-      paramDisplay = new c(super.createDisplayContext(paramDisplay), this.EZz);
-      AppMethodBeat.o(213218);
+      AppMethodBeat.i(197800);
+      paramDisplay = new c(super.createDisplayContext(paramDisplay), this.FrX);
+      AppMethodBeat.o(197800);
       return paramDisplay;
     }
     
     public final Object getSystemService(String paramString)
     {
-      AppMethodBeat.i(213217);
+      AppMethodBeat.i(197799);
       if ("input_method".equals(paramString))
       {
-        paramString = this.EZz;
-        AppMethodBeat.o(213217);
+        paramString = this.FrX;
+        AppMethodBeat.o(197799);
         return paramString;
       }
       paramString = super.getSystemService(paramString);
-      AppMethodBeat.o(213217);
+      AppMethodBeat.o(197799);
       return paramString;
     }
   }
@@ -174,13 +231,13 @@ class SingleViewPresentation
   static final class d
     extends ContextWrapper
   {
-    private final SingleViewPresentation.f MGR;
+    private final SingleViewPresentation.f NdV;
     private WindowManager windowManager;
     
     d(Context paramContext, SingleViewPresentation.f paramf)
     {
       super();
-      this.MGR = paramf;
+      this.NdV = paramf;
     }
     
     public final Object getSystemService(String paramString)
@@ -190,7 +247,7 @@ class SingleViewPresentation
       {
         if (this.windowManager == null)
         {
-          paramString = this.MGR;
+          paramString = this.NdV;
           this.windowManager = ((WindowManager)Proxy.newProxyInstance(WindowManager.class.getClassLoader(), new Class[] { WindowManager.class }, paramString));
         }
         paramString = this.windowManager;
@@ -205,21 +262,21 @@ class SingleViewPresentation
   
   static final class e
   {
-    SingleViewPresentation.f MGR;
-    c MGS;
-    SingleViewPresentation.b MGT;
+    SingleViewPresentation.f NdV;
+    c NdW;
+    SingleViewPresentation.b NdX;
   }
   
   static final class f
     implements InvocationHandler
   {
-    private final WindowManager MGU;
-    SingleViewPresentation.b MGV;
+    private final WindowManager NdY;
+    SingleViewPresentation.b NdZ;
     
     f(WindowManager paramWindowManager, SingleViewPresentation.b paramb)
     {
-      this.MGU = paramWindowManager;
-      this.MGV = paramb;
+      this.NdY = paramWindowManager;
+      this.NdZ = paramb;
     }
     
     public final Object invoke(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
@@ -237,7 +294,7 @@ class SingleViewPresentation
         }
         try
         {
-          paramObject = paramMethod.invoke(this.MGU, paramArrayOfObject);
+          paramObject = paramMethod.invoke(this.NdY, paramArrayOfObject);
           AppMethodBeat.o(9922);
           return paramObject;
         }
@@ -266,34 +323,34 @@ class SingleViewPresentation
           }
         }
       }
-      if (this.MGV != null)
+      if (this.NdZ != null)
       {
         paramObject = (View)paramArrayOfObject[0];
         paramMethod = (WindowManager.LayoutParams)paramArrayOfObject[1];
-        this.MGV.addView(paramObject, paramMethod);
+        this.NdZ.addView(paramObject, paramMethod);
       }
       AppMethodBeat.o(9922);
       return null;
-      if (this.MGV != null)
+      if (this.NdZ != null)
       {
         paramObject = (View)paramArrayOfObject[0];
-        this.MGV.removeView(paramObject);
+        this.NdZ.removeView(paramObject);
       }
       AppMethodBeat.o(9922);
       return null;
-      if (this.MGV != null)
+      if (this.NdZ != null)
       {
         paramObject = (View)paramArrayOfObject[0];
         paramObject.clearAnimation();
-        this.MGV.removeView(paramObject);
+        this.NdZ.removeView(paramObject);
       }
       AppMethodBeat.o(9922);
       return null;
-      if (this.MGV != null)
+      if (this.NdZ != null)
       {
         paramObject = (View)paramArrayOfObject[0];
         paramMethod = (WindowManager.LayoutParams)paramArrayOfObject[1];
-        this.MGV.updateViewLayout(paramObject, paramMethod);
+        this.NdZ.updateViewLayout(paramObject, paramMethod);
       }
       AppMethodBeat.o(9922);
       return null;

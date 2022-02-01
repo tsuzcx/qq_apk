@@ -5,17 +5,17 @@ import d.g.a.a;
 import d.g.b.q;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "Ljava/lang/Class;", "", "T", "invoke"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "Ljava/lang/Class;", "", "T", "invoke"})
 final class g$a$q$1
   extends q
   implements a<Class<Object>>
 {
-  public static final 1 MNF;
+  public static final 1 NkK;
   
   static
   {
     AppMethodBeat.i(56323);
-    MNF = new 1();
+    NkK = new 1();
     AppMethodBeat.o(56323);
   }
   

@@ -7,7 +7,7 @@ import com.tencent.mm.hellhoundlib.a.a;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
 final class LiveReplayVideoView$1
   implements View.OnClickListener
 {
@@ -15,18 +15,18 @@ final class LiveReplayVideoView$1
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(212970);
+    AppMethodBeat.i(216600);
     Object localObject = new com.tencent.mm.hellhoundlib.b.b();
     ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramView);
-    a.b("com/tencent/mm/live/view/LiveReplayVideoView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahq());
-    localObject = this.hbu.getOnCloseClickListener();
+    a.b("com/tencent/mm/live/view/LiveReplayVideoView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahF());
+    localObject = this.hei.getOnCloseClickListener();
     if (localObject != null)
     {
       p.g(paramView, "it");
       ((d.g.a.b)localObject).invoke(paramView);
     }
     a.a(this, "com/tencent/mm/live/view/LiveReplayVideoView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-    AppMethodBeat.o(212970);
+    AppMethodBeat.o(216600);
   }
 }
 

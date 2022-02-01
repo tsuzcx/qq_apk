@@ -69,7 +69,7 @@ public final class b
     AppMethodBeat.i(174044);
     try
     {
-      JSONObject localJSONObject1 = com.tencent.tbs.one.impl.a.e.a(com.tencent.tbs.b.a.LSV);
+      JSONObject localJSONObject1 = com.tencent.tbs.one.impl.a.e.a(com.tencent.tbs.b.a.MpS);
       AppMethodBeat.o(174044);
       return localJSONObject1;
     }

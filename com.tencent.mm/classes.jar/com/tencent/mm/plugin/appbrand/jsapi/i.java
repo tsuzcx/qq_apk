@@ -6,20 +6,20 @@ import android.os.Build;
 import android.os.Build.VERSION;
 import android.util.DisplayMetrics;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ar;
 import d.g.b.p;
 import d.l;
 import org.json.JSONObject;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponentWxaSharedKT;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponentImpl;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponentWxConfigPart;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponentWithExtra;", "()V", "TAG", "", "isPreloaded", "", "()Z", "isPreloading", "attachCommonConfig", "", "config", "Lorg/json/JSONObject;", "generatePreloadConfig", "injectWxConfig", "__wxConfig", "callback", "Landroid/webkit/ValueCallback;", "put", "obj", "key", "val", "", "scheduleToUiThread", "runnable", "Ljava/lang/Runnable;", "scheduleToUiThreadDelayed", "delayMs", "", "luggage-wxa-app_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponentWxaSharedKT;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponentImpl;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponentWxConfigPart;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponentWithExtra;", "()V", "TAG", "", "isPreloaded", "", "()Z", "isPreloading", "attachCommonConfig", "", "config", "Lorg/json/JSONObject;", "generatePreloadConfig", "injectWxConfig", "__wxConfig", "callback", "Landroid/webkit/ValueCallback;", "put", "obj", "key", "val", "", "scheduleToUiThread", "runnable", "Ljava/lang/Runnable;", "scheduleToUiThreadDelayed", "delayMs", "", "luggage-wxa-app_release"})
 public abstract class i
   extends d
   implements h
 {
   private final String TAG = "AppBrandComponentWxaSharedKT";
   
-  public final void M(Runnable paramRunnable)
+  public final void K(Runnable paramRunnable)
   {
     if (paramRunnable == null) {}
     Object localObject;
@@ -29,25 +29,25 @@ public abstract class i
       localObject = getRuntime();
       if (localObject != null)
       {
-        ((AppBrandRuntime)localObject).M(paramRunnable);
+        ((AppBrandRuntime)localObject).K(paramRunnable);
         return;
       }
       localObject = (i)this;
-    } while ((!((i)localObject).aXv()) && (!((i)localObject).aXu()));
-    aq.f(paramRunnable);
+    } while ((!((i)localObject).aXQ()) && (!((i)localObject).aXP()));
+    ar.f(paramRunnable);
   }
   
-  public JSONObject aXD()
+  public abstract boolean aXP();
+  
+  public abstract boolean aXQ();
+  
+  public JSONObject aXY()
   {
     JSONObject localJSONObject = new JSONObject();
     d(localJSONObject);
     c(localJSONObject, "preload", Boolean.TRUE);
     return localJSONObject;
   }
-  
-  public abstract boolean aXu();
-  
-  public abstract boolean aXv();
   
   public final void c(JSONObject paramJSONObject, String paramString, Object paramObject)
   {
@@ -60,7 +60,7 @@ public abstract class i
     }
     catch (Exception paramJSONObject)
     {
-      ad.printErrStackTrace(this.TAG, (Throwable)paramJSONObject, "put with key(" + paramString + ')', new Object[0]);
+      ae.printErrStackTrace(this.TAG, (Throwable)paramJSONObject, "put with key(" + paramString + ')', new Object[0]);
     }
   }
   
@@ -92,8 +92,8 @@ public abstract class i
         return;
       }
       localObject = (i)this;
-    } while ((!((i)localObject).aXv()) && (!((i)localObject).aXu()));
-    aq.o(paramRunnable, paramLong);
+    } while ((!((i)localObject).aXQ()) && (!((i)localObject).aXP()));
+    ar.o(paramRunnable, paramLong);
   }
 }
 

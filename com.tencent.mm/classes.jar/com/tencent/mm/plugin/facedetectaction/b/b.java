@@ -4,7 +4,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.expansions.a;
 import com.tencent.mm.plugin.facedetect.PluginFace;
 import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.youtu.ytcommon.YTCommonExInterface;
 import com.tencent.youtu.ytfacetrack.YTFaceTrack;
 import com.tencent.youtu.ytposedetect.YTPoseDetectInterface;
@@ -12,9 +12,9 @@ import com.tencent.youtu.ytposedetect.YTPoseDetectInterface.PoseDetectOnFrame;
 
 public final class b
 {
-  int rpu;
-  public YTPoseDetectInterface.PoseDetectOnFrame rpv = null;
-  a rpw;
+  a rxA;
+  int rxy;
+  public YTPoseDetectInterface.PoseDetectOnFrame rxz = null;
   int status = -1;
   
   static
@@ -31,7 +31,7 @@ public final class b
     AppMethodBeat.i(104208);
     try
     {
-      ad.i("MicroMsg.FaceCheckActionEngine", "release");
+      ae.i("MicroMsg.FaceCheckActionEngine", "release");
       if (PluginFace.isEnabled())
       {
         YTPoseDetectInterface.releaseModel();
@@ -42,7 +42,7 @@ public final class b
     }
     catch (Exception localException)
     {
-      ad.printErrStackTrace("MicroMsg.FaceCheckActionEngine", localException, "release error", new Object[0]);
+      ae.printErrStackTrace("MicroMsg.FaceCheckActionEngine", localException, "release error", new Object[0]);
       AppMethodBeat.o(104208);
     }
   }
@@ -52,11 +52,11 @@ public final class b
     AppMethodBeat.i(104207);
     if (PluginFace.isEnabled())
     {
-      a.ada("YTCommon");
-      a.ada("YTFaceTrack");
-      a.ada("YTFaceTrackPro");
-      a.ada("YTNextCV");
-      a.ada("YTPoseDetect");
+      a.adR("YTCommon");
+      a.adR("YTFaceTrack");
+      a.adR("YTFaceTrackPro");
+      a.adR("YTNextCV");
+      a.adR("YTPoseDetect");
     }
     AppMethodBeat.o(104207);
   }

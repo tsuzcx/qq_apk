@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.appbrand.jsapi.auth;
 
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/auth/AuthHelper$ApiInvokeInterruptCallbackException;", "Ljava/lang/Exception;", "Lkotlin/Exception;", "message", "", "(Ljava/lang/String;)V", "luggage-wechat-full-sdk_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsapi/auth/AuthHelper$ApiInvokeInterruptCallbackException;", "Ljava/lang/Exception;", "Lkotlin/Exception;", "message", "", "(Ljava/lang/String;)V", "luggage-wechat-full-sdk_release"})
 public final class f$a
   extends Exception
 {
@@ -13,7 +13,7 @@ public final class f$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.auth.f.a
  * JD-Core Version:    0.7.0.1
  */

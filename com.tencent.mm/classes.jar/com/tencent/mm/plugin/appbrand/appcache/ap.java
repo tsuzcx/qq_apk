@@ -1,21 +1,45 @@
 package com.tencent.mm.plugin.appbrand.appcache;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.Locale;
+import com.tencent.mm.plugin.appbrand.x.c;
+import com.tencent.mm.sdk.e.e;
+import com.tencent.mm.sdk.e.j;
 
-public final class ap
-  extends Exception
+public class ap
+  extends c<ao>
 {
-  public ap(String paramString)
+  public static final String[] hGX;
+  
+  static
   {
-    super(String.format(Locale.US, "%s not found", new Object[] { paramString }));
-    AppMethodBeat.i(146931);
-    AppMethodBeat.o(146931);
+    AppMethodBeat.i(90566);
+    hGX = new String[] { j.getCreateSQLs(ao.hGW, "PushWxaPkgDecryptKeyTable") };
+    AppMethodBeat.o(90566);
+  }
+  
+  public ap(e parame)
+  {
+    super(parame, ao.hGW, "PushWxaPkgDecryptKeyTable", ao.INDEX_CREATE);
+  }
+  
+  public final ao aN(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(90565);
+    ao localao = new ao();
+    localao.field_appId = paramString;
+    localao.field_appVersion = paramInt;
+    if (get(localao, new String[0]))
+    {
+      AppMethodBeat.o(90565);
+      return localao;
+    }
+    AppMethodBeat.o(90565);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appcache.ap
  * JD-Core Version:    0.7.0.1
  */

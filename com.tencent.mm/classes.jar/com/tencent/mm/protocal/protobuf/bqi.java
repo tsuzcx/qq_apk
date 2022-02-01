@@ -3,52 +3,49 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class bqi
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public int Fzq;
-  public String GKI;
-  public String GKJ;
+  public String HdN;
+  public String title;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(82432);
+    AppMethodBeat.i(91523);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.GKI != null) {
-        paramVarArgs.d(1, this.GKI);
+      if (this.title != null) {
+        paramVarArgs.d(1, this.title);
       }
-      paramVarArgs.aS(2, this.Fzq);
-      if (this.GKJ != null) {
-        paramVarArgs.d(3, this.GKJ);
+      if (this.HdN != null) {
+        paramVarArgs.d(2, this.HdN);
       }
-      AppMethodBeat.o(82432);
+      AppMethodBeat.o(91523);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.GKI == null) {
-        break label318;
+      if (this.title == null) {
+        break label274;
       }
     }
-    label318:
-    for (paramInt = f.a.a.b.b.a.e(1, this.GKI) + 0;; paramInt = 0)
+    label274:
+    for (paramInt = f.a.a.b.b.a.e(1, this.title) + 0;; paramInt = 0)
     {
-      int i = paramInt + f.a.a.b.b.a.bz(2, this.Fzq);
-      paramInt = i;
-      if (this.GKJ != null) {
-        paramInt = i + f.a.a.b.b.a.e(3, this.GKJ);
+      int i = paramInt;
+      if (this.HdN != null) {
+        i = paramInt + f.a.a.b.b.a.e(2, this.HdN);
       }
-      AppMethodBeat.o(82432);
-      return paramInt;
+      AppMethodBeat.o(91523);
+      return i;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
-        AppMethodBeat.o(82432);
+        AppMethodBeat.o(91523);
         return 0;
       }
       if (paramInt == 3)
@@ -58,22 +55,18 @@ public final class bqi
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(82432);
+          AppMethodBeat.o(91523);
           return -1;
         case 1: 
-          localbqi.GKI = locala.NPN.readString();
-          AppMethodBeat.o(82432);
-          return 0;
-        case 2: 
-          localbqi.Fzq = locala.NPN.zc();
-          AppMethodBeat.o(82432);
+          localbqi.title = locala.OmT.readString();
+          AppMethodBeat.o(91523);
           return 0;
         }
-        localbqi.GKJ = locala.NPN.readString();
-        AppMethodBeat.o(82432);
+        localbqi.HdN = locala.OmT.readString();
+        AppMethodBeat.o(91523);
         return 0;
       }
-      AppMethodBeat.o(82432);
+      AppMethodBeat.o(91523);
       return -1;
     }
   }

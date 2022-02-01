@@ -13,14 +13,14 @@ import java.util.List;
 
 public final class ac
 {
-  private static final b<d.l.b.a.b.m.a.i, aj> NCh;
-  public static final ac NCi;
+  private static final b<d.l.b.a.b.m.a.i, aj> NZo;
+  public static final ac NZp;
   
   static
   {
     AppMethodBeat.i(60771);
-    NCi = new ac();
-    NCh = (b)ac.a.NCj;
+    NZp = new ac();
+    NZo = (b)a.NZq;
     AppMethodBeat.o(60771);
   }
   
@@ -30,7 +30,7 @@ public final class ac
     p.h(paramg, "annotations");
     p.h(parame, "descriptor");
     p.h(paramList, "arguments");
-    parame = parame.ghu();
+    parame = parame.glW();
     p.g(parame, "descriptor.typeConstructor");
     paramg = c(paramg, parame, paramList, false);
     AppMethodBeat.o(60768);
@@ -43,8 +43,8 @@ public final class ac
     p.h(paramg, "annotations");
     p.h(paramn, "constructor");
     paramn = (at)paramn;
-    List localList = (List)v.MKE;
-    h localh = u.dv("Scope for integer literal type", true);
+    List localList = (List)v.NhH;
+    h localh = u.dy("Scope for integer literal type", true);
     p.g(localh, "ErrorUtils.createErrorSc…eger literal type\", true)");
     paramg = a(paramg, paramn, localList, localh);
     AppMethodBeat.o(60770);
@@ -106,6 +106,25 @@ public final class ac
     return paramaj1;
   }
   
+  static final class a
+    extends q
+    implements b
+  {
+    public static final a NZq;
+    
+    static
+    {
+      AppMethodBeat.i(60762);
+      NZq = new a();
+      AppMethodBeat.o(60762);
+    }
+    
+    a()
+    {
+      super();
+    }
+  }
+  
   static final class b {}
   
   static final class c
@@ -130,7 +149,7 @@ public final class ac
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.m.ac
  * JD-Core Version:    0.7.0.1
  */

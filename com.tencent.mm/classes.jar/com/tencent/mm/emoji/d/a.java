@@ -1,89 +1,91 @@
 package com.tencent.mm.emoji.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.emoji.a.i;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.emoji.b.d;
 import com.tencent.mm.pluginsdk.a.e;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.storage.emotion.EmojiInfo;
+import com.tencent.mm.vfs.o;
 import d.g.b.p;
 import d.l;
 import java.util.Iterator;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/emoji/util/EmojiFileUtil;", "", "()V", "MaxThumbSize", "", "TAG", "", "emojiGifRoot", "getEmojiGifRoot", "()Ljava/lang/String;", "emojiSystemRoot", "kotlin.jvm.PlatformType", "getEmojiSystemRoot", "emojiTempRoot", "getEmojiTempRoot", "emojiThumbRoot", "getEmojiThumbRoot", "emojiThumbSuffix", "getEmojiThumbSuffix", "emojiVFSRoot", "getEmojiVFSRoot", "getThumbPath", "md5", "removeAllGenerateThumb", "", "plugin-emojisdk_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/emoji/util/EmojiFileUtil;", "", "()V", "MaxThumbSize", "", "TAG", "", "emojiGifRoot", "getEmojiGifRoot", "()Ljava/lang/String;", "emojiSystemRoot", "kotlin.jvm.PlatformType", "getEmojiSystemRoot", "emojiTempRoot", "getEmojiTempRoot", "emojiThumbRoot", "getEmojiThumbRoot", "emojiThumbSuffix", "getEmojiThumbSuffix", "emojiVFSRoot", "getEmojiVFSRoot", "getThumbPath", "md5", "removeAllGenerateThumb", "", "plugin-emojisdk_release"})
 public final class a
 {
   private static final String TAG = "MicroMsg.EmojiFileUtil";
-  private static final long gqj = 62914560L;
-  private static final String gqk;
-  private static final String gql;
-  private static final String gqm = "_cover";
-  public static final a gqn;
+  private static final long gsE = 62914560L;
+  private static final String gsF;
+  private static final String gsG;
+  private static final String gsH = "_cover";
+  public static final a gsI;
   
   static
   {
     AppMethodBeat.i(177058);
-    gqn = new a();
+    gsI = new a();
     TAG = "MicroMsg.EmojiFileUtil";
-    gqj = 62914560L;
-    gqk = agp();
-    gql = agp() + "/temp/";
-    gqm = "_cover";
+    gsE = 62914560L;
+    gsF = agD();
+    gsG = agD() + "/temp/";
+    gsH = "_cover";
     AppMethodBeat.o(177058);
   }
   
-  public static String agp()
+  public static String agD()
   {
-    AppMethodBeat.i(218992);
+    AppMethodBeat.i(188606);
     Object localObject1 = new StringBuilder();
     Object localObject2 = g.ad(d.class);
     p.g(localObject2, "MMKernel.plugin(IPluginEmoji::class.java)");
     localObject2 = ((d)localObject2).getProvider();
     p.g(localObject2, "MMKernel.plugin(IPluginEmoji::class.java).provider");
     localObject1 = ((e)localObject2).getAccPath() + "emoji/";
-    AppMethodBeat.o(218992);
+    AppMethodBeat.o(188606);
     return localObject1;
   }
   
-  public static String agq()
+  public static String agE()
   {
-    return gql;
+    return gsG;
   }
   
-  public static void agr()
+  public static void agF()
   {
     AppMethodBeat.i(177057);
-    Object localObject = com.tencent.mm.emoji.a.i.aeL().dj(true);
+    Object localObject = i.aeX().dj(true);
     p.g(localObject, "emojiList");
     localObject = ((Iterable)localObject).iterator();
     while (((Iterator)localObject).hasNext())
     {
       EmojiInfo localEmojiInfo = (EmojiInfo)((Iterator)localObject).next();
-      if (bt.isNullOrNil(localEmojiInfo.field_thumbUrl))
+      if (bu.isNullOrNil(localEmojiInfo.field_thumbUrl))
       {
         p.g(localEmojiInfo, "it");
-        com.tencent.mm.vfs.i.deleteFile(localEmojiInfo.gzR());
+        o.deleteFile(localEmojiInfo.fSR());
       }
     }
     AppMethodBeat.o(177057);
   }
   
-  public static String wb(String paramString)
+  public static String wI(String paramString)
   {
     AppMethodBeat.i(177056);
-    if (bt.isNullOrNil(paramString))
+    if (bu.isNullOrNil(paramString))
     {
       AppMethodBeat.o(177056);
       return null;
     }
-    paramString = gqk + paramString + gqm;
+    paramString = gsF + paramString + gsH;
     AppMethodBeat.o(177056);
     return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.emoji.d.a
  * JD-Core Version:    0.7.0.1
  */

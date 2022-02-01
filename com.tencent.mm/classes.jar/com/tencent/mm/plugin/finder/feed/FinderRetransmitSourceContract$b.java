@@ -1,12 +1,12 @@
 package com.tencent.mm.plugin.finder.feed;
 
 import com.tencent.mm.plugin.finder.feed.model.internal.IResponse;
-import com.tencent.mm.plugin.finder.model.al;
+import com.tencent.mm.plugin.finder.model.am;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/feed/FinderRetransmitSourceContract$RetransmitSourceResponse;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "errType", "", "errCode", "errMsg", "", "(IILjava/lang/String;)V", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/feed/FinderRetransmitSourceContract$RetransmitSourceResponse;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "errType", "", "errCode", "errMsg", "", "(IILjava/lang/String;)V", "plugin-finder_release"})
 public final class FinderRetransmitSourceContract$b
-  extends IResponse<al>
+  extends IResponse<am>
 {
   public FinderRetransmitSourceContract$b(int paramInt1, int paramInt2, String paramString)
   {

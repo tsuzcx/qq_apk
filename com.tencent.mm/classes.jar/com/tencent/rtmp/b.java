@@ -933,7 +933,7 @@ public class b
   
   private boolean f(String paramString)
   {
-    AppMethodBeat.i(187545);
+    AppMethodBeat.i(221674);
     try
     {
       paramString = paramString.split("[?&]");
@@ -953,10 +953,10 @@ public class b
             {
               if (Integer.parseInt((String)localObject) == 1)
               {
-                AppMethodBeat.o(187545);
+                AppMethodBeat.o(221674);
                 return true;
               }
-              AppMethodBeat.o(187545);
+              AppMethodBeat.o(221674);
               return false;
             }
           }
@@ -968,7 +968,7 @@ public class b
     catch (Exception paramString)
     {
       TXCLog.w(b, "parse black stream flag error " + paramString.toString());
-      AppMethodBeat.o(187545);
+      AppMethodBeat.o(221674);
     }
   }
   
@@ -994,7 +994,7 @@ public class b
   
   private void g(String paramString)
   {
-    AppMethodBeat.i(187550);
+    AppMethodBeat.i(221679);
     if (this.k != null) {
       this.k.setID(paramString);
     }
@@ -1006,7 +1006,7 @@ public class b
     }
     com.tencent.liteav.audio.a.a().a(paramString);
     this.q = paramString;
-    AppMethodBeat.o(187550);
+    AppMethodBeat.o(221679);
   }
   
   private byte[] h(int paramInt)
@@ -1723,11 +1723,11 @@ public class b
   
   public boolean b(float paramFloat)
   {
-    AppMethodBeat.i(187547);
+    AppMethodBeat.i(221676);
     TXCLog.i(b, "liteav_api setBGMVolume ".concat(String.valueOf(paramFloat)));
     this.z = paramFloat;
     boolean bool = TXCLiveBGMPlayer.getInstance().setVolume(paramFloat);
-    AppMethodBeat.o(187547);
+    AppMethodBeat.o(221676);
     return bool;
   }
   
@@ -1811,9 +1811,9 @@ public class b
   
   public int c(String paramString)
   {
-    AppMethodBeat.i(187546);
+    AppMethodBeat.i(221675);
     int i1 = TXCLiveBGMPlayer.getInstance().getBGMDuration(paramString);
-    AppMethodBeat.o(187546);
+    AppMethodBeat.o(221675);
     return i1;
   }
   
@@ -1934,10 +1934,10 @@ public class b
   
   public void d(float paramFloat)
   {
-    AppMethodBeat.i(187548);
+    AppMethodBeat.i(221677);
     this.A = paramFloat;
     TXCLiveBGMPlayer.getInstance().setPitch(paramFloat);
-    AppMethodBeat.o(187548);
+    AppMethodBeat.o(221677);
   }
   
   public void d(int paramInt)
@@ -1979,9 +1979,9 @@ public class b
   
   public void e(String paramString)
   {
-    AppMethodBeat.i(187549);
+    AppMethodBeat.i(221678);
     TXCLog.i("User", paramString);
-    AppMethodBeat.o(187549);
+    AppMethodBeat.o(221678);
   }
   
   public void e(boolean paramBoolean)

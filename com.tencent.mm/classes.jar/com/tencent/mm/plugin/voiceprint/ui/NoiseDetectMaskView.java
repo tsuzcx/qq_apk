@@ -15,35 +15,35 @@ import com.tencent.mm.hellhoundlib.b.b;
 public class NoiseDetectMaskView
   extends RelativeLayout
 {
-  TextView BWm;
-  private b BWn;
-  private a BWo;
-  ProgressBar jqx;
+  TextView CnN;
+  private b CnO;
+  private a CnP;
+  ProgressBar jtq;
   private Context mContext;
-  TextView tDL;
+  TextView tOC;
   
   public NoiseDetectMaskView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(29824);
-    this.jqx = null;
+    this.jtq = null;
     this.mContext = null;
     this.mContext = paramContext;
     this.mContext.getSystemService("layout_inflater");
     LayoutInflater.from(this.mContext).inflate(2131495025, this);
-    this.jqx = ((ProgressBar)findViewById(2131302892));
-    this.tDL = ((TextView)findViewById(2131302891));
-    this.BWm = ((TextView)findViewById(2131302893));
-    this.BWm.setOnClickListener(new View.OnClickListener()
+    this.jtq = ((ProgressBar)findViewById(2131302892));
+    this.tOC = ((TextView)findViewById(2131302891));
+    this.CnN = ((TextView)findViewById(2131302893));
+    this.CnN.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(29822);
         b localb = new b();
         localb.bd(paramAnonymousView);
-        a.b("com/tencent/mm/plugin/voiceprint/ui/NoiseDetectMaskView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        a.b("com/tencent/mm/plugin/voiceprint/ui/NoiseDetectMaskView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
         if (NoiseDetectMaskView.a(NoiseDetectMaskView.this) != null) {
-          NoiseDetectMaskView.a(NoiseDetectMaskView.this).euu();
+          NoiseDetectMaskView.a(NoiseDetectMaskView.this).eya();
         }
         a.a(this, "com/tencent/mm/plugin/voiceprint/ui/NoiseDetectMaskView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(29822);
@@ -56,9 +56,9 @@ public class NoiseDetectMaskView
         AppMethodBeat.i(29823);
         b localb = new b();
         localb.bd(paramAnonymousView);
-        a.b("com/tencent/mm/plugin/voiceprint/ui/NoiseDetectMaskView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        a.b("com/tencent/mm/plugin/voiceprint/ui/NoiseDetectMaskView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
         if (NoiseDetectMaskView.b(NoiseDetectMaskView.this) != null) {
-          NoiseDetectMaskView.b(NoiseDetectMaskView.this).eut();
+          NoiseDetectMaskView.b(NoiseDetectMaskView.this).exZ();
         }
         a.a(this, "com/tencent/mm/plugin/voiceprint/ui/NoiseDetectMaskView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(29823);
@@ -70,32 +70,32 @@ public class NoiseDetectMaskView
   public final void reset()
   {
     AppMethodBeat.i(29825);
-    if (this.jqx != null) {
-      this.jqx.setVisibility(0);
+    if (this.jtq != null) {
+      this.jtq.setVisibility(0);
     }
-    this.tDL.setText(2131764743);
-    this.BWm.setVisibility(8);
+    this.tOC.setText(2131764743);
+    this.CnN.setVisibility(8);
     AppMethodBeat.o(29825);
   }
   
   public void setOnCancelDetectCallback(a parama)
   {
-    this.BWo = parama;
+    this.CnP = parama;
   }
   
   public void setOnClickRetryCallback(b paramb)
   {
-    this.BWn = paramb;
+    this.CnO = paramb;
   }
   
   public static abstract interface a
   {
-    public abstract void eut();
+    public abstract void exZ();
   }
   
   public static abstract interface b
   {
-    public abstract void euu();
+    public abstract void eya();
   }
 }
 

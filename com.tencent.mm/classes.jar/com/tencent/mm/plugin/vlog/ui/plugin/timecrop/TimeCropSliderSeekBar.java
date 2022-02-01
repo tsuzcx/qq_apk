@@ -19,40 +19,40 @@ import com.tencent.mm.hellhoundlib.b.b;
 public class TimeCropSliderSeekBar
   extends View
 {
-  private boolean BRA;
-  private a BRv;
-  private Paint BRw;
-  private Paint BRx;
-  private int BRy;
-  private int BRz;
+  private a CiV;
+  private Paint CiW;
+  private Paint CiX;
+  private int CiY;
+  private int CiZ;
+  private boolean Cja;
   private Paint borderPaint;
   private int borderWidth;
   private int padding;
-  private View.OnTouchListener tDQ;
-  private float vSA;
-  private int vSB;
-  private float vSC;
-  private int vSD;
-  private Paint vSE;
-  private float vSF;
-  private Paint vSH;
-  private int vSI;
-  private float vSJ;
-  private float vSK;
-  private float vSL;
-  private int vSM;
-  private Rect vSN;
-  private Rect vSO;
-  private boolean vSP;
-  private boolean vSr;
-  private boolean vSs;
-  private int vSt;
-  private int vSu;
-  private boolean vSv;
-  private boolean vSw;
-  private Drawable vSx;
-  private Drawable vSy;
-  private int vSz;
+  private View.OnTouchListener tOH;
+  private boolean weA;
+  private Drawable weB;
+  private Drawable weC;
+  private int weD;
+  private float weE;
+  private int weF;
+  private float weG;
+  private int weH;
+  private Paint weI;
+  private float weJ;
+  private Paint weL;
+  private int weM;
+  private float weN;
+  private float weO;
+  private float weP;
+  private int weQ;
+  private Rect weR;
+  private Rect weS;
+  private boolean weT;
+  private boolean wev;
+  private boolean wew;
+  private int wex;
+  private int wey;
+  private boolean wez;
   
   public TimeCropSliderSeekBar(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -62,78 +62,78 @@ public class TimeCropSliderSeekBar
   public TimeCropSliderSeekBar(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(195662);
-    this.vSr = false;
-    this.vSs = false;
-    this.vSv = false;
-    this.vSw = false;
-    this.vSC = -1.0F;
-    this.BRy = 0;
-    this.BRz = 0;
-    this.vSK = -1.0F;
-    this.vSL = -1.0F;
+    AppMethodBeat.i(191119);
+    this.wev = false;
+    this.wew = false;
+    this.wez = false;
+    this.weA = false;
+    this.weG = -1.0F;
+    this.CiY = 0;
+    this.CiZ = 0;
+    this.weO = -1.0F;
+    this.weP = -1.0F;
     this.padding = 0;
-    this.BRA = true;
-    this.vSP = true;
-    this.tDQ = new View.OnTouchListener()
+    this.Cja = true;
+    this.weT = true;
+    this.tOH = new View.OnTouchListener()
     {
-      boolean BRC = false;
-      float BRD;
-      float BRE;
-      float cNg;
-      float cNh;
-      boolean gmE = false;
+      boolean Cjc = false;
+      float Cjd;
+      float Cje;
+      float cNQ;
+      float cNR;
+      boolean gpa = false;
       
       public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
       {
-        AppMethodBeat.i(195658);
+        AppMethodBeat.i(191115);
         b localb = new b();
         localb.bd(paramAnonymousView);
         localb.bd(paramAnonymousMotionEvent);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/vlog/ui/plugin/timecrop/TimeCropSliderSeekBar$2", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahq());
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/vlog/ui/plugin/timecrop/TimeCropSliderSeekBar$2", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahF());
         if (!TimeCropSliderSeekBar.h(TimeCropSliderSeekBar.this))
         {
           com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/mm/plugin/vlog/ui/plugin/timecrop/TimeCropSliderSeekBar$2", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
-          AppMethodBeat.o(195658);
+          AppMethodBeat.o(191115);
           return false;
         }
         switch (paramAnonymousMotionEvent.getActionMasked())
         {
         default: 
           com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/mm/plugin/vlog/ui/plugin/timecrop/TimeCropSliderSeekBar$2", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
-          AppMethodBeat.o(195658);
+          AppMethodBeat.o(191115);
           return false;
         case 2: 
-          if (!this.gmE)
+          if (!this.gpa)
           {
             com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/mm/plugin/vlog/ui/plugin/timecrop/TimeCropSliderSeekBar$2", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
-            AppMethodBeat.o(195658);
+            AppMethodBeat.o(191115);
             return false;
           }
-          if (this.BRC)
+          if (this.Cjc)
           {
-            float f = paramAnonymousMotionEvent.getX() - this.cNg;
+            float f = paramAnonymousMotionEvent.getX() - this.cNQ;
             if (f > 0.0F)
             {
-              f = Math.min(TimeCropSliderSeekBar.a(TimeCropSliderSeekBar.this, this.BRE + f) - this.BRE, f);
-              TimeCropSliderSeekBar.this.b(false, this.BRE + f);
-              TimeCropSliderSeekBar.this.b(true, f + this.BRD);
+              f = Math.min(TimeCropSliderSeekBar.a(TimeCropSliderSeekBar.this, this.Cje + f) - this.Cje, f);
+              TimeCropSliderSeekBar.this.b(false, this.Cje + f);
+              TimeCropSliderSeekBar.this.b(true, f + this.Cjd);
             }
             for (;;)
             {
-              TimeCropSliderSeekBar.i(TimeCropSliderSeekBar.this).etP();
+              TimeCropSliderSeekBar.i(TimeCropSliderSeekBar.this).exw();
               com.tencent.mm.hellhoundlib.a.a.a(true, this, "com/tencent/mm/plugin/vlog/ui/plugin/timecrop/TimeCropSliderSeekBar$2", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
-              AppMethodBeat.o(195658);
+              AppMethodBeat.o(191115);
               return true;
-              f = Math.max(TimeCropSliderSeekBar.a(TimeCropSliderSeekBar.this, this.BRD + f) - this.BRD, f);
-              TimeCropSliderSeekBar.this.b(true, this.BRD + f);
-              TimeCropSliderSeekBar.this.b(false, f + this.BRE);
+              f = Math.max(TimeCropSliderSeekBar.a(TimeCropSliderSeekBar.this, this.Cjd + f) - this.Cjd, f);
+              TimeCropSliderSeekBar.this.b(true, this.Cjd + f);
+              TimeCropSliderSeekBar.this.b(false, f + this.Cje);
             }
           }
           if (TimeCropSliderSeekBar.j(TimeCropSliderSeekBar.this))
           {
             com.tencent.mm.hellhoundlib.a.a.a(true, this, "com/tencent/mm/plugin/vlog/ui/plugin/timecrop/TimeCropSliderSeekBar$2", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
-            AppMethodBeat.o(195658);
+            AppMethodBeat.o(191115);
             return true;
           }
           boolean bool = TimeCropSliderSeekBar.a(TimeCropSliderSeekBar.this, true);
@@ -143,51 +143,51 @@ public class TimeCropSliderSeekBar
           }
           TimeCropSliderSeekBar.b(TimeCropSliderSeekBar.this, bool);
           if (TimeCropSliderSeekBar.i(TimeCropSliderSeekBar.this) != null) {
-            TimeCropSliderSeekBar.i(TimeCropSliderSeekBar.this).etP();
+            TimeCropSliderSeekBar.i(TimeCropSliderSeekBar.this).exw();
           }
           com.tencent.mm.hellhoundlib.a.a.a(true, this, "com/tencent/mm/plugin/vlog/ui/plugin/timecrop/TimeCropSliderSeekBar$2", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
-          AppMethodBeat.o(195658);
+          AppMethodBeat.o(191115);
           return true;
         case 1: 
         case 3: 
-          if (!this.gmE)
+          if (!this.gpa)
           {
             com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/mm/plugin/vlog/ui/plugin/timecrop/TimeCropSliderSeekBar$2", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
-            AppMethodBeat.o(195658);
+            AppMethodBeat.o(191115);
             return false;
           }
           if (TimeCropSliderSeekBar.i(TimeCropSliderSeekBar.this) != null)
           {
             paramAnonymousView = TimeCropSliderSeekBar.i(TimeCropSliderSeekBar.this);
             TimeCropSliderSeekBar.a(TimeCropSliderSeekBar.this, true);
-            paramAnonymousView.dnK();
+            paramAnonymousView.dqI();
           }
           TimeCropSliderSeekBar.a(TimeCropSliderSeekBar.this, TimeCropSliderSeekBar.a(TimeCropSliderSeekBar.this, true), false);
           TimeCropSliderSeekBar.b(TimeCropSliderSeekBar.this, false);
-          this.gmE = false;
-          this.BRC = false;
+          this.gpa = false;
+          this.Cjc = false;
           com.tencent.mm.hellhoundlib.a.a.a(true, this, "com/tencent/mm/plugin/vlog/ui/plugin/timecrop/TimeCropSliderSeekBar$2", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
-          AppMethodBeat.o(195658);
+          AppMethodBeat.o(191115);
           return true;
         }
-        this.cNg = paramAnonymousMotionEvent.getX();
-        this.cNh = paramAnonymousMotionEvent.getY();
-        this.BRD = TimeCropSliderSeekBar.f(TimeCropSliderSeekBar.this).getBounds().centerX();
-        this.BRE = TimeCropSliderSeekBar.g(TimeCropSliderSeekBar.this).getBounds().centerX();
-        if (TimeCropSliderSeekBar.a(TimeCropSliderSeekBar.this, this.cNg, this.cNh))
+        this.cNQ = paramAnonymousMotionEvent.getX();
+        this.cNR = paramAnonymousMotionEvent.getY();
+        this.Cjd = TimeCropSliderSeekBar.f(TimeCropSliderSeekBar.this).getBounds().centerX();
+        this.Cje = TimeCropSliderSeekBar.g(TimeCropSliderSeekBar.this).getBounds().centerX();
+        if (TimeCropSliderSeekBar.a(TimeCropSliderSeekBar.this, this.cNQ, this.cNR))
         {
-          this.BRC = true;
-          this.gmE = true;
+          this.Cjc = true;
+          this.gpa = true;
           com.tencent.mm.hellhoundlib.a.a.a(true, this, "com/tencent/mm/plugin/vlog/ui/plugin/timecrop/TimeCropSliderSeekBar$2", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
-          AppMethodBeat.o(195658);
+          AppMethodBeat.o(191115);
           return true;
         }
-        if (TimeCropSliderSeekBar.a(TimeCropSliderSeekBar.this, TimeCropSliderSeekBar.f(TimeCropSliderSeekBar.this), this.cNg, this.cNh))
+        if (TimeCropSliderSeekBar.a(TimeCropSliderSeekBar.this, TimeCropSliderSeekBar.f(TimeCropSliderSeekBar.this), this.cNQ, this.cNR))
         {
           if (TimeCropSliderSeekBar.a(TimeCropSliderSeekBar.this, true))
           {
             com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/mm/plugin/vlog/ui/plugin/timecrop/TimeCropSliderSeekBar$2", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
-            AppMethodBeat.o(195658);
+            AppMethodBeat.o(191115);
             return false;
           }
           if (TimeCropSliderSeekBar.i(TimeCropSliderSeekBar.this) != null) {
@@ -195,17 +195,17 @@ public class TimeCropSliderSeekBar
           }
           TimeCropSliderSeekBar.b(TimeCropSliderSeekBar.this, TimeCropSliderSeekBar.f(TimeCropSliderSeekBar.this).getBounds().left);
           TimeCropSliderSeekBar.a(TimeCropSliderSeekBar.this, true, true);
-          this.gmE = true;
+          this.gpa = true;
           com.tencent.mm.hellhoundlib.a.a.a(true, this, "com/tencent/mm/plugin/vlog/ui/plugin/timecrop/TimeCropSliderSeekBar$2", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
-          AppMethodBeat.o(195658);
+          AppMethodBeat.o(191115);
           return true;
         }
-        if (TimeCropSliderSeekBar.a(TimeCropSliderSeekBar.this, TimeCropSliderSeekBar.g(TimeCropSliderSeekBar.this), this.cNg, this.cNh))
+        if (TimeCropSliderSeekBar.a(TimeCropSliderSeekBar.this, TimeCropSliderSeekBar.g(TimeCropSliderSeekBar.this), this.cNQ, this.cNR))
         {
           if (TimeCropSliderSeekBar.a(TimeCropSliderSeekBar.this, false))
           {
             com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/mm/plugin/vlog/ui/plugin/timecrop/TimeCropSliderSeekBar$2", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
-            AppMethodBeat.o(195658);
+            AppMethodBeat.o(191115);
             return false;
           }
           if (TimeCropSliderSeekBar.i(TimeCropSliderSeekBar.this) != null) {
@@ -213,94 +213,94 @@ public class TimeCropSliderSeekBar
           }
           TimeCropSliderSeekBar.c(TimeCropSliderSeekBar.this, TimeCropSliderSeekBar.g(TimeCropSliderSeekBar.this).getBounds().right);
           TimeCropSliderSeekBar.a(TimeCropSliderSeekBar.this, false, true);
-          this.gmE = true;
+          this.gpa = true;
           com.tencent.mm.hellhoundlib.a.a.a(true, this, "com/tencent/mm/plugin/vlog/ui/plugin/timecrop/TimeCropSliderSeekBar$2", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
-          AppMethodBeat.o(195658);
+          AppMethodBeat.o(191115);
           return true;
         }
         com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/mm/plugin/vlog/ui/plugin/timecrop/TimeCropSliderSeekBar$2", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
-        AppMethodBeat.o(195658);
+        AppMethodBeat.o(191115);
         return false;
       }
     };
-    this.vSz = com.tencent.mm.cc.a.fromDPToPix(getContext(), 8);
-    this.vSA = (this.vSz * 0.5F);
-    this.vSM = com.tencent.mm.cc.a.fromDPToPix(getContext(), 16);
-    this.vSx = new b(com.tencent.mm.cc.a.l(getContext(), 2131691359), com.tencent.mm.cc.a.l(getContext(), 2131691358));
-    this.vSy = new b(com.tencent.mm.cc.a.l(getContext(), 2131691359), com.tencent.mm.cc.a.l(getContext(), 2131691358));
-    this.vSP = true;
+    this.weD = com.tencent.mm.cb.a.fromDPToPix(getContext(), 8);
+    this.weE = (this.weD * 0.5F);
+    this.weQ = com.tencent.mm.cb.a.fromDPToPix(getContext(), 16);
+    this.weB = new b(com.tencent.mm.cb.a.l(getContext(), 2131691359), com.tencent.mm.cb.a.l(getContext(), 2131691358));
+    this.weC = new b(com.tencent.mm.cb.a.l(getContext(), 2131691359), com.tencent.mm.cb.a.l(getContext(), 2131691358));
+    this.weT = true;
     postInvalidate();
-    this.vSB = com.tencent.mm.cc.a.fromDPToPix(getContext(), 2);
-    this.vSD = com.tencent.mm.cc.a.ax(getContext(), 2131166956);
-    this.vSC = -1.0F;
-    this.vSE = new Paint();
-    this.vSE.setColor(com.tencent.mm.cc.a.n(getContext(), 2131099828));
-    this.vSE.setAlpha(102);
-    this.BRw = new Paint();
-    this.BRw.setColor(com.tencent.mm.cc.a.n(getContext(), 2131100017));
-    this.BRw.setAlpha(102);
-    this.BRx = new Paint();
-    this.BRx.setColor(com.tencent.mm.cc.a.n(getContext(), 2131099777));
-    this.BRx.setAlpha(102);
+    this.weF = com.tencent.mm.cb.a.fromDPToPix(getContext(), 2);
+    this.weH = com.tencent.mm.cb.a.ax(getContext(), 2131166956);
+    this.weG = -1.0F;
+    this.weI = new Paint();
+    this.weI.setColor(com.tencent.mm.cb.a.n(getContext(), 2131099828));
+    this.weI.setAlpha(102);
+    this.CiW = new Paint();
+    this.CiW.setColor(com.tencent.mm.cb.a.n(getContext(), 2131100017));
+    this.CiW.setAlpha(102);
+    this.CiX = new Paint();
+    this.CiX.setColor(com.tencent.mm.cb.a.n(getContext(), 2131099777));
+    this.CiX.setAlpha(102);
     this.borderPaint = new Paint();
-    this.borderPaint.setColor(com.tencent.mm.cc.a.n(getContext(), 2131101179));
+    this.borderPaint.setColor(com.tencent.mm.cb.a.n(getContext(), 2131101179));
     this.borderPaint.setStyle(Paint.Style.STROKE);
-    this.borderWidth = fO(getContext());
+    this.borderWidth = fU(getContext());
     this.borderPaint.setStrokeWidth(this.borderWidth);
-    this.vSF = (this.borderWidth * 0.5F);
-    this.vSH = new Paint();
-    this.vSH.setColor(com.tencent.mm.cc.a.n(getContext(), 2131101179));
-    this.vSH.setStyle(Paint.Style.STROKE);
-    this.vSI = fO(getContext());
-    this.vSJ = (this.vSI * 0.5F);
-    this.vSH.setStrokeWidth(this.vSI);
-    this.vSH.setAlpha(178);
-    setOnTouchListener(this.tDQ);
-    AppMethodBeat.o(195662);
+    this.weJ = (this.borderWidth * 0.5F);
+    this.weL = new Paint();
+    this.weL.setColor(com.tencent.mm.cb.a.n(getContext(), 2131101179));
+    this.weL.setStyle(Paint.Style.STROKE);
+    this.weM = fU(getContext());
+    this.weN = (this.weM * 0.5F);
+    this.weL.setStrokeWidth(this.weM);
+    this.weL.setAlpha(178);
+    setOnTouchListener(this.tOH);
+    AppMethodBeat.o(191119);
   }
   
-  private void etO()
+  private void exv()
   {
-    AppMethodBeat.i(195673);
-    this.vSx.setBounds(this.padding - this.vSz / 2, 0, this.padding + this.vSz / 2, getHeight());
-    this.vSy.setBounds(this.padding + this.vSt - this.vSz / 2, 0, this.vSt + this.padding + this.vSz / 2, getHeight());
-    AppMethodBeat.o(195673);
+    AppMethodBeat.i(191130);
+    this.weB.setBounds(this.padding - this.weD / 2, 0, this.padding + this.weD / 2, getHeight());
+    this.weC.setBounds(this.padding + this.wex - this.weD / 2, 0, this.wex + this.padding + this.weD / 2, getHeight());
+    AppMethodBeat.o(191130);
   }
   
-  private static int fO(Context paramContext)
+  private static int fU(Context paramContext)
   {
-    AppMethodBeat.i(195663);
+    AppMethodBeat.i(191120);
     int i = Math.round(TypedValue.applyDimension(1, 1.5F, paramContext.getResources().getDisplayMetrics()));
-    AppMethodBeat.o(195663);
+    AppMethodBeat.o(191120);
     return i;
   }
   
-  private boolean ow(boolean paramBoolean)
+  private boolean oB(boolean paramBoolean)
   {
-    AppMethodBeat.i(195668);
+    AppMethodBeat.i(191125);
     if (paramBoolean)
     {
-      paramBoolean = b.a((b)this.vSx);
-      AppMethodBeat.o(195668);
+      paramBoolean = b.a((b)this.weB);
+      AppMethodBeat.o(191125);
       return paramBoolean;
     }
-    paramBoolean = b.a((b)this.vSy);
-    AppMethodBeat.o(195668);
+    paramBoolean = b.a((b)this.weC);
+    AppMethodBeat.o(191125);
     return paramBoolean;
   }
   
   public final void aj(final int paramInt1, final int paramInt2, final int paramInt3)
   {
-    AppMethodBeat.i(195666);
+    AppMethodBeat.i(191123);
     post(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(195657);
+        AppMethodBeat.i(191114);
         if (paramInt1 <= TimeCropSliderSeekBar.a(TimeCropSliderSeekBar.this) * 2)
         {
           IllegalStateException localIllegalStateException = new IllegalStateException("MaxExtent can not less than sliderWidth * 2");
-          AppMethodBeat.o(195657);
+          AppMethodBeat.o(191114);
           throw localIllegalStateException;
         }
         TimeCropSliderSeekBar.b(TimeCropSliderSeekBar.this);
@@ -314,18 +314,18 @@ public class TimeCropSliderSeekBar
           TimeCropSliderSeekBar.b(TimeCropSliderSeekBar.this, new Rect(TimeCropSliderSeekBar.g(TimeCropSliderSeekBar.this).getBounds().left, TimeCropSliderSeekBar.g(TimeCropSliderSeekBar.this).getBounds().top, TimeCropSliderSeekBar.g(TimeCropSliderSeekBar.this).getBounds().right, TimeCropSliderSeekBar.g(TimeCropSliderSeekBar.this).getBounds().bottom));
         }
         TimeCropSliderSeekBar.this.invalidate();
-        AppMethodBeat.o(195657);
+        AppMethodBeat.o(191114);
       }
     });
-    AppMethodBeat.o(195666);
+    AppMethodBeat.o(191123);
   }
   
   public final boolean b(boolean paramBoolean, float paramFloat)
   {
-    AppMethodBeat.i(195669);
-    if ((!this.vSr) || (this.vSx == null) || (this.vSy == null) || (this.vSx.getBounds().width() <= 0) || (this.vSy.getBounds().width() <= 0))
+    AppMethodBeat.i(191126);
+    if ((!this.wev) || (this.weB == null) || (this.weC == null) || (this.weB.getBounds().width() <= 0) || (this.weC.getBounds().width() <= 0))
     {
-      AppMethodBeat.o(195669);
+      AppMethodBeat.o(191126);
       return false;
     }
     float f1;
@@ -335,9 +335,9 @@ public class TimeCropSliderSeekBar
     Rect localRect;
     if (paramBoolean)
     {
-      f1 = this.vSy.getBounds().right - this.vSu;
-      f2 = this.vSA + f1;
-      f1 = Math.max(this.padding, this.vSy.getBounds().right - this.vSt - this.vSA);
+      f1 = this.weC.getBounds().right - this.wey;
+      f2 = this.weE + f1;
+      f1 = Math.max(this.padding, this.weC.getBounds().right - this.wex - this.weE);
       paramFloat = Math.max(f1, Math.min(paramFloat, f2));
       if ((paramFloat != f1) && (paramFloat != f2)) {
         break label260;
@@ -346,194 +346,194 @@ public class TimeCropSliderSeekBar
       if (!paramBoolean) {
         break label266;
       }
-      localRect = this.vSx.getBounds();
-      localRect.offsetTo((int)Math.ceil(paramFloat - this.vSA), 0);
-      this.vSx.setBounds(localRect);
+      localRect = this.weB.getBounds();
+      localRect.offsetTo((int)Math.ceil(paramFloat - this.weE), 0);
+      this.weB.setBounds(localRect);
     }
     for (;;)
     {
       postInvalidate();
-      AppMethodBeat.o(195669);
+      AppMethodBeat.o(191126);
       return bool;
-      f1 = this.vSx.getBounds().left + this.vSu - this.vSA;
-      f2 = Math.min(getWidth() - this.padding, this.vSx.getBounds().left + this.vSt + this.vSA);
+      f1 = this.weB.getBounds().left + this.wey - this.weE;
+      f2 = Math.min(getWidth() - this.padding, this.weB.getBounds().left + this.wex + this.weE);
       break;
       label260:
       bool = false;
       break label147;
       label266:
-      localRect = this.vSy.getBounds();
-      localRect.offsetTo((int)Math.floor(paramFloat - this.vSA), 0);
-      this.vSy.setBounds(localRect);
+      localRect = this.weC.getBounds();
+      localRect.offsetTo((int)Math.floor(paramFloat - this.weE), 0);
+      this.weC.setBounds(localRect);
     }
   }
   
-  public final void dnL()
+  public final void dqJ()
   {
-    this.vSs = true;
+    this.wew = true;
   }
   
-  public final void dnM()
+  public final void dqK()
   {
-    this.vSs = false;
+    this.wew = false;
   }
   
-  public final void etN()
+  public final void exu()
   {
-    AppMethodBeat.i(195672);
-    this.vSx = new b(com.tencent.mm.cc.a.l(getContext(), 2131235058), com.tencent.mm.cc.a.l(getContext(), 2131235058));
-    this.vSy = new b(com.tencent.mm.cc.a.l(getContext(), 2131235058), com.tencent.mm.cc.a.l(getContext(), 2131235058));
-    this.vSP = false;
-    this.vSz = com.tencent.mm.cc.a.fromDPToPix(getContext(), 16);
-    this.vSA = (this.vSz * 0.5F);
-    this.vSM = com.tencent.mm.cc.a.fromDPToPix(getContext(), 8);
-    etO();
+    AppMethodBeat.i(191129);
+    this.weB = new b(com.tencent.mm.cb.a.l(getContext(), 2131235058), com.tencent.mm.cb.a.l(getContext(), 2131235058));
+    this.weC = new b(com.tencent.mm.cb.a.l(getContext(), 2131235058), com.tencent.mm.cb.a.l(getContext(), 2131235058));
+    this.weT = false;
+    this.weD = com.tencent.mm.cb.a.fromDPToPix(getContext(), 16);
+    this.weE = (this.weD * 0.5F);
+    this.weQ = com.tencent.mm.cb.a.fromDPToPix(getContext(), 8);
+    exv();
     postInvalidate();
-    AppMethodBeat.o(195672);
+    AppMethodBeat.o(191129);
   }
   
   public int getLeftSliderBound()
   {
-    AppMethodBeat.i(195670);
-    int i = (int)(this.vSx.getBounds().left + this.vSA);
-    AppMethodBeat.o(195670);
+    AppMethodBeat.i(191127);
+    int i = (int)(this.weB.getBounds().left + this.weE);
+    AppMethodBeat.o(191127);
     return i;
   }
   
   public int getRightSliderBound()
   {
-    AppMethodBeat.i(195671);
-    int i = (int)(this.vSy.getBounds().right - this.vSA);
-    AppMethodBeat.o(195671);
+    AppMethodBeat.i(191128);
+    int i = (int)(this.weC.getBounds().right - this.weE);
+    AppMethodBeat.o(191128);
     return i;
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(195664);
+    AppMethodBeat.i(191121);
     float f1;
     float f2;
     float f3;
     float f4;
-    if (this.vSC > 0.0F)
+    if (this.weG > 0.0F)
     {
-      f1 = getWidth() * this.vSC;
-      f2 = this.vSB;
-      f3 = this.BRy;
-      f4 = this.vSB;
-      j = this.BRy;
-      if (!this.vSP) {
+      f1 = getWidth() * this.weG;
+      f2 = this.weF;
+      f3 = this.CiY;
+      f4 = this.weF;
+      j = this.CiY;
+      if (!this.weT) {
         break label108;
       }
     }
     label108:
-    for (int i = getHeight();; i = this.BRz)
+    for (int i = getHeight();; i = this.CiZ)
     {
-      paramCanvas.drawRect(f1 - f2 * 0.5F, f3, f4 * 0.5F + f1, i + j, this.vSE);
-      if (this.vSr) {
+      paramCanvas.drawRect(f1 - f2 * 0.5F, f3, f4 * 0.5F + f1, i + j, this.weI);
+      if (this.wev) {
         break;
       }
-      AppMethodBeat.o(195664);
+      AppMethodBeat.o(191121);
       return;
     }
-    i = this.vSx.getBounds().centerX();
-    int j = this.vSy.getBounds().centerX();
-    if (((ow(true)) || (ow(false))) && (this.vSP))
+    i = this.weB.getBounds().centerX();
+    int j = this.weC.getBounds().centerX();
+    if (((oB(true)) || (oB(false))) && (this.weT))
     {
       f1 = this.padding;
-      paramCanvas.drawRect(this.vSJ + f1, this.vSJ, getWidth() - this.padding - this.vSJ, getBottom() - this.vSJ, this.vSH);
+      paramCanvas.drawRect(this.weN + f1, this.weN, getWidth() - this.padding - this.weN, getBottom() - this.weN, this.weL);
     }
-    if (this.vSx.getBounds().left > 0) {
-      paramCanvas.drawRect(0.0F, 0.0F, i, getHeight(), this.BRw);
+    if (this.weB.getBounds().left > 0) {
+      paramCanvas.drawRect(0.0F, 0.0F, i, getHeight(), this.CiW);
     }
-    if (this.vSy.getBounds().right < getWidth()) {
-      paramCanvas.drawRect(j, 0.0F, getWidth(), getHeight(), this.BRw);
+    if (this.weC.getBounds().right < getWidth()) {
+      paramCanvas.drawRect(j, 0.0F, getWidth(), getHeight(), this.CiW);
     }
-    if ((this.BRA) && (this.BRz != 0)) {
-      paramCanvas.drawRect(i, this.BRy - getTop(), j, this.BRy + this.BRz - getTop(), this.BRx);
+    if ((this.Cja) && (this.CiZ != 0)) {
+      paramCanvas.drawRect(i, this.CiY - getTop(), j, this.CiY + this.CiZ - getTop(), this.CiX);
     }
-    if (this.vSP)
+    if (this.weT)
     {
-      paramCanvas.drawLine(i, this.vSF, j, this.vSF, this.borderPaint);
-      paramCanvas.drawLine(i, getHeight() - this.vSF, j, getHeight() - this.vSF, this.borderPaint);
+      paramCanvas.drawLine(i, this.weJ, j, this.weJ, this.borderPaint);
+      paramCanvas.drawLine(i, getHeight() - this.weJ, j, getHeight() - this.weJ, this.borderPaint);
     }
-    this.vSx.draw(paramCanvas);
-    this.vSy.draw(paramCanvas);
-    AppMethodBeat.o(195664);
+    this.weB.draw(paramCanvas);
+    this.weC.draw(paramCanvas);
+    AppMethodBeat.o(191121);
   }
   
   public void setContentHeight(int paramInt)
   {
-    this.BRz = paramInt;
+    this.CiZ = paramInt;
   }
   
   public void setContentTop(int paramInt)
   {
-    this.BRy = paramInt;
+    this.CiY = paramInt;
   }
   
   public void setCursorPos(float paramFloat)
   {
-    AppMethodBeat.i(195665);
-    if (!this.vSr)
+    AppMethodBeat.i(191122);
+    if (!this.wev)
     {
-      AppMethodBeat.o(195665);
+      AppMethodBeat.o(191122);
       return;
     }
-    this.vSC = paramFloat;
+    this.weG = paramFloat;
     invalidate();
-    AppMethodBeat.o(195665);
+    AppMethodBeat.o(191122);
   }
   
   public void setEnableHapticAtEdge(boolean paramBoolean)
   {
-    this.vSw = paramBoolean;
+    this.weA = paramBoolean;
   }
   
   public void setMaskColor(int paramInt)
   {
-    AppMethodBeat.i(195667);
-    this.BRw.setColor(paramInt);
-    AppMethodBeat.o(195667);
+    AppMethodBeat.i(191124);
+    this.CiW.setColor(paramInt);
+    AppMethodBeat.o(191124);
   }
   
   public void setOnSliderTouchListener(a parama)
   {
-    this.BRv = parama;
+    this.CiV = parama;
   }
   
   public static abstract interface a
   {
-    public abstract void dnK();
+    public abstract void dqI();
     
-    public abstract void etP();
+    public abstract void exw();
   }
   
   final class b
     extends Drawable
   {
     boolean isPressed = false;
-    private Drawable vSY;
-    private Drawable vSZ;
+    private Drawable wfc;
+    private Drawable wfd;
     
     public b(Drawable paramDrawable1, Drawable paramDrawable2)
     {
-      this.vSY = paramDrawable1;
-      this.vSZ = paramDrawable2;
+      this.wfc = paramDrawable1;
+      this.wfd = paramDrawable2;
       this.isPressed = false;
     }
     
     public final void draw(Canvas paramCanvas)
     {
-      AppMethodBeat.i(195659);
+      AppMethodBeat.i(191116);
       if (this.isPressed) {}
-      for (Drawable localDrawable = this.vSY;; localDrawable = this.vSZ)
+      for (Drawable localDrawable = this.wfc;; localDrawable = this.wfd)
       {
         if (!getBounds().equals(localDrawable.getBounds())) {
           localDrawable.setBounds(getBounds());
         }
         localDrawable.draw(paramCanvas);
-        AppMethodBeat.o(195659);
+        AppMethodBeat.o(191116);
         return;
       }
     }
@@ -545,18 +545,18 @@ public class TimeCropSliderSeekBar
     
     public final void setAlpha(int paramInt)
     {
-      AppMethodBeat.i(195660);
-      this.vSY.setAlpha(paramInt);
-      this.vSZ.setAlpha(paramInt);
-      AppMethodBeat.o(195660);
+      AppMethodBeat.i(191117);
+      this.wfc.setAlpha(paramInt);
+      this.wfd.setAlpha(paramInt);
+      AppMethodBeat.o(191117);
     }
     
     public final void setColorFilter(ColorFilter paramColorFilter)
     {
-      AppMethodBeat.i(195661);
-      this.vSY.setColorFilter(paramColorFilter);
-      this.vSZ.setColorFilter(paramColorFilter);
-      AppMethodBeat.o(195661);
+      AppMethodBeat.i(191118);
+      this.wfc.setColorFilter(paramColorFilter);
+      this.wfd.setColorFilter(paramColorFilter);
+      AppMethodBeat.o(191118);
     }
   }
 }

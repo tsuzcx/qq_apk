@@ -7,11 +7,11 @@
     <LinearLayout android:gravity="center|left" android:orientation="vertical" android:id="@id/g2f" android:layout_width="fill_parent" android:layout_height="wrap_content">
         <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/g2c" android:background="@drawable/amv" android:paddingRight="@dimen/bp" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/b8">
             <TextView android:id="@id/g2j" android:paddingTop="@dimen/jn" android:paddingRight="@dimen/i0" android:paddingBottom="@dimen/jn" android:layout_width="0.0dip" android:singleLine="true" android:layout_weight="1.0" style="@style/lz" />
-            <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ci" android:src="@raw/arrow_right" android:layout_alignParentRight="true" android:layout_centerVertical="true" app:iconColor="@color/ee" />
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/ab5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ci" android:src="@raw/icons_outlined_arrow" android:layout_alignParentRight="true" android:layout_centerVertical="true" app:iconColor="@color/FG_2" />
         </LinearLayout>
         <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/g2d" android:paddingRight="@dimen/bp" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/b8">
             <TextView android:id="@id/g2k" android:paddingTop="@dimen/jn" android:paddingRight="@dimen/i0" android:paddingBottom="@dimen/jn" android:layout_width="0.0dip" android:singleLine="true" android:layout_weight="1.0" style="@style/lz" />
-            <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ci" android:src="@raw/arrow_right" android:layout_alignParentRight="true" android:layout_centerVertical="true" app:iconColor="@color/ee" />
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/ab6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ci" android:src="@raw/icons_outlined_arrow" android:layout_alignParentRight="true" android:layout_centerVertical="true" app:iconColor="@color/FG_2" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

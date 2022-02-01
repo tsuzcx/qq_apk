@@ -10,19 +10,19 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bb.i;
-import com.tencent.mm.bb.i.a;
-import com.tencent.mm.cc.a;
-import com.tencent.mm.model.ba;
+import com.tencent.mm.ba.i;
+import com.tencent.mm.ba.i.a;
+import com.tencent.mm.cb.a;
+import com.tencent.mm.model.bc;
 import com.tencent.mm.model.c;
 import com.tencent.mm.pluginsdk.model.app.ao;
 import com.tencent.mm.pluginsdk.model.app.g;
 import com.tencent.mm.pluginsdk.model.app.h;
 import com.tencent.mm.sdk.e.k.a;
 import com.tencent.mm.sdk.e.m;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.base.preference.f;
@@ -34,10 +34,10 @@ public class AppProfileUI
   extends MMPreference
   implements k.a
 {
-  private AppHeaderPreference.a Bkn;
-  private ap handler = null;
+  private AppHeaderPreference.a BBM;
+  private aq handler = null;
   private f screen;
-  private g ulj;
+  private g uwG;
   
   private static void a(g paramg, boolean paramBoolean)
   {
@@ -48,17 +48,17 @@ public class AppProfileUI
     for (paramg = "1";; paramg = "2")
     {
       localLinkedList.add(new i.a(10165, paramg));
-      ba.aBQ();
-      c.azo().c(new i(localLinkedList));
+      bc.aCg();
+      c.azE().d(new i(localLinkedList));
       AppMethodBeat.o(29156);
       return;
     }
   }
   
-  private void enl()
+  private void eqT()
   {
     AppMethodBeat.i(29153);
-    this.handler = new ap()
+    this.handler = new aq()
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
@@ -79,12 +79,12 @@ public class AppProfileUI
     this.screen.addPreferencesFromResource(getResourceId());
     AppHeaderPreference localAppHeaderPreference;
     AppHeaderPreference.a locala;
-    if (this.ulj.field_status == 1)
+    if (this.uwG.field_status == 1)
     {
-      this.screen.aVE("app_profile_add");
-      localAppHeaderPreference = (AppHeaderPreference)this.screen.aVD("app_profile_header");
-      locala = this.Bkn;
-      if (this.ulj.field_status != 1) {
+      this.screen.aXf("app_profile_add");
+      localAppHeaderPreference = (AppHeaderPreference)this.screen.aXe("app_profile_header");
+      locala = this.BBM;
+      if (this.uwG.field_status != 1) {
         break label112;
       }
     }
@@ -93,7 +93,7 @@ public class AppProfileUI
       localAppHeaderPreference.a(locala, bool);
       AppMethodBeat.o(29152);
       return;
-      this.screen.aVE("app_profile_remove");
+      this.screen.aXf("app_profile_remove");
       break;
       label112:
       bool = false;
@@ -103,7 +103,7 @@ public class AppProfileUI
   public final void a(String paramString, m paramm)
   {
     AppMethodBeat.i(29155);
-    if (paramString.equals(this.ulj.field_appId)) {
+    if (paramString.equals(this.uwG.field_appId)) {
       initView();
     }
     AppMethodBeat.o(29155);
@@ -118,9 +118,9 @@ public class AppProfileUI
   {
     boolean bool = true;
     AppMethodBeat.i(29151);
-    this.Bkn = new AppHeaderPreference.a()
+    this.BBM = new AppHeaderPreference.a()
     {
-      public final String enj()
+      public final String eqR()
       {
         AppMethodBeat.i(29142);
         String str = h.a(AppProfileUI.this.getContext(), AppProfileUI.a(AppProfileUI.this), null);
@@ -128,7 +128,7 @@ public class AppProfileUI
         return str;
       }
       
-      public final Bitmap enk()
+      public final Bitmap eqS()
       {
         AppMethodBeat.i(29143);
         Bitmap localBitmap = h.c(AppProfileUI.a(AppProfileUI.this).field_appId, 1, a.getDensity(AppProfileUI.this));
@@ -146,7 +146,7 @@ public class AppProfileUI
           AppMethodBeat.o(29145);
           return null;
         }
-        localObject2 = h.ht((Context)localObject2);
+        localObject2 = h.hz((Context)localObject2);
         if (((String)localObject2).equalsIgnoreCase("zh_CN"))
         {
           localObject1 = ((g)localObject1).field_appDiscription;
@@ -155,7 +155,7 @@ public class AppProfileUI
         }
         if ((((String)localObject2).equalsIgnoreCase("zh_TW")) || (((String)localObject2).equalsIgnoreCase("zh_HK")))
         {
-          if (bt.isNullOrNil(((g)localObject1).field_appDiscription_tw))
+          if (bu.isNullOrNil(((g)localObject1).field_appDiscription_tw))
           {
             localObject1 = ((g)localObject1).field_appDiscription;
             AppMethodBeat.o(29145);
@@ -167,7 +167,7 @@ public class AppProfileUI
         }
         if (((String)localObject2).equalsIgnoreCase("en"))
         {
-          if (bt.isNullOrNil(((g)localObject1).field_appDiscription_en))
+          if (bu.isNullOrNil(((g)localObject1).field_appDiscription_en))
           {
             localObject1 = ((g)localObject1).field_appDiscription;
             AppMethodBeat.o(29145);
@@ -177,7 +177,7 @@ public class AppProfileUI
           AppMethodBeat.o(29145);
           return localObject1;
         }
-        if (bt.isNullOrNil(((g)localObject1).field_appDiscription_en))
+        if (bu.isNullOrNil(((g)localObject1).field_appDiscription_en))
         {
           localObject1 = ((g)localObject1).field_appDiscription;
           AppMethodBeat.o(29145);
@@ -188,7 +188,7 @@ public class AppProfileUI
         return localObject1;
       }
       
-      public final String sE(boolean paramAnonymousBoolean)
+      public final String sL(boolean paramAnonymousBoolean)
       {
         AppMethodBeat.i(29144);
         if (paramAnonymousBoolean) {}
@@ -200,8 +200,8 @@ public class AppProfileUI
         }
       }
     };
-    this.ulj = h.m(getIntent().getStringExtra("AppProfileUI_AppId"), true, false);
-    if (this.ulj != null) {}
+    this.uwG = h.m(getIntent().getStringExtra("AppProfileUI_AppId"), true, false);
+    if (this.uwG != null) {}
     for (;;)
     {
       Assert.assertTrue("initView : appInfo does not exist", bool);
@@ -235,7 +235,7 @@ public class AppProfileUI
   public void onPause()
   {
     AppMethodBeat.i(29150);
-    ao.dxQ().remove(this);
+    ao.dBg().remove(this);
     super.onPause();
     AppMethodBeat.o(29150);
   }
@@ -244,26 +244,26 @@ public class AppProfileUI
   {
     AppMethodBeat.i(29154);
     paramf = paramPreference.mKey;
-    ad.i("MicroMsg.AppProfileUI", paramf + " item has been clicked!");
+    ae.i("MicroMsg.AppProfileUI", paramf + " item has been clicked!");
     if (paramf.equals("app_profile_add"))
     {
-      this.ulj.field_status = 1;
-      this.ulj.field_modifyTime = System.currentTimeMillis();
-      ao.dxQ().a(this.ulj, new String[0]);
+      this.uwG.field_status = 1;
+      this.uwG.field_modifyTime = System.currentTimeMillis();
+      ao.dBg().a(this.uwG, new String[0]);
       refresh();
-      a(this.ulj, true);
-      enl();
+      a(this.uwG, true);
+      eqT();
       AppMethodBeat.o(29154);
       return true;
     }
     if (paramf.equals("app_profile_remove"))
     {
-      this.ulj.field_status = 0;
-      this.ulj.field_modifyTime = System.currentTimeMillis();
-      ao.dxQ().a(this.ulj, new String[0]);
+      this.uwG.field_status = 0;
+      this.uwG.field_modifyTime = System.currentTimeMillis();
+      ao.dBg().a(this.uwG, new String[0]);
       refresh();
-      a(this.ulj, false);
-      enl();
+      a(this.uwG, false);
+      eqT();
       AppMethodBeat.o(29154);
       return true;
     }
@@ -275,7 +275,7 @@ public class AppProfileUI
   {
     AppMethodBeat.i(29149);
     super.onResume();
-    ao.dxQ().add(this);
+    ao.dBg().add(this);
     AppMethodBeat.o(29149);
   }
   

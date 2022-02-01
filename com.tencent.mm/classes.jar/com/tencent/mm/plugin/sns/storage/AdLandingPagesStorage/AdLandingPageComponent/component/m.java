@@ -1,219 +1,388 @@
 package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component;
 
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import android.content.DialogInterface.OnDismissListener;
-import android.support.design.widget.BottomSheetBehavior;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.view.Window;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.FrameLayout.LayoutParams;
 import android.widget.LinearLayout.LayoutParams;
-import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.x;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.f.a;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.h;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.sdk.platformtools.g;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.af;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.y;
+import com.tencent.mm.plugin.sns.ui.SnsAdNativeLandingPagesUI;
+import com.tencent.mm.plugin.sns.ui.VideoFullScreenActivity;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.ui.al;
+import java.util.Map;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public final class m
+public class m
 {
-  public String gaR;
-  private View iCR;
-  private Context mContext;
-  public String mTitle;
-  public String pFJ;
-  android.support.design.widget.a zDP;
-  private int zDQ;
-  private int zDR;
-  private boolean zDS;
-  private boolean zDT;
-  public a zDU;
+  protected int backgroundColor;
+  public View contentView;
+  public Context context;
+  long dCI;
+  protected int lxZ;
+  protected int lya;
+  protected y zUP;
+  int zUQ;
+  private long zUR;
+  boolean zUS;
+  protected ViewGroup zUT;
   
-  public m(final Context paramContext, l paraml, String paramString1, String paramString2, String paramString3, boolean paramBoolean1, boolean paramBoolean2)
+  public m(Context paramContext, y paramy, ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(96483);
-    this.gaR = "";
-    this.mTitle = "";
-    this.pFJ = "";
-    this.zDQ = -1;
-    this.zDR = -1;
-    this.zDS = false;
-    this.zDT = false;
-    this.gaR = paramString1;
-    this.mTitle = paramString2;
-    this.pFJ = paramString3;
-    this.mContext = paramContext;
-    this.zDS = paramBoolean1;
-    this.zDT = paramBoolean2;
-    if ((paraml != null) && (paraml.getView() != null))
-    {
-      this.zDP = new android.support.design.widget.a(paramContext);
-      this.zDP.setCanceledOnTouchOutside(true);
-      this.iCR = View.inflate(paramContext, 2131495496, null);
-      if (this.iCR == null)
-      {
-        ad.e("MicroMsg.AdLandingPageBottomSheet", "mRootView init fail!");
-        AppMethodBeat.o(96483);
-        return;
-      }
-      paramContext = (LinearLayout)this.iCR.findViewById(2131298549);
-      paramString1 = paraml.getView();
-      if (paramString1.getParent() != null) {
-        ((ViewGroup)paramString1.getParent()).removeView(paramString1);
-      }
-      this.zDQ = ((int)paraml.dWS().zAi);
-      this.zDR = ((int)paraml.dWS().zAj);
-      paraml = new LinearLayout.LayoutParams(-1, -1);
-      if ((this.zDQ != 2147483647) && (this.zDR != 2147483647)) {}
-      for (int i = 1;; i = 0)
-      {
-        if (i != 0)
-        {
-          paraml.width = this.zDQ;
-          paraml.height = this.zDR;
-        }
-        paramContext.addView(paramString1, paraml);
-        ((TextView)this.iCR.findViewById(2131297466)).setText(paramString2);
-        paramContext = this.iCR.findViewById(2131298368);
-        paramContext.setOnClickListener(new View.OnClickListener()
-        {
-          public final void onClick(View paramAnonymousView)
-          {
-            AppMethodBeat.i(96478);
-            b localb = new b();
-            localb.bd(paramAnonymousView);
-            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/AdLandingPageBottomSheet$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-            m.this.zDP.cancel();
-            com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/AdLandingPageBottomSheet$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-            AppMethodBeat.o(96478);
-          }
-        });
-        paraml = this.iCR.findViewById(2131297460);
-        paraml.setOnClickListener(new View.OnClickListener()
-        {
-          public final void onClick(View paramAnonymousView)
-          {
-            AppMethodBeat.i(96479);
-            b localb = new b();
-            localb.bd(paramAnonymousView);
-            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/AdLandingPageBottomSheet$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-            m.this.zDP.cancel();
-            com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/AdLandingPageBottomSheet$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-            AppMethodBeat.o(96479);
-          }
-        });
-        if (!this.zDT) {
-          paraml.setVisibility(8);
-        }
-        if (this.zDS) {
-          paramContext.setVisibility(8);
-        }
-        paramContext = (ImageView)this.iCR.findViewById(2131305894);
-        paramContext.setVisibility(8);
-        if (bt.isNullOrNil(paramString3)) {
-          break label424;
-        }
-        paraml = h.jJ("adId", paramString3);
-        if (paraml == null) {
-          break;
-        }
-        paramContext.setImageBitmap(paraml);
-        paramContext.setVisibility(0);
-        AppMethodBeat.o(96483);
-        return;
-      }
-      h.a(paramString3, 0, new f.a()
-      {
-        public final void axG(String paramAnonymousString)
-        {
-          AppMethodBeat.i(96480);
-          try
-          {
-            paramAnonymousString = g.decodeFile(paramAnonymousString);
-            paramContext.setImageBitmap(paramAnonymousString);
-            paramContext.setVisibility(0);
-            AppMethodBeat.o(96480);
-            return;
-          }
-          catch (Exception paramAnonymousString)
-          {
-            ad.e("MicroMsg.AdLandingPageBottomSheet", "%s" + bt.n(paramAnonymousString));
-            AppMethodBeat.o(96480);
-          }
-        }
-        
-        public final void dRW() {}
-        
-        public final void dRX() {}
-      });
+    AppMethodBeat.i(96466);
+    this.zUQ = 0;
+    this.zUR = 0L;
+    this.dCI = 0L;
+    this.zUS = false;
+    this.contentView = null;
+    this.context = paramContext;
+    this.zUP = paramy;
+    this.zUT = paramViewGroup;
+    paramy = an.gp(paramContext);
+    this.lxZ = paramy[0];
+    this.lya = paramy[1];
+    if (al.aH(paramContext)) {
+      this.lya -= al.aG(paramContext);
     }
-    label424:
-    AppMethodBeat.o(96483);
+    AppMethodBeat.o(96466);
   }
   
-  public final void bpT()
+  public boolean E(JSONArray paramJSONArray)
   {
-    AppMethodBeat.i(96485);
-    if (this.zDP != null) {
-      this.zDP.dismiss();
-    }
-    AppMethodBeat.o(96485);
+    return false;
   }
   
-  public final void cMW()
+  public void a(y paramy)
   {
-    AppMethodBeat.i(96484);
-    if ((this.iCR == null) || (this.zDP == null))
+    AppMethodBeat.i(96467);
+    y localy = this.zUP;
+    if (localy == paramy)
     {
-      AppMethodBeat.o(96484);
+      AppMethodBeat.o(96467);
       return;
     }
-    this.zDP.getWindow().setFlags(8, 8);
-    this.zDP.getWindow().addFlags(131200);
-    if (this.zDU != null)
+    if ((localy != null) && (localy.equals(paramy)))
     {
-      this.zDP.setOnDismissListener(new DialogInterface.OnDismissListener()
-      {
-        public final void onDismiss(DialogInterface paramAnonymousDialogInterface)
-        {
-          AppMethodBeat.i(96481);
-          m.this.zDU.dXa();
-          AppMethodBeat.o(96481);
-        }
-      });
-      this.zDP.setOnCancelListener(new DialogInterface.OnCancelListener()
-      {
-        public final void onCancel(DialogInterface paramAnonymousDialogInterface)
-        {
-          AppMethodBeat.i(96482);
-          m.this.zDU.dXb();
-          AppMethodBeat.o(96482);
-        }
-      });
+      AppMethodBeat.o(96467);
+      return;
     }
-    this.zDP.setContentView(this.iCR);
-    BottomSheetBehavior.l((View)this.iCR.getParent()).J(am.gk(this.mContext)[1]);
-    this.zDP.show();
-    AppMethodBeat.o(96484);
+    this.zUP = paramy;
+    dUJ();
+    eaA();
+    AppMethodBeat.o(96467);
   }
   
-  public static abstract interface a
+  public boolean aQ(JSONObject paramJSONObject)
   {
-    public abstract void dXa();
-    
-    public abstract void dXb();
+    AppMethodBeat.i(96475);
+    if (this.zUQ == 0)
+    {
+      AppMethodBeat.o(96475);
+      return false;
+    }
+    if (this.zUP.zRp)
+    {
+      AppMethodBeat.o(96475);
+      return false;
+    }
+    try
+    {
+      paramJSONObject.put("cid", this.zUP.zRg);
+      paramJSONObject.put("exposureCount", this.zUQ);
+      paramJSONObject.put("stayTime", this.dCI);
+      AppMethodBeat.o(96475);
+      return true;
+    }
+    catch (JSONException paramJSONObject)
+    {
+      ae.printErrStackTrace("MicroMsg.Sns.AdLandingPageBaseComponent", paramJSONObject, "", new Object[0]);
+      AppMethodBeat.o(96475);
+    }
+    return false;
+  }
+  
+  public void aS(Map<String, Object> paramMap) {}
+  
+  public void dUI() {}
+  
+  protected void dUJ()
+  {
+    AppMethodBeat.i(96469);
+    ae.w("MicroMsg.Sns.AdLandingPageBaseComponent", "for component reuse, subclass must implement this method");
+    AppMethodBeat.o(96469);
+  }
+  
+  public void dUK()
+  {
+    AppMethodBeat.i(96470);
+    if (this.zUS)
+    {
+      AppMethodBeat.o(96470);
+      return;
+    }
+    this.zUS = true;
+    this.zUR = System.currentTimeMillis();
+    this.zUQ += 1;
+    AppMethodBeat.o(96470);
+  }
+  
+  public void dUL()
+  {
+    AppMethodBeat.i(96471);
+    if (!this.zUS)
+    {
+      AppMethodBeat.o(96471);
+      return;
+    }
+    this.zUS = false;
+    if (this.zUR > 0L) {
+      this.dCI += System.currentTimeMillis() - this.zUR;
+    }
+    this.zUR = 0L;
+    AppMethodBeat.o(96471);
+  }
+  
+  public void dUM()
+  {
+    AppMethodBeat.i(96474);
+    dUL();
+    AppMethodBeat.o(96474);
+  }
+  
+  public void dZO() {}
+  
+  public final void eaA()
+  {
+    AppMethodBeat.i(96476);
+    Object localObject1;
+    if (this.contentView == null)
+    {
+      localObject1 = new IllegalStateException("set field contentView first");
+      AppMethodBeat.o(96476);
+      throw ((Throwable)localObject1);
+    }
+    if (this.zUP != null)
+    {
+      localObject1 = this.contentView.getLayoutParams();
+      if (localObject1 != null)
+      {
+        if (this.zUP.zRi != 2.147484E+009F) {
+          ((ViewGroup.LayoutParams)localObject1).width = ((int)this.zUP.zRi);
+        }
+        if (this.zUP.zRj != 2.147484E+009F) {
+          ((ViewGroup.LayoutParams)localObject1).height = ((int)this.zUP.zRj);
+        }
+        Object localObject2;
+        int i;
+        if ((localObject1 instanceof LinearLayout.LayoutParams))
+        {
+          localObject2 = (LinearLayout.LayoutParams)localObject1;
+          i = getGravity();
+          if (i != 0) {
+            ((LinearLayout.LayoutParams)localObject2).gravity = i;
+          }
+        }
+        for (;;)
+        {
+          this.contentView.setLayoutParams((ViewGroup.LayoutParams)localObject1);
+          AppMethodBeat.o(96476);
+          return;
+          if ((localObject1 instanceof FrameLayout.LayoutParams))
+          {
+            localObject2 = (FrameLayout.LayoutParams)localObject1;
+            i = getGravity();
+            if (i != 0) {
+              ((FrameLayout.LayoutParams)localObject2).gravity = i;
+            }
+          }
+        }
+      }
+      ae.i("MicroMsg.Sns.AdLandingPageBaseComponent", this + " has no layoutParams in container " + this.zUT);
+    }
+    AppMethodBeat.o(96476);
+  }
+  
+  public void eaB() {}
+  
+  protected final <T> T eaC()
+  {
+    try
+    {
+      y localy = this.zUP;
+      return localy;
+    }
+    catch (Exception localException) {}
+    return null;
+  }
+  
+  public final af eaD()
+  {
+    AppMethodBeat.i(96477);
+    if ((this.context instanceof SnsAdNativeLandingPagesUI))
+    {
+      localaf = ((SnsAdNativeLandingPagesUI)this.context).eaD();
+      AppMethodBeat.o(96477);
+      return localaf;
+    }
+    if ((this.context instanceof VideoFullScreenActivity))
+    {
+      localaf = VideoFullScreenActivity.eal();
+      AppMethodBeat.o(96477);
+      return localaf;
+    }
+    af localaf = new af();
+    AppMethodBeat.o(96477);
+    return localaf;
+  }
+  
+  protected View eae()
+  {
+    return null;
+  }
+  
+  protected void eah() {}
+  
+  public final y eaw()
+  {
+    return this.zUP;
+  }
+  
+  public final int eax()
+  {
+    AppMethodBeat.i(96472);
+    View localView = getView();
+    int[] arrayOfInt = new int[2];
+    localView.getLocationOnScreen(arrayOfInt);
+    int k = arrayOfInt[1];
+    int j = localView.getHeight() + k;
+    ae.d("MicroMsg.Sns.AdLandingPageBaseComponent", "comp %s , top %d,bottom %d ", new Object[] { this, Integer.valueOf(k), Integer.valueOf(j) });
+    int i;
+    if ((k >= 0) && (j <= this.lya)) {
+      i = localView.getHeight();
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(96472);
+      return i;
+      if ((k < 0) && (j > 0))
+      {
+        i = j;
+        if (j <= this.lya) {}
+      }
+      else if ((k < 0) && (j > this.lya))
+      {
+        i = this.lya;
+      }
+      else if ((k < this.lya) && (j > this.lya))
+      {
+        i = this.lya - k;
+      }
+      else
+      {
+        i = 0;
+      }
+    }
+  }
+  
+  public boolean eay()
+  {
+    AppMethodBeat.i(96473);
+    if (eax() >= Math.min(getView().getHeight() >>> 1, this.lya >>> 1))
+    {
+      AppMethodBeat.o(96473);
+      return true;
+    }
+    AppMethodBeat.o(96473);
+    return false;
+  }
+  
+  public final String eaz()
+  {
+    return this.zUP.zRg;
+  }
+  
+  public final int getGravity()
+  {
+    int i = 0;
+    switch (this.zUP.zRm)
+    {
+    }
+    for (;;)
+    {
+      switch (this.zUP.zRn)
+      {
+      default: 
+        return i;
+        i = 80;
+        continue;
+        i = 16;
+        continue;
+        i = 48;
+      }
+    }
+    return i | 0x1;
+    return i | 0x3;
+    return i | 0x5;
+  }
+  
+  protected int getLayout()
+  {
+    return 2147483647;
+  }
+  
+  public final View getView()
+  {
+    AppMethodBeat.i(96468);
+    if (this.contentView != null)
+    {
+      localObject = this.contentView;
+      AppMethodBeat.o(96468);
+      return localObject;
+    }
+    if (this.contentView == null)
+    {
+      int i = getLayout();
+      if (i != 2147483647) {
+        this.contentView = ((LayoutInflater)this.context.getSystemService("layout_inflater")).inflate(i, this.zUT, false);
+      }
+      while (this.contentView == null)
+      {
+        localObject = new IllegalStateException("implement getLayout() or customLayout() to get a valid root view");
+        AppMethodBeat.o(96468);
+        throw ((Throwable)localObject);
+        this.contentView = eae();
+        if ((this.contentView != null) && (this.contentView.getLayoutParams() == null))
+        {
+          this.zUT.addView(this.contentView);
+          localObject = this.contentView.getLayoutParams();
+          this.zUT.removeView(this.contentView);
+          this.contentView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+        }
+      }
+    }
+    dUI();
+    dUJ();
+    eah();
+    eaA();
+    Object localObject = this.contentView;
+    AppMethodBeat.o(96468);
+    return localObject;
+  }
+  
+  public final void setBackgroundColor(int paramInt)
+  {
+    this.backgroundColor = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.m
  * JD-Core Version:    0.7.0.1
  */

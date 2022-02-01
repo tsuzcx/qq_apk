@@ -456,7 +456,7 @@ final class zzn
   private static File zzj(Context paramContext)
   {
     AppMethodBeat.i(2538);
-    File localFile = b.S(paramContext);
+    File localFile = b.T(paramContext);
     if ((localFile != null) && (localFile.isDirectory()))
     {
       AppMethodBeat.o(2538);

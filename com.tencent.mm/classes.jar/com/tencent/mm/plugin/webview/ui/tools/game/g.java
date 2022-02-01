@@ -5,83 +5,83 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.game.report.api.a;
 import com.tencent.mm.ipcinvoker.b;
 import com.tencent.mm.ipcinvoker.wx_extension.service.ToolsProcessIPCService;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.net.URLEncoder;
 import java.util.HashMap;
 
 public final class g
 {
-  private static HashMap<String, g> EjG;
-  public long EjA;
-  public long EjB;
-  public long EjC;
-  public long EjD;
-  public long EjE;
-  public long EjF;
-  public long Ejp;
-  public long Ejq;
-  public long Ejr;
-  public long Ejs;
-  public long Ejt;
-  public long Eju;
-  public long Ejv;
-  public long Ejw;
-  public long Ejx;
-  public long Ejy;
-  public long Ejz;
-  public long mxj;
+  private static HashMap<String, g> EBK;
+  public long EBA;
+  public long EBB;
+  public long EBC;
+  public long EBD;
+  public long EBE;
+  public long EBF;
+  public long EBG;
+  public long EBH;
+  public long EBI;
+  public long EBJ;
+  public long EBt;
+  public long EBu;
+  public long EBv;
+  public long EBw;
+  public long EBx;
+  public long EBy;
+  public long EBz;
+  public long mCg;
   public long startTime;
   public String url;
   
   static
   {
     AppMethodBeat.i(80894);
-    EjG = new HashMap();
+    EBK = new HashMap();
     AppMethodBeat.o(80894);
   }
   
-  public static g aJc(String paramString)
+  public static g aKv(String paramString)
   {
     AppMethodBeat.i(80878);
-    if (EjG.containsKey(paramString)) {
-      EjG.remove(paramString);
+    if (EBK.containsKey(paramString)) {
+      EBK.remove(paramString);
     }
     g localg = new g();
     localg.url = paramString;
-    EjG.put(paramString, localg);
+    EBK.put(paramString, localg);
     AppMethodBeat.o(80878);
     return localg;
   }
   
-  public static g aJd(String paramString)
+  public static g aKw(String paramString)
   {
     AppMethodBeat.i(80879);
-    if (EjG.containsKey(paramString))
+    if (EBK.containsKey(paramString))
     {
-      paramString = (g)EjG.get(paramString);
+      paramString = (g)EBK.get(paramString);
       AppMethodBeat.o(80879);
       return paramString;
     }
     g localg = new g();
     localg.url = paramString;
-    EjG.put(paramString, localg);
+    EBK.put(paramString, localg);
     AppMethodBeat.o(80879);
     return localg;
   }
   
-  public static g aJe(String paramString)
+  public static g aKx(String paramString)
   {
     AppMethodBeat.i(80880);
-    paramString = (g)EjG.get(paramString);
+    paramString = (g)EBK.get(paramString);
     AppMethodBeat.o(80880);
     return paramString;
   }
   
-  public static g aJf(String paramString)
+  public static g aKy(String paramString)
   {
     AppMethodBeat.i(80881);
-    paramString = (g)EjG.remove(paramString);
+    paramString = (g)EBK.remove(paramString);
     AppMethodBeat.o(80881);
     return paramString;
   }
@@ -99,242 +99,21 @@ public final class g
   
   public static void bA(String paramString, long paramLong)
   {
-    AppMethodBeat.i(80882);
-    if (bt.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(80882);
-      return;
-    }
-    if (eUo())
-    {
-      if (aJe(paramString) != null)
-      {
-        aJe(paramString).startTime = paramLong;
-        AppMethodBeat.o(80882);
-      }
-    }
-    else {
-      c(1, paramString, paramLong);
-    }
-    AppMethodBeat.o(80882);
-  }
-  
-  public static void bB(String paramString, long paramLong)
-  {
-    AppMethodBeat.i(80883);
-    if (bt.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(80883);
-      return;
-    }
-    if (eUo())
-    {
-      if (aJe(paramString) != null)
-      {
-        aJe(paramString).Ejq = paramLong;
-        AppMethodBeat.o(80883);
-      }
-    }
-    else {
-      c(2, paramString, paramLong);
-    }
-    AppMethodBeat.o(80883);
-  }
-  
-  public static void bC(String paramString, long paramLong)
-  {
-    AppMethodBeat.i(80884);
-    if (bt.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(80884);
-      return;
-    }
-    if (eUo())
-    {
-      if (aJe(paramString) != null)
-      {
-        aJe(paramString).Ejr = paramLong;
-        AppMethodBeat.o(80884);
-      }
-    }
-    else {
-      c(3, paramString, paramLong);
-    }
-    AppMethodBeat.o(80884);
-  }
-  
-  public static void bD(String paramString, long paramLong)
-  {
-    AppMethodBeat.i(80885);
-    if (bt.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(80885);
-      return;
-    }
-    if (eUo())
-    {
-      if (aJe(paramString) != null)
-      {
-        aJe(paramString).Ejs = paramLong;
-        AppMethodBeat.o(80885);
-      }
-    }
-    else {
-      c(4, paramString, paramLong);
-    }
-    AppMethodBeat.o(80885);
-  }
-  
-  public static void bE(String paramString, long paramLong)
-  {
-    AppMethodBeat.i(80886);
-    if (bt.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(80886);
-      return;
-    }
-    if (eUo())
-    {
-      if (aJe(paramString) != null)
-      {
-        aJe(paramString).Ejt = paramLong;
-        AppMethodBeat.o(80886);
-      }
-    }
-    else {
-      c(5, paramString, paramLong);
-    }
-    AppMethodBeat.o(80886);
-  }
-  
-  public static void bF(String paramString, long paramLong)
-  {
-    AppMethodBeat.i(80887);
-    if (bt.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(80887);
-      return;
-    }
-    if (eUo())
-    {
-      if (aJe(paramString) != null)
-      {
-        aJe(paramString).Eju = paramLong;
-        AppMethodBeat.o(80887);
-      }
-    }
-    else {
-      c(6, paramString, paramLong);
-    }
-    AppMethodBeat.o(80887);
-  }
-  
-  public static void bG(String paramString, long paramLong)
-  {
-    AppMethodBeat.i(80888);
-    if (bt.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(80888);
-      return;
-    }
-    if (eUo())
-    {
-      if (aJe(paramString) != null)
-      {
-        aJe(paramString).Ejv = paramLong;
-        AppMethodBeat.o(80888);
-      }
-    }
-    else {
-      c(7, paramString, paramLong);
-    }
-    AppMethodBeat.o(80888);
-  }
-  
-  public static void bH(String paramString, long paramLong)
-  {
-    AppMethodBeat.i(80889);
-    if (bt.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(80889);
-      return;
-    }
-    if (eUo())
-    {
-      if (aJe(paramString) != null)
-      {
-        aJe(paramString).Ejw = paramLong;
-        AppMethodBeat.o(80889);
-      }
-    }
-    else {
-      c(8, paramString, paramLong);
-    }
-    AppMethodBeat.o(80889);
-  }
-  
-  public static void bI(String paramString, long paramLong)
-  {
-    AppMethodBeat.i(80890);
-    if (bt.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(80890);
-      return;
-    }
-    if (eUo())
-    {
-      if (aJe(paramString) != null)
-      {
-        aJe(paramString).Ejx = paramLong;
-        AppMethodBeat.o(80890);
-      }
-    }
-    else {
-      c(10, paramString, paramLong);
-    }
-    AppMethodBeat.o(80890);
-  }
-  
-  public static void bJ(String paramString, long paramLong)
-  {
-    AppMethodBeat.i(208225);
-    if (bt.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(208225);
-      return;
-    }
-    if (eUo())
-    {
-      paramString = aJe(paramString);
-      if (paramString != null)
-      {
-        paramString.Ejy = paramLong;
-        paramString.EjC = paramLong;
-      }
-      AppMethodBeat.o(208225);
-      return;
-    }
-    c(11, paramString, paramLong);
-    AppMethodBeat.o(208225);
-  }
-  
-  public static void bz(String paramString, long paramLong)
-  {
     AppMethodBeat.i(182714);
-    if (bt.isNullOrNil(paramString))
+    if (bu.isNullOrNil(paramString))
     {
       AppMethodBeat.o(182714);
       return;
     }
-    if (eUo())
+    if (eYb())
     {
-      if (aJe(paramString) == null) {
+      if (aKx(paramString) == null) {
         break label74;
       }
-      aJe(paramString).Ejp = paramLong;
+      aKx(paramString).EBt = paramLong;
       try
       {
-        a.gsb.a(6, URLEncoder.encode(paramString), "", 0L);
+        a.guC.a(6, URLEncoder.encode(paramString), "", 0L);
         AppMethodBeat.o(182714);
         return;
       }
@@ -349,6 +128,227 @@ public final class g
     AppMethodBeat.o(182714);
   }
   
+  public static void bB(String paramString, long paramLong)
+  {
+    AppMethodBeat.i(80882);
+    if (bu.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(80882);
+      return;
+    }
+    if (eYb())
+    {
+      if (aKx(paramString) != null)
+      {
+        aKx(paramString).startTime = paramLong;
+        AppMethodBeat.o(80882);
+      }
+    }
+    else {
+      c(1, paramString, paramLong);
+    }
+    AppMethodBeat.o(80882);
+  }
+  
+  public static void bC(String paramString, long paramLong)
+  {
+    AppMethodBeat.i(80883);
+    if (bu.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(80883);
+      return;
+    }
+    if (eYb())
+    {
+      if (aKx(paramString) != null)
+      {
+        aKx(paramString).EBu = paramLong;
+        AppMethodBeat.o(80883);
+      }
+    }
+    else {
+      c(2, paramString, paramLong);
+    }
+    AppMethodBeat.o(80883);
+  }
+  
+  public static void bD(String paramString, long paramLong)
+  {
+    AppMethodBeat.i(80884);
+    if (bu.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(80884);
+      return;
+    }
+    if (eYb())
+    {
+      if (aKx(paramString) != null)
+      {
+        aKx(paramString).EBv = paramLong;
+        AppMethodBeat.o(80884);
+      }
+    }
+    else {
+      c(3, paramString, paramLong);
+    }
+    AppMethodBeat.o(80884);
+  }
+  
+  public static void bE(String paramString, long paramLong)
+  {
+    AppMethodBeat.i(80885);
+    if (bu.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(80885);
+      return;
+    }
+    if (eYb())
+    {
+      if (aKx(paramString) != null)
+      {
+        aKx(paramString).EBw = paramLong;
+        AppMethodBeat.o(80885);
+      }
+    }
+    else {
+      c(4, paramString, paramLong);
+    }
+    AppMethodBeat.o(80885);
+  }
+  
+  public static void bF(String paramString, long paramLong)
+  {
+    AppMethodBeat.i(80886);
+    if (bu.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(80886);
+      return;
+    }
+    if (eYb())
+    {
+      if (aKx(paramString) != null)
+      {
+        aKx(paramString).EBx = paramLong;
+        AppMethodBeat.o(80886);
+      }
+    }
+    else {
+      c(5, paramString, paramLong);
+    }
+    AppMethodBeat.o(80886);
+  }
+  
+  public static void bG(String paramString, long paramLong)
+  {
+    AppMethodBeat.i(80887);
+    if (bu.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(80887);
+      return;
+    }
+    if (eYb())
+    {
+      if (aKx(paramString) != null)
+      {
+        aKx(paramString).EBy = paramLong;
+        AppMethodBeat.o(80887);
+      }
+    }
+    else {
+      c(6, paramString, paramLong);
+    }
+    AppMethodBeat.o(80887);
+  }
+  
+  public static void bH(String paramString, long paramLong)
+  {
+    AppMethodBeat.i(80888);
+    if (bu.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(80888);
+      return;
+    }
+    if (eYb())
+    {
+      if (aKx(paramString) != null)
+      {
+        aKx(paramString).EBz = paramLong;
+        AppMethodBeat.o(80888);
+      }
+    }
+    else {
+      c(7, paramString, paramLong);
+    }
+    AppMethodBeat.o(80888);
+  }
+  
+  public static void bI(String paramString, long paramLong)
+  {
+    AppMethodBeat.i(80889);
+    if (bu.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(80889);
+      return;
+    }
+    if (eYb())
+    {
+      if (aKx(paramString) != null)
+      {
+        aKx(paramString).EBA = paramLong;
+        AppMethodBeat.o(80889);
+      }
+    }
+    else {
+      c(8, paramString, paramLong);
+    }
+    AppMethodBeat.o(80889);
+  }
+  
+  public static void bJ(String paramString, long paramLong)
+  {
+    AppMethodBeat.i(80890);
+    if (bu.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(80890);
+      return;
+    }
+    if (eYb())
+    {
+      if (aKx(paramString) != null)
+      {
+        aKx(paramString).EBB = paramLong;
+        AppMethodBeat.o(80890);
+      }
+    }
+    else {
+      c(10, paramString, paramLong);
+    }
+    AppMethodBeat.o(80890);
+  }
+  
+  public static void bK(String paramString, long paramLong)
+  {
+    AppMethodBeat.i(198406);
+    if (bu.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(198406);
+      return;
+    }
+    if (eYb())
+    {
+      paramString = aKx(paramString);
+      if (paramString != null)
+      {
+        paramString.EBC = paramLong;
+        paramString.EBG = paramLong;
+      }
+      AppMethodBeat.o(198406);
+      return;
+    }
+    c(11, paramString, paramLong);
+    AppMethodBeat.o(198406);
+  }
+  
   private static void c(int paramInt, String paramString, long paramLong)
   {
     AppMethodBeat.i(80893);
@@ -356,10 +356,10 @@ public final class g
     AppMethodBeat.o(80893);
   }
   
-  private static boolean eUo()
+  private static boolean eYb()
   {
     AppMethodBeat.i(80892);
-    if ((aj.fkI()) || (aj.fkJ()))
+    if ((ak.foC()) || (ak.foD()))
     {
       AppMethodBeat.o(80892);
       return true;

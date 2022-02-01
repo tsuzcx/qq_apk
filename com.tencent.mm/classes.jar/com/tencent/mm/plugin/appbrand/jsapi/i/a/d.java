@@ -6,76 +6,76 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import com.tencent.mapsdk.raster.model.Marker;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class d
   extends LinearLayout
   implements h
 {
   private Context context;
-  Marker kRu;
-  private ImageView kSo;
-  double kSp;
-  double kSq;
-  double kSr;
-  double kSs;
-  float kSt;
-  float kSu;
-  private float kSv;
-  boolean kSw;
+  private ImageView kVX;
+  double kVY;
+  double kVZ;
+  Marker kVc;
+  double kWa;
+  double kWb;
+  float kWc;
+  float kWd;
+  private float kWe;
+  boolean kWf;
   
   public d(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(146555);
-    this.kSp = -1.0D;
-    this.kSq = -1.0D;
-    this.kSr = -1.0D;
-    this.kSs = -1.0D;
-    this.kSt = 900.0F;
-    this.kSu = 900.0F;
-    this.kSv = 0.0F;
+    this.kVY = -1.0D;
+    this.kVZ = -1.0D;
+    this.kWa = -1.0D;
+    this.kWb = -1.0D;
+    this.kWc = 900.0F;
+    this.kWd = 900.0F;
+    this.kWe = 0.0F;
     this.context = paramContext;
-    this.kSo = ((ImageView)View.inflate(this.context, 2131493686, this).findViewById(2131306053));
-    this.kSo.requestFocus();
+    this.kVX = ((ImageView)View.inflate(this.context, 2131493686, this).findViewById(2131306053));
+    this.kVX.requestFocus();
     AppMethodBeat.o(146555);
   }
   
   private void aA(float paramFloat)
   {
     AppMethodBeat.i(146557);
-    if (this.kRu != null)
+    if (this.kVc != null)
     {
-      ad.v("MicroMsg.AppbrandMapLocationPoint", "updateRotation rotation:%f", new Object[] { Float.valueOf(paramFloat) });
-      this.kRu.setRotation(paramFloat);
+      ae.v("MicroMsg.AppbrandMapLocationPoint", "updateRotation rotation:%f", new Object[] { Float.valueOf(paramFloat) });
+      this.kVc.setRotation(paramFloat);
     }
     AppMethodBeat.o(146557);
   }
   
   private float getHeading()
   {
-    if (this.kSw) {
-      return this.kSt;
+    if (this.kWf) {
+      return this.kWc;
     }
-    return this.kSv;
+    return this.kWe;
   }
   
   public final void H(float paramFloat1, float paramFloat2)
   {
     AppMethodBeat.i(146556);
-    this.kSv = paramFloat2;
+    this.kWe = paramFloat2;
     aA(getHeading());
     AppMethodBeat.o(146556);
   }
   
   public final double getLatitude()
   {
-    return this.kSp;
+    return this.kVY;
   }
   
   public final double getLongitude()
   {
-    return this.kSq;
+    return this.kVZ;
   }
 }
 

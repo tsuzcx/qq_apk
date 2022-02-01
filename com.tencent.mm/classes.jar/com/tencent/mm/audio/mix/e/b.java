@@ -16,13 +16,13 @@ public final class b
       if (k < paramInt1)
       {
         if (k == 0) {}
-        for (i = this.dez[k][j];; i = (int)((i + this.dez[k][j]) / Math.sqrt(2.0D)))
+        for (i = this.dfB[k][j];; i = (int)((i + this.dfB[k][j]) / Math.sqrt(2.0D)))
         {
           k += 1;
           break;
         }
       }
-      this.deC[j] = hJ(i);
+      this.dfE[j] = hL(i);
       j += 1;
     }
     byte[] arrayOfByte = cg(paramInt3, paramInt2);
@@ -32,7 +32,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.audio.mix.e.b
  * JD-Core Version:    0.7.0.1
  */

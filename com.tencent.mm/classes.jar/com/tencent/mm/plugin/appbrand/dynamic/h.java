@@ -15,7 +15,7 @@ public abstract interface h
   
   public abstract void b(String paramString, t paramt);
   
-  public abstract void bfJ();
+  public abstract void bgr();
   
   public abstract void c(String paramString, t paramt);
   
@@ -23,7 +23,7 @@ public abstract interface h
   
   public abstract void d(String paramString1, String paramString2, Bundle paramBundle);
   
-  public abstract void sn(int paramInt);
+  public abstract void sq(int paramInt);
 }
 
 

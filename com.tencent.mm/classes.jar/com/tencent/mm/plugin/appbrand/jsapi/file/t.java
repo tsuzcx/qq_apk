@@ -1,8 +1,8 @@
 package com.tencent.mm.plugin.appbrand.jsapi.file;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.appstorage.p;
-import com.tencent.mm.plugin.appbrand.appstorage.p.a;
+import com.tencent.mm.plugin.appbrand.appstorage.q;
+import com.tencent.mm.plugin.appbrand.appstorage.q.a;
 import com.tencent.mm.plugin.appbrand.jsapi.a;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
 import java.util.HashMap;
@@ -23,7 +23,7 @@ public final class t
   public final void a(final c paramc, JSONObject paramJSONObject, final int paramInt)
   {
     AppMethodBeat.i(128881);
-    e.kMv.execute(new Runnable()
+    e.kPL.execute(new Runnable()
     {
       public final void run()
       {
@@ -33,19 +33,19 @@ public final class t
           AppMethodBeat.o(128880);
           return;
         }
-        Object localObject = paramc.Fg().bbA();
+        Object localObject = paramc.Fl().bcd();
         JSONArray localJSONArray = new JSONArray();
         if ((localObject != null) && (((List)localObject).size() > 0))
         {
           localObject = ((List)localObject).iterator();
           while (((Iterator)localObject).hasNext())
           {
-            p.a locala = (p.a)((Iterator)localObject).next();
+            q.a locala = (q.a)((Iterator)localObject).next();
             try
             {
               JSONObject localJSONObject = new JSONObject();
               localJSONObject.put("filePath", locala.getFileName());
-              localJSONObject.put("size", locala.bbu());
+              localJSONObject.put("size", locala.bbW());
               localJSONObject.put("createTime", TimeUnit.MILLISECONDS.toSeconds(locala.lastModified()));
               localJSONArray.put(localJSONObject);
             }
@@ -54,21 +54,21 @@ public final class t
         }
         localObject = new HashMap(1);
         ((Map)localObject).put("fileList", localJSONArray);
-        paramc.h(paramInt, t.this.m("ok", (Map)localObject));
+        paramc.h(paramInt, t.this.n("ok", (Map)localObject));
         AppMethodBeat.o(128880);
       }
     });
     AppMethodBeat.o(128881);
   }
   
-  public final boolean bib()
+  public final boolean biK()
   {
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.file.t
  * JD-Core Version:    0.7.0.1
  */

@@ -8,14 +8,14 @@ import android.support.v4.content.b;
 import android.support.v7.widget.AppCompatImageView;
 import android.util.AttributeSet;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cc.a;
+import com.tencent.mm.cb.a;
 
 public class DownloadStateView
   extends AppCompatImageView
 {
   private int Hx;
   private Paint mPaint;
-  private int pqy = -1;
+  private int pxe = -1;
   
   public DownloadStateView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -41,7 +41,7 @@ public class DownloadStateView
     this.mPaint.setStrokeCap(Paint.Cap.ROUND);
     this.mPaint.setStrokeWidth(f1);
     paramCanvas.drawCircle(f2, f3, f4, this.mPaint);
-    this.mPaint.setColor(this.pqy);
+    this.mPaint.setColor(this.pxe);
     paramCanvas.drawArc(f2 - f4, f3 - f4, f2 + f4, f3 + f4, -90.0F, this.Hx / 100.0F * 360.0F, false, this.mPaint);
     AppMethodBeat.o(175279);
   }
@@ -56,7 +56,7 @@ public class DownloadStateView
   
   public void setProgressColor(int paramInt)
   {
-    this.pqy = paramInt;
+    this.pxe = paramInt;
   }
 }
 

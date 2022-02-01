@@ -1,11 +1,11 @@
 package com.tencent.mm.plugin.freewifi.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.protocal.protobuf.dck;
-import com.tencent.mm.protocal.protobuf.dcl;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.protocal.protobuf.dde;
+import com.tencent.mm.protocal.protobuf.ddf;
 
 public final class l
   extends c
@@ -13,25 +13,25 @@ public final class l
   public l(String paramString1, int paramInt, String paramString2)
   {
     AppMethodBeat.i(24869);
-    cRG();
-    dck localdck = (dck)this.rr.hNK.hNQ;
-    localdck.appId = paramString1;
-    localdck.tqF = paramInt;
-    localdck.dpf = paramString2;
+    cUl();
+    dde localdde = (dde)this.rr.hQD.hQJ;
+    localdde.appId = paramString1;
+    localdde.tBw = paramInt;
+    localdde.dqk = paramString2;
     AppMethodBeat.o(24869);
   }
   
-  protected final void cRG()
+  protected final void cUl()
   {
     AppMethodBeat.i(24868);
     b.a locala = new b.a();
-    locala.hNM = new dck();
-    locala.hNN = new dcl();
+    locala.hQF = new dde();
+    locala.hQG = new ddf();
     locala.uri = "/cgi-bin/mmo2o-bin/setpcloginuserInfo";
     locala.funcId = 1761;
-    locala.hNO = 0;
+    locala.hQH = 0;
     locala.respCmdId = 0;
-    this.rr = locala.aDC();
+    this.rr = locala.aDS();
     AppMethodBeat.o(24868);
   }
   

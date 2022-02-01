@@ -8,53 +8,53 @@ import com.tencent.mm.ui.component.UIComponent;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/viewmodel/component/FinderFeedFriendLikeDrawerUIC;", "Lcom/tencent/mm/ui/component/UIComponent;", "activity", "Lcom/tencent/mm/ui/MMActivity;", "(Lcom/tencent/mm/ui/MMActivity;)V", "drawer", "Lcom/tencent/mm/plugin/finder/view/FinderLikeDrawer;", "getDrawer", "()Lcom/tencent/mm/plugin/finder/view/FinderLikeDrawer;", "setDrawer", "(Lcom/tencent/mm/plugin/finder/view/FinderLikeDrawer;)V", "onBackPressed", "", "onCreate", "", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onPause", "onResume", "Companion", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/viewmodel/component/FinderFeedFriendLikeDrawerUIC;", "Lcom/tencent/mm/ui/component/UIComponent;", "activity", "Lcom/tencent/mm/ui/MMActivity;", "(Lcom/tencent/mm/ui/MMActivity;)V", "drawer", "Lcom/tencent/mm/plugin/finder/view/FinderLikeDrawer;", "getDrawer", "()Lcom/tencent/mm/plugin/finder/view/FinderLikeDrawer;", "setDrawer", "(Lcom/tencent/mm/plugin/finder/view/FinderLikeDrawer;)V", "onBackPressed", "", "onCreate", "", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onPause", "onResume", "Companion", "plugin-finder_release"})
 public final class FinderFeedFriendLikeDrawerUIC
   extends UIComponent
 {
-  public static final a tbx;
-  private FinderLikeDrawer tbw;
+  public static final FinderFeedFriendLikeDrawerUIC.a tmm;
+  private FinderLikeDrawer tml;
   
   static
   {
-    AppMethodBeat.i(205547);
-    tbx = new a((byte)0);
-    AppMethodBeat.o(205547);
+    AppMethodBeat.i(206157);
+    tmm = new FinderFeedFriendLikeDrawerUIC.a((byte)0);
+    AppMethodBeat.o(206157);
   }
   
   public FinderFeedFriendLikeDrawerUIC(MMActivity paramMMActivity)
   {
     super(paramMMActivity);
-    AppMethodBeat.i(205546);
-    AppMethodBeat.o(205546);
+    AppMethodBeat.i(206156);
+    AppMethodBeat.o(206156);
   }
   
   public final boolean onBackPressed()
   {
-    AppMethodBeat.i(205543);
-    if (this.tbw == null) {
-      this.tbw = ((FinderLikeDrawer)getActivity().findViewById(2131307397));
+    AppMethodBeat.i(206153);
+    if (this.tml == null) {
+      this.tml = ((FinderLikeDrawer)getActivity().findViewById(2131307397));
     }
-    if (this.tbw == null)
+    if (this.tml == null)
     {
-      AppMethodBeat.o(205543);
+      AppMethodBeat.o(206153);
       return false;
     }
-    FinderLikeDrawer localFinderLikeDrawer = this.tbw;
+    FinderLikeDrawer localFinderLikeDrawer = this.tml;
     if (localFinderLikeDrawer == null) {
-      p.gfZ();
+      p.gkB();
     }
-    if (localFinderLikeDrawer.cMZ())
+    if (localFinderLikeDrawer.cPI())
     {
-      localFinderLikeDrawer = this.tbw;
+      localFinderLikeDrawer = this.tml;
       if (localFinderLikeDrawer == null) {
-        p.gfZ();
+        p.gkB();
       }
-      localFinderLikeDrawer.cMY();
-      AppMethodBeat.o(205543);
+      localFinderLikeDrawer.cPH();
+      AppMethodBeat.o(206153);
       return true;
     }
-    AppMethodBeat.o(205543);
+    AppMethodBeat.o(206153);
     return false;
   }
   
@@ -64,24 +64,21 @@ public final class FinderFeedFriendLikeDrawerUIC
   
   public final void onPause()
   {
-    AppMethodBeat.i(205545);
+    AppMethodBeat.i(206155);
     super.onPause();
-    AppMethodBeat.o(205545);
+    AppMethodBeat.o(206155);
   }
   
   public final void onResume()
   {
-    AppMethodBeat.i(205544);
+    AppMethodBeat.i(206154);
     super.onResume();
-    AppMethodBeat.o(205544);
+    AppMethodBeat.o(206154);
   }
-  
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/viewmodel/component/FinderFeedFriendLikeDrawerUIC$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
-  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.viewmodel.component.FinderFeedFriendLikeDrawerUIC
  * JD-Core Version:    0.7.0.1
  */

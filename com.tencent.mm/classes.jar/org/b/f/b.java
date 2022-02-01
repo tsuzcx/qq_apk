@@ -2,9 +2,9 @@ package org.b.f;
 
 public abstract interface b
 {
-  public abstract String bt(String paramString1, String paramString2, String paramString3);
+  public abstract String bv(String paramString1, String paramString2, String paramString3);
   
-  public abstract String gyH();
+  public abstract String gDj();
 }
 
 

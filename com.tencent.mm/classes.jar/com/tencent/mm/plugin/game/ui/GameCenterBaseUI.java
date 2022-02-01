@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bs.d;
+import com.tencent.mm.br.d;
 import com.tencent.mm.game.report.f;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.game.api.e;
@@ -13,28 +13,28 @@ import com.tencent.mm.plugin.game.f.a.a;
 import com.tencent.mm.plugin.game.f.c;
 import com.tencent.mm.plugin.game.model.o;
 import com.tencent.mm.plugin.game.model.r;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aq;
 
 public abstract class GameCenterBaseUI
   extends GameCenterActivity
 {
   private boolean isFirst = true;
-  protected int udq = 0;
-  protected boolean ulU = false;
-  protected o ulV;
-  protected o ulW;
-  protected o ulX;
-  protected boolean ulY = false;
+  protected int uoy = 0;
+  protected boolean uxr = false;
+  protected o uxs;
+  protected o uxt;
+  protected o uxu;
+  protected boolean uxv = false;
   
-  public final int cZQ()
+  public final int dcB()
   {
     return 1000;
   }
   
-  public final int cZR()
+  public final int dcC()
   {
-    return this.udq;
+    return this.uoy;
   }
   
   public final int getScene()
@@ -45,44 +45,44 @@ public abstract class GameCenterBaseUI
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    if (!g.ajx())
+    if (!g.ajM())
     {
-      ad.e("MicroMsg.GameCenterBaseUI", "account not ready");
+      ae.e("MicroMsg.GameCenterBaseUI", "account not ready");
       finish();
       return;
     }
-    this.udq = getIntent().getIntExtra("game_report_from_scene", 0);
-    this.ulU = getIntent().getBooleanExtra("from_find_more_friend", false);
-    c.bZb().postToWorker(new Runnable()
+    this.uoy = getIntent().getIntExtra("game_report_from_scene", 0);
+    this.uxr = getIntent().getBooleanExtra("from_find_more_friend", false);
+    c.caq().postToWorker(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(41926);
         GameCenterBaseUI.a(GameCenterBaseUI.this);
-        if (GameCenterBaseUI.this.ulU)
+        if (GameCenterBaseUI.this.uxr)
         {
           GameCenterBaseUI.b(GameCenterBaseUI.this);
-          ((e)g.ab(e.class)).cWG();
-          r.cZa();
+          ((e)g.ab(e.class)).cZk();
+          r.dbK();
         }
         AppMethodBeat.o(41926);
       }
     });
-    f.a(this, 10, 1000, 0, 1, 0, null, this.udq, 0, null, null, null);
+    f.a(this, 10, 1000, 0, 1, 0, null, this.uoy, 0, null, null, null);
   }
   
   public void onResume()
   {
     super.onResume();
-    if (!g.ajx())
+    if (!g.ajM())
     {
-      ad.e("MicroMsg.GameCenterBaseUI", "account not ready");
+      ae.e("MicroMsg.GameCenterBaseUI", "account not ready");
       return;
     }
-    if ((!this.isFirst) && (a.a.das().uvm))
+    if ((!this.isFirst) && (a.a.dde().uGL))
     {
-      a.a.das().uvm = false;
-      ad.i("MicroMsg.GameCenterBaseUI", "restart page from country setting");
+      a.a.dde().uGL = false;
+      ae.i("MicroMsg.GameCenterBaseUI", "restart page from country setting");
       if (!isFinishing()) {
         finish();
       }
@@ -103,7 +103,7 @@ public abstract class GameCenterBaseUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.GameCenterBaseUI
  * JD-Core Version:    0.7.0.1
  */

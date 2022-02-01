@@ -7,9 +7,9 @@ abstract class c
 {
   private boolean bWL;
   
-  abstract void Ac();
-  
   abstract void Ad();
+  
+  abstract void Ae();
   
   void a(Handler paramHandler, d.a parama)
   {
@@ -44,12 +44,12 @@ abstract class c
     //   17: getfield 17	com/d/a/a/c:bWL	Z
     //   20: ifeq +10 -> 30
     //   23: aload_0
-    //   24: invokevirtual 23	com/d/a/a/c:Ac	()V
+    //   24: invokevirtual 23	com/d/a/a/c:Ad	()V
     //   27: aload_0
     //   28: monitorexit
     //   29: return
     //   30: aload_0
-    //   31: invokevirtual 25	com/d/a/a/c:Ad	()V
+    //   31: invokevirtual 25	com/d/a/a/c:Ae	()V
     //   34: goto -7 -> 27
     //   37: astore_2
     //   38: aload_0
@@ -69,7 +69,7 @@ abstract class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.d.a.a.c
  * JD-Core Version:    0.7.0.1
  */

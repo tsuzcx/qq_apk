@@ -6,29 +6,29 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class a
 {
   private byte[] mData = null;
-  private int nPU = 20;
-  private int nPV = 0;
-  private int nPW = 0;
-  BluetoothGattCharacteristic nPX = null;
+  private int nVA = 20;
+  private int nVB = 0;
+  private int nVC = 0;
+  BluetoothGattCharacteristic nVD = null;
   
-  public final byte[] bME()
+  public final byte[] bNC()
   {
     AppMethodBeat.i(22473);
-    int i = this.nPW - this.nPV;
+    int i = this.nVC - this.nVB;
     if (i == 0)
     {
       AppMethodBeat.o(22473);
       return null;
     }
-    if (i < this.nPU) {}
+    if (i < this.nVA) {}
     for (;;)
     {
       byte[] arrayOfByte = new byte[i];
-      System.arraycopy(this.mData, this.nPV, arrayOfByte, 0, i);
-      this.nPV = (i + this.nPV);
+      System.arraycopy(this.mData, this.nVB, arrayOfByte, 0, i);
+      this.nVB = (i + this.nVB);
       AppMethodBeat.o(22473);
       return arrayOfByte;
-      i = this.nPU;
+      i = this.nVA;
     }
   }
   
@@ -38,15 +38,15 @@ public final class a
     if (paramArrayOfByte == null)
     {
       this.mData = null;
-      this.nPW = 0;
-      this.nPV = 0;
+      this.nVC = 0;
+      this.nVB = 0;
       AppMethodBeat.o(22472);
       return;
     }
     this.mData = new byte[paramArrayOfByte.length];
     System.arraycopy(paramArrayOfByte, 0, this.mData, 0, paramArrayOfByte.length);
-    this.nPW = paramArrayOfByte.length;
-    this.nPV = 0;
+    this.nVC = paramArrayOfByte.length;
+    this.nVB = 0;
     AppMethodBeat.o(22472);
   }
 }

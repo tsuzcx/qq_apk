@@ -13,12 +13,12 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.modelsimple.x;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.modelsimple.y;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.widget.MMEditText.c;
@@ -27,9 +27,9 @@ public class ShareToQQWeiboUI
   extends MMActivity
   implements f
 {
-  private ProgressDialog fMu = null;
-  private EditText mlU;
-  private TextView yDL;
+  private ProgressDialog fOC = null;
+  private EditText mqR;
+  private TextView yTQ;
   
   public int getLayoutId()
   {
@@ -40,13 +40,13 @@ public class ShareToQQWeiboUI
   {
     AppMethodBeat.i(82053);
     setMMTitle(2131763651);
-    this.mlU = ((EditText)findViewById(2131298739));
-    this.yDL = ((TextView)findViewById(2131307005));
+    this.mqR = ((EditText)findViewById(2131298739));
+    this.yTQ = ((TextView)findViewById(2131307005));
     String str1 = getIntent().getStringExtra("content");
     String str2 = getIntent().getStringExtra("shortUrl");
-    this.mlU.addTextChangedListener(new MMEditText.c(this.mlU, this.yDL, 280));
+    this.mqR.addTextChangedListener(new MMEditText.c(this.mqR, this.yTQ, 280));
     if (str1.contains(str2)) {
-      this.mlU.setText(str1.trim());
+      this.mqR.setText(str1.trim());
     }
     for (;;)
     {
@@ -66,8 +66,8 @@ public class ShareToQQWeiboUI
         public final boolean onMenuItemClick(final MenuItem paramAnonymousMenuItem)
         {
           AppMethodBeat.i(82050);
-          paramAnonymousMenuItem = new x(ShareToQQWeiboUI.this.getIntent().getIntExtra("type", 0), ShareToQQWeiboUI.this.getIntent().getStringExtra("shortUrl"), ShareToQQWeiboUI.a(ShareToQQWeiboUI.this).getText().toString());
-          g.aiU().a(paramAnonymousMenuItem, 0);
+          paramAnonymousMenuItem = new y(ShareToQQWeiboUI.this.getIntent().getIntExtra("type", 0), ShareToQQWeiboUI.this.getIntent().getStringExtra("shortUrl"), ShareToQQWeiboUI.a(ShareToQQWeiboUI.this).getText().toString());
+          g.ajj().a(paramAnonymousMenuItem, 0);
           ShareToQQWeiboUI localShareToQQWeiboUI = ShareToQQWeiboUI.this;
           AppCompatActivity localAppCompatActivity = ShareToQQWeiboUI.this.getContext();
           ShareToQQWeiboUI.this.getString(2131755906);
@@ -76,7 +76,7 @@ public class ShareToQQWeiboUI
             public final void onCancel(DialogInterface paramAnonymous2DialogInterface)
             {
               AppMethodBeat.i(82049);
-              g.aiU().a(paramAnonymousMenuItem);
+              g.ajj().a(paramAnonymousMenuItem);
               AppMethodBeat.o(82049);
             }
           }));
@@ -86,7 +86,7 @@ public class ShareToQQWeiboUI
       });
       AppMethodBeat.o(82053);
       return;
-      this.mlU.setText(str1 + " " + str2);
+      this.mqR.setText(str1 + " " + str2);
     }
   }
   
@@ -94,7 +94,7 @@ public class ShareToQQWeiboUI
   {
     AppMethodBeat.i(82051);
     super.onCreate(paramBundle);
-    g.aiU().a(26, this);
+    g.ajj().a(26, this);
     initView();
     AppMethodBeat.o(82051);
   }
@@ -102,7 +102,7 @@ public class ShareToQQWeiboUI
   public void onDestroy()
   {
     AppMethodBeat.i(82052);
-    g.aiU().b(26, this);
+    g.ajj().b(26, this);
     super.onDestroy();
     AppMethodBeat.o(82052);
   }
@@ -110,16 +110,16 @@ public class ShareToQQWeiboUI
   public void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     AppMethodBeat.i(82054);
-    ad.i("MicroMsg.ShareToQQWeiboUI", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString);
+    ae.i("MicroMsg.ShareToQQWeiboUI", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString);
     if (paramn.getType() != 26)
     {
       AppMethodBeat.o(82054);
       return;
     }
-    if (this.fMu != null)
+    if (this.fOC != null)
     {
-      this.fMu.dismiss();
-      this.fMu = null;
+      this.fOC.dismiss();
+      this.fOC = null;
     }
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {

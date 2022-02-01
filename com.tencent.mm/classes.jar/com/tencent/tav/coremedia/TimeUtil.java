@@ -13,13 +13,13 @@ public class TimeUtil
   
   public static boolean equals(long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(219470);
+    AppMethodBeat.i(200263);
     if (Math.abs(paramLong1 - paramLong2) < 10000L)
     {
-      AppMethodBeat.o(219470);
+      AppMethodBeat.o(200263);
       return true;
     }
-    AppMethodBeat.o(219470);
+    AppMethodBeat.o(200263);
     return false;
   }
   
@@ -30,13 +30,13 @@ public class TimeUtil
   
   public static String long2str(long paramLong, String paramString)
   {
-    AppMethodBeat.i(219473);
+    AppMethodBeat.i(200266);
     String str = paramString;
     if (paramString == null) {
       str = "yyyy-M-d  HH:mm";
     }
     paramString = new SimpleDateFormat(str, Locale.getDefault()).format(new Date(paramLong));
-    AppMethodBeat.o(219473);
+    AppMethodBeat.o(200266);
     return paramString;
   }
   
@@ -52,10 +52,10 @@ public class TimeUtil
   
   public static String milliToSecond(long paramLong)
   {
-    AppMethodBeat.i(219471);
+    AppMethodBeat.i(200264);
     float f = Math.round(milli2Second(paramLong) * 10.0F) / 10.0F;
     String str = String.format(Locale.CHINA, "%1$.1f", new Object[] { Float.valueOf(f) });
-    AppMethodBeat.o(219471);
+    AppMethodBeat.o(200264);
     return str;
   }
   
@@ -66,7 +66,7 @@ public class TimeUtil
   
   public static String second2String(int paramInt)
   {
-    AppMethodBeat.i(219472);
+    AppMethodBeat.i(200265);
     Object localObject = new StringBuilder();
     int i = paramInt / 60;
     if (i > 0) {
@@ -79,7 +79,7 @@ public class TimeUtil
     for (;;)
     {
       localObject = ((StringBuilder)localObject).toString();
-      AppMethodBeat.o(219472);
+      AppMethodBeat.o(200265);
       return localObject;
       if (paramInt >= 0) {
         ((StringBuilder)localObject).append("0" + paramInt + "\"");
@@ -94,9 +94,9 @@ public class TimeUtil
   
   public static CMTime us2CMTime(long paramLong)
   {
-    AppMethodBeat.i(219474);
+    AppMethodBeat.i(200267);
     CMTime localCMTime = new CMTime((us2Second(paramLong) * 600.0F));
-    AppMethodBeat.o(219474);
+    AppMethodBeat.o(200267);
     return localCMTime;
   }
   
@@ -112,10 +112,10 @@ public class TimeUtil
   
   public static String usToSecond(long paramLong)
   {
-    AppMethodBeat.i(219469);
+    AppMethodBeat.i(200262);
     float f = Math.round(us2Second(paramLong) * 10.0F) / 10.0F;
     String str = String.format(Locale.CHINA, "%1$.1f", new Object[] { Float.valueOf(f) });
-    AppMethodBeat.o(219469);
+    AppMethodBeat.o(200262);
     return str;
   }
 }

@@ -1,76 +1,18 @@
 package com.tencent.mm.plugin.appbrand.permission;
 
-import android.support.v4.app.a.a;
-import android.text.TextUtils;
+import android.annotation.SuppressLint;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.z.h;
-import com.tencent.mm.sdk.platformtools.ad;
-import java.util.Collection;
-import java.util.Iterator;
+import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
 
 public final class p
+  extends d
 {
-  private static final h<String, a.a> mio;
-  
-  static
+  @SuppressLint({"WrongConstant"})
+  public p(AppBrandRuntime paramAppBrandRuntime)
   {
-    AppMethodBeat.i(140777);
-    mio = new h();
-    AppMethodBeat.o(140777);
-  }
-  
-  public static void TS(String paramString)
-  {
-    AppMethodBeat.i(140775);
-    if (TextUtils.isEmpty(paramString))
-    {
-      ad.e("Luggage.RequestPermissionRegistry", "removeCallbacks fail, invalid arguments");
-      AppMethodBeat.o(140775);
-      return;
-    }
-    mio.cF(paramString);
-    AppMethodBeat.o(140775);
-  }
-  
-  public static void a(String paramString, int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    AppMethodBeat.i(140776);
-    if ((paramString == null) || (paramString.length() == 0))
-    {
-      ad.e("Luggage.RequestPermissionRegistry", "removeCallback fail, invalid id");
-      AppMethodBeat.o(140776);
-      return;
-    }
-    paramString = mio.cE(paramString);
-    if (paramString != null)
-    {
-      paramString = paramString.iterator();
-      while (paramString.hasNext()) {
-        ((a.a)paramString.next()).onRequestPermissionsResult(paramInt, paramArrayOfString, paramArrayOfInt);
-      }
-    }
-    AppMethodBeat.o(140776);
-  }
-  
-  public static void a(String paramString, a.a parama)
-  {
-    AppMethodBeat.i(140773);
-    if ((TextUtils.isEmpty(paramString)) || (parama == null))
-    {
-      ad.e("Luggage.RequestPermissionRegistry", "addCallback fail, invalid arguments");
-      AppMethodBeat.o(140773);
-      return;
-    }
-    mio.j(paramString, parama);
-    AppMethodBeat.o(140773);
-  }
-  
-  @Deprecated
-  public static void b(String paramString, a.a parama)
-  {
-    AppMethodBeat.i(140774);
-    a(paramString, parama);
-    AppMethodBeat.o(140774);
+    super(paramAppBrandRuntime, i, bool);
+    AppMethodBeat.i(47998);
+    AppMethodBeat.o(47998);
   }
 }
 

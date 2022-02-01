@@ -6,25 +6,25 @@ import android.view.View;
 import com.tencent.mm.g.c.ei;
 import com.tencent.mm.plugin.choosemsgfile.b.c.g;
 import com.tencent.mm.plugin.choosemsgfile.ui.c;
-import com.tencent.mm.storage.bu;
+import com.tencent.mm.storage.bv;
 
 public abstract class a<T extends RecyclerView.w>
 {
   protected int apW;
   protected int fq;
-  public bu oRU;
-  g oSd;
-  protected int oSe = 0;
+  g oYF;
+  protected int oYG = 0;
+  public bv oYw;
   
   public a(g paramg)
   {
-    this.oSd = paramg;
+    this.oYF = paramg;
   }
   
-  public a(g paramg, bu parambu)
+  public a(g paramg, bv parambv)
   {
-    this.oSd = paramg;
-    this.oRU = parambu;
+    this.oYF = paramg;
+    this.oYw = parambv;
   }
   
   public void T(T paramT) {}
@@ -35,29 +35,29 @@ public abstract class a<T extends RecyclerView.w>
   
   public final void a(boolean paramBoolean, a parama, T paramT)
   {
-    this.oSd.a(paramBoolean, parama, paramT);
+    this.oYF.a(paramBoolean, parama, paramT);
   }
   
-  protected final com.tencent.mm.plugin.choosemsgfile.b.d.a bZm()
+  protected final com.tencent.mm.plugin.choosemsgfile.b.d.a caB()
   {
-    return this.oSd.bZx().bZm();
+    return this.oYF.caM().caB();
   }
   
-  public String bZn()
+  public String caC()
   {
     return "";
   }
   
-  public int bZo()
+  public int caD()
   {
     return 0;
   }
   
-  public final void bZp()
+  public final void caE()
   {
     try
     {
-      this.oSe = 1;
+      this.oYG = 1;
       return;
     }
     finally
@@ -67,11 +67,11 @@ public abstract class a<T extends RecyclerView.w>
     }
   }
   
-  public final void bZq()
+  public final void caF()
   {
     try
     {
-      this.oSe = 3;
+      this.oYG = 3;
       return;
     }
     finally
@@ -81,11 +81,11 @@ public abstract class a<T extends RecyclerView.w>
     }
   }
   
-  public final void bZr()
+  public final void caG()
   {
     try
     {
-      this.oSe = 4;
+      this.oYG = 4;
       return;
     }
     finally
@@ -95,11 +95,11 @@ public abstract class a<T extends RecyclerView.w>
     }
   }
   
-  public final void bZs()
+  public final void caH()
   {
     try
     {
-      this.oSe = 5;
+      this.oYG = 5;
       return;
     }
     finally
@@ -109,11 +109,11 @@ public abstract class a<T extends RecyclerView.w>
     }
   }
   
-  public final void bZt()
+  public final void caI()
   {
     try
     {
-      this.oSe = 0;
+      this.oYG = 0;
       return;
     }
     finally
@@ -123,11 +123,11 @@ public abstract class a<T extends RecyclerView.w>
     }
   }
   
-  public final void eY(int paramInt1, int paramInt2)
+  public final void eZ(int paramInt1, int paramInt2)
   {
     try
     {
-      this.oSe = 2;
+      this.oYG = 2;
       this.fq = paramInt1;
       this.apW = paramInt2;
       return;
@@ -141,15 +141,15 @@ public abstract class a<T extends RecyclerView.w>
   
   public boolean equals(Object paramObject)
   {
-    if ((this.oRU != null) && ((paramObject instanceof bu)) && (paramObject != null)) {
-      return this.oRU.field_msgId == ((bu)paramObject).field_msgId;
+    if ((this.oYw != null) && ((paramObject instanceof bv)) && (paramObject != null)) {
+      return this.oYw.field_msgId == ((bv)paramObject).field_msgId;
     }
     return super.equals(paramObject);
   }
   
   protected final Context getContext()
   {
-    return this.oSd.bZx().getContext();
+    return this.oYF.caM().getContext();
   }
   
   public String getFileName()
@@ -159,24 +159,24 @@ public abstract class a<T extends RecyclerView.w>
   
   public long getTimeStamp()
   {
-    return this.oRU.field_createTime;
+    return this.oYw.field_createTime;
   }
   
   public abstract int getType();
   
   public final boolean isEnable()
   {
-    return (!this.oSd.bZx().bZm().isInvalid()) || (this.oSd.bZx().bZm().tC(this.oRU.field_msgId));
+    return (!this.oYF.caM().caB().isInvalid()) || (this.oYF.caM().caB().tT(this.oYw.field_msgId));
   }
   
   public final boolean isInvalid()
   {
-    return (this.oSe == 4) || (this.oSe == 5);
+    return (this.oYG == 4) || (this.oYG == 5);
   }
   
   public String toString()
   {
-    return "MsgItem{msgInfo=" + this.oRU.field_msgId + '}';
+    return "MsgItem{msgInfo=" + this.oYw.field_msgId + '}';
   }
 }
 

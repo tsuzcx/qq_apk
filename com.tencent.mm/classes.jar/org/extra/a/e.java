@@ -7,59 +7,59 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 final class e
   implements c.b
 {
-  public final void bdV(String paramString)
+  public final String bfA(String paramString)
   {
-    AppMethodBeat.i(220066);
-    System.load(paramString);
-    AppMethodBeat.o(220066);
-  }
-  
-  public final String bdW(String paramString)
-  {
-    AppMethodBeat.i(220068);
+    AppMethodBeat.i(216822);
     paramString = paramString.substring(3, paramString.length() - 3);
-    AppMethodBeat.o(220068);
+    AppMethodBeat.o(216822);
     return paramString;
   }
   
-  public final String[] gyl()
+  public final void bfz(String paramString)
   {
-    AppMethodBeat.i(220069);
+    AppMethodBeat.i(216820);
+    System.load(paramString);
+    AppMethodBeat.o(216820);
+  }
+  
+  public final String[] gCN()
+  {
+    AppMethodBeat.i(216823);
     if ((Build.VERSION.SDK_INT >= 21) && (Build.SUPPORTED_ABIS.length > 0))
     {
       localObject = Build.SUPPORTED_ABIS;
-      AppMethodBeat.o(220069);
+      AppMethodBeat.o(216823);
       return localObject;
     }
     if (!f.isEmpty(Build.CPU_ABI2))
     {
       localObject = Build.CPU_ABI;
       String str = Build.CPU_ABI2;
-      AppMethodBeat.o(220069);
+      AppMethodBeat.o(216823);
       return new String[] { localObject, str };
     }
     Object localObject = Build.CPU_ABI;
-    AppMethodBeat.o(220069);
+    AppMethodBeat.o(216823);
     return new String[] { localObject };
   }
   
   public final void loadLibrary(String paramString)
   {
-    AppMethodBeat.i(220065);
+    AppMethodBeat.i(216819);
     System.loadLibrary(paramString);
-    AppMethodBeat.o(220065);
+    AppMethodBeat.o(216819);
   }
   
   public final String mapLibraryName(String paramString)
   {
-    AppMethodBeat.i(220067);
+    AppMethodBeat.i(216821);
     if ((paramString.startsWith("lib")) && (paramString.endsWith(".so")))
     {
-      AppMethodBeat.o(220067);
+      AppMethodBeat.o(216821);
       return paramString;
     }
     paramString = System.mapLibraryName(paramString);
-    AppMethodBeat.o(220067);
+    AppMethodBeat.o(216821);
     return paramString;
   }
 }

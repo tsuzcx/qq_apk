@@ -2,7 +2,7 @@ package com.tencent.mm.emoji.a;
 
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/emoji/model/EggListParser$Companion;", "", "()V", "TYPE_AD_EGG", "", "TYPE_NORMAL_EGG", "plugin-emojisdk_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/emoji/model/EggListParser$Companion;", "", "()V", "TYPE_AD_EGG", "", "TYPE_NORMAL_EGG", "plugin-emojisdk_release"})
 public final class h$a {}
 
 

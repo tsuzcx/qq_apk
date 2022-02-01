@@ -2,16 +2,16 @@ package com.tencent.mm.plugin.lite.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.appbrand.service.o;
+import com.tencent.mm.plugin.appbrand.service.p;
 import com.tencent.mm.plugin.lite.jsapi.a.a;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
 import org.json.JSONObject;
 
 public class a
   extends com.tencent.mm.plugin.lite.jsapi.a
 {
-  public final int cXg()
+  public final int cZP()
   {
     return 1;
   }
@@ -19,27 +19,27 @@ public class a
   public final void j(String paramString, JSONObject paramJSONObject)
   {
     int j = 1;
-    AppMethodBeat.i(217169);
+    AppMethodBeat.i(217779);
     String str2 = paramJSONObject.optString("targetAppId");
     String str3 = paramJSONObject.optString("currentUrl");
     String str1 = paramJSONObject.optString("preVerifyAppId");
     paramString = str1;
-    if (bt.isNullOrNil(str1)) {
+    if (bu.isNullOrNil(str1)) {
       paramString = paramJSONObject.optString("referrerAppId");
     }
-    if (bt.isNullOrNil(str2))
+    if (bu.isNullOrNil(str2))
     {
-      this.uYz.YL("invalid_targetAppId");
-      AppMethodBeat.o(217169);
+      this.vko.ZC("invalid_targetAppId");
+      AppMethodBeat.o(217779);
       return;
     }
-    if (bt.isNullOrNil(paramString))
+    if (bu.isNullOrNil(paramString))
     {
-      this.uYz.YL("invalid_referrerAppId");
-      AppMethodBeat.o(217169);
+      this.vko.ZC("invalid_referrerAppId");
+      AppMethodBeat.o(217779);
       return;
     }
-    str1 = bt.nullAsNil(paramJSONObject.optString("envVersion"));
+    str1 = bu.nullAsNil(paramJSONObject.optString("envVersion"));
     int i = -1;
     switch (str1.hashCode())
     {
@@ -52,9 +52,9 @@ public class a
     for (j = 0;; j = 2)
     {
       paramJSONObject = paramJSONObject.optString("path");
-      ((o)g.ab(o.class)).b(aj.getContext(), str3, paramString, str2, j, paramJSONObject, 0);
-      this.uYz.cXe();
-      AppMethodBeat.o(217169);
+      ((p)g.ab(p.class)).b(ak.getContext(), str3, paramString, str2, j, paramJSONObject, 0);
+      this.vko.cZN();
+      AppMethodBeat.o(217779);
       return;
       if (!str1.equals("develop")) {
         break;

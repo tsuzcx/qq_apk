@@ -2,7 +2,7 @@ package com.tencent.mm.msgsubscription.ui;
 
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/msgsubscription/ui/SubscribeMsgRequestProxyUI$Companion;", "", "()V", "TAG", "", "plugin-comm_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/msgsubscription/ui/SubscribeMsgRequestProxyUI$Companion;", "", "()V", "TAG", "", "plugin-comm_release"})
 public final class SubscribeMsgRequestProxyUI$a {}
 
 

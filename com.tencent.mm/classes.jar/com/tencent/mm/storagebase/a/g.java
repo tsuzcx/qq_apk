@@ -6,74 +6,74 @@ import java.util.ArrayList;
 
 public abstract class g<K, T extends a>
 {
-  public d IPF;
+  public d Jkn;
   
   public g(d paramd, int paramInt)
   {
-    this.IPF = paramd;
-    this.IPF.wS(true);
-    this.IPF.a(new f.a()
+    this.Jkn = paramd;
+    this.Jkn.xa(true);
+    this.Jkn.a(new f.a()
     {
-      public final ArrayList<a> aV(ArrayList<Object> paramAnonymousArrayList)
+      public final ArrayList<a> aW(ArrayList<Object> paramAnonymousArrayList)
       {
         AppMethodBeat.i(133504);
-        paramAnonymousArrayList = g.this.aV(paramAnonymousArrayList);
+        paramAnonymousArrayList = g.this.aW(paramAnonymousArrayList);
         AppMethodBeat.o(133504);
         return paramAnonymousArrayList;
       }
       
-      public final a ftV()
+      public final a fxW()
       {
         AppMethodBeat.i(133503);
-        a locala = g.this.ftX();
+        a locala = g.this.fxY();
         AppMethodBeat.o(133503);
         return locala;
       }
     });
     if (paramInt != 0) {
-      this.IPF.abk(paramInt);
+      this.Jkn.abS(paramInt);
     }
     getCount();
   }
   
-  public abstract ArrayList<T> aV(ArrayList<Object> paramArrayList);
+  public abstract ArrayList<T> aW(ArrayList<Object> paramArrayList);
   
   public final void c(Object paramObject, T paramT)
   {
-    this.IPF.a(paramObject, paramT);
+    this.Jkn.a(paramObject, paramT);
   }
   
   public final void close()
   {
-    this.IPF.close();
-    this.IPF = null;
+    this.Jkn.close();
+    this.Jkn = null;
   }
   
-  public final boolean dX(Object paramObject)
+  public final boolean dY(Object paramObject)
   {
-    return this.IPF.dX(paramObject);
+    return this.Jkn.dY(paramObject);
   }
   
-  public final SparseArray<K>[] ftH()
+  public final SparseArray<K>[] fxI()
   {
-    return this.IPF.ftH();
+    return this.Jkn.fxI();
   }
   
-  public final boolean ftJ()
+  public final boolean fxK()
   {
-    return this.IPF.ftJ();
+    return this.Jkn.fxK();
   }
   
-  public abstract T ftX();
+  public abstract T fxY();
   
   public final int getCount()
   {
-    return this.IPF.getCount();
+    return this.Jkn.getCount();
   }
   
   public final boolean isClosed()
   {
-    return this.IPF.isClosed();
+    return this.Jkn.isClosed();
   }
 }
 

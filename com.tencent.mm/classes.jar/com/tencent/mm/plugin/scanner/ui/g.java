@@ -13,17 +13,17 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.q;
-import com.tencent.mm.bs.d;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.br.d;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.platformtools.u;
 import com.tencent.mm.platformtools.u.a;
 import com.tencent.mm.plugin.scanner.model.a.a;
-import com.tencent.mm.plugin.scanner.model.m;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.plugin.scanner.model.n;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.base.preference.Preference;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -36,7 +36,7 @@ public final class g
 {
   private Context mContext;
   private View mView;
-  List<a.a> wNb;
+  List<a.a> xcP;
   
   public g(Context paramContext)
   {
@@ -44,7 +44,7 @@ public final class g
     AppMethodBeat.i(51840);
     this.mView = null;
     this.mContext = null;
-    this.wNb = null;
+    this.xcP = null;
     this.mContext = paramContext;
     setLayoutResource(2131495116);
     AppMethodBeat.o(51840);
@@ -69,8 +69,8 @@ public final class g
     paramView = (GridView)this.mView.findViewById(2131301987);
     b localb = new b();
     paramView.setAdapter(localb);
-    if (this.wNb != null) {
-      localb.fx(this.wNb);
+    if (this.xcP != null) {
+      localb.fF(this.xcP);
     }
     AppMethodBeat.o(51842);
   }
@@ -80,28 +80,28 @@ public final class g
     implements u.a
   {
     private LayoutInflater mInflater;
-    private Map<String, WeakReference<ImageView>> yrc;
-    private int yrf;
-    private List<a.a> yrg;
+    private Map<String, WeakReference<ImageView>> yHc;
+    private int yHf;
+    private List<a.a> yHg;
     
     public b()
     {
       AppMethodBeat.i(51834);
-      this.yrg = new ArrayList();
-      this.yrc = new HashMap();
+      this.yHg = new ArrayList();
+      this.yHc = new HashMap();
       this.mInflater = null;
       this.mInflater = LayoutInflater.from(g.a(g.this));
       u.a(this);
-      this.yrf = g.a(g.this).getResources().getColor(2131100481);
+      this.yHf = g.a(g.this).getResources().getColor(2131100481);
       AppMethodBeat.o(51834);
     }
     
-    public final void fx(List<a.a> paramList)
+    public final void fF(List<a.a> paramList)
     {
       AppMethodBeat.i(51835);
-      this.yrc.clear();
-      this.yrg.clear();
-      this.yrg = paramList;
+      this.yHc.clear();
+      this.yHg.clear();
+      this.yHg = paramList;
       notifyDataSetChanged();
       AppMethodBeat.o(51835);
     }
@@ -109,7 +109,7 @@ public final class g
     public final int getCount()
     {
       AppMethodBeat.i(51836);
-      int i = this.yrg.size();
+      int i = this.yHg.size();
       AppMethodBeat.o(51836);
       return i;
     }
@@ -117,7 +117,7 @@ public final class g
     public final Object getItem(int paramInt)
     {
       AppMethodBeat.i(51837);
-      Object localObject = this.yrg.get(paramInt);
+      Object localObject = this.yHg.get(paramInt);
       AppMethodBeat.o(51837);
       return localObject;
     }
@@ -136,64 +136,64 @@ public final class g
       {
         paramView = this.mInflater.inflate(2131495117, paramViewGroup, false);
         paramViewGroup = new a();
-        paramViewGroup.ypn = ((ImageView)paramView.findViewById(2131300614));
-        paramViewGroup.lDu = ((TextView)paramView.findViewById(2131300613));
+        paramViewGroup.yFm = ((ImageView)paramView.findViewById(2131300614));
+        paramViewGroup.lHT = ((TextView)paramView.findViewById(2131300613));
         paramView.setTag(paramViewGroup);
-        locala = (a.a)this.yrg.get(paramInt);
+        locala = (a.a)this.yHg.get(paramInt);
         localObject = u.a(new g.a(locala.iconUrl));
         if ((localObject == null) || (((Bitmap)localObject).isRecycled())) {
           break label217;
         }
-        paramViewGroup.ypn.setImageBitmap((Bitmap)localObject);
-        paramViewGroup.ypn.setBackgroundColor(0);
+        paramViewGroup.yFm.setImageBitmap((Bitmap)localObject);
+        paramViewGroup.yFm.setBackgroundColor(0);
       }
       for (;;)
       {
-        localObject = locala.ymf;
-        paramViewGroup.ypn.setOnClickListener(new View.OnClickListener()
+        localObject = locala.yCe;
+        paramViewGroup.yFm.setOnClickListener(new View.OnClickListener()
         {
           public final void onClick(View paramAnonymousView)
           {
             AppMethodBeat.i(51832);
             b localb = new b();
             localb.bd(paramAnonymousView);
-            a.b("com/tencent/mm/plugin/scanner/ui/ProductGridPreference$ProductGridAdapter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-            paramAnonymousView = new m(this.pDy, locala.yme, locala.type, this.pDy, g.b.this.getCount(), locala.dlp);
-            com.tencent.mm.kernel.g.aiU().a(paramAnonymousView, 0);
-            if (!bt.isNullOrNil(this.pDy))
+            a.b("com/tencent/mm/plugin/scanner/ui/ProductGridPreference$ProductGridAdapter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+            paramAnonymousView = new n(this.pKc, locala.yCd, locala.type, this.pKc, g.b.this.getCount(), locala.dmr);
+            com.tencent.mm.kernel.g.ajj().a(paramAnonymousView, 0);
+            if (!bu.isNullOrNil(this.pKc))
             {
               paramAnonymousView = new Intent();
-              paramAnonymousView.putExtra("key_Product_ID", this.pDy);
+              paramAnonymousView.putExtra("key_Product_ID", this.pKc);
               d.b(g.this.mContext, "scanner", ".ui.ProductUI", paramAnonymousView);
             }
             a.a(this, "com/tencent/mm/plugin/scanner/ui/ProductGridPreference$ProductGridAdapter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
             AppMethodBeat.o(51832);
           }
         });
-        paramViewGroup.ypn.setTag(locala.iconUrl);
-        this.yrc.put(locala.iconUrl, new WeakReference(paramViewGroup.ypn));
-        paramViewGroup.lDu.setText(locala.name);
+        paramViewGroup.yFm.setTag(locala.iconUrl);
+        this.yHc.put(locala.iconUrl, new WeakReference(paramViewGroup.yFm));
+        paramViewGroup.lHT.setText(locala.name);
         AppMethodBeat.o(51838);
         return paramView;
         paramViewGroup = (a)paramView.getTag();
         break;
         label217:
-        paramViewGroup.ypn.setBackgroundColor(this.yrf);
-        paramViewGroup.ypn.setImageBitmap(null);
+        paramViewGroup.yFm.setBackgroundColor(this.yHf);
+        paramViewGroup.yFm.setImageBitmap(null);
       }
     }
     
     public final void k(String paramString, final Bitmap paramBitmap)
     {
       AppMethodBeat.i(51839);
-      if ((paramBitmap != null) && (!paramBitmap.isRecycled()) && (!bt.isNullOrNil(paramString)))
+      if ((paramBitmap != null) && (!paramBitmap.isRecycled()) && (!bu.isNullOrNil(paramString)))
       {
-        ad.v("MicroMsg.ProductGridPreference", "On get pic, notifyKey=".concat(String.valueOf(paramString)));
-        if ((WeakReference)this.yrc.get(paramString) != null)
+        ae.v("MicroMsg.ProductGridPreference", "On get pic, notifyKey=".concat(String.valueOf(paramString)));
+        if ((WeakReference)this.yHc.get(paramString) != null)
         {
-          final ImageView localImageView = (ImageView)((WeakReference)this.yrc.get(paramString)).get();
+          final ImageView localImageView = (ImageView)((WeakReference)this.yHc.get(paramString)).get();
           if ((localImageView != null) && (paramString.equals((String)localImageView.getTag()))) {
-            aq.f(new Runnable()
+            ar.f(new Runnable()
             {
               public final void run()
               {
@@ -211,8 +211,8 @@ public final class g
     
     final class a
     {
-      TextView lDu;
-      ImageView ypn;
+      TextView lHT;
+      ImageView yFm;
       
       a() {}
     }

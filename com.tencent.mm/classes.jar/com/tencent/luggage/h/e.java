@@ -10,7 +10,7 @@ import android.support.v4.content.b;
 import android.util.SparseArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.b.c;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Iterator;
@@ -22,36 +22,36 @@ import junit.framework.Assert;
 
 public final class e
 {
-  private static final WeakHashMap<Activity, e> cqu;
+  private static final WeakHashMap<Activity, e> cqX;
   @SuppressLint({"StaticFieldLeak"})
-  private static final e cqv;
-  private final SparseArray<b> cqp;
-  private final SparseArray<f> cqq;
-  final Set<c> cqr;
-  public a cqs;
-  private Random cqt;
+  private static final e cqY;
+  private final SparseArray<b> cqS;
+  private final SparseArray<f> cqT;
+  final Set<c> cqU;
+  public a cqV;
+  private Random cqW;
   private Activity mActivity;
   
   static
   {
     AppMethodBeat.i(140516);
-    cqu = new WeakHashMap();
-    cqv = new e(null);
+    cqX = new WeakHashMap();
+    cqY = new e(null);
     AppMethodBeat.o(140516);
   }
   
   private e(Activity paramActivity)
   {
     AppMethodBeat.i(140506);
-    this.cqp = new SparseArray();
-    this.cqq = new SparseArray();
-    this.cqr = Collections.newSetFromMap(new ConcurrentHashMap());
+    this.cqS = new SparseArray();
+    this.cqT = new SparseArray();
+    this.cqU = Collections.newSetFromMap(new ConcurrentHashMap());
     this.mActivity = paramActivity;
-    this.cqt = new Random();
+    this.cqW = new Random();
     AppMethodBeat.o(140506);
   }
   
-  public static e aA(Context paramContext)
+  public static e aB(Context paramContext)
   {
     AppMethodBeat.i(140514);
     Assert.assertFalse("must implements ILuggageActivityHelper", false);
@@ -60,35 +60,35 @@ public final class e
       Activity localActivity = (Activity)paramContext;
       if ((localActivity.isFinishing()) || (localActivity.isDestroyed()))
       {
-        ad.e("Luggage.LuggageActivityHelper", "FOR(%s) instance destroyed, return DUMMY", new Object[] { localActivity });
-        paramContext = cqv;
+        ae.e("Luggage.LuggageActivityHelper", "FOR(%s) instance destroyed, return DUMMY", new Object[] { localActivity });
+        paramContext = cqY;
         AppMethodBeat.o(140514);
         return paramContext;
       }
-      if (!cqu.containsKey(localActivity)) {
-        cqu.put(localActivity, new e(localActivity));
+      if (!cqX.containsKey(localActivity)) {
+        cqX.put(localActivity, new e(localActivity));
       }
-      paramContext = (e)cqu.get(paramContext);
+      paramContext = (e)cqX.get(paramContext);
       AppMethodBeat.o(140514);
       return paramContext;
     }
     Assert.assertFalse(false);
-    paramContext = cqv;
+    paramContext = cqY;
     AppMethodBeat.o(140514);
     return paramContext;
   }
   
-  public static void aB(Context paramContext)
+  public static void aC(Context paramContext)
   {
     AppMethodBeat.i(140515);
     if ((paramContext instanceof Activity))
     {
-      paramContext = (e)cqu.remove(paramContext);
+      paramContext = (e)cqX.remove(paramContext);
       if (paramContext != null)
       {
-        paramContext.cqp.clear();
-        paramContext.cqr.clear();
-        paramContext.cqq.clear();
+        paramContext.cqS.clear();
+        paramContext.cqU.clear();
+        paramContext.cqT.clear();
       }
     }
     AppMethodBeat.o(140515);
@@ -109,7 +109,7 @@ public final class e
   private int rand()
   {
     AppMethodBeat.i(140513);
-    int i = this.cqt.nextInt(2147483646);
+    int i = this.cqW.nextInt(2147483646);
     AppMethodBeat.o(140513);
     return i + 1 & 0xFFFF;
   }
@@ -122,8 +122,8 @@ public final class e
       AppMethodBeat.o(140509);
       return;
     }
-    int i = b(this.cqp);
-    this.cqp.put(i, paramb);
+    int i = b(this.cqS);
+    this.cqS.put(i, paramb);
     this.mActivity.startActivityForResult(paramIntent, i);
     AppMethodBeat.o(140509);
   }
@@ -131,7 +131,7 @@ public final class e
   public final void a(c paramc)
   {
     AppMethodBeat.i(174618);
-    this.cqr.add(paramc);
+    this.cqU.add(paramc);
     AppMethodBeat.o(174618);
   }
   
@@ -152,12 +152,12 @@ public final class e
       AppMethodBeat.o(140511);
       return;
     }
-    int i = b(this.cqq);
-    this.cqq.put(i, paramf);
+    int i = b(this.cqT);
+    this.cqT.put(i, paramf);
     paramf = this.mActivity;
     paramArrayOfString = c.a(i, new com.tencent.mm.hellhoundlib.b.a()).bc(paramArrayOfString);
-    com.tencent.mm.hellhoundlib.a.a.a(paramf, paramArrayOfString.ahp(), "com/tencent/luggage/util/LuggageActivityHelper", "requestPermissions", "([Ljava/lang/String;Lcom/tencent/luggage/util/LuggageActivityHelper$PermissionResultCallback;)V", "Undefined", "requestPermissions", "([Ljava/lang/String;I)V");
-    paramf.requestPermissions((String[])paramArrayOfString.mq(0), ((Integer)paramArrayOfString.mq(1)).intValue());
+    com.tencent.mm.hellhoundlib.a.a.a(paramf, paramArrayOfString.ahE(), "com/tencent/luggage/util/LuggageActivityHelper", "requestPermissions", "([Ljava/lang/String;Lcom/tencent/luggage/util/LuggageActivityHelper$PermissionResultCallback;)V", "Undefined", "requestPermissions", "([Ljava/lang/String;I)V");
+    paramf.requestPermissions((String[])paramArrayOfString.mt(0), ((Integer)paramArrayOfString.mt(1)).intValue());
     com.tencent.mm.hellhoundlib.a.a.a(paramf, "com/tencent/luggage/util/LuggageActivityHelper", "requestPermissions", "([Ljava/lang/String;Lcom/tencent/luggage/util/LuggageActivityHelper$PermissionResultCallback;)V", "Undefined", "requestPermissions", "([Ljava/lang/String;I)V");
     AppMethodBeat.o(140511);
   }
@@ -186,7 +186,7 @@ public final class e
     }
     catch (Exception paramString)
     {
-      ad.e("Luggage.LuggageActivityHelper", "check mpermission exception:%s.", new Object[] { paramString });
+      ae.e("Luggage.LuggageActivityHelper", "check mpermission exception:%s.", new Object[] { paramString });
       AppMethodBeat.o(140510);
       return true;
     }
@@ -198,8 +198,8 @@ public final class e
   public final void b(int paramInt, int[] paramArrayOfInt)
   {
     AppMethodBeat.i(140508);
-    d locald = (d)this.cqq.get(paramInt);
-    this.cqq.delete(paramInt);
+    d locald = (d)this.cqT.get(paramInt);
+    this.cqT.delete(paramInt);
     if (locald != null) {
       ((f)locald).p(paramArrayOfInt);
     }
@@ -221,7 +221,7 @@ public final class e
       public final boolean b(int paramAnonymousInt1, int paramAnonymousInt2, Intent paramAnonymousIntent)
       {
         AppMethodBeat.i(174616);
-        e.this.cqr.remove(this);
+        e.this.cqU.remove(this);
         boolean bool = paramc.b(paramAnonymousInt1, paramAnonymousInt2, paramAnonymousIntent);
         AppMethodBeat.o(174616);
         return bool;
@@ -232,21 +232,21 @@ public final class e
   
   public final void finish()
   {
-    AppMethodBeat.i(187600);
+    AppMethodBeat.i(201167);
     if ((this.mActivity != null) && (!this.mActivity.isFinishing()) && (!this.mActivity.isDestroyed()))
     {
-      if (this.cqs != null) {
-        this.cqs.Fr();
+      if (this.cqV != null) {
+        this.cqV.Fx();
       }
       this.mActivity.finish();
     }
-    AppMethodBeat.o(187600);
+    AppMethodBeat.o(201167);
   }
   
   public final void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     AppMethodBeat.i(140507);
-    Object localObject = this.cqr.iterator();
+    Object localObject = this.cqU.iterator();
     while (((Iterator)localObject).hasNext()) {
       if (((c)((Iterator)localObject).next()).b(paramInt1, paramInt2, paramIntent))
       {
@@ -254,8 +254,8 @@ public final class e
         return;
       }
     }
-    localObject = (d)this.cqp.get(paramInt1);
-    this.cqp.delete(paramInt1);
+    localObject = (d)this.cqS.get(paramInt1);
+    this.cqS.delete(paramInt1);
     if (localObject != null) {
       ((b)localObject).a(paramInt2, paramIntent);
     }
@@ -264,7 +264,7 @@ public final class e
   
   public static abstract interface a
   {
-    public abstract boolean Fr();
+    public abstract boolean Fx();
   }
   
   public static abstract interface b

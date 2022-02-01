@@ -3,30 +3,30 @@ package com.tencent.mm.plugin.finder.api;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.platformtools.f;
 import com.tencent.mm.protocal.protobuf.FinderContact;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"info", "", "Lcom/tencent/mm/protocal/protobuf/FinderContact;", "toLocal", "Lcom/tencent/mm/plugin/finder/api/LocalFinderContact;", "local", "toServer", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"info", "", "Lcom/tencent/mm/protocal/protobuf/FinderContact;", "toLocal", "Lcom/tencent/mm/plugin/finder/api/LocalFinderContact;", "local", "toServer", "plugin-finder_release"})
 public final class b
 {
   public static final g a(FinderContact paramFinderContact, g paramg)
   {
-    AppMethodBeat.i(201001);
+    AppMethodBeat.i(201423);
     p.h(paramFinderContact, "$this$toLocal");
     int i;
-    if (!bt.isNullOrNil(paramFinderContact.username))
+    if (!bu.isNullOrNil(paramFinderContact.username))
     {
       i = 1;
       if (i == 0) {
-        break label264;
+        break label272;
       }
     }
     for (;;)
     {
       if (paramFinderContact == null) {
-        break label269;
+        break label277;
       }
       g localg = paramg;
       if (paramg == null) {
@@ -43,13 +43,13 @@ public final class b
       if (str == null) {
         paramg = "";
       }
-      localg.ahb(paramg);
+      localg.ahY(paramg);
       str = paramFinderContact.nickname;
       paramg = str;
       if (str == null) {
         paramg = "";
       }
-      localg.sT(paramg);
+      localg.to(paramg);
       localg.field_version = paramFinderContact.seq;
       str = paramFinderContact.signature;
       paramg = str;
@@ -63,7 +63,7 @@ public final class b
       if (str == null) {
         paramg = "";
       }
-      localg.field_pyInitial = f.IM(paramg);
+      localg.field_pyInitial = f.Jl(paramg);
       localg.field_followTime = paramFinderContact.followTime;
       str = paramFinderContact.coverImgUrl;
       paramg = str;
@@ -75,19 +75,20 @@ public final class b
       localg.field_authInfo = paramFinderContact.authInfo;
       localg.field_extInfo = paramFinderContact.extInfo;
       localg.field_originalFlag = paramFinderContact.originalFlag;
+      localg.field_originalEntranceFlag = paramFinderContact.originalEntranceFlag;
       localg.field_originalInfo = paramFinderContact.originalInfo;
       localg.field_extFlag = paramFinderContact.extFlag;
-      AppMethodBeat.o(201001);
+      AppMethodBeat.o(201423);
       return localg;
       i = 0;
       break;
-      label264:
+      label272:
       paramFinderContact = null;
     }
-    label269:
-    ad.e("Finder.FinderContactEx", "error FinderContact username is null " + bt.flS());
+    label277:
+    ae.e("Finder.FinderContactEx", "error FinderContact username is null " + bu.fpN());
     paramFinderContact = new g();
-    AppMethodBeat.o(201001);
+    AppMethodBeat.o(201423);
     return paramFinderContact;
   }
 }

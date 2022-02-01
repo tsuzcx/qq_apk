@@ -6,21 +6,21 @@ import com.tencent.mm.plugin.emojicapture.model.d;
 import com.tencent.mm.plugin.emojicapture.model.d.a;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/emojicapture/ui/gl/EmojiCaptureRecorderRenderer;", "Lcom/tencent/mm/media/render/AbsSurfaceRenderer;", "()V", "doInitRenderProc", "Lcom/tencent/mm/media/render/proc/GLTextureRenderProc;", "mirror", "", "", "setRotate", "degree", "", "updateDrawViewSize", "width", "height", "updateTextureSize", "plugin-emojicapture_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/emojicapture/ui/gl/EmojiCaptureRecorderRenderer;", "Lcom/tencent/mm/media/render/AbsSurfaceRenderer;", "()V", "doInitRenderProc", "Lcom/tencent/mm/media/render/proc/GLTextureRenderProc;", "mirror", "", "", "setRotate", "degree", "", "updateDrawViewSize", "width", "height", "updateTextureSize", "plugin-emojicapture_release"})
 public final class g
   extends com.tencent.mm.media.j.a
 {
   public g()
   {
-    super(i, j, k, d.cjo(), 1, 1);
+    super(i, j, k, d.ckE(), 1, 1);
     AppMethodBeat.i(861);
     AppMethodBeat.o(861);
   }
   
-  public final com.tencent.mm.media.j.b.a amr()
+  public final com.tencent.mm.media.j.b.a amG()
   {
     AppMethodBeat.i(858);
-    com.tencent.mm.media.j.b.a locala = (com.tencent.mm.media.j.b.a)new e(this.gKJ, this.gKK, this.gLD, this.gLE, this.hnp, this.scaleType);
+    com.tencent.mm.media.j.b.a locala = (com.tencent.mm.media.j.b.a)new e(this.gNs, this.gNt, this.gOm, this.gOn, this.hqd, this.scaleType);
     AppMethodBeat.o(858);
     return locala;
   }
@@ -28,26 +28,26 @@ public final class g
   public final void cT(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(860);
-    d.a locala = d.pQW;
-    paramInt1 = d.cjo();
-    locala = d.pQW;
-    super.cT(paramInt1, d.cjo());
+    d.a locala = d.pXB;
+    paramInt1 = d.ckE();
+    locala = d.pXB;
+    super.cT(paramInt1, d.ckE());
     AppMethodBeat.o(860);
   }
   
   public final void cU(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(859);
-    d.a locala = d.pQW;
-    paramInt1 = d.cjo();
-    locala = d.pQW;
-    super.cU(paramInt1, d.cjo());
+    d.a locala = d.pXB;
+    paramInt1 = d.ckE();
+    locala = d.pXB;
+    super.cU(paramInt1, d.ckE());
     AppMethodBeat.o(859);
   }
   
-  public final void eg(boolean paramBoolean) {}
+  public final void ei(boolean paramBoolean) {}
   
-  public final void nd(int paramInt) {}
+  public final void ng(int paramInt) {}
 }
 
 

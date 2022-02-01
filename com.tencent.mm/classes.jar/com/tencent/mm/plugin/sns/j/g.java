@@ -5,12 +5,12 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class g
   extends i
 {
-  public static i zus;
+  public static i zLJ;
   
   static
   {
     AppMethodBeat.i(96249);
-    zus = new g();
+    zLJ = new g();
     AppMethodBeat.o(96249);
   }
 }

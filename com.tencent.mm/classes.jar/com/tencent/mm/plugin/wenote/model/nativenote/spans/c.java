@@ -5,16 +5,16 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class c
   extends o<Boolean, d>
 {
-  private p EAL;
+  private p ETh;
   
   public c()
   {
     AppMethodBeat.i(30629);
-    this.EAL = new p();
+    this.ETh = new p();
     AppMethodBeat.o(30629);
   }
   
-  public final int cfm()
+  public final int cgC()
   {
     return 1;
   }

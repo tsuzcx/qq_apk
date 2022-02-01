@@ -2,159 +2,165 @@ package com.tencent.mm.plugin.nearby.a;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.kx;
-import com.tencent.mm.g.a.lb;
+import com.tencent.mm.g.a.ky;
 import com.tencent.mm.g.a.lc;
-import com.tencent.mm.g.a.lc.a;
 import com.tencent.mm.g.a.ld;
-import com.tencent.mm.g.a.mg;
-import com.tencent.mm.g.a.mo;
+import com.tencent.mm.g.a.ld.a;
+import com.tencent.mm.g.a.le;
+import com.tencent.mm.g.a.mh;
 import com.tencent.mm.g.a.mp;
-import com.tencent.mm.g.a.oz;
-import com.tencent.mm.g.a.we;
+import com.tencent.mm.g.a.mq;
+import com.tencent.mm.g.a.pa;
+import com.tencent.mm.g.a.wi;
 import com.tencent.mm.g.c.aw;
 import com.tencent.mm.g.c.ei;
 import com.tencent.mm.kernel.e;
-import com.tencent.mm.model.ax;
-import com.tencent.mm.model.bj.b;
+import com.tencent.mm.model.az;
+import com.tencent.mm.model.bl.b;
 import com.tencent.mm.plugin.messenger.foundation.a.l;
 import com.tencent.mm.pluginsdk.c.d;
 import com.tencent.mm.sdk.b.b;
 import com.tencent.mm.sdk.e.k;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.am;
-import com.tencent.mm.storage.bp;
-import com.tencent.mm.storage.bp.a;
-import com.tencent.mm.storage.br;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.aj;
+import com.tencent.mm.storage.an;
+import com.tencent.mm.storage.bq;
+import com.tencent.mm.storage.bq.a;
 import com.tencent.mm.storage.bs;
+import com.tencent.mm.storage.bt;
 import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
 
 public final class f
-  implements ax
+  implements az
 {
-  private com.tencent.mm.sdk.b.c fJT;
-  private com.tencent.mm.sdk.b.c woi;
-  private com.tencent.mm.sdk.b.c woj;
-  com.tencent.mm.pluginsdk.c.c<mo> wok;
-  com.tencent.mm.pluginsdk.c.c<mp> wol;
-  d wom;
-  private bp.a won;
-  private com.tencent.mm.sdk.b.c<oz> woo;
-  private com.tencent.mm.sdk.b.c<mg> wop;
+  private com.tencent.mm.sdk.b.c fLW;
+  private com.tencent.mm.sdk.b.c wDR;
+  private com.tencent.mm.sdk.b.c wDS;
+  com.tencent.mm.pluginsdk.c.c<mp> wDT;
+  com.tencent.mm.pluginsdk.c.c<mq> wDU;
+  d wDV;
+  private bq.a wDW;
+  private com.tencent.mm.sdk.b.c<pa> wDX;
+  private com.tencent.mm.sdk.b.c<mh> wDY;
   
   public f()
   {
     AppMethodBeat.i(89793);
-    this.woi = new com.tencent.mm.sdk.b.c()
+    this.wDR = new com.tencent.mm.sdk.b.c()
     {
-      private static boolean a(lc paramAnonymouslc)
+      private static boolean a(ld paramAnonymousld)
       {
         int i = 3;
         AppMethodBeat.i(89776);
-        Object localObject = paramAnonymouslc.dyn.dyo;
-        paramAnonymouslc = paramAnonymouslc.dyn.dku;
-        if ((((bj.b)localObject).hGU != null) && (((bj.b)localObject).scene == 1))
+        Object localObject = paramAnonymousld.dzs.dzt;
+        paramAnonymousld = paramAnonymousld.dzs.dlw;
+        if ((((bl.b)localObject).hJM != null) && (((bl.b)localObject).scene == 1))
         {
-          com.tencent.mm.kernel.g.ajC().ajl().set(73729, Integer.valueOf(1));
-          br localbr = new br();
-          localbr.field_content = paramAnonymouslc.field_content;
-          localbr.field_createtime = bt.aQJ();
-          localbr.field_imgpath = "";
-          localbr.field_sayhicontent = aj.getContext().getString(2131761529);
-          localbr.field_sayhiuser = paramAnonymouslc.field_talker;
-          localbr.field_scene = 18;
-          if (paramAnonymouslc.field_status > 3) {
-            i = paramAnonymouslc.field_status;
+          com.tencent.mm.kernel.g.ajR().ajA().set(73729, Integer.valueOf(1));
+          bs localbs = new bs();
+          localbs.field_content = paramAnonymousld.field_content;
+          localbs.field_createtime = bu.aRi();
+          localbs.field_imgpath = "";
+          localbs.field_sayhicontent = ak.getContext().getString(2131761529);
+          localbs.field_sayhiuser = paramAnonymousld.field_talker;
+          localbs.field_scene = 18;
+          if (paramAnonymousld.field_status > 3) {
+            i = paramAnonymousld.field_status;
           }
-          localbr.field_status = i;
-          localbr.field_svrid = paramAnonymouslc.field_msgSvrId;
-          localbr.field_talker = paramAnonymouslc.field_talker;
-          localbr.field_type = 34;
-          localbr.field_isSend = 0;
-          localbr.field_sayhiencryptuser = paramAnonymouslc.field_talker;
-          localbr.field_ticket = ((bj.b)localObject).hGU;
-          com.tencent.mm.kernel.g.ajA().aiF();
-          ((bs)((l)com.tencent.mm.kernel.g.ab(l.class)).dlH()).a(localbr);
-          localObject = new lb();
-          ((lb)localObject).dyl.dym = paramAnonymouslc.field_talker;
-          com.tencent.mm.sdk.b.a.IbL.l((b)localObject);
+          localbs.field_status = i;
+          localbs.field_svrid = paramAnonymousld.field_msgSvrId;
+          localbs.field_talker = paramAnonymousld.field_talker;
+          localbs.field_type = 34;
+          localbs.field_isSend = 0;
+          localbs.field_sayhiencryptuser = paramAnonymousld.field_talker;
+          localbs.field_ticket = ((bl.b)localObject).hJM;
+          com.tencent.mm.kernel.g.ajP().aiU();
+          ((bt)((l)com.tencent.mm.kernel.g.ab(l.class)).doG()).a(localbs);
+          localObject = new lc();
+          ((lc)localObject).dzq.dzr = paramAnonymousld.field_talker;
+          com.tencent.mm.sdk.b.a.IvT.l((b)localObject);
         }
         AppMethodBeat.o(89776);
         return false;
       }
     };
-    this.woj = new com.tencent.mm.sdk.b.c() {};
-    this.wok = new f.3(this);
-    this.wol = new com.tencent.mm.pluginsdk.c.c()
+    this.wDS = new com.tencent.mm.sdk.b.c() {};
+    this.wDT = new com.tencent.mm.pluginsdk.c.c()
     {
-      public final int Yb()
+      public final int Yl()
+      {
+        return 148;
+      }
+    };
+    this.wDU = new com.tencent.mm.pluginsdk.c.c()
+    {
+      public final int Yl()
       {
         return 377;
       }
     };
-    this.fJT = new com.tencent.mm.sdk.b.c() {};
-    this.wom = new d()
+    this.fLW = new com.tencent.mm.sdk.b.c() {};
+    this.wDV = new d()
     {
-      public final b alj(String paramAnonymousString)
+      public final b amh(String paramAnonymousString)
       {
         AppMethodBeat.i(89786);
-        kx localkx = new kx();
-        localkx.dya.dln = paramAnonymousString;
+        ky localky = new ky();
+        localky.dzf.dmp = paramAnonymousString;
         AppMethodBeat.o(89786);
-        return localkx;
+        return localky;
       }
       
-      public final k cWC()
+      public final k cZh()
       {
         AppMethodBeat.i(89787);
-        com.tencent.mm.kernel.g.ajA().aiF();
-        k localk = (k)((l)com.tencent.mm.kernel.g.ab(l.class)).dlH();
+        com.tencent.mm.kernel.g.ajP().aiU();
+        k localk = (k)((l)com.tencent.mm.kernel.g.ab(l.class)).doG();
         AppMethodBeat.o(89787);
         return localk;
       }
     };
-    this.won = new bp.a()
+    this.wDW = new bq.a()
     {
-      public final am Bf(String paramAnonymousString)
+      public final an BH(String paramAnonymousString)
       {
         return null;
       }
       
-      public final void a(bp paramAnonymousbp, am paramAnonymousam)
+      public final void a(bq paramAnonymousbq, an paramAnonymousan)
       {
         AppMethodBeat.i(89788);
-        if ((paramAnonymousbp != null) && (paramAnonymousam != null) && (paramAnonymousam.adk()))
+        if ((paramAnonymousbq != null) && (paramAnonymousan != null) && (paramAnonymousan.adv()))
         {
-          com.tencent.mm.kernel.g.ajA().aiF();
-          ((l)com.tencent.mm.kernel.g.ab(l.class)).dlH().apQ(paramAnonymousam.field_username);
+          com.tencent.mm.kernel.g.ajP().aiU();
+          ((l)com.tencent.mm.kernel.g.ab(l.class)).doG().aqV(paramAnonymousan.field_username);
         }
         AppMethodBeat.o(89788);
       }
       
-      public final int b(am paramAnonymousam, boolean paramAnonymousBoolean)
+      public final int b(an paramAnonymousan, boolean paramAnonymousBoolean)
       {
         return 0;
       }
     };
-    this.woo = new com.tencent.mm.sdk.b.c()
+    this.wDX = new com.tencent.mm.sdk.b.c()
     {
-      private static boolean aJX()
+      private static boolean aKq()
       {
         AppMethodBeat.i(89789);
-        f.dtW();
+        f.dxl();
         AppMethodBeat.o(89789);
         return false;
       }
     };
-    this.wop = new com.tencent.mm.sdk.b.c()
+    this.wDY = new com.tencent.mm.sdk.b.c()
     {
-      private static boolean dtX()
+      private static boolean dxm()
       {
         AppMethodBeat.i(89791);
-        f.dtW();
+        f.dxl();
         AppMethodBeat.o(89791);
         return false;
       }
@@ -172,28 +178,28 @@ public final class f
   public final void onAccountPostReset(boolean paramBoolean)
   {
     AppMethodBeat.i(89795);
-    ((l)com.tencent.mm.kernel.g.ab(l.class)).azp().a(this.won);
-    this.wop.alive();
-    this.woo.alive();
-    com.tencent.mm.sdk.b.a.IbL.c(this.fJT);
-    com.tencent.mm.sdk.b.a.IbL.c(this.woj);
-    com.tencent.mm.sdk.b.a.IbL.c(this.wok);
-    com.tencent.mm.sdk.b.a.IbL.c(this.wol);
-    this.woi.alive();
+    ((l)com.tencent.mm.kernel.g.ab(l.class)).azF().a(this.wDW);
+    this.wDY.alive();
+    this.wDX.alive();
+    com.tencent.mm.sdk.b.a.IvT.c(this.fLW);
+    com.tencent.mm.sdk.b.a.IvT.c(this.wDS);
+    com.tencent.mm.sdk.b.a.IvT.c(this.wDT);
+    com.tencent.mm.sdk.b.a.IvT.c(this.wDU);
+    this.wDR.alive();
     AppMethodBeat.o(89795);
   }
   
   public final void onAccountRelease()
   {
     AppMethodBeat.i(89794);
-    ((l)com.tencent.mm.kernel.g.ab(l.class)).azp().b(this.won);
-    this.wop.alive();
-    this.woo.dead();
-    com.tencent.mm.sdk.b.a.IbL.d(this.woj);
-    com.tencent.mm.sdk.b.a.IbL.d(this.fJT);
-    com.tencent.mm.sdk.b.a.IbL.d(this.wok);
-    com.tencent.mm.sdk.b.a.IbL.d(this.wol);
-    this.woi.dead();
+    ((l)com.tencent.mm.kernel.g.ab(l.class)).azF().b(this.wDW);
+    this.wDY.alive();
+    this.wDX.dead();
+    com.tencent.mm.sdk.b.a.IvT.d(this.wDS);
+    com.tencent.mm.sdk.b.a.IvT.d(this.fLW);
+    com.tencent.mm.sdk.b.a.IvT.d(this.wDT);
+    com.tencent.mm.sdk.b.a.IvT.d(this.wDU);
+    this.wDR.dead();
     AppMethodBeat.o(89794);
   }
   

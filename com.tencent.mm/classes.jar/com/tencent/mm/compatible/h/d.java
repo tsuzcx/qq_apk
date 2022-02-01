@@ -35,7 +35,7 @@ public final class d
     //   44: aload_2
     //   45: aconst_null
     //   46: ldc 45
-    //   48: invokestatic 51	com/tencent/mm/vfs/i:a	(Landroid/net/Uri;Lcom/tencent/mm/vfs/a$e;Ljava/lang/String;)Landroid/os/ParcelFileDescriptor;
+    //   48: invokestatic 51	com/tencent/mm/vfs/o:a	(Landroid/net/Uri;Lcom/tencent/mm/vfs/e$e;Ljava/lang/String;)Landroid/os/ParcelFileDescriptor;
     //   51: astore 5
     //   53: aload_0
     //   54: aload 5
@@ -131,7 +131,7 @@ public final class d
     //   2: invokestatic 25	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: aload_1
     //   6: ldc 45
-    //   8: invokestatic 107	com/tencent/mm/vfs/i:my	(Ljava/lang/String;Ljava/lang/String;)Landroid/os/ParcelFileDescriptor;
+    //   8: invokestatic 107	com/tencent/mm/vfs/o:mE	(Ljava/lang/String;Ljava/lang/String;)Landroid/os/ParcelFileDescriptor;
     //   11: astore 4
     //   13: aconst_null
     //   14: astore_3
@@ -244,7 +244,7 @@ public final class d
     //   41: ifeq +106 -> 147
     //   44: aload_1
     //   45: ldc 45
-    //   47: invokestatic 107	com/tencent/mm/vfs/i:my	(Ljava/lang/String;Ljava/lang/String;)Landroid/os/ParcelFileDescriptor;
+    //   47: invokestatic 107	com/tencent/mm/vfs/o:mE	(Ljava/lang/String;Ljava/lang/String;)Landroid/os/ParcelFileDescriptor;
     //   50: astore 5
     //   52: aconst_null
     //   53: astore 4

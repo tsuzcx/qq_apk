@@ -5,16 +5,16 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.game.commlib.a;
-import com.tencent.mm.plugin.game.d.ac;
-import com.tencent.mm.plugin.game.d.bb;
-import com.tencent.mm.plugin.game.d.dp;
-import com.tencent.mm.plugin.game.d.dq;
-import com.tencent.mm.plugin.game.d.dr;
-import com.tencent.mm.plugin.game.d.ds;
-import com.tencent.mm.plugin.game.d.dt;
-import com.tencent.mm.plugin.game.d.du;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.plugin.game.d.ah;
+import com.tencent.mm.plugin.game.d.bi;
+import com.tencent.mm.plugin.game.d.dy;
+import com.tencent.mm.plugin.game.d.dz;
+import com.tencent.mm.plugin.game.d.ea;
+import com.tencent.mm.plugin.game.d.eb;
+import com.tencent.mm.plugin.game.d.ec;
+import com.tencent.mm.plugin.game.d.ed;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
@@ -32,70 +32,70 @@ public class GameTabData2
   implements Parcelable
 {
   public static final Parcelable.Creator<GameTabData2> CREATOR;
-  public String jVX;
-  public a utG;
-  public String utH;
-  public String utI;
+  public String jZm;
+  public a uEZ;
+  public String uFa;
+  public String uFb;
   
   static
   {
-    AppMethodBeat.i(206896);
+    AppMethodBeat.i(195718);
     CREATOR = new Parcelable.Creator() {};
-    AppMethodBeat.o(206896);
+    AppMethodBeat.o(195718);
   }
   
   public GameTabData2()
   {
-    AppMethodBeat.i(206885);
-    this.utG = new a();
-    AppMethodBeat.o(206885);
+    AppMethodBeat.i(195707);
+    this.uEZ = new a();
+    AppMethodBeat.o(195707);
   }
   
   private GameTabData2(Parcel paramParcel)
   {
-    AppMethodBeat.i(206886);
+    AppMethodBeat.i(195708);
     e(paramParcel);
-    AppMethodBeat.o(206886);
+    AppMethodBeat.o(195708);
   }
   
-  private static boolean a(GameTabData2 paramGameTabData2, dp paramdp)
+  private static boolean a(GameTabData2 paramGameTabData2, dy paramdy)
   {
-    AppMethodBeat.i(206893);
-    if ((paramdp == null) || (bt.hj(paramdp.ujR)))
+    AppMethodBeat.i(195715);
+    if ((paramdy == null) || (bu.ht(paramdy.uvp)))
     {
-      AppMethodBeat.o(206893);
+      AppMethodBeat.o(195715);
       return false;
     }
-    paramGameTabData2.jVX = paramdp.ujT;
-    paramGameTabData2.utI = paramdp.ujU;
-    Object localObject = paramdp.ujR.iterator();
+    paramGameTabData2.jZm = paramdy.uvr;
+    paramGameTabData2.uFb = paramdy.uvs;
+    Object localObject = paramdy.uvp.iterator();
     while (((Iterator)localObject).hasNext())
     {
-      TabItem localTabItem = new TabItem((dt)((Iterator)localObject).next());
-      if (!bt.isNullOrNil(localTabItem.uea)) {
-        paramGameTabData2.utG.a(localTabItem.uea, localTabItem);
+      TabItem localTabItem = new TabItem((ec)((Iterator)localObject).next());
+      if (!bu.isNullOrNil(localTabItem.upi)) {
+        paramGameTabData2.uEZ.a(localTabItem.upi, localTabItem);
       }
     }
-    if (paramGameTabData2.utG.size() == 0)
+    if (paramGameTabData2.uEZ.size() == 0)
     {
-      AppMethodBeat.o(206893);
+      AppMethodBeat.o(195715);
       return false;
     }
     localObject = "";
-    if (paramdp.ujS != null) {
-      localObject = bt.nullAsNil(paramdp.ujS.ujy);
+    if (paramdy.uvq != null) {
+      localObject = bu.nullAsNil(paramdy.uvq.uuW);
     }
-    if (paramGameTabData2.utG.containsKey(localObject)) {}
-    for (paramGameTabData2.utH = ((String)localObject);; paramGameTabData2.utH = ag(paramGameTabData2.utG))
+    if (paramGameTabData2.uEZ.containsKey(localObject)) {}
+    for (paramGameTabData2.uFa = ((String)localObject);; paramGameTabData2.uFa = am(paramGameTabData2.uEZ))
     {
-      AppMethodBeat.o(206893);
+      AppMethodBeat.o(195715);
       return true;
     }
   }
   
   private static boolean a(GameTabData2 paramGameTabData2, JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(206894);
+    AppMethodBeat.i(195716);
     for (;;)
     {
       try
@@ -105,68 +105,68 @@ public class GameTabData2
         if (i < ((JSONArray)localObject).length())
         {
           TabItem localTabItem = new TabItem(((JSONArray)localObject).optJSONObject(i));
-          if (!bt.isNullOrNil(localTabItem.uea)) {
-            paramGameTabData2.utG.a(localTabItem.uea, localTabItem);
+          if (!bu.isNullOrNil(localTabItem.upi)) {
+            paramGameTabData2.uEZ.a(localTabItem.upi, localTabItem);
           }
         }
-        else if (paramGameTabData2.utG.size() != 0)
+        else if (paramGameTabData2.uEZ.size() != 0)
         {
           localObject = paramJSONObject.optJSONObject("DefaultTab");
           paramJSONObject = "";
           if (localObject != null) {
             paramJSONObject = ((JSONObject)localObject).optString("Key");
           }
-          if (paramGameTabData2.utG.containsKey(paramJSONObject))
+          if (paramGameTabData2.uEZ.containsKey(paramJSONObject))
           {
-            paramGameTabData2.utH = paramJSONObject;
-            AppMethodBeat.o(206894);
+            paramGameTabData2.uFa = paramJSONObject;
+            AppMethodBeat.o(195716);
             return true;
           }
-          paramGameTabData2.utH = ag(paramGameTabData2.utG);
+          paramGameTabData2.uFa = am(paramGameTabData2.uEZ);
           continue;
         }
         i += 1;
       }
       catch (JSONException paramGameTabData2)
       {
-        AppMethodBeat.o(206894);
+        AppMethodBeat.o(195716);
         return false;
       }
     }
   }
   
-  private static String ag(Map<String, TabItem> paramMap)
+  private static String am(Map<String, TabItem> paramMap)
   {
-    AppMethodBeat.i(206895);
+    AppMethodBeat.i(195717);
     try
     {
       paramMap = (String)((Map.Entry)paramMap.entrySet().iterator().next()).getKey();
-      AppMethodBeat.o(206895);
+      AppMethodBeat.o(195717);
       return paramMap;
     }
     catch (Exception paramMap)
     {
-      AppMethodBeat.o(206895);
+      AppMethodBeat.o(195717);
     }
     return "";
   }
   
-  public static GameTabData2 daj()
+  public static GameTabData2 dcU()
   {
-    AppMethodBeat.i(206892);
+    AppMethodBeat.i(195714);
     GameTabData2 localGameTabData2 = new GameTabData2();
-    ac localac;
+    ah localah;
     Iterator localIterator;
-    if (a.tSI != null)
+    if (a.udz != null)
     {
-      if (a.tSI.uhK == null) {
+      if (a.udz.uti == null) {
         break label152;
       }
-      localac = a.tSI.uhK;
-      if ((localac == null) || (bt.hj(localac.ugs))) {
+      localah = a.udz.uti;
+      if ((localah == null) || (bu.ht(localah.urP))) {
         break label167;
       }
-      localIterator = localac.ugs.iterator();
+      localIterator = localah.urP.iterator();
     }
     label152:
     label165:
@@ -175,94 +175,94 @@ public class GameTabData2
       if (!localIterator.hasNext()) {
         break label167;
       }
-      du localdu = (du)localIterator.next();
-      long l2 = localdu.nEq;
-      if (localdu.nEr == 0L) {}
-      for (long l1 = 9223372036854775807L;; l1 = localdu.nEr)
+      ed localed = (ed)localIterator.next();
+      long l2 = localed.nJL;
+      if (localed.nJM == 0L) {}
+      for (long l1 = 9223372036854775807L;; l1 = localed.nJM)
       {
-        if ((bt.aQJ() < l2) || (bt.aQJ() > l1) || (!a(localGameTabData2, localdu.ugr))) {
+        if ((bu.aRi() < l2) || (bu.aRi() > l1) || (!a(localGameTabData2, localed.urO))) {
           break label165;
         }
-        ad.i("MicroMsg.GameTabData2", "Get GameTabData from TabStyleList");
-        AppMethodBeat.o(206892);
+        ae.i("MicroMsg.GameTabData2", "Get GameTabData from TabStyleList");
+        AppMethodBeat.o(195714);
         return localGameTabData2;
-        a.cWO();
-        localac = null;
+        a.cZs();
+        localah = null;
         break;
       }
     }
     label167:
-    if ((localac != null) && (a(localGameTabData2, localac.ugr)))
+    if ((localah != null) && (a(localGameTabData2, localah.urO)))
     {
-      ad.i("MicroMsg.GameTabData2", "Get GameTabData from globalConfig");
-      AppMethodBeat.o(206892);
+      ae.i("MicroMsg.GameTabData2", "Get GameTabData from globalConfig");
+      AppMethodBeat.o(195714);
       return localGameTabData2;
     }
     try
     {
       if (a(localGameTabData2, new JSONObject("{\n        \"TabList\": [\n            {\n                \"Key\": \"home\",\n                \"Title\": \"首页\",\n                \"IconUrl\": \"https://mmgame.qpic.cn/image/4f72b9a4850edcba7ff71688b17233b8224fcc357e2357c9c09f74efc5fbb32c\",\n                \"SelectedIconUrl\": \"https://mmgame.qpic.cn/image/783ef37d09913c102b1647db4eefdce9823ed1351b850fcaf30650eec844cf82\",\n                \"DarkModeIconUrl\": \"https://mmgame.qpic.cn/image/b18f15fb59987306a116b4c04929e10cfe08da24ba2d3467043ae3b0a68cc598\",\n                \"DarkModeSelectedIconUrl\": \"https://mmgame.qpic.cn/image/783ef37d09913c102b1647db4eefdce9823ed1351b850fcaf30650eec844cf82\",\n                \"Type\": 2,\n                \"JumpUrl\": \"https://game.weixin.qq.com/cgi-bin/h5/static/appcenter/index_single.html?wechat_pkgid=appcenter_index_single&ssid=901\"\n            },\n            {\n                \"Key\": \"gameindex\",\n                \"Title\": \"游戏\",\n                \"IconUrl\": \"https://mmgame.qpic.cn/image/3379a7e14dacfc6c9eea1cc3bce1abc681634348b2d10cb741402f0a7afe1b99\",\n                \"SelectedIconUrl\": \"https://mmgame.qpic.cn/image/d517ee0b80e2025c8e84c4247275ff9b52e8729c661b49556dc20cfbf717ef5a\",\n                \"DarkModeIconUrl\": \"https://mmgame.qpic.cn/image/e257a6c0d7dd13a2ec717ec5d370871f8624fed7fcf8bd0c9d3a29dee6d01d97\",\n                \"DarkModeSelectedIconUrl\": \"https://mmgame.qpic.cn/image/d517ee0b80e2025c8e84c4247275ff9b52e8729c661b49556dc20cfbf717ef5a\",\n                \"Type\": 2,\n                \"JumpUrl\": \"https://game.weixin.qq.com/cgi-bin/h5/static/contentcenter/game.html?wechat_pkgid=contentcenter_game&ssid=901\"\n            },\n            {\n                \"Key\": \"community\",\n                \"Title\": \"游戏圈\",\n                \"IconUrl\": \"https://mmgame.qpic.cn/image/090cb63e719dd5dee494f493d4dc7c767293046c8c37c3d620f3c426a4292806\",\n                \"SelectedIconUrl\": \"https://mmgame.qpic.cn/image/d78d45d5a0ff85d3fa7ef3012301b21e899408c71c9039ed0b7f32884033e329\",\n                \"DarkModeIconUrl\": \"https://mmgame.qpic.cn/image/3eea6be7fecf862137602860126a710860466bcb39f19a51d89664147c71aa3d\",\n                \"DarkModeSelectedIconUrl\": \"https://mmgame.qpic.cn/image/d78d45d5a0ff85d3fa7ef3012301b21e899408c71c9039ed0b7f32884033e329\",\n                \"Type\": 2,\n                \"JumpUrl\": \"https://game.weixin.qq.com/cgi-bin/h5/static/appcenter/community.html?wechat_pkgid=appcenter_community&ssid=901\"\n            },\n            {\n                \"Key\": \"chat\",\n                \"Title\": \"消息\",\n                \"IconUrl\": \"https://mmgame.qpic.cn/image/70b7e084e27150c4e606618d72b3afd1c474039fead8dadabf5a3438159d3cd5\",\n                \"SelectedIconUrl\": \"https://mmgame.qpic.cn/image/52ed44d8619a56364c712245b5426e4aed54091754fc174503f9114fb98d3256\",\n                \"DarkModeIconUrl\": \"https://mmgame.qpic.cn/image/6c4e9abf2c66d9b10e7a8a446a7285c89d0e577a6183eb222708d0cb9fc33bf3\",\n                \"DarkModeSelectedIconUrl\": \"https://mmgame.qpic.cn/image/52ed44d8619a56364c712245b5426e4aed54091754fc174503f9114fb98d3256\",\n                \"Type\": 1\n            }\n        ],\n        \"DefaultTab\": {\n            \"Key\": \"home\"\n        }\n    }")))
       {
-        ad.i("MicroMsg.GameTabData2", "Get GameTabData from local");
-        AppMethodBeat.o(206892);
+        ae.i("MicroMsg.GameTabData2", "Get GameTabData from local");
+        AppMethodBeat.o(195714);
         return localGameTabData2;
       }
     }
     catch (JSONException localJSONException)
     {
-      ad.e("MicroMsg.GameTabData2", localJSONException.getMessage());
-      AppMethodBeat.o(206892);
+      ae.e("MicroMsg.GameTabData2", localJSONException.getMessage());
+      AppMethodBeat.o(195714);
     }
     return null;
   }
   
   private void e(Parcel paramParcel)
   {
-    AppMethodBeat.i(206890);
+    AppMethodBeat.i(195712);
     int j = paramParcel.readInt();
-    if (this.utG == null) {
-      this.utG = new a();
+    if (this.uEZ == null) {
+      this.uEZ = new a();
     }
     int i = 0;
     while (i < j)
     {
       TabItem localTabItem = (TabItem)paramParcel.readParcelable(TabItem.class.getClassLoader());
       if (localTabItem != null) {
-        this.utG.a(localTabItem.uea, localTabItem);
+        this.uEZ.a(localTabItem.upi, localTabItem);
       }
       i += 1;
     }
-    this.utH = paramParcel.readString();
-    this.jVX = paramParcel.readString();
-    this.utI = paramParcel.readString();
-    AppMethodBeat.o(206890);
+    this.uFa = paramParcel.readString();
+    this.jZm = paramParcel.readString();
+    this.uFb = paramParcel.readString();
+    AppMethodBeat.o(195712);
   }
   
-  public final List<TabItem> afl()
+  public final List<TabItem> afz()
   {
-    AppMethodBeat.i(206887);
+    AppMethodBeat.i(195709);
     ArrayList localArrayList = new ArrayList();
-    if (this.utG != null) {
-      localArrayList.addAll(this.utG.values());
+    if (this.uEZ != null) {
+      localArrayList.addAll(this.uEZ.values());
     }
-    AppMethodBeat.o(206887);
+    AppMethodBeat.o(195709);
     return localArrayList;
   }
   
-  public final String dai()
+  public final String dcT()
   {
-    AppMethodBeat.i(206888);
-    Object localObject = this.utG.values().iterator();
+    AppMethodBeat.i(195710);
+    Object localObject = this.uEZ.values().iterator();
     while (((Iterator)localObject).hasNext())
     {
       TabItem localTabItem = (TabItem)((Iterator)localObject).next();
-      if (localTabItem.duh == 1)
+      if (localTabItem.dvm == 1)
       {
-        localObject = localTabItem.uea;
-        AppMethodBeat.o(206888);
+        localObject = localTabItem.upi;
+        AppMethodBeat.o(195710);
         return localObject;
       }
     }
-    AppMethodBeat.o(206888);
+    AppMethodBeat.o(195710);
     return "";
   }
   
@@ -273,9 +273,9 @@ public class GameTabData2
   
   public final String toJson()
   {
-    AppMethodBeat.i(206889);
+    AppMethodBeat.i(195711);
     Object localObject = new JSONArray();
-    Iterator localIterator = this.utG.values().iterator();
+    Iterator localIterator = this.uEZ.values().iterator();
     for (;;)
     {
       if (localIterator.hasNext())
@@ -284,10 +284,10 @@ public class GameTabData2
         JSONObject localJSONObject = new JSONObject();
         try
         {
-          localJSONObject.put("Key", localTabItem.uea);
+          localJSONObject.put("Key", localTabItem.upi);
           localJSONObject.put("Title", localTabItem.title);
           localJSONObject.put("JumpUrl", localTabItem.jumpUrl);
-          if (bt.nullAsNil(this.utH).equalsIgnoreCase(localTabItem.uea)) {
+          if (bu.nullAsNil(this.uFa).equalsIgnoreCase(localTabItem.upi)) {
             localJSONObject.put("isDefaultTab", 1);
           }
           for (;;)
@@ -305,152 +305,152 @@ public class GameTabData2
       }
     }
     localObject = ((JSONArray)localObject).toString();
-    AppMethodBeat.o(206889);
+    AppMethodBeat.o(195711);
     return localObject;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(206891);
-    paramParcel.writeInt(this.utG.size());
-    Iterator localIterator = this.utG.entrySet().iterator();
+    AppMethodBeat.i(195713);
+    paramParcel.writeInt(this.uEZ.size());
+    Iterator localIterator = this.uEZ.entrySet().iterator();
     while (localIterator.hasNext()) {
       paramParcel.writeParcelable((Parcelable)((Map.Entry)localIterator.next()).getValue(), paramInt);
     }
-    paramParcel.writeString(this.utH);
-    paramParcel.writeString(this.jVX);
-    paramParcel.writeString(this.utI);
-    AppMethodBeat.o(206891);
+    paramParcel.writeString(this.uFa);
+    paramParcel.writeString(this.jZm);
+    paramParcel.writeString(this.uFb);
+    AppMethodBeat.o(195713);
   }
   
   public static class TabItem
     implements Parcelable
   {
     public static final Parcelable.Creator<TabItem> CREATOR;
-    public int duh;
+    public int dvm;
     public String iconUrl;
     public String jumpUrl;
     public int position;
     public String title;
     public String titleColor;
-    public String uea;
-    public String uei;
-    public String utK;
-    public String utL;
-    public String utM;
-    public String utN;
-    public String utO;
-    public String utP;
-    public GameTabData2.TabItemWeapp utQ;
-    public GameTabData2.TabItemReport utR;
-    public boolean utS;
-    public int utT;
-    public int utU;
+    public String uFd;
+    public String uFe;
+    public String uFf;
+    public String uFg;
+    public String uFh;
+    public String uFi;
+    public GameTabData2.TabItemWeapp uFj;
+    public GameTabData2.TabItemReport uFk;
+    public boolean uFl;
+    public int uFm;
+    public int uFn;
+    public String upi;
+    public String upp;
     
     static
     {
-      AppMethodBeat.i(206872);
+      AppMethodBeat.i(195694);
       CREATOR = new Parcelable.Creator() {};
-      AppMethodBeat.o(206872);
+      AppMethodBeat.o(195694);
     }
     
     private TabItem(Parcel paramParcel)
     {
-      AppMethodBeat.i(206870);
-      this.uea = paramParcel.readString();
+      AppMethodBeat.i(195692);
+      this.upi = paramParcel.readString();
       this.title = paramParcel.readString();
       this.titleColor = paramParcel.readString();
-      this.utK = paramParcel.readString();
-      this.utL = paramParcel.readString();
-      this.utM = paramParcel.readString();
+      this.uFd = paramParcel.readString();
+      this.uFe = paramParcel.readString();
+      this.uFf = paramParcel.readString();
       this.iconUrl = paramParcel.readString();
-      this.utN = paramParcel.readString();
-      this.utO = paramParcel.readString();
-      this.utP = paramParcel.readString();
-      this.duh = paramParcel.readInt();
+      this.uFg = paramParcel.readString();
+      this.uFh = paramParcel.readString();
+      this.uFi = paramParcel.readString();
+      this.dvm = paramParcel.readInt();
       this.jumpUrl = paramParcel.readString();
-      this.utQ = ((GameTabData2.TabItemWeapp)paramParcel.readParcelable(GameTabData2.TabItemWeapp.class.getClassLoader()));
-      this.utR = ((GameTabData2.TabItemReport)paramParcel.readParcelable(GameTabData2.TabItemReport.class.getClassLoader()));
+      this.uFj = ((GameTabData2.TabItemWeapp)paramParcel.readParcelable(GameTabData2.TabItemWeapp.class.getClassLoader()));
+      this.uFk = ((GameTabData2.TabItemReport)paramParcel.readParcelable(GameTabData2.TabItemReport.class.getClassLoader()));
       if (paramParcel.readByte() != 0) {}
       for (boolean bool = true;; bool = false)
       {
-        this.utS = bool;
-        this.utT = paramParcel.readInt();
-        this.uei = paramParcel.readString();
+        this.uFl = bool;
+        this.uFm = paramParcel.readInt();
+        this.upp = paramParcel.readString();
         this.position = paramParcel.readInt();
-        AppMethodBeat.o(206870);
+        AppMethodBeat.o(195692);
         return;
       }
     }
     
-    public TabItem(dt paramdt)
+    public TabItem(ec paramec)
     {
-      AppMethodBeat.i(206867);
-      if (paramdt == null)
+      AppMethodBeat.i(195689);
+      if (paramec == null)
       {
-        AppMethodBeat.o(206867);
+        AppMethodBeat.o(195689);
         return;
       }
-      this.uea = paramdt.ujy;
-      this.title = paramdt.Title;
-      this.titleColor = paramdt.ujW;
-      this.utK = paramdt.ujX;
-      this.utL = paramdt.ujY;
-      this.utM = paramdt.ujZ;
-      this.iconUrl = paramdt.IconUrl;
-      this.utN = paramdt.uka;
-      this.utO = paramdt.ukb;
-      this.utP = paramdt.ukc;
-      this.duh = paramdt.nEf;
-      this.jumpUrl = paramdt.ueY;
-      this.utQ = new GameTabData2.TabItemWeapp(paramdt.ukd);
-      this.utR = new GameTabData2.TabItemReport(paramdt.uke);
-      this.utS = paramdt.ukf;
-      this.utT = paramdt.ukg;
-      dak();
-      AppMethodBeat.o(206867);
+      this.upi = paramec.uuW;
+      this.title = paramec.Title;
+      this.titleColor = paramec.uvu;
+      this.uFd = paramec.uvv;
+      this.uFe = paramec.uvw;
+      this.uFf = paramec.uvx;
+      this.iconUrl = paramec.IconUrl;
+      this.uFg = paramec.uvy;
+      this.uFh = paramec.uqL;
+      this.uFi = paramec.uvz;
+      this.dvm = paramec.nJA;
+      this.jumpUrl = paramec.uqf;
+      this.uFj = new GameTabData2.TabItemWeapp(paramec.uvA);
+      this.uFk = new GameTabData2.TabItemReport(paramec.uvB);
+      this.uFl = paramec.uvC;
+      this.uFm = paramec.uvD;
+      dcV();
+      AppMethodBeat.o(195689);
     }
     
     public TabItem(JSONObject paramJSONObject)
     {
-      AppMethodBeat.i(206868);
+      AppMethodBeat.i(195690);
       if (paramJSONObject == null)
       {
-        AppMethodBeat.o(206868);
+        AppMethodBeat.o(195690);
         return;
       }
-      this.uea = paramJSONObject.optString("Key");
+      this.upi = paramJSONObject.optString("Key");
       this.title = paramJSONObject.optString("Title");
       this.iconUrl = paramJSONObject.optString("IconUrl");
-      this.utN = paramJSONObject.optString("SelectedIconUrl");
-      this.utO = paramJSONObject.optString("DarkModeIconUrl");
-      this.utP = paramJSONObject.optString("DarkModeSelectedIconUrl");
-      this.duh = paramJSONObject.optInt("Type");
+      this.uFg = paramJSONObject.optString("SelectedIconUrl");
+      this.uFh = paramJSONObject.optString("DarkModeIconUrl");
+      this.uFi = paramJSONObject.optString("DarkModeSelectedIconUrl");
+      this.dvm = paramJSONObject.optInt("Type");
       this.jumpUrl = paramJSONObject.optString("JumpUrl");
-      this.utQ = new GameTabData2.TabItemWeapp(paramJSONObject.optJSONObject("JumpWeapp"));
-      this.utR = new GameTabData2.TabItemReport(paramJSONObject.optJSONObject("Report"));
-      this.utS = false;
-      this.utT = 2;
-      dak();
-      AppMethodBeat.o(206868);
+      this.uFj = new GameTabData2.TabItemWeapp(paramJSONObject.optJSONObject("JumpWeapp"));
+      this.uFk = new GameTabData2.TabItemReport(paramJSONObject.optJSONObject("Report"));
+      this.uFl = false;
+      this.uFm = 2;
+      dcV();
+      AppMethodBeat.o(195690);
     }
     
-    private void dak()
+    private void dcV()
     {
-      AppMethodBeat.i(206869);
-      switch (this.duh)
+      AppMethodBeat.i(195691);
+      switch (this.dvm)
       {
       default: 
-        this.uei = "";
-        AppMethodBeat.o(206869);
+        this.upp = "";
+        AppMethodBeat.o(195691);
         return;
       case 1: 
-        this.uei = GameChatTabUI.class.getName();
-        AppMethodBeat.o(206869);
+        this.upp = GameChatTabUI.class.getName();
+        AppMethodBeat.o(195691);
         return;
       }
-      this.uei = GameWebTabUI.class.getName();
-      AppMethodBeat.o(206869);
+      this.upp = GameWebTabUI.class.getName();
+      AppMethodBeat.o(195691);
     }
     
     public int describeContents()
@@ -460,29 +460,29 @@ public class GameTabData2
     
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
-      AppMethodBeat.i(206871);
-      paramParcel.writeString(this.uea);
+      AppMethodBeat.i(195693);
+      paramParcel.writeString(this.upi);
       paramParcel.writeString(this.title);
       paramParcel.writeString(this.titleColor);
-      paramParcel.writeString(this.utK);
-      paramParcel.writeString(this.utL);
-      paramParcel.writeString(this.utM);
+      paramParcel.writeString(this.uFd);
+      paramParcel.writeString(this.uFe);
+      paramParcel.writeString(this.uFf);
       paramParcel.writeString(this.iconUrl);
-      paramParcel.writeString(this.utN);
-      paramParcel.writeString(this.utO);
-      paramParcel.writeString(this.utP);
-      paramParcel.writeInt(this.duh);
+      paramParcel.writeString(this.uFg);
+      paramParcel.writeString(this.uFh);
+      paramParcel.writeString(this.uFi);
+      paramParcel.writeInt(this.dvm);
       paramParcel.writeString(this.jumpUrl);
-      paramParcel.writeParcelable(this.utQ, paramInt);
-      paramParcel.writeParcelable(this.utR, paramInt);
-      if (this.utS) {}
+      paramParcel.writeParcelable(this.uFj, paramInt);
+      paramParcel.writeParcelable(this.uFk, paramInt);
+      if (this.uFl) {}
       for (paramInt = 1;; paramInt = 0)
       {
         paramParcel.writeByte((byte)paramInt);
-        paramParcel.writeInt(this.utT);
-        paramParcel.writeString(this.uei);
+        paramParcel.writeInt(this.uFm);
+        paramParcel.writeString(this.upp);
         paramParcel.writeInt(this.position);
-        AppMethodBeat.o(206871);
+        AppMethodBeat.o(195693);
         return;
       }
     }
@@ -492,52 +492,52 @@ public class GameTabData2
     implements Parcelable
   {
     public static final Parcelable.Creator<TabItemReport> CREATOR;
-    public String uaR;
-    public int uek;
-    public int utV;
+    public int uFo;
+    public String ulT;
+    public int upr;
     
     static
     {
-      AppMethodBeat.i(206878);
+      AppMethodBeat.i(195700);
       CREATOR = new Parcelable.Creator() {};
-      AppMethodBeat.o(206878);
+      AppMethodBeat.o(195700);
     }
     
     private TabItemReport(Parcel paramParcel)
     {
-      AppMethodBeat.i(206876);
-      this.utV = paramParcel.readInt();
-      this.uek = paramParcel.readInt();
-      this.uaR = paramParcel.readString();
-      AppMethodBeat.o(206876);
+      AppMethodBeat.i(195698);
+      this.uFo = paramParcel.readInt();
+      this.upr = paramParcel.readInt();
+      this.ulT = paramParcel.readString();
+      AppMethodBeat.o(195698);
     }
     
-    public TabItemReport(ds paramds)
+    public TabItemReport(eb parameb)
     {
-      AppMethodBeat.i(206874);
-      if (paramds == null)
+      AppMethodBeat.i(195696);
+      if (parameb == null)
       {
-        AppMethodBeat.o(206874);
+        AppMethodBeat.o(195696);
         return;
       }
-      this.utV = paramds.ujV;
-      this.uek = paramds.ufI;
-      this.uaR = paramds.ufG;
-      AppMethodBeat.o(206874);
+      this.uFo = parameb.uvt;
+      this.upr = parameb.urc;
+      this.ulT = parameb.ura;
+      AppMethodBeat.o(195696);
     }
     
     public TabItemReport(JSONObject paramJSONObject)
     {
-      AppMethodBeat.i(206875);
+      AppMethodBeat.i(195697);
       if (paramJSONObject == null)
       {
-        AppMethodBeat.o(206875);
+        AppMethodBeat.o(195697);
         return;
       }
-      this.utV = paramJSONObject.optInt("AreaId");
-      this.uek = paramJSONObject.optInt("PositionId");
-      this.uaR = paramJSONObject.optString("ExternInfo");
-      AppMethodBeat.o(206875);
+      this.uFo = paramJSONObject.optInt("AreaId");
+      this.upr = paramJSONObject.optInt("PositionId");
+      this.ulT = paramJSONObject.optString("ExternInfo");
+      AppMethodBeat.o(195697);
     }
     
     public int describeContents()
@@ -547,11 +547,11 @@ public class GameTabData2
     
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
-      AppMethodBeat.i(206877);
-      paramParcel.writeInt(this.utV);
-      paramParcel.writeInt(this.uek);
-      paramParcel.writeString(this.uaR);
-      AppMethodBeat.o(206877);
+      AppMethodBeat.i(195699);
+      paramParcel.writeInt(this.uFo);
+      paramParcel.writeInt(this.upr);
+      paramParcel.writeString(this.ulT);
+      AppMethodBeat.o(195699);
     }
   }
   
@@ -559,48 +559,48 @@ public class GameTabData2
     implements Parcelable
   {
     public static final Parcelable.Creator<TabItemWeapp> CREATOR;
-    public String iht;
-    public String ujc;
+    public String ikm;
+    public String uuA;
     
     static
     {
-      AppMethodBeat.i(206884);
+      AppMethodBeat.i(195706);
       CREATOR = new Parcelable.Creator() {};
-      AppMethodBeat.o(206884);
+      AppMethodBeat.o(195706);
     }
     
     private TabItemWeapp(Parcel paramParcel)
     {
-      AppMethodBeat.i(206882);
-      this.iht = paramParcel.readString();
-      this.ujc = paramParcel.readString();
-      AppMethodBeat.o(206882);
+      AppMethodBeat.i(195704);
+      this.ikm = paramParcel.readString();
+      this.uuA = paramParcel.readString();
+      AppMethodBeat.o(195704);
     }
     
-    public TabItemWeapp(dr paramdr)
+    public TabItemWeapp(ea paramea)
     {
-      AppMethodBeat.i(206880);
-      if (paramdr == null)
+      AppMethodBeat.i(195702);
+      if (paramea == null)
       {
-        AppMethodBeat.o(206880);
+        AppMethodBeat.o(195702);
         return;
       }
-      this.iht = paramdr.iht;
-      this.ujc = paramdr.ujc;
-      AppMethodBeat.o(206880);
+      this.ikm = paramea.ikm;
+      this.uuA = paramea.uuA;
+      AppMethodBeat.o(195702);
     }
     
     public TabItemWeapp(JSONObject paramJSONObject)
     {
-      AppMethodBeat.i(206881);
+      AppMethodBeat.i(195703);
       if (paramJSONObject == null)
       {
-        AppMethodBeat.o(206881);
+        AppMethodBeat.o(195703);
         return;
       }
-      this.iht = paramJSONObject.optString("AppId");
-      this.ujc = paramJSONObject.optString("Path");
-      AppMethodBeat.o(206881);
+      this.ikm = paramJSONObject.optString("AppId");
+      this.uuA = paramJSONObject.optString("Path");
+      AppMethodBeat.o(195703);
     }
     
     public int describeContents()
@@ -610,10 +610,10 @@ public class GameTabData2
     
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
-      AppMethodBeat.i(206883);
-      paramParcel.writeString(this.iht);
-      paramParcel.writeString(this.ujc);
-      AppMethodBeat.o(206883);
+      AppMethodBeat.i(195705);
+      paramParcel.writeString(this.ikm);
+      paramParcel.writeString(this.uuA);
+      AppMethodBeat.o(195705);
     }
   }
   
@@ -624,10 +624,10 @@ public class GameTabData2
     
     public final GameTabData2.TabItem a(String paramString, GameTabData2.TabItem paramTabItem)
     {
-      AppMethodBeat.i(206864);
+      AppMethodBeat.i(195686);
       paramTabItem.position = (size() + 1);
       paramString = (GameTabData2.TabItem)super.put(paramString, paramTabItem);
-      AppMethodBeat.o(206864);
+      AppMethodBeat.o(195686);
       return paramString;
     }
   }

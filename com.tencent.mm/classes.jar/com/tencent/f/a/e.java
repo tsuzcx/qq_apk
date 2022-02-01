@@ -3,17 +3,17 @@ package com.tencent.f.a;
 public final class e
   implements com.tencent.f.e
 {
-  public int Mkj;
+  public int MHg;
   public int arg1;
   public int arg2;
-  public String dzZ;
+  public String dBe;
   private int mPriority;
   public Object obj;
   
   public final void reset()
   {
-    this.dzZ = null;
-    this.Mkj = 0;
+    this.dBe = null;
+    this.MHg = 0;
     this.arg1 = 0;
     this.arg2 = 0;
     this.obj = null;

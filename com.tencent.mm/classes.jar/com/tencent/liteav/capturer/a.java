@@ -110,7 +110,7 @@ public class a
   
   private static d a(Camera.Parameters paramParameters, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(187378);
+    AppMethodBeat.i(221507);
     TXCLog.d("TXCCameraCapturer", "camera preview wanted: %d x %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     paramParameters = paramParameters.getSupportedPreviewSizes();
     float f1 = 1.0F * paramInt1 / paramInt2;
@@ -165,18 +165,18 @@ public class a
       break;
       TXCLog.i("TXCCameraCapturer", "best match preview size: %d x %d", new Object[] { Integer.valueOf(paramParameters.width), Integer.valueOf(paramParameters.height) });
       paramParameters = new d(paramParameters.width, paramParameters.height);
-      AppMethodBeat.o(187378);
+      AppMethodBeat.o(221507);
       return paramParameters;
     }
   }
   
   private static d b(boolean paramBoolean, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(187377);
+    AppMethodBeat.i(221506);
     if (paramBoolean)
     {
       locald1 = new d(paramInt1, paramInt2);
-      AppMethodBeat.o(187377);
+      AppMethodBeat.o(221506);
       return locald1;
     }
     d locald1 = new d(1080, 1920);
@@ -200,7 +200,7 @@ public class a
       else
       {
         locald1 = new d(i3, i1);
-        AppMethodBeat.o(187377);
+        AppMethodBeat.o(221506);
         return locald1;
       }
       i2 += 1;
@@ -210,12 +210,12 @@ public class a
   private int d(int paramInt)
   {
     int i1 = 0;
-    AppMethodBeat.i(187379);
+    AppMethodBeat.i(221508);
     List localList = this.c.getParameters().getSupportedPreviewFrameRates();
     if (localList == null)
     {
       TXCLog.e("TXCCameraCapturer", "getSupportedFPS error");
-      AppMethodBeat.o(187379);
+      AppMethodBeat.o(221508);
       return 1;
     }
     int i3;
@@ -229,13 +229,13 @@ public class a
       i1 += 1;
     }
     TXCLog.i("TXCCameraCapturer", "choose fps=".concat(String.valueOf(i2)));
-    AppMethodBeat.o(187379);
+    AppMethodBeat.o(221508);
     return i2;
   }
   
   private int[] e(int paramInt)
   {
-    AppMethodBeat.i(187380);
+    AppMethodBeat.i(221509);
     paramInt *= 1000;
     String str = "camera supported preview fps range: wantFPS = " + paramInt + "\n";
     Object localObject2 = this.c.getParameters().getSupportedPreviewFpsRange();
@@ -268,9 +268,9 @@ public class a
     for (;;)
     {
       TXCLog.i("TXCCameraCapturer", str + "choose preview fps range: " + localObject1[0] + " - " + localObject1[1]);
-      AppMethodBeat.o(187380);
+      AppMethodBeat.o(221509);
       return localObject1;
-      AppMethodBeat.o(187380);
+      AppMethodBeat.o(221509);
       return null;
     }
   }
@@ -475,14 +475,14 @@ public class a
   
   public void a(a parama)
   {
-    AppMethodBeat.i(187371);
+    AppMethodBeat.i(221500);
     if (parama != a.a)
     {
       this.q = a.a(parama);
       this.r = a.b(parama);
     }
     TXCLog.i("TXCCameraCapturer", "set resolution ".concat(String.valueOf(parama)));
-    AppMethodBeat.o(187371);
+    AppMethodBeat.o(221500);
   }
   
   public void a(b paramb)
@@ -492,12 +492,12 @@ public class a
   
   public void a(boolean paramBoolean, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(187374);
+    AppMethodBeat.i(221503);
     this.p = paramBoolean;
     this.q = paramInt1;
     this.r = paramInt2;
     TXCLog.i("TXCCameraCapturer", "setCaptureBuffer %b, width: %d, height: %d", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    AppMethodBeat.o(187374);
+    AppMethodBeat.o(221503);
   }
   
   public boolean a()
@@ -568,10 +568,10 @@ public class a
   
   public void b(boolean paramBoolean)
   {
-    AppMethodBeat.i(187372);
+    AppMethodBeat.i(221501);
     this.t = paramBoolean;
     TXCLog.i("TXCCameraCapturer", "set performance mode to ".concat(String.valueOf(paramBoolean)));
-    AppMethodBeat.o(187372);
+    AppMethodBeat.o(221501);
   }
   
   public boolean b()
@@ -594,7 +594,7 @@ public class a
   public boolean b(int paramInt)
   {
     bool2 = false;
-    AppMethodBeat.i(187373);
+    AppMethodBeat.i(221502);
     bool1 = bool2;
     Camera.Parameters localParameters;
     if (this.c != null)
@@ -618,7 +618,7 @@ public class a
         bool1 = bool2;
         continue;
       }
-      AppMethodBeat.o(187373);
+      AppMethodBeat.o(221502);
       return bool1;
       TXCLog.e("TXCCameraCapturer", "invalid zoom value : " + paramInt + ", while max zoom is " + localParameters.getMaxZoom());
       bool1 = bool2;
@@ -630,11 +630,11 @@ public class a
   
   public void c(int paramInt)
   {
-    AppMethodBeat.i(187375);
+    AppMethodBeat.i(221504);
     TXCLog.w("TXCCameraCapturer", "vsize setHomeOrientation ".concat(String.valueOf(paramInt)));
     this.g = paramInt;
     this.j = ((this.k - 90 + this.g * 90 + 360) % 360);
-    AppMethodBeat.o(187375);
+    AppMethodBeat.o(221504);
   }
   
   public void c(boolean paramBoolean)
@@ -649,7 +649,7 @@ public class a
   
   public int d(boolean paramBoolean)
   {
-    AppMethodBeat.i(187376);
+    AppMethodBeat.i(221505);
     for (;;)
     {
       int i4;
@@ -659,7 +659,7 @@ public class a
         localObject1 = this.l;
         if (localObject1 == null)
         {
-          AppMethodBeat.o(187376);
+          AppMethodBeat.o(221505);
           return -2;
         }
         if (this.c != null) {
@@ -704,7 +704,7 @@ public class a
         Object localObject1;
         Object localObject2;
         TXCLog.e("TXCCameraCapturer", "open camera failed." + localIOException.getMessage());
-        AppMethodBeat.o(187376);
+        AppMethodBeat.o(221505);
         return -1;
         if ((localObject2 == null) || (!((List)localObject2).contains("continuous-video"))) {
           continue;
@@ -716,7 +716,7 @@ public class a
       catch (Exception localException)
       {
         TXCLog.e("TXCCameraCapturer", "open camera failed." + localException.getMessage());
-        AppMethodBeat.o(187376);
+        AppMethodBeat.o(221505);
         return -1;
       }
       this.d = paramBoolean;
@@ -764,7 +764,7 @@ public class a
           this.c.setParameters((Camera.Parameters)localObject1);
           this.c.setErrorCallback(this);
           this.c.startPreview();
-          AppMethodBeat.o(187376);
+          AppMethodBeat.o(221505);
           return 0;
         }
       }
@@ -966,7 +966,7 @@ public class a
     
     static
     {
-      AppMethodBeat.i(187370);
+      AppMethodBeat.i(221499);
       a = new a("RESOLUTION_INVALID", 0, -1, -1);
       b = new a("RESOLUTION_180_320", 1, 180, 320);
       c = new a("RESOLUTION_270_480", 2, 270, 480);
@@ -977,7 +977,7 @@ public class a
       h = new a("RESOLUTION_1080_1920", 7, 1080, 1920);
       i = new a("RESOLUTION_HIGHEST", 8, 1080, 1920);
       j = new a[] { a, b, c, d, e, f, g, h, i };
-      AppMethodBeat.o(187370);
+      AppMethodBeat.o(221499);
     }
     
     private a(int paramInt1, int paramInt2)

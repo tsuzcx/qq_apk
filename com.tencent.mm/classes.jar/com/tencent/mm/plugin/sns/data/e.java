@@ -1,16 +1,31 @@
 package com.tencent.mm.plugin.sns.data;
 
-import android.view.View;
+import android.util.SparseArray;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class e
 {
-  public String doX;
-  public View zcI;
+  public int requestType;
+  public n ztw;
+  public SparseArray<n> ztx;
   
-  public e(View paramView, String paramString)
+  public e()
   {
-    this.zcI = paramView;
-    this.doX = paramString;
+    AppMethodBeat.i(95067);
+    this.ztx = new SparseArray();
+    AppMethodBeat.o(95067);
+  }
+  
+  public e(SparseArray<n> paramSparseArray)
+  {
+    this.ztx = paramSparseArray;
+    this.requestType = 9;
+  }
+  
+  public e(n paramn, int paramInt)
+  {
+    this.ztw = paramn;
+    this.requestType = paramInt;
   }
 }
 

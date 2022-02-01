@@ -4,7 +4,7 @@ import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.base.b;
 import com.tencent.mm.plugin.appbrand.jsapi.e;
-import com.tencent.mm.plugin.appbrand.z.g;
+import com.tencent.mm.plugin.appbrand.y.g;
 import org.json.JSONObject;
 
 public final class a
@@ -56,7 +56,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.container.a
  * JD-Core Version:    0.7.0.1
  */

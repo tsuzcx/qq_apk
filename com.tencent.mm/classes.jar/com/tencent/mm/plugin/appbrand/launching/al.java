@@ -2,14 +2,14 @@ package com.tencent.mm.plugin.appbrand.launching;
 
 import com.tencent.mm.plugin.appbrand.appcache.WxaPkgLoadProgress;
 import com.tencent.mm.plugin.appbrand.appcache.WxaPkgWrappingInfo;
-import com.tencent.mm.plugin.appbrand.appcache.bi.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.plugin.appbrand.appcache.bj.a;
+import com.tencent.mm.sdk.platformtools.ae;
 
 abstract class al
-  implements bi.a
+  implements bj.a
 {
-  final boolean gnX;
-  final int hQh;
+  final boolean gqt;
+  final int hSZ;
   
   al(int paramInt)
   {
@@ -18,23 +18,23 @@ abstract class al
   
   al(int paramInt, boolean paramBoolean)
   {
-    this.hQh = paramInt;
-    this.gnX = paramBoolean;
+    this.hSZ = paramInt;
+    this.gqt = paramBoolean;
   }
   
-  private void RO(String paramString)
+  private void Sx(String paramString)
   {
-    if (this.gnX)
+    if (this.gqt)
     {
-      bf.RO(paramString);
+      bf.Sx(paramString);
       return;
     }
-    ad.e("MicroMsg.AppBrand.LaunchCommonDownloadCallback", "silent toast: %s", new Object[] { paramString });
+    ae.e("MicroMsg.AppBrand.LaunchCommonDownloadCallback", "silent toast: %s", new Object[] { paramString });
   }
   
   protected void b(WxaPkgLoadProgress paramWxaPkgLoadProgress) {}
   
-  abstract String brq();
+  abstract String bsb();
   
   abstract void e(WxaPkgWrappingInfo paramWxaPkgWrappingInfo);
 }

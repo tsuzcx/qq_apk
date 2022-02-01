@@ -37,16 +37,16 @@ public final class g
     }
     a locala = new a(256);
     if (localObject != null) {
-      locala.gx(localObject);
+      locala.gA(localObject);
     }
     while (paramIterator.hasNext())
     {
       if (paramString != null) {
-        locala.bdU(paramString);
+        locala.bfy(paramString);
       }
       localObject = paramIterator.next();
       if (localObject != null) {
-        locala.gx(localObject);
+        locala.gA(localObject);
       }
     }
     paramIterator = locala.toString();
@@ -75,7 +75,7 @@ public final class g
           locala.L(paramChar);
         }
         if (paramArrayOfObject[i] != null) {
-          locala.gx(paramArrayOfObject[i]);
+          locala.gA(paramArrayOfObject[i]);
         }
         i += 1;
       }
@@ -124,10 +124,10 @@ public final class g
       while (i < paramInt)
       {
         if (i > 0) {
-          paramString.bdU(str);
+          paramString.bfy(str);
         }
         if (paramArrayOfObject[i] != null) {
-          paramString.gx(paramArrayOfObject[i]);
+          paramString.gA(paramArrayOfObject[i]);
         }
         i += 1;
       }
@@ -137,42 +137,67 @@ public final class g
     return paramArrayOfObject;
   }
   
-  public static boolean ea(String paramString)
+  public static String bu(String paramString1, String paramString2, String paramString3)
   {
-    AppMethodBeat.i(186986);
+    AppMethodBeat.i(193966);
+    paramString1 = k(paramString1, paramString2, paramString3, -1);
+    AppMethodBeat.o(193966);
+    return paramString1;
+  }
+  
+  public static boolean ef(String paramString)
+  {
+    AppMethodBeat.i(193962);
     if ((paramString == null) || (paramString.length() == 0))
     {
-      AppMethodBeat.o(186986);
+      AppMethodBeat.o(193962);
       return true;
     }
-    AppMethodBeat.o(186986);
+    AppMethodBeat.o(193962);
+    return false;
+  }
+  
+  public static boolean eo(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(193964);
+    if (paramString1 == null)
+    {
+      AppMethodBeat.o(193964);
+      return false;
+    }
+    if (paramString1.indexOf(paramString2) >= 0)
+    {
+      AppMethodBeat.o(193964);
+      return true;
+    }
+    AppMethodBeat.o(193964);
     return false;
   }
   
   public static boolean equals(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(186987);
+    AppMethodBeat.i(193963);
     if (paramString1 == null)
     {
       if (paramString2 == null)
       {
-        AppMethodBeat.o(186987);
+        AppMethodBeat.o(193963);
         return true;
       }
-      AppMethodBeat.o(186987);
+      AppMethodBeat.o(193963);
       return false;
     }
     boolean bool = paramString1.equals(paramString2);
-    AppMethodBeat.o(186987);
+    AppMethodBeat.o(193963);
     return bool;
   }
   
-  public static String hy(String paramString, int paramInt)
+  public static String hH(String paramString, int paramInt)
   {
-    AppMethodBeat.i(186988);
+    AppMethodBeat.i(193965);
     if (paramString == null)
     {
-      AppMethodBeat.o(186988);
+      AppMethodBeat.o(193965);
       return null;
     }
     int i = paramInt;
@@ -184,7 +209,7 @@ public final class g
     {
       if (paramInt < 0)
       {
-        AppMethodBeat.o(186988);
+        AppMethodBeat.o(193965);
         return "";
       }
       i = paramInt;
@@ -192,14 +217,59 @@ public final class g
         i = 0;
       }
       paramString = paramString.substring(0, i);
-      AppMethodBeat.o(186988);
+      AppMethodBeat.o(193965);
       return paramString;
     }
+  }
+  
+  private static String k(String paramString1, String paramString2, String paramString3, int paramInt)
+  {
+    AppMethodBeat.i(193967);
+    if ((ef(paramString1)) || (ef(paramString2)) || (paramString3 == null))
+    {
+      AppMethodBeat.o(193967);
+      return paramString1;
+    }
+    int j = paramString1.indexOf(paramString2, 0);
+    if (j == -1)
+    {
+      AppMethodBeat.o(193967);
+      return paramString1;
+    }
+    int m = paramString2.length();
+    int k = paramString3.length() - m;
+    int i = k;
+    if (k < 0) {
+      i = 0;
+    }
+    a locala = new a(i * 16 + paramString1.length());
+    k = 0;
+    i = paramInt;
+    paramInt = k;
+    for (;;)
+    {
+      k = paramInt;
+      if (j == -1) {
+        break;
+      }
+      locala.bfy(paramString1.substring(paramInt, j)).bfy(paramString3);
+      paramInt = j + m;
+      i -= 1;
+      k = paramInt;
+      if (i == 0) {
+        break;
+      }
+      j = paramString1.indexOf(paramString2, paramInt);
+    }
+    locala.bfy(paramString1.substring(k));
+    paramString1 = locala.toString();
+    AppMethodBeat.o(193967);
+    return paramString1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     org.apache.commons.b.g
  * JD-Core Version:    0.7.0.1
  */

@@ -4,8 +4,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
 import com.tencent.mm.plugin.appbrand.jsapi.i.a.b.i;
 import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -22,16 +22,16 @@ public final class j
     super.a(paramc, paramJSONObject, paramInt);
     if (paramJSONObject == null)
     {
-      ad.e("MicroMsg.JsApiEraseMapLines", "data is null");
+      ae.e("MicroMsg.JsApiEraseMapLines", "data is null");
       paramc.h(paramInt, e("fail:invalid data", null));
       AppMethodBeat.o(143663);
       return;
     }
-    ad.i("MicroMsg.JsApiEraseMapLines", "data:%s", new Object[] { paramJSONObject });
+    ae.i("MicroMsg.JsApiEraseMapLines", "data:%s", new Object[] { paramJSONObject });
     com.tencent.mm.plugin.appbrand.jsapi.i.a.b localb = h(paramc, paramJSONObject);
     if (localb == null)
     {
-      ad.e("MicroMsg.JsApiEraseMapLines", "mapView is null, return");
+      ae.e("MicroMsg.JsApiEraseMapLines", "mapView is null, return");
       paramc.h(paramInt, e("fail:mapview is null", null));
       AppMethodBeat.o(143663);
       return;
@@ -48,13 +48,13 @@ public final class j
         {
           JSONObject localJSONObject1 = (JSONObject)localJSONArray.get(i);
           String str = localJSONObject1.optString("id");
-          if (bt.isNullOrNil(str)) {
+          if (bu.isNullOrNil(str)) {
             break label347;
           }
           paramJSONObject = null;
           JSONObject localJSONObject2 = localJSONObject1.optJSONObject("point");
           if (localJSONObject2 != null) {
-            paramJSONObject = new b.i(bt.getDouble(localJSONObject2.optString("latitude"), 0.0D), bt.getDouble(localJSONObject2.optString("longitude"), 0.0D));
+            paramJSONObject = new b.i(bu.getDouble(localJSONObject2.optString("latitude"), 0.0D), bu.getDouble(localJSONObject2.optString("longitude"), 0.0D));
           }
           if (paramJSONObject == null) {
             break label347;
@@ -62,19 +62,19 @@ public final class j
           localb.a(str, localJSONObject1.optInt("index", 0), paramJSONObject, localJSONObject1.optBoolean("clear", true));
           break label347;
         }
-        a(paramc, paramInt, e("ok", null), true, localb.bkR());
+        a(paramc, paramInt, e("ok", null), true, localb.blB());
         AppMethodBeat.o(143663);
         return;
       }
       catch (JSONException paramJSONObject)
       {
-        ad.m("MicroMsg.JsApiEraseMapLines", "", new Object[] { paramJSONObject });
-        a(paramc, paramInt, e("fail:internal error", null), false, localb.bkR());
+        ae.m("MicroMsg.JsApiEraseMapLines", "", new Object[] { paramJSONObject });
+        a(paramc, paramInt, e("fail:internal error", null), false, localb.blB());
         AppMethodBeat.o(143663);
         return;
       }
-      ad.e("MicroMsg.JsApiEraseMapLines", "data has not lines info");
-      a(paramc, paramInt, e("fail:invalid data", null), false, localb.bkR());
+      ae.e("MicroMsg.JsApiEraseMapLines", "data has not lines info");
+      a(paramc, paramInt, e("fail:invalid data", null), false, localb.blB());
       AppMethodBeat.o(143663);
       return;
       label347:
@@ -84,7 +84,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.i.j
  * JD-Core Version:    0.7.0.1
  */

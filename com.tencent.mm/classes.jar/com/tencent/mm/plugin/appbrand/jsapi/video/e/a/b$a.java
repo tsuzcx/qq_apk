@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.appbrand.jsapi.video.e.a;
 
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/video/player/advance/AdvanceSliding$Companion;", "", "()V", "INDEX_COMPARATOR", "Ljava/util/Comparator;", "Lcom/tencent/mm/plugin/appbrand/jsapi/video/player/advance/AdvanceSliding$Sample;", "MAX_RECYCLED_SAMPLES", "", "TAG", "", "VALUE_COMPARATOR", "luggage-commons-jsapi-video-ext_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsapi/video/player/advance/AdvanceSliding$Companion;", "", "()V", "INDEX_COMPARATOR", "Ljava/util/Comparator;", "Lcom/tencent/mm/plugin/appbrand/jsapi/video/player/advance/AdvanceSliding$Sample;", "MAX_RECYCLED_SAMPLES", "", "TAG", "", "VALUE_COMPARATOR", "luggage-commons-jsapi-video-ext_release"})
 public final class b$a {}
 
 

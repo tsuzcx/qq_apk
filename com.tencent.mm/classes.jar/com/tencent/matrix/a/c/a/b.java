@@ -21,13 +21,13 @@ import java.util.LinkedList;
 public final class b
   implements Handler.Callback, a
 {
-  private static boolean cDe;
-  private static long cDl;
-  private static long cDm = 900000L;
+  private static boolean cDL;
+  private static long cDS;
+  private static long cDT = 900000L;
   private static byte[] sBuffer = new byte[2048];
-  private c cDn = null;
-  private com.tencent.matrix.a.c.a cDo;
-  private b cDp = new b((byte)0);
+  private c cDU = null;
+  private com.tencent.matrix.a.c.a cDV;
+  private b cDW = new b((byte)0);
   private Handler handler;
   
   private static void a(String paramString, d paramd)
@@ -90,7 +90,7 @@ public final class b
               k += 1;
             }
             paramString = new String(sBuffer, i, k);
-            paramd.cDy += d.ef(paramString);
+            paramd.cEf += d.ek(paramString);
             i = j;
             break;
           }
@@ -156,7 +156,7 @@ public final class b
   }
   
   /* Error */
-  private java.util.Set<d> gV(int paramInt)
+  private java.util.Set<d> gW(int paramInt)
   {
     // Byte code:
     //   0: new 135	java/util/HashSet
@@ -309,30 +309,30 @@ public final class b
     //   86	96	256	java/lang/Exception
   }
   
-  public final void Ii() {}
+  public final void Iq() {}
   
-  public final void Ij()
+  public final void Ir()
   {
     this.handler.removeCallbacksAndMessages(null);
   }
   
-  public final int Ik()
+  public final int Is()
   {
     return 2147483647;
   }
   
   public final void a(com.tencent.matrix.a.c.a parama)
   {
-    this.cDo = parama;
-    this.handler = new Handler(com.tencent.matrix.g.b.Jt().getLooper(), this);
-    cDl = parama.cCY.cDc;
-    cDm = parama.cCY.cDd;
-    cDe = parama.cCY.cDe;
+    this.cDV = parama;
+    this.handler = new Handler(com.tencent.matrix.g.b.JB().getLooper(), this);
+    cDS = parama.cDF.cDJ;
+    cDT = parama.cDF.cDK;
+    cDL = parama.cDF.cDL;
   }
   
   public final void bV(boolean paramBoolean)
   {
-    if (!com.tencent.matrix.b.HK()) {
+    if (!com.tencent.matrix.b.HS()) {
       c.e("Matrix.JiffiesMonitorPlugin", "Matrix was not installed yet, just ignore the event", new Object[0]);
     }
     label132:
@@ -345,19 +345,19 @@ public final class b
         this.handler.removeCallbacksAndMessages(null);
         localMessage = Message.obtain(this.handler);
         localMessage.what = 1;
-        this.handler.sendMessageDelayed(localMessage, cDl);
+        this.handler.sendMessageDelayed(localMessage, cDS);
       }
       for (;;)
       {
         if (!paramBoolean) {
           break label132;
         }
-        this.handler.removeCallbacks(this.cDp);
-        if (!cDe) {
+        this.handler.removeCallbacks(this.cDW);
+        if (!cDL) {
           break;
         }
-        this.cDp.cDu = 1;
-        this.handler.post(this.cDp);
+        this.cDW.cEb = 1;
+        this.handler.post(this.cDW);
         return;
         if (!this.handler.hasMessages(1))
         {
@@ -376,57 +376,57 @@ public final class b
     {
       localObject1 = new c((byte)0);
       ((c)localObject1).pid = Process.myPid();
-      if (com.tencent.matrix.b.HK()) {}
-      for (paramMessage = d.getProcessName(com.tencent.matrix.b.HL().application);; paramMessage = "default")
+      if (com.tencent.matrix.b.HS()) {}
+      for (paramMessage = d.getProcessName(com.tencent.matrix.b.HT().application);; paramMessage = "default")
       {
         ((c)localObject1).name = paramMessage;
-        ((c)localObject1).cDx.addAll(gV(((c)localObject1).pid));
-        ((c)localObject1).cDw = SystemClock.uptimeMillis();
+        ((c)localObject1).cEe.addAll(gW(((c)localObject1).pid));
+        ((c)localObject1).cEd = SystemClock.uptimeMillis();
         ((c)localObject1).time = System.currentTimeMillis();
-        this.cDn = ((c)localObject1);
-        if (this.cDo.cCY.cDa != null) {
-          this.cDo.cCY.cDa.If();
+        this.cDU = ((c)localObject1);
+        if (this.cDV.cDF.cDH != null) {
+          this.cDV.cDF.cDH.In();
         }
         return true;
       }
     }
     if (paramMessage.what == 2)
     {
-      if (this.cDn == null) {
+      if (this.cDU == null) {
         return true;
       }
-      if (this.cDo.cCY.cDa != null) {
-        this.cDo.cCY.cDa.Ig();
+      if (this.cDV.cDF.cDH != null) {
+        this.cDV.cDF.cDH.Io();
       }
       c localc = new c((byte)0);
       localc.pid = Process.myPid();
-      if (com.tencent.matrix.b.HK()) {}
+      if (com.tencent.matrix.b.HS()) {}
       long l2;
       SparseArray localSparseArray;
       long l1;
       d locald;
       e locale;
-      for (localObject1 = d.getProcessName(com.tencent.matrix.b.HL().application);; localObject1 = "default")
+      for (localObject1 = d.getProcessName(com.tencent.matrix.b.HT().application);; localObject1 = "default")
       {
         localc.name = ((String)localObject1);
-        localc.cDx.addAll(gV(localc.pid));
-        localc.cDw = SystemClock.uptimeMillis();
+        localc.cEe.addAll(gW(localc.pid));
+        localc.cEd = SystemClock.uptimeMillis();
         localc.time = System.currentTimeMillis();
-        localObject1 = this.cDn;
+        localObject1 = this.cDU;
         l2 = 0L;
         localSparseArray = new SparseArray();
-        localObject2 = localc.cDx.iterator();
+        localObject2 = localc.cEe.iterator();
         l1 = 0L;
         while (((Iterator)localObject2).hasNext())
         {
           locald = (d)((Iterator)localObject2).next();
-          l1 += locald.cDy;
+          l1 += locald.cEf;
           locale = e.a(locald, 1);
-          locale.cDA = locald.cDy;
+          locale.cEh = locald.cEf;
           localSparseArray.put(locald.tid, locale);
         }
       }
-      Object localObject2 = ((c)localObject1).cDx.iterator();
+      Object localObject2 = ((c)localObject1).cEe.iterator();
       while (((Iterator)localObject2).hasNext())
       {
         locald = (d)((Iterator)localObject2).next();
@@ -437,30 +437,30 @@ public final class b
         }
         else
         {
-          l2 += locald.cDy;
-          locale.cDB = 2;
-          locale.cDA = (locale.cDz.cDy - locald.cDy);
+          l2 += locald.cEf;
+          locale.cEi = 2;
+          locale.cEh = (locale.cEg.cEf - locald.cEf);
         }
       }
       localObject2 = new a();
-      ((a)localObject2).cDq = (l1 - l2);
-      ((a)localObject2).cDr = (localc.time - ((c)localObject1).time);
-      ((a)localObject2).cDs = (localc.cDw - ((c)localObject1).cDw);
+      ((a)localObject2).cDX = (l1 - l2);
+      ((a)localObject2).cDY = (localc.time - ((c)localObject1).time);
+      ((a)localObject2).cDZ = (localc.cEd - ((c)localObject1).cEd);
       int i = 0;
       while (i < localSparseArray.size())
       {
-        ((a)localObject2).cDt.add(localSparseArray.valueAt(i));
+        ((a)localObject2).cEa.add(localSparseArray.valueAt(i));
         i += 1;
       }
-      Collections.sort(((a)localObject2).cDt);
+      Collections.sort(((a)localObject2).cEa);
       if (paramMessage.arg1 == 1) {}
       for (boolean bool = true;; bool = false)
       {
-        ((a)localObject2).cBJ = bool;
-        if (this.cDo.cCY.cDa != null) {
-          this.cDo.cCY.cDa.a((a)localObject2);
+        ((a)localObject2).cCq = bool;
+        if (this.cDV.cDF.cDH != null) {
+          this.cDV.cDF.cDH.a((a)localObject2);
         }
-        this.cDn = null;
+        this.cDU = null;
         return true;
       }
     }
@@ -469,17 +469,17 @@ public final class b
   
   public static final class a
   {
-    public boolean cBJ;
-    public long cDq;
-    public long cDr;
-    public long cDs;
-    public LinkedList<b.e> cDt = new LinkedList();
+    public boolean cCq;
+    public long cDX;
+    public long cDY;
+    public long cDZ;
+    public LinkedList<b.e> cEa = new LinkedList();
   }
   
   final class b
     implements Runnable
   {
-    int cDu = 1;
+    int cEb = 1;
     
     private b() {}
     
@@ -487,14 +487,14 @@ public final class b
     {
       int i = 1;
       Message localMessage = Message.obtain(b.a(b.this));
-      localMessage.what = this.cDu;
+      localMessage.what = this.cEb;
       localMessage.arg1 = 1;
       b.a(b.this).sendMessageAtFrontOfQueue(localMessage);
-      if (this.cDu == 2) {}
+      if (this.cEb == 2) {}
       for (;;)
       {
-        this.cDu = i;
-        b.a(b.this).postDelayed(this, b.Il());
+        this.cEb = i;
+        b.a(b.this).postDelayed(this, b.It());
         return;
         i = 2;
       }
@@ -503,8 +503,8 @@ public final class b
   
   final class c
   {
-    long cDw;
-    LinkedList<b.d> cDx = new LinkedList();
+    long cEd;
+    LinkedList<b.d> cEe = new LinkedList();
     String name;
     int pid;
     long time;
@@ -513,13 +513,13 @@ public final class b
     
     public final String toString()
     {
-      return "process:" + this.name + "(" + this.pid + ") thread size:" + this.cDx.size();
+      return "process:" + this.name + "(" + this.pid + ") thread size:" + this.cEe.size();
     }
   }
   
   public final class d
   {
-    public long cDy;
+    public long cEf;
     public String name;
     public int tid;
     
@@ -527,21 +527,21 @@ public final class b
     
     public final String toString()
     {
-      return "thread:" + this.name + "(" + this.tid + ") " + this.cDy;
+      return "thread:" + this.name + "(" + this.tid + ") " + this.cEf;
     }
   }
   
   public static final class e
     implements Comparable<e>
   {
-    public long cDA;
-    int cDB = 1;
-    public b.d cDz;
+    public b.d cEg;
+    public long cEh;
+    int cEi = 1;
     
     private e(b.d paramd, int paramInt)
     {
-      this.cDz = paramd;
-      this.cDB = paramInt;
+      this.cEg = paramd;
+      this.cEi = paramInt;
     }
     
     static e a(b.d paramd, int paramInt)
@@ -553,14 +553,14 @@ public final class b
     {
       StringBuilder localStringBuilder = new StringBuilder();
       String str;
-      if (this.cDB == 1) {
+      if (this.cEi == 1) {
         str = "+";
       }
       for (;;)
       {
-        localStringBuilder.append("(").append(str).append(")").append(this.cDz.name).append("(").append(this.cDz.tid).append(")\t").append(this.cDA).append(" jiffies");
+        localStringBuilder.append("(").append(str).append(")").append(this.cEg.name).append("(").append(this.cEg.tid).append(")\t").append(this.cEh).append(" jiffies");
         return localStringBuilder.toString();
-        if (this.cDB == 2) {
+        if (this.cEi == 2) {
           str = "~";
         } else {
           str = "-";

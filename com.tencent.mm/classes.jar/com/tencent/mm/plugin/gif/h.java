@@ -12,50 +12,50 @@ import android.os.SystemClock;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hardcoder.WXHardCoderJNI;
 import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.vfs.i;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.vfs.o;
 
 public final class h
   extends b
 {
   private final Rect Ko;
-  private int fKU;
-  private ap gKD;
+  private int fMX;
+  private aq gNm;
   private float mDensity;
   private int mHeight;
   private boolean mIsRunning;
   private final Paint mPaint;
   private int mWidth;
-  private volatile long uAK;
-  private int[] uAL;
-  private Bitmap[] uAM;
-  private int uAN;
-  private boolean uAO;
-  private int uAb;
-  private int uAc;
-  private long uAd;
-  private long uAe;
-  private long uAf;
-  private long uAg;
-  private long uAh;
-  private long uAi;
-  private boolean uAo;
-  private final Runnable uAr;
-  private final Runnable uAs;
-  private final Runnable uAt;
-  private final Runnable uAv;
-  private boolean uzR;
-  private int[] uzU;
-  private float uzV;
-  private float uzW;
-  private boolean uzX;
-  private Bitmap uzZ;
+  private float uLA;
+  private float uLB;
+  private boolean uLC;
+  private Bitmap uLE;
+  private int uLG;
+  private int uLH;
+  private long uLI;
+  private long uLJ;
+  private long uLK;
+  private long uLL;
+  private long uLM;
+  private long uLN;
+  private boolean uLT;
+  private final Runnable uLW;
+  private final Runnable uLX;
+  private final Runnable uLY;
+  private boolean uLw;
+  private int[] uLz;
+  private final Runnable uMa;
+  private volatile long uMp;
+  private int[] uMq;
+  private Bitmap[] uMr;
+  private int uMs;
+  private boolean uMt;
   
   public h(String paramString)
   {
-    this(i.aY(paramString, 0, (int)i.aYo(paramString)));
+    this(o.bb(paramString, 0, (int)o.aZR(paramString)));
     AppMethodBeat.i(104664);
     AppMethodBeat.o(104664);
   }
@@ -64,25 +64,25 @@ public final class h
   {
     AppMethodBeat.i(104666);
     this.mIsRunning = false;
-    this.uzR = false;
-    this.uzU = new int[4];
-    this.uAL = new int[4];
-    this.uzV = 1.0F;
-    this.uzW = 1.0F;
+    this.uLw = false;
+    this.uLz = new int[4];
+    this.uMq = new int[4];
+    this.uLA = 1.0F;
+    this.uLB = 1.0F;
     this.Ko = new Rect();
     this.mPaint = new Paint(6);
-    this.uAN = 0;
-    this.uAb = 0;
-    this.uAc = -1;
-    this.uAd = 0L;
-    this.uAe = 0L;
-    this.uAf = 0L;
-    this.uAg = 0L;
-    this.uAi = 0L;
-    this.uAO = false;
-    this.gKD = new ap(Looper.getMainLooper());
-    this.uAo = true;
-    this.uAr = new Runnable()
+    this.uMs = 0;
+    this.uLG = 0;
+    this.uLH = -1;
+    this.uLI = 0L;
+    this.uLJ = 0L;
+    this.uLK = 0L;
+    this.uLL = 0L;
+    this.uLN = 0L;
+    this.uMt = false;
+    this.gNm = new aq(Looper.getMainLooper());
+    this.uLT = true;
+    this.uLW = new Runnable()
     {
       public final void run()
       {
@@ -96,7 +96,7 @@ public final class h
         AppMethodBeat.o(104659);
       }
     };
-    this.uAs = new Runnable()
+    this.uLX = new Runnable()
     {
       public final void run()
       {
@@ -105,7 +105,7 @@ public final class h
         AppMethodBeat.o(104660);
       }
     };
-    this.uAt = new Runnable()
+    this.uLY = new Runnable()
     {
       public final void run()
       {
@@ -116,27 +116,27 @@ public final class h
         AppMethodBeat.o(104661);
       }
     };
-    this.uAv = new Runnable()
+    this.uMa = new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(104662);
         if (h.h(h.this))
         {
-          ad.d("MicroMsg.GIF.MMWXGFDrawable", "Cpan Render Task is Running.");
+          ae.d("MicroMsg.GIF.MMWXGFDrawable", "Cpan Render Task is Running.");
           AppMethodBeat.o(104662);
           return;
         }
         if (h.a(h.this))
         {
-          ad.i("MicroMsg.GIF.MMWXGFDrawable", "Cpan This WXGF had been recycle.");
+          ae.i("MicroMsg.GIF.MMWXGFDrawable", "Cpan This WXGF had been recycle.");
           AppMethodBeat.o(104662);
           return;
         }
         if (h.g(h.this) == 0L)
         {
-          ad.i("MicroMsg.GIF.MMWXGFDrawable", "Cpan This WXGF JNIHandle is null.");
-          g.yhR.idkeyStat(401L, 18L, 1L, false);
+          ae.i("MicroMsg.GIF.MMWXGFDrawable", "Cpan This WXGF JNIHandle is null.");
+          g.yxI.idkeyStat(401L, 18L, 1L, false);
           AppMethodBeat.o(104662);
           return;
         }
@@ -153,15 +153,15 @@ public final class h
         i = MMWXGFJNI.nativeDecodeBufferFrame(h.g(h.this), null, 0, (Bitmap)localObject1, h.m(h.this));
         if (i == -904)
         {
-          ad.i("MicroMsg.GIF.MMWXGFDrawable", "nativeDecodeBufferFrame failed. func is null.");
-          g.yhR.idkeyStat(401L, 8L, 1L, false);
+          ae.i("MicroMsg.GIF.MMWXGFDrawable", "nativeDecodeBufferFrame failed. func is null.");
+          g.yxI.idkeyStat(401L, 8L, 1L, false);
           AppMethodBeat.o(104662);
           return;
         }
         if (i == -909)
         {
-          ad.i("MicroMsg.GIF.MMWXGFDrawable", "nativeDecodeBufferFrame failed. frame is null.");
-          g.yhR.idkeyStat(401L, 11L, 1L, false);
+          ae.i("MicroMsg.GIF.MMWXGFDrawable", "nativeDecodeBufferFrame failed. frame is null.");
+          g.yxI.idkeyStat(401L, 11L, 1L, false);
         }
         while (i != -1)
         {
@@ -175,13 +175,13 @@ public final class h
             break;
           }
           if (i == -905) {
-            g.yhR.idkeyStat(711L, 9L, 1L, false);
+            g.yxI.idkeyStat(711L, 9L, 1L, false);
           }
-          ad.w("MicroMsg.GIF.MMWXGFDrawable", "Cpan Rewind buffer failed.");
+          ae.w("MicroMsg.GIF.MMWXGFDrawable", "Cpan Rewind buffer failed.");
           AppMethodBeat.o(104662);
           return;
         }
-        ad.i("MicroMsg.GIF.MMWXGFDrawable", "nativeDecodeBufferFrame failed.");
+        ae.i("MicroMsg.GIF.MMWXGFDrawable", "nativeDecodeBufferFrame failed.");
         AppMethodBeat.o(104662);
         return;
         h.b(h.this, System.currentTimeMillis() - l);
@@ -191,11 +191,11 @@ public final class h
           h.c(h.this, h.o(h.this) - h.p(h.this) - h.q(h.this));
           if (h.f(h.this) < 0L)
           {
-            ad.d("MicroMsg.GIF.MMWXGFDrawable", "Render time:%d InvalidateUseTime:%d NextRealInvalidateTime:%d mNextFrameDuration:%d mCurrentFrameIndex:%d", new Object[] { Long.valueOf(h.p(h.this)), Long.valueOf(h.q(h.this)), Long.valueOf(h.f(h.this)), Long.valueOf(h.o(h.this)), Integer.valueOf(h.b(h.this)) });
+            ae.d("MicroMsg.GIF.MMWXGFDrawable", "Render time:%d InvalidateUseTime:%d NextRealInvalidateTime:%d mNextFrameDuration:%d mCurrentFrameIndex:%d", new Object[] { Long.valueOf(h.p(h.this)), Long.valueOf(h.q(h.this)), Long.valueOf(h.f(h.this)), Long.valueOf(h.o(h.this)), Integer.valueOf(h.b(h.this)) });
             if (h.f(h.this) < -100L)
             {
-              g.yhR.idkeyStat(401L, 16L, 1L, false);
-              g.yhR.idkeyStat(401L, 17L, Math.abs(h.f(h.this)), false);
+              g.yxI.idkeyStat(401L, 16L, 1L, false);
+              g.yxI.idkeyStat(401L, 17L, Math.abs(h.f(h.this)), false);
               if ((!WXHardCoderJNI.hcGifEnable) && (!WXHardCoderJNI.hcGifFrameEnable)) {
                 break label754;
               }
@@ -257,60 +257,60 @@ public final class h
     if (WXHardCoderJNI.hcGifThr) {}
     for (int i = Process.myTid();; i = 0)
     {
-      this.fKU = WXHardCoderJNI.startPerformance(bool, j, k, m, i, WXHardCoderJNI.hcGifTimeout, 602, WXHardCoderJNI.hcGifAction, "MicroMsg.GIF.MMWXGFDrawable");
-      this.uAK = MMWXGFJNI.nativeInitWxAMDecoder();
-      if ((this.uAK != 0L) && (this.uAK != -901L)) {
+      this.fMX = WXHardCoderJNI.startPerformance(bool, j, k, m, i, WXHardCoderJNI.hcGifTimeout, 602, WXHardCoderJNI.hcGifAction, "MicroMsg.GIF.MMWXGFDrawable");
+      this.uMp = MMWXGFJNI.nativeInitWxAMDecoder();
+      if ((this.uMp != 0L) && (this.uMp != -901L)) {
         break;
       }
-      ad.w("MicroMsg.GIF.MMWXGFDrawable", "Cpan init wxam decoder failed. mWXGFJNIHandle:%d", new Object[] { Long.valueOf(this.uAK) });
-      if (this.uAK == -901L) {
-        g.yhR.idkeyStat(711L, 5L, 1L, false);
+      ae.w("MicroMsg.GIF.MMWXGFDrawable", "Cpan init wxam decoder failed. mWXGFJNIHandle:%d", new Object[] { Long.valueOf(this.uMp) });
+      if (this.uMp == -901L) {
+        g.yxI.idkeyStat(711L, 5L, 1L, false);
       }
-      g.yhR.idkeyStat(711L, 4L, 1L, false);
+      g.yxI.idkeyStat(711L, 4L, 1L, false);
       paramArrayOfByte = new MMGIFException(201);
       AppMethodBeat.o(104666);
       throw paramArrayOfByte;
     }
-    i = MMWXGFJNI.nativeDecodeBufferHeader(this.uAK, paramArrayOfByte, paramArrayOfByte.length);
+    i = MMWXGFJNI.nativeDecodeBufferHeader(this.uMp, paramArrayOfByte, paramArrayOfByte.length);
     if (i != 0)
     {
-      ad.w("MicroMsg.GIF.MMWXGFDrawable", "Cpan WXGF decode buffer header failed. result:%d", new Object[] { Integer.valueOf(i) });
+      ae.w("MicroMsg.GIF.MMWXGFDrawable", "Cpan WXGF decode buffer header failed. result:%d", new Object[] { Integer.valueOf(i) });
       if (i == -904) {
-        g.yhR.idkeyStat(711L, 8L, 1L, false);
+        g.yxI.idkeyStat(711L, 8L, 1L, false);
       }
       for (;;)
       {
         paramArrayOfByte = new MMGIFException(i);
         AppMethodBeat.o(104666);
         throw paramArrayOfByte;
-        g.yhR.idkeyStat(711L, 3L, 1L, false);
+        g.yxI.idkeyStat(711L, 3L, 1L, false);
       }
     }
-    i = MMWXGFJNI.nativeGetOption(this.uAK, paramArrayOfByte, paramArrayOfByte.length, this.uzU);
+    i = MMWXGFJNI.nativeGetOption(this.uMp, paramArrayOfByte, paramArrayOfByte.length, this.uLz);
     if (i != 0)
     {
-      ad.w("MicroMsg.GIF.MMWXGFDrawable", "Cpan WXGF get option failed. result:%d", new Object[] { Integer.valueOf(i) });
+      ae.w("MicroMsg.GIF.MMWXGFDrawable", "Cpan WXGF get option failed. result:%d", new Object[] { Integer.valueOf(i) });
       if (i == -903) {
-        g.yhR.idkeyStat(711L, 7L, 1L, false);
+        g.yxI.idkeyStat(711L, 7L, 1L, false);
       }
       for (;;)
       {
         paramArrayOfByte = new MMGIFException(i);
         AppMethodBeat.o(104666);
         throw paramArrayOfByte;
-        g.yhR.idkeyStat(711L, 3L, 1L, false);
+        g.yxI.idkeyStat(711L, 3L, 1L, false);
       }
     }
-    this.uAb = this.uzU[0];
-    this.mWidth = this.uzU[1];
-    this.mHeight = this.uzU[2];
+    this.uLG = this.uLz[0];
+    this.mWidth = this.uLz[1];
+    this.mHeight = this.uLz[2];
     if ((this.mWidth == 0) || (this.mHeight == 0))
     {
-      i = com.tencent.mm.cc.a.ax(aj.getContext(), 2131166264);
+      i = com.tencent.mm.cb.a.ax(ak.getContext(), 2131166264);
       this.mHeight = i;
       this.mWidth = i;
     }
-    this.uAM = new Bitmap[2];
+    this.uMr = new Bitmap[2];
     AppMethodBeat.o(104666);
   }
   
@@ -318,11 +318,11 @@ public final class h
   {
     this(paramArrayOfByte);
     AppMethodBeat.i(104665);
-    paramArrayOfByte = com.tencent.mm.emoji.loader.a.b.giI;
-    if (com.tencent.mm.emoji.loader.a.b.vT(paramString) != null)
+    paramArrayOfByte = com.tencent.mm.emoji.loader.a.b.gla;
+    if (com.tencent.mm.emoji.loader.a.b.wA(paramString) != null)
     {
-      paramArrayOfByte = com.tencent.mm.emoji.loader.a.b.giI;
-      this.uzZ = com.tencent.mm.emoji.loader.a.b.vT(paramString);
+      paramArrayOfByte = com.tencent.mm.emoji.loader.a.b.gla;
+      this.uLE = com.tencent.mm.emoji.loader.a.b.wA(paramString);
     }
     AppMethodBeat.o(104665);
   }
@@ -330,71 +330,71 @@ public final class h
   private void m(Runnable paramRunnable, long paramLong)
   {
     AppMethodBeat.i(104663);
-    this.uAi = (SystemClock.uptimeMillis() + paramLong);
-    if (this.gKD != null) {
-      this.gKD.postAtTime(paramRunnable, this.uAi);
+    this.uLN = (SystemClock.uptimeMillis() + paramLong);
+    if (this.gNm != null) {
+      this.gNm.postAtTime(paramRunnable, this.uLN);
     }
     AppMethodBeat.o(104663);
   }
   
-  public final int daY()
+  public final int ddP()
   {
-    return this.uzU[1];
+    return this.uLz[1];
   }
   
-  public final int daZ()
+  public final int ddQ()
   {
-    return this.uzU[2];
+    return this.uLz[2];
   }
   
   public final void draw(Canvas paramCanvas)
   {
     AppMethodBeat.i(104671);
-    if (this.uzX)
+    if (this.uLC)
     {
       this.Ko.set(getBounds());
-      this.uzV = (this.Ko.width() / this.mWidth);
-      this.uzW = (this.Ko.height() / this.mHeight);
-      this.uzX = false;
+      this.uLA = (this.Ko.width() / this.mWidth);
+      this.uLB = (this.Ko.height() / this.mHeight);
+      this.uLC = false;
     }
     if (this.mPaint.getShader() == null)
     {
-      if (this.uAg == 0L) {
-        this.uAg = System.currentTimeMillis();
+      if (this.uLL == 0L) {
+        this.uLL = System.currentTimeMillis();
       }
-      if (this.uAo) {
-        this.uAN = ((this.uAN + 1) % this.uAM.length);
+      if (this.uLT) {
+        this.uMs = ((this.uMs + 1) % this.uMr.length);
       }
-      Bitmap localBitmap2 = this.uAM[this.uAN];
+      Bitmap localBitmap2 = this.uMr[this.uMs];
       Bitmap localBitmap1 = localBitmap2;
       if (localBitmap2 == null)
       {
-        localBitmap1 = this.uAM[((this.uAN + 1) % this.uAM.length)];
-        ad.i("MicroMsg.GIF.MMWXGFDrawable", "use last decode bitmap %s  hash:[%s]", new Object[] { localBitmap1, Integer.valueOf(hashCode()) });
+        localBitmap1 = this.uMr[((this.uMs + 1) % this.uMr.length)];
+        ae.i("MicroMsg.GIF.MMWXGFDrawable", "use last decode bitmap %s  hash:[%s]", new Object[] { localBitmap1, Integer.valueOf(hashCode()) });
       }
-      if ((localBitmap1 != null) && (!localBitmap1.isRecycled()) && (!this.uzR))
+      if ((localBitmap1 != null) && (!localBitmap1.isRecycled()) && (!this.uLw))
       {
-        paramCanvas.scale(this.uzV, this.uzW);
+        paramCanvas.scale(this.uLA, this.uLB);
         paramCanvas.drawBitmap(localBitmap1, 0.0F, 0.0F, this.mPaint);
       }
       for (;;)
       {
-        this.uAh = (System.currentTimeMillis() - this.uAg);
-        if (this.uAo)
+        this.uLM = (System.currentTimeMillis() - this.uLL);
+        if (this.uLT)
         {
-          com.tencent.mm.av.a.h(this.uAv, 0L);
-          this.uAo = false;
+          com.tencent.mm.au.a.h(this.uMa, 0L);
+          this.uLT = false;
         }
         AppMethodBeat.o(104671);
         return;
-        if (this.uzZ != null)
+        if (this.uLE != null)
         {
-          paramCanvas.scale(this.Ko.width() / this.uzZ.getWidth(), this.Ko.width() / this.uzZ.getHeight());
-          paramCanvas.drawBitmap(this.uzZ, 0.0F, 0.0F, this.mPaint);
+          paramCanvas.scale(this.Ko.width() / this.uLE.getWidth(), this.Ko.width() / this.uLE.getHeight());
+          paramCanvas.drawBitmap(this.uLE, 0.0F, 0.0F, this.mPaint);
         }
         else
         {
-          ad.e("MicroMsg.GIF.MMWXGFDrawable", "Cpan draw bitmap failed. Bitmap buffer is null or recycle %s", new Object[] { Integer.valueOf(hashCode()) });
+          ae.e("MicroMsg.GIF.MMWXGFDrawable", "Cpan draw bitmap failed. Bitmap buffer is null or recycle %s", new Object[] { Integer.valueOf(hashCode()) });
         }
       }
     }
@@ -413,7 +413,7 @@ public final class h
     }
     catch (Throwable localThrowable)
     {
-      ad.printErrStackTrace("MicroMsg.GIF.MMWXGFDrawable", localThrowable, "", new Object[0]);
+      ae.printErrStackTrace("MicroMsg.GIF.MMWXGFDrawable", localThrowable, "", new Object[0]);
       super.finalize();
       AppMethodBeat.o(104676);
     }
@@ -424,7 +424,7 @@ public final class h
     AppMethodBeat.i(104667);
     if (this.mDensity == 0.0F)
     {
-      this.mDensity = (com.tencent.mm.cc.a.getDensity(aj.getContext()) / 2.0F);
+      this.mDensity = (com.tencent.mm.cb.a.getDensity(ak.getContext()) / 2.0F);
       if (this.mDensity >= 1.0F) {
         break label54;
       }
@@ -472,7 +472,7 @@ public final class h
   {
     AppMethodBeat.i(104670);
     super.onBoundsChange(paramRect);
-    this.uzX = true;
+    this.uLC = true;
     AppMethodBeat.o(104670);
   }
   
@@ -486,18 +486,18 @@ public final class h
     try
     {
       AppMethodBeat.i(104679);
-      ad.v("MicroMsg.GIF.MMWXGFDrawable", "Cpan recycle decode handle:%d", new Object[] { Long.valueOf(this.uAK) });
-      this.uzR = true;
+      ae.v("MicroMsg.GIF.MMWXGFDrawable", "Cpan recycle decode handle:%d", new Object[] { Long.valueOf(this.uMp) });
+      this.uLw = true;
       this.mIsRunning = false;
-      long l = this.uAK;
-      this.uAK = 0L;
-      this.gKD.removeCallbacks(this.uAr);
+      long l = this.uMp;
+      this.uMp = 0L;
+      this.gNm.removeCallbacks(this.uLW);
       int i = MMWXGFJNI.nativeUninit(l);
       if (i == -906) {
-        g.yhR.idkeyStat(401L, 10L, 1L, false);
+        g.yxI.idkeyStat(401L, 10L, 1L, false);
       }
-      ad.d("MicroMsg.GIF.MMWXGFDrawable", "nativeUninit result:%d mWXGFJNIHandle:%s mIsRender:%b", new Object[] { Integer.valueOf(i), Long.valueOf(l), Boolean.valueOf(this.uAO) });
-      this.uAM = null;
+      ae.d("MicroMsg.GIF.MMWXGFDrawable", "nativeUninit result:%d mWXGFJNIHandle:%s mIsRender:%b", new Object[] { Integer.valueOf(i), Long.valueOf(l), Boolean.valueOf(this.uMt) });
+      this.uMr = null;
       AppMethodBeat.o(104679);
       return;
     }
@@ -508,17 +508,17 @@ public final class h
   {
     AppMethodBeat.i(104678);
     this.mIsRunning = true;
-    com.tencent.mm.av.a.h(this.uAt, 0L);
+    com.tencent.mm.au.a.h(this.uLY, 0L);
     AppMethodBeat.o(104678);
   }
   
   public final void resume()
   {
     AppMethodBeat.i(104677);
-    if (!this.uzR)
+    if (!this.uLw)
     {
       this.mIsRunning = true;
-      m(this.uAr, 0L);
+      m(this.uLW, 0L);
     }
     AppMethodBeat.o(104677);
   }
@@ -541,7 +541,7 @@ public final class h
   {
     AppMethodBeat.i(104674);
     this.mIsRunning = true;
-    com.tencent.mm.av.a.h(this.uAs, 0L);
+    com.tencent.mm.au.a.h(this.uLX, 0L);
     AppMethodBeat.o(104674);
   }
   
@@ -550,9 +550,9 @@ public final class h
     boolean bool2 = true;
     AppMethodBeat.i(104675);
     this.mIsRunning = false;
-    if (this.fKU != 0)
+    if (this.fMX != 0)
     {
-      ad.i("MicroMsg.GIF.MMWXGFDrawable", "summerhardcoder stopPerformance startPerformance:%x ", new Object[] { Integer.valueOf(this.fKU) });
+      ae.i("MicroMsg.GIF.MMWXGFDrawable", "summerhardcoder stopPerformance startPerformance:%x ", new Object[] { Integer.valueOf(this.fMX) });
       bool1 = bool2;
       if (!WXHardCoderJNI.hcGifEnable) {
         if (!WXHardCoderJNI.hcGifFrameEnable) {
@@ -563,8 +563,8 @@ public final class h
     label79:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      WXHardCoderJNI.stopPerformance(bool1, this.fKU);
-      this.fKU = 0;
+      WXHardCoderJNI.stopPerformance(bool1, this.fMX);
+      this.fMX = 0;
       AppMethodBeat.o(104675);
       return;
     }
@@ -572,7 +572,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.gif.h
  * JD-Core Version:    0.7.0.1
  */

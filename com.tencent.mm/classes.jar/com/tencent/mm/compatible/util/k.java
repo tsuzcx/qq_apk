@@ -2,31 +2,31 @@ package com.tencent.mm.compatible.util;
 
 import android.os.Build;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public final class k
 {
-  public static boolean Xm()
+  public static boolean Xu()
   {
     AppMethodBeat.i(155906);
-    boolean bool = bt.bI(Build.MANUFACTURER, "").toLowerCase().contains("samsung".toLowerCase());
+    boolean bool = bu.bI(Build.MANUFACTURER, "").toLowerCase().contains("samsung".toLowerCase());
     AppMethodBeat.o(155906);
     return bool;
   }
   
-  public static boolean abq()
+  public static boolean abA()
   {
-    AppMethodBeat.i(155907);
-    boolean bool = bt.bI(Build.MANUFACTURER, "").toLowerCase().contains("HMD Global".toLowerCase());
-    AppMethodBeat.o(155907);
+    AppMethodBeat.i(155908);
+    boolean bool = bu.bI(Build.MANUFACTURER, "").toLowerCase().contains("smartisan".toLowerCase());
+    AppMethodBeat.o(155908);
     return bool;
   }
   
-  public static boolean abr()
+  public static boolean abz()
   {
-    AppMethodBeat.i(155908);
-    boolean bool = bt.bI(Build.MANUFACTURER, "").toLowerCase().contains("smartisan".toLowerCase());
-    AppMethodBeat.o(155908);
+    AppMethodBeat.i(155907);
+    boolean bool = bu.bI(Build.MANUFACTURER, "").toLowerCase().contains("HMD Global".toLowerCase());
+    AppMethodBeat.o(155907);
     return bool;
   }
 }

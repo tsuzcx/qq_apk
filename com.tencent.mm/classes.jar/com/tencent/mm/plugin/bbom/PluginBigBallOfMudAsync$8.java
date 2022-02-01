@@ -1,24 +1,24 @@
 package com.tencent.mm.plugin.bbom;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ap.a;
-import com.tencent.mm.ap.b;
-import com.tencent.mm.ap.c;
-import com.tencent.mm.ap.d;
-import com.tencent.mm.ap.e;
-import com.tencent.mm.ap.f;
-import com.tencent.mm.ap.g;
-import com.tencent.mm.model.am;
-import com.tencent.mm.model.an;
+import com.tencent.mm.ao.a;
+import com.tencent.mm.ao.b;
+import com.tencent.mm.ao.c;
+import com.tencent.mm.ao.d;
+import com.tencent.mm.ao.e;
+import com.tencent.mm.ao.f;
+import com.tencent.mm.ao.g;
+import com.tencent.mm.model.ao;
+import com.tencent.mm.model.ap;
 import java.util.ArrayList;
 import java.util.List;
 
 final class PluginBigBallOfMudAsync$8
-  implements an
+  implements ap
 {
   PluginBigBallOfMudAsync$8(PluginBigBallOfMudAsync paramPluginBigBallOfMudAsync) {}
   
-  public final List<am> getDataTransferList()
+  public final List<ao> getDataTransferList()
   {
     AppMethodBeat.i(22427);
     ArrayList localArrayList = new ArrayList();

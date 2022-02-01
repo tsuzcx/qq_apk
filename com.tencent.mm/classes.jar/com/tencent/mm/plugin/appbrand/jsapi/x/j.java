@@ -14,13 +14,14 @@ import com.tencent.luggage.sdk.config.AppBrandSysConfigLU;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
 import com.tencent.mm.plugin.appbrand.jsapi.co;
-import com.tencent.mm.plugin.appbrand.page.aa;
-import com.tencent.mm.plugin.appbrand.r.a.c;
-import com.tencent.mm.plugin.appbrand.r.a.c.d;
-import com.tencent.mm.plugin.appbrand.utils.af;
-import com.tencent.mm.plugin.appbrand.z.g;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.plugin.appbrand.page.z;
+import com.tencent.mm.plugin.appbrand.platform.window.c;
+import com.tencent.mm.plugin.appbrand.platform.window.c.c;
+import com.tencent.mm.plugin.appbrand.utils.ai;
+import com.tencent.mm.plugin.appbrand.y.g;
 import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.k;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -34,51 +35,51 @@ public class j<C extends com.tencent.mm.plugin.appbrand.d>
   {
     AppMethodBeat.i(147302);
     Map localMap = super.a(paramC);
-    Object localObject1 = af.l(paramC);
-    localMap.put("windowWidth", Integer.valueOf(g.vH(localObject1[0])));
-    localMap.put("windowHeight", Integer.valueOf(g.vH(localObject1[1])));
-    localObject1 = af.f(paramC);
+    Object localObject1 = ai.n(paramC);
+    localMap.put("windowWidth", Integer.valueOf(g.vM(localObject1[0])));
+    localMap.put("windowHeight", Integer.valueOf(g.vM(localObject1[1])));
+    localObject1 = ai.f(paramC);
     int m = localObject1[0];
     int k = localObject1[1];
-    localMap.put("screenWidth", Integer.valueOf(g.vH(m)));
-    localMap.put("screenHeight", Integer.valueOf(g.vH(k)));
-    localMap.put("pixelRatio", Float.valueOf(g.bBm()));
+    localMap.put("screenWidth", Integer.valueOf(g.vM(m)));
+    localMap.put("screenHeight", Integer.valueOf(g.vM(k)));
+    localMap.put("pixelRatio", Float.valueOf(g.bCg()));
     localObject1 = co.i(paramC);
     int j;
-    if ((localObject1 != null) && (((aa)localObject1).buy() != null))
+    if ((localObject1 != null) && (((z)localObject1).bvj() != null))
     {
-      j = ((aa)localObject1).buy().getDrawnStatusBarHeight();
+      j = ((z)localObject1).bvj().getDrawnStatusBarHeight();
       i = j;
       if (j != 0) {}
     }
     else
     {
       localObject1 = paramC.getWindowAndroid().getStatusBar();
-      ad.e("Luggage.FULL.JsApiGetSystemInfoLU", "getIntersectStatusBarHeight with component(%s %s), use windowStatusBar[%s]", new Object[] { paramC.getAppId(), paramC.getClass().getName(), localObject1 });
+      ae.e("Luggage.FULL.JsApiGetSystemInfoLU", "getIntersectStatusBarHeight with component(%s %s), use windowStatusBar[%s]", new Object[] { paramC.getAppId(), paramC.getClass().getName(), localObject1 });
       if (localObject1 == null) {
         break label888;
       }
-      i = ((c.d)localObject1).height;
+      i = ((c.c)localObject1).height;
     }
-    localMap.put("statusBarHeight", Integer.valueOf(g.vH(i)));
-    localMap.put("language", ac.iM(paramC.getContext()));
-    localMap.put("version", com.tencent.mm.sdk.platformtools.j.aD(null, com.tencent.mm.sdk.platformtools.i.Ics));
-    if ((paramC.getRuntime() != null) && (paramC.getRuntime().Fh() != null)) {
-      localMap.put("benchmarkLevel", Integer.valueOf(((AppBrandSysConfigLU)paramC.getRuntime().Fh()).cnb));
+    localMap.put("statusBarHeight", Integer.valueOf(g.vM(i)));
+    localMap.put("language", ad.iR(paramC.getContext()));
+    localMap.put("version", k.aD(null, com.tencent.mm.sdk.platformtools.j.IwD));
+    if ((paramC.getRuntime() != null) && (paramC.getRuntime().Fm() != null)) {
+      localMap.put("benchmarkLevel", Integer.valueOf(((AppBrandSysConfigLU)paramC.getRuntime().Fm()).cnd));
     }
     localObject1 = new int[2];
     Object localObject2;
     if ((paramC instanceof com.tencent.mm.plugin.appbrand.d))
     {
-      localObject2 = af.k((com.tencent.mm.plugin.appbrand.d)paramC);
+      localObject2 = ai.m((com.tencent.mm.plugin.appbrand.d)paramC);
       if (localObject2 != null) {
         ((View)localObject2).getLocationOnScreen((int[])localObject1);
       }
     }
     for (int i = localObject1[1];; i = 0)
     {
-      ad.v("Luggage.WXA.UIUtil", "getScreenTop: [%d]", new Object[] { Integer.valueOf(i) });
-      localMap.put("screenTop", Integer.valueOf(g.vH(i)));
+      ae.v("Luggage.WXA.UIUtil", "getScreenTop: [%d]", new Object[] { Integer.valueOf(i) });
+      localMap.put("screenTop", Integer.valueOf(g.vM(i)));
       i = paramC.getContext().getResources().getConfiguration().orientation;
       label418:
       float f;
@@ -103,7 +104,7 @@ public class j<C extends com.tencent.mm.plugin.appbrand.d>
         }
         ((Map)localObject1).put("wifiEnabled", Boolean.valueOf(((WifiManager)localObject3).isWifiEnabled()));
         label514:
-        ((Map)localObject1).put("notificationAuthorized", Boolean.valueOf(v.N((Context)localObject2).areNotificationsEnabled()));
+        ((Map)localObject1).put("notificationAuthorized", Boolean.valueOf(v.O((Context)localObject2).areNotificationsEnabled()));
         localObject3 = (LocationManager)((Context)localObject2).getSystemService("location");
         if (localObject3 == null) {
           break label941;
@@ -122,16 +123,16 @@ public class j<C extends com.tencent.mm.plugin.appbrand.d>
             break label1108;
           }
           ((Map)localObject1).put("bluetoothEnabled", Boolean.valueOf(((BluetoothAdapter)localObject2).isEnabled()));
-          ad.i("Luggage.FULL.JsApiGetSystemInfoLU", "check permissions:%s", new Object[] { localObject1 });
+          ae.i("Luggage.FULL.JsApiGetSystemInfoLU", "check permissions:%s", new Object[] { localObject1 });
           localMap.putAll((Map)localObject1);
           localObject1 = new HashMap(6);
           paramC = paramC.getWindowAndroid().getSafeAreaInsets();
           if (paramC != null)
           {
-            i = g.vH(paramC.left);
-            j = g.vH(paramC.top);
-            m = g.vH(Math.min(paramC.right, m));
-            k = g.vH(Math.min(paramC.bottom, k));
+            i = g.vM(paramC.left);
+            j = g.vM(paramC.top);
+            m = g.vM(Math.min(paramC.right, m));
+            k = g.vM(Math.min(paramC.bottom, k));
             ((Map)localObject1).put("left", Integer.valueOf(i));
             ((Map)localObject1).put("top", Integer.valueOf(j));
             ((Map)localObject1).put("right", Integer.valueOf(m));
@@ -151,7 +152,7 @@ public class j<C extends com.tencent.mm.plugin.appbrand.d>
           localMap.put("deviceOrientation", "portrait");
           break label418;
           label914:
-          f = ((b)localObject1).bmB();
+          f = ((b)localObject1).bnk();
           break label436;
           label925:
           ((Map)localObject1).put("wifiEnabled", Boolean.FALSE);
@@ -162,7 +163,7 @@ public class j<C extends com.tencent.mm.plugin.appbrand.d>
         }
         catch (Exception localException)
         {
-          ad.e("Luggage.FULL.JsApiGetSystemInfoLU", "check permissions exception", new Object[] { localException });
+          ae.e("Luggage.FULL.JsApiGetSystemInfoLU", "check permissions exception", new Object[] { localException });
           ((Map)localObject1).put("locationAuthorized", Boolean.FALSE);
           ((Map)localObject1).put("cameraAuthorized", Boolean.FALSE);
           ((Map)localObject1).put("microphoneAuthorized", Boolean.FALSE);
@@ -184,7 +185,7 @@ public class j<C extends com.tencent.mm.plugin.appbrand.d>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.x.j
  * JD-Core Version:    0.7.0.1
  */

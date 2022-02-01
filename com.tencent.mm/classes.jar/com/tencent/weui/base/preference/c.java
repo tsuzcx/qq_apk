@@ -14,16 +14,16 @@ import org.xmlpull.v1.XmlPullParserException;
 
 public final class c
 {
-  private static HashMap<String, Constructor<?>> Jtq;
-  private static final Class<?>[] Jtr;
+  private static HashMap<String, Constructor<?>> JOf;
+  private static final Class<?>[] JOg;
   private final Object[] mConstructorArgs;
   final Context mContext;
   
   static
   {
     AppMethodBeat.i(160018);
-    Jtr = new Class[] { Context.class, AttributeSet.class };
-    Jtq = new HashMap();
+    JOg = new Class[] { Context.class, AttributeSet.class };
+    JOf = new HashMap();
     AppMethodBeat.o(160018);
   }
   
@@ -57,7 +57,7 @@ public final class c
   private Preference b(String paramString1, String paramString2, AttributeSet paramAttributeSet)
   {
     AppMethodBeat.i(160015);
-    Object localObject1 = (Constructor)Jtq.get(paramString1);
+    Object localObject1 = (Constructor)JOf.get(paramString1);
     if (localObject1 == null) {}
     for (;;)
     {
@@ -67,7 +67,7 @@ public final class c
         if (paramString2 != null)
         {
           localObject2 = paramString2 + paramString1;
-          localObject2 = ((ClassLoader)localObject3).loadClass((String)localObject2).getConstructor(Jtr);
+          localObject2 = ((ClassLoader)localObject3).loadClass((String)localObject2).getConstructor(JOg);
           localObject1 = localObject2;
         }
       }
@@ -92,7 +92,7 @@ public final class c
       catch (Exception paramString2) {}
       try
       {
-        Jtq.put(paramString1, localObject2);
+        JOf.put(paramString1, localObject2);
         localObject1 = localObject2;
         localObject3 = this.mConstructorArgs;
         localObject3[1] = paramAttributeSet;
@@ -279,7 +279,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.weui.base.preference.c
  * JD-Core Version:    0.7.0.1
  */

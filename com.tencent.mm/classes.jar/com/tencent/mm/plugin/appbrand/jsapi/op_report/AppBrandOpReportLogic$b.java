@@ -2,30 +2,30 @@ package com.tencent.mm.plugin.appbrand.jsapi.op_report;
 
 import android.util.SparseIntArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public final class AppBrandOpReportLogic$b
 {
-  private static final SparseIntArray laF;
+  private static final SparseIntArray leo;
   
   static
   {
     AppMethodBeat.i(147206);
-    laF = new SparseIntArray();
+    leo = new SparseIntArray();
     AppMethodBeat.o(147206);
   }
   
-  static void bE(String paramString, int paramInt)
+  static void bH(String paramString, int paramInt)
   {
     AppMethodBeat.i(147205);
-    if (bt.isNullOrNil(paramString))
+    if (bu.isNullOrNil(paramString))
     {
       AppMethodBeat.o(147205);
       return;
     }
-    synchronized (laF)
+    synchronized (leo)
     {
-      laF.put(paramString.hashCode(), paramInt);
+      leo.put(paramString.hashCode(), paramInt);
       AppMethodBeat.o(147205);
       return;
     }

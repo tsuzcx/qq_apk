@@ -3,17 +3,17 @@ package com.tencent.mm.plugin.vlog.model;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/vlog/model/ImageAnimType;", "", "(Ljava/lang/String;I)V", "NO_ANIM", "SLOW_SCALE", "plugin-vlog_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/vlog/model/ImageAnimType;", "", "(Ljava/lang/String;I)V", "NO_ANIM", "SLOW_SCALE", "plugin-vlog_release"})
 public enum i
 {
   static
   {
     AppMethodBeat.i(110923);
     i locali1 = new i("NO_ANIM", 0);
-    BFh = locali1;
+    BWF = locali1;
     i locali2 = new i("SLOW_SCALE", 1);
-    BFi = locali2;
-    BFj = new i[] { locali1, locali2 };
+    BWG = locali2;
+    BWH = new i[] { locali1, locali2 };
     AppMethodBeat.o(110923);
   }
   

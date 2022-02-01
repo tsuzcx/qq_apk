@@ -4,7 +4,7 @@ import android.graphics.Bitmap.Config;
 
 public final class k
 {
-  public static final Bitmap.Config hwE = Bitmap.Config.ARGB_8888;
+  public static final Bitmap.Config hzs = Bitmap.Config.ARGB_8888;
 }
 
 

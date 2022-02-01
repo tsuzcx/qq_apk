@@ -8,8 +8,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public abstract class GameCenterActivity
   extends GameBaseActivity
 {
-  protected int ulS = 0;
-  protected String ulT = null;
+  protected int uxp = 0;
+  protected String uxq = null;
   
   public void onCreate(Bundle paramBundle)
   {

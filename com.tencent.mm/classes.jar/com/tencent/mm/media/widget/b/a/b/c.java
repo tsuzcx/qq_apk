@@ -7,17 +7,17 @@ import d.l;
 import d.v;
 import java.lang.reflect.Constructor;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/media/widget/camera2/effect/result/WCResultKeyCreator;", "", "()V", "TAG", "", "resultConstructor", "Ljava/lang/reflect/Constructor;", "Landroid/hardware/camera2/CaptureResult$Key;", "resultKey", "T", "name", "klass", "Ljava/lang/Class;", "plugin-mediaeditor_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/media/widget/camera2/effect/result/WCResultKeyCreator;", "", "()V", "TAG", "", "resultConstructor", "Ljava/lang/reflect/Constructor;", "Landroid/hardware/camera2/CaptureResult$Key;", "resultKey", "T", "name", "klass", "Ljava/lang/Class;", "plugin-mediaeditor_release"})
 public final class c
 {
   private static final String TAG = "CT2.WCRequestKeyCreator";
-  private static Constructor<CaptureResult.Key<?>> hsV;
-  public static final c hsW;
+  private static Constructor<CaptureResult.Key<?>> hvJ;
+  public static final c hvK;
   
   static
   {
     AppMethodBeat.i(94210);
-    hsW = new c();
+    hvK = new c();
     TAG = "CT2.WCRequestKeyCreator";
     AppMethodBeat.o(94210);
   }
@@ -30,20 +30,20 @@ public final class c
     try
     {
       Constructor localConstructor;
-      if (hsV == null)
+      if (hvJ == null)
       {
         localConstructor = CaptureResult.Key.class.getConstructor(new Class[] { String.class, paramClass.getClass() });
-        hsV = localConstructor;
+        hvJ = localConstructor;
         if (localConstructor == null) {
-          p.gfZ();
+          p.gkB();
         }
         localConstructor.setAccessible(true);
       }
       try
       {
-        localConstructor = hsV;
+        localConstructor = hvJ;
         if (localConstructor == null) {
-          p.gfZ();
+          p.gkB();
         }
         paramString = localConstructor.newInstance(new Object[] { paramString, paramClass });
         if (paramString != null) {

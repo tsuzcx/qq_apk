@@ -12,13 +12,13 @@ final class AlbumPreviewUI$8
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     AppMethodBeat.i(173756);
-    this.tMG.finish();
+    this.tXx.finish();
     AppMethodBeat.o(173756);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.gallery.ui.AlbumPreviewUI.8
  * JD-Core Version:    0.7.0.1
  */

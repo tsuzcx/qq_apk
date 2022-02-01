@@ -6,27 +6,27 @@ import java.util.ArrayList;
 
 public final class u
 {
-  public static final b EAX;
-  public static final j EAY;
-  public static final c EAZ;
-  public static final l EBa;
-  public static final h EBb;
-  public static final ArrayList<t> pxR;
+  public static final b ETt;
+  public static final j ETu;
+  public static final c ETv;
+  public static final l ETw;
+  public static final h ETx;
+  public static final ArrayList<t> pEv;
   
   static
   {
     AppMethodBeat.i(30669);
-    EAX = new b();
-    EAY = new j();
-    EAZ = new c();
-    EBa = new l();
-    EBb = new h();
+    ETt = new b();
+    ETu = new j();
+    ETv = new c();
+    ETw = new l();
+    ETx = new h();
     ArrayList localArrayList = new ArrayList();
-    pxR = localArrayList;
-    localArrayList.add(EAX);
-    pxR.add(EAZ);
-    pxR.add(EBa);
-    pxR.add(EAY);
+    pEv = localArrayList;
+    localArrayList.add(ETt);
+    pEv.add(ETv);
+    pEv.add(ETw);
+    pEv.add(ETu);
     AppMethodBeat.o(30669);
   }
   
@@ -51,10 +51,10 @@ public final class u
   public static void a(WXRTEditText paramWXRTEditText, t... paramVarArgs)
   {
     AppMethodBeat.i(30667);
-    a(paramWXRTEditText, EBb, paramVarArgs);
-    a(paramWXRTEditText, EAZ, paramVarArgs);
-    a(paramWXRTEditText, EBa, paramVarArgs);
-    a(paramWXRTEditText, EAY, paramVarArgs);
+    a(paramWXRTEditText, ETx, paramVarArgs);
+    a(paramWXRTEditText, ETv, paramVarArgs);
+    a(paramWXRTEditText, ETw, paramVarArgs);
+    a(paramWXRTEditText, ETu, paramVarArgs);
     AppMethodBeat.o(30667);
   }
 }

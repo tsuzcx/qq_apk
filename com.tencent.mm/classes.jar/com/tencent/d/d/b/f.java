@@ -4,28 +4,28 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class f
 {
-  private static Boolean LMY;
-  private static final Object LMZ;
+  private static Boolean MjX;
+  private static final Object MjY;
   
   static
   {
     AppMethodBeat.i(138374);
-    LMY = null;
-    LMZ = new Object();
+    MjX = null;
+    MjY = new Object();
     AppMethodBeat.o(138374);
   }
   
   /* Error */
-  public static boolean fTO()
+  public static boolean fYo()
   {
     // Byte code:
     //   0: ldc 33
     //   2: invokestatic 17	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: getstatic 24	com/tencent/d/d/b/f:LMZ	Ljava/lang/Object;
+    //   5: getstatic 24	com/tencent/d/d/b/f:MjY	Ljava/lang/Object;
     //   8: astore 4
     //   10: aload 4
     //   12: monitorenter
-    //   13: getstatic 19	com/tencent/d/d/b/f:LMY	Ljava/lang/Boolean;
+    //   13: getstatic 19	com/tencent/d/d/b/f:MjX	Ljava/lang/Boolean;
     //   16: ifnonnull +72 -> 88
     //   19: getstatic 39	android/os/Build$VERSION:SDK_INT	I
     //   22: bipush 17
@@ -61,8 +61,8 @@ public final class f
     //   80: getstatic 73	java/lang/Boolean:FALSE	Ljava/lang/Boolean;
     //   83: astore_2
     //   84: aload_2
-    //   85: putstatic 19	com/tencent/d/d/b/f:LMY	Ljava/lang/Boolean;
-    //   88: getstatic 19	com/tencent/d/d/b/f:LMY	Ljava/lang/Boolean;
+    //   85: putstatic 19	com/tencent/d/d/b/f:MjX	Ljava/lang/Boolean;
+    //   88: getstatic 19	com/tencent/d/d/b/f:MjX	Ljava/lang/Boolean;
     //   91: invokevirtual 76	java/lang/Boolean:booleanValue	()Z
     //   94: istore_0
     //   95: aload 4

@@ -9,31 +9,31 @@ import java.util.Map;
 public final class ay
   extends dx
 {
-  public static final c.a jGU;
+  public static final c.a jJU;
   
   static
   {
     AppMethodBeat.i(146070);
     c.a locala = new c.a();
-    locala.IhA = new Field[2];
+    locala.IBL = new Field[2];
     locala.columns = new String[3];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "appId";
-    locala.IhC.put("appId", "TEXT");
+    locala.IBN.put("appId", "TEXT");
     localStringBuilder.append(" appId TEXT");
     localStringBuilder.append(", ");
     locala.columns[1] = "launchPB";
-    locala.IhC.put("launchPB", "BLOB");
+    locala.IBN.put("launchPB", "BLOB");
     localStringBuilder.append(" launchPB BLOB");
     locala.columns[2] = "rowid";
     locala.sql = localStringBuilder.toString();
-    jGU = locala;
+    jJU = locala;
     AppMethodBeat.o(146070);
   }
   
   public final c.a getDBInfo()
   {
-    return jGU;
+    return jJU;
   }
 }
 

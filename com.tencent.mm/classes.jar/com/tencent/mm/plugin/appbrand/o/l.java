@@ -7,45 +7,45 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public final class l
 {
-  private static AtomicInteger lVF;
-  public HashMap<String, d> lVG;
+  private static AtomicInteger maj;
+  public HashMap<String, d> mak;
   
   static
   {
     AppMethodBeat.i(144424);
-    lVF = new AtomicInteger(1);
+    maj = new AtomicInteger(1);
     AppMethodBeat.o(144424);
   }
   
   private l()
   {
     AppMethodBeat.i(144420);
-    this.lVG = new HashMap();
+    this.mak = new HashMap();
     AppMethodBeat.o(144420);
   }
   
-  public static int bte()
+  public static int btP()
   {
     AppMethodBeat.i(144423);
-    int i = lVF.incrementAndGet();
+    int i = maj.incrementAndGet();
     AppMethodBeat.o(144423);
     return i;
   }
   
-  public static l btn()
+  public static l btY()
   {
     AppMethodBeat.i(144421);
-    l locall = a.bto();
+    l locall = a.btZ();
     AppMethodBeat.o(144421);
     return locall;
   }
   
-  public final d ST(String paramString)
+  public final d TC(String paramString)
   {
     AppMethodBeat.i(144422);
-    if (this.lVG.containsKey(paramString))
+    if (this.mak.containsKey(paramString))
     {
-      paramString = (d)this.lVG.get(paramString);
+      paramString = (d)this.mak.get(paramString);
       AppMethodBeat.o(144422);
       return paramString;
     }
@@ -55,12 +55,12 @@ public final class l
   
   static final class a
   {
-    private static l lWy;
+    private static l mbe;
     
     static
     {
       AppMethodBeat.i(144419);
-      lWy = new l((byte)0);
+      mbe = new l((byte)0);
       AppMethodBeat.o(144419);
     }
   }

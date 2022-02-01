@@ -10,35 +10,35 @@ public class RealNameBundle
   implements Parcelable
 {
   public static final Parcelable.Creator<RealNameBundle> CREATOR;
-  public int CTA;
-  public String CTB;
-  public String CTa;
-  public String CTb;
-  public String CTc;
-  public int CTd;
-  public String CTe;
-  public Profession CTf;
-  public String CTg;
-  public String CTh;
-  public String CTi;
-  public String CTj;
-  public int CTk;
-  public String CTl;
-  public int CTm;
-  public int CTn;
-  public int CTo;
-  public String CTp;
-  public int CTq;
-  public int CTr;
-  public int CTs;
-  public String CTt;
-  public String CTu;
-  public String CTv;
-  public String CTw;
-  public String CTx;
-  public int CTy;
-  public int CTz;
-  public int ePk;
+  public String DkG;
+  public String DkH;
+  public String DkI;
+  public int DkJ;
+  public String DkK;
+  public Profession DkL;
+  public String DkM;
+  public String DkN;
+  public String DkO;
+  public String DkP;
+  public int DkQ;
+  public String DkR;
+  public int DkS;
+  public int DkT;
+  public int DkU;
+  public String DkV;
+  public int DkW;
+  public int DkX;
+  public int DkY;
+  public String DkZ;
+  public String Dla;
+  public String Dlb;
+  public String Dlc;
+  public String Dld;
+  public int Dle;
+  public int Dlf;
+  public int Dlg;
+  public String Dlh;
+  public int eQV;
   
   static
   {
@@ -52,56 +52,56 @@ public class RealNameBundle
   protected RealNameBundle(Parcel paramParcel)
   {
     AppMethodBeat.i(70165);
-    this.CTa = paramParcel.readString();
-    this.CTb = paramParcel.readString();
-    this.CTc = paramParcel.readString();
-    this.CTd = paramParcel.readInt();
-    this.CTe = paramParcel.readString();
-    this.CTf = ((Profession)paramParcel.readParcelable(Profession.class.getClassLoader()));
-    this.CTg = paramParcel.readString();
-    this.CTh = paramParcel.readString();
-    this.CTi = paramParcel.readString();
-    this.CTj = paramParcel.readString();
-    this.CTk = paramParcel.readInt();
-    this.CTl = paramParcel.readString();
-    this.CTm = paramParcel.readInt();
-    this.CTn = paramParcel.readInt();
-    this.CTo = paramParcel.readInt();
-    this.CTp = paramParcel.readString();
-    this.CTq = paramParcel.readInt();
-    this.CTr = paramParcel.readInt();
-    this.CTs = paramParcel.readInt();
-    this.CTt = paramParcel.readString();
-    this.CTu = paramParcel.readString();
-    this.CTv = paramParcel.readString();
-    this.CTw = paramParcel.readString();
-    this.CTx = paramParcel.readString();
-    this.CTy = paramParcel.readInt();
-    this.CTz = paramParcel.readInt();
-    this.CTA = paramParcel.readInt();
-    this.CTB = paramParcel.readString();
-    this.ePk = paramParcel.readInt();
+    this.DkG = paramParcel.readString();
+    this.DkH = paramParcel.readString();
+    this.DkI = paramParcel.readString();
+    this.DkJ = paramParcel.readInt();
+    this.DkK = paramParcel.readString();
+    this.DkL = ((Profession)paramParcel.readParcelable(Profession.class.getClassLoader()));
+    this.DkM = paramParcel.readString();
+    this.DkN = paramParcel.readString();
+    this.DkO = paramParcel.readString();
+    this.DkP = paramParcel.readString();
+    this.DkQ = paramParcel.readInt();
+    this.DkR = paramParcel.readString();
+    this.DkS = paramParcel.readInt();
+    this.DkT = paramParcel.readInt();
+    this.DkU = paramParcel.readInt();
+    this.DkV = paramParcel.readString();
+    this.DkW = paramParcel.readInt();
+    this.DkX = paramParcel.readInt();
+    this.DkY = paramParcel.readInt();
+    this.DkZ = paramParcel.readString();
+    this.Dla = paramParcel.readString();
+    this.Dlb = paramParcel.readString();
+    this.Dlc = paramParcel.readString();
+    this.Dld = paramParcel.readString();
+    this.Dle = paramParcel.readInt();
+    this.Dlf = paramParcel.readInt();
+    this.Dlg = paramParcel.readInt();
+    this.Dlh = paramParcel.readString();
+    this.eQV = paramParcel.readInt();
     AppMethodBeat.o(70165);
   }
   
-  public final void aT(Map<String, String> paramMap)
+  public final void aZ(Map<String, String> paramMap)
   {
     AppMethodBeat.i(174505);
-    paramMap.put("detail_address", this.CTw);
-    paramMap.put("phone_no", this.CTB);
-    paramMap.put("sex", String.valueOf(this.ePk));
-    paramMap.put("nationality", this.CTt);
-    paramMap.put("birth_date", this.CTp);
-    if (this.CTf != null) {}
-    for (String str = this.CTf.CSY;; str = "")
+    paramMap.put("detail_address", this.Dlc);
+    paramMap.put("phone_no", this.Dlh);
+    paramMap.put("sex", String.valueOf(this.eQV));
+    paramMap.put("nationality", this.DkZ);
+    paramMap.put("birth_date", this.DkV);
+    if (this.DkL != null) {}
+    for (String str = this.DkL.DkE;; str = "")
     {
       paramMap.put("profession_name", str);
-      paramMap.put("user_country", this.CTg);
-      paramMap.put("user_province", this.CTh);
-      paramMap.put("user_city", this.CTi);
-      paramMap.put("cre_expire_date", this.CTl);
-      paramMap.put("creid_renewal", String.valueOf(this.CTk));
-      paramMap.put("cre_effect_date", this.CTx);
+      paramMap.put("user_country", this.DkM);
+      paramMap.put("user_province", this.DkN);
+      paramMap.put("user_city", this.DkO);
+      paramMap.put("cre_expire_date", this.DkR);
+      paramMap.put("creid_renewal", String.valueOf(this.DkQ));
+      paramMap.put("cre_effect_date", this.Dld);
       AppMethodBeat.o(174505);
       return;
     }
@@ -115,41 +115,41 @@ public class RealNameBundle
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(70166);
-    paramParcel.writeString(this.CTa);
-    paramParcel.writeString(this.CTb);
-    paramParcel.writeString(this.CTc);
-    paramParcel.writeInt(this.CTd);
-    paramParcel.writeString(this.CTe);
-    paramParcel.writeParcelable(this.CTf, 1);
-    paramParcel.writeString(this.CTg);
-    paramParcel.writeString(this.CTh);
-    paramParcel.writeString(this.CTi);
-    paramParcel.writeString(this.CTj);
-    paramParcel.writeInt(this.CTk);
-    paramParcel.writeString(this.CTl);
-    paramParcel.writeInt(this.CTm);
-    paramParcel.writeInt(this.CTn);
-    paramParcel.writeInt(this.CTo);
-    paramParcel.writeString(this.CTp);
-    paramParcel.writeInt(this.CTq);
-    paramParcel.writeInt(this.CTr);
-    paramParcel.writeInt(this.CTs);
-    paramParcel.writeString(this.CTt);
-    paramParcel.writeString(this.CTu);
-    paramParcel.writeString(this.CTv);
-    paramParcel.writeString(this.CTw);
-    paramParcel.writeString(this.CTx);
-    paramParcel.writeInt(this.CTy);
-    paramParcel.writeInt(this.CTz);
-    paramParcel.writeInt(this.CTA);
-    paramParcel.writeString(this.CTB);
-    paramParcel.writeInt(this.ePk);
+    paramParcel.writeString(this.DkG);
+    paramParcel.writeString(this.DkH);
+    paramParcel.writeString(this.DkI);
+    paramParcel.writeInt(this.DkJ);
+    paramParcel.writeString(this.DkK);
+    paramParcel.writeParcelable(this.DkL, 1);
+    paramParcel.writeString(this.DkM);
+    paramParcel.writeString(this.DkN);
+    paramParcel.writeString(this.DkO);
+    paramParcel.writeString(this.DkP);
+    paramParcel.writeInt(this.DkQ);
+    paramParcel.writeString(this.DkR);
+    paramParcel.writeInt(this.DkS);
+    paramParcel.writeInt(this.DkT);
+    paramParcel.writeInt(this.DkU);
+    paramParcel.writeString(this.DkV);
+    paramParcel.writeInt(this.DkW);
+    paramParcel.writeInt(this.DkX);
+    paramParcel.writeInt(this.DkY);
+    paramParcel.writeString(this.DkZ);
+    paramParcel.writeString(this.Dla);
+    paramParcel.writeString(this.Dlb);
+    paramParcel.writeString(this.Dlc);
+    paramParcel.writeString(this.Dld);
+    paramParcel.writeInt(this.Dle);
+    paramParcel.writeInt(this.Dlf);
+    paramParcel.writeInt(this.Dlg);
+    paramParcel.writeString(this.Dlh);
+    paramParcel.writeInt(this.eQV);
     AppMethodBeat.o(70166);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.id_verify.model.RealNameBundle
  * JD-Core Version:    0.7.0.1
  */

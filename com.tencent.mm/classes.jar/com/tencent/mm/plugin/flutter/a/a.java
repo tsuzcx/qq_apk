@@ -9,7 +9,7 @@ public abstract interface a
   
   public abstract <T> T aO(Class<T> paramClass);
   
-  public abstract boolean cQk();
+  public abstract boolean cSP();
 }
 
 

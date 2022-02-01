@@ -9,18 +9,18 @@ public final class b
 {
   public ViewGroup mContainer;
   public String mTag;
-  public TimeLineObject yVQ;
-  public boolean zbs;
+  public TimeLineObject zma;
+  public boolean zrW;
   
   public b(String paramString)
   {
-    AppMethodBeat.i(197689);
+    AppMethodBeat.i(219161);
     String str = paramString;
     if (TextUtils.isEmpty(paramString)) {
       str = "OnlineVideoChecker";
     }
     this.mTag = str;
-    AppMethodBeat.o(197689);
+    AppMethodBeat.o(219161);
   }
 }
 

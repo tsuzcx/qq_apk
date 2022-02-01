@@ -2,22 +2,22 @@ package kotlinx.a;
 
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/serialization/SerialDescriptor;", "", "annotations", "", "", "getAnnotations", "()Ljava/util/List;", "elementsCount", "", "getElementsCount", "()I", "isNullable", "", "()Z", "kind", "Lkotlinx/serialization/SerialKind;", "getKind", "()Lkotlinx/serialization/SerialKind;", "name", "", "name$annotations", "()V", "getName", "()Ljava/lang/String;", "serialName", "getSerialName", "getElementAnnotations", "index", "getElementDescriptor", "getElementIndex", "getElementName", "getEntityAnnotations", "isElementOptional", "kotlinx-serialization-runtime"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/serialization/SerialDescriptor;", "", "annotations", "", "", "getAnnotations", "()Ljava/util/List;", "elementsCount", "", "getElementsCount", "()I", "isNullable", "", "()Z", "kind", "Lkotlinx/serialization/SerialKind;", "getKind", "()Lkotlinx/serialization/SerialKind;", "name", "", "name$annotations", "()V", "getName", "()Ljava/lang/String;", "serialName", "getSerialName", "getElementAnnotations", "index", "getElementDescriptor", "getElementIndex", "getElementName", "getEntityAnnotations", "isElementOptional", "kotlinx-serialization-runtime"})
 public abstract interface n
 {
-  public abstract String alJ(int paramInt);
+  public abstract String amt(int paramInt);
   
-  public abstract n alK(int paramInt);
+  public abstract n amu(int paramInt);
   
-  public abstract int bdm(String paramString);
+  public abstract int beQ(String paramString);
   
-  public abstract String gwQ();
+  public abstract String gBs();
   
-  public abstract s gwR();
+  public abstract s gBt();
   
-  public abstract boolean gwS();
+  public abstract boolean gBu();
   
-  public abstract int gwT();
+  public abstract int gBv();
 }
 
 

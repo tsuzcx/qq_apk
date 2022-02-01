@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.appbrand.jsapi.websocket;
 
-import com.tencent.mm.plugin.appbrand.aa.e.a;
-import com.tencent.mm.plugin.appbrand.aa.e.h;
+import com.tencent.mm.plugin.appbrand.z.e.a;
+import com.tencent.mm.plugin.appbrand.z.e.h;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.Map;
@@ -9,9 +9,9 @@ import org.json.JSONObject;
 
 public abstract interface d
 {
-  public static final ArrayList<e> luZ = new ArrayList();
+  public static final ArrayList<e> lzx = new ArrayList();
   
-  public abstract e Rk(String paramString);
+  public abstract e RT(String paramString);
   
   public abstract void a(e parame);
   
@@ -29,11 +29,11 @@ public abstract interface d
   
   public static abstract interface a
   {
-    public abstract void Ob(String paramString);
+    public abstract void OI(String paramString);
     
-    public abstract void Oc(String paramString);
+    public abstract void OJ(String paramString);
     
-    public abstract void Qh(String paramString);
+    public abstract void QQ(String paramString);
     
     public abstract void a(a parama);
     

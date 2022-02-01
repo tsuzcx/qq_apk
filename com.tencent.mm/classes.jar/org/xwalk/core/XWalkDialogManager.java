@@ -143,7 +143,7 @@ public class XWalkDialogManager
                 AppMethodBeat.i(154693);
                 b localb = new b();
                 localb.bd(paramAnonymous2View);
-                a.b("org/xwalk/core/XWalkDialogManager$1$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+                a.b("org/xwalk/core/XWalkDialogManager$1$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
                 XWalkDialogManager.this.dismissDialog();
                 this.val$command.run();
                 a.a(this, "org/xwalk/core/XWalkDialogManager$1$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");

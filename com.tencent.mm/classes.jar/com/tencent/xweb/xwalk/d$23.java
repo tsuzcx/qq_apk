@@ -16,8 +16,8 @@ final class d$23
     AppMethodBeat.i(154176);
     b localb = new b();
     localb.bd(paramView);
-    a.b("com/tencent/xweb/xwalk/WebDebugPage$3", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.ahq());
-    this.MvU.gcT();
+    a.b("com/tencent/xweb/xwalk/WebDebugPage$3", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.ahF());
+    this.MSY.ghv();
     a.a(true, this, "com/tencent/xweb/xwalk/WebDebugPage$3", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
     AppMethodBeat.o(154176);
     return true;

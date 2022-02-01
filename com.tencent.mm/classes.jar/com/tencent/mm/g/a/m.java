@@ -7,7 +7,7 @@ import org.json.JSONObject;
 public final class m
   extends b
 {
-  public a djZ;
+  public a dlb;
   
   public m()
   {
@@ -17,17 +17,17 @@ public final class m
   private m(byte paramByte)
   {
     AppMethodBeat.i(144177);
-    this.djZ = new a();
-    this.IbR = false;
+    this.dlb = new a();
+    this.IvZ = false;
     this.callback = null;
     AppMethodBeat.o(144177);
   }
   
   public static final class a
   {
-    public String dka;
-    public String dkb;
-    public JSONObject dkc;
+    public String dlc;
+    public String dld;
+    public JSONObject dle;
   }
 }
 

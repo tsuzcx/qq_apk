@@ -13,73 +13,73 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aw.a.a.c;
-import com.tencent.mm.aw.a.a.c.a;
-import com.tencent.mm.aw.q;
+import com.tencent.mm.av.a.a.c;
+import com.tencent.mm.av.a.a.c.a;
+import com.tencent.mm.av.q;
 import com.tencent.mm.plugin.card.d.n;
 import com.tencent.mm.plugin.card.model.m;
-import com.tencent.mm.protocal.protobuf.aaf;
-import com.tencent.mm.protocal.protobuf.sr;
-import com.tencent.mm.protocal.protobuf.ts;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.aai;
+import com.tencent.mm.protocal.protobuf.st;
+import com.tencent.mm.protocal.protobuf.tu;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.LinkedList;
 
 public final class e
   extends a
 {
-  protected TextView iVq;
-  private LinearLayout oCy;
-  private RelativeLayout oQq;
-  private TextView oQr;
-  private View oQs;
-  private ImageView oQt;
-  private ImageView oQu;
-  private ImageView oQv;
-  private ImageView oQw;
-  private ImageView oQx;
+  protected TextView iYj;
+  private LinearLayout oJa;
+  private RelativeLayout oWS;
+  private TextView oWT;
+  private View oWU;
+  private ImageView oWV;
+  private ImageView oWW;
+  private ImageView oWX;
+  private ImageView oWY;
+  private ImageView oWZ;
   
   public e(Context paramContext)
   {
     super(paramContext);
   }
   
-  private void bYN()
+  private void cac()
   {
     AppMethodBeat.i(113912);
     Object localObject = new c.a();
-    ((c.a)localObject).prefixPath = com.tencent.mm.loader.j.b.arU();
-    q.aIK();
-    ((c.a)localObject).idJ = null;
-    ((c.a)localObject).hdP = m.Yt(this.owK.bTO().FPA);
-    ((c.a)localObject).idr = true;
-    ((c.a)localObject).hfi = true;
-    ((c.a)localObject).idK = this.mContext.getResources().getDimensionPixelSize(2131165983);
-    ((c.a)localObject).idL = true;
-    ((c.a)localObject).idp = true;
-    ((c.a)localObject).idD = 2131231519;
-    ((c.a)localObject).hdS = com.tencent.mm.cc.a.ax(this.mContext, 2131165987);
-    ((c.a)localObject).hdR = com.tencent.mm.cc.a.ip(this.mContext);
-    localObject = ((c.a)localObject).aJc();
-    q.aIJ().a(this.owK.bTO().FPA, this.oQw, (c)localObject);
-    ad.i("MicroMsg.CardWidgetMembership", "the member back ground url is " + this.owK.bTO().FPA);
+    ((c.a)localObject).prefixPath = com.tencent.mm.loader.j.b.asj();
+    q.aJc();
+    ((c.a)localObject).igB = null;
+    ((c.a)localObject).hgD = m.Zk(this.oDm.bVd().GhZ);
+    ((c.a)localObject).igk = true;
+    ((c.a)localObject).hhW = true;
+    ((c.a)localObject).igC = this.mContext.getResources().getDimensionPixelSize(2131165983);
+    ((c.a)localObject).igD = true;
+    ((c.a)localObject).igi = true;
+    ((c.a)localObject).igv = 2131231519;
+    ((c.a)localObject).hgG = com.tencent.mm.cb.a.ax(this.mContext, 2131165987);
+    ((c.a)localObject).hgF = com.tencent.mm.cb.a.iu(this.mContext);
+    localObject = ((c.a)localObject).aJu();
+    q.aJb().a(this.oDm.bVd().GhZ, this.oWY, (c)localObject);
+    ae.i("MicroMsg.CardWidgetMembership", "the member back ground url is " + this.oDm.bVd().GhZ);
     AppMethodBeat.o(113912);
   }
   
-  public final void AQ(int paramInt)
+  public final void Bc(int paramInt)
   {
     AppMethodBeat.i(113909);
-    if (!TextUtils.isEmpty(this.owK.bTO().FPA))
+    if (!TextUtils.isEmpty(this.oDm.bVd().GhZ))
     {
-      this.oQw.setBackgroundDrawable(null);
-      this.oQx.setVisibility(0);
-      bYN();
+      this.oWY.setBackgroundDrawable(null);
+      this.oWZ.setVisibility(0);
+      cac();
       AppMethodBeat.o(113909);
       return;
     }
-    if (this.oPV != null)
+    if (this.oWx != null)
     {
-      this.oQw.setBackgroundResource(paramInt);
-      this.oQx.setVisibility(8);
+      this.oWY.setBackgroundResource(paramInt);
+      this.oWZ.setVisibility(8);
     }
     AppMethodBeat.o(113909);
   }
@@ -89,118 +89,118 @@ public final class e
   public final void a(ShapeDrawable paramShapeDrawable)
   {
     AppMethodBeat.i(113910);
-    if (!TextUtils.isEmpty(this.owK.bTO().FPA))
+    if (!TextUtils.isEmpty(this.oDm.bVd().GhZ))
     {
-      this.oQw.setBackgroundDrawable(null);
-      this.oQx.setVisibility(0);
-      bYN();
+      this.oWY.setBackgroundDrawable(null);
+      this.oWZ.setVisibility(0);
+      cac();
       AppMethodBeat.o(113910);
       return;
     }
-    if (this.oPV != null)
+    if (this.oWx != null)
     {
-      this.oQw.setBackgroundDrawable(paramShapeDrawable);
-      this.oQx.setVisibility(8);
+      this.oWY.setBackgroundDrawable(paramShapeDrawable);
+      this.oWZ.setVisibility(8);
     }
     AppMethodBeat.o(113910);
   }
   
-  protected final void bYI()
+  protected final void bZX()
   {
     AppMethodBeat.i(113906);
-    this.iVq = ((TextView)bYH().findViewById(2131297911));
-    this.oQq = ((RelativeLayout)bYH().findViewById(2131297860));
-    this.oCy = ((LinearLayout)bYH().findViewById(2131297762));
-    this.oQr = ((TextView)bYH().findViewById(2131298408));
-    this.oQs = bYH().findViewById(2131297760);
-    this.oQt = ((ImageView)bYH().findViewById(2131297761));
-    this.oQu = ((ImageView)this.oPV.findViewById(2131302234));
-    this.oQv = ((ImageView)this.oPV.findViewById(2131302233));
-    this.oQw = ((ImageView)this.oPV.findViewById(2131297857));
-    this.oQx = ((ImageView)this.oPV.findViewById(2131297859));
+    this.iYj = ((TextView)bZW().findViewById(2131297911));
+    this.oWS = ((RelativeLayout)bZW().findViewById(2131297860));
+    this.oJa = ((LinearLayout)bZW().findViewById(2131297762));
+    this.oWT = ((TextView)bZW().findViewById(2131298408));
+    this.oWU = bZW().findViewById(2131297760);
+    this.oWV = ((ImageView)bZW().findViewById(2131297761));
+    this.oWW = ((ImageView)this.oWx.findViewById(2131302234));
+    this.oWX = ((ImageView)this.oWx.findViewById(2131302233));
+    this.oWY = ((ImageView)this.oWx.findViewById(2131297857));
+    this.oWZ = ((ImageView)this.oWx.findViewById(2131297859));
     AppMethodBeat.o(113906);
   }
   
-  protected final void bYJ()
+  protected final void bZY()
   {
     AppMethodBeat.i(113907);
-    if (this.mMD != null) {
-      this.mMD.setText(this.owK.bTN().oze);
+    if (this.mRG != null) {
+      this.mRG.setText(this.oDm.bVc().oFG);
     }
     Object localObject;
-    if ((this.owK.bTN().FRz != null) && (this.owK.bTN().FRz.size() > 0))
+    if ((this.oDm.bVc().GjY != null) && (this.oDm.bVc().GjY.size() > 0))
     {
-      localObject = (aaf)this.owK.bTN().FRz.get(0);
-      if (!TextUtils.isEmpty(((aaf)localObject).title)) {
-        this.iVq.setText(((aaf)localObject).title);
+      localObject = (aai)this.oDm.bVc().GjY.get(0);
+      if (!TextUtils.isEmpty(((aai)localObject).title)) {
+        this.iYj.setText(((aai)localObject).title);
       }
     }
     else
     {
-      if (!this.owK.bTJ()) {
+      if (!this.oDm.bUY()) {
         break label484;
       }
-      jB(true);
-      this.oQw.setAlpha(255);
-      if (this.oQw.getBackground() != null) {
-        this.oQw.getBackground().setAlpha(255);
+      jA(true);
+      this.oWY.setAlpha(255);
+      if (this.oWY.getBackground() != null) {
+        this.oWY.getBackground().setAlpha(255);
       }
-      localObject = this.owK.bTO().code;
+      localObject = this.oDm.bVd().code;
       if (!TextUtils.isEmpty((CharSequence)localObject)) {
         break label307;
       }
-      ad.e("MicroMsg.CardWidgetMembership", "don't updateCodeLayout, code is empty!");
-      jB(false);
+      ae.e("MicroMsg.CardWidgetMembership", "don't updateCodeLayout, code is empty!");
+      jA(false);
     }
     for (;;)
     {
-      localObject = this.oQq.getLayoutParams();
+      localObject = this.oWS.getLayoutParams();
       int i = this.mContext.getResources().getDimensionPixelSize(2131165483);
       int j = this.mContext.getResources().getDisplayMetrics().widthPixels - i * 2;
       int k = j * 3 / 5;
       ((ViewGroup.LayoutParams)localObject).height = k;
-      ad.d("MicroMsg.CardWidgetMembership", "padding:%d,originWidth:%d,targetWidth:%d", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k) });
-      this.oQq.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      ae.d("MicroMsg.CardWidgetMembership", "padding:%d,originWidth:%d,targetWidth:%d", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k) });
+      this.oWS.setLayoutParams((ViewGroup.LayoutParams)localObject);
       AppMethodBeat.o(113907);
       return;
-      this.iVq.setText("");
+      this.iYj.setText("");
       break;
       label307:
-      this.oQs.setOnClickListener(this.jtG);
-      this.oQt.setOnClickListener(this.jtG);
-      this.oQr.setOnClickListener(this.jtG);
-      switch (this.owK.bTO().FPp)
+      this.oWU.setOnClickListener(this.jwB);
+      this.oWV.setOnClickListener(this.jwB);
+      this.oWT.setOnClickListener(this.jwB);
+      switch (this.oDm.bVd().GhO)
       {
       default: 
         break;
       case 0: 
         if (((String)localObject).length() <= 40) {
-          this.oQr.setText(n.Zo((String)localObject));
+          this.oWT.setText(n.aaf((String)localObject));
         }
         break;
       case 1: 
       case 2: 
         if (((String)localObject).length() <= 40)
         {
-          if (this.owK.bTC()) {
-            this.oQr.setText(n.Zo((String)localObject));
+          if (this.oDm.bUR()) {
+            this.oWT.setText(n.aaf((String)localObject));
           } else {
-            this.oQr.setText("");
+            this.oWT.setText("");
           }
         }
         else
         {
-          this.oQr.setText("");
+          this.oWT.setText("");
           continue;
-          this.oQr.setText("");
+          this.oWT.setText("");
           continue;
           label484:
-          this.oQr.setText("");
-          this.oQt.setVisibility(8);
-          this.oQs.setVisibility(8);
-          this.oQw.setAlpha(90);
-          if (this.oQw.getBackground() != null) {
-            this.oQw.getBackground().setAlpha(90);
+          this.oWT.setText("");
+          this.oWV.setVisibility(8);
+          this.oWU.setVisibility(8);
+          this.oWY.setAlpha(90);
+          if (this.oWY.getBackground() != null) {
+            this.oWY.getBackground().setAlpha(90);
           }
         }
         break;
@@ -208,33 +208,33 @@ public final class e
     }
   }
   
-  public final void jB(boolean paramBoolean)
+  public final void jA(boolean paramBoolean)
   {
     AppMethodBeat.i(113908);
-    if ((!TextUtils.isEmpty(this.owK.bTO().code)) && (paramBoolean) && (this.owK.bTO().FPp != 0) && (!this.owK.bTN().FSg))
+    if ((!TextUtils.isEmpty(this.oDm.bVd().code)) && (paramBoolean) && (this.oDm.bVd().GhO != 0) && (!this.oDm.bVc().GkF))
     {
-      this.oQt.setVisibility(0);
-      this.oQs.setVisibility(0);
+      this.oWV.setVisibility(0);
+      this.oWU.setVisibility(0);
       AppMethodBeat.o(113908);
       return;
     }
-    this.oQt.setVisibility(8);
-    this.oQs.setVisibility(8);
+    this.oWV.setVisibility(8);
+    this.oWU.setVisibility(8);
     AppMethodBeat.o(113908);
   }
   
-  public final void jC(boolean paramBoolean)
+  public final void jB(boolean paramBoolean)
   {
     AppMethodBeat.i(113911);
-    if (!TextUtils.isEmpty(this.owK.bTO().FPA))
+    if (!TextUtils.isEmpty(this.oDm.bVd().GhZ))
     {
-      this.oQv.setVisibility(8);
-      this.oQu.setVisibility(8);
+      this.oWX.setVisibility(8);
+      this.oWW.setVisibility(8);
       AppMethodBeat.o(113911);
       return;
     }
-    this.oQv.setVisibility(0);
-    this.oQu.setVisibility(0);
+    this.oWX.setVisibility(0);
+    this.oWW.setVisibility(0);
     AppMethodBeat.o(113911);
   }
 }

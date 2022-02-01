@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.story.api;
 
 public abstract interface l$b
 {
-  public abstract void eeQ();
+  public abstract void eix();
 }
 
 

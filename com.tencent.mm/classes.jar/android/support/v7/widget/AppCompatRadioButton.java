@@ -23,7 +23,7 @@ public class AppCompatRadioButton
   
   public AppCompatRadioButton(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
-    super(aw.ac(paramContext), paramAttributeSet, paramInt);
+    super(aw.ad(paramContext), paramAttributeSet, paramInt);
     this.ajW.a(paramAttributeSet, paramInt);
     this.ajQ = new l(this);
     this.ajQ.a(paramAttributeSet, paramInt);

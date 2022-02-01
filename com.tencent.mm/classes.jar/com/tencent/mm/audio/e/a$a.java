@@ -3,7 +3,7 @@ package com.tencent.mm.audio.e;
 public final class a$a
 {
   public int count = 0;
-  public long diX = 0L;
+  public long djZ = 0L;
 }
 
 

@@ -7,19 +7,19 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class b
 {
-  private static a cxP;
+  private static a cyw;
   private static boolean sLibraryLoaded;
   
   static
   {
     AppMethodBeat.i(139960);
     sLibraryLoaded = false;
-    cxP = new a()
+    cyw = new a()
     {
       public final void loadLibrary(String paramAnonymousString)
       {
         AppMethodBeat.i(139955);
-        h.dH(paramAnonymousString);
+        h.dK(paramAnonymousString);
         AppMethodBeat.o(139955);
       }
     };
@@ -29,13 +29,13 @@ public final class b
   public static void a(a parama)
   {
     AppMethodBeat.i(139957);
-    cxP = parama;
+    cyw = parama;
     a.a(new a.a()
     {
       public final void loadLibrary(String paramAnonymousString)
       {
         AppMethodBeat.i(139956);
-        this.cxQ.loadLibrary(paramAnonymousString);
+        this.cyx.loadLibrary(paramAnonymousString);
         AppMethodBeat.o(139956);
       }
     });
@@ -51,23 +51,20 @@ public final class b
       return;
     }
     c.c.i("MagicBrush", "start loadLibraries", new Object[0]);
-    cxP.loadLibrary("mmavmedia");
-    cxP.loadLibrary("mmmediasdk");
-    cxP.loadLibrary("mmbox2d");
-    cxP.loadLibrary("mmphysx");
-    long l1 = h.HI();
-    cxP.loadLibrary("mmv8");
-    long l2 = h.HI();
-    cxP.loadLibrary("magicbrush");
+    cyw.loadLibrary("mmphysx");
+    long l1 = h.HQ();
+    cyw.loadLibrary("mmv8");
+    long l2 = h.HQ();
+    cyw.loadLibrary("magicbrush");
     sLibraryLoaded = true;
-    c.c.i("MagicBrush", "load mmv8 cost [%d]ms, load magicbrush cost [%d]ms", new Object[] { Long.valueOf(h.aO(l2)), Long.valueOf(l2 - l1) });
+    c.c.i("MagicBrush", "load mmv8 cost [%d]ms, load magicbrush cost [%d]ms", new Object[] { Long.valueOf(l2 - l1), Long.valueOf(h.aO(l2)) });
     AppMethodBeat.o(139959);
   }
   
   public static void loadLibrary(String paramString)
   {
     AppMethodBeat.i(139958);
-    cxP.loadLibrary(paramString);
+    cyw.loadLibrary(paramString);
     AppMethodBeat.o(139958);
   }
   
@@ -78,7 +75,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.magicbrush.a.b
  * JD-Core Version:    0.7.0.1
  */

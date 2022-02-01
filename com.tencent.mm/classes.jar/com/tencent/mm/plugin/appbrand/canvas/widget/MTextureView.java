@@ -15,8 +15,8 @@ import android.view.View.OnAttachStateChangeListener;
 import android.view.Window;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.canvas.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aq;
 import java.util.LinkedHashSet;
 import java.util.Set;
 import org.json.JSONArray;
@@ -25,21 +25,21 @@ public class MTextureView
   extends TextureView
   implements TextureView.SurfaceTextureListener, a
 {
-  private volatile boolean jUA;
-  private final b jUt;
-  private final Set<View.OnAttachStateChangeListener> jUu;
-  private volatile ap jUx;
-  private Runnable jUy;
+  private final b jXK;
+  private final Set<View.OnAttachStateChangeListener> jXL;
+  private volatile aq jXO;
+  private Runnable jXP;
+  private volatile boolean jXR;
   private volatile Object mLock;
   
   public MTextureView(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(145498);
-    this.jUt = new b(this);
-    this.jUu = new LinkedHashSet();
+    this.jXK = new b(this);
+    this.jXL = new LinkedHashSet();
     this.mLock = new Object();
-    this.jUy = new Runnable()
+    this.jXP = new Runnable()
     {
       public final void run()
       {
@@ -82,10 +82,10 @@ public class MTextureView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(145499);
-    this.jUt = new b(this);
-    this.jUu = new LinkedHashSet();
+    this.jXK = new b(this);
+    this.jXL = new LinkedHashSet();
     this.mLock = new Object();
-    this.jUy = new Runnable()
+    this.jXP = new Runnable()
     {
       public final void run()
       {
@@ -128,10 +128,10 @@ public class MTextureView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(145500);
-    this.jUt = new b(this);
-    this.jUu = new LinkedHashSet();
+    this.jXK = new b(this);
+    this.jXL = new LinkedHashSet();
     this.mLock = new Object();
-    this.jUy = new Runnable()
+    this.jXP = new Runnable()
     {
       public final void run()
       {
@@ -177,45 +177,45 @@ public class MTextureView
     ((Activity)getContext()).getWindow().setFlags(16777216, 16777216);
     Paint localPaint = new Paint();
     localPaint.setColor(-1);
-    this.jUt.getDrawContext().jTd = localPaint;
+    this.jXK.getDrawContext().jWu = localPaint;
     AppMethodBeat.o(145501);
   }
   
-  public final void R(Runnable paramRunnable)
+  public final void P(Runnable paramRunnable)
   {
     AppMethodBeat.i(145505);
-    if (this.jUx == null)
+    if (this.jXO == null)
     {
       AppMethodBeat.o(145505);
       return;
     }
-    this.jUx.post(paramRunnable);
+    this.jXO.post(paramRunnable);
     AppMethodBeat.o(145505);
   }
   
   public final void a(DrawCanvasArg paramDrawCanvasArg, a.a parama)
   {
     AppMethodBeat.i(145511);
-    this.jUt.a(paramDrawCanvasArg, parama);
+    this.jXK.a(paramDrawCanvasArg, parama);
     AppMethodBeat.o(145511);
   }
   
   public final void a(JSONArray paramJSONArray, a.a parama)
   {
     AppMethodBeat.i(145509);
-    this.jUt.a(paramJSONArray, parama);
+    this.jXK.a(paramJSONArray, parama);
     AppMethodBeat.o(145509);
   }
   
   public void addOnAttachStateChangeListener(View.OnAttachStateChangeListener paramOnAttachStateChangeListener)
   {
     AppMethodBeat.i(145514);
-    if (this.jUu.contains(paramOnAttachStateChangeListener))
+    if (this.jXL.contains(paramOnAttachStateChangeListener))
     {
       AppMethodBeat.o(145514);
       return;
     }
-    this.jUu.add(paramOnAttachStateChangeListener);
+    this.jXL.add(paramOnAttachStateChangeListener);
     super.addOnAttachStateChangeListener(paramOnAttachStateChangeListener);
     AppMethodBeat.o(145514);
   }
@@ -223,48 +223,48 @@ public class MTextureView
   public final void b(DrawCanvasArg paramDrawCanvasArg, a.a parama)
   {
     AppMethodBeat.i(145512);
-    this.jUt.b(paramDrawCanvasArg, parama);
+    this.jXK.b(paramDrawCanvasArg, parama);
     AppMethodBeat.o(145512);
   }
   
   public final void b(JSONArray paramJSONArray, a.a parama)
   {
     AppMethodBeat.i(145510);
-    this.jUt.b(paramJSONArray, parama);
+    this.jXK.b(paramJSONArray, parama);
     AppMethodBeat.o(145510);
   }
   
-  public final void bdk()
+  public final void bdP()
   {
     AppMethodBeat.i(145504);
-    if (this.jUx == null)
+    if (this.jXO == null)
     {
       AppMethodBeat.o(145504);
       return;
     }
-    this.jUx.removeCallbacks(this.jUy);
-    this.jUx.post(this.jUy);
+    this.jXO.removeCallbacks(this.jXP);
+    this.jXO.post(this.jXP);
     AppMethodBeat.o(145504);
   }
   
-  public final void bdl()
+  public final void bdQ()
   {
     AppMethodBeat.i(145513);
-    this.jUt.bdl();
+    this.jXK.bdQ();
     AppMethodBeat.o(145513);
   }
   
-  public final void bdm()
+  public final void bdR()
   {
     AppMethodBeat.i(145520);
-    this.jUt.bdm();
+    this.jXK.bdR();
     AppMethodBeat.o(145520);
   }
   
   public com.tencent.mm.plugin.appbrand.canvas.d getDrawContext()
   {
     AppMethodBeat.i(145506);
-    com.tencent.mm.plugin.appbrand.canvas.d locald = this.jUt.getDrawContext();
+    com.tencent.mm.plugin.appbrand.canvas.d locald = this.jXK.getDrawContext();
     AppMethodBeat.o(145506);
     return locald;
   }
@@ -272,7 +272,7 @@ public class MTextureView
   public String getSessionId()
   {
     AppMethodBeat.i(145517);
-    String str = this.jUt.getSessionId();
+    String str = this.jXK.getSessionId();
     AppMethodBeat.o(145517);
     return str;
   }
@@ -280,7 +280,7 @@ public class MTextureView
   public String getTraceId()
   {
     AppMethodBeat.i(145503);
-    String str = this.jUt.getTraceId();
+    String str = this.jXK.getTraceId();
     AppMethodBeat.o(145503);
     return str;
   }
@@ -288,32 +288,32 @@ public class MTextureView
   public final boolean h(Canvas paramCanvas)
   {
     AppMethodBeat.i(145508);
-    boolean bool = this.jUt.h(paramCanvas);
+    boolean bool = this.jXK.h(paramCanvas);
     AppMethodBeat.o(145508);
     return bool;
   }
   
   public final boolean isPaused()
   {
-    return this.jUt.mPause;
+    return this.jXK.mPause;
   }
   
   public final void onResume()
   {
     AppMethodBeat.i(145516);
-    this.jUt.onResume();
+    this.jXK.onResume();
     AppMethodBeat.o(145516);
   }
   
   public void onSurfaceTextureAvailable(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(145521);
-    ad.v("MicroMsg.MTextureView", "onSurfaceTextureAvailable");
-    if (this.jUx == null)
+    ae.v("MicroMsg.MTextureView", "onSurfaceTextureAvailable");
+    if (this.jXO == null)
     {
-      paramSurfaceTexture = com.tencent.e.c.d.gW("MTextureView#Rending-Thread", -19);
+      paramSurfaceTexture = com.tencent.e.c.d.hf("MTextureView#Rending-Thread", -19);
       paramSurfaceTexture.start();
-      this.jUx = new ap(paramSurfaceTexture.getLooper());
+      this.jXO = new aq(paramSurfaceTexture.getLooper());
     }
     paramSurfaceTexture = lockCanvas();
     if (paramSurfaceTexture == null)
@@ -329,17 +329,17 @@ public class MTextureView
   public boolean onSurfaceTextureDestroyed(SurfaceTexture arg1)
   {
     AppMethodBeat.i(145523);
-    ad.v("MicroMsg.MTextureView", "onSurfaceTextureDestroyed");
-    this.jUx.removeCallbacks(this.jUy);
-    this.jUx.getLooper().quit();
+    ae.v("MicroMsg.MTextureView", "onSurfaceTextureDestroyed");
+    this.jXO.removeCallbacks(this.jXP);
+    this.jXO.getLooper().quit();
     synchronized (this.mLock)
     {
-      boolean bool = this.jUA;
+      boolean bool = this.jXR;
       if (bool) {}
       try
       {
         this.mLock.wait(1000L);
-        this.jUx = null;
+        this.jXO = null;
         AppMethodBeat.o(145523);
         return true;
       }
@@ -347,7 +347,7 @@ public class MTextureView
       {
         for (;;)
         {
-          ad.e("MicroMsg.MTextureView", "await error : %s", new Object[] { Log.getStackTraceString(localInterruptedException) });
+          ae.e("MicroMsg.MTextureView", "await error : %s", new Object[] { Log.getStackTraceString(localInterruptedException) });
         }
       }
     }
@@ -356,7 +356,7 @@ public class MTextureView
   public void onSurfaceTextureSizeChanged(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(145522);
-    ad.v("MicroMsg.MTextureView", "onSurfaceTextureSizeChanged");
+    ae.v("MicroMsg.MTextureView", "onSurfaceTextureSizeChanged");
     AppMethodBeat.o(145522);
   }
   
@@ -365,7 +365,7 @@ public class MTextureView
   public void removeOnAttachStateChangeListener(View.OnAttachStateChangeListener paramOnAttachStateChangeListener)
   {
     AppMethodBeat.i(145515);
-    this.jUu.remove(paramOnAttachStateChangeListener);
+    this.jXL.remove(paramOnAttachStateChangeListener);
     super.removeOnAttachStateChangeListener(paramOnAttachStateChangeListener);
     AppMethodBeat.o(145515);
   }
@@ -373,34 +373,34 @@ public class MTextureView
   public void setDrawActionReportable(com.tencent.mm.plugin.appbrand.canvas.c.a parama)
   {
     AppMethodBeat.i(145507);
-    this.jUt.setDrawActionReportable(parama);
+    this.jXK.setDrawActionReportable(parama);
     AppMethodBeat.o(145507);
   }
   
   public void setSessionId(String paramString)
   {
     AppMethodBeat.i(145518);
-    this.jUt.setSessionId(paramString);
+    this.jXK.setSessionId(paramString);
     AppMethodBeat.o(145518);
   }
   
   public void setStartTime(long paramLong)
   {
     AppMethodBeat.i(145519);
-    this.jUt.setStartTime(paramLong);
+    this.jXK.setStartTime(paramLong);
     AppMethodBeat.o(145519);
   }
   
   public void setTraceId(String paramString)
   {
     AppMethodBeat.i(145502);
-    this.jUt.setTraceId(paramString);
+    this.jXK.setTraceId(paramString);
     AppMethodBeat.o(145502);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.widget.MTextureView
  * JD-Core Version:    0.7.0.1
  */

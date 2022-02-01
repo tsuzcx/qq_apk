@@ -1,23 +1,23 @@
 package com.tencent.mm.storage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ax;
+import com.tencent.mm.sdk.platformtools.ay;
 import d.g.a.a;
 import d.g.b.q;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "kotlin.jvm.PlatformType", "invoke"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "kotlin.jvm.PlatformType", "invoke"})
 final class p$f
   extends q
-  implements a<ax>
+  implements a<ay>
 {
-  public static final f Iob;
+  public static final f IIp;
   
   static
   {
-    AppMethodBeat.i(207320);
-    Iob = new f();
-    AppMethodBeat.o(207320);
+    AppMethodBeat.i(188782);
+    IIp = new f();
+    AppMethodBeat.o(188782);
   }
   
   p$f()

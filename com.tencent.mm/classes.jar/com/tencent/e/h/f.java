@@ -12,18 +12,18 @@ import java.util.concurrent.TimeUnit;
 public final class f
   extends a
 {
-  public a LVl;
+  public a Msg;
   
   public f()
   {
     AppMethodBeat.i(183372);
-    this.LVl = new a((byte)0);
+    this.Msg = new a((byte)0);
     AppMethodBeat.o(183372);
   }
   
-  protected final a.a fVM()
+  protected final a.a gal()
   {
-    return this.LVl;
+    return this.Msg;
   }
   
   public final String getName()
@@ -34,14 +34,14 @@ public final class f
   public final void j(k<?> paramk)
   {
     AppMethodBeat.i(183374);
-    this.LVl.aCF.removeCallbacks(paramk);
+    this.Msg.aCF.removeCallbacks(paramk);
     AppMethodBeat.o(183374);
   }
   
   protected final void onShutdown()
   {
     AppMethodBeat.i(183373);
-    this.LVl.aCF.removeCallbacksAndMessages(null);
+    this.Msg.aCF.removeCallbacksAndMessages(null);
     AppMethodBeat.o(183373);
   }
   

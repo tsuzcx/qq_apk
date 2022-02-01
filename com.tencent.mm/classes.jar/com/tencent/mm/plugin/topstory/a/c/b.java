@@ -2,20 +2,22 @@ package com.tencent.mm.plugin.topstory.a.c;
 
 import android.os.Build.VERSION;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
+import com.tencent.mm.plugin.websearch.api.ad;
 import com.tencent.mm.plugin.websearch.api.am;
-import com.tencent.mm.protocal.protobuf.aag;
-import com.tencent.mm.protocal.protobuf.dnp;
-import com.tencent.mm.protocal.protobuf.dnx;
-import com.tencent.mm.protocal.protobuf.eej;
-import com.tencent.mm.protocal.protobuf.eek;
+import com.tencent.mm.protocal.protobuf.aaj;
+import com.tencent.mm.protocal.protobuf.dom;
+import com.tencent.mm.protocal.protobuf.dou;
+import com.tencent.mm.protocal.protobuf.ega;
+import com.tencent.mm.protocal.protobuf.egb;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.Iterator;
 import java.util.LinkedList;
 
@@ -24,85 +26,85 @@ public final class b
   implements k
 {
   private f callback;
-  public dnp dLe;
-  private com.tencent.mm.al.b rr;
-  private long soX;
+  public dom dMt;
+  private com.tencent.mm.ak.b rr;
+  private long szi;
   
-  public b(dnp paramdnp, int paramInt, String paramString)
+  public b(dom paramdom, int paramInt, String paramString)
   {
     AppMethodBeat.i(91005);
-    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.TopStory.NetSceneTopStory", "Create NetSceneTopStory Home channelId:%s, %s %s %s", new Object[] { Integer.valueOf(paramdnp.cSc), Integer.valueOf(paramInt), paramdnp.qXu, paramdnp.sessionId });
-    this.soX = System.currentTimeMillis();
-    this.dLe = paramdnp;
+    ae.i("MicroMsg.TopStory.NetSceneTopStory", "Create NetSceneTopStory Home channelId:%s, %s %s %s", new Object[] { Integer.valueOf(paramdom.cSM), Integer.valueOf(paramInt), paramdom.rfA, paramdom.sessionId });
+    this.szi = System.currentTimeMillis();
+    this.dMt = paramdom;
     Object localObject = new b.a();
     ((b.a)localObject).funcId = getType();
     ((b.a)localObject).uri = "/cgi-bin/mmsearch-bin/mmwebrecommend";
-    ((b.a)localObject).hNM = new eej();
-    ((b.a)localObject).hNN = new eek();
-    this.rr = ((b.a)localObject).aDC();
-    localObject = (eej)this.rr.hNK.hNQ;
-    ((eej)localObject).FMu = paramdnp.offset;
-    ((eej)localObject).GDa = com.tencent.mm.plugin.websearch.api.ad.We(1);
-    ((eej)localObject).Gsr = paramdnp.dld;
-    ((eej)localObject).GRt = com.tencent.mm.plugin.websearch.api.ad.bNG();
-    ((eej)localObject).Scene = paramdnp.scene;
-    ((eej)localObject).FMt = paramdnp.keN;
-    ((eej)localObject).HOp.addAll(paramdnp.DBj);
-    ((eej)localObject).HAv = paramdnp.cSc;
-    ((eej)localObject).HPE = paramInt;
-    ((eej)localObject).HPF = paramdnp.HBF;
-    if (((eej)localObject).HAv == 110)
+    ((b.a)localObject).hQF = new ega();
+    ((b.a)localObject).hQG = new egb();
+    this.rr = ((b.a)localObject).aDS();
+    localObject = (ega)this.rr.hQD.hQJ;
+    ((ega)localObject).GeT = paramdom.offset;
+    ((ega)localObject).GWA = ad.WL(1);
+    ((ega)localObject).GLP = paramdom.dmf;
+    ((ega)localObject).HkU = ad.bOD();
+    ((ega)localObject).Scene = paramdom.scene;
+    ((ega)localObject).GeS = paramdom.kid;
+    ((ega)localObject).Iiw.addAll(paramdom.DTg);
+    ((ega)localObject).HUi = paramdom.cSM;
+    ((ega)localObject).IjL = paramInt;
+    ((ega)localObject).IjM = paramdom.HVs;
+    if (((ega)localObject).HUi == 110)
     {
-      paramString = ((com.tencent.mm.plugin.topstory.a.b)g.ad(com.tencent.mm.plugin.topstory.a.b.class)).getRedDotMgr().eok();
+      paramString = ((com.tencent.mm.plugin.topstory.a.b)g.ad(com.tencent.mm.plugin.topstory.a.b.class)).getRedDotMgr().erR();
       if (paramString != null) {
-        ((eej)localObject).HjQ = paramString.msgId;
+        ((ega)localObject).HDq = paramString.msgId;
       }
     }
     for (;;)
     {
-      ((eej)localObject).HPC = paramdnp.DBr;
-      ((eej)localObject).HPD = paramdnp.HBE;
-      paramdnp = new aag();
-      paramdnp.key = "client_system_version";
-      paramdnp.FZe = Build.VERSION.SDK_INT;
-      ((eej)localObject).HOp.add(paramdnp);
-      paramdnp = new aag();
-      paramdnp.key = "netType";
-      paramdnp.FZf = com.tencent.mm.plugin.websearch.api.ad.Ux();
-      ((eej)localObject).HOp.add(paramdnp);
-      paramdnp = new aag();
-      paramdnp.key = "client_request_time";
-      paramdnp.FZf = String.valueOf(System.currentTimeMillis());
-      ((eej)localObject).HOp.add(paramdnp);
-      paramdnp = ((eej)localObject).HOp.iterator();
-      while (paramdnp.hasNext())
+      ((ega)localObject).IjJ = paramdom.DTo;
+      ((ega)localObject).IjK = paramdom.HVr;
+      paramdom = new aaj();
+      paramdom.key = "client_system_version";
+      paramdom.GrE = Build.VERSION.SDK_INT;
+      ((ega)localObject).Iiw.add(paramdom);
+      paramdom = new aaj();
+      paramdom.key = "netType";
+      paramdom.GrF = ad.UD();
+      ((ega)localObject).Iiw.add(paramdom);
+      paramdom = new aaj();
+      paramdom.key = "client_request_time";
+      paramdom.GrF = String.valueOf(System.currentTimeMillis());
+      ((ega)localObject).Iiw.add(paramdom);
+      paramdom = ((ega)localObject).Iiw.iterator();
+      while (paramdom.hasNext())
       {
-        paramString = (aag)paramdnp.next();
-        com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.TopStory.NetSceneTopStory", "key: %s unit_value %s text_value %s", new Object[] { paramString.key, Long.valueOf(paramString.FZe), paramString.FZf });
+        paramString = (aaj)paramdom.next();
+        ae.i("MicroMsg.TopStory.NetSceneTopStory", "key: %s unit_value %s text_value %s", new Object[] { paramString.key, Long.valueOf(paramString.GrE), paramString.GrF });
       }
-      if (((eej)localObject).HAv == 100) {
-        ((eej)localObject).HjQ = paramString;
+      if (((ega)localObject).HUi == 100) {
+        ((ega)localObject).HDq = paramString;
       } else {
-        ((eej)localObject).HjQ = "";
+        ((ega)localObject).HDq = "";
       }
     }
-    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.TopStory.NetSceneTopStory", "request params offset %d h5Version %d CheckDocListSize: %d", new Object[] { Integer.valueOf(((eej)localObject).FMu), Integer.valueOf(((eej)localObject).GDa), Integer.valueOf(((eej)localObject).HPD.size()) });
+    ae.i("MicroMsg.TopStory.NetSceneTopStory", "request params offset %d h5Version %d CheckDocListSize: %d", new Object[] { Integer.valueOf(((ega)localObject).GeT), Integer.valueOf(((ega)localObject).GWA), Integer.valueOf(((ega)localObject).IjK.size()) });
     AppMethodBeat.o(91005);
   }
   
   public final int doScene(com.tencent.mm.network.e parame, f paramf)
   {
     AppMethodBeat.i(91006);
-    am.iR(this.dLe.scene, 2);
+    am.iV(this.dMt.scene, 2);
     this.callback = paramf;
     int i = dispatch(parame, this.rr, this);
     AppMethodBeat.o(91006);
     return i;
   }
   
-  public final eek eoU()
+  public final egb esB()
   {
-    return (eek)this.rr.hNL.hNQ;
+    return (egb)this.rr.hQE.hQJ;
   }
   
   public final int getType()
@@ -113,9 +115,9 @@ public final class b
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(91007);
-    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.TopStory.NetSceneTopStory", "netId %d | errType %d | errCode %d | errMsg %s useTime %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString, Long.valueOf(System.currentTimeMillis() - this.soX) });
+    ae.i("MicroMsg.TopStory.NetSceneTopStory", "netId %d | errType %d | errCode %d | errMsg %s useTime %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString, Long.valueOf(System.currentTimeMillis() - this.szi) });
     if (paramInt3 == -1) {
-      am.iR(this.dLe.scene, 4);
+      am.iV(this.dMt.scene, 4);
     }
     for (;;)
     {
@@ -123,16 +125,16 @@ public final class b
       AppMethodBeat.o(91007);
       return;
       if ((paramInt2 != 0) || (paramInt3 != 0)) {
-        am.iR(this.dLe.scene, 8);
+        am.iV(this.dMt.scene, 8);
       } else {
-        am.iR(this.dLe.scene, 3);
+        am.iV(this.dMt.scene, 3);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.a.c.b
  * JD-Core Version:    0.7.0.1
  */

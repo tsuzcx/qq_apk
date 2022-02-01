@@ -6,7 +6,7 @@ import java.util.List;
 
 public final class aj
 {
-  public static List<com.tencent.mm.plugin.appbrand.jsapi.m> bkL()
+  public static List<com.tencent.mm.plugin.appbrand.jsapi.m> blv()
   {
     AppMethodBeat.i(143703);
     ArrayList localArrayList = new ArrayList();
@@ -31,7 +31,7 @@ public final class aj
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.i.aj
  * JD-Core Version:    0.7.0.1
  */

@@ -14,14 +14,14 @@ public class g
   
   public g(String paramString)
   {
-    AppMethodBeat.i(187244);
+    AppMethodBeat.i(221373);
     paramString = new HandlerThread(paramString);
     this.c = true;
     paramString.start();
     this.b = paramString.getLooper();
     this.a = new Handler(this.b);
     this.d = paramString;
-    AppMethodBeat.o(187244);
+    AppMethodBeat.o(221373);
   }
   
   public Handler a()
@@ -31,12 +31,12 @@ public class g
   
   public void a(final Runnable paramRunnable)
   {
-    AppMethodBeat.i(187246);
+    AppMethodBeat.i(221375);
     final boolean[] arrayOfBoolean = new boolean[1];
     if (Thread.currentThread().equals(this.d))
     {
       paramRunnable.run();
-      AppMethodBeat.o(187246);
+      AppMethodBeat.o(221375);
       return;
     }
     Handler localHandler = this.a;
@@ -47,13 +47,13 @@ public class g
       {
         public void run()
         {
-          AppMethodBeat.i(187252);
+          AppMethodBeat.i(221381);
           paramRunnable.run();
           arrayOfBoolean[0] = true;
           synchronized (g.a(g.this))
           {
             g.a(g.this).notifyAll();
-            AppMethodBeat.o(187252);
+            AppMethodBeat.o(221381);
             return;
           }
         }
@@ -74,32 +74,32 @@ public class g
     }
     finally
     {
-      AppMethodBeat.o(187246);
+      AppMethodBeat.o(221375);
     }
   }
   
   public void a(Runnable paramRunnable, long paramLong)
   {
-    AppMethodBeat.i(187248);
+    AppMethodBeat.i(221377);
     this.a.postDelayed(paramRunnable, paramLong);
-    AppMethodBeat.o(187248);
+    AppMethodBeat.o(221377);
   }
   
   public void b(Runnable paramRunnable)
   {
-    AppMethodBeat.i(187247);
+    AppMethodBeat.i(221376);
     this.a.post(paramRunnable);
-    AppMethodBeat.o(187247);
+    AppMethodBeat.o(221376);
   }
   
   protected void finalize()
   {
-    AppMethodBeat.i(187245);
+    AppMethodBeat.i(221374);
     if (this.c) {
       this.a.getLooper().quit();
     }
     super.finalize();
-    AppMethodBeat.o(187245);
+    AppMethodBeat.o(221374);
   }
 }
 

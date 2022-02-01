@@ -4,19 +4,19 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.f;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.f;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.cpg;
-import com.tencent.mm.protocal.protobuf.cph;
-import com.tencent.mm.protocal.protobuf.dbh;
+import com.tencent.mm.protocal.protobuf.cqa;
+import com.tencent.mm.protocal.protobuf.cqb;
+import com.tencent.mm.protocal.protobuf.dcb;
 import com.tencent.mm.protocal.protobuf.j;
 import com.tencent.mm.protocal.protobuf.l;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.wallet_core.c.r;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -26,74 +26,74 @@ public final class NetSceneNewAAQueryPFInfo
   extends r
 {
   private f callback;
-  private b gPp;
-  private cpg iTA;
-  public cph iTB;
+  private b gRX;
+  private cqa iWt;
+  public cqb iWu;
   
   public NetSceneNewAAQueryPFInfo(String paramString1, String paramString2)
   {
     AppMethodBeat.i(63416);
     b.a locala = new b.a();
-    locala.hNM = new cpg();
-    locala.hNN = new cph();
+    locala.hQF = new cqa();
+    locala.hQG = new cqb();
     locala.funcId = 1809;
     locala.uri = "/cgi-bin/mmpay-bin/newaaquerypfinfo";
-    this.gPp = locala.aDC();
-    this.iTA = ((cpg)this.gPp.hNK.hNQ);
-    this.iTA.FpQ = paramString1;
-    this.iTA.duW = paramString2;
-    ad.i("MicroMsg.Aa.NetSceneNewAAQueryPFInfo", "do scene NetSceneNewAAQueryPFInfo pf_order_no:%s appid:%s", new Object[] { paramString1, paramString2 });
+    this.gRX = locala.aDS();
+    this.iWt = ((cqa)this.gRX.hQD.hQJ);
+    this.iWt.FIo = paramString1;
+    this.iWt.dwb = paramString2;
+    ae.i("MicroMsg.Aa.NetSceneNewAAQueryPFInfo", "do scene NetSceneNewAAQueryPFInfo pf_order_no:%s appid:%s", new Object[] { paramString1, paramString2 });
     AppMethodBeat.o(63416);
   }
   
-  public static PfInfoParcel a(cph paramcph)
+  public static PfInfoParcel a(cqb paramcqb)
   {
     AppMethodBeat.i(63419);
-    if (paramcph == null)
+    if (paramcqb == null)
     {
       AppMethodBeat.o(63419);
       return null;
     }
     PfInfoParcel localPfInfoParcel = new PfInfoParcel();
-    localPfInfoParcel.dOa = paramcph.dOa;
-    localPfInfoParcel.iTJ = paramcph.iTJ;
-    Iterator localIterator = paramcph.FpL.iterator();
+    localPfInfoParcel.dPq = paramcqb.dPq;
+    localPfInfoParcel.iWC = paramcqb.iWC;
+    Iterator localIterator = paramcqb.FIj.iterator();
     Object localObject;
     while (localIterator.hasNext())
     {
       localObject = (j)localIterator.next();
       AALaunchItemParcel localAALaunchItemParcel = new AALaunchItemParcel();
       localAALaunchItemParcel.username = ((j)localObject).username;
-      localAALaunchItemParcel.dOa = ((j)localObject).dOa;
-      localPfInfoParcel.iTK.add(localAALaunchItemParcel);
+      localAALaunchItemParcel.dPq = ((j)localObject).dPq;
+      localPfInfoParcel.iWD.add(localAALaunchItemParcel);
     }
-    localPfInfoParcel.iTL = paramcph.iTL;
-    localPfInfoParcel.iTM = paramcph.iTM;
-    if (paramcph.Hit != null)
+    localPfInfoParcel.iWE = paramcqb.iWE;
+    localPfInfoParcel.iWF = paramcqb.iWF;
+    if (paramcqb.HBT != null)
     {
-      localPfInfoParcel.iTN = new SessionIdListParcel();
-      localIterator = paramcph.Hit.FyE.iterator();
+      localPfInfoParcel.iWG = new SessionIdListParcel();
+      localIterator = paramcqb.HBT.FRc.iterator();
       while (localIterator.hasNext())
       {
         localObject = (String)localIterator.next();
-        localPfInfoParcel.iTN.iTQ.add(localObject);
+        localPfInfoParcel.iWG.iWJ.add(localObject);
       }
-      localIterator = paramcph.Hit.HqZ.iterator();
+      localIterator = paramcqb.HBT.HKB.iterator();
       while (localIterator.hasNext())
       {
         localObject = (String)localIterator.next();
-        localPfInfoParcel.iTN.iTR.add(localObject);
+        localPfInfoParcel.iWG.iWK.add(localObject);
       }
     }
-    localPfInfoParcel.iTO = paramcph.iTO;
-    localPfInfoParcel.iTP = new AAOperationInfoParcel();
-    localPfInfoParcel.iTP.iTC = paramcph.Hiu.iTC;
-    localPfInfoParcel.iTP.iTD = paramcph.Hiu.iTD;
-    localPfInfoParcel.iTP.iTE = paramcph.Hiu.iTE;
-    localPfInfoParcel.iTP.iTF = paramcph.Hiu.iTF;
-    localPfInfoParcel.iTP.iTG = paramcph.Hiu.iTG;
-    localPfInfoParcel.iTP.iTH = paramcph.Hiu.iTH;
-    localPfInfoParcel.iTP.iTI = paramcph.Hiu.iTI;
+    localPfInfoParcel.iWH = paramcqb.iWH;
+    localPfInfoParcel.iWI = new AAOperationInfoParcel();
+    localPfInfoParcel.iWI.iWv = paramcqb.HBU.iWv;
+    localPfInfoParcel.iWI.iWw = paramcqb.HBU.iWw;
+    localPfInfoParcel.iWI.iWx = paramcqb.HBU.iWx;
+    localPfInfoParcel.iWI.iWy = paramcqb.HBU.iWy;
+    localPfInfoParcel.iWI.iWz = paramcqb.HBU.iWz;
+    localPfInfoParcel.iWI.iWA = paramcqb.HBU.iWA;
+    localPfInfoParcel.iWI.iWB = paramcqb.HBU.iWB;
     AppMethodBeat.o(63419);
     return localPfInfoParcel;
   }
@@ -101,9 +101,9 @@ public final class NetSceneNewAAQueryPFInfo
   public final void b(int paramInt1, int paramInt2, String paramString, q paramq)
   {
     AppMethodBeat.i(63418);
-    ad.i("MicroMsg.Aa.NetSceneNewAAQueryPFInfo", "errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-    this.iTB = ((cph)((b)paramq).hNL.hNQ);
-    ad.i("MicroMsg.Aa.NetSceneNewAAQueryPFInfo", "ret_code: %s, ret_msg: %s", new Object[] { Integer.valueOf(this.iTB.dlw), this.iTB.paA });
+    ae.i("MicroMsg.Aa.NetSceneNewAAQueryPFInfo", "errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    this.iWu = ((cqb)((b)paramq).hQE.hQJ);
+    ae.i("MicroMsg.Aa.NetSceneNewAAQueryPFInfo", "ret_code: %s, ret_msg: %s", new Object[] { Integer.valueOf(this.iWu.dmy), this.iWu.phe });
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt1, paramInt2, paramString, this);
     }
@@ -113,18 +113,18 @@ public final class NetSceneNewAAQueryPFInfo
   public final int doScene(e parame, f paramf)
   {
     AppMethodBeat.i(63417);
-    ad.i("MicroMsg.Aa.NetSceneNewAAQueryPFInfo", "doScene");
+    ae.i("MicroMsg.Aa.NetSceneNewAAQueryPFInfo", "doScene");
     this.callback = paramf;
-    int i = dispatch(parame, this.gPp, this);
+    int i = dispatch(parame, this.gRX, this);
     AppMethodBeat.o(63417);
     return i;
   }
   
   public final void e(q paramq)
   {
-    paramq = (cph)((b)paramq).hNL.hNQ;
-    this.Lyu = paramq.dlw;
-    this.Lyv = paramq.paA;
+    paramq = (cqb)((b)paramq).hQE.hQJ;
+    this.LVj = paramq.dmy;
+    this.LVk = paramq.phe;
   }
   
   public final int getType()
@@ -136,7 +136,7 @@ public final class NetSceneNewAAQueryPFInfo
     implements Parcelable
   {
     public static final Parcelable.Creator<AALaunchItemParcel> CREATOR;
-    public long dOa;
+    public long dPq;
     public String username;
     
     static
@@ -152,7 +152,7 @@ public final class NetSceneNewAAQueryPFInfo
     {
       AppMethodBeat.i(63397);
       this.username = paramParcel.readString();
-      this.dOa = paramParcel.readLong();
+      this.dPq = paramParcel.readLong();
       AppMethodBeat.o(63397);
     }
     
@@ -164,7 +164,7 @@ public final class NetSceneNewAAQueryPFInfo
     public String toString()
     {
       AppMethodBeat.i(63395);
-      String str = "AALaunchItemParcel{username='" + this.username + '\'' + ", amount=" + this.dOa + '}';
+      String str = "AALaunchItemParcel{username='" + this.username + '\'' + ", amount=" + this.dPq + '}';
       AppMethodBeat.o(63395);
       return str;
     }
@@ -173,7 +173,7 @@ public final class NetSceneNewAAQueryPFInfo
     {
       AppMethodBeat.i(63396);
       paramParcel.writeString(this.username);
-      paramParcel.writeLong(this.dOa);
+      paramParcel.writeLong(this.dPq);
       AppMethodBeat.o(63396);
     }
   }
@@ -182,13 +182,13 @@ public final class NetSceneNewAAQueryPFInfo
     implements Parcelable
   {
     public static final Parcelable.Creator<AAOperationInfoParcel> CREATOR;
-    public int iTC;
-    public int iTD;
-    public int iTE;
-    public long iTF;
-    public long iTG;
-    public String iTH;
-    public String iTI;
+    public String iWA;
+    public String iWB;
+    public int iWv;
+    public int iWw;
+    public int iWx;
+    public long iWy;
+    public long iWz;
     
     static
     {
@@ -202,13 +202,13 @@ public final class NetSceneNewAAQueryPFInfo
     protected AAOperationInfoParcel(Parcel paramParcel)
     {
       AppMethodBeat.i(63402);
-      this.iTC = paramParcel.readInt();
-      this.iTD = paramParcel.readInt();
-      this.iTE = paramParcel.readInt();
-      this.iTF = paramParcel.readLong();
-      this.iTG = paramParcel.readLong();
-      this.iTH = paramParcel.readString();
-      this.iTI = paramParcel.readString();
+      this.iWv = paramParcel.readInt();
+      this.iWw = paramParcel.readInt();
+      this.iWx = paramParcel.readInt();
+      this.iWy = paramParcel.readLong();
+      this.iWz = paramParcel.readLong();
+      this.iWA = paramParcel.readString();
+      this.iWB = paramParcel.readString();
       AppMethodBeat.o(63402);
     }
     
@@ -220,7 +220,7 @@ public final class NetSceneNewAAQueryPFInfo
     public String toString()
     {
       AppMethodBeat.i(63400);
-      String str = "AAOperationInfoParcel{max_payer_num=" + this.iTC + ", max_receiver_num=" + this.iTD + ", max_total_num=" + this.iTE + ", max_total_amount=" + this.iTF + ", max_per_amount=" + this.iTG + ", notice='" + this.iTH + '\'' + ", notice_url='" + this.iTI + '\'' + '}';
+      String str = "AAOperationInfoParcel{max_payer_num=" + this.iWv + ", max_receiver_num=" + this.iWw + ", max_total_num=" + this.iWx + ", max_total_amount=" + this.iWy + ", max_per_amount=" + this.iWz + ", notice='" + this.iWA + '\'' + ", notice_url='" + this.iWB + '\'' + '}';
       AppMethodBeat.o(63400);
       return str;
     }
@@ -228,13 +228,13 @@ public final class NetSceneNewAAQueryPFInfo
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
       AppMethodBeat.i(63401);
-      paramParcel.writeInt(this.iTC);
-      paramParcel.writeInt(this.iTD);
-      paramParcel.writeInt(this.iTE);
-      paramParcel.writeLong(this.iTF);
-      paramParcel.writeLong(this.iTG);
-      paramParcel.writeString(this.iTH);
-      paramParcel.writeString(this.iTI);
+      paramParcel.writeInt(this.iWv);
+      paramParcel.writeInt(this.iWw);
+      paramParcel.writeInt(this.iWx);
+      paramParcel.writeLong(this.iWy);
+      paramParcel.writeLong(this.iWz);
+      paramParcel.writeString(this.iWA);
+      paramParcel.writeString(this.iWB);
       AppMethodBeat.o(63401);
     }
   }
@@ -243,14 +243,14 @@ public final class NetSceneNewAAQueryPFInfo
     implements Parcelable
   {
     public static final Parcelable.Creator<PfInfoParcel> CREATOR;
-    public long dOa;
-    public String iTJ;
-    public ArrayList<NetSceneNewAAQueryPFInfo.AALaunchItemParcel> iTK;
-    public String iTL;
-    public String iTM;
-    public NetSceneNewAAQueryPFInfo.SessionIdListParcel iTN;
-    public String iTO;
-    public NetSceneNewAAQueryPFInfo.AAOperationInfoParcel iTP;
+    public long dPq;
+    public String iWC;
+    public ArrayList<NetSceneNewAAQueryPFInfo.AALaunchItemParcel> iWD;
+    public String iWE;
+    public String iWF;
+    public NetSceneNewAAQueryPFInfo.SessionIdListParcel iWG;
+    public String iWH;
+    public NetSceneNewAAQueryPFInfo.AAOperationInfoParcel iWI;
     
     static
     {
@@ -262,22 +262,22 @@ public final class NetSceneNewAAQueryPFInfo
     public PfInfoParcel()
     {
       AppMethodBeat.i(63407);
-      this.iTK = new ArrayList();
+      this.iWD = new ArrayList();
       AppMethodBeat.o(63407);
     }
     
     protected PfInfoParcel(Parcel paramParcel)
     {
       AppMethodBeat.i(63408);
-      this.iTK = new ArrayList();
-      this.dOa = paramParcel.readLong();
-      this.iTJ = paramParcel.readString();
-      this.iTK = paramParcel.createTypedArrayList(NetSceneNewAAQueryPFInfo.AALaunchItemParcel.CREATOR);
-      this.iTL = paramParcel.readString();
-      this.iTM = paramParcel.readString();
-      this.iTN = ((NetSceneNewAAQueryPFInfo.SessionIdListParcel)paramParcel.readParcelable(NetSceneNewAAQueryPFInfo.SessionIdListParcel.class.getClassLoader()));
-      this.iTO = paramParcel.readString();
-      this.iTP = ((NetSceneNewAAQueryPFInfo.AAOperationInfoParcel)paramParcel.readParcelable(NetSceneNewAAQueryPFInfo.AAOperationInfoParcel.class.getClassLoader()));
+      this.iWD = new ArrayList();
+      this.dPq = paramParcel.readLong();
+      this.iWC = paramParcel.readString();
+      this.iWD = paramParcel.createTypedArrayList(NetSceneNewAAQueryPFInfo.AALaunchItemParcel.CREATOR);
+      this.iWE = paramParcel.readString();
+      this.iWF = paramParcel.readString();
+      this.iWG = ((NetSceneNewAAQueryPFInfo.SessionIdListParcel)paramParcel.readParcelable(NetSceneNewAAQueryPFInfo.SessionIdListParcel.class.getClassLoader()));
+      this.iWH = paramParcel.readString();
+      this.iWI = ((NetSceneNewAAQueryPFInfo.AAOperationInfoParcel)paramParcel.readParcelable(NetSceneNewAAQueryPFInfo.AAOperationInfoParcel.class.getClassLoader()));
       AppMethodBeat.o(63408);
     }
     
@@ -289,7 +289,7 @@ public final class NetSceneNewAAQueryPFInfo
     public String toString()
     {
       AppMethodBeat.i(63405);
-      String str = "PfInfoParcel{amount=" + this.dOa + ", receiver_username='" + this.iTJ + '\'' + ", payer_list=" + this.iTK + ", pic_url='" + this.iTL + '\'' + ", remark='" + this.iTM + '\'' + ", sessionid_list=" + this.iTN + ", pic_sign='" + this.iTO + '\'' + ", operation_info=" + this.iTP + '}';
+      String str = "PfInfoParcel{amount=" + this.dPq + ", receiver_username='" + this.iWC + '\'' + ", payer_list=" + this.iWD + ", pic_url='" + this.iWE + '\'' + ", remark='" + this.iWF + '\'' + ", sessionid_list=" + this.iWG + ", pic_sign='" + this.iWH + '\'' + ", operation_info=" + this.iWI + '}';
       AppMethodBeat.o(63405);
       return str;
     }
@@ -297,14 +297,14 @@ public final class NetSceneNewAAQueryPFInfo
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
       AppMethodBeat.i(63406);
-      paramParcel.writeLong(this.dOa);
-      paramParcel.writeString(this.iTJ);
-      paramParcel.writeTypedList(this.iTK);
-      paramParcel.writeString(this.iTL);
-      paramParcel.writeString(this.iTM);
-      paramParcel.writeParcelable(this.iTN, paramInt);
-      paramParcel.writeString(this.iTO);
-      paramParcel.writeParcelable(this.iTP, paramInt);
+      paramParcel.writeLong(this.dPq);
+      paramParcel.writeString(this.iWC);
+      paramParcel.writeTypedList(this.iWD);
+      paramParcel.writeString(this.iWE);
+      paramParcel.writeString(this.iWF);
+      paramParcel.writeParcelable(this.iWG, paramInt);
+      paramParcel.writeString(this.iWH);
+      paramParcel.writeParcelable(this.iWI, paramInt);
       AppMethodBeat.o(63406);
     }
   }
@@ -313,8 +313,8 @@ public final class NetSceneNewAAQueryPFInfo
     implements Parcelable
   {
     public static final Parcelable.Creator<SessionIdListParcel> CREATOR;
-    public ArrayList<String> iTQ;
-    public ArrayList<String> iTR;
+    public ArrayList<String> iWJ;
+    public ArrayList<String> iWK;
     
     static
     {
@@ -326,18 +326,18 @@ public final class NetSceneNewAAQueryPFInfo
     public SessionIdListParcel()
     {
       AppMethodBeat.i(63413);
-      this.iTQ = new ArrayList();
-      this.iTR = new ArrayList();
+      this.iWJ = new ArrayList();
+      this.iWK = new ArrayList();
       AppMethodBeat.o(63413);
     }
     
     protected SessionIdListParcel(Parcel paramParcel)
     {
       AppMethodBeat.i(63414);
-      this.iTQ = new ArrayList();
-      this.iTR = new ArrayList();
-      this.iTQ = paramParcel.createStringArrayList();
-      this.iTR = paramParcel.createStringArrayList();
+      this.iWJ = new ArrayList();
+      this.iWK = new ArrayList();
+      this.iWJ = paramParcel.createStringArrayList();
+      this.iWK = paramParcel.createStringArrayList();
       AppMethodBeat.o(63414);
     }
     
@@ -349,7 +349,7 @@ public final class NetSceneNewAAQueryPFInfo
     public String toString()
     {
       AppMethodBeat.i(63411);
-      String str = "SessionIdListParcel{username=" + this.iTQ + ", groupid=" + this.iTR + '}';
+      String str = "SessionIdListParcel{username=" + this.iWJ + ", groupid=" + this.iWK + '}';
       AppMethodBeat.o(63411);
       return str;
     }
@@ -357,8 +357,8 @@ public final class NetSceneNewAAQueryPFInfo
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
       AppMethodBeat.i(63412);
-      paramParcel.writeStringList(this.iTQ);
-      paramParcel.writeStringList(this.iTR);
+      paramParcel.writeStringList(this.iWJ);
+      paramParcel.writeStringList(this.iWK);
       AppMethodBeat.o(63412);
     }
   }

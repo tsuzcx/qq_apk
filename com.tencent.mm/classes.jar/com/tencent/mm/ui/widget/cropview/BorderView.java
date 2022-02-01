@@ -16,38 +16,38 @@ import d.g.b.p;
 import d.g.b.q;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/ui/widget/cropview/BorderView;", "Landroid/view/View;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "BOX_GIRD_WIDTH", "", "getBOX_GIRD_WIDTH", "()F", "BOX_GIRD_WIDTH$delegate", "Lkotlin/Lazy;", "BOX_LINE_WIDTH", "getBOX_LINE_WIDTH", "BOX_LINE_WIDTH$delegate", "BOX_PADDING", "getBOX_PADDING", "BOX_PADDING$delegate", "CORNER_LENGTH", "getCORNER_LENGTH", "CORNER_LENGTH$delegate", "CORNER_WIDTH", "getCORNER_WIDTH", "CORNER_WIDTH$delegate", "currentRect", "Landroid/graphics/Rect;", "isInit", "", "mBoxPaint", "Landroid/graphics/Paint;", "mBoxRect", "mCornerPaint", "mGirdLinePaint", "mGirdLinePath", "Landroid/graphics/Path;", "tmpRect", "drawCorner", "", "canvas", "Landroid/graphics/Canvas;", "drawCutBoxLine", "init", "onDraw", "onSizeChanged", "w", "h", "oldw", "oldh", "setBorderRect", "rect", "updateBorderRect", "libmmui_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/ui/widget/cropview/BorderView;", "Landroid/view/View;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "BOX_GIRD_WIDTH", "", "getBOX_GIRD_WIDTH", "()F", "BOX_GIRD_WIDTH$delegate", "Lkotlin/Lazy;", "BOX_LINE_WIDTH", "getBOX_LINE_WIDTH", "BOX_LINE_WIDTH$delegate", "BOX_PADDING", "getBOX_PADDING", "BOX_PADDING$delegate", "CORNER_LENGTH", "getCORNER_LENGTH", "CORNER_LENGTH$delegate", "CORNER_WIDTH", "getCORNER_WIDTH", "CORNER_WIDTH$delegate", "currentRect", "Landroid/graphics/Rect;", "isInit", "", "mBoxPaint", "Landroid/graphics/Paint;", "mBoxRect", "mCornerPaint", "mGirdLinePaint", "mGirdLinePath", "Landroid/graphics/Path;", "tmpRect", "drawCorner", "", "canvas", "Landroid/graphics/Canvas;", "drawCutBoxLine", "init", "onDraw", "onSizeChanged", "w", "h", "oldw", "oldh", "setBorderRect", "rect", "updateBorderRect", "libmmui_release"})
 public final class BorderView
   extends View
 {
-  private Rect KUH;
-  private boolean cAX;
-  private Rect cPO;
-  private final Path gyB;
-  private final Paint gyD;
-  private final Paint gyG;
-  private final Paint gyH;
+  private Rect Lrf;
+  private boolean cBE;
+  private Rect cQy;
+  private final Path gBi;
+  private final Paint gBk;
+  private final Paint gBn;
+  private final Paint gBo;
   private Rect mA;
-  private final f xHR;
-  private final f xHS;
-  private final f xHT;
-  private final f xHV;
-  private final f xHW;
+  private final f xXM;
+  private final f xXN;
+  private final f xXO;
+  private final f xXQ;
+  private final f xXR;
   
   public BorderView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(164378);
-    this.xHR = g.O((a)new b(this));
-    this.xHS = g.O((a)new a(this));
-    this.xHT = g.O((a)new e(this));
-    this.xHV = g.O((a)new c(this));
-    this.xHW = g.O((a)new d(this));
-    this.gyB = new Path();
-    this.gyD = new Paint();
-    this.gyG = new Paint();
-    this.gyH = new Paint();
-    this.cPO = new Rect();
+    this.xXM = g.O((a)new b(this));
+    this.xXN = g.O((a)new a(this));
+    this.xXO = g.O((a)new e(this));
+    this.xXQ = g.O((a)new c(this));
+    this.xXR = g.O((a)new d(this));
+    this.gBi = new Path();
+    this.gBk = new Paint();
+    this.gBn = new Paint();
+    this.gBo = new Paint();
+    this.cQy = new Rect();
     this.mA = new Rect();
     AppMethodBeat.o(164378);
   }
@@ -56,16 +56,16 @@ public final class BorderView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(164379);
-    this.xHR = g.O((a)new b(this));
-    this.xHS = g.O((a)new a(this));
-    this.xHT = g.O((a)new e(this));
-    this.xHV = g.O((a)new c(this));
-    this.xHW = g.O((a)new d(this));
-    this.gyB = new Path();
-    this.gyD = new Paint();
-    this.gyG = new Paint();
-    this.gyH = new Paint();
-    this.cPO = new Rect();
+    this.xXM = g.O((a)new b(this));
+    this.xXN = g.O((a)new a(this));
+    this.xXO = g.O((a)new e(this));
+    this.xXQ = g.O((a)new c(this));
+    this.xXR = g.O((a)new d(this));
+    this.gBi = new Path();
+    this.gBk = new Paint();
+    this.gBn = new Paint();
+    this.gBo = new Paint();
+    this.cQy = new Rect();
     this.mA = new Rect();
     AppMethodBeat.o(164379);
   }
@@ -73,7 +73,7 @@ public final class BorderView
   private final float getBOX_GIRD_WIDTH()
   {
     AppMethodBeat.i(164371);
-    float f = ((Number)this.xHS.getValue()).floatValue();
+    float f = ((Number)this.xXN.getValue()).floatValue();
     AppMethodBeat.o(164371);
     return f;
   }
@@ -81,7 +81,7 @@ public final class BorderView
   private final float getBOX_LINE_WIDTH()
   {
     AppMethodBeat.i(164370);
-    float f = ((Number)this.xHR.getValue()).floatValue();
+    float f = ((Number)this.xXM.getValue()).floatValue();
     AppMethodBeat.o(164370);
     return f;
   }
@@ -89,7 +89,7 @@ public final class BorderView
   private final float getBOX_PADDING()
   {
     AppMethodBeat.i(164373);
-    float f = ((Number)this.xHV.getValue()).floatValue();
+    float f = ((Number)this.xXQ.getValue()).floatValue();
     AppMethodBeat.o(164373);
     return f;
   }
@@ -97,7 +97,7 @@ public final class BorderView
   private final float getCORNER_LENGTH()
   {
     AppMethodBeat.i(164374);
-    float f = ((Number)this.xHW.getValue()).floatValue();
+    float f = ((Number)this.xXR.getValue()).floatValue();
     AppMethodBeat.o(164374);
     return f;
   }
@@ -105,7 +105,7 @@ public final class BorderView
   private final float getCORNER_WIDTH()
   {
     AppMethodBeat.i(164372);
-    float f = ((Number)this.xHT.getValue()).floatValue();
+    float f = ((Number)this.xXO.getValue()).floatValue();
     AppMethodBeat.o(164372);
     return f;
   }
@@ -115,117 +115,117 @@ public final class BorderView
     AppMethodBeat.i(164377);
     p.h(paramCanvas, "canvas");
     super.onDraw(paramCanvas);
-    Rect localRect1 = this.KUH;
+    Rect localRect1 = this.Lrf;
     if (localRect1 == null) {
-      p.bcb("currentRect");
+      p.bdF("currentRect");
     }
     if (!localRect1.equals(this.mA))
     {
       localRect1 = this.mA;
-      Rect localRect2 = this.KUH;
+      Rect localRect2 = this.Lrf;
       if (localRect2 == null) {
-        p.bcb("currentRect");
+        p.bdF("currentRect");
       }
       localRect1.set(localRect2);
-      localRect1 = this.cPO;
-      localRect2 = this.KUH;
+      localRect1 = this.cQy;
+      localRect2 = this.Lrf;
       if (localRect2 == null) {
-        p.bcb("currentRect");
+        p.bdF("currentRect");
       }
       int i = localRect2.left;
       int j = (int)getBOX_PADDING();
-      localRect2 = this.KUH;
+      localRect2 = this.Lrf;
       if (localRect2 == null) {
-        p.bcb("currentRect");
+        p.bdF("currentRect");
       }
       int k = localRect2.top;
       int m = (int)getBOX_PADDING();
-      localRect2 = this.KUH;
+      localRect2 = this.Lrf;
       if (localRect2 == null) {
-        p.bcb("currentRect");
+        p.bdF("currentRect");
       }
       int n = localRect2.right;
       int i1 = (int)getBOX_PADDING();
-      localRect2 = this.KUH;
+      localRect2 = this.Lrf;
       if (localRect2 == null) {
-        p.bcb("currentRect");
+        p.bdF("currentRect");
       }
       localRect1.set(i + j, k + m, n - i1, localRect2.bottom - (int)getBOX_PADDING());
-      this.gyB.reset();
+      this.gBi.reset();
       i = 1;
       while (i <= 2)
       {
-        this.gyB.moveTo(this.cPO.left + this.cPO.width() / 3 * i, this.cPO.top);
-        this.gyB.lineTo(this.cPO.left + this.cPO.width() / 3 * i, this.cPO.bottom);
-        this.gyB.moveTo(this.cPO.left, this.cPO.top + this.cPO.height() / 3 * i);
-        this.gyB.lineTo(this.cPO.right, this.cPO.top + this.cPO.height() / 3 * i);
+        this.gBi.moveTo(this.cQy.left + this.cQy.width() / 3 * i, this.cQy.top);
+        this.gBi.lineTo(this.cQy.left + this.cQy.width() / 3 * i, this.cQy.bottom);
+        this.gBi.moveTo(this.cQy.left, this.cQy.top + this.cQy.height() / 3 * i);
+        this.gBi.lineTo(this.cQy.right, this.cQy.top + this.cQy.height() / 3 * i);
         i += 1;
       }
     }
-    paramCanvas.drawPath(this.gyB, this.gyG);
-    paramCanvas.drawRect(this.cPO, this.gyD);
-    float f1 = this.cPO.left;
+    paramCanvas.drawPath(this.gBi, this.gBn);
+    paramCanvas.drawRect(this.cQy, this.gBk);
+    float f1 = this.cQy.left;
     float f2 = getCORNER_WIDTH();
-    float f3 = this.cPO.top;
+    float f3 = this.cQy.top;
     float f4 = getCORNER_WIDTH() / 2.0F;
-    float f5 = this.cPO.left;
-    paramCanvas.drawLine(f1 - f2, f3 - f4, getCORNER_LENGTH() + f5, this.cPO.top - getCORNER_WIDTH() / 2.0F, this.gyH);
-    f1 = this.cPO.right;
+    float f5 = this.cQy.left;
+    paramCanvas.drawLine(f1 - f2, f3 - f4, getCORNER_LENGTH() + f5, this.cQy.top - getCORNER_WIDTH() / 2.0F, this.gBo);
+    f1 = this.cQy.right;
     f2 = getCORNER_LENGTH();
     f3 = getCORNER_WIDTH() / 2.0F;
-    f4 = this.cPO.top;
+    f4 = this.cQy.top;
     f5 = getCORNER_WIDTH() / 2.0F;
-    float f6 = this.cPO.right;
-    paramCanvas.drawLine(f3 + (f1 - f2), f4 - f5, getCORNER_WIDTH() + f6, this.cPO.top - getCORNER_WIDTH() / 2.0F, this.gyH);
-    f1 = this.cPO.left;
+    float f6 = this.cQy.right;
+    paramCanvas.drawLine(f3 + (f1 - f2), f4 - f5, getCORNER_WIDTH() + f6, this.cQy.top - getCORNER_WIDTH() / 2.0F, this.gBo);
+    f1 = this.cQy.left;
     f2 = getCORNER_WIDTH() / 2.0F;
-    f3 = this.cPO.top;
+    f3 = this.cQy.top;
     f4 = getCORNER_WIDTH() / 2.0F;
-    f5 = this.cPO.left;
+    f5 = this.cQy.left;
     f6 = getCORNER_WIDTH() / 2.0F;
-    float f7 = this.cPO.top;
-    paramCanvas.drawLine(f1 - f2, f3 - f4, f5 - f6, getCORNER_LENGTH() + f7, this.gyH);
-    f1 = this.cPO.left;
+    float f7 = this.cQy.top;
+    paramCanvas.drawLine(f1 - f2, f3 - f4, f5 - f6, getCORNER_LENGTH() + f7, this.gBo);
+    f1 = this.cQy.left;
     f2 = getCORNER_WIDTH() / 2.0F;
-    f3 = this.cPO.bottom;
+    f3 = this.cQy.bottom;
     f4 = getCORNER_LENGTH();
     f5 = getCORNER_WIDTH() / 2.0F;
-    f6 = this.cPO.left;
+    f6 = this.cQy.left;
     f7 = getCORNER_WIDTH() / 2.0F;
-    float f8 = this.cPO.bottom;
-    paramCanvas.drawLine(f1 - f2, f5 + (f3 - f4), f6 - f7, getCORNER_WIDTH() / 2.0F + f8, this.gyH);
-    f1 = this.cPO.right;
+    float f8 = this.cQy.bottom;
+    paramCanvas.drawLine(f1 - f2, f5 + (f3 - f4), f6 - f7, getCORNER_WIDTH() / 2.0F + f8, this.gBo);
+    f1 = this.cQy.right;
     f2 = getCORNER_WIDTH() / 2.0F;
-    f3 = this.cPO.top;
-    f4 = this.cPO.right;
+    f3 = this.cQy.top;
+    f4 = this.cQy.right;
     f5 = getCORNER_WIDTH() / 2.0F;
-    f6 = this.cPO.top;
-    paramCanvas.drawLine(f2 + f1, f3, f5 + f4, getCORNER_LENGTH() + f6, this.gyH);
-    f1 = this.cPO.right;
+    f6 = this.cQy.top;
+    paramCanvas.drawLine(f2 + f1, f3, f5 + f4, getCORNER_LENGTH() + f6, this.gBo);
+    f1 = this.cQy.right;
     f2 = getCORNER_WIDTH() / 2.0F;
-    f3 = this.cPO.bottom;
+    f3 = this.cQy.bottom;
     f4 = getCORNER_LENGTH();
     f5 = getCORNER_WIDTH() / 2.0F;
-    f6 = this.cPO.right;
+    f6 = this.cQy.right;
     f7 = getCORNER_WIDTH() / 2.0F;
-    f8 = this.cPO.bottom;
-    paramCanvas.drawLine(f2 + f1, f5 + (f3 - f4), f7 + f6, getCORNER_WIDTH() / 2.0F + f8, this.gyH);
-    f1 = this.cPO.left;
+    f8 = this.cQy.bottom;
+    paramCanvas.drawLine(f2 + f1, f5 + (f3 - f4), f7 + f6, getCORNER_WIDTH() / 2.0F + f8, this.gBo);
+    f1 = this.cQy.left;
     f2 = getCORNER_WIDTH();
-    f3 = this.cPO.bottom;
+    f3 = this.cQy.bottom;
     f4 = getCORNER_WIDTH() / 2.0F;
-    f5 = this.cPO.left;
+    f5 = this.cQy.left;
     f6 = getCORNER_LENGTH();
-    f7 = this.cPO.bottom;
-    paramCanvas.drawLine(f1 - f2, f4 + f3, f6 + f5, getCORNER_WIDTH() / 2.0F + f7, this.gyH);
-    f1 = this.cPO.right;
+    f7 = this.cQy.bottom;
+    paramCanvas.drawLine(f1 - f2, f4 + f3, f6 + f5, getCORNER_WIDTH() / 2.0F + f7, this.gBo);
+    f1 = this.cQy.right;
     f2 = getCORNER_LENGTH();
-    f3 = this.cPO.bottom;
+    f3 = this.cQy.bottom;
     f4 = getCORNER_WIDTH() / 2.0F;
-    f5 = this.cPO.right;
+    f5 = this.cQy.right;
     f6 = getCORNER_WIDTH();
-    f7 = this.cPO.bottom;
-    paramCanvas.drawLine(f1 - f2, f4 + f3, f6 + f5, getCORNER_WIDTH() / 2.0F + f7, this.gyH);
+    f7 = this.cQy.bottom;
+    paramCanvas.drawLine(f1 - f2, f4 + f3, f6 + f5, getCORNER_WIDTH() / 2.0F + f7, this.gBo);
     AppMethodBeat.o(164377);
   }
   
@@ -233,17 +233,17 @@ public final class BorderView
   {
     AppMethodBeat.i(164375);
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    if (!this.cAX)
+    if (!this.cBE)
     {
-      this.cAX = true;
-      this.gyD.setColor(-1);
-      this.gyD.setStrokeWidth(getBOX_LINE_WIDTH());
-      this.gyD.setStyle(Paint.Style.STROKE);
-      this.gyD.setAntiAlias(true);
-      this.gyG.set(this.gyD);
-      this.gyG.setStrokeWidth(getBOX_GIRD_WIDTH());
-      this.gyH.set(this.gyD);
-      this.gyH.setStrokeWidth(getCORNER_WIDTH());
+      this.cBE = true;
+      this.gBk.setColor(-1);
+      this.gBk.setStrokeWidth(getBOX_LINE_WIDTH());
+      this.gBk.setStyle(Paint.Style.STROKE);
+      this.gBk.setAntiAlias(true);
+      this.gBn.set(this.gBk);
+      this.gBn.setStrokeWidth(getBOX_GIRD_WIDTH());
+      this.gBo.set(this.gBk);
+      this.gBo.setStrokeWidth(getCORNER_WIDTH());
     }
     AppMethodBeat.o(164375);
   }
@@ -252,11 +252,11 @@ public final class BorderView
   {
     AppMethodBeat.i(164376);
     p.h(paramRect, "rect");
-    this.KUH = paramRect;
+    this.Lrf = paramRect;
     AppMethodBeat.o(164376);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
   static final class a
     extends q
     implements a<Float>
@@ -267,7 +267,7 @@ public final class BorderView
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
   static final class b
     extends q
     implements a<Float>
@@ -278,7 +278,7 @@ public final class BorderView
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
   static final class c
     extends q
     implements a<Float>
@@ -289,7 +289,7 @@ public final class BorderView
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
   static final class d
     extends q
     implements a<Float>
@@ -300,7 +300,7 @@ public final class BorderView
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
   static final class e
     extends q
     implements a<Float>

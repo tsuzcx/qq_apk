@@ -5,65 +5,65 @@ import android.content.Context;
 import android.os.Debug.MemoryInfo;
 import android.os.Process;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
 import java.lang.reflect.Field;
 
 public final class a
 {
-  private int[] guh;
+  private int[] gwO;
   
   public a()
   {
-    AppMethodBeat.i(219554);
-    this.guh = null;
-    Object localObject = (ActivityManager)aj.getContext().getSystemService("activity");
+    AppMethodBeat.i(209676);
+    this.gwO = null;
+    Object localObject = (ActivityManager)ak.getContext().getSystemService("activity");
     if (localObject == null)
     {
-      AppMethodBeat.o(219554);
+      AppMethodBeat.o(209676);
       return;
     }
     localObject = ((ActivityManager)localObject).getProcessMemoryInfo(new int[] { Process.myPid() });
     if ((localObject == null) || (localObject.length == 0))
     {
-      AppMethodBeat.o(219554);
+      AppMethodBeat.o(209676);
       return;
     }
     localObject = localObject[0];
     if (localObject == null)
     {
-      AppMethodBeat.o(219554);
+      AppMethodBeat.o(209676);
       return;
     }
-    this.guh = b((Debug.MemoryInfo)localObject);
-    AppMethodBeat.o(219554);
+    this.gwO = b((Debug.MemoryInfo)localObject);
+    AppMethodBeat.o(209676);
   }
   
   private static int[] b(Debug.MemoryInfo paramMemoryInfo)
   {
-    AppMethodBeat.i(219558);
+    AppMethodBeat.i(209680);
     try
     {
       Field localField = Class.forName("android.os.Debug$MemoryInfo").getDeclaredField("otherStats");
       localField.setAccessible(true);
       paramMemoryInfo = (int[])localField.get(paramMemoryInfo);
-      AppMethodBeat.o(219558);
+      AppMethodBeat.o(209680);
       return paramMemoryInfo;
     }
     catch (Exception paramMemoryInfo)
     {
-      ad.e("Gpu.GpuMemoryGetter", "getOtherStatsByReflect fail");
-      AppMethodBeat.o(219558);
+      ae.e("Gpu.GpuMemoryGetter", "getOtherStatsByReflect fail");
+      AppMethodBeat.o(209680);
     }
     return null;
   }
   
   private static int f(int[] paramArrayOfInt, int paramInt)
   {
-    AppMethodBeat.i(219559);
+    AppMethodBeat.i(209681);
     int i = h(paramArrayOfInt, paramInt);
     paramInt = g(paramArrayOfInt, paramInt);
-    AppMethodBeat.o(219559);
+    AppMethodBeat.o(209681);
     return i + paramInt;
   }
   
@@ -77,71 +77,71 @@ public final class a
     return paramArrayOfInt[(paramInt * 9 + 5)];
   }
   
-  public final int agT()
+  public final int ahi()
   {
-    AppMethodBeat.i(219555);
-    if (this.guh == null)
+    AppMethodBeat.i(209677);
+    if (this.gwO == null)
     {
-      ad.e("Gpu.GpuMemoryGetter", "getGfx fail, because otherStats == null");
-      AppMethodBeat.o(219555);
+      ae.e("Gpu.GpuMemoryGetter", "getGfx fail, because otherStats == null");
+      AppMethodBeat.o(209677);
       return 0;
     }
     try
     {
-      int i = f(this.guh, 4);
-      AppMethodBeat.o(219555);
+      int i = f(this.gwO, 4);
+      AppMethodBeat.o(209677);
       return i;
     }
     catch (Exception localException)
     {
-      ad.e("Gpu.GpuMemoryGetter", "getGfx fail, because getOtherPrivate fail");
-      AppMethodBeat.o(219555);
+      ae.e("Gpu.GpuMemoryGetter", "getGfx fail, because getOtherPrivate fail");
+      AppMethodBeat.o(209677);
     }
     return 0;
   }
   
-  public final int agU()
+  public final int ahj()
   {
-    AppMethodBeat.i(219556);
-    if (this.guh == null)
+    AppMethodBeat.i(209678);
+    if (this.gwO == null)
     {
-      ad.e("Gpu.GpuMemoryGetter", "getEGL fail, because otherStats == null");
-      AppMethodBeat.o(219556);
+      ae.e("Gpu.GpuMemoryGetter", "getEGL fail, because otherStats == null");
+      AppMethodBeat.o(209678);
       return 0;
     }
     try
     {
-      int i = f(this.guh, 14);
-      AppMethodBeat.o(219556);
+      int i = f(this.gwO, 14);
+      AppMethodBeat.o(209678);
       return i;
     }
     catch (Exception localException)
     {
-      ad.e("Gpu.GpuMemoryGetter", "getEGL fail, because getOtherPrivate fail");
-      AppMethodBeat.o(219556);
+      ae.e("Gpu.GpuMemoryGetter", "getEGL fail, because getOtherPrivate fail");
+      AppMethodBeat.o(209678);
     }
     return 0;
   }
   
-  public final int agV()
+  public final int ahk()
   {
-    AppMethodBeat.i(219557);
-    if (this.guh == null)
+    AppMethodBeat.i(209679);
+    if (this.gwO == null)
     {
-      ad.e("Gpu.GpuMemoryGetter", "getGL fail, because getOtherStats == null");
-      AppMethodBeat.o(219557);
+      ae.e("Gpu.GpuMemoryGetter", "getGL fail, because getOtherStats == null");
+      AppMethodBeat.o(209679);
       return 0;
     }
     try
     {
-      int i = f(this.guh, 15);
-      AppMethodBeat.o(219557);
+      int i = f(this.gwO, 15);
+      AppMethodBeat.o(209679);
       return i;
     }
     catch (Exception localException)
     {
-      ad.e("Gpu.GpuMemoryGetter", "getGL fail, because getOtherStats == null");
-      AppMethodBeat.o(219557);
+      ae.e("Gpu.GpuMemoryGetter", "getGL fail, because getOtherStats == null");
+      AppMethodBeat.o(209679);
     }
     return 0;
   }

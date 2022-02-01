@@ -8,9 +8,9 @@ public abstract interface k
 {
   public abstract void a(m paramm);
   
-  public abstract boolean aOv();
+  public abstract boolean aOS();
   
-  public abstract boolean aOw();
+  public abstract boolean aOT();
   
   public abstract View getContentView();
   
@@ -20,11 +20,11 @@ public abstract interface k
   
   public abstract void onCancel();
   
-  public abstract void qy(int paramInt);
+  public abstract void qB(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.dialog.k
  * JD-Core Version:    0.7.0.1
  */

@@ -4,7 +4,7 @@ import android.content.Context;
 import com.tencent.luggage.d.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.webview.luggage.g;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public class av
   extends br<g>
@@ -14,12 +14,12 @@ public class av
   public final void b(b<g>.a paramb)
   {
     AppMethodBeat.i(78610);
-    ad.i("MicroMsg.JsApiRecordVideo", "invoke");
+    ae.i("MicroMsg.JsApiRecordVideo", "invoke");
     k.a(paramb, 1);
     AppMethodBeat.o(78610);
   }
   
-  public final int ccO()
+  public final int ced()
   {
     return 0;
   }

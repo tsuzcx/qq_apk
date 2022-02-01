@@ -1,8 +1,8 @@
 package com.tencent.mm.plugin.webview.ui.tools;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cf.b;
-import com.tencent.mm.cf.f;
+import com.tencent.mm.ce.b;
+import com.tencent.mm.ce.f;
 
 final class WebViewUI$43
   implements Runnable
@@ -11,10 +11,10 @@ final class WebViewUI$43
   
   public final void run()
   {
-    AppMethodBeat.i(208074);
-    f.fnb();
-    b.fmR();
-    AppMethodBeat.o(208074);
+    AppMethodBeat.i(198251);
+    f.fqV();
+    b.fqL();
+    AppMethodBeat.o(198251);
   }
 }
 

@@ -2,26 +2,26 @@ package com.tencent.mm.plugin.appbrand.app;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.api.e;
-import com.tencent.mm.plugin.appbrand.appcache.am;
-import com.tencent.mm.plugin.appbrand.appcache.bg;
+import com.tencent.mm.plugin.appbrand.appcache.an;
+import com.tencent.mm.plugin.appbrand.appcache.bh;
 
 public final class l
   implements e
 {
-  public final bg aYu()
+  public final bh aYP()
   {
     AppMethodBeat.i(44229);
-    bg localbg = j.aYX();
+    bh localbh = j.aZu();
     AppMethodBeat.o(44229);
-    return localbg;
+    return localbh;
   }
   
-  public final am aYv()
+  public final an aYQ()
   {
     AppMethodBeat.i(44230);
-    am localam = (am)j.T(am.class);
+    an localan = (an)j.T(an.class);
     AppMethodBeat.o(44230);
-    return localam;
+    return localan;
   }
 }
 

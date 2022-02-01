@@ -8,25 +8,25 @@ public abstract class as
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eEX = "mediaId".hashCode();
-  private static final int eMZ = "downloadUrlHashCode".hashCode();
-  private static final int eNa = "downloadUrl".hashCode();
-  private static final int eNb = "httpsUrl".hashCode();
-  private static final int eNc = "filePath".hashCode();
-  private static final int eNd = "verifyHeaders".hashCode();
-  private static final int eNe = "game_package_download".hashCode();
-  private static final int eNf = "allowMobileNetDownload".hashCode();
-  private static final int eNg = "wifiAutoDownload".hashCode();
+  private static final int eGG = "mediaId".hashCode();
+  private static final int eOK = "downloadUrlHashCode".hashCode();
+  private static final int eOL = "downloadUrl".hashCode();
+  private static final int eOM = "httpsUrl".hashCode();
+  private static final int eON = "filePath".hashCode();
+  private static final int eOO = "verifyHeaders".hashCode();
+  private static final int eOP = "game_package_download".hashCode();
+  private static final int eOQ = "allowMobileNetDownload".hashCode();
+  private static final int eOR = "wifiAutoDownload".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eEG = true;
-  private boolean eMR = true;
-  private boolean eMS = true;
-  private boolean eMT = true;
-  private boolean eMU = true;
-  private boolean eMV = true;
-  private boolean eMW = true;
-  private boolean eMX = true;
-  private boolean eMY = true;
+  private boolean eGp = true;
+  private boolean eOC = true;
+  private boolean eOD = true;
+  private boolean eOE = true;
+  private boolean eOF = true;
+  private boolean eOG = true;
+  private boolean eOH = true;
+  private boolean eOI = true;
+  private boolean eOJ = true;
   public Boolean field_allowMobileNetDownload;
   public String field_downloadUrl;
   public int field_downloadUrlHashCode;
@@ -50,7 +50,7 @@ public abstract class as
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eEX != k) {
+      if (eGG != k) {
         break label60;
       }
       this.field_mediaId = paramCursor.getString(i);
@@ -61,31 +61,31 @@ public abstract class as
       break label20;
       break;
       label60:
-      if (eMZ == k)
+      if (eOK == k)
       {
         this.field_downloadUrlHashCode = paramCursor.getInt(i);
-        this.eMR = true;
+        this.eOC = true;
       }
-      else if (eNa == k)
+      else if (eOL == k)
       {
         this.field_downloadUrl = paramCursor.getString(i);
       }
-      else if (eNb == k)
+      else if (eOM == k)
       {
         this.field_httpsUrl = paramCursor.getString(i);
       }
-      else if (eNc == k)
+      else if (eON == k)
       {
         this.field_filePath = paramCursor.getString(i);
       }
-      else if (eNd == k)
+      else if (eOO == k)
       {
         this.field_verifyHeaders = paramCursor.getString(i);
       }
       else
       {
         boolean bool;
-        if (eNe == k)
+        if (eOP == k)
         {
           if (paramCursor.getInt(i) != 0) {}
           for (bool = true;; bool = false)
@@ -94,7 +94,7 @@ public abstract class as
             break;
           }
         }
-        if (eNf == k)
+        if (eOQ == k)
         {
           if (paramCursor.getInt(i) != 0) {}
           for (bool = true;; bool = false)
@@ -103,7 +103,7 @@ public abstract class as
             break;
           }
         }
-        if (eNg == k)
+        if (eOR == k)
         {
           if (paramCursor.getInt(i) != 0) {}
           for (bool = true;; bool = false)
@@ -122,31 +122,31 @@ public abstract class as
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eEG) {
+    if (this.eGp) {
       localContentValues.put("mediaId", this.field_mediaId);
     }
-    if (this.eMR) {
+    if (this.eOC) {
       localContentValues.put("downloadUrlHashCode", Integer.valueOf(this.field_downloadUrlHashCode));
     }
-    if (this.eMS) {
+    if (this.eOD) {
       localContentValues.put("downloadUrl", this.field_downloadUrl);
     }
-    if (this.eMT) {
+    if (this.eOE) {
       localContentValues.put("httpsUrl", this.field_httpsUrl);
     }
-    if (this.eMU) {
+    if (this.eOF) {
       localContentValues.put("filePath", this.field_filePath);
     }
-    if (this.eMV) {
+    if (this.eOG) {
       localContentValues.put("verifyHeaders", this.field_verifyHeaders);
     }
-    if (this.eMW) {
+    if (this.eOH) {
       localContentValues.put("game_package_download", this.field_game_package_download);
     }
-    if (this.eMX) {
+    if (this.eOI) {
       localContentValues.put("allowMobileNetDownload", this.field_allowMobileNetDownload);
     }
-    if (this.eMY) {
+    if (this.eOJ) {
       localContentValues.put("wifiAutoDownload", this.field_wifiAutoDownload);
     }
     if (this.systemRowid > 0L) {

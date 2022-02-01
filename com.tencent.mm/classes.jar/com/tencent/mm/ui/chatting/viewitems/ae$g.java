@@ -10,14 +10,14 @@ import com.tencent.mm.ui.widget.MMNeat7extView;
 final class ae$g
   extends ae.b
 {
-  TextView Kds;
-  LinearLayout Kdt;
-  MMNeat7extView ocA;
+  TextView KzK;
+  LinearLayout KzL;
+  MMNeat7extView oip;
   
   public final void dD(View paramView)
   {
     AppMethodBeat.i(37138);
-    if (this.odh != null)
+    if (this.oiV != null)
     {
       AppMethodBeat.o(37138);
       return;
@@ -29,10 +29,10 @@ final class ae$g
       return;
     }
     localViewStub.inflate();
-    this.odh = paramView.findViewById(2131298109);
-    this.ocA = ((MMNeat7extView)this.odh.findViewById(2131305902));
-    this.Kds = ((TextView)this.odh.findViewById(2131305729));
-    this.Kdt = ((LinearLayout)this.odh.findViewById(2131305743));
+    this.oiV = paramView.findViewById(2131298109);
+    this.oip = ((MMNeat7extView)this.oiV.findViewById(2131305902));
+    this.KzK = ((TextView)this.oiV.findViewById(2131305729));
+    this.KzL = ((LinearLayout)this.oiV.findViewById(2131305743));
     AppMethodBeat.o(37138);
   }
 }

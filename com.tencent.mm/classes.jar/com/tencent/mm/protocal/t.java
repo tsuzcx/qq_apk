@@ -3,9 +3,9 @@ package com.tencent.mm.protocal;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.protocal.protobuf.BaseResponse;
 import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.ayv;
-import com.tencent.mm.protocal.protobuf.ayw;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.azl;
+import com.tencent.mm.protocal.protobuf.azm;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public final class t
 {
@@ -13,12 +13,12 @@ public final class t
     extends l.d
     implements l.b
   {
-    public ayv Fot;
+    public azl FGR;
     
     public a()
     {
       AppMethodBeat.i(133107);
-      this.Fot = new ayv();
+      this.FGR = new azl();
       AppMethodBeat.o(133107);
     }
     
@@ -35,11 +35,11 @@ public final class t
     public final byte[] toProtoBuf()
     {
       AppMethodBeat.i(133108);
-      setRsaInfo(ac.fgz());
-      this.Fot.FDQ = new SKBuiltinBuffer_t().setBuffer(bt.flL());
-      this.Fot.Gwd = ac.fgx().ver;
-      this.Fot.setBaseRequest(l.a(this));
-      byte[] arrayOfByte = this.Fot.toByteArray();
+      setRsaInfo(ac.fkp());
+      this.FGR.FWl = new SKBuiltinBuffer_t().setBuffer(bu.fpG());
+      this.FGR.GPC = ac.fkn().ver;
+      this.FGR.setBaseRequest(l.a(this));
+      byte[] arrayOfByte = this.FGR.toByteArray();
       AppMethodBeat.o(133108);
       return arrayOfByte;
     }
@@ -49,21 +49,21 @@ public final class t
     extends l.e
     implements l.c
   {
-    public ayw Fou;
+    public azm FGS;
     
     public b()
     {
       AppMethodBeat.i(133109);
-      this.Fou = new ayw();
+      this.FGS = new azm();
       AppMethodBeat.o(133109);
     }
     
     public final int fromProtoBuf(byte[] paramArrayOfByte)
     {
       AppMethodBeat.i(133110);
-      this.Fou = ((ayw)new ayw().parseFrom(paramArrayOfByte));
-      l.a(this, this.Fou.getBaseResponse());
-      int i = this.Fou.getBaseResponse().Ret;
+      this.FGS = ((azm)new azm().parseFrom(paramArrayOfByte));
+      l.a(this, this.FGS.getBaseResponse());
+      int i = this.FGS.getBaseResponse().Ret;
       AppMethodBeat.o(133110);
       return i;
     }

@@ -2,11 +2,11 @@ package com.tencent.mm.plugin.appbrand;
 
 public abstract interface al
 {
-  public abstract void rG(int paramInt);
+  public abstract void rI(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.al
  * JD-Core Version:    0.7.0.1
  */

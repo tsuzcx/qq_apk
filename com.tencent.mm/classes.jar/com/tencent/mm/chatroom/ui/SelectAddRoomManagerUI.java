@@ -8,10 +8,10 @@ import android.view.View;
 import android.widget.LinearLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.g.c.aw;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ab;
-import com.tencent.mm.storage.am;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.ac;
+import com.tencent.mm.storage.an;
 import com.tencent.mm.ui.s.b;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -20,21 +20,21 @@ import java.util.List;
 public class SelectAddRoomManagerUI
   extends SelectMemberUI
 {
-  private boolean fSW;
-  private HashSet<String> fSX;
+  private boolean fVc;
+  private HashSet<String> fVd;
   
   public SelectAddRoomManagerUI()
   {
     AppMethodBeat.i(12912);
-    this.fSW = false;
-    this.fSX = new HashSet();
+    this.fVc = false;
+    this.fVd = new HashSet();
     AppMethodBeat.o(12912);
   }
   
-  private void Zm()
+  private void Zv()
   {
     AppMethodBeat.i(12918);
-    if (this.fTo.size() > 0)
+    if (this.fVu.size() > 0)
     {
       enableOptionMenu(1, true);
       AppMethodBeat.o(12918);
@@ -44,30 +44,30 @@ public class SelectAddRoomManagerUI
     AppMethodBeat.o(12918);
   }
   
-  protected final void Zj()
+  protected final void Zs()
   {
     AppMethodBeat.i(12913);
-    super.Zj();
-    this.fSW = false;
-    Iterator localIterator = this.fLO.aGo().iterator();
+    super.Zs();
+    this.fVc = false;
+    Iterator localIterator = this.fNS.aGE().iterator();
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
-      if (this.fLO.aSH(str)) {
-        this.fSX.add(str);
+      if (this.fNS.aUg(str)) {
+        this.fVd.add(str);
       }
     }
     AppMethodBeat.o(12913);
   }
   
-  public final boolean Zk()
+  public final boolean Zt()
   {
     return true;
   }
   
-  protected final HashSet<String> Zl()
+  protected final HashSet<String> Zu()
   {
-    return this.fSX;
+    return this.fVd;
   }
   
   protected final void a(View paramView, int paramInt, long paramLong)
@@ -75,9 +75,9 @@ public class SelectAddRoomManagerUI
     AppMethodBeat.i(12917);
     super.a(paramView, paramInt, paramLong);
     paramView = (SelectMemberUI.c)paramView.getTag();
-    String str = paramView.fTz.contact.adv();
-    ad.d("MicroMsg.SelectAddRoomManagerUI", "[onItemClick] username:%s remark:%s", new Object[] { paramView.fTz.contact.field_username, str, paramView.fTz.contact.adu() });
-    paramView.fTD.performClick();
+    String str = paramView.fVF.contact.adG();
+    ae.d("MicroMsg.SelectAddRoomManagerUI", "[onItemClick] username:%s remark:%s", new Object[] { paramView.fVF.contact.field_username, str, paramView.fVF.contact.adF() });
+    paramView.fVJ.performClick();
     AppMethodBeat.o(12917);
   }
   
@@ -96,11 +96,11 @@ public class SelectAddRoomManagerUI
     String str;
     label43:
     MenuItem.OnMenuItemClickListener local1;
-    if (this.fSW)
+    if (this.fVc)
     {
       str = getString(2131762699);
       setMMTitle(str);
-      if (!this.fSW) {
+      if (!this.fVc) {
         break label93;
       }
       str = getString(2131758039);
@@ -110,7 +110,7 @@ public class SelectAddRoomManagerUI
         {
           AppMethodBeat.i(12911);
           paramAnonymousMenuItem = new Intent();
-          paramAnonymousMenuItem.putExtra("Select_Contact", bt.m(SelectAddRoomManagerUI.a(SelectAddRoomManagerUI.this), ","));
+          paramAnonymousMenuItem.putExtra("Select_Contact", bu.m(SelectAddRoomManagerUI.a(SelectAddRoomManagerUI.this), ","));
           SelectAddRoomManagerUI.this.setResult(-1, paramAnonymousMenuItem);
           SelectAddRoomManagerUI.this.finish();
           SelectAddRoomManagerUI.this.hideVKB();
@@ -118,16 +118,16 @@ public class SelectAddRoomManagerUI
           return false;
         }
       };
-      if (!this.fSW) {
+      if (!this.fVc) {
         break label103;
       }
     }
     label93:
     label103:
-    for (s.b localb = s.b.JbT;; localb = s.b.JbS)
+    for (s.b localb = s.b.JwB;; localb = s.b.JwA)
     {
       addTextOptionMenu(1, str, local1, null, localb);
-      Zm();
+      Zv();
       AppMethodBeat.o(12914);
       return;
       str = getString(2131762698);
@@ -147,7 +147,7 @@ public class SelectAddRoomManagerUI
   {
     AppMethodBeat.i(12915);
     super.v(paramInt, paramBoolean);
-    Zm();
+    Zv();
     AppMethodBeat.o(12915);
   }
 }

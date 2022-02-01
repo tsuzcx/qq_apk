@@ -10,44 +10,44 @@ public final class h
 {
   public h(i parami)
   {
-    this.NQs = 2064;
-    this.NQt = 3;
-    this.NQv = parami;
+    this.Ony = 2064;
+    this.Onz = 3;
+    this.OnB = parami;
   }
   
-  public final int R(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  public final int S(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(88076);
     f localf = new f();
     g localg = new g();
-    paramInt2 = super.ae(paramArrayOfByte, paramInt1 + 2);
-    super.gxS();
+    paramInt2 = super.ai(paramArrayOfByte, paramInt1 + 2);
+    super.gCu();
     int j = paramInt1 + 5;
     switch (paramInt2)
     {
     case 3: 
     case 4: 
     default: 
-      Q(paramArrayOfByte, j, this.NQh - j - 1);
+      R(paramArrayOfByte, j, this.Onn - j - 1);
       paramInt1 = paramInt2;
     }
     for (;;)
     {
       AppMethodBeat.o(88076);
       return paramInt1;
-      int i = localf.U(paramArrayOfByte, j, this.NQh - j);
+      int i = localf.V(paramArrayOfByte, j, this.Onn - j);
       paramInt1 = i;
       if (i >= 0)
       {
-        this.NQv.NQA = localf;
-        i = localg.U(paramArrayOfByte, j, this.NQh - j);
+        this.OnB.OnG = localf;
+        i = localg.V(paramArrayOfByte, j, this.Onn - j);
         paramInt1 = i;
         if (i >= 0)
         {
-          this.NQv.NQB = localg;
+          this.OnB.OnH = localg;
           paramInt1 = paramInt2;
           continue;
-          super.Q(paramArrayOfByte, j, this.NQh - j - 1);
+          super.R(paramArrayOfByte, j, this.Onn - j - 1);
           paramInt1 = paramInt2;
         }
       }

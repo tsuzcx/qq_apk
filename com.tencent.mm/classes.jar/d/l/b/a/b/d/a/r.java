@@ -6,13 +6,13 @@ import d.l.b.a.b.f.f;
 
 final class r
 {
-  final f MXf;
+  final f Nul;
   final String signature;
   
   public r(f paramf, String paramString)
   {
     AppMethodBeat.i(57618);
-    this.MXf = paramf;
+    this.Nul = paramf;
     this.signature = paramString;
     AppMethodBeat.o(57618);
   }
@@ -25,7 +25,7 @@ final class r
       if ((paramObject instanceof r))
       {
         paramObject = (r)paramObject;
-        if ((!p.i(this.MXf, paramObject.MXf)) || (!p.i(this.signature, paramObject.signature))) {}
+        if ((!p.i(this.Nul, paramObject.Nul)) || (!p.i(this.signature, paramObject.signature))) {}
       }
     }
     else
@@ -41,7 +41,7 @@ final class r
   {
     int j = 0;
     AppMethodBeat.i(57620);
-    Object localObject = this.MXf;
+    Object localObject = this.Nul;
     if (localObject != null) {}
     for (int i = localObject.hashCode();; i = 0)
     {
@@ -57,7 +57,7 @@ final class r
   public final String toString()
   {
     AppMethodBeat.i(57619);
-    String str = "NameAndSignature(name=" + this.MXf + ", signature=" + this.signature + ")";
+    String str = "NameAndSignature(name=" + this.Nul + ", signature=" + this.signature + ")";
     AppMethodBeat.o(57619);
     return str;
   }

@@ -4,19 +4,19 @@ import android.os.Bundle;
 import android.os.Message;
 import com.tencent.e.i.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bu;
 
 final class CdnImageView$a
   implements h
 {
-  private ap handler;
+  private aq handler;
   private String url;
   
-  CdnImageView$a(String paramString, ap paramap)
+  CdnImageView$a(String paramString, aq paramaq)
   {
     this.url = paramString;
-    this.handler = paramap;
+    this.handler = paramaq;
   }
   
   public final String getKey()
@@ -27,7 +27,7 @@ final class CdnImageView$a
   public final void run()
   {
     AppMethodBeat.i(152165);
-    byte[] arrayOfByte = bt.aRi(this.url);
+    byte[] arrayOfByte = bu.aSF(this.url);
     Message localMessage = Message.obtain();
     Bundle localBundle = new Bundle();
     localBundle.putByteArray("k_data", arrayOfByte);

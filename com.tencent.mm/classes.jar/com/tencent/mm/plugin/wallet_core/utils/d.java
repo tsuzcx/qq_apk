@@ -13,22 +13,22 @@ import java.util.List;
 
 public final class d
 {
-  public static boolean VK(int paramInt)
+  public static boolean Wr(int paramInt)
   {
     AppMethodBeat.i(71638);
     if (paramInt == 8) {}
-    for (boolean bool = t.eFw().VC(paramInt);; bool = t.eFw().aSJ())
+    for (boolean bool = t.eJd().Wj(paramInt);; bool = t.eJd().aTi())
     {
       AppMethodBeat.o(71638);
       return bool;
     }
   }
   
-  public static ArrayList<Bankcard> VL(int paramInt)
+  public static ArrayList<Bankcard> Ws(int paramInt)
   {
-    AppMethodBeat.i(199356);
-    Object localObject1 = t.eFw();
-    Object localObject2 = "select * from WalletBankcardScene where (cardType <= 7 OR cardType & " + BankcardScene.CUx + " != 0 OR cardType & " + BankcardScene.CUw + " != 0) and scene=" + paramInt;
+    AppMethodBeat.i(190240);
+    Object localObject1 = t.eJd();
+    Object localObject2 = "select * from WalletBankcardScene where (cardType <= 7 OR cardType & " + BankcardScene.Dmd + " != 0 OR cardType & " + BankcardScene.Dmc + " != 0) and scene=" + paramInt;
     localObject2 = ((c)localObject1).db.a((String)localObject2, null, 2);
     if (localObject2 == null) {
       localObject1 = null;
@@ -36,7 +36,7 @@ public final class d
     BankcardScene localBankcardScene;
     while (localObject1 == null)
     {
-      AppMethodBeat.o(199356);
+      AppMethodBeat.o(190240);
       return null;
       localObject1 = null;
       if (((Cursor)localObject2).moveToFirst())
@@ -56,7 +56,7 @@ public final class d
     while (((Iterator)localObject1).hasNext())
     {
       localBankcardScene = (BankcardScene)((Iterator)localObject1).next();
-      Bankcard localBankcard = new Bankcard(localBankcardScene.CUy, localBankcardScene.CUz, localBankcardScene.CTT, localBankcardScene.CUA, localBankcardScene.CUB, localBankcardScene.CUC, localBankcardScene.CUD, localBankcardScene.CUE, localBankcardScene.CUF, localBankcardScene.CUG, localBankcardScene.CUH, localBankcardScene.CUI, localBankcardScene.CUJ, localBankcardScene.CUK, localBankcardScene.CUL, localBankcardScene.CTR, localBankcardScene.CUM, localBankcardScene.CUN, localBankcardScene.CUO, localBankcardScene.CUP, localBankcardScene.CUQ, localBankcardScene.CUR, localBankcardScene.CUS, localBankcardScene.CUT, localBankcardScene.CUU, localBankcardScene.CUV, localBankcardScene.CUW, localBankcardScene.CUX, localBankcardScene.CUY, localBankcardScene.CUZ, localBankcardScene.CVa, localBankcardScene.CVb, localBankcardScene.CVc, localBankcardScene.CzQ, localBankcardScene.CzR);
+      Bankcard localBankcard = new Bankcard(localBankcardScene.Dme, localBankcardScene.Dmf, localBankcardScene.Dlz, localBankcardScene.Dmg, localBankcardScene.Dmh, localBankcardScene.Dmi, localBankcardScene.Dmj, localBankcardScene.Dmk, localBankcardScene.Dml, localBankcardScene.Dmm, localBankcardScene.Dmn, localBankcardScene.Dmo, localBankcardScene.Dmp, localBankcardScene.Dmq, localBankcardScene.Dmr, localBankcardScene.Dlx, localBankcardScene.Dms, localBankcardScene.Dmt, localBankcardScene.Dmu, localBankcardScene.Dmv, localBankcardScene.Dmw, localBankcardScene.Dmx, localBankcardScene.Dmy, localBankcardScene.Dmz, localBankcardScene.DmA, localBankcardScene.DmB, localBankcardScene.DmC, localBankcardScene.DmD, localBankcardScene.DmE, localBankcardScene.DmF, localBankcardScene.DmG, localBankcardScene.DmH, localBankcardScene.DmI, localBankcardScene.CRv, localBankcardScene.CRw);
       localBankcard.field_bindSerial = localBankcardScene.field_bindSerial;
       localBankcard.field_cardType = localBankcardScene.field_cardType;
       localBankcard.field_bankcardState = localBankcardScene.field_bankcardState;
@@ -102,7 +102,7 @@ public final class d
       localBankcard.field_prompt_info_jump_url = localBankcardScene.field_prompt_info_jump_url;
       ((ArrayList)localObject2).add(localBankcard);
     }
-    AppMethodBeat.o(199356);
+    AppMethodBeat.o(190240);
     return localObject2;
   }
   
@@ -119,7 +119,7 @@ public final class d
     {
       paramBankcard = j(paramBankcard);
       paramBankcard.field_scene = 8;
-      bool = t.eFw().a(paramBankcard);
+      bool = t.eJd().a(paramBankcard);
     }
     for (;;)
     {
@@ -129,11 +129,11 @@ public final class d
       {
         paramBankcard = j(paramBankcard);
         paramBankcard.field_scene = 12;
-        bool = t.eFw().a(paramBankcard);
+        bool = t.eJd().a(paramBankcard);
       }
       else
       {
-        bool = t.eFv().f(paramBankcard);
+        bool = t.eJc().f(paramBankcard);
       }
     }
   }
@@ -141,7 +141,7 @@ public final class d
   private static BankcardScene j(Bankcard paramBankcard)
   {
     AppMethodBeat.i(71640);
-    BankcardScene localBankcardScene = new BankcardScene(paramBankcard.CUy, paramBankcard.CUz, paramBankcard.CTT, paramBankcard.CUA, paramBankcard.CUB, paramBankcard.CUC, paramBankcard.CUD, paramBankcard.CUE, paramBankcard.CUF, paramBankcard.CUG, paramBankcard.CUH, paramBankcard.CUI, paramBankcard.CUJ, paramBankcard.CUK, paramBankcard.CUL, paramBankcard.CTR, paramBankcard.CUM, paramBankcard.CUN, paramBankcard.CUO, paramBankcard.CUP, paramBankcard.CUQ, paramBankcard.CUR, paramBankcard.CUS, paramBankcard.CUT, paramBankcard.CUU, paramBankcard.CUV, paramBankcard.CUW, paramBankcard.CUX, paramBankcard.CUY, paramBankcard.CUZ, paramBankcard.CVa, paramBankcard.CVb, paramBankcard.CVc, paramBankcard.CzQ, paramBankcard.CzR);
+    BankcardScene localBankcardScene = new BankcardScene(paramBankcard.Dme, paramBankcard.Dmf, paramBankcard.Dlz, paramBankcard.Dmg, paramBankcard.Dmh, paramBankcard.Dmi, paramBankcard.Dmj, paramBankcard.Dmk, paramBankcard.Dml, paramBankcard.Dmm, paramBankcard.Dmn, paramBankcard.Dmo, paramBankcard.Dmp, paramBankcard.Dmq, paramBankcard.Dmr, paramBankcard.Dlx, paramBankcard.Dms, paramBankcard.Dmt, paramBankcard.Dmu, paramBankcard.Dmv, paramBankcard.Dmw, paramBankcard.Dmx, paramBankcard.Dmy, paramBankcard.Dmz, paramBankcard.DmA, paramBankcard.DmB, paramBankcard.DmC, paramBankcard.DmD, paramBankcard.DmE, paramBankcard.DmF, paramBankcard.DmG, paramBankcard.DmH, paramBankcard.DmI, paramBankcard.CRv, paramBankcard.CRw);
     localBankcardScene.field_bindSerial = paramBankcard.field_bindSerial;
     localBankcardScene.field_cardType = paramBankcard.field_cardType;
     localBankcardScene.field_bankcardState = paramBankcard.field_bankcardState;
@@ -189,7 +189,7 @@ public final class d
     return localBankcardScene;
   }
   
-  public static boolean x(List<Bankcard> paramList, int paramInt)
+  public static boolean y(List<Bankcard> paramList, int paramInt)
   {
     AppMethodBeat.i(71636);
     if (paramList == null)
@@ -209,7 +209,7 @@ public final class d
         localBankcardScene.field_scene = 8;
         localArrayList.add(localBankcardScene);
       }
-      t.eFw().cY(localArrayList);
+      t.eJd().gV(localArrayList);
     }
     for (;;)
     {
@@ -225,18 +225,18 @@ public final class d
           localBankcardScene.field_scene = 12;
           localArrayList.add(localBankcardScene);
         }
-        t.eFw().cY(localArrayList);
+        t.eJd().gV(localArrayList);
       }
       else
       {
-        t.eFv().cY(paramList);
+        t.eJc().gV(paramList);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.utils.d
  * JD-Core Version:    0.7.0.1
  */

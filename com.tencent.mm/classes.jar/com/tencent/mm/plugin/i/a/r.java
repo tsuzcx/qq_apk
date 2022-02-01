@@ -2,19 +2,19 @@ package com.tencent.mm.plugin.i.a;
 
 public abstract interface r
 {
-  public abstract String Hu();
+  public abstract String HC();
   
-  public abstract String VC();
+  public abstract String VK();
   
-  public abstract int VI();
+  public abstract int VQ();
   
-  public abstract String adv();
+  public abstract String adG();
   
-  public abstract String cxL();
+  public abstract String czm();
   
-  public abstract long cxM();
+  public abstract long czn();
   
-  public abstract long cxN();
+  public abstract long czo();
   
   public abstract String getCity();
   
@@ -30,7 +30,7 @@ public abstract interface r
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.i.a.r
  * JD-Core Version:    0.7.0.1
  */

@@ -9,41 +9,41 @@ import java.util.List;
 public final class a
   implements ScreenBroadcastReceiver.a
 {
-  public static List<WeakReference<ScreenBroadcastReceiver.a>> mYL;
-  public final Object NVU;
-  public ScreenBroadcastReceiver NVV;
+  public static List<WeakReference<ScreenBroadcastReceiver.a>> ndS;
+  public final Object OsZ;
+  public ScreenBroadcastReceiver Ota;
   
   static
   {
-    AppMethodBeat.i(220101);
-    mYL = new ArrayList();
-    AppMethodBeat.o(220101);
+    AppMethodBeat.i(216855);
+    ndS = new ArrayList();
+    AppMethodBeat.o(216855);
   }
   
   public a()
   {
-    AppMethodBeat.i(220096);
-    this.NVU = new Object();
-    this.NVV = null;
-    AppMethodBeat.o(220096);
+    AppMethodBeat.i(216850);
+    this.OsZ = new Object();
+    this.Ota = null;
+    AppMethodBeat.o(216850);
   }
   
-  public static a gyo()
+  public static a gCQ()
   {
-    AppMethodBeat.i(220097);
-    a locala = a.gyq();
-    AppMethodBeat.o(220097);
+    AppMethodBeat.i(216851);
+    a locala = a.gCS();
+    AppMethodBeat.o(216851);
     return locala;
   }
   
-  public final void gyp()
+  public final void gCR()
   {
-    AppMethodBeat.i(220098);
+    AppMethodBeat.i(216852);
     Object localObject3;
-    synchronized (this.NVU)
+    synchronized (this.OsZ)
     {
       ArrayList localArrayList = new ArrayList();
-      localObject3 = mYL.iterator();
+      localObject3 = ndS.iterator();
       while (((Iterator)localObject3).hasNext())
       {
         WeakReference localWeakReference = (WeakReference)((Iterator)localObject3).next();
@@ -56,31 +56,31 @@ public final class a
     while (localIterator.hasNext())
     {
       localObject3 = (WeakReference)localIterator.next();
-      mYL.remove(localObject3);
+      ndS.remove(localObject3);
     }
-    AppMethodBeat.o(220098);
+    AppMethodBeat.o(216852);
   }
   
   public final void onScreenOff()
   {
-    AppMethodBeat.i(220099);
-    gyp();
+    AppMethodBeat.i(216853);
+    gCR();
     for (;;)
     {
       int i;
-      synchronized (this.NVU)
+      synchronized (this.OsZ)
       {
-        i = mYL.size() - 1;
+        i = ndS.size() - 1;
         if (i >= 0)
         {
-          ScreenBroadcastReceiver.a locala = (ScreenBroadcastReceiver.a)((WeakReference)mYL.get(i)).get();
+          ScreenBroadcastReceiver.a locala = (ScreenBroadcastReceiver.a)((WeakReference)ndS.get(i)).get();
           if (locala != null) {
             locala.onScreenOff();
           }
         }
         else
         {
-          AppMethodBeat.o(220099);
+          AppMethodBeat.o(216853);
           return;
         }
       }
@@ -90,24 +90,24 @@ public final class a
   
   public final void onScreenOn()
   {
-    AppMethodBeat.i(220100);
-    gyp();
+    AppMethodBeat.i(216854);
+    gCR();
     for (;;)
     {
       int i;
-      synchronized (this.NVU)
+      synchronized (this.OsZ)
       {
-        i = mYL.size() - 1;
+        i = ndS.size() - 1;
         if (i >= 0)
         {
-          ScreenBroadcastReceiver.a locala = (ScreenBroadcastReceiver.a)((WeakReference)mYL.get(i)).get();
+          ScreenBroadcastReceiver.a locala = (ScreenBroadcastReceiver.a)((WeakReference)ndS.get(i)).get();
           if (locala != null) {
             locala.onScreenOn();
           }
         }
         else
         {
-          AppMethodBeat.o(220100);
+          AppMethodBeat.o(216854);
           return;
         }
       }
@@ -117,13 +117,13 @@ public final class a
   
   static final class a
   {
-    private static final a NVW;
+    private static final a Otb;
     
     static
     {
-      AppMethodBeat.i(220095);
-      NVW = new a();
-      AppMethodBeat.o(220095);
+      AppMethodBeat.i(216849);
+      Otb = new a();
+      AppMethodBeat.o(216849);
     }
   }
 }

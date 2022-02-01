@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.wxcredit.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.wallet_core.tenpay.model.m;
 import java.util.HashMap;
 import java.util.Map;
@@ -11,7 +11,7 @@ import org.json.JSONObject;
 public final class d
   extends m
 {
-  public k EGu;
+  public k EYQ;
   
   public d(String paramString1, String paramString2)
   {
@@ -36,7 +36,7 @@ public final class d
   {
     boolean bool = true;
     AppMethodBeat.i(72304);
-    ad.d("Micromsg.NetSceneTenpayCheckPwd", "errCode " + paramInt + " errMsg: " + paramString);
+    ae.d("Micromsg.NetSceneTenpayCheckPwd", "errCode " + paramInt + " errMsg: " + paramString);
     if (paramInt != 0)
     {
       AppMethodBeat.o(72304);
@@ -48,23 +48,23 @@ public final class d
       String str;
       try
       {
-        this.EGu = new k();
-        this.EGu.EGy = paramJSONObject.optInt("credit_state");
-        this.EGu.EGt = (paramJSONObject.optInt("credit_amount") / 100.0D);
-        this.EGu.EGz = (paramJSONObject.optInt("credit_usable") / 100.0D);
-        this.EGu.EGA = (paramJSONObject.optInt("bill_amount") / 100.0D);
-        this.EGu.EGB = paramJSONObject.optInt("bill_date");
-        this.EGu.EGC = (paramJSONObject.optInt("repay_amount") / 100.0D);
-        this.EGu.EGD = (paramJSONObject.optInt("repay_minimum") / 100.0D);
-        paramString = this.EGu;
+        this.EYQ = new k();
+        this.EYQ.EYU = paramJSONObject.optInt("credit_state");
+        this.EYQ.EYP = (paramJSONObject.optInt("credit_amount") / 100.0D);
+        this.EYQ.EYV = (paramJSONObject.optInt("credit_usable") / 100.0D);
+        this.EYQ.EYW = (paramJSONObject.optInt("bill_amount") / 100.0D);
+        this.EYQ.EYX = paramJSONObject.optInt("bill_date");
+        this.EYQ.EYY = (paramJSONObject.optInt("repay_amount") / 100.0D);
+        this.EYQ.EYZ = (paramJSONObject.optInt("repay_minimum") / 100.0D);
+        paramString = this.EYQ;
         if (paramJSONObject.optInt("upgrade_amount") != 1) {
           break label525;
         }
-        paramString.EGE = bool;
-        this.EGu.EGF = paramJSONObject.optInt("bill_month");
-        this.EGu.EGG = paramJSONObject.optString("repay_url");
-        this.EGu.EGH = paramJSONObject.optString("repay_lasttime");
-        this.EGu.EGK = paramJSONObject.optString("lasttime");
+        paramString.EZa = bool;
+        this.EYQ.EZb = paramJSONObject.optInt("bill_month");
+        this.EYQ.EZc = paramJSONObject.optString("repay_url");
+        this.EYQ.EZd = paramJSONObject.optString("repay_lasttime");
+        this.EYQ.EZg = paramJSONObject.optString("lasttime");
         paramString = paramJSONObject.getJSONArray("jump_url_array");
         if ((paramString == null) || (paramString.length() <= 0)) {
           break label423;
@@ -77,34 +77,34 @@ public final class d
         localJSONObject = paramString.getJSONObject(paramInt);
         str = localJSONObject.getString("jump_name");
         if ("account_rights_url".equals(str)) {
-          this.EGu.EGJ = localJSONObject.getString("jump_url");
+          this.EYQ.EZf = localJSONObject.getString("jump_url");
         } else if ("bill_url".equals(str)) {
-          this.EGu.xYQ = localJSONObject.getString("jump_url");
+          this.EYQ.yoI = localJSONObject.getString("jump_url");
         }
       }
       catch (Exception paramString)
       {
-        ad.printErrStackTrace("Micromsg.NetSceneTenpayCheckPwd", paramString, "", new Object[0]);
+        ae.printErrStackTrace("Micromsg.NetSceneTenpayCheckPwd", paramString, "", new Object[0]);
         AppMethodBeat.o(72304);
         return;
       }
       if ("card_detail_url".equals(str))
       {
-        this.EGu.EGI = localJSONObject.getString("jump_url");
+        this.EYQ.EZe = localJSONObject.getString("jump_url");
       }
       else if ("know_more_url".equals(str))
       {
-        this.EGu.EGL = localJSONObject.getString("jump_url");
+        this.EYQ.EZh = localJSONObject.getString("jump_url");
         break label518;
         label423:
         paramString = paramJSONObject.getJSONObject("appservice");
         if (paramString != null)
         {
-          this.EGu.EGM = new j();
-          this.EGu.EGM.EGx = paramString.getString("app_telephone");
-          this.EGu.EGM.nickname = paramString.getString("nickname");
-          this.EGu.EGM.username = paramString.getString("username");
-          this.EGu.EGM.url = paramString.getString("jump_url");
+          this.EYQ.EZi = new j();
+          this.EYQ.EZi.EYT = paramString.getString("app_telephone");
+          this.EYQ.EZi.nickname = paramString.getString("nickname");
+          this.EYQ.EZi.username = paramString.getString("username");
+          this.EYQ.EZi.url = paramString.getString("jump_url");
         }
         AppMethodBeat.o(72304);
         return;
@@ -119,7 +119,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wxcredit.a.d
  * JD-Core Version:    0.7.0.1
  */

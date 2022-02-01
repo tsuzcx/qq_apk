@@ -5,87 +5,87 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.az;
 
 public final class bc
 {
-  b Agg;
-  private BroadcastReceiver tmD;
-  int yzh;
+  b Axs;
+  private BroadcastReceiver txv;
+  int yPh;
   
   public bc()
   {
     AppMethodBeat.i(98916);
-    this.tmD = new BroadcastReceiver()
+    this.txv = new BroadcastReceiver()
     {
       public final void onReceive(Context paramAnonymousContext, Intent paramAnonymousIntent)
       {
         AppMethodBeat.i(98915);
         if (paramAnonymousIntent.getAction().equals("android.net.conn.CONNECTIVITY_CHANGE"))
         {
-          ad.i("MicroMsg.Sns.SnsNetworkMgr", "connChangedBroadcastReceiver");
-          int i = bc.this.yzh;
-          bc.this.yzh = bc.ecp();
-          ad.i("MicroMsg.Sns.SnsNetworkMgr", "network change current:%s change:%s", new Object[] { Integer.valueOf(i), Integer.valueOf(bc.this.yzh) });
-          if ((bc.this.yzh != i) && (bc.this.Agg != null)) {
-            bc.this.Agg.ecq();
+          ae.i("MicroMsg.Sns.SnsNetworkMgr", "connChangedBroadcastReceiver");
+          int i = bc.this.yPh;
+          bc.this.yPh = bc.efW();
+          ae.i("MicroMsg.Sns.SnsNetworkMgr", "network change current:%s change:%s", new Object[] { Integer.valueOf(i), Integer.valueOf(bc.this.yPh) });
+          if ((bc.this.yPh != i) && (bc.this.Axs != null)) {
+            bc.this.Axs.efX();
           }
         }
         AppMethodBeat.o(98915);
       }
     };
-    this.yzh = ecp();
+    this.yPh = efW();
     IntentFilter localIntentFilter = new IntentFilter();
     localIntentFilter.addAction("android.net.conn.CONNECTIVITY_CHANGE");
-    cQG();
-    aj.getContext().registerReceiver(this.tmD, localIntentFilter);
+    cTl();
+    ak.getContext().registerReceiver(this.txv, localIntentFilter);
     AppMethodBeat.o(98916);
   }
   
-  static int ecp()
+  static int efW()
   {
     AppMethodBeat.i(98917);
     int i;
-    if (!ay.isConnected(aj.getContext())) {
-      i = a.Agi;
+    if (!az.isConnected(ak.getContext())) {
+      i = a.Axu;
     }
     for (;;)
     {
-      ad.i("MicroMsg.Sns.SnsNetworkMgr", "currentNetworkStatus:%s", new Object[] { Integer.valueOf(i) });
+      ae.i("MicroMsg.Sns.SnsNetworkMgr", "currentNetworkStatus:%s", new Object[] { Integer.valueOf(i) });
       AppMethodBeat.o(98917);
       return i;
-      if (ay.isWifi(aj.getContext()))
+      if (az.isWifi(ak.getContext()))
       {
         i = a.WIFI;
       }
-      else if (ay.is2G(aj.getContext()))
+      else if (az.is2G(ak.getContext()))
       {
-        i = a.Agj;
+        i = a.Axv;
       }
-      else if (ay.is3G(aj.getContext()))
+      else if (az.is3G(ak.getContext()))
       {
-        i = a.Agk;
+        i = a.Axw;
       }
-      else if (ay.is4G(aj.getContext()))
+      else if (az.is4G(ak.getContext()))
       {
-        i = a.Agl;
+        i = a.Axx;
       }
       else
       {
-        ad.i("MicroMsg.Sns.SnsNetworkMgr", "failed and return 4g");
-        i = a.Agl;
+        ae.i("MicroMsg.Sns.SnsNetworkMgr", "failed and return 4g");
+        i = a.Axx;
       }
     }
   }
   
-  public final void cQG()
+  public final void cTl()
   {
     AppMethodBeat.i(98918);
     try
     {
-      aj.getContext().unregisterReceiver(this.tmD);
+      ak.getContext().unregisterReceiver(this.txv);
       AppMethodBeat.o(98918);
       return;
     }
@@ -95,28 +95,28 @@ public final class bc
     }
   }
   
-  public final boolean chr()
+  public final boolean ciH()
   {
-    return this.yzh == a.WIFI;
+    return this.yPh == a.WIFI;
   }
   
-  public final boolean doP()
+  public final boolean drZ()
   {
-    return (this.yzh == a.Agj) || (this.yzh == a.Agk);
+    return (this.yPh == a.Axv) || (this.yPh == a.Axw);
   }
   
   public static final class a
   {
-    static int Agi = 1;
-    static int Agj = 2;
-    static int Agk = 3;
-    static int Agl = 4;
+    static int Axu = 1;
+    static int Axv = 2;
+    static int Axw = 3;
+    static int Axx = 4;
     static int WIFI = 5;
   }
   
   static abstract interface b
   {
-    public abstract void ecq();
+    public abstract void efX();
   }
 }
 

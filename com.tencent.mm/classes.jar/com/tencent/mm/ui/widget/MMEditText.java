@@ -13,17 +13,17 @@ import android.view.inputmethod.InputConnection;
 import android.view.inputmethod.InputMethodManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.d;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.ui.f.c.b;
 import com.tencent.mm.ui.widget.edittext.PasterEditText;
 
 public class MMEditText
   extends PasterEditText
 {
-  private InputConnection KRe;
-  private boolean KRf = false;
-  private a KRg;
-  int pvG = 0;
+  private InputConnection LnC;
+  private boolean LnD = false;
+  private a LnE;
+  int pCk = 0;
   
   public MMEditText(Context paramContext)
   {
@@ -40,7 +40,7 @@ public class MMEditText
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  private void aMw(String paramString)
+  private void aNS(String paramString)
   {
     AppMethodBeat.i(143360);
     int i = getSelectionStart();
@@ -59,19 +59,19 @@ public class MMEditText
     AppMethodBeat.o(143360);
   }
   
-  public final void aXD(String paramString)
+  public final void aZf(String paramString)
   {
     AppMethodBeat.i(143355);
     getContext();
-    int m = b.cR(getText().toString(), getSelectionStart());
+    int m = b.cV(getText().toString(), getSelectionStart());
     getContext();
-    int i = b.cR(getText().toString(), getSelectionEnd());
+    int i = b.cV(getText().toString(), getSelectionEnd());
     Object localObject = new StringBuffer(getText());
     localObject = ((StringBuffer)localObject).substring(0, m) + paramString + ((StringBuffer)localObject).substring(i, ((StringBuffer)localObject).length());
     i = -1;
     int k = i;
     int j;
-    if (d.ly(21))
+    if (d.lA(21))
     {
       InputFilter[] arrayOfInputFilter = getFilters();
       k = i;
@@ -98,7 +98,7 @@ public class MMEditText
       i = paramString.length() + m;
       if ((k > 0) && (i > k))
       {
-        ad.d("MicroMsg.MMEditText", "exceed :%s, %s", new Object[] { Integer.valueOf(k), Integer.valueOf(i) });
+        ae.d("MicroMsg.MMEditText", "exceed :%s, %s", new Object[] { Integer.valueOf(k), Integer.valueOf(i) });
         AppMethodBeat.o(143355);
         return;
       }
@@ -109,19 +109,34 @@ public class MMEditText
     }
   }
   
+  public final void fPJ()
+  {
+    AppMethodBeat.i(193764);
+    if (getInputConnection() != null)
+    {
+      getInputConnection().sendKeyEvent(new KeyEvent(0, 67));
+      getInputConnection().sendKeyEvent(new KeyEvent(1, 67));
+      AppMethodBeat.o(193764);
+      return;
+    }
+    dispatchKeyEvent(new KeyEvent(0, 67));
+    dispatchKeyEvent(new KeyEvent(1, 67));
+    AppMethodBeat.o(193764);
+  }
+  
   public InputConnection getInputConnection()
   {
-    return this.KRe;
+    return this.LnC;
   }
   
   public InputConnection onCreateInputConnection(EditorInfo paramEditorInfo)
   {
     AppMethodBeat.i(143354);
-    this.KRe = super.onCreateInputConnection(paramEditorInfo);
-    if ((this.KRe != null) && (this.KRf)) {
+    this.LnC = super.onCreateInputConnection(paramEditorInfo);
+    if ((this.LnC != null) && (this.LnD)) {
       paramEditorInfo.imeOptions &= 0xBFFFFFFF;
     }
-    paramEditorInfo = this.KRe;
+    paramEditorInfo = this.LnC;
     AppMethodBeat.o(143354);
     return paramEditorInfo;
   }
@@ -129,18 +144,18 @@ public class MMEditText
   public boolean onKeyPreIme(int paramInt, KeyEvent paramKeyEvent)
   {
     AppMethodBeat.i(143361);
-    if (this.KRg == null) {}
+    if (this.LnE == null) {}
     KeyEvent.DispatcherState localDispatcherState;
     for (boolean bool = true;; bool = false)
     {
-      ad.v("MicroMsg.MMEditText", "on onKeyPreIme, listener null ? %B", new Object[] { Boolean.valueOf(bool) });
-      if ((this.KRg == null) || (paramInt != 4)) {
+      ae.v("MicroMsg.MMEditText", "on onKeyPreIme, listener null ? %B", new Object[] { Boolean.valueOf(bool) });
+      if ((this.LnE == null) || (paramInt != 4)) {
         break label191;
       }
       if ((paramKeyEvent.getAction() != 0) || (paramKeyEvent.getRepeatCount() != 0)) {
         break;
       }
-      ad.v("MicroMsg.MMEditText", "on onKeyPreIme action down");
+      ae.v("MicroMsg.MMEditText", "on onKeyPreIme action down");
       localDispatcherState = getKeyDispatcherState();
       if (localDispatcherState != null) {
         localDispatcherState.startTracking(paramKeyEvent, this);
@@ -150,15 +165,15 @@ public class MMEditText
     }
     if (paramKeyEvent.getAction() == 1)
     {
-      ad.v("MicroMsg.MMEditText", "on onKeyPreIme action up");
+      ae.v("MicroMsg.MMEditText", "on onKeyPreIme action up");
       localDispatcherState = getKeyDispatcherState();
       if (localDispatcherState != null) {
         localDispatcherState.handleUpEvent(paramKeyEvent);
       }
       if ((paramKeyEvent.isTracking()) && (!paramKeyEvent.isCanceled()))
       {
-        ad.v("MicroMsg.MMEditText", "on onKeyPreIme action up is tracking");
-        this.KRg.onBack();
+        ae.v("MicroMsg.MMEditText", "on onKeyPreIme action up is tracking");
+        this.LnE.onBack();
         paramKeyEvent = (InputMethodManager)getContext().getSystemService("input_method");
         if (paramKeyEvent != null) {
           paramKeyEvent.hideSoftInputFromWindow(getWindowToken(), 0);
@@ -177,103 +192,103 @@ public class MMEditText
   public boolean onTextContextMenuItem(int paramInt)
   {
     // Byte code:
-    //   0: ldc 245
-    //   2: invokestatic 43	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: aload_0
-    //   6: iload_1
-    //   7: invokespecial 247	com/tencent/mm/ui/widget/edittext/PasterEditText:onTextContextMenuItem	(I)Z
-    //   10: istore_2
-    //   11: iload_1
-    //   12: ldc 248
-    //   14: if_icmpne +21 -> 35
-    //   17: aload_0
-    //   18: iconst_0
-    //   19: putfield 27	com/tencent/mm/ui/widget/MMEditText:pvG	I
-    //   22: aload_0
-    //   23: invokevirtual 69	com/tencent/mm/ui/widget/MMEditText:getText	()Landroid/text/Editable;
-    //   26: invokevirtual 91	java/lang/Object:toString	()Ljava/lang/String;
-    //   29: astore_3
-    //   30: aload_0
-    //   31: aload_3
-    //   32: invokespecial 250	com/tencent/mm/ui/widget/MMEditText:aMw	(Ljava/lang/String;)V
-    //   35: ldc 245
-    //   37: invokestatic 83	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   40: iload_2
-    //   41: ireturn
-    //   42: astore_3
-    //   43: ldc 134
-    //   45: ldc 252
-    //   47: iconst_1
-    //   48: anewarray 87	java/lang/Object
-    //   51: dup
-    //   52: iconst_0
-    //   53: aload_3
-    //   54: aastore
-    //   55: invokestatic 255	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   58: iconst_0
-    //   59: istore_2
-    //   60: goto -49 -> 11
-    //   63: astore_3
-    //   64: ldc 134
-    //   66: ldc_w 257
-    //   69: iconst_1
-    //   70: anewarray 87	java/lang/Object
-    //   73: dup
-    //   74: iconst_0
-    //   75: aload_3
-    //   76: aastore
-    //   77: invokestatic 255	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   80: ldc 245
-    //   82: invokestatic 83	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   85: iconst_0
-    //   86: ireturn
-    //   87: astore 4
-    //   89: ldc 134
-    //   91: ldc_w 259
-    //   94: iconst_1
-    //   95: anewarray 87	java/lang/Object
-    //   98: dup
-    //   99: iconst_0
-    //   100: aload_0
-    //   101: getfield 27	com/tencent/mm/ui/widget/MMEditText:pvG	I
-    //   104: invokestatic 142	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   107: aastore
-    //   108: invokestatic 255	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   111: aload_0
-    //   112: getfield 27	com/tencent/mm/ui/widget/MMEditText:pvG	I
-    //   115: iconst_3
-    //   116: if_icmpge +30 -> 146
-    //   119: aload_0
-    //   120: aload_0
-    //   121: getfield 27	com/tencent/mm/ui/widget/MMEditText:pvG	I
-    //   124: iconst_1
-    //   125: iadd
-    //   126: putfield 27	com/tencent/mm/ui/widget/MMEditText:pvG	I
-    //   129: aload_0
-    //   130: ldc_w 261
-    //   133: aload_3
-    //   134: invokestatic 264	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   137: invokevirtual 268	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   140: invokespecial 250	com/tencent/mm/ui/widget/MMEditText:aMw	(Ljava/lang/String;)V
-    //   143: goto -108 -> 35
-    //   146: ldc 245
-    //   148: invokestatic 83	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   151: aload 4
-    //   153: athrow
+    //   0: ldc_w 261
+    //   3: invokestatic 43	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   6: aload_0
+    //   7: iload_1
+    //   8: invokespecial 263	com/tencent/mm/ui/widget/edittext/PasterEditText:onTextContextMenuItem	(I)Z
+    //   11: istore_2
+    //   12: iload_1
+    //   13: ldc_w 264
+    //   16: if_icmpne +21 -> 37
+    //   19: aload_0
+    //   20: iconst_0
+    //   21: putfield 27	com/tencent/mm/ui/widget/MMEditText:pCk	I
+    //   24: aload_0
+    //   25: invokevirtual 69	com/tencent/mm/ui/widget/MMEditText:getText	()Landroid/text/Editable;
+    //   28: invokevirtual 91	java/lang/Object:toString	()Ljava/lang/String;
+    //   31: astore_3
+    //   32: aload_0
+    //   33: aload_3
+    //   34: invokespecial 266	com/tencent/mm/ui/widget/MMEditText:aNS	(Ljava/lang/String;)V
+    //   37: ldc_w 261
+    //   40: invokestatic 83	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   43: iload_2
+    //   44: ireturn
+    //   45: astore_3
+    //   46: ldc 134
+    //   48: ldc_w 268
+    //   51: iconst_1
+    //   52: anewarray 87	java/lang/Object
+    //   55: dup
+    //   56: iconst_0
+    //   57: aload_3
+    //   58: aastore
+    //   59: invokestatic 271	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   62: iconst_0
+    //   63: istore_2
+    //   64: goto -52 -> 12
+    //   67: astore_3
+    //   68: ldc 134
+    //   70: ldc_w 273
+    //   73: iconst_1
+    //   74: anewarray 87	java/lang/Object
+    //   77: dup
+    //   78: iconst_0
+    //   79: aload_3
+    //   80: aastore
+    //   81: invokestatic 271	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   84: ldc_w 261
+    //   87: invokestatic 83	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   90: iconst_0
+    //   91: ireturn
+    //   92: astore 4
+    //   94: ldc 134
+    //   96: ldc_w 275
+    //   99: iconst_1
+    //   100: anewarray 87	java/lang/Object
+    //   103: dup
+    //   104: iconst_0
+    //   105: aload_0
+    //   106: getfield 27	com/tencent/mm/ui/widget/MMEditText:pCk	I
+    //   109: invokestatic 142	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   112: aastore
+    //   113: invokestatic 271	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   116: aload_0
+    //   117: getfield 27	com/tencent/mm/ui/widget/MMEditText:pCk	I
+    //   120: iconst_3
+    //   121: if_icmpge +30 -> 151
+    //   124: aload_0
+    //   125: aload_0
+    //   126: getfield 27	com/tencent/mm/ui/widget/MMEditText:pCk	I
+    //   129: iconst_1
+    //   130: iadd
+    //   131: putfield 27	com/tencent/mm/ui/widget/MMEditText:pCk	I
+    //   134: aload_0
+    //   135: ldc_w 277
+    //   138: aload_3
+    //   139: invokestatic 280	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   142: invokevirtual 284	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   145: invokespecial 266	com/tencent/mm/ui/widget/MMEditText:aNS	(Ljava/lang/String;)V
+    //   148: goto -111 -> 37
+    //   151: ldc_w 261
+    //   154: invokestatic 83	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   157: aload 4
+    //   159: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	154	0	this	MMEditText
-    //   0	154	1	paramInt	int
-    //   10	50	2	bool	boolean
-    //   29	3	3	str	String
-    //   42	12	3	localIndexOutOfBoundsException1	IndexOutOfBoundsException
-    //   63	71	3	localNullPointerException	java.lang.NullPointerException
-    //   87	65	4	localIndexOutOfBoundsException2	IndexOutOfBoundsException
+    //   0	160	0	this	MMEditText
+    //   0	160	1	paramInt	int
+    //   11	53	2	bool	boolean
+    //   31	3	3	str	String
+    //   45	13	3	localIndexOutOfBoundsException1	IndexOutOfBoundsException
+    //   67	72	3	localNullPointerException	java.lang.NullPointerException
+    //   92	66	4	localIndexOutOfBoundsException2	IndexOutOfBoundsException
     // Exception table:
     //   from	to	target	type
-    //   5	11	42	java/lang/IndexOutOfBoundsException
-    //   5	11	63	java/lang/NullPointerException
-    //   30	35	87	java/lang/IndexOutOfBoundsException
+    //   6	12	45	java/lang/IndexOutOfBoundsException
+    //   6	12	67	java/lang/NullPointerException
+    //   32	37	92	java/lang/IndexOutOfBoundsException
   }
   
   public boolean requestFocus(int paramInt, Rect paramRect)
@@ -287,7 +302,7 @@ public class MMEditText
     }
     catch (IllegalStateException paramRect)
     {
-      ad.e("MicroMsg.MMEditText", "[requestFocus] error:%s", new Object[] { paramRect });
+      ae.e("MicroMsg.MMEditText", "[requestFocus] error:%s", new Object[] { paramRect });
       AppMethodBeat.o(143356);
     }
     return false;
@@ -295,12 +310,12 @@ public class MMEditText
   
   public void setBackListener(a parama)
   {
-    this.KRg = parama;
+    this.LnE = parama;
   }
   
   public void setEnableSendBtn(boolean paramBoolean)
   {
-    this.KRf = paramBoolean;
+    this.LnD = paramBoolean;
   }
   
   public void setSelection(int paramInt)
@@ -314,7 +329,7 @@ public class MMEditText
     }
     catch (IndexOutOfBoundsException localIndexOutOfBoundsException)
     {
-      ad.printErrStackTrace("MicroMsg.MMEditText", localIndexOutOfBoundsException, "IndexOutOfBoundsExceptionindex = ".concat(String.valueOf(paramInt)), new Object[0]);
+      ae.printErrStackTrace("MicroMsg.MMEditText", localIndexOutOfBoundsException, "IndexOutOfBoundsExceptionindex = ".concat(String.valueOf(paramInt)), new Object[0]);
       AppMethodBeat.o(143357);
     }
   }

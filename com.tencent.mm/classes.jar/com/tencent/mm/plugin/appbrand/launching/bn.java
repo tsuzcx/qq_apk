@@ -8,7 +8,7 @@ import android.os.Parcelable;
 import android.os.PersistableBundle;
 import com.tencent.luggage.sdk.launching.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.k.b;
+import com.tencent.mm.ah.k.b;
 import com.tencent.mm.compatible.util.q;
 import com.tencent.mm.modelappbrand.LaunchParamsOptional;
 import com.tencent.mm.plugin.appbrand.api.d;
@@ -20,39 +20,38 @@ import com.tencent.mm.plugin.appbrand.jsapi.fakenative.OpenBusinessViewUtil.a;
 import com.tencent.mm.plugin.appbrand.launching.params.LaunchParcel;
 import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
 import com.tencent.mm.plugin.appbrand.report.l;
-import com.tencent.mm.plugin.appbrand.service.o;
-import com.tencent.mm.plugin.appbrand.service.o.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.sdk.platformtools.i;
+import com.tencent.mm.plugin.appbrand.service.p.a;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.j;
 import com.tencent.mm.ui.base.h;
 import d.n.n;
 import junit.framework.Assert;
 
 public final class bn
-  implements o
+  implements com.tencent.mm.plugin.appbrand.service.p
 {
-  private com.tencent.mm.ui.base.p fNb;
-  private boolean kLU = false;
+  private com.tencent.mm.ui.base.p fPj;
+  private boolean kPk = false;
   
   private void a(Context paramContext, DialogInterface.OnCancelListener paramOnCancelListener)
   {
     AppMethodBeat.i(47385);
-    aOs();
+    aOP();
     paramContext.getString(2131755906);
-    this.fNb = h.b(paramContext, paramContext.getString(2131755936), true, paramOnCancelListener);
+    this.fPj = h.b(paramContext, paramContext.getString(2131755936), true, paramOnCancelListener);
     AppMethodBeat.o(47385);
   }
   
-  private void aOs()
+  private void aOP()
   {
     AppMethodBeat.i(47386);
-    if (this.fNb != null)
+    if (this.fPj != null)
     {
-      this.fNb.dismiss();
-      this.fNb = null;
+      this.fPj.dismiss();
+      this.fPj = null;
     }
     AppMethodBeat.o(47386);
   }
@@ -60,13 +59,13 @@ public final class bn
   public final void a(Context paramContext, com.tencent.mm.plugin.appbrand.api.f paramf)
   {
     AppMethodBeat.i(47378);
-    Object localObject = v.lHs;
+    Object localObject = v.lLS;
     int i;
     try
     {
       localObject = (CharSequence)paramf.username;
       if (localObject == null) {
-        break label637;
+        break label749;
       }
       if (((CharSequence)localObject).length() != 0) {
         break label121;
@@ -75,17 +74,22 @@ public final class bn
     catch (Exception paramContext)
     {
       label68:
-      if (!i.IS_FLAVOR_RED) {
-        break label614;
+      if (!j.IS_FLAVOR_RED) {
+        break label726;
       }
     }
+    label121:
+    com.tencent.mm.plugin.appbrand.launching.e.f localf;
+    label131:
+    label158:
+    LaunchParcel localLaunchParcel;
     if (i != 0)
     {
       localObject = (CharSequence)paramf.appId;
       if (localObject != null)
       {
         if (((CharSequence)localObject).length() == 0) {
-          break label642;
+          break label754;
         }
         for (;;)
         {
@@ -98,7 +102,6 @@ public final class bn
           paramContext = (Throwable)new RuntimeException((Throwable)paramContext);
           AppMethodBeat.o(47378);
           throw paramContext;
-          label121:
           i = 0;
           break;
           i = 0;
@@ -107,32 +110,28 @@ public final class bn
     }
     else
     {
-      label131:
       localObject = (CharSequence)paramf.username;
       if (localObject == null) {
-        break label647;
+        break label759;
       }
       if (((CharSequence)localObject).length() != 0) {
-        break label652;
+        break label764;
       }
-      break label647;
-    }
-    for (;;)
-    {
+      break label759;
       if (i == 0)
       {
         localObject = paramf.username;
         d.g.b.p.g(localObject, "username");
-        if (!n.nA((String)localObject, "@app"))
+        if (!n.nG((String)localObject, "@app"))
         {
           paramContext = (Throwable)new IllegalArgumentException("Invalid weapp username " + paramf.username);
           AppMethodBeat.o(47378);
           throw paramContext;
         }
       }
-      if ((!j.a.rQ(paramf.hQh)) && (!j.a.oN(paramf.hQh)))
+      if ((!j.a.rT(paramf.hSZ)) && (!j.a.oQ(paramf.hSZ)))
       {
-        paramContext = (Throwable)new IllegalArgumentException("Invalid weapp versionType " + paramf.hQh);
+        paramContext = (Throwable)new IllegalArgumentException("Invalid weapp versionType " + paramf.hSZ);
         AppMethodBeat.o(47378);
         throw paramContext;
       }
@@ -142,63 +141,108 @@ public final class bn
         AppMethodBeat.o(47378);
         throw paramContext;
       }
-      com.tencent.mm.plugin.appbrand.launching.e.f localf = com.tencent.mm.plugin.appbrand.launching.e.f.lNC;
-      LaunchParcel localLaunchParcel = new LaunchParcel();
+      localf = com.tencent.mm.plugin.appbrand.launching.e.f.lSd;
+      localLaunchParcel = new LaunchParcel();
       localLaunchParcel.username = paramf.username;
       localLaunchParcel.appId = paramf.appId;
       localLaunchParcel.version = paramf.version;
-      localLaunchParcel.hQh = paramf.hQh;
-      localLaunchParcel.jCN = paramf.jCN;
-      localObject = paramf.jCO;
+      localLaunchParcel.hSZ = paramf.hSZ;
+      localLaunchParcel.jFL = paramf.jFL;
+      localObject = paramf.jFM;
       if (localObject != null)
       {
-        localObject = ((d)localObject).aYt();
-        localLaunchParcel.jXy = ((String)localObject);
-        localLaunchParcel.jXx = paramf.jCP;
+        localObject = ((d)localObject).aYO();
+        label405:
+        localLaunchParcel.kaN = ((String)localObject);
+        localLaunchParcel.kaM = paramf.jFN;
         localObject = new AppBrandStatObject();
         ((AppBrandStatObject)localObject).scene = paramf.scene;
-        ((AppBrandStatObject)localObject).dkh = paramf.dkh;
-        ((AppBrandStatObject)localObject).dJQ = paramf.jCQ;
-        ((AppBrandStatObject)localObject).dJR = paramf.jCR;
-        localLaunchParcel.lMZ = ((AppBrandStatObject)localObject);
-        localLaunchParcel.cmv = paramf.jCW;
-        if (paramf.jCS == null) {
-          break label608;
+        ((AppBrandStatObject)localObject).dlj = paramf.dlj;
+        ((AppBrandStatObject)localObject).dLf = paramf.jFO;
+        ((AppBrandStatObject)localObject).dLg = paramf.jFP;
+        localLaunchParcel.lRA = ((AppBrandStatObject)localObject);
+        localLaunchParcel.cmx = paramf.jFU;
+        if (paramf.jFQ == null) {
+          break label710;
         }
-      }
-      label608:
-      for (localObject = (a)new v.a(paramf);; localObject = null)
-      {
-        localLaunchParcel.lNc = ((a)localObject);
-        localLaunchParcel.jCT = paramf.jCT;
-        localLaunchParcel.jCX = paramf.jCX;
+        localObject = (a)new v.a(paramf);
+        label502:
+        localLaunchParcel.lRD = ((a)localObject);
+        localLaunchParcel.jFR = paramf.jFR;
+        localLaunchParcel.jFV = paramf.jFV;
         localLaunchParcel.launchMode = paramf.launchMode;
         localObject = new PersistableBundle();
-        ((PersistableBundle)localObject).putString("KEY_OPENSDK_AD_TRACE_KEY", paramf.jCV);
-        localLaunchParcel.lNe = ((PersistableBundle)localObject);
-        localLaunchParcel.jCZ = paramf.jCZ;
-        localLaunchParcel.lNf = ((Parcelable)paramf.jDa);
+        ((PersistableBundle)localObject).putString("KEY_OPENSDK_AD_TRACE_KEY", paramf.jFT);
+        localLaunchParcel.lRF = ((PersistableBundle)localObject);
+        localLaunchParcel.jFX = paramf.jFX;
+        localLaunchParcel.lRG = ((Parcelable)paramf.jFY);
+        localObject = (CharSequence)paramf.cmw;
+        if (localObject == null) {
+          break label769;
+        }
+        if (((CharSequence)localObject).length() != 0) {
+          break label716;
+        }
+        break label769;
+        label612:
+        if (i != 0)
+        {
+          localObject = (CharSequence)paramf.cmv;
+          if (localObject == null) {
+            break label774;
+          }
+          if (((CharSequence)localObject).length() != 0) {
+            break label721;
+          }
+          break label774;
+        }
+      }
+    }
+    label769:
+    label774:
+    for (;;)
+    {
+      if (localLaunchParcel.lRB == null) {
+        localLaunchParcel.lRB = new LaunchParamsOptional();
+      }
+      localLaunchParcel.lRB.cmw = paramf.cmw;
+      localLaunchParcel.lRB.cmv = paramf.cmv;
+      label710:
+      label716:
+      label721:
+      label726:
+      label749:
+      label754:
+      label759:
+      label764:
+      do
+      {
         localf.a(paramContext, localLaunchParcel);
         AppMethodBeat.o(47378);
         return;
         localObject = null;
+        break label405;
+        localObject = null;
+        break label502;
+        i = 0;
+        break label612;
+        i = 0;
+        continue;
+        ae.printErrStackTrace("MicroMsg.AppBrand.ExportWxaInstrumentation", (Throwable)paramContext, "", new Object[0]);
+        AppMethodBeat.o(47378);
+        return;
+        i = 1;
         break;
-      }
-      label614:
-      ad.printErrStackTrace("MicroMsg.AppBrand.ExportWxaInstrumentation", (Throwable)paramContext, "", new Object[0]);
-      AppMethodBeat.o(47378);
-      return;
-      label637:
-      i = 1;
-      break;
-      label642:
-      i = 1;
-      break label68;
-      label647:
-      i = 1;
-      continue;
-      label652:
-      i = 0;
+        i = 1;
+        break label68;
+        i = 1;
+        break label158;
+        i = 0;
+        break label158;
+        i = 1;
+        break label612;
+        i = 1;
+      } while (i != 0);
     }
   }
   
@@ -206,9 +250,9 @@ public final class bn
   {
     AppMethodBeat.i(47382);
     AppBrandLaunchReferrer localAppBrandLaunchReferrer = new AppBrandLaunchReferrer();
-    localAppBrandLaunchReferrer.jXR = 7;
+    localAppBrandLaunchReferrer.kbg = 7;
     localAppBrandLaunchReferrer.appId = paramString3;
-    localAppBrandLaunchReferrer.jXU = paramString4;
+    localAppBrandLaunchReferrer.kbj = paramString4;
     AppBrandLaunchProxyUI.a(paramContext, paramString1, null, paramString2, paramInt, 0, paramAppBrandStatObject, localAppBrandLaunchReferrer, null);
     AppMethodBeat.o(47382);
   }
@@ -233,61 +277,61 @@ public final class bn
       AppBrandLaunchProxyUI.a(paramContext, paramString1, paramString2, paramString3, paramInt1, paramInt2, paramAppBrandStatObject, localAppBrandLaunchReferrer, null);
       AppMethodBeat.o(47379);
       return;
-      localAppBrandLaunchReferrer.jXR = 4;
+      localAppBrandLaunchReferrer.kbg = 4;
       continue;
-      localAppBrandLaunchReferrer.jXR = 2;
+      localAppBrandLaunchReferrer.kbg = 2;
       continue;
-      localAppBrandLaunchReferrer.jXR = 5;
+      localAppBrandLaunchReferrer.kbg = 5;
     }
   }
   
-  public final void a(Context paramContext, final String paramString1, final String paramString2, String paramString3, final int paramInt, final o.a parama)
+  public final void a(Context paramContext, final String paramString1, final String paramString2, String paramString3, final int paramInt, final p.a parama)
   {
     AppMethodBeat.i(47384);
-    ad.i("MicroMsg.WeAppLauncher", "openBusinessViewByOpenSdk isMain[%b]", new Object[] { Boolean.valueOf(aq.isMainThread()) });
-    parama = new o.a()
+    ae.i("MicroMsg.WeAppLauncher", "openBusinessViewByOpenSdk isMain[%b]", new Object[] { Boolean.valueOf(ar.isMainThread()) });
+    parama = new p.a()
     {
-      private boolean lLT = false;
+      private boolean lQt = false;
       
-      public final void brK()
+      public final void bsv()
       {
         AppMethodBeat.i(47371);
-        if (this.lLT)
+        if (this.lQt)
         {
           AppMethodBeat.o(47371);
           return;
         }
-        this.lLT = true;
+        this.lQt = true;
         if (parama != null) {
-          parama.brK();
+          parama.bsv();
         }
         AppMethodBeat.o(47371);
       }
       
-      public final void brL()
+      public final void bsw()
       {
         AppMethodBeat.i(47372);
-        if (this.lLT)
+        if (this.lQt)
         {
           AppMethodBeat.o(47372);
           return;
         }
-        this.lLT = true;
+        this.lQt = true;
         if (parama != null) {
-          parama.brL();
+          parama.bsw();
         }
         AppMethodBeat.o(47372);
       }
     };
-    this.kLU = false;
+    this.kPk = false;
     a(paramContext, new DialogInterface.OnCancelListener()
     {
       public final void onCancel(DialogInterface paramAnonymousDialogInterface)
       {
         AppMethodBeat.i(47373);
-        ad.w("MicroMsg.WeAppLauncher", "openBusinessViewByOpenSdk, user canceled");
+        ae.w("MicroMsg.WeAppLauncher", "openBusinessViewByOpenSdk, user canceled");
         bn.a(bn.this);
-        parama.brL();
+        parama.bsw();
         OpenBusinessViewUtil.A(paramString1, paramString2, -2);
         AppMethodBeat.o(47373);
       }
@@ -297,14 +341,14 @@ public final class bn
       public final void ah(int paramAnonymousInt, String paramAnonymousString)
       {
         AppMethodBeat.i(47375);
-        ad.e("MicroMsg.WeAppLauncher", "openBusinessViewByOpenSdk, launch fail, CGI errCode:%d, errMsg:%s", new Object[] { Integer.valueOf(paramAnonymousInt), paramAnonymousString });
+        ae.e("MicroMsg.WeAppLauncher", "openBusinessViewByOpenSdk, launch fail, CGI errCode:%d, errMsg:%s", new Object[] { Integer.valueOf(paramAnonymousInt), paramAnonymousString });
         bn.b(bn.this);
-        parama.brL();
+        parama.bsw();
         OpenBusinessViewUtil.A(paramString1, paramString2, -3);
         AppMethodBeat.o(47375);
       }
       
-      public final void da(String paramAnonymousString1, String paramAnonymousString2)
+      public final void dc(String paramAnonymousString1, String paramAnonymousString2)
       {
         AppMethodBeat.i(47374);
         bn.b(bn.this);
@@ -313,31 +357,31 @@ public final class bn
           AppMethodBeat.o(47374);
           return;
         }
-        if (bt.isNullOrNil(paramAnonymousString1))
+        if (bu.isNullOrNil(paramAnonymousString1))
         {
-          ad.e("MicroMsg.WeAppLauncher", "openBusinessViewByOpenSdk, invalid businessType");
-          parama.brL();
+          ae.e("MicroMsg.WeAppLauncher", "openBusinessViewByOpenSdk, invalid businessType");
+          parama.bsw();
           OpenBusinessViewUtil.A(paramString1, paramString2, -3);
           AppMethodBeat.o(47374);
           return;
         }
         AppBrandStatObject localAppBrandStatObject = new AppBrandStatObject();
         localAppBrandStatObject.scene = 1069;
-        localAppBrandStatObject.dkh = paramString1;
+        localAppBrandStatObject.dlj = paramString1;
         AppBrandLaunchReferrer localAppBrandLaunchReferrer = new AppBrandLaunchReferrer();
         localAppBrandLaunchReferrer.appId = paramString1;
-        localAppBrandLaunchReferrer.jXR = 4;
+        localAppBrandLaunchReferrer.kbg = 4;
         localAppBrandLaunchReferrer.businessType = paramString2;
         localAppBrandLaunchReferrer.sourceType = 5;
-        if (AppBrandLaunchProxyUI.a(aj.getContext(), null, paramAnonymousString1, paramAnonymousString2, paramInt, -1, localAppBrandStatObject, localAppBrandLaunchReferrer, null))
+        if (AppBrandLaunchProxyUI.a(ak.getContext(), null, paramAnonymousString1, paramAnonymousString2, paramInt, -1, localAppBrandStatObject, localAppBrandLaunchReferrer, null))
         {
-          ad.i("MicroMsg.WeAppLauncher", "openBusinessViewByOpenSdk, launch success");
-          parama.brK();
+          ae.i("MicroMsg.WeAppLauncher", "openBusinessViewByOpenSdk, launch success");
+          parama.bsv();
           AppMethodBeat.o(47374);
           return;
         }
-        ad.e("MicroMsg.WeAppLauncher", "openBusinessViewByOpenSdk, launch fail");
-        parama.brL();
+        ae.e("MicroMsg.WeAppLauncher", "openBusinessViewByOpenSdk, launch fail");
+        parama.bsw();
         OpenBusinessViewUtil.A(paramString1, paramString2, -3);
         AppMethodBeat.o(47374);
       }
@@ -348,13 +392,13 @@ public final class bn
   public final void a(final Context paramContext, final String paramString1, final String paramString2, final String paramString3, String paramString4, final int paramInt1, final int paramInt2)
   {
     AppMethodBeat.i(47383);
-    this.kLU = false;
+    this.kPk = false;
     a(paramContext, new DialogInterface.OnCancelListener()
     {
       public final void onCancel(DialogInterface paramAnonymousDialogInterface)
       {
         AppMethodBeat.i(47368);
-        ad.w("MicroMsg.WeAppLauncher", "openBusinessViewByWebView, user canceled");
+        ae.w("MicroMsg.WeAppLauncher", "openBusinessViewByWebView, user canceled");
         bn.a(bn.this);
         OpenBusinessViewUtil.B(paramString3, null, -3);
         AppMethodBeat.o(47368);
@@ -365,13 +409,13 @@ public final class bn
       public final void ah(int paramAnonymousInt, String paramAnonymousString)
       {
         AppMethodBeat.i(47370);
-        ad.e("MicroMsg.WeAppLauncher", "openBusinessViewByWebView, launch fail, CGI errCode:%d, errMsg:%s", new Object[] { Integer.valueOf(paramAnonymousInt), paramAnonymousString });
+        ae.e("MicroMsg.WeAppLauncher", "openBusinessViewByWebView, launch fail, CGI errCode:%d, errMsg:%s", new Object[] { Integer.valueOf(paramAnonymousInt), paramAnonymousString });
         bn.b(bn.this);
         OpenBusinessViewUtil.B(paramString3, null, -2);
         AppMethodBeat.o(47370);
       }
       
-      public final void da(String paramAnonymousString1, String paramAnonymousString2)
+      public final void dc(String paramAnonymousString1, String paramAnonymousString2)
       {
         AppMethodBeat.i(47369);
         bn.b(bn.this);
@@ -380,29 +424,29 @@ public final class bn
           AppMethodBeat.o(47369);
           return;
         }
-        if (bt.isNullOrNil(paramAnonymousString1))
+        if (bu.isNullOrNil(paramAnonymousString1))
         {
-          ad.e("MicroMsg.WeAppLauncher", "openBusinessViewByWebView, invalid businessType");
+          ae.e("MicroMsg.WeAppLauncher", "openBusinessViewByWebView, invalid businessType");
           OpenBusinessViewUtil.B(paramString3, null, -4);
           AppMethodBeat.o(47369);
           return;
         }
         AppBrandStatObject localAppBrandStatObject = new AppBrandStatObject();
         localAppBrandStatObject.scene = 1055;
-        localAppBrandStatObject.dkh = (q.encode(bt.nullAsNil(paramString1)) + ":" + paramString2 + ":" + paramInt2);
+        localAppBrandStatObject.dlj = (q.encode(bu.nullAsNil(paramString1)) + ":" + paramString2 + ":" + paramInt2);
         AppBrandLaunchReferrer localAppBrandLaunchReferrer = new AppBrandLaunchReferrer();
         localAppBrandLaunchReferrer.appId = paramString2;
-        localAppBrandLaunchReferrer.jXR = 2;
+        localAppBrandLaunchReferrer.kbg = 2;
         localAppBrandLaunchReferrer.url = paramString1;
         localAppBrandLaunchReferrer.businessType = paramString3;
         localAppBrandLaunchReferrer.sourceType = 5;
         if (AppBrandLaunchProxyUI.a(paramContext, null, paramAnonymousString1, paramAnonymousString2, paramInt1, -1, localAppBrandStatObject, localAppBrandLaunchReferrer, null))
         {
-          ad.i("MicroMsg.WeAppLauncher", "openBusinessViewByWebView, launch success");
+          ae.i("MicroMsg.WeAppLauncher", "openBusinessViewByWebView, launch success");
           AppMethodBeat.o(47369);
           return;
         }
-        ad.e("MicroMsg.WeAppLauncher", "openBusinessViewByWebView, launch fail");
+        ae.e("MicroMsg.WeAppLauncher", "openBusinessViewByWebView, launch fail");
         OpenBusinessViewUtil.B(paramString3, null, -1);
         AppMethodBeat.o(47369);
       }
@@ -421,44 +465,44 @@ public final class bn
       if (i == 0) {
         break label285;
       }
-      ad.d("MicroMsg.WeAppLauncher", "launchByOpenSdkAppMessage kf guide msg");
+      ae.d("MicroMsg.WeAppLauncher", "launchByOpenSdkAppMessage kf guide msg");
       localAppBrandStatObject.scene = 1157;
-      localAppBrandStatObject.dkh = paramString1;
+      localAppBrandStatObject.dlj = paramString1;
       label58:
-      localAppBrandStatObject.dkh = (bt.nullAsNil(paramb.appId) + ":" + bt.nullAsNil(q.encode(paramb.url)));
+      localAppBrandStatObject.dlj = (bu.nullAsNil(paramb.appId) + ":" + bu.nullAsNil(q.encode(paramb.url)));
       if (!paramBoolean) {
         break label342;
       }
       i = 2;
       label112:
-      localAppBrandStatObject.dJQ = i;
+      localAppBrandStatObject.dLf = i;
       paramBundle = paramString2;
       if (paramBoolean) {
         paramBundle = String.format("%s:%s", new Object[] { paramString1, paramString2 });
       }
-      localAppBrandStatObject.dJR = paramBundle;
+      localAppBrandStatObject.dLg = paramBundle;
       paramString2 = new LaunchParamsOptional();
-      if (bt.isNullOrNil(paramb.hCt)) {
+      if (bu.isNullOrNil(paramb.hFi)) {
         break label348;
       }
-      paramString2.cmt = paramString1;
-      paramString2.cmu = paramb.hCt;
+      paramString2.cmv = paramString1;
+      paramString2.cmw = paramb.hFi;
     }
     label285:
     label342:
     label348:
-    for (localAppBrandStatObject.dkh += ":1";; localAppBrandStatObject.dkh += ":0")
+    for (localAppBrandStatObject.dlj += ":1";; localAppBrandStatObject.dlj += ":0")
     {
       paramString1 = new AppBrandLaunchReferrer();
-      paramString1.jXR = 4;
+      paramString1.kbg = 4;
       paramString1.appId = paramb.appId;
-      AppBrandLaunchProxyUI.a(paramContext, paramb.hCn, paramb.hCo, paramb.hCm, paramb.hCz, paramb.hCA, localAppBrandStatObject, paramString1, paramString2);
+      AppBrandLaunchProxyUI.a(paramContext, paramb.hFc, paramb.hFd, paramb.hFb, paramb.hFr, paramb.hFs, localAppBrandStatObject, paramString1, paramString2);
       AppMethodBeat.o(175004);
       return;
       i = 0;
       break;
       localAppBrandStatObject.scene = 1036;
-      localAppBrandStatObject.dkh = (bt.nullAsNil(paramb.appId) + ":" + bt.nullAsNil(q.encode(paramb.url)));
+      localAppBrandStatObject.dlj = (bu.nullAsNil(paramb.appId) + ":" + bu.nullAsNil(q.encode(paramb.url)));
       break label58;
       i = 1;
       break label112;
@@ -468,23 +512,23 @@ public final class bn
   public final void b(Context paramContext, String paramString1, String paramString2, String paramString3, int paramInt1, String paramString4, int paramInt2)
   {
     AppMethodBeat.i(47376);
-    if (bt.isNullOrNil(paramString3))
+    if (bu.isNullOrNil(paramString3))
     {
       AppMethodBeat.o(47376);
       return;
     }
-    if ((bt.isNullOrNil(paramString3)) || (bt.isNullOrNil(paramString2)))
+    if ((bu.isNullOrNil(paramString3)) || (bu.isNullOrNil(paramString2)))
     {
-      ad.e("MicroMsg.WeAppLauncher", "targetAppId %s referrerAppId %s, Null Or Nil");
+      ae.e("MicroMsg.WeAppLauncher", "targetAppId %s referrerAppId %s, Null Or Nil");
       AppMethodBeat.o(47376);
       return;
     }
     AppBrandStatObject localAppBrandStatObject = new AppBrandStatObject();
     localAppBrandStatObject.scene = 1055;
-    localAppBrandStatObject.dkh = (q.encode(bt.nullAsNil(paramString1)) + ":" + paramString2 + ":" + paramInt2);
+    localAppBrandStatObject.dlj = (q.encode(bu.nullAsNil(paramString1)) + ":" + paramString2 + ":" + paramInt2);
     AppBrandLaunchReferrer localAppBrandLaunchReferrer = new AppBrandLaunchReferrer();
     localAppBrandLaunchReferrer.appId = paramString2;
-    localAppBrandLaunchReferrer.jXR = 2;
+    localAppBrandLaunchReferrer.kbg = 2;
     localAppBrandLaunchReferrer.url = paramString1;
     AppBrandLaunchProxyUI.a(paramContext, null, paramString3, paramString4, paramInt1, -1, localAppBrandStatObject, localAppBrandLaunchReferrer, null);
     Assert.assertTrue(true);
@@ -507,31 +551,31 @@ public final class bn
         break label488;
       }
       localAppBrandStatObject.scene = 1036;
-      localAppBrandStatObject.dkh = (bt.nullAsNil(paramb.appId) + ":" + bt.nullAsNil(q.encode(paramb.url)));
+      localAppBrandStatObject.dlj = (bu.nullAsNil(paramb.appId) + ":" + bu.nullAsNil(q.encode(paramb.url)));
       if (!paramBoolean) {
         break label450;
       }
       j = 2;
-      localAppBrandStatObject.dJQ = j;
+      localAppBrandStatObject.dLf = j;
       str = paramString2;
       if (paramBoolean) {
         str = String.format("%s:%s", new Object[] { paramString1, paramString2 });
       }
-      localAppBrandStatObject.dJR = str;
-      ad.i("MicroMsg.WeAppLauncher", "launchWeishiVideoMiniProgram, from opensdk appmsg, scene:%s", new Object[] { Integer.valueOf(localAppBrandStatObject.scene) });
-      if (bt.isNullOrNil(paramb.hCt)) {
+      localAppBrandStatObject.dLg = str;
+      ae.i("MicroMsg.WeAppLauncher", "launchWeishiVideoMiniProgram, from opensdk appmsg, scene:%s", new Object[] { Integer.valueOf(localAppBrandStatObject.scene) });
+      if (bu.isNullOrNil(paramb.hFi)) {
         break label456;
       }
-      localAppBrandStatObject.dkh += ":1";
+      localAppBrandStatObject.dlj += ":1";
       label221:
       localAppBrandLaunchReferrer.appId = paramb.appId;
-      localAppBrandLaunchReferrer.jXR = 4;
-      if (!bt.isNullOrNil(paramb.hCt))
+      localAppBrandLaunchReferrer.kbg = 4;
+      if (!bu.isNullOrNil(paramb.hFi))
       {
-        localLaunchParamsOptional.cmt = paramString1;
-        localLaunchParamsOptional.cmu = paramb.hCt;
+        localLaunchParamsOptional.cmv = paramString1;
+        localLaunchParamsOptional.cmw = paramb.hFi;
       }
-      if ("wxfe02ecfe70800f46".equalsIgnoreCase(paramb.hCo))
+      if ("wxfe02ecfe70800f46".equalsIgnoreCase(paramb.hFd))
       {
         paramString1 = new AppBrandWeishiParams();
         if (i == 0) {
@@ -542,16 +586,16 @@ public final class bn
     label663:
     for (int i = 1;; i = 0)
     {
-      paramString1.hyq = i;
+      paramString1.hBe = i;
       paramString1.thumbUrl = paramBundle.getString("stat_weishi_thumb_url", null);
-      paramString1.jYq = paramBundle.getString("stat_weishi_thumb_path", null);
-      paramString1.jYr = paramBundle.getString("stat_weishi_msg_img_path", null);
+      paramString1.kbF = paramBundle.getString("stat_weishi_thumb_path", null);
+      paramString1.kbG = paramBundle.getString("stat_weishi_msg_img_path", null);
       paramString1.appId = paramBundle.getString("stat_weishi_app_id", null);
       paramString1.appName = paramBundle.getString("stat_weishi_app_name", null);
-      paramString1.jYs = paramBundle.getString("stat_weishi_source_username", null);
-      localLaunchParamsOptional.cmw = paramString1;
-      ad.i("MicroMsg.WeAppLauncher", "launchWeishiVideoMiniProgram, weishi params:%s", new Object[] { paramString1 });
-      AppBrandLaunchProxyUI.a(paramContext, paramb.hCn, paramb.hCo, paramb.hCm, paramb.hCz, paramb.hCA, localAppBrandStatObject, localAppBrandLaunchReferrer, localLaunchParamsOptional);
+      paramString1.kbH = paramBundle.getString("stat_weishi_source_username", null);
+      localLaunchParamsOptional.cmy = paramString1;
+      ae.i("MicroMsg.WeAppLauncher", "launchWeishiVideoMiniProgram, weishi params:%s", new Object[] { paramString1 });
+      AppBrandLaunchProxyUI.a(paramContext, paramb.hFc, paramb.hFd, paramb.hFb, paramb.hFr, paramb.hFs, localAppBrandStatObject, localAppBrandLaunchReferrer, localLaunchParamsOptional);
       AppMethodBeat.o(47381);
       return;
       i = 0;
@@ -560,20 +604,20 @@ public final class bn
       j = 1;
       break label115;
       label456:
-      localAppBrandStatObject.dkh += ":0";
+      localAppBrandStatObject.dlj += ":0";
       break label221;
       label488:
-      str = paramb.hCs;
+      str = paramb.hFh;
       if (paramBoolean) {
         localAppBrandStatObject.scene = 1008;
       }
-      for (localAppBrandStatObject.dkh = (paramString1 + ":" + paramString2 + ":" + str);; localAppBrandStatObject.dkh = (paramString2 + ":" + str))
+      for (localAppBrandStatObject.dlj = (paramString1 + ":" + paramString2 + ":" + str);; localAppBrandStatObject.dlj = (paramString2 + ":" + str))
       {
-        localAppBrandStatObject.dJQ = l.l(localAppBrandStatObject.scene, paramBundle);
-        localAppBrandStatObject.dJR = l.m(localAppBrandStatObject.scene, paramBundle);
-        ad.i("MicroMsg.WeAppLauncher", "launchWeishiVideoMiniProgram, from chatting appmsg, scene:%s", new Object[] { Integer.valueOf(localAppBrandStatObject.scene) });
+        localAppBrandStatObject.dLf = l.l(localAppBrandStatObject.scene, paramBundle);
+        localAppBrandStatObject.dLg = l.m(localAppBrandStatObject.scene, paramBundle);
+        ae.i("MicroMsg.WeAppLauncher", "launchWeishiVideoMiniProgram, from chatting appmsg, scene:%s", new Object[] { Integer.valueOf(localAppBrandStatObject.scene) });
         localAppBrandLaunchReferrer.appId = paramb.appId;
-        localAppBrandLaunchReferrer.jXR = 6;
+        localAppBrandLaunchReferrer.kbg = 6;
         break;
         localAppBrandStatObject.scene = 1007;
       }

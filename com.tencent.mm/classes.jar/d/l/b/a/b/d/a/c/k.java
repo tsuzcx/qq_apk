@@ -8,14 +8,14 @@ import java.util.Collection;
 
 public final class k
 {
-  public final h NeP;
-  public final Collection<a.a> NeQ;
+  public final h NBU;
+  public final Collection<a.a> NBV;
   
   public k(h paramh, Collection<? extends a.a> paramCollection)
   {
     AppMethodBeat.i(57765);
-    this.NeP = paramh;
-    this.NeQ = paramCollection;
+    this.NBU = paramh;
+    this.NBV = paramCollection;
     AppMethodBeat.o(57765);
   }
   
@@ -27,7 +27,7 @@ public final class k
       if ((paramObject instanceof k))
       {
         paramObject = (k)paramObject;
-        if ((!p.i(this.NeP, paramObject.NeP)) || (!p.i(this.NeQ, paramObject.NeQ))) {}
+        if ((!p.i(this.NBU, paramObject.NBU)) || (!p.i(this.NBV, paramObject.NBV))) {}
       }
     }
     else
@@ -43,11 +43,11 @@ public final class k
   {
     int j = 0;
     AppMethodBeat.i(57767);
-    Object localObject = this.NeP;
+    Object localObject = this.NBU;
     if (localObject != null) {}
     for (int i = localObject.hashCode();; i = 0)
     {
-      localObject = this.NeQ;
+      localObject = this.NBV;
       if (localObject != null) {
         j = localObject.hashCode();
       }
@@ -59,7 +59,7 @@ public final class k
   public final String toString()
   {
     AppMethodBeat.i(57766);
-    String str = "NullabilityQualifierWithApplicability(nullabilityQualifier=" + this.NeP + ", qualifierApplicabilityTypes=" + this.NeQ + ")";
+    String str = "NullabilityQualifierWithApplicability(nullabilityQualifier=" + this.NBU + ", qualifierApplicabilityTypes=" + this.NBV + ")";
     AppMethodBeat.o(57766);
     return str;
   }

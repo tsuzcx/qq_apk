@@ -2,41 +2,41 @@ package com.tencent.mm.plugin.card.model.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.card.model.a.j;
-import com.tencent.mm.protocal.protobuf.bed;
-import com.tencent.mm.protocal.protobuf.bee;
-import com.tencent.mm.protocal.protobuf.cvc;
-import com.tencent.mm.protocal.protobuf.cvp;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.bet;
+import com.tencent.mm.protocal.protobuf.beu;
+import com.tencent.mm.protocal.protobuf.cvw;
+import com.tencent.mm.protocal.protobuf.cwj;
+import com.tencent.mm.sdk.platformtools.ae;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/card/model/v3/CgiGetMktCardHomePageV3;", "Lcom/tencent/mm/plugin/card/model/v2/CommonCardCgi;", "Lcom/tencent/mm/protocal/protobuf/GetMktCardHomePageV2Response;", "offset", "", "reqNum", "(II)V", "Companion", "plugin-card_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/card/model/v3/CgiGetMktCardHomePageV3;", "Lcom/tencent/mm/plugin/card/model/v2/CommonCardCgi;", "Lcom/tencent/mm/protocal/protobuf/GetMktCardHomePageV2Response;", "offset", "", "reqNum", "(II)V", "Companion", "plugin-card_release"})
 public final class c
-  extends j<bee>
+  extends j<beu>
 {
   private static final String TAG = "MicroMsg.CgiGetMktCardHomePageV3";
-  public static final a oBp;
+  public static final a oHR;
   
   static
   {
-    AppMethodBeat.i(215443);
-    oBp = new a((byte)0);
+    AppMethodBeat.i(218404);
+    oHR = new a((byte)0);
     TAG = "MicroMsg.CgiGetMktCardHomePageV3";
-    AppMethodBeat.o(215443);
+    AppMethodBeat.o(218404);
   }
   
   public c(int paramInt)
   {
-    AppMethodBeat.i(215442);
-    bed localbed = new bed();
-    bee localbee = new bee();
-    localbed.offset = paramInt;
-    localbed.FRn = 10;
-    a((cvc)localbed, (cvp)localbee, 1701, "/cgi-bin/mmpay-bin/mktgetmktcardhomepagev2");
-    ad.i(TAG, "offset: " + paramInt + ", reqnum: 10");
-    AppMethodBeat.o(215442);
+    AppMethodBeat.i(218403);
+    bet localbet = new bet();
+    beu localbeu = new beu();
+    localbet.offset = paramInt;
+    localbet.GjM = 10;
+    a((cvw)localbet, (cwj)localbeu, 1701, "/cgi-bin/mmpay-bin/mktgetmktcardhomepagev2");
+    ae.i(TAG, "offset: " + paramInt + ", reqnum: 10");
+    AppMethodBeat.o(218403);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/card/model/v3/CgiGetMktCardHomePageV3$Companion;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "plugin-card_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/card/model/v3/CgiGetMktCardHomePageV3$Companion;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "plugin-card_release"})
   public static final class a {}
 }
 

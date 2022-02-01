@@ -15,7 +15,7 @@ public class z
   public final void a(Context paramContext, String paramString, bq.a parama)
   {
     AppMethodBeat.i(83086);
-    paramContext = com.tencent.mm.plugin.webview.luggage.c.b.Pe(paramString);
+    paramContext = com.tencent.mm.plugin.webview.luggage.c.b.PM(paramString);
     if (paramContext == null) {
       paramContext = ((d)com.tencent.mm.kernel.g.ab(d.class)).b(null, true);
     }
@@ -46,7 +46,7 @@ public class z
   
   public final void b(com.tencent.luggage.d.b<com.tencent.mm.plugin.game.luggage.f.g>.a paramb) {}
   
-  public final int ccO()
+  public final int ced()
   {
     return 1;
   }

@@ -10,9 +10,9 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.messenger.a.e;
 import com.tencent.mm.plugin.messenger.d.b;
@@ -21,10 +21,10 @@ import com.tencent.mm.plugin.messenger.d.c;
 import com.tencent.mm.plugin.messenger.d.c.a;
 import com.tencent.mm.pluginsdk.ui.span.k;
 import com.tencent.mm.protocal.protobuf.BaseResponse;
-import com.tencent.mm.protocal.protobuf.ccv;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.cdp;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.base.t;
 import com.tencent.mm.ui.widget.a.f.a;
@@ -39,54 +39,54 @@ public final class a
   extends b
   implements f
 {
-  private ProgressDialog fMu;
-  String kBv;
-  WeakReference<Context> lVh;
+  private ProgressDialog fOC;
+  String kEK;
+  WeakReference<Context> lZK;
   long msgId;
-  com.tencent.mm.plugin.messenger.b.a vKo;
-  String vKp;
-  String vKq;
-  String vKr;
-  String vKs;
-  String vKt;
+  com.tencent.mm.plugin.messenger.b.a vWs;
+  String vWt;
+  String vWu;
+  String vWv;
+  String vWw;
+  String vWx;
   
   public a(b.b paramb)
   {
     super(paramb);
-    AppMethodBeat.i(211846);
-    this.fMu = null;
-    g.aiU().a(3713, this);
-    AppMethodBeat.o(211846);
+    AppMethodBeat.i(218155);
+    this.fOC = null;
+    g.ajj().a(3713, this);
+    AppMethodBeat.o(218155);
   }
   
   static CharSequence concactSpannable(ArrayList<CharSequence> paramArrayList)
   {
-    AppMethodBeat.i(211849);
+    AppMethodBeat.i(218158);
     SpannableString localSpannableString = new SpannableString("");
     Iterator localIterator = paramArrayList.iterator();
     for (paramArrayList = localSpannableString; localIterator.hasNext(); paramArrayList = TextUtils.concat(new CharSequence[] { paramArrayList, (CharSequence)localIterator.next() })) {}
-    AppMethodBeat.o(211849);
+    AppMethodBeat.o(218158);
     return paramArrayList;
   }
   
   public final CharSequence b(final Map<String, String> paramMap, final String paramString, final Bundle paramBundle, final WeakReference<Context> paramWeakReference, final WeakReference<NeatTextView> paramWeakReference1)
   {
-    AppMethodBeat.i(211848);
+    AppMethodBeat.i(218157);
     if (paramMap == null)
     {
-      AppMethodBeat.o(211848);
+      AppMethodBeat.o(218157);
       return null;
     }
     if (paramBundle != null) {}
     for (final String str1 = paramBundle.getString("conv_talker_username");; str1 = "")
     {
-      String str2 = bt.nullAsNil((String)paramMap.get(paramString + ".title"));
+      String str2 = bu.nullAsNil((String)paramMap.get(paramString + ".title"));
       SpannableString localSpannableString = new SpannableString(str2);
       localSpannableString.setSpan(new com.tencent.mm.plugin.messenger.a.a()
       {
         public final void onClickImp(View paramAnonymousView)
         {
-          AppMethodBeat.i(211843);
+          AppMethodBeat.i(218152);
           a.this.msgId = paramBundle.getLong("msg_id");
           a locala = a.this;
           Map localMap = paramMap;
@@ -101,16 +101,16 @@ public final class a
             {
               if (localWeakReference.get() != null)
               {
-                locala.lVh = localWeakReference;
+                locala.lZK = localWeakReference;
                 if ("new_tmpl_type_succeed_contact_window".equals((String)localMap.get(str1 + ".window_template.$type")))
                 {
-                  locala.vKp = bt.bI((String)localMap.get(str1 + ".window_template.title"), "");
-                  locala.vKq = bt.bI((String)localMap.get(str1 + ".window_template.cancel_wording"), "");
-                  locala.kBv = bt.bI((String)localMap.get(str1 + ".window_template.confirm_wording"), "");
-                  locala.vKr = bt.bI((String)localMap.get(str1 + ".origin_username"), "");
-                  locala.vKs = bt.bI((String)localMap.get(str1 + ".heir_username"), "");
-                  locala.vKt = bt.bI((String)localMap.get(str1 + ".succeed_ticket"), "");
-                  paramAnonymousView = c.aqD(locala.vKp);
+                  locala.vWt = bu.bI((String)localMap.get(str1 + ".window_template.title"), "");
+                  locala.vWu = bu.bI((String)localMap.get(str1 + ".window_template.cancel_wording"), "");
+                  locala.kEK = bu.bI((String)localMap.get(str1 + ".window_template.confirm_wording"), "");
+                  locala.vWv = bu.bI((String)localMap.get(str1 + ".origin_username"), "");
+                  locala.vWw = bu.bI((String)localMap.get(str1 + ".heir_username"), "");
+                  locala.vWx = bu.bI((String)localMap.get(str1 + ".succeed_ticket"), "");
+                  paramAnonymousView = c.arI(locala.vWt);
                   if ((paramAnonymousView == null) || (paramAnonymousView.size() <= 0)) {
                     break label711;
                   }
@@ -127,7 +127,7 @@ public final class a
                       if (locala1.type != 0) {
                         break;
                       }
-                      localArrayList.add(new SpannableString(k.c(aj.getContext(), locala1.content)));
+                      localArrayList.add(new SpannableString(k.c(ak.getContext(), locala1.content)));
                     }
                   }
                 }
@@ -136,9 +136,9 @@ public final class a
             }
             catch (Exception paramAnonymousView)
             {
-              ad.e("MicroMsg.sysmsg.SysMsgHandlerNewLinkSucceedContact", "Exception:%s %s", new Object[] { paramAnonymousView.getClass().getSimpleName(), paramAnonymousView.getMessage() });
+              ae.e("MicroMsg.sysmsg.SysMsgHandlerNewLinkSucceedContact", "Exception:%s %s", new Object[] { paramAnonymousView.getClass().getSimpleName(), paramAnonymousView.getMessage() });
             }
-            AppMethodBeat.o(211843);
+            AppMethodBeat.o(218152);
             return;
           } while (locala1.type != 1);
           int i = 0;
@@ -150,7 +150,7 @@ public final class a
             }
             for (;;)
             {
-              if (bt.isNullOrNil((String)localMap.get(paramAnonymousView))) {
+              if (bu.isNullOrNil((String)localMap.get(paramAnonymousView))) {
                 break label763;
               }
               String str2 = (String)localMap.get(paramAnonymousView + ".$name");
@@ -158,14 +158,14 @@ public final class a
               if ((!locala1.content.equals(str2)) || (!"link_plain".equals(str3))) {
                 break label765;
               }
-              localArrayList.add(bt.bI((String)localMap.get(paramAnonymousView + ".plain"), ""));
+              localArrayList.add(bu.bI((String)localMap.get(paramAnonymousView + ".plain"), ""));
               break label765;
               label697:
-              locala.vKp = a.concactSpannable(localArrayList).toString();
+              locala.vWt = a.concactSpannable(localArrayList).toString();
               label711:
-              locala.fK((Context)localWeakReference.get());
-              locala.vKo = new com.tencent.mm.plugin.messenger.b.a(locala.vKr, locala.vKs, locala.vKt, 1);
-              g.aiU().a(locala.vKo, 0);
+              locala.fQ((Context)localWeakReference.get());
+              locala.vWs = new com.tencent.mm.plugin.messenger.b.a(locala.vWv, locala.vWw, locala.vWx, 1);
+              g.ajj().a(locala.vWs, 0);
               break;
             }
             label763:
@@ -175,134 +175,134 @@ public final class a
           }
         }
       }, 0, str2.length(), 33);
-      AppMethodBeat.o(211848);
+      AppMethodBeat.o(218157);
       return localSpannableString;
     }
   }
   
-  public final String dmf()
+  public final String dpe()
   {
     return "new_link_succeed_contact";
   }
   
-  final void fK(Context paramContext)
+  final void fQ(Context paramContext)
   {
-    AppMethodBeat.i(211850);
-    if (this.fMu == null)
+    AppMethodBeat.i(218159);
+    if (this.fOC == null)
     {
       paramContext.getString(2131755906);
-      this.fMu = h.b(paramContext, paramContext.getString(2131761820), true, new DialogInterface.OnCancelListener()
+      this.fOC = h.b(paramContext, paramContext.getString(2131761820), true, new DialogInterface.OnCancelListener()
       {
         public final void onCancel(DialogInterface paramAnonymousDialogInterface)
         {
-          AppMethodBeat.i(211844);
-          g.aiU().a(a.this.vKo);
-          AppMethodBeat.o(211844);
+          AppMethodBeat.i(218153);
+          g.ajj().a(a.this.vWs);
+          AppMethodBeat.o(218153);
         }
       });
-      AppMethodBeat.o(211850);
+      AppMethodBeat.o(218159);
       return;
     }
-    if (!this.fMu.isShowing()) {
-      this.fMu.show();
+    if (!this.fOC.isShowing()) {
+      this.fOC.show();
     }
-    AppMethodBeat.o(211850);
+    AppMethodBeat.o(218159);
   }
   
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
-    AppMethodBeat.i(211851);
-    ad.i("MicroMsg.sysmsg.SysMsgHandlerNewLinkSucceedContact", "onSceneEnd errType = %d, errCode = %d, errMsg = %s, scenetype:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString, Integer.valueOf(paramn.getType()) });
-    if ((this.fMu != null) && (this.fMu.isShowing())) {
-      this.fMu.dismiss();
+    AppMethodBeat.i(218160);
+    ae.i("MicroMsg.sysmsg.SysMsgHandlerNewLinkSucceedContact", "onSceneEnd errType = %d, errCode = %d, errMsg = %s, scenetype:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString, Integer.valueOf(paramn.getType()) });
+    if ((this.fOC != null) && (this.fOC.isShowing())) {
+      this.fOC.dismiss();
     }
     if ((paramn instanceof com.tencent.mm.plugin.messenger.b.a))
     {
       if (paramInt2 == -3600)
       {
-        new f.a(aj.getContext()).aXO(aj.getContext().getString(2131766240)).afp(2131766205).b(null).show();
+        new f.a(ak.getContext()).aZq(ak.getContext().getString(2131766240)).afY(2131766205).b(null).show();
         com.tencent.mm.plugin.messenger.e.a.R(this.msgId, 7);
-        AppMethodBeat.o(211851);
+        AppMethodBeat.o(218160);
         return;
       }
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
         localObject = (com.tencent.mm.plugin.messenger.b.a)paramn;
-        if (((com.tencent.mm.plugin.messenger.b.a)localObject).vKn == null) {}
-        for (localObject = null;; localObject = ((com.tencent.mm.plugin.messenger.b.a)localObject).vKn)
+        if (((com.tencent.mm.plugin.messenger.b.a)localObject).vWr == null) {}
+        for (localObject = null;; localObject = ((com.tencent.mm.plugin.messenger.b.a)localObject).vWr)
         {
           paramInt1 = ((com.tencent.mm.plugin.messenger.b.a)paramn).action;
           if (localObject == null) {
             break label325;
           }
-          ad.i("MicroMsg.sysmsg.SysMsgHandlerNewLinkSucceedContact", "NetSceneOpenImNotAutoSucceed ret:%s action:%s", new Object[] { Integer.valueOf(((ccv)localObject).BaseResponse.Ret), Integer.valueOf(paramInt1) });
+          ae.i("MicroMsg.sysmsg.SysMsgHandlerNewLinkSucceedContact", "NetSceneOpenImNotAutoSucceed ret:%s action:%s", new Object[] { Integer.valueOf(((cdp)localObject).BaseResponse.Ret), Integer.valueOf(paramInt1) });
           if (paramInt1 != 1) {
             break label319;
           }
-          if ((this.lVh != null) && (this.lVh.get() != null)) {
+          if ((this.lZK != null) && (this.lZK.get() != null)) {
             break;
           }
-          ad.e("MicroMsg.sysmsg.SysMsgHandlerNewLinkSucceedContact", "NOT_AUTO_SUCCEED_ACTION_PREPARE context == null");
-          AppMethodBeat.o(211851);
+          ae.e("MicroMsg.sysmsg.SysMsgHandlerNewLinkSucceedContact", "NOT_AUTO_SUCCEED_ACTION_PREPARE context == null");
+          AppMethodBeat.o(218160);
           return;
         }
-        paramString = new f.a((Context)this.lVh.get());
-        paramString.yU(false);
-        paramString.aXO(this.vKp).aXT(this.vKq).aXS(this.kBv).c(new f.c()
+        paramString = new f.a((Context)this.lZK.get());
+        paramString.zi(false);
+        paramString.aZq(this.vWt).aZv(this.vWu).aZu(this.kEK).c(new f.c()
         {
           public final void d(boolean paramAnonymousBoolean, String paramAnonymousString)
           {
-            AppMethodBeat.i(211845);
-            ad.i("MicroMsg.sysmsg.SysMsgHandlerNewLinkSucceedContact", "click %s", new Object[] { Boolean.valueOf(paramAnonymousBoolean) });
+            AppMethodBeat.i(218154);
+            ae.i("MicroMsg.sysmsg.SysMsgHandlerNewLinkSucceedContact", "click %s", new Object[] { Boolean.valueOf(paramAnonymousBoolean) });
             if (paramAnonymousBoolean)
             {
-              if ((a.this.lVh == null) || (a.this.lVh.get() == null))
+              if ((a.this.lZK == null) || (a.this.lZK.get() == null))
               {
-                ad.e("MicroMsg.sysmsg.SysMsgHandlerNewLinkSucceedContact", "onDialogClick context == null");
-                AppMethodBeat.o(211845);
+                ae.e("MicroMsg.sysmsg.SysMsgHandlerNewLinkSucceedContact", "onDialogClick context == null");
+                AppMethodBeat.o(218154);
                 return;
               }
-              paramAnonymousString = (Context)a.this.lVh.get();
-              a.this.vKo = new com.tencent.mm.plugin.messenger.b.a(a.this.vKr, a.this.vKs, a.this.vKt, 2);
-              g.aiU().a(a.this.vKo, 0);
-              a.this.fK(paramAnonymousString);
+              paramAnonymousString = (Context)a.this.lZK.get();
+              a.this.vWs = new com.tencent.mm.plugin.messenger.b.a(a.this.vWv, a.this.vWw, a.this.vWx, 2);
+              g.ajj().a(a.this.vWs, 0);
+              a.this.fQ(paramAnonymousString);
               com.tencent.mm.plugin.messenger.e.a.R(a.this.msgId, 9);
-              AppMethodBeat.o(211845);
+              AppMethodBeat.o(218154);
               return;
             }
             com.tencent.mm.plugin.messenger.e.a.R(a.this.msgId, 10);
-            AppMethodBeat.o(211845);
+            AppMethodBeat.o(218154);
           }
         }).show();
         com.tencent.mm.plugin.messenger.e.a.R(this.msgId, 8);
         label319:
-        AppMethodBeat.o(211851);
+        AppMethodBeat.o(218160);
         return;
         label325:
-        ad.e("MicroMsg.sysmsg.SysMsgHandlerNewLinkSucceedContact", "notAutoSucceedResp is null");
+        ae.e("MicroMsg.sysmsg.SysMsgHandlerNewLinkSucceedContact", "notAutoSucceedResp is null");
       }
-      Object localObject = aj.getContext();
+      Object localObject = ak.getContext();
       paramn = paramString;
-      if (bt.isNullOrNil(paramString)) {
-        paramn = aj.getContext().getString(2131755733);
+      if (bu.isNullOrNil(paramString)) {
+        paramn = ak.getContext().getString(2131755733);
       }
       t.makeText((Context)localObject, paramn, 0).show();
       com.tencent.mm.plugin.messenger.e.a.R(this.msgId, 6);
     }
-    AppMethodBeat.o(211851);
+    AppMethodBeat.o(218160);
   }
   
   public final void release()
   {
-    AppMethodBeat.i(211847);
+    AppMethodBeat.i(218156);
     super.release();
-    g.aiU().b(3713, this);
-    AppMethodBeat.o(211847);
+    g.ajj().b(3713, this);
+    AppMethodBeat.o(218156);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.messenger.c.a
  * JD-Core Version:    0.7.0.1
  */

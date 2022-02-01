@@ -7,8 +7,8 @@ import android.view.Window;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
 import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ar;
 import org.json.JSONObject;
 
 public final class f
@@ -20,17 +20,17 @@ public final class f
   private static void D(c paramc)
   {
     AppMethodBeat.i(138282);
-    paramc = com.tencent.mm.sdk.f.a.jq(paramc.getContext());
+    paramc = com.tencent.mm.sdk.f.a.jw(paramc.getContext());
     if (paramc == null)
     {
-      ad.i("JsApiShowVirtualBottomNavigationBar", "null == activity");
+      ae.i("JsApiShowVirtualBottomNavigationBar", "null == activity");
       AppMethodBeat.o(138282);
       return;
     }
     paramc = paramc.getWindow();
     if (paramc == null)
     {
-      ad.i("JsApiShowVirtualBottomNavigationBar", "null == window");
+      ae.i("JsApiShowVirtualBottomNavigationBar", "null == window");
       AppMethodBeat.o(138282);
       return;
     }
@@ -58,9 +58,9 @@ public final class f
   final void d(final c paramc, final int paramInt)
   {
     AppMethodBeat.i(138281);
-    if (!aq.isMainThread())
+    if (!ar.isMainThread())
     {
-      aq.f(new Runnable()
+      ar.f(new Runnable()
       {
         public final void run()
         {
@@ -72,7 +72,7 @@ public final class f
       AppMethodBeat.o(138281);
       return;
     }
-    ad.i("JsApiShowVirtualBottomNavigationBar", "show");
+    ae.i("JsApiShowVirtualBottomNavigationBar", "show");
     D(paramc);
     paramc.h(paramInt, e("ok", null));
     AppMethodBeat.o(138281);

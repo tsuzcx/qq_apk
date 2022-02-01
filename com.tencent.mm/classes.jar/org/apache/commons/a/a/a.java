@@ -11,11 +11,11 @@ public final class a
   extends OutputStream
 {
   private static final byte[] EMPTY_BYTE_ARRAY = new byte[0];
-  private final List<byte[]> NSB;
-  private int NSC;
-  private int NSD;
-  private byte[] NSE;
-  private boolean NSF;
+  private final List<byte[]> OpH;
+  private int OpI;
+  private int OpJ;
+  private byte[] OpK;
+  private boolean OpL;
   private int count;
   
   public a()
@@ -26,11 +26,11 @@ public final class a
   private a(byte paramByte)
   {
     AppMethodBeat.i(10290);
-    this.NSB = new ArrayList();
-    this.NSF = true;
+    this.OpH = new ArrayList();
+    this.OpL = true;
     try
     {
-      alY(1024);
+      amI(1024);
       return;
     }
     finally
@@ -39,26 +39,26 @@ public final class a
     }
   }
   
-  private void alY(int paramInt)
+  private void amI(int paramInt)
   {
     AppMethodBeat.i(10291);
-    if (this.NSC < this.NSB.size() - 1)
+    if (this.OpI < this.OpH.size() - 1)
     {
-      this.NSD += this.NSE.length;
-      this.NSC += 1;
-      this.NSE = ((byte[])this.NSB.get(this.NSC));
+      this.OpJ += this.OpK.length;
+      this.OpI += 1;
+      this.OpK = ((byte[])this.OpH.get(this.OpI));
       AppMethodBeat.o(10291);
       return;
     }
-    if (this.NSE == null) {}
-    for (this.NSD = 0;; this.NSD += this.NSE.length)
+    if (this.OpK == null) {}
+    for (this.OpJ = 0;; this.OpJ += this.OpK.length)
     {
-      this.NSC += 1;
-      this.NSE = new byte[paramInt];
-      this.NSB.add(this.NSE);
+      this.OpI += 1;
+      this.OpK = new byte[paramInt];
+      this.OpH.add(this.OpK);
       AppMethodBeat.o(10291);
       return;
-      paramInt = Math.max(this.NSE.length << 1, paramInt - this.NSD);
+      paramInt = Math.max(this.OpK.length << 1, paramInt - this.OpJ);
     }
   }
   
@@ -79,7 +79,7 @@ public final class a
           return arrayOfByte1;
         }
         byte[] arrayOfByte1 = new byte[j];
-        Iterator localIterator = this.NSB.iterator();
+        Iterator localIterator = this.OpH.iterator();
         int i = 0;
         int k;
         if (localIterator.hasNext())
@@ -115,14 +115,14 @@ public final class a
     try
     {
       AppMethodBeat.i(10293);
-      int j = this.count - this.NSD;
+      int j = this.count - this.OpJ;
       int i = j;
-      if (j == this.NSE.length)
+      if (j == this.OpK.length)
       {
-        alY(this.count + 1);
+        amI(this.count + 1);
         i = 0;
       }
-      this.NSE[i] = ((byte)paramInt);
+      this.OpK[i] = ((byte)paramInt);
       this.count += 1;
       AppMethodBeat.o(10293);
       return;
@@ -147,17 +147,17 @@ public final class a
     try
     {
       int m = this.count + paramInt2;
-      int j = this.count - this.NSD;
+      int j = this.count - this.OpJ;
       int i = paramInt2;
       while (i > 0)
       {
-        int k = Math.min(i, this.NSE.length - j);
-        System.arraycopy(paramArrayOfByte, paramInt1 + paramInt2 - i, this.NSE, j, k);
+        int k = Math.min(i, this.OpK.length - j);
+        System.arraycopy(paramArrayOfByte, paramInt1 + paramInt2 - i, this.OpK, j, k);
         k = i - k;
         i = k;
         if (k > 0)
         {
-          alY(m);
+          amI(m);
           j = 0;
           i = k;
         }

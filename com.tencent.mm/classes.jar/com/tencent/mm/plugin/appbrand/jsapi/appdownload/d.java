@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.appbrand.jsapi.appdownload;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.q;
+import com.tencent.mm.plugin.appbrand.r;
 import java.util.HashMap;
 
 public final class d
@@ -10,20 +10,20 @@ public final class d
   public static final int CTRL_INDEX = 662;
   public static final String NAME = "onDownloadAppStateChangeForNative";
   
-  private d(q paramq)
+  private d(r paramr)
   {
-    super(paramq);
+    super(paramr);
   }
   
-  public static void l(q paramq)
+  public static void l(r paramr)
   {
     AppMethodBeat.i(45742);
-    if (kvn.containsKey(paramq.getAppId()))
+    if (kyC.containsKey(paramr.getAppId()))
     {
       AppMethodBeat.o(45742);
       return;
     }
-    a(paramq, new d(paramq));
+    a(paramr, new d(paramr));
     AppMethodBeat.o(45742);
   }
 }

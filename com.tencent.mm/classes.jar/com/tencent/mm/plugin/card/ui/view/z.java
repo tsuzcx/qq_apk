@@ -10,20 +10,20 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.card.base.b;
 import com.tencent.mm.plugin.card.ui.a.g;
 import com.tencent.mm.plugin.card.ui.n;
-import com.tencent.mm.protocal.protobuf.aaf;
-import com.tencent.mm.protocal.protobuf.sr;
+import com.tencent.mm.protocal.protobuf.aai;
+import com.tencent.mm.protocal.protobuf.st;
 import com.tencent.mm.ui.MMActivity;
 
 public final class z
   extends i
 {
-  private View oPl;
+  private View oVN;
   
-  public final void bYr()
+  public final void bZG()
   {
     AppMethodBeat.i(113720);
-    if (this.oPl != null) {
-      this.oPl.setVisibility(8);
+    if (this.oVN != null) {
+      this.oVN.setVisibility(8);
     }
     AppMethodBeat.o(113720);
   }
@@ -33,22 +33,22 @@ public final class z
   public final void update()
   {
     AppMethodBeat.i(113719);
-    if (this.oPl == null) {
-      this.oPl = ((ViewStub)findViewById(2131297905)).inflate();
+    if (this.oVN == null) {
+      this.oVN = ((ViewStub)findViewById(2131297905)).inflate();
     }
-    aaf localaaf = this.oOB.bWl().bTO().FPu;
-    if (this.oPl != null)
+    aai localaai = this.oVd.bXA().bVd().GhT;
+    if (this.oVN != null)
     {
-      ((TextView)this.oPl.findViewById(2131305766)).setText(localaaf.title);
-      ((TextView)this.oPl.findViewById(2131305765)).setText(localaaf.oxN);
-      if ((!this.oOB.bWq().bXl()) || (!this.oOB.bWq().bXm())) {}
+      ((TextView)this.oVN.findViewById(2131305766)).setText(localaai.title);
+      ((TextView)this.oVN.findViewById(2131305765)).setText(localaai.oEp);
+      if ((!this.oVd.bXF().bYA()) || (!this.oVd.bXF().bYB())) {}
       for (int i = 1; i != 0; i = 0)
       {
-        ((LinearLayout.LayoutParams)((LinearLayout)this.oPl).getLayoutParams()).bottomMargin = 0;
+        ((LinearLayout.LayoutParams)((LinearLayout)this.oVN).getLayoutParams()).bottomMargin = 0;
         AppMethodBeat.o(113719);
         return;
       }
-      ((LinearLayout.LayoutParams)((LinearLayout)this.oPl).getLayoutParams()).bottomMargin = this.oOB.bWo().getResources().getDimensionPixelSize(2131165558);
+      ((LinearLayout.LayoutParams)((LinearLayout)this.oVN).getLayoutParams()).bottomMargin = this.oVd.bXD().getResources().getDimensionPixelSize(2131165558);
     }
     AppMethodBeat.o(113719);
   }

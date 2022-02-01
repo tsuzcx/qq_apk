@@ -6,14 +6,14 @@ import java.util.regex.Pattern;
 
 public final class a
 {
-  public static final String DFA;
-  public static final Pattern DFz;
+  public static final Pattern DXw;
+  public static final String DXx;
   
   static
   {
     AppMethodBeat.i(77805);
-    DFz = Pattern.compile("(http|https)://mp.weixin.qq.com.*");
-    DFA = b.arU() + "vproxy";
+    DXw = Pattern.compile("(http|https)://mp.weixin.qq.com.*");
+    DXx = b.asj() + "vproxy";
     AppMethodBeat.o(77805);
   }
 }

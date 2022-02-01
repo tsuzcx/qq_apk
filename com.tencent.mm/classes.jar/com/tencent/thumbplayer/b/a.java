@@ -22,11 +22,11 @@ public abstract interface a
   
   public abstract void b(f paramf);
   
-  public abstract void ci(float paramFloat);
+  public abstract void cg(float paramFloat);
   
-  public abstract j fWb();
+  public abstract j gaA();
   
-  public abstract void fWu();
+  public abstract void gaT();
   
   public abstract long getCurrentPositionMs();
   
@@ -58,13 +58,13 @@ public abstract interface a
   
   public abstract void stop();
   
-  public abstract void zv(boolean paramBoolean);
+  public abstract void zJ(boolean paramBoolean);
   
-  public abstract void zw(boolean paramBoolean);
+  public abstract void zK(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.thumbplayer.b.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.collect.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.wallet_core.tenpay.model.m;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -14,19 +14,19 @@ import org.json.JSONObject;
 public final class s
   extends m
 {
-  public int dsd;
-  public boolean hII;
+  public int dtj;
+  public boolean hLB;
   private int limit;
-  public List<a> paT;
-  public long paq;
-  public int par;
+  public long pgU;
+  public int pgV;
+  public List<a> phx;
   public int type;
   
   public s(int paramInt1, long paramLong, String paramString, int paramInt2)
   {
     AppMethodBeat.i(63846);
-    this.paT = new ArrayList();
-    this.hII = false;
+    this.phx = new ArrayList();
+    this.hLB = false;
     this.limit = paramInt2;
     HashMap localHashMap = new HashMap();
     localHashMap.put("type", String.valueOf(paramInt1));
@@ -55,18 +55,18 @@ public final class s
   public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(63847);
-    this.par = paramJSONObject.optInt("total_num");
-    this.dsd = paramJSONObject.optInt("total_amt");
-    this.paq = paramJSONObject.optLong("from_timestamp", 0L);
+    this.pgV = paramJSONObject.optInt("total_num");
+    this.dtj = paramJSONObject.optInt("total_amt");
+    this.pgU = paramJSONObject.optLong("from_timestamp", 0L);
     this.type = paramJSONObject.optInt("type", 0);
     paramString = paramJSONObject.optJSONArray("records");
     if ((paramString == null) || (paramString.length() <= 0))
     {
-      ad.i("MicroMsg.NetSceneTenpayF2fRecordList", "empty records");
-      if (this.paT.size() < this.limit)
+      ae.i("MicroMsg.NetSceneTenpayF2fRecordList", "empty records");
+      if (this.phx.size() < this.limit)
       {
-        ad.i("MicroMsg.NetSceneTenpayF2fRecordList", "finish query");
-        this.hII = true;
+        ae.i("MicroMsg.NetSceneTenpayF2fRecordList", "finish query");
+        this.hLB = true;
       }
       AppMethodBeat.o(63847);
       return;
@@ -77,19 +77,19 @@ public final class s
       {
         paramJSONObject = paramString.getJSONObject(paramInt);
         a locala = new a();
-        locala.oZN = paramJSONObject.optString("bill_id");
-        locala.oZO = paramJSONObject.optString("trans_id");
+        locala.pgr = paramJSONObject.optString("bill_id");
+        locala.pgs = paramJSONObject.optString("trans_id");
         locala.timestamp = paramJSONObject.optLong("timestamp", 0L);
         locala.desc = paramJSONObject.optString("desc");
-        locala.dnd = paramJSONObject.optInt("fee", 0);
-        this.paT.add(locala);
+        locala.dof = paramJSONObject.optInt("fee", 0);
+        this.phx.add(locala);
         paramInt += 1;
       }
       catch (JSONException paramJSONObject)
       {
         for (;;)
         {
-          ad.printErrStackTrace("MicroMsg.NetSceneTenpayF2fRecordList", paramJSONObject, "", new Object[0]);
+          ae.printErrStackTrace("MicroMsg.NetSceneTenpayF2fRecordList", paramJSONObject, "", new Object[0]);
         }
       }
     }

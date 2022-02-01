@@ -1,32 +1,32 @@
 package com.tencent.mm.plugin.label.a;
 
-import com.tencent.mm.ay.a;
+import com.tencent.mm.ax.a;
 import java.util.List;
 
 public abstract interface b
   extends a
 {
-  public abstract String aol(String paramString);
+  public abstract void aoM();
   
-  public abstract String aom(String paramString);
+  public abstract String apn(String paramString);
   
-  public abstract List<String> aon(String paramString);
+  public abstract String apo(String paramString);
   
-  public abstract List<String> aoo(String paramString);
+  public abstract List<String> app(String paramString);
   
-  public abstract List<String> aop(String paramString);
+  public abstract List<String> apq(String paramString);
   
-  public abstract void aox();
+  public abstract List<String> apr(String paramString);
   
-  public abstract List<String> dfj();
+  public abstract List<String> dib();
   
-  public abstract List<String> dfl();
+  public abstract List<String> did();
   
-  public abstract String ej(List<String> paramList);
+  public abstract String en(List<String> paramList);
   
-  public abstract void ek(List<String> paramList);
+  public abstract void eo(List<String> paramList);
   
-  public abstract void hC(String paramString1, String paramString2);
+  public abstract void hJ(String paramString1, String paramString2);
   
   public abstract void n(List<String> paramList1, List<String> paramList2);
 }

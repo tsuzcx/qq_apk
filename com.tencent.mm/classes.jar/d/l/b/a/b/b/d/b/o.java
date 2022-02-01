@@ -10,20 +10,20 @@ public final class o
   extends d
   implements m
 {
-  private final Enum<?> NaC;
+  private final Enum<?> NxI;
   
   public o(f paramf, Enum<?> paramEnum)
   {
     super(paramf);
     AppMethodBeat.i(57481);
-    this.NaC = paramEnum;
+    this.NxI = paramEnum;
     AppMethodBeat.o(57481);
   }
   
-  public final a gkU()
+  public final a gpw()
   {
     AppMethodBeat.i(57479);
-    Object localObject = this.NaC.getClass();
+    Object localObject = this.NxI.getClass();
     if (((Class)localObject).isEnum()) {}
     for (;;)
     {
@@ -35,17 +35,17 @@ public final class o
     }
   }
   
-  public final f gkV()
+  public final f gpx()
   {
     AppMethodBeat.i(57480);
-    f localf = f.bcE(this.NaC.name());
+    f localf = f.bei(this.NxI.name());
     AppMethodBeat.o(57480);
     return localf;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.b.d.b.o
  * JD-Core Version:    0.7.0.1
  */

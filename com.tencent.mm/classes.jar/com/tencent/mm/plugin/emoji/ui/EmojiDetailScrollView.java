@@ -10,7 +10,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class EmojiDetailScrollView
   extends ScrollView
 {
-  private boolean pJq;
+  private boolean pPV;
   
   public EmojiDetailScrollView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -21,7 +21,7 @@ public class EmojiDetailScrollView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(108929);
-    this.pJq = true;
+    this.pPV = true;
     setFadingEdgeLength(0);
     AppMethodBeat.o(108929);
   }
@@ -29,7 +29,7 @@ public class EmojiDetailScrollView
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(108932);
-    if (!this.pJq)
+    if (!this.pPV)
     {
       AppMethodBeat.o(108932);
       return false;
@@ -42,7 +42,7 @@ public class EmojiDetailScrollView
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     AppMethodBeat.i(108931);
-    this.pJq = false;
+    this.pPV = false;
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     AppMethodBeat.o(108931);
   }
@@ -54,7 +54,7 @@ public class EmojiDetailScrollView
   public void requestLayout()
   {
     AppMethodBeat.i(108930);
-    this.pJq = false;
+    this.pPV = false;
     super.requestLayout();
     AppMethodBeat.o(108930);
   }
@@ -63,12 +63,12 @@ public class EmojiDetailScrollView
   
   public void scrollTo(int paramInt1, int paramInt2)
   {
-    this.pJq = true;
+    this.pPV = true;
   }
   
   public void setScrollEnable(boolean paramBoolean)
   {
-    this.pJq = paramBoolean;
+    this.pPV = paramBoolean;
   }
 }
 

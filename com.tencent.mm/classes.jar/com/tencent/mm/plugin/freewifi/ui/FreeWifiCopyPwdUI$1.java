@@ -12,7 +12,7 @@ final class FreeWifiCopyPwdUI$1
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
     AppMethodBeat.i(24995);
-    FreeWifiCopyPwdUI.a(this.tpr);
+    FreeWifiCopyPwdUI.a(this.tAi);
     AppMethodBeat.o(24995);
     return true;
   }

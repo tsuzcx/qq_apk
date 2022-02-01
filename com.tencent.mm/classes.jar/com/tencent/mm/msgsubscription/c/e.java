@@ -2,7 +2,7 @@ package com.tencent.mm.msgsubscription.c;
 
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/msgsubscription/task/ISubscribeMsgTask;", "", "cancel", "", "getKey", "", "getType", "", "isAsync", "", "isCanReplacedByKey", "isCancelled", "run", "plugin-comm_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/msgsubscription/task/ISubscribeMsgTask;", "", "cancel", "", "getKey", "", "getType", "", "isAsync", "", "isCanReplacedByKey", "isCancelled", "run", "plugin-comm_release"})
 public abstract interface e
 {
   public abstract void run();

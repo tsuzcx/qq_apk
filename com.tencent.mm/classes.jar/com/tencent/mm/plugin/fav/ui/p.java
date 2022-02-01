@@ -9,11 +9,11 @@ import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.util.Pair;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bs.d;
+import com.tencent.mm.br.d;
 import com.tencent.mm.plugin.fav.a.k;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.al;
 import com.tencent.mm.ui.base.h;
 import java.util.Iterator;
@@ -22,7 +22,7 @@ import java.util.List;
 
 public final class p
 {
-  private static int Ee(int paramInt)
+  private static int Er(int paramInt)
   {
     if (paramInt == 1) {
       return 4;
@@ -57,21 +57,21 @@ public final class p
       return;
     }
     paramActivity = h.b(paramActivity, paramActivity.getString(2131758855), false, null);
-    com.tencent.mm.kernel.g.ajF().ay(new Runnable()
+    com.tencent.mm.kernel.g.ajU().aw(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(107055);
-        com.tencent.mm.plugin.fav.a.b.dm(this.rvN);
+        com.tencent.mm.plugin.fav.a.b.dp(this.rDZ);
         if (parama != null) {
-          parama.cwp();
+          parama.cxQ();
         }
-        aq.f(new Runnable()
+        ar.f(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(107053);
-            p.1.this.rvc.dismiss();
+            p.1.this.rDo.dismiss();
             AppMethodBeat.o(107053);
           }
           
@@ -97,7 +97,7 @@ public final class p
       AppMethodBeat.o(107061);
       return;
     }
-    if (bt.isNullOrNil(paramString2))
+    if (bu.isNullOrNil(paramString2))
     {
       AppMethodBeat.o(107061);
       return;
@@ -114,8 +114,8 @@ public final class p
     }
     if (localLinkedList.isEmpty())
     {
-      ad.i(paramString3, "after filter, nothing");
-      h.cl(paramActivity, paramActivity.getString(2131758987));
+      ae.i(paramString3, "after filter, nothing");
+      h.cm(paramActivity, paramActivity.getString(2131758987));
       AppMethodBeat.o(107061);
       return;
     }
@@ -124,7 +124,7 @@ public final class p
       public final void run()
       {
         AppMethodBeat.i(107056);
-        this.rvc.dismiss();
+        this.rDo.dismiss();
         com.tencent.mm.ui.widget.snackbar.b.n(paramActivity, paramActivity.getString(2131758834));
         AppMethodBeat.o(107056);
       }
@@ -189,19 +189,19 @@ public final class p
       paramg.putExtra("scene_from", 1);
       paramg.putExtra("mutil_select_is_ret", true);
       Object localObject;
-      if (paramb.cwK() == 1)
+      if (paramb.cyl() == 1)
       {
         localObject = (com.tencent.mm.plugin.fav.a.g)paramb.lB(false).get(0);
         paramg.putExtra("select_fav_local_id", ((com.tencent.mm.plugin.fav.a.g)localObject).field_localId);
-        if (((com.tencent.mm.plugin.fav.a.g)localObject).rsm) {
-          paramg.putExtra("select_fav_fake_local_id", ((com.tencent.mm.plugin.fav.a.g)localObject).dsK);
+        if (((com.tencent.mm.plugin.fav.a.g)localObject).rAz) {
+          paramg.putExtra("select_fav_fake_local_id", ((com.tencent.mm.plugin.fav.a.g)localObject).dtQ);
         }
-        if ((localObject != null) && (Ee(((com.tencent.mm.plugin.fav.a.g)localObject).field_type) != -1)) {
-          paramg.putExtra("Retr_Msg_Type", Ee(((com.tencent.mm.plugin.fav.a.g)localObject).field_type));
+        if ((localObject != null) && (Er(((com.tencent.mm.plugin.fav.a.g)localObject).field_type) != -1)) {
+          paramg.putExtra("Retr_Msg_Type", Er(((com.tencent.mm.plugin.fav.a.g)localObject).field_type));
         }
         if ((paramb.lB(false).get(0) != null) && (((com.tencent.mm.plugin.fav.a.g)paramb.lB(false).get(0)).field_type == 3))
         {
-          h.cl(paramContext, paramContext.getString(2131758987));
+          h.cm(paramContext, paramContext.getString(2131758987));
           AppMethodBeat.o(107059);
           return false;
         }
@@ -232,15 +232,15 @@ public final class p
       if (paramg != null)
       {
         paramb.putExtra("select_fav_local_id", paramg.field_localId);
-        if (paramg.rsm) {
-          paramb.putExtra("select_fav_fake_local_id", paramg.dsK);
+        if (paramg.rAz) {
+          paramb.putExtra("select_fav_fake_local_id", paramg.dtQ);
         }
         if (paramg.field_type == 19) {
           paramb.putExtra("appbrand_params", c.F(paramg));
         }
       }
-      if ((paramg != null) && (Ee(paramg.field_type) != -1)) {
-        paramb.putExtra("Retr_Msg_Type", Ee(paramg.field_type));
+      if ((paramg != null) && (Er(paramg.field_type) != -1)) {
+        paramb.putExtra("Retr_Msg_Type", Er(paramg.field_type));
       }
       d.c(paramContext, ".ui.transmit.SelectConversationUI", paramb, 4106);
       AppMethodBeat.o(107059);
@@ -252,7 +252,7 @@ public final class p
   
   public static abstract interface a
   {
-    public abstract void cwp();
+    public abstract void cxQ();
   }
 }
 

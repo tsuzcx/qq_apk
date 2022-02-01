@@ -8,19 +8,19 @@ class ai$a
   public boolean awM;
   public float mX;
   public float mY;
-  public int ngA;
-  public int ngB;
-  public boolean ngC;
-  public boolean ngD;
+  public int nlI;
+  public int nlJ;
+  public boolean nlK;
+  public boolean nlL;
   @Deprecated
-  public boolean ngE;
+  public boolean nlM;
   
   public ai$a(float paramFloat1, float paramFloat2, int paramInt1, int paramInt2)
   {
     this.mX = paramFloat1;
     this.mY = paramFloat2;
-    this.ngA = paramInt1;
-    this.ngB = paramInt2;
+    this.nlI = paramInt1;
+    this.nlJ = paramInt2;
   }
 }
 

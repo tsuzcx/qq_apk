@@ -11,28 +11,28 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.LinkedList;
 import java.util.List;
 
 public class FavSearchActionView
   extends LinearLayout
 {
-  private ImageButton rEL;
-  public List<String> rEM;
-  public List<String> rEN;
-  public a rEO;
-  public FavTagPanel ryb;
-  public List<Integer> rzv;
+  public FavTagPanel rGm;
+  public List<Integer> rHG;
+  private ImageButton rMW;
+  public List<String> rMX;
+  public List<String> rMY;
+  public a rMZ;
   
   public FavSearchActionView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(107534);
-    this.rzv = new LinkedList();
-    this.rEM = new LinkedList();
-    this.rEN = new LinkedList();
+    this.rHG = new LinkedList();
+    this.rMX = new LinkedList();
+    this.rMY = new LinkedList();
     AppMethodBeat.o(107534);
   }
   
@@ -94,7 +94,7 @@ public class FavSearchActionView
     return paramContext;
   }
   
-  public static Integer ao(Context paramContext, String paramString)
+  public static Integer aq(Context paramContext, String paramString)
   {
     AppMethodBeat.i(107541);
     if (paramContext == null)
@@ -146,56 +146,56 @@ public class FavSearchActionView
     return Integer.valueOf(-1);
   }
   
-  private void cxo()
+  private void cyP()
   {
     AppMethodBeat.i(107538);
-    if ((this.rzv.isEmpty()) && (this.rEM.isEmpty()))
+    if ((this.rHG.isEmpty()) && (this.rMX.isEmpty()))
     {
-      this.ryb.setEditHint(getResources().getString(2131755882));
+      this.rGm.setEditHint(getResources().getString(2131755882));
       AppMethodBeat.o(107538);
       return;
     }
-    this.ryb.setEditHint("");
+    this.rGm.setEditHint("");
     AppMethodBeat.o(107538);
   }
   
-  public final void ac(int paramInt, boolean paramBoolean)
+  public final void ae(int paramInt, boolean paramBoolean)
   {
     AppMethodBeat.i(107539);
-    this.rzv.clear();
-    this.rzv.add(Integer.valueOf(paramInt));
-    if (this.ryb == null)
+    this.rHG.clear();
+    this.rHG.add(Integer.valueOf(paramInt));
+    if (this.rGm == null)
     {
       AppMethodBeat.o(107539);
       return;
     }
-    cxo();
-    this.ryb.setType(T(getContext(), paramInt));
-    if (this.rEO == null)
+    cyP();
+    this.rGm.setType(T(getContext(), paramInt));
+    if (this.rMZ == null)
     {
       AppMethodBeat.o(107539);
       return;
     }
-    agR(this.ryb.getEditText());
+    ahO(this.rGm.getEditText());
     if (paramBoolean) {
-      this.rEO.a(this.rzv, this.rEN, this.rEM, false);
+      this.rMZ.a(this.rHG, this.rMY, this.rMX, false);
     }
-    g.yhR.f(11126, new Object[] { Integer.valueOf(1) });
+    g.yxI.f(11126, new Object[] { Integer.valueOf(1) });
     AppMethodBeat.o(107539);
   }
   
-  public final void agR(String paramString)
+  public final void ahO(String paramString)
   {
     AppMethodBeat.i(107536);
-    this.rEN.clear();
-    paramString = bt.bI(paramString, "").split(" ");
+    this.rMY.clear();
+    paramString = bu.bI(paramString, "").split(" ");
     int j = paramString.length;
     int i = 0;
     while (i < j)
     {
       String str = paramString[i];
-      if (!bt.isNullOrNil(str)) {
-        this.rEN.add(str);
+      if (!bu.isNullOrNil(str)) {
+        this.rMY.add(str);
       }
       i += 1;
     }
@@ -205,54 +205,54 @@ public class FavSearchActionView
   public List<String> getSearchKeys()
   {
     AppMethodBeat.i(107537);
-    if (this.ryb != null) {
-      agR(this.ryb.getEditText());
+    if (this.rGm != null) {
+      ahO(this.rGm.getEditText());
     }
-    List localList = this.rEN;
+    List localList = this.rMY;
     AppMethodBeat.o(107537);
     return localList;
   }
   
   public List<String> getSearchTags()
   {
-    return this.rEM;
+    return this.rMX;
   }
   
   protected void onFinishInflate()
   {
     AppMethodBeat.i(107535);
     super.onFinishInflate();
-    this.rEL = ((ImageButton)findViewById(2131304401));
-    this.ryb = ((FavTagPanel)findViewById(2131299843));
-    if (this.ryb != null)
+    this.rMW = ((ImageButton)findViewById(2131304401));
+    this.rGm = ((FavTagPanel)findViewById(2131299843));
+    if (this.rGm != null)
     {
-      this.ryb.setEditTextColor(getResources().getColor(2131100021));
-      this.ryb.setTagTipsDrawable(0);
-      this.ryb.setTagHighlineBG(0);
-      this.ryb.setTagSelectedBG(0);
-      this.ryb.setTagSelectedTextColorRes(2131101171);
-      this.ryb.setTagNormalBG(0);
-      this.ryb.setTagNormalTextColorRes(2131101179);
-      this.ryb.setEditHint(getResources().getString(2131755882));
-      this.ryb.xC(true);
-      this.ryb.Jnx = false;
-      this.ryb.Jny = true;
-      this.ryb.setCallBack(new FavTagPanel.a()
+      this.rGm.setEditTextColor(getResources().getColor(2131100021));
+      this.rGm.setTagTipsDrawable(0);
+      this.rGm.setTagHighlineBG(0);
+      this.rGm.setTagSelectedBG(0);
+      this.rGm.setTagSelectedTextColorRes(2131101171);
+      this.rGm.setTagNormalBG(0);
+      this.rGm.setTagNormalTextColorRes(2131101179);
+      this.rGm.setEditHint(getResources().getString(2131755882));
+      this.rGm.xK(true);
+      this.rGm.JIm = false;
+      this.rGm.JIn = true;
+      this.rGm.setCallBack(new FavTagPanel.a()
       {
-        public final void C(boolean paramAnonymousBoolean, int paramAnonymousInt) {}
+        public final void D(boolean paramAnonymousBoolean, int paramAnonymousInt) {}
         
-        public final void acc(String paramAnonymousString)
+        public final void acT(String paramAnonymousString)
         {
           AppMethodBeat.i(107527);
-          ad.d("MicroMsg.FavSearchActionView", "unselected tag %s", new Object[] { paramAnonymousString });
+          ae.d("MicroMsg.FavSearchActionView", "unselected tag %s", new Object[] { paramAnonymousString });
           FavSearchActionView.a(FavSearchActionView.this).removeTag(paramAnonymousString);
-          ace(paramAnonymousString);
+          acV(paramAnonymousString);
           AppMethodBeat.o(107527);
         }
         
-        public final void acd(String paramAnonymousString) {}
+        public final void acU(String paramAnonymousString) {}
         
-        public final void ace(String paramAnonymousString)
+        public final void acV(String paramAnonymousString)
         {
           AppMethodBeat.i(107528);
           FavSearchActionView.a(FavSearchActionView.this, FavSearchActionView.a(FavSearchActionView.this).getEditText());
@@ -267,7 +267,7 @@ public class FavSearchActionView
           AppMethodBeat.o(107528);
         }
         
-        public final void acf(String paramAnonymousString)
+        public final void acW(String paramAnonymousString)
         {
           AppMethodBeat.i(107529);
           FavSearchActionView.a(FavSearchActionView.this, FavSearchActionView.a(FavSearchActionView.this).getEditText());
@@ -281,7 +281,7 @@ public class FavSearchActionView
           AppMethodBeat.o(107529);
         }
         
-        public final void acg(String paramAnonymousString)
+        public final void acX(String paramAnonymousString)
         {
           AppMethodBeat.i(107530);
           FavSearchActionView.a(FavSearchActionView.this, paramAnonymousString);
@@ -289,13 +289,13 @@ public class FavSearchActionView
           AppMethodBeat.o(107530);
         }
         
-        public final void agS(String paramAnonymousString)
+        public final void ahP(String paramAnonymousString)
         {
           AppMethodBeat.i(107532);
-          ad.d("MicroMsg.FavSearchActionView", "unselected type %s", new Object[] { paramAnonymousString });
+          ae.d("MicroMsg.FavSearchActionView", "unselected type %s", new Object[] { paramAnonymousString });
           FavSearchActionView.a(FavSearchActionView.this);
           FavSearchActionView.a(FavSearchActionView.this, FavSearchActionView.a(FavSearchActionView.this).getEditText());
-          FavSearchActionView.e(FavSearchActionView.this).remove(FavSearchActionView.ao(FavSearchActionView.this.getContext(), paramAnonymousString));
+          FavSearchActionView.e(FavSearchActionView.this).remove(FavSearchActionView.aq(FavSearchActionView.this.getContext(), paramAnonymousString));
           FavSearchActionView.c(FavSearchActionView.this);
           if (FavSearchActionView.d(FavSearchActionView.this) != null) {
             FavSearchActionView.d(FavSearchActionView.this).a(FavSearchActionView.e(FavSearchActionView.this), FavSearchActionView.f(FavSearchActionView.this), FavSearchActionView.b(FavSearchActionView.this), true);
@@ -303,7 +303,7 @@ public class FavSearchActionView
           AppMethodBeat.o(107532);
         }
         
-        public final void ciS()
+        public final void cki()
         {
           AppMethodBeat.i(107531);
           if (FavSearchActionView.d(FavSearchActionView.this) == null)
@@ -311,28 +311,28 @@ public class FavSearchActionView
             AppMethodBeat.o(107531);
             return;
           }
-          FavSearchActionView.d(FavSearchActionView.this).aSn();
+          FavSearchActionView.d(FavSearchActionView.this).aSM();
           AppMethodBeat.o(107531);
         }
       });
     }
-    if (this.rEL != null) {
-      this.rEL.setOnClickListener(new View.OnClickListener()
+    if (this.rMW != null) {
+      this.rMW.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(107533);
           b localb = new b();
           localb.bd(paramAnonymousView);
-          a.b("com/tencent/mm/plugin/fav/ui/widget/FavSearchActionView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+          a.b("com/tencent/mm/plugin/fav/ui/widget/FavSearchActionView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
           if (FavSearchActionView.d(FavSearchActionView.this) == null)
           {
             a.a(this, "com/tencent/mm/plugin/fav/ui/widget/FavSearchActionView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
             AppMethodBeat.o(107533);
             return;
           }
-          FavSearchActionView.a(FavSearchActionView.this).fze();
-          FavSearchActionView.a(FavSearchActionView.this).fyZ();
+          FavSearchActionView.a(FavSearchActionView.this).fDg();
+          FavSearchActionView.a(FavSearchActionView.this).fDb();
           FavSearchActionView.f(FavSearchActionView.this).clear();
           FavSearchActionView.b(FavSearchActionView.this).clear();
           FavSearchActionView.d(FavSearchActionView.this).a(FavSearchActionView.e(FavSearchActionView.this), FavSearchActionView.f(FavSearchActionView.this), FavSearchActionView.b(FavSearchActionView.this), true);
@@ -347,7 +347,7 @@ public class FavSearchActionView
   
   public void setOnSearchChangedListener(a parama)
   {
-    this.rEO = parama;
+    this.rMZ = parama;
   }
   
   public static abstract interface a
@@ -356,7 +356,7 @@ public class FavSearchActionView
     
     public abstract void a(List<Integer> paramList, List<String> paramList1, List<String> paramList2, boolean paramBoolean);
     
-    public abstract void aSn();
+    public abstract void aSM();
   }
 }
 

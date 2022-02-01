@@ -1,11 +1,11 @@
 package com.tencent.mm.plugin.biz.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.am.ag;
+import com.tencent.mm.al.ag;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.bj;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bw;
+import com.tencent.mm.model.bl;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bx;
 import com.tencent.mm.storage.w;
 import com.tencent.mm.storage.z;
 import d.g.b.p;
@@ -13,27 +13,27 @@ import d.l;
 import d.n.n;
 import java.util.Map;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/biz/util/BizPayAlbumLogic;", "", "()V", "TAG", "", "getAlbumInfo", "Lcom/tencent/mm/storage/BizPayAlbum;", "msgContent", "isDataValid", "", "values", "", "onBizPayAlbumNotify", "", "addMsgInfo", "Lcom/tencent/mm/modelbase/IMessageExtension$AddMsgInfo;", "plugin-biz_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/biz/util/BizPayAlbumLogic;", "", "()V", "TAG", "", "getAlbumInfo", "Lcom/tencent/mm/storage/BizPayAlbum;", "msgContent", "isDataValid", "", "values", "", "onBizPayAlbumNotify", "", "addMsgInfo", "Lcom/tencent/mm/modelbase/IMessageExtension$AddMsgInfo;", "plugin-biz_release"})
 public final class a
 {
-  public static final a nOO;
+  public static final a nUu;
   
   static
   {
-    AppMethodBeat.i(207295);
-    nOO = new a();
-    AppMethodBeat.o(207295);
+    AppMethodBeat.i(188757);
+    nUu = new a();
+    AppMethodBeat.o(188757);
   }
   
-  public static com.tencent.mm.storage.v Wz(String paramString)
+  public static com.tencent.mm.storage.v Xl(String paramString)
   {
-    AppMethodBeat.i(207294);
+    AppMethodBeat.i(188756);
     com.tencent.mm.storage.v localv = new com.tencent.mm.storage.v();
     Object localObject = (CharSequence)paramString;
-    if ((localObject == null) || (n.aE((CharSequence)localObject))) {}
+    if ((localObject == null) || (n.aD((CharSequence)localObject))) {}
     for (int i = 1; i != 0; i = 0)
     {
-      AppMethodBeat.o(207294);
+      AppMethodBeat.o(188756);
       return localv;
     }
     localObject = null;
@@ -43,17 +43,17 @@ public final class a
       if (paramString == null)
       {
         paramString = new d.v("null cannot be cast to non-null type java.lang.String");
-        AppMethodBeat.o(207294);
+        AppMethodBeat.o(188756);
         throw paramString;
       }
       localObject = paramString.substring(i);
       p.g(localObject, "(this as java.lang.String).substring(startIndex)");
-      localObject = bw.M((String)localObject, "sysmsg");
+      localObject = bx.M((String)localObject, "sysmsg");
     }
     if (localObject == null)
     {
-      ad.e("MicroMsg.BizPayAlbumLogic", "XmlParser values is null, msgContent %s", new Object[] { paramString });
-      AppMethodBeat.o(207294);
+      ae.e("MicroMsg.BizPayAlbumLogic", "XmlParser values is null, msgContent %s", new Object[] { paramString });
+      AppMethodBeat.o(188756);
       return localv;
     }
     String str = (String)((Map)localObject).get(".sysmsg.BizNotification.BizAccount.UserName");
@@ -76,14 +76,14 @@ public final class a
       paramString = "";
     }
     p.h(paramString, "<set-?>");
-    localv.hDo = paramString;
+    localv.hGg = paramString;
     str = (String)((Map)localObject).get(".sysmsg.BizNotification.BizAccount.HeadImgUrl");
     paramString = str;
     if (str == null) {
       paramString = "";
     }
     p.h(paramString, "<set-?>");
-    localv.hDQ = paramString;
+    localv.hGI = paramString;
     str = (String)((Map)localObject).get(".sysmsg.BizNotification.AppMsg.Title");
     paramString = str;
     if (str == null) {
@@ -97,38 +97,38 @@ public final class a
       paramString = "";
     }
     p.h(paramString, "<set-?>");
-    localv.kwk = paramString;
-    AppMethodBeat.o(207294);
+    localv.kzz = paramString;
+    AppMethodBeat.o(188756);
     return localv;
   }
   
   public static void f(Map<String, String> paramMap, String paramString)
   {
-    AppMethodBeat.i(207293);
+    AppMethodBeat.i(188755);
     if ((paramString == null) || (paramMap == null))
     {
-      ad.w("MicroMsg.BizPayAlbumLogic", "onBizPayAlbumNotify data invalid");
-      AppMethodBeat.o(207293);
+      ae.w("MicroMsg.BizPayAlbumLogic", "onBizPayAlbumNotify data invalid");
+      AppMethodBeat.o(188755);
       return;
     }
-    if (!g.ajx())
+    if (!g.ajM())
     {
-      ad.i("MicroMsg.BizPayAlbumLogic", "onBizPayAlbumNotify acc not ready");
-      AppMethodBeat.o(207293);
+      ae.i("MicroMsg.BizPayAlbumLogic", "onBizPayAlbumNotify acc not ready");
+      AppMethodBeat.o(188755);
       return;
     }
-    ad.i("MicroMsg.BizPayAlbumLogic", "onBizPayAlbumNotify msgContent=".concat(String.valueOf(paramString)));
+    ae.i("MicroMsg.BizPayAlbumLogic", "onBizPayAlbumNotify msgContent=".concat(String.valueOf(paramString)));
     int i;
     if (paramMap == null) {
       i = 0;
     }
     while (i == 0)
     {
-      ad.i("MicroMsg.BizPayAlbumLogic", "onBizPayAlbumNotify data invalid");
-      AppMethodBeat.o(207293);
+      ae.i("MicroMsg.BizPayAlbumLogic", "onBizPayAlbumNotify data invalid");
+      AppMethodBeat.o(188755);
       return;
       localObject = (CharSequence)paramMap.get(".sysmsg.BizNotification.BizAccount.UserName");
-      if ((localObject == null) || (n.aE((CharSequence)localObject))) {}
+      if ((localObject == null) || (n.aD((CharSequence)localObject))) {}
       for (i = 1;; i = 0)
       {
         if (i == 0) {
@@ -139,7 +139,7 @@ public final class a
       }
       label124:
       localObject = (CharSequence)paramMap.get(".sysmsg.BizNotification.BizAccount.NickName");
-      if ((localObject == null) || (n.aE((CharSequence)localObject))) {}
+      if ((localObject == null) || (n.aD((CharSequence)localObject))) {}
       for (i = 1;; i = 0)
       {
         if (i == 0) {
@@ -150,7 +150,7 @@ public final class a
       }
       label166:
       localObject = (CharSequence)paramMap.get(".sysmsg.BizNotification.BizAccount.HeadImgUrl");
-      if ((localObject == null) || (n.aE((CharSequence)localObject))) {}
+      if ((localObject == null) || (n.aD((CharSequence)localObject))) {}
       for (i = 1;; i = 0)
       {
         if (i == 0) {
@@ -161,7 +161,7 @@ public final class a
       }
       label208:
       localObject = (CharSequence)paramMap.get(".sysmsg.BizNotification.plain");
-      if ((localObject == null) || (n.aE((CharSequence)localObject))) {}
+      if ((localObject == null) || (n.aD((CharSequence)localObject))) {}
       for (i = 1;; i = 0)
       {
         if (i == 0) {
@@ -172,7 +172,7 @@ public final class a
       }
       label250:
       localObject = (CharSequence)paramMap.get(".sysmsg.BizNotification.AppMsg.Title");
-      if ((localObject == null) || (n.aE((CharSequence)localObject))) {}
+      if ((localObject == null) || (n.aD((CharSequence)localObject))) {}
       for (i = 1;; i = 0)
       {
         if (i == 0) {
@@ -183,7 +183,7 @@ public final class a
       }
       label292:
       localObject = (CharSequence)paramMap.get(".sysmsg.BizNotification.AppMsg.WebUrl");
-      if ((localObject == null) || (n.aE((CharSequence)localObject))) {}
+      if ((localObject == null) || (n.aD((CharSequence)localObject))) {}
       for (i = 1;; i = 0)
       {
         if (i == 0) {
@@ -196,18 +196,18 @@ public final class a
       i = 1;
     }
     Object localObject = new w();
-    ((w)localObject).field_msgId = ag.aGg().fpK();
+    ((w)localObject).field_msgId = ag.aGw().ftK();
     ((w)localObject).field_msgSvrId = 0L;
     ((w)localObject).field_type = 10100;
     ((w)localObject).field_talker = ((String)paramMap.get(".sysmsg.BizNotification.BizAccount.UserName"));
     ((w)localObject).field_talkerId = 0;
-    ((w)localObject).field_createTime = bj.aCb();
-    ((w)localObject).jY(1);
+    ((w)localObject).field_createTime = bl.aCr();
+    ((w)localObject).ka(1);
     ((w)localObject).field_status = 3;
     ((w)localObject).field_content = paramString;
-    boolean bool = ag.aGg().o((w)localObject);
-    ad.i("MicroMsg.BizPayAlbumLogic", "onBizPayAlbumNotify result: %b, username: %s, msgid=" + ((w)localObject).field_msgId, new Object[] { Boolean.valueOf(bool), ((w)localObject).field_talker });
-    AppMethodBeat.o(207293);
+    boolean bool = ag.aGw().p((w)localObject);
+    ae.i("MicroMsg.BizPayAlbumLogic", "onBizPayAlbumNotify result: %b, username: %s, msgid=" + ((w)localObject).field_msgId, new Object[] { Boolean.valueOf(bool), ((w)localObject).field_talker });
+    AppMethodBeat.o(188755);
   }
 }
 

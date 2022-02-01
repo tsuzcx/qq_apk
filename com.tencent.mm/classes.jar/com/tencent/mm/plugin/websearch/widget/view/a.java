@@ -3,11 +3,11 @@ package com.tencent.mm.plugin.websearch.widget.view;
 import android.view.MenuItem;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aw.a.a.c;
-import com.tencent.mm.aw.a.a.c.a;
+import com.tencent.mm.av.a.a.c;
+import com.tencent.mm.av.a.a.c.a;
 import com.tencent.mm.plugin.websearch.api.aa;
 import com.tencent.mm.plugin.websearch.api.ab;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.ui.base.l;
 import com.tencent.mm.ui.base.n.a;
 import com.tencent.mm.ui.base.n.d;
@@ -20,36 +20,36 @@ import java.util.Map;
 
 public final class a
 {
-  private static final a DEG;
-  public Map<Integer, e> DEE;
-  private c DEF;
+  private static final a DWE;
+  public Map<Integer, e> DWC;
+  private c DWD;
   
   static
   {
     AppMethodBeat.i(116674);
-    DEG = new a();
+    DWE = new a();
     AppMethodBeat.o(116674);
   }
   
   private a()
   {
     AppMethodBeat.i(116672);
-    this.DEE = new HashMap();
+    this.DWC = new HashMap();
     c.a locala = new c.a();
-    locala.idr = true;
-    locala.idq = true;
-    this.DEF = locala.aJc();
+    locala.igk = true;
+    locala.igj = true;
+    this.DWD = locala.aJu();
     AppMethodBeat.o(116672);
   }
   
-  public static a eMP()
+  public static a eQA()
   {
-    return DEG;
+    return DWE;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.websearch.widget.view.a
  * JD-Core Version:    0.7.0.1
  */

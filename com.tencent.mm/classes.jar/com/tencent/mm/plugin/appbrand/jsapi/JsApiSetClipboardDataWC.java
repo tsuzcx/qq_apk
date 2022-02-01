@@ -5,17 +5,17 @@ import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
 import com.tencent.mm.plugin.appbrand.jsapi.x.l;
-import com.tencent.mm.plugin.appbrand.q;
+import com.tencent.mm.plugin.appbrand.r;
 import com.tencent.mm.plugin.secinforeport.a.a;
 
 public final class JsApiSetClipboardDataWC
-  extends l<q>
+  extends l<r>
 {
   static class ReportClipBoardTask
     extends MainProcessTask
   {
     public static final Parcelable.Creator<ReportClipBoardTask> CREATOR;
-    private String kuf;
+    private String kxv;
     private String mAppId;
     private int mLength;
     
@@ -36,15 +36,15 @@ public final class JsApiSetClipboardDataWC
     public ReportClipBoardTask(String paramString1, String paramString2, int paramInt)
     {
       this.mAppId = paramString1;
-      this.kuf = paramString2;
+      this.kxv = paramString2;
       this.mLength = paramInt;
     }
     
-    public final void aOA()
+    public final void aOX()
     {
       AppMethodBeat.i(45647);
-      a locala = a.yBN;
-      a.L(this.mLength, this.mAppId, this.kuf);
+      a locala = a.yRN;
+      a.K(this.mLength, this.mAppId, this.kxv);
       AppMethodBeat.o(45647);
     }
     
@@ -52,7 +52,7 @@ public final class JsApiSetClipboardDataWC
     {
       AppMethodBeat.i(45649);
       this.mAppId = paramParcel.readString();
-      this.kuf = paramParcel.readString();
+      this.kxv = paramParcel.readString();
       this.mLength = paramParcel.readInt();
       AppMethodBeat.o(45649);
     }
@@ -61,7 +61,7 @@ public final class JsApiSetClipboardDataWC
     {
       AppMethodBeat.i(45650);
       paramParcel.writeString(this.mAppId);
-      paramParcel.writeString(this.kuf);
+      paramParcel.writeString(this.kxv);
       paramParcel.writeInt(this.mLength);
       AppMethodBeat.o(45650);
     }

@@ -7,25 +7,25 @@ import android.os.Bundle;
 import android.webkit.WebView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.ac;
-import com.tencent.mm.protocal.protobuf.dep;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.dfj;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.ui.BaseActivity;
 
 public final class FullSdkExternalToolsHelper
   implements ac
 {
-  public final void a(Context paramContext, String paramString, dep paramdep)
+  public final void a(Context paramContext, String paramString, dfj paramdfj)
   {
     AppMethodBeat.i(146713);
-    ad.d("Luggage.FullSdkExternalToolsHelper", "open webview activity url: %s", new Object[] { paramString });
-    paramdep = new Intent(paramContext, SimpleWebViewActivity.class);
-    paramdep.putExtra("_url_", paramString);
+    ae.d("Luggage.FullSdkExternalToolsHelper", "open webview activity url: %s", new Object[] { paramString });
+    paramdfj = new Intent(paramContext, SimpleWebViewActivity.class);
+    paramdfj.putExtra("_url_", paramString);
     if (!(paramContext instanceof Activity)) {
-      paramdep.addFlags(268435456);
+      paramdfj.addFlags(268435456);
     }
-    paramString = new com.tencent.mm.hellhoundlib.b.a().bc(paramdep);
-    com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramString.ahp(), "com/tencent/luggage/sdk/customize/impl/FullSdkExternalToolsHelper", "openWebViewActivity", "(Landroid/content/Context;Ljava/lang/String;Lcom/tencent/mm/protocal/protobuf/SimpleWebViewLaunchParams;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    paramContext.startActivity((Intent)paramString.mq(0));
+    paramString = new com.tencent.mm.hellhoundlib.b.a().bc(paramdfj);
+    com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramString.ahE(), "com/tencent/luggage/sdk/customize/impl/FullSdkExternalToolsHelper", "openWebViewActivity", "(Landroid/content/Context;Ljava/lang/String;Lcom/tencent/mm/protocal/protobuf/SimpleWebViewLaunchParams;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramContext.startActivity((Intent)paramString.mt(0));
     com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/luggage/sdk/customize/impl/FullSdkExternalToolsHelper", "openWebViewActivity", "(Landroid/content/Context;Ljava/lang/String;Lcom/tencent/mm/protocal/protobuf/SimpleWebViewLaunchParams;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     AppMethodBeat.o(146713);
   }

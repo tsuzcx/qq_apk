@@ -6,50 +6,50 @@ import android.widget.LinearLayout;
 import com.tencent.e.h;
 import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.ba;
+import com.tencent.mm.model.bc;
 import com.tencent.mm.model.c;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.storage.bp;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.storage.bq;
 import com.tencent.mm.ui.aq;
 import java.util.List;
 
 public final class y
   extends LinearLayout
 {
-  private List<String> Kmg;
-  private a KoL;
-  private b KoM;
+  private List<String> KIA;
+  private a KLf;
+  private b KLg;
   private Context context;
-  private LinearLayout rEk;
+  private LinearLayout rMv;
   
   public y(Context paramContext, a parama)
   {
     super(paramContext);
     AppMethodBeat.i(37926);
-    this.rEk = null;
+    this.rMv = null;
     this.context = paramContext;
-    this.KoL = parama;
-    h.LTJ.aR(new Runnable()
+    this.KLf = parama;
+    h.MqF.aO(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(194556);
+        AppMethodBeat.i(187957);
         y localy = y.this;
-        ba.aBQ();
-        y.a(localy, c.azp().fqs());
+        bc.aCg();
+        y.a(localy, c.azF().fus());
         y.this.post(new Runnable()
         {
           public final void run()
           {
-            AppMethodBeat.i(194555);
+            AppMethodBeat.i(187956);
             if ((y.a(y.this) == null) || (y.a(y.this).size() <= 0))
             {
-              ad.i("MicroMsg.OpenIMListHeaderView", "openimIdList is null");
-              AppMethodBeat.o(194555);
+              ae.i("MicroMsg.OpenIMListHeaderView", "openimIdList is null");
+              AppMethodBeat.o(187956);
               return;
             }
             y.a(y.this).remove("wework");
-            ad.i("MicroMsg.OpenIMListHeaderView", "openim list size = %s", new Object[] { Integer.valueOf(y.a(y.this).size()) });
+            ae.i("MicroMsg.OpenIMListHeaderView", "openim list size = %s", new Object[] { Integer.valueOf(y.a(y.this).size()) });
             if (y.b(y.this) == null)
             {
               View.inflate(y.this.getContext(), 2131495057, y.this);
@@ -78,11 +78,11 @@ public final class y
                 ((z)localObject).findViewById(2131299501).findViewById(2131299503).setBackground(aq.aM(y.c(y.this), 2130969245));
               }
             }
-            y.d(y.this).aek(y.a(y.this).size());
-            AppMethodBeat.o(194555);
+            y.d(y.this).aeT(y.a(y.this).size());
+            AppMethodBeat.o(187956);
           }
         });
-        AppMethodBeat.o(194556);
+        AppMethodBeat.o(187957);
       }
     });
     AppMethodBeat.o(37926);
@@ -91,28 +91,28 @@ public final class y
   public final int getOpenIMCount()
   {
     AppMethodBeat.i(37927);
-    if (this.Kmg == null)
+    if (this.KIA == null)
     {
       AppMethodBeat.o(37927);
       return 0;
     }
-    int i = this.Kmg.size();
+    int i = this.KIA.size();
     AppMethodBeat.o(37927);
     return i;
   }
   
   public final void setOnVisibilityChangeListener(b paramb)
   {
-    this.KoM = paramb;
+    this.KLg = paramb;
   }
   
   public final void setVisibility(int paramInt)
   {
     AppMethodBeat.i(37929);
     b localb;
-    if ((this.KoM != null) && (paramInt != getVisibility()))
+    if ((this.KLg != null) && (paramInt != getVisibility()))
     {
-      localb = this.KoM;
+      localb = this.KLg;
       if (paramInt != 0) {
         break label49;
       }
@@ -120,7 +120,7 @@ public final class y
     label49:
     for (boolean bool = true;; bool = false)
     {
-      localb.yk(bool);
+      localb.yx(bool);
       super.setVisibility(paramInt);
       AppMethodBeat.o(37929);
       return;
@@ -129,12 +129,12 @@ public final class y
   
   public static abstract interface a
   {
-    public abstract void aek(int paramInt);
+    public abstract void aeT(int paramInt);
   }
   
   public static abstract interface b
   {
-    public abstract void yk(boolean paramBoolean);
+    public abstract void yx(boolean paramBoolean);
   }
 }
 

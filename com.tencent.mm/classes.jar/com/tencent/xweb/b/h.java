@@ -6,31 +6,31 @@ import java.io.File;
 public final class h
   implements d
 {
-  public d MsA;
+  public d MPE;
   
   private h(d paramd)
   {
-    this.MsA = paramd;
+    this.MPE = paramd;
   }
   
   public h(File paramFile)
   {
     AppMethodBeat.i(183514);
-    this.MsA = g.gbz().ah(paramFile);
+    this.MPE = g.ggb().ag(paramFile);
     AppMethodBeat.o(183514);
   }
   
   public h(String paramString)
   {
     AppMethodBeat.i(183513);
-    this.MsA = g.gbz().bbg(paramString);
+    this.MPE = g.ggb().bcJ(paramString);
     AppMethodBeat.o(183513);
   }
   
   public final boolean delete()
   {
     AppMethodBeat.i(183521);
-    boolean bool = this.MsA.delete();
+    boolean bool = this.MPE.delete();
     AppMethodBeat.o(183521);
     return bool;
   }
@@ -38,16 +38,40 @@ public final class h
   public final boolean exists()
   {
     AppMethodBeat.i(183520);
-    boolean bool = this.MsA.exists();
+    boolean bool = this.MPE.exists();
     AppMethodBeat.o(183520);
     return bool;
   }
   
-  public final h[] gbA()
+  public final String getAbsolutePath()
+  {
+    AppMethodBeat.i(183519);
+    String str = this.MPE.getPath();
+    AppMethodBeat.o(183519);
+    return str;
+  }
+  
+  public final String getName()
+  {
+    AppMethodBeat.i(183518);
+    String str = this.MPE.getPath();
+    AppMethodBeat.o(183518);
+    return str;
+  }
+  
+  public final String getPath()
+  {
+    AppMethodBeat.i(183515);
+    String str = this.MPE.getPath();
+    AppMethodBeat.o(183515);
+    return str;
+  }
+  
+  public final h[] ggc()
   {
     int i = 0;
     AppMethodBeat.i(183517);
-    d[] arrayOfd = this.MsA.gbx();
+    d[] arrayOfd = this.MPE.gfZ();
     if ((arrayOfd == null) || (arrayOfd.length == 0))
     {
       AppMethodBeat.o(183517);
@@ -63,34 +87,10 @@ public final class h
     return arrayOfh;
   }
   
-  public final String getAbsolutePath()
-  {
-    AppMethodBeat.i(183519);
-    String str = this.MsA.getPath();
-    AppMethodBeat.o(183519);
-    return str;
-  }
-  
-  public final String getName()
-  {
-    AppMethodBeat.i(183518);
-    String str = this.MsA.getPath();
-    AppMethodBeat.o(183518);
-    return str;
-  }
-  
-  public final String getPath()
-  {
-    AppMethodBeat.i(183515);
-    String str = this.MsA.getPath();
-    AppMethodBeat.o(183515);
-    return str;
-  }
-  
   public final boolean isDirectory()
   {
     AppMethodBeat.i(183516);
-    boolean bool = this.MsA.isDirectory();
+    boolean bool = this.MPE.isDirectory();
     AppMethodBeat.o(183516);
     return bool;
   }
@@ -98,7 +98,7 @@ public final class h
   public final String[] list()
   {
     AppMethodBeat.i(183522);
-    String[] arrayOfString = this.MsA.list();
+    String[] arrayOfString = this.MPE.list();
     AppMethodBeat.o(183522);
     return arrayOfString;
   }

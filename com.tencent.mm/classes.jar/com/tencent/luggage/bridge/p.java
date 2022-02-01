@@ -2,7 +2,7 @@ package com.tencent.luggage.bridge;
 
 public abstract interface p
 {
-  public abstract String cw(String paramString);
+  public abstract String cx(String paramString);
   
   public abstract void onReady();
 }

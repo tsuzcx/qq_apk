@@ -17,21 +17,19 @@ import com.tencent.mm.platformtools.p;
 import com.tencent.mm.ui.base.MultiTouchImageView;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.base.h.c;
-import com.tencent.mm.ui.base.o;
 import com.tencent.mm.ui.tools.MMGestureGallery;
 import com.tencent.mm.ui.tools.MMGestureGallery.c;
 import com.tencent.mm.ui.tools.MMGestureGallery.f;
-import com.tencent.mm.vfs.i;
 
 public class GetHdHeadImageGalleryView
   extends MMGestureGallery
 {
-  private o ESC;
-  private Bitmap ESD;
-  private Bitmap ESE;
-  private a ESF;
+  private com.tencent.mm.ui.base.o FkX;
+  private Bitmap FkY;
+  private Bitmap FkZ;
+  private a Fla;
   private String username;
-  private String yEx;
+  private String yUC;
   
   public GetHdHeadImageGalleryView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -52,10 +50,10 @@ public class GetHdHeadImageGalleryView
   private void init()
   {
     AppMethodBeat.i(152135);
-    this.ESF = new a((byte)0);
+    this.Fla = new a((byte)0);
     setVerticalFadingEdgeEnabled(false);
     setHorizontalFadingEdgeEnabled(false);
-    setAdapter(this.ESF);
+    setAdapter(this.Fla);
     setSelection(0);
     setSingleClickOverListener(new c((byte)0));
     setLongClickOverListener(new b((byte)0));
@@ -65,26 +63,26 @@ public class GetHdHeadImageGalleryView
   public void setHdHeadImage(Bitmap paramBitmap)
   {
     AppMethodBeat.i(152137);
-    this.ESE = paramBitmap;
-    this.ESF.notifyDataSetChanged();
+    this.FkZ = paramBitmap;
+    this.Fla.notifyDataSetChanged();
     AppMethodBeat.o(152137);
   }
   
   public void setHdHeadImagePath(String paramString)
   {
-    this.yEx = paramString;
+    this.yUC = paramString;
   }
   
-  public void setParentWindow(o paramo)
+  public void setParentWindow(com.tencent.mm.ui.base.o paramo)
   {
-    this.ESC = paramo;
+    this.FkX = paramo;
   }
   
   public void setThumbImage(Bitmap paramBitmap)
   {
     AppMethodBeat.i(152136);
-    this.ESD = paramBitmap;
-    this.ESF.notifyDataSetChanged();
+    this.FkY = paramBitmap;
+    this.Fla.notifyDataSetChanged();
     AppMethodBeat.o(152136);
   }
   
@@ -123,9 +121,9 @@ public class GetHdHeadImageGalleryView
       {
         paramView = new a();
         localView = View.inflate(GetHdHeadImageGalleryView.this.getContext(), 2131495846, null);
-        paramView.BjL = ((ProgressBar)localView.findViewById(2131300689));
-        paramView.dwy = ((ImageView)localView.findViewById(2131300688));
-        paramView.ESH = localView.findViewById(2131300690);
+        paramView.BBk = ((ProgressBar)localView.findViewById(2131300689));
+        paramView.dxD = ((ImageView)localView.findViewById(2131300688));
+        paramView.Flc = localView.findViewById(2131300690);
         localView.setTag(paramView);
         paramViewGroup = paramView;
       }
@@ -135,9 +133,9 @@ public class GetHdHeadImageGalleryView
         if (GetHdHeadImageGalleryView.d(GetHdHeadImageGalleryView.this) == null) {
           break;
         }
-        paramViewGroup.BjL.setVisibility(8);
-        paramViewGroup.dwy.setVisibility(8);
-        paramViewGroup.ESH.setVisibility(8);
+        paramViewGroup.BBk.setVisibility(8);
+        paramViewGroup.dxD.setVisibility(8);
+        paramViewGroup.Flc.setVisibility(8);
         paramView = new MultiTouchImageView(GetHdHeadImageGalleryView.this.getContext(), GetHdHeadImageGalleryView.d(GetHdHeadImageGalleryView.this).getWidth(), GetHdHeadImageGalleryView.d(GetHdHeadImageGalleryView.this).getHeight(), (byte)0);
         paramView.setLayoutParams(new Gallery.LayoutParams(-1, -1));
         paramView.setImageBitmap(GetHdHeadImageGalleryView.d(GetHdHeadImageGalleryView.this));
@@ -148,26 +146,26 @@ public class GetHdHeadImageGalleryView
         paramViewGroup = (a)paramView.getTag();
         localView = paramView;
       }
-      paramViewGroup.BjL.setVisibility(0);
-      paramViewGroup.ESH.setVisibility(0);
+      paramViewGroup.BBk.setVisibility(0);
+      paramViewGroup.Flc.setVisibility(0);
       if (GetHdHeadImageGalleryView.e(GetHdHeadImageGalleryView.this) != null)
       {
-        paramViewGroup.dwy.setVisibility(0);
-        paramViewGroup.dwy.setImageBitmap(GetHdHeadImageGalleryView.e(GetHdHeadImageGalleryView.this));
+        paramViewGroup.dxD.setVisibility(0);
+        paramViewGroup.dxD.setImageBitmap(GetHdHeadImageGalleryView.e(GetHdHeadImageGalleryView.this));
       }
       for (;;)
       {
         AppMethodBeat.o(152129);
         return localView;
-        paramViewGroup.dwy.setVisibility(8);
+        paramViewGroup.dxD.setVisibility(8);
       }
     }
     
     final class a
     {
-      ProgressBar BjL;
-      View ESH;
-      ImageView dwy;
+      ProgressBar BBk;
+      View Flc;
+      ImageView dxD;
       
       a() {}
     }
@@ -178,7 +176,7 @@ public class GetHdHeadImageGalleryView
   {
     private b() {}
     
-    public final void aRq()
+    public final void aRP()
     {
       AppMethodBeat.i(152131);
       if ((GetHdHeadImageGalleryView.b(GetHdHeadImageGalleryView.this) != null) && (GetHdHeadImageGalleryView.c(GetHdHeadImageGalleryView.this) != null))
@@ -186,7 +184,7 @@ public class GetHdHeadImageGalleryView
         String[] arrayOfString = GetHdHeadImageGalleryView.this.getContext().getResources().getStringArray(2130903052);
         h.a(GetHdHeadImageGalleryView.this.getContext(), null, arrayOfString, "", new h.c()
         {
-          public final void lf(int paramAnonymousInt)
+          public final void lh(int paramAnonymousInt)
           {
             AppMethodBeat.i(152130);
             switch (paramAnonymousInt)
@@ -200,21 +198,21 @@ public class GetHdHeadImageGalleryView
               {
                 public final void run()
                 {
-                  AppMethodBeat.i(195446);
-                  String str = com.tencent.mm.loader.j.b.asg() + "hdImg_" + g.getMessageDigest(GetHdHeadImageGalleryView.c(GetHdHeadImageGalleryView.this).getBytes()) + System.currentTimeMillis() + ".jpg";
-                  i.deleteFile(str);
-                  i.mz(GetHdHeadImageGalleryView.b(GetHdHeadImageGalleryView.this), str);
+                  AppMethodBeat.i(218899);
+                  String str = com.tencent.mm.loader.j.b.asv() + "hdImg_" + g.getMessageDigest(GetHdHeadImageGalleryView.c(GetHdHeadImageGalleryView.this).getBytes()) + System.currentTimeMillis() + ".jpg";
+                  com.tencent.mm.vfs.o.deleteFile(str);
+                  com.tencent.mm.vfs.o.mF(GetHdHeadImageGalleryView.b(GetHdHeadImageGalleryView.this), str);
                   com.tencent.mm.sdk.f.b.k(str, GetHdHeadImageGalleryView.this.getContext());
-                  Toast.makeText(GetHdHeadImageGalleryView.this.getContext(), GetHdHeadImageGalleryView.this.getContext().getString(2131760066, new Object[] { com.tencent.mm.loader.j.b.asg() }), 1).show();
-                  AppMethodBeat.o(195446);
+                  Toast.makeText(GetHdHeadImageGalleryView.this.getContext(), GetHdHeadImageGalleryView.this.getContext().getString(2131760066, new Object[] { com.tencent.mm.loader.j.b.asv() }), 1).show();
+                  AppMethodBeat.o(218899);
                 }
               }, new Runnable()
               {
                 public final void run()
                 {
-                  AppMethodBeat.i(195447);
+                  AppMethodBeat.i(218900);
                   Toast.makeText(GetHdHeadImageGalleryView.this.getContext(), GetHdHeadImageGalleryView.this.getContext().getString(2131762779), 1).show();
-                  AppMethodBeat.o(195447);
+                  AppMethodBeat.o(218900);
                 }
               });
             }
@@ -230,7 +228,7 @@ public class GetHdHeadImageGalleryView
   {
     private c() {}
     
-    public final void aRp()
+    public final void aRO()
     {
       AppMethodBeat.i(152132);
       if (GetHdHeadImageGalleryView.a(GetHdHeadImageGalleryView.this) != null) {

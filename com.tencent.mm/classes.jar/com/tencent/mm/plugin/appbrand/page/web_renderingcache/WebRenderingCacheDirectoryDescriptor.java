@@ -9,7 +9,7 @@ public class WebRenderingCacheDirectoryDescriptor
   implements Parcelable
 {
   public static final Parcelable.Creator<WebRenderingCacheDirectoryDescriptor> CREATOR;
-  public String mgQ;
+  public String mlP;
   
   static
   {
@@ -23,7 +23,7 @@ public class WebRenderingCacheDirectoryDescriptor
   protected WebRenderingCacheDirectoryDescriptor(Parcel paramParcel)
   {
     AppMethodBeat.i(47976);
-    this.mgQ = paramParcel.readString();
+    this.mlP = paramParcel.readString();
     AppMethodBeat.o(47976);
   }
   
@@ -35,7 +35,7 @@ public class WebRenderingCacheDirectoryDescriptor
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(47975);
-    paramParcel.writeString(this.mgQ);
+    paramParcel.writeString(this.mlP);
     AppMethodBeat.o(47975);
   }
 }

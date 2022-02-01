@@ -1,10 +1,24 @@
 package com.tencent.mm.model;
 
-import java.util.List;
-
 public abstract interface an
 {
-  public abstract List<am> getDataTransferList();
+  public abstract void ak(String paramString1, String paramString2);
+  
+  public abstract void wj(String paramString);
+  
+  public abstract void wk(String paramString);
+  
+  public abstract am wl(String paramString);
+  
+  public abstract am wm(String paramString);
+  
+  public abstract void wn(String paramString);
+  
+  public abstract void wo(String paramString);
+  
+  public abstract void wp(String paramString);
+  
+  public abstract void wq(String paramString);
 }
 
 

@@ -1,113 +1,74 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import f.a.a.b;
 
 public final class dvx
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public boolean BHz;
-  public String DCE;
-  public long duration;
-  public String hml;
+  public int FQm;
+  public String GvN;
+  public int Ibo;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(215811);
+    AppMethodBeat.i(152724);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.DCE == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: templatePath");
-        AppMethodBeat.o(215811);
-        throw paramVarArgs;
+      paramVarArgs.aS(1, this.FQm);
+      if (this.GvN != null) {
+        paramVarArgs.d(2, this.GvN);
       }
-      if (this.hml == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: musicPath");
-        AppMethodBeat.o(215811);
-        throw paramVarArgs;
-      }
-      if (this.DCE != null) {
-        paramVarArgs.d(1, this.DCE);
-      }
-      if (this.hml != null) {
-        paramVarArgs.d(2, this.hml);
-      }
-      paramVarArgs.aY(3, this.duration);
-      paramVarArgs.bt(4, this.BHz);
-      AppMethodBeat.o(215811);
+      paramVarArgs.aS(3, this.Ibo);
+      AppMethodBeat.o(152724);
       return 0;
     }
-    if (paramInt == 1) {
-      if (this.DCE == null) {
-        break label458;
-      }
-    }
-    label458:
-    for (paramInt = f.a.a.b.b.a.e(1, this.DCE) + 0;; paramInt = 0)
+    if (paramInt == 1)
     {
-      int i = paramInt;
-      if (this.hml != null) {
-        i = paramInt + f.a.a.b.b.a.e(2, this.hml);
+      int i = f.a.a.b.b.a.bz(1, this.FQm) + 0;
+      paramInt = i;
+      if (this.GvN != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.GvN);
       }
-      paramInt = f.a.a.b.b.a.p(3, this.duration);
-      int j = f.a.a.b.b.a.alV(4);
-      AppMethodBeat.o(215811);
-      return i + paramInt + j;
-      if (paramInt == 2)
-      {
-        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
-          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
-          }
-        }
-        if (this.DCE == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: templatePath");
-          AppMethodBeat.o(215811);
-          throw paramVarArgs;
-        }
-        if (this.hml == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: musicPath");
-          AppMethodBeat.o(215811);
-          throw paramVarArgs;
-        }
-        AppMethodBeat.o(215811);
-        return 0;
-      }
-      if (paramInt == 3)
-      {
-        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
-        dvx localdvx = (dvx)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
-        {
-        default: 
-          AppMethodBeat.o(215811);
-          return -1;
-        case 1: 
-          localdvx.DCE = locala.NPN.readString();
-          AppMethodBeat.o(215811);
-          return 0;
-        case 2: 
-          localdvx.hml = locala.NPN.readString();
-          AppMethodBeat.o(215811);
-          return 0;
-        case 3: 
-          localdvx.duration = locala.NPN.zd();
-          AppMethodBeat.o(215811);
-          return 0;
-        }
-        localdvx.BHz = locala.NPN.grw();
-        AppMethodBeat.o(215811);
-        return 0;
-      }
-      AppMethodBeat.o(215811);
-      return -1;
+      i = f.a.a.b.b.a.bz(3, this.Ibo);
+      AppMethodBeat.o(152724);
+      return paramInt + i;
     }
+    if (paramInt == 2)
+    {
+      paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.gCg();
+        }
+      }
+      AppMethodBeat.o(152724);
+      return 0;
+    }
+    if (paramInt == 3)
+    {
+      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+      dvx localdvx = (dvx)paramVarArgs[1];
+      switch (((Integer)paramVarArgs[2]).intValue())
+      {
+      default: 
+        AppMethodBeat.o(152724);
+        return -1;
+      case 1: 
+        localdvx.FQm = locala.OmT.zc();
+        AppMethodBeat.o(152724);
+        return 0;
+      case 2: 
+        localdvx.GvN = locala.OmT.readString();
+        AppMethodBeat.o(152724);
+        return 0;
+      }
+      localdvx.Ibo = locala.OmT.zc();
+      AppMethodBeat.o(152724);
+      return 0;
+    }
+    AppMethodBeat.o(152724);
+    return -1;
   }
 }
 

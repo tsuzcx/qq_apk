@@ -5,24 +5,24 @@ import kotlinx.a.h;
 import kotlinx.a.l.f;
 import kotlinx.a.n;
 
-@d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/serialization/internal/IntSerializer;", "Lkotlinx/serialization/KSerializer;", "", "()V", "descriptor", "Lkotlinx/serialization/SerialDescriptor;", "getDescriptor", "()Lkotlinx/serialization/SerialDescriptor;", "deserialize", "decoder", "Lkotlinx/serialization/Decoder;", "(Lkotlinx/serialization/Decoder;)Ljava/lang/Integer;", "serialize", "", "encoder", "Lkotlinx/serialization/Encoder;", "value", "kotlinx-serialization-runtime"})
+@d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/serialization/internal/IntSerializer;", "Lkotlinx/serialization/KSerializer;", "", "()V", "descriptor", "Lkotlinx/serialization/SerialDescriptor;", "getDescriptor", "()Lkotlinx/serialization/SerialDescriptor;", "deserialize", "decoder", "Lkotlinx/serialization/Decoder;", "(Lkotlinx/serialization/Decoder;)Ljava/lang/Integer;", "serialize", "", "encoder", "Lkotlinx/serialization/Encoder;", "value", "kotlinx-serialization-runtime"})
 public final class ab
   implements h<Integer>
 {
-  private static final n NLm;
-  public static final ab NMs;
+  private static final n Ois;
+  public static final ab Ojy;
   
   static
   {
-    AppMethodBeat.i(191120);
-    NMs = new ab();
-    NLm = (n)new ay("kotlin.Int", (kotlinx.a.l)l.f.NLu);
-    AppMethodBeat.o(191120);
+    AppMethodBeat.i(199708);
+    Ojy = new ab();
+    Ois = (n)new ay("kotlin.Int", (kotlinx.a.l)l.f.OiA);
+    AppMethodBeat.o(199708);
   }
   
-  public final n eLj()
+  public final n eOR()
   {
-    return NLm;
+    return Ois;
   }
 }
 

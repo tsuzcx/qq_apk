@@ -11,7 +11,7 @@ final class SnsUploadUI$8
   public final void run()
   {
     AppMethodBeat.i(176369);
-    i.v(this.Ape);
+    i.v(this.AGr);
     AppMethodBeat.o(176369);
   }
 }

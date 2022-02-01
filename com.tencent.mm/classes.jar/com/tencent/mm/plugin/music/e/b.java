@@ -9,7 +9,7 @@ public abstract interface b
 {
   public abstract AudioTrack am(int paramInt1, int paramInt2, int paramInt3);
   
-  public abstract MediaPlayer dsM();
+  public abstract MediaPlayer dwb();
 }
 
 

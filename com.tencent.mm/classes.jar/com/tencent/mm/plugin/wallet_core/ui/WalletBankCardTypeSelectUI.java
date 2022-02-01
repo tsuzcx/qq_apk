@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.base.preference.SelectPreference;
@@ -17,10 +17,10 @@ import java.util.ArrayList;
 public class WalletBankCardTypeSelectUI
   extends MMPreference
 {
-  private ArrayList<String> Dcm;
-  private String Dcn;
-  private SelectPreference Dco;
-  private SelectPreference Dcp;
+  private ArrayList<String> DtQ;
+  private String DtR;
+  private SelectPreference DtS;
+  private SelectPreference DtT;
   private f screen;
   
   public int getResourceId()
@@ -33,19 +33,19 @@ public class WalletBankCardTypeSelectUI
     AppMethodBeat.i(70716);
     this.screen = getPreferenceScreen();
     int i = 0;
-    while (i < this.Dcm.size())
+    while (i < this.DtQ.size())
     {
       SelectPreference localSelectPreference = new SelectPreference(getContext());
-      localSelectPreference.setKey((String)this.Dcm.get(i));
-      localSelectPreference.setTitle((CharSequence)this.Dcm.get(i));
+      localSelectPreference.setKey((String)this.DtQ.get(i));
+      localSelectPreference.setTitle((CharSequence)this.DtQ.get(i));
       this.screen.b(localSelectPreference);
       i += 1;
     }
-    if (this.Dcm.get(0) != null)
+    if (this.DtQ.get(0) != null)
     {
-      this.Dcp = ((SelectPreference)this.screen.aVD((String)this.Dcm.get(0)));
-      this.Dcp.isSelected = true;
-      this.Dcn = ((String)this.Dcm.get(0));
+      this.DtT = ((SelectPreference)this.screen.aXe((String)this.DtQ.get(0)));
+      this.DtT.isSelected = true;
+      this.DtR = ((String)this.DtQ.get(0));
       this.screen.notifyDataSetChanged();
     }
     setBackBtn(new MenuItem.OnMenuItemClickListener()
@@ -66,13 +66,13 @@ public class WalletBankCardTypeSelectUI
         AppMethodBeat.i(174509);
         paramAnonymousMenuItem = new Intent();
         paramAnonymousMenuItem.putExtra("bank_card_acc_name", WalletBankCardTypeSelectUI.a(WalletBankCardTypeSelectUI.this));
-        ad.i("WalletBankCardTypeSelectUI", "item bank: %s", new Object[] { WalletBankCardTypeSelectUI.a(WalletBankCardTypeSelectUI.this) });
+        ae.i("WalletBankCardTypeSelectUI", "item bank: %s", new Object[] { WalletBankCardTypeSelectUI.a(WalletBankCardTypeSelectUI.this) });
         WalletBankCardTypeSelectUI.this.setResult(-1, paramAnonymousMenuItem);
         WalletBankCardTypeSelectUI.this.finish();
         AppMethodBeat.o(174509);
         return true;
       }
-    }, null, s.b.JbS);
+    }, null, s.b.JwA);
     AppMethodBeat.o(70716);
   }
   
@@ -81,7 +81,7 @@ public class WalletBankCardTypeSelectUI
     AppMethodBeat.i(70715);
     super.onCreate(paramBundle);
     setMMTitle(2131765245);
-    this.Dcm = getIntent().getStringArrayListExtra("bank_type_show_list");
+    this.DtQ = getIntent().getStringArrayListExtra("bank_type_show_list");
     initView();
     AppMethodBeat.o(70715);
   }
@@ -91,17 +91,17 @@ public class WalletBankCardTypeSelectUI
     AppMethodBeat.i(174510);
     paramPreference = paramPreference.mKey;
     int i = 0;
-    while (i < this.Dcm.size())
+    while (i < this.DtQ.size())
     {
-      if (paramPreference.equals(this.Dcm.get(i)))
+      if (paramPreference.equals(this.DtQ.get(i)))
       {
-        this.Dco = ((SelectPreference)paramf.aVD((String)this.Dcm.get(i)));
-        this.Dco.isSelected = true;
-        this.Dcn = ((String)this.Dcm.get(i));
-        if (!this.Dcp.mKey.equals(this.Dco.mKey))
+        this.DtS = ((SelectPreference)paramf.aXe((String)this.DtQ.get(i)));
+        this.DtS.isSelected = true;
+        this.DtR = ((String)this.DtQ.get(i));
+        if (!this.DtT.mKey.equals(this.DtS.mKey))
         {
-          this.Dcp.isSelected = false;
-          this.Dcp = this.Dco;
+          this.DtT.isSelected = false;
+          this.DtT = this.DtS;
         }
         paramf.notifyDataSetChanged();
       }

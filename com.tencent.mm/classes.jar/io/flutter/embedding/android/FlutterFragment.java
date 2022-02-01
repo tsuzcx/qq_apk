@@ -18,7 +18,7 @@ public class FlutterFragment
   extends Fragment
   implements c.a
 {
-  c MBi;
+  c MYn;
   
   public FlutterFragment()
   {
@@ -27,19 +27,19 @@ public class FlutterFragment
     AppMethodBeat.o(10085);
   }
   
-  public static a bbJ(String paramString)
+  public static a bdn(String paramString)
   {
-    AppMethodBeat.i(213301);
+    AppMethodBeat.i(197883);
     paramString = new a(paramString, (byte)0);
-    AppMethodBeat.o(213301);
+    AppMethodBeat.o(197883);
     return paramString;
   }
   
-  public static b geq()
+  public static b giT()
   {
-    AppMethodBeat.i(213300);
+    AppMethodBeat.i(197882);
     b localb = new b();
-    AppMethodBeat.o(213300);
+    AppMethodBeat.o(197882);
     return localb;
   }
   
@@ -48,7 +48,7 @@ public class FlutterFragment
     AppMethodBeat.i(10107);
     if (paramActivity != null)
     {
-      paramActivity = new io.flutter.plugin.platform.b(getActivity(), parama.MCn);
+      paramActivity = new io.flutter.plugin.platform.b(getActivity(), parama.MZs);
       AppMethodBeat.o(10107);
       return paramActivity;
     }
@@ -68,49 +68,35 @@ public class FlutterFragment
   
   public final void b(io.flutter.embedding.engine.a parama)
   {
-    AppMethodBeat.i(213306);
+    AppMethodBeat.i(197888);
     FragmentActivity localFragmentActivity = getActivity();
     if ((localFragmentActivity instanceof e)) {
       ((e)localFragmentActivity).b(parama);
     }
-    AppMethodBeat.o(213306);
+    AppMethodBeat.o(197888);
   }
   
-  public final void cQm()
+  public final void cSR()
   {
-    AppMethodBeat.i(213307);
+    AppMethodBeat.i(197889);
     FragmentActivity localFragmentActivity = getActivity();
     if ((localFragmentActivity instanceof io.flutter.embedding.engine.b.b)) {
-      ((io.flutter.embedding.engine.b.b)localFragmentActivity).cQm();
+      ((io.flutter.embedding.engine.b.b)localFragmentActivity).cSR();
     }
-    AppMethodBeat.o(213307);
+    AppMethodBeat.o(197889);
   }
   
-  public final void cQn()
+  public final void cSS()
   {
-    AppMethodBeat.i(213308);
+    AppMethodBeat.i(197890);
     FragmentActivity localFragmentActivity = getActivity();
     if ((localFragmentActivity instanceof io.flutter.embedding.engine.b.b)) {
-      ((io.flutter.embedding.engine.b.b)localFragmentActivity).cQn();
+      ((io.flutter.embedding.engine.b.b)localFragmentActivity).cSS();
     }
-    AppMethodBeat.o(213308);
+    AppMethodBeat.o(197890);
   }
   
-  public final h dfL()
-  {
-    AppMethodBeat.i(10105);
-    Object localObject = getActivity();
-    if ((localObject instanceof i))
-    {
-      localObject = ((i)localObject).dfL();
-      AppMethodBeat.o(10105);
-      return localObject;
-    }
-    AppMethodBeat.o(10105);
-    return null;
-  }
-  
-  public final String dfO()
+  public final String diI()
   {
     AppMethodBeat.i(10098);
     String str = getArguments().getString("cached_engine_id", null);
@@ -118,7 +104,7 @@ public class FlutterFragment
     return str;
   }
   
-  public final String dfP()
+  public final String diJ()
   {
     AppMethodBeat.i(10100);
     String str = getArguments().getString("dart_entrypoint", "main");
@@ -126,7 +112,7 @@ public class FlutterFragment
     return str;
   }
   
-  public final String dfQ()
+  public final String diK()
   {
     AppMethodBeat.i(10101);
     String str = getArguments().getString("app_bundle_path", FlutterMain.findAppBundlePath());
@@ -134,7 +120,7 @@ public class FlutterFragment
     return str;
   }
   
-  public final String dfR()
+  public final String diL()
   {
     AppMethodBeat.i(10102);
     String str = getArguments().getString("initial_route");
@@ -142,24 +128,38 @@ public class FlutterFragment
     return str;
   }
   
-  public final io.flutter.embedding.engine.a dfU()
+  public final io.flutter.embedding.engine.a diO()
   {
     AppMethodBeat.i(10106);
     Object localObject = getActivity();
     if ((localObject instanceof f))
     {
-      io.flutter.a.gea();
+      io.flutter.a.giD();
       localObject = (f)localObject;
       getContext();
     }
-    for (localObject = ((f)localObject).dfU();; localObject = null)
+    for (localObject = ((f)localObject).diO();; localObject = null)
     {
       AppMethodBeat.o(10106);
       return localObject;
     }
   }
   
-  public final d gej()
+  public final h diP()
+  {
+    AppMethodBeat.i(10105);
+    Object localObject = getActivity();
+    if ((localObject instanceof i))
+    {
+      localObject = ((i)localObject).diP();
+      AppMethodBeat.o(10105);
+      return localObject;
+    }
+    AppMethodBeat.o(10105);
+    return null;
+  }
+  
+  public final d giM()
   {
     AppMethodBeat.i(10097);
     Object localObject = getArguments().getStringArray("initialization_args");
@@ -173,11 +173,11 @@ public class FlutterFragment
     }
   }
   
-  public final boolean gek()
+  public final boolean giN()
   {
     AppMethodBeat.i(10099);
     boolean bool = getArguments().getBoolean("destroy_engine_with_fragment", false);
-    if ((dfO() != null) || (this.MBi.Mld))
+    if ((diI() != null) || (this.MYn.MIa))
     {
       AppMethodBeat.o(10099);
       return bool;
@@ -187,23 +187,23 @@ public class FlutterFragment
     return bool;
   }
   
-  public final g gel()
+  public final g giO()
   {
-    AppMethodBeat.i(213304);
-    g localg = g.valueOf(getArguments().getString("flutterview_render_mode", g.MCa.name()));
-    AppMethodBeat.o(213304);
+    AppMethodBeat.i(197886);
+    g localg = g.valueOf(getArguments().getString("flutterview_render_mode", g.MZf.name()));
+    AppMethodBeat.o(197886);
     return localg;
   }
   
-  public final j gem()
+  public final j giP()
   {
-    AppMethodBeat.i(213305);
-    j localj = j.valueOf(getArguments().getString("flutterview_transparency_mode", j.MCe.name()));
-    AppMethodBeat.o(213305);
+    AppMethodBeat.i(197887);
+    j localj = j.valueOf(getArguments().getString("flutterview_transparency_mode", j.MZj.name()));
+    AppMethodBeat.o(197887);
     return localj;
   }
   
-  public final boolean gen()
+  public final boolean giQ()
   {
     AppMethodBeat.i(10109);
     boolean bool = getArguments().getBoolean("should_attach_engine_to_activity");
@@ -213,16 +213,16 @@ public class FlutterFragment
   
   public void onActivityCreated(Bundle paramBundle)
   {
-    AppMethodBeat.i(213302);
+    AppMethodBeat.i(197884);
     super.onActivityCreated(paramBundle);
-    this.MBi.geo();
-    AppMethodBeat.o(213302);
+    this.MYn.giR();
+    AppMethodBeat.o(197884);
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     AppMethodBeat.i(10095);
-    this.MBi.onActivityResult(paramInt1, paramInt2, paramIntent);
+    this.MYn.onActivityResult(paramInt1, paramInt2, paramIntent);
     AppMethodBeat.o(10095);
   }
   
@@ -230,15 +230,15 @@ public class FlutterFragment
   {
     AppMethodBeat.i(10086);
     super.onAttach(paramContext);
-    this.MBi = new c(this);
-    this.MBi.fYW();
+    this.MYn = new c(this);
+    this.MYn.gdx();
     AppMethodBeat.o(10086);
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     AppMethodBeat.i(10087);
-    paramLayoutInflater = this.MBi.fYY();
+    paramLayoutInflater = this.MYn.gdz();
     AppMethodBeat.o(10087);
     return paramLayoutInflater;
   }
@@ -247,7 +247,7 @@ public class FlutterFragment
   {
     AppMethodBeat.i(10092);
     super.onDestroyView();
-    this.MBi.onDestroyView();
+    this.MYn.onDestroyView();
     AppMethodBeat.o(10092);
   }
   
@@ -255,13 +255,13 @@ public class FlutterFragment
   {
     AppMethodBeat.i(10093);
     super.onDetach();
-    this.MBi.onDetach();
-    c localc = this.MBi;
-    localc.MBj = null;
-    localc.tiq = null;
-    localc.tiF = null;
-    localc.Mlc = null;
-    this.MBi = null;
+    this.MYn.onDetach();
+    c localc = this.MYn;
+    localc.MYo = null;
+    localc.tti = null;
+    localc.ttx = null;
+    localc.MHZ = null;
+    this.MYn = null;
     AppMethodBeat.o(10093);
   }
   
@@ -269,10 +269,10 @@ public class FlutterFragment
   {
     AppMethodBeat.i(10096);
     super.onLowMemory();
-    c localc = this.MBi;
-    io.flutter.a.gea();
-    localc.fZa();
-    localc.tiq.MCq.gfg();
+    c localc = this.MYn;
+    io.flutter.a.giD();
+    localc.gdB();
+    localc.tti.MZv.gjI();
     AppMethodBeat.o(10096);
   }
   
@@ -280,14 +280,14 @@ public class FlutterFragment
   {
     AppMethodBeat.i(10090);
     super.onPause();
-    this.MBi.onPause();
+    this.MYn.onPause();
     AppMethodBeat.o(10090);
   }
   
   public void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
     AppMethodBeat.i(10094);
-    this.MBi.onRequestPermissionsResult(paramInt, paramArrayOfString, paramArrayOfInt);
+    this.MYn.onRequestPermissionsResult(paramInt, paramArrayOfString, paramArrayOfInt);
     AppMethodBeat.o(10094);
   }
   
@@ -295,23 +295,23 @@ public class FlutterFragment
   {
     AppMethodBeat.i(10089);
     super.onResume();
-    this.MBi.onResume();
+    this.MYn.onResume();
     AppMethodBeat.o(10089);
   }
   
   public void onSaveInstanceState(Bundle paramBundle)
   {
-    AppMethodBeat.i(213303);
+    AppMethodBeat.i(197885);
     super.onSaveInstanceState(paramBundle);
-    this.MBi.gep();
-    AppMethodBeat.o(213303);
+    this.MYn.giS();
+    AppMethodBeat.o(197885);
   }
   
   public void onStart()
   {
     AppMethodBeat.i(10088);
     super.onStart();
-    this.MBi.onStart();
+    this.MYn.onStart();
     AppMethodBeat.o(10088);
   }
   
@@ -319,23 +319,23 @@ public class FlutterFragment
   {
     AppMethodBeat.i(10091);
     super.onStop();
-    this.MBi.onStop();
+    this.MYn.onStop();
     AppMethodBeat.o(10091);
   }
   
   public static final class a
   {
-    private final Class<? extends FlutterFragment> MBq;
-    private final String MBr;
-    boolean MBs = false;
-    g MBt = g.MCa;
-    j MBu = j.MCe;
-    boolean MBv = true;
+    boolean MYA = true;
+    private final Class<? extends FlutterFragment> MYv;
+    private final String MYw;
+    boolean MYx = false;
+    g MYy = g.MZf;
+    j MYz = j.MZj;
     
     private a(Class<? extends FlutterFragment> paramClass, String paramString)
     {
-      this.MBq = paramClass;
-      this.MBr = paramString;
+      this.MYv = paramClass;
+      this.MYw = paramString;
     }
     
     private a(String paramString)
@@ -343,46 +343,46 @@ public class FlutterFragment
       this(FlutterFragment.class, paramString);
     }
     
-    public final <T extends FlutterFragment> T ger()
+    public final <T extends FlutterFragment> T giU()
     {
-      AppMethodBeat.i(213362);
+      AppMethodBeat.i(197944);
       FlutterFragment localFlutterFragment;
       try
       {
-        localFlutterFragment = (FlutterFragment)this.MBq.getDeclaredConstructor(new Class[0]).newInstance(new Object[0]);
+        localFlutterFragment = (FlutterFragment)this.MYv.getDeclaredConstructor(new Class[0]).newInstance(new Object[0]);
         if (localFlutterFragment == null)
         {
-          RuntimeException localRuntimeException = new RuntimeException("The FlutterFragment subclass sent in the constructor (" + this.MBq.getCanonicalName() + ") does not match the expected return type.");
-          AppMethodBeat.o(213362);
+          RuntimeException localRuntimeException = new RuntimeException("The FlutterFragment subclass sent in the constructor (" + this.MYv.getCanonicalName() + ") does not match the expected return type.");
+          AppMethodBeat.o(197944);
           throw localRuntimeException;
         }
       }
       catch (Exception localException)
       {
-        localObject = new RuntimeException("Could not instantiate FlutterFragment subclass (" + this.MBq.getName() + ")", localException);
-        AppMethodBeat.o(213362);
+        localObject = new RuntimeException("Could not instantiate FlutterFragment subclass (" + this.MYv.getName() + ")", localException);
+        AppMethodBeat.o(197944);
         throw ((Throwable)localObject);
       }
       Bundle localBundle = new Bundle();
-      localBundle.putString("cached_engine_id", this.MBr);
-      localBundle.putBoolean("destroy_engine_with_fragment", this.MBs);
-      if (this.MBt != null)
+      localBundle.putString("cached_engine_id", this.MYw);
+      localBundle.putBoolean("destroy_engine_with_fragment", this.MYx);
+      if (this.MYy != null)
       {
-        localObject = this.MBt.name();
+        localObject = this.MYy.name();
         localBundle.putString("flutterview_render_mode", (String)localObject);
-        if (this.MBu == null) {
+        if (this.MYz == null) {
           break label221;
         }
       }
       label221:
-      for (Object localObject = this.MBu.name();; localObject = j.MCe.name())
+      for (Object localObject = this.MYz.name();; localObject = j.MZj.name())
       {
         localBundle.putString("flutterview_transparency_mode", (String)localObject);
-        localBundle.putBoolean("should_attach_engine_to_activity", this.MBv);
+        localBundle.putBoolean("should_attach_engine_to_activity", this.MYA);
         localFlutterFragment.setArguments(localBundle);
-        AppMethodBeat.o(213362);
+        AppMethodBeat.o(197944);
         return localFlutterFragment;
-        localObject = g.MCa.name();
+        localObject = g.MZf.name();
         break;
       }
     }
@@ -390,60 +390,60 @@ public class FlutterFragment
   
   public static final class b
   {
-    private final Class<? extends FlutterFragment> MBq = FlutterFragment.class;
-    g MBt = g.MCa;
-    j MBu = j.MCe;
-    boolean MBv = true;
-    String MBw = null;
-    d MBx = null;
-    String MkH = "main";
-    String MkI = "/";
+    String MHF = "main";
+    String MHG = "/";
+    boolean MYA = true;
+    String MYB = null;
+    d MYC = null;
+    private final Class<? extends FlutterFragment> MYv = FlutterFragment.class;
+    g MYy = g.MZf;
+    j MYz = j.MZj;
     
-    public final <T extends FlutterFragment> T ger()
+    public final <T extends FlutterFragment> T giU()
     {
-      AppMethodBeat.i(213363);
+      AppMethodBeat.i(197945);
       FlutterFragment localFlutterFragment;
       try
       {
-        localFlutterFragment = (FlutterFragment)this.MBq.getDeclaredConstructor(new Class[0]).newInstance(new Object[0]);
+        localFlutterFragment = (FlutterFragment)this.MYv.getDeclaredConstructor(new Class[0]).newInstance(new Object[0]);
         if (localFlutterFragment == null)
         {
-          RuntimeException localRuntimeException = new RuntimeException("The FlutterFragment subclass sent in the constructor (" + this.MBq.getCanonicalName() + ") does not match the expected return type.");
-          AppMethodBeat.o(213363);
+          RuntimeException localRuntimeException = new RuntimeException("The FlutterFragment subclass sent in the constructor (" + this.MYv.getCanonicalName() + ") does not match the expected return type.");
+          AppMethodBeat.o(197945);
           throw localRuntimeException;
         }
       }
       catch (Exception localException)
       {
-        localObject = new RuntimeException("Could not instantiate FlutterFragment subclass (" + this.MBq.getName() + ")", localException);
-        AppMethodBeat.o(213363);
+        localObject = new RuntimeException("Could not instantiate FlutterFragment subclass (" + this.MYv.getName() + ")", localException);
+        AppMethodBeat.o(197945);
         throw ((Throwable)localObject);
       }
       Bundle localBundle = new Bundle();
-      localBundle.putString("initial_route", this.MkI);
-      localBundle.putString("app_bundle_path", this.MBw);
-      localBundle.putString("dart_entrypoint", this.MkH);
-      if (this.MBx != null) {
-        localBundle.putStringArray("initialization_args", this.MBx.toArray());
+      localBundle.putString("initial_route", this.MHG);
+      localBundle.putString("app_bundle_path", this.MYB);
+      localBundle.putString("dart_entrypoint", this.MHF);
+      if (this.MYC != null) {
+        localBundle.putStringArray("initialization_args", this.MYC.toArray());
       }
-      if (this.MBt != null)
+      if (this.MYy != null)
       {
-        localObject = this.MBt.name();
+        localObject = this.MYy.name();
         localBundle.putString("flutterview_render_mode", (String)localObject);
-        if (this.MBu == null) {
+        if (this.MYz == null) {
           break label258;
         }
       }
       label258:
-      for (Object localObject = this.MBu.name();; localObject = j.MCe.name())
+      for (Object localObject = this.MYz.name();; localObject = j.MZj.name())
       {
         localBundle.putString("flutterview_transparency_mode", (String)localObject);
-        localBundle.putBoolean("should_attach_engine_to_activity", this.MBv);
+        localBundle.putBoolean("should_attach_engine_to_activity", this.MYA);
         localBundle.putBoolean("destroy_engine_with_fragment", true);
         localFlutterFragment.setArguments(localBundle);
-        AppMethodBeat.o(213363);
+        AppMethodBeat.o(197945);
         return localFlutterFragment;
-        localObject = g.MCa.name();
+        localObject = g.MZf.name();
         break;
       }
     }
@@ -451,7 +451,7 @@ public class FlutterFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     io.flutter.embedding.android.FlutterFragment
  * JD-Core Version:    0.7.0.1
  */

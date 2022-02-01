@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.appbrand.ui;
 
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/ui/AppBrandCircleProgressView$Companion;", "", "()V", "TAG", "", "luggage-wechat-full-sdk_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/ui/AppBrandCircleProgressView$Companion;", "", "()V", "TAG", "", "luggage-wechat-full-sdk_release"})
 public final class AppBrandCircleProgressView$g {}
 
 

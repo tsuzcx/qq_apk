@@ -11,8 +11,8 @@ public class UserAuthItemParcelable
   public static final Parcelable.Creator<UserAuthItemParcelable> CREATOR;
   public String scope;
   public int state;
-  public String yDs;
-  public int yDt;
+  public String yTx;
+  public int yTy;
   
   static
   {
@@ -30,15 +30,15 @@ public class UserAuthItemParcelable
   {
     AppMethodBeat.i(73803);
     paramParcel.writeString(this.scope);
-    paramParcel.writeString(this.yDs);
+    paramParcel.writeString(this.yTx);
     paramParcel.writeInt(this.state);
-    paramParcel.writeInt(this.yDt);
+    paramParcel.writeInt(this.yTy);
     AppMethodBeat.o(73803);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.setting.model.UserAuthItemParcelable
  * JD-Core Version:    0.7.0.1
  */

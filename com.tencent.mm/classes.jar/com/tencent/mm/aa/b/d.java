@@ -1,0 +1,22 @@
+package com.tencent.mm.aa.b;
+
+import com.tencent.mm.plugin.appbrand.jsruntime.i;
+import com.tencent.mm.plugin.appbrand.jsruntime.z;
+
+public abstract interface d
+  extends i
+{
+  public abstract void a(z paramz);
+  
+  public abstract boolean aiz();
+  
+  public abstract void pause();
+  
+  public abstract void resume();
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+ * Qualified Name:     com.tencent.mm.aa.b.d
+ * JD-Core Version:    0.7.0.1
+ */

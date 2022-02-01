@@ -6,9 +6,9 @@ import java.io.PrintStream;
 
 public final class c
 {
-  public static String n(Throwable paramThrowable)
+  public static String o(Throwable paramThrowable)
   {
-    AppMethodBeat.i(220791);
+    AppMethodBeat.i(194927);
     try
     {
       ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
@@ -17,23 +17,23 @@ public final class c
       paramThrowable = localByteArrayOutputStream.toString();
       localPrintStream.close();
       localByteArrayOutputStream.close();
-      AppMethodBeat.o(220791);
+      AppMethodBeat.o(194927);
       return paramThrowable;
     }
     catch (Exception paramThrowable)
     {
-      AppMethodBeat.o(220791);
+      AppMethodBeat.o(194927);
     }
     return "";
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(220790);
+    AppMethodBeat.i(194926);
     Object localObject = new Throwable().getStackTrace();
     if ((localObject == null) || (localObject.length < 4))
     {
-      AppMethodBeat.o(220790);
+      AppMethodBeat.o(194926);
       return "";
     }
     StringBuilder localStringBuilder = new StringBuilder();
@@ -51,13 +51,13 @@ public final class c
       i += 1;
     }
     localObject = localStringBuilder.toString();
-    AppMethodBeat.o(220790);
+    AppMethodBeat.o(194926);
     return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.videocomposition.c.c
  * JD-Core Version:    0.7.0.1
  */

@@ -9,21 +9,21 @@ public class MallNews
   implements Parcelable
 {
   public static final Parcelable.Creator<MallNews> CREATOR;
-  public String Bhd;
-  public int CZh;
-  public int DbA;
-  public String DbB;
-  public int DbC;
-  public String DbD;
-  public String DbE;
-  public String Dbv;
-  public String Dbw;
-  public String Dbx;
-  public String Dby;
-  public String Dbz;
-  public int dlp;
-  public String dpf;
-  public String hNT;
+  public String ByB;
+  public int DqM;
+  public String DsZ;
+  public String Dta;
+  public String Dtb;
+  public String Dtc;
+  public String Dtd;
+  public int Dte;
+  public String Dtf;
+  public int Dtg;
+  public String Dth;
+  public String Dti;
+  public int dmr;
+  public String dqk;
+  public String hQM;
   public String type;
   
   static
@@ -36,30 +36,30 @@ public class MallNews
   public MallNews(Parcel paramParcel)
   {
     AppMethodBeat.i(70549);
-    this.Dbv = "0";
-    this.Dbw = "0";
-    this.hNT = paramParcel.readString();
-    this.Bhd = paramParcel.readString();
-    this.dpf = paramParcel.readString();
-    this.Dbx = paramParcel.readString();
-    this.Dby = paramParcel.readString();
-    this.Dbz = paramParcel.readString();
-    this.DbA = paramParcel.readInt();
-    this.DbB = paramParcel.readString();
-    this.Dbv = paramParcel.readString();
-    this.Dbw = paramParcel.readString();
-    this.dlp = paramParcel.readInt();
-    this.DbD = paramParcel.readString();
-    this.CZh = paramParcel.readInt();
-    this.DbE = paramParcel.readString();
+    this.DsZ = "0";
+    this.Dta = "0";
+    this.hQM = paramParcel.readString();
+    this.ByB = paramParcel.readString();
+    this.dqk = paramParcel.readString();
+    this.Dtb = paramParcel.readString();
+    this.Dtc = paramParcel.readString();
+    this.Dtd = paramParcel.readString();
+    this.Dte = paramParcel.readInt();
+    this.Dtf = paramParcel.readString();
+    this.DsZ = paramParcel.readString();
+    this.Dta = paramParcel.readString();
+    this.dmr = paramParcel.readInt();
+    this.Dth = paramParcel.readString();
+    this.DqM = paramParcel.readInt();
+    this.Dti = paramParcel.readString();
     AppMethodBeat.o(70549);
   }
   
   public MallNews(String paramString)
   {
-    this.Dbv = "0";
-    this.Dbw = "0";
-    this.hNT = paramString;
+    this.DsZ = "0";
+    this.Dta = "0";
+    this.hQM = paramString;
   }
   
   public int describeContents()
@@ -73,12 +73,12 @@ public class MallNews
     if ((paramObject instanceof MallNews))
     {
       paramObject = (MallNews)paramObject;
-      if ((this.hNT == null) || (!this.hNT.equals(paramObject.hNT)))
+      if ((this.hQM == null) || (!this.hQM.equals(paramObject.hQM)))
       {
         AppMethodBeat.o(70548);
         return false;
       }
-      if ((this.Bhd == null) || (!this.Bhd.equals(paramObject.Bhd)))
+      if ((this.ByB == null) || (!this.ByB.equals(paramObject.ByB)))
       {
         AppMethodBeat.o(70548);
         return false;
@@ -93,7 +93,7 @@ public class MallNews
   public String toString()
   {
     AppMethodBeat.i(70551);
-    String str = String.format("functionId : %s, activityId : %s, ticket : %s, activityMsg : %s, activityLink : %s, activityIconLink : %s, showFlag : %s, orgStr : %s, activityTips: %s, activityType: %d, activityUrl: %s", new Object[] { this.hNT, this.Bhd, this.dpf, this.Dbx, this.Dby, this.Dbz, this.Dbv, this.DbD, this.DbB, Integer.valueOf(this.CZh), this.DbE });
+    String str = String.format("functionId : %s, activityId : %s, ticket : %s, activityMsg : %s, activityLink : %s, activityIconLink : %s, showFlag : %s, orgStr : %s, activityTips: %s, activityType: %d, activityUrl: %s", new Object[] { this.hQM, this.ByB, this.dqk, this.Dtb, this.Dtc, this.Dtd, this.DsZ, this.Dth, this.Dtf, Integer.valueOf(this.DqM), this.Dti });
     AppMethodBeat.o(70551);
     return str;
   }
@@ -101,26 +101,26 @@ public class MallNews
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(70550);
-    paramParcel.writeString(this.hNT);
-    paramParcel.writeString(this.Bhd);
-    paramParcel.writeString(this.dpf);
-    paramParcel.writeString(this.Dbx);
-    paramParcel.writeString(this.Dby);
-    paramParcel.writeString(this.Dbz);
-    paramParcel.writeInt(this.DbA);
-    paramParcel.writeString(this.DbB);
-    paramParcel.writeString(this.Dbv);
-    paramParcel.writeString(this.Dbw);
-    paramParcel.writeInt(this.dlp);
-    paramParcel.writeString(this.DbD);
-    paramParcel.writeInt(this.CZh);
-    paramParcel.writeString(this.DbE);
+    paramParcel.writeString(this.hQM);
+    paramParcel.writeString(this.ByB);
+    paramParcel.writeString(this.dqk);
+    paramParcel.writeString(this.Dtb);
+    paramParcel.writeString(this.Dtc);
+    paramParcel.writeString(this.Dtd);
+    paramParcel.writeInt(this.Dte);
+    paramParcel.writeString(this.Dtf);
+    paramParcel.writeString(this.DsZ);
+    paramParcel.writeString(this.Dta);
+    paramParcel.writeInt(this.dmr);
+    paramParcel.writeString(this.Dth);
+    paramParcel.writeInt(this.DqM);
+    paramParcel.writeString(this.Dti);
     AppMethodBeat.o(70550);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.model.mall.MallNews
  * JD-Core Version:    0.7.0.1
  */

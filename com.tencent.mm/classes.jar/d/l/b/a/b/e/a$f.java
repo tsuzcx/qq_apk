@@ -15,27 +15,27 @@ public final class a$f
   extends i.c<f>
   implements i
 {
-  public static s<f> NjZ;
-  private static final f NlB;
-  private final d NjY;
-  private int Nka;
-  private byte Nkd = -1;
-  private int Nke = -1;
-  public int NlC;
+  public static s<f> NHf;
+  private static final f NIH;
+  private final d NHe;
+  private int NHg;
+  private byte NHj = -1;
+  private int NHk = -1;
+  public int NII;
   
   static
   {
     AppMethodBeat.i(58550);
-    NjZ = new b() {};
+    NHf = new b() {};
     f localf = new f();
-    NlB = localf;
-    localf.NlC = 0;
+    NIH = localf;
+    localf.NII = 0;
     AppMethodBeat.o(58550);
   }
   
   private a$f()
   {
-    this.NjY = d.NqI;
+    this.NHe = d.NNO;
   }
   
   /* Error */
@@ -50,14 +50,14 @@ public final class a$f
     //   8: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   11: aload_0
     //   12: iconst_m1
-    //   13: putfield 54	d/l/b/a/b/e/a$f:Nkd	B
+    //   13: putfield 54	d/l/b/a/b/e/a$f:NHj	B
     //   16: aload_0
     //   17: iconst_m1
-    //   18: putfield 56	d/l/b/a/b/e/a$f:Nke	I
+    //   18: putfield 56	d/l/b/a/b/e/a$f:NHk	I
     //   21: aload_0
     //   22: iconst_0
-    //   23: putfield 47	d/l/b/a/b/e/a$f:NlC	I
-    //   26: invokestatic 73	d/l/b/a/b/h/d:grr	()Ld/l/b/a/b/h/d$b;
+    //   23: putfield 47	d/l/b/a/b/e/a$f:NII	I
+    //   26: invokestatic 73	d/l/b/a/b/h/d:gvT	()Ld/l/b/a/b/h/d$b;
     //   29: astore 5
     //   31: aload 5
     //   33: iconst_1
@@ -81,19 +81,19 @@ public final class a$f
     //   91: goto -52 -> 39
     //   94: aload_0
     //   95: aload_0
-    //   96: getfield 89	d/l/b/a/b/e/a$f:Nka	I
+    //   96: getfield 89	d/l/b/a/b/e/a$f:NHg	I
     //   99: iconst_1
     //   100: ior
-    //   101: putfield 89	d/l/b/a/b/e/a$f:Nka	I
+    //   101: putfield 89	d/l/b/a/b/e/a$f:NHg	I
     //   104: aload_0
     //   105: aload_1
     //   106: invokevirtual 92	d/l/b/a/b/h/e:zc	()I
-    //   109: putfield 47	d/l/b/a/b/e/a$f:NlC	I
+    //   109: putfield 47	d/l/b/a/b/e/a$f:NII	I
     //   112: goto -73 -> 39
     //   115: astore_1
     //   116: aload_1
     //   117: aload_0
-    //   118: putfield 96	d/l/b/a/b/h/k:Nrq	Ld/l/b/a/b/h/q;
+    //   118: putfield 96	d/l/b/a/b/h/k:NOw	Ld/l/b/a/b/h/q;
     //   121: ldc 69
     //   123: invokestatic 50	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   126: aload_1
@@ -103,11 +103,11 @@ public final class a$f
     //   131: invokevirtual 99	d/l/b/a/b/h/f:flush	()V
     //   134: aload_0
     //   135: aload 5
-    //   137: invokevirtual 105	d/l/b/a/b/h/d$b:grv	()Ld/l/b/a/b/h/d;
-    //   140: putfield 63	d/l/b/a/b/e/a$f:NjY	Ld/l/b/a/b/h/d;
+    //   137: invokevirtual 105	d/l/b/a/b/h/d$b:gvX	()Ld/l/b/a/b/h/d;
+    //   140: putfield 63	d/l/b/a/b/e/a$f:NHe	Ld/l/b/a/b/h/d;
     //   143: aload_0
-    //   144: getfield 109	d/l/b/a/b/h/i$c:Nra	Ld/l/b/a/b/h/h;
-    //   147: invokevirtual 114	d/l/b/a/b/h/h:grH	()V
+    //   144: getfield 109	d/l/b/a/b/h/i$c:NOg	Ld/l/b/a/b/h/h;
+    //   147: invokevirtual 114	d/l/b/a/b/h/h:gwj	()V
     //   150: ldc 69
     //   152: invokestatic 50	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   155: aload_1
@@ -116,25 +116,25 @@ public final class a$f
     //   159: invokevirtual 99	d/l/b/a/b/h/f:flush	()V
     //   162: aload_0
     //   163: aload 5
-    //   165: invokevirtual 105	d/l/b/a/b/h/d$b:grv	()Ld/l/b/a/b/h/d;
-    //   168: putfield 63	d/l/b/a/b/e/a$f:NjY	Ld/l/b/a/b/h/d;
+    //   165: invokevirtual 105	d/l/b/a/b/h/d$b:gvX	()Ld/l/b/a/b/h/d;
+    //   168: putfield 63	d/l/b/a/b/e/a$f:NHe	Ld/l/b/a/b/h/d;
     //   171: aload_0
-    //   172: getfield 109	d/l/b/a/b/h/i$c:Nra	Ld/l/b/a/b/h/h;
-    //   175: invokevirtual 114	d/l/b/a/b/h/h:grH	()V
+    //   172: getfield 109	d/l/b/a/b/h/i$c:NOg	Ld/l/b/a/b/h/h;
+    //   175: invokevirtual 114	d/l/b/a/b/h/h:gwj	()V
     //   178: ldc 69
     //   180: invokestatic 50	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   183: return
     //   184: astore_1
     //   185: aload_0
     //   186: aload 5
-    //   188: invokevirtual 105	d/l/b/a/b/h/d$b:grv	()Ld/l/b/a/b/h/d;
-    //   191: putfield 63	d/l/b/a/b/e/a$f:NjY	Ld/l/b/a/b/h/d;
+    //   188: invokevirtual 105	d/l/b/a/b/h/d$b:gvX	()Ld/l/b/a/b/h/d;
+    //   191: putfield 63	d/l/b/a/b/e/a$f:NHe	Ld/l/b/a/b/h/d;
     //   194: goto -23 -> 171
     //   197: astore_1
     //   198: aload_0
     //   199: aload 5
-    //   201: invokevirtual 105	d/l/b/a/b/h/d$b:grv	()Ld/l/b/a/b/h/d;
-    //   204: putfield 63	d/l/b/a/b/e/a$f:NjY	Ld/l/b/a/b/h/d;
+    //   201: invokevirtual 105	d/l/b/a/b/h/d$b:gvX	()Ld/l/b/a/b/h/d;
+    //   204: putfield 63	d/l/b/a/b/e/a$f:NHe	Ld/l/b/a/b/h/d;
     //   207: ldc 69
     //   209: invokestatic 50	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   212: aload_1
@@ -148,7 +148,7 @@ public final class a$f
     //   226: astore_1
     //   227: aload_1
     //   228: aload_0
-    //   229: putfield 96	d/l/b/a/b/h/k:Nrq	Ld/l/b/a/b/h/q;
+    //   229: putfield 96	d/l/b/a/b/h/k:NOw	Ld/l/b/a/b/h/q;
     //   232: ldc 69
     //   234: invokestatic 50	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   237: aload_1
@@ -156,14 +156,14 @@ public final class a$f
     //   239: astore_2
     //   240: aload_0
     //   241: aload 5
-    //   243: invokevirtual 105	d/l/b/a/b/h/d$b:grv	()Ld/l/b/a/b/h/d;
-    //   246: putfield 63	d/l/b/a/b/e/a$f:NjY	Ld/l/b/a/b/h/d;
+    //   243: invokevirtual 105	d/l/b/a/b/h/d$b:gvX	()Ld/l/b/a/b/h/d;
+    //   246: putfield 63	d/l/b/a/b/e/a$f:NHe	Ld/l/b/a/b/h/d;
     //   249: goto -106 -> 143
     //   252: astore_1
     //   253: aload_0
     //   254: aload 5
-    //   256: invokevirtual 105	d/l/b/a/b/h/d$b:grv	()Ld/l/b/a/b/h/d;
-    //   259: putfield 63	d/l/b/a/b/e/a$f:NjY	Ld/l/b/a/b/h/d;
+    //   256: invokevirtual 105	d/l/b/a/b/h/d$b:gvX	()Ld/l/b/a/b/h/d;
+    //   259: putfield 63	d/l/b/a/b/e/a$f:NHe	Ld/l/b/a/b/h/d;
     //   262: ldc 69
     //   264: invokestatic 50	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   267: aload_1
@@ -203,41 +203,41 @@ public final class a$f
   private a$f(i.b<f, ?> paramb)
   {
     super(paramb);
-    this.NjY = paramb.NjY;
+    this.NHe = paramb.NHe;
   }
   
-  public static f gnK()
+  public static f gsm()
   {
-    return NlB;
+    return NIH;
   }
   
   public final void a(f paramf)
   {
     AppMethodBeat.i(58546);
     zp();
-    i.c.a locala = grO();
-    if ((this.Nka & 0x1) == 1) {
-      paramf.bx(1, this.NlC);
+    i.c.a locala = gwq();
+    if ((this.NHg & 0x1) == 1) {
+      paramf.bx(1, this.NII);
     }
     locala.b(200, paramf);
-    paramf.e(this.NjY);
+    paramf.e(this.NHe);
     AppMethodBeat.o(58546);
   }
   
-  public final s<f> gmo()
+  public final s<f> gqQ()
   {
-    return NjZ;
+    return NHf;
   }
   
-  public final boolean gnL()
+  public final boolean gsn()
   {
-    return (this.Nka & 0x1) == 1;
+    return (this.NHg & 0x1) == 1;
   }
   
   public final boolean isInitialized()
   {
     AppMethodBeat.i(58545);
-    int i = this.Nkd;
+    int i = this.NHj;
     if (i == 1)
     {
       AppMethodBeat.o(58545);
@@ -248,13 +248,13 @@ public final class a$f
       AppMethodBeat.o(58545);
       return false;
     }
-    if (!this.Nra.isInitialized())
+    if (!this.NOg.isInitialized())
     {
-      this.Nkd = 0;
+      this.NHj = 0;
       AppMethodBeat.o(58545);
       return false;
     }
-    this.Nkd = 1;
+    this.NHj = 1;
     AppMethodBeat.o(58545);
     return true;
   }
@@ -262,18 +262,18 @@ public final class a$f
   public final int zp()
   {
     AppMethodBeat.i(58547);
-    int i = this.Nke;
+    int i = this.NHk;
     if (i != -1)
     {
       AppMethodBeat.o(58547);
       return i;
     }
     i = 0;
-    if ((this.Nka & 0x1) == 1) {
-      i = f.bz(1, this.NlC) + 0;
+    if ((this.NHg & 0x1) == 1) {
+      i = f.bz(1, this.NII) + 0;
     }
-    i = i + this.Nra.zp() + this.NjY.size();
-    this.Nke = i;
+    i = i + this.NOg.zp() + this.NHe.size();
+    this.NHk = i;
     AppMethodBeat.o(58547);
     return i;
   }
@@ -282,33 +282,33 @@ public final class a$f
     extends i.b<a.f, a>
     implements i
   {
-    private int Nka;
-    private int NlC;
+    private int NHg;
+    private int NII;
     
-    private a ajJ(int paramInt)
+    private a akt(int paramInt)
     {
-      this.Nka |= 0x1;
-      this.NlC = paramInt;
+      this.NHg |= 0x1;
+      this.NII = paramInt;
       return this;
     }
     
-    private a gnM()
+    private a gso()
     {
       AppMethodBeat.i(58528);
-      a locala = new a().b(gnN());
+      a locala = new a().b(gsp());
       AppMethodBeat.o(58528);
       return locala;
     }
     
-    private a.f gnN()
+    private a.f gsp()
     {
       int i = 1;
       AppMethodBeat.i(58529);
       a.f localf = new a.f(this, (byte)0);
-      if ((this.Nka & 0x1) == 1) {}
+      if ((this.NHg & 0x1) == 1) {}
       for (;;)
       {
-        a.f.a(localf, this.NlC);
+        a.f.a(localf, this.NII);
         a.f.b(localf, i);
         AppMethodBeat.o(58529);
         return localf;
@@ -324,7 +324,7 @@ public final class a$f
       //   2: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
       //   5: aconst_null
       //   6: astore_3
-      //   7: getstatic 68	d/l/b/a/b/e/a$f:NjZ	Ld/l/b/a/b/h/s;
+      //   7: getstatic 68	d/l/b/a/b/e/a$f:NHf	Ld/l/b/a/b/h/s;
       //   10: aload_1
       //   11: aload_2
       //   12: invokeinterface 73 3 0
@@ -340,7 +340,7 @@ public final class a$f
       //   33: areturn
       //   34: astore_1
       //   35: aload_1
-      //   36: getfield 77	d/l/b/a/b/h/k:Nrq	Ld/l/b/a/b/h/q;
+      //   36: getfield 77	d/l/b/a/b/h/k:NOw	Ld/l/b/a/b/h/q;
       //   39: checkcast 9	d/l/b/a/b/e/a$f
       //   42: astore_2
       //   43: ldc 64
@@ -379,16 +379,16 @@ public final class a$f
     public final a b(a.f paramf)
     {
       AppMethodBeat.i(58530);
-      if (paramf == a.f.gnK())
+      if (paramf == a.f.gsm())
       {
         AppMethodBeat.o(58530);
         return this;
       }
-      if (paramf.gnL()) {
-        ajJ(paramf.NlC);
+      if (paramf.gsn()) {
+        akt(paramf.NII);
       }
       a(paramf);
-      this.NjY = this.NjY.a(a.f.a(paramf));
+      this.NHe = this.NHe.a(a.f.a(paramf));
       AppMethodBeat.o(58530);
       return this;
     }
@@ -396,7 +396,7 @@ public final class a$f
     public final boolean isInitialized()
     {
       AppMethodBeat.i(58531);
-      if (!this.Nra.isInitialized())
+      if (!this.NOg.isInitialized())
       {
         AppMethodBeat.o(58531);
         return false;
@@ -408,7 +408,7 @@ public final class a$f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     d.l.b.a.b.e.a.f
  * JD-Core Version:    0.7.0.1
  */

@@ -7,10 +7,10 @@ public enum HorizontalListViewV2$d$a
   static
   {
     AppMethodBeat.i(141709);
-    Jjw = new a("SCROLL_STATE_IDLE", 0);
-    Jjx = new a("SCROLL_STATE_TOUCH_SCROLL", 1);
-    Jjy = new a("SCROLL_STATE_FLING", 2);
-    Jjz = new a[] { Jjw, Jjx, Jjy };
+    JEk = new a("SCROLL_STATE_IDLE", 0);
+    JEl = new a("SCROLL_STATE_TOUCH_SCROLL", 1);
+    JEm = new a("SCROLL_STATE_FLING", 2);
+    JEn = new a[] { JEk, JEl, JEm };
     AppMethodBeat.o(141709);
   }
   
@@ -18,7 +18,7 @@ public enum HorizontalListViewV2$d$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.ui.base.HorizontalListViewV2.d.a
  * JD-Core Version:    0.7.0.1
  */

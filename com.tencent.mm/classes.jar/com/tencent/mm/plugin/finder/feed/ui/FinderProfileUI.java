@@ -41,10 +41,9 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.cf;
-import com.tencent.mm.model.u;
+import com.tencent.mm.model.ch;
 import com.tencent.mm.plugin.finder.PluginFinder;
-import com.tencent.mm.plugin.finder.cgi.be;
+import com.tencent.mm.plugin.finder.cgi.bf;
 import com.tencent.mm.plugin.finder.extension.reddot.g.a;
 import com.tencent.mm.plugin.finder.feed.FinderProfileUIContract.ProfileViewCallback;
 import com.tencent.mm.plugin.finder.feed.FinderProfileUIContract.ProfileViewCallback.b;
@@ -67,18 +66,18 @@ import com.tencent.mm.plugin.i.a.t;
 import com.tencent.mm.protocal.protobuf.FinderAuthInfo;
 import com.tencent.mm.protocal.protobuf.FinderContact;
 import com.tencent.mm.protocal.protobuf.FinderUserPageResponse;
-import com.tencent.mm.protocal.protobuf.alo;
-import com.tencent.mm.protocal.protobuf.alx;
-import com.tencent.mm.protocal.protobuf.aps;
-import com.tencent.mm.protocal.protobuf.aqy;
-import com.tencent.mm.protocal.protobuf.ase;
-import com.tencent.mm.protocal.protobuf.azz;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.protocal.protobuf.ama;
+import com.tencent.mm.protocal.protobuf.amj;
+import com.tencent.mm.protocal.protobuf.aqf;
+import com.tencent.mm.protocal.protobuf.arn;
+import com.tencent.mm.protocal.protobuf.ast;
+import com.tencent.mm.protocal.protobuf.bap;
 import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.al.a;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.aj;
+import com.tencent.mm.storage.am.a;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.al;
 import com.tencent.mm.ui.ao;
@@ -86,11 +85,11 @@ import com.tencent.mm.ui.base.n.d;
 import com.tencent.mm.ui.base.n.e;
 import com.tencent.mm.ui.widget.a.e.b;
 import com.tencent.mm.ui.widget.imageview.WeImageView;
+import com.tencent.mm.vfs.o;
 import com.tencent.mm.view.RefreshLoadMoreLayout;
 import com.tencent.mm.view.RefreshLoadMoreLayout.a;
 import com.tencent.mm.view.TouchableLayout;
 import d.g.b.y.f;
-import d.v;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -100,93 +99,94 @@ import java.util.LinkedList;
 import java.util.Map;
 
 @com.tencent.mm.ui.base.a(32)
-@d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderProfileUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "()V", "MENU_ID_EXPOSE", "", "MENU_ID_MORE_INFO", "MENU_ID_POST", "MENU_ID_RECOMMEND", "MENU_ID_SETTING", "MENU_ID_SET_HEADIMG_ALBUM", "MENU_ID_SET_HEADIMG_TAKEPHOTO", "MENU_ID_UNFOLLOW", "REQUEST_CODE_DISTRICT", "REQUEST_CODE_IMAGE_BROUND_SEND_COMFIRM", "REQUEST_CODE_SELECT_PHOTO", "REQUEST_CODE_TAKE_PHOTO", "REQUEST_CODE_TEXT_CARD", "TAG", "", "actionBarAvatarIv", "Landroid/widget/ImageView;", "actionBarBackBtn", "Landroid/view/View;", "actionBarBackIv", "Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "actionBarFollowBtn", "Landroid/widget/Button;", "actionBarMoreBtn", "actionBarMoreIv", "actionBarNicknameTv", "Landroid/widget/TextView;", "actionBarPhotoBtn", "actionBarPhotoIv", "actionBarRightIconLayout", "Landroid/view/ViewGroup;", "authArrowIv", "authByTv", "authGeneratorTv", "authIcon", "authLayout", "authTv", "avatarIv", "canReportFollow", "", "getCanReportFollow", "()Z", "setCanReportFollow", "(Z)V", "chatSelfFlag", "chatText", "countListener", "com/tencent/mm/plugin/finder/feed/ui/FinderProfileUI$countListener$1", "Lcom/tencent/mm/plugin/finder/feed/ui/FinderProfileUI$countListener$1;", "defaultHeaderBg", "descTv", "editBtn", "editLl", "fansArrowIv", "fansChangeTv", "fansLayout", "fansTv", "filePath", "getFilePath", "()Ljava/lang/String;", "setFilePath", "(Ljava/lang/String;)V", "finderSpamActionBarBackBtn", "finderSpamContactTipView", "followBtn", "followBtnTv", "friendFollowLayout", "friendFollowTv", "fromUser", "header", "headerBg", "headerBgLayout", "headerTip", "isFirstResume", "isPauseBecauseByClickAvatar", "isReportFanRedDotExpose", "isReportMsgRedDotExpose", "isSelf", "lastActionBarProgress", "", "mStatusBarHeightCallback", "Lcom/tencent/mm/ui/statusbar/StatusBarHeightWatcher$OnStatusBarHeightChangeCallback;", "myActionBar", "nickNameContainer", "nickNameTv", "onScrollListener", "com/tencent/mm/plugin/finder/feed/ui/FinderProfileUI$onScrollListener$1", "Lcom/tencent/mm/plugin/finder/feed/ui/FinderProfileUI$onScrollListener$1;", "presenter", "Lcom/tencent/mm/plugin/finder/feed/FinderProfileUIContract$ProfilePresenter;", "profileContact", "Lcom/tencent/mm/plugin/finder/api/LocalFinderContact;", "readFeedId", "", "rlContainer", "rlLayout", "Lcom/tencent/mm/view/RefreshLoadMoreLayout;", "selfFlag", "userInfoLayout", "userOriginalTag", "userTagLayout", "username", "viewCallback", "Lcom/tencent/mm/plugin/finder/feed/FinderProfileUIContract$ProfileViewCallback;", "changeChatVisibileState", "", "visible", "checkActionBarIconColor", "continuePost", "fillHeaderImgLocal", "path", "fixActionBarStuff", "getCommentScene", "getHeaderBgSize", "getLayoutId", "getReportType", "goBack", "hasSetCoverImg", "hideActionBar", "initActionBarView", "initData", "initHeader", "onActivityResult", "requestCode", "resultCode", "data", "Landroid/content/Intent;", "onBackPressed", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onPause", "onResume", "onSceneEnd", "errType", "errCode", "errMsg", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "onStop", "refreshProfile", "Lcom/tencent/mm/plugin/finder/cgi/NetSceneFinderUserPage;", "updateAvatar", "refreshUserExtInfo", "setFollowed", "contact", "setSelectFromAlbum", "setUnfollow", "firstCgi", "setWaiting", "showActionBarPost", "startCropImgForResult", "context", "Landroid/app/Activity;", "intent", "resultFileName", "Companion", "UserExtInfo", "plugin-finder_release"})
+@d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderProfileUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "()V", "MENU_ID_EXPOSE", "", "MENU_ID_MORE_INFO", "MENU_ID_POST", "MENU_ID_RECOMMEND", "MENU_ID_SETTING", "MENU_ID_SET_HEADIMG_ALBUM", "MENU_ID_SET_HEADIMG_TAKEPHOTO", "MENU_ID_UNFOLLOW", "REQUEST_CODE_DISTRICT", "REQUEST_CODE_IMAGE_BROUND_SEND_COMFIRM", "REQUEST_CODE_SELECT_PHOTO", "REQUEST_CODE_TAKE_PHOTO", "REQUEST_CODE_TEXT_CARD", "TAG", "", "actionBarAvatarIv", "Landroid/widget/ImageView;", "actionBarBackBtn", "Landroid/view/View;", "actionBarBackIv", "Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "actionBarFollowBtn", "Landroid/widget/Button;", "actionBarMoreBtn", "actionBarMoreIv", "actionBarNicknameTv", "Landroid/widget/TextView;", "actionBarPhotoBtn", "actionBarPhotoIv", "actionBarRightIconLayout", "Landroid/view/ViewGroup;", "authArrowIv", "authByTv", "authGeneratorTv", "authIcon", "authLayout", "authTv", "avatarIv", "canReportFollow", "", "getCanReportFollow", "()Z", "setCanReportFollow", "(Z)V", "chatSelfFlag", "chatText", "countListener", "com/tencent/mm/plugin/finder/feed/ui/FinderProfileUI$countListener$1", "Lcom/tencent/mm/plugin/finder/feed/ui/FinderProfileUI$countListener$1;", "defaultHeaderBg", "descTv", "editBtn", "editLl", "fansArrowIv", "fansChangeTv", "fansLayout", "fansTv", "filePath", "getFilePath", "()Ljava/lang/String;", "setFilePath", "(Ljava/lang/String;)V", "finderSpamActionBarBackBtn", "finderSpamContactTipView", "followBtn", "followBtnTv", "friendFollowLayout", "friendFollowTv", "fromUser", "hasExposeSettingTips", "header", "headerBg", "headerBgLayout", "headerTip", "isFirstResume", "isPauseBecauseByClickAvatar", "isReportFanRedDotExpose", "isReportMsgRedDotExpose", "isSelf", "lastActionBarProgress", "", "mStatusBarHeightCallback", "Lcom/tencent/mm/ui/statusbar/StatusBarHeightWatcher$OnStatusBarHeightChangeCallback;", "myActionBar", "nickNameContainer", "nickNameTv", "onScrollListener", "com/tencent/mm/plugin/finder/feed/ui/FinderProfileUI$onScrollListener$1", "Lcom/tencent/mm/plugin/finder/feed/ui/FinderProfileUI$onScrollListener$1;", "presenter", "Lcom/tencent/mm/plugin/finder/feed/FinderProfileUIContract$ProfilePresenter;", "profileContact", "Lcom/tencent/mm/plugin/finder/api/LocalFinderContact;", "readFeedId", "", "rlContainer", "rlLayout", "Lcom/tencent/mm/view/RefreshLoadMoreLayout;", "selfFlag", "userInfoLayout", "userOriginalTag", "userTagLayout", "username", "viewCallback", "Lcom/tencent/mm/plugin/finder/feed/FinderProfileUIContract$ProfileViewCallback;", "changeChatVisibileState", "", "visible", "checkActionBarIconColor", "doClickPostAction", "fillHeaderImgLocal", "path", "fixActionBarStuff", "getCommentScene", "getHeaderBgSize", "getLayoutId", "getReportType", "goBack", "hasSetCoverImg", "hideActionBar", "initActionBarView", "initData", "initHeader", "onActivityResult", "requestCode", "resultCode", "data", "Landroid/content/Intent;", "onBackPressed", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onPause", "onResume", "onSceneEnd", "errType", "errCode", "errMsg", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "onStop", "refreshProfile", "Lcom/tencent/mm/plugin/finder/cgi/NetSceneFinderUserPage;", "updateAvatar", "refreshUserExtInfo", "setFollowed", "contact", "setSelectFromAlbum", "setUnfollow", "firstCgi", "setWaiting", "showActionBarPost", "startCropImgForResult", "context", "Landroid/app/Activity;", "intent", "resultFileName", "Companion", "UserExtInfo", "plugin-finder_release"})
 public final class FinderProfileUI
   extends MMFinderUI
-  implements com.tencent.mm.al.f
+  implements com.tencent.mm.ak.f
 {
-  private static final HashMap<String, b> sgO;
-  public static final a sgP;
+  private static final HashMap<String, FinderProfileUI.b> spI;
+  public static final FinderProfileUI.a spJ;
   private final String TAG;
   private HashMap _$_findViewCache;
-  private boolean drv;
-  private String dyU;
-  private ImageView fRd;
+  private boolean dsB;
+  private String dzZ;
+  private ImageView fTj;
   private String filePath;
-  private TextView gUs;
-  private TextView jcd;
-  private final int orV;
-  private final int rMA;
-  private RefreshLoadMoreLayout rTF;
-  private boolean rWI;
-  private FinderProfileUIContract.a rXj;
-  private long rXu;
-  private View rXv;
-  private final int sfF;
-  private final int sfG;
-  private final int sfH;
-  private boolean sfM;
-  private View sfN;
-  private View sfO;
-  private ImageView sfP;
-  private ImageView sfQ;
-  private TextView sfR;
-  private ViewGroup sfS;
-  private ViewGroup sfT;
-  private TextView sfU;
-  private TextView sfV;
-  private View sfW;
-  private View sfX;
-  private View sfY;
-  private TextView sfZ;
-  private final int sgA;
-  private final int sgB;
-  private final int sgC;
-  private final int sgD;
-  private final int sgE;
-  private final int sgF;
-  private com.tencent.mm.plugin.finder.api.g sgG;
-  private com.tencent.mm.ui.statusbar.c.a sgH;
-  private boolean sgI;
-  private float sgJ;
-  private final t sgK;
-  public boolean sgL;
-  private boolean sgM;
-  private final g sgN;
-  private TextView sga;
-  private View sgb;
-  private ViewGroup sgc;
-  private TextView sgd;
-  private TextView sge;
-  private ImageView sgf;
-  private TextView sgg;
-  private TextView sgh;
-  private ImageView sgi;
-  private ImageView sgj;
-  private View sgk;
-  private View sgl;
-  private WeImageView sgm;
-  private View sgn;
-  private ViewGroup sgo;
-  private ImageView sgp;
-  private TextView sgq;
-  private View sgr;
-  private WeImageView sgs;
-  private View sgt;
-  private WeImageView sgu;
-  private Button sgv;
-  private View sgw;
-  private View sgx;
-  private final int sgy;
-  private final int sgz;
+  private TextView gXb;
+  private TextView jeW;
+  private final int oyw;
+  private final int rUN;
+  private RefreshLoadMoreLayout scj;
+  private FinderProfileUIContract.a sfU;
+  private boolean sft;
+  private long sgf;
+  private View sgg;
+  private final int soA;
+  private boolean soF;
+  private View soG;
+  private View soH;
+  private ImageView soI;
+  private ImageView soJ;
+  private TextView soK;
+  private ViewGroup soL;
+  private ViewGroup soM;
+  private TextView soN;
+  private TextView soO;
+  private View soP;
+  private View soQ;
+  private View soR;
+  private TextView soS;
+  private TextView soT;
+  private View soU;
+  private ViewGroup soV;
+  private TextView soW;
+  private TextView soX;
+  private ImageView soY;
+  private TextView soZ;
+  private final int soy;
+  private final int soz;
+  private com.tencent.mm.ui.statusbar.c.a spA;
+  private boolean spB;
+  private String spC;
+  private float spD;
+  private final t spE;
+  public boolean spF;
+  private boolean spG;
+  private final d spH;
+  private TextView spa;
+  private ImageView spb;
+  private ImageView spc;
+  private View spd;
+  private View spe;
+  private WeImageView spf;
+  private View spg;
+  private ViewGroup sph;
+  private ImageView spi;
+  private TextView spj;
+  private View spk;
+  private WeImageView spl;
+  private View spm;
+  private WeImageView spn;
+  private Button spo;
+  private View spp;
+  private View spq;
+  private final int spr;
+  private final int sps;
+  private final int spt;
+  private final int spu;
+  private final int spv;
+  private final int spw;
+  private final int spx;
+  private final int spy;
+  private com.tencent.mm.plugin.finder.api.g spz;
   private String username;
   private FinderProfileUIContract.ProfileViewCallback viewCallback;
   
   static
   {
     AppMethodBeat.i(166213);
-    sgP = new a((byte)0);
-    sgO = new HashMap();
+    spJ = new FinderProfileUI.a((byte)0);
+    spI = new HashMap();
     AppMethodBeat.o(166213);
   }
   
@@ -194,43 +194,44 @@ public final class FinderProfileUI
   {
     AppMethodBeat.i(166212);
     this.TAG = "Finder.FinderProfileUI";
-    this.rXu = -1L;
-    this.dyU = "";
-    this.sfF = 10000;
-    this.rMA = 10001;
-    this.sfG = 10002;
-    this.sfH = 10003;
-    this.orV = 10004;
-    this.sgy = 10005;
-    this.sgz = 10006;
-    this.sgA = 10007;
-    this.sgB = 10008;
-    this.sgC = 10009;
-    this.sgD = 1;
-    this.sgE = 2;
-    this.sgF = 3;
-    this.sgK = new t(this);
-    this.sgM = true;
-    this.sgN = new g(this);
+    this.sgf = -1L;
+    this.dzZ = "";
+    this.soy = 10000;
+    this.rUN = 10001;
+    this.soz = 10002;
+    this.soA = 10003;
+    this.oyw = 10004;
+    this.spr = 10005;
+    this.sps = 10006;
+    this.spt = 10007;
+    this.spu = 10008;
+    this.spv = 10009;
+    this.spw = 1;
+    this.spx = 2;
+    this.spy = 3;
+    this.spC = "";
+    this.spE = new t(this);
+    this.spG = true;
+    this.spH = new d(this);
     AppMethodBeat.o(166212);
   }
   
   private final void a(final com.tencent.mm.plugin.finder.api.g paramg, boolean paramBoolean)
   {
     int j = 1;
-    AppMethodBeat.i(202827);
+    AppMethodBeat.i(203306);
     Object localObject1;
     final boolean bool;
     int i;
     if (paramg != null)
     {
-      localObject1 = com.tencent.mm.plugin.finder.utils.p.sMo;
+      localObject1 = com.tencent.mm.plugin.finder.utils.p.sXz;
       bool = com.tencent.mm.plugin.finder.utils.p.j(paramg);
-      if ((paramg != null) && (this.sgL) && (paramBoolean))
+      if ((paramg != null) && (this.spF) && (paramBoolean))
       {
-        localObject1 = com.tencent.mm.plugin.finder.report.h.soM;
+        localObject1 = com.tencent.mm.plugin.finder.report.i.syT;
         localObject1 = paramg.getUsername();
-        int k = cf.aCN();
+        int k = ch.aDd();
         if (!bool) {
           break label408;
         }
@@ -238,69 +239,69 @@ public final class FinderProfileUI
         label62:
         Object localObject2 = this.viewCallback;
         if (localObject2 == null) {
-          d.g.b.p.bcb("viewCallback");
+          d.g.b.p.bdF("viewCallback");
         }
-        int m = ((FinderProfileUIContract.ProfileViewCallback)localObject2).rXk;
-        localObject2 = FinderProfileUIContract.ProfileViewCallback.rXD;
-        if (m != FinderProfileUIContract.ProfileViewCallback.cBt()) {
+        int m = ((FinderProfileUIContract.ProfileViewCallback)localObject2).sfV;
+        localObject2 = FinderProfileUIContract.ProfileViewCallback.sgo;
+        if (m != FinderProfileUIContract.ProfileViewCallback.cDf()) {
           break label413;
         }
         label99:
-        com.tencent.mm.plugin.finder.report.h.c((String)localObject1, 4, k, i, j);
+        com.tencent.mm.plugin.finder.report.i.c((String)localObject1, 4, k, i, j);
       }
       if (!bool) {
         break label419;
       }
-      localObject1 = this.sgv;
+      localObject1 = this.spo;
       if (localObject1 == null) {
-        d.g.b.p.bcb("actionBarFollowBtn");
+        d.g.b.p.bdF("actionBarFollowBtn");
       }
       ((Button)localObject1).setText(2131766986);
-      localObject1 = this.sfZ;
+      localObject1 = this.soS;
       if (localObject1 == null) {
-        d.g.b.p.bcb("followBtnTv");
+        d.g.b.p.bdF("followBtnTv");
       }
       ((TextView)localObject1).setText(2131766986);
     }
     for (;;)
     {
-      localObject1 = this.sgv;
+      localObject1 = this.spo;
       if (localObject1 == null) {
-        d.g.b.p.bcb("actionBarFollowBtn");
+        d.g.b.p.bdF("actionBarFollowBtn");
       }
       ((Button)localObject1).setBackgroundResource(2131232363);
-      localObject1 = this.sgv;
+      localObject1 = this.spo;
       if (localObject1 == null) {
-        d.g.b.p.bcb("actionBarFollowBtn");
+        d.g.b.p.bdF("actionBarFollowBtn");
       }
       ((Button)localObject1).setTextColor(getResources().getColor(2131099828));
-      localObject1 = this.sfZ;
+      localObject1 = this.soS;
       if (localObject1 == null) {
-        d.g.b.p.bcb("followBtnTv");
+        d.g.b.p.bdF("followBtnTv");
       }
       ((TextView)localObject1).setTextColor(getResources().getColor(2131099828));
-      localObject1 = this.sgb;
+      localObject1 = this.soU;
       if (localObject1 == null) {
-        d.g.b.p.bcb("nickNameContainer");
+        d.g.b.p.bdF("nickNameContainer");
       }
       ((View)localObject1).post((Runnable)new ab(this, paramg));
-      localObject1 = this.sfY;
+      localObject1 = this.soR;
       if (localObject1 == null) {
-        d.g.b.p.bcb("followBtn");
+        d.g.b.p.bdF("followBtn");
       }
       ((View)localObject1).setBackgroundResource(2131232363);
       paramg = (d.g.a.b)new ac(this, paramg, bool);
-      localObject1 = this.sfY;
+      localObject1 = this.soR;
       if (localObject1 == null) {
-        d.g.b.p.bcb("followBtn");
+        d.g.b.p.bdF("followBtn");
       }
       ((View)localObject1).setOnClickListener((View.OnClickListener)new a(paramg));
-      localObject1 = this.sgv;
+      localObject1 = this.spo;
       if (localObject1 == null) {
-        d.g.b.p.bcb("actionBarFollowBtn");
+        d.g.b.p.bdF("actionBarFollowBtn");
       }
       ((Button)localObject1).setOnClickListener((View.OnClickListener)new a(paramg));
-      AppMethodBeat.o(202827);
+      AppMethodBeat.o(203306);
       return;
       bool = false;
       break;
@@ -311,42 +312,42 @@ public final class FinderProfileUI
       j = 0;
       break label99;
       label419:
-      localObject1 = this.sgv;
+      localObject1 = this.spo;
       if (localObject1 == null) {
-        d.g.b.p.bcb("actionBarFollowBtn");
+        d.g.b.p.bdF("actionBarFollowBtn");
       }
       ((Button)localObject1).setText(2131759228);
-      localObject1 = this.sfZ;
+      localObject1 = this.soS;
       if (localObject1 == null) {
-        d.g.b.p.bcb("followBtnTv");
+        d.g.b.p.bdF("followBtnTv");
       }
       ((TextView)localObject1).setText(2131759228);
     }
   }
   
-  private final void a(final boolean paramBoolean, final be parambe)
+  private final void a(final boolean paramBoolean, final bf parambf)
   {
     AppMethodBeat.i(166199);
-    Object localObject1 = com.tencent.mm.plugin.finder.api.c.rHn;
+    Object localObject1 = com.tencent.mm.plugin.finder.api.c.rPy;
     localObject1 = this.username;
     if (localObject1 == null) {
-      d.g.b.p.bcb("username");
+      d.g.b.p.bdF("username");
     }
-    this.sgG = com.tencent.mm.plugin.finder.api.c.a.agW((String)localObject1);
+    this.spz = com.tencent.mm.plugin.finder.api.c.a.ahT((String)localObject1);
     Object localObject3 = this.TAG;
     localObject1 = new StringBuilder("refreshProfile, contact null? ");
     boolean bool;
     Object localObject4;
     Object localObject2;
     int i;
-    if (this.sgG == null)
+    if (this.spz == null)
     {
       bool = true;
       localObject4 = ((StringBuilder)localObject1).append(bool).append(' ');
-      localObject1 = this.sgG;
+      localObject1 = this.spz;
       if (localObject1 != null)
       {
-        localObject2 = ((com.tencent.mm.plugin.finder.api.g)localObject1).VC();
+        localObject2 = ((com.tencent.mm.plugin.finder.api.g)localObject1).VK();
         localObject1 = localObject2;
         if (localObject2 != null) {}
       }
@@ -354,55 +355,55 @@ public final class FinderProfileUI
       {
         localObject1 = "";
       }
-      ad.i((String)localObject3, (String)localObject1);
-      localObject2 = this.sgG;
+      ae.i((String)localObject3, (String)localObject1);
+      localObject2 = this.spz;
       if (localObject2 == null) {
         break label1894;
       }
       if (((com.tencent.mm.plugin.finder.api.g)localObject2).isBlock()) {
         break label1812;
       }
-      localObject1 = this.sgw;
+      localObject1 = this.spp;
       if (localObject1 == null) {
-        d.g.b.p.bcb("finderSpamContactTipView");
+        d.g.b.p.bdF("finderSpamContactTipView");
       }
       ((View)localObject1).setVisibility(8);
       if (paramBoolean)
       {
-        localObject1 = com.tencent.mm.plugin.finder.loader.i.sja;
-        localObject1 = com.tencent.mm.plugin.finder.loader.i.cCC();
-        localObject3 = new com.tencent.mm.plugin.finder.loader.a(((com.tencent.mm.plugin.finder.api.g)localObject2).cxL());
-        localObject4 = this.sgp;
+        localObject1 = com.tencent.mm.plugin.finder.loader.i.srW;
+        localObject1 = com.tencent.mm.plugin.finder.loader.i.cEo();
+        localObject3 = new com.tencent.mm.plugin.finder.loader.a(((com.tencent.mm.plugin.finder.api.g)localObject2).czm());
+        localObject4 = this.spi;
         if (localObject4 == null) {
-          d.g.b.p.bcb("actionBarAvatarIv");
+          d.g.b.p.bdF("actionBarAvatarIv");
         }
-        com.tencent.mm.plugin.finder.loader.i locali = com.tencent.mm.plugin.finder.loader.i.sja;
-        ((com.tencent.mm.loader.d)localObject1).a(localObject3, (ImageView)localObject4, com.tencent.mm.plugin.finder.loader.i.a(i.a.sjd));
-        localObject1 = com.tencent.mm.plugin.finder.loader.i.sja;
-        localObject1 = com.tencent.mm.plugin.finder.loader.i.cCC();
-        localObject3 = new com.tencent.mm.plugin.finder.loader.a(((com.tencent.mm.plugin.finder.api.g)localObject2).cxL());
-        localObject4 = this.fRd;
+        com.tencent.mm.plugin.finder.loader.i locali = com.tencent.mm.plugin.finder.loader.i.srW;
+        ((com.tencent.mm.loader.d)localObject1).a(localObject3, (ImageView)localObject4, com.tencent.mm.plugin.finder.loader.i.a(i.a.srZ));
+        localObject1 = com.tencent.mm.plugin.finder.loader.i.srW;
+        localObject1 = com.tencent.mm.plugin.finder.loader.i.cEo();
+        localObject3 = new com.tencent.mm.plugin.finder.loader.a(((com.tencent.mm.plugin.finder.api.g)localObject2).czm());
+        localObject4 = this.fTj;
         if (localObject4 == null) {
-          d.g.b.p.bcb("avatarIv");
+          d.g.b.p.bdF("avatarIv");
         }
-        locali = com.tencent.mm.plugin.finder.loader.i.sja;
-        ((com.tencent.mm.loader.d)localObject1).a(localObject3, (ImageView)localObject4, com.tencent.mm.plugin.finder.loader.i.a(i.a.sjd));
+        locali = com.tencent.mm.plugin.finder.loader.i.srW;
+        ((com.tencent.mm.loader.d)localObject1).a(localObject3, (ImageView)localObject4, com.tencent.mm.plugin.finder.loader.i.a(i.a.srZ));
       }
-      localObject1 = this.fRd;
+      localObject1 = this.fTj;
       if (localObject1 == null) {
-        d.g.b.p.bcb("avatarIv");
+        d.g.b.p.bdF("avatarIv");
       }
-      ((ImageView)localObject1).setOnClickListener((View.OnClickListener)new u((com.tencent.mm.plugin.finder.api.g)localObject2, this, paramBoolean, parambe));
-      localObject1 = this.jcd;
+      ((ImageView)localObject1).setOnClickListener((View.OnClickListener)new u((com.tencent.mm.plugin.finder.api.g)localObject2, this, paramBoolean, parambf));
+      localObject1 = this.jeW;
       if (localObject1 == null) {
-        d.g.b.p.bcb("nickNameTv");
+        d.g.b.p.bdF("nickNameTv");
       }
       al.a((Paint)((TextView)localObject1).getPaint(), 0.8F);
-      localObject1 = this.sgq;
+      localObject1 = this.spj;
       if (localObject1 == null) {
-        d.g.b.p.bcb("actionBarNicknameTv");
+        d.g.b.p.bdF("actionBarNicknameTv");
       }
-      ((TextView)localObject1).setText((CharSequence)com.tencent.mm.pluginsdk.ui.span.k.c((Context)this, (CharSequence)((com.tencent.mm.plugin.finder.api.g)localObject2).VC()));
+      ((TextView)localObject1).setText((CharSequence)com.tencent.mm.pluginsdk.ui.span.k.c((Context)this, (CharSequence)((com.tencent.mm.plugin.finder.api.g)localObject2).VK()));
       localObject1 = (CharSequence)((com.tencent.mm.plugin.finder.api.g)localObject2).field_signature;
       if ((localObject1 != null) && (((CharSequence)localObject1).length() != 0)) {
         break label619;
@@ -412,74 +413,74 @@ public final class FinderProfileUI
       if (i == 0) {
         break label624;
       }
-      localObject1 = this.gUs;
+      localObject1 = this.gXb;
       if (localObject1 == null) {
-        d.g.b.p.bcb("descTv");
+        d.g.b.p.bdF("descTv");
       }
       ((TextView)localObject1).setVisibility(8);
       label458:
-      if (parambe == null) {
+      if (parambf == null) {
         break label761;
       }
-      i = parambe.pullType;
+      i = parambf.pullType;
       label467:
       if (i == 2) {
         break label766;
       }
       bool = true;
       label475:
-      localObject1 = com.tencent.mm.plugin.finder.api.c.rHn;
-      if (!com.tencent.mm.plugin.finder.api.c.a.agZ(((com.tencent.mm.plugin.finder.api.g)localObject2).getUsername())) {
+      localObject1 = com.tencent.mm.plugin.finder.api.c.rPy;
+      if (!com.tencent.mm.plugin.finder.api.c.a.ahW(((com.tencent.mm.plugin.finder.api.g)localObject2).getUsername())) {
         break label772;
       }
       g((com.tencent.mm.plugin.finder.api.g)localObject2);
     }
     for (;;)
     {
-      a(this.drv, ((com.tencent.mm.plugin.finder.api.g)localObject2).getUsername(), parambe);
-      localObject1 = this.sfP;
+      a(this.dsB, ((com.tencent.mm.plugin.finder.api.g)localObject2).getUsername(), parambf);
+      localObject1 = this.soI;
       if (localObject1 == null) {
-        d.g.b.p.bcb("defaultHeaderBg");
+        d.g.b.p.bdF("defaultHeaderBg");
       }
       ((ImageView)localObject1).setVisibility(0);
       localObject3 = new y.f();
-      ((y.f)localObject3).MLV = ((com.tencent.mm.plugin.finder.api.g)localObject2).field_coverImg;
-      if (!this.drv) {
+      ((y.f)localObject3).NiY = ((com.tencent.mm.plugin.finder.api.g)localObject2).field_coverImg;
+      if (!this.dsB) {
         break label1221;
       }
-      localObject1 = com.tencent.mm.kernel.g.ajC();
+      localObject1 = com.tencent.mm.kernel.g.ajR();
       d.g.b.p.g(localObject1, "MMKernel.storage()");
-      localObject1 = ((com.tencent.mm.kernel.e)localObject1).ajl().get(al.a.IGC, "");
+      localObject1 = ((com.tencent.mm.kernel.e)localObject1).ajA().get(am.a.Jbc, "");
       if (localObject1 != null) {
         break label808;
       }
-      parambe = new v("null cannot be cast to non-null type kotlin.String");
+      parambf = new d.v("null cannot be cast to non-null type kotlin.String");
       AppMethodBeat.o(166199);
-      throw parambe;
+      throw parambf;
       bool = false;
       break;
       label619:
       i = 0;
       break label430;
       label624:
-      localObject1 = this.gUs;
+      localObject1 = this.gXb;
       if (localObject1 == null) {
-        d.g.b.p.bcb("descTv");
+        d.g.b.p.bdF("descTv");
       }
       localObject3 = (Context)this;
       localObject4 = getContext();
       d.g.b.p.g(localObject4, "context");
       ((TextView)localObject1).setText((CharSequence)com.tencent.mm.pluginsdk.ui.span.k.c((Context)localObject3, (CharSequence)((AppCompatActivity)localObject4).getResources().getString(2131759171, new Object[] { ((com.tencent.mm.plugin.finder.api.g)localObject2).field_signature })));
-      localObject1 = this.gUs;
+      localObject1 = this.gXb;
       if (localObject1 == null) {
-        d.g.b.p.bcb("descTv");
+        d.g.b.p.bdF("descTv");
       }
       ((TextView)localObject1).setVisibility(0);
-      localObject1 = this.gUs;
+      localObject1 = this.gXb;
       if (localObject1 == null) {
-        d.g.b.p.bcb("descTv");
+        d.g.b.p.bdF("descTv");
       }
-      ((TextView)localObject1).setOnLongClickListener((View.OnLongClickListener)new v(this, paramBoolean, parambe));
+      ((TextView)localObject1).setOnLongClickListener((View.OnLongClickListener)new v(this, paramBoolean, parambf));
       break label458;
       label761:
       i = 0;
@@ -488,8 +489,8 @@ public final class FinderProfileUI
       bool = false;
       break label475;
       label772:
-      localObject1 = com.tencent.mm.plugin.finder.api.c.rHn;
-      if (com.tencent.mm.plugin.finder.api.c.a.aha(((com.tencent.mm.plugin.finder.api.g)localObject2).getUsername())) {
+      localObject1 = com.tencent.mm.plugin.finder.api.c.rPy;
+      if (com.tencent.mm.plugin.finder.api.c.a.ahX(((com.tencent.mm.plugin.finder.api.g)localObject2).getUsername())) {
         f((com.tencent.mm.plugin.finder.api.g)localObject2);
       } else {
         a((com.tencent.mm.plugin.finder.api.g)localObject2, bool);
@@ -497,35 +498,35 @@ public final class FinderProfileUI
     }
     label808:
     localObject1 = (String)localObject1;
-    if (!bt.isNullOrNil((String)localObject1))
+    if (!bu.isNullOrNil((String)localObject1))
     {
-      ((y.f)localObject3).MLV = localObject1;
-      ad.i(this.TAG, "use localCoverImg " + (String)((y.f)localObject3).MLV);
+      ((y.f)localObject3).NiY = localObject1;
+      ae.i(this.TAG, "use localCoverImg " + (String)((y.f)localObject3).NiY);
     }
-    if (!bt.isNullOrNil((String)((y.f)localObject3).MLV))
+    if (!bu.isNullOrNil((String)((y.f)localObject3).NiY))
     {
-      localObject1 = (String)((y.f)localObject3).MLV;
+      localObject1 = (String)((y.f)localObject3).NiY;
       d.g.b.p.g(localObject1, "path");
-      localObject4 = r.sNc;
-      if (d.n.n.nz((String)localObject1, r.cLI()))
+      localObject4 = r.sYn;
+      if (d.n.n.nF((String)localObject1, r.cOq()))
       {
-        localObject1 = this.sfP;
+        localObject1 = this.soI;
         if (localObject1 == null) {
-          d.g.b.p.bcb("defaultHeaderBg");
+          d.g.b.p.bdF("defaultHeaderBg");
         }
         ((ImageView)localObject1).setVisibility(8);
-        localObject1 = (String)((y.f)localObject3).MLV;
+        localObject1 = (String)((y.f)localObject3).NiY;
         d.g.b.p.g(localObject1, "path");
-        aht((String)localObject1);
+        aiq((String)localObject1);
       }
     }
     else
     {
       label957:
       localObject1 = ((com.tencent.mm.plugin.finder.api.g)localObject2).field_authInfo;
-      localObject3 = this.sgh;
+      localObject3 = this.spa;
       if (localObject3 == null) {
-        d.g.b.p.bcb("authGeneratorTv");
+        d.g.b.p.bdF("authGeneratorTv");
       }
       ((TextView)localObject3).setVisibility(8);
       if (localObject1 == null) {
@@ -534,300 +535,300 @@ public final class FinderProfileUI
       if (((FinderAuthInfo)localObject1).authIconType <= 0) {
         break label1764;
       }
-      localObject3 = this.sgh;
+      localObject3 = this.spa;
       if (localObject3 == null) {
-        d.g.b.p.bcb("authGeneratorTv");
+        d.g.b.p.bdF("authGeneratorTv");
       }
-      ((TextView)localObject3).setOnClickListener((View.OnClickListener)new x((com.tencent.mm.plugin.finder.api.g)localObject2, this, paramBoolean, parambe));
-      localObject3 = this.sgg;
+      ((TextView)localObject3).setOnClickListener((View.OnClickListener)new x((com.tencent.mm.plugin.finder.api.g)localObject2, this, paramBoolean, parambf));
+      localObject3 = this.soZ;
       if (localObject3 == null) {
-        d.g.b.p.bcb("authByTv");
+        d.g.b.p.bdF("authByTv");
       }
-      ((TextView)localObject3).setOnClickListener((View.OnClickListener)new y((com.tencent.mm.plugin.finder.api.g)localObject2, this, paramBoolean, parambe));
-      parambe = com.tencent.mm.plugin.finder.utils.p.sMo;
-      parambe = this.sgf;
-      if (parambe == null) {
-        d.g.b.p.bcb("authIcon");
+      ((TextView)localObject3).setOnClickListener((View.OnClickListener)new y((com.tencent.mm.plugin.finder.api.g)localObject2, this, paramBoolean, parambf));
+      parambf = com.tencent.mm.plugin.finder.utils.p.sXz;
+      parambf = this.soY;
+      if (parambf == null) {
+        d.g.b.p.bdF("authIcon");
       }
-      com.tencent.mm.plugin.finder.utils.p.a(parambe, (FinderAuthInfo)localObject1);
+      com.tencent.mm.plugin.finder.utils.p.a(parambf, (FinderAuthInfo)localObject1);
       switch (((FinderAuthInfo)localObject1).authIconType)
       {
       default: 
         label1140:
-        if ((((com.tencent.mm.plugin.finder.api.g)localObject2).field_authInfo == null) || ((bt.isNullOrNil(((com.tencent.mm.plugin.finder.api.g)localObject2).field_authInfo.appName)) && (bt.isNullOrNil(((com.tencent.mm.plugin.finder.api.g)localObject2).field_authInfo.detailLink))) || (1 == ((FinderAuthInfo)localObject1).authIconType))
+        if ((((com.tencent.mm.plugin.finder.api.g)localObject2).field_authInfo == null) || ((bu.isNullOrNil(((com.tencent.mm.plugin.finder.api.g)localObject2).field_authInfo.appName)) && (bu.isNullOrNil(((com.tencent.mm.plugin.finder.api.g)localObject2).field_authInfo.detailLink))) || (1 == ((FinderAuthInfo)localObject1).authIconType))
         {
-          parambe = this.sgi;
-          if (parambe == null) {
-            d.g.b.p.bcb("authArrowIv");
+          parambf = this.spb;
+          if (parambf == null) {
+            d.g.b.p.bdF("authArrowIv");
           }
-          parambe.setVisibility(8);
+          parambf.setVisibility(8);
         }
         break;
       }
     }
     for (;;)
     {
-      cCr();
-      parambe = d.z.MKo;
+      cEd();
+      parambf = d.z.Nhr;
       AppMethodBeat.o(166199);
       return;
       label1221:
       localObject1 = "";
       break;
-      localObject1 = this.sfP;
+      localObject1 = this.soI;
       if (localObject1 == null) {
-        d.g.b.p.bcb("defaultHeaderBg");
+        d.g.b.p.bdF("defaultHeaderBg");
       }
       ((ImageView)localObject1).setVisibility(8);
-      localObject1 = (String)((y.f)localObject3).MLV;
+      localObject1 = (String)((y.f)localObject3).NiY;
       d.g.b.p.g(localObject1, "path");
       localObject1 = new com.tencent.mm.plugin.finder.loader.e((String)localObject1);
-      if (com.tencent.mm.vfs.i.fv(((com.tencent.mm.plugin.finder.loader.e)localObject1).getPath()))
+      if (o.fB(((com.tencent.mm.plugin.finder.loader.e)localObject1).getPath()))
       {
-        aht(((com.tencent.mm.plugin.finder.loader.e)localObject1).getPath());
+        aiq(((com.tencent.mm.plugin.finder.loader.e)localObject1).getPath());
         break label957;
       }
-      localObject4 = com.tencent.mm.plugin.finder.loader.i.sja;
-      localObject1 = com.tencent.mm.plugin.finder.loader.i.cCB().bI(localObject1);
-      localObject4 = com.tencent.mm.plugin.finder.loader.i.sja;
-      localObject1 = ((com.tencent.mm.loader.a.b)localObject1).a(com.tencent.mm.plugin.finder.loader.i.a(i.a.sjj)).a((com.tencent.mm.loader.f.e)new w((y.f)localObject3, this, paramBoolean, parambe));
-      localObject3 = this.sfQ;
+      localObject4 = com.tencent.mm.plugin.finder.loader.i.srW;
+      localObject1 = com.tencent.mm.plugin.finder.loader.i.cEn().bI(localObject1);
+      localObject4 = com.tencent.mm.plugin.finder.loader.i.srW;
+      localObject1 = ((com.tencent.mm.loader.a.b)localObject1).a(com.tencent.mm.plugin.finder.loader.i.a(i.a.ssg)).a((com.tencent.mm.loader.f.e)new w((y.f)localObject3, this, paramBoolean, parambf));
+      localObject3 = this.soJ;
       if (localObject3 == null) {
-        d.g.b.p.bcb("headerBg");
+        d.g.b.p.bdF("headerBg");
       }
       ((com.tencent.mm.loader.b)localObject1).c((ImageView)localObject3);
       break label957;
-      parambe = ((FinderAuthInfo)localObject1).authProfession;
-      if (parambe != null)
+      parambf = ((FinderAuthInfo)localObject1).authProfession;
+      if (parambf != null)
       {
-        localObject3 = this.sgg;
+        localObject3 = this.soZ;
         if (localObject3 == null) {
-          d.g.b.p.bcb("authByTv");
+          d.g.b.p.bdF("authByTv");
         }
         ((TextView)localObject3).setVisibility(0);
-        localObject3 = this.sgg;
+        localObject3 = this.soZ;
         if (localObject3 == null) {
-          d.g.b.p.bcb("authByTv");
+          d.g.b.p.bdF("authByTv");
         }
-        ((TextView)localObject3).setText((CharSequence)getResources().getString(2131759170, new Object[] { parambe }));
-        parambe = this.sgg;
-        if (parambe == null) {
-          d.g.b.p.bcb("authByTv");
+        ((TextView)localObject3).setText((CharSequence)getResources().getString(2131759170, new Object[] { parambf }));
+        parambf = this.soZ;
+        if (parambf == null) {
+          d.g.b.p.bdF("authByTv");
         }
-        parambe.setOnClickListener(null);
-        parambe = d.z.MKo;
+        parambf.setOnClickListener(null);
+        parambf = d.z.Nhr;
       }
-      parambe = this.sgc;
-      if (parambe == null) {
-        d.g.b.p.bcb("authLayout");
+      parambf = this.soV;
+      if (parambf == null) {
+        d.g.b.p.bdF("authLayout");
       }
-      parambe.setVisibility(0);
+      parambf.setVisibility(0);
       break label1140;
-      parambe = this.sgh;
-      if (parambe == null) {
-        d.g.b.p.bcb("authGeneratorTv");
+      parambf = this.spa;
+      if (parambf == null) {
+        d.g.b.p.bdF("authGeneratorTv");
       }
-      parambe.setVisibility(8);
-      parambe = this.sgc;
-      if (parambe == null) {
-        d.g.b.p.bcb("authLayout");
+      parambf.setVisibility(8);
+      parambf = this.soV;
+      if (parambf == null) {
+        d.g.b.p.bdF("authLayout");
       }
-      parambe.setVisibility(0);
-      parambe = ((FinderAuthInfo)localObject1).authProfession;
-      if (parambe == null) {
+      parambf.setVisibility(0);
+      parambf = ((FinderAuthInfo)localObject1).authProfession;
+      if (parambf == null) {
         break label1140;
       }
-      localObject3 = this.sgg;
+      localObject3 = this.soZ;
       if (localObject3 == null) {
-        d.g.b.p.bcb("authByTv");
+        d.g.b.p.bdF("authByTv");
       }
       ((TextView)localObject3).setVisibility(0);
-      localObject3 = this.sgg;
+      localObject3 = this.soZ;
       if (localObject3 == null) {
-        d.g.b.p.bcb("authByTv");
+        d.g.b.p.bdF("authByTv");
       }
-      ((TextView)localObject3).setText((CharSequence)getResources().getString(2131759170, new Object[] { parambe }));
-      parambe = d.z.MKo;
+      ((TextView)localObject3).setText((CharSequence)getResources().getString(2131759170, new Object[] { parambf }));
+      parambf = d.z.Nhr;
       break label1140;
-      parambe = this.sgc;
-      if (parambe == null) {
-        d.g.b.p.bcb("authLayout");
+      parambf = this.soV;
+      if (parambf == null) {
+        d.g.b.p.bdF("authLayout");
       }
-      parambe.setVisibility(0);
-      parambe = this.sgh;
-      if (parambe == null) {
-        d.g.b.p.bcb("authGeneratorTv");
+      parambf.setVisibility(0);
+      parambf = this.spa;
+      if (parambf == null) {
+        d.g.b.p.bdF("authGeneratorTv");
       }
-      parambe.setVisibility(8);
-      parambe = this.sgi;
-      if (parambe == null) {
-        d.g.b.p.bcb("authArrowIv");
+      parambf.setVisibility(8);
+      parambf = this.spb;
+      if (parambf == null) {
+        d.g.b.p.bdF("authArrowIv");
       }
-      parambe.setVisibility(8);
-      parambe = this.sgg;
-      if (parambe == null) {
-        d.g.b.p.bcb("authByTv");
+      parambf.setVisibility(8);
+      parambf = this.soZ;
+      if (parambf == null) {
+        d.g.b.p.bdF("authByTv");
       }
-      parambe.setOnClickListener(null);
-      parambe = this.sgg;
-      if (parambe == null) {
-        d.g.b.p.bcb("authByTv");
+      parambf.setOnClickListener(null);
+      parambf = this.soZ;
+      if (parambf == null) {
+        d.g.b.p.bdF("authByTv");
       }
-      parambe.setText(2131759236);
+      parambf.setText(2131759236);
       break label1140;
-      parambe = this.sgi;
-      if (parambe == null) {
-        d.g.b.p.bcb("authArrowIv");
+      parambf = this.spb;
+      if (parambf == null) {
+        d.g.b.p.bdF("authArrowIv");
       }
-      parambe.setVisibility(0);
+      parambf.setVisibility(0);
       continue;
       label1764:
-      parambe = this.sgc;
-      if (parambe == null) {
-        d.g.b.p.bcb("authLayout");
+      parambf = this.soV;
+      if (parambf == null) {
+        d.g.b.p.bdF("authLayout");
       }
-      parambe.setVisibility(8);
+      parambf.setVisibility(8);
       continue;
       label1788:
-      parambe = this.sgc;
-      if (parambe == null) {
-        d.g.b.p.bcb("authLayout");
+      parambf = this.soV;
+      if (parambf == null) {
+        d.g.b.p.bdF("authLayout");
       }
-      parambe.setVisibility(8);
+      parambf.setVisibility(8);
       continue;
       label1812:
-      parambe = findViewById(2131305143);
-      d.g.b.p.g(parambe, "findViewById<TextView>(R.id.spam_tip_tv)");
-      ((TextView)parambe).setText((CharSequence)getString(2131759358));
-      if (al.aG((Context)this)) {
-        getContentView().setPadding(0, al.aF((Context)this), 0, 0);
+      parambf = findViewById(2131305143);
+      d.g.b.p.g(parambf, "findViewById<TextView>(R.id.spam_tip_tv)");
+      ((TextView)parambf).setText((CharSequence)getString(2131759358));
+      if (al.aH((Context)this)) {
+        getContentView().setPadding(0, al.aG((Context)this), 0, 0);
       }
-      parambe = this.sgw;
-      if (parambe == null) {
-        d.g.b.p.bcb("finderSpamContactTipView");
+      parambf = this.spp;
+      if (parambf == null) {
+        d.g.b.p.bdF("finderSpamContactTipView");
       }
-      parambe.setVisibility(0);
+      parambf.setVisibility(0);
     }
     label1894:
     AppMethodBeat.o(166199);
   }
   
-  private final void a(boolean paramBoolean, String paramString, be parambe)
+  private final void a(boolean paramBoolean, String paramString, bf parambf)
   {
     AppMethodBeat.i(166197);
-    b localb = (b)sgO.get(paramString);
+    FinderProfileUI.b localb = (FinderProfileUI.b)spI.get(paramString);
     if (localb == null) {
-      localb = new b(new LinkedList());
+      localb = new FinderProfileUI.b(new LinkedList());
     }
     for (;;)
     {
       d.g.b.p.g(localb, "userExtInfoLocalMap[user…nfo(-1, -1, LinkedList())");
-      if (parambe != null)
+      if (parambf != null)
       {
-        localb.fansCount = parambe.fansCount;
-        localb.friendFollowCount = parambe.friendFollowCount;
-        parambe = parambe.userTags;
-        d.g.b.p.h(parambe, "<set-?>");
-        localb.userTags = parambe;
-        ((Map)sgO).put(paramString, localb);
+        localb.fansCount = parambf.fansCount;
+        localb.friendFollowCount = parambf.friendFollowCount;
+        parambf = parambf.userTags;
+        d.g.b.p.h(parambf, "<set-?>");
+        localb.userTags = parambf;
+        ((Map)spI).put(paramString, localb);
       }
       paramString = new LinkedList((Collection)localb.userTags);
-      parambe = this.sgG;
-      if ((parambe == null) || (parambe.field_originalFlag != 2))
+      parambf = this.spz;
+      if ((parambf == null) || (parambf.field_originalFlag != 2))
       {
-        parambe = this.sgd;
-        if (parambe == null) {
-          d.g.b.p.bcb("userOriginalTag");
+        parambf = this.soW;
+        if (parambf == null) {
+          d.g.b.p.bdF("userOriginalTag");
         }
-        parambe.setVisibility(8);
+        parambf.setVisibility(8);
       }
       if (paramString.isEmpty())
       {
-        paramString = this.sge;
+        paramString = this.soX;
         if (paramString == null) {
-          d.g.b.p.bcb("userTagLayout");
+          d.g.b.p.bdF("userTagLayout");
         }
         paramString.setVisibility(4);
         if ((localb.friendFollowCount <= 0) || (paramBoolean)) {
           break label484;
         }
-        paramString = this.sfT;
+        paramString = this.soM;
         if (paramString == null) {
-          d.g.b.p.bcb("friendFollowLayout");
+          d.g.b.p.bdF("friendFollowLayout");
         }
         paramString.setVisibility(0);
-        paramString = this.sfV;
+        paramString = this.soO;
         if (paramString == null) {
-          d.g.b.p.bcb("friendFollowTv");
+          d.g.b.p.bdF("friendFollowTv");
         }
-        parambe = getContext();
-        d.g.b.p.g(parambe, "context");
-        paramString.setText((CharSequence)parambe.getResources().getString(2131759230, new Object[] { com.tencent.mm.plugin.finder.utils.h.FG(localb.friendFollowCount) }));
+        parambf = getContext();
+        d.g.b.p.g(parambf, "context");
+        paramString.setText((CharSequence)parambf.getResources().getString(2131759230, new Object[] { com.tencent.mm.plugin.finder.utils.h.Ge(localb.friendFollowCount) }));
       }
       for (;;)
       {
         if ((localb.fansCount <= 0) || (!paramBoolean)) {
           break label508;
         }
-        paramString = this.sfS;
+        paramString = this.soL;
         if (paramString == null) {
-          d.g.b.p.bcb("fansLayout");
+          d.g.b.p.bdF("fansLayout");
         }
         paramString.setVisibility(0);
-        paramString = this.sfU;
+        paramString = this.soN;
         if (paramString == null) {
-          d.g.b.p.bcb("fansTv");
+          d.g.b.p.bdF("fansTv");
         }
-        parambe = getContext();
-        d.g.b.p.g(parambe, "context");
-        paramString.setText((CharSequence)parambe.getResources().getString(2131759206, new Object[] { com.tencent.mm.plugin.finder.utils.h.FG(localb.fansCount) }));
+        parambf = getContext();
+        d.g.b.p.g(parambf, "context");
+        paramString.setText((CharSequence)parambf.getResources().getString(2131759206, new Object[] { String.valueOf(localb.fansCount) }));
         AppMethodBeat.o(166197);
         return;
-        parambe = this.sge;
-        if (parambe == null) {
-          d.g.b.p.bcb("userTagLayout");
+        parambf = this.soX;
+        if (parambf == null) {
+          d.g.b.p.bdF("userTagLayout");
         }
-        parambe.setVisibility(0);
-        parambe = new StringBuilder();
+        parambf.setVisibility(0);
+        parambf = new StringBuilder();
         paramString = ((Iterable)paramString).iterator();
         while (paramString.hasNext()) {
-          parambe.append((String)paramString.next()).append(" ");
+          parambf.append((String)paramString.next()).append(" ");
         }
-        paramString = this.sge;
+        paramString = this.soX;
         if (paramString == null) {
-          d.g.b.p.bcb("userTagLayout");
+          d.g.b.p.bdF("userTagLayout");
         }
-        paramString.setText((CharSequence)com.tencent.mm.pluginsdk.ui.span.k.c((Context)getContext(), (CharSequence)parambe.toString()));
+        paramString.setText((CharSequence)com.tencent.mm.pluginsdk.ui.span.k.c((Context)getContext(), (CharSequence)parambf.toString()));
         break;
         label484:
-        paramString = this.sfT;
+        paramString = this.soM;
         if (paramString == null) {
-          d.g.b.p.bcb("friendFollowLayout");
+          d.g.b.p.bdF("friendFollowLayout");
         }
         paramString.setVisibility(8);
       }
       label508:
-      paramString = com.tencent.mm.plugin.finder.storage.b.sxa;
-      if (com.tencent.mm.plugin.finder.storage.b.cGk())
+      paramString = com.tencent.mm.plugin.finder.storage.b.sHP;
+      if (com.tencent.mm.plugin.finder.storage.b.cIh())
       {
-        paramString = this.sfS;
+        paramString = this.soL;
         if (paramString == null) {
-          d.g.b.p.bcb("fansLayout");
+          d.g.b.p.bdF("fansLayout");
         }
         paramString.setVisibility(0);
-        paramString = this.sfU;
+        paramString = this.soN;
         if (paramString == null) {
-          d.g.b.p.bcb("fansTv");
+          d.g.b.p.bdF("fansTv");
         }
-        parambe = getContext();
-        d.g.b.p.g(parambe, "context");
-        paramString.setText((CharSequence)parambe.getResources().getString(2131759206, new Object[] { com.tencent.mm.plugin.finder.utils.h.FG(localb.fansCount) }));
+        parambf = getContext();
+        d.g.b.p.g(parambf, "context");
+        paramString.setText((CharSequence)parambf.getResources().getString(2131759206, new Object[] { com.tencent.mm.plugin.finder.utils.h.Ge(localb.fansCount) }));
         AppMethodBeat.o(166197);
         return;
       }
-      paramString = this.sfS;
+      paramString = this.soL;
       if (paramString == null) {
-        d.g.b.p.bcb("fansLayout");
+        d.g.b.p.bdF("fansLayout");
       }
       paramString.setVisibility(8);
       AppMethodBeat.o(166197);
@@ -835,50 +836,50 @@ public final class FinderProfileUI
     }
   }
   
-  private void aht(String paramString)
+  private void aiq(String paramString)
   {
     AppMethodBeat.i(166210);
     d.g.b.p.h(paramString, "path");
-    Object localObject = com.tencent.mm.plugin.finder.utils.p.sMo;
-    localObject = this.sfQ;
+    Object localObject = com.tencent.mm.plugin.finder.utils.p.sXz;
+    localObject = this.soJ;
     if (localObject == null) {
-      d.g.b.p.bcb("headerBg");
+      d.g.b.p.bdF("headerBg");
     }
-    com.tencent.mm.plugin.finder.storage.b localb = com.tencent.mm.plugin.finder.storage.b.sxa;
-    int i = com.tencent.mm.plugin.finder.storage.b.cFo();
-    localb = com.tencent.mm.plugin.finder.storage.b.sxa;
-    com.tencent.mm.plugin.finder.utils.p.a((ImageView)localObject, paramString, i, com.tencent.mm.plugin.finder.storage.b.cFo());
+    com.tencent.mm.plugin.finder.storage.b localb = com.tencent.mm.plugin.finder.storage.b.sHP;
+    int i = com.tencent.mm.plugin.finder.storage.b.cHl();
+    localb = com.tencent.mm.plugin.finder.storage.b.sHP;
+    com.tencent.mm.plugin.finder.utils.p.a((ImageView)localObject, paramString, i, com.tencent.mm.plugin.finder.storage.b.cHl());
     AppMethodBeat.o(166210);
   }
   
-  private final int cCo()
+  private final int cEa()
   {
     AppMethodBeat.i(166194);
-    int i = al.fM((Context)getContext()).x;
+    int i = al.fS((Context)getContext()).x;
     AppMethodBeat.o(166194);
     return i;
   }
   
-  private final boolean cCp()
+  private final boolean cEb()
   {
     AppMethodBeat.i(166195);
-    Object localObject = com.tencent.mm.kernel.g.ajC();
+    Object localObject = com.tencent.mm.kernel.g.ajR();
     d.g.b.p.g(localObject, "MMKernel.storage()");
-    localObject = ((com.tencent.mm.kernel.e)localObject).ajl().get(al.a.IGC, "");
+    localObject = ((com.tencent.mm.kernel.e)localObject).ajA().get(am.a.Jbc, "");
     if (localObject == null)
     {
-      localObject = new v("null cannot be cast to non-null type kotlin.String");
+      localObject = new d.v("null cannot be cast to non-null type kotlin.String");
       AppMethodBeat.o(166195);
       throw ((Throwable)localObject);
     }
-    if (bt.isNullOrNil((String)localObject))
+    if (bu.isNullOrNil((String)localObject))
     {
-      localObject = this.sgG;
+      localObject = this.spz;
       if (localObject == null) {
         break label112;
       }
       localObject = ((com.tencent.mm.plugin.finder.api.g)localObject).field_coverImg;
-      if (bt.isNullOrNil((String)localObject)) {
+      if (bu.isNullOrNil((String)localObject)) {
         break label117;
       }
     }
@@ -886,7 +887,7 @@ public final class FinderProfileUI
     label117:
     for (boolean bool = true;; bool = false)
     {
-      ad.i(this.TAG, "hasSetCoverImg ".concat(String.valueOf(bool)));
+      ae.i(this.TAG, "hasSetCoverImg ".concat(String.valueOf(bool)));
       AppMethodBeat.o(166195);
       return bool;
       localObject = null;
@@ -894,58 +895,58 @@ public final class FinderProfileUI
     }
   }
   
-  private final void cCq()
+  private final void cEc()
   {
     AppMethodBeat.i(166196);
     if (((PluginFinder)com.tencent.mm.kernel.g.ad(PluginFinder.class)).showPostEntry())
     {
-      View localView = this.sgt;
+      View localView = this.spm;
       if (localView == null) {
-        d.g.b.p.bcb("actionBarPhotoBtn");
+        d.g.b.p.bdF("actionBarPhotoBtn");
       }
       localView.setVisibility(0);
     }
     AppMethodBeat.o(166196);
   }
   
-  private final void cCr()
+  private final void cEd()
   {
     AppMethodBeat.i(166209);
-    if ((cCp()) && (this.sgJ < 0.5F))
+    if ((cEb()) && (this.spD < 0.5F))
     {
-      ad.d(this.TAG, "checkActionBarIconColor White, " + this.sgJ);
-      localWeImageView = this.sgm;
+      ae.d(this.TAG, "checkActionBarIconColor White, " + this.spD);
+      localWeImageView = this.spf;
       if (localWeImageView == null) {
-        d.g.b.p.bcb("actionBarBackIv");
+        d.g.b.p.bdF("actionBarBackIv");
       }
       localWeImageView.setIconColor(getResources().getColor(2131099828));
-      localWeImageView = this.sgu;
+      localWeImageView = this.spn;
       if (localWeImageView == null) {
-        d.g.b.p.bcb("actionBarPhotoIv");
+        d.g.b.p.bdF("actionBarPhotoIv");
       }
       localWeImageView.setIconColor(getResources().getColor(2131099828));
-      localWeImageView = this.sgs;
+      localWeImageView = this.spl;
       if (localWeImageView == null) {
-        d.g.b.p.bcb("actionBarMoreIv");
+        d.g.b.p.bdF("actionBarMoreIv");
       }
       localWeImageView.setIconColor(getResources().getColor(2131099828));
       AppMethodBeat.o(166209);
       return;
     }
-    ad.d(this.TAG, "checkActionBarIconColor black_color, " + this.sgJ);
-    WeImageView localWeImageView = this.sgm;
+    ae.d(this.TAG, "checkActionBarIconColor black_color, " + this.spD);
+    WeImageView localWeImageView = this.spf;
     if (localWeImageView == null) {
-      d.g.b.p.bcb("actionBarBackIv");
+      d.g.b.p.bdF("actionBarBackIv");
     }
     localWeImageView.setIconColor(getResources().getColor(2131100018));
-    localWeImageView = this.sgu;
+    localWeImageView = this.spn;
     if (localWeImageView == null) {
-      d.g.b.p.bcb("actionBarPhotoIv");
+      d.g.b.p.bdF("actionBarPhotoIv");
     }
     localWeImageView.setIconColor(getResources().getColor(2131100018));
-    localWeImageView = this.sgs;
+    localWeImageView = this.spl;
     if (localWeImageView == null) {
-      d.g.b.p.bcb("actionBarMoreIv");
+      d.g.b.p.bdF("actionBarMoreIv");
     }
     localWeImageView.setIconColor(getResources().getColor(2131100018));
     AppMethodBeat.o(166209);
@@ -953,117 +954,117 @@ public final class FinderProfileUI
   
   private final void f(final com.tencent.mm.plugin.finder.api.g paramg)
   {
-    AppMethodBeat.i(202826);
-    Object localObject1 = this.sgv;
+    AppMethodBeat.i(203305);
+    Object localObject1 = this.spo;
     if (localObject1 == null) {
-      d.g.b.p.bcb("actionBarFollowBtn");
+      d.g.b.p.bdF("actionBarFollowBtn");
     }
     ((Button)localObject1).setText(2131766987);
-    localObject1 = this.sgv;
+    localObject1 = this.spo;
     if (localObject1 == null) {
-      d.g.b.p.bcb("actionBarFollowBtn");
+      d.g.b.p.bdF("actionBarFollowBtn");
     }
     ((Button)localObject1).setBackgroundResource(2131232364);
-    localObject1 = this.sgv;
+    localObject1 = this.spo;
     if (localObject1 == null) {
-      d.g.b.p.bcb("actionBarFollowBtn");
+      d.g.b.p.bdF("actionBarFollowBtn");
     }
     ((Button)localObject1).setTextColor(getResources().getColor(2131099732));
-    localObject1 = this.sfZ;
+    localObject1 = this.soS;
     if (localObject1 == null) {
-      d.g.b.p.bcb("followBtnTv");
+      d.g.b.p.bdF("followBtnTv");
     }
     ((TextView)localObject1).setText(2131766987);
-    localObject1 = this.sfZ;
+    localObject1 = this.soS;
     if (localObject1 == null) {
-      d.g.b.p.bcb("followBtnTv");
+      d.g.b.p.bdF("followBtnTv");
     }
     ((TextView)localObject1).setTextColor(getResources().getColor(2131099732));
-    localObject1 = this.sfY;
+    localObject1 = this.soR;
     if (localObject1 == null) {
-      d.g.b.p.bcb("followBtn");
+      d.g.b.p.bdF("followBtn");
     }
     ((View)localObject1).setBackgroundResource(2131232364);
     localObject1 = (d.g.a.b)new ad(this, paramg);
-    Object localObject2 = this.sfY;
+    Object localObject2 = this.soR;
     if (localObject2 == null) {
-      d.g.b.p.bcb("followBtn");
+      d.g.b.p.bdF("followBtn");
     }
     ((View)localObject2).setOnClickListener((View.OnClickListener)new a((d.g.a.b)localObject1));
-    localObject1 = this.sgv;
+    localObject1 = this.spo;
     if (localObject1 == null) {
-      d.g.b.p.bcb("actionBarFollowBtn");
+      d.g.b.p.bdF("actionBarFollowBtn");
     }
     ((Button)localObject1).setOnClickListener(null);
-    localObject1 = this.jcd;
+    localObject1 = this.jeW;
     if (localObject1 == null) {
-      d.g.b.p.bcb("nickNameTv");
+      d.g.b.p.bdF("nickNameTv");
     }
     localObject2 = (Context)this;
     if (paramg != null) {}
-    for (paramg = paramg.VC();; paramg = null)
+    for (paramg = paramg.VK();; paramg = null)
     {
       ((TextView)localObject1).setText((CharSequence)com.tencent.mm.pluginsdk.ui.span.k.c((Context)localObject2, (CharSequence)paramg));
-      AppMethodBeat.o(202826);
+      AppMethodBeat.o(203305);
       return;
     }
   }
   
   private final void g(final com.tencent.mm.plugin.finder.api.g paramg)
   {
-    AppMethodBeat.i(202828);
-    Object localObject = this.sfZ;
+    AppMethodBeat.i(203307);
+    Object localObject = this.soS;
     if (localObject == null) {
-      d.g.b.p.bcb("followBtnTv");
+      d.g.b.p.bdF("followBtnTv");
     }
     ((TextView)localObject).setText(2131759384);
-    localObject = this.sgv;
+    localObject = this.spo;
     if (localObject == null) {
-      d.g.b.p.bcb("actionBarFollowBtn");
+      d.g.b.p.bdF("actionBarFollowBtn");
     }
     ((Button)localObject).setText(2131759384);
-    localObject = this.sgv;
+    localObject = this.spo;
     if (localObject == null) {
-      d.g.b.p.bcb("actionBarFollowBtn");
+      d.g.b.p.bdF("actionBarFollowBtn");
     }
     ((Button)localObject).setTextColor(getResources().getColor(2131100711));
-    localObject = this.sgv;
+    localObject = this.spo;
     if (localObject == null) {
-      d.g.b.p.bcb("actionBarFollowBtn");
+      d.g.b.p.bdF("actionBarFollowBtn");
     }
     ((Button)localObject).setBackgroundResource(2131232364);
-    localObject = this.sfZ;
+    localObject = this.soS;
     if (localObject == null) {
-      d.g.b.p.bcb("followBtnTv");
+      d.g.b.p.bdF("followBtnTv");
     }
     ((TextView)localObject).setTextColor(getResources().getColor(2131101239));
-    localObject = this.sfY;
+    localObject = this.soR;
     if (localObject == null) {
-      d.g.b.p.bcb("followBtn");
+      d.g.b.p.bdF("followBtn");
     }
     ((View)localObject).setBackgroundResource(2131232364);
-    localObject = this.sgb;
+    localObject = this.soU;
     if (localObject == null) {
-      d.g.b.p.bcb("nickNameContainer");
+      d.g.b.p.bdF("nickNameContainer");
     }
     ((View)localObject).post((Runnable)new z(this, paramg));
     paramg = (d.g.a.b)new aa(this, paramg);
-    localObject = this.sfY;
+    localObject = this.soR;
     if (localObject == null) {
-      d.g.b.p.bcb("followBtn");
+      d.g.b.p.bdF("followBtn");
     }
     ((View)localObject).setOnClickListener((View.OnClickListener)new a(paramg));
-    localObject = this.sgv;
+    localObject = this.spo;
     if (localObject == null) {
-      d.g.b.p.bcb("actionBarFollowBtn");
+      d.g.b.p.bdF("actionBarFollowBtn");
     }
     ((Button)localObject).setOnClickListener((View.OnClickListener)new a(paramg));
-    AppMethodBeat.o(202828);
+    AppMethodBeat.o(203307);
   }
   
   public final View _$_findCachedViewById(int paramInt)
   {
-    AppMethodBeat.i(202836);
+    AppMethodBeat.i(203315);
     if (this._$_findViewCache == null) {
       this._$_findViewCache = new HashMap();
     }
@@ -1074,18 +1075,18 @@ public final class FinderProfileUI
       localView1 = findViewById(paramInt);
       this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
     }
-    AppMethodBeat.o(202836);
+    AppMethodBeat.o(203315);
     return localView1;
   }
   
-  public final int cAZ()
+  public final int cCL()
   {
     int j = 0;
-    AppMethodBeat.i(202829);
+    AppMethodBeat.i(203308);
     String str = getIntent().getStringExtra("finder_username");
     boolean bool = getIntent().getBooleanExtra("KEY_FINDER_SELF_FLAG", false);
     int i = j;
-    if (d.g.b.p.i(str, u.aAu()))
+    if (d.g.b.p.i(str, com.tencent.mm.model.v.aAK()))
     {
       i = j;
       if (bool) {
@@ -1094,14 +1095,14 @@ public final class FinderProfileUI
     }
     if (i != 0)
     {
-      AppMethodBeat.o(202829);
+      AppMethodBeat.o(203308);
       return 33;
     }
-    AppMethodBeat.o(202829);
+    AppMethodBeat.o(203308);
     return 32;
   }
   
-  public final int cBZ()
+  public final int cDL()
   {
     return 3;
   }
@@ -1120,15 +1121,15 @@ public final class FinderProfileUI
     Object localObject1;
     Object localObject2;
     Object localObject3;
-    if (paramInt1 == this.sgA)
+    if (paramInt1 == this.spt)
     {
-      ad.d(this.TAG, "onActivityResult MENU_ID_SET_HEADIMG_TAKEPHOTO");
+      ae.d(this.TAG, "onActivityResult MENU_ID_SET_HEADIMG_TAKEPHOTO");
       localObject1 = getApplicationContext();
-      localObject2 = r.sNc;
-      this.filePath = com.tencent.mm.pluginsdk.ui.tools.q.i((Context)localObject1, paramIntent, r.cLI());
+      localObject2 = r.sYn;
+      this.filePath = com.tencent.mm.pluginsdk.ui.tools.q.i((Context)localObject1, paramIntent, r.cOq());
       if (this.filePath == null)
       {
-        ad.e(this.TAG, "filePath is null.");
+        ae.e(this.TAG, "filePath is null.");
         AppMethodBeat.o(166208);
         return;
       }
@@ -1139,7 +1140,7 @@ public final class FinderProfileUI
       localObject2 = d.n.d.UTF_8;
       if (localObject1 == null)
       {
-        paramIntent = new v("null cannot be cast to non-null type java.lang.String");
+        paramIntent = new d.v("null cannot be cast to non-null type java.lang.String");
         AppMethodBeat.o(166208);
         throw paramIntent;
       }
@@ -1147,21 +1148,21 @@ public final class FinderProfileUI
       d.g.b.p.g(localObject1, "(this as java.lang.String).getBytes(charset)");
       localObject1 = com.tencent.mm.b.g.getMessageDigest((byte[])localObject1);
       localObject2 = new StringBuilder();
-      localObject3 = r.sNc;
-      localObject2 = ((StringBuilder)localObject2).append(r.cLI());
+      localObject3 = r.sYn;
+      localObject2 = ((StringBuilder)localObject2).append(r.cOq());
       if (localObject1 == null) {
-        d.g.b.p.gfZ();
+        d.g.b.p.gkB();
       }
       paramIntent.putExtra("CropImage_OutputPath", (String)localObject1);
       paramIntent.setClassName((Context)this, "com.tencent.mm.ui.tools.CropImageNewUI");
-      getContext().startActivityForResult(paramIntent, this.sgB);
+      getContext().startActivityForResult(paramIntent, this.spu);
       AppMethodBeat.o(166208);
       return;
     }
     Object localObject4;
-    if (paramInt1 == this.sgz)
+    if (paramInt1 == this.sps)
     {
-      ad.d(this.TAG, "onActivityResult CONTEXT_MENU_IMAGE_BROUND");
+      ae.d(this.TAG, "onActivityResult CONTEXT_MENU_IMAGE_BROUND");
       if (paramIntent == null)
       {
         AppMethodBeat.o(166208);
@@ -1176,12 +1177,12 @@ public final class FinderProfileUI
       {
         if (paramInt1 != 0)
         {
-          ad.w(this.TAG, "filePath is null.try to getResultPhotoPath.");
+          ae.w(this.TAG, "filePath is null.try to getResultPhotoPath.");
           localObject1 = getApplicationContext();
-          localObject2 = r.sNc;
-          this.filePath = com.tencent.mm.pluginsdk.ui.tools.q.i((Context)localObject1, paramIntent, r.cLI());
+          localObject2 = r.sYn;
+          this.filePath = com.tencent.mm.pluginsdk.ui.tools.q.i((Context)localObject1, paramIntent, r.cOq());
         }
-        ad.i(this.TAG, "filePath[" + this.filePath + "] " + paramIntent);
+        ae.i(this.TAG, "filePath[" + this.filePath + "] " + paramIntent);
         localObject1 = (CharSequence)this.filePath;
         if (localObject1 != null)
         {
@@ -1195,21 +1196,21 @@ public final class FinderProfileUI
         if (paramInt1 == 0) {
           break;
         }
-        ad.e(this.TAG, "filePath is null.");
+        ae.e(this.TAG, "filePath is null.");
         AppMethodBeat.o(166208);
         return;
       }
       localObject1 = (Activity)this;
-      paramInt1 = this.sgB;
+      paramInt1 = this.spu;
       localObject2 = this.filePath;
       if (localObject2 == null) {
-        d.g.b.p.gfZ();
+        d.g.b.p.gkB();
       }
       localObject3 = d.g.b.p.C(this.filePath, Long.valueOf(System.currentTimeMillis()));
       localObject4 = d.n.d.UTF_8;
       if (localObject3 == null)
       {
-        paramIntent = new v("null cannot be cast to non-null type java.lang.String");
+        paramIntent = new d.v("null cannot be cast to non-null type java.lang.String");
         AppMethodBeat.o(166208);
         throw paramIntent;
       }
@@ -1229,61 +1230,59 @@ public final class FinderProfileUI
       AppMethodBeat.o(166208);
       return;
     }
-    if (paramInt1 == this.sgB)
+    if (paramInt1 == this.spu)
     {
-      ad.d(this.TAG, "onActivityResult REQUEST_CODE_IMAGE_BROUND_SEND_COMFIRM");
+      ae.d(this.TAG, "onActivityResult REQUEST_CODE_IMAGE_BROUND_SEND_COMFIRM");
       if (paramIntent == null)
       {
         AppMethodBeat.o(166208);
         return;
       }
       this.filePath = paramIntent.getStringExtra("key_result_img_path");
-      if ((this.filePath == null) || (!com.tencent.mm.vfs.i.fv(this.filePath)))
+      if ((this.filePath == null) || (!o.fB(this.filePath)))
       {
-        ad.e(this.TAG, "ERROR! filePath=" + this.filePath);
+        ae.e(this.TAG, "ERROR! filePath=" + this.filePath);
         AppMethodBeat.o(166208);
         return;
       }
-      ad.d(this.TAG, "REQUEST_CODE_IMAGE_BROUND_SEND_COMFIRM   " + this.filePath);
-      paramIntent = this.sgG;
+      ae.d(this.TAG, "REQUEST_CODE_IMAGE_BROUND_SEND_COMFIRM   " + this.filePath);
+      paramIntent = this.spz;
       if (paramIntent != null)
       {
-        localObject1 = com.tencent.mm.kernel.g.ajC();
+        localObject1 = com.tencent.mm.kernel.g.ajR();
         d.g.b.p.g(localObject1, "MMKernel.storage()");
-        ((com.tencent.mm.kernel.e)localObject1).ajl().set(al.a.IGC, this.filePath);
-        localObject1 = com.tencent.mm.plugin.finder.api.c.rHn;
+        ((com.tencent.mm.kernel.e)localObject1).ajA().set(am.a.Jbc, this.filePath);
+        localObject1 = com.tencent.mm.plugin.finder.api.c.rPy;
         com.tencent.mm.plugin.finder.api.c.a.b(paramIntent);
-        paramIntent = com.tencent.mm.plugin.finder.upload.g.sJk;
-        paramIntent = com.tencent.mm.plugin.finder.upload.g.cKK();
+        paramIntent = com.tencent.mm.plugin.finder.upload.g.sUx;
+        paramIntent = com.tencent.mm.plugin.finder.upload.g.cNo();
         localObject1 = this.filePath;
         if (localObject1 == null) {
-          d.g.b.p.gfZ();
+          d.g.b.p.gkB();
         }
         localObject2 = this.username;
         if (localObject2 == null) {
-          d.g.b.p.bcb("username");
+          d.g.b.p.bdF("username");
         }
         localObject3 = (com.tencent.mm.loader.g.f)new q(this);
         d.g.b.p.h(localObject1, "path");
         d.g.b.p.h(localObject2, "userName");
         d.g.b.p.h(localObject3, "callback");
-        paramIntent.sJe.a((com.tencent.mm.loader.g.c)new com.tencent.mm.plugin.finder.upload.j((String)localObject1, (String)localObject2), (com.tencent.mm.loader.g.f)localObject3);
+        paramIntent.sUr.a((com.tencent.mm.loader.g.c)new com.tencent.mm.plugin.finder.upload.j((String)localObject1, (String)localObject2), (com.tencent.mm.loader.g.f)localObject3);
       }
       paramIntent = this.filePath;
       if (paramIntent == null) {
-        d.g.b.p.gfZ();
+        d.g.b.p.gkB();
       }
-      aht(paramIntent);
-      cCr();
+      aiq(paramIntent);
+      cEd();
       AppMethodBeat.o(166208);
       return;
     }
-    if ((paramInt1 == this.sgC) && (paramIntent != null))
+    if ((paramInt1 == this.spv) && (paramIntent != null))
     {
-      localObject1 = com.tencent.mm.plugin.finder.api.c.rHn;
-      localObject1 = u.aAu();
-      d.g.b.p.g(localObject1, "ConfigStorageLogic.getMyFinderUsername()");
-      localObject4 = com.tencent.mm.plugin.finder.api.c.a.agW((String)localObject1);
+      localObject1 = com.tencent.mm.plugin.finder.api.c.rPy;
+      localObject4 = com.tencent.mm.plugin.finder.api.c.a.ahT(com.tencent.mm.model.v.aAK());
       localObject2 = paramIntent.getStringExtra("Country");
       localObject1 = localObject2;
       if (localObject2 == null) {
@@ -1299,41 +1298,41 @@ public final class FinderProfileUI
       if (localObject3 == null) {
         paramIntent = "";
       }
-      ad.i(this.TAG, "countryCode " + (String)localObject1 + " provinceCode" + (String)localObject2 + " cityCode" + paramIntent);
+      ae.i(this.TAG, "countryCode " + (String)localObject1 + " provinceCode" + (String)localObject2 + " cityCode" + paramIntent);
       if (!d.g.b.p.i(localObject1, "unshow")) {
-        break label1279;
+        break label1267;
       }
-      localObject1 = com.tencent.mm.kernel.g.ajC();
+      localObject1 = com.tencent.mm.kernel.g.ajR();
       d.g.b.p.g(localObject1, "MMKernel.storage()");
-      paramInt1 = ((com.tencent.mm.kernel.e)localObject1).ajl().getInt(al.a.IGW, 0);
-      localObject1 = com.tencent.mm.kernel.g.ajC();
+      paramInt1 = ((com.tencent.mm.kernel.e)localObject1).ajA().getInt(am.a.Jbx, 0);
+      localObject1 = com.tencent.mm.kernel.g.ajR();
       d.g.b.p.g(localObject1, "MMKernel.storage()");
-      ((com.tencent.mm.kernel.e)localObject1).ajl().set(al.a.IGW, Integer.valueOf(paramInt1 & 0xFFFFFFFB));
+      ((com.tencent.mm.kernel.e)localObject1).ajA().set(am.a.Jbx, Integer.valueOf(paramInt1 & 0xFFFFFFFB));
       localObject1 = "";
     }
-    label1235:
-    label1279:
+    label1223:
+    label1267:
     for (paramInt1 = j;; paramInt1 = 0)
     {
       if (localObject4 != null)
       {
         localObject3 = ((com.tencent.mm.plugin.finder.api.g)localObject4).field_extInfo;
         if (localObject3 == null) {
-          break label1235;
+          break label1223;
         }
-        ((alx)localObject3).country = ((String)localObject1);
-        ((alx)localObject3).ePu = ((String)localObject2);
+        ((amj)localObject3).country = ((String)localObject1);
+        ((amj)localObject3).eRf = ((String)localObject2);
       }
-      for (((alx)localObject3).ePv = paramIntent;; ((com.tencent.mm.plugin.finder.api.g)localObject4).field_extInfo.ePv = paramIntent)
+      for (((amj)localObject3).eRg = paramIntent;; ((com.tencent.mm.plugin.finder.api.g)localObject4).field_extInfo.eRg = paramIntent)
       {
-        localObject3 = com.tencent.mm.plugin.finder.api.c.rHn;
+        localObject3 = com.tencent.mm.plugin.finder.api.c.rPy;
         com.tencent.mm.plugin.finder.api.c.a.b((com.tencent.mm.plugin.finder.api.g)localObject4);
         ((com.tencent.mm.plugin.i.a.n)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.i.a.n.class)).a((String)localObject1, (String)localObject2, paramIntent, paramInt1, null);
         AppMethodBeat.o(166208);
         return;
-        ((com.tencent.mm.plugin.finder.api.g)localObject4).field_extInfo = new alx();
+        ((com.tencent.mm.plugin.finder.api.g)localObject4).field_extInfo = new amj();
         ((com.tencent.mm.plugin.finder.api.g)localObject4).field_extInfo.country = ((String)localObject1);
-        ((com.tencent.mm.plugin.finder.api.g)localObject4).field_extInfo.ePu = ((String)localObject2);
+        ((com.tencent.mm.plugin.finder.api.g)localObject4).field_extInfo.eRf = ((String)localObject2);
       }
     }
   }
@@ -1352,51 +1351,51 @@ public final class FinderProfileUI
     paramBundle = getIntent().getStringExtra("finder_username");
     d.g.b.p.g(paramBundle, "intent.getStringExtra(Co…leUI.KEY_FINDER_USERNAME)");
     this.username = paramBundle;
-    this.rXu = getIntent().getLongExtra("finder_read_feed_id", -1L);
+    this.sgf = getIntent().getLongExtra("finder_read_feed_id", -1L);
     paramBundle = this.TAG;
     Object localObject1 = this.username;
     if (localObject1 == null) {
-      d.g.b.p.bcb("username");
+      d.g.b.p.bdF("username");
     }
-    ad.i(paramBundle, "username %s", new Object[] { localObject1 });
+    ae.i(paramBundle, "username %s", new Object[] { localObject1 });
     paramBundle = this.username;
     if (paramBundle == null) {
-      d.g.b.p.bcb("username");
+      d.g.b.p.bdF("username");
     }
-    if (bt.isNullOrNil(paramBundle)) {
+    if (bu.isNullOrNil(paramBundle)) {
       finish();
     }
-    this.rWI = getIntent().getBooleanExtra("KEY_FINDER_SELF_FLAG", false);
+    this.sft = getIntent().getBooleanExtra("KEY_FINDER_SELF_FLAG", false);
     paramBundle = this.username;
     if (paramBundle == null) {
-      d.g.b.p.bcb("username");
+      d.g.b.p.bdF("username");
     }
     boolean bool;
     label213:
     int i;
-    if ((paramBundle.equals(u.aAu())) && (this.rWI))
+    if ((paramBundle.equals(com.tencent.mm.model.v.aAK())) && (this.sft))
     {
       bool = true;
-      this.drv = bool;
+      this.dsB = bool;
       if (((t)com.tencent.mm.kernel.g.ad(t.class)).showFinderEntry())
       {
         paramBundle = this.username;
         if (paramBundle == null) {
-          d.g.b.p.bcb("username");
+          d.g.b.p.bdF("username");
         }
-        if (!paramBundle.equals(u.aAu())) {
+        if (!paramBundle.equals(com.tencent.mm.model.v.aAK())) {
           break label2020;
         }
       }
       bool = true;
-      this.sfM = bool;
-      paramBundle = com.tencent.mm.plugin.finder.api.c.rHn;
+      this.soF = bool;
+      paramBundle = com.tencent.mm.plugin.finder.api.c.rPy;
       paramBundle = this.username;
       if (paramBundle == null) {
-        d.g.b.p.bcb("username");
+        d.g.b.p.bdF("username");
       }
-      this.sgG = com.tencent.mm.plugin.finder.api.c.a.agW(paramBundle);
-      this.dyU = getIntent().getStringExtra("from_user");
+      this.spz = com.tencent.mm.plugin.finder.api.c.a.ahT(paramBundle);
+      this.dzZ = getIntent().getStringExtra("from_user");
       paramBundle = getWindow();
       d.g.b.p.g(paramBundle, "window");
       paramBundle = paramBundle.getDecorView();
@@ -1407,241 +1406,241 @@ public final class FinderProfileUI
       {
         paramBundle = getSupportActionBar();
         if (paramBundle == null) {
-          d.g.b.p.gfZ();
+          d.g.b.p.gkB();
         }
         paramBundle.setBackgroundDrawable((Drawable)new ColorDrawable(0));
         paramBundle = getSupportActionBar();
         if (paramBundle == null) {
-          d.g.b.p.gfZ();
+          d.g.b.p.gkB();
         }
         paramBundle.hide();
       }
       paramBundle = getLayoutInflater().inflate(2131494100, null);
       d.g.b.p.g(paramBundle, "layoutInflater.inflate(R…_profile_ui_header, null)");
-      this.rXv = paramBundle;
-      paramBundle = this.rXv;
+      this.sgg = paramBundle;
+      paramBundle = this.sgg;
       if (paramBundle == null) {
-        d.g.b.p.bcb("header");
+        d.g.b.p.bdF("header");
       }
       paramBundle = paramBundle.findViewById(2131300045);
       d.g.b.p.g(paramBundle, "header.findViewById(R.id…profile_header_bg_layout)");
-      this.sfO = paramBundle;
-      paramBundle = this.sfO;
+      this.soH = paramBundle;
+      paramBundle = this.soH;
       if (paramBundle == null) {
-        d.g.b.p.bcb("headerBgLayout");
+        d.g.b.p.bdF("headerBgLayout");
       }
       paramBundle = paramBundle.getLayoutParams();
-      i = cCo();
+      i = cEa();
       paramBundle.height = i;
       paramBundle.width = i;
-      localObject1 = this.sfO;
+      localObject1 = this.soH;
       if (localObject1 == null) {
-        d.g.b.p.bcb("headerBgLayout");
+        d.g.b.p.bdF("headerBgLayout");
       }
       ((View)localObject1).setLayoutParams(paramBundle);
-      paramBundle = this.rXv;
+      paramBundle = this.sgg;
       if (paramBundle == null) {
-        d.g.b.p.bcb("header");
+        d.g.b.p.bdF("header");
       }
       paramBundle = paramBundle.findViewById(2131300046);
       d.g.b.p.g(paramBundle, "header.findViewById(R.id.finder_profile_header_iv)");
-      this.sfQ = ((ImageView)paramBundle);
-      paramBundle = this.rXv;
+      this.soJ = ((ImageView)paramBundle);
+      paramBundle = this.sgg;
       if (paramBundle == null) {
-        d.g.b.p.bcb("header");
+        d.g.b.p.bdF("header");
       }
       paramBundle = paramBundle.findViewById(2131300033);
       d.g.b.p.g(paramBundle, "header.findViewById(R.id…rofile_default_header_iv)");
-      this.sfP = ((ImageView)paramBundle);
+      this.soI = ((ImageView)paramBundle);
       if (al.isDarkMode())
       {
-        paramBundle = this.sfP;
+        paramBundle = this.soI;
         if (paramBundle == null) {
-          d.g.b.p.bcb("defaultHeaderBg");
+          d.g.b.p.bdF("defaultHeaderBg");
         }
         paramBundle.setImageResource(2131232366);
       }
-      paramBundle = this.rXv;
+      paramBundle = this.sgg;
       if (paramBundle == null) {
-        d.g.b.p.bcb("header");
+        d.g.b.p.bdF("header");
       }
       paramBundle = paramBundle.findViewById(2131300047);
       d.g.b.p.g(paramBundle, "header.findViewById(R.id…er_profile_header_tip_tv)");
-      this.sfR = ((TextView)paramBundle);
-      paramBundle = this.rXv;
+      this.soK = ((TextView)paramBundle);
+      paramBundle = this.sgg;
       if (paramBundle == null) {
-        d.g.b.p.bcb("header");
+        d.g.b.p.bdF("header");
       }
       paramBundle = paramBundle.findViewById(2131300032);
       d.g.b.p.g(paramBundle, "header.findViewById(R.id…inder_profile_avatar_btn)");
-      this.fRd = ((ImageView)paramBundle);
-      paramBundle = this.rXv;
+      this.fTj = ((ImageView)paramBundle);
+      paramBundle = this.sgg;
       if (paramBundle == null) {
-        d.g.b.p.bcb("header");
+        d.g.b.p.bdF("header");
       }
       paramBundle = paramBundle.findViewById(2131300039);
       d.g.b.p.g(paramBundle, "header.findViewById(R.id…nder_profile_fans_layout)");
-      this.sfS = ((ViewGroup)paramBundle);
-      paramBundle = this.rXv;
+      this.soL = ((ViewGroup)paramBundle);
+      paramBundle = this.sgg;
       if (paramBundle == null) {
-        d.g.b.p.bcb("header");
+        d.g.b.p.bdF("header");
       }
       paramBundle = paramBundle.findViewById(2131300043);
       d.g.b.p.g(paramBundle, "header.findViewById(R.id…ile_friend_follow_layout)");
-      this.sfT = ((ViewGroup)paramBundle);
-      paramBundle = this.rXv;
+      this.soM = ((ViewGroup)paramBundle);
+      paramBundle = this.sgg;
       if (paramBundle == null) {
-        d.g.b.p.bcb("header");
+        d.g.b.p.bdF("header");
       }
       paramBundle = paramBundle.findViewById(2131300040);
       d.g.b.p.g(paramBundle, "header.findViewById(R.id.finder_profile_fans_tv)");
-      this.sfU = ((TextView)paramBundle);
-      paramBundle = this.rXv;
+      this.soN = ((TextView)paramBundle);
+      paramBundle = this.sgg;
       if (paramBundle == null) {
-        d.g.b.p.bcb("header");
+        d.g.b.p.bdF("header");
       }
       paramBundle = paramBundle.findViewById(2131300044);
       d.g.b.p.g(paramBundle, "header.findViewById(R.id…profile_friend_follow_tv)");
-      this.sfV = ((TextView)paramBundle);
-      paramBundle = this.rXv;
+      this.soO = ((TextView)paramBundle);
+      paramBundle = this.sgg;
       if (paramBundle == null) {
-        d.g.b.p.bcb("header");
+        d.g.b.p.bdF("header");
       }
       paramBundle = paramBundle.findViewById(2131300035);
       d.g.b.p.g(paramBundle, "header.findViewById(R.id.finder_profile_edit_btn)");
-      this.sfW = paramBundle;
-      paramBundle = this.rXv;
+      this.soP = paramBundle;
+      paramBundle = this.sgg;
       if (paramBundle == null) {
-        d.g.b.p.bcb("header");
+        d.g.b.p.bdF("header");
       }
       paramBundle = paramBundle.findViewById(2131300036);
       d.g.b.p.g(paramBundle, "header.findViewById(R.id.finder_profile_edit_ll)");
-      this.sfX = paramBundle;
-      paramBundle = this.rXv;
+      this.soQ = paramBundle;
+      paramBundle = this.sgg;
       if (paramBundle == null) {
-        d.g.b.p.bcb("header");
+        d.g.b.p.bdF("header");
       }
       paramBundle = paramBundle.findViewById(2131300041);
       d.g.b.p.g(paramBundle, "header.findViewById(R.id…inder_profile_follow_btn)");
-      this.sfY = paramBundle;
-      paramBundle = this.rXv;
+      this.soR = paramBundle;
+      paramBundle = this.sgg;
       if (paramBundle == null) {
-        d.g.b.p.bcb("header");
+        d.g.b.p.bdF("header");
       }
       paramBundle = paramBundle.findViewById(2131300042);
       d.g.b.p.g(paramBundle, "header.findViewById(R.id…er_profile_follow_btn_tv)");
-      this.sfZ = ((TextView)paramBundle);
-      paramBundle = this.rXv;
+      this.soS = ((TextView)paramBundle);
+      paramBundle = this.sgg;
       if (paramBundle == null) {
-        d.g.b.p.bcb("header");
+        d.g.b.p.bdF("header");
       }
       paramBundle = paramBundle.findViewById(2131300056);
       d.g.b.p.g(paramBundle, "header.findViewById(R.id.finder_profile_name_tv)");
-      this.jcd = ((TextView)paramBundle);
-      paramBundle = this.rXv;
+      this.jeW = ((TextView)paramBundle);
+      paramBundle = this.sgg;
       if (paramBundle == null) {
-        d.g.b.p.bcb("header");
+        d.g.b.p.bdF("header");
       }
       paramBundle = paramBundle.findViewById(2131308313);
       d.g.b.p.g(paramBundle, "header.findViewById(R.id…r_profile_name_container)");
-      this.sgb = paramBundle;
-      paramBundle = this.rXv;
+      this.soU = paramBundle;
+      paramBundle = this.sgg;
       if (paramBundle == null) {
-        d.g.b.p.bcb("header");
+        d.g.b.p.bdF("header");
       }
       paramBundle = paramBundle.findViewById(2131300031);
       d.g.b.p.g(paramBundle, "header.findViewById(R.id…nder_profile_auth_layout)");
-      this.sgc = ((ViewGroup)paramBundle);
-      paramBundle = this.rXv;
+      this.soV = ((ViewGroup)paramBundle);
+      paramBundle = this.sgg;
       if (paramBundle == null) {
-        d.g.b.p.bcb("header");
+        d.g.b.p.bdF("header");
       }
       paramBundle = paramBundle.findViewById(2131308108);
       d.g.b.p.g(paramBundle, "header.findViewById(R.id…_profile_send_msg_btn_tv)");
-      this.sga = ((TextView)paramBundle);
-      paramBundle = this.rXv;
+      this.soT = ((TextView)paramBundle);
+      paramBundle = this.sgg;
       if (paramBundle == null) {
-        d.g.b.p.bcb("header");
+        d.g.b.p.bdF("header");
       }
       paramBundle = paramBundle.findViewById(2131307898);
       d.g.b.p.g(paramBundle, "header.findViewById(R.id.original_tag_tv)");
-      this.sgd = ((TextView)paramBundle);
-      paramBundle = this.rXv;
+      this.soW = ((TextView)paramBundle);
+      paramBundle = this.sgg;
       if (paramBundle == null) {
-        d.g.b.p.bcb("header");
+        d.g.b.p.bdF("header");
       }
       paramBundle = paramBundle.findViewById(2131306249);
       d.g.b.p.g(paramBundle, "header.findViewById(R.id.user_tag_layout)");
-      this.sge = ((TextView)paramBundle);
-      paramBundle = this.rXv;
+      this.soX = ((TextView)paramBundle);
+      paramBundle = this.sgg;
       if (paramBundle == null) {
-        d.g.b.p.bcb("header");
+        d.g.b.p.bdF("header");
       }
       paramBundle = paramBundle.findViewById(2131300030);
       d.g.b.p.g(paramBundle, "header.findViewById(R.id.finder_profile_auth_icon)");
-      this.sgf = ((ImageView)paramBundle);
-      paramBundle = this.rXv;
+      this.soY = ((ImageView)paramBundle);
+      paramBundle = this.sgg;
       if (paramBundle == null) {
-        d.g.b.p.bcb("header");
+        d.g.b.p.bdF("header");
       }
       paramBundle = paramBundle.findViewById(2131300028);
       d.g.b.p.g(paramBundle, "header.findViewById(R.id.finder_profile_auth_by)");
-      this.sgg = ((TextView)paramBundle);
-      paramBundle = this.rXv;
+      this.soZ = ((TextView)paramBundle);
+      paramBundle = this.sgg;
       if (paramBundle == null) {
-        d.g.b.p.bcb("header");
+        d.g.b.p.bdF("header");
       }
       paramBundle = paramBundle.findViewById(2131300029);
       d.g.b.p.g(paramBundle, "header.findViewById(R.id…r_profile_auth_generator)");
-      this.sgh = ((TextView)paramBundle);
-      paramBundle = this.rXv;
+      this.spa = ((TextView)paramBundle);
+      paramBundle = this.sgg;
       if (paramBundle == null) {
-        d.g.b.p.bcb("header");
+        d.g.b.p.bdF("header");
       }
       paramBundle = paramBundle.findViewById(2131300027);
       d.g.b.p.g(paramBundle, "header.findViewById(R.id…inder_profile_auth_arrow)");
-      this.sgi = ((ImageView)paramBundle);
+      this.spb = ((ImageView)paramBundle);
       paramBundle = getContext();
       d.g.b.p.g(paramBundle, "context");
       i = paramBundle.getResources().getColor(2131099735);
-      paramBundle = this.sgi;
+      paramBundle = this.spb;
       if (paramBundle == null) {
-        d.g.b.p.bcb("authArrowIv");
+        d.g.b.p.bdF("authArrowIv");
       }
       paramBundle.setImageDrawable(ao.k((Context)getContext(), 2131690517, i));
-      paramBundle = this.rXv;
+      paramBundle = this.sgg;
       if (paramBundle == null) {
-        d.g.b.p.bcb("header");
+        d.g.b.p.bdF("header");
       }
       paramBundle = paramBundle.findViewById(2131300037);
       d.g.b.p.g(paramBundle, "header.findViewById(R.id…inder_profile_fans_arrow)");
-      this.sgj = ((ImageView)paramBundle);
-      paramBundle = this.rXv;
+      this.spc = ((ImageView)paramBundle);
+      paramBundle = this.sgg;
       if (paramBundle == null) {
-        d.g.b.p.bcb("header");
+        d.g.b.p.bdF("header");
       }
       paramBundle = paramBundle.findViewById(2131300034);
       d.g.b.p.g(paramBundle, "header.findViewById(R.id.finder_profile_desc_tv)");
-      this.gUs = ((TextView)paramBundle);
-      paramBundle = this.jcd;
+      this.gXb = ((TextView)paramBundle);
+      paramBundle = this.jeW;
       if (paramBundle == null) {
-        d.g.b.p.bcb("nickNameTv");
+        d.g.b.p.bdF("nickNameTv");
       }
       paramBundle.setTextSize(1, 17.0F);
-      paramBundle = this.sfZ;
+      paramBundle = this.soS;
       if (paramBundle == null) {
-        d.g.b.p.bcb("followBtnTv");
+        d.g.b.p.bdF("followBtnTv");
       }
       al.a((Paint)paramBundle.getPaint(), 0.8F);
-      paramBundle = com.tencent.mm.plugin.finder.extension.reddot.g.rSU;
-      paramBundle = com.tencent.mm.plugin.finder.extension.reddot.g.rSU;
-      com.tencent.mm.plugin.finder.extension.reddot.g.a(com.tencent.mm.plugin.finder.extension.reddot.g.czX(), (LifecycleOwner)this, (Observer)new m(this));
-      paramBundle = this.sfX;
+      paramBundle = com.tencent.mm.plugin.finder.extension.reddot.g.sbw;
+      paramBundle = com.tencent.mm.plugin.finder.extension.reddot.g.sbw;
+      com.tencent.mm.plugin.finder.extension.reddot.g.a(com.tencent.mm.plugin.finder.extension.reddot.g.cBD(), (LifecycleOwner)this, (Observer)new m(this));
+      paramBundle = this.soQ;
       if (paramBundle == null) {
-        d.g.b.p.bcb("editLl");
+        d.g.b.p.bdF("editLl");
       }
       paramBundle.setOnClickListener((View.OnClickListener)new n(this));
-      if (this.sfM) {
+      if (this.soF) {
         break label2025;
       }
       i = 1;
@@ -1649,97 +1648,97 @@ public final class FinderProfileUI
       if (i == 0) {
         break label2030;
       }
-      paramBundle = com.tencent.mm.plugin.finder.storage.b.sxa;
-      if (((Number)com.tencent.mm.plugin.finder.storage.b.cHS().value()).intValue() <= 0) {
+      paramBundle = com.tencent.mm.plugin.finder.storage.b.sHP;
+      if (((Number)com.tencent.mm.plugin.finder.storage.b.cJP().value()).intValue() <= 0) {
         break label2030;
       }
-      paramBundle = this.rXv;
+      paramBundle = this.sgg;
       if (paramBundle == null) {
-        d.g.b.p.bcb("header");
+        d.g.b.p.bdF("header");
       }
       paramBundle = (FrameLayout)paramBundle.findViewById(2131308194);
       d.g.b.p.g(paramBundle, "header.sendMsgBtn");
       paramBundle.setVisibility(0);
-      paramBundle = this.sga;
+      paramBundle = this.soT;
       if (paramBundle == null) {
-        d.g.b.p.bcb("chatText");
+        d.g.b.p.bdF("chatText");
       }
       al.a((Paint)paramBundle.getPaint(), 0.8F);
-      paramBundle = this.rXv;
+      paramBundle = this.sgg;
       if (paramBundle == null) {
-        d.g.b.p.bcb("header");
+        d.g.b.p.bdF("header");
       }
       ((FrameLayout)paramBundle.findViewById(2131308194)).setOnClickListener((View.OnClickListener)new c(this));
     }
     for (;;)
     {
-      if (!this.drv) {
+      if (!this.dsB) {
         break label2072;
       }
-      paramBundle = this.sfX;
+      paramBundle = this.soQ;
       if (paramBundle == null) {
-        d.g.b.p.bcb("editLl");
+        d.g.b.p.bdF("editLl");
       }
       paramBundle.setVisibility(0);
-      paramBundle = this.sfY;
+      paramBundle = this.soR;
       if (paramBundle == null) {
-        d.g.b.p.bcb("followBtn");
+        d.g.b.p.bdF("followBtn");
       }
       paramBundle.setVisibility(8);
-      paramBundle = this.sfS;
+      paramBundle = this.soL;
       if (paramBundle == null) {
-        d.g.b.p.bcb("fansLayout");
+        d.g.b.p.bdF("fansLayout");
       }
       paramBundle.setVisibility(0);
-      paramBundle = this.sfT;
+      paramBundle = this.soM;
       if (paramBundle == null) {
-        d.g.b.p.bcb("friendFollowLayout");
+        d.g.b.p.bdF("friendFollowLayout");
       }
       paramBundle.setVisibility(8);
-      paramBundle = this.sgj;
+      paramBundle = this.spc;
       if (paramBundle == null) {
-        d.g.b.p.bcb("fansArrowIv");
+        d.g.b.p.bdF("fansArrowIv");
       }
       paramBundle.setVisibility(0);
-      paramBundle = this.sfR;
+      paramBundle = this.soK;
       if (paramBundle == null) {
-        d.g.b.p.bcb("headerTip");
+        d.g.b.p.bdF("headerTip");
       }
       paramBundle.setVisibility(0);
-      paramBundle = this.sfQ;
+      paramBundle = this.soJ;
       if (paramBundle == null) {
-        d.g.b.p.bcb("headerBg");
+        d.g.b.p.bdF("headerBg");
       }
       paramBundle.setOnClickListener((View.OnClickListener)new o(this));
-      paramBundle = this.sfS;
+      paramBundle = this.soL;
       if (paramBundle == null) {
-        d.g.b.p.bcb("fansLayout");
+        d.g.b.p.bdF("fansLayout");
       }
       paramBundle.setOnClickListener((View.OnClickListener)new p(this));
-      bool = this.drv;
+      bool = this.dsB;
       paramBundle = this.username;
       if (paramBundle == null) {
-        d.g.b.p.bcb("username");
+        d.g.b.p.bdF("username");
       }
       a(bool, paramBundle, null);
       paramBundle = findViewById(2131305141);
       d.g.b.p.g(paramBundle, "findViewById(R.id.spam_actionbar_back_btn)");
-      this.sgx = paramBundle;
+      this.spq = paramBundle;
       paramBundle = findViewById(2131300072);
       d.g.b.p.g(paramBundle, "findViewById(R.id.finder_spam_contact_tip_view)");
-      this.sgw = paramBundle;
+      this.spp = paramBundle;
       paramBundle = findViewById(2131303475);
       d.g.b.p.g(paramBundle, "findViewById(R.id.profile_main_rv)");
-      this.sfN = paramBundle;
-      paramBundle = this.sfN;
+      this.soG = paramBundle;
+      paramBundle = this.soG;
       if (paramBundle == null) {
-        d.g.b.p.bcb("rlContainer");
+        d.g.b.p.bdF("rlContainer");
       }
       paramBundle = paramBundle.getLayoutParams();
       if (paramBundle != null) {
         break label2391;
       }
-      paramBundle = new v("null cannot be cast to non-null type android.widget.RelativeLayout.LayoutParams");
+      paramBundle = new d.v("null cannot be cast to non-null type android.widget.RelativeLayout.LayoutParams");
       AppMethodBeat.o(166193);
       throw paramBundle;
       bool = false;
@@ -1751,47 +1750,47 @@ public final class FinderProfileUI
       i = 0;
       break label1568;
       label2030:
-      paramBundle = this.rXv;
+      paramBundle = this.sgg;
       if (paramBundle == null) {
-        d.g.b.p.bcb("header");
+        d.g.b.p.bdF("header");
       }
       paramBundle = (FrameLayout)paramBundle.findViewById(2131308194);
       d.g.b.p.g(paramBundle, "header.sendMsgBtn");
       paramBundle.setVisibility(8);
     }
     label2072:
-    paramBundle = this.sfX;
+    paramBundle = this.soQ;
     if (paramBundle == null) {
-      d.g.b.p.bcb("editLl");
+      d.g.b.p.bdF("editLl");
     }
     paramBundle.setVisibility(8);
-    paramBundle = this.sgj;
+    paramBundle = this.spc;
     if (paramBundle == null) {
-      d.g.b.p.bcb("fansArrowIv");
+      d.g.b.p.bdF("fansArrowIv");
     }
     paramBundle.setVisibility(8);
     paramBundle = this.username;
     if (paramBundle == null) {
-      d.g.b.p.bcb("username");
+      d.g.b.p.bdF("username");
     }
-    if (paramBundle.equals(u.aAu()))
+    if (paramBundle.equals(com.tencent.mm.model.v.aAK()))
     {
-      paramBundle = this.sfY;
+      paramBundle = this.soR;
       if (paramBundle == null) {
-        d.g.b.p.bcb("followBtn");
+        d.g.b.p.bdF("followBtn");
       }
       paramBundle.setVisibility(8);
       label2160:
-      paramBundle = com.tencent.mm.plugin.finder.storage.b.sxa;
-      if (!com.tencent.mm.plugin.finder.storage.b.cGk()) {
+      paramBundle = com.tencent.mm.plugin.finder.storage.b.sHP;
+      if (!com.tencent.mm.plugin.finder.storage.b.cIh()) {
         break label2367;
       }
-      paramBundle = sgO;
+      paramBundle = spI;
       localObject1 = this.username;
       if (localObject1 == null) {
-        d.g.b.p.bcb("username");
+        d.g.b.p.bdF("username");
       }
-      paramBundle = (b)paramBundle.get(localObject1);
+      paramBundle = (FinderProfileUI.b)paramBundle.get(localObject1);
       if (paramBundle == null) {
         break label2362;
       }
@@ -1800,42 +1799,42 @@ public final class FinderProfileUI
       if (i <= 0) {
         break label2367;
       }
-      paramBundle = this.sfS;
+      paramBundle = this.soL;
       if (paramBundle == null) {
-        d.g.b.p.bcb("fansLayout");
+        d.g.b.p.bdF("fansLayout");
       }
       paramBundle.setVisibility(0);
     }
     for (;;)
     {
-      paramBundle = this.sfS;
+      paramBundle = this.soL;
       if (paramBundle == null) {
-        d.g.b.p.bcb("fansLayout");
+        d.g.b.p.bdF("fansLayout");
       }
       paramBundle.setBackground(null);
-      paramBundle = this.sfT;
+      paramBundle = this.soM;
       if (paramBundle == null) {
-        d.g.b.p.bcb("friendFollowLayout");
+        d.g.b.p.bdF("friendFollowLayout");
       }
       paramBundle.setVisibility(0);
-      paramBundle = this.sfR;
+      paramBundle = this.soK;
       if (paramBundle == null) {
-        d.g.b.p.bcb("headerTip");
+        d.g.b.p.bdF("headerTip");
       }
       paramBundle.setVisibility(8);
       break;
       if (((t)com.tencent.mm.kernel.g.ad(t.class)).showFinderEntry())
       {
-        paramBundle = this.sfY;
+        paramBundle = this.soR;
         if (paramBundle == null) {
-          d.g.b.p.bcb("followBtn");
+          d.g.b.p.bdF("followBtn");
         }
         paramBundle.setVisibility(0);
         break label2160;
       }
-      paramBundle = this.sfY;
+      paramBundle = this.soR;
       if (paramBundle == null) {
-        d.g.b.p.bcb("followBtn");
+        d.g.b.p.bdF("followBtn");
       }
       paramBundle.setVisibility(8);
       break label2160;
@@ -1843,270 +1842,268 @@ public final class FinderProfileUI
       i = 0;
       break label2210;
       label2367:
-      paramBundle = this.sfS;
+      paramBundle = this.soL;
       if (paramBundle == null) {
-        d.g.b.p.bcb("fansLayout");
+        d.g.b.p.bdF("fansLayout");
       }
       paramBundle.setVisibility(8);
     }
     label2391:
     paramBundle = (RelativeLayout.LayoutParams)paramBundle;
-    paramBundle.topMargin = (0 - cCo() / 2);
-    localObject1 = this.sfN;
+    paramBundle.topMargin = (0 - cEa() / 2);
+    localObject1 = this.soG;
     if (localObject1 == null) {
-      d.g.b.p.bcb("rlContainer");
+      d.g.b.p.bdF("rlContainer");
     }
     ((View)localObject1).setLayoutParams((ViewGroup.LayoutParams)paramBundle);
     paramBundle = findViewById(2131304203);
     d.g.b.p.g(paramBundle, "findViewById(R.id.rl_layout)");
-    this.rTF = ((RefreshLoadMoreLayout)paramBundle);
-    paramBundle = this.rTF;
+    this.scj = ((RefreshLoadMoreLayout)paramBundle);
+    paramBundle = this.scj;
     if (paramBundle == null) {
-      d.g.b.p.bcb("rlLayout");
+      d.g.b.p.bdF("rlLayout");
     }
-    localObject1 = com.tencent.mm.ui.z.jO((Context)getContext()).inflate(2131494590, null);
+    localObject1 = com.tencent.mm.ui.z.jV((Context)getContext()).inflate(2131494590, null);
     d.g.b.p.g(localObject1, "MMLayoutInflater.getInfl…t.load_more_footer, null)");
     paramBundle.setLoadMoreFooter((View)localObject1);
-    paramBundle = this.rTF;
+    paramBundle = this.scj;
     if (paramBundle == null) {
-      d.g.b.p.bcb("rlLayout");
+      d.g.b.p.bdF("rlLayout");
     }
     paramBundle.getRecyclerView().setVisibility(0);
-    paramBundle = this.rTF;
+    paramBundle = this.scj;
     if (paramBundle == null) {
-      d.g.b.p.bcb("rlLayout");
+      d.g.b.p.bdF("rlLayout");
     }
     paramBundle.setEnablePullDownHeader(true);
     paramBundle = (MMActivity)this;
     localObject1 = this.username;
     if (localObject1 == null) {
-      d.g.b.p.bcb("username");
+      d.g.b.p.bdF("username");
     }
     if (localObject1 == null) {
-      d.g.b.p.gfZ();
+      d.g.b.p.gkB();
     }
-    this.rXj = new FinderProfileUIContract.a(paramBundle, (String)localObject1);
+    this.sfU = new FinderProfileUIContract.a(paramBundle, (String)localObject1);
     paramBundle = (MMActivity)this;
-    localObject1 = this.rXj;
+    localObject1 = this.sfU;
     if (localObject1 == null) {
-      d.g.b.p.bcb("presenter");
+      d.g.b.p.bdF("presenter");
     }
-    Object localObject2 = this.rXv;
+    Object localObject2 = this.sgg;
     if (localObject2 == null) {
-      d.g.b.p.bcb("header");
+      d.g.b.p.bdF("header");
     }
-    paramBundle = new FinderProfileUIContract.ProfileViewCallback(paramBundle, (FinderProfileUIContract.a)localObject1, (View)localObject2, this.rWI);
-    paramBundle.rXu = this.rXu;
+    paramBundle = new FinderProfileUIContract.ProfileViewCallback(paramBundle, (FinderProfileUIContract.a)localObject1, (View)localObject2, this.sft);
+    paramBundle.sgf = this.sgf;
     this.viewCallback = paramBundle;
     paramBundle = this.viewCallback;
     if (paramBundle == null) {
-      d.g.b.p.bcb("viewCallback");
+      d.g.b.p.bdF("viewCallback");
     }
-    localObject1 = (RecyclerView.m)this.sgK;
+    localObject1 = (RecyclerView.m)this.spE;
     d.g.b.p.h(localObject1, "listener");
-    paramBundle.fNG = ((RecyclerView.m)localObject1);
-    paramBundle = this.rXj;
+    paramBundle.fPN = ((RecyclerView.m)localObject1);
+    paramBundle = this.sfU;
     if (paramBundle == null) {
-      d.g.b.p.bcb("presenter");
+      d.g.b.p.bdF("presenter");
     }
     localObject1 = this.viewCallback;
     if (localObject1 == null) {
-      d.g.b.p.bcb("viewCallback");
+      d.g.b.p.bdF("viewCallback");
     }
     paramBundle.a((FinderProfileUIContract.ProfileViewCallback)localObject1);
     localObject1 = this.viewCallback;
     if (localObject1 == null) {
-      d.g.b.p.bcb("viewCallback");
+      d.g.b.p.bdF("viewCallback");
     }
-    ad.i(((FinderProfileUIContract.ProfileViewCallback)localObject1).TAG, "initView");
-    paramBundle = ((FinderProfileUIContract.ProfileViewCallback)localObject1).rTX.eL((Context)((FinderProfileUIContract.ProfileViewCallback)localObject1).fLP);
-    localObject2 = ((FinderProfileUIContract.ProfileViewCallback)localObject1).gmV;
+    ae.i(((FinderProfileUIContract.ProfileViewCallback)localObject1).TAG, "initView");
+    paramBundle = ((FinderProfileUIContract.ProfileViewCallback)localObject1).scB.eP((Context)((FinderProfileUIContract.ProfileViewCallback)localObject1).fNT);
+    localObject2 = ((FinderProfileUIContract.ProfileViewCallback)localObject1).gpr;
     if (paramBundle == null) {
-      d.g.b.p.bcb("layoutManager");
+      d.g.b.p.bdF("layoutManager");
     }
     ((RecyclerView)localObject2).setLayoutManager(paramBundle);
     paramBundle = new FinderProfileUIContract.ProfileViewCallback.b((FinderProfileUIContract.ProfileViewCallback)localObject1);
-    paramBundle.rXI = ((FinderProfileUIContract.ProfileViewCallback)localObject1).rXu;
-    ((FinderProfileUIContract.ProfileViewCallback)localObject1).gmV.setAdapter((RecyclerView.a)paramBundle);
-    ((FinderProfileUIContract.ProfileViewCallback)localObject1).rTF.setActionCallback((RefreshLoadMoreLayout.a)new FinderProfileUIContract.ProfileViewCallback.d((FinderProfileUIContract.ProfileViewCallback)localObject1));
-    paramBundle = ((FinderProfileUIContract.ProfileViewCallback)localObject1).rTX.getItemDecoration();
-    ((FinderProfileUIContract.ProfileViewCallback)localObject1).gmV.b(paramBundle);
-    paramBundle = ((FinderProfileUIContract.ProfileViewCallback)localObject1).fNG;
+    paramBundle.sgt = ((FinderProfileUIContract.ProfileViewCallback)localObject1).sgf;
+    ((FinderProfileUIContract.ProfileViewCallback)localObject1).gpr.setAdapter((RecyclerView.a)paramBundle);
+    ((FinderProfileUIContract.ProfileViewCallback)localObject1).scj.setActionCallback((RefreshLoadMoreLayout.a)new FinderProfileUIContract.ProfileViewCallback.d((FinderProfileUIContract.ProfileViewCallback)localObject1));
+    paramBundle = ((FinderProfileUIContract.ProfileViewCallback)localObject1).scB.getItemDecoration();
+    ((FinderProfileUIContract.ProfileViewCallback)localObject1).gpr.b(paramBundle);
+    paramBundle = ((FinderProfileUIContract.ProfileViewCallback)localObject1).fPN;
     if (paramBundle != null) {
-      ((FinderProfileUIContract.ProfileViewCallback)localObject1).gmV.a(paramBundle);
+      ((FinderProfileUIContract.ProfileViewCallback)localObject1).gpr.a(paramBundle);
     }
-    paramBundle = FinderReporterUIC.tcM;
-    paramBundle = FinderReporterUIC.a.eY((Context)((FinderProfileUIContract.ProfileViewCallback)localObject1).fLP);
+    paramBundle = FinderReporterUIC.tnG;
+    paramBundle = FinderReporterUIC.a.fc((Context)((FinderProfileUIContract.ProfileViewCallback)localObject1).fNT);
     if (paramBundle != null)
     {
       paramBundle = FinderReporterUIC.d(paramBundle);
       if (paramBundle != null) {
-        paramBundle.s(((FinderProfileUIContract.ProfileViewCallback)localObject1).gmV);
+        paramBundle.s(((FinderProfileUIContract.ProfileViewCallback)localObject1).gpr);
       }
     }
     localObject2 = ((FinderProfileUIContract.ProfileViewCallback)localObject1).TAG;
     Object localObject3 = new StringBuilder("start rxPipeLine, rlLayout.actionCallback hashCode:");
-    paramBundle = ((FinderProfileUIContract.ProfileViewCallback)localObject1).rTF.getActionCallback();
+    paramBundle = ((FinderProfileUIContract.ProfileViewCallback)localObject1).scj.getActionCallback();
     if (paramBundle != null)
     {
       paramBundle = Integer.valueOf(paramBundle.hashCode());
-      ad.i((String)localObject2, paramBundle);
-      com.tencent.mm.ad.c.b(null, (d.g.a.a)new FinderProfileUIContract.ProfileViewCallback.e((FinderProfileUIContract.ProfileViewCallback)localObject1));
+      ae.i((String)localObject2, paramBundle);
+      com.tencent.mm.ac.c.b(null, (d.g.a.a)new FinderProfileUIContract.ProfileViewCallback.e((FinderProfileUIContract.ProfileViewCallback)localObject1));
       paramBundle = this.viewCallback;
       if (paramBundle == null) {
-        d.g.b.p.bcb("viewCallback");
+        d.g.b.p.bdF("viewCallback");
       }
-      ((BaseFinderFeedLoader)paramBundle.rXj.cBm()).register(paramBundle.rTR);
+      ((BaseFinderFeedLoader)paramBundle.sfU.cCY()).register(paramBundle.scv);
       paramBundle = findViewById(2131303443);
       d.g.b.p.g(paramBundle, "findViewById(R.id.profile_actionbar_container)");
-      this.sgk = paramBundle;
+      this.spd = paramBundle;
       paramBundle = findViewById(2131296397);
       d.g.b.p.g(paramBundle, "findViewById(R.id.actionbar_back_btn)");
-      this.sgl = paramBundle;
+      this.spe = paramBundle;
       paramBundle = findViewById(2131296398);
       d.g.b.p.g(paramBundle, "findViewById(R.id.actionbar_back_iv)");
-      this.sgm = ((WeImageView)paramBundle);
+      this.spf = ((WeImageView)paramBundle);
       paramBundle = findViewById(2131303508);
       d.g.b.p.g(paramBundle, "findViewById(R.id.profile_user_info_layout)");
-      this.sgn = paramBundle;
+      this.spg = paramBundle;
       paramBundle = findViewById(2131303491);
       d.g.b.p.g(paramBundle, "findViewById(R.id.profile_right_icons_layout)");
-      this.sgo = ((ViewGroup)paramBundle);
+      this.sph = ((ViewGroup)paramBundle);
       paramBundle = findViewById(2131296395);
       d.g.b.p.g(paramBundle, "findViewById(R.id.actionbar_avatar_iv)");
-      this.sgp = ((ImageView)paramBundle);
+      this.spi = ((ImageView)paramBundle);
       paramBundle = findViewById(2131296407);
       d.g.b.p.g(paramBundle, "findViewById(R.id.actionbar_nickname_tv)");
-      this.sgq = ((TextView)paramBundle);
+      this.spj = ((TextView)paramBundle);
       paramBundle = findViewById(2131302457);
       d.g.b.p.g(paramBundle, "findViewById(R.id.more_btn)");
-      this.sgr = paramBundle;
+      this.spk = paramBundle;
       paramBundle = findViewById(2131302474);
       d.g.b.p.g(paramBundle, "findViewById(R.id.more_iv)");
-      this.sgs = ((WeImageView)paramBundle);
+      this.spl = ((WeImageView)paramBundle);
       paramBundle = findViewById(2131305644);
       d.g.b.p.g(paramBundle, "findViewById(R.id.takephoto_btn)");
-      this.sgt = paramBundle;
+      this.spm = paramBundle;
       paramBundle = findViewById(2131305645);
       d.g.b.p.g(paramBundle, "findViewById(R.id.takephoto_iv)");
-      this.sgu = ((WeImageView)paramBundle);
+      this.spn = ((WeImageView)paramBundle);
       paramBundle = findViewById(2131303444);
       d.g.b.p.g(paramBundle, "findViewById(R.id.profile_actionbar_follow_btn)");
-      this.sgv = ((Button)paramBundle);
-      if (com.tencent.mm.ui.statusbar.c.KDc)
+      this.spo = ((Button)paramBundle);
+      if (com.tencent.mm.ui.statusbar.c.KZw)
       {
-        this.sgH = ((com.tencent.mm.ui.statusbar.c.a)new h(this));
-        com.tencent.mm.ui.statusbar.c.bm((Activity)this).a(this.sgH);
+        this.spA = ((com.tencent.mm.ui.statusbar.c.a)new h(this));
+        com.tencent.mm.ui.statusbar.c.bn((Activity)this).a(this.spA);
         com.tencent.mm.ui.statusbar.d.b(getWindow());
       }
-      paramBundle = this.sgl;
+      paramBundle = this.spe;
       if (paramBundle == null) {
-        d.g.b.p.bcb("actionBarBackBtn");
+        d.g.b.p.bdF("actionBarBackBtn");
       }
-      paramBundle.setOnClickListener((View.OnClickListener)new i(this));
-      paramBundle = this.sgx;
+      paramBundle.setOnClickListener((View.OnClickListener)new FinderProfileUI.i(this));
+      paramBundle = this.spq;
       if (paramBundle == null) {
-        d.g.b.p.bcb("finderSpamActionBarBackBtn");
+        d.g.b.p.bdF("finderSpamActionBarBackBtn");
       }
-      paramBundle.setOnClickListener((View.OnClickListener)new j(this));
+      paramBundle.setOnClickListener((View.OnClickListener)new FinderProfileUI.j(this));
       setActionbarColor(getResources().getColor(2131101053));
-      paramBundle = this.sgn;
+      paramBundle = this.spg;
       if (paramBundle == null) {
-        d.g.b.p.bcb("userInfoLayout");
+        d.g.b.p.bdF("userInfoLayout");
       }
       paramBundle.setAlpha(0.0F);
-      paramBundle = this.sgv;
+      paramBundle = this.spo;
       if (paramBundle == null) {
-        d.g.b.p.bcb("actionBarFollowBtn");
+        d.g.b.p.bdF("actionBarFollowBtn");
       }
       paramBundle.setVisibility(8);
-      cCr();
-      if (!cCp()) {
-        break label4051;
+      cEd();
+      if (!cEb()) {
+        break label4039;
       }
-      paramBundle = this.sgk;
+      paramBundle = this.spd;
       if (paramBundle == null) {
-        d.g.b.p.bcb("myActionBar");
+        d.g.b.p.bdF("myActionBar");
       }
       paramBundle.setBackgroundColor(getResources().getColor(2131101053));
-      paramBundle = this.sgk;
+      paramBundle = this.spd;
       if (paramBundle == null) {
-        d.g.b.p.bcb("myActionBar");
+        d.g.b.p.bdF("myActionBar");
       }
       paramBundle.setBackgroundResource(2131233659);
       label3517:
-      if (!this.drv) {
-        break label4097;
+      if (!this.dsB) {
+        break label4085;
       }
-      cCq();
-      paramBundle = this.sgr;
+      cEc();
+      paramBundle = this.spk;
       if (paramBundle == null) {
-        d.g.b.p.bcb("actionBarMoreBtn");
+        d.g.b.p.bdF("actionBarMoreBtn");
       }
       paramBundle.setVisibility(8);
-      paramBundle = this.sgt;
+      paramBundle = this.spm;
       if (paramBundle == null) {
-        d.g.b.p.bcb("actionBarPhotoBtn");
+        d.g.b.p.bdF("actionBarPhotoBtn");
       }
-      paramBundle.setOnClickListener((View.OnClickListener)new k(this));
+      paramBundle.setOnClickListener((View.OnClickListener)new FinderProfileUI.k(this));
       label3579:
-      if (this.drv)
+      if (this.dsB)
       {
-        ((PluginFinder)com.tencent.mm.kernel.g.ad(PluginFinder.class)).getFinderSyncExtension().a(106, (com.tencent.mm.plugin.finder.api.f)this.sgN);
-        ((PluginFinder)com.tencent.mm.kernel.g.ad(PluginFinder.class)).getFinderSyncExtension().a(101, (com.tencent.mm.plugin.finder.api.f)this.sgN);
+        ((PluginFinder)com.tencent.mm.kernel.g.ad(PluginFinder.class)).getFinderSyncExtension().a(106, (com.tencent.mm.plugin.finder.api.f)this.spH);
+        ((PluginFinder)com.tencent.mm.kernel.g.ad(PluginFinder.class)).getFinderSyncExtension().a(101, (com.tencent.mm.plugin.finder.api.f)this.spH);
       }
-      paramBundle = com.tencent.mm.ui.component.a.KiD;
-      i = ((FinderReporterUIC)com.tencent.mm.ui.component.a.s((MMActivity)this).get(FinderReporterUIC.class)).tcn;
+      paramBundle = com.tencent.mm.ui.component.a.KEX;
+      i = ((FinderReporterUIC)com.tencent.mm.ui.component.a.s((MMActivity)this).get(FinderReporterUIC.class)).tnh;
       switch (i)
       {
       }
     }
     for (;;)
     {
-      if (this.drv)
+      if (this.dsB)
       {
-        paramBundle = com.tencent.mm.plugin.finder.storage.b.sxa;
-        if (com.tencent.mm.plugin.finder.storage.b.cGo() != 1)
+        paramBundle = com.tencent.mm.plugin.finder.storage.b.sHP;
+        if (com.tencent.mm.plugin.finder.storage.b.cIl() != 1)
         {
-          paramBundle = com.tencent.mm.plugin.finder.storage.b.sxa;
-          if (com.tencent.mm.plugin.finder.storage.b.cGp())
+          paramBundle = com.tencent.mm.plugin.finder.storage.b.sHP;
+          if (com.tencent.mm.plugin.finder.storage.b.cIm())
           {
-            paramBundle = com.tencent.mm.ui.component.a.KiD;
-            paramBundle = ((FinderGlobalLocationVM)com.tencent.mm.ui.component.a.bi(PluginFinder.class).get(FinderGlobalLocationVM.class)).sYY;
+            paramBundle = com.tencent.mm.ui.component.a.KEX;
+            paramBundle = ((FinderGlobalLocationVM)com.tencent.mm.ui.component.a.bi(PluginFinder.class).get(FinderGlobalLocationVM.class)).tkm;
             if (paramBundle != null)
             {
-              localObject1 = com.tencent.mm.plugin.finder.api.c.rHn;
-              localObject1 = u.aAu();
-              d.g.b.p.g(localObject1, "ConfigStorageLogic.getMyFinderUsername()");
-              localObject1 = com.tencent.mm.plugin.finder.api.c.a.agW((String)localObject1);
+              localObject1 = com.tencent.mm.plugin.finder.api.c.rPy;
+              localObject1 = com.tencent.mm.plugin.finder.api.c.a.ahT(com.tencent.mm.model.v.aAK());
               if (localObject1 != null)
               {
                 localObject1 = ((com.tencent.mm.plugin.finder.api.g)localObject1).field_extInfo;
                 if (localObject1 != null)
                 {
-                  if (((d.g.b.p.i(paramBundle.jdl, ((alx)localObject1).country) ^ true)) || ((d.g.b.p.i(paramBundle.jdd, ((alx)localObject1).ePu) ^ true)) || ((d.g.b.p.i(paramBundle.jde, ((alx)localObject1).ePv) ^ true)))
+                  if (((d.g.b.p.i(paramBundle.jge, ((amj)localObject1).country) ^ true)) || ((d.g.b.p.i(paramBundle.jfW, ((amj)localObject1).eRf) ^ true)) || ((d.g.b.p.i(paramBundle.jfX, ((amj)localObject1).eRg) ^ true)))
                   {
-                    localObject1 = com.tencent.mm.kernel.g.ajC();
+                    localObject1 = com.tencent.mm.kernel.g.ajR();
                     d.g.b.p.g(localObject1, "MMKernel.storage()");
-                    ((com.tencent.mm.kernel.e)localObject1).ajl().set(al.a.IIq, Long.valueOf(1L));
-                    localObject1 = com.tencent.mm.ui.component.a.KiD;
-                    localObject1 = ((FinderGlobalLocationVM)com.tencent.mm.ui.component.a.bi(PluginFinder.class).get(FinderGlobalLocationVM.class)).sYY;
+                    ((com.tencent.mm.kernel.e)localObject1).ajA().set(am.a.JcT, Long.valueOf(1L));
+                    localObject1 = com.tencent.mm.ui.component.a.KEX;
+                    localObject1 = ((FinderGlobalLocationVM)com.tencent.mm.ui.component.a.bi(PluginFinder.class).get(FinderGlobalLocationVM.class)).tkm;
                     if (localObject1 != null)
                     {
                       localObject2 = (Context)this;
-                      localObject3 = com.tencent.mm.plugin.finder.utils.p.sMo;
-                      localObject3 = ((azz)localObject1).jdl;
+                      localObject3 = com.tencent.mm.plugin.finder.utils.p.sXz;
+                      localObject3 = ((bap)localObject1).jge;
                       d.g.b.p.g(localObject3, "it.Country");
-                      String str1 = ((azz)localObject1).jdd;
+                      String str1 = ((bap)localObject1).jfW;
                       d.g.b.p.g(str1, "it.Province");
-                      String str2 = ((azz)localObject1).jde;
+                      String str2 = ((bap)localObject1).jfX;
                       d.g.b.p.g(str2, "it.City");
-                      com.tencent.mm.ui.base.h.a((Context)localObject2, getString(2131759248, new Object[] { com.tencent.mm.plugin.finder.utils.p.ae((String)localObject3, str1, str2) }), "", getString(2131759347), getString(2131755691), true, (DialogInterface.OnClickListener)new r((azz)localObject1, paramBundle, this), (DialogInterface.OnClickListener)new s(paramBundle, this));
+                      com.tencent.mm.ui.base.h.a((Context)localObject2, getString(2131759248, new Object[] { com.tencent.mm.plugin.finder.utils.p.af((String)localObject3, str1, str2) }), "", getString(2131759347), getString(2131755691), true, (DialogInterface.OnClickListener)new r((bap)localObject1, paramBundle, this), (DialogInterface.OnClickListener)new s(paramBundle, this));
                       AppMethodBeat.o(166193);
                       return;
                       paramBundle = null;
                       break;
-                      label4051:
+                      label4039:
                       if (al.isDarkMode())
                       {
                         this.mController.setStatusBarColor(getResources().getColor(2131099816));
@@ -2114,35 +2111,35 @@ public final class FinderProfileUI
                       }
                       this.mController.setStatusBarColor(getResources().getColor(2131099668));
                       break label3517;
-                      label4097:
-                      paramBundle = this.sgt;
+                      label4085:
+                      paramBundle = this.spm;
                       if (paramBundle == null) {
-                        d.g.b.p.bcb("actionBarPhotoBtn");
+                        d.g.b.p.bdF("actionBarPhotoBtn");
                       }
                       paramBundle.setVisibility(8);
-                      paramBundle = this.sgr;
+                      paramBundle = this.spk;
                       if (paramBundle == null) {
-                        d.g.b.p.bcb("actionBarMoreBtn");
+                        d.g.b.p.bdF("actionBarMoreBtn");
                       }
                       paramBundle.setVisibility(0);
-                      paramBundle = this.sgr;
+                      paramBundle = this.spk;
                       if (paramBundle == null) {
-                        d.g.b.p.bcb("actionBarMoreBtn");
+                        d.g.b.p.bdF("actionBarMoreBtn");
                       }
                       paramBundle.setOnClickListener((View.OnClickListener)new l(this));
                       break label3579;
-                      com.tencent.mm.plugin.report.e.ygI.idkeyStat(1278L, 15L, 1L, false);
-                      paramBundle = com.tencent.mm.plugin.finder.report.h.soM;
-                      localObject1 = this.dyU;
+                      com.tencent.mm.plugin.report.e.ywz.idkeyStat(1278L, 15L, 1L, false);
+                      paramBundle = com.tencent.mm.plugin.finder.report.i.syT;
+                      localObject1 = this.dzZ;
                       paramBundle = (Bundle)localObject1;
                       if (localObject1 == null) {
                         paramBundle = "";
                       }
                       localObject1 = this.username;
                       if (localObject1 == null) {
-                        d.g.b.p.bcb("username");
+                        d.g.b.p.bdF("username");
                       }
-                      com.tencent.mm.plugin.finder.report.h.x(i, paramBundle, (String)localObject1);
+                      com.tencent.mm.plugin.finder.report.i.x(i, paramBundle, (String)localObject1);
                       continue;
                     }
                   }
@@ -2164,14 +2161,14 @@ public final class FinderProfileUI
   {
     AppMethodBeat.i(166206);
     super.onDestroy();
-    ((PluginFinder)com.tencent.mm.kernel.g.ad(PluginFinder.class)).getFinderSyncExtension().b(106, (com.tencent.mm.plugin.finder.api.f)this.sgN);
-    ((PluginFinder)com.tencent.mm.kernel.g.ad(PluginFinder.class)).getFinderSyncExtension().b(101, (com.tencent.mm.plugin.finder.api.f)this.sgN);
+    ((PluginFinder)com.tencent.mm.kernel.g.ad(PluginFinder.class)).getFinderSyncExtension().b(106, (com.tencent.mm.plugin.finder.api.f)this.spH);
+    ((PluginFinder)com.tencent.mm.kernel.g.ad(PluginFinder.class)).getFinderSyncExtension().b(101, (com.tencent.mm.plugin.finder.api.f)this.spH);
     FinderProfileUIContract.ProfileViewCallback localProfileViewCallback = this.viewCallback;
     if (localProfileViewCallback == null) {
-      d.g.b.p.bcb("viewCallback");
+      d.g.b.p.bdF("viewCallback");
     }
-    ((BaseFinderFeedLoader)localProfileViewCallback.rXj.cBm()).unregister(localProfileViewCallback.rTR);
-    localProfileViewCallback.rXj.onDetach();
+    ((BaseFinderFeedLoader)localProfileViewCallback.sfU.cCY()).unregister(localProfileViewCallback.scv);
+    localProfileViewCallback.sfU.onDetach();
     AppMethodBeat.o(166206);
   }
   
@@ -2180,7 +2177,7 @@ public final class FinderProfileUI
     AppMethodBeat.i(166204);
     super.onPause();
     if (this.viewCallback == null) {
-      d.g.b.p.bcb("viewCallback");
+      d.g.b.p.bdF("viewCallback");
     }
     AppMethodBeat.o(166204);
   }
@@ -2189,92 +2186,94 @@ public final class FinderProfileUI
   {
     AppMethodBeat.i(166203);
     super.onResume();
-    this.sgI = false;
+    this.spB = false;
     Object localObject1;
-    if (this.drv)
+    if (this.dsB)
     {
       localObject1 = ((PluginFinder)com.tencent.mm.kernel.g.ad(PluginFinder.class)).getFinderSyncExtension();
       if (localObject1 == null)
       {
-        localObject1 = new v("null cannot be cast to non-null type com.tencent.mm.plugin.finder.extension.FinderSyncExtension");
+        localObject1 = new d.v("null cannot be cast to non-null type com.tencent.mm.plugin.finder.extension.FinderSyncExtension");
         AppMethodBeat.o(166203);
         throw ((Throwable)localObject1);
       }
-      ((com.tencent.mm.plugin.finder.extension.a)localObject1).fI(12329, 1);
+      ((com.tencent.mm.plugin.finder.extension.a)localObject1).fG(12329, 1);
     }
-    com.tencent.mm.kernel.g.aiU().a(3736, (com.tencent.mm.al.f)this);
+    com.tencent.mm.kernel.g.ajj().a(3736, (com.tencent.mm.ak.f)this);
     Object localObject2;
-    if (this.sgM)
+    if (this.spG)
     {
       a(true, null);
-      this.sgM = false;
+      this.spG = false;
       if (this.viewCallback == null) {
-        d.g.b.p.bcb("viewCallback");
+        d.g.b.p.bdF("viewCallback");
       }
-      localObject1 = com.tencent.mm.plugin.finder.upload.g.sJk;
-      if (com.tencent.mm.plugin.finder.upload.g.cKL())
+      localObject1 = com.tencent.mm.plugin.finder.upload.g.sUx;
+      if (com.tencent.mm.plugin.finder.upload.g.cNp())
       {
         localObject1 = this.viewCallback;
         if (localObject1 == null) {
-          d.g.b.p.bcb("viewCallback");
+          d.g.b.p.bdF("viewCallback");
         }
-        localObject1 = ((FinderProfileUIContract.ProfileViewCallback)localObject1).gmV;
+        localObject1 = ((FinderProfileUIContract.ProfileViewCallback)localObject1).gpr;
         localObject2 = com.tencent.mm.hellhoundlib.b.c.a(0, new com.tencent.mm.hellhoundlib.b.a());
-        com.tencent.mm.hellhoundlib.a.a.a(localObject1, ((com.tencent.mm.hellhoundlib.b.a)localObject2).ahp(), "com/tencent/mm/plugin/finder/feed/ui/FinderProfileUI", "onResume", "()V", "Undefined", "smoothScrollToPosition", "(I)V");
-        ((RecyclerView)localObject1).smoothScrollToPosition(((Integer)((com.tencent.mm.hellhoundlib.b.a)localObject2).mq(0)).intValue());
+        com.tencent.mm.hellhoundlib.a.a.a(localObject1, ((com.tencent.mm.hellhoundlib.b.a)localObject2).ahE(), "com/tencent/mm/plugin/finder/feed/ui/FinderProfileUI", "onResume", "()V", "Undefined", "smoothScrollToPosition", "(I)V");
+        ((RecyclerView)localObject1).smoothScrollToPosition(((Integer)((com.tencent.mm.hellhoundlib.b.a)localObject2).mt(0)).intValue());
         com.tencent.mm.hellhoundlib.a.a.a(localObject1, "com/tencent/mm/plugin/finder/feed/ui/FinderProfileUI", "onResume", "()V", "Undefined", "smoothScrollToPosition", "(I)V");
-        localObject1 = com.tencent.mm.plugin.finder.upload.g.sJk;
-        com.tencent.mm.plugin.finder.upload.g.me(false);
+        localObject1 = com.tencent.mm.plugin.finder.upload.g.sUx;
+        com.tencent.mm.plugin.finder.upload.g.mj(false);
       }
-      localObject1 = com.tencent.mm.plugin.finder.report.b.snk;
-      b.b localb = com.tencent.mm.plugin.finder.report.b.cDo();
-      localObject2 = u.aAu();
+      localObject1 = com.tencent.mm.plugin.finder.report.b.sxb;
+      b.b localb = com.tencent.mm.plugin.finder.report.b.cFg();
+      localObject2 = com.tencent.mm.model.v.aAK();
       localObject1 = localObject2;
       if (localObject2 == null) {
         localObject1 = "";
       }
       localObject2 = this.username;
       if (localObject2 == null) {
-        d.g.b.p.bcb("username");
+        d.g.b.p.bdF("username");
       }
-      localb.aa((String)localObject1, "", (String)localObject2);
-      if (!this.sfM)
+      localb.ab((String)localObject1, "", (String)localObject2);
+      if (!this.soF)
       {
-        localObject1 = com.tencent.mm.plugin.finder.report.b.snk;
-        localObject2 = com.tencent.mm.plugin.finder.report.b.cDo();
-        localObject1 = com.tencent.mm.ui.component.a.KiD;
+        localObject1 = com.tencent.mm.plugin.finder.report.b.sxb;
+        localObject2 = com.tencent.mm.plugin.finder.report.b.cFg();
+        localObject1 = com.tencent.mm.ui.component.a.KEX;
         localObject1 = (FinderReporterUIC)com.tencent.mm.ui.component.a.s((MMActivity)this).get(FinderReporterUIC.class);
         if (localObject1 != null)
         {
-          localObject1 = ((FinderReporterUIC)localObject1).cOu();
+          localObject1 = ((FinderReporterUIC)localObject1).cQZ();
           label317:
-          ((b.b)localObject2).a((aqy)localObject1, 3L);
+          ((b.b)localObject2).a((arn)localObject1, 3L);
         }
       }
       else
       {
+        localObject1 = com.tencent.mm.plugin.finder.report.g.syJ;
+        com.tencent.mm.plugin.finder.report.g.G(true, 2);
         AppMethodBeat.o(166203);
       }
     }
-    else if (this.drv)
+    else if (this.dsB)
     {
-      localObject1 = this.sgG;
+      localObject1 = this.spz;
       if (localObject1 != null)
       {
         localObject1 = ((com.tencent.mm.plugin.finder.api.g)localObject1).field_username;
         if (localObject1 != null) {
-          break label426;
+          break label435;
         }
       }
       localObject1 = "";
     }
-    label426:
+    label435:
     for (;;)
     {
-      localObject2 = com.tencent.mm.ui.component.a.KiD;
-      localObject1 = new be((String)localObject1, ((FinderReporterUIC)com.tencent.mm.ui.component.a.s((MMActivity)this).get(FinderReporterUIC.class)).cOu());
-      ((be)localObject1).rKg = true;
-      com.tencent.mm.kernel.g.aiU().b((com.tencent.mm.al.n)localObject1);
+      localObject2 = com.tencent.mm.ui.component.a.KEX;
+      localObject1 = new bf((String)localObject1, ((FinderReporterUIC)com.tencent.mm.ui.component.a.s((MMActivity)this).get(FinderReporterUIC.class)).cQZ());
+      ((bf)localObject1).rSt = true;
+      com.tencent.mm.kernel.g.ajj().b((com.tencent.mm.ak.n)localObject1);
       break;
       a(true, null);
       break;
@@ -2283,19 +2282,19 @@ public final class FinderProfileUI
     }
   }
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.al.n paramn)
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ak.n paramn)
   {
     AppMethodBeat.i(166207);
-    ad.i(this.TAG, "onSceneEnd " + paramInt1 + ", " + paramInt2);
+    ae.i(this.TAG, "onSceneEnd " + paramInt1 + ", " + paramInt2);
     if (paramn != null)
     {
       if ((paramn.getType() != 3736) || (paramInt1 != 0) || (paramInt2 != 0)) {
-        break label275;
+        break label281;
       }
-      paramString = ((be)paramn).rr.aEF();
+      paramString = ((bf)paramn).rr.aEV();
       if (paramString == null)
       {
-        paramString = new v("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.FinderUserPageResponse");
+        paramString = new d.v("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.FinderUserPageResponse");
         AppMethodBeat.o(166207);
         throw paramString;
       }
@@ -2308,16 +2307,16 @@ public final class FinderProfileUI
     paramString = ((FinderUserPageResponse)paramString).contact;
     if (paramString != null)
     {
-      String str1 = ((be)paramn).rKh;
+      String str1 = ((bf)paramn).rRh;
       Object localObject = this.username;
       if (localObject == null) {
-        d.g.b.p.bcb("username");
+        d.g.b.p.bdF("username");
       }
       if (d.g.b.p.i(str1, localObject))
       {
         str1 = this.username;
         if (str1 == null) {
-          d.g.b.p.bcb("username");
+          d.g.b.p.bdF("username");
         }
         if ((d.g.b.p.i(str1, paramString.username) ^ true))
         {
@@ -2325,17 +2324,20 @@ public final class FinderProfileUI
           localObject = new StringBuilder("update username ");
           String str2 = this.username;
           if (str2 == null) {
-            d.g.b.p.bcb("username");
+            d.g.b.p.bdF("username");
           }
-          ad.i(str1, str2 + ' ' + paramString.username);
+          ae.i(str1, str2 + ' ' + paramString.username);
         }
-        paramString = paramString.username;
-        d.g.b.p.g(paramString, "contact.username");
+        str1 = paramString.username;
+        paramString = str1;
+        if (str1 == null) {
+          paramString = "";
+        }
         this.username = paramString;
-        a(true, (be)paramn);
+        a(true, (bf)paramn);
       }
     }
-    label275:
+    label281:
     AppMethodBeat.o(166207);
   }
   
@@ -2343,7 +2345,8 @@ public final class FinderProfileUI
   {
     AppMethodBeat.i(166205);
     super.onStop();
-    com.tencent.mm.kernel.g.aiU().b(3736, (com.tencent.mm.al.f)this);
+    com.tencent.mm.kernel.g.ajj().b(3736, (com.tencent.mm.ak.f)this);
+    this.spC = "";
     AppMethodBeat.o(166205);
   }
   
@@ -2353,10 +2356,7 @@ public final class FinderProfileUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderProfileUI$Companion;", "", "()V", "userExtInfoLocalMap", "Ljava/util/HashMap;", "", "Lcom/tencent/mm/plugin/finder/feed/ui/FinderProfileUI$UserExtInfo;", "Lkotlin/collections/HashMap;", "getUserExtInfoLocalMap", "()Ljava/util/HashMap;", "plugin-finder_release"})
-  public static final class a {}
-  
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "invoke"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "invoke"})
   static final class aa
     extends d.g.b.q
     implements d.g.a.b<View, d.z>
@@ -2367,7 +2367,7 @@ public final class FinderProfileUI
     }
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
   static final class ab
     implements Runnable
   {
@@ -2375,30 +2375,30 @@ public final class FinderProfileUI
     
     public final void run()
     {
-      AppMethodBeat.i(202824);
-      int i = FinderProfileUI.t(this.sgQ).getWidth();
-      Object localObject = this.sgQ.getContext();
+      AppMethodBeat.i(203303);
+      int i = FinderProfileUI.u(this.spK).getWidth();
+      Object localObject = this.spK.getContext();
       d.g.b.p.g(localObject, "context");
       i -= ((AppCompatActivity)localObject).getResources().getDimensionPixelOffset(2131165294);
-      TextView localTextView = FinderProfileUI.u(this.sgQ);
-      Context localContext = (Context)this.sgQ.getContext();
-      localObject = com.tencent.mm.plugin.finder.convert.a.rLR;
-      TextPaint localTextPaint = FinderProfileUI.u(this.sgQ).getPaint();
+      TextView localTextView = FinderProfileUI.v(this.spK);
+      Context localContext = (Context)this.spK.getContext();
+      localObject = com.tencent.mm.plugin.finder.convert.a.rUe;
+      TextPaint localTextPaint = FinderProfileUI.v(this.spK).getPaint();
       d.g.b.p.g(localTextPaint, "nickNameTv.paint");
       localObject = paramg;
       if (localObject != null) {}
-      for (localObject = ((com.tencent.mm.plugin.finder.api.g)localObject).VC();; localObject = null)
+      for (localObject = ((com.tencent.mm.plugin.finder.api.g)localObject).VK();; localObject = null)
       {
-        AppCompatActivity localAppCompatActivity = this.sgQ.getContext();
+        AppCompatActivity localAppCompatActivity = this.spK.getContext();
         d.g.b.p.g(localAppCompatActivity, "context");
         localTextView.setText((CharSequence)com.tencent.mm.pluginsdk.ui.span.k.c(localContext, (CharSequence)com.tencent.mm.plugin.finder.convert.a.a(localTextPaint, (String)localObject, i, i - localAppCompatActivity.getResources().getDimensionPixelOffset(2131165289))));
-        AppMethodBeat.o(202824);
+        AppMethodBeat.o(203303);
         return;
       }
     }
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "invoke"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "invoke"})
   static final class ac
     extends d.g.b.q
     implements d.g.a.b<View, d.z>
@@ -2409,7 +2409,7 @@ public final class FinderProfileUI
     }
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "invoke"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "invoke"})
   static final class ad
     extends d.g.b.q
     implements d.g.a.b<View, d.z>
@@ -2420,66 +2420,7 @@ public final class FinderProfileUI
     }
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderProfileUI$UserExtInfo;", "", "friendFollowCount", "", "fansCount", "userTags", "Ljava/util/LinkedList;", "", "(IILjava/util/LinkedList;)V", "getFansCount", "()I", "setFansCount", "(I)V", "getFriendFollowCount", "setFriendFollowCount", "getUserTags", "()Ljava/util/LinkedList;", "setUserTags", "(Ljava/util/LinkedList;)V", "component1", "component2", "component3", "copy", "equals", "", "other", "hashCode", "toString", "plugin-finder_release"})
-  public static final class b
-  {
-    int fansCount;
-    int friendFollowCount;
-    LinkedList<String> userTags;
-    
-    public b(LinkedList<String> paramLinkedList)
-    {
-      AppMethodBeat.i(166154);
-      this.friendFollowCount = -1;
-      this.fansCount = -1;
-      this.userTags = paramLinkedList;
-      AppMethodBeat.o(166154);
-    }
-    
-    public final boolean equals(Object paramObject)
-    {
-      AppMethodBeat.i(166157);
-      if (this != paramObject)
-      {
-        if ((paramObject instanceof b))
-        {
-          paramObject = (b)paramObject;
-          if ((this.friendFollowCount != paramObject.friendFollowCount) || (this.fansCount != paramObject.fansCount) || (!d.g.b.p.i(this.userTags, paramObject.userTags))) {}
-        }
-      }
-      else
-      {
-        AppMethodBeat.o(166157);
-        return true;
-      }
-      AppMethodBeat.o(166157);
-      return false;
-    }
-    
-    public final int hashCode()
-    {
-      AppMethodBeat.i(166156);
-      int j = this.friendFollowCount;
-      int k = this.fansCount;
-      LinkedList localLinkedList = this.userTags;
-      if (localLinkedList != null) {}
-      for (int i = localLinkedList.hashCode();; i = 0)
-      {
-        AppMethodBeat.o(166156);
-        return i + (j * 31 + k) * 31;
-      }
-    }
-    
-    public final String toString()
-    {
-      AppMethodBeat.i(166155);
-      String str = "UserExtInfo(friendFollowCount=" + this.friendFollowCount + ", fansCount=" + this.fansCount + ", userTags=" + this.userTags + ")";
-      AppMethodBeat.o(166155);
-      return str;
-    }
-  }
-  
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class c
     implements View.OnClickListener
   {
@@ -2487,223 +2428,162 @@ public final class FinderProfileUI
     
     public final void onClick(View paramView)
     {
-      AppMethodBeat.i(202817);
+      AppMethodBeat.i(203296);
       Object localObject = new com.tencent.mm.hellhoundlib.b.b();
       ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/feed/ui/FinderProfileUI$changeChatVisibileState$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahq());
-      paramView = com.tencent.mm.plugin.finder.utils.p.sMo;
-      paramView = this.sgQ.getContext();
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/feed/ui/FinderProfileUI$changeChatVisibileState$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahF());
+      paramView = com.tencent.mm.plugin.finder.utils.p.sXz;
+      paramView = this.spK.getContext();
       d.g.b.p.g(paramView, "context");
       paramView = (Context)paramView;
-      localObject = FinderProfileUI.h(this.sgQ);
+      localObject = FinderProfileUI.i(this.spK);
       if (localObject != null) {}
       for (int i = ((com.tencent.mm.plugin.finder.api.g)localObject).field_extFlag;; i = 0)
       {
         if (!com.tencent.mm.plugin.finder.utils.p.Y(paramView, i))
         {
-          paramView = com.tencent.mm.plugin.finder.utils.a.sKD;
-          paramView = FinderProfileUI.i(this.sgQ);
+          paramView = com.tencent.mm.plugin.finder.utils.a.sVQ;
+          paramView = FinderProfileUI.j(this.spK);
           d.g.b.p.g(paramView, "contentView");
           paramView = paramView.getContext();
           d.g.b.p.g(paramView, "contentView.context");
-          com.tencent.mm.plugin.finder.utils.a.aq(paramView, FinderProfileUI.c(this.sgQ));
+          com.tencent.mm.plugin.finder.utils.a.as(paramView, FinderProfileUI.c(this.spK));
         }
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/feed/ui/FinderProfileUI$changeChatVisibileState$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(202817);
+        AppMethodBeat.o(203296);
         return;
       }
     }
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Lcom/tencent/mm/ui/base/MMMenu;", "kotlin.jvm.PlatformType", "onCreateMMMenu"})
-  static final class d
-    implements n.d
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/finder/feed/ui/FinderProfileUI$countListener$1", "Lcom/tencent/mm/plugin/finder/api/IFinderSyncHandler;", "handleCmd", "", "cmdItem", "Lcom/tencent/mm/protocal/protobuf/FinderCmdItem;", "plugin-finder_release"})
+  public static final class d
+    implements com.tencent.mm.plugin.finder.api.f
   {
-    d(FinderProfileUI paramFinderProfileUI) {}
-    
-    public final void onCreateMMMenu(com.tencent.mm.ui.base.l paraml)
+    public final void a(ama paramama)
     {
-      AppMethodBeat.i(202818);
-      d.g.b.p.g(paraml, "it");
-      if (paraml.fyP())
+      AppMethodBeat.i(166158);
+      d.g.b.p.h(paramama, "cmdItem");
+      if (!FinderProfileUI.h(this.spK))
       {
-        paraml.jI(FinderProfileUI.n(this.sgQ), 2131755747);
-        paraml.jI(FinderProfileUI.o(this.sgQ), 2131755754);
+        AppMethodBeat.o(166158);
+        return;
       }
-      AppMethodBeat.o(202818);
+      switch (paramama.cmdId)
+      {
+      }
+      for (;;)
+      {
+        AppMethodBeat.o(166158);
+        return;
+        FinderProfileUI.a(this.spK);
+      }
     }
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "menuItem", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "index", "", "onMMMenuItemSelected"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Lcom/tencent/mm/ui/base/MMMenu;", "kotlin.jvm.PlatformType", "onCreateMMMenu"})
   static final class e
+    implements n.d
+  {
+    e(FinderProfileUI paramFinderProfileUI) {}
+    
+    public final void onCreateMMMenu(com.tencent.mm.ui.base.l paraml)
+    {
+      AppMethodBeat.i(203297);
+      d.g.b.p.g(paraml, "it");
+      if (paraml.fCR())
+      {
+        paraml.jM(FinderProfileUI.o(this.spK), 2131755747);
+        paraml.jM(FinderProfileUI.p(this.spK), 2131755754);
+      }
+      AppMethodBeat.o(203297);
+    }
+  }
+  
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "menuItem", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "index", "", "onMMMenuItemSelected"})
+  static final class f
     implements n.e
   {
-    e(FinderProfileUI paramFinderProfileUI, String paramString) {}
+    f(FinderProfileUI paramFinderProfileUI, String paramString) {}
     
     public final void onMMMenuItemSelected(MenuItem paramMenuItem, int paramInt)
     {
-      AppMethodBeat.i(202819);
+      AppMethodBeat.i(203298);
       Intent localIntent = new Intent();
       d.g.b.p.g(paramMenuItem, "menuItem");
-      if (paramMenuItem.getItemId() == FinderProfileUI.n(this.sgQ)) {
+      if (paramMenuItem.getItemId() == FinderProfileUI.o(this.spK)) {
         localIntent.putExtra("key_finder_post_router", 2);
       }
       for (;;)
       {
         localIntent.putExtra("key_finder_post_from", 1);
-        localIntent.putExtra("key_finder_post_id", this.sgR);
-        paramMenuItem = com.tencent.mm.plugin.finder.utils.a.sKD;
-        paramMenuItem = this.sgQ.getContext();
+        localIntent.putExtra("key_finder_post_id", this.spL);
+        paramMenuItem = com.tencent.mm.plugin.finder.utils.a.sVQ;
+        paramMenuItem = this.spK.getContext();
         d.g.b.p.g(paramMenuItem, "context");
         com.tencent.mm.plugin.finder.utils.a.enterFinderPostRouterUI((Context)paramMenuItem, localIntent);
-        AppMethodBeat.o(202819);
+        AppMethodBeat.o(203298);
         return;
-        if (paramMenuItem.getItemId() == FinderProfileUI.o(this.sgQ)) {
+        if (paramMenuItem.getItemId() == FinderProfileUI.p(this.spK)) {
           localIntent.putExtra("key_finder_post_router", 3);
         }
       }
     }
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "onDismiss"})
-  static final class f
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "onDismiss"})
+  static final class g
     implements e.b
   {
-    public static final f sgS;
+    public static final g spM;
     
     static
     {
-      AppMethodBeat.i(202821);
-      sgS = new f();
-      AppMethodBeat.o(202821);
+      AppMethodBeat.i(203300);
+      spM = new g();
+      AppMethodBeat.o(203300);
     }
     
     public final void onDismiss()
     {
-      AppMethodBeat.i(202820);
-      com.tencent.mm.plugin.finder.report.f localf = com.tencent.mm.plugin.finder.report.f.soC;
-      com.tencent.mm.plugin.finder.report.f.EW(6);
-      AppMethodBeat.o(202820);
+      AppMethodBeat.i(203299);
+      com.tencent.mm.plugin.finder.report.g localg = com.tencent.mm.plugin.finder.report.g.syJ;
+      com.tencent.mm.plugin.finder.report.g.Fs(6);
+      AppMethodBeat.o(203299);
     }
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/finder/feed/ui/FinderProfileUI$countListener$1", "Lcom/tencent/mm/plugin/finder/api/IFinderSyncHandler;", "handleCmd", "", "cmdItem", "Lcom/tencent/mm/protocal/protobuf/FinderCmdItem;", "plugin-finder_release"})
-  public static final class g
-    implements com.tencent.mm.plugin.finder.api.f
-  {
-    public final void a(alo paramalo)
-    {
-      AppMethodBeat.i(166158);
-      d.g.b.p.h(paramalo, "cmdItem");
-      if (!FinderProfileUI.g(this.sgQ))
-      {
-        AppMethodBeat.o(166158);
-        return;
-      }
-      switch (paramalo.cmdId)
-      {
-      }
-      for (;;)
-      {
-        AppMethodBeat.o(166158);
-        return;
-        FinderProfileUI.a(this.sgQ);
-      }
-    }
-  }
-  
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "newHeight", "", "onStatusBarHeightChange"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "newHeight", "", "onStatusBarHeightChange"})
   static final class h
     implements com.tencent.mm.ui.statusbar.c.a
   {
     h(FinderProfileUI paramFinderProfileUI) {}
     
-    public final void ua(int paramInt)
+    public final void ug(int paramInt)
     {
       AppMethodBeat.i(166159);
-      ad.i(FinderProfileUI.r(this.sgQ), "newHeight ".concat(String.valueOf(paramInt)));
+      ae.i(FinderProfileUI.s(this.spK), "newHeight ".concat(String.valueOf(paramInt)));
       if (paramInt > 0)
       {
-        Object localObject = FinderProfileUI.v(this.sgQ).getLayoutParams();
+        Object localObject = FinderProfileUI.w(this.spK).getLayoutParams();
         if (localObject == null)
         {
-          localObject = new v("null cannot be cast to non-null type android.widget.RelativeLayout.LayoutParams");
+          localObject = new d.v("null cannot be cast to non-null type android.widget.RelativeLayout.LayoutParams");
           AppMethodBeat.o(166159);
           throw ((Throwable)localObject);
         }
         RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)localObject;
         localLayoutParams.height += paramInt;
-        FinderProfileUI.v(this.sgQ).setLayoutParams((ViewGroup.LayoutParams)localObject);
-        FinderProfileUI.v(this.sgQ).setPadding(0, paramInt, 0, 0);
-        FinderProfileUI.w(this.sgQ).setPadding(0, paramInt, 0, 0);
+        FinderProfileUI.w(this.spK).setLayoutParams((ViewGroup.LayoutParams)localObject);
+        FinderProfileUI.w(this.spK).setPadding(0, paramInt, 0, 0);
+        FinderProfileUI.x(this.spK).setPadding(0, paramInt, 0, 0);
       }
-      com.tencent.mm.ui.statusbar.c.bm((Activity)this.sgQ).b(FinderProfileUI.x(this.sgQ));
+      com.tencent.mm.ui.statusbar.c.bn((Activity)this.spK).b(FinderProfileUI.y(this.spK));
       AppMethodBeat.o(166159);
     }
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class i
-    implements View.OnClickListener
-  {
-    i(FinderProfileUI paramFinderProfileUI) {}
-    
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(166160);
-      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bd(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/feed/ui/FinderProfileUI$initActionBarView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-      FinderProfileUI.j(this.sgQ);
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/feed/ui/FinderProfileUI$initActionBarView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(166160);
-    }
-  }
-  
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class j
-    implements View.OnClickListener
-  {
-    j(FinderProfileUI paramFinderProfileUI) {}
-    
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(166161);
-      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bd(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/feed/ui/FinderProfileUI$initActionBarView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-      FinderProfileUI.j(this.sgQ);
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/feed/ui/FinderProfileUI$initActionBarView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(166161);
-    }
-  }
-  
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class k
-    implements View.OnClickListener
-  {
-    k(FinderProfileUI paramFinderProfileUI) {}
-    
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(166166);
-      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bd(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/feed/ui/FinderProfileUI$initActionBarView$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-      paramView = com.tencent.mm.plugin.finder.spam.a.suA;
-      if (com.tencent.mm.plugin.finder.spam.a.aip("post"))
-      {
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/feed/ui/FinderProfileUI$initActionBarView$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(166166);
-        return;
-      }
-      FinderProfileUI.k(this.sgQ);
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/feed/ui/FinderProfileUI$initActionBarView$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(166166);
-    }
-  }
-  
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class l
     implements View.OnClickListener
   {
@@ -2714,18 +2594,18 @@ public final class FinderProfileUI
       AppMethodBeat.i(166169);
       com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
       localb.bd(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/feed/ui/FinderProfileUI$initActionBarView$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-      paramView = new com.tencent.mm.ui.widget.a.e((Context)this.sgQ, 1, false);
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/feed/ui/FinderProfileUI$initActionBarView$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+      paramView = new com.tencent.mm.ui.widget.a.e((Context)this.spK, 1, false);
       paramView.a((n.d)new n.d()
       {
         public final void onCreateMMMenu(com.tencent.mm.ui.base.l paramAnonymousl)
         {
           AppMethodBeat.i(166167);
           d.g.b.p.g(paramAnonymousl, "it");
-          if (paramAnonymousl.fyP())
+          if (paramAnonymousl.fCR())
           {
-            paramAnonymousl.jI(FinderProfileUI.l(this.sgT.sgQ), 2131759322);
-            paramAnonymousl.jI(FinderProfileUI.m(this.sgT.sgQ), 2131759313);
+            paramAnonymousl.jM(FinderProfileUI.m(this.spN.spK), 2131759322);
+            paramAnonymousl.jM(FinderProfileUI.n(this.spN.spK), 2131759313);
           }
           AppMethodBeat.o(166167);
         }
@@ -2737,42 +2617,42 @@ public final class FinderProfileUI
           AppMethodBeat.i(166168);
           d.g.b.p.g(paramAnonymousMenuItem, "menuItem");
           paramAnonymousInt = paramAnonymousMenuItem.getItemId();
-          if (paramAnonymousInt == FinderProfileUI.l(this.sgT.sgQ))
+          if (paramAnonymousInt == FinderProfileUI.m(this.spN.spK))
           {
-            paramAnonymousMenuItem = FinderProfileUI.h(this.sgT.sgQ);
+            paramAnonymousMenuItem = FinderProfileUI.i(this.spN.spK);
             if (paramAnonymousMenuItem != null)
             {
-              m.a.a(m.sLy, (MMActivity)this.sgT.sgQ, paramAnonymousMenuItem);
+              m.a.a(m.sWJ, (MMActivity)this.spN.spK, paramAnonymousMenuItem);
               AppMethodBeat.o(166168);
               return;
             }
             AppMethodBeat.o(166168);
             return;
           }
-          if (paramAnonymousInt == FinderProfileUI.m(this.sgT.sgQ))
+          if (paramAnonymousInt == FinderProfileUI.n(this.spN.spK))
           {
-            paramAnonymousMenuItem = this.sgT.sgQ.getString(2131759199, new Object[] { ac.fks(), FinderProfileUI.c(this.sgT.sgQ) });
+            paramAnonymousMenuItem = this.spN.spK.getString(2131759199, new Object[] { ad.fom(), FinderProfileUI.c(this.spN.spK) });
             Intent localIntent = new Intent();
             localIntent.putExtra("rawUrl", paramAnonymousMenuItem);
-            com.tencent.mm.bs.d.b((Context)this.sgT.sgQ.getContext(), "webview", ".ui.tools.WebViewUI", localIntent);
+            com.tencent.mm.br.d.b((Context)this.spN.spK.getContext(), "webview", ".ui.tools.WebViewUI", localIntent);
           }
           AppMethodBeat.o(166168);
         }
       });
-      paramView.cMW();
+      paramView.cPF();
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/feed/ui/FinderProfileUI$initActionBarView$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(166169);
     }
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "result", "Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotNotifier$Result;", "onChanged"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "result", "Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotNotifier$Result;", "onChanged"})
   static final class m<T>
     implements Observer<g.a>
   {
     m(FinderProfileUI paramFinderProfileUI) {}
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class n
     implements View.OnClickListener
   {
@@ -2781,20 +2661,44 @@ public final class FinderProfileUI
     public final void onClick(View paramView)
     {
       AppMethodBeat.i(166171);
-      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bd(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/feed/ui/FinderProfileUI$initHeader$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-      paramView = com.tencent.mm.plugin.finder.utils.a.sKD;
-      com.tencent.mm.plugin.finder.utils.a.eP((Context)this.sgQ);
+      Object localObject = new com.tencent.mm.hellhoundlib.b.b();
+      ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramView);
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/feed/ui/FinderProfileUI$initHeader$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahF());
+      paramView = com.tencent.mm.plugin.finder.utils.a.sVQ;
+      com.tencent.mm.plugin.finder.utils.a.eT((Context)this.spK);
       paramView = com.tencent.mm.kernel.g.ad(PluginFinder.class);
       d.g.b.p.g(paramView, "MMKernel.plugin(PluginFinder::class.java)");
-      ((PluginFinder)paramView).getRedDotManager().ahl("FinderSetting");
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/feed/ui/FinderProfileUI$initHeader$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(166171);
+      localObject = ((PluginFinder)paramView).getRedDotManager().aii("FinderSetting");
+      paramView = com.tencent.mm.kernel.g.ad(PluginFinder.class);
+      d.g.b.p.g(paramView, "MMKernel.plugin(PluginFinder::class.java)");
+      com.tencent.mm.plugin.finder.extension.reddot.i locali = ((PluginFinder)paramView).getRedDotManager().aij("FinderSetting");
+      if ((locali != null) && (localObject != null))
+      {
+        paramView = com.tencent.mm.plugin.finder.report.h.syO;
+        paramView = FinderReporterUIC.tnG;
+        paramView = FinderReporterUIC.a.fc((Context)this.spK);
+        if (paramView == null) {
+          break label222;
+        }
+      }
+      label222:
+      for (paramView = paramView.cQZ();; paramView = null)
+      {
+        com.tencent.mm.plugin.finder.report.h.a("3", locali, (ast)localObject, 2, paramView, 0, 0, 96);
+        paramView = com.tencent.mm.kernel.g.ad(PluginFinder.class);
+        d.g.b.p.g(paramView, "MMKernel.plugin(PluginFinder::class.java)");
+        ((PluginFinder)paramView).getRedDotManager().aih("FinderSetting");
+        paramView = com.tencent.mm.kernel.g.ad(PluginFinder.class);
+        d.g.b.p.g(paramView, "MMKernel.plugin(PluginFinder::class.java)");
+        ((PluginFinder)paramView).getRedDotManager().e("ProfileEntrance", new int[] { 1000 });
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/feed/ui/FinderProfileUI$initHeader$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        AppMethodBeat.o(166171);
+        return;
+      }
     }
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class o
     implements View.OnClickListener
   {
@@ -2805,23 +2709,23 @@ public final class FinderProfileUI
       AppMethodBeat.i(166174);
       com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
       localb.bd(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/feed/ui/FinderProfileUI$initHeader$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-      paramView = com.tencent.mm.plugin.finder.spam.a.suA;
-      if (com.tencent.mm.plugin.finder.spam.a.aip("personalInfo"))
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/feed/ui/FinderProfileUI$initHeader$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+      paramView = com.tencent.mm.plugin.finder.spam.a.sEK;
+      if (com.tencent.mm.plugin.finder.spam.a.ajm("personalInfo"))
       {
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/feed/ui/FinderProfileUI$initHeader$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(166174);
         return;
       }
-      paramView = new com.tencent.mm.ui.widget.a.e((Context)this.sgQ, 1, false);
+      paramView = new com.tencent.mm.ui.widget.a.e((Context)this.spK, 1, false);
       paramView.a((n.d)new n.d()
       {
         public final void onCreateMMMenu(com.tencent.mm.ui.base.l paramAnonymousl)
         {
           AppMethodBeat.i(166172);
           d.g.b.p.g(paramAnonymousl, "it");
-          if (paramAnonymousl.fyP()) {
-            paramAnonymousl.jI(FinderProfileUI.e(this.sgU.sgQ), 2131759314);
+          if (paramAnonymousl.fCR()) {
+            paramAnonymousl.jM(FinderProfileUI.f(this.spO.spK), 2131759314);
           }
           AppMethodBeat.o(166172);
         }
@@ -2832,19 +2736,19 @@ public final class FinderProfileUI
         {
           AppMethodBeat.i(166173);
           d.g.b.p.g(paramAnonymousMenuItem, "menuItem");
-          if (paramAnonymousMenuItem.getItemId() == FinderProfileUI.e(this.sgU.sgQ)) {
-            FinderProfileUI.f(this.sgU.sgQ);
+          if (paramAnonymousMenuItem.getItemId() == FinderProfileUI.f(this.spO.spK)) {
+            FinderProfileUI.g(this.spO.spK);
           }
           AppMethodBeat.o(166173);
         }
       });
-      paramView.cMW();
+      paramView.cPF();
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/feed/ui/FinderProfileUI$initHeader$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(166174);
     }
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class p
     implements View.OnClickListener
   {
@@ -2855,52 +2759,52 @@ public final class FinderProfileUI
       AppMethodBeat.i(166175);
       Object localObject = new com.tencent.mm.hellhoundlib.b.b();
       ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/feed/ui/FinderProfileUI$initHeader$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahq());
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/feed/ui/FinderProfileUI$initHeader$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahF());
       com.tencent.mm.plugin.finder.extension.reddot.i locali;
-      if (FinderProfileUI.g(this.sgQ))
+      if (FinderProfileUI.h(this.spK))
       {
-        paramView = com.tencent.mm.kernel.g.ajC();
+        paramView = com.tencent.mm.kernel.g.ajR();
         d.g.b.p.g(paramView, "MMKernel.storage()");
-        int i = paramView.ajl().getInt(al.a.IHW, 0);
+        int i = paramView.ajA().getInt(am.a.Jcz, 0);
         if (i > 0)
         {
-          paramView = com.tencent.mm.plugin.finder.report.h.soM;
-          paramView = FinderReporterUIC.tcM;
-          paramView = FinderReporterUIC.a.eY((Context)this.sgQ);
+          paramView = com.tencent.mm.plugin.finder.report.i.syT;
+          paramView = FinderReporterUIC.tnG;
+          paramView = FinderReporterUIC.a.fc((Context)this.spK);
           if (paramView == null) {
-            break label293;
+            break label294;
           }
-          paramView = paramView.cOu();
-          com.tencent.mm.plugin.finder.report.h.a("3", 1, 2, 5, 3, i, null, null, 0L, paramView, 0, 0, 3520);
+          paramView = paramView.cQZ();
+          com.tencent.mm.plugin.finder.report.i.a("3", 1, 2, 5, 3, i, null, null, 0L, paramView, 0, 0, 3520);
         }
-        paramView = com.tencent.mm.kernel.g.ajC();
+        paramView = com.tencent.mm.kernel.g.ajR();
         d.g.b.p.g(paramView, "MMKernel.storage()");
-        paramView.ajl().set(al.a.IHW, Integer.valueOf(0));
+        paramView.ajA().set(am.a.Jcz, Integer.valueOf(0));
         paramView = com.tencent.mm.kernel.g.ad(PluginFinder.class);
         d.g.b.p.g(paramView, "MMKernel.plugin(PluginFinder::class.java)");
-        localObject = ((PluginFinder)paramView).getRedDotManager().ahm("AuthorProfileFans");
+        localObject = ((PluginFinder)paramView).getRedDotManager().aii("AuthorProfileFans");
         paramView = com.tencent.mm.kernel.g.ad(PluginFinder.class);
         d.g.b.p.g(paramView, "MMKernel.plugin(PluginFinder::class.java)");
-        locali = ((PluginFinder)paramView).getRedDotManager().ahn("AuthorProfileFans");
+        locali = ((PluginFinder)paramView).getRedDotManager().aij("AuthorProfileFans");
         if ((locali != null) && (localObject != null))
         {
-          paramView = com.tencent.mm.plugin.finder.report.g.soH;
-          paramView = FinderReporterUIC.tcM;
-          paramView = FinderReporterUIC.a.eY((Context)this.sgQ);
+          paramView = com.tencent.mm.plugin.finder.report.h.syO;
+          paramView = FinderReporterUIC.tnG;
+          paramView = FinderReporterUIC.a.fc((Context)this.spK);
           if (paramView == null) {
-            break label298;
+            break label299;
           }
         }
       }
-      label293:
-      label298:
-      for (paramView = paramView.cOu();; paramView = null)
+      label294:
+      label299:
+      for (paramView = paramView.cQZ();; paramView = null)
       {
-        com.tencent.mm.plugin.finder.report.g.b("3", locali, (ase)localObject, 2, paramView, 0, 96);
+        com.tencent.mm.plugin.finder.report.h.a("3", locali, (ast)localObject, 2, paramView, 0, 0, 96);
         paramView = com.tencent.mm.kernel.g.ad(PluginFinder.class);
         d.g.b.p.g(paramView, "MMKernel.plugin(PluginFinder::class.java)");
-        ((PluginFinder)paramView).getRedDotManager().ahl("AuthorProfileFans");
-        FinderProfileUI.a(this.sgQ, FinderFansListUI.class);
+        ((PluginFinder)paramView).getRedDotManager().aih("AuthorProfileFans");
+        FinderProfileUI.a(this.spK, FinderFansListUI.class);
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/feed/ui/FinderProfileUI$initHeader$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(166175);
         return;
@@ -2910,52 +2814,52 @@ public final class FinderProfileUI
     }
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/finder/feed/ui/FinderProfileUI$onActivityResult$1$1", "Lcom/tencent/mm/loader/loader/LoaderCoreCallback;", "Lcom/tencent/mm/plugin/finder/upload/FinderUploadCoverImageTask;", "onLoaderFin", "", "task", "status", "Lcom/tencent/mm/loader/loader/WorkStatus;", "plugin-finder_release"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/finder/feed/ui/FinderProfileUI$onActivityResult$1$1", "Lcom/tencent/mm/loader/loader/LoaderCoreCallback;", "Lcom/tencent/mm/plugin/finder/upload/FinderUploadCoverImageTask;", "onLoaderFin", "", "task", "status", "Lcom/tencent/mm/loader/loader/WorkStatus;", "plugin-finder_release"})
   public static final class q
     implements com.tencent.mm.loader.g.f<com.tencent.mm.plugin.finder.upload.j>
   {
     q(FinderProfileUI paramFinderProfileUI) {}
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "dialog", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "which", "", "onClick", "com/tencent/mm/plugin/finder/feed/ui/FinderProfileUI$onCreate$2$1$1$1", "com/tencent/mm/plugin/finder/feed/ui/FinderProfileUI$$special$$inlined$let$lambda$1", "com/tencent/mm/plugin/finder/feed/ui/FinderProfileUI$$special$$inlined$let$lambda$3"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "dialog", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "which", "", "onClick", "com/tencent/mm/plugin/finder/feed/ui/FinderProfileUI$onCreate$2$1$1$1", "com/tencent/mm/plugin/finder/feed/ui/FinderProfileUI$$special$$inlined$let$lambda$1", "com/tencent/mm/plugin/finder/feed/ui/FinderProfileUI$$special$$inlined$let$lambda$3"})
   static final class r
     implements DialogInterface.OnClickListener
   {
-    r(azz paramazz1, azz paramazz2, FinderProfileUI paramFinderProfileUI) {}
+    r(bap parambap1, bap parambap2, FinderProfileUI paramFinderProfileUI) {}
     
     public final void onClick(DialogInterface paramDialogInterface, int paramInt)
     {
       AppMethodBeat.i(178300);
-      paramDialogInterface = com.tencent.mm.plugin.finder.report.h.soM;
-      com.tencent.mm.plugin.finder.report.h.dm(FinderProfileUI.c(jdField_this), 1);
+      paramDialogInterface = com.tencent.mm.plugin.finder.report.i.syT;
+      com.tencent.mm.plugin.finder.report.i.dr(FinderProfileUI.c(jdField_this), 1);
       paramDialogInterface = (com.tencent.mm.plugin.i.a.n)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.i.a.n.class);
-      String str1 = this.sgV.jdl;
+      String str1 = this.spP.jge;
       d.g.b.p.g(str1, "it.Country");
-      String str2 = this.sgV.jdd;
+      String str2 = this.spP.jfW;
       d.g.b.p.g(str2, "it.Province");
-      String str3 = this.sgV.jde;
+      String str3 = this.spP.jfX;
       d.g.b.p.g(str3, "it.City");
       paramDialogInterface.a(str1, str2, str3, 0, (com.tencent.mm.plugin.i.a.s)new com.tencent.mm.plugin.i.a.s() {});
       AppMethodBeat.o(178300);
     }
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "dialog", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "which", "", "onClick", "com/tencent/mm/plugin/finder/feed/ui/FinderProfileUI$onCreate$2$1$1$2", "com/tencent/mm/plugin/finder/feed/ui/FinderProfileUI$$special$$inlined$let$lambda$2", "com/tencent/mm/plugin/finder/feed/ui/FinderProfileUI$$special$$inlined$let$lambda$4"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "dialog", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "which", "", "onClick", "com/tencent/mm/plugin/finder/feed/ui/FinderProfileUI$onCreate$2$1$1$2", "com/tencent/mm/plugin/finder/feed/ui/FinderProfileUI$$special$$inlined$let$lambda$2", "com/tencent/mm/plugin/finder/feed/ui/FinderProfileUI$$special$$inlined$let$lambda$4"})
   static final class s
     implements DialogInterface.OnClickListener
   {
-    s(azz paramazz, FinderProfileUI paramFinderProfileUI) {}
+    s(bap parambap, FinderProfileUI paramFinderProfileUI) {}
     
     public final void onClick(DialogInterface paramDialogInterface, int paramInt)
     {
       AppMethodBeat.i(178301);
-      paramDialogInterface = com.tencent.mm.plugin.finder.report.h.soM;
-      com.tencent.mm.plugin.finder.report.h.dm(FinderProfileUI.c(jdField_this), 2);
+      paramDialogInterface = com.tencent.mm.plugin.finder.report.i.syT;
+      com.tencent.mm.plugin.finder.report.i.dr(FinderProfileUI.c(jdField_this), 2);
       AppMethodBeat.o(178301);
     }
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/finder/feed/ui/FinderProfileUI$onScrollListener$1", "Landroid/support/v7/widget/RecyclerView$OnScrollListener;", "onScrolled", "", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "dx", "", "dy", "plugin-finder_release"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/finder/feed/ui/FinderProfileUI$onScrollListener$1", "Landroid/support/v7/widget/RecyclerView$OnScrollListener;", "onScrolled", "", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "dx", "", "dy", "plugin-finder_release"})
   public static final class t
     extends RecyclerView.m
   {
@@ -2964,11 +2868,11 @@ public final class FinderProfileUI
       AppMethodBeat.i(166178);
       com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
       localb.bd(paramRecyclerView);
-      localb.mr(paramInt1);
-      localb.mr(paramInt2);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/feed/ui/FinderProfileUI$onScrollListener$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroid/support/v7/widget/RecyclerView;II)V", this, localb.ahq());
+      localb.mu(paramInt1);
+      localb.mu(paramInt2);
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/feed/ui/FinderProfileUI$onScrollListener$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroid/support/v7/widget/RecyclerView;II)V", this, localb.ahF());
       d.g.b.p.h(paramRecyclerView, "recyclerView");
-      float f1 = FinderProfileUI.y(this.sgQ).getHeight() * 1.0F;
+      float f1 = FinderProfileUI.z(this.spK).getHeight() * 1.0F;
       if (f1 == 0.0F)
       {
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/feed/ui/FinderProfileUI$onScrollListener$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroid/support/v7/widget/RecyclerView;II)V");
@@ -2976,7 +2880,7 @@ public final class FinderProfileUI
         return;
       }
       paramRecyclerView = new int[2];
-      FinderProfileUI.y(this.sgQ).getLocationInWindow(paramRecyclerView);
+      FinderProfileUI.z(this.spK).getLocationInWindow(paramRecyclerView);
       float f2;
       if (paramRecyclerView[1] > f1)
       {
@@ -2988,8 +2892,8 @@ public final class FinderProfileUI
       }
       for (;;)
       {
-        ad.d(FinderProfileUI.r(this.sgQ), "onScrollListener ".concat(String.valueOf(f2)));
-        if (f2 != FinderProfileUI.z(this.sgQ)) {
+        ae.d(FinderProfileUI.s(this.spK), "onScrollListener ".concat(String.valueOf(f2)));
+        if (f2 != FinderProfileUI.A(this.spK)) {
           break label228;
         }
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/feed/ui/FinderProfileUI$onScrollListener$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroid/support/v7/widget/RecyclerView;II)V");
@@ -3009,24 +2913,24 @@ public final class FinderProfileUI
         }
       }
       label228:
-      FinderProfileUI.a(this.sgQ, f2);
-      FinderProfileUI.A(this.sgQ);
+      FinderProfileUI.a(this.spK, f2);
+      FinderProfileUI.B(this.spK);
       if (f2 < 0.5F)
       {
         f1 = (0.5F - f2) / 0.5F;
-        this.sgQ.setActionbarColor(this.sgQ.getResources().getColor(2131101053));
-        if (FinderProfileUI.B(this.sgQ))
+        this.spK.setActionbarColor(this.spK.getResources().getColor(2131101053));
+        if (FinderProfileUI.C(this.spK))
         {
-          FinderProfileUI.v(this.sgQ).setBackgroundColor(this.sgQ.getResources().getColor(2131101053));
-          FinderProfileUI.v(this.sgQ).setBackgroundResource(2131233659);
-          FinderProfileUI.D(this.sgQ).setAlpha(0.0F);
-          FinderProfileUI.E(this.sgQ).setAlpha(f1);
-          FinderProfileUI.F(this.sgQ).setAlpha(f1);
-          if (!FinderProfileUI.g(this.sgQ)) {
+          FinderProfileUI.w(this.spK).setBackgroundColor(this.spK.getResources().getColor(2131101053));
+          FinderProfileUI.w(this.spK).setBackgroundResource(2131233659);
+          FinderProfileUI.E(this.spK).setAlpha(0.0F);
+          FinderProfileUI.F(this.spK).setAlpha(f1);
+          FinderProfileUI.G(this.spK).setAlpha(f1);
+          if (!FinderProfileUI.h(this.spK)) {
             break label496;
           }
-          FinderProfileUI.G(this.sgQ).setVisibility(8);
-          FinderProfileUI.H(this.sgQ);
+          FinderProfileUI.H(this.spK).setVisibility(8);
+          FinderProfileUI.I(this.spK);
         }
       }
       for (;;)
@@ -3034,39 +2938,39 @@ public final class FinderProfileUI
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/feed/ui/FinderProfileUI$onScrollListener$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroid/support/v7/widget/RecyclerView;II)V");
         AppMethodBeat.o(166178);
         return;
-        FinderProfileUI.v(this.sgQ).setBackgroundResource(0);
-        FinderProfileUI.v(this.sgQ).setBackgroundColor(this.sgQ.getResources().getColor(2131101053));
+        FinderProfileUI.w(this.spK).setBackgroundResource(0);
+        FinderProfileUI.w(this.spK).setBackgroundColor(this.spK.getResources().getColor(2131101053));
         if (al.isDarkMode())
         {
-          FinderProfileUI.C(this.sgQ).setStatusBarColor(this.sgQ.getResources().getColor(2131099816));
+          FinderProfileUI.D(this.spK).setStatusBarColor(this.spK.getResources().getColor(2131099816));
           break;
         }
-        FinderProfileUI.C(this.sgQ).setStatusBarColor(this.sgQ.getResources().getColor(2131099668));
+        FinderProfileUI.D(this.spK).setStatusBarColor(this.spK.getResources().getColor(2131099668));
         break;
         label496:
-        FinderProfileUI.I(this.sgQ).setVisibility(8);
-        FinderProfileUI.J(this.sgQ).setVisibility(8);
-        FinderProfileUI.G(this.sgQ).setVisibility(0);
+        FinderProfileUI.J(this.spK).setVisibility(8);
+        FinderProfileUI.K(this.spK).setVisibility(8);
+        FinderProfileUI.H(this.spK).setVisibility(0);
         continue;
         f1 = (f2 - 0.5F) / 0.5F;
-        FinderProfileUI.v(this.sgQ).setBackgroundResource(0);
-        FinderProfileUI.v(this.sgQ).setBackgroundColor(ao.eV(this.sgQ.getResources().getColor(2131100705), (int)(255.0F * f1)));
-        this.sgQ.setActionbarColor(ao.eV(this.sgQ.getResources().getColor(2131100705), (int)(255.0F * f1)));
-        FinderProfileUI.D(this.sgQ).setAlpha(f1);
-        FinderProfileUI.E(this.sgQ).setAlpha(f1);
-        FinderProfileUI.F(this.sgQ).setAlpha(f1);
-        FinderProfileUI.G(this.sgQ).setVisibility(8);
-        if (FinderProfileUI.g(this.sgQ))
+        FinderProfileUI.w(this.spK).setBackgroundResource(0);
+        FinderProfileUI.w(this.spK).setBackgroundColor(ao.eW(this.spK.getResources().getColor(2131100705), (int)(255.0F * f1)));
+        this.spK.setActionbarColor(ao.eW(this.spK.getResources().getColor(2131100705), (int)(255.0F * f1)));
+        FinderProfileUI.E(this.spK).setAlpha(f1);
+        FinderProfileUI.F(this.spK).setAlpha(f1);
+        FinderProfileUI.G(this.spK).setAlpha(f1);
+        FinderProfileUI.H(this.spK).setVisibility(8);
+        if (FinderProfileUI.h(this.spK))
         {
-          FinderProfileUI.H(this.sgQ);
+          FinderProfileUI.I(this.spK);
         }
         else
         {
-          FinderProfileUI.I(this.sgQ).setVisibility(8);
-          if ((!d.g.b.p.i(FinderProfileUI.c(this.sgQ), u.aAu())) && (((t)com.tencent.mm.kernel.g.ad(t.class)).showFinderEntry())) {
-            FinderProfileUI.J(this.sgQ).setVisibility(0);
+          FinderProfileUI.J(this.spK).setVisibility(8);
+          if ((!d.g.b.p.i(FinderProfileUI.c(this.spK), com.tencent.mm.model.v.aAK())) && (((t)com.tencent.mm.kernel.g.ad(t.class)).showFinderEntry())) {
+            FinderProfileUI.K(this.spK).setVisibility(0);
           } else {
-            FinderProfileUI.J(this.sgQ).setVisibility(8);
+            FinderProfileUI.K(this.spK).setVisibility(8);
           }
         }
       }
@@ -3077,56 +2981,56 @@ public final class FinderProfileUI
       AppMethodBeat.i(166177);
       com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
       localb.bd(paramRecyclerView);
-      localb.mr(paramInt);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/feed/ui/FinderProfileUI$onScrollListener$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroid/support/v7/widget/RecyclerView;I)V", this, localb.ahq());
+      localb.mu(paramInt);
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/feed/ui/FinderProfileUI$onScrollListener$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroid/support/v7/widget/RecyclerView;I)V", this, localb.ahF());
       super.b(paramRecyclerView, paramInt);
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/feed/ui/FinderProfileUI$onScrollListener$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroid/support/v7/widget/RecyclerView;I)V");
       AppMethodBeat.o(166177);
     }
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick", "com/tencent/mm/plugin/finder/feed/ui/FinderProfileUI$refreshProfile$1$1"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick", "com/tencent/mm/plugin/finder/feed/ui/FinderProfileUI$refreshProfile$1$1"})
   static final class u
     implements View.OnClickListener
   {
-    u(com.tencent.mm.plugin.finder.api.g paramg, FinderProfileUI paramFinderProfileUI, boolean paramBoolean, be parambe) {}
+    u(com.tencent.mm.plugin.finder.api.g paramg, FinderProfileUI paramFinderProfileUI, boolean paramBoolean, bf parambf) {}
     
     public final void onClick(View paramView)
     {
       AppMethodBeat.i(166179);
       Object localObject = new com.tencent.mm.hellhoundlib.b.b();
       ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/feed/ui/FinderProfileUI$refreshProfile$$inlined$let$lambda$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahq());
-      FinderProfileUI.p(jdField_this);
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/feed/ui/FinderProfileUI$refreshProfile$$inlined$let$lambda$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahF());
+      FinderProfileUI.q(jdField_this);
       paramView = new Intent();
-      paramView.putStringArrayListExtra("key_url_list", new ArrayList((Collection)d.a.j.listOf(this.sgY.cxL())));
+      paramView.putStringArrayListExtra("key_url_list", new ArrayList((Collection)d.a.j.listOf(this.spS.czm())));
       paramView.putExtra("key_preview_avatar", true);
-      localObject = com.tencent.mm.plugin.finder.utils.a.sKD;
+      localObject = com.tencent.mm.plugin.finder.utils.a.sVQ;
       com.tencent.mm.plugin.finder.utils.a.H((Context)jdField_this, paramView);
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/feed/ui/FinderProfileUI$refreshProfile$$inlined$let$lambda$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(166179);
     }
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onLongClick", "com/tencent/mm/plugin/finder/feed/ui/FinderProfileUI$refreshProfile$1$2"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onLongClick", "com/tencent/mm/plugin/finder/feed/ui/FinderProfileUI$refreshProfile$1$2"})
   static final class v
     implements View.OnLongClickListener
   {
-    v(FinderProfileUI paramFinderProfileUI, boolean paramBoolean, be parambe) {}
+    v(FinderProfileUI paramFinderProfileUI, boolean paramBoolean, bf parambf) {}
     
     public final boolean onLongClick(View paramView)
     {
       AppMethodBeat.i(166182);
       Object localObject = new com.tencent.mm.hellhoundlib.b.b();
       ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/feed/ui/FinderProfileUI$refreshProfile$$inlined$let$lambda$2", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahq());
-      paramView = new com.tencent.mm.ui.widget.b.a((Context)this.sgQ.getContext(), paramView);
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/feed/ui/FinderProfileUI$refreshProfile$$inlined$let$lambda$2", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahF());
+      paramView = new com.tencent.mm.ui.widget.b.a((Context)this.spK.getContext(), paramView);
       paramView.a((View.OnCreateContextMenuListener)new View.OnCreateContextMenuListener()
       {
         public final void onCreateContextMenu(ContextMenu paramAnonymousContextMenu, View paramAnonymousView, ContextMenu.ContextMenuInfo paramAnonymousContextMenuInfo)
         {
           AppMethodBeat.i(166180);
-          paramAnonymousContextMenu.add(0, 0, 0, (CharSequence)this.shb.sgQ.getContext().getString(2131755701));
+          paramAnonymousContextMenu.add(0, 0, 0, (CharSequence)this.spV.spK.getContext().getString(2131755701));
           AppMethodBeat.o(166180);
         }
       });
@@ -3137,69 +3041,73 @@ public final class FinderProfileUI
           AppMethodBeat.i(166181);
           if (paramAnonymousInt == 0)
           {
-            paramAnonymousMenuItem = aj.getContext().getSystemService("clipboard");
+            paramAnonymousMenuItem = ak.getContext().getSystemService("clipboard");
             if (paramAnonymousMenuItem == null)
             {
-              paramAnonymousMenuItem = new v("null cannot be cast to non-null type android.content.ClipboardManager");
+              paramAnonymousMenuItem = new d.v("null cannot be cast to non-null type android.content.ClipboardManager");
               AppMethodBeat.o(166181);
               throw paramAnonymousMenuItem;
             }
-            ((ClipboardManager)paramAnonymousMenuItem).setText(FinderProfileUI.q(this.shb.sgQ).getText());
+            ((ClipboardManager)paramAnonymousMenuItem).setText(FinderProfileUI.r(this.spV.spK).getText());
           }
           AppMethodBeat.o(166181);
         }
       });
-      localObject = TouchableLayout.LrZ;
-      int i = TouchableLayout.fQh();
-      localObject = TouchableLayout.LrZ;
-      boolean bool = paramView.el(i, TouchableLayout.fQi());
+      localObject = TouchableLayout.LOL;
+      int i = TouchableLayout.fUD();
+      localObject = TouchableLayout.LOL;
+      boolean bool = paramView.el(i, TouchableLayout.fUE());
       com.tencent.mm.hellhoundlib.a.a.a(bool, this, "com/tencent/mm/plugin/finder/feed/ui/FinderProfileUI$refreshProfile$$inlined$let$lambda$2", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
       AppMethodBeat.o(166182);
       return bool;
     }
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "url", "Lcom/tencent/mm/loader/model/data/DataItem;", "Lcom/tencent/mm/plugin/finder/loader/FinderLoaderData;", "kotlin.jvm.PlatformType", "view", "Lcom/tencent/mm/loader/impr/target/ViewWeakHolder;", "resource", "Landroid/graphics/Bitmap;", "onImageLoadComplete", "com/tencent/mm/plugin/finder/feed/ui/FinderProfileUI$refreshProfile$1$3"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "url", "Lcom/tencent/mm/loader/model/data/DataItem;", "Lcom/tencent/mm/plugin/finder/loader/FinderLoaderData;", "kotlin.jvm.PlatformType", "view", "Lcom/tencent/mm/loader/impr/target/ViewWeakHolder;", "resource", "Landroid/graphics/Bitmap;", "onImageLoadComplete", "com/tencent/mm/plugin/finder/feed/ui/FinderProfileUI$refreshProfile$1$3"})
   static final class w<T, R>
     implements com.tencent.mm.loader.f.e<com.tencent.mm.plugin.finder.loader.k, Bitmap>
   {
-    w(y.f paramf, FinderProfileUI paramFinderProfileUI, boolean paramBoolean, be parambe) {}
+    w(y.f paramf, FinderProfileUI paramFinderProfileUI, boolean paramBoolean, bf parambf) {}
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick", "com/tencent/mm/plugin/finder/feed/ui/FinderProfileUI$refreshProfile$1$4"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick", "com/tencent/mm/plugin/finder/feed/ui/FinderProfileUI$refreshProfile$1$4"})
   static final class x
     implements View.OnClickListener
   {
-    x(com.tencent.mm.plugin.finder.api.g paramg, FinderProfileUI paramFinderProfileUI, boolean paramBoolean, be parambe) {}
+    x(com.tencent.mm.plugin.finder.api.g paramg, FinderProfileUI paramFinderProfileUI, boolean paramBoolean, bf parambf) {}
     
     public final void onClick(View paramView)
     {
       AppMethodBeat.i(166184);
-      Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-      ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/feed/ui/FinderProfileUI$refreshProfile$$inlined$let$lambda$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahq());
-      paramView = this.sgY.field_authInfo;
+      Object localObject1 = new com.tencent.mm.hellhoundlib.b.b();
+      ((com.tencent.mm.hellhoundlib.b.b)localObject1).bd(paramView);
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/feed/ui/FinderProfileUI$refreshProfile$$inlined$let$lambda$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject1).ahF());
+      paramView = this.spS.field_authInfo;
+      Object localObject2;
       if (paramView != null)
       {
         paramView = paramView.authGenerator;
         if (paramView != null)
         {
-          paramView = paramView.authInfo;
-          if (paramView != null)
+          localObject2 = paramView.authInfo;
+          if (localObject2 != null)
           {
-            if ((bt.isNullOrNil(paramView.appName)) || (bt.isNullOrNil(paramView.detailLink))) {
-              break label148;
+            if ((bu.isNullOrNil(((FinderAuthInfo)localObject2).appName)) || (bu.isNullOrNil(((FinderAuthInfo)localObject2).detailLink))) {
+              break label150;
             }
-            localObject = com.tencent.mm.plugin.finder.utils.a.sKD;
+            paramView = com.tencent.mm.plugin.finder.utils.a.sVQ;
             Context localContext = (Context)jdField_this;
-            String str = paramView.appName;
-            d.g.b.p.g(str, "authInfo.appName");
-            localObject = paramView.detailLink;
-            paramView = (View)localObject;
-            if (localObject == null) {
+            localObject1 = ((FinderAuthInfo)localObject2).appName;
+            paramView = (View)localObject1;
+            if (localObject1 == null) {
               paramView = "";
             }
-            com.tencent.mm.plugin.finder.utils.a.z(localContext, str, paramView);
+            localObject2 = ((FinderAuthInfo)localObject2).detailLink;
+            localObject1 = localObject2;
+            if (localObject2 == null) {
+              localObject1 = "";
+            }
+            com.tencent.mm.plugin.finder.utils.a.z(localContext, paramView, (String)localObject1);
           }
         }
       }
@@ -3208,63 +3116,66 @@ public final class FinderProfileUI
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/feed/ui/FinderProfileUI$refreshProfile$$inlined$let$lambda$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(166184);
         return;
-        label148:
-        if (!bt.isNullOrNil(paramView.detailLink))
+        label150:
+        if (!bu.isNullOrNil(((FinderAuthInfo)localObject2).detailLink))
         {
-          localObject = new Intent();
-          ((Intent)localObject).putExtra("rawUrl", paramView.detailLink);
-          com.tencent.mm.bs.d.b((Context)jdField_this.getContext(), "webview", ".ui.tools.WebViewUI", (Intent)localObject);
+          paramView = new Intent();
+          paramView.putExtra("rawUrl", ((FinderAuthInfo)localObject2).detailLink);
+          com.tencent.mm.br.d.b((Context)jdField_this.getContext(), "webview", ".ui.tools.WebViewUI", paramView);
         }
       }
     }
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick", "com/tencent/mm/plugin/finder/feed/ui/FinderProfileUI$refreshProfile$1$5"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick", "com/tencent/mm/plugin/finder/feed/ui/FinderProfileUI$refreshProfile$1$5"})
   static final class y
     implements View.OnClickListener
   {
-    y(com.tencent.mm.plugin.finder.api.g paramg, FinderProfileUI paramFinderProfileUI, boolean paramBoolean, be parambe) {}
+    y(com.tencent.mm.plugin.finder.api.g paramg, FinderProfileUI paramFinderProfileUI, boolean paramBoolean, bf parambf) {}
     
     public final void onClick(View paramView)
     {
       AppMethodBeat.i(166185);
-      Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-      ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/feed/ui/FinderProfileUI$refreshProfile$$inlined$let$lambda$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahq());
-      paramView = this.sgY.field_authInfo;
-      if (paramView != null)
+      Object localObject1 = new com.tencent.mm.hellhoundlib.b.b();
+      ((com.tencent.mm.hellhoundlib.b.b)localObject1).bd(paramView);
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/feed/ui/FinderProfileUI$refreshProfile$$inlined$let$lambda$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject1).ahF());
+      Object localObject2 = this.spS.field_authInfo;
+      if (localObject2 != null)
       {
-        if ((bt.isNullOrNil(paramView.appName)) || (bt.isNullOrNil(paramView.detailLink))) {
-          break label130;
+        if ((bu.isNullOrNil(((FinderAuthInfo)localObject2).appName)) || (bu.isNullOrNil(((FinderAuthInfo)localObject2).detailLink))) {
+          break label132;
         }
-        localObject = com.tencent.mm.plugin.finder.utils.a.sKD;
+        paramView = com.tencent.mm.plugin.finder.utils.a.sVQ;
         Context localContext = (Context)jdField_this;
-        String str = paramView.appName;
-        d.g.b.p.g(str, "authInfo.appName");
-        localObject = paramView.detailLink;
-        paramView = (View)localObject;
-        if (localObject == null) {
+        localObject1 = ((FinderAuthInfo)localObject2).appName;
+        paramView = (View)localObject1;
+        if (localObject1 == null) {
           paramView = "";
         }
-        com.tencent.mm.plugin.finder.utils.a.z(localContext, str, paramView);
+        localObject2 = ((FinderAuthInfo)localObject2).detailLink;
+        localObject1 = localObject2;
+        if (localObject2 == null) {
+          localObject1 = "";
+        }
+        com.tencent.mm.plugin.finder.utils.a.z(localContext, paramView, (String)localObject1);
       }
       for (;;)
       {
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/feed/ui/FinderProfileUI$refreshProfile$$inlined$let$lambda$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(166185);
         return;
-        label130:
-        if (!bt.isNullOrNil(paramView.detailLink))
+        label132:
+        if (!bu.isNullOrNil(((FinderAuthInfo)localObject2).detailLink))
         {
-          localObject = new Intent();
-          ((Intent)localObject).putExtra("rawUrl", paramView.detailLink);
-          com.tencent.mm.bs.d.b((Context)jdField_this.getContext(), "webview", ".ui.tools.WebViewUI", (Intent)localObject);
+          paramView = new Intent();
+          paramView.putExtra("rawUrl", ((FinderAuthInfo)localObject2).detailLink);
+          com.tencent.mm.br.d.b((Context)jdField_this.getContext(), "webview", ".ui.tools.WebViewUI", paramView);
         }
       }
     }
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
   static final class z
     implements Runnable
   {
@@ -3272,24 +3183,24 @@ public final class FinderProfileUI
     
     public final void run()
     {
-      AppMethodBeat.i(202823);
-      int i = FinderProfileUI.t(this.sgQ).getWidth();
-      Object localObject = this.sgQ.getContext();
+      AppMethodBeat.i(203302);
+      int i = FinderProfileUI.u(this.spK).getWidth();
+      Object localObject = this.spK.getContext();
       d.g.b.p.g(localObject, "context");
       i -= ((AppCompatActivity)localObject).getResources().getDimensionPixelOffset(2131165293);
-      TextView localTextView = FinderProfileUI.u(this.sgQ);
-      Context localContext = (Context)this.sgQ.getContext();
-      localObject = com.tencent.mm.plugin.finder.convert.a.rLR;
-      TextPaint localTextPaint = FinderProfileUI.u(this.sgQ).getPaint();
+      TextView localTextView = FinderProfileUI.v(this.spK);
+      Context localContext = (Context)this.spK.getContext();
+      localObject = com.tencent.mm.plugin.finder.convert.a.rUe;
+      TextPaint localTextPaint = FinderProfileUI.v(this.spK).getPaint();
       d.g.b.p.g(localTextPaint, "nickNameTv.paint");
       localObject = paramg;
       if (localObject != null) {}
-      for (localObject = ((com.tencent.mm.plugin.finder.api.g)localObject).VC();; localObject = null)
+      for (localObject = ((com.tencent.mm.plugin.finder.api.g)localObject).VK();; localObject = null)
       {
-        AppCompatActivity localAppCompatActivity = this.sgQ.getContext();
+        AppCompatActivity localAppCompatActivity = this.spK.getContext();
         d.g.b.p.g(localAppCompatActivity, "context");
         localTextView.setText((CharSequence)com.tencent.mm.pluginsdk.ui.span.k.c(localContext, (CharSequence)com.tencent.mm.plugin.finder.convert.a.a(localTextPaint, (String)localObject, i, i - localAppCompatActivity.getResources().getDimensionPixelOffset(2131165289))));
-        AppMethodBeat.o(202823);
+        AppMethodBeat.o(203302);
         return;
       }
     }
@@ -3297,7 +3208,7 @@ public final class FinderProfileUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.feed.ui.FinderProfileUI
  * JD-Core Version:    0.7.0.1
  */

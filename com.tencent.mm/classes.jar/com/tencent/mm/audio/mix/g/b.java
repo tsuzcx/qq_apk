@@ -2,11 +2,11 @@ package com.tencent.mm.audio.mix.g;
 
 public abstract interface b
 {
-  public abstract com.tencent.mm.aj.b PC();
+  public abstract com.tencent.mm.ai.b PA();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.audio.mix.g.b
  * JD-Core Version:    0.7.0.1
  */

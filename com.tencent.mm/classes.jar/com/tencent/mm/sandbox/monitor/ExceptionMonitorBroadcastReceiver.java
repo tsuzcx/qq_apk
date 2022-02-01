@@ -4,8 +4,8 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bs.d;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.br.d;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public class ExceptionMonitorBroadcastReceiver
   extends BroadcastReceiver
@@ -13,7 +13,7 @@ public class ExceptionMonitorBroadcastReceiver
   public void onReceive(Context paramContext, Intent paramIntent)
   {
     AppMethodBeat.i(32601);
-    ad.i("MicroMsg.ExceptionMonitorBroadcastReceiver", "onReceive()");
+    ae.i("MicroMsg.ExceptionMonitorBroadcastReceiver", "onReceive()");
     paramIntent.setClass(paramContext, ExceptionMonitorMMService.class);
     d.l(paramIntent, "sandbox");
     AppMethodBeat.o(32601);

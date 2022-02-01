@@ -4,10 +4,13 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
 import com.tencent.mm.plugin.appbrand.jsapi.h;
 import com.tencent.mm.plugin.appbrand.jsapi.m.b;
+import com.tencent.mm.plugin.appbrand.jsapi.p;
 import com.tencent.mm.plugin.appbrand.m.a.b;
 import com.tencent.mm.plugin.appbrand.m.a.d;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import java.util.HashMap;
+import java.util.Map;
 import org.json.JSONObject;
 
 public final class a
@@ -18,9 +21,9 @@ public final class a
   
   private static void a(com.tencent.mm.plugin.appbrand.jsapi.c paramc, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(194935);
-    a.a.a(paramc, paramString1, "fail", paramString2);
-    AppMethodBeat.o(194935);
+    AppMethodBeat.i(221825);
+    a.a(paramc, paramString1, "fail", paramString2);
+    AppMethodBeat.o(221825);
   }
   
   public final void a(final com.tencent.mm.plugin.appbrand.jsapi.c paramc, final JSONObject paramJSONObject, final String paramString)
@@ -29,9 +32,9 @@ public final class a
     final h localh = (h)paramc;
     paramc = paramc.getAppId();
     paramJSONObject = paramJSONObject.optString("moduleName");
-    if (bt.isNullOrNil(paramJSONObject))
+    if (bu.isNullOrNil(paramJSONObject))
     {
-      ad.e("MicroMsg.JsApiCreateLoadSubPackageTask", "hy: null or nil moduleName");
+      ae.e("MicroMsg.JsApiCreateLoadSubPackageTask", "hy: null or nil moduleName");
       a(localh, paramString, paramJSONObject);
       AppMethodBeat.o(182227);
       return;
@@ -39,22 +42,22 @@ public final class a
     Object localObject = localh.getRuntime();
     if ((localObject == null) || (((AppBrandRuntime)localObject).isDestroyed()))
     {
-      ad.e("MicroMsg.JsApiCreateLoadSubPackageTask", "hy: runtime is not in valid state!");
+      ae.e("MicroMsg.JsApiCreateLoadSubPackageTask", "hy: runtime is not in valid state!");
       a(localh, paramString, paramJSONObject);
       AppMethodBeat.o(182227);
       return;
     }
-    localObject = ((AppBrandRuntime)localObject).jwT;
+    localObject = ((AppBrandRuntime)localObject).jzR;
     if (localObject == null)
     {
-      ad.e("MicroMsg.JsApiCreateLoadSubPackageTask", "hy: modularizingHelper null!");
+      ae.e("MicroMsg.JsApiCreateLoadSubPackageTask", "hy: modularizingHelper null!");
       a(localh, paramString, paramJSONObject);
       AppMethodBeat.o(182227);
       return;
     }
-    if ((!((com.tencent.mm.plugin.appbrand.m.a)localObject).btb()) && (!paramJSONObject.equals("__APP__")))
+    if ((!((com.tencent.mm.plugin.appbrand.m.a)localObject).btM()) && (!paramJSONObject.equals("__APP__")))
     {
-      ad.w("MicroMsg.JsApiCreateLoadSubPackageTask", "hy: not support modularizing but still called JsApiCreateLoadSubPackageTask");
+      ae.w("MicroMsg.JsApiCreateLoadSubPackageTask", "hy: not support modularizing but still called JsApiCreateLoadSubPackageTask");
       a(localh, paramString, paramJSONObject);
       AppMethodBeat.o(182227);
       return;
@@ -66,8 +69,8 @@ public final class a
         public final void a(a.d paramAnonymousd)
         {
           AppMethodBeat.i(139888);
-          ad.i("MicroMsg.JsApiCreateLoadSubPackageTask", "hy: loadResult: %s, with appId[%s] moduleName[%s]", new Object[] { paramAnonymousd.toString(), paramc, paramJSONObject });
-          switch (a.3.kWz[paramAnonymousd.ordinal()])
+          ae.i("MicroMsg.JsApiCreateLoadSubPackageTask", "hy: loadResult: %s, with appId[%s] moduleName[%s]", new Object[] { paramAnonymousd.toString(), paramc, paramJSONObject });
+          switch (a.3.lah[paramAnonymousd.ordinal()])
           {
           }
           for (;;)
@@ -80,7 +83,7 @@ public final class a
             a.a.a(localh, paramString, "fail", paramJSONObject);
             AppMethodBeat.o(139888);
             return;
-            ad.w("MicroMsg.JsApiCreateLoadSubPackageTask", "hy: should not happen cancel!!");
+            ae.w("MicroMsg.JsApiCreateLoadSubPackageTask", "hy: should not happen cancel!!");
             a.a.a(localh, paramString, "fail", paramJSONObject);
           }
         }
@@ -89,8 +92,8 @@ public final class a
         public final void b(com.tencent.mm.plugin.appbrand.m.c paramAnonymousc)
         {
           AppMethodBeat.i(139889);
-          ad.i("MicroMsg.JsApiCreateLoadSubPackageTask", "hy: module name: %s progress: %s", new Object[] { paramJSONObject, paramAnonymousc.toString() });
-          a.a.a(localh, paramString, "progressUpdate", paramJSONObject, paramAnonymousc.getProgress(), paramAnonymousc.baJ(), paramAnonymousc.baK());
+          ae.i("MicroMsg.JsApiCreateLoadSubPackageTask", "hy: module name: %s progress: %s", new Object[] { paramJSONObject, paramAnonymousc.toString() });
+          a.a.a(localh, paramString, "progressUpdate", paramJSONObject, paramAnonymousc.getProgress(), paramAnonymousc.bbi(), paramAnonymousc.bbj());
           AppMethodBeat.o(139889);
         }
       });
@@ -99,30 +102,66 @@ public final class a
     }
     catch (IllegalAccessError paramc)
     {
-      ad.printErrStackTrace("MicroMsg.JsApiCreateLoadSubPackageTask", paramc, "loadModule(%s)", new Object[] { paramJSONObject });
+      ae.printErrStackTrace("MicroMsg.JsApiCreateLoadSubPackageTask", paramc, "loadModule(%s)", new Object[] { paramJSONObject });
       a(localh, paramString, paramJSONObject);
       AppMethodBeat.o(182227);
     }
   }
   
-  public final String aOC()
+  public final String aOZ()
   {
     AppMethodBeat.i(139893);
     Object localObject = new StringBuilder();
-    com.tencent.mm.plugin.appbrand.o.c.btf();
-    localObject = com.tencent.mm.plugin.appbrand.o.c.bte();
+    com.tencent.mm.plugin.appbrand.o.c.btQ();
+    localObject = com.tencent.mm.plugin.appbrand.o.c.btP();
     AppMethodBeat.o(139893);
     return localObject;
   }
   
-  public final String aeJ()
+  public final String aeV()
   {
     return "loadTaskId";
+  }
+  
+  public static final class a
+    extends p
+  {
+    public static final int CTRL_INDEX = 468;
+    public static final String NAME = "onLoadSubPackageTaskStateChange";
+    
+    static void a(com.tencent.mm.plugin.appbrand.jsapi.c paramc, String paramString1, String paramString2, String paramString3)
+    {
+      AppMethodBeat.i(139891);
+      a(paramc, paramString1, paramString2, paramString3, -1, -1L, -1L);
+      AppMethodBeat.o(139891);
+    }
+    
+    static void a(com.tencent.mm.plugin.appbrand.jsapi.c paramc, String paramString1, String paramString2, String paramString3, int paramInt, long paramLong1, long paramLong2)
+    {
+      AppMethodBeat.i(139892);
+      ae.i("MicroMsg.JsApiCreateLoadSubPackageTask", "hy: formatEventCallback taskId: %s, state: %s, progress: %d, currentWritten: %d, totalWritten: %d", new Object[] { paramString1, paramString2, Integer.valueOf(paramInt), Long.valueOf(paramLong1), Long.valueOf(paramLong2) });
+      HashMap localHashMap = new HashMap();
+      localHashMap.put("taskId", paramString1);
+      localHashMap.put("state", paramString2);
+      localHashMap.put("moduleName", paramString3);
+      if (paramInt >= 0) {
+        localHashMap.put("progress", Integer.valueOf(paramInt));
+      }
+      if (paramLong1 >= 0L) {
+        localHashMap.put("totalBytesWritten", Long.valueOf(paramLong1));
+      }
+      if (paramLong2 >= 0L) {
+        localHashMap.put("totalBytesExpectedToWrite", Long.valueOf(paramLong2));
+      }
+      paramString1 = new JSONObject(localHashMap).toString();
+      new a().g(paramc).PP(paramString1).bja();
+      AppMethodBeat.o(139892);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.j.a
  * JD-Core Version:    0.7.0.1
  */

@@ -10,9 +10,9 @@ import java.io.ByteArrayInputStream;
 public final class b
   implements com.github.henryye.nativeiv.b.b
 {
-  private static String[] czA = { "jpeg", "png", "gif", "svg+xml" };
+  private static String[] cAh = { "jpeg", "png", "gif", "svg+xml" };
   
-  private static int dG(String paramString)
+  private static int dJ(String paramString)
   {
     int j = 11;
     AppMethodBeat.i(140064);
@@ -26,7 +26,7 @@ public final class b
       AppMethodBeat.o(140064);
       return 0;
     }
-    String[] arrayOfString = czA;
+    String[] arrayOfString = cAh;
     int k = arrayOfString.length;
     int i = 0;
     if (i < k)
@@ -57,10 +57,10 @@ public final class b
   
   public final b.a a(Object paramObject, ImageDecodeConfig paramImageDecodeConfig)
   {
-    AppMethodBeat.i(215085);
+    AppMethodBeat.i(213318);
     paramObject = (String)paramObject;
-    paramObject = new b.a(new ByteArrayInputStream(Base64.decode(paramObject.substring(dG(paramObject)), 2)));
-    AppMethodBeat.o(215085);
+    paramObject = new b.a(new ByteArrayInputStream(Base64.decode(paramObject.substring(dJ(paramObject)), 2)));
+    AppMethodBeat.o(213318);
     return paramObject;
   }
   
@@ -72,7 +72,7 @@ public final class b
       AppMethodBeat.o(140065);
       return false;
     }
-    if (dG((String)paramObject) > 0)
+    if (dJ((String)paramObject) > 0)
     {
       AppMethodBeat.o(140065);
       return true;
@@ -88,7 +88,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.magicbrush.b.b
  * JD-Core Version:    0.7.0.1
  */

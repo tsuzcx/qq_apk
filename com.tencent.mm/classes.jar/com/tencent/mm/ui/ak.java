@@ -8,7 +8,7 @@ public final class ak<T>
   private Field bMM;
   private String classname;
   private String fieldName;
-  private boolean gcX;
+  private boolean gff;
   private Object obj;
   
   public ak(Object paramObject, String paramString)
@@ -29,12 +29,12 @@ public final class ak<T>
   private void prepare()
   {
     AppMethodBeat.i(159107);
-    if (this.gcX)
+    if (this.gff)
     {
       AppMethodBeat.o(159107);
       return;
     }
-    this.gcX = true;
+    this.gff = true;
     Class localClass = this.obj.getClass();
     while (localClass != null) {
       try
@@ -126,7 +126,7 @@ public final class ak<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.ak
  * JD-Core Version:    0.7.0.1
  */

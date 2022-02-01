@@ -8,12 +8,12 @@ import org.xwalk.core.XWalkEnvironment;
 
 public final class e
 {
-  private static final Object Mpf;
+  private static final Object MMb;
   
   static
   {
     AppMethodBeat.i(156731);
-    Mpf = new Object();
+    MMb = new Object();
     AppMethodBeat.o(156731);
   }
   
@@ -28,7 +28,7 @@ public final class e
     for (;;)
     {
       int i;
-      synchronized (Mpf)
+      synchronized (MMb)
       {
         Object localObject2 = XWalkEnvironment.getSharedPreferencesForFileReaderRecord();
         if (localObject2 == null)
@@ -67,7 +67,7 @@ public final class e
     }
   }
   
-  public static boolean baL(String arg0)
+  public static boolean bco(String arg0)
   {
     AppMethodBeat.i(156729);
     if ((??? == null) || (???.isEmpty()))
@@ -77,7 +77,7 @@ public final class e
       return false;
     }
     String str = ???.toLowerCase();
-    synchronized (Mpf)
+    synchronized (MMb)
     {
       SharedPreferences localSharedPreferences = XWalkEnvironment.getSharedPreferencesForFileReaderRecord();
       if (localSharedPreferences == null)
@@ -109,7 +109,7 @@ public final class e
       return;
     }
     String str = ???.toLowerCase();
-    synchronized (Mpf)
+    synchronized (MMb)
     {
       Object localObject2 = XWalkEnvironment.getSharedPreferencesForFileReaderRecord();
       if (localObject2 == null)
@@ -134,7 +134,7 @@ public final class e
     }
   }
   
-  public static void ye(String arg0)
+  public static void yO(String arg0)
   {
     AppMethodBeat.i(156728);
     if ((??? == null) || (???.isEmpty()))
@@ -144,7 +144,7 @@ public final class e
       return;
     }
     String str = ???.toLowerCase();
-    synchronized (Mpf)
+    synchronized (MMb)
     {
       Object localObject2 = XWalkEnvironment.getSharedPreferencesForFileReaderRecord();
       if (localObject2 == null)

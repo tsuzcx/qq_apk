@@ -4,10 +4,10 @@ import android.content.Context;
 import android.text.ClipboardManager;
 import android.text.Spanned;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.vfs.i;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.vfs.o;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -15,52 +15,52 @@ import java.util.Set;
 
 public final class b
 {
-  public static ArrayList<com.tencent.mm.plugin.editor.model.a.a> jfg;
-  private static String pus;
+  public static ArrayList<com.tencent.mm.plugin.editor.model.a.a> jhZ;
+  private static String pAW;
   
   public static void c(Context paramContext, ArrayList<com.tencent.mm.plugin.editor.model.a.a> paramArrayList)
   {
     AppMethodBeat.i(181719);
-    if (jfg != null) {
-      jfg.clear();
+    if (jhZ != null) {
+      jhZ.clear();
     }
-    jfg = paramArrayList;
-    com.tencent.mm.plugin.fav.a.ao.rtS = ceg();
+    jhZ = paramArrayList;
+    com.tencent.mm.plugin.fav.a.ao.rCe = cfv();
     paramArrayList = new StringBuilder("");
-    if (jfg != null)
+    if (jhZ != null)
     {
       int i = 0;
-      if (i < jfg.size())
+      if (i < jhZ.size())
       {
-        if (i != jfg.size() - 1) {
-          paramArrayList.append(com.tencent.mm.plugin.editor.b.a(paramContext, (com.tencent.mm.plugin.editor.model.a.a)jfg.get(i))).append("<br/>");
+        if (i != jhZ.size() - 1) {
+          paramArrayList.append(com.tencent.mm.plugin.editor.b.a(paramContext, (com.tencent.mm.plugin.editor.model.a.a)jhZ.get(i))).append("<br/>");
         }
         for (;;)
         {
           i += 1;
           break;
-          paramArrayList.append(com.tencent.mm.plugin.editor.b.a(paramContext, (com.tencent.mm.plugin.editor.model.a.a)jfg.get(i)));
+          paramArrayList.append(com.tencent.mm.plugin.editor.b.a(paramContext, (com.tencent.mm.plugin.editor.model.a.a)jhZ.get(i)));
         }
       }
     }
-    pus = com.tencent.mm.plugin.editor.b.aaP(paramArrayList.toString());
-    paramContext = (ClipboardManager)aj.getContext().getSystemService("clipboard");
+    pAW = com.tencent.mm.plugin.editor.b.abG(paramArrayList.toString());
+    paramContext = (ClipboardManager)ak.getContext().getSystemService("clipboard");
     if (paramContext != null) {
-      paramContext.setText(com.tencent.mm.plugin.editor.model.nativenote.a.a.aaV(pus));
+      paramContext.setText(com.tencent.mm.plugin.editor.model.nativenote.a.a.abM(pAW));
     }
     AppMethodBeat.o(181719);
   }
   
-  public static ArrayList<com.tencent.mm.plugin.editor.model.a.a> cef()
+  public static ArrayList<com.tencent.mm.plugin.editor.model.a.a> cfu()
   {
     AppMethodBeat.i(181720);
     ArrayList localArrayList = new ArrayList();
-    if (jfg == null)
+    if (jhZ == null)
     {
       AppMethodBeat.o(181720);
       return localArrayList;
     }
-    Iterator localIterator = jfg.iterator();
+    Iterator localIterator = jhZ.iterator();
     while (localIterator.hasNext())
     {
       com.tencent.mm.plugin.editor.model.a.a locala = com.tencent.mm.plugin.editor.b.a((com.tencent.mm.plugin.editor.model.a.a)localIterator.next());
@@ -72,25 +72,25 @@ public final class b
     return localArrayList;
   }
   
-  private static Set<String> ceg()
+  private static Set<String> cfv()
   {
     AppMethodBeat.i(181722);
     HashSet localHashSet = new HashSet();
-    if (jfg == null)
+    if (jhZ == null)
     {
       AppMethodBeat.o(181722);
       return localHashSet;
     }
-    Iterator localIterator = jfg.iterator();
+    Iterator localIterator = jhZ.iterator();
     while (localIterator.hasNext())
     {
       Object localObject = (com.tencent.mm.plugin.editor.model.a.a)localIterator.next();
       String str = com.tencent.mm.plugin.editor.b.b((com.tencent.mm.plugin.editor.model.a.a)localObject);
-      if (!bt.isNullOrNil(str)) {
+      if (!bu.isNullOrNil(str)) {
         localHashSet.add(str);
       }
       localObject = com.tencent.mm.plugin.editor.b.c((com.tencent.mm.plugin.editor.model.a.a)localObject);
-      if (!bt.isNullOrNil((String)localObject)) {
+      if (!bu.isNullOrNil((String)localObject)) {
         localHashSet.add(localObject);
       }
     }
@@ -98,16 +98,16 @@ public final class b
     return localHashSet;
   }
   
-  public static boolean ceh()
+  public static boolean cfw()
   {
     AppMethodBeat.i(181724);
-    ClipboardManager localClipboardManager = (ClipboardManager)aj.getContext().getSystemService("clipboard");
+    ClipboardManager localClipboardManager = (ClipboardManager)ak.getContext().getSystemService("clipboard");
     if (localClipboardManager.getText().length() >= 16384)
     {
       AppMethodBeat.o(181724);
       return true;
     }
-    if (com.tencent.mm.plugin.editor.b.aaN(localClipboardManager.getText().toString()) >= 16384)
+    if (com.tencent.mm.plugin.editor.b.abE(localClipboardManager.getText().toString()) >= 16384)
     {
       AppMethodBeat.o(181724);
       return true;
@@ -116,14 +116,14 @@ public final class b
     return false;
   }
   
-  public static int cei()
+  public static int cfx()
   {
     AppMethodBeat.i(181725);
-    Object localObject = (ClipboardManager)aj.getContext().getSystemService("clipboard");
+    Object localObject = (ClipboardManager)ak.getContext().getSystemService("clipboard");
     if ((localObject == null) || (((ClipboardManager)localObject).getText() == null) || (((ClipboardManager)localObject).getText().length() <= 0)) {}
     for (int i = 1;; i = 0)
     {
-      if ((jfg == null) || (jfg.size() <= 0)) {}
+      if ((jhZ == null) || (jhZ.size() <= 0)) {}
       for (int j = 1;; j = 0)
       {
         if ((i != 0) && (j != 0))
@@ -145,7 +145,7 @@ public final class b
         {
           localObject = ((ClipboardManager)localObject).getText();
           if ((localObject instanceof Spanned)) {}
-          for (localObject = com.tencent.mm.plugin.editor.model.nativenote.a.b.a((Spanned)localObject); ((String)localObject).equals(pus); localObject = ((CharSequence)localObject).toString())
+          for (localObject = com.tencent.mm.plugin.editor.model.nativenote.a.b.a((Spanned)localObject); ((String)localObject).equals(pAW); localObject = ((CharSequence)localObject).toString())
           {
             AppMethodBeat.o(181725);
             return 3;
@@ -155,7 +155,7 @@ public final class b
         {
           for (;;)
           {
-            ad.e("EditorClipboardManager", "get clipboard data error : ", new Object[] { localException });
+            ae.e("EditorClipboardManager", "get clipboard data error : ", new Object[] { localException });
             String str = "";
           }
           AppMethodBeat.o(181725);
@@ -168,11 +168,11 @@ public final class b
   public static void clearData()
   {
     AppMethodBeat.i(181721);
-    if (jfg != null) {
-      jfg.clear();
+    if (jhZ != null) {
+      jhZ.clear();
     }
-    pus = "";
-    com.tencent.mm.plugin.fav.a.ao.rtS = null;
+    pAW = "";
+    com.tencent.mm.plugin.fav.a.ao.rCe = null;
     AppMethodBeat.o(181721);
   }
   
@@ -195,10 +195,10 @@ public final class b
     else
     {
       String str = com.tencent.mm.plugin.editor.b.b(parama);
-      if (!bt.isNullOrNil(str))
+      if (!bu.isNullOrNil(str))
       {
         bool1 = bool2;
-        if (i.fv(str)) {}
+        if (o.fB(str)) {}
       }
       else
       {
@@ -213,10 +213,10 @@ public final class b
     else
     {
       parama = com.tencent.mm.plugin.editor.b.c(parama);
-      if (!bt.isNullOrNil(parama))
+      if (!bu.isNullOrNil(parama))
       {
         bool2 = bool1;
-        if (i.fv(parama)) {}
+        if (o.fB(parama)) {}
       }
       else
       {

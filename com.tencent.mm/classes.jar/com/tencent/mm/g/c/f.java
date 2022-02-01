@@ -8,55 +8,55 @@ public abstract class f
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eEc = "snsId".hashCode();
-  private static final int eEd = "userName".hashCode();
-  private static final int eEe = "localFlag".hashCode();
-  private static final int eEf = "createTime".hashCode();
-  private static final int eEg = "head".hashCode();
-  private static final int eEh = "localPrivate".hashCode();
-  private static final int eEi = "sourceType".hashCode();
-  private static final int eEj = "likeFlag".hashCode();
-  private static final int eEk = "pravited".hashCode();
-  private static final int eEl = "stringSeq".hashCode();
-  private static final int eEm = "content".hashCode();
-  private static final int eEn = "attrBuf".hashCode();
-  private static final int eEo = "postBuf".hashCode();
-  private static final int eEp = "adinfo".hashCode();
-  private static final int eEq = "adxml".hashCode();
-  private static final int eEr = "createAdTime".hashCode();
-  private static final int eEs = "exposureTime".hashCode();
-  private static final int eEt = "firstControlTime".hashCode();
-  private static final int eEu = "recxml".hashCode();
-  private static final int eEv = "subType".hashCode();
-  private static final int eEw = "exposureCount".hashCode();
-  private static final int eEx = "atAdinfo".hashCode();
-  private static final int eEy = "remindInfoGroup".hashCode();
+  private static final int eFL = "snsId".hashCode();
+  private static final int eFM = "userName".hashCode();
+  private static final int eFN = "localFlag".hashCode();
+  private static final int eFO = "createTime".hashCode();
+  private static final int eFP = "head".hashCode();
+  private static final int eFQ = "localPrivate".hashCode();
+  private static final int eFR = "sourceType".hashCode();
+  private static final int eFS = "likeFlag".hashCode();
+  private static final int eFT = "pravited".hashCode();
+  private static final int eFU = "stringSeq".hashCode();
+  private static final int eFV = "content".hashCode();
+  private static final int eFW = "attrBuf".hashCode();
+  private static final int eFX = "postBuf".hashCode();
+  private static final int eFY = "adinfo".hashCode();
+  private static final int eFZ = "adxml".hashCode();
+  private static final int eGa = "createAdTime".hashCode();
+  private static final int eGb = "exposureTime".hashCode();
+  private static final int eGc = "firstControlTime".hashCode();
+  private static final int eGd = "recxml".hashCode();
+  private static final int eGe = "subType".hashCode();
+  private static final int eGf = "exposureCount".hashCode();
+  private static final int eGg = "atAdinfo".hashCode();
+  private static final int eGh = "remindInfoGroup".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
   private static final int type_HASHCODE = "type".hashCode();
   private boolean __hadSettype = true;
-  private boolean eDF = true;
-  private boolean eDG = true;
-  private boolean eDH = true;
-  private boolean eDI = true;
-  private boolean eDJ = true;
-  private boolean eDK = true;
-  private boolean eDL = true;
-  private boolean eDM = true;
-  private boolean eDN = true;
-  private boolean eDO = true;
-  private boolean eDP = true;
-  private boolean eDQ = true;
-  private boolean eDR = true;
-  private boolean eDS = true;
-  private boolean eDT = true;
-  private boolean eDU = true;
-  private boolean eDV = true;
-  private boolean eDW = true;
-  private boolean eDX = true;
-  private boolean eDY = true;
-  private boolean eDZ = true;
-  private boolean eEa = true;
-  private boolean eEb = true;
+  private boolean eFA = true;
+  private boolean eFB = true;
+  private boolean eFC = true;
+  private boolean eFD = true;
+  private boolean eFE = true;
+  private boolean eFF = true;
+  private boolean eFG = true;
+  private boolean eFH = true;
+  private boolean eFI = true;
+  private boolean eFJ = true;
+  private boolean eFK = true;
+  private boolean eFo = true;
+  private boolean eFp = true;
+  private boolean eFq = true;
+  private boolean eFr = true;
+  private boolean eFs = true;
+  private boolean eFt = true;
+  private boolean eFu = true;
+  private boolean eFv = true;
+  private boolean eFw = true;
+  private boolean eFx = true;
+  private boolean eFy = true;
+  private boolean eFz = true;
   public String field_adinfo;
   public String field_adxml;
   public String field_atAdinfo;
@@ -95,7 +95,7 @@ public abstract class f
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eEc != k) {
+      if (eFL != k) {
         break label60;
       }
       this.field_snsId = paramCursor.getLong(i);
@@ -106,51 +106,51 @@ public abstract class f
       break label20;
       break;
       label60:
-      if (eEd == k) {
+      if (eFM == k) {
         this.field_userName = paramCursor.getString(i);
-      } else if (eEe == k) {
+      } else if (eFN == k) {
         this.field_localFlag = paramCursor.getInt(i);
-      } else if (eEf == k) {
+      } else if (eFO == k) {
         this.field_createTime = paramCursor.getInt(i);
-      } else if (eEg == k) {
+      } else if (eFP == k) {
         this.field_head = paramCursor.getInt(i);
-      } else if (eEh == k) {
+      } else if (eFQ == k) {
         this.field_localPrivate = paramCursor.getInt(i);
       } else if (type_HASHCODE == k) {
         this.field_type = paramCursor.getInt(i);
-      } else if (eEi == k) {
+      } else if (eFR == k) {
         this.field_sourceType = paramCursor.getInt(i);
-      } else if (eEj == k) {
+      } else if (eFS == k) {
         this.field_likeFlag = paramCursor.getInt(i);
-      } else if (eEk == k) {
+      } else if (eFT == k) {
         this.field_pravited = paramCursor.getInt(i);
-      } else if (eEl == k) {
+      } else if (eFU == k) {
         this.field_stringSeq = paramCursor.getString(i);
-      } else if (eEm == k) {
+      } else if (eFV == k) {
         this.field_content = paramCursor.getBlob(i);
-      } else if (eEn == k) {
+      } else if (eFW == k) {
         this.field_attrBuf = paramCursor.getBlob(i);
-      } else if (eEo == k) {
+      } else if (eFX == k) {
         this.field_postBuf = paramCursor.getBlob(i);
-      } else if (eEp == k) {
+      } else if (eFY == k) {
         this.field_adinfo = paramCursor.getString(i);
-      } else if (eEq == k) {
+      } else if (eFZ == k) {
         this.field_adxml = paramCursor.getString(i);
-      } else if (eEr == k) {
+      } else if (eGa == k) {
         this.field_createAdTime = paramCursor.getInt(i);
-      } else if (eEs == k) {
+      } else if (eGb == k) {
         this.field_exposureTime = paramCursor.getInt(i);
-      } else if (eEt == k) {
+      } else if (eGc == k) {
         this.field_firstControlTime = paramCursor.getInt(i);
-      } else if (eEu == k) {
+      } else if (eGd == k) {
         this.field_recxml = paramCursor.getString(i);
-      } else if (eEv == k) {
+      } else if (eGe == k) {
         this.field_subType = paramCursor.getInt(i);
-      } else if (eEw == k) {
+      } else if (eGf == k) {
         this.field_exposureCount = paramCursor.getInt(i);
-      } else if (eEx == k) {
+      } else if (eGg == k) {
         this.field_atAdinfo = paramCursor.getString(i);
-      } else if (eEy == k) {
+      } else if (eGh == k) {
         this.field_remindInfoGroup = paramCursor.getBlob(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
@@ -161,76 +161,76 @@ public abstract class f
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eDF) {
+    if (this.eFo) {
       localContentValues.put("snsId", Long.valueOf(this.field_snsId));
     }
-    if (this.eDG) {
+    if (this.eFp) {
       localContentValues.put("userName", this.field_userName);
     }
-    if (this.eDH) {
+    if (this.eFq) {
       localContentValues.put("localFlag", Integer.valueOf(this.field_localFlag));
     }
-    if (this.eDI) {
+    if (this.eFr) {
       localContentValues.put("createTime", Integer.valueOf(this.field_createTime));
     }
-    if (this.eDJ) {
+    if (this.eFs) {
       localContentValues.put("head", Integer.valueOf(this.field_head));
     }
-    if (this.eDK) {
+    if (this.eFt) {
       localContentValues.put("localPrivate", Integer.valueOf(this.field_localPrivate));
     }
     if (this.__hadSettype) {
       localContentValues.put("type", Integer.valueOf(this.field_type));
     }
-    if (this.eDL) {
+    if (this.eFu) {
       localContentValues.put("sourceType", Integer.valueOf(this.field_sourceType));
     }
-    if (this.eDM) {
+    if (this.eFv) {
       localContentValues.put("likeFlag", Integer.valueOf(this.field_likeFlag));
     }
-    if (this.eDN) {
+    if (this.eFw) {
       localContentValues.put("pravited", Integer.valueOf(this.field_pravited));
     }
-    if (this.eDO) {
+    if (this.eFx) {
       localContentValues.put("stringSeq", this.field_stringSeq);
     }
-    if (this.eDP) {
+    if (this.eFy) {
       localContentValues.put("content", this.field_content);
     }
-    if (this.eDQ) {
+    if (this.eFz) {
       localContentValues.put("attrBuf", this.field_attrBuf);
     }
-    if (this.eDR) {
+    if (this.eFA) {
       localContentValues.put("postBuf", this.field_postBuf);
     }
-    if (this.eDS) {
+    if (this.eFB) {
       localContentValues.put("adinfo", this.field_adinfo);
     }
-    if (this.eDT) {
+    if (this.eFC) {
       localContentValues.put("adxml", this.field_adxml);
     }
-    if (this.eDU) {
+    if (this.eFD) {
       localContentValues.put("createAdTime", Integer.valueOf(this.field_createAdTime));
     }
-    if (this.eDV) {
+    if (this.eFE) {
       localContentValues.put("exposureTime", Integer.valueOf(this.field_exposureTime));
     }
-    if (this.eDW) {
+    if (this.eFF) {
       localContentValues.put("firstControlTime", Integer.valueOf(this.field_firstControlTime));
     }
-    if (this.eDX) {
+    if (this.eFG) {
       localContentValues.put("recxml", this.field_recxml);
     }
-    if (this.eDY) {
+    if (this.eFH) {
       localContentValues.put("subType", Integer.valueOf(this.field_subType));
     }
-    if (this.eDZ) {
+    if (this.eFI) {
       localContentValues.put("exposureCount", Integer.valueOf(this.field_exposureCount));
     }
-    if (this.eEa) {
+    if (this.eFJ) {
       localContentValues.put("atAdinfo", this.field_atAdinfo);
     }
-    if (this.eEb) {
+    if (this.eFK) {
       localContentValues.put("remindInfoGroup", this.field_remindInfoGroup);
     }
     if (this.systemRowid > 0L) {
@@ -241,7 +241,7 @@ public abstract class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.c.f
  * JD-Core Version:    0.7.0.1
  */

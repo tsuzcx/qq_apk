@@ -1,23 +1,23 @@
 package com.tencent.mm.plugin.appbrand.ui.recommend;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.crr;
+import com.tencent.mm.protocal.protobuf.csl;
 import d.g.a.a;
 import d.g.b.q;
 import d.l;
 import java.util.LinkedList;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/RecommendCard;", "invoke"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/RecommendCard;", "invoke"})
 final class a$r
   extends q
-  implements a<LinkedList<crr>>
+  implements a<LinkedList<csl>>
 {
-  public static final r mMW;
+  public static final r mRZ;
   
   static
   {
     AppMethodBeat.i(51337);
-    mMW = new r();
+    mRZ = new r();
     AppMethodBeat.o(51337);
   }
   

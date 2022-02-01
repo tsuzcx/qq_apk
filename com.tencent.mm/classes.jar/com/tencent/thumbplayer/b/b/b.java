@@ -6,40 +6,40 @@ import java.util.Map;
 
 public final class b
 {
-  public boolean LZA;
-  public boolean LZB;
-  public int LZC;
-  public int LZD;
-  public int LZE = 1;
-  public int LZF = 1;
-  public String LZG;
-  public String LZH;
-  public String LZI;
-  public long LZJ;
-  public int LZK;
-  public boolean LZL;
-  public int LZM;
-  public long LZN;
-  public long LZO;
-  public boolean LZP = false;
-  public boolean LZQ = false;
-  public List<Map<String, String>> LZR;
-  public String LZp;
-  public String[] LZq;
-  public String LZr;
-  public ArrayList<String> LZs;
-  public ArrayList<String> LZt;
-  public ArrayList<String> LZu;
-  public int LZv;
-  public long LZw;
-  public String LZx;
-  public int LZy;
-  public Map<String, Integer> LZz;
+  public int MwA = 1;
+  public String MwB;
+  public String MwC;
+  public String MwD;
+  public long MwE;
+  public int MwF;
+  public boolean MwG;
+  public int MwH;
+  public long MwI;
+  public long MwJ;
+  public boolean MwK = false;
+  public boolean MwL = false;
+  public List<Map<String, String>> MwM;
+  public String Mwk;
+  public String[] Mwl;
+  public String Mwm;
+  public ArrayList<String> Mwn;
+  public ArrayList<String> Mwo;
+  public ArrayList<String> Mwp;
+  public int Mwq;
+  public long Mwr;
+  public String Mws;
+  public int Mwt;
+  public Map<String, Integer> Mwu;
+  public boolean Mwv;
+  public boolean Mww;
+  public int Mwx;
+  public int Mwy;
+  public int Mwz = 1;
   public int dlType;
   public Map<String, String> extInfoMap;
   public long fileSize;
-  public String hzm;
-  public String rJV;
+  public String hCa;
+  public String rSj;
   public String savePath;
   public String url;
   
@@ -52,7 +52,7 @@ public final class b
   
   private b(char paramChar)
   {
-    this.LZr = null;
+    this.Mwm = null;
     this.dlType = 11;
   }
 }

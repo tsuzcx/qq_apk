@@ -20,6 +20,7 @@ import com.tencent.mm.hellhoundlib.b.c;
 import com.tencent.mm.plugin.story.i.j;
 import com.tencent.mm.plugin.story.ui.a.f;
 import com.tencent.mm.ui.aq;
+import d.g.a.b;
 import d.g.b.p;
 import d.v;
 import d.z;
@@ -28,28 +29,28 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
-@d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/story/ui/view/StoryMsgListView;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "style", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "commentsRecyclerView", "Landroid/support/v7/widget/RecyclerView;", "emptyTipView", "Landroid/widget/TextView;", "mode", "offsetY", "onBlankClick", "Lkotlin/Function0;", "", "getOnBlankClick", "()Lkotlin/jvm/functions/Function0;", "setOnBlankClick", "(Lkotlin/jvm/functions/Function0;)V", "onCommentItemClick", "Lkotlin/Function1;", "Lcom/tencent/mm/plugin/story/model/comment/StoryCommentItem;", "Lkotlin/ParameterName;", "name", "commentItem", "getOnCommentItemClick", "()Lkotlin/jvm/functions/Function1;", "setOnCommentItemClick", "(Lkotlin/jvm/functions/Function1;)V", "onContentTopOverScroll", "dy", "getOnContentTopOverScroll", "setOnContentTopOverScroll", "onContentTopOverScrollStop", "getOnContentTopOverScrollStop", "setOnContentTopOverScrollStop", "viewConfig", "Landroid/view/ViewConfiguration;", "adjustContentLayout", "bottomMargin", "copyDataList", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "oriDataList", "", "onNestedPreScroll", "target", "Landroid/view/View;", "dx", "consumed", "", "onNestedScrollAccepted", "child", "axes", "onStartNestedScroll", "", "nestedScrollAxes", "onStopNestedScroll", "setup", "comments", "bubbles", "story", "Lcom/tencent/mm/plugin/story/storage/StoryInfo;", "updateCommentListId", "datas", "updateMsgList", "Companion", "plugin-story_release"})
+@d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/story/ui/view/StoryMsgListView;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "style", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "commentsRecyclerView", "Landroid/support/v7/widget/RecyclerView;", "emptyTipView", "Landroid/widget/TextView;", "mode", "offsetY", "onBlankClick", "Lkotlin/Function0;", "", "getOnBlankClick", "()Lkotlin/jvm/functions/Function0;", "setOnBlankClick", "(Lkotlin/jvm/functions/Function0;)V", "onCommentItemClick", "Lkotlin/Function1;", "Lcom/tencent/mm/plugin/story/model/comment/StoryCommentItem;", "Lkotlin/ParameterName;", "name", "commentItem", "getOnCommentItemClick", "()Lkotlin/jvm/functions/Function1;", "setOnCommentItemClick", "(Lkotlin/jvm/functions/Function1;)V", "onContentTopOverScroll", "dy", "getOnContentTopOverScroll", "setOnContentTopOverScroll", "onContentTopOverScrollStop", "getOnContentTopOverScrollStop", "setOnContentTopOverScrollStop", "viewConfig", "Landroid/view/ViewConfiguration;", "adjustContentLayout", "bottomMargin", "copyDataList", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "oriDataList", "", "onNestedPreScroll", "target", "Landroid/view/View;", "dx", "consumed", "", "onNestedScrollAccepted", "child", "axes", "onStartNestedScroll", "", "nestedScrollAxes", "onStopNestedScroll", "setup", "comments", "bubbles", "story", "Lcom/tencent/mm/plugin/story/storage/StoryInfo;", "updateCommentListId", "datas", "updateMsgList", "Companion", "plugin-story_release"})
 public final class StoryMsgListView
   extends RelativeLayout
 {
-  private static final int Bbi = 0;
-  private static final int Bbj = 1;
-  public static final StoryMsgListView.a Bbk;
-  private d.g.a.b<? super com.tencent.mm.plugin.story.f.b.a, z> AWa;
-  private d.g.a.a<z> AWb;
-  private d.g.a.b<? super Integer, z> AWc;
-  private d.g.a.a<z> AWd;
-  private final RecyclerView Bbf;
-  private final TextView Bbg;
-  private ViewConfiguration Bbh;
-  private int kSi;
+  private static final int BsG = 0;
+  private static final int BsH = 1;
+  public static final StoryMsgListView.a BsI;
+  private b<? super Integer, z> BnA;
+  private d.g.a.a<z> BnB;
+  private b<? super com.tencent.mm.plugin.story.f.b.a, z> Bny;
+  private d.g.a.a<z> Bnz;
+  private final RecyclerView BsD;
+  private final TextView BsE;
+  private ViewConfiguration BsF;
+  private int kVR;
   private int mode;
   
   static
   {
     AppMethodBeat.i(120243);
-    Bbk = new StoryMsgListView.a((byte)0);
-    Bbj = 1;
+    BsI = new StoryMsgListView.a((byte)0);
+    BsH = 1;
     AppMethodBeat.o(120243);
   }
   
@@ -75,33 +76,18 @@ public final class StoryMsgListView
     View.inflate(paramContext, 2131495709, (ViewGroup)this);
     paramAttributeSet = findViewById(2131305477);
     p.g(paramAttributeSet, "findViewById(R.id.story_msg_recycler_view)");
-    this.Bbf = ((RecyclerView)paramAttributeSet);
+    this.BsD = ((RecyclerView)paramAttributeSet);
     paramAttributeSet = findViewById(2131305474);
     p.g(paramAttributeSet, "findViewById(R.id.story_msg_empty_tip_tv)");
-    this.Bbg = ((TextView)paramAttributeSet);
+    this.BsE = ((TextView)paramAttributeSet);
     paramContext = ViewConfiguration.get(paramContext);
     p.g(paramContext, "ViewConfiguration.get(context)");
-    this.Bbh = paramContext;
-    setOnClickListener((View.OnClickListener)new View.OnClickListener()
-    {
-      public final void onClick(View paramAnonymousView)
-      {
-        AppMethodBeat.i(120229);
-        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/story/ui/view/StoryMsgListView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-        paramAnonymousView = this.Bbl.getOnBlankClick();
-        if (paramAnonymousView != null) {
-          paramAnonymousView.invoke();
-        }
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/story/ui/view/StoryMsgListView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(120229);
-      }
-    });
+    this.BsF = paramContext;
+    setOnClickListener((View.OnClickListener)new StoryMsgListView.1(this));
     AppMethodBeat.o(120240);
   }
   
-  private static ArrayList<com.tencent.mm.plugin.story.f.b.a> gt(List<com.tencent.mm.plugin.story.f.b.a> paramList)
+  private static ArrayList<com.tencent.mm.plugin.story.f.b.a> gC(List<com.tencent.mm.plugin.story.f.b.a> paramList)
   {
     AppMethodBeat.i(120233);
     ArrayList localArrayList = new ArrayList();
@@ -113,10 +99,10 @@ public final class StoryMsgListView
     return localArrayList;
   }
   
-  public final void SB(int paramInt)
+  public final void Ti(int paramInt)
   {
     AppMethodBeat.i(120237);
-    Object localObject = this.Bbf.getLayoutParams();
+    Object localObject = this.BsD.getLayoutParams();
     if (localObject == null)
     {
       localObject = new v("null cannot be cast to non-null type android.view.ViewGroup.MarginLayoutParams");
@@ -134,14 +120,14 @@ public final class StoryMsgListView
     p.h(paramArrayList1, "comments");
     p.h(paramArrayList2, "bubbles");
     this.mode = paramInt;
-    if (paramInt == Bbi)
+    if (paramInt == BsG)
     {
-      paramArrayList1 = new com.tencent.mm.plugin.story.ui.a.l(gt((List)paramArrayList2));
-      paramj = this.Bbf;
+      paramArrayList1 = new com.tencent.mm.plugin.story.ui.a.l(gC((List)paramArrayList2));
+      paramj = this.BsD;
       getContext();
       paramj.setLayoutManager((RecyclerView.i)new GridLayoutManager(4));
-      this.Bbf.setAdapter((RecyclerView.a)paramArrayList1);
-      paramArrayList1 = this.Bbf.getLayoutParams();
+      this.BsD.setAdapter((RecyclerView.a)paramArrayList1);
+      paramArrayList1 = this.BsD.getLayoutParams();
       if (paramArrayList1 == null)
       {
         paramArrayList1 = new v("null cannot be cast to non-null type android.view.ViewGroup.MarginLayoutParams");
@@ -149,7 +135,7 @@ public final class StoryMsgListView
         throw paramArrayList1;
       }
       ((ViewGroup.MarginLayoutParams)paramArrayList1).setMarginStart(aq.fromDPToPix(getContext(), 40));
-      paramArrayList1 = this.Bbf.getLayoutParams();
+      paramArrayList1 = this.BsD.getLayoutParams();
       if (paramArrayList1 == null)
       {
         paramArrayList1 = new v("null cannot be cast to non-null type android.view.ViewGroup.MarginLayoutParams");
@@ -157,89 +143,69 @@ public final class StoryMsgListView
         throw paramArrayList1;
       }
       ((ViewGroup.MarginLayoutParams)paramArrayList1).setMarginEnd(aq.fromDPToPix(getContext(), 40));
-      paramArrayList1 = this.Bbg;
+      paramArrayList1 = this.BsE;
       paramj = getContext();
       p.g(paramj, "context");
       paramArrayList1.setText((CharSequence)paramj.getResources().getString(2131764267));
       if (paramArrayList2.isEmpty())
       {
-        this.Bbg.setVisibility(0);
-        this.Bbf.setVisibility(8);
+        this.BsE.setVisibility(0);
+        this.BsD.setVisibility(8);
       }
     }
     for (;;)
     {
-      this.Bbf.post((Runnable)new b(this));
+      this.BsD.post((Runnable)new b(this));
       AppMethodBeat.o(120234);
       return;
-      this.Bbg.setVisibility(8);
-      this.Bbf.setVisibility(0);
+      this.BsE.setVisibility(8);
+      this.BsD.setVisibility(0);
       continue;
-      if (paramInt == Bbj)
+      if (paramInt == BsH)
       {
-        paramArrayList2 = new f(gt((List)paramArrayList1));
-        paramArrayList2.AVy = paramj;
-        paramArrayList2.AVK = this.AWa;
-        paramj = this.Bbf;
+        paramArrayList2 = new f(gC((List)paramArrayList1));
+        paramArrayList2.BmW = paramj;
+        paramArrayList2.Bni = this.Bny;
+        paramj = this.BsD;
         getContext();
         paramj.setLayoutManager((RecyclerView.i)new LinearLayoutManager());
-        this.Bbf.setAdapter((RecyclerView.a)paramArrayList2);
-        paramArrayList2 = this.Bbg;
+        this.BsD.setAdapter((RecyclerView.a)paramArrayList2);
+        paramArrayList2 = this.BsE;
         paramj = getContext();
         p.g(paramj, "context");
         paramArrayList2.setText((CharSequence)paramj.getResources().getString(2131764270));
         if (paramArrayList1.isEmpty())
         {
-          this.Bbg.setVisibility(0);
-          this.Bbf.setVisibility(8);
+          this.BsE.setVisibility(0);
+          this.BsD.setVisibility(8);
         }
         else
         {
-          this.Bbg.setVisibility(8);
-          this.Bbf.setVisibility(0);
+          this.BsE.setVisibility(8);
+          this.BsD.setVisibility(0);
         }
       }
     }
   }
   
-  public final d.g.a.a<z> getOnBlankClick()
-  {
-    return this.AWb;
-  }
-  
-  public final d.g.a.b<com.tencent.mm.plugin.story.f.b.a, z> getOnCommentItemClick()
-  {
-    return this.AWa;
-  }
-  
-  public final d.g.a.b<Integer, z> getOnContentTopOverScroll()
-  {
-    return this.AWc;
-  }
-  
-  public final d.g.a.a<z> getOnContentTopOverScrollStop()
-  {
-    return this.AWd;
-  }
-  
-  public final void gu(final List<com.tencent.mm.plugin.story.f.b.a> paramList)
+  public final void gD(final List<com.tencent.mm.plugin.story.f.b.a> paramList)
   {
     AppMethodBeat.i(120235);
     p.h(paramList, "datas");
     if (((Collection)paramList).isEmpty()) {}
     for (int i = 1; i != 0; i = 0)
     {
-      this.Bbg.setVisibility(0);
-      this.Bbf.setVisibility(8);
+      this.BsE.setVisibility(0);
+      this.BsD.setVisibility(8);
       AppMethodBeat.o(120235);
       return;
     }
-    this.Bbg.setVisibility(8);
-    this.Bbf.setVisibility(0);
+    this.BsE.setVisibility(8);
+    this.BsD.setVisibility(0);
     RecyclerView.a locala;
-    if (this.mode == Bbi)
+    if (this.mode == BsG)
     {
-      locala = this.Bbf.getAdapter();
+      locala = this.BsD.getAdapter();
       if (locala != null)
       {
         if (locala == null)
@@ -248,17 +214,17 @@ public final class StoryMsgListView
           AppMethodBeat.o(120235);
           throw paramList;
         }
-        ((com.tencent.mm.plugin.story.ui.a.l)locala).gr((List)gt(paramList));
-        this.Bbf.post((Runnable)new c(this, paramList));
+        ((com.tencent.mm.plugin.story.ui.a.l)locala).gA((List)gC(paramList));
+        this.BsD.post((Runnable)new c(this, paramList));
         AppMethodBeat.o(120235);
         return;
       }
       AppMethodBeat.o(120235);
       return;
     }
-    if (this.mode == Bbj)
+    if (this.mode == BsH)
     {
-      locala = this.Bbf.getAdapter();
+      locala = this.BsD.getAdapter();
       if (locala != null)
       {
         if (locala == null)
@@ -267,8 +233,8 @@ public final class StoryMsgListView
           AppMethodBeat.o(120235);
           throw paramList;
         }
-        ((f)locala).ab((List)gt(paramList));
-        this.Bbf.post((Runnable)new d(this, paramList));
+        ((f)locala).ab((List)gC(paramList));
+        this.BsD.post((Runnable)new d(this, paramList));
         AppMethodBeat.o(120235);
         return;
       }
@@ -276,13 +242,13 @@ public final class StoryMsgListView
     AppMethodBeat.o(120235);
   }
   
-  public final void gv(List<com.tencent.mm.plugin.story.f.b.a> paramList)
+  public final void gE(List<com.tencent.mm.plugin.story.f.b.a> paramList)
   {
     AppMethodBeat.i(120236);
     p.h(paramList, "datas");
-    if (this.mode == Bbj)
+    if (this.mode == BsH)
     {
-      RecyclerView.a locala = this.Bbf.getAdapter();
+      RecyclerView.a locala = this.BsD.getAdapter();
       if (locala != null)
       {
         if (locala == null)
@@ -291,7 +257,7 @@ public final class StoryMsgListView
           AppMethodBeat.o(120236);
           throw paramList;
         }
-        ((f)locala).ab((List)gt(paramList));
+        ((f)locala).ab((List)gC(paramList));
         AppMethodBeat.o(120236);
         return;
       }
@@ -299,14 +265,34 @@ public final class StoryMsgListView
     AppMethodBeat.o(120236);
   }
   
+  public final d.g.a.a<z> getOnBlankClick()
+  {
+    return this.Bnz;
+  }
+  
+  public final b<com.tencent.mm.plugin.story.f.b.a, z> getOnCommentItemClick()
+  {
+    return this.Bny;
+  }
+  
+  public final b<Integer, z> getOnContentTopOverScroll()
+  {
+    return this.BnA;
+  }
+  
+  public final d.g.a.a<z> getOnContentTopOverScrollStop()
+  {
+    return this.BnB;
+  }
+  
   public final void onNestedPreScroll(View paramView, int paramInt1, int paramInt2, int[] paramArrayOfInt)
   {
     AppMethodBeat.i(120239);
-    paramView = this.Bbf.getLayoutManager();
+    paramView = this.BsD.getLayoutManager();
     int i;
     if ((paramView instanceof GridLayoutManager))
     {
-      paramView = this.Bbf.getLayoutManager();
+      paramView = this.BsD.getLayoutManager();
       if (paramView == null)
       {
         paramView = new v("null cannot be cast to non-null type android.support.v7.widget.GridLayoutManager");
@@ -317,11 +303,11 @@ public final class StoryMsgListView
     }
     while (paramInt2 > 0)
     {
-      if (this.kSi == 0) {
+      if (this.kVR == 0) {
         break label258;
       }
-      this.kSi += paramInt2;
-      paramView = this.AWc;
+      this.kVR += paramInt2;
+      paramView = this.BnA;
       if (paramView != null) {
         paramView.invoke(Integer.valueOf(paramInt2));
       }
@@ -335,7 +321,7 @@ public final class StoryMsgListView
         return;
         if ((paramView instanceof LinearLayoutManager))
         {
-          paramView = this.Bbf.getLayoutManager();
+          paramView = this.BsD.getLayoutManager();
           if (paramView == null)
           {
             paramView = new v("null cannot be cast to non-null type android.support.v7.widget.LinearLayoutManager");
@@ -357,8 +343,8 @@ public final class StoryMsgListView
     }
     if ((paramInt2 < 0) && (i == 0))
     {
-      this.kSi += paramInt2;
-      paramView = this.AWc;
+      this.kVR += paramInt2;
+      paramView = this.BnA;
       if (paramView != null) {
         paramView.invoke(Integer.valueOf(paramInt2));
       }
@@ -378,7 +364,7 @@ public final class StoryMsgListView
   
   public final void onNestedScrollAccepted(View paramView1, View paramView2, int paramInt)
   {
-    this.kSi = 0;
+    this.kVR = 0;
   }
   
   public final boolean onStartNestedScroll(View paramView1, View paramView2, int paramInt)
@@ -389,11 +375,11 @@ public final class StoryMsgListView
   public final void onStopNestedScroll(View paramView)
   {
     AppMethodBeat.i(120238);
-    paramView = this.Bbf.getLayoutManager();
+    paramView = this.BsD.getLayoutManager();
     int i;
     if ((paramView instanceof GridLayoutManager))
     {
-      paramView = this.Bbf.getLayoutManager();
+      paramView = this.BsD.getLayoutManager();
       if (paramView == null)
       {
         paramView = new v("null cannot be cast to non-null type android.support.v7.widget.GridLayoutManager");
@@ -404,7 +390,7 @@ public final class StoryMsgListView
     }
     while (i == 0)
     {
-      paramView = this.AWd;
+      paramView = this.BnB;
       if (paramView == null) {
         break;
       }
@@ -413,7 +399,7 @@ public final class StoryMsgListView
       return;
       if ((paramView instanceof LinearLayoutManager))
       {
-        paramView = this.Bbf.getLayoutManager();
+        paramView = this.BsD.getLayoutManager();
         if (paramView == null)
         {
           paramView = new v("null cannot be cast to non-null type android.support.v7.widget.LinearLayoutManager");
@@ -432,25 +418,25 @@ public final class StoryMsgListView
   
   public final void setOnBlankClick(d.g.a.a<z> parama)
   {
-    this.AWb = parama;
+    this.Bnz = parama;
   }
   
-  public final void setOnCommentItemClick(d.g.a.b<? super com.tencent.mm.plugin.story.f.b.a, z> paramb)
+  public final void setOnCommentItemClick(b<? super com.tencent.mm.plugin.story.f.b.a, z> paramb)
   {
-    this.AWa = paramb;
+    this.Bny = paramb;
   }
   
-  public final void setOnContentTopOverScroll(d.g.a.b<? super Integer, z> paramb)
+  public final void setOnContentTopOverScroll(b<? super Integer, z> paramb)
   {
-    this.AWc = paramb;
+    this.BnA = paramb;
   }
   
   public final void setOnContentTopOverScrollStop(d.g.a.a<z> parama)
   {
-    this.AWd = parama;
+    this.BnB = parama;
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
   static final class b
     implements Runnable
   {
@@ -459,16 +445,16 @@ public final class StoryMsgListView
     public final void run()
     {
       AppMethodBeat.i(120230);
-      Object localObject = StoryMsgListView.a(this.Bbl).getAdapter();
+      Object localObject = StoryMsgListView.a(this.BsJ).getAdapter();
       if (localObject != null)
       {
-        RecyclerView.i locali = StoryMsgListView.a(this.Bbl).getLayoutManager();
+        RecyclerView.i locali = StoryMsgListView.a(this.BsJ).getLayoutManager();
         if (locali != null)
         {
           p.g(localObject, "it");
           localObject = c.a(((RecyclerView.a)localObject).getItemCount() - 1, new com.tencent.mm.hellhoundlib.b.a());
-          com.tencent.mm.hellhoundlib.a.a.a(locali, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahp(), "com/tencent/mm/plugin/story/ui/view/StoryMsgListView$setup$1", "run", "()V", "Undefined", "scrollToPosition", "(I)V");
-          locali.ca(((Integer)((com.tencent.mm.hellhoundlib.b.a)localObject).mq(0)).intValue());
+          com.tencent.mm.hellhoundlib.a.a.a(locali, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahE(), "com/tencent/mm/plugin/story/ui/view/StoryMsgListView$setup$1", "run", "()V", "Undefined", "scrollToPosition", "(I)V");
+          locali.ca(((Integer)((com.tencent.mm.hellhoundlib.b.a)localObject).mt(0)).intValue());
           com.tencent.mm.hellhoundlib.a.a.a(locali, "com/tencent/mm/plugin/story/ui/view/StoryMsgListView$setup$1", "run", "()V", "Undefined", "scrollToPosition", "(I)V");
           AppMethodBeat.o(120230);
           return;
@@ -480,7 +466,7 @@ public final class StoryMsgListView
     }
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run", "com/tencent/mm/plugin/story/ui/view/StoryMsgListView$updateMsgList$1$1"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run", "com/tencent/mm/plugin/story/ui/view/StoryMsgListView$updateMsgList$1$1"})
   static final class c
     implements Runnable
   {
@@ -489,12 +475,12 @@ public final class StoryMsgListView
     public final void run()
     {
       AppMethodBeat.i(120231);
-      RecyclerView.i locali = StoryMsgListView.a(this.Bbl).getLayoutManager();
+      RecyclerView.i locali = StoryMsgListView.a(this.BsJ).getLayoutManager();
       if (locali != null)
       {
         com.tencent.mm.hellhoundlib.b.a locala = c.a(paramList.size() - 1, new com.tencent.mm.hellhoundlib.b.a());
-        com.tencent.mm.hellhoundlib.a.a.a(locali, locala.ahp(), "com/tencent/mm/plugin/story/ui/view/StoryMsgListView$updateMsgList$$inlined$apply$lambda$1", "run", "()V", "Undefined", "scrollToPosition", "(I)V");
-        locali.ca(((Integer)locala.mq(0)).intValue());
+        com.tencent.mm.hellhoundlib.a.a.a(locali, locala.ahE(), "com/tencent/mm/plugin/story/ui/view/StoryMsgListView$updateMsgList$$inlined$apply$lambda$1", "run", "()V", "Undefined", "scrollToPosition", "(I)V");
+        locali.ca(((Integer)locala.mt(0)).intValue());
         com.tencent.mm.hellhoundlib.a.a.a(locali, "com/tencent/mm/plugin/story/ui/view/StoryMsgListView$updateMsgList$$inlined$apply$lambda$1", "run", "()V", "Undefined", "scrollToPosition", "(I)V");
         AppMethodBeat.o(120231);
         return;
@@ -503,7 +489,7 @@ public final class StoryMsgListView
     }
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run", "com/tencent/mm/plugin/story/ui/view/StoryMsgListView$updateMsgList$2$1"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run", "com/tencent/mm/plugin/story/ui/view/StoryMsgListView$updateMsgList$2$1"})
   static final class d
     implements Runnable
   {
@@ -512,12 +498,12 @@ public final class StoryMsgListView
     public final void run()
     {
       AppMethodBeat.i(120232);
-      RecyclerView.i locali = StoryMsgListView.a(this.Bbl).getLayoutManager();
+      RecyclerView.i locali = StoryMsgListView.a(this.BsJ).getLayoutManager();
       if (locali != null)
       {
         com.tencent.mm.hellhoundlib.b.a locala = c.a(paramList.size() - 1, new com.tencent.mm.hellhoundlib.b.a());
-        com.tencent.mm.hellhoundlib.a.a.a(locali, locala.ahp(), "com/tencent/mm/plugin/story/ui/view/StoryMsgListView$updateMsgList$$inlined$apply$lambda$2", "run", "()V", "Undefined", "scrollToPosition", "(I)V");
-        locali.ca(((Integer)locala.mq(0)).intValue());
+        com.tencent.mm.hellhoundlib.a.a.a(locali, locala.ahE(), "com/tencent/mm/plugin/story/ui/view/StoryMsgListView$updateMsgList$$inlined$apply$lambda$2", "run", "()V", "Undefined", "scrollToPosition", "(I)V");
+        locali.ca(((Integer)locala.mt(0)).intValue());
         com.tencent.mm.hellhoundlib.a.a.a(locali, "com/tencent/mm/plugin/story/ui/view/StoryMsgListView$updateMsgList$$inlined$apply$lambda$2", "run", "()V", "Undefined", "scrollToPosition", "(I)V");
         AppMethodBeat.o(120232);
         return;
@@ -528,7 +514,7 @@ public final class StoryMsgListView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.story.ui.view.StoryMsgListView
  * JD-Core Version:    0.7.0.1
  */

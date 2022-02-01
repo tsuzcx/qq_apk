@@ -1,40 +1,40 @@
 package com.tencent.mm.plugin.backup.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public final class e
 {
-  public static int nuA;
-  public static int nuB;
-  public static int nuC;
-  public static int nuD;
-  public static int nuE;
-  public static int nuF;
-  public static long nuG;
-  public static long nuH;
-  public static long nuI;
-  public static int nuz;
+  public static int nAa;
+  public static long nAb;
+  public static long nAc;
+  public static long nAd;
+  public static int nzU;
+  public static int nzV;
+  public static int nzW;
+  public static int nzX;
+  public static int nzY;
+  public static int nzZ;
   
-  public static void bHA()
-  {
-    AppMethodBeat.i(21273);
-    ad.d("MicroMsg.TestInfo", "netTime" + (bt.flT() - nuH));
-    AppMethodBeat.o(21273);
-  }
-  
-  public static void bHz()
+  public static void bIx()
   {
     AppMethodBeat.i(21272);
-    ad.d("MicroMsg.TestInfo", getInfo());
+    ae.d("MicroMsg.TestInfo", getInfo());
     AppMethodBeat.o(21272);
+  }
+  
+  public static void bIy()
+  {
+    AppMethodBeat.i(21273);
+    ae.d("MicroMsg.TestInfo", "netTime" + (bu.fpO() - nAc));
+    AppMethodBeat.o(21273);
   }
   
   private static String getInfo()
   {
     AppMethodBeat.i(21274);
-    String str = "total_count: " + nuF + "text_count: " + nuB + "normal_count : " + nuA + " image_count: " + nuz + " voice_count : " + nuD + " video_count " + nuC + " app_count : " + nuE + " time: " + (bt.flT() - nuG) + " net: " + nuI;
+    String str = "total_count: " + nAa + "text_count: " + nzW + "normal_count : " + nzV + " image_count: " + nzU + " voice_count : " + nzY + " video_count " + nzX + " app_count : " + nzZ + " time: " + (bu.fpO() - nAb) + " net: " + nAd;
     AppMethodBeat.o(21274);
     return str;
   }
@@ -42,45 +42,45 @@ public final class e
   public static void reset()
   {
     AppMethodBeat.i(21271);
-    nuz = 0;
-    nuA = 0;
-    nuB = 0;
-    nuC = 0;
-    nuD = 0;
-    nuE = 0;
-    nuF = 0;
-    long l = bt.flT();
-    nuG = l;
-    nuI = l - nuH;
+    nzU = 0;
+    nzV = 0;
+    nzW = 0;
+    nzX = 0;
+    nzY = 0;
+    nzZ = 0;
+    nAa = 0;
+    long l = bu.fpO();
+    nAb = l;
+    nAd = l - nAc;
     AppMethodBeat.o(21271);
   }
   
-  public static void xs(int paramInt)
+  public static void xx(int paramInt)
   {
     switch (paramInt)
     {
     }
     for (;;)
     {
-      nuF += 1;
+      nAa += 1;
       return;
-      nuB += 1;
+      nzW += 1;
       continue;
-      nuE += 1;
+      nzZ += 1;
       continue;
-      nuD += 1;
+      nzY += 1;
       continue;
-      nuC += 1;
+      nzX += 1;
       continue;
-      nuz += 1;
+      nzU += 1;
       continue;
-      nuA += 1;
+      nzV += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.c.e
  * JD-Core Version:    0.7.0.1
  */

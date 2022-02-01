@@ -5,13 +5,13 @@ import com.tencent.wcdb.database.SQLiteStatement;
 
 public abstract interface h
 {
-  public abstract long R(long paramLong1, long paramLong2);
+  public abstract long Q(long paramLong1, long paramLong2);
   
-  public abstract void S(long paramLong1, long paramLong2);
+  public abstract void R(long paramLong1, long paramLong2);
   
-  public abstract Cursor akf(String paramString);
+  public abstract Cursor ald(String paramString);
   
-  public abstract boolean akg(String paramString);
+  public abstract boolean ale(String paramString);
   
   public abstract void beginTransaction();
   
@@ -31,7 +31,7 @@ public abstract interface h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.a.h
  * JD-Core Version:    0.7.0.1
  */

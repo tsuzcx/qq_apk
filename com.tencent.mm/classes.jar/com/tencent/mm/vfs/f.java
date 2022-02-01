@@ -1,157 +1,366 @@
 package com.tencent.mm.vfs;
 
-import d.l;
+import com.tencent.mars.smc.IDKey;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ay;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"forEachLine", "", "Lcom/tencent/mm/vfs/VFSFile;", "charset", "Ljava/nio/charset/Charset;", "action", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "line", "inputStream", "Ljava/io/InputStream;", "readText", "reader", "Ljava/io/InputStreamReader;", "writeBytes", "array", "", "writeText", "text", "mmkernel_release"})
 public final class f
 {
-  /* Error */
-  private static java.lang.String a(e parame, java.nio.charset.Charset paramCharset)
+  private static final int[] LGV;
+  private static final int[] LGW;
+  private static final int[] LGX;
+  private static final int[] LGY;
+  private static final int[] LGZ;
+  private static final int[] LHa;
+  private static final int[] LHb;
+  private static final int[] LHc;
+  private static final int[] LHd;
+  private static final int[] LHe;
+  private static final ArrayList<String> LHf;
+  
+  static
   {
-    // Byte code:
-    //   0: ldc 36
-    //   2: invokestatic 42	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: aload_0
-    //   6: ldc 44
-    //   8: invokestatic 50	d/g/b/p:h	(Ljava/lang/Object;Ljava/lang/String;)V
-    //   11: aload_1
-    //   12: ldc 51
-    //   14: invokestatic 50	d/g/b/p:h	(Ljava/lang/Object;Ljava/lang/String;)V
-    //   17: aload_0
-    //   18: ldc 53
-    //   20: invokestatic 50	d/g/b/p:h	(Ljava/lang/Object;Ljava/lang/String;)V
-    //   23: aload_1
-    //   24: ldc 51
-    //   26: invokestatic 50	d/g/b/p:h	(Ljava/lang/Object;Ljava/lang/String;)V
-    //   29: aload_0
-    //   30: invokestatic 59	com/tencent/mm/vfs/i:ai	(Lcom/tencent/mm/vfs/e;)Ljava/io/InputStream;
-    //   33: astore_0
-    //   34: aload_0
-    //   35: ldc 61
-    //   37: invokestatic 64	d/g/b/p:g	(Ljava/lang/Object;Ljava/lang/String;)V
-    //   40: new 66	java/io/InputStreamReader
-    //   43: dup
-    //   44: aload_0
-    //   45: aload_1
-    //   46: invokespecial 70	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;Ljava/nio/charset/Charset;)V
-    //   49: checkcast 72	java/io/Closeable
-    //   52: astore_2
-    //   53: aload_2
-    //   54: checkcast 66	java/io/InputStreamReader
-    //   57: checkcast 74	java/io/Reader
-    //   60: astore_0
-    //   61: aload_0
-    //   62: ldc 44
-    //   64: invokestatic 50	d/g/b/p:h	(Ljava/lang/Object;Ljava/lang/String;)V
-    //   67: new 76	java/io/StringWriter
-    //   70: dup
-    //   71: invokespecial 79	java/io/StringWriter:<init>	()V
-    //   74: astore_1
-    //   75: aload_0
-    //   76: aload_1
-    //   77: checkcast 81	java/io/Writer
-    //   80: invokestatic 86	d/f/c:a	(Ljava/io/Reader;Ljava/io/Writer;)J
-    //   83: pop2
-    //   84: aload_1
-    //   85: invokevirtual 90	java/io/StringWriter:toString	()Ljava/lang/String;
-    //   88: astore_0
-    //   89: aload_0
-    //   90: ldc 92
-    //   92: invokestatic 64	d/g/b/p:g	(Ljava/lang/Object;Ljava/lang/String;)V
-    //   95: aload_2
-    //   96: aconst_null
-    //   97: invokestatic 97	d/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
-    //   100: ldc 36
-    //   102: invokestatic 100	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   105: aload_0
-    //   106: areturn
-    //   107: astore_1
-    //   108: ldc 36
-    //   110: invokestatic 100	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   113: aload_1
-    //   114: athrow
-    //   115: astore_0
-    //   116: aload_2
-    //   117: aload_1
-    //   118: invokestatic 97	d/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
-    //   121: ldc 36
-    //   123: invokestatic 100	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   126: aload_0
-    //   127: athrow
-    //   128: astore_0
-    //   129: aconst_null
-    //   130: astore_1
-    //   131: goto -15 -> 116
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	134	0	parame	e
-    //   0	134	1	paramCharset	java.nio.charset.Charset
-    //   52	65	2	localCloseable	java.io.Closeable
-    // Exception table:
-    //   from	to	target	type
-    //   53	95	107	java/lang/Throwable
-    //   108	115	115	finally
-    //   53	95	128	finally
+    AppMethodBeat.i(193649);
+    LGV = new int[] { 10, 20 };
+    LGW = new int[] { 11, 21 };
+    LGX = new int[] { 12, 22 };
+    LGY = new int[] { 13, 23 };
+    LGZ = new int[] { 14, 24 };
+    LHa = new int[] { 15, 25 };
+    LHb = new int[] { 16, 26 };
+    LHc = new int[] { 17, 27 };
+    LHd = new int[] { 18, 28 };
+    LHe = new int[] { 19, 29 };
+    ArrayList localArrayList = new ArrayList();
+    LHf = localArrayList;
+    localArrayList.add("attachment");
+    LHf.add("Download");
+    LHf.add("voice");
+    LHf.add("voice2");
+    LHf.add("image");
+    LHf.add("oldimage2");
+    LHf.add("video");
+    LHf.add("oneday");
+    LHf.add("emoji");
+    LHf.add("finder");
+    AppMethodBeat.o(193649);
   }
   
-  /* Error */
-  public static final void b(e parame, byte[] paramArrayOfByte)
+  private static void a(MigrationFileSystem paramMigrationFileSystem)
   {
-    // Byte code:
-    //   0: aconst_null
-    //   1: astore_2
-    //   2: ldc 114
-    //   4: invokestatic 42	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   7: aload_0
-    //   8: ldc 116
-    //   10: invokestatic 50	d/g/b/p:h	(Ljava/lang/Object;Ljava/lang/String;)V
-    //   13: aload_1
-    //   14: ldc 117
-    //   16: invokestatic 50	d/g/b/p:h	(Ljava/lang/Object;Ljava/lang/String;)V
-    //   19: aload_0
-    //   20: invokestatic 121	com/tencent/mm/vfs/i:aj	(Lcom/tencent/mm/vfs/e;)Ljava/io/OutputStream;
-    //   23: checkcast 72	java/io/Closeable
-    //   26: astore_3
-    //   27: aload_3
-    //   28: checkcast 123	java/io/OutputStream
-    //   31: aload_1
-    //   32: invokevirtual 127	java/io/OutputStream:write	([B)V
-    //   35: getstatic 133	d/z:MKo	Ld/z;
-    //   38: astore_0
-    //   39: aload_3
-    //   40: aconst_null
-    //   41: invokestatic 97	d/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
-    //   44: ldc 114
-    //   46: invokestatic 100	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   49: return
-    //   50: astore_1
-    //   51: ldc 114
-    //   53: invokestatic 100	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   56: aload_1
-    //   57: athrow
-    //   58: astore_0
-    //   59: aload_3
-    //   60: aload_1
-    //   61: invokestatic 97	d/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
-    //   64: ldc 114
-    //   66: invokestatic 100	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   69: aload_0
-    //   70: athrow
-    //   71: astore_0
-    //   72: aload_2
-    //   73: astore_1
-    //   74: goto -15 -> 59
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	77	0	parame	e
-    //   0	77	1	paramArrayOfByte	byte[]
-    //   1	72	2	localObject	Object
-    //   26	34	3	localCloseable	java.io.Closeable
-    // Exception table:
-    //   from	to	target	type
-    //   27	39	50	java/lang/Throwable
-    //   51	58	58	finally
-    //   27	39	71	finally
+    AppMethodBeat.i(193648);
+    Object localObject = e.fSU().gEm().aZO("image");
+    if ((paramMigrationFileSystem == null) || (!(localObject instanceof b)))
+    {
+      ae.i("MicroMsg.PostTaskVFSStat", "imageMigrationFileSystem is null ");
+      AppMethodBeat.o(193648);
+      return;
+    }
+    paramMigrationFileSystem = ((b)localObject).fSM().iterator();
+    for (;;)
+    {
+      if (!paramMigrationFileSystem.hasNext()) {
+        break label172;
+      }
+      localObject = (FileSystem.b)paramMigrationFileSystem.next();
+      ae.i("MicroMsg.PostTaskVFSStat", "List image directory of %s:", new Object[] { localObject });
+      localObject = ((FileSystem.b)localObject).dc("", false);
+      if (localObject != null)
+      {
+        localObject = ((Iterable)localObject).iterator();
+        int i = 0;
+        if (((Iterator)localObject).hasNext())
+        {
+          c localc = (c)((Iterator)localObject).next();
+          int j = i + 1;
+          if (localc != null) {
+            ae.i("MicroMsg.PostTaskVFSStat", "--> %s", new Object[] { localc.Itr });
+          }
+          i = j;
+          if (j <= 50) {
+            break;
+          }
+        }
+      }
+    }
+    label172:
+    AppMethodBeat.o(193648);
+  }
+  
+  private static boolean a(b paramb)
+  {
+    AppMethodBeat.i(193646);
+    paramb = paramb.fSM();
+    paramb = paramb.subList(1, paramb.size()).iterator();
+    while (paramb.hasNext())
+    {
+      Iterable localIterable = ((FileSystem.b)paramb.next()).dc("", false);
+      if ((localIterable != null) && (localIterable.iterator().hasNext()))
+      {
+        AppMethodBeat.o(193646);
+        return false;
+      }
+    }
+    AppMethodBeat.o(193646);
+    return true;
+  }
+  
+  private static boolean b(b paramb)
+  {
+    AppMethodBeat.i(193647);
+    paramb = paramb.fSM();
+    if (paramb == null)
+    {
+      AppMethodBeat.o(193647);
+      return true;
+    }
+    paramb = paramb.iterator();
+    while (paramb.hasNext())
+    {
+      FileSystem.b localb = (FileSystem.b)paramb.next();
+      if ((localb != null) && ((localb.fSK() instanceof MigrationFileSystem)) && ((localb instanceof b)) && (a((b)localb)))
+      {
+        AppMethodBeat.o(193647);
+        return false;
+      }
+    }
+    AppMethodBeat.o(193647);
+    return true;
+  }
+  
+  public static void run()
+  {
+    AppMethodBeat.i(193645);
+    ay localay = ay.aRW("VFSStatistic");
+    long l1 = localay.getLong("VFSReportTime", 0L);
+    long l2 = System.currentTimeMillis();
+    if (l2 - l1 < 86400000L)
+    {
+      AppMethodBeat.o(193645);
+      return;
+    }
+    localay.encode("VFSReportTime", l2);
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(new IDKey(1387, 0, 1));
+    if (!v.fTQ())
+    {
+      localArrayList.add(new IDKey(1387, 1, 1));
+      com.tencent.mm.plugin.report.e.ywz.b(localArrayList, false);
+      ae.i("MicroMsg.PostTaskVFSStat", "VFSSwitch.isPathRemapOpen() is false");
+      AppMethodBeat.o(193645);
+      return;
+    }
+    v.fTP();
+    localArrayList.add(new IDKey(1387, 2, 1));
+    localArrayList.add(new IDKey(1387, 3, 1));
+    if (v.fTO())
+    {
+      localArrayList.add(new IDKey(1387, 4, 1));
+      if (com.tencent.mm.sdcard_migrate.b.aRn(com.tencent.mm.loader.j.b.asi())) {
+        localArrayList.add(new IDKey(1387, 100, 1));
+      }
+    }
+    boolean bool3 = localay.getBoolean("VFSAsyncFinished", false);
+    int i;
+    label268:
+    boolean bool1;
+    MigrationFileSystem localMigrationFileSystem;
+    label325:
+    Object localObject2;
+    String str;
+    FileSystem.b localb;
+    boolean bool2;
+    label422:
+    label435:
+    int j;
+    if (bool3)
+    {
+      i = LGV[1];
+      ae.i("MicroMsg.PostTaskVFSStat", "VFS_ASYNC_KEY_FINISH is %s", new Object[] { Integer.valueOf(i) });
+      if (!bool3) {
+        break label536;
+      }
+      i = LGV[1];
+      localArrayList.add(new IDKey(1387, i, 1));
+      e locale = e.fSU();
+      Object localObject1 = locale.gEm().fSZ();
+      bool1 = true;
+      i = 0;
+      localMigrationFileSystem = null;
+      localObject1 = ((Map)localObject1).entrySet().iterator();
+      if (!((Iterator)localObject1).hasNext()) {
+        break label595;
+      }
+      localObject2 = (Map.Entry)((Iterator)localObject1).next();
+      str = (String)((Map.Entry)localObject2).getKey();
+      localObject2 = (FileSystem)((Map.Entry)localObject2).getValue();
+      localb = locale.gEm().aZO(str);
+      if (!LHf.contains(str)) {
+        break label1057;
+      }
+      if (!(localb instanceof b)) {
+        break label558;
+      }
+      if (!(localObject2 instanceof MigrationFileSystem)) {
+        break label545;
+      }
+      bool2 = a((b)localb);
+      if ((!bool1) || (!bool2)) {
+        break label583;
+      }
+      bool1 = true;
+      if (bool3) {
+        break label1054;
+      }
+      if (!bool2) {
+        break label589;
+      }
+      j = 30;
+      label448:
+      localArrayList.add(new IDKey(1387, j + LHf.indexOf(str), 1));
+      ae.i("MicroMsg.PostTaskVFSStat", "FileSystem %s, isMigrationFinished is %s", new Object[] { str, Boolean.valueOf(bool2) });
+      if ((!str.equals("image")) || (bool2)) {
+        break label1054;
+      }
+      i = 1;
+      localMigrationFileSystem = (MigrationFileSystem)localObject2;
+    }
+    label536:
+    label545:
+    label1057:
+    for (;;)
+    {
+      break label325;
+      i = LGV[0];
+      break;
+      i = LGV[0];
+      break label268;
+      bool2 = b((b)localb);
+      break label422;
+      label558:
+      ae.e("MicroMsg.PostTaskVFSStat", "FileSystem %s type error %s", new Object[] { str, localObject2 });
+      break label325;
+      label583:
+      bool1 = false;
+      break label435;
+      label589:
+      j = 40;
+      break label448;
+      label595:
+      if (i != 0)
+      {
+        localArrayList.add(new IDKey(1387, 90, 1));
+        a(localMigrationFileSystem);
+      }
+      ae.i("MicroMsg.PostTaskVFSStat", "VFSP_REPORT_ASYNC_FINISHED is %s, isMigrationFinished is %s", new Object[] { Boolean.valueOf(bool3), Boolean.valueOf(bool1) });
+      if ((bool3) && (!bool1)) {
+        localArrayList.add(new IDKey(1387, 5, 1));
+      }
+      if (bool3)
+      {
+        j = localay.getInt("VFSAsyncFinish", 0);
+        if (j > 1) {
+          break label815;
+        }
+        if (!bool3) {
+          break label806;
+        }
+        i = LGW[1];
+      }
+      for (;;)
+      {
+        ae.i("MicroMsg.PostTaskVFSStat", "DaysKey %s", new Object[] { Integer.valueOf(i) });
+        localArrayList.add(new IDKey(1387, i, 1));
+        com.tencent.mm.plugin.report.e.ywz.b(localArrayList, false);
+        if (bool3) {
+          break label1048;
+        }
+        if (!bool1) {
+          break label1038;
+        }
+        localay.encode("VFSAsyncFinished", true);
+        localay.encode("VFSAsyncFinish", j);
+        AppMethodBeat.o(193645);
+        return;
+        j = localay.getInt("VFSAsyncStart", 0) + 1;
+        break;
+        label806:
+        i = LGW[0];
+        continue;
+        label815:
+        if (j <= 2)
+        {
+          if (bool3) {
+            i = LGX[1];
+          } else {
+            i = LGX[0];
+          }
+        }
+        else if (j <= 3)
+        {
+          if (bool3) {
+            i = LGY[1];
+          } else {
+            i = LGY[0];
+          }
+        }
+        else if (j <= 5)
+        {
+          if (bool3) {
+            i = LGZ[1];
+          } else {
+            i = LGZ[0];
+          }
+        }
+        else if (j <= 10)
+        {
+          if (bool3) {
+            i = LHa[1];
+          } else {
+            i = LHa[0];
+          }
+        }
+        else if (j <= 15)
+        {
+          if (bool3) {
+            i = LHb[1];
+          } else {
+            i = LHb[0];
+          }
+        }
+        else if (j <= 20)
+        {
+          if (bool3) {
+            i = LHc[1];
+          } else {
+            i = LHc[0];
+          }
+        }
+        else if (j <= 30)
+        {
+          if (bool3) {
+            i = LHd[1];
+          } else {
+            i = LHd[0];
+          }
+        }
+        else if (bool3) {
+          i = LHe[1];
+        } else {
+          i = LHe[0];
+        }
+      }
+      localay.encode("VFSAsyncStart", j);
+      AppMethodBeat.o(193645);
+      return;
+    }
   }
 }
 

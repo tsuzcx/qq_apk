@@ -6,8 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class dk
   extends b
 {
-  public a dog;
-  public b doh;
+  public a dpj;
   
   public dk()
   {
@@ -16,22 +15,16 @@ public final class dk
   
   private dk(byte paramByte)
   {
-    AppMethodBeat.i(104415);
-    this.dog = new a();
-    this.doh = new b();
-    this.IbR = false;
+    AppMethodBeat.i(140985);
+    this.dpj = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(104415);
+    AppMethodBeat.o(140985);
   }
   
   public static final class a
   {
-    public int type;
-  }
-  
-  public static final class b
-  {
-    public boolean doi;
+    public int dpk = 0;
   }
 }
 

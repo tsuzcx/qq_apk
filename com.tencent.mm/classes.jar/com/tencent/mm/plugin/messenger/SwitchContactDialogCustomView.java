@@ -14,10 +14,10 @@ public class SwitchContactDialogCustomView
   extends LinearLayout
 {
   private TextView Xl;
-  private TextView vIZ;
-  private ImageView vJa;
-  private TextView vJb;
-  private TextView vJc;
+  private TextView vVd;
+  private ImageView vVe;
+  private TextView vVf;
+  private TextView vVg;
   
   public SwitchContactDialogCustomView(Context paramContext)
   {
@@ -30,32 +30,32 @@ public class SwitchContactDialogCustomView
     AppMethodBeat.i(90742);
     LayoutInflater.from(paramContext).inflate(2131492955, this);
     this.Xl = ((TextView)findViewById(2131305902));
-    this.vIZ = ((TextView)findViewById(2131298739));
-    this.vJa = ((ImageView)findViewById(2131303240));
-    this.vJb = ((TextView)findViewById(2131298996));
-    this.vJc = ((TextView)findViewById(2131305506));
+    this.vVd = ((TextView)findViewById(2131298739));
+    this.vVe = ((ImageView)findViewById(2131303240));
+    this.vVf = ((TextView)findViewById(2131298996));
+    this.vVg = ((TextView)findViewById(2131305506));
     AppMethodBeat.o(90742);
   }
   
   public void setContent(String paramString)
   {
     AppMethodBeat.i(90744);
-    this.vIZ.setText(paramString);
+    this.vVd.setText(paramString);
     AppMethodBeat.o(90744);
   }
   
   public void setDesc(String paramString)
   {
     AppMethodBeat.i(90745);
-    this.vJb.setText(paramString);
+    this.vVf.setText(paramString);
     AppMethodBeat.o(90745);
   }
   
   public void setOnPhotoOnClick(View.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(90748);
-    if (this.vJa != null) {
-      this.vJa.setOnClickListener(paramOnClickListener);
+    if (this.vVe != null) {
+      this.vVe.setOnClickListener(paramOnClickListener);
     }
     AppMethodBeat.o(90748);
   }
@@ -63,14 +63,14 @@ public class SwitchContactDialogCustomView
   public void setPhoto(String paramString)
   {
     AppMethodBeat.i(90747);
-    a.b.c(this.vJa, paramString);
+    a.b.c(this.vVe, paramString);
     AppMethodBeat.o(90747);
   }
   
   public void setSubDesc(String paramString)
   {
     AppMethodBeat.i(90746);
-    this.vJc.setText(paramString);
+    this.vVg.setText(paramString);
     AppMethodBeat.o(90746);
   }
   
@@ -83,7 +83,7 @@ public class SwitchContactDialogCustomView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.messenger.SwitchContactDialogCustomView
  * JD-Core Version:    0.7.0.1
  */

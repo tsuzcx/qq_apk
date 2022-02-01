@@ -4,19 +4,19 @@ import com.tencent.mm.plugin.wenote.model.nativenote.manager.WXRTEditText;
 
 public final class c
 {
-  public WXRTEditText EAC = null;
-  public WXRTEditText EAD = null;
-  public WXRTEditText EAE = null;
+  public WXRTEditText ESY = null;
+  public WXRTEditText ESZ = null;
+  public WXRTEditText ETa = null;
   
   public c(WXRTEditText paramWXRTEditText)
   {
-    this.EAC = paramWXRTEditText;
+    this.ESY = paramWXRTEditText;
   }
   
   public c(WXRTEditText paramWXRTEditText1, WXRTEditText paramWXRTEditText2)
   {
-    this.EAD = paramWXRTEditText1;
-    this.EAE = paramWXRTEditText2;
+    this.ESZ = paramWXRTEditText1;
+    this.ETa = paramWXRTEditText2;
   }
 }
 

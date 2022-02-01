@@ -13,7 +13,7 @@ public final class e
 {
   public View.OnClickListener mOnClickListener;
   private View mView;
-  public String wES;
+  public String wUD;
   
   public e(Context paramContext)
   {
@@ -42,7 +42,7 @@ public final class e
     AppMethodBeat.i(66813);
     super.onBindView(paramView);
     paramView = (TextView)paramView.findViewById(2131302031);
-    paramView.setText(this.wES);
+    paramView.setText(this.wUD);
     paramView.setOnClickListener(this.mOnClickListener);
     AppMethodBeat.o(66813);
   }

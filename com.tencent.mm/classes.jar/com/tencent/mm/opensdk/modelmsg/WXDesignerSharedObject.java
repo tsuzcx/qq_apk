@@ -19,12 +19,12 @@ public class WXDesignerSharedObject
   
   public WXDesignerSharedObject(String paramString1, int paramInt, String paramString2, String paramString3)
   {
-    AppMethodBeat.i(196972);
+    AppMethodBeat.i(194084);
     this.url = paramString2;
     this.thumburl = paramString1;
     this.designerUIN = paramInt;
     this.designerName = paramString3;
-    AppMethodBeat.o(196972);
+    AppMethodBeat.o(194084);
   }
   
   public boolean checkArgs()

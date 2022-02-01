@@ -6,7 +6,7 @@ import com.tencent.mm.kernel.a.c.a;
 import com.tencent.mm.kernel.b.g;
 import com.tencent.mm.protocal.MMProtocalJni;
 import com.tencent.mm.protocal.d;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public class LoadProtocolJNITask
   extends a
@@ -31,13 +31,13 @@ public class LoadProtocolJNITask
   {
     AppMethodBeat.i(133034);
     getClass().getClassLoader();
-    j.vr("MMProtocalJni");
+    j.vN("MMProtocalJni");
     retryOnce(new Runnable()
     {
       public void run()
       {
         AppMethodBeat.i(133031);
-        MMProtocalJni.setClientPackVersion(d.Fnj);
+        MMProtocalJni.setClientPackVersion(d.FFH);
         AppMethodBeat.o(133031);
       }
     });
@@ -46,7 +46,7 @@ public class LoadProtocolJNITask
       public void run()
       {
         AppMethodBeat.i(133032);
-        MMProtocalJni.setProtocalJniLogLevel(ad.getLogLevel());
+        MMProtocalJni.setProtocalJniLogLevel(ae.getLogLevel());
         AppMethodBeat.o(133032);
       }
     });
@@ -69,7 +69,7 @@ public class LoadProtocolJNITask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.zero.tasks.LoadProtocolJNITask
  * JD-Core Version:    0.7.0.1
  */

@@ -18,18 +18,18 @@ final class WalletConfirmCardIDUI$3
     AppMethodBeat.i(70932);
     b localb = new b();
     localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/wallet_core/ui/WalletConfirmCardIDUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-    paramView = WalletConfirmCardIDUI.f(this.DfV).get3DesEncrptData();
-    if ((paramView != null) && (paramView.equals(this.DfW))) {
-      g.yhR.f(11353, new Object[] { Integer.valueOf(0), Integer.valueOf(1) });
+    a.b("com/tencent/mm/plugin/wallet_core/ui/WalletConfirmCardIDUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+    paramView = WalletConfirmCardIDUI.f(this.Dxz).get3DesEncrptData();
+    if ((paramView != null) && (paramView.equals(this.DxA))) {
+      g.yxI.f(11353, new Object[] { Integer.valueOf(0), Integer.valueOf(1) });
     }
     for (;;)
     {
-      WalletConfirmCardIDUI.g(this.DfV);
+      WalletConfirmCardIDUI.g(this.Dxz);
       a.a(this, "com/tencent/mm/plugin/wallet_core/ui/WalletConfirmCardIDUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(70932);
       return;
-      g.yhR.f(11353, new Object[] { Integer.valueOf(0), Integer.valueOf(2) });
+      g.yxI.f(11353, new Object[] { Integer.valueOf(0), Integer.valueOf(2) });
     }
   }
 }

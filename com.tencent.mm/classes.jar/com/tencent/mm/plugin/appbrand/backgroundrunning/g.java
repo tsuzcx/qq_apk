@@ -1,21 +1,27 @@
 package com.tencent.mm.plugin.appbrand.backgroundrunning;
 
 import com.tencent.mm.kernel.c.a;
+import java.util.List;
 
 public abstract interface g
   extends a
 {
-  public abstract void a(AppBrandBackgroundRunningOperationParcel paramAppBrandBackgroundRunningOperationParcel);
+  public abstract void a(a parama);
   
-  public abstract void a(MMBackgroundRunningOperationParcel paramMMBackgroundRunningOperationParcel);
+  public abstract void b(a parama);
   
-  public abstract void a(g.a parama);
+  public abstract List<AppBrandBackgroundRunningApp> bdI();
   
-  public abstract void a(g.b paramb);
+  public abstract void bdJ();
   
-  public abstract void b(g.a parama);
+  public abstract void bdK();
   
-  public abstract void b(g.b paramb);
+  public abstract void c(AppBrandBackgroundRunningOperationParcel paramAppBrandBackgroundRunningOperationParcel);
+  
+  public static abstract interface a
+  {
+    public abstract void a(List<AppBrandBackgroundRunningApp> paramList, AppBrandBackgroundRunningOperationParcel paramAppBrandBackgroundRunningOperationParcel, int paramInt);
+  }
 }
 
 

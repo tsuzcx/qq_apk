@@ -26,10 +26,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.framework.app.UIPageFragmentActivity;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.pluginsdk.ui.applet.CdnImageView;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.g;
-import com.tencent.mm.ui.base.h;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
 import com.tencent.mm.ui.base.i;
 
 public class AlertDialogImpl
@@ -56,17 +54,17 @@ public class AlertDialogImpl
     Activity localActivity = KindaContext.getTopOrUIPageFragmentActivity();
     if ((localActivity instanceof UIPageFragmentActivity))
     {
-      if (((UIPageFragmentActivity)localActivity).agx())
+      if (((UIPageFragmentActivity)localActivity).agL())
       {
         ((UIPageFragmentActivity)localActivity).finish();
         AppMethodBeat.o(18745);
         return;
       }
-      ad.i("AlertDialogImpl", "finishUIPageFragmentActivity, UIPageFragmentActivity shouldn't finish!");
+      ae.i("AlertDialogImpl", "finishUIPageFragmentActivity, UIPageFragmentActivity shouldn't finish!");
       AppMethodBeat.o(18745);
       return;
     }
-    ad.i("AlertDialogImpl", "finishUIPageFragmentActivity, UIPageFragmentActivity no found!");
+    ae.i("AlertDialogImpl", "finishUIPageFragmentActivity, UIPageFragmentActivity no found!");
     AppMethodBeat.o(18745);
   }
   
@@ -75,7 +73,7 @@ public class AlertDialogImpl
     AppMethodBeat.i(18755);
     if (paramString != null) {
       if (paramString.startsWith("file://")) {
-        paramString = g.aQf(paramString.replaceFirst("file://", ""));
+        paramString = com.tencent.mm.sdk.platformtools.h.aRC(paramString.replaceFirst("file://", ""));
       }
     }
     Bitmap localBitmap;
@@ -84,15 +82,15 @@ public class AlertDialogImpl
       int i;
       if (paramString != null)
       {
-        paramString = new BitmapDrawable(aj.getContext().getResources(), paramString);
+        paramString = new BitmapDrawable(ak.getContext().getResources(), paramString);
         AppMethodBeat.o(18755);
         return paramString;
-        int j = ResourcesUtils.getDrawableId(aj.getContext(), paramString);
+        int j = ResourcesUtils.getDrawableId(ak.getContext(), paramString);
         i = j;
         if (j == 0) {
-          i = ResourcesUtils.getResId(aj.getContext(), paramString, "raw");
+          i = ResourcesUtils.getResId(ak.getContext(), paramString, "raw");
         }
-        localBitmap = BitmapFactory.decodeResource(aj.getContext().getResources(), i);
+        localBitmap = BitmapFactory.decodeResource(ak.getContext().getResources(), i);
         paramString = localBitmap;
         if (localBitmap != null) {}
       }
@@ -100,7 +98,7 @@ public class AlertDialogImpl
       {
         try
         {
-          Drawable localDrawable = aj.getContext().getResources().getDrawable(i);
+          Drawable localDrawable = ak.getContext().getResources().getDrawable(i);
           paramString = localBitmap;
           if (localDrawable == null) {
             continue;
@@ -124,7 +122,7 @@ public class AlertDialogImpl
     if (this.kindaCacheService != null)
     {
       this.kindaCacheService.setBool("kindaShowingDialog", false, 0L);
-      ad.i("AlertDialogImpl", "setKindaDismissDialog");
+      ae.i("AlertDialogImpl", "setKindaDismissDialog");
     }
     AppMethodBeat.o(18744);
   }
@@ -135,7 +133,7 @@ public class AlertDialogImpl
     if (this.kindaCacheService != null)
     {
       this.kindaCacheService.setBool("kindaShowingDialog", true, 0L);
-      ad.i("AlertDialogImpl", "setKindaShowingDialog");
+      ae.i("AlertDialogImpl", "setKindaShowingDialog");
     }
     AppMethodBeat.o(18743);
   }
@@ -163,11 +161,11 @@ public class AlertDialogImpl
     Context localContext = KindaContext.get();
     if (localContext == null)
     {
-      ad.e("AlertDialogImpl", "AlertDialogImpl showImpl() KindaContext.get() return null! case 1");
+      ae.e("AlertDialogImpl", "AlertDialogImpl showImpl() KindaContext.get() return null! case 1");
       AppMethodBeat.o(18747);
       return;
     }
-    this.mDialog = h.a(localContext, paramString2, paramString1, paramString3, false, new DialogInterface.OnClickListener()
+    this.mDialog = com.tencent.mm.ui.base.h.a(localContext, paramString2, paramString1, paramString3, false, new DialogInterface.OnClickListener()
     {
       public void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
@@ -189,11 +187,11 @@ public class AlertDialogImpl
     Context localContext = KindaContext.get();
     if (localContext == null)
     {
-      ad.e("AlertDialogImpl", "AlertDialogImpl showImpl() KindaContext.get() return null! case 2");
+      ae.e("AlertDialogImpl", "AlertDialogImpl showImpl() KindaContext.get() return null! case 2");
       AppMethodBeat.o(18748);
       return;
     }
-    this.mDialog = h.a(localContext, paramString2, paramString1, paramString4, paramString3, false, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+    this.mDialog = com.tencent.mm.ui.base.h.a(localContext, paramString2, paramString1, paramString4, paramString3, false, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
     {
       public void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
@@ -226,11 +224,11 @@ public class AlertDialogImpl
     paramString5 = KindaContext.get();
     if (paramString5 == null)
     {
-      ad.e("AlertDialogImpl", "AlertDialogImpl showImpl() KindaContext.get() return null! case 3");
+      ae.e("AlertDialogImpl", "AlertDialogImpl showImpl() KindaContext.get() return null! case 3");
       AppMethodBeat.o(18749);
       return;
     }
-    this.mDialog = h.a(paramString5, paramString2, paramString1, paramString3, paramString4, false, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+    this.mDialog = com.tencent.mm.ui.base.h.a(paramString5, paramString2, paramString1, paramString3, paramString4, false, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
     {
       public void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
@@ -275,11 +273,11 @@ public class AlertDialogImpl
     Context localContext = KindaContext.get();
     if (localContext == null)
     {
-      ad.e("AlertDialogImpl", "AlertDialogImpl showImpl() KindaContext.get() return null! case 4");
+      ae.e("AlertDialogImpl", "AlertDialogImpl showImpl() KindaContext.get() return null! case 4");
       AppMethodBeat.o(18750);
       return;
     }
-    this.mDialog = h.a(localContext, paramString2, paramString1, paramString3, false, new DialogInterface.OnClickListener()
+    this.mDialog = com.tencent.mm.ui.base.h.a(localContext, paramString2, paramString1, paramString3, false, new DialogInterface.OnClickListener()
     {
       public void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
@@ -301,7 +299,7 @@ public class AlertDialogImpl
     Object localObject = KindaContext.get();
     if (localObject == null)
     {
-      ad.e("AlertDialogImpl", "AlertDialogImpl showTipsImpl() KindaContext.get() return null! case 7");
+      ae.e("AlertDialogImpl", "AlertDialogImpl showTipsImpl() KindaContext.get() return null! case 7");
       AppMethodBeat.o(18753);
       return;
     }
@@ -337,7 +335,7 @@ public class AlertDialogImpl
           AppMethodBeat.i(18731);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
           localb.bd(paramAnonymousView);
-          a.b("com/tencent/kinda/framework/widget/base/AlertDialogImpl$13", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+          a.b("com/tencent/kinda/framework/widget/base/AlertDialogImpl$13", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
           if (paramVoidCallback != null) {
             paramVoidCallback.call();
           }
@@ -369,11 +367,11 @@ public class AlertDialogImpl
     Context localContext = KindaContext.get();
     if (localContext == null)
     {
-      ad.e("AlertDialogImpl", "AlertDialogImpl showImpl() KindaContext.get() return null! case 5");
+      ae.e("AlertDialogImpl", "AlertDialogImpl showImpl() KindaContext.get() return null! case 5");
       AppMethodBeat.o(18751);
       return;
     }
-    this.mDialog = h.a(localContext, paramString2, paramString1, paramString4, paramString3, false, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+    this.mDialog = com.tencent.mm.ui.base.h.a(localContext, paramString2, paramString1, paramString4, paramString3, false, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
     {
       public void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
@@ -406,7 +404,7 @@ public class AlertDialogImpl
     Object localObject = KindaContext.get();
     if (localObject == null)
     {
-      ad.e("AlertDialogImpl", "AlertDialogImpl showTipsImpl() KindaContext.get() return null! case 8");
+      ae.e("AlertDialogImpl", "AlertDialogImpl showTipsImpl() KindaContext.get() return null! case 8");
       AppMethodBeat.o(18754);
       return;
     }
@@ -444,7 +442,7 @@ public class AlertDialogImpl
           AppMethodBeat.i(18732);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
           localb.bd(paramAnonymousView);
-          a.b("com/tencent/kinda/framework/widget/base/AlertDialogImpl$14", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+          a.b("com/tencent/kinda/framework/widget/base/AlertDialogImpl$14", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
           if (paramVoidCallback1 != null) {
             paramVoidCallback1.call();
           }
@@ -462,7 +460,7 @@ public class AlertDialogImpl
           AppMethodBeat.i(18733);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
           localb.bd(paramAnonymousView);
-          a.b("com/tencent/kinda/framework/widget/base/AlertDialogImpl$15", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+          a.b("com/tencent/kinda/framework/widget/base/AlertDialogImpl$15", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
           if (paramVoidCallback2 != null) {
             paramVoidCallback2.call();
           }
@@ -494,7 +492,7 @@ public class AlertDialogImpl
     Object localObject = KindaContext.get();
     if (localObject == null)
     {
-      ad.e("AlertDialogImpl", "AlertDialogImpl showTipsImpl() KindaContext.get() return null! case 6");
+      ae.e("AlertDialogImpl", "AlertDialogImpl showTipsImpl() KindaContext.get() return null! case 6");
       AppMethodBeat.o(18752);
       return;
     }
@@ -505,12 +503,12 @@ public class AlertDialogImpl
     TextView localTextView3 = (TextView)((i)localObject).findViewById(2131301275);
     TextView localTextView4 = (TextView)((i)localObject).findViewById(2131301276);
     TextView localTextView5 = (TextView)((i)localObject).findViewById(2131301277);
-    if (!com.tencent.matrix.trace.g.b.ea(paramString1))
+    if (!com.tencent.matrix.trace.g.b.ef(paramString1))
     {
       localTextView1.setVisibility(0);
       localTextView1.setText(paramString1);
     }
-    if (!com.tencent.matrix.trace.g.b.ea(paramString2))
+    if (!com.tencent.matrix.trace.g.b.ef(paramString2))
     {
       localTextView2.setVisibility(0);
       localTextView2.setText(paramString2);
@@ -527,7 +525,7 @@ public class AlertDialogImpl
         AppMethodBeat.i(18728);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
         localb.bd(paramAnonymousView);
-        a.b("com/tencent/kinda/framework/widget/base/AlertDialogImpl$10", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        a.b("com/tencent/kinda/framework/widget/base/AlertDialogImpl$10", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
         if (paramVoidCallback1 != null) {
           paramVoidCallback1.call();
         }
@@ -545,7 +543,7 @@ public class AlertDialogImpl
         AppMethodBeat.i(18729);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
         localb.bd(paramAnonymousView);
-        a.b("com/tencent/kinda/framework/widget/base/AlertDialogImpl$11", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        a.b("com/tencent/kinda/framework/widget/base/AlertDialogImpl$11", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
         if (paramVoidCallback2 != null) {
           paramVoidCallback2.call();
         }
@@ -563,7 +561,7 @@ public class AlertDialogImpl
         AppMethodBeat.i(18730);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
         localb.bd(paramAnonymousView);
-        a.b("com/tencent/kinda/framework/widget/base/AlertDialogImpl$12", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        a.b("com/tencent/kinda/framework/widget/base/AlertDialogImpl$12", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
         if (paramVoidCallback3 != null) {
           paramVoidCallback3.call();
         }

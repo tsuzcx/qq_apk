@@ -1,33 +1,25 @@
 package com.tencent.mm.plugin.finder.convert;
 
-import android.support.v7.widget.RecyclerView;
-import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.finder.model.ah;
-import com.tencent.mm.view.recyclerview.b;
-import com.tencent.mm.view.recyclerview.e;
-import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/convert/FinderMsgNoMoreFooterConvert;", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "Lcom/tencent/mm/plugin/finder/model/FinderMsgNoMore;", "()V", "getLayoutId", "", "onBindViewHolder", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "position", "type", "isHotPatch", "", "payloads", "", "", "onCreateViewHolder", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/convert/FinderMsgMentionedNewConvert;", "Lcom/tencent/mm/plugin/finder/convert/FinderMsgConvert;", "Lcom/tencent/mm/plugin/finder/model/FinderMsgMentioned;", "scene", "", "(I)V", "TAG", "", "getTAG", "()Ljava/lang/String;", "getScene", "()I", "convertMsg", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "position", "plugin-finder_release"})
 public final class ax
-  extends b<ah>
+  extends al<ah>
 {
-  public final void a(RecyclerView paramRecyclerView, e parame, int paramInt)
-  {
-    AppMethodBeat.i(201467);
-    p.h(paramRecyclerView, "recyclerView");
-    p.h(parame, "holder");
-    AppMethodBeat.o(201467);
-  }
+  private final String TAG;
+  private final int scene;
   
-  public final int getLayoutId()
+  public ax(int paramInt)
   {
-    return 2131494060;
+    super(2131496398, paramInt);
+    this.scene = paramInt;
+    this.TAG = "Finder.FinderMsgMentionedConvert";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.convert.ax
  * JD-Core Version:    0.7.0.1
  */

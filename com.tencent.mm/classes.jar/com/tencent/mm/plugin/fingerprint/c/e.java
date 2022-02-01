@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.fingerprint.c;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.network.k;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.wallet_core.tenpay.model.m;
 import java.net.URLEncoder;
 import java.util.HashMap;
@@ -14,19 +14,19 @@ public final class e
   extends m
   implements k
 {
-  public String dvg;
-  public String tgP;
-  public String thL;
+  public String dwl;
+  public String trI;
+  public String tsE;
   
   public e(String paramString)
   {
     AppMethodBeat.i(64472);
-    this.tgP = "";
-    this.dvg = "";
-    this.thL = "";
+    this.trI = "";
+    this.dwl = "";
+    this.tsE = "";
     HashMap localHashMap = new HashMap();
     if (TextUtils.isEmpty(paramString)) {
-      ad.e("MicroMsg.NetSceneTenpayGetOpenTouchCert", "encrypted_cert_info is empty");
+      ae.e("MicroMsg.NetSceneTenpayGetOpenTouchCert", "encrypted_cert_info is empty");
     }
     for (;;)
     {
@@ -35,7 +35,7 @@ public final class e
       setRequestData(localHashMap);
       AppMethodBeat.o(64472);
       return;
-      ad.i("MicroMsg.NetSceneTenpayGetOpenTouchCert", "encrypted_cert_info is not empty");
+      ae.i("MicroMsg.NetSceneTenpayGetOpenTouchCert", "encrypted_cert_info is not empty");
     }
   }
   
@@ -59,32 +59,32 @@ public final class e
     AppMethodBeat.i(64473);
     if (paramJSONObject != null)
     {
-      this.tgP = paramJSONObject.optString("encrypted_device_info");
-      this.dvg = paramJSONObject.optString("encrypted_rsa_sign");
-      this.thL = paramJSONObject.optString("cert");
-      if (TextUtils.isEmpty(this.tgP))
+      this.trI = paramJSONObject.optString("encrypted_device_info");
+      this.dwl = paramJSONObject.optString("encrypted_rsa_sign");
+      this.tsE = paramJSONObject.optString("cert");
+      if (TextUtils.isEmpty(this.trI))
       {
-        ad.e("MicroMsg.NetSceneTenpayGetOpenTouchCert", "encrypted_device_info is empty");
-        if (!TextUtils.isEmpty(this.dvg)) {
+        ae.e("MicroMsg.NetSceneTenpayGetOpenTouchCert", "encrypted_device_info is empty");
+        if (!TextUtils.isEmpty(this.dwl)) {
           break label106;
         }
-        ad.e("MicroMsg.NetSceneTenpayGetOpenTouchCert", "encrypted_rsa_sign is empty");
+        ae.e("MicroMsg.NetSceneTenpayGetOpenTouchCert", "encrypted_rsa_sign is empty");
       }
       for (;;)
       {
-        if (!TextUtils.isEmpty(this.thL)) {
+        if (!TextUtils.isEmpty(this.tsE)) {
           break label116;
         }
-        ad.e("MicroMsg.NetSceneTenpayGetOpenTouchCert", "cert is empty");
+        ae.e("MicroMsg.NetSceneTenpayGetOpenTouchCert", "cert is empty");
         AppMethodBeat.o(64473);
         return;
-        ad.i("MicroMsg.NetSceneTenpayGetOpenTouchCert", "encrypted_device_info is not empty");
+        ae.i("MicroMsg.NetSceneTenpayGetOpenTouchCert", "encrypted_device_info is not empty");
         break;
         label106:
-        ad.i("MicroMsg.NetSceneTenpayGetOpenTouchCert", "encrypted_rsa_sign is not empty");
+        ae.i("MicroMsg.NetSceneTenpayGetOpenTouchCert", "encrypted_rsa_sign is not empty");
       }
       label116:
-      ad.i("MicroMsg.NetSceneTenpayGetOpenTouchCert", "cert is not empty");
+      ae.i("MicroMsg.NetSceneTenpayGetOpenTouchCert", "cert is not empty");
     }
     AppMethodBeat.o(64473);
   }

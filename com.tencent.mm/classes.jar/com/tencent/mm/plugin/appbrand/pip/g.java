@@ -1,48 +1,48 @@
 package com.tencent.mm.plugin.appbrand.pip;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.b.a.hs;
+import com.tencent.mm.g.b.a.hu;
 import com.tencent.mm.plugin.appbrand.jsapi.q.b.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public enum g
   implements d
 {
   static
   {
-    AppMethodBeat.i(188708);
-    moe = new g("INSTANCE");
-    mof = new g[] { moe };
-    AppMethodBeat.o(188708);
+    AppMethodBeat.i(222924);
+    mtc = new g("INSTANCE");
+    mtd = new g[] { mtc };
+    AppMethodBeat.o(222924);
   }
   
   private g() {}
   
-  private static hs a(c paramc)
+  private static hu a(c paramc)
   {
-    AppMethodBeat.i(188707);
-    paramc = new hs().qy(paramc.appId).qz(paramc.dki).qA(paramc.videoUrl);
-    AppMethodBeat.o(188707);
+    AppMethodBeat.i(222923);
+    paramc = new hu().qT(paramc.appId).qU(paramc.dlk).qV(paramc.videoUrl);
+    AppMethodBeat.o(222923);
     return paramc;
   }
   
   public final void a(c paramc, b.a parama)
   {
     int i = 1;
-    AppMethodBeat.i(188704);
-    ad.d("MicroMsg.AppBrand.AppBrandPipReporter", "onVideoSupportPip, baseInfo: %s, mode: %s", new Object[] { paramc, parama });
+    AppMethodBeat.i(222920);
+    ae.d("MicroMsg.AppBrand.AppBrandPipReporter", "onVideoSupportPip, baseInfo: %s, mode: %s", new Object[] { paramc, parama });
     paramc = a(paramc);
-    paramc.eth = 1L;
-    switch (1.mog[parama.ordinal()])
+    paramc.euO = 1L;
+    switch (1.mte[parama.ordinal()])
     {
     default: 
       i = 0;
     }
     for (;;)
     {
-      paramc.eti = i;
-      paramc.aLk();
-      AppMethodBeat.o(188704);
+      paramc.euP = i;
+      paramc.aLH();
+      AppMethodBeat.o(222920);
       return;
       i = 2;
       continue;
@@ -53,19 +53,19 @@ public enum g
   public final void a(c paramc, e parame)
   {
     int j = 4;
-    AppMethodBeat.i(188706);
-    ad.d("MicroMsg.AppBrand.AppBrandPipReporter", "onPipHide, baseInfo: %s, hideReason: %s", new Object[] { paramc, parame });
+    AppMethodBeat.i(222922);
+    ae.d("MicroMsg.AppBrand.AppBrandPipReporter", "onPipHide, baseInfo: %s, hideReason: %s", new Object[] { paramc, parame });
     paramc = a(paramc);
     int i;
-    switch (1.moh[parame.ordinal()])
+    switch (1.mtf[parame.ordinal()])
     {
     default: 
       i = 6;
-      paramc.eth = i;
+      paramc.euO = i;
       if (6 == i)
       {
         i = j;
-        switch (1.moh[parame.ordinal()])
+        switch (1.mtf[parame.ordinal()])
         {
         default: 
           i = 0;
@@ -75,9 +75,9 @@ public enum g
     }
     for (;;)
     {
-      paramc.eti = i;
-      paramc.aLk();
-      AppMethodBeat.o(188706);
+      paramc.euP = i;
+      paramc.aLH();
+      AppMethodBeat.o(222922);
       return;
       i = 4;
       break;
@@ -93,15 +93,15 @@ public enum g
   
   public final void b(c paramc, b.a parama)
   {
-    AppMethodBeat.i(188705);
-    ad.d("MicroMsg.AppBrand.AppBrandPipReporter", "onPipShow, baseInfo: %s, mode: %s", new Object[] { paramc, parama });
+    AppMethodBeat.i(222921);
+    ae.d("MicroMsg.AppBrand.AppBrandPipReporter", "onPipShow, baseInfo: %s, mode: %s", new Object[] { paramc, parama });
     paramc = a(paramc);
-    if (b.a.leh == parama) {}
+    if (b.a.lhT == parama) {}
     for (long l = 2L;; l = 3L)
     {
-      paramc.eth = l;
-      paramc.aLk();
-      AppMethodBeat.o(188705);
+      paramc.euO = l;
+      paramc.aLH();
+      AppMethodBeat.o(222921);
       return;
     }
   }

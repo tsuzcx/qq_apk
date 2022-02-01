@@ -18,10 +18,10 @@ final class a$9
     JSONObject localJSONObject = new JSONObject();
     try
     {
-      localJSONObject.put("livePlayerId", this.kCh);
+      localJSONObject.put("livePlayerId", this.kFw);
       localJSONObject.put("volume", paramInt);
       label41:
-      this.kCd.b(locala.Pi(localJSONObject.toString()));
+      this.kFs.b(locala.PQ(localJSONObject.toString()));
       AppMethodBeat.o(145855);
       return;
     }

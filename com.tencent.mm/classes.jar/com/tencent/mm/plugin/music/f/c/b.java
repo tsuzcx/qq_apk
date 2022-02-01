@@ -2,19 +2,19 @@ package com.tencent.mm.plugin.music.f.c;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.concurrent.ConcurrentHashMap;
 
 public final class b
 {
-  private static b wmx = null;
+  private static b wCg = null;
   private Context ctx;
-  private ConcurrentHashMap<Class<? extends a>, a> wmy;
+  private ConcurrentHashMap<Class<? extends a>, a> wCh;
   
   private b(Context paramContext)
   {
     AppMethodBeat.i(137414);
-    this.wmy = new ConcurrentHashMap();
+    this.wCh = new ConcurrentHashMap();
     this.ctx = paramContext;
     AppMethodBeat.o(137414);
   }
@@ -22,14 +22,14 @@ public final class b
   public static void a(Class<? extends a> paramClass, a parama)
   {
     AppMethodBeat.i(137418);
-    dtF().wmy.put(paramClass, parama);
+    dwU().wCh.put(paramClass, parama);
     AppMethodBeat.o(137418);
   }
   
   public static <T extends a> T aQ(Class<T> paramClass)
   {
     AppMethodBeat.i(137420);
-    paramClass = (a)dtF().wmy.get(paramClass);
+    paramClass = (a)dwU().wCh.get(paramClass);
     AppMethodBeat.o(137420);
     return paramClass;
   }
@@ -37,17 +37,17 @@ public final class b
   public static void ac(Class<? extends a> paramClass)
   {
     AppMethodBeat.i(137419);
-    dtF().wmy.remove(paramClass);
+    dwU().wCh.remove(paramClass);
     AppMethodBeat.o(137419);
   }
   
-  private static b dtF()
+  private static b dwU()
   {
     AppMethodBeat.i(137416);
-    if (wmx == null) {
+    if (wCg == null) {
       init(null);
     }
-    b localb = wmx;
+    b localb = wCg;
     AppMethodBeat.o(137416);
     return localb;
   }
@@ -60,7 +60,7 @@ public final class b
     //   2: monitorenter
     //   3: ldc 72
     //   5: invokestatic 27	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   8: getstatic 15	com/tencent/mm/plugin/music/f/c/b:wmx	Lcom/tencent/mm/plugin/music/f/c/b;
+    //   8: getstatic 15	com/tencent/mm/plugin/music/f/c/b:wCg	Lcom/tencent/mm/plugin/music/f/c/b;
     //   11: ifnull +12 -> 23
     //   14: ldc 72
     //   16: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -69,12 +69,12 @@ public final class b
     //   22: return
     //   23: ldc 74
     //   25: ldc 76
-    //   27: invokestatic 81	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   27: invokestatic 81	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   30: new 2	com/tencent/mm/plugin/music/f/c/b
     //   33: dup
     //   34: aload_0
     //   35: invokespecial 83	com/tencent/mm/plugin/music/f/c/b:<init>	(Landroid/content/Context;)V
-    //   38: putstatic 15	com/tencent/mm/plugin/music/f/c/b:wmx	Lcom/tencent/mm/plugin/music/f/c/b;
+    //   38: putstatic 15	com/tencent/mm/plugin/music/f/c/b:wCg	Lcom/tencent/mm/plugin/music/f/c/b;
     //   41: ldc 72
     //   43: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   46: goto -27 -> 19
@@ -97,11 +97,11 @@ public final class b
     try
     {
       AppMethodBeat.i(137417);
-      ad.i("MicroMsg.Audio.AudioPlayerCoreService", "release");
-      b localb = wmx;
-      localb.wmy.clear();
+      ae.i("MicroMsg.Audio.AudioPlayerCoreService", "release");
+      b localb = wCg;
+      localb.wCh.clear();
       localb.ctx = null;
-      wmx = null;
+      wCg = null;
       AppMethodBeat.o(137417);
       return;
     }

@@ -1,94 +1,38 @@
 package com.tencent.mm.plugin.appbrand.jsapi.g;
 
-import android.bluetooth.BluetoothAdapter;
-import android.content.Context;
-import android.location.LocationManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.deviceinfo.q;
-import com.tencent.mm.ipcinvoker.wx_extension.a.a.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.storage.c;
-import java.util.Map;
+import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
+import com.tencent.mm.plugin.appbrand.a.c.a;
 
 public final class s
-  extends com.tencent.luggage.f.a.a
+  extends r
 {
-  private static volatile Boolean kON;
+  q kSc;
+  c.a kSu;
   
-  static
+  s(com.tencent.mm.plugin.appbrand.jsapi.c paramc)
   {
-    AppMethodBeat.i(46387);
-    try
-    {
-      ad.i("MicroMsg.TencentLocationManagerWxImp", "printBluetoothEnable open:%b", new Object[] { Boolean.valueOf(BluetoothAdapter.getDefaultAdapter().isEnabled()) });
-      try
-      {
-        LocationManager localLocationManager = (LocationManager)aj.getContext().getSystemService("location");
-        if (localLocationManager == null) {
-          break label135;
-        }
-        boolean bool1 = localLocationManager.isProviderEnabled("gps");
-        boolean bool2 = localLocationManager.isProviderEnabled("network");
-        ad.i("MicroMsg.TencentLocationManagerWxImp", "isGPSEnable " + bool1 + ", isNetworkEnable:" + bool2);
-      }
-      catch (Exception localException2)
-      {
-        for (;;)
-        {
-          ad.printErrStackTrace("MicroMsg.TencentLocationManagerWxImp", localException2, "", new Object[0]);
-        }
-      }
-      ad.i("MicroMsg.TencentLocationManagerWxImp", "Imei:%s", new Object[] { q.cH(true) });
-      AppMethodBeat.o(46387);
-      return;
-    }
-    catch (Exception localException1)
-    {
-      for (;;)
-      {
-        ad.printErrStackTrace("MicroMsg.TencentLocationManagerWxImp", localException1, "", new Object[0]);
-        ad.i("MicroMsg.TencentLocationManagerWxImp", "printBluetoothEnable fail");
-        continue;
-        label135:
-        ad.e("MicroMsg.TencentLocationManagerWxImp", "locationManager is null");
-      }
-    }
+    super(paramc);
   }
   
-  public final boolean Fp()
+  public final void W(AppBrandRuntime paramAppBrandRuntime)
   {
-    AppMethodBeat.i(46386);
-    if (kON != null) {
-      kON.booleanValue();
+    AppMethodBeat.i(138214);
+    if (this.kSc != null) {
+      this.kSc.bll();
     }
-    Object localObject;
-    for (;;)
-    {
-      bool = kON.booleanValue();
-      AppMethodBeat.o(46386);
-      return bool;
-      localObject = a.a.gyq;
-      localObject = com.tencent.mm.ipcinvoker.wx_extension.a.a.wz("100459");
-      if (localObject != null) {
-        break;
-      }
-      ad.i("MicroMsg.TencentLocationManagerWxImp", "[sLocationLogOpen] item is null");
-      kON = Boolean.FALSE;
+    if ((paramAppBrandRuntime != null) && (this.kSu != null)) {
+      paramAppBrandRuntime.jzQ.b(this.kSu);
     }
-    if ((((c)localObject).isValid()) && ("true".equals(((c)localObject).foF().get("isLocationLogOpen")))) {}
-    for (boolean bool = true;; bool = false)
-    {
-      kON = Boolean.valueOf(bool);
-      ad.i("MicroMsg.TencentLocationManagerWxImp", "sLocationLogOpen:%b", new Object[] { kON });
-      kON.booleanValue();
-      break;
-    }
+    this.kSc = null;
+    this.kSu = null;
+    this.kSp = null;
+    AppMethodBeat.o(138214);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.g.s
  * JD-Core Version:    0.7.0.1
  */

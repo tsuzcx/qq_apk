@@ -11,9 +11,9 @@ public final class OpenFileRequest
 {
   public static final Parcelable.Creator<OpenFileRequest> CREATOR;
   public String appId;
-  public String fVf;
+  public String fXl;
   public String filePath;
-  public boolean kpF;
+  public boolean showMenu;
   
   static
   {
@@ -29,12 +29,12 @@ public final class OpenFileRequest
     super(paramParcel);
   }
   
-  public final Class<? extends AppBrandProxyUIProcessTask> bgN()
+  public final Class<? extends AppBrandProxyUIProcessTask> bhv()
   {
     return OpenFileRequest.a.class;
   }
   
-  public final String bhS()
+  public final String biB()
   {
     return "QbDocumentReader";
   }
@@ -50,12 +50,12 @@ public final class OpenFileRequest
     AppMethodBeat.i(174834);
     super.j(paramParcel);
     this.filePath = paramParcel.readString();
-    this.fVf = paramParcel.readString();
+    this.fXl = paramParcel.readString();
     this.appId = paramParcel.readString();
     if (paramParcel.readInt() == 1) {}
     for (;;)
     {
-      this.kpF = bool;
+      this.showMenu = bool;
       AppMethodBeat.o(174834);
       return;
       bool = false;
@@ -67,9 +67,9 @@ public final class OpenFileRequest
     AppMethodBeat.i(174835);
     super.writeToParcel(paramParcel, paramInt);
     paramParcel.writeString(this.filePath);
-    paramParcel.writeString(this.fVf);
+    paramParcel.writeString(this.fXl);
     paramParcel.writeString(this.appId);
-    if (this.kpF) {}
+    if (this.showMenu) {}
     for (paramInt = 1;; paramInt = 0)
     {
       paramParcel.writeInt(paramInt);

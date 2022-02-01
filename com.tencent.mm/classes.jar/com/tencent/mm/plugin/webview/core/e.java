@@ -7,7 +7,7 @@ import com.tencent.xweb.WebView;
 import com.tencent.xweb.r;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/webview/core/WebViewClientListener;", "", "()V", "doUpdateVisitedHistory", "", "webview", "Lcom/tencent/xweb/WebView;", "url", "", "isReload", "", "onPageCommitVisible", "onPageFinished", "onPageStarted", "onReceivedError", "errorCode", "", "description", "failingUrl", "onReceivedHttpError", "webResourceRequest", "Lcom/tencent/xweb/WebResourceRequest;", "webResourceResponse", "Lcom/tencent/xweb/WebResourceResponse;", "onReceivedSslError", "handler", "Lcom/tencent/xweb/SslErrorHandler;", "error", "Landroid/net/http/SslError;", "webview-sdk_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/webview/core/WebViewClientListener;", "", "()V", "doUpdateVisitedHistory", "", "webview", "Lcom/tencent/xweb/WebView;", "url", "", "isReload", "", "onPageCommitVisible", "onPageFinished", "onPageStarted", "onReceivedError", "errorCode", "", "description", "failingUrl", "onReceivedHttpError", "webResourceRequest", "Lcom/tencent/xweb/WebResourceRequest;", "webResourceResponse", "Lcom/tencent/xweb/WebResourceResponse;", "onReceivedSslError", "handler", "Lcom/tencent/xweb/SslErrorHandler;", "error", "Landroid/net/http/SslError;", "webview-sdk_release"})
 public class e
 {
   public void a(WebView paramWebView, int paramInt, String paramString1, String paramString2) {}
@@ -16,9 +16,9 @@ public class e
   
   public void a(WebView paramWebView, r paramr, SslError paramSslError) {}
   
-  public void aGk(String paramString) {}
+  public void aHE(String paramString) {}
   
-  public void aGl(String paramString) {}
+  public void aHF(String paramString) {}
   
   public void b(WebView paramWebView, String paramString) {}
   

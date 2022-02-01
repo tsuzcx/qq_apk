@@ -2,17 +2,17 @@ package com.tencent.mm.pluginsdk;
 
 public abstract interface o$b
 {
-  public abstract int dOH();
+  public abstract int dSe();
   
-  public abstract void dOI();
+  public abstract void dSf();
   
-  public abstract boolean dOJ();
+  public abstract boolean dSg();
   
-  public abstract void dOK();
+  public abstract void dSh();
   
-  public abstract void dOL();
+  public abstract void dSi();
   
-  public abstract boolean dOM();
+  public abstract boolean dSj();
 }
 
 

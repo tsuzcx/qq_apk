@@ -8,7 +8,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class f
 {
-  public static boolean aC(Context paramContext)
+  public static boolean aD(Context paramContext)
   {
     AppMethodBeat.i(140517);
     if (paramContext == null)

@@ -27,10 +27,10 @@ import com.tencent.mm.plugin.webview.luggage.h;
 import com.tencent.mm.plugin.webview.luggage.i;
 import com.tencent.mm.plugin.webview.modeltools.j;
 import com.tencent.mm.pluginsdk.model.w.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.widget.MMWebView;
 import com.tencent.xweb.WebResourceRequest;
 import com.tencent.xweb.WebView;
@@ -45,39 +45,39 @@ public class a
   extends MMWebView
   implements com.tencent.luggage.webview.a
 {
-  protected com.tencent.mm.plugin.webview.e.c DOK;
-  private WeakReference<g> DSi;
-  private i DSj;
-  private f DSk;
-  private h DSl;
+  protected com.tencent.mm.plugin.webview.e.c EgK;
+  private WeakReference<g> Eki;
+  private i Ekj;
+  private f Ekk;
+  private h Ekl;
   private p chX;
-  private ab lvl;
+  private ab lzJ;
   private boolean mDestroyed;
-  public String uWA;
-  private Handler wuy;
+  public String vio;
+  private Handler wKi;
   
   public a(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(78800);
     this.mDestroyed = false;
-    this.DSj = new i()
+    this.Ekj = new i()
     {
       public final void b(WebView paramAnonymousWebView, String paramAnonymousString, Bitmap paramAnonymousBitmap)
       {
         AppMethodBeat.i(78799);
-        ad.i(getClass().getSimpleName(), "onPageStarted");
+        ae.i(getClass().getSimpleName(), "onPageStarted");
         super.b(paramAnonymousWebView, paramAnonymousString, paramAnonymousBitmap);
         AppMethodBeat.o(78799);
       }
     };
-    this.DSk = new f() {};
-    this.DSl = new h()
+    this.Ekk = new f() {};
+    this.Ekl = new h()
     {
       public final void computeScroll(View paramAnonymousView)
       {
         AppMethodBeat.i(78778);
-        a.b(a.this).bpf();
+        a.b(a.this).bpP();
         super.computeScroll(paramAnonymousView);
         AppMethodBeat.o(78778);
       }
@@ -111,14 +111,14 @@ public class a
         AppMethodBeat.i(78771);
         if (a.a(a.this).get() == null)
         {
-          ad.i("MicroMsg.LuggageMMWebViewCoreImpl", "page is null");
+          ae.i("MicroMsg.LuggageMMWebViewCoreImpl", "page is null");
           paramAnonymousString = super.onMiscCallBack(paramAnonymousString, paramAnonymousBundle);
           AppMethodBeat.o(78771);
           return paramAnonymousString;
         }
         if (paramAnonymousString == null)
         {
-          ad.i("MicroMsg.LuggageMMWebViewCoreImpl", "method is null");
+          ae.i("MicroMsg.LuggageMMWebViewCoreImpl", "method is null");
           paramAnonymousString = super.onMiscCallBack(paramAnonymousString, paramAnonymousBundle);
           AppMethodBeat.o(78771);
           return paramAnonymousString;
@@ -128,35 +128,35 @@ public class a
         {
           str = paramAnonymousBundle.getString("packageName");
           int i = paramAnonymousBundle.getInt("resourceId");
-          if ((!bt.isNullOrNil(str)) && (i > 0)) {
+          if ((!bu.isNullOrNil(str)) && (i > 0)) {
             try
             {
-              Drawable localDrawable = com.tencent.mm.cd.b.f(aj.getContext().getPackageManager().getResourcesForApplication(str), i);
+              Drawable localDrawable = com.tencent.mm.cc.b.f(ak.getContext().getPackageManager().getResourcesForApplication(str), i);
               AppMethodBeat.o(78771);
               return localDrawable;
             }
             catch (Exception localException2)
             {
-              ad.e("MicroMsg.LuggageMMWebViewCoreImpl", "get resource for package : %s, fail, : %s", new Object[] { str, localException2.getMessage() });
+              ae.e("MicroMsg.LuggageMMWebViewCoreImpl", "get resource for package : %s, fail, : %s", new Object[] { str, localException2.getMessage() });
             }
           }
         }
         if (paramAnonymousString.equals("getShareUrl")) {
           try
           {
-            str = ((g)a.a(a.this).get()).ePi().aHL(a.this.getUrl());
-            ad.i("MicroMsg.LuggageMMWebViewCoreImpl", "getShareUrl by x5 core, shareurl = %s", new Object[] { str });
+            str = ((g)a.a(a.this).get()).eSU().aJe(a.this.getUrl());
+            ae.i("MicroMsg.LuggageMMWebViewCoreImpl", "getShareUrl by x5 core, shareurl = %s", new Object[] { str });
             AppMethodBeat.o(78771);
             return str;
           }
           catch (Exception localException1)
           {
-            ad.e("MicroMsg.LuggageMMWebViewCoreImpl", "getShare url failed");
+            ae.e("MicroMsg.LuggageMMWebViewCoreImpl", "getShare url failed");
           }
         }
         if (paramAnonymousString.equals("supportImagePreview"))
         {
-          ad.i("MicroMsg.LuggageMMWebViewCoreImpl", "supportImagePreview");
+          ae.i("MicroMsg.LuggageMMWebViewCoreImpl", "supportImagePreview");
           paramAnonymousString = Boolean.TRUE;
           AppMethodBeat.o(78771);
           return paramAnonymousString;
@@ -170,7 +170,7 @@ public class a
         }
         if (paramAnonymousString.equals("closeImagePreview"))
         {
-          j.eRb();
+          j.eUN();
           paramAnonymousString = Boolean.TRUE;
           AppMethodBeat.o(78771);
           return paramAnonymousString;
@@ -220,7 +220,7 @@ public class a
         return false;
       }
     };
-    this.lvl = new ab()
+    this.lzJ = new ab()
     {
       public final boolean b(int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3, int paramAnonymousInt4, int paramAnonymousInt5, int paramAnonymousInt6, int paramAnonymousInt7, int paramAnonymousInt8, boolean paramAnonymousBoolean)
       {
@@ -230,10 +230,10 @@ public class a
         return paramAnonymousBoolean;
       }
       
-      public final void bpf()
+      public final void bpP()
       {
         AppMethodBeat.i(78781);
-        a.this.fLB();
+        a.this.fPV();
         AppMethodBeat.o(78781);
       }
       
@@ -255,7 +255,7 @@ public class a
       public final boolean x(MotionEvent paramAnonymousMotionEvent)
       {
         AppMethodBeat.i(78779);
-        boolean bool = a.this.ah(paramAnonymousMotionEvent);
+        boolean bool = a.this.af(paramAnonymousMotionEvent);
         AppMethodBeat.o(78779);
         return bool;
       }
@@ -263,7 +263,7 @@ public class a
       public final boolean y(MotionEvent paramAnonymousMotionEvent)
       {
         AppMethodBeat.i(78784);
-        boolean bool = a.this.ai(paramAnonymousMotionEvent);
+        boolean bool = a.this.ag(paramAnonymousMotionEvent);
         AppMethodBeat.o(78784);
         return bool;
       }
@@ -271,14 +271,14 @@ public class a
       public final boolean z(MotionEvent paramAnonymousMotionEvent)
       {
         AppMethodBeat.i(78785);
-        boolean bool = a.this.aj(paramAnonymousMotionEvent);
+        boolean bool = a.this.ah(paramAnonymousMotionEvent);
         AppMethodBeat.o(78785);
         return bool;
       }
     };
-    this.DOK = new com.tencent.mm.plugin.webview.e.c();
-    this.wuy = new Handler(Looper.getMainLooper());
-    this.gcX = true;
+    this.EgK = new com.tencent.mm.plugin.webview.e.c();
+    this.wKi = new Handler(Looper.getMainLooper());
+    this.gff = true;
     boolean bool;
     if (getX5WebViewExtension() != null) {
       bool = true;
@@ -286,58 +286,58 @@ public class a
     for (;;)
     {
       this.isX5Kernel = bool;
-      w.a.hq(getContext());
-      if ((!getIsX5Kernel()) && (!com.tencent.mm.compatible.util.d.ly(19))) {}
+      w.a.hw(getContext());
+      if ((!getIsX5Kernel()) && (!com.tencent.mm.compatible.util.d.lA(19))) {}
       try
       {
         paramContext = new com.tencent.mm.compatible.loader.c(this, "mSysWebView", null).get();
-        ad.d("MicroMsg.LuggageMMWebViewCoreImpl", "tryInterruptAwaitingWebCoreThread, mSysWebView = %s", new Object[] { paramContext });
+        ae.d("MicroMsg.LuggageMMWebViewCoreImpl", "tryInterruptAwaitingWebCoreThread, mSysWebView = %s", new Object[] { paramContext });
         paramContext = new com.tencent.mm.compatible.loader.c(paramContext, "mProvider", null).get();
-        ad.d("MicroMsg.LuggageMMWebViewCoreImpl", "tryInterruptAwaitingWebCoreThread, mWebViewClassic = %s", new Object[] { paramContext });
+        ae.d("MicroMsg.LuggageMMWebViewCoreImpl", "tryInterruptAwaitingWebCoreThread, mWebViewClassic = %s", new Object[] { paramContext });
         paramContext = new com.tencent.mm.compatible.loader.c(paramContext, "mWebViewCore", null).get();
-        ad.d("MicroMsg.LuggageMMWebViewCoreImpl", "tryInterruptAwaitingWebCoreThread, mWebViewCore = %s", new Object[] { paramContext });
+        ae.d("MicroMsg.LuggageMMWebViewCoreImpl", "tryInterruptAwaitingWebCoreThread, mWebViewCore = %s", new Object[] { paramContext });
         paramContext = new com.tencent.mm.compatible.loader.c(paramContext, "sWebCoreHandler", null).get();
-        ad.d("MicroMsg.LuggageMMWebViewCoreImpl", "tryInterruptAwaitingWebCoreThread, sWebCoreHandler = %s", new Object[] { paramContext });
+        ae.d("MicroMsg.LuggageMMWebViewCoreImpl", "tryInterruptAwaitingWebCoreThread, sWebCoreHandler = %s", new Object[] { paramContext });
         paramContext = new com.tencent.mm.compatible.loader.c(paramContext, "mLooper", null).get();
-        ad.d("MicroMsg.LuggageMMWebViewCoreImpl", "tryInterruptAwaitingWebCoreThread, mLooper = %s", new Object[] { paramContext });
+        ae.d("MicroMsg.LuggageMMWebViewCoreImpl", "tryInterruptAwaitingWebCoreThread, mLooper = %s", new Object[] { paramContext });
         paramContext = new com.tencent.mm.compatible.loader.c(paramContext, "mThread", null).get();
-        ad.d("MicroMsg.LuggageMMWebViewCoreImpl", "tryInterruptAwaitingWebCoreThread, mThread = %s", new Object[] { paramContext });
+        ae.d("MicroMsg.LuggageMMWebViewCoreImpl", "tryInterruptAwaitingWebCoreThread, mThread = %s", new Object[] { paramContext });
         if ((paramContext instanceof Thread))
         {
           paramContext = (Thread)paramContext;
-          ad.i("MicroMsg.LuggageMMWebViewCoreImpl", "tryInterruptAwaitingWebCoreThread, webCoreThread.getState = %s", new Object[] { paramContext.getState() });
+          ae.i("MicroMsg.LuggageMMWebViewCoreImpl", "tryInterruptAwaitingWebCoreThread, webCoreThread.getState = %s", new Object[] { paramContext.getState() });
           if (paramContext.getState() == Thread.State.WAITING) {
             paramContext.interrupt();
           }
         }
-        kF(getContext());
+        kM(getContext());
         getSettings().setUseWideViewPort(true);
         getSettings().setLoadWithOverviewMode(true);
-        getSettings().gbb();
-        getSettings().gaU();
-        getSettings().gaT();
+        getSettings().gfD();
+        getSettings().gfw();
+        getSettings().gfv();
         getSettings().setGeolocationEnabled(true);
         getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
         getSettings().setJavaScriptEnabled(true);
-        getSettings().gbd();
-        getSettings().gaZ();
+        getSettings().gfF();
+        getSettings().gfB();
         getSettings().setAppCachePath(getContext().getDir("webviewcache", 0).getAbsolutePath());
-        getSettings().gaY();
-        getSettings().gba();
-        getSettings().setDatabasePath(com.tencent.mm.loader.j.b.arL() + "databases/");
-        com.tencent.xweb.c.gaw().gax();
-        com.tencent.xweb.c.gaw().e(this);
-        getSettings().setUserAgentString(com.tencent.mm.pluginsdk.ui.tools.x.bW(getContext(), getSettings().getUserAgentString()) + " Luggage");
+        getSettings().gfA();
+        getSettings().gfC();
+        getSettings().setDatabasePath(com.tencent.mm.loader.j.b.asa() + "databases/");
+        com.tencent.xweb.c.geY().geZ();
+        com.tencent.xweb.c.geY().e(this);
+        getSettings().setUserAgentString(com.tencent.mm.pluginsdk.ui.tools.x.bX(getContext(), getSettings().getUserAgentString()) + " Luggage");
         getView().setHorizontalScrollBarEnabled(false);
         getView().setVerticalScrollBarEnabled(false);
         setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
-        super.setWebViewClient(this.DSj);
-        super.setWebChromeClient(this.DSk);
+        super.setWebViewClient(this.Ekj);
+        super.setWebChromeClient(this.Ekk);
         if (getIsX5Kernel()) {
-          super.setWebViewCallbackClient(this.lvl);
+          super.setWebViewCallbackClient(this.lzJ);
         }
-        super.setWebViewClientExtension(this.DSl);
-        fLA();
+        super.setWebViewClientExtension(this.Ekl);
+        fPU();
         AppMethodBeat.o(78800);
         return;
         bool = false;
@@ -346,19 +346,19 @@ public class a
       {
         for (;;)
         {
-          ad.e("MicroMsg.LuggageMMWebViewCoreImpl", "tryInterruptAwaitingWebCoreThread, exception = %s", new Object[] { paramContext });
+          ae.e("MicroMsg.LuggageMMWebViewCoreImpl", "tryInterruptAwaitingWebCoreThread, exception = %s", new Object[] { paramContext });
         }
       }
     }
   }
   
-  protected void Ck()
+  protected void Cn()
   {
     AppMethodBeat.i(78807);
     if (getWebCore().chR != null)
     {
       getWebCore().chR.a(new LuggageMMLocalResourceProvider());
-      getWebCore().chR.a(new e(com.tencent.mm.plugin.appbrand.z.d.UT("luggage_mm_adapter.js")));
+      getWebCore().chR.a(new e(com.tencent.mm.plugin.appbrand.y.d.VE("luggage_mm_adapter.js")));
     }
     AppMethodBeat.o(78807);
   }
@@ -408,7 +408,7 @@ public class a
     }
     catch (NullPointerException localNullPointerException)
     {
-      ad.printErrStackTrace("MicroMsg.LuggageMMWebViewCoreImpl", localNullPointerException, "destroy()", new Object[0]);
+      ae.printErrStackTrace("MicroMsg.LuggageMMWebViewCoreImpl", localNullPointerException, "destroy()", new Object[0]);
       return;
     }
     finally
@@ -451,9 +451,9 @@ public class a
   
   public String getUserAgent()
   {
-    AppMethodBeat.i(207930);
+    AppMethodBeat.i(198110);
     String str = getSettings().getUserAgentString();
-    AppMethodBeat.o(207930);
+    AppMethodBeat.o(198110);
     return str;
   }
   
@@ -492,7 +492,7 @@ public class a
       AppMethodBeat.o(78811);
       return;
     }
-    aq.f(paramString1);
+    ar.f(paramString1);
     AppMethodBeat.o(78811);
   }
   
@@ -514,7 +514,7 @@ public class a
       AppMethodBeat.o(78809);
       return;
     }
-    aq.f(paramString);
+    ar.f(paramString);
     AppMethodBeat.o(78809);
   }
   
@@ -536,7 +536,7 @@ public class a
       AppMethodBeat.o(78810);
       return;
     }
-    aq.f(paramString);
+    ar.f(paramString);
     AppMethodBeat.o(78810);
   }
   
@@ -549,7 +549,7 @@ public class a
       AppMethodBeat.o(78802);
       return;
     }
-    this.wuy.post(paramRunnable);
+    this.wKi.post(paramRunnable);
     AppMethodBeat.o(78802);
   }
   
@@ -565,19 +565,19 @@ public class a
   public void setPage(g paramg)
   {
     AppMethodBeat.i(182690);
-    this.DSi = new WeakReference(paramg);
+    this.Eki = new WeakReference(paramg);
     AppMethodBeat.o(182690);
   }
   
   public void setSource(String paramString)
   {
-    this.uWA = paramString;
+    this.vio = paramString;
   }
   
   public void setWebChromeClient(com.tencent.xweb.x paramx)
   {
     AppMethodBeat.i(78820);
-    this.DSk.a(paramx);
+    this.Ekk.a(paramx);
     AppMethodBeat.o(78820);
   }
   
@@ -586,8 +586,8 @@ public class a
     AppMethodBeat.i(78821);
     if (paramf != null)
     {
-      this.DSk.a(paramf);
-      this.DSk = paramf;
+      this.Ekk.a(paramf);
+      this.Ekk = paramf;
     }
     AppMethodBeat.o(78821);
   }
@@ -596,21 +596,21 @@ public class a
   {
     AppMethodBeat.i(78806);
     this.chX = paramp;
-    Ck();
+    Cn();
     AppMethodBeat.o(78806);
   }
   
   public void setWebViewClient(ac paramac)
   {
     AppMethodBeat.i(78818);
-    this.DSj.a(paramac);
+    this.Ekj.a(paramac);
     AppMethodBeat.o(78818);
   }
   
   public void setWebViewClientExtension(com.tencent.xweb.x5.export.external.extension.proxy.a parama)
   {
     AppMethodBeat.i(78822);
-    this.DSl.a(parama);
+    this.Ekl.a(parama);
     AppMethodBeat.o(78822);
   }
   
@@ -619,8 +619,8 @@ public class a
     AppMethodBeat.i(78823);
     if (paramh != null)
     {
-      this.DSl.a(paramh);
-      this.DSl = paramh;
+      this.Ekl.a(paramh);
+      this.Ekl = paramh;
     }
     AppMethodBeat.o(78823);
   }
@@ -630,8 +630,8 @@ public class a
     AppMethodBeat.i(78819);
     if (parami != null)
     {
-      this.DSj.a(parami);
-      this.DSj = parami;
+      this.Ekj.a(parami);
+      this.Ekj = parami;
     }
     AppMethodBeat.o(78819);
   }

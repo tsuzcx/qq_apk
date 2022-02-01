@@ -6,19 +6,19 @@ import com.tencent.mm.plugin.exdevice.g.b.a.d;
 final class e
 {
   int azj;
-  d qoQ;
-  int qoR;
+  d qvw;
+  int qvx;
   
   private e(int paramInt1, int paramInt2, String paramString1, String paramString2, d paramd)
   {
     AppMethodBeat.i(24309);
     this.azj = paramInt1;
-    this.qoR = paramInt2;
+    this.qvx = paramInt2;
     if (paramInt1 != 0)
     {
       if (paramd != null)
       {
-        this.qoQ = paramd;
+        this.qvw = paramd;
         AppMethodBeat.o(24309);
         return;
       }
@@ -30,7 +30,7 @@ final class e
       paramd.field_rankID = "";
       paramd.field_likecount = 0;
       paramd.field_score = 0;
-      this.qoQ = paramd;
+      this.qvw = paramd;
     }
     AppMethodBeat.o(24309);
   }
@@ -38,9 +38,9 @@ final class e
   public final String toString()
   {
     AppMethodBeat.i(24310);
-    String str = "{ view type: " + this.azj + " display flag: " + this.qoR;
-    if (this.qoQ != null) {}
-    for (str = str + this.qoQ.toString();; str = str + " mExdeviceRankInfo is null")
+    String str = "{ view type: " + this.azj + " display flag: " + this.qvx;
+    if (this.qvw != null) {}
+    for (str = str + this.qvw.toString();; str = str + " mExdeviceRankInfo is null")
     {
       str = str + "}";
       AppMethodBeat.o(24310);

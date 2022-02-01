@@ -7,15 +7,15 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.widget.MMNeat7extView;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/brandservice/ui/util/BizTimeLineViewUtil;", "", "()V", "setTextViewBold", "", "textView", "Landroid/widget/TextView;", "width", "", "Lcom/tencent/mm/ui/widget/MMNeat7extView;", "plugin-brandservice_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/brandservice/ui/util/BizTimeLineViewUtil;", "", "()V", "setTextViewBold", "", "textView", "Landroid/widget/TextView;", "width", "", "Lcom/tencent/mm/ui/widget/MMNeat7extView;", "plugin-brandservice_release"})
 public final class d
 {
-  public static final d osr;
+  public static final d oyS;
   
   static
   {
     AppMethodBeat.i(7364);
-    osr = new d();
+    oyS = new d();
     AppMethodBeat.o(7364);
   }
   
@@ -42,7 +42,7 @@ public final class d
     AppMethodBeat.o(7362);
   }
   
-  public static void i(TextView paramTextView)
+  public static void h(TextView paramTextView)
   {
     AppMethodBeat.i(7363);
     if (paramTextView != null)
@@ -67,7 +67,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.ui.b.d
  * JD-Core Version:    0.7.0.1
  */

@@ -4,12 +4,12 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
 {
-  private static a LAQ;
+  private static a LXG;
   
   static
   {
     AppMethodBeat.i(3490);
-    LAQ = new a()
+    LXG = new a()
     {
       public final void loadLibrary(String paramAnonymousString)
       {
@@ -23,13 +23,13 @@ public final class a
   
   public static void a(a parama)
   {
-    LAQ = parama;
+    LXG = parama;
   }
   
   public static void loadLibraries()
   {
     AppMethodBeat.i(3489);
-    LAQ.loadLibrary("mmwcwss");
+    LXG.loadLibrary("mmwcwss");
     AppMethodBeat.o(3489);
   }
   
@@ -40,7 +40,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.websocket.libwcwss.a
  * JD-Core Version:    0.7.0.1
  */

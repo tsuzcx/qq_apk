@@ -1,19 +1,8 @@
 package com.tencent.mm.plugin.scanner.api;
 
-import android.content.Context;
-
-public abstract interface a
-  extends com.tencent.mm.kernel.c.a
+public abstract interface a<T>
 {
-  public abstract long a(b paramb, d paramd);
-  
-  public abstract void a(Context paramContext, ScanGoodsRequest paramScanGoodsRequest);
-  
-  public abstract void a(Context paramContext, ScanGoodsRequest paramScanGoodsRequest, int paramInt);
-  
-  public abstract void yT(long paramLong);
-  
-  public abstract String yU(long paramLong);
+  public abstract void c(long paramLong, T paramT);
 }
 
 

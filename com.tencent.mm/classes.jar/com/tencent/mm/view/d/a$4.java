@@ -16,9 +16,9 @@ public final class a$4
     AppMethodBeat.i(105282);
     b localb = new b();
     localb.bd(paramView);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/view/manager/SmileyPanelManager$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-    if (a.h(this.LuA) != null) {
-      a.h(this.LuA).dlA();
+    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/view/manager/SmileyPanelManager$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+    if (a.h(this.LRn) != null) {
+      a.h(this.LRn).ddB();
     }
     com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/view/manager/SmileyPanelManager$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(105282);

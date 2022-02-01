@@ -9,8 +9,8 @@ import com.tencent.mm.plugin.mmsight.SightCaptureResult;
 import com.tencent.mm.plugin.recordvideo.jumper.CaptureDataManager.CaptureVideoNormalModel;
 import com.tencent.mm.plugin.recordvideo.jumper.CaptureDataManager.a;
 import com.tencent.mm.plugin.recordvideo.jumper.CaptureDataManager.c;
-import com.tencent.mm.protocal.protobuf.bxm;
-import com.tencent.mm.vfs.i;
+import com.tencent.mm.protocal.protobuf.byg;
+import com.tencent.mm.vfs.o;
 import com.tencent.xweb.util.d;
 
 final class ai$9
@@ -21,16 +21,16 @@ final class ai$9
   public final void a(Context paramContext, CaptureDataManager.CaptureVideoNormalModel paramCaptureVideoNormalModel, Bundle paramBundle)
   {
     AppMethodBeat.i(97998);
-    paramBundle = new bxm();
-    paramBundle.GRA = true;
-    paramBundle.GRz = false;
-    String str = i.aYt(paramCaptureVideoNormalModel.videoPath);
-    paramBundle = new SightCaptureResult(true, paramCaptureVideoNormalModel.videoPath, paramCaptureVideoNormalModel.thumbPath, str, d.getMD5(paramCaptureVideoNormalModel.videoPath), (int)(paramCaptureVideoNormalModel.xya.longValue() / 1000L), paramBundle);
-    if (paramCaptureVideoNormalModel.xyb.booleanValue())
+    paramBundle = new byg();
+    paramBundle.Hlb = true;
+    paramBundle.Hla = false;
+    String str = o.aZW(paramCaptureVideoNormalModel.videoPath);
+    paramBundle = new SightCaptureResult(true, paramCaptureVideoNormalModel.videoPath, paramCaptureVideoNormalModel.thumbPath, str, d.getMD5(paramCaptureVideoNormalModel.videoPath), (int)(paramCaptureVideoNormalModel.xNX.longValue() / 1000L), paramBundle);
+    if (paramCaptureVideoNormalModel.xNY.booleanValue())
     {
-      paramBundle.vMs = true;
-      paramBundle.pzW = false;
-      paramBundle.vMA = paramCaptureVideoNormalModel.thumbPath;
+      paramBundle.vYw = true;
+      paramBundle.pGA = false;
+      paramBundle.vYE = paramCaptureVideoNormalModel.thumbPath;
     }
     paramCaptureVideoNormalModel = new Intent();
     paramCaptureVideoNormalModel.putExtra("key_req_result", paramBundle);

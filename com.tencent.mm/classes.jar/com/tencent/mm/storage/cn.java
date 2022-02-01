@@ -1,84 +1,62 @@
 package com.tencent.mm.storage;
 
-import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.c.gr;
 import com.tencent.mm.sdk.e.c.a;
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storagebase.g;
-import com.tencent.mm.storagebase.g.a;
+import com.tencent.mm.sdk.platformtools.bu;
+import java.lang.reflect.Field;
+import java.util.Map;
 
 public final class cn
-  extends j<cm>
-  implements g.a
+  extends gr
 {
-  public static final String[] SQL_CREATE;
-  public e db;
+  protected static c.a info;
   
   static
   {
-    AppMethodBeat.i(148677);
-    SQL_CREATE = new String[] { j.getCreateSQLs(cm.info, "VoiceTransText") };
-    AppMethodBeat.o(148677);
+    AppMethodBeat.i(148673);
+    c.a locala = new c.a();
+    locala.IBL = new Field[3];
+    locala.columns = new String[4];
+    StringBuilder localStringBuilder = new StringBuilder();
+    locala.columns[0] = "msgId";
+    locala.IBN.put("msgId", "LONG PRIMARY KEY ");
+    localStringBuilder.append(" msgId LONG PRIMARY KEY ");
+    localStringBuilder.append(", ");
+    locala.IBM = "msgId";
+    locala.columns[1] = "cmsgId";
+    locala.IBN.put("cmsgId", "TEXT");
+    localStringBuilder.append(" cmsgId TEXT");
+    localStringBuilder.append(", ");
+    locala.columns[2] = "content";
+    locala.IBN.put("content", "TEXT default '' ");
+    localStringBuilder.append(" content TEXT default '' ");
+    locala.columns[3] = "rowid";
+    locala.sql = localStringBuilder.toString();
+    info = locala;
+    AppMethodBeat.o(148673);
   }
   
-  public cn(e parame)
+  public final void aWa(String paramString)
   {
-    this(parame, cm.info, "VoiceTransText");
-  }
-  
-  private cn(e parame, c.a parama, String paramString)
-  {
-    super(parame, parama, paramString, null);
-    this.db = parame;
-  }
-  
-  public final int a(g paramg)
-  {
-    this.db = paramg;
-    return 0;
-  }
-  
-  public final boolean a(cm paramcm)
-  {
-    AppMethodBeat.i(148674);
-    if (paramcm == null)
+    AppMethodBeat.i(148672);
+    if (bu.isNullOrNil(paramString))
     {
-      AppMethodBeat.o(148674);
-      return false;
+      AppMethodBeat.o(148672);
+      return;
     }
-    paramcm = paramcm.convertTo();
-    if (this.db.replace("VoiceTransText", "msgId", paramcm) >= 0L)
-    {
-      AppMethodBeat.o(148674);
-      return true;
-    }
-    AppMethodBeat.o(148674);
-    return false;
+    this.field_cmsgId = paramString;
+    AppMethodBeat.o(148672);
   }
   
-  public final cm aUA(String paramString)
+  public final c.a getDBInfo()
   {
-    AppMethodBeat.i(148675);
-    if (bt.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(148675);
-      return null;
-    }
-    cm localcm = new cm();
-    paramString = this.db.a("VoiceTransText", null, "cmsgId=?", new String[] { String.valueOf(paramString) }, null, null, null, 2);
-    if (paramString.moveToFirst()) {
-      localcm.convertFrom(paramString);
-    }
-    paramString.close();
-    AppMethodBeat.o(148675);
-    return localcm;
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.storage.cn
  * JD-Core Version:    0.7.0.1
  */

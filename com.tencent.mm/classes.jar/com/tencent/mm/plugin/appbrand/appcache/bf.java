@@ -1,458 +1,155 @@
 package com.tencent.mm.plugin.appbrand.appcache;
 
+import android.content.ContentResolver;
+import android.content.ContentValues;
+import android.content.Context;
+import android.net.Uri;
 import android.text.TextUtils;
-import android.util.Log;
-import android.webkit.URLUtil;
-import android.webkit.WebResourceResponse;
+import com.tencent.luggage.wxa.storage.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
-import com.tencent.mm.plugin.appbrand.a.b;
-import com.tencent.mm.plugin.appbrand.a.c;
-import com.tencent.mm.plugin.appbrand.a.c.a;
-import com.tencent.mm.plugin.appbrand.appstorage.m;
-import com.tencent.mm.plugin.appbrand.config.k;
-import com.tencent.mm.plugin.appbrand.z.d;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import java.io.InputStream;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
 
 public final class bf
-  implements r
 {
-  private static final Map<AppBrandRuntime, bf> jID;
-  private final q jIE;
-  private final LinkedList<String> jIF;
-  private final String mAppId;
+  private static final Uri CONTENT_URI;
+  private static final bf jLD;
   
   static
   {
-    AppMethodBeat.i(134709);
-    jID = new HashMap();
-    AppMethodBeat.o(134709);
+    AppMethodBeat.i(146008);
+    jLD = new bf();
+    CONTENT_URI = Uri.parse("content://" + a.AUTHORITY + "/AppBrandWxaPkgManifestRecord");
+    AppMethodBeat.o(146008);
   }
   
-  private bf(AppBrandRuntime paramAppBrandRuntime)
+  public static void Mg(String paramString)
   {
-    AppMethodBeat.i(134701);
-    this.mAppId = paramAppBrandRuntime.mAppId;
-    k localk = paramAppBrandRuntime.Fh();
-    ad.i("MicroMsg.WxaPkgRuntimeReader", "<init> appId[%s] sysConfig.class[%s], stacktrace=%s", new Object[] { this.mAppId, localk.getClass().getName(), Log.getStackTraceString(new Throwable()) });
-    this.jIF = new LinkedList();
-    this.jIE = bn.a(paramAppBrandRuntime, this);
-    this.jIE.aZL();
-    AppMethodBeat.o(134701);
-  }
-  
-  private static boolean LF(String paramString)
-  {
-    AppMethodBeat.i(134706);
-    if (bt.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(134706);
-      return true;
-    }
-    if (URLUtil.isAboutUrl(paramString))
-    {
-      AppMethodBeat.o(134706);
-      return true;
-    }
-    if (d.UV(paramString))
-    {
-      AppMethodBeat.o(134706);
-      return true;
-    }
-    if (URLUtil.isFileUrl(paramString))
-    {
-      AppMethodBeat.o(134706);
-      return true;
-    }
-    AppMethodBeat.o(134706);
-    return false;
-  }
-  
-  public static void N(AppBrandRuntime paramAppBrandRuntime)
-  {
-    AppMethodBeat.i(134694);
-    O(paramAppBrandRuntime).aZL();
-    AppMethodBeat.o(134694);
-  }
-  
-  public static r O(AppBrandRuntime paramAppBrandRuntime)
-  {
-    AppMethodBeat.i(178545);
-    if ((paramAppBrandRuntime == null) || (paramAppBrandRuntime.isDestroyed()))
-    {
-      paramAppBrandRuntime = r.a.jFQ;
-      AppMethodBeat.o(178545);
-      return paramAppBrandRuntime;
-    }
-    if (paramAppBrandRuntime.Fh() == null)
-    {
-      ad.e("MicroMsg.WxaPkgRuntimeReader", "obtainReader with runtime(%s) sysConfig(NULL), stack=%s", new Object[] { paramAppBrandRuntime.mAppId, Log.getStackTraceString(new Throwable()) });
-      paramAppBrandRuntime = r.a.jFQ;
-      AppMethodBeat.o(178545);
-      return paramAppBrandRuntime;
-    }
-    synchronized (jID)
-    {
-      bf localbf2 = (bf)jID.get(paramAppBrandRuntime);
-      bf localbf1 = localbf2;
-      if (localbf2 == null)
-      {
-        localbf1 = new bf(paramAppBrandRuntime);
-        jID.put(paramAppBrandRuntime, localbf1);
-        paramAppBrandRuntime.jwS.a(new c.a()
-        {
-          public final void a(String arg1, b paramAnonymousb)
-          {
-            AppMethodBeat.i(178544);
-            if (b.jKR == paramAnonymousb) {}
-            synchronized (bf.jID)
-            {
-              paramAnonymousb = (bf)bf.jID.remove(this.jIG);
-              if (paramAnonymousb != null) {
-                paramAnonymousb.close();
-              }
-              AppMethodBeat.o(178544);
-              return;
-            }
-          }
-        });
-      }
-      AppMethodBeat.o(178545);
-      return localbf1;
-    }
-  }
-  
-  public static String d(AppBrandRuntime paramAppBrandRuntime, String paramString)
-  {
-    AppMethodBeat.i(134696);
-    paramAppBrandRuntime = bt.nullAsNil((String)O(paramAppBrandRuntime).f(paramString, String.class));
-    AppMethodBeat.o(134696);
-    return paramAppBrandRuntime;
-  }
-  
-  public static WebResourceResponse e(AppBrandRuntime paramAppBrandRuntime, String paramString)
-  {
-    AppMethodBeat.i(134697);
-    paramAppBrandRuntime = (WebResourceResponse)O(paramAppBrandRuntime).f(paramString, WebResourceResponse.class);
-    AppMethodBeat.o(134697);
-    return paramAppBrandRuntime;
-  }
-  
-  public static InputStream f(AppBrandRuntime paramAppBrandRuntime, String paramString)
-  {
-    AppMethodBeat.i(134698);
-    paramAppBrandRuntime = (InputStream)O(paramAppBrandRuntime).f(paramString, InputStream.class);
-    AppMethodBeat.o(134698);
-    return paramAppBrandRuntime;
-  }
-  
-  public static boolean g(AppBrandRuntime paramAppBrandRuntime, String paramString)
-  {
-    AppMethodBeat.i(176544);
-    boolean bool = O(paramAppBrandRuntime).Lm(paramString);
-    AppMethodBeat.o(176544);
-    return bool;
-  }
-  
-  public static String h(AppBrandRuntime paramAppBrandRuntime, String paramString)
-  {
-    AppMethodBeat.i(134699);
-    if (LF(paramString))
-    {
-      AppMethodBeat.o(134699);
-      return null;
-    }
-    paramAppBrandRuntime = O(paramAppBrandRuntime).Ll(paramString);
-    if (paramAppBrandRuntime != null)
-    {
-      paramAppBrandRuntime = aa.a(paramAppBrandRuntime.jFM, paramAppBrandRuntime.fileName);
-      AppMethodBeat.o(134699);
-      return paramAppBrandRuntime;
-    }
-    AppMethodBeat.o(134699);
-    return null;
-  }
-  
-  public final void LE(String paramString)
-  {
-    AppMethodBeat.i(178547);
+    AppMethodBeat.i(146006);
     if (TextUtils.isEmpty(paramString))
     {
-      AppMethodBeat.o(178547);
+      AppMethodBeat.o(146006);
       return;
     }
-    this.jIF.add(paramString);
-    AppMethodBeat.o(178547);
-  }
-  
-  public final WxaPkg Lj(String paramString)
-  {
-    AppMethodBeat.i(178550);
     try
     {
-      paramString = Ln(paramString);
-      paramString = this.jIE.Lj(paramString);
-      AppMethodBeat.o(178550);
-      return paramString;
+      ContentValues localContentValues = new ContentValues();
+      localContentValues.put("CONTENT_KEY_ACTION", "ACTION_UPDATE_PLUGINCODE_LIST");
+      localContentValues.put("CONTENT_KEY_PLUGINCODE_LIST", paramString);
+      ak.getContext().getContentResolver().insert(CONTENT_URI, localContentValues);
+      AppMethodBeat.o(146006);
+      return;
     }
-    catch (IllegalArgumentException paramString)
+    catch (Exception paramString)
     {
-      AppMethodBeat.o(178550);
+      ae.printErrStackTrace("Luggage.DevPkgLaunchExtInfoContentResolver", paramString, "updatePluginCodeList", new Object[0]);
+      AppMethodBeat.o(146006);
     }
-    return null;
   }
   
-  public final InputStream Lk(String paramString)
+  public static boolean aQ(String paramString, int paramInt)
   {
-    AppMethodBeat.i(134707);
+    AppMethodBeat.i(220747);
+    ae.i("Luggage.DevPkgLaunchExtInfoContentResolver", "deleteModuleList appId:%s, pkgType:%d, pkgVersion:%d", new Object[] { paramString, Integer.valueOf(paramInt), Integer.valueOf(-1) });
     try
     {
-      paramString = Ln(paramString);
-      paramString = this.jIE.Lk(paramString);
-      AppMethodBeat.o(134707);
-      return paramString;
+      ContentValues localContentValues = new ContentValues();
+      localContentValues.put("CONTENT_KEY_ACTION", "ACTION_DELETE_MODULE_LIST");
+      localContentValues.put("CONTENT_KEY_APPID", paramString);
+      localContentValues.put("CONTENT_KEY_PKG_TYPE", Integer.valueOf(paramInt));
+      localContentValues.put("CONTENT_KEY_PKG_VERSION", Integer.valueOf(-1));
+      ak.getContext().getContentResolver().update(CONTENT_URI, localContentValues, null, null);
+      AppMethodBeat.o(220747);
+      return true;
     }
-    catch (IllegalArgumentException paramString)
+    catch (Exception localException)
     {
-      AppMethodBeat.o(134707);
-    }
-    return null;
-  }
-  
-  public final q.a Ll(String paramString)
-  {
-    AppMethodBeat.i(178548);
-    try
-    {
-      paramString = Ln(paramString);
-      paramString = this.jIE.Ll(paramString);
-      AppMethodBeat.o(178548);
-      return paramString;
-    }
-    catch (IllegalArgumentException paramString)
-    {
-      AppMethodBeat.o(178548);
-    }
-    return null;
-  }
-  
-  public final boolean Lm(String paramString)
-  {
-    AppMethodBeat.i(134702);
-    try
-    {
-      paramString = Ln(paramString);
-      boolean bool = this.jIE.Lm(paramString);
-      AppMethodBeat.o(134702);
-      return bool;
-    }
-    catch (IllegalArgumentException paramString)
-    {
-      AppMethodBeat.o(134702);
-    }
-    return false;
-  }
-  
-  public final String Ln(String paramString)
-  {
-    AppMethodBeat.i(134705);
-    Object localObject = this.jIF.iterator();
-    while (((Iterator)localObject).hasNext()) {
-      if (paramString.startsWith((String)((Iterator)localObject).next()))
+      for (;;)
       {
-        AppMethodBeat.o(134705);
-        return paramString;
+        ae.e("Luggage.DevPkgLaunchExtInfoContentResolver", "deleteModuleList failed, appId:%s, pkgType:%d, pkgVersion:%d, exception:%s", new Object[] { paramString, Integer.valueOf(paramInt), Integer.valueOf(-1), localException });
       }
     }
-    if (LF(paramString))
+  }
+  
+  public static void b(String paramString1, String paramString2, int paramInt, String paramString3)
+  {
+    AppMethodBeat.i(146007);
+    try
     {
-      paramString = new IllegalArgumentException("Invalid URL");
-      AppMethodBeat.o(134705);
-      throw paramString;
+      ContentValues localContentValues = new ContentValues();
+      localContentValues.put("CONTENT_KEY_ACTION", "ACIION_UPDATE_WITHOUT_PLUGINCODE_INFO");
+      localContentValues.put("CONTENT_KEY_APPID", paramString1);
+      localContentValues.put("CONTENT_KEY_MODULE_NAME", paramString2);
+      localContentValues.put("CONTENT_KEY_PKG_VERSION", Integer.valueOf(0));
+      localContentValues.put("CONTENT_KEY_CODE_TYPE", Integer.valueOf(paramInt));
+      localContentValues.put("CONTENT_KEY_PKG_VERSION_MD5", paramString3);
+      localContentValues.put("CONTENT_KEY_PKG_TYPE", Integer.valueOf(12));
+      ak.getContext().getContentResolver().insert(CONTENT_URI, localContentValues);
+      AppMethodBeat.o(146007);
+      return;
     }
-    localObject = m.Mp(paramString);
-    paramString = (String)localObject;
-    if (((String)localObject).startsWith("/__APP__")) {
-      paramString = m.Mp(((String)localObject).substring(8));
+    catch (Exception localException)
+    {
+      ae.printErrStackTrace("Luggage.DevPkgLaunchExtInfoContentResolver", localException, "updateWithoutPluginCodeInfo, appId[%s] module[%s], version[%d], codeType[%d], md5[%s], pkgType[%d]", new Object[] { paramString1, paramString2, Integer.valueOf(0), Integer.valueOf(paramInt), paramString3, Integer.valueOf(12) });
+      AppMethodBeat.o(146007);
     }
-    AppMethodBeat.o(134705);
-    return paramString;
   }
   
-  public final List<WxaPkg.Info> aZK()
+  public static bf bbk()
   {
-    AppMethodBeat.i(178549);
-    List localList = this.jIE.aZK();
-    AppMethodBeat.o(178549);
-    return localList;
+    return jLD;
   }
   
-  public final void aZL()
+  public static void c(String paramString1, String paramString2, int paramInt, String paramString3)
   {
-    AppMethodBeat.i(178551);
-    this.jIE.aZL();
-    AppMethodBeat.o(178551);
+    AppMethodBeat.i(177310);
+    if (TextUtils.isEmpty(paramString3))
+    {
+      AppMethodBeat.o(177310);
+      return;
+    }
+    try
+    {
+      ContentValues localContentValues = new ContentValues();
+      localContentValues.put("CONTENT_KEY_ACTION", "ACTION_UPDATE_PKG_INFO");
+      localContentValues.put("CONTENT_KEY_APPID", paramString1);
+      localContentValues.put("CONTENT_KEY_MODULE_NAME", paramString2);
+      localContentValues.put("CONTENT_KEY_PKG_VERSION", Integer.valueOf(0));
+      localContentValues.put("CONTENT_KEY_CODE_TYPE", Integer.valueOf(paramInt));
+      localContentValues.put("CONTENT_KEY_PKGINFO_LIST", paramString3);
+      ak.getContext().getContentResolver().insert(CONTENT_URI, localContentValues);
+      AppMethodBeat.o(177310);
+      return;
+    }
+    catch (Exception paramString1)
+    {
+      ae.printErrStackTrace("Luggage.DevPkgLaunchExtInfoContentResolver", paramString1, "updatePkgInfoList", new Object[0]);
+      AppMethodBeat.o(177310);
+    }
   }
   
-  public final List<ModulePkgInfo> aZM()
+  public static boolean n(String paramString1, int paramInt, String paramString2)
   {
-    AppMethodBeat.i(134703);
-    List localList = this.jIE.aZM();
-    AppMethodBeat.o(134703);
-    return localList;
-  }
-  
-  public final List<String> aZN()
-  {
-    AppMethodBeat.i(197271);
-    List localList = this.jIE.aZN();
-    AppMethodBeat.o(197271);
-    return localList;
-  }
-  
-  public final q baM()
-  {
-    return this.jIE;
-  }
-  
-  public final void close()
-  {
-    AppMethodBeat.i(178552);
-    this.jIE.close();
-    AppMethodBeat.o(178552);
-  }
-  
-  /* Error */
-  public final <T> T f(String paramString, Class<T> paramClass)
-  {
-    // Byte code:
-    //   0: ldc_w 313
-    //   3: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   6: aload_0
-    //   7: aload_1
-    //   8: invokevirtual 244	com/tencent/mm/plugin/appbrand/appcache/bf:Ln	(Ljava/lang/String;)Ljava/lang/String;
-    //   11: astore 7
-    //   13: invokestatic 319	java/lang/System:currentTimeMillis	()J
-    //   16: lstore 4
-    //   18: aconst_null
-    //   19: astore_1
-    //   20: aload_0
-    //   21: aload 7
-    //   23: invokevirtual 320	com/tencent/mm/plugin/appbrand/appcache/bf:Lk	(Ljava/lang/String;)Ljava/io/InputStream;
-    //   26: astore 8
-    //   28: aload 8
-    //   30: ifnull +158 -> 188
-    //   33: aload 8
-    //   35: invokevirtual 324	java/io/InputStream:available	()I
-    //   38: istore_3
-    //   39: getstatic 329	com/tencent/mm/plugin/appbrand/appcache/bf$b$a:jIH	Ljava/util/Map;
-    //   42: aload_2
-    //   43: invokeinterface 156 2 0
-    //   48: checkcast 12	com/tencent/mm/plugin/appbrand/appcache/bf$b
-    //   51: aload 7
-    //   53: aload 8
-    //   55: invokeinterface 333 3 0
-    //   60: astore_1
-    //   61: aload_0
-    //   62: getfield 56	com/tencent/mm/plugin/appbrand/appcache/bf:mAppId	Ljava/lang/String;
-    //   65: astore 8
-    //   67: aload_1
-    //   68: ifnonnull +114 -> 182
-    //   71: iconst_1
-    //   72: istore 6
-    //   74: ldc 62
-    //   76: ldc_w 335
-    //   79: bipush 6
-    //   81: anewarray 4	java/lang/Object
-    //   84: dup
-    //   85: iconst_0
-    //   86: aload 8
-    //   88: aastore
-    //   89: dup
-    //   90: iconst_1
-    //   91: aload 7
-    //   93: aastore
-    //   94: dup
-    //   95: iconst_2
-    //   96: iload 6
-    //   98: invokestatic 341	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   101: aastore
-    //   102: dup
-    //   103: iconst_3
-    //   104: aload_2
-    //   105: invokevirtual 74	java/lang/Class:getName	()Ljava/lang/String;
-    //   108: aastore
-    //   109: dup
-    //   110: iconst_4
-    //   111: iload_3
-    //   112: invokestatic 346	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   115: aastore
-    //   116: dup
-    //   117: iconst_5
-    //   118: invokestatic 319	java/lang/System:currentTimeMillis	()J
-    //   121: lload 4
-    //   123: lsub
-    //   124: invokestatic 351	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   127: aastore
-    //   128: invokestatic 88	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   131: ldc_w 313
-    //   134: invokestatic 47	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   137: aload_1
-    //   138: areturn
-    //   139: astore_1
-    //   140: ldc_w 313
-    //   143: invokestatic 47	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   146: aconst_null
-    //   147: areturn
-    //   148: astore_1
-    //   149: ldc 62
-    //   151: ldc_w 353
-    //   154: iconst_3
-    //   155: anewarray 4	java/lang/Object
-    //   158: dup
-    //   159: iconst_0
-    //   160: aload_0
-    //   161: getfield 56	com/tencent/mm/plugin/appbrand/appcache/bf:mAppId	Ljava/lang/String;
-    //   164: aastore
-    //   165: dup
-    //   166: iconst_1
-    //   167: aload 7
-    //   169: aastore
-    //   170: dup
-    //   171: iconst_2
-    //   172: aload_1
-    //   173: aastore
-    //   174: invokestatic 150	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   177: iconst_m1
-    //   178: istore_3
-    //   179: goto -140 -> 39
-    //   182: iconst_0
-    //   183: istore 6
-    //   185: goto -111 -> 74
-    //   188: iconst_m1
-    //   189: istore_3
-    //   190: goto -129 -> 61
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	193	0	this	bf
-    //   0	193	1	paramString	String
-    //   0	193	2	paramClass	Class<T>
-    //   38	152	3	i	int
-    //   16	106	4	l	long
-    //   72	112	6	bool	boolean
-    //   11	157	7	str	String
-    //   26	61	8	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   6	13	139	java/lang/IllegalArgumentException
-    //   33	39	148	java/io/IOException
+    AppMethodBeat.i(146005);
+    ae.i("Luggage.DevPkgLaunchExtInfoContentResolver", "updateModuleList appId:%s, pkgType:%d, pkgVersion:%d", new Object[] { paramString1, Integer.valueOf(paramInt), Integer.valueOf(-1) });
+    try
+    {
+      ContentValues localContentValues = new ContentValues();
+      localContentValues.put("CONTENT_KEY_ACTION", "ACTION_UPDATE_MODULE_LIST");
+      localContentValues.put("CONTENT_KEY_APPID", paramString1);
+      localContentValues.put("CONTENT_KEY_PKG_TYPE", Integer.valueOf(paramInt));
+      localContentValues.put("CONTENT_KEY_PKG_VERSION", Integer.valueOf(-1));
+      localContentValues.put("CONTENT_KEY_MODULE_LIST_JSON", paramString2);
+      ak.getContext().getContentResolver().insert(CONTENT_URI, localContentValues);
+      AppMethodBeat.o(146005);
+      return true;
+    }
+    catch (Exception paramString2)
+    {
+      ae.e("Luggage.DevPkgLaunchExtInfoContentResolver", "updateModuleList failed appId:%s, pkgType:%d, pkgVersion:%d, exception:%s", new Object[] { paramString1, Integer.valueOf(paramInt), Integer.valueOf(-1), paramString2 });
+      AppMethodBeat.o(146005);
+    }
+    return false;
   }
 }
 

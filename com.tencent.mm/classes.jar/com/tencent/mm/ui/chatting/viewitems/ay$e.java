@@ -1,15 +1,15 @@
 package com.tencent.mm.ui.chatting.viewitems;
 
-import com.tencent.mm.storage.bu;
+import com.tencent.mm.storage.bv;
 
 public final class ay$e
   extends bk
 {
-  int oIb;
+  int oOD;
   
-  public ay$e(bu parambu, boolean paramBoolean, int paramInt, String paramString)
+  public ay$e(bv parambv, boolean paramBoolean, int paramInt, String paramString)
   {
-    super(parambu, paramBoolean, paramInt, paramString, '\000');
+    super(parambv, paramBoolean, paramInt, paramString, '\000');
   }
 }
 

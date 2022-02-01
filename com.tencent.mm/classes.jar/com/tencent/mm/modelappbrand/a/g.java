@@ -6,31 +6,31 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class g
   extends e
 {
-  public static final g hLC;
+  public static final g hOv;
   
   static
   {
     AppMethodBeat.i(131406);
-    hLC = new g();
+    hOv = new g();
     AppMethodBeat.o(131406);
   }
   
-  public final String BM()
+  public final String BN()
   {
     return "WxaIcon";
   }
   
-  public final Bitmap F(Bitmap paramBitmap)
+  public final Bitmap G(Bitmap paramBitmap)
   {
     AppMethodBeat.i(131405);
-    paramBitmap = super.F(paramBitmap);
+    paramBitmap = super.G(paramBitmap);
     AppMethodBeat.o(131405);
     return paramBitmap;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.modelappbrand.a.g
  * JD-Core Version:    0.7.0.1
  */

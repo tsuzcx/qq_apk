@@ -7,7 +7,7 @@ public final class o
     return (paramArrayOfByte[3] & 0xFF) << 24 | (paramArrayOfByte[2] & 0xFF) << 16 | (paramArrayOfByte[1] & 0xFF) << 8 | (paramArrayOfByte[0] & 0xFF) << 0;
   }
   
-  public static byte[] hh(int paramInt)
+  public static byte[] hi(int paramInt)
   {
     int j = 0;
     byte[] arrayOfByte1 = new byte[4];

@@ -13,24 +13,24 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public final class j
 {
-  private static j kfj;
-  public Map<String, b> kfb;
+  private static j kiz;
+  public Map<String, b> kir;
   
   static
   {
     AppMethodBeat.i(121193);
-    kfj = new j();
+    kiz = new j();
     AppMethodBeat.o(121193);
   }
   
   public j()
   {
     AppMethodBeat.i(121187);
-    this.kfb = new ConcurrentHashMap();
+    this.kir = new ConcurrentHashMap();
     AppMethodBeat.o(121187);
   }
   
-  private String Ox(String paramString)
+  private String Pf(String paramString)
   {
     AppMethodBeat.i(121191);
     if (TextUtils.isEmpty(paramString))
@@ -38,7 +38,7 @@ public final class j
       AppMethodBeat.o(121191);
       return "";
     }
-    Iterator localIterator = this.kfb.entrySet().iterator();
+    Iterator localIterator = this.kir.entrySet().iterator();
     while (localIterator.hasNext())
     {
       Map.Entry localEntry = (Map.Entry)localIterator.next();
@@ -53,41 +53,41 @@ public final class j
     return "";
   }
   
-  public static j bfM()
+  public static j bgu()
   {
-    return kfj;
+    return kiz;
   }
   
   public final void M(String paramString, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(121189);
-    b localb = (b)this.kfb.get(paramString);
+    b localb = (b)this.kir.get(paramString);
     if (localb != null)
     {
       com.tencent.mm.ipcinvoker.h.b.i("WidgetReporter_14443", "report %s, %s, %s", new Object[] { paramString, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-      g.yhR.f(14443, new Object[] { localb.appId, Integer.valueOf(0), Integer.valueOf(localb.dkg), Integer.valueOf(2), localb.dlu, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(0), Integer.valueOf(localb.cQN) });
+      g.yxI.f(14443, new Object[] { localb.appId, Integer.valueOf(0), Integer.valueOf(localb.dli), Integer.valueOf(2), localb.dmw, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(0), Integer.valueOf(localb.cRx) });
     }
     AppMethodBeat.o(121189);
   }
   
-  public final void Ow(String paramString)
+  public final void Pe(String paramString)
   {
     AppMethodBeat.i(121190);
-    M(Ox(paramString), 626, 7);
+    M(Pf(paramString), 626, 7);
     AppMethodBeat.o(121190);
   }
   
-  public final void Oy(String paramString)
+  public final void Pg(String paramString)
   {
     AppMethodBeat.i(121192);
     M(paramString, 626, 26);
     AppMethodBeat.o(121192);
   }
   
-  public final void by(String paramString, int paramInt)
+  public final void bB(String paramString, int paramInt)
   {
     AppMethodBeat.i(121188);
-    M(Ox(paramString), 626, paramInt);
+    M(Pf(paramString), 626, paramInt);
     AppMethodBeat.o(121188);
   }
   
@@ -99,30 +99,30 @@ public final class j
     implements a
   {
     String appId = "";
-    int cQN;
-    int dkg;
-    String dlu;
-    String kfe = "";
+    int cRx;
+    int dli;
+    String dmw;
+    String kiu = "";
     
     public b() {}
     
     public b(String paramString1, String paramString2, int paramInt1, String paramString3, int paramInt2)
     {
-      this.kfe = paramString1;
+      this.kiu = paramString1;
       this.appId = paramString2;
-      this.dkg = paramInt1;
-      this.dlu = paramString3;
-      this.cQN = paramInt2;
+      this.dli = paramInt1;
+      this.dmw = paramString3;
+      this.cRx = paramInt2;
     }
     
     public final void fromBundle(Bundle paramBundle)
     {
       AppMethodBeat.i(121186);
-      this.kfe = paramBundle.getString("widgetId");
+      this.kiu = paramBundle.getString("widgetId");
       this.appId = paramBundle.getString("appid");
-      this.dkg = paramBundle.getInt("appState");
-      this.dlu = paramBundle.getString("reqKey");
-      this.cQN = paramBundle.getInt("serviceType");
+      this.dli = paramBundle.getInt("appState");
+      this.dmw = paramBundle.getString("reqKey");
+      this.cRx = paramBundle.getInt("serviceType");
       AppMethodBeat.o(121186);
     }
     
@@ -130,11 +130,11 @@ public final class j
     {
       AppMethodBeat.i(121185);
       Bundle localBundle = new Bundle();
-      localBundle.putString("widgetId", this.kfe);
+      localBundle.putString("widgetId", this.kiu);
       localBundle.putString("appid", this.appId);
-      localBundle.putInt("appState", this.dkg);
-      localBundle.putString("reqKey", this.dlu);
-      localBundle.putInt("serviceType", this.cQN);
+      localBundle.putInt("appState", this.dli);
+      localBundle.putString("reqKey", this.dmw);
+      localBundle.putInt("serviceType", this.cRx);
       AppMethodBeat.o(121185);
       return localBundle;
     }

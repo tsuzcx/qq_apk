@@ -1,67 +1,67 @@
 package com.tencent.mm.plugin.messenger.foundation;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.q;
-import com.tencent.mm.bb.o;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.ba.o;
 import com.tencent.mm.kernel.api.bucket.c;
 import com.tencent.mm.kernel.e.c;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.messenger.foundation.a.a.h;
 import com.tencent.mm.plugin.messenger.foundation.a.l;
-import com.tencent.mm.storage.ae;
-import com.tencent.mm.storage.as;
-import com.tencent.mm.storage.au;
-import com.tencent.mm.storage.ax;
-import com.tencent.mm.storage.bg;
-import com.tencent.mm.storage.bi;
-import com.tencent.mm.storage.bl;
-import com.tencent.mm.storage.bo;
-import com.tencent.mm.storage.bs;
-import com.tencent.mm.storage.bv;
-import com.tencent.mm.storage.cb;
-import com.tencent.mm.storage.ce;
-import com.tencent.mm.storage.cg;
-import com.tencent.mm.storage.cl;
+import com.tencent.mm.storage.af;
+import com.tencent.mm.storage.at;
+import com.tencent.mm.storage.av;
+import com.tencent.mm.storage.ay;
+import com.tencent.mm.storage.bh;
+import com.tencent.mm.storage.bj;
+import com.tencent.mm.storage.bm;
+import com.tencent.mm.storage.bp;
+import com.tencent.mm.storage.bt;
+import com.tencent.mm.storage.bw;
+import com.tencent.mm.storage.cc;
+import com.tencent.mm.storage.cf;
+import com.tencent.mm.storage.ch;
+import com.tencent.mm.storage.cm;
 import java.util.HashMap;
 
 public final class d
   implements c, l
 {
-  cl vJA;
-  ae vJB;
-  bo vJC;
-  as vJn;
-  cg vJo;
-  bl vJp;
-  bv vJq;
-  au vJr;
-  o vJs;
-  com.tencent.mm.bb.a vJt;
-  cb vJu;
-  ax vJv;
-  bi vJw;
-  bg vJx;
-  bs vJy;
-  ce vJz;
+  bj vVA;
+  bh vVB;
+  bt vVC;
+  cf vVD;
+  cm vVE;
+  af vVF;
+  bp vVG;
+  at vVr;
+  ch vVs;
+  bm vVt;
+  bw vVu;
+  av vVv;
+  o vVw;
+  com.tencent.mm.ba.a vVx;
+  cc vVy;
+  ay vVz;
   
-  public final h dlE()
+  public final h doD()
   {
     AppMethodBeat.i(116879);
-    g.ajD();
-    g.ajA().aiF();
-    com.tencent.mm.bb.a locala = this.vJt;
+    g.ajS();
+    g.ajP().aiU();
+    com.tencent.mm.ba.a locala = this.vVx;
     AppMethodBeat.o(116879);
     return locala;
   }
   
-  public final com.tencent.mm.plugin.messenger.foundation.a.a.b dlF()
+  public final com.tencent.mm.plugin.messenger.foundation.a.a.b doE()
   {
     AppMethodBeat.i(116880);
-    g.ajD();
-    g.ajA().aiF();
-    ae localae = this.vJB;
+    g.ajS();
+    g.ajP().aiU();
+    af localaf = this.vVF;
     AppMethodBeat.o(116880);
-    return localae;
+    return localaf;
   }
   
   public final void onAccountInitialized(e.c paramc) {}
@@ -70,20 +70,20 @@ public final class d
   {
     AppMethodBeat.i(116881);
     Object localObject;
-    if (this.vJn != null)
+    if (this.vVr != null)
     {
-      localObject = this.vJn;
-      ((as)localObject).IKf.clear();
-      ((as)localObject).IKg.clear();
+      localObject = this.vVr;
+      ((at)localObject).JeM.clear();
+      ((at)localObject).JeN.clear();
     }
-    if (this.vJs != null)
+    if (this.vVw != null)
     {
-      localObject = this.vJs;
+      localObject = this.vVw;
       ((o)localObject).bGq = new HashMap();
-      g.ajD();
-      g.ajB().gAO.b(681, (com.tencent.mm.al.f)localObject);
-      g.ajD();
-      g.ajB().gAO.b(806, (com.tencent.mm.al.f)localObject);
+      g.ajS();
+      g.ajQ().gDv.b(681, (com.tencent.mm.ak.f)localObject);
+      g.ajS();
+      g.ajQ().gDv.b(806, (com.tencent.mm.ak.f)localObject);
     }
     AppMethodBeat.o(116881);
   }

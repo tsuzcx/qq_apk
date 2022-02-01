@@ -78,7 +78,7 @@ public final class l
     paramFragmentManager = localj;
     if (localj == null)
     {
-      paramFragmentManager = c.ad(paramContext);
+      paramFragmentManager = c.ae(paramContext);
       paramFragmentManager = this.aMK.a(paramFragmentManager, localk.aMB, localk.aMC, paramContext);
       localk.aDc = paramFragmentManager;
     }
@@ -94,7 +94,7 @@ public final class l
     paramg = localj;
     if (localj == null)
     {
-      paramg = c.ad(paramContext);
+      paramg = c.ae(paramContext);
       paramg = this.aMK.a(paramg, localSupportRequestManagerFragment.aMB, localSupportRequestManagerFragment.aMC, paramContext);
       localSupportRequestManagerFragment.aDc = paramg;
     }
@@ -107,7 +107,7 @@ public final class l
     AppMethodBeat.i(77567);
     if (com.bumptech.glide.h.j.qu())
     {
-      paramFragmentActivity = ag(paramFragmentActivity.getApplicationContext());
+      paramFragmentActivity = ah(paramFragmentActivity.getApplicationContext());
       AppMethodBeat.o(77567);
       return paramFragmentActivity;
     }
@@ -117,7 +117,7 @@ public final class l
     return paramFragmentActivity;
   }
   
-  private com.bumptech.glide.j af(Context paramContext)
+  private com.bumptech.glide.j ag(Context paramContext)
   {
     AppMethodBeat.i(77565);
     if (this.aMH == null) {}
@@ -125,7 +125,7 @@ public final class l
     {
       if (this.aMH == null)
       {
-        c localc = c.ad(paramContext.getApplicationContext());
+        c localc = c.ae(paramContext.getApplicationContext());
         this.aMH = this.aMK.a(localc, new b(), new g(), paramContext.getApplicationContext());
       }
       paramContext = this.aMH;
@@ -143,7 +143,7 @@ public final class l
     AppMethodBeat.i(77568);
     if (com.bumptech.glide.h.j.qu())
     {
-      paramActivity = ag(paramActivity.getApplicationContext());
+      paramActivity = ah(paramActivity.getApplicationContext());
       AppMethodBeat.o(77568);
       return paramActivity;
     }
@@ -228,7 +228,7 @@ public final class l
     return localk1;
   }
   
-  public final com.bumptech.glide.j ag(Context paramContext)
+  public final com.bumptech.glide.j ah(Context paramContext)
   {
     AppMethodBeat.i(77566);
     for (;;)
@@ -259,7 +259,7 @@ public final class l
       }
       paramContext = ((ContextWrapper)paramContext).getBaseContext();
     }
-    paramContext = af(paramContext);
+    paramContext = ag(paramContext);
     AppMethodBeat.o(77566);
     return paramContext;
   }

@@ -16,14 +16,14 @@ public final class u
     AppMethodBeat.i(57642);
     p.h(paramab, "$this$lexicalCastFrom");
     p.h(paramString, "value");
-    Object localObject = paramab.gsZ().ghO();
-    if (((localObject instanceof e)) && (((e)localObject).ghw() == d.l.b.a.b.b.f.MUt))
+    Object localObject = paramab.gxB().gmq();
+    if (((localObject instanceof e)) && (((e)localObject).glY() == d.l.b.a.b.b.f.Nry))
     {
-      paramab = ((e)localObject).giJ();
-      paramString = d.l.b.a.b.f.f.bcE(paramString);
+      paramab = ((e)localObject).gnl();
+      paramString = d.l.b.a.b.f.f.bei(paramString);
       p.g(paramString, "Name.identifier(value)");
-      paramab = paramab.c(paramString, (d.l.b.a.b.c.a.a)c.NaQ);
-      if (((paramab instanceof e)) && (((e)paramab).ghw() == d.l.b.a.b.b.f.MUu))
+      paramab = paramab.c(paramString, (d.l.b.a.b.c.a.a)c.NxV);
+      if (((paramab instanceof e)) && (((e)paramab).glY() == d.l.b.a.b.b.f.Nrz))
       {
         paramab = (l)new h((e)paramab);
         AppMethodBeat.o(57642);
@@ -36,13 +36,13 @@ public final class u
     p.h(paramString, "value");
     String str;
     int i;
-    if ((n.nz(paramString, "0x")) || (n.nz(paramString, "0X")))
+    if ((n.nF(paramString, "0x")) || (n.nF(paramString, "0X")))
     {
       paramab = paramString.substring(2);
       p.g(paramab, "(this as java.lang.String).substring(startIndex)");
       paramab = new d.l.b.a.b.o.f(paramab, 16);
-      str = paramab.Dsg;
-      i = paramab.NFT;
+      str = paramab.DJL;
+      i = paramab.OcZ;
     }
     for (;;)
     {
@@ -67,7 +67,7 @@ public final class u
         paramab = (l)new f(paramString);
         AppMethodBeat.o(57642);
         return paramab;
-        if ((n.nz(paramString, "0b")) || (n.nz(paramString, "0B")))
+        if ((n.nF(paramString, "0b")) || (n.nF(paramString, "0B")))
         {
           paramab = paramString.substring(2);
           p.g(paramab, "(this as java.lang.String).substring(startIndex)");
@@ -89,7 +89,7 @@ public final class u
         if (g.s((ab)localObject))
         {
           p.h(str, "$this$toByteOrNull");
-          paramab = n.ho(str, i);
+          paramab = n.hx(str, i);
           if (paramab != null)
           {
             i = paramab.intValue();
@@ -102,7 +102,7 @@ public final class u
         else if (g.u((ab)localObject))
         {
           p.h(str, "$this$toShortOrNull");
-          paramab = n.ho(str, i);
+          paramab = n.hx(str, i);
           if (paramab != null)
           {
             i = paramab.intValue();
@@ -116,22 +116,22 @@ public final class u
         {
           if (g.r((ab)localObject))
           {
-            paramString = n.ho(str, i);
+            paramString = n.hx(str, i);
             continue;
           }
           if (g.t((ab)localObject))
           {
-            paramString = n.hp(str, i);
+            paramString = n.hy(str, i);
             continue;
           }
           if (g.v((ab)localObject))
           {
-            paramString = n.bdf(paramString);
+            paramString = n.beJ(paramString);
             continue;
           }
           if (g.w((ab)localObject))
           {
-            paramString = n.bdg(paramString);
+            paramString = n.beK(paramString);
             continue;
           }
           bool = g.D((ab)localObject);
@@ -155,7 +155,7 @@ public final class u
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.d.a.u
  * JD-Core Version:    0.7.0.1
  */

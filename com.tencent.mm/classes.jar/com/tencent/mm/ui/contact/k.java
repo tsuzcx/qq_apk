@@ -10,18 +10,18 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.am.o;
-import com.tencent.mm.bs.d;
+import com.tencent.mm.al.o;
+import com.tencent.mm.br.d;
 import com.tencent.mm.g.c.aw;
 import com.tencent.mm.hellhoundlib.a.a;
-import com.tencent.mm.model.as.a;
-import com.tencent.mm.model.as.c;
-import com.tencent.mm.model.ba;
-import com.tencent.mm.model.c;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.model.au.a;
+import com.tencent.mm.model.au.c;
+import com.tencent.mm.model.bc;
 import com.tencent.mm.pluginsdk.ui.a.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.storage.am;
-import com.tencent.mm.storage.bp;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.storage.an;
+import com.tencent.mm.storage.bq;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.MaskLayout;
 import com.tencent.mm.ui.base.MaskLayout.a;
@@ -30,14 +30,14 @@ public final class k
   extends LinearLayout
 {
   private Context context;
-  private String hPO;
+  private String hSG;
   
   public k(Context paramContext, String paramString)
   {
     super(paramContext);
     AppMethodBeat.i(37829);
     this.context = paramContext;
-    this.hPO = paramString;
+    this.hSG = paramString;
     paramContext = View.inflate(getContext(), 2131493838, this);
     paramString = findViewById(2131299501);
     paramContext.setOnClickListener(new View.OnClickListener()
@@ -45,9 +45,9 @@ public final class k
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(37827);
-        Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-        ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramAnonymousView);
-        a.b("com/tencent/mm/ui/contact/EnterpriseBizViewItem$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahq());
+        Object localObject = new b();
+        ((b)localObject).bd(paramAnonymousView);
+        a.b("com/tencent/mm/ui/contact/EnterpriseBizViewItem$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahF());
         localObject = new Intent();
         ((Intent)localObject).putExtra("enterprise_from_scene", 2);
         ((Intent)localObject).putExtra("enterprise_biz_name", k.a(k.this));
@@ -61,10 +61,10 @@ public final class k
       public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
       {
         AppMethodBeat.i(37828);
-        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        b localb = new b();
         localb.bd(paramAnonymousView);
         localb.bd(paramAnonymousMotionEvent);
-        a.b("com/tencent/mm/ui/contact/EnterpriseBizViewItem$2", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahq());
+        a.b("com/tencent/mm/ui/contact/EnterpriseBizViewItem$2", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahF());
         if ((k.b(k.this) instanceof MMActivity)) {
           ((MMActivity)k.b(k.this)).hideVKB();
         }
@@ -73,28 +73,28 @@ public final class k
         return false;
       }
     });
-    ba.aBQ();
-    paramContext = c.azp().aTj(this.hPO);
-    if ((paramContext == null) || ((int)paramContext.gfj <= 0))
+    bc.aCg();
+    paramContext = com.tencent.mm.model.c.azF().aUK(this.hSG);
+    if ((paramContext == null) || ((int)paramContext.ght <= 0))
     {
-      ad.e("MicroMsg.EnterpriseBizViewItem", "contact is null, %s", new Object[] { this.hPO });
+      ae.e("MicroMsg.EnterpriseBizViewItem", "contact is null, %s", new Object[] { this.hSG });
       AppMethodBeat.o(37829);
       return;
     }
     paramString = (MaskLayout)paramString.findViewById(2131297283);
-    a.b.c((ImageView)paramString.getContentView(), this.hPO);
+    a.b.c((ImageView)paramString.getContentView(), this.hSG);
     if (paramContext.field_verifyFlag != 0) {
-      if (as.a.hFQ != null)
+      if (au.a.hII != null)
       {
-        String str = as.a.hFQ.os(paramContext.field_verifyFlag);
+        String str = au.a.hII.ov(paramContext.field_verifyFlag);
         if (str != null) {
-          paramString.a(o.Eg(str), MaskLayout.a.Jpb);
+          paramString.a(o.EI(str), MaskLayout.a.JJQ);
         }
       }
     }
     for (;;)
     {
-      ((TextView)findViewById(2131299502)).setText(paramContext.adu());
+      ((TextView)findViewById(2131299502)).setText(paramContext.adF());
       AppMethodBeat.o(37829);
       return;
       paramString.setMaskBitmap(null);

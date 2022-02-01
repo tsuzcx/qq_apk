@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.pwdgroup;
 import android.graphics.drawable.Drawable;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.e.a;
+import com.tencent.mm.aj.e.a;
 import com.tencent.mm.pluginsdk.ui.j;
 import com.tencent.mm.pluginsdk.ui.j.a;
 
@@ -13,19 +13,19 @@ public final class b
 {
   private b(String paramString)
   {
-    super(a.wYb, paramString);
+    super(a.xnS, paramString);
   }
   
-  public final void De(String paramString)
+  public final void DG(String paramString)
   {
     AppMethodBeat.i(27614);
-    super.De(paramString);
+    super.DG(paramString);
     AppMethodBeat.o(27614);
   }
   
   public static final class a
   {
-    static j.a wYb;
+    static j.a xnS;
     
     public static void c(ImageView paramImageView, String paramString)
     {

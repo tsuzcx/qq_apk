@@ -3,61 +3,61 @@ package com.tencent.mm.g.c;
 import android.content.ContentValues;
 import android.database.Cursor;
 import com.tencent.mm.protocal.protobuf.cv;
-import com.tencent.mm.protocal.protobuf.qu;
+import com.tencent.mm.protocal.protobuf.qw;
 import com.tencent.mm.sdk.e.c;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.io.IOException;
 
 public abstract class cq
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eDc;
-  private static final int eGk;
-  private static final int eXN;
-  private static final int eYo = "retryCount".hashCode();
-  private static final int fbA;
-  private static final int fbB;
-  private static final int fbC;
-  private static final int fbD;
-  private static final int fbE;
-  private static final int fbF;
-  private static final int fbG = "retryCountLimit".hashCode();
-  private static final int fbH = "businessInfo".hashCode();
-  private static final int fbI = "opCode".hashCode();
-  private static final int fbs = "cgi".hashCode();
-  private static final int fbt = "cmdid".hashCode();
-  private static final int fbu = "functionmsgid".hashCode();
-  private static final int fbv;
-  private static final int fbw;
-  private static final int fbx;
-  private static final int fby;
-  private static final int fbz;
+  private static final int eEL;
+  private static final int eHT;
+  private static final int eZy;
+  private static final int faa = "retryCount".hashCode();
+  private static final int fdh = "cgi".hashCode();
+  private static final int fdi = "cmdid".hashCode();
+  private static final int fdj = "functionmsgid".hashCode();
+  private static final int fdk;
+  private static final int fdl;
+  private static final int fdm;
+  private static final int fdn;
+  private static final int fdo;
+  private static final int fdp;
+  private static final int fdq;
+  private static final int fdr;
+  private static final int fds;
+  private static final int fdt;
+  private static final int fdu;
+  private static final int fdv = "retryCountLimit".hashCode();
+  private static final int fdw = "businessInfo".hashCode();
+  private static final int fdx = "opCode".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eCZ = true;
-  private boolean eGf = true;
-  private boolean eXD = true;
-  private boolean eYe = true;
-  private boolean fbb = true;
-  private boolean fbc = true;
-  private boolean fbd = true;
-  private boolean fbe = true;
-  private boolean fbf = true;
-  private boolean fbg = true;
-  private boolean fbh = true;
-  private boolean fbi = true;
-  private boolean fbj = true;
-  private boolean fbk = true;
-  private boolean fbl = true;
-  private boolean fbm = true;
-  private boolean fbn = true;
-  private boolean fbo = true;
-  private boolean fbp = true;
-  private boolean fbq = true;
-  private boolean fbr = true;
+  private boolean eEI = true;
+  private boolean eHO = true;
+  private boolean eZP = true;
+  private boolean eZo = true;
+  private boolean fcQ = true;
+  private boolean fcR = true;
+  private boolean fcS = true;
+  private boolean fcT = true;
+  private boolean fcU = true;
+  private boolean fcV = true;
+  private boolean fcW = true;
+  private boolean fcX = true;
+  private boolean fcY = true;
+  private boolean fcZ = true;
+  private boolean fda = true;
+  private boolean fdb = true;
+  private boolean fdc = true;
+  private boolean fdd = true;
+  private boolean fde = true;
+  private boolean fdf = true;
+  private boolean fdg = true;
   public long field_actionTime;
   public cv field_addMsg;
-  public qu field_businessInfo;
+  public qw field_businessInfo;
   public String field_cgi;
   public int field_cmdid;
   public String field_custombuff;
@@ -79,20 +79,20 @@ public abstract class cq
   
   static
   {
-    eGk = "version".hashCode();
-    fbv = "preVersion".hashCode();
-    fbw = "retryinterval".hashCode();
-    fbx = "reportid".hashCode();
-    fby = "successkey".hashCode();
-    fbz = "failkey".hashCode();
-    fbA = "finalfailkey".hashCode();
-    fbB = "custombuff".hashCode();
-    fbC = "addMsg".hashCode();
-    eDc = "status".hashCode();
-    fbD = "needShow".hashCode();
-    fbE = "defaultContent".hashCode();
-    eXN = "actionTime".hashCode();
-    fbF = "delayTime".hashCode();
+    eHT = "version".hashCode();
+    fdk = "preVersion".hashCode();
+    fdl = "retryinterval".hashCode();
+    fdm = "reportid".hashCode();
+    fdn = "successkey".hashCode();
+    fdo = "failkey".hashCode();
+    fdp = "finalfailkey".hashCode();
+    fdq = "custombuff".hashCode();
+    fdr = "addMsg".hashCode();
+    eEL = "status".hashCode();
+    fds = "needShow".hashCode();
+    fdt = "defaultContent".hashCode();
+    eZy = "actionTime".hashCode();
+    fdu = "delayTime".hashCode();
   }
   
   public void convertFrom(Cursor paramCursor)
@@ -108,7 +108,7 @@ public abstract class cq
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (fbs != k) {
+      if (fdh != k) {
         break label60;
       }
       this.field_cgi = paramCursor.getString(i);
@@ -119,48 +119,48 @@ public abstract class cq
       break label20;
       break;
       label60:
-      if (fbt == k)
+      if (fdi == k)
       {
         this.field_cmdid = paramCursor.getInt(i);
       }
-      else if (fbu == k)
+      else if (fdj == k)
       {
         this.field_functionmsgid = paramCursor.getString(i);
-        this.fbd = true;
+        this.fcS = true;
       }
-      else if (eGk == k)
+      else if (eHT == k)
       {
         this.field_version = paramCursor.getLong(i);
       }
-      else if (fbv == k)
+      else if (fdk == k)
       {
         this.field_preVersion = paramCursor.getLong(i);
       }
-      else if (fbw == k)
+      else if (fdl == k)
       {
         this.field_retryinterval = paramCursor.getInt(i);
       }
-      else if (fbx == k)
+      else if (fdm == k)
       {
         this.field_reportid = paramCursor.getInt(i);
       }
-      else if (fby == k)
+      else if (fdn == k)
       {
         this.field_successkey = paramCursor.getInt(i);
       }
-      else if (fbz == k)
+      else if (fdo == k)
       {
         this.field_failkey = paramCursor.getInt(i);
       }
-      else if (fbA == k)
+      else if (fdp == k)
       {
         this.field_finalfailkey = paramCursor.getInt(i);
       }
-      else if (fbB == k)
+      else if (fdq == k)
       {
         this.field_custombuff = paramCursor.getString(i);
       }
-      else if (fbC == k)
+      else if (fdr == k)
       {
         try
         {
@@ -172,16 +172,16 @@ public abstract class cq
         }
         catch (IOException localIOException1)
         {
-          ad.e("MicroMsg.SDK.BaseFunctionMsgItem", localIOException1.getMessage());
+          ae.e("MicroMsg.SDK.BaseFunctionMsgItem", localIOException1.getMessage());
         }
       }
-      else if (eDc == k)
+      else if (eEL == k)
       {
         this.field_status = paramCursor.getInt(i);
       }
       else
       {
-        if (fbD == k)
+        if (fds == k)
         {
           if (paramCursor.getInt(i) != 0) {}
           for (boolean bool = true;; bool = false)
@@ -190,30 +190,30 @@ public abstract class cq
             break;
           }
         }
-        if (fbE == k) {
+        if (fdt == k) {
           this.field_defaultContent = paramCursor.getString(i);
-        } else if (eXN == k) {
+        } else if (eZy == k) {
           this.field_actionTime = paramCursor.getLong(i);
-        } else if (fbF == k) {
+        } else if (fdu == k) {
           this.field_delayTime = paramCursor.getLong(i);
-        } else if (eYo == k) {
+        } else if (faa == k) {
           this.field_retryCount = paramCursor.getInt(i);
-        } else if (fbG == k) {
+        } else if (fdv == k) {
           this.field_retryCountLimit = paramCursor.getInt(i);
-        } else if (fbH == k) {
+        } else if (fdw == k) {
           try
           {
             byte[] arrayOfByte2 = paramCursor.getBlob(i);
             if ((arrayOfByte2 == null) || (arrayOfByte2.length <= 0)) {
               continue;
             }
-            this.field_businessInfo = ((qu)new qu().parseFrom(arrayOfByte2));
+            this.field_businessInfo = ((qw)new qw().parseFrom(arrayOfByte2));
           }
           catch (IOException localIOException2)
           {
-            ad.e("MicroMsg.SDK.BaseFunctionMsgItem", localIOException2.getMessage());
+            ae.e("MicroMsg.SDK.BaseFunctionMsgItem", localIOException2.getMessage());
           }
-        } else if (fbI == k) {
+        } else if (fdx == k) {
           this.field_opCode = paramCursor.getInt(i);
         } else if (rowid_HASHCODE == k) {
           this.systemRowid = paramCursor.getLong(i);
@@ -225,72 +225,72 @@ public abstract class cq
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.fbb) {
+    if (this.fcQ) {
       localContentValues.put("cgi", this.field_cgi);
     }
-    if (this.fbc) {
+    if (this.fcR) {
       localContentValues.put("cmdid", Integer.valueOf(this.field_cmdid));
     }
-    if (this.fbd) {
+    if (this.fcS) {
       localContentValues.put("functionmsgid", this.field_functionmsgid);
     }
-    if (this.eGf) {
+    if (this.eHO) {
       localContentValues.put("version", Long.valueOf(this.field_version));
     }
-    if (this.fbe) {
+    if (this.fcT) {
       localContentValues.put("preVersion", Long.valueOf(this.field_preVersion));
     }
-    if (this.fbf) {
+    if (this.fcU) {
       localContentValues.put("retryinterval", Integer.valueOf(this.field_retryinterval));
     }
-    if (this.fbg) {
+    if (this.fcV) {
       localContentValues.put("reportid", Integer.valueOf(this.field_reportid));
     }
-    if (this.fbh) {
+    if (this.fcW) {
       localContentValues.put("successkey", Integer.valueOf(this.field_successkey));
     }
-    if (this.fbi) {
+    if (this.fcX) {
       localContentValues.put("failkey", Integer.valueOf(this.field_failkey));
     }
-    if (this.fbj) {
+    if (this.fcY) {
       localContentValues.put("finalfailkey", Integer.valueOf(this.field_finalfailkey));
     }
-    if (this.fbk) {
+    if (this.fcZ) {
       localContentValues.put("custombuff", this.field_custombuff);
     }
-    if ((this.fbl) && (this.field_addMsg != null)) {}
+    if ((this.fda) && (this.field_addMsg != null)) {}
     try
     {
       localContentValues.put("addMsg", this.field_addMsg.toByteArray());
-      if (this.eCZ) {
+      if (this.eEI) {
         localContentValues.put("status", Integer.valueOf(this.field_status));
       }
-      if (this.fbm) {
+      if (this.fdb) {
         localContentValues.put("needShow", Boolean.valueOf(this.field_needShow));
       }
-      if (this.fbn) {
+      if (this.fdc) {
         localContentValues.put("defaultContent", this.field_defaultContent);
       }
-      if (this.eXD) {
+      if (this.eZo) {
         localContentValues.put("actionTime", Long.valueOf(this.field_actionTime));
       }
-      if (this.fbo) {
+      if (this.fdd) {
         localContentValues.put("delayTime", Long.valueOf(this.field_delayTime));
       }
-      if (this.eYe) {
+      if (this.eZP) {
         localContentValues.put("retryCount", Integer.valueOf(this.field_retryCount));
       }
-      if (this.fbp) {
+      if (this.fde) {
         localContentValues.put("retryCountLimit", Integer.valueOf(this.field_retryCountLimit));
       }
-      if ((!this.fbq) || (this.field_businessInfo == null)) {}
+      if ((!this.fdf) || (this.field_businessInfo == null)) {}
     }
     catch (IOException localIOException1)
     {
       try
       {
         localContentValues.put("businessInfo", this.field_businessInfo.toByteArray());
-        if (this.fbr) {
+        if (this.fdg) {
           localContentValues.put("opCode", Integer.valueOf(this.field_opCode));
         }
         if (this.systemRowid > 0L) {
@@ -298,13 +298,13 @@ public abstract class cq
         }
         return localContentValues;
         localIOException1 = localIOException1;
-        ad.e("MicroMsg.SDK.BaseFunctionMsgItem", localIOException1.getMessage());
+        ae.e("MicroMsg.SDK.BaseFunctionMsgItem", localIOException1.getMessage());
       }
       catch (IOException localIOException2)
       {
         for (;;)
         {
-          ad.e("MicroMsg.SDK.BaseFunctionMsgItem", localIOException2.getMessage());
+          ae.e("MicroMsg.SDK.BaseFunctionMsgItem", localIOException2.getMessage());
         }
       }
     }
@@ -312,7 +312,7 @@ public abstract class cq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.c.cq
  * JD-Core Version:    0.7.0.1
  */

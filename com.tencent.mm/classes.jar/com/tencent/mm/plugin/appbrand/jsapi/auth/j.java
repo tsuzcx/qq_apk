@@ -1,23 +1,22 @@
 package com.tencent.mm.plugin.appbrand.jsapi.auth;
 
 import com.tencent.luggage.sdk.config.AppBrandInitConfigLU;
-import com.tencent.luggage.sdk.d.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
 import com.tencent.mm.ipcinvoker.wx_extension.IPCRunCgi;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
 import com.tencent.mm.plugin.appbrand.appcache.WxaPkgWrappingInfo;
 import com.tencent.mm.plugin.appbrand.config.k;
 import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.plugin.appbrand.o;
-import com.tencent.mm.plugin.appbrand.page.aa;
-import com.tencent.mm.plugin.appbrand.q;
+import com.tencent.mm.plugin.appbrand.p;
+import com.tencent.mm.plugin.appbrand.page.z;
+import com.tencent.mm.plugin.appbrand.r;
 import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
-import com.tencent.mm.protocal.protobuf.brg;
-import com.tencent.mm.protocal.protobuf.brh;
-import com.tencent.mm.protocal.protobuf.egx;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.bsa;
+import com.tencent.mm.protocal.protobuf.bsb;
+import com.tencent.mm.protocal.protobuf.eio;
+import com.tencent.mm.sdk.platformtools.ae;
 import org.json.JSONObject;
 
 public final class j
@@ -28,74 +27,74 @@ public final class j
   
   public final void a(com.tencent.mm.plugin.appbrand.d paramd, JSONObject paramJSONObject, int paramInt, e parame)
   {
-    AppMethodBeat.i(188279);
-    com.tencent.mm.plugin.appbrand.ad.d.M(paramd.getAppId(), System.currentTimeMillis());
+    AppMethodBeat.i(222405);
+    com.tencent.mm.plugin.appbrand.ad.e.M(paramd.getAppId(), System.currentTimeMillis());
     for (;;)
     {
-      brg localbrg;
+      bsa localbsa;
       try
       {
         paramJSONObject = paramJSONObject.getString("data");
         parame = new b.a();
-        parame.hNM = new brg();
-        parame.hNN = new brh();
+        parame.hQF = new bsa();
+        parame.hQG = new bsb();
         parame.uri = "/cgi-bin/mmbiz-bin/js-operatewxdata";
         parame.funcId = 1133;
-        parame.hNO = 0;
+        parame.hQH = 0;
         parame.respCmdId = 0;
-        parame = parame.aDC();
-        localbrg = (brg)parame.hNK.hNQ;
-        localbrg.iht = paramd.getAppId();
+        parame = parame.aDS();
+        localbsa = (bsa)parame.hQD.hQJ;
+        localbsa.ikm = paramd.getAppId();
         if (paramJSONObject.getBytes() == null)
         {
           paramJSONObject = new byte[0];
-          localbrg.nCV = new com.tencent.mm.bx.b(paramJSONObject);
-          paramJSONObject = paramd.getRuntime().Fh();
+          localbsa.nIq = new com.tencent.mm.bw.b(paramJSONObject);
+          paramJSONObject = paramd.getRuntime().Fm();
           if (paramJSONObject != null) {
-            localbrg.GLq = paramJSONObject.jYh.jIU;
+            localbsa.HeR = paramJSONObject.kbw.jLV;
           }
-          if (!(paramd instanceof q)) {
+          if (!(paramd instanceof r)) {
             break label332;
           }
-          if (localbrg.GLr == null) {
-            localbrg.GLr = new egx();
+          if (localbsa.HeS == null) {
+            localbsa.HeS = new eio();
           }
-          localbrg.GLr.HRI = 1;
-          if (((paramd.getRuntime() instanceof o)) && (((o)paramd.getRuntime()).Fb().cmC != null))
+          localbsa.HeS.IlP = 1;
+          if (((paramd.getRuntime() instanceof p)) && (((p)paramd.getRuntime()).Fg().cmE != null))
           {
-            if (localbrg.GLr == null) {
-              localbrg.GLr = new egx();
+            if (localbsa.HeS == null) {
+              localbsa.HeS = new eio();
             }
-            localbrg.GLr.scene = ((o)paramd.getRuntime()).Fb().cmC.scene;
+            localbsa.HeS.scene = ((p)paramd.getRuntime()).Fg().cmE.scene;
           }
           IPCRunCgi.a(parame, new j.1(this, paramd, paramInt));
-          AppMethodBeat.o(188279);
+          AppMethodBeat.o(222405);
           return;
         }
       }
       catch (Exception paramJSONObject)
       {
-        ad.e("MicroMsg.AppBrand.JsApiAdOperateWXData[AppBrandSplashAd]", "data exception %s", new Object[] { paramJSONObject.getMessage() });
+        ae.e("MicroMsg.AppBrand.JsApiAdOperateWXData[AppBrandSplashAd]", "data exception %s", new Object[] { paramJSONObject.getMessage() });
         paramd.h(paramInt, e("fail:invalid data", null));
-        AppMethodBeat.o(188279);
+        AppMethodBeat.o(222405);
         return;
       }
       paramJSONObject = paramJSONObject.getBytes();
       continue;
       label332:
-      if ((paramd instanceof aa))
+      if ((paramd instanceof z))
       {
-        if (localbrg.GLr == null) {
-          localbrg.GLr = new egx();
+        if (localbsa.HeS == null) {
+          localbsa.HeS = new eio();
         }
-        localbrg.GLr.HRI = 2;
+        localbsa.HeS.IlP = 2;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.auth.j
  * JD-Core Version:    0.7.0.1
  */

@@ -8,7 +8,6 @@ import com.tencent.tencentmap.mapsdk.map.CameraParameter;
 import com.tencent.tencentmap.mapsdk.maps.CameraUpdateFactory;
 import com.tencent.tencentmap.mapsdk.maps.TencentMap;
 import com.tencent.tencentmap.mapsdk.maps.model.BitmapDescriptorFactory;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,36 +15,36 @@ public final class l
 {
   public static com.tencent.mapsdk.raster.model.CameraPosition a(com.tencent.tencentmap.mapsdk.maps.model.CameraPosition paramCameraPosition)
   {
-    AppMethodBeat.i(200191);
+    AppMethodBeat.i(212885);
     if (paramCameraPosition == null)
     {
-      AppMethodBeat.o(200191);
+      AppMethodBeat.o(212885);
       return null;
     }
     paramCameraPosition = new com.tencent.mapsdk.raster.model.CameraPosition(a(paramCameraPosition.target), paramCameraPosition.zoom, paramCameraPosition.tilt, paramCameraPosition.bearing);
-    AppMethodBeat.o(200191);
+    AppMethodBeat.o(212885);
     return paramCameraPosition;
   }
   
   public static com.tencent.mapsdk.raster.model.LatLng a(com.tencent.tencentmap.mapsdk.maps.model.LatLng paramLatLng)
   {
-    AppMethodBeat.i(200187);
+    AppMethodBeat.i(212881);
     if (paramLatLng == null)
     {
-      AppMethodBeat.o(200187);
+      AppMethodBeat.o(212881);
       return null;
     }
     paramLatLng = new com.tencent.mapsdk.raster.model.LatLng(paramLatLng.latitude, paramLatLng.longitude);
-    AppMethodBeat.o(200187);
+    AppMethodBeat.o(212881);
     return paramLatLng;
   }
   
   static com.tencent.tencentmap.mapsdk.maps.CameraUpdate a(com.tencent.tencentmap.mapsdk.map.CameraUpdate paramCameraUpdate, TencentMap paramTencentMap)
   {
-    AppMethodBeat.i(200194);
+    AppMethodBeat.i(212888);
     if ((paramCameraUpdate == null) || (paramCameraUpdate.getParams() == null))
     {
-      AppMethodBeat.o(200194);
+      AppMethodBeat.o(212888);
       return null;
     }
     CameraParameter localCameraParameter = paramCameraUpdate.getParams();
@@ -56,19 +55,19 @@ public final class l
     switch (paramCameraUpdate.getParams().cameraUpdate_type)
     {
     default: 
-      AppMethodBeat.o(200194);
+      AppMethodBeat.o(212888);
       return null;
     case 6: 
       paramCameraUpdate = CameraUpdateFactory.newCameraPosition(a(localCameraParameter.newCameraPosition));
-      AppMethodBeat.o(200194);
+      AppMethodBeat.o(212888);
       return paramCameraUpdate;
     case 7: 
       paramCameraUpdate = CameraUpdateFactory.newLatLng(c(localCameraParameter.newLatLng));
-      AppMethodBeat.o(200194);
+      AppMethodBeat.o(212888);
       return paramCameraUpdate;
     case 9: 
       paramCameraUpdate = CameraUpdateFactory.newLatLngBounds(a(localCameraParameter.newLatLngBounds_bounds), localCameraParameter.newLatLngBounds_padding);
-      AppMethodBeat.o(200194);
+      AppMethodBeat.o(212888);
       return paramCameraUpdate;
     case 10: 
       if ((paramTencentMap != null) && (paramTencentMap.getMapWidth() != 0) && (paramTencentMap.getMapWidth() != 0)) {
@@ -88,25 +87,25 @@ public final class l
     for (;;)
     {
       paramCameraUpdate = CameraUpdateFactory.newLatLngBoundsRect(a(localCameraParameter.newLatLngBounds_dimension_bounds), i, j, m, k);
-      AppMethodBeat.o(200194);
+      AppMethodBeat.o(212888);
       return paramCameraUpdate;
       paramCameraUpdate = CameraUpdateFactory.newLatLngZoom(c(localCameraParameter.newLatLngZoom_latlng), localCameraParameter.newLatLngZoom_zoom);
-      AppMethodBeat.o(200194);
+      AppMethodBeat.o(212888);
       return paramCameraUpdate;
       paramCameraUpdate = CameraUpdateFactory.scrollBy(localCameraParameter.scrollBy_xPixel, localCameraParameter.scrollBy_yPixel);
-      AppMethodBeat.o(200194);
+      AppMethodBeat.o(212888);
       return paramCameraUpdate;
       paramCameraUpdate = CameraUpdateFactory.zoomBy(localCameraParameter.zoomBy_Point_amount, localCameraParameter.zoomBy_Point_focus);
-      AppMethodBeat.o(200194);
+      AppMethodBeat.o(212888);
       return paramCameraUpdate;
       paramCameraUpdate = CameraUpdateFactory.zoomBy(localCameraParameter.zoomBy_amount);
-      AppMethodBeat.o(200194);
+      AppMethodBeat.o(212888);
       return paramCameraUpdate;
       paramCameraUpdate = CameraUpdateFactory.zoomIn();
-      AppMethodBeat.o(200194);
+      AppMethodBeat.o(212888);
       return paramCameraUpdate;
       paramCameraUpdate = CameraUpdateFactory.zoomOut();
-      AppMethodBeat.o(200194);
+      AppMethodBeat.o(212888);
       return paramCameraUpdate;
       float f;
       if (localCameraParameter.zoomTo_zoom < paramTencentMap.getMinZoomLevel()) {
@@ -115,7 +114,7 @@ public final class l
       for (;;)
       {
         paramCameraUpdate = CameraUpdateFactory.zoomTo(f);
-        AppMethodBeat.o(200194);
+        AppMethodBeat.o(212888);
         return paramCameraUpdate;
         if (localCameraParameter.zoomTo_zoom > paramTencentMap.getMaxZoomLevel()) {
           f = paramTencentMap.getMaxZoomLevel();
@@ -124,10 +123,10 @@ public final class l
         }
       }
       paramCameraUpdate = CameraUpdateFactory.newLatLngBoundsWithMapCenter(a(localCameraParameter.newLatLngBounds_bounds), c(localCameraParameter.newLatLng), localCameraParameter.newLatLngBounds_padding);
-      AppMethodBeat.o(200194);
+      AppMethodBeat.o(212888);
       return paramCameraUpdate;
       paramCameraUpdate = CameraUpdateFactory.newLatLngBoundsRect(a(localCameraParameter.newLatLngBounds_dimension_bounds), localCameraParameter.newLatLngBoundsRects_padLeft, localCameraParameter.newLatLngBoundsRects_padRight, localCameraParameter.newLatLngBoundsRects_padTop, localCameraParameter.newLatLngBoundsRects_padBom);
-      AppMethodBeat.o(200194);
+      AppMethodBeat.o(212888);
       return paramCameraUpdate;
       k = 0;
       m = 0;
@@ -144,56 +143,56 @@ public final class l
   
   private static com.tencent.tencentmap.mapsdk.maps.model.CameraPosition a(com.tencent.mapsdk.raster.model.CameraPosition paramCameraPosition)
   {
-    AppMethodBeat.i(200190);
+    AppMethodBeat.i(212884);
     if (paramCameraPosition == null)
     {
-      AppMethodBeat.o(200190);
+      AppMethodBeat.o(212884);
       return null;
     }
     paramCameraPosition = new com.tencent.tencentmap.mapsdk.maps.model.CameraPosition(c(paramCameraPosition.getTarget()), paramCameraPosition.getZoom(), paramCameraPosition.getSkew(), paramCameraPosition.getBearing());
-    AppMethodBeat.o(200190);
+    AppMethodBeat.o(212884);
     return paramCameraPosition;
   }
   
   static com.tencent.tencentmap.mapsdk.maps.model.IndoorInfo a(com.tencent.mapsdk.raster.model.IndoorInfo paramIndoorInfo)
   {
-    AppMethodBeat.i(200195);
+    AppMethodBeat.i(212889);
     if (paramIndoorInfo == null)
     {
-      AppMethodBeat.o(200195);
+      AppMethodBeat.o(212889);
       return null;
     }
     paramIndoorInfo = new com.tencent.tencentmap.mapsdk.maps.model.IndoorInfo(paramIndoorInfo.getBuildingId(), paramIndoorInfo.getFloorName());
-    AppMethodBeat.o(200195);
+    AppMethodBeat.o(212889);
     return paramIndoorInfo;
   }
   
   private static com.tencent.tencentmap.mapsdk.maps.model.LatLngBounds a(com.tencent.mapsdk.raster.model.LatLngBounds paramLatLngBounds)
   {
-    AppMethodBeat.i(200192);
+    AppMethodBeat.i(212886);
     if ((paramLatLngBounds == null) || (paramLatLngBounds.getNortheast() == null) || (paramLatLngBounds.getSouthwest() == null))
     {
-      AppMethodBeat.o(200192);
+      AppMethodBeat.o(212886);
       return null;
     }
     paramLatLngBounds = new com.tencent.tencentmap.mapsdk.maps.model.LatLngBounds(new com.tencent.tencentmap.mapsdk.maps.model.LatLng(paramLatLngBounds.getSouthwest().getLatitude(), paramLatLngBounds.getSouthwest().getLongitude()), new com.tencent.tencentmap.mapsdk.maps.model.LatLng(paramLatLngBounds.getNortheast().getLatitude(), paramLatLngBounds.getNortheast().getLongitude()));
-    AppMethodBeat.o(200192);
+    AppMethodBeat.o(212886);
     return paramLatLngBounds;
   }
   
   public static com.tencent.tencentmap.mapsdk.maps.model.PolylineOptions a(com.tencent.mapsdk.raster.model.PolylineOptions paramPolylineOptions)
   {
-    AppMethodBeat.i(200193);
+    AppMethodBeat.i(212887);
     if (paramPolylineOptions == null)
     {
-      AppMethodBeat.o(200193);
+      AppMethodBeat.o(212887);
       return null;
     }
     com.tencent.tencentmap.mapsdk.maps.model.PolylineOptions localPolylineOptions = new com.tencent.tencentmap.mapsdk.maps.model.PolylineOptions();
-    Object localObject = iV(paramPolylineOptions.getPoints());
+    Object localObject = je(paramPolylineOptions.getPoints());
     if ((localObject == null) || (((List)localObject).size() == 0))
     {
-      AppMethodBeat.o(200193);
+      AppMethodBeat.o(212887);
       return null;
     }
     localPolylineOptions.addAll((Iterable)localObject);
@@ -225,7 +224,7 @@ public final class l
       if (paramPolylineOptions.getColors() != null) {
         localPolylineOptions.colors(paramPolylineOptions.getColors()[0], paramPolylineOptions.getColors()[1]);
       }
-      AppMethodBeat.o(200193);
+      AppMethodBeat.o(212887);
       return localPolylineOptions;
     }
     catch (Exception localException)
@@ -236,23 +235,23 @@ public final class l
   
   public static com.tencent.tencentmap.mapsdk.maps.model.LatLng c(com.tencent.mapsdk.raster.model.LatLng paramLatLng)
   {
-    AppMethodBeat.i(200186);
+    AppMethodBeat.i(212880);
     if (paramLatLng == null)
     {
-      AppMethodBeat.o(200186);
+      AppMethodBeat.o(212880);
       return null;
     }
     paramLatLng = new com.tencent.tencentmap.mapsdk.maps.model.LatLng(paramLatLng.getLatitude(), paramLatLng.getLongitude());
-    AppMethodBeat.o(200186);
+    AppMethodBeat.o(212880);
     return paramLatLng;
   }
   
-  public static List<com.tencent.mapsdk.raster.model.LatLng> iU(List<com.tencent.tencentmap.mapsdk.maps.model.LatLng> paramList)
+  public static List<com.tencent.mapsdk.raster.model.LatLng> jd(List<com.tencent.tencentmap.mapsdk.maps.model.LatLng> paramList)
   {
-    AppMethodBeat.i(200188);
+    AppMethodBeat.i(212882);
     if (paramList == null)
     {
-      AppMethodBeat.o(200188);
+      AppMethodBeat.o(212882);
       return null;
     }
     paramList = (com.tencent.tencentmap.mapsdk.maps.model.LatLng[])paramList.toArray(new com.tencent.tencentmap.mapsdk.maps.model.LatLng[paramList.size()]);
@@ -264,16 +263,16 @@ public final class l
       localArrayList.add(a(paramList[i]));
       i += 1;
     }
-    AppMethodBeat.o(200188);
+    AppMethodBeat.o(212882);
     return localArrayList;
   }
   
-  public static List<com.tencent.tencentmap.mapsdk.maps.model.LatLng> iV(List<com.tencent.mapsdk.raster.model.LatLng> paramList)
+  public static List<com.tencent.tencentmap.mapsdk.maps.model.LatLng> je(List<com.tencent.mapsdk.raster.model.LatLng> paramList)
   {
-    AppMethodBeat.i(200189);
+    AppMethodBeat.i(212883);
     if (paramList == null)
     {
-      AppMethodBeat.o(200189);
+      AppMethodBeat.o(212883);
       return null;
     }
     paramList = (com.tencent.mapsdk.raster.model.LatLng[])paramList.toArray(new com.tencent.mapsdk.raster.model.LatLng[paramList.size()]);
@@ -285,7 +284,7 @@ public final class l
       localArrayList.add(c(paramList[i]));
       i += 1;
     }
-    AppMethodBeat.o(200189);
+    AppMethodBeat.o(212883);
     return localArrayList;
   }
 }

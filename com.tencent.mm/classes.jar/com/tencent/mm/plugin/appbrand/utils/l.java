@@ -1,97 +1,53 @@
 package com.tencent.mm.plugin.appbrand.utils;
 
+import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import java.lang.reflect.InvocationHandler;
-import java.lang.reflect.Method;
-import java.lang.reflect.Proxy;
-import org.apache.commons.b.a;
+import com.tencent.mm.ui.widget.a.d;
+import com.tencent.mm.ui.widget.a.d.a;
+import com.tencent.mm.ui.widget.a.j;
 
-public class l
-  implements InvocationHandler
+public final class l
 {
-  public static <I> I g(String paramString, Class<I> paramClass)
+  public static d a(Context paramContext, String paramString1, String paramString2, DialogInterface.OnClickListener paramOnClickListener)
   {
-    AppMethodBeat.i(176786);
-    paramString = new l()
-    {
-      public final Object invoke(Object paramAnonymousObject, Method paramAnonymousMethod, Object[] paramAnonymousArrayOfObject)
-      {
-        AppMethodBeat.i(176785);
-        ad.i(this.mOM, "dummy invoke method(%s) args(%s)", new Object[] { paramAnonymousMethod.getName(), a.toString(paramAnonymousArrayOfObject, "NULL") });
-        paramAnonymousObject = super.invoke(paramAnonymousObject, paramAnonymousMethod, paramAnonymousArrayOfObject);
-        AppMethodBeat.o(176785);
-        return paramAnonymousObject;
-      }
-    };
-    paramString = paramClass.cast(Proxy.newProxyInstance(paramClass.getClassLoader(), new Class[] { paramClass }, paramString));
-    AppMethodBeat.o(176786);
-    return paramString;
+    AppMethodBeat.i(147715);
+    paramContext = new d.a(paramContext).aZh(paramString1).aZo(paramString2).c(paramOnClickListener).fQv();
+    paramContext.show();
+    AppMethodBeat.o(147715);
+    return paramContext;
   }
   
-  public Object invoke(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
+  public static d a(Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2)
   {
-    AppMethodBeat.i(147718);
-    paramObject = paramMethod.getReturnType();
-    if (paramObject.equals(Integer.TYPE))
-    {
-      AppMethodBeat.o(147718);
-      return Integer.valueOf(0);
-    }
-    if (paramObject.equals(Long.TYPE))
-    {
-      AppMethodBeat.o(147718);
-      return Long.valueOf(0L);
-    }
-    if (paramObject.equals(Double.TYPE))
-    {
-      AppMethodBeat.o(147718);
-      return Double.valueOf(0.0D);
-    }
-    if (paramObject.equals(Float.TYPE))
-    {
-      AppMethodBeat.o(147718);
-      return Float.valueOf(0.0F);
-    }
-    if (paramObject.equals(Short.TYPE))
-    {
-      AppMethodBeat.o(147718);
-      return Integer.valueOf(0);
-    }
-    if (paramObject.equals(Byte.TYPE))
-    {
-      AppMethodBeat.o(147718);
-      return Integer.valueOf(0);
-    }
-    if (paramObject.equals(Character.TYPE))
-    {
-      AppMethodBeat.o(147718);
-      return Integer.valueOf(0);
-    }
-    if (paramObject.equals(Boolean.TYPE))
-    {
-      paramObject = Boolean.FALSE;
-      AppMethodBeat.o(147718);
-      return paramObject;
-    }
-    if (paramObject.equals(Boolean.class))
-    {
-      paramObject = Boolean.FALSE;
-      AppMethodBeat.o(147718);
-      return paramObject;
-    }
-    if (paramObject.isInterface())
-    {
-      AppMethodBeat.o(147718);
-      return null;
-    }
-    AppMethodBeat.o(147718);
-    return null;
+    AppMethodBeat.i(147716);
+    paramContext = new d.a(paramContext).aZh(paramString2).aZi(paramString1).aZo(paramString3).c(paramOnClickListener1).aZp(paramString4).d(paramOnClickListener2).fQv();
+    paramContext.show();
+    AppMethodBeat.o(147716);
+    return paramContext;
+  }
+  
+  public static ProgressDialog b(Context paramContext, CharSequence paramCharSequence)
+  {
+    AppMethodBeat.i(147713);
+    paramContext = j.c(paramContext, paramCharSequence, true);
+    AppMethodBeat.o(147713);
+    return paramContext;
+  }
+  
+  public static d b(Context paramContext, String paramString1, String paramString2, DialogInterface.OnClickListener paramOnClickListener)
+  {
+    AppMethodBeat.i(147717);
+    paramContext = new d.a(paramContext).aZh(paramString2).aZi(paramString1).afU(2131761022).c(paramOnClickListener).zf(false).fQv();
+    paramContext.show();
+    AppMethodBeat.o(147717);
+    return paramContext;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.utils.l
  * JD-Core Version:    0.7.0.1
  */

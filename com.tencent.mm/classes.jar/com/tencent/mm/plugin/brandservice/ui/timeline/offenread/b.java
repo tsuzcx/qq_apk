@@ -1,12 +1,12 @@
 package com.tencent.mm.plugin.brandservice.ui.timeline.offenread;
 
-import com.tencent.mm.protocal.protobuf.dmz;
+import com.tencent.mm.protocal.protobuf.dnw;
 
 public class b
-  extends dmz
+  extends dnw
 {
-  public long nsZ;
-  public boolean ogW;
+  public long nyu;
+  public boolean omV;
   public int position;
   public int type;
   

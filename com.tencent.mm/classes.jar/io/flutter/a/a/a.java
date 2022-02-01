@@ -16,11 +16,11 @@ public final class a
   implements io.flutter.embedding.engine.plugins.a, k.c
 {
   public Context context;
-  public k vCn;
+  public k vOr;
   
-  private List<String> bbZ(String paramString)
+  private List<String> bdD(String paramString)
   {
-    AppMethodBeat.i(209390);
+    AppMethodBeat.i(195405);
     ArrayList localArrayList = new ArrayList();
     if (Build.VERSION.SDK_INT >= 19)
     {
@@ -40,7 +40,7 @@ public final class a
     if (paramString != null) {
       localArrayList.add(paramString.getAbsolutePath());
     }
-    AppMethodBeat.o(209390);
+    AppMethodBeat.o(195405);
     return localArrayList;
   }
   
@@ -59,7 +59,7 @@ public final class a
       switch (i)
       {
       default: 
-        paramd.djR();
+        paramd.dmQ();
         AppMethodBeat.o(153351);
         return;
         if (str.equals("getTemporaryDirectory"))
@@ -93,17 +93,17 @@ public final class a
         break;
       }
     }
-    paramd.de(this.context.getCacheDir().getPath());
+    paramd.df(this.context.getCacheDir().getPath());
     AppMethodBeat.o(153351);
     return;
-    paramd.de(this.context.getDir("flutter", 0).getPath());
+    paramd.df(this.context.getDir("flutter", 0).getPath());
     AppMethodBeat.o(153351);
     return;
     paramj = this.context.getExternalFilesDir(null);
     if (paramj == null) {}
     for (paramj = null;; paramj = paramj.getAbsolutePath())
     {
-      paramd.de(paramj);
+      paramd.df(paramj);
       AppMethodBeat.o(153351);
       return;
     }
@@ -126,16 +126,16 @@ public final class a
     if (localObject != null) {
       paramj.add(((File)localObject).getAbsolutePath());
     }
-    paramd.de(paramj);
+    paramd.df(paramj);
     AppMethodBeat.o(153351);
     return;
-    paramj = (Integer)paramj.wd("type");
+    paramj = (Integer)paramj.wM("type");
     if (paramj == null) {
       paramj = (j)localObject;
     }
     for (;;)
     {
-      paramd.de(bbZ(paramj));
+      paramd.df(bdD(paramj));
       AppMethodBeat.o(153351);
       return;
       switch (paramj.intValue())
@@ -182,16 +182,16 @@ public final class a
     paramj = new IllegalArgumentException("Documents directory is unsupported.");
     AppMethodBeat.o(153351);
     throw paramj;
-    paramd.de(this.context.getFilesDir().getPath());
+    paramd.df(this.context.getFilesDir().getPath());
     AppMethodBeat.o(153351);
   }
   
-  public final void geT()
+  public final void gjv()
   {
-    AppMethodBeat.i(209389);
-    this.vCn.a(null);
-    this.vCn = null;
-    AppMethodBeat.o(209389);
+    AppMethodBeat.i(195404);
+    this.vOr.a(null);
+    this.vOr = null;
+    AppMethodBeat.o(195404);
   }
 }
 

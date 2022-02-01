@@ -10,17 +10,17 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/emoji/panel/adapter/EmojiPanelItemDecoration;", "Landroid/support/v7/widget/RecyclerView$ItemDecoration;", "sizeResolver", "Lcom/tencent/mm/emoji/panel/adapter/PanelSizeResolver;", "(Lcom/tencent/mm/emoji/panel/adapter/PanelSizeResolver;)V", "TAG", "", "getItemOffsets", "", "outRect", "Landroid/graphics/Rect;", "view", "Landroid/view/View;", "parent", "Landroid/support/v7/widget/RecyclerView;", "state", "Landroid/support/v7/widget/RecyclerView$State;", "plugin-emojisdk_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/emoji/panel/adapter/EmojiPanelItemDecoration;", "Landroid/support/v7/widget/RecyclerView$ItemDecoration;", "sizeResolver", "Lcom/tencent/mm/emoji/panel/adapter/PanelSizeResolver;", "(Lcom/tencent/mm/emoji/panel/adapter/PanelSizeResolver;)V", "TAG", "", "getItemOffsets", "", "outRect", "Landroid/graphics/Rect;", "view", "Landroid/view/View;", "parent", "Landroid/support/v7/widget/RecyclerView;", "state", "Landroid/support/v7/widget/RecyclerView$State;", "plugin-emojisdk_release"})
 public final class i
   extends RecyclerView.h
 {
   private final String TAG;
-  private final o gmS;
+  private final o gpo;
   
   public i(o paramo)
   {
     AppMethodBeat.i(105667);
-    this.gmS = paramo;
+    this.gpo = paramo;
     this.TAG = "MicroMsg.EmojiPanelItemDecoration";
     AppMethodBeat.o(105667);
   }
@@ -46,7 +46,7 @@ public final class i
       return;
     }
     i = paramRecyclerView.getItemViewType(i);
-    int j = this.gmS.gnQ;
+    int j = this.gpo.gqm;
     switch (i)
     {
     }

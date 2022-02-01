@@ -11,7 +11,7 @@ final class FavSearchUI$10
   public final void run()
   {
     AppMethodBeat.i(106831);
-    this.rvc.dismiss();
+    this.rDo.dismiss();
     AppMethodBeat.o(106831);
   }
 }

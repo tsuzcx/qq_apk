@@ -15,9 +15,9 @@ import com.tencent.mm.plugin.appbrand.canvas.action.arg.BaseDrawActionArg;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.DrawActionArg;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.SetFillStyleActionArg;
 import com.tencent.mm.plugin.appbrand.canvas.e;
-import com.tencent.mm.plugin.appbrand.z.g;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.plugin.appbrand.y.g;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import org.json.JSONArray;
 
 public final class q
@@ -46,7 +46,7 @@ public final class q
       return false;
     }
     Object localObject = paramJSONArray.optString(0);
-    paramCanvas = paramd.jSZ;
+    paramCanvas = paramd.jWq;
     float f1;
     float f2;
     float f3;
@@ -83,7 +83,7 @@ public final class q
         if (localJSONArray.length() >= 2)
         {
           localObject[i] = ((float)localJSONArray.optDouble(0));
-          paramJSONArray[i] = g.q(localJSONArray.optJSONArray(1));
+          paramJSONArray[i] = g.r(localJSONArray.optJSONArray(1));
         }
         i += 1;
       }
@@ -115,7 +115,7 @@ public final class q
             f3 = g.f(paramd, 2);
             if (f3 <= 0.0F)
             {
-              ad.i("MicroMsg.Canvas.SetFillStyleAction", "setFillStyle(radial) failed, sr(%s) <= 0.", new Object[] { Float.valueOf(f3) });
+              ae.i("MicroMsg.Canvas.SetFillStyleAction", "setFillStyle(radial) failed, sr(%s) <= 0.", new Object[] { Float.valueOf(f3) });
               AppMethodBeat.o(144915);
               return false;
             }
@@ -129,7 +129,7 @@ public final class q
               if (localJSONArray.length() >= 2)
               {
                 localObject[i] = ((float)localJSONArray.optDouble(0));
-                paramJSONArray[i] = g.q(localJSONArray.optJSONArray(1));
+                paramJSONArray[i] = g.r(localJSONArray.optJSONArray(1));
               }
               i += 1;
             }
@@ -147,22 +147,22 @@ public final class q
               return false;
             }
             paramCanvas.setShader(null);
-            paramCanvas.setColor(g.q(paramd));
+            paramCanvas.setColor(g.r(paramd));
           }
         }
       } while (!"pattern".equalsIgnoreCase((String)localObject));
       localObject = paramJSONArray.optString(1);
       paramJSONArray = paramJSONArray.optString(2);
-      if (bt.isNullOrNil((String)localObject))
+      if (bu.isNullOrNil((String)localObject))
       {
-        ad.w("MicroMsg.Canvas.SetFillStyleAction", "setFillStyle failed, type is pattern but image path is null or nil.");
+        ae.w("MicroMsg.Canvas.SetFillStyleAction", "setFillStyle failed, type is pattern but image path is null or nil.");
         AppMethodBeat.o(144915);
         return false;
       }
-      paramd = paramd.jTe.a(paramd, (String)localObject);
+      paramd = paramd.jWv.a(paramd, (String)localObject);
     } while ((paramd == null) || (paramd.isRecycled()));
-    int j = g.vJ(paramd.getWidth());
-    int k = g.vJ(paramd.getHeight());
+    int j = g.vO(paramd.getWidth());
+    int k = g.vO(paramd.getHeight());
     int i = -1;
     switch (paramJSONArray.hashCode())
     {
@@ -218,7 +218,7 @@ public final class q
     }
   }
   
-  public final BaseDrawActionArg bdn()
+  public final BaseDrawActionArg bdS()
   {
     AppMethodBeat.i(144914);
     SetFillStyleActionArg localSetFillStyleActionArg = new SetFillStyleActionArg();

@@ -11,46 +11,46 @@ import java.util.Map;
 public final class g
   extends JceStruct
 {
-  static Map<Integer, ArrayList<f>> LOf;
-  public int LNJ = 0;
-  public int LNK = 0;
-  public int LNL = 0;
-  public int LNM = 0;
-  public long LOc = 0L;
-  public Map<Integer, ArrayList<f>> LOd = null;
-  public int LOe = 0;
+  static Map<Integer, ArrayList<f>> Mle;
+  public int MkI = 0;
+  public int MkJ = 0;
+  public int MkK = 0;
+  public int MkL = 0;
+  public long Mlb = 0L;
+  public Map<Integer, ArrayList<f>> Mlc = null;
+  public int Mld = 0;
   
   public final void readFrom(JceInputStream paramJceInputStream)
   {
     AppMethodBeat.i(138428);
-    this.LOc = paramJceInputStream.read(this.LOc, 0, true);
-    if (LOf == null)
+    this.Mlb = paramJceInputStream.read(this.Mlb, 0, true);
+    if (Mle == null)
     {
-      LOf = new HashMap();
+      Mle = new HashMap();
       ArrayList localArrayList = new ArrayList();
       localArrayList.add(new f());
-      LOf.put(Integer.valueOf(0), localArrayList);
+      Mle.put(Integer.valueOf(0), localArrayList);
     }
-    this.LOd = ((Map)paramJceInputStream.read(LOf, 1, true));
-    this.LNJ = paramJceInputStream.read(this.LNJ, 2, false);
-    this.LNK = paramJceInputStream.read(this.LNK, 3, false);
-    this.LNL = paramJceInputStream.read(this.LNL, 4, false);
-    this.LNM = paramJceInputStream.read(this.LNM, 5, false);
-    this.LOe = paramJceInputStream.read(this.LOe, 6, false);
+    this.Mlc = ((Map)paramJceInputStream.read(Mle, 1, true));
+    this.MkI = paramJceInputStream.read(this.MkI, 2, false);
+    this.MkJ = paramJceInputStream.read(this.MkJ, 3, false);
+    this.MkK = paramJceInputStream.read(this.MkK, 4, false);
+    this.MkL = paramJceInputStream.read(this.MkL, 5, false);
+    this.Mld = paramJceInputStream.read(this.Mld, 6, false);
     AppMethodBeat.o(138428);
   }
   
   public final void writeTo(JceOutputStream paramJceOutputStream)
   {
     AppMethodBeat.i(138427);
-    paramJceOutputStream.write(this.LOc, 0);
-    paramJceOutputStream.write(this.LOd, 1);
-    paramJceOutputStream.write(this.LNJ, 2);
-    paramJceOutputStream.write(this.LNK, 3);
-    paramJceOutputStream.write(this.LNL, 4);
-    paramJceOutputStream.write(this.LNM, 5);
-    if (this.LOe != 0) {
-      paramJceOutputStream.write(this.LOe, 6);
+    paramJceOutputStream.write(this.Mlb, 0);
+    paramJceOutputStream.write(this.Mlc, 1);
+    paramJceOutputStream.write(this.MkI, 2);
+    paramJceOutputStream.write(this.MkJ, 3);
+    paramJceOutputStream.write(this.MkK, 4);
+    paramJceOutputStream.write(this.MkL, 5);
+    if (this.Mld != 0) {
+      paramJceOutputStream.write(this.Mld, 6);
     }
     AppMethodBeat.o(138427);
   }

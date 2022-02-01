@@ -6,20 +6,20 @@ import d.l;
 import java.util.Iterator;
 import org.json.JSONObject;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/media/widget/camera2/effect/result/WCCameraEffectResultTag;", "", "()V", "KEY_CAMERAID", "", "getKEY_CAMERAID", "()Ljava/lang/String;", "KEY_PARENT", "getKEY_PARENT", "KEY_STREAM", "getKEY_STREAM", "KEY_VALUETYPE", "getKEY_VALUETYPE", "KEY_VENDORTAG", "getKEY_VENDORTAG", "TAG", "getTAG", "cameraId", "", "getCameraId", "()Ljava/lang/Integer;", "setCameraId", "(Ljava/lang/Integer;)V", "Ljava/lang/Integer;", "parentKey", "getParentKey", "setParentKey", "(Ljava/lang/String;)V", "stream", "getStream", "setStream", "valueType", "getValueType", "setValueType", "vendorTag", "getVendorTag", "setVendorTag", "initEffectResultTag", "", "params", "Lorg/json/JSONObject;", "parseData", "plugin-mediaeditor_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/media/widget/camera2/effect/result/WCCameraEffectResultTag;", "", "()V", "KEY_CAMERAID", "", "getKEY_CAMERAID", "()Ljava/lang/String;", "KEY_PARENT", "getKEY_PARENT", "KEY_STREAM", "getKEY_STREAM", "KEY_VALUETYPE", "getKEY_VALUETYPE", "KEY_VENDORTAG", "getKEY_VENDORTAG", "TAG", "getTAG", "cameraId", "", "getCameraId", "()Ljava/lang/Integer;", "setCameraId", "(Ljava/lang/Integer;)V", "Ljava/lang/Integer;", "parentKey", "getParentKey", "setParentKey", "(Ljava/lang/String;)V", "stream", "getStream", "setStream", "valueType", "getValueType", "setValueType", "vendorTag", "getVendorTag", "setVendorTag", "initEffectResultTag", "", "params", "Lorg/json/JSONObject;", "parseData", "plugin-mediaeditor_release"})
 public final class a
 {
   private final String TAG = "MicroMsg.WCCameraEffectResultTag";
-  private final String hsP = "valueType";
-  public String hsQ;
-  private final String hsn = "cameraId";
-  private final String hso = "parentKey";
-  private final String hsq = "vendorTag";
-  private final String hss = "stream";
-  public String hsu;
-  public Integer hsv;
-  public String hsy;
-  public Integer hsz;
+  private final String hvD = "valueType";
+  public String hvE;
+  private final String hvb = "cameraId";
+  private final String hvc = "parentKey";
+  private final String hve = "vendorTag";
+  private final String hvg = "stream";
+  public String hvi;
+  public Integer hvj;
+  public String hvm;
+  public Integer hvn;
   
   public final void p(JSONObject paramJSONObject)
   {
@@ -34,16 +34,16 @@ public final class a
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
-      if (p.i(str, this.hsn)) {
-        this.hsv = Integer.valueOf(paramJSONObject.optInt(str));
-      } else if (p.i(str, this.hso)) {
-        this.hsu = paramJSONObject.optString(str);
-      } else if (p.i(str, this.hsq)) {
-        this.hsy = paramJSONObject.optString(str);
-      } else if (p.i(str, this.hss)) {
-        this.hsz = Integer.valueOf(paramJSONObject.optInt(str));
-      } else if (p.i(str, this.hsP)) {
-        this.hsQ = paramJSONObject.optString(str);
+      if (p.i(str, this.hvb)) {
+        this.hvj = Integer.valueOf(paramJSONObject.optInt(str));
+      } else if (p.i(str, this.hvc)) {
+        this.hvi = paramJSONObject.optString(str);
+      } else if (p.i(str, this.hve)) {
+        this.hvm = paramJSONObject.optString(str);
+      } else if (p.i(str, this.hvg)) {
+        this.hvn = Integer.valueOf(paramJSONObject.optInt(str));
+      } else if (p.i(str, this.hvD)) {
+        this.hvE = paramJSONObject.optString(str);
       }
     }
     AppMethodBeat.o(94205);

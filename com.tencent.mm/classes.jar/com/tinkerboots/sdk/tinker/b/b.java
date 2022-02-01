@@ -16,14 +16,14 @@ public final class b
     super(paramContext);
   }
   
-  public final int hu(String paramString1, String paramString2)
+  public final int hB(String paramString1, String paramString2)
   {
     int i = 0;
     AppMethodBeat.i(3447);
     ShareTinkerLog.v("Tinker.TinkerServerPatchListener", "receive a patch file: %s, file size:%d", new Object[] { paramString1, Long.valueOf(SharePatchFileUtil.getFileOrDirectorySize(new File(paramString1))) });
-    int j = super.hu(paramString1, paramString2);
+    int j = super.hB(paramString1, paramString2);
     if (j == 0) {
-      if (!d.gdZ()) {}
+      if (!d.giC()) {}
     }
     for (i = -20;; i = j)
     {

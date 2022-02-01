@@ -28,7 +28,7 @@ final class v
       if ((paramList.capabilities != null) && (!paramList.capabilities.contains("IBSS"))) {
         try
         {
-          String str1 = new BigInteger(co(paramList.BSSID), 16).toString();
+          String str1 = new BigInteger(cp(paramList.BSSID), 16).toString();
           String str2 = String.valueOf(paramList.level);
           if (paramBoolean) {}
           for (paramList = "&WD[]=";; paramList = "|WD,")
@@ -82,7 +82,7 @@ final class v
     return false;
   }
   
-  private static String co(String paramString)
+  private static String cp(String paramString)
   {
     AppMethodBeat.i(87912);
     if (paramString == null)
@@ -109,7 +109,7 @@ final class v
     }
   }
   
-  static String cp(String paramString)
+  static String cq(String paramString)
   {
     AppMethodBeat.i(87915);
     if (paramString == null)
@@ -122,7 +122,7 @@ final class v
     return paramString;
   }
   
-  static String cq(String paramString)
+  static String cr(String paramString)
   {
     AppMethodBeat.i(87916);
     if (paramString == null)

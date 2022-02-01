@@ -1,161 +1,161 @@
 package com.tencent.mm.plugin.finder.service;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.aa.b;
-import com.tencent.mm.model.as.b;
-import com.tencent.mm.model.as.b.a;
+import com.tencent.mm.model.ab.b;
+import com.tencent.mm.model.au.b;
+import com.tencent.mm.model.au.b.a;
 import com.tencent.mm.plugin.finder.storage.w;
 import com.tencent.mm.plugin.i.a.f.a;
 import com.tencent.mm.plugin.i.a.r;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.storage.am;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.storage.an;
 import d.g.a.a;
 import d.g.b.q;
 import d.g.b.y.f;
 import d.l;
 import d.z;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/service/FinderGetContactInterceptor;", "Lcom/tencent/mm/model/GetContactServiceProxy$GetContactInterceptor;", "()V", "sessionInfoStorage", "Lcom/tencent/mm/plugin/finder/storage/FinderSessionInfoStorage;", "getSessionInfoStorage", "()Lcom/tencent/mm/plugin/finder/storage/FinderSessionInfoStorage;", "sessionInfoStorage$delegate", "Lkotlin/Lazy;", "getContactImpl", "Lcom/tencent/mm/model/IMainService$GetContact;", "isIntercept", "", "user", "", "scene", "", "Companion", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/service/FinderGetContactInterceptor;", "Lcom/tencent/mm/model/GetContactServiceProxy$GetContactInterceptor;", "()V", "sessionInfoStorage", "Lcom/tencent/mm/plugin/finder/storage/FinderSessionInfoStorage;", "getSessionInfoStorage", "()Lcom/tencent/mm/plugin/finder/storage/FinderSessionInfoStorage;", "sessionInfoStorage$delegate", "Lkotlin/Lazy;", "getContactImpl", "Lcom/tencent/mm/model/IMainService$GetContact;", "isIntercept", "", "user", "", "scene", "", "Companion", "plugin-finder_release"})
 public final class c
-  implements aa.b
+  implements ab.b
 {
-  public static final a sug;
-  private final d.f rLJ;
+  public static final a sEr;
+  private final d.f rTW;
   
   static
   {
-    AppMethodBeat.i(203522);
-    sug = new a((byte)0);
-    AppMethodBeat.o(203522);
+    AppMethodBeat.i(204082);
+    sEr = new a((byte)0);
+    AppMethodBeat.o(204082);
   }
   
   public c()
   {
-    AppMethodBeat.i(203521);
-    this.rLJ = d.g.O((a)c.sun);
-    AppMethodBeat.o(203521);
+    AppMethodBeat.i(204081);
+    this.rTW = d.g.O((a)c.sEx);
+    AppMethodBeat.o(204081);
   }
   
-  public final as.b aBu()
+  public final au.b aBK()
   {
-    AppMethodBeat.i(203519);
-    as.b localb = (as.b)new b();
-    AppMethodBeat.o(203519);
+    AppMethodBeat.i(204079);
+    au.b localb = (au.b)new b();
+    AppMethodBeat.o(204079);
     return localb;
   }
   
-  public final boolean af(String paramString, int paramInt)
+  public final boolean ag(String paramString, int paramInt)
   {
-    AppMethodBeat.i(203520);
+    AppMethodBeat.i(204080);
     CharSequence localCharSequence = (CharSequence)paramString;
     if ((localCharSequence == null) || (localCharSequence.length() == 0)) {}
     for (int i = 1; i != 0; i = 0)
     {
-      AppMethodBeat.o(203520);
+      AppMethodBeat.o(204080);
       return false;
     }
-    if ((paramInt == 2) || (am.aSU(paramString)) || (am.ail(paramString)) || (am.aST(paramString)))
+    if ((paramInt == 2) || (an.aUu(paramString)) || (an.aji(paramString)) || (an.aUt(paramString)))
     {
-      AppMethodBeat.o(203520);
+      AppMethodBeat.o(204080);
       return true;
     }
-    AppMethodBeat.o(203520);
+    AppMethodBeat.o(204080);
     return false;
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/service/FinderGetContactInterceptor$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/service/FinderGetContactInterceptor$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
   public static final class a {}
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/finder/service/FinderGetContactInterceptor$getContactImpl$1", "Lcom/tencent/mm/model/IMainService$GetContact;", "addContact", "", "user", "", "chatroom", "addContactExtra", "scene", "", "tick", "checkPendingGetContact", "clearMapRecentDown", "username", "getContact", "callback", "Lcom/tencent/mm/model/IMainService$GetContact$GetContactCallBack;", "getNow", "removeCallBack", "sourceUsername", "plugin-finder_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/finder/service/FinderGetContactInterceptor$getContactImpl$1", "Lcom/tencent/mm/model/IMainService$GetContact;", "addContact", "", "user", "", "chatroom", "addContactExtra", "scene", "", "tick", "checkPendingGetContact", "clearMapRecentDown", "username", "getContact", "callback", "Lcom/tencent/mm/model/IMainService$GetContact$GetContactCallBack;", "getNow", "removeCallBack", "sourceUsername", "plugin-finder_release"})
   public static final class b
-    implements as.b
+    implements au.b
   {
-    public final void AJ(String paramString) {}
+    public final void Bt(String paramString) {}
     
-    public final void AK(String paramString) {}
+    public final void Bu(String paramString) {}
     
-    public final void a(String paramString1, String paramString2, final as.b.a parama)
+    public final void a(String paramString1, String paramString2, final au.b.a parama)
     {
-      AppMethodBeat.i(203516);
+      AppMethodBeat.i(204076);
       if (paramString1 != null)
       {
         final y.f localf = new y.f();
-        localf.MLV = paramString1;
-        if (am.ail(paramString1))
+        localf.NiY = paramString1;
+        if (an.aji(paramString1))
         {
-          paramString2 = ((com.tencent.mm.plugin.i.a.p)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.i.a.p.class)).aii(paramString1);
+          paramString2 = ((com.tencent.mm.plugin.i.a.p)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.i.a.p.class)).ajf(paramString1);
           d.g.b.p.g(paramString2, "MMKernel.service(IFinder…TalkerFromLocal(username)");
-          localf.MLV = paramString2;
+          localf.NiY = paramString2;
           paramString2 = paramString1;
         }
         for (;;)
         {
-          ad.i("Finder.GetContactInterceptor", "[getContact] sessionId=" + paramString2 + " talker=" + (String)localf.MLV);
-          if (!am.aSU((String)localf.MLV)) {
+          ae.i("Finder.GetContactInterceptor", "[getContact] sessionId=" + paramString2 + " talker=" + (String)localf.NiY);
+          if (!an.aUu((String)localf.NiY)) {
             break;
           }
-          ((com.tencent.mm.plugin.i.a.f)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.i.a.f.class)).a((String)localf.MLV, (f.a)new a(paramString1, localf, parama));
-          AppMethodBeat.o(203516);
+          ((com.tencent.mm.plugin.i.a.f)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.i.a.f.class)).a((String)localf.NiY, (f.a)new a(paramString1, localf, parama));
+          AppMethodBeat.o(204076);
           return;
-          paramString2 = ((com.tencent.mm.plugin.i.a.p)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.i.a.p.class)).aij(paramString1);
+          paramString2 = ((com.tencent.mm.plugin.i.a.p)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.i.a.p.class)).ajg(paramString1);
           d.g.b.p.g(paramString2, "MMKernel.service(IFinder…sionIdFromLocal(username)");
         }
-        if (am.aST((String)localf.MLV)) {
-          ((com.tencent.mm.plugin.i.a.f)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.i.a.f.class)).a((String)localf.MLV, paramString2, (f.a)new b(paramString1, localf, parama));
+        if (an.aUt((String)localf.NiY)) {
+          ((com.tencent.mm.plugin.i.a.f)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.i.a.f.class)).a((String)localf.NiY, paramString2, (f.a)new b(paramString1, localf, parama));
         }
-        AppMethodBeat.o(203516);
+        AppMethodBeat.o(204076);
         return;
       }
-      AppMethodBeat.o(203516);
+      AppMethodBeat.o(204076);
     }
     
-    public final void aBs() {}
+    public final void aBI() {}
     
-    public final void aI(String paramString1, String paramString2) {}
+    public final void aJ(String paramString1, String paramString2) {}
     
     public final void g(String paramString1, int paramInt, String paramString2) {}
     
-    @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/findersdk/api/ILocalFinderContact;", "kotlin.jvm.PlatformType", "onDone"})
+    @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/findersdk/api/ILocalFinderContact;", "kotlin.jvm.PlatformType", "onDone"})
     static final class a
       implements f.a
     {
-      a(String paramString, y.f paramf, as.b.a parama) {}
+      a(String paramString, y.f paramf, au.b.a parama) {}
       
       public final void c(final r paramr)
       {
-        AppMethodBeat.i(203513);
-        com.tencent.mm.ad.c.g((a)new q(paramr) {});
-        AppMethodBeat.o(203513);
+        AppMethodBeat.i(204073);
+        com.tencent.mm.ac.c.h((a)new q(paramr) {});
+        AppMethodBeat.o(204073);
       }
     }
     
-    @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/findersdk/api/ILocalFinderContact;", "kotlin.jvm.PlatformType", "onDone"})
+    @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/findersdk/api/ILocalFinderContact;", "kotlin.jvm.PlatformType", "onDone"})
     static final class b
       implements f.a
     {
-      b(String paramString, y.f paramf, as.b.a parama) {}
+      b(String paramString, y.f paramf, au.b.a parama) {}
       
       public final void c(final r paramr)
       {
-        AppMethodBeat.i(203515);
-        com.tencent.mm.ad.c.g((a)new q(paramr) {});
-        AppMethodBeat.o(203515);
+        AppMethodBeat.i(204075);
+        com.tencent.mm.ac.c.h((a)new q(paramr) {});
+        AppMethodBeat.o(204075);
       }
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "Lcom/tencent/mm/plugin/finder/storage/FinderSessionInfoStorage;", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "Lcom/tencent/mm/plugin/finder/storage/FinderSessionInfoStorage;", "invoke"})
   static final class c
     extends q
     implements a<w>
   {
-    public static final c sun;
+    public static final c sEx;
     
     static
     {
-      AppMethodBeat.i(203518);
-      sun = new c();
-      AppMethodBeat.o(203518);
+      AppMethodBeat.i(204078);
+      sEx = new c();
+      AppMethodBeat.o(204078);
     }
     
     c()

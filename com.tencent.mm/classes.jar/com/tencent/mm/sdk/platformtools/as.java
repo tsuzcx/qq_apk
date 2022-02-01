@@ -1,28 +1,41 @@
 package com.tencent.mm.sdk.platformtools;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"DEFAULT_SLOT_SECONDS", "", "now", "isExpire", "", "seconds", "", "millSeconds", "libcompatible_release"})
-public final class as
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/sdk/platformtools/MMKVSlotManager;", "Lcom/tencent/mm/sdk/platformtools/BaseSlotManager;", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "slotRecorder", "slotSeconds", "", "(Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;J)V", "clearSlot", "", "slotId", "slot", "containsKey", "", "key", "", "decodeProtoBuffer", "T", "Lcom/tencent/mm/protobuf/BaseProtoBuf;", "(Ljava/lang/String;)Lcom/tencent/mm/protobuf/BaseProtoBuf;", "getSlotByKey", "kotlin.jvm.PlatformType", "slotKey", "remarkSlot", "verifySlot", "libcompatible_release"})
+public class as
+  extends f<ay>
 {
-  public static final boolean al(long paramLong, int paramInt)
+  private final ay Iye;
+  
+  public as(ay paramay, long paramLong)
   {
-    AppMethodBeat.i(156398);
-    boolean bool = ay(paramLong, paramInt * 1000L);
-    AppMethodBeat.o(156398);
-    return bool;
+    super(paramLong, (byte)0);
+    AppMethodBeat.i(156396);
+    this.Iye = paramay;
+    AppMethodBeat.o(156396);
   }
   
-  public static final boolean ay(long paramLong1, long paramLong2)
+  protected final void bV(String paramString, long paramLong)
   {
-    AppMethodBeat.i(156397);
-    if (System.currentTimeMillis() - paramLong1 > paramLong2)
+    AppMethodBeat.i(156392);
+    p.h(paramString, "slotKey");
+    this.Iye.putLong(paramString, paramLong);
+    AppMethodBeat.o(156392);
+  }
+  
+  protected final boolean bW(String paramString, long paramLong)
+  {
+    AppMethodBeat.i(156393);
+    p.h(paramString, "slotKey");
+    if (this.Iye.getLong(paramString, 0L) == paramLong)
     {
-      AppMethodBeat.o(156397);
+      AppMethodBeat.o(156393);
       return true;
     }
-    AppMethodBeat.o(156397);
+    AppMethodBeat.o(156393);
     return false;
   }
 }

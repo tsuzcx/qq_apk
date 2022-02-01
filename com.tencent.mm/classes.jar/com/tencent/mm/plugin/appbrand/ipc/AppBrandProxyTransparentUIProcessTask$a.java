@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.appbrand.ipc;
 
 public abstract interface AppBrandProxyTransparentUIProcessTask$a
 {
-  public abstract void bhL();
+  public abstract void biu();
 }
 
 

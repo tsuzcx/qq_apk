@@ -4,16 +4,16 @@ import android.content.Context;
 import android.content.Intent;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bs.d;
-import com.tencent.mm.g.a.vm;
-import com.tencent.mm.g.a.vm.a;
-import com.tencent.mm.model.w;
+import com.tencent.mm.br.d;
+import com.tencent.mm.g.a.vq;
+import com.tencent.mm.g.a.vq.a;
+import com.tencent.mm.model.x;
 import com.tencent.mm.plugin.card.ui.CardNewMsgUI;
 import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.protocal.protobuf.aaf;
-import com.tencent.mm.protocal.protobuf.sr;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.aai;
+import com.tencent.mm.protocal.protobuf.st;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.MMActivity.a;
 
@@ -22,22 +22,22 @@ public final class b
   public static void I(String paramString1, String paramString2, int paramInt)
   {
     AppMethodBeat.i(113750);
-    vm localvm = new vm();
-    localvm.dJF.userName = paramString1;
-    localvm.dJF.dJH = bt.bI(paramString2, "");
+    vq localvq = new vq();
+    localvq.dKT.userName = paramString1;
+    localvq.dKT.dKV = bu.bI(paramString2, "");
     if (paramInt > 0) {
-      localvm.dJF.aDD = paramInt;
+      localvq.dKT.aDD = paramInt;
     }
-    localvm.dJF.scene = 1028;
-    com.tencent.mm.sdk.b.a.IbL.l(localvm);
+    localvq.dKT.scene = 1028;
+    com.tencent.mm.sdk.b.a.IvT.l(localvq);
     AppMethodBeat.o(113750);
   }
   
-  public static boolean P(String paramString1, String paramString2, String paramString3)
+  public static boolean Q(String paramString1, String paramString2, String paramString3)
   {
-    AppMethodBeat.i(215409);
+    AppMethodBeat.i(218605);
     boolean bool = d(paramString1, paramString2, paramString3, 1028, 0);
-    AppMethodBeat.o(215409);
+    AppMethodBeat.o(218605);
     return bool;
   }
   
@@ -72,20 +72,20 @@ public final class b
     localIntent.putExtra("key_begin_time", System.currentTimeMillis());
     localIntent.putExtra("key_card_tips", paramString);
     localIntent.putExtra("key_is_mark", paramBoolean);
-    localIntent.putExtra("key_card_id", paramb.bTS());
-    localIntent.putExtra("key_user_card_id", paramb.bTR());
-    localIntent.putExtra("key_card_code", paramb.bTO().code);
+    localIntent.putExtra("key_card_id", paramb.bVh());
+    localIntent.putExtra("key_user_card_id", paramb.bVg());
+    localIntent.putExtra("key_card_code", paramb.bVd().code);
     d.b(paramMMActivity, "offline", ".ui.WalletOfflineEntranceUI", localIntent);
-    g.yhR.f(11850, new Object[] { Integer.valueOf(5), Integer.valueOf(0) });
-    g.yhR.f(19671, new Object[] { Integer.valueOf(1), paramb.bTR() });
+    g.yxI.f(11850, new Object[] { Integer.valueOf(5), Integer.valueOf(0) });
+    g.yxI.f(19671, new Object[] { Integer.valueOf(1), paramb.bVg() });
     AppMethodBeat.o(113747);
   }
   
   public static void a(MMActivity paramMMActivity, String paramString)
   {
-    AppMethodBeat.i(221189);
+    AppMethodBeat.i(224491);
     a(paramMMActivity, paramString, 0);
-    AppMethodBeat.o(221189);
+    AppMethodBeat.o(224491);
   }
   
   public static void a(MMActivity paramMMActivity, String paramString, int paramInt)
@@ -116,40 +116,40 @@ public final class b
     Object localObject = new Intent(paramMMActivity, CardNewMsgUI.class);
     ((Intent)localObject).putExtra("from_menu", paramBoolean);
     localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
-    com.tencent.mm.hellhoundlib.a.a.a(paramMMActivity, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahp(), "com/tencent/mm/plugin/card/util/CardActivityHelper", "goCardNewMsgUI", "(Lcom/tencent/mm/ui/MMActivity;Z)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    paramMMActivity.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mq(0));
+    com.tencent.mm.hellhoundlib.a.a.a(paramMMActivity, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahE(), "com/tencent/mm/plugin/card/util/CardActivityHelper", "goCardNewMsgUI", "(Lcom/tencent/mm/ui/MMActivity;Z)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramMMActivity.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mt(0));
     com.tencent.mm.hellhoundlib.a.a.a(paramMMActivity, "com/tencent/mm/plugin/card/util/CardActivityHelper", "goCardNewMsgUI", "(Lcom/tencent/mm/ui/MMActivity;Z)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    ad.v("MicroMsg.CardActivityHelper", "start CardNewMsgUI");
-    g.yhR.f(11324, new Object[] { "CardMsgCenterView", Integer.valueOf(0), "", "", Integer.valueOf(0), Integer.valueOf(0), "", Integer.valueOf(0), "" });
+    ae.v("MicroMsg.CardActivityHelper", "start CardNewMsgUI");
+    g.yxI.f(11324, new Object[] { "CardMsgCenterView", Integer.valueOf(0), "", "", Integer.valueOf(0), Integer.valueOf(0), "", Integer.valueOf(0), "" });
     AppMethodBeat.o(113737);
   }
   
-  public static boolean a(String paramString, aaf paramaaf, int paramInt1, int paramInt2)
+  public static boolean a(String paramString, aai paramaai, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(113748);
-    if (paramaaf == null)
+    if (paramaai == null)
     {
-      ad.i("MicroMsg.CardActivityHelper", "gotoAppBrand commField is null");
+      ae.i("MicroMsg.CardActivityHelper", "gotoAppBrand commField is null");
       AppMethodBeat.o(113748);
       return false;
     }
-    boolean bool = d(paramString, paramaaf.FRk, paramaaf.FRl, paramInt1, paramInt2);
+    boolean bool = d(paramString, paramaai.GjJ, paramaai.GjK, paramInt1, paramInt2);
     AppMethodBeat.o(113748);
     return bool;
   }
   
-  public static void ac(Context paramContext, String paramString)
+  public static void ae(Context paramContext, String paramString)
   {
     AppMethodBeat.i(113738);
     if (TextUtils.isEmpty(paramString))
     {
-      ad.v("MicroMsg.CardActivityHelper", "username is null");
+      ae.v("MicroMsg.CardActivityHelper", "username is null");
       AppMethodBeat.o(113738);
       return;
     }
     if (paramContext == null)
     {
-      ad.e("MicroMsg.CardActivityHelper", "context is null, err");
+      ae.e("MicroMsg.CardActivityHelper", "context is null, err");
       AppMethodBeat.o(113738);
       return;
     }
@@ -160,31 +160,31 @@ public final class b
     AppMethodBeat.o(113738);
   }
   
-  public static void ad(Context paramContext, String paramString)
+  public static void af(Context paramContext, String paramString)
   {
     AppMethodBeat.i(113739);
     if (TextUtils.isEmpty(paramString))
     {
-      ad.v("MicroMsg.CardActivityHelper", "username is null");
+      ae.v("MicroMsg.CardActivityHelper", "username is null");
       AppMethodBeat.o(113739);
       return;
     }
-    if (w.zD(paramString))
+    if (x.An(paramString))
     {
-      ae(paramContext, paramString);
+      ag(paramContext, paramString);
       AppMethodBeat.o(113739);
       return;
     }
-    ac(paramContext, paramString);
+    ae(paramContext, paramString);
     AppMethodBeat.o(113739);
   }
   
-  private static void ae(Context paramContext, String paramString)
+  private static void ag(Context paramContext, String paramString)
   {
     AppMethodBeat.i(113740);
     if (TextUtils.isEmpty(paramString))
     {
-      ad.v("MicroMsg.CardActivityHelper", "username is null");
+      ae.v("MicroMsg.CardActivityHelper", "username is null");
       AppMethodBeat.o(113740);
       return;
     }
@@ -207,23 +207,23 @@ public final class b
   public static boolean d(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(113749);
-    if (bt.isNullOrNil(paramString2))
+    if (bu.isNullOrNil(paramString2))
     {
-      ad.i("MicroMsg.CardActivityHelper", "gotoAppBrand commField.app_brand_user_name is null");
+      ae.i("MicroMsg.CardActivityHelper", "gotoAppBrand commField.app_brand_user_name is null");
       AppMethodBeat.o(113749);
       return false;
     }
-    vm localvm = new vm();
-    localvm.dJF.userName = paramString2;
-    localvm.dJF.dJH = bt.bI(paramString3, "");
-    localvm.dJF.dJI = paramInt2;
+    vq localvq = new vq();
+    localvq.dKT.userName = paramString2;
+    localvq.dKT.dKV = bu.bI(paramString3, "");
+    localvq.dKT.dKW = paramInt2;
     if (paramInt1 == 26) {}
-    for (localvm.dJF.scene = 1029;; localvm.dJF.scene = 1028)
+    for (localvq.dKT.scene = 1029;; localvq.dKT.scene = 1028)
     {
-      localvm.dJF.dkh = paramString1;
-      localvm.dJF.dJL = true;
-      com.tencent.mm.sdk.b.a.IbL.l(localvm);
-      ad.i("MicroMsg.CardActivityHelper", "gotoAppBrand userName:%s, path:%s, scene:%d openType:%d", new Object[] { localvm.dJF.userName, localvm.dJF.dJH, Integer.valueOf(localvm.dJF.scene), Integer.valueOf(localvm.dJF.dJI) });
+      localvq.dKT.dlj = paramString1;
+      localvq.dKT.dLa = true;
+      com.tencent.mm.sdk.b.a.IvT.l(localvq);
+      ae.i("MicroMsg.CardActivityHelper", "gotoAppBrand userName:%s, path:%s, scene:%d openType:%d", new Object[] { localvq.dKT.userName, localvq.dKT.dKV, Integer.valueOf(localvq.dKT.scene), Integer.valueOf(localvq.dKT.dKW) });
       AppMethodBeat.o(113749);
       return true;
     }

@@ -4,15 +4,15 @@ import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
-import com.tencent.mm.plugin.appbrand.q;
+import com.tencent.mm.plugin.appbrand.r;
 import com.tencent.mm.plugin.downloader.model.d;
 import com.tencent.mm.plugin.downloader.model.f;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import org.json.JSONObject;
 
 public final class JsApiResumeDownloadTask
-  extends a<q>
+  extends a<r>
 {
   public static final int CTRL_INDEX = 444;
   public static final String NAME = "resumeDownloadTask";
@@ -22,12 +22,12 @@ public final class JsApiResumeDownloadTask
   {
     public static final Parcelable.Creator<ResumeDownloadTask> CREATOR;
     private int cgA;
-    private q jwH;
-    private m ksO;
-    private boolean ksW;
-    private String ksX;
-    private long ksY;
-    private boolean kud;
+    private r jzD;
+    private m kwe;
+    private boolean kwm;
+    private String kwn;
+    private long kwo;
+    private boolean kxt;
     
     static
     {
@@ -43,59 +43,59 @@ public final class JsApiResumeDownloadTask
       AppMethodBeat.o(107794);
     }
     
-    public ResumeDownloadTask(m paramm, q paramq, int paramInt, JSONObject paramJSONObject)
+    public ResumeDownloadTask(m paramm, r paramr, int paramInt, JSONObject paramJSONObject)
     {
       AppMethodBeat.i(107793);
-      this.ksO = paramm;
-      this.jwH = paramq;
+      this.kwe = paramm;
+      this.jzD = paramr;
       this.cgA = paramInt;
-      this.ksY = paramJSONObject.optLong("downloadId");
-      this.kud = paramJSONObject.optBoolean("downloadInWifi", false);
-      this.ksW = true;
+      this.kwo = paramJSONObject.optLong("downloadId");
+      this.kxt = paramJSONObject.optBoolean("downloadInWifi", false);
+      this.kwm = true;
       AppMethodBeat.o(107793);
     }
     
-    public final void aOA()
+    public final void aOX()
     {
       boolean bool = true;
       AppMethodBeat.i(107795);
-      ad.i("MicroMsg.JsApiResumeDownloadTask", "doQueryDownloadTask, downloadId = %d", new Object[] { Long.valueOf(this.ksY) });
-      if (this.ksY <= 0L)
+      ae.i("MicroMsg.JsApiResumeDownloadTask", "doQueryDownloadTask, downloadId = %d", new Object[] { Long.valueOf(this.kwo) });
+      if (this.kwo <= 0L)
       {
-        this.ksX = "downloadId invalid";
-        bhX();
+        this.kwn = "downloadId invalid";
+        biG();
         AppMethodBeat.o(107795);
         return;
       }
-      com.tencent.mm.plugin.downloader.g.a locala = d.ua(this.ksY);
-      if ((locala != null) && (locala.field_downloadInWifi != this.kud))
+      com.tencent.mm.plugin.downloader.g.a locala = d.ur(this.kwo);
+      if ((locala != null) && (locala.field_downloadInWifi != this.kxt))
       {
-        locala.field_downloadInWifi = this.kud;
+        locala.field_downloadInWifi = this.kxt;
         d.e(locala);
       }
-      if (!f.ccl().tU(this.ksY)) {}
+      if (!f.cdA().ul(this.kwo)) {}
       for (;;)
       {
-        this.ksW = bool;
+        this.kwm = bool;
         break;
         bool = false;
       }
     }
     
-    public final void aOB()
+    public final void aOY()
     {
       AppMethodBeat.i(107796);
-      if (this.ksW)
+      if (this.kwm)
       {
-        if (bt.isNullOrNil(this.ksX)) {}
-        for (String str = "fail";; str = String.format("fail:%s", new Object[] { this.ksX }))
+        if (bu.isNullOrNil(this.kwn)) {}
+        for (String str = "fail";; str = String.format("fail:%s", new Object[] { this.kwn }))
         {
-          this.jwH.h(this.cgA, this.ksO.e(str, null));
+          this.jzD.h(this.cgA, this.kwe.e(str, null));
           AppMethodBeat.o(107796);
           return;
         }
       }
-      this.jwH.h(this.cgA, this.ksO.e("ok", null));
+      this.jzD.h(this.cgA, this.kwe.e("ok", null));
       AppMethodBeat.o(107796);
     }
     
@@ -103,11 +103,11 @@ public final class JsApiResumeDownloadTask
     {
       boolean bool2 = true;
       AppMethodBeat.i(107797);
-      this.ksY = paramParcel.readLong();
+      this.kwo = paramParcel.readLong();
       if (paramParcel.readByte() == 1)
       {
         bool1 = true;
-        this.kud = bool1;
+        this.kxt = bool1;
         if (paramParcel.readInt() != 1) {
           break label64;
         }
@@ -115,8 +115,8 @@ public final class JsApiResumeDownloadTask
       label64:
       for (boolean bool1 = bool2;; bool1 = false)
       {
-        this.ksW = bool1;
-        this.ksX = paramParcel.readString();
+        this.kwm = bool1;
+        this.kwn = paramParcel.readString();
         AppMethodBeat.o(107797);
         return;
         bool1 = false;
@@ -128,20 +128,20 @@ public final class JsApiResumeDownloadTask
     {
       paramInt = 1;
       AppMethodBeat.i(107798);
-      paramParcel.writeLong(this.ksY);
+      paramParcel.writeLong(this.kwo);
       byte b;
-      if (this.kud)
+      if (this.kxt)
       {
         b = 1;
         paramParcel.writeByte(b);
-        if (!this.ksW) {
+        if (!this.kwm) {
           break label60;
         }
       }
       for (;;)
       {
         paramParcel.writeInt(paramInt);
-        paramParcel.writeString(this.ksX);
+        paramParcel.writeString(this.kwn);
         AppMethodBeat.o(107798);
         return;
         b = 0;

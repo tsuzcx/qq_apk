@@ -26,7 +26,7 @@ import java.util.Set;
 public class d
 {
   private static String a;
-  private static HashMap<String, d.a> w;
+  private static HashMap<String, a> w;
   private HashMap b;
   private String c;
   private int d;
@@ -804,7 +804,7 @@ public class d
     }
   }
   
-  protected d.a d()
+  protected a d()
   {
     AppMethodBeat.i(14390);
     try
@@ -812,50 +812,50 @@ public class d
       Object localObject2 = Uri.parse(this.v);
       if (localObject2 == null)
       {
-        localObject1 = d.a.a;
+        localObject1 = a.a;
         AppMethodBeat.o(14390);
         return localObject1;
       }
       localObject1 = ((Uri)localObject2).getHost();
       if (TextUtils.isEmpty((CharSequence)localObject1))
       {
-        localObject1 = d.a.a;
+        localObject1 = a.a;
         AppMethodBeat.o(14390);
         return localObject1;
       }
       String str = ((Uri)localObject2).getScheme();
       if (str == null)
       {
-        localObject1 = d.a.a;
+        localObject1 = a.a;
         AppMethodBeat.o(14390);
         return localObject1;
       }
       if ((!str.equals("rtmp")) && (!str.equals("http")) && (!str.equals("https")))
       {
-        localObject1 = d.a.a;
+        localObject1 = a.a;
         AppMethodBeat.o(14390);
         return localObject1;
       }
       if (c((String)localObject1))
       {
-        localObject1 = d.a.b;
+        localObject1 = a.b;
         AppMethodBeat.o(14390);
         return localObject1;
       }
       localObject2 = ((Uri)localObject2).getQueryParameterNames();
       if ((localObject2 != null) && ((((Set)localObject2).contains("bizid")) || (((Set)localObject2).contains("txTime")) || (((Set)localObject2).contains("txSecret"))))
       {
-        localObject1 = d.a.b;
+        localObject1 = a.b;
         AppMethodBeat.o(14390);
         return localObject1;
       }
       if (w.containsKey(localObject1))
       {
-        localObject1 = (d.a)w.get(localObject1);
+        localObject1 = (a)w.get(localObject1);
         AppMethodBeat.o(14390);
         return localObject1;
       }
-      w.put(localObject1, d.a.a);
+      w.put(localObject1, a.a);
       new Thread(new Runnable()
       {
         public void run()
@@ -910,7 +910,7 @@ public class d
       label252:
       break label252;
     }
-    localObject1 = d.a.a;
+    localObject1 = a.a;
     AppMethodBeat.o(14390);
     return localObject1;
   }
@@ -981,7 +981,7 @@ public class d
       i();
       break;
       label187:
-      if (d() == d.a.c)
+      if (d() == a.c)
       {
         AppMethodBeat.o(14393);
         return;
@@ -995,6 +995,21 @@ public class d
         this.o = 300000;
       }
     }
+  }
+  
+  static enum a
+  {
+    static
+    {
+      AppMethodBeat.i(14384);
+      a = new a("PENDING", 0);
+      b = new a("CONFIRM", 1);
+      c = new a("NEGATIVE", 2);
+      d = new a[] { a, b, c };
+      AppMethodBeat.o(14384);
+    }
+    
+    private a() {}
   }
 }
 

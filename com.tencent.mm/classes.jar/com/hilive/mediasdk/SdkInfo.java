@@ -33,18 +33,8 @@ public class SdkInfo
     public static final int kConfigHwDecoder = 51;
     public static final int kConfigHwEncoder = 52;
     public static final int kConfigLogLvl = 100;
-    public static final int kConfigPixel32ToYuv420pMode = 102;
     public static final int kConfigSaveTmpFile = 50;
-    public static final int kConfigTmpForAndroid = 200;
-    public static final int kConfigTmpForAndroidTransFmt = 201;
     public static final int kConfigTraceAll = 1;
-    public static final int kConfigTraceDemux = 3;
-    public static final int kConfigTraceLoader = 6;
-    public static final int kConfigTraceMux = 2;
-    public static final int kConfigTraceReader = 4;
-    public static final int kConfigTraceWriter = 5;
-    public static final int kConfigVideoHwSupportFormat = 101;
-    public static final int kConfigYuv420pToPixel32Mode = 103;
   }
   
   public static class MediaFormat
@@ -68,13 +58,6 @@ public class SdkInfo
     public static final int MFMT_VIDEO_RGBA32 = 52;
     public static final int MFMT_VIDEO_YUV420P = 1;
     public static final int MFMT_VIDEO_YUVJ420P = 4;
-  }
-  
-  public static class MediaObjectKey
-  {
-    public static final int kObjectAndroidJNIEnv = 2;
-    public static final int kObjectAndroidJavaVM = 1;
-    public static final int kObjectAndroidSurface = 3;
   }
   
   public static class MediaType

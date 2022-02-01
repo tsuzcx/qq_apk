@@ -5,21 +5,23 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 import android.os.Build.VERSION;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.model.bv;
 import com.tencent.mm.modelstat.o;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.protocal.protobuf.bpa;
-import com.tencent.mm.protocal.protobuf.bpb;
-import com.tencent.mm.protocal.protobuf.bpg;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.protocal.protobuf.bps;
+import com.tencent.mm.protocal.protobuf.bpt;
+import com.tencent.mm.protocal.protobuf.bpy;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.Collection;
 import java.util.Iterator;
 import org.json.JSONArray;
@@ -32,29 +34,29 @@ public final class d
 {
   int action;
   private f callback;
-  final b hWL;
-  private long yNJ;
+  final b hZD;
+  private long zdT;
   
   public d(Collection<h.a> paramCollection, float paramFloat1, float paramFloat2, int paramInt)
   {
     AppMethodBeat.i(28280);
     this.action = 1;
-    this.yNJ = 0L;
+    this.zdT = 0L;
     this.action = 1;
     Object localObject1 = new b.a();
-    ((b.a)localObject1).hNM = new bpa();
-    ((b.a)localObject1).hNN = new bpb();
+    ((b.a)localObject1).hQF = new bps();
+    ((b.a)localObject1).hQG = new bpt();
     ((b.a)localObject1).uri = "/cgi-bin/micromsg-bin/ibeaconboardcast";
     ((b.a)localObject1).funcId = 658;
-    ((b.a)localObject1).hNO = 0;
+    ((b.a)localObject1).hQH = 0;
     ((b.a)localObject1).respCmdId = 0;
-    this.hWL = ((b.a)localObject1).aDC();
-    Object localObject2 = com.tencent.mm.model.bt.aCv();
-    localObject1 = com.tencent.mm.sdk.platformtools.bt.nullAsNil(((com.tencent.mm.model.bt)localObject2).provinceCode);
-    localObject2 = com.tencent.mm.sdk.platformtools.bt.nullAsNil(((com.tencent.mm.model.bt)localObject2).cityCode);
+    this.hZD = ((b.a)localObject1).aDS();
+    Object localObject2 = bv.aCL();
+    localObject1 = bu.nullAsNil(((bv)localObject2).provinceCode);
+    localObject2 = bu.nullAsNil(((bv)localObject2).cityCode);
     BluetoothAdapter localBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-    bpa localbpa = (bpa)this.hWL.hNK.hNQ;
-    localbpa.GJO = com.tencent.mm.sdk.platformtools.bt.nullAsNil(null);
+    bps localbps = (bps)this.hZD.hQD.hQJ;
+    localbps.Hdp = bu.nullAsNil(null);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("{\"Beacons\":[");
     if (paramCollection != null)
@@ -65,7 +67,7 @@ public final class d
       while (localIterator.hasNext())
       {
         h.a locala = (h.a)localIterator.next();
-        localStringBuilder.append("{\"UUID\":\"" + locala.uuid + "\",\"Location\":{\"Major\":" + locala.major + ",\"Minor\":" + locala.minor + "},\"Distance\":" + locala.ikO + ",\"Extra\":\"\",\"MacAddress\":\"" + locala.yNS + "\",\"Rssi\":\"" + locala.yNT + "\",\"MeasurePower\":\"" + locala.yNU + "\"}");
+        localStringBuilder.append("{\"UUID\":\"" + locala.uuid + "\",\"Location\":{\"Major\":" + locala.major + ",\"Minor\":" + locala.minor + "},\"Distance\":" + locala.inH + ",\"Extra\":\"\",\"MacAddress\":\"" + locala.zec + "\",\"Rssi\":\"" + locala.zed + "\",\"MeasurePower\":\"" + locala.zee + "\"}");
         if (i < j - 1) {
           localStringBuilder.append(",");
         }
@@ -73,7 +75,7 @@ public final class d
       }
     }
     int j = 1;
-    boolean bool = aj.getContext().getPackageManager().hasSystemFeature("android.hardware.bluetooth_le");
+    boolean bool = ak.getContext().getPackageManager().hasSystemFeature("android.hardware.bluetooth_le");
     int i = j;
     if (localBluetoothAdapter != null)
     {
@@ -90,12 +92,12 @@ public final class d
         }
       }
     }
-    localStringBuilder.append("],\"Action\":1,\"LBS\":{\"Latitude\":" + paramFloat1 + ",\"Longitude\":" + paramFloat2 + ",\"Province\":\"" + (String)localObject1 + "\",\"City\":\"" + (String)localObject2 + "\"},\"MachineID\":\"" + com.tencent.mm.compatible.deviceinfo.q.aay() + "\",\"ZBBeaconState\":\"" + i + "\"}");
-    localbpa.hDa = localStringBuilder.toString();
+    localStringBuilder.append("],\"Action\":1,\"LBS\":{\"Latitude\":" + paramFloat1 + ",\"Longitude\":" + paramFloat2 + ",\"Province\":\"" + (String)localObject1 + "\",\"City\":\"" + (String)localObject2 + "\"},\"MachineID\":\"" + com.tencent.mm.compatible.deviceinfo.q.aaH() + "\",\"ZBBeaconState\":\"" + i + "\"}");
+    localbps.hFS = localStringBuilder.toString();
     if (paramCollection != null) {}
     for (i = paramCollection.size();; i = 0)
     {
-      ad.i("MicroMsg.NetSceneShakeIbeacon", "[oneliang]beaconCollection.size:%d,json:%s", new Object[] { Integer.valueOf(i), localbpa.hDa });
+      ae.i("MicroMsg.NetSceneShakeIbeacon", "[oneliang]beaconCollection.size:%d,json:%s", new Object[] { Integer.valueOf(i), localbps.hFS });
       o.a(2008, paramFloat2, paramFloat1, paramInt);
       AppMethodBeat.o(28280);
       return;
@@ -105,9 +107,9 @@ public final class d
   public final int doScene(e parame, f paramf)
   {
     AppMethodBeat.i(28281);
-    this.yNJ = System.currentTimeMillis();
+    this.zdT = System.currentTimeMillis();
     this.callback = paramf;
-    int i = dispatch(parame, this.hWL, this);
+    int i = dispatch(parame, this.hZD, this);
     AppMethodBeat.o(28281);
     return i;
   }
@@ -120,19 +122,19 @@ public final class d
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, com.tencent.mm.network.q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(28282);
-    ad.i("MicroMsg.NetSceneShakeIbeacon", "[oneliang][NetSceneShakeIbeacon]:netId:%s,errType:%s,errCode:%s,errMsg:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    ae.i("MicroMsg.NetSceneShakeIbeacon", "[oneliang][NetSceneShakeIbeacon]:netId:%s,errType:%s,errCode:%s,errMsg:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    this.yNJ = (System.currentTimeMillis() - this.yNJ);
-    g.yhR.f(11497, new Object[] { String.valueOf((int)(this.yNJ / 1000L + 0.5D)), Integer.valueOf(1), Integer.valueOf((int)this.yNJ) });
+    this.zdT = (System.currentTimeMillis() - this.zdT);
+    g.yxI.f(11497, new Object[] { String.valueOf((int)(this.zdT / 1000L + 0.5D)), Integer.valueOf(1), Integer.valueOf((int)this.zdT) });
     Object localObject1;
     int i;
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      ad.d("MicroMsg.NetSceneShakeIbeacon", "[oneliang][NetSceneShakeIbeacon]:net end ok");
-      paramString = (bpb)this.hWL.hNL.hNQ;
+      ae.d("MicroMsg.NetSceneShakeIbeacon", "[oneliang][NetSceneShakeIbeacon]:net end ok");
+      paramString = (bpt)this.hZD.hQE.hQJ;
       try
       {
-        paramq = new JSONObject(((bpa)this.hWL.hNK.hNQ).hDa);
+        paramq = new JSONObject(((bps)this.hZD.hQD.hQJ).hFS);
         localObject1 = paramq.getJSONArray("Beacons");
         paramInt1 = ((JSONArray)localObject1).length();
         paramArrayOfByte = paramq.getJSONObject("LBS");
@@ -146,32 +148,32 @@ public final class d
           localObject2 = ((JSONObject)localObject2).getJSONObject("Location");
           paramInt3 = ((JSONObject)localObject2).getInt("Major");
           i = ((JSONObject)localObject2).getInt("Minor");
-          if ((paramString.GJP != null) && (paramString.GJP.FWG == 0))
+          if ((paramString.Hdq != null) && (paramString.Hdq.Gpf == 0))
           {
-            localObject2 = paramString.GJP.ufM;
+            localObject2 = paramString.Hdq.urg;
             if ((paramInt2 == 1) && (localObject2 != null) && (!((String)localObject2).equals("")) && (new JSONObject((String)localObject2).getJSONArray("msgs").length() == 0)) {
-              g.yhR.f(12659, new Object[] { Integer.valueOf(1), Integer.valueOf(paramInt1), localObject1, Integer.valueOf(paramInt3), Integer.valueOf(i), paramq, paramArrayOfByte, Integer.valueOf(2), Integer.valueOf(paramString.GJP.FWG) });
+              g.yxI.f(12659, new Object[] { Integer.valueOf(1), Integer.valueOf(paramInt1), localObject1, Integer.valueOf(paramInt3), Integer.valueOf(i), paramq, paramArrayOfByte, Integer.valueOf(2), Integer.valueOf(paramString.Hdq.Gpf) });
             }
             AppMethodBeat.o(28282);
             return;
           }
-          g.yhR.f(12659, new Object[] { Integer.valueOf(1), Integer.valueOf(paramInt1), localObject1, Integer.valueOf(paramInt3), Integer.valueOf(i), paramq, paramArrayOfByte, Integer.valueOf(2), Integer.valueOf(paramString.GJP.FWG) });
+          g.yxI.f(12659, new Object[] { Integer.valueOf(1), Integer.valueOf(paramInt1), localObject1, Integer.valueOf(paramInt3), Integer.valueOf(i), paramq, paramArrayOfByte, Integer.valueOf(2), Integer.valueOf(paramString.Hdq.Gpf) });
           AppMethodBeat.o(28282);
           return;
         }
       }
       catch (JSONException paramString)
       {
-        ad.e("MicroMsg.NetSceneShakeIbeacon", "parse IBeaconBoardcastRequest json error!");
+        ae.e("MicroMsg.NetSceneShakeIbeacon", "parse IBeaconBoardcastRequest json error!");
         AppMethodBeat.o(28282);
         return;
       }
-      g.yhR.f(12659, new Object[] { Integer.valueOf(1), Integer.valueOf(paramInt1), "", Integer.valueOf(0), Integer.valueOf(0), paramq, paramArrayOfByte, Integer.valueOf(2), Integer.valueOf(paramString.GJP.FWG) });
+      g.yxI.f(12659, new Object[] { Integer.valueOf(1), Integer.valueOf(paramInt1), "", Integer.valueOf(0), Integer.valueOf(0), paramq, paramArrayOfByte, Integer.valueOf(2), Integer.valueOf(paramString.Hdq.Gpf) });
       AppMethodBeat.o(28282);
       return;
     }
-    ad.d("MicroMsg.NetSceneShakeIbeacon", "[oneliang][NetSceneShakeIbeacon]:net end not ok");
-    paramString = ((bpa)this.hWL.hNK.hNQ).hDa;
+    ae.d("MicroMsg.NetSceneShakeIbeacon", "[oneliang][NetSceneShakeIbeacon]:net end not ok");
+    paramString = ((bps)this.hZD.hQD.hQJ).hFS;
     try
     {
       paramString = new JSONObject(paramString);
@@ -187,18 +189,18 @@ public final class d
         localObject1 = ((JSONObject)localObject1).getJSONObject("Location");
         paramInt2 = ((JSONObject)localObject1).getInt("Major");
         i = ((JSONObject)localObject1).getInt("Minor");
-        g.yhR.f(12659, new Object[] { Integer.valueOf(1), Integer.valueOf(paramInt1), paramArrayOfByte, Integer.valueOf(paramInt2), Integer.valueOf(i), paramString, paramq, Integer.valueOf(1), Integer.valueOf(paramInt3) });
+        g.yxI.f(12659, new Object[] { Integer.valueOf(1), Integer.valueOf(paramInt1), paramArrayOfByte, Integer.valueOf(paramInt2), Integer.valueOf(i), paramString, paramq, Integer.valueOf(1), Integer.valueOf(paramInt3) });
         AppMethodBeat.o(28282);
         return;
       }
     }
     catch (JSONException paramString)
     {
-      ad.e("MicroMsg.NetSceneShakeIbeacon", "parse IBeaconBoardcastRequest json error!");
+      ae.e("MicroMsg.NetSceneShakeIbeacon", "parse IBeaconBoardcastRequest json error!");
       AppMethodBeat.o(28282);
       return;
     }
-    g.yhR.f(12659, new Object[] { Integer.valueOf(1), Integer.valueOf(paramInt1), "", Integer.valueOf(0), Integer.valueOf(0), paramString, paramq, Integer.valueOf(1), Integer.valueOf(paramInt3) });
+    g.yxI.f(12659, new Object[] { Integer.valueOf(1), Integer.valueOf(paramInt1), "", Integer.valueOf(0), Integer.valueOf(0), paramString, paramq, Integer.valueOf(1), Integer.valueOf(paramInt3) });
     AppMethodBeat.o(28282);
   }
 }

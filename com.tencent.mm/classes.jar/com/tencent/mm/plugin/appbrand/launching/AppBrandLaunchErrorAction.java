@@ -8,8 +8,8 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.ui.banner.AppBrandStickyBannerLogic.b;
-import com.tencent.mm.protocal.protobuf.btc;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.protocal.protobuf.btw;
+import com.tencent.mm.sdk.platformtools.ak;
 import java.lang.reflect.Constructor;
 
 public abstract class AppBrandLaunchErrorAction
@@ -17,21 +17,21 @@ public abstract class AppBrandLaunchErrorAction
 {
   public static final a CREATOR = new a();
   final String appId;
-  final int hQh;
+  final int hSZ;
   
   AppBrandLaunchErrorAction(Parcel paramParcel)
   {
     this.appId = paramParcel.readString();
-    this.hQh = paramParcel.readInt();
+    this.hSZ = paramParcel.readInt();
   }
   
   AppBrandLaunchErrorAction(String paramString, int paramInt)
   {
     this.appId = paramString;
-    this.hQh = paramInt;
+    this.hSZ = paramInt;
   }
   
-  public abstract void U(Context paramContext, String paramString);
+  public abstract void W(Context paramContext, String paramString);
   
   public final int describeContents()
   {
@@ -42,7 +42,7 @@ public abstract class AppBrandLaunchErrorAction
   {
     paramParcel.writeString(getClass().getName());
     paramParcel.writeString(this.appId);
-    paramParcel.writeInt(this.hQh);
+    paramParcel.writeInt(this.hSZ);
   }
   
   static final class a
@@ -57,7 +57,7 @@ public abstract class AppBrandLaunchErrorAction
         AppMethodBeat.o(47042);
         return null;
       }
-      switch (paramax.field_launchAction.FqN)
+      switch (paramax.field_launchAction.FJl)
       {
       default: 
         paramString = localIntent;
@@ -65,14 +65,14 @@ public abstract class AppBrandLaunchErrorAction
       for (;;)
       {
         if (paramString != null) {
-          AppBrandStickyBannerLogic.b.bAe();
+          AppBrandStickyBannerLogic.b.bAZ();
         }
         AppMethodBeat.o(47042);
         return paramString;
-        paramString = new AppBrandLaunchErrorActionAlert(paramString, paramInt, paramax.field_launchAction.GFh, paramax.field_launchAction.GNu);
+        paramString = new AppBrandLaunchErrorActionAlert(paramString, paramInt, paramax.field_launchAction.GYJ, paramax.field_launchAction.HgU);
         continue;
         localIntent = new Intent();
-        localIntent.putExtra("rawUrl", paramax.field_launchAction.GNs);
+        localIntent.putExtra("rawUrl", paramax.field_launchAction.HgS);
         localIntent.putExtra("forceHideShare", true);
         paramString = new AppBrandLaunchErrorActionStartActivity(paramString, paramInt, "webview", ".ui.tools.WebViewUI", localIntent);
       }

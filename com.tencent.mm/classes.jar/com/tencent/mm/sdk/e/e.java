@@ -13,7 +13,7 @@ public abstract interface e
   
   public abstract boolean execSQL(String paramString1, String paramString2);
   
-  public abstract boolean fmj();
+  public abstract boolean fqe();
   
   public abstract long insert(String paramString1, String paramString2, ContentValues paramContentValues);
   

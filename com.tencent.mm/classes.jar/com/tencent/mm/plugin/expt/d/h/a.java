@@ -1,7 +1,8 @@
 package com.tencent.mm.plugin.expt.d.h;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.plugin.expt.d.h.b.a.c;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -11,158 +12,208 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 import java.util.Set;
 import org.apache.commons.b.g;
 
 public final class a
 {
-  public com.tencent.mm.plugin.expt.d.h.a.b qQp;
+  private com.tencent.mm.plugin.expt.d.h.a.b qYk;
+  private Random qYl;
   
   public a()
   {
-    AppMethodBeat.i(210278);
-    this.qQp = new com.tencent.mm.plugin.expt.d.h.a.a();
-    AppMethodBeat.o(210278);
+    AppMethodBeat.i(195932);
+    this.qYk = new com.tencent.mm.plugin.expt.d.h.a.a();
+    this.qYl = new Random(System.currentTimeMillis());
+    AppMethodBeat.o(195932);
   }
   
-  public final Map<Long, List<List<com.tencent.mm.plugin.expt.d.e.b>>> b(com.tencent.mm.plugin.expt.d.e.a.b paramb, Map<Long, List<String>> paramMap)
+  public final Map<Long, List<List<com.tencent.mm.plugin.expt.d.e.b>>> a(com.tencent.mm.plugin.expt.d.e.a.b paramb, Map<Long, List<String>> paramMap, long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(210279);
+    AppMethodBeat.i(195933);
     if ((paramb == null) || (paramMap == null) || (paramMap.size() <= 0))
     {
-      AppMethodBeat.o(210279);
+      AppMethodBeat.o(195933);
       return null;
     }
-    if (g.ea(paramb.script))
+    if (g.ef(paramb.script))
     {
-      AppMethodBeat.o(210279);
+      AppMethodBeat.o(195933);
       return null;
     }
-    if ((paramb.qQj == null) || (paramb.qQj.size() <= 0))
+    ae.d("EdgeComputingScriptService", "[EdgeComputingScriptService] executeScript configID : " + paramb.qXW);
+    String str = paramb.qXW + System.currentTimeMillis() + this.qYl.nextInt(10);
+    Object localObject1 = new ArrayList();
+    ((List)localObject1).add(new c(str, paramb.qXW));
+    ((List)localObject1).add(new com.tencent.mm.plugin.expt.d.h.b.a.b(str, paramb.qXW));
+    ((List)localObject1).add(new com.tencent.mm.plugin.expt.d.h.b.a.a(str, paramb.qXW));
+    localObject1 = ((List)localObject1).iterator();
+    Object localObject3;
+    while (((Iterator)localObject1).hasNext())
     {
-      AppMethodBeat.o(210279);
-      return null;
+      localObject3 = (com.tencent.mm.plugin.expt.d.h.b.a)((Iterator)localObject1).next();
+      if (!this.qYk.a((com.tencent.mm.plugin.expt.d.h.b.a)localObject3)) {
+        ae.e("EdgeComputingScriptService", "[EdgeComputingScriptService] executeScript registerJsApi fail, jsApi : " + ((com.tencent.mm.plugin.expt.d.h.b.a)localObject3).coO());
+      }
     }
-    ad.d("EdgeComputingScriptService", "[EdgeComputingScriptService] executeScript configID : " + paramb.qQf);
-    if (!this.qQp.adn(paramb.script))
+    if (!this.qYk.aeh(paramb.script))
     {
-      ad.e("EdgeComputingScriptService", "[EdgeComputingScriptService] executeScript loadScript fail!");
-      AppMethodBeat.o(210279);
+      ae.e("EdgeComputingScriptService", "[EdgeComputingScriptService] executeScript loadScript fail!");
+      AppMethodBeat.o(195933);
       return null;
     }
     HashMap localHashMap = new HashMap();
     Iterator localIterator1 = paramMap.keySet().iterator();
-    break label211;
-    break label211;
-    break label211;
-    label148:
     long l;
-    Object localObject1;
-    do
-    {
-      if (!localIterator1.hasNext()) {
-        break;
-      }
-      l = ((Long)localIterator1.next()).longValue();
-      localObject1 = (List)paramMap.get(Long.valueOf(l));
-    } while ((localObject1 == null) || (((List)localObject1).size() <= 0));
-    Iterator localIterator2 = ((List)localObject1).iterator();
-    label211:
     do
     {
       do
       {
-        break label335;
-        break label335;
-        if (!localIterator2.hasNext()) {
-          break label148;
+        Iterator localIterator2;
+        while (!localIterator2.hasNext())
+        {
+          do
+          {
+            if (!localIterator1.hasNext()) {
+              break;
+            }
+            l = ((Long)localIterator1.next()).longValue();
+            localObject1 = (List)paramMap.get(Long.valueOf(l));
+          } while ((localObject1 == null) || (((List)localObject1).size() <= 0));
+          localIterator2 = ((List)localObject1).iterator();
         }
         localObject1 = (String)localIterator2.next();
-        if (g.ea((String)localObject1)) {
-          break;
-        }
-        localObject2 = new StringBuilder();
-        ((StringBuilder)localObject2).append("2,");
-        ((StringBuilder)localObject2).append(new SimpleDateFormat("yyyyMMdd").format(new Date(System.currentTimeMillis()))).append(",");
-        localObject1 = this.qQp.V("__main__", (String)localObject1, ((StringBuilder)localObject2).toString());
-        if ((localObject1 == null) || (((List)localObject1).size() <= 0)) {
-          break;
-        }
-        Iterator localIterator3 = ((List)localObject1).iterator();
-        if (!localIterator3.hasNext()) {
-          break;
-        }
-        localObject1 = (String)localIterator3.next();
-      } while (g.ea((String)localObject1));
-      localObject1 = ((String)localObject1).split(",");
-    } while ((localObject1 == null) || (localObject1.length <= 0));
-    label335:
-    ArrayList localArrayList = new ArrayList();
-    Object localObject2 = new com.tencent.mm.plugin.expt.d.e.b();
-    ((com.tencent.mm.plugin.expt.d.e.b)localObject2).index = 0;
-    ((com.tencent.mm.plugin.expt.d.e.b)localObject2).type = 2;
-    ((com.tencent.mm.plugin.expt.d.e.b)localObject2).name = "report_time_ec";
-    ((com.tencent.mm.plugin.expt.d.e.b)localObject2).qQe = l;
-    localArrayList.add(localObject2);
-    localObject2 = paramb.qQj.iterator();
+      } while (g.ef((String)localObject1));
+      localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append("2,");
+      ((StringBuilder)localObject3).append(new SimpleDateFormat("yyyyMMdd").format(new Date(paramLong1))).append(",");
+      ((StringBuilder)localObject3).append(paramLong1).append(",");
+      ((StringBuilder)localObject3).append(paramLong2).append(",");
+      ((StringBuilder)localObject3).append(str).append(",");
+      localObject1 = this.qYk.W("__main__", (String)localObject1, ((StringBuilder)localObject3).toString());
+    } while ((localObject1 == null) || (((List)localObject1).size() <= 0));
+    Iterator localIterator3 = ((List)localObject1).iterator();
+    label529:
+    label1022:
     for (;;)
     {
-      for (;;)
+      ArrayList localArrayList;
+      com.tencent.mm.plugin.expt.d.e.a.a locala;
+      com.tencent.mm.plugin.expt.d.e.b localb;
+      int i;
+      if (localIterator3.hasNext())
       {
-        com.tencent.mm.plugin.expt.d.e.a.a locala;
-        com.tencent.mm.plugin.expt.d.e.b localb;
-        if (((Iterator)localObject2).hasNext())
+        localObject1 = (String)localIterator3.next();
+        if (!g.ef((String)localObject1))
         {
-          locala = (com.tencent.mm.plugin.expt.d.e.a.a)((Iterator)localObject2).next();
-          if ((locala.index <= 0) || (localObject1.length <= locala.index - 1) || (g.ea(localObject1[(locala.index - 1)]))) {
-            continue;
-          }
-          localb = new com.tencent.mm.plugin.expt.d.e.b();
-          localb.index = locala.index;
-          localb.type = locala.type;
-          localb.name = locala.name;
-        }
-        try
-        {
-          if (locala.type == 1) {
-            localb.intValue = Integer.parseInt(localObject1[(locala.index - 1)]);
-          }
-          for (;;)
+          localObject1 = ((String)localObject1).split(",");
+          if ((localObject1 != null) && (localObject1.length > 0) && (paramb.qYc != null) && (paramb.qYc.size() > 0))
           {
-            localArrayList.add(localb);
-            break;
-            if (locala.type == 2)
+            localArrayList = new ArrayList();
+            localObject3 = new com.tencent.mm.plugin.expt.d.e.b();
+            ((com.tencent.mm.plugin.expt.d.e.b)localObject3).index = 0;
+            ((com.tencent.mm.plugin.expt.d.e.b)localObject3).type = 2;
+            ((com.tencent.mm.plugin.expt.d.e.b)localObject3).name = "report_time_ec";
+            ((com.tencent.mm.plugin.expt.d.e.b)localObject3).qXY = l;
+            localArrayList.add(localObject3);
+            localObject3 = paramb.qYc.iterator();
+            for (;;)
             {
-              localb.qQe = Long.parseLong(localObject1[(locala.index - 1)]);
-            }
-            else
-            {
-              if (locala.type != 0) {
-                break;
+              if (((Iterator)localObject3).hasNext())
+              {
+                locala = (com.tencent.mm.plugin.expt.d.e.a.a)((Iterator)localObject3).next();
+                if ((locala.index <= 0) || (localObject1.length <= locala.index - 1)) {
+                  continue;
+                }
+                localb = new com.tencent.mm.plugin.expt.d.e.b();
+                localb.index = locala.index;
+                localb.type = locala.type;
+                localb.name = locala.name;
+                try
+                {
+                  if (locala.type == 1)
+                  {
+                    if (g.ef(localObject1[(locala.index - 1)])) {}
+                    for (localb.intValue = 0;; localb.intValue = Integer.parseInt(localObject1[(locala.index - 1)]))
+                    {
+                      localArrayList.add(localb);
+                      break;
+                    }
+                    Collections.sort(localArrayList, new Comparator() {});
+                  }
+                }
+                catch (Exception localException)
+                {
+                  i = 1;
+                }
               }
-              localb.stringValue = localObject1[(locala.index - 1)];
             }
           }
-          Collections.sort(localArrayList, new Comparator() {});
-          localObject2 = (List)localHashMap.get(Long.valueOf(l));
-          localObject1 = localObject2;
-          if (localObject2 == null)
-          {
-            localObject1 = new ArrayList();
-            localHashMap.put(Long.valueOf(l), localObject1);
-          }
-          ((List)localObject1).add(localArrayList);
         }
-        catch (Exception localException) {}
       }
-      AppMethodBeat.o(210279);
-      return localHashMap;
+      else
+      {
+        for (;;)
+        {
+          if (i != 0) {
+            break label1022;
+          }
+          localObject3 = (List)localHashMap.get(Long.valueOf(l));
+          Object localObject2 = localObject3;
+          if (localObject3 == null)
+          {
+            localObject2 = new ArrayList();
+            localHashMap.put(Long.valueOf(l), localObject2);
+          }
+          ((List)localObject2).add(localArrayList);
+          break label529;
+          break;
+          if (locala.type == 2)
+          {
+            if (g.ef(localObject2[(locala.index - 1)]))
+            {
+              localb.qXY = 0L;
+              break label776;
+            }
+            localb.qXY = Long.parseLong(localObject2[(locala.index - 1)]);
+            break label776;
+          }
+          if (locala.type == 0)
+          {
+            if (g.ef(localObject2[(locala.index - 1)]))
+            {
+              localb.stringValue = "";
+              break label776;
+            }
+            localb.stringValue = localObject2[(locala.index - 1)];
+            break label776;
+          }
+          i = 1;
+          continue;
+          AppMethodBeat.o(195933);
+          return localHashMap;
+          i = 0;
+        }
+      }
     }
+  }
+  
+  public final void release()
+  {
+    AppMethodBeat.i(195934);
+    if (this.qYk == null)
+    {
+      AppMethodBeat.o(195934);
+      return;
+    }
+    this.qYk.release();
+    AppMethodBeat.o(195934);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.d.h.a
  * JD-Core Version:    0.7.0.1
  */

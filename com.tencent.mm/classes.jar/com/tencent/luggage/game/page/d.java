@@ -5,11 +5,11 @@ import com.tencent.magicbrush.ui.MagicBrushView;
 
 public abstract interface d
 {
-  public abstract void Dq();
+  public abstract void Dt();
   
-  public abstract void Dr();
+  public abstract void Du();
   
-  public abstract Bitmap Ds();
+  public abstract Bitmap Dv();
   
   public abstract MagicBrushView getMagicBrushView();
   
@@ -17,7 +17,7 @@ public abstract interface d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.luggage.game.page.d
  * JD-Core Version:    0.7.0.1
  */

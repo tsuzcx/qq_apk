@@ -2,7 +2,7 @@ package com.tencent.mm.kernel.c;
 
 public abstract interface c<T extends a>
 {
-  public abstract T akz();
+  public abstract T akO();
 }
 
 

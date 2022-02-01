@@ -12,7 +12,7 @@ class n
 {
   private final e bYQ;
   final j bYR;
-  private final n.d bYS;
+  private final d bYS;
   private final i bYT;
   final s bYU;
   private long bYV;
@@ -35,7 +35,7 @@ class n
     AppMethodBeat.i(88030);
     this.bYQ = new e((byte)0);
     this.bYR = new j();
-    this.bYS = new n.d((byte)0);
+    this.bYS = new d((byte)0);
     if (i.bXr == null) {
       i.bXr = new i();
     }
@@ -45,14 +45,14 @@ class n
     AppMethodBeat.o(88030);
   }
   
-  private void Ak()
+  private void Al()
   {
     AppMethodBeat.i(88039);
     this.bYT.bXy = false;
-    this.bYU.Aw();
+    this.bYU.Ax();
     this.bYS.reset();
     e.a(this.bYQ);
-    Aj();
+    Ak();
     this.bYW = 0L;
     this.bYX = SystemClock.elapsedRealtime();
     this.bZd = 0.0F;
@@ -87,7 +87,7 @@ class n
     }
   }
   
-  final void Aj()
+  final void Ak()
   {
     this.bZa = true;
     this.bZb = null;
@@ -126,7 +126,7 @@ class n
       if (a(paramLong2, 1, paramDouble1, paramDouble2, paramInt1, paramInt2, paramInt5, paramInt3)) {
         this.bYT.a(paramDouble1, paramDouble2, paramInt2, this.bZd, this.bZe, this.bZf);
       }
-      if (n.d.o(paramLong2, this.bYX)) {
+      if (d.o(paramLong2, this.bYX)) {
         this.bYU.a(paramDouble1, paramDouble2, paramInt2, paramFloat, this.bZd, this.bZe, this.bZf, paramLong2);
       }
       if (y.ccH) {
@@ -145,7 +145,7 @@ class n
       ((e)localObject1).bk(false);
     }
     if (paramLong - this.bYX > 5000L) {
-      Ak();
+      Al();
     }
     this.bZd = paramFloat1;
     this.bZe = paramFloat2;
@@ -166,8 +166,8 @@ class n
         label125:
         if ((!bool) || (!this.bYQ.bZs))
         {
-          ab.AJ().bj(bool);
-          k.Ai().bj(bool);
+          ab.AK().bj(bool);
+          k.Aj().bj(bool);
         }
       }
       localObject1 = new double[2];
@@ -325,8 +325,8 @@ class n
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc_w 434
-    //   5: invokestatic 57	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   2: ldc_w 435
+    //   5: invokestatic 59	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: aload_2
     //   9: instanceof 12
     //   12: ifeq +50 -> 62
@@ -335,39 +335,39 @@ class n
     //   19: astore_2
     //   20: aload_0
     //   21: aload_2
-    //   22: getfield 437	com/d/a/a/n$c:bZm	J
-    //   25: putfield 439	com/d/a/a/n:bYV	J
+    //   22: getfield 438	com/d/a/a/n$c:bZm	J
+    //   25: putfield 440	com/d/a/a/n:bYV	J
     //   28: aload_0
-    //   29: invokespecial 270	com/d/a/a/n:Ak	()V
+    //   29: invokespecial 272	com/d/a/a/n:Al	()V
     //   32: aload_0
-    //   33: getfield 89	com/d/a/a/n:bYU	Lcom/d/a/a/s;
+    //   33: getfield 91	com/d/a/a/n:bYU	Lcom/d/a/a/s;
     //   36: aload_1
-    //   37: putfield 443	com/d/a/a/s:cad	Landroid/os/Handler;
+    //   37: putfield 444	com/d/a/a/s:cad	Landroid/os/Handler;
     //   40: aload_0
-    //   41: invokestatic 118	android/os/SystemClock:elapsedRealtime	()J
-    //   44: putfield 272	com/d/a/a/n:bZi	J
+    //   41: invokestatic 120	android/os/SystemClock:elapsedRealtime	()J
+    //   44: putfield 274	com/d/a/a/n:bZi	J
     //   47: aload_0
     //   48: aload_1
     //   49: aload_2
-    //   50: invokespecial 445	com/d/a/a/b:a	(Landroid/os/Handler;Lcom/d/a/a/d$a;)V
-    //   53: ldc_w 434
-    //   56: invokestatic 92	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   50: invokespecial 446	com/d/a/a/b:a	(Landroid/os/Handler;Lcom/d/a/a/d$a;)V
+    //   53: ldc_w 435
+    //   56: invokestatic 94	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   59: aload_0
     //   60: monitorexit
     //   61: return
     //   62: aload_2
     //   63: ifnull +23 -> 86
     //   66: aload_2
-    //   67: getfield 450	com/d/a/a/d$a:bWP	J
+    //   67: getfield 451	com/d/a/a/d$a:bWP	J
     //   70: lstore_3
     //   71: new 12	com/d/a/a/n$c
     //   74: dup
     //   75: lload_3
-    //   76: ldc2_w 451
-    //   79: invokespecial 455	com/d/a/a/n$c:<init>	(JJ)V
+    //   76: ldc2_w 452
+    //   79: invokespecial 456	com/d/a/a/n$c:<init>	(JJ)V
     //   82: astore_2
     //   83: goto -63 -> 20
-    //   86: ldc2_w 207
+    //   86: ldc2_w 209
     //   89: lstore_3
     //   90: goto -19 -> 71
     //   93: astore_1
@@ -398,7 +398,7 @@ class n
     if ((paramx.provider.equals("W")) && (a(paramLong2, 2, paramx.latitude, paramx.longitude, paramx.altitude, paramx.bYG, paramx.ccy, paramx.bdQ))) {
       this.bYT.a(paramx.latitude, paramx.longitude, paramx.bYG, this.bZd, this.bZe, this.bZf);
     }
-    if (!u.AD().caR) {
+    if (!u.AE().caR) {
       c(new a(paramx.latitude, paramx.longitude, Float.valueOf(paramx.bYG).intValue(), this.bYY, this.bYZ));
     }
     AppMethodBeat.o(88033);
@@ -422,14 +422,14 @@ class n
       if (!bool) {
         break label320;
       }
-      localr = r.Am();
+      localr = r.An();
       i = this.bZh;
       if (localObject2 != null)
       {
         if (!localr.isRunning) {
           break label278;
         }
-        if (!localr.Ao()) {
+        if (!localr.Ap()) {
           break label273;
         }
         l1 = System.currentTimeMillis();
@@ -439,7 +439,7 @@ class n
         }
       }
       label142:
-      if (n.d.o(paramLong2, this.bYX)) {
+      if (d.o(paramLong2, this.bYX)) {
         if (bool) {
           break label338;
         }
@@ -466,7 +466,7 @@ class n
       bool = true;
       break;
       label273:
-      localr.An();
+      localr.Ao();
       label278:
       l1 = aa.az(System.currentTimeMillis());
       if (localr.bZG == null) {
@@ -475,7 +475,7 @@ class n
       localr.bZG.execute(new r.c(localr, (String)localObject2, l1, 0, (byte)0));
       break label142;
       label320:
-      r.Am().cl(v.b((String)localObject2, paramLong1, "0"));
+      r.An().cm(v.b((String)localObject2, paramLong1, "0"));
       break label142;
       label338:
       localObject1 = null;
@@ -487,7 +487,7 @@ class n
     try
     {
       AppMethodBeat.i(88038);
-      this.bYU.Au();
+      this.bYU.Av();
       super.stop();
       AppMethodBeat.o(88038);
       return;
@@ -540,6 +540,232 @@ class n
     }
   }
   
+  static final class c
+    extends d.a
+  {
+    final long bZm;
+    
+    c(long paramLong1, long paramLong2)
+    {
+      super();
+      AppMethodBeat.i(88025);
+      this.bZm = paramLong2;
+      AppMethodBeat.o(88025);
+    }
+  }
+  
+  static final class d
+  {
+    private String bZn;
+    private long bZo;
+    private String bZp;
+    private long bZq;
+    
+    static boolean o(long paramLong1, long paramLong2)
+    {
+      AppMethodBeat.i(88027);
+      if (Math.abs(paramLong1 - paramLong2) <= 10000L)
+      {
+        AppMethodBeat.o(88027);
+        return true;
+      }
+      AppMethodBeat.o(88027);
+      return false;
+    }
+    
+    /* Error */
+    final String a(String paramString, long paramLong, boolean paramBoolean)
+    {
+      // Byte code:
+      //   0: aload_0
+      //   1: monitorenter
+      //   2: ldc 42
+      //   4: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+      //   7: iload 4
+      //   9: ifeq +116 -> 125
+      //   12: aload_1
+      //   13: astore 5
+      //   15: aload_0
+      //   16: getfield 44	com/d/a/a/n$d:bZn	Ljava/lang/String;
+      //   19: ifnull +45 -> 64
+      //   22: aload_1
+      //   23: astore 5
+      //   25: lload_2
+      //   26: aload_0
+      //   27: getfield 46	com/d/a/a/n$d:bZo	J
+      //   30: invokestatic 48	com/d/a/a/n$d:o	(JJ)Z
+      //   33: ifeq +31 -> 64
+      //   36: new 50	java/lang/StringBuilder
+      //   39: dup
+      //   40: aload_1
+      //   41: invokestatic 56	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+      //   44: invokespecial 59	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+      //   47: aload_0
+      //   48: getfield 44	com/d/a/a/n$d:bZn	Ljava/lang/String;
+      //   51: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      //   54: invokevirtual 67	java/lang/StringBuilder:toString	()Ljava/lang/String;
+      //   57: astore 5
+      //   59: aload_0
+      //   60: aconst_null
+      //   61: putfield 44	com/d/a/a/n$d:bZn	Ljava/lang/String;
+      //   64: aload 5
+      //   66: astore_1
+      //   67: aload_0
+      //   68: getfield 69	com/d/a/a/n$d:bZp	Ljava/lang/String;
+      //   71: ifnull +45 -> 116
+      //   74: aload 5
+      //   76: astore_1
+      //   77: lload_2
+      //   78: aload_0
+      //   79: getfield 71	com/d/a/a/n$d:bZq	J
+      //   82: invokestatic 48	com/d/a/a/n$d:o	(JJ)Z
+      //   85: ifeq +31 -> 116
+      //   88: new 50	java/lang/StringBuilder
+      //   91: dup
+      //   92: aload 5
+      //   94: invokestatic 56	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+      //   97: invokespecial 59	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+      //   100: aload_0
+      //   101: getfield 69	com/d/a/a/n$d:bZp	Ljava/lang/String;
+      //   104: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      //   107: invokevirtual 67	java/lang/StringBuilder:toString	()Ljava/lang/String;
+      //   110: astore_1
+      //   111: aload_0
+      //   112: aconst_null
+      //   113: putfield 69	com/d/a/a/n$d:bZp	Ljava/lang/String;
+      //   116: ldc 42
+      //   118: invokestatic 39	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   121: aload_0
+      //   122: monitorexit
+      //   123: aload_1
+      //   124: areturn
+      //   125: aload_1
+      //   126: astore 5
+      //   128: aload_0
+      //   129: getfield 44	com/d/a/a/n$d:bZn	Ljava/lang/String;
+      //   132: ifnull +48 -> 180
+      //   135: aload_1
+      //   136: astore 5
+      //   138: lload_2
+      //   139: aload_0
+      //   140: getfield 46	com/d/a/a/n$d:bZo	J
+      //   143: invokestatic 48	com/d/a/a/n$d:o	(JJ)Z
+      //   146: ifeq +34 -> 180
+      //   149: new 50	java/lang/StringBuilder
+      //   152: dup
+      //   153: aload_1
+      //   154: invokestatic 56	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+      //   157: invokespecial 59	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+      //   160: aload_0
+      //   161: getfield 44	com/d/a/a/n$d:bZn	Ljava/lang/String;
+      //   164: invokestatic 77	com/d/a/a/v:cr	(Ljava/lang/String;)Ljava/lang/String;
+      //   167: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      //   170: invokevirtual 67	java/lang/StringBuilder:toString	()Ljava/lang/String;
+      //   173: astore 5
+      //   175: aload_0
+      //   176: aconst_null
+      //   177: putfield 44	com/d/a/a/n$d:bZn	Ljava/lang/String;
+      //   180: aload 5
+      //   182: astore_1
+      //   183: aload_0
+      //   184: getfield 69	com/d/a/a/n$d:bZp	Ljava/lang/String;
+      //   187: ifnull -71 -> 116
+      //   190: aload 5
+      //   192: astore_1
+      //   193: lload_2
+      //   194: aload_0
+      //   195: getfield 71	com/d/a/a/n$d:bZq	J
+      //   198: invokestatic 48	com/d/a/a/n$d:o	(JJ)Z
+      //   201: ifeq -85 -> 116
+      //   204: new 50	java/lang/StringBuilder
+      //   207: dup
+      //   208: aload 5
+      //   210: invokestatic 56	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+      //   213: invokespecial 59	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+      //   216: aload_0
+      //   217: getfield 69	com/d/a/a/n$d:bZp	Ljava/lang/String;
+      //   220: invokestatic 80	com/d/a/a/v:cq	(Ljava/lang/String;)Ljava/lang/String;
+      //   223: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      //   226: invokevirtual 67	java/lang/StringBuilder:toString	()Ljava/lang/String;
+      //   229: astore_1
+      //   230: aload_0
+      //   231: aconst_null
+      //   232: putfield 69	com/d/a/a/n$d:bZp	Ljava/lang/String;
+      //   235: goto -119 -> 116
+      //   238: astore_1
+      //   239: aload_0
+      //   240: monitorexit
+      //   241: aload_1
+      //   242: athrow
+      // Local variable table:
+      //   start	length	slot	name	signature
+      //   0	243	0	this	d
+      //   0	243	1	paramString	String
+      //   0	243	2	paramLong	long
+      //   0	243	4	paramBoolean	boolean
+      //   13	196	5	str	String
+      // Exception table:
+      //   from	to	target	type
+      //   2	7	238	finally
+      //   15	22	238	finally
+      //   25	64	238	finally
+      //   67	74	238	finally
+      //   77	116	238	finally
+      //   116	121	238	finally
+      //   128	135	238	finally
+      //   138	180	238	finally
+      //   183	190	238	finally
+      //   193	235	238	finally
+    }
+    
+    final void l(String paramString, long paramLong)
+    {
+      try
+      {
+        this.bZn = paramString;
+        this.bZo = paramLong;
+        return;
+      }
+      finally
+      {
+        paramString = finally;
+        throw paramString;
+      }
+    }
+    
+    final void m(String paramString, long paramLong)
+    {
+      try
+      {
+        this.bZp = paramString;
+        this.bZq = paramLong;
+        return;
+      }
+      finally
+      {
+        paramString = finally;
+        throw paramString;
+      }
+    }
+    
+    final void reset()
+    {
+      try
+      {
+        this.bZn = null;
+        this.bZp = null;
+        this.bZo = 0L;
+        this.bZq = 0L;
+        return;
+      }
+      finally
+      {
+        localObject = finally;
+        throw localObject;
+      }
+    }
+  }
+  
   final class e
   {
     long bZr;
@@ -564,10 +790,10 @@ class n
         }
         paramBoolean = false;
         this.bZs = paramBoolean;
-        n.this.bYU.Au();
-        n.this.bYU.Aw();
+        n.this.bYU.Av();
+        n.this.bYU.Ax();
         n.this.bYR.bk(this.bZs);
-        n.this.Aj();
+        n.this.Ak();
         if (y.ccH)
         {
           localStringBuilder = new StringBuilder("vehicle mode: ");

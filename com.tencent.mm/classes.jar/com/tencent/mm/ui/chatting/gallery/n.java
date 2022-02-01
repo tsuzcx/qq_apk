@@ -5,7 +5,9 @@ import android.view.View;
 
 public abstract interface n
 {
-  public abstract void b(View paramView, String paramString, Bitmap paramBitmap);
+  public abstract void ao(long paramLong, int paramInt);
+  
+  public abstract void b(long paramLong, View paramView, String paramString, Bitmap paramBitmap);
 }
 
 

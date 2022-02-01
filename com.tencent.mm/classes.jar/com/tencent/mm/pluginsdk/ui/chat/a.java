@@ -6,190 +6,199 @@ import java.util.ArrayList;
 
 public final class a
 {
-  c EYA;
-  c EYB;
-  c EYC;
-  public c EYD;
-  ArrayList<a> EYE;
-  c EYc;
-  c EYd;
-  c EYe;
-  c EYf;
-  c EYg;
-  c EYh;
-  c EYi;
-  c EYj;
-  c EYk;
-  c EYl;
-  c EYm;
-  c EYn;
-  c EYo;
-  c EYp;
-  c EYq;
-  c EYr;
-  c EYs;
-  c EYt;
-  public c EYu;
-  c EYv;
-  c EYw;
-  public c EYx;
-  private c EYy;
-  c EYz;
+  c FqA;
+  c FqB;
+  c FqC;
+  c FqD;
+  c FqE;
+  c FqF;
+  c FqG;
+  c FqH;
+  c FqI;
+  c FqJ;
+  c FqK;
+  c FqL;
+  c FqM;
+  c FqN;
+  public c FqO;
+  c FqP;
+  c FqQ;
+  public c FqR;
+  private c FqS;
+  c FqT;
+  c FqU;
+  c FqV;
+  c FqW;
+  c FqX;
+  ArrayList<a> FqY;
+  c Fqw;
+  c Fqx;
+  c Fqy;
+  c Fqz;
   public final String TAG;
   
   public a()
   {
     AppMethodBeat.i(31493);
     this.TAG = "MircoMsg.AppPanelControl";
-    this.EYc = new c();
-    this.EYd = new c();
-    this.EYe = new c();
-    this.EYf = new c();
-    this.EYg = new c();
-    this.EYh = new c();
-    this.EYi = new c();
-    this.EYr = new c();
-    this.EYp = new c();
-    this.EYj = new c();
-    this.EYk = new c();
-    this.EYl = new c();
-    this.EYm = new c();
-    this.EYn = new c();
-    this.EYo = new c();
-    this.EYq = new c();
-    this.EYs = new c();
-    this.EYt = new c();
-    this.EYu = new c();
-    this.EYv = new c();
-    this.EYw = new c();
-    this.EYx = new c();
-    this.EYy = new c();
-    this.EYz = new c();
-    this.EYC = new c();
-    this.EYD = new c();
-    this.EYA = new c();
-    this.EYB = new c();
+    this.Fqw = new c();
+    this.Fqx = new c();
+    this.Fqy = new c();
+    this.Fqz = new c();
+    this.FqA = new c();
+    this.FqB = new c();
+    this.FqC = new c();
+    this.FqL = new c();
+    this.FqJ = new c();
+    this.FqD = new c();
+    this.FqE = new c();
+    this.FqF = new c();
+    this.FqG = new c();
+    this.FqH = new c();
+    this.FqI = new c();
+    this.FqK = new c();
+    this.FqM = new c();
+    this.FqN = new c();
+    this.FqO = new c();
+    this.FqP = new c();
+    this.FqQ = new c();
+    this.FqR = new c();
+    this.FqS = new c();
+    this.FqT = new c();
+    this.FqW = new c();
+    this.FqX = new c();
+    this.FqU = new c();
+    this.FqV = new c();
     AppMethodBeat.o(31493);
   }
   
-  public final void fdh()
+  public final void fgV()
   {
-    this.EYc.value = true;
-    this.EYd.value = true;
-    this.EYe.value = true;
-    this.EYf.value = true;
-    this.EYg.value = true;
-    this.EYh.value = true;
-    this.EYi.value = true;
-    this.EYr.value = true;
-    this.EYp.value = true;
-    this.EYj.value = true;
-    this.EYk.value = true;
-    this.EYl.value = true;
-    this.EYm.value = true;
-    this.EYn.value = true;
-    this.EYo.value = true;
-    this.EYq.value = true;
-    this.EYs.value = true;
-    this.EYt.value = false;
-    this.EYu.value = true;
-    this.EYv.value = true;
-    this.EYx.value = true;
-    this.EYy.value = true;
-    this.EYx.value = false;
-    this.EYD.value = false;
-    this.EYz.value = true;
-    this.EYA.value = true;
-    this.EYB.value = true;
+    this.Fqw.value = true;
+    this.Fqx.value = true;
+    this.Fqy.value = true;
+    this.Fqz.value = true;
+    this.FqA.value = true;
+    this.FqB.value = true;
+    this.FqC.value = true;
+    this.FqL.value = true;
+    this.FqJ.value = true;
+    this.FqD.value = true;
+    this.FqE.value = true;
+    this.FqF.value = true;
+    this.FqG.value = true;
+    this.FqH.value = true;
+    this.FqI.value = true;
+    this.FqK.value = true;
+    this.FqM.value = true;
+    this.FqN.value = false;
+    this.FqO.value = true;
+    this.FqP.value = true;
+    this.FqR.value = true;
+    this.FqS.value = true;
+    this.FqR.value = false;
+    this.FqX.value = false;
+    this.FqT.value = true;
+    this.FqU.value = true;
+    this.FqV.value = true;
   }
   
-  public final void fdi()
+  public final void fgW()
   {
-    this.EYi.value = true;
+    this.FqC.value = true;
   }
   
-  public final void fdj()
+  public final void fgX()
   {
-    this.EYq.value = true;
+    this.FqK.value = true;
   }
   
   public final ArrayList<a> getAppPanelUnCertainEnterArrayList()
   {
     AppMethodBeat.i(163211);
-    if (this.EYE == null)
+    if (this.FqY == null)
     {
       localArrayList = new ArrayList();
       AppMethodBeat.o(163211);
       return localArrayList;
     }
-    ArrayList localArrayList = this.EYE;
+    ArrayList localArrayList = this.FqY;
     AppMethodBeat.o(163211);
     return localArrayList;
   }
   
-  public final void vU(boolean paramBoolean)
+  public final void wc(boolean paramBoolean)
   {
-    this.EYj.value = paramBoolean;
+    this.FqD.value = paramBoolean;
   }
   
-  public final void vV(boolean paramBoolean)
+  public final void wd(boolean paramBoolean)
   {
-    this.EYk.value = paramBoolean;
+    this.FqE.value = paramBoolean;
   }
   
-  public final void vW(boolean paramBoolean)
+  public final void we(boolean paramBoolean)
   {
-    this.EYo.value = paramBoolean;
+    this.FqI.value = paramBoolean;
   }
   
-  public final void vX(boolean paramBoolean)
+  public final void wf(boolean paramBoolean)
   {
-    this.EYs.value = paramBoolean;
+    this.FqM.value = paramBoolean;
   }
   
-  public final void vY(boolean paramBoolean)
+  public final void wg(boolean paramBoolean)
   {
-    this.EYv.value = paramBoolean;
+    this.FqP.value = paramBoolean;
   }
   
-  public final void vZ(boolean paramBoolean)
+  public final void wh(boolean paramBoolean)
   {
-    this.EYy.value = paramBoolean;
+    this.FqS.value = paramBoolean;
   }
   
-  public final void wa(boolean paramBoolean)
+  public final void wi(boolean paramBoolean)
   {
-    this.EYC.value = paramBoolean;
+    this.FqW.value = paramBoolean;
   }
   
   public static final class a
     extends g
   {
-    public String EYF;
-    public int EYG;
-    public String EYH;
-    public int EYI;
-    public String EYJ;
-    public String EYK;
-    public a.b EYL;
-    public a.b EYM;
-    public a.b EYN;
-    public a.b EYO;
-    public String EYP;
-    public long EYQ;
+    public String FqZ;
+    public int Fra;
+    public String Frb;
+    public String Frc;
+    public int Frd;
+    public String Fre;
+    public String Frf;
+    public a.b Frg;
+    public a.b Frh;
+    public a.b Fri;
+    public a.b Frj;
+    public String Frk;
+    public int Frl;
+    public int Frm;
+    public long Frn;
+    public a Fro;
     public String iconUrl;
-    public String jCX;
-    public String lYC;
-    public int uxt;
+    public String jFV;
+    public String mdj;
+    public int uIW;
     
     public a()
     {
       AppMethodBeat.i(163209);
-      this.EYL = new a.b();
-      this.EYM = new a.b();
-      this.EYN = new a.b();
-      this.EYO = new a.b();
+      this.Frg = new a.b();
+      this.Frh = new a.b();
+      this.Fri = new a.b();
+      this.Frj = new a.b();
       AppMethodBeat.o(163209);
+    }
+    
+    public static abstract interface a
+    {
+      public abstract String fgY();
     }
   }
   
@@ -201,13 +210,13 @@ public final class a
   
   public final class c
   {
-    private boolean EYR;
+    private boolean Frp;
     public boolean value;
     
     public c()
     {
       AppMethodBeat.i(31492);
-      this.EYR = true;
+      this.Frp = true;
       this.value = true;
       AppMethodBeat.o(31492);
     }

@@ -10,8 +10,8 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.LinkedList;
 
 public class GameTagListView
@@ -25,10 +25,10 @@ public class GameTagListView
     super(paramContext, paramAttributeSet);
   }
   
-  public final void h(LinkedList<String> paramLinkedList, int paramInt)
+  public final void i(LinkedList<String> paramLinkedList, int paramInt)
   {
     AppMethodBeat.i(42623);
-    if (bt.hj(paramLinkedList))
+    if (bu.ht(paramLinkedList))
     {
       setVisibility(8);
       AppMethodBeat.o(42623);
@@ -57,7 +57,7 @@ public class GameTagListView
       if (i < paramLinkedList.size())
       {
         localObject1 = (String)paramLinkedList.get(i);
-        ad.d("MicroMsg.GameTagListView", (String)localObject1);
+        ae.d("MicroMsg.GameTagListView", (String)localObject1);
         localObject2 = (TextView)getChildAt(i);
         ((TextView)localObject2).setVisibility(0);
         ((TextView)localObject2).setText((CharSequence)localObject1);
@@ -95,7 +95,7 @@ public class GameTagListView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.game.widget.GameTagListView
  * JD-Core Version:    0.7.0.1
  */

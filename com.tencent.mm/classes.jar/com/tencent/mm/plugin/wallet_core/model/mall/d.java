@@ -3,10 +3,10 @@ package com.tencent.mm.plugin.wallet_core.model.mall;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.sdk.platformtools.bw;
-import com.tencent.mm.storage.ai;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.bx;
+import com.tencent.mm.storage.aj;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -15,26 +15,26 @@ import java.util.Set;
 
 public final class d
 {
-  private static d DbH = null;
-  private Map<String, MallNews> DbG;
+  private static d Dtl = null;
+  private Map<String, MallNews> Dtk;
   
   private d()
   {
     AppMethodBeat.i(70568);
-    this.DbG = new HashMap();
-    Zd();
+    this.Dtk = new HashMap();
+    Zm();
     AppMethodBeat.o(70568);
   }
   
-  private static MallNews aED(String paramString)
+  private static MallNews aFX(String paramString)
   {
     AppMethodBeat.i(70574);
-    if (bt.isNullOrNil(paramString))
+    if (bu.isNullOrNil(paramString))
     {
       AppMethodBeat.o(70574);
       return null;
     }
-    Map localMap = bw.M(paramString, "sysmsg");
+    Map localMap = bx.M(paramString, "sysmsg");
     if (localMap == null)
     {
       AppMethodBeat.o(70574);
@@ -46,17 +46,17 @@ public final class d
       try
       {
         localMallNews = new MallNews((String)localMap.get(".sysmsg.mallactivitynew.functionid"));
-        localMallNews.Bhd = ((String)localMap.get(".sysmsg.mallactivitynew.activityid"));
+        localMallNews.ByB = ((String)localMap.get(".sysmsg.mallactivitynew.activityid"));
         localMallNews.type = ((String)localMap.get(".sysmsg.mallactivitynew.type"));
-        localMallNews.dlp = bt.getInt((String)localMap.get(".sysmsg.mallactivitynew.showtype"), 0);
+        localMallNews.dmr = bu.getInt((String)localMap.get(".sysmsg.mallactivitynew.showtype"), 0);
         if (localMap.containsKey(".sysmsg.mallactivitynew.showflag"))
         {
-          localMallNews.Dbv = ((String)localMap.get(".sysmsg.mallactivitynew.showflag"));
+          localMallNews.DsZ = ((String)localMap.get(".sysmsg.mallactivitynew.showflag"));
           if (localMap.containsKey(".sysmsg.mallactivitynew.newsTipFlag"))
           {
-            localMallNews.Dbw = ((String)localMap.get(".sysmsg.mallactivitynew.newsTipFlag"));
-            localMallNews.DbD = paramString;
-            boolean bool = bt.isNullOrNil(localMallNews.hNT);
+            localMallNews.Dta = ((String)localMap.get(".sysmsg.mallactivitynew.newsTipFlag"));
+            localMallNews.Dth = paramString;
+            boolean bool = bu.isNullOrNil(localMallNews.hQM);
             if (!bool) {
               break;
             }
@@ -66,14 +66,14 @@ public final class d
         }
         else
         {
-          localMallNews.Dbv = "0";
+          localMallNews.DsZ = "0";
           continue;
         }
-        localMallNews.Dbw = "0";
+        localMallNews.Dta = "0";
       }
       catch (Exception paramString)
       {
-        ad.e("MicroMsg.MallNewsManagerNewVersion", "cmdid error");
+        ae.e("MicroMsg.MallNewsManagerNewVersion", "cmdid error");
         AppMethodBeat.o(70574);
         return null;
       }
@@ -82,68 +82,68 @@ public final class d
     return localMallNews;
   }
   
-  private boolean dzN()
+  private boolean dDe()
   {
     AppMethodBeat.i(70571);
-    ad.d("MicroMsg.MallNewsManagerNewVersion", "notifyNewsMap.size : " + this.DbG.size());
+    ae.d("MicroMsg.MallNewsManagerNewVersion", "notifyNewsMap.size : " + this.Dtk.size());
     StringBuffer localStringBuffer = new StringBuffer();
-    Iterator localIterator = this.DbG.keySet().iterator();
+    Iterator localIterator = this.Dtk.keySet().iterator();
     while (localIterator.hasNext())
     {
       Object localObject = (String)localIterator.next();
-      if (!bt.isNullOrNil((String)localObject))
+      if (!bu.isNullOrNil((String)localObject))
       {
-        localObject = (MallNews)this.DbG.get(localObject);
-        localStringBuffer.append(((MallNews)localObject).DbD.replace("</mallactivitynew></sysmsg>;", "").replaceAll("<activityid>([^<]*)</activityid>", "").replaceAll("<type>([^<]*)</type>", "").replaceAll("<showflag>([^<]*)</showflag>", "").replaceAll("<newsTipFlag>([^<]*)</newsTipFlag>", "") + "<activityid>" + ((MallNews)localObject).Bhd + "</activityid><type>" + ((MallNews)localObject).type + "</type><showflag>" + ((MallNews)localObject).Dbv + "</showflag><newsTipFlag>" + ((MallNews)localObject).Dbw + "</newsTipFlag></mallactivitynew></sysmsg>;");
+        localObject = (MallNews)this.Dtk.get(localObject);
+        localStringBuffer.append(((MallNews)localObject).Dth.replace("</mallactivitynew></sysmsg>;", "").replaceAll("<activityid>([^<]*)</activityid>", "").replaceAll("<type>([^<]*)</type>", "").replaceAll("<showflag>([^<]*)</showflag>", "").replaceAll("<newsTipFlag>([^<]*)</newsTipFlag>", "") + "<activityid>" + ((MallNews)localObject).ByB + "</activityid><type>" + ((MallNews)localObject).type + "</type><showflag>" + ((MallNews)localObject).DsZ + "</showflag><newsTipFlag>" + ((MallNews)localObject).Dta + "</newsTipFlag></mallactivitynew></sysmsg>;");
       }
     }
-    ad.d("MicroMsg.MallNewsManagerNewVersion", "save data  : " + localStringBuffer.toString());
-    g.ajD();
-    g.ajC().ajl().set(270341, localStringBuffer.toString());
+    ae.d("MicroMsg.MallNewsManagerNewVersion", "save data  : " + localStringBuffer.toString());
+    g.ajS();
+    g.ajR().ajA().set(270341, localStringBuffer.toString());
     AppMethodBeat.o(70571);
     return true;
   }
   
-  public static d eGX()
+  public static d eKF()
   {
     AppMethodBeat.i(70567);
-    if (DbH == null) {
-      DbH = new d();
+    if (Dtl == null) {
+      Dtl = new d();
     }
-    d locald = DbH;
+    d locald = Dtl;
     AppMethodBeat.o(70567);
     return locald;
   }
   
-  public final void Zd()
+  public final void Zm()
   {
     AppMethodBeat.i(70569);
-    this.DbG.clear();
-    g.ajD();
-    Object localObject = (String)g.ajC().ajl().get(270341, "");
-    ad.d("MicroMsg.MallNewsManagerNewVersion", "data : ".concat(String.valueOf(localObject)));
-    localObject = bt.U(((String)localObject).split(";")).iterator();
+    this.Dtk.clear();
+    g.ajS();
+    Object localObject = (String)g.ajR().ajA().get(270341, "");
+    ae.d("MicroMsg.MallNewsManagerNewVersion", "data : ".concat(String.valueOf(localObject)));
+    localObject = bu.U(((String)localObject).split(";")).iterator();
     while (((Iterator)localObject).hasNext())
     {
-      MallNews localMallNews = aED((String)((Iterator)localObject).next());
+      MallNews localMallNews = aFX((String)((Iterator)localObject).next());
       if (localMallNews != null) {
-        this.DbG.put(localMallNews.hNT, localMallNews);
+        this.Dtk.put(localMallNews.hQM, localMallNews);
       }
     }
     AppMethodBeat.o(70569);
   }
   
-  public final MallNews aEC(String paramString)
+  public final MallNews aFW(String paramString)
   {
     AppMethodBeat.i(70573);
-    ad.d("MicroMsg.MallNewsManagerNewVersion", "removeNewsInIndexUI : ".concat(String.valueOf(paramString)));
-    if ((!bt.isNullOrNil(paramString)) && (this.DbG.containsKey(paramString)))
+    ae.d("MicroMsg.MallNewsManagerNewVersion", "removeNewsInIndexUI : ".concat(String.valueOf(paramString)));
+    if ((!bu.isNullOrNil(paramString)) && (this.Dtk.containsKey(paramString)))
     {
-      paramString = (MallNews)this.DbG.get(paramString);
-      if ("0".equals(paramString.Dbv))
+      paramString = (MallNews)this.Dtk.get(paramString);
+      if ("0".equals(paramString.DsZ))
       {
-        paramString.Dbv = "1";
-        dzN();
+        paramString.DsZ = "1";
+        dDe();
       }
       AppMethodBeat.o(70573);
       return paramString;
@@ -152,10 +152,10 @@ public final class d
     return null;
   }
   
-  public final MallNews aEE(String paramString)
+  public final MallNews aFY(String paramString)
   {
     AppMethodBeat.i(70572);
-    paramString = (MallNews)this.DbG.get(paramString);
+    paramString = (MallNews)this.Dtk.get(paramString);
     AppMethodBeat.o(70572);
     return paramString;
   }
@@ -165,19 +165,19 @@ public final class d
     AppMethodBeat.i(70570);
     if (paramMallNews == null)
     {
-      ad.w("MicroMsg.MallNewsManagerNewVersion", "null obj");
+      ae.w("MicroMsg.MallNewsManagerNewVersion", "null obj");
       AppMethodBeat.o(70570);
       return;
     }
-    paramMallNews.DbD = ("<sysmsg><mallactivitynew><functionid>" + paramMallNews.hNT + "</functionid><activityid>" + paramMallNews.Bhd + "</activityid><type>" + paramMallNews.type + "</type><showflag>" + paramMallNews.Dbv + "</showflag><newsTipFlag>" + paramMallNews.Dbw + "</newsTipFlag></mallactivitynew></sysmsg>;");
-    this.DbG.put(paramMallNews.hNT, paramMallNews);
-    dzN();
+    paramMallNews.Dth = ("<sysmsg><mallactivitynew><functionid>" + paramMallNews.hQM + "</functionid><activityid>" + paramMallNews.ByB + "</activityid><type>" + paramMallNews.type + "</type><showflag>" + paramMallNews.DsZ + "</showflag><newsTipFlag>" + paramMallNews.Dta + "</newsTipFlag></mallactivitynew></sysmsg>;");
+    this.Dtk.put(paramMallNews.hQM, paramMallNews);
+    dDe();
     AppMethodBeat.o(70570);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.model.mall.d
  * JD-Core Version:    0.7.0.1
  */

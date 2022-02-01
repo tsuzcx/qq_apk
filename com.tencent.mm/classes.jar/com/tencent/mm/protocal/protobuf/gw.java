@@ -4,12 +4,12 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 public final class gw
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public String FyO;
-  public dtu FyP;
-  public String FyQ;
-  public cxo FyR;
+  public String FRm;
+  public dur FRn;
+  public String FRo;
+  public cyi FRp;
   public String scope;
   public int state;
   
@@ -22,22 +22,22 @@ public final class gw
       if (this.scope != null) {
         paramVarArgs.d(1, this.scope);
       }
-      if (this.FyO != null) {
-        paramVarArgs.d(2, this.FyO);
+      if (this.FRm != null) {
+        paramVarArgs.d(2, this.FRm);
       }
       paramVarArgs.aS(3, this.state);
-      if (this.FyP != null)
+      if (this.FRn != null)
       {
-        paramVarArgs.lC(4, this.FyP.computeSize());
-        this.FyP.writeFields(paramVarArgs);
+        paramVarArgs.lJ(4, this.FRn.computeSize());
+        this.FRn.writeFields(paramVarArgs);
       }
-      if (this.FyQ != null) {
-        paramVarArgs.d(5, this.FyQ);
+      if (this.FRo != null) {
+        paramVarArgs.d(5, this.FRo);
       }
-      if (this.FyR != null)
+      if (this.FRp != null)
       {
-        paramVarArgs.lC(6, this.FyR.computeSize());
-        this.FyR.writeFields(paramVarArgs);
+        paramVarArgs.lJ(6, this.FRp.computeSize());
+        this.FRp.writeFields(paramVarArgs);
       }
       AppMethodBeat.o(147757);
       return 0;
@@ -51,30 +51,30 @@ public final class gw
     for (paramInt = f.a.a.b.b.a.e(1, this.scope) + 0;; paramInt = 0)
     {
       int i = paramInt;
-      if (this.FyO != null) {
-        i = paramInt + f.a.a.b.b.a.e(2, this.FyO);
+      if (this.FRm != null) {
+        i = paramInt + f.a.a.b.b.a.e(2, this.FRm);
       }
       i += f.a.a.b.b.a.bz(3, this.state);
       paramInt = i;
-      if (this.FyP != null) {
-        paramInt = i + f.a.a.a.lB(4, this.FyP.computeSize());
+      if (this.FRn != null) {
+        paramInt = i + f.a.a.a.lI(4, this.FRn.computeSize());
       }
       i = paramInt;
-      if (this.FyQ != null) {
-        i = paramInt + f.a.a.b.b.a.e(5, this.FyQ);
+      if (this.FRo != null) {
+        i = paramInt + f.a.a.b.b.a.e(5, this.FRo);
       }
       paramInt = i;
-      if (this.FyR != null) {
-        paramInt = i + f.a.a.a.lB(6, this.FyR.computeSize());
+      if (this.FRp != null) {
+        paramInt = i + f.a.a.a.lI(6, this.FRp.computeSize());
       }
       AppMethodBeat.o(147757);
       return paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
         AppMethodBeat.o(147757);
@@ -93,47 +93,47 @@ public final class gw
           AppMethodBeat.o(147757);
           return -1;
         case 1: 
-          localgw.scope = ((f.a.a.a.a)localObject1).NPN.readString();
+          localgw.scope = ((f.a.a.a.a)localObject1).OmT.readString();
           AppMethodBeat.o(147757);
           return 0;
         case 2: 
-          localgw.FyO = ((f.a.a.a.a)localObject1).NPN.readString();
+          localgw.FRm = ((f.a.a.a.a)localObject1).OmT.readString();
           AppMethodBeat.o(147757);
           return 0;
         case 3: 
-          localgw.state = ((f.a.a.a.a)localObject1).NPN.zc();
+          localgw.state = ((f.a.a.a.a)localObject1).OmT.zc();
           AppMethodBeat.o(147757);
           return 0;
         case 4: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
+          paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
             localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new dtu();
+            localObject1 = new dur();
             localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (bool = true; bool; bool = ((dtu)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, com.tencent.mm.bx.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-            localgw.FyP = ((dtu)localObject1);
+            for (bool = true; bool; bool = ((dur)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            localgw.FRn = ((dur)localObject1);
             paramInt += 1;
           }
           AppMethodBeat.o(147757);
           return 0;
         case 5: 
-          localgw.FyQ = ((f.a.a.a.a)localObject1).NPN.readString();
+          localgw.FRo = ((f.a.a.a.a)localObject1).OmT.readString();
           AppMethodBeat.o(147757);
           return 0;
         }
-        paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
+        paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
         i = paramVarArgs.size();
         paramInt = 0;
         while (paramInt < i)
         {
           localObject2 = (byte[])paramVarArgs.get(paramInt);
-          localObject1 = new cxo();
+          localObject1 = new cyi();
           localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-          for (bool = true; bool; bool = ((cxo)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, com.tencent.mm.bx.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-          localgw.FyR = ((cxo)localObject1);
+          for (bool = true; bool; bool = ((cyi)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+          localgw.FRp = ((cyi)localObject1);
           paramInt += 1;
         }
         AppMethodBeat.o(147757);

@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.collect.reward.a;
 import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
 import com.tencent.mm.ui.base.h;
@@ -16,18 +16,18 @@ public abstract class a
   protected int errCode = 0;
   protected String errMsg;
   protected int errType = 0;
-  protected WeakReference<Activity> ktm;
-  protected boolean pbG = false;
-  protected boolean pbH = false;
+  protected WeakReference<Activity> kwC;
+  protected boolean pil = false;
+  protected boolean pim = false;
   
-  public final void N(Activity paramActivity)
+  public final void O(Activity paramActivity)
   {
-    this.ktm = new WeakReference(paramActivity);
+    this.kwC = new WeakReference(paramActivity);
   }
   
   public final a a(a parama)
   {
-    if ((!this.pbG) && (!this.pbH)) {
+    if ((!this.pil) && (!this.pim)) {
       parama.g(this);
     }
     return this;
@@ -35,7 +35,7 @@ public abstract class a
   
   public final a b(a parama)
   {
-    if (this.pbH) {
+    if (this.pim) {
       parama.g(this);
     }
     return this;
@@ -45,13 +45,13 @@ public abstract class a
   
   public final a c(a parama)
   {
-    if (this.pbG) {
+    if (this.pil) {
       parama.g(this);
     }
     return this;
   }
   
-  protected boolean caG()
+  protected boolean cbV()
   {
     return true;
   }
@@ -60,10 +60,10 @@ public abstract class a
   {
     if ((paramInt2 != 0) || (paramInt3 != 0))
     {
-      this.pbG = true;
-      if ((caG()) && (this.ktm != null))
+      this.pil = true;
+      if ((cbV()) && (this.kwC != null))
       {
-        paramArrayOfByte = (Activity)this.ktm.get();
+        paramArrayOfByte = (Activity)this.kwC.get();
         if (paramArrayOfByte != null) {
           h.a(paramArrayOfByte, paramArrayOfByte.getString(2131765901), null, false, new DialogInterface.OnClickListener()
           {

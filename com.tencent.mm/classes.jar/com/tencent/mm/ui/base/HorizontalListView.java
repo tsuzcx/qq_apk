@@ -25,35 +25,35 @@ public class HorizontalListView
   extends AdapterView<ListAdapter>
 {
   protected ListAdapter GE;
-  public boolean JiL;
-  private int JiM;
-  private int JiN;
-  protected int JiO;
-  protected int JiP;
-  private int JiQ;
-  private int JiR;
-  private GestureDetector JiS;
-  private Queue<View> JiT;
-  private AdapterView.OnItemSelectedListener JiU;
-  private AdapterView.OnItemClickListener JiV;
-  private boolean JiW;
-  private a JiX;
-  private DataSetObserver JiY;
-  private GestureDetector.OnGestureListener JiZ;
+  private int JDA;
+  private int JDB;
+  protected int JDC;
+  protected int JDD;
+  private int JDE;
+  private int JDF;
+  private GestureDetector JDG;
+  private Queue<View> JDH;
+  private AdapterView.OnItemSelectedListener JDI;
+  private AdapterView.OnItemClickListener JDJ;
+  private boolean JDK;
+  private a JDL;
+  private DataSetObserver JDM;
+  private GestureDetector.OnGestureListener JDN;
+  public boolean JDz;
   protected Scroller mScroller;
   
   public HorizontalListView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(141681);
-    this.JiL = true;
-    this.JiM = -1;
-    this.JiN = 0;
-    this.JiQ = 2147483647;
-    this.JiR = 0;
-    this.JiT = new LinkedList();
-    this.JiW = false;
-    this.JiY = new DataSetObserver()
+    this.JDz = true;
+    this.JDA = -1;
+    this.JDB = 0;
+    this.JDE = 2147483647;
+    this.JDF = 0;
+    this.JDH = new LinkedList();
+    this.JDK = false;
+    this.JDM = new DataSetObserver()
     {
       public final void onChanged()
       {
@@ -77,36 +77,36 @@ public class HorizontalListView
         AppMethodBeat.o(141675);
       }
     };
-    this.JiZ = new GestureDetector.SimpleOnGestureListener()
+    this.JDN = new GestureDetector.SimpleOnGestureListener()
     {
       public final boolean onContextClick(MotionEvent paramAnonymousMotionEvent)
       {
-        AppMethodBeat.i(186459);
+        AppMethodBeat.i(193712);
         b localb = new b();
         localb.bd(paramAnonymousMotionEvent);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/base/HorizontalListView$3", "android/view/GestureDetector$SimpleOnGestureListener", "onContextClick", "(Landroid/view/MotionEvent;)Z", this, localb.ahq());
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/base/HorizontalListView$3", "android/view/GestureDetector$SimpleOnGestureListener", "onContextClick", "(Landroid/view/MotionEvent;)Z", this, localb.ahF());
         boolean bool = super.onContextClick(paramAnonymousMotionEvent);
         com.tencent.mm.hellhoundlib.a.a.a(bool, this, "com/tencent/mm/ui/base/HorizontalListView$3", "android/view/GestureDetector$SimpleOnGestureListener", "onContextClick", "(Landroid/view/MotionEvent;)Z");
-        AppMethodBeat.o(186459);
+        AppMethodBeat.o(193712);
         return bool;
       }
       
       public final boolean onDoubleTap(MotionEvent paramAnonymousMotionEvent)
       {
-        AppMethodBeat.i(186458);
+        AppMethodBeat.i(193711);
         b localb = new b();
         localb.bd(paramAnonymousMotionEvent);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/base/HorizontalListView$3", "android/view/GestureDetector$SimpleOnGestureListener", "onDoubleTap", "(Landroid/view/MotionEvent;)Z", this, localb.ahq());
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/base/HorizontalListView$3", "android/view/GestureDetector$SimpleOnGestureListener", "onDoubleTap", "(Landroid/view/MotionEvent;)Z", this, localb.ahF());
         boolean bool = super.onDoubleTap(paramAnonymousMotionEvent);
         com.tencent.mm.hellhoundlib.a.a.a(bool, this, "com/tencent/mm/ui/base/HorizontalListView$3", "android/view/GestureDetector$SimpleOnGestureListener", "onDoubleTap", "(Landroid/view/MotionEvent;)Z");
-        AppMethodBeat.o(186458);
+        AppMethodBeat.o(193711);
         return bool;
       }
       
       public final boolean onDown(MotionEvent paramAnonymousMotionEvent)
       {
         AppMethodBeat.i(141677);
-        boolean bool = HorizontalListView.this.fyr();
+        boolean bool = HorizontalListView.this.fCt();
         AppMethodBeat.o(141677);
         return bool;
       }
@@ -114,20 +114,20 @@ public class HorizontalListView
       public final boolean onFling(MotionEvent paramAnonymousMotionEvent1, MotionEvent paramAnonymousMotionEvent2, float paramAnonymousFloat1, float paramAnonymousFloat2)
       {
         AppMethodBeat.i(141678);
-        boolean bool = HorizontalListView.this.bR(paramAnonymousFloat1);
+        boolean bool = HorizontalListView.this.bP(paramAnonymousFloat1);
         AppMethodBeat.o(141678);
         return bool;
       }
       
       public final void onLongPress(MotionEvent paramAnonymousMotionEvent)
       {
-        AppMethodBeat.i(186457);
+        AppMethodBeat.i(193710);
         b localb = new b();
         localb.bd(paramAnonymousMotionEvent);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/base/HorizontalListView$3", "android/view/GestureDetector$SimpleOnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V", this, localb.ahq());
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/base/HorizontalListView$3", "android/view/GestureDetector$SimpleOnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V", this, localb.ahF());
         super.onLongPress(paramAnonymousMotionEvent);
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/base/HorizontalListView$3", "android/view/GestureDetector$SimpleOnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V");
-        AppMethodBeat.o(186457);
+        AppMethodBeat.o(193710);
       }
       
       public final boolean onScroll(MotionEvent arg1, MotionEvent paramAnonymousMotionEvent2, float paramAnonymousFloat1, float paramAnonymousFloat2)
@@ -136,7 +136,7 @@ public class HorizontalListView
         synchronized (HorizontalListView.this)
         {
           paramAnonymousMotionEvent2 = HorizontalListView.this;
-          paramAnonymousMotionEvent2.JiP += (int)paramAnonymousFloat1;
+          paramAnonymousMotionEvent2.JDD += (int)paramAnonymousFloat1;
           HorizontalListView.this.requestLayout();
           AppMethodBeat.o(141679);
           return true;
@@ -175,13 +175,13 @@ public class HorizontalListView
       
       public final boolean onSingleTapUp(MotionEvent paramAnonymousMotionEvent)
       {
-        AppMethodBeat.i(186456);
+        AppMethodBeat.i(193709);
         b localb = new b();
         localb.bd(paramAnonymousMotionEvent);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/base/HorizontalListView$3", "android/view/GestureDetector$SimpleOnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z", this, localb.ahq());
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/base/HorizontalListView$3", "android/view/GestureDetector$SimpleOnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z", this, localb.ahF());
         boolean bool = super.onSingleTapUp(paramAnonymousMotionEvent);
         com.tencent.mm.hellhoundlib.a.a.a(bool, this, "com/tencent/mm/ui/base/HorizontalListView$3", "android/view/GestureDetector$SimpleOnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z");
-        AppMethodBeat.o(186456);
+        AppMethodBeat.o(193709);
         return bool;
       }
     };
@@ -207,14 +207,14 @@ public class HorizontalListView
     try
     {
       AppMethodBeat.i(141682);
-      this.JiM = -1;
-      this.JiN = 0;
-      this.JiR = 0;
-      this.JiO = 0;
-      this.JiP = 0;
-      this.JiQ = 2147483647;
+      this.JDA = -1;
+      this.JDB = 0;
+      this.JDF = 0;
+      this.JDC = 0;
+      this.JDD = 0;
+      this.JDE = 2147483647;
       this.mScroller = new Scroller(getContext());
-      this.JiS = new GestureDetector(getContext(), this.JiZ);
+      this.JDG = new GestureDetector(getContext(), this.JDN);
       AppMethodBeat.o(141682);
       return;
     }
@@ -243,12 +243,12 @@ public class HorizontalListView
     }
   }
   
-  protected final boolean bR(float paramFloat)
+  protected final boolean bP(float paramFloat)
   {
     AppMethodBeat.i(141688);
     try
     {
-      this.mScroller.fling(this.JiP, 0, (int)-paramFloat, 0, 0, this.JiQ, 0, 0);
+      this.mScroller.fling(this.JDD, 0, (int)-paramFloat, 0, 0, this.JDE, 0, 0);
       requestLayout();
       AppMethodBeat.o(141688);
       return true;
@@ -263,15 +263,15 @@ public class HorizontalListView
   {
     AppMethodBeat.i(141687);
     boolean bool1 = super.dispatchTouchEvent(paramMotionEvent);
-    GestureDetector localGestureDetector = this.JiS;
+    GestureDetector localGestureDetector = this.JDG;
     paramMotionEvent = new com.tencent.mm.hellhoundlib.b.a().bc(paramMotionEvent);
-    com.tencent.mm.hellhoundlib.a.a.a(localGestureDetector, paramMotionEvent.ahp(), "com/tencent/mm/ui/base/HorizontalListView", "dispatchTouchEvent", "(Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
-    boolean bool2 = com.tencent.mm.hellhoundlib.a.a.a(localGestureDetector, localGestureDetector.onTouchEvent((MotionEvent)paramMotionEvent.mq(0)), "com/tencent/mm/ui/base/HorizontalListView", "dispatchTouchEvent", "(Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
+    com.tencent.mm.hellhoundlib.a.a.a(localGestureDetector, paramMotionEvent.ahE(), "com/tencent/mm/ui/base/HorizontalListView", "dispatchTouchEvent", "(Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
+    boolean bool2 = com.tencent.mm.hellhoundlib.a.a.a(localGestureDetector, localGestureDetector.onTouchEvent((MotionEvent)paramMotionEvent.mt(0)), "com/tencent/mm/ui/base/HorizontalListView", "dispatchTouchEvent", "(Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
     AppMethodBeat.o(141687);
     return bool2 | bool1;
   }
   
-  protected final boolean fyr()
+  protected final boolean fCt()
   {
     AppMethodBeat.i(141689);
     this.mScroller.forceFinished(true);
@@ -301,34 +301,34 @@ public class HorizontalListView
         AppMethodBeat.o(141686);
         return;
       }
-      if (this.JiW)
+      if (this.JDK)
       {
-        paramInt1 = this.JiO;
+        paramInt1 = this.JDC;
         initView();
         removeAllViewsInLayout();
-        this.JiP = paramInt1;
-        this.JiW = false;
+        this.JDD = paramInt1;
+        this.JDK = false;
       }
       if (this.mScroller.computeScrollOffset()) {
-        this.JiP = this.mScroller.getCurrX();
+        this.JDD = this.mScroller.getCurrX();
       }
-      if (this.JiP <= 0)
+      if (this.JDD <= 0)
       {
-        this.JiP = 0;
+        this.JDD = 0;
         this.mScroller.forceFinished(true);
       }
-      if (this.JiP >= this.JiQ)
+      if (this.JDD >= this.JDE)
       {
-        this.JiP = this.JiQ;
+        this.JDD = this.JDE;
         this.mScroller.forceFinished(true);
       }
-      paramInt2 = this.JiO - this.JiP;
+      paramInt2 = this.JDC - this.JDD;
       for (View localView1 = getChildAt(0); (localView1 != null) && (localView1.getRight() + paramInt2 <= 0); localView1 = getChildAt(0))
       {
-        this.JiR += localView1.getMeasuredWidth();
-        this.JiT.offer(localView1);
+        this.JDF += localView1.getMeasuredWidth();
+        this.JDH.offer(localView1);
         removeViewInLayout(localView1);
-        this.JiM += 1;
+        this.JDA += 1;
       }
       for (;;)
       {
@@ -336,9 +336,9 @@ public class HorizontalListView
         if ((localView1 == null) || (localView1.getLeft() + paramInt2 < getWidth())) {
           break;
         }
-        this.JiT.offer(localView1);
+        this.JDH.offer(localView1);
         removeViewInLayout(localView1);
-        this.JiN -= 1;
+        this.JDB -= 1;
       }
       localView2 = getChildAt(getChildCount() - 1);
     }
@@ -349,18 +349,18 @@ public class HorizontalListView
       paramInt1 = localView2.getRight();
       break label669;
       label313:
-      while ((paramInt1 + paramInt2 < getWidth()) && (this.JiN < this.GE.getCount()))
+      while ((paramInt1 + paramInt2 < getWidth()) && (this.JDB < this.GE.getCount()))
       {
-        localView2 = this.GE.getView(this.JiN, (View)this.JiT.poll(), this);
+        localView2 = this.GE.getView(this.JDB, (View)this.JDH.poll(), this);
         aB(localView2, -1);
         paramInt1 = localView2.getMeasuredWidth() + paramInt1;
-        if (this.JiN == this.GE.getCount() - 1) {
-          this.JiQ = (this.JiO + paramInt1 - getWidth());
+        if (this.JDB == this.GE.getCount() - 1) {
+          this.JDE = (this.JDC + paramInt1 - getWidth());
         }
-        if (this.JiQ < 0) {
-          this.JiQ = 0;
+        if (this.JDE < 0) {
+          this.JDE = 0;
         }
-        this.JiN += 1;
+        this.JDB += 1;
       }
       localView2 = getChildAt(0);
       if (localView2 != null)
@@ -373,21 +373,21 @@ public class HorizontalListView
     label672:
     for (;;)
     {
-      if ((paramInt1 + paramInt2 > 0) && (this.JiM >= 0))
+      if ((paramInt1 + paramInt2 > 0) && (this.JDA >= 0))
       {
-        localView2 = this.GE.getView(this.JiM, (View)this.JiT.poll(), this);
+        localView2 = this.GE.getView(this.JDA, (View)this.JDH.poll(), this);
         aB(localView2, 0);
         paramInt3 = localView2.getMeasuredWidth();
-        this.JiM -= 1;
-        this.JiR -= localView2.getMeasuredWidth();
+        this.JDA -= 1;
+        this.JDF -= localView2.getMeasuredWidth();
         paramInt1 -= paramInt3;
       }
       else
       {
         if (getChildCount() > 0)
         {
-          this.JiR += paramInt2;
-          paramInt2 = this.JiR;
+          this.JDF += paramInt2;
+          paramInt2 = this.JDF;
           paramInt1 = i;
           while (paramInt1 < getChildCount())
           {
@@ -398,7 +398,7 @@ public class HorizontalListView
             paramInt1 += 1;
           }
         }
-        this.JiO = this.JiP;
+        this.JDC = this.JDD;
         if (!this.mScroller.isFinished()) {
           post(new Runnable()
           {
@@ -424,27 +424,27 @@ public class HorizontalListView
   {
     AppMethodBeat.i(141683);
     if (this.GE != null) {
-      this.GE.unregisterDataSetObserver(this.JiY);
+      this.GE.unregisterDataSetObserver(this.JDM);
     }
     this.GE = paramListAdapter;
-    this.GE.registerDataSetObserver(this.JiY);
+    this.GE.registerDataSetObserver(this.JDM);
     reset();
     AppMethodBeat.o(141683);
   }
   
   public void setDispatchTouchListener(a parama)
   {
-    this.JiX = parama;
+    this.JDL = parama;
   }
   
   public void setOnItemClickListener(AdapterView.OnItemClickListener paramOnItemClickListener)
   {
-    this.JiV = paramOnItemClickListener;
+    this.JDJ = paramOnItemClickListener;
   }
   
   public void setOnItemSelectedListener(AdapterView.OnItemSelectedListener paramOnItemSelectedListener)
   {
-    this.JiU = paramOnItemSelectedListener;
+    this.JDI = paramOnItemSelectedListener;
   }
   
   public void setSelection(int paramInt) {}
@@ -453,7 +453,7 @@ public class HorizontalListView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.ui.base.HorizontalListView
  * JD-Core Version:    0.7.0.1
  */

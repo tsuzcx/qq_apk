@@ -1,9 +1,9 @@
 package com.tencent.mm.plugin.wallet.balance.model.lqt;
 
-import com.tencent.mm.al.a.a;
-import com.tencent.mm.protocal.protobuf.cbc;
-import com.tencent.mm.protocal.protobuf.clm;
-import com.tencent.mm.protocal.protobuf.coe;
+import com.tencent.mm.ak.a.a;
+import com.tencent.mm.protocal.protobuf.cbw;
+import com.tencent.mm.protocal.protobuf.cmg;
+import com.tencent.mm.protocal.protobuf.coy;
 import com.tencent.mm.protocal.protobuf.de;
 import com.tencent.mm.vending.g.b;
 

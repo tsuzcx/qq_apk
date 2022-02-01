@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.gallery.a;
 import android.content.Context;
 import android.os.Environment;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.kj;
+import com.tencent.mm.g.a.kk;
 import com.tencent.mm.modelvideo.u;
 import com.tencent.mm.plugin.expt.b.b.a;
 import com.tencent.mm.plugin.gallery.model.GalleryItem.MediaItem;
@@ -11,9 +11,9 @@ import com.tencent.mm.plugin.gallery.model.o;
 import com.tencent.mm.plugin.gallery.model.s.e;
 import com.tencent.mm.plugin.report.service.f;
 import com.tencent.mm.pointers.PInt;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.al.a;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.aj;
+import com.tencent.mm.storage.am.a;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -22,42 +22,42 @@ import java.util.List;
 
 public final class d
 {
-  public static final ArrayList<Integer> tQA;
-  public static final ArrayList<Integer> tQB;
-  private static final String[] tQv;
-  private static final String[] tQw;
-  public static final int tQx;
-  public static final int tQy;
-  public static final int tQz;
+  private static final String[] ubm;
+  private static final String[] ubn;
+  public static final int ubo;
+  public static final int ubp;
+  public static final int ubq;
+  public static final ArrayList<Integer> ubr;
+  public static final ArrayList<Integer> ubs;
   
   static
   {
     int j = 0;
     AppMethodBeat.i(173791);
-    tQv = new String[] { "Pictures/Screenshots", "DCIM/Screenshots", "Screenshot" };
-    tQw = new String[] { "DCIM/Video screenshots", "DCIM/Screen recordings", "DCIM/ScreenRecorder", "Movies/Screenrecords" };
-    tQx = com.tencent.mm.loader.j.b.asg().substring(0, com.tencent.mm.loader.j.b.asg().length() - 1).toLowerCase().hashCode();
-    tQy = ali("DCIM/Camera");
-    tQz = ali("download");
-    tQA = new ArrayList(tQv.length);
-    tQB = new ArrayList(tQw.length);
-    String[] arrayOfString = tQv;
+    ubm = new String[] { "Pictures/Screenshots", "DCIM/Screenshots", "Screenshot" };
+    ubn = new String[] { "DCIM/Video screenshots", "DCIM/Screen recordings", "DCIM/ScreenRecorder", "Movies/Screenrecords" };
+    ubo = com.tencent.mm.loader.j.b.asv().substring(0, com.tencent.mm.loader.j.b.asv().length() - 1).toLowerCase().hashCode();
+    ubp = amg("DCIM/Camera");
+    ubq = amg("download");
+    ubr = new ArrayList(ubm.length);
+    ubs = new ArrayList(ubn.length);
+    String[] arrayOfString = ubm;
     int k = arrayOfString.length;
     int i = 0;
     String str;
     while (i < k)
     {
       str = arrayOfString[i];
-      tQA.add(Integer.valueOf(ali(str)));
+      ubr.add(Integer.valueOf(amg(str)));
       i += 1;
     }
-    arrayOfString = tQw;
+    arrayOfString = ubn;
     k = arrayOfString.length;
     i = j;
     while (i < k)
     {
       str = arrayOfString[i];
-      tQB.add(Integer.valueOf(ali(str)));
+      ubs.add(Integer.valueOf(amg(str)));
       i += 1;
     }
     AppMethodBeat.o(173791);
@@ -66,10 +66,10 @@ public final class d
   public static String a(Context paramContext, int paramInt1, int paramInt2, int paramInt3, String paramString, ArrayList<GalleryItem.MediaItem> paramArrayList)
   {
     AppMethodBeat.i(111745);
-    boolean bool1 = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qzh, false);
-    boolean bool2 = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qzi, false);
-    if (com.tencent.mm.kernel.g.ajA().aiK()) {}
-    for (int j = com.tencent.mm.kernel.g.ajC().ajl().getInt(al.a.IDh, 0);; j = 0)
+    boolean bool1 = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qGn, false);
+    boolean bool2 = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qGo, false);
+    if (com.tencent.mm.kernel.g.ajP().aiZ()) {}
+    for (int j = com.tencent.mm.kernel.g.ajR().ajA().getInt(am.a.IXH, 0);; j = 0)
     {
       int i;
       if ((j == 1) || (bool1))
@@ -119,7 +119,7 @@ public final class d
       paramContext = paramContext.getString(2131759785) + "(" + paramInt2 + "/" + paramInt3 + ")";
       AppMethodBeat.o(111745);
       return paramContext;
-      if ((!bt.isNullOrNil(paramString)) && (paramString.equals("album_business_bubble_media_by_coordinate")))
+      if ((!bu.isNullOrNil(paramString)) && (paramString.equals("album_business_bubble_media_by_coordinate")))
       {
         if ((paramInt2 == 0) || (paramInt3 <= 1))
         {
@@ -210,26 +210,26 @@ public final class d
     }
   }
   
-  public static int acf()
+  public static int acp()
   {
     AppMethodBeat.i(173786);
-    int i = com.tencent.mm.n.b.acf();
+    int i = com.tencent.mm.n.b.acp();
     AppMethodBeat.o(173786);
     return i;
   }
   
-  public static int acg()
+  public static int acq()
   {
     AppMethodBeat.i(173785);
-    int i = com.tencent.mm.n.b.acg();
+    int i = com.tencent.mm.n.b.acq();
     AppMethodBeat.o(173785);
     return i;
   }
   
-  public static int ach()
+  public static int acr()
   {
     AppMethodBeat.i(173784);
-    int i = com.tencent.mm.n.b.ach();
+    int i = com.tencent.mm.n.b.acr();
     AppMethodBeat.o(173784);
     return i;
   }
@@ -300,7 +300,7 @@ public final class d
     }
   }
   
-  public static int alg(String paramString)
+  public static int ame(String paramString)
   {
     AppMethodBeat.i(173788);
     PInt localPInt = new PInt();
@@ -310,7 +310,7 @@ public final class d
     return i;
   }
   
-  public static String alh(String paramString)
+  public static String amf(String paramString)
   {
     AppMethodBeat.i(179481);
     if (paramString == null)
@@ -331,7 +331,7 @@ public final class d
     return paramString;
   }
   
-  public static int ali(String paramString)
+  public static int amg(String paramString)
   {
     AppMethodBeat.i(173790);
     int i = (Environment.getExternalStorageDirectory().toString() + "/" + paramString).toLowerCase().hashCode();
@@ -339,55 +339,55 @@ public final class d
     return i;
   }
   
-  public static void bl(int paramInt, String paramString)
+  public static void bk(int paramInt, String paramString)
   {
     AppMethodBeat.i(111742);
-    com.tencent.mm.plugin.report.service.g.yhR.kvStat(paramInt, paramString);
+    com.tencent.mm.plugin.report.service.g.yxI.kvStat(paramInt, paramString);
     AppMethodBeat.o(111742);
   }
   
   public static void c(String paramString1, String paramString2, boolean paramBoolean1, boolean paramBoolean2)
   {
     AppMethodBeat.i(111743);
-    if (com.tencent.mm.sdk.b.a.IbL != null)
+    if (com.tencent.mm.sdk.b.a.IvT != null)
     {
-      kj localkj = new kj();
-      localkj.dxp.dxq = Boolean.valueOf(paramBoolean1);
-      localkj.dxp.imagePath = paramString1;
-      localkj.dxp.dxr = 0;
-      localkj.dxp.toUser = paramString2;
-      localkj.dxp.dxs = Boolean.valueOf(paramBoolean2);
-      com.tencent.mm.sdk.b.a.IbL.l(localkj);
+      kk localkk = new kk();
+      localkk.dyu.dyv = Boolean.valueOf(paramBoolean1);
+      localkk.dyu.imagePath = paramString1;
+      localkk.dyu.dyw = 0;
+      localkk.dyu.toUser = paramString2;
+      localkk.dyu.dyx = Boolean.valueOf(paramBoolean2);
+      com.tencent.mm.sdk.b.a.IvT.l(localkk);
     }
     AppMethodBeat.o(111743);
   }
   
-  public static void cWa()
+  public static void cYF()
   {
     AppMethodBeat.i(173783);
-    f.Ok(19);
+    f.OQ(19);
     AppMethodBeat.o(173783);
   }
   
-  public static boolean cWt()
+  public static boolean cYY()
   {
     AppMethodBeat.i(173787);
-    com.tencent.mm.kernel.g.ajD();
-    if (!com.tencent.mm.kernel.g.ajA().aiK())
+    com.tencent.mm.kernel.g.ajS();
+    if (!com.tencent.mm.kernel.g.ajP().aiZ())
     {
       AppMethodBeat.o(173787);
       return false;
     }
-    boolean bool = com.tencent.mm.kernel.g.ajC().ajl().getBoolean(al.a.Ixv, true);
+    boolean bool = com.tencent.mm.kernel.g.ajR().ajA().getBoolean(am.a.IRT, true);
     AppMethodBeat.o(173787);
     return bool;
   }
   
-  public static boolean cWu()
+  public static boolean cYZ()
   {
     AppMethodBeat.i(111746);
-    boolean bool = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qzh, false);
-    if ((com.tencent.mm.kernel.g.ajC().ajl().getInt(al.a.IDh, 0) == 1) || (bool))
+    boolean bool = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qGn, false);
+    if ((com.tencent.mm.kernel.g.ajR().ajA().getInt(am.a.IXH, 0) == 1) || (bool))
     {
       AppMethodBeat.o(111746);
       return true;
@@ -396,11 +396,11 @@ public final class d
     return false;
   }
   
-  public static boolean cWv()
+  public static boolean cZa()
   {
     AppMethodBeat.i(111747);
-    boolean bool = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qzi, false);
-    if ((com.tencent.mm.kernel.g.ajC().ajl().getInt(al.a.IDh, 0) == 1) || (bool))
+    boolean bool = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qGo, false);
+    if ((com.tencent.mm.kernel.g.ajR().ajA().getInt(am.a.IXH, 0) == 1) || (bool))
     {
       AppMethodBeat.o(111747);
       return true;
@@ -409,20 +409,20 @@ public final class d
     return false;
   }
   
-  public static boolean cWw()
+  public static boolean cZb()
   {
     AppMethodBeat.i(173789);
     boolean bool = false;
-    switch (com.tencent.mm.plugin.gallery.model.e.cUM().kTx)
+    switch (com.tencent.mm.plugin.gallery.model.e.cXr().kXg)
     {
     }
     for (;;)
     {
       AppMethodBeat.o(173789);
       return bool;
-      bool = cWu();
+      bool = cYZ();
       continue;
-      bool = cWv();
+      bool = cZa();
     }
   }
   
@@ -450,7 +450,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.gallery.a.d
  * JD-Core Version:    0.7.0.1
  */

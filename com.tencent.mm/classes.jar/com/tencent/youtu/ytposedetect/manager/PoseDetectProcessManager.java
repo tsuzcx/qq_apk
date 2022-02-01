@@ -50,10 +50,10 @@ public class PoseDetectProcessManager
   
   public int poseDetect(float[] paramArrayOfFloat1, float[] paramArrayOfFloat2, int paramInt1, byte[] paramArrayOfByte, float paramFloat1, float paramFloat2, float paramFloat3, int paramInt2)
   {
-    AppMethodBeat.i(213172);
+    AppMethodBeat.i(195238);
     int i = YTCameraSetting.getRotateTag(this.mCameraRotate, 1);
     paramInt1 = YTPoseDetectJNIInterface.poseDetect(paramArrayOfFloat1, paramArrayOfFloat2, paramInt1, paramArrayOfByte, this.mDesiredPreviewWidth, this.mDesiredPreviewHeight, i, paramFloat1, paramFloat2, paramFloat3, paramInt2);
-    AppMethodBeat.o(213172);
+    AppMethodBeat.o(195238);
     return paramInt1;
   }
   

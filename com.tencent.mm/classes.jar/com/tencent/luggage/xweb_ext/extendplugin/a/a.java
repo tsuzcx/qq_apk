@@ -10,37 +10,37 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class a
   implements b
 {
-  protected c cqP;
-  protected volatile boolean cvv;
+  protected c crt;
+  protected volatile boolean cvZ;
   protected int id;
   public String type;
   
-  public final String BM()
+  public final String BN()
   {
     AppMethodBeat.i(139353);
-    String str = d.n(this.type, this.id);
+    String str = d.o(this.type, this.id);
     AppMethodBeat.o(139353);
     return str;
   }
   
-  public final c GK()
+  public final c GQ()
   {
-    return this.cqP;
+    return this.crt;
   }
   
-  public void Gb()
+  public void Gh()
   {
-    this.cvv = false;
+    this.cvZ = false;
   }
   
   public final void a(c paramc)
   {
-    this.cqP = paramc;
+    this.crt = paramc;
   }
   
   public void e(SurfaceTexture paramSurfaceTexture)
   {
-    this.cvv = true;
+    this.cvZ = true;
   }
   
   public boolean g(com.tencent.luggage.xweb_ext.extendplugin.a parama)
@@ -65,7 +65,7 @@ public class a
   
   public void l(MotionEvent paramMotionEvent) {}
   
-  public void r(Bitmap paramBitmap) {}
+  public void s(Bitmap paramBitmap) {}
   
   public final void setId(int paramInt)
   {

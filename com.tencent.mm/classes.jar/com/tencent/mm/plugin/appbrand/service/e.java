@@ -1,14 +1,14 @@
 package com.tencent.mm.plugin.appbrand.service;
 
 import com.tencent.mm.kernel.c.a;
-import com.tencent.mm.storage.at;
+import com.tencent.mm.storage.au;
 
 public abstract interface e
   extends a
 {
-  public abstract boolean bye();
+  public abstract boolean byX();
   
-  public abstract void c(at paramat);
+  public abstract void c(au paramau);
 }
 
 

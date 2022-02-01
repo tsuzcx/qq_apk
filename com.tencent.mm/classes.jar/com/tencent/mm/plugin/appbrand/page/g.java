@@ -1,65 +1,54 @@
 package com.tencent.mm.plugin.appbrand.page;
 
-import android.annotation.SuppressLint;
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.ColorMatrix;
-import android.graphics.ColorMatrixColorFilter;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.luggage.sdk.config.AppBrandSysConfigLU;
-import com.tencent.luggage.sdk.d.c;
+import android.view.View;
+import android.view.ViewGroup;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.modelappbrand.a.b;
-import com.tencent.mm.plugin.appbrand.config.a.b;
-import com.tencent.mm.plugin.appbrand.widget.h;
+import com.tencent.mm.plugin.appbrand.page.capsulebar.c;
+import java.util.Objects;
 
-@SuppressLint({"ViewConstructor"})
 public final class g
-  extends LinearLayout
+  extends al
 {
-  private ImageView lZa;
-  private TextView lZb;
-  private Button lZc;
-  
-  public g(Context paramContext, c paramc)
+  public g(ViewGroup paramViewGroup)
   {
-    super(paramContext);
-    AppMethodBeat.i(147440);
-    inflate(getContext(), 2131492993, this);
-    this.lZa = ((ImageView)findViewById(2131296714));
-    this.lZb = ((TextView)findViewById(2131296716));
-    this.lZc = ((Button)findViewById(2131296713));
-    this.lZb.setText(getResources().getString(2131760993, new Object[] { paramc.Fa().doD }));
-    paramContext = (LinearLayout.LayoutParams)this.lZa.getLayoutParams();
-    if ((paramc.getAppConfig() != null) && (paramc.getAppConfig().bdJ() != null) && (paramc.getAppConfig().bdJ().bdO())) {}
-    for (;;)
-    {
-      if (i != 0)
-      {
-        paramContext.topMargin = com.tencent.mm.cc.a.ay(getContext(), 2131165765);
-        this.lZa.setLayoutParams(paramContext);
-        requestLayout();
-      }
-      paramContext = new ColorMatrix();
-      paramContext.setSaturation(0.0F);
-      paramContext = new ColorMatrixColorFilter(paramContext);
-      this.lZa.setColorFilter(paramContext);
-      b.aDV().a(this.lZa, paramc.Fa().iAa, ((h)paramc.ab(h.class)).bCg(), com.tencent.mm.modelappbrand.a.g.hLC);
-      this.lZc.setVisibility(8);
-      setBackgroundColor(-1);
-      AppMethodBeat.o(147440);
-      return;
-      i = 0;
-    }
+    super(paramViewGroup);
+  }
+  
+  public final void a(c paramc)
+  {
+    AppMethodBeat.i(207783);
+    ((ViewGroup)Objects.requireNonNull(b(0, false, false))).addView(paramc, -1, -2);
+    d(new al.b(paramc, 1, 0, 1000, true, false, false));
+    AppMethodBeat.o(207783);
+  }
+  
+  public final boolean a(View paramView, int paramInt1, int paramInt2, float[] paramArrayOfFloat, int paramInt3, boolean paramBoolean)
+  {
+    AppMethodBeat.i(207780);
+    paramBoolean = super.a(paramView, paramInt1, paramInt2, paramArrayOfFloat, paramInt3, paramBoolean);
+    AppMethodBeat.o(207780);
+    return paramBoolean;
+  }
+  
+  public final boolean a(View paramView, int paramInt1, int paramInt2, float[] paramArrayOfFloat, int paramInt3, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    AppMethodBeat.i(207781);
+    paramBoolean1 = super.a(paramView, paramInt1, paramInt2, paramArrayOfFloat, paramInt3, paramBoolean1, paramBoolean2);
+    AppMethodBeat.o(207781);
+    return paramBoolean1;
+  }
+  
+  public final boolean a(View paramView, int paramInt1, int paramInt2, float[] paramArrayOfFloat, int paramInt3, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
+  {
+    AppMethodBeat.i(207782);
+    paramBoolean1 = super.a(paramView, paramInt1, paramInt2, paramArrayOfFloat, paramInt3, paramBoolean1, paramBoolean2, paramBoolean3);
+    AppMethodBeat.o(207782);
+    return paramBoolean1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.page.g
  * JD-Core Version:    0.7.0.1
  */

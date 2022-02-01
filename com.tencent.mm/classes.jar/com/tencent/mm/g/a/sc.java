@@ -1,13 +1,12 @@
 package com.tencent.mm.g.a;
 
-import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class sc
   extends b
 {
-  public a dGE;
+  public a dHJ;
   
   public sc()
   {
@@ -16,18 +15,16 @@ public final class sc
   
   private sc(byte paramByte)
   {
-    AppMethodBeat.i(19830);
-    this.dGE = new a();
-    this.IbR = false;
+    AppMethodBeat.i(102633);
+    this.dHJ = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(19830);
+    AppMethodBeat.o(102633);
   }
   
   public static final class a
   {
-    public Context context;
-    public String[] djJ;
-    public String[] selectionArgs;
+    public long msgId;
   }
 }
 

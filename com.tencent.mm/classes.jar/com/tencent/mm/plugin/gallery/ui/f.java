@@ -4,36 +4,36 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.gallery.model.GalleryItem.MediaItem;
 import com.tencent.mm.plugin.gallery.model.c;
 import com.tencent.mm.plugin.gallery.model.e;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.ArrayList;
 
 final class f
 {
   private int afo = -1;
-  private d tOm;
+  private d tZd;
   
   public f(d paramd)
   {
-    this.tOm = paramd;
+    this.tZd = paramd;
   }
   
-  private void Hu(int paramInt)
+  private void HR(int paramInt)
   {
     AppMethodBeat.i(111557);
-    d locald = this.tOm;
-    if ((locald.tLn == null) || (locald.tLn.size() <= paramInt) || (paramInt < 0))
+    d locald = this.tZd;
+    if ((locald.tWe == null) || (locald.tWe.size() <= paramInt) || (paramInt < 0))
     {
       AppMethodBeat.o(111557);
       return;
     }
-    long l = ((GalleryItem.MediaItem)locald.tLn.get(paramInt)).tGV;
-    String str3 = ((GalleryItem.MediaItem)locald.tLn.get(paramInt)).rmz;
-    String str2 = ((GalleryItem.MediaItem)locald.tLn.get(paramInt)).tGS;
+    long l = ((GalleryItem.MediaItem)locald.tWe.get(paramInt)).tRM;
+    String str3 = ((GalleryItem.MediaItem)locald.tWe.get(paramInt)).ruE;
+    String str2 = ((GalleryItem.MediaItem)locald.tWe.get(paramInt)).tRJ;
     String str1 = str3;
-    if (bt.isNullOrNil(str3)) {
+    if (bu.isNullOrNil(str3)) {
       str1 = str2;
     }
-    e.cUL().a(str1, ((GalleryItem.MediaItem)locald.tLn.get(paramInt)).getType(), str2, l, ((GalleryItem.MediaItem)locald.tLn.get(paramInt)).tGW);
+    e.cXq().a(str1, ((GalleryItem.MediaItem)locald.tWe.get(paramInt)).getType(), str2, l, ((GalleryItem.MediaItem)locald.tWe.get(paramInt)).tRN);
     AppMethodBeat.o(111557);
   }
   
@@ -44,7 +44,7 @@ final class f
     {
       int i = 0;
       if (i == 0) {
-        Hu(paramInt);
+        HR(paramInt);
       }
       for (;;)
       {
@@ -54,15 +54,15 @@ final class f
           break label111;
         }
         if (paramInt + i <= paramInt + 3) {
-          Hu(paramInt + i);
+          HR(paramInt + i);
         }
         if (paramInt - i >= Math.max(paramInt - 3, 0)) {
-          Hu(paramInt - i);
+          HR(paramInt - i);
         }
       }
     }
     if (this.afo > paramInt) {
-      Hu(Math.max(paramInt - 3, 0));
+      HR(Math.max(paramInt - 3, 0));
     }
     for (;;)
     {
@@ -71,7 +71,7 @@ final class f
       AppMethodBeat.o(111558);
       return;
       if (this.afo < paramInt) {
-        Hu(paramInt + 3);
+        HR(paramInt + 3);
       }
     }
   }

@@ -10,8 +10,8 @@ final class LoginHistoryUI$28
   public final void run()
   {
     AppMethodBeat.i(128109);
-    this.jlq.finish();
-    this.jlq.overridePendingTransition(-1, -1);
+    this.jok.finish();
+    this.jok.overridePendingTransition(-1, -1);
     AppMethodBeat.o(128109);
   }
 }

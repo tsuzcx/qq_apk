@@ -15,7 +15,7 @@ public class e
   
   public boolean a(final Runnable paramRunnable)
   {
-    AppMethodBeat.i(187253);
+    AppMethodBeat.i(221382);
     final CountDownLatch localCountDownLatch = new CountDownLatch(1);
     boolean bool = post(new Runnable()
     {
@@ -31,7 +31,7 @@ public class e
     try
     {
       localCountDownLatch.await();
-      AppMethodBeat.o(187253);
+      AppMethodBeat.o(221382);
       return bool;
     }
     catch (InterruptedException paramRunnable)

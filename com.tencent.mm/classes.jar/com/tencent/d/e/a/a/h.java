@@ -19,14 +19,14 @@ import java.util.Set;
 
 public final class h
 {
-  private static final j<h> LNb;
+  private static final j<h> Mka;
   public Context mContext;
   public boolean mInit = false;
   
   static
   {
     AppMethodBeat.i(138409);
-    LNb = new j() {};
+    Mka = new j() {};
     AppMethodBeat.o(138409);
   }
   
@@ -51,15 +51,15 @@ public final class h
         if (localObject == null) {
           localObject = locala;
         } else {
-          localObject.LNO.addAll(locala.LNO);
+          localObject.MkN.addAll(locala.MkN);
         }
       }
     }
     if (localObject != null)
     {
       paramMap = new a((byte)0);
-      paramMap.LNE = localObject;
-      paramMap.LNF = localArrayList;
+      paramMap.MkD = localObject;
+      paramMap.MkE = localArrayList;
       AppMethodBeat.o(138407);
       return paramMap;
     }
@@ -67,15 +67,15 @@ public final class h
     return null;
   }
   
-  public static h fTY()
+  public static h fYy()
   {
     AppMethodBeat.i(138404);
-    h localh = (h)LNb.get();
+    h localh = (h)Mka.get();
     AppMethodBeat.o(138404);
     return localh;
   }
   
-  public static String kN(int paramInt1, int paramInt2)
+  public static String kU(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(138408);
     String str = paramInt1 + "00" + paramInt2;
@@ -83,7 +83,7 @@ public final class h
     return str;
   }
   
-  public final Map<String, a> fTZ()
+  public final Map<String, a> fYz()
   {
     AppMethodBeat.i(138406);
     HashMap localHashMap = new HashMap();
@@ -106,7 +106,7 @@ public final class h
       File localFile = arrayOfFile[i];
       try
       {
-        localObject = c.o(f.aa(new File(localFile.getAbsolutePath())), c.fUd());
+        localObject = c.p(f.Z(new File(localFile.getAbsolutePath())), c.fYD());
         if (localObject == null)
         {
           localObject = null;
@@ -127,7 +127,7 @@ public final class h
       {
         i += 1;
         break;
-        byte[] arrayOfByte = b.cO(localThrowable);
+        byte[] arrayOfByte = b.cR(localThrowable);
         if (arrayOfByte == null)
         {
           locala = null;
@@ -150,10 +150,10 @@ public final class h
     this.mInit = true;
   }
   
-  public final String kM(int paramInt1, int paramInt2)
+  public final String kT(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(138405);
-    String str = kN(paramInt1, paramInt2);
+    String str = kU(paramInt1, paramInt2);
     File localFile = this.mContext.getDir("turingmm", 0);
     if (localFile == null)
     {
@@ -205,8 +205,8 @@ public final class h
   
   public static final class a
   {
-    public a LNE;
-    public List<String> LNF;
+    public a MkD;
+    public List<String> MkE;
   }
 }
 

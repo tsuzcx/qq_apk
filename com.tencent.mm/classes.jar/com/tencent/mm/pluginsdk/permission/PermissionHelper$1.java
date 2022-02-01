@@ -46,17 +46,17 @@ final class PermissionHelper$1
     //   65: invokevirtual 70	android/support/v4/app/g:executePendingTransactions	()Z
     //   68: pop
     //   69: aload_0
-    //   70: getfield 21	com/tencent/mm/pluginsdk/permission/PermissionHelper$1:EOD	[Lcom/tencent/mm/pluginsdk/permission/PermissionHelper$c;
+    //   70: getfield 21	com/tencent/mm/pluginsdk/permission/PermissionHelper$1:FgZ	[Lcom/tencent/mm/pluginsdk/permission/PermissionHelper$c;
     //   73: iconst_0
     //   74: aload_1
     //   75: aastore
     //   76: aload_0
-    //   77: getfield 21	com/tencent/mm/pluginsdk/permission/PermissionHelper$1:EOD	[Lcom/tencent/mm/pluginsdk/permission/PermissionHelper$c;
+    //   77: getfield 21	com/tencent/mm/pluginsdk/permission/PermissionHelper$1:FgZ	[Lcom/tencent/mm/pluginsdk/permission/PermissionHelper$c;
     //   80: astore_1
     //   81: aload_1
     //   82: monitorenter
     //   83: aload_0
-    //   84: getfield 21	com/tencent/mm/pluginsdk/permission/PermissionHelper$1:EOD	[Lcom/tencent/mm/pluginsdk/permission/PermissionHelper$c;
+    //   84: getfield 21	com/tencent/mm/pluginsdk/permission/PermissionHelper$1:FgZ	[Lcom/tencent/mm/pluginsdk/permission/PermissionHelper$c;
     //   87: invokevirtual 73	java/lang/Object:notifyAll	()V
     //   90: aload_1
     //   91: monitorexit
@@ -69,7 +69,7 @@ final class PermissionHelper$1
     //   102: ldc 80
     //   104: iconst_0
     //   105: anewarray 4	java/lang/Object
-    //   108: invokestatic 86	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   108: invokestatic 86	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   111: goto -42 -> 69
     //   114: aload_0
     //   115: getfield 19	com/tencent/mm/pluginsdk/permission/PermissionHelper$1:val$activity	Landroid/app/Activity;
@@ -106,7 +106,7 @@ final class PermissionHelper$1
     //   176: invokevirtual 120	android/app/FragmentManager:executePendingTransactions	()Z
     //   179: pop
     //   180: aload_0
-    //   181: getfield 21	com/tencent/mm/pluginsdk/permission/PermissionHelper$1:EOD	[Lcom/tencent/mm/pluginsdk/permission/PermissionHelper$c;
+    //   181: getfield 21	com/tencent/mm/pluginsdk/permission/PermissionHelper$1:FgZ	[Lcom/tencent/mm/pluginsdk/permission/PermissionHelper$c;
     //   184: iconst_0
     //   185: aload_1
     //   186: aastore
@@ -117,7 +117,7 @@ final class PermissionHelper$1
     //   194: ldc 80
     //   196: iconst_0
     //   197: anewarray 4	java/lang/Object
-    //   200: invokestatic 86	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   200: invokestatic 86	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   203: goto -23 -> 180
     //   206: astore_2
     //   207: aload_1

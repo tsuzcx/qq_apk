@@ -2,7 +2,7 @@ package com.tencent.mm.compatible.g;
 
 import android.view.MenuItem;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class a
 {
@@ -11,13 +11,13 @@ public final class a
     AppMethodBeat.i(155859);
     if (paramMenuItem == null)
     {
-      ad.w("MicroMsg.MenuItemUtil", "fixTitleCondensed fail, item is null");
+      ae.w("MicroMsg.MenuItemUtil", "fixTitleCondensed fail, item is null");
       AppMethodBeat.o(155859);
       return;
     }
     if (paramMenuItem.getTitleCondensed() == null)
     {
-      ad.w("MicroMsg.MenuItemUtil", "%s title condensed is null, fix it", new Object[] { paramString });
+      ae.w("MicroMsg.MenuItemUtil", "%s title condensed is null, fix it", new Object[] { paramString });
       paramMenuItem.setTitleCondensed("");
       AppMethodBeat.o(155859);
       return;
@@ -27,7 +27,7 @@ public final class a
       AppMethodBeat.o(155859);
       return;
     }
-    ad.w("MicroMsg.MenuItemUtil", "%s title condensed is not String type, cur type[%s], cur value[%s], fix it", new Object[] { paramString, paramMenuItem.getTitleCondensed().getClass().getName(), paramMenuItem.getTitleCondensed() });
+    ae.w("MicroMsg.MenuItemUtil", "%s title condensed is not String type, cur type[%s], cur value[%s], fix it", new Object[] { paramString, paramMenuItem.getTitleCondensed().getClass().getName(), paramMenuItem.getTitleCondensed() });
     paramMenuItem.setTitleCondensed(paramMenuItem.getTitleCondensed().toString());
     AppMethodBeat.o(155859);
   }

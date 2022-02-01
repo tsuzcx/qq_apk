@@ -1,23 +1,23 @@
 package com.tencent.mm.plugin.voiceprint.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.l;
-import com.tencent.mm.model.be.a;
-import com.tencent.mm.model.be.b;
+import com.tencent.mm.ak.l;
+import com.tencent.mm.model.bg.a;
+import com.tencent.mm.model.bg.b;
 import com.tencent.mm.protocal.l.d;
 import com.tencent.mm.protocal.l.e;
 
 final class a
   extends l
 {
-  be.a BVe;
-  be.b BVf;
+  bg.a CmF;
+  bg.b CmG;
   
   a()
   {
     AppMethodBeat.i(29756);
-    this.BVe = new be.a();
-    this.BVf = new be.b();
+    this.CmF = new bg.a();
+    this.CmG = new bg.b();
     AppMethodBeat.o(29756);
   }
   
@@ -28,12 +28,12 @@ final class a
   
   public final l.d getReqObjImp()
   {
-    return this.BVe;
+    return this.CmF;
   }
   
   public final l.e getRespObj()
   {
-    return this.BVf;
+    return this.CmG;
   }
   
   public final int getType()

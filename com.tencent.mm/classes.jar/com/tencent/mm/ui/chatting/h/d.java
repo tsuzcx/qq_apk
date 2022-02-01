@@ -19,13 +19,13 @@ public abstract interface d
     static
     {
       AppMethodBeat.i(36423);
-      JVd = new a("ACTION_TOP", 0);
-      JVe = new a("ACTION_BOTTOM", 1);
-      JVf = new a("ACTION_UPDATE", 2);
-      JVg = new a("ACTION_ENTER", 3);
-      JVh = new a("ACTION_POSITION", 4);
-      JVi = new a("ACTION_UN_KNOW", 5);
-      JVj = new a[] { JVd, JVe, JVf, JVg, JVh, JVi };
+      Krv = new a("ACTION_TOP", 0);
+      Krw = new a("ACTION_BOTTOM", 1);
+      Krx = new a("ACTION_UPDATE", 2);
+      Kry = new a("ACTION_ENTER", 3);
+      Krz = new a("ACTION_POSITION", 4);
+      KrA = new a("ACTION_UN_KNOW", 5);
+      KrB = new a[] { Krv, Krw, Krx, Kry, Krz, KrA };
       AppMethodBeat.o(36423);
     }
     
@@ -46,29 +46,29 @@ public abstract interface d
   
   public static final class d<T>
   {
-    public Bundle JVk;
-    public d.a JVl;
-    public List<T> JVm;
-    public int JVn;
-    public SparseArray<T> JVo;
-    public int fTM;
-    public AtomicBoolean hNy;
+    public Bundle KrC;
+    public d.a KrD;
+    public List<T> KrE;
+    public int KrF;
+    public SparseArray<T> KrG;
+    public int fVS;
+    public AtomicBoolean hQr;
     public int selection;
     
     d(d.a parama, AtomicBoolean paramAtomicBoolean)
     {
       AppMethodBeat.i(179939);
       this.selection = -1;
-      this.hNy = paramAtomicBoolean;
-      this.JVl = parama;
-      this.JVm = new LinkedList();
+      this.hQr = paramAtomicBoolean;
+      this.KrD = parama;
+      this.KrE = new LinkedList();
       AppMethodBeat.o(179939);
     }
     
     public final String toString()
     {
       AppMethodBeat.i(36425);
-      String str = "LoadedResult{sourceArgs=" + this.JVk + ", mode=" + this.JVl + ", selection=" + this.selection + ", count=" + this.JVn + ", totalCount=" + this.fTM + '}';
+      String str = "LoadedResult{sourceArgs=" + this.KrC + ", mode=" + this.KrD + ", selection=" + this.selection + ", count=" + this.KrF + ", totalCount=" + this.fVS + '}';
       AppMethodBeat.o(36425);
       return str;
     }

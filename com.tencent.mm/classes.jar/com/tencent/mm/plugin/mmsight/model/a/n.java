@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.mmsight.model.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class n
   implements e
@@ -9,51 +9,51 @@ public final class n
   private int audioSampleRate;
   private int bitrate;
   private int bufId;
-  private float cvL;
-  private boolean hms;
-  private boolean hmt;
-  private boolean hvp;
-  private String vQi;
+  private float cwp;
+  private boolean hpg;
+  private boolean hph;
+  private boolean hyd;
   private int videoDuration;
+  private String wcm;
   
   public n(int paramInt1, String paramString, float paramFloat, int paramInt2, int paramInt3, int paramInt4, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
     AppMethodBeat.i(89539);
     this.bufId = paramInt1;
-    this.vQi = paramString;
-    this.cvL = paramFloat;
+    this.wcm = paramString;
+    this.cwp = paramFloat;
     this.bitrate = paramInt2;
     this.videoDuration = paramInt3;
     this.audioSampleRate = paramInt4;
-    this.hvp = paramBoolean1;
-    this.hms = paramBoolean2;
-    this.hmt = paramBoolean3;
-    ad.i("MicroMsg.MMSightMP4Muxer", "create MMSightMP4Muxer, bufId: %s, recordPath: %s, fps: %s, bitrate: %s, videoDuration: %s, audioSampleRate%s, mute: %s, useSoftEncode:%s, enableHevc:%s", new Object[] { Integer.valueOf(paramInt1), paramString, Float.valueOf(paramFloat), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4), Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2), Boolean.valueOf(paramBoolean3) });
+    this.hyd = paramBoolean1;
+    this.hpg = paramBoolean2;
+    this.hph = paramBoolean3;
+    ae.i("MicroMsg.MMSightMP4Muxer", "create MMSightMP4Muxer, bufId: %s, recordPath: %s, fps: %s, bitrate: %s, videoDuration: %s, audioSampleRate%s, mute: %s, useSoftEncode:%s, enableHevc:%s", new Object[] { Integer.valueOf(paramInt1), paramString, Float.valueOf(paramFloat), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4), Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2), Boolean.valueOf(paramBoolean3) });
     AppMethodBeat.o(89539);
   }
   
   /* Error */
-  public final boolean dnk()
+  public final boolean dqi()
   {
     // Byte code:
     //   0: ldc 83
     //   2: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: invokestatic 89	com/tencent/mm/sdk/platformtools/bt:HI	()J
+    //   5: invokestatic 89	com/tencent/mm/sdk/platformtools/bu:HQ	()J
     //   8: lstore_2
-    //   9: new 91	com/tencent/mm/vfs/e
+    //   9: new 91	com/tencent/mm/vfs/k
     //   12: dup
     //   13: aload_0
-    //   14: getfield 35	com/tencent/mm/plugin/mmsight/model/a/n:vQi	Ljava/lang/String;
-    //   17: invokespecial 94	com/tencent/mm/vfs/e:<init>	(Ljava/lang/String;)V
-    //   20: invokevirtual 98	com/tencent/mm/vfs/e:fOJ	()Lcom/tencent/mm/vfs/e;
-    //   23: invokevirtual 101	com/tencent/mm/vfs/e:mkdirs	()Z
+    //   14: getfield 35	com/tencent/mm/plugin/mmsight/model/a/n:wcm	Ljava/lang/String;
+    //   17: invokespecial 94	com/tencent/mm/vfs/k:<init>	(Ljava/lang/String;)V
+    //   20: invokevirtual 98	com/tencent/mm/vfs/k:fTg	()Lcom/tencent/mm/vfs/k;
+    //   23: invokevirtual 101	com/tencent/mm/vfs/k:mkdirs	()Z
     //   26: pop
     //   27: aload_0
-    //   28: getfield 35	com/tencent/mm/plugin/mmsight/model/a/n:vQi	Ljava/lang/String;
-    //   31: invokestatic 107	com/tencent/mm/plugin/sight/base/e:axv	(Ljava/lang/String;)Ljava/lang/String;
+    //   28: getfield 35	com/tencent/mm/plugin/mmsight/model/a/n:wcm	Ljava/lang/String;
+    //   31: invokestatic 107	com/tencent/mm/plugin/sight/base/e:ayL	(Ljava/lang/String;)Ljava/lang/String;
     //   34: astore 5
     //   36: aload 5
-    //   38: invokestatic 113	com/tencent/mm/vfs/i:fv	(Ljava/lang/String;)Z
+    //   38: invokestatic 113	com/tencent/mm/vfs/o:fB	(Ljava/lang/String;)Z
     //   41: istore 4
     //   43: iload 4
     //   45: ifne +6 -> 51
@@ -73,7 +73,7 @@ public final class n
     //   70: iconst_1
     //   71: aload 5
     //   73: aastore
-    //   74: invokestatic 74	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   74: invokestatic 74	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   77: aload_0
     //   78: getfield 33	com/tencent/mm/plugin/mmsight/model/a/n:bufId	I
     //   81: aload 5
@@ -84,16 +84,16 @@ public final class n
     //   91: iconst_1
     //   92: lconst_0
     //   93: aload_0
-    //   94: getfield 35	com/tencent/mm/plugin/mmsight/model/a/n:vQi	Ljava/lang/String;
+    //   94: getfield 35	com/tencent/mm/plugin/mmsight/model/a/n:wcm	Ljava/lang/String;
     //   97: aload_0
-    //   98: getfield 37	com/tencent/mm/plugin/mmsight/model/a/n:cvL	F
+    //   98: getfield 37	com/tencent/mm/plugin/mmsight/model/a/n:cwp	F
     //   101: sipush 1000
     //   104: aload_0
     //   105: getfield 41	com/tencent/mm/plugin/mmsight/model/a/n:videoDuration	I
     //   108: invokestatic 121	java/lang/Math:max	(II)I
     //   111: aload_0
     //   112: getfield 39	com/tencent/mm/plugin/mmsight/model/a/n:bitrate	I
-    //   115: getstatic 126	com/tencent/mm/plugin/sight/base/c:yQZ	I
+    //   115: getstatic 126	com/tencent/mm/plugin/sight/base/c:zhj	I
     //   118: bipush 8
     //   120: iconst_2
     //   121: ldc 127
@@ -101,16 +101,16 @@ public final class n
     //   124: iconst_0
     //   125: iconst_0
     //   126: aload_0
-    //   127: getfield 45	com/tencent/mm/plugin/mmsight/model/a/n:hvp	Z
+    //   127: getfield 45	com/tencent/mm/plugin/mmsight/model/a/n:hyd	Z
     //   130: aload_0
-    //   131: getfield 47	com/tencent/mm/plugin/mmsight/model/a/n:hms	Z
+    //   131: getfield 47	com/tencent/mm/plugin/mmsight/model/a/n:hpg	Z
     //   134: aload_0
-    //   135: getfield 49	com/tencent/mm/plugin/mmsight/model/a/n:hmt	Z
+    //   135: getfield 49	com/tencent/mm/plugin/mmsight/model/a/n:hph	Z
     //   138: aload_0
-    //   139: getfield 47	com/tencent/mm/plugin/mmsight/model/a/n:hms	Z
+    //   139: getfield 47	com/tencent/mm/plugin/mmsight/model/a/n:hpg	Z
     //   142: aload_0
-    //   143: getfield 49	com/tencent/mm/plugin/mmsight/model/a/n:hmt	Z
-    //   146: invokestatic 133	com/tencent/mm/plugin/sight/base/b:ag	(ZZ)Z
+    //   143: getfield 49	com/tencent/mm/plugin/mmsight/model/a/n:hph	Z
+    //   146: invokestatic 133	com/tencent/mm/plugin/sight/base/b:af	(ZZ)Z
     //   149: invokestatic 139	com/tencent/mm/plugin/sight/base/SightVideoJNI:muxingLock	(ILjava/lang/String;IIIIJLjava/lang/String;FIIIIIF[BIZZZZZ)I
     //   152: istore_1
     //   153: ldc 51
@@ -125,15 +125,15 @@ public final class n
     //   168: dup
     //   169: iconst_1
     //   170: lload_2
-    //   171: invokestatic 145	com/tencent/mm/sdk/platformtools/bt:aO	(J)J
+    //   171: invokestatic 145	com/tencent/mm/sdk/platformtools/bu:aO	(J)J
     //   174: invokestatic 150	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   177: aastore
-    //   178: invokestatic 74	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   178: invokestatic 74	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   181: aload 5
-    //   183: invokestatic 153	com/tencent/mm/sdk/platformtools/bt:isNullOrNil	(Ljava/lang/String;)Z
+    //   183: invokestatic 153	com/tencent/mm/sdk/platformtools/bu:isNullOrNil	(Ljava/lang/String;)Z
     //   186: ifne +9 -> 195
     //   189: aload 5
-    //   191: invokestatic 156	com/tencent/mm/vfs/i:deleteFile	(Ljava/lang/String;)Z
+    //   191: invokestatic 156	com/tencent/mm/vfs/o:deleteFile	(Ljava/lang/String;)Z
     //   194: pop
     //   195: iload_1
     //   196: iflt +18 -> 214

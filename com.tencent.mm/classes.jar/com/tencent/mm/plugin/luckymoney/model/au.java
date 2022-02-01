@@ -3,15 +3,15 @@ package com.tencent.mm.plugin.luckymoney.model;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class au
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
   public String content;
-  public int fYO;
+  public int gaV;
   public String iconUrl;
   public String name;
   public String type;
-  public int vqM;
-  public int vqN;
+  public int vCR;
+  public int vCS;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -19,7 +19,7 @@ public final class au
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aS(1, this.fYO);
+      paramVarArgs.aS(1, this.gaV);
       if (this.name != null) {
         paramVarArgs.d(2, this.name);
       }
@@ -29,17 +29,17 @@ public final class au
       if (this.content != null) {
         paramVarArgs.d(4, this.content);
       }
-      paramVarArgs.aS(5, this.vqM);
+      paramVarArgs.aS(5, this.vCR);
       if (this.iconUrl != null) {
         paramVarArgs.d(6, this.iconUrl);
       }
-      paramVarArgs.aS(7, this.vqN);
+      paramVarArgs.aS(7, this.vCS);
       AppMethodBeat.o(91259);
       return 0;
     }
     if (paramInt == 1)
     {
-      int i = f.a.a.b.b.a.bz(1, this.fYO) + 0;
+      int i = f.a.a.b.b.a.bz(1, this.gaV) + 0;
       paramInt = i;
       if (this.name != null) {
         paramInt = i + f.a.a.b.b.a.e(2, this.name);
@@ -52,21 +52,21 @@ public final class au
       if (this.content != null) {
         paramInt = i + f.a.a.b.b.a.e(4, this.content);
       }
-      i = paramInt + f.a.a.b.b.a.bz(5, this.vqM);
+      i = paramInt + f.a.a.b.b.a.bz(5, this.vCR);
       paramInt = i;
       if (this.iconUrl != null) {
         paramInt = i + f.a.a.b.b.a.e(6, this.iconUrl);
       }
-      i = f.a.a.b.b.a.bz(7, this.vqN);
+      i = f.a.a.b.b.a.bz(7, this.vCS);
       AppMethodBeat.o(91259);
       return paramInt + i;
     }
     if (paramInt == 2)
     {
       paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gxE();
+          paramVarArgs.gCg();
         }
       }
       AppMethodBeat.o(91259);
@@ -82,31 +82,31 @@ public final class au
         AppMethodBeat.o(91259);
         return -1;
       case 1: 
-        localau.fYO = locala.NPN.zc();
+        localau.gaV = locala.OmT.zc();
         AppMethodBeat.o(91259);
         return 0;
       case 2: 
-        localau.name = locala.NPN.readString();
+        localau.name = locala.OmT.readString();
         AppMethodBeat.o(91259);
         return 0;
       case 3: 
-        localau.type = locala.NPN.readString();
+        localau.type = locala.OmT.readString();
         AppMethodBeat.o(91259);
         return 0;
       case 4: 
-        localau.content = locala.NPN.readString();
+        localau.content = locala.OmT.readString();
         AppMethodBeat.o(91259);
         return 0;
       case 5: 
-        localau.vqM = locala.NPN.zc();
+        localau.vCR = locala.OmT.zc();
         AppMethodBeat.o(91259);
         return 0;
       case 6: 
-        localau.iconUrl = locala.NPN.readString();
+        localau.iconUrl = locala.OmT.readString();
         AppMethodBeat.o(91259);
         return 0;
       }
-      localau.vqN = locala.NPN.zc();
+      localau.vCS = locala.OmT.zc();
       AppMethodBeat.o(91259);
       return 0;
     }
@@ -116,7 +116,7 @@ public final class au
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.model.au
  * JD-Core Version:    0.7.0.1
  */

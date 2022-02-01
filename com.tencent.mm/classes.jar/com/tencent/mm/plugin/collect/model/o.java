@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.collect.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.uw;
-import com.tencent.mm.protocal.protobuf.ux;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.uy;
+import com.tencent.mm.protocal.protobuf.uz;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class o
   extends n
@@ -19,30 +19,30 @@ public final class o
 {
   private final String TAG;
   private f callback;
-  public String dnf;
-  public ux paN;
-  private com.tencent.mm.al.b rr;
+  public String doh;
+  public uz phr;
+  private com.tencent.mm.ak.b rr;
   
-  public o(int paramInt, com.tencent.mm.bx.b paramb, String paramString)
+  public o(int paramInt, com.tencent.mm.bw.b paramb, String paramString)
   {
     AppMethodBeat.i(63835);
     this.TAG = "MicroMsg.NetSceneMDRcvVoice";
     Object localObject = new b.a();
-    ((b.a)localObject).hNM = new uw();
-    ((b.a)localObject).hNN = new ux();
+    ((b.a)localObject).hQF = new uy();
+    ((b.a)localObject).hQG = new uz();
     ((b.a)localObject).funcId = 1317;
     ((b.a)localObject).uri = "/cgi-bin/mmpay-bin/getmdrcvvoice";
-    ((b.a)localObject).hNO = 0;
+    ((b.a)localObject).hQH = 0;
     ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).aDC();
-    localObject = (uw)this.rr.hNK.hNQ;
-    ((uw)localObject).vls = paramInt;
-    ((uw)localObject).FNY = 0;
-    ((uw)localObject).paY = paramString;
-    ((uw)localObject).FTY = null;
-    ((uw)localObject).FTZ = paramb;
-    this.dnf = paramString;
-    ad.i("MicroMsg.NetSceneMDRcvVoice", "amount: %d, outtradeno: %s", new Object[] { Integer.valueOf(paramInt), paramString });
+    this.rr = ((b.a)localObject).aDS();
+    localObject = (uy)this.rr.hQD.hQJ;
+    ((uy)localObject).vxx = paramInt;
+    ((uy)localObject).Ggx = 0;
+    ((uy)localObject).phC = paramString;
+    ((uy)localObject).Gmx = null;
+    ((uy)localObject).Gmy = paramb;
+    this.doh = paramString;
+    ae.i("MicroMsg.NetSceneMDRcvVoice", "amount: %d, outtradeno: %s", new Object[] { Integer.valueOf(paramInt), paramString });
     AppMethodBeat.o(63835);
   }
   
@@ -63,9 +63,9 @@ public final class o
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(63837);
-    ad.i("MicroMsg.NetSceneMDRcvVoice", "errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    this.paN = ((ux)((com.tencent.mm.al.b)paramq).hNL.hNQ);
-    ad.i("MicroMsg.NetSceneMDRcvVoice", "ret_code: %d, ret_msg: %s，voice_type: %d", new Object[] { Integer.valueOf(this.paN.dlw), this.paN.paA, Integer.valueOf(this.paN.FNY) });
+    ae.i("MicroMsg.NetSceneMDRcvVoice", "errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    this.phr = ((uz)((com.tencent.mm.ak.b)paramq).hQE.hQJ);
+    ae.i("MicroMsg.NetSceneMDRcvVoice", "ret_code: %d, ret_msg: %s，voice_type: %d", new Object[] { Integer.valueOf(this.phr.dmy), this.phr.phe, Integer.valueOf(this.phr.Ggx) });
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }

@@ -22,17 +22,17 @@ public final class b
     paramContext = new d(paramContext);
     ResendMsgInfo localResendMsgInfo = new ResendMsgInfo();
     localResendMsgInfo.title = paramString1;
-    localResendMsgInfo.EHI = paramString2;
+    localResendMsgInfo.Fae = paramString2;
     localResendMsgInfo.description = paramString3;
-    localResendMsgInfo.kzK = paramString4;
-    localResendMsgInfo.kzL = paramString5;
+    localResendMsgInfo.kCZ = paramString4;
+    localResendMsgInfo.kDa = paramString5;
     paramContext.a(localResendMsgInfo, paramc);
     AppMethodBeat.o(67336);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.remittance.a.b
  * JD-Core Version:    0.7.0.1
  */

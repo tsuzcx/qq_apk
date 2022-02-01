@@ -4,7 +4,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import f.a.a.b;
 
 public class TableInfo
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
   public long count_;
   public String name_;
@@ -24,7 +24,7 @@ public class TableInfo
       if (this.name_ != null) {
         paramVarArgs.d(1, this.name_);
       }
-      paramVarArgs.aY(2, this.count_);
+      paramVarArgs.aZ(2, this.count_);
       AppMethodBeat.o(151540);
       return 0;
     }
@@ -42,9 +42,9 @@ public class TableInfo
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
         if (this.name_ == null)
@@ -66,11 +66,11 @@ public class TableInfo
           AppMethodBeat.o(151540);
           return -1;
         case 1: 
-          localTableInfo.name_ = locala.NPN.readString();
+          localTableInfo.name_ = locala.OmT.readString();
           AppMethodBeat.o(151540);
           return 0;
         }
-        localTableInfo.count_ = locala.NPN.zd();
+        localTableInfo.count_ = locala.OmT.zd();
         AppMethodBeat.o(151540);
         return 0;
       }

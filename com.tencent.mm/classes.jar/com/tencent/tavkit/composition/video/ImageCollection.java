@@ -13,24 +13,24 @@ public class ImageCollection
   
   public ImageCollection()
   {
-    AppMethodBeat.i(219903);
+    AppMethodBeat.i(200934);
     this.videoChannelImages = new ArrayList();
     this.overlayImages = new ArrayList();
-    AppMethodBeat.o(219903);
+    AppMethodBeat.o(200934);
   }
   
   public void addChannelImage(CIImage paramCIImage, TAVVideoCompositionTrack paramTAVVideoCompositionTrack)
   {
-    AppMethodBeat.i(219904);
+    AppMethodBeat.i(200935);
     this.videoChannelImages.add(new TrackImagePair(paramCIImage, paramTAVVideoCompositionTrack));
-    AppMethodBeat.o(219904);
+    AppMethodBeat.o(200935);
   }
   
   public void addOverlayImage(CIImage paramCIImage, TAVVideoCompositionTrack paramTAVVideoCompositionTrack)
   {
-    AppMethodBeat.i(219905);
+    AppMethodBeat.i(200936);
     this.overlayImages.add(new TrackImagePair(paramCIImage, paramTAVVideoCompositionTrack));
-    AppMethodBeat.o(219905);
+    AppMethodBeat.o(200936);
   }
   
   public List<TrackImagePair> getOverlayImages()
@@ -45,9 +45,9 @@ public class ImageCollection
   
   public String toString()
   {
-    AppMethodBeat.i(219906);
+    AppMethodBeat.i(200937);
     String str = "ImageCollection{videoChannelImages=" + this.videoChannelImages + ", overlayImages=" + this.overlayImages + '}';
-    AppMethodBeat.o(219906);
+    AppMethodBeat.o(200937);
     return str;
   }
   

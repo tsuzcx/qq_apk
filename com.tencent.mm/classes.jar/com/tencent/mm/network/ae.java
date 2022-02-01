@@ -3,17 +3,17 @@ package com.tencent.mm.network;
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.network.a.b;
-import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.sdk.platformtools.az;
 
 public final class ae
 {
-  public b iGu = null;
-  public boolean iGv = false;
+  public b iJn = null;
+  public boolean iJo = false;
   
-  public static boolean cO(Context paramContext)
+  public static boolean cQ(Context paramContext)
   {
     AppMethodBeat.i(132931);
-    if ((paramContext != null) && (!ay.isWap(paramContext)))
+    if ((paramContext != null) && (!az.isWap(paramContext)))
     {
       AppMethodBeat.o(132931);
       return true;
@@ -22,10 +22,10 @@ public final class ae
     return false;
   }
   
-  public static boolean cP(Context paramContext)
+  public static boolean cR(Context paramContext)
   {
     AppMethodBeat.i(132932);
-    if ((paramContext != null) && (ay.isWifi(paramContext)))
+    if ((paramContext != null) && (az.isWifi(paramContext)))
     {
       AppMethodBeat.o(132932);
       return true;

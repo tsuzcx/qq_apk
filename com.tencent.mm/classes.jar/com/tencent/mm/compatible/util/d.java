@@ -6,17 +6,17 @@ public final class d
 {
   public static boolean lA(int paramInt)
   {
-    return Build.VERSION.SDK_INT > paramInt;
-  }
-  
-  public static boolean ly(int paramInt)
-  {
     return Build.VERSION.SDK_INT >= paramInt;
   }
   
-  public static boolean lz(int paramInt)
+  public static boolean lB(int paramInt)
   {
     return Build.VERSION.SDK_INT < paramInt;
+  }
+  
+  public static boolean lC(int paramInt)
+  {
+    return Build.VERSION.SDK_INT > paramInt;
   }
 }
 

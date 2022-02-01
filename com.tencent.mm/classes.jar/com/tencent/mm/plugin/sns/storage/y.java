@@ -2,17 +2,17 @@ package com.tencent.mm.plugin.sns.storage;
 
 public final class y
 {
-  public String zNt;
-  public int zNu;
-  public int zNv;
-  public String zwN;
+  public String AeA;
+  public int AeB;
+  public int AeC;
+  public String zOm;
   
   public y(String paramString1, String paramString2, int paramInt1, int paramInt2)
   {
-    this.zwN = paramString1;
-    this.zNt = paramString2;
-    this.zNu = paramInt1;
-    this.zNv = paramInt2;
+    this.zOm = paramString1;
+    this.AeA = paramString2;
+    this.AeB = paramInt1;
+    this.AeC = paramInt2;
   }
 }
 

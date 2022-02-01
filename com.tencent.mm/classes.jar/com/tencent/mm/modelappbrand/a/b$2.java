@@ -12,11 +12,11 @@ final class b$2
     super(paramImageView, paramb2, (byte)0);
   }
   
-  public final void aEd()
+  public final void aEt()
   {
     AppMethodBeat.i(131337);
-    if ((getImageView() != null) && (this.hKZ != null)) {
-      getImageView().setImageDrawable(this.hKZ);
+    if ((getImageView() != null) && (this.hNS != null)) {
+      getImageView().setImageDrawable(this.hNS);
     }
     AppMethodBeat.o(131337);
   }

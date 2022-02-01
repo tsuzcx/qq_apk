@@ -2,7 +2,7 @@ package com.tencent.luggage.game.c;
 
 public abstract interface g$a
 {
-  public abstract void CC();
+  public abstract void CF();
 }
 
 

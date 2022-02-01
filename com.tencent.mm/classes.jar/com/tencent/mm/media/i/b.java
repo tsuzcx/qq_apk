@@ -3,13 +3,13 @@ package com.tencent.mm.media.i;
 import d.g.a.a;
 import d.l;
 
-@l(gfx={1, 1, 16})
+@l(gjZ={1, 1, 16})
 final class b
   implements Runnable
 {
   b(a parama)
   {
-    this.civ = parama;
+    this.cix = parama;
   }
 }
 

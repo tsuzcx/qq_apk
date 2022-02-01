@@ -1,8 +1,12 @@
 package com.tencent.wax.b;
 
+import io.flutter.plugin.a.k.d;
+
 public abstract interface c
 {
-  public abstract void onBackPressed();
+  public abstract void a(k.d paramd);
+  
+  public abstract void gdw();
   
   public abstract void onCreateView();
   
@@ -14,7 +18,7 @@ public abstract interface c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.wax.b.c
  * JD-Core Version:    0.7.0.1
  */

@@ -6,17 +6,17 @@ import d.g.b.q;
 import d.l;
 import d.z;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
 final class RefreshLoadMoreLayout$e
   extends q
   implements a<z>
 {
-  public static final e Lrr;
+  public static final e LOc;
   
   static
   {
     AppMethodBeat.i(164577);
-    Lrr = new e();
+    LOc = new e();
     AppMethodBeat.o(164577);
   }
   

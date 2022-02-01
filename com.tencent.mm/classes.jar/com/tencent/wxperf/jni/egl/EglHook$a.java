@@ -1,5 +1,6 @@
 package com.tencent.wxperf.jni.egl;
 
+@Deprecated
 public abstract interface EglHook$a
 {
   public abstract void e(String paramString1, String paramString2);

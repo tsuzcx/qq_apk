@@ -14,12 +14,12 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class RadioCheckPreference
   extends Preference
 {
-  private TextView COs;
-  private int COt;
-  private String COu;
-  private int COv;
-  private CheckBox JrE;
-  private int JrF;
+  private int DcV;
+  private String DcW;
+  private int DcX;
+  private TextView Dga;
+  private CheckBox JMt;
+  private int JMu;
   private boolean oB;
   
   public RadioCheckPreference(Context paramContext, AttributeSet paramAttributeSet)
@@ -32,10 +32,10 @@ public class RadioCheckPreference
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(142666);
     this.oB = false;
-    this.COt = -1;
-    this.COu = "";
-    this.COv = 8;
-    this.JrF = -1;
+    this.DcV = -1;
+    this.DcW = "";
+    this.DcX = 8;
+    this.JMu = -1;
     setLayoutResource(2131494804);
     AppMethodBeat.o(142666);
   }
@@ -44,30 +44,30 @@ public class RadioCheckPreference
   {
     AppMethodBeat.i(142668);
     super.onBindView(paramView);
-    acw(8);
-    this.JrE = ((CheckBox)paramView.findViewById(2131303709));
-    this.JrE.setChecked(this.oB);
-    this.COs = ((TextView)paramView.findViewById(2131305883));
-    paramView = this.COu;
-    int i = this.COt;
-    this.COt = i;
-    this.COu = paramView;
-    if (this.COs != null)
+    ade(8);
+    this.JMt = ((CheckBox)paramView.findViewById(2131303709));
+    this.JMt.setChecked(this.oB);
+    this.Dga = ((TextView)paramView.findViewById(2131305883));
+    paramView = this.DcW;
+    int i = this.DcV;
+    this.DcV = i;
+    this.DcW = paramView;
+    if (this.Dga != null)
     {
       if (i > 0) {
-        this.COs.setBackgroundResource(this.COt);
+        this.Dga.setBackgroundResource(this.DcV);
       }
-      if (!TextUtils.isEmpty(this.COu)) {
-        this.COs.setText(this.COu);
+      if (!TextUtils.isEmpty(this.DcW)) {
+        this.Dga.setText(this.DcW);
       }
     }
-    this.COv = this.COv;
-    if (this.COs != null) {
-      this.COs.setVisibility(this.COv);
+    this.DcX = this.DcX;
+    if (this.Dga != null) {
+      this.Dga.setVisibility(this.DcX);
     }
-    paramView = (LinearLayout.LayoutParams)this.JrE.getLayoutParams();
-    if (-1 != this.JrF) {
-      paramView.setMargins(paramView.leftMargin, paramView.topMargin, this.JrF, paramView.bottomMargin);
+    paramView = (LinearLayout.LayoutParams)this.JMt.getLayoutParams();
+    if (-1 != this.JMu) {
+      paramView.setMargins(paramView.leftMargin, paramView.topMargin, this.JMu, paramView.bottomMargin);
     }
     AppMethodBeat.o(142668);
   }
@@ -84,19 +84,19 @@ public class RadioCheckPreference
     return paramViewGroup;
   }
   
-  public final void xE(boolean paramBoolean)
+  public final void uo(boolean paramBoolean)
   {
     AppMethodBeat.i(142669);
     this.oB = paramBoolean;
-    if (this.JrE != null) {
-      this.JrE.setChecked(paramBoolean);
+    if (this.JMt != null) {
+      this.JMt.setChecked(paramBoolean);
     }
     AppMethodBeat.o(142669);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.base.preference.RadioCheckPreference
  * JD-Core Version:    0.7.0.1
  */

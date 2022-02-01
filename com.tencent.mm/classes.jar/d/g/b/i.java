@@ -8,10 +8,10 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Iterator;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"EMPTY", "", "", "[Ljava/lang/Object;", "MAX_SIZE", "", "collectionToArray", "collection", "", "toArray", "(Ljava/util/Collection;)[Ljava/lang/Object;", "a", "(Ljava/util/Collection;[Ljava/lang/Object;)[Ljava/lang/Object;", "toArrayImpl", "empty", "Lkotlin/Function0;", "alloc", "Lkotlin/Function1;", "trim", "Lkotlin/Function2;", "(Ljava/util/Collection;Lkotlin/jvm/functions/Function0;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function2;)[Ljava/lang/Object;", "kotlin-stdlib"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"EMPTY", "", "", "[Ljava/lang/Object;", "MAX_SIZE", "", "collectionToArray", "collection", "", "toArray", "(Ljava/util/Collection;)[Ljava/lang/Object;", "a", "(Ljava/util/Collection;[Ljava/lang/Object;)[Ljava/lang/Object;", "toArrayImpl", "empty", "Lkotlin/Function0;", "alloc", "Lkotlin/Function1;", "trim", "Lkotlin/Function2;", "(Ljava/util/Collection;Lkotlin/jvm/functions/Function0;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function2;)[Ljava/lang/Object;", "kotlin-stdlib"})
 public final class i
 {
-  private static final Object[] gcV = new Object[0];
+  private static final Object[] gfd = new Object[0];
   
   public static final Object[] a(Collection<?> paramCollection, Object[] paramArrayOfObject)
   {
@@ -110,14 +110,14 @@ public final class i
     int i = paramCollection.size();
     if (i == 0)
     {
-      paramCollection = gcV;
+      paramCollection = gfd;
       AppMethodBeat.o(129341);
       return paramCollection;
     }
     Iterator localIterator = paramCollection.iterator();
     if (!localIterator.hasNext())
     {
-      paramCollection = gcV;
+      paramCollection = gfd;
       AppMethodBeat.o(129341);
       return paramCollection;
     }

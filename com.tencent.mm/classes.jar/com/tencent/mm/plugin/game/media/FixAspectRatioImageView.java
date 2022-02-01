@@ -14,24 +14,24 @@ public class FixAspectRatioImageView
   extends AppCompatImageView
 {
   private int height;
-  private float rOY;
+  private float rXz;
   private int radius;
-  private int tWt;
-  private int tWu;
-  private int tWv;
-  private int tWw;
+  private int uhr;
+  private int uhs;
+  private int uht;
+  private int uhu;
   private int width;
   
   public FixAspectRatioImageView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(40891);
-    this.rOY = 0.0F;
+    this.rXz = 0.0F;
     this.radius = 0;
-    this.tWt = 0;
-    this.tWu = 0;
-    this.tWv = 0;
-    this.tWw = 0;
+    this.uhr = 0;
+    this.uhs = 0;
+    this.uht = 0;
+    this.uhu = 0;
     c(paramContext, paramAttributeSet, 0);
     AppMethodBeat.o(40891);
   }
@@ -40,12 +40,12 @@ public class FixAspectRatioImageView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(40892);
-    this.rOY = 0.0F;
+    this.rXz = 0.0F;
     this.radius = 0;
-    this.tWt = 0;
-    this.tWu = 0;
-    this.tWv = 0;
-    this.tWw = 0;
+    this.uhr = 0;
+    this.uhs = 0;
+    this.uht = 0;
+    this.uhu = 0;
     c(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.o(40892);
   }
@@ -54,91 +54,91 @@ public class FixAspectRatioImageView
   {
     AppMethodBeat.i(40893);
     paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, g.a.FixAspectRatioImageView, paramInt, 0);
-    this.rOY = paramContext.getFloat(0, 0.0F);
+    this.rXz = paramContext.getFloat(0, 0.0F);
     this.radius = paramContext.getDimensionPixelOffset(3, 0);
-    this.tWt = paramContext.getDimensionPixelOffset(2, 0);
-    this.tWu = paramContext.getDimensionPixelOffset(5, 0);
-    this.tWv = paramContext.getDimensionPixelOffset(1, 0);
-    this.tWw = paramContext.getDimensionPixelOffset(4, 0);
-    if (this.tWt == 0)
+    this.uhr = paramContext.getDimensionPixelOffset(2, 0);
+    this.uhs = paramContext.getDimensionPixelOffset(5, 0);
+    this.uht = paramContext.getDimensionPixelOffset(1, 0);
+    this.uhu = paramContext.getDimensionPixelOffset(4, 0);
+    if (this.uhr == 0)
     {
       paramInt = this.radius;
-      this.tWt = paramInt;
-      if (this.tWu != 0) {
+      this.uhr = paramInt;
+      if (this.uhs != 0) {
         break label162;
       }
       paramInt = this.radius;
       label105:
-      this.tWu = paramInt;
-      if (this.tWv != 0) {
+      this.uhs = paramInt;
+      if (this.uht != 0) {
         break label170;
       }
       paramInt = this.radius;
       label122:
-      this.tWv = paramInt;
-      if (this.tWw != 0) {
+      this.uht = paramInt;
+      if (this.uhu != 0) {
         break label178;
       }
     }
     label162:
     label170:
     label178:
-    for (paramInt = this.radius;; paramInt = this.tWw)
+    for (paramInt = this.radius;; paramInt = this.uhu)
     {
-      this.tWw = paramInt;
+      this.uhu = paramInt;
       paramContext.recycle();
       AppMethodBeat.o(40893);
       return;
-      paramInt = this.tWt;
+      paramInt = this.uhr;
       break;
-      paramInt = this.tWu;
+      paramInt = this.uhs;
       break label105;
-      paramInt = this.tWv;
+      paramInt = this.uht;
       break label122;
     }
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(206804);
-    int i = Math.max(this.tWt, this.tWv);
-    int j = Math.max(this.tWu, this.tWw);
-    int k = Math.max(this.tWt, this.tWu);
-    int m = Math.max(this.tWv, this.tWw);
+    AppMethodBeat.i(195612);
+    int i = Math.max(this.uhr, this.uht);
+    int j = Math.max(this.uhs, this.uhu);
+    int k = Math.max(this.uhr, this.uhs);
+    int m = Math.max(this.uht, this.uhu);
     if ((this.width >= i + j) && (this.height >= k + m))
     {
       Path localPath = new Path();
-      localPath.moveTo(this.tWt, 0.0F);
-      localPath.lineTo(this.width - this.tWu, 0.0F);
-      localPath.quadTo(this.width, 0.0F, this.width, this.tWu);
-      localPath.lineTo(this.width, this.height - this.tWw);
-      localPath.quadTo(this.width, this.height, this.width - this.tWw, this.height);
-      localPath.lineTo(this.tWv, this.height);
-      localPath.quadTo(0.0F, this.height, 0.0F, this.height - this.tWv);
-      localPath.lineTo(0.0F, this.tWt);
-      localPath.quadTo(0.0F, 0.0F, this.tWt, 0.0F);
+      localPath.moveTo(this.uhr, 0.0F);
+      localPath.lineTo(this.width - this.uhs, 0.0F);
+      localPath.quadTo(this.width, 0.0F, this.width, this.uhs);
+      localPath.lineTo(this.width, this.height - this.uhu);
+      localPath.quadTo(this.width, this.height, this.width - this.uhu, this.height);
+      localPath.lineTo(this.uht, this.height);
+      localPath.quadTo(0.0F, this.height, 0.0F, this.height - this.uht);
+      localPath.lineTo(0.0F, this.uhr);
+      localPath.quadTo(0.0F, 0.0F, this.uhr, 0.0F);
       paramCanvas.clipPath(localPath);
     }
     super.onDraw(paramCanvas);
-    AppMethodBeat.o(206804);
+    AppMethodBeat.o(195612);
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(206803);
+    AppMethodBeat.i(195611);
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     this.width = getWidth();
     this.height = getHeight();
-    AppMethodBeat.o(206803);
+    AppMethodBeat.o(195611);
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(40894);
-    if (this.rOY != 0.0F)
+    if (this.rXz != 0.0F)
     {
       paramInt1 = View.MeasureSpec.getSize(paramInt1);
-      paramInt2 = (int)(this.rOY * paramInt1);
+      paramInt2 = (int)(this.rXz * paramInt1);
       super.onMeasure(View.MeasureSpec.makeMeasureSpec(paramInt1, 1073741824), View.MeasureSpec.makeMeasureSpec(paramInt2, 1073741824));
       AppMethodBeat.o(40894);
       return;

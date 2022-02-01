@@ -1,59 +1,54 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import f.a.a.b;
 
 public final class eja
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public int score;
-  public String title;
+  public String HeF;
+  public int Hew;
+  public String Imk;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(32573);
+    AppMethodBeat.i(123706);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.title == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: title");
-        AppMethodBeat.o(32573);
-        throw paramVarArgs;
+      if (this.HeF != null) {
+        paramVarArgs.d(1, this.HeF);
       }
-      if (this.title != null) {
-        paramVarArgs.d(1, this.title);
+      paramVarArgs.aS(2, this.Hew);
+      if (this.Imk != null) {
+        paramVarArgs.d(3, this.Imk);
       }
-      paramVarArgs.aS(2, this.score);
-      AppMethodBeat.o(32573);
+      AppMethodBeat.o(123706);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.title == null) {
+      if (this.HeF == null) {
         break label318;
       }
     }
     label318:
-    for (paramInt = f.a.a.b.b.a.e(1, this.title) + 0;; paramInt = 0)
+    for (paramInt = f.a.a.b.b.a.e(1, this.HeF) + 0;; paramInt = 0)
     {
-      int i = f.a.a.b.b.a.bz(2, this.score);
-      AppMethodBeat.o(32573);
-      return paramInt + i;
+      int i = paramInt + f.a.a.b.b.a.bz(2, this.Hew);
+      paramInt = i;
+      if (this.Imk != null) {
+        paramInt = i + f.a.a.b.b.a.e(3, this.Imk);
+      }
+      AppMethodBeat.o(123706);
+      return paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
-        if (this.title == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: title");
-          AppMethodBeat.o(32573);
-          throw paramVarArgs;
-        }
-        AppMethodBeat.o(32573);
+        AppMethodBeat.o(123706);
         return 0;
       }
       if (paramInt == 3)
@@ -63,18 +58,22 @@ public final class eja
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(32573);
+          AppMethodBeat.o(123706);
           return -1;
         case 1: 
-          localeja.title = locala.NPN.readString();
-          AppMethodBeat.o(32573);
+          localeja.HeF = locala.OmT.readString();
+          AppMethodBeat.o(123706);
+          return 0;
+        case 2: 
+          localeja.Hew = locala.OmT.zc();
+          AppMethodBeat.o(123706);
           return 0;
         }
-        localeja.score = locala.NPN.zc();
-        AppMethodBeat.o(32573);
+        localeja.Imk = locala.OmT.readString();
+        AppMethodBeat.o(123706);
         return 0;
       }
-      AppMethodBeat.o(32573);
+      AppMethodBeat.o(123706);
       return -1;
     }
   }

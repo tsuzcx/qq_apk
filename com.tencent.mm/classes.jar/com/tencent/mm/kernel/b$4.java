@@ -2,7 +2,7 @@ package com.tencent.mm.kernel;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.network.h.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class b$4
   extends h.a
@@ -12,7 +12,7 @@ public final class b$4
   public final void networkAnalysisCallBack(int paramInt1, int paramInt2, boolean paramBoolean, String paramString)
   {
     AppMethodBeat.i(132049);
-    ad.i("MMKernel.CoreNetwork", "callback, kv:%s", new Object[] { paramString });
+    ae.i("MMKernel.CoreNetwork", "callback, kv:%s", new Object[] { paramString });
     b.b(paramInt1, paramInt2, paramBoolean, paramString);
     AppMethodBeat.o(132049);
   }

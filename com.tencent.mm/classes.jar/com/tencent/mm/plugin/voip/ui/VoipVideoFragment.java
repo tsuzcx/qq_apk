@@ -25,10 +25,10 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
+import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.deviceinfo.ae;
 import com.tencent.mm.media.g.d;
-import com.tencent.mm.model.v;
+import com.tencent.mm.model.w;
 import com.tencent.mm.platformtools.ac;
 import com.tencent.mm.plugin.voip.b.n;
 import com.tencent.mm.plugin.voip.model.s;
@@ -45,16 +45,14 @@ import com.tencent.mm.plugin.voip.widget.VoIPVideoView;
 import com.tencent.mm.pluginsdk.ui.a.b;
 import com.tencent.mm.pluginsdk.ui.span.k;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.av;
-import com.tencent.mm.sdk.platformtools.av.a;
-import com.tencent.mm.sdk.platformtools.ay;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.am;
-import com.tencent.mm.storage.bp;
-import com.tencent.mm.ui.base.h;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.aw;
+import com.tencent.mm.sdk.platformtools.aw.a;
+import com.tencent.mm.sdk.platformtools.az;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.an;
+import com.tencent.mm.storage.bq;
 import com.tencent.mm.ui.base.t;
 import java.lang.ref.WeakReference;
 import java.util.Timer;
@@ -63,125 +61,171 @@ import java.util.TimerTask;
 public class VoipVideoFragment
   extends VoipBaseFragment
 {
-  public int BZu;
-  public int BZv;
-  private View ChA;
-  private ImageView ChB;
-  private TextView ChC;
-  private TextView ChD;
-  private TextView ChE;
-  private TextView ChF;
-  private View ChG;
-  private TextView ChH;
-  private TextView ChI;
-  private TextView ChJ;
-  private RelativeLayout ChK;
-  private Button ChL;
-  private VoipSmallIconButton ChM;
-  private VoipSmallIconButton ChN;
-  private VoipSmallIconButton ChO;
-  private VoipBigIconButton ChP;
-  private VoipBigIconButton ChQ;
-  private VoipBigIconButton ChR;
-  private VoipBigIconButton ChS;
-  private VoipBigIconButton ChT;
-  private VoipBigIconButton ChU;
-  private TextView ChV;
-  private TextView ChW;
-  private TextView ChX;
-  private TextView ChY;
-  private TextView ChZ;
-  private ImageView Chz;
-  private View.OnClickListener CiA;
-  private View.OnClickListener CiB;
-  private View.OnClickListener CiC;
-  private View.OnClickListener CiD;
-  private View.OnClickListener CiE;
-  private View.OnClickListener CiF;
-  private View.OnClickListener CiG;
-  private View.OnClickListener CiH;
-  private Runnable CiI;
-  private TextView Cia;
-  private e Cib;
-  private Button Cic;
-  private Button Cid;
-  private boolean Cie;
-  private int Cif;
-  private int Cig;
-  private int Cih;
-  private int Cii;
-  private int Cij;
-  private boolean Cik;
-  private boolean Cil;
-  public long Cim;
-  public int Cio;
-  public int Cip;
-  private int Ciq;
-  private int Cir;
-  private av Cis;
-  private boolean Cit;
-  private View.OnClickListener Ciw;
-  private View.OnClickListener Cix;
-  private View.OnClickListener Ciy;
-  private View.OnClickListener Ciz;
-  private OpenGlView CjU;
-  private OpenGlView CjV;
-  private OpenGlRender CjW;
-  private OpenGlRender CjX;
-  private VoIPVideoView CjY;
-  private a CjZ;
-  private d Cka;
-  int Ckb;
-  private PowerManager.WakeLock gKs;
+  private View.OnClickListener CAa;
+  private View.OnClickListener CAb;
+  private View.OnClickListener CAc;
+  private View.OnClickListener CAd;
+  private View.OnClickListener CAe;
+  private View.OnClickListener CAf;
+  private View.OnClickListener CAg;
+  private View.OnClickListener CAh;
+  private View.OnClickListener CAi;
+  private View.OnClickListener CAj;
+  private View.OnClickListener CAk;
+  private View.OnClickListener CAl;
+  private Runnable CAm;
+  private OpenGlRender CBA;
+  private OpenGlRender CBB;
+  private VoIPVideoView CBC;
+  private a CBD;
+  private d CBE;
+  int CBF;
+  private OpenGlView CBy;
+  private OpenGlView CBz;
+  public int CqV;
+  public int CqW;
+  private TextView CzA;
+  private TextView CzB;
+  private e CzD;
+  private Button CzE;
+  private Button CzF;
+  private boolean CzG;
+  private int CzH;
+  private int CzI;
+  private int CzJ;
+  private int CzK;
+  private int CzN;
+  private boolean CzO;
+  private boolean CzP;
+  public long CzQ;
+  public int CzS;
+  public int CzT;
+  private int CzU;
+  private int CzV;
+  private aw CzW;
+  private boolean CzX;
+  private ImageView Cza;
+  private View Czb;
+  private ImageView Czc;
+  private TextView Czd;
+  private TextView Cze;
+  private TextView Czf;
+  private TextView Czg;
+  private View Czh;
+  private TextView Czi;
+  private TextView Czj;
+  private TextView Czk;
+  private RelativeLayout Czl;
+  private Button Czm;
+  private VoipSmallIconButton Czn;
+  private VoipSmallIconButton Czo;
+  private VoipSmallIconButton Czp;
+  private VoipBigIconButton Czq;
+  private VoipBigIconButton Czr;
+  private VoipBigIconButton Czs;
+  private VoipBigIconButton Czt;
+  private VoipBigIconButton Czu;
+  private VoipBigIconButton Czv;
+  private TextView Czw;
+  private TextView Czx;
+  private TextView Czy;
+  private TextView Czz;
+  private PowerManager.WakeLock gNb;
   private Timer mTimer;
-  private long mtj;
-  private CaptureView oXg;
-  private boolean oXj;
-  private int oZC;
-  private boolean oZE;
-  private Runnable pVz;
+  private long myg;
+  private CaptureView pdJ;
+  private boolean pdM;
+  private int pgg;
+  private boolean pgi;
+  private Runnable qce;
   private SurfaceTexture surfaceTexture;
-  private TextView uVp;
-  Bitmap wdv;
-  int[] whe;
-  private Bitmap xBb;
+  private TextView vhc;
+  Bitmap wsX;
+  int[] wwH;
+  private Bitmap xQW;
   
   public VoipVideoFragment()
   {
     AppMethodBeat.i(115420);
-    this.Cib = null;
-    this.Cic = null;
-    this.Cid = null;
-    this.Cie = false;
-    this.Cij = 0;
-    this.Cik = false;
-    this.oZE = false;
-    this.oXj = false;
-    this.Cim = 0L;
-    this.xBb = null;
-    this.Cio = 0;
-    this.Cip = 0;
-    this.Ciq = 0;
-    this.mtj = 0L;
-    this.Cir = 0;
-    this.Cis = null;
-    this.Cit = false;
-    this.BZu = 0;
-    this.BZv = 0;
+    this.CzD = null;
+    this.CzE = null;
+    this.CzF = null;
+    this.CzG = false;
+    this.CzN = 0;
+    this.CzO = false;
+    this.pgi = false;
+    this.pdM = false;
+    this.CzQ = 0L;
+    this.xQW = null;
+    this.CzS = 0;
+    this.CzT = 0;
+    this.CzU = 0;
+    this.myg = 0L;
+    this.CzV = 0;
+    this.CzW = null;
+    this.CzX = false;
+    this.CqV = 0;
+    this.CqW = 0;
     this.surfaceTexture = null;
-    this.Ciw = new VoipVideoFragment.1(this);
-    this.Cix = new VoipVideoFragment.12(this);
-    this.Ciy = new VoipVideoFragment.15(this);
-    this.Ciz = new View.OnClickListener()
+    this.CAa = new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(115394);
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/voip/ui/VoipVideoFragment$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.Voip.VoipVideoFragment", "hangup video talking");
+        if ((VoipVideoFragment.this.CAv != null) && (VoipVideoFragment.this.CAv.get() != null) && (((c)VoipVideoFragment.this.CAv.get()).eyD()))
+        {
+          VoipVideoFragment.a(VoipVideoFragment.this).setEnabled(false);
+          VoipVideoFragment.b(VoipVideoFragment.this).setEnabled(false);
+          VoipVideoFragment.this.iz(2131764857, -1);
+        }
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/voip/ui/VoipVideoFragment$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        AppMethodBeat.o(115394);
+      }
+    };
+    this.CAb = new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(115406);
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/voip/ui/VoipVideoFragment$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        if ((VoipVideoFragment.this.CAv != null) && (VoipVideoFragment.this.CAv.get() != null)) {
+          ((c)VoipVideoFragment.this.CAv.get()).eyW();
+        }
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/voip/ui/VoipVideoFragment$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        AppMethodBeat.o(115406);
+      }
+    };
+    this.CAc = new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(115407);
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/voip/ui/VoipVideoFragment$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        if ((VoipVideoFragment.this.CAv != null) && (VoipVideoFragment.this.CAv.get() != null)) {
+          ((c)VoipVideoFragment.this.CAv.get()).eyW();
+        }
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/voip/ui/VoipVideoFragment$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        AppMethodBeat.o(115407);
+      }
+    };
+    this.CAd = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(115410);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
         localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/voip/ui/VoipVideoFragment$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-        ad.i("MicroMsg.Voip.VoipVideoFragment", "click accept video invite use voice button");
-        if ((ay.isWifi(VoipVideoFragment.this.getActivity())) || (s.ewU())) {
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/voip/ui/VoipVideoFragment$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.Voip.VoipVideoFragment", "click accept video invite use voice button");
+        if ((az.isWifi(VoipVideoFragment.this.getActivity())) || (s.eAB())) {
           VoipVideoFragment.c(VoipVideoFragment.this);
         }
         for (;;)
@@ -189,12 +233,12 @@ public class VoipVideoFragment
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/voip/ui/VoipVideoFragment$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(115410);
           return;
-          h.a(VoipVideoFragment.this.getActivity(), 2131764898, 2131764899, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+          com.tencent.mm.ui.base.h.a(VoipVideoFragment.this.getActivity(), 2131764898, 2131764899, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
           {
             public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
             {
               AppMethodBeat.i(115408);
-              s.ewT();
+              s.eAA();
               VoipVideoFragment.c(VoipVideoFragment.this);
               AppMethodBeat.o(115408);
             }
@@ -210,16 +254,16 @@ public class VoipVideoFragment
         }
       }
     };
-    this.CiA = new View.OnClickListener()
+    this.CAe = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(115413);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
         localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/voip/ui/VoipVideoFragment$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-        ad.i("MicroMsg.Voip.VoipVideoFragment", "click accept video invite button");
-        if ((ay.isWifi(VoipVideoFragment.this.getActivity())) || ((s.ewU()) && (!ay.is2G(VoipVideoFragment.this.getActivity())))) {
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/voip/ui/VoipVideoFragment$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.Voip.VoipVideoFragment", "click accept video invite button");
+        if ((az.isWifi(VoipVideoFragment.this.getActivity())) || ((s.eAB()) && (!az.is2G(VoipVideoFragment.this.getActivity())))) {
           VoipVideoFragment.e(VoipVideoFragment.this);
         }
         for (;;)
@@ -227,13 +271,13 @@ public class VoipVideoFragment
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/voip/ui/VoipVideoFragment$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(115413);
           return;
-          h.a(VoipVideoFragment.this.getActivity(), 2131764898, 2131764899, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+          com.tencent.mm.ui.base.h.a(VoipVideoFragment.this.getActivity(), 2131764898, 2131764899, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
           {
             public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
             {
               AppMethodBeat.i(115411);
-              if (!ay.is2G(VoipVideoFragment.this.getActivity())) {
-                s.ewT();
+              if (!az.is2G(VoipVideoFragment.this.getActivity())) {
+                s.eAA();
               }
               VoipVideoFragment.e(VoipVideoFragment.this);
               AppMethodBeat.o(115411);
@@ -250,19 +294,167 @@ public class VoipVideoFragment
         }
       }
     };
-    this.CiB = new VoipVideoFragment.18(this);
-    this.CiC = new VoipVideoFragment.19(this);
-    this.CiD = new VoipVideoFragment.20(this);
-    this.CiE = new VoipVideoFragment.21(this);
-    this.CiF = new VoipVideoFragment.2(this);
-    this.CiG = new VoipVideoFragment.3(this);
-    this.CiH = new VoipVideoFragment.8(this);
-    this.CiI = new Runnable()
+    this.CAf = new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(115414);
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/voip/ui/VoipVideoFragment$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.Voip.VoipVideoFragment", "click reject video invite button");
+        VoipVideoFragment.d(VoipVideoFragment.this);
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/voip/ui/VoipVideoFragment$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        AppMethodBeat.o(115414);
+      }
+    };
+    this.CAg = new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(115415);
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/voip/ui/VoipVideoFragment$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.Voip.VoipVideoFragment", "click cancel video invite button");
+        if ((VoipVideoFragment.this.CAv != null) && (VoipVideoFragment.this.CAv.get() != null) && (((c)VoipVideoFragment.this.CAv.get()).eyK()))
+        {
+          VoipVideoFragment.a(VoipVideoFragment.this).setEnabled(false);
+          VoipVideoFragment.f(VoipVideoFragment.this).setEnabled(false);
+          VoipVideoFragment.g(VoipVideoFragment.this).setVisibility(0);
+          VoipVideoFragment.g(VoipVideoFragment.this).setText(2131764813);
+        }
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/voip/ui/VoipVideoFragment$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        AppMethodBeat.o(115415);
+      }
+    };
+    this.CAh = new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(115416);
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/voip/ui/VoipVideoFragment$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        if (System.currentTimeMillis() - VoipVideoFragment.h(VoipVideoFragment.this) <= 1000L)
+        {
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/voip/ui/VoipVideoFragment$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+          AppMethodBeat.o(115416);
+          return;
+        }
+        VoipVideoFragment.a(VoipVideoFragment.this, System.currentTimeMillis());
+        com.tencent.mm.plugin.report.service.g.yxI.f(11618, new Object[] { Integer.valueOf(2), Integer.valueOf(1) });
+        if ((VoipVideoFragment.this.CAv != null) && (VoipVideoFragment.this.CAv.get() != null)) {
+          ((c)VoipVideoFragment.this.CAv.get()).tm(true);
+        }
+        if (VoipVideoFragment.this.CAN != null)
+        {
+          VoipVideoFragment.this.eCC();
+          VoipVideoFragment.this.CAN.aw(false, true);
+        }
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/voip/ui/VoipVideoFragment$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        AppMethodBeat.o(115416);
+      }
+    };
+    this.CAi = new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(115417);
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/voip/ui/VoipVideoFragment$9", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        com.tencent.mm.plugin.report.service.g.yxI.f(11619, new Object[] { Integer.valueOf(2) });
+        if ((VoipVideoFragment.this.CAv != null) && (VoipVideoFragment.this.CAv.get() != null)) {
+          ((c)VoipVideoFragment.this.CAv.get()).ezj();
+        }
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/voip/ui/VoipVideoFragment$9", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        AppMethodBeat.o(115417);
+      }
+    };
+    this.CAj = new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(115395);
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/voip/ui/VoipVideoFragment$10", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        paramAnonymousView = VoipVideoFragment.this;
+        if (!VoipVideoFragment.i(VoipVideoFragment.this)) {}
+        for (boolean bool = true;; bool = false)
+        {
+          VoipVideoFragment.a(paramAnonymousView, bool);
+          if (!VoipVideoFragment.i(VoipVideoFragment.this)) {
+            VoipVideoFragment.j(VoipVideoFragment.this).setVisibility(8);
+          }
+          Toast.makeText(VoipVideoFragment.this.getActivity(), String.format("mIsShowFaceRect:%b", new Object[] { Boolean.valueOf(VoipVideoFragment.i(VoipVideoFragment.this)) }), 0).show();
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/voip/ui/VoipVideoFragment$10", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+          AppMethodBeat.o(115395);
+          return;
+        }
+      }
+    };
+    this.CAk = new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(115396);
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/voip/ui/VoipVideoFragment$11", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        boolean bool2 = bu.a((Boolean)paramAnonymousView.getTag(), false);
+        boolean bool1;
+        if (!bool2)
+        {
+          bool1 = true;
+          paramAnonymousView.setTag(Boolean.valueOf(bool1));
+          if (!bool2) {
+            break label159;
+          }
+          VoipVideoFragment.j(VoipVideoFragment.this).setVisibility(8);
+          Toast.makeText(VoipVideoFragment.this.getActivity(), "stop face detect", 0).show();
+        }
+        for (;;)
+        {
+          if ((VoipVideoFragment.this.CAv != null) && (VoipVideoFragment.this.CAv.get() != null)) {
+            ((c)VoipVideoFragment.this.CAv.get()).ezk();
+          }
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/voip/ui/VoipVideoFragment$11", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+          AppMethodBeat.o(115396);
+          return;
+          bool1 = false;
+          break;
+          label159:
+          Toast.makeText(VoipVideoFragment.this.getActivity(), "start face detect", 0).show();
+        }
+      }
+    };
+    this.CAl = new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(210200);
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/voip/ui/VoipVideoFragment$16", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.Voip.VoipVideoFragment", "switch camera");
+        VoipVideoFragment.o(VoipVideoFragment.this).setEnabled(false);
+        VoipVideoFragment.p(VoipVideoFragment.this);
+        VoipVideoFragment.o(VoipVideoFragment.this).setEnabled(true);
+        if ((VoipVideoFragment.this.CAv != null) && (VoipVideoFragment.this.CAv.get() != null)) {
+          ((c)VoipVideoFragment.this.CAv.get()).eyP();
+        }
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/voip/ui/VoipVideoFragment$16", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        AppMethodBeat.o(210200);
+      }
+    };
+    this.CAm = new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(115403);
-        ad.i("MicroMsg.Voip.VoipVideoFragment", "dismiss bar");
+        com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.Voip.VoipVideoFragment", "dismiss bar");
         VoipVideoFragment.q(VoipVideoFragment.this);
         if ((VoipVideoFragment.this.getActivity() == null) || (VoipVideoFragment.this.getActivity().isFinishing()))
         {
@@ -283,305 +475,132 @@ public class VoipVideoFragment
         AppMethodBeat.o(115403);
       }
     };
-    this.pVz = new VoipVideoFragment.10(this);
-    this.whe = null;
-    this.Ckb = 0;
-    this.wdv = null;
+    this.qce = new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(210201);
+        if ((VoipVideoFragment.this.getActivity() == null) || (VoipVideoFragment.this.getActivity().isFinishing()))
+        {
+          AppMethodBeat.o(210201);
+          return;
+        }
+        VoipVideoFragment.g(VoipVideoFragment.this).setVisibility(8);
+        AppMethodBeat.o(210201);
+      }
+    };
+    this.wwH = null;
+    this.CBF = 0;
+    this.wsX = null;
     AppMethodBeat.o(115420);
   }
   
-  private void Uy(int paramInt)
+  private void Vf(int paramInt)
   {
     AppMethodBeat.i(115448);
-    this.Cjk.eyY();
-    this.ChP.setEnabled(false);
-    this.ChT.setEnabled(false);
-    this.ChS.setEnabled(false);
-    this.ChR.setEnabled(false);
-    this.ChQ.setEnabled(false);
-    this.ChO.setEnabled(false);
-    this.ChU.setEnabled(false);
-    this.ChN.setEnabled(false);
-    this.ChM.setEnabled(false);
+    this.CAO.eCG();
+    this.Czq.setEnabled(false);
+    this.Czu.setEnabled(false);
+    this.Czt.setEnabled(false);
+    this.Czs.setEnabled(false);
+    this.Czr.setEnabled(false);
+    this.Czp.setEnabled(false);
+    this.Czv.setEnabled(false);
+    this.Czo.setEnabled(false);
+    this.Czn.setEnabled(false);
     switch (paramInt)
     {
     }
     for (;;)
     {
-      if (this.Cjj != null) {
-        this.Cjj.ax(true, false);
+      if (this.CAN != null) {
+        this.CAN.aw(true, false);
       }
       AppMethodBeat.o(115448);
       return;
-      this.ChI.setVisibility(0);
-      this.ChI.setText(2131764897);
+      this.Czj.setVisibility(0);
+      this.Czj.setText(2131764897);
     }
   }
   
-  private void aUi()
+  private void aUH()
   {
     AppMethodBeat.i(115449);
-    if ((this.mTimer == null) || (this.oZE))
+    if ((this.mTimer == null) || (this.pgi))
     {
       AppMethodBeat.o(115449);
       return;
     }
-    if (-1L == this.CiS) {
-      this.CiS = bt.aQJ();
+    if (-1L == this.CAw) {
+      this.CAw = bu.aRi();
     }
-    this.Cim = this.CiS;
-    this.oZE = true;
+    this.CzQ = this.CAw;
+    this.pgi = true;
     TimerTask local11 = new TimerTask()
     {
       public final void run()
       {
-        AppMethodBeat.i(216524);
-        VoipVideoFragment.this.jwD.post(new Runnable()
+        AppMethodBeat.i(210203);
+        VoipVideoFragment.this.jzz.post(new Runnable()
         {
           public final void run()
           {
-            AppMethodBeat.i(216523);
-            String str = VoipVideoFragment.sm(bt.rM(VoipVideoFragment.this.CiS));
+            AppMethodBeat.i(210202);
+            String str = VoipVideoFragment.sz(bu.rZ(VoipVideoFragment.this.CAw));
             VoipVideoFragment.t(VoipVideoFragment.this).setText(str);
             VoipVideoFragment.u(VoipVideoFragment.this);
-            AppMethodBeat.o(216523);
+            AppMethodBeat.o(210202);
           }
         });
-        AppMethodBeat.o(216524);
+        AppMethodBeat.o(210203);
       }
     };
     this.mTimer.schedule(local11, 1000L, 1000L);
-    this.Cis = new av("VoipVideoFragment_cpuStatThread", new av.a()
+    this.CzW = new aw("VoipVideoFragment_cpuStatThread", new aw.a()
     {
       public final boolean onTimerExpired()
       {
-        AppMethodBeat.i(216525);
+        AppMethodBeat.i(210204);
         if (VoipVideoFragment.v(VoipVideoFragment.this))
         {
           VoipVideoFragment.w(VoipVideoFragment.this);
-          AppMethodBeat.o(216525);
+          AppMethodBeat.o(210204);
           return true;
         }
-        AppMethodBeat.o(216525);
+        AppMethodBeat.o(210204);
         return false;
       }
     }, true);
-    this.Cit = true;
-    this.Cis.az(1000L, 1000L);
+    this.CzX = true;
+    this.CzW.ay(1000L, 1000L);
     AppMethodBeat.o(115449);
   }
   
   private void b(CaptureView paramCaptureView)
   {
     AppMethodBeat.i(115451);
-    if ((this.lPT == null) || (paramCaptureView == null))
+    if ((this.lUu == null) || (paramCaptureView == null))
     {
       AppMethodBeat.o(115451);
       return;
     }
     if ((paramCaptureView.getParent() != null) && ((paramCaptureView.getParent() instanceof ViewGroup))) {
-      ((ViewGroup)this.oXg.getParent()).removeView(this.oXg);
+      ((ViewGroup)this.pdJ.getParent()).removeView(this.pdJ);
     }
-    this.lPT.removeView(this.oXg);
-    this.oXg = null;
+    this.lUu.removeView(this.pdJ);
+    this.pdJ = null;
     if (paramCaptureView.getParent() != null) {
       ((ViewGroup)paramCaptureView.getParent()).removeAllViews();
     }
-    this.oXg = paramCaptureView;
-    this.lPT.addView(paramCaptureView, new RelativeLayout.LayoutParams(1, 1));
-    this.oXg.setVisibility(0);
-    this.oXg.setAlpha(0.0F);
-    ad.d("MicroMsg.Voip.VoipVideoFragment", "CaptureView added");
+    this.pdJ = paramCaptureView;
+    this.lUu.addView(paramCaptureView, new RelativeLayout.LayoutParams(1, 1));
+    this.pdJ.setVisibility(0);
+    this.pdJ.setAlpha(0.0F);
+    com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.Voip.VoipVideoFragment", "CaptureView added");
     AppMethodBeat.o(115451);
   }
   
-  private void eyL()
-  {
-    AppMethodBeat.i(115427);
-    ad.i("MicroMsg.Voip.VoipVideoFragment", "trigger dismiss bar");
-    this.Cij += 1;
-    this.jwD.postDelayed(this.CiI, 10000L);
-    AppMethodBeat.o(115427);
-  }
-  
-  private void eyO()
-  {
-    AppMethodBeat.i(115438);
-    this.CjU.setVisibility(0);
-    if (this.Cjg != null) {
-      eyX();
-    }
-    this.ChA.setVisibility(0);
-    this.ChC.setVisibility(0);
-    if ((am.aSQ(this.fGM)) && (!bt.ai(this.ChD.getText()))) {
-      this.ChD.setVisibility(0);
-    }
-    for (;;)
-    {
-      this.ChE.setText(2131764876);
-      this.ChG.setVisibility(0);
-      this.ChB.setVisibility(0);
-      this.Cjk.a(this.ChF, Cje);
-      this.ChU.setVisibility(8);
-      this.ChT.setVisibility(8);
-      this.ChP.setVisibility(8);
-      this.ChS.setVisibility(8);
-      this.ChR.setVisibility(0);
-      this.ChO.setVisibility(0);
-      this.ChQ.setVisibility(0);
-      this.ChN.setVisibility(8);
-      if (this.Cil) {
-        this.ChM.setVisibility(0);
-      }
-      this.ChJ.setVisibility(8);
-      if (com.tencent.mm.plugin.voip.c.euM().BZf != null)
-      {
-        this.ChJ.setVisibility(0);
-        this.ChJ.setText(com.tencent.mm.plugin.voip.c.euM().BZf);
-      }
-      if (ae.gcE.fYe == 1)
-      {
-        this.Chz.setVisibility(0);
-        this.CjU.setVisibility(4);
-      }
-      AppMethodBeat.o(115438);
-      return;
-      this.ChD.setVisibility(8);
-    }
-  }
-  
-  private void eyP()
-  {
-    AppMethodBeat.i(115439);
-    this.ChG.setVisibility(0);
-    this.CjU.setVisibility(0);
-    this.ChE.setText(2131764874);
-    if ((am.aSQ(this.fGM)) && (!bt.ai(this.ChD.getText()))) {
-      this.ChD.setVisibility(0);
-    }
-    for (;;)
-    {
-      this.Cjf.setVisibility(8);
-      this.ChI.setVisibility(8);
-      this.ChJ.setVisibility(8);
-      if (com.tencent.mm.plugin.voip.c.euM().BZf != null)
-      {
-        this.ChJ.setVisibility(0);
-        this.ChJ.setText(com.tencent.mm.plugin.voip.c.euM().BZf);
-      }
-      this.Cjk.a(this.ChF, Cje);
-      this.ChU.setVisibility(8);
-      this.ChT.setVisibility(8);
-      this.ChP.setVisibility(0);
-      this.ChS.setVisibility(8);
-      this.ChR.setVisibility(8);
-      this.ChO.setVisibility(8);
-      this.ChQ.setVisibility(8);
-      this.ChN.setVisibility(0);
-      this.ChM.setVisibility(8);
-      AppMethodBeat.o(115439);
-      return;
-      this.ChD.setVisibility(8);
-    }
-  }
-  
-  private void eyQ()
-  {
-    boolean bool2 = true;
-    AppMethodBeat.i(115440);
-    if (this.Cjg != null) {
-      this.Cjg.setVisibility(8);
-    }
-    if (!this.CjV.Cok)
-    {
-      AppMethodBeat.o(115440);
-      return;
-    }
-    this.CjV.tG(false);
-    label79:
-    Point localPoint;
-    if (this.BYH) {
-      if (!this.Cik)
-      {
-        bool1 = true;
-        this.Cik = bool1;
-        if (this.Cik) {
-          break label408;
-        }
-        bool1 = true;
-        localPoint = tu(bool1);
-        this.CjV.iy(localPoint.x, localPoint.y);
-        if (ac.iPB)
-        {
-          this.ChV.setVisibility(0);
-          this.ChW.setVisibility(0);
-          this.ChX.setVisibility(0);
-          this.ChY.setVisibility(0);
-          this.ChZ.setVisibility(0);
-          this.Cia.setVisibility(0);
-        }
-        this.ChA.setVisibility(8);
-        this.CjU.setVisibility(0);
-        this.CjV.setVisibility(0);
-        this.ChH.setVisibility(0);
-        this.ChL.setVisibility(0);
-        this.ChU.setVisibility(0);
-        this.ChT.setVisibility(0);
-        this.ChP.setVisibility(8);
-        this.ChS.setVisibility(0);
-        this.ChR.setVisibility(8);
-        this.ChO.setVisibility(8);
-        this.ChQ.setVisibility(8);
-        this.ChN.setVisibility(8);
-        this.ChM.setVisibility(8);
-        setHWDecMode(this.Cio);
-        ad.d("MicroMsg.Voip.VoipVideoFragment", "steve: showVideoTalking decMode:%d", new Object[] { Integer.valueOf(this.Cio) });
-        if (this.Cik) {
-          break label444;
-        }
-      }
-    }
-    label408:
-    label444:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      localPoint = tu(bool1);
-      ((MovableVideoView)this.CjV).iw(localPoint.x, localPoint.y);
-      aUi();
-      if (aj.fkD().getBoolean("voipfaceDebug", false))
-      {
-        this.Cic.setVisibility(0);
-        this.Cid.setVisibility(0);
-      }
-      eyL();
-      if (this.Cjh == 4102) {
-        iv(2131764783, 10000);
-      }
-      AppMethodBeat.o(115440);
-      return;
-      bool1 = false;
-      break;
-      bool1 = false;
-      break label79;
-      if (!this.Cik) {}
-      for (bool1 = true;; bool1 = false)
-      {
-        this.Cik = bool1;
-        this.CjY.setVisibility(8);
-        break;
-      }
-    }
-  }
-  
-  private void eyR()
-  {
-    AppMethodBeat.i(115447);
-    this.ChE.setText(2131764949);
-    this.Cjk.a(this.ChF, Cje);
-    AppMethodBeat.o(115447);
-  }
-  
-  private void eyS()
+  private void eCA()
   {
     AppMethodBeat.i(115450);
     View.OnClickListener local14 = new View.OnClickListener()
@@ -589,12 +608,12 @@ public class VoipVideoFragment
       public final void onClick(View paramAnonymousView)
       {
         boolean bool = false;
-        AppMethodBeat.i(216526);
+        AppMethodBeat.i(210205);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
         localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/voip/ui/VoipVideoFragment$21", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-        com.tencent.mm.plugin.report.service.g.yhR.f(11079, new Object[] { Integer.valueOf(4) });
-        if ((!VoipVideoFragment.l(VoipVideoFragment.this)) && (VoipVideoFragment.this.CiR.get() != null)) {
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/voip/ui/VoipVideoFragment$21", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        com.tencent.mm.plugin.report.service.g.yxI.f(11079, new Object[] { Integer.valueOf(4) });
+        if ((!VoipVideoFragment.l(VoipVideoFragment.this)) && (VoipVideoFragment.this.CAv.get() != null)) {
           VoipVideoFragment.o(VoipVideoFragment.this).getVisibility();
         }
         int i;
@@ -618,7 +637,7 @@ public class VoipVideoFragment
             bool = true;
           }
           VoipVideoFragment.d(paramAnonymousView, bool);
-          if (ac.iPB)
+          if (ac.iSu)
           {
             VoipVideoFragment.x(VoipVideoFragment.this).setVisibility(j);
             VoipVideoFragment.y(VoipVideoFragment.this).setVisibility(j);
@@ -631,24 +650,210 @@ public class VoipVideoFragment
             VoipVideoFragment.p(VoipVideoFragment.this);
           }
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/voip/ui/VoipVideoFragment$21", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-          AppMethodBeat.o(216526);
+          AppMethodBeat.o(210205);
           return;
           i = 0;
           break;
         }
       }
     };
-    this.lPT.setOnClickListener(local14);
+    this.lUu.setOnClickListener(local14);
     AppMethodBeat.o(115450);
   }
   
-  private Point tu(boolean paramBoolean)
+  private void eCt()
+  {
+    AppMethodBeat.i(115427);
+    com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.Voip.VoipVideoFragment", "trigger dismiss bar");
+    this.CzN += 1;
+    this.jzz.postDelayed(this.CAm, 10000L);
+    AppMethodBeat.o(115427);
+  }
+  
+  private void eCw()
+  {
+    AppMethodBeat.i(115438);
+    this.CBy.setVisibility(0);
+    if (this.CAK != null) {
+      eCF();
+    }
+    this.Czb.setVisibility(0);
+    this.Czd.setVisibility(0);
+    if ((an.aUq(this.fIQ)) && (!bu.ah(this.Cze.getText()))) {
+      this.Cze.setVisibility(0);
+    }
+    for (;;)
+    {
+      this.Czf.setText(2131764876);
+      this.Czh.setVisibility(0);
+      this.Czc.setVisibility(0);
+      this.CAO.a(this.Czg, CAI);
+      this.Czv.setVisibility(8);
+      this.Czu.setVisibility(8);
+      this.Czq.setVisibility(8);
+      this.Czt.setVisibility(8);
+      this.Czs.setVisibility(0);
+      this.Czp.setVisibility(0);
+      this.Czr.setVisibility(0);
+      this.Czo.setVisibility(8);
+      if (this.CzP) {
+        this.Czn.setVisibility(0);
+      }
+      this.Czk.setVisibility(8);
+      if (com.tencent.mm.plugin.voip.c.eys().CqG != null)
+      {
+        this.Czk.setVisibility(0);
+        this.Czk.setText(com.tencent.mm.plugin.voip.c.eys().CqG);
+      }
+      if (com.tencent.mm.compatible.deviceinfo.ae.geM.gak == 1)
+      {
+        this.Cza.setVisibility(0);
+        this.CBy.setVisibility(4);
+      }
+      AppMethodBeat.o(115438);
+      return;
+      this.Cze.setVisibility(8);
+    }
+  }
+  
+  private void eCx()
+  {
+    AppMethodBeat.i(115439);
+    this.Czh.setVisibility(0);
+    this.CBy.setVisibility(0);
+    this.Czf.setText(2131764874);
+    if ((an.aUq(this.fIQ)) && (!bu.ah(this.Cze.getText()))) {
+      this.Cze.setVisibility(0);
+    }
+    for (;;)
+    {
+      this.CAJ.setVisibility(8);
+      this.Czj.setVisibility(8);
+      this.Czk.setVisibility(8);
+      if (com.tencent.mm.plugin.voip.c.eys().CqG != null)
+      {
+        this.Czk.setVisibility(0);
+        this.Czk.setText(com.tencent.mm.plugin.voip.c.eys().CqG);
+      }
+      this.CAO.a(this.Czg, CAI);
+      this.Czv.setVisibility(8);
+      this.Czu.setVisibility(8);
+      this.Czq.setVisibility(0);
+      this.Czt.setVisibility(8);
+      this.Czs.setVisibility(8);
+      this.Czp.setVisibility(8);
+      this.Czr.setVisibility(8);
+      this.Czo.setVisibility(0);
+      this.Czn.setVisibility(8);
+      AppMethodBeat.o(115439);
+      return;
+      this.Cze.setVisibility(8);
+    }
+  }
+  
+  private void eCy()
+  {
+    boolean bool2 = true;
+    AppMethodBeat.i(115440);
+    if (this.CAK != null) {
+      this.CAK.setVisibility(8);
+    }
+    if (!this.CBz.CFO)
+    {
+      AppMethodBeat.o(115440);
+      return;
+    }
+    this.CBz.tN(false);
+    label79:
+    Point localPoint;
+    if (this.Cqi) {
+      if (!this.CzO)
+      {
+        bool1 = true;
+        this.CzO = bool1;
+        if (this.CzO) {
+          break label408;
+        }
+        bool1 = true;
+        localPoint = tB(bool1);
+        this.CBz.iC(localPoint.x, localPoint.y);
+        if (ac.iSu)
+        {
+          this.Czw.setVisibility(0);
+          this.Czx.setVisibility(0);
+          this.Czy.setVisibility(0);
+          this.Czz.setVisibility(0);
+          this.CzA.setVisibility(0);
+          this.CzB.setVisibility(0);
+        }
+        this.Czb.setVisibility(8);
+        this.CBy.setVisibility(0);
+        this.CBz.setVisibility(0);
+        this.Czi.setVisibility(0);
+        this.Czm.setVisibility(0);
+        this.Czv.setVisibility(0);
+        this.Czu.setVisibility(0);
+        this.Czq.setVisibility(8);
+        this.Czt.setVisibility(0);
+        this.Czs.setVisibility(8);
+        this.Czp.setVisibility(8);
+        this.Czr.setVisibility(8);
+        this.Czo.setVisibility(8);
+        this.Czn.setVisibility(8);
+        setHWDecMode(this.CzS);
+        com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.Voip.VoipVideoFragment", "steve: showVideoTalking decMode:%d", new Object[] { Integer.valueOf(this.CzS) });
+        if (this.CzO) {
+          break label444;
+        }
+      }
+    }
+    label408:
+    label444:
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      localPoint = tB(bool1);
+      ((MovableVideoView)this.CBz).iA(localPoint.x, localPoint.y);
+      aUH();
+      if (ak.fox().getBoolean("voipfaceDebug", false))
+      {
+        this.CzE.setVisibility(0);
+        this.CzF.setVisibility(0);
+      }
+      eCt();
+      if (this.CAL == 4102) {
+        iz(2131764783, 10000);
+      }
+      AppMethodBeat.o(115440);
+      return;
+      bool1 = false;
+      break;
+      bool1 = false;
+      break label79;
+      if (!this.CzO) {}
+      for (bool1 = true;; bool1 = false)
+      {
+        this.CzO = bool1;
+        this.CBC.setVisibility(8);
+        break;
+      }
+    }
+  }
+  
+  private void eCz()
+  {
+    AppMethodBeat.i(115447);
+    this.Czf.setText(2131764949);
+    this.CAO.a(this.Czg, CAI);
+    AppMethodBeat.o(115447);
+  }
+  
+  private Point tB(boolean paramBoolean)
   {
     AppMethodBeat.i(115454);
     int i = (int)(getActivity().getWindowManager().getDefaultDisplay().getHeight() / 5.0D);
     float f = i;
-    com.tencent.mm.plugin.voip.c.euM();
-    Point localPoint = new Point((int)(f * u.tp(paramBoolean)), i);
+    com.tencent.mm.plugin.voip.c.eys();
+    Point localPoint = new Point((int)(f * u.tw(paramBoolean)), i);
     AppMethodBeat.o(115454);
     return localPoint;
   }
@@ -658,159 +863,181 @@ public class VoipVideoFragment
     AppMethodBeat.i(115426);
     if ((paramSurfaceTexture == null) || (paramd == null))
     {
-      ad.e("MicroMsg.Voip.VoipVideoFragment", "setSurfaceTexture error, videoTexture:%s, videoTexture:%s", new Object[] { paramSurfaceTexture, paramd });
+      com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.Voip.VoipVideoFragment", "setSurfaceTexture error, videoTexture:%s, videoTexture:%s", new Object[] { paramSurfaceTexture, paramd });
       AppMethodBeat.o(115426);
       return;
     }
     this.surfaceTexture = paramSurfaceTexture;
-    this.Cka = paramd;
-    if ((!this.oXj) || (this.CjX == null) || (this.CjW == null))
+    this.CBE = paramd;
+    if ((!this.pdM) || (this.CBB == null) || (this.CBA == null))
     {
-      ad.i("MicroMsg.Voip.VoipVideoFragment", "setSurfaceTexture failed , texId:%d,mInitDone:%b", new Object[] { Integer.valueOf(paramd.hko), Boolean.valueOf(this.oXj) });
+      com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.Voip.VoipVideoFragment", "setSurfaceTexture failed , texId:%d,mInitDone:%b", new Object[] { Integer.valueOf(paramd.hnc), Boolean.valueOf(this.pdM) });
       AppMethodBeat.o(115426);
       return;
     }
-    this.CjX.a(this.surfaceTexture, paramd);
-    this.CjW.a(this.surfaceTexture, paramd);
-    ad.i("MicroMsg.Voip.VoipVideoFragment", "setSurfaceTexture OK , videoTexture:%d", new Object[] { Integer.valueOf(paramd.hko) });
+    this.CBB.a(this.surfaceTexture, paramd);
+    this.CBA.a(this.surfaceTexture, paramd);
+    com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.Voip.VoipVideoFragment", "setSurfaceTexture OK , videoTexture:%d", new Object[] { Integer.valueOf(paramd.hnc) });
     AppMethodBeat.o(115426);
   }
   
   public final void a(CaptureView paramCaptureView)
   {
     AppMethodBeat.i(115429);
-    this.oXg = paramCaptureView;
-    b(this.oXg);
+    this.pdJ = paramCaptureView;
+    b(this.pdJ);
     AppMethodBeat.o(115429);
   }
   
-  protected final void aDI(String paramString)
+  protected final void aFb(String paramString)
   {
     AppMethodBeat.i(115433);
-    if (this.ChJ != null)
+    if (this.Czk != null)
     {
-      this.ChJ.setVisibility(0);
-      this.ChJ.setText(paramString);
+      this.Czk.setVisibility(0);
+      this.Czk.setText(paramString);
     }
     AppMethodBeat.o(115433);
   }
   
   public final void b(byte[] paramArrayOfByte, long paramLong, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
-    AppMethodBeat.i(216527);
-    if (!this.oXj)
+    AppMethodBeat.i(210206);
+    if (!this.pdM)
     {
-      AppMethodBeat.o(216527);
+      AppMethodBeat.o(210206);
       return;
     }
-    if (OpenGlRender.CnB == 1)
+    if (OpenGlRender.CFf == 1)
     {
-      if (this.Ckb < paramInt1 * paramInt2) {
-        this.whe = null;
+      if (this.CBF < paramInt1 * paramInt2) {
+        this.wwH = null;
       }
-      if (this.whe == null)
+      if (this.wwH == null)
       {
-        this.Ckb = (paramInt1 * paramInt2);
-        this.whe = new int[this.Ckb];
+        this.CBF = (paramInt1 * paramInt2);
+        this.wwH = new int[this.CBF];
       }
-      if ((com.tencent.mm.plugin.voip.c.euM().a(paramArrayOfByte, (int)paramLong, paramInt3 & 0x1F, paramInt1, paramInt2, this.whe, true) < 0) || (this.whe == null))
+      if ((com.tencent.mm.plugin.voip.c.eys().a(paramArrayOfByte, (int)paramLong, paramInt3 & 0x1F, paramInt1, paramInt2, this.wwH, true) < 0) || (this.wwH == null))
       {
-        AppMethodBeat.o(216527);
+        AppMethodBeat.o(210206);
         return;
       }
-      if (this.Cik) {
-        this.CjW.a(this.whe, paramInt1, paramInt2, OpenGlRender.FLAG_RGBAClip + paramInt4 + paramInt5, true);
+      if (this.CzO) {
+        this.CBA.a(this.wwH, paramInt1, paramInt2, OpenGlRender.FLAG_RGBAClip + paramInt4 + paramInt5, true);
       }
     }
     for (;;)
     {
-      this.Cig += 1;
-      this.Cif += 1;
-      paramArrayOfByte = this.Cib;
-      paramArrayOfByte.CmA = paramInt1;
-      paramArrayOfByte.CmB = paramInt2;
-      paramArrayOfByte = this.Cib;
-      paramInt1 = this.lPT.getWidth();
-      paramInt2 = this.lPT.getHeight();
-      paramArrayOfByte.Cmz = paramInt1;
+      this.CzI += 1;
+      this.CzH += 1;
+      paramArrayOfByte = this.CzD;
+      paramArrayOfByte.CEe = paramInt1;
+      paramArrayOfByte.CEf = paramInt2;
+      paramArrayOfByte = this.CzD;
+      paramInt1 = this.lUu.getWidth();
+      paramInt2 = this.lUu.getHeight();
+      paramArrayOfByte.CEd = paramInt1;
       paramArrayOfByte.sP = paramInt2;
-      AppMethodBeat.o(216527);
+      AppMethodBeat.o(210206);
       return;
-      this.CjX.a(this.whe, paramInt1, paramInt2, OpenGlRender.FLAG_RGBAClip + paramInt4 + paramInt5, true);
+      this.CBB.a(this.wwH, paramInt1, paramInt2, OpenGlRender.FLAG_RGBAClip + paramInt4 + paramInt5, true);
       continue;
-      if (OpenGlRender.CnB == 2) {
-        if (this.Cik) {
-          this.CjW.a(paramArrayOfByte, paramInt1, paramInt2, OpenGlRender.FLAG_NV21 + paramInt4 + paramInt5, true, 3);
+      if (OpenGlRender.CFf == 2) {
+        if (this.CzO) {
+          this.CBA.a(paramArrayOfByte, paramInt1, paramInt2, OpenGlRender.FLAG_NV21 + paramInt4 + paramInt5, true, 3);
         } else {
-          this.CjX.a(paramArrayOfByte, paramInt1, paramInt2, OpenGlRender.FLAG_NV21 + paramInt4 + paramInt5, true, 3);
+          this.CBB.a(paramArrayOfByte, paramInt1, paramInt2, OpenGlRender.FLAG_NV21 + paramInt4 + paramInt5, true, 3);
         }
       }
     }
   }
   
-  public final void e(int paramInt1, int paramInt2, byte[] paramArrayOfByte)
+  public final void eCC()
   {
-    AppMethodBeat.i(115443);
-    if (!this.oXj)
+    AppMethodBeat.i(115444);
+    if (!this.pdM)
     {
-      AppMethodBeat.o(115443);
+      AppMethodBeat.o(115444);
       return;
     }
-    this.oZC += 1;
-    if (OpenGlRender.CnB == 1)
-    {
-      if (this.Cik)
-      {
-        this.CjX.h(paramArrayOfByte, paramInt1, paramInt2, OpenGlRender.FLAG_RGBAClip + OpenGlRender.FLAG_Angle90);
-        AppMethodBeat.o(115443);
-        return;
-      }
-      this.CjW.h(paramArrayOfByte, paramInt1, paramInt2, OpenGlRender.FLAG_RGBAClip + OpenGlRender.FLAG_Angle90);
-      AppMethodBeat.o(115443);
-      return;
-    }
-    if (this.Cik)
-    {
-      this.CjX.a(paramArrayOfByte, paramInt1, paramInt2, OpenGlRender.FLAG_YV12Edge + OpenGlRender.FLAG_Angle90, false, 1);
-      AppMethodBeat.o(115443);
-      return;
-    }
-    this.CjW.a(paramArrayOfByte, paramInt1, paramInt2, OpenGlRender.FLAG_YV12Edge + OpenGlRender.FLAG_Angle90, false, 1);
-    AppMethodBeat.o(115443);
+    this.CBB.eEf();
+    this.CBA.eEf();
+    AppMethodBeat.o(115444);
   }
   
-  public final void eyH()
+  public final OpenGlRender eCD()
+  {
+    if (this.CzO) {
+      return this.CBA;
+    }
+    return this.CBB;
+  }
+  
+  public final void eCI()
+  {
+    AppMethodBeat.i(115425);
+    if ((this.CBB != null) && (this.CBA != null))
+    {
+      if (!this.CzO) {
+        break label119;
+      }
+      this.CBA.VA(0);
+      if ((this.CzS & 0x1) == 0) {
+        break label108;
+      }
+      this.CBB.VA(1);
+    }
+    for (;;)
+    {
+      com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.Voip.VoipVideoFragment", "changeSurfaceRender, bigViewMode: %d, smallViewMode: %d,mIsSmallViewShowSelf:%b, after changeSurfaceRender", new Object[] { Integer.valueOf(this.CBB.CFu), Integer.valueOf(this.CBA.CFu), Boolean.valueOf(this.CzO) });
+      AppMethodBeat.o(115425);
+      return;
+      label108:
+      this.CBB.VA(0);
+      continue;
+      label119:
+      this.CBB.VA(0);
+      if ((this.CzS & 0x1) != 0) {
+        this.CBA.VA(1);
+      } else {
+        this.CBA.VA(0);
+      }
+    }
+  }
+  
+  public final void eCp()
   {
     AppMethodBeat.i(115452);
-    if (this.oXg != null)
+    if (this.pdJ != null)
     {
-      this.lPT.removeView(this.oXg);
-      this.lPT.addView(this.oXg, new RelativeLayout.LayoutParams(1, 1));
-      this.oXg.setVisibility(0);
-      this.oXg.setAlpha(0.0F);
-      ad.i("MicroMsg.Voip.VoipVideoFragment", "resetCaptureView");
+      this.lUu.removeView(this.pdJ);
+      this.lUu.addView(this.pdJ, new RelativeLayout.LayoutParams(1, 1));
+      this.pdJ.setVisibility(0);
+      this.pdJ.setAlpha(0.0F);
+      com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.Voip.VoipVideoFragment", "resetCaptureView");
     }
     AppMethodBeat.o(115452);
   }
   
-  protected final void eyM()
+  protected final void eCu()
   {
     AppMethodBeat.i(115436);
-    if (this.uVp != null)
+    if (this.vhc != null)
     {
-      this.uVp.clearAnimation();
-      this.uVp.setVisibility(8);
+      this.vhc.clearAnimation();
+      this.vhc.setVisibility(8);
     }
     AppMethodBeat.o(115436);
   }
   
-  public final void eyN()
+  public final void eCv()
   {
     AppMethodBeat.i(115437);
-    OpenGlView localOpenGlView = this.CjU;
-    ad.i(OpenGlView.TAG, "new size from resoureHelper w %s * h  %s", new Object[] { Integer.valueOf(com.tencent.mm.cc.a.ip(localOpenGlView.getContext())), Integer.valueOf(com.tencent.mm.cc.a.iq(localOpenGlView.getContext())) });
-    int i = com.tencent.mm.cc.a.ip(localOpenGlView.getContext());
-    int j = com.tencent.mm.cc.a.iq(localOpenGlView.getContext());
+    OpenGlView localOpenGlView = this.CBy;
+    com.tencent.mm.sdk.platformtools.ae.i(OpenGlView.TAG, "new size from resoureHelper w %s * h  %s", new Object[] { Integer.valueOf(com.tencent.mm.cb.a.iu(localOpenGlView.getContext())), Integer.valueOf(com.tencent.mm.cb.a.iv(localOpenGlView.getContext())) });
+    int i = com.tencent.mm.cb.a.iu(localOpenGlView.getContext());
+    int j = com.tencent.mm.cb.a.iv(localOpenGlView.getContext());
     float f;
     Object localObject;
     if (i > j)
@@ -824,12 +1051,12 @@ public class VoipVideoFragment
     for (;;)
     {
       localOpenGlView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      if (this.CjV != null)
+      if (this.CBz != null)
       {
-        localObject = (MovableVideoView)this.CjV;
-        ad.i("MicroMsg.MovableVideoView", "refrsh view %s, %s", new Object[] { Integer.valueOf(((MovableVideoView)localObject).mWidth), Integer.valueOf(((MovableVideoView)localObject).Cna) });
+        localObject = (MovableVideoView)this.CBz;
+        com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.MovableVideoView", "refrsh view %s, %s", new Object[] { Integer.valueOf(((MovableVideoView)localObject).mWidth), Integer.valueOf(((MovableVideoView)localObject).CEE) });
         ((MovableVideoView)localObject).mScreenWidth = 0;
-        ((MovableVideoView)localObject).iw(((MovableVideoView)localObject).mWidth, ((MovableVideoView)localObject).Cna);
+        ((MovableVideoView)localObject).iA(((MovableVideoView)localObject).mWidth, ((MovableVideoView)localObject).CEE);
       }
       AppMethodBeat.o(115437);
       return;
@@ -841,89 +1068,67 @@ public class VoipVideoFragment
     }
   }
   
-  public final void eyU()
+  public final void f(int paramInt1, int paramInt2, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(115444);
-    if (!this.oXj)
+    AppMethodBeat.i(115443);
+    if (!this.pdM)
     {
-      AppMethodBeat.o(115444);
+      AppMethodBeat.o(115443);
       return;
     }
-    this.CjX.eAx();
-    this.CjW.eAx();
-    AppMethodBeat.o(115444);
-  }
-  
-  public final OpenGlRender eyV()
-  {
-    if (this.Cik) {
-      return this.CjW;
-    }
-    return this.CjX;
-  }
-  
-  public final void eza()
-  {
-    AppMethodBeat.i(115425);
-    if ((this.CjX != null) && (this.CjW != null))
+    this.pgg += 1;
+    if (OpenGlRender.CFf == 1)
     {
-      if (!this.Cik) {
-        break label119;
+      if (this.CzO)
+      {
+        this.CBB.i(paramArrayOfByte, paramInt1, paramInt2, OpenGlRender.FLAG_RGBAClip + OpenGlRender.FLAG_Angle90);
+        AppMethodBeat.o(115443);
+        return;
       }
-      this.CjW.UT(0);
-      if ((this.Cio & 0x1) == 0) {
-        break label108;
-      }
-      this.CjX.UT(1);
-    }
-    for (;;)
-    {
-      ad.i("MicroMsg.Voip.VoipVideoFragment", "changeSurfaceRender, bigViewMode: %d, smallViewMode: %d,mIsSmallViewShowSelf:%b, after changeSurfaceRender", new Object[] { Integer.valueOf(this.CjX.CnQ), Integer.valueOf(this.CjW.CnQ), Boolean.valueOf(this.Cik) });
-      AppMethodBeat.o(115425);
+      this.CBA.i(paramArrayOfByte, paramInt1, paramInt2, OpenGlRender.FLAG_RGBAClip + OpenGlRender.FLAG_Angle90);
+      AppMethodBeat.o(115443);
       return;
-      label108:
-      this.CjX.UT(0);
-      continue;
-      label119:
-      this.CjX.UT(0);
-      if ((this.Cio & 0x1) != 0) {
-        this.CjW.UT(1);
-      } else {
-        this.CjW.UT(0);
-      }
     }
+    if (this.CzO)
+    {
+      this.CBB.a(paramArrayOfByte, paramInt1, paramInt2, OpenGlRender.FLAG_YV12Edge + OpenGlRender.FLAG_Angle90, false, 1);
+      AppMethodBeat.o(115443);
+      return;
+    }
+    this.CBA.a(paramArrayOfByte, paramInt1, paramInt2, OpenGlRender.FLAG_YV12Edge + OpenGlRender.FLAG_Angle90, false, 1);
+    AppMethodBeat.o(115443);
   }
   
-  public final void ir(int paramInt1, int paramInt2)
+  public final void iv(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(115446);
-    ad.i("MicroMsg.Voip.VoipVideoFragment", "adjustHWViewAspectRatio, mInitDone:%b, HWDecsize:%dx%d,  lastHWDecsize:%dx%d", new Object[] { Boolean.valueOf(this.oXj), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(this.BZu), Integer.valueOf(this.BZv) });
+    com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.Voip.VoipVideoFragment", "adjustHWViewAspectRatio, mInitDone:%b, HWDecsize:%dx%d,  lastHWDecsize:%dx%d", new Object[] { Boolean.valueOf(this.pdM), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(this.CqV), Integer.valueOf(this.CqW) });
     if ((paramInt1 == 0) || (paramInt2 == 0))
     {
       AppMethodBeat.o(115446);
       return;
     }
-    if ((this.BZu != paramInt1) || (this.BZv != paramInt2))
+    if ((this.CqV != paramInt1) || (this.CqW != paramInt2))
     {
-      this.BZu = paramInt1;
-      this.BZv = paramInt2;
+      this.CqV = paramInt1;
+      this.CqW = paramInt2;
     }
-    if (this.oXj)
+    if (this.pdM)
     {
-      this.CjX.ir(paramInt1, paramInt2);
-      this.CjW.ir(paramInt1, paramInt2);
+      this.CBB.iv(paramInt1, paramInt2);
+      this.CBA.iv(paramInt1, paramInt2);
     }
     AppMethodBeat.o(115446);
   }
   
-  public final void iu(int paramInt1, int paramInt2)
+  public final void iy(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(115428);
-    super.iu(paramInt1, paramInt2);
-    ad.i("MicroMsg.Voip.VoipVideoFragment", "newState: " + com.tencent.mm.plugin.voip.b.l.UK(paramInt2));
-    if (this.lPT == null)
+    super.iy(paramInt1, paramInt2);
+    com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.Voip.VoipVideoFragment", "newState: " + com.tencent.mm.plugin.voip.b.l.Vr(paramInt2));
+    if (this.lUu == null)
     {
-      ad.i("MicroMsg.Voip.VoipVideoFragment", "fragment no create, return first, onCreateView will call it again");
+      com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.Voip.VoipVideoFragment", "fragment no create, return first, onCreateView will call it again");
       AppMethodBeat.o(115428);
       return;
     }
@@ -935,45 +1140,45 @@ public class VoipVideoFragment
       paramInt1 = 1;
       for (;;)
       {
-        if ((ae.gcE.fYe == 1) && (paramInt1 != 0)) {
-          this.Chz.setVisibility(8);
+        if ((com.tencent.mm.compatible.deviceinfo.ae.geM.gak == 1) && (paramInt1 != 0)) {
+          this.Cza.setVisibility(8);
         }
         AppMethodBeat.o(115428);
         return;
-        eyP();
+        eCx();
         paramInt1 = 1;
         continue;
         paramInt1 = 0;
-        eyO();
+        eCw();
         continue;
-        eyS();
-        eyQ();
+        eCA();
+        eCy();
         paramInt1 = 1;
         continue;
-        Uy(paramInt1);
+        Vf(paramInt1);
         paramInt1 = 1;
       }
-      eyR();
+      eCz();
     }
   }
   
-  protected final void iv(int paramInt1, int paramInt2)
+  protected final void iz(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(115434);
-    if (this.ChI == null)
+    if (this.Czj == null)
     {
       AppMethodBeat.o(115434);
       return;
     }
-    this.ChI.setText(paramInt1);
-    this.ChI.setVisibility(0);
-    this.ChI.setShadowLayer(0.0F, 0.0F, 0.0F, 0);
-    this.ChI.setBackgroundResource(2131234591);
-    this.ChI.setCompoundDrawables(null, null, null, null);
-    this.ChI.setCompoundDrawablePadding(0);
-    this.jwD.removeCallbacks(this.pVz);
+    this.Czj.setText(paramInt1);
+    this.Czj.setVisibility(0);
+    this.Czj.setShadowLayer(0.0F, 0.0F, 0.0F, 0);
+    this.Czj.setBackgroundResource(2131234591);
+    this.Czj.setCompoundDrawables(null, null, null, null);
+    this.Czj.setCompoundDrawablePadding(0);
+    this.jzz.removeCallbacks(this.qce);
     if (-1 != paramInt2) {
-      this.jwD.postDelayed(this.pVz, paramInt2);
+      this.jzz.postDelayed(this.qce, paramInt2);
     }
     AppMethodBeat.o(115434);
   }
@@ -981,202 +1186,252 @@ public class VoipVideoFragment
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     AppMethodBeat.i(115421);
-    this.lPT = ((RelativeLayout)paramLayoutInflater.inflate(2131495883, paramViewGroup, false));
+    this.lUu = ((RelativeLayout)paramLayoutInflater.inflate(2131495883, paramViewGroup, false));
     if (Build.MANUFACTURER.equalsIgnoreCase("meizu")) {
-      ((RelativeLayout)this.lPT.findViewById(2131304205)).setPadding(0, 0, 0, BackwardSupportUtil.b.g(getActivity(), 40.0F));
+      ((RelativeLayout)this.lUu.findViewById(2131304205)).setPadding(0, 0, 0, BackwardSupportUtil.b.h(getActivity(), 40.0F));
     }
-    this.Cjf = ((ImageView)this.lPT.findViewById(2131306556));
-    this.Cjg = ((ImageView)this.lPT.findViewById(2131306592));
-    this.ChK = ((RelativeLayout)this.lPT.findViewById(2131301467));
-    this.CjU = ((OpenGlView)this.lPT.findViewById(2131297220));
-    this.CjU.ix(mScreenWidth, mScreenHeight);
-    ad.i("MicroMsg.Voip.VoipVideoFragment", "steve: onCreateView!");
-    this.ChU = ((VoipBigIconButton)this.lPT.findViewById(2131306588));
-    this.ChU.setOnClickListener(this.CiH);
-    this.ChT = ((VoipBigIconButton)this.lPT.findViewById(2131306604));
-    this.ChT.setOnClickListener(this.Cix);
-    this.ChP = ((VoipBigIconButton)this.lPT.findViewById(2131306557));
-    this.ChP.setOnClickListener(this.CiC);
-    this.ChS = ((VoipBigIconButton)this.lPT.findViewById(2131306574));
-    this.ChS.setOnClickListener(this.Ciw);
-    this.ChR = ((VoipBigIconButton)this.lPT.findViewById(2131306553));
-    this.ChR.setOnClickListener(this.CiA);
-    this.ChO = ((VoipSmallIconButton)this.lPT.findViewById(2131306554));
-    this.ChO.setOnClickListener(this.Ciz);
-    this.ChQ = ((VoipBigIconButton)this.lPT.findViewById(2131306585));
-    this.ChQ.setOnClickListener(this.CiB);
-    this.ChN = ((VoipSmallIconButton)this.lPT.findViewById(2131306589));
-    this.ChN.setOnClickListener(this.Ciy);
-    if (n.II("VOIPBlockIgnoreButton") == 0)
+    this.CAJ = ((ImageView)this.lUu.findViewById(2131306556));
+    this.CAK = ((ImageView)this.lUu.findViewById(2131306592));
+    this.Czl = ((RelativeLayout)this.lUu.findViewById(2131301467));
+    this.CBy = ((OpenGlView)this.lUu.findViewById(2131297220));
+    this.CBy.iB(mScreenWidth, mScreenHeight);
+    com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.Voip.VoipVideoFragment", "steve: onCreateView!");
+    this.Czv = ((VoipBigIconButton)this.lUu.findViewById(2131306588));
+    this.Czv.setOnClickListener(this.CAl);
+    this.Czu = ((VoipBigIconButton)this.lUu.findViewById(2131306604));
+    this.Czu.setOnClickListener(this.CAb);
+    this.Czq = ((VoipBigIconButton)this.lUu.findViewById(2131306557));
+    this.Czq.setOnClickListener(this.CAg);
+    this.Czt = ((VoipBigIconButton)this.lUu.findViewById(2131306574));
+    this.Czt.setOnClickListener(this.CAa);
+    this.Czs = ((VoipBigIconButton)this.lUu.findViewById(2131306553));
+    this.Czs.setOnClickListener(this.CAe);
+    this.Czp = ((VoipSmallIconButton)this.lUu.findViewById(2131306554));
+    this.Czp.setOnClickListener(this.CAd);
+    this.Czr = ((VoipBigIconButton)this.lUu.findViewById(2131306585));
+    this.Czr.setOnClickListener(this.CAf);
+    this.Czo = ((VoipSmallIconButton)this.lUu.findViewById(2131306589));
+    this.Czo.setOnClickListener(this.CAc);
+    if (n.Jh("VOIPBlockIgnoreButton") == 0)
     {
       bool = true;
-      this.Cil = bool;
-      this.ChM = ((VoipSmallIconButton)this.lPT.findViewById(2131306575));
-      this.ChM.setOnClickListener(this.CiE);
-      if (!this.Cil) {
-        this.ChM.setVisibility(8);
+      this.CzP = bool;
+      this.Czn = ((VoipSmallIconButton)this.lUu.findViewById(2131306575));
+      this.Czn.setOnClickListener(this.CAi);
+      if (!this.CzP) {
+        this.Czn.setVisibility(8);
       }
-      this.ChH = ((TextView)this.lPT.findViewById(2131306605));
-      this.ChA = this.lPT.findViewById(2131306598);
-      this.ChB = ((ImageView)this.lPT.findViewById(2131306597));
-      a.b.a(this.ChB, this.fGM, 0.0588235F, true);
-      this.ChC = ((TextView)this.lPT.findViewById(2131306599));
-      this.ChD = ((TextView)this.lPT.findViewById(2131306601));
-      this.ChE = ((TextView)this.lPT.findViewById(2131306594));
-      this.ChF = ((TextView)this.lPT.findViewById(2131306596));
-      this.ChG = this.lPT.findViewById(2131306595);
-      t(this.ChF);
-      this.ChI = ((TextView)this.lPT.findViewById(2131306593));
-      this.ChJ = ((TextView)this.lPT.findViewById(2131306603));
-      this.ChL = ((Button)this.lPT.findViewById(2131297592));
-      this.uVp = ((TextView)this.lPT.findViewById(2131306581));
-      this.Chz = ((ImageView)this.lPT.findViewById(2131300320));
-      paramLayoutInflater = com.tencent.mm.ak.c.a(this.fGM, false, -1, null);
-      this.Chz.setImageBitmap(com.tencent.mm.sdk.platformtools.g.l(paramLayoutInflater, 10));
-      if (ac.iPB)
+      this.Czi = ((TextView)this.lUu.findViewById(2131306605));
+      this.Czb = this.lUu.findViewById(2131306598);
+      this.Czc = ((ImageView)this.lUu.findViewById(2131306597));
+      a.b.a(this.Czc, this.fIQ, 0.0588235F, true);
+      this.Czd = ((TextView)this.lUu.findViewById(2131306599));
+      this.Cze = ((TextView)this.lUu.findViewById(2131306601));
+      this.Czf = ((TextView)this.lUu.findViewById(2131306594));
+      this.Czg = ((TextView)this.lUu.findViewById(2131306596));
+      this.Czh = this.lUu.findViewById(2131306595);
+      r(this.Czg);
+      this.Czj = ((TextView)this.lUu.findViewById(2131306593));
+      this.Czk = ((TextView)this.lUu.findViewById(2131306603));
+      this.Czm = ((Button)this.lUu.findViewById(2131297592));
+      this.vhc = ((TextView)this.lUu.findViewById(2131306581));
+      this.Cza = ((ImageView)this.lUu.findViewById(2131300320));
+      paramLayoutInflater = com.tencent.mm.aj.c.a(this.fIQ, false, -1, null);
+      this.Cza.setImageBitmap(com.tencent.mm.sdk.platformtools.h.l(paramLayoutInflater, 10));
+      if (ac.iSu)
       {
-        this.ChV = ((TextView)this.lPT.findViewById(2131306558));
-        this.ChW = ((TextView)this.lPT.findViewById(2131306586));
-        this.ChX = ((TextView)this.lPT.findViewById(2131306583));
-        this.ChY = ((TextView)this.lPT.findViewById(2131306587));
-        this.ChZ = ((TextView)this.lPT.findViewById(2131306584));
-        this.Cia = ((TextView)this.lPT.findViewById(2131299493));
+        this.Czw = ((TextView)this.lUu.findViewById(2131306558));
+        this.Czx = ((TextView)this.lUu.findViewById(2131306586));
+        this.Czy = ((TextView)this.lUu.findViewById(2131306583));
+        this.Czz = ((TextView)this.lUu.findViewById(2131306587));
+        this.CzA = ((TextView)this.lUu.findViewById(2131306584));
+        this.CzB = ((TextView)this.lUu.findViewById(2131299493));
       }
-      this.Cic = ((Button)this.lPT.findViewById(2131306572));
-      this.Cid = ((Button)this.lPT.findViewById(2131306573));
-      this.Cic.setVisibility(8);
-      this.Cid.setVisibility(8);
-      this.Cic.setOnClickListener(this.CiF);
-      this.Cid.setOnClickListener(this.CiG);
-      this.Cib = new e(getActivity());
-      this.lPT.addView(this.Cib);
-      this.Cib.setVisibility(8);
-      this.ChL.setOnClickListener(this.CiD);
-      b(this.oXg);
-      int i = t.jW(getActivity());
-      ad.d("MicroMsg.Voip.VoipVideoFragment", "statusHeight: ".concat(String.valueOf(i)));
-      av(this.ChL, i);
-      av(this.lPT.findViewById(2131306591), i);
-      av(this.ChA, i);
-      this.Cig = 0;
-      this.Cif = 0;
-      this.oZC = 0;
-      this.Cih = 0;
-      this.Cii = 0;
-      this.Ciq = 0;
-      this.Cir = 0;
+      this.CzE = ((Button)this.lUu.findViewById(2131306572));
+      this.CzF = ((Button)this.lUu.findViewById(2131306573));
+      this.CzE.setVisibility(8);
+      this.CzF.setVisibility(8);
+      this.CzE.setOnClickListener(this.CAj);
+      this.CzF.setOnClickListener(this.CAk);
+      this.CzD = new e(getActivity());
+      this.lUu.addView(this.CzD);
+      this.CzD.setVisibility(8);
+      this.Czm.setOnClickListener(this.CAh);
+      b(this.pdJ);
+      int i = t.kd(getActivity());
+      com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.Voip.VoipVideoFragment", "statusHeight: ".concat(String.valueOf(i)));
+      av(this.Czm, i);
+      av(this.lUu.findViewById(2131306591), i);
+      av(this.Czb, i);
+      this.CzI = 0;
+      this.CzH = 0;
+      this.pgg = 0;
+      this.CzJ = 0;
+      this.CzK = 0;
+      this.CzU = 0;
+      this.CzV = 0;
       paramLayoutInflater = (WindowManager)getActivity().getSystemService("window");
       i = paramLayoutInflater.getDefaultDisplay().getHeight() / 5;
       int j = paramLayoutInflater.getDefaultDisplay().getWidth() * i / paramLayoutInflater.getDefaultDisplay().getHeight();
-      this.CjV = new MovableVideoView(getActivity().getApplicationContext());
-      ((MovableVideoView)this.CjV).iw(j, i);
-      this.CjV.setVisibility(0);
-      this.CjV.tG(true);
-      this.CjW = new OpenGlRender(this.CjV, OpenGlRender.RenderRemote);
-      this.CjV.setRenderer(this.CjW);
-      this.CjV.setRenderMode(0);
-      this.CjW.CnY = new OpenGlRender.b()
+      this.CBz = new MovableVideoView(getActivity().getApplicationContext());
+      ((MovableVideoView)this.CBz).iA(j, i);
+      this.CBz.setVisibility(0);
+      this.CBz.tN(true);
+      this.CBA = new OpenGlRender(this.CBz, OpenGlRender.RenderRemote);
+      this.CBz.setRenderer(this.CBA);
+      this.CBz.setRenderMode(0);
+      this.CBA.CFC = new OpenGlRender.b()
       {
-        public final void BA(long paramAnonymousLong)
+        public final void BW(long paramAnonymousLong)
         {
-          AppMethodBeat.i(216516);
-          if ((VoipVideoFragment.this.CiR != null) && (VoipVideoFragment.this.CiR.get() != null) && (paramAnonymousLong > 0L)) {
-            ((c)VoipVideoFragment.this.CiR.get()).ae(paramAnonymousLong, 1);
+          AppMethodBeat.i(210193);
+          if ((VoipVideoFragment.this.CAv != null) && (VoipVideoFragment.this.CAv.get() != null) && (paramAnonymousLong > 0L)) {
+            ((c)VoipVideoFragment.this.CAv.get()).ae(paramAnonymousLong, 2);
           }
-          AppMethodBeat.o(216516);
+          AppMethodBeat.o(210193);
         }
         
-        public final void By(long paramAnonymousLong)
+        public final void BX(long paramAnonymousLong)
         {
-          AppMethodBeat.i(216514);
-          if ((VoipVideoFragment.this.CiR != null) && (VoipVideoFragment.this.CiR.get() != null) && (paramAnonymousLong > 0L)) {
-            ((c)VoipVideoFragment.this.CiR.get()).ae(paramAnonymousLong, 2);
+          AppMethodBeat.i(210194);
+          if ((VoipVideoFragment.this.CAv != null) && (VoipVideoFragment.this.CAv.get() != null) && (paramAnonymousLong > 0L)) {
+            ((c)VoipVideoFragment.this.CAv.get()).ae(paramAnonymousLong, 0);
           }
-          AppMethodBeat.o(216514);
+          AppMethodBeat.o(210194);
         }
         
-        public final void Bz(long paramAnonymousLong)
+        public final void BY(long paramAnonymousLong)
         {
-          AppMethodBeat.i(216515);
-          if ((VoipVideoFragment.this.CiR != null) && (VoipVideoFragment.this.CiR.get() != null) && (paramAnonymousLong > 0L)) {
-            ((c)VoipVideoFragment.this.CiR.get()).ae(paramAnonymousLong, 0);
+          AppMethodBeat.i(210195);
+          if ((VoipVideoFragment.this.CAv != null) && (VoipVideoFragment.this.CAv.get() != null) && (paramAnonymousLong > 0L)) {
+            ((c)VoipVideoFragment.this.CAv.get()).ae(paramAnonymousLong, 1);
           }
-          AppMethodBeat.o(216515);
+          AppMethodBeat.o(210195);
         }
         
-        public final void ezb() {}
+        public final void eCJ() {}
       };
-      this.CjX = new OpenGlRender(this.CjU, OpenGlRender.RenderLocal);
-      this.CjU.setRenderer(this.CjX);
-      this.CjU.setRenderMode(0);
-      this.CjU.setVisibility(0);
-      this.CjX.CnY = new OpenGlRender.b()
+      this.CBB = new OpenGlRender(this.CBy, OpenGlRender.RenderLocal);
+      this.CBy.setRenderer(this.CBB);
+      this.CBy.setRenderMode(0);
+      this.CBy.setVisibility(0);
+      this.CBB.CFC = new OpenGlRender.b()
       {
-        public final void BA(long paramAnonymousLong)
+        public final void BW(long paramAnonymousLong)
         {
-          AppMethodBeat.i(216520);
-          if ((VoipVideoFragment.this.CiR != null) && (VoipVideoFragment.this.CiR.get() != null) && (paramAnonymousLong > 0L)) {
-            ((c)VoipVideoFragment.this.CiR.get()).ae(paramAnonymousLong, 1);
+          AppMethodBeat.i(210197);
+          if ((VoipVideoFragment.this.CAv != null) && (VoipVideoFragment.this.CAv.get() != null) && (paramAnonymousLong > 0L)) {
+            ((c)VoipVideoFragment.this.CAv.get()).ae(paramAnonymousLong, 2);
           }
-          AppMethodBeat.o(216520);
+          AppMethodBeat.o(210197);
         }
         
-        public final void By(long paramAnonymousLong)
+        public final void BX(long paramAnonymousLong)
         {
-          AppMethodBeat.i(216518);
-          if ((VoipVideoFragment.this.CiR != null) && (VoipVideoFragment.this.CiR.get() != null) && (paramAnonymousLong > 0L)) {
-            ((c)VoipVideoFragment.this.CiR.get()).ae(paramAnonymousLong, 2);
+          AppMethodBeat.i(210198);
+          if ((VoipVideoFragment.this.CAv != null) && (VoipVideoFragment.this.CAv.get() != null) && (paramAnonymousLong > 0L)) {
+            ((c)VoipVideoFragment.this.CAv.get()).ae(paramAnonymousLong, 0);
           }
-          AppMethodBeat.o(216518);
+          AppMethodBeat.o(210198);
         }
         
-        public final void Bz(long paramAnonymousLong)
+        public final void BY(long paramAnonymousLong)
         {
-          AppMethodBeat.i(216519);
-          if ((VoipVideoFragment.this.CiR != null) && (VoipVideoFragment.this.CiR.get() != null) && (paramAnonymousLong > 0L)) {
-            ((c)VoipVideoFragment.this.CiR.get()).ae(paramAnonymousLong, 0);
+          AppMethodBeat.i(210199);
+          if ((VoipVideoFragment.this.CAv != null) && (VoipVideoFragment.this.CAv.get() != null) && (paramAnonymousLong > 0L)) {
+            ((c)VoipVideoFragment.this.CAv.get()).ae(paramAnonymousLong, 1);
           }
-          AppMethodBeat.o(216519);
+          AppMethodBeat.o(210199);
         }
         
-        public final void ezb()
+        public final void eCJ()
         {
-          AppMethodBeat.i(216517);
-          if ((VoipVideoFragment.this.CiR != null) && (VoipVideoFragment.this.CiR.get() != null)) {
-            ((c)VoipVideoFragment.this.CiR.get()).ae(0L, 3);
+          AppMethodBeat.i(210196);
+          if ((VoipVideoFragment.this.CAv != null) && (VoipVideoFragment.this.CAv.get() != null)) {
+            ((c)VoipVideoFragment.this.CAv.get()).ae(0L, 3);
           }
-          AppMethodBeat.o(216517);
+          AppMethodBeat.o(210196);
         }
       };
-      ad.i("MicroMsg.Voip.VoipVideoFragment", "steve: before AvcDecoder init");
-      this.lPT.addView(this.CjV);
-      this.CjV.setOnClickListener(new VoipVideoFragment.6(this));
-      paramLayoutInflater = ((com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azp().Bf(this.fGM);
-      this.ChC.setText(k.b(getActivity(), v.b(paramLayoutInflater, this.fGM), this.ChC.getTextSize()));
-      paramLayoutInflater = com.tencent.mm.openim.room.a.a.H(paramLayoutInflater);
-      if (!bt.isNullOrNil(paramLayoutInflater)) {
-        this.ChD.setText(paramLayoutInflater);
+      com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.Voip.VoipVideoFragment", "steve: before AvcDecoder init");
+      this.lUu.addView(this.CBz);
+      this.CBz.setOnClickListener(new View.OnClickListener()
+      {
+        long CAo = 0L;
+        
+        public final void onClick(View paramAnonymousView)
+        {
+          AppMethodBeat.i(115399);
+          com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+          localb.bd(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/voip/ui/VoipVideoFragment$14", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+          com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.Voip.VoipVideoFragment", "steve: mGlSmallVideoView clicked!");
+          if ((VoipVideoFragment.k(VoipVideoFragment.this).CFO) || (VoipVideoFragment.k(VoipVideoFragment.this).getVisibility() != 0))
+          {
+            com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.Voip.VoipVideoFragment", "current view is not show ");
+            com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/voip/ui/VoipVideoFragment$14", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+            AppMethodBeat.o(115399);
+            return;
+          }
+          if (bu.aO(this.CAo) < 400L)
+          {
+            com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.Voip.VoipVideoFragment", "click mGlSmallVideoView too fast and not allow to response it,times%s", new Object[] { Long.valueOf(bu.aO(this.CAo)) });
+            com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/voip/ui/VoipVideoFragment$14", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+            AppMethodBeat.o(115399);
+            return;
+          }
+          this.CAo = bu.HQ();
+          paramAnonymousView = VoipVideoFragment.this;
+          if (!VoipVideoFragment.l(VoipVideoFragment.this))
+          {
+            bool = true;
+            VoipVideoFragment.b(paramAnonymousView, bool);
+            VoipVideoFragment.this.eCI();
+            paramAnonymousView = VoipVideoFragment.this;
+            if (VoipVideoFragment.l(VoipVideoFragment.this)) {
+              break label269;
+            }
+          }
+          label269:
+          for (boolean bool = true;; bool = false)
+          {
+            paramAnonymousView = VoipVideoFragment.c(paramAnonymousView, bool);
+            VoipVideoFragment.k(VoipVideoFragment.this).iC(paramAnonymousView.x, paramAnonymousView.y);
+            com.tencent.mm.plugin.report.service.g.yxI.f(11079, new Object[] { Integer.valueOf(3) });
+            com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/voip/ui/VoipVideoFragment$14", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+            AppMethodBeat.o(115399);
+            return;
+            bool = false;
+            break;
+          }
+        }
+      });
+      paramLayoutInflater = ((com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azF().BH(this.fIQ);
+      this.Czd.setText(k.b(getActivity(), w.b(paramLayoutInflater, this.fIQ), this.Czd.getTextSize()));
+      paramLayoutInflater = com.tencent.mm.openim.room.a.a.O(paramLayoutInflater);
+      if (!bu.isNullOrNil(paramLayoutInflater)) {
+        this.Cze.setText(paramLayoutInflater);
       }
-      if (this.BYH) {
-        this.jwD.postDelayed(new Runnable()
+      if (this.Cqi) {
+        this.jzz.postDelayed(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(115400);
             VoipVideoFragment.m(VoipVideoFragment.this).setText(2131764874);
-            VoipVideoFragment.this.Cjk.a(VoipVideoFragment.n(VoipVideoFragment.this), VoipBaseFragment.Cje);
+            VoipVideoFragment.this.CAO.a(VoipVideoFragment.n(VoipVideoFragment.this), VoipBaseFragment.CAI);
             AppMethodBeat.o(115400);
           }
         }, 2000L);
       }
-      this.CjY = ((VoIPVideoView)this.lPT.findViewById(2131306590));
+      this.CBC = ((VoIPVideoView)this.lUu.findViewById(2131306590));
       this.mTimer = new Timer("VoIP_video_talking_count");
-      ad.i("MicroMsg.Voip.VoipVideoFragment", "onCreateView, voipBeautyMode: %s", new Object[] { Integer.valueOf(this.Cip) });
-      this.CjX.setVoipBeauty(this.Cip);
-      this.CjW.setVoipBeauty(this.Cip);
-      if ((this.CiR != null) && (this.CiR.get() != null))
+      com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.Voip.VoipVideoFragment", "onCreateView, voipBeautyMode: %s", new Object[] { Integer.valueOf(this.CzT) });
+      this.CBB.setVoipBeauty(this.CzT);
+      this.CBA.setVoipBeauty(this.CzT);
+      if ((this.CAv != null) && (this.CAv.get() != null))
       {
-        paramLayoutInflater = (c)this.CiR.get();
+        paramLayoutInflater = (c)this.CAv.get();
         if ((260 == this.mStatus) || (6 == this.mStatus)) {
           break label1613;
         }
@@ -1185,16 +1440,16 @@ public class VoipVideoFragment
     label1613:
     for (boolean bool = true;; bool = false)
     {
-      paramLayoutInflater.au(true, bool);
-      this.CjX.CnW = true;
-      this.CjW.CnW = true;
-      this.oXj = true;
-      ir(this.BZu, this.BZv);
-      iu(0, this.mStatus);
-      this.gKs = ((PowerManager)aj.getContext().getSystemService("power")).newWakeLock(536870922, "MicroMsg.Voip.VoipVideoFragment");
-      this.gKs.acquire();
-      ad.i("MicroMsg.Voip.VoipVideoFragment", "acquire wakelock");
-      paramLayoutInflater = this.lPT;
+      paramLayoutInflater.at(true, bool);
+      this.CBB.CFA = true;
+      this.CBA.CFA = true;
+      this.pdM = true;
+      iv(this.CqV, this.CqW);
+      iy(0, this.mStatus);
+      this.gNb = ((PowerManager)ak.getContext().getSystemService("power")).newWakeLock(536870922, "MicroMsg.Voip.VoipVideoFragment");
+      this.gNb.acquire();
+      com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.Voip.VoipVideoFragment", "acquire wakelock");
+      paramLayoutInflater = this.lUu;
       AppMethodBeat.o(115421);
       return paramLayoutInflater;
       bool = false;
@@ -1205,13 +1460,13 @@ public class VoipVideoFragment
   public void onDestroy()
   {
     AppMethodBeat.i(115422);
-    this.oZE = false;
-    ad.i("MicroMsg.Voip.VoipVideoFragment", "onDestory");
+    this.pgi = false;
+    com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.Voip.VoipVideoFragment", "onDestory");
     super.onDestroy();
-    if ((this.gKs != null) && (this.gKs.isHeld()))
+    if ((this.gNb != null) && (this.gNb.isHeld()))
     {
-      ad.i("MicroMsg.Voip.VoipVideoFragment", "release waklock");
-      this.gKs.release();
+      com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.Voip.VoipVideoFragment", "release waklock");
+      this.gNb.release();
     }
     AppMethodBeat.o(115422);
   }
@@ -1219,16 +1474,16 @@ public class VoipVideoFragment
   public void onDetach()
   {
     AppMethodBeat.i(115453);
-    ad.i("MicroMsg.Voip.VoipVideoFragment", "onDetach");
+    com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.Voip.VoipVideoFragment", "onDetach");
     if (this.mTimer != null)
     {
       this.mTimer.cancel();
       this.mTimer = null;
     }
-    if (this.Cis != null) {
-      this.Cis.stopTimer();
+    if (this.CzW != null) {
+      this.CzW.stopTimer();
     }
-    this.Cit = false;
+    this.CzX = false;
     super.onDetach();
     AppMethodBeat.o(115453);
   }
@@ -1236,8 +1491,8 @@ public class VoipVideoFragment
   public void onStart()
   {
     AppMethodBeat.i(115432);
-    this.CjX.onStarted();
-    this.CjW.onStarted();
+    this.CBB.onStarted();
+    this.CBA.onStarted();
     super.onStart();
     AppMethodBeat.o(115432);
   }
@@ -1245,9 +1500,9 @@ public class VoipVideoFragment
   public void onStop()
   {
     AppMethodBeat.i(115431);
-    ad.i("MicroMsg.Voip.VoipVideoFragment", "onStop");
-    this.CjX.eAw();
-    this.CjW.eAw();
+    com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.Voip.VoipVideoFragment", "onStop");
+    this.CBB.eEe();
+    this.CBA.eEe();
     super.onStop();
     AppMethodBeat.o(115431);
   }
@@ -1255,35 +1510,35 @@ public class VoipVideoFragment
   public final void releaseSurfaceTexture()
   {
     AppMethodBeat.i(115424);
-    this.CjX.releaseSurfaceTexture();
-    this.CjW.releaseSurfaceTexture();
+    this.CBB.releaseSurfaceTexture();
+    this.CBA.releaseSurfaceTexture();
     AppMethodBeat.o(115424);
   }
   
   public final void requestRender()
   {
     AppMethodBeat.i(115423);
-    if (this.Cik)
+    if (this.CzO)
     {
-      this.CjU.CmJ.requestRender();
+      this.CBy.CEn.requestRender();
       AppMethodBeat.o(115423);
       return;
     }
-    this.CjV.CmJ.requestRender();
+    this.CBz.CEn.requestRender();
     AppMethodBeat.o(115423);
   }
   
   public final void setHWDecMode(int paramInt)
   {
     AppMethodBeat.i(115442);
-    this.Cio = paramInt;
-    if ((this.CjV == null) || (this.CjV.Cok))
+    this.CzS = paramInt;
+    if ((this.CBz == null) || (this.CBz.CFO))
     {
       AppMethodBeat.o(115442);
       return;
     }
-    ad.i("MicroMsg.Voip.VoipVideoFragment", "setHWDecMode, hwdec: %d, mIsSmallViewShowSelf:%b, before changeSurfaceRender", new Object[] { Integer.valueOf(this.Cio), Boolean.valueOf(this.Cik) });
-    eza();
+    com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.Voip.VoipVideoFragment", "setHWDecMode, hwdec: %d, mIsSmallViewShowSelf:%b, before changeSurfaceRender", new Object[] { Integer.valueOf(this.CzS), Boolean.valueOf(this.CzO) });
+    eCI();
     AppMethodBeat.o(115442);
   }
   
@@ -1294,56 +1549,56 @@ public class VoipVideoFragment
   public final void setVoipBeauty(int paramInt)
   {
     AppMethodBeat.i(115445);
-    ad.i("MicroMsg.Voip.VoipVideoFragment", "setVoipBeauty isON:%d, mInitDone:%b", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(this.oXj) });
-    this.Cip = paramInt;
-    if (!this.oXj)
+    com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.Voip.VoipVideoFragment", "setVoipBeauty isON:%d, mInitDone:%b", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(this.pdM) });
+    this.CzT = paramInt;
+    if (!this.pdM)
     {
       AppMethodBeat.o(115445);
       return;
     }
-    this.CjX.setVoipBeauty(this.Cip);
-    this.CjW.setVoipBeauty(this.Cip);
+    this.CBB.setVoipBeauty(this.CzT);
+    this.CBA.setVoipBeauty(this.CzT);
     AppMethodBeat.o(115445);
   }
   
-  protected final void tt(boolean paramBoolean)
+  protected final void tA(boolean paramBoolean)
   {
     AppMethodBeat.i(115435);
-    if (this.uVp != null)
+    if (this.vhc != null)
     {
       if (!paramBoolean) {
         break label49;
       }
-      this.uVp.setText(2131764892);
+      this.vhc.setText(2131764892);
     }
     for (;;)
     {
-      this.uVp.clearAnimation();
-      this.uVp.setVisibility(0);
+      this.vhc.clearAnimation();
+      this.vhc.setVisibility(0);
       AppMethodBeat.o(115435);
       return;
       label49:
-      this.uVp.setText(2131764891);
+      this.vhc.setText(2131764891);
     }
   }
   
   public final void uninit()
   {
     AppMethodBeat.i(115430);
-    ad.m("MicroMsg.Voip.VoipVideoFragment", "unit should not be allow in foreground", new Object[0]);
-    if (this.CjV != null) {
-      this.CjV.setVisibility(4);
+    com.tencent.mm.sdk.platformtools.ae.m("MicroMsg.Voip.VoipVideoFragment", "unit should not be allow in foreground", new Object[0]);
+    if (this.CBz != null) {
+      this.CBz.setVisibility(4);
     }
-    if (this.oXg != null)
+    if (this.pdJ != null)
     {
-      this.lPT.removeView(this.oXg);
-      this.oXg = null;
-      ad.d("MicroMsg.Voip.VoipVideoFragment", "CaptureView removed");
+      this.lUu.removeView(this.pdJ);
+      this.pdJ = null;
+      com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.Voip.VoipVideoFragment", "CaptureView removed");
     }
-    if (this.CjZ != null)
+    if (this.CBD != null)
     {
-      this.CjZ.cancel();
-      this.CjZ = null;
+      this.CBD.cancel();
+      this.CBD = null;
     }
     super.uninit();
     AppMethodBeat.o(115430);
@@ -1360,17 +1615,17 @@ public class VoipVideoFragment
     public final void run()
     {
       AppMethodBeat.i(115419);
-      ad.i("MicroMsg.Voip.VoipVideoFragment", "try load blur bitmap");
-      final Bitmap localBitmap = VoipVideoFragment.D(this.Ckc);
-      this.Ckc.jwD.post(new Runnable()
+      com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.Voip.VoipVideoFragment", "try load blur bitmap");
+      final Bitmap localBitmap = VoipVideoFragment.D(this.CBG);
+      this.CBG.jzz.post(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(115418);
-          if (VoipVideoFragment.a.this.Ckc.Cjf != null) {
-            VoipVideoFragment.a.this.Ckc.Cjf.setBackgroundDrawable(new BitmapDrawable(localBitmap));
+          if (VoipVideoFragment.a.this.CBG.CAJ != null) {
+            VoipVideoFragment.a.this.CBG.CAJ.setBackgroundDrawable(new BitmapDrawable(localBitmap));
           }
-          VoipVideoFragment.E(VoipVideoFragment.a.this.Ckc);
+          VoipVideoFragment.E(VoipVideoFragment.a.this.CBG);
           AppMethodBeat.o(115418);
         }
       });
@@ -1380,7 +1635,7 @@ public class VoipVideoFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.ui.VoipVideoFragment
  * JD-Core Version:    0.7.0.1
  */

@@ -1,48 +1,48 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
-import com.tencent.mm.plugin.appbrand.page.aa;
-import com.tencent.mm.plugin.appbrand.q;
+import com.tencent.mm.plugin.appbrand.page.z;
+import com.tencent.mm.plugin.appbrand.r;
 import java.util.Map;
 import org.json.JSONObject;
 
 public abstract class o
 {
-  protected q jCl;
-  private int kje;
-  private m kjf;
-  protected aa kqM;
-  protected JSONObject kqN;
+  protected r jFj;
+  private int kmu;
+  private m kmv;
+  protected z kub;
+  protected JSONObject kuc;
   
-  public o(m paramm, q paramq, aa paramaa, JSONObject paramJSONObject, int paramInt)
+  public o(m paramm, r paramr, z paramz, JSONObject paramJSONObject, int paramInt)
   {
-    if ((paramm == null) || (paramq == null) || (paramJSONObject == null)) {
+    if ((paramm == null) || (paramr == null) || (paramJSONObject == null)) {
       throw new IllegalArgumentException("JsApiAsyncRequest");
     }
-    this.kjf = paramm;
-    this.jCl = paramq;
-    this.kqM = paramaa;
-    this.kje = paramInt;
-    this.kqN = paramJSONObject;
+    this.kmv = paramm;
+    this.jFj = paramr;
+    this.kub = paramz;
+    this.kmu = paramInt;
+    this.kuc = paramJSONObject;
   }
   
-  public final q Ew()
+  public final r Ey()
   {
-    return this.jCl;
+    return this.jFj;
   }
   
-  public final JSONObject bik()
+  protected final void G(Map<String, ? extends Object> paramMap)
   {
-    return this.kqN;
+    this.jFj.h(this.kmu, this.kmv.n("ok", paramMap));
   }
   
-  protected final void n(String paramString, Map<String, ? extends Object> paramMap)
+  public final JSONObject biT()
   {
-    this.jCl.h(this.kje, this.kjf.m(paramString, paramMap));
+    return this.kuc;
   }
   
-  protected final void z(Map<String, ? extends Object> paramMap)
+  protected final void o(String paramString, Map<String, ? extends Object> paramMap)
   {
-    this.jCl.h(this.kje, this.kjf.m("ok", paramMap));
+    this.jFj.h(this.kmu, this.kmv.n(paramString, paramMap));
   }
 }
 

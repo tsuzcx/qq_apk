@@ -6,28 +6,28 @@ import com.tencent.mm.ui.l;
 public abstract class c
   implements ae, com.tencent.mm.ui.chatting.d.b.a, l
 {
-  protected com.tencent.mm.ui.chatting.e.a cWM;
+  protected com.tencent.mm.ui.chatting.e.a cXJ;
   
   public final void a(com.tencent.mm.ui.chatting.e.a parama)
   {
-    this.cWM = parama;
+    this.cXJ = parama;
   }
   
-  public final void fCC() {}
+  public void fAs() {}
   
-  public void fws() {}
+  public final void fAt() {}
   
-  public final void fwt() {}
+  public final void fAu() {}
   
-  public final void fwu() {}
+  public void fAv() {}
   
-  public void fwv() {}
+  public void fAw() {}
   
-  public void fww() {}
+  public final void fAx() {}
   
-  public final void fwx() {}
+  public final void fAy() {}
   
-  public final void fwy() {}
+  public final void fGE() {}
 }
 
 

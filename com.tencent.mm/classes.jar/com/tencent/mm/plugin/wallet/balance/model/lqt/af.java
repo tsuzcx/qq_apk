@@ -4,20 +4,20 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.ckz;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.clt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.widget.a.d;
 import com.tencent.mm.ui.widget.a.d.a;
-import com.tencent.mm.wallet_core.ui.e;
+import com.tencent.mm.wallet_core.ui.f;
 
 public final class af
 {
-  public static String Vh(int paramInt)
+  public static String VO(int paramInt)
   {
     AppMethodBeat.i(68551);
-    Context localContext = aj.getContext();
+    Context localContext = ak.getContext();
     String str = "";
     switch (paramInt)
     {
@@ -38,51 +38,51 @@ public final class af
     }
   }
   
-  public static void a(final Context paramContext, ckz paramckz)
+  public static void a(final Context paramContext, clt paramclt)
   {
     AppMethodBeat.i(68552);
-    if (paramckz == null)
+    if (paramclt == null)
     {
       AppMethodBeat.o(68552);
       return;
     }
     d.a locala = new d.a(paramContext);
-    locala.aXG(paramckz.dxD);
-    if (!bt.isNullOrNil(paramckz.Hem)) {
-      locala.aXN(paramckz.Hem);
+    locala.aZi(paramclt.dyI);
+    if (!bu.isNullOrNil(paramclt.HxM)) {
+      locala.aZp(paramclt.HxM);
     }
-    if (!bt.isNullOrNil(paramckz.CIj)) {
-      locala.aXM(paramckz.CIj);
+    if (!bu.isNullOrNil(paramclt.CZP)) {
+      locala.aZo(paramclt.CZP);
     }
-    locala.yR(false);
+    locala.zf(false);
     locala.a(true, new DialogInterface.OnClickListener()
     {
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
         AppMethodBeat.i(68550);
-        ad.i("MicroMsg.LqtUtil", "click item, type: %s", new Object[] { Integer.valueOf(this.Cyv.type) });
-        if (this.Cyv.type != 1)
+        ae.i("MicroMsg.LqtUtil", "click item, type: %s", new Object[] { Integer.valueOf(this.CQa.type) });
+        if (this.CQa.type != 1)
         {
-          if (this.Cyv.type == 2)
+          if (this.CQa.type == 2)
           {
-            e.o(paramContext, this.Cyv.CNU, true);
+            f.p(paramContext, this.CQa.DfC, true);
             AppMethodBeat.o(68550);
             return;
           }
-          if (this.Cyv.type == 3) {
-            e.v(this.Cyv.CzQ, this.Cyv.CzR, 0, 1061);
+          if (this.CQa.type == 3) {
+            f.u(this.CQa.CRv, this.CQa.CRw, 0, 1061);
           }
         }
         AppMethodBeat.o(68550);
       }
     });
-    locala.fMb().show();
+    locala.fQv().show();
     AppMethodBeat.o(68552);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.balance.model.lqt.af
  * JD-Core Version:    0.7.0.1
  */

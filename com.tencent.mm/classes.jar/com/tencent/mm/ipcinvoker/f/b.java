@@ -9,14 +9,14 @@ import java.util.Set;
 
 public final class b
 {
-  private static final Map<String, Set<c>> gxT;
-  private static final Set<Object> gyg;
+  private static final Map<String, Set<c>> gAA;
+  private static final Set<Object> gAN;
   
   static
   {
     AppMethodBeat.i(158826);
-    gyg = new HashSet();
-    gxT = new HashMap();
+    gAN = new HashSet();
+    gAA = new HashMap();
     AppMethodBeat.o(158826);
   }
   
@@ -32,14 +32,14 @@ public final class b
     label125:
     for (;;)
     {
-      synchronized (gxT)
+      synchronized (gAA)
       {
-        localObject = (Set)gxT.get(paramString);
+        localObject = (Set)gAA.get(paramString);
         if (localObject != null) {
           break label125;
         }
         localObject = new HashSet();
-        gxT.put(paramString, localObject);
+        gAA.put(paramString, localObject);
         com.tencent.mm.ipcinvoker.h.b.i("IPC.ObjectRecycler", "addIntoSet(%s)", new Object[] { paramString });
       }
       try
@@ -66,9 +66,9 @@ public final class b
       return false;
     }
     Set localSet;
-    synchronized (gxT)
+    synchronized (gAA)
     {
-      localSet = (Set)gxT.get(paramString);
+      localSet = (Set)gAA.get(paramString);
       if (localSet == null)
       {
         AppMethodBeat.o(158824);
@@ -90,18 +90,18 @@ public final class b
   public static void bi(Object paramObject)
   {
     AppMethodBeat.i(158821);
-    gyg.add(paramObject);
+    gAN.add(paramObject);
     AppMethodBeat.o(158821);
   }
   
   public static void bj(Object paramObject)
   {
     AppMethodBeat.i(158822);
-    gyg.remove(paramObject);
+    gAN.remove(paramObject);
     AppMethodBeat.o(158822);
   }
   
-  public static void wy(String paramString)
+  public static void xh(String paramString)
   {
     AppMethodBeat.i(158825);
     if ((paramString == null) || (paramString.length() == 0))
@@ -110,9 +110,9 @@ public final class b
       return;
     }
     Set localSet;
-    synchronized (gxT)
+    synchronized (gAA)
     {
-      localSet = (Set)gxT.remove(paramString);
+      localSet = (Set)gAA.remove(paramString);
       if (localSet == null)
       {
         AppMethodBeat.o(158825);

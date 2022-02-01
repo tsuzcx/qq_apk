@@ -4,11 +4,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import com.tencent.mm.compatible.util.g;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.vfs.e;
-import com.tencent.mm.vfs.i;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.vfs.k;
+import com.tencent.mm.vfs.o;
 import java.security.KeyStoreException;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
@@ -131,16 +131,16 @@ public class CdnLogic
   
   public static void Initialize(String paramString1, CdnLogic.AppCallback paramAppCallback, String paramString2, String paramString3, String paramString4, String paramString5)
   {
-    ad.i("mars.CdnLogic", "init cdnlogic");
+    ae.i("mars.CdnLogic", "init cdnlogic");
     setAppCallback(paramAppCallback);
-    onCreate(i.k(paramString1, true));
+    onCreate(o.k(paramString1, true));
     setRSAPublicKeyParams(paramString2, paramString3, paramString4);
     setToUserCiper(paramString5);
   }
   
   public static void UnInitialize()
   {
-    ad.w("mars.CdnLogic", "uninit cdnlogic");
+    ae.w("mars.CdnLogic", "uninit cdnlogic");
     setAppCallback(null);
   }
   
@@ -164,39 +164,39 @@ public class CdnLogic
   
   public static int doCertificateVerify(String paramString, byte[][] paramArrayOfByte)
   {
-    ad.i("mars.CdnLogic", "certifivate verify for %s", new Object[] { paramString });
+    ae.i("mars.CdnLogic", "certifivate verify for %s", new Object[] { paramString });
     try
     {
       paramArrayOfByte = X509Util.verifyServerCertificates(paramArrayOfByte, "RSA", paramString);
-      ad.i("mars.CdnLogic", "host %s verify result %d, isknownroots %b", new Object[] { paramString, Integer.valueOf(paramArrayOfByte.getStatus()), Boolean.valueOf(paramArrayOfByte.isIssuedByKnownRoot()) });
+      ae.i("mars.CdnLogic", "host %s verify result %d, isknownroots %b", new Object[] { paramString, Integer.valueOf(paramArrayOfByte.getStatus()), Boolean.valueOf(paramArrayOfByte.isIssuedByKnownRoot()) });
       int i = paramArrayOfByte.getStatus();
       return i;
     }
     catch (KeyStoreException paramString)
     {
-      ad.e("mars.CdnLogic", paramString.getLocalizedMessage());
+      ae.e("mars.CdnLogic", paramString.getLocalizedMessage());
       return -1;
     }
     catch (NoSuchAlgorithmException paramString)
     {
-      ad.e("mars.CdnLogic", paramString.getLocalizedMessage());
+      ae.e("mars.CdnLogic", paramString.getLocalizedMessage());
       return -1;
     }
     catch (IllegalArgumentException paramString)
     {
-      ad.e("mars.CdnLogic", paramString.getLocalizedMessage());
+      ae.e("mars.CdnLogic", paramString.getLocalizedMessage());
       return -1;
     }
     catch (Exception paramString)
     {
-      ad.e("mars.CdnLogic", paramString.getLocalizedMessage());
+      ae.e("mars.CdnLogic", paramString.getLocalizedMessage());
     }
     return -1;
   }
   
   public static CertVerifyResult doCertificateVerifyWithDetail(String paramString, byte[][] paramArrayOfByte)
   {
-    ad.i("mars.CdnLogic", "certifivate verify for %s", new Object[] { paramString });
+    ae.i("mars.CdnLogic", "certifivate verify for %s", new Object[] { paramString });
     try
     {
       paramArrayOfByte = X509Util.verifyServerCertificates(paramArrayOfByte, "RSA", paramString);
@@ -205,33 +205,33 @@ public class CdnLogic
       localCertVerifyResult.isIssuedByKnownRoot = paramArrayOfByte.isIssuedByKnownRoot();
       localCertVerifyResult.certificateChain = paramArrayOfByte.getCertificateChainEncoded();
       paramArrayOfByte.getCertificateChainEncoded();
-      ad.i("mars.CdnLogic", "host %s verify result %d, isknownroots %b", new Object[] { paramString, Integer.valueOf(paramArrayOfByte.getStatus()), Boolean.valueOf(paramArrayOfByte.isIssuedByKnownRoot()) });
+      ae.i("mars.CdnLogic", "host %s verify result %d, isknownroots %b", new Object[] { paramString, Integer.valueOf(paramArrayOfByte.getStatus()), Boolean.valueOf(paramArrayOfByte.isIssuedByKnownRoot()) });
       return localCertVerifyResult;
     }
     catch (KeyStoreException paramString)
     {
-      ad.e("mars.CdnLogic", paramString.getLocalizedMessage());
+      ae.e("mars.CdnLogic", paramString.getLocalizedMessage());
       paramString = new CertVerifyResult();
       paramString.status = -1;
       return paramString;
     }
     catch (NoSuchAlgorithmException paramString)
     {
-      ad.e("mars.CdnLogic", paramString.getLocalizedMessage());
+      ae.e("mars.CdnLogic", paramString.getLocalizedMessage());
       paramString = new CertVerifyResult();
       paramString.status = -1;
       return paramString;
     }
     catch (IllegalArgumentException paramString)
     {
-      ad.e("mars.CdnLogic", paramString.getLocalizedMessage());
+      ae.e("mars.CdnLogic", paramString.getLocalizedMessage());
       paramString = new CertVerifyResult();
       paramString.status = -1;
       return paramString;
     }
     catch (Exception paramString)
     {
-      ad.e("mars.CdnLogic", paramString.getLocalizedMessage());
+      ae.e("mars.CdnLogic", paramString.getLocalizedMessage());
       paramString = new CertVerifyResult();
       paramString.status = -1;
     }
@@ -252,7 +252,7 @@ public class CdnLogic
   public static int getUSBState()
   {
     Object localObject = new IntentFilter("android.intent.action.BATTERY_CHANGED");
-    localObject = aj.getContext().registerReceiver(null, (IntentFilter)localObject);
+    localObject = ak.getContext().registerReceiver(null, (IntentFilter)localObject);
     if (localObject != null) {
       try
       {
@@ -261,7 +261,7 @@ public class CdnLogic
       }
       catch (Exception localException)
       {
-        ad.e("mars.CdnLogic", "err:%s", new Object[] { localException.getMessage() });
+        ae.e("mars.CdnLogic", "err:%s", new Object[] { localException.getMessage() });
       }
     }
     return -1;
@@ -272,18 +272,18 @@ public class CdnLogic
   public static int isFileReady(String paramString)
   {
     int i;
-    if (!new e(paramString).exists()) {
+    if (!new k(paramString).exists()) {
       i = -1;
     }
     int j;
     do
     {
       return i;
-      ad.i("mars.CdnLogic", "checkFileProperty sdcard state ".concat(String.valueOf(g.getExternalStorageState())));
+      ae.i("mars.CdnLogic", "checkFileProperty sdcard state ".concat(String.valueOf(g.getExternalStorageState())));
       j = getUSBState();
       i = j;
     } while (2 != j);
-    ad.i("mars.CdnLogic", "checkFileProperty usb is connecting PC");
+    ae.i("mars.CdnLogic", "checkFileProperty usb is connecting PC");
     return j;
   }
   
@@ -301,10 +301,10 @@ public class CdnLogic
   
   public static long queryFreeSpace(String paramString)
   {
-    e locale = new e(paramString);
-    paramString = locale;
-    if (!locale.isDirectory()) {
-      paramString = locale.fOJ();
+    k localk = new k(paramString);
+    paramString = localk;
+    if (!localk.isDirectory()) {
+      paramString = localk.fTg();
     }
     do
     {
@@ -312,9 +312,9 @@ public class CdnLogic
       if (l > 0L) {
         return l;
       }
-      locale = paramString.fOJ();
-      paramString = locale;
-    } while (locale != null);
+      localk = paramString.fTg();
+      paramString = localk;
+    } while (localk != null);
     return 0L;
   }
   
@@ -348,29 +348,29 @@ public class CdnLogic
   
   public static native void setUseIPv6Cdn(boolean paramBoolean);
   
-  public static native int startC2CDownload(C2CDownloadRequest paramC2CDownloadRequest, CdnLogic.DownloadCallback paramDownloadCallback);
+  public static native int startC2CDownload(C2CDownloadRequest paramC2CDownloadRequest, DownloadCallback paramDownloadCallback);
   
   public static native int startC2CUpload(C2CUploadRequest paramC2CUploadRequest, UploadCallback paramUploadCallback);
   
-  public static native int startCronetFileDownload(C2CDownloadRequest paramC2CDownloadRequest, CdnLogic.DownloadCallback paramDownloadCallback);
+  public static native int startCronetFileDownload(C2CDownloadRequest paramC2CDownloadRequest, DownloadCallback paramDownloadCallback);
   
-  public static native int startCronetSimpleRequest(C2CDownloadRequest paramC2CDownloadRequest, CdnLogic.DownloadCallback paramDownloadCallback);
+  public static native int startCronetSimpleRequest(C2CDownloadRequest paramC2CDownloadRequest, DownloadCallback paramDownloadCallback);
   
   public static native int startFtnUpload(C2CUploadRequest paramC2CUploadRequest, UploadCallback paramUploadCallback);
   
-  public static native int startHttpMultiSocketDownloadTask(C2CDownloadRequest paramC2CDownloadRequest, CdnLogic.DownloadCallback paramDownloadCallback);
+  public static native int startHttpMultiSocketDownloadTask(C2CDownloadRequest paramC2CDownloadRequest, DownloadCallback paramDownloadCallback);
   
-  public static native int startHttpVideoStreamingDownload(C2CDownloadRequest paramC2CDownloadRequest, VideoStreamingCallback paramVideoStreamingCallback, CdnLogic.DownloadCallback paramDownloadCallback, int paramInt);
+  public static native int startHttpVideoStreamingDownload(C2CDownloadRequest paramC2CDownloadRequest, VideoStreamingCallback paramVideoStreamingCallback, DownloadCallback paramDownloadCallback, int paramInt);
   
-  public static native int startHttpsDownload(C2CDownloadRequest paramC2CDownloadRequest, CdnLogic.DownloadCallback paramDownloadCallback);
+  public static native int startHttpsDownload(C2CDownloadRequest paramC2CDownloadRequest, DownloadCallback paramDownloadCallback);
   
-  public static native int startSNSDownload(C2CDownloadRequest paramC2CDownloadRequest, VideoStreamingCallback paramVideoStreamingCallback, CdnLogic.DownloadCallback paramDownloadCallback, int paramInt);
+  public static native int startSNSDownload(C2CDownloadRequest paramC2CDownloadRequest, VideoStreamingCallback paramVideoStreamingCallback, DownloadCallback paramDownloadCallback, int paramInt);
   
   public static native int startSSUpload(C2CUploadRequest paramC2CUploadRequest, SessionCallback paramSessionCallback, UploadCallback paramUploadCallback);
   
-  public static native int startURLDownload(C2CDownloadRequest paramC2CDownloadRequest, CdnLogic.DownloadCallback paramDownloadCallback);
+  public static native int startURLDownload(C2CDownloadRequest paramC2CDownloadRequest, DownloadCallback paramDownloadCallback);
   
-  public static native int startVideoStreamingDownload(C2CDownloadRequest paramC2CDownloadRequest, VideoStreamingCallback paramVideoStreamingCallback, CdnLogic.DownloadCallback paramDownloadCallback, int paramInt);
+  public static native int startVideoStreamingDownload(C2CDownloadRequest paramC2CDownloadRequest, VideoStreamingCallback paramVideoStreamingCallback, DownloadCallback paramDownloadCallback, int paramInt);
   
   public static native boolean taskExist(String paramString);
   
@@ -713,12 +713,12 @@ public class CdnLogic
     
     public void setSavePath(String paramString)
     {
-      this.savePath = i.k(paramString, false);
+      this.savePath = o.k(paramString, false);
     }
     
     public void setStatePath(String paramString)
     {
-      this.statePath = i.k(paramString, false);
+      this.statePath = o.k(paramString, false);
     }
     
     public C2CDownloadRequest signalQuality(String paramString)
@@ -826,8 +826,10 @@ public class CdnLogic
     public int requestTotalCount = 0;
     public String serverIP = "";
     public long startTime = 0L;
+    public int svrFallbackCount = 0;
     public String systemErrorDescribe = "";
     public long taskStartTime = 0L;
+    public String traceMsg = "";
     public String transforMsg = "";
     public int transportProtocol = 0;
     public int transportProtocolError = 0;
@@ -889,24 +891,24 @@ public class CdnLogic
     
     public void setFilePath(String paramString)
     {
-      this.filePath = i.k(paramString, false);
-      if (bt.isNullOrNil(this.filePath)) {
+      this.filePath = o.k(paramString, false);
+      if (bu.isNullOrNil(this.filePath)) {
         this.filePath = "";
       }
     }
     
     public void setMidimgPath(String paramString)
     {
-      this.midimgPath = i.k(paramString, false);
-      if (bt.isNullOrNil(this.midimgPath)) {
+      this.midimgPath = o.k(paramString, false);
+      if (bu.isNullOrNil(this.midimgPath)) {
         this.midimgPath = "";
       }
     }
     
     public void setThumbfilePath(String paramString)
     {
-      this.thumbfilePath = i.k(paramString, false);
-      if (bt.isNullOrNil(this.thumbfilePath)) {
+      this.thumbfilePath = o.k(paramString, false);
+      if (bu.isNullOrNil(this.thumbfilePath)) {
         this.thumbfilePath = "";
       }
     }
@@ -981,31 +983,41 @@ public class CdnLogic
     public int AckSlice = 8192;
     public String ApprovedVideoHosts = "vweixinf.tc.qq.com,szwbwxsns.video.qq.com,szxzwxsns.video.qq.com,szzjwxsns.video.qq.com,shwbwxsns.video.qq.com,shxzwxsns.video.qq.com,shzjwxsns.video.qq.com,wxsnsdy.wxs.qq.com,vweixinthumb.tc.qq.com,wxsnsdythumb.wxs.qq.com,wxappthumb.tc.qq.com,wxapp.tc.qq.com";
     public int C2COverloadDelaySeconds = 10;
-    public int EnableBandVideoQUIC = 0;
-    public int EnableC2CVideoQUIC = 0;
     public int EnableCDNVerifyConnect = 1;
     public int EnableCDNVideoRedirectOC = 1;
     public int EnableSafeCDN = 0;
     public int EnableSnsImageDownload = 0;
     public int EnableSnsStreamDownload = 0;
     public int EnableSnsVideoRedirect = 0;
-    public int EnableStatusVideoQUIC = 0;
     public int EnableStreamUploadVideo = 1;
-    public int EnableUserVideoQUIC = 0;
     public int MobileEtl = 70;
     public int Ptl = 35;
+    public String QuicExptValues = "";
     public int SNSOverloadDelaySeconds = 60;
-    public int SupportQuicVersionMax = 1;
     public int UseDynamicETL = 0;
     public int UseStreamCDN = 1;
     public int WifiEtl = 90;
-    public boolean onlyrecvPtl = false;
-    public boolean onlysendETL = false;
     
     public String toString()
     {
-      return String.format("wifietl:%d, nowifietl:%d,ptl:%d,UseStreamCDN:%d,onlysendetl:%b,onlyrecvptl:%b,ackslice:%d,enableverify:%d,enableoc:%d,enablevideo:%d,dynamicetl:%b,c2coverload:%d,snsoverload:%d,safecdn:%d,snsstream:%d, snsimage:%d, c2cquic:%d, userquic:%d, bandquic:%d, statusquic:%d, quic.maxver:%d,snsvideo redirect:%d", new Object[] { Integer.valueOf(this.WifiEtl), Integer.valueOf(this.MobileEtl), Integer.valueOf(this.Ptl), Integer.valueOf(this.UseStreamCDN), Boolean.valueOf(this.onlysendETL), Boolean.valueOf(this.onlyrecvPtl), Integer.valueOf(this.AckSlice), Integer.valueOf(this.EnableCDNVerifyConnect), Integer.valueOf(this.EnableCDNVideoRedirectOC), Integer.valueOf(this.EnableStreamUploadVideo), Integer.valueOf(this.UseDynamicETL), Integer.valueOf(this.C2COverloadDelaySeconds), Integer.valueOf(this.SNSOverloadDelaySeconds), Integer.valueOf(this.EnableSafeCDN), Integer.valueOf(this.EnableSnsStreamDownload), Integer.valueOf(this.EnableSnsImageDownload), Integer.valueOf(this.EnableC2CVideoQUIC), Integer.valueOf(this.EnableUserVideoQUIC), Integer.valueOf(this.EnableBandVideoQUIC), Integer.valueOf(this.EnableStatusVideoQUIC), Integer.valueOf(this.SupportQuicVersionMax), Integer.valueOf(this.EnableSnsVideoRedirect) });
+      return String.format("UseStreamCDN:%d,enableverify:%d,enableoc:%d,enablevideo:%d,c2coverload:%d,snsoverload:%d,safecdn:%d,snsstream:%d, snsimage:%d, snsvideo redirect:%d", new Object[] { Integer.valueOf(this.UseStreamCDN), Integer.valueOf(this.EnableCDNVerifyConnect), Integer.valueOf(this.EnableCDNVideoRedirectOC), Integer.valueOf(this.EnableStreamUploadVideo), Integer.valueOf(this.C2COverloadDelaySeconds), Integer.valueOf(this.SNSOverloadDelaySeconds), Integer.valueOf(this.EnableSafeCDN), Integer.valueOf(this.EnableSnsStreamDownload), Integer.valueOf(this.EnableSnsImageDownload), Integer.valueOf(this.EnableSnsVideoRedirect) });
     }
+  }
+  
+  public static class CronetTaskResult
+  {
+    public CdnLogic.WebPageProfile performance = null;
+    public int statusCode = 0;
+    public String statusText = "";
+    public boolean useHttp2 = false;
+    public boolean useQuic = false;
+  }
+  
+  public static abstract interface DownloadCallback
+  {
+    public abstract void onC2CDownloadCompleted(String paramString, CdnLogic.C2CDownloadResult paramC2CDownloadResult);
+    
+    public abstract void onDownloadProgressChanged(String paramString, long paramLong1, long paramLong2, boolean paramBoolean);
   }
   
   public static abstract interface SessionCallback

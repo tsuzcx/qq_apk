@@ -6,39 +6,39 @@ import com.tencent.mm.plugin.appbrand.a.b;
 import com.tencent.mm.plugin.appbrand.a.c;
 import com.tencent.mm.plugin.appbrand.a.c.a;
 import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import org.json.JSONObject;
 
 public class i
-  extends g<com.tencent.mm.plugin.appbrand.q>
+  extends g<com.tencent.mm.plugin.appbrand.r>
 {
   private static final int CTRL_INDEX = 586;
   private static final String NAME = "enableLocationUpdateBackground";
   
-  public void b(final com.tencent.mm.plugin.appbrand.q paramq, JSONObject paramJSONObject, int paramInt)
+  public void b(final com.tencent.mm.plugin.appbrand.r paramr, JSONObject paramJSONObject, int paramInt)
   {
     AppMethodBeat.i(138196);
-    super.d(paramq, paramJSONObject, paramInt);
-    if (!(this.kOt instanceof r))
+    super.d(paramr, paramJSONObject, paramInt);
+    if (!(this.kRV instanceof s))
     {
-      ad.w("MicroMsg.AppBrand.JsApiEnableLocationUpdateBackgroundWxa", "state manager not RuntimeLocationUpdateStateManagerWxa");
-      paramq.h(paramInt, e("fail:system error", null));
+      ae.w("MicroMsg.AppBrand.JsApiEnableLocationUpdateBackgroundWxa", "state manager not RuntimeLocationUpdateStateManagerWxa");
+      paramr.h(paramInt, e("fail:system error", null));
       AppMethodBeat.o(138196);
       return;
     }
-    final r localr = (r)this.kOt;
-    paramJSONObject = localr.kOA;
+    final s locals = (s)this.kRV;
+    paramJSONObject = locals.kSc;
     if (paramJSONObject != null) {
-      paramJSONObject.bkB();
+      paramJSONObject.bll();
     }
-    if ((paramJSONObject == null) || (!localr.kOG)) {
-      paramJSONObject = new p();
+    if ((paramJSONObject == null) || (!locals.kSo)) {
+      paramJSONObject = new q();
     }
-    localr.kOA = paramJSONObject;
-    paramJSONObject.W(paramq.getRuntime());
-    localr.kOH = new q.a()
+    locals.kSc = paramJSONObject;
+    paramJSONObject.V(paramr.getRuntime());
+    locals.kSp = new r.a()
     {
-      public final void PF(String paramAnonymousString)
+      public final void Qn(String paramAnonymousString)
       {
         AppMethodBeat.i(138194);
         int i = -1;
@@ -69,75 +69,75 @@ public class i
           }
           i = 2;
           break;
-          ad.i("MicroMsg.AppBrand.JsApiEnableLocationUpdateBackgroundWxa", "STATE_LISTENING, start blink");
-          if (localr.kOA != null)
+          ae.i("MicroMsg.AppBrand.JsApiEnableLocationUpdateBackgroundWxa", "STATE_LISTENING, start blink");
+          if (locals.kSc != null)
           {
-            localr.kOA.W(paramq.getRuntime());
+            locals.kSc.V(paramr.getRuntime());
             AppMethodBeat.o(138194);
             return;
-            ad.i("MicroMsg.AppBrand.JsApiEnableLocationUpdateBackgroundWxa", "STATE_NOT_LISTENING, stop blink");
-            if (localr.kOA != null) {
-              localr.kOA.bkA();
+            ae.i("MicroMsg.AppBrand.JsApiEnableLocationUpdateBackgroundWxa", "STATE_NOT_LISTENING, stop blink");
+            if (locals.kSc != null) {
+              locals.kSc.blk();
             }
           }
         }
       }
     };
-    paramJSONObject = localr.kOM;
+    paramJSONObject = locals.kSu;
     if (paramJSONObject != null) {
-      paramq.getRuntime().jwS.b(paramJSONObject);
+      paramr.getRuntime().jzQ.b(paramJSONObject);
     }
-    if ((paramJSONObject == null) || (!localr.kOG)) {
+    if ((paramJSONObject == null) || (!locals.kSo)) {
       paramJSONObject = new c.a()
       {
         public final void a(String paramAnonymousString, b paramAnonymousb)
         {
           AppMethodBeat.i(138195);
-          if (paramAnonymousb == b.jKR)
+          if (paramAnonymousb == b.jOd)
           {
-            ad.i("MicroMsg.AppBrand.JsApiEnableLocationUpdateBackgroundWxa", "AppRunningState.DESTROYED, uninit");
-            localr.quit();
+            ae.i("MicroMsg.AppBrand.JsApiEnableLocationUpdateBackgroundWxa", "AppRunningState.DESTROYED, uninit");
+            locals.quit();
             AppMethodBeat.o(138195);
             return;
           }
-          if (paramAnonymousb == b.jKQ)
+          if (paramAnonymousb == b.jOc)
           {
-            ad.i("MicroMsg.AppBrand.JsApiEnableLocationUpdateBackgroundWxa", "AppRunningState.SUSPEND, suspendListening");
-            localr.bkC();
+            ae.i("MicroMsg.AppBrand.JsApiEnableLocationUpdateBackgroundWxa", "AppRunningState.SUSPEND, suspendListening");
+            locals.blm();
             AppMethodBeat.o(138195);
             return;
           }
-          if (paramAnonymousb == b.jKO)
+          if (paramAnonymousb == b.jOa)
           {
-            ad.i("MicroMsg.AppBrand.JsApiEnableLocationUpdateBackgroundWxa", "AppRunningState.FOREGROUND, resumeListening");
-            localr.bkD();
+            ae.i("MicroMsg.AppBrand.JsApiEnableLocationUpdateBackgroundWxa", "AppRunningState.FOREGROUND, resumeListening");
+            locals.bln();
             AppMethodBeat.o(138195);
             return;
           }
-          if (paramAnonymousb == b.jKP)
+          if (paramAnonymousb == b.jOb)
           {
-            if (!localr.kOG)
+            if (!locals.kSo)
             {
-              ad.i("MicroMsg.AppBrand.JsApiEnableLocationUpdateBackgroundWxa", "AppRunningState.BACKGROUND, stopListening");
-              localr.stopListening();
+              ae.i("MicroMsg.AppBrand.JsApiEnableLocationUpdateBackgroundWxa", "AppRunningState.BACKGROUND, stopListening");
+              locals.stopListening();
               AppMethodBeat.o(138195);
               return;
             }
-            ad.i("MicroMsg.AppBrand.JsApiEnableLocationUpdateBackgroundWxa", "AppRunningState.BACKGROUND, do nothing");
+            ae.i("MicroMsg.AppBrand.JsApiEnableLocationUpdateBackgroundWxa", "AppRunningState.BACKGROUND, do nothing");
           }
           AppMethodBeat.o(138195);
         }
       };
     }
-    paramq.getRuntime().jwS.a(paramJSONObject);
-    localr.kOM = paramJSONObject;
-    localr.kOG = true;
+    paramr.getRuntime().jzQ.a(paramJSONObject);
+    locals.kSu = paramJSONObject;
+    locals.kSo = true;
     AppMethodBeat.o(138196);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.g.i
  * JD-Core Version:    0.7.0.1
  */

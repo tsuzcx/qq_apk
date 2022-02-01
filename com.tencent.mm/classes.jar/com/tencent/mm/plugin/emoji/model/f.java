@@ -4,68 +4,68 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.protocal.protobuf.EmotionBanner;
 import com.tencent.mm.protocal.protobuf.EmotionBannerSet;
 import com.tencent.mm.protocal.protobuf.EmotionSummary;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.storage.emotion.EmojiGroupInfo;
 import java.util.ArrayList;
 import java.util.List;
 
 public final class f
 {
-  public int pEi;
-  public List<com.tencent.mm.plugin.emoji.a.a.f> pEj;
-  public EmotionBanner pEk;
-  public List<EmotionBanner> pEl;
-  public List<EmotionBannerSet> pEm;
-  public List<EmotionBannerSet> pEn;
+  public int pKM;
+  public List<com.tencent.mm.plugin.emoji.a.a.f> pKN;
+  public EmotionBanner pKO;
+  public List<EmotionBanner> pKP;
+  public List<EmotionBannerSet> pKQ;
+  public List<EmotionBannerSet> pKR;
   
-  public final void Ca(int paramInt)
+  public final void Cm(int paramInt)
   {
-    this.pEi += paramInt;
+    this.pKM += paramInt;
   }
   
-  public final void cO(List<com.tencent.mm.plugin.emoji.a.a.f> paramList)
+  public final void cR(List<com.tencent.mm.plugin.emoji.a.a.f> paramList)
   {
     AppMethodBeat.i(108588);
-    if (this.pEj == null) {
-      this.pEj = new ArrayList();
+    if (this.pKN == null) {
+      this.pKN = new ArrayList();
     }
     for (;;)
     {
-      this.pEj.addAll(paramList);
+      this.pKN.addAll(paramList);
       AppMethodBeat.o(108588);
       return;
-      int i = this.pEj.size() - 1;
-      if ((i >= 0) && (i < this.pEj.size()))
+      int i = this.pKN.size() - 1;
+      if ((i >= 0) && (i < this.pKN.size()))
       {
-        com.tencent.mm.plugin.emoji.a.a.f localf = (com.tencent.mm.plugin.emoji.a.a.f)this.pEj.get(i);
-        if ((localf != null) && (localf.pBV != null) && (!bt.isNullOrNil(localf.pBV.ProductID)) && (localf.pBV.ProductID.equals(EmojiGroupInfo.OeK))) {
-          this.pEj.remove(localf);
+        com.tencent.mm.plugin.emoji.a.a.f localf = (com.tencent.mm.plugin.emoji.a.a.f)this.pKN.get(i);
+        if ((localf != null) && (localf.pIz != null) && (!bu.isNullOrNil(localf.pIz.ProductID)) && (localf.pIz.ProductID.equals(EmojiGroupInfo.OzR))) {
+          this.pKN.remove(localf);
         }
       }
     }
   }
   
-  public final void cgK()
+  public final void cia()
   {
     AppMethodBeat.i(108587);
-    if (this.pEn == null)
+    if (this.pKR == null)
     {
       AppMethodBeat.o(108587);
       return;
     }
-    if (this.pEn.isEmpty())
+    if (this.pKR.isEmpty())
     {
       AppMethodBeat.o(108587);
       return;
     }
     ArrayList localArrayList = new ArrayList();
-    localArrayList.addAll(this.pEn);
+    localArrayList.addAll(this.pKR);
     int i = localArrayList.size() - 1;
     while (i >= 0)
     {
-      this.pEj.add(0, new com.tencent.mm.plugin.emoji.a.a.f((EmotionBannerSet)localArrayList.get(i)));
-      this.pEi += 1;
-      this.pEn.remove(localArrayList.get(i));
+      this.pKN.add(0, new com.tencent.mm.plugin.emoji.a.a.f((EmotionBannerSet)localArrayList.get(i)));
+      this.pKM += 1;
+      this.pKR.remove(localArrayList.get(i));
       i -= 1;
     }
     AppMethodBeat.o(108587);
@@ -73,7 +73,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.model.f
  * JD-Core Version:    0.7.0.1
  */

@@ -8,38 +8,38 @@ import android.view.MenuItem.OnMenuItemClickListener;
 import android.widget.ListView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.ba;
+import com.tencent.mm.model.bc;
 import com.tencent.mm.model.c;
 import com.tencent.mm.plugin.label.a.b;
 import com.tencent.mm.sdk.e.n;
 import com.tencent.mm.sdk.e.n.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.bp;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.bq;
 import com.tencent.mm.ui.MMActivity;
 
 public class ContactLabelMemberListUI
   extends MMActivity
 {
-  private ap mHandler;
-  private TextView nws;
-  private n.b uWN;
-  private ListView uXc;
-  private a uXd;
-  private String uXe;
-  private String uXf;
+  private aq mHandler;
+  private TextView nBN;
+  private n.b viB;
+  private ListView viQ;
+  private a viR;
+  private String viS;
+  private String viT;
   
   public ContactLabelMemberListUI()
   {
     AppMethodBeat.i(26266);
     this.mHandler = new ContactLabelMemberListUI.1(this);
-    this.uWN = new n.b()
+    this.viB = new n.b()
     {
       public final void a(int paramAnonymousInt, n paramAnonymousn, Object paramAnonymousObject)
       {
         AppMethodBeat.i(26262);
-        ad.d("MicroMsg.Label.ContactLabelMemberListUI", "event:%d, obj:%s", new Object[] { Integer.valueOf(paramAnonymousInt), paramAnonymousObject });
+        ae.d("MicroMsg.Label.ContactLabelMemberListUI", "event:%d, obj:%s", new Object[] { Integer.valueOf(paramAnonymousInt), paramAnonymousObject });
         if (ContactLabelMemberListUI.b(ContactLabelMemberListUI.this) != null)
         {
           ContactLabelMemberListUI.b(ContactLabelMemberListUI.this).removeMessages(5001);
@@ -51,17 +51,17 @@ public class ContactLabelMemberListUI
     AppMethodBeat.o(26266);
   }
   
-  private void dfw()
+  private void dio()
   {
     AppMethodBeat.i(26272);
-    if (this.uXd != null)
+    if (this.viR != null)
     {
-      this.uXd.uWY = com.tencent.mm.plugin.label.a.a.dfo().aop(this.uXe);
-      this.uXd.a(null, null);
+      this.viR.viM = com.tencent.mm.plugin.label.a.a.dig().apr(this.viS);
+      this.viR.a(null, null);
     }
-    this.uXf = com.tencent.mm.plugin.label.a.a.dfo().aol(this.uXe);
-    if (!bt.isNullOrNil(this.uXf)) {
-      setMMTitle(this.uXf);
+    this.viT = com.tencent.mm.plugin.label.a.a.dig().apn(this.viS);
+    if (!bu.isNullOrNil(this.viT)) {
+      setMMTitle(this.viT);
     }
     AppMethodBeat.o(26272);
   }
@@ -74,11 +74,11 @@ public class ContactLabelMemberListUI
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     AppMethodBeat.i(26271);
-    ad.i("MicroMsg.Label.ContactLabelMemberListUI", "[cpan] onActivity result. requestcode:%d resultCode:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    ae.i("MicroMsg.Label.ContactLabelMemberListUI", "[cpan] onActivity result. requestcode:%d resultCode:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     switch (paramInt1)
     {
     default: 
-      ad.e("MicroMsg.Label.ContactLabelMemberListUI", "[cpan] onActivity result. unknow requestcode:%d", new Object[] { Integer.valueOf(paramInt1) });
+      ae.e("MicroMsg.Label.ContactLabelMemberListUI", "[cpan] onActivity result. unknow requestcode:%d", new Object[] { Integer.valueOf(paramInt1) });
       AppMethodBeat.o(26271);
       return;
     }
@@ -88,7 +88,7 @@ public class ContactLabelMemberListUI
       AppMethodBeat.o(26271);
       return;
     }
-    dfw();
+    dio();
     AppMethodBeat.o(26271);
   }
   
@@ -96,8 +96,8 @@ public class ContactLabelMemberListUI
   {
     AppMethodBeat.i(26267);
     super.onCreate(paramBundle);
-    this.uXe = getIntent().getStringExtra("label_id");
-    this.uXf = getIntent().getStringExtra("label_name");
+    this.viS = getIntent().getStringExtra("label_id");
+    this.viT = getIntent().getStringExtra("label_name");
     setBackBtn(new ContactLabelMemberListUI.3(this));
     addTextOptionMenu(0, getString(2131760608), new MenuItem.OnMenuItemClickListener()
     {
@@ -113,28 +113,28 @@ public class ContactLabelMemberListUI
         return false;
       }
     });
-    setMMTitle(this.uXf);
-    this.uXc = ((ListView)findViewById(2131298671));
-    this.nws = ((TextView)findViewById(2131299457));
-    if (bt.isNullOrNil(this.uXe))
+    setMMTitle(this.viT);
+    this.viQ = ((ListView)findViewById(2131298671));
+    this.nBN = ((TextView)findViewById(2131299457));
+    if (bu.isNullOrNil(this.viS))
     {
-      ad.e("MicroMsg.Label.ContactLabelMemberListUI", "[cpan] inite view");
+      ae.e("MicroMsg.Label.ContactLabelMemberListUI", "[cpan] inite view");
       finish();
     }
-    this.uXd = new a(getContext());
-    this.uXc.setAdapter(this.uXd);
-    this.uXc.setOnItemClickListener(new ContactLabelMemberListUI.5(this));
-    this.uXc.setEmptyView(this.nws);
+    this.viR = new a(getContext());
+    this.viQ.setAdapter(this.viR);
+    this.viQ.setOnItemClickListener(new ContactLabelMemberListUI.5(this));
+    this.viQ.setEmptyView(this.nBN);
     AppMethodBeat.o(26267);
   }
   
   public void onDestroy()
   {
     AppMethodBeat.i(26270);
-    if (this.uXd != null)
+    if (this.viR != null)
     {
-      this.uXd.det();
-      this.uXd.fvg();
+      this.viR.dhl();
+      this.viR.fzh();
     }
     super.onDestroy();
     AppMethodBeat.o(26270);
@@ -143,8 +143,8 @@ public class ContactLabelMemberListUI
   public void onPause()
   {
     AppMethodBeat.i(26269);
-    ba.aBQ();
-    c.azp().b(this.uWN);
+    bc.aCg();
+    c.azF().b(this.viB);
     super.onPause();
     AppMethodBeat.o(26269);
   }
@@ -152,10 +152,10 @@ public class ContactLabelMemberListUI
   public void onResume()
   {
     AppMethodBeat.i(26268);
-    ba.aBQ();
-    c.azp().a(this.uWN);
+    bc.aCg();
+    c.azF().a(this.viB);
     super.onResume();
-    dfw();
+    dio();
     AppMethodBeat.o(26268);
   }
   

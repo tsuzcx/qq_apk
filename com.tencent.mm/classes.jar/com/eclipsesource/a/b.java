@@ -174,7 +174,24 @@ public final class b
   public final Iterator<h> iterator()
   {
     AppMethodBeat.i(74701);
-    b.1 local1 = new b.1(this, this.aIx.iterator());
+    Iterator local1 = new Iterator()
+    {
+      public final boolean hasNext()
+      {
+        AppMethodBeat.i(74684);
+        boolean bool = this.aZJ.hasNext();
+        AppMethodBeat.o(74684);
+        return bool;
+      }
+      
+      public final void remove()
+      {
+        AppMethodBeat.i(74685);
+        UnsupportedOperationException localUnsupportedOperationException = new UnsupportedOperationException();
+        AppMethodBeat.o(74685);
+        throw localUnsupportedOperationException;
+      }
+    };
     AppMethodBeat.o(74701);
     return local1;
   }
@@ -202,7 +219,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.eclipsesource.a.b
  * JD-Core Version:    0.7.0.1
  */

@@ -6,13 +6,13 @@ public abstract interface a
 {
   public abstract void a(MsgFile paramMsgFile);
   
-  public abstract void bZe();
+  public abstract void cat();
   
-  public abstract void bZf();
+  public abstract void cau();
   
-  public abstract void bZg();
+  public abstract void cav();
   
-  public abstract void eW(int paramInt1, int paramInt2);
+  public abstract void eX(int paramInt1, int paramInt2);
 }
 
 

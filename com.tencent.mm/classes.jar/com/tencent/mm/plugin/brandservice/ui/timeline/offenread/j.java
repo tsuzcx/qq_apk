@@ -1,22 +1,22 @@
 package com.tencent.mm.plugin.brandservice.ui.timeline.offenread;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
-import com.tencent.mm.am.ag;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.al.ag;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
 import com.tencent.mm.plugin.messenger.foundation.a.l;
-import com.tencent.mm.protocal.protobuf.dmw;
-import com.tencent.mm.protocal.protobuf.dmx;
-import com.tencent.mm.protocal.protobuf.dmz;
-import com.tencent.mm.protocal.protobuf.zc;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.bp;
+import com.tencent.mm.protocal.protobuf.dnt;
+import com.tencent.mm.protocal.protobuf.dnu;
+import com.tencent.mm.protocal.protobuf.dnw;
+import com.tencent.mm.protocal.protobuf.zf;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.bq;
 import com.tencent.mm.storage.w;
 import com.tencent.mm.storage.x;
 import java.util.Iterator;
@@ -34,39 +34,39 @@ public final class j
   {
     AppMethodBeat.i(6151);
     Object localObject1 = new b.a();
-    ((b.a)localObject1).hNM = new dmw();
-    ((b.a)localObject1).hNN = new dmx();
+    ((b.a)localObject1).hQF = new dnt();
+    ((b.a)localObject1).hQG = new dnu();
     ((b.a)localObject1).uri = "/cgi-bin/mmbiz-bin/bizattr/timeline_often_read_biz";
     ((b.a)localObject1).funcId = 2768;
-    ((b.a)localObject1).hNO = 0;
+    ((b.a)localObject1).hQH = 0;
     ((b.a)localObject1).respCmdId = 0;
-    this.rr = ((b.a)localObject1).aDC();
-    localObject1 = (dmw)this.rr.hNK.hNQ;
-    Object localObject2 = e.bOS();
+    this.rr = ((b.a)localObject1).aDS();
+    localObject1 = (dnt)this.rr.hQD.hQJ;
+    Object localObject2 = e.bPQ();
     if (localObject2 == null) {}
     for (;;)
     {
-      ((dmw)localObject1).HBf = localLinkedList;
+      ((dnt)localObject1).HUS = localLinkedList;
       AppMethodBeat.o(6151);
       return;
-      localObject2 = ((dmx)localObject2).HBg;
-      if (!bt.hj((List)localObject2))
+      localObject2 = ((dnu)localObject2).HUT;
+      if (!bu.ht((List)localObject2))
       {
         localLinkedList = new LinkedList();
         localObject2 = ((LinkedList)localObject2).iterator();
         while (((Iterator)localObject2).hasNext())
         {
-          Object localObject3 = (dmz)((Iterator)localObject2).next();
+          Object localObject3 = (dnw)((Iterator)localObject2).next();
           if (localObject3 != null)
           {
-            zc localzc = new zc();
-            localzc.FxR = ((dmz)localObject3).FxR;
-            long l = ((l)g.ab(l.class)).azp().aTm(((dmz)localObject3).FxR);
-            localObject3 = ag.aGf().Dq(l);
+            zf localzf = new zf();
+            localzf.FQp = ((dnw)localObject3).FQp;
+            long l = ((l)g.ab(l.class)).azF().aUN(((dnw)localObject3).FQp);
+            localObject3 = ag.aGv().DP(l);
             if (localObject3 != null) {
-              localzc.FYH = ((int)(((w)localObject3).field_createTime / 1000L));
+              localzf.Grg = ((int)(((w)localObject3).field_createTime / 1000L));
             }
-            localLinkedList.add(localzc);
+            localLinkedList.add(localzf);
           }
         }
       }

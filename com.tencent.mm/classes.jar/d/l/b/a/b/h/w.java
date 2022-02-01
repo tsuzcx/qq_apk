@@ -5,7 +5,7 @@ import java.util.List;
 public final class w
   extends RuntimeException
 {
-  private final List<String> Nsa = null;
+  private final List<String> NPg = null;
   
   public w()
   {
@@ -14,7 +14,7 @@ public final class w
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     d.l.b.a.b.h.w
  * JD-Core Version:    0.7.0.1
  */

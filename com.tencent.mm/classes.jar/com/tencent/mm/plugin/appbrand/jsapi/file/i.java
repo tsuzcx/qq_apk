@@ -14,10 +14,10 @@ public abstract interface i
       super(paramVarArgs);
     }
     
-    public final a D(Map<String, Object> paramMap)
+    public final a K(Map<String, Object> paramMap)
     {
       AppMethodBeat.i(140673);
-      paramMap = (a)super.y(paramMap);
+      paramMap = (a)super.F(paramMap);
       AppMethodBeat.o(140673);
       return paramMap;
     }
@@ -33,7 +33,7 @@ public abstract interface i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.file.i
  * JD-Core Version:    0.7.0.1
  */

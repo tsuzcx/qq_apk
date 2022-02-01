@@ -7,19 +7,19 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
 import com.tencent.mm.plugin.webview.luggage.jsapi.bq;
 import com.tencent.mm.plugin.webview.luggage.jsapi.bq.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
 import org.json.JSONObject;
 
 public class JsApiMMTask
   extends MainProcessTask
 {
   public static final Parcelable.Creator<JsApiMMTask> CREATOR;
-  public b.a DQB;
-  public String DQC;
-  public String DQD;
+  public b.a EiB;
+  public String EiC;
+  public String EiD;
   public String errMsg;
-  public String kwS;
+  public String kAh;
   
   static
   {
@@ -37,19 +37,19 @@ public class JsApiMMTask
     AppMethodBeat.o(78501);
   }
   
-  public final void aOA()
+  public final void aOX()
   {
     AppMethodBeat.i(78497);
     try
     {
-      ((bq)Class.forName(this.DQC).newInstance()).a(aj.getContext(), this.kwS, new bq.a()
+      ((bq)Class.forName(this.EiC).newInstance()).a(ak.getContext(), this.kAh, new bq.a()
       {
         public final void f(String paramAnonymousString, JSONObject paramAnonymousJSONObject)
         {
           AppMethodBeat.i(78495);
           JsApiMMTask.this.errMsg = paramAnonymousString;
           if (paramAnonymousJSONObject != null) {
-            JsApiMMTask.this.DQD = paramAnonymousJSONObject.toString();
+            JsApiMMTask.this.EiD = paramAnonymousJSONObject.toString();
           }
           JsApiMMTask.a(JsApiMMTask.this);
           AppMethodBeat.o(78495);
@@ -60,27 +60,27 @@ public class JsApiMMTask
     }
     catch (Exception localException)
     {
-      ad.printErrStackTrace("MicroMsg.JsApiMMTask", localException, "runInMainProcess fail.", new Object[0]);
+      ae.printErrStackTrace("MicroMsg.JsApiMMTask", localException, "runInMainProcess fail.", new Object[0]);
       AppMethodBeat.o(78497);
     }
   }
   
-  public final void aOB()
+  public final void aOY()
   {
     AppMethodBeat.i(78498);
-    bhO();
-    if (this.DQB != null) {
+    bix();
+    if (this.EiB != null) {
       try
       {
-        JSONObject localJSONObject = new JSONObject(this.DQD);
-        this.DQB.a(this.errMsg, localJSONObject);
+        JSONObject localJSONObject = new JSONObject(this.EiD);
+        this.EiB.a(this.errMsg, localJSONObject);
         AppMethodBeat.o(78498);
         return;
       }
       catch (Exception localException)
       {
-        this.DQB.a(this.errMsg, null);
-        ad.printErrStackTrace("MicroMsg.JsApiMMTask", localException, "runInClientProcess fail.", new Object[0]);
+        this.EiB.a(this.errMsg, null);
+        ae.printErrStackTrace("MicroMsg.JsApiMMTask", localException, "runInClientProcess fail.", new Object[0]);
       }
     }
     AppMethodBeat.o(78498);
@@ -89,20 +89,20 @@ public class JsApiMMTask
   public final void e(Parcel paramParcel)
   {
     AppMethodBeat.i(78499);
-    this.kwS = paramParcel.readString();
-    this.DQC = paramParcel.readString();
+    this.kAh = paramParcel.readString();
+    this.EiC = paramParcel.readString();
     this.errMsg = paramParcel.readString();
-    this.DQD = paramParcel.readString();
+    this.EiD = paramParcel.readString();
     AppMethodBeat.o(78499);
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(78500);
-    paramParcel.writeString(this.kwS);
-    paramParcel.writeString(this.DQC);
+    paramParcel.writeString(this.kAh);
+    paramParcel.writeString(this.EiC);
     paramParcel.writeString(this.errMsg);
-    paramParcel.writeString(this.DQD);
+    paramParcel.writeString(this.EiD);
     AppMethodBeat.o(78500);
   }
 }

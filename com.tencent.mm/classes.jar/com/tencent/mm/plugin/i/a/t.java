@@ -43,13 +43,15 @@ public abstract interface t
   
   public abstract boolean showFinderEntry();
   
-  public abstract void snsToFinderPostReport(String paramString1, int paramInt1, String paramString2, int paramInt2, int paramInt3, int paramInt4, long paramLong1, long paramLong2, long paramLong3);
+  public abstract boolean showPostEntry();
+  
+  public abstract void snsToFinderPostReport(String paramString1, int paramInt1, String paramString2, int paramInt2, int paramInt3, int paramInt4, long paramLong1, long paramLong2, long paramLong3, int paramInt5);
   
   public abstract Object tryGetFinderObject(long paramLong, String paramString, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.i.a.t
  * JD-Core Version:    0.7.0.1
  */

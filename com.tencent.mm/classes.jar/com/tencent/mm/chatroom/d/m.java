@@ -1,18 +1,18 @@
 package com.tencent.mm.chatroom.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.azc;
-import com.tencent.mm.protocal.protobuf.azd;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.azs;
+import com.tencent.mm.protocal.protobuf.azt;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class m
   extends n
@@ -20,9 +20,9 @@ public final class m
 {
   private f callback;
   public String chatroomName;
-  public String fKQ;
-  public int fKR;
-  public int fKS;
+  public String fMT;
+  public int fMU;
+  public int fMV;
   private final b rr;
   public int status;
   
@@ -31,15 +31,15 @@ public final class m
     AppMethodBeat.i(12473);
     this.callback = null;
     b.a locala = new b.a();
-    locala.hNM = new azc();
-    locala.hNN = new azd();
+    locala.hQF = new azs();
+    locala.hQG = new azt();
     locala.uri = "/cgi-bin/micromsg-bin/getchatroomupgradestatus";
     locala.funcId = 519;
-    locala.hNO = 0;
+    locala.hQH = 0;
     locala.respCmdId = 0;
-    this.rr = locala.aDC();
+    this.rr = locala.aDS();
     this.chatroomName = paramString;
-    ((azc)this.rr.hNK.hNQ).FuL = paramString;
+    ((azs)this.rr.hQD.hQJ).FNj = paramString;
     AppMethodBeat.o(12473);
   }
   
@@ -60,13 +60,13 @@ public final class m
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(12475);
-    paramq = (azd)this.rr.hNL.hNQ;
-    ad.d("MicroMsg.NetSceneGetChatRoomUpgradeStatus", "NetSceneGetChatRoomUpgradeStatus onGYNetEnd errType:%d, errCode:%d, errMsg:%s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    this.status = paramq.nDG;
-    this.fKQ = paramq.Gwy;
-    this.fKS = paramq.Gwz;
-    this.fKQ = paramq.Gwy;
-    this.fKR = paramq.Gwx;
+    paramq = (azt)this.rr.hQE.hQJ;
+    ae.d("MicroMsg.NetSceneGetChatRoomUpgradeStatus", "NetSceneGetChatRoomUpgradeStatus onGYNetEnd errType:%d, errCode:%d, errMsg:%s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    this.status = paramq.nJb;
+    this.fMT = paramq.GPY;
+    this.fMV = paramq.GPZ;
+    this.fMT = paramq.GPY;
+    this.fMU = paramq.GPX;
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(12475);
   }

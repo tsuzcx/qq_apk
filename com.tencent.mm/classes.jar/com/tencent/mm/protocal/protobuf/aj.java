@@ -3,9 +3,9 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class aj
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public String nDo;
+  public String nIJ;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -13,28 +13,28 @@ public final class aj
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.nDo != null) {
-        paramVarArgs.d(1, this.nDo);
+      if (this.nIJ != null) {
+        paramVarArgs.d(1, this.nIJ);
       }
       AppMethodBeat.o(6387);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.nDo == null) {
+      if (this.nIJ == null) {
         break label220;
       }
     }
     label220:
-    for (paramInt = f.a.a.b.b.a.e(1, this.nDo) + 0;; paramInt = 0)
+    for (paramInt = f.a.a.b.b.a.e(1, this.nIJ) + 0;; paramInt = 0)
     {
       AppMethodBeat.o(6387);
       return paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
         AppMethodBeat.o(6387);
@@ -50,7 +50,7 @@ public final class aj
           AppMethodBeat.o(6387);
           return -1;
         }
-        localaj.nDo = locala.NPN.readString();
+        localaj.nIJ = locala.OmT.readString();
         AppMethodBeat.o(6387);
         return 0;
       }

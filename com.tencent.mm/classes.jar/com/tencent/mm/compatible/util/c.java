@@ -6,37 +6,37 @@ import android.content.Context;
 import android.media.AudioManager;
 import android.media.AudioManager.OnAudioFocusChangeListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
 
 @TargetApi(8)
 public final class c
   implements b.b
 {
   private Context context;
-  b.a gdu;
-  private AudioManager.OnAudioFocusChangeListener gdv;
+  b.a gfC;
+  private AudioManager.OnAudioFocusChangeListener gfD;
   private AudioManager mAudioManager;
   
   public c(Context paramContext)
   {
     AppMethodBeat.i(155870);
-    this.gdv = new AudioManager.OnAudioFocusChangeListener()
+    this.gfD = new AudioManager.OnAudioFocusChangeListener()
     {
       public final void onAudioFocusChange(int paramAnonymousInt)
       {
         AppMethodBeat.i(155869);
-        if (c.this.gdu != null)
+        if (c.this.gfC != null)
         {
-          ad.d("MicroMsg.AudioFocusHelper", "jacks change: %d", new Object[] { Integer.valueOf(paramAnonymousInt) });
-          c.this.gdu.hD(paramAnonymousInt);
+          ae.d("MicroMsg.AudioFocusHelper", "jacks change: %d", new Object[] { Integer.valueOf(paramAnonymousInt) });
+          c.this.gfC.hF(paramAnonymousInt);
         }
         AppMethodBeat.o(155869);
       }
     };
     Context localContext = paramContext;
     if ((paramContext instanceof Activity)) {
-      localContext = aj.getContext();
+      localContext = ak.getContext();
     }
     this.context = localContext;
     AppMethodBeat.o(155870);
@@ -44,10 +44,10 @@ public final class c
   
   public final void a(b.a parama)
   {
-    this.gdu = parama;
+    this.gfC = parama;
   }
   
-  public final boolean abe()
+  public final boolean abn()
   {
     AppMethodBeat.i(155872);
     if ((this.mAudioManager == null) && (this.context != null)) {
@@ -55,13 +55,13 @@ public final class c
     }
     boolean bool;
     if (this.mAudioManager != null) {
-      if (1 == this.mAudioManager.abandonAudioFocus(this.gdv)) {
+      if (1 == this.mAudioManager.abandonAudioFocus(this.gfD)) {
         bool = true;
       }
     }
     for (;;)
     {
-      ad.m("MicroMsg.AudioFocusHelper", "jacks abandonFocus: %B, %x", new Object[] { Boolean.valueOf(bool), Integer.valueOf(this.gdv.hashCode()) });
+      ae.m("MicroMsg.AudioFocusHelper", "jacks abandonFocus: %B, %x", new Object[] { Boolean.valueOf(bool), Integer.valueOf(this.gfD.hashCode()) });
       AppMethodBeat.o(155872);
       return bool;
       bool = false;
@@ -78,13 +78,13 @@ public final class c
     }
     boolean bool;
     if (this.mAudioManager != null) {
-      if (1 == this.mAudioManager.requestAudioFocus(this.gdv, 3, 2)) {
+      if (1 == this.mAudioManager.requestAudioFocus(this.gfD, 3, 2)) {
         bool = true;
       }
     }
     for (;;)
     {
-      ad.m("MicroMsg.AudioFocusHelper", "jacks requestFocus: %B, %x", new Object[] { Boolean.valueOf(bool), Integer.valueOf(this.gdv.hashCode()) });
+      ae.m("MicroMsg.AudioFocusHelper", "jacks requestFocus: %B, %x", new Object[] { Boolean.valueOf(bool), Integer.valueOf(this.gfD.hashCode()) });
       AppMethodBeat.o(155871);
       return bool;
       bool = false;
@@ -95,7 +95,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.compatible.util.c
  * JD-Core Version:    0.7.0.1
  */

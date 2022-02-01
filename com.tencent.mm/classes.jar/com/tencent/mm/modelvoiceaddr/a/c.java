@@ -6,10 +6,10 @@ import android.os.Message;
 import com.qq.wx.voice.vad.EVadNative;
 import com.qq.wx.voice.vad.MMVoipVadNative;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.io.PrintStream;
 import java.util.Locale;
 import java.util.Map;
@@ -18,38 +18,38 @@ public class c
 {
   private static final String TAG;
   public static SharedPreferences sp;
-  private ap handler;
+  private aq handler;
+  private boolean iBM;
+  private int iBN;
+  private boolean iBO;
+  private boolean iBP;
+  private long iBQ;
+  private int iBR;
+  private a iBS;
+  private com.qq.wx.voice.vad.a iBT;
+  public a iBU;
+  private short[] iBV;
   private boolean isReleased;
-  private boolean iyT;
-  private int iyU;
-  private boolean iyV;
-  private boolean iyW;
-  private long iyX;
-  private int iyY;
-  private a iyZ;
-  private com.qq.wx.voice.vad.a iza;
-  public a izb;
-  private short[] izc;
   
   static
   {
     AppMethodBeat.i(148609);
     TAG = c.class.getSimpleName();
-    sp = aj.fkD();
+    sp = ak.fox();
     AppMethodBeat.o(148609);
   }
   
   public c(int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, boolean paramBoolean1, boolean paramBoolean2)
   {
     AppMethodBeat.i(148606);
-    this.iyT = true;
-    this.iyU = 3;
-    this.iyV = false;
-    this.iyW = false;
-    this.iyX = 0L;
-    this.iyY = 3500;
+    this.iBM = true;
+    this.iBN = 3;
+    this.iBO = false;
+    this.iBP = false;
+    this.iBQ = 0L;
+    this.iBR = 3500;
     this.isReleased = false;
-    this.handler = new ap(Looper.getMainLooper())
+    this.handler = new aq(Looper.getMainLooper())
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
@@ -60,31 +60,31 @@ public class c
           return;
         }
         if (c.a(c.this) != null) {
-          c.a(c.this).NX();
+          c.a(c.this).NV();
         }
         AppMethodBeat.o(148603);
       }
     };
-    this.iyZ = null;
-    this.iza = null;
-    this.iyY = paramInt1;
-    this.iza = new com.qq.wx.voice.vad.a();
+    this.iBS = null;
+    this.iBT = null;
+    this.iBR = paramInt1;
+    this.iBT = new com.qq.wx.voice.vad.a();
     int j = 0;
     int i = j;
     Object localObject;
-    if (aj.cnC())
+    if (ak.cpe())
     {
-      localObject = com.tencent.mm.model.c.d.aDs().wz("100235");
+      localObject = com.tencent.mm.model.c.d.aDI().xi("100235");
       i = j;
       if (((com.tencent.mm.storage.c)localObject).isValid()) {
-        i = bt.getInt((String)((com.tencent.mm.storage.c)localObject).foF().get("MMVoipVadOn"), 0);
+        i = bu.getInt((String)((com.tencent.mm.storage.c)localObject).fsy().get("MMVoipVadOn"), 0);
       }
     }
-    ad.i(TAG, "VoiceSilentDetectAPI: abTestFlag = [%s]", new Object[] { Integer.valueOf(i) });
+    ae.i(TAG, "VoiceSilentDetectAPI: abTestFlag = [%s]", new Object[] { Integer.valueOf(i) });
     if (i == 0)
     {
       com.qq.wx.voice.vad.a.bi(false);
-      localObject = this.iza;
+      localObject = this.iBT;
       if (!com.qq.wx.voice.vad.a.bVP) {
         break label304;
       }
@@ -100,7 +100,7 @@ public class c
       label250:
       if (paramInt2 != 1)
       {
-        localObject = this.iza;
+        localObject = this.iBT;
         if (((com.qq.wx.voice.vad.a)localObject).handle != 0L) {
           break label334;
         }
@@ -134,12 +134,12 @@ public class c
       }
     }
     label406:
-    this.iyZ = new a(paramInt5 * 16);
-    this.izc = new short[4000];
+    this.iBS = new a(paramInt5 * 16);
+    this.iBV = new short[4000];
     this.handler.removeMessages(0);
     this.handler.sendEmptyMessageDelayed(0, paramInt1);
-    this.iyV = paramBoolean1;
-    this.iyW = paramBoolean2;
+    this.iBO = paramBoolean1;
+    this.iBP = paramBoolean2;
     AppMethodBeat.o(148606);
   }
   
@@ -150,7 +150,7 @@ public class c
     AppMethodBeat.o(148605);
   }
   
-  public static String aNY()
+  public static String aOw()
   {
     AppMethodBeat.i(148604);
     String str = String.format(Locale.CHINA, "%s: %s\n%s: %s\n%s: %s\n%s: %s\n%s: %s", new Object[] { "sil_time", Integer.valueOf(sp.getInt("sil_time", 500)), "s_n_ration", Float.valueOf(sp.getFloat("s_n_ration", 2.5F)), "s_window", Integer.valueOf(sp.getInt("s_window", 500)), "s_length", Integer.valueOf(sp.getInt("s_length", 350)), "s_delay_time", Integer.valueOf(sp.getInt("s_delay_time", 550)) });
@@ -161,7 +161,7 @@ public class c
   public final void e(short[] paramArrayOfShort, int paramInt)
   {
     AppMethodBeat.i(148607);
-    ad.d(TAG, "input() called with: voice = [%s], length = [%s]", new Object[] { paramArrayOfShort, Integer.valueOf(paramInt) });
+    ae.d(TAG, "input() called with: voice = [%s], length = [%s]", new Object[] { paramArrayOfShort, Integer.valueOf(paramInt) });
     if ((paramArrayOfShort == null) || (paramArrayOfShort.length == 0) || (paramInt <= 0) || (paramInt > paramArrayOfShort.length))
     {
       AppMethodBeat.o(148607);
@@ -169,36 +169,36 @@ public class c
     }
     if (this.isReleased)
     {
-      ad.i(TAG, "VoiceSilentDetectAPI is released.");
+      ae.i(TAG, "VoiceSilentDetectAPI is released.");
       AppMethodBeat.o(148607);
       return;
     }
-    if (this.iyZ == null)
+    if (this.iBS == null)
     {
-      ad.i(TAG, "input, circleBuffer is null.");
+      ae.i(TAG, "input, circleBuffer is null.");
       AppMethodBeat.o(148607);
       return;
     }
-    int n = this.iza.a(paramArrayOfShort, paramInt);
-    ad.d(TAG, "currState = %s,prevState = %s,directFirstStart = %s,directTempState = %s", new Object[] { Integer.valueOf(n), Integer.valueOf(this.iyU), Boolean.valueOf(this.iyV), Boolean.valueOf(this.iyW) });
+    int n = this.iBT.a(paramArrayOfShort, paramInt);
+    ae.d(TAG, "currState = %s,prevState = %s,directFirstStart = %s,directTempState = %s", new Object[] { Integer.valueOf(n), Integer.valueOf(this.iBN), Boolean.valueOf(this.iBO), Boolean.valueOf(this.iBP) });
     long l;
     int i;
     int k;
-    if (this.iyV) {
-      if (this.iyW)
+    if (this.iBO) {
+      if (this.iBP)
       {
         l = System.currentTimeMillis();
-        if (this.izb != null) {
-          this.izb.aNT();
+        if (this.iBU != null) {
+          this.iBU.aOr();
         }
-        this.iyX = l;
+        this.iBQ = l;
         if (this.isReleased)
         {
           AppMethodBeat.o(148607);
           return;
         }
-        i = this.iyZ.iyR;
-        k = this.izc.length;
+        i = this.iBS.iBK;
+        k = this.iBV.length;
         if (i > 0) {
           if (k <= i) {
             break label811;
@@ -210,53 +210,53 @@ public class c
     label811:
     for (int j = i;; j = k)
     {
-      this.iyZ.c(this.izc, j);
+      this.iBS.c(this.iBV, j);
       int m = i - j;
       i = m;
-      if (this.izb == null) {
+      if (this.iBU == null) {
         break;
       }
-      this.izb.b(this.izc, j);
+      this.iBU.b(this.iBV, j);
       i = m;
       break;
-      this.iyW = false;
+      this.iBP = false;
       this.handler.removeMessages(0);
-      this.handler.sendEmptyMessageDelayed(0, this.iyY);
+      this.handler.sendEmptyMessageDelayed(0, this.iBR);
       for (;;)
       {
-        this.iyT = false;
-        this.iyU = n;
+        this.iBM = false;
+        this.iBN = n;
         if (!this.isReleased) {
           break;
         }
         AppMethodBeat.o(148607);
         return;
-        if ((this.iyU == 3) && (n == 2)) {
-          this.iyV = false;
+        if ((this.iBN == 3) && (n == 2)) {
+          this.iBO = false;
         }
-        if ((this.iyU != 3) || (n != 3))
+        if ((this.iBN != 3) || (n != 3))
         {
           this.handler.removeMessages(0);
-          this.handler.sendEmptyMessageDelayed(0, this.iyY);
+          this.handler.sendEmptyMessageDelayed(0, this.iBR);
         }
       }
-      if ((this.iyU == 3) && (n == 2))
+      if ((this.iBN == 3) && (n == 2))
       {
-        this.iyU = n;
+        this.iBN = n;
         this.handler.removeMessages(0);
-        this.handler.sendEmptyMessageDelayed(0, this.iyY);
+        this.handler.sendEmptyMessageDelayed(0, this.iBR);
         l = System.currentTimeMillis();
-        if (this.izb != null) {
-          this.izb.aNT();
+        if (this.iBU != null) {
+          this.iBU.aOr();
         }
-        this.iyX = l;
+        this.iBQ = l;
         if (this.isReleased)
         {
           AppMethodBeat.o(148607);
           return;
         }
-        i = this.iyZ.iyR;
-        k = this.izc.length;
+        i = this.iBS.iBK;
+        k = this.iBV.length;
         label506:
         if (i > 0) {
           if (k <= i) {
@@ -266,55 +266,55 @@ public class c
       }
       for (j = i;; j = k)
       {
-        this.iyZ.c(this.izc, j);
+        this.iBS.c(this.iBV, j);
         m = i - j;
         i = m;
-        if (this.izb == null) {
+        if (this.iBU == null) {
           break label506;
         }
-        this.izb.b(this.izc, j);
+        this.iBU.b(this.iBV, j);
         i = m;
         break label506;
-        this.iyT = false;
+        this.iBM = false;
         break;
-        if ((this.iyU == 2) && (n == 3))
+        if ((this.iBN == 2) && (n == 3))
         {
-          this.iyU = n;
-          this.iyT = true;
+          this.iBN = n;
+          this.iBM = true;
           this.handler.removeMessages(0);
-          this.handler.sendEmptyMessageDelayed(0, this.iyY);
+          this.handler.sendEmptyMessageDelayed(0, this.iBR);
           l = System.currentTimeMillis();
-          if (this.izb != null) {
-            this.izb.aNS();
+          if (this.iBU != null) {
+            this.iBU.aOq();
           }
-          this.iyX = l;
+          this.iBQ = l;
           if (!this.isReleased) {
             break;
           }
           AppMethodBeat.o(148607);
           return;
         }
-        if ((this.iyU == 3) && (n == 3))
+        if ((this.iBN == 3) && (n == 3))
         {
-          this.iyT = true;
+          this.iBM = true;
           break;
         }
-        if ((this.iyU != 2) || (n != 2)) {
+        if ((this.iBN != 2) || (n != 2)) {
           break;
         }
-        this.iyT = false;
+        this.iBM = false;
         this.handler.removeMessages(0);
-        this.handler.sendEmptyMessageDelayed(0, this.iyY);
+        this.handler.sendEmptyMessageDelayed(0, this.iBR);
         break;
-        this.iyZ.d(paramArrayOfShort, paramInt);
-        ad.d(TAG, "isSilent %s", new Object[] { Boolean.valueOf(this.iyT) });
-        if (this.iyT)
+        this.iBS.d(paramArrayOfShort, paramInt);
+        ae.d(TAG, "isSilent %s", new Object[] { Boolean.valueOf(this.iBM) });
+        if (this.iBM)
         {
           AppMethodBeat.o(148607);
           return;
         }
-        if (this.izb != null) {
-          this.izb.b(paramArrayOfShort, paramInt);
+        if (this.iBU != null) {
+          this.iBU.b(paramArrayOfShort, paramInt);
         }
         AppMethodBeat.o(148607);
         return;
@@ -325,45 +325,45 @@ public class c
   public final void release()
   {
     AppMethodBeat.i(148608);
-    ad.d(TAG, "released");
+    ae.d(TAG, "released");
     this.isReleased = true;
-    this.iyV = false;
-    this.iyW = false;
-    if (this.iza != null)
+    this.iBO = false;
+    this.iBP = false;
+    if (this.iBT != null)
     {
-      if (this.iza.zR() == 1)
+      if (this.iBT.zS() == 1)
       {
         b localb = new b();
         AppMethodBeat.o(148608);
         throw localb;
       }
-      this.iza = null;
+      this.iBT = null;
     }
-    this.iyZ = null;
-    this.izc = null;
+    this.iBS = null;
+    this.iBV = null;
     if (this.handler != null)
     {
       this.handler.removeMessages(0);
       this.handler = null;
     }
-    this.izb = null;
+    this.iBU = null;
     AppMethodBeat.o(148608);
   }
   
   public static abstract interface a
   {
-    public abstract void NX();
+    public abstract void NV();
     
-    public abstract void aNS();
+    public abstract void aOq();
     
-    public abstract void aNT();
+    public abstract void aOr();
     
     public abstract void b(short[] paramArrayOfShort, int paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.modelvoiceaddr.a.c
  * JD-Core Version:    0.7.0.1
  */

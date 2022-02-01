@@ -1,18 +1,18 @@
 package com.tencent.mm.plugin.wear.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.HashMap;
 
 public final class g
 {
-  private static int Dxk = 0;
-  private HashMap<String, f> rLo;
+  private static int DOP = 0;
+  private HashMap<String, f> rTC;
   
   public g()
   {
     AppMethodBeat.i(30014);
-    this.rLo = new HashMap();
+    this.rTC = new HashMap();
     AppMethodBeat.o(30014);
   }
   
@@ -21,8 +21,8 @@ public final class g
     try
     {
       AppMethodBeat.i(30017);
-      ad.i("MicroMsg.Wear.WearNotificationMap", "update notification=%s", new Object[] { paramf });
-      this.rLo.put(paramf.talker, paramf);
+      ae.i("MicroMsg.Wear.WearNotificationMap", "update notification=%s", new Object[] { paramf });
+      this.rTC.put(paramf.talker, paramf);
       AppMethodBeat.o(30017);
       return;
     }
@@ -34,7 +34,7 @@ public final class g
   }
   
   /* Error */
-  public final f aFn(String paramString)
+  public final f aGH(String paramString)
   {
     // Byte code:
     //   0: aload_0
@@ -42,12 +42,12 @@ public final class g
     //   2: sipush 30015
     //   5: invokestatic 23	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: aload_0
-    //   9: getfield 28	com/tencent/mm/plugin/wear/model/g:rLo	Ljava/util/HashMap;
+    //   9: getfield 28	com/tencent/mm/plugin/wear/model/g:rTC	Ljava/util/HashMap;
     //   12: aload_1
     //   13: invokevirtual 58	java/util/HashMap:containsKey	(Ljava/lang/Object;)Z
     //   16: ifeq +31 -> 47
     //   19: aload_0
-    //   20: getfield 28	com/tencent/mm/plugin/wear/model/g:rLo	Ljava/util/HashMap;
+    //   20: getfield 28	com/tencent/mm/plugin/wear/model/g:rTC	Ljava/util/HashMap;
     //   23: aload_1
     //   24: invokevirtual 62	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
     //   27: checkcast 44	com/tencent/mm/plugin/wear/model/f
@@ -60,10 +60,10 @@ public final class g
     //   44: monitorexit
     //   45: aload_1
     //   46: areturn
-    //   47: getstatic 13	com/tencent/mm/plugin/wear/model/g:Dxk	I
+    //   47: getstatic 13	com/tencent/mm/plugin/wear/model/g:DOP	I
     //   50: iconst_1
     //   51: iadd
-    //   52: putstatic 13	com/tencent/mm/plugin/wear/model/g:Dxk	I
+    //   52: putstatic 13	com/tencent/mm/plugin/wear/model/g:DOP	I
     //   55: new 44	com/tencent/mm/plugin/wear/model/f
     //   58: dup
     //   59: invokespecial 67	com/tencent/mm/plugin/wear/model/f:<init>	()V
@@ -72,13 +72,13 @@ public final class g
     //   64: aload_1
     //   65: putfield 48	com/tencent/mm/plugin/wear/model/f:talker	Ljava/lang/String;
     //   68: aload_2
-    //   69: getstatic 13	com/tencent/mm/plugin/wear/model/g:Dxk	I
+    //   69: getstatic 13	com/tencent/mm/plugin/wear/model/g:DOP	I
     //   72: putfield 70	com/tencent/mm/plugin/wear/model/f:id	I
     //   75: aload_2
-    //   76: getstatic 76	com/tencent/mm/plugin/wear/model/f$a:Dxf	Lcom/tencent/mm/plugin/wear/model/f$a;
-    //   79: putfield 79	com/tencent/mm/plugin/wear/model/f:Dxe	Lcom/tencent/mm/plugin/wear/model/f$a;
+    //   76: getstatic 76	com/tencent/mm/plugin/wear/model/f$a:DOK	Lcom/tencent/mm/plugin/wear/model/f$a;
+    //   79: putfield 79	com/tencent/mm/plugin/wear/model/f:DOJ	Lcom/tencent/mm/plugin/wear/model/f$a;
     //   82: aload_0
-    //   83: getfield 28	com/tencent/mm/plugin/wear/model/g:rLo	Ljava/util/HashMap;
+    //   83: getfield 28	com/tencent/mm/plugin/wear/model/g:rTC	Ljava/util/HashMap;
     //   86: aload_1
     //   87: aload_2
     //   88: invokevirtual 52	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
@@ -106,16 +106,16 @@ public final class g
     //   47	106	109	finally
   }
   
-  public final void aFo(String paramString)
+  public final void aGI(String paramString)
   {
     try
     {
       AppMethodBeat.i(30016);
-      ad.i("MicroMsg.Wear.WearNotificationMap", "reset notification talker=%s", new Object[] { paramString });
-      if (this.rLo.containsKey(paramString))
+      ae.i("MicroMsg.Wear.WearNotificationMap", "reset notification talker=%s", new Object[] { paramString });
+      if (this.rTC.containsKey(paramString))
       {
-        ((f)this.rLo.get(paramString)).Dxe = f.a.Dxf;
-        ((f)this.rLo.get(paramString)).Dxd = 0;
+        ((f)this.rTC.get(paramString)).DOJ = f.a.DOK;
+        ((f)this.rTC.get(paramString)).DOI = 0;
       }
       AppMethodBeat.o(30016);
       return;
@@ -123,17 +123,17 @@ public final class g
     finally {}
   }
   
-  public final void aFp(String paramString)
+  public final void aGJ(String paramString)
   {
     try
     {
       AppMethodBeat.i(30018);
-      if (this.rLo.containsKey(paramString))
+      if (this.rTC.containsKey(paramString))
       {
-        paramString = (f)this.rLo.get(paramString);
-        paramString.Dxe = f.a.Dxi;
-        paramString.Dxd = 0;
-        ad.i("MicroMsg.Wear.WearNotificationMap", "Update reply success, notification=%s", new Object[] { paramString });
+        paramString = (f)this.rTC.get(paramString);
+        paramString.DOJ = f.a.DON;
+        paramString.DOI = 0;
+        ae.i("MicroMsg.Wear.WearNotificationMap", "Update reply success, notification=%s", new Object[] { paramString });
       }
       AppMethodBeat.o(30018);
       return;
@@ -141,16 +141,16 @@ public final class g
     finally {}
   }
   
-  public final void aFq(String paramString)
+  public final void aGK(String paramString)
   {
     try
     {
       AppMethodBeat.i(30020);
-      if (this.rLo.containsKey(paramString))
+      if (this.rTC.containsKey(paramString))
       {
-        paramString = (f)this.rLo.get(paramString);
-        paramString.Dxe = f.a.Dxg;
-        ad.i("MicroMsg.Wear.WearNotificationMap", "Update showing success, notification=%s", new Object[] { paramString });
+        paramString = (f)this.rTC.get(paramString);
+        paramString.DOJ = f.a.DOL;
+        ae.i("MicroMsg.Wear.WearNotificationMap", "Update showing success, notification=%s", new Object[] { paramString });
       }
       AppMethodBeat.o(30020);
       return;
@@ -158,17 +158,17 @@ public final class g
     finally {}
   }
   
-  public final void fq(String paramString, int paramInt)
+  public final void fz(String paramString, int paramInt)
   {
     try
     {
       AppMethodBeat.i(30019);
-      if (this.rLo.containsKey(paramString))
+      if (this.rTC.containsKey(paramString))
       {
-        paramString = (f)this.rLo.get(paramString);
-        paramString.Dxe = f.a.Dxh;
-        paramString.Dxd = paramInt;
-        ad.i("MicroMsg.Wear.WearNotificationMap", "Update ignore success, notification=%s", new Object[] { paramString });
+        paramString = (f)this.rTC.get(paramString);
+        paramString.DOJ = f.a.DOM;
+        paramString.DOI = paramInt;
+        ae.i("MicroMsg.Wear.WearNotificationMap", "Update ignore success, notification=%s", new Object[] { paramString });
       }
       AppMethodBeat.o(30019);
       return;

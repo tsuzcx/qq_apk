@@ -6,7 +6,7 @@ import com.tencent.magicbrush.handler.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(gfx={1, 1, 13}, gfy={""}, gfz={"Lcom/tencent/magicbrush/ui/NativeAFHandler;", "Lcom/tencent/magicbrush/ui/AnimationFrameHandler;", "Ljava/lang/Runnable;", "runtime", "Lcom/tencent/magicbrush/MBRuntime;", "jsThreadHandler", "Lcom/tencent/magicbrush/handler/MBJsThreadHandler;", "(Lcom/tencent/magicbrush/MBRuntime;Lcom/tencent/magicbrush/handler/MBJsThreadHandler;)V", "strategy", "Lcom/tencent/magicbrush/ui/AnimationFrameHandler$Strategy;", "getStrategy", "()Lcom/tencent/magicbrush/ui/AnimationFrameHandler$Strategy;", "onCreate", "", "onDestroy", "onPause", "onResume", "run", "lib-magicbrush-nano_release"})
+@l(gjZ={1, 1, 13}, gka={""}, gkb={"Lcom/tencent/magicbrush/ui/NativeAFHandler;", "Lcom/tencent/magicbrush/ui/AnimationFrameHandler;", "Ljava/lang/Runnable;", "runtime", "Lcom/tencent/magicbrush/MBRuntime;", "jsThreadHandler", "Lcom/tencent/magicbrush/handler/MBJsThreadHandler;", "(Lcom/tencent/magicbrush/MBRuntime;Lcom/tencent/magicbrush/handler/MBJsThreadHandler;)V", "strategy", "Lcom/tencent/magicbrush/ui/AnimationFrameHandler$Strategy;", "getStrategy", "()Lcom/tencent/magicbrush/ui/AnimationFrameHandler$Strategy;", "onCreate", "", "onDestroy", "onPause", "onResume", "run", "lib-magicbrush-nano_release"})
 final class j
   extends a
   implements Runnable
@@ -14,40 +14,40 @@ final class j
   public j(MBRuntime paramMBRuntime, c paramc)
   {
     super(paramMBRuntime, paramc);
-    AppMethodBeat.i(215136);
-    AppMethodBeat.o(215136);
+    AppMethodBeat.i(213380);
+    AppMethodBeat.o(213380);
   }
   
-  public final a.b HE()
+  public final a.b HM()
   {
-    return a.b.czP;
+    return a.b.cAw;
   }
   
   public final void onCreate() {}
   
   public final void onPause()
   {
-    AppMethodBeat.i(215134);
-    this.czJ.post((Runnable)new a(this));
-    AppMethodBeat.o(215134);
+    AppMethodBeat.i(213378);
+    this.cAq.post((Runnable)new a(this));
+    AppMethodBeat.o(213378);
   }
   
   public final void onResume()
   {
-    AppMethodBeat.i(215133);
-    this.czJ.post((Runnable)this);
-    AppMethodBeat.o(215133);
+    AppMethodBeat.i(213377);
+    this.cAq.post((Runnable)this);
+    AppMethodBeat.o(213377);
   }
   
   public final void run()
   {
-    AppMethodBeat.i(215135);
+    AppMethodBeat.i(213379);
     c.c.i("AnimationFrameHandler", "hy: start native raf looper", new Object[0]);
-    this.cvY.Hf();
-    AppMethodBeat.o(215135);
+    this.cwC.Hl();
+    AppMethodBeat.o(213379);
   }
   
-  @l(gfx={1, 1, 13}, gfy={""}, gfz={"<anonymous>", "", "run"})
+  @l(gjZ={1, 1, 13}, gka={""}, gkb={"<anonymous>", "", "run"})
   static final class a
     implements Runnable
   {
@@ -55,15 +55,15 @@ final class j
     
     public final void run()
     {
-      AppMethodBeat.i(215132);
-      this.cAx.cvY.Hg();
-      AppMethodBeat.o(215132);
+      AppMethodBeat.i(213376);
+      this.cBe.cwC.Hm();
+      AppMethodBeat.o(213376);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.magicbrush.ui.j
  * JD-Core Version:    0.7.0.1
  */

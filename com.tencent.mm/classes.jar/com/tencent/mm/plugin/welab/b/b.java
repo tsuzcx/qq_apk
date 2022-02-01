@@ -11,7 +11,7 @@ public final class b
   public final void f(final List<c> paramList, final List<d> paramList1, final List<Integer> paramList2)
   {
     AppMethodBeat.i(146248);
-    h.LTJ.f(new Runnable()
+    h.MqF.f(new Runnable()
     {
       public final void run()
       {
@@ -25,7 +25,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.welab.b.b
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.account.ui;
 
 import android.view.MenuItem;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.ui.base.n.e;
 
 final class MobileInputUI$20
@@ -20,10 +20,10 @@ final class MobileInputUI$20
     {
       AppMethodBeat.o(128352);
       return;
-      MobileInputUI.d(this.jmP);
+      MobileInputUI.d(this.jpJ);
       AppMethodBeat.o(128352);
       return;
-      MobileInputUI.R(this.jmP, this.jmP.getString(2131766190) + ac.fks());
+      MobileInputUI.S(this.jpJ, this.jpJ.getString(2131766190) + ad.fom());
     }
   }
 }

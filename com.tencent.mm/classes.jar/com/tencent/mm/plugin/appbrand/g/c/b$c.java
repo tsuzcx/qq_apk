@@ -7,20 +7,20 @@ import com.tencent.mm.plugin.appbrand.g.d.b;
 public final class b$c
   extends b<Void>
 {
-  d kdA;
-  a kdB;
+  d kgR;
+  a kgS;
   
   public b$c(d paramd)
   {
     AppMethodBeat.i(158954);
-    this.kdA = paramd;
-    this.kdB = a.bft();
+    this.kgR = paramd;
+    this.kgS = a.bgb();
     AppMethodBeat.o(158954);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.g.c.b.c
  * JD-Core Version:    0.7.0.1
  */

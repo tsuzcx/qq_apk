@@ -5,7 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.Matrix;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.rtmp.ITXLivePlayListener;
 import com.tencent.rtmp.TXLivePlayer.ITXAudioVolumeEvaluationListener;
 import com.tencent.rtmp.TXLivePlayer.ITXSnapshotListener;
@@ -20,26 +20,26 @@ import org.json.JSONObject;
 public final class l
   implements ITXLivePlayListener, TXLivePlayer.ITXAudioVolumeEvaluationListener
 {
-  boolean crS;
-  boolean crT;
-  TXLivePlayer.ITXSnapshotListener csA;
-  int csB;
-  private String csC;
-  private String csD;
-  private String csE;
-  private float csF;
-  private float csG;
-  private boolean csH;
-  boolean csI;
-  private boolean csJ;
-  private boolean csK;
-  private boolean csL;
-  String csd;
-  boolean csg;
-  private WXLivePlayConfig csx;
-  WXLivePlayer csy;
-  ITXLivePlayListener csz;
-  boolean kPo;
+  String csG;
+  boolean csJ;
+  boolean csv;
+  boolean csw;
+  private WXLivePlayConfig cta;
+  WXLivePlayer ctb;
+  ITXLivePlayListener ctc;
+  TXLivePlayer.ITXSnapshotListener ctd;
+  int cte;
+  private String ctf;
+  private String ctg;
+  private String cth;
+  private float cti;
+  private float ctj;
+  private boolean ctk;
+  boolean ctl;
+  private boolean ctm;
+  private boolean ctn;
+  private boolean cto;
+  boolean kSW;
   TXLivePlayer.ITXAudioVolumeEvaluationListener mAudioVolumeListener;
   private Context mContext;
   boolean mInited;
@@ -51,41 +51,41 @@ public final class l
   public l(Context paramContext)
   {
     AppMethodBeat.i(145906);
-    this.csd = "";
-    this.csB = 0;
+    this.csG = "";
+    this.cte = 0;
     this.mInited = false;
-    this.kPo = false;
-    this.csg = false;
+    this.kSW = false;
+    this.csJ = false;
     this.mMode = 1;
     this.mMuteAudio = false;
     this.mMuteVideo = false;
-    this.csC = "vertical";
-    this.csD = "contain";
-    this.csE = "speaker";
-    this.csF = 1.0F;
-    this.csG = 3.0F;
-    this.csH = true;
-    this.csI = false;
-    this.csJ = false;
-    this.csK = false;
-    this.csL = false;
-    this.crS = true;
-    this.crT = true;
+    this.ctf = "vertical";
+    this.ctg = "contain";
+    this.cth = "speaker";
+    this.cti = 1.0F;
+    this.ctj = 3.0F;
+    this.ctk = true;
+    this.ctl = false;
+    this.ctm = false;
+    this.ctn = false;
+    this.cto = false;
+    this.csv = true;
+    this.csw = true;
     this.mContext = paramContext;
-    this.csx = new WXLivePlayConfig();
-    this.csy = new WXLivePlayer(this.mContext);
-    this.csy.enableHardwareDecode(true);
-    this.csy.setConfig(this.csx);
-    this.csy.setPlayListener(this);
-    this.csy.setAudioVolumeEvaluationListener(this);
+    this.cta = new WXLivePlayConfig();
+    this.ctb = new WXLivePlayer(this.mContext);
+    this.ctb.enableHardwareDecode(true);
+    this.ctb.setConfig(this.cta);
+    this.ctb.setPlayListener(this);
+    this.ctb.setAudioVolumeEvaluationListener(this);
     AppMethodBeat.o(145906);
   }
   
   private void a(final boolean paramBoolean, final TXLivePlayer.ITXSnapshotListener paramITXSnapshotListener)
   {
     AppMethodBeat.i(145908);
-    if (this.csy != null) {
-      this.csy.snapshot(new TXLivePlayer.ITXSnapshotListener()
+    if (this.ctb != null) {
+      this.ctb.snapshot(new TXLivePlayer.ITXSnapshotListener()
       {
         public final void onSnapshot(Bitmap paramAnonymousBitmap)
         {
@@ -102,7 +102,7 @@ public final class l
                 ((Matrix)localObject).setScale(0.5F, 0.5F);
                 localObject = Bitmap.createBitmap(paramAnonymousBitmap, 0, 0, i, j, (Matrix)localObject, false);
                 paramITXSnapshotListener.onSnapshot((Bitmap)localObject);
-                l.P(paramAnonymousBitmap);
+                l.Q(paramAnonymousBitmap);
                 AppMethodBeat.o(145905);
                 return;
               }
@@ -136,7 +136,7 @@ public final class l
         paramString = paramString + "\n" + str + " = " + paramBundle.getBoolean(str);
       }
     }
-    ad.i("TXLivePlayerJSAdapter", paramString);
+    ae.i("TXLivePlayerJSAdapter", paramString);
     AppMethodBeat.o(145914);
   }
   
@@ -150,76 +150,76 @@ public final class l
     {
       bool = paramBundle.getBoolean("muteAudio");
       if ((paramBoolean) || (bool != this.mMuteAudio)) {
-        this.csy.muteAudio(bool);
+        this.ctb.muteAudio(bool);
       }
       this.mMuteAudio = bool;
       bool = paramBundle.getBoolean("muteVideo", this.mMuteVideo);
       if ((paramBoolean) || (bool != this.mMuteVideo)) {
-        this.csy.muteVideo(bool);
+        this.ctb.muteVideo(bool);
       }
       this.mMuteVideo = bool;
-      localObject = paramBundle.getString("orientation", this.csC);
-      if ((paramBoolean) || (!((String)localObject).equalsIgnoreCase(this.csC)))
+      localObject = paramBundle.getString("orientation", this.ctf);
+      if ((paramBoolean) || (!((String)localObject).equalsIgnoreCase(this.ctf)))
       {
         if (!((String)localObject).equalsIgnoreCase("horizontal")) {
           break label540;
         }
-        this.csy.setRenderRotation(270);
+        this.ctb.setRenderRotation(270);
       }
       label156:
-      this.csC = ((String)localObject);
-      localObject = paramBundle.getString("objectFit", this.csD);
-      if ((paramBoolean) || (!((String)localObject).equalsIgnoreCase(this.csD)))
+      this.ctf = ((String)localObject);
+      localObject = paramBundle.getString("objectFit", this.ctg);
+      if ((paramBoolean) || (!((String)localObject).equalsIgnoreCase(this.ctg)))
       {
         if (!((String)localObject).equalsIgnoreCase("fillCrop")) {
           break label561;
         }
-        this.csy.setRenderMode(0);
+        this.ctb.setRenderMode(0);
       }
       label209:
-      this.csD = ((String)localObject);
+      this.ctg = ((String)localObject);
       if (paramBundle.keySet().contains("soundMode"))
       {
-        localObject = paramBundle.getString("soundMode", this.csE);
-        if (!((String)localObject).equalsIgnoreCase(this.csE))
+        localObject = paramBundle.getString("soundMode", this.cth);
+        if (!((String)localObject).equalsIgnoreCase(this.cth))
         {
           if (!((String)localObject).equalsIgnoreCase("speaker")) {
             break label582;
           }
-          this.csy.setAudioRoute(0);
+          this.ctb.setAudioRoute(0);
         }
       }
     }
     for (;;)
     {
-      this.csE = ((String)localObject);
-      this.csF = paramBundle.getFloat("minCache", this.csF);
-      this.csG = paramBundle.getFloat("maxCache", this.csG);
-      this.csx.setAutoAdjustCacheTime(true);
-      this.csx.setCacheTime(this.csF);
-      this.csx.setMinAutoAdjustCacheTime(this.csF);
-      this.csx.setMaxAutoAdjustCacheTime(this.csG);
-      this.csK = paramBundle.getBoolean("enableRecvMessage", this.csK);
-      this.csx.setEnableMessage(this.csK);
-      this.csy.setConfig(this.csx);
-      this.csI = paramBundle.getBoolean("needEvent", this.csI);
-      this.crS = paramBundle.getBoolean("autoPauseIfNavigate", this.crS);
-      this.crT = paramBundle.getBoolean("autoPauseIfOpenNative", this.crT);
-      paramBoolean = paramBundle.getBoolean("needAudioVolume", this.csJ);
-      if (paramBoolean != this.csJ)
+      this.cth = ((String)localObject);
+      this.cti = paramBundle.getFloat("minCache", this.cti);
+      this.ctj = paramBundle.getFloat("maxCache", this.ctj);
+      this.cta.setAutoAdjustCacheTime(true);
+      this.cta.setCacheTime(this.cti);
+      this.cta.setMinAutoAdjustCacheTime(this.cti);
+      this.cta.setMaxAutoAdjustCacheTime(this.ctj);
+      this.ctn = paramBundle.getBoolean("enableRecvMessage", this.ctn);
+      this.cta.setEnableMessage(this.ctn);
+      this.ctb.setConfig(this.cta);
+      this.ctl = paramBundle.getBoolean("needEvent", this.ctl);
+      this.csv = paramBundle.getBoolean("autoPauseIfNavigate", this.csv);
+      this.csw = paramBundle.getBoolean("autoPauseIfOpenNative", this.csw);
+      paramBoolean = paramBundle.getBoolean("needAudioVolume", this.ctm);
+      if (paramBoolean != this.ctm)
       {
-        localObject = this.csy;
+        localObject = this.ctb;
         if (paramBoolean) {
           i = 300;
         }
         ((WXLivePlayer)localObject).enableAudioVolumeEvaluation(i);
       }
-      this.csJ = paramBoolean;
-      paramBoolean = paramBundle.getBoolean("debug", this.csL);
-      if (paramBoolean != this.csL) {
-        this.csy.showDebugLog(paramBoolean);
+      this.ctm = paramBoolean;
+      paramBoolean = paramBundle.getBoolean("debug", this.cto);
+      if (paramBoolean != this.cto) {
+        this.ctb.showDebugLog(paramBoolean);
       }
-      this.csL = paramBoolean;
+      this.cto = paramBoolean;
       AppMethodBeat.o(145913);
       return;
       if (!paramBundle.keySet().contains("muted")) {
@@ -231,17 +231,17 @@ public final class l
       if (!((String)localObject).equalsIgnoreCase("vertical")) {
         break label156;
       }
-      this.csy.setRenderRotation(0);
+      this.ctb.setRenderRotation(0);
       break label156;
       label561:
       if (!((String)localObject).equalsIgnoreCase("contain")) {
         break label209;
       }
-      this.csy.setRenderMode(1);
+      this.ctb.setRenderMode(1);
       break label209;
       label582:
       if (((String)localObject).equalsIgnoreCase("ear")) {
-        this.csy.setAudioRoute(1);
+        this.ctb.setAudioRoute(1);
       }
     }
   }
@@ -260,7 +260,7 @@ public final class l
     if (paramJSONObject != null) {
       str = paramJSONObject.toString();
     }
-    ad.i("TXLivePlayerJSAdapter", "operateLivePlayer: type = " + paramString + " params = " + str);
+    ae.i("TXLivePlayerJSAdapter", "operateLivePlayer: type = " + paramString + " params = " + str);
     if (!this.mInited)
     {
       paramString = new i(-3, "uninited livePlayer");
@@ -268,7 +268,7 @@ public final class l
       return paramString;
     }
     if (paramString.equalsIgnoreCase("play")) {
-      this.csy.startPlay(this.csd, this.csB);
+      this.ctb.startPlay(this.csG, this.cte);
     }
     for (;;)
     {
@@ -277,15 +277,15 @@ public final class l
       return paramString;
       if (paramString.equalsIgnoreCase("stop"))
       {
-        this.csy.stopPlay(true);
+        this.ctb.stopPlay(true);
       }
       else if (paramString.equalsIgnoreCase("pause"))
       {
-        this.csy.pause();
+        this.ctb.pause();
       }
       else if (paramString.equalsIgnoreCase("resume"))
       {
-        this.csy.resume();
+        this.ctb.resume();
       }
       else
       {
@@ -295,7 +295,7 @@ public final class l
           for (bool1 = true;; bool1 = false)
           {
             this.mMuteAudio = bool1;
-            this.csy.muteAudio(this.mMuteAudio);
+            this.ctb.muteAudio(this.mMuteAudio);
             break;
           }
         }
@@ -315,7 +315,7 @@ public final class l
             }
           }
         }
-        a(bool1, this.csA);
+        a(bool1, this.ctd);
       }
     }
     paramString = new i(-4, "invalid operate command");
@@ -329,12 +329,12 @@ public final class l
     this.mMode = paramBundle.getInt("mode", this.mMode);
     if (this.mMode == 1)
     {
-      if (this.csd == null)
+      if (this.csG == null)
       {
         AppMethodBeat.o(145912);
         return 0;
       }
-      if ((this.csd != null) && ((this.csd.startsWith("http://")) || (this.csd.startsWith("https://"))) && (this.csd.contains(".flv")))
+      if ((this.csG != null) && ((this.csG.startsWith("http://")) || (this.csG.startsWith("https://"))) && (this.csG.contains(".flv")))
       {
         AppMethodBeat.o(145912);
         return 1;
@@ -349,7 +349,7 @@ public final class l
   public final void onAudioVolumeEvaluationNotify(int paramInt)
   {
     AppMethodBeat.i(145911);
-    if ((this.csJ) && (this.mAudioVolumeListener != null)) {
+    if ((this.ctm) && (this.mAudioVolumeListener != null)) {
       this.mAudioVolumeListener.onAudioVolumeEvaluationNotify(paramInt);
     }
     AppMethodBeat.o(145911);
@@ -358,10 +358,10 @@ public final class l
   public final void onNetStatus(Bundle paramBundle)
   {
     AppMethodBeat.i(145910);
-    if (this.csz != null) {
-      this.csz.onNetStatus(paramBundle);
+    if (this.ctc != null) {
+      this.ctc.onNetStatus(paramBundle);
     }
-    ad.i("TXLivePlayerJSAdapter", "onNetStatus:".concat(String.valueOf(String.format("%-16s %-16s %-16s %-12s %-12s %-12s %-12s %-14s %-14s %-14s %-16s %-16s", new Object[] { "CPU:" + paramBundle.getString("CPU_USAGE"), "RES:" + paramBundle.getInt("VIDEO_WIDTH") + "*" + paramBundle.getInt("VIDEO_HEIGHT"), "SPD:" + paramBundle.getInt("NET_SPEED") + "Kbps", "JIT:" + paramBundle.getInt("NET_JITTER"), "FPS:" + paramBundle.getInt("VIDEO_FPS"), "GOP:" + paramBundle.getInt("VIDEO_GOP") + "s", "ARA:" + paramBundle.getInt("AUDIO_BITRATE") + "Kbps", "QUE:" + paramBundle.getInt("AUDIO_CACHE") + " | " + paramBundle.getInt("VIDEO_CACHE") + "," + paramBundle.getInt("V_SUM_CACHE_SIZE") + "," + paramBundle.getInt("V_DEC_CACHE_SIZE") + " | " + paramBundle.getInt("AV_RECV_INTERVAL") + "," + paramBundle.getInt("AV_PLAY_INTERVAL") + "," + String.format("%.1f", new Object[] { Float.valueOf(paramBundle.getFloat("AUDIO_CACHE_THRESHOLD")) }).toString(), "VRA:" + paramBundle.getInt("VIDEO_BITRATE") + "Kbps", "DRP:" + paramBundle.getInt("AUDIO_DROP") + "|" + paramBundle.getInt("VIDEO_DROP"), "SVR:" + paramBundle.getString("SERVER_IP"), "AUDIO:" + paramBundle.getString("AUDIO_PLAY_INFO") }))));
+    ae.i("TXLivePlayerJSAdapter", "onNetStatus:".concat(String.valueOf(String.format("%-16s %-16s %-16s %-12s %-12s %-12s %-12s %-14s %-14s %-14s %-16s %-16s", new Object[] { "CPU:" + paramBundle.getString("CPU_USAGE"), "RES:" + paramBundle.getInt("VIDEO_WIDTH") + "*" + paramBundle.getInt("VIDEO_HEIGHT"), "SPD:" + paramBundle.getInt("NET_SPEED") + "Kbps", "JIT:" + paramBundle.getInt("NET_JITTER"), "FPS:" + paramBundle.getInt("VIDEO_FPS"), "GOP:" + paramBundle.getInt("VIDEO_GOP") + "s", "ARA:" + paramBundle.getInt("AUDIO_BITRATE") + "Kbps", "QUE:" + paramBundle.getInt("AUDIO_CACHE") + " | " + paramBundle.getInt("VIDEO_CACHE") + "," + paramBundle.getInt("V_SUM_CACHE_SIZE") + "," + paramBundle.getInt("V_DEC_CACHE_SIZE") + " | " + paramBundle.getInt("AV_RECV_INTERVAL") + "," + paramBundle.getInt("AV_PLAY_INTERVAL") + "," + String.format("%.1f", new Object[] { Float.valueOf(paramBundle.getFloat("AUDIO_CACHE_THRESHOLD")) }).toString(), "VRA:" + paramBundle.getInt("VIDEO_BITRATE") + "Kbps", "DRP:" + paramBundle.getInt("AUDIO_DROP") + "|" + paramBundle.getInt("VIDEO_DROP"), "SVR:" + paramBundle.getString("SERVER_IP"), "AUDIO:" + paramBundle.getString("AUDIO_PLAY_INFO") }))));
     AppMethodBeat.o(145910);
   }
   
@@ -374,7 +374,7 @@ public final class l
     Object localObject;
     if (paramInt == 2012)
     {
-      if (!this.csK) {
+      if (!this.ctn) {
         break label163;
       }
       if (paramBundle != null)
@@ -391,11 +391,11 @@ public final class l
       {
         localObject = new String((byte[])localObject, "UTF-8");
         paramBundle.putString("EVT_MSG", (String)localObject);
-        if ((this.csI) && (this.csz != null)) {
-          this.csz.onPlayEvent(paramInt, paramBundle);
+        if ((this.ctl) && (this.ctc != null)) {
+          this.ctc.onPlayEvent(paramInt, paramBundle);
         }
         paramBundle = paramBundle.getString("EVT_MSG");
-        ad.i("TXLivePlayerJSAdapter", "onPushEvent: event = " + paramInt + " message = " + paramBundle);
+        ae.i("TXLivePlayerJSAdapter", "onPushEvent: event = " + paramInt + " message = " + paramBundle);
         AppMethodBeat.o(145909);
         return;
       }
@@ -404,7 +404,7 @@ public final class l
       String str = "";
     }
     label163:
-    ad.i("TXLivePlayerJSAdapter", "onPushEvent: ignore sei message");
+    ae.i("TXLivePlayerJSAdapter", "onPushEvent: ignore sei message");
     AppMethodBeat.o(145909);
   }
 }

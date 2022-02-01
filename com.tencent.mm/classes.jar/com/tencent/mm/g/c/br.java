@@ -8,11 +8,11 @@ public abstract class br
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eUe = "exptId".hashCode();
-  private static final int eUk = "exptKey".hashCode();
+  private static final int eVP = "exptId".hashCode();
+  private static final int eVV = "exptKey".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eTZ = true;
-  private boolean eUj = true;
+  private boolean eVK = true;
+  private boolean eVU = true;
   public int field_exptId;
   public String field_exptKey;
   
@@ -29,11 +29,11 @@ public abstract class br
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eUk != k) {
+      if (eVV != k) {
         break label65;
       }
       this.field_exptKey = paramCursor.getString(i);
-      this.eUj = true;
+      this.eVU = true;
     }
     for (;;)
     {
@@ -41,7 +41,7 @@ public abstract class br
       break label20;
       break;
       label65:
-      if (eUe == k) {
+      if (eVP == k) {
         this.field_exptId = paramCursor.getInt(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
@@ -52,10 +52,10 @@ public abstract class br
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eUj) {
+    if (this.eVU) {
       localContentValues.put("exptKey", this.field_exptKey);
     }
-    if (this.eTZ) {
+    if (this.eVK) {
       localContentValues.put("exptId", Integer.valueOf(this.field_exptId));
     }
     if (this.systemRowid > 0L) {

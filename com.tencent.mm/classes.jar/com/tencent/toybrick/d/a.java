@@ -11,36 +11,36 @@ import java.util.LinkedList;
 
 public final class a
 {
-  private BaseToyUI MiT;
-  public a Min;
+  private BaseToyUI MFQ;
+  public a MFk;
   
   public a(BaseToyUI paramBaseToyUI)
   {
     AppMethodBeat.i(159962);
-    this.MiT = paramBaseToyUI;
-    this.Min = new a(paramBaseToyUI);
+    this.MFQ = paramBaseToyUI;
+    this.MFk = new a(paramBaseToyUI);
     AppMethodBeat.o(159962);
   }
   
   public final class a
   {
-    public LinkedList<g> Mjj;
-    public boolean Mjk;
-    public Drawable Mjl;
+    public LinkedList<g> MGg;
+    public boolean MGh;
+    public Drawable MGi;
     
     public a(Context paramContext)
     {
       AppMethodBeat.i(159961);
-      this.Mjj = new LinkedList();
-      this.Mjk = true;
-      this.Mjl = new ColorDrawable(paramContext.getResources().getColor(2131100551));
+      this.MGg = new LinkedList();
+      this.MGh = true;
+      this.MGi = new ColorDrawable(paramContext.getResources().getColor(2131100551));
       AppMethodBeat.o(159961);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.toybrick.d.a
  * JD-Core Version:    0.7.0.1
  */

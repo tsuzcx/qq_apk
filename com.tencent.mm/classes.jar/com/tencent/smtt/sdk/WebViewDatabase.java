@@ -5,7 +5,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.smtt.export.external.interfaces.IX5CoreWebViewDB;
 
 public class WebViewDatabase
-  extends x
+  extends z
 {
   private static WebViewDatabase a;
   private Context b;

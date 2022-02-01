@@ -1,741 +1,599 @@
 package com.tencent.mm.cb;
 
-import android.content.ContentResolver;
-import android.content.ContentValues;
 import android.content.Context;
-import android.net.Uri;
-import android.os.Bundle;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.content.res.ColorStateList;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.util.DisplayMetrics;
+import android.util.SparseIntArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.jniinterface.AesEcb;
-import com.tencent.mm.kernel.b.h;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.e.k.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.sdk.platformtools.t;
-import com.tencent.mm.storage.al.a;
-import com.tencent.mm.storage.emotion.EmojiGroupInfo;
-import com.tencent.mm.storage.emotion.EmojiInfo;
-import com.tencent.mm.storage.emotion.SmileyInfo;
-import com.tencent.mm.storage.emotion.SmileyPanelConfigInfo;
-import com.tencent.mm.storage.emotion.v;
-import com.tencent.mm.vfs.i;
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
 
 public final class a
-  implements com.tencent.mm.pluginsdk.a.e
 {
-  public static a HVg;
-  public static b HVh;
-  public static c HVi;
-  private String HVb;
-  private ArrayList<EmojiInfo> HVc;
-  private ArrayList<EmojiInfo> HVd;
-  private HashMap<String, ArrayList<EmojiInfo>> HVe;
-  private ArrayList<EmojiGroupInfo> HVf;
+  private static a Ipr;
+  private static final SparseIntArray Ips;
+  private static boolean Ipt;
+  private static boolean Ipu;
+  private static float density;
+  private static float scale;
   
   static
   {
-    AppMethodBeat.i(104893);
-    HVg = new a();
-    HVh = new b();
-    HVi = new c();
-    AppMethodBeat.o(104893);
+    AppMethodBeat.i(125178);
+    Ipr = null;
+    density = -1.0F;
+    Ips = new SparseIntArray();
+    scale = 0.0F;
+    Ipt = false;
+    Ipu = true;
+    AppMethodBeat.o(125178);
   }
   
-  public a()
+  public static int aA(Context paramContext, int paramInt)
   {
-    AppMethodBeat.i(104851);
-    this.HVc = new ArrayList();
-    this.HVd = new ArrayList();
-    this.HVe = new HashMap();
-    this.HVf = new ArrayList();
-    AppMethodBeat.o(104851);
+    AppMethodBeat.i(125155);
+    paramInt = Math.round(paramInt / getDensity(paramContext));
+    AppMethodBeat.o(125155);
+    return paramInt;
   }
   
-  private static byte[] D(EmojiInfo paramEmojiInfo)
+  private static boolean al(float paramFloat1, float paramFloat2)
   {
-    AppMethodBeat.i(104868);
-    if (paramEmojiInfo == null)
+    AppMethodBeat.i(125177);
+    if (Math.abs(paramFloat1 - paramFloat2) <= 1.E-005D)
     {
-      ad.w("MicroMsg.EmotionStorageResolver", "[decodeEmojiDataExport] failed. emoji is null.");
-      AppMethodBeat.o(104868);
-      return null;
-    }
-    String str = paramEmojiInfo.gzQ();
-    byte[] arrayOfByte2 = i.aY(str, 0, -1);
-    if ((i.aYo(str) > 0L) && (arrayOfByte2 != null) && (arrayOfByte2.length >= 10))
-    {
-      byte[] arrayOfByte1 = new byte[10];
-      System.arraycopy(arrayOfByte2, 0, arrayOfByte1, 0, 10);
-      if (((paramEmojiInfo.field_reserved4 & EmojiInfo.Ofi) == EmojiInfo.Ofi) && (!t.cu(arrayOfByte1)))
-      {
-        long l1 = System.currentTimeMillis();
-        int j = (int)i.aYo(str);
-        int i = j;
-        if (j > 1024) {
-          i = 1024;
-        }
-        arrayOfByte1 = i.aY(str, 0, i);
-        if (!bt.isNullOrNil(aet())) {}
-        for (;;)
-        {
-          try
-          {
-            arrayOfByte1 = AesEcb.aesCryptEcb(arrayOfByte1, aet().getBytes(), false, false);
-            if ((bt.cC(arrayOfByte1)) || (bt.cC(arrayOfByte2))) {
-              break;
-            }
-            System.arraycopy(arrayOfByte1, 0, arrayOfByte2, 0, i);
-            long l2 = System.currentTimeMillis();
-            ad.d("MicroMsg.EmotionStorageResolver", "decode emoji file length:%d use time:%d", new Object[] { Integer.valueOf(arrayOfByte2.length), Long.valueOf(l2 - l1) });
-            if (!a(paramEmojiInfo, arrayOfByte2)) {
-              break label322;
-            }
-            AppMethodBeat.o(104868);
-            return arrayOfByte2;
-          }
-          catch (Throwable localThrowable)
-          {
-            ad.printErrStackTrace("MicroMsg.EmotionStorageResolver", localThrowable, "", new Object[0]);
-          }
-          Object localObject = null;
-        }
-        ad.i("MicroMsg.EmotionStorageResolver", "decode emoji file failed. path:%s return original ", new Object[] { str });
-        if (a(paramEmojiInfo, arrayOfByte2))
-        {
-          AppMethodBeat.o(104868);
-          return arrayOfByte2;
-        }
-      }
-      else if (a(paramEmojiInfo, arrayOfByte2))
-      {
-        AppMethodBeat.o(104868);
-        return arrayOfByte2;
-      }
-    }
-    else
-    {
-      ad.i("MicroMsg.EmotionStorageResolver", "decode emoji file failed. path is no exist :%s ", new Object[] { str });
-    }
-    label322:
-    AppMethodBeat.o(104868);
-    return null;
-  }
-  
-  private static boolean a(EmojiInfo paramEmojiInfo, byte[] paramArrayOfByte)
-  {
-    AppMethodBeat.i(104869);
-    String str;
-    if (t.cv(paramArrayOfByte))
-    {
-      str = paramEmojiInfo.field_externMd5;
-      paramArrayOfByte = ai.B(paramArrayOfByte);
-      if ((bt.isNullOrNil(str)) || (bt.isNullOrNil(paramArrayOfByte)) || (!bt.lQ(str, paramArrayOfByte))) {
-        break label83;
-      }
-    }
-    label83:
-    for (boolean bool = true;; bool = false)
-    {
-      if (!bool) {
-        ad.w("MicroMsg.EmotionStorageResolver", "checkFileMd5: %s", new Object[] { paramEmojiInfo.field_md5 });
-      }
-      AppMethodBeat.o(104869);
-      return bool;
-      str = paramEmojiInfo.field_md5;
-      break;
-    }
-  }
-  
-  private static String aet()
-  {
-    AppMethodBeat.i(104870);
-    String str = call(Uri.parse("content://com.tencent.mm.storage.provider.emotion/"), "getEmojiKey", null, null).getString("key", "");
-    AppMethodBeat.o(104870);
-    return str;
-  }
-  
-  public static Bundle call(Uri paramUri, String paramString1, String paramString2, Bundle paramBundle)
-  {
-    AppMethodBeat.i(104886);
-    try
-    {
-      paramUri = aj.getContext().getContentResolver().call(paramUri, paramString1, paramString2, paramBundle);
-      if (paramUri != null)
-      {
-        AppMethodBeat.o(104886);
-        return paramUri;
-      }
-    }
-    catch (NullPointerException paramUri)
-    {
-      for (;;)
-      {
-        ad.printErrStackTrace("MicroMsg.EmotionStorageResolver", paramUri, "", new Object[0]);
-        paramUri = null;
-      }
-      paramUri = new Bundle();
-      AppMethodBeat.o(104886);
-      return paramUri;
-    }
-    catch (IllegalArgumentException paramUri)
-    {
-      break label33;
-    }
-    catch (SecurityException paramUri)
-    {
-      label33:
-      break label33;
-    }
-  }
-  
-  public static a fhy()
-  {
-    return HVg;
-  }
-  
-  public static Uri getUri()
-  {
-    AppMethodBeat.i(221214);
-    Uri localUri = Uri.parse("content://com.tencent.mm.storage.provider.emotion/");
-    AppMethodBeat.o(221214);
-    return localUri;
-  }
-  
-  public final byte[] a(EmojiInfo paramEmojiInfo)
-  {
-    AppMethodBeat.i(104862);
-    if (((h)g.ajz().ajb()).akw())
-    {
-      paramEmojiInfo = ((com.tencent.mm.plugin.emoji.b.d)g.ad(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().a(paramEmojiInfo);
-      AppMethodBeat.o(104862);
-      return paramEmojiInfo;
-    }
-    paramEmojiInfo = D(paramEmojiInfo);
-    AppMethodBeat.o(104862);
-    return paramEmojiInfo;
-  }
-  
-  public final void abD(String paramString)
-  {
-    AppMethodBeat.i(177033);
-    if (((h)g.ajz().ajb()).akw()) {
-      ((com.tencent.mm.plugin.emoji.b.d)g.ad(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().abD(paramString);
-    }
-    AppMethodBeat.o(177033);
-  }
-  
-  public final boolean abE(String paramString)
-  {
-    AppMethodBeat.i(104882);
-    if (((h)g.ajz().ajb()).akw())
-    {
-      boolean bool = ((com.tencent.mm.plugin.emoji.b.d)g.ad(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().abE(paramString);
-      AppMethodBeat.o(104882);
-      return bool;
-    }
-    Bundle localBundle = new Bundle();
-    localBundle.putString("key_path", paramString);
-    paramString = call(Uri.parse("content://com.tencent.mm.storage.provider.emotion/"), "checkGifFile", null, localBundle);
-    if ((paramString != null) && (paramString.getBoolean("key_data")))
-    {
-      AppMethodBeat.o(104882);
+      AppMethodBeat.o(125177);
       return true;
     }
-    AppMethodBeat.o(104882);
+    AppMethodBeat.o(125177);
     return false;
   }
   
-  public final void abF(String paramString)
+  public static int ax(Context paramContext, int paramInt)
   {
-    AppMethodBeat.i(104887);
-    if (((h)g.ajz().ajb()).akw())
-    {
-      if (g.ajA().aiK())
-      {
-        ((com.tencent.mm.plugin.emoji.b.d)g.ad(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().abF(paramString);
-        AppMethodBeat.o(104887);
-      }
-    }
-    else {
-      aj.getContext().getContentResolver().call(Uri.parse("content://com.tencent.mm.storage.provider.emotion/"), "deleteLoadingCaptureEmoji", paramString, null);
-    }
-    AppMethodBeat.o(104887);
-  }
-  
-  public final void abG(String paramString)
-  {
-    AppMethodBeat.i(104889);
-    if (((h)g.ajz().ajb()).akw())
-    {
-      if (g.ajA().aiK())
-      {
-        ((com.tencent.mm.plugin.emoji.b.d)g.ad(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().abG(paramString);
-        AppMethodBeat.o(104889);
-      }
-    }
-    else
-    {
-      Bundle localBundle = new Bundle();
-      localBundle.putString("key_md5", paramString);
-      aj.getContext().getContentResolver().call(Uri.parse("content://com.tencent.mm.storage.provider.emotion/"), "addCaptureEmojiUploadTask", null, localBundle);
-    }
-    AppMethodBeat.o(104889);
-  }
-  
-  public final EmojiInfo abs(String paramString)
-  {
-    AppMethodBeat.i(104866);
-    if (((h)g.ajz().ajb()).akw())
-    {
-      paramString = ((com.tencent.mm.plugin.emoji.b.d)g.ad(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().abs(paramString);
-      AppMethodBeat.o(104866);
-      return paramString;
-    }
-    Bundle localBundle = new Bundle();
-    localBundle.putString("key_md5", paramString);
-    paramString = call(Uri.parse("content://com.tencent.mm.storage.provider.emotion/"), "getEmojiByMd5", null, localBundle);
-    if (paramString != null)
-    {
-      paramString.setClassLoader(EmojiInfo.class.getClassLoader());
-      paramString = (EmojiInfo)paramString.getParcelable("key_emoji_info");
-      AppMethodBeat.o(104866);
-      return paramString;
-    }
-    AppMethodBeat.o(104866);
-    return null;
-  }
-  
-  public final String abv(String paramString)
-  {
-    AppMethodBeat.i(104852);
-    if (((h)g.ajz().ajb()).akw())
-    {
-      paramString = ((com.tencent.mm.plugin.emoji.b.d)g.ad(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().abv(paramString);
-      AppMethodBeat.o(104852);
-      return paramString;
-    }
-    paramString = call(Uri.parse("content://com.tencent.mm.storage.provider.emotion/"), "getCurLangDesc", paramString, null).getString("data", "");
-    AppMethodBeat.o(104852);
-    return paramString;
-  }
-  
-  public final boolean afc()
-  {
-    AppMethodBeat.i(104875);
-    if (((h)g.ajz().ajb()).akw())
-    {
-      boolean bool = ((com.tencent.mm.plugin.emoji.b.d)g.ad(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().afc();
-      AppMethodBeat.o(104875);
-      return bool;
-    }
-    Bundle localBundle = call(Uri.parse("content://com.tencent.mm.storage.provider.emotion/"), "isEnableHevcUpload", null, null);
-    if ((localBundle != null) && (localBundle.getBoolean("key_data")))
-    {
-      AppMethodBeat.o(104875);
-      return true;
-    }
-    AppMethodBeat.o(104875);
-    return false;
-  }
-  
-  public final boolean afd()
-  {
-    AppMethodBeat.i(104876);
-    if (((h)g.ajz().ajb()).akw())
-    {
-      boolean bool = ((com.tencent.mm.plugin.emoji.b.d)g.ad(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().afd();
-      AppMethodBeat.o(104876);
-      return bool;
-    }
-    AppMethodBeat.o(104876);
-    return false;
-  }
-  
-  public final <T> T c(al.a parama, T paramT)
-  {
-    AppMethodBeat.i(104880);
-    if (((h)g.ajz().ajb()).akw())
-    {
-      parama = ((com.tencent.mm.plugin.emoji.b.d)g.ad(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().c(parama, paramT);
-      AppMethodBeat.o(104880);
-      return parama;
-    }
-    Bundle localBundle = new Bundle();
-    localBundle.putSerializable("key_config_key", parama);
-    parama = call(Uri.parse("content://com.tencent.mm.storage.provider.emotion/"), "getConfig", null, localBundle);
-    if (parama != null)
-    {
-      parama = parama.get("key_config_value");
-      if (parama != null)
-      {
-        AppMethodBeat.o(104880);
-        return parama;
-      }
-    }
-    AppMethodBeat.o(104880);
-    return paramT;
-  }
-  
-  public final void cgA()
-  {
-    AppMethodBeat.i(104885);
-    if ((((h)g.ajz().ajb()).akw()) && (g.ajA().aiK())) {
-      ((com.tencent.mm.plugin.emoji.b.d)g.ad(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().cgA();
-    }
-    AppMethodBeat.o(104885);
-  }
-  
-  public final boolean cgB()
-  {
-    AppMethodBeat.i(104874);
-    if (((h)g.ajz().ajb()).akw())
-    {
-      boolean bool = ((com.tencent.mm.plugin.emoji.b.d)g.ad(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().cgB();
-      AppMethodBeat.o(104874);
-      return bool;
-    }
-    Bundle localBundle = call(Uri.parse("content://com.tencent.mm.storage.provider.emotion/"), "isEnableHEVCDecode", null, null);
-    if ((localBundle != null) && (localBundle.getBoolean("key_data")))
-    {
-      AppMethodBeat.o(104874);
-      return true;
-    }
-    AppMethodBeat.o(104874);
-    return false;
-  }
-  
-  public final List<v> cgC()
-  {
-    AppMethodBeat.i(104878);
-    if (((h)g.ajz().ajb()).akw())
-    {
-      List localList = ((com.tencent.mm.plugin.emoji.b.d)g.ad(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().cgC();
-      AppMethodBeat.o(104878);
-      return localList;
-    }
-    AppMethodBeat.o(104878);
-    return null;
-  }
-  
-  public final void cgD()
-  {
-    AppMethodBeat.i(104879);
-    if (((h)g.ajz().ajb()).akw()) {
-      ((com.tencent.mm.plugin.emoji.b.d)g.ad(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().cgD();
-    }
-    AppMethodBeat.o(104879);
-  }
-  
-  public final boolean cgE()
-  {
-    AppMethodBeat.i(104883);
-    if (((h)g.ajz().ajb()).akw())
-    {
-      boolean bool = ((com.tencent.mm.plugin.emoji.b.d)g.ad(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().cgE();
-      AppMethodBeat.o(104883);
-      return bool;
-    }
-    AppMethodBeat.o(104883);
-    return false;
-  }
-  
-  public final ArrayList<SmileyInfo> cgv()
-  {
-    AppMethodBeat.i(104884);
-    Object localObject;
-    if (((h)g.ajz().ajb()).akw())
-    {
-      if (g.ajA().aiK())
-      {
-        localObject = ((com.tencent.mm.plugin.emoji.b.d)g.ad(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().cgv();
-        AppMethodBeat.o(104884);
-        return localObject;
-      }
-    }
-    else
-    {
-      localObject = call(Uri.parse("content://com.tencent.mm.storage.provider.emotion/"), "getSmileyInfoList", null, null);
-      if (localObject != null)
-      {
-        ((Bundle)localObject).setClassLoader(SmileyInfo.class.getClassLoader());
-        localObject = ((Bundle)localObject).getSerializable("key_data");
-        if ((localObject instanceof ArrayList))
-        {
-          localObject = (ArrayList)localObject;
-          AppMethodBeat.o(104884);
-          return localObject;
-        }
-      }
-    }
-    AppMethodBeat.o(104884);
-    return null;
-  }
-  
-  public final ArrayList<SmileyPanelConfigInfo> cgw()
-  {
-    AppMethodBeat.i(104890);
-    if (((h)g.ajz().ajb()).akw())
-    {
-      localObject = ((com.tencent.mm.plugin.emoji.b.d)g.ad(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().cgw();
-      AppMethodBeat.o(104890);
-      return localObject;
-    }
-    Object localObject = call(Uri.parse("content://com.tencent.mm.storage.provider.emotion/"), "getSmileyPanelInfoList", null, null);
-    ((Bundle)localObject).setClassLoader(SmileyPanelConfigInfo.class.getClassLoader());
-    localObject = ((Bundle)localObject).getParcelableArrayList("smiley_panel_info");
-    AppMethodBeat.o(104890);
-    return localObject;
-  }
-  
-  public final String cgz()
-  {
-    AppMethodBeat.i(104891);
-    if (((h)g.ajz().ajb()).akw())
-    {
-      localObject = ((com.tencent.mm.plugin.emoji.b.d)g.ad(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().cgz();
-      AppMethodBeat.o(104891);
-      return localObject;
-    }
-    Object localObject = call(Uri.parse("content://com.tencent.mm.storage.provider.emotion/"), "getPanelConfigName", null, null);
-    ((Bundle)localObject).setClassLoader(SmileyPanelConfigInfo.class.getClassLoader());
-    localObject = ((Bundle)localObject).getString("key_data");
-    AppMethodBeat.o(104891);
-    return localObject;
-  }
-  
-  public final void d(al.a parama, Object paramObject)
-  {
-    AppMethodBeat.i(104881);
-    if (((h)g.ajz().ajb()).akw())
-    {
-      ((com.tencent.mm.plugin.emoji.b.d)g.ad(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().d(parama, paramObject);
-      AppMethodBeat.o(104881);
-      return;
-    }
-    Bundle localBundle = new Bundle();
-    localBundle.putSerializable("key_config_key", parama);
-    localBundle.putSerializable("key_config_value", (Serializable)paramObject);
-    call(Uri.parse("content://com.tencent.mm.storage.provider.emotion/"), "setConfig", null, localBundle);
-    AppMethodBeat.o(104881);
-  }
-  
-  public final String getAccPath()
-  {
-    AppMethodBeat.i(104871);
-    if (((h)g.ajz().ajb()).akw()) {
-      this.HVb = ((com.tencent.mm.plugin.emoji.b.d)g.ad(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().getAccPath();
-    }
+    float f1 = 1.4F;
+    AppMethodBeat.i(125149);
+    float f2 = ef(paramContext);
+    if (f2 > 1.4F) {}
     for (;;)
     {
-      String str = this.HVb;
-      AppMethodBeat.o(104871);
-      return str;
-      if (bt.isNullOrNil(this.HVb)) {
-        this.HVb = call(Uri.parse("content://com.tencent.mm.storage.provider.emotion/"), "getAccPath", null, null).getString("path");
-      }
+      paramInt = (int)(f1 * ay(paramContext, paramInt));
+      AppMethodBeat.o(125149);
+      return paramInt;
+      f1 = f2;
     }
   }
   
-  public final void h(k.a parama)
+  public static int ay(Context arg0, int paramInt)
   {
-    AppMethodBeat.i(104861);
-    if (((h)g.ajz().ajb()).akw()) {
-      ((com.tencent.mm.plugin.emoji.b.d)g.ad(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().h(parama);
-    }
-    AppMethodBeat.o(104861);
-  }
-  
-  public final void i(k.a parama)
-  {
-    AppMethodBeat.i(104863);
-    if (((h)g.ajz().ajb()).akw()) {
-      ((com.tencent.mm.plugin.emoji.b.d)g.ad(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().i(parama);
-    }
-    AppMethodBeat.o(104863);
-  }
-  
-  public final void j(k.a parama)
-  {
-    AppMethodBeat.i(104864);
-    if (((h)g.ajz().ajb()).akw()) {
-      ((com.tencent.mm.plugin.emoji.b.d)g.ad(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().j(parama);
-    }
-    AppMethodBeat.o(104864);
-  }
-  
-  public final void k(k.a parama)
-  {
-    AppMethodBeat.i(104865);
-    if (((h)g.ajz().ajb()).akw()) {
-      ((com.tencent.mm.plugin.emoji.b.d)g.ad(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().k(parama);
-    }
-    AppMethodBeat.o(104865);
-  }
-  
-  public final EmojiInfo l(String paramString, int paramInt1, int paramInt2, int paramInt3)
-  {
-    AppMethodBeat.i(104853);
-    if (((h)g.ajz().ajb()).akw())
+    AppMethodBeat.i(125150);
+    if (??? == null)
     {
-      paramString = ((com.tencent.mm.plugin.emoji.b.d)g.ad(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().a(paramString, "", paramInt1, paramInt2, paramInt3, "");
-      AppMethodBeat.o(104853);
-      return paramString;
+      ae.e("MicroMsg.ResourceHelper", "get dimension pixel size, resId %d, but context is null", new Object[] { Integer.valueOf(paramInt) });
+      AppMethodBeat.o(125150);
+      return 0;
     }
-    Bundle localBundle = new Bundle();
-    localBundle.putString("key_md5", paramString);
-    localBundle.putInt("key_group", paramInt1);
-    localBundle.putInt("key_type", paramInt2);
-    localBundle.putInt("key_size", paramInt3);
-    paramString = call(Uri.parse("content://com.tencent.mm.storage.provider.emotion/"), "createEmojiInfo", null, localBundle);
-    if (paramString != null)
+    int i;
+    synchronized (Ips)
     {
-      paramString.setClassLoader(EmojiInfo.class.getClassLoader());
-      paramString = (EmojiInfo)paramString.getParcelable("key_emoji_info");
-      AppMethodBeat.o(104853);
-      return paramString;
-    }
-    AppMethodBeat.o(104853);
-    return null;
-  }
-  
-  public final void onDestroy()
-  {
-    AppMethodBeat.i(104873);
-    this.HVf.clear();
-    AppMethodBeat.o(104873);
-  }
-  
-  public final EmojiInfo p(EmojiInfo paramEmojiInfo)
-  {
-    AppMethodBeat.i(104867);
-    if (((h)g.ajz().ajb()).akw())
-    {
-      paramEmojiInfo = ((com.tencent.mm.plugin.emoji.b.d)g.ad(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().p(paramEmojiInfo);
-      AppMethodBeat.o(104867);
-      return paramEmojiInfo;
-    }
-    Bundle localBundle = new Bundle(EmojiInfo.class.getClassLoader());
-    localBundle.putParcelable("emoji", paramEmojiInfo);
-    paramEmojiInfo = aj.getContext().getContentResolver().call(Uri.parse("content://com.tencent.mm.storage.provider.emotion/"), "getRandomEmoji", null, localBundle);
-    if (paramEmojiInfo == null)
-    {
-      ad.e("MicroMsg.EmotionStorageResolver", "[getRandomEmoji] bunndle is null! ");
-      AppMethodBeat.o(104867);
-      return null;
-    }
-    paramEmojiInfo.setClassLoader(EmojiInfo.class.getClassLoader());
-    if (paramEmojiInfo.containsKey("data"))
-    {
-      paramEmojiInfo = (EmojiInfo)paramEmojiInfo.getParcelable("data");
-      AppMethodBeat.o(104867);
-      return paramEmojiInfo;
-    }
-    if (paramEmojiInfo == null) {}
-    for (boolean bool = true;; bool = false)
-    {
-      ad.e("MicroMsg.EmotionStorageResolver", "[getRandomEmoji] bundle is null?", new Object[] { Boolean.valueOf(bool) });
-      AppMethodBeat.o(104867);
-      return null;
-    }
-  }
-  
-  public final void t(EmojiInfo paramEmojiInfo)
-  {
-    AppMethodBeat.i(104888);
-    if (((h)g.ajz().ajb()).akw())
-    {
-      if (g.ajA().aiK())
+      int j = Ips.get(paramInt, 0);
+      i = j;
+      if (j <= 0)
       {
-        ((com.tencent.mm.plugin.emoji.b.d)g.ad(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().t(paramEmojiInfo);
-        AppMethodBeat.o(104888);
+        if (Ipr != null) {
+          break label109;
+        }
+        i = ???.getResources().getDimensionPixelSize(paramInt);
       }
     }
-    else
+    synchronized (Ips)
     {
-      Bundle localBundle = new Bundle();
-      localBundle.putParcelable("emojiInfo", paramEmojiInfo);
-      aj.getContext().getContentResolver().call(Uri.parse("content://com.tencent.mm.storage.provider.emotion/"), "showCaptureEmojiInPanel", null, localBundle);
+      Ips.put(paramInt, i);
+      AppMethodBeat.o(125150);
+      return i;
+      ??? = finally;
+      AppMethodBeat.o(125150);
+      throw ???;
+      label109:
+      i = Ipr.flu();
     }
-    AppMethodBeat.o(104888);
   }
   
-  public final void updateEmojiInfo(EmojiInfo paramEmojiInfo)
+  public static String az(Context paramContext, int paramInt)
   {
-    AppMethodBeat.i(104854);
-    if (((h)g.ajz().ajb()).akw())
+    AppMethodBeat.i(125151);
+    if (Ipr == null)
     {
-      ((com.tencent.mm.plugin.emoji.b.d)g.ad(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().updateEmojiInfo(paramEmojiInfo);
-      AppMethodBeat.o(104854);
-      return;
+      if (paramContext == null)
+      {
+        ae.e("MicroMsg.ResourceHelper", "get string, resId %d, but context is null", new Object[] { Integer.valueOf(paramInt) });
+        AppMethodBeat.o(125151);
+        return "";
+      }
+      paramContext = paramContext.getResources().getString(paramInt);
+      AppMethodBeat.o(125151);
+      return paramContext;
     }
-    Bundle localBundle = new Bundle();
-    localBundle.setClassLoader(EmojiInfo.class.getClassLoader());
-    localBundle.putParcelable("key_emoji_info", paramEmojiInfo);
-    call(Uri.parse("content://com.tencent.mm.storage.provider.emotion/"), "updateEmojiInfo", null, localBundle);
-    AppMethodBeat.o(104854);
+    paramContext = Ipr.flv();
+    AppMethodBeat.o(125151);
+    return paramContext;
   }
   
-  public static final class a {}
-  
-  public static final class b
+  public static float ef(Context paramContext)
   {
-    public static void aPD(String paramString)
-    {
-      AppMethodBeat.i(104849);
-      ContentValues localContentValues = new ContentValues();
-      localContentValues.put("type", Integer.valueOf(-29414086));
-      localContentValues.put("value", paramString);
-      a.a(Uri.parse("content://com.tencent.mm.storage.provider.emotion/userinfo/"), localContentValues);
-      AppMethodBeat.o(104849);
+    AppMethodBeat.i(125164);
+    if (scale == 0.0F) {
+      if (paramContext != null) {
+        break label89;
+      }
     }
+    label89:
+    for (scale = 1.0F;; scale = paramContext.getSharedPreferences(ak.fow(), 0).getFloat("text_size_scale_key", 1.0F))
+    {
+      if (!Ipt)
+      {
+        Ipu = paramContext.getSharedPreferences(ak.fow(), 0).getBoolean("screenResolution_isModifyDensity", true);
+        Ipt = true;
+      }
+      if ((Ipu) && ((scale == 1.1F) || (scale == 0.8F))) {
+        scale = 1.0F;
+      }
+      float f = scale;
+      AppMethodBeat.o(125164);
+      return f;
+    }
+  }
+  
+  public static int fromDPToPix(Context paramContext, int paramInt)
+  {
+    AppMethodBeat.i(125154);
+    paramInt = Math.round(getDensity(paramContext) * paramInt);
+    AppMethodBeat.o(125154);
+    return paramInt;
+  }
+  
+  public static float getDensity(Context paramContext)
+  {
+    AppMethodBeat.i(125152);
+    Context localContext = paramContext;
+    if (paramContext == null) {
+      localContext = ak.getContext();
+    }
+    float f = localContext.getResources().getDisplayMetrics().density;
+    density = f;
+    AppMethodBeat.o(125152);
+    return f;
+  }
+  
+  public static int h(Context paramContext, float paramFloat)
+  {
+    AppMethodBeat.i(125153);
+    int i = Math.round(getDensity(paramContext) * paramFloat);
+    AppMethodBeat.o(125153);
+    return i;
+  }
+  
+  public static void i(Context paramContext, float paramFloat)
+  {
+    AppMethodBeat.i(125171);
+    paramContext = paramContext.getSharedPreferences(ak.fow(), 0).edit();
+    paramContext.putFloat("text_size_scale_key", paramFloat);
+    paramContext.commit();
+    scale = paramFloat;
+    AppMethodBeat.o(125171);
+  }
+  
+  public static float id(Context paramContext)
+  {
+    AppMethodBeat.i(125156);
+    if (im(paramContext))
+    {
+      AppMethodBeat.o(125156);
+      return 0.8F;
+    }
+    AppMethodBeat.o(125156);
+    return 0.875F;
+  }
+  
+  public static float ie(Context paramContext)
+  {
+    AppMethodBeat.i(125157);
+    if (im(paramContext))
+    {
+      AppMethodBeat.o(125157);
+      return 1.0F;
+    }
+    AppMethodBeat.o(125157);
+    return 1.0F;
+  }
+  
+  public static float jdMethod_if(Context paramContext)
+  {
+    AppMethodBeat.i(125158);
+    if (im(paramContext))
+    {
+      AppMethodBeat.o(125158);
+      return 1.1F;
+    }
+    AppMethodBeat.o(125158);
+    return 1.11F;
+  }
+  
+  public static float ig(Context paramContext)
+  {
+    AppMethodBeat.i(125159);
+    if (im(paramContext))
+    {
+      AppMethodBeat.o(125159);
+      return 1.12F;
+    }
+    AppMethodBeat.o(125159);
+    return 1.25F;
+  }
+  
+  public static float ih(Context paramContext)
+  {
+    AppMethodBeat.i(125160);
+    if (im(paramContext))
+    {
+      AppMethodBeat.o(125160);
+      return 1.125F;
+    }
+    AppMethodBeat.o(125160);
+    return 1.375F;
+  }
+  
+  public static float ii(Context paramContext)
+  {
+    AppMethodBeat.i(125161);
+    if (im(paramContext))
+    {
+      AppMethodBeat.o(125161);
+      return 1.4F;
+    }
+    AppMethodBeat.o(125161);
+    return 1.625F;
+  }
+  
+  public static float ij(Context paramContext)
+  {
+    AppMethodBeat.i(125162);
+    if (im(paramContext))
+    {
+      AppMethodBeat.o(125162);
+      return 1.55F;
+    }
+    AppMethodBeat.o(125162);
+    return 1.875F;
+  }
+  
+  public static float ik(Context paramContext)
+  {
+    AppMethodBeat.i(125163);
+    if (im(paramContext))
+    {
+      AppMethodBeat.o(125163);
+      return 1.65F;
+    }
+    AppMethodBeat.o(125163);
+    return 2.025F;
+  }
+  
+  public static float il(Context paramContext)
+  {
+    float f = 1.0F;
+    AppMethodBeat.i(125165);
+    if (paramContext == null) {}
+    for (;;)
+    {
+      AppMethodBeat.o(125165);
+      return f;
+      f = paramContext.getSharedPreferences(ak.fow(), 0).getFloat("text_size_scale_key", 1.0F);
+    }
+  }
+  
+  public static boolean im(Context paramContext)
+  {
+    AppMethodBeat.i(125166);
+    if ((paramContext != null) && (!Ipt))
+    {
+      Ipu = paramContext.getSharedPreferences(ak.fow(), 0).getBoolean("screenResolution_isModifyDensity", true);
+      Ipt = true;
+    }
+    boolean bool = Ipu;
+    AppMethodBeat.o(125166);
+    return bool;
+  }
+  
+  public static int in(Context paramContext)
+  {
+    AppMethodBeat.i(125167);
+    float f = il(paramContext);
+    if (f == id(paramContext))
+    {
+      AppMethodBeat.o(125167);
+      return 1;
+    }
+    if (f == ie(paramContext))
+    {
+      AppMethodBeat.o(125167);
+      return 2;
+    }
+    if (f == jdMethod_if(paramContext))
+    {
+      AppMethodBeat.o(125167);
+      return 3;
+    }
+    if (f == ig(paramContext))
+    {
+      AppMethodBeat.o(125167);
+      return 4;
+    }
+    if (f == ih(paramContext))
+    {
+      AppMethodBeat.o(125167);
+      return 5;
+    }
+    if (f == ii(paramContext))
+    {
+      AppMethodBeat.o(125167);
+      return 6;
+    }
+    if (f == ij(paramContext))
+    {
+      AppMethodBeat.o(125167);
+      return 7;
+    }
+    if (f == ik(paramContext))
+    {
+      AppMethodBeat.o(125167);
+      return 8;
+    }
+    AppMethodBeat.o(125167);
+    return 2;
+  }
+  
+  public static int io(Context paramContext)
+  {
+    AppMethodBeat.i(125168);
+    float f = il(paramContext);
+    if (f == 0.875F)
+    {
+      AppMethodBeat.o(125168);
+      return 0;
+    }
+    if (f == 1.0F)
+    {
+      AppMethodBeat.o(125168);
+      return 1;
+    }
+    if (f == 1.11F)
+    {
+      AppMethodBeat.o(125168);
+      return 2;
+    }
+    if (f == 1.25F)
+    {
+      AppMethodBeat.o(125168);
+      return 3;
+    }
+    if (f == 1.375F)
+    {
+      AppMethodBeat.o(125168);
+      return 4;
+    }
+    if ((f == 1.625F) || (al(f, 1.3F)))
+    {
+      AppMethodBeat.o(125168);
+      return 5;
+    }
+    if ((f == 1.875F) || (al(f, 1.38F)))
+    {
+      AppMethodBeat.o(125168);
+      return 6;
+    }
+    if ((f == 2.025F) || (al(f, 1.565F)))
+    {
+      AppMethodBeat.o(125168);
+      return 7;
+    }
+    AppMethodBeat.o(125168);
+    return 1;
+  }
+  
+  public static float ip(Context paramContext)
+  {
+    AppMethodBeat.i(125169);
+    float f = 1.0F;
+    if (is(paramContext)) {
+      if (!im(paramContext)) {
+        break label34;
+      }
+    }
+    label34:
+    for (f = 1.2F;; f = 1.1F)
+    {
+      AppMethodBeat.o(125169);
+      return f;
+    }
+  }
+  
+  public static float iq(Context paramContext)
+  {
+    AppMethodBeat.i(125170);
+    float f2 = 1.0F;
+    float f1 = f2;
+    if (!im(paramContext))
+    {
+      f1 = f2;
+      if (is(paramContext)) {
+        f1 = 1.1F;
+      }
+    }
+    AppMethodBeat.o(125170);
+    return f1;
+  }
+  
+  public static boolean ir(Context paramContext)
+  {
+    AppMethodBeat.i(125172);
+    float f = ef(paramContext);
+    scale = f;
+    if (Float.compare(f, jdMethod_if(paramContext)) > 0)
+    {
+      AppMethodBeat.o(125172);
+      return true;
+    }
+    AppMethodBeat.o(125172);
+    return false;
+  }
+  
+  public static boolean is(Context paramContext)
+  {
+    AppMethodBeat.i(125173);
+    float f = ef(paramContext);
+    scale = f;
+    if (Float.compare(f, ig(paramContext)) > 0)
+    {
+      AppMethodBeat.o(125173);
+      return true;
+    }
+    AppMethodBeat.o(125173);
+    return false;
+  }
+  
+  public static boolean it(Context paramContext)
+  {
+    AppMethodBeat.i(125174);
+    float f = ef(paramContext);
+    scale = f;
+    if (f == id(paramContext))
+    {
+      AppMethodBeat.o(125174);
+      return true;
+    }
+    AppMethodBeat.o(125174);
+    return false;
+  }
+  
+  public static int iu(Context paramContext)
+  {
+    AppMethodBeat.i(125175);
+    if (Ipr == null)
+    {
+      if (paramContext == null)
+      {
+        ae.e("MicroMsg.ResourceHelper", "get widthPixels but context is null");
+        AppMethodBeat.o(125175);
+        return 0;
+      }
+      int i = paramContext.getResources().getDisplayMetrics().widthPixels;
+      AppMethodBeat.o(125175);
+      return i;
+    }
+    AppMethodBeat.o(125175);
+    return 0;
+  }
+  
+  public static int iv(Context paramContext)
+  {
+    AppMethodBeat.i(125176);
+    if (Ipr == null)
+    {
+      if (paramContext == null)
+      {
+        ae.e("MicroMsg.ResourceHelper", "get heightPixels but context is null");
+        AppMethodBeat.o(125176);
+        return 0;
+      }
+      int i = paramContext.getResources().getDisplayMetrics().heightPixels;
+      AppMethodBeat.o(125176);
+      return i;
+    }
+    AppMethodBeat.o(125176);
+    return 0;
+  }
+  
+  public static Drawable l(Context paramContext, int paramInt)
+  {
+    AppMethodBeat.i(125148);
+    if (Ipr == null)
+    {
+      if (paramContext == null)
+      {
+        ae.e("MicroMsg.ResourceHelper", "get drawable, resId %d, but context is null", new Object[] { Integer.valueOf(paramInt) });
+        AppMethodBeat.o(125148);
+        return null;
+      }
+      paramContext = paramContext.getResources().getDrawable(paramInt);
+      AppMethodBeat.o(125148);
+      return paramContext;
+    }
+    paramContext = Ipr.flt();
+    AppMethodBeat.o(125148);
+    return paramContext;
+  }
+  
+  public static ColorStateList m(Context paramContext, int paramInt)
+  {
+    AppMethodBeat.i(125147);
+    if (Ipr == null)
+    {
+      if (paramContext == null)
+      {
+        ae.e("MicroMsg.ResourceHelper", "get color state list, resId %d, but context is null", new Object[] { Integer.valueOf(paramInt) });
+        AppMethodBeat.o(125147);
+        return null;
+      }
+      paramContext = paramContext.getResources().getColorStateList(paramInt);
+      AppMethodBeat.o(125147);
+      return paramContext;
+    }
+    paramContext = Ipr.fls();
+    AppMethodBeat.o(125147);
+    return paramContext;
+  }
+  
+  public static int n(Context paramContext, int paramInt)
+  {
+    AppMethodBeat.i(125146);
+    if (Ipr == null)
+    {
+      if (paramContext == null)
+      {
+        ae.e("MicroMsg.ResourceHelper", "get color, resId %d, but context is null", new Object[] { Integer.valueOf(paramInt) });
+        AppMethodBeat.o(125146);
+        return 0;
+      }
+      paramInt = paramContext.getResources().getColor(paramInt);
+      AppMethodBeat.o(125146);
+      return paramInt;
+    }
+    paramInt = Ipr.flr();
+    AppMethodBeat.o(125146);
+    return paramInt;
+  }
+  
+  public static abstract interface a
+  {
+    public abstract int flr();
     
-    public static String cM(int paramInt, String paramString)
-    {
-      AppMethodBeat.i(104848);
-      Bundle localBundle = new Bundle();
-      localBundle.putInt("key", paramInt);
-      paramString = a.call(Uri.parse("content://com.tencent.mm.storage.provider.emotion/userinfo/"), "ConfigStorage.getString", null, localBundle).getString("key", paramString);
-      AppMethodBeat.o(104848);
-      return paramString;
-    }
-  }
-  
-  public static final class c
-    extends com.tencent.mm.n.e
-  {
-    public final void vw()
-    {
-      try
-      {
-        AppMethodBeat.i(104850);
-        this.gey = true;
-        a.fhy();
-        a.b localb = a.HVh;
-        r(a.b.cM(278529, null), false);
-        a.fhy();
-        localb = a.HVh;
-        r(a.b.cM(278530, null), false);
-        AppMethodBeat.o(104850);
-        return;
-      }
-      finally
-      {
-        localObject = finally;
-        throw localObject;
-      }
-    }
+    public abstract ColorStateList fls();
+    
+    public abstract Drawable flt();
+    
+    public abstract int flu();
+    
+    public abstract String flv();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.cb.a
  * JD-Core Version:    0.7.0.1
  */

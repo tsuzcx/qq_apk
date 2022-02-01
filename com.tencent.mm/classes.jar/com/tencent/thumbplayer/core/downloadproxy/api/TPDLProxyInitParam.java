@@ -24,17 +24,17 @@ public class TPDLProxyInitParam
   public TPDLProxyInitParam(int paramInt, String paramString1, String paramString2, String paramString3)
   {
     this(paramInt, paramString1, paramString2);
-    AppMethodBeat.i(190007);
+    AppMethodBeat.i(207220);
     if (!TextUtils.isEmpty(paramString3)) {
       this.dataDir = paramString3;
     }
-    AppMethodBeat.o(190007);
+    AppMethodBeat.o(207220);
   }
   
   public TPDLProxyInitParam(int paramInt, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
   {
     this(paramInt, paramString1, paramString2, paramString4);
-    AppMethodBeat.i(190008);
+    AppMethodBeat.i(207221);
     if (!TextUtils.isEmpty(paramString3)) {
       this.cacheDir = paramString3;
     }
@@ -44,7 +44,7 @@ public class TPDLProxyInitParam
     if (!TextUtils.isEmpty(paramString5)) {
       this.configDir = paramString5;
     }
-    AppMethodBeat.o(190008);
+    AppMethodBeat.o(207221);
   }
   
   public String getAppVer()

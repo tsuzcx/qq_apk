@@ -10,7 +10,7 @@ public final class f
     //   0: invokestatic 14	java/lang/System:currentTimeMillis	()J
     //   3: lstore 6
     //   5: aload_0
-    //   6: invokestatic 20	com/tencent/tinker/lib/e/a:lk	(Landroid/content/Context;)Lcom/tencent/tinker/lib/e/a;
+    //   6: invokestatic 20	com/tencent/tinker/lib/e/a:lq	(Landroid/content/Context;)Lcom/tencent/tinker/lib/e/a;
     //   9: astore 12
     //   11: aconst_null
     //   12: astore_0
@@ -39,7 +39,7 @@ public final class f
     //   54: anewarray 43	java/lang/Object
     //   57: invokestatic 49	com/tencent/tinker/loader/shareutil/ShareTinkerLog:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   60: aload 12
-    //   62: getfield 53	com/tencent/tinker/lib/e/a:MgW	Lcom/tencent/tinker/lib/d/d;
+    //   62: getfield 53	com/tencent/tinker/lib/e/a:MDT	Lcom/tencent/tinker/lib/d/d;
     //   65: aload 4
     //   67: aload_1
     //   68: ldc 28
@@ -75,7 +75,7 @@ public final class f
     //   127: aastore
     //   128: invokestatic 90	com/tencent/tinker/loader/shareutil/ShareTinkerLog:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   131: aload 12
-    //   133: getfield 53	com/tencent/tinker/lib/e/a:MgW	Lcom/tencent/tinker/lib/d/d;
+    //   133: getfield 53	com/tencent/tinker/lib/e/a:MDT	Lcom/tencent/tinker/lib/d/d;
     //   136: aload 4
     //   138: aload_1
     //   139: ldc 28
@@ -148,7 +148,7 @@ public final class f
     //   291: anewarray 43	java/lang/Object
     //   294: invokestatic 49	com/tencent/tinker/loader/shareutil/ShareTinkerLog:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   297: aload 12
-    //   299: getfield 53	com/tencent/tinker/lib/e/a:MgW	Lcom/tencent/tinker/lib/d/d;
+    //   299: getfield 53	com/tencent/tinker/lib/e/a:MDT	Lcom/tencent/tinker/lib/d/d;
     //   302: aload 4
     //   304: aload 11
     //   306: aload_2
@@ -200,10 +200,10 @@ public final class f
     //   391: aastore
     //   392: invokestatic 49	com/tencent/tinker/loader/shareutil/ShareTinkerLog:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   395: aload 12
-    //   397: getfield 53	com/tencent/tinker/lib/e/a:MgW	Lcom/tencent/tinker/lib/d/d;
+    //   397: getfield 53	com/tencent/tinker/lib/e/a:MDT	Lcom/tencent/tinker/lib/d/d;
     //   400: aload 4
     //   402: bipush 6
-    //   404: invokestatic 172	com/tencent/tinker/lib/c/c:ail	(I)I
+    //   404: invokestatic 172	com/tencent/tinker/lib/c/c:aiU	(I)I
     //   407: invokeinterface 175 3 0
     //   412: aload 10
     //   414: invokestatic 64	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:closeZip	(Ljava/util/zip/ZipFile;)V
@@ -311,10 +311,10 @@ public final class f
     //   624: aastore
     //   625: invokestatic 49	com/tencent/tinker/loader/shareutil/ShareTinkerLog:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   628: aload 12
-    //   630: getfield 53	com/tencent/tinker/lib/e/a:MgW	Lcom/tencent/tinker/lib/d/d;
+    //   630: getfield 53	com/tencent/tinker/lib/e/a:MDT	Lcom/tencent/tinker/lib/d/d;
     //   633: aload 4
     //   635: bipush 6
-    //   637: invokestatic 172	com/tencent/tinker/lib/c/c:ail	(I)I
+    //   637: invokestatic 172	com/tencent/tinker/lib/c/c:aiU	(I)I
     //   640: invokeinterface 175 3 0
     //   645: aload 10
     //   647: invokestatic 64	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:closeZip	(Ljava/util/zip/ZipFile;)V
@@ -356,10 +356,10 @@ public final class f
     //   718: aastore
     //   719: invokestatic 49	com/tencent/tinker/loader/shareutil/ShareTinkerLog:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   722: aload 12
-    //   724: getfield 53	com/tencent/tinker/lib/e/a:MgW	Lcom/tencent/tinker/lib/d/d;
+    //   724: getfield 53	com/tencent/tinker/lib/e/a:MDT	Lcom/tencent/tinker/lib/d/d;
     //   727: aload 4
     //   729: bipush 6
-    //   731: invokestatic 172	com/tencent/tinker/lib/c/c:ail	(I)I
+    //   731: invokestatic 172	com/tencent/tinker/lib/c/c:aiU	(I)I
     //   734: invokeinterface 175 3 0
     //   739: aload 10
     //   741: invokestatic 64	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:closeZip	(Ljava/util/zip/ZipFile;)V
@@ -382,7 +382,7 @@ public final class f
     //   776: anewarray 43	java/lang/Object
     //   779: invokestatic 49	com/tencent/tinker/loader/shareutil/ShareTinkerLog:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   782: aload 12
-    //   784: getfield 53	com/tencent/tinker/lib/e/a:MgW	Lcom/tencent/tinker/lib/d/d;
+    //   784: getfield 53	com/tencent/tinker/lib/e/a:MDT	Lcom/tencent/tinker/lib/d/d;
     //   787: aload 4
     //   789: aload 15
     //   791: getfield 225	com/tencent/tinker/loader/shareutil/ShareResPatchInfo$LargeModeInfo:file	Ljava/io/File;
@@ -410,7 +410,7 @@ public final class f
     //   839: anewarray 43	java/lang/Object
     //   842: invokestatic 49	com/tencent/tinker/loader/shareutil/ShareTinkerLog:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   845: aload 12
-    //   847: getfield 53	com/tencent/tinker/lib/e/a:MgW	Lcom/tencent/tinker/lib/d/d;
+    //   847: getfield 53	com/tencent/tinker/lib/e/a:MDT	Lcom/tencent/tinker/lib/d/d;
     //   850: aload 4
     //   852: aload 15
     //   854: getfield 225	com/tencent/tinker/loader/shareutil/ShareResPatchInfo$LargeModeInfo:file	Ljava/io/File;
@@ -467,7 +467,7 @@ public final class f
     //   961: invokestatic 263	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:safeDeleteFile	(Ljava/io/File;)Z
     //   964: pop
     //   965: aload 12
-    //   967: getfield 53	com/tencent/tinker/lib/e/a:MgW	Lcom/tencent/tinker/lib/d/d;
+    //   967: getfield 53	com/tencent/tinker/lib/e/a:MDT	Lcom/tencent/tinker/lib/d/d;
     //   970: aload 4
     //   972: aload 15
     //   974: getfield 225	com/tencent/tinker/loader/shareutil/ShareResPatchInfo$LargeModeInfo:file	Ljava/io/File;
@@ -659,7 +659,7 @@ public final class f
     //   35: aastore
     //   36: invokestatic 112	com/tencent/tinker/loader/shareutil/ShareTinkerLog:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   39: aload_0
-    //   40: invokestatic 20	com/tencent/tinker/lib/e/a:lk	(Landroid/content/Context;)Lcom/tencent/tinker/lib/e/a;
+    //   40: invokestatic 20	com/tencent/tinker/lib/e/a:lq	(Landroid/content/Context;)Lcom/tencent/tinker/lib/e/a;
     //   43: astore_2
     //   44: aload 7
     //   46: getfield 283	com/tencent/tinker/loader/shareutil/ShareResPatchInfo:resArscMd5	Ljava/lang/String;
@@ -681,10 +681,10 @@ public final class f
     //   79: aastore
     //   80: invokestatic 49	com/tencent/tinker/loader/shareutil/ShareTinkerLog:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   83: aload_2
-    //   84: getfield 53	com/tencent/tinker/lib/e/a:MgW	Lcom/tencent/tinker/lib/d/d;
+    //   84: getfield 53	com/tencent/tinker/lib/e/a:MDT	Lcom/tencent/tinker/lib/d/d;
     //   87: aload_3
     //   88: bipush 6
-    //   90: invokestatic 172	com/tencent/tinker/lib/c/c:ail	(I)I
+    //   90: invokestatic 172	com/tencent/tinker/lib/c/c:aiU	(I)I
     //   93: invokeinterface 175 3 0
     //   98: iconst_0
     //   99: ireturn
@@ -893,7 +893,7 @@ public final class f
     //   542: goto +754 -> 1296
     //   545: aload_0
     //   546: ldc_w 387
-    //   549: invokevirtual 396	com/tencent/tinker/d/a/h:aZT	(Ljava/lang/String;)Lcom/tencent/tinker/d/a/g;
+    //   549: invokevirtual 396	com/tencent/tinker/d/a/h:bbw	(Ljava/lang/String;)Lcom/tencent/tinker/d/a/g;
     //   552: astore 10
     //   554: aload 10
     //   556: ifnonnull +53 -> 609
@@ -903,7 +903,7 @@ public final class f
     //   565: anewarray 43	java/lang/Object
     //   568: invokestatic 49	com/tencent/tinker/loader/shareutil/ShareTinkerLog:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   571: aload_2
-    //   572: getfield 53	com/tencent/tinker/lib/e/a:MgW	Lcom/tencent/tinker/lib/d/d;
+    //   572: getfield 53	com/tencent/tinker/lib/e/a:MDT	Lcom/tencent/tinker/lib/d/d;
     //   575: aload_3
     //   576: aload 9
     //   578: ldc_w 387
@@ -941,7 +941,7 @@ public final class f
     //   653: astore 12
     //   655: aload_0
     //   656: aload 12
-    //   658: invokevirtual 396	com/tencent/tinker/d/a/h:aZT	(Ljava/lang/String;)Lcom/tencent/tinker/d/a/g;
+    //   658: invokevirtual 396	com/tencent/tinker/d/a/h:bbw	(Ljava/lang/String;)Lcom/tencent/tinker/d/a/g;
     //   661: astore 11
     //   663: aload 11
     //   665: ifnonnull +60 -> 725
@@ -954,7 +954,7 @@ public final class f
     //   682: anewarray 43	java/lang/Object
     //   685: invokestatic 49	com/tencent/tinker/loader/shareutil/ShareTinkerLog:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   688: aload_2
-    //   689: getfield 53	com/tencent/tinker/lib/e/a:MgW	Lcom/tencent/tinker/lib/d/d;
+    //   689: getfield 53	com/tencent/tinker/lib/e/a:MDT	Lcom/tencent/tinker/lib/d/d;
     //   692: aload_3
     //   693: aload 9
     //   695: aload 12
@@ -1002,7 +1002,7 @@ public final class f
     //   796: astore 11
     //   798: aload_1
     //   799: aload 11
-    //   801: invokevirtual 396	com/tencent/tinker/d/a/h:aZT	(Ljava/lang/String;)Lcom/tencent/tinker/d/a/g;
+    //   801: invokevirtual 396	com/tencent/tinker/d/a/h:bbw	(Ljava/lang/String;)Lcom/tencent/tinker/d/a/g;
     //   804: astore 12
     //   806: aload 12
     //   808: ifnonnull +60 -> 868
@@ -1015,7 +1015,7 @@ public final class f
     //   825: anewarray 43	java/lang/Object
     //   828: invokestatic 49	com/tencent/tinker/loader/shareutil/ShareTinkerLog:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   831: aload_2
-    //   832: getfield 53	com/tencent/tinker/lib/e/a:MgW	Lcom/tencent/tinker/lib/d/d;
+    //   832: getfield 53	com/tencent/tinker/lib/e/a:MDT	Lcom/tencent/tinker/lib/d/d;
     //   835: aload_3
     //   836: aload 9
     //   838: aload 11
@@ -1066,7 +1066,7 @@ public final class f
     //   950: astore 11
     //   952: aload_1
     //   953: aload 11
-    //   955: invokevirtual 396	com/tencent/tinker/d/a/h:aZT	(Ljava/lang/String;)Lcom/tencent/tinker/d/a/g;
+    //   955: invokevirtual 396	com/tencent/tinker/d/a/h:bbw	(Ljava/lang/String;)Lcom/tencent/tinker/d/a/g;
     //   958: astore 12
     //   960: aload 12
     //   962: ifnonnull +60 -> 1022
@@ -1079,7 +1079,7 @@ public final class f
     //   979: anewarray 43	java/lang/Object
     //   982: invokestatic 49	com/tencent/tinker/loader/shareutil/ShareTinkerLog:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   985: aload_2
-    //   986: getfield 53	com/tencent/tinker/lib/e/a:MgW	Lcom/tencent/tinker/lib/d/d;
+    //   986: getfield 53	com/tencent/tinker/lib/e/a:MDT	Lcom/tencent/tinker/lib/d/d;
     //   989: aload_3
     //   990: aload 9
     //   992: aload 11
@@ -1120,13 +1120,13 @@ public final class f
     //   1074: aload_0
     //   1075: invokevirtual 421	com/tencent/tinker/d/a/h:nU	()V
     //   1078: aload_0
-    //   1079: getfield 424	com/tencent/tinker/d/a/h:FxH	Ljava/lang/String;
+    //   1079: getfield 424	com/tencent/tinker/d/a/h:FQf	Ljava/lang/String;
     //   1082: astore 10
     //   1084: aload 10
     //   1086: ifnonnull +107 -> 1193
     //   1089: aload 6
-    //   1091: getstatic 428	com/tencent/tinker/d/a/i:MhZ	[B
-    //   1094: putfield 431	com/tencent/tinker/d/a/i:MhD	[B
+    //   1091: getstatic 428	com/tencent/tinker/d/a/i:MEW	[B
+    //   1094: putfield 431	com/tencent/tinker/d/a/i:MEA	[B
     //   1097: aload 6
     //   1099: invokestatic 253	com/tencent/tinker/c/b/b:closeQuietly	(Ljava/lang/Object;)V
     //   1102: aload_0
@@ -1166,7 +1166,7 @@ public final class f
     //   1170: invokestatic 263	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:safeDeleteFile	(Ljava/io/File;)Z
     //   1173: pop
     //   1174: aload_2
-    //   1175: getfield 53	com/tencent/tinker/lib/e/a:MgW	Lcom/tencent/tinker/lib/d/d;
+    //   1175: getfield 53	com/tencent/tinker/lib/e/a:MDT	Lcom/tencent/tinker/lib/d/d;
     //   1178: aload_3
     //   1179: aload 9
     //   1181: ldc_w 290
@@ -1183,7 +1183,7 @@ public final class f
     //   1208: invokestatic 457	com/tencent/tinker/d/a/i:D	(Ljava/lang/String;[B)V
     //   1211: aload 6
     //   1213: aload 10
-    //   1215: putfield 431	com/tencent/tinker/d/a/i:MhD	[B
+    //   1215: putfield 431	com/tencent/tinker/d/a/i:MEA	[B
     //   1218: goto -121 -> 1097
     //   1221: ldc 39
     //   1223: ldc_w 459

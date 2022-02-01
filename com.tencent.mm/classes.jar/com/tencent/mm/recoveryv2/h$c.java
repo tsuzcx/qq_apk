@@ -6,17 +6,17 @@ import java.io.File;
 
 public final class h$c
 {
-  private final g HUk;
-  public String HUn;
+  private final g Ios;
+  public String Iov;
   private final Context mContext;
   
   private h$c(Context paramContext)
   {
-    AppMethodBeat.i(207032);
+    AppMethodBeat.i(195340);
     this.mContext = paramContext;
-    this.HUk = new g.a(paramContext, "recovery_log").fhb();
-    paramContext = new File(l.hV(paramContext), ".log").getAbsolutePath();
-    String str = this.HUk.getString("setting_log_path", paramContext);
+    this.Ios = new g.a(paramContext, "recovery_log").fkT();
+    paramContext = new File(l.ib(paramContext), ".log").getAbsolutePath();
+    String str = this.Ios.getString("setting_log_path", paramContext);
     try
     {
       l.b.N(new File(str));
@@ -26,30 +26,30 @@ public final class h$c
     {
       for (;;)
       {
-        this.HUk.aPB("setting_log_path");
+        this.Ios.aQY("setting_log_path");
       }
     }
-    this.HUn = paramContext;
-    AppMethodBeat.o(207032);
+    this.Iov = paramContext;
+    AppMethodBeat.o(195340);
   }
   
-  public static c hQ(Context paramContext)
+  public static c hW(Context paramContext)
   {
-    AppMethodBeat.i(207031);
+    AppMethodBeat.i(195339);
     paramContext = new c(paramContext);
-    AppMethodBeat.o(207031);
+    AppMethodBeat.o(195339);
     return paramContext;
   }
   
-  public final void fhj()
+  public final void flb()
   {
-    AppMethodBeat.i(207033);
-    a.a.K(new File(this.HUn));
-    AppMethodBeat.o(207033);
+    AppMethodBeat.i(195341);
+    a.a.K(new File(this.Iov));
+    AppMethodBeat.o(195341);
   }
   
   /* Error */
-  public final String fhk()
+  public final String flc()
   {
     // Byte code:
     //   0: ldc 102
@@ -57,7 +57,7 @@ public final class h$c
     //   5: new 46	java/io/File
     //   8: dup
     //   9: aload_0
-    //   10: getfield 78	com/tencent/mm/recoveryv2/h$c:HUn	Ljava/lang/String;
+    //   10: getfield 78	com/tencent/mm/recoveryv2/h$c:Iov	Ljava/lang/String;
     //   13: invokespecial 70	java/io/File:<init>	(Ljava/lang/String;)V
     //   16: astore_1
     //   17: aload_1

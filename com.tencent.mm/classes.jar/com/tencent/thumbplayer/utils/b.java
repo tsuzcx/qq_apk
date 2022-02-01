@@ -9,25 +9,25 @@ public final class b
   
   private b()
   {
-    AppMethodBeat.i(192152);
+    AppMethodBeat.i(194830);
     this.mListeners = null;
     if (this.mListeners == null) {
       this.mListeners = new ArrayList();
     }
-    AppMethodBeat.o(192152);
+    AppMethodBeat.o(194830);
   }
   
   public final void a(b paramb)
   {
     try
     {
-      AppMethodBeat.i(192153);
+      AppMethodBeat.i(194831);
       if ((this.mListeners != null) && (!this.mListeners.contains(paramb)))
       {
         this.mListeners.add(paramb);
         d.i("TPGlobalEventNofication", "add onNetStatus change listener: " + paramb + ", mListeners: " + this.mListeners.size());
       }
-      AppMethodBeat.o(192153);
+      AppMethodBeat.o(194831);
       return;
     }
     finally {}
@@ -37,13 +37,13 @@ public final class b
   {
     try
     {
-      AppMethodBeat.i(192154);
+      AppMethodBeat.i(194832);
       if (this.mListeners != null)
       {
         this.mListeners.remove(paramb);
         d.i("TPGlobalEventNofication", "remove netStatusChangeListener, listener: " + paramb + ", mListeners: " + this.mListeners.size());
       }
-      AppMethodBeat.o(192154);
+      AppMethodBeat.o(194832);
       return;
     }
     finally {}
@@ -51,13 +51,13 @@ public final class b
   
   public static final class a
   {
-    private static b Mcm;
+    private static b Mzh;
     
     static
     {
-      AppMethodBeat.i(192151);
-      Mcm = new b((byte)0);
-      AppMethodBeat.o(192151);
+      AppMethodBeat.i(194829);
+      Mzh = new b((byte)0);
+      AppMethodBeat.o(194829);
     }
   }
   

@@ -2,20 +2,22 @@ package com.tencent.mm.chatroom.storage;
 
 import android.database.Cursor;
 import android.os.Looper;
+import com.tencent.e.h;
+import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.chatroom.d.aa;
 import com.tencent.mm.chatroom.plugin.PluginChatroomUI;
-import com.tencent.mm.g.a.nc;
+import com.tencent.mm.g.a.nd;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.w;
+import com.tencent.mm.model.x;
 import com.tencent.mm.plugin.messenger.foundation.a.l;
 import com.tencent.mm.sdk.b.a;
 import com.tencent.mm.sdk.e.c.a;
 import com.tencent.mm.sdk.e.j;
 import com.tencent.mm.sdk.e.n;
 import com.tencent.mm.sdk.e.n.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,7 +33,7 @@ public final class f
   {
     AppMethodBeat.i(182165);
     SQL_CREATE = new String[] { j.getCreateSQLs(e.info, "GroupTools") };
-    INDEX_CREATE = new String[] { "CREATE INDEX IF NOT EXISTS usernameIndex ON GroupTools ( chatroomname )" };
+    INDEX_CREATE = new String[] { "DROP INDEX IF EXISTS usernameIndex", "CREATE INDEX IF NOT EXISTS GroupTools_usernameIndex ON GroupTools ( chatroomname )" };
     AppMethodBeat.o(182165);
   }
   
@@ -41,7 +43,7 @@ public final class f
     this.db = parame;
   }
   
-  public final List<e> Yt()
+  public final List<e> YC()
   {
     AppMethodBeat.i(185974);
     Cursor localCursor = this.db.query("GroupTools", e.info.columns, null, null, null, null, null);
@@ -76,10 +78,10 @@ public final class f
     return localList;
   }
   
-  public final void a(int paramInt, n paramn, Object paramObject)
+  public final void a(int paramInt, final n paramn, Object paramObject)
   {
     AppMethodBeat.i(185975);
-    if (!aa.Yh())
+    if (!aa.Yr())
     {
       AppMethodBeat.o(185975);
       return;
@@ -89,15 +91,23 @@ public final class f
       AppMethodBeat.o(185975);
       return;
     }
-    if ((paramInt == 2) && (paramn == ((l)g.ab(l.class)).azp()))
+    if ((paramInt == 2) && (paramn == ((l)g.ab(l.class)).azF()))
     {
       paramn = (String)paramObject;
-      if (w.zk(paramn))
-      {
-        paramObject = new e();
-        paramObject.field_chatroomname = paramn;
-        paramObject.field_queryState = 1;
-        ad.i("MicroMsg.roomtools.GroupToolsStorage", "onNotifyChange username:%s result:%s", new Object[] { paramn, Boolean.valueOf(((PluginChatroomUI)g.ad(PluginChatroomUI.class)).getGroupToolsStorage().a(paramObject)) });
+      if (x.zU(paramn)) {
+        h.MqF.aO(new Runnable()
+        {
+          public final void run()
+          {
+            AppMethodBeat.i(217147);
+            e locale = new e();
+            locale.field_chatroomname = paramn;
+            locale.field_queryState = 1;
+            boolean bool = ((PluginChatroomUI)g.ad(PluginChatroomUI.class)).getGroupToolsStorage().a(locale);
+            ae.i("MicroMsg.roomtools.GroupToolsStorage", "onNotifyChange username:%s result:%s", new Object[] { paramn, Boolean.valueOf(bool) });
+            AppMethodBeat.o(217147);
+          }
+        });
       }
     }
     AppMethodBeat.o(185975);
@@ -122,18 +132,18 @@ public final class f
     boolean bool = super.updateNotify(parame, true, paramVarArgs);
     if (bool)
     {
-      paramVarArgs = new nc();
-      paramVarArgs.dBb.dvs = parame.field_chatroomname;
-      a.IbL.a(paramVarArgs, Looper.getMainLooper());
+      paramVarArgs = new nd();
+      paramVarArgs.dCg.dwx = parame.field_chatroomname;
+      a.IvT.a(paramVarArgs, Looper.getMainLooper());
     }
     AppMethodBeat.o(182162);
     return bool;
   }
   
-  public final e uR(String paramString)
+  public final e vn(String paramString)
   {
     AppMethodBeat.i(182160);
-    if (bt.isNullOrNil(paramString))
+    if (bu.isNullOrNil(paramString))
     {
       AppMethodBeat.o(182160);
       return null;

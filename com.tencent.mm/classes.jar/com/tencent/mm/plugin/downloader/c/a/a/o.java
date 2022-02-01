@@ -3,11 +3,11 @@ package com.tencent.mm.plugin.downloader.c.a.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class o
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
   public int limit;
   public int offset;
-  public long pjY;
+  public long pqD;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -17,7 +17,7 @@ public final class o
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
       paramVarArgs.aS(1, this.offset);
       paramVarArgs.aS(2, this.limit);
-      paramVarArgs.aY(3, this.pjY);
+      paramVarArgs.aZ(3, this.pqD);
       AppMethodBeat.o(153057);
       return 0;
     }
@@ -25,16 +25,16 @@ public final class o
     {
       paramInt = f.a.a.b.b.a.bz(1, this.offset);
       int i = f.a.a.b.b.a.bz(2, this.limit);
-      int j = f.a.a.b.b.a.p(3, this.pjY);
+      int j = f.a.a.b.b.a.p(3, this.pqD);
       AppMethodBeat.o(153057);
       return paramInt + 0 + i + j;
     }
     if (paramInt == 2)
     {
       paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gxE();
+          paramVarArgs.gCg();
         }
       }
       AppMethodBeat.o(153057);
@@ -50,15 +50,15 @@ public final class o
         AppMethodBeat.o(153057);
         return -1;
       case 1: 
-        localo.offset = locala.NPN.zc();
+        localo.offset = locala.OmT.zc();
         AppMethodBeat.o(153057);
         return 0;
       case 2: 
-        localo.limit = locala.NPN.zc();
+        localo.limit = locala.OmT.zc();
         AppMethodBeat.o(153057);
         return 0;
       }
-      localo.pjY = locala.NPN.zd();
+      localo.pqD = locala.OmT.zd();
       AppMethodBeat.o(153057);
       return 0;
     }

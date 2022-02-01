@@ -6,8 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class iv
   extends b
 {
-  public a dvy;
-  public b dvz;
+  public a dwy;
   
   public iv()
   {
@@ -16,22 +15,20 @@ public final class iv
   
   private iv(byte paramByte)
   {
-    AppMethodBeat.i(155368);
-    this.dvy = new a();
-    this.dvz = new b();
-    this.IbR = false;
+    AppMethodBeat.i(19812);
+    this.dwy = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(155368);
+    AppMethodBeat.o(19812);
   }
   
   public static final class a
   {
-    public String dvA;
-  }
-  
-  public static final class b
-  {
-    public String userName;
+    public long dwA;
+    public long dwB;
+    public long dwC;
+    public long dwz;
+    public String username;
   }
 }
 

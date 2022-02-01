@@ -6,66 +6,66 @@ import com.tencent.mm.media.j.b.a;
 import com.tencent.mm.media.j.b.e;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/live/core/render/LiveScreenRenderProc;", "Lcom/tencent/mm/media/render/proc/GLTextureRenderProcTexture;", "textureWidth", "", "textureHeight", "drawWidth", "drawHeight", "(IIII)V", "animationCost", "animationScale", "", "animationStartTime", "", "drawHeightStart", "drawWidthStart", "isScale", "", "originalDrawHeight", "originalDrawWidth", "beforeRender", "", "endScaleAnimation", "time", "reset", "startScaleAnimation", "scale", "updateDrawViewSize", "width", "height", "plugin-core_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/live/core/render/LiveScreenRenderProc;", "Lcom/tencent/mm/media/render/proc/GLTextureRenderProcTexture;", "textureWidth", "", "textureHeight", "drawWidth", "drawHeight", "(IIII)V", "animationCost", "animationScale", "", "animationStartTime", "", "drawHeightStart", "drawWidthStart", "isScale", "", "originalDrawHeight", "originalDrawWidth", "beforeRender", "", "endScaleAnimation", "time", "reset", "startScaleAnimation", "scale", "updateDrawViewSize", "width", "height", "plugin-core_release"})
 public final class d
   extends e
 {
-  private int gKX;
-  private int gKY;
-  private long gKZ;
-  private int gLa;
-  private float gLb;
-  public int gLc;
-  public int gLd;
-  private boolean gLe;
+  private int gNG;
+  private int gNH;
+  private long gNI;
+  private int gNJ;
+  private float gNK;
+  public int gNL;
+  public int gNM;
+  private boolean gNN;
   
   public d(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super(paramInt1, paramInt2, paramInt3, paramInt4, 1, 1);
   }
   
-  public final void amq()
+  public final void amF()
   {
-    AppMethodBeat.i(216953);
+    AppMethodBeat.i(196965);
     float f1;
-    if (System.currentTimeMillis() - this.gKZ <= this.gLa)
+    if (System.currentTimeMillis() - this.gNI <= this.gNJ)
     {
-      if (!this.gLe) {
+      if (!this.gNN) {
         break label139;
       }
-      f1 = (float)(System.currentTimeMillis() - this.gKZ) * (1.0F - this.gLb) / this.gLa;
-      this.gLD = ((int)(this.gKX * (1.0F - f1)));
-      this.gLE = ((int)((1.0F - f1) * this.gKY));
+      f1 = (float)(System.currentTimeMillis() - this.gNI) * (1.0F - this.gNK) / this.gNJ;
+      this.gOm = ((int)(this.gNG * (1.0F - f1)));
+      this.gOn = ((int)((1.0F - f1) * this.gNH));
     }
     for (;;)
     {
-      this.gLc = ((this.gKX - this.gLD) / 2);
-      this.gLd = ((this.gKY - this.gLE) / 2);
-      super.amq();
-      GLES20.glViewport(this.gLc, this.gLd, this.gLD, this.gLE);
-      AppMethodBeat.o(216953);
+      this.gNL = ((this.gNG - this.gOm) / 2);
+      this.gNM = ((this.gNH - this.gOn) / 2);
+      super.amF();
+      GLES20.glViewport(this.gNL, this.gNM, this.gOm, this.gOn);
+      AppMethodBeat.o(196965);
       return;
       label139:
-      f1 = (float)(System.currentTimeMillis() - this.gKZ) * (1.0F - this.gLb) / this.gLa;
-      this.gLD = ((int)(this.gKX * (this.gLb + f1)));
-      float f2 = this.gKY;
-      this.gLE = ((int)((f1 + this.gLb) * f2));
-      if (this.gLD > this.gKX) {
-        this.gLD = this.gKX;
+      f1 = (float)(System.currentTimeMillis() - this.gNI) * (1.0F - this.gNK) / this.gNJ;
+      this.gOm = ((int)(this.gNG * (this.gNK + f1)));
+      float f2 = this.gNH;
+      this.gOn = ((int)((f1 + this.gNK) * f2));
+      if (this.gOm > this.gNG) {
+        this.gOm = this.gNG;
       }
-      if (this.gLE > this.gKY) {
-        this.gLD = this.gKY;
+      if (this.gOn > this.gNH) {
+        this.gOm = this.gNH;
       }
     }
   }
   
   public final void cT(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(216954);
+    AppMethodBeat.i(196966);
     super.cT(paramInt1, paramInt2);
-    this.gKX = paramInt1;
-    this.gKY = paramInt2;
-    AppMethodBeat.o(216954);
+    this.gNG = paramInt1;
+    this.gNH = paramInt2;
+    AppMethodBeat.o(196966);
   }
 }
 

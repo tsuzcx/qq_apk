@@ -12,7 +12,7 @@ import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.widget.input.ab;
 import com.tencent.mm.plugin.appbrand.widget.input.d.a.b;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.List;
 
 final class a
@@ -20,15 +20,15 @@ final class a
   implements g
 {
   private final LayoutInflater mInflater;
-  private b nhb;
-  h nhc;
-  private boolean nhd;
+  private b nmj;
+  h nmk;
+  private boolean nml;
   
   a(Context paramContext, List<a.b> paramList)
   {
     super(paramContext, 2131493005, paramList);
     AppMethodBeat.i(136615);
-    this.nhd = false;
+    this.nml = false;
     this.mInflater = LayoutInflater.from(paramContext);
     AppMethodBeat.o(136615);
   }
@@ -36,14 +36,14 @@ final class a
   public final void a(b paramb)
   {
     AppMethodBeat.i(136617);
-    this.nhb = paramb;
-    this.nhb.setOnDismissListener(new PopupWindow.OnDismissListener()
+    this.nmj = paramb;
+    this.nmj.setOnDismissListener(new PopupWindow.OnDismissListener()
     {
       public final void onDismiss()
       {
         AppMethodBeat.i(136612);
         if ((a.a(a.this) != null) && (!a.b(a.this))) {
-          a.a(a.this).a("", h.a.nhN);
+          a.a(a.this).a("", h.a.nmV);
         }
         AppMethodBeat.o(136612);
       }
@@ -51,11 +51,11 @@ final class a
     AppMethodBeat.o(136617);
   }
   
-  public final void bET()
+  public final void bFL()
   {
     AppMethodBeat.i(136618);
-    this.nhb.setOnDismissListener(null);
-    this.nhb = null;
+    this.nmj.setOnDismissListener(null);
+    this.nmj = null;
     AppMethodBeat.o(136618);
   }
   
@@ -84,16 +84,16 @@ final class a
     for (;;)
     {
       paramViewGroup = (a.b)getItem(paramInt);
-      paramView.nhi = paramViewGroup;
-      paramView.nhf.setText(paramViewGroup.title);
-      paramView.nhg.setText(paramViewGroup.content);
-      TextView localTextView = paramView.nhg;
+      paramView.nmq = paramViewGroup;
+      paramView.nmn.setText(paramViewGroup.title);
+      paramView.nmo.setText(paramViewGroup.content);
+      TextView localTextView = paramView.nmo;
       int i;
-      if (bt.isNullOrNil(paramViewGroup.content))
+      if (bu.isNullOrNil(paramViewGroup.content))
       {
         i = 8;
         localTextView.setVisibility(i);
-        paramView = paramView.iVT;
+        paramView = paramView.iYM;
         if (paramInt != getCount() - 1) {
           break label159;
         }
@@ -121,23 +121,23 @@ final class a
     implements View.OnClickListener
   {
     View auu;
-    View iVT;
-    TextView nhf;
-    TextView nhg;
-    View nhh;
-    a.b nhi;
+    View iYM;
+    TextView nmn;
+    TextView nmo;
+    View nmp;
+    a.b nmq;
     
     a(View paramView)
     {
       AppMethodBeat.i(136613);
       this.auu = paramView;
-      this.nhf = ((TextView)paramView.findViewById(2131305902));
-      this.nhg = ((TextView)paramView.findViewById(2131298739));
-      this.nhh = paramView.findViewById(2131298360);
-      this.iVT = paramView.findViewById(2131299154);
+      this.nmn = ((TextView)paramView.findViewById(2131305902));
+      this.nmo = ((TextView)paramView.findViewById(2131298739));
+      this.nmp = paramView.findViewById(2131298360);
+      this.iYM = paramView.findViewById(2131299154);
       paramView.setBackgroundResource(2131233634);
       paramView.setOnClickListener(this);
-      this.nhh.setOnClickListener(this);
+      this.nmp.setOnClickListener(this);
       AppMethodBeat.o(136613);
     }
     
@@ -146,15 +146,15 @@ final class a
       AppMethodBeat.i(136614);
       com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
       localb.bd(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/appbrand/widget/input/autofill/AutoFillAdapter$AutoFillViewHolder", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-      if (this.nhi != null)
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/appbrand/widget/input/autofill/AutoFillAdapter$AutoFillViewHolder", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+      if (this.nmq != null)
       {
         if (paramView.getId() != 2131298360) {
           break label111;
         }
-        a.this.remove(this.nhi);
+        a.this.remove(this.nmq);
         if (a.a(a.this) != null) {
-          a.a(a.this).a(this.nhi.id, h.a.nhO);
+          a.a(a.this).a(this.nmq.id, h.a.nmW);
         }
       }
       for (;;)
@@ -165,12 +165,12 @@ final class a
         label111:
         if ((paramView == this.auu) && (a.a(a.this) != null))
         {
-          if (this.nhi != null) {
-            a.a(a.this).a(this.nhi.id, h.a.nhP);
+          if (this.nmq != null) {
+            a.a(a.this).a(this.nmq.id, h.a.nmX);
           }
           a.c(a.this);
           if (a.d(a.this) != null) {
-            a.d(a.this).nhj.getView().clearFocus();
+            a.d(a.this).nmr.getView().clearFocus();
           }
         }
       }

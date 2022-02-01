@@ -5,8 +5,8 @@ import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.g;
-import com.tencent.mm.plugin.appbrand.g.d;
+import com.tencent.mm.plugin.appbrand.h;
+import com.tencent.mm.plugin.appbrand.h.d;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
 import com.tencent.mm.plugin.appbrand.jsapi.coverview.CoverViewContainer;
 import com.tencent.mm.plugin.appbrand.jsapi.e;
@@ -15,8 +15,8 @@ import com.tencent.mm.plugin.appbrand.jsapi.f.b;
 import com.tencent.mm.plugin.appbrand.jsapi.f.c;
 import com.tencent.mm.plugin.appbrand.jsapi.f.d;
 import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.plugin.appbrand.page.bp;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.plugin.appbrand.page.bo;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.rtmp.TXLiveBase;
 import com.tencent.rtmp.WXLivePlayer;
 import com.tencent.rtmp.ui.TXCloudVideoView;
@@ -51,12 +51,12 @@ public final class a
   public final void a(c paramc, JSONObject paramJSONObject, int paramInt)
   {
     AppMethodBeat.i(145856);
-    j.Ga();
+    j.Gg();
     if (paramJSONObject.optInt("mode", 0) == 2)
     {
       if (!(paramc.getContext() instanceof Activity))
       {
-        ad.w("MicroMsg.JsApiInsertLivePlayer", "invokeAfterRequestPermission pageContext not activity");
+        ae.w("MicroMsg.JsApiInsertLivePlayer", "invokeAfterRequestPermission pageContext not activity");
         paramc.h(paramInt, e("fail", null));
         AppMethodBeat.o(145856);
         return;
@@ -74,14 +74,14 @@ public final class a
       }
       catch (Exception paramJSONObject)
       {
-        ad.e("MicroMsg.JsApiInsertLivePlayer", "check mpermission exception:%s.", new Object[] { paramJSONObject });
+        ae.e("MicroMsg.JsApiInsertLivePlayer", "check mpermission exception:%s.", new Object[] { paramJSONObject });
         paramc.h(paramInt, e("fail", null));
         AppMethodBeat.o(145856);
         return;
       }
       paramJSONObject = new HashMap();
       paramJSONObject.put("errCode", Integer.valueOf(10001));
-      paramc.h(paramInt, m("fail:system permission denied", paramJSONObject));
+      paramc.h(paramInt, n("fail:system permission denied", paramJSONObject));
       AppMethodBeat.o(145856);
       return;
     }
@@ -92,23 +92,23 @@ public final class a
   public final void a(final e parame, final int paramInt, View paramView, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(145859);
-    ad.i("MicroMsg.JsApiInsertLivePlayer", "onInsertView livePlayerId=%d", new Object[] { Integer.valueOf(paramInt) });
+    ae.i("MicroMsg.JsApiInsertLivePlayer", "onInsertView livePlayerId=%d", new Object[] { Integer.valueOf(paramInt) });
     if (!(paramView instanceof CoverViewContainer))
     {
-      ad.w("MicroMsg.JsApiInsertLivePlayer", "the view(%s) is not a instance of CoverViewContainer", new Object[] { Integer.valueOf(paramInt) });
+      ae.w("MicroMsg.JsApiInsertLivePlayer", "the view(%s) is not a instance of CoverViewContainer", new Object[] { Integer.valueOf(paramInt) });
       AppMethodBeat.o(145859);
       return;
     }
     TXLiveBase.setAppVersion(String.format("weixin_%s", new Object[] { parame.getAppId() }));
     final AppBrandLivePlayerView localAppBrandLivePlayerView = (AppBrandLivePlayerView)((CoverViewContainer)paramView).ax(AppBrandLivePlayerView.class);
-    Object localObject = new bp()
+    Object localObject = new bo()
     {
-      public final void DA()
+      public final void DD()
       {
         AppMethodBeat.i(145844);
         AppBrandLivePlayerView localAppBrandLivePlayerView = localAppBrandLivePlayerView;
-        ad.i("MicroMsg.AppBrandLivePlayerView", "onExitFullScreen");
-        localAppBrandLivePlayerView.gx(false);
+        ae.i("MicroMsg.AppBrandLivePlayerView", "onExitFullScreen");
+        localAppBrandLivePlayerView.gw(false);
         AppMethodBeat.o(145844);
       }
     };
@@ -117,11 +117,11 @@ public final class a
       public final void onForeground()
       {
         AppMethodBeat.i(145845);
-        Object localObject = localAppBrandLivePlayerView.kOO;
-        if (((l)localObject).kPo) {}
+        Object localObject = localAppBrandLivePlayerView.kSw;
+        if (((l)localObject).kSW) {}
         for (localObject = ((l)localObject).h("resume", null);; localObject = new i())
         {
-          ad.i("MicroMsg.AppBrandLivePlayerView", "onForeground code:%d info:%s", new Object[] { Integer.valueOf(((i)localObject).errorCode), ((i)localObject).crF });
+          ae.i("MicroMsg.AppBrandLivePlayerView", "onForeground code:%d info:%s", new Object[] { Integer.valueOf(((i)localObject).errorCode), ((i)localObject).csi });
           AppMethodBeat.o(145845);
           return;
         }
@@ -132,21 +132,21 @@ public final class a
       public final void onBackground()
       {
         AppMethodBeat.i(145846);
-        g.d locald = g.Kv(parame.getAppId());
-        ad.i("MicroMsg.JsApiInsertLivePlayer", "LivePlayer enter background, pause type:%s", new Object[] { locald.name() });
-        if (locald == g.d.jwr)
+        h.d locald = h.KU(parame.getAppId());
+        ae.i("MicroMsg.JsApiInsertLivePlayer", "LivePlayer enter background, pause type:%s", new Object[] { locald.name() });
+        if (locald == h.d.jzn)
         {
-          localAppBrandLivePlayerView.gE(2);
+          localAppBrandLivePlayerView.gF(2);
           AppMethodBeat.o(145846);
           return;
         }
-        if (locald == g.d.jwn)
+        if (locald == h.d.jzj)
         {
-          localAppBrandLivePlayerView.gE(1);
+          localAppBrandLivePlayerView.gF(1);
           AppMethodBeat.o(145846);
           return;
         }
-        localAppBrandLivePlayerView.gE(3);
+        localAppBrandLivePlayerView.gF(3);
         AppMethodBeat.o(145846);
       }
     };
@@ -165,31 +165,31 @@ public final class a
     parame.a(local4);
     localAppBrandLivePlayerView.setFullScreenDelegate(new AppBrandLivePlayerView.a()
     {
-      public final void bkF()
+      public final void blp()
       {
         AppMethodBeat.i(145849);
-        parame.fG(this.kCg).sH(paramInt);
+        parame.fF(this.kFv).sK(paramInt);
         AppMethodBeat.o(145849);
       }
       
       public final boolean isFullScreen()
       {
         AppMethodBeat.i(145850);
-        boolean bool = parame.fG(this.kCg).sI(paramInt);
+        boolean bool = parame.fF(this.kFv).sL(paramInt);
         AppMethodBeat.o(145850);
         return bool;
       }
       
-      public final void te(int paramAnonymousInt)
+      public final void th(int paramAnonymousInt)
       {
         AppMethodBeat.i(145848);
-        parame.fG(this.kCg).a(paramInt, this.kPc, paramAnonymousInt);
+        parame.fF(this.kFv).a(paramInt, this.kSK, paramAnonymousInt);
         AppMethodBeat.o(145848);
       }
     });
     localAppBrandLivePlayerView.setExitListener(new AppBrandLivePlayerView.b()
     {
-      public final void bkG()
+      public final void blq()
       {
         AppMethodBeat.i(145851);
         parame.b(local3);
@@ -200,23 +200,23 @@ public final class a
     localAppBrandLivePlayerView.setNeedEvent(paramJSONObject.optBoolean("needEvent", false));
     localAppBrandLivePlayerView.setOnFullScreenChangeListener(new a.7(this, paramInt, parame));
     paramJSONObject = k.P(paramJSONObject);
-    localObject = localAppBrandLivePlayerView.kOO;
+    localObject = localAppBrandLivePlayerView.kSw;
     l.l("initLivePlayer", paramJSONObject);
     ((l)localObject).mVideoView = localAppBrandLivePlayerView;
     ((l)localObject).mVideoView.disableLog(false);
-    ((l)localObject).csy.setPlayerView(localAppBrandLivePlayerView);
-    ((l)localObject).csd = paramJSONObject.getString("playUrl", ((l)localObject).csd);
-    ((l)localObject).csB = ((l)localObject).n(paramJSONObject);
+    ((l)localObject).ctb.setPlayerView(localAppBrandLivePlayerView);
+    ((l)localObject).csG = paramJSONObject.getString("playUrl", ((l)localObject).csG);
+    ((l)localObject).cte = ((l)localObject).n(paramJSONObject);
     ((l)localObject).a(paramJSONObject, true);
-    ((l)localObject).csg = paramJSONObject.getBoolean("autoplay", ((l)localObject).csg);
-    if ((((l)localObject).csg) && (((l)localObject).csd != null) && (!((l)localObject).csd.isEmpty()))
+    ((l)localObject).csJ = paramJSONObject.getBoolean("autoplay", ((l)localObject).csJ);
+    if ((((l)localObject).csJ) && (((l)localObject).csG != null) && (!((l)localObject).csG.isEmpty()))
     {
-      ad.i("TXLivePlayerJSAdapter", "initLivePlayer: startPlay");
-      ((l)localObject).csy.startPlay(((l)localObject).csd, ((l)localObject).csB);
+      ae.i("TXLivePlayerJSAdapter", "initLivePlayer: startPlay");
+      ((l)localObject).ctb.startPlay(((l)localObject).csG, ((l)localObject).cte);
     }
     ((l)localObject).mInited = true;
     localObject = new i();
-    ad.i("MicroMsg.AppBrandLivePlayerView", "onInsert code:%d info:%s", new Object[] { Integer.valueOf(((i)localObject).errorCode), ((i)localObject).crF });
+    ae.i("MicroMsg.AppBrandLivePlayerView", "onInsert code:%d info:%s", new Object[] { Integer.valueOf(((i)localObject).errorCode), ((i)localObject).csi });
     localAppBrandLivePlayerView.setPlayEventListener(new a.8(this, paramInt, parame));
     localAppBrandLivePlayerView.setAudioVolumeEventListener(new a.9(this, paramInt, parame));
     if (paramJSONObject.getInt("mode", 0) == 5) {}

@@ -10,23 +10,23 @@ import android.support.v4.app.s.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.d;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.ar;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.model.at;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/live/core/mini/LiveForegroundService;", "Landroid/app/Service;", "()V", "getNotificationIconRs", "", "onBind", "Landroid/os/IBinder;", "intent", "Landroid/content/Intent;", "onCreate", "", "onDestroy", "onStartCommand", "flags", "startId", "parseCreateNotification", "Landroid/app/Notification;", "startNotification", "Companion", "plugin-core_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/live/core/mini/LiveForegroundService;", "Landroid/app/Service;", "()V", "getNotificationIconRs", "", "onBind", "Landroid/os/IBinder;", "intent", "Landroid/content/Intent;", "onCreate", "", "onDestroy", "onStartCommand", "flags", "startId", "parseCreateNotification", "Landroid/app/Notification;", "startNotification", "Companion", "plugin-core_release"})
 public final class LiveForegroundService
   extends Service
 {
-  public static final LiveForegroundService.a gKr;
+  public static final LiveForegroundService.a gNa;
   
   static
   {
-    AppMethodBeat.i(216907);
-    gKr = new LiveForegroundService.a((byte)0);
-    AppMethodBeat.o(216907);
+    AppMethodBeat.i(196919);
+    gNa = new LiveForegroundService.a((byte)0);
+    AppMethodBeat.o(196919);
   }
   
   public final IBinder onBind(Intent paramIntent)
@@ -36,17 +36,17 @@ public final class LiveForegroundService
   
   public final void onCreate()
   {
-    AppMethodBeat.i(216905);
-    ad.i("MicroMsg.LiveForegroundService", "foreground service onCreate");
-    if (!g.ajA().aiK())
+    AppMethodBeat.i(196917);
+    ae.i("MicroMsg.LiveForegroundService", "foreground service onCreate");
+    if (!g.ajP().aiZ())
     {
       stopSelf();
-      AppMethodBeat.o(216905);
+      AppMethodBeat.o(196917);
       return;
     }
-    if (d.ly(26))
+    if (d.lA(26))
     {
-      Object localObject = com.tencent.mm.br.a.bI(aj.getContext(), "reminder_channel_id").i(System.currentTimeMillis());
+      Object localObject = com.tencent.mm.bq.a.bJ(ak.getContext(), "reminder_channel_id").i(System.currentTimeMillis());
       if (Build.VERSION.SDK_INT < 19) {}
       for (int i = 2131233500;; i = 2131233502)
       {
@@ -55,22 +55,22 @@ public final class LiveForegroundService
         try
         {
           startForeground(46, (Notification)localObject);
-          AppMethodBeat.o(216905);
+          AppMethodBeat.o(196917);
           return;
         }
         catch (Exception localException)
         {
-          ad.i("MicroMsg.LiveForegroundService", "start foreground service happened error %s", new Object[] { localException.getMessage() });
+          ae.i("MicroMsg.LiveForegroundService", "start foreground service happened error %s", new Object[] { localException.getMessage() });
         }
       }
     }
-    AppMethodBeat.o(216905);
+    AppMethodBeat.o(196917);
   }
   
   public final void onDestroy()
   {
-    AppMethodBeat.i(216906);
-    ad.i("MicroMsg.LiveForegroundService", "foreground service onDestroy");
+    AppMethodBeat.i(196918);
+    ae.i("MicroMsg.LiveForegroundService", "foreground service onDestroy");
     try
     {
       stopForeground(true);
@@ -78,48 +78,48 @@ public final class LiveForegroundService
       p.g(locala, "MMKernel.plugin(IPluginNotification::class.java)");
       ((com.tencent.mm.plugin.notification.b.a)locala).getNotification().cancel(46);
       super.onDestroy();
-      AppMethodBeat.o(216906);
+      AppMethodBeat.o(196918);
       return;
     }
     catch (Exception localException)
     {
       for (;;)
       {
-        ad.e("MicroMsg.LiveForegroundService", "onDestroy happened error %s", new Object[] { localException });
+        ae.e("MicroMsg.LiveForegroundService", "onDestroy happened error %s", new Object[] { localException });
       }
     }
   }
   
   public final int onStartCommand(Intent paramIntent, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(216904);
-    ad.i("MicroMsg.LiveForegroundService", "foreground service onStartCommand");
-    if (!g.ajA().aiK())
+    AppMethodBeat.i(196916);
+    ae.i("MicroMsg.LiveForegroundService", "foreground service onStartCommand");
+    if (!g.ajP().aiZ())
     {
-      ad.e("MicroMsg.LiveForegroundService", "error called foreground service in onStartCommand process");
+      ae.e("MicroMsg.LiveForegroundService", "error called foreground service in onStartCommand process");
       stopSelf();
-      AppMethodBeat.o(216904);
+      AppMethodBeat.o(196916);
       return 2;
     }
-    if ((d.ly(26)) && (paramIntent != null))
+    if ((d.lA(26)) && (paramIntent != null))
     {
-      if (!g.ajA().aiK())
+      if (!g.ajP().aiZ())
       {
-        ad.e("MicroMsg.LiveForegroundService", "error called foreground service in startNotification process");
+        ae.e("MicroMsg.LiveForegroundService", "error called foreground service in startNotification process");
         stopSelf();
       }
     }
     else
     {
-      AppMethodBeat.o(216904);
+      AppMethodBeat.o(196916);
       return 3;
     }
-    paramIntent.setClass(aj.getContext(), Class.forName(paramIntent.getStringExtra("PARAM_ACTIVITY_NAME")));
+    paramIntent.setClass(ak.getContext(), Class.forName(paramIntent.getStringExtra("PARAM_ACTIVITY_NAME")));
     paramIntent.setFlags(268435456);
     Object localObject = paramIntent.getStringExtra("PARAM_TITLE");
     String str1 = paramIntent.getStringExtra("PARAM_CONTENT");
     String str2 = paramIntent.getStringExtra("PARAM_TICKER");
-    b localb = b.gKw;
+    b localb = b.gNf;
     p.g(localObject, "title");
     p.g(str1, "content");
     p.g(str2, "ticker");
@@ -127,10 +127,10 @@ public final class LiveForegroundService
     p.h(localObject, "title");
     p.h(str1, "content");
     p.h(str2, "tickerContent");
-    paramIntent = PendingIntent.getActivity(aj.getContext(), 46, paramIntent, 134217728);
-    paramIntent = com.tencent.mm.br.a.bI(aj.getContext(), "reminder_channel_id").i((CharSequence)str2).i(System.currentTimeMillis()).f((CharSequence)localObject).g((CharSequence)str1).a(paramIntent).as(com.tencent.mm.br.a.dwe()).ep();
+    paramIntent = PendingIntent.getActivity(ak.getContext(), 46, paramIntent, 134217728);
+    paramIntent = com.tencent.mm.bq.a.bJ(ak.getContext(), "reminder_channel_id").i((CharSequence)str2).i(System.currentTimeMillis()).f((CharSequence)localObject).g((CharSequence)str1).a(paramIntent).as(com.tencent.mm.bq.a.dzu()).ep();
     p.g(paramIntent, "NotificationHelper.getNo…        .setOngoing(true)");
-    if (d.lz(16)) {}
+    if (d.lB(16)) {}
     for (paramIntent = b.d(paramIntent);; paramIntent = b.c(paramIntent))
     {
       localObject = g.ad(com.tencent.mm.plugin.notification.b.a.class);

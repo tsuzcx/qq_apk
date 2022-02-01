@@ -4,8 +4,8 @@ import android.os.Bundle;
 import android.os.ResultReceiver;
 import android.support.v4.app.s.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.at;
-import com.tencent.mm.plugin.notification.c;
+import com.tencent.mm.model.av;
+import com.tencent.mm.plugin.notification.d;
 
 public class DownloadReceiver
   extends ResultReceiver
@@ -27,7 +27,7 @@ public class DownloadReceiver
     if (paramInt == 4657)
     {
       paramInt = paramBundle.getInt("progress");
-      if (c.wvj == null)
+      if (d.wKU == null)
       {
         AppMethodBeat.o(88886);
         return;
@@ -35,19 +35,19 @@ public class DownloadReceiver
       if (paramInt < 100)
       {
         this.HY.b(100, paramInt, false).g("Download in progress:".concat(String.valueOf(paramInt)));
-        c.wvj.notify(4657, this.HY.build());
+        d.wKU.notify(4657, this.HY.build());
         AppMethodBeat.o(88886);
         return;
       }
       this.HY.b(0, 0, false).g("Download Complete");
-      c.wvj.notify(4658, this.HY.build());
+      d.wKU.notify(4658, this.HY.build());
     }
     AppMethodBeat.o(88886);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.downloader.intentservice.DownloadReceiver
  * JD-Core Version:    0.7.0.1
  */

@@ -8,15 +8,15 @@ public abstract class ar
   extends c
 {
   public static final String[] INDEX_CREATE = { "CREATE INDEX IF NOT EXISTS CardQrCodeDataInfo_card_id_index ON CardQrCodeDataInfo(card_id)" };
-  private static final int eDc = "status".hashCode();
-  private static final int eMP = "code_id".hashCode();
-  private static final int eMQ;
-  private static final int eMl = "card_id".hashCode();
+  private static final int eEL = "status".hashCode();
+  private static final int eNW;
+  private static final int eOA = "code_id".hashCode();
+  private static final int eOB;
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eCZ = true;
-  private boolean eLS = true;
-  private boolean eMN = true;
-  private boolean eMO = true;
+  private boolean eEI = true;
+  private boolean eND = true;
+  private boolean eOy = true;
+  private boolean eOz = true;
   public String field_card_id;
   public String field_code;
   public String field_code_id;
@@ -24,7 +24,8 @@ public abstract class ar
   
   static
   {
-    eMQ = "code".hashCode();
+    eNW = "card_id".hashCode();
+    eOB = "code".hashCode();
   }
   
   public void convertFrom(Cursor paramCursor)
@@ -40,7 +41,7 @@ public abstract class ar
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eMP != k) {
+      if (eOA != k) {
         break label60;
       }
       this.field_code_id = paramCursor.getString(i);
@@ -51,11 +52,11 @@ public abstract class ar
       break label20;
       break;
       label60:
-      if (eMl == k) {
+      if (eNW == k) {
         this.field_card_id = paramCursor.getString(i);
-      } else if (eMQ == k) {
+      } else if (eOB == k) {
         this.field_code = paramCursor.getString(i);
-      } else if (eDc == k) {
+      } else if (eEL == k) {
         this.field_status = paramCursor.getInt(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
@@ -66,16 +67,16 @@ public abstract class ar
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eMN) {
+    if (this.eOy) {
       localContentValues.put("code_id", this.field_code_id);
     }
-    if (this.eLS) {
+    if (this.eND) {
       localContentValues.put("card_id", this.field_card_id);
     }
-    if (this.eMO) {
+    if (this.eOz) {
       localContentValues.put("code", this.field_code);
     }
-    if (this.eCZ) {
+    if (this.eEI) {
       localContentValues.put("status", Integer.valueOf(this.field_status));
     }
     if (this.systemRowid > 0L) {
@@ -86,7 +87,7 @@ public abstract class ar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.c.ar
  * JD-Core Version:    0.7.0.1
  */

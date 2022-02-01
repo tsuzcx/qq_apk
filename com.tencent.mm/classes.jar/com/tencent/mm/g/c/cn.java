@@ -8,35 +8,35 @@ public abstract class cn
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eIm = "url".hashCode();
-  private static final int eXu;
-  private static final int faL = "ssidmd5".hashCode();
-  private static final int faM;
-  private static final int faN = "connectState".hashCode();
-  private static final int faO = "expiredTime".hashCode();
-  private static final int faP = "wifiType".hashCode();
-  private static final int faQ = "action".hashCode();
-  private static final int faR = "showUrl".hashCode();
-  private static final int faS = "showWordEn".hashCode();
-  private static final int faT = "showWordCn".hashCode();
-  private static final int faU = "showWordTw".hashCode();
-  private static final int faV = "mac".hashCode();
-  private static final int faW = "verifyResult".hashCode();
+  private static final int eJV = "url".hashCode();
+  private static final int eZf;
+  private static final int fcA = "ssidmd5".hashCode();
+  private static final int fcB;
+  private static final int fcC = "connectState".hashCode();
+  private static final int fcD = "expiredTime".hashCode();
+  private static final int fcE = "wifiType".hashCode();
+  private static final int fcF = "action".hashCode();
+  private static final int fcG = "showUrl".hashCode();
+  private static final int fcH = "showWordEn".hashCode();
+  private static final int fcI = "showWordCn".hashCode();
+  private static final int fcJ = "showWordTw".hashCode();
+  private static final int fcK = "mac".hashCode();
+  private static final int fcL = "verifyResult".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eIi = true;
-  private boolean eWR = true;
-  private boolean faA = true;
-  private boolean faB = true;
-  private boolean faC = true;
-  private boolean faD = true;
-  private boolean faE = true;
-  private boolean faF = true;
-  private boolean faG = true;
-  private boolean faH = true;
-  private boolean faI = true;
-  private boolean faJ = true;
-  private boolean faK = true;
-  private boolean faz = true;
+  private boolean eJR = true;
+  private boolean eYC = true;
+  private boolean fco = true;
+  private boolean fcp = true;
+  private boolean fcq = true;
+  private boolean fcr = true;
+  private boolean fcs = true;
+  private boolean fct = true;
+  private boolean fcu = true;
+  private boolean fcv = true;
+  private boolean fcw = true;
+  private boolean fcx = true;
+  private boolean fcy = true;
+  private boolean fcz = true;
   public int field_action;
   public int field_connectState;
   public long field_expiredTime;
@@ -54,8 +54,8 @@ public abstract class cn
   
   static
   {
-    eXu = "ssid".hashCode();
-    faM = "mid".hashCode();
+    eZf = "ssid".hashCode();
+    fcB = "mid".hashCode();
   }
   
   public void convertFrom(Cursor paramCursor)
@@ -71,11 +71,11 @@ public abstract class cn
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (faL != k) {
+      if (fcA != k) {
         break label65;
       }
       this.field_ssidmd5 = paramCursor.getString(i);
-      this.faz = true;
+      this.fco = true;
     }
     for (;;)
     {
@@ -83,31 +83,31 @@ public abstract class cn
       break label20;
       break;
       label65:
-      if (eXu == k) {
+      if (eZf == k) {
         this.field_ssid = paramCursor.getString(i);
-      } else if (faM == k) {
+      } else if (fcB == k) {
         this.field_mid = paramCursor.getString(i);
-      } else if (eIm == k) {
+      } else if (eJV == k) {
         this.field_url = paramCursor.getString(i);
-      } else if (faN == k) {
+      } else if (fcC == k) {
         this.field_connectState = paramCursor.getInt(i);
-      } else if (faO == k) {
+      } else if (fcD == k) {
         this.field_expiredTime = paramCursor.getLong(i);
-      } else if (faP == k) {
+      } else if (fcE == k) {
         this.field_wifiType = paramCursor.getInt(i);
-      } else if (faQ == k) {
+      } else if (fcF == k) {
         this.field_action = paramCursor.getInt(i);
-      } else if (faR == k) {
+      } else if (fcG == k) {
         this.field_showUrl = paramCursor.getString(i);
-      } else if (faS == k) {
+      } else if (fcH == k) {
         this.field_showWordEn = paramCursor.getString(i);
-      } else if (faT == k) {
+      } else if (fcI == k) {
         this.field_showWordCn = paramCursor.getString(i);
-      } else if (faU == k) {
+      } else if (fcJ == k) {
         this.field_showWordTw = paramCursor.getString(i);
-      } else if (faV == k) {
+      } else if (fcK == k) {
         this.field_mac = paramCursor.getString(i);
-      } else if (faW == k) {
+      } else if (fcL == k) {
         this.field_verifyResult = paramCursor.getInt(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
@@ -118,46 +118,46 @@ public abstract class cn
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.faz) {
+    if (this.fco) {
       localContentValues.put("ssidmd5", this.field_ssidmd5);
     }
-    if (this.eWR) {
+    if (this.eYC) {
       localContentValues.put("ssid", this.field_ssid);
     }
-    if (this.faA) {
+    if (this.fcp) {
       localContentValues.put("mid", this.field_mid);
     }
-    if (this.eIi) {
+    if (this.eJR) {
       localContentValues.put("url", this.field_url);
     }
-    if (this.faB) {
+    if (this.fcq) {
       localContentValues.put("connectState", Integer.valueOf(this.field_connectState));
     }
-    if (this.faC) {
+    if (this.fcr) {
       localContentValues.put("expiredTime", Long.valueOf(this.field_expiredTime));
     }
-    if (this.faD) {
+    if (this.fcs) {
       localContentValues.put("wifiType", Integer.valueOf(this.field_wifiType));
     }
-    if (this.faE) {
+    if (this.fct) {
       localContentValues.put("action", Integer.valueOf(this.field_action));
     }
-    if (this.faF) {
+    if (this.fcu) {
       localContentValues.put("showUrl", this.field_showUrl);
     }
-    if (this.faG) {
+    if (this.fcv) {
       localContentValues.put("showWordEn", this.field_showWordEn);
     }
-    if (this.faH) {
+    if (this.fcw) {
       localContentValues.put("showWordCn", this.field_showWordCn);
     }
-    if (this.faI) {
+    if (this.fcx) {
       localContentValues.put("showWordTw", this.field_showWordTw);
     }
-    if (this.faJ) {
+    if (this.fcy) {
       localContentValues.put("mac", this.field_mac);
     }
-    if (this.faK) {
+    if (this.fcz) {
       localContentValues.put("verifyResult", Integer.valueOf(this.field_verifyResult));
     }
     if (this.systemRowid > 0L) {
@@ -168,7 +168,7 @@ public abstract class cn
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.g.c.cn
  * JD-Core Version:    0.7.0.1
  */

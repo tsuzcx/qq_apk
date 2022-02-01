@@ -1,41 +1,24 @@
 package com.tencent.mm.plugin.appbrand.page;
 
-import android.content.Context;
-import android.content.MutableContextWrapper;
-import android.content.res.Resources;
-import android.util.DisplayMetrics;
-import android.webkit.JavascriptInterface;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
-class av
-  extends MutableContextWrapper
+public enum av
 {
-  public av(Context paramContext)
+  static
   {
-    super(paramContext);
+    AppMethodBeat.i(135279);
+    miM = new av("MODAL", 0);
+    miN = new av("ACTION_SHEET", 1);
+    miO = new av("TOAST", 2);
+    miP = new av[] { miM, miN, miO };
+    AppMethodBeat.o(135279);
   }
   
-  @JavascriptInterface
-  public float getPixelRatio()
-  {
-    AppMethodBeat.i(147442);
-    float f = getResources().getDisplayMetrics().density;
-    AppMethodBeat.o(147442);
-    return f;
-  }
-  
-  @JavascriptInterface
-  public float getWidth()
-  {
-    AppMethodBeat.i(147443);
-    float f = (float)Math.ceil(getResources().getDisplayMetrics().widthPixels / getPixelRatio());
-    AppMethodBeat.o(147443);
-    return f;
-  }
+  private av() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.page.av
  * JD-Core Version:    0.7.0.1
  */

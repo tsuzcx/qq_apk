@@ -6,13 +6,13 @@ final class f
 {
   public static boolean isEmpty(CharSequence paramCharSequence)
   {
-    AppMethodBeat.i(220070);
+    AppMethodBeat.i(216824);
     if ((paramCharSequence == null) || (paramCharSequence.length() == 0))
     {
-      AppMethodBeat.o(220070);
+      AppMethodBeat.o(216824);
       return true;
     }
-    AppMethodBeat.o(220070);
+    AppMethodBeat.o(216824);
     return false;
   }
 }

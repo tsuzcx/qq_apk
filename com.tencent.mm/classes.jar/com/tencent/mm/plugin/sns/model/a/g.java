@@ -2,8 +2,8 @@ package com.tencent.mm.plugin.sns.model.a;
 
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.data.q;
-import com.tencent.mm.vfs.i;
+import com.tencent.mm.plugin.sns.data.r;
+import com.tencent.mm.vfs.o;
 
 public final class g
   extends c
@@ -13,18 +13,18 @@ public final class g
     super(parama, parama1);
   }
   
-  public final String azv(String paramString)
+  public final String aAM(String paramString)
   {
     return paramString;
   }
   
-  public final boolean dVi()
+  public final boolean dYJ()
   {
     AppMethodBeat.i(96072);
-    if ((this.zoe != null) && (!TextUtils.isEmpty(this.zoe.zdu))) {}
-    for (String str = this.zoe.zdu;; str = q.i(this.dIQ))
+    if ((this.zFt != null) && (!TextUtils.isEmpty(this.zFt.zuk))) {}
+    for (String str = this.zFt.zuk;; str = r.i(this.dKe))
     {
-      i.bb(this.zoe.getPath(), this.zoe.dVg(), str);
+      o.bc(this.zFt.getPath(), this.zFt.dYH(), str);
       AppMethodBeat.o(96072);
       return true;
     }

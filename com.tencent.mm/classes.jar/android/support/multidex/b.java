@@ -38,7 +38,7 @@ final class b
     }
   }
   
-  private static SharedPreferences M(Context paramContext)
+  private static SharedPreferences N(Context paramContext)
   {
     if (Build.VERSION.SDK_INT < 11) {}
     for (int i = 0;; i = 4) {
@@ -58,7 +58,7 @@ final class b
     }
     if (!paramBoolean)
     {
-      paramApplicationInfo = M(paramContext);
+      paramApplicationInfo = N(paramContext);
       if ((paramApplicationInfo.getLong("timestamp", -1L) != k(localFile)) || (paramApplicationInfo.getLong("crc", -1L) != l1)) {
         i = 1;
       }
@@ -77,7 +77,7 @@ final class b
       paramApplicationInfo = d(localFile, paramFile);
       l2 = k(localFile);
       i = paramApplicationInfo.size();
-      paramContext = M(paramContext).edit();
+      paramContext = N(paramContext).edit();
       paramContext.putLong("timestamp", l2);
       paramContext.putLong("crc", l1);
       paramContext.putInt("dex.number", i + 1);
@@ -103,7 +103,7 @@ final class b
   private static List<File> a(Context paramContext, File paramFile1, File paramFile2)
   {
     paramFile1 = paramFile1.getName() + ".classes";
-    int j = M(paramContext).getInt("dex.number", 1);
+    int j = N(paramContext).getInt("dex.number", 1);
     paramContext = new ArrayList(j);
     int i = 2;
     while (i <= j)

@@ -12,12 +12,12 @@ import rx.j;
 public final class m
   extends g
 {
-  public static final m NZW;
+  public static final m Oxb;
   
   static
   {
     AppMethodBeat.i(90410);
-    NZW = new m();
+    Oxb = new m();
     AppMethodBeat.o(90410);
   }
   
@@ -44,42 +44,42 @@ public final class m
     extends g.a
     implements j
   {
-    final PriorityBlockingQueue<m.b> NZX;
-    private final AtomicInteger NZg;
-    private final rx.f.a NZs;
+    private final AtomicInteger Owl;
+    private final rx.f.a Owx;
+    final PriorityBlockingQueue<m.b> Oxc;
     final AtomicInteger counter;
     
     a()
     {
       AppMethodBeat.i(90402);
       this.counter = new AtomicInteger();
-      this.NZX = new PriorityBlockingQueue();
-      this.NZs = new rx.f.a();
-      this.NZg = new AtomicInteger();
+      this.Oxc = new PriorityBlockingQueue();
+      this.Owx = new rx.f.a();
+      this.Owl = new AtomicInteger();
       AppMethodBeat.o(90402);
     }
     
     private j a(final rx.b.a parama, long paramLong)
     {
       AppMethodBeat.i(90405);
-      if (this.NZs.gyR())
+      if (this.Owx.gDt())
       {
-        parama = d.gzD();
+        parama = d.gEf();
         AppMethodBeat.o(90405);
         return parama;
       }
       parama = new m.b(parama, Long.valueOf(paramLong), this.counter.incrementAndGet());
-      this.NZX.add(parama);
-      if (this.NZg.getAndIncrement() == 0)
+      this.Oxc.add(parama);
+      if (this.Owl.getAndIncrement() == 0)
       {
         do
         {
-          parama = (m.b)this.NZX.poll();
+          parama = (m.b)this.Oxc.poll();
           if (parama != null) {
-            parama.NZD.call();
+            parama.OwI.call();
           }
-        } while (this.NZg.decrementAndGet() > 0);
-        parama = d.gzD();
+        } while (this.Owl.decrementAndGet() > 0);
+        parama = d.gEf();
         AppMethodBeat.o(90405);
         return parama;
       }
@@ -88,7 +88,7 @@ public final class m
         public final void call()
         {
           AppMethodBeat.i(90401);
-          m.a.this.NZX.remove(parama);
+          m.a.this.Oxc.remove(parama);
           AppMethodBeat.o(90401);
         }
       });
@@ -113,17 +113,17 @@ public final class m
       return parama;
     }
     
-    public final void gyQ()
+    public final void gDs()
     {
       AppMethodBeat.i(90406);
-      this.NZs.gyQ();
+      this.Owx.gDs();
       AppMethodBeat.o(90406);
     }
     
-    public final boolean gyR()
+    public final boolean gDt()
     {
       AppMethodBeat.i(90407);
-      boolean bool = this.NZs.gyR();
+      boolean bool = this.Owx.gDt();
       AppMethodBeat.o(90407);
       return bool;
     }
@@ -132,21 +132,21 @@ public final class m
   static final class b
     implements Comparable<b>
   {
-    final rx.b.a NZD;
-    final Long Oaa;
+    final rx.b.a OwI;
+    final Long Oxf;
     final int count;
     
     b(rx.b.a parama, Long paramLong, int paramInt)
     {
-      this.NZD = parama;
-      this.Oaa = paramLong;
+      this.OwI = parama;
+      this.Oxf = paramLong;
       this.count = paramInt;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     rx.internal.c.m
  * JD-Core Version:    0.7.0.1
  */

@@ -9,45 +9,45 @@ import com.tencent.mm.ui.MMActivity;
 
 public class j
 {
-  public MMActivity oJq;
-  public int vBj;
-  private int vBk;
+  public MMActivity oPS;
+  public int vNn;
+  private int vNo;
   
   public j(MMActivity paramMMActivity)
   {
     AppMethodBeat.i(65941);
-    this.oJq = paramMMActivity;
-    if (djH())
+    this.oPS = paramMMActivity;
+    if (dmG())
     {
       paramMMActivity = paramMMActivity.getWindow();
       paramMMActivity.addFlags(-2147483648);
-      this.vBk = paramMMActivity.getStatusBarColor();
+      this.vNo = paramMMActivity.getStatusBarColor();
     }
     AppMethodBeat.o(65941);
   }
   
-  public static boolean djH()
+  public static boolean dmG()
   {
     return Build.VERSION.SDK_INT >= 21;
   }
   
-  protected void z(Drawable paramDrawable)
+  protected void A(Drawable paramDrawable)
   {
     AppMethodBeat.i(65942);
-    if (this.oJq.getSupportActionBar() != null) {
-      this.oJq.getSupportActionBar().setBackgroundDrawable(paramDrawable);
+    if (this.oPS.getSupportActionBar() != null) {
+      this.oPS.getSupportActionBar().setBackgroundDrawable(paramDrawable);
     }
     AppMethodBeat.o(65942);
   }
   
   public static final class a
   {
-    public int mTn;
-    public int nlt;
-    public int uZf;
-    public Drawable vBl;
-    public int vBm;
-    public int vBn;
+    public int mYv;
+    public int nqD;
+    public Drawable vNp;
+    public int vNq;
+    public int vNr;
+    public int vlk;
   }
 }
 

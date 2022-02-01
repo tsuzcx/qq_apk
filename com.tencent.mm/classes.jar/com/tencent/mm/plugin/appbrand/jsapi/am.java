@@ -4,13 +4,13 @@ import com.tencent.mm.vending.g.d.b;
 import d.g.a.b;
 import d.l;
 
-@l(gfx={1, 1, 16})
+@l(gjZ={1, 1, 16})
 final class am
   implements d.b
 {
   am(b paramb)
   {
-    this.hcc = paramb;
+    this.heQ = paramb;
   }
 }
 

@@ -4,13 +4,13 @@ import d.l.b.a.b.j.f.a.e;
 
 public abstract class ba
 {
-  public final boolean MVt;
+  public final boolean Nsy;
   private final String name;
   
   protected ba(String paramString, boolean paramBoolean)
   {
     this.name = paramString;
-    this.MVt = paramBoolean;
+    this.Nsy = paramBoolean;
   }
   
   public abstract boolean b(e parame, p paramp, l paraml);
@@ -21,24 +21,24 @@ public abstract class ba
     return az.a(this, paramba);
   }
   
-  public String gjI()
+  public String gok()
   {
     return this.name;
   }
   
-  public ba gjJ()
+  public ba gol()
   {
     return this;
   }
   
   public final String toString()
   {
-    return gjI();
+    return gok();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.b.ba
  * JD-Core Version:    0.7.0.1
  */

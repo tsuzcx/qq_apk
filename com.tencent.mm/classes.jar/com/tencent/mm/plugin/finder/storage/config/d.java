@@ -4,26 +4,26 @@ import d.l;
 import java.util.LinkedList;
 import java.util.List;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/storage/config/IFinderFakeConfig;", "", "title", "", "(Ljava/lang/String;)V", "chosenIndex", "", "getChosenIndex", "()I", "setChosenIndex", "(I)V", "getTitle", "()Ljava/lang/String;", "setTitle", "itemNameList", "", "onItemClick", "", "index", "reset", "svrValue", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/storage/config/IFinderFakeConfig;", "", "title", "", "(Ljava/lang/String;)V", "chosenIndex", "", "getChosenIndex", "()I", "setChosenIndex", "(I)V", "getTitle", "()Ljava/lang/String;", "setTitle", "itemNameList", "", "onItemClick", "", "index", "reset", "svrValue", "plugin-finder_release"})
 public abstract class d
 {
-  public int szz;
+  public int sKs;
   public String title;
   
   public d(String paramString)
   {
     this.title = paramString;
-    this.szz = -1;
+    this.sKs = -1;
   }
   
-  public abstract void Fq(int paramInt);
+  public abstract void FN(int paramInt);
   
-  public List<String> cIW()
+  public List<String> cLy()
   {
     return (List)new LinkedList();
   }
   
-  public abstract String cIX();
+  public abstract String cLz();
 }
 
 

@@ -19,16 +19,16 @@ import java.util.Set;
 public final class c
   implements a
 {
-  com.tencent.matrix.a.c.a cDC;
-  private final LongSparseArray<com.tencent.matrix.trace.core.a> cDD;
+  com.tencent.matrix.a.c.a cEj;
+  private final LongSparseArray<com.tencent.matrix.trace.core.a> cEk;
   
   private LinkedList<b> a(Thread paramThread)
   {
-    synchronized (this.cDD)
+    synchronized (this.cEk)
     {
-      com.tencent.matrix.trace.core.a locala = (com.tencent.matrix.trace.core.a)this.cDD.get(paramThread.getId());
+      com.tencent.matrix.trace.core.a locala = (com.tencent.matrix.trace.core.a)this.cEk.get(paramThread.getId());
       if (locala != null) {
-        this.cDD.remove(paramThread.getId());
+        this.cEk.remove(paramThread.getId());
       }
       paramThread = new LinkedList();
       if (locala != null)
@@ -39,7 +39,7 @@ public final class c
           a.a locala1 = (a.a)((Iterator)???).next();
           if ((locala1 instanceof a))
           {
-            ??? = ((a)locala1).cDF;
+            ??? = ((a)locala1).cEm;
             paramThread.addAll(((Map)???).values());
             ((Map)???).clear();
             Collections.sort(paramThread, new Comparator() {});
@@ -51,30 +51,30 @@ public final class c
     }
   }
   
-  public final void Ii()
+  public final void Iq()
   {
     com.tencent.matrix.g.c.i("Matrix.LooperTaskMonitorPlugin", "onTurnOn", new Object[0]);
   }
   
-  public final void Ij()
+  public final void Ir()
   {
     com.tencent.matrix.g.c.i("Matrix.LooperTaskMonitorPlugin", "onTurnOff", new Object[0]);
-    LongSparseArray localLongSparseArray = this.cDD;
+    LongSparseArray localLongSparseArray = this.cEk;
     int i = 0;
     try
     {
-      while (i < this.cDD.size())
+      while (i < this.cEk.size())
       {
-        ((com.tencent.matrix.trace.core.a)this.cDD.valueAt(i)).onRelease();
+        ((com.tencent.matrix.trace.core.a)this.cEk.valueAt(i)).onRelease();
         i += 1;
       }
-      this.cDD.clear();
+      this.cEk.clear();
       return;
     }
     finally {}
   }
   
-  public final int Ik()
+  public final int Is()
   {
     return 0;
   }
@@ -82,12 +82,12 @@ public final class c
   public final void a(com.tencent.matrix.a.c.a parama)
   {
     com.tencent.matrix.g.c.i("Matrix.LooperTaskMonitorPlugin", "onInstall", new Object[0]);
-    this.cDC = parama;
+    this.cEj = parama;
   }
   
   public final void bV(boolean paramBoolean)
   {
-    if (this.cDC.cCX)
+    if (this.cEj.cDE)
     {
       Iterator localIterator = Thread.getAllStackTraces().keySet().iterator();
       while (localIterator.hasNext())
@@ -99,16 +99,16 @@ public final class c
           if (localLooper != null)
           {
             if (!paramBoolean) {
-              synchronized (this.cDD)
+              synchronized (this.cEk)
               {
-                if (this.cDD.get(localThread.getId()) == null) {
-                  this.cDD.put(localThread.getId(), new com.tencent.matrix.trace.core.a(localLooper));
+                if (this.cEk.get(localThread.getId()) == null) {
+                  this.cEk.put(localThread.getId(), new com.tencent.matrix.trace.core.a(localLooper));
                 }
               }
             }
             ??? = a(localThread);
-            if ((this.cDC.cCY.cDa != null) && (!((List)???).isEmpty())) {
-              this.cDC.cCY.cDa.a(localThread, (List)???);
+            if ((this.cEj.cDF.cDH != null) && (!((List)???).isEmpty())) {
+              this.cEj.cDF.cDH.a(localThread, (List)???);
             }
           }
         }
@@ -119,14 +119,14 @@ public final class c
   final class a
     extends a.a
   {
-    HashMap<String, c.b> cDF;
+    HashMap<String, c.b> cEm;
     
-    public final void dN(String paramString)
+    public final void dQ(String paramString)
     {
-      if (this.cDE.cDC.isForeground()) {
+      if (this.cEl.cEj.isForeground()) {
         return;
       }
-      super.dN(paramString);
+      super.dQ(paramString);
       int k = paramString.indexOf("to ");
       int j = paramString.lastIndexOf('@');
       int i = j;
@@ -136,49 +136,49 @@ public final class c
       i = Math.max(i - 60, k + 3);
       Thread.currentThread();
       String str = paramString.substring(i);
-      c.b localb = (c.b)this.cDF.get(str);
+      c.b localb = (c.b)this.cEm.get(str);
       paramString = localb;
       if (localb == null)
       {
-        paramString = new c.b(this.cDE);
-        this.cDF.put(str, paramString);
+        paramString = new c.b(this.cEl);
+        this.cEm.put(str, paramString);
       }
-      paramString.cDG = str;
-      if (paramString.cDH == null) {
-        paramString.cDH = new long[1000];
+      paramString.cEn = str;
+      if (paramString.cEo == null) {
+        paramString.cEo = new long[1000];
       }
       i = paramString.count;
-      paramString.cDH[(i % 1000)] = System.currentTimeMillis();
+      paramString.cEo[(i % 1000)] = System.currentTimeMillis();
       paramString.count += 1;
     }
     
     public final boolean isValid()
     {
-      return !this.cDE.cDC.isForeground();
+      return !this.cEl.cEj.isForeground();
     }
   }
   
   public final class b
   {
-    String cDG;
-    long[] cDH;
+    String cEn;
+    long[] cEo;
     int count;
     
     public b() {}
     
     public final boolean equals(Object paramObject)
     {
-      return this.cDG.equals(paramObject);
+      return this.cEn.equals(paramObject);
     }
     
     public final int hashCode()
     {
-      return this.cDG.hashCode();
+      return this.cEn.hashCode();
     }
     
     public final String toString()
     {
-      return this.cDG + "=" + this.count;
+      return this.cEn + "=" + this.count;
     }
   }
 }

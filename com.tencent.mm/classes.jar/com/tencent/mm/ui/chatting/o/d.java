@@ -25,7 +25,7 @@ public final class d
   
   public final CharSequence b(final Map<String, String> paramMap, String paramString, final Bundle paramBundle, final WeakReference<Context> paramWeakReference, final WeakReference<NeatTextView> paramWeakReference1)
   {
-    AppMethodBeat.i(194261);
+    AppMethodBeat.i(187652);
     String str = (String)paramMap.get(paramString + ".title");
     final b.a locala = new b.a(this);
     locala.username = ((String)paramMap.get(paramString + ".username"));
@@ -35,28 +35,28 @@ public final class d
     {
       public final void onClickImp(View paramAnonymousView)
       {
-        AppMethodBeat.i(194260);
+        AppMethodBeat.i(187651);
         d locald = d.this;
         b.a locala = locala;
-        if ((locald.vKF != null) && (locald.vKF.get() != null)) {
-          ((b.b)locald.vKF.get()).a(paramAnonymousView, locala);
+        if ((locald.vWJ != null) && (locald.vWJ.get() != null)) {
+          ((b.b)locald.vWJ.get()).a(paramAnonymousView, locala);
         }
         ((e)g.ab(e.class)).a("link_revoke_qrcode", paramMap, paramBundle);
-        AppMethodBeat.o(194260);
+        AppMethodBeat.o(187651);
       }
     }, 0, str.length(), 33);
-    AppMethodBeat.o(194261);
+    AppMethodBeat.o(187652);
     return paramString;
   }
   
-  public final String dmf()
+  public final String dpe()
   {
     return "link_revoke_qrcode";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.o.d
  * JD-Core Version:    0.7.0.1
  */

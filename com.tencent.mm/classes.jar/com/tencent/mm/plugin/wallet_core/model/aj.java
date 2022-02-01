@@ -2,48 +2,48 @@ package com.tencent.mm.plugin.wallet_core.model;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.gy;
+import com.tencent.mm.g.c.gz;
 import com.tencent.mm.platformtools.z;
-import com.tencent.mm.protocal.protobuf.cjd;
-import com.tencent.mm.protocal.protobuf.ebe;
-import com.tencent.mm.protocal.protobuf.ebk;
-import com.tencent.mm.protocal.protobuf.ebl;
-import com.tencent.mm.protocal.protobuf.ebn;
+import com.tencent.mm.protocal.protobuf.cjx;
+import com.tencent.mm.protocal.protobuf.ecv;
+import com.tencent.mm.protocal.protobuf.edb;
+import com.tencent.mm.protocal.protobuf.edc;
+import com.tencent.mm.protocal.protobuf.ede;
 import com.tencent.mm.sdk.e.c.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.lang.reflect.Field;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Map;
 
 public final class aj
-  extends gy
+  extends gz
 {
   public static c.a info;
-  private cjd DaF;
-  public ebe DaG;
-  public ebl DaH;
-  public boolean DaI;
-  public String DaJ;
-  public String DaK;
-  public String DaL;
-  public String DaM;
-  public String vqh;
+  private cjx Dsj;
+  public ecv Dsk;
+  public edc Dsl;
+  public boolean Dsm;
+  public String Dsn;
+  public String Dso;
+  public String Dsp;
+  public String Dsq;
+  public String vCm;
   
   static
   {
     AppMethodBeat.i(70471);
     c.a locala = new c.a();
-    locala.IhA = new Field[2];
+    locala.IBL = new Field[2];
     locala.columns = new String[3];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "wallet_region";
-    locala.IhC.put("wallet_region", "INTEGER PRIMARY KEY ");
+    locala.IBN.put("wallet_region", "INTEGER PRIMARY KEY ");
     localStringBuilder.append(" wallet_region INTEGER PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.IhB = "wallet_region";
+    locala.IBM = "wallet_region";
     locala.columns[1] = "wallet_grey_item_buf";
-    locala.IhC.put("wallet_grey_item_buf", "BLOB");
+    locala.IBN.put("wallet_grey_item_buf", "BLOB");
     localStringBuilder.append(" wallet_grey_item_buf BLOB");
     locala.columns[2] = "rowid";
     locala.sql = localStringBuilder.toString();
@@ -54,20 +54,20 @@ public final class aj
   public aj()
   {
     AppMethodBeat.i(70469);
-    this.DaF = new cjd();
-    this.DaG = null;
-    this.DaH = null;
-    this.DaI = false;
-    this.DaJ = "";
-    this.DaK = "";
-    this.DaL = "";
-    this.vqh = "";
-    this.DaM = "";
-    if (this.DaG == null) {
-      this.DaG = new ebe();
+    this.Dsj = new cjx();
+    this.Dsk = null;
+    this.Dsl = null;
+    this.Dsm = false;
+    this.Dsn = "";
+    this.Dso = "";
+    this.Dsp = "";
+    this.vCm = "";
+    this.Dsq = "";
+    if (this.Dsk == null) {
+      this.Dsk = new ecv();
     }
-    if (this.DaH == null) {
-      this.DaH = new ebl();
+    if (this.Dsl == null) {
+      this.Dsl = new edc();
     }
     AppMethodBeat.o(70469);
   }
@@ -76,23 +76,23 @@ public final class aj
   {
     AppMethodBeat.i(70470);
     super.convertFrom(paramCursor);
-    this.DaF = new cjd();
+    this.Dsj = new cjx();
     try
     {
-      this.DaF = ((cjd)this.DaF.parseFrom(this.field_wallet_grey_item_buf));
-      this.DaG = this.DaF.HcT;
-      this.DaH = this.DaF.HcU;
-      this.DaI = this.DaF.HcV;
-      this.DaM = "";
-      paramCursor = this.DaF.HcW.iterator();
+      this.Dsj = ((cjx)this.Dsj.parseFrom(this.field_wallet_grey_item_buf));
+      this.Dsk = this.Dsj.Hwt;
+      this.Dsl = this.Dsj.Hwu;
+      this.Dsm = this.Dsj.Hwv;
+      this.Dsq = "";
+      paramCursor = this.Dsj.Hww.iterator();
       for (;;)
       {
         if (paramCursor.hasNext())
         {
           String str = (String)paramCursor.next();
-          this.DaM = (this.DaM + str + "\n");
+          this.Dsq = (this.Dsq + str + "\n");
           continue;
-          if (this.DaG != null) {
+          if (this.Dsk != null) {
             break;
           }
         }
@@ -100,27 +100,27 @@ public final class aj
     }
     catch (Exception paramCursor)
     {
-      ad.e("WalletRegionGreyItem", "parser PayIBGGetOverseaWalletRsp error");
+      ae.e("WalletRegionGreyItem", "parser PayIBGGetOverseaWalletRsp error");
     }
     for (;;)
     {
-      this.DaG = new ebe();
-      if (this.DaH == null) {
-        this.DaH = new ebl();
+      this.Dsk = new ecv();
+      if (this.Dsl == null) {
+        this.Dsl = new edc();
       }
       AppMethodBeat.o(70470);
       return;
-      if (this.DaF.HcR != null)
+      if (this.Dsj.Hwr != null)
       {
-        this.DaJ = z.a(this.DaF.HcR.HOd);
-        this.DaK = z.a(this.DaF.HcR.HOe);
+        this.Dsn = z.a(this.Dsj.Hwr.Iik);
+        this.Dso = z.a(this.Dsj.Hwr.Iil);
       }
-      if (this.DaF.HcS != null)
+      if (this.Dsj.Hws != null)
       {
-        this.DaL = z.a(this.DaF.HcS.HOb);
-        this.vqh = z.a(this.DaF.HcS.HOc);
+        this.Dsp = z.a(this.Dsj.Hws.Iii);
+        this.vCm = z.a(this.Dsj.Hws.Iij);
       }
-      ad.v("WalletRegionGreyItem", "noticeContent %s", new Object[] { this.DaL });
+      ae.v("WalletRegionGreyItem", "noticeContent %s", new Object[] { this.Dsp });
     }
   }
   

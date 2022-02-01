@@ -1,37 +1,37 @@
 package com.tencent.mm.protocal;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.u;
+import com.tencent.mm.ak.u;
 import com.tencent.mm.jni.utils.UtilsJni;
 import com.tencent.mm.pointers.PByteArray;
 import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.ago;
-import com.tencent.mm.protocal.protobuf.agp;
-import com.tencent.mm.protocal.protobuf.agq;
-import com.tencent.mm.protocal.protobuf.xs;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.agy;
+import com.tencent.mm.protocal.protobuf.agz;
+import com.tencent.mm.protocal.protobuf.aha;
+import com.tencent.mm.protocal.protobuf.xv;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public final class q$a
   extends l.d
   implements l.b
 {
-  public final agp Foh;
+  public final agz FGF;
   
   public q$a()
   {
     AppMethodBeat.i(152468);
-    this.Foh = new agp();
+    this.FGF = new agz();
     setUin(0);
-    this.Foh.GeG = new ago();
-    this.Foh.GeG.GeE = new xs();
-    this.Foh.GeF = new agq();
+    this.FGF.Gxo = new agy();
+    this.FGF.Gxo.Gxm = new xv();
+    this.FGF.Gxn = new aha();
     AppMethodBeat.o(152468);
   }
   
   public final int getFuncId()
   {
-    if (f.Fns) {
+    if (f.FFQ) {
       return 784;
     }
     return 722;
@@ -40,10 +40,10 @@ public final class q$a
   public final byte[] toProtoBuf()
   {
     AppMethodBeat.i(152469);
-    setRsaInfo(ac.fgx());
-    this.Foh.GeG.setBaseRequest(l.a(this));
-    this.Foh.GeF.FDQ = new SKBuiltinBuffer_t().setBuffer(bt.flL());
-    setPassKey(this.Foh.GeF.FDQ.getBuffer().toByteArray());
+    setRsaInfo(ac.fkn());
+    this.FGF.Gxo.setBaseRequest(l.a(this));
+    this.FGF.Gxn.FWl = new SKBuiltinBuffer_t().setBuffer(bu.fpG());
+    setPassKey(this.FGF.Gxn.FWl.getBuffer().toByteArray());
     setReqPackControl(new l.a()
     {
       public final boolean a(PByteArray paramAnonymousPByteArray, int paramAnonymousInt1, byte[] paramAnonymousArrayOfByte1, byte[] paramAnonymousArrayOfByte2, int paramAnonymousInt2)
@@ -51,48 +51,48 @@ public final class q$a
         AppMethodBeat.i(152467);
         paramAnonymousArrayOfByte2 = (l.b)jdField_this;
         long l1 = jdField_this.getUin();
-        if ((com.tencent.mm.sdk.a.b.fjN()) && (l1 == 0L)) {
-          l1 = d.Fni;
+        if ((com.tencent.mm.sdk.a.b.fnF()) && (l1 == 0L)) {
+          l1 = d.FFG;
         }
         for (;;)
         {
           Object localObject1 = jdField_this.getRsaInfo();
           if (paramAnonymousInt1 == 722)
           {
-            ad.e("MicroMsg.MMEncryptCheckResUpdate", "MMEncryptCheckResUpdate reqToBuf rsaReqData");
-            agp localagp = ((q.a)jdField_this).Foh;
-            Object localObject2 = u.a(l1, localagp.GeF, localagp.GeG);
+            ae.e("MicroMsg.MMEncryptCheckResUpdate", "MMEncryptCheckResUpdate reqToBuf rsaReqData");
+            agz localagz = ((q.a)jdField_this).FGF;
+            Object localObject2 = u.a(l1, localagz.Gxn, localagz.Gxo);
             if (localObject2 == null)
             {
               AppMethodBeat.o(152467);
               return false;
             }
-            localagp = localObject2[0];
+            localagz = localObject2[0];
             localObject2 = localObject2[1];
-            if (MMProtocalJni.packHybrid(paramAnonymousPByteArray, paramAnonymousArrayOfByte1, jdField_this.getDeviceID(), (int)l1, paramAnonymousArrayOfByte2.getFuncId(), ((ac)localObject1).ver, localagp, (byte[])localObject2, ((ac)localObject1).FoK.getBytes(), ((ac)localObject1).FoL.getBytes(), jdField_this.getPassKey(), paramAnonymousInt2, ((q.a)jdField_this).getRouteInfo()))
+            if (MMProtocalJni.packHybrid(paramAnonymousPByteArray, paramAnonymousArrayOfByte1, jdField_this.getDeviceID(), (int)l1, paramAnonymousArrayOfByte2.getFuncId(), ((ac)localObject1).ver, localagz, (byte[])localObject2, ((ac)localObject1).FHi.getBytes(), ((ac)localObject1).FHj.getBytes(), jdField_this.getPassKey(), paramAnonymousInt2, ((q.a)jdField_this).getRouteInfo()))
             {
-              ad.d("MicroMsg.MMEncryptCheckResUpdate", "IRemoteReqDelegate reqToBuf packHybrid using protobuf ok, len:%d, flag:%d", new Object[] { Integer.valueOf(paramAnonymousPByteArray.value.length), Integer.valueOf(paramAnonymousInt2) });
+              ae.d("MicroMsg.MMEncryptCheckResUpdate", "IRemoteReqDelegate reqToBuf packHybrid using protobuf ok, len:%d, flag:%d", new Object[] { Integer.valueOf(paramAnonymousPByteArray.value.length), Integer.valueOf(paramAnonymousInt2) });
               AppMethodBeat.o(152467);
               return true;
             }
           }
           else if (paramAnonymousInt1 == 784)
           {
-            ad.i("MicroMsg.MMEncryptCheckResUpdate", "summerauths rsaInfo[%s] EcdhMgr.USE_ECDH[%s] engine[%s]", new Object[] { Integer.valueOf(((ac)localObject1).ver), Boolean.valueOf(f.Fns), Long.valueOf(((l.b)jdField_this).getECDHEngine()) });
+            ae.i("MicroMsg.MMEncryptCheckResUpdate", "summerauths rsaInfo[%s] EcdhMgr.USE_ECDH[%s] engine[%s]", new Object[] { Integer.valueOf(((ac)localObject1).ver), Boolean.valueOf(f.FFQ), Long.valueOf(((l.b)jdField_this).getECDHEngine()) });
             ((l.b)jdField_this).getFuncId();
             paramAnonymousPByteArray = new PByteArray();
             localObject1 = ((l.b)jdField_this).toProtoBuf();
             if (localObject1 == null)
             {
-              ad.f("MicroMsg.MMEncryptCheckResUpdate", "protobuf is null");
+              ae.f("MicroMsg.MMEncryptCheckResUpdate", "protobuf is null");
               AppMethodBeat.o(152467);
               return false;
             }
-            long l2 = f.cl(null);
+            long l2 = f.co(null);
             jdField_this.setEcdhEngine(l2);
             localObject1 = UtilsJni.HybridEcdhEncrypt(l2, (byte[])localObject1);
-            boolean bool = MMProtocalJni.packHybridEcdh(paramAnonymousPByteArray, paramAnonymousArrayOfByte1, jdField_this.getDeviceID(), (int)l1, paramAnonymousArrayOfByte2.getFuncId(), f.Fnx, (byte[])localObject1, paramAnonymousInt2, paramAnonymousArrayOfByte2.getRouteInfo(), 12);
-            ad.d("MicroMsg.MMEncryptCheckResUpdate", "summerauths MMFunc_SecMMEncryptCheckResUpdate reqToBuf packHybridEcdh using protobuf ok, jType:%d, cert:%d len:%d, flag:%d ret:%s", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(f.Fnx), Integer.valueOf(paramAnonymousPByteArray.value.length), Integer.valueOf(paramAnonymousInt2), Boolean.valueOf(bool) });
+            boolean bool = MMProtocalJni.packHybridEcdh(paramAnonymousPByteArray, paramAnonymousArrayOfByte1, jdField_this.getDeviceID(), (int)l1, paramAnonymousArrayOfByte2.getFuncId(), f.FFV, (byte[])localObject1, paramAnonymousInt2, paramAnonymousArrayOfByte2.getRouteInfo(), 12);
+            ae.d("MicroMsg.MMEncryptCheckResUpdate", "summerauths MMFunc_SecMMEncryptCheckResUpdate reqToBuf packHybridEcdh using protobuf ok, jType:%d, cert:%d len:%d, flag:%d ret:%s", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(f.FFV), Integer.valueOf(paramAnonymousPByteArray.value.length), Integer.valueOf(paramAnonymousInt2), Boolean.valueOf(bool) });
             AppMethodBeat.o(152467);
             return bool;
           }
@@ -101,7 +101,7 @@ public final class q$a
         }
       }
     });
-    byte[] arrayOfByte = this.Foh.toByteArray();
+    byte[] arrayOfByte = this.FGF.toByteArray();
     AppMethodBeat.o(152469);
     return arrayOfByte;
   }

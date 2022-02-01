@@ -1,44 +1,44 @@
 package com.tencent.mm.openim.c.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.protocal.protobuf.ces;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.protocal.protobuf.cfm;
 import com.tencent.mm.protocal.protobuf.gp;
 import com.tencent.mm.protocal.protobuf.gq;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 public final class a
-  extends com.tencent.mm.al.a<gq>
+  extends com.tencent.mm.ak.a<gq>
 {
   public a(String paramString1, String paramString2, String paramString3, LinkedList<String> paramLinkedList)
   {
     AppMethodBeat.i(151261);
-    ad.d("MicroMsg.CgiOpenImApproveAddRoomMember", "CgiOpenImApproveAddRoomMember() inviterusername%s, roomname:%s, ticket:%s, username:%s", new Object[] { paramString1, paramString2, bt.aRp(paramString3), paramLinkedList });
+    ae.d("MicroMsg.CgiOpenImApproveAddRoomMember", "CgiOpenImApproveAddRoomMember() inviterusername%s, roomname:%s, ticket:%s, username:%s", new Object[] { paramString1, paramString2, bu.aSM(paramString3), paramLinkedList });
     gp localgp = new gp();
-    localgp.dpf = paramString3;
-    localgp.dvs = paramString2;
-    paramString2 = new ces();
+    localgp.dqk = paramString3;
+    localgp.dwx = paramString2;
+    paramString2 = new cfm();
     paramString2.userName = paramString1;
-    localgp.FyG = paramString2;
+    localgp.FRe = paramString2;
     paramString1 = new LinkedList();
     paramString2 = paramLinkedList.iterator();
     while (paramString2.hasNext())
     {
       paramString3 = (String)paramString2.next();
-      paramLinkedList = new ces();
+      paramLinkedList = new cfm();
       paramLinkedList.userName = paramString3;
       paramString1.add(paramLinkedList);
     }
-    localgp.FyH = paramString1;
+    localgp.FRf = paramString1;
     paramString1 = new b.a();
-    paramString1.hNM = localgp;
-    paramString1.hNN = new gq();
+    paramString1.hQF = localgp;
+    paramString1.hQG = new gq();
     paramString1.uri = "/cgi-bin/micromsg-bin/approveaddopenimchatroommember";
     paramString1.funcId = 941;
-    c(paramString1.aDC());
+    c(paramString1.aDS());
     AppMethodBeat.o(151261);
   }
 }

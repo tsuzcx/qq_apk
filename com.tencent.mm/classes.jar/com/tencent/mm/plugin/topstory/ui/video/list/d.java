@@ -60,11 +60,11 @@ public final class d
       if (localObject == null) {
         break label177;
       }
-      i = ((h)localObject).epv();
-      if ((i != paramb.epE()) && (paramb.epB().BvU)) {
-        paramb.epB().stopPlay();
+      i = ((h)localObject).etc();
+      if ((i != paramb.etl()) && (paramb.eti().BNs)) {
+        paramb.eti().stopPlay();
       }
-      paramb.epu();
+      paramb.etb();
       j = 0;
       label84:
       if (j >= localRecyclerView.getChildCount()) {
@@ -74,13 +74,13 @@ public final class d
       if (((View)localObject).getTag() != null)
       {
         localObject = (h)paramb.getRecyclerView().bh((View)localObject);
-        if (((h)localObject).epv() != i) {
+        if (((h)localObject).etc() != i) {
           break label182;
         }
-        ((h)localObject).eqQ();
-        ((h)localObject).ept();
-        if (!paramb.epB().BvU) {
-          ((h)localObject).BxK.epS();
+        ((h)localObject).eux();
+        ((h)localObject).eta();
+        if (!paramb.eti().BNs) {
+          ((h)localObject).BPi.etz();
         }
       }
     }
@@ -94,8 +94,8 @@ public final class d
       i = -1;
       break;
       label182:
-      ((h)localObject).eqP();
-      ((h)localObject).BxK.epT();
+      ((h)localObject).euw();
+      ((h)localObject).BPi.etA();
     }
     label198:
     AppMethodBeat.o(126417);
@@ -122,8 +122,8 @@ public final class d
     }
     if (localView2 != null)
     {
-      paramInt = paramb.epD().bn(localView2);
-      i = paramb.epK();
+      paramInt = paramb.etk().bn(localView2);
+      i = paramb.etr();
       paramb.getRecyclerView().a(0, paramInt - i, null);
     }
     AppMethodBeat.o(126419);
@@ -136,32 +136,32 @@ public final class d
     if ((localObject instanceof h))
     {
       localObject = (h)localObject;
-      if (!paramb.epB().BvU)
+      if (!paramb.eti().BNs)
       {
-        if (!paramb.epw().isConnected()) {
+        if (!paramb.etd().isConnected()) {
           break label86;
         }
-        ((h)localObject).sJ(true);
+        ((h)localObject).sQ(true);
       }
     }
     for (;;)
     {
-      ((h)localObject).ept();
-      paramb.SY(((h)localObject).epv());
-      paramb.epx().eqy();
+      ((h)localObject).eta();
+      paramb.TF(((h)localObject).etc());
+      paramb.ete().euf();
       AppMethodBeat.o(126418);
       return;
       AppMethodBeat.o(126418);
       return;
       label86:
-      ((h)localObject).BxK.epW();
-      paramb.epB().stopPlay();
+      ((h)localObject).BPi.etD();
+      paramb.eti().stopPlay();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.ui.video.list.d
  * JD-Core Version:    0.7.0.1
  */

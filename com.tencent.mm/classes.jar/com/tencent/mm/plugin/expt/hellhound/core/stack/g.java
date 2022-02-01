@@ -4,8 +4,8 @@ import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.protocal.protobuf.bj;
 import com.tencent.mm.protocal.protobuf.bk;
-import com.tencent.mm.protocal.protobuf.dmi;
-import com.tencent.mm.protocal.protobuf.dno;
+import com.tencent.mm.protocal.protobuf.dnf;
+import com.tencent.mm.protocal.protobuf.dol;
 import com.tencent.mm.vending.j.a;
 import com.tencent.mm.vending.j.b;
 import java.util.Iterator;
@@ -13,29 +13,29 @@ import java.util.LinkedList;
 
 public final class g
 {
-  public f qRp;
+  public f qZn;
   
-  public static com.tencent.mm.vending.j.c<dmi, Integer> a(bk parambk, bj parambj)
+  public static com.tencent.mm.vending.j.c<dnf, Integer> a(bk parambk, bj parambj)
   {
     AppMethodBeat.i(121899);
-    if ((parambk == null) || (parambk.Fto.isEmpty()))
+    if ((parambk == null) || (parambk.FLM.isEmpty()))
     {
       AppMethodBeat.o(121899);
       return null;
     }
-    int i = parambk.Fto.size() - 1;
+    int i = parambk.FLM.size() - 1;
     while (i >= 0)
     {
-      dmi localdmi = (dmi)parambk.Fto.get(i);
-      if ((localdmi != null) && (!localdmi.HAD.isEmpty()))
+      dnf localdnf = (dnf)parambk.FLM.get(i);
+      if ((localdnf != null) && (!localdnf.HUq.isEmpty()))
       {
-        int j = localdmi.HAD.size() - 1;
+        int j = localdnf.HUq.size() - 1;
         while (j >= 0)
         {
-          bj localbj = (bj)localdmi.HAD.get(j);
-          if ((localbj != null) && (h.a(parambj.Fti, localbj.Fti)))
+          bj localbj = (bj)localdnf.HUq.get(j);
+          if ((localbj != null) && (h.a(parambj.FLG, localbj.FLG)))
           {
-            parambk = a.N(localdmi, Integer.valueOf(i));
+            parambk = a.N(localdnf, Integer.valueOf(i));
             AppMethodBeat.o(121899);
             return parambk;
           }
@@ -50,24 +50,24 @@ public final class g
   
   static com.tencent.mm.vending.j.c<Integer, Integer> a(bk parambk, String paramString)
   {
-    AppMethodBeat.i(210333);
+    AppMethodBeat.i(195993);
     if (TextUtils.isEmpty(paramString))
     {
       parambk = a.N(Integer.valueOf(-1), Integer.valueOf(-1));
-      AppMethodBeat.o(210333);
+      AppMethodBeat.o(195993);
       return parambk;
     }
     if (parambk == null)
     {
       parambk = com.tencent.mm.vending.j.c.N(Integer.valueOf(-1), Integer.valueOf(-1));
-      AppMethodBeat.o(210333);
+      AppMethodBeat.o(195993);
       return parambk;
     }
-    int i = parambk.Fto.size();
+    int i = parambk.FLM.size();
     if (i <= 0)
     {
       parambk = com.tencent.mm.vending.j.c.N(Integer.valueOf(-1), Integer.valueOf(-1));
-      AppMethodBeat.o(210333);
+      AppMethodBeat.o(195993);
       return parambk;
     }
     i -= 1;
@@ -76,13 +76,13 @@ public final class g
     int m;
     if (i >= 0)
     {
-      dmi localdmi = (dmi)parambk.Fto.get(i);
-      m = localdmi.HAD.size() - 1;
+      dnf localdnf = (dnf)parambk.FLM.get(i);
+      m = localdnf.HUq.size() - 1;
       label123:
       if (m < 0) {
         break label220;
       }
-      if (paramString.equals(((bj)localdmi.HAD.get(m)).Fti.activityName))
+      if (paramString.equals(((bj)localdnf.HUq.get(m)).FLG.activityName))
       {
         k = m;
         j = i;
@@ -98,11 +98,11 @@ public final class g
       if (j == -1)
       {
         parambk = com.tencent.mm.vending.j.c.N(Integer.valueOf(-1), Integer.valueOf(-1));
-        AppMethodBeat.o(210333);
+        AppMethodBeat.o(195993);
         return parambk;
       }
       parambk = a.N(Integer.valueOf(j), Integer.valueOf(k));
-      AppMethodBeat.o(210333);
+      AppMethodBeat.o(195993);
       return parambk;
     }
   }
@@ -110,30 +110,30 @@ public final class g
   static void a(bk parambk, bj parambj, boolean paramBoolean)
   {
     AppMethodBeat.i(121901);
-    dmi localdmi = new dmi();
-    localdmi.HAC = paramBoolean;
-    localdmi.HAD.addLast(parambj);
+    dnf localdnf = new dnf();
+    localdnf.HUp = paramBoolean;
+    localdnf.HUq.addLast(parambj);
     parambj = parambk;
     if (parambk == null) {
       parambj = new bk();
     }
-    parambj.Fto.addLast(localdmi);
+    parambj.FLM.addLast(localdnf);
     AppMethodBeat.o(121901);
   }
   
-  private static void a(bk parambk, dmi paramdmi)
+  private static void a(bk parambk, dnf paramdnf)
   {
     AppMethodBeat.i(121905);
-    if ((paramdmi.HAD.isEmpty()) && (!parambk.Fto.isEmpty())) {
-      parambk.Fto.removeLast();
+    if ((paramdnf.HUq.isEmpty()) && (!parambk.FLM.isEmpty())) {
+      parambk.FLM.removeLast();
     }
     AppMethodBeat.o(121905);
   }
   
-  public static bj adS(String paramString)
+  public static bj aeM(String paramString)
   {
     AppMethodBeat.i(121911);
-    bk localbk = c.cnP();
+    bk localbk = c.cpr();
     paramString = a(localbk, paramString);
     int i = ((Integer)paramString.get(0)).intValue();
     int j = ((Integer)paramString.get(1)).intValue();
@@ -142,7 +142,7 @@ public final class g
       AppMethodBeat.o(121911);
       return null;
     }
-    paramString = (bj)((dmi)localbk.Fto.get(i)).HAD.get(j);
+    paramString = (bj)((dnf)localbk.FLM.get(i)).HUq.get(j);
     AppMethodBeat.o(121911);
     return paramString;
   }
@@ -150,17 +150,17 @@ public final class g
   static void b(bk parambk, bj parambj)
   {
     AppMethodBeat.i(121900);
-    dmi localdmi1 = null;
-    if (!parambk.Fto.isEmpty()) {
-      localdmi1 = (dmi)parambk.Fto.getLast();
+    dnf localdnf1 = null;
+    if (!parambk.FLM.isEmpty()) {
+      localdnf1 = (dnf)parambk.FLM.getLast();
     }
-    dmi localdmi2 = localdmi1;
-    if (localdmi1 == null)
+    dnf localdnf2 = localdnf1;
+    if (localdnf1 == null)
     {
-      localdmi2 = new dmi();
-      parambk.Fto.addLast(localdmi2);
+      localdnf2 = new dnf();
+      parambk.FLM.addLast(localdnf2);
     }
-    localdmi2.HAD.addLast(parambj);
+    localdnf2.HUq.addLast(parambj);
     AppMethodBeat.o(121900);
   }
   
@@ -172,11 +172,11 @@ public final class g
       AppMethodBeat.o(121902);
       return false;
     }
-    dmi localdmi = null;
-    if (!parambk.Fto.isEmpty()) {
-      localdmi = (dmi)parambk.Fto.getLast();
+    dnf localdnf = null;
+    if (!parambk.FLM.isEmpty()) {
+      localdnf = (dnf)parambk.FLM.getLast();
     }
-    if ((localdmi != null) && (localdmi.HAC))
+    if ((localdnf != null) && (localdnf.HUp))
     {
       AppMethodBeat.o(121902);
       return true;
@@ -193,20 +193,20 @@ public final class g
       AppMethodBeat.o(121906);
       return null;
     }
-    if (!parambk.Fto.isEmpty()) {}
-    for (parambk = (dmi)parambk.Fto.getLast();; parambk = null)
+    if (!parambk.FLM.isEmpty()) {}
+    for (parambk = (dnf)parambk.FLM.getLast();; parambk = null)
     {
       if (parambk == null)
       {
         AppMethodBeat.o(121906);
         return null;
       }
-      if (parambk.HAD.isEmpty())
+      if (parambk.HUq.isEmpty())
       {
         AppMethodBeat.o(121906);
         return null;
       }
-      parambk = (bj)parambk.HAD.getLast();
+      parambk = (bj)parambk.HUq.getLast();
       AppMethodBeat.o(121906);
       return parambk;
     }
@@ -215,26 +215,26 @@ public final class g
   static com.tencent.mm.vending.j.c<Integer, Integer> c(bk parambk, bj parambj)
   {
     AppMethodBeat.i(121907);
-    parambk = a(parambk, parambj.Fti.activityName);
+    parambk = a(parambk, parambj.FLG.activityName);
     AppMethodBeat.o(121907);
     return parambk;
   }
   
-  public static com.tencent.mm.vending.j.c<bk, bj> cnX()
+  public static com.tencent.mm.vending.j.c<bk, bj> cpz()
   {
     AppMethodBeat.i(121909);
-    Object localObject = c.cnP();
+    Object localObject = c.cpr();
     localObject = a.N(localObject, e((bk)localObject));
     AppMethodBeat.o(121909);
     return localObject;
   }
   
-  static LinkedList<dmi> d(bk parambk)
+  static LinkedList<dnf> d(bk parambk)
   {
     if (parambk == null) {
       return null;
     }
-    return parambk.Fto;
+    return parambk.FLM;
   }
   
   public static bj e(bk parambk)
@@ -245,20 +245,20 @@ public final class g
       AppMethodBeat.o(121910);
       return null;
     }
-    if (!parambk.Fto.isEmpty()) {}
-    for (parambk = (dmi)parambk.Fto.getLast();; parambk = null)
+    if (!parambk.FLM.isEmpty()) {}
+    for (parambk = (dnf)parambk.FLM.getLast();; parambk = null)
     {
       if (parambk == null)
       {
         AppMethodBeat.o(121910);
         return null;
       }
-      if (parambk.HAD.isEmpty())
+      if (parambk.HUq.isEmpty())
       {
         AppMethodBeat.o(121910);
         return null;
       }
-      parambk = (bj)parambk.HAD.getLast();
+      parambk = (bj)parambk.HUq.getLast();
       AppMethodBeat.o(121910);
       return parambk;
     }
@@ -272,8 +272,8 @@ public final class g
       AppMethodBeat.o(121903);
       return;
     }
-    dmi localdmi = (dmi)parambk.Fto.getLast();
-    int i = localdmi.HAD.size();
+    dnf localdnf = (dnf)parambk.FLM.getLast();
+    int i = localdnf.HUq.size();
     if ((paramInt < 0) || (paramInt >= i))
     {
       AppMethodBeat.o(121903);
@@ -282,15 +282,15 @@ public final class g
     i -= 1;
     while (i >= paramInt)
     {
-      bj localbj = (bj)localdmi.HAD.remove(i);
-      if (this.qRp != null)
+      bj localbj = (bj)localdnf.HUq.remove(i);
+      if (this.qZn != null)
       {
-        localbj.Fti.timestamp = parambj.Fti.timestamp;
-        this.qRp.c(localbj, parambj);
+        localbj.FLG.timestamp = parambj.FLG.timestamp;
+        this.qZn.c(localbj, parambj);
       }
       i -= 1;
     }
-    a(parambk, localdmi);
+    a(parambk, localdnf);
     AppMethodBeat.o(121903);
   }
   
@@ -302,7 +302,7 @@ public final class g
       AppMethodBeat.o(121904);
       return;
     }
-    int i = parambk.Fto.size();
+    int i = parambk.FLM.size();
     if ((paramInt < 0) || (paramInt >= i))
     {
       AppMethodBeat.o(121904);
@@ -311,14 +311,14 @@ public final class g
     i -= 1;
     while (i >= paramInt)
     {
-      Iterator localIterator = ((dmi)parambk.Fto.remove(i)).HAD.iterator();
+      Iterator localIterator = ((dnf)parambk.FLM.remove(i)).HUq.iterator();
       while (localIterator.hasNext())
       {
         bj localbj = (bj)localIterator.next();
-        if (this.qRp != null)
+        if (this.qZn != null)
         {
-          localbj.Fti.timestamp = parambj.Fti.timestamp;
-          this.qRp.c(localbj, parambj);
+          localbj.FLG.timestamp = parambj.FLG.timestamp;
+          this.qZn.c(localbj, parambj);
         }
       }
       i -= 1;
@@ -328,7 +328,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.hellhound.core.stack.g
  * JD-Core Version:    0.7.0.1
  */

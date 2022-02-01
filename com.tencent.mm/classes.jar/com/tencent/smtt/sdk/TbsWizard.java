@@ -37,9 +37,9 @@ public class TbsWizard
     AppMethodBeat.o(54635);
   }
   
-  public TbsWizard(Context paramContext1, Context paramContext2, String paramString1, String paramString2, String[] paramArrayOfString, String paramString3, n paramn)
+  public TbsWizard(Context paramContext1, Context paramContext2, String paramString1, String paramString2, String[] paramArrayOfString, String paramString3, p paramp)
   {
-    AppMethodBeat.i(54636);
+    AppMethodBeat.i(192713);
     this.a = null;
     this.b = null;
     this.c = null;
@@ -50,7 +50,7 @@ public class TbsWizard
     if ((paramContext1 == null) || ((paramContext2 == null) && (TbsShareManager.getHostCorePathAppDefined() == null)) || (TextUtils.isEmpty(paramString1)) || (paramArrayOfString == null) || (paramArrayOfString.length == 0))
     {
       paramContext1 = new Exception("TbsWizard paramter error:-1callerContext:" + paramContext1 + "hostcontext" + paramContext2 + "isEmpty" + TextUtils.isEmpty(paramString1) + "dexfileList" + paramArrayOfString);
-      AppMethodBeat.o(54636);
+      AppMethodBeat.o(192713);
       throw paramContext1;
     }
     this.a = paramContext1.getApplicationContext();
@@ -59,8 +59,8 @@ public class TbsWizard
     {
       this.c = paramString1;
       this.d = paramArrayOfString;
-      if (paramn != null) {
-        paramn.a("load_tbs_dex", (byte)1);
+      if (paramp != null) {
+        paramp.a("load_tbs_dex", (byte)1);
       }
       i = 0;
       while (i < this.d.length)
@@ -75,26 +75,26 @@ public class TbsWizard
     long l = System.currentTimeMillis();
     a(paramContext1);
     new StringBuilder("checkTbsValidityIfNecessary ").append(System.currentTimeMillis() - l);
-    if (paramn != null) {
-      paramn.a("load_tbs_dex", (byte)2);
+    if (paramp != null) {
+      paramp.a("load_tbs_dex", (byte)2);
     }
     libwebp.loadWepLibraryIfNeed(paramContext2, this.c);
     a();
-    if (paramn != null) {
-      paramn.a("init_tbs", (byte)1);
+    if (paramp != null) {
+      paramp.a("init_tbs", (byte)1);
     }
     int i = b(paramContext1);
-    if (paramn != null) {
-      paramn.a("init_tbs", (byte)2);
+    if (paramp != null) {
+      paramp.a("init_tbs", (byte)2);
     }
     if (i < 0)
     {
       paramContext1 = new Exception("TbsWizard init error: " + i + "; msg: " + this.f);
-      AppMethodBeat.o(54636);
+      AppMethodBeat.o(192713);
       throw paramContext1;
     }
     TbsLog.i("TbsWizard", "construction end...");
-    AppMethodBeat.o(54636);
+    AppMethodBeat.o(192713);
   }
   
   private void a()
@@ -145,8 +145,8 @@ public class TbsWizard
   private int b(Context paramContext)
   {
     AppMethodBeat.i(54639);
-    TbsOneGreyInfoHelper.getCoreEntry().setSdkVersionCode(43804);
-    TbsOneGreyInfoHelper.getCoreEntry().setSdkVersionName("4.4.0.0005");
+    TbsOneGreyInfoHelper.getCoreEntry().setSdkVersionCode(43805);
+    TbsOneGreyInfoHelper.getCoreEntry().setSdkVersionName("4.4.0.0006");
     TbsOneGreyInfoHelper.getCoreEntry().initRuntimeEnvironment();
     AppMethodBeat.o(54639);
     return 0;

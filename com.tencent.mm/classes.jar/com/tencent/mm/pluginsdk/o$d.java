@@ -5,9 +5,9 @@ import com.tencent.mm.plugin.sns.b.o;
 
 public final class o$d
 {
-  public static h eYX()
+  public static h fcL()
   {
-    return o.zbY;
+    return o.zsB;
   }
 }
 

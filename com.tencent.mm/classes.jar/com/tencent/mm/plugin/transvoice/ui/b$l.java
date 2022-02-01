@@ -5,16 +5,16 @@ import android.content.DialogInterface.OnDismissListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onDismiss"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onDismiss"})
 final class b$l
   implements DialogInterface.OnDismissListener
 {
-  public static final l BEh;
+  public static final l BVF;
   
   static
   {
     AppMethodBeat.i(102572);
-    BEh = new l();
+    BVF = new l();
     AppMethodBeat.o(102572);
   }
   

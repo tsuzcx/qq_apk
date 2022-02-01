@@ -4,18 +4,18 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
 {
-  private static a LhV = null;
+  private static a LEx = null;
   
   public static void a(a parama)
   {
-    LhV = parama;
+    LEx = parama;
   }
   
   public static void d(String paramString1, String paramString2, Object... paramVarArgs)
   {
     AppMethodBeat.i(74938);
-    if (LhV != null) {
-      LhV.d(paramString1, paramString2, paramVarArgs);
+    if (LEx != null) {
+      LEx.d(paramString1, paramString2, paramVarArgs);
     }
     AppMethodBeat.o(74938);
   }
@@ -23,8 +23,8 @@ public final class a
   public static void e(String paramString1, String paramString2, Object... paramVarArgs)
   {
     AppMethodBeat.i(74935);
-    if (LhV != null) {
-      LhV.e(paramString1, paramString2, paramVarArgs);
+    if (LEx != null) {
+      LEx.e(paramString1, paramString2, paramVarArgs);
     }
     AppMethodBeat.o(74935);
   }
@@ -32,8 +32,8 @@ public final class a
   public static void i(String paramString1, String paramString2, Object... paramVarArgs)
   {
     AppMethodBeat.i(74937);
-    if (LhV != null) {
-      LhV.i(paramString1, paramString2, paramVarArgs);
+    if (LEx != null) {
+      LEx.i(paramString1, paramString2, paramVarArgs);
     }
     AppMethodBeat.o(74937);
   }
@@ -41,8 +41,8 @@ public final class a
   public static void printErrStackTrace(String paramString1, Throwable paramThrowable, String paramString2, Object... paramVarArgs)
   {
     AppMethodBeat.i(74939);
-    if (LhV != null) {
-      LhV.printErrStackTrace(paramString1, paramThrowable, paramString2, paramVarArgs);
+    if (LEx != null) {
+      LEx.printErrStackTrace(paramString1, paramThrowable, paramString2, paramVarArgs);
     }
     AppMethodBeat.o(74939);
   }
@@ -50,8 +50,8 @@ public final class a
   public static void w(String paramString1, String paramString2, Object... paramVarArgs)
   {
     AppMethodBeat.i(74936);
-    if (LhV != null) {
-      LhV.w(paramString1, paramString2, paramVarArgs);
+    if (LEx != null) {
+      LEx.w(paramString1, paramString2, paramVarArgs);
     }
     AppMethodBeat.o(74936);
   }

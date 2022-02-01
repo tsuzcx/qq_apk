@@ -1,158 +1,84 @@
 package com.tencent.map.tools.internal;
 
-import android.content.Context;
-import android.content.pm.ApplicationInfo;
-import android.content.pm.PackageManager;
-import android.os.Build;
-import android.os.Build.VERSION;
-import android.os.Process;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.lang.reflect.Field;
+import java.io.File;
+import javax.crypto.spec.IvParameterSpec;
 
-public class t
+public final class t
 {
-  private static Context c;
-  private static t d;
-  public int a;
-  private String b;
-  private String e;
+  public static final String A;
+  public static final String B;
+  public static final String C;
+  public static final String D;
+  public static final String E;
+  public static final String[] F;
+  public static final IvParameterSpec G;
+  private static final byte[] H;
+  public static final String a;
+  public static final String b;
+  public static final String c;
+  public static final String d;
+  public static final String e;
+  public static final String f;
+  public static final String g;
+  public static final String h;
+  public static final String i;
+  public static final String j;
+  public static String k;
+  public static String l;
+  public static String m;
+  public static final String n;
+  public static final String o;
+  public static final String p;
+  public static final String q;
+  public static final String r;
+  public static final String s;
+  public static final String t;
+  public static final String u;
+  public static final String v;
+  public static String w;
+  public static final String x;
+  public static final String y;
+  public static final String z;
   
-  private t(Context paramContext)
+  static
   {
-    AppMethodBeat.i(180853);
-    this.b = "JudeCpuAbiHandler";
-    this.e = "armeabi";
-    this.a = 4;
-    c = paramContext;
-    this.e = b(paramContext);
-    this.a = a(this.e);
-    AppMethodBeat.o(180853);
-  }
-  
-  private static int a(String paramString)
-  {
-    AppMethodBeat.i(180856);
-    if (paramString == null)
-    {
-      AppMethodBeat.o(180856);
-      return 4;
-    }
-    int i = 0;
-    while (i < u.F.length)
-    {
-      if (paramString.equals(u.F[i]))
-      {
-        AppMethodBeat.o(180856);
-        return i;
-      }
-      i += 1;
-    }
-    AppMethodBeat.o(180856);
-    return -1;
-  }
-  
-  public static t a(Context paramContext)
-  {
-    AppMethodBeat.i(180854);
-    if (d == null) {}
-    try
-    {
-      if (d == null) {
-        d = new t(paramContext);
-      }
-      paramContext = d;
-      AppMethodBeat.o(180854);
-      return paramContext;
-    }
-    finally
-    {
-      AppMethodBeat.o(180854);
-    }
-  }
-  
-  private static String b(Context paramContext)
-  {
-    boolean bool2 = true;
-    AppMethodBeat.i(180855);
-    for (;;)
-    {
-      try
-      {
-        if (Build.VERSION.SDK_INT >= 23)
-        {
-          bool1 = Process.is64Bit();
-          if (!bool1) {
-            break label179;
-          }
-          paramContext = Build.SUPPORTED_64_BIT_ABIS[0];
-          AppMethodBeat.o(180855);
-          return paramContext;
-        }
-        if (Build.VERSION.SDK_INT < 21) {
-          break label186;
-        }
-        String[] arrayOfString = Build.SUPPORTED_ABIS;
-        String str1 = "";
-        int j = arrayOfString.length;
-        int i = 0;
-        if (i < j)
-        {
-          String str2 = arrayOfString[i];
-          str1 = str1 + str2 + ",";
-          i += 1;
-          continue;
-        }
-        if (!str1.contains("64")) {
-          break label186;
-        }
-        paramContext = c(paramContext);
-        bool1 = bool2;
-        if (paramContext == null) {
-          continue;
-        }
-        if (paramContext.equals("getError"))
-        {
-          paramContext = new Exception("getError");
-          AppMethodBeat.o(180855);
-          throw paramContext;
-        }
-      }
-      catch (Throwable paramContext)
-      {
-        AppMethodBeat.o(180855);
-        return "armeabi";
-      }
-      boolean bool1 = bool2;
-      if (!paramContext.contains("64"))
-      {
-        bool1 = false;
-        continue;
-        label179:
-        paramContext = Build.CPU_ABI;
-        continue;
-        label186:
-        bool1 = false;
-      }
-    }
-  }
-  
-  private static String c(Context paramContext)
-  {
-    AppMethodBeat.i(180857);
-    try
-    {
-      paramContext = paramContext.getApplicationContext().getPackageManager().getApplicationInfo(paramContext.getApplicationContext().getPackageName(), 0);
-      Field localField = ApplicationInfo.class.getDeclaredField("primaryCpuAbi");
-      localField.setAccessible(true);
-      paramContext = (String)localField.get(paramContext);
-      AppMethodBeat.o(180857);
-      return paramContext;
-    }
-    catch (Throwable paramContext)
-    {
-      AppMethodBeat.o(180857);
-    }
-    return "getError";
+    AppMethodBeat.i(209803);
+    a = a.a + "_desc";
+    b = "tencentmap" + File.separator + a.a + "_ps" + File.separator + a.a + "_module";
+    c = "tencentmap" + File.separator + a.a + "_ps" + File.separator + a.a + "_lib";
+    d = a.a + "_ps" + File.separator + a.a + "_load";
+    e = d + File.separator + a.a + "_module";
+    f = d + File.separator + a.a + "_odex";
+    g = d + File.separator + a.a + "_lib";
+    h = a.a + "_ps" + File.separator + a.a + "_update";
+    i = h + File.separator + a.a + "_module";
+    j = h + File.separator + a.a + "_lib";
+    k = a.b + "." + a.c + "." + a.d;
+    l = a.e;
+    m = a.f;
+    n = a.a + "_lock";
+    o = b + File.separator + a;
+    p = c;
+    q = "SP_" + a.a + "_MODULE_INFO";
+    r = "SP_LAST_" + a.a + "_MODULE_INFO";
+    s = "SP_UPDATE_" + a.a + "_MODULE_INFO";
+    t = "SP_LAST_" + a.a + "_MODULE_SDK_VER";
+    u = "SP_UPDATE_" + a.a + "_MODULE_SDK_VER";
+    v = "SP_bad_" + a.a + "_info";
+    w = a.a + "_loading";
+    x = "SP_last_check_" + a.a + "_update_time";
+    y = "SP_" + a.a + "_run_duration";
+    z = "SP_" + a.a + "__exp_times";
+    A = "SP_pro_" + a.a + "_load_info";
+    B = "SP_" + a.a + "__update_compinfo";
+    C = "SP_" + a.a + "_MODULE_SHELL_SDK_VERSION";
+    D = a.a + "/conf";
+    E = "https://tmapsdk-70114.njc.vod.tencent-cloud.com/" + a.b + "/";
+    F = new String[] { "", "", "arm64-v8a", "armeabi-v7a", "armeabi", "x86", "x86_64", "mips64" };
+    H = new byte[] { 84, 101, 110, 99, 101, 110, 116, 76, 111, 99, 97, 116, 105, 111, 110, 49 };
+    G = new IvParameterSpec(H);
+    AppMethodBeat.o(209803);
   }
 }
 

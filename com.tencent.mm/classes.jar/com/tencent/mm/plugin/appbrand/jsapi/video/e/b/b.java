@@ -18,7 +18,7 @@ public final class b
   
   static
   {
-    AppMethodBeat.i(206268);
+    AppMethodBeat.i(211296);
     Object localObject = null;
     try
     {
@@ -35,7 +35,7 @@ public final class b
       break label27;
     }
     bhS = localObject;
-    AppMethodBeat.o(206268);
+    AppMethodBeat.o(211296);
   }
   
   /* Error */
@@ -189,7 +189,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.video.e.b.b
  * JD-Core Version:    0.7.0.1
  */

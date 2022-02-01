@@ -2,28 +2,28 @@ package com.tencent.mm.ui.transmit;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.ar;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.base.p;
 
 public final class f
 {
-  boolean KOX;
-  a KOY;
+  boolean Llv;
+  a Llw;
   Context context;
-  Runnable kFk;
-  boolean mCN;
-  boolean mCO;
-  boolean mCP;
-  int mCQ;
+  Runnable kIz;
+  boolean mHS;
+  boolean mHT;
+  boolean mHU;
+  int mHV;
   String text;
   p tipDialog;
   
   public f(Context paramContext)
   {
     AppMethodBeat.i(39488);
-    this.KOX = false;
-    this.kFk = new Runnable()
+    this.Llv = false;
+    this.kIz = new Runnable()
     {
       public final void run()
       {
@@ -31,7 +31,7 @@ public final class f
         if (f.this.tipDialog != null) {
           f.this.tipDialog.dismiss();
         }
-        f.this.bzu();
+        f.this.bAp();
         AppMethodBeat.o(39487);
       }
     };
@@ -41,50 +41,50 @@ public final class f
   
   private boolean rP()
   {
-    return this.mCN & this.mCO;
+    return this.mHS & this.mHT;
   }
   
   public final void a(boolean paramBoolean1, String paramString, int paramInt, boolean paramBoolean2)
   {
-    AppMethodBeat.i(194833);
-    this.mCN = true;
-    this.mCP = paramBoolean1;
+    AppMethodBeat.i(188235);
+    this.mHS = true;
+    this.mHU = paramBoolean1;
     this.text = paramString;
-    this.mCQ = paramInt;
-    this.KOX = paramBoolean2;
+    this.mHV = paramInt;
+    this.Llv = paramBoolean2;
     if (rP())
     {
-      bzu();
-      AppMethodBeat.o(194833);
+      bAp();
+      AppMethodBeat.o(188235);
       return;
     }
     if (paramBoolean1)
     {
       this.tipDialog = h.b(this.context, this.context.getString(2131763073), true, null);
-      aq.o(this.kFk, 5000L);
+      ar.o(this.kIz, 5000L);
     }
-    AppMethodBeat.o(194833);
+    AppMethodBeat.o(188235);
   }
   
-  public final void bzu()
+  public final void bAp()
   {
     AppMethodBeat.i(39489);
-    if (this.KOY != null) {
-      this.KOY.e(this.mCP, this.text, this.KOX);
+    if (this.Llw != null) {
+      this.Llw.e(this.mHU, this.text, this.Llv);
     }
     AppMethodBeat.o(39489);
   }
   
-  public final void fLj()
+  public final void fPC()
   {
-    AppMethodBeat.i(194832);
-    this.mCO = true;
+    AppMethodBeat.i(188234);
+    this.mHT = true;
     if (rP())
     {
-      aq.aA(this.kFk);
-      bzu();
+      ar.ay(this.kIz);
+      bAp();
     }
-    AppMethodBeat.o(194832);
+    AppMethodBeat.o(188234);
   }
   
   static abstract interface a

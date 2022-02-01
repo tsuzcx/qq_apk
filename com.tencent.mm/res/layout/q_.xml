@@ -34,7 +34,7 @@
                             </FrameLayout>
                             <LinearLayout android:orientation="vertical" android:id="@id/ajs" android:layout_width="fill_parent" android:layout_height="20.0dip" android:layout_marginLeft="0.0dip" android:layout_marginTop="@dimen/i_" android:layout_marginRight="5.0dip">
                                 <ImageView android:layout_gravity="center_vertical" android:background="@color/i_" android:layout_width="fill_parent" android:layout_height="2.0px" />
-                                <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/m8" android:paddingLeft="@dimen/hu" android:layout_width="fill_parent" android:layout_height="20.0dip">
+                                <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:paddingLeft="@dimen/hu" android:layout_width="fill_parent" android:layout_height="20.0dip">
                                     <ImageView android:layout_width="10.0dip" android:layout_height="10.0dip" android:layout_marginRight="3.0dip" android:src="@raw/app_brand_we_app_logo_share" android:scaleType="centerCrop" />
                                     <com.tencent.mm.ui.widget.MMTextView android:textSize="10.0dip" android:id="@id/aju" android:paddingRight="@dimen/hu" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="0.0dip" android:layout_marginTop="0.0dip" android:text="@string/jo" style="@style/gg" />
                                 </LinearLayout>

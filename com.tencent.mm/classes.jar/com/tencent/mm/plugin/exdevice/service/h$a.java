@@ -15,7 +15,7 @@ public abstract class h$a
     attachInterface(this, "com.tencent.mm.plugin.exdevice.service.IBTDeviceManager_AIDL");
   }
   
-  public static h v(IBinder paramIBinder)
+  public static h w(IBinder paramIBinder)
   {
     if (paramIBinder == null) {
       return null;
@@ -62,7 +62,7 @@ public abstract class h$a
       return true;
     case 1: 
       paramParcel1.enforceInterface("com.tencent.mm.plugin.exdevice.service.IBTDeviceManager_AIDL");
-      bool = b(paramParcel1.readInt(), j.a.x(paramParcel1.readStrongBinder()));
+      bool = b(paramParcel1.readInt(), j.a.y(paramParcel1.readStrongBinder()));
       paramParcel2.writeNoException();
       if (bool) {}
       for (paramInt1 = 1;; paramInt1 = 0)
@@ -72,7 +72,7 @@ public abstract class h$a
       }
     case 2: 
       paramParcel1.enforceInterface("com.tencent.mm.plugin.exdevice.service.IBTDeviceManager_AIDL");
-      bool = c(paramParcel1.readInt(), j.a.x(paramParcel1.readStrongBinder()));
+      bool = c(paramParcel1.readInt(), j.a.y(paramParcel1.readStrongBinder()));
       paramParcel2.writeNoException();
       paramInt1 = i;
       if (bool) {
@@ -82,13 +82,13 @@ public abstract class h$a
       return true;
     case 3: 
       paramParcel1.enforceInterface("com.tencent.mm.plugin.exdevice.service.IBTDeviceManager_AIDL");
-      paramParcel1 = clI();
+      paramParcel1 = cmY();
       paramParcel2.writeNoException();
       paramParcel2.writeLongArray(paramParcel1);
       return true;
     case 4: 
       paramParcel1.enforceInterface("com.tencent.mm.plugin.exdevice.service.IBTDeviceManager_AIDL");
-      bool = a(paramParcel1.readLong(), paramParcel1.readInt(), k.a.y(paramParcel1.readStrongBinder()));
+      bool = a(paramParcel1.readLong(), paramParcel1.readInt(), k.a.z(paramParcel1.readStrongBinder()));
       paramParcel2.writeNoException();
       paramInt1 = j;
       if (bool) {
@@ -98,7 +98,7 @@ public abstract class h$a
       return true;
     case 5: 
       paramParcel1.enforceInterface("com.tencent.mm.plugin.exdevice.service.IBTDeviceManager_AIDL");
-      bool = uJ(paramParcel1.readLong());
+      bool = va(paramParcel1.readLong());
       paramParcel2.writeNoException();
       paramInt1 = k;
       if (bool) {
@@ -108,7 +108,7 @@ public abstract class h$a
       return true;
     case 6: 
       paramParcel1.enforceInterface("com.tencent.mm.plugin.exdevice.service.IBTDeviceManager_AIDL");
-      bool = uK(paramParcel1.readLong());
+      bool = vb(paramParcel1.readLong());
       paramParcel2.writeNoException();
       paramInt1 = m;
       if (bool) {
@@ -118,13 +118,13 @@ public abstract class h$a
       return true;
     case 7: 
       paramParcel1.enforceInterface("com.tencent.mm.plugin.exdevice.service.IBTDeviceManager_AIDL");
-      l = a(p.a.B(paramParcel1.readStrongBinder()));
+      l = a(p.a.C(paramParcel1.readStrongBinder()));
       paramParcel2.writeNoException();
       paramParcel2.writeLong(l);
       return true;
     case 8: 
       paramParcel1.enforceInterface("com.tencent.mm.plugin.exdevice.service.IBTDeviceManager_AIDL");
-      bool = uL(paramParcel1.readLong());
+      bool = vc(paramParcel1.readLong());
       paramParcel2.writeNoException();
       paramInt1 = n;
       if (bool) {
@@ -134,7 +134,7 @@ public abstract class h$a
       return true;
     case 9: 
       paramParcel1.enforceInterface("com.tencent.mm.plugin.exdevice.service.IBTDeviceManager_AIDL");
-      bool = a(i.a.w(paramParcel1.readStrongBinder()));
+      bool = a(i.a.x(paramParcel1.readStrongBinder()));
       paramParcel2.writeNoException();
       paramInt1 = i1;
       if (bool) {
@@ -144,7 +144,7 @@ public abstract class h$a
       return true;
     case 10: 
       paramParcel1.enforceInterface("com.tencent.mm.plugin.exdevice.service.IBTDeviceManager_AIDL");
-      bool = b(i.a.w(paramParcel1.readStrongBinder()));
+      bool = b(i.a.x(paramParcel1.readStrongBinder()));
       paramParcel2.writeNoException();
       paramInt1 = i2;
       if (bool) {
@@ -208,7 +208,7 @@ public abstract class h$a
       }
     case 14: 
       paramParcel1.enforceInterface("com.tencent.mm.plugin.exdevice.service.IBTDeviceManager_AIDL");
-      bool = d(paramParcel1.readInt(), j.a.x(paramParcel1.readStrongBinder()));
+      bool = d(paramParcel1.readInt(), j.a.y(paramParcel1.readStrongBinder()));
       paramParcel2.writeNoException();
       paramInt1 = i4;
       if (bool) {
@@ -218,7 +218,7 @@ public abstract class h$a
       return true;
     case 15: 
       paramParcel1.enforceInterface("com.tencent.mm.plugin.exdevice.service.IBTDeviceManager_AIDL");
-      bool = e(paramParcel1.readInt(), j.a.x(paramParcel1.readStrongBinder()));
+      bool = e(paramParcel1.readInt(), j.a.y(paramParcel1.readStrongBinder()));
       paramParcel2.writeNoException();
       paramInt1 = i5;
       if (bool) {
@@ -228,7 +228,7 @@ public abstract class h$a
       return true;
     case 16: 
       paramParcel1.enforceInterface("com.tencent.mm.plugin.exdevice.service.IBTDeviceManager_AIDL");
-      bool = b(paramParcel1.readLong(), paramParcel1.readInt(), k.a.y(paramParcel1.readStrongBinder()));
+      bool = b(paramParcel1.readLong(), paramParcel1.readInt(), k.a.z(paramParcel1.readStrongBinder()));
       paramParcel2.writeNoException();
       paramInt1 = i6;
       if (bool) {
@@ -238,7 +238,7 @@ public abstract class h$a
       return true;
     case 17: 
       paramParcel1.enforceInterface("com.tencent.mm.plugin.exdevice.service.IBTDeviceManager_AIDL");
-      bool = uM(paramParcel1.readLong());
+      bool = vd(paramParcel1.readLong());
       paramParcel2.writeNoException();
       paramInt1 = i7;
       if (bool) {
@@ -1166,7 +1166,7 @@ public abstract class h$a
       //   42	75	104	finally
     }
     
-    public final long[] clI()
+    public final long[] cmY()
     {
       AppMethodBeat.i(23662);
       Parcel localParcel1 = Parcel.obtain();
@@ -1365,7 +1365,7 @@ public abstract class h$a
       }
     }
     
-    public final boolean uJ(long paramLong)
+    public final boolean va(long paramLong)
     {
       boolean bool = false;
       AppMethodBeat.i(23664);
@@ -1391,7 +1391,7 @@ public abstract class h$a
       }
     }
     
-    public final boolean uK(long paramLong)
+    public final boolean vb(long paramLong)
     {
       boolean bool = false;
       AppMethodBeat.i(23665);
@@ -1417,7 +1417,7 @@ public abstract class h$a
       }
     }
     
-    public final boolean uL(long paramLong)
+    public final boolean vc(long paramLong)
     {
       boolean bool = false;
       AppMethodBeat.i(23667);
@@ -1443,7 +1443,7 @@ public abstract class h$a
       }
     }
     
-    public final boolean uM(long paramLong)
+    public final boolean vd(long paramLong)
     {
       boolean bool = false;
       AppMethodBeat.i(23676);

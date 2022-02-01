@@ -7,15 +7,15 @@ public class MigrateResultCallbackAdapter
 {
   protected void a(int paramInt, ExtStorageMigrateException paramExtStorageMigrateException) {}
   
-  protected void aah(int paramInt) {}
+  protected void aaN(int paramInt) {}
   
-  protected void aai(int paramInt) {}
+  protected void aaO(int paramInt) {}
   
-  protected void fjc() {}
+  protected void fmU() {}
   
-  protected void fjd() {}
+  protected void fmV() {}
   
-  protected void js(int paramInt1, int paramInt2) {}
+  protected void jw(int paramInt1, int paramInt2) {}
 }
 
 

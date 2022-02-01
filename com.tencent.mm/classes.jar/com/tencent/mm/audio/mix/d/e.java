@@ -9,79 +9,79 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public final class e
   extends d
 {
-  private Object dcK;
-  private a ddD;
+  private Object ddM;
+  private a deF;
   
   public e(com.tencent.mm.audio.mix.f.d paramd, com.tencent.mm.audio.mix.g.b paramb)
   {
     super(paramd, paramb);
     AppMethodBeat.i(136810);
-    this.dcK = new Object();
+    this.ddM = new Object();
     AppMethodBeat.o(136810);
   }
   
-  public final void OF()
+  public final void OD()
   {
     AppMethodBeat.i(136813);
     com.tencent.mm.audio.mix.h.b.i("MicroMsg.Mix.AudioDecoderMediaCodecPlay", "pauseOnBackground");
-    hI(5);
-    this.ddt.set(true);
-    this.ddv.set(false);
-    OM();
+    hK(5);
+    this.dev.set(true);
+    this.dex.set(false);
+    OK();
     AppMethodBeat.o(136813);
   }
   
-  public final void OG() {}
+  public final void OE() {}
   
-  protected final void OR()
+  protected final void OP()
   {
     AppMethodBeat.i(136815);
     com.tencent.mm.audio.mix.h.b.i("MicroMsg.Mix.AudioDecoderMediaCodecPlay", "playBefore");
-    super.OR();
-    synchronized (this.dcK)
+    super.OP();
+    synchronized (this.ddM)
     {
-      if (this.ddD != null) {
-        this.ddD.reset();
+      if (this.deF != null) {
+        this.deF.reset();
       }
       AppMethodBeat.o(136815);
       return;
     }
   }
   
-  protected final void OS()
+  protected final void OQ()
   {
     AppMethodBeat.i(136817);
     com.tencent.mm.audio.mix.h.b.i("MicroMsg.Mix.AudioDecoderMediaCodecPlay", "playAfter");
-    super.OS();
-    if (this.ddD != null)
+    super.OQ();
+    if (this.deF != null)
     {
-      this.ddD.PB();
-      if ((this.ddD instanceof com.tencent.mm.audio.mix.f.a.b)) {
+      this.deF.Pz();
+      if ((this.deF instanceof com.tencent.mm.audio.mix.f.a.b)) {
         do
         {
-          boolean bool = this.dds.get();
-          OL();
-          if (this.ddt.get()) {
+          boolean bool = this.deu.get();
+          OJ();
+          if (this.dev.get()) {
             break;
           }
           if (bool)
           {
             com.tencent.mm.audio.mix.h.b.i("MicroMsg.Mix.AudioDecoderMediaCodecPlay", "need resume if not stop");
-            this.ddD.resume();
+            this.deF.resume();
           }
-        } while ((!this.ddt.get()) && (this.dds.get()));
+        } while ((!this.dev.get()) && (this.deu.get()));
       }
     }
     AppMethodBeat.o(136817);
   }
   
-  public final void OT()
+  public final void OR()
   {
     AppMethodBeat.i(136820);
-    synchronized (this.dcK)
+    synchronized (this.ddM)
     {
-      if (this.ddD != null) {
-        this.ddD.setVolume(0.0F, 0.0F);
+      if (this.deF != null) {
+        this.deF.setVolume(0.0F, 0.0F);
       }
       AppMethodBeat.o(136820);
       return;
@@ -98,8 +98,8 @@ public final class e
   protected final void b(com.tencent.mm.audio.mix.a.d paramd)
   {
     AppMethodBeat.i(136819);
-    if (this.ddn != null) {
-      this.ddn.OA();
+    if (this.dep != null) {
+      this.dep.Oy();
     }
     c(paramd);
     paramd.complete();
@@ -111,15 +111,15 @@ public final class e
     AppMethodBeat.i(136816);
     byte[] arrayOfByte;
     com.tencent.mm.audio.mix.a.d locald;
-    if (OK().dcb)
+    if (OI().ddd)
     {
       this.sampleRate = 44100;
       this.channels = 2;
-      arrayOfByte = parame.dbX;
-      if (!this.ddq.get()) {
-        if (this.ddD == null)
+      arrayOfByte = parame.dcZ;
+      if (!this.des.get()) {
+        if (this.deF == null)
         {
-          locald = OK();
+          locald = OI();
           if ((!locald.aBS) || (locald.duration > 2000L)) {
             break label183;
           }
@@ -127,15 +127,15 @@ public final class e
       }
     }
     label183:
-    for (this.ddD = new com.tencent.mm.audio.mix.f.a.b(this.sampleRate, this.channels, locald, this);; this.ddD = new com.tencent.mm.audio.mix.f.a.c(this.sampleRate, this.channels, locald, this))
+    for (this.deF = new com.tencent.mm.audio.mix.f.a.b(this.sampleRate, this.channels, locald, this);; this.deF = new com.tencent.mm.audio.mix.f.a.c(this.sampleRate, this.channels, locald, this))
     {
-      this.ddD.h(this.ddm.hLI);
-      this.ddD.setVolume((float)this.ddm.hLH, (float)this.ddm.hLH);
-      if (this.ddD != null) {
-        this.ddD.K(arrayOfByte);
+      this.deF.h(this.deo.hOB);
+      this.deF.setVolume((float)this.deo.hOA, (float)this.deo.hOA);
+      if (this.deF != null) {
+        this.deF.K(arrayOfByte);
       }
-      if (parame.dci) {
-        com.tencent.mm.audio.mix.b.c.Oq().b(parame);
+      if (parame.ddk) {
+        com.tencent.mm.audio.mix.b.c.Oo().b(parame);
       }
       AppMethodBeat.o(136816);
       return;
@@ -148,11 +148,11 @@ public final class e
   public final long getCurrentPosition()
   {
     AppMethodBeat.i(177344);
-    synchronized (this.dcK)
+    synchronized (this.ddM)
     {
-      if (this.ddD != null)
+      if (this.deF != null)
       {
-        long l = this.ddD.getCurrentPosition();
+        long l = this.deF.getCurrentPosition();
         AppMethodBeat.o(177344);
         return l;
       }
@@ -166,12 +166,12 @@ public final class e
     AppMethodBeat.i(136811);
     super.onRelease();
     com.tencent.mm.audio.mix.h.b.i("MicroMsg.Mix.AudioDecoderMediaCodecPlay", "releasePlayComponent");
-    synchronized (this.dcK)
+    synchronized (this.ddM)
     {
-      if (this.ddD != null)
+      if (this.deF != null)
       {
-        this.ddD.release();
-        this.ddD = null;
+        this.deF.release();
+        this.deF = null;
       }
       AppMethodBeat.o(136811);
       return;
@@ -182,10 +182,10 @@ public final class e
   {
     AppMethodBeat.i(136812);
     super.pause();
-    synchronized (this.dcK)
+    synchronized (this.ddM)
     {
-      if (this.ddD != null) {
-        this.ddD.pause();
+      if (this.deF != null) {
+        this.deF.pause();
       }
       AppMethodBeat.o(136812);
       return;
@@ -196,10 +196,10 @@ public final class e
   {
     AppMethodBeat.i(136814);
     super.seek(paramInt);
-    synchronized (this.dcK)
+    synchronized (this.ddM)
     {
-      if (this.ddD != null) {
-        this.ddD.seek(paramInt);
+      if (this.deF != null) {
+        this.deF.seek(paramInt);
       }
       AppMethodBeat.o(136814);
       return;
@@ -208,7 +208,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.audio.mix.d.e
  * JD-Core Version:    0.7.0.1
  */

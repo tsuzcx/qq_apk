@@ -5,19 +5,19 @@ import com.tencent.pb.common.c.b;
 
 public class a
 {
-  private static a Mln = null;
-  private f Mlo = null;
+  private static a MIk = null;
+  private f MIl = null;
   
-  public static a fZf()
+  public static a gdG()
   {
     AppMethodBeat.i(62656);
-    if (Mln == null) {}
+    if (MIk == null) {}
     try
     {
-      if (Mln == null) {
-        Mln = new a();
+      if (MIk == null) {
+        MIk = new a();
       }
-      a locala = Mln;
+      a locala = MIk;
       AppMethodBeat.o(62656);
       return locala;
     }
@@ -27,17 +27,17 @@ public class a
     }
   }
   
-  public static f fZg()
+  public static f gdH()
   {
     AppMethodBeat.i(62657);
-    Object localObject1 = fZf();
-    if (((a)localObject1).Mlo == null) {}
+    Object localObject1 = gdG();
+    if (((a)localObject1).MIl == null) {}
     try
     {
-      if (((a)localObject1).Mlo == null) {
-        ((a)localObject1).Mlo = new f();
+      if (((a)localObject1).MIl == null) {
+        ((a)localObject1).MIl = new f();
       }
-      localObject1 = ((a)localObject1).Mlo;
+      localObject1 = ((a)localObject1).MIl;
       AppMethodBeat.o(62657);
       return localObject1;
     }
@@ -47,17 +47,17 @@ public class a
     }
   }
   
-  public static void fZh()
+  public static void gdI()
   {
     AppMethodBeat.i(62658);
     b.d("MicroMsg.Voip", new Object[] { "registerEvents" });
-    fZg();
+    gdH();
     AppMethodBeat.o(62658);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.wecall.talkroom.model.a
  * JD-Core Version:    0.7.0.1
  */

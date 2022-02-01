@@ -20,16 +20,16 @@ import com.tencent.mm.plugin.recordvideo.background.c;
 import com.tencent.mm.plugin.recordvideo.ui.FakeVideoViewLayer;
 import com.tencent.mm.pluginsdk.ui.tools.h;
 import com.tencent.mm.pluginsdk.ui.tools.h.a;
-import com.tencent.mm.protocal.protobuf.afy;
-import com.tencent.mm.protocal.protobuf.aif;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.av;
-import com.tencent.mm.sdk.platformtools.av.a;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.agh;
+import com.tencent.mm.protocal.protobuf.aip;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.aw;
+import com.tencent.mm.sdk.platformtools.aw.a;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.tools.e.c;
-import com.tencent.mm.vfs.i;
+import com.tencent.mm.vfs.o;
 
 @com.tencent.mm.ui.base.a(3)
 public class GameFakeVideoUI
@@ -37,22 +37,22 @@ public class GameFakeVideoUI
   implements h.a
 {
   int duration;
-  TextView gUc;
-  private RelativeLayout oGY;
-  ImageView oGj;
-  com.tencent.mm.ui.tools.e oGo;
-  private h oHt;
-  private av oHz;
-  RelativeLayout tZs;
-  private FakeVideoViewLayer tZt;
-  private long tZu;
-  private long tZv;
+  TextView gWL;
+  ImageView oML;
+  com.tencent.mm.ui.tools.e oMQ;
+  private RelativeLayout oNA;
+  private h oNV;
+  private aw oOb;
+  RelativeLayout uku;
+  private FakeVideoViewLayer ukv;
+  private long ukw;
+  private long ukx;
   private String videoPath;
   
   public GameFakeVideoUI()
   {
     AppMethodBeat.i(41198);
-    this.oHz = new av(new av.a()
+    this.oOb = new aw(new aw.a()
     {
       public final boolean onTimerExpired()
       {
@@ -61,14 +61,14 @@ public class GameFakeVideoUI
         {
           GameFakeVideoUI localGameFakeVideoUI = GameFakeVideoUI.this;
           int i = (int)(GameFakeVideoUI.a(GameFakeVideoUI.this).getCurrentPosition() - GameFakeVideoUI.b(GameFakeVideoUI.this)) / 1000;
-          if ((localGameFakeVideoUI.gUc != null) && (localGameFakeVideoUI.duration > 0))
+          if ((localGameFakeVideoUI.gWL != null) && (localGameFakeVideoUI.duration > 0))
           {
             int j = localGameFakeVideoUI.duration - i;
             i = j;
             if (j < 0) {
               i = 0;
             }
-            localGameFakeVideoUI.gUc.setText(i + "\"");
+            localGameFakeVideoUI.gWL.setText(i + "\"");
           }
         }
         AppMethodBeat.o(41195);
@@ -82,19 +82,19 @@ public class GameFakeVideoUI
   private void setKeepScreenOn(boolean paramBoolean)
   {
     AppMethodBeat.i(41203);
-    if ((this.oHt instanceof GameFakeVideoView)) {
-      ((GameFakeVideoView)this.oHt).setKeepScreenOn(paramBoolean);
+    if ((this.oNV instanceof GameFakeVideoView)) {
+      ((GameFakeVideoView)this.oNV).setKeepScreenOn(paramBoolean);
     }
     AppMethodBeat.o(41203);
   }
   
-  public final int eT(int paramInt1, int paramInt2)
+  public final int eU(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(41207);
-    if ((this.oHt.isPlaying()) && (this.oHt.getCurrentPosition() >= this.tZv) && (this.tZv < this.oHt.getDuration()))
+    if ((this.oNV.isPlaying()) && (this.oNV.getCurrentPosition() >= this.ukx) && (this.ukx < this.oNV.getDuration()))
     {
-      ad.i("MicroMsg.Haowan.GameFakeVideoUI", "currentPosition:%d reach endTime:%d, seekTo startTime:%d", new Object[] { Integer.valueOf(this.oHt.getCurrentPosition()), Long.valueOf(this.tZv), Long.valueOf(this.tZu) });
-      this.oHt.d(this.tZu, true);
+      ae.i("MicroMsg.Haowan.GameFakeVideoUI", "currentPosition:%d reach endTime:%d, seekTo startTime:%d", new Object[] { Integer.valueOf(this.oNV.getCurrentPosition()), Long.valueOf(this.ukx), Long.valueOf(this.ukw) });
+      this.oNV.d(this.ukw, true);
     }
     AppMethodBeat.o(41207);
     return 0;
@@ -110,8 +110,8 @@ public class GameFakeVideoUI
   public final void onCompletion()
   {
     AppMethodBeat.i(41206);
-    ad.i("MicroMsg.Haowan.GameFakeVideoUI", "on completion, startTime:%d", new Object[] { Long.valueOf(this.tZu) });
-    this.oHt.p(this.tZu);
+    ae.i("MicroMsg.Haowan.GameFakeVideoUI", "on completion, startTime:%d", new Object[] { Long.valueOf(this.ukw) });
+    this.oNV.p(this.ukw);
     AppMethodBeat.o(41206);
   }
   
@@ -123,18 +123,18 @@ public class GameFakeVideoUI
     if (Build.VERSION.SDK_INT >= 21) {
       getWindow().setFlags(1024, 1024);
     }
-    if (com.tencent.mm.booter.a.Wt() != null) {
-      com.tencent.mm.booter.a.Wt().Wv();
+    if (com.tencent.mm.booter.a.WB() != null) {
+      com.tencent.mm.booter.a.WB().WD();
     }
-    this.tZs = ((RelativeLayout)findViewById(2131306409));
-    this.oGj = ((ImageView)findViewById(2131300336));
-    this.oGY = ((RelativeLayout)findViewById(2131306392));
-    this.gUc = ((TextView)findViewById(2131306332));
-    this.oHt = new GameFakeVideoView(this);
-    this.oHt.setVideoCallback(this);
+    this.uku = ((RelativeLayout)findViewById(2131306409));
+    this.oML = ((ImageView)findViewById(2131300336));
+    this.oNA = ((RelativeLayout)findViewById(2131306392));
+    this.gWL = ((TextView)findViewById(2131306332));
+    this.oNV = new GameFakeVideoView(this);
+    this.oNV.setVideoCallback(this);
     paramBundle = new RelativeLayout.LayoutParams(-1, -2);
     paramBundle.addRule(13);
-    this.oGY.addView((View)this.oHt, paramBundle);
+    this.oNA.addView((View)this.oNV, paramBundle);
     paramBundle = getIntent().getStringExtra("game_bg_mix_fake_local_id");
     if ((paramBundle == null) || (!paramBundle.startsWith("weixin://bgmixid/")))
     {
@@ -144,27 +144,27 @@ public class GameFakeVideoUI
       return;
     }
     paramBundle = paramBundle.replace("weixin://bgmixid/", "");
-    ad.i("MicroMsg.Haowan.GameFakeVideoUI", "bgMixTaskId:%s", new Object[] { paramBundle });
-    Object localObject = com.tencent.mm.plugin.recordvideo.background.e.xuo;
-    paramBundle = com.tencent.mm.plugin.recordvideo.background.e.avy(paramBundle);
-    if ((paramBundle == null) || (paramBundle.dEG() == null))
+    ae.i("MicroMsg.Haowan.GameFakeVideoUI", "bgMixTaskId:%s", new Object[] { paramBundle });
+    Object localObject = com.tencent.mm.plugin.recordvideo.background.e.xKl;
+    paramBundle = com.tencent.mm.plugin.recordvideo.background.e.awN(paramBundle);
+    if ((paramBundle == null) || (paramBundle.dHX() == null))
     {
       setResult(102);
       finish();
       AppMethodBeat.o(41199);
       return;
     }
-    this.videoPath = paramBundle.dEG().xyw;
-    ad.i("MicroMsg.Haowan.GameFakeVideoUI", "videoPath:%s", new Object[] { this.videoPath });
-    localObject = paramBundle.dEE();
-    this.tZu = ((afy)localObject).startTime;
-    this.tZv = ((afy)localObject).endTime;
-    localObject = com.tencent.mm.plugin.recordvideo.background.a.xua;
-    this.tZt = com.tencent.mm.plugin.recordvideo.background.a.fY(this);
-    this.oGY.addView(this.tZt, new ViewGroup.LayoutParams(-1, -1));
-    this.tZt.setFakeVideoInfo(paramBundle);
-    this.oHt.setMute(this.tZt.xHG);
-    this.oGY.setOnTouchListener(new View.OnTouchListener()
+    this.videoPath = paramBundle.dHX().xOs;
+    ae.i("MicroMsg.Haowan.GameFakeVideoUI", "videoPath:%s", new Object[] { this.videoPath });
+    localObject = paramBundle.dHV();
+    this.ukw = ((agh)localObject).startTime;
+    this.ukx = ((agh)localObject).endTime;
+    localObject = com.tencent.mm.plugin.recordvideo.background.a.xJX;
+    this.ukv = com.tencent.mm.plugin.recordvideo.background.a.ge(this);
+    this.oNA.addView(this.ukv, new ViewGroup.LayoutParams(-1, -1));
+    this.ukv.setFakeVideoInfo(paramBundle);
+    this.oNV.setMute(this.ukv.xXB);
+    this.oNA.setOnTouchListener(new View.OnTouchListener()
     {
       public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
       {
@@ -172,24 +172,24 @@ public class GameFakeVideoUI
         b localb = new b();
         localb.bd(paramAnonymousView);
         localb.bd(paramAnonymousMotionEvent);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/game/media/background/GameFakeVideoUI$1", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahq());
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/game/media/background/GameFakeVideoUI$1", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahF());
         paramAnonymousView = GameFakeVideoUI.this;
-        paramAnonymousView.oGo.a(paramAnonymousView.tZs, paramAnonymousView.oGj, new GameFakeVideoUI.3(paramAnonymousView), null);
+        paramAnonymousView.oMQ.a(paramAnonymousView.uku, paramAnonymousView.oML, new GameFakeVideoUI.3(paramAnonymousView), null);
         com.tencent.mm.hellhoundlib.a.a.a(true, this, "com/tencent/mm/plugin/game/media/background/GameFakeVideoUI$1", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
         AppMethodBeat.o(41194);
         return true;
       }
     });
-    this.oGo = new com.tencent.mm.ui.tools.e(this);
+    this.oMQ = new com.tencent.mm.ui.tools.e(this);
     AppMethodBeat.o(41199);
   }
   
   public void onDestroy()
   {
     AppMethodBeat.i(41202);
-    this.oHt.stop();
-    this.tZt.dHl();
-    this.oHz.stopTimer();
+    this.oNV.stop();
+    this.ukv.dKC();
+    this.oOb.stopTimer();
     super.onDestroy();
     AppMethodBeat.o(41202);
   }
@@ -198,16 +198,16 @@ public class GameFakeVideoUI
   {
     AppMethodBeat.i(41204);
     setResult(0);
-    this.oHt.stop();
-    ad.e("MicroMsg.Haowan.GameFakeVideoUI", "play video error what %d extra %d.", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    this.oNV.stop();
+    ae.e("MicroMsg.Haowan.GameFakeVideoUI", "play video error what %d extra %d.", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     AppMethodBeat.o(41204);
   }
   
   public void onPause()
   {
     AppMethodBeat.i(41201);
-    this.oHt.pause();
-    this.tZt.dHk();
+    this.oNV.pause();
+    this.ukv.dKB();
     super.onPause();
     setKeepScreenOn(false);
     f.e(false, true, true);
@@ -218,13 +218,13 @@ public class GameFakeVideoUI
   {
     AppMethodBeat.i(41200);
     String str;
-    if (!bt.isNullOrNil(this.videoPath))
+    if (!bu.isNullOrNil(this.videoPath))
     {
       str = this.videoPath;
-      if (!bt.isNullOrNil(str)) {
+      if (!bu.isNullOrNil(str)) {
         break label67;
       }
-      ad.e("MicroMsg.Haowan.GameFakeVideoUI", "the videoPath is null, fail~!!!");
+      ae.e("MicroMsg.Haowan.GameFakeVideoUI", "the videoPath is null, fail~!!!");
       setResult(0);
       finish();
     }
@@ -236,16 +236,16 @@ public class GameFakeVideoUI
       AppMethodBeat.o(41200);
       return;
       label67:
-      if (!i.fv(str))
+      if (!o.fB(str))
       {
-        ad.e("MicroMsg.Haowan.GameFakeVideoUI", "the videoPath is %s, the file isn't exist~!!!", new Object[] { str });
+        ae.e("MicroMsg.Haowan.GameFakeVideoUI", "the videoPath is %s, the file isn't exist~!!!", new Object[] { str });
         setResult(0);
         finish();
       }
       else
       {
-        this.oHt.setVideoPath(str);
-        this.tZt.pW(false);
+        this.oNV.setVideoPath(str);
+        this.ukv.qe(false);
       }
     }
   }
@@ -260,17 +260,17 @@ public class GameFakeVideoUI
   {
     AppMethodBeat.i(41205);
     setResult(-1);
-    this.oHt.start();
-    this.duration = ((int)(this.tZv - this.tZu) / 1000);
-    this.oHz.az(500L, 500L);
-    this.oHt.p(this.tZu);
-    ad.i("MicroMsg.Haowan.GameFakeVideoUI", "onPrepared videoView.start duration:%d", new Object[] { Integer.valueOf(this.duration) });
+    this.oNV.start();
+    this.duration = ((int)(this.ukx - this.ukw) / 1000);
+    this.oOb.ay(500L, 500L);
+    this.oNV.p(this.ukw);
+    ae.i("MicroMsg.Haowan.GameFakeVideoUI", "onPrepared videoView.start duration:%d", new Object[] { Integer.valueOf(this.duration) });
     AppMethodBeat.o(41205);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.game.media.background.GameFakeVideoUI
  * JD-Core Version:    0.7.0.1
  */

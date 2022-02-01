@@ -1,157 +1,103 @@
 package com.tencent.mm.plugin.game.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import f.a.a.b;
-import java.util.LinkedList;
 
 public final class s
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public String ufX;
-  public String ufY;
-  public String ufZ;
-  public ei uga;
-  public int ugb;
-  public int ugc;
-  public String ugd;
-  public int uge;
+  public String Desc;
+  public String Name;
+  public String uqf;
+  public String urn;
+  public int uro;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(41721);
+    AppMethodBeat.i(41718);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.ufX == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: DownloadURL");
-        AppMethodBeat.o(41721);
-        throw paramVarArgs;
+      if (this.urn != null) {
+        paramVarArgs.d(1, this.urn);
       }
-      if (this.ufX != null) {
-        paramVarArgs.d(1, this.ufX);
+      if (this.Name != null) {
+        paramVarArgs.d(2, this.Name);
       }
-      if (this.ufY != null) {
-        paramVarArgs.d(2, this.ufY);
+      if (this.Desc != null) {
+        paramVarArgs.d(3, this.Desc);
       }
-      if (this.ufZ != null) {
-        paramVarArgs.d(4, this.ufZ);
+      if (this.uqf != null) {
+        paramVarArgs.d(4, this.uqf);
       }
-      if (this.uga != null)
-      {
-        paramVarArgs.lC(5, this.uga.computeSize());
-        this.uga.writeFields(paramVarArgs);
-      }
-      paramVarArgs.aS(6, this.ugb);
-      paramVarArgs.aS(7, this.ugc);
-      if (this.ugd != null) {
-        paramVarArgs.d(8, this.ugd);
-      }
-      paramVarArgs.aS(9, this.uge);
-      AppMethodBeat.o(41721);
+      paramVarArgs.aS(5, this.uro);
+      AppMethodBeat.o(41718);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.ufX == null) {
-        break label742;
+      if (this.urn == null) {
+        break label438;
       }
     }
-    label742:
-    for (int i = f.a.a.b.b.a.e(1, this.ufX) + 0;; i = 0)
+    label438:
+    for (int i = f.a.a.b.b.a.e(1, this.urn) + 0;; i = 0)
     {
       paramInt = i;
-      if (this.ufY != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.ufY);
+      if (this.Name != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.Name);
       }
       i = paramInt;
-      if (this.ufZ != null) {
-        i = paramInt + f.a.a.b.b.a.e(4, this.ufZ);
+      if (this.Desc != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.Desc);
       }
       paramInt = i;
-      if (this.uga != null) {
-        paramInt = i + f.a.a.a.lB(5, this.uga.computeSize());
+      if (this.uqf != null) {
+        paramInt = i + f.a.a.b.b.a.e(4, this.uqf);
       }
-      i = paramInt + f.a.a.b.b.a.bz(6, this.ugb) + f.a.a.b.b.a.bz(7, this.ugc);
-      paramInt = i;
-      if (this.ugd != null) {
-        paramInt = i + f.a.a.b.b.a.e(8, this.ugd);
-      }
-      i = f.a.a.b.b.a.bz(9, this.uge);
-      AppMethodBeat.o(41721);
+      i = f.a.a.b.b.a.bz(5, this.uro);
+      AppMethodBeat.o(41718);
       return paramInt + i;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
-        if (this.ufX == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: DownloadURL");
-          AppMethodBeat.o(41721);
-          throw paramVarArgs;
-        }
-        AppMethodBeat.o(41721);
+        AppMethodBeat.o(41718);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
+        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
         s locals = (s)paramVarArgs[1];
-        paramInt = ((Integer)paramVarArgs[2]).intValue();
-        switch (paramInt)
+        switch (((Integer)paramVarArgs[2]).intValue())
         {
-        case 3: 
         default: 
-          AppMethodBeat.o(41721);
+          AppMethodBeat.o(41718);
           return -1;
         case 1: 
-          locals.ufX = ((f.a.a.a.a)localObject1).NPN.readString();
-          AppMethodBeat.o(41721);
+          locals.urn = locala.OmT.readString();
+          AppMethodBeat.o(41718);
           return 0;
         case 2: 
-          locals.ufY = ((f.a.a.a.a)localObject1).NPN.readString();
-          AppMethodBeat.o(41721);
+          locals.Name = locala.OmT.readString();
+          AppMethodBeat.o(41718);
+          return 0;
+        case 3: 
+          locals.Desc = locala.OmT.readString();
+          AppMethodBeat.o(41718);
           return 0;
         case 4: 
-          locals.ufZ = ((f.a.a.a.a)localObject1).NPN.readString();
-          AppMethodBeat.o(41721);
-          return 0;
-        case 5: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new ei();
-            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((ei)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, com.tencent.mm.bx.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-            locals.uga = ((ei)localObject1);
-            paramInt += 1;
-          }
-          AppMethodBeat.o(41721);
-          return 0;
-        case 6: 
-          locals.ugb = ((f.a.a.a.a)localObject1).NPN.zc();
-          AppMethodBeat.o(41721);
-          return 0;
-        case 7: 
-          locals.ugc = ((f.a.a.a.a)localObject1).NPN.zc();
-          AppMethodBeat.o(41721);
-          return 0;
-        case 8: 
-          locals.ugd = ((f.a.a.a.a)localObject1).NPN.readString();
-          AppMethodBeat.o(41721);
+          locals.uqf = locala.OmT.readString();
+          AppMethodBeat.o(41718);
           return 0;
         }
-        locals.uge = ((f.a.a.a.a)localObject1).NPN.zc();
-        AppMethodBeat.o(41721);
+        locals.uro = locala.OmT.zc();
+        AppMethodBeat.o(41718);
         return 0;
       }
-      AppMethodBeat.o(41721);
+      AppMethodBeat.o(41718);
       return -1;
     }
   }

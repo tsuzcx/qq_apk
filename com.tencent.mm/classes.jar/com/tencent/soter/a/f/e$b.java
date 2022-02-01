@@ -2,11 +2,11 @@ package com.tencent.soter.a.f;
 
 public final class e$b
 {
-  public boolean LRq;
+  public boolean Mon;
   
   public e$b(boolean paramBoolean)
   {
-    this.LRq = paramBoolean;
+    this.Mon = paramBoolean;
   }
 }
 

@@ -12,21 +12,21 @@ public class PAGRenderer
   
   static
   {
-    AppMethodBeat.i(220196);
+    AppMethodBeat.i(216950);
     b.loadLibrary("libpag");
     nativeInit();
     PAGFont.loadSystemFonts();
-    AppMethodBeat.o(220196);
+    AppMethodBeat.o(216950);
   }
   
   public PAGRenderer()
   {
-    AppMethodBeat.i(220187);
+    AppMethodBeat.i(216941);
     this.pagSurface = null;
     this.pagFile = null;
     this.nativeContext = 0L;
     nativeSetup();
-    AppMethodBeat.o(220187);
+    AppMethodBeat.o(216941);
   }
   
   private native void nativeFinalize();
@@ -55,16 +55,16 @@ public class PAGRenderer
   
   protected void finalize()
   {
-    AppMethodBeat.i(220195);
+    AppMethodBeat.i(216949);
     nativeFinalize();
-    AppMethodBeat.o(220195);
+    AppMethodBeat.o(216949);
   }
   
   public boolean flush()
   {
-    AppMethodBeat.i(220193);
+    AppMethodBeat.i(216947);
     boolean bool = flush(false);
-    AppMethodBeat.o(220193);
+    AppMethodBeat.o(216947);
     return bool;
   }
   
@@ -88,12 +88,12 @@ public class PAGRenderer
   
   public Matrix matrix()
   {
-    AppMethodBeat.i(220190);
+    AppMethodBeat.i(216944);
     float[] arrayOfFloat = new float[9];
     nativeGetMatrix(arrayOfFloat);
     Matrix localMatrix = new Matrix();
     localMatrix.setValues(arrayOfFloat);
-    AppMethodBeat.o(220190);
+    AppMethodBeat.o(216944);
     return localMatrix;
   }
   
@@ -101,22 +101,22 @@ public class PAGRenderer
   
   public void release()
   {
-    AppMethodBeat.i(220194);
+    AppMethodBeat.i(216948);
     nativeRelease();
-    AppMethodBeat.o(220194);
+    AppMethodBeat.o(216948);
   }
   
   public void replaceImage(int paramInt, PAGImage paramPAGImage)
   {
-    AppMethodBeat.i(220192);
+    AppMethodBeat.i(216946);
     if (paramPAGImage == null)
     {
       nativeReplaceImage(paramInt, 0L);
-      AppMethodBeat.o(220192);
+      AppMethodBeat.o(216946);
       return;
     }
     nativeReplaceImage(paramInt, paramPAGImage.nativeContext);
-    AppMethodBeat.o(220192);
+    AppMethodBeat.o(216946);
   }
   
   public native void reset();
@@ -129,25 +129,25 @@ public class PAGRenderer
   
   public void setFile(PAGFile paramPAGFile)
   {
-    AppMethodBeat.i(220188);
+    AppMethodBeat.i(216942);
     this.pagFile = paramPAGFile;
     if (paramPAGFile != null)
     {
       nativeSetFile(paramPAGFile.nativeContext);
-      AppMethodBeat.o(220188);
+      AppMethodBeat.o(216942);
       return;
     }
     nativeSetFile(0L);
-    AppMethodBeat.o(220188);
+    AppMethodBeat.o(216942);
   }
   
   public void setMatrix(Matrix paramMatrix)
   {
-    AppMethodBeat.i(220191);
+    AppMethodBeat.i(216945);
     float[] arrayOfFloat = new float[9];
     paramMatrix.getValues(arrayOfFloat);
     nativeSetMatrix(arrayOfFloat[0], arrayOfFloat[3], arrayOfFloat[1], arrayOfFloat[4], arrayOfFloat[2], arrayOfFloat[5]);
-    AppMethodBeat.o(220191);
+    AppMethodBeat.o(216945);
   }
   
   public native void setMaxFrameRate(float paramFloat);
@@ -158,16 +158,16 @@ public class PAGRenderer
   
   public void setSurface(PAGSurface paramPAGSurface)
   {
-    AppMethodBeat.i(220189);
+    AppMethodBeat.i(216943);
     this.pagSurface = paramPAGSurface;
     if (paramPAGSurface == null)
     {
       nativeSetSurface(0L);
-      AppMethodBeat.o(220189);
+      AppMethodBeat.o(216943);
       return;
     }
     nativeSetSurface(paramPAGSurface.nativeSurface);
-    AppMethodBeat.o(220189);
+    AppMethodBeat.o(216943);
   }
   
   public native void setTextData(int paramInt, PAGText paramPAGText);

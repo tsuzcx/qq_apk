@@ -14,10 +14,10 @@ import com.tencent.c.a.a.a;
 import com.tencent.matrix.e;
 import com.tencent.matrix.g.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ax;
-import com.tencent.mm.sdk.platformtools.i;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.sdk.platformtools.j;
 import com.tencent.mm.ui.base.preference.CheckBoxPreference;
 import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.ui.base.preference.Preference;
@@ -26,18 +26,18 @@ public class MatrixSettingUI
   extends MMPreference
   implements MatrixSettingHeaderPreference.a
 {
-  private static Object KBG = null;
-  private static boolean KBH = false;
-  private ax cBg;
+  private static Object KYa = null;
+  private static boolean KYb = false;
+  private ay cBN;
   
   public MatrixSettingUI()
   {
     AppMethodBeat.i(38889);
-    this.cBg = ax.aQz("MatrixDelegate");
+    this.cBN = ay.aRW("MatrixDelegate");
     AppMethodBeat.o(38889);
   }
   
-  private boolean HS()
+  private boolean Ia()
   {
     AppMethodBeat.i(38896);
     if (Build.VERSION.SDK_INT >= 23)
@@ -50,37 +50,37 @@ public class MatrixSettingUI
     return true;
   }
   
-  private static void cU(String paramString, boolean paramBoolean)
+  private static void cY(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(38894);
     Intent localIntent = new Intent();
     localIntent.setAction(paramString);
     localIntent.putExtra(paramString, paramBoolean);
-    aj.getContext();
+    ak.getContext();
     e.j(localIntent);
-    aj.getContext().sendBroadcast(localIntent, "com.tencent.mm.matrix.strategynotify");
+    ak.getContext().sendBroadcast(localIntent, "com.tencent.mm.matrix.strategynotify");
     AppMethodBeat.o(38894);
   }
   
-  private static boolean fJN()
+  private static boolean fOe()
   {
-    return (i.IS_FLAVOR_RED) || (i.IS_FLAVOR_PURPLE) || (i.DEBUG);
+    return (j.IS_FLAVOR_RED) || (j.IS_FLAVOR_PURPLE) || (j.DEBUG);
   }
   
-  public final void fJM()
+  public final void fOd()
   {
     AppMethodBeat.i(38892);
-    ad.i("Matrix.SettingUI", "onOpenDev...");
-    KBH = true;
-    getPreferenceScreen().cP("matrix_dev_wording", false);
-    getPreferenceScreen().cP("make_leak_preference", false);
-    getPreferenceScreen().cP("methodBeat_preference", false);
-    getPreferenceScreen().cP("trace_dev_log_preference", false);
-    CheckBoxPreference localCheckBoxPreference1 = (CheckBoxPreference)getPreferenceScreen().aVD("methodBeat_preference");
-    CheckBoxPreference localCheckBoxPreference2 = (CheckBoxPreference)getPreferenceScreen().aVD("trace_dev_log_preference");
-    com.tencent.matrix.trace.a locala = (com.tencent.matrix.trace.a)com.tencent.matrix.b.HL().V(com.tencent.matrix.trace.a.class);
-    localCheckBoxPreference1.oB = com.tencent.matrix.trace.a.IW().isAlive();
-    localCheckBoxPreference2.oB = locala.cJv.cJH;
+    ae.i("Matrix.SettingUI", "onOpenDev...");
+    KYb = true;
+    getPreferenceScreen().cT("matrix_dev_wording", false);
+    getPreferenceScreen().cT("make_leak_preference", false);
+    getPreferenceScreen().cT("methodBeat_preference", false);
+    getPreferenceScreen().cT("trace_dev_log_preference", false);
+    CheckBoxPreference localCheckBoxPreference1 = (CheckBoxPreference)getPreferenceScreen().aXe("methodBeat_preference");
+    CheckBoxPreference localCheckBoxPreference2 = (CheckBoxPreference)getPreferenceScreen().aXe("trace_dev_log_preference");
+    com.tencent.matrix.trace.a locala = (com.tencent.matrix.trace.a)com.tencent.matrix.b.HT().V(com.tencent.matrix.trace.a.class);
+    localCheckBoxPreference1.setChecked(com.tencent.matrix.trace.a.Je().isAlive());
+    localCheckBoxPreference2.setChecked(locala.cKe.cKq);
     getPreferenceScreen().notifyDataSetChanged();
     AppMethodBeat.o(38892);
   }
@@ -97,12 +97,12 @@ public class MatrixSettingUI
     c.i("Matrix.SettingUI", "requestCode:%s resultCode:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     if (paramInt1 == 2)
     {
-      paramIntent = (CheckBoxPreference)getPreferenceScreen().aVD("fps_decorator_preference");
-      if (HS()) {
+      paramIntent = (CheckBoxPreference)getPreferenceScreen().aXe("fps_decorator_preference");
+      if (Ia()) {
         break label101;
       }
       Toast.makeText(this, getResources().getString(2131761194), 1).show();
-      paramIntent.oB = false;
+      paramIntent.setChecked(false);
     }
     for (;;)
     {
@@ -110,10 +110,10 @@ public class MatrixSettingUI
       AppMethodBeat.o(38895);
       return;
       label101:
-      paramIntent.oB = true;
-      cU("ENABLE_FPS_FLOAT", paramIntent.isChecked());
-      ((CheckBoxPreference)getPreferenceScreen().aVD("fps_preference")).oB = true;
-      cU("ENABLE_FPS", true);
+      paramIntent.setChecked(true);
+      cY("ENABLE_FPS_FLOAT", paramIntent.isChecked());
+      ((CheckBoxPreference)getPreferenceScreen().aXe("fps_preference")).setChecked(true);
+      cY("ENABLE_FPS", true);
     }
   }
   
@@ -123,20 +123,20 @@ public class MatrixSettingUI
     super.onCreate(paramBundle);
     setMMTitle(getContext().getResources().getString(2131761209));
     setBackBtn(new MatrixSettingUI.1(this));
-    if (!com.tencent.matrix.b.HK())
+    if (!com.tencent.matrix.b.HS())
     {
-      ad.e("Matrix.SettingUI", "Matrix is not installed!");
+      ae.e("Matrix.SettingUI", "Matrix is not installed!");
       AppMethodBeat.o(38890);
       return;
     }
-    MatrixSettingHeaderPreference localMatrixSettingHeaderPreference = (MatrixSettingHeaderPreference)getPreferenceScreen().aVD("matrix_header_pref");
-    if ((KBH) || (!fJN())) {}
+    MatrixSettingHeaderPreference localMatrixSettingHeaderPreference = (MatrixSettingHeaderPreference)getPreferenceScreen().aXe("matrix_header_pref");
+    if ((KYb) || (!fOe())) {}
     for (paramBundle = null;; paramBundle = this)
     {
-      localMatrixSettingHeaderPreference.KBB = paramBundle;
-      paramBundle = (MatrixSettingSeekBarPreference)getPreferenceScreen().aVD("matrix_jank_seek_bar");
-      paramBundle.FJm = this.cBg.getInt(a.a.LCr.name(), 700);
-      paramBundle.KBD = new MatrixSettingUI.2(this);
+      localMatrixSettingHeaderPreference.KXV = paramBundle;
+      paramBundle = (MatrixSettingSeekBarPreference)getPreferenceScreen().aXe("matrix_jank_seek_bar");
+      paramBundle.GbL = this.cBN.getInt(a.a.LZv.name(), 700);
+      paramBundle.KXX = new MatrixSettingUI.2(this);
       AppMethodBeat.o(38890);
       return;
     }
@@ -145,14 +145,14 @@ public class MatrixSettingUI
   public boolean onPreferenceTreeClick(com.tencent.mm.ui.base.preference.f paramf, Preference paramPreference)
   {
     AppMethodBeat.i(38893);
-    if (!com.tencent.matrix.b.HK())
+    if (!com.tencent.matrix.b.HS())
     {
       AppMethodBeat.o(38893);
       return false;
     }
     paramf = paramPreference.mKey;
     if (paramf.equalsIgnoreCase("startup_preference")) {
-      cU("ENABLE_START_UP", ((CheckBoxPreference)paramPreference).isChecked());
+      cY("ENABLE_START_UP", ((CheckBoxPreference)paramPreference).isChecked());
     }
     for (;;)
     {
@@ -160,57 +160,57 @@ public class MatrixSettingUI
       return true;
       if (paramf.equalsIgnoreCase("jank_preference"))
       {
-        cU("ENABLE_EVIL_METHOD", ((CheckBoxPreference)paramPreference).isChecked());
+        cY("ENABLE_EVIL_METHOD", ((CheckBoxPreference)paramPreference).isChecked());
       }
       else if (paramf.equalsIgnoreCase("anr_preference"))
       {
-        cU("ENABLE_ANR", ((CheckBoxPreference)paramPreference).isChecked());
+        cY("ENABLE_ANR", ((CheckBoxPreference)paramPreference).isChecked());
       }
       else if (paramf.equalsIgnoreCase("fps_preference"))
       {
-        cU("ENABLE_FPS", ((CheckBoxPreference)paramPreference).isChecked());
+        cY("ENABLE_FPS", ((CheckBoxPreference)paramPreference).isChecked());
       }
       else if (paramf.equalsIgnoreCase("methodBeat_preference"))
       {
-        cU("ENABLE_METHOD_BEAT", ((CheckBoxPreference)paramPreference).isChecked());
+        cY("ENABLE_METHOD_BEAT", ((CheckBoxPreference)paramPreference).isChecked());
       }
       else if (paramf.equalsIgnoreCase("make_leak_preference"))
       {
         if (((CheckBoxPreference)paramPreference).isChecked()) {
-          KBG = this;
+          KYa = this;
         } else {
-          KBG = null;
+          KYa = null;
         }
       }
       else if (paramf.equalsIgnoreCase("fps_decorator_preference"))
       {
         paramf = (CheckBoxPreference)paramPreference;
-        if (!HS())
+        if (!Ia())
         {
           startActivityForResult(new Intent("android.settings.action.MANAGE_OVERLAY_PERMISSION", Uri.parse("package:" + getPackageName())), 2);
         }
         else
         {
-          paramPreference = (CheckBoxPreference)getPreferenceScreen().aVD("fps_preference");
+          paramPreference = (CheckBoxPreference)getPreferenceScreen().aXe("fps_preference");
           if (paramf.isChecked())
           {
-            paramPreference.oB = true;
-            cU("ENABLE_FPS", true);
+            paramPreference.setChecked(true);
+            cY("ENABLE_FPS", true);
           }
-          cU("ENABLE_FPS_FLOAT", paramf.isChecked());
+          cY("ENABLE_FPS_FLOAT", paramf.isChecked());
         }
       }
       else if (paramf.equalsIgnoreCase("trace_dev_log_preference"))
       {
-        cU("ENABLE_DEV_LOG", ((CheckBoxPreference)paramPreference).isChecked());
+        cY("ENABLE_DEV_LOG", ((CheckBoxPreference)paramPreference).isChecked());
       }
       else if (paramf.equalsIgnoreCase("battery_preference"))
       {
-        cU("ENABLE_BATTERY", ((CheckBoxPreference)paramPreference).isChecked());
+        cY("ENABLE_BATTERY", ((CheckBoxPreference)paramPreference).isChecked());
       }
       else if (paramf.equalsIgnoreCase("thread_preference"))
       {
-        cU("ENABLE_THREAD", ((CheckBoxPreference)paramPreference).isChecked());
+        cY("ENABLE_THREAD", ((CheckBoxPreference)paramPreference).isChecked());
       }
     }
   }
@@ -220,10 +220,10 @@ public class MatrixSettingUI
     boolean bool2 = true;
     AppMethodBeat.i(38891);
     super.onStart();
-    if (fJN()) {
+    if (fOe()) {
       addIconOptionMenu(0, 2131230853, new MatrixSettingUI.3(this));
     }
-    getPreferenceScreen().cP("thread_preference", true);
+    getPreferenceScreen().cT("thread_preference", true);
     Object localObject1 = getPreferenceScreen();
     boolean bool1;
     label84:
@@ -232,41 +232,41 @@ public class MatrixSettingUI
     label130:
     Object localObject3;
     CheckBoxPreference localCheckBoxPreference;
-    if (!KBH)
+    if (!KYb)
     {
       bool1 = true;
-      ((com.tencent.mm.ui.base.preference.f)localObject1).cP("methodBeat_preference", bool1);
+      ((com.tencent.mm.ui.base.preference.f)localObject1).cT("methodBeat_preference", bool1);
       localObject1 = getPreferenceScreen();
-      if (KBH) {
+      if (KYb) {
         break label595;
       }
       bool1 = true;
-      ((com.tencent.mm.ui.base.preference.f)localObject1).cP("make_leak_preference", bool1);
+      ((com.tencent.mm.ui.base.preference.f)localObject1).cT("make_leak_preference", bool1);
       localObject1 = getPreferenceScreen();
-      if (KBH) {
+      if (KYb) {
         break label600;
       }
       bool1 = true;
-      ((com.tencent.mm.ui.base.preference.f)localObject1).cP("matrix_dev_wording", bool1);
+      ((com.tencent.mm.ui.base.preference.f)localObject1).cT("matrix_dev_wording", bool1);
       localObject1 = getPreferenceScreen();
-      if (KBH) {
+      if (KYb) {
         break label605;
       }
       bool1 = true;
-      ((com.tencent.mm.ui.base.preference.f)localObject1).cP("trace_dev_log_preference", bool1);
-      localObject1 = (com.tencent.matrix.trace.a)com.tencent.matrix.b.HL().V(com.tencent.matrix.trace.a.class);
-      localObject2 = (com.tencent.matrix.f.a)com.tencent.matrix.b.HL().V(com.tencent.matrix.f.a.class);
-      localObject3 = (com.tencent.matrix.a.c.a)com.tencent.matrix.b.HL().V(com.tencent.matrix.a.c.a.class);
-      localCheckBoxPreference = (CheckBoxPreference)getPreferenceScreen().aVD("anr_preference");
-      if ((!KBH) || (localObject1 == null)) {
+      ((com.tencent.mm.ui.base.preference.f)localObject1).cT("trace_dev_log_preference", bool1);
+      localObject1 = (com.tencent.matrix.trace.a)com.tencent.matrix.b.HT().V(com.tencent.matrix.trace.a.class);
+      localObject2 = (com.tencent.matrix.f.a)com.tencent.matrix.b.HT().V(com.tencent.matrix.f.a.class);
+      localObject3 = (com.tencent.matrix.a.c.a)com.tencent.matrix.b.HT().V(com.tencent.matrix.a.c.a.class);
+      localCheckBoxPreference = (CheckBoxPreference)getPreferenceScreen().aXe("anr_preference");
+      if ((!KYb) || (localObject1 == null)) {
         break label610;
       }
       bool1 = true;
       label209:
       localCheckBoxPreference.setEnabled(bool1);
-      localCheckBoxPreference.oB = true;
-      localCheckBoxPreference = (CheckBoxPreference)getPreferenceScreen().aVD("startup_preference");
-      if ((!fJN()) || (localObject1 == null)) {
+      localCheckBoxPreference.setChecked(true);
+      localCheckBoxPreference = (CheckBoxPreference)getPreferenceScreen().aXe("startup_preference");
+      if ((!fOe()) || (localObject1 == null)) {
         break label615;
       }
       bool1 = true;
@@ -278,9 +278,9 @@ public class MatrixSettingUI
       label260:
       bool1 = false;
       label262:
-      localCheckBoxPreference.oB = bool1;
-      localCheckBoxPreference = (CheckBoxPreference)getPreferenceScreen().aVD("trace_dev_log_preference");
-      if ((!fJN()) || (localObject1 == null)) {
+      localCheckBoxPreference.setChecked(bool1);
+      localCheckBoxPreference = (CheckBoxPreference)getPreferenceScreen().aXe("trace_dev_log_preference");
+      if ((!fOe()) || (localObject1 == null)) {
         break label644;
       }
       bool1 = true;
@@ -289,17 +289,17 @@ public class MatrixSettingUI
       if (localObject1 != null) {
         break label649;
       }
-      localCheckBoxPreference.oB = false;
+      localCheckBoxPreference.setChecked(false);
       label312:
-      localCheckBoxPreference = (CheckBoxPreference)getPreferenceScreen().aVD("fps_preference");
+      localCheckBoxPreference = (CheckBoxPreference)getPreferenceScreen().aXe("fps_preference");
       localCheckBoxPreference.setEnabled(true);
       if (localObject1 != null) {
         break label660;
       }
       bool1 = false;
       label340:
-      localCheckBoxPreference.oB = bool1;
-      localCheckBoxPreference = (CheckBoxPreference)getPreferenceScreen().aVD("fps_decorator_preference");
+      localCheckBoxPreference.setChecked(bool1);
+      localCheckBoxPreference = (CheckBoxPreference)getPreferenceScreen().aXe("fps_decorator_preference");
       if (localObject1 == null) {
         break label723;
       }
@@ -309,9 +309,9 @@ public class MatrixSettingUI
       if (localObject1 != null) {
         break label728;
       }
-      localCheckBoxPreference.oB = false;
+      localCheckBoxPreference.setChecked(false);
       label384:
-      localCheckBoxPreference = (CheckBoxPreference)getPreferenceScreen().aVD("jank_preference");
+      localCheckBoxPreference = (CheckBoxPreference)getPreferenceScreen().aXe("jank_preference");
       if (localObject1 == null) {
         break label870;
       }
@@ -324,9 +324,9 @@ public class MatrixSettingUI
       label417:
       bool1 = false;
       label419:
-      localCheckBoxPreference.oB = bool1;
-      localCheckBoxPreference = (CheckBoxPreference)getPreferenceScreen().aVD("battery_preference");
-      if ((!fJN()) || (localObject3 == null)) {
+      localCheckBoxPreference.setChecked(bool1);
+      localCheckBoxPreference = (CheckBoxPreference)getPreferenceScreen().aXe("battery_preference");
+      if ((!fOe()) || (localObject3 == null)) {
         break label899;
       }
       bool1 = true;
@@ -335,10 +335,10 @@ public class MatrixSettingUI
       if (localObject3 != null) {
         break label904;
       }
-      localCheckBoxPreference.oB = false;
+      localCheckBoxPreference.setChecked(false);
       label472:
-      localObject3 = (CheckBoxPreference)getPreferenceScreen().aVD("thread_preference");
-      if ((!fJN()) || (localObject2 == null)) {
+      localObject3 = (CheckBoxPreference)getPreferenceScreen().aXe("thread_preference");
+      if ((!fOe()) || (localObject2 == null)) {
         break label917;
       }
       bool1 = bool2;
@@ -347,19 +347,15 @@ public class MatrixSettingUI
       if (localObject2 != null) {
         break label922;
       }
+      ((CheckBoxPreference)localObject3).setChecked(false);
     }
-    label644:
-    label649:
-    label660:
-    label917:
-    label922:
-    for (((CheckBoxPreference)localObject3).oB = false;; ((CheckBoxPreference)localObject3).oB = ((com.tencent.matrix.f.a)localObject2).isPluginStarted())
+    for (;;)
     {
-      localObject2 = (CheckBoxPreference)getPreferenceScreen().aVD("methodBeat_preference");
+      localObject2 = (CheckBoxPreference)getPreferenceScreen().aXe("methodBeat_preference");
       if (localObject1 != null)
       {
-        ((CheckBoxPreference)localObject2).oB = com.tencent.matrix.trace.a.IW().isAlive();
-        ((CheckBoxPreference)getPreferenceScreen().aVD("trace_dev_log_preference")).oB = ((com.tencent.matrix.trace.a)localObject1).cJv.cJH;
+        ((CheckBoxPreference)localObject2).setChecked(com.tencent.matrix.trace.a.Je().isAlive());
+        ((CheckBoxPreference)getPreferenceScreen().aXe("trace_dev_log_preference")).setChecked(((com.tencent.matrix.trace.a)localObject1).cKe.cKq);
       }
       getPreferenceScreen().notifyDataSetChanged();
       AppMethodBeat.o(38891);
@@ -382,22 +378,25 @@ public class MatrixSettingUI
       bool1 = false;
       break label250;
       label620:
-      Object localObject4 = ((com.tencent.matrix.trace.a)localObject1).cJx;
-      if ((localObject4 == null) || (!((com.tencent.matrix.trace.f.f)localObject4).cKc)) {
+      Object localObject4 = ((com.tencent.matrix.trace.a)localObject1).cKg;
+      if ((localObject4 == null) || (!((com.tencent.matrix.trace.f.f)localObject4).cKL)) {
         break label260;
       }
       bool1 = true;
       break label262;
+      label644:
       bool1 = false;
       break label296;
-      localCheckBoxPreference.oB = AppMethodBeat.isDev;
+      label649:
+      localCheckBoxPreference.setChecked(AppMethodBeat.isDev);
       break label312;
-      localObject4 = ((com.tencent.matrix.trace.a)localObject1).cJy;
-      if ((localObject4 != null) && (((com.tencent.matrix.trace.f.f)localObject4).cKc)) {}
+      label660:
+      localObject4 = ((com.tencent.matrix.trace.a)localObject1).cKh;
+      if ((localObject4 != null) && (((com.tencent.matrix.trace.f.f)localObject4).cKL)) {}
       for (bool1 = true;; bool1 = false)
       {
-        ad.i("Matrix.SettingUI", "[fps_preference] isEnable=%s", new Object[] { Boolean.valueOf(bool1) });
-        if ((localObject4 == null) || (!((com.tencent.matrix.trace.f.f)localObject4).cKc)) {
+        ae.i("Matrix.SettingUI", "[fps_preference] isEnable=%s", new Object[] { Boolean.valueOf(bool1) });
+        if ((localObject4 == null) || (!((com.tencent.matrix.trace.f.f)localObject4).cKL)) {
           break;
         }
         bool1 = true;
@@ -407,45 +406,50 @@ public class MatrixSettingUI
       bool1 = false;
       break label368;
       label728:
-      localObject4 = com.tencent.matrix.trace.view.a.aN(aj.getContext());
-      ((com.tencent.matrix.trace.view.a)localObject4).eb(aj.getProcessName());
-      if (this.cBg.getInt("ENABLE_FPS_FLOAT", 0) == 1) {}
+      localObject4 = com.tencent.matrix.trace.view.a.aO(ak.getContext());
+      ((com.tencent.matrix.trace.view.a)localObject4).eg(ak.getProcessName());
+      if (this.cBN.getInt("ENABLE_FPS_FLOAT", 0) == 1) {}
       for (bool1 = true;; bool1 = false)
       {
-        ((com.tencent.matrix.trace.view.a)localObject4).cMW = bool1;
-        ad.i("Matrix.SettingUI", "decorator is enable=" + ((com.tencent.matrix.trace.view.a)localObject4).cMW);
-        localCheckBoxPreference.oB = ((com.tencent.matrix.trace.view.a)localObject4).cMW;
-        if ((!((com.tencent.matrix.trace.view.a)localObject4).cMW) || (((com.tencent.matrix.trace.view.a)localObject4).cMS)) {
+        ((com.tencent.matrix.trace.view.a)localObject4).cNF = bool1;
+        ae.i("Matrix.SettingUI", "decorator is enable=" + ((com.tencent.matrix.trace.view.a)localObject4).cNF);
+        localCheckBoxPreference.setChecked(((com.tencent.matrix.trace.view.a)localObject4).cNF);
+        if ((!((com.tencent.matrix.trace.view.a)localObject4).cNF) || (((com.tencent.matrix.trace.view.a)localObject4).cNB)) {
           break;
         }
-        if (!HS()) {
+        if (!Ia()) {
           break label853;
         }
-        ad.w("Matrix.SettingUI", "fallback to show float!");
-        cU("ENABLE_FPS", true);
-        cU("ENABLE_FPS_FLOAT", true);
+        ae.w("Matrix.SettingUI", "fallback to show float!");
+        cY("ENABLE_FPS", true);
+        cY("ENABLE_FPS_FLOAT", true);
         break;
       }
       label853:
-      ad.w("Matrix.SettingUI", "has no permission! fallback to dismiss float!");
-      cU("ENABLE_FPS_FLOAT", false);
+      ae.w("Matrix.SettingUI", "has no permission! fallback to dismiss float!");
+      cY("ENABLE_FPS_FLOAT", false);
       break label384;
       label870:
       bool1 = false;
       break label407;
       label875:
-      localObject4 = ((com.tencent.matrix.trace.a)localObject1).cJw;
-      if ((localObject4 == null) || (!((com.tencent.matrix.trace.f.f)localObject4).cKc)) {
+      localObject4 = ((com.tencent.matrix.trace.a)localObject1).cKf;
+      if ((localObject4 == null) || (!((com.tencent.matrix.trace.f.f)localObject4).cKL)) {
         break label417;
       }
       bool1 = true;
       break label419;
+      label899:
       bool1 = false;
       break label455;
-      localCheckBoxPreference.oB = ((com.tencent.matrix.a.c.a)localObject3).isPluginStarted();
+      label904:
+      localCheckBoxPreference.setChecked(((com.tencent.matrix.a.c.a)localObject3).isPluginStarted());
       break label472;
+      label917:
       bool1 = false;
       break label502;
+      label922:
+      ((CheckBoxPreference)localObject3).setChecked(((com.tencent.matrix.f.a)localObject2).isPluginStarted());
     }
   }
   

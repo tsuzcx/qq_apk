@@ -1,221 +1,78 @@
 package com.tencent.mm.storage;
 
-import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.messenger.foundation.a.a.m;
-import com.tencent.mm.plugin.messenger.foundation.a.l;
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import java.util.ArrayList;
+import com.tencent.mm.g.c.fs;
+import com.tencent.mm.sdk.e.c.a;
+import java.lang.reflect.Field;
+import java.util.Map;
 
-public final class ce
-  extends j<cd>
-  implements m
+public class ce
+  extends fs
 {
-  public static final String[] INDEX_CREATE;
-  public static final String[] SQL_CREATE;
-  public e db;
+  protected static Field[] IBL;
+  public static c.a info;
   
   static
   {
-    AppMethodBeat.i(117342);
-    SQL_CREATE = new String[] { j.getCreateSQLs(cd.info, "shakeverifymessage") };
-    INDEX_CREATE = new String[] { "CREATE INDEX IF NOT EXISTS  shakeverifymessage_unread_index ON shakeverifymessage ( status )", "CREATE INDEX IF NOT EXISTS shakeverifymessage_statusIndex ON shakeverifymessage ( status )", "CREATE INDEX IF NOT EXISTS shakeverifymessage_createtimeIndex ON shakeverifymessage ( createtime )" };
-    AppMethodBeat.o(117342);
+    AppMethodBeat.i(43301);
+    IBL = fs.getValidFields(ce.class);
+    c.a locala = new c.a();
+    locala.IBL = new Field[11];
+    locala.columns = new String[12];
+    StringBuilder localStringBuilder = new StringBuilder();
+    locala.columns[0] = "svrid";
+    locala.IBN.put("svrid", "LONG default '0'  PRIMARY KEY ");
+    localStringBuilder.append(" svrid LONG default '0'  PRIMARY KEY ");
+    localStringBuilder.append(", ");
+    locala.IBM = "svrid";
+    locala.columns[1] = "status";
+    locala.IBN.put("status", "INTEGER");
+    localStringBuilder.append(" status INTEGER");
+    localStringBuilder.append(", ");
+    locala.columns[2] = "type";
+    locala.IBN.put("type", "INTEGER");
+    localStringBuilder.append(" type INTEGER");
+    localStringBuilder.append(", ");
+    locala.columns[3] = "scene";
+    locala.IBN.put("scene", "INTEGER");
+    localStringBuilder.append(" scene INTEGER");
+    localStringBuilder.append(", ");
+    locala.columns[4] = "createtime";
+    locala.IBN.put("createtime", "LONG");
+    localStringBuilder.append(" createtime LONG");
+    localStringBuilder.append(", ");
+    locala.columns[5] = "talker";
+    locala.IBN.put("talker", "TEXT");
+    localStringBuilder.append(" talker TEXT");
+    localStringBuilder.append(", ");
+    locala.columns[6] = "content";
+    locala.IBN.put("content", "TEXT");
+    localStringBuilder.append(" content TEXT");
+    localStringBuilder.append(", ");
+    locala.columns[7] = "sayhiuser";
+    locala.IBN.put("sayhiuser", "TEXT");
+    localStringBuilder.append(" sayhiuser TEXT");
+    localStringBuilder.append(", ");
+    locala.columns[8] = "sayhicontent";
+    locala.IBN.put("sayhicontent", "TEXT");
+    localStringBuilder.append(" sayhicontent TEXT");
+    localStringBuilder.append(", ");
+    locala.columns[9] = "imgpath";
+    locala.IBN.put("imgpath", "TEXT");
+    localStringBuilder.append(" imgpath TEXT");
+    localStringBuilder.append(", ");
+    locala.columns[10] = "isSend";
+    locala.IBN.put("isSend", "INTEGER");
+    localStringBuilder.append(" isSend INTEGER");
+    locala.columns[11] = "rowid";
+    locala.sql = localStringBuilder.toString();
+    info = locala;
+    AppMethodBeat.o(43301);
   }
   
-  public ce(e parame)
+  public c.a getDBInfo()
   {
-    super(parame, cd.info, "shakeverifymessage", INDEX_CREATE);
-    this.db = parame;
-  }
-  
-  public final Cursor IE(int paramInt)
-  {
-    AppMethodBeat.i(117334);
-    Object localObject = "SELECT * FROM " + getTableName() + " where isSend = 0 ORDER BY createtime desc LIMIT " + paramInt;
-    localObject = this.db.rawQuery((String)localObject, null);
-    AppMethodBeat.o(117334);
-    return localObject;
-  }
-  
-  public final boolean a(cd paramcd)
-  {
-    AppMethodBeat.i(117337);
-    if (paramcd == null)
-    {
-      ad.e("MicroMsg.ShakeVerifyMessageStorage", "insert fail, shakeMsg is null");
-      AppMethodBeat.o(117337);
-      return false;
-    }
-    if (super.insert(paramcd))
-    {
-      doNotify(paramcd.systemRowid);
-      AppMethodBeat.o(117337);
-      return true;
-    }
-    AppMethodBeat.o(117337);
-    return false;
-  }
-  
-  public final cd[] aUx(String paramString)
-  {
-    AppMethodBeat.i(117339);
-    ad.d("MicroMsg.ShakeVerifyMessageStorage", "getLastShakeVerifyMessage");
-    paramString = "select *, rowid from ShakeVerifyMessage  where sayhiuser = '" + bt.aQN(paramString) + "' order by createtime DESC limit 3";
-    paramString = this.db.a(paramString, null, 2);
-    ArrayList localArrayList = new ArrayList();
-    while (paramString.moveToNext())
-    {
-      cd localcd = new cd();
-      localcd.convertFrom(paramString);
-      localArrayList.add(localcd);
-    }
-    paramString.close();
-    if (localArrayList.size() == 0)
-    {
-      AppMethodBeat.o(117339);
-      return null;
-    }
-    paramString = (cd[])localArrayList.toArray(new cd[localArrayList.size()]);
-    AppMethodBeat.o(117339);
-    return paramString;
-  }
-  
-  public final void apP(String paramString)
-  {
-    AppMethodBeat.i(117335);
-    paramString = "svrid = '" + paramString + "'";
-    int i = this.db.delete(getTableName(), paramString, null);
-    if (i > 0) {
-      doNotify();
-    }
-    ad.i("MicroMsg.ShakeVerifyMessageStorage", "delBySvrId = ".concat(String.valueOf(i)));
-    AppMethodBeat.o(117335);
-  }
-  
-  public final long apR(String paramString)
-  {
-    AppMethodBeat.i(117340);
-    if (paramString != null)
-    {
-      paramString = ((ce)((l)g.ab(l.class)).dlG()).fsK();
-      if (paramString == null) {}
-    }
-    for (long l1 = paramString.field_createtime + 1L;; l1 = 0L)
-    {
-      long l2 = bt.aQJ();
-      if (l1 > l2)
-      {
-        AppMethodBeat.o(117340);
-        return l1;
-      }
-      AppMethodBeat.o(117340);
-      return l2;
-    }
-  }
-  
-  public final int bUJ()
-  {
-    AppMethodBeat.i(117331);
-    Cursor localCursor = this.db.a("select count(*) from " + getTableName() + " where status != 4", null, 2);
-    if (!localCursor.moveToFirst())
-    {
-      localCursor.close();
-      AppMethodBeat.o(117331);
-      return 0;
-    }
-    int i = localCursor.getInt(0);
-    localCursor.close();
-    if (i > 0)
-    {
-      AppMethodBeat.o(117331);
-      return i;
-    }
-    AppMethodBeat.o(117331);
-    return 0;
-  }
-  
-  public final void bcD()
-  {
-    AppMethodBeat.i(117336);
-    this.db.delete(getTableName(), null, null);
-    AppMethodBeat.o(117336);
-  }
-  
-  public final cd fsK()
-  {
-    AppMethodBeat.i(117333);
-    Cursor localCursor = this.db.a("SELECT * FROM " + getTableName() + " ORDER BY createtime DESC LIMIT 1", null, 2);
-    if (localCursor == null)
-    {
-      AppMethodBeat.o(117333);
-      return null;
-    }
-    if (!localCursor.moveToFirst())
-    {
-      localCursor.close();
-      AppMethodBeat.o(117333);
-      return null;
-    }
-    cd localcd = new cd();
-    localcd.convertFrom(localCursor);
-    localCursor.close();
-    AppMethodBeat.o(117333);
-    return localcd;
-  }
-  
-  public final int getCount()
-  {
-    AppMethodBeat.i(117332);
-    Cursor localCursor = this.db.a("select count(*) from " + getTableName(), null, 2);
-    if (!localCursor.moveToFirst())
-    {
-      localCursor.close();
-      AppMethodBeat.o(117332);
-      return 0;
-    }
-    int i = localCursor.getInt(0);
-    localCursor.close();
-    if (i > 0)
-    {
-      AppMethodBeat.o(117332);
-      return i;
-    }
-    AppMethodBeat.o(117332);
-    return 0;
-  }
-  
-  public final cd[] gr(String paramString, int paramInt)
-  {
-    AppMethodBeat.i(117338);
-    if ((paramString == null) || (paramString.length() == 0))
-    {
-      ad.e("MicroMsg.ShakeVerifyMessageStorage", "getLastRecvShakeMsg fail, talker is null");
-      AppMethodBeat.o(117338);
-      return null;
-    }
-    paramString = "select * from ShakeVerifyMessage where isSend = 0 and sayhiuser = '" + bt.aQN(paramString) + "' order by createTime DESC limit " + paramInt;
-    paramString = this.db.a(paramString, null, 2);
-    ArrayList localArrayList = new ArrayList();
-    while (paramString.moveToNext())
-    {
-      cd localcd = new cd();
-      localcd.convertFrom(paramString);
-      localArrayList.add(localcd);
-    }
-    paramString.close();
-    if (localArrayList.size() == 0)
-    {
-      AppMethodBeat.o(117338);
-      return null;
-    }
-    paramString = (cd[])localArrayList.toArray(new cd[localArrayList.size()]);
-    AppMethodBeat.o(117338);
-    return paramString;
+    return info;
   }
 }
 

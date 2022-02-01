@@ -3,14 +3,14 @@ package com.tencent.tinker.a.b.a;
 public final class h
   extends a
 {
-  public short[] Met;
+  public short[] MBq;
   
   public h(int paramInt)
   {
     if (paramInt < 0) {
       throw new IllegalArgumentException("initSize < 0");
     }
-    this.Met = new short[paramInt];
+    this.MBq = new short[paramInt];
   }
   
   public final void a(short paramShort1, short paramShort2, short paramShort3)
@@ -29,14 +29,14 @@ public final class h
   public final void c(short paramShort)
   {
     int i = this.aoY;
-    if (this.Met.length - i <= 0)
+    if (this.MBq.length - i <= 0)
     {
-      short[] arrayOfShort = new short[this.Met.length + (this.Met.length >> 1)];
-      System.arraycopy(this.Met, 0, arrayOfShort, 0, i);
-      this.Met = arrayOfShort;
+      short[] arrayOfShort = new short[this.MBq.length + (this.MBq.length >> 1)];
+      System.arraycopy(this.MBq, 0, arrayOfShort, 0, i);
+      this.MBq = arrayOfShort;
     }
-    this.Met[this.aoY] = paramShort;
-    fYr();
+    this.MBq[this.aoY] = paramShort;
+    gcQ();
   }
   
   public final void writeInt(int paramInt)

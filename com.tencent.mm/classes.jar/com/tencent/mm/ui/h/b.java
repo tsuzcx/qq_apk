@@ -7,7 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.aq;
 import com.tencent.mm.ui.base.o;
 
 public final class b
@@ -15,14 +15,14 @@ public final class b
 {
   public long mDuration;
   @SuppressLint({"HandlerLeak"})
-  private ap mHandler;
+  private aq mHandler;
   
   private b(View paramView)
   {
     super(paramView);
     AppMethodBeat.i(142861);
     this.mDuration = 3000L;
-    this.mHandler = new ap()
+    this.mHandler = new aq()
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
@@ -41,7 +41,7 @@ public final class b
     AppMethodBeat.o(142861);
   }
   
-  public static b ky(Context paramContext)
+  public static b kF(Context paramContext)
   {
     AppMethodBeat.i(142862);
     paramContext = LayoutInflater.from(paramContext).inflate(2131495765, null);

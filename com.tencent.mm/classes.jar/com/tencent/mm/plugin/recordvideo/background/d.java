@@ -4,37 +4,37 @@ import android.content.ContentValues;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.e.e;
 import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/recordvideo/background/VideoEditDataStorage;", "Lcom/tencent/mm/sdk/storage/MAutoStorage;", "Lcom/tencent/mm/plugin/recordvideo/background/VideoEditData;", "db", "Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "(Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;)V", "getDb", "()Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "cleanExpiredTask", "", "deleteByTaskId", "taskId", "", "droptable", "", "getByTaskId", "getLastDataIfNoMix", "limitTime", "", "updateByTaskId", "editorData", "Companion", "plugin-recordvideo_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/recordvideo/background/VideoEditDataStorage;", "Lcom/tencent/mm/sdk/storage/MAutoStorage;", "Lcom/tencent/mm/plugin/recordvideo/background/VideoEditData;", "db", "Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "(Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;)V", "getDb", "()Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "cleanExpiredTask", "", "deleteByTaskId", "taskId", "", "droptable", "", "getByTaskId", "getLastDataIfNoMix", "limitTime", "", "updateByTaskId", "editorData", "Companion", "plugin-recordvideo_release"})
 public final class d
   extends j<c>
 {
   private static final String[] SQL_CREATE;
   static final String TABLE = "VideoEditInfo";
   private static final String TAG = "MicroMsg.VideoEditDataStorage";
-  public static final a xuk;
+  public static final d.a xKh;
   final e db;
   
   static
   {
     AppMethodBeat.i(75188);
-    xuk = new a((byte)0);
+    xKh = new d.a((byte)0);
     TAG = "MicroMsg.VideoEditDataStorage";
-    Object localObject = c.xug;
-    localObject = c.dEH();
-    c.a locala = c.xug;
-    SQL_CREATE = new String[] { j.getCreateSQLs((com.tencent.mm.sdk.e.c.a)localObject, c.dEI()) };
-    localObject = c.xug;
-    TABLE = c.dEI();
+    Object localObject = c.xKd;
+    localObject = c.dHY();
+    c.a locala = c.xKd;
+    SQL_CREATE = new String[] { j.getCreateSQLs((com.tencent.mm.sdk.e.c.a)localObject, c.dHZ()) };
+    localObject = c.xKd;
+    TABLE = c.dHZ();
     AppMethodBeat.o(75188);
   }
   
   public d(e parame)
   {
-    super(parame, (com.tencent.mm.sdk.e.c.a)localObject1, (String)localObject2, c.dEJ());
+    super(parame, (com.tencent.mm.sdk.e.c.a)localObject1, (String)localObject2, c.dIa());
     AppMethodBeat.i(75187);
     this.db = parame;
     AppMethodBeat.o(75187);
@@ -53,24 +53,24 @@ public final class d
   }
   
   /* Error */
-  public final c avx(String paramString)
+  public final c awM(String paramString)
   {
     // Byte code:
     //   0: aconst_null
     //   1: astore_2
     //   2: ldc 144
-    //   4: invokestatic 56	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   4: invokestatic 55	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   7: aload_1
     //   8: ldc 114
-    //   10: invokestatic 100	d/g/b/p:h	(Ljava/lang/Object;Ljava/lang/String;)V
-    //   13: getstatic 150	d/g/b/ad:MLZ	Ld/g/b/ad;
+    //   10: invokestatic 99	d/g/b/p:h	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   13: getstatic 150	d/g/b/ad:Njc	Ld/g/b/ad;
     //   16: astore_3
     //   17: ldc 152
     //   19: iconst_3
     //   20: anewarray 154	java/lang/Object
     //   23: dup
     //   24: iconst_0
-    //   25: getstatic 88	com/tencent/mm/plugin/recordvideo/background/d:TABLE	Ljava/lang/String;
+    //   25: getstatic 87	com/tencent/mm/plugin/recordvideo/background/d:TABLE	Ljava/lang/String;
     //   28: aastore
     //   29: dup
     //   30: iconst_1
@@ -90,7 +90,7 @@ public final class d
     //   52: aload_0
     //   53: aload_1
     //   54: iconst_0
-    //   55: anewarray 76	java/lang/String
+    //   55: anewarray 75	java/lang/String
     //   58: invokevirtual 173	com/tencent/mm/plugin/recordvideo/background/d:rawQuery	(Ljava/lang/String;[Ljava/lang/String;)Landroid/database/Cursor;
     //   61: astore_1
     //   62: aload_1
@@ -104,7 +104,7 @@ public final class d
     //   76: aload_1
     //   77: invokeinterface 181 1 0
     //   82: ifeq +31 -> 113
-    //   85: new 66	com/tencent/mm/plugin/recordvideo/background/c
+    //   85: new 65	com/tencent/mm/plugin/recordvideo/background/c
     //   88: dup
     //   89: invokespecial 183	com/tencent/mm/plugin/recordvideo/background/c:<init>	()V
     //   92: astore 4
@@ -115,21 +115,21 @@ public final class d
     //   101: aconst_null
     //   102: invokestatic 192	d/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
     //   105: ldc 144
-    //   107: invokestatic 91	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   107: invokestatic 90	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   110: aload 4
     //   112: areturn
-    //   113: getstatic 198	d/z:MKo	Ld/z;
+    //   113: getstatic 198	d/z:Nhr	Ld/z;
     //   116: astore_1
     //   117: aload_3
     //   118: aconst_null
     //   119: invokestatic 192	d/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
     //   122: ldc 144
-    //   124: invokestatic 91	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   124: invokestatic 90	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   127: aconst_null
     //   128: areturn
     //   129: astore_2
     //   130: ldc 144
-    //   132: invokestatic 91	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   132: invokestatic 90	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   135: aload_2
     //   136: athrow
     //   137: astore_1
@@ -137,7 +137,7 @@ public final class d
     //   139: aload_2
     //   140: invokestatic 192	d/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
     //   143: ldc 144
-    //   145: invokestatic 91	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   145: invokestatic 90	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   148: aload_1
     //   149: athrow
     //   150: astore_1
@@ -159,31 +159,31 @@ public final class d
     //   113	117	150	finally
   }
   
-  public final void dEM()
+  public final void dId()
   {
     AppMethodBeat.i(75186);
     int i = this.db.delete(TABLE, null, null);
-    ad.i(TAG, "dropTable ".concat(String.valueOf(i)));
+    ae.i(TAG, "dropTable ".concat(String.valueOf(i)));
     AppMethodBeat.o(75186);
   }
   
   /* Error */
-  public final c yI(long paramLong)
+  public final c zh(long paramLong)
   {
     // Byte code:
     //   0: aconst_null
     //   1: astore 5
     //   3: ldc 221
-    //   5: invokestatic 56	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   8: getstatic 150	d/g/b/ad:MLZ	Ld/g/b/ad;
+    //   5: invokestatic 55	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   8: getstatic 150	d/g/b/ad:Njc	Ld/g/b/ad;
     //   11: astore 4
-    //   13: getstatic 88	com/tencent/mm/plugin/recordvideo/background/d:TABLE	Ljava/lang/String;
+    //   13: getstatic 87	com/tencent/mm/plugin/recordvideo/background/d:TABLE	Ljava/lang/String;
     //   16: astore 4
-    //   18: getstatic 227	com/tencent/mm/plugin/recordvideo/background/c$b:xuj	Lcom/tencent/mm/plugin/recordvideo/background/c$b;
+    //   18: getstatic 227	com/tencent/mm/plugin/recordvideo/background/c$b:xKg	Lcom/tencent/mm/plugin/recordvideo/background/c$b;
     //   21: astore 6
-    //   23: invokestatic 231	com/tencent/mm/plugin/recordvideo/background/c$b:bwj	()I
+    //   23: invokestatic 231	com/tencent/mm/plugin/recordvideo/background/c$b:bxa	()I
     //   26: istore_3
-    //   27: getstatic 227	com/tencent/mm/plugin/recordvideo/background/c$b:xuj	Lcom/tencent/mm/plugin/recordvideo/background/c$b;
+    //   27: getstatic 227	com/tencent/mm/plugin/recordvideo/background/c$b:xKg	Lcom/tencent/mm/plugin/recordvideo/background/c$b;
     //   30: astore 6
     //   32: ldc 233
     //   34: bipush 8
@@ -203,7 +203,7 @@ public final class d
     //   55: aastore
     //   56: dup
     //   57: iconst_3
-    //   58: invokestatic 243	com/tencent/mm/plugin/recordvideo/background/c$b:dEL	()I
+    //   58: invokestatic 243	com/tencent/mm/plugin/recordvideo/background/c$b:dIc	()I
     //   61: invokestatic 240	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   64: aastore
     //   65: dup
@@ -233,7 +233,7 @@ public final class d
     //   106: aload_0
     //   107: aload 4
     //   109: iconst_0
-    //   110: anewarray 76	java/lang/String
+    //   110: anewarray 75	java/lang/String
     //   113: invokevirtual 173	com/tencent/mm/plugin/recordvideo/background/d:rawQuery	(Ljava/lang/String;[Ljava/lang/String;)Landroid/database/Cursor;
     //   116: astore 4
     //   118: aload 4
@@ -247,7 +247,7 @@ public final class d
     //   137: aload 4
     //   139: invokeinterface 181 1 0
     //   144: ifeq +33 -> 177
-    //   147: new 66	com/tencent/mm/plugin/recordvideo/background/c
+    //   147: new 65	com/tencent/mm/plugin/recordvideo/background/c
     //   150: dup
     //   151: invokespecial 183	com/tencent/mm/plugin/recordvideo/background/c:<init>	()V
     //   154: astore 7
@@ -258,21 +258,21 @@ public final class d
     //   165: aconst_null
     //   166: invokestatic 192	d/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
     //   169: ldc 221
-    //   171: invokestatic 91	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   171: invokestatic 90	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   174: aload 7
     //   176: areturn
-    //   177: getstatic 198	d/z:MKo	Ld/z;
+    //   177: getstatic 198	d/z:Nhr	Ld/z;
     //   180: astore 4
     //   182: aload 6
     //   184: aconst_null
     //   185: invokestatic 192	d/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
     //   188: ldc 221
-    //   190: invokestatic 91	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   190: invokestatic 90	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   193: aconst_null
     //   194: areturn
     //   195: astore 5
     //   197: ldc 221
-    //   199: invokestatic 91	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   199: invokestatic 90	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   202: aload 5
     //   204: athrow
     //   205: astore 4
@@ -280,7 +280,7 @@ public final class d
     //   209: aload 5
     //   211: invokestatic 192	d/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
     //   214: ldc 221
-    //   216: invokestatic 91	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   216: invokestatic 90	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   219: aload 4
     //   221: athrow
     //   222: astore 4
@@ -305,13 +305,10 @@ public final class d
     //   130	163	222	finally
     //   177	182	222	finally
   }
-  
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/recordvideo/background/VideoEditDataStorage$Companion;", "", "()V", "SQL_CREATE", "", "", "kotlin.jvm.PlatformType", "getSQL_CREATE", "()[Ljava/lang/String;", "[Ljava/lang/String;", "TABLE", "getTABLE", "()Ljava/lang/String;", "TAG", "getTAG", "plugin-recordvideo_release"})
-  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.background.d
  * JD-Core Version:    0.7.0.1
  */

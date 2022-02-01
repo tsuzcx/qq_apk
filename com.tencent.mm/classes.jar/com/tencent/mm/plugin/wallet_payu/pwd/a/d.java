@@ -9,15 +9,15 @@ import org.json.JSONObject;
 public final class d
   extends a
 {
-  public String Dtu;
-  public String Dtv;
-  public String dyV;
+  public String DKZ;
+  public String DLa;
+  public String dAa;
   
   public d(String paramString1, String paramString2)
   {
     AppMethodBeat.i(72147);
-    this.Dtu = paramString1;
-    this.Dtv = paramString2;
+    this.DKZ = paramString1;
+    this.DLa = paramString2;
     HashMap localHashMap = new HashMap();
     localHashMap.put("payu_reference", paramString1);
     localHashMap.put("new_pin", paramString2);
@@ -25,7 +25,7 @@ public final class d
     AppMethodBeat.o(72147);
   }
   
-  public final int eEK()
+  public final int eIr()
   {
     return 19;
   }
@@ -33,13 +33,13 @@ public final class d
   public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(72148);
-    this.dyV = paramJSONObject.optString("payu_reference");
+    this.dAa = paramJSONObject.optString("payu_reference");
     AppMethodBeat.o(72148);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_payu.pwd.a.d
  * JD-Core Version:    0.7.0.1
  */

@@ -2,114 +2,169 @@ package com.tencent.mm.plugin.finder.extension.reddot;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.cf;
-import com.tencent.mm.model.u;
+import com.tencent.mm.model.ch;
+import com.tencent.mm.model.v;
 import com.tencent.mm.plugin.finder.PluginFinder;
-import com.tencent.mm.plugin.finder.storage.b;
-import com.tencent.mm.protocal.protobuf.aqu;
-import com.tencent.mm.protocal.protobuf.ase;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.al.a;
+import com.tencent.mm.protocal.protobuf.arj;
+import com.tencent.mm.protocal.protobuf.ast;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.aj;
+import com.tencent.mm.storage.am.a;
 import d.g.b.p;
 import d.l;
 import java.util.LinkedList;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotTransform;", "", "manager", "Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotManager;", "(Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotManager;)V", "addPostRedDot", "", "addWelcomeNewRedDot", "checkOldPostRedDot", "checkPostRedDot", "getLocalRedDotDefault", "", "isShowPostRedDot", "", "isShowRedDot", "local", "flag", "setLocalRedDot", "unset", "Companion", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotTransform;", "", "manager", "Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotManager;", "(Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotManager;)V", "addPostRedDot", "", "addWelcomeNewRedDot", "checkPostRedDot", "getLocalRedDotDefault", "", "handleOldRedDot", "isShowPostRedDot", "", "isShowRedDot", "local", "flag", "setLocalRedDot", "unset", "Companion", "plugin-finder_release"})
 public final class h
 {
-  public static final a rTb;
-  final e rRG;
+  public static final a sbD;
+  final e sai;
   
   static
   {
     AppMethodBeat.i(178193);
-    rTb = new a((byte)0);
+    sbD = new a((byte)0);
     AppMethodBeat.o(178193);
   }
   
   public h(e parame)
   {
     AppMethodBeat.i(178192);
-    this.rRG = parame;
+    this.sai = parame;
     AppMethodBeat.o(178192);
   }
   
-  static boolean Eu(int paramInt)
+  private static boolean EH(int paramInt)
   {
     return (paramInt & 0x2) > 0;
   }
   
-  static int cAh()
+  private static boolean cBO()
   {
-    int k = 1;
-    int m = 0;
-    AppMethodBeat.i(178191);
-    Object localObject = g.ajC();
-    p.g(localObject, "MMKernel.storage()");
-    int i = ((com.tencent.mm.kernel.e)localObject).ajl().getInt(al.a.IIb, -1);
-    int j;
-    if (i == -1)
+    boolean bool2 = true;
+    AppMethodBeat.i(202102);
+    boolean bool1;
+    int i;
+    if (!bu.isNullOrNil(v.aAK()))
     {
-      localObject = b.sxa;
-      if ((b.cFK()) && (((PluginFinder)g.ad(PluginFinder.class)).showPostEntry()))
-      {
-        j = 1;
-        if (bt.isNullOrNil(u.aAu())) {
-          break label101;
-        }
-        label75:
-        i = m;
-        if (j != 0)
-        {
-          i = m;
-          if (k == 0) {
-            i = 2;
-          }
-        }
+      bool1 = true;
+      com.tencent.mm.kernel.e locale = g.ajR();
+      p.g(locale, "MMKernel.storage()");
+      i = locale.ajA().getInt(am.a.JcE, cBP());
+      if ((!((PluginFinder)g.ad(PluginFinder.class)).showPostEntry()) || (!EH(i)) || (bool1)) {
+        break label118;
       }
     }
     for (;;)
     {
-      AppMethodBeat.o(178191);
-      return i;
-      j = 0;
+      ae.i("Finder.RedDotTransform", "[isShowLocalRedDot] ret=" + bool2 + " local=" + i + " hasCreatedIdentity=" + bool1);
+      AppMethodBeat.o(202102);
+      return bool2;
+      bool1 = false;
       break;
-      label101:
-      k = 0;
-      break label75;
+      label118:
+      bool2 = false;
     }
   }
   
-  final void cAg()
+  private static int cBP()
   {
-    AppMethodBeat.i(201651);
-    aqu localaqu = new aqu();
-    localaqu.GoQ = String.valueOf(cf.aCM());
-    localaqu.priority = 100000;
-    localaqu.type = -1;
-    ase localase = new ase();
-    localase.uda = 1;
-    localase.Gqr = 1;
-    localase.path = "FinderEntrance";
-    localaqu.GoP.add(localase);
-    localase = new ase();
-    localase.uda = 1;
-    localase.Gqr = 1;
-    localase.path = "TLPersonalCenter";
-    localase.xfl = "FinderEntrance";
-    localaqu.GoP.add(localase);
-    localase = new ase();
-    localase.uda = 1;
-    localase.Gqr = 1;
-    localase.path = "TLCamera";
-    localase.xfl = "TLPersonalCenter";
-    localaqu.GoP.add(localase);
-    e.a(this.rRG, localaqu, "checkPostRedDot", null, null, 12);
-    AppMethodBeat.o(201651);
+    AppMethodBeat.i(178191);
+    com.tencent.mm.kernel.e locale = g.ajR();
+    p.g(locale, "MMKernel.storage()");
+    int j = locale.ajA().getInt(am.a.JcE, -1);
+    int i = j;
+    if (j == -1)
+    {
+      boolean bool = ((PluginFinder)g.ad(PluginFinder.class)).showPostEntry();
+      if (bu.isNullOrNil(v.aAK())) {
+        break label74;
+      }
+      i = 1;
+      if ((!bool) || (i != 0)) {
+        break label79;
+      }
+    }
+    label74:
+    label79:
+    for (i = 2;; i = 0)
+    {
+      AppMethodBeat.o(178191);
+      return i;
+      i = 0;
+      break;
+    }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotTransform$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
+  private static void cBQ()
+  {
+    AppMethodBeat.i(202103);
+    com.tencent.mm.kernel.e locale = g.ajR();
+    p.g(locale, "MMKernel.storage()");
+    int i = locale.ajA().getInt(am.a.JcE, cBP());
+    int j = i & 0xFFFFFFFD;
+    if (j != i)
+    {
+      locale = g.ajR();
+      p.g(locale, "MMKernel.storage()");
+      locale.ajA().set(am.a.JcE, Integer.valueOf(j));
+    }
+    ae.i("Finder.RedDotTransform", "[setLocalRedDot] flag=2 unset=true newLocal=" + j + " local=" + i);
+    AppMethodBeat.o(202103);
+  }
+  
+  public final void cBM()
+  {
+    AppMethodBeat.i(202100);
+    if (cBO())
+    {
+      cBN();
+      cBQ();
+      ae.i("Finder.RedDotTransform", "[transformPostRedDot] done");
+    }
+    com.tencent.mm.plugin.finder.storage.b localb = com.tencent.mm.plugin.finder.storage.b.sHP;
+    if (((Number)com.tencent.mm.plugin.finder.storage.b.cKg().value()).intValue() != 0)
+    {
+      e.a(this.sai, -1);
+      ae.i("Finder.RedDotTransform", "[checkPostRedDot] clear TIMELINE_CAMERA");
+    }
+    AppMethodBeat.o(202100);
+  }
+  
+  final void cBN()
+  {
+    AppMethodBeat.i(202101);
+    Object localObject = com.tencent.mm.plugin.finder.storage.b.sHP;
+    if (((Number)com.tencent.mm.plugin.finder.storage.b.cKg().value()).intValue() == 0)
+    {
+      localObject = new arj();
+      ((arj)localObject).GIg = String.valueOf(ch.aDc());
+      ((arj)localObject).priority = 100000;
+      ((arj)localObject).type = -1;
+      ast localast = new ast();
+      localast.uoi = 1;
+      localast.GJM = 1;
+      localast.path = "FinderEntrance";
+      ((arj)localObject).GIf.add(localast);
+      localast = new ast();
+      localast.uoi = 1;
+      localast.GJM = 1;
+      localast.path = "TLPersonalCenter";
+      localast.xvd = "FinderEntrance";
+      ((arj)localObject).GIf.add(localast);
+      localast = new ast();
+      localast.uoi = 1;
+      localast.GJM = 1;
+      localast.path = "TLCamera";
+      localast.xvd = "TLPersonalCenter";
+      ((arj)localObject).GIf.add(localast);
+      e.a(this.sai, (arj)localObject, "checkPostRedDot", null, null, true, 12);
+    }
+    AppMethodBeat.o(202101);
+  }
+  
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotTransform$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
   public static final class a {}
 }
 

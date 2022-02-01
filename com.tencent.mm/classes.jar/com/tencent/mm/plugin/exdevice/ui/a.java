@@ -13,15 +13,15 @@ import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.ba;
-import com.tencent.mm.model.v;
+import com.tencent.mm.model.bc;
+import com.tencent.mm.model.w;
 import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
-import com.tencent.mm.plugin.appbrand.service.o;
+import com.tencent.mm.plugin.appbrand.service.p;
 import com.tencent.mm.plugin.exdevice.g.a.e;
 import com.tencent.mm.pluginsdk.ui.span.k;
-import com.tencent.mm.protocal.protobuf.rc;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.bp;
+import com.tencent.mm.protocal.protobuf.re;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.bq;
 import com.tencent.mm.ui.ao;
 import com.tencent.mm.ui.base.NoMeasuredTextView;
 import java.util.ArrayList;
@@ -30,30 +30,30 @@ import java.util.List;
 final class a
   extends BaseAdapter
 {
-  String lEN;
+  String lJm;
   private String mAppName;
   private Context mContext;
-  c qkK;
-  private boolean qkL;
-  boolean qkM;
-  int qkN;
-  int qkO;
-  ArrayList<com.tencent.mm.plugin.exdevice.g.b.a.c> qkP;
-  List<rc> qkQ;
-  private View qkR;
+  c qrp;
+  private boolean qrq;
+  boolean qrr;
+  int qrs;
+  int qrt;
+  ArrayList<com.tencent.mm.plugin.exdevice.g.b.a.c> qru;
+  List<re> qrv;
+  private View qrw;
   
   public a(Context paramContext, String paramString1, boolean paramBoolean, String paramString2)
   {
     this.mContext = paramContext;
-    this.lEN = paramString2;
-    this.qkL = paramBoolean;
+    this.lJm = paramString2;
+    this.qrq = paramBoolean;
     this.mAppName = paramString1;
   }
   
   public final int getCount()
   {
-    if (this.qkL) {
-      return this.qkN + 5 + this.qkO;
+    if (this.qrq) {
+      return this.qrs + 5 + this.qrt;
     }
     return 2;
   }
@@ -72,7 +72,7 @@ final class a
   
   public final int getItemViewType(int paramInt)
   {
-    if (!this.qkL) {
+    if (!this.qrq) {
       if (paramInt != 0) {}
     }
     while (paramInt == 0)
@@ -83,19 +83,19 @@ final class a
     if (paramInt == 1) {
       return 6;
     }
-    if ((paramInt > 1) && (paramInt <= this.qkN + 1)) {
+    if ((paramInt > 1) && (paramInt <= this.qrs + 1)) {
       return 1;
     }
-    if (paramInt == this.qkN + 2) {
+    if (paramInt == this.qrs + 2) {
       return 2;
     }
-    if (paramInt == this.qkN + 3) {
+    if (paramInt == this.qrs + 3) {
       return 5;
     }
-    if ((paramInt > this.qkN + 3) && (paramInt <= this.qkN + 3 + this.qkO)) {
+    if ((paramInt > this.qrs + 3) && (paramInt <= this.qrs + 3 + this.qrt)) {
       return 3;
     }
-    if (paramInt == this.qkN + this.qkO + 4) {
+    if (paramInt == this.qrs + this.qrt + 4) {
       return 7;
     }
     return 5;
@@ -132,12 +132,12 @@ final class a
     {
       AppMethodBeat.o(24078);
       return paramView;
-      if (this.qkR == null) {
-        this.qkR = LayoutInflater.from(this.mContext).inflate(2131493877, paramViewGroup, false);
+      if (this.qrw == null) {
+        this.qrw = LayoutInflater.from(this.mContext).inflate(2131493877, paramViewGroup, false);
       }
-      paramView = this.qkR;
+      paramView = this.qrw;
       localf = new f();
-      localf.pcD = ((ImageView)paramView.findViewById(2131299556));
+      localf.pjj = ((ImageView)paramView.findViewById(2131299556));
       paramView.setTag(localf);
       paramViewGroup = null;
       localObject = null;
@@ -148,14 +148,14 @@ final class a
       break;
       paramView = LayoutInflater.from(this.mContext).inflate(2131493876, paramViewGroup, false);
       locale = new e();
-      locale.qkX = ((NoMeasuredTextView)paramView.findViewById(2131299579));
-      locale.qkY = ((TextView)paramView.findViewById(2131299580));
-      locale.pcD = ((ImageView)paramView.findViewById(2131299574));
-      locale.qkT = paramView.findViewById(2131299577);
-      locale.qkX.setTextSize(0, this.mContext.getResources().getDimension(2131165332));
-      locale.qkX.setTextColor(this.mContext.getResources().getColor(2131100308));
-      locale.qkX.setSingleLine(true);
-      locale.qkX.setShouldEllipsize(true);
+      locale.qrC = ((NoMeasuredTextView)paramView.findViewById(2131299579));
+      locale.qrD = ((TextView)paramView.findViewById(2131299580));
+      locale.pjj = ((ImageView)paramView.findViewById(2131299574));
+      locale.qry = paramView.findViewById(2131299577);
+      locale.qrC.setTextSize(0, this.mContext.getResources().getDimension(2131165332));
+      locale.qrC.setTextColor(this.mContext.getResources().getColor(2131100308));
+      locale.qrC.setSingleLine(true);
+      locale.qrC.setShouldEllipsize(true);
       paramView.setTag(locale);
       paramViewGroup = null;
       localObject = null;
@@ -166,9 +166,9 @@ final class a
       break;
       paramView = LayoutInflater.from(this.mContext).inflate(2131493872, paramViewGroup, false);
       locala = new a();
-      locala.mZo = ((TextView)paramView.findViewById(2131299565));
-      locala.qkT = paramView.findViewById(2131299562);
-      locala.qhS = ((ImageView)paramView.findViewById(2131299563));
+      locala.jdField_new = ((TextView)paramView.findViewById(2131299565));
+      locala.qry = paramView.findViewById(2131299562);
+      locala.qox = ((ImageView)paramView.findViewById(2131299563));
       paramView.setTag(locala);
       paramViewGroup = null;
       localObject = null;
@@ -179,10 +179,10 @@ final class a
       break;
       paramView = LayoutInflater.from(this.mContext).inflate(2131493872, paramViewGroup, false);
       localc = new c();
-      localc.mZo = ((TextView)paramView.findViewById(2131299565));
-      localc.qkT = paramView.findViewById(2131299562);
-      localc.qhS = ((ImageView)paramView.findViewById(2131299563));
-      localc.qkV = paramView.findViewById(2131299561);
+      localc.jdField_new = ((TextView)paramView.findViewById(2131299565));
+      localc.qry = paramView.findViewById(2131299562);
+      localc.qox = ((ImageView)paramView.findViewById(2131299563));
+      localc.qrA = paramView.findViewById(2131299561);
       paramView.setTag(localc);
       paramViewGroup = null;
       localObject = null;
@@ -193,7 +193,7 @@ final class a
       break;
       paramView = LayoutInflater.from(this.mContext).inflate(2131493875, paramViewGroup, false);
       locald = new d();
-      locald.qkW = ((Button)paramView.findViewById(2131299570));
+      locald.qrB = ((Button)paramView.findViewById(2131299570));
       paramView.setTag(locald);
       paramViewGroup = null;
       localObject = null;
@@ -214,7 +214,7 @@ final class a
       break;
       paramView = LayoutInflater.from(this.mContext).inflate(2131493874, paramViewGroup, false);
       localObject = new b();
-      ((b)localObject).mZo = ((TextView)paramView.findViewById(2131299569));
+      ((b)localObject).jdField_new = ((TextView)paramView.findViewById(2131299569));
       paramView.setTag(localObject);
       paramViewGroup = null;
       localc = null;
@@ -225,7 +225,7 @@ final class a
       break;
       paramView = LayoutInflater.from(this.mContext).inflate(2131493874, paramViewGroup, false);
       paramViewGroup = new b();
-      paramViewGroup.qkU = paramView.findViewById(2131299568);
+      paramViewGroup.qrz = paramView.findViewById(2131299568);
       paramView.setTag(paramViewGroup);
       localObject = null;
       localc = null;
@@ -318,76 +318,76 @@ final class a
         locale = null;
         localf = null;
         break;
-        com.tencent.mm.pluginsdk.ui.a.b.v(localf.pcD, this.lEN);
-        localf.pcD.setOnClickListener(new a.1(this));
+        com.tencent.mm.pluginsdk.ui.a.b.v(localf.pjj, this.lJm);
+        localf.pjj.setOnClickListener(new a.1(this));
         continue;
-        if ((paramInt - 2 >= 0) && (!bt.hj(this.qkP)))
+        if ((paramInt - 2 >= 0) && (!bu.ht(this.qru)))
         {
-          paramViewGroup = (com.tencent.mm.plugin.exdevice.g.b.a.c)this.qkP.get(paramInt - 2);
+          paramViewGroup = (com.tencent.mm.plugin.exdevice.g.b.a.c)this.qru.get(paramInt - 2);
           if (paramViewGroup != null)
           {
             paramInt = paramViewGroup.field_step;
             localObject = paramViewGroup.field_username;
             if (paramViewGroup.field_step >= 10000) {
-              locale.qkY.setTextColor(this.mContext.getResources().getColor(2131100307));
+              locale.qrD.setTextColor(this.mContext.getResources().getColor(2131100307));
             }
             for (;;)
             {
-              locale.qkX.setText(k.b(this.mContext, v.zf((String)localObject), locale.qkX.getTextSize()));
-              locale.qkY.setText(String.valueOf(paramInt));
-              com.tencent.mm.pluginsdk.ui.a.b.d(locale.pcD, (String)localObject);
-              locale.qkT.setOnClickListener(new a.2(this, (String)localObject));
+              locale.qrC.setText(k.b(this.mContext, w.zP((String)localObject), locale.qrC.getTextSize()));
+              locale.qrD.setText(String.valueOf(paramInt));
+              com.tencent.mm.pluginsdk.ui.a.b.d(locale.pjj, (String)localObject);
+              locale.qry.setOnClickListener(new a.2(this, (String)localObject));
               break;
-              locale.qkY.setTextColor(this.mContext.getResources().getColor(2131100306));
+              locale.qrD.setTextColor(this.mContext.getResources().getColor(2131100306));
             }
-            locala.mZo.setText(this.mContext.getResources().getText(2131758569));
-            locala.qhS.setImageDrawable(ao.k(this.mContext, 2131690051, this.mContext.getResources().getColor(2131099732)));
-            locala.qkT.setOnClickListener(new a.3(this));
+            locala.jdField_new.setText(this.mContext.getResources().getText(2131758569));
+            locala.qox.setImageDrawable(ao.k(this.mContext, 2131690051, this.mContext.getResources().getColor(2131099732)));
+            locala.qry.setOnClickListener(new a.3(this));
             continue;
-            if ((paramInt - this.qkN - 4 >= 0) && (!bt.hj(this.qkQ)))
+            if ((paramInt - this.qrs - 4 >= 0) && (!bu.ht(this.qrv)))
             {
-              localObject = (rc)this.qkQ.get(paramInt - this.qkN - 4);
+              localObject = (re)this.qrv.get(paramInt - this.qrs - 4);
               if (localObject != null)
               {
-                paramViewGroup = ((rc)localObject).title;
-                localObject = ((rc)localObject).dDH;
-                localc.mZo.setText(paramViewGroup);
-                if (paramInt - this.qkN - 4 != this.qkO - 1) {
-                  localc.qkV.setVisibility(0);
+                paramViewGroup = ((re)localObject).title;
+                localObject = ((re)localObject).dEM;
+                localc.jdField_new.setText(paramViewGroup);
+                if (paramInt - this.qrs - 4 != this.qrt - 1) {
+                  localc.qrA.setVisibility(0);
                 }
-                e.a(this.mContext, localc.qhS, (String)localObject);
-                localc.qkT.setOnClickListener(new View.OnClickListener()
+                e.a(this.mContext, localc.qox, (String)localObject);
+                localc.qry.setOnClickListener(new View.OnClickListener()
                 {
                   public final void onClick(View paramAnonymousView)
                   {
                     AppMethodBeat.i(24075);
                     b localb = new b();
                     localb.bd(paramAnonymousView);
-                    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/exdevice/ui/ExdeviceProfileAdapter$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-                    com.tencent.mm.plugin.sport.a.c.ma(8);
+                    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/exdevice/ui/ExdeviceProfileAdapter$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+                    com.tencent.mm.plugin.sport.a.c.md(8);
                     paramAnonymousView = new AppBrandStatObject();
                     paramAnonymousView.scene = 1063;
-                    ((o)g.ab(o.class)).a(a.b(a.this), null, "wx3fca79fc5715b185", 0, 0, "", paramAnonymousView);
+                    ((p)g.ab(p.class)).a(a.b(a.this), null, "wx3fca79fc5715b185", 0, 0, "", paramAnonymousView);
                     com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/exdevice/ui/ExdeviceProfileAdapter$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
                     AppMethodBeat.o(24075);
                   }
                 });
                 continue;
-                if (!this.qkM)
+                if (!this.qrr)
                 {
-                  ba.aBQ();
-                  if (com.tencent.mm.model.c.azp().aTg(this.lEN))
+                  bc.aCg();
+                  if (com.tencent.mm.model.c.azF().aUH(this.lJm))
                   {
-                    locald.qkW.setVisibility(0);
-                    locald.qkW.setOnClickListener(new a.5(this));
+                    locald.qrB.setVisibility(0);
+                    locald.qrB.setOnClickListener(new a.5(this));
                     continue;
                   }
                 }
-                locald.qkW.setVisibility(4);
+                locald.qrB.setVisibility(4);
                 continue;
-                ((b)localObject).mZo.setText(this.mContext.getString(2131758578));
+                ((b)localObject).jdField_new.setText(this.mContext.getString(2131758578));
                 continue;
-                paramViewGroup.qkU.setVisibility(0);
+                paramViewGroup.qrz.setVisibility(0);
               }
             }
           }
@@ -404,51 +404,51 @@ final class a
   
   final class a
   {
-    TextView mZo;
-    ImageView qhS;
-    View qkT;
+    TextView jdField_new;
+    ImageView qox;
+    View qry;
     
     a() {}
   }
   
   final class b
   {
-    TextView mZo;
-    View qkU;
+    TextView jdField_new;
+    View qrz;
     
     b() {}
   }
   
   final class c
   {
-    TextView mZo;
-    ImageView qhS;
-    View qkT;
-    View qkV;
+    TextView jdField_new;
+    ImageView qox;
+    View qrA;
+    View qry;
     
     c() {}
   }
   
   final class d
   {
-    Button qkW;
+    Button qrB;
     
     d() {}
   }
   
   final class e
   {
-    ImageView pcD;
-    View qkT;
-    NoMeasuredTextView qkX;
-    TextView qkY;
+    ImageView pjj;
+    NoMeasuredTextView qrC;
+    TextView qrD;
+    View qry;
     
     e() {}
   }
   
   final class f
   {
-    ImageView pcD;
+    ImageView pjj;
     
     f() {}
   }

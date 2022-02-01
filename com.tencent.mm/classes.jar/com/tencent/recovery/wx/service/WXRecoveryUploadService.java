@@ -7,7 +7,7 @@ import android.text.TextUtils;
 import com.tencent.mm.recovery.b;
 import com.tencent.mm.recoveryv2.f;
 import com.tencent.mm.recoveryv2.i;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.recovery.log.RecoveryLog;
 import com.tencent.recovery.model.RecoveryHandleItem;
 import com.tencent.recovery.report.RecoveryReporter;
@@ -125,7 +125,7 @@ public class WXRecoveryUploadService
     }
     catch (Throwable paramContext)
     {
-      ad.w("MicroMsg.recovery.service", "start service fail", new Object[] { paramContext });
+      ae.w("MicroMsg.recovery.service", "start service fail", new Object[] { paramContext });
     }
   }
   
@@ -158,9 +158,9 @@ public class WXRecoveryUploadService
         continue;
       }
       f.i("MicroMsg.recovery.service", "#fetchTinkerPatch done, status = " + arrayOfInt[0]);
-      paramIntent = i.hR(getApplication());
-      paramIntent.HUs = false;
-      paramIntent.HUr = arrayOfInt[0];
+      paramIntent = i.hX(getApplication());
+      paramIntent.IoA = false;
+      paramIntent.Ioz = arrayOfInt[0];
       paramIntent.save();
       return;
       f.i("MicroMsg.recovery.service", "#fetchTinkerPatch, download patch with given url, url = ".concat(String.valueOf(str1)));
@@ -546,23 +546,23 @@ public class WXRecoveryUploadService
         super.onHandleIntent(paramIntent);
         return;
       }
-      ad.i("MicroMsg.recovery.service", "fetchTinkerPatchByBaseId");
-      ad.i("MicroMsg.recovery.service", "baseId = ".concat(String.valueOf(localObject)));
+      ae.i("MicroMsg.recovery.service", "fetchTinkerPatchByBaseId");
+      ae.i("MicroMsg.recovery.service", "baseId = ".concat(String.valueOf(localObject)));
       b.a(getApplicationContext(), (String)localObject, new android.support.v4.e.c()
       {
         public void accept(Integer paramAnonymousInteger)
         {
-          ad.i("MicroMsg.recovery.service", "fetchTinkerPatchByBaseId callback, status = ".concat(String.valueOf(paramAnonymousInteger)));
+          ae.i("MicroMsg.recovery.service", "fetchTinkerPatchByBaseId callback, status = ".concat(String.valueOf(paramAnonymousInteger)));
         }
       });
-      ad.i("MicroMsg.recovery.service", "fetchTinkerPatchByBaseId done");
+      ae.i("MicroMsg.recovery.service", "fetchTinkerPatchByBaseId done");
       return;
     }
-    Object localObject = i.hR(getApplication());
-    ((i)localObject).HUs = false;
-    ((i)localObject).HUp = true;
+    Object localObject = i.hX(getApplication());
+    ((i)localObject).IoA = false;
+    ((i)localObject).Iox = true;
     ((i)localObject).save();
-    b.fgU();
+    b.fkM();
     fetchTinkerPatch(paramIntent);
   }
   

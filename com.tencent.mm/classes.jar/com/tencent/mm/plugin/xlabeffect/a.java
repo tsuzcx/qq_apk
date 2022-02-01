@@ -4,16 +4,16 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.media.j.b.e;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/xlabeffect/FaceTrackProc;", "Lcom/tencent/mm/media/render/proc/GLTextureRenderProcTexture;", "textureWidth", "", "textureHeight", "(II)V", "getHeight", "getWidth", "refreshDrawSize", "", "setRotate", "degree", "updateTextureSize", "width", "height", "Companion", "plugin-xlabeffect_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/xlabeffect/FaceTrackProc;", "Lcom/tencent/mm/media/render/proc/GLTextureRenderProcTexture;", "textureWidth", "", "textureHeight", "(II)V", "getHeight", "getWidth", "refreshDrawSize", "", "setRotate", "degree", "updateTextureSize", "width", "height", "Companion", "plugin-xlabeffect_release"})
 public final class a
   extends e
 {
-  public static final a.a EHJ;
+  public static final a.a Faf;
   
   static
   {
     AppMethodBeat.i(90504);
-    EHJ = new a.a((byte)0);
+    Faf = new a.a((byte)0);
     AppMethodBeat.o(90504);
   }
   
@@ -22,18 +22,18 @@ public final class a
     super(0, 0, 0, 0, 2, 1);
   }
   
-  private final void eYj()
+  private final void fbV()
   {
     int i = 320;
     AppMethodBeat.i(90503);
     int j;
-    if (this.gKK > this.gKJ) {
-      if (this.gKK > 320)
+    if (this.gNt > this.gNs) {
+      if (this.gNt > 320)
       {
-        k = this.gKJ * i / this.gKK;
+        k = this.gNs * i / this.gNt;
         j = i;
         i = k;
-        if (this.hnk % 180 == 0) {
+        if (this.hpY % 180 == 0) {
           break label116;
         }
       }
@@ -47,14 +47,14 @@ public final class a
       cT(j, i);
       AppMethodBeat.o(90503);
       return;
-      i = this.gKK;
+      i = this.gNt;
       break;
-      if (this.gKJ > 320) {}
+      if (this.gNs > 320) {}
       for (;;)
       {
-        j = this.gKK * i / this.gKJ;
+        j = this.gNt * i / this.gNs;
         break;
-        i = this.gKJ;
+        i = this.gNs;
       }
     }
     label121:
@@ -65,12 +65,12 @@ public final class a
   public final void cU(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(90501);
-    if ((paramInt1 != this.gKJ) || (paramInt2 != this.gKK)) {}
+    if ((paramInt1 != this.gNs) || (paramInt2 != this.gNt)) {}
     for (int i = 1;; i = 0)
     {
       super.cU(paramInt1, paramInt2);
       if (i != 0) {
-        eYj();
+        fbV();
       }
       AppMethodBeat.o(90501);
       return;
@@ -79,23 +79,23 @@ public final class a
   
   public final int getHeight()
   {
-    return this.gLE;
+    return this.gOn;
   }
   
   public final int getWidth()
   {
-    return this.gLD;
+    return this.gOm;
   }
   
-  public final void nd(int paramInt)
+  public final void ng(int paramInt)
   {
     AppMethodBeat.i(90502);
-    if (paramInt != this.hnk) {}
+    if (paramInt != this.hpY) {}
     for (int i = 1;; i = 0)
     {
-      super.nd(paramInt);
+      super.ng(paramInt);
       if (i != 0) {
-        eYj();
+        fbV();
       }
       AppMethodBeat.o(90502);
       return;

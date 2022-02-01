@@ -12,15 +12,15 @@ public abstract interface c
   
   public abstract void a(a parama);
   
-  public abstract void bp(Context paramContext);
+  public abstract void bt(Context paramContext);
   
   public abstract void d(int paramInt, String paramString1, String paramString2);
   
-  public abstract void fm(String paramString);
+  public abstract void fs(String paramString);
   
   public static abstract interface a
   {
-    public abstract String bev();
+    public abstract String bfd();
   }
 }
 

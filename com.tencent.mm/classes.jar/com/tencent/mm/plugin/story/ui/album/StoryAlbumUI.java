@@ -17,7 +17,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.story.d.a.e;
 import com.tencent.mm.plugin.story.d.a.f;
 import com.tencent.mm.plugin.story.i.h;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.ui.MMFragment;
 import d.g.a.b;
 import d.g.b.p;
@@ -27,28 +27,28 @@ import d.z;
 import java.util.Collection;
 import java.util.List;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/story/ui/album/StoryAlbumUI;", "Lcom/tencent/mm/ui/MMFragment;", "Lcom/tencent/mm/plugin/story/contract/AlbumContract$IView;", "()V", "mPresenter", "Lcom/tencent/mm/plugin/story/contract/AlbumContract$IPresenter;", "mRecyclerView", "Landroid/support/v7/widget/RecyclerView;", "mStoryAlbumAdapter", "Lcom/tencent/mm/plugin/story/ui/album/StoryAlbumAdapter;", "mStoryBubblePostFailLayout", "Landroid/widget/LinearLayout;", "mStoryBubblePostFailTv", "Landroid/widget/TextView;", "mStoryFavEntrancePanel", "Landroid/view/View;", "mStoryNoDataTv", "mStoryPostFailLayout", "mStoryPostFailTv", "mUsername", "", "dealContentView", "", "v", "getLayoutId", "", "goDateStoryGallery", "position", "dateList", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "goFavAlbum", "initActionBar", "initViews", "loadFromDB", "loadFromRemote", "onActivityResult", "requestCode", "resultCode", "data", "Landroid/content/Intent;", "onBubbleFail", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onIsAll", "onLoadFinish", "datas", "", "Lcom/tencent/mm/plugin/story/ui/album/StoryAlbumInfo;", "onStoryPostFail", "list", "Lcom/tencent/mm/plugin/story/storage/StoryInfo;", "supportNavigationSwipeBack", "", "Companion", "plugin-story_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/story/ui/album/StoryAlbumUI;", "Lcom/tencent/mm/ui/MMFragment;", "Lcom/tencent/mm/plugin/story/contract/AlbumContract$IView;", "()V", "mPresenter", "Lcom/tencent/mm/plugin/story/contract/AlbumContract$IPresenter;", "mRecyclerView", "Landroid/support/v7/widget/RecyclerView;", "mStoryAlbumAdapter", "Lcom/tencent/mm/plugin/story/ui/album/StoryAlbumAdapter;", "mStoryBubblePostFailLayout", "Landroid/widget/LinearLayout;", "mStoryBubblePostFailTv", "Landroid/widget/TextView;", "mStoryFavEntrancePanel", "Landroid/view/View;", "mStoryNoDataTv", "mStoryPostFailLayout", "mStoryPostFailTv", "mUsername", "", "dealContentView", "", "v", "getLayoutId", "", "goDateStoryGallery", "position", "dateList", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "goFavAlbum", "initActionBar", "initViews", "loadFromDB", "loadFromRemote", "onActivityResult", "requestCode", "resultCode", "data", "Landroid/content/Intent;", "onBubbleFail", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onIsAll", "onLoadFinish", "datas", "", "Lcom/tencent/mm/plugin/story/ui/album/StoryAlbumInfo;", "onStoryPostFail", "list", "Lcom/tencent/mm/plugin/story/storage/StoryInfo;", "supportNavigationSwipeBack", "", "Companion", "plugin-story_release"})
 public final class StoryAlbumUI
   extends MMFragment
   implements a.f
 {
-  public static final StoryAlbumUI.a AWP;
+  public static final StoryAlbumUI.a Bon;
   private static final String TAG = "MicroMsg.StoryAlbumUI";
-  private LinearLayout AWH;
-  private LinearLayout AWI;
-  private TextView AWJ;
-  private TextView AWK;
-  private TextView AWL;
-  private View AWM;
-  private a AWN;
-  private a.e AWO;
+  private LinearLayout Bof;
+  private LinearLayout Bog;
+  private TextView Boh;
+  private TextView Boi;
+  private TextView Boj;
+  private View Bok;
+  private a Bol;
+  private a.e Bom;
   private RecyclerView anl;
-  private String lEN = "";
+  private String lJm = "";
   
   static
   {
     AppMethodBeat.i(119842);
-    AWP = new StoryAlbumUI.a((byte)0);
+    Bon = new StoryAlbumUI.a((byte)0);
     TAG = "MicroMsg.StoryAlbumUI";
     AppMethodBeat.o(119842);
   }
@@ -56,11 +56,11 @@ public final class StoryAlbumUI
   private final void loadFromDB()
   {
     AppMethodBeat.i(119835);
-    a.e locale = this.AWO;
+    a.e locale = this.Bom;
     if (locale == null) {
-      p.bcb("mPresenter");
+      p.bdF("mPresenter");
     }
-    locale.ehq();
+    locale.ekY();
     AppMethodBeat.o(119835);
   }
   
@@ -69,7 +69,7 @@ public final class StoryAlbumUI
     AppMethodBeat.i(119837);
     p.h(paramView, "v");
     super.dealContentView(paramView);
-    this.AWO = ((a.e)new com.tencent.mm.plugin.story.g.a((a.f)this));
+    this.Bom = ((a.e)new com.tencent.mm.plugin.story.g.a((a.f)this));
     Object localObject = getActivity();
     if (localObject != null)
     {
@@ -85,87 +85,87 @@ public final class StoryAlbumUI
     }
     localObject = "";
     label70:
-    this.lEN = ((String)localObject);
-    ad.i(TAG, "initViews username=" + this.lEN);
+    this.lJm = ((String)localObject);
+    ae.i(TAG, "initViews username=" + this.lJm);
     localObject = paramView.findViewById(2131296618);
     p.g(localObject, "v.findViewById(R.id.album_story_recycler)");
     this.anl = ((RecyclerView)localObject);
     localObject = paramView.findViewById(2131296621);
     p.g(localObject, "v.findViewById(R.id.album_story_send_fail_layout)");
-    this.AWH = ((LinearLayout)localObject);
+    this.Bof = ((LinearLayout)localObject);
     localObject = paramView.findViewById(2131296540);
     p.g(localObject, "v.findViewById(R.id.album_bubble_send_fail_layout)");
-    this.AWI = ((LinearLayout)localObject);
+    this.Bog = ((LinearLayout)localObject);
     localObject = paramView.findViewById(2131296622);
     p.g(localObject, "v.findViewById(R.id.album_story_send_fail_tips)");
-    this.AWJ = ((TextView)localObject);
+    this.Boh = ((TextView)localObject);
     localObject = paramView.findViewById(2131296541);
     p.g(localObject, "v.findViewById(R.id.album_bubble_send_fail_tips)");
-    this.AWK = ((TextView)localObject);
+    this.Boi = ((TextView)localObject);
     localObject = paramView.findViewById(2131296617);
     p.g(localObject, "v.findViewById(R.id.album_story_no_data_tip_tv)");
-    this.AWL = ((TextView)localObject);
+    this.Boj = ((TextView)localObject);
     paramView = paramView.findViewById(2131296616);
     p.g(paramView, "v.findViewById(R.id.album_story_no_data_fav_panel)");
-    this.AWM = paramView;
-    this.AWN = new a();
-    paramView = this.AWN;
+    this.Bok = paramView;
+    this.Bol = new a();
+    paramView = this.Bol;
     if (paramView == null) {
-      p.bcb("mStoryAlbumAdapter");
+      p.bdF("mStoryAlbumAdapter");
     }
-    paramView.AWs = ((b)new c(this));
-    paramView = this.AWN;
+    paramView.BnQ = ((b)new c(this));
+    paramView = this.Bol;
     if (paramView == null) {
-      p.bcb("mStoryAlbumAdapter");
+      p.bdF("mStoryAlbumAdapter");
     }
-    paramView.AWt = ((d.g.a.a)new StoryAlbumUI.d(this));
+    paramView.BnR = ((d.g.a.a)new StoryAlbumUI.d(this));
     paramView = this.anl;
     if (paramView == null) {
-      p.bcb("mRecyclerView");
+      p.bdF("mRecyclerView");
     }
-    localObject = this.AWN;
+    localObject = this.Bol;
     if (localObject == null) {
-      p.bcb("mStoryAlbumAdapter");
+      p.bdF("mStoryAlbumAdapter");
     }
     paramView.setAdapter((RecyclerView.a)localObject);
     paramView = this.anl;
     if (paramView == null) {
-      p.bcb("mRecyclerView");
+      p.bdF("mRecyclerView");
     }
     getActivity();
     paramView.setLayoutManager((RecyclerView.i)new LinearLayoutManager());
     paramView = this.anl;
     if (paramView == null) {
-      p.bcb("mRecyclerView");
+      p.bdF("mRecyclerView");
     }
     paramView.a((RecyclerView.m)new e(this));
-    paramView = this.AWM;
+    paramView = this.Bok;
     if (paramView == null) {
-      p.bcb("mStoryFavEntrancePanel");
+      p.bdF("mStoryFavEntrancePanel");
     }
     paramView.setOnClickListener((View.OnClickListener)new StoryAlbumUI.f(this));
-    paramView = this.AWO;
+    paramView = this.Bom;
     if (paramView == null) {
-      p.bcb("mPresenter");
+      p.bdF("mPresenter");
     }
-    paramView.onCreate(this.lEN);
+    paramView.onCreate(this.lJm);
     loadFromDB();
-    paramView = this.AWO;
+    paramView = this.Bom;
     if (paramView == null) {
-      p.bcb("mPresenter");
+      p.bdF("mPresenter");
     }
-    paramView.eho();
+    paramView.ekW();
     AppMethodBeat.o(119837);
   }
   
-  public final void ehr()
+  public final void ekZ()
   {
     AppMethodBeat.i(119841);
-    a locala = this.AWN;
+    a locala = this.Bol;
     if (locala == null) {
-      p.bcb("mStoryAlbumAdapter");
+      p.bdF("mStoryAlbumAdapter");
     }
-    locala.oMN = true;
+    locala.oTp = true;
     if (!((Collection)locala.mItemList).isEmpty()) {}
     for (int i = 1;; i = 0)
     {
@@ -177,74 +177,74 @@ public final class StoryAlbumUI
     }
   }
   
-  public final void gb(List<c> paramList)
+  public final int getLayoutId()
+  {
+    return 2131495658;
+  }
+  
+  public final void gk(List<c> paramList)
   {
     AppMethodBeat.i(119840);
     p.h(paramList, "datas");
-    ad.i(TAG, "onLoadFinish datas.size=" + paramList.size());
-    a locala = this.AWN;
+    ae.i(TAG, "onLoadFinish datas.size=" + paramList.size());
+    a locala = this.Bol;
     if (locala == null) {
-      p.bcb("mStoryAlbumAdapter");
+      p.bdF("mStoryAlbumAdapter");
     }
-    locala.gs(paramList);
+    locala.gB(paramList);
     if (paramList.isEmpty())
     {
-      paramList = this.AWM;
+      paramList = this.Bok;
       if (paramList == null) {
-        p.bcb("mStoryFavEntrancePanel");
+        p.bdF("mStoryFavEntrancePanel");
       }
       paramList.setVisibility(0);
-      paramList = this.AWL;
+      paramList = this.Boj;
       if (paramList == null) {
-        p.bcb("mStoryNoDataTv");
+        p.bdF("mStoryNoDataTv");
       }
       paramList.setVisibility(0);
       paramList = this.anl;
       if (paramList == null) {
-        p.bcb("mRecyclerView");
+        p.bdF("mRecyclerView");
       }
       paramList.setVisibility(8);
     }
     for (;;)
     {
-      if (!com.tencent.mm.plugin.story.c.a.a.AIv.egU())
+      if (!com.tencent.mm.plugin.story.c.a.a.AZY.ekC())
       {
-        paramList = this.AWM;
+        paramList = this.Bok;
         if (paramList == null) {
-          p.bcb("mStoryFavEntrancePanel");
+          p.bdF("mStoryFavEntrancePanel");
         }
         paramList.setVisibility(8);
       }
       AppMethodBeat.o(119840);
       return;
-      paramList = this.AWM;
+      paramList = this.Bok;
       if (paramList == null) {
-        p.bcb("mStoryFavEntrancePanel");
+        p.bdF("mStoryFavEntrancePanel");
       }
       paramList.setVisibility(8);
-      paramList = this.AWL;
+      paramList = this.Boj;
       if (paramList == null) {
-        p.bcb("mStoryNoDataTv");
+        p.bdF("mStoryNoDataTv");
       }
       paramList.setVisibility(8);
       paramList = this.anl;
       if (paramList == null) {
-        p.bcb("mRecyclerView");
+        p.bdF("mRecyclerView");
       }
       paramList.setVisibility(0);
     }
-  }
-  
-  public final int getLayoutId()
-  {
-    return 2131495658;
   }
   
   public final void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     AppMethodBeat.i(119838);
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    ad.d(TAG, "onActivityResult requestCode=" + paramInt1 + " resultCode=" + paramInt2);
+    ae.d(TAG, "onActivityResult requestCode=" + paramInt1 + " resultCode=" + paramInt2);
     if (paramInt1 == 1) {
       loadFromDB();
     }
@@ -264,11 +264,11 @@ public final class StoryAlbumUI
   {
     AppMethodBeat.i(119839);
     super.onDestroy();
-    a.e locale = this.AWO;
+    a.e locale = this.Bom;
     if (locale == null) {
-      p.bcb("mPresenter");
+      p.bdF("mPresenter");
     }
-    locale.ebV();
+    locale.efC();
     AppMethodBeat.o(119839);
   }
   
@@ -277,7 +277,7 @@ public final class StoryAlbumUI
     return false;
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "storyHistoryInfo", "Lcom/tencent/mm/plugin/story/storage/StoryHistoryInfo;", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "storyHistoryInfo", "Lcom/tencent/mm/plugin/story/storage/StoryHistoryInfo;", "invoke"})
   static final class c
     extends q
     implements b<h, z>
@@ -288,21 +288,21 @@ public final class StoryAlbumUI
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/story/ui/album/StoryAlbumUI$initViews$3", "Lcom/tencent/mm/plugin/story/ui/album/StoryAlbumScrollListener;", "onLoadMore", "", "plugin-story_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/story/ui/album/StoryAlbumUI$initViews$3", "Lcom/tencent/mm/plugin/story/ui/album/StoryAlbumScrollListener;", "onLoadMore", "", "plugin-story_release"})
   public static final class e
     extends e
   {
-    public final void Zt()
+    public final void ZC()
     {
       AppMethodBeat.i(119833);
-      StoryAlbumUI.c(this.AWQ).ehn();
+      StoryAlbumUI.c(this.Boo).ekV();
       AppMethodBeat.o(119833);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.story.ui.album.StoryAlbumUI
  * JD-Core Version:    0.7.0.1
  */

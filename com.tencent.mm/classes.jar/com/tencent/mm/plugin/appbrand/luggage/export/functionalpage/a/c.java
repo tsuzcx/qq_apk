@@ -29,9 +29,7 @@ import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.modelappbrand.a.b.h;
-import com.tencent.mm.modelappbrand.a.g;
 import com.tencent.mm.plugin.appbrand.jsapi.ac;
-import com.tencent.mm.plugin.appbrand.permission.f;
 import com.tencent.mm.plugin.appbrand.phonenumber.PhoneItem;
 import com.tencent.mm.plugin.appbrand.phonenumber.q;
 import com.tencent.mm.plugin.appbrand.phonenumber.u;
@@ -44,56 +42,56 @@ import d.z;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/ui/FunctionalPagePhoneNumberManagerPresenterUIView;", "Lcom/tencent/mm/ui/statusbar/DrawStatusBarFrameLayout;", "Lcom/tencent/mm/plugin/appbrand/jsapi/autofill/ui/IPhoneNumberManagerPresenterView;", "component", "Lcom/tencent/mm/plugin/appbrand/AppBrandComponentWxaShared;", "(Lcom/tencent/mm/plugin/appbrand/AppBrandComponentWxaShared;)V", "BACKGROUND_COLOR", "", "value", "", "appBrandName", "getAppBrandName", "()Ljava/lang/String;", "setAppBrandName", "(Ljava/lang/String;)V", "iconUrl", "getIconUrl", "setIconUrl", "mApplyWordingTv", "Landroid/widget/TextView;", "mBtnAccept", "Landroid/widget/Button;", "mBtnReject", "mContentLayout", "Landroid/widget/LinearLayout;", "mFuncTv", "mIconIv", "Landroid/widget/ImageView;", "mItemAdapter", "Lcom/tencent/mm/plugin/appbrand/phonenumber/ItemAdapter;", "mLoadingView", "Landroid/view/View;", "mNameTv", "mRecyclerView", "Landroid/support/v7/widget/RecyclerView;", "mRequestDescTv", "mRootView", "Landroid/widget/RelativeLayout;", "mSimpleDetailDescTv", "Lkotlin/Function0;", "", "onAccept", "getOnAccept", "()Lkotlin/jvm/functions/Function0;", "setOnAccept", "(Lkotlin/jvm/functions/Function0;)V", "onAddPhoneNumber", "getOnAddPhoneNumber", "setOnAddPhoneNumber", "onCancel", "getOnCancel", "setOnCancel", "onDeny", "getOnDeny", "setOnDeny", "onExplain", "getOnExplain", "setOnExplain", "onManagePhoneNumber", "getOnManagePhoneNumber", "setOnManagePhoneNumber", "Lkotlin/Function1;", "Lcom/tencent/mm/plugin/appbrand/phonenumber/PhoneItem;", "onPhoneItemSelect", "getOnPhoneItemSelect", "()Lkotlin/jvm/functions/Function1;", "setOnPhoneItemSelect", "(Lkotlin/jvm/functions/Function1;)V", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "phoneItems", "getPhoneItems", "()Ljava/util/ArrayList;", "setPhoneItems", "(Ljava/util/ArrayList;)V", "adjustRequestContainerHeight", "callOnCancel", "createSecondaryExplainPresenterView", "Lcom/tencent/mm/plugin/appbrand/permission/IAuthorizePrivacyExplainPresenterView;", "content", "webviewOpener", "Lcom/tencent/mm/plugin/appbrand/jsapi/IExternalToolsHelper;", "decorateSystemBars", "dismiss", "dispatchConfigurationChanged", "newConfig", "Landroid/content/res/Configuration;", "dispatchKeyEventPreIme", "", "event", "Landroid/view/KeyEvent;", "onCreateView", "show", "showPrivacyExplainEntry", "plugin-appbrand-integration_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/ui/FunctionalPagePhoneNumberManagerPresenterUIView;", "Lcom/tencent/mm/ui/statusbar/DrawStatusBarFrameLayout;", "Lcom/tencent/mm/plugin/appbrand/jsapi/autofill/ui/IPhoneNumberManagerPresenterView;", "component", "Lcom/tencent/mm/plugin/appbrand/AppBrandComponentWxaShared;", "(Lcom/tencent/mm/plugin/appbrand/AppBrandComponentWxaShared;)V", "BACKGROUND_COLOR", "", "value", "", "appBrandName", "getAppBrandName", "()Ljava/lang/String;", "setAppBrandName", "(Ljava/lang/String;)V", "iconUrl", "getIconUrl", "setIconUrl", "mApplyWordingTv", "Landroid/widget/TextView;", "mBtnAccept", "Landroid/widget/Button;", "mBtnReject", "mContentLayout", "Landroid/widget/LinearLayout;", "mFuncTv", "mIconIv", "Landroid/widget/ImageView;", "mItemAdapter", "Lcom/tencent/mm/plugin/appbrand/phonenumber/ItemAdapter;", "mLoadingView", "Landroid/view/View;", "mNameTv", "mRecyclerView", "Landroid/support/v7/widget/RecyclerView;", "mRequestDescTv", "mRootView", "Landroid/widget/RelativeLayout;", "mSimpleDetailDescTv", "Lkotlin/Function0;", "", "onAccept", "getOnAccept", "()Lkotlin/jvm/functions/Function0;", "setOnAccept", "(Lkotlin/jvm/functions/Function0;)V", "onAddPhoneNumber", "getOnAddPhoneNumber", "setOnAddPhoneNumber", "onCancel", "getOnCancel", "setOnCancel", "onDeny", "getOnDeny", "setOnDeny", "onExplain", "getOnExplain", "setOnExplain", "onManagePhoneNumber", "getOnManagePhoneNumber", "setOnManagePhoneNumber", "Lkotlin/Function1;", "Lcom/tencent/mm/plugin/appbrand/phonenumber/PhoneItem;", "onPhoneItemSelect", "getOnPhoneItemSelect", "()Lkotlin/jvm/functions/Function1;", "setOnPhoneItemSelect", "(Lkotlin/jvm/functions/Function1;)V", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "phoneItems", "getPhoneItems", "()Ljava/util/ArrayList;", "setPhoneItems", "(Ljava/util/ArrayList;)V", "adjustRequestContainerHeight", "callOnCancel", "createSecondaryExplainPresenterView", "Lcom/tencent/mm/plugin/appbrand/permission/IAuthorizePrivacyExplainPresenterView;", "content", "webviewOpener", "Lcom/tencent/mm/plugin/appbrand/jsapi/IExternalToolsHelper;", "decorateSystemBars", "dismiss", "dispatchConfigurationChanged", "newConfig", "Landroid/content/res/Configuration;", "dispatchKeyEventPreIme", "", "event", "Landroid/view/KeyEvent;", "onCreateView", "show", "showPrivacyExplainEntry", "plugin-appbrand-integration_release"})
 @SuppressLint({"ViewConstructor"})
 public final class c
   extends com.tencent.mm.ui.statusbar.b
   implements com.tencent.mm.plugin.appbrand.jsapi.autofill.b.a
 {
   private RecyclerView anl;
-  private View fTl;
+  private View fVr;
   private String iconUrl;
-  private ImageView kAX;
-  private TextView kAY;
-  private d.g.a.a<z> kBA;
-  private d.g.a.a<z> kBC;
-  private d.g.a.a<z> kBE;
-  private d.g.a.a<z> kBF;
-  private d.g.a.a<z> kBG;
-  private Button kBm;
-  private Button kBn;
-  private String kBq;
-  private ArrayList<PhoneItem> kBz;
-  private final int lPC;
-  private TextView lPI;
-  private TextView lPK;
-  private final com.tencent.mm.plugin.appbrand.d lPQ;
-  private RelativeLayout lPT;
-  private TextView lPU;
-  private LinearLayout lPV;
-  private TextView lPW;
-  private q lPX;
-  private d.g.a.a<z> lPY;
-  private d.g.a.b<? super PhoneItem, z> lPZ;
+  private Button kEB;
+  private Button kEC;
+  private String kEF;
+  private ArrayList<PhoneItem> kEO;
+  private d.g.a.a<z> kEP;
+  private d.g.a.a<z> kER;
+  private d.g.a.a<z> kET;
+  private d.g.a.a<z> kEU;
+  private d.g.a.a<z> kEV;
+  private ImageView kEm;
+  private TextView kEn;
+  private d.g.a.b<? super PhoneItem, z> lUA;
+  private final int lUd;
+  private TextView lUj;
+  private TextView lUl;
+  private final com.tencent.mm.plugin.appbrand.d lUr;
+  private RelativeLayout lUu;
+  private TextView lUv;
+  private LinearLayout lUw;
+  private TextView lUx;
+  private q lUy;
+  private d.g.a.a<z> lUz;
   
   public c(com.tencent.mm.plugin.appbrand.d paramd)
   {
     super((Context)localObject1);
-    AppMethodBeat.i(189525);
-    this.lPQ = paramd;
-    this.kBz = new ArrayList();
-    this.kBA = ((d.g.a.a)c.d.lQb);
-    this.lPY = ((d.g.a.a)c.j.lQe);
-    this.kBC = ((d.g.a.a)c.f.lQd);
-    this.kBE = ((d.g.a.a)c.k.lQf);
-    this.kBF = ((d.g.a.a)c.e.lQc);
-    this.kBG = ((d.g.a.a)c.l.lQg);
-    this.lPZ = ((d.g.a.b)c.m.lQh);
-    this.lPC = android.support.v4.content.b.n(getContext(), 2131101179);
+    AppMethodBeat.i(223785);
+    this.lUr = paramd;
+    this.kEO = new ArrayList();
+    this.kEP = ((d.g.a.a)c.d.lUC);
+    this.lUz = ((d.g.a.a)c.j.lUF);
+    this.kER = ((d.g.a.a)c.f.lUE);
+    this.kET = ((d.g.a.a)c.k.lUG);
+    this.kEU = ((d.g.a.a)c.e.lUD);
+    this.kEV = ((d.g.a.a)c.l.lUH);
+    this.lUA = ((d.g.a.b)c.m.lUI);
+    this.lUd = android.support.v4.content.b.n(getContext(), 2131101179);
     LayoutInflater.from(getContext()).inflate(2131496378, (ViewGroup)this, true);
     paramd = findViewById(2131297653);
     p.g(paramd, "findViewById<View>(R.id.button_group)");
-    a.cF(paramd);
+    a.cG(paramd);
     paramd = (RelativeLayout)findViewById(2131308187);
     localObject1 = LayoutInflater.from(getContext()).inflate(2131496377, (ViewGroup)paramd, false);
     p.g(localObject1, "group");
@@ -101,7 +99,7 @@ public final class c
     if (localObject2 == null)
     {
       paramd = new v("null cannot be cast to non-null type android.widget.RelativeLayout.LayoutParams");
-      AppMethodBeat.o(189525);
+      AppMethodBeat.o(223785);
       throw paramd;
     }
     localObject2 = (RelativeLayout.LayoutParams)localObject2;
@@ -109,158 +107,158 @@ public final class c
     ((RelativeLayout.LayoutParams)localObject2).addRule(12);
     paramd.addView((View)localObject1);
     p.g(paramd, "container");
-    this.lPT = paramd;
-    bsw();
+    this.lUu = paramd;
+    bth();
     findViewById(2131308120).setOnClickListener((View.OnClickListener)new c.g(this));
-    paramd = this.lPT;
+    paramd = this.lUu;
     if (paramd == null) {
-      p.bcb("mRootView");
+      p.bdF("mRootView");
     }
     paramd = paramd.findViewById(2131304100);
     p.g(paramd, "mRootView.findViewById(R.id.request_icon)");
-    this.kAX = ((ImageView)paramd);
-    paramd = this.lPT;
+    this.kEm = ((ImageView)paramd);
+    paramd = this.lUu;
     if (paramd == null) {
-      p.bcb("mRootView");
+      p.bdF("mRootView");
     }
     paramd = paramd.findViewById(2131304102);
     p.g(paramd, "mRootView.findViewById(R.id.request_name)");
-    this.kAY = ((TextView)paramd);
-    paramd = this.lPT;
+    this.kEn = ((TextView)paramd);
+    paramd = this.lUu;
     if (paramd == null) {
-      p.bcb("mRootView");
+      p.bdF("mRootView");
     }
     paramd = paramd.findViewById(2131304096);
     p.g(paramd, "mRootView.findViewById(R.id.request_cancel)");
-    this.kBn = ((Button)paramd);
-    paramd = this.lPT;
+    this.kEC = ((Button)paramd);
+    paramd = this.lUu;
     if (paramd == null) {
-      p.bcb("mRootView");
+      p.bdF("mRootView");
     }
     paramd = paramd.findViewById(2131304103);
     p.g(paramd, "mRootView.findViewById(R.id.request_ok)");
-    this.kBm = ((Button)paramd);
-    paramd = this.lPT;
+    this.kEB = ((Button)paramd);
+    paramd = this.lUu;
     if (paramd == null) {
-      p.bcb("mRootView");
+      p.bdF("mRootView");
     }
     paramd = paramd.findViewById(2131304098);
     p.g(paramd, "mRootView.findViewById(R.id.request_desc)");
-    this.lPU = ((TextView)paramd);
-    paramd = this.lPT;
+    this.lUv = ((TextView)paramd);
+    paramd = this.lUu;
     if (paramd == null) {
-      p.bcb("mRootView");
+      p.bdF("mRootView");
     }
     paramd = paramd.findViewById(2131304825);
     p.g(paramd, "mRootView.findViewById(R.id.simple_detail_desc)");
-    this.lPI = ((TextView)paramd);
-    paramd = this.lPT;
+    this.lUj = ((TextView)paramd);
+    paramd = this.lUu;
     if (paramd == null) {
-      p.bcb("mRootView");
+      p.bdF("mRootView");
     }
     paramd = paramd.findViewById(2131304097);
     p.g(paramd, "mRootView.findViewById(R.id.request_content)");
-    this.lPV = ((LinearLayout)paramd);
-    paramd = this.lPT;
+    this.lUw = ((LinearLayout)paramd);
+    paramd = this.lUu;
     if (paramd == null) {
-      p.bcb("mRootView");
+      p.bdF("mRootView");
     }
     paramd = paramd.findViewById(2131304095);
     p.g(paramd, "mRootView.findViewById(R.id.request_apply_wording)");
-    this.lPK = ((TextView)paramd);
-    paramd = this.lPT;
+    this.lUl = ((TextView)paramd);
+    paramd = this.lUu;
     if (paramd == null) {
-      p.bcb("mRootView");
+      p.bdF("mRootView");
     }
     paramd = paramd.findViewById(2131304104);
     p.g(paramd, "mRootView.findViewById(R.id.request_recyclerview)");
     this.anl = ((RecyclerView)paramd);
     paramd = this.anl;
     if (paramd == null) {
-      p.bcb("mRecyclerView");
+      p.bdF("mRecyclerView");
     }
     getContext();
     paramd.setLayoutManager((RecyclerView.i)new LinearLayoutManager());
-    paramd = this.lPT;
+    paramd = this.lUu;
     if (paramd == null) {
-      p.bcb("mRootView");
+      p.bdF("mRootView");
     }
     paramd = paramd.findViewById(2131304101);
     p.g(paramd, "mRootView.findViewById(R.id.request_loading)");
-    this.fTl = paramd;
-    paramd = this.lPT;
+    this.fVr = paramd;
+    paramd = this.lUu;
     if (paramd == null) {
-      p.bcb("mRootView");
+      p.bdF("mRootView");
     }
     paramd = paramd.findViewById(2131304099);
     p.g(paramd, "mRootView.findViewById(R.id.request_function)");
-    this.lPW = ((TextView)paramd);
-    paramd = this.kBm;
+    this.lUx = ((TextView)paramd);
+    paramd = this.kEB;
     if (paramd == null) {
-      p.bcb("mBtnAccept");
+      p.bdF("mBtnAccept");
     }
     paramd.setOnClickListener((View.OnClickListener)new h(this));
-    paramd = this.kBn;
+    paramd = this.kEC;
     if (paramd == null) {
-      p.bcb("mBtnReject");
+      p.bdF("mBtnReject");
     }
     paramd.setOnClickListener((View.OnClickListener)new i(this));
     paramd = this.anl;
     if (paramd == null) {
-      p.bcb("mRecyclerView");
+      p.bdF("mRecyclerView");
     }
     paramd.setItemAnimator(null);
-    AppMethodBeat.o(189525);
+    AppMethodBeat.o(223785);
   }
   
-  private final void bsv()
+  private final void btg()
   {
-    AppMethodBeat.i(189524);
+    AppMethodBeat.i(223784);
     getOnCancel().invoke();
-    i(this.lPQ);
-    AppMethodBeat.o(189524);
+    i(this.lUr);
+    AppMethodBeat.o(223784);
   }
   
-  private final void bsw()
+  private final void bth()
   {
-    AppMethodBeat.i(189521);
-    Object localObject = this.lPT;
+    AppMethodBeat.i(223781);
+    Object localObject = this.lUu;
     if (localObject == null) {
-      p.bcb("mRootView");
+      p.bdF("mRootView");
     }
     localObject = (View)localObject;
     ((View)localObject).getViewTreeObserver().addOnPreDrawListener((ViewTreeObserver.OnPreDrawListener)new a((View)localObject, this));
-    AppMethodBeat.o(189521);
+    AppMethodBeat.o(223781);
   }
   
-  public final f a(com.tencent.mm.plugin.appbrand.d paramd, String paramString, ac paramac)
+  public final com.tencent.mm.plugin.appbrand.permission.g a(com.tencent.mm.plugin.appbrand.d paramd, String paramString, ac paramac)
   {
-    AppMethodBeat.i(189520);
+    AppMethodBeat.i(223780);
     p.h(paramd, "component");
     paramd = paramd.getContext();
     p.g(paramd, "component.context");
     paramd = new d(paramd);
     paramd.setExplainContent(paramString);
-    paramd = (f)paramd;
-    AppMethodBeat.o(189520);
+    paramd = (com.tencent.mm.plugin.appbrand.permission.g)paramd;
+    AppMethodBeat.o(223780);
     return paramd;
   }
   
   public final void dispatchConfigurationChanged(Configuration paramConfiguration)
   {
-    AppMethodBeat.i(189522);
+    AppMethodBeat.i(223782);
     super.dispatchConfigurationChanged(paramConfiguration);
-    paramConfiguration = this.lPT;
+    paramConfiguration = this.lUu;
     if (paramConfiguration == null) {
-      p.bcb("mRootView");
+      p.bdF("mRootView");
     }
     ((View)paramConfiguration).addOnLayoutChangeListener((View.OnLayoutChangeListener)new c(this));
-    AppMethodBeat.o(189522);
+    AppMethodBeat.o(223782);
   }
   
   public final boolean dispatchKeyEventPreIme(KeyEvent paramKeyEvent)
   {
-    AppMethodBeat.i(189523);
+    AppMethodBeat.i(223783);
     if ((t.aC((View)this)) && (paramKeyEvent != null) && (4 == paramKeyEvent.getKeyCode()))
     {
       KeyEvent.DispatcherState localDispatcherState = getKeyDispatcherState();
@@ -269,25 +267,25 @@ public final class c
         if ((paramKeyEvent.getAction() == 0) && (paramKeyEvent.getRepeatCount() == 0))
         {
           localDispatcherState.startTracking(paramKeyEvent, this);
-          AppMethodBeat.o(189523);
+          AppMethodBeat.o(223783);
           return true;
         }
         if ((1 == paramKeyEvent.getAction()) && (!paramKeyEvent.isCanceled()) && (localDispatcherState.isTracking(paramKeyEvent)))
         {
-          bsv();
-          AppMethodBeat.o(189523);
+          btg();
+          AppMethodBeat.o(223783);
           return true;
         }
       }
     }
     boolean bool = super.dispatchKeyEventPreIme(paramKeyEvent);
-    AppMethodBeat.o(189523);
+    AppMethodBeat.o(223783);
     return bool;
   }
   
   public final String getAppBrandName()
   {
-    return this.kBq;
+    return this.kEF;
   }
   
   public final String getIconUrl()
@@ -297,47 +295,47 @@ public final class c
   
   public final d.g.a.a<z> getOnAccept()
   {
-    return this.kBA;
+    return this.kEP;
   }
   
   public final d.g.a.a<z> getOnAddPhoneNumber()
   {
-    return this.kBF;
+    return this.kEU;
   }
   
   public final d.g.a.a<z> getOnCancel()
   {
-    return this.kBC;
+    return this.kER;
   }
   
   public final d.g.a.a<z> getOnDeny()
   {
-    return this.lPY;
+    return this.lUz;
   }
   
   public final d.g.a.a<z> getOnExplain()
   {
-    return this.kBE;
+    return this.kET;
   }
   
   public final d.g.a.a<z> getOnManagePhoneNumber()
   {
-    return this.kBG;
+    return this.kEV;
   }
   
   public final d.g.a.b<PhoneItem, z> getOnPhoneItemSelect()
   {
-    return this.lPZ;
+    return this.lUA;
   }
   
   public final ArrayList<PhoneItem> getPhoneItems()
   {
-    return this.kBz;
+    return this.kEO;
   }
   
-  public final void gr(boolean paramBoolean)
+  public final void gp(boolean paramBoolean)
   {
-    AppMethodBeat.i(189517);
+    AppMethodBeat.i(223777);
     ImageView localImageView = (ImageView)findViewById(2131304106);
     p.g(localImageView, "optionBtn");
     if (paramBoolean) {}
@@ -349,16 +347,16 @@ public final class c
       }
       localImageView.setImageDrawable(android.support.v4.content.b.l(getContext(), 2131230993));
       localImageView.setOnClickListener((View.OnClickListener)new c.p(this));
-      AppMethodBeat.o(189517);
+      AppMethodBeat.o(223777);
       return;
     }
     localImageView.setOnClickListener(null);
-    AppMethodBeat.o(189517);
+    AppMethodBeat.o(223777);
   }
   
   public final void h(com.tencent.mm.plugin.appbrand.d paramd)
   {
-    AppMethodBeat.i(189518);
+    AppMethodBeat.i(223778);
     p.h(paramd, "component");
     Context localContext = paramd.getContext();
     paramd = localContext;
@@ -379,13 +377,13 @@ public final class c
     requestFocus();
     paramd = (View)this;
     paramd.getViewTreeObserver().addOnPreDrawListener((ViewTreeObserver.OnPreDrawListener)new c.o(paramd));
-    int i = this.lPC;
+    int i = this.lUd;
     if (!al.isDarkMode()) {}
     for (boolean bool = true;; bool = false)
     {
-      L(i, bool);
-      setBackgroundColor(this.lPC);
-      localContext = this.lPQ.getContext();
+      M(i, bool);
+      setBackgroundColor(this.lUd);
+      localContext = this.lUr.getContext();
       paramd = localContext;
       if (!(localContext instanceof AppBrandUI)) {
         paramd = null;
@@ -394,60 +392,60 @@ public final class c
       if (paramd == null) {
         break;
       }
-      paramd.setNavigationbarColor(this.lPC);
-      AppMethodBeat.o(189518);
+      paramd.setNavigationbarColor(this.lUd);
+      AppMethodBeat.o(223778);
       return;
     }
-    AppMethodBeat.o(189518);
+    AppMethodBeat.o(223778);
   }
   
   public final void i(com.tencent.mm.plugin.appbrand.d paramd)
   {
-    AppMethodBeat.i(189519);
+    AppMethodBeat.i(223779);
     p.h(paramd, "component");
     animate().cancel();
     animate().translationY(getMeasuredHeight()).setDuration(300L).withEndAction((Runnable)new b(this)).start();
-    AppMethodBeat.o(189519);
+    AppMethodBeat.o(223779);
   }
   
   public final void setAppBrandName(String paramString)
   {
-    AppMethodBeat.i(189507);
-    this.kBq = paramString;
-    TextView localTextView = this.kAY;
+    AppMethodBeat.i(223767);
+    this.kEF = paramString;
+    TextView localTextView = this.kEn;
     if (localTextView == null) {
-      p.bcb("mNameTv");
+      p.bdF("mNameTv");
     }
     if (paramString != null) {}
     for (paramString = (CharSequence)paramString;; paramString = (CharSequence)"")
     {
       localTextView.setText(paramString);
-      AppMethodBeat.o(189507);
+      AppMethodBeat.o(223767);
       return;
     }
   }
   
   public final void setIconUrl(String paramString)
   {
-    AppMethodBeat.i(189508);
+    AppMethodBeat.i(223768);
     this.iconUrl = paramString;
-    paramString = com.tencent.mm.modelappbrand.a.b.aDV();
-    ImageView localImageView = this.kAX;
+    paramString = com.tencent.mm.modelappbrand.a.b.aEl();
+    ImageView localImageView = this.kEm;
     if (localImageView == null) {
-      p.bcb("mIconIv");
+      p.bdF("mIconIv");
     }
-    paramString.a(localImageView, getIconUrl(), 2131233241, (b.h)g.hLC);
-    AppMethodBeat.o(189508);
+    paramString.a(localImageView, getIconUrl(), 2131233241, (b.h)com.tencent.mm.modelappbrand.a.g.hOv);
+    AppMethodBeat.o(223768);
   }
   
   public final void setOnAccept(d.g.a.a<z> parama)
   {
-    AppMethodBeat.i(189510);
+    AppMethodBeat.i(223770);
     p.h(parama, "value");
-    this.kBA = parama;
-    parama = this.kBm;
+    this.kEP = parama;
+    parama = this.kEB;
     if (parama == null) {
-      p.bcb("mBtnAccept");
+      p.bdF("mBtnAccept");
     }
     parama = parama.getText();
     if ((parama == null) || (parama.length() == 0)) {}
@@ -455,43 +453,43 @@ public final class c
     {
       if (i != 0)
       {
-        parama = this.kBm;
+        parama = this.kEB;
         if (parama == null) {
-          p.bcb("mBtnAccept");
+          p.bdF("mBtnAccept");
         }
         Context localContext = getContext();
         p.g(localContext, "context");
         parama.setText((CharSequence)localContext.getResources().getString(2131756036));
       }
-      AppMethodBeat.o(189510);
+      AppMethodBeat.o(223770);
       return;
     }
   }
   
   public final void setOnAddPhoneNumber(d.g.a.a<z> parama)
   {
-    AppMethodBeat.i(189514);
+    AppMethodBeat.i(223774);
     p.h(parama, "<set-?>");
-    this.kBF = parama;
-    AppMethodBeat.o(189514);
+    this.kEU = parama;
+    AppMethodBeat.o(223774);
   }
   
   public final void setOnCancel(d.g.a.a<z> parama)
   {
-    AppMethodBeat.i(189512);
+    AppMethodBeat.i(223772);
     p.h(parama, "<set-?>");
-    this.kBC = parama;
-    AppMethodBeat.o(189512);
+    this.kER = parama;
+    AppMethodBeat.o(223772);
   }
   
   public final void setOnDeny(d.g.a.a<z> parama)
   {
-    AppMethodBeat.i(189511);
+    AppMethodBeat.i(223771);
     p.h(parama, "value");
-    this.lPY = parama;
-    parama = this.kBn;
+    this.lUz = parama;
+    parama = this.kEC;
     if (parama == null) {
-      p.bcb("mBtnReject");
+      p.bdF("mBtnReject");
     }
     parama = parama.getText();
     if ((parama == null) || (parama.length() == 0)) {}
@@ -499,43 +497,43 @@ public final class c
     {
       if (i != 0)
       {
-        parama = this.kBn;
+        parama = this.kEC;
         if (parama == null) {
-          p.bcb("mBtnReject");
+          p.bdF("mBtnReject");
         }
         Context localContext = getContext();
         p.g(localContext, "context");
         parama.setText((CharSequence)localContext.getResources().getString(2131756037));
       }
-      AppMethodBeat.o(189511);
+      AppMethodBeat.o(223771);
       return;
     }
   }
   
   public final void setOnExplain(d.g.a.a<z> parama)
   {
-    AppMethodBeat.i(189513);
+    AppMethodBeat.i(223773);
     p.h(parama, "<set-?>");
-    this.kBE = parama;
-    AppMethodBeat.o(189513);
+    this.kET = parama;
+    AppMethodBeat.o(223773);
   }
   
   public final void setOnManagePhoneNumber(d.g.a.a<z> parama)
   {
-    AppMethodBeat.i(189515);
+    AppMethodBeat.i(223775);
     p.h(parama, "<set-?>");
-    this.kBG = parama;
-    AppMethodBeat.o(189515);
+    this.kEV = parama;
+    AppMethodBeat.o(223775);
   }
   
   public final void setOnPhoneItemSelect(d.g.a.b<? super PhoneItem, z> paramb)
   {
-    AppMethodBeat.i(189516);
+    AppMethodBeat.i(223776);
     p.h(paramb, "value");
-    this.lPZ = paramb;
-    paramb = this.kBm;
+    this.lUA = paramb;
+    paramb = this.kEB;
     if (paramb == null) {
-      p.bcb("mBtnAccept");
+      p.bdF("mBtnAccept");
     }
     paramb = paramb.getText();
     if ((paramb == null) || (paramb.length() == 0)) {}
@@ -543,29 +541,29 @@ public final class c
     {
       if (i != 0)
       {
-        paramb = this.kBm;
+        paramb = this.kEB;
         if (paramb == null) {
-          p.bcb("mBtnAccept");
+          p.bdF("mBtnAccept");
         }
         Context localContext = getContext();
         p.g(localContext, "context");
         paramb.setText((CharSequence)localContext.getResources().getString(2131756036));
       }
-      AppMethodBeat.o(189516);
+      AppMethodBeat.o(223776);
       return;
     }
   }
   
   public final void setPhoneItems(ArrayList<PhoneItem> paramArrayList)
   {
-    AppMethodBeat.i(189509);
+    AppMethodBeat.i(223769);
     p.h(paramArrayList, "value");
-    this.kBz = paramArrayList;
-    this.lPQ.M((Runnable)new n(this));
-    AppMethodBeat.o(189509);
+    this.kEO = paramArrayList;
+    this.lUr.K((Runnable)new n(this));
+    AppMethodBeat.o(223769);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/appbrand/luggage/export/functionalpage/ui/FunctionalAuthorizePesenterViewUtilsKt$doOnPreDraw$1", "Landroid/view/ViewTreeObserver$OnPreDrawListener;", "onPreDraw", "", "plugin-appbrand-integration_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/appbrand/luggage/export/functionalpage/ui/FunctionalAuthorizePesenterViewUtilsKt$doOnPreDraw$1", "Landroid/view/ViewTreeObserver$OnPreDrawListener;", "onPreDraw", "", "plugin-appbrand-integration_release"})
   public static final class a
     implements ViewTreeObserver.OnPreDrawListener
   {
@@ -573,8 +571,8 @@ public final class c
     
     public final boolean onPreDraw()
     {
-      AppMethodBeat.i(189488);
-      this.lPR.getViewTreeObserver().removeOnPreDrawListener((ViewTreeObserver.OnPreDrawListener)this);
+      AppMethodBeat.i(223748);
+      this.lUs.getViewTreeObserver().removeOnPreDrawListener((ViewTreeObserver.OnPreDrawListener)this);
       Object localObject2 = c.g(jdField_this).getParent();
       Object localObject1 = localObject2;
       if (!(localObject2 instanceof ViewGroup)) {
@@ -584,7 +582,7 @@ public final class c
       if (localObject1 == null) {}
       for (;;)
       {
-        AppMethodBeat.o(189488);
+        AppMethodBeat.o(223748);
         return true;
         if (((ViewGroup)localObject1).getMeasuredHeight() > c.g(jdField_this).getMeasuredHeight())
         {
@@ -598,7 +596,7 @@ public final class c
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
   static final class b
     implements Runnable
   {
@@ -606,13 +604,13 @@ public final class c
     
     public final void run()
     {
-      AppMethodBeat.i(189489);
-      a.cF((View)this.lQa);
-      AppMethodBeat.o(189489);
+      AppMethodBeat.i(223749);
+      a.cG((View)this.lUB);
+      AppMethodBeat.o(223749);
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/appbrand/luggage/export/functionalpage/ui/FunctionalAuthorizePesenterViewUtilsKt$doOnNextLayout$1", "Landroid/view/View$OnLayoutChangeListener;", "onLayoutChange", "", "view", "Landroid/view/View;", "left", "", "top", "right", "bottom", "oldLeft", "oldTop", "oldRight", "oldBottom", "plugin-appbrand-integration_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/appbrand/luggage/export/functionalpage/ui/FunctionalAuthorizePesenterViewUtilsKt$doOnNextLayout$1", "Landroid/view/View$OnLayoutChangeListener;", "onLayoutChange", "", "view", "Landroid/view/View;", "left", "", "top", "right", "bottom", "oldLeft", "oldTop", "oldRight", "oldBottom", "plugin-appbrand-integration_release"})
   public static final class c
     implements View.OnLayoutChangeListener
   {
@@ -620,15 +618,15 @@ public final class c
     
     public final void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
     {
-      AppMethodBeat.i(189490);
+      AppMethodBeat.i(223750);
       p.h(paramView, "view");
       paramView.removeOnLayoutChangeListener((View.OnLayoutChangeListener)this);
-      c.h(this.lQa);
-      AppMethodBeat.o(189490);
+      c.h(this.lUB);
+      AppMethodBeat.o(223750);
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class h
     implements View.OnClickListener
   {
@@ -636,29 +634,29 @@ public final class c
     
     public final void onClick(View paramView)
     {
-      AppMethodBeat.i(189495);
+      AppMethodBeat.i(223755);
       Object localObject = new com.tencent.mm.hellhoundlib.b.b();
       ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/appbrand/luggage/export/functionalpage/ui/FunctionalPagePhoneNumberManagerPresenterUIView$onCreateView$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahq());
-      this.lQa.getOnAccept().invoke();
-      localObject = c.a(this.lQa).kBz.iterator();
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/appbrand/luggage/export/functionalpage/ui/FunctionalPagePhoneNumberManagerPresenterUIView$onCreateView$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahF());
+      this.lUB.getOnAccept().invoke();
+      localObject = c.a(this.lUB).kEO.iterator();
       while (((Iterator)localObject).hasNext())
       {
         paramView = (PhoneItem)((Iterator)localObject).next();
-        if (paramView.mjQ)
+        if (paramView.moN)
         {
-          localObject = this.lQa.getOnPhoneItemSelect();
+          localObject = this.lUB.getOnPhoneItemSelect();
           p.g(paramView, "phoneItem");
           ((d.g.a.b)localObject).invoke(paramView);
         }
       }
-      this.lQa.i(c.b(this.lQa));
+      this.lUB.i(c.b(this.lUB));
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/appbrand/luggage/export/functionalpage/ui/FunctionalPagePhoneNumberManagerPresenterUIView$onCreateView$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(189495);
+      AppMethodBeat.o(223755);
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class i
     implements View.OnClickListener
   {
@@ -666,18 +664,18 @@ public final class c
     
     public final void onClick(View paramView)
     {
-      AppMethodBeat.i(189496);
+      AppMethodBeat.i(223756);
       com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
       localb.bd(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/appbrand/luggage/export/functionalpage/ui/FunctionalPagePhoneNumberManagerPresenterUIView$onCreateView$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-      this.lQa.getOnDeny().invoke();
-      this.lQa.i(c.b(this.lQa));
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/appbrand/luggage/export/functionalpage/ui/FunctionalPagePhoneNumberManagerPresenterUIView$onCreateView$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+      this.lUB.getOnDeny().invoke();
+      this.lUB.i(c.b(this.lUB));
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/appbrand/luggage/export/functionalpage/ui/FunctionalPagePhoneNumberManagerPresenterUIView$onCreateView$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(189496);
+      AppMethodBeat.o(223756);
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
   static final class n
     implements Runnable
   {
@@ -685,81 +683,81 @@ public final class c
     
     public final void run()
     {
-      AppMethodBeat.i(189504);
-      Object localObject = this.lQa;
-      String str = c.b(this.lQa).getAppId();
+      AppMethodBeat.i(223764);
+      Object localObject = this.lUB;
+      String str = c.b(this.lUB).getAppId();
       p.g(str, "component.appId");
-      Context localContext = this.lQa.getContext();
+      Context localContext = this.lUB.getContext();
       p.g(localContext, "context");
-      c.a((c)localObject, new q(str, localContext, this.lQa.getPhoneItems()));
-      c.c(this.lQa).setAdapter((RecyclerView.a)c.a(this.lQa));
-      c.d(this.lQa).setVisibility(0);
-      if (this.lQa.getPhoneItems().size() == 0)
+      c.a((c)localObject, new q(str, localContext, this.lUB.getPhoneItems()));
+      c.c(this.lUB).setAdapter((RecyclerView.a)c.a(this.lUB));
+      c.d(this.lUB).setVisibility(0);
+      if (this.lUB.getPhoneItems().size() == 0)
       {
-        c.e(this.lQa).setVisibility(0);
-        c.c(this.lQa).setVisibility(8);
-        c.f(this.lQa).setVisibility(8);
-        AppMethodBeat.o(189504);
+        c.e(this.lUB).setVisibility(0);
+        c.c(this.lUB).setVisibility(8);
+        c.f(this.lUB).setVisibility(8);
+        AppMethodBeat.o(223764);
         return;
       }
-      if (this.lQa.getPhoneItems().size() == 1)
+      if (this.lUB.getPhoneItems().size() == 1)
       {
-        c.e(this.lQa).setVisibility(8);
-        c.c(this.lQa).setVisibility(0);
-        localObject = c.c(this.lQa).getAdapter();
+        c.e(this.lUB).setVisibility(8);
+        c.c(this.lUB).setVisibility(0);
+        localObject = c.c(this.lUB).getAdapter();
         if (localObject != null) {
           ((RecyclerView.a)localObject).notifyDataSetChanged();
         }
-        c.f(this.lQa).setVisibility(0);
-        c.f(this.lQa).setText((CharSequence)this.lQa.getContext().getString(2131756029));
-        c.f(this.lQa).setOnClickListener((View.OnClickListener)new View.OnClickListener()
+        c.f(this.lUB).setVisibility(0);
+        c.f(this.lUB).setText((CharSequence)this.lUB.getContext().getString(2131756029));
+        c.f(this.lUB).setOnClickListener((View.OnClickListener)new View.OnClickListener()
         {
           public final void onClick(View paramAnonymousView)
           {
-            AppMethodBeat.i(189502);
+            AppMethodBeat.i(223762);
             com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
             localb.bd(paramAnonymousView);
-            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/appbrand/luggage/export/functionalpage/ui/FunctionalPagePhoneNumberManagerPresenterUIView$phoneItems$1$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-            this.lQi.lQa.getOnAddPhoneNumber().invoke();
+            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/appbrand/luggage/export/functionalpage/ui/FunctionalPagePhoneNumberManagerPresenterUIView$phoneItems$1$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+            this.lUJ.lUB.getOnAddPhoneNumber().invoke();
             com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/appbrand/luggage/export/functionalpage/ui/FunctionalPagePhoneNumberManagerPresenterUIView$phoneItems$1$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-            AppMethodBeat.o(189502);
+            AppMethodBeat.o(223762);
           }
         });
-        localObject = u.mkv;
-        u.bwy();
-        AppMethodBeat.o(189504);
+        localObject = u.mps;
+        u.bxp();
+        AppMethodBeat.o(223764);
         return;
       }
-      c.e(this.lQa).setVisibility(8);
-      c.c(this.lQa).setVisibility(0);
-      c.f(this.lQa).setVisibility(0);
-      localObject = c.c(this.lQa).getAdapter();
+      c.e(this.lUB).setVisibility(8);
+      c.c(this.lUB).setVisibility(0);
+      c.f(this.lUB).setVisibility(0);
+      localObject = c.c(this.lUB).getAdapter();
       if (localObject != null) {
         ((RecyclerView.a)localObject).notifyDataSetChanged();
       }
-      c.f(this.lQa).setText((CharSequence)this.lQa.getContext().getString(2131756027));
-      c.f(this.lQa).setOnClickListener((View.OnClickListener)new View.OnClickListener()
+      c.f(this.lUB).setText((CharSequence)this.lUB.getContext().getString(2131756027));
+      c.f(this.lUB).setOnClickListener((View.OnClickListener)new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
-          AppMethodBeat.i(189503);
+          AppMethodBeat.i(223763);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
           localb.bd(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/appbrand/luggage/export/functionalpage/ui/FunctionalPagePhoneNumberManagerPresenterUIView$phoneItems$1$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-          this.lQi.lQa.getOnManagePhoneNumber().invoke();
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/appbrand/luggage/export/functionalpage/ui/FunctionalPagePhoneNumberManagerPresenterUIView$phoneItems$1$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+          this.lUJ.lUB.getOnManagePhoneNumber().invoke();
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/appbrand/luggage/export/functionalpage/ui/FunctionalPagePhoneNumberManagerPresenterUIView$phoneItems$1$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-          AppMethodBeat.o(189503);
+          AppMethodBeat.o(223763);
         }
       });
-      localObject = u.mkv;
-      u.bwy();
-      AppMethodBeat.o(189504);
+      localObject = u.mps;
+      u.bxp();
+      AppMethodBeat.o(223764);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.luggage.export.functionalpage.a.c
  * JD-Core Version:    0.7.0.1
  */

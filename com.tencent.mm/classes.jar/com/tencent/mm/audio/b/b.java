@@ -7,77 +7,77 @@ import android.os.Looper;
 import com.tencent.e.h;
 import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bh.d;
-import com.tencent.mm.bh.d.a;
-import com.tencent.mm.bh.d.b;
+import com.tencent.mm.bg.d;
+import com.tencent.mm.bg.d.a;
+import com.tencent.mm.bg.d.b;
 import com.tencent.mm.compatible.util.f.a;
-import com.tencent.mm.g.a.sr;
+import com.tencent.mm.g.a.ss;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ah;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.ai;
 import java.util.Arrays;
 import java.util.concurrent.BlockingQueue;
 
 public final class b
 {
-  private static Object dgq;
-  private boolean clz;
-  private int dgA;
-  private int dgB;
-  private c.a dgC;
-  private int dgf;
-  private String dgg;
-  private int dgh;
-  private final Object dgi;
-  private com.tencent.mm.audio.e.c dgj;
-  private a dgk;
-  private com.tencent.mm.bh.c dgl;
-  private d.a dgm;
-  private long dgn;
-  private long dgo;
-  private int dgp;
-  private int dgr;
-  private boolean dgs;
-  public MediaRecorder dgt;
-  public c dgu;
-  public com.tencent.mm.compatible.b.c.a dgv;
-  public b dgw;
-  private volatile boolean dgx;
-  private long dgy;
-  private f.a dgz;
+  private static Object dhs;
+  private boolean clB;
+  private long dhA;
+  private f.a dhB;
+  private int dhC;
+  private int dhD;
+  private c.a dhE;
+  private int dhh;
+  private String dhi;
+  private int dhj;
+  private final Object dhk;
+  private com.tencent.mm.audio.e.c dhl;
+  private a dhm;
+  private com.tencent.mm.bg.c dhn;
+  private d.a dho;
+  private long dhp;
+  private long dhq;
+  private int dhr;
+  private int dht;
+  private boolean dhu;
+  public MediaRecorder dhv;
+  public c dhw;
+  public com.tencent.mm.compatible.b.c.a dhx;
+  public b dhy;
+  private volatile boolean dhz;
   private int mSampleRate;
   
   static
   {
     AppMethodBeat.i(148328);
-    dgq = new Object();
+    dhs = new Object();
     AppMethodBeat.o(148328);
   }
   
   public b(com.tencent.mm.compatible.b.c.a parama)
   {
     AppMethodBeat.i(148315);
-    this.dgf = 0;
-    this.dgg = null;
-    this.dgi = new Object();
-    this.dgj = null;
-    this.dgl = null;
-    this.dgm = null;
-    this.dgn = 0L;
-    this.dgo = 0L;
-    this.dgp = 0;
+    this.dhh = 0;
+    this.dhi = null;
+    this.dhk = new Object();
+    this.dhl = null;
+    this.dhn = null;
+    this.dho = null;
+    this.dhp = 0L;
+    this.dhq = 0L;
+    this.dhr = 0;
     this.mSampleRate = 8000;
-    this.dgr = 16000;
-    this.dgs = false;
-    this.dgu = null;
-    this.dgx = false;
-    this.dgy = -1L;
-    this.dgz = new f.a();
-    this.dgA = 0;
-    this.dgB = 0;
-    this.dgC = new c.a()
+    this.dht = 16000;
+    this.dhu = false;
+    this.dhw = null;
+    this.dhz = false;
+    this.dhA = -1L;
+    this.dhB = new f.a();
+    this.dhC = 0;
+    this.dhD = 0;
+    this.dhE = new c.a()
     {
       private static byte[] v(byte[] paramAnonymousArrayOfByte, int paramAnonymousInt)
       {
@@ -120,28 +120,28 @@ public final class b
       public final void u(byte[] paramAnonymousArrayOfByte, int paramAnonymousInt)
       {
         AppMethodBeat.i(148310);
-        ad.i("MicroMsg.MMAudioRecorder", "onRecPcmDataReady, markStop: %s", new Object[] { Boolean.valueOf(b.c(b.this)) });
-        if ((b.d(b.this) == b.b.dgJ) && (!b.c(b.this)))
+        ae.i("MicroMsg.MMAudioRecorder", "onRecPcmDataReady, markStop: %s", new Object[] { Boolean.valueOf(b.c(b.this)) });
+        if ((b.d(b.this) == b.b.dhL) && (!b.c(b.this)))
         {
-          ad.w("MicroMsg.MMAudioRecorder", "recorder has been stopped");
+          ae.w("MicroMsg.MMAudioRecorder", "recorder has been stopped");
           AppMethodBeat.o(148310);
           return;
         }
-        if (com.tencent.mm.plugin.audio.c.a.bGC().audioManager.isMusicActive()) {
-          com.tencent.mm.audio.c.b.a.hY(0);
+        if (com.tencent.mm.plugin.audio.c.a.bHy().audioManager.isMusicActive()) {
+          com.tencent.mm.audio.c.b.a.ia(0);
         }
         com.tencent.mm.audio.c.b.a.e(paramAnonymousInt, paramAnonymousArrayOfByte);
         boolean bool1 = false;
         boolean bool2 = false;
-        synchronized (b.PM())
+        synchronized (b.PL())
         {
           if (b.c(b.this))
           {
             if (b.e(b.this) != null)
             {
-              ad.i("MicroMsg.MMAudioRecorder", "do stop pcm recorder, last frame data: %s, read: %s", new Object[] { paramAnonymousArrayOfByte, Integer.valueOf(paramAnonymousInt) });
-              b.e(b.this).PG();
-              b.e(b.this).dhh = null;
+              ae.i("MicroMsg.MMAudioRecorder", "do stop pcm recorder, last frame data: %s, read: %s", new Object[] { paramAnonymousArrayOfByte, Integer.valueOf(paramAnonymousInt) });
+              b.e(b.this).PF();
+              b.e(b.this).dij = null;
               b.f(b.this);
               bool1 = true;
               b.g(b.this);
@@ -149,17 +149,17 @@ public final class b
           }
           else
           {
-            long l = bt.Df(b.h(b.this));
+            long l = bu.DD(b.h(b.this));
             if ((b.i(b.this) <= 0L) || (l <= b.i(b.this))) {
               break label291;
             }
-            ad.w("MicroMsg.MMAudioRecorder", "Stop now ! expire duration ms:".concat(String.valueOf(l)));
-            new ap(Looper.getMainLooper()).post(new Runnable()
+            ae.w("MicroMsg.MMAudioRecorder", "Stop now ! expire duration ms:".concat(String.valueOf(l)));
+            new aq(Looper.getMainLooper()).post(new Runnable()
             {
               public final void run()
               {
                 AppMethodBeat.i(148308);
-                b.this.Gv();
+                b.this.GB();
                 if (b.a(b.this) != null) {
                   b.a(b.this).onError();
                 }
@@ -169,25 +169,25 @@ public final class b
             AppMethodBeat.o(148310);
             return;
           }
-          ad.i("MicroMsg.MMAudioRecorder", "stop now, but recorder is null");
+          ae.i("MicroMsg.MMAudioRecorder", "stop now, but recorder is null");
           bool1 = bool2;
         }
         label291:
-        ad.i("MicroMsg.MMAudioRecorder", "read :" + paramAnonymousInt + " time: " + b.j(b.this).abj() + " dataReadedCnt: " + b.k(b.this));
+        ae.i("MicroMsg.MMAudioRecorder", "read :" + paramAnonymousInt + " time: " + b.j(b.this).abs() + " dataReadedCnt: " + b.k(b.this));
         if (paramAnonymousInt < 0)
         {
-          if (b.d(b.this) == b.b.dgJ)
+          if (b.d(b.this) == b.b.dhL)
           {
-            ad.w("MicroMsg.MMAudioRecorder", "recorder has been stopped");
+            ae.w("MicroMsg.MMAudioRecorder", "recorder has been stopped");
             AppMethodBeat.o(148310);
             return;
           }
-          new ap(Looper.getMainLooper()).post(new Runnable()
+          new aq(Looper.getMainLooper()).post(new Runnable()
           {
             public final void run()
             {
               AppMethodBeat.i(148309);
-              b.this.Gv();
+              b.this.GB();
               if (b.a(b.this) != null) {
                 b.a(b.this).onError();
               }
@@ -197,11 +197,11 @@ public final class b
           AppMethodBeat.o(148310);
           return;
         }
-        ad.i("MicroMsg.MMAudioRecorder", "publish SceneVoiceRcdDataEvent, buf.len %d, len: %d.", new Object[] { Integer.valueOf(paramAnonymousArrayOfByte.length), Integer.valueOf(paramAnonymousInt) });
-        ??? = new sr();
-        ((sr)???).dHk.buf = Arrays.copyOf(paramAnonymousArrayOfByte, paramAnonymousArrayOfByte.length);
-        ((sr)???).dHk.len = paramAnonymousInt;
-        com.tencent.mm.sdk.b.a.IbL.l((com.tencent.mm.sdk.b.b)???);
+        ae.i("MicroMsg.MMAudioRecorder", "publish SceneVoiceRcdDataEvent, buf.len %d, len: %d.", new Object[] { Integer.valueOf(paramAnonymousArrayOfByte.length), Integer.valueOf(paramAnonymousInt) });
+        ??? = new ss();
+        ((ss)???).dIq.buf = Arrays.copyOf(paramAnonymousArrayOfByte, paramAnonymousArrayOfByte.length);
+        ((ss)???).dIq.len = paramAnonymousInt;
+        com.tencent.mm.sdk.b.a.IvT.l((com.tencent.mm.sdk.b.b)???);
         b.a(b.this, b.k(b.this) + paramAnonymousInt);
         for (;;)
         {
@@ -210,39 +210,39 @@ public final class b
           int j;
           synchronized (b.l(b.this))
           {
-            if ((b.m(b.this) == null) && ((b.n(b.this) == com.tencent.mm.compatible.b.c.a.fVA) || (b.n(b.this) == com.tencent.mm.compatible.b.c.a.fVC)) && (b.o(b.this) != null) && (b.p(b.this)))
+            if ((b.m(b.this) == null) && ((b.n(b.this) == com.tencent.mm.compatible.b.c.a.fXG) || (b.n(b.this) == com.tencent.mm.compatible.b.c.a.fXI)) && (b.o(b.this) != null) && (b.p(b.this)))
             {
-              b.a(b.this, new com.tencent.mm.bh.c());
+              b.a(b.this, new com.tencent.mm.bg.c());
               localObject2 = b.m(b.this);
               i = b.q(b.this);
-              ad.i("MicroMsg.SpeexEncoderWorker", "init ");
-              ((com.tencent.mm.bh.c)localObject2).inz.clear();
+              ae.i("MicroMsg.SpeexEncoderWorker", "init ");
+              ((com.tencent.mm.bg.c)localObject2).iqt.clear();
               localObject3 = new d.b();
-              ((d.b)localObject3).inP = d.getPrefix();
+              ((d.b)localObject3).iqJ = d.getPrefix();
               ((d.b)localObject3).sampleRate = i;
-              ((d.b)localObject3).inv = 1;
+              ((d.b)localObject3).iqp = 1;
               ((d.b)localObject3).audioFormat = 16;
-              ((com.tencent.mm.bh.c)localObject2).mFileName = String.format("%s%d_%d_%d_%d", new Object[] { ((d.b)localObject3).inP, Integer.valueOf(((d.b)localObject3).sampleRate), Integer.valueOf(((d.b)localObject3).inv), Integer.valueOf(((d.b)localObject3).audioFormat), Long.valueOf(System.currentTimeMillis()) });
+              ((com.tencent.mm.bg.c)localObject2).mFileName = String.format("%s%d_%d_%d_%d", new Object[] { ((d.b)localObject3).iqJ, Integer.valueOf(((d.b)localObject3).sampleRate), Integer.valueOf(((d.b)localObject3).iqp), Integer.valueOf(((d.b)localObject3).audioFormat), Long.valueOf(System.currentTimeMillis()) });
             }
             if (b.m(b.this) != null)
             {
               localObject2 = b.m(b.this);
-              ad.d("MicroMsg.SpeexEncoderWorker", "push into queue queueLen:" + ((com.tencent.mm.bh.c)localObject2).inz.size());
+              ae.d("MicroMsg.SpeexEncoderWorker", "push into queue queueLen:" + ((com.tencent.mm.bg.c)localObject2).iqt.size());
               if ((paramAnonymousArrayOfByte != null) && (paramAnonymousArrayOfByte.length > 0)) {
-                ((com.tencent.mm.bh.c)localObject2).inz.add(new g.a(paramAnonymousArrayOfByte, paramAnonymousArrayOfByte.length));
+                ((com.tencent.mm.bg.c)localObject2).iqt.add(new g.a(paramAnonymousArrayOfByte, paramAnonymousArrayOfByte.length));
               }
             }
-            if (b.n(b.this) != com.tencent.mm.compatible.b.c.a.fVC) {
+            if (b.n(b.this) != com.tencent.mm.compatible.b.c.a.fXI) {
               break;
             }
             if (b.r(b.this) == null)
             {
               b.a(b.this, new com.tencent.mm.audio.e.c(b.q(b.this), b.s(b.this)));
-              b.r(b.this).gC(b.t(b.this));
+              b.r(b.this).gI(b.t(b.this));
             }
             w(paramAnonymousArrayOfByte, paramAnonymousInt);
             localObject2 = b.r(b.this);
-            if (((com.tencent.mm.audio.e.c)localObject2).dja == null)
+            if (((com.tencent.mm.audio.e.c)localObject2).dkc == null)
             {
               i = -1;
               if (paramAnonymousArrayOfByte != null) {
@@ -250,37 +250,37 @@ public final class b
               }
               j = -1;
               label890:
-              ad.i("MicroMsg.SilkWriter", "pushBuf queueLen:%d bufLen:%d len:%d, lastFrame: %s", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(paramAnonymousInt), Boolean.valueOf(bool1) });
+              ae.i("MicroMsg.SilkWriter", "pushBuf queueLen:%d bufLen:%d len:%d, lastFrame: %s", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(paramAnonymousInt), Boolean.valueOf(bool1) });
               if (paramAnonymousInt <= 0) {}
             }
           }
           try
           {
-            if (((com.tencent.mm.audio.e.c)localObject2).djb) {
-              ad.e("MicroMsg.SilkWriter", "already stop");
+            if (((com.tencent.mm.audio.e.c)localObject2).dkd) {
+              ae.e("MicroMsg.SilkWriter", "already stop");
             }
             for (;;)
             {
               return;
-              i = ((com.tencent.mm.audio.e.c)localObject2).dja.size();
+              i = ((com.tencent.mm.audio.e.c)localObject2).dkc.size();
               break;
               label983:
               j = paramAnonymousArrayOfByte.length;
               break label890;
-              if (((com.tencent.mm.audio.e.c)localObject2).djh == null)
+              if (((com.tencent.mm.audio.e.c)localObject2).dkj == null)
               {
-                ((com.tencent.mm.audio.e.c)localObject2).djh = new com.tencent.mm.audio.e.c.a((com.tencent.mm.audio.e.c)localObject2, (byte)0);
-                h.LTJ.aR(((com.tencent.mm.audio.e.c)localObject2).djh);
+                ((com.tencent.mm.audio.e.c)localObject2).dkj = new com.tencent.mm.audio.e.c.a((com.tencent.mm.audio.e.c)localObject2, (byte)0);
+                h.MqF.aO(((com.tencent.mm.audio.e.c)localObject2).dkj);
               }
-              localObject3 = ((com.tencent.mm.audio.e.c)localObject2).dja;
+              localObject3 = ((com.tencent.mm.audio.e.c)localObject2).dkc;
               if (localObject3 != null) {
                 try
                 {
-                  ((com.tencent.mm.audio.e.c)localObject2).dja.add(new g.a(paramAnonymousArrayOfByte, paramAnonymousInt, bool1));
+                  ((com.tencent.mm.audio.e.c)localObject2).dkc.add(new g.a(paramAnonymousArrayOfByte, paramAnonymousInt, bool1));
                 }
                 catch (Exception paramAnonymousArrayOfByte)
                 {
-                  ad.printErrStackTrace("MicroMsg.SilkWriter", paramAnonymousArrayOfByte, "pushBuf add queue error:%s", new Object[] { paramAnonymousArrayOfByte.getMessage() });
+                  ae.printErrStackTrace("MicroMsg.SilkWriter", paramAnonymousArrayOfByte, "pushBuf add queue error:%s", new Object[] { paramAnonymousArrayOfByte.getMessage() });
                 }
               }
             }
@@ -303,39 +303,39 @@ public final class b
         AppMethodBeat.o(148310);
       }
     };
-    this.clz = false;
-    ad.i("MicroMsg.MMAudioRecorder", "MMAudioRecorder recMode: ".concat(String.valueOf(parama)));
-    this.dgv = parama;
-    if (!g.b.PW())
+    this.clB = false;
+    ae.i("MicroMsg.MMAudioRecorder", "MMAudioRecorder recMode: ".concat(String.valueOf(parama)));
+    this.dhx = parama;
+    if (!g.b.PV())
     {
-      ad.i("MicroMsg.MMAudioRecorder", "can't use silk encode, force to use amr mode now");
-      this.dgv = com.tencent.mm.compatible.b.c.a.fVB;
+      ae.i("MicroMsg.MMAudioRecorder", "can't use silk encode, force to use amr mode now");
+      this.dhx = com.tencent.mm.compatible.b.c.a.fXH;
     }
-    if (this.dgv == com.tencent.mm.compatible.b.c.a.fVB)
+    if (this.dhx == com.tencent.mm.compatible.b.c.a.fXH)
     {
-      this.dgh = 7;
-      this.dgt = new com.tencent.mm.compatible.h.e();
+      this.dhj = 7;
+      this.dhv = new com.tencent.mm.compatible.h.e();
     }
     for (;;)
     {
-      this.dgy = -1L;
-      this.dgx = false;
+      this.dhA = -1L;
+      this.dhz = false;
       AppMethodBeat.o(148315);
       return;
-      PL();
-      this.dgh = 1;
+      PK();
+      this.dhj = 1;
     }
   }
   
   /* Error */
-  public final boolean Gv()
+  public final boolean GB()
   {
     // Byte code:
     //   0: ldc 218
     //   2: invokestatic 68	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: aload_0
-    //   6: getfield 148	com/tencent/mm/audio/b/b:dgv	Lcom/tencent/mm/compatible/b/c$a;
-    //   9: getstatic 161	com/tencent/mm/compatible/b/c$a:fVB	Lcom/tencent/mm/compatible/b/c$a;
+    //   6: getfield 148	com/tencent/mm/audio/b/b:dhx	Lcom/tencent/mm/compatible/b/c$a;
+    //   9: getstatic 161	com/tencent/mm/compatible/b/c$a:fXH	Lcom/tencent/mm/compatible/b/c$a;
     //   12: if_acmpne +54 -> 66
     //   15: ldc 129
     //   17: ldc 220
@@ -344,21 +344,21 @@ public final class b
     //   23: dup
     //   24: iconst_0
     //   25: aload_0
-    //   26: getfield 168	com/tencent/mm/audio/b/b:dgt	Landroid/media/MediaRecorder;
+    //   26: getfield 168	com/tencent/mm/audio/b/b:dhv	Landroid/media/MediaRecorder;
     //   29: aastore
-    //   30: invokestatic 223	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   30: invokestatic 223	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   33: aload_0
-    //   34: getfield 168	com/tencent/mm/audio/b/b:dgt	Landroid/media/MediaRecorder;
+    //   34: getfield 168	com/tencent/mm/audio/b/b:dhv	Landroid/media/MediaRecorder;
     //   37: ifnull +22 -> 59
     //   40: aload_0
-    //   41: getfield 168	com/tencent/mm/audio/b/b:dgt	Landroid/media/MediaRecorder;
+    //   41: getfield 168	com/tencent/mm/audio/b/b:dhv	Landroid/media/MediaRecorder;
     //   44: invokevirtual 228	android/media/MediaRecorder:stop	()V
     //   47: aload_0
-    //   48: getfield 168	com/tencent/mm/audio/b/b:dgt	Landroid/media/MediaRecorder;
+    //   48: getfield 168	com/tencent/mm/audio/b/b:dhv	Landroid/media/MediaRecorder;
     //   51: invokevirtual 231	android/media/MediaRecorder:release	()V
     //   54: aload_0
     //   55: aconst_null
-    //   56: putfield 168	com/tencent/mm/audio/b/b:dgt	Landroid/media/MediaRecorder;
+    //   56: putfield 168	com/tencent/mm/audio/b/b:dhv	Landroid/media/MediaRecorder;
     //   59: ldc 218
     //   61: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   64: iconst_1
@@ -373,24 +373,24 @@ public final class b
     //   81: ldc 235
     //   83: invokespecial 238	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   86: aload_0
-    //   87: getfield 180	com/tencent/mm/audio/b/b:dgw	Lcom/tencent/mm/audio/b/b$b;
+    //   87: getfield 180	com/tencent/mm/audio/b/b:dhy	Lcom/tencent/mm/audio/b/b$b;
     //   90: invokevirtual 242	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   93: invokevirtual 246	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   96: invokestatic 146	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   96: invokestatic 146	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   99: aload_0
-    //   100: getfield 180	com/tencent/mm/audio/b/b:dgw	Lcom/tencent/mm/audio/b/b$b;
-    //   103: getstatic 249	com/tencent/mm/audio/b/b$b:dgF	Lcom/tencent/mm/audio/b/b$b;
+    //   100: getfield 180	com/tencent/mm/audio/b/b:dhy	Lcom/tencent/mm/audio/b/b$b;
+    //   103: getstatic 249	com/tencent/mm/audio/b/b$b:dhH	Lcom/tencent/mm/audio/b/b$b;
     //   106: if_acmpne +43 -> 149
-    //   109: getstatic 255	com/tencent/mm/plugin/report/service/g:yhR	Lcom/tencent/mm/plugin/report/service/g;
+    //   109: getstatic 255	com/tencent/mm/plugin/report/service/g:yxI	Lcom/tencent/mm/plugin/report/service/g;
     //   112: ldc2_w 256
     //   115: ldc2_w 258
     //   118: lconst_1
     //   119: iconst_1
     //   120: invokevirtual 263	com/tencent/mm/plugin/report/service/g:idkeyStat	(JJJZ)V
     //   123: aload_0
-    //   124: getfield 127	com/tencent/mm/audio/b/b:clz	Z
+    //   124: getfield 127	com/tencent/mm/audio/b/b:clB	Z
     //   127: ifne +17 -> 144
-    //   130: getstatic 255	com/tencent/mm/plugin/report/service/g:yhR	Lcom/tencent/mm/plugin/report/service/g;
+    //   130: getstatic 255	com/tencent/mm/plugin/report/service/g:yxI	Lcom/tencent/mm/plugin/report/service/g;
     //   133: ldc2_w 256
     //   136: ldc2_w 264
     //   139: lconst_1
@@ -398,44 +398,44 @@ public final class b
     //   141: invokevirtual 263	com/tencent/mm/plugin/report/service/g:idkeyStat	(JJJZ)V
     //   144: aload_0
     //   145: iconst_1
-    //   146: putfield 127	com/tencent/mm/audio/b/b:clz	Z
+    //   146: putfield 127	com/tencent/mm/audio/b/b:clB	Z
     //   149: aload_0
-    //   150: getfield 180	com/tencent/mm/audio/b/b:dgw	Lcom/tencent/mm/audio/b/b$b;
-    //   153: getstatic 268	com/tencent/mm/audio/b/b$b:dgH	Lcom/tencent/mm/audio/b/b$b;
+    //   150: getfield 180	com/tencent/mm/audio/b/b:dhy	Lcom/tencent/mm/audio/b/b$b;
+    //   153: getstatic 268	com/tencent/mm/audio/b/b$b:dhJ	Lcom/tencent/mm/audio/b/b$b;
     //   156: if_acmpeq +25 -> 181
     //   159: ldc 129
     //   161: ldc_w 270
-    //   164: invokestatic 272	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   164: invokestatic 272	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   167: aload_0
-    //   168: getstatic 275	com/tencent/mm/audio/b/b$b:dgI	Lcom/tencent/mm/audio/b/b$b;
-    //   171: putfield 180	com/tencent/mm/audio/b/b:dgw	Lcom/tencent/mm/audio/b/b$b;
+    //   168: getstatic 275	com/tencent/mm/audio/b/b$b:dhK	Lcom/tencent/mm/audio/b/b$b;
+    //   171: putfield 180	com/tencent/mm/audio/b/b:dhy	Lcom/tencent/mm/audio/b/b$b;
     //   174: ldc 218
     //   176: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   179: iconst_1
     //   180: ireturn
-    //   181: getstatic 73	com/tencent/mm/audio/b/b:dgq	Ljava/lang/Object;
+    //   181: getstatic 73	com/tencent/mm/audio/b/b:dhs	Ljava/lang/Object;
     //   184: astore 10
     //   186: aload 10
     //   188: monitorenter
     //   189: aload_0
-    //   190: getfield 105	com/tencent/mm/audio/b/b:dgu	Lcom/tencent/mm/audio/b/c;
+    //   190: getfield 105	com/tencent/mm/audio/b/b:dhw	Lcom/tencent/mm/audio/b/c;
     //   193: ifnull +406 -> 599
     //   196: aload_0
     //   197: iconst_1
-    //   198: putfield 107	com/tencent/mm/audio/b/b:dgx	Z
+    //   198: putfield 107	com/tencent/mm/audio/b/b:dhz	Z
     //   201: aload 10
     //   203: monitorexit
     //   204: aload 9
-    //   206: invokevirtual 279	com/tencent/mm/compatible/util/f$a:abj	()J
+    //   206: invokevirtual 279	com/tencent/mm/compatible/util/f$a:abs	()J
     //   209: lstore_3
     //   210: aload_0
-    //   211: getstatic 282	com/tencent/mm/audio/b/b$b:dgJ	Lcom/tencent/mm/audio/b/b$b;
-    //   214: putfield 180	com/tencent/mm/audio/b/b:dgw	Lcom/tencent/mm/audio/b/b$b;
+    //   211: getstatic 282	com/tencent/mm/audio/b/b$b:dhL	Lcom/tencent/mm/audio/b/b$b;
+    //   214: putfield 180	com/tencent/mm/audio/b/b:dhy	Lcom/tencent/mm/audio/b/b$b;
     //   217: aload 9
-    //   219: invokevirtual 279	com/tencent/mm/compatible/util/f$a:abj	()J
+    //   219: invokevirtual 279	com/tencent/mm/compatible/util/f$a:abs	()J
     //   222: lstore 5
     //   224: aload_0
-    //   225: getfield 107	com/tencent/mm/audio/b/b:dgx	Z
+    //   225: getfield 107	com/tencent/mm/audio/b/b:dhz	Z
     //   228: ifeq +145 -> 373
     //   231: ldc 129
     //   233: ldc_w 284
@@ -444,16 +444,16 @@ public final class b
     //   240: dup
     //   241: iconst_0
     //   242: aload_0
-    //   243: getfield 107	com/tencent/mm/audio/b/b:dgx	Z
+    //   243: getfield 107	com/tencent/mm/audio/b/b:dhz	Z
     //   246: invokestatic 289	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   249: aastore
-    //   250: invokestatic 223	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   250: invokestatic 223	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   253: iconst_0
     //   254: istore_1
     //   255: iload_1
     //   256: istore_2
     //   257: aload_0
-    //   258: getfield 107	com/tencent/mm/audio/b/b:dgx	Z
+    //   258: getfield 107	com/tencent/mm/audio/b/b:dhz	Z
     //   261: ifeq +83 -> 344
     //   264: iload_1
     //   265: iconst_1
@@ -466,7 +466,7 @@ public final class b
     //   276: iload_2
     //   277: bipush 25
     //   279: if_icmplt -24 -> 255
-    //   282: getstatic 73	com/tencent/mm/audio/b/b:dgq	Ljava/lang/Object;
+    //   282: getstatic 73	com/tencent/mm/audio/b/b:dhs	Ljava/lang/Object;
     //   285: astore 10
     //   287: aload 10
     //   289: monitorenter
@@ -477,25 +477,25 @@ public final class b
     //   299: dup
     //   300: iconst_0
     //   301: aload_0
-    //   302: getfield 105	com/tencent/mm/audio/b/b:dgu	Lcom/tencent/mm/audio/b/c;
+    //   302: getfield 105	com/tencent/mm/audio/b/b:dhw	Lcom/tencent/mm/audio/b/c;
     //   305: aastore
-    //   306: invokestatic 223	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   306: invokestatic 223	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   309: aload_0
-    //   310: getfield 105	com/tencent/mm/audio/b/b:dgu	Lcom/tencent/mm/audio/b/c;
+    //   310: getfield 105	com/tencent/mm/audio/b/b:dhw	Lcom/tencent/mm/audio/b/c;
     //   313: astore 11
     //   315: aload 11
     //   317: ifnull +24 -> 341
     //   320: aload_0
-    //   321: getfield 105	com/tencent/mm/audio/b/b:dgu	Lcom/tencent/mm/audio/b/c;
-    //   324: invokevirtual 304	com/tencent/mm/audio/b/c:PG	()Z
+    //   321: getfield 105	com/tencent/mm/audio/b/b:dhw	Lcom/tencent/mm/audio/b/c;
+    //   324: invokevirtual 304	com/tencent/mm/audio/b/c:PF	()Z
     //   327: pop
     //   328: aload_0
-    //   329: getfield 105	com/tencent/mm/audio/b/b:dgu	Lcom/tencent/mm/audio/b/c;
+    //   329: getfield 105	com/tencent/mm/audio/b/b:dhw	Lcom/tencent/mm/audio/b/c;
     //   332: aconst_null
-    //   333: putfield 307	com/tencent/mm/audio/b/c:dhh	Lcom/tencent/mm/audio/b/c$a;
+    //   333: putfield 307	com/tencent/mm/audio/b/c:dij	Lcom/tencent/mm/audio/b/c$a;
     //   336: aload_0
     //   337: aconst_null
-    //   338: putfield 105	com/tencent/mm/audio/b/b:dgu	Lcom/tencent/mm/audio/b/c;
+    //   338: putfield 105	com/tencent/mm/audio/b/b:dhw	Lcom/tencent/mm/audio/b/c;
     //   341: aload 10
     //   343: monitorexit
     //   344: ldc 129
@@ -505,7 +505,7 @@ public final class b
     //   353: dup
     //   354: iconst_0
     //   355: aload_0
-    //   356: getfield 107	com/tencent/mm/audio/b/b:dgx	Z
+    //   356: getfield 107	com/tencent/mm/audio/b/b:dhz	Z
     //   359: invokestatic 289	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   362: aastore
     //   363: dup
@@ -513,42 +513,42 @@ public final class b
     //   365: iload_2
     //   366: invokestatic 314	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   369: aastore
-    //   370: invokestatic 223	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   370: invokestatic 223	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   373: aload_0
-    //   374: getfield 85	com/tencent/mm/audio/b/b:dgi	Ljava/lang/Object;
+    //   374: getfield 85	com/tencent/mm/audio/b/b:dhk	Ljava/lang/Object;
     //   377: astore 10
     //   379: aload 10
     //   381: monitorenter
     //   382: aload_0
-    //   383: getfield 87	com/tencent/mm/audio/b/b:dgj	Lcom/tencent/mm/audio/e/c;
+    //   383: getfield 87	com/tencent/mm/audio/b/b:dhl	Lcom/tencent/mm/audio/e/c;
     //   386: ifnull +10 -> 396
     //   389: aload_0
-    //   390: getfield 87	com/tencent/mm/audio/b/b:dgj	Lcom/tencent/mm/audio/e/c;
-    //   393: invokevirtual 319	com/tencent/mm/audio/e/c:Ry	()V
+    //   390: getfield 87	com/tencent/mm/audio/b/b:dhl	Lcom/tencent/mm/audio/e/c;
+    //   393: invokevirtual 319	com/tencent/mm/audio/e/c:Rx	()V
     //   396: aload_0
-    //   397: getfield 89	com/tencent/mm/audio/b/b:dgl	Lcom/tencent/mm/bh/c;
+    //   397: getfield 89	com/tencent/mm/audio/b/b:dhn	Lcom/tencent/mm/bg/c;
     //   400: ifnull +41 -> 441
     //   403: aload_0
-    //   404: getfield 89	com/tencent/mm/audio/b/b:dgl	Lcom/tencent/mm/bh/c;
+    //   404: getfield 89	com/tencent/mm/audio/b/b:dhn	Lcom/tencent/mm/bg/c;
     //   407: astore 11
     //   409: ldc_w 321
     //   412: ldc_w 323
-    //   415: invokestatic 146	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   418: new 325	com/tencent/mm/sdk/platformtools/ap
+    //   415: invokestatic 146	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   418: new 325	com/tencent/mm/sdk/platformtools/aq
     //   421: dup
     //   422: invokestatic 331	android/os/Looper:getMainLooper	()Landroid/os/Looper;
-    //   425: invokespecial 334	com/tencent/mm/sdk/platformtools/ap:<init>	(Landroid/os/Looper;)V
-    //   428: new 336	com/tencent/mm/bh/c$1
+    //   425: invokespecial 334	com/tencent/mm/sdk/platformtools/aq:<init>	(Landroid/os/Looper;)V
+    //   428: new 336	com/tencent/mm/bg/c$1
     //   431: dup
     //   432: aload 11
-    //   434: invokespecial 339	com/tencent/mm/bh/c$1:<init>	(Lcom/tencent/mm/bh/c;)V
-    //   437: invokevirtual 343	com/tencent/mm/sdk/platformtools/ap:post	(Ljava/lang/Runnable;)Z
+    //   434: invokespecial 339	com/tencent/mm/bg/c$1:<init>	(Lcom/tencent/mm/bg/c;)V
+    //   437: invokevirtual 343	com/tencent/mm/sdk/platformtools/aq:post	(Ljava/lang/Runnable;)Z
     //   440: pop
     //   441: aload 10
     //   443: monitorexit
     //   444: aload_0
-    //   445: getfield 95	com/tencent/mm/audio/b/b:dgo	J
-    //   448: invokestatic 349	com/tencent/mm/sdk/platformtools/bt:Df	(J)J
+    //   445: getfield 95	com/tencent/mm/audio/b/b:dhq	J
+    //   448: invokestatic 349	com/tencent/mm/sdk/platformtools/bu:DD	(J)J
     //   451: lstore 7
     //   453: ldc 129
     //   455: new 233	java/lang/StringBuilder
@@ -560,33 +560,33 @@ public final class b
     //   470: ldc_w 356
     //   473: invokevirtual 359	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   476: aload_0
-    //   477: getfield 95	com/tencent/mm/audio/b/b:dgo	J
+    //   477: getfield 95	com/tencent/mm/audio/b/b:dhq	J
     //   480: invokevirtual 354	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   483: ldc_w 361
     //   486: invokevirtual 359	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   489: aload_0
-    //   490: getfield 97	com/tencent/mm/audio/b/b:dgp	I
+    //   490: getfield 97	com/tencent/mm/audio/b/b:dhr	I
     //   493: invokevirtual 364	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   496: invokevirtual 246	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   499: invokestatic 146	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   499: invokestatic 146	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   502: lload 7
     //   504: ldc2_w 365
     //   507: lcmp
     //   508: ifle +37 -> 545
     //   511: aload_0
-    //   512: getfield 97	com/tencent/mm/audio/b/b:dgp	I
+    //   512: getfield 97	com/tencent/mm/audio/b/b:dhr	I
     //   515: ifne +30 -> 545
-    //   518: invokestatic 372	com/tencent/mm/kernel/g:ajD	()Lcom/tencent/mm/kernel/g;
+    //   518: invokestatic 372	com/tencent/mm/kernel/g:ajS	()Lcom/tencent/mm/kernel/g;
     //   521: pop
-    //   522: invokestatic 376	com/tencent/mm/kernel/g:ajC	()Lcom/tencent/mm/kernel/e;
-    //   525: getfield 382	com/tencent/mm/kernel/e:gBh	Lcom/tencent/mm/storage/ah;
+    //   522: invokestatic 376	com/tencent/mm/kernel/g:ajR	()Lcom/tencent/mm/kernel/e;
+    //   525: getfield 382	com/tencent/mm/kernel/e:gDO	Lcom/tencent/mm/storage/ai;
     //   528: bipush 27
     //   530: iconst_1
     //   531: invokestatic 314	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   534: invokevirtual 388	com/tencent/mm/storage/ah:set	(ILjava/lang/Object;)V
+    //   534: invokevirtual 388	com/tencent/mm/storage/ai:set	(ILjava/lang/Object;)V
     //   537: ldc 129
     //   539: ldc_w 390
-    //   542: invokestatic 146	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   542: invokestatic 146	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   545: ldc 129
     //   547: new 233	java/lang/StringBuilder
     //   550: dup
@@ -601,17 +601,17 @@ public final class b
     //   572: ldc_w 396
     //   575: invokevirtual 359	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   578: aload 9
-    //   580: invokevirtual 279	com/tencent/mm/compatible/util/f$a:abj	()J
+    //   580: invokevirtual 279	com/tencent/mm/compatible/util/f$a:abs	()J
     //   583: invokevirtual 354	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   586: invokevirtual 246	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   589: invokestatic 146	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   589: invokestatic 146	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   592: ldc 218
     //   594: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   597: iconst_0
     //   598: ireturn
     //   599: aload_0
     //   600: iconst_0
-    //   601: putfield 107	com/tencent/mm/audio/b/b:dgx	Z
+    //   601: putfield 107	com/tencent/mm/audio/b/b:dhz	Z
     //   604: goto -403 -> 201
     //   607: astore 9
     //   609: aload 10
@@ -626,7 +626,7 @@ public final class b
     //   626: ldc_w 398
     //   629: iconst_0
     //   630: anewarray 4	java/lang/Object
-    //   633: invokestatic 402	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   633: invokestatic 402	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   636: goto -362 -> 274
     //   639: astore 11
     //   641: ldc 129
@@ -634,7 +634,7 @@ public final class b
     //   645: ldc_w 398
     //   648: iconst_0
     //   649: anewarray 4	java/lang/Object
-    //   652: invokestatic 402	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   652: invokestatic 402	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   655: goto -314 -> 341
     //   658: astore 9
     //   660: aload 10
@@ -684,13 +684,13 @@ public final class b
     //   673	676	671	finally
   }
   
-  public final void PI()
+  public final void PH()
   {
     AppMethodBeat.i(148319);
-    if (this.dgv == com.tencent.mm.compatible.b.c.a.fVB)
+    if (this.dhx == com.tencent.mm.compatible.b.c.a.fXH)
     {
-      if (this.dgt != null) {
-        this.dgt.setAudioEncoder(1);
+      if (this.dhv != null) {
+        this.dhv.setAudioEncoder(1);
       }
       AppMethodBeat.o(148319);
       return;
@@ -698,82 +698,82 @@ public final class b
     AppMethodBeat.o(148319);
   }
   
-  public final void PJ()
+  public final void PI()
   {
     AppMethodBeat.i(148320);
-    if (this.dgv == com.tencent.mm.compatible.b.c.a.fVB)
+    if (this.dhx == com.tencent.mm.compatible.b.c.a.fXH)
     {
-      if (this.dgt == null)
+      if (this.dhv == null)
       {
         AppMethodBeat.o(148320);
         return;
       }
-      this.dgt.setAudioSource(1);
+      this.dhv.setAudioSource(1);
       AppMethodBeat.o(148320);
       return;
     }
     AppMethodBeat.o(148320);
   }
   
-  public final void PK()
+  public final void PJ()
   {
     AppMethodBeat.i(148321);
-    if (this.dgv == com.tencent.mm.compatible.b.c.a.fVB)
+    if (this.dhx == com.tencent.mm.compatible.b.c.a.fXH)
     {
-      if (this.dgt == null)
+      if (this.dhv == null)
       {
         AppMethodBeat.o(148321);
         return;
       }
-      this.dgt.setOutputFormat(3);
+      this.dhv.setOutputFormat(3);
       AppMethodBeat.o(148321);
       return;
     }
     AppMethodBeat.o(148321);
   }
   
-  public final void PL()
+  public final void PK()
   {
     AppMethodBeat.i(148323);
-    this.dgm = d.a.aLw();
-    if (this.dgm != null) {
-      this.dgs = this.dgm.aLv();
+    this.dho = d.a.aLT();
+    if (this.dho != null) {
+      this.dhu = this.dho.aLS();
     }
-    if (this.dgv == com.tencent.mm.compatible.b.c.a.fVC)
+    if (this.dhx == com.tencent.mm.compatible.b.c.a.fXI)
     {
-      ??? = ((com.tencent.mm.plugin.zero.b.a)g.ab(com.tencent.mm.plugin.zero.b.a.class)).acA().getValue("VoiceSamplingRate");
-      this.mSampleRate = bt.getInt((String)???, 16000);
-      String str = ((com.tencent.mm.plugin.zero.b.a)g.ab(com.tencent.mm.plugin.zero.b.a.class)).acA().getValue("VoiceRate");
-      this.dgr = bt.getInt(str, 16000);
-      ad.i("MicroMsg.MMAudioRecorder", "initMediaRecorder dynamicSample: %s sampleRate: %d dynamicEncoding: %s audioEncoding: %d", new Object[] { ???, Integer.valueOf(this.mSampleRate), str, Integer.valueOf(this.dgr) });
+      ??? = ((com.tencent.mm.plugin.zero.b.a)g.ab(com.tencent.mm.plugin.zero.b.a.class)).acL().getValue("VoiceSamplingRate");
+      this.mSampleRate = bu.getInt((String)???, 16000);
+      String str = ((com.tencent.mm.plugin.zero.b.a)g.ab(com.tencent.mm.plugin.zero.b.a.class)).acL().getValue("VoiceRate");
+      this.dht = bu.getInt(str, 16000);
+      ae.i("MicroMsg.MMAudioRecorder", "initMediaRecorder dynamicSample: %s sampleRate: %d dynamicEncoding: %s audioEncoding: %d", new Object[] { ???, Integer.valueOf(this.mSampleRate), str, Integer.valueOf(this.dht) });
     }
     for (;;)
     {
-      this.dgf = 0;
-      this.dgg = null;
-      synchronized (this.dgi)
+      this.dhh = 0;
+      this.dhi = null;
+      synchronized (this.dhk)
       {
-        this.dgl = null;
-        this.dgj = null;
-        this.dgp = 0;
+        this.dhn = null;
+        this.dhl = null;
+        this.dhr = 0;
       }
       try
       {
-        synchronized (dgq)
+        synchronized (dhs)
         {
-          this.dgu = new c(this.mSampleRate, 1, 0);
-          this.dgu.cu(true);
-          this.dgu.hO(120);
-          this.dgu.dhh = this.dgC;
-          this.dgw = b.dgF;
+          this.dhw = new c(this.mSampleRate, 1, 0);
+          this.dhw.cu(true);
+          this.dhw.hQ(120);
+          this.dhw.dij = this.dhE;
+          this.dhy = b.dhH;
           AppMethodBeat.o(148323);
           return;
-          if (this.dgs) {}
+          if (this.dhu) {}
           for (this.mSampleRate = 16000;; this.mSampleRate = 8000)
           {
-            g.ajD();
-            int i = bt.a((Integer)g.ajC().gBh.get(27), 0);
-            ad.i("MicroMsg.MMAudioRecorder", "sampleRate: " + this.mSampleRate + " notSupp16K: " + i);
+            g.ajS();
+            int i = bu.a((Integer)g.ajR().gDO.get(27), 0);
+            ae.i("MicroMsg.MMAudioRecorder", "sampleRate: " + this.mSampleRate + " notSupp16K: " + i);
             if (i != 1) {
               break;
             }
@@ -784,7 +784,7 @@ public final class b
           AppMethodBeat.o(148323);
           throw localObject2;
         }
-        ad.e("MicroMsg.MMAudioRecorder", localException.getMessage());
+        ae.e("MicroMsg.MMAudioRecorder", localException.getMessage());
       }
       catch (Exception localException)
       {
@@ -793,25 +793,25 @@ public final class b
     }
     for (;;)
     {
-      this.dgw = b.dgI;
+      this.dhy = b.dhK;
       AppMethodBeat.o(148323);
       return;
-      ad.e("MicroMsg.MMAudioRecorder", "Unknown error occured while initializing recording");
+      ae.e("MicroMsg.MMAudioRecorder", "Unknown error occured while initializing recording");
     }
   }
   
   public final void a(a parama)
   {
     AppMethodBeat.i(148316);
-    if (this.dgv == com.tencent.mm.compatible.b.c.a.fVB)
+    if (this.dhx == com.tencent.mm.compatible.b.c.a.fXH)
     {
-      if (this.dgt == null)
+      if (this.dhv == null)
       {
         AppMethodBeat.o(148316);
         return;
       }
-      this.dgk = parama;
-      this.dgt.setOnErrorListener(new MediaRecorder.OnErrorListener()
+      this.dhm = parama;
+      this.dhv.setOnErrorListener(new MediaRecorder.OnErrorListener()
       {
         public final void onError(MediaRecorder paramAnonymousMediaRecorder, int paramAnonymousInt1, int paramAnonymousInt2)
         {
@@ -822,7 +822,7 @@ public final class b
           try
           {
             b.b(b.this).release();
-            b.a(b.this, b.b.dgI);
+            b.a(b.this, b.b.dhK);
             AppMethodBeat.o(148307);
             return;
           }
@@ -830,7 +830,7 @@ public final class b
           {
             for (;;)
             {
-              ad.e("MicroMsg.MMAudioRecorder", paramAnonymousMediaRecorder.getMessage());
+              ae.e("MicroMsg.MMAudioRecorder", paramAnonymousMediaRecorder.getMessage());
             }
           }
         }
@@ -838,13 +838,13 @@ public final class b
       AppMethodBeat.o(148316);
       return;
     }
-    if (this.dgw == b.dgF)
+    if (this.dhy == b.dhH)
     {
-      this.dgk = parama;
+      this.dhm = parama;
       AppMethodBeat.o(148316);
       return;
     }
-    ad.e("MicroMsg.MMAudioRecorder", "setOnErrorListener on wrong state");
+    ae.e("MicroMsg.MMAudioRecorder", "setOnErrorListener on wrong state");
     AppMethodBeat.o(148316);
   }
   
@@ -852,26 +852,26 @@ public final class b
   {
     AppMethodBeat.i(148322);
     int i;
-    if (this.dgv == com.tencent.mm.compatible.b.c.a.fVB)
+    if (this.dhx == com.tencent.mm.compatible.b.c.a.fXH)
     {
-      if (this.dgt == null)
+      if (this.dhv == null)
       {
         AppMethodBeat.o(148322);
         return 0;
       }
-      i = this.dgt.getMaxAmplitude();
+      i = this.dhv.getMaxAmplitude();
       AppMethodBeat.o(148322);
       return i;
     }
-    if (this.dgw == b.dgH)
+    if (this.dhy == b.dhJ)
     {
-      i = this.dgf;
-      if ((this.dgy <= 0L) || (bt.aO(this.dgy) > 500L))
+      i = this.dhh;
+      if ((this.dhA <= 0L) || (bu.aO(this.dhA) > 500L))
       {
-        ad.i("MicroMsg.MMAudioRecorder", "mCurAmplitude:%s", new Object[] { Integer.valueOf(this.dgf) });
-        this.dgy = bt.HI();
+        ae.i("MicroMsg.MMAudioRecorder", "mCurAmplitude:%s", new Object[] { Integer.valueOf(this.dhh) });
+        this.dhA = bu.HQ();
       }
-      this.dgf = 0;
+      this.dhh = 0;
       AppMethodBeat.o(148322);
       return i;
     }
@@ -882,96 +882,96 @@ public final class b
   public final void prepare()
   {
     AppMethodBeat.i(148325);
-    if (this.dgv == com.tencent.mm.compatible.b.c.a.fVB)
+    if (this.dhx == com.tencent.mm.compatible.b.c.a.fXH)
     {
-      if (this.dgt != null) {
-        this.dgt.prepare();
+      if (this.dhv != null) {
+        this.dhv.prepare();
       }
       AppMethodBeat.o(148325);
       return;
     }
-    if ((this.dgw != b.dgF) || (this.dgg == null))
+    if ((this.dhy != b.dhH) || (this.dhi == null))
     {
-      this.dgw = b.dgI;
+      this.dhy = b.dhK;
       release();
       AppMethodBeat.o(148325);
       return;
     }
-    this.dgw = b.dgG;
+    this.dhy = b.dhI;
     AppMethodBeat.o(148325);
   }
   
   public final void release()
   {
     AppMethodBeat.i(148326);
-    if (this.dgv == com.tencent.mm.compatible.b.c.a.fVB)
+    if (this.dhx == com.tencent.mm.compatible.b.c.a.fXH)
     {
-      if (this.dgt != null) {
-        this.dgt.release();
+      if (this.dhv != null) {
+        this.dhv.release();
       }
       AppMethodBeat.o(148326);
       return;
     }
-    if (this.dgw == b.dgH) {
-      Gv();
+    if (this.dhy == b.dhJ) {
+      GB();
     }
-    synchronized (dgq)
+    synchronized (dhs)
     {
-      if (this.dgu != null)
+      if (this.dhw != null)
       {
-        this.dgu.PG();
-        this.dgu.dhh = null;
-        this.dgu = null;
+        this.dhw.PF();
+        this.dhw.dij = null;
+        this.dhw = null;
       }
       AppMethodBeat.o(148326);
       return;
-      ??? = b.dgG;
+      ??? = b.dhI;
     }
   }
   
   public final void setMaxDuration(int paramInt)
   {
     AppMethodBeat.i(148318);
-    if (this.dgv == com.tencent.mm.compatible.b.c.a.fVB)
+    if (this.dhx == com.tencent.mm.compatible.b.c.a.fXH)
     {
-      if (this.dgt != null) {
-        this.dgt.setMaxDuration(paramInt);
+      if (this.dhv != null) {
+        this.dhv.setMaxDuration(paramInt);
       }
       AppMethodBeat.o(148318);
       return;
     }
-    this.dgn = paramInt;
+    this.dhp = paramInt;
     AppMethodBeat.o(148318);
   }
   
   public final void setOutputFile(String paramString)
   {
     AppMethodBeat.i(148317);
-    if (this.dgv == com.tencent.mm.compatible.b.c.a.fVB)
+    if (this.dhx == com.tencent.mm.compatible.b.c.a.fXH)
     {
-      if (this.dgt == null)
+      if (this.dhv == null)
       {
         AppMethodBeat.o(148317);
         return;
       }
-      this.dgt.setOutputFile(paramString);
-      this.dgg = paramString;
+      this.dhv.setOutputFile(paramString);
+      this.dhi = paramString;
       AppMethodBeat.o(148317);
       return;
     }
-    if (this.dgw == b.dgF)
+    if (this.dhy == b.dhH)
     {
-      this.dgg = paramString;
-      if (this.dgu != null)
+      this.dhi = paramString;
+      if (this.dhw != null)
       {
-        this.dgu.dho = this.dgg;
+        this.dhw.diq = this.dhi;
         AppMethodBeat.o(148317);
       }
     }
     else
     {
-      ad.e("MicroMsg.MMAudioRecorder", "set output path on wrong state");
-      this.dgw = b.dgI;
+      ae.e("MicroMsg.MMAudioRecorder", "set output path on wrong state");
+      this.dhy = b.dhK;
     }
     AppMethodBeat.o(148317);
   }
@@ -979,32 +979,32 @@ public final class b
   public final void start()
   {
     AppMethodBeat.i(148324);
-    if (this.dgv == com.tencent.mm.compatible.b.c.a.fVB)
+    if (this.dhx == com.tencent.mm.compatible.b.c.a.fXH)
     {
-      if (this.dgt != null) {
-        this.dgt.start();
+      if (this.dhv != null) {
+        this.dhv.start();
       }
       AppMethodBeat.o(148324);
       return;
     }
-    ad.i("MicroMsg.MMAudioRecorder", "Start record now state: " + this.dgw + " recMode: " + this.dgv);
-    if (this.dgw == b.dgG)
+    ae.i("MicroMsg.MMAudioRecorder", "Start record now state: " + this.dhy + " recMode: " + this.dhx);
+    if (this.dhy == b.dhI)
     {
-      this.dgo = System.currentTimeMillis();
-      this.dgp = 0;
+      this.dhq = System.currentTimeMillis();
+      this.dhr = 0;
     }
-    for (this.dgw = b.dgH;; this.dgw = b.dgI)
+    for (this.dhy = b.dhJ;; this.dhy = b.dhK)
     {
-      synchronized (dgq)
+      synchronized (dhs)
       {
-        this.dgu.PP();
-        this.dgx = false;
+        this.dhw.PO();
+        this.dhz = false;
         AppMethodBeat.o(148324);
         return;
       }
-      g.ajD();
-      g.ajC().gBh.set(27, Integer.valueOf(1));
-      ad.e("MicroMsg.MMAudioRecorder", "start() called on illegal state");
+      g.ajS();
+      g.ajR().gDO.set(27, Integer.valueOf(1));
+      ae.e("MicroMsg.MMAudioRecorder", "start() called on illegal state");
     }
   }
   
@@ -1018,12 +1018,12 @@ public final class b
     static
     {
       AppMethodBeat.i(148314);
-      dgF = new b("INITIALIZING", 0);
-      dgG = new b("READY", 1);
-      dgH = new b("RECORDING", 2);
-      dgI = new b("ERROR", 3);
-      dgJ = new b("STOPPED", 4);
-      dgK = new b[] { dgF, dgG, dgH, dgI, dgJ };
+      dhH = new b("INITIALIZING", 0);
+      dhI = new b("READY", 1);
+      dhJ = new b("RECORDING", 2);
+      dhK = new b("ERROR", 3);
+      dhL = new b("STOPPED", 4);
+      dhM = new b[] { dhH, dhI, dhJ, dhK, dhL };
       AppMethodBeat.o(148314);
     }
     
@@ -1032,7 +1032,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.audio.b.b
  * JD-Core Version:    0.7.0.1
  */

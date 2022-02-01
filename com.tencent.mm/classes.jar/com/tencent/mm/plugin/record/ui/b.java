@@ -5,7 +5,7 @@ import com.tencent.mm.plugin.fav.a.g;
 final class b
   extends a
 {
-  g prW;
+  g pyC;
 }
 
 

@@ -3,52 +3,49 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class cov
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public String Ggv;
-  public int Hij;
-  public String qdY;
+  public String data;
+  public String oGg;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(32394);
+    AppMethodBeat.i(114056);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.qdY != null) {
-        paramVarArgs.d(1, this.qdY);
+      if (this.oGg != null) {
+        paramVarArgs.d(1, this.oGg);
       }
-      paramVarArgs.aS(2, this.Hij);
-      if (this.Ggv != null) {
-        paramVarArgs.d(3, this.Ggv);
+      if (this.data != null) {
+        paramVarArgs.d(2, this.data);
       }
-      AppMethodBeat.o(32394);
+      AppMethodBeat.o(114056);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.qdY == null) {
-        break label327;
+      if (this.oGg == null) {
+        break label274;
       }
     }
-    label327:
-    for (paramInt = f.a.a.b.b.a.e(1, this.qdY) + 0;; paramInt = 0)
+    label274:
+    for (paramInt = f.a.a.b.b.a.e(1, this.oGg) + 0;; paramInt = 0)
     {
-      int i = paramInt + f.a.a.b.b.a.bz(2, this.Hij);
-      paramInt = i;
-      if (this.Ggv != null) {
-        paramInt = i + f.a.a.b.b.a.e(3, this.Ggv);
+      int i = paramInt;
+      if (this.data != null) {
+        i = paramInt + f.a.a.b.b.a.e(2, this.data);
       }
-      AppMethodBeat.o(32394);
-      return paramInt;
+      AppMethodBeat.o(114056);
+      return i;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
-        AppMethodBeat.o(32394);
+        AppMethodBeat.o(114056);
         return 0;
       }
       if (paramInt == 3)
@@ -58,22 +55,18 @@ public final class cov
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(32394);
+          AppMethodBeat.o(114056);
           return -1;
         case 1: 
-          localcov.qdY = locala.NPN.readString();
-          AppMethodBeat.o(32394);
-          return 0;
-        case 2: 
-          localcov.Hij = locala.NPN.zc();
-          AppMethodBeat.o(32394);
+          localcov.oGg = locala.OmT.readString();
+          AppMethodBeat.o(114056);
           return 0;
         }
-        localcov.Ggv = locala.NPN.readString();
-        AppMethodBeat.o(32394);
+        localcov.data = locala.OmT.readString();
+        AppMethodBeat.o(114056);
         return 0;
       }
-      AppMethodBeat.o(32394);
+      AppMethodBeat.o(114056);
       return -1;
     }
   }

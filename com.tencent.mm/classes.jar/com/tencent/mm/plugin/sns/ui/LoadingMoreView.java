@@ -12,24 +12,24 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public class LoadingMoreView
   extends LinearLayout
 {
+  protected LinearLayout Ajh;
+  protected TextView Aji;
+  Animation Ajj;
   private Context context;
-  ImageView dwy;
-  protected LinearLayout oDd;
-  protected LinearLayout oDe;
-  protected LinearLayout zSa;
-  protected TextView zSb;
-  Animation zSc;
+  ImageView dxD;
+  protected LinearLayout oJF;
+  protected LinearLayout oJG;
   
   public LoadingMoreView(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(97931);
-    this.zSc = new RotateAnimation(0.0F, 359.0F, 1, 0.5F, 1, 0.5F);
+    this.Ajj = new RotateAnimation(0.0F, 359.0F, 1, 0.5F, 1, 0.5F);
     this.context = paramContext;
     init();
     AppMethodBeat.o(97931);
@@ -39,7 +39,7 @@ public class LoadingMoreView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(97930);
-    this.zSc = new RotateAnimation(0.0F, 359.0F, 1, 0.5F, 1, 0.5F);
+    this.Ajj = new RotateAnimation(0.0F, 359.0F, 1, 0.5F, 1, 0.5F);
     this.context = paramContext;
     init();
     AppMethodBeat.o(97930);
@@ -49,45 +49,45 @@ public class LoadingMoreView
   {
     AppMethodBeat.i(97932);
     Object localObject = LayoutInflater.from(this.context).inflate(2131495572, this, true);
-    this.dwy = ((ImageView)findViewById(2131296594));
-    this.oDd = ((LinearLayout)((View)localObject).findViewById(2131301504));
-    this.oDe = ((LinearLayout)((View)localObject).findViewById(2131301499));
-    this.zSa = ((LinearLayout)((View)localObject).findViewById(2131303813));
-    this.zSb = ((TextView)((View)localObject).findViewById(2131303814));
-    this.oDd.setVisibility(0);
-    this.oDe.setVisibility(8);
-    this.zSa.setVisibility(8);
-    this.zSc.setDuration(1000L);
-    this.zSc.setRepeatCount(-1);
+    this.dxD = ((ImageView)findViewById(2131296594));
+    this.oJF = ((LinearLayout)((View)localObject).findViewById(2131301504));
+    this.oJG = ((LinearLayout)((View)localObject).findViewById(2131301499));
+    this.Ajh = ((LinearLayout)((View)localObject).findViewById(2131303813));
+    this.Aji = ((TextView)((View)localObject).findViewById(2131303814));
+    this.oJF.setVisibility(0);
+    this.oJG.setVisibility(8);
+    this.Ajh.setVisibility(8);
+    this.Ajj.setDuration(1000L);
+    this.Ajj.setRepeatCount(-1);
     localObject = new LinearInterpolator();
-    this.zSc.setInterpolator((Interpolator)localObject);
-    this.dwy.startAnimation(this.zSc);
+    this.Ajj.setInterpolator((Interpolator)localObject);
+    this.dxD.startAnimation(this.Ajj);
     AppMethodBeat.o(97932);
   }
   
-  public final void FW()
+  public final void Gc()
   {
     AppMethodBeat.i(97933);
-    this.oDd.setVisibility(0);
-    this.oDe.setVisibility(8);
-    this.zSa.setVisibility(8);
+    this.oJF.setVisibility(0);
+    this.oJG.setVisibility(8);
+    this.Ajh.setVisibility(8);
     AppMethodBeat.o(97933);
   }
   
-  public final void aAI(String paramString)
+  public final void aBZ(String paramString)
   {
     AppMethodBeat.i(97934);
-    this.oDd.setVisibility(8);
-    if (bt.isNullOrNil(paramString))
+    this.oJF.setVisibility(8);
+    if (bu.isNullOrNil(paramString))
     {
-      this.oDe.setVisibility(0);
-      this.zSa.setVisibility(8);
+      this.oJG.setVisibility(0);
+      this.Ajh.setVisibility(8);
       AppMethodBeat.o(97934);
       return;
     }
-    this.zSa.setVisibility(0);
-    this.oDe.setVisibility(8);
-    this.zSb.setText(paramString);
+    this.Ajh.setVisibility(0);
+    this.oJG.setVisibility(8);
+    this.Aji.setText(paramString);
     AppMethodBeat.o(97934);
   }
 }

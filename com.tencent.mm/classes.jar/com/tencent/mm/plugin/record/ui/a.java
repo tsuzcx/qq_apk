@@ -1,13 +1,13 @@
 package com.tencent.mm.plugin.record.ui;
 
 import com.tencent.mm.plugin.record.b.x;
-import com.tencent.mm.protocal.protobuf.ajn;
+import com.tencent.mm.protocal.protobuf.ajx;
 import java.util.List;
 
 public class a
 {
-  List<ajn> xrx;
-  x xry;
+  List<ajx> xHu;
+  x xHv;
 }
 
 

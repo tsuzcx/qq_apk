@@ -6,7 +6,7 @@ import d.l;
 import d.z;
 import java.util.List;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "success", "", "result", "", "Lcom/tencent/mm/plugin/gamelife/conversation/GameLifeConversation;", "invoke", "com/tencent/mm/plugin/gamelife/conversation/GameLifeConversationLogic$Companion$getConversations$1$1"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "success", "", "result", "", "Lcom/tencent/mm/plugin/gamelife/conversation/GameLifeConversation;", "invoke", "com/tencent/mm/plugin/gamelife/conversation/GameLifeConversationLogic$Companion$getConversations$1$1"})
 final class b$a$c
   extends q
   implements m<Boolean, List<? extends a>, z>

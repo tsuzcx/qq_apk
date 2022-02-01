@@ -6,7 +6,6 @@ import android.media.MediaCodecInfo;
 import android.media.MediaCodecInfo.CodecCapabilities;
 import android.media.MediaCodecInfo.CodecProfileLevel;
 import android.media.MediaCodecList;
-import android.text.TextUtils;
 import android.util.Pair;
 import android.util.SparseIntArray;
 import com.google.android.exoplayer2.i.x;
@@ -25,7 +24,7 @@ public final class d
 {
   private static final a btT;
   private static final Pattern btU;
-  private static final HashMap<a, List<a>> btV;
+  private static final HashMap<d.a, List<a>> btV;
   private static final SparseIntArray btW;
   private static final SparseIntArray btX;
   private static final Map<String, Integer> btY;
@@ -93,7 +92,7 @@ public final class d
     AppMethodBeat.o(92378);
   }
   
-  private static List<a> a(a parama, c paramc)
+  private static List<a> a(d.a parama, c paramc)
   {
     AppMethodBeat.i(92375);
     for (;;)
@@ -210,7 +209,7 @@ public final class d
       }
       catch (Exception parama)
       {
-        parama = new b(parama, (byte)0);
+        parama = new d.b(parama, (byte)0);
         AppMethodBeat.o(92375);
         throw parama;
       }
@@ -405,7 +404,7 @@ public final class d
       try
       {
         AppMethodBeat.i(92372);
-        a locala = new a(paramString, paramBoolean);
+        d.a locala = new d.a(paramString, paramBoolean);
         Object localObject = (List)btV.get(locala);
         if (localObject != null)
         {
@@ -549,71 +548,6 @@ public final class d
       i = btZ;
       AppMethodBeat.o(92373);
       return i;
-    }
-  }
-  
-  static final class a
-  {
-    public final boolean btd;
-    public final String mimeType;
-    
-    public a(String paramString, boolean paramBoolean)
-    {
-      this.mimeType = paramString;
-      this.btd = paramBoolean;
-    }
-    
-    public final boolean equals(Object paramObject)
-    {
-      AppMethodBeat.i(92362);
-      if (this == paramObject)
-      {
-        AppMethodBeat.o(92362);
-        return true;
-      }
-      if ((paramObject == null) || (paramObject.getClass() != a.class))
-      {
-        AppMethodBeat.o(92362);
-        return false;
-      }
-      paramObject = (a)paramObject;
-      if ((TextUtils.equals(this.mimeType, paramObject.mimeType)) && (this.btd == paramObject.btd))
-      {
-        AppMethodBeat.o(92362);
-        return true;
-      }
-      AppMethodBeat.o(92362);
-      return false;
-    }
-    
-    public final int hashCode()
-    {
-      AppMethodBeat.i(92361);
-      int i;
-      if (this.mimeType == null)
-      {
-        i = 0;
-        if (!this.btd) {
-          break label51;
-        }
-      }
-      label51:
-      for (int j = 1231;; j = 1237)
-      {
-        AppMethodBeat.o(92361);
-        return j + (i + 31) * 31;
-        i = this.mimeType.hashCode();
-        break;
-      }
-    }
-  }
-  
-  public static final class b
-    extends Exception
-  {
-    private b(Throwable paramThrowable)
-    {
-      super(paramThrowable);
     }
   }
   

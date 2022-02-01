@@ -5,24 +5,24 @@ import kotlinx.a.h;
 import kotlinx.a.l.h;
 import kotlinx.a.n;
 
-@d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/serialization/internal/ShortSerializer;", "Lkotlinx/serialization/KSerializer;", "", "()V", "descriptor", "Lkotlinx/serialization/SerialDescriptor;", "getDescriptor", "()Lkotlinx/serialization/SerialDescriptor;", "deserialize", "decoder", "Lkotlinx/serialization/Decoder;", "(Lkotlinx/serialization/Decoder;)Ljava/lang/Short;", "serialize", "", "encoder", "Lkotlinx/serialization/Encoder;", "value", "kotlinx-serialization-runtime"})
+@d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/serialization/internal/ShortSerializer;", "Lkotlinx/serialization/KSerializer;", "", "()V", "descriptor", "Lkotlinx/serialization/SerialDescriptor;", "getDescriptor", "()Lkotlinx/serialization/SerialDescriptor;", "deserialize", "decoder", "Lkotlinx/serialization/Decoder;", "(Lkotlinx/serialization/Decoder;)Ljava/lang/Short;", "serialize", "", "encoder", "Lkotlinx/serialization/Encoder;", "value", "kotlinx-serialization-runtime"})
 public final class be
   implements h<Short>
 {
-  private static final n NLm;
-  public static final be NMT;
+  private static final n Ois;
+  public static final be OjZ;
   
   static
   {
-    AppMethodBeat.i(191205);
-    NMT = new be();
-    NLm = (n)new ay("kotlin.Short", (kotlinx.a.l)l.h.NLw);
-    AppMethodBeat.o(191205);
+    AppMethodBeat.i(199793);
+    OjZ = new be();
+    Ois = (n)new ay("kotlin.Short", (kotlinx.a.l)l.h.OiC);
+    AppMethodBeat.o(199793);
   }
   
-  public final n eLj()
+  public final n eOR()
   {
-    return NLm;
+    return Ois;
   }
 }
 

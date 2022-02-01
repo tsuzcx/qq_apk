@@ -6,7 +6,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 @Deprecated
 public class b
 {
-  public static final b IhT;
+  public static final b ICe;
   
   static
   {
@@ -15,7 +15,7 @@ public class b
     for (boolean bool = true;; bool = false)
     {
       $assertionsDisabled = bool;
-      IhT = new b();
+      ICe = new b();
       AppMethodBeat.o(158155);
       return;
     }
@@ -37,7 +37,7 @@ public class b
       AppMethodBeat.o(158142);
       throw paramRunnable;
     }
-    com.tencent.e.h.LTJ.aR(new com.tencent.e.i.h()
+    com.tencent.e.h.MqF.aO(new com.tencent.e.i.h()
     {
       public final String getKey()
       {
@@ -58,7 +58,7 @@ public class b
   public static void c(Runnable paramRunnable, String paramString)
   {
     AppMethodBeat.i(158143);
-    IhT.b(paramRunnable, paramString);
+    ICe.b(paramRunnable, paramString);
     AppMethodBeat.o(158143);
   }
   
@@ -66,7 +66,7 @@ public class b
   public static void d(Runnable paramRunnable, String paramString)
   {
     AppMethodBeat.i(158144);
-    IhT.b(paramRunnable, paramString);
+    ICe.b(paramRunnable, paramString);
     AppMethodBeat.o(158144);
   }
   
@@ -74,7 +74,7 @@ public class b
   public static void e(Runnable paramRunnable, String paramString)
   {
     AppMethodBeat.i(158145);
-    IhT.b(paramRunnable, paramString);
+    ICe.b(paramRunnable, paramString);
     AppMethodBeat.o(158145);
   }
 }

@@ -10,25 +10,25 @@ public final class f
 {
   private static void a(XmlSerializer paramXmlSerializer, com.tencent.thumbplayer.b.a.e parame, long paramLong)
   {
-    AppMethodBeat.i(191885);
+    AppMethodBeat.i(194563);
     if ((parame instanceof a))
     {
       b(paramXmlSerializer, parame, paramLong);
-      AppMethodBeat.o(191885);
+      AppMethodBeat.o(194563);
       return;
     }
     if ((parame instanceof e))
     {
       c(paramXmlSerializer, parame, paramLong);
-      AppMethodBeat.o(191885);
+      AppMethodBeat.o(194563);
       return;
     }
-    AppMethodBeat.o(191885);
+    AppMethodBeat.o(194563);
   }
   
   static void a(XmlSerializer paramXmlSerializer, List<com.tencent.thumbplayer.b.a.d> paramList, int paramInt, long paramLong)
   {
-    AppMethodBeat.i(191884);
+    AppMethodBeat.i(194562);
     if (paramList != null)
     {
       String str1;
@@ -39,8 +39,8 @@ public final class f
           if (paramList.size() <= 0) {
             break label317;
           }
-          str1 = bn(paramInt, true);
-          String str2 = bn(paramInt, false);
+          str1 = bw(paramInt, true);
+          String str2 = bw(paramInt, false);
           paramXmlSerializer.startTag("", str1);
           paramList = paramList.iterator();
           if (!paramList.hasNext()) {
@@ -54,16 +54,16 @@ public final class f
           paramXmlSerializer.startTag("", "track_id");
           paramXmlSerializer.text(Integer.toString(((com.tencent.thumbplayer.b.a.d)localObject).getTrackId()));
           paramXmlSerializer.endTag("", "track_id");
-          if ((paramInt == 1) || (!c.Mak.equals("base_audio")) || (((com.tencent.thumbplayer.b.a.d)localObject).fWF() <= paramLong)) {
+          if ((paramInt == 1) || (!c.Mxf.equals("base_audio")) || (((com.tencent.thumbplayer.b.a.d)localObject).gbe() <= paramLong)) {
             break label264;
           }
           long l = 0L;
-          localObject = ((com.tencent.thumbplayer.b.a.d)localObject).fWE().iterator();
+          localObject = ((com.tencent.thumbplayer.b.a.d)localObject).gbd().iterator();
           com.tencent.thumbplayer.b.a.e locale;
           if (((Iterator)localObject).hasNext())
           {
             locale = (com.tencent.thumbplayer.b.a.e)((Iterator)localObject).next();
-            l += locale.fWH();
+            l += locale.gbg();
             if (l > paramLong) {
               a(paramXmlSerializer, locale, l - paramLong);
             }
@@ -78,12 +78,12 @@ public final class f
         catch (IOException paramXmlSerializer)
         {
           com.tencent.thumbplayer.utils.d.e("TPMediaCompositionXmlGenerator", paramXmlSerializer);
-          AppMethodBeat.o(191884);
+          AppMethodBeat.o(194562);
           return;
         }
         continue;
         label264:
-        Object localObject = ((com.tencent.thumbplayer.b.a.d)localObject).fWE().iterator();
+        Object localObject = ((com.tencent.thumbplayer.b.a.d)localObject).gbd().iterator();
         while (((Iterator)localObject).hasNext()) {
           a(paramXmlSerializer, (com.tencent.thumbplayer.b.a.e)((Iterator)localObject).next(), 0L);
         }
@@ -91,12 +91,12 @@ public final class f
       paramXmlSerializer.endTag("", str1);
     }
     label317:
-    AppMethodBeat.o(191884);
+    AppMethodBeat.o(194562);
   }
   
   static void a(XmlSerializer paramXmlSerializer, List<com.tencent.thumbplayer.b.a.e> paramList, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(191883);
+    AppMethodBeat.i(194561);
     paramXmlSerializer.startTag("", paramString1);
     paramXmlSerializer.startTag("", paramString2);
     paramList = paramList.iterator();
@@ -105,34 +105,34 @@ public final class f
     }
     paramXmlSerializer.endTag("", paramString2);
     paramXmlSerializer.endTag("", paramString1);
-    AppMethodBeat.o(191883);
+    AppMethodBeat.o(194561);
   }
   
   private static void b(XmlSerializer paramXmlSerializer, com.tencent.thumbplayer.b.a.e parame, long paramLong)
   {
-    AppMethodBeat.i(191886);
+    AppMethodBeat.i(194564);
     paramXmlSerializer.startTag("", "track_clip");
     paramXmlSerializer.startTag("", "clip_id");
-    paramXmlSerializer.text(Integer.toString(parame.fWG()));
+    paramXmlSerializer.text(Integer.toString(parame.gbf()));
     paramXmlSerializer.endTag("", "clip_id");
     paramXmlSerializer.startTag("", "clip_placeHolder");
     paramXmlSerializer.text("1");
     paramXmlSerializer.endTag("", "clip_placeHolder");
     paramXmlSerializer.startTag("", "clip_playTimeMs");
     if (paramLong > 0L) {
-      paramXmlSerializer.text(Long.toString(parame.fWH() - paramLong));
+      paramXmlSerializer.text(Long.toString(parame.gbg() - paramLong));
     }
     for (;;)
     {
       paramXmlSerializer.endTag("", "clip_playTimeMs");
       paramXmlSerializer.endTag("", "track_clip");
-      AppMethodBeat.o(191886);
+      AppMethodBeat.o(194564);
       return;
-      paramXmlSerializer.text(Long.toString(parame.fWH()));
+      paramXmlSerializer.text(Long.toString(parame.gbg()));
     }
   }
   
-  private static String bn(int paramInt, boolean paramBoolean)
+  private static String bw(int paramInt, boolean paramBoolean)
   {
     if (paramInt == 1)
     {
@@ -160,10 +160,10 @@ public final class f
   
   private static void c(XmlSerializer paramXmlSerializer, com.tencent.thumbplayer.b.a.e parame, long paramLong)
   {
-    AppMethodBeat.i(191887);
+    AppMethodBeat.i(194565);
     paramXmlSerializer.startTag("", "track_clip");
     paramXmlSerializer.startTag("", "clip_id");
-    paramXmlSerializer.text(Integer.toString(parame.fWG()));
+    paramXmlSerializer.text(Integer.toString(parame.gbf()));
     paramXmlSerializer.endTag("", "clip_id");
     paramXmlSerializer.startTag("", "clip_placeHolder");
     paramXmlSerializer.text("0");
@@ -172,15 +172,15 @@ public final class f
     paramXmlSerializer.text(parame.getFilePath());
     paramXmlSerializer.endTag("", "clip_path");
     paramXmlSerializer.startTag("", "clip_startTimeMs");
-    paramXmlSerializer.text(Long.toString(parame.esj()));
+    paramXmlSerializer.text(Long.toString(parame.evQ()));
     paramXmlSerializer.endTag("", "clip_startTimeMs");
     paramXmlSerializer.startTag("", "clip_durationMs");
-    paramXmlSerializer.text(Long.toString(parame.fWH()));
+    paramXmlSerializer.text(Long.toString(parame.gbg()));
     paramXmlSerializer.endTag("", "clip_durationMs");
     if (paramLong > 0L)
     {
-      long l1 = parame.esk();
-      long l2 = parame.fWH();
+      long l1 = parame.evR();
+      long l2 = parame.gbg();
       paramXmlSerializer.startTag("", "clip_endTimeMs");
       paramXmlSerializer.text(Long.toString(l1 - paramLong));
       paramXmlSerializer.endTag("", "clip_endTimeMs");
@@ -191,13 +191,13 @@ public final class f
     for (;;)
     {
       paramXmlSerializer.endTag("", "track_clip");
-      AppMethodBeat.o(191887);
+      AppMethodBeat.o(194565);
       return;
       paramXmlSerializer.startTag("", "clip_endTimeMs");
-      paramXmlSerializer.text(Long.toString(parame.esk()));
+      paramXmlSerializer.text(Long.toString(parame.evR()));
       paramXmlSerializer.endTag("", "clip_endTimeMs");
       paramXmlSerializer.startTag("", "clip_playTimeMs");
-      paramXmlSerializer.text(Long.toString(parame.fWH()));
+      paramXmlSerializer.text(Long.toString(parame.gbg()));
       paramXmlSerializer.endTag("", "clip_playTimeMs");
     }
   }

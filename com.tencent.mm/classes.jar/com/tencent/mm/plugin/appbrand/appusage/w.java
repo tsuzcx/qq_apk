@@ -4,8 +4,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.config.n.a;
 import com.tencent.mm.plugin.appbrand.config.x;
 import com.tencent.mm.plugin.appbrand.config.x.c;
-import com.tencent.mm.protocal.protobuf.ege;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.ehv;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -15,32 +15,32 @@ import java.util.Set;
 
  enum w
 {
-  static void a(int paramInt, LinkedList<ege> paramLinkedList)
+  static void a(int paramInt, LinkedList<ehv> paramLinkedList)
   {
     AppMethodBeat.i(44599);
     a(paramInt, paramLinkedList, null);
     AppMethodBeat.o(44599);
   }
   
-  static void a(int paramInt, LinkedList<ege> paramLinkedList, x.c paramc)
+  static void a(int paramInt, LinkedList<ehv> paramLinkedList, x.c paramc)
   {
-    AppMethodBeat.i(188034);
+    AppMethodBeat.i(222153);
     HashSet localHashSet = new HashSet();
     paramLinkedList = paramLinkedList.iterator();
     while (paramLinkedList.hasNext())
     {
-      localObject = (ege)paramLinkedList.next();
-      if (!bt.isNullOrNil(((ege)localObject).username)) {
-        localHashSet.add(((ege)localObject).username);
+      localObject = (ehv)paramLinkedList.next();
+      if (!bu.isNullOrNil(((ehv)localObject).username)) {
+        localHashSet.add(((ehv)localObject).username);
       }
     }
     Object localObject = new ArrayList(localHashSet.size());
     ((List)localObject).addAll(localHashSet);
     if (paramInt == 3) {}
-    for (paramLinkedList = n.a.jYy;; paramLinkedList = n.a.jYx)
+    for (paramLinkedList = n.a.kbN;; paramLinkedList = n.a.kbM)
     {
       x.a((List)localObject, paramLinkedList, paramc);
-      AppMethodBeat.o(188034);
+      AppMethodBeat.o(222153);
       return;
     }
   }

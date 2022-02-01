@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class im
   extends b
 {
-  public a duY;
+  public a dwc;
   
   public im()
   {
@@ -15,20 +15,17 @@ public final class im
   
   private im(byte paramByte)
   {
-    AppMethodBeat.i(149861);
-    this.duY = new a();
-    this.IbR = false;
+    AppMethodBeat.i(89646);
+    this.dwc = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(149861);
+    AppMethodBeat.o(89646);
   }
   
   public static final class a
   {
-    public String appId;
-    public String dnv;
-    public int duZ;
-    public int opType;
-    public String openId;
+    public int dlO;
+    public String dwb;
   }
 }
 

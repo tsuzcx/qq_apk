@@ -2,58 +2,58 @@ package com.tencent.luggage.game.page.a;
 
 import android.content.res.Configuration;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.page.aa;
-import com.tencent.mm.plugin.appbrand.page.b.h;
-import com.tencent.mm.plugin.appbrand.page.d.c.b;
+import com.tencent.mm.plugin.appbrand.page.a.h;
+import com.tencent.mm.plugin.appbrand.page.c.c.b;
+import com.tencent.mm.plugin.appbrand.page.z;
 
 public final class b
-  implements com.tencent.mm.plugin.appbrand.page.b.b, h
+  implements com.tencent.mm.plugin.appbrand.page.a.b, h
 {
-  private final a clt;
-  private final aa clu;
+  private final a clv;
+  private final z clw;
   
-  public b(aa paramaa)
+  public b(z paramz)
   {
     AppMethodBeat.i(130682);
-    this.clt = new a(paramaa);
-    this.clu = paramaa;
+    this.clv = new a(paramz);
+    this.clw = paramz;
     AppMethodBeat.o(130682);
   }
   
-  public final void DK()
+  public final void DN()
   {
     AppMethodBeat.i(130684);
-    this.clu.runOnUiThread(new Runnable()
+    this.clw.runOnUiThread(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(130680);
-        b.a(b.this).DK();
+        b.a(b.this).DN();
         AppMethodBeat.o(130680);
       }
     });
     AppMethodBeat.o(130684);
   }
   
-  public final void DL()
+  public final void DO()
   {
     AppMethodBeat.i(130685);
-    this.clu.runOnUiThread(new Runnable()
+    this.clw.runOnUiThread(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(130681);
-        b.a(b.this).DL();
+        b.a(b.this).DO();
         AppMethodBeat.o(130681);
       }
     });
     AppMethodBeat.o(130685);
   }
   
-  public final boolean DN()
+  public final boolean DQ()
   {
     AppMethodBeat.i(130686);
-    if (this.clt.DM() == c.b.mgD)
+    if (this.clv.DP() == c.b.mlC)
     {
       AppMethodBeat.o(130686);
       return true;
@@ -73,7 +73,7 @@ public final class b
   public final void onForeground()
   {
     AppMethodBeat.i(130683);
-    this.clt.Dv();
+    this.clv.Dy();
     AppMethodBeat.o(130683);
   }
 }

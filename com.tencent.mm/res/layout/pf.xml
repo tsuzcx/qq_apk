@@ -17,6 +17,9 @@
         <ViewStub android:id="@id/gfa" android:layout="@layout/qp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_marginTop="@dimen/hk" android:layout_below="@id/aop" android:layout_alignLeft="@id/aob" />
         <ImageView android:id="@id/ao1" android:background="@null" android:layout_width="10.0dip" android:layout_height="10.0dip" android:layout_marginLeft="@dimen/ci" android:src="@drawable/afx" android:layout_toRightOf="@id/aop" android:layout_alignTop="@id/aop" android:layout_alignBottom="@id/aop" />
         <ImageView android:id="@id/i19" android:background="@null" android:visibility="gone" android:layout_marginLeft="@dimen/ci" android:src="@drawable/ac7" android:layout_toRightOf="@id/aop" android:layout_alignTop="@id/aop" android:layout_alignBottom="@id/aop" style="@style/gy" />
+        <RelativeLayout android:id="@id/i7a" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ci" android:layout_toRightOf="@id/ao1" android:layout_alignTop="@id/aop" android:layout_alignBottom="@id/aop">
+            <TextView android:textSize="@dimen/c0" android:textColor="@color/FG_2" android:gravity="center" android:id="@id/i7_" android:background="@drawable/cac" android:paddingLeft="@dimen/ci" android:paddingRight="@dimen/ci" android:layout_width="wrap_content" android:layout_height="@dimen/c6" android:text="@string/dz5" android:layout_centerVertical="true" />
+        </RelativeLayout>
         <TextView android:id="@id/ajy" android:visibility="gone" android:layout_marginRight="5.0dip" android:text="@string/asn" android:layout_below="@id/aop" android:layout_alignRight="@id/aop" style="@style/gf" />
     </RelativeLayout>
 </RelativeLayout>

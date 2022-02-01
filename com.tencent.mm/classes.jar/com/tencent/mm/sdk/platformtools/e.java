@@ -1,162 +1,92 @@
 package com.tencent.mm.sdk.platformtools;
 
+import android.app.Application;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.a.m;
-import d.g.b.p;
-import d.g.b.q;
-import d.l;
+import java.lang.reflect.Method;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/sdk/platformtools/BaseSlotManager;", "T", "", "soltSeconds", "", "SLOT_SIZE", "", "(JI)V", "currentSlotId", "getCurrentSlotId", "()J", "prefix", "", "getPrefix", "()Ljava/lang/String;", "verifiedCache", "", "key", "getKey", "(I)Ljava/lang/String;", "toSlot", "getToSlot", "(J)I", "clearAll", "", "clearSlot", "slotId", "slot", "(JLjava/lang/Object;)V", "containsKey", "", "(Ljava/lang/Object;Ljava/lang/String;)Z", "findSlot", "(Ljava/lang/String;)Ljava/lang/Object;", "getSlot", "()Ljava/lang/Object;", "getSlotByKey", "slotKey", "(Ljava/lang/String;J)Ljava/lang/Object;", "remarkSlot", "verifyAllSlot", "verifySlot", "libcompatible_release"})
-public abstract class e<T>
+public final class e
 {
-  final boolean[] Ich;
-  private final long Ici;
-  private final int hQK;
-  private final String inP;
+  private static Application Iwq;
+  private static Application Iwr;
   
-  private e(long paramLong)
+  public static Application fnL()
   {
-    this.Ici = paramLong;
-    this.hQK = 3;
-    StringBuilder localStringBuilder = new StringBuilder("_slots_id");
-    if (this.Ici == 900L) {}
-    for (Object localObject = "";; localObject = "_" + this.Ici)
+    for (;;)
     {
-      this.inP = ((String)localObject + '_');
-      int j = this.hQK;
-      localObject = new boolean[j];
-      int i = 0;
-      while (i < j)
+      try
       {
-        localObject[i] = 0;
-        i += 1;
-      }
-    }
-    this.Ich = ((boolean[])localObject);
-  }
-  
-  private final String aas(int paramInt)
-  {
-    return getPrefix() + paramInt % this.hQK;
-  }
-  
-  private final long fjT()
-  {
-    return System.currentTimeMillis() / (this.Ici * 1000L);
-  }
-  
-  final int CR(long paramLong)
-  {
-    return (int)((paramLong % this.hQK + this.hQK) % 3L);
-  }
-  
-  public final T aQb(String paramString)
-  {
-    p.h(paramString, "key");
-    fjU();
-    long l = fjT();
-    a locala = new a(this);
-    Object localObject = locala.L(l, paramString);
-    if (localObject != null) {
-      paramString = localObject;
-    }
-    do
-    {
-      return paramString;
-      localObject = locala.L(l - 1L, paramString);
-      paramString = localObject;
-    } while (localObject != null);
-    return null;
-  }
-  
-  protected abstract void bU(String paramString, long paramLong);
-  
-  protected abstract boolean bV(String paramString, long paramLong);
-  
-  protected abstract T bW(String paramString, long paramLong);
-  
-  protected abstract void c(long paramLong, T paramT);
-  
-  public final void clearAll()
-  {
-    int i = 0;
-    int j = this.hQK;
-    if (j >= 0) {
-      for (;;)
-      {
-        c(-1L, a(this, aas(i)));
-        if (i == j) {
-          break;
-        }
-        i += 1;
-      }
-    }
-  }
-  
-  protected abstract boolean e(T paramT, String paramString);
-  
-  public final void fjU()
-  {
-    long l2 = fjT();
-    long l1 = l2 - 1L;
-    long l3 = l2 + 1L;
-    if (l1 <= l3) {
-      for (;;)
-      {
-        int i = CR(l1);
-        String str = aas(i);
-        if ((this.Ich[i] == 0) && (!bV(str, l1)))
+        AppMethodBeat.i(200291);
+        Application localApplication;
+        if (Iwq != null)
         {
-          c(l1, a(this, str));
-          this.Ich[i] = true;
-          if (l1 == l2) {
-            bU(str, l1);
-          }
+          localApplication = Iwq;
+          AppMethodBeat.o(200291);
+          return localApplication;
         }
-        if (l1 == l3) {
-          break;
+        if (Iwr != null)
+        {
+          localApplication = Iwr;
+          AppMethodBeat.o(200291);
+          continue;
         }
-        l1 += 1L;
+        localObject2 = fnM();
       }
+      finally {}
+      Iwr = (Application)localObject2;
+      if (localObject2 == null) {
+        break;
+      }
+      localObject2 = Iwr;
+      AppMethodBeat.o(200291);
     }
+    Object localObject2 = new IllegalStateException("Please make sure you do not call Applications#context() before or inside Application#attachBaseContext(Context). If you have to, please call Applications#attach(Application) first.");
+    AppMethodBeat.o(200291);
+    throw ((Throwable)localObject2);
   }
   
-  public final T fjV()
+  private static Application fnM()
   {
-    fjU();
-    long l = fjT();
-    return bW(aas(CR(l)), l);
-  }
-  
-  protected String getPrefix()
-  {
-    return this.inP;
-  }
-  
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"checkSlot", "T", "slotId", "", "key", "", "invoke", "(JLjava/lang/String;)Ljava/lang/Object;"})
-  static final class a
-    extends q
-    implements m<Long, String, T>
-  {
-    a(e parame)
+    AppMethodBeat.i(200292);
+    try
     {
-      super();
+      localObject1 = Class.forName("android.app.AppGlobals").getDeclaredMethod("getInitialApplication", new Class[0]);
+      ((Method)localObject1).setAccessible(true);
+      localObject1 = (Application)((Method)localObject1).invoke(null, new Object[0]);
+      AppMethodBeat.o(200292);
+      return localObject1;
     }
-    
-    public final T L(long paramLong, String paramString)
+    catch (Exception localException2)
     {
-      AppMethodBeat.i(156369);
-      p.h(paramString, "key");
-      int i = this.Icj.CR(paramLong);
-      Object localObject = this.Icj.bW(e.a(this.Icj, i), paramLong);
-      if (this.Icj.e(localObject, paramString))
+      for (;;)
       {
-        this.Icj.Ich[i] = false;
-        AppMethodBeat.o(156369);
-        return localObject;
+        try
+        {
+          Object localObject1 = Class.forName("android.app.ActivityThread").getDeclaredMethod("currentApplication", new Class[0]);
+          ((Method)localObject1).setAccessible(true);
+          localObject1 = (Application)((Method)localObject1).invoke(null, new Object[0]);
+        }
+        catch (Exception localException1)
+        {
+          ae.w("MicroMsg.sdk.ApplicationGlobal", "get activity thread fail, error = " + localException2.getMessage() + " & " + localException1.getMessage());
+          Object localObject2 = null;
+        }
       }
-      AppMethodBeat.o(156369);
-      return null;
+    }
+  }
+  
+  public static void o(Application paramApplication)
+  {
+    try
+    {
+      if (Iwq == null) {
+        Iwq = paramApplication;
+      }
+      return;
+    }
+    finally
+    {
+      paramApplication = finally;
+      throw paramApplication;
     }
   }
 }

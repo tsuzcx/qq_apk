@@ -7,9 +7,9 @@ import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.expt.b.b;
 import com.tencent.mm.plugin.expt.b.b.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ax;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.ay;
 import d.ac;
 import d.f;
 import d.g.a.a;
@@ -20,14 +20,14 @@ import d.n.n;
 import java.util.Iterator;
 import java.util.List;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/game/config/WAGameDynamicConfig;", "T", "", "()V", "mConfigMemory", "Ljava/lang/Object;", "askRestart", "", "context", "Landroid/content/Context;", "message", "", "enableABTest", "Lcom/tencent/mm/plugin/expt/api/IExptService$ExptEnum;", "enableAlert", "", "enableKv", "getConfig", "()Ljava/lang/Object;", "getConfigDefaultValue", "getConfigImpl", "getConfigLocalStorage", "onProcessConfig", "input", "(Ljava/lang/String;)Ljava/lang/Object;", "onProcessConfigBoolean", "(Ljava/lang/String;)Ljava/lang/Boolean;", "onProcessConfigFloat", "", "(Ljava/lang/String;)Ljava/lang/Float;", "onProcessConfigInt", "", "(Ljava/lang/String;)Ljava/lang/Integer;", "onProcessConfigLong", "", "(Ljava/lang/String;)Ljava/lang/Long;", "processCommand", "value", "removeConfigLocalStorage", "setConfigLocalStorage", "(Ljava/lang/Object;)V", "Companion", "plugin-appbrand-integration_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/game/config/WAGameDynamicConfig;", "T", "", "()V", "mConfigMemory", "Ljava/lang/Object;", "askRestart", "", "context", "Landroid/content/Context;", "message", "", "enableABTest", "Lcom/tencent/mm/plugin/expt/api/IExptService$ExptEnum;", "enableAlert", "", "enableKv", "getConfig", "()Ljava/lang/Object;", "getConfigDefaultValue", "getConfigImpl", "getConfigLocalStorage", "onProcessConfig", "input", "(Ljava/lang/String;)Ljava/lang/Object;", "onProcessConfigBoolean", "(Ljava/lang/String;)Ljava/lang/Boolean;", "onProcessConfigFloat", "", "(Ljava/lang/String;)Ljava/lang/Float;", "onProcessConfigInt", "", "(Ljava/lang/String;)Ljava/lang/Integer;", "onProcessConfigLong", "", "(Ljava/lang/String;)Ljava/lang/Long;", "processCommand", "value", "removeConfigLocalStorage", "setConfigLocalStorage", "(Ljava/lang/Object;)V", "Companion", "plugin-appbrand-integration_release"})
 public abstract class t<T>
 {
-  private static final f kkZ = d.g.O((a)b.klb);
-  public static final a kla = new a((byte)0);
-  private T kkY;
+  private static final f kop = d.g.O((a)b.kor);
+  public static final a koq = new a((byte)0);
+  private T koo;
   
-  protected static Boolean OQ(String paramString)
+  protected static Boolean Py(String paramString)
   {
     if (paramString == null) {
       return null;
@@ -38,7 +38,7 @@ public abstract class t<T>
     if ("false".contentEquals((CharSequence)paramString)) {
       return Boolean.FALSE;
     }
-    paramString = n.bdh(paramString);
+    paramString = n.beL(paramString);
     if (paramString != null)
     {
       if (paramString.intValue() > 0) {
@@ -52,9 +52,9 @@ public abstract class t<T>
     return null;
   }
   
-  private static void T(Context paramContext, String paramString)
+  private static void U(Context paramContext, String paramString)
   {
-    new AlertDialog.Builder(paramContext).setTitle((CharSequence)"").setMessage((CharSequence)paramString).setNegativeButton((CharSequence)"cancel", null).setPositiveButton((CharSequence)"restart", (DialogInterface.OnClickListener)t.c.klc).show();
+    new AlertDialog.Builder(paramContext).setTitle((CharSequence)"").setMessage((CharSequence)paramString).setNegativeButton((CharSequence)"cancel", null).setPositiveButton((CharSequence)"restart", (DialogInterface.OnClickListener)t.c.kos).show();
   }
   
   public static final void a(Context paramContext, String[] paramArrayOfString)
@@ -62,111 +62,111 @@ public abstract class t<T>
     a.a(paramContext, paramArrayOfString);
   }
   
-  protected abstract T OO(String paramString);
+  protected abstract T Pw(String paramString);
   
-  public final void S(Context paramContext, String paramString)
+  public final void T(Context paramContext, String paramString)
   {
     int k = 1;
     int j = 1;
     p.h(paramContext, "context");
-    if (bhb() != null) {}
-    for (int i = 1; (ac.MKp) && (i == 0); i = 0) {
+    if (bhJ() != null) {}
+    for (int i = 1; (ac.Nhs) && (i == 0); i = 0) {
       throw ((Throwable)new AssertionError("Assertion failed"));
     }
-    Object localObject = OO(paramString);
+    Object localObject = Pw(paramString);
     if (localObject == null)
     {
-      if (bhb() != null) {}
-      for (i = 1; (ac.MKp) && (i == 0); i = 0) {
+      if (bhJ() != null) {}
+      for (i = 1; (ac.Nhs) && (i == 0); i = 0) {
         throw ((Throwable)new AssertionError("Assertion failed"));
       }
-      paramString = ax.aQz("WAGameDynamicConfig");
-      paramString.remove("WAGameDynamicConfig" + bhb());
+      paramString = ay.aRW("WAGameDynamicConfig");
+      paramString.remove("WAGameDynamicConfig" + bhJ());
       paramString.commit();
-      if (!paramString.containsKey("WAGameDynamicConfig" + bhb())) {}
-      for (i = j; (ac.MKp) && (i == 0); i = 0) {
+      if (!paramString.containsKey("WAGameDynamicConfig" + bhJ())) {}
+      for (i = j; (ac.Nhs) && (i == 0); i = 0) {
         throw ((Throwable)new AssertionError("Assertion failed"));
       }
-      ad.i("WAGameDynamicConfig", "dl: remove localstorage config");
-      if (bhd()) {
-        T(paramContext, "config[" + bhb() + "] removed");
+      ae.i("WAGameDynamicConfig", "dl: remove localstorage config");
+      if (bhL()) {
+        U(paramContext, "config[" + bhJ() + "] removed");
       }
     }
     do
     {
       return;
-      if (bhb() != null) {}
-      for (i = k; (ac.MKp) && (i == 0); i = 0) {
+      if (bhJ() != null) {}
+      for (i = k; (ac.Nhs) && (i == 0); i = 0) {
         throw ((Throwable)new AssertionError("Assertion failed"));
       }
-      ax localax = ax.aQz("WAGameDynamicConfig");
-      localax.encode("WAGameDynamicConfig" + bhb(), String.valueOf(localObject));
-      localax.commit();
-      ad.i("WAGameDynamicConfig", "dl: set localstorage config ".concat(String.valueOf(paramString)));
-    } while (!bhd());
-    T(paramContext, "config[" + bhb() + "] set to " + localObject);
+      ay localay = ay.aRW("WAGameDynamicConfig");
+      localay.encode("WAGameDynamicConfig" + bhJ(), String.valueOf(localObject));
+      localay.commit();
+      ae.i("WAGameDynamicConfig", "dl: set localstorage config ".concat(String.valueOf(paramString)));
+    } while (!bhL());
+    U(paramContext, "config[" + bhJ() + "] set to " + localObject);
   }
   
-  public T ate()
+  public T att()
   {
-    Object localObject = this.kkY;
+    Object localObject = this.koo;
     if (localObject != null) {
       return localObject;
     }
-    if (bhb() != null)
+    if (bhJ() != null)
     {
-      localObject = ax.aQz("WAGameDynamicConfig").decodeString("WAGameDynamicConfig" + bhb(), null);
+      localObject = ay.aRW("WAGameDynamicConfig").decodeString("WAGameDynamicConfig" + bhJ(), null);
       if (localObject == null)
       {
         localObject = null;
         if (localObject == null) {
           break label81;
         }
-        ad.i("WAGameDynamicConfig", "hit localstorage");
+        ae.i("WAGameDynamicConfig", "hit localstorage");
       }
     }
     for (;;)
     {
-      this.kkY = localObject;
+      this.koo = localObject;
       return localObject;
-      localObject = OO((String)localObject);
+      localObject = Pw((String)localObject);
       break;
       label81:
-      if (bhc() != null)
+      if (bhK() != null)
       {
-        localObject = ((b)com.tencent.mm.kernel.g.ab(b.class)).a(bhc(), "");
+        localObject = ((b)com.tencent.mm.kernel.g.ab(b.class)).a(bhK(), "");
         if (localObject != null)
         {
-          localObject = OO((String)localObject);
+          localObject = Pw((String)localObject);
           if (localObject != null)
           {
-            ad.i("WAGameDynamicConfig", "hit ABTest");
+            ae.i("WAGameDynamicConfig", "hit ABTest");
             continue;
           }
         }
       }
-      localObject = bhe();
+      localObject = bhM();
     }
   }
   
-  protected String bhb()
+  protected String bhJ()
   {
     return null;
   }
   
-  protected b.a bhc()
+  protected b.a bhK()
   {
     return null;
   }
   
-  protected boolean bhd()
+  protected boolean bhL()
   {
     return true;
   }
   
-  public abstract T bhe();
+  public abstract T bhM();
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/game/config/WAGameDynamicConfig$Companion;", "", "()V", "TAG", "", "mCommandProcessor", "", "Lcom/tencent/mm/plugin/appbrand/game/config/WAGameDynamicConfig;", "getMCommandProcessor", "()Ljava/util/List;", "mCommandProcessor$delegate", "Lkotlin/Lazy;", "checkNotDuplicate", "", "registry", "processCommand", "context", "Landroid/content/Context;", "args", "", "(Landroid/content/Context;[Ljava/lang/String;)V", "plugin-appbrand-integration_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/game/config/WAGameDynamicConfig$Companion;", "", "()V", "TAG", "", "mCommandProcessor", "", "Lcom/tencent/mm/plugin/appbrand/game/config/WAGameDynamicConfig;", "getMCommandProcessor", "()Ljava/util/List;", "mCommandProcessor$delegate", "Lkotlin/Lazy;", "checkNotDuplicate", "", "registry", "processCommand", "context", "Landroid/content/Context;", "args", "", "(Landroid/content/Context;[Ljava/lang/String;)V", "plugin-appbrand-integration_release"})
   public static final class a
   {
     public static void a(Context paramContext, String[] paramArrayOfString)
@@ -175,28 +175,28 @@ public abstract class t<T>
       p.h(paramContext, "context");
       p.h(paramArrayOfString, "args");
       if (paramArrayOfString.length >= 3) {}
-      for (int i = 1; (ac.MKp) && (i == 0); i = 0)
+      for (int i = 1; (ac.Nhs) && (i == 0); i = 0)
       {
         paramContext = (Throwable)new AssertionError("Assertion failed");
         AppMethodBeat.o(50391);
         throw paramContext;
       }
       if ((paramArrayOfString[1] != null) && (paramArrayOfString[0] != null)) {}
-      for (i = 1; (ac.MKp) && (i == 0); i = 0)
+      for (i = 1; (ac.Nhs) && (i == 0); i = 0)
       {
         paramContext = (Throwable)new AssertionError("Assertion failed");
         AppMethodBeat.o(50391);
         throw paramContext;
       }
       boolean bool = n.H("//wagame", paramArrayOfString[0], true);
-      if ((ac.MKp) && (!bool))
+      if ((ac.Nhs) && (!bool))
       {
         paramContext = (Throwable)new AssertionError("Assertion failed");
         AppMethodBeat.o(50391);
         throw paramContext;
       }
-      Object localObject1 = t.bhi();
-      Object localObject2 = t.kla;
+      Object localObject1 = t.bhQ();
+      Object localObject2 = t.koq;
       localObject2 = ((Iterable)((f)localObject1).getValue()).iterator();
       t localt;
       do
@@ -206,34 +206,34 @@ public abstract class t<T>
         }
         localObject1 = ((Iterator)localObject2).next();
         localt = (t)localObject1;
-      } while (!n.H(paramArrayOfString[1], localt.bhb(), false));
+      } while (!n.H(paramArrayOfString[1], localt.bhJ(), false));
       for (;;)
       {
         localObject1 = (t)localObject1;
         if (localObject1 != null) {
           break;
         }
-        Toast.makeText(aj.getContext(), (CharSequence)("Unknown config name " + paramArrayOfString[1]), 0).show();
+        Toast.makeText(ak.getContext(), (CharSequence)("Unknown config name " + paramArrayOfString[1]), 0).show();
         AppMethodBeat.o(50391);
         return;
         localObject1 = null;
       }
-      ((t)localObject1).S(paramContext, paramArrayOfString[2]);
+      ((t)localObject1).T(paramContext, paramArrayOfString[2]);
       AppMethodBeat.o(50391);
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "Lcom/tencent/mm/plugin/appbrand/game/config/WAGameDynamicConfig;", "T", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "Lcom/tencent/mm/plugin/appbrand/game/config/WAGameDynamicConfig;", "T", "invoke"})
   static final class b
     extends q
     implements a<List<t<?>>>
   {
-    public static final b klb;
+    public static final b kor;
     
     static
     {
       AppMethodBeat.i(50389);
-      klb = new b();
+      kor = new b();
       AppMethodBeat.o(50389);
     }
     
@@ -245,7 +245,7 @@ public abstract class t<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.game.a.t
  * JD-Core Version:    0.7.0.1
  */

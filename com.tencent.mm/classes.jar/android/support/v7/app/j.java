@@ -330,7 +330,7 @@ public class j
       if (i != 0) {
         this.aak = true;
       }
-      paramView = a.Z(this.mContext);
+      paramView = a.aa(this.mContext);
       paramView.hu();
       T(paramView.ht());
       paramView = this.mContext.obtainStyledAttributes(null, a.a.ActionBar, 2130968602, 0);
@@ -625,7 +625,7 @@ public class j
   
   public final void onConfigurationChanged(Configuration paramConfiguration)
   {
-    T(a.Z(this.mContext).ht());
+    T(a.aa(this.mContext).ht());
   }
   
   public final boolean onKeyShortcut(int paramInt, KeyEvent paramKeyEvent)

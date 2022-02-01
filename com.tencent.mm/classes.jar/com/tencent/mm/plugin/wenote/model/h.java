@@ -5,22 +5,23 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
-import com.tencent.mm.g.a.cv;
-import com.tencent.mm.g.a.cv.a;
-import com.tencent.mm.g.a.nk;
-import com.tencent.mm.g.a.vk;
-import com.tencent.mm.g.a.vk.b;
-import com.tencent.mm.model.ba;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.g.a.cw;
+import com.tencent.mm.g.a.cw.a;
+import com.tencent.mm.g.a.nl;
+import com.tencent.mm.g.a.vo;
+import com.tencent.mm.g.a.vo.b;
+import com.tencent.mm.model.bc;
 import com.tencent.mm.plugin.fav.a.ao;
-import com.tencent.mm.protocal.protobuf.ajn;
-import com.tencent.mm.protocal.protobuf.akb;
-import com.tencent.mm.protocal.protobuf.akd;
+import com.tencent.mm.plugin.wenote.model.a.i;
+import com.tencent.mm.protocal.protobuf.ajx;
+import com.tencent.mm.protocal.protobuf.akl;
+import com.tencent.mm.protocal.protobuf.akn;
 import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.vfs.e;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.vfs.o;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -32,136 +33,136 @@ import org.json.JSONObject;
 
 public final class h
 {
-  public static String Eze;
-  public static String Ezf;
-  public static String Ezg;
-  public static String Ezh;
-  public static String Ezi;
-  public static String Ezj;
-  public static String Ezk;
-  public static String Ezl;
-  public static String Ezm;
-  public static String Ezn;
-  private static String[] Ezo;
-  private static String[] Ezp;
-  private static LinkedList<akb> Ezq;
-  private static String Ezr;
-  private static Map<String, String> nIf;
+  public static String ERA;
+  public static String ERB;
+  public static String ERC;
+  public static String ERD;
+  public static String ERE;
+  public static String ERF;
+  public static String ERG;
+  public static String ERH;
+  public static String ERI;
+  public static String ERJ;
+  private static String[] ERK;
+  private static String[] ERL;
+  private static LinkedList<akl> ERM;
+  private static String ERN;
+  private static Map<String, String> nNI;
   
   static
   {
     AppMethodBeat.i(30339);
-    Eze = ao.cvB() + "/fav_fileicon_video.png";
-    Ezf = ao.cvB() + "/fav_fileicon_music.png";
-    Ezg = ao.cvB() + "/fav_list_img_default.png";
-    Ezh = ao.cvB() + "/fav_fileicon_zip.png";
-    Ezi = ao.cvB() + "/fav_fileicon_word.png";
-    Ezj = ao.cvB() + "/fav_fileicon_ppt.png";
-    Ezk = ao.cvB() + "/fav_fileicon_xls.png";
-    Ezl = ao.cvB() + "/fav_fileicon_txt.png";
-    Ezm = ao.cvB() + "/fav_fileicon_pdf.png";
-    Ezn = ao.cvB() + "/fav_fileicon_unknow.png";
-    nIf = new HashMap();
+    ERA = ao.cxc() + "/fav_fileicon_video.png";
+    ERB = ao.cxc() + "/fav_fileicon_music.png";
+    ERC = ao.cxc() + "/fav_list_img_default.png";
+    ERD = ao.cxc() + "/fav_fileicon_zip.png";
+    ERE = ao.cxc() + "/fav_fileicon_word.png";
+    ERF = ao.cxc() + "/fav_fileicon_ppt.png";
+    ERG = ao.cxc() + "/fav_fileicon_xls.png";
+    ERH = ao.cxc() + "/fav_fileicon_txt.png";
+    ERI = ao.cxc() + "/fav_fileicon_pdf.png";
+    ERJ = ao.cxc() + "/fav_fileicon_unknow.png";
+    nNI = new HashMap();
     HashMap localHashMap = new HashMap();
-    nIf = localHashMap;
-    localHashMap.put("avi", Eze);
-    nIf.put("m4v", Eze);
-    nIf.put("vob", Eze);
-    nIf.put("mpeg", Eze);
-    nIf.put("mpe", Eze);
-    nIf.put("asx", Eze);
-    nIf.put("asf", Eze);
-    nIf.put("f4v", Eze);
-    nIf.put("flv", Eze);
-    nIf.put("mkv", Eze);
-    nIf.put("wmv", Eze);
-    nIf.put("wm", Eze);
-    nIf.put("3gp", Eze);
-    nIf.put("mp4", Eze);
-    nIf.put("rmvb", Eze);
-    nIf.put("rm", Eze);
-    nIf.put("ra", Eze);
-    nIf.put("ram", Eze);
-    nIf.put("mp3pro", Ezf);
-    nIf.put("vqf", Ezf);
-    nIf.put("cd", Ezf);
-    nIf.put("md", Ezf);
-    nIf.put("mod", Ezf);
-    nIf.put("vorbis", Ezf);
-    nIf.put("au", Ezf);
-    nIf.put("amr", Ezf);
-    nIf.put("silk", Ezf);
-    nIf.put("wma", Ezf);
-    nIf.put("mmf", Ezf);
-    nIf.put("mid", Ezf);
-    nIf.put("midi", Ezf);
-    nIf.put("mp3", Ezf);
-    nIf.put("aac", Ezf);
-    nIf.put("ape", Ezf);
-    nIf.put("aiff", Ezf);
-    nIf.put("aif", Ezf);
-    nIf.put("jfif", Ezg);
-    nIf.put("tiff", Ezg);
-    nIf.put("tif", Ezg);
-    nIf.put("jpe", Ezg);
-    nIf.put("dib", Ezg);
-    nIf.put("jpeg", Ezg);
-    nIf.put("jpg", Ezg);
-    nIf.put("png", Ezg);
-    nIf.put("bmp", Ezg);
-    nIf.put("gif", Ezg);
-    nIf.put("rar", Ezh);
-    nIf.put("zip", Ezh);
-    nIf.put("7z", Ezh);
-    nIf.put("iso", Ezh);
-    nIf.put("cab", Ezh);
-    nIf.put("doc", Ezi);
-    nIf.put("docx", Ezi);
-    nIf.put("ppt", Ezj);
-    nIf.put("pptx", Ezj);
-    nIf.put("xls", Ezk);
-    nIf.put("xlsx", Ezk);
-    nIf.put("txt", Ezl);
-    nIf.put("rtf", Ezl);
-    nIf.put("pdf", Ezm);
-    nIf.put("unknown", Ezn);
-    Ezo = new String[] { "<div>", "<div/>", "<object", "<br", "</" };
-    Ezp = new String[] { "＜div>", "＜div/>", "＜object", "＜br", "＜/" };
-    Ezq = null;
-    Ezr = "";
+    nNI = localHashMap;
+    localHashMap.put("avi", ERA);
+    nNI.put("m4v", ERA);
+    nNI.put("vob", ERA);
+    nNI.put("mpeg", ERA);
+    nNI.put("mpe", ERA);
+    nNI.put("asx", ERA);
+    nNI.put("asf", ERA);
+    nNI.put("f4v", ERA);
+    nNI.put("flv", ERA);
+    nNI.put("mkv", ERA);
+    nNI.put("wmv", ERA);
+    nNI.put("wm", ERA);
+    nNI.put("3gp", ERA);
+    nNI.put("mp4", ERA);
+    nNI.put("rmvb", ERA);
+    nNI.put("rm", ERA);
+    nNI.put("ra", ERA);
+    nNI.put("ram", ERA);
+    nNI.put("mp3pro", ERB);
+    nNI.put("vqf", ERB);
+    nNI.put("cd", ERB);
+    nNI.put("md", ERB);
+    nNI.put("mod", ERB);
+    nNI.put("vorbis", ERB);
+    nNI.put("au", ERB);
+    nNI.put("amr", ERB);
+    nNI.put("silk", ERB);
+    nNI.put("wma", ERB);
+    nNI.put("mmf", ERB);
+    nNI.put("mid", ERB);
+    nNI.put("midi", ERB);
+    nNI.put("mp3", ERB);
+    nNI.put("aac", ERB);
+    nNI.put("ape", ERB);
+    nNI.put("aiff", ERB);
+    nNI.put("aif", ERB);
+    nNI.put("jfif", ERC);
+    nNI.put("tiff", ERC);
+    nNI.put("tif", ERC);
+    nNI.put("jpe", ERC);
+    nNI.put("dib", ERC);
+    nNI.put("jpeg", ERC);
+    nNI.put("jpg", ERC);
+    nNI.put("png", ERC);
+    nNI.put("bmp", ERC);
+    nNI.put("gif", ERC);
+    nNI.put("rar", ERD);
+    nNI.put("zip", ERD);
+    nNI.put("7z", ERD);
+    nNI.put("iso", ERD);
+    nNI.put("cab", ERD);
+    nNI.put("doc", ERE);
+    nNI.put("docx", ERE);
+    nNI.put("ppt", ERF);
+    nNI.put("pptx", ERF);
+    nNI.put("xls", ERG);
+    nNI.put("xlsx", ERG);
+    nNI.put("txt", ERH);
+    nNI.put("rtf", ERH);
+    nNI.put("pdf", ERI);
+    nNI.put("unknown", ERJ);
+    ERK = new String[] { "<div>", "<div/>", "<object", "<br", "</" };
+    ERL = new String[] { "＜div>", "＜div/>", "＜object", "＜br", "＜/" };
+    ERM = null;
+    ERN = "";
     AppMethodBeat.o(30339);
   }
   
-  public static void XX(int paramInt)
+  public static void YD(int paramInt)
   {
     AppMethodBeat.i(30336);
-    Ezq = null;
-    Ezr = "";
-    Object localObject2 = com.tencent.mm.plugin.wenote.model.nativenote.manager.c.eWU().cer();
-    Ezr = (String)localObject2;
+    ERM = null;
+    ERN = "";
+    Object localObject2 = com.tencent.mm.plugin.wenote.model.nativenote.manager.c.faG().cfG();
+    ERN = (String)localObject2;
     Object localObject1 = new LinkedList();
-    localObject2 = com.tencent.mm.plugin.wenote.model.nativenote.manager.c.eWU().aaX((String)localObject2);
-    if ((localObject2 == null) || (((akd)localObject2).nZa.size() <= 1)) {
+    localObject2 = com.tencent.mm.plugin.wenote.model.nativenote.manager.c.faG().abO((String)localObject2);
+    if ((localObject2 == null) || (((akn)localObject2).oeJ.size() <= 1)) {
       localObject1 = null;
     }
     for (;;)
     {
-      Ezq = (LinkedList)localObject1;
-      localObject1 = new b(paramInt, 1, Ezr, Ezq, null);
-      ba.aiU().a((n)localObject1, 0);
+      ERM = (LinkedList)localObject1;
+      localObject1 = new b(paramInt, 1, ERN, ERM, null);
+      bc.ajj().a((n)localObject1, 0);
       AppMethodBeat.o(30336);
       return;
-      localObject2 = ((akd)localObject2).nZa.iterator();
+      localObject2 = ((akn)localObject2).oeJ.iterator();
       while (((Iterator)localObject2).hasNext())
       {
-        ajn localajn = (ajn)((Iterator)localObject2).next();
-        Object localObject3 = f.b(localajn);
-        if ((!bt.isNullOrNil((String)localObject3)) && (localajn.dataType == 2) && (com.tencent.mm.vfs.i.fv((String)localObject3)))
+        ajx localajx = (ajx)((Iterator)localObject2).next();
+        Object localObject3 = f.b(localajx);
+        if ((!bu.isNullOrNil((String)localObject3)) && (localajx.dataType == 2) && (o.fB((String)localObject3)))
         {
-          localObject3 = new akb();
-          ((akb)localObject3).Md5 = localajn.Ghi;
-          ((akb)localObject3).AesKey = localajn.GgT;
-          ((akb)localObject3).Gjr = localajn.GgR;
+          localObject3 = new akl();
+          ((akl)localObject3).Md5 = localajx.GzR;
+          ((akl)localObject3).AesKey = localajx.GzC;
+          ((akl)localObject3).GCa = localajx.GzA;
           ((LinkedList)localObject1).add(localObject3);
         }
       }
@@ -194,8 +195,8 @@ public final class h
       if (((String)localObject1).trim().equals("<ThisisNoteNodeHrObj>"))
       {
         localObject1 = new com.tencent.mm.plugin.wenote.model.a.h();
-        ((com.tencent.mm.plugin.wenote.model.a.h)localObject1).ptF = false;
-        ((com.tencent.mm.plugin.wenote.model.a.h)localObject1).ptL = false;
+        ((com.tencent.mm.plugin.wenote.model.a.h)localObject1).pAj = false;
+        ((com.tencent.mm.plugin.wenote.model.a.h)localObject1).pAp = false;
         if (i < localArrayList.size()) {
           localArrayList.add(i, localObject1);
         }
@@ -208,11 +209,11 @@ public final class h
         continue;
         if (!((String)localObject1).trim().equals("<ThisisNoteNodeObj>"))
         {
-          localObject2 = new com.tencent.mm.plugin.wenote.model.a.i();
-          ((com.tencent.mm.plugin.wenote.model.a.i)localObject2).content = ((String)localObject1);
-          ((com.tencent.mm.plugin.wenote.model.a.i)localObject2).ptF = false;
-          ((com.tencent.mm.plugin.wenote.model.a.i)localObject2).ptL = false;
-          ((com.tencent.mm.plugin.wenote.model.a.i)localObject2).dsU = f.aaU(localObject2.toString());
+          localObject2 = new i();
+          ((i)localObject2).content = ((String)localObject1);
+          ((i)localObject2).pAj = false;
+          ((i)localObject2).pAp = false;
+          ((i)localObject2).dua = f.abL(localObject2.toString());
           if (i < localArrayList.size()) {
             localArrayList.add(i, localObject2);
           } else {
@@ -233,17 +234,17 @@ public final class h
   public static void a(Context paramContext, Bitmap paramBitmap, boolean paramBoolean)
   {
     AppMethodBeat.i(30337);
-    String str = com.tencent.mm.sdk.f.b.aqN("jpg");
+    String str = com.tencent.mm.sdk.f.b.arS("jpg");
     if (paramBitmap != null) {}
     for (;;)
     {
       try
       {
-        com.tencent.mm.sdk.platformtools.g.a(paramBitmap, 100, Bitmap.CompressFormat.JPEG, str, true);
-        if (!bt.isNullOrNil(str)) {
+        com.tencent.mm.sdk.platformtools.h.a(paramBitmap, 100, Bitmap.CompressFormat.JPEG, str, true);
+        if (!bu.isNullOrNil(str)) {
           com.tencent.mm.sdk.f.b.k(str, paramContext);
         }
-        paramContext = new e(str);
+        paramContext = new com.tencent.mm.vfs.k(str);
         if (paramContext.exists())
         {
           long l = paramContext.length() / 1024L;
@@ -255,11 +256,11 @@ public final class h
             i = paramBitmap.getHeight();
             paramBitmap.recycle();
           }
-          paramContext = new akb();
-          paramContext.Md5 = com.tencent.mm.vfs.i.aPK(str);
-          paramContext = new b(0, 2, Ezr, Ezq, paramContext);
-          ba.aiU().a(paramContext, 0);
-          paramContext = com.tencent.mm.plugin.report.service.g.yhR;
+          paramContext = new akl();
+          paramContext.Md5 = o.aRh(str);
+          paramContext = new b(0, 2, ERN, ERM, paramContext);
+          bc.ajj().a(paramContext, 0);
+          paramContext = com.tencent.mm.plugin.report.service.g.yxI;
           if (!paramBoolean) {
             break label379;
           }
@@ -271,9 +272,9 @@ public final class h
       }
       catch (Exception localException)
       {
-        ad.printErrStackTrace("MicroMsg.WNNoteLogic", localException, "", new Object[0]);
-        ad.e("MicroMsg.WNNoteLogic", "save image fail, saveBitmapToImage is null");
-        localObject = com.tencent.mm.plugin.report.service.g.yhR;
+        ae.printErrStackTrace("MicroMsg.WNNoteLogic", localException, "", new Object[0]);
+        ae.e("MicroMsg.WNNoteLogic", "save image fail, saveBitmapToImage is null");
+        localObject = com.tencent.mm.plugin.report.service.g.yxI;
         if (!paramBoolean) {}
       }
       for (int i = 1;; i = 0)
@@ -282,8 +283,8 @@ public final class h
         localObject = "";
         break;
       }
-      ad.e("MicroMsg.WNNoteLogic", "save image fail, bigBitmap is null");
-      Object localObject = com.tencent.mm.plugin.report.service.g.yhR;
+      ae.e("MicroMsg.WNNoteLogic", "save image fail, bigBitmap is null");
+      Object localObject = com.tencent.mm.plugin.report.service.g.yxI;
       if (paramBoolean) {}
       for (i = 1;; i = 0)
       {
@@ -296,21 +297,21 @@ public final class h
     }
   }
   
-  public static void aKf(String paramString)
+  public static void aLB(String paramString)
   {
     AppMethodBeat.i(30330);
-    if (bt.isNullOrNil(paramString))
+    if (bu.isNullOrNil(paramString))
     {
       AppMethodBeat.o(30330);
       return;
     }
-    if (!com.tencent.mm.vfs.i.fv(paramString))
+    if (!o.fB(paramString))
     {
       AppMethodBeat.o(30330);
       return;
     }
-    e locale = new e(paramString);
-    if (!locale.exists())
+    com.tencent.mm.vfs.k localk = new com.tencent.mm.vfs.k(paramString);
+    if (!localk.exists())
     {
       AppMethodBeat.o(30330);
       return;
@@ -320,9 +321,9 @@ public final class h
     {
       localJSONObject.put("type", 5);
       localJSONObject.put("downloaded", true);
-      localJSONObject.put("title", locale.getName());
-      localJSONObject.put("content", f.ba((float)locale.length()));
-      localJSONObject.put("iconPath", aKh(com.tencent.mm.vfs.i.ZF(paramString)));
+      localJSONObject.put("title", localk.getName());
+      localJSONObject.put("content", f.ba((float)localk.length()));
+      localJSONObject.put("iconPath", aLD(o.aaw(paramString)));
       localJSONObject.put("localPath", paramString);
       bG(localJSONObject);
       AppMethodBeat.o(30330);
@@ -330,26 +331,26 @@ public final class h
     }
     catch (JSONException paramString)
     {
-      ad.printErrStackTrace("MicroMsg.WNNoteLogic", paramString, "", new Object[0]);
+      ae.printErrStackTrace("MicroMsg.WNNoteLogic", paramString, "", new Object[0]);
       AppMethodBeat.o(30330);
     }
   }
   
-  public static void aKg(String paramString)
+  public static void aLC(String paramString)
   {
     AppMethodBeat.i(30331);
-    ad.i("MicroMsg.WNNoteLogic", "insert location run");
+    ae.i("MicroMsg.WNNoteLogic", "insert location run");
     JSONObject localJSONObject = new JSONObject(paramString);
-    ad.i("MicroMsg.WNNoteLogic", "insert location run :after invoke");
+    ae.i("MicroMsg.WNNoteLogic", "insert location run :after invoke");
     paramString = new com.tencent.mm.pluginsdk.location.c(-1L, (float)localJSONObject.getDouble("lat"), (float)localJSONObject.getDouble("lng"), localJSONObject.getInt("scale"), 1);
     paramString = com.tencent.mm.b.g.getMessageDigest(paramString.toString().getBytes());
-    paramString = ao.cvD() + "/" + paramString + ".png";
-    ad.i("MicroMsg.WNNoteLogic", "insert location run :filepath:%s", new Object[] { paramString });
-    if (com.tencent.mm.vfs.i.fv(paramString)) {
-      ad.i("MicroMsg.WNNoteLogic", "insert location run :filepath:is exsit");
+    paramString = ao.cxe() + "/" + paramString + ".png";
+    ae.i("MicroMsg.WNNoteLogic", "insert location run :filepath:%s", new Object[] { paramString });
+    if (o.fB(paramString)) {
+      ae.i("MicroMsg.WNNoteLogic", "insert location run :filepath:is exsit");
     }
-    if (com.tencent.mm.vfs.i.fv(paramString)) {
-      ad.i("MicroMsg.WNNoteLogic", "fileExist suc, use getimagelocalpath");
+    if (o.fB(paramString)) {
+      ae.i("MicroMsg.WNNoteLogic", "fileExist suc, use getimagelocalpath");
     }
     for (;;)
     {
@@ -357,18 +358,18 @@ public final class h
       bG(localJSONObject);
       AppMethodBeat.o(30331);
       return;
-      ad.e("MicroMsg.WNNoteLogic", "Temp file fileExist fail:%s ,use default file", new Object[] { paramString });
-      paramString = d.ptl;
+      ae.e("MicroMsg.WNNoteLogic", "Temp file fileExist fail:%s ,use default file", new Object[] { paramString });
+      paramString = d.pzR;
     }
   }
   
-  public static String aKh(String paramString)
+  public static String aLD(String paramString)
   {
     AppMethodBeat.i(30334);
-    paramString = (String)nIf.get(paramString);
+    paramString = (String)nNI.get(paramString);
     if (paramString == null)
     {
-      paramString = (String)nIf.get("unknown");
+      paramString = (String)nNI.get("unknown");
       AppMethodBeat.o(30334);
       return paramString;
     }
@@ -376,7 +377,7 @@ public final class h
     return paramString;
   }
   
-  public static void aM(ArrayList<String> paramArrayList)
+  public static void aN(ArrayList<String> paramArrayList)
   {
     AppMethodBeat.i(30332);
     JSONObject localJSONObject = new JSONObject();
@@ -388,11 +389,11 @@ public final class h
       {
         localJSONObject.put("type", 2);
         localJSONObject.put("downloaded", true);
-        String str1 = com.tencent.mm.plugin.wenote.c.c.fo(str2, "");
-        str2 = com.tencent.mm.plugin.wenote.c.c.fp(str2, "");
-        if (!bt.isNullOrNil(str1))
+        String str1 = com.tencent.mm.plugin.wenote.c.c.fs(str2, "");
+        str2 = com.tencent.mm.plugin.wenote.c.c.ft(str2, "");
+        if (!bu.isNullOrNil(str1))
         {
-          boolean bool = bt.isNullOrNil(str2);
+          boolean bool = bu.isNullOrNil(str2);
           if (!bool) {}
         }
         else
@@ -406,29 +407,40 @@ public final class h
       }
       catch (JSONException localJSONException)
       {
-        ad.printErrStackTrace("MicroMsg.WNNoteLogic", localJSONException, "", new Object[0]);
+        ae.printErrStackTrace("MicroMsg.WNNoteLogic", localJSONException, "", new Object[0]);
       }
     }
     AppMethodBeat.o(30332);
   }
   
-  public static void bG(Context paramContext, String paramString)
+  private static void bG(JSONObject paramJSONObject)
+  {
+    AppMethodBeat.i(30328);
+    nl localnl = new nl();
+    localnl.dCA.type = 6;
+    localnl.dCA.jsonString = paramJSONObject.toString();
+    localnl.dCA.dCq = "";
+    a.IvT.l(localnl);
+    AppMethodBeat.o(30328);
+  }
+  
+  public static void bH(Context paramContext, String paramString)
   {
     AppMethodBeat.i(30333);
     JSONObject localJSONObject = new JSONObject();
     int i;
     int j;
-    if (!bt.isNullOrNil(paramString))
+    if (!bu.isNullOrNil(paramString))
     {
-      i = (int)k.eWM().duration;
-      j = (int)f.sv(i);
+      i = (int)k.fay().duration;
+      j = (int)f.sI(i);
     }
     try
     {
       localJSONObject.put("downloaded", true);
       localJSONObject.put("length", i);
       localJSONObject.put("lengthStr", f.R(paramContext, j));
-      localJSONObject.put("iconPath", ao.cvB() + "/fav_fileicon_recording.png");
+      localJSONObject.put("iconPath", ao.cxc() + "/fav_fileicon_recording.png");
       localJSONObject.put("localPath", paramString);
     }
     catch (JSONException paramContext)
@@ -438,78 +450,67 @@ public final class h
         for (;;)
         {
           localJSONObject.put("type", 4);
-          i = k.eWM().ptz;
-          paramContext = new nk();
-          paramContext.dBv.type = 6;
-          paramContext.dBv.jsonString = localJSONObject.toString();
-          paramContext.dBv.dBl = Integer.toString(i);
-          a.IbL.l(paramContext);
+          i = k.fay().pAd;
+          paramContext = new nl();
+          paramContext.dCA.type = 6;
+          paramContext.dCA.jsonString = localJSONObject.toString();
+          paramContext.dCA.dCq = Integer.toString(i);
+          a.IvT.l(paramContext);
           AppMethodBeat.o(30333);
           return;
           paramContext = paramContext;
-          ad.printErrStackTrace("MicroMsg.WNNoteLogic", paramContext, "", new Object[0]);
+          ae.printErrStackTrace("MicroMsg.WNNoteLogic", paramContext, "", new Object[0]);
         }
       }
       catch (JSONException paramContext)
       {
         for (;;)
         {
-          ad.printErrStackTrace("MicroMsg.WNNoteLogic", paramContext, "", new Object[0]);
+          ae.printErrStackTrace("MicroMsg.WNNoteLogic", paramContext, "", new Object[0]);
         }
       }
     }
   }
   
-  private static void bG(JSONObject paramJSONObject)
-  {
-    AppMethodBeat.i(30328);
-    nk localnk = new nk();
-    localnk.dBv.type = 6;
-    localnk.dBv.jsonString = paramJSONObject.toString();
-    localnk.dBv.dBl = "";
-    a.IbL.l(localnk);
-    AppMethodBeat.o(30328);
-  }
-  
-  public static void bH(Context paramContext, String paramString)
+  public static void bI(Context paramContext, String paramString)
   {
     AppMethodBeat.i(30338);
-    if (bt.isNullOrNil(paramString))
+    if (bu.isNullOrNil(paramString))
     {
-      ad.e("MicroMsg.WNNoteLogic", "dofavnotelink , but localid is null or nil");
+      ae.e("MicroMsg.WNNoteLogic", "dofavnotelink , but localid is null or nil");
       AppMethodBeat.o(30338);
       return;
     }
-    cv localcv = new cv();
-    vk localvk = new vk();
-    localvk.dJz.dJC = paramString;
-    localvk.dJz.dJD = localcv;
-    localvk.dJz.url = "";
-    a.IbL.l(localvk);
-    if (!localvk.dJA.dno)
+    cw localcw = new cw();
+    vo localvo = new vo();
+    localvo.dKN.dKQ = paramString;
+    localvo.dKN.dKR = localcw;
+    localvo.dKN.url = "";
+    a.IvT.l(localvo);
+    if (!localvo.dKO.doq)
     {
-      if (localcv.dnG.dnL == 0) {
-        localcv.dnG.dnL = 2131758893;
+      if (localcw.doL.doQ == 0) {
+        localcw.doL.doQ = 2131758893;
       }
-      com.tencent.mm.ui.base.h.l(paramContext, localcv.dnG.dnL, 0);
+      com.tencent.mm.ui.base.h.l(paramContext, localcw.doL.doQ, 0);
       AppMethodBeat.o(30338);
       return;
     }
-    localcv.dnG.activity = ((Activity)paramContext);
-    localcv.dnG.dnM = 28;
-    a.IbL.l(localcv);
+    localcw.doL.activity = ((Activity)paramContext);
+    localcw.doL.doR = 28;
+    a.IvT.l(localcw);
     AppMethodBeat.o(30338);
   }
   
-  public static void q(Context paramContext, String paramString, int paramInt)
+  public static void p(Context paramContext, String paramString, int paramInt)
   {
     AppMethodBeat.i(30329);
-    if (bt.isNullOrNil(paramString))
+    if (bu.isNullOrNil(paramString))
     {
       AppMethodBeat.o(30329);
       return;
     }
-    if (!com.tencent.mm.vfs.i.fv(paramString))
+    if (!o.fB(paramString))
     {
       AppMethodBeat.o(30329);
       return;
@@ -518,19 +519,19 @@ public final class h
     long l = paramInt;
     try
     {
-      paramInt = (int)f.sv(l);
+      paramInt = (int)f.sI(l);
       paramString.put("type", 4);
       paramString.put("downloaded", true);
       paramString.put("length", paramInt);
       paramString.put("lengthStr", f.R(paramContext, paramInt));
-      paramString.put("iconPath", ao.cvB() + "/fav_fileicon_recording.png");
+      paramString.put("iconPath", ao.cxc() + "/fav_fileicon_recording.png");
       bG(paramString);
       AppMethodBeat.o(30329);
       return;
     }
     catch (JSONException paramContext)
     {
-      ad.printErrStackTrace("MicroMsg.WNNoteLogic", paramContext, "", new Object[0]);
+      ae.printErrStackTrace("MicroMsg.WNNoteLogic", paramContext, "", new Object[0]);
       AppMethodBeat.o(30329);
     }
   }

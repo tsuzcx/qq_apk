@@ -1,177 +1,290 @@
 package com.tencent.mm.ui.chatting.gallery.a;
 
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.animation.AnimatorListenerAdapter;
-import android.animation.TimeInterpolator;
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.graphics.PointF;
-import android.graphics.Rect;
-import android.os.Vibrator;
 import android.view.View;
-import android.view.ViewPropertyAnimator;
-import android.view.animation.LinearInterpolator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.ui.aq;
+import com.tencent.mm.g.a.my;
+import com.tencent.mm.g.a.qd;
+import com.tencent.mm.g.a.qe;
+import com.tencent.mm.g.a.qf;
+import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.sdk.b.c;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.ui.base.g;
 import d.g.b.p;
 import d.l;
-import d.v;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/ui/chatting/gallery/scan/ScanCodeViewHelper;", "", "()V", "TAG", "", "vibrator", "Landroid/os/Vibrator;", "animateScanCodeSuccessView", "", "successView", "Landroid/view/View;", "transX", "", "transY", "listenerAdapter", "Landroid/animation/AnimatorListenerAdapter;", "getTopBitmap", "Landroid/graphics/Bitmap;", "bitmap", "viewWidth", "", "viewHeight", "handleCode", "context", "Landroid/content/Context;", "currentView", "codeResult", "Lcom/tencent/mm/ui/chatting/gallery/scan/ScanCodeResult;", "viewModel", "Lcom/tencent/mm/ui/chatting/gallery/scan/ImageScanCodeViewModel;", "codeHandler", "Lcom/tencent/mm/ui/chatting/gallery/scan/IImageScanCodeHandler;", "needShowScanCodeSuccessView", "", "point", "Landroid/graphics/PointF;", "successViewSize", "vibrate", "app_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/ui/chatting/gallery/scan/ImageScanCodeManager;", "", "context", "Landroid/app/Activity;", "enableScan", "", "(Landroid/app/Activity;Z)V", "handleCodeCallbackListMap", "Ljava/util/HashMap;", "", "Ljava/util/ArrayList;", "Lcom/tencent/mm/ui/chatting/gallery/scan/ImageScanCodeHandleCallback;", "Lkotlin/collections/ArrayList;", "Lkotlin/collections/HashMap;", "handleCodeRequestMap", "Lcom/tencent/mm/ui/chatting/gallery/scan/ScanCodeResult;", "mNotifyDealQBarStrResultListener", "com/tencent/mm/ui/chatting/gallery/scan/ImageScanCodeManager$mNotifyDealQBarStrResultListener$1", "Lcom/tencent/mm/ui/chatting/gallery/scan/ImageScanCodeManager$mNotifyDealQBarStrResultListener$1;", "mScanQRCodeFailEventListener", "com/tencent/mm/ui/chatting/gallery/scan/ImageScanCodeManager$mScanQRCodeFailEventListener$1", "Lcom/tencent/mm/ui/chatting/gallery/scan/ImageScanCodeManager$mScanQRCodeFailEventListener$1;", "mScanQRCodeResultEventListener", "com/tencent/mm/ui/chatting/gallery/scan/ImageScanCodeManager$mScanQRCodeResultEventListener$1", "Lcom/tencent/mm/ui/chatting/gallery/scan/ImageScanCodeManager$mScanQRCodeResultEventListener$1;", "scanCodeCallbackListMap", "Lcom/tencent/mm/ui/chatting/gallery/scan/ImageScanCodeCallback;", "scanCodeRequestMap", "Lcom/tencent/mm/ui/chatting/gallery/scan/ImageScanCodeManager$ScanCodeRequest;", "scanCodeResultCache", "Lcom/tencent/mm/ui/chatting/gallery/scan/ImageScanCodeManager$ScanCodeResultWrapper;", "canUseCache", "request", "cancelHandleCode", "", "cancelScanCode", "clearScanCodeResult", "doHandleCode", "codeResult", "callback", "doScanCode", "getScanCodeResultFromCache", "handleCode", "currentImageView", "Landroid/view/View;", "viewModel", "Lcom/tencent/mm/ui/chatting/gallery/scan/ImageScanCodeViewModel;", "isCacheValid", "result", "onHandleCodeNotifyEvent", "event", "Lcom/tencent/mm/autogen/events/NotifyDealQBarStrResultEvent;", "onScanCodeFailedWrapper", "Lcom/tencent/mm/autogen/events/RecogQBarOfImageFileFailedEvent;", "onScanCodeSuccessWrapper", "Lcom/tencent/mm/autogen/events/RecogQBarOfImageFileResultEvent;", "release", "releaseHandleCode", "releaseScanCode", "removeScanCodeCache", "imagePath", "scanCode", "bitmap", "Landroid/graphics/Bitmap;", "getCodePosition", "recognizeType", "", "updateFailedResultCache", "key", "updateSuccessResultCache", "Companion", "ScanCodeRequest", "ScanCodeResultWrapper", "app_release"})
 public final class j
 {
-  public static final j JUS;
-  private static Vibrator nKv;
+  public static final j.a Kqs;
+  public boolean Kqj;
+  public HashMap<String, b> Kqk;
+  public HashMap<String, ArrayList<h>> Kql;
+  public HashMap<String, c> Kqm;
+  public HashMap<String, n> Kqn;
+  public HashMap<String, ArrayList<i>> Kqo;
+  public final g Kqp;
+  public final f Kqq;
+  public final e Kqr;
+  public Activity dtg;
   
   static
   {
-    AppMethodBeat.i(194914);
-    JUS = new j();
-    AppMethodBeat.o(194914);
+    AppMethodBeat.i(188320);
+    Kqs = new j.a((byte)0);
+    AppMethodBeat.o(188320);
   }
   
-  public static void a(Context paramContext, View paramView, final i parami, h paramh, a parama)
+  public j(Activity paramActivity, boolean paramBoolean)
   {
-    AppMethodBeat.i(194911);
-    p.h(paramContext, "context");
-    p.h(parami, "codeResult");
-    i.a locala;
-    int i;
-    int k;
-    if ((parami.JUN) && (parami.JUM != null))
+    AppMethodBeat.i(188319);
+    this.Kqj = true;
+    this.Kqk = new HashMap();
+    this.Kql = new HashMap();
+    this.Kqm = new HashMap();
+    this.Kqn = new HashMap();
+    this.Kqo = new HashMap();
+    this.Kqp = new g(this);
+    this.Kqq = new f(this);
+    this.Kqr = new e(this);
+    this.dtg = paramActivity;
+    this.Kqj = paramBoolean;
+    ae.i("MicroMsg.ImageScanCodeManager", "scanCode enableScan: %b", new Object[] { Boolean.valueOf(paramBoolean) });
+    if (paramBoolean)
     {
-      locala = parami.JUM;
-      if (locala == null) {
-        p.gfZ();
-      }
-      p.h(paramContext, "context");
-      if (nKv == null)
-      {
-        localObject = paramContext.getSystemService("vibrator");
-        if (localObject == null)
-        {
-          paramContext = new v("null cannot be cast to non-null type android.os.Vibrator");
-          AppMethodBeat.o(194911);
-          throw paramContext;
-        }
-        nKv = (Vibrator)localObject;
-      }
-      Object localObject = nKv;
-      if (localObject != null) {
-        ((Vibrator)localObject).vibrate(10L);
-      }
-      i = aq.ay(paramContext, 2131166772);
-      k = 0;
-      if (!(paramView instanceof com.tencent.mm.ui.base.g)) {
-        break label442;
-      }
-      k = ((com.tencent.mm.ui.base.g)paramView).getImageWidth();
+      this.Kqp.alive();
+      this.Kqq.alive();
+      this.Kqr.alive();
     }
-    label442:
-    for (int j = ((com.tencent.mm.ui.base.g)paramView).getImageHeight();; j = 0)
+    AppMethodBeat.o(188319);
+  }
+  
+  private final c a(b paramb)
+  {
+    AppMethodBeat.i(188317);
+    paramb = (c)this.Kqm.get(paramb.imagePath);
+    AppMethodBeat.o(188317);
+    return paramb;
+  }
+  
+  private final void a(b paramb, h paramh)
+  {
+    AppMethodBeat.i(188315);
+    Object localObject1;
+    if (paramb.Kqt)
     {
-      if ((k > 0) && (j > 0))
+      localObject1 = a(paramb);
+      if ((localObject1 != null) && (a(paramb, (c)localObject1)))
       {
-        if (paramView == null)
+        ae.i("MicroMsg.ImageScanCodeManager", "alvinluo scanCode get result from cache %s", new Object[] { paramb.imagePath });
+        if ((((c)localObject1).success) && (((c)localObject1).Kqv != null))
         {
-          paramContext = new v("null cannot be cast to non-null type com.tencent.mm.ui.base.IZoomableImageView");
-          AppMethodBeat.o(194911);
-          throw paramContext;
-        }
-        paramContext = ((com.tencent.mm.ui.base.g)paramView).a(locala.JUP, locala.JUQ, locala.JUR);
-        paramContext.x -= i / 2.0F;
-        paramContext.y -= i / 2.0F;
-        int m = paramView.getMeasuredWidth();
-        int n = paramView.getMeasuredHeight();
-        if (paramContext == null) {
-          i = 0;
-        }
-        while (i != 0)
-        {
-          ad.i("MicroMsg.ScanCodeViewHelper", "alvinluo handleCode codePoint: %s, dstPoint: %s, imageWidth: %d, imageHeight: %d", new Object[] { locala.JUP, paramContext, Integer.valueOf(k), Integer.valueOf(j) });
-          p.g(paramContext, "dstPoint");
-          paramh.a(paramContext, (AnimatorListenerAdapter)new a(parama, parami));
-          AppMethodBeat.o(194911);
+          if (paramh != null)
+          {
+            paramb = ((c)localObject1).Kqv;
+            if (paramb == null) {
+              p.gkB();
+            }
+            paramh.b(paramb);
+            AppMethodBeat.o(188315);
+            return;
+          }
+          AppMethodBeat.o(188315);
           return;
-          if ((paramContext.x >= -i / 2.0F) && (paramContext.x <= m + i / 2.0F) && (paramContext.y >= -i / 2.0F))
-          {
-            float f1 = paramContext.y;
-            float f2 = n;
-            if (f1 <= i / 2.0F + f2) {}
-          }
-          else
-          {
-            i = 0;
-            continue;
-          }
-          i = 1;
         }
-        parama.a(parami);
-        AppMethodBeat.o(194911);
-        return;
-        parama.a(parami);
+        if ((!((c)localObject1).success) && (((c)localObject1).Kqw != null))
+        {
+          if (paramh != null)
+          {
+            paramb = ((c)localObject1).Kqw;
+            if (paramb == null) {
+              p.gkB();
+            }
+            paramh.b(paramb);
+            AppMethodBeat.o(188315);
+            return;
+          }
+          AppMethodBeat.o(188315);
+          return;
+        }
+        aXY(paramb.imagePath);
       }
-      AppMethodBeat.o(194911);
-      return;
     }
-  }
-  
-  public static final void a(View paramView, float paramFloat1, float paramFloat2, AnimatorListenerAdapter paramAnimatorListenerAdapter)
-  {
-    AppMethodBeat.i(194912);
-    if (paramView == null)
+    if (!bu.isNullOrNil(paramb.imagePath))
     {
-      AppMethodBeat.o(194912);
-      return;
-    }
-    paramView.setVisibility(0);
-    paramView.setTranslationX(paramFloat1);
-    paramView.setTranslationY(paramFloat2);
-    paramView.setAlpha(0.0F);
-    paramView.setScaleX(0.0F);
-    paramView.setScaleY(0.0F);
-    paramView.animate().setInterpolator((TimeInterpolator)new LinearInterpolator()).setListener((Animator.AnimatorListener)paramAnimatorListenerAdapter).setUpdateListener(null).setDuration(300L).alpha(1.0F).scaleX(1.0F).scaleY(1.0F).start();
-    AppMethodBeat.o(194912);
-  }
-  
-  public static final Bitmap i(Bitmap paramBitmap, int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(194913);
-    if ((paramBitmap == null) || (paramBitmap.isRecycled()))
-    {
-      AppMethodBeat.o(194913);
-      return null;
-    }
-    ad.v("MicroMsg.ScanCodeViewHelper", "getTopBitmap viewWidth: %d, viewHeight: %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    float f = 1.0F * paramInt1 / paramBitmap.getWidth();
-    paramInt1 = Math.min((int)(paramInt2 / f), paramBitmap.getHeight());
-    paramBitmap = com.tencent.mm.sdk.platformtools.g.b(paramBitmap, new Rect(0, 0, paramBitmap.getWidth(), paramInt1));
-    AppMethodBeat.o(194913);
-    return paramBitmap;
-  }
-  
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/ui/chatting/gallery/scan/ScanCodeViewHelper$handleCode$1", "Landroid/animation/AnimatorListenerAdapter;", "onAnimationEnd", "", "animation", "Landroid/animation/Animator;", "app_release"})
-  public static final class a
-    extends AnimatorListenerAdapter
-  {
-    a(a parama, i parami) {}
-    
-    public final void onAnimationEnd(Animator paramAnimator)
-    {
-      AppMethodBeat.i(194910);
-      super.onAnimationEnd(paramAnimator);
-      paramAnimator = this.JUT;
-      if (paramAnimator != null)
+      localObject1 = paramb.imagePath;
+      if (!this.Kql.containsKey(localObject1)) {
+        ((Map)this.Kql).put(localObject1, new ArrayList());
+      }
+      Object localObject2 = this.Kql.get(localObject1);
+      if (localObject2 == null) {
+        p.gkB();
+      }
+      if (!((ArrayList)localObject2).contains(paramh))
       {
-        paramAnimator.a(parami);
-        AppMethodBeat.o(194910);
+        localObject2 = this.Kql.get(localObject1);
+        if (localObject2 == null) {
+          p.gkB();
+        }
+        ((ArrayList)localObject2).add(paramh);
+      }
+      if (this.Kqk.containsKey(localObject1))
+      {
+        ae.w("MicroMsg.ImageScanCodeManager", "alvinluo scanCode image %s is already decoding and ignore", new Object[] { paramb.imagePath });
+        AppMethodBeat.o(188315);
         return;
       }
-      AppMethodBeat.o(194910);
+      ((Map)this.Kqk).put(localObject1, paramb);
+      paramh = new qd();
+      paramh.dFH.dmK = paramb.dmK;
+      paramh.dFH.filePath = paramb.imagePath;
+      paramh.dFH.bitmap = paramb.bitmap;
+      paramh.dFH.dFJ = paramb.Kqt;
+      paramh.dFH.dFK = paramb.dFK;
+      com.tencent.mm.sdk.b.a.IvT.l((b)paramh);
+    }
+    AppMethodBeat.o(188315);
+  }
+  
+  private static boolean a(b paramb, c paramc)
+  {
+    AppMethodBeat.i(188316);
+    ae.d("MicroMsg.ImageScanCodeManager", "alvinluo isCacheValid request.getCodePosition: " + paramb.Kqt + ", request.isVerticalLong: " + paramb.Kqu + ", request.bitmap: " + paramb.bitmap + ", result.isVerticalLong: " + paramc.Kqu);
+    if ((paramb.Kqt) && (paramb.Kqu) && (paramb.bitmap != null))
+    {
+      bool = paramc.Kqu;
+      AppMethodBeat.o(188316);
+      return bool;
+    }
+    boolean bool = paramb.Kqt;
+    AppMethodBeat.o(188316);
+    return bool;
+  }
+  
+  private final void aXY(String paramString)
+  {
+    AppMethodBeat.i(188318);
+    this.Kqm.remove(paramString);
+    AppMethodBeat.o(188318);
+  }
+  
+  public final void a(View paramView, String paramString, Bitmap paramBitmap, boolean paramBoolean, int paramInt, h paramh)
+  {
+    AppMethodBeat.i(188314);
+    if (!this.Kqj)
+    {
+      AppMethodBeat.o(188314);
+      return;
+    }
+    Object localObject = (CharSequence)paramString;
+    if ((localObject == null) || (((CharSequence)localObject).length() == 0)) {}
+    for (int i = 1; i != 0; i = 0)
+    {
+      AppMethodBeat.o(188314);
+      return;
+    }
+    localObject = new b();
+    ((b)localObject).dmK = System.currentTimeMillis();
+    ((b)localObject).setImagePath(paramString);
+    ((b)localObject).bitmap = paramBitmap;
+    ((b)localObject).Kqt = paramBoolean;
+    ((b)localObject).dFK = paramInt;
+    ((b)localObject).Kqu = false;
+    ae.i("MicroMsg.ImageScanCodeManager", "alvinluo scanCode session: %d, imagePath: %s, bitmap: %s, getCodePosition: %b", new Object[] { Long.valueOf(((b)localObject).dmK), paramString, paramBitmap, Boolean.valueOf(paramBoolean) });
+    int j;
+    int k;
+    if ((paramView instanceof g))
+    {
+      paramInt = ((g)paramView).getImageWidth();
+      i = ((g)paramView).getImageHeight();
+      j = com.tencent.mm.cb.a.iu((Context)this.dtg);
+      k = com.tencent.mm.cb.a.iv((Context)this.dtg);
+      if (1.0F * i / paramInt < 2.0F * k / j) {
+        break label346;
+      }
+    }
+    label346:
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      ((b)localObject).Kqu = paramBoolean;
+      ae.d("MicroMsg.ImageScanCodeManager", "alvinluo scanCode imageSize: %d, %d, screen: %d, %d, current: %s, verticalLong: %s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), paramView, Boolean.valueOf(((b)localObject).Kqu) });
+      if ((paramBitmap == null) || (!(paramView instanceof g)) || (!((b)localObject).Kqu)) {
+        break;
+      }
+      ((b)localObject).bitmap = o.i(paramBitmap, paramView.getMeasuredWidth(), paramView.getMeasuredHeight());
+      a((b)localObject, paramh);
+      AppMethodBeat.o(188314);
+      return;
+    }
+    ((b)localObject).bitmap = null;
+    a((b)localObject, paramh);
+    AppMethodBeat.o(188314);
+  }
+  
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/ui/chatting/gallery/scan/ImageScanCodeManager$ScanCodeRequest;", "", "()V", "bitmap", "Landroid/graphics/Bitmap;", "getBitmap", "()Landroid/graphics/Bitmap;", "setBitmap", "(Landroid/graphics/Bitmap;)V", "getCodePosition", "", "getGetCodePosition", "()Z", "setGetCodePosition", "(Z)V", "imagePath", "", "getImagePath", "()Ljava/lang/String;", "setImagePath", "(Ljava/lang/String;)V", "isVerticalLong", "setVerticalLong", "recognizeType", "", "getRecognizeType", "()I", "setRecognizeType", "(I)V", "session", "", "getSession", "()J", "setSession", "(J)V", "app_release"})
+  public static final class b
+  {
+    boolean Kqt;
+    boolean Kqu;
+    Bitmap bitmap;
+    int dFK;
+    public long dmK;
+    String imagePath = "";
+    
+    public final void setImagePath(String paramString)
+    {
+      AppMethodBeat.i(188309);
+      p.h(paramString, "<set-?>");
+      this.imagePath = paramString;
+      AppMethodBeat.o(188309);
     }
   }
+  
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/ui/chatting/gallery/scan/ImageScanCodeManager$ScanCodeResultWrapper;", "", "()V", "failedResult", "Lcom/tencent/mm/autogen/events/RecogQBarOfImageFileFailedEvent;", "getFailedResult", "()Lcom/tencent/mm/autogen/events/RecogQBarOfImageFileFailedEvent;", "setFailedResult", "(Lcom/tencent/mm/autogen/events/RecogQBarOfImageFileFailedEvent;)V", "isVerticalLong", "", "()Z", "setVerticalLong", "(Z)V", "success", "getSuccess", "setSuccess", "successResult", "Lcom/tencent/mm/autogen/events/RecogQBarOfImageFileResultEvent;", "getSuccessResult", "()Lcom/tencent/mm/autogen/events/RecogQBarOfImageFileResultEvent;", "setSuccessResult", "(Lcom/tencent/mm/autogen/events/RecogQBarOfImageFileResultEvent;)V", "app_release"})
+  static final class c
+  {
+    boolean Kqu;
+    qf Kqv;
+    qe Kqw;
+    boolean success;
+  }
+  
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/ui/chatting/gallery/scan/ImageScanCodeManager$handleCode$codeHandler$1", "Lcom/tencent/mm/ui/chatting/gallery/scan/IImageScanCodeHandler;", "handleCode", "", "codeResult", "Lcom/tencent/mm/ui/chatting/gallery/scan/ScanCodeResult;", "app_release"})
+  public static final class d
+    implements d
+  {
+    public d(i parami) {}
+    
+    public final void a(n paramn)
+    {
+      AppMethodBeat.i(188310);
+      p.h(paramn, "codeResult");
+      j.a(this.Kqx, paramn, this.Kqy);
+      AppMethodBeat.o(188310);
+    }
+  }
+  
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/ui/chatting/gallery/scan/ImageScanCodeManager$mNotifyDealQBarStrResultListener$1", "Lcom/tencent/mm/sdk/event/IListener;", "Lcom/tencent/mm/autogen/events/NotifyDealQBarStrResultEvent;", "callback", "", "event", "app_release"})
+  public static final class e
+    extends c<my>
+  {}
+  
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/ui/chatting/gallery/scan/ImageScanCodeManager$mScanQRCodeFailEventListener$1", "Lcom/tencent/mm/sdk/event/IListener;", "Lcom/tencent/mm/autogen/events/RecogQBarOfImageFileFailedEvent;", "callback", "", "event", "app_release"})
+  public static final class f
+    extends c<qe>
+  {}
+  
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/ui/chatting/gallery/scan/ImageScanCodeManager$mScanQRCodeResultEventListener$1", "Lcom/tencent/mm/sdk/event/IListener;", "Lcom/tencent/mm/autogen/events/RecogQBarOfImageFileResultEvent;", "callback", "", "event", "app_release"})
+  public static final class g
+    extends c<qf>
+  {}
 }
 
 

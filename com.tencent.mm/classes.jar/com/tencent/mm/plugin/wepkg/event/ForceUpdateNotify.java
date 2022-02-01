@@ -11,13 +11,13 @@ public class ForceUpdateNotify
   implements Parcelable
 {
   public static Parcelable.Creator<ForceUpdateNotify> CREATOR;
-  public static Set<String> EEz;
-  public String[] EEA;
+  public static Set<String> EWV;
+  public String[] EWW;
   
   static
   {
     AppMethodBeat.i(110637);
-    EEz = new HashSet();
+    EWV = new HashSet();
     CREATOR = new Parcelable.Creator() {};
     AppMethodBeat.o(110637);
   }
@@ -25,34 +25,34 @@ public class ForceUpdateNotify
   private ForceUpdateNotify(Parcel paramParcel)
   {
     AppMethodBeat.i(110636);
-    this.EEA = paramParcel.createStringArray();
+    this.EWW = paramParcel.createStringArray();
     AppMethodBeat.o(110636);
   }
   
   private ForceUpdateNotify(String[] paramArrayOfString)
   {
-    this.EEA = paramArrayOfString;
+    this.EWW = paramArrayOfString;
   }
   
-  public static void Ej(String paramString)
+  public static void EL(String paramString)
   {
     AppMethodBeat.i(110633);
-    EEz.add(paramString);
+    EWV.add(paramString);
     AppMethodBeat.o(110633);
   }
   
-  public static void cEN()
+  public static void cGJ()
   {
     AppMethodBeat.i(110634);
-    if (EEz.size() != 0)
+    if (EWV.size() != 0)
     {
-      Set localSet = EEz;
+      Set localSet = EWV;
       c.a(new ForceUpdateNotify((String[])localSet.toArray(new String[localSet.size()])), new c.a()
       {
-        public final void dur()
+        public final void dxH()
         {
           AppMethodBeat.i(110631);
-          ForceUpdateNotify.EEz.clear();
+          ForceUpdateNotify.EWV.clear();
           AppMethodBeat.o(110631);
         }
       });
@@ -68,7 +68,7 @@ public class ForceUpdateNotify
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(110635);
-    paramParcel.writeStringArray(this.EEA);
+    paramParcel.writeStringArray(this.EWW);
     AppMethodBeat.o(110635);
   }
 }

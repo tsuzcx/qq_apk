@@ -1,46 +1,36 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bx.b;
 
 public final class ech
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public long HOC;
-  public b nCV;
+  public int ID;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(32516);
+    AppMethodBeat.i(32512);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aY(1, this.HOC);
-      if (this.nCV != null) {
-        paramVarArgs.c(2, this.nCV);
-      }
-      AppMethodBeat.o(32516);
+      ((f.a.a.c.a)paramVarArgs[0]).aS(1, this.ID);
+      AppMethodBeat.o(32512);
       return 0;
     }
     if (paramInt == 1)
     {
-      int i = f.a.a.b.b.a.p(1, this.HOC) + 0;
-      paramInt = i;
-      if (this.nCV != null) {
-        paramInt = i + f.a.a.b.b.a.b(2, this.nCV);
-      }
-      AppMethodBeat.o(32516);
-      return paramInt;
+      paramInt = f.a.a.b.b.a.bz(1, this.ID);
+      AppMethodBeat.o(32512);
+      return paramInt + 0;
     }
     if (paramInt == 2)
     {
       paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gxE();
+          paramVarArgs.gCg();
         }
       }
-      AppMethodBeat.o(32516);
+      AppMethodBeat.o(32512);
       return 0;
     }
     if (paramInt == 3)
@@ -50,18 +40,14 @@ public final class ech
       switch (((Integer)paramVarArgs[2]).intValue())
       {
       default: 
-        AppMethodBeat.o(32516);
+        AppMethodBeat.o(32512);
         return -1;
-      case 1: 
-        localech.HOC = locala.NPN.zd();
-        AppMethodBeat.o(32516);
-        return 0;
       }
-      localech.nCV = locala.NPN.gxI();
-      AppMethodBeat.o(32516);
+      localech.ID = locala.OmT.zc();
+      AppMethodBeat.o(32512);
       return 0;
     }
-    AppMethodBeat.o(32516);
+    AppMethodBeat.o(32512);
     return -1;
   }
 }

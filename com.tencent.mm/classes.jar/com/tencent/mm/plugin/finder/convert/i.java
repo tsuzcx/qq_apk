@@ -11,25 +11,25 @@ import d.g.b.q;
 import d.l;
 import d.z;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/convert/FinderFeedEmptyConvert;", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "Lcom/tencent/mm/plugin/finder/model/FeedHeaderEmptyData;", "onClickRefresh", "Lkotlin/Function0;", "", "onClickPermission", "(Lkotlin/jvm/functions/Function0;Lkotlin/jvm/functions/Function0;)V", "getLayoutId", "", "onBindViewHolder", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "position", "type", "isHotPatch", "", "payloads", "", "", "onCreateViewHolder", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "Companion", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/convert/FinderFeedEmptyConvert;", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "Lcom/tencent/mm/plugin/finder/model/FeedHeaderEmptyData;", "onClickRefresh", "Lkotlin/Function0;", "", "onClickPermission", "(Lkotlin/jvm/functions/Function0;Lkotlin/jvm/functions/Function0;)V", "getLayoutId", "", "onBindViewHolder", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "position", "type", "isHotPatch", "", "payloads", "", "", "onCreateViewHolder", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "Companion", "plugin-finder_release"})
 public final class i
   extends com.tencent.mm.view.recyclerview.b<f>
 {
-  public static final a rNR;
-  private final d.g.a.a<z> rNP;
-  private final d.g.a.a<z> rNQ;
+  public static final i.a rWj;
+  private final d.g.a.a<z> rWh;
+  private final d.g.a.a<z> rWi;
   
   static
   {
     AppMethodBeat.i(165390);
-    rNR = new a((byte)0);
+    rWj = new i.a((byte)0);
     AppMethodBeat.o(165390);
   }
   
   public i(d.g.a.a<z> parama1, d.g.a.a<z> parama2)
   {
-    this.rNP = parama1;
-    this.rNQ = parama2;
+    this.rWh = parama1;
+    this.rWi = parama2;
   }
   
   public final void a(RecyclerView paramRecyclerView, final e parame, int paramInt)
@@ -46,10 +46,7 @@ public final class i
     return 2131494116;
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/convert/FinderFeedEmptyConvert$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
-  public static final class a {}
-  
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
   static final class c
     extends q
     implements d.g.a.a<z>
@@ -60,7 +57,7 @@ public final class i
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class d
     implements View.OnClickListener
   {
@@ -71,19 +68,19 @@ public final class i
       AppMethodBeat.i(165386);
       com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
       localb.bd(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/convert/FinderFeedEmptyConvert$onCreateViewHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-      paramView = (f)parame.fQC();
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/convert/FinderFeedEmptyConvert$onCreateViewHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+      paramView = (f)parame.fUY();
       if ((paramView != null) && (paramView.type == -1))
       {
-        paramView = parame.Gd(2131308031);
+        paramView = parame.GD(2131308031);
         if (paramView != null) {
           paramView.setVisibility(8);
         }
-        paramView = parame.Gd(2131303521);
+        paramView = parame.GD(2131303521);
         if (paramView != null) {
           paramView.setVisibility(0);
         }
-        paramView = i.a(this.rNS);
+        paramView = i.a(this.rWk);
         if (paramView != null) {
           paramView.invoke();
         }
@@ -95,7 +92,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.convert.i
  * JD-Core Version:    0.7.0.1
  */

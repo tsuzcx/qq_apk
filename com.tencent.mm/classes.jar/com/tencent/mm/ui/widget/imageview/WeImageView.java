@@ -11,28 +11,28 @@ import android.graphics.drawable.Drawable;
 import android.support.v7.widget.AppCompatImageView;
 import android.util.AttributeSet;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cl.a.a;
+import com.tencent.mm.ck.a.a;
 
 public class WeImageView
   extends AppCompatImageView
 {
-  private int FlJ;
-  private int KYY;
-  private float KYZ;
-  private int KZa;
-  private boolean KZb;
-  private boolean KZc;
+  private int FEh;
+  private boolean LvA;
+  private int Lvw;
+  private float Lvx;
+  private int Lvy;
+  private boolean Lvz;
   private int mAlpha;
   
   public WeImageView(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(159411);
-    this.KYZ = 1.0F;
+    this.Lvx = 1.0F;
     this.mAlpha = 255;
-    this.KZa = 255;
-    this.KZb = true;
-    this.KZc = false;
+    this.Lvy = 255;
+    this.Lvz = true;
+    this.LvA = false;
     init(paramContext, null);
     AppMethodBeat.o(159411);
   }
@@ -41,11 +41,11 @@ public class WeImageView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(159412);
-    this.KYZ = 1.0F;
+    this.Lvx = 1.0F;
     this.mAlpha = 255;
-    this.KZa = 255;
-    this.KZb = true;
-    this.KZc = false;
+    this.Lvy = 255;
+    this.Lvz = true;
+    this.LvA = false;
     init(paramContext, paramAttributeSet);
     AppMethodBeat.o(159412);
   }
@@ -54,11 +54,11 @@ public class WeImageView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(159413);
-    this.KYZ = 1.0F;
+    this.Lvx = 1.0F;
     this.mAlpha = 255;
-    this.KZa = 255;
-    this.KZb = true;
-    this.KZc = false;
+    this.Lvy = 255;
+    this.Lvz = true;
+    this.LvA = false;
     init(paramContext, paramAttributeSet);
     AppMethodBeat.o(159413);
   }
@@ -66,23 +66,23 @@ public class WeImageView
   private void init(Context paramContext, AttributeSet paramAttributeSet)
   {
     AppMethodBeat.i(159415);
-    this.KYY = paramContext.getResources().getColor(2131099732);
+    this.Lvw = paramContext.getResources().getColor(2131099732);
     if (paramAttributeSet != null)
     {
       paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, a.a.WeImageView);
-      this.FlJ = paramContext.getColor(1, this.KYY);
-      this.KYZ = paramContext.getFloat(0, 1.0F);
+      this.FEh = paramContext.getColor(1, this.Lvw);
+      this.Lvx = paramContext.getFloat(0, 1.0F);
       paramContext.recycle();
       AppMethodBeat.o(159415);
       return;
     }
-    this.FlJ = this.KYY;
+    this.FEh = this.Lvw;
     AppMethodBeat.o(159415);
   }
   
   public void drawableStateChanged()
   {
-    AppMethodBeat.i(192641);
+    AppMethodBeat.i(200406);
     super.drawableStateChanged();
     int i = this.mAlpha;
     if (isPressed()) {
@@ -90,14 +90,14 @@ public class WeImageView
     }
     for (;;)
     {
-      if (i != this.KZa)
+      if (i != this.Lvy)
       {
-        this.KZa = i;
+        this.Lvy = i;
         if (getDrawable() != null) {
           getDrawable().setAlpha(i);
         }
       }
-      AppMethodBeat.o(192641);
+      AppMethodBeat.o(200406);
       return;
       if (isEnabled()) {
         i = this.mAlpha;
@@ -109,60 +109,60 @@ public class WeImageView
   {
     AppMethodBeat.i(159416);
     super.onDraw(paramCanvas);
-    if ((this.KZc) && (this.KZb))
+    if ((this.LvA) && (this.Lvz))
     {
       getDrawable().mutate().clearColorFilter();
-      this.KZc = false;
-      this.KZb = false;
+      this.LvA = false;
+      this.Lvz = false;
       AppMethodBeat.o(159416);
       return;
     }
-    if ((getDrawable() != null) && (this.KZb))
+    if ((getDrawable() != null) && (this.Lvz))
     {
-      int i = this.FlJ;
-      if (this.FlJ != 0) {
-        i = this.FlJ & 0xFFFFFF | 0xFF000000;
+      int i = this.FEh;
+      if (this.FEh != 0) {
+        i = this.FEh & 0xFFFFFF | 0xFF000000;
       }
-      int j = Color.alpha(this.FlJ);
-      if (this.KYZ != 1.0F) {
-        j = (int)(255.0F * this.KYZ);
+      int j = Color.alpha(this.FEh);
+      if (this.Lvx != 1.0F) {
+        j = (int)(255.0F * this.Lvx);
       }
       paramCanvas = new PorterDuffColorFilter(i, PorterDuff.Mode.SRC_ATOP);
       getDrawable().mutate().setColorFilter(paramCanvas);
-      if (this.FlJ != 0)
+      if (this.FEh != 0)
       {
         this.mAlpha = j;
         getDrawable().setAlpha(j);
       }
-      this.KZb = false;
+      this.Lvz = false;
     }
     AppMethodBeat.o(159416);
   }
   
   public void setClearColorFilter(boolean paramBoolean)
   {
-    AppMethodBeat.i(192640);
-    this.KZc = paramBoolean;
-    this.KZb = true;
+    AppMethodBeat.i(200405);
+    this.LvA = paramBoolean;
+    this.Lvz = true;
     invalidate();
-    AppMethodBeat.o(192640);
+    AppMethodBeat.o(200405);
   }
   
   public void setIconColor(int paramInt)
   {
     AppMethodBeat.i(159414);
-    this.FlJ = paramInt;
-    this.KZb = true;
+    this.FEh = paramInt;
+    this.Lvz = true;
     invalidate();
     AppMethodBeat.o(159414);
   }
   
-  public final void x(int paramInt, float paramFloat)
+  public final void w(int paramInt, float paramFloat)
   {
     AppMethodBeat.i(186015);
-    this.FlJ = paramInt;
-    this.KYZ = paramFloat;
-    this.KZb = true;
+    this.FEh = paramInt;
+    this.Lvx = paramFloat;
+    this.Lvz = true;
     invalidate();
     AppMethodBeat.o(186015);
   }

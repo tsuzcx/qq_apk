@@ -3,47 +3,55 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class duo
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public String GKI;
-  public int HHh;
+  public String scope;
   public int state;
+  public String yTx;
+  public int yTy;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(82486);
+    AppMethodBeat.i(74674);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.GKI != null) {
-        paramVarArgs.d(1, this.GKI);
+      if (this.scope != null) {
+        paramVarArgs.d(1, this.scope);
       }
-      paramVarArgs.aS(2, this.state);
-      paramVarArgs.aS(3, this.HHh);
-      AppMethodBeat.o(82486);
+      if (this.yTx != null) {
+        paramVarArgs.d(2, this.yTx);
+      }
+      paramVarArgs.aS(3, this.state);
+      paramVarArgs.aS(4, this.yTy);
+      AppMethodBeat.o(74674);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.GKI == null) {
-        break label306;
+      if (this.scope == null) {
+        break label366;
       }
     }
-    label306:
-    for (paramInt = f.a.a.b.b.a.e(1, this.GKI) + 0;; paramInt = 0)
+    label366:
+    for (paramInt = f.a.a.b.b.a.e(1, this.scope) + 0;; paramInt = 0)
     {
-      int i = f.a.a.b.b.a.bz(2, this.state);
-      int j = f.a.a.b.b.a.bz(3, this.HHh);
-      AppMethodBeat.o(82486);
-      return paramInt + i + j;
+      int i = paramInt;
+      if (this.yTx != null) {
+        i = paramInt + f.a.a.b.b.a.e(2, this.yTx);
+      }
+      paramInt = f.a.a.b.b.a.bz(3, this.state);
+      int j = f.a.a.b.b.a.bz(4, this.yTy);
+      AppMethodBeat.o(74674);
+      return i + paramInt + j;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
-        AppMethodBeat.o(82486);
+        AppMethodBeat.o(74674);
         return 0;
       }
       if (paramInt == 3)
@@ -53,22 +61,26 @@ public final class duo
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(82486);
+          AppMethodBeat.o(74674);
           return -1;
         case 1: 
-          localduo.GKI = locala.NPN.readString();
-          AppMethodBeat.o(82486);
+          localduo.scope = locala.OmT.readString();
+          AppMethodBeat.o(74674);
           return 0;
         case 2: 
-          localduo.state = locala.NPN.zc();
-          AppMethodBeat.o(82486);
+          localduo.yTx = locala.OmT.readString();
+          AppMethodBeat.o(74674);
+          return 0;
+        case 3: 
+          localduo.state = locala.OmT.zc();
+          AppMethodBeat.o(74674);
           return 0;
         }
-        localduo.HHh = locala.NPN.zc();
-        AppMethodBeat.o(82486);
+        localduo.yTy = locala.OmT.zc();
+        AppMethodBeat.o(74674);
         return 0;
       }
-      AppMethodBeat.o(82486);
+      AppMethodBeat.o(74674);
       return -1;
     }
   }

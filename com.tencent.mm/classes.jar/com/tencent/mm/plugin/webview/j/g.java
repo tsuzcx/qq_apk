@@ -4,20 +4,20 @@ import android.content.Context;
 import android.content.DialogInterface.OnClickListener;
 import android.content.res.Resources;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ax;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.widget.a.d;
 import com.tencent.mm.ui.widget.a.d.a;
 import java.util.HashMap;
 
 public final class g
 {
-  public HashMap<String, a> Etn;
+  public HashMap<String, a> ELH;
   
   public g()
   {
     AppMethodBeat.i(82381);
-    this.Etn = new HashMap();
+    this.ELH = new HashMap();
     AppMethodBeat.o(82381);
   }
   
@@ -25,42 +25,42 @@ public final class g
   {
     AppMethodBeat.i(82382);
     d.a locala = new d.a(paramContext);
-    locala.yR(false);
-    locala.afh(3);
-    locala.aXF(paramContext.getString(2131766123));
-    if (!bt.isNullOrNil(paramString))
+    locala.zf(false);
+    locala.afQ(3);
+    locala.aZh(paramContext.getString(2131766123));
+    if (!bu.isNullOrNil(paramString))
     {
-      locala.yP(true);
-      locala.au(paramString);
+      locala.zd(true);
+      locala.at(paramString);
     }
-    locala.yQ(true);
-    locala.aXK(paramContext.getString(2131766122));
-    locala.aXM(paramContext.getString(2131755835));
-    locala.afn(paramContext.getResources().getColor(2131100547));
+    locala.ze(true);
+    locala.aZm(paramContext.getString(2131766122));
+    locala.aZo(paramContext.getString(2131755835));
+    locala.afW(paramContext.getResources().getColor(2131100547));
     locala.c(paramOnClickListener);
-    locala.aXN(paramContext.getString(2131755691));
-    paramString = ax.aQz("key_webview_menu_haokan");
+    locala.aZp(paramContext.getString(2131755691));
+    paramString = ay.aRW("key_webview_menu_haokan");
     if (paramString.decodeBool("show_first_tips", true))
     {
       paramString.encode("show_first_tips", false);
       paramString.apply();
-      locala.at(paramContext.getString(2131766121));
+      locala.as(paramContext.getString(2131766121));
     }
-    locala.fMb().show();
+    locala.fQv().show();
     AppMethodBeat.o(82382);
   }
   
-  public final a aJC(String paramString)
+  public final a aKY(String paramString)
   {
     AppMethodBeat.i(82383);
-    paramString = (a)this.Etn.get(paramString);
+    paramString = (a)this.ELH.get(paramString);
     AppMethodBeat.o(82383);
     return paramString;
   }
   
   public static final class a
   {
-    public int Eto;
+    public int ELI;
     public int permission;
     public String title;
   }

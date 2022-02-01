@@ -9,51 +9,51 @@ import java.util.Locale;
 public final class j
   implements Serializable
 {
-  final e cGQ;
-  final String cGT;
-  final b cGV;
-  final a cGW;
-  final List<String> cGX;
+  final String cHC;
+  final j.b cHE;
+  final a cHF;
+  final List<String> cHG;
+  final e cHz;
   final String className;
   final String extra;
   
-  public j(String paramString1, b paramb, a parama, String paramString2, String paramString3, e parame, List<String> paramList)
+  public j(String paramString1, j.b paramb, a parama, String paramString2, String paramString3, e parame, List<String> paramList)
   {
-    this.cGT = paramString1;
-    this.cGV = paramb;
-    this.cGW = parama;
+    this.cHC = paramString1;
+    this.cHE = paramb;
+    this.cHF = parama;
     this.className = paramString2;
     this.extra = paramString3;
-    this.cGQ = parame;
-    this.cGX = Collections.unmodifiableList(new ArrayList(paramList));
+    this.cHz = parame;
+    this.cHG = Collections.unmodifiableList(new ArrayList(paramList));
   }
   
   public final String toString()
   {
     Object localObject1 = "";
-    if (this.cGV == b.cHe) {
+    if (this.cHE == j.b.cHN) {
       localObject1 = "" + "static ";
     }
-    if (this.cGW != a.cHb)
+    if (this.cHF != a.cHK)
     {
       localObject2 = localObject1;
-      if (this.cGW != a.cHa) {}
+      if (this.cHF != a.cHJ) {}
     }
     else
     {
-      localObject2 = (String)localObject1 + this.cGW.name().toLowerCase(Locale.US) + " ";
+      localObject2 = (String)localObject1 + this.cHF.name().toLowerCase(Locale.US) + " ";
     }
     localObject1 = (String)localObject2 + this.className;
-    if (this.cGT != null) {}
-    for (Object localObject2 = (String)localObject1 + " " + this.cGT;; localObject2 = (String)localObject1 + " instance")
+    if (this.cHC != null) {}
+    for (Object localObject2 = (String)localObject1 + " " + this.cHC;; localObject2 = (String)localObject1 + " instance")
     {
       localObject1 = localObject2;
       if (this.extra != null) {
         localObject1 = (String)localObject2 + " " + this.extra;
       }
       localObject2 = localObject1;
-      if (this.cGQ != null) {
-        localObject2 = (String)localObject1 + " , matching exclusion " + this.cGQ.cGN;
+      if (this.cHz != null) {
+        localObject2 = (String)localObject1 + " , matching exclusion " + this.cHz.cHw;
       }
       return localObject2;
     }
@@ -63,15 +63,10 @@ public final class j
   {
     private a() {}
   }
-  
-  public static enum b
-  {
-    private b() {}
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.matrix.resource.analyzer.model.j
  * JD-Core Version:    0.7.0.1
  */

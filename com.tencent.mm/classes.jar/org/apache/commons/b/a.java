@@ -8,18 +8,18 @@ public final class a
 {
   public static final byte[] EMPTY_BYTE_ARRAY;
   public static final String[] EMPTY_STRING_ARRAY;
-  public static final short[] Mdk;
-  public static final Object[] NSG = new Object[0];
-  public static final Class[] NSH = new Class[0];
-  public static final Long[] NSI;
-  public static final Integer[] NSJ;
-  public static final Short[] NSK;
-  public static final Byte[] NSL;
-  public static final Double[] NSM;
-  public static final Float[] NSN;
-  public static final Boolean[] NSO = new Boolean[0];
-  public static final char[] NSP = new char[0];
-  public static final Character[] NSQ = new Character[0];
+  public static final short[] MAf;
+  public static final Object[] OpM = new Object[0];
+  public static final Class[] OpN = new Class[0];
+  public static final Long[] OpO;
+  public static final Integer[] OpP;
+  public static final Short[] OpQ;
+  public static final Byte[] OpR;
+  public static final Double[] OpS;
+  public static final Float[] OpT;
+  public static final Boolean[] OpU = new Boolean[0];
+  public static final char[] OpV = new char[0];
+  public static final Character[] OpW = new Character[0];
   public static final int[] bQP;
   public static final long[] bQQ;
   public static final float[] bQR;
@@ -30,17 +30,17 @@ public final class a
   {
     EMPTY_STRING_ARRAY = new String[0];
     bQQ = new long[0];
-    NSI = new Long[0];
+    OpO = new Long[0];
     bQP = new int[0];
-    NSJ = new Integer[0];
-    Mdk = new short[0];
-    NSK = new Short[0];
+    OpP = new Integer[0];
+    MAf = new short[0];
+    OpQ = new Short[0];
     EMPTY_BYTE_ARRAY = new byte[0];
-    NSL = new Byte[0];
+    OpR = new Byte[0];
     bQS = new double[0];
-    NSM = new Double[0];
+    OpS = new Double[0];
     bQR = new float[0];
-    NSN = new Float[0];
+    OpT = new Float[0];
     bQT = new boolean[0];
   }
   
@@ -115,10 +115,10 @@ public final class a
   
   public static Object[] g(Object[] paramArrayOfObject, int paramInt)
   {
-    AppMethodBeat.i(186985);
+    AppMethodBeat.i(193961);
     if (paramArrayOfObject == null)
     {
-      AppMethodBeat.o(186985);
+      AppMethodBeat.o(193961);
       return null;
     }
     int i = paramInt;
@@ -130,12 +130,12 @@ public final class a
     if (paramInt <= 0)
     {
       paramArrayOfObject = (Object[])Array.newInstance((Class)localObject, 0);
-      AppMethodBeat.o(186985);
+      AppMethodBeat.o(193961);
       return paramArrayOfObject;
     }
     localObject = (Object[])Array.newInstance((Class)localObject, paramInt);
     System.arraycopy(paramArrayOfObject, 1, localObject, 0, paramInt);
-    AppMethodBeat.o(186985);
+    AppMethodBeat.o(193961);
     return localObject;
   }
   
@@ -155,7 +155,7 @@ public final class a
       AppMethodBeat.o(40693);
       return paramString;
     }
-    paramObject = new org.apache.commons.b.a.a(paramObject, b.NUS).gt(paramObject).toString();
+    paramObject = new org.apache.commons.b.a.a(paramObject, b.OrX).gw(paramObject).toString();
     AppMethodBeat.o(40693);
     return paramObject;
   }

@@ -4,7 +4,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.smtt.export.external.interfaces.IX5CoreUrlUtil;
 
 public final class URLUtil
-  extends x
+  extends z
 {
   public static String composeSearchUrl(String paramString1, String paramString2, String paramString3)
   {

@@ -7,33 +7,34 @@ import android.graphics.Bitmap.CompressFormat;
 import android.graphics.BitmapFactory;
 import android.util.DisplayMetrics;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aw.t;
+import com.tencent.mm.av.t;
 import com.tencent.mm.kernel.a;
 import com.tencent.mm.platformtools.s;
 import com.tencent.mm.platformtools.s.a;
 import com.tencent.mm.platformtools.s.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.h;
 
 public final class r
   implements s
 {
-  private boolean EMj;
-  private boolean dsF;
-  private long isy;
-  private long isz;
-  private String jMs;
+  private boolean FeH;
+  private boolean dtL;
+  private long ivs;
+  private long ivt;
+  private String jPE;
   private String url;
   
-  public static String aLC(String paramString)
+  public static String aMY(String paramString)
   {
     AppMethodBeat.i(116445);
-    if (com.tencent.mm.kernel.g.ajA().aiK())
+    if (com.tencent.mm.kernel.g.ajP().aiZ())
     {
       StringBuilder localStringBuilder = new StringBuilder();
-      com.tencent.mm.kernel.g.ajA();
-      paramString = String.format("%s%s", new Object[] { "wcf://bizimg/", com.tencent.mm.b.g.getMessageDigest((a.aiq() + paramString).getBytes()) });
+      com.tencent.mm.kernel.g.ajP();
+      paramString = String.format("%s%s", new Object[] { "wcf://bizimg/", com.tencent.mm.b.g.getMessageDigest((a.aiF() + paramString).getBytes()) });
       AppMethodBeat.o(116445);
       return paramString;
     }
@@ -44,11 +45,11 @@ public final class r
   public final Bitmap a(Bitmap paramBitmap, s.a parama, String paramString)
   {
     AppMethodBeat.i(116449);
-    if (s.a.iNr == parama)
+    if (s.a.iQl == parama)
     {
-      String str = this.jMs;
-      a locala = new a();
-      Object localObject = aj.getContext();
+      String str = this.jPE;
+      r.a locala = new r.a();
+      Object localObject = ak.getContext();
       paramString = null;
       parama = paramString;
       if (localObject != null)
@@ -72,12 +73,12 @@ public final class r
       {
         locala.w = j;
         locala.h = i;
-        ad.d("MicroMsg.ReaaderAppGetPicStrategy", locala.toString());
-        paramBitmap = com.tencent.mm.sdk.platformtools.g.b(paramBitmap, locala.w, locala.h, true);
+        ae.d("MicroMsg.ReaaderAppGetPicStrategy", locala.toString());
+        paramBitmap = h.b(paramBitmap, locala.w, locala.h, true);
         try
         {
-          ad.d("MicroMsg.ReaaderAppGetPicStrategy", "handlerBitmap, path:%s", new Object[] { aLC(this.url) });
-          com.tencent.mm.sdk.platformtools.g.a(paramBitmap, 100, Bitmap.CompressFormat.PNG, aLC(this.url), false);
+          ae.d("MicroMsg.ReaaderAppGetPicStrategy", "handlerBitmap, path:%s", new Object[] { aMY(this.url) });
+          h.a(paramBitmap, 100, Bitmap.CompressFormat.PNG, aMY(this.url), false);
           AppMethodBeat.o(116449);
           return paramBitmap;
           j = (int)(parama.density * 50.0F);
@@ -98,8 +99,8 @@ public final class r
         {
           for (;;)
           {
-            ad.printErrStackTrace("MicroMsg.ReaaderAppGetPicStrategy", parama, "", new Object[0]);
-            ad.e("MicroMsg.ReaaderAppGetPicStrategy", "save image %s fail", new Object[] { this.url });
+            ae.printErrStackTrace("MicroMsg.ReaaderAppGetPicStrategy", parama, "", new Object[0]);
+            ae.e("MicroMsg.ReaaderAppGetPicStrategy", "save image %s fail", new Object[] { this.url });
           }
         }
       }
@@ -111,83 +112,83 @@ public final class r
   public final void a(s.a parama, String paramString)
   {
     AppMethodBeat.i(116452);
-    if ((parama == s.a.iNr) && (this.EMj) && (t.aIN()) && (!bt.isNullOrNil(paramString)) && (t.ev(t.FB(this.url))) && (paramString.equals("image/webp")))
+    if ((parama == s.a.iQl) && (this.FeH) && (t.aJf()) && (!bu.isNullOrNil(paramString)) && (t.eA(t.Gd(this.url))) && (paramString.equals("image/webp")))
     {
-      ad.d("MicroMsg.ReaaderAppGetPicStrategy", "decode download webp picture failed");
-      com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(86L, 14L, 1L, false);
+      ae.d("MicroMsg.ReaaderAppGetPicStrategy", "decode download webp picture failed");
+      com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(86L, 14L, 1L, false);
     }
     AppMethodBeat.o(116452);
   }
   
-  public final boolean aQA()
-  {
-    return this.dsF;
-  }
-  
-  public final Bitmap aQB()
-  {
-    AppMethodBeat.i(116453);
-    Bitmap localBitmap = BitmapFactory.decodeResource(aj.getContext().getResources(), 2131233476);
-    AppMethodBeat.o(116453);
-    return localBitmap;
-  }
-  
-  public final void aQC()
-  {
-    AppMethodBeat.i(116450);
-    this.isy = bt.flT();
-    if (this.EMj)
-    {
-      ad.d("MicroMsg.ReaaderAppGetPicStrategy", "beforeGetPicFromNet, from biz msg");
-      com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(86L, 0L, 1L, false);
-    }
-    AppMethodBeat.o(116450);
-  }
-  
-  public final s.b aQv()
+  public final s.b aQU()
   {
     return null;
   }
   
-  public final String aQw()
+  public final String aQV()
   {
     AppMethodBeat.i(116446);
-    String str = aLC(this.url);
+    String str = aMY(this.url);
     AppMethodBeat.o(116446);
     return str;
   }
   
-  public final String aQx()
+  public final String aQW()
   {
     AppMethodBeat.i(116447);
-    String str = t.FB(this.url);
+    String str = t.Gd(this.url);
     AppMethodBeat.o(116447);
     return str;
   }
   
-  public final String aQy()
+  public final String aQX()
   {
     return this.url;
   }
   
-  public final boolean aQz()
+  public final boolean aQY()
   {
     return false;
+  }
+  
+  public final boolean aQZ()
+  {
+    return this.dtL;
+  }
+  
+  public final Bitmap aRa()
+  {
+    AppMethodBeat.i(116453);
+    Bitmap localBitmap = BitmapFactory.decodeResource(ak.getContext().getResources(), 2131233476);
+    AppMethodBeat.o(116453);
+    return localBitmap;
+  }
+  
+  public final void aRb()
+  {
+    AppMethodBeat.i(116450);
+    this.ivs = bu.fpO();
+    if (this.FeH)
+    {
+      ae.d("MicroMsg.ReaaderAppGetPicStrategy", "beforeGetPicFromNet, from biz msg");
+      com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(86L, 0L, 1L, false);
+    }
+    AppMethodBeat.o(116450);
   }
   
   public final void aa(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(116451);
-    this.isz = bt.flT();
+    this.ivt = bu.fpO();
     int j = 0;
     int i = j;
-    if (t.aIN())
+    if (t.aJf())
     {
       i = j;
-      if (!bt.isNullOrNil(paramString))
+      if (!bu.isNullOrNil(paramString))
       {
         i = j;
-        if (t.ev(t.FB(this.url)))
+        if (t.eA(t.Gd(this.url)))
         {
           i = j;
           if (paramString.equals("image/webp")) {
@@ -196,28 +197,28 @@ public final class r
         }
       }
     }
-    if (this.EMj) {
+    if (this.FeH) {
       if (!paramBoolean)
       {
-        ad.d("MicroMsg.ReaaderAppGetPicStrategy", "afterGetPicFromNet, download biz image failed");
-        com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(86L, 2L, 1L, false);
+        ae.d("MicroMsg.ReaaderAppGetPicStrategy", "afterGetPicFromNet, download biz image failed");
+        com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(86L, 2L, 1L, false);
         if (i != 0)
         {
-          ad.d("MicroMsg.ReaaderAppGetPicStrategy", "afterGetPicFromNet, download biz webp image failed");
-          com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(86L, 15L, 1L, false);
+          ae.d("MicroMsg.ReaaderAppGetPicStrategy", "afterGetPicFromNet, download biz webp image failed");
+          com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(86L, 15L, 1L, false);
           AppMethodBeat.o(116451);
         }
       }
       else
       {
-        long l = this.isz - this.isy;
-        ad.d("MicroMsg.ReaaderAppGetPicStrategy", "afterGetPicFromNet, download biz image success, used %d", new Object[] { Long.valueOf(l) });
-        com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(86L, 4L, l, false);
+        long l = this.ivt - this.ivs;
+        ae.d("MicroMsg.ReaaderAppGetPicStrategy", "afterGetPicFromNet, download biz image success, used %d", new Object[] { Long.valueOf(l) });
+        com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(86L, 4L, l, false);
         if (i != 0)
         {
-          ad.d("MicroMsg.ReaaderAppGetPicStrategy", "afterGetPicFromNet, download biz webp image success");
-          com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(86L, 17L, l, false);
-          com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(86L, 13L, 1L, false);
+          ae.d("MicroMsg.ReaaderAppGetPicStrategy", "afterGetPicFromNet, download biz webp image success");
+          com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(86L, 17L, l, false);
+          com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(86L, 13L, 1L, false);
         }
       }
     }
@@ -227,25 +228,9 @@ public final class r
   public final String getCacheKey()
   {
     AppMethodBeat.i(116448);
-    String str = this.url + this.jMs;
+    String str = this.url + this.jPE;
     AppMethodBeat.o(116448);
     return str;
-  }
-  
-  public static final class a
-  {
-    public int h;
-    public int w;
-    public int x;
-    public int y;
-    
-    public final String toString()
-    {
-      AppMethodBeat.i(116444);
-      String str = String.format("crop area[x=%d,y=%d,h=%d,w=%d]", new Object[] { Integer.valueOf(this.x), Integer.valueOf(this.y), Integer.valueOf(this.h), Integer.valueOf(this.w) });
-      AppMethodBeat.o(116444);
-      return str;
-    }
   }
 }
 

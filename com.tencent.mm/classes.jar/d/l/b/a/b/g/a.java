@@ -2,11 +2,11 @@ package d.l.b.a.b.g;
 
 public abstract class a
 {
-  private final String NqB;
+  private final String NNH;
   
   public String toString()
   {
-    return this.NqB;
+    return this.NNH;
   }
 }
 

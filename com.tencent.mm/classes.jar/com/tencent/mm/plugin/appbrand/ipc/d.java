@@ -7,9 +7,9 @@ import android.os.IInterface;
 public abstract interface d
   extends IInterface
 {
-  public abstract void G(Bundle paramBundle);
-  
   public abstract void H(Bundle paramBundle);
+  
+  public abstract void I(Bundle paramBundle);
   
   public abstract void a(IBinder paramIBinder, String paramString);
 }

@@ -2,15 +2,15 @@ package com.tencent.mm.plugin.expt.hellhound.a.c;
 
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ax;
+import com.tencent.mm.sdk.platformtools.ay;
 
 public final class b
 {
-  public static void Dj(int paramInt)
+  public static void Dw(int paramInt)
   {
     AppMethodBeat.i(122030);
     if (!TextUtils.isEmpty("page_hell_seq_mmkv_key")) {
-      ax.aQz("_hellhound_mmkv").putInt("page_hell_seq_mmkv_key", paramInt);
+      ay.aRW("_hellhound_mmkv").putInt("page_hell_seq_mmkv_key", paramInt);
     }
     AppMethodBeat.o(122030);
   }

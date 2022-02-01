@@ -1,46 +1,46 @@
 package com.tencent.mm.plugin.remittance.bankcard.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.f;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.f;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.coy;
-import com.tencent.mm.protocal.protobuf.coz;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.cps;
+import com.tencent.mm.protocal.protobuf.cpt;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class l
   extends b
 {
   private final String TAG;
   private f callback;
-  private com.tencent.mm.al.b rr;
-  public coz xRZ;
+  private com.tencent.mm.ak.b rr;
+  public cpt yhS;
   
   public l(String paramString)
   {
     AppMethodBeat.i(67382);
     this.TAG = "MicroMsg.NetSceneBankRemitQueryDetail";
     b.a locala = new b.a();
-    locala.hNM = new coy();
-    locala.hNN = new coz();
+    locala.hQF = new cps();
+    locala.hQG = new cpt();
     locala.funcId = 1579;
     locala.uri = "/cgi-bin/mmpay-bin/querydetail_tsbc";
-    locala.hNO = 0;
+    locala.hQH = 0;
     locala.respCmdId = 0;
-    this.rr = locala.aDC();
-    ((coy)this.rr.hNK.hNQ).FMk = paramString;
-    ad.i("MicroMsg.NetSceneBankRemitQueryDetail", "bill id: %s", new Object[] { paramString });
+    this.rr = locala.aDS();
+    ((cps)this.rr.hQD.hQJ).GeJ = paramString;
+    ae.i("MicroMsg.NetSceneBankRemitQueryDetail", "bill id: %s", new Object[] { paramString });
     AppMethodBeat.o(67382);
   }
   
   public final void b(int paramInt1, int paramInt2, String paramString, q paramq)
   {
     AppMethodBeat.i(67384);
-    ad.i("MicroMsg.NetSceneBankRemitQueryDetail", "errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-    this.xRZ = ((coz)((com.tencent.mm.al.b)paramq).hNL.hNQ);
+    ae.i("MicroMsg.NetSceneBankRemitQueryDetail", "errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    this.yhS = ((cpt)((com.tencent.mm.ak.b)paramq).hQE.hQJ);
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt1, paramInt2, paramString, this);
     }
@@ -58,9 +58,9 @@ public final class l
   
   public final void e(q paramq)
   {
-    paramq = (coz)((com.tencent.mm.al.b)paramq).hNL.hNQ;
-    this.Lyu = paramq.dlw;
-    this.Lyv = paramq.paA;
+    paramq = (cpt)((com.tencent.mm.ak.b)paramq).hQE.hQJ;
+    this.LVj = paramq.dmy;
+    this.LVk = paramq.phe;
   }
   
   public final int getType()

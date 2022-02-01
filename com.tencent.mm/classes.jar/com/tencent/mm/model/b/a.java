@@ -2,77 +2,77 @@ package com.tencent.mm.model.b;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import com.tencent.mm.model.ba;
+import com.tencent.mm.model.bc;
 import com.tencent.mm.model.c;
 
 public abstract class a
   implements e
 {
-  protected e.a hIK;
-  protected String hIL = aCT();
-  protected String[] hIM = aCS();
+  protected e.a hLD;
+  protected String hLE = aDj();
+  protected String[] hLF = aDi();
   
-  public final boolean BK(String paramString)
+  public final boolean Cm(String paramString)
   {
     boolean bool2 = false;
-    ba.aBQ();
-    SharedPreferences localSharedPreferences = c.wW("banner");
+    bc.aCg();
+    SharedPreferences localSharedPreferences = c.xF("banner");
     boolean bool1 = bool2;
     if (localSharedPreferences != null)
     {
       bool1 = bool2;
-      if (localSharedPreferences.getBoolean(this.hIL + paramString, false)) {
+      if (localSharedPreferences.getBoolean(this.hLE + paramString, false)) {
         bool1 = true;
       }
     }
     return bool1;
   }
   
-  public final void BL(String paramString)
+  public final void Cn(String paramString)
   {
-    ba.aBQ();
-    SharedPreferences localSharedPreferences = c.wW("banner");
+    bc.aCg();
+    SharedPreferences localSharedPreferences = c.xF("banner");
     if (localSharedPreferences == null) {}
     do
     {
       return;
-      localSharedPreferences.edit().remove(this.hIL + paramString).commit();
-      if (this.hIM != null)
+      localSharedPreferences.edit().remove(this.hLE + paramString).commit();
+      if (this.hLF != null)
       {
-        String[] arrayOfString = this.hIM;
+        String[] arrayOfString = this.hLF;
         int j = arrayOfString.length;
         int i = 0;
         while (i < j)
         {
           String str = arrayOfString[i];
           if (str != null) {
-            localSharedPreferences.edit().remove(this.hIL + str + paramString).commit();
+            localSharedPreferences.edit().remove(this.hLE + str + paramString).commit();
           }
           i += 1;
         }
       }
-    } while (this.hIK == null);
-    this.hIK.aDg();
+    } while (this.hLD == null);
+    this.hLD.aDw();
   }
   
   public final void a(e.a parama)
   {
-    this.hIK = parama;
+    this.hLD = parama;
   }
   
   public final void a(String paramString, boolean paramBoolean, String[] paramArrayOfString)
   {
-    ba.aBQ();
-    SharedPreferences localSharedPreferences = c.wW("banner");
+    bc.aCg();
+    SharedPreferences localSharedPreferences = c.xF("banner");
     if (localSharedPreferences == null) {}
     label188:
     do
     {
       return;
-      localSharedPreferences.edit().putBoolean(this.hIL + paramString, paramBoolean).commit();
-      if ((this.hIM != null) && (paramArrayOfString != null) && (this.hIM.length == paramArrayOfString.length))
+      localSharedPreferences.edit().putBoolean(this.hLE + paramString, paramBoolean).commit();
+      if ((this.hLF != null) && (paramArrayOfString != null) && (this.hLF.length == paramArrayOfString.length))
       {
-        String[] arrayOfString = this.hIM;
+        String[] arrayOfString = this.hLF;
         int k = arrayOfString.length;
         int i = 0;
         int j = 0;
@@ -86,32 +86,32 @@ public abstract class a
           }
           for (String str1 = paramArrayOfString[j];; str1 = "")
           {
-            localSharedPreferences.edit().putString(this.hIL + str2 + paramString, str1).commit();
+            localSharedPreferences.edit().putString(this.hLE + str2 + paramString, str1).commit();
             j += 1;
             i += 1;
             break;
           }
         }
       }
-    } while (this.hIK == null);
-    this.hIK.aDf();
+    } while (this.hLD == null);
+    this.hLD.aDv();
   }
   
-  protected String[] aCS()
+  protected String[] aDi()
   {
     return null;
   }
   
-  public abstract String aCT();
+  public abstract String aDj();
   
   public final String aQ(String paramString1, String paramString2)
   {
-    ba.aBQ();
-    SharedPreferences localSharedPreferences = c.wW("banner");
+    bc.aCg();
+    SharedPreferences localSharedPreferences = c.xF("banner");
     if (localSharedPreferences == null) {
       return null;
     }
-    return localSharedPreferences.getString(this.hIL + paramString2 + paramString1, null);
+    return localSharedPreferences.getString(this.hLE + paramString2 + paramString1, null);
   }
 }
 

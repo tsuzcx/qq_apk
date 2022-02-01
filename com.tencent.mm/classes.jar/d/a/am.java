@@ -6,7 +6,7 @@ import d.l;
 import java.util.Iterator;
 import java.util.Set;
 
-@l(gfA=1, gfx={1, 1, 16}, gfy={""}, gfz={"buildSet", "", "E", "capacity", "", "builderAction", "Lkotlin/Function1;", "", "", "Lkotlin/ExtensionFunctionType;", "emptySet", "T", "hashSetOf", "Ljava/util/HashSet;", "Lkotlin/collections/HashSet;", "elements", "", "([Ljava/lang/Object;)Ljava/util/HashSet;", "linkedSetOf", "Ljava/util/LinkedHashSet;", "Lkotlin/collections/LinkedHashSet;", "([Ljava/lang/Object;)Ljava/util/LinkedHashSet;", "mutableSetOf", "([Ljava/lang/Object;)Ljava/util/Set;", "setOf", "optimizeReadOnlySet", "orEmpty", "kotlin-stdlib"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"buildSet", "", "E", "capacity", "", "builderAction", "Lkotlin/Function1;", "", "", "Lkotlin/ExtensionFunctionType;", "emptySet", "T", "hashSetOf", "Ljava/util/HashSet;", "Lkotlin/collections/HashSet;", "elements", "", "([Ljava/lang/Object;)Ljava/util/HashSet;", "linkedSetOf", "Ljava/util/LinkedHashSet;", "Lkotlin/collections/LinkedHashSet;", "([Ljava/lang/Object;)Ljava/util/LinkedHashSet;", "mutableSetOf", "([Ljava/lang/Object;)Ljava/util/Set;", "setOf", "optimizeReadOnlySet", "orEmpty", "kotlin-stdlib"}, gkc=1)
 public class am
   extends al
 {
@@ -16,11 +16,11 @@ public class am
     p.h(paramVarArgs, "elements");
     if (paramVarArgs.length > 0)
     {
-      paramVarArgs = e.Y(paramVarArgs);
+      paramVarArgs = e.X(paramVarArgs);
       AppMethodBeat.o(129117);
       return paramVarArgs;
     }
-    paramVarArgs = (Set)x.MKG;
+    paramVarArgs = (Set)x.NhJ;
     AppMethodBeat.o(129117);
     return paramVarArgs;
   }
@@ -35,7 +35,7 @@ public class am
       AppMethodBeat.o(129118);
       return paramSet;
     case 0: 
-      paramSet = (Set)x.MKG;
+      paramSet = (Set)x.NhJ;
       AppMethodBeat.o(129118);
       return paramSet;
     }

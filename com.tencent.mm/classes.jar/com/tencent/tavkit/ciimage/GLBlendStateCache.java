@@ -13,24 +13,24 @@ class GLBlendStateCache
   
   GLBlendStateCache()
   {
-    AppMethodBeat.i(219621);
+    AppMethodBeat.i(200652);
     this.pNames = new int[] { 32777, 32777, 34877, 32969, 32968, 32971, 32970 };
     this.params = new int[7];
-    AppMethodBeat.o(219621);
+    AppMethodBeat.o(200652);
   }
   
   void cache()
   {
     try
     {
-      AppMethodBeat.i(219622);
+      AppMethodBeat.i(200653);
       int i = 0;
       while (i < this.pNames.length)
       {
         GLES20.glGetIntegerv(this.pNames[i], this.params, i);
         i += 1;
       }
-      AppMethodBeat.o(219622);
+      AppMethodBeat.o(200653);
       return;
     }
     finally {}
@@ -40,13 +40,13 @@ class GLBlendStateCache
   {
     try
     {
-      AppMethodBeat.i(219623);
+      AppMethodBeat.i(200654);
       Logger.v("GLBlendStateCache", "restore: params = " + Arrays.toString(this.params));
       GLES20.glEnable(3042);
       GLES20.glBlendEquation(this.params[0]);
       GLES20.glBlendEquationSeparate(this.params[1], this.params[2]);
       GLES20.glBlendFuncSeparate(this.params[3], this.params[4], this.params[5], this.params[6]);
-      AppMethodBeat.o(219623);
+      AppMethodBeat.o(200654);
       return;
     }
     finally

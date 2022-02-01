@@ -1,6 +1,6 @@
 package com.tencent.mm.ui.chatting.d.b;
 
-import com.tencent.mm.ba.a.b;
+import com.tencent.mm.az.a.b;
 import com.tencent.mm.ui.chatting.d.ad;
 
 public abstract interface ae

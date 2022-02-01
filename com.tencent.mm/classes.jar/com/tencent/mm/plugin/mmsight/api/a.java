@@ -4,17 +4,17 @@ import android.graphics.Bitmap;
 
 public abstract class a
 {
-  public static b vMR = null;
+  public static b vYU = null;
   
-  public abstract int atP();
+  public abstract int aue();
   
   public abstract int getType();
   
-  public abstract void y(Bitmap paramBitmap);
+  public abstract void z(Bitmap paramBitmap);
   
   public static abstract interface a
   {
-    public abstract Bitmap dmF();
+    public abstract Bitmap dpD();
   }
   
   public static abstract interface b

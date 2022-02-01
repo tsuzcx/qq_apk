@@ -182,7 +182,7 @@ public class FileProvider
             }
             if ("external-files-path".equals(paramString))
             {
-              paramString = b.Q(paramContext);
+              paramString = b.R(paramContext);
               if (paramString.length <= 0) {
                 break label320;
               }
@@ -191,7 +191,7 @@ public class FileProvider
             }
             if ("external-cache-path".equals(paramString))
             {
-              paramString = b.R(paramContext);
+              paramString = b.S(paramContext);
               if (paramString.length <= 0) {
                 break label320;
               }

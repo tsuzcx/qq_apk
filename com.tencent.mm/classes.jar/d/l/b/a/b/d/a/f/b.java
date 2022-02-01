@@ -12,12 +12,12 @@ import java.util.List;
 final class b
   implements g
 {
-  private final d.l.b.a.b.f.b NgV;
+  private final d.l.b.a.b.f.b NEa;
   
   public b(d.l.b.a.b.f.b paramb)
   {
     AppMethodBeat.i(58019);
-    this.NgV = paramb;
+    this.NEa = paramb;
     AppMethodBeat.o(58019);
   }
   
@@ -38,7 +38,7 @@ final class b
   public final Iterator<c> iterator()
   {
     AppMethodBeat.i(58018);
-    Iterator localIterator = ((List)v.MKE).iterator();
+    Iterator localIterator = ((List)v.NhH).iterator();
     AppMethodBeat.o(58018);
     return localIterator;
   }

@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class bk
   extends b
 {
-  public a dmq;
+  public a dns;
   
   public bk()
   {
@@ -16,17 +16,17 @@ public final class bk
   private bk(byte paramByte)
   {
     AppMethodBeat.i(149854);
-    this.dmq = new a();
-    this.IbR = false;
+    this.dns = new a();
+    this.IvZ = false;
     this.callback = null;
     AppMethodBeat.o(149854);
   }
   
   public static final class a
   {
-    public boolean dmr = false;
-    public boolean dms = false;
-    public boolean dmt = false;
+    public boolean dnt = false;
+    public boolean dnu = false;
+    public boolean dnv = false;
   }
 }
 

@@ -1,10 +1,10 @@
 package com.tencent.mm.sdk;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bl;
+import com.tencent.mm.sdk.platformtools.bm;
 
 public class c<T>
-  extends bl<T>
+  extends bm<T>
 {
   private final Object mLock;
   

@@ -7,77 +7,77 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
 {
-  public static g.b LTd;
-  public static boolean cFj;
-  public int LSW;
-  public int LSX;
-  public int LSY;
-  public b LSZ;
-  public h.a LTa;
-  public d LTb;
-  public boolean LTc = true;
-  public long vLa;
+  public static g.b Mqa;
+  public static boolean cFS;
+  public int MpT;
+  public int MpU;
+  public int MpV;
+  public b MpW;
+  public h.a MpX;
+  public d MpY;
+  public boolean MpZ = true;
+  public long vXe;
   
   static
   {
-    AppMethodBeat.i(219267);
-    cFj = false;
-    LTd = new g.b()
+    AppMethodBeat.i(216727);
+    cFS = false;
+    Mqa = new g.b()
     {
       public final void a(Thread paramAnonymousThread, String paramAnonymousString) {}
       
-      public final boolean dyV()
+      public final boolean dCm()
       {
         return false;
       }
       
-      public final boolean dyW()
+      public final boolean dCn()
       {
         return false;
       }
     };
-    AppMethodBeat.o(219267);
+    AppMethodBeat.o(216727);
   }
   
   public static final class a
   {
-    public a LTe;
+    public a Mqb;
     
     public a()
     {
       AppMethodBeat.i(183098);
-      this.LTe = new a((byte)0);
+      this.Mqb = new a((byte)0);
       AppMethodBeat.o(183098);
     }
     
     public final a a(h.a parama)
     {
-      this.LTe.LTa = parama;
+      this.Mqb.MpX = parama;
       return this;
     }
     
-    public final a agS(int paramInt)
+    public final a ahB(int paramInt)
     {
-      this.LTe.LSY = paramInt;
+      this.Mqb.MpV = paramInt;
       return this;
     }
     
-    public final a fVn()
+    public final a fZM()
     {
-      this.LTe.vLa = 259200000L;
+      this.Mqb.vXe = 259200000L;
       return this;
     }
     
-    public final a fVo()
+    public final a fZN()
     {
-      this.LTe.LTc = true;
+      this.Mqb.MpZ = true;
       return this;
     }
     
-    public final a kP(int paramInt1, int paramInt2)
+    public final a kW(int paramInt1, int paramInt2)
     {
-      this.LTe.LSX = paramInt1;
-      this.LTe.LSW = paramInt2;
+      this.Mqb.MpU = paramInt1;
+      this.Mqb.MpT = paramInt2;
       return this;
     }
   }

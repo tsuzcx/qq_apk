@@ -21,9 +21,8 @@ import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.plugin.remittance.bankcard.a.f;
 import com.tencent.mm.plugin.remittance.bankcard.a.j;
@@ -31,16 +30,13 @@ import com.tencent.mm.plugin.remittance.bankcard.model.TransferRecordParcel;
 import com.tencent.mm.plugin.report.service.g;
 import com.tencent.mm.pluginsdk.ui.applet.CdnImageView;
 import com.tencent.mm.pluginsdk.ui.span.k;
-import com.tencent.mm.protocal.protobuf.aeh;
-import com.tencent.mm.protocal.protobuf.cau;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.base.h.b;
 import com.tencent.mm.ui.base.n.e;
 import com.tencent.mm.ui.tools.l;
 import com.tencent.mm.wallet_core.c.r;
-import com.tencent.mm.wallet_core.c.r.a;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
@@ -50,15 +46,15 @@ public class BankRemitSelectPayeeUI
   extends BankRemitBaseUI
   implements n.e
 {
-  private l lvx;
-  private ListView xUF;
-  private b xUG;
-  private List<TransferRecordParcel> xUH;
-  private ArrayList<TransferRecordParcel> xUI;
-  private ArrayList<String> xUJ;
-  private int xUK = -1;
-  private int xUL = -1;
-  private Intent xUM;
+  private l lzV;
+  private List<TransferRecordParcel> ykA;
+  private ArrayList<TransferRecordParcel> ykB;
+  private ArrayList<String> ykC;
+  private int ykD = -1;
+  private int ykE = -1;
+  private Intent ykF;
+  private ListView yky;
+  private b ykz;
   
   public int getLayoutId()
   {
@@ -68,11 +64,11 @@ public class BankRemitSelectPayeeUI
   public void initView()
   {
     AppMethodBeat.i(67603);
-    this.xUF = ((ListView)findViewById(2131297571));
-    this.lvx = new l(this);
-    this.xUG = new b((byte)0);
-    this.xUF.setAdapter(this.xUG);
-    this.xUF.setOnItemClickListener(new AdapterView.OnItemClickListener()
+    this.yky = ((ListView)findViewById(2131297571));
+    this.lzV = new l(this);
+    this.ykz = new b((byte)0);
+    this.yky.setAdapter(this.ykz);
+    this.yky.setOnItemClickListener(new AdapterView.OnItemClickListener()
     {
       public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
       {
@@ -80,14 +76,14 @@ public class BankRemitSelectPayeeUI
         b localb = new b();
         localb.bd(paramAnonymousAdapterView);
         localb.bd(paramAnonymousView);
-        localb.mr(paramAnonymousInt);
-        localb.qY(paramAnonymousLong);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/remittance/bankcard/ui/BankRemitSelectPayeeUI$1", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.ahq());
-        ad.d("MicroMsg.BankRemitSelectPayeeUI", "item click: %s", new Object[] { Integer.valueOf(paramAnonymousInt) });
+        localb.mu(paramAnonymousInt);
+        localb.rl(paramAnonymousLong);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/remittance/bankcard/ui/BankRemitSelectPayeeUI$1", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.ahF());
+        ae.d("MicroMsg.BankRemitSelectPayeeUI", "item click: %s", new Object[] { Integer.valueOf(paramAnonymousInt) });
         paramAnonymousAdapterView = (TransferRecordParcel)paramAnonymousAdapterView.getAdapter().getItem(paramAnonymousInt);
         if (paramAnonymousAdapterView != null)
         {
-          BankRemitSelectPayeeUI.a(BankRemitSelectPayeeUI.this).putExtra("key_bank_card_seqno", paramAnonymousAdapterView.xSz);
+          BankRemitSelectPayeeUI.a(BankRemitSelectPayeeUI.this).putExtra("key_bank_card_seqno", paramAnonymousAdapterView.yis);
           BankRemitSelectPayeeUI.this.setResult(-1, BankRemitSelectPayeeUI.a(BankRemitSelectPayeeUI.this));
           BankRemitSelectPayeeUI.this.finish();
         }
@@ -95,7 +91,7 @@ public class BankRemitSelectPayeeUI
         AppMethodBeat.o(67584);
       }
     });
-    this.xUF.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener()
+    this.yky.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener()
     {
       public final boolean onItemLongClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
       {
@@ -114,25 +110,25 @@ public class BankRemitSelectPayeeUI
     super.onCreate(paramBundle);
     paramBundle = getIntent().getParcelableArrayListExtra("key_self_transfer_record_list");
     Object localObject = getIntent().getParcelableArrayListExtra("key_freq_transfer_record_list");
-    this.xUH = new ArrayList();
+    this.ykA = new ArrayList();
     if ((paramBundle != null) && (!paramBundle.isEmpty()))
     {
-      this.xUK = 0;
-      this.xUH.addAll(paramBundle);
+      this.ykD = 0;
+      this.ykA.addAll(paramBundle);
     }
     if ((localObject != null) && (!((List)localObject).isEmpty()))
     {
-      this.xUL = (this.xUH.size() + this.xUK + 1);
-      this.xUH.addAll((Collection)localObject);
+      this.ykE = (this.ykA.size() + this.ykD + 1);
+      this.ykA.addAll((Collection)localObject);
     }
-    ad.i("MicroMsg.BankRemitSelectPayeeUI", "selfHeaderPos: %s, otherHeaderPos: %s", new Object[] { Integer.valueOf(this.xUK), Integer.valueOf(this.xUL) });
-    paramBundle = this.xUH.iterator();
+    ae.i("MicroMsg.BankRemitSelectPayeeUI", "selfHeaderPos: %s, otherHeaderPos: %s", new Object[] { Integer.valueOf(this.ykD), Integer.valueOf(this.ykE) });
+    paramBundle = this.ykA.iterator();
     while (paramBundle.hasNext())
     {
       localObject = (TransferRecordParcel)paramBundle.next();
-      ad.d("MicroMsg.BankRemitSelectPayeeUI", "seqno: %s, tail: %s, bank_logo: %s, bank_name: %s, bank_type: %s, payee: %s, explain: %s", new Object[] { ((TransferRecordParcel)localObject).xSz, ((TransferRecordParcel)localObject).xSA, ((TransferRecordParcel)localObject).xSd, ((TransferRecordParcel)localObject).uJF, ((TransferRecordParcel)localObject).dkR, ((TransferRecordParcel)localObject).xSB, ((TransferRecordParcel)localObject).xSC });
+      ae.d("MicroMsg.BankRemitSelectPayeeUI", "seqno: %s, tail: %s, bank_logo: %s, bank_name: %s, bank_type: %s, payee: %s, explain: %s", new Object[] { ((TransferRecordParcel)localObject).yis, ((TransferRecordParcel)localObject).yit, ((TransferRecordParcel)localObject).yhW, ((TransferRecordParcel)localObject).uVs, ((TransferRecordParcel)localObject).dlT, ((TransferRecordParcel)localObject).yiu, ((TransferRecordParcel)localObject).yiv });
     }
-    this.xUM = new Intent();
+    this.ykF = new Intent();
     initView();
     setMMTitle(2131756403);
     addSceneEndListener(1590);
@@ -162,27 +158,27 @@ public class BankRemitSelectPayeeUI
     AppMethodBeat.i(67605);
     paramInt = paramMenuItem.getItemId();
     paramMenuItem = (AdapterView.AdapterContextMenuInfo)paramMenuItem.getMenuInfo();
-    paramMenuItem = (TransferRecordParcel)this.xUF.getItemAtPosition(paramMenuItem.position);
+    paramMenuItem = (TransferRecordParcel)this.yky.getItemAtPosition(paramMenuItem.position);
     if (paramMenuItem == null)
     {
-      ad.i("MicroMsg.BankRemitSelectPayeeUI", "select record is null");
+      ae.i("MicroMsg.BankRemitSelectPayeeUI", "select record is null");
       AppMethodBeat.o(67605);
       return;
     }
     if (paramInt == 1)
     {
-      com.tencent.mm.plugin.wallet_core.ui.view.a.a(this, getString(2131757453), paramMenuItem.xSC, "", 32, new h.b()new DialogInterface.OnClickListener
+      com.tencent.mm.plugin.wallet_core.ui.view.a.a(this, getString(2131757453), paramMenuItem.yiv, "", 32, new h.b()new DialogInterface.OnClickListener
       {
         public final boolean onFinish(CharSequence paramAnonymousCharSequence)
         {
           AppMethodBeat.i(67587);
-          if (((paramMenuItem.xSC == null) && (paramAnonymousCharSequence == null)) || ((paramMenuItem.xSC != null) && (paramMenuItem.xSC.equals(paramAnonymousCharSequence))))
+          if (((paramMenuItem.yiv == null) && (paramAnonymousCharSequence == null)) || ((paramMenuItem.yiv != null) && (paramMenuItem.yiv.equals(paramAnonymousCharSequence))))
           {
-            ad.i("MicroMsg.BankRemitSelectPayeeUI", "no change: %s, %s", new Object[] { paramMenuItem.xSC, paramAnonymousCharSequence });
+            ae.i("MicroMsg.BankRemitSelectPayeeUI", "no change: %s, %s", new Object[] { paramMenuItem.yiv, paramAnonymousCharSequence });
             AppMethodBeat.o(67587);
             return true;
           }
-          BankRemitSelectPayeeUI.a(BankRemitSelectPayeeUI.this, paramMenuItem.xSz, String.valueOf(paramAnonymousCharSequence));
+          BankRemitSelectPayeeUI.a(BankRemitSelectPayeeUI.this, paramMenuItem.yis, String.valueOf(paramAnonymousCharSequence));
           AppMethodBeat.o(67587);
           return true;
         }
@@ -191,7 +187,7 @@ public class BankRemitSelectPayeeUI
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
           AppMethodBeat.i(67589);
-          aq.o(new Runnable()
+          ar.o(new Runnable()
           {
             public final void run()
             {
@@ -208,52 +204,24 @@ public class BankRemitSelectPayeeUI
     }
     if (paramInt == 0)
     {
-      paramMenuItem = paramMenuItem.xSz;
-      ad.i("MicroMsg.BankRemitSelectPayeeUI", "do delete record");
+      paramMenuItem = paramMenuItem.yis;
+      ae.i("MicroMsg.BankRemitSelectPayeeUI", "do delete record");
       doSceneProgress(new f(paramMenuItem), true);
-      g.yhR.f(14673, new Object[] { Integer.valueOf(7) });
+      g.yxI.f(14673, new Object[] { Integer.valueOf(7) });
       AppMethodBeat.o(67605);
       return;
     }
-    ad.i("MicroMsg.BankRemitSelectPayeeUI", "unknown itemId: %s", new Object[] { Integer.valueOf(paramInt) });
+    ae.i("MicroMsg.BankRemitSelectPayeeUI", "unknown itemId: %s", new Object[] { Integer.valueOf(paramInt) });
     AppMethodBeat.o(67605);
   }
   
-  public boolean onSceneEnd(int paramInt1, int paramInt2, final String paramString, n paramn)
+  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     AppMethodBeat.i(67607);
     if ((paramn instanceof j))
     {
       paramString = (j)paramn;
-      paramString.a(new r.a()
-      {
-        public final void d(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, n paramAnonymousn)
-        {
-          AppMethodBeat.i(67592);
-          ad.i("MicroMsg.BankRemitSelectPayeeUI", "modify success");
-          BankRemitSelectPayeeUI.b(BankRemitSelectPayeeUI.this, paramString.xRP, paramString.iTM);
-          AppMethodBeat.o(67592);
-        }
-      }).b(new r.a()
-      {
-        public final void d(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, n paramAnonymousn)
-        {
-          AppMethodBeat.i(67591);
-          ad.e("MicroMsg.BankRemitSelectPayeeUI", "reponse error: %s, msg: %s", new Object[] { Integer.valueOf(paramString.xRX.dlw), paramString.xRX.paA });
-          if (!bt.isNullOrNil(paramString.xRX.paA)) {
-            Toast.makeText(BankRemitSelectPayeeUI.this, paramString.xRX.paA, 1).show();
-          }
-          AppMethodBeat.o(67591);
-        }
-      }).c(new r.a()
-      {
-        public final void d(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, n paramAnonymousn)
-        {
-          AppMethodBeat.i(67590);
-          ad.e("MicroMsg.BankRemitSelectPayeeUI", "net error: %s", new Object[] { paramAnonymousn });
-          AppMethodBeat.o(67590);
-        }
-      });
+      paramString.a(new BankRemitSelectPayeeUI.8(this, paramString)).b(new BankRemitSelectPayeeUI.7(this, paramString)).c(new BankRemitSelectPayeeUI.6(this));
     }
     for (;;)
     {
@@ -262,34 +230,7 @@ public class BankRemitSelectPayeeUI
       if ((paramn instanceof f))
       {
         paramString = (f)paramn;
-        paramString.a(new r.a()
-        {
-          public final void d(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, n paramAnonymousn)
-          {
-            AppMethodBeat.i(67585);
-            BankRemitSelectPayeeUI.a(BankRemitSelectPayeeUI.this, paramString.xRP);
-            AppMethodBeat.o(67585);
-          }
-        }).b(new r.a()
-        {
-          public final void d(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, n paramAnonymousn)
-          {
-            AppMethodBeat.i(67594);
-            ad.e("MicroMsg.BankRemitSelectPayeeUI", "reponse error: %s, msg: %s", new Object[] { Integer.valueOf(paramString.xRT.dlw), paramString.xRT.paA });
-            if (!bt.isNullOrNil(paramString.xRT.paA)) {
-              Toast.makeText(BankRemitSelectPayeeUI.this, paramString.xRT.paA, 1).show();
-            }
-            AppMethodBeat.o(67594);
-          }
-        }).c(new r.a()
-        {
-          public final void d(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, n paramAnonymousn)
-          {
-            AppMethodBeat.i(67593);
-            ad.e("MicroMsg.BankRemitSelectPayeeUI", "net error: %s", new Object[] { paramAnonymousn });
-            AppMethodBeat.o(67593);
-          }
-        });
+        paramString.a(new BankRemitSelectPayeeUI.2(this, paramString)).b(new BankRemitSelectPayeeUI.10(this, paramString)).c(new BankRemitSelectPayeeUI.9(this));
       }
     }
   }
@@ -302,9 +243,9 @@ public class BankRemitSelectPayeeUI
   
   final class a
   {
-    TextView xSx;
-    CdnImageView xUS;
-    TextView xUT;
+    TextView yiq;
+    CdnImageView ykL;
+    TextView ykM;
     
     private a() {}
   }
@@ -314,7 +255,7 @@ public class BankRemitSelectPayeeUI
   {
     private b() {}
     
-    private boolean dIS()
+    private boolean dMj()
     {
       AppMethodBeat.i(67600);
       if (BankRemitSelectPayeeUI.d(BankRemitSelectPayeeUI.this) >= 0)
@@ -326,7 +267,7 @@ public class BankRemitSelectPayeeUI
       return false;
     }
     
-    private boolean dIT()
+    private boolean dMk()
     {
       AppMethodBeat.i(67601);
       if (BankRemitSelectPayeeUI.e(BankRemitSelectPayeeUI.this) >= 0)
@@ -343,11 +284,11 @@ public class BankRemitSelectPayeeUI
       AppMethodBeat.i(67595);
       int j = BankRemitSelectPayeeUI.c(BankRemitSelectPayeeUI.this).size();
       int i = j;
-      if (dIS()) {
+      if (dMj()) {
         i = j + 1;
       }
       j = i;
-      if (dIT()) {
+      if (dMk()) {
         j = i + 1;
       }
       AppMethodBeat.o(67595);
@@ -369,9 +310,9 @@ public class BankRemitSelectPayeeUI
         AppMethodBeat.o(67596);
         return localObject;
       }
-      if ((dIT()) && (paramInt > BankRemitSelectPayeeUI.e(BankRemitSelectPayeeUI.this)))
+      if ((dMk()) && (paramInt > BankRemitSelectPayeeUI.e(BankRemitSelectPayeeUI.this)))
       {
-        if (dIS())
+        if (dMj())
         {
           localObject = BankRemitSelectPayeeUI.c(BankRemitSelectPayeeUI.this).get(paramInt - 2);
           AppMethodBeat.o(67596);
@@ -381,13 +322,13 @@ public class BankRemitSelectPayeeUI
         AppMethodBeat.o(67596);
         return localObject;
       }
-      if (dIS())
+      if (dMj())
       {
         localObject = BankRemitSelectPayeeUI.c(BankRemitSelectPayeeUI.this).get(paramInt - 1);
         AppMethodBeat.o(67596);
         return localObject;
       }
-      ad.i("MicroMsg.BankRemitSelectPayeeUI", "maybe wrong pos: [%s,%s,%s]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(BankRemitSelectPayeeUI.d(BankRemitSelectPayeeUI.this)), Integer.valueOf(BankRemitSelectPayeeUI.e(BankRemitSelectPayeeUI.this)) });
+      ae.i("MicroMsg.BankRemitSelectPayeeUI", "maybe wrong pos: [%s,%s,%s]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(BankRemitSelectPayeeUI.d(BankRemitSelectPayeeUI.this)), Integer.valueOf(BankRemitSelectPayeeUI.e(BankRemitSelectPayeeUI.this)) });
       AppMethodBeat.o(67596);
       return null;
     }
@@ -424,7 +365,7 @@ public class BankRemitSelectPayeeUI
         switch (i)
         {
         default: 
-          ad.w("MicroMsg.BankRemitSelectPayeeUI", "unknown type: %d", new Object[] { Integer.valueOf(i) });
+          ae.w("MicroMsg.BankRemitSelectPayeeUI", "unknown type: %d", new Object[] { Integer.valueOf(i) });
         }
       }
       for (;;)
@@ -433,9 +374,9 @@ public class BankRemitSelectPayeeUI
         return localView;
         localView = LayoutInflater.from(BankRemitSelectPayeeUI.this.getContext()).inflate(2131493164, paramViewGroup, false);
         paramView = new BankRemitSelectPayeeUI.a(BankRemitSelectPayeeUI.this, (byte)0);
-        paramView.xUS = ((CdnImageView)localView.findViewById(2131297567));
-        paramView.xSx = ((TextView)localView.findViewById(2131297570));
-        paramView.xUT = ((TextView)localView.findViewById(2131297568));
+        paramView.ykL = ((CdnImageView)localView.findViewById(2131297567));
+        paramView.yiq = ((TextView)localView.findViewById(2131297570));
+        paramView.ykM = ((TextView)localView.findViewById(2131297568));
         localView.setTag(paramView);
         break;
         paramView = (TextView)localView.findViewById(2131297566);
@@ -460,29 +401,29 @@ public class BankRemitSelectPayeeUI
         }
         label257:
         paramView.setText("");
-        ad.w("MicroMsg.BankRemitSelectPayeeUI", "wrong header pos: %s", new Object[] { Integer.valueOf(paramInt) });
+        ae.w("MicroMsg.BankRemitSelectPayeeUI", "wrong header pos: %s", new Object[] { Integer.valueOf(paramInt) });
         continue;
         paramView = (BankRemitSelectPayeeUI.a)localView.getTag();
         paramViewGroup = (TransferRecordParcel)getItem(paramInt);
         if (paramViewGroup != null)
         {
-          paramView.xUS.gb(paramViewGroup.xSd, 2131101053);
-          if (!bt.isNullOrNil(paramViewGroup.xSC))
+          paramView.ykL.gk(paramViewGroup.yhW, 2131101053);
+          if (!bu.isNullOrNil(paramViewGroup.yiv))
           {
-            SpannableString localSpannableString = k.c(paramView.xUN.getContext(), paramView.xUN.getContext().getString(2131756399, new Object[] { paramViewGroup.xSB, paramViewGroup.xSC }));
-            paramView.xSx.setText(localSpannableString);
+            SpannableString localSpannableString = k.c(paramView.ykG.getContext(), paramView.ykG.getContext().getString(2131756399, new Object[] { paramViewGroup.yiu, paramViewGroup.yiv }));
+            paramView.yiq.setText(localSpannableString);
           }
           for (;;)
           {
-            paramView.xUT.setText(paramView.xUN.getString(2131756399, new Object[] { paramViewGroup.uJF, paramViewGroup.xSA }));
+            paramView.ykM.setText(paramView.ykG.getString(2131756399, new Object[] { paramViewGroup.uVs, paramViewGroup.yit }));
             break;
-            paramView.xSx.setText(paramViewGroup.xSB);
+            paramView.yiq.setText(paramViewGroup.yiu);
           }
         }
-        paramView.xUS.setImageResource(2131101053);
-        paramView.xSx.setText("");
-        paramView.xUT.setText("");
-        ad.w("MicroMsg.BankRemitSelectPayeeUI", "empty record");
+        paramView.ykL.setImageResource(2131101053);
+        paramView.yiq.setText("");
+        paramView.ykM.setText("");
+        ae.w("MicroMsg.BankRemitSelectPayeeUI", "empty record");
       }
     }
     
@@ -506,7 +447,7 @@ public class BankRemitSelectPayeeUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.remittance.bankcard.ui.BankRemitSelectPayeeUI
  * JD-Core Version:    0.7.0.1
  */

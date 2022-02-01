@@ -9,19 +9,19 @@ import com.tencent.mm.ui.widget.MMTextView;
 final class z$c
   extends c.a
 {
-  boolean Kbn;
-  MMNeat7extView KcT;
-  MMTextView KcU;
+  boolean KxF;
+  MMNeat7extView Kzl;
+  MMTextView Kzm;
   
   public z$c(View paramView, Boolean paramBoolean)
   {
-    AppMethodBeat.i(194411);
-    super.gn(paramView);
-    this.yEk = ((TextView)paramView.findViewById(2131298185));
-    this.KcT = ((MMNeat7extView)paramView.findViewById(2131307980));
-    this.KcU = ((MMTextView)paramView.findViewById(2131307981));
-    this.Kbn = paramBoolean.booleanValue();
-    AppMethodBeat.o(194411);
+    AppMethodBeat.i(187806);
+    super.gs(paramView);
+    this.yUp = ((TextView)paramView.findViewById(2131298185));
+    this.Kzl = ((MMNeat7extView)paramView.findViewById(2131307980));
+    this.Kzm = ((MMTextView)paramView.findViewById(2131307981));
+    this.KxF = paramBoolean.booleanValue();
+    AppMethodBeat.o(187806);
   }
 }
 

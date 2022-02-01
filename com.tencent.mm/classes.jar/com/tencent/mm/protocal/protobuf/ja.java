@@ -4,9 +4,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 public final class ja
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public SKBuiltinBuffer_t FCa;
+  public SKBuiltinBuffer_t FUv;
   public int dataType;
   
   public final int op(int paramInt, Object... paramVarArgs)
@@ -16,10 +16,10 @@ public final class ja
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
       paramVarArgs.aS(1, this.dataType);
-      if (this.FCa != null)
+      if (this.FUv != null)
       {
-        paramVarArgs.lC(2, this.FCa.computeSize());
-        this.FCa.writeFields(paramVarArgs);
+        paramVarArgs.lJ(2, this.FUv.computeSize());
+        this.FUv.writeFields(paramVarArgs);
       }
       AppMethodBeat.o(140925);
       return 0;
@@ -29,8 +29,8 @@ public final class ja
     {
       i = f.a.a.b.b.a.bz(1, this.dataType) + 0;
       paramInt = i;
-      if (this.FCa != null) {
-        paramInt = i + f.a.a.a.lB(2, this.FCa.computeSize());
+      if (this.FUv != null) {
+        paramInt = i + f.a.a.a.lI(2, this.FUv.computeSize());
       }
       AppMethodBeat.o(140925);
       return paramInt;
@@ -38,9 +38,9 @@ public final class ja
     if (paramInt == 2)
     {
       paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gxE();
+          paramVarArgs.gCg();
         }
       }
       AppMethodBeat.o(140925);
@@ -57,11 +57,11 @@ public final class ja
         AppMethodBeat.o(140925);
         return -1;
       case 1: 
-        localja.dataType = ((f.a.a.a.a)localObject1).NPN.zc();
+        localja.dataType = ((f.a.a.a.a)localObject1).OmT.zc();
         AppMethodBeat.o(140925);
         return 0;
       }
-      paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
+      paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
       i = paramVarArgs.size();
       paramInt = 0;
       while (paramInt < i)
@@ -69,8 +69,8 @@ public final class ja
         Object localObject2 = (byte[])paramVarArgs.get(paramInt);
         localObject1 = new SKBuiltinBuffer_t();
         localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-        for (boolean bool = true; bool; bool = ((SKBuiltinBuffer_t)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, com.tencent.mm.bx.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-        localja.FCa = ((SKBuiltinBuffer_t)localObject1);
+        for (boolean bool = true; bool; bool = ((SKBuiltinBuffer_t)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+        localja.FUv = ((SKBuiltinBuffer_t)localObject1);
         paramInt += 1;
       }
       AppMethodBeat.o(140925);

@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.sns.lucky.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.ue;
+import com.tencent.mm.g.a.ui;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.plugin.sns.i.i;
 import com.tencent.mm.sdk.b.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.at;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.sdk.platformtools.bw;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.al.a;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.au;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.bx;
+import com.tencent.mm.storage.aj;
+import com.tencent.mm.storage.am.a;
 import java.io.IOException;
 import java.net.URLDecoder;
 import java.nio.charset.Charset;
@@ -20,136 +20,136 @@ import java.util.Map;
 
 public final class g
 {
-  private static int[] zeU = { 50, 66, 68, 88, 99, 121, 123, 166, 168, 188, 199, 233, 266, 268, 288, 299, 369, 419, 520, 666, 1024 };
-  private static String zeo;
-  private static g zep = null;
-  public long ihz;
-  public long nEr;
-  private StringBuffer nxl;
-  public String zeA;
-  public String zeB;
-  public String zeC;
-  public String zeD;
-  public String zeE;
-  public String zeF;
-  public String zeG;
-  public String zeH;
-  public String zeI;
-  public String zeJ;
-  public String zeK;
-  public String zeL;
-  public String zeM;
-  public String zeN;
-  public String zeO;
-  public String zeP;
-  public int zeQ;
-  public String zeR;
-  private List<List<Integer>> zeS;
-  private List<Integer> zeT;
-  private LinkedList<c> zeV;
-  public String zem;
-  public String zeq;
-  public int zer;
-  public int zes;
-  public long zet;
-  public long zeu;
-  public String zev;
-  public long zew;
-  public long zex;
-  public String zey;
-  public String zez;
+  private static int[] zvJ = { 50, 66, 68, 88, 99, 121, 123, 166, 168, 188, 199, 233, 266, 268, 288, 299, 369, 419, 520, 666, 1024 };
+  private static String zvd;
+  private static g zve = null;
+  public long iks;
+  private StringBuffer nCG;
+  public long nJM;
+  public String zvA;
+  public String zvB;
+  public String zvC;
+  public String zvD;
+  public String zvE;
+  public int zvF;
+  public String zvG;
+  private List<List<Integer>> zvH;
+  private List<Integer> zvI;
+  private LinkedList<c> zvK;
+  public String zvb;
+  public String zvf;
+  public int zvg;
+  public int zvh;
+  public long zvi;
+  public long zvj;
+  public String zvk;
+  public long zvl;
+  public long zvm;
+  public String zvn;
+  public String zvo;
+  public String zvp;
+  public String zvq;
+  public String zvr;
+  public String zvs;
+  public String zvt;
+  public String zvu;
+  public String zvv;
+  public String zvw;
+  public String zvx;
+  public String zvy;
+  public String zvz;
   
   static
   {
-    zeo = "";
+    zvd = "";
   }
   
   public g()
   {
     AppMethodBeat.i(95180);
-    this.ihz = 0L;
-    this.nEr = 0L;
-    this.zeq = "";
-    this.zer = 0;
-    this.zes = 0;
-    this.zem = "";
-    this.zet = 0L;
-    this.zeu = 0L;
-    this.zev = "";
-    this.zew = 0L;
-    this.zex = 0L;
-    this.zey = "";
-    this.zez = "";
-    this.zeA = "";
-    this.zeB = "";
-    this.zeC = "";
-    this.zeD = "";
-    this.zeE = "";
-    this.zeF = "";
-    this.zeG = "";
-    this.zeH = "";
-    this.zeI = "";
-    this.zeJ = "";
-    this.zeK = "";
-    this.zeL = "";
-    this.zeM = "";
-    this.zeN = "";
-    this.zeO = "";
-    this.zeP = "";
-    this.zeQ = -1;
-    this.zeR = "";
-    this.zeS = new LinkedList();
-    this.zeT = new LinkedList();
-    this.zeV = new LinkedList();
-    this.nxl = new StringBuffer();
+    this.iks = 0L;
+    this.nJM = 0L;
+    this.zvf = "";
+    this.zvg = 0;
+    this.zvh = 0;
+    this.zvb = "";
+    this.zvi = 0L;
+    this.zvj = 0L;
+    this.zvk = "";
+    this.zvl = 0L;
+    this.zvm = 0L;
+    this.zvn = "";
+    this.zvo = "";
+    this.zvp = "";
+    this.zvq = "";
+    this.zvr = "";
+    this.zvs = "";
+    this.zvt = "";
+    this.zvu = "";
+    this.zvv = "";
+    this.zvw = "";
+    this.zvx = "";
+    this.zvy = "";
+    this.zvz = "";
+    this.zvA = "";
+    this.zvB = "";
+    this.zvC = "";
+    this.zvD = "";
+    this.zvE = "";
+    this.zvF = -1;
+    this.zvG = "";
+    this.zvH = new LinkedList();
+    this.zvI = new LinkedList();
+    this.zvK = new LinkedList();
+    this.nCG = new StringBuffer();
     AppMethodBeat.o(95180);
   }
   
-  public static g dTc()
+  public static g dWC()
   {
     AppMethodBeat.i(95181);
-    com.tencent.mm.kernel.g.ajD();
-    if (!com.tencent.mm.kernel.g.ajA().aiK())
+    com.tencent.mm.kernel.g.ajS();
+    if (!com.tencent.mm.kernel.g.ajP().aiZ())
     {
       localObject1 = new g();
       AppMethodBeat.o(95181);
       return localObject1;
     }
-    Object localObject3 = com.tencent.mm.model.c.d.aDs().wz("100068");
+    Object localObject3 = com.tencent.mm.model.c.d.aDI().xi("100068");
     Object localObject2 = ((com.tencent.mm.storage.c)localObject3).field_rawXML;
     Object localObject1 = localObject2;
-    if (bt.isNullOrNil((String)localObject2)) {
+    if (bu.isNullOrNil((String)localObject2)) {
       localObject1 = "";
     }
     String str = com.tencent.mm.b.g.getMessageDigest(((String)localObject1).getBytes());
-    if ((zep == null) || (!str.equals(zeo)))
+    if ((zve == null) || (!str.equals(zvd)))
     {
-      ad.i("MicroMsg.NewYearSnsCtrlV2", "create newYearSnsCtrl");
-      zep = new g();
+      ae.i("MicroMsg.NewYearSnsCtrlV2", "create newYearSnsCtrl");
+      zve = new g();
     }
     for (;;)
     {
       try
       {
-        localObject2 = ((com.tencent.mm.storage.c)localObject3).foF();
+        localObject2 = ((com.tencent.mm.storage.c)localObject3).fsy();
         localObject1 = "";
         if (localObject2 != null) {
           localObject1 = (String)((Map)localObject2).get("SnsHBConfig");
         }
         localObject2 = localObject1;
-        if (bt.isNullOrNil((String)localObject1)) {
+        if (bu.isNullOrNil((String)localObject1)) {
           localObject2 = "";
         }
         localObject1 = URLDecoder.decode((String)localObject2, "UTF-8");
-        localObject2 = zep;
-        ((g)localObject2).nxl = new StringBuffer();
-        ((g)localObject2).zeV.clear();
-        localObject3 = bw.M((String)localObject1, "sysmsg");
+        localObject2 = zve;
+        ((g)localObject2).nCG = new StringBuffer();
+        ((g)localObject2).zvK.clear();
+        localObject3 = bx.M((String)localObject1, "sysmsg");
         if (localObject3 != null) {
           continue;
         }
-        ad.i("MicroMsg.NewYearSnsCtrlV2", "errr for paser %s", new Object[] { localObject1 });
-        zeo = str;
+        ae.i("MicroMsg.NewYearSnsCtrlV2", "errr for paser %s", new Object[] { localObject1 });
+        zvd = str;
       }
       catch (Exception localException)
       {
@@ -159,74 +159,74 @@ public final class g
         int j;
         StringBuilder localStringBuilder;
         int m;
-        ad.e("MicroMsg.NewYearSnsCtrlV2", "createctrl error " + localException.getMessage());
+        ae.e("MicroMsg.NewYearSnsCtrlV2", "createctrl error " + localException.getMessage());
         continue;
       }
-      localObject1 = zep;
+      localObject1 = zve;
       AppMethodBeat.o(95181);
       return localObject1;
-      ((g)localObject2).ihz = bt.aRf((String)((Map)localObject3).get(".sysmsg.NewYearSNSCtrl2016.Entrance.BeginTime"));
-      ((g)localObject2).nxl.append("BeginTime:" + ((g)localObject2).ihz + ";");
-      ((g)localObject2).nEr = bt.aRf((String)((Map)localObject3).get(".sysmsg.NewYearSNSCtrl2016.Entrance.EndTime"));
-      ((g)localObject2).nxl.append("EndTime:" + ((g)localObject2).nEr + ";\n");
-      ((g)localObject2).zer = bt.aRe((String)((Map)localObject3).get(".sysmsg.NewYearSNSCtrl2016.Entrance.SvrDownReqLimitLevelMin"));
-      ((g)localObject2).zes = bt.aRe((String)((Map)localObject3).get(".sysmsg.NewYearSNSCtrl2016.Entrance.SvrDownReqLimitLevelMax"));
-      ((g)localObject2).nxl.append("SvrDownReqLimitLevelMin:" + ((g)localObject2).zer + " SvrDownReqLimitLevelMax: " + ((g)localObject2).zes + ";\n");
-      ((g)localObject2).zew = bt.aRf((String)((Map)localObject3).get(".sysmsg.NewYearSNSCtrl2016.Entrance.BrowseBeginTime"));
-      ((g)localObject2).zex = bt.aRf((String)((Map)localObject3).get(".sysmsg.NewYearSNSCtrl2016.Entrance.BrowseEndTime"));
-      ((g)localObject2).zey = bt.bI((String)((Map)localObject3).get(".sysmsg.NewYearSNSCtrl2016.Entrance.FullScreenTitle"), "");
-      ((g)localObject2).zez = bt.bI((String)((Map)localObject3).get(".sysmsg.NewYearSNSCtrl2016.Entrance.FullScreenDescription"), "");
-      ((g)localObject2).zeA = bt.bI((String)((Map)localObject3).get(".sysmsg.NewYearSNSCtrl2016.Entrance.FullScreenQueryTips"), "");
-      ((g)localObject2).zeB = bt.bI((String)((Map)localObject3).get(".sysmsg.NewYearSNSCtrl2016.Entrance.FullScreenAcceptButtonText"), "");
-      ((g)localObject2).zeC = bt.bI((String)((Map)localObject3).get(".sysmsg.NewYearSNSCtrl2016.Entrance.FullScreenRejectButtonText"), "");
-      ((g)localObject2).zeD = bt.bI((String)((Map)localObject3).get(".sysmsg.NewYearSNSCtrl2016.Entrance.ActionSheetOpenTips"), "");
-      ((g)localObject2).zeF = bt.bI((String)((Map)localObject3).get(".sysmsg.NewYearSNSCtrl2016.Entrance.ActionSheetOpenSuccTips"), "");
-      ((g)localObject2).zeG = bt.bI((String)((Map)localObject3).get(".sysmsg.NewYearSNSCtrl2016.Entrance.ActionSheetOpenFailTips"), "");
-      ((g)localObject2).zeE = bt.bI((String)((Map)localObject3).get(".sysmsg.NewYearSNSCtrl2016.Entrance.ActionSheetCloseTips"), "");
-      ((g)localObject2).zeH = bt.bI((String)((Map)localObject3).get(".sysmsg.NewYearSNSCtrl2016.Entrance.ActionSheetCloseSuccTips"), "");
-      ((g)localObject2).zeI = bt.bI((String)((Map)localObject3).get(".sysmsg.NewYearSNSCtrl2016.Entrance.ActionSheetCloseFailTips"), "");
-      ((g)localObject2).zeP = bt.bI((String)((Map)localObject3).get(".sysmsg.NewYearSNSCtrl2016.Entrance.MaxPostFeedID"), "");
-      ((g)localObject2).zeQ = bt.aRe((String)((Map)localObject3).get(".sysmsg.NewYearSNSCtrl2016.Entrance.MaxPostFeedCount"));
-      ((g)localObject2).zeR = bt.bI((String)((Map)localObject3).get(".sysmsg.NewYearSNSCtrl2016.Entrance.FullScreenID"), "");
-      if (((g)localObject2).zeQ <= 0)
+      ((g)localObject2).iks = bu.aSC((String)((Map)localObject3).get(".sysmsg.NewYearSNSCtrl2016.Entrance.BeginTime"));
+      ((g)localObject2).nCG.append("BeginTime:" + ((g)localObject2).iks + ";");
+      ((g)localObject2).nJM = bu.aSC((String)((Map)localObject3).get(".sysmsg.NewYearSNSCtrl2016.Entrance.EndTime"));
+      ((g)localObject2).nCG.append("EndTime:" + ((g)localObject2).nJM + ";\n");
+      ((g)localObject2).zvg = bu.aSB((String)((Map)localObject3).get(".sysmsg.NewYearSNSCtrl2016.Entrance.SvrDownReqLimitLevelMin"));
+      ((g)localObject2).zvh = bu.aSB((String)((Map)localObject3).get(".sysmsg.NewYearSNSCtrl2016.Entrance.SvrDownReqLimitLevelMax"));
+      ((g)localObject2).nCG.append("SvrDownReqLimitLevelMin:" + ((g)localObject2).zvg + " SvrDownReqLimitLevelMax: " + ((g)localObject2).zvh + ";\n");
+      ((g)localObject2).zvl = bu.aSC((String)((Map)localObject3).get(".sysmsg.NewYearSNSCtrl2016.Entrance.BrowseBeginTime"));
+      ((g)localObject2).zvm = bu.aSC((String)((Map)localObject3).get(".sysmsg.NewYearSNSCtrl2016.Entrance.BrowseEndTime"));
+      ((g)localObject2).zvn = bu.bI((String)((Map)localObject3).get(".sysmsg.NewYearSNSCtrl2016.Entrance.FullScreenTitle"), "");
+      ((g)localObject2).zvo = bu.bI((String)((Map)localObject3).get(".sysmsg.NewYearSNSCtrl2016.Entrance.FullScreenDescription"), "");
+      ((g)localObject2).zvp = bu.bI((String)((Map)localObject3).get(".sysmsg.NewYearSNSCtrl2016.Entrance.FullScreenQueryTips"), "");
+      ((g)localObject2).zvq = bu.bI((String)((Map)localObject3).get(".sysmsg.NewYearSNSCtrl2016.Entrance.FullScreenAcceptButtonText"), "");
+      ((g)localObject2).zvr = bu.bI((String)((Map)localObject3).get(".sysmsg.NewYearSNSCtrl2016.Entrance.FullScreenRejectButtonText"), "");
+      ((g)localObject2).zvs = bu.bI((String)((Map)localObject3).get(".sysmsg.NewYearSNSCtrl2016.Entrance.ActionSheetOpenTips"), "");
+      ((g)localObject2).zvu = bu.bI((String)((Map)localObject3).get(".sysmsg.NewYearSNSCtrl2016.Entrance.ActionSheetOpenSuccTips"), "");
+      ((g)localObject2).zvv = bu.bI((String)((Map)localObject3).get(".sysmsg.NewYearSNSCtrl2016.Entrance.ActionSheetOpenFailTips"), "");
+      ((g)localObject2).zvt = bu.bI((String)((Map)localObject3).get(".sysmsg.NewYearSNSCtrl2016.Entrance.ActionSheetCloseTips"), "");
+      ((g)localObject2).zvw = bu.bI((String)((Map)localObject3).get(".sysmsg.NewYearSNSCtrl2016.Entrance.ActionSheetCloseSuccTips"), "");
+      ((g)localObject2).zvx = bu.bI((String)((Map)localObject3).get(".sysmsg.NewYearSNSCtrl2016.Entrance.ActionSheetCloseFailTips"), "");
+      ((g)localObject2).zvE = bu.bI((String)((Map)localObject3).get(".sysmsg.NewYearSNSCtrl2016.Entrance.MaxPostFeedID"), "");
+      ((g)localObject2).zvF = bu.aSB((String)((Map)localObject3).get(".sysmsg.NewYearSNSCtrl2016.Entrance.MaxPostFeedCount"));
+      ((g)localObject2).zvG = bu.bI((String)((Map)localObject3).get(".sysmsg.NewYearSNSCtrl2016.Entrance.FullScreenID"), "");
+      if (((g)localObject2).zvF <= 0)
       {
-        ad.i("MicroMsg.NewYearSnsCtrlV2", "svr MaxPostFeedCount error " + ((g)localObject2).zeQ);
-        ((g)localObject2).zeQ = 1;
+        ae.i("MicroMsg.NewYearSnsCtrlV2", "svr MaxPostFeedCount error " + ((g)localObject2).zvF);
+        ((g)localObject2).zvF = 1;
       }
-      ((g)localObject2).nxl.append("FullScreenID:" + ((g)localObject2).zeR + " BrowseBeginTime:" + ((g)localObject2).zew + " BrowseEndTime:" + ((g)localObject2).zex + " FullScreenTitle:" + ((g)localObject2).zey + " FullScreenDescription:" + ((g)localObject2).zez + " FullScreenQueryTips:" + ((g)localObject2).zeA + " FullScreenAcceptButtonText: " + ((g)localObject2).zeB);
-      ((g)localObject2).nxl.append("FullScreenRejectButtonText:" + ((g)localObject2).zeC + " ActionSheetOpenTips:" + ((g)localObject2).zeD + " ActionSheetOpenSuccTips:" + ((g)localObject2).zeF + " ActionSheetOpenFailTips:" + ((g)localObject2).zeG + " ActionSheetCloseTips:" + ((g)localObject2).zeE + " ActionSheetCloseSuccTips: " + ((g)localObject2).zeH + " ActionSheetCloseFailTips: " + ((g)localObject2).zeI + "MaxPostFeedID: " + ((g)localObject2).zeP + " MaxPostFeedCount:" + ((g)localObject2).zeQ);
-      ((g)localObject2).zeJ = bt.bI((String)((Map)localObject3).get(".sysmsg.NewYearSNSCtrl2016.Entrance.AlertTipForHasUsed"), "");
-      ((g)localObject2).zeK = bt.bI((String)((Map)localObject3).get(".sysmsg.NewYearSNSCtrl2016.Entrance.AlertTipForObtainUsedRight"), "");
-      ((g)localObject2).zeL = bt.bI((String)((Map)localObject3).get(".sysmsg.NewYearSNSCtrl2016.Entrance.AlertTipForClosedBrowseSwitch"), "");
-      ((g)localObject2).zeM = bt.bI((String)((Map)localObject3).get(".sysmsg.NewYearSNSCtrl2016.Entrance.AlertButtonText"), "");
-      ((g)localObject2).zeN = bt.bI((String)((Map)localObject3).get(".sysmsg.NewYearSNSCtrl2016.Entrance.GoldenCameraTip"), "");
-      ((g)localObject2).zeO = bt.bI((String)((Map)localObject3).get(".sysmsg.NewYearSNSCtrl2016.Entrance.GoldenCameraTipID"), "");
-      ((g)localObject2).nxl.append("AlertTipForHasUsed:" + ((g)localObject2).zeJ + " AlertTipForObtainUsedRight:" + ((g)localObject2).zeK + " AlertTipForClosedBrowseSwitch:" + ((g)localObject2).zeL + " AlertButtonText:" + ((g)localObject2).zeM + " GoldenCameraTip:" + ((g)localObject2).zeN + " GoldenCameraTipID:" + ((g)localObject2).zeO);
+      ((g)localObject2).nCG.append("FullScreenID:" + ((g)localObject2).zvG + " BrowseBeginTime:" + ((g)localObject2).zvl + " BrowseEndTime:" + ((g)localObject2).zvm + " FullScreenTitle:" + ((g)localObject2).zvn + " FullScreenDescription:" + ((g)localObject2).zvo + " FullScreenQueryTips:" + ((g)localObject2).zvp + " FullScreenAcceptButtonText: " + ((g)localObject2).zvq);
+      ((g)localObject2).nCG.append("FullScreenRejectButtonText:" + ((g)localObject2).zvr + " ActionSheetOpenTips:" + ((g)localObject2).zvs + " ActionSheetOpenSuccTips:" + ((g)localObject2).zvu + " ActionSheetOpenFailTips:" + ((g)localObject2).zvv + " ActionSheetCloseTips:" + ((g)localObject2).zvt + " ActionSheetCloseSuccTips: " + ((g)localObject2).zvw + " ActionSheetCloseFailTips: " + ((g)localObject2).zvx + "MaxPostFeedID: " + ((g)localObject2).zvE + " MaxPostFeedCount:" + ((g)localObject2).zvF);
+      ((g)localObject2).zvy = bu.bI((String)((Map)localObject3).get(".sysmsg.NewYearSNSCtrl2016.Entrance.AlertTipForHasUsed"), "");
+      ((g)localObject2).zvz = bu.bI((String)((Map)localObject3).get(".sysmsg.NewYearSNSCtrl2016.Entrance.AlertTipForObtainUsedRight"), "");
+      ((g)localObject2).zvA = bu.bI((String)((Map)localObject3).get(".sysmsg.NewYearSNSCtrl2016.Entrance.AlertTipForClosedBrowseSwitch"), "");
+      ((g)localObject2).zvB = bu.bI((String)((Map)localObject3).get(".sysmsg.NewYearSNSCtrl2016.Entrance.AlertButtonText"), "");
+      ((g)localObject2).zvC = bu.bI((String)((Map)localObject3).get(".sysmsg.NewYearSNSCtrl2016.Entrance.GoldenCameraTip"), "");
+      ((g)localObject2).zvD = bu.bI((String)((Map)localObject3).get(".sysmsg.NewYearSNSCtrl2016.Entrance.GoldenCameraTipID"), "");
+      ((g)localObject2).nCG.append("AlertTipForHasUsed:" + ((g)localObject2).zvy + " AlertTipForObtainUsedRight:" + ((g)localObject2).zvz + " AlertTipForClosedBrowseSwitch:" + ((g)localObject2).zvA + " AlertButtonText:" + ((g)localObject2).zvB + " GoldenCameraTip:" + ((g)localObject2).zvC + " GoldenCameraTipID:" + ((g)localObject2).zvD);
       i = 0;
       if (i == 0)
       {
         localObject1 = "";
-        ((g)localObject2).zem = bt.bI((String)((Map)localObject3).get(String.format(".sysmsg.NewYearSNSCtrl2016.Entrance.RedPoints%s.%s", new Object[] { localObject1, "RedPointID" })), "");
-        ((g)localObject2).nxl.append("RedPointID:" + ((g)localObject2).zem + ";");
-        if (bt.isNullOrNil(((g)localObject2).zem)) {
+        ((g)localObject2).zvb = bu.bI((String)((Map)localObject3).get(String.format(".sysmsg.NewYearSNSCtrl2016.Entrance.RedPoints%s.%s", new Object[] { localObject1, "RedPointID" })), "");
+        ((g)localObject2).nCG.append("RedPointID:" + ((g)localObject2).zvb + ";");
+        if (bu.isNullOrNil(((g)localObject2).zvb)) {
           continue;
         }
         if (i == 0)
         {
           localObject1 = "";
-          ((g)localObject2).zet = bt.aRf((String)((Map)localObject3).get(String.format(".sysmsg.NewYearSNSCtrl2016.Entrance.RedPoints%s.%s", new Object[] { localObject1, "BeginTime" })));
-          ((g)localObject2).nxl.append("RedPointID_BeginTime:" + ((g)localObject2).zet + ";");
+          ((g)localObject2).zvi = bu.aSC((String)((Map)localObject3).get(String.format(".sysmsg.NewYearSNSCtrl2016.Entrance.RedPoints%s.%s", new Object[] { localObject1, "BeginTime" })));
+          ((g)localObject2).nCG.append("RedPointID_BeginTime:" + ((g)localObject2).zvi + ";");
           if (i != 0) {
             continue;
           }
           localObject1 = "";
-          ((g)localObject2).zeu = bt.aRf((String)((Map)localObject3).get(String.format(".sysmsg.NewYearSNSCtrl2016.Entrance.RedPoints%s.%s", new Object[] { localObject1, "EndTime" })));
-          ((g)localObject2).nxl.append("RedPointID_EndTime:" + ((g)localObject2).zeu + ";\n");
+          ((g)localObject2).zvj = bu.aSC((String)((Map)localObject3).get(String.format(".sysmsg.NewYearSNSCtrl2016.Entrance.RedPoints%s.%s", new Object[] { localObject1, "EndTime" })));
+          ((g)localObject2).nCG.append("RedPointID_EndTime:" + ((g)localObject2).zvj + ";\n");
           localObject1 = new c();
-          ((c)localObject1).zem = ((g)localObject2).zem;
-          ((c)localObject1).ihz = ((g)localObject2).zet;
-          ((c)localObject1).nEr = ((g)localObject2).zeu;
-          ((g)localObject2).zeV.add(localObject1);
+          ((c)localObject1).zvb = ((g)localObject2).zvb;
+          ((c)localObject1).iks = ((g)localObject2).zvi;
+          ((c)localObject1).nJM = ((g)localObject2).zvj;
+          ((g)localObject2).zvK.add(localObject1);
           i += 1;
         }
       }
@@ -239,14 +239,14 @@ public final class g
       continue;
       localObject1 = String.valueOf(i);
       continue;
-      ((g)localObject2).zev = bt.bI((String)((Map)localObject3).get(".sysmsg.NewYearSNSCtrl2016.Entrance.PostTips"), "");
-      ((g)localObject2).nxl.append("PostTips:" + ((g)localObject2).zev + ";");
-      ((g)localObject2).zeq = bt.bI((String)((Map)localObject3).get(".sysmsg.NewYearSNSCtrl2016.Entrance.EntranceTips"), "");
-      ((g)localObject2).nxl.append("EntranceTips:" + ((g)localObject2).zeq + ";");
-      ((g)localObject2).zeS.clear();
+      ((g)localObject2).zvk = bu.bI((String)((Map)localObject3).get(".sysmsg.NewYearSNSCtrl2016.Entrance.PostTips"), "");
+      ((g)localObject2).nCG.append("PostTips:" + ((g)localObject2).zvk + ";");
+      ((g)localObject2).zvf = bu.bI((String)((Map)localObject3).get(".sysmsg.NewYearSNSCtrl2016.Entrance.EntranceTips"), "");
+      ((g)localObject2).nCG.append("EntranceTips:" + ((g)localObject2).zvf + ";");
+      ((g)localObject2).zvH.clear();
       i = 0;
-      k = bt.aRe((String)((Map)localObject3).get(".sysmsg.NewYearSNSCtrl2016.AmountLevel" + i + ".Count"));
-      ((g)localObject2).nxl.append("count: " + i + " | " + k + ";\n");
+      k = bu.aSB((String)((Map)localObject3).get(".sysmsg.NewYearSNSCtrl2016.AmountLevel" + i + ".Count"));
+      ((g)localObject2).nCG.append("count: " + i + " | " + k + ";\n");
       if (k != 0)
       {
         localLinkedList = new LinkedList();
@@ -257,9 +257,9 @@ public final class g
           if (j == 0)
           {
             localObject1 = "";
-            m = bt.aRe((String)((Map)localObject3).get(localObject1));
+            m = bu.aSB((String)((Map)localObject3).get(localObject1));
             localLinkedList.add(Integer.valueOf(m));
-            ((g)localObject2).nxl.append("AmountLevel : " + i + " index " + j + " val: " + m + ";");
+            ((g)localObject2).nCG.append("AmountLevel : " + i + " index " + j + " val: " + m + ";");
             j += 1;
           }
           else
@@ -269,64 +269,64 @@ public final class g
         }
         else
         {
-          ((g)localObject2).zeS.add(localLinkedList);
+          ((g)localObject2).zvH.add(localLinkedList);
           i += 1;
         }
       }
       else
       {
-        ad.i("MicroMsg.NewYearSnsCtrlV2", "dumpinfo " + ((g)localObject2).nxl.toString());
+        ae.i("MicroMsg.NewYearSnsCtrlV2", "dumpinfo " + ((g)localObject2).nCG.toString());
       }
     }
   }
   
-  public static boolean dTd()
+  public static boolean dWD()
   {
     AppMethodBeat.i(95182);
-    com.tencent.mm.kernel.g.ajD();
-    boolean bool = ((Boolean)com.tencent.mm.kernel.g.ajC().ajl().get(al.a.Iul, Boolean.TRUE)).booleanValue();
+    com.tencent.mm.kernel.g.ajS();
+    boolean bool = ((Boolean)com.tencent.mm.kernel.g.ajR().ajA().get(am.a.IOI, Boolean.TRUE)).booleanValue();
     AppMethodBeat.o(95182);
     return bool;
   }
   
-  public final void dTe()
+  public final void dWE()
   {
     AppMethodBeat.i(95183);
-    Object localObject = k.h(al.a.Iup);
-    if ((((i)localObject).zqH == null) || (bt.isNullOrNil(((i)localObject).zqH.postId)))
+    Object localObject = k.h(am.a.IOM);
+    if ((((i)localObject).zHW == null) || (bu.isNullOrNil(((i)localObject).zHW.postId)))
     {
-      ((i)localObject).zqH = new com.tencent.mm.plugin.sns.i.g();
-      ((i)localObject).zqH.postId = this.zeP;
-      ((i)localObject).zqH.zqF = 0;
+      ((i)localObject).zHW = new com.tencent.mm.plugin.sns.i.g();
+      ((i)localObject).zHW.postId = this.zvE;
+      ((i)localObject).zHW.zHU = 0;
     }
-    if ((!bt.isNullOrNil(((i)localObject).zqH.postId)) && (((i)localObject).zqH.postId.equals(this.zeP)))
+    if ((!bu.isNullOrNil(((i)localObject).zHW.postId)) && (((i)localObject).zHW.postId.equals(this.zvE)))
     {
-      com.tencent.mm.plugin.sns.i.g localg = ((i)localObject).zqH;
-      localg.zqF -= 1;
-      if (((i)localObject).zqH.zqF < 0) {
-        ((i)localObject).zqH.zqF = 0;
+      com.tencent.mm.plugin.sns.i.g localg = ((i)localObject).zHW;
+      localg.zHU -= 1;
+      if (((i)localObject).zHW.zHU < 0) {
+        ((i)localObject).zHW.zHU = 0;
       }
     }
     for (;;)
     {
-      ad.i("MicroMsg.NewYearSnsCtrlV2", "minusPostCountV2 " + ((i)localObject).zqH.zqF + " postId: " + this.zeP + " " + bt.flS().toString());
+      ae.i("MicroMsg.NewYearSnsCtrlV2", "minusPostCountV2 " + ((i)localObject).zHW.zHU + " postId: " + this.zvE + " " + bu.fpN().toString());
       try
       {
-        com.tencent.mm.kernel.g.ajD();
-        com.tencent.mm.kernel.g.ajC().ajl().set(al.a.Iup, new String(((i)localObject).toByteArray(), Charset.forName("ISO-8859-1")));
-        localObject = new ue();
-        com.tencent.mm.sdk.b.a.IbL.l((b)localObject);
+        com.tencent.mm.kernel.g.ajS();
+        com.tencent.mm.kernel.g.ajR().ajA().set(am.a.IOM, new String(((i)localObject).toByteArray(), Charset.forName("ISO-8859-1")));
+        localObject = new ui();
+        com.tencent.mm.sdk.b.a.IvT.l((b)localObject);
         AppMethodBeat.o(95183);
         return;
-        ((i)localObject).zqH = new com.tencent.mm.plugin.sns.i.g();
-        ((i)localObject).zqH.postId = this.zeP;
-        ((i)localObject).zqH.zqF = 0;
+        ((i)localObject).zHW = new com.tencent.mm.plugin.sns.i.g();
+        ((i)localObject).zHW.postId = this.zvE;
+        ((i)localObject).zHW.zHU = 0;
       }
       catch (IOException localIOException)
       {
         for (;;)
         {
-          ad.w("MicroMsg.NewYearSnsCtrlV2", "minusPostCountV2 save exception:" + localIOException.getLocalizedMessage());
+          ae.w("MicroMsg.NewYearSnsCtrlV2", "minusPostCountV2 save exception:" + localIOException.getLocalizedMessage());
         }
       }
     }
@@ -334,7 +334,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.lucky.a.g
  * JD-Core Version:    0.7.0.1
  */

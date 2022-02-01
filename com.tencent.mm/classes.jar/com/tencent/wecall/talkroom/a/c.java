@@ -17,10 +17,10 @@ public final class c
     a.b localb = new a.b();
     try
     {
-      localb.LFV = paramString;
+      localb.McZ = paramString;
       localb.reason = paramInt1;
       this.mNetType = 3;
-      this.LFq = paramInt2;
+      this.Mcu = paramInt2;
       c(183, localb);
       AppMethodBeat.o(62528);
       return;
@@ -34,7 +34,7 @@ public final class c
     }
   }
   
-  public final Object cI(byte[] paramArrayOfByte)
+  public final Object cL(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(62529);
     b.d("MicroMsg.Voip", new Object[] { this.TAG2, "data2Resp" });
@@ -57,7 +57,7 @@ public final class c
     }
   }
   
-  public final String fSQ()
+  public final String fXq()
   {
     return "CsCmd.Cmd_V_CSCancelCreateVoiceGroupReq";
   }

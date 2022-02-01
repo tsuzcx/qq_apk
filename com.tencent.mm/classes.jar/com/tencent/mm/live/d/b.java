@@ -3,16 +3,16 @@ package com.tencent.mm.live.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/live/report/LiveKvStatReportHelper;", "", "()V", "Companion", "plugin-logic_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/live/report/LiveKvStatReportHelper;", "", "()V", "Companion", "plugin-logic_release"})
 public final class b
 {
-  public static final b.a gYf;
+  public static final b.a haR;
   
   static
   {
-    AppMethodBeat.i(212716);
-    gYf = new b.a((byte)0);
-    AppMethodBeat.o(212716);
+    AppMethodBeat.i(216344);
+    haR = new b.a((byte)0);
+    AppMethodBeat.o(216344);
   }
 }
 

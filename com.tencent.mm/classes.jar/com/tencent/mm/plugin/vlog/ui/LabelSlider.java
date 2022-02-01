@@ -19,39 +19,39 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/vlog/ui/LabelSlider;", "Landroid/support/constraint/ConstraintLayout;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "(Landroid/content/Context;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "TAG", "", "callback", "Lcom/tencent/mm/plugin/vlog/ui/LabelSlider$SliderCallback;", "getCallback", "()Lcom/tencent/mm/plugin/vlog/ui/LabelSlider$SliderCallback;", "setCallback", "(Lcom/tencent/mm/plugin/vlog/ui/LabelSlider$SliderCallback;)V", "labelChildren", "Ljava/util/LinkedList;", "Landroid/widget/TextView;", "labelCount", "labelGuideLines", "Landroid/support/constraint/Guideline;", "labelPadding", "labelWidth", "labels", "", "trackView", "Lcom/tencent/mm/plugin/vlog/ui/SliderTrackView;", "onSizeChanged", "", "w", "h", "oldw", "oldh", "refresh", "setLabelCount", "count", "setLabels", "labelList", "", "setSelection", "index", "setTrackColor", "color", "SliderCallback", "plugin-vlog_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/vlog/ui/LabelSlider;", "Landroid/support/constraint/ConstraintLayout;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "(Landroid/content/Context;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "TAG", "", "callback", "Lcom/tencent/mm/plugin/vlog/ui/LabelSlider$SliderCallback;", "getCallback", "()Lcom/tencent/mm/plugin/vlog/ui/LabelSlider$SliderCallback;", "setCallback", "(Lcom/tencent/mm/plugin/vlog/ui/LabelSlider$SliderCallback;)V", "labelChildren", "Ljava/util/LinkedList;", "Landroid/widget/TextView;", "labelCount", "labelGuideLines", "Landroid/support/constraint/Guideline;", "labelPadding", "labelWidth", "labels", "", "trackView", "Lcom/tencent/mm/plugin/vlog/ui/SliderTrackView;", "onSizeChanged", "", "w", "h", "oldw", "oldh", "refresh", "setLabelCount", "count", "setLabels", "labelList", "", "setSelection", "index", "setTrackColor", "color", "SliderCallback", "plugin-vlog_release"})
 public final class LabelSlider
   extends ConstraintLayout
 {
-  private int BJX;
-  private int BJY;
-  private int BJZ;
-  private final SliderTrackView BKa;
-  private final LinkedList<Guideline> BKb;
-  private final LinkedList<TextView> BKc;
-  private final LinkedList<CharSequence> BKd;
-  private LabelSlider.a BKe;
+  private final LinkedList<Guideline> CbA;
+  private final LinkedList<TextView> CbB;
+  private final LinkedList<CharSequence> CbC;
+  private a CbD;
+  private int Cbw;
+  private int Cbx;
+  private int Cby;
+  private final SliderTrackView Cbz;
   private final String TAG;
   
   public LabelSlider(Context paramContext, AttributeSet paramAttributeSet)
   {
     this(paramContext, paramAttributeSet, 0);
-    AppMethodBeat.i(195967);
-    AppMethodBeat.o(195967);
+    AppMethodBeat.i(191427);
+    AppMethodBeat.o(191427);
   }
   
   public LabelSlider(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(195966);
+    AppMethodBeat.i(191426);
     this.TAG = "MicroMsg.LabelSlider";
-    this.BJX = 5;
-    this.BJY = 80;
-    this.BJZ = 16;
-    this.BKb = new LinkedList();
-    this.BKc = new LinkedList();
-    this.BKd = new LinkedList();
-    this.BKa = new SliderTrackView(paramContext);
+    this.Cbw = 5;
+    this.Cbx = 80;
+    this.Cby = 16;
+    this.CbA = new LinkedList();
+    this.CbB = new LinkedList();
+    this.CbC = new LinkedList();
+    this.Cbz = new SliderTrackView(paramContext);
     paramContext = paramContext.getDrawable(2131232423);
     if (paramContext != null) {}
     for (paramInt = paramContext.getIntrinsicHeight();; paramInt = 48)
@@ -60,54 +60,68 @@ public final class LabelSlider
       paramAttributeSet.endToEnd = 0;
       paramAttributeSet.startToStart = 0;
       paramAttributeSet.topToTop = 0;
-      addView((View)this.BKa, (ViewGroup.LayoutParams)paramAttributeSet);
-      this.BKa.setThumbDrawable(paramContext);
-      this.BKa.setCallback((LabelSlider.a)new LabelSlider.1(this));
-      AppMethodBeat.o(195966);
+      addView((View)this.Cbz, (ViewGroup.LayoutParams)paramAttributeSet);
+      this.Cbz.setThumbDrawable(paramContext);
+      this.Cbz.setCallback((a)new a()
+      {
+        public final void If(int paramAnonymousInt)
+        {
+          AppMethodBeat.i(191418);
+          LabelSlider.a locala = this.CbE.getCallback();
+          if (locala != null)
+          {
+            locala.If(paramAnonymousInt);
+            AppMethodBeat.o(191418);
+            return;
+          }
+          AppMethodBeat.o(191418);
+        }
+      });
+      AppMethodBeat.o(191426);
       return;
     }
   }
   
-  public final LabelSlider.a getCallback()
+  public final a getCallback()
   {
-    return this.BKe;
+    return this.CbD;
   }
   
   protected final void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(195964);
+    AppMethodBeat.i(191424);
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    post((Runnable)new LabelSlider.b(this));
-    AppMethodBeat.o(195964);
+    post((Runnable)new b(this));
+    AppMethodBeat.o(191424);
   }
   
   public final void refresh()
   {
-    AppMethodBeat.i(195965);
-    this.BKa.setPointCount(this.BJX);
-    Object localObject1 = this.BKa;
+    AppMethodBeat.i(191425);
+    this.Cbz.setPointCount(this.Cbw);
+    Object localObject1 = this.Cbz;
     Object localObject2 = getContext();
     p.g(localObject2, "context");
     ((SliderTrackView)localObject1).setStartOffset(((Context)localObject2).getResources().getDimensionPixelOffset(2131165296));
-    localObject1 = ((Iterable)this.BKc).iterator();
+    localObject1 = ((Iterable)this.CbB).iterator();
     while (((Iterator)localObject1).hasNext()) {
       removeView((View)((Iterator)localObject1).next());
     }
-    this.BKc.clear();
-    localObject1 = ((Iterable)this.BKb).iterator();
+    this.CbB.clear();
+    localObject1 = ((Iterable)this.CbA).iterator();
     while (((Iterator)localObject1).hasNext()) {
       removeView((View)((Iterator)localObject1).next());
     }
-    this.BKb.clear();
+    this.CbA.clear();
     if (getWidth() > 0)
     {
-      localObject1 = ((Iterable)this.BKa.getTrackPoint()).iterator();
+      localObject1 = ((Iterable)this.Cbz.getTrackPoint()).iterator();
       int i = 0;
       while (((Iterator)localObject1).hasNext())
       {
         localObject2 = ((Iterator)localObject1).next();
         if (i < 0) {
-          j.gfB();
+          j.gkd();
         }
         float f = ((Number)localObject2).floatValue();
         localObject2 = new Guideline(getContext());
@@ -118,69 +132,89 @@ public final class LabelSlider
         ((ConstraintLayout.LayoutParams)localObject3).orientation = 1;
         ((ConstraintLayout.LayoutParams)localObject3).guideBegin = ((int)f);
         addView((View)localObject2, (ViewGroup.LayoutParams)localObject3);
-        this.BKb.add(localObject2);
+        this.CbA.add(localObject2);
         localObject3 = new TextView(getContext());
-        ((TextView)localObject3).setText((CharSequence)j.E((List)this.BKd, i));
+        ((TextView)localObject3).setText((CharSequence)j.F((List)this.CbC, i));
         ((TextView)localObject3).setTextColor(-855638017);
         ((TextView)localObject3).setGravity(17);
         ConstraintLayout.LayoutParams localLayoutParams = new ConstraintLayout.LayoutParams(-2, -2);
-        localLayoutParams.topToBottom = this.BKa.getId();
+        localLayoutParams.topToBottom = this.Cbz.getId();
         localLayoutParams.startToStart = ((Guideline)localObject2).getId();
         localLayoutParams.endToEnd = ((Guideline)localObject2).getId();
         localLayoutParams.bottomToBottom = 0;
         addView((View)localObject3, (ViewGroup.LayoutParams)localLayoutParams);
-        this.BKc.add(localObject3);
+        this.CbB.add(localObject3);
         i += 1;
       }
     }
-    AppMethodBeat.o(195965);
+    AppMethodBeat.o(191425);
   }
   
-  public final void setCallback(LabelSlider.a parama)
+  public final void setCallback(a parama)
   {
-    this.BKe = parama;
+    this.CbD = parama;
   }
   
   public final void setLabelCount(int paramInt)
   {
-    AppMethodBeat.i(195961);
-    this.BJX = paramInt;
+    AppMethodBeat.i(191421);
+    this.Cbw = paramInt;
     refresh();
-    AppMethodBeat.o(195961);
+    AppMethodBeat.o(191421);
   }
   
   public final void setLabels(List<? extends CharSequence> paramList)
   {
-    AppMethodBeat.i(195962);
+    AppMethodBeat.i(191422);
     p.h(paramList, "labelList");
-    this.BKd.clear();
-    this.BKd.addAll((Collection)paramList);
-    paramList = ((Iterable)this.BKc).iterator();
+    this.CbC.clear();
+    this.CbC.addAll((Collection)paramList);
+    paramList = ((Iterable)this.CbB).iterator();
     int i = 0;
     while (paramList.hasNext())
     {
       Object localObject = paramList.next();
       if (i < 0) {
-        j.gfB();
+        j.gkd();
       }
-      ((TextView)localObject).setText((CharSequence)j.E((List)this.BKd, i));
+      ((TextView)localObject).setText((CharSequence)j.F((List)this.CbC, i));
       i += 1;
     }
-    AppMethodBeat.o(195962);
+    AppMethodBeat.o(191422);
   }
   
   public final void setSelection(int paramInt)
   {
-    AppMethodBeat.i(195963);
-    this.BKa.setSelection(paramInt);
-    AppMethodBeat.o(195963);
+    AppMethodBeat.i(191423);
+    this.Cbz.setSelection(paramInt);
+    AppMethodBeat.o(191423);
   }
   
   public final void setTrackColor(int paramInt)
   {
-    AppMethodBeat.i(195960);
-    this.BKa.setTrackColor(paramInt);
-    AppMethodBeat.o(195960);
+    AppMethodBeat.i(191420);
+    this.Cbz.setTrackColor(paramInt);
+    AppMethodBeat.o(191420);
+  }
+  
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/vlog/ui/LabelSlider$SliderCallback;", "", "onSelected", "", "index", "", "plugin-vlog_release"})
+  public static abstract interface a
+  {
+    public abstract void If(int paramInt);
+  }
+  
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
+  static final class b
+    implements Runnable
+  {
+    b(LabelSlider paramLabelSlider) {}
+    
+    public final void run()
+    {
+      AppMethodBeat.i(191419);
+      this.CbE.refresh();
+      AppMethodBeat.o(191419);
+    }
   }
 }
 

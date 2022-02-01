@@ -6,67 +6,66 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.zi;
-import com.tencent.mm.g.a.zn;
-import com.tencent.mm.g.a.zn.a;
+import com.tencent.mm.g.a.zo;
+import com.tencent.mm.g.a.zt;
+import com.tencent.mm.g.a.zt.a;
 import com.tencent.mm.protocal.d;
-import com.tencent.mm.protocal.protobuf.brz;
-import com.tencent.mm.protocal.protobuf.csn;
+import com.tencent.mm.protocal.protobuf.bst;
+import com.tencent.mm.protocal.protobuf.cth;
 import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.tools.v;
-import com.tencent.mm.wallet_core.ui.e;
 import org.json.JSONObject;
 
 public final class m
 {
-  boolean GMQ;
-  a Lye;
-  f Lyf;
-  c<zi> Lyg;
-  public boolean Lyh;
-  boolean dlh;
-  String dxD;
-  String kzK;
-  String kzL;
+  boolean Hgr;
+  a LUT;
+  f LUU;
+  c<zo> LUV;
+  public boolean LUW;
+  boolean dmj;
+  String dyI;
+  String kCZ;
+  String kDa;
   String title;
-  int uxt;
-  c<zn> vGc;
+  int uIW;
+  c<zt> vSg;
   
   public m()
   {
     AppMethodBeat.i(72770);
-    this.dlh = false;
-    this.vGc = new c() {};
-    this.Lyg = new c() {};
-    this.Lyh = false;
+    this.dmj = false;
+    this.vSg = new c() {};
+    this.LUV = new c() {};
+    this.LUW = false;
     AppMethodBeat.o(72770);
   }
   
-  public static m a(brz parambrz)
+  public static m a(bst parambst)
   {
     AppMethodBeat.i(72771);
-    if (parambrz == null)
+    if (parambst == null)
     {
       AppMethodBeat.o(72771);
       return null;
     }
     m localm = new m();
-    localm.GMQ = parambrz.GMQ;
-    localm.uxt = parambrz.uxt;
-    localm.dxD = parambrz.dxD;
-    localm.kzK = parambrz.kzK;
-    localm.kzL = parambrz.kzL;
-    localm.title = parambrz.title;
-    localm.Lye = new a();
-    if (parambrz.GMR != null)
+    localm.Hgr = parambst.Hgr;
+    localm.uIW = parambst.uIW;
+    localm.dyI = parambst.dyI;
+    localm.kCZ = parambst.kCZ;
+    localm.kDa = parambst.kDa;
+    localm.title = parambst.title;
+    localm.LUT = new a();
+    if (parambst.Hgs != null)
     {
-      localm.Lye.type = parambrz.GMR.type;
-      localm.Lye.duW = parambrz.GMR.duW;
-      localm.Lye.HkU = parambrz.GMR.HkU;
-      localm.Lye.path = parambrz.GMR.path;
-      localm.Lye.CwG = parambrz.GMR.CwG;
+      localm.LUT.type = parambst.Hgs.type;
+      localm.LUT.dwb = parambst.Hgs.dwb;
+      localm.LUT.HEu = parambst.Hgs.HEu;
+      localm.LUT.path = parambst.Hgs.path;
+      localm.LUT.COl = parambst.Hgs.COl;
     }
     AppMethodBeat.o(72771);
     return localm;
@@ -80,7 +79,7 @@ public final class m
     {
       try
       {
-        ad.i("MicroMsg.JumpRemind", "feed %s", new Object[] { paramJSONObject });
+        ae.i("MicroMsg.JumpRemind", "feed %s", new Object[] { paramJSONObject });
         Object localObject = paramJSONObject.optJSONObject("bindquerynew_resp");
         if (localObject == null) {
           break label268;
@@ -102,21 +101,21 @@ public final class m
           if (paramJSONObject != null)
           {
             localObject = new m();
-            ((m)localObject).uxt = paramJSONObject.optInt("jump_type");
-            ((m)localObject).GMQ = paramJSONObject.optBoolean("is_pop_up_windows");
-            ((m)localObject).dxD = paramJSONObject.optString("wording");
-            ((m)localObject).kzK = paramJSONObject.optString("left_button_wording");
-            ((m)localObject).kzL = paramJSONObject.optString("right_button_wording");
+            ((m)localObject).uIW = paramJSONObject.optInt("jump_type");
+            ((m)localObject).Hgr = paramJSONObject.optBoolean("is_pop_up_windows");
+            ((m)localObject).dyI = paramJSONObject.optString("wording");
+            ((m)localObject).kCZ = paramJSONObject.optString("left_button_wording");
+            ((m)localObject).kDa = paramJSONObject.optString("right_button_wording");
             ((m)localObject).title = paramJSONObject.optString("title");
             paramJSONObject = paramJSONObject.optJSONObject("url");
-            ((m)localObject).Lye = new a();
+            ((m)localObject).LUT = new a();
             if (paramJSONObject != null)
             {
-              ((m)localObject).Lye.type = paramJSONObject.optInt("type");
-              ((m)localObject).Lye.duW = paramJSONObject.optString("appid");
-              ((m)localObject).Lye.HkU = paramJSONObject.optString("app_version");
-              ((m)localObject).Lye.path = paramJSONObject.optString("path");
-              ((m)localObject).Lye.CwG = paramJSONObject.optString("button_name");
+              ((m)localObject).LUT.type = paramJSONObject.optInt("type");
+              ((m)localObject).LUT.dwb = paramJSONObject.optString("appid");
+              ((m)localObject).LUT.HEu = paramJSONObject.optString("app_version");
+              ((m)localObject).LUT.path = paramJSONObject.optString("path");
+              ((m)localObject).LUT.COl = paramJSONObject.optString("button_name");
             }
             AppMethodBeat.o(72772);
             return localObject;
@@ -125,7 +124,7 @@ public final class m
       }
       catch (Exception paramJSONObject)
       {
-        ad.printErrStackTrace("MicroMsg.JumpRemind", paramJSONObject, "error create", new Object[0]);
+        ae.printErrStackTrace("MicroMsg.JumpRemind", paramJSONObject, "error create", new Object[0]);
         AppMethodBeat.o(72772);
         return null;
       }
@@ -135,22 +134,22 @@ public final class m
   public final boolean a(final Activity paramActivity, f paramf)
   {
     AppMethodBeat.i(72773);
-    this.Lyf = paramf;
-    if (this.GMQ)
+    this.LUU = paramf;
+    if (this.Hgr)
     {
-      com.tencent.mm.ui.base.h.e(paramActivity, this.dxD, this.title, this.kzL, this.kzK, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+      com.tencent.mm.ui.base.h.e(paramActivity, this.dyI, this.title, this.kDa, this.kCZ, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
           AppMethodBeat.i(72761);
-          ad.i("MicroMsg.JumpRemind", "onClick1 ");
-          if ((m.this.Lye != null) && (m.this.Lye.CwG.equals("right_button_wording")))
+          ae.i("MicroMsg.JumpRemind", "onClick1 ");
+          if ((m.this.LUT != null) && (m.this.LUT.COl.equals("right_button_wording")))
           {
-            m.this.kM(paramActivity);
+            m.this.kT(paramActivity);
             AppMethodBeat.o(72761);
             return;
           }
-          m.this.Lyf.onCancel();
+          m.this.LUU.onCancel();
           AppMethodBeat.o(72761);
         }
       }, new DialogInterface.OnClickListener()
@@ -158,21 +157,21 @@ public final class m
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
           AppMethodBeat.i(72762);
-          ad.i("MicroMsg.JumpRemind", "onClick2");
-          if ((m.this.Lye != null) && (m.this.Lye.CwG.equals("left_button_wording")))
+          ae.i("MicroMsg.JumpRemind", "onClick2");
+          if ((m.this.LUT != null) && (m.this.LUT.COl.equals("left_button_wording")))
           {
-            m.this.kM(paramActivity);
+            m.this.kT(paramActivity);
             AppMethodBeat.o(72762);
             return;
           }
-          m.this.Lyf.onCancel();
+          m.this.LUU.onCancel();
           AppMethodBeat.o(72762);
         }
       });
       AppMethodBeat.o(72773);
       return true;
     }
-    kM(paramActivity);
+    kT(paramActivity);
     AppMethodBeat.o(72773);
     return true;
   }
@@ -185,9 +184,9 @@ public final class m
       public final void onCancel()
       {
         AppMethodBeat.i(72763);
-        if (m.this.fRt())
+        if (m.this.fVP())
         {
-          paramg.djA();
+          paramg.dmz();
           AppMethodBeat.o(72763);
           return;
         }
@@ -200,9 +199,9 @@ public final class m
       public final void onUrlCancel()
       {
         AppMethodBeat.i(72765);
-        if (m.this.fRt())
+        if (m.this.fVP())
         {
-          paramg.djA();
+          paramg.dmz();
           AppMethodBeat.o(72765);
           return;
         }
@@ -213,8 +212,8 @@ public final class m
       public final void onUrlOk()
       {
         AppMethodBeat.i(72764);
-        if (m.this.fRt()) {
-          paramg.djA();
+        if (m.this.fVP()) {
+          paramg.dmz();
         }
         AppMethodBeat.o(72764);
       }
@@ -226,15 +225,15 @@ public final class m
   public final boolean a(Activity paramActivity, final h paramh)
   {
     AppMethodBeat.i(72775);
-    com.tencent.mm.ui.base.h.e(paramActivity, this.dxD, this.title, this.kzL, this.kzK, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+    com.tencent.mm.ui.base.h.e(paramActivity, this.dyI, this.title, this.kDa, this.kCZ, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
     {
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
         AppMethodBeat.i(72766);
-        ad.i("MicroMsg.JumpRemind", "onClick1 ");
-        if ((m.this.Lye != null) && (m.this.Lye.CwG.equals("right_button_wording")))
+        ae.i("MicroMsg.JumpRemind", "onClick1 ");
+        if ((m.this.LUT != null) && (m.this.LUT.COl.equals("right_button_wording")))
         {
-          paramh.bv(m.this.Lye.type, m.this.Lye.path);
+          paramh.bu(m.this.LUT.type, m.this.LUT.path);
           AppMethodBeat.o(72766);
           return;
         }
@@ -246,10 +245,10 @@ public final class m
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
         AppMethodBeat.i(72767);
-        ad.i("MicroMsg.JumpRemind", "onClick2");
-        if ((m.this.Lye != null) && (m.this.Lye.CwG.equals("left_button_wording")))
+        ae.i("MicroMsg.JumpRemind", "onClick2");
+        if ((m.this.LUT != null) && (m.this.LUT.COl.equals("left_button_wording")))
         {
-          paramh.bv(m.this.Lye.type, m.this.Lye.path);
+          paramh.bu(m.this.LUT.type, m.this.LUT.path);
           AppMethodBeat.o(72767);
           return;
         }
@@ -261,38 +260,38 @@ public final class m
     return true;
   }
   
-  public final boolean fRt()
+  public final boolean fVP()
   {
-    return this.uxt == 1;
+    return this.uIW == 1;
   }
   
-  public final void fRu()
+  public final void fVQ()
   {
-    AppMethodBeat.i(199367);
-    if ((this.Lye == null) || (bt.isNullOrNil(this.Lye.path)))
+    AppMethodBeat.i(190251);
+    if ((this.LUT == null) || (bu.isNullOrNil(this.LUT.path)))
     {
-      AppMethodBeat.o(199367);
+      AppMethodBeat.o(190251);
       return;
     }
-    if (this.Lye.path.contains("clientversion"))
+    if (this.LUT.path.contains("clientversion"))
     {
-      ad.w("MicroMsg.JumpRemind", "url.path contain clientversion");
-      AppMethodBeat.o(199367);
+      ae.w("MicroMsg.JumpRemind", "url.path contain clientversion");
+      AppMethodBeat.o(190251);
       return;
     }
-    this.Lye.path = v.q(this.Lye.path, new String[] { "clientversion" + "=" + d.Fnj });
-    AppMethodBeat.o(199367);
+    this.LUT.path = v.q(this.LUT.path, new String[] { "clientversion" + "=" + d.FFH });
+    AppMethodBeat.o(190251);
   }
   
-  public final void fRv()
+  public final void fVR()
   {
     AppMethodBeat.i(72777);
-    this.vGc.dead();
-    this.Lyg.dead();
+    this.vSg.dead();
+    this.LUV.dead();
     AppMethodBeat.o(72777);
   }
   
-  final void kM(Context paramContext)
+  final void kT(Context paramContext)
   {
     AppMethodBeat.i(72776);
     Intent localIntent;
@@ -300,59 +299,59 @@ public final class m
     {
       ((i)paramContext).register(new k()
       {
-        public final void fRs()
+        public final void fVO()
         {
           AppMethodBeat.i(72769);
-          m.this.vGc.dead();
-          m.this.Lyg.dead();
+          m.this.vSg.dead();
+          m.this.LUV.dead();
           AppMethodBeat.o(72769);
         }
         
         public final void onDestroy()
         {
           AppMethodBeat.i(72768);
-          m.this.vGc.dead();
-          m.this.Lyg.dead();
+          m.this.vSg.dead();
+          m.this.LUV.dead();
           AppMethodBeat.o(72768);
         }
       });
-      this.vGc.alive();
-      this.Lyg.alive();
-      this.dlh = false;
+      this.vSg.alive();
+      this.LUV.alive();
+      this.dmj = false;
       localIntent = new Intent();
-      localIntent.putExtra("rawUrl", this.Lye.path);
+      localIntent.putExtra("rawUrl", this.LUT.path);
       localIntent.putExtra("showShare", false);
-      this.Lyf.onEnter();
-      e.an(paramContext, localIntent);
+      this.LUU.onEnter();
+      com.tencent.mm.wallet_core.ui.f.an(paramContext, localIntent);
       AppMethodBeat.o(72776);
       return;
     }
-    if (this.Lyh)
+    if (this.LUW)
     {
-      this.vGc.alive();
-      this.Lyg.alive();
-      this.dlh = false;
+      this.vSg.alive();
+      this.LUV.alive();
+      this.dmj = false;
       localIntent = new Intent();
-      localIntent.putExtra("rawUrl", this.Lye.path);
+      localIntent.putExtra("rawUrl", this.LUT.path);
       localIntent.putExtra("showShare", false);
-      this.Lyf.onEnter();
-      e.an(paramContext, localIntent);
+      this.LUU.onEnter();
+      com.tencent.mm.wallet_core.ui.f.an(paramContext, localIntent);
     }
     AppMethodBeat.o(72776);
   }
   
   static final class a
   {
-    String CwG;
-    String HkU;
-    String duW;
+    String COl;
+    String HEu;
+    String dwb;
     String path;
     int type;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.wallet_core.c.m
  * JD-Core Version:    0.7.0.1
  */

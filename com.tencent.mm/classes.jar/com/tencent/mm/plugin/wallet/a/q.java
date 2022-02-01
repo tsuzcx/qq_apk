@@ -3,18 +3,18 @@ package com.tencent.mm.plugin.wallet.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class q
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public String CGS;
-  public String CHA = "0";
-  public int CHB = 0;
-  public int CHC;
-  public String CHD;
-  public String CHx;
-  public String CHy;
-  public String CHz = "0";
+  public String CYy;
+  public String CZd;
+  public String CZe;
+  public String CZf = "0";
+  public String CZg = "0";
+  public int CZh = 0;
+  public int CZi;
+  public String CZj;
   public String desc;
-  public String hDs;
+  public String hGk;
   public String id;
   public String name;
   public int status;
@@ -41,28 +41,28 @@ public final class q
         paramVarArgs.d(5, this.url);
       }
       paramVarArgs.aS(6, this.type);
-      if (this.CHx != null) {
-        paramVarArgs.d(7, this.CHx);
+      if (this.CZd != null) {
+        paramVarArgs.d(7, this.CZd);
       }
-      if (this.CHy != null) {
-        paramVarArgs.d(8, this.CHy);
+      if (this.CZe != null) {
+        paramVarArgs.d(8, this.CZe);
       }
-      if (this.CHz != null) {
-        paramVarArgs.d(9, this.CHz);
+      if (this.CZf != null) {
+        paramVarArgs.d(9, this.CZf);
       }
-      if (this.CHA != null) {
-        paramVarArgs.d(10, this.CHA);
+      if (this.CZg != null) {
+        paramVarArgs.d(10, this.CZg);
       }
-      paramVarArgs.aS(11, this.CHB);
-      if (this.CGS != null) {
-        paramVarArgs.d(12, this.CGS);
+      paramVarArgs.aS(11, this.CZh);
+      if (this.CYy != null) {
+        paramVarArgs.d(12, this.CYy);
       }
-      if (this.hDs != null) {
-        paramVarArgs.d(13, this.hDs);
+      if (this.hGk != null) {
+        paramVarArgs.d(13, this.hGk);
       }
-      paramVarArgs.aS(14, this.CHC);
-      if (this.CHD != null) {
-        paramVarArgs.d(15, this.CHD);
+      paramVarArgs.aS(14, this.CZi);
+      if (this.CZj != null) {
+        paramVarArgs.d(15, this.CZj);
       }
       AppMethodBeat.o(91303);
       return 0;
@@ -90,43 +90,43 @@ public final class q
       }
       i = paramInt + f.a.a.b.b.a.bz(6, this.type);
       paramInt = i;
-      if (this.CHx != null) {
-        paramInt = i + f.a.a.b.b.a.e(7, this.CHx);
+      if (this.CZd != null) {
+        paramInt = i + f.a.a.b.b.a.e(7, this.CZd);
       }
       i = paramInt;
-      if (this.CHy != null) {
-        i = paramInt + f.a.a.b.b.a.e(8, this.CHy);
+      if (this.CZe != null) {
+        i = paramInt + f.a.a.b.b.a.e(8, this.CZe);
       }
       paramInt = i;
-      if (this.CHz != null) {
-        paramInt = i + f.a.a.b.b.a.e(9, this.CHz);
+      if (this.CZf != null) {
+        paramInt = i + f.a.a.b.b.a.e(9, this.CZf);
       }
       i = paramInt;
-      if (this.CHA != null) {
-        i = paramInt + f.a.a.b.b.a.e(10, this.CHA);
+      if (this.CZg != null) {
+        i = paramInt + f.a.a.b.b.a.e(10, this.CZg);
       }
-      i += f.a.a.b.b.a.bz(11, this.CHB);
+      i += f.a.a.b.b.a.bz(11, this.CZh);
       paramInt = i;
-      if (this.CGS != null) {
-        paramInt = i + f.a.a.b.b.a.e(12, this.CGS);
+      if (this.CYy != null) {
+        paramInt = i + f.a.a.b.b.a.e(12, this.CYy);
       }
       i = paramInt;
-      if (this.hDs != null) {
-        i = paramInt + f.a.a.b.b.a.e(13, this.hDs);
+      if (this.hGk != null) {
+        i = paramInt + f.a.a.b.b.a.e(13, this.hGk);
       }
-      i += f.a.a.b.b.a.bz(14, this.CHC);
+      i += f.a.a.b.b.a.bz(14, this.CZi);
       paramInt = i;
-      if (this.CHD != null) {
-        paramInt = i + f.a.a.b.b.a.e(15, this.CHD);
+      if (this.CZj != null) {
+        paramInt = i + f.a.a.b.b.a.e(15, this.CZj);
       }
       AppMethodBeat.o(91303);
       return paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
         AppMethodBeat.o(91303);
@@ -142,63 +142,63 @@ public final class q
           AppMethodBeat.o(91303);
           return -1;
         case 1: 
-          localq.id = locala.NPN.readString();
+          localq.id = locala.OmT.readString();
           AppMethodBeat.o(91303);
           return 0;
         case 2: 
-          localq.name = locala.NPN.readString();
+          localq.name = locala.OmT.readString();
           AppMethodBeat.o(91303);
           return 0;
         case 3: 
-          localq.desc = locala.NPN.readString();
+          localq.desc = locala.OmT.readString();
           AppMethodBeat.o(91303);
           return 0;
         case 4: 
-          localq.status = locala.NPN.zc();
+          localq.status = locala.OmT.zc();
           AppMethodBeat.o(91303);
           return 0;
         case 5: 
-          localq.url = locala.NPN.readString();
+          localq.url = locala.OmT.readString();
           AppMethodBeat.o(91303);
           return 0;
         case 6: 
-          localq.type = locala.NPN.zc();
+          localq.type = locala.OmT.zc();
           AppMethodBeat.o(91303);
           return 0;
         case 7: 
-          localq.CHx = locala.NPN.readString();
+          localq.CZd = locala.OmT.readString();
           AppMethodBeat.o(91303);
           return 0;
         case 8: 
-          localq.CHy = locala.NPN.readString();
+          localq.CZe = locala.OmT.readString();
           AppMethodBeat.o(91303);
           return 0;
         case 9: 
-          localq.CHz = locala.NPN.readString();
+          localq.CZf = locala.OmT.readString();
           AppMethodBeat.o(91303);
           return 0;
         case 10: 
-          localq.CHA = locala.NPN.readString();
+          localq.CZg = locala.OmT.readString();
           AppMethodBeat.o(91303);
           return 0;
         case 11: 
-          localq.CHB = locala.NPN.zc();
+          localq.CZh = locala.OmT.zc();
           AppMethodBeat.o(91303);
           return 0;
         case 12: 
-          localq.CGS = locala.NPN.readString();
+          localq.CYy = locala.OmT.readString();
           AppMethodBeat.o(91303);
           return 0;
         case 13: 
-          localq.hDs = locala.NPN.readString();
+          localq.hGk = locala.OmT.readString();
           AppMethodBeat.o(91303);
           return 0;
         case 14: 
-          localq.CHC = locala.NPN.zc();
+          localq.CZi = locala.OmT.zc();
           AppMethodBeat.o(91303);
           return 0;
         }
-        localq.CHD = locala.NPN.readString();
+        localq.CZj = locala.OmT.readString();
         AppMethodBeat.o(91303);
         return 0;
       }
@@ -209,7 +209,7 @@ public final class q
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.a.q
  * JD-Core Version:    0.7.0.1
  */

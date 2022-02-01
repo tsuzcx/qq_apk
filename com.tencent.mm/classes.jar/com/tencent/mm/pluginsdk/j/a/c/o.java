@@ -12,51 +12,51 @@ import java.util.Iterator;
 public final class o
   implements com.tencent.mm.kernel.api.c, com.tencent.mm.kernel.b.c
 {
-  public static final o EQT;
-  private final com.tencent.mm.sdk.b.c EQU;
-  private final n oXe;
+  public static final o Fjo;
+  private final com.tencent.mm.sdk.b.c Fjp;
+  private final n pdH;
   
   static
   {
     AppMethodBeat.i(152052);
-    EQT = new o();
+    Fjo = new o();
     AppMethodBeat.o(152052);
   }
   
   public o()
   {
     AppMethodBeat.i(152049);
-    this.oXe = new n.a()
+    this.pdH = new n.a()
     {
       public final void onNetworkChange(int paramAnonymousInt)
       {
         AppMethodBeat.i(152047);
-        p.agv();
+        p.agJ();
         AppMethodBeat.o(152047);
       }
     };
-    this.EQU = new com.tencent.mm.sdk.b.c() {};
+    this.Fjp = new com.tencent.mm.sdk.b.c() {};
     AppMethodBeat.o(152049);
   }
   
   public final void onAccountInitialized(e.c paramc)
   {
     AppMethodBeat.i(152050);
-    paramc = r.fbd().iterator();
+    paramc = r.feR().iterator();
     while (paramc.hasNext()) {
-      ((g)paramc.next()).faG();
+      ((g)paramc.next()).feu();
     }
-    com.tencent.mm.kernel.g.ajB().a(this.oXe);
-    this.EQU.alive();
+    com.tencent.mm.kernel.g.ajQ().a(this.pdH);
+    this.Fjp.alive();
     AppMethodBeat.o(152050);
   }
   
   public final void onAccountRelease()
   {
     AppMethodBeat.i(152051);
-    com.tencent.mm.kernel.g.ajB().b(this.oXe);
-    this.EQU.dead();
-    Iterator localIterator = r.fbd().iterator();
+    com.tencent.mm.kernel.g.ajQ().b(this.pdH);
+    this.Fjp.dead();
+    Iterator localIterator = r.feR().iterator();
     while (localIterator.hasNext()) {
       ((g)localIterator.next()).onAccountRelease();
     }
@@ -65,7 +65,7 @@ public final class o
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.j.a.c.o
  * JD-Core Version:    0.7.0.1
  */

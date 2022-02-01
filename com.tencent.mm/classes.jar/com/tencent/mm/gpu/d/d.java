@@ -2,7 +2,7 @@ package com.tencent.mm.gpu.d;
 
 public final class d
 {
-  long gtS;
+  long gwz;
   int id = 0;
   int type = 0;
   
@@ -10,13 +10,13 @@ public final class d
   {
     this.type = paramInt1;
     this.id = paramInt2;
-    this.gtS = paramLong;
+    this.gwz = paramLong;
   }
   
   public final boolean equals(Object paramObject)
   {
     paramObject = (d)paramObject;
-    return (paramObject.type == this.type) && (paramObject.gtS == this.gtS) && (paramObject.id == this.id);
+    return (paramObject.type == this.type) && (paramObject.gwz == this.gwz) && (paramObject.id == this.id);
   }
 }
 

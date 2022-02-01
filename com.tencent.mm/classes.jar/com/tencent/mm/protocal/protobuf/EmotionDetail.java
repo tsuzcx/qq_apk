@@ -4,7 +4,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 public class EmotionDetail
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
   public String ConsumeProductID;
   public String CoverUrl;
@@ -19,7 +19,7 @@ public class EmotionDetail
   public String PackName;
   public String PackPrice;
   public int PackThumbCnt;
-  public LinkedList<cwt> PackThumbList;
+  public LinkedList<cxn> PackThumbList;
   public int PackType;
   public String PanelUrl;
   public PersonalDesigner PersonalDesigner;
@@ -101,12 +101,12 @@ public class EmotionDetail
       }
       if (this.EmotionDesigner != null)
       {
-        paramVarArgs.lC(24, this.EmotionDesigner.computeSize());
+        paramVarArgs.lJ(24, this.EmotionDesigner.computeSize());
         this.EmotionDesigner.writeFields(paramVarArgs);
       }
       if (this.PersonalDesigner != null)
       {
-        paramVarArgs.lC(25, this.PersonalDesigner.computeSize());
+        paramVarArgs.lJ(25, this.PersonalDesigner.computeSize());
         this.PersonalDesigner.writeFields(paramVarArgs);
       }
       AppMethodBeat.o(104777);
@@ -181,11 +181,11 @@ public class EmotionDetail
       }
       i = paramInt;
       if (this.EmotionDesigner != null) {
-        i = paramInt + f.a.a.a.lB(24, this.EmotionDesigner.computeSize());
+        i = paramInt + f.a.a.a.lI(24, this.EmotionDesigner.computeSize());
       }
       paramInt = i;
       if (this.PersonalDesigner != null) {
-        paramInt = i + f.a.a.a.lB(25, this.PersonalDesigner.computeSize());
+        paramInt = i + f.a.a.a.lI(25, this.PersonalDesigner.computeSize());
       }
       AppMethodBeat.o(104777);
       return paramInt;
@@ -195,9 +195,9 @@ public class EmotionDetail
         this.PackThumbList.clear();
         this.ThumbExtList.clear();
         paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
         AppMethodBeat.o(104777);
@@ -216,90 +216,90 @@ public class EmotionDetail
           AppMethodBeat.o(104777);
           return -1;
         case 1: 
-          localEmotionDetail.ProductID = ((f.a.a.a.a)localObject1).NPN.readString();
+          localEmotionDetail.ProductID = ((f.a.a.a.a)localObject1).OmT.readString();
           AppMethodBeat.o(104777);
           return 0;
         case 2: 
-          localEmotionDetail.IconUrl = ((f.a.a.a.a)localObject1).NPN.readString();
+          localEmotionDetail.IconUrl = ((f.a.a.a.a)localObject1).OmT.readString();
           AppMethodBeat.o(104777);
           return 0;
         case 3: 
-          localEmotionDetail.PackName = ((f.a.a.a.a)localObject1).NPN.readString();
+          localEmotionDetail.PackName = ((f.a.a.a.a)localObject1).OmT.readString();
           AppMethodBeat.o(104777);
           return 0;
         case 4: 
-          localEmotionDetail.PackDesc = ((f.a.a.a.a)localObject1).NPN.readString();
+          localEmotionDetail.PackDesc = ((f.a.a.a.a)localObject1).OmT.readString();
           AppMethodBeat.o(104777);
           return 0;
         case 5: 
-          localEmotionDetail.PackAuthInfo = ((f.a.a.a.a)localObject1).NPN.readString();
+          localEmotionDetail.PackAuthInfo = ((f.a.a.a.a)localObject1).OmT.readString();
           AppMethodBeat.o(104777);
           return 0;
         case 6: 
-          localEmotionDetail.PackPrice = ((f.a.a.a.a)localObject1).NPN.readString();
+          localEmotionDetail.PackPrice = ((f.a.a.a.a)localObject1).OmT.readString();
           AppMethodBeat.o(104777);
           return 0;
         case 7: 
-          localEmotionDetail.PackType = ((f.a.a.a.a)localObject1).NPN.zc();
+          localEmotionDetail.PackType = ((f.a.a.a.a)localObject1).OmT.zc();
           AppMethodBeat.o(104777);
           return 0;
         case 8: 
-          localEmotionDetail.PackFlag = ((f.a.a.a.a)localObject1).NPN.zc();
+          localEmotionDetail.PackFlag = ((f.a.a.a.a)localObject1).OmT.zc();
           AppMethodBeat.o(104777);
           return 0;
         case 9: 
-          localEmotionDetail.PackThumbCnt = ((f.a.a.a.a)localObject1).NPN.zc();
+          localEmotionDetail.PackThumbCnt = ((f.a.a.a.a)localObject1).OmT.zc();
           AppMethodBeat.o(104777);
           return 0;
         case 10: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
+          paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
             localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new cwt();
+            localObject1 = new cxn();
             localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (bool = true; bool; bool = ((cwt)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, com.tencent.mm.bx.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            for (bool = true; bool; bool = ((cxn)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
             localEmotionDetail.PackThumbList.add(localObject1);
             paramInt += 1;
           }
           AppMethodBeat.o(104777);
           return 0;
         case 11: 
-          localEmotionDetail.CoverUrl = ((f.a.a.a.a)localObject1).NPN.readString();
+          localEmotionDetail.CoverUrl = ((f.a.a.a.a)localObject1).OmT.readString();
           AppMethodBeat.o(104777);
           return 0;
         case 12: 
-          localEmotionDetail.PackExpire = ((f.a.a.a.a)localObject1).NPN.zc();
+          localEmotionDetail.PackExpire = ((f.a.a.a.a)localObject1).OmT.zc();
           AppMethodBeat.o(104777);
           return 0;
         case 13: 
-          localEmotionDetail.PackCopyright = ((f.a.a.a.a)localObject1).NPN.readString();
+          localEmotionDetail.PackCopyright = ((f.a.a.a.a)localObject1).OmT.readString();
           AppMethodBeat.o(104777);
           return 0;
         case 14: 
-          localEmotionDetail.PriceNum = ((f.a.a.a.a)localObject1).NPN.readString();
+          localEmotionDetail.PriceNum = ((f.a.a.a.a)localObject1).OmT.readString();
           AppMethodBeat.o(104777);
           return 0;
         case 15: 
-          localEmotionDetail.PriceType = ((f.a.a.a.a)localObject1).NPN.readString();
+          localEmotionDetail.PriceType = ((f.a.a.a.a)localObject1).OmT.readString();
           AppMethodBeat.o(104777);
           return 0;
         case 16: 
-          localEmotionDetail.PanelUrl = ((f.a.a.a.a)localObject1).NPN.readString();
+          localEmotionDetail.PanelUrl = ((f.a.a.a.a)localObject1).OmT.readString();
           AppMethodBeat.o(104777);
           return 0;
         case 17: 
-          localEmotionDetail.ConsumeProductID = ((f.a.a.a.a)localObject1).NPN.readString();
+          localEmotionDetail.ConsumeProductID = ((f.a.a.a.a)localObject1).OmT.readString();
           AppMethodBeat.o(104777);
           return 0;
         case 18: 
-          localEmotionDetail.ThumbExtCount = ((f.a.a.a.a)localObject1).NPN.zc();
+          localEmotionDetail.ThumbExtCount = ((f.a.a.a.a)localObject1).OmT.zc();
           AppMethodBeat.o(104777);
           return 0;
         case 19: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
+          paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
@@ -307,30 +307,30 @@ public class EmotionDetail
             localObject2 = (byte[])paramVarArgs.get(paramInt);
             localObject1 = new PackThumbExt();
             localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (bool = true; bool; bool = ((PackThumbExt)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, com.tencent.mm.bx.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            for (bool = true; bool; bool = ((PackThumbExt)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
             localEmotionDetail.ThumbExtList.add(localObject1);
             paramInt += 1;
           }
           AppMethodBeat.o(104777);
           return 0;
         case 20: 
-          localEmotionDetail.Version = ((f.a.a.a.a)localObject1).NPN.zc();
+          localEmotionDetail.Version = ((f.a.a.a.a)localObject1).OmT.zc();
           AppMethodBeat.o(104777);
           return 0;
         case 21: 
-          localEmotionDetail.TimeLimitStr = ((f.a.a.a.a)localObject1).NPN.readString();
+          localEmotionDetail.TimeLimitStr = ((f.a.a.a.a)localObject1).OmT.readString();
           AppMethodBeat.o(104777);
           return 0;
         case 22: 
-          localEmotionDetail.ShareDesc = ((f.a.a.a.a)localObject1).NPN.readString();
+          localEmotionDetail.ShareDesc = ((f.a.a.a.a)localObject1).OmT.readString();
           AppMethodBeat.o(104777);
           return 0;
         case 23: 
-          localEmotionDetail.OldRedirectUrl = ((f.a.a.a.a)localObject1).NPN.readString();
+          localEmotionDetail.OldRedirectUrl = ((f.a.a.a.a)localObject1).OmT.readString();
           AppMethodBeat.o(104777);
           return 0;
         case 24: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
+          paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
@@ -338,14 +338,14 @@ public class EmotionDetail
             localObject2 = (byte[])paramVarArgs.get(paramInt);
             localObject1 = new EmotionDesigner();
             localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (bool = true; bool; bool = ((EmotionDesigner)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, com.tencent.mm.bx.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            for (bool = true; bool; bool = ((EmotionDesigner)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
             localEmotionDetail.EmotionDesigner = ((EmotionDesigner)localObject1);
             paramInt += 1;
           }
           AppMethodBeat.o(104777);
           return 0;
         }
-        paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
+        paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
         i = paramVarArgs.size();
         paramInt = 0;
         while (paramInt < i)
@@ -353,7 +353,7 @@ public class EmotionDetail
           localObject2 = (byte[])paramVarArgs.get(paramInt);
           localObject1 = new PersonalDesigner();
           localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-          for (bool = true; bool; bool = ((PersonalDesigner)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, com.tencent.mm.bx.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+          for (bool = true; bool; bool = ((PersonalDesigner)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
           localEmotionDetail.PersonalDesigner = ((PersonalDesigner)localObject1);
           paramInt += 1;
         }
@@ -367,7 +367,7 @@ public class EmotionDetail
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.EmotionDetail
  * JD-Core Version:    0.7.0.1
  */

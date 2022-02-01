@@ -5,11 +5,11 @@ import com.tencent.mm.ui.chatting.d.ad;
 public abstract interface a
   extends ad
 {
-  public abstract void fDo();
+  public abstract void fHr();
   
-  public abstract void fFp();
+  public abstract void fJw();
   
-  public abstract String fFq();
+  public abstract String fJx();
 }
 
 

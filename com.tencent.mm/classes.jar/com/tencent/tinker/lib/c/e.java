@@ -8,6 +8,7 @@ import com.tencent.tinker.lib.d.d;
 import com.tencent.tinker.loader.TinkerDexOptimizer;
 import com.tencent.tinker.loader.TinkerDexOptimizer.ResultCallback;
 import com.tencent.tinker.loader.TinkerRuntimeException;
+import com.tencent.tinker.loader.app.TinkerApplication;
 import com.tencent.tinker.loader.shareutil.ShareConstants;
 import com.tencent.tinker.loader.shareutil.ShareDexDiffPatchInfo;
 import com.tencent.tinker.loader.shareutil.ShareElfFile;
@@ -36,9 +37,9 @@ import java.util.zip.ZipOutputStream;
 public final class e
   extends c
 {
-  private static ArrayList<File> MgD = new ArrayList();
-  private static ArrayList<ShareDexDiffPatchInfo> MgE = new ArrayList();
-  private static HashMap<ShareDexDiffPatchInfo, File> MgF = new HashMap();
+  private static ArrayList<File> MDA = new ArrayList();
+  private static ArrayList<ShareDexDiffPatchInfo> MDB = new ArrayList();
+  private static HashMap<ShareDexDiffPatchInfo, File> MDC = new HashMap();
   private static boolean isVmArt = ShareTinkerInternals.isVmArt();
   
   /* Error */
@@ -266,7 +267,7 @@ public final class e
   private static boolean a(Context paramContext, File paramFile, String paramString)
   {
     // Byte code:
-    //   0: getstatic 27	com/tencent/tinker/lib/c/e:MgE	Ljava/util/ArrayList;
+    //   0: getstatic 27	com/tencent/tinker/lib/c/e:MDB	Ljava/util/ArrayList;
     //   3: invokevirtual 152	java/util/ArrayList:isEmpty	()Z
     //   6: ifne +9 -> 15
     //   9: getstatic 39	com/tencent/tinker/lib/c/e:isVmArt	Z
@@ -279,7 +280,7 @@ public final class e
     //   22: ldc 154
     //   24: invokespecial 157	java/io/File:<init>	(Ljava/lang/String;Ljava/lang/String;)V
     //   27: astore 10
-    //   29: getstatic 32	com/tencent/tinker/lib/c/e:MgF	Ljava/util/HashMap;
+    //   29: getstatic 32	com/tencent/tinker/lib/c/e:MDC	Ljava/util/HashMap;
     //   32: invokevirtual 158	java/util/HashMap:isEmpty	()Z
     //   35: ifeq +28 -> 63
     //   38: ldc 160
@@ -288,7 +289,7 @@ public final class e
     //   43: anewarray 164	java/lang/Object
     //   46: dup
     //   47: iconst_0
-    //   48: getstatic 32	com/tencent/tinker/lib/c/e:MgF	Ljava/util/HashMap;
+    //   48: getstatic 32	com/tencent/tinker/lib/c/e:MDC	Ljava/util/HashMap;
     //   51: invokevirtual 168	java/util/HashMap:size	()I
     //   54: invokestatic 174	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   57: aastore
@@ -310,7 +311,7 @@ public final class e
     //   86: invokespecial 80	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   89: invokespecial 189	com/tencent/tinker/d/a/a:<init>	(Ljava/io/OutputStream;)V
     //   92: astore 8
-    //   94: getstatic 32	com/tencent/tinker/lib/c/e:MgF	Ljava/util/HashMap;
+    //   94: getstatic 32	com/tencent/tinker/lib/c/e:MDC	Ljava/util/HashMap;
     //   97: invokevirtual 193	java/util/HashMap:keySet	()Ljava/util/Set;
     //   100: invokeinterface 199 1 0
     //   105: astore_2
@@ -321,7 +322,7 @@ public final class e
     //   116: invokeinterface 208 1 0
     //   121: checkcast 55	com/tencent/tinker/loader/shareutil/ShareDexDiffPatchInfo
     //   124: astore 7
-    //   126: getstatic 32	com/tencent/tinker/lib/c/e:MgF	Ljava/util/HashMap;
+    //   126: getstatic 32	com/tencent/tinker/lib/c/e:MDC	Ljava/util/HashMap;
     //   129: aload 7
     //   131: invokevirtual 212	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
     //   134: checkcast 118	java/io/File
@@ -395,7 +396,7 @@ public final class e
     //   289: istore 6
     //   291: iload 5
     //   293: ifeq +91 -> 384
-    //   296: getstatic 32	com/tencent/tinker/lib/c/e:MgF	Ljava/util/HashMap;
+    //   296: getstatic 32	com/tencent/tinker/lib/c/e:MDC	Ljava/util/HashMap;
     //   299: invokevirtual 193	java/util/HashMap:keySet	()Ljava/util/Set;
     //   302: invokeinterface 199 1 0
     //   307: astore_2
@@ -435,7 +436,7 @@ public final class e
     //   381: invokestatic 269	com/tencent/tinker/loader/shareutil/ShareTinkerLog:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   384: iload 6
     //   386: ifeq +193 -> 579
-    //   389: getstatic 32	com/tencent/tinker/lib/c/e:MgF	Ljava/util/HashMap;
+    //   389: getstatic 32	com/tencent/tinker/lib/c/e:MDC	Ljava/util/HashMap;
     //   392: invokevirtual 273	java/util/HashMap:values	()Ljava/util/Collection;
     //   395: invokeinterface 276 1 0
     //   400: astore_0
@@ -486,7 +487,7 @@ public final class e
     //   494: invokevirtual 231	java/util/zip/ZipEntry:setSize	(J)V
     //   497: aload 11
     //   499: aload 9
-    //   501: invokestatic 286	com/tencent/tinker/c/b/a:ab	(Ljava/io/File;)J
+    //   501: invokestatic 286	com/tencent/tinker/c/b/a:aa	(Ljava/io/File;)J
     //   504: invokevirtual 237	java/util/zip/ZipEntry:setCrc	(J)V
     //   507: new 44	java/io/BufferedInputStream
     //   510: dup
@@ -531,8 +532,8 @@ public final class e
     //   593: invokestatic 280	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:safeDeleteFile	(Ljava/io/File;)Z
     //   596: pop
     //   597: aload_0
-    //   598: invokestatic 297	com/tencent/tinker/lib/e/a:lk	(Landroid/content/Context;)Lcom/tencent/tinker/lib/e/a;
-    //   601: getfield 301	com/tencent/tinker/lib/e/a:MgW	Lcom/tencent/tinker/lib/d/d;
+    //   598: invokestatic 297	com/tencent/tinker/lib/e/a:lq	(Landroid/content/Context;)Lcom/tencent/tinker/lib/e/a;
+    //   601: getfield 301	com/tencent/tinker/lib/e/a:MDT	Lcom/tencent/tinker/lib/d/d;
     //   604: aload_1
     //   605: aload 10
     //   607: aload 10
@@ -643,8 +644,8 @@ public final class e
   
   private static boolean a(Context paramContext, List<File> paramList, String paramString, File paramFile, com.tencent.tinker.lib.service.a parama)
   {
-    com.tencent.tinker.lib.e.a locala = com.tencent.tinker.lib.e.a.lk(paramContext);
-    MgD.clear();
+    com.tencent.tinker.lib.e.a locala = com.tencent.tinker.lib.e.a.lq(paramContext);
+    MDA.clear();
     File localFile = new File(paramString);
     if ((!localFile.exists()) && (!localFile.mkdirs()))
     {
@@ -655,25 +656,26 @@ public final class e
     while (((Iterator)localObject1).hasNext())
     {
       localObject2 = SharePatchFileUtil.optimizedPathFor((File)((Iterator)localObject1).next(), localFile);
-      MgD.add(new File((String)localObject2));
+      MDA.add(new File((String)localObject2));
     }
     ShareTinkerLog.i("Tinker.DexDiffPatchInternal", "patch recover, try to optimize dex file count:%d, optimizeDexDirectory:%s", new Object[] { Integer.valueOf(paramList.size()), paramString });
     localObject1 = new Vector();
     Object localObject2 = new Throwable[1];
     if (parama != null) {
-      parama.MgL = System.currentTimeMillis();
+      parama.MDI = System.currentTimeMillis();
     }
+    boolean bool = TinkerApplication.getInstance().isUseDelegateLastClassLoaderOnAPI29AndAbove();
     paramString = new boolean[1];
     paramString[0] = 0;
-    TinkerDexOptimizer.optimizeAll(paramContext, paramList, localFile, new TinkerDexOptimizer.ResultCallback()
+    TinkerDexOptimizer.optimizeAll(paramContext, paramList, localFile, bool, new TinkerDexOptimizer.ResultCallback()
     {
       long startTime;
       
       public final void onFailed(File paramAnonymousFile1, File paramAnonymousFile2, Throwable paramAnonymousThrowable)
       {
         ShareTinkerLog.i("Tinker.DexDiffPatchInternal", "fail to parallel optimize dex %s use time %d", new Object[] { paramAnonymousFile1.getPath(), Long.valueOf(System.currentTimeMillis() - this.startTime) });
-        this.MgH.add(paramAnonymousFile1);
-        this.MgI[0] = paramAnonymousThrowable;
+        this.MDE.add(paramAnonymousFile1);
+        this.MDF[0] = paramAnonymousThrowable;
       }
       
       public final void onStart(File paramAnonymousFile1, File paramAnonymousFile2)
@@ -686,9 +688,9 @@ public final class e
       {
         ShareTinkerLog.i("Tinker.DexDiffPatchInternal", "success to parallel optimize dex %s, opt file:%s, opt file size: %d, use time %d", new Object[] { ???.getPath(), paramAnonymousFile3.getPath(), Long.valueOf(paramAnonymousFile3.length()), Long.valueOf(System.currentTimeMillis() - this.startTime) });
         if (!paramAnonymousFile3.exists()) {
-          synchronized (this.MgG)
+          synchronized (this.MDD)
           {
-            this.MgG[0] = true;
+            this.MDD[0] = true;
             return;
           }
         }
@@ -696,18 +698,18 @@ public final class e
     });
     if (parama != null) {
       if (paramString[0] != 0) {
-        break label244;
+        break label254;
       }
     }
-    for (boolean bool = true;; bool = false) {
-      label244:
+    for (bool = true;; bool = false) {
+      label254:
       try
       {
-        parama.MgM = bool;
+        parama.MDJ = bool;
         if (((List)localObject1).isEmpty()) {
           break;
         }
-        locala.MgW.a(paramFile, (List)localObject1, localObject2[0]);
+        locala.MDT.a(paramFile, (List)localObject1, localObject2[0]);
         return false;
       }
       finally {}
@@ -759,21 +761,21 @@ public final class e
   
   protected static boolean a(File paramFile, com.tencent.tinker.lib.e.a parama)
   {
-    if (MgD.isEmpty()) {
+    if (MDA.isEmpty()) {
       return true;
     }
-    int j = MgE.size() * 30;
+    int j = MDB.size() * 30;
     int i = j;
     if (j > 120) {
       i = 120;
     }
-    ShareTinkerLog.i("Tinker.DexDiffPatchInternal", "raw dex count: %d, dex opt dex count: %d, final wait times: %d", new Object[] { Integer.valueOf(MgE.size()), Integer.valueOf(MgD.size()), Integer.valueOf(i) });
+    ShareTinkerLog.i("Tinker.DexDiffPatchInternal", "raw dex count: %d, dex opt dex count: %d, final wait times: %d", new Object[] { Integer.valueOf(MDB.size()), Integer.valueOf(MDA.size()), Integer.valueOf(i) });
     j = 0;
     for (;;)
     {
       if (j < i)
       {
-        Iterator localIterator1 = MgD.iterator();
+        Iterator localIterator1 = MDA.iterator();
         int k;
         for (;;)
         {
@@ -807,7 +809,7 @@ public final class e
       }
     }
     Object localObject1 = new ArrayList();
-    Iterator localIterator2 = MgD.iterator();
+    Iterator localIterator2 = MDA.iterator();
     Object localObject2;
     while (localIterator2.hasNext())
     {
@@ -821,12 +823,12 @@ public final class e
     }
     if (!((List)localObject1).isEmpty())
     {
-      parama.MgW.a(paramFile, (List)localObject1, new TinkerRuntimeException("checkDexOptExist failed"));
+      parama.MDT.a(paramFile, (List)localObject1, new TinkerRuntimeException("checkDexOptExist failed"));
       return false;
     }
     if (Build.VERSION.SDK_INT >= 21)
     {
-      localObject2 = MgD.iterator();
+      localObject2 = MDA.iterator();
       localIterator2 = null;
     }
     for (;;)
@@ -868,7 +870,7 @@ public final class e
               if (localThrowable == null) {}
               for (TinkerRuntimeException localTinkerRuntimeException = new TinkerRuntimeException("checkDexOptFormat failed");; localTinkerRuntimeException = new TinkerRuntimeException("checkDexOptFormat failed", localTinkerRuntimeException))
               {
-                parama.MgW.a(paramFile, (List)localObject1, localTinkerRuntimeException);
+                parama.MDT.a(paramFile, (List)localObject1, localTinkerRuntimeException);
                 return false;
               }
             }
@@ -895,85 +897,26 @@ public final class e
     return a(paramZipFile, paramZipEntry, paramFile, str1, true);
   }
   
-  private static boolean aZP(String paramString)
-  {
-    if ((MgE.isEmpty()) || (!isVmArt)) {
-      return false;
-    }
-    Iterator localIterator = MgE.iterator();
-    Object localObject2 = null;
-    Object localObject1 = null;
-    if (localIterator.hasNext())
-    {
-      ShareDexDiffPatchInfo localShareDexDiffPatchInfo = (ShareDexDiffPatchInfo)localIterator.next();
-      File localFile = new File(paramString + localShareDexDiffPatchInfo.realName);
-      String str = localFile.getName();
-      if (ShareConstants.CLASS_N_PATTERN.matcher(str).matches()) {
-        MgF.put(localShareDexDiffPatchInfo, localFile);
-      }
-      if (!localShareDexDiffPatchInfo.rawName.startsWith("test.dex")) {
-        break label329;
-      }
-      localObject2 = localFile;
-      localObject1 = localShareDexDiffPatchInfo;
-    }
-    label329:
-    for (;;)
-    {
-      break;
-      if (localObject1 != null) {
-        MgF.put(ShareTinkerInternals.changeTestDexToClassN((ShareDexDiffPatchInfo)localObject1, MgF.size() + 1), localObject2);
-      }
-      paramString = new File(paramString, "tinker_classN.apk");
-      if (paramString.exists())
-      {
-        localObject1 = MgF.keySet().iterator();
-        while (((Iterator)localObject1).hasNext())
-        {
-          localObject2 = (ShareDexDiffPatchInfo)((Iterator)localObject1).next();
-          if (!SharePatchFileUtil.verifyDexFileMd5(paramString, ((ShareDexDiffPatchInfo)localObject2).rawName, ((ShareDexDiffPatchInfo)localObject2).destMd5InArt)) {
-            ShareTinkerLog.e("Tinker.DexDiffPatchInternal", "verify dex file md5 error, entry name; %s, file len: %d", new Object[] { ((ShareDexDiffPatchInfo)localObject2).rawName, Long.valueOf(paramString.length()) });
-          }
-        }
-      }
-      for (boolean bool1 = false;; bool1 = true)
-      {
-        boolean bool2 = bool1;
-        if (!bool1) {
-          SharePatchFileUtil.safeDeleteFile(paramString);
-        }
-        for (bool2 = bool1; bool2; bool2 = false)
-        {
-          paramString = MgF.values().iterator();
-          while (paramString.hasNext()) {
-            SharePatchFileUtil.safeDeleteFile((File)paramString.next());
-          }
-        }
-        return bool2;
-      }
-    }
-  }
-  
   /* Error */
   private static boolean b(Context paramContext, String paramString1, String paramString2, File paramFile)
   {
     // Byte code:
-    //   0: getstatic 27	com/tencent/tinker/lib/c/e:MgE	Ljava/util/ArrayList;
+    //   0: getstatic 27	com/tencent/tinker/lib/c/e:MDB	Ljava/util/ArrayList;
     //   3: invokevirtual 324	java/util/ArrayList:clear	()V
     //   6: aload_2
-    //   7: getstatic 27	com/tencent/tinker/lib/c/e:MgE	Ljava/util/ArrayList;
-    //   10: invokestatic 541	com/tencent/tinker/loader/shareutil/ShareDexDiffPatchInfo:parseDexDiffPatchInfo	(Ljava/lang/String;Ljava/util/ArrayList;)V
-    //   13: getstatic 27	com/tencent/tinker/lib/c/e:MgE	Ljava/util/ArrayList;
+    //   7: getstatic 27	com/tencent/tinker/lib/c/e:MDB	Ljava/util/ArrayList;
+    //   10: invokestatic 516	com/tencent/tinker/loader/shareutil/ShareDexDiffPatchInfo:parseDexDiffPatchInfo	(Ljava/lang/String;Ljava/util/ArrayList;)V
+    //   13: getstatic 27	com/tencent/tinker/lib/c/e:MDB	Ljava/util/ArrayList;
     //   16: invokevirtual 152	java/util/ArrayList:isEmpty	()Z
     //   19: ifeq +24 -> 43
     //   22: ldc 160
-    //   24: ldc_w 543
+    //   24: ldc_w 518
     //   27: iconst_1
     //   28: anewarray 164	java/lang/Object
     //   31: dup
     //   32: iconst_0
     //   33: iconst_3
-    //   34: invokestatic 547	com/tencent/tinker/loader/shareutil/ShareTinkerInternals:getTypeString	(I)Ljava/lang/String;
+    //   34: invokestatic 522	com/tencent/tinker/loader/shareutil/ShareTinkerInternals:getTypeString	(I)Ljava/lang/String;
     //   37: aastore
     //   38: invokestatic 180	com/tencent/tinker/loader/shareutil/ShareTinkerLog:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   41: iconst_1
@@ -990,33 +933,33 @@ public final class e
     //   60: invokevirtual 331	java/io/File:mkdirs	()Z
     //   63: pop
     //   64: aload_0
-    //   65: invokestatic 297	com/tencent/tinker/lib/e/a:lk	(Landroid/content/Context;)Lcom/tencent/tinker/lib/e/a;
+    //   65: invokestatic 297	com/tencent/tinker/lib/e/a:lq	(Landroid/content/Context;)Lcom/tencent/tinker/lib/e/a;
     //   68: astore 10
     //   70: aconst_null
     //   71: astore 9
     //   73: aconst_null
     //   74: astore 8
     //   76: aload_0
-    //   77: invokevirtual 553	android/content/Context:getApplicationInfo	()Landroid/content/pm/ApplicationInfo;
+    //   77: invokevirtual 528	android/content/Context:getApplicationInfo	()Landroid/content/pm/ApplicationInfo;
     //   80: astore_2
     //   81: aload_2
     //   82: ifnonnull +25 -> 107
     //   85: ldc 160
-    //   87: ldc_w 555
+    //   87: ldc_w 530
     //   90: iconst_0
     //   91: anewarray 164	java/lang/Object
     //   94: invokestatic 180	com/tencent/tinker/loader/shareutil/ShareTinkerLog:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   97: aconst_null
-    //   98: invokestatic 559	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:closeZip	(Ljava/util/zip/ZipFile;)V
+    //   98: invokestatic 534	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:closeZip	(Ljava/util/zip/ZipFile;)V
     //   101: aconst_null
-    //   102: invokestatic 559	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:closeZip	(Ljava/util/zip/ZipFile;)V
+    //   102: invokestatic 534	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:closeZip	(Ljava/util/zip/ZipFile;)V
     //   105: iconst_0
     //   106: ireturn
     //   107: new 46	java/util/zip/ZipFile
     //   110: dup
     //   111: aload_2
-    //   112: getfield 564	android/content/pm/ApplicationInfo:sourceDir	Ljava/lang/String;
-    //   115: invokespecial 565	java/util/zip/ZipFile:<init>	(Ljava/lang/String;)V
+    //   112: getfield 539	android/content/pm/ApplicationInfo:sourceDir	Ljava/lang/String;
+    //   115: invokespecial 540	java/util/zip/ZipFile:<init>	(Ljava/lang/String;)V
     //   118: astore_2
     //   119: new 46	java/util/zip/ZipFile
     //   122: dup
@@ -1024,10 +967,10 @@ public final class e
     //   124: invokespecial 213	java/util/zip/ZipFile:<init>	(Ljava/io/File;)V
     //   127: astore 7
     //   129: aload_1
-    //   130: invokestatic 567	com/tencent/tinker/lib/c/e:aZP	(Ljava/lang/String;)Z
+    //   130: invokestatic 543	com/tencent/tinker/lib/c/e:bbs	(Ljava/lang/String;)Z
     //   133: ifeq +31 -> 164
     //   136: ldc 160
-    //   138: ldc_w 569
+    //   138: ldc_w 545
     //   141: iconst_1
     //   142: anewarray 164	java/lang/Object
     //   145: dup
@@ -1036,13 +979,13 @@ public final class e
     //   149: aastore
     //   150: invokestatic 180	com/tencent/tinker/loader/shareutil/ShareTinkerLog:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   153: aload_2
-    //   154: invokestatic 559	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:closeZip	(Ljava/util/zip/ZipFile;)V
+    //   154: invokestatic 534	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:closeZip	(Ljava/util/zip/ZipFile;)V
     //   157: aload 7
-    //   159: invokestatic 559	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:closeZip	(Ljava/util/zip/ZipFile;)V
+    //   159: invokestatic 534	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:closeZip	(Ljava/util/zip/ZipFile;)V
     //   162: iconst_1
     //   163: ireturn
-    //   164: getstatic 27	com/tencent/tinker/lib/c/e:MgE	Ljava/util/ArrayList;
-    //   167: invokevirtual 449	java/util/ArrayList:iterator	()Ljava/util/Iterator;
+    //   164: getstatic 27	com/tencent/tinker/lib/c/e:MDB	Ljava/util/ArrayList;
+    //   167: invokevirtual 458	java/util/ArrayList:iterator	()Ljava/util/Iterator;
     //   170: astore 11
     //   172: aload 11
     //   174: invokeinterface 204 1 0
@@ -1054,28 +997,28 @@ public final class e
     //   194: invokestatic 186	java/lang/System:currentTimeMillis	()J
     //   197: lstore 4
     //   199: aload 12
-    //   201: getfield 572	com/tencent/tinker/loader/shareutil/ShareDexDiffPatchInfo:path	Ljava/lang/String;
-    //   204: ldc_w 574
+    //   201: getfield 548	com/tencent/tinker/loader/shareutil/ShareDexDiffPatchInfo:path	Ljava/lang/String;
+    //   204: ldc_w 550
     //   207: invokevirtual 109	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   210: ifeq +133 -> 343
     //   213: aload 12
     //   215: getfield 59	com/tencent/tinker/loader/shareutil/ShareDexDiffPatchInfo:rawName	Ljava/lang/String;
     //   218: astore 8
     //   220: aload 12
-    //   222: getfield 577	com/tencent/tinker/loader/shareutil/ShareDexDiffPatchInfo:dexDiffMd5	Ljava/lang/String;
+    //   222: getfield 553	com/tencent/tinker/loader/shareutil/ShareDexDiffPatchInfo:dexDiffMd5	Ljava/lang/String;
     //   225: astore 14
     //   227: aload 12
-    //   229: getfield 580	com/tencent/tinker/loader/shareutil/ShareDexDiffPatchInfo:oldDexCrC	Ljava/lang/String;
+    //   229: getfield 556	com/tencent/tinker/loader/shareutil/ShareDexDiffPatchInfo:oldDexCrC	Ljava/lang/String;
     //   232: astore 13
     //   234: getstatic 39	com/tencent/tinker/lib/c/e:isVmArt	Z
     //   237: ifne +143 -> 380
     //   240: aload 12
-    //   242: getfield 500	com/tencent/tinker/loader/shareutil/ShareDexDiffPatchInfo:destMd5InDvm	Ljava/lang/String;
-    //   245: ldc_w 582
+    //   242: getfield 509	com/tencent/tinker/loader/shareutil/ShareDexDiffPatchInfo:destMd5InDvm	Ljava/lang/String;
+    //   245: ldc_w 558
     //   248: invokevirtual 109	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   251: ifeq +129 -> 380
     //   254: ldc 160
-    //   256: ldc_w 584
+    //   256: ldc_w 560
     //   259: iconst_1
     //   260: anewarray 164	java/lang/Object
     //   263: dup
@@ -1093,21 +1036,21 @@ public final class e
     //   283: dup
     //   284: new 113	java/lang/StringBuilder
     //   287: dup
-    //   288: ldc_w 586
+    //   288: ldc_w 562
     //   291: invokespecial 116	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   294: iconst_3
-    //   295: invokestatic 547	com/tencent/tinker/loader/shareutil/ShareTinkerInternals:getTypeString	(I)Ljava/lang/String;
+    //   295: invokestatic 522	com/tencent/tinker/loader/shareutil/ShareTinkerInternals:getTypeString	(I)Ljava/lang/String;
     //   298: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   301: ldc_w 588
+    //   301: ldc_w 564
     //   304: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   307: aload_1
-    //   308: invokevirtual 591	java/lang/Throwable:getMessage	()Ljava/lang/String;
+    //   308: invokevirtual 567	java/lang/Throwable:getMessage	()Ljava/lang/String;
     //   311: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   314: ldc_w 593
+    //   314: ldc_w 569
     //   317: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   320: invokevirtual 128	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   323: aload_1
-    //   324: invokespecial 493	com/tencent/tinker/loader/TinkerRuntimeException:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   324: invokespecial 502	com/tencent/tinker/loader/TinkerRuntimeException:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
     //   327: athrow
     //   328: astore_3
     //   329: aload_0
@@ -1115,18 +1058,18 @@ public final class e
     //   331: aload_3
     //   332: astore_0
     //   333: aload_1
-    //   334: invokestatic 559	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:closeZip	(Ljava/util/zip/ZipFile;)V
+    //   334: invokestatic 534	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:closeZip	(Ljava/util/zip/ZipFile;)V
     //   337: aload_2
-    //   338: invokestatic 559	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:closeZip	(Ljava/util/zip/ZipFile;)V
+    //   338: invokestatic 534	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:closeZip	(Ljava/util/zip/ZipFile;)V
     //   341: aload_0
     //   342: athrow
     //   343: new 113	java/lang/StringBuilder
     //   346: dup
-    //   347: invokespecial 400	java/lang/StringBuilder:<init>	()V
+    //   347: invokespecial 409	java/lang/StringBuilder:<init>	()V
     //   350: aload 12
-    //   352: getfield 572	com/tencent/tinker/loader/shareutil/ShareDexDiffPatchInfo:path	Ljava/lang/String;
+    //   352: getfield 548	com/tencent/tinker/loader/shareutil/ShareDexDiffPatchInfo:path	Ljava/lang/String;
     //   355: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   358: ldc_w 595
+    //   358: ldc_w 571
     //   361: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   364: aload 12
     //   366: getfield 59	com/tencent/tinker/loader/shareutil/ShareDexDiffPatchInfo:rawName	Ljava/lang/String;
@@ -1140,16 +1083,16 @@ public final class e
     //   388: getfield 252	com/tencent/tinker/loader/shareutil/ShareDexDiffPatchInfo:destMd5InArt	Ljava/lang/String;
     //   391: astore 9
     //   393: aload 9
-    //   395: invokestatic 598	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:checkIfMd5Valid	(Ljava/lang/String;)Z
+    //   395: invokestatic 574	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:checkIfMd5Valid	(Ljava/lang/String;)Z
     //   398: ifne +71 -> 469
     //   401: ldc 160
-    //   403: ldc_w 600
+    //   403: ldc_w 576
     //   406: iconst_3
     //   407: anewarray 164	java/lang/Object
     //   410: dup
     //   411: iconst_0
     //   412: iconst_3
-    //   413: invokestatic 547	com/tencent/tinker/loader/shareutil/ShareTinkerInternals:getTypeString	(I)Ljava/lang/String;
+    //   413: invokestatic 522	com/tencent/tinker/loader/shareutil/ShareTinkerInternals:getTypeString	(I)Ljava/lang/String;
     //   416: aastore
     //   417: dup
     //   418: iconst_1
@@ -1162,30 +1105,30 @@ public final class e
     //   429: aastore
     //   430: invokestatic 180	com/tencent/tinker/loader/shareutil/ShareTinkerLog:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   433: aload 10
-    //   435: getfield 301	com/tencent/tinker/lib/e/a:MgW	Lcom/tencent/tinker/lib/d/d;
+    //   435: getfield 301	com/tencent/tinker/lib/e/a:MDT	Lcom/tencent/tinker/lib/d/d;
     //   438: aload_3
     //   439: iconst_3
-    //   440: invokestatic 604	com/tencent/tinker/lib/c/c:ail	(I)I
-    //   443: invokeinterface 607 3 0
+    //   440: invokestatic 580	com/tencent/tinker/lib/c/c:aiU	(I)I
+    //   443: invokeinterface 583 3 0
     //   448: aload_2
-    //   449: invokestatic 559	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:closeZip	(Ljava/util/zip/ZipFile;)V
+    //   449: invokestatic 534	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:closeZip	(Ljava/util/zip/ZipFile;)V
     //   452: aload 7
-    //   454: invokestatic 559	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:closeZip	(Ljava/util/zip/ZipFile;)V
+    //   454: invokestatic 534	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:closeZip	(Ljava/util/zip/ZipFile;)V
     //   457: iconst_0
     //   458: ireturn
     //   459: aload 12
-    //   461: getfield 500	com/tencent/tinker/loader/shareutil/ShareDexDiffPatchInfo:destMd5InDvm	Ljava/lang/String;
+    //   461: getfield 509	com/tencent/tinker/loader/shareutil/ShareDexDiffPatchInfo:destMd5InDvm	Ljava/lang/String;
     //   464: astore 9
     //   466: goto -73 -> 393
     //   469: new 118	java/io/File
     //   472: dup
     //   473: new 113	java/lang/StringBuilder
     //   476: dup
-    //   477: invokespecial 400	java/lang/StringBuilder:<init>	()V
+    //   477: invokespecial 409	java/lang/StringBuilder:<init>	()V
     //   480: aload_1
     //   481: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   484: aload 12
-    //   486: getfield 507	com/tencent/tinker/loader/shareutil/ShareDexDiffPatchInfo:realName	Ljava/lang/String;
+    //   486: getfield 586	com/tencent/tinker/loader/shareutil/ShareDexDiffPatchInfo:realName	Ljava/lang/String;
     //   489: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   492: invokevirtual 128	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   495: invokespecial 325	java/io/File:<init>	(Ljava/lang/String;)V
@@ -1195,10 +1138,10 @@ public final class e
     //   505: ifeq +155 -> 660
     //   508: aload 15
     //   510: aload 9
-    //   512: invokestatic 610	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:verifyDexFileMd5	(Ljava/io/File;Ljava/lang/String;)Z
+    //   512: invokestatic 589	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:verifyDexFileMd5	(Ljava/io/File;Ljava/lang/String;)Z
     //   515: ifeq +26 -> 541
     //   518: ldc 160
-    //   520: ldc_w 612
+    //   520: ldc_w 591
     //   523: iconst_1
     //   524: anewarray 164	java/lang/Object
     //   527: dup
@@ -1211,7 +1154,7 @@ public final class e
     //   541: ldc 160
     //   543: new 113	java/lang/StringBuilder
     //   546: dup
-    //   547: ldc_w 614
+    //   547: ldc_w 593
     //   550: invokespecial 116	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   553: aload 15
     //   555: invokevirtual 312	java/io/File:getPath	()Ljava/lang/String;
@@ -1221,7 +1164,7 @@ public final class e
     //   565: anewarray 164	java/lang/Object
     //   568: invokestatic 180	com/tencent/tinker/loader/shareutil/ShareTinkerLog:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   571: aload 15
-    //   573: invokevirtual 617	java/io/File:delete	()Z
+    //   573: invokevirtual 596	java/io/File:delete	()Z
     //   576: pop
     //   577: aload 7
     //   579: aload 8
@@ -1232,21 +1175,21 @@ public final class e
     //   589: invokevirtual 217	java/util/zip/ZipFile:getEntry	(Ljava/lang/String;)Ljava/util/zip/ZipEntry;
     //   592: astore 16
     //   594: aload 13
-    //   596: ldc_w 582
+    //   596: ldc_w 558
     //   599: invokevirtual 109	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   602: ifeq +144 -> 746
     //   605: aload 17
     //   607: ifnonnull +65 -> 672
     //   610: ldc 160
-    //   612: ldc_w 619
+    //   612: ldc_w 598
     //   615: aload 8
-    //   617: invokestatic 432	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   620: invokevirtual 436	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   617: invokestatic 441	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   620: invokevirtual 445	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
     //   623: iconst_0
     //   624: anewarray 164	java/lang/Object
     //   627: invokestatic 180	com/tencent/tinker/loader/shareutil/ShareTinkerLog:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   630: aload 10
-    //   632: getfield 301	com/tencent/tinker/lib/e/a:MgW	Lcom/tencent/tinker/lib/d/d;
+    //   632: getfield 301	com/tencent/tinker/lib/e/a:MDT	Lcom/tencent/tinker/lib/d/d;
     //   635: aload_3
     //   636: aload 15
     //   638: aload 12
@@ -1254,13 +1197,13 @@ public final class e
     //   643: iconst_3
     //   644: invokeinterface 307 5 0
     //   649: aload_2
-    //   650: invokestatic 559	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:closeZip	(Ljava/util/zip/ZipFile;)V
+    //   650: invokestatic 534	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:closeZip	(Ljava/util/zip/ZipFile;)V
     //   653: aload 7
-    //   655: invokestatic 559	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:closeZip	(Ljava/util/zip/ZipFile;)V
+    //   655: invokestatic 534	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:closeZip	(Ljava/util/zip/ZipFile;)V
     //   658: iconst_0
     //   659: ireturn
     //   660: aload 15
-    //   662: invokevirtual 623	java/io/File:getParentFile	()Ljava/io/File;
+    //   662: invokevirtual 602	java/io/File:getParentFile	()Ljava/io/File;
     //   665: invokevirtual 331	java/io/File:mkdirs	()Z
     //   668: pop
     //   669: goto -92 -> 577
@@ -1268,12 +1211,12 @@ public final class e
     //   674: aload 17
     //   676: aload 15
     //   678: aload 12
-    //   680: invokestatic 625	com/tencent/tinker/lib/c/e:a	(Ljava/util/zip/ZipFile;Ljava/util/zip/ZipEntry;Ljava/io/File;Lcom/tencent/tinker/loader/shareutil/ShareDexDiffPatchInfo;)Z
+    //   680: invokestatic 604	com/tencent/tinker/lib/c/e:a	(Ljava/util/zip/ZipFile;Ljava/util/zip/ZipEntry;Ljava/io/File;Lcom/tencent/tinker/loader/shareutil/ShareDexDiffPatchInfo;)Z
     //   683: ifne -511 -> 172
     //   686: ldc 160
     //   688: new 113	java/lang/StringBuilder
     //   691: dup
-    //   692: ldc_w 627
+    //   692: ldc_w 606
     //   695: invokespecial 116	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   698: aload 15
     //   700: invokevirtual 312	java/io/File:getPath	()Ljava/lang/String;
@@ -1283,7 +1226,7 @@ public final class e
     //   710: anewarray 164	java/lang/Object
     //   713: invokestatic 180	com/tencent/tinker/loader/shareutil/ShareTinkerLog:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   716: aload 10
-    //   718: getfield 301	com/tencent/tinker/lib/e/a:MgW	Lcom/tencent/tinker/lib/d/d;
+    //   718: getfield 301	com/tencent/tinker/lib/e/a:MDT	Lcom/tencent/tinker/lib/d/d;
     //   721: aload_3
     //   722: aload 15
     //   724: aload 12
@@ -1291,13 +1234,13 @@ public final class e
     //   729: iconst_3
     //   730: invokeinterface 307 5 0
     //   735: aload_2
-    //   736: invokestatic 559	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:closeZip	(Ljava/util/zip/ZipFile;)V
+    //   736: invokestatic 534	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:closeZip	(Ljava/util/zip/ZipFile;)V
     //   739: aload 7
-    //   741: invokestatic 559	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:closeZip	(Ljava/util/zip/ZipFile;)V
+    //   741: invokestatic 534	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:closeZip	(Ljava/util/zip/ZipFile;)V
     //   744: iconst_0
     //   745: ireturn
     //   746: aload 14
-    //   748: ldc_w 582
+    //   748: ldc_w 558
     //   751: invokevirtual 109	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   754: ifeq +228 -> 982
     //   757: getstatic 39	com/tencent/tinker/lib/c/e:isVmArt	Z
@@ -1305,15 +1248,15 @@ public final class e
     //   763: aload 16
     //   765: ifnonnull +53 -> 818
     //   768: ldc 160
-    //   770: ldc_w 629
+    //   770: ldc_w 608
     //   773: aload 8
-    //   775: invokestatic 432	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   778: invokevirtual 436	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   775: invokestatic 441	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   778: invokevirtual 445	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
     //   781: iconst_0
     //   782: anewarray 164	java/lang/Object
     //   785: invokestatic 180	com/tencent/tinker/loader/shareutil/ShareTinkerLog:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   788: aload 10
-    //   790: getfield 301	com/tencent/tinker/lib/e/a:MgW	Lcom/tencent/tinker/lib/d/d;
+    //   790: getfield 301	com/tencent/tinker/lib/e/a:MDT	Lcom/tencent/tinker/lib/d/d;
     //   793: aload_3
     //   794: aload 15
     //   796: aload 12
@@ -1321,21 +1264,21 @@ public final class e
     //   801: iconst_3
     //   802: invokeinterface 307 5 0
     //   807: aload_2
-    //   808: invokestatic 559	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:closeZip	(Ljava/util/zip/ZipFile;)V
+    //   808: invokestatic 534	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:closeZip	(Ljava/util/zip/ZipFile;)V
     //   811: aload 7
-    //   813: invokestatic 559	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:closeZip	(Ljava/util/zip/ZipFile;)V
+    //   813: invokestatic 534	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:closeZip	(Ljava/util/zip/ZipFile;)V
     //   816: iconst_0
     //   817: ireturn
     //   818: aload 16
     //   820: invokevirtual 234	java/util/zip/ZipEntry:getCrc	()J
-    //   823: invokestatic 632	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   823: invokestatic 611	java/lang/String:valueOf	(J)Ljava/lang/String;
     //   826: astore 14
     //   828: aload 14
     //   830: aload 13
     //   832: invokevirtual 109	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   835: ifne +60 -> 895
     //   838: ldc 160
-    //   840: ldc_w 634
+    //   840: ldc_w 613
     //   843: iconst_3
     //   844: anewarray 164	java/lang/Object
     //   847: dup
@@ -1352,7 +1295,7 @@ public final class e
     //   861: aastore
     //   862: invokestatic 269	com/tencent/tinker/loader/shareutil/ShareTinkerLog:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   865: aload 10
-    //   867: getfield 301	com/tencent/tinker/lib/e/a:MgW	Lcom/tencent/tinker/lib/d/d;
+    //   867: getfield 301	com/tencent/tinker/lib/e/a:MDT	Lcom/tencent/tinker/lib/d/d;
     //   870: aload_3
     //   871: aload 15
     //   873: aload 12
@@ -1360,25 +1303,25 @@ public final class e
     //   878: iconst_3
     //   879: invokeinterface 307 5 0
     //   884: aload_2
-    //   885: invokestatic 559	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:closeZip	(Ljava/util/zip/ZipFile;)V
+    //   885: invokestatic 534	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:closeZip	(Ljava/util/zip/ZipFile;)V
     //   888: aload 7
-    //   890: invokestatic 559	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:closeZip	(Ljava/util/zip/ZipFile;)V
+    //   890: invokestatic 534	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:closeZip	(Ljava/util/zip/ZipFile;)V
     //   893: iconst_0
     //   894: ireturn
     //   895: aload_2
     //   896: aload 16
     //   898: aload 15
     //   900: aload 12
-    //   902: invokestatic 625	com/tencent/tinker/lib/c/e:a	(Ljava/util/zip/ZipFile;Ljava/util/zip/ZipEntry;Ljava/io/File;Lcom/tencent/tinker/loader/shareutil/ShareDexDiffPatchInfo;)Z
+    //   902: invokestatic 604	com/tencent/tinker/lib/c/e:a	(Ljava/util/zip/ZipFile;Ljava/util/zip/ZipEntry;Ljava/io/File;Lcom/tencent/tinker/loader/shareutil/ShareDexDiffPatchInfo;)Z
     //   905: pop
     //   906: aload 15
     //   908: aload 9
-    //   910: invokestatic 610	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:verifyDexFileMd5	(Ljava/io/File;Ljava/lang/String;)Z
+    //   910: invokestatic 589	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:verifyDexFileMd5	(Ljava/io/File;Ljava/lang/String;)Z
     //   913: ifne -741 -> 172
     //   916: ldc 160
     //   918: new 113	java/lang/StringBuilder
     //   921: dup
-    //   922: ldc_w 636
+    //   922: ldc_w 615
     //   925: invokespecial 116	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   928: aload 15
     //   930: invokevirtual 312	java/io/File:getPath	()Ljava/lang/String;
@@ -1388,7 +1331,7 @@ public final class e
     //   940: anewarray 164	java/lang/Object
     //   943: invokestatic 180	com/tencent/tinker/loader/shareutil/ShareTinkerLog:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   946: aload 10
-    //   948: getfield 301	com/tencent/tinker/lib/e/a:MgW	Lcom/tencent/tinker/lib/d/d;
+    //   948: getfield 301	com/tencent/tinker/lib/e/a:MDT	Lcom/tencent/tinker/lib/d/d;
     //   951: aload_3
     //   952: aload 15
     //   954: aload 12
@@ -1399,23 +1342,23 @@ public final class e
     //   967: invokestatic 280	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:safeDeleteFile	(Ljava/io/File;)Z
     //   970: pop
     //   971: aload_2
-    //   972: invokestatic 559	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:closeZip	(Ljava/util/zip/ZipFile;)V
+    //   972: invokestatic 534	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:closeZip	(Ljava/util/zip/ZipFile;)V
     //   975: aload 7
-    //   977: invokestatic 559	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:closeZip	(Ljava/util/zip/ZipFile;)V
+    //   977: invokestatic 534	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:closeZip	(Ljava/util/zip/ZipFile;)V
     //   980: iconst_0
     //   981: ireturn
     //   982: aload 17
     //   984: ifnonnull +53 -> 1037
     //   987: ldc 160
-    //   989: ldc_w 619
+    //   989: ldc_w 598
     //   992: aload 8
-    //   994: invokestatic 432	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   997: invokevirtual 436	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   994: invokestatic 441	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   997: invokevirtual 445	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
     //   1000: iconst_0
     //   1001: anewarray 164	java/lang/Object
     //   1004: invokestatic 180	com/tencent/tinker/loader/shareutil/ShareTinkerLog:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   1007: aload 10
-    //   1009: getfield 301	com/tencent/tinker/lib/e/a:MgW	Lcom/tencent/tinker/lib/d/d;
+    //   1009: getfield 301	com/tencent/tinker/lib/e/a:MDT	Lcom/tencent/tinker/lib/d/d;
     //   1012: aload_3
     //   1013: aload 15
     //   1015: aload 12
@@ -1423,22 +1366,22 @@ public final class e
     //   1020: iconst_3
     //   1021: invokeinterface 307 5 0
     //   1026: aload_2
-    //   1027: invokestatic 559	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:closeZip	(Ljava/util/zip/ZipFile;)V
+    //   1027: invokestatic 534	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:closeZip	(Ljava/util/zip/ZipFile;)V
     //   1030: aload 7
-    //   1032: invokestatic 559	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:closeZip	(Ljava/util/zip/ZipFile;)V
+    //   1032: invokestatic 534	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:closeZip	(Ljava/util/zip/ZipFile;)V
     //   1035: iconst_0
     //   1036: ireturn
     //   1037: aload 14
-    //   1039: invokestatic 598	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:checkIfMd5Valid	(Ljava/lang/String;)Z
+    //   1039: invokestatic 574	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:checkIfMd5Valid	(Ljava/lang/String;)Z
     //   1042: ifne +61 -> 1103
     //   1045: ldc 160
-    //   1047: ldc_w 600
+    //   1047: ldc_w 576
     //   1050: iconst_3
     //   1051: anewarray 164	java/lang/Object
     //   1054: dup
     //   1055: iconst_0
     //   1056: iconst_3
-    //   1057: invokestatic 547	com/tencent/tinker/loader/shareutil/ShareTinkerInternals:getTypeString	(I)Ljava/lang/String;
+    //   1057: invokestatic 522	com/tencent/tinker/loader/shareutil/ShareTinkerInternals:getTypeString	(I)Ljava/lang/String;
     //   1060: aastore
     //   1061: dup
     //   1062: iconst_1
@@ -1451,29 +1394,29 @@ public final class e
     //   1073: aastore
     //   1074: invokestatic 180	com/tencent/tinker/loader/shareutil/ShareTinkerLog:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   1077: aload 10
-    //   1079: getfield 301	com/tencent/tinker/lib/e/a:MgW	Lcom/tencent/tinker/lib/d/d;
+    //   1079: getfield 301	com/tencent/tinker/lib/e/a:MDT	Lcom/tencent/tinker/lib/d/d;
     //   1082: aload_3
     //   1083: iconst_3
-    //   1084: invokestatic 604	com/tencent/tinker/lib/c/c:ail	(I)I
-    //   1087: invokeinterface 607 3 0
+    //   1084: invokestatic 580	com/tencent/tinker/lib/c/c:aiU	(I)I
+    //   1087: invokeinterface 583 3 0
     //   1092: aload_2
-    //   1093: invokestatic 559	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:closeZip	(Ljava/util/zip/ZipFile;)V
+    //   1093: invokestatic 534	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:closeZip	(Ljava/util/zip/ZipFile;)V
     //   1096: aload 7
-    //   1098: invokestatic 559	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:closeZip	(Ljava/util/zip/ZipFile;)V
+    //   1098: invokestatic 534	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:closeZip	(Ljava/util/zip/ZipFile;)V
     //   1101: iconst_0
     //   1102: ireturn
     //   1103: aload 16
     //   1105: ifnonnull +53 -> 1158
     //   1108: ldc 160
-    //   1110: ldc_w 629
+    //   1110: ldc_w 608
     //   1113: aload 8
-    //   1115: invokestatic 432	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   1118: invokevirtual 436	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   1115: invokestatic 441	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   1118: invokevirtual 445	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
     //   1121: iconst_0
     //   1122: anewarray 164	java/lang/Object
     //   1125: invokestatic 180	com/tencent/tinker/loader/shareutil/ShareTinkerLog:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   1128: aload 10
-    //   1130: getfield 301	com/tencent/tinker/lib/e/a:MgW	Lcom/tencent/tinker/lib/d/d;
+    //   1130: getfield 301	com/tencent/tinker/lib/e/a:MDT	Lcom/tencent/tinker/lib/d/d;
     //   1133: aload_3
     //   1134: aload 15
     //   1136: aload 12
@@ -1481,21 +1424,21 @@ public final class e
     //   1141: iconst_3
     //   1142: invokeinterface 307 5 0
     //   1147: aload_2
-    //   1148: invokestatic 559	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:closeZip	(Ljava/util/zip/ZipFile;)V
+    //   1148: invokestatic 534	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:closeZip	(Ljava/util/zip/ZipFile;)V
     //   1151: aload 7
-    //   1153: invokestatic 559	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:closeZip	(Ljava/util/zip/ZipFile;)V
+    //   1153: invokestatic 534	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:closeZip	(Ljava/util/zip/ZipFile;)V
     //   1156: iconst_0
     //   1157: ireturn
     //   1158: aload 16
     //   1160: invokevirtual 234	java/util/zip/ZipEntry:getCrc	()J
-    //   1163: invokestatic 632	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   1163: invokestatic 611	java/lang/String:valueOf	(J)Ljava/lang/String;
     //   1166: astore 14
     //   1168: aload 14
     //   1170: aload 13
     //   1172: invokevirtual 109	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   1175: ifne +60 -> 1235
     //   1178: ldc 160
-    //   1180: ldc_w 634
+    //   1180: ldc_w 613
     //   1183: iconst_3
     //   1184: anewarray 164	java/lang/Object
     //   1187: dup
@@ -1512,7 +1455,7 @@ public final class e
     //   1201: aastore
     //   1202: invokestatic 269	com/tencent/tinker/loader/shareutil/ShareTinkerLog:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   1205: aload 10
-    //   1207: getfield 301	com/tencent/tinker/lib/e/a:MgW	Lcom/tencent/tinker/lib/d/d;
+    //   1207: getfield 301	com/tencent/tinker/lib/e/a:MDT	Lcom/tencent/tinker/lib/d/d;
     //   1210: aload_3
     //   1211: aload 15
     //   1213: aload 12
@@ -1520,9 +1463,9 @@ public final class e
     //   1218: iconst_3
     //   1219: invokeinterface 307 5 0
     //   1224: aload_2
-    //   1225: invokestatic 559	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:closeZip	(Ljava/util/zip/ZipFile;)V
+    //   1225: invokestatic 534	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:closeZip	(Ljava/util/zip/ZipFile;)V
     //   1228: aload 7
-    //   1230: invokestatic 559	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:closeZip	(Ljava/util/zip/ZipFile;)V
+    //   1230: invokestatic 534	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:closeZip	(Ljava/util/zip/ZipFile;)V
     //   1233: iconst_0
     //   1234: ireturn
     //   1235: aload_2
@@ -1531,15 +1474,15 @@ public final class e
     //   1240: aload 17
     //   1242: aload 12
     //   1244: aload 15
-    //   1246: invokestatic 638	com/tencent/tinker/lib/c/e:a	(Ljava/util/zip/ZipFile;Ljava/util/zip/ZipFile;Ljava/util/zip/ZipEntry;Ljava/util/zip/ZipEntry;Lcom/tencent/tinker/loader/shareutil/ShareDexDiffPatchInfo;Ljava/io/File;)V
+    //   1246: invokestatic 617	com/tencent/tinker/lib/c/e:a	(Ljava/util/zip/ZipFile;Ljava/util/zip/ZipFile;Ljava/util/zip/ZipEntry;Ljava/util/zip/ZipEntry;Lcom/tencent/tinker/loader/shareutil/ShareDexDiffPatchInfo;Ljava/io/File;)V
     //   1249: aload 15
     //   1251: aload 9
-    //   1253: invokestatic 610	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:verifyDexFileMd5	(Ljava/io/File;Ljava/lang/String;)Z
+    //   1253: invokestatic 589	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:verifyDexFileMd5	(Ljava/io/File;Ljava/lang/String;)Z
     //   1256: ifne +69 -> 1325
     //   1259: ldc 160
     //   1261: new 113	java/lang/StringBuilder
     //   1264: dup
-    //   1265: ldc_w 636
+    //   1265: ldc_w 615
     //   1268: invokespecial 116	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   1271: aload 15
     //   1273: invokevirtual 312	java/io/File:getPath	()Ljava/lang/String;
@@ -1549,7 +1492,7 @@ public final class e
     //   1283: anewarray 164	java/lang/Object
     //   1286: invokestatic 180	com/tencent/tinker/loader/shareutil/ShareTinkerLog:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   1289: aload 10
-    //   1291: getfield 301	com/tencent/tinker/lib/e/a:MgW	Lcom/tencent/tinker/lib/d/d;
+    //   1291: getfield 301	com/tencent/tinker/lib/e/a:MDT	Lcom/tencent/tinker/lib/d/d;
     //   1294: aload_3
     //   1295: aload 15
     //   1297: aload 12
@@ -1560,13 +1503,13 @@ public final class e
     //   1310: invokestatic 280	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:safeDeleteFile	(Ljava/io/File;)Z
     //   1313: pop
     //   1314: aload_2
-    //   1315: invokestatic 559	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:closeZip	(Ljava/util/zip/ZipFile;)V
+    //   1315: invokestatic 534	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:closeZip	(Ljava/util/zip/ZipFile;)V
     //   1318: aload 7
-    //   1320: invokestatic 559	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:closeZip	(Ljava/util/zip/ZipFile;)V
+    //   1320: invokestatic 534	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:closeZip	(Ljava/util/zip/ZipFile;)V
     //   1323: iconst_0
     //   1324: ireturn
     //   1325: ldc 160
-    //   1327: ldc_w 640
+    //   1327: ldc_w 619
     //   1330: iconst_3
     //   1331: anewarray 164	java/lang/Object
     //   1334: dup
@@ -1592,20 +1535,20 @@ public final class e
     //   1371: aload_0
     //   1372: aload_3
     //   1373: aload_1
-    //   1374: invokestatic 642	com/tencent/tinker/lib/c/e:a	(Landroid/content/Context;Ljava/io/File;Ljava/lang/String;)Z
+    //   1374: invokestatic 621	com/tencent/tinker/lib/c/e:a	(Landroid/content/Context;Ljava/io/File;Ljava/lang/String;)Z
     //   1377: istore 6
     //   1379: iload 6
     //   1381: ifne +14 -> 1395
     //   1384: aload_2
-    //   1385: invokestatic 559	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:closeZip	(Ljava/util/zip/ZipFile;)V
+    //   1385: invokestatic 534	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:closeZip	(Ljava/util/zip/ZipFile;)V
     //   1388: aload 7
-    //   1390: invokestatic 559	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:closeZip	(Ljava/util/zip/ZipFile;)V
+    //   1390: invokestatic 534	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:closeZip	(Ljava/util/zip/ZipFile;)V
     //   1393: iconst_0
     //   1394: ireturn
     //   1395: aload_2
-    //   1396: invokestatic 559	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:closeZip	(Ljava/util/zip/ZipFile;)V
+    //   1396: invokestatic 534	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:closeZip	(Ljava/util/zip/ZipFile;)V
     //   1399: aload 7
-    //   1401: invokestatic 559	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:closeZip	(Ljava/util/zip/ZipFile;)V
+    //   1401: invokestatic 534	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:closeZip	(Ljava/util/zip/ZipFile;)V
     //   1404: iconst_1
     //   1405: ireturn
     //   1406: astore_0
@@ -1786,6 +1729,65 @@ public final class e
       b.closeQuietly(paramFile);
       throw paramZipFile;
       return bool;
+    }
+  }
+  
+  private static boolean bbs(String paramString)
+  {
+    if ((MDB.isEmpty()) || (!isVmArt)) {
+      return false;
+    }
+    Iterator localIterator = MDB.iterator();
+    Object localObject2 = null;
+    Object localObject1 = null;
+    if (localIterator.hasNext())
+    {
+      ShareDexDiffPatchInfo localShareDexDiffPatchInfo = (ShareDexDiffPatchInfo)localIterator.next();
+      File localFile = new File(paramString + localShareDexDiffPatchInfo.realName);
+      String str = localFile.getName();
+      if (ShareConstants.CLASS_N_PATTERN.matcher(str).matches()) {
+        MDC.put(localShareDexDiffPatchInfo, localFile);
+      }
+      if (!localShareDexDiffPatchInfo.rawName.startsWith("test.dex")) {
+        break label329;
+      }
+      localObject2 = localFile;
+      localObject1 = localShareDexDiffPatchInfo;
+    }
+    label329:
+    for (;;)
+    {
+      break;
+      if (localObject1 != null) {
+        MDC.put(ShareTinkerInternals.changeTestDexToClassN((ShareDexDiffPatchInfo)localObject1, MDC.size() + 1), localObject2);
+      }
+      paramString = new File(paramString, "tinker_classN.apk");
+      if (paramString.exists())
+      {
+        localObject1 = MDC.keySet().iterator();
+        while (((Iterator)localObject1).hasNext())
+        {
+          localObject2 = (ShareDexDiffPatchInfo)((Iterator)localObject1).next();
+          if (!SharePatchFileUtil.verifyDexFileMd5(paramString, ((ShareDexDiffPatchInfo)localObject2).rawName, ((ShareDexDiffPatchInfo)localObject2).destMd5InArt)) {
+            ShareTinkerLog.e("Tinker.DexDiffPatchInternal", "verify dex file md5 error, entry name; %s, file len: %d", new Object[] { ((ShareDexDiffPatchInfo)localObject2).rawName, Long.valueOf(paramString.length()) });
+          }
+        }
+      }
+      for (boolean bool1 = false;; bool1 = true)
+      {
+        boolean bool2 = bool1;
+        if (!bool1) {
+          SharePatchFileUtil.safeDeleteFile(paramString);
+        }
+        for (bool2 = bool1; bool2; bool2 = false)
+        {
+          paramString = MDC.values().iterator();
+          while (paramString.hasNext()) {
+            SharePatchFileUtil.safeDeleteFile((File)paramString.next());
+          }
+        }
+        return bool2;
+      }
     }
   }
 }

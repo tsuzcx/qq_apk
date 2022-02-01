@@ -1,21 +1,21 @@
 package com.tencent.mm.wallet_core.b.a;
 
 import android.content.Context;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.f;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.f;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.q;
 import com.tencent.mm.platformtools.z;
 import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.boo;
-import com.tencent.mm.protocal.protobuf.bop;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.sdk.platformtools.bw;
+import com.tencent.mm.protocal.protobuf.bpg;
+import com.tencent.mm.protocal.protobuf.bph;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.bx;
 import com.tencent.mm.wallet_core.c.w;
 import java.util.Arrays;
 import java.util.Map;
@@ -28,11 +28,11 @@ public abstract class a
   private f callback;
   private b rr;
   
-  public abstract String cau();
+  public abstract String cbJ();
   
-  public abstract int cav();
+  public abstract int cbK();
   
-  public boolean caw()
+  public boolean cbL()
   {
     return false;
   }
@@ -45,14 +45,14 @@ public abstract class a
   
   public void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte, long paramLong)
   {
-    ad.i("MiroMsg.NetSceneTenpayH5TransferBase", "Cmd : " + cav() + ", errType = " + paramInt2 + ", errCode = " + paramInt3 + ", errMsg = " + paramString + " " + getType());
-    bop localbop = (bop)((b)paramq).hNL.hNQ;
+    ae.i("MiroMsg.NetSceneTenpayH5TransferBase", "Cmd : " + cbK() + ", errType = " + paramInt2 + ", errCode = " + paramInt3 + ", errMsg = " + paramString + " " + getType());
+    bph localbph = (bph)((b)paramq).hQE.hQJ;
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      paramInt1 = localbop.GJq;
-      paramq = z.b(localbop.GJp);
-      if ((paramInt1 == 0) && (!bt.isNullOrNil(paramq))) {
-        paramInt1 = localbop.dnL;
+      paramInt1 = localbph.HcR;
+      paramq = z.b(localbph.HcQ);
+      if ((paramInt1 == 0) && (!bu.isNullOrNil(paramq))) {
+        paramInt1 = localbph.doQ;
       }
     }
     for (;;)
@@ -64,23 +64,23 @@ public abstract class a
         i = localJSONObject.getInt("retcode");
         paramArrayOfByte = localJSONObject.optString("retmsg");
         paramq = paramArrayOfByte;
-        if (!bt.isNullOrNil(paramArrayOfByte)) {
+        if (!bu.isNullOrNil(paramArrayOfByte)) {
           break label384;
         }
-        paramq = localbop.errorMsg;
+        paramq = localbph.errorMsg;
       }
       catch (Exception paramString)
       {
         JSONObject localJSONObject;
-        ad.printErrStackTrace("MiroMsg.NetSceneTenpayH5TransferBase", paramString, "", new Object[0]);
+        ae.printErrStackTrace("MiroMsg.NetSceneTenpayH5TransferBase", paramString, "", new Object[0]);
         i = 1000;
         paramInt1 = 2;
       }
-      if (caw())
+      if (cbL())
       {
         onGYNetEnd(i, paramq, localJSONObject);
         if (paramInt2 != 0) {
-          ad.e("MiroMsg.NetSceneTenpayH5TransferBase", "Cmd : " + cav() + ", errType = " + paramInt2 + ", errCode = " + paramInt3 + ", errMsg = " + paramString);
+          ae.e("MiroMsg.NetSceneTenpayH5TransferBase", "Cmd : " + cbK() + ", errType = " + paramInt2 + ", errCode = " + paramInt3 + ", errMsg = " + paramString);
         }
         this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
         return;
@@ -94,19 +94,19 @@ public abstract class a
         continue;
         do
         {
-          paramString = aj.getContext().getString(2131765224);
+          paramString = ak.getContext().getString(2131765224);
           paramInt2 = i;
           paramInt3 = paramInt1;
           break;
           paramInt2 = 1000;
           paramInt3 = 2;
-          paramString = localbop.GJr;
+          paramString = localbph.HcS;
           break;
-          paramString = bw.M(paramString, "e");
+          paramString = bx.M(paramString, "e");
           i = paramInt2;
           paramInt1 = paramInt3;
         } while (paramString == null);
-        ad.d("MiroMsg.NetSceneTenpayH5TransferBase", "CDN error!");
+        ae.d("MiroMsg.NetSceneTenpayH5TransferBase", "CDN error!");
         paramString = (String)paramString.get(".e.Content");
       }
       else
@@ -127,18 +127,18 @@ public abstract class a
     if (this.rr == null)
     {
       localObject1 = new b.a();
-      ((b.a)localObject1).hNM = new boo();
-      ((b.a)localObject1).hNN = new bop();
-      ((b.a)localObject1).uri = cau();
+      ((b.a)localObject1).hQF = new bpg();
+      ((b.a)localObject1).hQG = new bph();
+      ((b.a)localObject1).uri = cbJ();
       ((b.a)localObject1).funcId = getType();
-      ((b.a)localObject1).hNO = 0;
+      ((b.a)localObject1).hQH = 0;
       ((b.a)localObject1).respCmdId = 0;
-      this.rr = ((b.a)localObject1).aDC();
+      this.rr = ((b.a)localObject1).aDS();
       this.rr.setIsUserCmd(true);
     }
-    Object localObject1 = (boo)this.rr.hNK.hNQ;
-    ((boo)localObject1).GJm = cav();
-    ((boo)localObject1).GJn = 1;
+    Object localObject1 = (bpg)this.rr.hQD.hQJ;
+    ((bpg)localObject1).HcN = cbK();
+    ((bpg)localObject1).HcO = 1;
     Object[] arrayOfObject = paramMap.keySet().toArray();
     Arrays.sort(arrayOfObject);
     StringBuilder localStringBuilder = new StringBuilder();
@@ -149,7 +149,7 @@ public abstract class a
       Object localObject2 = arrayOfObject[i];
       String str = (String)paramMap.get(localObject2);
       k = j;
-      if (!bt.isNullOrNil(str))
+      if (!bu.isNullOrNil(str))
       {
         if (j != 0) {
           localStringBuilder.append("&");
@@ -161,14 +161,14 @@ public abstract class a
       }
       i += 1;
     }
-    ad.i("MiroMsg.NetSceneTenpayH5TransferBase", "Cmd : " + ((boo)localObject1).GJm + ", req = " + localStringBuilder.toString());
+    ae.i("MiroMsg.NetSceneTenpayH5TransferBase", "Cmd : " + ((bpg)localObject1).HcN + ", req = " + localStringBuilder.toString());
     paramMap = localStringBuilder.toString().getBytes();
-    ((boo)localObject1).GJo = new SKBuiltinBuffer_t().setBuffer(paramMap);
+    ((bpg)localObject1).HcP = new SKBuiltinBuffer_t().setBuffer(paramMap);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.wallet_core.b.a.a
  * JD-Core Version:    0.7.0.1
  */

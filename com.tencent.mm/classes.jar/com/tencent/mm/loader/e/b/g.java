@@ -6,36 +6,36 @@ import java.lang.ref.WeakReference;
 
 public final class g<T>
 {
-  private WeakReference<T> heU;
-  private a heV = new a("");
-  final int heW;
   public int height = 0;
+  private WeakReference<T> hhI;
+  private a hhJ = new a("");
+  final int hhK;
   public int width = 0;
   
   public g(T paramT)
   {
-    this.heU = new WeakReference(paramT);
+    this.hhI = new WeakReference(paramT);
     if (paramT != null)
     {
-      this.heW = paramT.hashCode();
+      this.hhK = paramT.hashCode();
       return;
     }
-    this.heW = hashCode();
+    this.hhK = hashCode();
   }
   
   public final T get()
   {
-    if (this.heU == null) {
+    if (this.hhI == null) {
       return null;
     }
-    return this.heU.get();
+    return this.hhI.get();
   }
   
   public final View getView()
   {
-    if (this.heU != null)
+    if (this.hhI != null)
     {
-      Object localObject = this.heU.get();
+      Object localObject = this.hhI.get();
       if ((localObject != null) && ((localObject instanceof View))) {
         return (View)localObject;
       }
@@ -45,7 +45,7 @@ public final class g<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.loader.e.b.g
  * JD-Core Version:    0.7.0.1
  */

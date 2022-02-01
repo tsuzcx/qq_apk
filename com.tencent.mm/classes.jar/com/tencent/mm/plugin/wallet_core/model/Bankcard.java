@@ -6,280 +6,280 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.gr;
+import com.tencent.mm.g.c.gs;
 import com.tencent.mm.sdk.e.c.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.lang.reflect.Field;
 import java.util.Map;
 import java.util.Set;
 
 public class Bankcard
-  extends gr
+  extends gs
   implements Parcelable
 {
   public static final Parcelable.Creator<Bankcard> CREATOR;
-  public static int CUp;
-  public static int CUq;
-  public static int CUr;
-  public static int CUs;
-  public static int CUt;
-  public static int CUu;
-  public static int CUv;
-  public static int CUw;
-  public static int CUx;
+  public static int DlV;
+  public static int DlW;
+  public static int DlX;
+  public static int DlY;
+  public static int DlZ;
+  public static int Dma;
+  public static int Dmb;
+  public static int Dmc;
+  public static int Dmd;
   public static c.a info;
-  public int CTR;
-  public String CTT;
-  public String CUA;
-  public String CUB;
-  public String CUC;
-  public double CUD;
-  public String CUE;
-  public double CUF;
-  public String CUG;
-  public String CUH;
-  public String CUI;
-  public String CUJ;
-  public String CUK;
-  public b CUL;
-  public String CUM;
-  public boolean CUN;
-  public e CUO;
-  public long CUP;
-  public long CUQ;
-  public long CUR;
-  public String CUS;
-  public int CUT;
-  public int CUU;
-  public String CUV;
-  public String CUW;
-  public int CUX;
-  public String CUY;
-  public long CUZ;
-  public String CUy;
-  public String CUz;
-  public String CVa;
-  public String CVb;
-  public String CVc;
-  public String CzQ;
-  public String CzR;
+  public String CRv;
+  public String CRw;
+  public int Dlx;
+  public String Dlz;
+  public int DmA;
+  public String DmB;
+  public String DmC;
+  public int DmD;
+  public String DmE;
+  public long DmF;
+  public String DmG;
+  public String DmH;
+  public String DmI;
+  public String Dme;
+  public String Dmf;
+  public String Dmg;
+  public String Dmh;
+  public String Dmi;
+  public double Dmj;
+  public String Dmk;
+  public double Dml;
+  public String Dmm;
+  public String Dmn;
+  public String Dmo;
+  public String Dmp;
+  public String Dmq;
+  public b Dmr;
+  public String Dms;
+  public boolean Dmt;
+  public e Dmu;
+  public long Dmv;
+  public long Dmw;
+  public long Dmx;
+  public String Dmy;
+  public int Dmz;
   
   static
   {
     AppMethodBeat.i(70225);
-    CUp = 1;
-    CUq = 2;
-    CUr = 4;
-    CUs = 8;
-    CUt = 16;
-    CUu = 32;
-    CUv = 64;
-    CUw = 128;
-    CUx = 256;
+    DlV = 1;
+    DlW = 2;
+    DlX = 4;
+    DlY = 8;
+    DlZ = 16;
+    Dma = 32;
+    Dmb = 64;
+    Dmc = 128;
+    Dmd = 256;
     c.a locala = new c.a();
-    locala.IhA = new Field[43];
+    locala.IBL = new Field[43];
     locala.columns = new String[44];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "bindSerial";
-    locala.IhC.put("bindSerial", "TEXT PRIMARY KEY ");
+    locala.IBN.put("bindSerial", "TEXT PRIMARY KEY ");
     localStringBuilder.append(" bindSerial TEXT PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.IhB = "bindSerial";
+    locala.IBM = "bindSerial";
     locala.columns[1] = "cardType";
-    locala.IhC.put("cardType", "INTEGER");
+    locala.IBN.put("cardType", "INTEGER");
     localStringBuilder.append(" cardType INTEGER");
     localStringBuilder.append(", ");
     locala.columns[2] = "bankcardState";
-    locala.IhC.put("bankcardState", "INTEGER");
+    locala.IBN.put("bankcardState", "INTEGER");
     localStringBuilder.append(" bankcardState INTEGER");
     localStringBuilder.append(", ");
     locala.columns[3] = "forbidWord";
-    locala.IhC.put("forbidWord", "TEXT");
+    locala.IBN.put("forbidWord", "TEXT");
     localStringBuilder.append(" forbidWord TEXT");
     localStringBuilder.append(", ");
     locala.columns[4] = "bankName";
-    locala.IhC.put("bankName", "TEXT");
+    locala.IBN.put("bankName", "TEXT");
     localStringBuilder.append(" bankName TEXT");
     localStringBuilder.append(", ");
     locala.columns[5] = "bankcardType";
-    locala.IhC.put("bankcardType", "TEXT");
+    locala.IBN.put("bankcardType", "TEXT");
     localStringBuilder.append(" bankcardType TEXT");
     localStringBuilder.append(", ");
     locala.columns[6] = "bankcardTypeName";
-    locala.IhC.put("bankcardTypeName", "TEXT");
+    locala.IBN.put("bankcardTypeName", "TEXT");
     localStringBuilder.append(" bankcardTypeName TEXT");
     localStringBuilder.append(", ");
     locala.columns[7] = "bankcardTag";
-    locala.IhC.put("bankcardTag", "INTEGER");
+    locala.IBN.put("bankcardTag", "INTEGER");
     localStringBuilder.append(" bankcardTag INTEGER");
     localStringBuilder.append(", ");
     locala.columns[8] = "bankcardTail";
-    locala.IhC.put("bankcardTail", "TEXT");
+    locala.IBN.put("bankcardTail", "TEXT");
     localStringBuilder.append(" bankcardTail TEXT");
     localStringBuilder.append(", ");
     locala.columns[9] = "supportTag";
-    locala.IhC.put("supportTag", "INTEGER");
+    locala.IBN.put("supportTag", "INTEGER");
     localStringBuilder.append(" supportTag INTEGER");
     localStringBuilder.append(", ");
     locala.columns[10] = "mobile";
-    locala.IhC.put("mobile", "TEXT");
+    locala.IBN.put("mobile", "TEXT");
     localStringBuilder.append(" mobile TEXT");
     localStringBuilder.append(", ");
     locala.columns[11] = "trueName";
-    locala.IhC.put("trueName", "TEXT");
+    locala.IBN.put("trueName", "TEXT");
     localStringBuilder.append(" trueName TEXT");
     localStringBuilder.append(", ");
     locala.columns[12] = "desc";
-    locala.IhC.put("desc", "TEXT");
+    locala.IBN.put("desc", "TEXT");
     localStringBuilder.append(" desc TEXT");
     localStringBuilder.append(", ");
     locala.columns[13] = "bankPhone";
-    locala.IhC.put("bankPhone", "TEXT");
+    locala.IBN.put("bankPhone", "TEXT");
     localStringBuilder.append(" bankPhone TEXT");
     localStringBuilder.append(", ");
     locala.columns[14] = "bizUsername";
-    locala.IhC.put("bizUsername", "TEXT");
+    locala.IBN.put("bizUsername", "TEXT");
     localStringBuilder.append(" bizUsername TEXT");
     localStringBuilder.append(", ");
     locala.columns[15] = "onceQuotaKind";
-    locala.IhC.put("onceQuotaKind", "DOUBLE");
+    locala.IBN.put("onceQuotaKind", "DOUBLE");
     localStringBuilder.append(" onceQuotaKind DOUBLE");
     localStringBuilder.append(", ");
     locala.columns[16] = "onceQuotaVirtual";
-    locala.IhC.put("onceQuotaVirtual", "DOUBLE");
+    locala.IBN.put("onceQuotaVirtual", "DOUBLE");
     localStringBuilder.append(" onceQuotaVirtual DOUBLE");
     localStringBuilder.append(", ");
     locala.columns[17] = "dayQuotaKind";
-    locala.IhC.put("dayQuotaKind", "DOUBLE");
+    locala.IBN.put("dayQuotaKind", "DOUBLE");
     localStringBuilder.append(" dayQuotaKind DOUBLE");
     localStringBuilder.append(", ");
     locala.columns[18] = "dayQuotaVirtual";
-    locala.IhC.put("dayQuotaVirtual", "DOUBLE");
+    locala.IBN.put("dayQuotaVirtual", "DOUBLE");
     localStringBuilder.append(" dayQuotaVirtual DOUBLE");
     localStringBuilder.append(", ");
     locala.columns[19] = "fetchArriveTime";
-    locala.IhC.put("fetchArriveTime", "LONG");
+    locala.IBN.put("fetchArriveTime", "LONG");
     localStringBuilder.append(" fetchArriveTime LONG");
     localStringBuilder.append(", ");
     locala.columns[20] = "fetchArriveTimeWording";
-    locala.IhC.put("fetchArriveTimeWording", "TEXT");
+    locala.IBN.put("fetchArriveTimeWording", "TEXT");
     localStringBuilder.append(" fetchArriveTimeWording TEXT");
     localStringBuilder.append(", ");
     locala.columns[21] = "repay_url";
-    locala.IhC.put("repay_url", "TEXT");
+    locala.IBN.put("repay_url", "TEXT");
     localStringBuilder.append(" repay_url TEXT");
     localStringBuilder.append(", ");
     locala.columns[22] = "wxcreditState";
-    locala.IhC.put("wxcreditState", "INTEGER");
+    locala.IBN.put("wxcreditState", "INTEGER");
     localStringBuilder.append(" wxcreditState INTEGER");
     localStringBuilder.append(", ");
     locala.columns[23] = "bankcardClientType";
-    locala.IhC.put("bankcardClientType", "INTEGER");
+    locala.IBN.put("bankcardClientType", "INTEGER");
     localStringBuilder.append(" bankcardClientType INTEGER");
     localStringBuilder.append(", ");
     locala.columns[24] = "ext_msg";
-    locala.IhC.put("ext_msg", "TEXT");
+    locala.IBN.put("ext_msg", "TEXT");
     localStringBuilder.append(" ext_msg TEXT");
     localStringBuilder.append(", ");
     locala.columns[25] = "support_micropay";
-    locala.IhC.put("support_micropay", "INTEGER");
+    locala.IBN.put("support_micropay", "INTEGER");
     localStringBuilder.append(" support_micropay INTEGER");
     localStringBuilder.append(", ");
     locala.columns[26] = "arrive_type";
-    locala.IhC.put("arrive_type", "TEXT");
+    locala.IBN.put("arrive_type", "TEXT");
     localStringBuilder.append(" arrive_type TEXT");
     localStringBuilder.append(", ");
     locala.columns[27] = "avail_save_wording";
-    locala.IhC.put("avail_save_wording", "TEXT");
+    locala.IBN.put("avail_save_wording", "TEXT");
     localStringBuilder.append(" avail_save_wording TEXT");
     localStringBuilder.append(", ");
     locala.columns[28] = "fetch_charge_rate";
-    locala.IhC.put("fetch_charge_rate", "DOUBLE");
+    locala.IBN.put("fetch_charge_rate", "DOUBLE");
     localStringBuilder.append(" fetch_charge_rate DOUBLE");
     localStringBuilder.append(", ");
     locala.columns[29] = "full_fetch_charge_fee";
-    locala.IhC.put("full_fetch_charge_fee", "DOUBLE");
+    locala.IBN.put("full_fetch_charge_fee", "DOUBLE");
     localStringBuilder.append(" full_fetch_charge_fee DOUBLE");
     localStringBuilder.append(", ");
     locala.columns[30] = "fetch_charge_info";
-    locala.IhC.put("fetch_charge_info", "TEXT");
+    locala.IBN.put("fetch_charge_info", "TEXT");
     localStringBuilder.append(" fetch_charge_info TEXT");
     localStringBuilder.append(", ");
     locala.columns[31] = "tips";
-    locala.IhC.put("tips", "TEXT");
+    locala.IBN.put("tips", "TEXT");
     localStringBuilder.append(" tips TEXT");
     localStringBuilder.append(", ");
     locala.columns[32] = "forbid_title";
-    locala.IhC.put("forbid_title", "TEXT");
+    locala.IBN.put("forbid_title", "TEXT");
     localStringBuilder.append(" forbid_title TEXT");
     localStringBuilder.append(", ");
     locala.columns[33] = "forbid_url";
-    locala.IhC.put("forbid_url", "TEXT");
+    locala.IBN.put("forbid_url", "TEXT");
     localStringBuilder.append(" forbid_url TEXT");
     localStringBuilder.append(", ");
     locala.columns[34] = "no_micro_word";
-    locala.IhC.put("no_micro_word", "TEXT");
+    locala.IBN.put("no_micro_word", "TEXT");
     localStringBuilder.append(" no_micro_word TEXT");
     localStringBuilder.append(", ");
     locala.columns[35] = "card_bottom_wording";
-    locala.IhC.put("card_bottom_wording", "TEXT");
+    locala.IBN.put("card_bottom_wording", "TEXT");
     localStringBuilder.append(" card_bottom_wording TEXT");
     localStringBuilder.append(", ");
     locala.columns[36] = "support_lqt_turn_in";
-    locala.IhC.put("support_lqt_turn_in", "INTEGER");
+    locala.IBN.put("support_lqt_turn_in", "INTEGER");
     localStringBuilder.append(" support_lqt_turn_in INTEGER");
     localStringBuilder.append(", ");
     locala.columns[37] = "support_lqt_turn_out";
-    locala.IhC.put("support_lqt_turn_out", "INTEGER");
+    locala.IBN.put("support_lqt_turn_out", "INTEGER");
     localStringBuilder.append(" support_lqt_turn_out INTEGER");
     localStringBuilder.append(", ");
     locala.columns[38] = "is_hightlight_pre_arrive_time_wording";
-    locala.IhC.put("is_hightlight_pre_arrive_time_wording", "INTEGER");
+    locala.IBN.put("is_hightlight_pre_arrive_time_wording", "INTEGER");
     localStringBuilder.append(" is_hightlight_pre_arrive_time_wording INTEGER");
     localStringBuilder.append(", ");
     locala.columns[39] = "card_state_name";
-    locala.IhC.put("card_state_name", "TEXT");
+    locala.IBN.put("card_state_name", "TEXT");
     localStringBuilder.append(" card_state_name TEXT");
     localStringBuilder.append(", ");
     locala.columns[40] = "prompt_info_prompt_text";
-    locala.IhC.put("prompt_info_prompt_text", "TEXT");
+    locala.IBN.put("prompt_info_prompt_text", "TEXT");
     localStringBuilder.append(" prompt_info_prompt_text TEXT");
     localStringBuilder.append(", ");
     locala.columns[41] = "prompt_info_jump_text";
-    locala.IhC.put("prompt_info_jump_text", "TEXT");
+    locala.IBN.put("prompt_info_jump_text", "TEXT");
     localStringBuilder.append(" prompt_info_jump_text TEXT");
     localStringBuilder.append(", ");
     locala.columns[42] = "prompt_info_jump_url";
-    locala.IhC.put("prompt_info_jump_url", "TEXT");
+    locala.IBN.put("prompt_info_jump_url", "TEXT");
     localStringBuilder.append(" prompt_info_jump_url TEXT");
     locala.columns[43] = "rowid";
     locala.sql = localStringBuilder.toString();
     info = locala;
-    CREATOR = new Parcelable.Creator() {};
+    CREATOR = new Bankcard.1();
     AppMethodBeat.o(70225);
   }
   
   public Bankcard()
   {
-    this.CUC = null;
-    this.CUM = null;
-    this.CUN = false;
+    this.Dmi = null;
+    this.Dms = null;
+    this.Dmt = false;
   }
   
   public Bankcard(byte paramByte)
   {
-    this.CUC = null;
-    this.CUM = null;
-    this.CUN = false;
+    this.Dmi = null;
+    this.Dms = null;
+    this.Dmt = false;
     this.field_bankcardTag = 1;
   }
   
   public Bankcard(Parcel paramParcel)
   {
     AppMethodBeat.i(70222);
-    this.CUC = null;
-    this.CUM = null;
-    this.CUN = false;
+    this.Dmi = null;
+    this.Dms = null;
+    this.Dmt = false;
     this.field_bankName = paramParcel.readString();
     this.field_desc = paramParcel.readString();
     this.field_bankcardType = paramParcel.readString();
@@ -288,7 +288,7 @@ public class Bankcard
     if (paramParcel.readInt() == 1)
     {
       bool1 = true;
-      this.CUN = bool1;
+      this.Dmt = bool1;
       this.field_mobile = paramParcel.readString();
       this.field_onceQuotaKind = paramParcel.readDouble();
       this.field_onceQuotaVirtual = paramParcel.readDouble();
@@ -298,9 +298,9 @@ public class Bankcard
       this.field_bankPhone = paramParcel.readString();
       this.field_bankcardTag = paramParcel.readInt();
       this.field_bankcardState = paramParcel.readInt();
-      this.CUC = paramParcel.readString();
-      this.CTR = paramParcel.readInt();
-      this.CUM = paramParcel.readString();
+      this.Dmi = paramParcel.readString();
+      this.Dlx = paramParcel.readInt();
+      this.Dms = paramParcel.readString();
       this.field_bankcardClientType = paramParcel.readInt();
       this.field_ext_msg = paramParcel.readString();
       if (paramParcel.readInt() != 1) {
@@ -316,22 +316,22 @@ public class Bankcard
       this.field_full_fetch_charge_fee = paramParcel.readDouble();
       this.field_no_micro_word = paramParcel.readString();
       this.field_card_bottom_wording = paramParcel.readString();
-      this.CUS = paramParcel.readString();
-      this.CUP = paramParcel.readLong();
-      this.CUR = paramParcel.readLong();
-      this.CUQ = paramParcel.readLong();
-      this.CUT = paramParcel.readInt();
-      this.CUX = paramParcel.readInt();
-      this.CUU = paramParcel.readInt();
-      this.CUV = paramParcel.readString();
-      this.CUW = paramParcel.readString();
-      this.CUY = paramParcel.readString();
-      this.CUZ = paramParcel.readLong();
-      this.CVa = paramParcel.readString();
-      this.CVb = paramParcel.readString();
-      this.CVc = paramParcel.readString();
-      this.CzQ = paramParcel.readString();
-      this.CzR = paramParcel.readString();
+      this.Dmy = paramParcel.readString();
+      this.Dmv = paramParcel.readLong();
+      this.Dmx = paramParcel.readLong();
+      this.Dmw = paramParcel.readLong();
+      this.Dmz = paramParcel.readInt();
+      this.DmD = paramParcel.readInt();
+      this.DmA = paramParcel.readInt();
+      this.DmB = paramParcel.readString();
+      this.DmC = paramParcel.readString();
+      this.DmE = paramParcel.readString();
+      this.DmF = paramParcel.readLong();
+      this.DmG = paramParcel.readString();
+      this.DmH = paramParcel.readString();
+      this.DmI = paramParcel.readString();
+      this.CRv = paramParcel.readString();
+      this.CRw = paramParcel.readString();
       AppMethodBeat.o(70222);
       return;
       bool1 = false;
@@ -341,47 +341,47 @@ public class Bankcard
   
   public Bankcard(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, double paramDouble1, String paramString7, double paramDouble2, String paramString8, String paramString9, String paramString10, String paramString11, String paramString12, b paramb, int paramInt1, String paramString13, boolean paramBoolean, e parame, long paramLong1, long paramLong2, long paramLong3, String paramString14, int paramInt2, int paramInt3, String paramString15, String paramString16, int paramInt4, String paramString17, long paramLong4, String paramString18, String paramString19, String paramString20, String paramString21, String paramString22)
   {
-    this.CUC = null;
-    this.CUM = null;
-    this.CUN = false;
-    this.CUy = paramString1;
-    this.CUz = paramString2;
-    this.CTT = paramString3;
-    this.CUA = paramString4;
-    this.CUB = paramString5;
-    this.CUC = paramString6;
-    this.CUD = paramDouble1;
-    this.CUE = paramString7;
-    this.CUF = paramDouble2;
-    this.CUG = paramString8;
-    this.CUH = paramString9;
-    this.CUI = paramString10;
-    this.CUJ = paramString11;
-    this.CUK = paramString12;
-    this.CUL = paramb;
-    this.CTR = paramInt1;
-    this.CUM = paramString13;
-    this.CUN = paramBoolean;
-    this.CUO = parame;
-    this.CUP = paramLong1;
-    this.CUQ = paramLong2;
-    this.CUR = paramLong3;
-    this.CUS = paramString14;
-    this.CUT = paramInt2;
-    this.CUU = paramInt3;
-    this.CUV = paramString15;
-    this.CUW = paramString16;
-    this.CUX = paramInt4;
-    this.CUY = paramString17;
-    this.CUZ = paramLong4;
-    this.CVa = paramString18;
-    this.CVb = paramString19;
-    this.CVc = paramString20;
-    this.CzQ = paramString21;
-    this.CzR = paramString22;
+    this.Dmi = null;
+    this.Dms = null;
+    this.Dmt = false;
+    this.Dme = paramString1;
+    this.Dmf = paramString2;
+    this.Dlz = paramString3;
+    this.Dmg = paramString4;
+    this.Dmh = paramString5;
+    this.Dmi = paramString6;
+    this.Dmj = paramDouble1;
+    this.Dmk = paramString7;
+    this.Dml = paramDouble2;
+    this.Dmm = paramString8;
+    this.Dmn = paramString9;
+    this.Dmo = paramString10;
+    this.Dmp = paramString11;
+    this.Dmq = paramString12;
+    this.Dmr = paramb;
+    this.Dlx = paramInt1;
+    this.Dms = paramString13;
+    this.Dmt = paramBoolean;
+    this.Dmu = parame;
+    this.Dmv = paramLong1;
+    this.Dmw = paramLong2;
+    this.Dmx = paramLong3;
+    this.Dmy = paramString14;
+    this.Dmz = paramInt2;
+    this.DmA = paramInt3;
+    this.DmB = paramString15;
+    this.DmC = paramString16;
+    this.DmD = paramInt4;
+    this.DmE = paramString17;
+    this.DmF = paramLong4;
+    this.DmG = paramString18;
+    this.DmH = paramString19;
+    this.DmI = paramString20;
+    this.CRv = paramString21;
+    this.CRw = paramString22;
   }
   
-  public static boolean Vx(int paramInt)
+  public static boolean We(int paramInt)
   {
     return (paramInt & 0x2) > 0;
   }
@@ -425,10 +425,10 @@ public class Bankcard
     return paramContext;
   }
   
-  public static boolean iJ(int paramInt1, int paramInt2)
+  public static boolean iN(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(70214);
-    ad.d("MicroMsg.Bankcard", "supportBankcardTag : " + paramInt1 + ", bankcardTag : " + paramInt2);
+    ae.d("MicroMsg.Bankcard", "supportBankcardTag : " + paramInt1 + ", bankcardTag : " + paramInt2);
     if ((paramInt1 & paramInt2) > 0)
     {
       AppMethodBeat.o(70214);
@@ -448,19 +448,19 @@ public class Bankcard
     AppMethodBeat.i(70215);
     if (this.field_bankcardState != 0)
     {
-      ad.d("MicroMsg.Bankcard", " bankcardState : " + this.field_bankcardState);
+      ae.d("MicroMsg.Bankcard", " bankcardState : " + this.field_bankcardState);
       paramInt = this.field_bankcardState;
       AppMethodBeat.o(70215);
       return paramInt;
     }
-    if ((paramOrders != null) && (paramOrders.dlu.equals(this.CUC)))
+    if ((paramOrders != null) && (paramOrders.dmw.equals(this.Dmi)))
     {
       AppMethodBeat.o(70215);
       return 4;
     }
     if (!isSupport(paramInt))
     {
-      if (eEU())
+      if (eIB())
       {
         AppMethodBeat.o(70215);
         return 5;
@@ -468,7 +468,7 @@ public class Bankcard
       AppMethodBeat.o(70215);
       return 6;
     }
-    if ((paramOrders != null) && (!paramOrders.CYg.isEmpty()) && (!paramOrders.CYg.contains(this.field_bankcardType)))
+    if ((paramOrders != null) && (!paramOrders.DpL.isEmpty()) && (!paramOrders.DpL.contains(this.field_bankcardType)))
     {
       AppMethodBeat.o(70215);
       return 7;
@@ -489,74 +489,74 @@ public class Bankcard
     return 0;
   }
   
-  public final boolean eEQ()
-  {
-    AppMethodBeat.i(70217);
-    if ((this.field_cardType & CUr) > 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      ad.d("MicroMsg.Bankcard", "isWXCredit, ret = ".concat(String.valueOf(bool)));
-      AppMethodBeat.o(70217);
-      return bool;
-    }
-  }
-  
-  public final boolean eER()
-  {
-    AppMethodBeat.i(70218);
-    if ((this.field_cardType & CUs) > 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      ad.d("MicroMsg.Bankcard", "isWXCredit, ret = ".concat(String.valueOf(bool)));
-      AppMethodBeat.o(70218);
-      return bool;
-    }
-  }
-  
-  public final boolean eES()
-  {
-    AppMethodBeat.i(70219);
-    if ((this.field_cardType & CUv) > 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      ad.d("MicroMsg.Bankcard", "isLqtCard, ret = ".concat(String.valueOf(bool)));
-      AppMethodBeat.o(70219);
-      return bool;
-    }
-  }
-  
-  public final boolean eET()
+  public final boolean eIA()
   {
     AppMethodBeat.i(70220);
-    if ((this.field_cardType & CUq) > 0) {}
+    if ((this.field_cardType & DlW) > 0) {}
     for (boolean bool = true;; bool = false)
     {
-      ad.d("MicroMsg.Bankcard", "isCredit, ret = ".concat(String.valueOf(bool)));
+      ae.d("MicroMsg.Bankcard", "isCredit, ret = ".concat(String.valueOf(bool)));
       AppMethodBeat.o(70220);
       return bool;
     }
   }
   
-  public final boolean eEU()
+  public final boolean eIB()
   {
     AppMethodBeat.i(70221);
-    if ((this.field_cardType & CUp) <= 0) {}
+    if ((this.field_cardType & DlV) <= 0) {}
     for (boolean bool = true;; bool = false)
     {
-      ad.d("MicroMsg.Bankcard", "isDomestic, ret = ".concat(String.valueOf(bool)));
+      ae.d("MicroMsg.Bankcard", "isDomestic, ret = ".concat(String.valueOf(bool)));
       AppMethodBeat.o(70221);
       return bool;
     }
   }
   
-  public final boolean eEV()
+  public final boolean eIC()
   {
-    return (this.field_cardType & CUw) > 0;
+    return (this.field_cardType & Dmc) > 0;
   }
   
-  public final boolean eEW()
+  public final boolean eID()
   {
-    return (this.field_cardType & CUx) > 0;
+    return (this.field_cardType & Dmd) > 0;
+  }
+  
+  public final boolean eIx()
+  {
+    AppMethodBeat.i(70217);
+    if ((this.field_cardType & DlX) > 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      ae.d("MicroMsg.Bankcard", "isWXCredit, ret = ".concat(String.valueOf(bool)));
+      AppMethodBeat.o(70217);
+      return bool;
+    }
+  }
+  
+  public final boolean eIy()
+  {
+    AppMethodBeat.i(70218);
+    if ((this.field_cardType & DlY) > 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      ae.d("MicroMsg.Bankcard", "isWXCredit, ret = ".concat(String.valueOf(bool)));
+      AppMethodBeat.o(70218);
+      return bool;
+    }
+  }
+  
+  public final boolean eIz()
+  {
+    AppMethodBeat.i(70219);
+    if ((this.field_cardType & Dmb) > 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      ae.d("MicroMsg.Bankcard", "isLqtCard, ret = ".concat(String.valueOf(bool)));
+      AppMethodBeat.o(70219);
+      return bool;
+    }
   }
   
   public c.a getDBInfo()
@@ -573,7 +573,7 @@ public class Bankcard
     paramParcel.writeString(this.field_bankcardType);
     paramParcel.writeString(this.field_bindSerial);
     paramParcel.writeInt(this.field_cardType);
-    if (this.CUN)
+    if (this.Dmt)
     {
       paramInt = 1;
       paramParcel.writeInt(paramInt);
@@ -586,9 +586,9 @@ public class Bankcard
       paramParcel.writeString(this.field_bankPhone);
       paramParcel.writeInt(this.field_bankcardTag);
       paramParcel.writeInt(this.field_bankcardState);
-      paramParcel.writeString(this.CUC);
-      paramParcel.writeInt(this.CTR);
-      paramParcel.writeString(this.CUM);
+      paramParcel.writeString(this.Dmi);
+      paramParcel.writeInt(this.Dlx);
+      paramParcel.writeString(this.Dms);
       paramParcel.writeInt(this.field_bankcardClientType);
       paramParcel.writeString(this.field_ext_msg);
       if (!this.field_support_micropay) {
@@ -604,22 +604,22 @@ public class Bankcard
       paramParcel.writeDouble(this.field_full_fetch_charge_fee);
       paramParcel.writeString(this.field_no_micro_word);
       paramParcel.writeString(this.field_card_bottom_wording);
-      paramParcel.writeString(this.CUS);
-      paramParcel.writeLong(this.CUP);
-      paramParcel.writeLong(this.CUR);
-      paramParcel.writeLong(this.CUQ);
-      paramParcel.writeInt(this.CUT);
-      paramParcel.writeInt(this.CUX);
-      paramParcel.writeInt(this.CUU);
-      paramParcel.writeString(this.CUV);
-      paramParcel.writeString(this.CUW);
-      paramParcel.writeString(this.CUY);
-      paramParcel.writeLong(this.CUZ);
-      paramParcel.writeString(this.CVa);
-      paramParcel.writeString(this.CVb);
-      paramParcel.writeString(this.CVc);
-      paramParcel.writeString(this.CzQ);
-      paramParcel.writeString(this.CzR);
+      paramParcel.writeString(this.Dmy);
+      paramParcel.writeLong(this.Dmv);
+      paramParcel.writeLong(this.Dmx);
+      paramParcel.writeLong(this.Dmw);
+      paramParcel.writeInt(this.Dmz);
+      paramParcel.writeInt(this.DmD);
+      paramParcel.writeInt(this.DmA);
+      paramParcel.writeString(this.DmB);
+      paramParcel.writeString(this.DmC);
+      paramParcel.writeString(this.DmE);
+      paramParcel.writeLong(this.DmF);
+      paramParcel.writeString(this.DmG);
+      paramParcel.writeString(this.DmH);
+      paramParcel.writeString(this.DmI);
+      paramParcel.writeString(this.CRv);
+      paramParcel.writeString(this.CRw);
       AppMethodBeat.o(70223);
       return;
       paramInt = 0;
@@ -629,7 +629,7 @@ public class Bankcard
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.model.Bankcard
  * JD-Core Version:    0.7.0.1
  */

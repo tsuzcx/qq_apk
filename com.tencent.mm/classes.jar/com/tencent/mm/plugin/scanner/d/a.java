@@ -2,35 +2,35 @@ package com.tencent.mm.plugin.scanner.d;
 
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.scanner.model.c;
 import com.tencent.mm.plugin.scanner.model.c.a;
-import com.tencent.mm.plugin.scanner.model.w;
+import com.tencent.mm.plugin.scanner.model.x;
 import com.tencent.mm.protocal.protobuf.mc;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.scanlib.ui.ScanView;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/scanner/result/AiImageHandler;", "Lcom/tencent/mm/plugin/scanner/result/ResultHandler;", "Lcom/tencent/mm/plugin/scanner/result/ResultHandler$IResultHandleCallback;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "scanMode", "", "scanView", "Lcom/tencent/scanlib/ui/ScanView;", "uiCallback", "Lcom/tencent/mm/plugin/scanner/result/ResultHandler$ResultHandlerUICallback;", "scanCallback", "Lcom/tencent/mm/plugin/scanner/result/AiImageHandler$AiScanResultCallback;", "(ILcom/tencent/scanlib/ui/ScanView;Lcom/tencent/mm/plugin/scanner/result/ResultHandler$ResultHandlerUICallback;Lcom/tencent/mm/plugin/scanner/result/AiImageHandler$AiScanResultCallback;)V", "captureImageUploader", "Lcom/tencent/mm/plugin/scanner/model/AiScanImageUploader;", "galleryImageUploader", "locationInfo", "Lcom/tencent/mm/protocal/protobuf/BizAiScanImageLocation;", "scanResultCallback", "uploadCallback", "Lcom/tencent/mm/plugin/scanner/model/AiScanImageUploader$AiScanImageUploadCallback;", "cancelResult", "", "session", "", "destroy", "finishResult", "success", "", "getSource", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "handleResult", "result", "Landroid/os/Bundle;", "notifyEvent", "eventId", "data", "onSceneEnd", "errType", "errCode", "errMsg", "", "setLocationInfo", "location", "AiScanResultCallback", "Companion", "plugin-scan_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/scanner/result/AiImageHandler;", "Lcom/tencent/mm/plugin/scanner/result/ResultHandler;", "Lcom/tencent/mm/plugin/scanner/result/ResultHandler$IResultHandleCallback;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "scanMode", "", "scanView", "Lcom/tencent/scanlib/ui/ScanView;", "uiCallback", "Lcom/tencent/mm/plugin/scanner/result/ResultHandler$ResultHandlerUICallback;", "scanCallback", "Lcom/tencent/mm/plugin/scanner/result/AiImageHandler$AiScanResultCallback;", "(ILcom/tencent/scanlib/ui/ScanView;Lcom/tencent/mm/plugin/scanner/result/ResultHandler$ResultHandlerUICallback;Lcom/tencent/mm/plugin/scanner/result/AiImageHandler$AiScanResultCallback;)V", "captureImageUploader", "Lcom/tencent/mm/plugin/scanner/model/AiScanImageUploader;", "galleryImageUploader", "locationInfo", "Lcom/tencent/mm/protocal/protobuf/BizAiScanImageLocation;", "scanResultCallback", "uploadCallback", "Lcom/tencent/mm/plugin/scanner/model/AiScanImageUploader$AiScanImageUploadCallback;", "cancelResult", "", "session", "", "destroy", "finishResult", "success", "", "getSource", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "handleResult", "result", "Landroid/os/Bundle;", "notifyEvent", "eventId", "data", "onSceneEnd", "errType", "errCode", "errMsg", "", "setLocationInfo", "location", "AiScanResultCallback", "Companion", "plugin-scan_release"})
 public final class a
   extends e
   implements f, e.a
 {
-  public static final a.b yoY;
-  public mc yjS;
-  private final a yoU;
-  private final c.a yoV;
-  public c yoW;
-  public c yoX;
+  public static final a.b yEX;
+  private final a yET;
+  private final c.a yEU;
+  public c yEV;
+  public c yEW;
+  public mc yzP;
   
   static
   {
     AppMethodBeat.i(52249);
-    yoY = new a.b((byte)0);
+    yEX = new a.b((byte)0);
     AppMethodBeat.o(52249);
   }
   
@@ -38,43 +38,43 @@ public final class a
   {
     AppMethodBeat.i(52248);
     this.mode = paramInt;
-    this.ypf = paramScanView;
-    this.ypg = paramb;
+    this.yFe = paramScanView;
+    this.yFf = paramb;
     this.context = paramScanView.getContext();
-    this.yoU = parama;
-    this.yoV = ((c.a)new c.a()
+    this.yET = parama;
+    this.yEU = ((c.a)new c.a()
     {
       public final void a(int paramAnonymousInt1, long paramAnonymousLong, int paramAnonymousInt2, String paramAnonymousString)
       {
         AppMethodBeat.i(161977);
-        a.a(this.yoZ).b(paramAnonymousInt1, paramAnonymousLong, paramAnonymousInt2, paramAnonymousString);
+        a.a(this.yEY).b(paramAnonymousInt1, paramAnonymousLong, paramAnonymousInt2, paramAnonymousString);
         AppMethodBeat.o(161977);
       }
       
-      public final void a(w paramAnonymousw)
+      public final void a(x paramAnonymousx)
       {
         AppMethodBeat.i(52240);
-        p.h(paramAnonymousw, "result");
-        a.a(this.yoZ).b(paramAnonymousw);
+        p.h(paramAnonymousx, "result");
+        a.a(this.yEY).b(paramAnonymousx);
         AppMethodBeat.o(52240);
       }
       
       public final void av(int paramAnonymousInt, long paramAnonymousLong)
       {
-        AppMethodBeat.i(186337);
-        a.a(this.yoZ).ax(paramAnonymousInt, paramAnonymousLong);
-        AppMethodBeat.o(186337);
+        AppMethodBeat.i(189627);
+        a.a(this.yEY).ax(paramAnonymousInt, paramAnonymousLong);
+        AppMethodBeat.o(189627);
       }
       
-      public final void dKP()
+      public final void dOh()
       {
         AppMethodBeat.i(52242);
-        ad.e("MicroMsg.AiImageHandler", "alvinluo onUploadError errCode: %d", new Object[] { Integer.valueOf(2) });
-        this.yoZ.t(2, null);
+        ae.e("MicroMsg.AiImageHandler", "alvinluo onUploadError errCode: %d", new Object[] { Integer.valueOf(2) });
+        this.yEY.t(2, null);
         AppMethodBeat.o(52242);
       }
     });
-    g.aiU().a(2580, (f)this);
+    g.ajj().a(2580, (f)this);
     AppMethodBeat.o(52248);
   }
   
@@ -90,14 +90,14 @@ public final class a
     c localc;
     if (i == 1)
     {
-      if (this.yoX == null) {
-        this.yoX = new c(i, this.yoV);
+      if (this.yEW == null) {
+        this.yEW = new c(i, this.yEU);
       }
-      localc = this.yoX;
+      localc = this.yEW;
       if (localc != null) {
-        localc.yjS = this.yjS;
+        localc.yzP = this.yzP;
       }
-      localc = this.yoX;
+      localc = this.yEW;
       if (localc != null)
       {
         localc.c(paramLong, paramBundle);
@@ -109,14 +109,14 @@ public final class a
     }
     if (i == 2)
     {
-      if (this.yoW == null) {
-        this.yoW = new c(i, this.yoV);
+      if (this.yEV == null) {
+        this.yEV = new c(i, this.yEU);
       }
-      localc = this.yoX;
+      localc = this.yEW;
       if (localc != null) {
-        localc.yjS = null;
+        localc.yzP = null;
       }
-      localc = this.yoW;
+      localc = this.yEV;
       if (localc != null)
       {
         localc.c(paramLong, paramBundle);
@@ -130,11 +130,11 @@ public final class a
   public final void destroy()
   {
     AppMethodBeat.i(52247);
-    g.aiU().b(2580, (f)this);
-    if (this.yoW != null) {
+    g.ajj().b(2580, (f)this);
+    if (this.yEV != null) {
       c.release();
     }
-    if (this.yoX != null) {
+    if (this.yEW != null) {
       c.release();
     }
     AppMethodBeat.o(52247);
@@ -148,7 +148,7 @@ public final class a
     if (paramn != null)
     {
       localObject = Integer.valueOf(paramn.getType());
-      ad.i("MicroMsg.AiImageHandler", "alvinluo AiScanImage onSceneEnd errType %d, errCode %d, errMsg %s, scene type: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString, localObject });
+      ae.i("MicroMsg.AiImageHandler", "alvinluo AiScanImage onSceneEnd errType %d, errCode %d, errMsg %s, scene type: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString, localObject });
       if (paramn == null) {
         break label127;
       }
@@ -158,13 +158,13 @@ public final class a
       if (!(paramn instanceof com.tencent.mm.plugin.scanner.model.e)) {
         break label133;
       }
-      i = ((com.tencent.mm.plugin.scanner.model.e)paramn).dnh;
+      i = ((com.tencent.mm.plugin.scanner.model.e)paramn).doj;
     }
     for (;;)
     {
       if (i == 1)
       {
-        localObject = this.yoX;
+        localObject = this.yEW;
         if (localObject != null)
         {
           ((c)localObject).onSceneEnd(paramInt1, paramInt2, paramString, paramn);
@@ -185,7 +185,7 @@ public final class a
     }
     if (i == 2)
     {
-      localObject = this.yoW;
+      localObject = this.yEV;
       if (localObject != null)
       {
         ((c)localObject).onSceneEnd(paramInt1, paramInt2, paramString, paramn);
@@ -200,7 +200,7 @@ public final class a
   public final void t(int paramInt, Bundle paramBundle)
   {
     AppMethodBeat.i(52246);
-    ad.i("MicroMsg.AiImageHandler", "notify Event: %d", new Object[] { Integer.valueOf(paramInt) });
+    ae.i("MicroMsg.AiImageHandler", "notify Event: %d", new Object[] { Integer.valueOf(paramInt) });
     switch (paramInt)
     {
     }
@@ -210,42 +210,42 @@ public final class a
       return;
       AppMethodBeat.o(52246);
       return;
-      this.ypf.onResume();
+      this.yFe.onResume();
       AppMethodBeat.o(52246);
       return;
-      this.ypg.bWi();
+      this.yFf.bXx();
       AppMethodBeat.o(52246);
       return;
-      this.ypf.onPause();
+      this.yFe.onPause();
     }
   }
   
-  public final void y(long paramLong, boolean paramBoolean)
+  public final void z(long paramLong, boolean paramBoolean)
   {
     AppMethodBeat.i(161978);
-    this.yjS = null;
-    c localc = this.yoX;
+    this.yzP = null;
+    c localc = this.yEW;
     if (localc != null) {
-      localc.y(paramLong, paramBoolean);
+      localc.z(paramLong, paramBoolean);
     }
-    localc = this.yoW;
+    localc = this.yEV;
     if (localc != null)
     {
-      localc.y(paramLong, paramBoolean);
+      localc.z(paramLong, paramBoolean);
       AppMethodBeat.o(161978);
       return;
     }
     AppMethodBeat.o(161978);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/scanner/result/AiImageHandler$AiScanResultCallback;", "", "notifyScanEvent", "", "source", "", "session", "", "event", "onScanResultFailed", "errCode", "errMsg", "", "onScanResultSuccess", "result", "Lcom/tencent/mm/plugin/scanner/model/ScanGoodsRemoteResult;", "plugin-scan_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/scanner/result/AiImageHandler$AiScanResultCallback;", "", "notifyScanEvent", "", "source", "", "session", "", "event", "onScanResultFailed", "errCode", "errMsg", "", "onScanResultSuccess", "result", "Lcom/tencent/mm/plugin/scanner/model/ScanGoodsRemoteResult;", "plugin-scan_release"})
   public static abstract interface a
   {
     public abstract void ax(int paramInt, long paramLong);
     
     public abstract void b(int paramInt1, long paramLong, int paramInt2, String paramString);
     
-    public abstract void b(w paramw);
+    public abstract void b(x paramx);
   }
 }
 

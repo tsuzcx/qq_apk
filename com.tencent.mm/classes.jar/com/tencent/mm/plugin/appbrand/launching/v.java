@@ -3,15 +3,15 @@ package com.tencent.mm.plugin.appbrand.launching;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/launching/ExportWxaInstrumentation;", "", "()V", "TAG", "", "executeStartAppForResult", "", "context", "Landroid/content/Context;", "openBundle", "Lcom/tencent/mm/plugin/appbrand/api/WeAppOpenBundle;", "assertValid", "toInternalParcel", "Lcom/tencent/mm/plugin/appbrand/launching/params/LaunchParcel;", "plugin-appbrand-integration_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/launching/ExportWxaInstrumentation;", "", "()V", "TAG", "", "executeStartAppForResult", "", "context", "Landroid/content/Context;", "openBundle", "Lcom/tencent/mm/plugin/appbrand/api/WeAppOpenBundle;", "assertValid", "toInternalParcel", "Lcom/tencent/mm/plugin/appbrand/launching/params/LaunchParcel;", "plugin-appbrand-integration_release"})
 public final class v
 {
-  public static final v lHs;
+  public static final v lLS;
   
   static
   {
     AppMethodBeat.i(50758);
-    lHs = new v();
+    lLS = new v();
     AppMethodBeat.o(50758);
   }
 }

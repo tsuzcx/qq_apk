@@ -12,7 +12,7 @@ final class IPCallRechargeUI$11
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     AppMethodBeat.i(25882);
-    this.uTj.finish();
+    this.veW.finish();
     AppMethodBeat.o(25882);
   }
 }

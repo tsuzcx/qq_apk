@@ -6,100 +6,68 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.net.Uri;
 import android.os.Bundle;
-import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.bw.b;
 import com.tencent.mm.compatible.util.d;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.opensdk.channel.MMessageActV2;
 import com.tencent.mm.opensdk.channel.MMessageActV2.Args;
 import com.tencent.mm.opensdk.modelmsg.SendAuth.Resp;
 import com.tencent.mm.opensdk.modelmsg.SendTdiAuth.Resp;
-import com.tencent.mm.plugin.expt.b.b.a;
-import com.tencent.mm.protocal.protobuf.cdg;
-import com.tencent.mm.protocal.protobuf.cxv;
+import com.tencent.mm.protocal.protobuf.cea;
+import com.tencent.mm.protocal.protobuf.cyp;
 import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.ay;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.platformtools.az;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.MMActivity;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 public final class aj
 {
-  private boolean DTZ;
-  boolean DUa;
-  private String[] DUb;
-  private String kvP;
+  private boolean ElZ;
+  boolean Ema = false;
+  private String kze;
   public String mAppId;
   private Context mContext;
-  private String tVg;
-  private String ucB;
-  String ukS;
+  private String ugc;
+  private String unF;
+  String uwp;
   
   public aj(Context paramContext, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(207958);
-    this.DUa = false;
-    Object localObject = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qty, "");
-    if (!TextUtils.isEmpty((CharSequence)localObject))
-    {
-      this.DUb = ((String)localObject).split(",");
-      int i = 0;
-      while (i < this.DUb.length)
-      {
-        localObject = this.DUb;
-        localObject[i] = localObject[i].trim();
-        i += 1;
-      }
-    }
-    this.DUb = new String[] { "snsapi_runtime_sdk" };
     this.mContext = paramContext;
-    this.DUa = true;
+    this.Ema = true;
     this.mAppId = paramString1;
-    this.tVg = paramString2;
-    AppMethodBeat.o(207958);
+    this.ugc = paramString2;
   }
   
   public aj(Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    AppMethodBeat.i(207959);
-    this.DUa = false;
-    Object localObject = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qty, "");
-    if (!TextUtils.isEmpty((CharSequence)localObject))
-    {
-      this.DUb = ((String)localObject).split(",");
-      int i = 0;
-      while (i < this.DUb.length)
-      {
-        localObject = this.DUb;
-        localObject[i] = localObject[i].trim();
-        i += 1;
-      }
-    }
-    this.DUb = new String[] { "snsapi_runtime_sdk" };
     this.mContext = paramContext;
     this.mAppId = paramString1;
-    this.ukS = paramString2;
-    this.kvP = paramString3;
-    this.DTZ = false;
-    this.ucB = paramString4;
-    AppMethodBeat.o(207959);
+    this.uwp = paramString2;
+    this.kze = paramString3;
+    this.ElZ = false;
+    this.unF = paramString4;
   }
   
-  private boolean WN(int paramInt)
+  private boolean Xu(int paramInt)
   {
     AppMethodBeat.i(78981);
     if ((paramInt == 1) || (paramInt == 2) || (paramInt == 7) || (paramInt == 8))
     {
-      ad.e("MicroMsg.SDKOauthUtil", "isNetworkAvailable false, errType = ".concat(String.valueOf(paramInt)));
+      ae.e("MicroMsg.SDKOauthUtil", "isNetworkAvailable false, errType = ".concat(String.valueOf(paramInt)));
       AppMethodBeat.o(78981);
       return false;
     }
-    if (!ay.isConnected(this.mContext))
+    if (!az.isConnected(this.mContext))
     {
-      ad.e("MicroMsg.SDKOauthUtil", "isNetworkAvailable false, not connected");
+      ae.e("MicroMsg.SDKOauthUtil", "isNetworkAvailable false, not connected");
       AppMethodBeat.o(78981);
       return false;
     }
@@ -107,16 +75,16 @@ public final class aj
     return true;
   }
   
-  public static void a(cxv paramcxv, LinkedList<String> paramLinkedList)
+  public static void a(cyp paramcyp, LinkedList<String> paramLinkedList)
   {
     AppMethodBeat.i(78984);
-    if (e("snsapi_userinfo", paramcxv.GXl) != null)
+    if (e("snsapi_userinfo", paramcyp.HqL) != null)
     {
       paramLinkedList.add("snsapi_userinfo");
       AppMethodBeat.o(78984);
       return;
     }
-    if (e("snsapi_login", paramcxv.GXl) != null)
+    if (e("snsapi_login", paramcyp.HqL) != null)
     {
       paramLinkedList.add("snsapi_login");
       AppMethodBeat.o(78984);
@@ -136,32 +104,13 @@ public final class aj
       localStringBuilder.append((String)paramLinkedList.get(i)).append(",");
       i += 1;
     }
-    ad.i("MicroMsg.SDKOauthUtil", "doQRCodeOauthAuthorizeConfirm selectedScopes: %s", new Object[] { localStringBuilder.toString() });
+    ae.i("MicroMsg.SDKOauthUtil", "doQRCodeOauthAuthorizeConfirm selectedScopes: %s", new Object[] { localStringBuilder.toString() });
     paramLinkedList = new aa(1, paramString, paramLinkedList, paramInt);
-    com.tencent.mm.kernel.g.aiU().a(paramLinkedList, 0);
+    com.tencent.mm.kernel.g.ajj().a(paramLinkedList, 0);
     AppMethodBeat.o(78971);
   }
   
-  private boolean aHl(String paramString)
-  {
-    AppMethodBeat.i(207960);
-    String[] arrayOfString = this.DUb;
-    int j = arrayOfString.length;
-    int i = 0;
-    while (i < j)
-    {
-      if (paramString.contains(arrayOfString[i]))
-      {
-        AppMethodBeat.o(207960);
-        return true;
-      }
-      i += 1;
-    }
-    AppMethodBeat.o(207960);
-    return false;
-  }
-  
-  static String aHm(String paramString)
+  static String aIF(String paramString)
   {
     AppMethodBeat.i(78978);
     Object localObject = null;
@@ -171,33 +120,33 @@ public final class aj
     {
       AppMethodBeat.o(78978);
       return paramString;
-      ad.w("MicroMsg.SDKOauthUtil", "dealWithCancel getAppInfo null; appid: %s", new Object[] { paramString });
+      ae.w("MicroMsg.SDKOauthUtil", "dealWithCancel getAppInfo null; appid: %s", new Object[] { paramString });
     }
   }
   
-  public static void aM(Activity paramActivity)
+  public static void aN(Activity paramActivity)
   {
     AppMethodBeat.i(78982);
     paramActivity.overridePendingTransition(2130771986, 2130771986);
-    if (d.ly(28))
+    if (d.lA(28))
     {
       paramActivity.finish();
       AppMethodBeat.o(78982);
       return;
     }
-    aq.o(new Runnable()
+    ar.o(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(78967);
-        this.iNQ.finish();
+        this.iQK.finish();
         AppMethodBeat.o(78967);
       }
     }, 500L);
     AppMethodBeat.o(78982);
   }
   
-  private void ajs(final String paramString)
+  private void akq(final String paramString)
   {
     AppMethodBeat.i(78976);
     com.tencent.mm.ui.base.h.d(this.mContext, paramString, this.mContext.getString(2131766178), new DialogInterface.OnClickListener()
@@ -205,22 +154,22 @@ public final class aj
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
         AppMethodBeat.i(78966);
-        if (!aj.this.DUa)
+        if (!aj.this.Ema)
         {
           paramAnonymousDialogInterface = aj.this;
           String str1 = paramString;
-          String str2 = aj.aHm(paramAnonymousDialogInterface.mAppId);
-          if (bt.isNullOrNil(str2))
+          String str2 = aj.aIF(paramAnonymousDialogInterface.mAppId);
+          if (bu.isNullOrNil(str2))
           {
-            ad.e("MicroMsg.SDKOauthUtil", "dealWithError pkg nil");
+            ae.e("MicroMsg.SDKOauthUtil", "dealWithError pkg nil");
             AppMethodBeat.o(78966);
             return;
           }
           SendAuth.Resp localResp = new SendAuth.Resp();
-          localResp.transaction = paramAnonymousDialogInterface.ukS;
+          localResp.transaction = paramAnonymousDialogInterface.uwp;
           localResp.errCode = -1;
           localResp.errStr = str1;
-          localResp.lang = paramAnonymousDialogInterface.eQn();
+          localResp.lang = paramAnonymousDialogInterface.eTZ();
           localResp.country = aj.getCountry();
           paramAnonymousDialogInterface.a(str2, localResp);
         }
@@ -230,10 +179,10 @@ public final class aj
     AppMethodBeat.o(78976);
   }
   
-  public static boolean b(cxv paramcxv)
+  public static boolean b(cyp paramcyp)
   {
     AppMethodBeat.i(78983);
-    if ((e("snsapi_userinfo", paramcxv.GXl) != null) || (e("snsapi_login", paramcxv.GXl) != null) || (e("group_sns_login", paramcxv.GXl) != null))
+    if ((e("snsapi_userinfo", paramcyp.HqL) != null) || (e("snsapi_login", paramcyp.HqL) != null) || (e("group_sns_login", paramcyp.HqL) != null))
     {
       AppMethodBeat.o(78983);
       return true;
@@ -242,17 +191,17 @@ public final class aj
     return false;
   }
   
-  public static cdg e(String paramString, LinkedList<cdg> paramLinkedList)
+  public static cea e(String paramString, LinkedList<cea> paramLinkedList)
   {
     AppMethodBeat.i(78974);
     paramLinkedList = paramLinkedList.iterator();
     while (paramLinkedList.hasNext())
     {
-      cdg localcdg = (cdg)paramLinkedList.next();
-      if (paramString.equals(localcdg.scope))
+      cea localcea = (cea)paramLinkedList.next();
+      if (paramString.equals(localcea.scope))
       {
         AppMethodBeat.o(78974);
-        return localcdg;
+        return localcea;
       }
     }
     AppMethodBeat.o(78974);
@@ -262,7 +211,7 @@ public final class aj
   static String getCountry()
   {
     AppMethodBeat.i(78979);
-    String str = bt.bI((String)com.tencent.mm.kernel.g.ajC().ajl().get(274436, null), null);
+    String str = bu.bI((String)com.tencent.mm.kernel.g.ajR().ajA().get(274436, null), null);
     AppMethodBeat.o(78979);
     return str;
   }
@@ -270,42 +219,42 @@ public final class aj
   public final void O(int paramInt1, int paramInt2, String paramString)
   {
     AppMethodBeat.i(78972);
-    ad.i("MicroMsg.SDKOauthUtil", "onQRCodeOauthAuthorizeConfirmEnd errType:%d errCode:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    ae.i("MicroMsg.SDKOauthUtil", "onQRCodeOauthAuthorizeConfirmEnd errType:%d errCode:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
       ((MMActivity)this.mContext).finish();
       AppMethodBeat.o(78972);
       return;
     }
-    if (!WN(paramInt1))
+    if (!Xu(paramInt1))
     {
-      ajs(this.mContext.getString(2131766179));
+      akq(this.mContext.getString(2131766179));
       AppMethodBeat.o(78972);
       return;
     }
-    ajs(paramString);
+    akq(paramString);
     AppMethodBeat.o(78972);
   }
   
-  public final void WM(int paramInt)
+  public final void Xt(int paramInt)
   {
     AppMethodBeat.i(78975);
-    ad.i("MicroMsg.SDKOauthUtil", "dealWithCancel");
-    if (this.DUa)
+    ae.i("MicroMsg.SDKOauthUtil", "dealWithCancel");
+    if (this.Ema)
     {
-      localObject1 = new aa(2, this.tVg, null, 0);
-      com.tencent.mm.kernel.g.aiU().a((n)localObject1, 0);
+      localObject1 = new aa(2, this.ugc, null, 0);
+      com.tencent.mm.kernel.g.ajj().a((n)localObject1, 0);
       ((MMActivity)this.mContext).finish();
       AppMethodBeat.o(78975);
       return;
     }
-    Object localObject1 = aHm(this.mAppId);
-    Object localObject2 = new ac(2, this.mAppId, this.kvP, (String)localObject1, null, this.ucB);
-    com.tencent.mm.kernel.g.aiU().a((n)localObject2, 0);
+    Object localObject1 = aIF(this.mAppId);
+    Object localObject2 = new ac(2, this.mAppId, this.kze, (String)localObject1, null, this.unF);
+    com.tencent.mm.kernel.g.ajj().a((n)localObject2, 0);
     localObject2 = new SendAuth.Resp();
-    ((SendAuth.Resp)localObject2).transaction = this.ukS;
+    ((SendAuth.Resp)localObject2).transaction = this.uwp;
     ((SendAuth.Resp)localObject2).errCode = paramInt;
-    ((SendAuth.Resp)localObject2).lang = eQn();
+    ((SendAuth.Resp)localObject2).lang = eTZ();
     ((SendAuth.Resp)localObject2).country = getCountry();
     a((String)localObject1, (SendAuth.Resp)localObject2);
     ((MMActivity)this.mContext).finish();
@@ -314,71 +263,67 @@ public final class aj
   
   public final void a(ai paramai, String paramString)
   {
-    AppMethodBeat.i(207961);
-    String str1 = paramai.eQl();
-    ad.i("MicroMsg.SDKOauthUtil", "dealWithLoginCallback url : %s", new Object[] { str1 });
-    String str2 = aHm(this.mAppId);
-    if (bt.isNullOrNil(str2))
+    AppMethodBeat.i(198138);
+    String str2 = paramai.eTX();
+    ae.i("MicroMsg.SDKOauthUtil", "dealWithLoginCallback url : %s", new Object[] { str2 });
+    String str3 = aIF(this.mAppId);
+    if (bu.isNullOrNil(str3))
     {
-      ad.e("MicroMsg.SDKOauthUtil", "dealWithLoginCallback pkg nil");
-      AppMethodBeat.o(207961);
+      ae.e("MicroMsg.SDKOauthUtil", "dealWithLoginCallback pkg nil");
+      AppMethodBeat.o(198138);
       return;
     }
     boolean bool = paramString.trim().equals("snsapi_wxaapp_info");
-    Object localObject;
-    if (aHl(paramString))
+    if ((paramai.eTY() != null) && (paramai.eTY().zr.length > 0))
     {
-      localObject = new SendTdiAuth.Resp(Bundle.EMPTY);
-      paramString = (String)localObject;
-      if (paramai.eQm() != null)
-      {
-        ((SendTdiAuth.Resp)localObject).tdiAuthBuffer = paramai.eQm().toByteArray();
-        paramString = (String)localObject;
-      }
-      paramString.transaction = this.ukS;
-      paramString.lang = eQn();
-      paramString.country = getCountry();
-      if (bt.isNullOrNil(str1)) {
-        break label358;
+      paramString = new SendTdiAuth.Resp(Bundle.EMPTY);
+      ((SendTdiAuth.Resp)paramString).tdiAuthBuffer = paramai.eTY().toByteArray();
+      paramai = paramString;
+      paramai.transaction = this.uwp;
+      paramai.lang = eTZ();
+      paramai.country = getCountry();
+      if (bu.isNullOrNil(str2)) {
+        break label357;
       }
     }
-    label358:
-    for (paramai = Uri.parse(str1);; paramai = null)
+    label357:
+    for (paramString = Uri.parse(str2);; paramString = null)
     {
-      if (paramai != null)
+      String str1;
+      if (paramString != null)
       {
-        localObject = paramai.getQueryParameter("code");
-        paramString.state = paramai.getQueryParameter("state");
-        paramString.errStr = paramai.getQueryParameter("reason");
+        str1 = paramString.getQueryParameter("code");
+        paramai.state = paramString.getQueryParameter("state");
+        paramai.errStr = paramString.getQueryParameter("reason");
       }
-      for (paramai = (ai)localObject;; paramai = null)
+      for (paramString = str1;; paramString = null)
       {
-        if ((bt.isNullOrNil(paramai)) && (!bool)) {
-          paramString.errCode = -1;
+        if ((bu.isNullOrNil(paramString)) && (!bool)) {
+          paramai.errCode = -1;
         }
         for (;;)
         {
           if (!bool) {
-            paramString.url = str1;
+            paramai.url = str2;
           }
-          ad.i("MicroMsg.SDKOauthUtil", "dealWithLoginCallback, pkg:%s code:%s errCode:%d state:%s", new Object[] { str2, paramString.code, Integer.valueOf(paramString.errCode), paramString.state });
-          a(str2, paramString);
+          ae.i("MicroMsg.SDKOauthUtil", "dealWithLoginCallback, pkg:%s code:%s errCode:%d state:%s", new Object[] { str3, paramai.code, Integer.valueOf(paramai.errCode), paramai.state });
+          a(str3, paramai);
           ((MMActivity)this.mContext).finish();
-          AppMethodBeat.o(207961);
+          AppMethodBeat.o(198138);
           return;
-          paramString = new SendAuth.Resp();
+          paramai = new SendAuth.Resp();
           break;
-          if (bt.nullAsNil(paramai).toLowerCase().equals("authdeny"))
+          if (bu.nullAsNil(paramString).toLowerCase().equals("authdeny"))
           {
-            paramString.errCode = -4;
+            paramai.errCode = -4;
           }
           else
           {
-            paramString.errCode = 0;
+            paramai.errCode = 0;
             if (!bool) {
-              paramString.code = paramai;
+              paramai.code = paramString;
             } else {
-              paramString.authResult = true;
+              paramai.authResult = true;
             }
           }
         }
@@ -389,21 +334,21 @@ public final class aj
   final void a(String paramString, SendAuth.Resp paramResp)
   {
     AppMethodBeat.i(78977);
-    if (this.DTZ)
+    if (this.ElZ)
     {
-      ad.i("MicroMsg.SDKOauthUtil", "doCallback has callback");
+      ae.i("MicroMsg.SDKOauthUtil", "doCallback has callback");
       AppMethodBeat.o(78977);
       return;
     }
-    if (bt.isNullOrNil(paramString))
+    if (bu.isNullOrNil(paramString))
     {
       AppMethodBeat.o(78977);
       return;
     }
-    this.DTZ = true;
+    this.ElZ = true;
     Bundle localBundle = new Bundle();
     paramResp.toBundle(localBundle);
-    com.tencent.mm.pluginsdk.model.app.q.bb(localBundle);
+    com.tencent.mm.pluginsdk.model.app.q.bc(localBundle);
     paramResp = new MMessageActV2.Args();
     paramResp.targetPkgName = paramString;
     paramResp.bundle = localBundle;
@@ -411,7 +356,7 @@ public final class aj
     AppMethodBeat.o(78977);
   }
   
-  public final void bi(LinkedList<String> paramLinkedList)
+  public final void bj(LinkedList<String> paramLinkedList)
   {
     AppMethodBeat.i(78968);
     StringBuilder localStringBuilder = new StringBuilder();
@@ -421,16 +366,16 @@ public final class aj
       localStringBuilder.append((String)paramLinkedList.get(i)).append(",");
       i += 1;
     }
-    ad.i("MicroMsg.SDKOauthUtil", "doSDKOauthAuthorizeConfirm selectedScopes: %s", new Object[] { localStringBuilder.toString() });
-    paramLinkedList = new ac(1, this.mAppId, this.kvP, aHm(this.mAppId), paramLinkedList, this.ucB);
-    com.tencent.mm.kernel.g.aiU().a(paramLinkedList, 0);
+    ae.i("MicroMsg.SDKOauthUtil", "doSDKOauthAuthorizeConfirm selectedScopes: %s", new Object[] { localStringBuilder.toString() });
+    paramLinkedList = new ac(1, this.mAppId, this.kze, aIF(this.mAppId), paramLinkedList, this.unF);
+    com.tencent.mm.kernel.g.ajj().a(paramLinkedList, 0);
     AppMethodBeat.o(78968);
   }
   
-  final String eQn()
+  final String eTZ()
   {
     AppMethodBeat.i(78980);
-    String str = com.tencent.mm.sdk.platformtools.ac.f(this.mContext.getSharedPreferences(com.tencent.mm.sdk.platformtools.aj.fkC(), 0));
+    String str = ad.f(this.mContext.getSharedPreferences(ak.fow(), 0));
     AppMethodBeat.o(78980);
     return str;
   }
@@ -438,26 +383,26 @@ public final class aj
   public final void j(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     AppMethodBeat.i(78970);
-    ad.i("MicroMsg.SDKOauthUtil", "onSDKOauthAuthorizeConfirmEnd errType:%d errCode:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    ae.i("MicroMsg.SDKOauthUtil", "onSDKOauthAuthorizeConfirmEnd errType:%d errCode:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      paramString = ((ac)paramn).eQb();
-      paramn = org.apache.commons.b.g.a(new LinkedList(((ac)paramn).DTb), ",");
+      paramString = ((ac)paramn).eTN();
+      paramn = org.apache.commons.b.g.a(new LinkedList(((ac)paramn).Elb), ",");
       a(ai.a.a(paramString), paramn);
       AppMethodBeat.o(78970);
       return;
     }
-    if (!WN(paramInt1))
+    if (!Xu(paramInt1))
     {
-      ajs(this.mContext.getString(2131766179));
+      akq(this.mContext.getString(2131766179));
       AppMethodBeat.o(78970);
       return;
     }
-    ajs(paramString);
+    akq(paramString);
     AppMethodBeat.o(78970);
   }
   
-  public final void k(LinkedList<String> paramLinkedList, int paramInt)
+  public final void l(LinkedList<String> paramLinkedList, int paramInt)
   {
     AppMethodBeat.i(78969);
     StringBuilder localStringBuilder = new StringBuilder();
@@ -467,15 +412,15 @@ public final class aj
       localStringBuilder.append((String)paramLinkedList.get(i)).append(",");
       i += 1;
     }
-    ad.i("MicroMsg.SDKOauthUtil", "doSDKOauthAuthorizeConfirm selectedScopes: %s", new Object[] { localStringBuilder.toString() });
-    paramLinkedList = new ac(this.mAppId, this.kvP, aHm(this.mAppId), paramLinkedList, paramInt, this.ucB);
-    com.tencent.mm.kernel.g.aiU().a(paramLinkedList, 0);
+    ae.i("MicroMsg.SDKOauthUtil", "doSDKOauthAuthorizeConfirm selectedScopes: %s", new Object[] { localStringBuilder.toString() });
+    paramLinkedList = new ac(this.mAppId, this.kze, aIF(this.mAppId), paramLinkedList, paramInt, this.unF);
+    com.tencent.mm.kernel.g.ajj().a(paramLinkedList, 0);
     AppMethodBeat.o(78969);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.model.aj
  * JD-Core Version:    0.7.0.1
  */

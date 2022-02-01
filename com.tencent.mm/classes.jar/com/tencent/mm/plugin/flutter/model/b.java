@@ -36,15 +36,15 @@ public final class b
       }
       i = 1;
       break;
-      i = ((Integer)paramj.wd("id")).intValue();
-      paramj = (String)paramj.wd("value");
-      e.ygI.kvStat(i, paramj);
+      i = ((Integer)paramj.wM("id")).intValue();
+      paramj = (String)paramj.wM("value");
+      e.ywz.kvStat(i, paramj);
       AppMethodBeat.o(148872);
       return;
-      i = ((Integer)paramj.wd("id")).intValue();
-      int j = ((Integer)paramj.wd("key")).intValue();
-      int k = ((Integer)paramj.wd("value")).intValue();
-      e.ygI.idkeyStat(i, j, k, false);
+      i = ((Integer)paramj.wM("id")).intValue();
+      int j = ((Integer)paramj.wM("key")).intValue();
+      int k = ((Integer)paramj.wM("value")).intValue();
+      e.ywz.idkeyStat(i, j, k, false);
     }
   }
 }

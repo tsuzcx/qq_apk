@@ -13,11 +13,11 @@ public abstract interface b
 {
   public abstract void a(Intent paramIntent, a parama);
   
-  public abstract void be(Intent paramIntent);
-  
   public abstract void bf(Intent paramIntent);
   
-  public abstract void bl(Intent paramIntent);
+  public abstract void bg(Intent paramIntent);
+  
+  public abstract void bm(Intent paramIntent);
   
   public static abstract class a
     extends Binder
@@ -28,7 +28,7 @@ public abstract interface b
       attachInterface(this, "com.tencent.mm.service.IMMServiceStub_AIDL");
     }
     
-    public static b O(IBinder paramIBinder)
+    public static b P(IBinder paramIBinder)
     {
       if (paramIBinder == null) {
         return null;
@@ -86,7 +86,7 @@ public abstract interface b
         if (paramParcel1.readInt() != 0) {}
         for (paramParcel1 = (Intent)Intent.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
         {
-          bl(paramParcel1);
+          bm(paramParcel1);
           paramParcel2.writeNoException();
           return true;
         }
@@ -96,7 +96,7 @@ public abstract interface b
         if (paramParcel1.readInt() != 0) {}
         for (paramParcel1 = (Intent)Intent.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
         {
-          be(paramParcel1);
+          bf(paramParcel1);
           paramParcel2.writeNoException();
           return true;
         }
@@ -105,7 +105,7 @@ public abstract interface b
       if (paramParcel1.readInt() != 0) {}
       for (paramParcel1 = (Intent)Intent.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
       {
-        bf(paramParcel1);
+        bg(paramParcel1);
         paramParcel2.writeNoException();
         return true;
       }
@@ -165,7 +165,7 @@ public abstract interface b
       }
       
       /* Error */
-      public final void be(Intent paramIntent)
+      public final void bf(Intent paramIntent)
       {
         // Byte code:
         //   0: ldc 75
@@ -231,7 +231,7 @@ public abstract interface b
       }
       
       /* Error */
-      public final void bf(Intent paramIntent)
+      public final void bg(Intent paramIntent)
       {
         // Byte code:
         //   0: ldc 77
@@ -297,7 +297,7 @@ public abstract interface b
       }
       
       /* Error */
-      public final void bl(Intent paramIntent)
+      public final void bm(Intent paramIntent)
       {
         // Byte code:
         //   0: ldc 79

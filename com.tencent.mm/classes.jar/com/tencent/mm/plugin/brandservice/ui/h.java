@@ -10,21 +10,21 @@ import com.tencent.mm.ui.base.sortview.a.b;
 public final class h
   extends a
 {
-  private static a.b nXp;
+  private static a.b ocY;
   
   public h(Object paramObject)
   {
     super(0, paramObject);
-    this.JtS = true;
+    this.JOH = true;
   }
   
   public final void a(Context paramContext, a.a parama, Object... paramVarArgs) {}
   
-  public final a.b bNP()
+  public final a.b bOM()
   {
     AppMethodBeat.i(5793);
-    if (nXp == null) {
-      nXp = new a.b()
+    if (ocY == null) {
+      ocY = new a.b()
       {
         public final void a(Context paramAnonymousContext, a.a paramAnonymousa, a paramAnonymousVarArgs) {}
         
@@ -47,12 +47,12 @@ public final class h
         }
       };
     }
-    a.b localb = nXp;
+    a.b localb = ocY;
     AppMethodBeat.o(5793);
     return localb;
   }
   
-  public final a.a bNQ()
+  public final a.a bON()
   {
     AppMethodBeat.i(5794);
     a locala = new a();
@@ -66,7 +66,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.ui.h
  * JD-Core Version:    0.7.0.1
  */

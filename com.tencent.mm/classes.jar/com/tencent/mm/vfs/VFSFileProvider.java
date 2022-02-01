@@ -20,14 +20,14 @@ public class VFSFileProvider
   extends ContentProvider
 {
   private static final String[] COLUMNS;
-  private static final Pattern Llc;
+  private static final Pattern LHK;
   private String IP;
   
   static
   {
     AppMethodBeat.i(13316);
     COLUMNS = new String[] { "_display_name", "_size" };
-    Llc = Pattern.compile("/");
+    LHK = Pattern.compile("/");
     AppMethodBeat.o(13316);
   }
   
@@ -44,7 +44,7 @@ public class VFSFileProvider
     if (((String)localObject).startsWith("/")) {
       paramUri = ((String)localObject).substring(1);
     }
-    String[] arrayOfString = Llc.split(paramUri, 3);
+    String[] arrayOfString = LHK.split(paramUri, 3);
     if (arrayOfString.length < 2)
     {
       AppMethodBeat.o(13308);
@@ -108,7 +108,7 @@ public class VFSFileProvider
       AppMethodBeat.o(13313);
       throw paramUri;
     }
-    if (new e(paramString).delete())
+    if (new k(paramString).delete())
     {
       AppMethodBeat.o(13313);
       return 1;
@@ -138,7 +138,7 @@ public class VFSFileProvider
         return paramUri;
       }
     }
-    paramUri = new e(localUri);
+    paramUri = new k(localUri);
     int i = paramUri.getName().lastIndexOf('.');
     if (i >= 0)
     {
@@ -177,11 +177,11 @@ public class VFSFileProvider
       AppMethodBeat.o(13315);
       throw paramUri;
     }
-    localObject = a.gzU().a((Uri)localObject, null);
-    if (((a.e)localObject).valid()) {
+    localObject = e.fSU().a((Uri)localObject, null);
+    if (((e.e)localObject).valid()) {
       try
       {
-        paramUri = ((a.e)localObject).LjM.mt(((a.e)localObject).path, paramString);
+        paramUri = ((e.e)localObject).LGE.mA(((e.e)localObject).path, paramString);
         AppMethodBeat.o(13315);
         return paramUri;
       }
@@ -206,7 +206,7 @@ public class VFSFileProvider
       AppMethodBeat.o(13310);
       throw paramUri;
     }
-    paramString1 = new e(paramString1);
+    paramString1 = new k(paramString1);
     paramUri = paramArrayOfString1;
     if (paramArrayOfString1 == null) {
       paramUri = COLUMNS;

@@ -12,56 +12,56 @@ import kotlinx.a.h.a;
 import kotlinx.a.t;
 import kotlinx.a.v;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/serialization/internal/KeyValueSerializer;", "K", "V", "R", "Lkotlinx/serialization/KSerializer;", "keySerializer", "valueSerializer", "(Lkotlinx/serialization/KSerializer;Lkotlinx/serialization/KSerializer;)V", "getKeySerializer", "()Lkotlinx/serialization/KSerializer;", "getValueSerializer", "key", "getKey", "(Ljava/lang/Object;)Ljava/lang/Object;", "value", "getValue", "deserialize", "decoder", "Lkotlinx/serialization/Decoder;", "(Lkotlinx/serialization/Decoder;)Ljava/lang/Object;", "serialize", "", "encoder", "Lkotlinx/serialization/Encoder;", "(Lkotlinx/serialization/Encoder;Ljava/lang/Object;)V", "toResult", "(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;", "Lkotlinx/serialization/internal/MapEntrySerializer;", "Lkotlinx/serialization/internal/PairSerializer;", "kotlinx-serialization-runtime"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/serialization/internal/KeyValueSerializer;", "K", "V", "R", "Lkotlinx/serialization/KSerializer;", "keySerializer", "valueSerializer", "(Lkotlinx/serialization/KSerializer;Lkotlinx/serialization/KSerializer;)V", "getKeySerializer", "()Lkotlinx/serialization/KSerializer;", "getValueSerializer", "key", "getKey", "(Ljava/lang/Object;)Ljava/lang/Object;", "value", "getValue", "deserialize", "decoder", "Lkotlinx/serialization/Decoder;", "(Lkotlinx/serialization/Decoder;)Ljava/lang/Object;", "serialize", "", "encoder", "Lkotlinx/serialization/Encoder;", "(Lkotlinx/serialization/Encoder;Ljava/lang/Object;)V", "toResult", "(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;", "Lkotlinx/serialization/internal/MapEntrySerializer;", "Lkotlinx/serialization/internal/PairSerializer;", "kotlinx-serialization-runtime"})
 public abstract class ac<K, V, R>
   implements h<R>
 {
-  private final h<K> NMt;
-  private final h<V> NMu;
+  private final h<V> OjA;
+  private final h<K> Ojz;
   
   private ac(h<K> paramh, h<V> paramh1)
   {
-    this.NMt = paramh;
-    this.NMu = paramh1;
+    this.Ojz = paramh;
+    this.OjA = paramh1;
   }
   
-  public abstract R Y(K paramK, V paramV);
+  public abstract R X(K paramK, V paramV);
   
   public final R a(c paramc)
   {
     p.h(paramc, "decoder");
-    a locala = paramc.a(eLj(), new h[] { this.NMt, this.NMu });
-    paramc = bh.gxc();
-    Object localObject = bh.gxc();
+    a locala = paramc.a(eOR(), new h[] { this.Ojz, this.OjA });
+    paramc = bh.gBE();
+    Object localObject = bh.gBE();
     int i;
     for (;;)
     {
-      i = locala.b(eLj());
+      i = locala.b(eOR());
       if (i == -1) {
         break label137;
       }
       if (i == 0)
       {
-        paramc = locala.a(eLj(), 0, (f)this.NMt);
+        paramc = locala.a(eOR(), 0, (f)this.Ojz);
       }
       else
       {
         if (i != 1) {
           break;
         }
-        localObject = locala.a(eLj(), 1, (f)this.NMu);
+        localObject = locala.a(eOR(), 1, (f)this.OjA);
       }
     }
     throw ((Throwable)new t("Invalid index: ".concat(String.valueOf(i)), (byte)0));
     label137:
-    locala.a(eLj());
-    if (paramc == bh.gxc()) {
+    locala.a(eOR());
+    if (paramc == bh.gBE()) {
       throw ((Throwable)new t("Element 'key' is missing", (byte)0));
     }
-    if (localObject == bh.gxc()) {
+    if (localObject == bh.gBE()) {
       throw ((Throwable)new t("Element 'value' is missing", (byte)0));
     }
-    return Y(paramc, localObject);
+    return X(paramc, localObject);
   }
   
   public final R a(c paramc, R paramR)
@@ -73,15 +73,15 @@ public abstract class ac<K, V, R>
   public final void a(g paramg, R paramR)
   {
     p.h(paramg, "encoder");
-    paramg = paramg.b(eLj(), new h[] { this.NMt, this.NMu });
-    paramg.a(eLj(), 0, (v)this.NMt, gg(paramR));
-    paramg.a(eLj(), 1, (v)this.NMu, getValue(paramR));
-    paramg.a(eLj());
+    paramg = paramg.b(eOR(), new h[] { this.Ojz, this.OjA });
+    paramg.a(eOR(), 0, (v)this.Ojz, gj(paramR));
+    paramg.a(eOR(), 1, (v)this.OjA, getValue(paramR));
+    paramg.a(eOR());
   }
   
   public abstract V getValue(R paramR);
   
-  public abstract K gg(R paramR);
+  public abstract K gj(R paramR);
 }
 
 

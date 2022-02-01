@@ -14,48 +14,48 @@ public class BenchUtil
   
   static
   {
-    AppMethodBeat.i(219962);
+    AppMethodBeat.i(200993);
     startTimeMap = new HashMap();
     endTimeMap = new HashMap();
     ENABLE_DEBUG = false;
-    AppMethodBeat.o(219962);
+    AppMethodBeat.o(200993);
   }
   
   public static long benchEnd(String paramString)
   {
-    AppMethodBeat.i(219961);
+    AppMethodBeat.i(200992);
     if ((ENABLE_DEBUG) && (!TextUtils.isEmpty(paramString)) && (startTimeMap != null))
     {
       Long localLong = (Long)startTimeMap.get(paramString);
       if (localLong == null)
       {
-        AppMethodBeat.o(219961);
+        AppMethodBeat.o(200992);
         return 0L;
       }
       long l = System.currentTimeMillis() - localLong.longValue();
       new StringBuilder().append(paramString).append(", cost time: ").append(l);
-      AppMethodBeat.o(219961);
+      AppMethodBeat.o(200992);
       return l;
     }
-    AppMethodBeat.o(219961);
+    AppMethodBeat.o(200992);
     return 0L;
   }
   
   public static void benchStart(String paramString)
   {
-    AppMethodBeat.i(219960);
+    AppMethodBeat.i(200991);
     if ((ENABLE_DEBUG) && (!TextUtils.isEmpty(paramString))) {
       startTimeMap.put(paramString, Long.valueOf(System.currentTimeMillis()));
     }
-    AppMethodBeat.o(219960);
+    AppMethodBeat.o(200991);
   }
   
   public static void clear()
   {
-    AppMethodBeat.i(219959);
+    AppMethodBeat.i(200990);
     startTimeMap.clear();
     endTimeMap.clear();
-    AppMethodBeat.o(219959);
+    AppMethodBeat.o(200990);
   }
   
   public static void setEnableDebugLog(boolean paramBoolean)

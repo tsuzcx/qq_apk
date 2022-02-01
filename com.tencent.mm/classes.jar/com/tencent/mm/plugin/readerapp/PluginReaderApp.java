@@ -1,38 +1,38 @@
 package com.tencent.mm.plugin.readerapp;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.e.c;
-import com.tencent.mm.model.t;
 import com.tencent.mm.model.u;
-import com.tencent.mm.plugin.messenger.foundation.a.r;
+import com.tencent.mm.model.v;
+import com.tencent.mm.plugin.messenger.foundation.a.s;
 import com.tencent.mm.plugin.readerapp.a.a;
 import com.tencent.mm.sdk.g.b;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.al.a;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.aj;
+import com.tencent.mm.storage.am.a;
 
 public class PluginReaderApp
   extends com.tencent.mm.kernel.b.f
   implements com.tencent.mm.kernel.api.c, a
 {
-  private com.tencent.mm.al.f xlW;
+  private com.tencent.mm.ak.f xBT;
   
   public PluginReaderApp()
   {
     AppMethodBeat.i(102648);
-    this.xlW = new com.tencent.mm.al.f()
+    this.xBT = new com.tencent.mm.ak.f()
     {
       public final void onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, n paramAnonymousn)
       {
         AppMethodBeat.i(102647);
-        com.tencent.mm.kernel.g.ajD();
-        if (bt.n((Integer)com.tencent.mm.kernel.g.ajC().ajl().get(15, null)) != 0)
+        com.tencent.mm.kernel.g.ajS();
+        if (bu.o((Integer)com.tencent.mm.kernel.g.ajR().ajA().get(15, null)) != 0)
         {
           PluginReaderApp.access$000(PluginReaderApp.this);
-          com.tencent.mm.kernel.g.aiU().b(138, this);
+          com.tencent.mm.kernel.g.ajj().b(138, this);
         }
         AppMethodBeat.o(102647);
       }
@@ -43,7 +43,7 @@ public class PluginReaderApp
   private boolean checkInstall()
   {
     AppMethodBeat.i(102656);
-    if ((u.aAy() & 0x80000) == 0)
+    if ((v.aAO() & 0x80000) == 0)
     {
       AppMethodBeat.o(102656);
       return true;
@@ -55,7 +55,7 @@ public class PluginReaderApp
   private boolean checkRecvNews()
   {
     AppMethodBeat.i(102657);
-    if ((u.aAs() & 0x400) == 0)
+    if ((v.aAI() & 0x400) == 0)
     {
       AppMethodBeat.o(102657);
       return true;
@@ -78,8 +78,8 @@ public class PluginReaderApp
     label84:
     for (int j = 1;; j = 0)
     {
-      com.tencent.mm.plugin.report.service.g.yhR.f(15416, new Object[] { "newsapp", Integer.valueOf(i), Integer.valueOf(j) });
-      com.tencent.mm.kernel.g.ajC().ajl().set(al.a.IDB, Long.valueOf(System.currentTimeMillis()));
+      com.tencent.mm.plugin.report.service.g.yxI.f(15416, new Object[] { "newsapp", Integer.valueOf(i), Integer.valueOf(j) });
+      com.tencent.mm.kernel.g.ajR().ajA().set(am.a.IYb, Long.valueOf(System.currentTimeMillis()));
       AppMethodBeat.o(102654);
       return;
       i = 0;
@@ -90,8 +90,8 @@ public class PluginReaderApp
   public void configure(com.tencent.mm.kernel.b.g paramg)
   {
     AppMethodBeat.i(102651);
-    if (paramg.akw()) {
-      pin(new t(com.tencent.mm.plugin.readerapp.c.g.class));
+    if (paramg.akL()) {
+      pin(new u(com.tencent.mm.plugin.readerapp.c.g.class));
     }
     AppMethodBeat.o(102651);
   }
@@ -99,15 +99,15 @@ public class PluginReaderApp
   public void dependency()
   {
     AppMethodBeat.i(102650);
-    dependsOn(r.class);
+    dependsOn(s.class);
     AppMethodBeat.o(102650);
   }
   
   public void execute(com.tencent.mm.kernel.b.g paramg)
   {
     AppMethodBeat.i(102652);
-    if (paramg.akw()) {
-      com.tencent.mm.bs.c.aNQ("readerapp");
+    if (paramg.akL()) {
+      com.tencent.mm.br.c.aPn("readerapp");
     }
     AppMethodBeat.o(102652);
   }
@@ -127,18 +127,18 @@ public class PluginReaderApp
       public final void run()
       {
         AppMethodBeat.i(102646);
-        long l = ((Long)com.tencent.mm.kernel.g.ajC().ajl().get(al.a.IDB, Long.valueOf(0L))).longValue();
+        long l = ((Long)com.tencent.mm.kernel.g.ajR().ajA().get(am.a.IYb, Long.valueOf(0L))).longValue();
         if (System.currentTimeMillis() - l >= 604800000L)
         {
-          com.tencent.mm.kernel.g.ajD();
-          if (bt.n((Integer)com.tencent.mm.kernel.g.ajC().ajl().get(15, null)) != 0) {}
+          com.tencent.mm.kernel.g.ajS();
+          if (bu.o((Integer)com.tencent.mm.kernel.g.ajR().ajA().get(15, null)) != 0) {}
           for (int i = 1; i != 0; i = 0)
           {
             PluginReaderApp.access$000(PluginReaderApp.this);
             AppMethodBeat.o(102646);
             return;
           }
-          com.tencent.mm.kernel.g.aiU().a(138, PluginReaderApp.this.xlW);
+          com.tencent.mm.kernel.g.ajj().a(138, PluginReaderApp.this.xBT);
         }
         AppMethodBeat.o(102646);
       }
@@ -149,7 +149,7 @@ public class PluginReaderApp
   public void onAccountRelease()
   {
     AppMethodBeat.i(102655);
-    com.tencent.mm.kernel.g.aiU().b(138, this.xlW);
+    com.tencent.mm.kernel.g.ajj().b(138, this.xBT);
     AppMethodBeat.o(102655);
   }
 }

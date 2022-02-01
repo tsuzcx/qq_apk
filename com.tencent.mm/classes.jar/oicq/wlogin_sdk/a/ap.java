@@ -5,7 +5,7 @@ public final class ap
 {
   public ap()
   {
-    this.NQs = 773;
+    this.Ony = 773;
   }
 }
 

@@ -2,15 +2,15 @@ package com.tencent.xweb.xwalk;
 
 public abstract interface c
 {
-  public abstract boolean bzJ();
+  public abstract boolean bAE();
   
-  public abstract void bzK();
+  public abstract void bAF();
   
-  public abstract void bzL();
+  public abstract void bAG();
   
-  public abstract void bzM();
+  public abstract void bAH();
   
-  public abstract void vx(int paramInt);
+  public abstract void vC(int paramInt);
 }
 
 

@@ -5,20 +5,20 @@ import java.util.Vector;
 
 final class d$b
 {
-  private Vector<d.a> Ihd;
-  private int Ihe;
-  private boolean Ihf;
+  private Vector<d.a> IBo;
+  private int IBp;
+  private boolean IBq;
   private int mCount;
-  private int zbE;
+  private int zsh;
   
   private d$b()
   {
     AppMethodBeat.i(158014);
-    this.Ihd = new Vector();
-    this.zbE = 20;
-    this.Ihe = 0;
+    this.IBo = new Vector();
+    this.zsh = 20;
+    this.IBp = 0;
     this.mCount = 0;
-    this.Ihf = false;
+    this.IBq = false;
     AppMethodBeat.o(158014);
   }
   
@@ -37,13 +37,13 @@ final class d$b
     //   13: iadd
     //   14: putfield 38	com/tencent/mm/sdk/d/d$b:mCount	I
     //   17: aload_0
-    //   18: getfield 32	com/tencent/mm/sdk/d/d$b:Ihd	Ljava/util/Vector;
+    //   18: getfield 32	com/tencent/mm/sdk/d/d$b:IBo	Ljava/util/Vector;
     //   21: invokevirtual 52	java/util/Vector:size	()I
     //   24: aload_0
-    //   25: getfield 34	com/tencent/mm/sdk/d/d$b:zbE	I
+    //   25: getfield 34	com/tencent/mm/sdk/d/d$b:zsh	I
     //   28: if_icmpge +35 -> 63
     //   31: aload_0
-    //   32: getfield 32	com/tencent/mm/sdk/d/d$b:Ihd	Ljava/util/Vector;
+    //   32: getfield 32	com/tencent/mm/sdk/d/d$b:IBo	Ljava/util/Vector;
     //   35: new 54	com/tencent/mm/sdk/d/d$a
     //   38: dup
     //   39: aload_1
@@ -61,26 +61,26 @@ final class d$b
     //   61: monitorexit
     //   62: return
     //   63: aload_0
-    //   64: getfield 32	com/tencent/mm/sdk/d/d$b:Ihd	Ljava/util/Vector;
+    //   64: getfield 32	com/tencent/mm/sdk/d/d$b:IBo	Ljava/util/Vector;
     //   67: aload_0
-    //   68: getfield 36	com/tencent/mm/sdk/d/d$b:Ihe	I
+    //   68: getfield 36	com/tencent/mm/sdk/d/d$b:IBp	I
     //   71: invokevirtual 64	java/util/Vector:get	(I)Ljava/lang/Object;
     //   74: checkcast 54	com/tencent/mm/sdk/d/d$a
     //   77: astore 7
     //   79: aload_0
     //   80: aload_0
-    //   81: getfield 36	com/tencent/mm/sdk/d/d$b:Ihe	I
+    //   81: getfield 36	com/tencent/mm/sdk/d/d$b:IBp	I
     //   84: iconst_1
     //   85: iadd
-    //   86: putfield 36	com/tencent/mm/sdk/d/d$b:Ihe	I
+    //   86: putfield 36	com/tencent/mm/sdk/d/d$b:IBp	I
     //   89: aload_0
-    //   90: getfield 36	com/tencent/mm/sdk/d/d$b:Ihe	I
+    //   90: getfield 36	com/tencent/mm/sdk/d/d$b:IBp	I
     //   93: aload_0
-    //   94: getfield 34	com/tencent/mm/sdk/d/d$b:zbE	I
+    //   94: getfield 34	com/tencent/mm/sdk/d/d$b:zsh	I
     //   97: if_icmplt +8 -> 105
     //   100: aload_0
     //   101: iconst_0
-    //   102: putfield 36	com/tencent/mm/sdk/d/d$b:Ihe	I
+    //   102: putfield 36	com/tencent/mm/sdk/d/d$b:IBp	I
     //   105: aload 7
     //   107: aload_1
     //   108: aload_2
@@ -119,7 +119,7 @@ final class d$b
     try
     {
       AppMethodBeat.i(158015);
-      this.Ihd.clear();
+      this.IBo.clear();
       AppMethodBeat.o(158015);
       return;
     }
@@ -130,11 +130,11 @@ final class d$b
     }
   }
   
-  final boolean fmg()
+  final boolean fqb()
   {
     try
     {
-      boolean bool = this.Ihf;
+      boolean bool = this.IBq;
       return bool;
     }
     finally
@@ -146,7 +146,7 @@ final class d$b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.sdk.d.d.b
  * JD-Core Version:    0.7.0.1
  */

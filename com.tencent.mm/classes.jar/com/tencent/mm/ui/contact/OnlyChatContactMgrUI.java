@@ -30,24 +30,22 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.f;
+import com.tencent.mm.ak.f;
 import com.tencent.mm.chatroom.ui.SelectMemberScrollBar;
-import com.tencent.mm.g.c.aw;
-import com.tencent.mm.model.w;
+import com.tencent.mm.model.x;
 import com.tencent.mm.modelmulti.c;
 import com.tencent.mm.plugin.label.ui.ContactLabelManagerUI;
 import com.tencent.mm.plugin.sns.b.o;
 import com.tencent.mm.protocal.l.e;
 import com.tencent.mm.sdk.e.n.b;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.c;
-import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.av;
-import com.tencent.mm.sdk.platformtools.av.a;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.am;
-import com.tencent.mm.storage.ar;
-import com.tencent.mm.storage.bp;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aw.a;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.an;
+import com.tencent.mm.storage.as;
+import com.tencent.mm.storage.bq;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.VerticalScrollBar.a;
 import com.tencent.mm.ui.base.n.d;
@@ -64,53 +62,53 @@ public class OnlyChatContactMgrUI
   extends MMActivity
   implements f, n.b, n
 {
-  private EditText BkS;
-  private ContactCountView KjK;
-  private final String Kom;
-  private a Kon;
-  private SelectMemberScrollBar Koo;
-  private Button Kop;
-  private final int Koq;
-  private final int Kor;
-  private com.tencent.mm.g.b.a.g Kos;
-  private final int Kot;
-  private final int Kou;
-  private final int Kov;
-  private final int Kow;
-  private TextView gWP;
-  private Button jhi;
-  private Button jis;
-  private ListView jpT;
-  private int nYw;
-  private int nYx;
+  private EditText BCr;
+  private ContactCountView KGe;
+  private final String KKG;
+  private a KKH;
+  private SelectMemberScrollBar KKI;
+  private Button KKJ;
+  private final int KKK;
+  private final int KKL;
+  private com.tencent.mm.g.b.a.g KKM;
+  private final int KKN;
+  private final int KKO;
+  private final int KKP;
+  private final int KKQ;
+  private TextView gZC;
+  private Button jkb;
+  private Button jll;
+  private ListView jsM;
+  private int oef;
+  private int oeg;
   private com.tencent.mm.ui.base.p tipDialog;
   
   public OnlyChatContactMgrUI()
   {
-    AppMethodBeat.i(194554);
-    this.Kom = "intent_status_mgr";
-    this.Koq = com.tencent.mm.n.g.acA().getInt("MMBatchModContactTypeMaxNumForServer", 30);
-    this.Kor = com.tencent.mm.n.g.acA().getInt("MMBatchModContactTypeMaxNumForClient", 30);
-    this.Kot = 0;
-    this.Kou = 1;
-    this.Kov = 2;
-    this.Kow = 3;
-    AppMethodBeat.o(194554);
+    AppMethodBeat.i(187955);
+    this.KKG = "intent_status_mgr";
+    this.KKK = com.tencent.mm.n.g.acL().getInt("MMBatchModContactTypeMaxNumForServer", 30);
+    this.KKL = com.tencent.mm.n.g.acL().getInt("MMBatchModContactTypeMaxNumForClient", 30);
+    this.KKN = 0;
+    this.KKO = 1;
+    this.KKP = 2;
+    this.KKQ = 3;
+    AppMethodBeat.o(187955);
   }
   
   public final void a(int paramInt, com.tencent.mm.sdk.e.n paramn, Object paramObject)
   {
     boolean bool = false;
     AppMethodBeat.i(180072);
-    this.Kon.Zh();
-    int i = this.Kon.getContactCount();
-    this.KjK.setFixedContactCount(i);
-    paramn = this.gWP;
+    this.KKH.Zq();
+    int i = this.KKH.getContactCount();
+    this.KGe.setFixedContactCount(i);
+    paramn = this.gZC;
     if (i == 0) {}
     for (paramInt = 0;; paramInt = 8)
     {
       paramn.setVisibility(paramInt);
-      paramn = this.Kop;
+      paramn = this.KKJ;
       if (i > 0) {
         bool = true;
       }
@@ -125,7 +123,7 @@ public class OnlyChatContactMgrUI
     AppMethodBeat.i(180071);
     if ((parama instanceof com.tencent.mm.ui.contact.a.e))
     {
-      boolean bool = a.a(this.Kon).contains(((com.tencent.mm.ui.contact.a.e)parama).username);
+      boolean bool = a.a(this.KKH).contains(((com.tencent.mm.ui.contact.a.e)parama).username);
       AppMethodBeat.o(180071);
       return bool;
     }
@@ -145,7 +143,7 @@ public class OnlyChatContactMgrUI
   
   public ListView getContentLV()
   {
-    return this.jpT;
+    return this.jsM;
   }
   
   public int getLayoutId()
@@ -166,7 +164,7 @@ public class OnlyChatContactMgrUI
     if (paramInt1 == 3)
     {
       paramInt1 = paramIntent.getIntExtra("label_id", 0);
-      paramIntent = com.tencent.mm.plugin.label.e.dfn().aTa(String.valueOf(paramInt1));
+      paramIntent = com.tencent.mm.plugin.label.e.dif().aUB(String.valueOf(paramInt1));
       localObject = new Intent(this, SelectContactsFromRangeUI.class);
       ((Intent)localObject).putExtra("list_type", 1);
       ((Intent)localObject).putExtra("filter_type", "@all.contact.android");
@@ -174,19 +172,19 @@ public class OnlyChatContactMgrUI
       for (paramIntent = new String[0];; paramIntent = (String[])paramIntent.toArray(new String[0]))
       {
         ((Intent)localObject).putExtra("already_select_contact", paramIntent);
-        ((Intent)localObject).putExtra("max_limit_num", this.Kor);
+        ((Intent)localObject).putExtra("max_limit_num", this.KKL);
         startActivityForResult((Intent)localObject, 1);
-        paramIntent = this.Kos;
-        paramIntent.dQr = paramIntent.t("selecttagid", String.valueOf(paramInt1), true);
-        paramIntent = this.Kos;
-        paramIntent.dQq = paramIntent.t("selecttagname", com.tencent.mm.plugin.label.e.dfn().aol(String.valueOf(paramInt1)), true);
+        paramIntent = this.KKM;
+        paramIntent.dRH = paramIntent.t("selecttagid", String.valueOf(paramInt1), true);
+        paramIntent = this.KKM;
+        paramIntent.dRG = paramIntent.t("selecttagname", com.tencent.mm.plugin.label.e.dif().apn(String.valueOf(paramInt1)), true);
         AppMethodBeat.o(180073);
         return;
       }
     }
     if (paramInt1 == 2)
     {
-      paramIntent = bt.U(paramIntent.getStringExtra("Select_Contact").split(","));
+      paramIntent = bu.U(paramIntent.getStringExtra("Select_Contact").split(","));
       if ((paramIntent == null) || (paramIntent.isEmpty()))
       {
         AppMethodBeat.o(180073);
@@ -196,12 +194,12 @@ public class OnlyChatContactMgrUI
       {
         public final void onClick(final DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
-          AppMethodBeat.i(194550);
+          AppMethodBeat.i(187951);
           paramAnonymousDialogInterface = new c(paramIntent, 2, OnlyChatContactMgrUI.k(OnlyChatContactMgrUI.this));
-          com.tencent.mm.kernel.g.ajB().gAO.a(paramAnonymousDialogInterface, 0);
-          OnlyChatContactMgrUI.i(OnlyChatContactMgrUI.this).dQk = paramIntent.size();
-          OnlyChatContactMgrUI.i(OnlyChatContactMgrUI.this).dQn = OnlyChatContactMgrUI.b(OnlyChatContactMgrUI.this).getContactCount();
-          OnlyChatContactMgrUI.i(OnlyChatContactMgrUI.this).dQs = (System.currentTimeMillis() - OnlyChatContactMgrUI.i(OnlyChatContactMgrUI.this).dQs);
+          com.tencent.mm.kernel.g.ajQ().gDv.a(paramAnonymousDialogInterface, 0);
+          OnlyChatContactMgrUI.i(OnlyChatContactMgrUI.this).dRA = paramIntent.size();
+          OnlyChatContactMgrUI.i(OnlyChatContactMgrUI.this).dRD = OnlyChatContactMgrUI.b(OnlyChatContactMgrUI.this).getContactCount();
+          OnlyChatContactMgrUI.i(OnlyChatContactMgrUI.this).dRI = (System.currentTimeMillis() - OnlyChatContactMgrUI.i(OnlyChatContactMgrUI.this).dRI);
           OnlyChatContactMgrUI localOnlyChatContactMgrUI = OnlyChatContactMgrUI.this;
           AppCompatActivity localAppCompatActivity = OnlyChatContactMgrUI.this.getContext();
           OnlyChatContactMgrUI.this.getString(2131755906);
@@ -209,12 +207,12 @@ public class OnlyChatContactMgrUI
           {
             public final void onCancel(DialogInterface paramAnonymous2DialogInterface)
             {
-              AppMethodBeat.i(194549);
-              com.tencent.mm.kernel.g.ajB().gAO.a(paramAnonymousDialogInterface);
-              AppMethodBeat.o(194549);
+              AppMethodBeat.i(187950);
+              com.tencent.mm.kernel.g.ajQ().gDv.a(paramAnonymousDialogInterface);
+              AppMethodBeat.o(187950);
             }
           }));
-          AppMethodBeat.o(194550);
+          AppMethodBeat.o(187951);
         }
       }, null, 2131099904);
       AppMethodBeat.o(180073);
@@ -222,26 +220,26 @@ public class OnlyChatContactMgrUI
     }
     if (paramInt1 == 1)
     {
-      localObject = bt.U(paramIntent.getStringExtra("Select_Contact").split(","));
+      localObject = bu.U(paramIntent.getStringExtra("Select_Contact").split(","));
       if ((localObject == null) || (((List)localObject).isEmpty()))
       {
         AppMethodBeat.o(180073);
         return;
       }
-      paramIntent = new c((List)localObject, 1, this.Koq);
-      com.tencent.mm.kernel.g.ajB().gAO.a(paramIntent, 0);
-      this.Kos.dQk = ((List)localObject).size();
-      this.Kos.dQn = this.Kon.getContactCount();
-      this.Kos.dQs = (System.currentTimeMillis() - this.Kos.dQs);
+      paramIntent = new c((List)localObject, 1, this.KKK);
+      com.tencent.mm.kernel.g.ajQ().gDv.a(paramIntent, 0);
+      this.KKM.dRA = ((List)localObject).size();
+      this.KKM.dRD = this.KKH.getContactCount();
+      this.KKM.dRI = (System.currentTimeMillis() - this.KKM.dRI);
       localObject = getContext();
       getString(2131755906);
       this.tipDialog = com.tencent.mm.ui.base.h.b((Context)localObject, getString(2131755502), true, new DialogInterface.OnCancelListener()
       {
         public final void onCancel(DialogInterface paramAnonymousDialogInterface)
         {
-          AppMethodBeat.i(194551);
-          com.tencent.mm.kernel.g.ajB().gAO.a(paramIntent);
-          AppMethodBeat.o(194551);
+          AppMethodBeat.i(187952);
+          com.tencent.mm.kernel.g.ajQ().gDv.a(paramIntent);
+          AppMethodBeat.o(187952);
         }
       });
     }
@@ -255,7 +253,7 @@ public class OnlyChatContactMgrUI
     AppMethodBeat.i(180069);
     super.onCreate(paramBundle);
     setMMTitle(2131755183);
-    this.jpT = ((ListView)findViewById(2131302228));
+    this.jsM = ((ListView)findViewById(2131302228));
     setToTop(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
@@ -263,24 +261,24 @@ public class OnlyChatContactMgrUI
         AppMethodBeat.i(180044);
         Object localObject = new com.tencent.mm.hellhoundlib.b.b();
         ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/contact/OnlyChatContactMgrUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahq());
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/contact/OnlyChatContactMgrUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahF());
         paramAnonymousView = OnlyChatContactMgrUI.a(OnlyChatContactMgrUI.this);
         paramAnonymousView = new com.tencent.mm.hellhoundlib.b.a().bc(paramAnonymousView);
         localObject = new Object();
-        com.tencent.mm.hellhoundlib.a.a.a(localObject, paramAnonymousView.ahp(), "com/tencent/mm/ui/contact/OnlyChatContactMgrUI$1", "onClick", "(Landroid/view/View;)V", "com/tencent/mm/sdk/platformtools/BackwardSupportUtil$SmoothScrollFactory_EXEC_", "scrollToTop", "(Landroid/widget/ListView;)V");
-        BackwardSupportUtil.c.b((ListView)paramAnonymousView.mq(0));
+        com.tencent.mm.hellhoundlib.a.a.a(localObject, paramAnonymousView.ahE(), "com/tencent/mm/ui/contact/OnlyChatContactMgrUI$1", "onClick", "(Landroid/view/View;)V", "com/tencent/mm/sdk/platformtools/BackwardSupportUtil$SmoothScrollFactory_EXEC_", "scrollToTop", "(Landroid/widget/ListView;)V");
+        BackwardSupportUtil.c.b((ListView)paramAnonymousView.mt(0));
         com.tencent.mm.hellhoundlib.a.a.a(localObject, "com/tencent/mm/ui/contact/OnlyChatContactMgrUI$1", "onClick", "(Landroid/view/View;)V", "com/tencent/mm/sdk/platformtools/BackwardSupportUtil$SmoothScrollFactory_EXEC_", "scrollToTop", "(Landroid/widget/ListView;)V");
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/contact/OnlyChatContactMgrUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(180044);
       }
     });
-    this.gWP = ((TextView)findViewById(2131299475));
-    this.Kon = new a(this);
+    this.gZC = ((TextView)findViewById(2131299475));
+    this.KKH = new a(this);
     boolean bool2 = getIntent().getBooleanExtra("intent_status_mgr", false);
     if (bool2) {
-      this.Kon.KmP = true;
+      this.KKH.KJj = true;
     }
-    this.jpT.setOnItemClickListener(new AdapterView.OnItemClickListener()
+    this.jsM.setOnItemClickListener(new AdapterView.OnItemClickListener()
     {
       public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
       {
@@ -288,10 +286,10 @@ public class OnlyChatContactMgrUI
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
         localb.bd(paramAnonymousAdapterView);
         localb.bd(paramAnonymousView);
-        localb.mr(paramAnonymousInt);
-        localb.qY(paramAnonymousLong);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/contact/OnlyChatContactMgrUI$2", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.ahq());
-        paramAnonymousAdapterView = OnlyChatContactMgrUI.b(OnlyChatContactMgrUI.this).aen(paramAnonymousInt);
+        localb.mu(paramAnonymousInt);
+        localb.rl(paramAnonymousLong);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/contact/OnlyChatContactMgrUI$2", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.ahF());
+        paramAnonymousAdapterView = OnlyChatContactMgrUI.b(OnlyChatContactMgrUI.this).aeW(paramAnonymousInt);
         if ((paramAnonymousAdapterView == null) || (!(paramAnonymousAdapterView instanceof com.tencent.mm.ui.contact.a.e)))
         {
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/contact/OnlyChatContactMgrUI$2", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
@@ -299,12 +297,12 @@ public class OnlyChatContactMgrUI
           return;
         }
         paramAnonymousAdapterView = ((com.tencent.mm.ui.contact.a.e)paramAnonymousAdapterView).username;
-        if (OnlyChatContactMgrUI.b(OnlyChatContactMgrUI.this).dQK())
+        if (OnlyChatContactMgrUI.b(OnlyChatContactMgrUI.this).dUh())
         {
           paramAnonymousView = OnlyChatContactMgrUI.b(OnlyChatContactMgrUI.this);
-          if (paramAnonymousView.KoD.contains(paramAnonymousAdapterView))
+          if (paramAnonymousView.KKX.contains(paramAnonymousAdapterView))
           {
-            paramAnonymousView.KoD.remove(paramAnonymousAdapterView);
+            paramAnonymousView.KKX.remove(paramAnonymousAdapterView);
             paramAnonymousView.notifyDataSetChanged();
             if (OnlyChatContactMgrUI.a.a(OnlyChatContactMgrUI.b(OnlyChatContactMgrUI.this)).size() <= 0) {
               break label275;
@@ -318,20 +316,20 @@ public class OnlyChatContactMgrUI
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/contact/OnlyChatContactMgrUI$2", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
           AppMethodBeat.o(180048);
           return;
-          paramAnonymousView.KoD.add(paramAnonymousAdapterView);
+          paramAnonymousView.KKX.add(paramAnonymousAdapterView);
           break;
           label275:
           OnlyChatContactMgrUI.c(OnlyChatContactMgrUI.this).setText(OnlyChatContactMgrUI.this.getString(2131755185));
           OnlyChatContactMgrUI.c(OnlyChatContactMgrUI.this).setEnabled(false);
           continue;
-          if (w.Ad(paramAnonymousAdapterView))
+          if (x.AN(paramAnonymousAdapterView))
           {
             paramAnonymousView = new Intent(OnlyChatContactMgrUI.this.getContext(), AddressUI.class);
             paramAnonymousView.putExtra("Contact_GroupFilter_Type", "@biz.contact");
             paramAnonymousAdapterView = OnlyChatContactMgrUI.this;
             paramAnonymousView = new com.tencent.mm.hellhoundlib.b.a().bc(paramAnonymousView);
-            com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousAdapterView, paramAnonymousView.ahp(), "com/tencent/mm/ui/contact/OnlyChatContactMgrUI$2", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-            paramAnonymousAdapterView.startActivity((Intent)paramAnonymousView.mq(0));
+            com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousAdapterView, paramAnonymousView.ahE(), "com/tencent/mm/ui/contact/OnlyChatContactMgrUI$2", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+            paramAnonymousAdapterView.startActivity((Intent)paramAnonymousView.mt(0));
             com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousAdapterView, "com/tencent/mm/ui/contact/OnlyChatContactMgrUI$2", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
             com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/contact/OnlyChatContactMgrUI$2", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
             AppMethodBeat.o(180048);
@@ -342,24 +340,24 @@ public class OnlyChatContactMgrUI
           paramAnonymousView.putExtra("Contact_Scene", 3);
           paramAnonymousView.putExtra("CONTACT_INFO_UI_SOURCE", 4);
           if ((paramAnonymousAdapterView != null) && (paramAnonymousAdapterView.length() > 0)) {
-            com.tencent.mm.bs.d.b(OnlyChatContactMgrUI.this.getContext(), "profile", ".ui.ContactInfoUI", paramAnonymousView);
+            com.tencent.mm.br.d.b(OnlyChatContactMgrUI.this.getContext(), "profile", ".ui.ContactInfoUI", paramAnonymousView);
           }
         }
       }
     });
-    this.jpT.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener()
+    this.jsM.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener()
     {
       public final boolean onItemLongClick(final AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, final int paramAnonymousInt, long paramAnonymousLong)
       {
         AppMethodBeat.i(180051);
-        paramAnonymousAdapterView = OnlyChatContactMgrUI.b(OnlyChatContactMgrUI.this).aen(paramAnonymousInt);
+        paramAnonymousAdapterView = OnlyChatContactMgrUI.b(OnlyChatContactMgrUI.this).aeW(paramAnonymousInt);
         if ((paramAnonymousAdapterView == null) || (!(paramAnonymousAdapterView instanceof com.tencent.mm.ui.contact.a.e)))
         {
           AppMethodBeat.o(180051);
           return true;
         }
         paramAnonymousAdapterView = ((com.tencent.mm.ui.contact.a.e)paramAnonymousAdapterView).username;
-        if (!OnlyChatContactMgrUI.b(OnlyChatContactMgrUI.this).dQK()) {
+        if (!OnlyChatContactMgrUI.b(OnlyChatContactMgrUI.this).dUh()) {
           new com.tencent.mm.ui.widget.b.a(OnlyChatContactMgrUI.this.getContext()).a(paramAnonymousView, paramAnonymousInt, paramAnonymousLong, new View.OnCreateContextMenuListener()new n.e
           {
             public final void onCreateContextMenu(ContextMenu paramAnonymous2ContextMenu, View paramAnonymous2View, ContextMenu.ContextMenuInfo paramAnonymous2ContextMenuInfo)
@@ -379,8 +377,8 @@ public class OnlyChatContactMgrUI
               ((Intent)localObject).putExtra("view_mode", true);
               paramAnonymous2MenuItem = OnlyChatContactMgrUI.this.getContext();
               localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
-              com.tencent.mm.hellhoundlib.a.a.a(paramAnonymous2MenuItem, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahp(), "com/tencent/mm/ui/contact/OnlyChatContactMgrUI$3$2", "onMMMenuItemSelected", "(Landroid/view/MenuItem;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-              paramAnonymous2MenuItem.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mq(0));
+              com.tencent.mm.hellhoundlib.a.a.a(paramAnonymous2MenuItem, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahE(), "com/tencent/mm/ui/contact/OnlyChatContactMgrUI$3$2", "onMMMenuItemSelected", "(Landroid/view/MenuItem;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+              paramAnonymous2MenuItem.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mt(0));
               com.tencent.mm.hellhoundlib.a.a.a(paramAnonymous2MenuItem, "com/tencent/mm/ui/contact/OnlyChatContactMgrUI$3$2", "onMMMenuItemSelected", "(Landroid/view/MenuItem;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
               AppMethodBeat.o(180050);
             }
@@ -390,7 +388,7 @@ public class OnlyChatContactMgrUI
         return true;
       }
     });
-    this.jpT.setOnTouchListener(new View.OnTouchListener()
+    this.jsM.setOnTouchListener(new View.OnTouchListener()
     {
       public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
       {
@@ -398,7 +396,7 @@ public class OnlyChatContactMgrUI
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
         localb.bd(paramAnonymousView);
         localb.bd(paramAnonymousMotionEvent);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/contact/OnlyChatContactMgrUI$4", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahq());
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/contact/OnlyChatContactMgrUI$4", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahF());
         switch (paramAnonymousMotionEvent.getAction())
         {
         }
@@ -413,21 +411,21 @@ public class OnlyChatContactMgrUI
         }
       }
     });
-    this.jpT.setAdapter(this.Kon);
-    paramBundle = this.jpT;
+    this.jsM.setAdapter(this.KKH);
+    paramBundle = this.jsM;
     ContactCountView localContactCountView = new ContactCountView(this);
-    this.KjK = localContactCountView;
+    this.KGe = localContactCountView;
     paramBundle.addFooterView(localContactCountView, null, false);
-    this.KjK.setFixedContactCount(this.Kon.getContactCount());
-    paramBundle = this.gWP;
-    if (this.Kon.getContactCount() == 0)
+    this.KGe.setFixedContactCount(this.KKH.getContactCount());
+    paramBundle = this.gZC;
+    if (this.KKH.getContactCount() == 0)
     {
       i = 0;
       paramBundle.setVisibility(i);
-      this.Koo = ((SelectMemberScrollBar)findViewById(2131302231));
-      this.Koo.setOnScrollBarTouchListener(new VerticalScrollBar.a()
+      this.KKI = ((SelectMemberScrollBar)findViewById(2131302231));
+      this.KKI.setOnScrollBarTouchListener(new VerticalScrollBar.a()
       {
-        public final void vc(String paramAnonymousString)
+        public final void vy(String paramAnonymousString)
         {
           AppMethodBeat.i(180053);
           if ("↑".equals(paramAnonymousString))
@@ -437,8 +435,8 @@ public class OnlyChatContactMgrUI
             return;
           }
           OnlyChatContactMgrUI.a locala = OnlyChatContactMgrUI.b(OnlyChatContactMgrUI.this);
-          if (locala.Kkm.get(paramAnonymousString) == null) {}
-          for (int i = -1;; i = ((Integer)locala.Kkm.get(paramAnonymousString)).intValue())
+          if (locala.KGG.get(paramAnonymousString) == null) {}
+          for (int i = -1;; i = ((Integer)locala.KGG.get(paramAnonymousString)).intValue())
           {
             if (i != -1) {
               OnlyChatContactMgrUI.a(OnlyChatContactMgrUI.this).setSelection(i);
@@ -448,10 +446,10 @@ public class OnlyChatContactMgrUI
           }
         }
       });
-      this.BkS = ((MMEditText)findViewById(2131304523));
-      this.BkS.addTextChangedListener(new TextWatcher()
+      this.BCr = ((MMEditText)findViewById(2131304523));
+      this.BCr.addTextChangedListener(new TextWatcher()
       {
-        private av fTs;
+        private com.tencent.mm.sdk.platformtools.aw fVy;
         
         public final void afterTextChanged(Editable paramAnonymousEditable) {}
         
@@ -460,23 +458,23 @@ public class OnlyChatContactMgrUI
         public final void onTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3)
         {
           AppMethodBeat.i(180056);
-          this.fTs.stopTimer();
-          this.fTs.az(500L, 500L);
+          this.fVy.stopTimer();
+          this.fVy.ay(500L, 500L);
           AppMethodBeat.o(180056);
         }
       });
-      this.jhi = ((Button)findViewById(2131296456));
-      this.Kop = ((Button)findViewById(2131301242));
-      this.jis = ((Button)findViewById(2131298954));
-      this.jis.setEnabled(false);
-      paramBundle = this.jhi;
+      this.jkb = ((Button)findViewById(2131296456));
+      this.KKJ = ((Button)findViewById(2131301242));
+      this.jll = ((Button)findViewById(2131298954));
+      this.jll.setEnabled(false);
+      paramBundle = this.jkb;
       if (!bool2) {
         break label506;
       }
       i = 8;
       label344:
       paramBundle.setVisibility(i);
-      paramBundle = this.Kop;
+      paramBundle = this.KKJ;
       if (!bool2) {
         break label511;
       }
@@ -486,46 +484,46 @@ public class OnlyChatContactMgrUI
     for (int i = 8;; i = 0)
     {
       paramBundle.setVisibility(i);
-      paramBundle = this.jis;
+      paramBundle = this.jll;
       i = j;
       if (bool2) {
         i = 0;
       }
       paramBundle.setVisibility(i);
-      paramBundle = this.Kop;
-      if (this.Kon.getContactCount() > 0) {
+      paramBundle = this.KKJ;
+      if (this.KKH.getContactCount() > 0) {
         bool1 = true;
       }
       paramBundle.setEnabled(bool1);
-      this.jhi.setOnClickListener(new View.OnClickListener()
+      this.jkb.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(180057);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
           localb.bd(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/contact/OnlyChatContactMgrUI$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/contact/OnlyChatContactMgrUI$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
           OnlyChatContactMgrUI.h(OnlyChatContactMgrUI.this);
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/contact/OnlyChatContactMgrUI$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(180057);
         }
       });
-      this.Kop.setOnClickListener(new View.OnClickListener()
+      this.KKJ.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(180058);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
           localb.bd(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/contact/OnlyChatContactMgrUI$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/contact/OnlyChatContactMgrUI$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
           OnlyChatContactMgrUI.a(OnlyChatContactMgrUI.this, new com.tencent.mm.g.b.a.g());
           paramAnonymousView = new Intent(OnlyChatContactMgrUI.this, SelectContactsFromRangeUI.class);
           paramAnonymousView.putExtra("intent_status_mgr", true);
           paramAnonymousView.putExtra("list_type", 16);
           paramAnonymousView.putExtra("filter_type", "@social.black.android");
           OnlyChatContactMgrUI.this.startActivityForResult(paramAnonymousView, 2);
-          OnlyChatContactMgrUI.i(OnlyChatContactMgrUI.this).dQj = 5L;
-          OnlyChatContactMgrUI.i(OnlyChatContactMgrUI.this).dQs = System.currentTimeMillis();
+          OnlyChatContactMgrUI.i(OnlyChatContactMgrUI.this).dRz = 5L;
+          OnlyChatContactMgrUI.i(OnlyChatContactMgrUI.this).dRI = System.currentTimeMillis();
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/contact/OnlyChatContactMgrUI$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(180058);
         }
@@ -534,17 +532,17 @@ public class OnlyChatContactMgrUI
       {
         public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
         {
-          AppMethodBeat.i(194553);
+          AppMethodBeat.i(187954);
           OnlyChatContactMgrUI.this.hideVKB();
           OnlyChatContactMgrUI.this.finish();
-          AppMethodBeat.o(194553);
+          AppMethodBeat.o(187954);
           return false;
         }
       });
-      com.tencent.mm.kernel.g.ajD();
-      ((com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azp().a(this);
-      com.tencent.mm.kernel.g.ajD();
-      com.tencent.mm.kernel.g.ajB().gAO.a(3990, this);
+      com.tencent.mm.kernel.g.ajS();
+      ((com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azF().a(this);
+      com.tencent.mm.kernel.g.ajS();
+      com.tencent.mm.kernel.g.ajQ().gDv.a(3990, this);
       AppMethodBeat.o(180069);
       return;
       i = 8;
@@ -557,19 +555,19 @@ public class OnlyChatContactMgrUI
   public void onDestroy()
   {
     AppMethodBeat.i(180070);
-    com.tencent.mm.kernel.g.ajD();
-    ((com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azp().b(this);
-    com.tencent.mm.kernel.g.ajD();
-    com.tencent.mm.kernel.g.ajB().gAO.b(3990, this);
-    this.Kon.finish();
+    com.tencent.mm.kernel.g.ajS();
+    ((com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azF().b(this);
+    com.tencent.mm.kernel.g.ajS();
+    com.tencent.mm.kernel.g.ajQ().gDv.b(3990, this);
+    this.KKH.finish();
     super.onDestroy();
     AppMethodBeat.o(180070);
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.al.n paramn)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ak.n paramn)
   {
     AppMethodBeat.i(180074);
-    ad.i("MicroMsg.OnlyChatContactMgrUI", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString + " " + paramn.getType());
+    ae.i("MicroMsg.OnlyChatContactMgrUI", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString + " " + paramn.getType());
     if (!(paramn instanceof c))
     {
       AppMethodBeat.o(180074);
@@ -587,20 +585,20 @@ public class OnlyChatContactMgrUI
       {
         paramInt1 = 2131755661;
         Toast.makeText(this, getString(paramInt1), 0).show();
-        this.Kos.dQl = this.Kos.dQk;
-        paramString = this.Kos;
-        paramString.dQm = paramString.t("modifiedsucfriendlist", bt.m(localc.ieF, "#"), true);
+        this.KKM.dRB = this.KKM.dRA;
+        paramString = this.KKM;
+        paramString.dRC = paramString.t("modifiedsucfriendlist", bu.m(localc.ihx, "#"), true);
         if (localc.op != 1) {
           break label279;
         }
       }
       label279:
-      for (this.Kos.dQo = (this.Kos.dQn + localc.ieF.size());; this.Kos.dQo = (this.Kos.dQn - localc.ieF.size()))
+      for (this.KKM.dRE = (this.KKM.dRD + localc.ihx.size());; this.KKM.dRE = (this.KKM.dRD - localc.ihx.size()))
       {
-        this.Kos.dQp = 1L;
-        paramString = this.Kos;
-        paramString.dQt = paramString.t("sessionid", hashCode(), true);
-        this.Kos.aLk();
+        this.KKM.dRF = 1L;
+        paramString = this.KKM;
+        paramString.dRJ = paramString.t("sessionid", hashCode(), true);
+        this.KKM.aLH();
         AppMethodBeat.o(180074);
         return;
         paramInt1 = 2131755667;
@@ -610,23 +608,23 @@ public class OnlyChatContactMgrUI
     if (paramInt2 == -3503)
     {
       paramString = new f.a(this);
-      paramString.aXO(bt.bI(paramn.getReqResp().getRespObj().getErrMsg(), getString(2131755570))).yU(true).aXT(getString(2131762023)).afp(2131762024);
+      paramString.aZq(bu.bI(paramn.getReqResp().getRespObj().getErrMsg(), getString(2131755570))).zi(true).aZv(getString(2131762023)).afY(2131762024);
       paramString.c(new f.c()
       {
         public final void d(boolean paramAnonymousBoolean, String paramAnonymousString)
         {
-          AppMethodBeat.i(194552);
+          AppMethodBeat.i(187953);
           OnlyChatContactMgrUI.this.hideVKB();
           if (!paramAnonymousBoolean)
           {
-            paramAnonymousString = "https://support.weixin.qq.com/cgi-bin/mmsupport-bin/newreadtemplate?t=contact/faq1&wechat_real_lang=" + ac.iM(OnlyChatContactMgrUI.this.getContext());
+            paramAnonymousString = "https://support.weixin.qq.com/cgi-bin/mmsupport-bin/newreadtemplate?t=contact/faq1&wechat_real_lang=" + ad.iR(OnlyChatContactMgrUI.this.getContext());
             Intent localIntent = new Intent();
             localIntent.putExtra("rawUrl", paramAnonymousString);
             localIntent.putExtra("showShare", false);
             localIntent.putExtra("show_bottom", false);
-            com.tencent.mm.bs.d.b(OnlyChatContactMgrUI.this.getContext(), "webview", ".ui.tools.WebViewUI", localIntent);
+            com.tencent.mm.br.d.b(OnlyChatContactMgrUI.this.getContext(), "webview", ".ui.tools.WebViewUI", localIntent);
           }
-          AppMethodBeat.o(194552);
+          AppMethodBeat.o(187953);
         }
       }).show();
       AppMethodBeat.o(180074);
@@ -637,14 +635,14 @@ public class OnlyChatContactMgrUI
       if (localc.op == 1)
       {
         paramInt1 = 2131755619;
-        paramString = getString(paramInt1, new Object[] { Integer.valueOf(localc.ieH - localc.ieF.size()) });
+        paramString = getString(paramInt1, new Object[] { Integer.valueOf(localc.ihz - localc.ihx.size()) });
       }
     }
     for (;;)
     {
-      paramString = locala.aXO(paramString);
-      paramString.EgK = true;
-      paramString.afp(2131755835);
+      paramString = locala.aZq(paramString);
+      paramString.EyN = true;
+      paramString.afY(2131755835);
       locala.b(new f.c()
       {
         public final void d(boolean paramAnonymousBoolean, String paramAnonymousString) {}
@@ -654,7 +652,7 @@ public class OnlyChatContactMgrUI
       paramInt1 = 2131755666;
       break;
       paramString = paramn.getReqResp().getRespObj().getErrMsg();
-      if (bt.isNullOrNil(paramString))
+      if (bu.isNullOrNil(paramString))
       {
         if (localc.op == 1) {}
         for (paramInt1 = 2131755570;; paramInt1 = 2131755665)
@@ -675,21 +673,21 @@ public class OnlyChatContactMgrUI
   final class a
     extends q
   {
-    HashMap<String, Integer> Kkm;
-    private SparseArray<String> Kkn;
-    List<String> KoD;
-    private Cursor iVJ;
+    HashMap<String, Integer> KGG;
+    private SparseArray<String> KGH;
+    List<String> KKX;
+    private Cursor iYC;
     String query;
     
     public a(n paramn)
     {
       super(null, true, false);
       AppMethodBeat.i(180061);
-      this.Kkm = new HashMap();
-      this.Kkn = new SparseArray();
+      this.KGG = new HashMap();
+      this.KGH = new SparseArray();
       this.query = "";
-      this.KoD = new LinkedList();
-      Zh();
+      this.KKX = new LinkedList();
+      Zq();
       AppMethodBeat.o(180061);
     }
     
@@ -702,21 +700,21 @@ public class OnlyChatContactMgrUI
       return localh;
     }
     
-    public final void Zh()
+    public final void Zq()
     {
       AppMethodBeat.i(180062);
-      super.Zh();
-      if (this.iVJ != null)
+      super.Zq();
+      if (this.iYC != null)
       {
-        this.iVJ.close();
-        this.iVJ = null;
+        this.iYC.close();
+        this.iYC = null;
       }
-      this.Kkm.clear();
-      this.Kkn.clear();
-      com.tencent.mm.kernel.g.ajD();
-      this.iVJ = ((com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azp().d(null, this.query, "@social.black.android", "", this.fSL);
-      String[] arrayOfString = w.a(null, "@social.black.android", "", this.query, this.fSL);
-      int[] arrayOfInt = w.a(null, "@social.black.android", "", this.fSL, this.query);
+      this.KGG.clear();
+      this.KGH.clear();
+      com.tencent.mm.kernel.g.ajS();
+      this.iYC = ((com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azF().d(null, this.query, "@social.black.android", "", this.fUR);
+      String[] arrayOfString = x.a(null, "@social.black.android", "", this.query, this.fUR);
+      int[] arrayOfInt = x.a(null, "@social.black.android", "", this.fUR, this.query);
       if ((arrayOfString != null) && (arrayOfInt != null))
       {
         int i = 0;
@@ -726,28 +724,28 @@ public class OnlyChatContactMgrUI
           k = j;
           if (i < arrayOfInt.length)
           {
-            this.Kkm.put(arrayOfString[i], Integer.valueOf(arrayOfInt[i] + j));
-            this.Kkn.put(arrayOfInt[i] + j, arrayOfString[i]);
+            this.KGG.put(arrayOfString[i], Integer.valueOf(arrayOfInt[i] + j));
+            this.KGH.put(arrayOfInt[i] + j, arrayOfString[i]);
             k = j + 1;
           }
           i += 1;
         }
       }
-      ad.i("MicroMsg.OnlyChatContactMgrUI", "datacount:%d headerPosMap=%s", new Object[] { Integer.valueOf(this.iVJ.getCount()), this.Kkm.toString() });
+      ae.i("MicroMsg.OnlyChatContactMgrUI", "datacount:%d headerPosMap=%s", new Object[] { Integer.valueOf(this.iYC.getCount()), this.KGG.toString() });
       clearCache();
       notifyDataSetChanged();
       AppMethodBeat.o(180062);
     }
     
-    public final int aWM(String paramString)
+    public final int aYn(String paramString)
     {
       AppMethodBeat.i(180063);
-      if (this.Kkm != null)
+      if (this.KGG != null)
       {
-        if (this.Kkm.containsKey(paramString))
+        if (this.KGG.containsKey(paramString))
         {
-          int i = ((Integer)this.Kkm.get(paramString)).intValue();
-          int j = this.KmO.getContentLV().getHeaderViewsCount();
+          int i = ((Integer)this.KGG.get(paramString)).intValue();
+          int j = this.KJi.getContentLV().getHeaderViewsCount();
           AppMethodBeat.o(180063);
           return i + j;
         }
@@ -762,11 +760,11 @@ public class OnlyChatContactMgrUI
     {
       AppMethodBeat.i(180067);
       super.finish();
-      ad.i("MicroMsg.OnlyChatContactMgrUI", "finish!");
-      if (this.iVJ != null)
+      ae.i("MicroMsg.OnlyChatContactMgrUI", "finish!");
+      if (this.iYC != null)
       {
-        this.iVJ.close();
-        this.iVJ = null;
+        this.iYC.close();
+        this.iYC = null;
       }
       AppMethodBeat.o(180067);
     }
@@ -774,9 +772,9 @@ public class OnlyChatContactMgrUI
     public final int getContactCount()
     {
       AppMethodBeat.i(180068);
-      if (this.iVJ != null)
+      if (this.iYC != null)
       {
-        int i = this.iVJ.getCount();
+        int i = this.iYC.getCount();
         AppMethodBeat.o(180068);
         return i;
       }
@@ -787,16 +785,16 @@ public class OnlyChatContactMgrUI
     public final int getCount()
     {
       AppMethodBeat.i(180066);
-      int j = this.iVJ.getCount();
-      if (this.Kkn == null) {}
-      for (int i = 0;; i = this.Kkn.size())
+      int j = this.iYC.getCount();
+      if (this.KGH == null) {}
+      for (int i = 0;; i = this.KGH.size())
       {
         AppMethodBeat.o(180066);
         return i + j + 1;
       }
     }
     
-    protected final com.tencent.mm.ui.contact.a.a rh(int paramInt)
+    protected final com.tencent.mm.ui.contact.a.a rk(int paramInt)
     {
       AppMethodBeat.i(180064);
       Object localObject;
@@ -806,9 +804,9 @@ public class OnlyChatContactMgrUI
         AppMethodBeat.o(180064);
         return localObject;
       }
-      if (this.Kkn.indexOfKey(paramInt) >= 0)
+      if (this.KGH.indexOfKey(paramInt) >= 0)
       {
-        localObject = cS(paramInt, (String)this.Kkn.get(paramInt));
+        localObject = cS(paramInt, (String)this.KGH.get(paramInt));
         AppMethodBeat.o(180064);
         return localObject;
       }
@@ -819,11 +817,11 @@ public class OnlyChatContactMgrUI
       do
       {
         j = i;
-        if (i > this.Kkn.size()) {
+        if (i > this.KGH.size()) {
           break;
         }
         j = i;
-        if (this.Kkn.indexOfKey(k) >= 0) {
+        if (this.KGH.indexOfKey(k) >= 0) {
           j = i + 1;
         }
         m = k - 1;
@@ -831,28 +829,28 @@ public class OnlyChatContactMgrUI
         i = j;
       } while (m >= 0);
       i = paramInt - j;
-      if (this.iVJ.moveToPosition(i))
+      if (this.iYC.moveToPosition(i))
       {
-        ad.d("MicroMsg.OnlyChatContactMgrUI", "create contact item position=%d | index=%d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i) });
-        localObject = new am();
-        ((am)localObject).convertFrom(this.iVJ);
+        ae.d("MicroMsg.OnlyChatContactMgrUI", "create contact item position=%d | index=%d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i) });
+        localObject = new an();
+        ((an)localObject).convertFrom(this.iYC);
         com.tencent.mm.ui.contact.a.e locale = new com.tencent.mm.ui.contact.a.e(paramInt);
-        locale.contact = ((am)localObject);
-        if (w.vF(((aw)localObject).field_username))
+        locale.contact = ((an)localObject);
+        if (x.wb(((com.tencent.mm.g.c.aw)localObject).field_username))
         {
-          locale.KmP = false;
-          locale.KmQ = false;
-          locale.KqG = false;
+          locale.KJj = false;
+          locale.KJk = false;
+          locale.KNa = false;
         }
-        for (locale.KqV = true;; locale.KqV = false)
+        for (locale.KNp = true;; locale.KNp = false)
         {
           AppMethodBeat.o(180064);
           return locale;
-          locale.KmP = dQK();
-          locale.KmQ = this.KmQ;
+          locale.KJj = dUh();
+          locale.KJk = this.KJk;
         }
       }
-      ad.i("MicroMsg.OnlyChatContactMgrUI", "create contact item error: position=%d | index=%d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i) });
+      ae.i("MicroMsg.OnlyChatContactMgrUI", "create contact item error: position=%d | index=%d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i) });
       AppMethodBeat.o(180064);
       return null;
     }

@@ -23,7 +23,7 @@ public final class c
     }
     catch (Throwable paramWifiConfiguration)
     {
-      i = d.lwI;
+      i = d.lBg;
       AppMethodBeat.o(144719);
     }
     return i;
@@ -157,7 +157,7 @@ public final class c
     return false;
   }
   
-  public static boolean tN(int paramInt)
+  public static boolean tS(int paramInt)
   {
     AppMethodBeat.i(144721);
     try
@@ -173,7 +173,7 @@ public final class c
     return false;
   }
   
-  public static int tO(int paramInt)
+  public static int tT(int paramInt)
   {
     if (paramInt <= -100) {
       return 0;
@@ -186,7 +186,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.wifi.wifisdk.internal.c
  * JD-Core Version:    0.7.0.1
  */

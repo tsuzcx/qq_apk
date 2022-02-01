@@ -5,22 +5,22 @@ import d.d.f;
 import d.d.g;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/coroutines/GlobalScope;", "Lkotlinx/coroutines/CoroutineScope;", "()V", "coroutineContext", "Lkotlin/coroutines/CoroutineContext;", "getCoroutineContext", "()Lkotlin/coroutines/CoroutineContext;", "kotlinx-coroutines-core"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/coroutines/GlobalScope;", "Lkotlinx/coroutines/CoroutineScope;", "()V", "coroutineContext", "Lkotlin/coroutines/CoroutineContext;", "getCoroutineContext", "()Lkotlin/coroutines/CoroutineContext;", "kotlinx-coroutines-core"})
 public final class bk
   implements ah
 {
-  public static final bk NII;
+  public static final bk OfO;
   
   static
   {
     AppMethodBeat.i(118184);
-    NII = new bk();
+    OfO = new bk();
     AppMethodBeat.o(118184);
   }
   
-  public final f guE()
+  public final f gzg()
   {
-    return (f)g.MKY;
+    return (f)g.Nib;
   }
 }
 

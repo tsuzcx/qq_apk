@@ -6,8 +6,8 @@ import com.tencent.luggage.d.b.a;
 import com.tencent.mars.smc.IDKey;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.ArrayList;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -23,7 +23,7 @@ public class aw
     JSONArray localJSONArray = parama.chh.cgn.optJSONArray("idKeyDataInfo");
     if ((localJSONArray == null) || (localJSONArray.length() == 0))
     {
-      ad.e("MicroMsg.JsApiReportIDKey", "idkey data is null");
+      ae.e("MicroMsg.JsApiReportIDKey", "idkey data is null");
       parama.a("invaild_parms", null);
       AppMethodBeat.o(78611);
       return;
@@ -34,20 +34,20 @@ public class aw
     {
       JSONObject localJSONObject = localJSONArray.optJSONObject(i);
       IDKey localIDKey = new IDKey();
-      localIDKey.SetID(bt.getInt(localJSONObject.optString("id"), 0));
-      localIDKey.SetKey(bt.getInt(localJSONObject.optString("key"), 0));
-      localIDKey.SetValue(bt.getInt(localJSONObject.optString("value"), 0));
+      localIDKey.SetID(bu.getInt(localJSONObject.optString("id"), 0));
+      localIDKey.SetKey(bu.getInt(localJSONObject.optString("key"), 0));
+      localIDKey.SetValue(bu.getInt(localJSONObject.optString("value"), 0));
       localArrayList.add(localIDKey);
       i += 1;
     }
     if (localArrayList.size() > 0) {
-      g.yhR.b(localArrayList, true);
+      g.yxI.b(localArrayList, true);
     }
     parama.a("", null);
     AppMethodBeat.o(78611);
   }
   
-  public final int ccO()
+  public final int ced()
   {
     return 0;
   }

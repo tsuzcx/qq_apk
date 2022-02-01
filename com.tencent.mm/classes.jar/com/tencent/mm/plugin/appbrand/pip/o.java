@@ -3,10 +3,10 @@ package com.tencent.mm.plugin.appbrand.pip;
 import android.graphics.Point;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/pip/PipStablePosStorage;", "", "get", "Landroid/graphics/Point;", "appId", "", "set", "", "point", "plugin-appbrand-integration_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/pip/PipStablePosStorage;", "", "get", "Landroid/graphics/Point;", "appId", "", "set", "", "point", "plugin-appbrand-integration_release"})
 abstract interface o
 {
-  public abstract Point Ud(String paramString);
+  public abstract Point UN(String paramString);
   
   public abstract void a(String paramString, Point paramPoint);
 }

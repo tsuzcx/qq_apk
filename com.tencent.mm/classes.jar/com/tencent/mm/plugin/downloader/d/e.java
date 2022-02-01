@@ -3,26 +3,26 @@ package com.tencent.mm.plugin.downloader.d;
 public final class e
 {
   /* Error */
-  public static android.util.Pair<java.nio.ByteBuffer, java.lang.Long> H(com.tencent.mm.vfs.e parame)
+  public static android.util.Pair<java.nio.ByteBuffer, java.lang.Long> H(com.tencent.mm.vfs.k paramk)
   {
     // Byte code:
     //   0: ldc 7
     //   2: invokestatic 13	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: aload_0
-    //   6: invokevirtual 19	com/tencent/mm/vfs/e:exists	()Z
+    //   6: invokevirtual 19	com/tencent/mm/vfs/k:exists	()Z
     //   9: ifeq +10 -> 19
     //   12: aload_0
-    //   13: invokevirtual 22	com/tencent/mm/vfs/e:isFile	()Z
+    //   13: invokevirtual 22	com/tencent/mm/vfs/k:isFile	()Z
     //   16: ifne +10 -> 26
     //   19: ldc 7
     //   21: invokestatic 25	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   24: aconst_null
     //   25: areturn
     //   26: aload_0
-    //   27: getfield 29	com/tencent/mm/vfs/e:mUri	Landroid/net/Uri;
-    //   30: invokestatic 35	com/tencent/mm/vfs/q:B	(Landroid/net/Uri;)Ljava/lang/String;
+    //   27: getfield 29	com/tencent/mm/vfs/k:mUri	Landroid/net/Uri;
+    //   30: invokestatic 35	com/tencent/mm/vfs/w:B	(Landroid/net/Uri;)Ljava/lang/String;
     //   33: iconst_0
-    //   34: invokestatic 41	com/tencent/mm/vfs/i:dd	(Ljava/lang/String;Z)Ljava/io/RandomAccessFile;
+    //   34: invokestatic 41	com/tencent/mm/vfs/o:dg	(Ljava/lang/String;Z)Ljava/io/RandomAccessFile;
     //   37: astore_0
     //   38: aload_0
     //   39: invokestatic 47	com/tencent/mm/plugin/downloader/d/a:g	(Ljava/io/RandomAccessFile;)Landroid/util/Pair;
@@ -66,7 +66,7 @@ public final class e
     //   111: goto -33 -> 78
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	114	0	parame	com.tencent.mm.vfs.e
+    //   0	114	0	paramk	com.tencent.mm.vfs.k
     //   42	34	1	localObject1	Object
     //   77	30	1	localPair	android.util.Pair<java.nio.ByteBuffer, java.lang.Long>
     //   108	1	1	localObject2	Object

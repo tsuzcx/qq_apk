@@ -18,7 +18,7 @@ public final class ab
     this.II = paramContext;
   }
   
-  public static ab P(Context paramContext)
+  public static ab Q(Context paramContext)
   {
     return new ab(paramContext);
   }

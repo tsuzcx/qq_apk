@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class wo
   extends b
 {
-  public a dKV;
+  public a dLZ;
   
   public wo()
   {
@@ -15,21 +15,21 @@ public final class wo
   
   private wo(byte paramByte)
   {
-    AppMethodBeat.i(127290);
-    this.dKV = new a();
-    this.IbR = false;
+    AppMethodBeat.i(162263);
+    this.dLZ = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(127290);
+    AppMethodBeat.o(162263);
   }
   
   public static final class a
   {
-    public boolean dKW = false;
+    public String aQj;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.a.wo
  * JD-Core Version:    0.7.0.1
  */

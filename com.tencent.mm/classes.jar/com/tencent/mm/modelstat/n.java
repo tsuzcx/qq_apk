@@ -2,23 +2,21 @@ package com.tencent.mm.modelstat;
 
 import android.os.Build.VERSION;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.network.ae;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public final class n
 {
   static
   {
     AppMethodBeat.i(151110);
-    if ((Build.VERSION.SDK_INT > 28) || (Build.VERSION.CODENAME.equals("Q")))
+    if (Build.VERSION.SDK_INT >= 28)
     {
-      bs.l(com.tencent.mm.compatible.deviceinfo.q.aas(), aj.getContext());
+      bt.reset(ak.getContext());
       AppMethodBeat.o(151110);
       return;
     }
-    bs.reset();
+    bt.reset();
     AppMethodBeat.o(151110);
   }
   
@@ -29,50 +27,50 @@ public final class n
     default: 
       return;
     case 522: 
-      paramk.iqm = (paramk.iqt + paramk.iqu);
-      paramk.dDp |= 0x8000;
+      paramk.ith = (paramk.ito + paramk.itp);
+      paramk.dEu |= 0x8000;
       return;
     case 138: 
     case 139: 
-      paramk.iqa = (paramk.iqh + paramk.iqi);
-      paramk.dDp |= 0x8;
+      paramk.isV = (paramk.itc + paramk.itd);
+      paramk.dEu |= 0x8;
       return;
     case 110: 
-      paramk.iqo = (paramk.iqt + paramk.iqu);
-      paramk.dDp |= 0x20000;
+      paramk.itj = (paramk.ito + paramk.itp);
+      paramk.dEu |= 0x20000;
       return;
     case 109: 
     case 123: 
-      paramk.iqc = (paramk.iqh + paramk.iqi);
-      paramk.dDp |= 0x20;
+      paramk.isX = (paramk.itc + paramk.itd);
+      paramk.dEu |= 0x20;
       return;
     case 127: 
-      paramk.iqq = (paramk.iqt + paramk.iqu);
-      paramk.dDp |= 0x80000;
+      paramk.itl = (paramk.ito + paramk.itp);
+      paramk.dEu |= 0x80000;
       return;
     case 128: 
-      paramk.iqe = (paramk.iqh + paramk.iqi);
-      paramk.dDp |= 0x80;
+      paramk.isZ = (paramk.itc + paramk.itd);
+      paramk.dEu |= 0x80;
       return;
     case 149: 
-      paramk.iqs = (paramk.iqt + paramk.iqu);
-      paramk.dDp |= 0x200000;
+      paramk.itn = (paramk.ito + paramk.itp);
+      paramk.dEu |= 0x200000;
       return;
     }
-    paramk.iqg = (paramk.iqh + paramk.iqi);
-    paramk.dDp |= 0x200;
+    paramk.itb = (paramk.itc + paramk.itd);
+    paramk.dEu |= 0x200;
   }
   
   public static void b(long paramLong1, long paramLong2, int paramInt)
   {
     AppMethodBeat.i(177295);
     k localk = new k();
-    localk.iqi = paramLong1;
-    localk.iqu = paramLong2;
-    localk.dDp = 12585984;
+    localk.itd = paramLong1;
+    localk.itp = paramLong2;
+    localk.dEu = 12585984;
     c(localk);
     a(localk, paramInt);
-    q.aLQ().a(localk);
+    q.aMn().a(localk);
     AppMethodBeat.o(177295);
   }
   
@@ -80,49 +78,49 @@ public final class n
   {
     AppMethodBeat.i(177296);
     k localk = new k();
-    localk.iqh = paramLong1;
-    localk.iqt = paramLong2;
-    localk.dDp = 12585984;
+    localk.itc = paramLong1;
+    localk.ito = paramLong2;
+    localk.dEu = 12585984;
     c(localk);
     a(localk, paramInt);
-    q.aLQ().a(localk);
+    q.aMn().a(localk);
     AppMethodBeat.o(177296);
   }
   
   private static void c(k paramk)
   {
     AppMethodBeat.i(151109);
-    if ((Build.VERSION.SDK_INT > 28) || (Build.VERSION.CODENAME.equals("Q"))) {
-      bs.m(com.tencent.mm.compatible.deviceinfo.q.aas(), aj.getContext());
+    if (Build.VERSION.SDK_INT >= 28) {
+      bt.ji(ak.getContext());
     }
     for (;;)
     {
-      paramk.iqj = bs.flH();
-      paramk.iqv = bs.flG();
-      paramk.iqk = bs.flF();
-      paramk.iqw = bs.flE();
-      paramk.iqx = bs.Da(0L);
-      paramk.iqz = bs.CZ(0L);
-      paramk.iqy = bs.flI();
-      paramk.iqA = bs.CY(0L);
-      paramk.dDp = (paramk.dDp | 0x2000 | 0x2000000 | 0x1000 | 0x1000000 | 0x8000000 | 0x20000000 | 0x4000000 | 0x10000000);
+      paramk.ite = bt.fpC();
+      paramk.itq = bt.fpB();
+      paramk.itf = bt.fpA();
+      paramk.itr = bt.fpz();
+      paramk.its = bt.Dy(0L);
+      paramk.itu = bt.Dx(0L);
+      paramk.itt = bt.fpD();
+      paramk.itv = bt.Dw(0L);
+      paramk.dEu = (paramk.dEu | 0x2000 | 0x2000000 | 0x1000 | 0x1000000 | 0x8000000 | 0x20000000 | 0x4000000 | 0x10000000);
       AppMethodBeat.o(151109);
       return;
-      bs.update();
+      bt.update();
     }
   }
   
   public static void y(long paramLong1, long paramLong2)
   {
     AppMethodBeat.i(177294);
-    if (ae.cP(aj.getContext()))
+    if (com.tencent.mm.network.ae.cR(ak.getContext()))
     {
-      ad.i("MicroMsg.NetStatStorageLogic", "dknetflow wifi recv:%d send:%d type:%d", new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2), Integer.valueOf(0) });
+      com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.NetStatStorageLogic", "dknetflow wifi recv:%d send:%d type:%d", new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2), Integer.valueOf(0) });
       b(paramLong1, paramLong2, 0);
       AppMethodBeat.o(177294);
       return;
     }
-    ad.i("MicroMsg.NetStatStorageLogic", "dknetflow mobile recv:%d send:%d type:%d", new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2), Integer.valueOf(0) });
+    com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.NetStatStorageLogic", "dknetflow mobile recv:%d send:%d type:%d", new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2), Integer.valueOf(0) });
     c(paramLong1, paramLong2, 0);
     AppMethodBeat.o(177294);
   }

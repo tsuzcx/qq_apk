@@ -4,7 +4,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.a.b;
 import com.tencent.mm.plugin.appbrand.a.c.a;
 import com.tencent.mm.plugin.appbrand.jsapi.p;
-import com.tencent.mm.plugin.appbrand.page.n;
+import com.tencent.mm.plugin.appbrand.page.m;
 import java.util.HashMap;
 
 final class AppBrandRuntime$12
@@ -14,13 +14,13 @@ final class AppBrandRuntime$12
   
   public final void a(String paramString, b paramb)
   {
-    AppMethodBeat.i(197172);
-    AppBrandRuntime localAppBrandRuntime = this.jxm;
+    AppMethodBeat.i(207667);
+    AppBrandRuntime localAppBrandRuntime = this.jAl;
     HashMap localHashMap = new HashMap();
-    switch (com.tencent.mm.plugin.appbrand.page.n.1.jLm[paramb.ordinal()])
+    switch (com.tencent.mm.plugin.appbrand.page.m.1.jOy[paramb.ordinal()])
     {
     default: 
-      AppMethodBeat.o(197172);
+      AppMethodBeat.o(207667);
       return;
     case 1: 
       paramString = "background";
@@ -28,8 +28,8 @@ final class AppBrandRuntime$12
     for (;;)
     {
       localHashMap.put("status", paramString);
-      new n().A(localHashMap).g(localAppBrandRuntime.Ew()).bir();
-      AppMethodBeat.o(197172);
+      new m().H(localHashMap).g(localAppBrandRuntime.Ey()).bja();
+      AppMethodBeat.o(207667);
       return;
       paramString = "active";
       continue;

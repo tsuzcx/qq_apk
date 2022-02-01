@@ -5,23 +5,23 @@ import android.support.v7.widget.aj;
 import android.support.v7.widget.ak;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/story/ui/view/gallery/PageScrollHelper;", "Landroid/support/v7/widget/PagerSnapHelper;", "()V", "horizontalHelper", "Landroid/support/v7/widget/OrientationHelper;", "verticalHelper", "calculateDistanceToFinalSnap", "", "layoutManager", "Landroid/support/v7/widget/RecyclerView$LayoutManager;", "targetView", "Landroid/view/View;", "distanceToCenter", "", "helper", "getHorizontalHelper", "getVerticalHelper", "Companion", "plugin-story_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/story/ui/view/gallery/PageScrollHelper;", "Landroid/support/v7/widget/PagerSnapHelper;", "()V", "horizontalHelper", "Landroid/support/v7/widget/OrientationHelper;", "verticalHelper", "calculateDistanceToFinalSnap", "", "layoutManager", "Landroid/support/v7/widget/RecyclerView$LayoutManager;", "targetView", "Landroid/view/View;", "distanceToCenter", "", "helper", "getHorizontalHelper", "getVerticalHelper", "Companion", "plugin-story_release"})
 public final class i
   extends ak
 {
-  public static final i.a BdJ;
+  public static final i.a Bvh;
   private static final String TAG = "MicroMsg.PageScrollHelper";
-  private aj BdH;
-  private aj BdI;
+  private aj Bvf;
+  private aj Bvg;
   
   static
   {
     AppMethodBeat.i(120396);
-    BdJ = new i.a((byte)0);
+    Bvh = new i.a((byte)0);
     TAG = "MicroMsg.PageScrollHelper";
     AppMethodBeat.o(120396);
   }
@@ -56,14 +56,14 @@ public final class i
     AppMethodBeat.i(120394);
     p.h(parami, "layoutManager");
     p.h(paramView, "targetView");
-    ad.i(TAG, "LogStory: calculateDistanceToFinalSnap " + RecyclerView.i.bB(paramView));
+    ae.i(TAG, "LogStory: calculateDistanceToFinalSnap " + RecyclerView.i.bB(paramView));
     int[] arrayOfInt = new int[2];
     Object localObject1;
     if (parami.kc())
     {
-      if (this.BdI != null)
+      if (this.Bvg != null)
       {
-        localObject1 = this.BdI;
+        localObject1 = this.Bvg;
         if (localObject1 == null) {
           break label190;
         }
@@ -72,20 +72,20 @@ public final class i
       }
       else
       {
-        this.BdI = aj.d(parami);
+        this.Bvg = aj.d(parami);
       }
-      localObject1 = this.BdI;
+      localObject1 = this.Bvg;
       if (localObject1 == null) {
-        p.gfZ();
+        p.gkB();
       }
       arrayOfInt[0] = a(parami, paramView, (aj)localObject1);
       label113:
       if (!parami.kd()) {
         break label203;
       }
-      if (this.BdH != null)
+      if (this.Bvf != null)
       {
-        aj localaj = this.BdH;
+        aj localaj = this.Bvf;
         localObject1 = localObject2;
         if (localaj != null) {
           localObject1 = localaj.getLayoutManager();
@@ -94,11 +94,11 @@ public final class i
       }
       else
       {
-        this.BdH = aj.e(parami);
+        this.Bvf = aj.e(parami);
       }
-      localObject1 = this.BdH;
+      localObject1 = this.Bvf;
       if (localObject1 == null) {
-        p.gfZ();
+        p.gkB();
       }
       arrayOfInt[1] = a(parami, paramView, (aj)localObject1);
     }
@@ -118,7 +118,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.story.ui.view.gallery.i
  * JD-Core Version:    0.7.0.1
  */

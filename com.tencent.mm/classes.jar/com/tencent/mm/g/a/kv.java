@@ -1,13 +1,14 @@
 package com.tencent.mm.g.a;
 
+import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
-import java.util.HashMap;
 
 public final class kv
   extends b
 {
-  public a dxW;
+  public a dyW;
+  public b dyX;
   
   public kv()
   {
@@ -16,22 +17,30 @@ public final class kv
   
   private kv(byte paramByte)
   {
-    AppMethodBeat.i(128846);
-    this.dxW = new a();
-    this.IbR = false;
+    AppMethodBeat.i(208247);
+    this.dyW = new a();
+    this.dyX = new b();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(128846);
+    AppMethodBeat.o(208247);
   }
   
   public static final class a
   {
-    public HashMap dxX;
-    public String key;
+    public Runnable cEv;
+    public Bundle dyY;
+    public String dyZ;
+    public int type = 0;
+  }
+  
+  public static final class b
+  {
+    public Bundle dza;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.a.kv
  * JD-Core Version:    0.7.0.1
  */

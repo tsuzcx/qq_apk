@@ -10,29 +10,29 @@ import java.lang.ref.WeakReference;
 final class c$a
   extends Handler
 {
-  private WeakReference<c> nQG;
+  private WeakReference<c> nWm;
   
   public c$a(Looper paramLooper, c paramc)
   {
     super(paramLooper);
-    AppMethodBeat.i(191718);
-    this.nQG = new WeakReference(paramc);
-    AppMethodBeat.o(191718);
+    AppMethodBeat.i(194396);
+    this.nWm = new WeakReference(paramc);
+    AppMethodBeat.o(194396);
   }
   
   public final void handleMessage(Message paramMessage)
   {
-    AppMethodBeat.i(191719);
+    AppMethodBeat.i(194397);
     d.i("TPThumbPlayer[TPSystemMediaPlayer.java]", "EventHandler msg msg.what: " + paramMessage.what + ", value: " + paramMessage.what + ", arg1: " + paramMessage.arg1 + ", arg2: " + paramMessage.arg2);
-    if ((c)this.nQG.get() == null)
+    if ((c)this.nWm.get() == null)
     {
       d.e("TPThumbPlayer[TPSystemMediaPlayer.java]", "mWeakRef is null");
-      AppMethodBeat.o(191719);
+      AppMethodBeat.o(194397);
       return;
     }
     int i = paramMessage.what;
     d.i("TPThumbPlayer[TPSystemMediaPlayer.java]", "eventHandler unknow msg");
-    AppMethodBeat.o(191719);
+    AppMethodBeat.o(194397);
   }
 }
 

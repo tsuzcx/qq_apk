@@ -1,13 +1,12 @@
 package com.tencent.mm.g.a;
 
-import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class eo
   extends b
 {
-  public a dpI;
+  public a dqM;
   
   public eo()
   {
@@ -16,18 +15,18 @@ public final class eo
   
   private eo(byte paramByte)
   {
-    AppMethodBeat.i(116002);
-    this.dpI = new a();
-    this.IbR = false;
+    AppMethodBeat.i(116001);
+    this.dqM = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(116002);
+    AppMethodBeat.o(116001);
   }
   
   public static final class a
   {
-    public Context context;
-    public int op = 0;
-    public String userName;
+    public boolean bsb;
+    public String cVh;
+    public byte[] dqE;
   }
 }
 

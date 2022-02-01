@@ -25,13 +25,13 @@ public final class b
   public final int a(Activity paramActivity, String paramString1, String paramString2, List<ab> paramList, aa paramaa)
   {
     AppMethodBeat.i(116629);
-    com.tencent.mm.plugin.websearch.widget.view.a locala = com.tencent.mm.plugin.websearch.widget.view.a.eMP();
+    com.tencent.mm.plugin.websearch.widget.view.a locala = com.tencent.mm.plugin.websearch.widget.view.a.eQA();
     e locale = new e(paramActivity, 2, true);
     int i = locale.hashCode();
-    locale.KJC = new a.1(locala, paramList);
-    locale.KJy = new a.2(locala, paramList, locale);
-    locale.KJz = new a.3(locala, paramaa, i);
-    locale.JXC = new a.4(locala, paramaa, i);
+    locale.LfW = new a.1(locala, paramList);
+    locale.LfS = new a.2(locala, paramList, locale);
+    locale.LfT = new a.3(locala, paramaa, i);
+    locale.KtV = new a.4(locala, paramaa, i);
     paramActivity = View.inflate(paramActivity, 2131495319, null);
     if (!TextUtils.isEmpty(paramString1))
     {
@@ -43,10 +43,10 @@ public final class b
     }
     for (;;)
     {
-      locale.KWX = true;
-      locale.K(paramActivity, false);
-      locale.cMW();
-      locala.DEE.put(Integer.valueOf(i), locale);
+      locale.Ltv = true;
+      locale.P(paramActivity, false);
+      locale.cPF();
+      locala.DWC.put(Integer.valueOf(i), locale);
       AppMethodBeat.o(116629);
       return i;
       paramActivity.findViewById(2131305902).setVisibility(8);
@@ -66,7 +66,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.websearch.widget.b
  * JD-Core Version:    0.7.0.1
  */

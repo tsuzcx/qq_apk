@@ -6,18 +6,18 @@ import d.g.b.q;
 import d.l;
 import d.z;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
 final class ag$i
   extends q
   implements a<z>
 {
-  public static final i rYN;
+  public static final i shz;
   
   static
   {
-    AppMethodBeat.i(202117);
-    rYN = new i();
-    AppMethodBeat.o(202117);
+    AppMethodBeat.i(202581);
+    shz = new i();
+    AppMethodBeat.o(202581);
   }
   
   ag$i()

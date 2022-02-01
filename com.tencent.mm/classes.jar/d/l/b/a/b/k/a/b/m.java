@@ -25,28 +25,28 @@ import java.util.List;
 public final class m
   extends d.l.b.a.b.b.c.b
 {
-  private final b NAK;
-  final a.r NAL;
-  final n Nzj;
+  final n NWq;
+  private final b NXR;
+  final a.r NXS;
   
   public m(n paramn, a.r paramr, int paramInt)
   {
-    super(localj, locall, localf, aa.b((a.r.b)localObject), paramr.Nne, paramInt, an.MUX, (aq)aq.a.MUZ);
+    super(localj, locall, localf, aa.b((a.r.b)localObject), paramr.NKk, paramInt, an.Nsc, (aq)aq.a.Nse);
     AppMethodBeat.i(60492);
-    this.Nzj = paramn;
-    this.NAL = paramr;
-    this.NAK = new b(this.Nzj.NiH.MQa, (d.g.a.a)new a(this));
+    this.NWq = paramn;
+    this.NXS = paramr;
+    this.NXR = new b(this.NWq.NFN.Nnf, (d.g.a.a)new a(this));
     AppMethodBeat.o(60492);
   }
   
-  public final List<ab> gjS()
+  public final List<ab> gou()
   {
     AppMethodBeat.i(60490);
-    Object localObject4 = this.NAL;
-    Object localObject3 = this.Nzj.MMV;
+    Object localObject4 = this.NXS;
+    Object localObject3 = this.NWq.Nka;
     p.h(localObject4, "$this$upperBounds");
     p.h(localObject3, "typeTable");
-    Object localObject1 = ((a.r)localObject4).Nng;
+    Object localObject1 = ((a.r)localObject4).NKm;
     int i;
     if (!((Collection)localObject1).isEmpty())
     {
@@ -61,7 +61,7 @@ public final class m
       if (localObject1 != null) {
         break label167;
       }
-      localObject1 = ((a.r)localObject4).Nnh;
+      localObject1 = ((a.r)localObject4).NKn;
       p.g(localObject1, "upperBoundIdList");
       localObject2 = (Iterable)localObject1;
       localObject1 = (Collection)new ArrayList(d.a.j.a((Iterable)localObject2, 10));
@@ -70,7 +70,7 @@ public final class m
       {
         localObject4 = (Integer)((Iterator)localObject2).next();
         p.g(localObject4, "it");
-        ((Collection)localObject1).add(((h)localObject3).akO(((Integer)localObject4).intValue()));
+        ((Collection)localObject1).add(((h)localObject3).aly(((Integer)localObject4).intValue()));
       }
       i = 0;
       break;
@@ -81,12 +81,12 @@ public final class m
     label167:
     if (((List)localObject2).isEmpty())
     {
-      localObject1 = d.a.j.listOf(d.l.b.a.b.j.d.a.G((d.l.b.a.b.b.l)this).ghf());
+      localObject1 = d.a.j.listOf(d.l.b.a.b.j.d.a.G((d.l.b.a.b.b.l)this).glH());
       AppMethodBeat.o(60490);
       return localObject1;
     }
     localObject3 = (Iterable)localObject2;
-    localObject1 = this.Nzj.NyV;
+    localObject1 = this.NWq.NWc;
     localObject2 = (Collection)new ArrayList(d.a.j.a((Iterable)localObject3, 10));
     localObject3 = ((Iterable)localObject3).iterator();
     while (((Iterator)localObject3).hasNext()) {
@@ -109,7 +109,7 @@ public final class m
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.k.a.b.m
  * JD-Core Version:    0.7.0.1
  */

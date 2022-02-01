@@ -5,18 +5,18 @@ import d.g.a.a;
 import d.g.b.q;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
 final class p$b
   extends q
   implements a<Boolean>
 {
-  public static final b InW;
+  public static final b IIk;
   
   static
   {
-    AppMethodBeat.i(207312);
-    InW = new b();
-    AppMethodBeat.o(207312);
+    AppMethodBeat.i(188774);
+    IIk = new b();
+    AppMethodBeat.o(188774);
   }
   
   p$b()

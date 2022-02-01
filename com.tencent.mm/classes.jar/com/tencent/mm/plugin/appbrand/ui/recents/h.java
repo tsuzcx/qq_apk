@@ -18,7 +18,8 @@ import com.tencent.mm.plugin.appbrand.appusage.ap;
 import com.tencent.mm.plugin.appbrand.appusage.ap.c;
 import com.tencent.mm.plugin.appbrand.appusage.ap.e;
 import com.tencent.mm.plugin.appbrand.appusage.v;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.plugin.appbrand.utils.f;
+import com.tencent.mm.sdk.platformtools.ae;
 import d.g.b.p;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -30,40 +31,40 @@ public class h
   extends a
   implements a.a
 {
-  ViewGroup lYb;
-  private final List<a> mLn;
-  private final List<Class<? extends a>> mLo;
-  private boolean mLp;
-  private boolean mLq;
-  private int mLr;
-  private final ap mLs;
-  private final b mLt;
+  private final List<a> mQp;
+  private final List<Class<? extends a>> mQq;
+  private boolean mQr;
+  private boolean mQs;
+  private int mQt;
+  private final ap mQu;
+  private final b mQv;
+  ViewGroup mcI;
   
   public h(FragmentActivity paramFragmentActivity, ViewGroup paramViewGroup, boolean paramBoolean)
   {
     AppMethodBeat.i(180403);
-    this.mLo = new LinkedList();
-    this.mLq = false;
-    this.mLr = 2;
+    this.mQq = new LinkedList();
+    this.mQs = false;
+    this.mQt = 2;
     if ((paramFragmentActivity == null) || (paramViewGroup == null))
     {
       paramFragmentActivity = new IllegalStateException("Unexpected parameters");
       AppMethodBeat.o(180403);
       throw paramFragmentActivity;
     }
-    this.mLt = new b(paramFragmentActivity, (byte)0);
-    this.mLp = paramBoolean;
+    this.mQv = new b(paramFragmentActivity, (byte)0);
+    this.mQr = paramBoolean;
     paramViewGroup = new LinearLayout(paramViewGroup.getContext());
     paramViewGroup.setOrientation(1);
-    this.lYb = paramViewGroup;
-    this.mLn = a(paramFragmentActivity, this.lYb);
-    a(this.mLn, this.lYb);
-    bF(this.mLn);
-    vA(0);
-    this.mLs = new ap();
-    bAM();
-    paramFragmentActivity = (ap.e)com.tencent.mm.plugin.appbrand.utils.e.cH(new ap.e(this.mLs));
-    com.tencent.mm.modelgeo.d.aHQ().b((b.a)paramFragmentActivity, false);
+    this.mcI = paramViewGroup;
+    this.mQp = a(paramFragmentActivity, this.mcI);
+    a(this.mQp, this.mcI);
+    bH(this.mQp);
+    vF(0);
+    this.mQu = new ap();
+    bBG();
+    paramFragmentActivity = (ap.e)f.cI(new ap.e(this.mQu));
+    com.tencent.mm.modelgeo.d.aIh().b((b.a)paramFragmentActivity, false);
     AppMethodBeat.o(180403);
   }
   
@@ -84,9 +85,9 @@ public class h
     if (i < paramList.size())
     {
       localObject1 = (a)paramList.get(i);
-      paramViewGroup.addView(((a)localObject1).bAv());
-      if (i == this.mLr) {
-        paramViewGroup.addView(new a(paramViewGroup.getContext()), -1, this.mLt.mLx);
+      paramViewGroup.addView(((a)localObject1).bBp());
+      if (i == this.mQt) {
+        paramViewGroup.addView(new a(paramViewGroup.getContext()), -1, this.mQv.mQz);
       }
       for (;;)
       {
@@ -98,7 +99,7 @@ public class h
             paramList.get(i - 1);
           }
           localObject2 = (a)paramList.get(i + 1);
-          if ((this.mLo.contains(localObject1.getClass())) || (this.mLo.contains(localObject2.getClass())))
+          if ((this.mQq.contains(localObject1.getClass())) || (this.mQq.contains(localObject2.getClass())))
           {
             localObject1 = new LinearLayout(paramViewGroup.getContext());
             ((LinearLayout)localObject1).setOrientation(1);
@@ -108,7 +109,7 @@ public class h
           else
           {
             Object localObject3;
-            if (this.mLp)
+            if (this.mQr)
             {
               int j = paramViewGroup.getContext().getResources().getDimensionPixelOffset(2131165850);
               int k = paramViewGroup.getContext().getResources().getDimensionPixelOffset(2131165840);
@@ -137,11 +138,11 @@ public class h
               localObject1 = paramViewGroup.getContext();
               localObject2 = new View((Context)localObject1);
               localObject3 = new LinearLayout((Context)localObject1);
-              ((LinearLayout)localObject3).setPadding(this.mLt.mLv, 0, 0, 0);
+              ((LinearLayout)localObject3).setPadding(this.mQv.mQx, 0, 0, 0);
               ((LinearLayout)localObject3).setBackgroundResource(2131099650);
-              ((LinearLayout)localObject3).addView((View)localObject2, new LinearLayout.LayoutParams(-1, this.mLt.mLu));
+              ((LinearLayout)localObject3).addView((View)localObject2, new LinearLayout.LayoutParams(-1, this.mQv.mQw));
               ((View)localObject2).setBackgroundColor(((Context)localObject1).getResources().getColor(2131099736));
-              new LinearLayout.LayoutParams(this.mLt.mLv, this.mLt.mLu).gravity = 3;
+              new LinearLayout.LayoutParams(this.mQv.mQx, this.mQv.mQw).gravity = 3;
               paramViewGroup.addView((View)localObject3, new LinearLayout.LayoutParams(-1, -2));
             }
           }
@@ -149,14 +150,14 @@ public class h
       }
     }
     paramList = paramViewGroup.getContext();
-    Object localObject1 = new ColorDrawable(this.mLt.mLy);
+    Object localObject1 = new ColorDrawable(this.mQv.mQA);
     Object localObject2 = new ImageView(paramList);
-    if ((this.mLp) || (!this.mLq)) {
+    if ((this.mQr) || (!this.mQs)) {
       ((ImageView)localObject2).setBackgroundColor(0);
     }
     for (;;)
     {
-      paramViewGroup.addView((View)localObject2, 0, new LinearLayout.LayoutParams(-1, this.mLt.mLz));
+      paramViewGroup.addView((View)localObject2, 0, new LinearLayout.LayoutParams(-1, this.mQv.mQB));
       l(paramViewGroup);
       AppMethodBeat.o(49150);
       return;
@@ -174,26 +175,26 @@ public class h
     AppMethodBeat.o(49145);
   }
   
-  private void bAM()
+  private void bBG()
   {
     AppMethodBeat.i(180404);
-    Iterator localIterator = this.mLn.iterator();
+    Iterator localIterator = this.mQp.iterator();
     while (localIterator.hasNext())
     {
       Object localObject1 = (a)localIterator.next();
       if ((localObject1 instanceof ap.c))
       {
-        ap localap = this.mLs;
+        ap localap = this.mQu;
         ap.c localc = (ap.c)localObject1;
         p.h(localc, "receiver");
-        synchronized (localap.jQg)
+        synchronized (localap.jTy)
         {
-          List localList = (List)localap.jQg.get(localc.bcC());
+          List localList = (List)localap.jTy.get(localc.bdh());
           localObject1 = localList;
           if (localList == null)
           {
             localObject1 = (List)new ArrayList();
-            localap.jQg.put(localc.bcC(), localObject1);
+            localap.jTy.put(localc.bdh(), localObject1);
           }
           ((List)localObject1).add(localc);
         }
@@ -202,15 +203,15 @@ public class h
     AppMethodBeat.o(180404);
   }
   
-  private void bAN()
+  private void bBH()
   {
     int j = 0;
     AppMethodBeat.i(49158);
-    Iterator localIterator = this.mLn.iterator();
+    Iterator localIterator = this.mQp.iterator();
     int i = 0;
     if (localIterator.hasNext())
     {
-      if (!((a)localIterator.next()).bAw()) {
+      if (!((a)localIterator.next()).bBq()) {
         break label159;
       }
       i += 1;
@@ -219,23 +220,23 @@ public class h
     for (;;)
     {
       break;
-      localIterator = this.mLn.iterator();
+      localIterator = this.mQp.iterator();
       while (localIterator.hasNext())
       {
         a locala = (a)localIterator.next();
-        if (locala.bAw())
+        if (locala.bBq())
         {
           if (j == 0) {
-            locala.vB(2131231015);
+            locala.vG(2131231015);
           }
           for (;;)
           {
             j += 1;
             break;
-            if ((j == this.mLn.size() - 1) || (j == i - 1)) {
-              locala.vB(2131231013);
+            if ((j == this.mQp.size() - 1) || (j == i - 1)) {
+              locala.vG(2131231013);
             } else {
-              locala.vB(2131231014);
+              locala.vG(2131231014);
             }
           }
         }
@@ -245,7 +246,7 @@ public class h
     }
   }
   
-  private static void bF(List<a> paramList)
+  private static void bH(List<a> paramList)
   {
     AppMethodBeat.i(49151);
     if (paramList == null)
@@ -265,22 +266,22 @@ public class h
     AppMethodBeat.i(49152);
     FrameLayout localFrameLayout = new FrameLayout(paramViewGroup.getContext());
     Context localContext = localFrameLayout.getContext();
-    ColorDrawable localColorDrawable = new ColorDrawable(this.mLt.mLy);
+    ColorDrawable localColorDrawable = new ColorDrawable(this.mQv.mQA);
     ImageView localImageView = new ImageView(localContext);
-    if ((this.mLp) || (!this.mLq))
+    if ((this.mQr) || (!this.mQs))
     {
       localImageView.setBackgroundColor(0);
-      localFrameLayout.addView(localImageView, -1, this.mLt.mLz);
-      localFrameLayout.addView(new View(localContext), -1, this.mLt.mLx);
+      localFrameLayout.addView(localImageView, -1, this.mQv.mQB);
+      localFrameLayout.addView(new View(localContext), -1, this.mQv.mQz);
       localImageView = new ImageView(localContext);
-      if ((!this.mLp) && (this.mLq)) {
+      if ((!this.mQr) && (this.mQs)) {
         break label194;
       }
       localImageView.setBackgroundColor(0);
     }
     for (;;)
     {
-      localFrameLayout.addView(localImageView, -1, this.mLt.mLz);
+      localFrameLayout.addView(localImageView, -1, this.mQv.mQB);
       localFrameLayout.setId(2131296764);
       paramViewGroup.addView(localFrameLayout, -1, -2);
       AppMethodBeat.o(49152);
@@ -299,14 +300,14 @@ public class h
     AppMethodBeat.i(180405);
     ArrayList localArrayList = new ArrayList(2);
     Object localObject = new d(paramFragmentActivity, paramViewGroup);
-    ((a)localObject).mJk = this;
+    ((a)localObject).mOm = this;
     a(localArrayList, (a)localObject);
     a(localArrayList, c(paramFragmentActivity, paramViewGroup));
     localObject = new c(paramFragmentActivity, paramViewGroup);
-    ((a)localObject).mJk = this;
+    ((a)localObject).mOm = this;
     a(localArrayList, (a)localObject);
     localObject = new e(paramFragmentActivity, paramViewGroup);
-    ((a)localObject).mJk = this;
+    ((a)localObject).mOm = this;
     a(localArrayList, (a)localObject);
     a(localArrayList, b(paramFragmentActivity, paramViewGroup));
     AppMethodBeat.o(180405);
@@ -316,14 +317,14 @@ public class h
   public final void a(a parama, View paramView, boolean paramBoolean)
   {
     AppMethodBeat.i(49159);
-    if (this.lYb == null)
+    if (this.mcI == null)
     {
       AppMethodBeat.o(49159);
       return;
     }
-    ad.i("AppBrandLauncherRecentsListHeaderController", "onViewEnabledChanged [%s] [%s] [%b]", new Object[] { parama, paramView, Boolean.valueOf(paramBoolean) });
-    if ((this.lYb == null) || (this.mLn == null)) {
-      paramView = this.mLn.iterator();
+    ae.i("AppBrandLauncherRecentsListHeaderController", "onViewEnabledChanged [%s] [%s] [%b]", new Object[] { parama, paramView, Boolean.valueOf(paramBoolean) });
+    if ((this.mcI == null) || (this.mQp == null)) {
+      paramView = this.mQp.iterator();
     }
     Object localObject;
     int i;
@@ -335,31 +336,31 @@ public class h
     {
       if (paramView.hasNext())
       {
-        localObject = ((a)paramView.next()).bAv();
+        localObject = ((a)paramView.next()).bBp();
         if ((localObject != null) && (((View)localObject).getVisibility() == 0))
         {
-          ad.i("AppBrandLauncherRecentsListHeaderController", "hasValidHeader %s", new Object[] { parama });
+          ae.i("AppBrandLauncherRecentsListHeaderController", "hasValidHeader %s", new Object[] { parama });
           i = 1;
           if (i != 0)
           {
-            this.lYb.setVisibility(0);
-            if (this.mLp) {
-              bAN();
+            this.mcI.setVisibility(0);
+            if (this.mQr) {
+              bBH();
             }
             AppMethodBeat.o(49159);
             return;
             i = 0;
             paramBoolean = false;
-            if (i < this.mLn.size() - 1)
+            if (i < this.mQp.size() - 1)
             {
-              paramView = (a)this.mLn.get(i);
+              paramView = (a)this.mQp.get(i);
               bool = paramBoolean;
               if (paramView != null)
               {
                 if (paramBoolean) {
                   break label399;
                 }
-                paramBoolean = paramView.bAw();
+                paramBoolean = paramView.bBq();
               }
             }
           }
@@ -370,9 +371,9 @@ public class h
     label399:
     for (;;)
     {
-      if (!paramView.bAw())
+      if (!paramView.bBq())
       {
-        localObject = this.lYb.getChildAt(this.lYb.indexOfChild(paramView.bAv()) + 1);
+        localObject = this.mcI.getChildAt(this.mcI.indexOfChild(paramView.bBp()) + 1);
         if (localObject != null) {
           ((View)localObject).setVisibility(8);
         }
@@ -381,11 +382,11 @@ public class h
       else
       {
         j = i + 1;
-        if (j >= this.mLn.size()) {
+        if (j >= this.mQp.size()) {
           break label393;
         }
-        localObject = (a)this.mLn.get(j);
-        if ((localObject == null) || (!((a)localObject).bAw())) {
+        localObject = (a)this.mQp.get(j);
+        if ((localObject == null) || (!((a)localObject).bBq())) {
           break label366;
         }
       }
@@ -393,7 +394,7 @@ public class h
       {
         if (j != 0)
         {
-          paramView = this.lYb.getChildAt(this.lYb.indexOfChild(paramView.bAv()) + 1);
+          paramView = this.mcI.getChildAt(this.mcI.indexOfChild(paramView.bBp()) + 1);
           if (paramView != null) {
             paramView.setVisibility(0);
           }
@@ -406,7 +407,7 @@ public class h
         label366:
         j += 1;
         break label270;
-        this.lYb.setVisibility(8);
+        this.mcI.setVisibility(8);
         break label141;
         i = 0;
         break label128;
@@ -417,33 +418,33 @@ public class h
   protected a b(FragmentActivity paramFragmentActivity, ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(180406);
-    v.bct();
+    v.bcY();
     paramFragmentActivity = new b(paramFragmentActivity, paramViewGroup);
-    paramFragmentActivity.mJk = this;
+    paramFragmentActivity.mOm = this;
     AppMethodBeat.o(180406);
     return paramFragmentActivity;
   }
   
-  public final void bAu()
+  public final View bBp()
   {
-    AppMethodBeat.i(49153);
-    Iterator localIterator = this.mLn.iterator();
-    while (localIterator.hasNext()) {
-      ((a)localIterator.next()).bAu();
-    }
-    AppMethodBeat.o(49153);
+    return this.mcI;
   }
   
-  public final View bAv()
+  public final void bwp()
   {
-    return this.lYb;
+    AppMethodBeat.i(49153);
+    Iterator localIterator = this.mQp.iterator();
+    while (localIterator.hasNext()) {
+      ((a)localIterator.next()).bwp();
+    }
+    AppMethodBeat.o(49153);
   }
   
   protected a c(FragmentActivity paramFragmentActivity, ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(180407);
     paramFragmentActivity = new j(paramFragmentActivity, paramViewGroup);
-    paramFragmentActivity.mJk = this;
+    paramFragmentActivity.mOm = this;
     AppMethodBeat.o(180407);
     return paramFragmentActivity;
   }
@@ -451,19 +452,19 @@ public class h
   public final void onDetached()
   {
     AppMethodBeat.i(49154);
-    Iterator localIterator = this.mLn.iterator();
+    Iterator localIterator = this.mQp.iterator();
     while (localIterator.hasNext()) {
       ((a)localIterator.next()).onDetached();
     }
-    this.mLn.clear();
-    this.mLs.jQg.clear();
+    this.mQp.clear();
+    this.mQu.jTy.clear();
     AppMethodBeat.o(49154);
   }
   
   public final void onPause()
   {
     AppMethodBeat.i(180408);
-    Iterator localIterator = this.mLn.iterator();
+    Iterator localIterator = this.mQp.iterator();
     while (localIterator.hasNext()) {
       ((a)localIterator.next()).onPause();
     }
@@ -473,27 +474,27 @@ public class h
   public final void onResume()
   {
     AppMethodBeat.i(49155);
-    Iterator localIterator = this.mLn.iterator();
+    Iterator localIterator = this.mQp.iterator();
     while (localIterator.hasNext()) {
       ((a)localIterator.next()).onResume();
     }
     AppMethodBeat.o(49155);
   }
   
-  public final void vA(int paramInt)
+  public final void vF(int paramInt)
   {
     AppMethodBeat.i(49156);
-    Iterator localIterator = this.mLn.iterator();
+    Iterator localIterator = this.mQp.iterator();
     while (localIterator.hasNext()) {
-      ((a)localIterator.next()).vA(paramInt);
+      ((a)localIterator.next()).vF(paramInt);
     }
     AppMethodBeat.o(49156);
   }
   
-  public final void vB(int paramInt)
+  public final void vG(int paramInt)
   {
     AppMethodBeat.i(49157);
-    bAN();
+    bBH();
     AppMethodBeat.o(49157);
   }
   
@@ -508,29 +509,29 @@ public class h
   
   final class b
   {
-    final int mLu;
-    final int mLv;
-    private final int mLw;
-    final int mLx;
-    final int mLy;
-    final int mLz;
+    final int mQA;
+    final int mQB;
+    final int mQw;
+    final int mQx;
+    private final int mQy;
+    final int mQz;
     
     private b(Context paramContext)
     {
       AppMethodBeat.i(49142);
-      this.mLu = paramContext.getResources().getDimensionPixelSize(2131165923);
-      this.mLv = com.tencent.mm.cc.a.fromDPToPix(paramContext, 56);
-      this.mLw = 0;
-      this.mLx = com.tencent.mm.cc.a.fromDPToPix(paramContext, 8);
-      this.mLy = com.tencent.mm.cc.a.n(paramContext, 2131099950);
-      this.mLz = 2;
+      this.mQw = paramContext.getResources().getDimensionPixelSize(2131165923);
+      this.mQx = com.tencent.mm.cb.a.fromDPToPix(paramContext, 56);
+      this.mQy = 0;
+      this.mQz = com.tencent.mm.cb.a.fromDPToPix(paramContext, 8);
+      this.mQA = com.tencent.mm.cb.a.n(paramContext, 2131099950);
+      this.mQB = 2;
       AppMethodBeat.o(49142);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.recents.h
  * JD-Core Version:    0.7.0.1
  */

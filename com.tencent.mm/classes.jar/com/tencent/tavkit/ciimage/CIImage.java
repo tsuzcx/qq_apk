@@ -46,7 +46,7 @@ public class CIImage
   
   public CIImage(Bitmap paramBitmap)
   {
-    AppMethodBeat.i(219586);
+    AppMethodBeat.i(200617);
     this.TAG = ("CIImage@" + Integer.toHexString(hashCode()));
     this.overlayImages = new ArrayList();
     this.isHardMode = false;
@@ -54,24 +54,24 @@ public class CIImage
     Logger.v(this.TAG, "CIImage() called with: bitmap = [" + paramBitmap + "]");
     this.bitmap = checkBitmapConfig(paramBitmap);
     this.size = new CGSize(paramBitmap.getWidth(), paramBitmap.getHeight());
-    AppMethodBeat.o(219586);
+    AppMethodBeat.o(200617);
   }
   
   public CIImage(CGSize paramCGSize)
   {
-    AppMethodBeat.i(219584);
+    AppMethodBeat.i(200615);
     this.TAG = ("CIImage@" + Integer.toHexString(hashCode()));
     this.overlayImages = new ArrayList();
     this.isHardMode = false;
     this.alpha = 1.0F;
     Logger.v(this.TAG, "CIImage() called with: renderSize = [" + paramCGSize + "]");
     this.size = paramCGSize;
-    AppMethodBeat.o(219584);
+    AppMethodBeat.o(200615);
   }
   
   public CIImage(TextureInfo paramTextureInfo)
   {
-    AppMethodBeat.i(219585);
+    AppMethodBeat.i(200616);
     this.TAG = ("CIImage@" + Integer.toHexString(hashCode()));
     this.overlayImages = new ArrayList();
     this.isHardMode = false;
@@ -79,7 +79,7 @@ public class CIImage
     Logger.v(this.TAG, "CIImage() called with: textureInfo = [" + paramTextureInfo + "]");
     this.textureInfo = paramTextureInfo;
     this.size = new CGSize(paramTextureInfo.width, paramTextureInfo.height);
-    AppMethodBeat.o(219585);
+    AppMethodBeat.o(200616);
   }
   
   public CIImage(String paramString)
@@ -89,7 +89,7 @@ public class CIImage
   
   public CIImage(String paramString, CGSize paramCGSize)
   {
-    AppMethodBeat.i(219587);
+    AppMethodBeat.i(200618);
     this.TAG = ("CIImage@" + Integer.toHexString(hashCode()));
     this.overlayImages = new ArrayList();
     this.isHardMode = false;
@@ -102,17 +102,17 @@ public class CIImage
     {
       this.size = new CGSize(this.bitmap.getWidth(), this.bitmap.getHeight());
       Logger.v(this.TAG, "CIImage() called with: imagePath = [" + paramString + "], sampleSize = " + paramCGSize + ", BitmapFactory.decodeFile cons ms = " + (System.currentTimeMillis() - l) + ", outBitmapSize = " + this.size);
-      AppMethodBeat.o(219587);
+      AppMethodBeat.o(200618);
       return;
     }
     Logger.e(this.TAG, "CIImage: 图片解码失败！imagePath = ".concat(String.valueOf(paramString)));
     this.size = new CGSize();
-    AppMethodBeat.o(219587);
+    AppMethodBeat.o(200618);
   }
   
   private void addOverlayImage(CIImage paramCIImage)
   {
-    AppMethodBeat.i(219595);
+    AppMethodBeat.i(200626);
     try
     {
       this.overlayImages.add(paramCIImage);
@@ -120,27 +120,27 @@ public class CIImage
     }
     finally
     {
-      AppMethodBeat.o(219595);
+      AppMethodBeat.o(200626);
     }
   }
   
   private Bitmap checkBitmapConfig(Bitmap paramBitmap)
   {
-    AppMethodBeat.i(219589);
+    AppMethodBeat.i(200620);
     if (Arrays.binarySearch(SUPPORT_CONFIGS, paramBitmap.getConfig()) < 0)
     {
       paramBitmap = transcodeBitmap(paramBitmap);
-      AppMethodBeat.o(219589);
+      AppMethodBeat.o(200620);
       return paramBitmap;
     }
-    AppMethodBeat.o(219589);
+    AppMethodBeat.o(200620);
     return paramBitmap;
   }
   
   private Bitmap decodeBitmap(String paramString, CGSize paramCGSize)
   {
     int i = 1;
-    AppMethodBeat.i(219588);
+    AppMethodBeat.i(200619);
     BitmapFactory.Options localOptions1 = new BitmapFactory.Options();
     localOptions1.inJustDecodeBounds = true;
     BitmapFactory.decodeFile(paramString, localOptions1);
@@ -151,50 +151,50 @@ public class CIImage
     localOptions2.inSampleSize = i;
     localOptions2.inPreferredConfig = Bitmap.Config.ARGB_8888;
     paramString = BitmapFactory.decodeFile(paramString, localOptions2);
-    AppMethodBeat.o(219588);
+    AppMethodBeat.o(200619);
     return paramString;
   }
   
   private Matrix getImageTextureMatrix()
   {
-    AppMethodBeat.i(219607);
+    AppMethodBeat.i(200638);
     Matrix localMatrix = new Matrix();
     localMatrix.setValues(new float[] { 1.0F, 0.0F, 0.0F, 0.0F, -1.0F, 1.0F, 0.0F, 0.0F, 1.0F });
-    AppMethodBeat.o(219607);
+    AppMethodBeat.o(200638);
     return localMatrix;
   }
   
   private Bitmap transcodeBitmap(Bitmap paramBitmap)
   {
-    AppMethodBeat.i(219590);
+    AppMethodBeat.i(200621);
     Bitmap localBitmap = Bitmap.createBitmap(paramBitmap.getWidth(), paramBitmap.getHeight(), Bitmap.Config.ARGB_8888);
     Canvas localCanvas = new Canvas(localBitmap);
     Paint localPaint = new Paint();
     localPaint.setAntiAlias(true);
     localPaint.setDither(true);
     localCanvas.drawBitmap(paramBitmap, 0.0F, 0.0F, localPaint);
-    AppMethodBeat.o(219590);
+    AppMethodBeat.o(200621);
     return localBitmap;
   }
   
   public void applyFillInFrame(CGRect paramCGRect, TAVVideoConfiguration.TAVVideoConfigurationContentMode paramTAVVideoConfigurationContentMode)
   {
-    AppMethodBeat.i(219603);
+    AppMethodBeat.i(200634);
     Matrix localMatrix = new Matrix();
     switch (1.$SwitchMap$com$tencent$tavkit$composition$model$TAVVideoConfiguration$TAVVideoConfigurationContentMode[paramTAVVideoConfigurationContentMode.ordinal()])
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(219603);
+      AppMethodBeat.o(200634);
       return;
       localMatrix.postConcat(MathUtils.transformBySourceRectFit(getExtent(), paramCGRect));
       imageByApplyingTransform(localMatrix);
-      AppMethodBeat.o(219603);
+      AppMethodBeat.o(200634);
       return;
       localMatrix.postConcat(MathUtils.transformBySourceRectFill(getExtent(), paramCGRect));
       imageByApplyingTransform(localMatrix);
-      AppMethodBeat.o(219603);
+      AppMethodBeat.o(200634);
       return;
       paramTAVVideoConfigurationContentMode = new Matrix();
       paramTAVVideoConfigurationContentMode.postScale(paramCGRect.size.width / getExtent().size.width, paramCGRect.size.height / getExtent().size.height);
@@ -208,10 +208,10 @@ public class CIImage
   
   public void applyFixInSize(CGSize paramCGSize, TAVVideoConfiguration.TAVVideoConfigurationContentMode paramTAVVideoConfigurationContentMode)
   {
-    AppMethodBeat.i(219601);
+    AppMethodBeat.i(200632);
     if (!Utils.isSizeValid(paramCGSize))
     {
-      AppMethodBeat.o(219601);
+      AppMethodBeat.o(200632);
       return;
     }
     switch (1.$SwitchMap$com$tencent$tavkit$composition$model$TAVVideoConfiguration$TAVVideoConfigurationContentMode[paramTAVVideoConfigurationContentMode.ordinal()])
@@ -226,7 +226,7 @@ public class CIImage
       imageByApplyingTransform(paramTAVVideoConfigurationContentMode);
       this.size.height = paramCGSize.height;
       this.size.width = paramCGSize.width;
-      AppMethodBeat.o(219601);
+      AppMethodBeat.o(200632);
       return;
       paramCGSize = MathUtils.sizeFit(this.size, paramCGSize);
       continue;
@@ -240,10 +240,10 @@ public class CIImage
   {
     float f4 = 0.0F;
     float f3 = -1.0F;
-    AppMethodBeat.i(219596);
+    AppMethodBeat.i(200627);
     if ((!paramBoolean1) && (!paramBoolean2))
     {
-      AppMethodBeat.o(219596);
+      AppMethodBeat.o(200627);
       return;
     }
     float f1;
@@ -269,7 +269,7 @@ public class CIImage
       localMatrix.postScale(f1, f3);
       localMatrix.postTranslate(f2, f4);
       imageByApplyingTransform(localMatrix);
-      AppMethodBeat.o(219596);
+      AppMethodBeat.o(200627);
       return;
       f1 = 1.0F;
       break;
@@ -283,24 +283,24 @@ public class CIImage
   
   public void applyPreferRotation()
   {
-    AppMethodBeat.i(219597);
+    AppMethodBeat.i(200628);
     applyPreferRotation(0);
-    AppMethodBeat.o(219597);
+    AppMethodBeat.o(200628);
   }
   
   public void applyPreferRotation(int paramInt)
   {
-    AppMethodBeat.i(219598);
+    AppMethodBeat.i(200629);
     TextureInfo localTextureInfo = getDrawTextureInfo();
     if (localTextureInfo == null)
     {
-      AppMethodBeat.o(219598);
+      AppMethodBeat.o(200629);
       return;
     }
     this.rotation = (localTextureInfo.preferRotation + paramInt);
     if (this.rotation == 0)
     {
-      AppMethodBeat.o(219598);
+      AppMethodBeat.o(200629);
       return;
     }
     Logger.v(this.TAG, "applyPreferRotation: textureInfo.preferRotation = " + this.rotation);
@@ -312,12 +312,12 @@ public class CIImage
       this.size.width = localTextureInfo.height;
       this.size.height = localTextureInfo.width;
     }
-    AppMethodBeat.o(219598);
+    AppMethodBeat.o(200629);
   }
   
   public CIImage clone()
   {
-    AppMethodBeat.i(219609);
+    AppMethodBeat.i(200640);
     CIImage localCIImage = new CIImage(this.size.clone());
     localCIImage.textureInfo = this.textureInfo;
     localCIImage.textureCacheKey = this.textureCacheKey;
@@ -331,7 +331,7 @@ public class CIImage
       localCIImage.overlayImages.clear();
       localCIImage.overlayImages.addAll(this.overlayImages);
       localCIImage.alpha = this.alpha;
-      AppMethodBeat.o(219609);
+      AppMethodBeat.o(200640);
       return localCIImage;
     }
   }
@@ -339,15 +339,15 @@ public class CIImage
   @Deprecated
   public Bitmap convertToBitmap()
   {
-    AppMethodBeat.i(219606);
+    AppMethodBeat.i(200637);
     Bitmap localBitmap = TAVGLUtils.saveBitmap(this);
-    AppMethodBeat.o(219606);
+    AppMethodBeat.o(200637);
     return localBitmap;
   }
   
   public void draw(TextureFilter paramTextureFilter)
   {
-    AppMethodBeat.i(219604);
+    AppMethodBeat.i(200635);
     Object localObject = getDrawTextureInfo();
     if (localObject != null)
     {
@@ -356,7 +356,7 @@ public class CIImage
     }
     if (this.overlayImages.isEmpty())
     {
-      AppMethodBeat.o(219604);
+      AppMethodBeat.o(200635);
       return;
     }
     Logger.v(this.TAG, "draw: with: draw overlayImages = " + this.overlayImages + ", filter = " + paramTextureFilter);
@@ -364,7 +364,7 @@ public class CIImage
     while (((Iterator)localObject).hasNext()) {
       ((CIImage)((Iterator)localObject).next()).draw(paramTextureFilter);
     }
-    AppMethodBeat.o(219604);
+    AppMethodBeat.o(200635);
   }
   
   public float getAlpha()
@@ -374,11 +374,11 @@ public class CIImage
   
   public TextureInfo getDrawTextureInfo()
   {
-    AppMethodBeat.i(219605);
+    AppMethodBeat.i(200636);
     if (this.textureInfo != null)
     {
       localObject1 = this.textureInfo;
-      AppMethodBeat.o(219605);
+      AppMethodBeat.o(200636);
       return localObject1;
     }
     Object localObject1 = EGL14.eglGetCurrentContext();
@@ -388,7 +388,7 @@ public class CIImage
     Object localObject2 = ThreadLocalTextureCache.getInstance().getTextureInfo(this.textureCacheKey);
     if ((localObject1 != null) && (localObject2 != null) && (!((TextureInfo)localObject2).isReleased()))
     {
-      AppMethodBeat.o(219605);
+      AppMethodBeat.o(200636);
       return localObject2;
     }
     if (this.bitmap != null)
@@ -407,18 +407,18 @@ public class CIImage
         this.bitmap = null;
         Logger.v(this.TAG, "getDrawTextureInfo: isHardMode, bitmap.recycle()");
       }
-      AppMethodBeat.o(219605);
+      AppMethodBeat.o(200636);
       return localObject2;
     }
-    AppMethodBeat.o(219605);
+    AppMethodBeat.o(200636);
     return null;
   }
   
   public CGRect getExtent()
   {
-    AppMethodBeat.i(219591);
+    AppMethodBeat.i(200622);
     CGRect localCGRect = new CGRect(new PointF(0.0F, 0.0F), this.size);
-    AppMethodBeat.o(219591);
+    AppMethodBeat.o(200622);
     return localCGRect;
   }
   
@@ -434,40 +434,40 @@ public class CIImage
   
   public CIImage imageApplyFillInFrame(CGRect paramCGRect, TAVVideoConfiguration.TAVVideoConfigurationContentMode paramTAVVideoConfigurationContentMode)
   {
-    AppMethodBeat.i(219602);
+    AppMethodBeat.i(200633);
     TAVVideoConfiguration.TAVVideoConfigurationContentMode localTAVVideoConfigurationContentMode = TAVVideoConfiguration.TAVVideoConfigurationContentMode.aspectFill;
     applyFillInFrame(paramCGRect, paramTAVVideoConfigurationContentMode);
-    AppMethodBeat.o(219602);
+    AppMethodBeat.o(200633);
     return this;
   }
   
   public CIImage imageByApplyingTransform(Matrix paramMatrix)
   {
-    AppMethodBeat.i(219594);
+    AppMethodBeat.i(200625);
     if (this.transform == null) {
       this.transform = new Matrix();
     }
     this.transform.postConcat(paramMatrix);
     Logger.v(this.TAG, "imageByApplyingTransform() called with: in transform = [" + paramMatrix + "], result transform = " + this.transform);
-    AppMethodBeat.o(219594);
+    AppMethodBeat.o(200625);
     return this;
   }
   
   public CIImage imageByCompositingOverImage(CIImage paramCIImage)
   {
-    AppMethodBeat.i(219593);
+    AppMethodBeat.i(200624);
     Logger.v(this.TAG, "imageByCompositingOverImage() called with: destImage = [" + paramCIImage + "]");
     paramCIImage.addOverlayImage(this);
-    AppMethodBeat.o(219593);
+    AppMethodBeat.o(200624);
     return paramCIImage;
   }
   
   public CIImage imageByCroppingToRect(CGRect paramCGRect)
   {
-    AppMethodBeat.i(219599);
+    AppMethodBeat.i(200630);
     if (!Utils.isRectValid(paramCGRect))
     {
-      AppMethodBeat.o(219599);
+      AppMethodBeat.o(200630);
       return this;
     }
     Logger.v(this.TAG, "imageByCroppingToRect: frame = [" + paramCGRect + "]");
@@ -483,7 +483,7 @@ public class CIImage
         localMatrix.postTranslate(-paramCGRect.x, -paramCGRect.y);
         imageByApplyingTransform(localMatrix);
       }
-      AppMethodBeat.o(219599);
+      AppMethodBeat.o(200630);
       return this;
     }
   }
@@ -497,7 +497,7 @@ public class CIImage
   {
     try
     {
-      AppMethodBeat.i(219608);
+      AppMethodBeat.i(200639);
       Logger.d(this.TAG, "release() start");
       if ((this.bitmap != null) && (!this.bitmap.isRecycled()))
       {
@@ -522,25 +522,25 @@ public class CIImage
     }
     finally {}
     Logger.d(this.TAG, "release() end");
-    AppMethodBeat.o(219608);
+    AppMethodBeat.o(200639);
   }
   
   public void reset()
   {
-    AppMethodBeat.i(219592);
+    AppMethodBeat.i(200623);
     Logger.v(this.TAG, "reset() called, before transform = " + this.transform);
     if (this.transform != null) {
       this.transform = null;
     }
-    AppMethodBeat.o(219592);
+    AppMethodBeat.o(200623);
   }
   
   public CIImage safeApplyTransform(Matrix paramMatrix)
   {
-    AppMethodBeat.i(219600);
+    AppMethodBeat.i(200631);
     if ((paramMatrix == null) || (paramMatrix.isIdentity()))
     {
-      AppMethodBeat.o(219600);
+      AppMethodBeat.o(200631);
       return this;
     }
     Logger.v(this.TAG, "safeApplyTransform: transform = [" + paramMatrix + "]");
@@ -553,7 +553,7 @@ public class CIImage
     paramMatrix.postTranslate(f1, f2);
     localMatrix.postConcat(paramMatrix);
     paramMatrix = imageByApplyingTransform(localMatrix);
-    AppMethodBeat.o(219600);
+    AppMethodBeat.o(200631);
     return paramMatrix;
   }
   
@@ -569,21 +569,21 @@ public class CIImage
   
   public CIImage simpleClone()
   {
-    AppMethodBeat.i(219610);
+    AppMethodBeat.i(200641);
     CIImage localCIImage = new CIImage(this.size.clone());
     localCIImage.textureInfo = this.textureInfo;
     localCIImage.preferRotation = this.preferRotation;
     localCIImage.bitmap = this.bitmap;
     localCIImage.alpha = this.alpha;
-    AppMethodBeat.o(219610);
+    AppMethodBeat.o(200641);
     return localCIImage;
   }
   
   public String toString()
   {
-    AppMethodBeat.i(219611);
+    AppMethodBeat.i(200642);
     String str = "CIImage{hash=" + Integer.toHexString(hashCode()) + ", size=" + this.size + ", textureInfo=" + this.textureInfo + ", bitmap=" + this.bitmap + ", transform=" + this.transform + ", frame=" + this.frame + ", overlayImages=" + this.overlayImages + '}';
-    AppMethodBeat.o(219611);
+    AppMethodBeat.o(200642);
     return str;
   }
 }

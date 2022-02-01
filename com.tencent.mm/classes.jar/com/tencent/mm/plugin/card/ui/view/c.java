@@ -7,20 +7,20 @@ import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.card.base.b;
 import com.tencent.mm.plugin.card.ui.n;
-import com.tencent.mm.protocal.protobuf.ael;
-import com.tencent.mm.protocal.protobuf.ts;
+import com.tencent.mm.protocal.protobuf.aeu;
+import com.tencent.mm.protocal.protobuf.tu;
 
 public final class c
   extends i
 {
-  private View oOo;
-  private TextView oOp;
+  private View oUQ;
+  private TextView oUR;
   
-  public final void bYr()
+  public final void bZG()
   {
     AppMethodBeat.i(113664);
-    if (this.oOo != null) {
-      this.oOo.setVisibility(8);
+    if (this.oUQ != null) {
+      this.oUQ.setVisibility(8);
     }
     AppMethodBeat.o(113664);
   }
@@ -30,21 +30,21 @@ public final class c
   public final void update()
   {
     AppMethodBeat.i(113663);
-    if (this.oOo == null)
+    if (this.oUQ == null)
     {
-      this.oOo = ((ViewStub)findViewById(2131297728)).inflate();
-      this.oOp = ((TextView)this.oOo.findViewById(2131297729));
+      this.oUQ = ((ViewStub)findViewById(2131297728)).inflate();
+      this.oUR = ((TextView)this.oUQ.findViewById(2131297729));
     }
-    this.oOo.setVisibility(0);
-    this.oOo.setOnClickListener(this.oOB.bWp());
-    b localb = this.oOB.bWl();
-    if (!TextUtils.isEmpty(localb.bTN().FRQ.Gcq))
+    this.oUQ.setVisibility(0);
+    this.oUQ.setOnClickListener(this.oVd.bXE());
+    b localb = this.oVd.bXA();
+    if (!TextUtils.isEmpty(localb.bVc().Gkp.GuX))
     {
-      this.oOp.setText(localb.bTN().FRQ.Gcq);
+      this.oUR.setText(localb.bVc().Gkp.GuX);
       AppMethodBeat.o(113663);
       return;
     }
-    this.oOp.setText(getString(2131756933));
+    this.oUR.setText(getString(2131756933));
     AppMethodBeat.o(113663);
   }
 }

@@ -11,23 +11,23 @@ public abstract class ck
   extends c
 {
   public static final String[] INDEX_CREATE = { "CREATE INDEX IF NOT EXISTS FinderSessionInfo_sessionId_index ON FinderSessionInfo(sessionId)", "CREATE INDEX IF NOT EXISTS FinderSessionInfo_talker_index ON FinderSessionInfo(talker)", "CREATE INDEX IF NOT EXISTS FinderSessionInfo_type_index ON FinderSessionInfo(type)" };
-  private static final int eFq;
-  private static final int eLf;
-  private static final int eVL = "sessionId".hashCode();
-  private static final int eYv = "actionPermission".hashCode();
-  private static final int fag;
-  private static final int fah = "rejectMsg".hashCode();
-  private static final int fai = "disableSendMsg".hashCode();
+  private static final int eGZ;
+  private static final int eMP;
+  private static final int eXw = "sessionId".hashCode();
+  private static final int fai = "actionPermission".hashCode();
+  private static final int fbV;
+  private static final int fbW = "rejectMsg".hashCode();
+  private static final int fbX = "disableSendMsg".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
   private static final int type_HASHCODE;
   private boolean __hadSettype = true;
-  private boolean eFn = true;
-  private boolean eKS = true;
-  private boolean eVx = true;
-  private boolean eYr = true;
-  private boolean fad = true;
+  private boolean eGW = true;
+  private boolean eMB = true;
+  private boolean eXi = true;
   private boolean fae = true;
-  private boolean faf = true;
+  private boolean fbS = true;
+  private boolean fbT = true;
+  private boolean fbU = true;
   public int field_actionPermission;
   public int field_disableSendMsg;
   public int field_rejectMsg;
@@ -39,49 +39,49 @@ public abstract class ck
   
   static
   {
-    eLf = "talker".hashCode();
-    eFq = "updateTime".hashCode();
-    fag = "selfUsername".hashCode();
+    eMP = "talker".hashCode();
+    eGZ = "updateTime".hashCode();
+    fbV = "selfUsername".hashCode();
     type_HASHCODE = "type".hashCode();
   }
   
-  public static c.a Vv()
+  public static c.a VD()
   {
     c.a locala = new c.a();
-    locala.IhA = new Field[8];
+    locala.IBL = new Field[8];
     locala.columns = new String[9];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "sessionId";
-    locala.IhC.put("sessionId", "TEXT default ''  PRIMARY KEY ");
+    locala.IBN.put("sessionId", "TEXT default ''  PRIMARY KEY ");
     localStringBuilder.append(" sessionId TEXT default ''  PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.IhB = "sessionId";
+    locala.IBM = "sessionId";
     locala.columns[1] = "talker";
-    locala.IhC.put("talker", "TEXT default '' ");
+    locala.IBN.put("talker", "TEXT default '' ");
     localStringBuilder.append(" talker TEXT default '' ");
     localStringBuilder.append(", ");
     locala.columns[2] = "updateTime";
-    locala.IhC.put("updateTime", "LONG default '0' ");
+    locala.IBN.put("updateTime", "LONG default '0' ");
     localStringBuilder.append(" updateTime LONG default '0' ");
     localStringBuilder.append(", ");
     locala.columns[3] = "selfUsername";
-    locala.IhC.put("selfUsername", "TEXT default '' ");
+    locala.IBN.put("selfUsername", "TEXT default '' ");
     localStringBuilder.append(" selfUsername TEXT default '' ");
     localStringBuilder.append(", ");
     locala.columns[4] = "type";
-    locala.IhC.put("type", "INTEGER");
+    locala.IBN.put("type", "INTEGER");
     localStringBuilder.append(" type INTEGER");
     localStringBuilder.append(", ");
     locala.columns[5] = "actionPermission";
-    locala.IhC.put("actionPermission", "INTEGER");
+    locala.IBN.put("actionPermission", "INTEGER");
     localStringBuilder.append(" actionPermission INTEGER");
     localStringBuilder.append(", ");
     locala.columns[6] = "rejectMsg";
-    locala.IhC.put("rejectMsg", "INTEGER");
+    locala.IBN.put("rejectMsg", "INTEGER");
     localStringBuilder.append(" rejectMsg INTEGER");
     localStringBuilder.append(", ");
     locala.columns[7] = "disableSendMsg";
-    locala.IhC.put("disableSendMsg", "INTEGER");
+    locala.IBN.put("disableSendMsg", "INTEGER");
     localStringBuilder.append(" disableSendMsg INTEGER");
     locala.columns[8] = "rowid";
     locala.sql = localStringBuilder.toString();
@@ -101,11 +101,11 @@ public abstract class ck
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eVL != k) {
+      if (eXw != k) {
         break label65;
       }
       this.field_sessionId = paramCursor.getString(i);
-      this.eVx = true;
+      this.eXi = true;
     }
     for (;;)
     {
@@ -113,19 +113,19 @@ public abstract class ck
       break label20;
       break;
       label65:
-      if (eLf == k) {
+      if (eMP == k) {
         this.field_talker = paramCursor.getString(i);
-      } else if (eFq == k) {
+      } else if (eGZ == k) {
         this.field_updateTime = paramCursor.getLong(i);
-      } else if (fag == k) {
+      } else if (fbV == k) {
         this.field_selfUsername = paramCursor.getString(i);
       } else if (type_HASHCODE == k) {
         this.field_type = paramCursor.getInt(i);
-      } else if (eYv == k) {
-        this.field_actionPermission = paramCursor.getInt(i);
-      } else if (fah == k) {
-        this.field_rejectMsg = paramCursor.getInt(i);
       } else if (fai == k) {
+        this.field_actionPermission = paramCursor.getInt(i);
+      } else if (fbW == k) {
+        this.field_rejectMsg = paramCursor.getInt(i);
+      } else if (fbX == k) {
         this.field_disableSendMsg = paramCursor.getInt(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
@@ -139,34 +139,34 @@ public abstract class ck
     if (this.field_sessionId == null) {
       this.field_sessionId = "";
     }
-    if (this.eVx) {
+    if (this.eXi) {
       localContentValues.put("sessionId", this.field_sessionId);
     }
     if (this.field_talker == null) {
       this.field_talker = "";
     }
-    if (this.eKS) {
+    if (this.eMB) {
       localContentValues.put("talker", this.field_talker);
     }
-    if (this.eFn) {
+    if (this.eGW) {
       localContentValues.put("updateTime", Long.valueOf(this.field_updateTime));
     }
     if (this.field_selfUsername == null) {
       this.field_selfUsername = "";
     }
-    if (this.fad) {
+    if (this.fbS) {
       localContentValues.put("selfUsername", this.field_selfUsername);
     }
     if (this.__hadSettype) {
       localContentValues.put("type", Integer.valueOf(this.field_type));
     }
-    if (this.eYr) {
+    if (this.fae) {
       localContentValues.put("actionPermission", Integer.valueOf(this.field_actionPermission));
     }
-    if (this.fae) {
+    if (this.fbT) {
       localContentValues.put("rejectMsg", Integer.valueOf(this.field_rejectMsg));
     }
-    if (this.faf) {
+    if (this.fbU) {
       localContentValues.put("disableSendMsg", Integer.valueOf(this.field_disableSendMsg));
     }
     if (this.systemRowid > 0L) {

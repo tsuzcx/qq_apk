@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class ba
   extends b
 {
-  public a dlU;
+  public a dmW;
   
   public ba()
   {
@@ -16,8 +16,8 @@ public final class ba
   private ba(byte paramByte)
   {
     AppMethodBeat.i(116457);
-    this.dlU = new a();
-    this.IbR = false;
+    this.dmW = new a();
+    this.IvZ = false;
     this.callback = null;
     AppMethodBeat.o(116457);
   }

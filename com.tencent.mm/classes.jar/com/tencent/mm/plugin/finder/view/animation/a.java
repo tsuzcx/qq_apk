@@ -319,7 +319,7 @@ public class a
     return true;
   }
   
-  protected long cNF()
+  protected long cQp()
   {
     AppMethodBeat.i(168663);
     long l = lq();
@@ -580,7 +580,7 @@ public class a
         };
         if ((i != 0) || (j != 0) || (k != 0))
         {
-          t.a(((RecyclerView.w)((ArrayList)localObject1).get(0)).auu, (Runnable)localObject2, cNF());
+          t.a(((RecyclerView.w)((ArrayList)localObject1).get(0)).auu, (Runnable)localObject2, cQp());
           AppMethodBeat.o(168664);
           return;
           ((Runnable)localObject2).run();

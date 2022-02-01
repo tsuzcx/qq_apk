@@ -7,7 +7,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.game.f.c;
 import com.tencent.mm.plugin.game.model.a.a;
 import com.tencent.mm.plugin.game.model.e;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.MMBaseActivity;
 
 @com.tencent.mm.ui.base.a(19)
@@ -19,8 +19,8 @@ public class GameDetailUI
     AppMethodBeat.i(42009);
     super.onCreate(paramBundle);
     paramBundle = getIntent().getStringExtra("game_app_id");
-    Object localObject = com.tencent.mm.plugin.game.model.a.dP(paramBundle, getIntent().getIntExtra("game_report_from_scene", 0));
-    if ((((a.a)localObject).dDp == 2) && (!bt.isNullOrNil(((a.a)localObject).url))) {
+    Object localObject = com.tencent.mm.plugin.game.model.a.dT(paramBundle, getIntent().getIntExtra("game_report_from_scene", 0));
+    if ((((a.a)localObject).dEu == 2) && (!bu.isNullOrNil(((a.a)localObject).url))) {
       c.B(getBaseContext(), ((a.a)localObject).url, "game_center_detail");
     }
     for (;;)
@@ -28,10 +28,10 @@ public class GameDetailUI
       finish();
       AppMethodBeat.o(42009);
       return;
-      int i = e.cYK();
+      int i = e.dbu();
       if (i == 2)
       {
-        c.m(this, paramBundle, 0);
+        c.l(this, paramBundle, 0);
       }
       else if (i == 1)
       {
@@ -39,9 +39,9 @@ public class GameDetailUI
       }
       else
       {
-        localObject = bt.jg(this);
-        if ((bt.isNullOrNil((String)localObject)) || (((String)localObject).toLowerCase().equals("cn"))) {
-          c.m(this, paramBundle, 0);
+        localObject = bu.jm(this);
+        if ((bu.isNullOrNil((String)localObject)) || (((String)localObject).toLowerCase().equals("cn"))) {
+          c.l(this, paramBundle, 0);
         } else {
           c.f(this, getIntent().getExtras());
         }
@@ -57,7 +57,7 @@ public class GameDetailUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.GameDetailUI
  * JD-Core Version:    0.7.0.1
  */

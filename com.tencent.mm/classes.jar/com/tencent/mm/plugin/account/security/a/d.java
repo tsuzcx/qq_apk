@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.account.security.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.g.c.fn;
-import com.tencent.mm.protocal.protobuf.bvx;
+import com.tencent.mm.protocal.protobuf.bwr;
 import com.tencent.mm.sdk.e.c.a;
 import java.lang.reflect.Field;
 import java.util.Map;
@@ -16,24 +16,24 @@ public final class d
   {
     AppMethodBeat.i(125520);
     c.a locala = new c.a();
-    locala.IhA = new Field[4];
+    locala.IBL = new Field[4];
     locala.columns = new String[5];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "uid";
-    locala.IhC.put("uid", "TEXT default ''  PRIMARY KEY ");
+    locala.IBN.put("uid", "TEXT default ''  PRIMARY KEY ");
     localStringBuilder.append(" uid TEXT default ''  PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.IhB = "uid";
+    locala.IBM = "uid";
     locala.columns[1] = "name";
-    locala.IhC.put("name", "TEXT default '' ");
+    locala.IBN.put("name", "TEXT default '' ");
     localStringBuilder.append(" name TEXT default '' ");
     localStringBuilder.append(", ");
     locala.columns[2] = "devicetype";
-    locala.IhC.put("devicetype", "TEXT default '' ");
+    locala.IBN.put("devicetype", "TEXT default '' ");
     localStringBuilder.append(" devicetype TEXT default '' ");
     localStringBuilder.append(", ");
     locala.columns[3] = "createtime";
-    locala.IhC.put("createtime", "LONG default '0' ");
+    locala.IBN.put("createtime", "LONG default '0' ");
     localStringBuilder.append(" createtime LONG default '0' ");
     locala.columns[4] = "rowid";
     locala.sql = localStringBuilder.toString();
@@ -49,13 +49,13 @@ public final class d
     this.field_createtime = 0L;
   }
   
-  public d(bvx parambvx)
+  public d(bwr parambwr)
   {
     AppMethodBeat.i(125519);
-    this.field_uid = parambvx.uuid;
-    this.field_devicetype = parambvx.devicetype;
-    this.field_name = parambvx.devicename;
-    this.field_createtime = parambvx.GPY;
+    this.field_uid = parambwr.uuid;
+    this.field_devicetype = parambwr.devicetype;
+    this.field_name = parambwr.devicename;
+    this.field_createtime = parambwr.Hjz;
     AppMethodBeat.o(125519);
   }
   

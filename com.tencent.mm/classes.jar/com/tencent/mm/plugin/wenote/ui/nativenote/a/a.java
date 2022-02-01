@@ -8,17 +8,17 @@ import com.tencent.mm.plugin.wenote.model.nativenote.manager.k;
 public abstract class a
   extends RecyclerView.w
 {
-  protected k EBf;
+  protected k ETB;
   
   public a(View paramView, k paramk)
   {
     super(paramView);
-    this.EBf = paramk;
+    this.ETB = paramk;
   }
   
   public abstract void a(c paramc, int paramInt1, int paramInt2);
   
-  public abstract int cdT();
+  public abstract int cfi();
 }
 
 

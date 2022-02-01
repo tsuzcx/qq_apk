@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.wallet.pay.a.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.f;
+import com.tencent.mm.ak.f;
 import com.tencent.mm.plugin.report.service.g;
 import com.tencent.mm.plugin.wallet_core.model.Orders;
 import com.tencent.mm.plugin.wallet_core.model.v;
@@ -16,17 +16,17 @@ public final class e
     super(paramv, paramOrders);
   }
   
-  protected final void aS(Map<String, String> paramMap)
+  protected final void aY(Map<String, String> paramMap)
   {
     AppMethodBeat.i(69291);
-    paramMap.put("busi_scene", this.CIC.dkR);
+    paramMap.put("busi_scene", this.Dai.dlT);
     AppMethodBeat.o(69291);
   }
   
   public final int doScene(com.tencent.mm.network.e parame, f paramf)
   {
     AppMethodBeat.i(69292);
-    g.yhR.idkeyStat(663L, 22L, 1L, false);
+    g.yxI.idkeyStat(663L, 22L, 1L, false);
     int i = super.doScene(parame, paramf);
     AppMethodBeat.o(69292);
     return i;
@@ -46,13 +46,13 @@ public final class e
   {
     AppMethodBeat.i(69293);
     super.onGYNetEnd(paramInt, paramString, paramJSONObject);
-    g.yhR.idkeyStat(663L, 23L, 1L, false);
+    g.yxI.idkeyStat(663L, 23L, 1L, false);
     AppMethodBeat.o(69293);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.pay.a.d.e
  * JD-Core Version:    0.7.0.1
  */

@@ -5,60 +5,60 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class i
 {
-  private g HTT;
-  public int HTW;
-  public boolean HUo;
-  public boolean HUp;
-  public boolean HUq;
-  public int HUr;
-  public boolean HUs;
-  public int HUt;
-  public long HUu;
+  public boolean IoA;
+  public int IoB;
+  public long IoC;
+  private g Iob;
+  public int Ioe;
+  public boolean Iow;
+  public boolean Iox;
+  public boolean Ioy;
+  public int Ioz;
   public int mFrom;
   
   private i(Context paramContext)
   {
-    AppMethodBeat.i(207038);
-    this.HTT = new g.b(paramContext, "recovery_statistic").fhg();
-    this.HTW = this.HTT.getInt("crash_count", 0);
-    this.HUo = this.HTT.getBoolean("launch_recovery", false);
-    this.HUp = this.HTT.getBoolean("launch_recovery_real", false);
-    this.HUq = this.HTT.getBoolean("recover_from_crash", false);
-    this.HUr = this.HTT.getInt("recovery_status", -1);
-    this.mFrom = this.HTT.getInt("recovery_from", 0);
-    this.HUt = this.HTT.getInt("recover_internal_status", 0);
-    this.HUu = this.HTT.getLong("recover_running_time", 0L);
-    this.HUs = this.HTT.getBoolean("recover_is_discard", false);
-    AppMethodBeat.o(207038);
+    AppMethodBeat.i(195346);
+    this.Iob = new g.b(paramContext, "recovery_statistic").fkY();
+    this.Ioe = this.Iob.getInt("crash_count", 0);
+    this.Iow = this.Iob.getBoolean("launch_recovery", false);
+    this.Iox = this.Iob.getBoolean("launch_recovery_real", false);
+    this.Ioy = this.Iob.getBoolean("recover_from_crash", false);
+    this.Ioz = this.Iob.getInt("recovery_status", -1);
+    this.mFrom = this.Iob.getInt("recovery_from", 0);
+    this.IoB = this.Iob.getInt("recover_internal_status", 0);
+    this.IoC = this.Iob.getLong("recover_running_time", 0L);
+    this.IoA = this.Iob.getBoolean("recover_is_discard", false);
+    AppMethodBeat.o(195346);
   }
   
-  public static i hR(Context paramContext)
+  public static i hX(Context paramContext)
   {
-    AppMethodBeat.i(207037);
+    AppMethodBeat.i(195345);
     paramContext = new i(paramContext);
-    AppMethodBeat.o(207037);
+    AppMethodBeat.o(195345);
     return paramContext;
   }
   
-  public final void fhl()
+  public final void fld()
   {
-    AppMethodBeat.i(207041);
-    this.HTT.ge("crash_count", this.HTW).cF("launch_recovery", this.HUo).cF("launch_recovery_real", this.HUp).cF("recover_from_crash", this.HUq).ge("recovery_status", this.HUr).ge("recovery_from", this.mFrom).ge("recover_internal_status", this.HUt).bR("recover_running_time", this.HUu).cF("recover_is_discard", this.HUs).fhd();
-    AppMethodBeat.o(207041);
+    AppMethodBeat.i(195349);
+    this.Iob.gn("crash_count", this.Ioe).cJ("launch_recovery", this.Iow).cJ("launch_recovery_real", this.Iox).cJ("recover_from_crash", this.Ioy).gn("recovery_status", this.Ioz).gn("recovery_from", this.mFrom).gn("recover_internal_status", this.IoB).bS("recover_running_time", this.IoC).cJ("recover_is_discard", this.IoA).fkV();
+    AppMethodBeat.o(195349);
   }
   
   public final void save()
   {
-    AppMethodBeat.i(207040);
-    this.HTT.ge("crash_count", this.HTW).cF("launch_recovery", this.HUo).cF("launch_recovery_real", this.HUp).cF("recover_from_crash", this.HUq).ge("recovery_status", this.HUr).ge("recovery_from", this.mFrom).ge("recover_internal_status", this.HUt).bR("recover_running_time", this.HUu).cF("recover_is_discard", this.HUs).fhc();
-    AppMethodBeat.o(207040);
+    AppMethodBeat.i(195348);
+    this.Iob.gn("crash_count", this.Ioe).cJ("launch_recovery", this.Iow).cJ("launch_recovery_real", this.Iox).cJ("recover_from_crash", this.Ioy).gn("recovery_status", this.Ioz).gn("recovery_from", this.mFrom).gn("recover_internal_status", this.IoB).bS("recover_running_time", this.IoC).cJ("recover_is_discard", this.IoA).fkU();
+    AppMethodBeat.o(195348);
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(207039);
-    String str = "RecoveryStatistic{mCrashCount=" + this.HTW + ", mNeedLaunchRecovery=" + this.HUo + ", mHasReallyLaunchRecovery=" + this.HUp + ", mHasRecoverFromCrash=" + this.HUq + ", mRecoveryStatus=" + this.HUr + ", mIsDiscarded=" + this.HUs + ", mFrom=" + this.mFrom + ", mInternalStatus=" + this.HUt + ", mRunningTime=" + this.HUu + '}';
-    AppMethodBeat.o(207039);
+    AppMethodBeat.i(195347);
+    String str = "RecoveryStatistic{mCrashCount=" + this.Ioe + ", mNeedLaunchRecovery=" + this.Iow + ", mHasReallyLaunchRecovery=" + this.Iox + ", mHasRecoverFromCrash=" + this.Ioy + ", mRecoveryStatus=" + this.Ioz + ", mIsDiscarded=" + this.IoA + ", mFrom=" + this.mFrom + ", mInternalStatus=" + this.IoB + ", mRunningTime=" + this.IoC + '}';
+    AppMethodBeat.o(195347);
     return str;
   }
 }

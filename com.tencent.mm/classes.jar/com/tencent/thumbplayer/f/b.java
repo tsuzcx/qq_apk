@@ -4,7 +4,7 @@ import com.tencent.thumbplayer.core.downloadproxy.api.ITPDownloadProxy;
 
 public abstract interface b
 {
-  public abstract ITPDownloadProxy fXb();
+  public abstract ITPDownloadProxy gbA();
   
   public abstract void pushEvent(int paramInt);
 }

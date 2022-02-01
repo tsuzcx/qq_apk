@@ -5,9 +5,9 @@ import android.os.Bundle;
 
 public abstract interface a
 {
-  public abstract b Gl();
+  public abstract b Gr();
   
-  public abstract c Gm();
+  public abstract c Gs();
   
   public abstract void a(com.tencent.luggage.xweb_ext.extendplugin.a parama, Bitmap paramBitmap);
   
@@ -17,7 +17,7 @@ public abstract interface a
   
   public abstract void b(com.tencent.luggage.xweb_ext.extendplugin.component.a.a.a parama);
   
-  public abstract void gI(int paramInt);
+  public abstract void gJ(int paramInt);
   
   public abstract boolean j(com.tencent.luggage.xweb_ext.extendplugin.a parama);
   
@@ -29,7 +29,7 @@ public abstract interface a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.luggage.xweb_ext.extendplugin.component.a.a.a.a
  * JD-Core Version:    0.7.0.1
  */

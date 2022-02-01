@@ -3,19 +3,19 @@ package com.tencent.mm.plugin.trafficmonitor;
 import com.tencent.e.h;
 import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ax;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ay;
 import java.util.ArrayList;
 import java.util.List;
 
 public final class b
   extends e
 {
-  private com.tencent.e.i.b BAw = null;
+  private com.tencent.e.i.b BRU = null;
   public final String TAG = "MicroMsg.FileTrafficStatsInspector";
   private boolean started;
   
-  public final void erh()
+  public final void euO()
   {
     AppMethodBeat.i(123889);
     if (this.started)
@@ -27,7 +27,7 @@ public final class b
     a.init(this.id);
     a.reset(this.id);
     a.update(this.id);
-    this.BAw = new com.tencent.e.i.b()
+    this.BRU = new com.tencent.e.i.b()
     {
       public final String getKey()
       {
@@ -42,24 +42,24 @@ public final class b
         long l2 = 0L;
         int i = b.this.type;
         long l6 = System.currentTimeMillis();
-        Object localObject = ax.aQA("trafficmonitor");
-        long l7 = ((ax)localObject).decodeLong("trafficmonitor_" + b.this.interval, 0L);
-        ((ax)localObject).encode("trafficmonitor_" + b.this.interval, l6);
+        Object localObject = ay.aRX("trafficmonitor");
+        long l7 = ((ay)localObject).decodeLong("trafficmonitor_" + b.this.interval, 0L);
+        ((ay)localObject).encode("trafficmonitor_" + b.this.interval, l6);
         long l5;
         long l1;
         long l4;
         if (i == 0)
         {
-          l3 = a.Tp(b.this.id);
-          l2 = a.To(b.this.id);
+          l3 = a.TW(b.this.id);
+          l2 = a.TV(b.this.id);
           l5 = l3 + l2;
           l1 = l5;
           l4 = 0L;
         }
         for (;;)
         {
-          long l8 = a.Tl(b.this.id);
-          long l9 = a.Tk(b.this.id);
+          long l8 = a.TS(b.this.id);
+          long l9 = a.TR(b.this.id);
           if ((l8 >= l3) && (l9 >= l2)) {
             break label299;
           }
@@ -67,7 +67,7 @@ public final class b
           return;
           if (i == 1)
           {
-            l4 = a.Tn(b.this.id) + a.Tm(b.this.id);
+            l4 = a.TU(b.this.id) + a.TT(b.this.id);
             l1 = l4;
             l5 = 0L;
           }
@@ -76,10 +76,10 @@ public final class b
             if (i != 2) {
               break;
             }
-            l3 = a.Tp(b.this.id);
-            l2 = a.To(b.this.id);
+            l3 = a.TW(b.this.id);
+            l2 = a.TV(b.this.id);
             l5 = l3 + l2;
-            l4 = a.Tn(b.this.id) + a.Tm(b.this.id);
+            l4 = a.TU(b.this.id) + a.TT(b.this.id);
             l1 = l4 + l5;
           }
         }
@@ -94,19 +94,19 @@ public final class b
           return;
         }
         b.this.currentIndex = i;
-        if (b.Bg(l7))
+        if (b.BE(l7))
         {
-          ad.i("MicroMsg.FileTrafficStatsInspector", "isDownloadAndNormal");
-          b.this.erj();
+          ae.i("MicroMsg.FileTrafficStatsInspector", "isDownloadAndNormal");
+          b.this.euQ();
           AppMethodBeat.o(123888);
           return;
         }
-        ad.i("MicroMsg.FileTrafficStatsInspector", "wxTotalTraffic : %d , interval : %d", new Object[] { Long.valueOf(l1), Long.valueOf(b.this.interval) });
+        ae.i("MicroMsg.FileTrafficStatsInspector", "wxTotalTraffic : %d , interval : %d", new Object[] { Long.valueOf(l1), Long.valueOf(b.this.interval) });
         String str;
         int j;
-        if (b.this.BAK.a((List)localObject, l1, b.this.interval, l6 - l7))
+        if (b.this.BSi.a((List)localObject, l1, b.this.interval, l6 - l7))
         {
-          Double localDouble = Double.valueOf(b.this.BAK.BAQ);
+          Double localDouble = Double.valueOf(b.this.BSi.BSo);
           str = String.valueOf(localDouble);
           j = (int)Math.round(localDouble.doubleValue());
           i = 0;
@@ -117,10 +117,10 @@ public final class b
         }
         for (;;)
         {
-          ad.i("MicroMsg.FileTrafficStatsInspector", "Traffic Execced ExceedIndex : %s", new Object[] { str });
-          com.tencent.mm.plugin.report.e.ygI.idkeyStat(877L, i, 1L, true);
-          com.tencent.mm.plugin.report.e.ygI.f(15856, new Object[] { Long.valueOf(b.this.interval), localObject.toString(), Long.valueOf(l1), Long.valueOf(l5), Long.valueOf(l4), Long.valueOf(b.this.BAK.BAP), str, Integer.valueOf(j) });
-          b.this.erj();
+          ae.i("MicroMsg.FileTrafficStatsInspector", "Traffic Execced ExceedIndex : %s", new Object[] { str });
+          com.tencent.mm.plugin.report.e.ywz.idkeyStat(877L, i, 1L, true);
+          com.tencent.mm.plugin.report.e.ywz.f(15856, new Object[] { Long.valueOf(b.this.interval), localObject.toString(), Long.valueOf(l1), Long.valueOf(l5), Long.valueOf(l4), Long.valueOf(b.this.BSi.BSn), str, Integer.valueOf(j) });
+          b.this.euQ();
           AppMethodBeat.o(123888);
           return;
           label614:
@@ -138,7 +138,7 @@ public final class b
     };
     try
     {
-      h.LTJ.s(this.BAw, this.interval);
+      h.MqF.s(this.BRU, this.interval);
       this.started = true;
       AppMethodBeat.o(123889);
       return;
@@ -147,7 +147,7 @@ public final class b
     {
       for (;;)
       {
-        ad.e("MicroMsg.FileTrafficStatsInspector", "timer.schedule got an IllegalArgumentException, %s", new Object[] { localIllegalArgumentException.getMessage() });
+        ae.e("MicroMsg.FileTrafficStatsInspector", "timer.schedule got an IllegalArgumentException, %s", new Object[] { localIllegalArgumentException.getMessage() });
       }
     }
   }

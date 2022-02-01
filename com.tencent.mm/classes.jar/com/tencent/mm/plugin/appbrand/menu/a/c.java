@@ -3,31 +3,31 @@ package com.tencent.mm.plugin.appbrand.menu.a;
 import android.content.Context;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.page.aa;
+import com.tencent.mm.plugin.appbrand.page.z;
 import java.util.ArrayList;
 import java.util.List;
 
-public final class c<T extends aa>
+public final class c<T extends z>
 {
-  public final List<b> lTz;
+  public final List<b> lYb;
   
   public c()
   {
     AppMethodBeat.i(134919);
-    this.lTz = new ArrayList();
+    this.lYb = new ArrayList();
     AppMethodBeat.o(134919);
   }
   
   public final void a(b paramb)
   {
     AppMethodBeat.i(134920);
-    this.lTz.add(paramb);
+    this.lYb.add(paramb);
     AppMethodBeat.o(134920);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.menu.a.c
  * JD-Core Version:    0.7.0.1
  */

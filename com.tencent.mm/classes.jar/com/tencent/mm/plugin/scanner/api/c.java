@@ -1,14 +1,18 @@
 package com.tencent.mm.plugin.scanner.api;
 
+import com.tencent.mm.protocal.protobuf.mc;
+import com.tencent.mm.protocal.protobuf.ml;
+
 public final class c
 {
-  public String dlu;
-  public int errCode;
-  public String errMsg;
-  public String imagePath;
-  public int jumpType;
-  public boolean success;
-  public String yjT;
+  public String imagePath = "";
+  public int mode;
+  public long msgId;
+  public long sessionId;
+  public int yzN;
+  public ml yzO;
+  public mc yzP;
+  public ScanImagePHashInfo yzQ;
 }
 
 

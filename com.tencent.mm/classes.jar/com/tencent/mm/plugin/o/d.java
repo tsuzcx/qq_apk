@@ -4,7 +4,7 @@ public abstract interface d
 {
   public abstract void Z(int paramInt1, int paramInt2, int paramInt3);
   
-  public abstract void ckp();
+  public abstract void clF();
   
   public abstract void onCompletion();
   

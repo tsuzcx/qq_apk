@@ -4,8 +4,8 @@ public final class c
 {
   public final class a
   {
-    public String dHX;
-    public int oBB;
+    public String dJb;
+    public int oId;
     public String username;
     
     public a() {}

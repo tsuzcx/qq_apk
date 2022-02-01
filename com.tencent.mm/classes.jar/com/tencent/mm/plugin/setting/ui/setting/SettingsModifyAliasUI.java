@@ -20,19 +20,18 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.g.b.a.dh;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.model.az;
-import com.tencent.mm.model.cb;
-import com.tencent.mm.model.u;
-import com.tencent.mm.plugin.setting.model.d;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.al.a;
+import com.tencent.mm.model.bb;
+import com.tencent.mm.model.cd;
+import com.tencent.mm.model.v;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.aj;
+import com.tencent.mm.storage.am.a;
 import com.tencent.mm.ui.MMWizardActivity;
 import com.tencent.mm.ui.al;
 import com.tencent.mm.ui.base.MMClearEditText;
@@ -47,66 +46,66 @@ public class SettingsModifyAliasUI
   extends MMWizardActivity
   implements f, b.a
 {
-  private ScrollView fQj;
-  private InputPanelLinearLayout fQk;
-  private TextView jrq;
-  private Button sEg;
+  private ScrollView fSp;
+  private InputPanelLinearLayout fSq;
+  private TextView juj;
+  private Button sPf;
   private p tipDialog;
-  private MMClearEditText yHA;
-  private com.tencent.mm.plugin.account.model.e yHB;
-  private d yHC;
-  private ArrayList<Integer> yHD;
-  private ArrayList<String> yHE;
+  private MMClearEditText yXK;
+  private com.tencent.mm.plugin.account.model.e yXL;
+  private com.tencent.mm.plugin.setting.model.e yXM;
+  private ArrayList<Integer> yXN;
+  private ArrayList<String> yXO;
   
-  private void uV(String paramString)
+  private void vr(String paramString)
   {
-    AppMethodBeat.i(221016);
-    if (bt.isNullOrNil(paramString))
+    AppMethodBeat.i(190391);
+    if (bu.isNullOrNil(paramString))
     {
-      this.jrq.setVisibility(8);
-      AppMethodBeat.o(221016);
+      this.juj.setVisibility(8);
+      AppMethodBeat.o(190391);
       return;
     }
-    this.jrq.setVisibility(0);
-    this.jrq.setText(paramString);
-    AppMethodBeat.o(221016);
+    this.juj.setVisibility(0);
+    this.juj.setText(paramString);
+    AppMethodBeat.o(190391);
   }
   
   public final void g(boolean paramBoolean, final int paramInt)
   {
-    AppMethodBeat.i(221014);
-    ad.i("MicroMsg.SettingsModifyAliasUI", "keyboard show %s, keyboardHeight %d", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt) });
+    AppMethodBeat.i(190389);
+    ae.i("MicroMsg.SettingsModifyAliasUI", "keyboard show %s, keyboardHeight %d", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt) });
     if (paramBoolean)
     {
-      localLayoutParams = (LinearLayout.LayoutParams)this.sEg.getLayoutParams();
+      localLayoutParams = (LinearLayout.LayoutParams)this.sPf.getLayoutParams();
       localLayoutParams.bottomMargin = getResources().getDimensionPixelSize(2131165289);
       localLayoutParams.topMargin = getResources().getDimensionPixelSize(2131165289);
-      this.sEg.setLayoutParams(localLayoutParams);
-      this.fQk.setPadding(this.fQk.getPaddingLeft(), this.fQk.getPaddingTop(), this.fQk.getPaddingRight(), paramInt);
-      paramInt = this.fQj.getHeight();
-      this.fQk.requestLayout();
-      this.fQk.post(new Runnable()
+      this.sPf.setLayoutParams(localLayoutParams);
+      this.fSq.setPadding(this.fSq.getPaddingLeft(), this.fSq.getPaddingTop(), this.fSq.getPaddingRight(), paramInt);
+      paramInt = this.fSp.getHeight();
+      this.fSq.requestLayout();
+      this.fSq.post(new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(221006);
-          ad.i("MicroMsg.SettingsModifyAliasUI", "inputContainer.height: %d, screenHeight: %d", new Object[] { Integer.valueOf(SettingsModifyAliasUI.d(SettingsModifyAliasUI.this).getHeight()), Integer.valueOf(paramInt) });
+          AppMethodBeat.i(190381);
+          ae.i("MicroMsg.SettingsModifyAliasUI", "inputContainer.height: %d, screenHeight: %d", new Object[] { Integer.valueOf(SettingsModifyAliasUI.d(SettingsModifyAliasUI.this).getHeight()), Integer.valueOf(paramInt) });
           if (SettingsModifyAliasUI.d(SettingsModifyAliasUI.this).getHeight() > paramInt) {
             SettingsModifyAliasUI.e(SettingsModifyAliasUI.this).scrollBy(0, SettingsModifyAliasUI.d(SettingsModifyAliasUI.this).getHeight() - paramInt);
           }
-          AppMethodBeat.o(221006);
+          AppMethodBeat.o(190381);
         }
       });
-      AppMethodBeat.o(221014);
+      AppMethodBeat.o(190389);
       return;
     }
-    LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)this.sEg.getLayoutParams();
+    LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)this.sPf.getLayoutParams();
     localLayoutParams.bottomMargin = getResources().getDimensionPixelSize(2131165277);
     localLayoutParams.topMargin = 0;
-    this.sEg.setLayoutParams(localLayoutParams);
-    this.fQk.setPadding(this.fQk.getPaddingLeft(), this.fQk.getPaddingTop(), this.fQk.getPaddingRight(), 0);
-    this.fQj.scrollBy(0, 0);
-    AppMethodBeat.o(221014);
+    this.sPf.setLayoutParams(localLayoutParams);
+    this.fSq.setPadding(this.fSq.getPaddingLeft(), this.fSq.getPaddingTop(), this.fSq.getPaddingRight(), 0);
+    this.fSp.scrollBy(0, 0);
+    AppMethodBeat.o(190389);
   }
   
   public int getLayoutId()
@@ -116,24 +115,24 @@ public class SettingsModifyAliasUI
   
   public void initView()
   {
-    AppMethodBeat.i(221013);
+    AppMethodBeat.i(190388);
     setMMTitle("");
     hideActionbarLine();
     setActionbarColor(getResources().getColor(2131101179));
-    this.fQk = ((InputPanelLinearLayout)findViewById(2131301024));
-    this.fQk.setExternalListener(this);
-    this.sEg = ((Button)findViewById(2131302852));
-    this.yHA = ((MMClearEditText)findViewById(2131296637));
-    this.jrq = ((TextView)findViewById(2131299523));
-    this.fQj = ((ScrollView)findViewById(2131304376));
-    this.sEg.setOnClickListener(new View.OnClickListener()
+    this.fSq = ((InputPanelLinearLayout)findViewById(2131301024));
+    this.fSq.setExternalListener(this);
+    this.sPf = ((Button)findViewById(2131302852));
+    this.yXK = ((MMClearEditText)findViewById(2131296637));
+    this.juj = ((TextView)findViewById(2131299523));
+    this.fSp = ((ScrollView)findViewById(2131304376));
+    this.sPf.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(221002);
+        AppMethodBeat.i(190377);
         b localb = new b();
         localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/setting/ui/setting/SettingsModifyAliasUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/setting/ui/setting/SettingsModifyAliasUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
         if (SettingsModifyAliasUI.a(SettingsModifyAliasUI.this, SettingsModifyAliasUI.a(SettingsModifyAliasUI.this).getText()))
         {
           SettingsModifyAliasUI.this.hideVKB();
@@ -143,30 +142,30 @@ public class SettingsModifyAliasUI
         for (;;)
         {
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/setting/ui/setting/SettingsModifyAliasUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-          AppMethodBeat.o(221002);
+          AppMethodBeat.o(190377);
           return;
           paramAnonymousView = new dh();
-          paramAnonymousView.mw(SettingsAliasUI.yGx);
-          paramAnonymousView.dPH = 4L;
-          paramAnonymousView.efl = 5L;
-          paramAnonymousView.aLk();
+          paramAnonymousView.mO(SettingsAliasUI.yWG);
+          paramAnonymousView.dQX = 4L;
+          paramAnonymousView.egM = 5L;
+          paramAnonymousView.aLH();
         }
       }
     });
-    this.yHA.requestFocus();
-    this.yHA.addTextChangedListener(new TextWatcher()
+    this.yXK.requestFocus();
+    this.yXK.addTextChangedListener(new TextWatcher()
     {
       public final void afterTextChanged(Editable paramAnonymousEditable)
       {
-        AppMethodBeat.i(221003);
-        if ((paramAnonymousEditable != null) && (!bt.isNullOrNil(paramAnonymousEditable.toString()))) {}
+        AppMethodBeat.i(190378);
+        if ((paramAnonymousEditable != null) && (!bu.isNullOrNil(paramAnonymousEditable.toString()))) {}
         for (boolean bool = true;; bool = false)
         {
           SettingsModifyAliasUI.b(SettingsModifyAliasUI.this).setEnabled(bool);
           if (!bool) {
             SettingsModifyAliasUI.a(SettingsModifyAliasUI.this, "");
           }
-          AppMethodBeat.o(221003);
+          AppMethodBeat.o(190378);
           return;
         }
       }
@@ -179,49 +178,49 @@ public class SettingsModifyAliasUI
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
-        AppMethodBeat.i(221004);
+        AppMethodBeat.i(190379);
         paramAnonymousMenuItem = new dh();
-        paramAnonymousMenuItem.mw(SettingsAliasUI.yGx);
-        paramAnonymousMenuItem.dPH = 7L;
-        paramAnonymousMenuItem.efm = 2L;
-        paramAnonymousMenuItem.aLk();
+        paramAnonymousMenuItem.mO(SettingsAliasUI.yWG);
+        paramAnonymousMenuItem.dQX = 7L;
+        paramAnonymousMenuItem.egN = 2L;
+        paramAnonymousMenuItem.aLH();
         SettingsModifyAliasUI.this.onBackPressed();
-        AppMethodBeat.o(221004);
+        AppMethodBeat.o(190379);
         return true;
       }
     });
-    AppMethodBeat.o(221013);
+    AppMethodBeat.o(190388);
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(221011);
+    AppMethodBeat.i(190386);
     super.onCreate(paramBundle);
-    this.yHD = getIntent().getIntegerArrayListExtra("key_ticket_type");
-    this.yHE = getIntent().getStringArrayListExtra("key_ticket");
-    ad.i("MicroMsg.SettingsModifyAliasUI", "ticketTypes %s, tickets %s", new Object[] { this.yHD, this.yHE });
+    this.yXN = getIntent().getIntegerArrayListExtra("key_ticket_type");
+    this.yXO = getIntent().getStringArrayListExtra("key_ticket");
+    ae.i("MicroMsg.SettingsModifyAliasUI", "ticketTypes %s, tickets %s", new Object[] { this.yXN, this.yXO });
     initView();
-    com.tencent.mm.kernel.g.aiU().a(3516, this);
-    com.tencent.mm.kernel.g.aiU().a(177, this);
-    if (com.tencent.mm.n.g.acA().getInt("EnableModAlias", 0) == 0) {
+    com.tencent.mm.kernel.g.ajj().a(3516, this);
+    com.tencent.mm.kernel.g.ajj().a(177, this);
+    if (com.tencent.mm.n.g.acL().getInt("EnableModAlias", 0) == 0) {
       finish();
     }
-    AppMethodBeat.o(221011);
+    AppMethodBeat.o(190386);
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(221012);
+    AppMethodBeat.i(190387);
     super.onDestroy();
-    com.tencent.mm.kernel.g.aiU().b(3516, this);
-    com.tencent.mm.kernel.g.aiU().b(177, this);
-    AppMethodBeat.o(221012);
+    com.tencent.mm.kernel.g.ajj().b(3516, this);
+    com.tencent.mm.kernel.g.ajj().b(177, this);
+    AppMethodBeat.o(190387);
   }
   
   public void onSceneEnd(int paramInt1, int paramInt2, final String paramString, final n paramn)
   {
-    AppMethodBeat.i(221015);
-    ad.i("MicroMsg.SettingsModifyAliasUI", "errType %d, errCode %d, errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    AppMethodBeat.i(190390);
+    ae.i("MicroMsg.SettingsModifyAliasUI", "errType %d, errCode %d, errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
     if (this.tipDialog != null) {
       this.tipDialog.dismiss();
     }
@@ -229,55 +228,55 @@ public class SettingsModifyAliasUI
     if (paramn.getType() == 3516)
     {
       localObject1 = new dh();
-      ((dh)localObject1).dPH = 4L;
-      ((dh)localObject1).mw(SettingsAliasUI.yGx);
-      if (paramn != this.yHB)
+      ((dh)localObject1).dQX = 4L;
+      ((dh)localObject1).mO(SettingsAliasUI.yWG);
+      if (paramn != this.yXL)
       {
-        ad.w("MicroMsg.SettingsModifyAliasUI", "check alias, not my scene, ignore!");
-        AppMethodBeat.o(221015);
+        ae.w("MicroMsg.SettingsModifyAliasUI", "check alias, not my scene, ignore!");
+        AppMethodBeat.o(190390);
         return;
       }
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        Object localObject2 = ((com.tencent.mm.plugin.account.model.e)paramn).ffB;
+        Object localObject2 = ((com.tencent.mm.plugin.account.model.e)paramn).fhy;
         paramString = new com.tencent.mm.ui.widget.a.g(this);
-        paramString.aft(2131495390);
-        ((TextView)paramString.kBS.findViewById(2131307244)).setText((CharSequence)localObject2);
-        paramn = (Button)paramString.kBS.findViewById(2131302852);
+        paramString.agc(2131495390);
+        ((TextView)paramString.kFh.findViewById(2131307244)).setText((CharSequence)localObject2);
+        paramn = (Button)paramString.kFh.findViewById(2131302852);
         paramn.setOnClickListener(new View.OnClickListener()
         {
           public final void onClick(View paramAnonymousView)
           {
-            AppMethodBeat.i(221007);
+            AppMethodBeat.i(190382);
             b localb = new b();
             localb.bd(paramAnonymousView);
-            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/setting/ui/setting/SettingsModifyAliasUI$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-            SettingsModifyAliasUI.c(SettingsModifyAliasUI.this, this.yHG);
+            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/setting/ui/setting/SettingsModifyAliasUI$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+            SettingsModifyAliasUI.c(SettingsModifyAliasUI.this, this.yXQ);
             paramAnonymousView = new dh();
-            paramAnonymousView.mw(SettingsAliasUI.yGx);
-            paramAnonymousView.dPH = 6L;
-            paramAnonymousView.aLk();
+            paramAnonymousView.mO(SettingsAliasUI.yWG);
+            paramAnonymousView.dQX = 6L;
+            paramAnonymousView.aLH();
             com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/setting/ui/setting/SettingsModifyAliasUI$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-            AppMethodBeat.o(221007);
+            AppMethodBeat.o(190382);
           }
         });
-        localObject2 = (CheckBoxLicenseView)paramString.kBS.findViewById(2131302427);
+        localObject2 = (CheckBoxLicenseView)paramString.kFh.findViewById(2131302427);
         ((CheckBoxLicenseView)localObject2).setTermText(getString(2131766072));
         ((CheckBoxLicenseView)localObject2).setCheckStateChangeListener(new CompoundButton.OnCheckedChangeListener()
         {
           public final void onCheckedChanged(CompoundButton paramAnonymousCompoundButton, boolean paramAnonymousBoolean)
           {
-            AppMethodBeat.i(221008);
+            AppMethodBeat.i(190383);
             paramAnonymousCompoundButton = new dh();
-            paramAnonymousCompoundButton.mw(SettingsAliasUI.yGx);
-            paramAnonymousCompoundButton.dPH = 5L;
-            paramAnonymousCompoundButton.aLk();
+            paramAnonymousCompoundButton.mO(SettingsAliasUI.yWG);
+            paramAnonymousCompoundButton.dQX = 5L;
+            paramAnonymousCompoundButton.aLH();
             paramn.setEnabled(paramAnonymousBoolean);
-            AppMethodBeat.o(221008);
+            AppMethodBeat.o(190383);
           }
         });
         ((CheckBoxLicenseView)localObject2).setLicenseClickListener(new SettingsModifyAliasUI.8(this));
-        paramn = (ImageView)paramString.kBS.findViewById(2131307215);
+        paramn = (ImageView)paramString.kFh.findViewById(2131307215);
         if (al.isDarkMode()) {
           paramn.setImageResource(2131234823);
         }
@@ -285,91 +284,91 @@ public class SettingsModifyAliasUI
         {
           public final void onClick(View paramAnonymousView)
           {
-            AppMethodBeat.i(221010);
+            AppMethodBeat.i(190385);
             b localb = new b();
             localb.bd(paramAnonymousView);
-            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/setting/ui/setting/SettingsModifyAliasUI$9", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/setting/ui/setting/SettingsModifyAliasUI$9", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
             paramAnonymousView = new dh();
-            paramAnonymousView.mw(SettingsAliasUI.yGx);
-            paramAnonymousView.dPH = 7L;
-            paramAnonymousView.efm = 3L;
-            paramAnonymousView.aLk();
-            paramString.bpT();
+            paramAnonymousView.mO(SettingsAliasUI.yWG);
+            paramAnonymousView.dQX = 7L;
+            paramAnonymousView.egN = 3L;
+            paramAnonymousView.aLH();
+            paramString.bqD();
             com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/setting/ui/setting/SettingsModifyAliasUI$9", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-            AppMethodBeat.o(221010);
+            AppMethodBeat.o(190385);
           }
         });
-        paramString.cMW();
+        paramString.cPF();
       }
       for (;;)
       {
-        ((dh)localObject1).aLk();
-        AppMethodBeat.o(221015);
+        ((dh)localObject1).aLH();
+        AppMethodBeat.o(190390);
         return;
-        ((dh)localObject1).efl = 6L;
-        if (!bt.isNullOrNil(paramString))
+        ((dh)localObject1).egM = 6L;
+        if (!bu.isNullOrNil(paramString))
         {
-          paramn = com.tencent.mm.h.a.uz(paramString);
+          paramn = com.tencent.mm.h.a.uU(paramString);
           if (paramn != null) {
-            uV(paramn.desc);
+            vr(paramn.desc);
           } else {
-            uV(paramString);
+            vr(paramString);
           }
         }
         else
         {
-          uV(getString(2131755733));
+          vr(getString(2131755733));
         }
       }
     }
     if (paramn.getType() == 177)
     {
-      if (paramn != this.yHC)
+      if (paramn != this.yXM)
       {
-        ad.w("MicroMsg.SettingsModifyAliasUI", "general set, not my scene, ignore!");
-        AppMethodBeat.o(221015);
+        ae.w("MicroMsg.SettingsModifyAliasUI", "general set, not my scene, ignore!");
+        AppMethodBeat.o(190390);
         return;
       }
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        h.cl(this, getString(2131756261));
-        paramString = this.yHC.yCN;
-        paramn = (String)com.tencent.mm.kernel.g.ajC().ajl().get(42, null);
-        localObject1 = (String)com.tencent.mm.kernel.g.ajC().ajl().get(al.a.IDt, null);
-        ad.i("MicroMsg.SettingsModifyAliasUI", "newAlias %s, oldAlias %s, lastLogin %s", new Object[] { paramString, paramn, localObject1 });
-        com.tencent.mm.kernel.g.ajC().ajl().set(42, paramString);
-        if ((bt.isNullOrNil(paramn)) || (paramn.equals(localObject1)))
+        h.cm(this, getString(2131756261));
+        paramString = this.yXM.ySS;
+        paramn = (String)com.tencent.mm.kernel.g.ajR().ajA().get(42, null);
+        localObject1 = (String)com.tencent.mm.kernel.g.ajR().ajA().get(am.a.IXT, null);
+        ae.i("MicroMsg.SettingsModifyAliasUI", "newAlias %s, oldAlias %s, lastLogin %s", new Object[] { paramString, paramn, localObject1 });
+        com.tencent.mm.kernel.g.ajR().ajA().set(42, paramString);
+        if ((bu.isNullOrNil(paramn)) || (paramn.equals(localObject1)))
         {
-          com.tencent.mm.kernel.g.ajC().ajl().set(al.a.IDt, paramString);
-          cb.hIi.l(u.aAm(), "login_user_name", paramString);
-          az.hFS.aM("login_user_name", paramString);
+          com.tencent.mm.kernel.g.ajR().ajA().set(am.a.IXT, paramString);
+          cd.hLa.l(v.aAC(), "login_user_name", paramString);
+          bb.hIK.aM("login_user_name", paramString);
         }
-        abK(-1);
-        AppMethodBeat.o(221015);
+        acs(-1);
+        AppMethodBeat.o(190390);
         return;
       }
       if ((paramInt2 == -7) || (paramInt2 == -10))
       {
         h.l(getContext(), 2131762274, 2131761323);
-        AppMethodBeat.o(221015);
+        AppMethodBeat.o(190390);
         return;
       }
-      if (!bt.isNullOrNil(paramString))
+      if (!bu.isNullOrNil(paramString))
       {
-        paramn = com.tencent.mm.h.a.uz(paramString);
+        paramn = com.tencent.mm.h.a.uU(paramString);
         if (paramn != null)
         {
           paramn.a(this, null);
-          AppMethodBeat.o(221015);
+          AppMethodBeat.o(190390);
           return;
         }
         h.c(this, paramString, getString(2131761323), true);
-        AppMethodBeat.o(221015);
+        AppMethodBeat.o(190390);
         return;
       }
       h.l(getContext(), 2131755733, 2131761323);
     }
-    AppMethodBeat.o(221015);
+    AppMethodBeat.o(190390);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)

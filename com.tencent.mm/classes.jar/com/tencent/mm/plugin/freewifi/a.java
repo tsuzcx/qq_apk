@@ -7,8 +7,8 @@ import android.content.Intent;
 import android.net.NetworkInfo;
 import android.net.wifi.WifiManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
@@ -18,28 +18,28 @@ public final class a
   Lock aIY;
   Activity activity;
   private BroadcastReceiver broadcastReceiver;
-  private long cAH;
-  Condition cPA;
+  private long cBo;
+  Condition cQk;
   private WifiManager cde;
   String ssid;
-  boolean tkE;
-  boolean tkF;
+  boolean tvw;
+  boolean tvx;
   
   public a(String paramString, Activity paramActivity)
   {
     AppMethodBeat.i(24634);
-    this.tkE = false;
-    this.tkF = false;
+    this.tvw = false;
+    this.tvx = false;
     this.activity = paramActivity;
-    this.cAH = 15000L;
+    this.cBo = 15000L;
     this.ssid = paramString;
     this.aIY = new ReentrantLock();
-    this.cPA = this.aIY.newCondition();
-    this.cde = ((WifiManager)aj.getContext().getSystemService("wifi"));
+    this.cQk = this.aIY.newCondition();
+    this.cde = ((WifiManager)ak.getContext().getSystemService("wifi"));
     AppMethodBeat.o(24634);
   }
   
-  private void cQG()
+  private void cTl()
   {
     AppMethodBeat.i(24636);
     try
@@ -66,7 +66,7 @@ public final class a
     //   11: aload_1
     //   12: invokespecial 103	com/tencent/mm/plugin/freewifi/a$1:<init>	(Lcom/tencent/mm/plugin/freewifi/a;Lcom/tencent/mm/plugin/freewifi/a$a;)V
     //   15: astore_1
-    //   16: invokestatic 70	com/tencent/mm/sdk/platformtools/aj:getContext	()Landroid/content/Context;
+    //   16: invokestatic 70	com/tencent/mm/sdk/platformtools/ak:getContext	()Landroid/content/Context;
     //   19: ldc 105
     //   21: invokevirtual 78	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
     //   24: checkcast 107	android/net/ConnectivityManager
@@ -76,7 +76,7 @@ public final class a
     //   34: ifeq +29 -> 63
     //   37: aload_0
     //   38: getfield 51	com/tencent/mm/plugin/freewifi/a:ssid	Ljava/lang/String;
-    //   41: invokestatic 123	com/tencent/mm/plugin/freewifi/model/d:cRr	()Ljava/lang/String;
+    //   41: invokestatic 123	com/tencent/mm/plugin/freewifi/model/d:cTW	()Ljava/lang/String;
     //   44: invokevirtual 129	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   47: ifeq +16 -> 63
     //   50: aload_1
@@ -132,21 +132,21 @@ public final class a
     //   165: aload_0
     //   166: getfield 45	com/tencent/mm/plugin/freewifi/a:activity	Landroid/app/Activity;
     //   169: invokespecial 182	com/tencent/mm/plugin/freewifi/e:<init>	(Landroid/app/Activity;)V
-    //   172: invokevirtual 186	com/tencent/mm/plugin/freewifi/e:cQI	()I
+    //   172: invokevirtual 186	com/tencent/mm/plugin/freewifi/e:cTn	()I
     //   175: istore_2
     //   176: ldc 188
     //   178: ldc 190
     //   180: iload_2
     //   181: invokestatic 194	java/lang/String:valueOf	(I)Ljava/lang/String;
     //   184: invokevirtual 198	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   187: invokestatic 203	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   187: invokestatic 203	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   190: iload_2
     //   191: ifeq +30 -> 221
     //   194: aload_1
     //   195: iload_2
     //   196: invokeinterface 206 2 0
     //   201: aload_0
-    //   202: invokespecial 208	com/tencent/mm/plugin/freewifi/a:cQG	()V
+    //   202: invokespecial 208	com/tencent/mm/plugin/freewifi/a:cTl	()V
     //   205: aload_0
     //   206: getfield 56	com/tencent/mm/plugin/freewifi/a:aIY	Ljava/util/concurrent/locks/Lock;
     //   209: invokeinterface 211 1 0
@@ -155,17 +155,17 @@ public final class a
     //   220: return
     //   221: aload_0
     //   222: getfield 51	com/tencent/mm/plugin/freewifi/a:ssid	Ljava/lang/String;
-    //   225: invokestatic 215	com/tencent/mm/plugin/freewifi/model/d:ajR	(Ljava/lang/String;)I
+    //   225: invokestatic 215	com/tencent/mm/plugin/freewifi/model/d:akP	(Ljava/lang/String;)I
     //   228: istore_2
     //   229: iload_2
     //   230: ifeq +34 -> 264
     //   233: aload_0
-    //   234: invokespecial 208	com/tencent/mm/plugin/freewifi/a:cQG	()V
+    //   234: invokespecial 208	com/tencent/mm/plugin/freewifi/a:cTl	()V
     //   237: aload_1
     //   238: iload_2
     //   239: invokeinterface 206 2 0
     //   244: aload_0
-    //   245: invokespecial 208	com/tencent/mm/plugin/freewifi/a:cQG	()V
+    //   245: invokespecial 208	com/tencent/mm/plugin/freewifi/a:cTl	()V
     //   248: aload_0
     //   249: getfield 56	com/tencent/mm/plugin/freewifi/a:aIY	Ljava/util/concurrent/locks/Lock;
     //   252: invokeinterface 211 1 0
@@ -175,19 +175,19 @@ public final class a
     //   264: iconst_0
     //   265: istore_3
     //   266: aload_0
-    //   267: getfield 41	com/tencent/mm/plugin/freewifi/a:tkE	Z
+    //   267: getfield 41	com/tencent/mm/plugin/freewifi/a:tvw	Z
     //   270: ifeq +13 -> 283
     //   273: iload_3
     //   274: istore 4
     //   276: aload_0
-    //   277: getfield 43	com/tencent/mm/plugin/freewifi/a:tkF	Z
+    //   277: getfield 43	com/tencent/mm/plugin/freewifi/a:tvx	Z
     //   280: ifne +195 -> 475
     //   283: invokestatic 221	java/lang/System:currentTimeMillis	()J
     //   286: lstore 5
     //   288: aload_0
-    //   289: getfield 64	com/tencent/mm/plugin/freewifi/a:cPA	Ljava/util/concurrent/locks/Condition;
+    //   289: getfield 64	com/tencent/mm/plugin/freewifi/a:cQk	Ljava/util/concurrent/locks/Condition;
     //   292: aload_0
-    //   293: getfield 49	com/tencent/mm/plugin/freewifi/a:cAH	J
+    //   293: getfield 49	com/tencent/mm/plugin/freewifi/a:cBo	J
     //   296: getstatic 227	java/util/concurrent/TimeUnit:MILLISECONDS	Ljava/util/concurrent/TimeUnit;
     //   299: invokeinterface 233 4 0
     //   304: istore_3
@@ -201,10 +201,10 @@ public final class a
     //   318: lstore 5
     //   320: aload_0
     //   321: aload_0
-    //   322: getfield 49	com/tencent/mm/plugin/freewifi/a:cAH	J
+    //   322: getfield 49	com/tencent/mm/plugin/freewifi/a:cBo	J
     //   325: lload 5
     //   327: lsub
-    //   328: putfield 49	com/tencent/mm/plugin/freewifi/a:cAH	J
+    //   328: putfield 49	com/tencent/mm/plugin/freewifi/a:cBo	J
     //   331: ldc 188
     //   333: new 235	java/lang/StringBuilder
     //   336: dup
@@ -215,21 +215,21 @@ public final class a
     //   347: ldc 244
     //   349: invokevirtual 247	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   352: aload_0
-    //   353: getfield 49	com/tencent/mm/plugin/freewifi/a:cAH	J
+    //   353: getfield 49	com/tencent/mm/plugin/freewifi/a:cBo	J
     //   356: invokevirtual 242	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   359: invokevirtual 250	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   362: invokestatic 203	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   362: invokestatic 203	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   365: aload_0
-    //   366: getfield 49	com/tencent/mm/plugin/freewifi/a:cAH	J
+    //   366: getfield 49	com/tencent/mm/plugin/freewifi/a:cBo	J
     //   369: lconst_0
     //   370: lcmp
     //   371: ifle +96 -> 467
     //   374: aload_0
-    //   375: getfield 49	com/tencent/mm/plugin/freewifi/a:cAH	J
+    //   375: getfield 49	com/tencent/mm/plugin/freewifi/a:cBo	J
     //   378: lstore 5
     //   380: aload_0
     //   381: lload 5
-    //   383: putfield 49	com/tencent/mm/plugin/freewifi/a:cAH	J
+    //   383: putfield 49	com/tencent/mm/plugin/freewifi/a:cBo	J
     //   386: goto -120 -> 266
     //   389: astore 7
     //   391: ldc 188
@@ -241,14 +241,14 @@ public final class a
     //   401: aload_0
     //   402: getfield 45	com/tencent/mm/plugin/freewifi/a:activity	Landroid/app/Activity;
     //   405: invokevirtual 256	android/app/Activity:getIntent	()Landroid/content/Intent;
-    //   408: invokestatic 262	com/tencent/mm/plugin/freewifi/m:ao	(Landroid/content/Intent;)Ljava/lang/String;
+    //   408: invokestatic 262	com/tencent/mm/plugin/freewifi/m:ap	(Landroid/content/Intent;)Ljava/lang/String;
     //   411: aastore
     //   412: dup
     //   413: iconst_1
     //   414: aload_0
     //   415: getfield 45	com/tencent/mm/plugin/freewifi/a:activity	Landroid/app/Activity;
     //   418: invokevirtual 256	android/app/Activity:getIntent	()Landroid/content/Intent;
-    //   421: invokestatic 266	com/tencent/mm/plugin/freewifi/m:ap	(Landroid/content/Intent;)I
+    //   421: invokestatic 266	com/tencent/mm/plugin/freewifi/m:aq	(Landroid/content/Intent;)I
     //   424: invokestatic 271	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   427: aastore
     //   428: dup
@@ -256,12 +256,12 @@ public final class a
     //   430: aload 7
     //   432: invokevirtual 274	java/lang/InterruptedException:getMessage	()Ljava/lang/String;
     //   435: aastore
-    //   436: invokestatic 277	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   436: invokestatic 277	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   439: aload_1
     //   440: bipush 239
     //   442: invokeinterface 206 2 0
     //   447: aload_0
-    //   448: invokespecial 208	com/tencent/mm/plugin/freewifi/a:cQG	()V
+    //   448: invokespecial 208	com/tencent/mm/plugin/freewifi/a:cTl	()V
     //   451: aload_0
     //   452: getfield 56	com/tencent/mm/plugin/freewifi/a:aIY	Ljava/util/concurrent/locks/Lock;
     //   455: invokeinterface 211 1 0
@@ -277,7 +277,7 @@ public final class a
     //   481: bipush 240
     //   483: invokeinterface 206 2 0
     //   488: aload_0
-    //   489: invokespecial 208	com/tencent/mm/plugin/freewifi/a:cQG	()V
+    //   489: invokespecial 208	com/tencent/mm/plugin/freewifi/a:cTl	()V
     //   492: aload_0
     //   493: getfield 56	com/tencent/mm/plugin/freewifi/a:aIY	Ljava/util/concurrent/locks/Lock;
     //   496: invokeinterface 211 1 0
@@ -289,7 +289,7 @@ public final class a
     //   514: goto -26 -> 488
     //   517: astore_1
     //   518: aload_0
-    //   519: invokespecial 208	com/tencent/mm/plugin/freewifi/a:cQG	()V
+    //   519: invokespecial 208	com/tencent/mm/plugin/freewifi/a:cTl	()V
     //   522: aload_0
     //   523: getfield 56	com/tencent/mm/plugin/freewifi/a:aIY	Ljava/util/concurrent/locks/Lock;
     //   526: invokeinterface 211 1 0
@@ -337,7 +337,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.freewifi.a
  * JD-Core Version:    0.7.0.1
  */

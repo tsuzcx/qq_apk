@@ -208,7 +208,7 @@ public final class v
   public final void c(TextureView paramTextureView)
   {
     Surface localSurface = null;
-    AppMethodBeat.i(217116);
+    AppMethodBeat.i(211643);
     tx();
     this.bef = paramTextureView;
     if (paramTextureView == null) {}
@@ -216,7 +216,7 @@ public final class v
     for (;;)
     {
       a(localSurface, true);
-      AppMethodBeat.o(217116);
+      AppMethodBeat.o(211643);
       return;
       paramTextureView.getSurfaceTextureListener();
       paramTextureView.setSurfaceTextureListener(this.bdU);

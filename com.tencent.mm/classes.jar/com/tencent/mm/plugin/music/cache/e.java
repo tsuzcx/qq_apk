@@ -1,56 +1,56 @@
 package com.tencent.mm.plugin.music.cache;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.az.i;
+import com.tencent.mm.ay.i;
 import com.tencent.mm.plugin.music.c.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public final class e
 {
   public static void a(String paramString, a parama)
   {
     AppMethodBeat.i(137170);
-    if (dsB())
+    if (dvQ())
     {
       ((c)com.tencent.mm.plugin.music.f.c.b.aQ(c.class)).a(paramString, parama);
       AppMethodBeat.o(137170);
       return;
     }
-    ad.e("MicroMsg.Music.MusicDataStorageImpl", "IMusicDataStorage service not exist");
+    ae.e("MicroMsg.Music.MusicDataStorageImpl", "IMusicDataStorage service not exist");
     AppMethodBeat.o(137170);
   }
   
-  public static i ash(String paramString)
+  public static i atv(String paramString)
   {
     AppMethodBeat.i(137166);
-    if (dsB())
+    if (dvQ())
     {
-      paramString = ((c)com.tencent.mm.plugin.music.f.c.b.aQ(c.class)).ash(paramString);
+      paramString = ((c)com.tencent.mm.plugin.music.f.c.b.aQ(c.class)).atv(paramString);
       AppMethodBeat.o(137166);
       return paramString;
     }
-    ad.e("MicroMsg.Music.MusicDataStorageImpl", "IMusicDataStorage service not exist");
+    ae.e("MicroMsg.Music.MusicDataStorageImpl", "IMusicDataStorage service not exist");
     AppMethodBeat.o(137166);
     return null;
   }
   
-  public static a asl(String paramString)
+  public static a atz(String paramString)
   {
     AppMethodBeat.i(137169);
-    if (dsB())
+    if (dvQ())
     {
-      paramString = ((c)com.tencent.mm.plugin.music.f.c.b.aQ(c.class)).asl(paramString);
+      paramString = ((c)com.tencent.mm.plugin.music.f.c.b.aQ(c.class)).atz(paramString);
       AppMethodBeat.o(137169);
       return paramString;
     }
-    ad.e("MicroMsg.Music.MusicDataStorageImpl", "IMusicDataStorage service not exist");
+    ae.e("MicroMsg.Music.MusicDataStorageImpl", "IMusicDataStorage service not exist");
     paramString = new a();
     AppMethodBeat.o(137169);
     return paramString;
   }
   
-  public static boolean dsB()
+  public static boolean dvQ()
   {
     AppMethodBeat.i(137164);
     if (com.tencent.mm.plugin.music.f.c.b.aQ(c.class) != null)
@@ -62,11 +62,11 @@ public final class e
     return false;
   }
   
-  public static void ev(String paramString, int paramInt)
+  public static void eD(String paramString, int paramInt)
   {
     AppMethodBeat.i(137168);
-    if (dsB()) {
-      ((c)com.tencent.mm.plugin.music.f.c.b.aQ(c.class)).ev(paramString, paramInt);
+    if (dvQ()) {
+      ((c)com.tencent.mm.plugin.music.f.c.b.aQ(c.class)).eD(paramString, paramInt);
     }
     AppMethodBeat.o(137168);
   }
@@ -74,17 +74,17 @@ public final class e
   public static String getAccPath()
   {
     AppMethodBeat.i(137165);
-    if (dsB())
+    if (dvQ())
     {
       str = ((c)com.tencent.mm.plugin.music.f.c.b.aQ(c.class)).getAccPath();
-      if (!bt.isNullOrNil(str))
+      if (!bu.isNullOrNil(str))
       {
         AppMethodBeat.o(137165);
         return str;
       }
     }
-    ad.e("MicroMsg.Music.MusicDataStorageImpl", "IMusicDataStorage service not exist");
-    String str = com.tencent.mm.loader.j.b.arU();
+    ae.e("MicroMsg.Music.MusicDataStorageImpl", "IMusicDataStorage service not exist");
+    String str = com.tencent.mm.loader.j.b.asj();
     AppMethodBeat.o(137165);
     return str;
   }
@@ -92,13 +92,13 @@ public final class e
   public static void t(String paramString, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(137167);
-    if (dsB())
+    if (dvQ())
     {
       ((c)com.tencent.mm.plugin.music.f.c.b.aQ(c.class)).t(paramString, paramArrayOfByte);
       AppMethodBeat.o(137167);
       return;
     }
-    ad.e("MicroMsg.Music.MusicDataStorageImpl", "IMusicDataStorage service not exist");
+    ae.e("MicroMsg.Music.MusicDataStorageImpl", "IMusicDataStorage service not exist");
     AppMethodBeat.o(137167);
   }
 }

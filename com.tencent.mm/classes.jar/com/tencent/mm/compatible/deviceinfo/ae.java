@@ -3,72 +3,71 @@ package com.tencent.mm.compatible.deviceinfo;
 import android.content.Context;
 import android.os.Build;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.ct;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.g.a.cu;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.Map;
 
 public final class ae
 {
-  public static o gcD;
-  public static c gcE;
-  public static b gcF;
-  public static aa gcG;
-  public static ag gcH;
-  public static t gcI;
-  public static y gcJ;
-  public static ad gcK;
-  public static x gcL;
-  public static x gcM;
-  public static a gcN;
-  private static int gcO;
-  public static k gcP;
-  public static p gcQ;
+  public static o geL;
+  public static c geM;
+  public static b geN;
+  public static aa geO;
+  public static ag geP;
+  public static t geQ;
+  public static y geR;
+  public static ad geS;
+  public static x geT;
+  public static x geU;
+  public static a geV;
+  private static int geW;
+  public static k geX;
+  public static p geY;
   
   static
   {
     AppMethodBeat.i(155825);
-    gcD = new o();
-    gcE = new c();
-    gcF = new b();
-    gcG = new aa();
-    gcH = new ag();
-    gcI = new t();
-    gcJ = new y();
-    gcK = new ad();
-    gcL = new x();
-    gcM = new x();
-    gcN = new a();
-    gcO = -1;
-    gcP = new k();
-    gcQ = new p();
+    geL = new o();
+    geM = new c();
+    geN = new b();
+    geO = new aa();
+    geP = new ag();
+    geQ = new t();
+    geR = new y();
+    geS = new ad();
+    geT = new x();
+    geU = new x();
+    geV = new a();
+    geW = -1;
+    geX = new k();
+    geY = new p();
     AppMethodBeat.o(155825);
   }
   
-  public static String bX(Context paramContext)
+  public static String bZ(Context paramContext)
   {
     AppMethodBeat.i(155824);
     try
     {
-      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.SrvDeviceInfo", "lm: getManufacturer CurrentLanguage is %s", new Object[] { ac.iM(paramContext) });
-      if ((gcJ == null) || (gcJ.gbV == null) || (gcJ.gbV.size() == 0))
+      com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.SrvDeviceInfo", "lm: getManufacturer CurrentLanguage is %s", new Object[] { com.tencent.mm.sdk.platformtools.ad.iR(paramContext) });
+      if ((geR == null) || (geR.ged == null) || (geR.ged.size() == 0))
       {
-        com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.SrvDeviceInfo", "lm: getManufacturer return is %s", new Object[] { Build.MANUFACTURER });
+        com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.SrvDeviceInfo", "lm: getManufacturer return is %s", new Object[] { Build.MANUFACTURER });
         paramContext = Build.MANUFACTURER;
         AppMethodBeat.o(155824);
         return paramContext;
       }
-      paramContext = (String)gcJ.gbV.get(".manufacturerName." + ac.iM(paramContext));
-      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.SrvDeviceInfo", "lm: getManufacturer is %s", new Object[] { paramContext });
-      boolean bool = bt.isNullOrNil(paramContext);
+      paramContext = (String)geR.ged.get(".manufacturerName." + com.tencent.mm.sdk.platformtools.ad.iR(paramContext));
+      com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.SrvDeviceInfo", "lm: getManufacturer is %s", new Object[] { paramContext });
+      boolean bool = bu.isNullOrNil(paramContext);
       if (!bool)
       {
         AppMethodBeat.o(155824);
         return paramContext;
       }
-      paramContext = (String)gcJ.gbV.get(".manufacturerName.en");
-      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.SrvDeviceInfo", "lm: getManufacturer is %s", new Object[] { paramContext });
-      bool = bt.isNullOrNil(paramContext);
+      paramContext = (String)geR.ged.get(".manufacturerName.en");
+      com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.SrvDeviceInfo", "lm: getManufacturer is %s", new Object[] { paramContext });
+      bool = bu.isNullOrNil(paramContext);
       if (!bool)
       {
         AppMethodBeat.o(155824);
@@ -86,51 +85,51 @@ public final class ae
     return paramContext;
   }
   
-  public static void vi(String paramString)
+  public static void vE(String paramString)
   {
     AppMethodBeat.i(155823);
-    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.SrvDeviceInfo", "update deviceInfo %s", new Object[] { paramString });
+    com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.SrvDeviceInfo", "update deviceInfo %s", new Object[] { paramString });
     if ((paramString == null) || (paramString.length() <= 0))
     {
       AppMethodBeat.o(155823);
       return;
     }
-    if (paramString.hashCode() == gcO)
+    if (paramString.hashCode() == geW)
     {
       AppMethodBeat.o(155823);
       return;
     }
-    gcO = paramString.hashCode();
-    gcD.reset();
-    gcE.reset();
-    gcF.reset();
-    gcP.reset();
-    gcG.reset();
-    gcH.reset();
-    Object localObject = gcI;
-    ((t)localObject).gaY = 0;
-    ((t)localObject).gaZ = 0;
-    localObject = gcJ;
-    ((y)localObject).gbU = "";
-    ((y)localObject).gbV = null;
-    localObject = gcK;
-    ((ad)localObject).dKx = false;
-    ((ad)localObject).gcB = 0;
-    ((ad)localObject).gcC = false;
-    gcL.reset();
-    gcM.reset();
-    localObject = gcN;
-    ((a)localObject).fWf = false;
-    ((a)localObject).fWg = "";
+    geW = paramString.hashCode();
+    geL.reset();
+    geM.reset();
+    geN.reset();
+    geX.reset();
+    geO.reset();
+    geP.reset();
+    Object localObject = geQ;
+    ((t)localObject).gdg = 0;
+    ((t)localObject).gdh = 0;
+    localObject = geR;
+    ((y)localObject).gec = "";
+    ((y)localObject).ged = null;
+    localObject = geS;
+    ((ad)localObject).dLM = false;
+    ((ad)localObject).geJ = 0;
+    ((ad)localObject).geK = false;
+    geT.reset();
+    geU.reset();
+    localObject = geV;
+    ((a)localObject).fYl = false;
+    ((a)localObject).fYm = "";
     new s();
-    if (!s.a(paramString, gcD, gcE, gcF, gcP, gcG, gcH, gcI, gcJ, gcK, gcL, gcN, gcM))
+    if (!s.a(paramString, geL, geM, geN, geX, geO, geP, geQ, geR, geS, geT, geV, geU))
     {
       AppMethodBeat.o(155823);
       return;
     }
-    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.SrvDeviceInfo", "steve: mCameraInfo.mSupportVoipBeauty = " + gcE.fYJ + ", mVoipBeautyWhiteCfg=" + gcE.fYK);
-    paramString = new ct();
-    com.tencent.mm.sdk.b.a.IbL.l(paramString);
+    com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.SrvDeviceInfo", "steve: mCameraInfo.mSupportVoipBeauty = " + geM.gaQ + ", mVoipBeautyWhiteCfg=" + geM.gaR);
+    paramString = new cu();
+    com.tencent.mm.sdk.b.a.IvT.l(paramString);
     AppMethodBeat.o(155823);
   }
 }

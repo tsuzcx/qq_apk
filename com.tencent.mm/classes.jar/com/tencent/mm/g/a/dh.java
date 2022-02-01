@@ -1,10 +1,13 @@
 package com.tencent.mm.g.a;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class dh
   extends b
 {
+  public a dph;
+  
   public dh()
   {
     this((byte)0);
@@ -12,8 +15,16 @@ public final class dh
   
   private dh(byte paramByte)
   {
-    this.IbR = false;
+    AppMethodBeat.i(104413);
+    this.dph = new a();
+    this.IvZ = false;
     this.callback = null;
+    AppMethodBeat.o(104413);
+  }
+  
+  public static final class a
+  {
+    public boolean enable;
   }
 }
 

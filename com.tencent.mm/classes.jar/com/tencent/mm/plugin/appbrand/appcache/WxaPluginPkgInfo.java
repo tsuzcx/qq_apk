@@ -4,7 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.vfs.i;
+import com.tencent.mm.vfs.o;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -80,9 +80,9 @@ public class WxaPluginPkgInfo
   public long lastModified()
   {
     AppMethodBeat.i(178562);
-    if (i.fv(this.pkgPath))
+    if (o.fB(this.pkgPath))
     {
-      long l = i.aYp(this.pkgPath);
+      long l = o.aZS(this.pkgPath);
       AppMethodBeat.o(178562);
       return l;
     }

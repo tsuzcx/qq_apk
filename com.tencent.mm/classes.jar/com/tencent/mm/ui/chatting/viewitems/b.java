@@ -6,10 +6,10 @@ import com.tencent.mm.pluginsdk.ui.applet.CdnImageView;
 
 final class b
 {
-  LinearLayout JXT;
-  CdnImageView JXU;
-  TextView JXV;
-  TextView JXW;
+  LinearLayout Kum;
+  CdnImageView Kun;
+  TextView Kuo;
+  TextView Kup;
 }
 
 

@@ -26,22 +26,22 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.g.a.i;
 import com.tencent.mm.g.c.aw;
-import com.tencent.mm.plugin.nearby.a.c;
+import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.pluginsdk.m;
 import com.tencent.mm.pluginsdk.ui.a.b;
 import com.tencent.mm.pluginsdk.ui.span.k;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.c;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.bp;
-import com.tencent.mm.storage.br;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.bq;
 import com.tencent.mm.storage.bs;
-import com.tencent.mm.storage.bu.d;
+import com.tencent.mm.storage.bt;
+import com.tencent.mm.storage.bv.d;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.MMSlideDelView;
 import com.tencent.mm.ui.base.MMSlideDelView.c;
@@ -57,36 +57,36 @@ public class NearbySayHiListUI
   extends MMActivity
   implements f
 {
-  private ListView jci;
-  private View jfs;
+  private ListView jfb;
+  private View jil;
   private int limit;
   private int maxCount;
-  private n.e nUI;
+  private n.e oao;
   private p tipDialog;
-  private c woz;
-  private int wpA;
-  private boolean wpB;
-  private long wpC;
-  private bs wpx;
-  private a wpy;
-  private int wpz;
+  private com.tencent.mm.plugin.nearby.a.c wEi;
+  private bt wFg;
+  private a wFh;
+  private int wFi;
+  private int wFj;
+  private boolean wFk;
+  private long wFl;
   
   public NearbySayHiListUI()
   {
     AppMethodBeat.i(89912);
-    this.wpx = null;
+    this.wFg = null;
     this.limit = 0;
-    this.wpz = 0;
-    this.wpA = 0;
+    this.wFi = 0;
+    this.wFj = 0;
     this.maxCount = 0;
     this.tipDialog = null;
-    this.nUI = new n.e()
+    this.oao = new n.e()
     {
       public final void onMMMenuItemSelected(MenuItem paramAnonymousMenuItem, int paramAnonymousInt)
       {
         AppMethodBeat.i(89894);
-        com.tencent.mm.kernel.g.ajA().aiF();
-        ((com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).dlH().apP(String.valueOf(NearbySayHiListUI.h(NearbySayHiListUI.this)));
+        com.tencent.mm.kernel.g.ajP().aiU();
+        ((com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).doG().aqU(String.valueOf(NearbySayHiListUI.h(NearbySayHiListUI.this)));
         NearbySayHiListUI.b(NearbySayHiListUI.this).a(null, null);
         if (NearbySayHiListUI.c(NearbySayHiListUI.this) > 0) {
           NearbySayHiListUI.i(NearbySayHiListUI.this);
@@ -106,8 +106,8 @@ public class NearbySayHiListUI
   public void initView()
   {
     AppMethodBeat.i(89918);
-    this.jci = ((ListView)findViewById(2131304293));
-    if (!com.tencent.mm.bq.a.eYD())
+    this.jfb = ((ListView)findViewById(2131304293));
+    if (!com.tencent.mm.bp.a.fcr())
     {
       localObject = getLayoutInflater().inflate(2131495281, null);
       ((View)localObject).setOnClickListener(new View.OnClickListener()
@@ -115,27 +115,27 @@ public class NearbySayHiListUI
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(89892);
-          com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+          b localb = new b();
           localb.bd(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/nearby/ui/NearbySayHiListUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/nearby/ui/NearbySayHiListUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
           NearbySayHiListUI.a(NearbySayHiListUI.this, NearbySayHiListUI.a(NearbySayHiListUI.this) + 8);
-          ad.d("MicroMsg.SayHiListUI", "dkfooter more btn:" + NearbySayHiListUI.a(NearbySayHiListUI.this));
+          ae.d("MicroMsg.SayHiListUI", "dkfooter more btn:" + NearbySayHiListUI.a(NearbySayHiListUI.this));
           paramAnonymousView = NearbySayHiListUI.b(NearbySayHiListUI.this);
           int i = NearbySayHiListUI.a(NearbySayHiListUI.this);
-          paramAnonymousView.det();
+          paramAnonymousView.dhl();
           paramAnonymousView.limit = i;
-          paramAnonymousView.Zu();
+          paramAnonymousView.ZD();
           if (NearbySayHiListUI.c(NearbySayHiListUI.this) <= NearbySayHiListUI.a(NearbySayHiListUI.this))
           {
-            NearbySayHiListUI.d(NearbySayHiListUI.this).removeFooterView(this.wpD);
-            ad.d("MicroMsg.SayHiListUI", "dkfooter REMOVE more btn: " + NearbySayHiListUI.a(NearbySayHiListUI.this));
+            NearbySayHiListUI.d(NearbySayHiListUI.this).removeFooterView(this.wFm);
+            ae.d("MicroMsg.SayHiListUI", "dkfooter REMOVE more btn: " + NearbySayHiListUI.a(NearbySayHiListUI.this));
           }
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/nearby/ui/NearbySayHiListUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(89892);
         }
       });
-      if ((this.wpz > 0) && (this.limit < this.wpz)) {
-        this.jci.addFooterView((View)localObject);
+      if ((this.wFi > 0) && (this.limit < this.wFi)) {
+        this.jfb.addFooterView((View)localObject);
       }
     }
     addTextOptionMenu(0, getString(2131755694), new MenuItem.OnMenuItemClickListener()
@@ -148,8 +148,8 @@ public class NearbySayHiListUI
           public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
           {
             AppMethodBeat.i(89896);
-            NearbySayHiListUI.e(NearbySayHiListUI.this).bcD();
-            NearbySayHiListUI.b(NearbySayHiListUI.this).Zu();
+            NearbySayHiListUI.e(NearbySayHiListUI.this).bdi();
+            NearbySayHiListUI.b(NearbySayHiListUI.this).ZD();
             paramAnonymous2DialogInterface = (TextView)NearbySayHiListUI.this.findViewById(2131299468);
             paramAnonymous2DialogInterface.setText(2131762792);
             paramAnonymous2DialogInterface.setVisibility(0);
@@ -161,26 +161,26 @@ public class NearbySayHiListUI
         return true;
       }
     });
-    if (this.wpz == 0)
+    if (this.wFi == 0)
     {
       localObject = (TextView)findViewById(2131299468);
       ((TextView)localObject).setText(2131762792);
       ((TextView)localObject).setVisibility(0);
       enableOptionMenu(false);
     }
-    if ((this.wpB) && (this.maxCount != 0) && (this.wpA >= this.maxCount) && (bt.jk(this)))
+    if ((this.wFk) && (this.maxCount != 0) && (this.wFj >= this.maxCount) && (bu.jq(this)))
     {
-      this.jfs = new CleanLocationHeaderView(this);
-      this.jfs.setOnClickListener(new View.OnClickListener()
+      this.jil = new CleanLocationHeaderView(this);
+      this.jil.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(89899);
-          Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-          ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/nearby/ui/NearbySayHiListUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahq());
-          NearbySayHiListUI.a(NearbySayHiListUI.this, new c(2, 0.0F, 0.0F, 0, 0, "", ""));
-          com.tencent.mm.kernel.g.aiU().a(NearbySayHiListUI.f(NearbySayHiListUI.this), 0);
+          Object localObject = new b();
+          ((b)localObject).bd(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/nearby/ui/NearbySayHiListUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahF());
+          NearbySayHiListUI.a(NearbySayHiListUI.this, new com.tencent.mm.plugin.nearby.a.c(2, 0.0F, 0.0F, 0, 0, "", ""));
+          com.tencent.mm.kernel.g.ajj().a(NearbySayHiListUI.f(NearbySayHiListUI.this), 0);
           paramAnonymousView = NearbySayHiListUI.this;
           localObject = NearbySayHiListUI.this.getContext();
           NearbySayHiListUI.this.getString(2131755906);
@@ -189,19 +189,19 @@ public class NearbySayHiListUI
             public final void onCancel(DialogInterface paramAnonymous2DialogInterface)
             {
               AppMethodBeat.i(89898);
-              com.tencent.mm.kernel.g.aiU().a(NearbySayHiListUI.f(NearbySayHiListUI.this));
+              com.tencent.mm.kernel.g.ajj().a(NearbySayHiListUI.f(NearbySayHiListUI.this));
               AppMethodBeat.o(89898);
             }
           }));
-          com.tencent.mm.plugin.report.service.g.yhR.kvStat(11429, "0");
+          com.tencent.mm.plugin.report.service.g.yxI.kvStat(11429, "0");
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/nearby/ui/NearbySayHiListUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(89899);
         }
       });
-      this.jci.addHeaderView(this.jfs);
+      this.jfb.addHeaderView(this.jil);
     }
-    this.wpy = new a(this, this.wpx, this.limit);
-    this.wpy.setGetViewPositionCallback(new MMSlideDelView.c()
+    this.wFh = new a(this, this.wFg, this.limit);
+    this.wFh.setGetViewPositionCallback(new MMSlideDelView.c()
     {
       public final int dA(View paramAnonymousView)
       {
@@ -211,133 +211,133 @@ public class NearbySayHiListUI
         return i;
       }
     });
-    this.wpy.setPerformItemClickListener(new MMSlideDelView.g()
+    this.wFh.setPerformItemClickListener(new MMSlideDelView.g()
     {
-      public final void s(View paramAnonymousView, int paramAnonymousInt1, int paramAnonymousInt2)
+      public final void r(View paramAnonymousView, int paramAnonymousInt1, int paramAnonymousInt2)
       {
         AppMethodBeat.i(89901);
         NearbySayHiListUI.d(NearbySayHiListUI.this).performItemClick(paramAnonymousView, paramAnonymousInt1, paramAnonymousInt2);
         AppMethodBeat.o(89901);
       }
     });
-    this.wpy.a(new MMSlideDelView.f()
+    this.wFh.a(new MMSlideDelView.f()
     {
-      public final void cP(Object paramAnonymousObject)
+      public final void cQ(Object paramAnonymousObject)
       {
         AppMethodBeat.i(89902);
         if (paramAnonymousObject == null)
         {
-          ad.e("MicroMsg.SayHiListUI", "onItemDel object null");
+          ae.e("MicroMsg.SayHiListUI", "onItemDel object null");
           AppMethodBeat.o(89902);
           return;
         }
-        com.tencent.mm.kernel.g.ajA().aiF();
-        ((com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).dlH().apP(paramAnonymousObject.toString());
+        com.tencent.mm.kernel.g.ajP().aiU();
+        ((com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).doG().aqU(paramAnonymousObject.toString());
         NearbySayHiListUI.b(NearbySayHiListUI.this).a(null, null);
         AppMethodBeat.o(89902);
       }
     });
-    this.jci.setAdapter(this.wpy);
+    this.jfb.setAdapter(this.wFh);
     Object localObject = new com.tencent.mm.ui.tools.l(this);
-    this.jci.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener()
+    this.jfb.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener()
     {
       public final boolean onItemLongClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
       {
         AppMethodBeat.i(89903);
         if (paramAnonymousInt < NearbySayHiListUI.d(NearbySayHiListUI.this).getHeaderViewsCount())
         {
-          ad.w("MicroMsg.SayHiListUI", "on header view long click, ignore");
+          ae.w("MicroMsg.SayHiListUI", "on header view long click, ignore");
           AppMethodBeat.o(89903);
           return true;
         }
-        this.nUL.a(paramAnonymousView, paramAnonymousInt, paramAnonymousLong, NearbySayHiListUI.this, NearbySayHiListUI.g(NearbySayHiListUI.this));
+        this.oar.a(paramAnonymousView, paramAnonymousInt, paramAnonymousLong, NearbySayHiListUI.this, NearbySayHiListUI.g(NearbySayHiListUI.this));
         AppMethodBeat.o(89903);
         return true;
       }
     });
-    this.jci.setOnItemClickListener(new AdapterView.OnItemClickListener()
+    this.jfb.setOnItemClickListener(new AdapterView.OnItemClickListener()
     {
       public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
       {
         AppMethodBeat.i(89904);
-        Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-        ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramAnonymousAdapterView);
-        ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramAnonymousView);
-        ((com.tencent.mm.hellhoundlib.b.b)localObject).mr(paramAnonymousInt);
-        ((com.tencent.mm.hellhoundlib.b.b)localObject).qY(paramAnonymousLong);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/nearby/ui/NearbySayHiListUI$8", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahq());
+        Object localObject = new b();
+        ((b)localObject).bd(paramAnonymousAdapterView);
+        ((b)localObject).bd(paramAnonymousView);
+        ((b)localObject).mu(paramAnonymousInt);
+        ((b)localObject).rl(paramAnonymousLong);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/nearby/ui/NearbySayHiListUI$8", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, ((b)localObject).ahF());
         int i = paramAnonymousInt;
         if (NearbySayHiListUI.d(NearbySayHiListUI.this).getHeaderViewsCount() > 0) {
           i = paramAnonymousInt - NearbySayHiListUI.d(NearbySayHiListUI.this).getHeaderViewsCount();
         }
-        br localbr = (br)NearbySayHiListUI.b(NearbySayHiListUI.this).getItem(i);
-        if ((localbr == null) || (localbr.field_content == null))
+        bs localbs = (bs)NearbySayHiListUI.b(NearbySayHiListUI.this).getItem(i);
+        if ((localbs == null) || (localbs.field_content == null))
         {
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/nearby/ui/NearbySayHiListUI$8", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
           AppMethodBeat.o(89904);
           return;
         }
-        paramAnonymousView = bu.d.aUe(localbr.field_content);
+        paramAnonymousView = bv.d.aVF(localbs.field_content);
         paramAnonymousAdapterView = new Intent();
-        if (com.tencent.mm.bq.a.eYD())
+        if (com.tencent.mm.bp.a.fcr())
         {
-          paramAnonymousAdapterView.putExtra("Chat_User", localbr.field_sayhiencryptuser);
+          paramAnonymousAdapterView.putExtra("Chat_User", localbs.field_sayhiencryptuser);
           paramAnonymousAdapterView.putExtra("lbs_mode", true);
           paramAnonymousAdapterView.putExtra("add_scene", 18);
-          com.tencent.mm.plugin.nearby.a.iRG.d(paramAnonymousAdapterView, NearbySayHiListUI.this);
+          com.tencent.mm.plugin.nearby.a.iUz.d(paramAnonymousAdapterView, NearbySayHiListUI.this);
           paramAnonymousAdapterView = new i();
-          paramAnonymousAdapterView.djN.scene = paramAnonymousView.scene;
-          com.tencent.mm.sdk.b.a.IbL.l(paramAnonymousAdapterView);
+          paramAnonymousAdapterView.dkP.scene = paramAnonymousView.scene;
+          com.tencent.mm.sdk.b.a.IvT.l(paramAnonymousAdapterView);
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/nearby/ui/NearbySayHiListUI$8", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
           AppMethodBeat.o(89904);
           return;
         }
         localObject = new Intent();
-        if (bt.isNullOrNil(paramAnonymousView.dHm))
+        if (bu.isNullOrNil(paramAnonymousView.cUA))
         {
-          paramAnonymousAdapterView = localbr.field_sayhiuser;
+          paramAnonymousAdapterView = localbs.field_sayhiuser;
           label269:
           ((Intent)localObject).putExtra("Contact_User", paramAnonymousAdapterView);
-          ((Intent)localObject).putExtra("Contact_Alias", paramAnonymousView.ffB);
+          ((Intent)localObject).putExtra("Contact_Alias", paramAnonymousView.fhy);
           ((Intent)localObject).putExtra("Contact_Nick", paramAnonymousView.nickname);
-          ((Intent)localObject).putExtra("Contact_QuanPin", paramAnonymousView.jeV);
-          ((Intent)localObject).putExtra("Contact_PyInitial", paramAnonymousView.jeU);
-          ((Intent)localObject).putExtra("Contact_Sex", paramAnonymousView.ePk);
+          ((Intent)localObject).putExtra("Contact_QuanPin", paramAnonymousView.jhO);
+          ((Intent)localObject).putExtra("Contact_PyInitial", paramAnonymousView.jhN);
+          ((Intent)localObject).putExtra("Contact_Sex", paramAnonymousView.eQV);
           ((Intent)localObject).putExtra("Contact_Signature", paramAnonymousView.signature);
           ((Intent)localObject).putExtra("Contact_Scene", paramAnonymousView.scene);
           ((Intent)localObject).putExtra("Contact_FMessageCard", true);
           ((Intent)localObject).putExtra("Contact_City", paramAnonymousView.getCity());
           ((Intent)localObject).putExtra("Contact_Province", paramAnonymousView.getProvince());
-          if (!bt.isNullOrNil(localbr.field_sayhicontent)) {
+          if (!bu.isNullOrNil(localbs.field_sayhicontent)) {
             break label648;
           }
         }
         label648:
-        for (paramAnonymousAdapterView = NearbySayHiListUI.this.getString(2131757177);; paramAnonymousAdapterView = localbr.field_sayhicontent)
+        for (paramAnonymousAdapterView = NearbySayHiListUI.this.getString(2131757177);; paramAnonymousAdapterView = localbs.field_sayhicontent)
         {
           ((Intent)localObject).putExtra("Contact_Content", paramAnonymousAdapterView);
           ((Intent)localObject).putExtra("Contact_verify_Scene", paramAnonymousView.scene);
-          ((Intent)localObject).putExtra("Contact_Uin", paramAnonymousView.wSt);
-          ((Intent)localObject).putExtra("Contact_QQNick", paramAnonymousView.jeW);
-          ((Intent)localObject).putExtra("Contact_Mobile_MD5", paramAnonymousView.IMm);
+          ((Intent)localObject).putExtra("Contact_Uin", paramAnonymousView.xik);
+          ((Intent)localObject).putExtra("Contact_QQNick", paramAnonymousView.jhP);
+          ((Intent)localObject).putExtra("Contact_Mobile_MD5", paramAnonymousView.JgT);
           ((Intent)localObject).putExtra("User_From_Fmessage", true);
           ((Intent)localObject).putExtra("Contact_from_msgType", 37);
-          ((Intent)localObject).putExtra("Verify_ticket", paramAnonymousView.txJ);
+          ((Intent)localObject).putExtra("Verify_ticket", paramAnonymousView.tIA);
           ((Intent)localObject).putExtra("Contact_Source_FMessage", paramAnonymousView.scene);
           ((Intent)localObject).putExtra("Contact_ShowFMessageList", true);
-          paramAnonymousAdapterView = ((com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azp().Bf(paramAnonymousView.dHm);
-          if ((paramAnonymousAdapterView != null) && ((int)paramAnonymousAdapterView.gfj >= 0) && (!com.tencent.mm.o.b.lM(paramAnonymousAdapterView.field_type)))
+          paramAnonymousAdapterView = ((com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azF().BH(paramAnonymousView.cUA);
+          if ((paramAnonymousAdapterView != null) && ((int)paramAnonymousAdapterView.ght >= 0) && (!com.tencent.mm.contact.c.lO(paramAnonymousAdapterView.field_type)))
           {
-            paramAnonymousInt = paramAnonymousView.dsi;
+            paramAnonymousInt = paramAnonymousView.dto;
             if ((paramAnonymousInt == 0) || (paramAnonymousInt == 2) || (paramAnonymousInt == 5)) {
               ((Intent)localObject).putExtra("User_Verify", true);
             }
             ((Intent)localObject).putExtra("Contact_IsLBSFriend", true);
             ((Intent)localObject).putExtra("Sns_from_Scene", 18);
           }
-          com.tencent.mm.plugin.nearby.a.iRG.c((Intent)localObject, NearbySayHiListUI.this);
+          com.tencent.mm.plugin.nearby.a.iUz.c((Intent)localObject, NearbySayHiListUI.this);
           break;
-          paramAnonymousAdapterView = paramAnonymousView.dHm;
+          paramAnonymousAdapterView = paramAnonymousView.cUA;
           break label269;
         }
       }
@@ -359,14 +359,14 @@ public class NearbySayHiListUI
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(89893);
-        Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-        ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/nearby/ui/NearbySayHiListUI$10", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahq());
+        Object localObject = new b();
+        ((b)localObject).bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/nearby/ui/NearbySayHiListUI$10", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahF());
         paramAnonymousView = NearbySayHiListUI.d(NearbySayHiListUI.this);
         paramAnonymousView = new com.tencent.mm.hellhoundlib.b.a().bc(paramAnonymousView);
         localObject = new Object();
-        com.tencent.mm.hellhoundlib.a.a.a(localObject, paramAnonymousView.ahp(), "com/tencent/mm/plugin/nearby/ui/NearbySayHiListUI$10", "onClick", "(Landroid/view/View;)V", "com/tencent/mm/sdk/platformtools/BackwardSupportUtil$SmoothScrollFactory_EXEC_", "scrollToTop", "(Landroid/widget/ListView;)V");
-        BackwardSupportUtil.c.b((ListView)paramAnonymousView.mq(0));
+        com.tencent.mm.hellhoundlib.a.a.a(localObject, paramAnonymousView.ahE(), "com/tencent/mm/plugin/nearby/ui/NearbySayHiListUI$10", "onClick", "(Landroid/view/View;)V", "com/tencent/mm/sdk/platformtools/BackwardSupportUtil$SmoothScrollFactory_EXEC_", "scrollToTop", "(Landroid/widget/ListView;)V");
+        BackwardSupportUtil.c.b((ListView)paramAnonymousView.mt(0));
         com.tencent.mm.hellhoundlib.a.a.a(localObject, "com/tencent/mm/plugin/nearby/ui/NearbySayHiListUI$10", "onClick", "(Landroid/view/View;)V", "com/tencent/mm/sdk/platformtools/BackwardSupportUtil$SmoothScrollFactory_EXEC_", "scrollToTop", "(Landroid/widget/ListView;)V");
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/nearby/ui/NearbySayHiListUI$10", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(89893);
@@ -387,21 +387,21 @@ public class NearbySayHiListUI
   {
     AppMethodBeat.i(89913);
     super.onCreate(paramBundle);
-    this.maxCount = bt.aRe(com.tencent.mm.n.g.acA().getValue("ThresholdToCleanLocation"));
-    this.wpB = getIntent().getBooleanExtra("show_clear_header", false);
-    com.tencent.mm.kernel.g.ajA().aiF();
-    this.wpx = ((bs)((com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).dlH());
+    this.maxCount = bu.aSB(com.tencent.mm.n.g.acL().getValue("ThresholdToCleanLocation"));
+    this.wFk = getIntent().getBooleanExtra("show_clear_header", false);
+    com.tencent.mm.kernel.g.ajP().aiU();
+    this.wFg = ((bt)((com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).doG());
     setMMTitle(2131762789);
-    this.wpA = this.wpx.bUJ();
-    this.wpz = this.wpx.getCount();
+    this.wFj = this.wFg.bVY();
+    this.wFi = this.wFg.getCount();
     int i;
-    if (com.tencent.mm.bq.a.eYD()) {
-      i = this.wpz;
+    if (com.tencent.mm.bp.a.fcr()) {
+      i = this.wFi;
     }
     for (;;)
     {
       this.limit = i;
-      paramBundle = this.wpx;
+      paramBundle = this.wFg;
       ContentValues localContentValues = new ContentValues();
       localContentValues.put("status", Integer.valueOf(4));
       if (paramBundle.db.update(paramBundle.getTableName(), localContentValues, "status!=? ", new String[] { "4" }) != 0) {
@@ -410,10 +410,10 @@ public class NearbySayHiListUI
       initView();
       AppMethodBeat.o(89913);
       return;
-      if (this.wpA == 0) {
+      if (this.wFj == 0) {
         i = 8;
       } else {
-        i = this.wpA;
+        i = this.wFj;
       }
     }
   }
@@ -422,22 +422,22 @@ public class NearbySayHiListUI
   {
     AppMethodBeat.i(89919);
     paramView = (AdapterView.AdapterContextMenuInfo)paramContextMenuInfo;
-    paramContextMenuInfo = (br)this.wpy.getItem(paramView.position);
+    paramContextMenuInfo = (bs)this.wFh.getItem(paramView.position);
     if (paramContextMenuInfo == null)
     {
-      ad.e("MicroMsg.SayHiListUI", "onItemLongClick, item is null, pos = " + paramView.position);
+      ae.e("MicroMsg.SayHiListUI", "onItemLongClick, item is null, pos = " + paramView.position);
       AppMethodBeat.o(89919);
       return;
     }
     paramContextMenu.add(0, 0, 0, 2131755707);
-    this.wpC = paramContextMenuInfo.field_svrid;
+    this.wFl = paramContextMenuInfo.field_svrid;
     AppMethodBeat.o(89919);
   }
   
   public void onDestroy()
   {
     AppMethodBeat.i(89915);
-    this.wpy.det();
+    this.wFh.dhl();
     super.onDestroy();
     AppMethodBeat.o(89915);
   }
@@ -453,7 +453,7 @@ public class NearbySayHiListUI
   public void onPause()
   {
     AppMethodBeat.i(89916);
-    com.tencent.mm.kernel.g.aiU().b(148, this);
+    com.tencent.mm.kernel.g.ajj().b(148, this);
     super.onPause();
     AppMethodBeat.o(89916);
   }
@@ -462,27 +462,27 @@ public class NearbySayHiListUI
   {
     AppMethodBeat.i(89914);
     super.onResume();
-    if (this.wpz != this.wpx.getCount())
+    if (this.wFi != this.wFg.getCount())
     {
-      this.wpz = this.wpx.getCount();
-      if (this.wpz == 0)
+      this.wFi = this.wFg.getCount();
+      if (this.wFi == 0)
       {
         TextView localTextView = (TextView)findViewById(2131299468);
         localTextView.setText(2131762792);
         localTextView.setVisibility(0);
         enableOptionMenu(false);
       }
-      this.wpy.Zu();
+      this.wFh.ZD();
     }
-    this.wpy.notifyDataSetChanged();
-    com.tencent.mm.kernel.g.aiU().a(148, this);
+    this.wFh.notifyDataSetChanged();
+    com.tencent.mm.kernel.g.ajj().a(148, this);
     AppMethodBeat.o(89914);
   }
   
   public void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     AppMethodBeat.i(89921);
-    ad.i("MicroMsg.SayHiListUI", "onSceneEnd: errType=%d, errCode=%d, errMsg=%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    ae.i("MicroMsg.SayHiListUI", "onSceneEnd: errType=%d, errCode=%d, errMsg=%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
     if (this.tipDialog != null)
     {
       this.tipDialog.dismiss();
@@ -490,7 +490,7 @@ public class NearbySayHiListUI
     }
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      if (((c)paramn).KR() == 2)
+      if (((com.tencent.mm.plugin.nearby.a.c)paramn).KZ() == 2)
       {
         h.d(getContext(), getString(2131761497), "", new DialogInterface.OnClickListener()
         {
@@ -502,12 +502,12 @@ public class NearbySayHiListUI
             AppMethodBeat.o(89895);
           }
         });
-        this.woz = null;
+        this.wEi = null;
         AppMethodBeat.o(89921);
       }
     }
     else {
-      ad.w("MicroMsg.SayHiListUI", "[cpan] clear location failed.");
+      ae.w("MicroMsg.SayHiListUI", "[cpan] clear location failed.");
     }
     AppMethodBeat.o(89921);
   }
@@ -519,103 +519,103 @@ public class NearbySayHiListUI
   }
   
   final class a
-    extends r<br>
+    extends r<bs>
   {
-    private MMActivity fLP;
+    private MMActivity fNT;
     int limit;
-    protected MMSlideDelView.g nUw;
-    protected MMSlideDelView.c nUx;
-    protected MMSlideDelView.d nUz;
-    protected MMSlideDelView.f wpH;
-    private bs wpx;
+    protected MMSlideDelView.g oac;
+    protected MMSlideDelView.c oad;
+    protected MMSlideDelView.d oaf;
+    private bt wFg;
+    protected MMSlideDelView.f wFq;
     
-    public a(Context paramContext, bs parambs, int paramInt)
+    public a(Context paramContext, bt parambt, int paramInt)
     {
-      super(new br());
+      super(new bs());
       AppMethodBeat.i(89907);
       this.limit = -1;
-      this.nUz = MMSlideDelView.getItemStatusCallBack();
-      this.fLP = ((MMActivity)paramContext);
+      this.oaf = MMSlideDelView.getItemStatusCallBack();
+      this.fNT = ((MMActivity)paramContext);
       this.limit = paramInt;
-      this.wpx = parambs;
+      this.wFg = parambt;
       AppMethodBeat.o(89907);
     }
     
-    public final void Zu()
+    public final void ZD()
     {
       AppMethodBeat.i(89909);
-      if (com.tencent.mm.bq.a.eYD()) {
-        setCursor(this.wpx.aaV(this.limit));
+      if (com.tencent.mm.bp.a.fcr()) {
+        setCursor(this.wFg.abD(this.limit));
       }
       for (;;)
       {
         super.notifyDataSetChanged();
         AppMethodBeat.o(89909);
         return;
-        setCursor(this.wpx.IE(this.limit));
+        setCursor(this.wFg.Jc(this.limit));
       }
     }
     
-    public final void Zv()
+    public final void ZE()
     {
       AppMethodBeat.i(89908);
-      Zu();
+      ZD();
       AppMethodBeat.o(89908);
     }
     
     public final void a(MMSlideDelView.f paramf)
     {
-      this.wpH = paramf;
+      this.wFq = paramf;
     }
     
     public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
     {
       AppMethodBeat.i(89910);
-      br localbr = (br)getItem(paramInt);
+      bs localbs = (bs)getItem(paramInt);
       if (paramView == null)
       {
         paramViewGroup = new a();
-        paramView = (MMSlideDelView)View.inflate(this.fLP, 2131493169, null);
-        localObject = View.inflate(this.fLP, 2131495280, null);
-        paramViewGroup.fRd = ((ImageView)((View)localObject).findViewById(2131298722));
-        paramViewGroup.jbW = ((TextView)((View)localObject).findViewById(2131299149));
-        paramViewGroup.vHM = ((TextView)((View)localObject).findViewById(2131304296));
-        paramViewGroup.nUE = paramView.findViewById(2131304837);
-        paramViewGroup.nUF = ((TextView)paramView.findViewById(2131304839));
+        paramView = (MMSlideDelView)View.inflate(this.fNT, 2131493169, null);
+        localObject = View.inflate(this.fNT, 2131495280, null);
+        paramViewGroup.fTj = ((ImageView)((View)localObject).findViewById(2131298722));
+        paramViewGroup.jeP = ((TextView)((View)localObject).findViewById(2131299149));
+        paramViewGroup.vTQ = ((TextView)((View)localObject).findViewById(2131304296));
+        paramViewGroup.oak = paramView.findViewById(2131304837);
+        paramViewGroup.oal = ((TextView)paramView.findViewById(2131304839));
         paramView.setView((View)localObject);
-        paramView.setPerformItemClickListener(this.nUw);
-        paramView.setGetViewPositionCallback(this.nUx);
-        paramView.setItemStatusCallBack(this.nUz);
+        paramView.setPerformItemClickListener(this.oac);
+        paramView.setGetViewPositionCallback(this.oad);
+        paramView.setItemStatusCallBack(this.oaf);
         paramView.setEnable(false);
         paramView.setTag(paramViewGroup);
-        if (localbr.field_flag == 0) {
+        if (localbs.field_flag == 0) {
           break label289;
         }
       }
       label289:
-      for (Object localObject = bu.d.aUe(localbr.field_content).nickname;; localObject = localbr.field_talker)
+      for (Object localObject = bv.d.aVF(localbs.field_content).nickname;; localObject = localbs.field_talker)
       {
-        paramViewGroup.jbW.setText(k.b(this.fLP, (CharSequence)localObject, paramViewGroup.jbW.getTextSize()));
-        paramViewGroup.vHM.setText(k.b(this.fLP, localbr.field_sayhicontent, paramViewGroup.vHM.getTextSize()));
-        paramViewGroup.nUE.setTag(Long.valueOf(localbr.field_svrid));
-        paramViewGroup.nUE.setOnClickListener(new View.OnClickListener()
+        paramViewGroup.jeP.setText(k.b(this.fNT, (CharSequence)localObject, paramViewGroup.jeP.getTextSize()));
+        paramViewGroup.vTQ.setText(k.b(this.fNT, localbs.field_sayhicontent, paramViewGroup.vTQ.getTextSize()));
+        paramViewGroup.oak.setTag(Long.valueOf(localbs.field_svrid));
+        paramViewGroup.oak.setOnClickListener(new View.OnClickListener()
         {
           public final void onClick(View paramAnonymousView)
           {
             AppMethodBeat.i(89906);
-            com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+            b localb = new b();
             localb.bd(paramAnonymousView);
-            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/nearby/ui/NearbySayHiListUI$SayHiAdapter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-            ad.v("MicroMsg.SayHiAdapter", "on delView clicked");
-            NearbySayHiListUI.a.this.nUz.deD();
-            if (NearbySayHiListUI.a.this.wpH != null) {
-              NearbySayHiListUI.a.this.wpH.cP(paramAnonymousView.getTag());
+            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/nearby/ui/NearbySayHiListUI$SayHiAdapter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+            ae.v("MicroMsg.SayHiAdapter", "on delView clicked");
+            NearbySayHiListUI.a.this.oaf.dhv();
+            if (NearbySayHiListUI.a.this.wFq != null) {
+              NearbySayHiListUI.a.this.wFq.cQ(paramAnonymousView.getTag());
             }
             com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/nearby/ui/NearbySayHiListUI$SayHiAdapter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
             AppMethodBeat.o(89906);
           }
         });
-        a.b.c(paramViewGroup.fRd, localbr.field_sayhiuser);
+        a.b.c(paramViewGroup.fTj, localbs.field_sayhiuser);
         AppMethodBeat.o(89910);
         return paramView;
         paramViewGroup = (a)paramView.getTag();
@@ -625,21 +625,21 @@ public class NearbySayHiListUI
     
     public final void setGetViewPositionCallback(MMSlideDelView.c paramc)
     {
-      this.nUx = paramc;
+      this.oad = paramc;
     }
     
     public final void setPerformItemClickListener(MMSlideDelView.g paramg)
     {
-      this.nUw = paramg;
+      this.oac = paramg;
     }
     
     final class a
     {
-      ImageView fRd;
-      TextView jbW;
-      View nUE;
-      TextView nUF;
-      TextView vHM;
+      ImageView fTj;
+      TextView jeP;
+      View oak;
+      TextView oal;
+      TextView vTQ;
       
       a() {}
     }

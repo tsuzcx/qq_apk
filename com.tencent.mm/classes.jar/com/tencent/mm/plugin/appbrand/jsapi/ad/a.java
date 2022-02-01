@@ -1,202 +1,583 @@
 package com.tencent.mm.plugin.appbrand.jsapi.ad;
 
-import android.app.Activity;
-import android.content.ComponentName;
-import android.content.Context;
-import android.content.Intent;
-import android.content.ServiceConnection;
-import android.os.IBinder;
-import android.text.TextUtils;
-import com.tencent.e.i;
+import android.util.ArrayMap;
+import com.tencent.luggage.xweb_ext.extendplugin.component.l;
+import com.tencent.luggage.xweb_ext.extendplugin.component.m;
+import com.tencent.luggage.xweb_ext.extendplugin.component.n;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
-import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.plugin.appbrand.permission.p;
-import com.tencent.mm.sdk.platformtools.ad;
-import java.util.HashMap;
+import com.tencent.mm.plugin.appbrand.h.d;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
-import org.json.JSONObject;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public abstract class a
-  extends com.tencent.mm.plugin.appbrand.jsapi.a<com.tencent.mm.plugin.appbrand.jsapi.h>
+public class a
+  extends com.tencent.mm.plugin.appbrand.backgroundrunning.i
 {
-  protected abstract void a(com.tencent.mm.plugin.appbrand.jsapi.h paramh, int paramInt, com.b.b.a.a.a parama, JSONObject paramJSONObject);
+  private final AppBrandRuntime jDb;
+  public final c lBh;
+  private volatile boolean lBi;
+  public volatile a lBj;
+  private volatile boolean lBk;
+  private volatile com.tencent.luggage.xweb_ext.extendplugin.component.i lBl;
+  private final Object lBm;
+  private final Map<com.tencent.luggage.xweb_ext.extendplugin.component.i, Boolean> lBn;
+  private final List<com.tencent.luggage.xweb_ext.extendplugin.component.i> lBo;
+  private final List<com.tencent.luggage.xweb_ext.extendplugin.component.i> lBp;
+  private final LinkedList<com.tencent.luggage.xweb_ext.extendplugin.component.i> lBq;
+  public AtomicBoolean lBr;
+  public AtomicBoolean lBs;
+  private final String mAppId;
   
-  public final void a(final com.tencent.mm.plugin.appbrand.jsapi.h paramh, final JSONObject paramJSONObject, final int paramInt)
+  public a(AppBrandRuntime paramAppBrandRuntime)
   {
-    Activity localActivity = com.tencent.mm.sdk.f.a.jq(paramh.getRuntime().mContext);
-    if (localActivity == null)
-    {
-      paramh.h(paramInt, e("fail:internal error invalid android context", null));
-      ad.e("MicroMsg.AppBrandTrafficCardBaseJsApi", "mmActivity is null, invoke fail! with appId[%s] callbackId[%d]", new Object[] { paramh.getAppId(), Integer.valueOf(paramInt) });
-    }
-    label412:
-    label478:
-    label490:
+    AppMethodBeat.i(220554);
+    this.lBj = null;
+    this.lBk = true;
+    this.lBl = null;
+    this.lBm = new Object();
+    this.lBn = new ArrayMap();
+    this.lBo = new ArrayList();
+    this.lBp = new ArrayList();
+    this.lBq = new LinkedList();
+    this.lBr = new AtomicBoolean(false);
+    this.lBs = new AtomicBoolean(false);
+    this.jDb = paramAppBrandRuntime;
+    this.mAppId = paramAppBrandRuntime.mAppId;
+    this.lBh = new c(this);
+    if (!paramAppBrandRuntime.mResumed) {}
     for (;;)
     {
+      this.lBi = bool;
+      com.tencent.mm.plugin.appbrand.h.a(this.mAppId, new a.1(this));
+      AppMethodBeat.o(220554);
       return;
-      String str = paramJSONObject.optString("deviceType");
-      Object localObject = paramJSONObject.optJSONObject("deviceData");
-      if (TextUtils.isEmpty(str))
+      bool = false;
+    }
+  }
+  
+  private void bqo()
+  {
+    AppMethodBeat.i(220576);
+    ae.i("MicroMsg.AppBrand.AppBrandRuntimeAudioOfVideoBackgroundPlayManager", "enableAppBrandBackgroundRun");
+    com.tencent.mm.plugin.appbrand.jsapi.ad.c.a locala = new com.tencent.mm.plugin.appbrand.jsapi.ad.c.a();
+    locala.lCj.appId = this.mAppId;
+    locala.lCj.beO = 8;
+    locala.lCj.dlO = 1;
+    com.tencent.mm.sdk.b.a.IvT.l(locala);
+    AppMethodBeat.o(220576);
+  }
+  
+  private String bqq()
+  {
+    AppMethodBeat.i(220579);
+    Object localObject = (com.tencent.mm.plugin.appbrand.jsapi.ad.c.b.c)this.jDb.as(com.tencent.mm.plugin.appbrand.jsapi.ad.c.b.c.class);
+    if (localObject == null)
+    {
+      ae.w("MicroMsg.AppBrand.AppBrandRuntimeAudioOfVideoBackgroundPlayManager", "getBanBackgroundRunHint, helper is null");
+      AppMethodBeat.o(220579);
+      return null;
+    }
+    localObject = ((com.tencent.mm.plugin.appbrand.jsapi.ad.c.b.c)localObject).bqv();
+    ae.i("MicroMsg.AppBrand.AppBrandRuntimeAudioOfVideoBackgroundPlayManager", "getBanBackgroundRunHint, banHint: ", new Object[] { localObject });
+    AppMethodBeat.o(220579);
+    return localObject;
+  }
+  
+  private void g(com.tencent.luggage.xweb_ext.extendplugin.component.i parami)
+  {
+    AppMethodBeat.i(220570);
+    ae.i("MicroMsg.AppBrand.AppBrandRuntimeAudioOfVideoBackgroundPlayManager", "playAudio, videoPlayer:" + parami.getName());
+    m localm = (m)parami.U(m.class);
+    if (localm == null)
+    {
+      ae.w("MicroMsg.AppBrand.AppBrandRuntimeAudioOfVideoBackgroundPlayManager", "playAudio, videoPlayerAddOnPlayAudio is null");
+      AppMethodBeat.o(220570);
+      return;
+    }
+    localm.playAudio();
+    d(parami);
+    AppMethodBeat.o(220570);
+  }
+  
+  private void h(com.tencent.luggage.xweb_ext.extendplugin.component.i parami)
+  {
+    AppMethodBeat.i(220571);
+    ae.i("MicroMsg.AppBrand.AppBrandRuntimeAudioOfVideoBackgroundPlayManager", "playVideo, videoPlayer:" + parami.getName());
+    m localm = (m)parami.U(m.class);
+    if (localm == null)
+    {
+      ae.w("MicroMsg.AppBrand.AppBrandRuntimeAudioOfVideoBackgroundPlayManager", "playVideo, videoPlayerAddOnPlayAudio is null");
+      AppMethodBeat.o(220571);
+      return;
+    }
+    localm.FW();
+    d(parami);
+    AppMethodBeat.o(220571);
+  }
+  
+  private static boolean i(com.tencent.luggage.xweb_ext.extendplugin.component.i parami)
+  {
+    AppMethodBeat.i(220572);
+    ae.i("MicroMsg.AppBrand.AppBrandRuntimeAudioOfVideoBackgroundPlayManager", "startPlay, videoPlayer:" + parami.getName());
+    parami = (n)parami.U(n.class);
+    if (parami == null)
+    {
+      ae.w("MicroMsg.AppBrand.AppBrandRuntimeAudioOfVideoBackgroundPlayManager", "startPlay, playerAddOnVideoController is null");
+      AppMethodBeat.o(220572);
+      return false;
+    }
+    parami.start();
+    AppMethodBeat.o(220572);
+    return true;
+  }
+  
+  private static boolean j(com.tencent.luggage.xweb_ext.extendplugin.component.i parami)
+  {
+    AppMethodBeat.i(220573);
+    ae.i("MicroMsg.AppBrand.AppBrandRuntimeAudioOfVideoBackgroundPlayManager", "pausePlay, videoPlayer:" + parami.getName());
+    parami = (n)parami.U(n.class);
+    if (parami == null)
+    {
+      ae.w("MicroMsg.AppBrand.AppBrandRuntimeAudioOfVideoBackgroundPlayManager", "pausePlay, playerAddOnVideoController is null");
+      AppMethodBeat.o(220573);
+      return false;
+    }
+    parami.pause();
+    AppMethodBeat.o(220573);
+    return true;
+  }
+  
+  private static String k(com.tencent.luggage.xweb_ext.extendplugin.component.i parami)
+  {
+    AppMethodBeat.i(220574);
+    ae.i("MicroMsg.AppBrand.AppBrandRuntimeAudioOfVideoBackgroundPlayManager", "getTitle, videoPlayer:" + parami.getName());
+    parami = (l)parami.U(l.class);
+    if (parami == null)
+    {
+      ae.w("MicroMsg.AppBrand.AppBrandRuntimeAudioOfVideoBackgroundPlayManager", "getTitle, playerAddOnInfo is null");
+      AppMethodBeat.o(220574);
+      return null;
+    }
+    parami = parami.getTitle();
+    AppMethodBeat.o(220574);
+    return parami;
+  }
+  
+  private static String l(com.tencent.luggage.xweb_ext.extendplugin.component.i parami)
+  {
+    AppMethodBeat.i(220575);
+    ae.i("MicroMsg.AppBrand.AppBrandRuntimeAudioOfVideoBackgroundPlayManager", "getPosterPath, videoPlayer:" + parami.getName());
+    parami = (l)parami.U(l.class);
+    if (parami == null)
+    {
+      ae.w("MicroMsg.AppBrand.AppBrandRuntimeAudioOfVideoBackgroundPlayManager", "getPosterPath, playerAddOnInfo is null");
+      AppMethodBeat.o(220575);
+      return null;
+    }
+    parami = parami.FV();
+    AppMethodBeat.o(220575);
+    return parami;
+  }
+  
+  private boolean m(com.tencent.luggage.xweb_ext.extendplugin.component.i parami)
+  {
+    AppMethodBeat.i(220578);
+    synchronized (this.lBm)
+    {
+      parami = (Boolean)this.lBn.get(parami);
+      if ((parami != null) && (parami.booleanValue()))
       {
-        paramJSONObject = new HashMap();
-        paramJSONObject.put("errCode", Integer.valueOf(b.mSZ.errorCode));
-        paramh.h(paramInt, m("fail:" + b.mSZ.errorMsg, paramJSONObject));
-        ad.e("MicroMsg.AppBrandTrafficCardBaseJsApi", "deviceType is null, invoke fail: [%s] ! with appId[%s] callbackId[%d]", new Object[] { b.mSZ.errorMsg, paramh.getAppId(), Integer.valueOf(paramInt) });
-        return;
+        AppMethodBeat.o(220578);
+        return true;
       }
-      boolean bool1;
-      if ("HUAWEI".equals(str))
+    }
+    AppMethodBeat.o(220578);
+    return false;
+  }
+  
+  public final boolean a(com.tencent.luggage.xweb_ext.extendplugin.component.i parami)
+  {
+    boolean bool2 = false;
+    AppMethodBeat.i(220556);
+    ??? = com.tencent.mm.plugin.appbrand.h.KU(this.mAppId);
+    ae.i("MicroMsg.AppBrand.AppBrandRuntimeAudioOfVideoBackgroundPlayManager", "amIBackgroundAudioPlayer, videoPlayer: " + parami.getName() + ", pauseType: " + ???);
+    for (;;)
+    {
+      synchronized (this.lBm)
       {
-        p.a(paramh.getAppId(), new android.support.v4.app.a.a()
+        boolean bool1;
+        if ((!this.lBq.isEmpty()) && (parami == this.lBq.getFirst()))
         {
-          public final void onRequestPermissionsResult(int paramAnonymousInt, String[] paramAnonymousArrayOfString, int[] paramAnonymousArrayOfInt)
+          bool1 = true;
+          if ((bool1) && (this.lBs.getAndSet(false)))
           {
-            AppMethodBeat.i(221284);
-            if (paramAnonymousInt != 147)
-            {
-              AppMethodBeat.o(221284);
-              return;
-            }
-            if ((paramAnonymousArrayOfInt != null) && (paramAnonymousArrayOfInt.length > 0) && (paramAnonymousArrayOfInt[0] == 0))
-            {
-              a.this.a(paramh, paramJSONObject, paramInt);
-              AppMethodBeat.o(221284);
-              return;
-            }
-            paramh.h(paramInt, a.this.e("fail:system permission denied", null));
-            AppMethodBeat.o(221284);
+            ae.i("MicroMsg.AppBrand.AppBrandRuntimeAudioOfVideoBackgroundPlayManager", "amIBackgroundAudioPlayer, ignore");
+            bool1 = bool2;
+            ae.i("MicroMsg.AppBrand.AppBrandRuntimeAudioOfVideoBackgroundPlayManager", "amIBackgroundAudioPlayer, amIBackgroundAudioPlayer: ".concat(String.valueOf(bool1)));
+            AppMethodBeat.o(220556);
+            return bool1;
           }
-        });
-        paramJSONObject = com.tencent.mm.sdk.f.a.jq(paramh.getRuntime().mContext);
-        if ((paramJSONObject == null) || (!(paramJSONObject instanceof Activity)))
+        }
+        else
         {
-          paramh.h(paramInt, e("fail", null));
           bool1 = false;
-          label252:
-          if (!bool1) {
-            break label363;
-          }
         }
-      }
-      else
-      {
-        if ((localActivity != null) && (str != null)) {
-          break label365;
-        }
-        bool1 = false;
-      }
-      for (;;)
-      {
-        if (bool1) {
-          break label490;
-        }
-        paramh.h(paramInt, e("fail:null system service", null));
-        ad.e("MicroMsg.AppBrandTrafficCardBaseJsApi", "null system service, invoke fail! with deviceType[%s] appId[%s] callbackId[%d]", new Object[] { str, paramh.getAppId(), Integer.valueOf(paramInt) });
-        return;
-        boolean bool2 = com.tencent.mm.pluginsdk.permission.b.a((Activity)paramJSONObject, "com.huawei.wallet.permission.QUERY_TRAFFIC_CARD_INFO", 147, "", "");
-        bool1 = bool2;
-        if (!bool2) {
-          break label252;
-        }
-        p.TS(paramh.getAppId());
-        bool1 = bool2;
-        break label252;
-        label363:
-        break;
-        label365:
-        localObject = new a(localActivity, paramh, paramInt, str, (JSONObject)localObject);
-        paramJSONObject = null;
-        int i = -1;
-        switch (str.hashCode())
-        {
-        default: 
-          switch (i)
-          {
-          }
-          break;
-        }
-        for (;;)
-        {
-          if (paramJSONObject != null) {
-            break label478;
-          }
-          bool1 = false;
-          break;
-          if (!str.equals("HUAWEI")) {
-            break label412;
-          }
-          i = 0;
-          break label412;
-          paramJSONObject = new Intent("com.huawei.nfc.action.TRANSIT_OPEN_SERVICE");
-          paramJSONObject.setPackage("com.huawei.wallet");
-        }
-        bool1 = localActivity.bindService(paramJSONObject, (ServiceConnection)localObject, 1);
       }
     }
   }
   
-  public final class a
-    implements ServiceConnection
+  public final boolean b(com.tencent.luggage.xweb_ext.extendplugin.component.i parami)
   {
-    private int cgA;
-    private Context mContext;
-    private String mDeviceType;
-    private JSONObject mSU;
-    private com.tencent.mm.plugin.appbrand.jsapi.h mhH;
-    
-    public a(Context paramContext, com.tencent.mm.plugin.appbrand.jsapi.h paramh, int paramInt, String paramString, JSONObject paramJSONObject)
+    int i = 0;
+    AppMethodBeat.i(220561);
+    ae.i("MicroMsg.AppBrand.AppBrandRuntimeAudioOfVideoBackgroundPlayManager", "enableBackgroundPlayAudio, videoPlayer: %s, playAudioImmediate: %b", new Object[] { parami.getName(), Boolean.TRUE });
+    if (this.lBi)
     {
-      this.mContext = paramContext;
-      this.mhH = paramh;
-      this.cgA = paramInt;
-      this.mDeviceType = paramString;
-      this.mSU = paramJSONObject;
+      ae.w("MicroMsg.AppBrand.AppBrandRuntimeAudioOfVideoBackgroundPlayManager", "enableBackgroundPlayAudio, current is in background");
+      AppMethodBeat.o(220561);
+      return false;
     }
-    
-    public final void onServiceConnected(final ComponentName paramComponentName, IBinder paramIBinder)
+    synchronized (this.lBm)
     {
-      AppMethodBeat.i(221286);
-      paramComponentName = this.mDeviceType;
-      int i = -1;
-      switch (paramComponentName.hashCode())
+      this.lBn.put(parami, Boolean.TRUE);
+      if (this.lBp.contains(parami))
       {
-      default: 
-        switch (i)
-        {
+        this.lBp.remove(parami);
+        this.lBq.remove(parami);
+        this.lBq.addFirst(parami);
+        i = 1;
+        if (i != 0) {
+          g(parami);
         }
-        break;
+        AppMethodBeat.o(220561);
+        return true;
       }
-      for (;;)
+      this.lBo.remove(parami);
+      this.lBo.add(parami);
+    }
+  }
+  
+  public final boolean bdL()
+  {
+    AppMethodBeat.i(220555);
+    synchronized (this.lBm)
+    {
+      if (!this.lBq.isEmpty())
       {
-        AppMethodBeat.o(221286);
-        return;
-        if (!paramComponentName.equals("HUAWEI")) {
-          break;
+        bool = true;
+        AppMethodBeat.o(220555);
+        return bool;
+      }
+      boolean bool = false;
+    }
+  }
+  
+  public final com.tencent.luggage.xweb_ext.extendplugin.component.i bqh()
+  {
+    AppMethodBeat.i(220557);
+    com.tencent.luggage.xweb_ext.extendplugin.component.i locali2 = this.lBl;
+    com.tencent.luggage.xweb_ext.extendplugin.component.i locali1 = locali2;
+    if (locali2 != null)
+    {
+      locali1 = locali2;
+      if (this.lBs.get())
+      {
+        ae.i("MicroMsg.AppBrand.AppBrandRuntimeAudioOfVideoBackgroundPlayManager", "getBackgroundAudioPlayer, ignore");
+        locali1 = null;
+      }
+    }
+    AppMethodBeat.o(220557);
+    return locali1;
+  }
+  
+  public final String bqi()
+  {
+    AppMethodBeat.i(220558);
+    Object localObject = bqh();
+    if (localObject == null)
+    {
+      AppMethodBeat.o(220558);
+      return null;
+    }
+    localObject = k((com.tencent.luggage.xweb_ext.extendplugin.component.i)localObject);
+    AppMethodBeat.o(220558);
+    return localObject;
+  }
+  
+  public final String bqj()
+  {
+    AppMethodBeat.i(220559);
+    Object localObject = bqh();
+    if (localObject == null)
+    {
+      AppMethodBeat.o(220559);
+      return null;
+    }
+    localObject = l((com.tencent.luggage.xweb_ext.extendplugin.component.i)localObject);
+    AppMethodBeat.o(220559);
+    return localObject;
+  }
+  
+  public final boolean bqk()
+  {
+    AppMethodBeat.i(220560);
+    ae.d("MicroMsg.AppBrand.AppBrandRuntimeAudioOfVideoBackgroundPlayManager", "isBackgroundAudioPlayPaused: " + this.lBk);
+    boolean bool = this.lBk;
+    AppMethodBeat.o(220560);
+    return bool;
+  }
+  
+  public final void bql()
+  {
+    AppMethodBeat.i(220566);
+    ae.i("MicroMsg.AppBrand.AppBrandRuntimeAudioOfVideoBackgroundPlayManager", "startBackgroundAudioPlay");
+    Object localObject = bqh();
+    if (localObject == null)
+    {
+      ae.w("MicroMsg.AppBrand.AppBrandRuntimeAudioOfVideoBackgroundPlayManager", "startBackgroundAudioPlay, backgroundAudioPlayer is null");
+      AppMethodBeat.o(220566);
+      return;
+    }
+    if (i((com.tencent.luggage.xweb_ext.extendplugin.component.i)localObject))
+    {
+      this.lBk = false;
+      this.lBh.requestFocus();
+      localObject = this.lBj;
+      if (localObject != null) {
+        ((a)localObject).bdE();
+      }
+    }
+    AppMethodBeat.o(220566);
+  }
+  
+  public final void bqm()
+  {
+    AppMethodBeat.i(220567);
+    ae.i("MicroMsg.AppBrand.AppBrandRuntimeAudioOfVideoBackgroundPlayManager", "pauseBackgroundAudioPlay");
+    Object localObject = bqh();
+    if (localObject == null)
+    {
+      ae.w("MicroMsg.AppBrand.AppBrandRuntimeAudioOfVideoBackgroundPlayManager", "pauseBackgroundAudioPlay, mBackgroundAudioPlayer is null");
+      AppMethodBeat.o(220567);
+      return;
+    }
+    if (j((com.tencent.luggage.xweb_ext.extendplugin.component.i)localObject))
+    {
+      this.lBk = true;
+      localObject = this.lBj;
+      if (localObject != null) {
+        ((a)localObject).bdF();
+      }
+    }
+    AppMethodBeat.o(220567);
+  }
+  
+  public final void bqn()
+  {
+    AppMethodBeat.i(220568);
+    ae.i("MicroMsg.AppBrand.AppBrandRuntimeAudioOfVideoBackgroundPlayManager", "stopBackgroundAudioPlay");
+    com.tencent.luggage.xweb_ext.extendplugin.component.i locali = bqh();
+    if (locali == null)
+    {
+      ae.w("MicroMsg.AppBrand.AppBrandRuntimeAudioOfVideoBackgroundPlayManager", "stopBackgroundAudioPlay, backgroundAudioPlayer is null");
+      AppMethodBeat.o(220568);
+      return;
+    }
+    if (j(locali))
+    {
+      this.lBk = false;
+      this.lBh.bqr();
+    }
+    AppMethodBeat.o(220568);
+  }
+  
+  public final void bqp()
+  {
+    AppMethodBeat.i(220577);
+    ae.i("MicroMsg.AppBrand.AppBrandRuntimeAudioOfVideoBackgroundPlayManager", "disableAppBrandBackgroundRun");
+    com.tencent.mm.plugin.appbrand.jsapi.ad.c.a locala = new com.tencent.mm.plugin.appbrand.jsapi.ad.c.a();
+    locala.lCj.appId = this.mAppId;
+    locala.lCj.beO = 8;
+    locala.lCj.dlO = 2;
+    com.tencent.mm.sdk.b.a.IvT.l(locala);
+    AppMethodBeat.o(220577);
+  }
+  
+  public final void c(com.tencent.luggage.xweb_ext.extendplugin.component.i parami)
+  {
+    AppMethodBeat.i(220562);
+    ae.i("MicroMsg.AppBrand.AppBrandRuntimeAudioOfVideoBackgroundPlayManager", "disableBackgroundPlayAudio, videoPlayer:" + parami.getName());
+    synchronized (this.lBm)
+    {
+      this.lBn.remove(parami);
+      com.tencent.luggage.xweb_ext.extendplugin.component.i locali = bqh();
+      if ((this.lBq.contains(parami)) || (locali == parami))
+      {
+        this.lBq.remove(parami);
+        if (locali == parami) {
+          i = 0;
         }
-        i = 0;
-        break;
-        paramComponentName = com.b.b.a.a.a.a.Q(paramIBinder);
-        com.tencent.e.h.LTJ.aR(new Runnable()
+        for (j = 1;; j = 0)
         {
-          public final void run()
+          if (j != 0)
           {
-            AppMethodBeat.i(221285);
-            a.this.a(a.a.a(a.a.this), a.a.b(a.a.this), paramComponentName, a.a.c(a.a.this));
-            a.a.d(a.a.this).unbindService(a.a.this);
-            AppMethodBeat.o(221285);
+            bqn();
+            bqp();
+            this.lBh.bqr();
+            this.lBl = null;
           }
-        });
+          if (i != 0) {
+            h(parami);
+          }
+          AppMethodBeat.o(220562);
+          return;
+          i = 1;
+        }
+      }
+      this.lBo.remove(parami);
+      int i = 0;
+      int j = 0;
+    }
+  }
+  
+  public final void c(h.d arg1)
+  {
+    AppMethodBeat.i(220569);
+    ae.i("MicroMsg.AppBrand.AppBrandRuntimeAudioOfVideoBackgroundPlayManager", "onRuntimeBackground, pauseType: ".concat(String.valueOf(???)));
+    this.lBi = true;
+    ??? = bqh();
+    if (??? != null)
+    {
+      ae.i("MicroMsg.AppBrand.AppBrandRuntimeAudioOfVideoBackgroundPlayManager", "onRuntimeBackground, backgroundAudioPlayer: " + ???.getName());
+      AppMethodBeat.o(220569);
+      return;
+    }
+    synchronized (this.lBm)
+    {
+      com.tencent.luggage.xweb_ext.extendplugin.component.i locali1;
+      if (!this.lBq.isEmpty())
+      {
+        locali1 = (com.tencent.luggage.xweb_ext.extendplugin.component.i)this.lBq.getFirst();
+        if (locali1 != null) {}
+      }
+      else
+      {
+        ae.i("MicroMsg.AppBrand.AppBrandRuntimeAudioOfVideoBackgroundPlayManager", "onRuntimeBackground, backgroundAudioPlayer is null");
+        AppMethodBeat.o(220569);
+        return;
+      }
+      this.lBl = locali1;
+      ??? = bqq();
+      if (!bu.isNullOrNil(???))
+      {
+        ae.i("MicroMsg.AppBrand.AppBrandRuntimeAudioOfVideoBackgroundPlayManager", "onRuntimeBackground, ban");
+        bqn();
+        com.tencent.e.h.MqF.aM(new a.2(this, ???));
+        AppMethodBeat.o(220569);
+        return;
       }
     }
+    this.lBh.requestFocus();
+    this.lBk = false;
+    g(locali2);
+    ae.i("MicroMsg.AppBrand.AppBrandRuntimeAudioOfVideoBackgroundPlayManager", "onRuntimeBackground, enableAppBrandBackgroundRun");
+    bqo();
+    AppMethodBeat.o(220569);
+  }
+  
+  public final void d(com.tencent.luggage.xweb_ext.extendplugin.component.i parami)
+  {
+    AppMethodBeat.i(220563);
+    ae.i("MicroMsg.AppBrand.AppBrandRuntimeAudioOfVideoBackgroundPlayManager", "markVideoPlayStart, videoPlayer:" + parami.getName());
+    int i = 0;
+    synchronized (this.lBm)
+    {
+      if (this.lBo.contains(parami))
+      {
+        this.lBo.remove(parami);
+        i = 1;
+        this.lBq.remove(parami);
+        this.lBq.addFirst(parami);
+        if ((i != 0) && (m(parami))) {
+          g(parami);
+        }
+        if ((this.lBi) && (bqh() != null)) {
+          bqo();
+        }
+        AppMethodBeat.o(220563);
+        return;
+      }
+      this.lBp.remove(parami);
+      this.lBp.add(parami);
+    }
+  }
+  
+  public final void e(com.tencent.luggage.xweb_ext.extendplugin.component.i parami)
+  {
+    AppMethodBeat.i(220564);
+    ae.i("MicroMsg.AppBrand.AppBrandRuntimeAudioOfVideoBackgroundPlayManager", "markVideoPlayPauseOrStop, videoPlayer:" + parami.getName());
+    synchronized (this.lBm)
+    {
+      if (this.lBq.contains(parami))
+      {
+        this.lBq.remove(parami);
+        this.lBo.add(parami);
+        if (bqh() == parami)
+        {
+          ae.i("MicroMsg.AppBrand.AppBrandRuntimeAudioOfVideoBackgroundPlayManager", "markVideoPlayPauseOrStop, disableAppBrandBackgroundRun");
+          bqp();
+          if (!this.lBk)
+          {
+            this.lBh.bqr();
+            this.lBl = null;
+          }
+        }
+        AppMethodBeat.o(220564);
+        return;
+      }
+      this.lBp.remove(parami);
+    }
+  }
+  
+  public final void f(com.tencent.luggage.xweb_ext.extendplugin.component.i parami)
+  {
+    AppMethodBeat.i(220565);
+    ae.i("MicroMsg.AppBrand.AppBrandRuntimeAudioOfVideoBackgroundPlayManager", "markVideoPlayerRelease, videoPlayer:" + parami.getName());
+    synchronized (this.lBm)
+    {
+      this.lBo.remove(parami);
+      this.lBp.remove(parami);
+      this.lBq.remove(parami);
+      if (bqh() == parami)
+      {
+        ae.i("MicroMsg.AppBrand.AppBrandRuntimeAudioOfVideoBackgroundPlayManager", "markVideoPlayerRelease, disableAppBrandBackgroundRun");
+        bqp();
+        if (!this.lBk)
+        {
+          this.lBh.bqr();
+          this.lBl = null;
+        }
+      }
+      AppMethodBeat.o(220565);
+      return;
+    }
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void bdE();
     
-    public final void onServiceDisconnected(ComponentName paramComponentName) {}
+    public abstract void bdF();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.ad.a
  * JD-Core Version:    0.7.0.1
  */

@@ -9,13 +9,13 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 final class ae$i
   extends ae.b
 {
-  ImageView oeW;
-  TextView umZ;
+  TextView okL;
+  ImageView okW;
   
   public final void dD(View paramView)
   {
     AppMethodBeat.i(37140);
-    if (this.odh != null)
+    if (this.oiV != null)
     {
       AppMethodBeat.o(37140);
       return;
@@ -27,10 +27,10 @@ final class ae$i
       return;
     }
     localViewStub.inflate();
-    this.odh = paramView.findViewById(2131298113);
-    this.gnM = ((TextView)this.odh.findViewById(2131305902));
-    this.umZ = ((TextView)this.odh.findViewById(2131305822));
-    this.oeW = ((ImageView)this.odh.findViewById(2131303284));
+    this.oiV = paramView.findViewById(2131298113);
+    this.gqi = ((TextView)this.oiV.findViewById(2131305902));
+    this.okL = ((TextView)this.oiV.findViewById(2131305822));
+    this.okW = ((ImageView)this.oiV.findViewById(2131303284));
     AppMethodBeat.o(37140);
   }
 }

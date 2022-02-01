@@ -88,7 +88,7 @@ public final class c
   
   public final void installComponent(final String paramString, final Bundle paramBundle, final TBSOneCallback<File> paramTBSOneCallback)
   {
-    AppMethodBeat.i(190686);
+    AppMethodBeat.i(192456);
     f.a("[%s] Installing component %s,Options %s", new Object[] { this.a, paramString, paramBundle });
     a();
     m.a(new Runnable()
@@ -100,7 +100,7 @@ public final class c
         AppMethodBeat.o(173885);
       }
     });
-    AppMethodBeat.o(190686);
+    AppMethodBeat.o(192456);
   }
   
   public final void installComponent(String paramString, TBSOneCallback<File> paramTBSOneCallback)
@@ -120,7 +120,7 @@ public final class c
   
   public final void loadComponentAsync(final String paramString, final Bundle paramBundle, final TBSOneCallback<TBSOneComponent> paramTBSOneCallback)
   {
-    AppMethodBeat.i(190687);
+    AppMethodBeat.i(192457);
     f.a("[%s] Loading component %s asynchronously", new Object[] { this.a, paramString });
     a();
     m.a(new Runnable()
@@ -132,7 +132,7 @@ public final class c
         AppMethodBeat.o(174259);
       }
     });
-    AppMethodBeat.o(190687);
+    AppMethodBeat.o(192457);
   }
   
   public final void loadComponentAsync(String paramString, TBSOneCallback<TBSOneComponent> paramTBSOneCallback)
@@ -152,12 +152,12 @@ public final class c
   
   public final TBSOneComponent loadComponentSync(final String paramString, final Bundle paramBundle)
   {
-    AppMethodBeat.i(190688);
+    AppMethodBeat.i(192458);
     f.a("[%s] Loading component %s synchronously", new Object[] { this.a, paramString });
     if (m.b())
     {
       paramString = new RuntimeException("TBSOneManager.loadComponentSync must not be called on TBSOne thread.");
-      AppMethodBeat.o(190688);
+      AppMethodBeat.o(192458);
       throw paramString;
     }
     a();
@@ -175,11 +175,11 @@ public final class c
     if (localb.b != 0)
     {
       paramString = new TBSOneException(localb.b, localb.c);
-      AppMethodBeat.o(190688);
+      AppMethodBeat.o(192458);
       throw paramString;
     }
     paramString = (TBSOneComponent)localb.a;
-    AppMethodBeat.o(190688);
+    AppMethodBeat.o(192458);
     return paramString;
   }
   

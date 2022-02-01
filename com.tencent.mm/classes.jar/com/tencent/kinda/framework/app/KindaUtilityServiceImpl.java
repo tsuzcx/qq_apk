@@ -2,7 +2,7 @@ package com.tencent.kinda.framework.app;
 
 import com.tencent.kinda.gen.KUtilityService;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public class KindaUtilityServiceImpl
   implements KUtilityService
@@ -24,7 +24,7 @@ public class KindaUtilityServiceImpl
     }
     catch (IndexOutOfBoundsException localIndexOutOfBoundsException)
     {
-      ad.e("KindaUtilityServiceImpl", "IndexOutOfBoundsException error");
+      ae.e("KindaUtilityServiceImpl", "IndexOutOfBoundsException error");
       AppMethodBeat.o(18529);
     }
     return paramString;

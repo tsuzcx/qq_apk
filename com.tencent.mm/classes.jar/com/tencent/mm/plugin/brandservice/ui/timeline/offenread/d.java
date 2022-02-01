@@ -5,10 +5,10 @@ public final class d
 {
   public int aDD;
   public String appId;
-  public String iXe;
-  public int ogZ;
-  public String oha;
-  public String ohb;
+  public String iZX;
+  public int omY;
+  public String omZ;
+  public String ona;
   public String title;
   
   public d()

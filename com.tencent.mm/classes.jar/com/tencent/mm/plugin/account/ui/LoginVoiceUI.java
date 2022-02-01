@@ -11,59 +11,59 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.q;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.modelsimple.s;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.modelsimple.t;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.base.h;
 
 public class LoginVoiceUI
   extends LoginHistoryUI
 {
-  protected final void aTT()
+  protected final void aUs()
   {
     int j = -1;
     AppMethodBeat.i(128253);
-    super.aTT();
-    aTU();
-    final s locals = new s(this.jkr.account, this.jkw, "", 0);
-    locals.Gm(this.jkw);
+    super.aUs();
+    aUt();
+    final t localt = new t(this.jnl.account, this.jnq, "", 0);
+    localt.GO(this.jnq);
     int i;
     String str;
-    if (this.jkw == null)
+    if (this.jnq == null)
     {
       i = -1;
-      str = bt.aRp(this.jkw);
-      if (this.jkr.jcu != null) {
+      str = bu.aSM(this.jnq);
+      if (this.jnl.jfn != null) {
         break label173;
       }
     }
     for (;;)
     {
-      ad.d("MicroMsg.LoginVoiceUI", "summerauth mAuthPwd len:%d content[%s] logindata.rawPsw len:%d content[%s]", new Object[] { Integer.valueOf(i), str, Integer.valueOf(j), bt.aRp(this.jkr.jcu) });
+      ae.d("MicroMsg.LoginVoiceUI", "summerauth mAuthPwd len:%d content[%s] logindata.rawPsw len:%d content[%s]", new Object[] { Integer.valueOf(i), str, Integer.valueOf(j), bu.aSM(this.jnl.jfn) });
       getString(2131755906);
-      this.fMu = h.b(this, getString(2131760781), true, new DialogInterface.OnCancelListener()
+      this.fOC = h.b(this, getString(2131760781), true, new DialogInterface.OnCancelListener()
       {
         public final void onCancel(DialogInterface paramAnonymousDialogInterface)
         {
           AppMethodBeat.i(128251);
-          g.aiU().a(locals);
-          LoginVoiceUI.this.aTV();
+          g.ajj().a(localt);
+          LoginVoiceUI.this.aUu();
           AppMethodBeat.o(128251);
         }
       });
-      g.aiU().a(locals, 0);
+      g.ajj().a(localt, 0);
       AppMethodBeat.o(128253);
       return;
-      i = this.jkw.length();
+      i = this.jnq.length();
       break;
       label173:
-      j = this.jkr.jcu.length();
+      j = this.jnl.jfn.length();
     }
   }
   
-  public final boolean aTW()
+  public final boolean aUv()
   {
     return false;
   }
@@ -73,22 +73,22 @@ public class LoginVoiceUI
     AppMethodBeat.i(128252);
     super.onCreate(paramBundle);
     super.setRequestedOrientation(1);
-    if (this.jlj)
+    if (this.jod)
     {
       AppMethodBeat.o(128252);
       return;
     }
-    this.jfy = 1;
-    this.jld.setVisibility(0);
-    this.jkN.setVisibility(0);
-    paramBundle = (LinearLayout.LayoutParams)this.jkM.getLayoutParams();
+    this.jir = 1;
+    this.jnX.setVisibility(0);
+    this.jnH.setVisibility(0);
+    paramBundle = (LinearLayout.LayoutParams)this.jnG.getLayoutParams();
     paramBundle.gravity = 1;
     paramBundle.leftMargin = 0;
-    this.jkM.setLayoutParams(paramBundle);
+    this.jnG.setLayoutParams(paramBundle);
     findViewById(2131306484).setEnabled(false);
     ((TextView)findViewById(2131306491)).setTextColor(getResources().getColorStateList(2131101185));
     ((TextView)findViewById(2131306491)).setBackgroundResource(getResources().getColor(2131101053));
-    this.jkN.setOnClickListener(new LoginVoiceUI.1(this));
+    this.jnH.setOnClickListener(new LoginVoiceUI.1(this));
     AppMethodBeat.o(128252);
   }
   
@@ -100,7 +100,7 @@ public class LoginVoiceUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.account.ui.LoginVoiceUI
  * JD-Core Version:    0.7.0.1
  */

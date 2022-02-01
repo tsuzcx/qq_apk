@@ -31,7 +31,7 @@ public class g
     AppMethodBeat.o(181780);
   }
   
-  public final g fh(int paramInt1, int paramInt2)
+  public final g fi(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(181781);
     this.avj = Math.max(0, this.avj - paramInt1);

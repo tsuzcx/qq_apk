@@ -1,608 +1,218 @@
 package com.tencent.mm.sdk.platformtools;
 
-import android.annotation.SuppressLint;
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Looper;
-import android.os.Message;
-import android.util.Printer;
-import com.tencent.e.d.b;
-import com.tencent.e.j.c;
+import com.tencent.e.h;
+import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.Objects;
+import com.tencent.mm.loader.j.b;
+import com.tencent.mm.vfs.k;
+import com.tencent.mm.vfs.o;
+import com.tencent.mm.vfs.s;
+import d.d.a.a;
+import d.d.d;
+import d.g.a.m;
+import d.g.b.p;
+import d.l;
+import d.z;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Queue;
+import kotlinx.coroutines.ah;
+import kotlinx.coroutines.ai;
+import kotlinx.coroutines.at;
 
-public class ap
-  implements com.tencent.e.d.a
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/sdk/platformtools/MMFileSlotManager;", "Lcom/tencent/mm/sdk/platformtools/BaseSlotManager;", "Lcom/tencent/mm/vfs/VFSFile;", "name", "", "slotSeconds", "", "(Ljava/lang/String;J)V", "CLEAR_DELAY", "TAG", "prefix", "getPrefix", "()Ljava/lang/String;", "clearSlot", "", "slotId", "slot", "containsKey", "", "key", "getSlotByKey", "slotKey", "remarkSlot", "verifySlot", "getSlotPath", "libcompatible_release"})
+public final class ap
+  extends f<k>
 {
-  private static final long SLOW_DURATION = 5000L;
-  private static final long SLOW_UI_DURATION = 300L;
-  private static final Handler UIHandler;
-  private final Object lock;
-  private final com.tencent.e.d.a realHandler;
-  private volatile Message runningMsg;
+  private final long IxS;
+  final String TAG;
+  private final String iqJ;
   
-  static
+  public ap(String paramString, long paramLong)
   {
-    AppMethodBeat.i(182962);
-    UIHandler = new Handler(Looper.getMainLooper());
-    AppMethodBeat.o(182962);
+    super(paramLong, (byte)0);
+    AppMethodBeat.i(156390);
+    this.TAG = "MMFileSlotManager";
+    this.IxS = 1000L;
+    this.iqJ = (paramString + '/' + paramLong + '/');
+    AppMethodBeat.o(156390);
   }
   
-  public ap()
+  private static String bY(String paramString, long paramLong)
   {
-    AppMethodBeat.i(157623);
-    this.lock = new Object();
-    this.realHandler = createHandler(Looper.myLooper(), com.tencent.e.j.a.fVU(), null);
-    AppMethodBeat.o(157623);
-  }
-  
-  public ap(Looper paramLooper)
-  {
-    AppMethodBeat.i(157624);
-    this.lock = new Object();
-    Objects.requireNonNull(paramLooper);
-    this.realHandler = createHandler(paramLooper, null, null);
-    AppMethodBeat.o(157624);
-  }
-  
-  public ap(Looper paramLooper, a parama)
-  {
-    AppMethodBeat.i(157626);
-    this.lock = new Object();
-    Objects.requireNonNull(paramLooper);
-    this.realHandler = createHandler(paramLooper, null, parama);
-    AppMethodBeat.o(157626);
-  }
-  
-  public ap(com.tencent.e.j.a parama)
-  {
-    AppMethodBeat.i(182942);
-    this.lock = new Object();
-    Objects.requireNonNull(parama);
-    this.realHandler = createHandler(null, parama, null);
-    AppMethodBeat.o(182942);
-  }
-  
-  public ap(com.tencent.e.j.a parama, a parama1)
-  {
-    AppMethodBeat.i(182943);
-    this.lock = new Object();
-    Objects.requireNonNull(parama);
-    this.realHandler = createHandler(null, parama, parama1);
-    AppMethodBeat.o(182943);
-  }
-  
-  public ap(a parama)
-  {
-    AppMethodBeat.i(157625);
-    this.lock = new Object();
-    this.realHandler = createHandler(Looper.myLooper(), com.tencent.e.j.a.fVU(), parama);
-    AppMethodBeat.o(157625);
-  }
-  
-  public ap(String paramString)
-  {
-    AppMethodBeat.i(157628);
-    this.lock = new Object();
-    this.realHandler = createHandler(null, com.tencent.e.j.a.aZF(paramString), null);
-    AppMethodBeat.o(157628);
-  }
-  
-  public ap(String paramString, a parama)
-  {
-    AppMethodBeat.i(157627);
-    this.lock = new Object();
-    Objects.requireNonNull(paramString);
-    this.realHandler = createHandler(null, com.tencent.e.j.a.aZF(paramString), parama);
-    AppMethodBeat.o(157627);
-  }
-  
-  public static Handler createFreeHandler(Looper paramLooper)
-  {
-    AppMethodBeat.i(182957);
-    paramLooper = new Handler(paramLooper);
-    AppMethodBeat.o(182957);
-    return paramLooper;
-  }
-  
-  private com.tencent.e.d.a createHandler(Looper paramLooper, com.tencent.e.j.a parama, a parama1)
-  {
-    AppMethodBeat.i(182958);
-    if ((paramLooper == Looper.getMainLooper()) || (parama == com.tencent.e.j.a.fVT()))
+    AppMethodBeat.i(156384);
+    StringBuilder localStringBuilder = new StringBuilder().append(b.asb()).append("mmslot/").append(paramString).append('/');
+    if (paramLong > 0L) {}
+    for (paramString = paramLong + '/';; paramString = "")
     {
-      paramLooper = createLooperHandler(Looper.getMainLooper(), parama1);
-      AppMethodBeat.o(182958);
-      return paramLooper;
+      paramString = paramString;
+      AppMethodBeat.o(156384);
+      return paramString;
     }
-    if (parama != null)
-    {
-      paramLooper = createSerialHandler(parama, parama1);
-      AppMethodBeat.o(182958);
-      return paramLooper;
-    }
-    if (paramLooper != null)
-    {
-      paramLooper = createLooperHandler(paramLooper, parama1);
-      AppMethodBeat.o(182958);
-      return paramLooper;
-    }
-    paramLooper = new RuntimeException("looper and serial is null!");
-    AppMethodBeat.o(182958);
-    throw paramLooper;
   }
   
-  private com.tencent.e.d.a createLooperHandler(Looper paramLooper, a parama)
+  protected final void bV(String paramString, long paramLong)
   {
-    AppMethodBeat.i(182959);
-    paramLooper = new b(new Handler(paramLooper, parama)
+    AppMethodBeat.i(156387);
+    p.h(paramString, "slotKey");
+    AppMethodBeat.o(156387);
+  }
+  
+  protected final boolean bW(String paramString, long paramLong)
+  {
+    AppMethodBeat.i(156388);
+    p.h(paramString, "slotKey");
+    paramString = new k(bY(paramString, paramLong));
+    if ((paramString.exists()) && (paramString.length() > 0L))
     {
-      public final void dispatchMessage(Message paramAnonymousMessage)
+      AppMethodBeat.o(156388);
+      return true;
+    }
+    AppMethodBeat.o(156388);
+    return false;
+  }
+  
+  protected final String getPrefix()
+  {
+    return this.iqJ;
+  }
+  
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "T", "Lkotlinx/coroutines/CoroutineScope;", "invoke", "(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;", "com/tencent/mm/sdk/platformtools/MMBatchRunKt$batchRun$2", "com/tencent/mm/sdk/platformtools/MMFileSlotManager$$special$$inlined$batchRun$1"})
+  public static final class a
+    extends d.d.b.a.j
+    implements m<ah, d<? super z>, Object>
+  {
+    int label;
+    Object ocA;
+    private ah ocz;
+    
+    public a(long paramLong, String paramString, d paramd, ap paramap)
+    {
+      super();
+    }
+    
+    public final d<z> a(Object paramObject, d<?> paramd)
+    {
+      AppMethodBeat.i(175892);
+      p.h(paramd, "completion");
+      paramd = new a(this.opu, this.kAY, paramd, this.IxT);
+      paramd.ocz = ((ah)paramObject);
+      AppMethodBeat.o(175892);
+      return paramd;
+    }
+    
+    public final Object cR(Object paramObject)
+    {
+      AppMethodBeat.i(175891);
+      Object localObject1 = a.Nif;
+      switch (this.label)
       {
-        AppMethodBeat.i(182938);
-        long l = System.currentTimeMillis();
-        ap.access$002(ap.this, paramAnonymousMessage);
-        super.dispatchMessage(paramAnonymousMessage);
-        ap.access$002(ap.this, null);
-        l = System.currentTimeMillis() - l;
-        Thread localThread = Thread.currentThread();
-        if (this.IdM == localThread.getId()) {
-          if (l < 300L) {}
-        }
-        for (;;)
+      default: 
+        paramObject = new IllegalStateException("call to 'resume' before 'invoke' with coroutine");
+        AppMethodBeat.o(175891);
+        throw paramObject;
+      case 0: 
+        paramObject = this.ocz;
+        long l = this.opu;
+        this.ocA = paramObject;
+        this.label = 1;
+        if (at.a(l, this) == localObject1)
         {
-          ad.w("Handler#Monitor", "This msg handle so slow[%sms]! runnable=%s callback=%s thread=%s", new Object[] { Long.valueOf(l), paramAnonymousMessage.getCallback(), this.IdN, localThread.getName() });
-          do
+          AppMethodBeat.o(175891);
+          return localObject1;
+        }
+        break;
+      case 1: 
+        paramObject = (ah)this.ocA;
+      }
+      if (!ai.a(paramObject))
+      {
+        paramObject = z.Nhr;
+        AppMethodBeat.o(175891);
+        return paramObject;
+      }
+      synchronized (bz.IBe)
+      {
+        paramObject = bz.IBe;
+        localObject1 = bz.fpY().get(this.kAY);
+        paramObject = localObject1;
+        if (!(localObject1 instanceof Queue)) {
+          paramObject = null;
+        }
+        paramObject = (Queue)paramObject;
+        if (paramObject != null)
+        {
+          localObject1 = bz.IBe;
+          bz.fpY().remove(this.kAY);
+          paramObject = new ArrayList((Collection)paramObject);
+          if (paramObject == null) {
+            break label364;
+          }
+          localObject1 = (Iterable)paramObject;
+          paramObject = (Collection)new ArrayList();
+          localObject1 = ((Iterable)localObject1).iterator();
+          while (((Iterator)localObject1).hasNext())
           {
-            AppMethodBeat.o(182938);
-            return;
-          } while (l < 5000L);
+            ??? = (List)((Iterator)localObject1).next();
+            if (??? == null) {
+              p.gkB();
+            }
+            d.a.j.a(paramObject, (Iterable)???);
+          }
         }
+        paramObject = null;
       }
-      
-      public final void handleMessage(Message paramAnonymousMessage)
+      paramObject = (List)paramObject;
+      if (!paramObject.isEmpty())
       {
-        AppMethodBeat.i(182939);
-        ap.this.handleMessage(paramAnonymousMessage);
-        AppMethodBeat.o(182939);
-      }
-    });
-    AppMethodBeat.o(182959);
-    return paramLooper;
-  }
-  
-  @SuppressLint({"HandlerLeak"})
-  private com.tencent.e.d.a createSerialHandler(com.tencent.e.j.a parama, a parama1)
-  {
-    AppMethodBeat.i(182960);
-    parama = new c(parama, parama1)
-    {
-      public final void dispatchMessage(Message paramAnonymousMessage)
-      {
-        AppMethodBeat.i(182940);
-        long l = System.currentTimeMillis();
-        ap.access$002(ap.this, paramAnonymousMessage);
-        super.dispatchMessage(paramAnonymousMessage);
-        ap.access$002(ap.this, null);
-        l = System.currentTimeMillis() - l;
-        Thread localThread = Thread.currentThread();
-        if (this.IdM == localThread.getId()) {
-          if (l < 300L) {}
-        }
-        for (;;)
+        ae.i(this.IxT.TAG, "clear file slots:\n" + d.a.j.a((Iterable)paramObject, (CharSequence)"\n", null, null, 0, null, null, 62));
+        h.MqF.aP((Runnable)new Runnable()
         {
-          ad.w("Handler#Monitor", "This msg handle so slow[%sms]! runnable=%s callback=%s thread=%s", new Object[] { Long.valueOf(l), paramAnonymousMessage.getCallback(), this.IdN, localThread.getName() });
-          do
+          public final void run()
           {
-            AppMethodBeat.o(182940);
-            return;
-          } while (l < 5000L);
-        }
+            AppMethodBeat.i(175890);
+            Iterator localIterator = ((Iterable)this.IxU).iterator();
+            while (localIterator.hasNext()) {
+              o.deleteDir((String)localIterator.next());
+            }
+            AppMethodBeat.o(175890);
+          }
+        });
       }
-      
-      public final void handleMessage(Message paramAnonymousMessage)
-      {
-        AppMethodBeat.i(182941);
-        ap.this.handleMessage(paramAnonymousMessage);
-        AppMethodBeat.o(182941);
-      }
-    };
-    AppMethodBeat.o(182960);
-    return parama;
-  }
-  
-  public final void dispatchMessage(Message paramMessage)
-  {
-    AppMethodBeat.i(182946);
-    this.realHandler.dispatchMessage(paramMessage);
-    AppMethodBeat.o(182946);
-  }
-  
-  public void dump(Printer paramPrinter, String paramString)
-  {
-    AppMethodBeat.i(157656);
-    this.realHandler.dump(paramPrinter, paramString);
-    AppMethodBeat.o(157656);
-  }
-  
-  public boolean executeOrSendMessage(Message paramMessage)
-  {
-    AppMethodBeat.i(182945);
-    boolean bool = this.realHandler.executeOrSendMessage(paramMessage);
-    AppMethodBeat.o(182945);
-    return bool;
-  }
-  
-  public Looper getLooper()
-  {
-    AppMethodBeat.i(157655);
-    Looper localLooper = this.realHandler.getLooper();
-    AppMethodBeat.o(157655);
-    return localLooper;
-  }
-  
-  public String getMessageName(Message paramMessage)
-  {
-    AppMethodBeat.i(157629);
-    paramMessage = this.realHandler.getMessageName(paramMessage);
-    AppMethodBeat.o(157629);
-    return paramMessage;
-  }
-  
-  public Message getRunningMessage()
-  {
-    return this.runningMsg;
-  }
-  
-  public final Handler getSelf()
-  {
-    AppMethodBeat.i(182952);
-    Handler localHandler = this.realHandler.getSelf();
-    AppMethodBeat.o(182952);
-    return localHandler;
-  }
-  
-  public com.tencent.e.j.a getSerial()
-  {
-    AppMethodBeat.i(182948);
-    com.tencent.e.j.a locala = this.realHandler.getSerial();
-    AppMethodBeat.o(182948);
-    return locala;
-  }
-  
-  public String getSerialTag()
-  {
-    AppMethodBeat.i(182947);
-    String str = this.realHandler.getSerialTag();
-    AppMethodBeat.o(182947);
-    return str;
-  }
-  
-  public void handleMessage(Message paramMessage) {}
-  
-  public boolean hasMessages(int paramInt)
-  {
-    AppMethodBeat.i(157653);
-    boolean bool = this.realHandler.hasMessages(paramInt);
-    AppMethodBeat.o(157653);
-    return bool;
-  }
-  
-  public boolean hasMessages(int paramInt, Object paramObject)
-  {
-    AppMethodBeat.i(157654);
-    boolean bool = this.realHandler.hasMessages(paramInt, paramObject);
-    AppMethodBeat.o(157654);
-    return bool;
-  }
-  
-  public boolean isQuit()
-  {
-    AppMethodBeat.i(182949);
-    boolean bool = this.realHandler.isQuit();
-    AppMethodBeat.o(182949);
-    return bool;
-  }
-  
-  public void join()
-  {
-    AppMethodBeat.i(182955);
-    join(0L);
-    AppMethodBeat.o(182955);
-  }
-  
-  public void join(long paramLong)
-  {
-    AppMethodBeat.i(182956);
-    long l2;
-    synchronized (this.lock)
+      label364:
+      paramObject = bz.IBe;
+      bz.fpX().remove(this.kAY);
+      paramObject = z.Nhr;
+      AppMethodBeat.o(175891);
+      return paramObject;
+    }
+    
+    public final Object p(Object paramObject1, Object paramObject2)
     {
-      l2 = System.currentTimeMillis();
-      if (paramLong < 0L)
-      {
-        IllegalArgumentException localIllegalArgumentException = new IllegalArgumentException("timeout value is negative");
-        AppMethodBeat.o(182956);
-        throw localIllegalArgumentException;
-      }
+      AppMethodBeat.i(175893);
+      paramObject1 = ((a)a(paramObject1, (d)paramObject2)).cR(z.Nhr);
+      AppMethodBeat.o(175893);
+      return paramObject1;
     }
-    if (paramLong == 0L) {
-      while (!isQuit()) {
-        this.lock.wait(paramLong);
-      }
-    }
-    for (;;)
+  }
+  
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "<anonymous parameter 0>", "Lcom/tencent/mm/vfs/VFSFile;", "kotlin.jvm.PlatformType", "name", "", "accept"})
+  static final class b
+    implements s
+  {
+    b(long paramLong) {}
+    
+    public final boolean xH(String paramString)
     {
-      if (!isQuit())
-      {
-        Object localObject1;
-        l1 = paramLong - localObject1;
-        if (l1 > 0L)
-        {
-          this.lock.wait(l1);
-          l1 = System.currentTimeMillis() - l2;
-          continue;
-        }
-      }
-      AppMethodBeat.o(182956);
-      return;
-      long l1 = 0L;
+      AppMethodBeat.i(175894);
+      boolean bool = p.i(paramString, String.valueOf(this.IxV));
+      AppMethodBeat.o(175894);
+      return bool ^ true;
     }
   }
-  
-  public Message obtainMessage()
-  {
-    AppMethodBeat.i(157630);
-    Message localMessage = this.realHandler.obtainMessage();
-    AppMethodBeat.o(157630);
-    return localMessage;
-  }
-  
-  public Message obtainMessage(int paramInt)
-  {
-    AppMethodBeat.i(157631);
-    Message localMessage = this.realHandler.obtainMessage(paramInt);
-    AppMethodBeat.o(157631);
-    return localMessage;
-  }
-  
-  public Message obtainMessage(int paramInt1, int paramInt2, int paramInt3)
-  {
-    AppMethodBeat.i(157633);
-    Message localMessage = this.realHandler.obtainMessage(paramInt1, paramInt2, paramInt3);
-    AppMethodBeat.o(157633);
-    return localMessage;
-  }
-  
-  public Message obtainMessage(int paramInt1, int paramInt2, int paramInt3, Object paramObject)
-  {
-    AppMethodBeat.i(157634);
-    paramObject = this.realHandler.obtainMessage(paramInt1, paramInt2, paramInt3, paramObject);
-    AppMethodBeat.o(157634);
-    return paramObject;
-  }
-  
-  public Message obtainMessage(int paramInt, Object paramObject)
-  {
-    AppMethodBeat.i(157632);
-    paramObject = this.realHandler.obtainMessage(paramInt, paramObject);
-    AppMethodBeat.o(157632);
-    return paramObject;
-  }
-  
-  public boolean post(Runnable paramRunnable)
-  {
-    AppMethodBeat.i(157635);
-    boolean bool = this.realHandler.post(paramRunnable);
-    AppMethodBeat.o(157635);
-    return bool;
-  }
-  
-  public boolean postAtFrontOfQueue(Runnable paramRunnable)
-  {
-    AppMethodBeat.i(157639);
-    boolean bool = this.realHandler.postAtFrontOfQueue(paramRunnable);
-    AppMethodBeat.o(157639);
-    return bool;
-  }
-  
-  public boolean postAtTime(Runnable paramRunnable, long paramLong)
-  {
-    AppMethodBeat.i(157636);
-    boolean bool = this.realHandler.postAtTime(paramRunnable, paramLong);
-    AppMethodBeat.o(157636);
-    return bool;
-  }
-  
-  public boolean postAtTime(Runnable paramRunnable, Object paramObject, long paramLong)
-  {
-    AppMethodBeat.i(157637);
-    boolean bool = this.realHandler.postAtTime(paramRunnable, paramObject, paramLong);
-    AppMethodBeat.o(157637);
-    return bool;
-  }
-  
-  public boolean postDelayed(Runnable paramRunnable, long paramLong)
-  {
-    AppMethodBeat.i(157638);
-    boolean bool = this.realHandler.postDelayed(paramRunnable, paramLong);
-    AppMethodBeat.o(157638);
-    return bool;
-  }
-  
-  public boolean postDelayed(Runnable paramRunnable, Object paramObject, long paramLong)
-  {
-    AppMethodBeat.i(182944);
-    boolean bool = this.realHandler.postDelayed(paramRunnable, paramObject, paramLong);
-    AppMethodBeat.o(182944);
-    return bool;
-  }
-  
-  @Deprecated
-  public final boolean postToWorker(Runnable paramRunnable)
-  {
-    AppMethodBeat.i(182961);
-    boolean bool = this.realHandler.post(paramRunnable);
-    AppMethodBeat.o(182961);
-    return bool;
-  }
-  
-  public void postUI(Runnable paramRunnable)
-  {
-    AppMethodBeat.i(182953);
-    UIHandler.post(paramRunnable);
-    AppMethodBeat.o(182953);
-  }
-  
-  public void postUIDelayed(Runnable paramRunnable, long paramLong)
-  {
-    AppMethodBeat.i(182954);
-    UIHandler.postDelayed(paramRunnable, paramLong);
-    AppMethodBeat.o(182954);
-  }
-  
-  public boolean quit()
-  {
-    AppMethodBeat.i(182950);
-    synchronized (this.lock)
-    {
-      boolean bool = this.realHandler.quit();
-      this.lock.notifyAll();
-      AppMethodBeat.o(182950);
-      return bool;
-    }
-  }
-  
-  public boolean quitSafely()
-  {
-    AppMethodBeat.i(182951);
-    this.realHandler.post(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(182937);
-        ap.this.quit();
-        AppMethodBeat.o(182937);
-      }
-    });
-    AppMethodBeat.o(182951);
-    return true;
-  }
-  
-  public void removeCallbacks(Runnable paramRunnable)
-  {
-    AppMethodBeat.i(157641);
-    this.realHandler.removeCallbacks(paramRunnable);
-    AppMethodBeat.o(157641);
-  }
-  
-  public void removeCallbacks(Runnable paramRunnable, Object paramObject)
-  {
-    AppMethodBeat.i(157642);
-    this.realHandler.removeCallbacks(paramRunnable, paramObject);
-    AppMethodBeat.o(157642);
-  }
-  
-  public void removeCallbacksAndMessages(Object paramObject)
-  {
-    AppMethodBeat.i(157652);
-    this.realHandler.removeCallbacksAndMessages(paramObject);
-    AppMethodBeat.o(157652);
-  }
-  
-  public void removeMessages(int paramInt)
-  {
-    AppMethodBeat.i(157650);
-    this.realHandler.removeMessages(paramInt);
-    AppMethodBeat.o(157650);
-  }
-  
-  public void removeMessages(int paramInt, Object paramObject)
-  {
-    AppMethodBeat.i(157651);
-    this.realHandler.removeMessages(paramInt, paramObject);
-    AppMethodBeat.o(157651);
-  }
-  
-  public boolean sendEmptyMessage(int paramInt)
-  {
-    AppMethodBeat.i(157644);
-    boolean bool = this.realHandler.sendEmptyMessage(paramInt);
-    AppMethodBeat.o(157644);
-    return bool;
-  }
-  
-  public boolean sendEmptyMessageAtTime(int paramInt, long paramLong)
-  {
-    AppMethodBeat.i(157646);
-    boolean bool = this.realHandler.sendEmptyMessageAtTime(paramInt, paramLong);
-    AppMethodBeat.o(157646);
-    return bool;
-  }
-  
-  public boolean sendEmptyMessageDelayed(int paramInt, long paramLong)
-  {
-    AppMethodBeat.i(157645);
-    boolean bool = this.realHandler.sendEmptyMessageDelayed(paramInt, paramLong);
-    AppMethodBeat.o(157645);
-    return bool;
-  }
-  
-  public boolean sendMessage(Message paramMessage)
-  {
-    AppMethodBeat.i(157643);
-    boolean bool = this.realHandler.sendMessage(paramMessage);
-    AppMethodBeat.o(157643);
-    return bool;
-  }
-  
-  public boolean sendMessageAtFrontOfQueue(Message paramMessage)
-  {
-    AppMethodBeat.i(157649);
-    boolean bool = this.realHandler.sendMessageAtFrontOfQueue(paramMessage);
-    AppMethodBeat.o(157649);
-    return bool;
-  }
-  
-  public final boolean sendMessageAtTime(Message paramMessage, long paramLong)
-  {
-    AppMethodBeat.i(157648);
-    boolean bool = this.realHandler.sendMessageAtTime(paramMessage, paramLong);
-    AppMethodBeat.o(157648);
-    return bool;
-  }
-  
-  public boolean sendMessageDelayed(Message paramMessage, long paramLong)
-  {
-    AppMethodBeat.i(157647);
-    boolean bool = this.realHandler.sendMessageDelayed(paramMessage, paramLong);
-    AppMethodBeat.o(157647);
-    return bool;
-  }
-  
-  public void setHasDefaultLooper(boolean paramBoolean)
-  {
-    if ((this.realHandler instanceof c)) {
-      ((c)this.realHandler).LVH = paramBoolean;
-    }
-  }
-  
-  public void setLogging(boolean paramBoolean)
-  {
-    if ((this.realHandler instanceof c)) {
-      ((c)this.realHandler).LVn = paramBoolean;
-    }
-  }
-  
-  public String toString()
-  {
-    AppMethodBeat.i(157657);
-    String str = this.realHandler.toString();
-    AppMethodBeat.o(157657);
-    return str;
-  }
-  
-  public static abstract interface a
-    extends Handler.Callback
-  {}
 }
 
 

@@ -11,28 +11,28 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class bp
 {
-  LinearLayout AaI;
-  LinearLayout AaJ;
-  SnsCommentShowAbLayout Aqs = null;
+  SnsCommentShowAbLayout AHG = null;
+  LinearLayout ArV;
+  LinearLayout ArW;
   Context mContext;
-  int yYM = -1;
-  private bh zpI;
-  FrameLayout zpe;
+  private bh zGX;
+  FrameLayout zGt;
+  int zpn = -1;
   
   public bp(Context paramContext, bh parambh, FrameLayout paramFrameLayout)
   {
     this.mContext = paramContext;
-    this.zpI = parambh;
-    this.zpe = paramFrameLayout;
+    this.zGX = parambh;
+    this.zGt = paramFrameLayout;
   }
   
-  public final boolean dZN()
+  public final boolean edt()
   {
     AppMethodBeat.i(99749);
-    if (this.Aqs != null)
+    if (this.AHG != null)
     {
-      this.zpe.removeView(this.Aqs);
-      this.Aqs = null;
+      this.zGt.removeView(this.AHG);
+      this.AHG = null;
       AppMethodBeat.o(99749);
       return true;
     }
@@ -40,12 +40,12 @@ public final class bp
     return false;
   }
   
-  final void fm(final View paramView)
+  final void fl(final View paramView)
   {
     AppMethodBeat.i(99748);
     paramView.clearAnimation();
-    paramView.startAnimation(this.zpI.AaH);
-    this.zpI.AaH.setAnimationListener(new Animation.AnimationListener()
+    paramView.startAnimation(this.zGX.ArU);
+    this.zGX.ArU.setAnimationListener(new Animation.AnimationListener()
     {
       public final void onAnimationEnd(Animation paramAnonymousAnimation)
       {
@@ -53,7 +53,7 @@ public final class bp
         if (paramView != null)
         {
           paramView.setVisibility(8);
-          bp.this.dZN();
+          bp.this.edt();
         }
         AppMethodBeat.o(99747);
       }
@@ -67,13 +67,13 @@ public final class bp
   
   final class a
   {
-    View yXL = null;
-    String zpy;
+    String zGN;
+    View zom = null;
     
     public a(String paramString, View paramView)
     {
-      this.zpy = paramString;
-      this.yXL = paramView;
+      this.zGN = paramString;
+      this.zom = paramView;
     }
   }
 }

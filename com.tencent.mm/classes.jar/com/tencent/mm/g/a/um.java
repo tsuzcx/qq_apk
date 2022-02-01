@@ -1,13 +1,10 @@
 package com.tencent.mm.g.a;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class um
   extends b
 {
-  public a dIK;
-  
   public um()
   {
     this((byte)0);
@@ -15,17 +12,8 @@ public final class um
   
   private um(byte paramByte)
   {
-    AppMethodBeat.i(125638);
-    this.dIK = new a();
-    this.IbR = false;
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(125638);
-  }
-  
-  public static final class a
-  {
-    public String doX;
-    public String dzb;
   }
 }
 

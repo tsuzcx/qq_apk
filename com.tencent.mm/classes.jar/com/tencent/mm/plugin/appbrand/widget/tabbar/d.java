@@ -1,33 +1,33 @@
 package com.tencent.mm.plugin.appbrand.widget.tabbar;
 
 import android.graphics.Bitmap;
-import com.tencent.mm.plugin.appbrand.q;
+import com.tencent.mm.plugin.appbrand.r;
 
 public abstract class d
 {
   int index = -1;
-  q jCl;
-  String npQ;
-  c npR;
-  a npS;
-  protected volatile e npT;
+  r jFj;
+  String nva;
+  c nvb;
+  a nvc;
+  protected volatile e nvd;
   
   public d(String paramString, c paramc)
   {
-    this.npQ = paramString;
-    this.npR = paramc;
+    this.nva = paramString;
+    this.nvb = paramc;
   }
   
-  public d(String paramString, c paramc, q paramq)
+  public d(String paramString, c paramc, r paramr)
   {
-    this.npQ = paramString;
-    this.jCl = paramq;
-    this.npR = paramc;
+    this.nva = paramString;
+    this.jFj = paramr;
+    this.nvb = paramc;
   }
   
-  protected final void R(Bitmap paramBitmap)
+  protected final void S(Bitmap paramBitmap)
   {
-    e locale = this.npT;
+    e locale = this.nvd;
     if (locale != null) {
       locale.a(paramBitmap, this);
     }
@@ -35,27 +35,27 @@ public abstract class d
   
   public final void a(a parama)
   {
-    this.npS = parama;
+    this.nvc = parama;
   }
   
   public final void a(e parame)
   {
-    this.npT = parame;
+    this.nvd = parame;
   }
   
-  public abstract void bFL();
+  public abstract void bGG();
   
-  public final String bFM()
+  public final String bGH()
   {
-    if ((this.npQ == null) || (this.npQ.isEmpty())) {
+    if ((this.nva == null) || (this.nva.isEmpty())) {
       return null;
     }
-    return this.npQ;
+    return this.nva;
   }
   
   public final void cancel()
   {
-    this.npT = null;
+    this.nvd = null;
   }
   
   public final void setIndex(int paramInt)

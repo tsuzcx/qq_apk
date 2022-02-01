@@ -12,9 +12,9 @@ import com.tencent.mm.protocal.protobuf.ba;
 import com.tencent.mm.protocal.protobuf.dy;
 import com.tencent.mm.protocal.protobuf.eo;
 import com.tencent.mm.protocal.protobuf.ep;
-import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public final class al
 {
@@ -26,25 +26,25 @@ public final class al
       AppMethodBeat.o(98140);
       return 0;
     }
-    if (paramba.nEf == 6)
+    if (paramba.nJA == 6)
     {
-      if (paramba.FsA == null)
+      if (paramba.FKY == null)
       {
         AppMethodBeat.o(98140);
         return 0;
       }
-      if (paramba.Fsy == null)
+      if (paramba.FKW == null)
       {
         AppMethodBeat.o(98140);
         return 0;
       }
-      if (a.iRH.s(paramContext, paramba.Fsy.iht))
+      if (a.iUA.s(paramContext, paramba.FKW.ikm))
       {
-        i = paramba.FsA.FvX;
+        i = paramba.FKY.FOv;
         AppMethodBeat.o(98140);
         return i;
       }
-      i = paramba.FsA.FvY;
+      i = paramba.FKY.FOw;
       AppMethodBeat.o(98140);
       return i;
     }
@@ -56,48 +56,48 @@ public final class al
   public static void a(Context paramContext, bi parambi, ba paramba)
   {
     AppMethodBeat.i(98141);
-    if ((paramba != null) && (paramba.Fsy != null))
+    if ((paramba != null) && (paramba.FKW != null))
     {
-      Object localObject = paramba.Fsy.iht;
+      Object localObject = paramba.FKW.ikm;
       boolean bool;
-      if (bt.isNullOrNil((String)localObject))
+      if (bu.isNullOrNil((String)localObject))
       {
         bool = false;
         if (!bool) {
           break label465;
         }
-        parambi.Anq = false;
-        if ((paramba.FsC == null) || (paramba.FsD == null)) {
+        parambi.AEE = false;
+        if ((paramba.FLa == null) || (paramba.FLb == null)) {
           break label291;
         }
-        if (!a.iRH.s(paramContext, paramba.Fsy.iht)) {
+        if (!a.iUA.s(paramContext, paramba.FKW.ikm)) {
           break label247;
         }
-        paramContext = paramba.FsC;
+        paramContext = paramba.FLa;
         label84:
-        localObject = ac.fks();
+        localObject = ad.fom();
         if (!((String)localObject).equals("zh_CN")) {
           break label255;
         }
-        paramContext = paramContext.Fwo;
+        paramContext = paramContext.FOM;
         label104:
-        switch (paramba.nEf)
+        switch (paramba.nJA)
         {
         default: 
-          parambi.Anq = false;
+          parambi.AEE = false;
         }
       }
       for (;;)
       {
-        if (bt.isNullOrNil(paramContext))
+        if (bu.isNullOrNil(paramContext))
         {
-          ad.e("MicroMsg.OpenActionContent", "text can not load ?");
-          parambi.Anq = false;
+          ae.e("MicroMsg.OpenActionContent", "text can not load ?");
+          parambi.AEE = false;
         }
         AppMethodBeat.o(98141);
         return;
         localObject = h.m((String)localObject, true, false);
-        if ((localObject == null) || (bt.isNullOrNil(((g)localObject).field_appId)))
+        if ((localObject == null) || (bu.isNullOrNil(((g)localObject).field_appId)))
         {
           bool = false;
           break;
@@ -105,19 +105,19 @@ public final class al
         if ((((g)localObject).field_appInfoFlag & 0x20) > 0) {}
         for (bool = true;; bool = false)
         {
-          ad.v("MicroMsg.AppInfoLogic", "canShowSNSTail, appid = %s, ret = %b", new Object[] { ((g)localObject).field_appId, Boolean.valueOf(bool) });
+          ae.v("MicroMsg.AppInfoLogic", "canShowSNSTail, appid = %s, ret = %b", new Object[] { ((g)localObject).field_appId, Boolean.valueOf(bool) });
           break;
         }
         label247:
-        paramContext = paramba.FsD;
+        paramContext = paramba.FLb;
         break label84;
         label255:
         if ((((String)localObject).equals("zh_TW")) || (((String)localObject).equals("zh_HK")))
         {
-          paramContext = paramContext.Fwp;
+          paramContext = paramContext.FON;
           break label104;
         }
-        paramContext = paramContext.Fwn;
+        paramContext = paramContext.FOL;
         break label104;
         label291:
         if (paramba == null) {
@@ -127,7 +127,7 @@ public final class al
         {
           try
           {
-            if (bt.isNullOrNil((String)localObject)) {
+            if (bu.isNullOrNil((String)localObject)) {
               continue;
             }
             int i = paramContext.getResources().getIdentifier((String)localObject, "string", paramContext.getPackageName());
@@ -140,36 +140,36 @@ public final class al
           {
             paramContext = "";
           }
-          if (paramba.nEf == 6)
+          if (paramba.nJA == 6)
           {
-            if (paramba.FsB == null) {
+            if (paramba.FKZ == null) {
               localObject = "";
-            } else if (a.iRH.s(paramContext, paramba.Fsy.iht)) {
-              localObject = paramba.FsB.Fwq;
+            } else if (a.iUA.s(paramContext, paramba.FKW.ikm)) {
+              localObject = paramba.FKZ.FOO;
             } else {
-              localObject = paramba.FsB.Fwr;
+              localObject = paramba.FKZ.FOP;
             }
           }
           else {
-            localObject = paramba.Fsz;
+            localObject = paramba.FKX;
           }
         }
         break label104;
-        parambi.Ans = paramContext;
-        parambi.Anq = true;
+        parambi.AEF = paramContext;
+        parambi.AEE = true;
         continue;
         if (paramba.Scene == 1)
         {
-          parambi.Ans = paramContext;
-          parambi.Anq = true;
+          parambi.AEF = paramContext;
+          parambi.AEE = true;
           continue;
-          parambi.Ans = paramContext;
-          parambi.Anq = true;
+          parambi.AEF = paramContext;
+          parambi.AEE = true;
         }
       }
     }
     label465:
-    parambi.Anq = false;
+    parambi.AEE = false;
     AppMethodBeat.o(98141);
   }
 }

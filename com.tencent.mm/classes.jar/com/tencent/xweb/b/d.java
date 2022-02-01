@@ -6,9 +6,9 @@ public abstract interface d
   
   public abstract boolean exists();
   
-  public abstract d[] gbx();
-  
   public abstract String getPath();
+  
+  public abstract d[] gfZ();
   
   public abstract boolean isDirectory();
   

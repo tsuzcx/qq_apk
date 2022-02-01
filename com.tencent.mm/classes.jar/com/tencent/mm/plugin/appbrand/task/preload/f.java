@@ -4,20 +4,20 @@ import android.annotation.SuppressLint;
 import android.app.Application;
 import android.content.ComponentCallbacks;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.utils.h;
+import com.tencent.mm.plugin.appbrand.utils.i;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/task/preload/PreloadMemoryStressReceiver;", "Lcom/tencent/mm/plugin/appbrand/utils/ApplicationTrimMemoryListener;", "()V", "onTrimMemory", "", "level", "", "setup", "app", "Landroid/app/Application;", "plugin-appbrand-integration_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/task/preload/PreloadMemoryStressReceiver;", "Lcom/tencent/mm/plugin/appbrand/utils/ApplicationTrimMemoryListener;", "()V", "onTrimMemory", "", "level", "", "setup", "app", "Landroid/app/Application;", "plugin-appbrand-integration_release"})
 public final class f
-  extends h
+  extends i
 {
-  public static final f mzn;
+  public static final f mEo;
   
   static
   {
     AppMethodBeat.i(51092);
-    mzn = new f();
+    mEo = new f();
     AppMethodBeat.o(51092);
   }
   
@@ -25,7 +25,7 @@ public final class f
   {
     AppMethodBeat.i(51090);
     p.h(paramApplication, "app");
-    paramApplication.registerComponentCallbacks((ComponentCallbacks)mzn);
+    paramApplication.registerComponentCallbacks((ComponentCallbacks)mEo);
     AppMethodBeat.o(51090);
   }
   

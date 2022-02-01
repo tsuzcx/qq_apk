@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class wy
   extends b
 {
-  public a dLr;
+  public a dMw;
   
   public wy()
   {
@@ -15,29 +15,21 @@ public final class wy
   
   private wy(byte paramByte)
   {
-    AppMethodBeat.i(116055);
-    this.dLr = new a();
-    this.IbR = false;
+    AppMethodBeat.i(19842);
+    this.dMw = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(116055);
+    AppMethodBeat.o(19842);
   }
   
   public static final class a
   {
-    public String dJr;
-    public String dLj;
-    public byte[] dLl;
-    public String dLs;
-    public int dLt = 0;
-    public String id;
-    public int ret;
-    public String source;
-    public int type;
+    public String userName;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.a.wy
  * JD-Core Version:    0.7.0.1
  */

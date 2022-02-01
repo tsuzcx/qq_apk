@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import com.jg.JgClassChecked;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.ui.MMActivity;
 
 @JgClassChecked(author=20, fComment="checked", lastDate="20150202", reviewer=20, vComment={com.jg.EType.ACTIVITYCHECK})
@@ -19,7 +19,7 @@ public class QQCallbackUI
   public void onCreate(Bundle paramBundle)
   {
     AppMethodBeat.i(79668);
-    ad.i("MicroMsg.webview.QQCallbackUI", "QQCallbackUI onCreate");
+    ae.i("MicroMsg.webview.QQCallbackUI", "QQCallbackUI onCreate");
     super.onCreate(paramBundle);
     finish();
     AppMethodBeat.o(79668);

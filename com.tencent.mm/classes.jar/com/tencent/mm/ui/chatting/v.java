@@ -1,282 +1,149 @@
 package com.tencent.mm.ui.chatting;
 
+import android.content.Context;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.aw;
 import com.tencent.mm.g.c.ei;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.ba;
-import com.tencent.mm.model.bj;
+import com.tencent.mm.model.bc;
+import com.tencent.mm.model.bl;
 import com.tencent.mm.model.c;
-import com.tencent.mm.model.u;
 import com.tencent.mm.model.w;
-import com.tencent.mm.plugin.messenger.foundation.a.a.i;
-import com.tencent.mm.pluginsdk.ui.chat.j;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.am;
-import com.tencent.mm.storage.ay;
-import com.tencent.mm.storage.bu;
-import com.tencent.mm.storage.emotion.EmojiInfo;
-import com.tencent.mm.ui.MMFragment;
-import com.tencent.mm.ui.base.t;
-import com.tencent.mm.ui.chatting.e.a;
+import com.tencent.mm.pluginsdk.ui.a.b;
+import com.tencent.mm.pluginsdk.ui.span.k;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.bv;
+import com.tencent.mm.ui.r;
 
 public final class v
-  implements j
+  extends r<bv>
 {
-  private String JAP;
-  private boolean JDc;
-  private boolean JDd;
-  private a Jdu;
-  private am contact;
+  private boolean JSi;
+  public a JXf;
+  private String hQa;
+  private String tJz;
+  public String talker;
   
-  public v(a parama, am paramam, String paramString)
+  public v(Context paramContext, bv parambv, String paramString1, String paramString2, boolean paramBoolean)
   {
-    AppMethodBeat.i(34684);
-    this.JDc = true;
-    this.JDd = true;
-    this.Jdu = parama;
-    this.contact = paramam;
-    this.JAP = paramString;
-    if (am.zs(this.JAP)) {
-      this.JDd = false;
+    super(paramContext, parambv);
+    this.talker = paramString1;
+    this.hQa = paramString2;
+    this.JSi = paramBoolean;
+  }
+  
+  private String bh(bv parambv)
+  {
+    if (parambv.field_isSend == 1) {
+      return this.hQa;
     }
-    if (am.aSP(this.JAP)) {
-      this.JDc = false;
+    return this.talker;
+  }
+  
+  private CharSequence bi(bv parambv)
+  {
+    AppMethodBeat.i(34632);
+    if (parambv.field_createTime == 9223372036854775807L)
+    {
+      AppMethodBeat.o(34632);
+      return "";
     }
-    if (am.aSN(this.JAP)) {
-      this.JDc = false;
+    parambv = com.tencent.mm.pluginsdk.i.i.c(this.context, parambv.field_createTime, true);
+    AppMethodBeat.o(34632);
+    return parambv;
+  }
+  
+  public final void JN(String paramString)
+  {
+    AppMethodBeat.i(34629);
+    this.tJz = paramString;
+    if (!bu.isNullOrNil(this.tJz))
+    {
+      dhl();
+      ZD();
     }
-    if ((this.contact != null) && (am.zs(this.contact.field_username))) {
-      parama = this.JAP;
+    AppMethodBeat.o(34629);
+  }
+  
+  public final void ZD()
+  {
+    AppMethodBeat.i(34630);
+    bc.aCg();
+    setCursor(c.azI().hY(this.talker, this.tJz));
+    if ((this.JXf != null) && (!bu.isNullOrNil(this.tJz))) {
+      this.JXf.adA(getCount());
+    }
+    super.notifyDataSetChanged();
+    AppMethodBeat.o(34630);
+  }
+  
+  public final void ZE()
+  {
+    AppMethodBeat.i(34631);
+    dhl();
+    ZD();
+    AppMethodBeat.o(34631);
+  }
+  
+  public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    AppMethodBeat.i(34628);
+    Object localObject;
+    if (paramView == null)
+    {
+      paramView = View.inflate(this.context, 2131495321, null);
+      paramViewGroup = new b((byte)0);
+      paramViewGroup.fQl = ((ImageView)paramView.findViewById(2131297008));
+      paramViewGroup.fQm = ((TextView)paramView.findViewById(2131302867));
+      paramViewGroup.oah = ((TextView)paramView.findViewById(2131306207));
+      paramViewGroup.JXg = ((TextView)paramView.findViewById(2131302555));
+      paramView.setTag(paramViewGroup);
+      localObject = (bv)getItem(paramInt);
+      if (localObject != null)
+      {
+        if ((!this.JSi) || (((ei)localObject).field_isSend != 0)) {
+          break label234;
+        }
+        String str1 = ((ei)localObject).field_content;
+        String str2 = bl.BM(str1);
+        if (!bu.isNullOrNil(str2))
+        {
+          a.b.c(paramViewGroup.fQl, str2);
+          paramViewGroup.fQm.setText(k.b(this.context, w.zP(str2), paramViewGroup.fQm.getTextSize()));
+        }
+        paramViewGroup.oah.setText(bi((bv)localObject));
+        localObject = bl.BN(str1);
+        paramViewGroup.JXg.setText(k.b(this.context, (CharSequence)localObject, paramViewGroup.JXg.getTextSize()));
+      }
     }
     for (;;)
     {
-      if (w.zu(parama)) {
-        this.JDd = false;
-      }
-      AppMethodBeat.o(34684);
-      return;
-      if (this.contact == null) {
-        parama = null;
-      } else {
-        parama = this.contact.field_username;
-      }
+      AppMethodBeat.o(34628);
+      return paramView;
+      paramViewGroup = (b)paramView.getTag();
+      break;
+      label234:
+      a.b.c(paramViewGroup.fQl, bh((bv)localObject));
+      paramViewGroup.fQm.setText(k.b(this.context, w.zP(bh((bv)localObject)), paramViewGroup.fQm.getTextSize()));
+      paramViewGroup.oah.setText(bi((bv)localObject));
+      paramViewGroup.JXg.setText(k.b(this.context, ((ei)localObject).field_content, paramViewGroup.JXg.getTextSize()));
     }
   }
   
-  public final void B(EmojiInfo paramEmojiInfo)
+  public static abstract interface a
   {
-    AppMethodBeat.i(34685);
-    ba.aBQ();
-    if (!c.isSDCardAvailable())
-    {
-      t.g(this.Jdu.JOR.getContext(), this.Jdu.JOR.getContentView());
-      AppMethodBeat.o(34685);
-      return;
-    }
-    if (paramEmojiInfo == null)
-    {
-      AppMethodBeat.o(34685);
-      return;
-    }
-    if ((this.contact.field_username.equals("medianote")) && ((u.aAq() & 0x4000) == 0)) {}
-    for (int i = 1; i != 0; i = 0)
-    {
-      paramEmojiInfo.field_start = 0;
-      paramEmojiInfo.field_state = EmojiInfo.Ofb;
-      ((com.tencent.mm.plugin.emoji.b.d)g.ad(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().updateEmojiInfo(paramEmojiInfo);
-      localObject = new bu();
-      ((bu)localObject).setType(47);
-      ((bu)localObject).tN("medianote");
-      ((bu)localObject).kr(1);
-      if (paramEmojiInfo.Eb()) {
-        ((bu)localObject).setContent(ay.a(u.aAm(), 0L, false, paramEmojiInfo.Lb(), false, ""));
-      }
-      ((bu)localObject).tO(paramEmojiInfo.Lb());
-      ((bu)localObject).qA(bj.Bo(((ei)localObject).field_talker));
-      ((bu)localObject).setStatus(2);
-      ba.aBQ();
-      c.azs().as((bu)localObject);
-      AppMethodBeat.o(34685);
-      return;
-    }
-    com.tencent.mm.pluginsdk.a.d locald = ((com.tencent.mm.plugin.emoji.b.d)g.ad(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr();
-    if (bt.isNullOrNil(this.JAP)) {}
-    for (Object localObject = this.contact.field_username;; localObject = this.JAP)
-    {
-      locald.a((String)localObject, paramEmojiInfo, null);
-      this.Jdu.xR(true);
-      AppMethodBeat.o(34685);
-      return;
-    }
+    public abstract void adA(int paramInt);
   }
   
-  /* Error */
-  public final void M(EmojiInfo paramEmojiInfo)
+  static final class b
   {
-    // Byte code:
-    //   0: ldc 226
-    //   2: invokestatic 27	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: invokestatic 72	com/tencent/mm/model/ba:aBQ	()Lcom/tencent/mm/model/c;
-    //   8: pop
-    //   9: invokestatic 78	com/tencent/mm/model/c:isSDCardAvailable	()Z
-    //   12: ifne +32 -> 44
-    //   15: aload_0
-    //   16: getfield 33	com/tencent/mm/ui/chatting/v:Jdu	Lcom/tencent/mm/ui/chatting/e/a;
-    //   19: getfield 84	com/tencent/mm/ui/chatting/e/a:JOR	Lcom/tencent/mm/ui/chatting/BaseChattingUIFragment;
-    //   22: invokevirtual 90	com/tencent/mm/ui/chatting/BaseChattingUIFragment:getContext	()Landroid/app/Activity;
-    //   25: aload_0
-    //   26: getfield 33	com/tencent/mm/ui/chatting/v:Jdu	Lcom/tencent/mm/ui/chatting/e/a;
-    //   29: getfield 84	com/tencent/mm/ui/chatting/e/a:JOR	Lcom/tencent/mm/ui/chatting/BaseChattingUIFragment;
-    //   32: invokevirtual 96	com/tencent/mm/ui/MMFragment:getContentView	()Landroid/view/View;
-    //   35: invokestatic 102	com/tencent/mm/ui/base/t:g	(Landroid/content/Context;Landroid/view/View;)V
-    //   38: ldc 226
-    //   40: invokestatic 62	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   43: return
-    //   44: aload_1
-    //   45: ifnonnull +9 -> 54
-    //   48: ldc 226
-    //   50: invokestatic 62	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   53: return
-    //   54: new 228	com/tencent/mm/opensdk/modelmsg/WXMediaMessage
-    //   57: dup
-    //   58: invokespecial 229	com/tencent/mm/opensdk/modelmsg/WXMediaMessage:<init>	()V
-    //   61: astore 6
-    //   63: new 231	java/lang/StringBuilder
-    //   66: dup
-    //   67: invokespecial 232	java/lang/StringBuilder:<init>	()V
-    //   70: astore_3
-    //   71: invokestatic 72	com/tencent/mm/model/ba:aBQ	()Lcom/tencent/mm/model/c;
-    //   74: pop
-    //   75: aload_3
-    //   76: invokestatic 235	com/tencent/mm/model/c:azF	()Ljava/lang/String;
-    //   79: invokevirtual 239	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   82: aload_1
-    //   83: invokevirtual 168	com/tencent/mm/storage/emotion/EmojiInfo:Lb	()Ljava/lang/String;
-    //   86: invokevirtual 239	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   89: invokevirtual 242	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   92: astore 7
-    //   94: new 231	java/lang/StringBuilder
-    //   97: dup
-    //   98: invokespecial 232	java/lang/StringBuilder:<init>	()V
-    //   101: aload 7
-    //   103: invokevirtual 239	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   106: ldc 244
-    //   108: invokevirtual 239	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   111: invokevirtual 242	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   114: invokestatic 249	com/tencent/mm/vfs/i:fv	(Ljava/lang/String;)Z
-    //   117: ifeq +98 -> 215
-    //   120: new 231	java/lang/StringBuilder
-    //   123: dup
-    //   124: invokespecial 232	java/lang/StringBuilder:<init>	()V
-    //   127: aload 7
-    //   129: invokevirtual 239	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   132: ldc 244
-    //   134: invokevirtual 239	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   137: invokevirtual 242	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   140: invokestatic 252	com/tencent/mm/vfs/i:aYo	(Ljava/lang/String;)J
-    //   143: l2i
-    //   144: istore_2
-    //   145: aload 6
-    //   147: new 231	java/lang/StringBuilder
-    //   150: dup
-    //   151: invokespecial 232	java/lang/StringBuilder:<init>	()V
-    //   154: aload 7
-    //   156: invokevirtual 239	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   159: ldc 244
-    //   161: invokevirtual 239	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   164: invokevirtual 242	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   167: iconst_0
-    //   168: iload_2
-    //   169: invokestatic 256	com/tencent/mm/vfs/i:aY	(Ljava/lang/String;II)[B
-    //   172: putfield 260	com/tencent/mm/opensdk/modelmsg/WXMediaMessage:thumbData	[B
-    //   175: aload 6
-    //   177: new 262	com/tencent/mm/opensdk/modelmsg/WXEmojiObject
-    //   180: dup
-    //   181: aload 7
-    //   183: invokespecial 264	com/tencent/mm/opensdk/modelmsg/WXEmojiObject:<init>	(Ljava/lang/String;)V
-    //   186: putfield 268	com/tencent/mm/opensdk/modelmsg/WXMediaMessage:mediaObject	Lcom/tencent/mm/opensdk/modelmsg/WXMediaMessage$IMediaObject;
-    //   189: aload 6
-    //   191: aload_1
-    //   192: getfield 271	com/tencent/mm/storage/emotion/EmojiInfo:field_app_id	Ljava/lang/String;
-    //   195: aconst_null
-    //   196: aload_0
-    //   197: getfield 37	com/tencent/mm/ui/chatting/v:JAP	Ljava/lang/String;
-    //   200: iconst_1
-    //   201: aload_1
-    //   202: invokevirtual 168	com/tencent/mm/storage/emotion/EmojiInfo:Lb	()Ljava/lang/String;
-    //   205: invokestatic 276	com/tencent/mm/pluginsdk/model/app/m:a	(Lcom/tencent/mm/opensdk/modelmsg/WXMediaMessage;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;)I
-    //   208: pop
-    //   209: ldc 226
-    //   211: invokestatic 62	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   214: return
-    //   215: aload 7
-    //   217: invokestatic 280	com/tencent/mm/vfs/i:openRead	(Ljava/lang/String;)Ljava/io/InputStream;
-    //   220: astore 4
-    //   222: aload 4
-    //   224: astore_3
-    //   225: aload 6
-    //   227: aload 4
-    //   229: fconst_1
-    //   230: invokestatic 286	com/tencent/mm/sdk/platformtools/BackwardSupportUtil$b:b	(Ljava/io/InputStream;F)Landroid/graphics/Bitmap;
-    //   233: invokevirtual 290	com/tencent/mm/opensdk/modelmsg/WXMediaMessage:setThumbImage	(Landroid/graphics/Bitmap;)V
-    //   236: aload 4
-    //   238: invokestatic 294	com/tencent/mm/sdk/platformtools/bt:d	(Ljava/io/Closeable;)V
-    //   241: goto -66 -> 175
-    //   244: astore 5
-    //   246: aconst_null
-    //   247: astore 4
-    //   249: aload 4
-    //   251: astore_3
-    //   252: ldc_w 296
-    //   255: aload 5
-    //   257: ldc 170
-    //   259: iconst_0
-    //   260: anewarray 4	java/lang/Object
-    //   263: invokestatic 302	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   266: aload 4
-    //   268: astore_3
-    //   269: ldc_w 296
-    //   272: ldc_w 304
-    //   275: invokestatic 308	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   278: aload 4
-    //   280: invokestatic 294	com/tencent/mm/sdk/platformtools/bt:d	(Ljava/io/Closeable;)V
-    //   283: goto -108 -> 175
-    //   286: astore_1
-    //   287: aconst_null
-    //   288: astore_3
-    //   289: aload_3
-    //   290: invokestatic 294	com/tencent/mm/sdk/platformtools/bt:d	(Ljava/io/Closeable;)V
-    //   293: ldc 226
-    //   295: invokestatic 62	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   298: aload_1
-    //   299: athrow
-    //   300: astore_1
-    //   301: goto -12 -> 289
-    //   304: astore 5
-    //   306: goto -57 -> 249
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	309	0	this	v
-    //   0	309	1	paramEmojiInfo	EmojiInfo
-    //   144	25	2	i	int
-    //   70	220	3	localObject	Object
-    //   220	59	4	localInputStream	java.io.InputStream
-    //   244	12	5	localException1	java.lang.Exception
-    //   304	1	5	localException2	java.lang.Exception
-    //   61	165	6	localWXMediaMessage	com.tencent.mm.opensdk.modelmsg.WXMediaMessage
-    //   92	124	7	str	String
-    // Exception table:
-    //   from	to	target	type
-    //   215	222	244	java/lang/Exception
-    //   215	222	286	finally
-    //   225	236	300	finally
-    //   252	266	300	finally
-    //   269	278	300	finally
-    //   225	236	304	java/lang/Exception
+    public TextView JXg;
+    public ImageView fQl;
+    public TextView fQm;
+    public TextView oah;
   }
-  
-  public final void dlA() {}
 }
 
 

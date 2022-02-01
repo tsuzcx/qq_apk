@@ -3,34 +3,34 @@ package com.tencent.mm.plugin.fts.a.a;
 import android.graphics.Color;
 import android.text.TextPaint;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.Iterator;
 import java.util.List;
 
 public final class e
 {
   public TextPaint iU;
-  public CharSequence tum;
-  public h tun;
-  public boolean tuo;
-  public boolean tup;
-  public e.a tuq;
-  public int tur;
-  public float tus;
-  public CharSequence tut;
-  public CharSequence tuu;
-  public String tuv;
-  public String tuw;
+  public CharSequence tFd;
+  public h tFe;
+  public boolean tFf;
+  public boolean tFg;
+  public a tFh;
+  public int tFi;
+  public float tFj;
+  public CharSequence tFk;
+  public CharSequence tFl;
+  public String tFm;
+  public String tFn;
   
   public e()
   {
     AppMethodBeat.i(131679);
-    this.tuq = e.a.tux;
-    this.tur = Color.parseColor("#07C160");
-    this.tut = "";
-    this.tuu = "";
-    this.tuv = "";
-    this.tuw = "";
+    this.tFh = a.tFo;
+    this.tFi = Color.parseColor("#07C160");
+    this.tFk = "";
+    this.tFl = "";
+    this.tFm = "";
+    this.tFn = "";
     AppMethodBeat.o(131679);
   }
   
@@ -38,8 +38,8 @@ public final class e
   {
     AppMethodBeat.i(131682);
     e locale = new e();
-    locale.tum = paramCharSequence;
-    locale.tun = paramh;
+    locale.tFd = paramCharSequence;
+    locale.tFe = paramh;
     AppMethodBeat.o(131682);
     return locale;
   }
@@ -64,11 +64,11 @@ public final class e
   {
     AppMethodBeat.i(131685);
     e locale = new e();
-    locale.tum = paramCharSequence;
-    locale.tun = paramh;
-    locale.tuo = paramBoolean1;
-    locale.tup = paramBoolean2;
-    locale.tus = paramFloat;
+    locale.tFd = paramCharSequence;
+    locale.tFe = paramh;
+    locale.tFf = paramBoolean1;
+    locale.tFg = paramBoolean2;
+    locale.tFj = paramFloat;
     locale.iU = paramTextPaint;
     AppMethodBeat.o(131685);
     return locale;
@@ -78,14 +78,14 @@ public final class e
   {
     AppMethodBeat.i(131686);
     e locale = new e();
-    locale.tum = paramCharSequence1;
-    locale.tun = paramh;
-    locale.tuo = paramBoolean1;
-    locale.tup = paramBoolean2;
-    locale.tus = 400.0F;
+    locale.tFd = paramCharSequence1;
+    locale.tFe = paramh;
+    locale.tFf = paramBoolean1;
+    locale.tFg = paramBoolean2;
+    locale.tFj = 400.0F;
     locale.iU = paramTextPaint;
-    locale.tut = paramCharSequence2;
-    locale.tuu = paramCharSequence3;
+    locale.tFk = paramCharSequence2;
+    locale.tFl = paramCharSequence3;
     AppMethodBeat.o(131686);
     return locale;
   }
@@ -93,17 +93,17 @@ public final class e
   public static final e a(CharSequence paramCharSequence, List<String> paramList)
   {
     AppMethodBeat.i(131680);
-    paramCharSequence = c(paramCharSequence, bt.m(paramList, " "));
+    paramCharSequence = c(paramCharSequence, bu.m(paramList, " "));
     AppMethodBeat.o(131680);
     return paramCharSequence;
   }
   
-  public static final e a(CharSequence paramCharSequence, List<String> paramList, e.a parama, int paramInt)
+  public static final e a(CharSequence paramCharSequence, List<String> paramList, a parama, int paramInt)
   {
     AppMethodBeat.i(131687);
     paramCharSequence = a(paramCharSequence, paramList);
-    paramCharSequence.tuq = parama;
-    paramCharSequence.tur = paramInt;
+    paramCharSequence.tFh = parama;
+    paramCharSequence.tFi = paramInt;
     AppMethodBeat.o(131687);
     return paramCharSequence;
   }
@@ -112,31 +112,46 @@ public final class e
   {
     AppMethodBeat.i(131681);
     e locale = new e();
-    locale.tum = paramCharSequence;
-    locale.tun = h.bn(paramString, false);
-    locale.tuo = false;
-    locale.tup = false;
+    locale.tFd = paramCharSequence;
+    locale.tFe = h.bq(paramString, false);
+    locale.tFf = false;
+    locale.tFg = false;
     AppMethodBeat.o(131681);
     return locale;
+  }
+  
+  public static enum a
+  {
+    static
+    {
+      AppMethodBeat.i(131676);
+      tFo = new a("Foreground", 0);
+      tFp = new a("Background", 1);
+      tFq = new a("CustomTag", 2);
+      tFr = new a[] { tFo, tFp, tFq };
+      AppMethodBeat.o(131676);
+    }
+    
+    private a() {}
   }
   
   public static final class b
     implements Comparable<b>
   {
-    public h.c tuB;
-    public int tuC = -1;
-    public int tuD = -1;
+    public h.c tFs;
+    public int tFt = -1;
+    public int tFu = -1;
     
-    public final String cSK()
+    public final String cVp()
     {
       AppMethodBeat.i(131677);
-      if ((this.tuB != null) && (this.tuB.tuT.size() > 0))
+      if ((this.tFs != null) && (this.tFs.tFK.size() > 0))
       {
-        Object localObject = this.tuB.tuT.iterator();
+        Object localObject = this.tFs.tFK.iterator();
         while (((Iterator)localObject).hasNext())
         {
           h.b localb = (h.b)((Iterator)localObject).next();
-          if (localb.tuR == h.d.tuW)
+          if (localb.tFI == h.d.tFN)
           {
             localObject = localb.content;
             AppMethodBeat.o(131677);
@@ -150,16 +165,16 @@ public final class e
     
     public final boolean isAvailable()
     {
-      return (this.tuC != -1) && (this.tuD != -1);
+      return (this.tFt != -1) && (this.tFu != -1);
     }
     
     public final String toString()
     {
       AppMethodBeat.i(131678);
-      if (this.tuB == null) {}
-      for (String str = "";; str = this.tuB.cSN().replaceAll("​", ","))
+      if (this.tFs == null) {}
+      for (String str = "";; str = this.tFs.cVs().replaceAll("​", ","))
       {
-        str = String.format("FTSQueryHLRequest.Item %s %d %d", new Object[] { str, Integer.valueOf(this.tuC), Integer.valueOf(this.tuD) });
+        str = String.format("FTSQueryHLRequest.Item %s %d %d", new Object[] { str, Integer.valueOf(this.tFt), Integer.valueOf(this.tFu) });
         AppMethodBeat.o(131678);
         return str;
       }
@@ -168,7 +183,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.a.a.e
  * JD-Core Version:    0.7.0.1
  */

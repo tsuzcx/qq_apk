@@ -28,7 +28,7 @@ public abstract class e<V, C extends h<V>>
       if (((k > j) && (i < m)) || ((j > k) && (m < i))) {
         return true;
       }
-    } while (paramq == q.pxG);
+    } while (paramq == q.pEk);
     k = paramSpannable.getSpanFlags(paramObject) & 0x33;
     if (i == j) {
       return e(k, new int[] { 34, 18 });
@@ -45,7 +45,7 @@ public abstract class e<V, C extends h<V>>
     while (i < j)
     {
       Object localObject = arrayOfObject[i];
-      if ((cV(localObject)) && (a(paramSpannable, paramg, localObject, paramq))) {
+      if ((cW(localObject)) && (a(paramSpannable, paramg, localObject, paramq))) {
         localArrayList.add(localObject);
       }
       i += 1;
@@ -65,13 +65,13 @@ public abstract class e<V, C extends h<V>>
     {
       i = 18;
       paramWXRTEditText = paramWXRTEditText.getText();
-      Iterator localIterator = a(paramWXRTEditText, localg, q.pxH).iterator();
+      Iterator localIterator = a(paramWXRTEditText, localg, q.pEl).iterator();
       j = i;
       if (!localIterator.hasNext()) {
         break label233;
       }
       localObject = localIterator.next();
-      boolean bool = cfo().equals(paramV);
+      boolean bool = cgE().equals(paramV);
       k = paramWXRTEditText.getSpanStart(localObject);
       i = j;
       if (k < localg.avj)
@@ -79,7 +79,7 @@ public abstract class e<V, C extends h<V>>
         if (!bool) {
           break label176;
         }
-        localg.fh(localg.avj - k, 0);
+        localg.fi(localg.avj - k, 0);
         i = 34;
       }
       label116:
@@ -89,7 +89,7 @@ public abstract class e<V, C extends h<V>>
         if (!bool) {
           break label206;
         }
-        localg.fh(0, j - localg.OQ);
+        localg.fi(0, j - localg.OQ);
       }
     }
     for (;;)
@@ -100,25 +100,25 @@ public abstract class e<V, C extends h<V>>
       i = 34;
       break;
       label176:
-      cfo();
-      paramWXRTEditText.setSpan(cfn(), k, localg.avj, 33);
+      cgE();
+      paramWXRTEditText.setSpan(cgD(), k, localg.avj, 33);
       i = j;
       break label116;
       label206:
-      cfo();
-      paramWXRTEditText.setSpan(cfn(), localg.OQ, j, 34);
+      cgE();
+      paramWXRTEditText.setSpan(cgD(), localg.OQ, j, 34);
     }
     label233:
     if (paramV != null) {
-      paramWXRTEditText.setSpan(cfn(), localg.avj, localg.OQ, j);
+      paramWXRTEditText.setSpan(cgD(), localg.avj, localg.OQ, j);
     }
   }
   
-  public abstract boolean cV(Object paramObject);
+  public abstract boolean cW(Object paramObject);
   
-  protected abstract h<V> cfn();
+  protected abstract h<V> cgD();
   
-  protected abstract V cfo();
+  protected abstract V cgE();
   
   protected final g r(WXRTEditText paramWXRTEditText)
   {

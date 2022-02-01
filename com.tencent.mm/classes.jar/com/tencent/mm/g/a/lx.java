@@ -6,7 +6,8 @@ import com.tencent.mm.sdk.b.b;
 public final class lx
   extends b
 {
-  public a dzl;
+  public a dAo;
+  public b dAp;
   
   public lx()
   {
@@ -15,21 +16,25 @@ public final class lx
   
   private lx(byte paramByte)
   {
-    AppMethodBeat.i(91209);
-    this.dzl = new a();
-    this.IbR = false;
+    AppMethodBeat.i(149871);
+    this.dAo = new a();
+    this.dAp = new b();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(91209);
+    AppMethodBeat.o(149871);
   }
   
   public static final class a
   {
-    public String dlu;
+    public int action;
+    public String filePath;
   }
+  
+  public static final class b {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.g.a.lx
  * JD-Core Version:    0.7.0.1
  */

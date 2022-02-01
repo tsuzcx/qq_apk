@@ -1,218 +1,152 @@
 package com.tencent.mm.plugin.appbrand.jsapi.z;
 
-import android.text.TextUtils;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.vfs.i;
-import java.util.ArrayList;
+import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
+import com.tencent.mm.plugin.appbrand.an.1;
+import com.tencent.mm.plugin.appbrand.appcache.WxaPkgWrappingInfo;
+import com.tencent.mm.plugin.appbrand.appcache.j.a;
+import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfig;
+import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
+import com.tencent.mm.plugin.appbrand.config.AppBrandSysConfigWC;
+import com.tencent.mm.plugin.appbrand.config.h;
+import com.tencent.mm.plugin.appbrand.config.k;
+import com.tencent.mm.plugin.appbrand.launching.AppBrandPreInitTask;
+import com.tencent.mm.plugin.appbrand.launching.AppBrandPreInitTask.a;
+import com.tencent.mm.plugin.appbrand.launching.params.LaunchParcel;
+import com.tencent.mm.plugin.appbrand.p;
+import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
+import com.tencent.mm.plugin.appbrand.service.c;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.bv;
+import com.tencent.mm.sdk.platformtools.j;
 
 public final class a
+  extends com.tencent.mm.plugin.appbrand.jsapi.a<c>
 {
-  private static String Rh(String paramString)
+  private static final int CTRL_INDEX = 359;
+  private static final String NAME = "updateApp";
+  
+  public final void a(final c paramc, final int paramInt)
   {
-    AppMethodBeat.i(195040);
-    if (TextUtils.isEmpty(paramString))
+    AppMethodBeat.i(46828);
+    String str = com.tencent.mm.plugin.appbrand.utils.b.vQ(paramc.getRuntime().aXx().uin);
+    final LaunchParcel localLaunchParcel = h.e(paramc.getRuntime().aXx());
+    localLaunchParcel.lRC = bu.fpO();
+    new AppBrandPreInitTask(paramc.getContext(), localLaunchParcel, str, new AppBrandPreInitTask.a()
     {
-      AppMethodBeat.o(195040);
-      return "";
-    }
-    paramString = Rj(Ri(paramString));
-    AppMethodBeat.o(195040);
-    return paramString;
-  }
-  
-  private static String Ri(String paramString)
-  {
-    AppMethodBeat.i(195041);
-    paramString = paramString.substring(paramString.indexOf("base64,") + 7).trim();
-    AppMethodBeat.o(195041);
-    return paramString;
-  }
-  
-  /* Error */
-  private static String Rj(String paramString)
-  {
-    // Byte code:
-    //   0: aconst_null
-    //   1: astore_2
-    //   2: ldc 53
-    //   4: invokestatic 13	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   7: aload_0
-    //   8: iconst_0
-    //   9: invokestatic 59	android/util/Base64:decode	(Ljava/lang/String;I)[B
-    //   12: astore_1
-    //   13: aload_1
-    //   14: ifnull +8 -> 22
-    //   17: aload_1
-    //   18: arraylength
-    //   19: ifne +29 -> 48
-    //   22: ldc 53
-    //   24: invokestatic 22	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   27: ldc 24
-    //   29: areturn
-    //   30: astore_1
-    //   31: ldc 24
-    //   33: aload_1
-    //   34: ldc 61
-    //   36: iconst_0
-    //   37: anewarray 4	java/lang/Object
-    //   40: invokestatic 67	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   43: aconst_null
-    //   44: astore_1
-    //   45: goto -32 -> 13
-    //   48: new 69	java/lang/StringBuilder
-    //   51: dup
-    //   52: ldc 71
-    //   54: invokespecial 75	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   57: invokestatic 81	java/lang/System:currentTimeMillis	()J
-    //   60: invokevirtual 85	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   63: ldc 87
-    //   65: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   68: aload_0
-    //   69: invokevirtual 94	java/lang/String:hashCode	()I
-    //   72: invokevirtual 97	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   75: invokevirtual 100	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   78: astore_0
-    //   79: new 102	com/tencent/mm/vfs/e
-    //   82: dup
-    //   83: invokestatic 108	com/tencent/mm/sdk/platformtools/aj:getContext	()Landroid/content/Context;
-    //   86: invokevirtual 114	android/content/Context:getCacheDir	()Ljava/io/File;
-    //   89: aload_0
-    //   90: invokespecial 117	com/tencent/mm/vfs/e:<init>	(Ljava/io/File;Ljava/lang/String;)V
-    //   93: astore_3
-    //   94: aload_3
-    //   95: invokestatic 123	com/tencent/mm/vfs/i:aj	(Lcom/tencent/mm/vfs/e;)Ljava/io/OutputStream;
-    //   98: astore_0
-    //   99: aload_0
-    //   100: astore_2
-    //   101: aload_0
-    //   102: aload_1
-    //   103: invokevirtual 129	java/io/OutputStream:write	([B)V
-    //   106: aload_0
-    //   107: ifnull +7 -> 114
-    //   110: aload_0
-    //   111: invokevirtual 133	java/io/OutputStream:close	()V
-    //   114: aload_3
-    //   115: invokevirtual 137	com/tencent/mm/vfs/e:fOK	()Landroid/net/Uri;
-    //   118: invokestatic 143	com/tencent/mm/vfs/q:B	(Landroid/net/Uri;)Ljava/lang/String;
-    //   121: astore_0
-    //   122: ldc 53
-    //   124: invokestatic 22	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   127: aload_0
-    //   128: areturn
-    //   129: astore_0
-    //   130: aconst_null
-    //   131: astore_0
-    //   132: aload_0
-    //   133: ifnull +7 -> 140
-    //   136: aload_0
-    //   137: invokevirtual 133	java/io/OutputStream:close	()V
-    //   140: ldc 53
-    //   142: invokestatic 22	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   145: ldc 24
-    //   147: areturn
-    //   148: astore_0
-    //   149: aload_2
-    //   150: ifnull +7 -> 157
-    //   153: aload_2
-    //   154: invokevirtual 133	java/io/OutputStream:close	()V
-    //   157: ldc 53
-    //   159: invokestatic 22	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   162: aload_0
-    //   163: athrow
-    //   164: astore_0
-    //   165: goto -51 -> 114
-    //   168: astore_0
-    //   169: goto -29 -> 140
-    //   172: astore_1
-    //   173: goto -16 -> 157
-    //   176: astore_1
-    //   177: goto -45 -> 132
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	180	0	paramString	String
-    //   12	6	1	arrayOfByte1	byte[]
-    //   30	4	1	localException1	Exception
-    //   44	59	1	arrayOfByte2	byte[]
-    //   172	1	1	localIOException	java.io.IOException
-    //   176	1	1	localException2	Exception
-    //   1	153	2	str	String
-    //   93	22	3	locale	com.tencent.mm.vfs.e
-    // Exception table:
-    //   from	to	target	type
-    //   7	13	30	java/lang/Exception
-    //   94	99	129	java/lang/Exception
-    //   94	99	148	finally
-    //   101	106	148	finally
-    //   110	114	164	java/io/IOException
-    //   136	140	168	java/io/IOException
-    //   153	157	172	java/io/IOException
-    //   101	106	176	java/lang/Exception
-  }
-  
-  public static String[] a(String[] paramArrayOfString1, String[] paramArrayOfString2)
-  {
-    AppMethodBeat.i(195038);
-    ArrayList localArrayList = new ArrayList();
-    int i = 0;
-    while (i < paramArrayOfString1.length)
-    {
-      if ((paramArrayOfString1[i] != null) && (paramArrayOfString2[i] != null) && (!paramArrayOfString1[i].equals(paramArrayOfString2[i]))) {
-        localArrayList.add(paramArrayOfString1[i]);
-      }
-      i += 1;
-    }
-    paramArrayOfString1 = (String[])localArrayList.toArray(new String[localArrayList.size()]);
-    AppMethodBeat.o(195038);
-    return paramArrayOfString1;
-  }
-  
-  public static String[] o(String[] paramArrayOfString)
-  {
-    AppMethodBeat.i(195037);
-    String[] arrayOfString = new String[paramArrayOfString.length];
-    int i = 0;
-    if (i < paramArrayOfString.length)
-    {
-      if ((paramArrayOfString[i] != null) && (paramArrayOfString[i].startsWith("data:image/"))) {
-        arrayOfString[i] = Rh(paramArrayOfString[i]);
-      }
-      for (;;)
+      public final void a(final AppBrandInitConfigWC paramAnonymousAppBrandInitConfigWC, AppBrandStatObject paramAnonymousAppBrandStatObject)
       {
-        i += 1;
-        break;
-        arrayOfString[i] = paramArrayOfString[i];
+        AppMethodBeat.i(222691);
+        if (paramAnonymousAppBrandInitConfigWC != null)
+        {
+          if ((paramc.getRuntime() == null) || (paramc.getRuntime().SB) || (paramc.getRuntime().isDestroyed()))
+          {
+            ae.e("MicroMsg.AppBrand.JsApiUpdateApp", "onResult with newConfig(%s %d %d) but runtime destroyed", new Object[] { paramAnonymousAppBrandInitConfigWC.appId, Integer.valueOf(paramAnonymousAppBrandInitConfigWC.dQv), Integer.valueOf(paramAnonymousAppBrandInitConfigWC.aDD) });
+            AppMethodBeat.o(222691);
+            return;
+          }
+          localLaunchParcel.f(paramAnonymousAppBrandInitConfigWC);
+          if ((paramc.getRuntime().aXw().kbw.jLV == 0) && (paramAnonymousAppBrandInitConfigWC.aDD == paramc.getRuntime().aXw().kbw.pkgVersion) && (!bv.fpT()))
+          {
+            paramc.h(paramInt, a.this.e("fail the current version is the latest version", null));
+            AppMethodBeat.o(222691);
+            return;
+          }
+          paramc.K(new Runnable()
+          {
+            public final void run()
+            {
+              AppMethodBeat.i(46826);
+              Object localObject = new Runnable()
+              {
+                public final void run()
+                {
+                  AppMethodBeat.i(222689);
+                  p localp = a.1.this.kvs.getRuntime();
+                  AppBrandInitConfigWC localAppBrandInitConfigWC = a.1.1.this.jEa;
+                  if ((localp == null) || (localAppBrandInitConfigWC == null))
+                  {
+                    ae.e("MicroMsg.AppBrand.RuntimeRestartHelper", "restart skip with Null runtime");
+                    AppMethodBeat.o(222689);
+                    return;
+                  }
+                  if (!localp.mInitialized)
+                  {
+                    ae.e("MicroMsg.AppBrand.RuntimeRestartHelper", "restart %s, not initialized", new Object[] { localp.mAppId });
+                    AppMethodBeat.o(222689);
+                    return;
+                  }
+                  localp.j(new an.1(localp, localAppBrandInitConfigWC), 0L);
+                  AppMethodBeat.o(222689);
+                }
+              };
+              if ((j.IwD >= 654315264) && (j.a.rT(a.1.this.kvs.getRuntime().jzC.dQv)))
+              {
+                ((Runnable)localObject).run();
+                AppMethodBeat.o(46826);
+                return;
+              }
+              com.tencent.mm.plugin.appbrand.widget.dialog.b localb = new com.tencent.mm.plugin.appbrand.widget.dialog.b(a.1.this.kvs.getContext());
+              localb.setCanceledOnTouchOutside(false);
+              localb.setCancelable(false);
+              Context localContext = a.1.this.kvs.getContext();
+              int i;
+              if (a.1.this.kvs.getRuntime().Ee())
+              {
+                i = 2131755488;
+                localb.setMessage(localContext.getString(i, new Object[] { a.1.this.kvs.getRuntime().aXx().dpI }));
+                localObject = new DialogInterface.OnClickListener()
+                {
+                  public final void onClick(DialogInterface paramAnonymous3DialogInterface, int paramAnonymous3Int)
+                  {
+                    AppMethodBeat.i(46825);
+                    this.loM.run();
+                    AppMethodBeat.o(46825);
+                  }
+                };
+                if (a.1.this.kvs.getRuntime().aXw().kbw.jLV == 0) {
+                  break label229;
+                }
+                localb.a(2131755487, (DialogInterface.OnClickListener)localObject);
+                localb.b(2131755485, new DialogInterface.OnClickListener()
+                {
+                  public final void onClick(DialogInterface paramAnonymous3DialogInterface, int paramAnonymous3Int)
+                  {
+                    AppMethodBeat.i(222690);
+                    a.1.this.kvs.h(a.1.this.cjS, a.this.e("fail user canceled updateApp", null));
+                    AppMethodBeat.o(222690);
+                  }
+                });
+              }
+              for (;;)
+              {
+                a.1.this.kvs.aWd().b(localb);
+                AppMethodBeat.o(46826);
+                return;
+                i = 2131755489;
+                break;
+                label229:
+                localb.a(2131755486, (DialogInterface.OnClickListener)localObject);
+              }
+            }
+          });
+          AppMethodBeat.o(222691);
+          return;
+        }
+        paramc.h(paramInt, a.this.e("fail sync error", null));
+        AppMethodBeat.o(222691);
       }
-    }
-    AppMethodBeat.o(195037);
-    return arrayOfString;
-  }
-  
-  public static void p(String[] paramArrayOfString)
-  {
-    AppMethodBeat.i(195039);
-    int i = 0;
-    for (;;)
-    {
-      if (i < paramArrayOfString.length) {}
-      try
-      {
-        i.deleteFile(paramArrayOfString[i]);
-        label20:
-        i += 1;
-        continue;
-        AppMethodBeat.o(195039);
-        return;
-      }
-      catch (Exception localException)
-      {
-        break label20;
-      }
-    }
+    }).bru();
+    AppMethodBeat.o(46828);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.z.a
  * JD-Core Version:    0.7.0.1
  */

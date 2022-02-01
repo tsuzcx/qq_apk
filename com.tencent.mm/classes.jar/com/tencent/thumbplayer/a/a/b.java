@@ -13,7 +13,7 @@ import java.util.Map;
 
 public abstract interface b
 {
-  public abstract void M(String paramString, int paramInt, long paramLong);
+  public abstract void L(String paramString, int paramInt, long paramLong);
   
   public abstract void a(c.a parama);
   
@@ -39,29 +39,29 @@ public abstract interface b
   
   public abstract void a(e parame, d paramd);
   
-  public abstract void aQ(int paramInt, long paramLong);
-  
   public abstract void aR(int paramInt, long paramLong);
   
   public abstract void aS(int paramInt, long paramLong);
+  
+  public abstract void aT(int paramInt, long paramLong);
   
   public abstract void b(ParcelFileDescriptor paramParcelFileDescriptor);
   
   public abstract void b(f paramf);
   
-  public abstract void bk(String paramString1, String paramString2, String paramString3);
+  public abstract void bl(String paramString1, String paramString2, String paramString3);
   
   public abstract void c(boolean paramBoolean, long paramLong1, long paramLong2);
   
-  public abstract void ci(float paramFloat);
+  public abstract void cg(float paramFloat);
   
-  public abstract void cj(float paramFloat);
-  
-  public abstract n[] fWg();
-  
-  public abstract k[] fWh();
+  public abstract void ch(float paramFloat);
   
   public abstract void g(String paramString1, String paramString2, List<f> paramList);
+  
+  public abstract n[] gaF();
+  
+  public abstract k[] gaG();
   
   public abstract long getBufferedDurationMs();
   
@@ -77,7 +77,7 @@ public abstract interface b
   
   public abstract int getVideoWidth();
   
-  public abstract void kS(int paramInt1, int paramInt2);
+  public abstract void kZ(int paramInt1, int paramInt2);
   
   public abstract void pause();
   
@@ -101,9 +101,9 @@ public abstract interface b
   
   public abstract void stop();
   
-  public abstract void zv(boolean paramBoolean);
+  public abstract void zJ(boolean paramBoolean);
   
-  public abstract void zw(boolean paramBoolean);
+  public abstract void zK(boolean paramBoolean);
 }
 
 

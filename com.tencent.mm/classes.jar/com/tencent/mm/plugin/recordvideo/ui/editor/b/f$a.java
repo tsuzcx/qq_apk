@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.recordvideo.ui.editor.b;
 
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/retriever/SimpleFrameRetriever$Companion;", "", "()V", "TAG", "", "plugin-recordvideo_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/retriever/SimpleFrameRetriever$Companion;", "", "()V", "TAG", "", "plugin-recordvideo_release"})
 public final class f$a {}
 
 

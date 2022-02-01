@@ -2,7 +2,7 @@ package com.tencent.mm.live.view;
 
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/live/view/LiveVisitorPluginLayout$Companion;", "", "()V", "TAG", "", "plugin-logic_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/live/view/LiveVisitorPluginLayout$Companion;", "", "()V", "TAG", "", "plugin-logic_release"})
 public final class LiveVisitorPluginLayout$a {}
 
 

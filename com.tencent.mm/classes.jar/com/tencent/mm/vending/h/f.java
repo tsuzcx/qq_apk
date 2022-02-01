@@ -5,14 +5,14 @@ import com.tencent.mm.vending.c.a;
 
 public final class f
 {
-  private volatile d Lia;
-  volatile a Lil;
+  private volatile d LEC;
+  volatile a LEN;
   
   public f(d paramd, a parama)
   {
     AppMethodBeat.i(74921);
     c(paramd);
-    this.Lil = parama;
+    this.LEN = parama;
     AppMethodBeat.o(74921);
   }
   
@@ -26,19 +26,19 @@ public final class f
       try
       {
         AppMethodBeat.i(177493);
-        locald = this.Lia;
+        locald = this.LEC;
         if (!(parama instanceof e)) {
           break label179;
         }
         e locale = (e)parama;
-        if ("Vending.ANY".equals(locale.Wr())) {
+        if ("Vending.ANY".equals(locale.Wz())) {
           break label179;
         }
-        locald = g.aYa(locale.Wr());
+        locald = g.aZC(locale.Wz());
         if (locald == null)
         {
-          if (this.Lil != null) {
-            this.Lil.interrupt();
+          if (this.LEN != null) {
+            this.LEN.interrupt();
           }
           AppMethodBeat.o(177493);
           return;
@@ -48,22 +48,22 @@ public final class f
           public final void run()
           {
             AppMethodBeat.i(74923);
-            if (f.this.Lil != null) {
-              f.this.Lil.fOd();
+            if (f.this.LEN != null) {
+              f.this.LEN.fSy();
             }
             try
             {
               Object localObject = parama.call(paramObject);
-              if (f.this.Lil != null) {
-                f.this.Lil.eh(localObject);
+              if (f.this.LEN != null) {
+                f.this.LEN.ei(localObject);
               }
               AppMethodBeat.o(74923);
               return;
             }
             catch (ClassCastException localClassCastException)
             {
-              this.Liw.initCause(localClassCastException);
-              RuntimeException localRuntimeException = this.Liw;
+              this.LEY.initCause(localClassCastException);
+              RuntimeException localRuntimeException = this.LEY;
               AppMethodBeat.o(74923);
               throw localRuntimeException;
             }
@@ -72,13 +72,13 @@ public final class f
         if (-1L >= 0L) {
           break label162;
         }
-        if ((paramBoolean) && (g.fOh() == locald))
+        if ((paramBoolean) && (g.fSC() == locald))
         {
           parama.run();
           AppMethodBeat.o(177493);
           continue;
         }
-        locald.w(parama);
+        locald.u(parama);
       }
       finally {}
       AppMethodBeat.o(177493);
@@ -92,7 +92,7 @@ public final class f
   {
     try
     {
-      this.Lia = paramd;
+      this.LEC = paramd;
       return;
     }
     finally
@@ -104,9 +104,9 @@ public final class f
   
   public static abstract interface a
   {
-    public abstract void eh(Object paramObject);
+    public abstract void ei(Object paramObject);
     
-    public abstract void fOd();
+    public abstract void fSy();
     
     public abstract void interrupt();
   }

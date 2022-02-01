@@ -1,19 +1,24 @@
 package com.tencent.mm.plugin.appbrand.jsapi.q;
 
 import android.graphics.Point;
-import com.tencent.mm.plugin.appbrand.page.aa;
+import com.tencent.mm.plugin.appbrand.page.z;
 
 public abstract interface g
 {
-  public abstract void a(aa paramaa, g.a parama);
+  public abstract void a(z paramz, a parama);
   
-  public abstract int bmh();
+  public abstract int bmQ();
   
-  public abstract int bmi();
+  public abstract int bmR();
   
-  public abstract Point bmj();
+  public abstract Point bmS();
   
-  public abstract i bmk();
+  public abstract i bmT();
+  
+  public static abstract interface a
+  {
+    public abstract void dT(int paramInt1, int paramInt2);
+  }
 }
 
 

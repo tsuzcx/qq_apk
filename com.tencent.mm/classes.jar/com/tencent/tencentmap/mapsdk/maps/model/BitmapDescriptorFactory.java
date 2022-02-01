@@ -26,10 +26,10 @@ public final class BitmapDescriptorFactory
   
   static
   {
-    AppMethodBeat.i(195090);
+    AppMethodBeat.i(209863);
     sTencentMapContextList = new CopyOnWriteArrayList();
     sAttachIndex = new AtomicInteger(0);
-    AppMethodBeat.o(195090);
+    AppMethodBeat.o(209863);
   }
   
   public static void attachMapContext(TencentMapContext paramTencentMapContext)
@@ -108,11 +108,11 @@ public final class BitmapDescriptorFactory
   
   public static void detachMapContext(TencentMapContext paramTencentMapContext)
   {
-    AppMethodBeat.i(195088);
+    AppMethodBeat.i(209861);
     if (sTencentMapContextList.remove(paramTencentMapContext)) {
       sAttachIndex.decrementAndGet();
     }
-    AppMethodBeat.o(195088);
+    AppMethodBeat.o(209861);
   }
   
   public static BitmapDescriptor fromAsset(TencentMapContext paramTencentMapContext, String paramString)
@@ -275,15 +275,15 @@ public final class BitmapDescriptorFactory
   
   private static TencentMapContext getActiveMapContext()
   {
-    AppMethodBeat.i(195089);
+    AppMethodBeat.i(209862);
     int i = sAttachIndex.get();
     if ((i > 0) && (i <= sTencentMapContextList.size()))
     {
       TencentMapContext localTencentMapContext = (TencentMapContext)sTencentMapContextList.get(i - 1);
-      AppMethodBeat.o(195089);
+      AppMethodBeat.o(209862);
       return localTencentMapContext;
     }
-    AppMethodBeat.o(195089);
+    AppMethodBeat.o(209862);
     return null;
   }
 }

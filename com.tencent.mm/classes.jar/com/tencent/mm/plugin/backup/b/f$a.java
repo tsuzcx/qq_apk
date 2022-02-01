@@ -3,14 +3,14 @@ package com.tencent.mm.plugin.backup.b;
 public final class f$a
 {
   public long endTime;
-  public String nsV;
-  public int nsW;
+  public String nyq;
+  public int nyr;
   public long startTime;
   
   public f$a(int paramInt, String paramString, long paramLong1, long paramLong2)
   {
-    this.nsW = paramInt;
-    this.nsV = paramString;
+    this.nyr = paramInt;
+    this.nyq = paramString;
     this.startTime = paramLong1;
     this.endTime = paramLong2;
   }

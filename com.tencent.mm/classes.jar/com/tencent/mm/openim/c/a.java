@@ -1,18 +1,18 @@
 package com.tencent.mm.openim.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.e.a;
+import com.tencent.mm.ak.e.a;
 import com.tencent.mm.g.c.ei;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.bj;
+import com.tencent.mm.model.bl;
 import com.tencent.mm.platformtools.z;
 import com.tencent.mm.plugin.messenger.foundation.a.a.i;
 import com.tencent.mm.plugin.messenger.foundation.a.l;
 import com.tencent.mm.plugin.messenger.foundation.a.q;
 import com.tencent.mm.protocal.protobuf.cv;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.bu;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.bv;
 import java.util.Map;
 
 public final class a
@@ -21,45 +21,45 @@ public final class a
   public final void onNewXmlReceived(String paramString, Map<String, String> paramMap, e.a parama)
   {
     AppMethodBeat.i(151260);
-    ad.i("MicroMsg.OpenIMChatRoomAddChatRoomMemberReceiver", "onNewXmlReceived() ");
+    ae.i("MicroMsg.OpenIMChatRoomAddChatRoomMemberReceiver", "onNewXmlReceived() ");
     if (paramMap != null)
     {
-      paramString = parama.gqE;
-      if (bt.jx(paramString.ugm, 10002))
+      paramString = parama.gte;
+      if (bu.jB(paramString.urJ, 10002))
       {
-        paramMap = z.a(paramString.Fvk);
-        if (bt.isNullOrNil(paramMap))
+        paramMap = z.a(paramString.FNI);
+        if (bu.isNullOrNil(paramMap))
         {
-          ad.w("MicroMsg.OpenIMChatRoomAddChatRoomMemberReceiver", "msg content is null");
+          ae.w("MicroMsg.OpenIMChatRoomAddChatRoomMemberReceiver", "msg content is null");
           AppMethodBeat.o(151260);
           return;
         }
-        String str = z.a(paramString.Fvi);
-        bu localbu = ((l)g.ab(l.class)).dlK().aI(str, paramString.xbt);
+        String str = z.a(paramString.FNG);
+        bv localbv = ((l)g.ab(l.class)).doJ().aJ(str, paramString.xrk);
         int i = 0;
-        if (localbu.field_msgId > 0L) {
+        if (localbv.field_msgId > 0L) {
           i = 1;
         }
-        localbu.qz(paramString.xbt);
-        localbu.qA(bj.B(str, paramString.CreateTime));
-        localbu.setType(10002);
-        localbu.setContent(paramMap);
-        localbu.kr(0);
-        localbu.tN(str);
-        localbu.sP(paramString.Fvn);
-        localbu.fsg();
-        bj.a(localbu, parama);
+        localbv.qM(paramString.xrk);
+        localbv.qN(bl.B(str, paramString.CreateTime));
+        localbv.setType(10002);
+        localbv.setContent(paramMap);
+        localbv.kt(0);
+        localbv.ui(str);
+        localbv.tk(paramString.FNL);
+        localbv.fwh();
+        bl.a(localbv, parama);
         if (i == 0)
         {
-          bj.v(localbu);
+          bl.v(localbv);
           AppMethodBeat.o(151260);
           return;
         }
-        ((l)g.ab(l.class)).dlK().b(paramString.xbt, localbu);
+        ((l)g.ab(l.class)).doJ().b(paramString.xrk, localbv);
         AppMethodBeat.o(151260);
         return;
       }
-      ad.i("MicroMsg.OpenIMChatRoomAddChatRoomMemberReceiver", "not new xml type:%d ", new Object[] { Integer.valueOf(paramString.ugm) });
+      ae.i("MicroMsg.OpenIMChatRoomAddChatRoomMemberReceiver", "not new xml type:%d ", new Object[] { Integer.valueOf(paramString.urJ) });
     }
     AppMethodBeat.o(151260);
   }

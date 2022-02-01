@@ -3,25 +3,25 @@ package kotlinx.coroutines.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/coroutines/scheduling/NonBlockingContext;", "Lkotlinx/coroutines/scheduling/TaskContext;", "()V", "taskMode", "", "getTaskMode", "()I", "afterTask", "", "kotlinx-coroutines-core"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/coroutines/scheduling/NonBlockingContext;", "Lkotlinx/coroutines/scheduling/TaskContext;", "()V", "taskMode", "", "getTaskMode", "()I", "afterTask", "", "kotlinx-coroutines-core"})
 public final class h
   implements j
 {
-  public static final h NKV;
-  private static final int fJz = 0;
+  public static final h Oib;
+  private static final int fLC = 0;
   
   static
   {
     AppMethodBeat.i(117993);
-    NKV = new h();
+    Oib = new h();
     AppMethodBeat.o(117993);
   }
   
-  public final void gwv() {}
+  public final void gAX() {}
   
-  public final int gww()
+  public final int gAY()
   {
-    return fJz;
+    return fLC;
   }
 }
 

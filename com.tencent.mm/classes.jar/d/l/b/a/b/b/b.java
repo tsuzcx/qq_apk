@@ -8,11 +8,11 @@ public abstract interface b
 {
   public abstract b a(l paraml, w paramw, ba paramba, a parama);
   
-  public abstract Collection<? extends b> giu();
+  public abstract Collection<? extends b> gmW();
   
-  public abstract b giv();
+  public abstract b gmX();
   
-  public abstract a giw();
+  public abstract a gmY();
   
   public abstract void u(Collection<? extends b> paramCollection);
   
@@ -21,25 +21,25 @@ public abstract interface b
     static
     {
       AppMethodBeat.i(56829);
-      MUj = new a("DECLARATION", 0);
-      MUk = new a("FAKE_OVERRIDE", 1);
-      MUl = new a("DELEGATION", 2);
-      MUm = new a("SYNTHESIZED", 3);
-      MUn = new a[] { MUj, MUk, MUl, MUm };
+      Nro = new a("DECLARATION", 0);
+      Nrp = new a("FAKE_OVERRIDE", 1);
+      Nrq = new a("DELEGATION", 2);
+      Nrr = new a("SYNTHESIZED", 3);
+      Nrs = new a[] { Nro, Nrp, Nrq, Nrr };
       AppMethodBeat.o(56829);
     }
     
     private a() {}
     
-    public final boolean gix()
+    public final boolean gmZ()
     {
-      return this != MUk;
+      return this != Nrp;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.b.b
  * JD-Core Version:    0.7.0.1
  */

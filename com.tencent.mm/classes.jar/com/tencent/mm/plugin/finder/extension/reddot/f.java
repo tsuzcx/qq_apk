@@ -1,20 +1,20 @@
 package com.tencent.mm.plugin.finder.extension.reddot;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.asd;
+import com.tencent.mm.protocal.protobuf.ass;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"print", "", "Lcom/tencent/mm/protocal/protobuf/FinderTipsShowEntranceExtInfo;", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"print", "", "Lcom/tencent/mm/protocal/protobuf/FinderTipsShowEntranceExtInfo;", "plugin-finder_release"})
 public final class f
 {
-  public static final String a(asd paramasd)
+  public static final String a(ass paramass)
   {
-    AppMethodBeat.i(201647);
-    p.h(paramasd, "$this$print");
-    paramasd = "extInfo{tab_type=" + paramasd.Glz + " object_id=" + paramasd.Gqn + '}';
-    AppMethodBeat.o(201647);
-    return paramasd;
+    AppMethodBeat.i(202096);
+    p.h(paramass, "$this$print");
+    paramass = "extInfo{tab_type=" + paramass.GEB + " object_id=" + paramass.GJI + '}';
+    AppMethodBeat.o(202096);
+    return paramass;
   }
 }
 

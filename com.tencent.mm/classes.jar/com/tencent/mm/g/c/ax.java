@@ -8,11 +8,11 @@ public abstract class ax
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eFp = "username".hashCode();
-  private static final int ePS = "cmdbuf".hashCode();
+  private static final int eGY = "username".hashCode();
+  private static final int eRD = "cmdbuf".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eFm = true;
-  private boolean ePR = true;
+  private boolean eGV = true;
+  private boolean eRC = true;
   public byte[] field_cmdbuf;
   public String field_username;
   
@@ -29,11 +29,11 @@ public abstract class ax
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eFp != k) {
+      if (eGY != k) {
         break label65;
       }
       this.field_username = paramCursor.getString(i);
-      this.eFm = true;
+      this.eGV = true;
     }
     for (;;)
     {
@@ -41,7 +41,7 @@ public abstract class ax
       break label20;
       break;
       label65:
-      if (ePS == k) {
+      if (eRD == k) {
         this.field_cmdbuf = paramCursor.getBlob(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
@@ -55,10 +55,10 @@ public abstract class ax
     if (this.field_username == null) {
       this.field_username = "";
     }
-    if (this.eFm) {
+    if (this.eGV) {
       localContentValues.put("username", this.field_username);
     }
-    if (this.ePR) {
+    if (this.eRC) {
       localContentValues.put("cmdbuf", this.field_cmdbuf);
     }
     if (this.systemRowid > 0L) {

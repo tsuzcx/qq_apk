@@ -18,11 +18,11 @@ import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.story.d.a.a;
 import com.tencent.mm.plugin.story.d.a.b;
 import com.tencent.mm.plugin.story.i.j;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.am;
-import com.tencent.mm.storage.bp;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.aj;
+import com.tencent.mm.storage.an;
+import com.tencent.mm.storage.bq;
 import com.tencent.mm.ui.MMActivity;
 import d.g.a.b;
 import d.g.a.m;
@@ -35,24 +35,24 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
-@d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/story/ui/album/StoryFavAlbumUI;", "Lcom/tencent/mm/ui/MMActivity;", "Lcom/tencent/mm/plugin/story/contract/AlbumContract$IFavAlbumView;", "()V", "curDataList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/story/storage/StoryInfo;", "Lkotlin/collections/ArrayList;", "favPanel", "Lcom/tencent/mm/plugin/story/ui/album/StoryFavoritePanel;", "isSelf", "", "mPresenter", "Lcom/tencent/mm/plugin/story/contract/AlbumContract$IFavAlbumPresenter;", "mUsername", "", "tipTv", "Landroid/widget/TextView;", "getLayoutId", "", "goFavGallery", "", "position", "dateList", "goFavSelector", "initActionBar", "initViews", "loadData", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onIsAll", "isAll", "onLoadFavFinish", "datas", "", "isAllEmpty", "onResume", "Companion", "plugin-story_release"})
+@d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/story/ui/album/StoryFavAlbumUI;", "Lcom/tencent/mm/ui/MMActivity;", "Lcom/tencent/mm/plugin/story/contract/AlbumContract$IFavAlbumView;", "()V", "curDataList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/story/storage/StoryInfo;", "Lkotlin/collections/ArrayList;", "favPanel", "Lcom/tencent/mm/plugin/story/ui/album/StoryFavoritePanel;", "isSelf", "", "mPresenter", "Lcom/tencent/mm/plugin/story/contract/AlbumContract$IFavAlbumPresenter;", "mUsername", "", "tipTv", "Landroid/widget/TextView;", "getLayoutId", "", "goFavGallery", "", "position", "dateList", "goFavSelector", "initActionBar", "initViews", "loadData", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onIsAll", "isAll", "onLoadFavFinish", "datas", "", "isAllEmpty", "onResume", "Companion", "plugin-story_release"})
 public final class StoryFavAlbumUI
   extends MMActivity
   implements a.b
 {
-  public static final StoryFavAlbumUI.a AWU;
+  public static final StoryFavAlbumUI.a Bos;
   private static final String TAG = "MicroMsg.StoryFavAlbumUI";
-  private ArrayList<j> AWR;
-  private StoryFavoritePanel AWS;
-  private a.a AWT;
-  private boolean drv;
-  private TextView iCW;
-  private String lEN;
+  private ArrayList<j> Bop;
+  private StoryFavoritePanel Boq;
+  private a.a Bor;
+  private boolean dsB;
+  private TextView iFP;
+  private String lJm;
   
   static
   {
     AppMethodBeat.i(119858);
-    AWU = new StoryFavAlbumUI.a((byte)0);
+    Bos = new StoryFavAlbumUI.a((byte)0);
     TAG = "MicroMsg.StoryFavAlbumUI";
     AppMethodBeat.o(119858);
   }
@@ -60,9 +60,9 @@ public final class StoryFavAlbumUI
   public StoryFavAlbumUI()
   {
     AppMethodBeat.i(119857);
-    this.lEN = "";
-    this.AWR = new ArrayList();
-    this.drv = true;
+    this.lJm = "";
+    this.Bop = new ArrayList();
+    this.dsB = true;
     AppMethodBeat.o(119857);
   }
   
@@ -82,26 +82,26 @@ public final class StoryFavAlbumUI
     Object localObject1;
     while ((i != 0) || (!paramBoolean))
     {
-      this.AWR.clear();
-      this.AWR.addAll((Collection)paramList);
-      localObject1 = this.AWS;
+      this.Bop.clear();
+      this.Bop.addAll((Collection)paramList);
+      localObject1 = this.Boq;
       if (localObject1 != null)
       {
-        paramBoolean = this.drv;
+        paramBoolean = this.dsB;
         p.h(paramList, "favoriteStory");
-        ad.i(((StoryFavoritePanel)localObject1).TAG, "updateFavStory " + paramList.size());
-        Object localObject2 = ((StoryFavoritePanel)localObject1).AXd;
+        ae.i(((StoryFavoritePanel)localObject1).TAG, "updateFavStory " + paramList.size());
+        Object localObject2 = ((StoryFavoritePanel)localObject1).BoB;
         if (localObject2 != null) {
           ((TextView)localObject2).setVisibility(8);
         }
-        localObject2 = ((StoryFavoritePanel)localObject1).AXe;
+        localObject2 = ((StoryFavoritePanel)localObject1).BoC;
         if (localObject2 != null) {
           ((RecyclerView)localObject2).setVisibility(0);
         }
-        ((StoryFavoritePanel)localObject1).drv = paramBoolean;
-        ((StoryFavoritePanel)localObject1).AXh.clear();
-        if ((paramBoolean) && (((StoryFavoritePanel)localObject1).fromScene != StoryFavoritePanel.AXo)) {
-          ((StoryFavoritePanel)localObject1).AXh.add(new StoryFavoritePanel.c(new j(), ((StoryFavoritePanel)localObject1).AWZ));
+        ((StoryFavoritePanel)localObject1).dsB = paramBoolean;
+        ((StoryFavoritePanel)localObject1).BoF.clear();
+        if ((paramBoolean) && (((StoryFavoritePanel)localObject1).fromScene != StoryFavoritePanel.BoM)) {
+          ((StoryFavoritePanel)localObject1).BoF.add(new StoryFavoritePanel.c(new j(), ((StoryFavoritePanel)localObject1).Box));
         }
         paramList = ((Iterable)paramList).iterator();
         for (;;)
@@ -109,33 +109,33 @@ public final class StoryFavAlbumUI
           if (paramList.hasNext())
           {
             localObject2 = (j)paramList.next();
-            ((StoryFavoritePanel)localObject1).AXh.add(new StoryFavoritePanel.c((j)localObject2, ((StoryFavoritePanel)localObject1).AXa));
+            ((StoryFavoritePanel)localObject1).BoF.add(new StoryFavoritePanel.c((j)localObject2, ((StoryFavoritePanel)localObject1).Boy));
             continue;
             i = 0;
             break;
           }
         }
-        ((StoryFavoritePanel)localObject1).AXh.add(new StoryFavoritePanel.c(new j(), ((StoryFavoritePanel)localObject1).xzl));
-        ((StoryFavoritePanel)localObject1).AXf.notifyDataSetChanged();
+        ((StoryFavoritePanel)localObject1).BoF.add(new StoryFavoritePanel.c(new j(), ((StoryFavoritePanel)localObject1).xPh));
+        ((StoryFavoritePanel)localObject1).BoD.notifyDataSetChanged();
         AppMethodBeat.o(119855);
         return;
       }
       AppMethodBeat.o(119855);
       return;
     }
-    this.AWR.clear();
-    paramList = this.iCW;
+    this.Bop.clear();
+    paramList = this.iFP;
     if (paramList != null) {
       paramList.setVisibility(8);
     }
-    paramList = this.AWS;
+    paramList = this.Boq;
     if (paramList != null)
     {
       localObject1 = getContext();
       p.g(localObject1, "context");
       localObject1 = ((AppCompatActivity)localObject1).getResources().getString(2131764202);
       p.g(localObject1, "context.resources.getStr…album_favorite_empty_tip)");
-      paramList.aCo((String)localObject1);
+      paramList.aDH((String)localObject1);
       AppMethodBeat.o(119855);
       return;
     }
@@ -159,75 +159,75 @@ public final class StoryFavAlbumUI
     {
       paramBundle = "";
     }
-    this.lEN = paramBundle;
-    ad.i(TAG, "initViews username=" + this.lEN);
-    paramBundle = g.ajC().ajl().get(2);
+    this.lJm = paramBundle;
+    ae.i(TAG, "initViews username=" + this.lJm);
+    paramBundle = g.ajR().ajA().get(2);
     if (paramBundle == null)
     {
       paramBundle = new v("null cannot be cast to non-null type kotlin.String");
       AppMethodBeat.o(119852);
       throw paramBundle;
     }
-    this.drv = bt.lQ((String)paramBundle, this.lEN);
-    if (this.drv)
+    this.dsB = bu.lX((String)paramBundle, this.lJm);
+    if (this.dsB)
     {
       setMMTitle(2131764203);
       setBackBtn((MenuItem.OnMenuItemClickListener)new StoryFavAlbumUI.b(this));
-      this.AWT = ((a.a)new com.tencent.mm.plugin.story.g.k((a.b)this));
-      paramBundle = this.AWT;
+      this.Bor = ((a.a)new com.tencent.mm.plugin.story.g.k((a.b)this));
+      paramBundle = this.Bor;
       if (paramBundle == null) {
-        p.bcb("mPresenter");
+        p.bdF("mPresenter");
       }
-      paramBundle.onCreate(this.lEN);
-      this.iCW = ((TextView)findViewById(2131296567));
-      if (this.drv) {
+      paramBundle.onCreate(this.lJm);
+      this.iFP = ((TextView)findViewById(2131296567));
+      if (this.dsB) {
         break label508;
       }
-      paramBundle = this.iCW;
+      paramBundle = this.iFP;
       if (paramBundle != null) {
         paramBundle.setVisibility(8);
       }
     }
     for (;;)
     {
-      this.AWS = ((StoryFavoritePanel)findViewById(2131296607));
-      paramBundle = this.AWS;
+      this.Boq = ((StoryFavoritePanel)findViewById(2131296607));
+      paramBundle = this.Boq;
       if (paramBundle != null)
       {
-        localObject = StoryFavoritePanel.AXp;
-        paramBundle.setup(StoryFavoritePanel.elM());
+        localObject = StoryFavoritePanel.BoN;
+        paramBundle.setup(StoryFavoritePanel.epv());
       }
-      paramBundle = this.AWS;
+      paramBundle = this.Boq;
       if (paramBundle != null) {
         paramBundle.setMOnAddItemClickListener((b)new d(this));
       }
-      paramBundle = this.AWS;
+      paramBundle = this.Boq;
       if (paramBundle != null) {
         paramBundle.setMOnFavItemClickListener((m)new e(this));
       }
-      paramBundle = this.AWS;
+      paramBundle = this.Boq;
       if (paramBundle != null) {
         paramBundle.a((RecyclerView.m)new f(this));
       }
-      paramBundle = this.AWT;
+      paramBundle = this.Bor;
       if (paramBundle == null) {
-        p.bcb("mPresenter");
+        p.bdF("mPresenter");
       }
-      paramBundle.eho();
-      paramBundle = this.AWT;
+      paramBundle.ekW();
+      paramBundle = this.Bor;
       if (paramBundle == null) {
-        p.bcb("mPresenter");
+        p.bdF("mPresenter");
       }
-      paramBundle.ehp();
+      paramBundle.ekX();
       AppMethodBeat.o(119852);
       return;
       paramBundle = g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class);
       p.g(paramBundle, "MMKernel.service(IMessengerStorage::class.java)");
-      paramBundle = ((com.tencent.mm.plugin.messenger.foundation.a.l)paramBundle).azp().Bf(this.lEN);
+      paramBundle = ((com.tencent.mm.plugin.messenger.foundation.a.l)paramBundle).azF().BH(this.lJm);
       localObject = (Context)getContext();
       if (paramBundle != null)
       {
-        paramBundle = paramBundle.adv();
+        paramBundle = paramBundle.adG();
         if (paramBundle == null) {}
       }
       for (paramBundle = (CharSequence)paramBundle;; paramBundle = (CharSequence)"")
@@ -239,15 +239,15 @@ public final class StoryFavAlbumUI
         break;
       }
       label508:
-      paramBundle = this.iCW;
+      paramBundle = this.iFP;
       if (paramBundle != null) {
         paramBundle.setVisibility(0);
       }
-      paramBundle = this.iCW;
+      paramBundle = this.iFP;
       if (paramBundle != null) {
         paramBundle.setText((CharSequence)Html.fromHtml(getResources().getString(2131764197)));
       }
-      paramBundle = this.iCW;
+      paramBundle = this.iFP;
       if (paramBundle != null) {
         paramBundle.setOnClickListener((View.OnClickListener)new StoryFavAlbumUI.c(this));
       }
@@ -258,11 +258,11 @@ public final class StoryFavAlbumUI
   {
     AppMethodBeat.i(119854);
     super.onDestroy();
-    a.a locala = this.AWT;
+    a.a locala = this.Bor;
     if (locala == null) {
-      p.bcb("mPresenter");
+      p.bdF("mPresenter");
     }
-    locala.ebV();
+    locala.efC();
     AppMethodBeat.o(119854);
   }
   
@@ -270,11 +270,11 @@ public final class StoryFavAlbumUI
   {
     AppMethodBeat.i(119853);
     super.onResume();
-    a.a locala = this.AWT;
+    a.a locala = this.Bor;
     if (locala == null) {
-      p.bcb("mPresenter");
+      p.bdF("mPresenter");
     }
-    locala.ehp();
+    locala.ekX();
     AppMethodBeat.o(119853);
   }
   
@@ -284,20 +284,20 @@ public final class StoryFavAlbumUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  public final void si(boolean paramBoolean)
+  public final void sp(boolean paramBoolean)
   {
     AppMethodBeat.i(119856);
-    StoryFavoritePanel localStoryFavoritePanel = this.AWS;
+    StoryFavoritePanel localStoryFavoritePanel = this.Boq;
     if (localStoryFavoritePanel != null)
     {
-      localStoryFavoritePanel.si(paramBoolean);
+      localStoryFavoritePanel.sp(paramBoolean);
       AppMethodBeat.o(119856);
       return;
     }
     AppMethodBeat.o(119856);
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/story/ui/album/StoryFavoritePanel$StoryFavInfo;", "invoke"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/story/ui/album/StoryFavoritePanel$StoryFavInfo;", "invoke"})
   static final class d
     extends q
     implements b<StoryFavoritePanel.c, z>
@@ -308,7 +308,7 @@ public final class StoryFavAlbumUI
     }
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "storyFavInfo", "Lcom/tencent/mm/plugin/story/ui/album/StoryFavoritePanel$StoryFavInfo;", "position", "", "invoke"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "storyFavInfo", "Lcom/tencent/mm/plugin/story/ui/album/StoryFavoritePanel$StoryFavInfo;", "position", "", "invoke"})
   static final class e
     extends q
     implements m<StoryFavoritePanel.c, Integer, z>
@@ -319,21 +319,21 @@ public final class StoryFavAlbumUI
     }
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/story/ui/album/StoryFavAlbumUI$initViews$4", "Lcom/tencent/mm/plugin/story/ui/album/StoryAlbumScrollListener;", "onLoadMore", "", "plugin-story_release"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/story/ui/album/StoryFavAlbumUI$initViews$4", "Lcom/tencent/mm/plugin/story/ui/album/StoryAlbumScrollListener;", "onLoadMore", "", "plugin-story_release"})
   public static final class f
     extends e
   {
-    public final void Zt()
+    public final void ZC()
     {
       AppMethodBeat.i(119851);
-      StoryFavAlbumUI.d(this.AWV).ehn();
+      StoryFavAlbumUI.d(this.Bot).ekV();
       AppMethodBeat.o(119851);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.story.ui.album.StoryFavAlbumUI
  * JD-Core Version:    0.7.0.1
  */

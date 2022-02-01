@@ -3,16 +3,16 @@ package com.tencent.mm.plugin.backup.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class w
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
   public String ID;
   public int Version;
-  public com.tencent.mm.bx.b nCV;
-  public int nDG;
-  public int nEe;
-  public int nEf;
-  public int nEg;
-  public com.tencent.mm.bx.b nEi;
+  public com.tencent.mm.bw.b nIq;
+  public int nJA;
+  public int nJB;
+  public com.tencent.mm.bw.b nJD;
+  public int nJb;
+  public int nJz;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -26,38 +26,38 @@ public final class w
         AppMethodBeat.o(22128);
         throw paramVarArgs;
       }
-      paramVarArgs.aS(1, this.nEe);
-      paramVarArgs.aS(2, this.nDG);
+      paramVarArgs.aS(1, this.nJz);
+      paramVarArgs.aS(2, this.nJb);
       if (this.ID != null) {
         paramVarArgs.d(3, this.ID);
       }
-      if (this.nCV != null) {
-        paramVarArgs.c(4, this.nCV);
+      if (this.nIq != null) {
+        paramVarArgs.c(4, this.nIq);
       }
       paramVarArgs.aS(5, this.Version);
-      paramVarArgs.aS(6, this.nEf);
-      paramVarArgs.aS(7, this.nEg);
-      if (this.nEi != null) {
-        paramVarArgs.c(8, this.nEi);
+      paramVarArgs.aS(6, this.nJA);
+      paramVarArgs.aS(7, this.nJB);
+      if (this.nJD != null) {
+        paramVarArgs.c(8, this.nJD);
       }
       AppMethodBeat.o(22128);
       return 0;
     }
     if (paramInt == 1)
     {
-      int i = f.a.a.b.b.a.bz(1, this.nEe) + 0 + f.a.a.b.b.a.bz(2, this.nDG);
+      int i = f.a.a.b.b.a.bz(1, this.nJz) + 0 + f.a.a.b.b.a.bz(2, this.nJb);
       paramInt = i;
       if (this.ID != null) {
         paramInt = i + f.a.a.b.b.a.e(3, this.ID);
       }
       i = paramInt;
-      if (this.nCV != null) {
-        i = paramInt + f.a.a.b.b.a.b(4, this.nCV);
+      if (this.nIq != null) {
+        i = paramInt + f.a.a.b.b.a.b(4, this.nIq);
       }
-      i = i + f.a.a.b.b.a.bz(5, this.Version) + f.a.a.b.b.a.bz(6, this.nEf) + f.a.a.b.b.a.bz(7, this.nEg);
+      i = i + f.a.a.b.b.a.bz(5, this.Version) + f.a.a.b.b.a.bz(6, this.nJA) + f.a.a.b.b.a.bz(7, this.nJB);
       paramInt = i;
-      if (this.nEi != null) {
-        paramInt = i + f.a.a.b.b.a.b(8, this.nEi);
+      if (this.nJD != null) {
+        paramInt = i + f.a.a.b.b.a.b(8, this.nJD);
       }
       AppMethodBeat.o(22128);
       return paramInt;
@@ -65,9 +65,9 @@ public final class w
     if (paramInt == 2)
     {
       paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gxE();
+          paramVarArgs.gCg();
         }
       }
       if (this.ID == null)
@@ -89,35 +89,35 @@ public final class w
         AppMethodBeat.o(22128);
         return -1;
       case 1: 
-        localw.nEe = locala.NPN.zc();
+        localw.nJz = locala.OmT.zc();
         AppMethodBeat.o(22128);
         return 0;
       case 2: 
-        localw.nDG = locala.NPN.zc();
+        localw.nJb = locala.OmT.zc();
         AppMethodBeat.o(22128);
         return 0;
       case 3: 
-        localw.ID = locala.NPN.readString();
+        localw.ID = locala.OmT.readString();
         AppMethodBeat.o(22128);
         return 0;
       case 4: 
-        localw.nCV = locala.NPN.gxI();
+        localw.nIq = locala.OmT.gCk();
         AppMethodBeat.o(22128);
         return 0;
       case 5: 
-        localw.Version = locala.NPN.zc();
+        localw.Version = locala.OmT.zc();
         AppMethodBeat.o(22128);
         return 0;
       case 6: 
-        localw.nEf = locala.NPN.zc();
+        localw.nJA = locala.OmT.zc();
         AppMethodBeat.o(22128);
         return 0;
       case 7: 
-        localw.nEg = locala.NPN.zc();
+        localw.nJB = locala.OmT.zc();
         AppMethodBeat.o(22128);
         return 0;
       }
-      localw.nEi = locala.NPN.gxI();
+      localw.nJD = locala.OmT.gCk();
       AppMethodBeat.o(22128);
       return 0;
     }

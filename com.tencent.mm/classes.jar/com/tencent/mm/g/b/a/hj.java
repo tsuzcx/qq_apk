@@ -6,47 +6,42 @@ import com.tencent.mm.plugin.report.a;
 public final class hj
   extends a
 {
-  public long dPl = 0L;
-  private String erX;
-  public long erY = 0L;
+  public long dWt = 0L;
+  public long edt = 0L;
   
-  public final String RD()
+  public final String RC()
   {
-    AppMethodBeat.i(149944);
+    AppMethodBeat.i(118318);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dPl);
+    ((StringBuffer)localObject).append(this.dWt);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.erX);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.erY);
+    ((StringBuffer)localObject).append(this.edt);
     localObject = ((StringBuffer)localObject).toString();
-    awz((String)localObject);
-    AppMethodBeat.o(149944);
+    axO((String)localObject);
+    AppMethodBeat.o(118318);
     return localObject;
   }
   
-  public final String RE()
+  public final String RD()
   {
-    AppMethodBeat.i(149945);
+    AppMethodBeat.i(118319);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("Action:").append(this.dPl);
+    ((StringBuffer)localObject).append("Scene:").append(this.dWt);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ReqKey:").append(this.erX);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("EnterSettingScene:").append(this.erY);
+    ((StringBuffer)localObject).append("CostTime:").append(this.edt);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(149945);
+    AppMethodBeat.o(118319);
     return localObject;
   }
   
   public final int getId()
   {
-    return 18262;
+    return 15509;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.b.a.hj
  * JD-Core Version:    0.7.0.1
  */

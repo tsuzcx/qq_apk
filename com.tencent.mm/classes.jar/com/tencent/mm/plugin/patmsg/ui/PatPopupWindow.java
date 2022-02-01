@@ -10,7 +10,7 @@ import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.PopupWindow;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.ui.al;
 
 public class PatPopupWindow
@@ -18,7 +18,7 @@ public class PatPopupWindow
 {
   private int maxHeight;
   private int maxWidth;
-  private FrameLayout wGa;
+  private FrameLayout wVM;
   private int x;
   private int y;
   
@@ -35,60 +35,60 @@ public class PatPopupWindow
   public PatPopupWindow(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(215749);
-    this.wGa = new FrameLayout(paramContext);
-    super.setContentView(this.wGa);
-    AppMethodBeat.o(215749);
+    AppMethodBeat.i(220382);
+    this.wVM = new FrameLayout(paramContext);
+    super.setContentView(this.wVM);
+    AppMethodBeat.o(220382);
   }
   
   public PatPopupWindow(View paramView)
   {
     this(paramView.getContext());
-    AppMethodBeat.i(215750);
-    this.wGa = new FrameLayout(paramView.getContext());
-    super.setContentView(this.wGa);
+    AppMethodBeat.i(220383);
+    this.wVM = new FrameLayout(paramView.getContext());
+    super.setContentView(this.wVM);
     setContentView(paramView);
-    AppMethodBeat.o(215750);
+    AppMethodBeat.o(220383);
   }
   
   private void ey(View paramView)
   {
-    AppMethodBeat.i(215754);
-    int i = al.fxO().widthPixels;
-    int j = al.fxO().heightPixels;
+    AppMethodBeat.i(220387);
+    int i = al.fBQ().widthPixels;
+    int j = al.fBQ().heightPixels;
     int[] arrayOfInt = new int[2];
     paramView.getLocationInWindow(arrayOfInt);
     setWidth(-2);
     setHeight(-2);
     this.maxWidth = i;
     this.maxHeight = arrayOfInt[1];
-    this.wGa.measure(View.MeasureSpec.makeMeasureSpec(this.maxWidth, View.MeasureSpec.getMode(-2147483648)), View.MeasureSpec.makeMeasureSpec(this.maxHeight, View.MeasureSpec.getMode(-2147483648)));
-    setWidth(Math.min(this.wGa.getMeasuredWidth(), this.maxWidth));
-    setHeight(Math.min(this.wGa.getMeasuredHeight(), this.maxHeight));
-    AppMethodBeat.o(215754);
+    this.wVM.measure(View.MeasureSpec.makeMeasureSpec(this.maxWidth, View.MeasureSpec.getMode(-2147483648)), View.MeasureSpec.makeMeasureSpec(this.maxHeight, View.MeasureSpec.getMode(-2147483648)));
+    setWidth(Math.min(this.wVM.getMeasuredWidth(), this.maxWidth));
+    setHeight(Math.min(this.wVM.getMeasuredHeight(), this.maxHeight));
+    AppMethodBeat.o(220387);
   }
   
   private void ez(View paramView)
   {
-    AppMethodBeat.i(215755);
+    AppMethodBeat.i(220388);
     paramView.getLocationInWindow(new int[2]);
     this.x = 0;
     this.y = 0;
-    this.x = (-(this.wGa.getMeasuredWidth() - paramView.getWidth()) / 2);
-    this.y = (-this.wGa.getMeasuredHeight() - paramView.getHeight());
-    AppMethodBeat.o(215755);
+    this.x = (-(this.wVM.getMeasuredWidth() - paramView.getWidth()) / 2);
+    this.y = (-this.wVM.getMeasuredHeight() - paramView.getHeight());
+    AppMethodBeat.o(220388);
   }
   
   public final void a(View paramView, FrameLayout.LayoutParams paramLayoutParams)
   {
-    AppMethodBeat.i(215753);
+    AppMethodBeat.i(220386);
     if (getBackground() == null) {
       setBackgroundDrawable(new ColorDrawable(0));
     }
     View localView = getContentView();
     if (localView == null)
     {
-      AppMethodBeat.o(215753);
+      AppMethodBeat.o(220386);
       return;
     }
     FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-2, -2);
@@ -98,33 +98,33 @@ public class PatPopupWindow
     localLayoutParams.bottomMargin = paramLayoutParams.bottomMargin;
     localView.setLayoutParams(localLayoutParams);
     ey(paramView);
-    ad.d("MicroMsg.PatPopupWindow", "show contentView size (%d,%d)", new Object[] { Integer.valueOf(this.wGa.getMeasuredWidth()), Integer.valueOf(this.wGa.getMeasuredHeight()) });
+    ae.d("MicroMsg.PatPopupWindow", "show contentView size (%d,%d)", new Object[] { Integer.valueOf(this.wVM.getMeasuredWidth()), Integer.valueOf(this.wVM.getMeasuredHeight()) });
     ez(paramView);
-    ad.d("MicroMsg.PatPopupWindow", "show at fix location (%d,%d)", new Object[] { Integer.valueOf(this.x), Integer.valueOf(this.y) });
+    ae.d("MicroMsg.PatPopupWindow", "show at fix location (%d,%d)", new Object[] { Integer.valueOf(this.x), Integer.valueOf(this.y) });
     if (isShowing())
     {
       update(paramView, this.x, this.y, getWidth(), getHeight());
-      AppMethodBeat.o(215753);
+      AppMethodBeat.o(220386);
       return;
     }
     showAsDropDown(paramView, this.x, this.y);
-    AppMethodBeat.o(215753);
+    AppMethodBeat.o(220386);
   }
   
   public View getContentView()
   {
-    AppMethodBeat.i(215752);
-    View localView = this.wGa.getChildAt(0);
-    AppMethodBeat.o(215752);
+    AppMethodBeat.i(220385);
+    View localView = this.wVM.getChildAt(0);
+    AppMethodBeat.o(220385);
     return localView;
   }
   
   public void setContentView(View paramView)
   {
-    AppMethodBeat.i(215751);
-    this.wGa.removeAllViews();
-    this.wGa.addView(paramView);
-    AppMethodBeat.o(215751);
+    AppMethodBeat.i(220384);
+    this.wVM.removeAllViews();
+    this.wVM.addView(paramView);
+    AppMethodBeat.o(220384);
   }
 }
 

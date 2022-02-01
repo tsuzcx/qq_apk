@@ -44,13 +44,13 @@ public class WWMediaFile
   
   public final void fromBundle(Bundle paramBundle)
   {
-    AppMethodBeat.i(190356);
+    AppMethodBeat.i(193328);
     this.fileData = paramBundle.getByteArray("_wwfileobject_fileData");
     this.filePath = paramBundle.getString("_wwfileobject_filePath");
     this.fileName = paramBundle.getString("_wwfileobject_fileName");
     this.fileId = paramBundle.getString("_wwfileobject_fileId");
     super.fromBundle(paramBundle);
-    AppMethodBeat.o(190356);
+    AppMethodBeat.o(193328);
   }
   
   public final void setContentLengthLimit(int paramInt)
@@ -71,7 +71,7 @@ public class WWMediaFile
   
   public final void x(Intent paramIntent, String paramString)
   {
-    AppMethodBeat.i(190357);
+    AppMethodBeat.i(193329);
     if ((this.filePath != null) && (this.filePath.startsWith("content")))
     {
       paramIntent.setDataAndType(Uri.parse(this.filePath), "*/*");
@@ -80,7 +80,7 @@ public class WWMediaFile
     for (this.fileId = null;; this.fileId = OpenDataUtils.W(this.mContext, paramString, this.filePath))
     {
       paramIntent.putExtra("_wwfileobject_fileId", this.fileId);
-      AppMethodBeat.o(190357);
+      AppMethodBeat.o(193329);
       return;
     }
   }

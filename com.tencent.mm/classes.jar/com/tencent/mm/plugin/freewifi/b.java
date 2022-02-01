@@ -10,7 +10,7 @@ import android.net.wifi.WifiManager;
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.freewifi.model.d;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
@@ -20,29 +20,29 @@ public final class b
 {
   Lock aIY;
   private BroadcastReceiver broadcastReceiver;
-  private long cAH;
-  Condition cPA;
+  private long cBo;
+  Condition cQk;
   private WifiManager cde;
   private Context context;
   String ssid;
-  boolean tkE;
-  boolean tkF;
+  boolean tvw;
+  boolean tvx;
   
   public b(String paramString, Context paramContext)
   {
     AppMethodBeat.i(24638);
-    this.tkE = false;
-    this.tkF = false;
-    this.cAH = 15000L;
+    this.tvw = false;
+    this.tvx = false;
+    this.cBo = 15000L;
     this.ssid = paramString;
     this.aIY = new ReentrantLock();
-    this.cPA = this.aIY.newCondition();
+    this.cQk = this.aIY.newCondition();
     this.cde = ((WifiManager)paramContext.getSystemService("wifi"));
     this.context = paramContext;
     AppMethodBeat.o(24638);
   }
   
-  private void cQG()
+  private void cTl()
   {
     AppMethodBeat.i(24640);
     try
@@ -57,10 +57,10 @@ public final class b
     }
   }
   
-  public final int cQH()
+  public final int cTm()
   {
     AppMethodBeat.i(24639);
-    if ((((ConnectivityManager)this.context.getSystemService("connectivity")).getNetworkInfo(1).isConnected()) && (this.ssid.equals(d.cRr())))
+    if ((((ConnectivityManager)this.context.getSystemService("connectivity")).getNetworkInfo(1).isConnected()) && (this.ssid.equals(d.cTW())))
     {
       AppMethodBeat.o(24639);
       return 0;
@@ -81,15 +81,15 @@ public final class b
         {
           paramAnonymousContext = (NetworkInfo)paramAnonymousIntent.getParcelableExtra("networkInfo");
           if (paramAnonymousContext != null) {
-            ad.i("MicroMsg.FreeWifi.ConnectNetworkHelper", "WifiManager.NETWORK_STATE_CHANGED_ACTION broadcastReceiver, targetssid=%s, Utils.getConnectedWifiSsid(TAG)=%s,networkInfo.isConnected()=%b, networkInfo.isConnectedOrConnecting()=%b, networkInfo.getExtraInfo()=%s, networkInfo.getType()=%d, networkInfo.toString()=%s", new Object[] { b.this.ssid, m.ajK("MicroMsg.FreeWifi.ConnectNetworkHelper"), Boolean.valueOf(paramAnonymousContext.isConnected()), Boolean.valueOf(paramAnonymousContext.isConnectedOrConnecting()), paramAnonymousContext.getExtraInfo(), Integer.valueOf(paramAnonymousContext.getType()), paramAnonymousContext.toString() });
+            ae.i("MicroMsg.FreeWifi.ConnectNetworkHelper", "WifiManager.NETWORK_STATE_CHANGED_ACTION broadcastReceiver, targetssid=%s, Utils.getConnectedWifiSsid(TAG)=%s,networkInfo.isConnected()=%b, networkInfo.isConnectedOrConnecting()=%b, networkInfo.getExtraInfo()=%s, networkInfo.getType()=%d, networkInfo.toString()=%s", new Object[] { b.this.ssid, m.akI("MicroMsg.FreeWifi.ConnectNetworkHelper"), Boolean.valueOf(paramAnonymousContext.isConnected()), Boolean.valueOf(paramAnonymousContext.isConnectedOrConnecting()), paramAnonymousContext.getExtraInfo(), Integer.valueOf(paramAnonymousContext.getType()), paramAnonymousContext.toString() });
           }
-          if ((paramAnonymousContext != null) && (paramAnonymousContext.isConnected()) && (paramAnonymousContext.getType() == 1) && (b.this.ssid.equals(m.ajI(paramAnonymousContext.getExtraInfo())))) {
+          if ((paramAnonymousContext != null) && (paramAnonymousContext.isConnected()) && (paramAnonymousContext.getType() == 1) && (b.this.ssid.equals(m.akG(paramAnonymousContext.getExtraInfo())))) {
             try
             {
               b.this.aIY.lock();
-              b.this.tkE = true;
-              ad.i("MicroMsg.FreeWifi.ConnectNetworkHelper", "WifiManager.NETWORK_STATE_CHANGED_ACTION broadcastreceiver signal connected state.");
-              b.this.cPA.signalAll();
+              b.this.tvw = true;
+              ae.i("MicroMsg.FreeWifi.ConnectNetworkHelper", "WifiManager.NETWORK_STATE_CHANGED_ACTION broadcastreceiver signal connected state.");
+              b.this.cQk.signalAll();
               return;
             }
             finally
@@ -105,15 +105,15 @@ public final class b
         {
           paramAnonymousContext = (NetworkInfo)paramAnonymousIntent.getParcelableExtra("networkInfo");
           if (paramAnonymousContext != null) {
-            ad.i("MicroMsg.FreeWifi.ConnectNetworkHelper", "ConnectivityManager.CONNECTIVITY_ACTION broadcastReceiver, targetssid=%s, Utils.getConnectedWifiSsid(TAG)=%s,networkInfo.isConnected()=%b, networkInfo.isConnectedOrConnecting()=%b, networkInfo.getExtraInfo()=%s, networkInfo.getType()=%d, networkInfo.toString()=%s", new Object[] { b.this.ssid, m.ajK("MicroMsg.FreeWifi.ConnectNetworkHelper"), Boolean.valueOf(paramAnonymousContext.isConnected()), Boolean.valueOf(paramAnonymousContext.isConnectedOrConnecting()), paramAnonymousContext.getExtraInfo(), Integer.valueOf(paramAnonymousContext.getType()), paramAnonymousContext.toString() });
+            ae.i("MicroMsg.FreeWifi.ConnectNetworkHelper", "ConnectivityManager.CONNECTIVITY_ACTION broadcastReceiver, targetssid=%s, Utils.getConnectedWifiSsid(TAG)=%s,networkInfo.isConnected()=%b, networkInfo.isConnectedOrConnecting()=%b, networkInfo.getExtraInfo()=%s, networkInfo.getType()=%d, networkInfo.toString()=%s", new Object[] { b.this.ssid, m.akI("MicroMsg.FreeWifi.ConnectNetworkHelper"), Boolean.valueOf(paramAnonymousContext.isConnected()), Boolean.valueOf(paramAnonymousContext.isConnectedOrConnecting()), paramAnonymousContext.getExtraInfo(), Integer.valueOf(paramAnonymousContext.getType()), paramAnonymousContext.toString() });
           }
-          if ((paramAnonymousContext != null) && (paramAnonymousContext.isConnected()) && (paramAnonymousContext.getType() == 1) && (b.this.ssid.equals(m.ajI(paramAnonymousContext.getExtraInfo())))) {
+          if ((paramAnonymousContext != null) && (paramAnonymousContext.isConnected()) && (paramAnonymousContext.getType() == 1) && (b.this.ssid.equals(m.akG(paramAnonymousContext.getExtraInfo())))) {
             try
             {
               b.this.aIY.lock();
-              b.this.tkF = true;
-              ad.i("MicroMsg.FreeWifi.ConnectNetworkHelper", "ConnectivityManager.CONNECTIVITY_ACTION broadcastreceiver signal connected state.");
-              b.this.cPA.signalAll();
+              b.this.tvx = true;
+              ae.i("MicroMsg.FreeWifi.ConnectNetworkHelper", "ConnectivityManager.CONNECTIVITY_ACTION broadcastreceiver signal connected state.");
+              b.this.cQk.signalAll();
               return;
             }
             finally
@@ -135,16 +135,16 @@ public final class b
       this.context.registerReceiver(this.broadcastReceiver, (IntentFilter)localObject1);
       if (!this.cde.isWifiEnabled())
       {
-        i = new f(this.context).cQI();
-        ad.i("MicroMsg.FreeWifi.ConnectNetworkHelper", "enable ret = ".concat(String.valueOf(i)));
+        i = new f(this.context).cTn();
+        ae.i("MicroMsg.FreeWifi.ConnectNetworkHelper", "enable ret = ".concat(String.valueOf(i)));
         if (i != 0) {
           return i;
         }
       }
-      int i = d.ajR(this.ssid);
+      int i = d.akP(this.ssid);
       if (i != 0)
       {
-        cQG();
+        cTl();
         return i;
       }
       boolean bool1 = false;
@@ -153,26 +153,26 @@ public final class b
       {
         try
         {
-          if (this.tkE)
+          if (this.tvw)
           {
             bool2 = bool1;
-            if (this.tkF) {
+            if (this.tvx) {
               break;
             }
           }
           long l = System.currentTimeMillis();
-          bool1 = this.cPA.await(this.cAH, TimeUnit.MILLISECONDS);
+          bool1 = this.cQk.await(this.cBo, TimeUnit.MILLISECONDS);
           bool2 = bool1;
           if (!bool1) {
             break;
           }
           l = System.currentTimeMillis() - l;
-          this.cAH -= l;
-          ad.i("MicroMsg.FreeWifi.ConnectNetworkHelper", "costMillis=" + l + "; left timeout=" + this.cAH);
-          if (this.cAH > 0L)
+          this.cBo -= l;
+          ae.i("MicroMsg.FreeWifi.ConnectNetworkHelper", "costMillis=" + l + "; left timeout=" + this.cBo);
+          if (this.cBo > 0L)
           {
-            l = this.cAH;
-            this.cAH = l;
+            l = this.cBo;
+            this.cBo = l;
           }
           else
           {
@@ -181,7 +181,7 @@ public final class b
         }
         catch (InterruptedException localInterruptedException)
         {
-          ad.i("MicroMsg.FreeWifi.ConnectNetworkHelper", "desc=ConnectNetworkHelper encounter interrupted exception. msg=%s", new Object[] { localInterruptedException.getMessage() });
+          ae.i("MicroMsg.FreeWifi.ConnectNetworkHelper", "desc=ConnectNetworkHelper encounter interrupted exception. msg=%s", new Object[] { localInterruptedException.getMessage() });
           return -17;
         }
       }
@@ -192,7 +192,7 @@ public final class b
     }
     finally
     {
-      cQG();
+      cTl();
       this.aIY.unlock();
       AppMethodBeat.o(24639);
     }
@@ -200,7 +200,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.freewifi.b
  * JD-Core Version:    0.7.0.1
  */

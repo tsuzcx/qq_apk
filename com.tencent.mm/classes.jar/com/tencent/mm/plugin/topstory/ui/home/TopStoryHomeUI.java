@@ -6,20 +6,20 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ar;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.s;
 
 public class TopStoryHomeUI
   extends MMActivity
 {
-  private b Bsh;
+  private b BJG;
   
   public TopStoryHomeUI()
   {
     AppMethodBeat.i(125906);
-    this.Bsh = new b(this, true);
+    this.BJG = new b(this, true);
     AppMethodBeat.o(125906);
   }
   
@@ -30,12 +30,12 @@ public class TopStoryHomeUI
     if (!getController().hideVKB()) {
       i = 0;
     }
-    aq.o(new Runnable()
+    ar.o(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(125905);
-        ad.i("MicroMsg.TopStory.TopStoryHomeUI", " finish");
+        ae.i("MicroMsg.TopStory.TopStoryHomeUI", " finish");
         TopStoryHomeUI.a(TopStoryHomeUI.this);
         AppMethodBeat.o(125905);
       }
@@ -51,16 +51,16 @@ public class TopStoryHomeUI
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     AppMethodBeat.i(125917);
-    this.Bsh.onActivityResult(paramInt1, paramInt2, paramIntent);
+    this.BJG.onActivityResult(paramInt1, paramInt2, paramIntent);
     AppMethodBeat.o(125917);
   }
   
   public void onBackPressed()
   {
     AppMethodBeat.i(125914);
-    b localb = this.Bsh;
-    if (localb.Bsu) {
-      localb.epk();
+    b localb = this.BJG;
+    if (localb.BJT) {
+      localb.esR();
     }
     for (int i = 0;; i = 1)
     {
@@ -84,15 +84,15 @@ public class TopStoryHomeUI
     AppMethodBeat.i(125907);
     fixStatusbar(true);
     super.onCreate(paramBundle);
-    ad.i("MicroMsg.TopStory.TopStoryHomeUI", "use TopStoryHomeUI");
-    this.Bsh.onCreate(paramBundle);
+    ae.i("MicroMsg.TopStory.TopStoryHomeUI", "use TopStoryHomeUI");
+    this.BJG.onCreate(paramBundle);
     AppMethodBeat.o(125907);
   }
   
   public void onDestroy()
   {
     AppMethodBeat.i(125911);
-    this.Bsh.onDestroy();
+    this.BJG.onDestroy();
     super.onDestroy();
     AppMethodBeat.o(125911);
   }
@@ -100,7 +100,7 @@ public class TopStoryHomeUI
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
     AppMethodBeat.i(125908);
-    if (this.Bsh.SV(paramInt))
+    if (this.BJG.TC(paramInt))
     {
       AppMethodBeat.o(125908);
       return true;
@@ -113,7 +113,7 @@ public class TopStoryHomeUI
   public void onNewIntent(Intent paramIntent)
   {
     AppMethodBeat.i(125912);
-    this.Bsh.onNewIntent(paramIntent);
+    this.BJG.onNewIntent(paramIntent);
     super.onNewIntent(paramIntent);
     AppMethodBeat.o(125912);
   }
@@ -121,7 +121,7 @@ public class TopStoryHomeUI
   public void onPause()
   {
     AppMethodBeat.i(125910);
-    this.Bsh.onPause();
+    this.BJG.onPause();
     super.onPause();
     AppMethodBeat.o(125910);
   }
@@ -130,7 +130,7 @@ public class TopStoryHomeUI
   {
     AppMethodBeat.i(125909);
     super.onResume();
-    this.Bsh.onResume();
+    this.BJG.onResume();
     AppMethodBeat.o(125909);
   }
   
@@ -138,7 +138,7 @@ public class TopStoryHomeUI
   {
     AppMethodBeat.i(125913);
     super.onSaveInstanceState(paramBundle);
-    this.Bsh.onSaveInstanceState(paramBundle);
+    this.BJG.onSaveInstanceState(paramBundle);
     AppMethodBeat.o(125913);
   }
   

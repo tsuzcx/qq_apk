@@ -7,35 +7,35 @@ import android.content.ComponentName;
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.walletlock.a.b.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
 import java.util.List;
 
 public final class d
   implements b.b
 {
-  private static d DvT = null;
+  private static d DNy = null;
   
-  public static d eJZ()
+  public static d eNH()
   {
     AppMethodBeat.i(129896);
-    if (DvT == null) {
-      DvT = new d();
+    if (DNy == null) {
+      DNy = new d();
     }
-    d locald = DvT;
+    d locald = DNy;
     AppMethodBeat.o(129896);
     return locald;
   }
   
-  public final boolean aK(Activity paramActivity)
+  public final boolean aL(Activity paramActivity)
   {
     AppMethodBeat.i(129895);
-    Object localObject = ((ActivityManager.RunningTaskInfo)((ActivityManager)aj.getContext().getSystemService("activity")).getRunningTasks(1).get(0)).topActivity;
+    Object localObject = ((ActivityManager.RunningTaskInfo)((ActivityManager)ak.getContext().getSystemService("activity")).getRunningTasks(1).get(0)).topActivity;
     if (localObject != null) {}
     for (localObject = ((ComponentName)localObject).getClassName();; localObject = "")
     {
-      ad.d("MicroMsg.WalletGuardFilter", "coveredPage: ".concat(String.valueOf(localObject)));
-      if ((localObject == null) || (((String)localObject).equals(paramActivity.getClass().getName())) || (!((String)localObject).contains(aj.fkB())) || ((!((String)localObject).contains("plugin.mall")) && (!((String)localObject).contains("plugin.card")) && (!((String)localObject).contains("plugin.wallet")) && (!((String)localObject).contains("plugin.wallet_index")) && (!((String)localObject).contains("plugin.webview")) && (!((String)localObject).contains("plugin.offline")) && (!((String)localObject).contains("plugin.recharge")))) {
+      ae.d("MicroMsg.WalletGuardFilter", "coveredPage: ".concat(String.valueOf(localObject)));
+      if ((localObject == null) || (((String)localObject).equals(paramActivity.getClass().getName())) || (!((String)localObject).contains(ak.fov())) || ((!((String)localObject).contains("plugin.mall")) && (!((String)localObject).contains("plugin.card")) && (!((String)localObject).contains("plugin.wallet")) && (!((String)localObject).contains("plugin.wallet_index")) && (!((String)localObject).contains("plugin.webview")) && (!((String)localObject).contains("plugin.offline")) && (!((String)localObject).contains("plugin.recharge")))) {
         break;
       }
       AppMethodBeat.o(129895);

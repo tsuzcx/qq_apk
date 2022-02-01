@@ -1,74 +1,85 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.LinkedList;
 
 public final class cxq
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public String dxD;
-  public String title;
+  public int nID;
+  public LinkedList<cxp> nIE;
+  
+  public cxq()
+  {
+    AppMethodBeat.i(134255);
+    this.nIE = new LinkedList();
+    AppMethodBeat.o(134255);
+  }
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(123644);
+    AppMethodBeat.i(134256);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.dxD != null) {
-        paramVarArgs.d(1, this.dxD);
-      }
-      if (this.title != null) {
-        paramVarArgs.d(2, this.title);
-      }
-      AppMethodBeat.o(123644);
+      paramVarArgs.aS(1, this.nID);
+      paramVarArgs.e(2, 8, this.nIE);
+      AppMethodBeat.o(134256);
       return 0;
     }
-    if (paramInt == 1) {
-      if (this.dxD == null) {
-        break label274;
-      }
-    }
-    label274:
-    for (paramInt = f.a.a.b.b.a.e(1, this.dxD) + 0;; paramInt = 0)
+    int i;
+    if (paramInt == 1)
     {
-      int i = paramInt;
-      if (this.title != null) {
-        i = paramInt + f.a.a.b.b.a.e(2, this.title);
-      }
-      AppMethodBeat.o(123644);
-      return i;
-      if (paramInt == 2)
-      {
-        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
-          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
-          }
-        }
-        AppMethodBeat.o(123644);
-        return 0;
-      }
-      if (paramInt == 3)
-      {
-        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
-        cxq localcxq = (cxq)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
-        {
-        default: 
-          AppMethodBeat.o(123644);
-          return -1;
-        case 1: 
-          localcxq.dxD = locala.NPN.readString();
-          AppMethodBeat.o(123644);
-          return 0;
-        }
-        localcxq.title = locala.NPN.readString();
-        AppMethodBeat.o(123644);
-        return 0;
-      }
-      AppMethodBeat.o(123644);
-      return -1;
+      paramInt = f.a.a.b.b.a.bz(1, this.nID);
+      i = f.a.a.a.c(2, 8, this.nIE);
+      AppMethodBeat.o(134256);
+      return paramInt + 0 + i;
     }
+    if (paramInt == 2)
+    {
+      paramVarArgs = (byte[])paramVarArgs[0];
+      this.nIE.clear();
+      paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.gCg();
+        }
+      }
+      AppMethodBeat.o(134256);
+      return 0;
+    }
+    if (paramInt == 3)
+    {
+      Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
+      cxq localcxq = (cxq)paramVarArgs[1];
+      paramInt = ((Integer)paramVarArgs[2]).intValue();
+      switch (paramInt)
+      {
+      default: 
+        AppMethodBeat.o(134256);
+        return -1;
+      case 1: 
+        localcxq.nID = ((f.a.a.a.a)localObject1).OmT.zc();
+        AppMethodBeat.o(134256);
+        return 0;
+      }
+      paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
+      i = paramVarArgs.size();
+      paramInt = 0;
+      while (paramInt < i)
+      {
+        Object localObject2 = (byte[])paramVarArgs.get(paramInt);
+        localObject1 = new cxp();
+        localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
+        for (boolean bool = true; bool; bool = ((cxp)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+        localcxq.nIE.add(localObject1);
+        paramInt += 1;
+      }
+      AppMethodBeat.o(134256);
+      return 0;
+    }
+    AppMethodBeat.o(134256);
+    return -1;
   }
 }
 

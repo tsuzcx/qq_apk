@@ -6,9 +6,9 @@ import java.util.Map;
 
 final class d$b
 {
-  Map<String, String> MbT;
-  ParcelFileDescriptor MbU;
-  a MbV;
+  Map<String, String> MyO;
+  ParcelFileDescriptor MyP;
+  a MyQ;
   String url;
 }
 

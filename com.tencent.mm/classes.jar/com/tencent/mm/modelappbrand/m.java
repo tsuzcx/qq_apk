@@ -1,24 +1,24 @@
 package com.tencent.mm.modelappbrand;
 
-import com.tencent.mm.ai.a.c;
+import com.tencent.mm.ah.a.c;
 import com.tencent.mm.kernel.c.a;
 
 public abstract interface m
   extends a
 {
-  public abstract c Cd(String paramString);
+  public abstract c CF(String paramString);
   
-  public abstract void Ce(String paramString);
+  public abstract void CG(String paramString);
   
   public abstract void a(String paramString1, String paramString2, String paramString3, int paramInt, m.a parama);
   
   public abstract boolean a(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2);
   
-  public abstract void aDJ();
+  public abstract void aDZ();
   
-  public abstract void aDK();
+  public abstract void aEa();
   
-  public abstract boolean aj(String paramString, int paramInt);
+  public abstract boolean ak(String paramString, int paramInt);
 }
 
 

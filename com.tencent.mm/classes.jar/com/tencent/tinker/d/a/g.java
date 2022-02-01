@@ -9,31 +9,31 @@ import java.util.zip.ZipException;
 public final class g
   implements Cloneable
 {
-  String FxH;
-  long MhO = -1L;
-  int MhP = -1;
-  int MhQ = -1;
-  byte[] MhR;
-  long MhS = -1L;
-  long MhT = -1L;
+  String FQf;
+  long MEL = -1L;
+  int MEM = -1;
+  int MEN = -1;
+  byte[] MEO;
+  long MEP = -1L;
+  long MEQ = -1L;
   public long crc = -1L;
-  int hbR = -1;
+  int heF = -1;
   public String name;
   long size = -1L;
   
   public g(g paramg)
   {
     this.name = paramg.name;
-    this.FxH = paramg.FxH;
-    this.hbR = paramg.hbR;
+    this.FQf = paramg.FQf;
+    this.heF = paramg.heF;
     this.size = paramg.size;
-    this.MhO = paramg.MhO;
+    this.MEL = paramg.MEL;
     this.crc = paramg.crc;
-    this.MhP = paramg.MhP;
-    this.MhQ = paramg.MhQ;
-    this.MhR = paramg.MhR;
-    this.MhS = paramg.MhS;
-    this.MhT = paramg.MhT;
+    this.MEM = paramg.MEM;
+    this.MEN = paramg.MEN;
+    this.MEO = paramg.MEO;
+    this.MEP = paramg.MEP;
+    this.MEQ = paramg.MEQ;
   }
   
   public g(String paramString)
@@ -64,37 +64,37 @@ public final class g
     if ((i & 0x800) != 0) {
       paramCharset = Charset.forName("UTF-8");
     }
-    this.MhP = (paramArrayOfByte.readShort() & 0xFFFF);
-    this.hbR = (paramArrayOfByte.readShort() & 0xFFFF);
-    this.MhQ = (paramArrayOfByte.readShort() & 0xFFFF);
+    this.MEM = (paramArrayOfByte.readShort() & 0xFFFF);
+    this.heF = (paramArrayOfByte.readShort() & 0xFFFF);
+    this.MEN = (paramArrayOfByte.readShort() & 0xFFFF);
     this.crc = (paramArrayOfByte.readInt() & 0xFFFFFFFF);
-    this.MhO = (paramArrayOfByte.readInt() & 0xFFFFFFFF);
+    this.MEL = (paramArrayOfByte.readInt() & 0xFFFFFFFF);
     this.size = (paramArrayOfByte.readInt() & 0xFFFFFFFF);
     i = paramArrayOfByte.readShort();
     int j = paramArrayOfByte.readShort() & 0xFFFF;
     int k = paramArrayOfByte.readShort() & 0xFFFF;
     paramArrayOfByte.seek(42);
-    this.MhS = (paramArrayOfByte.readInt() & 0xFFFFFFFF);
+    this.MEP = (paramArrayOfByte.readInt() & 0xFFFFFFFF);
     paramArrayOfByte = new byte[i & 0xFFFF];
     f.b(paramInputStream, paramArrayOfByte, 0, paramArrayOfByte.length);
-    if (cT(paramArrayOfByte)) {
+    if (cW(paramArrayOfByte)) {
       throw new ZipException("Filename contains NUL byte: " + Arrays.toString(paramArrayOfByte));
     }
     this.name = new String(paramArrayOfByte, 0, paramArrayOfByte.length, paramCharset);
     if (j > 0)
     {
-      this.MhR = new byte[j];
-      f.b(paramInputStream, this.MhR, 0, j);
+      this.MEO = new byte[j];
+      f.b(paramInputStream, this.MEO, 0, j);
     }
     if (k > 0)
     {
       paramArrayOfByte = new byte[k];
       f.b(paramInputStream, paramArrayOfByte, 0, k);
-      this.FxH = new String(paramArrayOfByte, 0, paramArrayOfByte.length, paramCharset);
+      this.FQf = new String(paramArrayOfByte, 0, paramArrayOfByte.length, paramCharset);
     }
   }
   
-  private static boolean cT(byte[] paramArrayOfByte)
+  private static boolean cW(byte[] paramArrayOfByte)
   {
     boolean bool2 = false;
     int j = paramArrayOfByte.length;
@@ -124,16 +124,16 @@ public final class g
     //   4: checkcast 2	com/tencent/tinker/d/a/g
     //   7: astore_2
     //   8: aload_0
-    //   9: getfield 50	com/tencent/tinker/d/a/g:MhR	[B
+    //   9: getfield 50	com/tencent/tinker/d/a/g:MEO	[B
     //   12: ifnull +21 -> 33
     //   15: aload_0
-    //   16: getfield 50	com/tencent/tinker/d/a/g:MhR	[B
+    //   16: getfield 50	com/tencent/tinker/d/a/g:MEO	[B
     //   19: invokevirtual 181	[B:clone	()Ljava/lang/Object;
     //   22: checkcast 180	[B
     //   25: astore_1
     //   26: aload_2
     //   27: aload_1
-    //   28: putfield 50	com/tencent/tinker/d/a/g:MhR	[B
+    //   28: putfield 50	com/tencent/tinker/d/a/g:MEO	[B
     //   31: aload_2
     //   32: areturn
     //   33: aconst_null
@@ -175,7 +175,7 @@ public final class g
     if ((paramInt != 0) && (paramInt != 8)) {
       throw new IllegalArgumentException("Bad method: ".concat(String.valueOf(paramInt)));
     }
-    this.MhP = paramInt;
+    this.MEM = paramInt;
   }
   
   public final void setSize(long paramLong)
@@ -190,16 +190,16 @@ public final class g
   {
     StringBuffer localStringBuffer = new StringBuffer();
     localStringBuffer.append("name:" + this.name);
-    localStringBuffer.append("\ncomment:" + this.FxH);
-    localStringBuffer.append("\ntime:" + this.hbR);
+    localStringBuffer.append("\ncomment:" + this.FQf);
+    localStringBuffer.append("\ntime:" + this.heF);
     localStringBuffer.append("\nsize:" + this.size);
-    localStringBuffer.append("\ncompressedSize:" + this.MhO);
+    localStringBuffer.append("\ncompressedSize:" + this.MEL);
     localStringBuffer.append("\ncrc:" + this.crc);
-    localStringBuffer.append("\ncompressionMethod:" + this.MhP);
-    localStringBuffer.append("\nmodDate:" + this.MhQ);
-    localStringBuffer.append("\nextra length:" + this.MhR.length);
-    localStringBuffer.append("\nlocalHeaderRelOffset:" + this.MhS);
-    localStringBuffer.append("\ndataOffset:" + this.MhT);
+    localStringBuffer.append("\ncompressionMethod:" + this.MEM);
+    localStringBuffer.append("\nmodDate:" + this.MEN);
+    localStringBuffer.append("\nextra length:" + this.MEO.length);
+    localStringBuffer.append("\nlocalHeaderRelOffset:" + this.MEP);
+    localStringBuffer.append("\ndataOffset:" + this.MEQ);
     return localStringBuffer.toString();
   }
 }

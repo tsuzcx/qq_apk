@@ -5,31 +5,31 @@ import android.graphics.Bitmap;
 public final class c
 {
   public int backgroundColor = 0;
-  public float zBA = 16.0F;
-  public int zBB = -1;
-  public float zBC = 17.0F;
-  public float zBD = 4.0F;
-  public Bitmap zBE;
-  public float zBF;
-  public int zBG = -1;
-  public int zBH = 1;
-  public Bitmap zBI;
-  public int zBo = 1;
-  public boolean zBp = true;
-  public boolean zBq = true;
-  private boolean zBr = true;
-  public boolean zBs = true;
-  public int zBt = -1;
-  public int zBu = -16777216;
-  public int zBv = -16777216;
-  public float zBw = 2.0F;
-  public float zBx = -1.0F;
-  public int zBy = -16777216;
-  public float zBz = 12.0F;
+  public int zSA = -16777216;
+  public float zSB = 12.0F;
+  public float zSC = 16.0F;
+  public int zSD = -1;
+  public float zSE = 17.0F;
+  public float zSF = 4.0F;
+  public Bitmap zSG;
+  public float zSH;
+  public int zSI = -1;
+  public int zSJ = 1;
+  public Bitmap zSK;
+  public int zSq = 1;
+  public boolean zSr = true;
+  public boolean zSs = true;
+  private boolean zSt = true;
+  public boolean zSu = true;
+  public int zSv = -1;
+  public int zSw = -16777216;
+  public int zSx = -16777216;
+  public float zSy = 2.0F;
+  public float zSz = -1.0F;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.chart.a.c
  * JD-Core Version:    0.7.0.1
  */

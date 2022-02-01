@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.luckymoney.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cn.c;
+import com.tencent.mm.cm.c;
 import com.tencent.mm.plugin.luckymoney.story.b.f;
 
 final class a$5

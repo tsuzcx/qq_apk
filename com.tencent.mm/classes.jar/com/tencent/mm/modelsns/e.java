@@ -3,80 +3,80 @@ package com.tencent.mm.modelsns;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.die;
+import com.tencent.mm.protocal.protobuf.diz;
 import com.tencent.mm.sdk.g.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ay;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.az;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public final class e
 {
-  private static boolean ikP;
-  private static AtomicInteger ino;
-  public Object inf;
-  public int ing;
-  public int inh;
-  public int ini;
-  public int inj;
-  public StringBuffer ink;
-  public StringBuffer inl;
-  public StringBuffer inm;
-  public StringBuffer inn;
+  private static boolean inI;
+  private static AtomicInteger iqi;
+  public Object ipZ;
+  public int iqa;
+  public int iqb;
+  public int iqc;
+  public int iqd;
+  public StringBuffer iqe;
+  public StringBuffer iqf;
+  public StringBuffer iqg;
+  public StringBuffer iqh;
   public int opType;
   public long timeStamp;
   
   static
   {
     AppMethodBeat.i(125679);
-    ikP = false;
-    ino = new AtomicInteger(0);
+    inI = false;
+    iqi = new AtomicInteger(0);
     AppMethodBeat.o(125679);
   }
   
   public e(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(125659);
-    this.inf = null;
-    this.ing = 1;
+    this.ipZ = null;
+    this.iqa = 1;
     this.opType = 0;
-    this.ink = new StringBuffer();
-    this.inl = new StringBuffer();
-    this.inm = new StringBuffer();
-    this.inn = new StringBuffer();
+    this.iqe = new StringBuffer();
+    this.iqf = new StringBuffer();
+    this.iqg = new StringBuffer();
+    this.iqh = new StringBuffer();
     this.opType = paramInt1;
-    this.inj = paramInt2;
-    if (!aLg())
+    this.iqd = paramInt2;
+    if (!aLD())
     {
       AppMethodBeat.o(125659);
       return;
     }
     this.timeStamp = System.currentTimeMillis();
-    if (ay.isWifi(aj.getContext())) {
-      this.ini = 4;
+    if (az.isWifi(ak.getContext())) {
+      this.iqc = 4;
     }
     for (;;)
     {
-      this.inh = ino.incrementAndGet();
+      this.iqb = iqi.incrementAndGet();
       AppMethodBeat.o(125659);
       return;
-      if (ay.is4G(aj.getContext())) {
-        this.ini = 3;
-      } else if (ay.is3G(aj.getContext())) {
-        this.ini = 2;
-      } else if (ay.is2G(aj.getContext())) {
-        this.ini = 1;
+      if (az.is4G(ak.getContext())) {
+        this.iqc = 3;
+      } else if (az.is3G(ak.getContext())) {
+        this.iqc = 2;
+      } else if (az.is2G(ak.getContext())) {
+        this.iqc = 1;
       } else {
-        this.ini = 0;
+        this.iqc = 0;
       }
     }
   }
   
-  public static void aLj()
+  public static void aLG()
   {
     AppMethodBeat.i(125670);
-    ad.i("MicroMsg.StatisticsOplog", "wait op");
+    ae.i("MicroMsg.StatisticsOplog", "wait op");
     AppMethodBeat.o(125670);
   }
   
@@ -88,25 +88,25 @@ public final class e
       AppMethodBeat.o(125677);
       return null;
     }
-    die localdie = new die();
+    diz localdiz = new diz();
     try
     {
-      localdie.parseFrom(paramArrayOfByte);
-      paramArrayOfByte = new e(localdie.opType, localdie.inj);
-      paramArrayOfByte.ing = localdie.ing;
-      paramArrayOfByte.timeStamp = localdie.timeStamp;
-      paramArrayOfByte.inh = localdie.inh;
-      paramArrayOfByte.ini = localdie.ini;
-      paramArrayOfByte.ink = new StringBuffer(localdie.HwV);
-      paramArrayOfByte.inn = new StringBuffer(localdie.HwW);
-      paramArrayOfByte.inl = new StringBuffer(localdie.HwX);
-      paramArrayOfByte.inm = new StringBuffer(localdie.HwY);
+      localdiz.parseFrom(paramArrayOfByte);
+      paramArrayOfByte = new e(localdiz.opType, localdiz.iqd);
+      paramArrayOfByte.iqa = localdiz.iqa;
+      paramArrayOfByte.timeStamp = localdiz.timeStamp;
+      paramArrayOfByte.iqb = localdiz.iqb;
+      paramArrayOfByte.iqc = localdiz.iqc;
+      paramArrayOfByte.iqe = new StringBuffer(localdiz.HQE);
+      paramArrayOfByte.iqh = new StringBuffer(localdiz.HQF);
+      paramArrayOfByte.iqf = new StringBuffer(localdiz.HQG);
+      paramArrayOfByte.iqg = new StringBuffer(localdiz.HQH);
       AppMethodBeat.o(125677);
       return paramArrayOfByte;
     }
     catch (Exception paramArrayOfByte)
     {
-      ad.e("MicroMsg.StatisticsOplog", "putIntent " + paramArrayOfByte.getMessage());
+      ae.e("MicroMsg.StatisticsOplog", "putIntent " + paramArrayOfByte.getMessage());
       AppMethodBeat.o(125677);
     }
     return null;
@@ -126,7 +126,7 @@ public final class e
     return paramIntent;
   }
   
-  public static e pV(int paramInt)
+  public static e pY(int paramInt)
   {
     AppMethodBeat.i(125657);
     e locale = new e(paramInt, 1);
@@ -134,7 +134,7 @@ public final class e
     return locale;
   }
   
-  public static e pW(int paramInt)
+  public static e pZ(int paramInt)
   {
     AppMethodBeat.i(125658);
     e locale = new e(paramInt, 4);
@@ -142,7 +142,15 @@ public final class e
     return locale;
   }
   
-  public static e v(Bundle paramBundle)
+  public static e w(Intent paramIntent)
+  {
+    AppMethodBeat.i(125675);
+    paramIntent = c(paramIntent, "intent_key_StatisticsOplog");
+    AppMethodBeat.o(125675);
+    return paramIntent;
+  }
+  
+  public static e w(Bundle paramBundle)
   {
     AppMethodBeat.i(125674);
     paramBundle = paramBundle.getByteArray("intent_key_StatisticsOplog");
@@ -156,107 +164,99 @@ public final class e
     return paramBundle;
   }
   
-  public static e w(Intent paramIntent)
-  {
-    AppMethodBeat.i(125675);
-    paramIntent = c(paramIntent, "intent_key_StatisticsOplog");
-    AppMethodBeat.o(125675);
-    return paramIntent;
-  }
-  
-  public final e Gs(String paramString)
+  public final e GU(String paramString)
   {
     AppMethodBeat.i(125662);
-    if (!aLg())
+    if (!aLD())
     {
       AppMethodBeat.o(125662);
       return this;
     }
-    if (this.ink.length() == 0) {
-      if (bt.isNullOrNil(paramString)) {
-        this.ink.append(" ");
+    if (this.iqe.length() == 0) {
+      if (bu.isNullOrNil(paramString)) {
+        this.iqe.append(" ");
       }
     }
     for (;;)
     {
       AppMethodBeat.o(125662);
       return this;
-      this.ink.append(paramString);
+      this.iqe.append(paramString);
       continue;
-      this.ink.append("||".concat(String.valueOf(paramString)));
+      this.iqe.append("||".concat(String.valueOf(paramString)));
     }
   }
   
-  public final e Gt(String paramString)
+  public final e GV(String paramString)
   {
     AppMethodBeat.i(125664);
-    if (!aLg())
+    if (!aLD())
     {
       AppMethodBeat.o(125664);
       return this;
     }
-    if (this.inl.length() == 0) {
-      this.inl.append(paramString);
+    if (this.iqf.length() == 0) {
+      this.iqf.append(paramString);
     }
     for (;;)
     {
       AppMethodBeat.o(125664);
       return this;
-      this.inl.append("||".concat(String.valueOf(paramString)));
+      this.iqf.append("||".concat(String.valueOf(paramString)));
     }
   }
   
-  public final e Gu(String paramString)
+  public final e GW(String paramString)
   {
     AppMethodBeat.i(125667);
-    if (!aLg())
+    if (!aLD())
     {
       AppMethodBeat.o(125667);
       return this;
     }
-    if (this.inm.length() == 0) {
-      this.inm.append(paramString);
+    if (this.iqg.length() == 0) {
+      this.iqg.append(paramString);
     }
     for (;;)
     {
       AppMethodBeat.o(125667);
       return this;
-      this.inm.append("||".concat(String.valueOf(paramString)));
+      this.iqg.append("||".concat(String.valueOf(paramString)));
     }
   }
   
-  public final byte[] aFg()
+  public final byte[] aFw()
   {
     AppMethodBeat.i(125672);
-    Object localObject = new die();
-    ((die)localObject).opType = this.opType;
-    ((die)localObject).inj = this.inj;
-    ((die)localObject).ing = this.ing;
-    ((die)localObject).timeStamp = this.timeStamp;
-    ((die)localObject).inh = this.inh;
-    ((die)localObject).ini = this.ini;
-    ((die)localObject).HwV = this.ink.toString();
-    ((die)localObject).HwW = this.inn.toString();
-    ((die)localObject).HwX = this.inl.toString();
-    ((die)localObject).HwY = this.inm.toString();
+    Object localObject = new diz();
+    ((diz)localObject).opType = this.opType;
+    ((diz)localObject).iqd = this.iqd;
+    ((diz)localObject).iqa = this.iqa;
+    ((diz)localObject).timeStamp = this.timeStamp;
+    ((diz)localObject).iqb = this.iqb;
+    ((diz)localObject).iqc = this.iqc;
+    ((diz)localObject).HQE = this.iqe.toString();
+    ((diz)localObject).HQF = this.iqh.toString();
+    ((diz)localObject).HQG = this.iqf.toString();
+    ((diz)localObject).HQH = this.iqg.toString();
     try
     {
-      localObject = ((die)localObject).toByteArray();
+      localObject = ((diz)localObject).toByteArray();
       AppMethodBeat.o(125672);
       return localObject;
     }
     catch (Exception localException)
     {
-      ad.e("MicroMsg.StatisticsOplog", "putIntent " + localException.getMessage());
+      ae.e("MicroMsg.StatisticsOplog", "putIntent " + localException.getMessage());
       AppMethodBeat.o(125672);
     }
     return null;
   }
   
-  public final boolean aLg()
+  public final boolean aLD()
   {
     boolean bool2 = true;
-    int i = f.inq;
+    int i = f.iqk;
     boolean bool1;
     if (i == 0) {
       bool1 = false;
@@ -315,26 +315,26 @@ public final class e
     return false;
   }
   
-  public final e aLh()
+  public final e aLE()
   {
     AppMethodBeat.i(125665);
-    this.inl = new StringBuffer();
+    this.iqf = new StringBuffer();
     AppMethodBeat.o(125665);
     return this;
   }
   
-  public final e aLi()
+  public final e aLF()
   {
     AppMethodBeat.i(125666);
-    this.ink = new StringBuffer();
+    this.iqe = new StringBuffer();
     AppMethodBeat.o(125666);
     return this;
   }
   
-  public final boolean aLk()
+  public final boolean aLH()
   {
     AppMethodBeat.i(125671);
-    if (!aLg())
+    if (!aLD())
     {
       AppMethodBeat.o(125671);
       return false;
@@ -355,7 +355,7 @@ public final class e
   public final void b(Intent paramIntent, String paramString)
   {
     AppMethodBeat.i(125673);
-    byte[] arrayOfByte = aFg();
+    byte[] arrayOfByte = aFw();
     if (arrayOfByte == null)
     {
       AppMethodBeat.o(125673);
@@ -365,63 +365,63 @@ public final class e
     AppMethodBeat.o(125673);
   }
   
-  public final e eS(boolean paramBoolean)
+  public final e eV(boolean paramBoolean)
   {
     AppMethodBeat.i(125668);
     if (paramBoolean) {}
     for (Object localObject = "1";; localObject = "0")
     {
-      localObject = Gs((String)localObject);
+      localObject = GU((String)localObject);
       AppMethodBeat.o(125668);
       return localObject;
     }
   }
   
-  public final boolean pX(int paramInt)
+  public final boolean qa(int paramInt)
   {
     AppMethodBeat.i(125660);
-    this.inf = Integer.valueOf(paramInt);
+    this.ipZ = Integer.valueOf(paramInt);
     AppMethodBeat.o(125660);
     return true;
   }
   
-  public final e pY(int paramInt)
+  public final e qb(int paramInt)
   {
     AppMethodBeat.i(125663);
-    e locale = Gs(String.valueOf(paramInt));
+    e locale = GU(String.valueOf(paramInt));
     AppMethodBeat.o(125663);
     return locale;
   }
   
-  public final e pZ(int paramInt)
+  public final e qc(int paramInt)
   {
     AppMethodBeat.i(125669);
-    if (!aLg())
+    if (!aLD())
     {
       AppMethodBeat.o(125669);
       return this;
     }
-    if (this.inl.length() == 0) {
-      this.inl.append(paramInt);
+    if (this.iqf.length() == 0) {
+      this.iqf.append(paramInt);
     }
     for (;;)
     {
       AppMethodBeat.o(125669);
       return this;
-      this.inl.append("||".concat(String.valueOf(paramInt)));
+      this.iqf.append("||".concat(String.valueOf(paramInt)));
     }
   }
   
   public final void update()
   {
     AppMethodBeat.i(125661);
-    if (!aLg())
+    if (!aLD())
     {
       AppMethodBeat.o(125661);
       return;
     }
     this.timeStamp = System.currentTimeMillis();
-    this.inh = ino.incrementAndGet();
+    this.iqb = iqi.incrementAndGet();
     AppMethodBeat.o(125661);
   }
 }

@@ -6,17 +6,17 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.cv;
-import com.tencent.mm.g.a.cv.a;
+import com.tencent.mm.g.a.cw;
+import com.tencent.mm.g.a.cw.a;
 import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.tools.MMTextInputUI;
 
 public class RemarkUI
   extends MMTextInputUI
 {
-  public final void L(CharSequence paramCharSequence)
+  public final void K(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(55884);
     long l = getIntent().getLongExtra("kFavInfoLocalId", -1L);
@@ -28,15 +28,15 @@ public class RemarkUI
     label150:
     for (paramCharSequence = "";; paramCharSequence = paramCharSequence.toString())
     {
-      ad.i("MicroMsg.MMTextInputUI", "same remark[%s]", new Object[] { paramCharSequence });
+      ae.i("MicroMsg.MMTextInputUI", "same remark[%s]", new Object[] { paramCharSequence });
       if (!paramCharSequence.equals(getIntent().getStringExtra("kRemark")))
       {
-        cv localcv = new cv();
-        localcv.dnG.type = -2;
-        localcv.dnG.dnv = Long.toString(l);
-        localcv.dnG.desc = paramCharSequence;
-        ad.d("MicroMsg.MMTextInputUI", "update location remark, favlocalid is %s, remark is %s", new Object[] { localcv.dnG.dnv, localcv.dnG.desc });
-        a.IbL.l(localcv);
+        cw localcw = new cw();
+        localcw.doL.type = -2;
+        localcw.doL.dox = Long.toString(l);
+        localcw.doL.desc = paramCharSequence;
+        ae.d("MicroMsg.MMTextInputUI", "update location remark, favlocalid is %s, remark is %s", new Object[] { localcw.doL.dox, localcw.doL.desc });
+        a.IvT.l(localcw);
       }
       AppMethodBeat.o(55884);
       return;
@@ -54,7 +54,7 @@ public class RemarkUI
     super.onCreate(paramBundle);
     setMMTitle(2131760726);
     paramBundle = getIntent().getStringExtra("Kwebmap_locaion");
-    if (bt.isNullOrNil(paramBundle))
+    if (bu.isNullOrNil(paramBundle))
     {
       findViewById(2131301528).setVisibility(8);
       AppMethodBeat.o(55883);

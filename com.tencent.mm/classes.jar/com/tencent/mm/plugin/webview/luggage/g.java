@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.webview.luggage;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
+import android.graphics.Color;
 import android.net.Uri;
 import android.net.http.SslError;
 import android.os.Build.VERSION;
@@ -41,12 +42,12 @@ import com.tencent.mm.plugin.webview.ui.tools.widget.input.WebViewInputFooter;
 import com.tencent.mm.plugin.webview.ui.tools.widget.input.WebViewInputFooter.a;
 import com.tencent.mm.plugin.webview.ui.tools.widget.input.WebViewInputFooter.b;
 import com.tencent.mm.plugin.webview.ui.tools.widget.input.WebViewInputFooter.c;
-import com.tencent.mm.protocal.protobuf.avj;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.avz;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bp;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.KeyboardLinearLayout.a;
 import com.tencent.mm.ui.base.MMFalseProgressBar;
 import com.tencent.mm.ui.widget.MMWebView;
@@ -64,57 +65,57 @@ import org.json.JSONObject;
 public class g
   extends com.tencent.luggage.d.s
 {
-  private static final Pattern DOZ;
-  private static final Pattern DPa;
-  private MMFalseProgressBar DOA;
-  protected MovingImageButton DOB;
-  protected FrameLayout DOC;
-  public FrameLayout DOD;
-  protected s DOE;
-  protected q DOF;
-  protected HandOffURL DOG;
-  private WebChromeClient.CustomViewCallback DOH;
-  private FrameLayout DOI;
-  private ProgressBar DOJ;
-  protected com.tencent.mm.plugin.webview.e.c DOK;
-  public u DOL;
-  protected q.a DOM;
-  protected Map<String, String> DON;
-  protected boolean DOO;
-  protected boolean DOP;
-  protected int DOQ;
-  protected boolean DOR;
-  private boolean DOS;
-  public boolean DOT;
-  private boolean DOU;
-  private boolean DOV;
-  private boolean DOW;
-  public w DOX;
-  private a DOY;
-  protected m DOe;
-  protected com.tencent.mm.plugin.webview.luggage.d.a DOt;
-  protected l DOu;
-  protected b DOv;
-  private WebViewKeyboardLinearLayout DOw;
-  public WebViewInputFooter DOx;
-  public WebViewSearchContentInputFooter DOy;
-  private FrameLayout DOz;
-  private com.tencent.mm.plugin.webview.e.a<avj> DPb;
-  private com.tencent.mm.plugin.webview.ui.tools.c lvW;
-  private boolean lvf;
-  public ap mHandler;
+  private static final Pattern EgZ;
+  private static final Pattern Eha;
+  private MMFalseProgressBar EgA;
+  protected MovingImageButton EgB;
+  protected FrameLayout EgC;
+  public FrameLayout EgD;
+  protected s EgE;
+  protected q EgF;
+  protected HandOffURL EgG;
+  private WebChromeClient.CustomViewCallback EgH;
+  private FrameLayout EgI;
+  private ProgressBar EgJ;
+  protected com.tencent.mm.plugin.webview.e.c EgK;
+  public u EgL;
+  protected q.a EgM;
+  protected Map<String, String> EgN;
+  protected boolean EgO;
+  protected boolean EgP;
+  protected int EgQ;
+  protected boolean EgR;
+  private boolean EgS;
+  public boolean EgT;
+  private boolean EgU;
+  private boolean EgV;
+  private boolean EgW;
+  public w EgX;
+  private a EgY;
+  protected m Ege;
+  protected com.tencent.mm.plugin.webview.luggage.d.a Egt;
+  protected l Egu;
+  protected b Egv;
+  private WebViewKeyboardLinearLayout Egw;
+  public WebViewInputFooter Egx;
+  public WebViewSearchContentInputFooter Egy;
+  private FrameLayout Egz;
+  private com.tencent.mm.plugin.webview.e.a<avz> Ehb;
+  private com.tencent.mm.plugin.webview.ui.tools.c lAu;
+  private boolean lzD;
+  public aq mHandler;
   public FrameLayout mRootView;
-  public int nYw;
-  public int nYx;
-  private s.a poe;
-  protected String tTn;
-  protected boolean tWp;
+  public int oef;
+  public int oeg;
+  private s.a puL;
+  protected String uee;
+  protected boolean uhn;
   
   static
   {
     AppMethodBeat.i(78330);
-    DOZ = Pattern.compile("\"\\s*rgba\\(\\s*[0-9]+\\s*,\\s*[0-9]+\\s*,\\s*[0-9]+\\s*,\\s*[0-9]+\\s*\\)\\s*\"");
-    DPa = Pattern.compile("\"\\s*rgb\\(\\s*[0-9]+\\s*,\\s*[0-9]+\\s*,\\s*[0-9]+\\s*\\)\\s*\"");
+    EgZ = Pattern.compile("\"\\s*rgba\\(\\s*[0-9]+\\s*,\\s*[0-9]+\\s*,\\s*[0-9]+\\s*,\\s*[0-9]+\\s*\\)\\s*\"");
+    Eha = Pattern.compile("\"\\s*rgb\\(\\s*[0-9]+\\s*,\\s*[0-9]+\\s*,\\s*[0-9]+\\s*\\)\\s*\"");
     AppMethodBeat.o(78330);
   }
   
@@ -122,88 +123,88 @@ public class g
   {
     super(paramj, paramp, paramBundle);
     AppMethodBeat.i(78282);
-    this.lvf = true;
-    this.DOO = false;
-    this.tWp = false;
-    this.DOT = false;
-    this.DOU = false;
-    this.DOV = false;
-    this.DOW = false;
-    this.nYw = 0;
-    this.nYx = 0;
-    this.DOX = new w();
-    this.DPb = new com.tencent.mm.plugin.webview.e.a()
+    this.lzD = true;
+    this.EgO = false;
+    this.uhn = false;
+    this.EgT = false;
+    this.EgU = false;
+    this.EgV = false;
+    this.EgW = false;
+    this.oef = 0;
+    this.oeg = 0;
+    this.EgX = new w();
+    this.Ehb = new com.tencent.mm.plugin.webview.e.a()
     {
       public final void a(final int paramAnonymousInt1, final String paramAnonymousString1, final int paramAnonymousInt2, final int paramAnonymousInt3, final String paramAnonymousString2)
       {
-        AppMethodBeat.i(207864);
-        g.this.DOO = false;
-        g.this.au(new Runnable()
+        AppMethodBeat.i(198044);
+        g.this.EgO = false;
+        g.this.as(new Runnable()
         {
           public final void run()
           {
-            AppMethodBeat.i(207861);
+            AppMethodBeat.i(198041);
             g.this.b(paramAnonymousInt1, paramAnonymousString1, paramAnonymousInt2, paramAnonymousInt3);
-            AppMethodBeat.o(207861);
+            AppMethodBeat.o(198041);
           }
         });
-        AppMethodBeat.o(207864);
+        AppMethodBeat.o(198044);
       }
       
-      public final void bm(int paramAnonymousInt, String paramAnonymousString) {}
+      public final void bl(int paramAnonymousInt, String paramAnonymousString) {}
       
-      public final void bn(int paramAnonymousInt, String paramAnonymousString)
+      public final void bm(int paramAnonymousInt, String paramAnonymousString)
       {
-        AppMethodBeat.i(207862);
-        g.this.alB(paramAnonymousString);
-        AppMethodBeat.o(207862);
+        AppMethodBeat.i(198042);
+        g.this.amz(paramAnonymousString);
+        AppMethodBeat.o(198042);
       }
       
       public final void z(int paramAnonymousInt, final String paramAnonymousString1, final String paramAnonymousString2)
       {
-        AppMethodBeat.i(207863);
-        g.this.DOO = false;
-        g.this.au(new Runnable()
+        AppMethodBeat.i(198043);
+        g.this.EgO = false;
+        g.this.as(new Runnable()
         {
           public final void run()
           {
-            AppMethodBeat.i(207860);
+            AppMethodBeat.i(198040);
             g localg = g.this;
             String str = paramAnonymousString2;
             localg.chX.chP.loadData(str, "text/html", "utf-8");
-            AppMethodBeat.o(207860);
+            AppMethodBeat.o(198040);
           }
         });
-        AppMethodBeat.o(207863);
+        AppMethodBeat.o(198043);
       }
     };
-    this.poe = new s.a()
+    this.puL = new s.a()
     {
       public final WebResourceResponse a(WebResourceRequest paramAnonymousWebResourceRequest, Bundle paramAnonymousBundle)
       {
-        AppMethodBeat.i(207868);
-        if (com.tencent.mm.cq.d.kP(g.this.mContext)) {}
+        AppMethodBeat.i(198048);
+        if (com.tencent.mm.cp.d.kW(g.this.mContext)) {}
         try
         {
           int i = paramAnonymousBundle.getInt("resourceType");
           if ((i == 1) || (i == 7))
           {
-            ad.i("MicroMsg.LuggageMMWebPage", "get resoutce type is iframe : %d, start geta8key", new Object[] { Integer.valueOf(i) });
-            g.this.aGU(paramAnonymousWebResourceRequest.getUrl().toString());
+            ae.i("MicroMsg.LuggageMMWebPage", "get resoutce type is iframe : %d, start geta8key", new Object[] { Integer.valueOf(i) });
+            g.this.aIo(paramAnonymousWebResourceRequest.getUrl().toString());
           }
         }
         catch (Exception paramAnonymousBundle)
         {
           for (;;)
           {
-            ad.w("MicroMsg.LuggageMMWebPage", "get resource type failed Exception ; %s", new Object[] { paramAnonymousBundle.getMessage() });
+            ae.w("MicroMsg.LuggageMMWebPage", "get resource type failed Exception ; %s", new Object[] { paramAnonymousBundle.getMessage() });
           }
         }
         catch (Throwable paramAnonymousBundle)
         {
           for (;;)
           {
-            ad.w("MicroMsg.LuggageMMWebPage", "get resource type failed Throwable ; %s", new Object[] { paramAnonymousBundle.getMessage() });
+            ae.w("MicroMsg.LuggageMMWebPage", "get resource type failed Throwable ; %s", new Object[] { paramAnonymousBundle.getMessage() });
             continue;
             paramAnonymousWebResourceRequest = "";
           }
@@ -211,87 +212,87 @@ public class g
         if (paramAnonymousWebResourceRequest != null)
         {
           paramAnonymousWebResourceRequest = paramAnonymousWebResourceRequest.getUrl().toString();
-          paramAnonymousWebResourceRequest = g.this.alA(paramAnonymousWebResourceRequest);
-          AppMethodBeat.o(207868);
+          paramAnonymousWebResourceRequest = g.this.amy(paramAnonymousWebResourceRequest);
+          AppMethodBeat.o(198048);
           return paramAnonymousWebResourceRequest;
         }
       }
       
       public final void a(com.tencent.luggage.d.s paramAnonymouss, String paramAnonymousString)
       {
-        AppMethodBeat.i(207866);
-        g.this.cD(paramAnonymousString);
-        AppMethodBeat.o(207866);
+        AppMethodBeat.i(198046);
+        g.this.cE(paramAnonymousString);
+        AppMethodBeat.o(198046);
       }
       
       public final void b(com.tencent.luggage.d.s paramAnonymouss, String paramAnonymousString)
       {
-        AppMethodBeat.i(207867);
-        g.this.cE(paramAnonymousString);
-        AppMethodBeat.o(207867);
+        AppMethodBeat.i(198047);
+        g.this.cF(paramAnonymousString);
+        AppMethodBeat.o(198047);
       }
     };
     if (paramp != null)
     {
-      this.DOR = true;
-      this.DOK = com.tencent.mm.plugin.webview.e.e.WR(paramp.hashCode());
+      this.EgR = true;
+      this.EgK = com.tencent.mm.plugin.webview.e.e.Xx(paramp.hashCode());
     }
-    if (this.DOK == null) {}
+    if (this.EgK == null) {}
     for (;;)
     {
-      ad.i("MicroMsg.LuggageMMWebPage", "LuggageMMWebPage create, getA8key == null ? %b", new Object[] { Boolean.valueOf(bool) });
-      if (this.DOK == null) {
-        this.DOK = new com.tencent.mm.plugin.webview.e.c();
+      ae.i("MicroMsg.LuggageMMWebPage", "LuggageMMWebPage create, getA8key == null ? %b", new Object[] { Boolean.valueOf(bool) });
+      if (this.EgK == null) {
+        this.EgK = new com.tencent.mm.plugin.webview.e.c();
       }
-      this.mHandler = new ap();
-      this.DOL = new u(this);
-      this.DOM = new q.a(this, this.DOK);
-      this.chX.chG = this.DOM;
-      this.DOE = new s(this);
-      this.DOF = new q(new d(this), this);
+      this.mHandler = new aq();
+      this.EgL = new u(this);
+      this.EgM = new q.a(this, this.EgK);
+      this.chX.chG = this.EgM;
+      this.EgE = new s(this);
+      this.EgF = new q(new d(this), this);
       j.b(this);
-      if (this.DOt != null)
+      if (this.Egt != null)
       {
-        this.DOt.setPage(this);
-        this.DOt.setWebViewClient(new ac()
+        this.Egt.setPage(this);
+        this.Egt.setWebViewClient(new ac()
         {
           public final void a(WebView paramAnonymousWebView, int paramAnonymousInt, String paramAnonymousString1, String paramAnonymousString2)
           {
-            AppMethodBeat.i(207851);
-            ad.i("MicroMsg.LuggageMMWebPage", "onReceivedError, errCode = %d, description = %s, failingUrl = %s", new Object[] { Integer.valueOf(paramAnonymousInt), paramAnonymousString1, paramAnonymousString2 });
+            AppMethodBeat.i(198031);
+            ae.i("MicroMsg.LuggageMMWebPage", "onReceivedError, errCode = %d, description = %s, failingUrl = %s", new Object[] { Integer.valueOf(paramAnonymousInt), paramAnonymousString1, paramAnonymousString2 });
             g.this.A(paramAnonymousInt, paramAnonymousString1, paramAnonymousString2);
-            AppMethodBeat.o(207851);
+            AppMethodBeat.o(198031);
           }
           
           public final void a(WebView paramAnonymousWebView, com.tencent.xweb.r paramAnonymousr, SslError paramAnonymousSslError)
           {
-            AppMethodBeat.i(207852);
+            AppMethodBeat.i(198032);
             if (g.f(g.this) == null) {
               g.a(g.this, new com.tencent.mm.plugin.webview.ui.tools.c(g.this.mContext, paramAnonymousWebView));
             }
             g.f(g.this).a(g.this.getUrl(), paramAnonymousr, paramAnonymousSslError);
-            AppMethodBeat.o(207852);
+            AppMethodBeat.o(198032);
           }
         });
-        this.DOt.setWebChromeClient(new x()
+        this.Egt.setWebChromeClient(new x()
         {
           public final void d(WebView paramAnonymousWebView, String paramAnonymousString)
           {
             int i = 1;
-            AppMethodBeat.i(207853);
-            ad.i("MicroMsg.LuggageMMWebPage", "onReceivedTitle, title = %s", new Object[] { paramAnonymousString });
-            if (!com.tencent.mm.plugin.webview.luggage.c.b.UV(paramAnonymousString)) {
-              if ((bt.isNullOrNil(paramAnonymousString)) || (!paramAnonymousString.equalsIgnoreCase("about:blank"))) {
+            AppMethodBeat.i(198033);
+            ae.i("MicroMsg.LuggageMMWebPage", "onReceivedTitle, title = %s", new Object[] { paramAnonymousString });
+            if (!com.tencent.mm.plugin.webview.luggage.c.b.VG(paramAnonymousString)) {
+              if ((bu.isNullOrNil(paramAnonymousString)) || (!paramAnonymousString.equalsIgnoreCase("about:blank"))) {
                 break label74;
               }
             }
             for (;;)
             {
               if (i == 0) {
-                g.this.dJ(paramAnonymousString, 0);
+                g.this.dN(paramAnonymousString, 0);
               }
-              g.this.chX.Co();
-              AppMethodBeat.o(207853);
+              g.this.chX.Cr();
+              AppMethodBeat.o(198033);
               return;
               label74:
               i = 0;
@@ -300,15 +301,15 @@ public class g
           
           public final View getVideoLoadingProgressView()
           {
-            AppMethodBeat.i(207856);
-            ad.i("MicroMsg.LuggageMMWebPage", "getVideoLoadingProgressView");
+            AppMethodBeat.i(198036);
+            ae.i("MicroMsg.LuggageMMWebPage", "getVideoLoadingProgressView");
             if (g.i(g.this) == null)
             {
               g.a(g.this, new ProgressBar(g.this.mContext));
               g.i(g.this).setIndeterminate(true);
             }
             ProgressBar localProgressBar = g.i(g.this);
-            AppMethodBeat.o(207856);
+            AppMethodBeat.o(198036);
             return localProgressBar;
           }
           
@@ -319,78 +320,78 @@ public class g
           
           public final void onHideCustomView()
           {
-            AppMethodBeat.i(207855);
-            ad.i("MicroMsg.LuggageMMWebPage", "onHideCustomView, sdk int = " + Build.VERSION.SDK_INT);
+            AppMethodBeat.i(198035);
+            ae.i("MicroMsg.LuggageMMWebPage", "onHideCustomView, sdk int = " + Build.VERSION.SDK_INT);
             if (g.g(g.this) == null)
             {
-              AppMethodBeat.o(207855);
+              AppMethodBeat.o(198035);
               return;
             }
             try
             {
-              g.this.DOu.setVisibility(0);
+              g.this.Egu.setVisibility(0);
               if (g.h(g.this) != null) {
                 g.h(g.this).onCustomViewHidden();
               }
-              g.this.DOe.setVisibility(0);
+              g.this.Ege.setVisibility(0);
               if (g.g(g.this) != null) {
                 g.this.mRootView.removeView(g.g(g.this));
               }
               g.g(g.this).removeAllViews();
               g.a(g.this, null);
-              AppMethodBeat.o(207855);
+              AppMethodBeat.o(198035);
               return;
             }
             catch (Exception localException)
             {
-              ad.e("MicroMsg.LuggageMMWebPage", "onHideCustomView error " + localException.getMessage());
-              AppMethodBeat.o(207855);
+              ae.e("MicroMsg.LuggageMMWebPage", "onHideCustomView error " + localException.getMessage());
+              AppMethodBeat.o(198035);
             }
           }
           
           public final void onShowCustomView(View paramAnonymousView, WebChromeClient.CustomViewCallback paramAnonymousCustomViewCallback)
           {
-            AppMethodBeat.i(207854);
-            ad.i("MicroMsg.LuggageMMWebPage", "onShowCustomView, sdk int = " + Build.VERSION.SDK_INT);
+            AppMethodBeat.i(198034);
+            ae.i("MicroMsg.LuggageMMWebPage", "onShowCustomView, sdk int = " + Build.VERSION.SDK_INT);
             try
             {
               if (g.g(g.this) != null)
               {
                 paramAnonymousCustomViewCallback.onCustomViewHidden();
-                AppMethodBeat.o(207854);
+                AppMethodBeat.o(198034);
                 return;
               }
               g.a(g.this, new FrameLayout(g.this.mContext));
               g.g(g.this).setBackgroundResource(2131101165);
               g.g(g.this).addView(paramAnonymousView);
               g.a(g.this, paramAnonymousCustomViewCallback);
-              g.this.DOu.setVisibility(8);
-              g.this.DOe.setVisibility(8);
+              g.this.Egu.setVisibility(8);
+              g.this.Ege.setVisibility(8);
               g.this.mRootView.addView(g.g(g.this));
-              AppMethodBeat.o(207854);
+              AppMethodBeat.o(198034);
               return;
             }
             catch (Exception paramAnonymousView)
             {
-              ad.e("MicroMsg.LuggageMMWebPage", "onShowCustomView error " + paramAnonymousView.getMessage());
-              AppMethodBeat.o(207854);
+              ae.e("MicroMsg.LuggageMMWebPage", "onShowCustomView error " + paramAnonymousView.getMessage());
+              AppMethodBeat.o(198034);
             }
           }
         });
       }
-      a(this.poe);
+      a(this.puL);
       paramj = this.chl;
       paramp = new l.a()
       {
         public final boolean onBackPressed()
         {
           AppMethodBeat.i(78236);
-          if (g.this.ePd())
+          if (g.this.eSP())
           {
             AppMethodBeat.o(78236);
             return true;
           }
-          if ((g.this.DOF != null) && (g.this.DOF.sv(2)))
+          if ((g.this.EgF != null) && (g.this.EgF.sy(2)))
           {
             AppMethodBeat.o(78236);
             return true;
@@ -406,49 +407,49 @@ public class g
     }
   }
   
-  private void WH(int paramInt)
+  private void Xo(int paramInt)
   {
     AppMethodBeat.i(78300);
-    ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)this.DOy.getLayoutParams();
+    ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)this.Egy.getLayoutParams();
     if (localMarginLayoutParams.bottomMargin != paramInt)
     {
       localMarginLayoutParams.bottomMargin = paramInt;
-      this.DOy.setLayoutParams(localMarginLayoutParams);
+      this.Egy.setLayoutParams(localMarginLayoutParams);
     }
     int i = paramInt;
-    if (this.DOy.isShown()) {
-      i = paramInt + this.DOy.getHeight();
+    if (this.Egy.isShown()) {
+      i = paramInt + this.Egy.getHeight();
     }
-    this.DOu.setPadding(this.DOu.getPaddingLeft(), this.DOu.getPaddingTop(), this.DOu.getPaddingRight(), i);
+    this.Egu.setPadding(this.Egu.getPaddingLeft(), this.Egu.getPaddingTop(), this.Egu.getPaddingRight(), i);
     AppMethodBeat.o(78300);
   }
   
   protected void A(int paramInt, String paramString1, String paramString2) {}
   
-  public View BQ()
+  public View BR()
   {
     AppMethodBeat.i(78283);
-    Object localObject = bQm();
-    this.DOY = new a((byte)0);
+    Object localObject = bRn();
+    this.EgY = new a((byte)0);
     localObject = Uri.parse((String)localObject);
-    if (bt.nullAsNil(((Uri)localObject).getQueryParameter("immersiveUIStyle")).equals("1")) {
-      this.DOY.DPm = true;
+    if (bu.nullAsNil(((Uri)localObject).getQueryParameter("immersiveUIStyle")).equals("1")) {
+      this.EgY.Ehm = true;
     }
-    if (bt.nullAsNil(((Uri)localObject).getQueryParameter("immersivePageBgIsDark")).equals("1")) {
-      this.DOY.DPn = true;
+    if (bu.nullAsNil(((Uri)localObject).getQueryParameter("immersivePageBgIsDark")).equals("1")) {
+      this.EgY.Ehn = true;
     }
-    this.DOt = ((com.tencent.mm.plugin.webview.luggage.d.a)this.chX.Cm());
-    this.DOu = new l(this.mContext, super.BQ());
-    this.DOt.setCompetitorView(this.DOu);
-    this.DOt.setSource(this.mParams.getString("KPublisherId"));
+    this.Egt = ((com.tencent.mm.plugin.webview.luggage.d.a)this.chX.Cp());
+    this.Egu = new l(this.mContext, super.BR());
+    this.Egt.setCompetitorView(this.Egu);
+    this.Egt.setSource(this.mParams.getString("KPublisherId"));
     this.mRootView = new FrameLayout(this.mContext);
-    this.DOv = new b(this.mContext);
-    this.DOv.setBackgroundColor(android.support.v4.content.b.n(this.mContext, 2131101179));
-    this.mRootView.addView(this.DOv, new FrameLayout.LayoutParams(-1, -1));
-    localObject = com.tencent.mm.ui.z.jO(this.mContext).inflate(2131494673, this.DOv, false);
-    b localb = this.DOv;
-    View localView = cXt();
-    boolean bool = this.DOY.DPm;
+    this.Egv = new b(this.mContext);
+    this.Egv.setBackgroundColor(android.support.v4.content.b.n(this.mContext, 2131101179));
+    this.mRootView.addView(this.Egv, new FrameLayout.LayoutParams(-1, -1));
+    localObject = com.tencent.mm.ui.z.jV(this.mContext).inflate(2131494673, this.Egv, false);
+    b localb = this.Egv;
+    View localView = dad();
+    boolean bool = this.EgY.Ehm;
     RelativeLayout.LayoutParams localLayoutParams1 = new RelativeLayout.LayoutParams(-1, -2);
     localLayoutParams1.addRule(10);
     RelativeLayout.LayoutParams localLayoutParams2 = new RelativeLayout.LayoutParams(-1, -1);
@@ -460,57 +461,57 @@ public class g
     }
     for (;;)
     {
-      this.DOv.setActionBar(this.DOe);
-      this.DOv.setWebView(this.DOt);
-      this.DOC = ((FrameLayout)((View)localObject).findViewById(2131298736));
-      this.DOA = ((MMFalseProgressBar)((View)localObject).findViewById(2131306899));
-      this.DOB = ((MovingImageButton)((View)localObject).findViewById(2131300327));
-      this.DOB.setOnClickListener(new View.OnClickListener()
+      this.Egv.setActionBar(this.Ege);
+      this.Egv.setWebView(this.Egt);
+      this.EgC = ((FrameLayout)((View)localObject).findViewById(2131298736));
+      this.EgA = ((MMFalseProgressBar)((View)localObject).findViewById(2131306899));
+      this.EgB = ((MovingImageButton)((View)localObject).findViewById(2131300327));
+      this.EgB.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(78257);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
           localb.bd(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/webview/luggage/LuggageMMWebPage$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-          g.this.cXp();
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/webview/luggage/LuggageMMWebPage$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+          g.this.cZZ();
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/webview/luggage/LuggageMMWebPage$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(78257);
         }
       });
-      this.DOw = ((WebViewKeyboardLinearLayout)((View)localObject).findViewById(2131300570));
-      this.DOD = ((FrameLayout)((View)localObject).findViewById(2131306898));
-      this.DOD.addView(this.DOu, new ViewGroup.LayoutParams(-1, -1));
-      this.DOx = ((WebViewInputFooter)((View)localObject).findViewById(2131306916));
-      this.DOx.hide();
-      this.DOx.setOnTextSendListener(new WebViewInputFooter.c()
+      this.Egw = ((WebViewKeyboardLinearLayout)((View)localObject).findViewById(2131300570));
+      this.EgD = ((FrameLayout)((View)localObject).findViewById(2131306898));
+      this.EgD.addView(this.Egu, new ViewGroup.LayoutParams(-1, -1));
+      this.Egx = ((WebViewInputFooter)((View)localObject).findViewById(2131306916));
+      this.Egx.hide();
+      this.Egx.setOnTextSendListener(new WebViewInputFooter.c()
       {
-        public final void aGV(String paramAnonymousString)
+        public final void aIp(String paramAnonymousString)
         {
-          AppMethodBeat.i(207872);
-          g.ePo();
+          AppMethodBeat.i(198052);
+          g.eTa();
           if (g.b(g.this) != null) {
             g.b(g.this).hide();
           }
-          AppMethodBeat.o(207872);
+          AppMethodBeat.o(198052);
         }
       });
-      this.DOx.setOnSmileyChosenListener(new WebViewInputFooter.a()
+      this.Egx.setOnSmileyChosenListener(new WebViewInputFooter.a()
       {
-        public final boolean Vr(final String paramAnonymousString)
+        public final boolean Wd(final String paramAnonymousString)
         {
-          AppMethodBeat.i(207838);
+          AppMethodBeat.i(198018);
           g.this.chX.a(new com.tencent.luggage.d.d()
           {
-            public final JSONObject BO()
+            public final JSONObject BP()
             {
-              AppMethodBeat.i(207837);
+              AppMethodBeat.i(198017);
               JSONObject localJSONObject = new JSONObject();
               try
               {
                 localJSONObject.put("smiley", paramAnonymousString);
                 label24:
-                AppMethodBeat.o(207837);
+                AppMethodBeat.o(198017);
                 return localJSONObject;
               }
               catch (JSONException localJSONException)
@@ -524,48 +525,48 @@ public class g
               return "onGetSmiley";
             }
           });
-          AppMethodBeat.o(207838);
+          AppMethodBeat.o(198018);
           return true;
         }
       });
-      this.DOx.setOnSmileyPanelVisibilityChangedListener(new WebViewInputFooter.b()
+      this.Egx.setOnSmileyPanelVisibilityChangedListener(new WebViewInputFooter.b()
       {
-        public final void ePr()
+        public final void eTd()
         {
-          AppMethodBeat.i(207839);
-          g.this.WG(0);
-          AppMethodBeat.o(207839);
+          AppMethodBeat.i(198019);
+          g.this.Xn(0);
+          AppMethodBeat.o(198019);
         }
         
-        public final void ePs()
+        public final void eTe()
         {
-          AppMethodBeat.i(207840);
+          AppMethodBeat.i(198020);
           if ((g.c(g.this) != null) && (g.c(g.this).getKeyBoardHeight() > 0)) {
-            g.this.WG(g.c(g.this).getKeyBoardHeight());
+            g.this.Xn(g.c(g.this).getKeyBoardHeight());
           }
-          AppMethodBeat.o(207840);
+          AppMethodBeat.o(198020);
         }
       });
-      this.DOy = ((WebViewSearchContentInputFooter)((View)localObject).findViewById(2131304407));
-      this.DOy.setActionDelegate(new WebViewSearchContentInputFooter.a()
+      this.Egy = ((WebViewSearchContentInputFooter)((View)localObject).findViewById(2131304407));
+      this.Egy.setActionDelegate(new WebViewSearchContentInputFooter.a()
       {
         public final void a(WebViewSearchContentInputFooter paramAnonymousWebViewSearchContentInputFooter)
         {
-          AppMethodBeat.i(207842);
+          AppMethodBeat.i(198022);
           if (paramAnonymousWebViewSearchContentInputFooter.getVisibility() == 0) {
             b(paramAnonymousWebViewSearchContentInputFooter);
           }
-          AppMethodBeat.o(207842);
+          AppMethodBeat.o(198022);
         }
         
         public final void b(WebViewSearchContentInputFooter paramAnonymousWebViewSearchContentInputFooter)
         {
-          AppMethodBeat.i(207845);
-          g.this.DOt.clearMatches();
+          AppMethodBeat.i(198025);
+          g.this.Egt.clearMatches();
           paramAnonymousWebViewSearchContentInputFooter.reset();
           g.d(g.this).C(0, 0, true);
-          g.this.DOt.findAllAsync(paramAnonymousWebViewSearchContentInputFooter.getSearchContent());
-          AppMethodBeat.o(207845);
+          g.this.Egt.findAllAsync(paramAnonymousWebViewSearchContentInputFooter.getSearchContent());
+          AppMethodBeat.o(198025);
         }
         
         public final boolean c(int paramAnonymousInt, KeyEvent paramAnonymousKeyEvent)
@@ -573,48 +574,48 @@ public class g
           return false;
         }
         
-        public final void ePt()
+        public final void eTf()
         {
-          AppMethodBeat.i(207841);
+          AppMethodBeat.i(198021);
           g.a(g.this, 0);
-          g.this.DOt.clearMatches();
-          g.d(g.this).eVK();
-          AppMethodBeat.o(207841);
+          g.this.Egt.clearMatches();
+          g.d(g.this).eZx();
+          AppMethodBeat.o(198021);
         }
         
-        public final void ePu()
+        public final void eTg()
         {
-          AppMethodBeat.i(207843);
-          g.this.DOt.findNext(false);
-          AppMethodBeat.o(207843);
+          AppMethodBeat.i(198023);
+          g.this.Egt.findNext(false);
+          AppMethodBeat.o(198023);
         }
         
-        public final void ePv()
+        public final void eTh()
         {
-          AppMethodBeat.i(207844);
-          g.this.DOt.findNext(true);
-          AppMethodBeat.o(207844);
+          AppMethodBeat.i(198024);
+          g.this.Egt.findNext(true);
+          AppMethodBeat.o(198024);
         }
       });
-      this.DOt.setFindListener(new WebView.FindListener()
+      this.Egt.setFindListener(new WebView.FindListener()
       {
         public final void onFindResultReceived(int paramAnonymousInt1, int paramAnonymousInt2, boolean paramAnonymousBoolean)
         {
-          AppMethodBeat.i(207846);
+          AppMethodBeat.i(198026);
           g.d(g.this).C(paramAnonymousInt1, paramAnonymousInt2, paramAnonymousBoolean);
-          AppMethodBeat.o(207846);
+          AppMethodBeat.o(198026);
         }
       });
-      this.DOz = ((FrameLayout)((View)localObject).findViewById(2131303929));
-      if (this.DOz != null) {
-        this.DOz.setOnClickListener(new View.OnClickListener()
+      this.Egz = ((FrameLayout)((View)localObject).findViewById(2131303929));
+      if (this.Egz != null) {
+        this.Egz.setOnClickListener(new View.OnClickListener()
         {
           public final void onClick(View paramAnonymousView)
           {
             AppMethodBeat.i(78274);
             com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
             localb.bd(paramAnonymousView);
-            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/webview/luggage/LuggageMMWebPage$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/webview/luggage/LuggageMMWebPage$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
             g.this.chX.loadUrl(g.this.getUrl());
             g.a(g.this).setVisibility(8);
             com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/webview/luggage/LuggageMMWebPage$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
@@ -622,33 +623,39 @@ public class g
           }
         });
       }
-      this.DOw.setOnkbdStateListener(new KeyboardLinearLayout.a()
+      this.Egw.setOnkbdStateListener(new KeyboardLinearLayout.a()
       {
-        public final void GV(int paramAnonymousInt)
+        public final void Hs(int paramAnonymousInt)
         {
-          AppMethodBeat.i(207847);
-          ad.i("MicroMsg.LuggageMMWebPage", "onKeyBoardStateChange, state = ".concat(String.valueOf(paramAnonymousInt)));
+          AppMethodBeat.i(198027);
+          ae.i("MicroMsg.LuggageMMWebPage", "onKeyBoardStateChange, state = ".concat(String.valueOf(paramAnonymousInt)));
           if (!g.e(g.this))
           {
-            ad.i("MicroMsg.LuggageMMWebPage", "background ignored");
-            AppMethodBeat.o(207847);
+            ae.i("MicroMsg.LuggageMMWebPage", "background ignored");
+            AppMethodBeat.o(198027);
             return;
           }
           g.a(g.this, g.c(g.this), paramAnonymousInt);
           if (paramAnonymousInt == -3)
           {
-            if ((g.b(g.this) != null) && (g.b(g.this).getVisibility() == 0)) {
-              g.b(g.this).eVN();
+            if ((g.b(g.this) != null) && (g.b(g.this).getVisibility() == 0))
+            {
+              WebViewInputFooter localWebViewInputFooter = g.b(g.this);
+              if (localWebViewInputFooter.ELb) {
+                localWebViewInputFooter.setVisibility(8);
+              }
+              localWebViewInputFooter.state = 0;
+              localWebViewInputFooter.bFx();
             }
             g.a(g.this, g.c(g.this).getKeyBoardHeight());
-            AppMethodBeat.o(207847);
+            AppMethodBeat.o(198027);
             return;
           }
           g.a(g.this, 0);
-          AppMethodBeat.o(207847);
+          AppMethodBeat.o(198027);
         }
       });
-      this.DOt.setOnTouchListener(new View.OnTouchListener()
+      this.Egt.setOnTouchListener(new View.OnTouchListener()
       {
         public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
         {
@@ -656,14 +663,14 @@ public class g
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
           localb.bd(paramAnonymousView);
           localb.bd(paramAnonymousMotionEvent);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/webview/luggage/LuggageMMWebPage$4", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahq());
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/webview/luggage/LuggageMMWebPage$4", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahF());
           if (g.b(g.this).isShown()) {
             g.b(g.this).hide();
           }
           if (paramAnonymousMotionEvent.getAction() == 0)
           {
-            g.this.nYw = ((int)paramAnonymousMotionEvent.getRawX());
-            g.this.nYx = ((int)paramAnonymousMotionEvent.getRawY());
+            g.this.oef = ((int)paramAnonymousMotionEvent.getRawX());
+            g.this.oeg = ((int)paramAnonymousMotionEvent.getRawY());
           }
           com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/mm/plugin/webview/luggage/LuggageMMWebPage$4", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
           AppMethodBeat.o(78275);
@@ -679,81 +686,81 @@ public class g
     }
   }
   
-  public String Cp()
+  public String Cs()
   {
     AppMethodBeat.i(78317);
-    String str = com.tencent.mm.plugin.appbrand.z.d.UT("luggage_mm_adapter.js");
+    String str = com.tencent.mm.plugin.appbrand.y.d.VE("luggage_mm_adapter.js");
     AppMethodBeat.o(78317);
     return str;
   }
   
-  public boolean HC(int paramInt)
+  public boolean HZ(int paramInt)
   {
     AppMethodBeat.i(78302);
-    boolean bool = this.DOK.fK(getUrl(), paramInt);
+    boolean bool = this.EgK.fV(getUrl(), paramInt);
     AppMethodBeat.o(78302);
     return bool;
   }
   
-  public final void WG(int paramInt)
+  public final void Xn(int paramInt)
   {
     AppMethodBeat.i(78299);
-    ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)this.DOx.getLayoutParams();
+    ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)this.Egx.getLayoutParams();
     if (localMarginLayoutParams.bottomMargin != paramInt)
     {
       localMarginLayoutParams.bottomMargin = paramInt;
-      this.DOx.setLayoutParams(localMarginLayoutParams);
+      this.Egx.setLayoutParams(localMarginLayoutParams);
     }
     AppMethodBeat.o(78299);
   }
   
-  public final void WI(int paramInt)
+  public final void Xp(int paramInt)
   {
-    AppMethodBeat.i(207877);
-    ad.i("MicroMsg.LuggageMMWebPage", "localSetFontSize, fontSize = ".concat(String.valueOf(paramInt)));
+    AppMethodBeat.i(198057);
+    ae.i("MicroMsg.LuggageMMWebPage", "localSetFontSize, fontSize = ".concat(String.valueOf(paramInt)));
     switch (paramInt)
     {
     default: 
-      this.DOt.getSettings().setTextZoom(100);
-      AppMethodBeat.o(207877);
+      this.Egt.getSettings().setTextZoom(100);
+      AppMethodBeat.o(198057);
       return;
     case 1: 
-      this.DOt.getSettings().setTextZoom(80);
-      AppMethodBeat.o(207877);
+      this.Egt.getSettings().setTextZoom(80);
+      AppMethodBeat.o(198057);
       return;
     case 2: 
-      this.DOt.getSettings().setTextZoom(100);
-      AppMethodBeat.o(207877);
+      this.Egt.getSettings().setTextZoom(100);
+      AppMethodBeat.o(198057);
       return;
     case 3: 
-      this.DOt.getSettings().setTextZoom(110);
-      AppMethodBeat.o(207877);
+      this.Egt.getSettings().setTextZoom(110);
+      AppMethodBeat.o(198057);
       return;
     case 4: 
-      this.DOt.getSettings().setTextZoom(112);
-      AppMethodBeat.o(207877);
+      this.Egt.getSettings().setTextZoom(112);
+      AppMethodBeat.o(198057);
       return;
     case 5: 
-      this.DOt.getSettings().setTextZoom(112);
-      AppMethodBeat.o(207877);
+      this.Egt.getSettings().setTextZoom(112);
+      AppMethodBeat.o(198057);
       return;
     case 6: 
-      this.DOt.getSettings().setTextZoom(140);
-      AppMethodBeat.o(207877);
+      this.Egt.getSettings().setTextZoom(140);
+      AppMethodBeat.o(198057);
       return;
     case 7: 
-      this.DOt.getSettings().setTextZoom(155);
-      AppMethodBeat.o(207877);
+      this.Egt.getSettings().setTextZoom(155);
+      AppMethodBeat.o(198057);
       return;
     }
-    this.DOt.getSettings().setTextZoom(165);
-    AppMethodBeat.o(207877);
+    this.Egt.getSettings().setTextZoom(165);
+    AppMethodBeat.o(198057);
   }
   
-  protected final boolean aGU(String paramString)
+  protected final boolean aIo(String paramString)
   {
     AppMethodBeat.i(78320);
-    if (this.DOK.a(paramString, 5, this.DPb) == c.a.DWT)
+    if (this.EgK.a(paramString, 5, this.Ehb) == c.a.EoV)
     {
       AppMethodBeat.o(78320);
       return true;
@@ -762,12 +769,12 @@ public class g
     return false;
   }
   
-  protected final void aas(final String paramString)
+  protected final void abj(final String paramString)
   {
     AppMethodBeat.i(78293);
     this.chX.a(new com.tencent.luggage.d.d()
     {
-      public final JSONObject BO()
+      public final JSONObject BP()
       {
         AppMethodBeat.i(78276);
         JSONObject localJSONObject = new JSONObject();
@@ -792,60 +799,60 @@ public class g
     AppMethodBeat.o(78293);
   }
   
-  protected WebResourceResponse alA(String paramString)
-  {
-    return null;
-  }
-  
-  protected void alB(String paramString) {}
-  
-  protected void alu(String paramString)
+  protected void ams(String paramString)
   {
     AppMethodBeat.i(78312);
-    if (this.DOt.getX5WebViewExtension() != null)
+    if (this.Egt.getX5WebViewExtension() != null)
     {
-      this.DOu.setPullDownEnabled(true);
-      this.DOu.setCurrentUrl(paramString);
+      this.Egu.setPullDownEnabled(true);
+      this.Egu.setCurrentUrl(paramString);
     }
     AppMethodBeat.o(78312);
   }
   
-  protected boolean alw(String paramString)
+  protected boolean amu(String paramString)
   {
     return false;
   }
   
-  protected boolean aly(String paramString)
+  protected boolean amw(String paramString)
   {
     AppMethodBeat.i(78319);
-    if (this.DOK.aIi(paramString))
+    if (this.EgK.aJB(paramString))
     {
-      this.DOO = true;
+      this.EgO = true;
       AppMethodBeat.o(78319);
       return false;
     }
-    if (this.DOK.a(paramString, this.DPb) == c.a.DWT) {}
+    if (this.EgK.a(paramString, this.Ehb) == c.a.EoV) {}
     for (boolean bool = true;; bool = false)
     {
-      ad.i("MicroMsg.LuggageMMWebPage", "startGetA8Key, url: %s, ret: %b", new Object[] { paramString, Boolean.valueOf(bool) });
-      this.DOO = bool;
+      ae.i("MicroMsg.LuggageMMWebPage", "startGetA8Key, url: %s, ret: %b", new Object[] { paramString, Boolean.valueOf(bool) });
+      this.EgO = bool;
       AppMethodBeat.o(78319);
       return bool;
     }
   }
   
-  protected void alz(String paramString)
+  protected void amx(String paramString)
   {
     AppMethodBeat.i(78314);
-    ad.i("MicroMsg.LuggageMMWebPage", "loadUrlWithoutCache, url: %s, __Time__: %d", new Object[] { paramString, Long.valueOf(System.currentTimeMillis()) });
+    ae.i("MicroMsg.LuggageMMWebPage", "loadUrlWithoutCache, url: %s, __Time__: %d", new Object[] { paramString, Long.valueOf(System.currentTimeMillis()) });
     HashMap localHashMap = new HashMap(2);
     localHashMap.put("Pragma", "no-cache");
     localHashMap.put("Cache-Control", "no-cache");
-    this.DOt.loadUrl(paramString, localHashMap);
+    this.Egt.loadUrl(paramString, localHashMap);
     AppMethodBeat.o(78314);
   }
   
-  public final void au(Runnable paramRunnable)
+  protected WebResourceResponse amy(String paramString)
+  {
+    return null;
+  }
+  
+  protected void amz(String paramString) {}
+  
+  public final void as(Runnable paramRunnable)
   {
     AppMethodBeat.i(78323);
     if (Looper.myLooper() == Looper.getMainLooper())
@@ -861,7 +868,7 @@ public class g
   protected final void b(int paramInt1, String paramString, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(78322);
-    ad.i("MicroMsg.LuggageMMWebPage", "onError, reason = %d, errType = %d, errCode = %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    ae.i("MicroMsg.LuggageMMWebPage", "onError, reason = %d, errType = %d, errCode = %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
     switch (paramInt1)
     {
     }
@@ -869,25 +876,25 @@ public class g
     {
       AppMethodBeat.o(78322);
       return;
-      if (!alw(paramString)) {
-        this.DOz.setVisibility(0);
+      if (!amu(paramString)) {
+        this.Egz.setVisibility(0);
       }
     }
   }
   
-  protected boolean bQO()
+  protected boolean bRP()
   {
     AppMethodBeat.i(78325);
     if (!this.mParams.getBoolean("disable_minimize", false)) {}
     for (boolean bool = true;; bool = false)
     {
-      ad.i("MicroMsg.LuggageMMWebPage", "enableMinimize class:%s enable:%b", new Object[] { getClass(), Boolean.valueOf(bool) });
+      ae.i("MicroMsg.LuggageMMWebPage", "enableMinimize class:%s enable:%b", new Object[] { getClass(), Boolean.valueOf(bool) });
       AppMethodBeat.o(78325);
       return bool;
     }
   }
   
-  public final String bQm()
+  public final String bRn()
   {
     AppMethodBeat.i(78318);
     String str = this.mParams.getString("rawUrl");
@@ -895,30 +902,30 @@ public class g
     return str;
   }
   
-  public final void bhr()
+  public final void bhZ()
   {
     AppMethodBeat.i(78297);
-    this.DOQ = android.support.v4.content.b.n(this.mContext, 2131099873);
-    ePc();
+    this.EgQ = android.support.v4.content.b.n(this.mContext, 2131099873);
+    eSO();
     AppMethodBeat.o(78297);
   }
   
-  public final void cB(String paramString)
+  public final void cC(String paramString)
   {
-    AppMethodBeat.i(207875);
-    if (this.DOt != null) {
-      this.DOt.evaluateJavascript(paramString, null);
+    AppMethodBeat.i(198055);
+    if (this.Egt != null) {
+      this.Egt.evaluateJavascript(paramString, null);
     }
-    AppMethodBeat.o(207875);
+    AppMethodBeat.o(198055);
   }
   
-  protected void cD(String paramString)
+  protected void cE(String paramString)
   {
     AppMethodBeat.i(78315);
-    ad.d("MicroMsg.LuggageMMWebPage", "onUrlLoadingStarted, url = ".concat(String.valueOf(paramString)));
-    if (aly(paramString))
+    ae.d("MicroMsg.LuggageMMWebPage", "onUrlLoadingStarted, url = ".concat(String.valueOf(paramString)));
+    if (amw(paramString))
     {
-      int i = this.DOK.aIh(paramString);
+      int i = this.EgK.aJA(paramString);
       if ((i == 0) || (i == 2) || (i == 8))
       {
         this.chX.stopLoading();
@@ -926,136 +933,136 @@ public class g
         return;
       }
     }
-    com.tencent.mm.plugin.webview.model.a.e(this.DOt);
-    if (this.DOF != null)
+    com.tencent.mm.plugin.webview.model.a.e(this.Egt);
+    if (this.EgF != null)
     {
-      this.DOF.eA("rawUrl", paramString);
-      this.DOF.aGX(paramString);
+      this.EgF.eD("rawUrl", paramString);
+      this.EgF.aIr(paramString);
     }
-    if (this.DOG != null)
+    if (this.EgG != null)
     {
-      this.DOG.setUrl(bt.nullAsNil(paramString));
-      ((com.tencent.mm.plugin.handoff.a.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.handoff.a.a.class)).e(this.DOG);
+      this.EgG.setUrl(bu.nullAsNil(paramString));
+      ((com.tencent.mm.plugin.handoff.a.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.handoff.a.a.class)).e(this.EgG);
     }
-    this.DOe.setOptionEnable(false);
-    cXk();
-    alu(paramString);
+    this.Ege.setOptionEnable(false);
+    cZT();
+    ams(paramString);
     AppMethodBeat.o(78315);
   }
   
-  protected void cE(String paramString)
+  protected void cF(String paramString)
   {
     AppMethodBeat.i(78316);
-    ad.d("MicroMsg.LuggageMMWebPage", "onUrlLoadingFinished, url = ".concat(String.valueOf(paramString)));
-    com.tencent.mm.plugin.webview.model.a.e(this.DOt);
-    this.DOe.setOptionEnable(true);
-    cXv();
-    if (this.DOF != null)
+    ae.d("MicroMsg.LuggageMMWebPage", "onUrlLoadingFinished, url = ".concat(String.valueOf(paramString)));
+    com.tencent.mm.plugin.webview.model.a.e(this.Egt);
+    this.Ege.setOptionEnable(true);
+    daf();
+    if (this.EgF != null)
     {
-      this.DOF.eA("rawUrl", paramString);
-      this.DOF.aGX(paramString);
+      this.EgF.eD("rawUrl", paramString);
+      this.EgF.aIr(paramString);
     }
-    if (this.DOG != null)
+    if (this.EgG != null)
     {
-      this.DOG.setUrl(bt.nullAsNil(paramString));
-      ((com.tencent.mm.plugin.handoff.a.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.handoff.a.a.class)).e(this.DOG);
+      this.EgG.setUrl(bu.nullAsNil(paramString));
+      ((com.tencent.mm.plugin.handoff.a.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.handoff.a.a.class)).e(this.EgG);
     }
     AppMethodBeat.o(78316);
   }
   
-  protected void cXk()
+  protected void cZT()
   {
     AppMethodBeat.i(78310);
-    this.DOA.setVisibility(0);
-    this.DOA.start();
+    this.EgA.setVisibility(0);
+    this.EgA.start();
     AppMethodBeat.o(78310);
   }
   
-  protected void cXp()
+  protected void cZZ()
   {
     AppMethodBeat.i(78285);
-    this.DOe.cXp();
+    this.Ege.cZZ();
     AppMethodBeat.o(78285);
   }
   
-  protected View cXt()
-  {
-    AppMethodBeat.i(78284);
-    this.DOe = new m(this);
-    m localm = this.DOe;
-    AppMethodBeat.o(78284);
-    return localm;
-  }
-  
-  protected void cXu()
-  {
-    AppMethodBeat.i(78294);
-    if (!this.DOP)
-    {
-      this.DOQ = this.mParams.getInt("customize_status_bar_color");
-      if (this.DOQ == 0) {
-        this.DOQ = android.support.v4.content.b.n(this.mContext, 2131099873);
-      }
-    }
-    ePc();
-    AppMethodBeat.o(78294);
-  }
-  
-  protected void cXv()
-  {
-    AppMethodBeat.i(78311);
-    this.DOA.finish();
-    this.DOA.setVisibility(8);
-    AppMethodBeat.o(78311);
-  }
-  
-  public void dJ(final String paramString, final int paramInt)
+  public void dN(final String paramString, final int paramInt)
   {
     AppMethodBeat.i(78298);
-    if (this.DOV) {
-      this.DOF.Wm(paramString);
+    if (this.EgV) {
+      this.EgF.WY(paramString);
     }
-    if (this.DOG != null)
+    if (this.EgG != null)
     {
-      this.DOG.setTitle(paramString);
-      ((com.tencent.mm.plugin.handoff.a.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.handoff.a.a.class)).e(this.DOG);
+      this.EgG.setTitle(paramString);
+      ((com.tencent.mm.plugin.handoff.a.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.handoff.a.a.class)).e(this.EgG);
     }
     this.mHandler.post(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(207871);
-        if (g.this.DOe != null)
+        AppMethodBeat.i(198051);
+        if (g.this.Ege != null)
         {
-          if (!bt.isNullOrNil(paramString)) {
-            g.this.DOe.setTitleText(paramString);
+          if (!bu.isNullOrNil(paramString)) {
+            g.this.Ege.setTitleText(paramString);
           }
           if (paramInt != 0) {
-            g.this.DOe.setTitleColor(paramInt);
+            g.this.Ege.setTitleColor(paramInt);
           }
         }
-        AppMethodBeat.o(207871);
+        AppMethodBeat.o(198051);
       }
     });
     AppMethodBeat.o(78298);
   }
   
-  public final void djf()
+  protected View dad()
+  {
+    AppMethodBeat.i(78284);
+    this.Ege = new m(this);
+    m localm = this.Ege;
+    AppMethodBeat.o(78284);
+    return localm;
+  }
+  
+  protected void dae()
+  {
+    AppMethodBeat.i(78294);
+    if (!this.EgP)
+    {
+      this.EgQ = this.mParams.getInt("customize_status_bar_color");
+      if (this.EgQ == 0) {
+        this.EgQ = android.support.v4.content.b.n(this.mContext, 2131099873);
+      }
+    }
+    eSO();
+    AppMethodBeat.o(78294);
+  }
+  
+  protected void daf()
+  {
+    AppMethodBeat.i(78311);
+    this.EgA.finish();
+    this.EgA.setVisibility(8);
+    AppMethodBeat.o(78311);
+  }
+  
+  public final void dme()
   {
     AppMethodBeat.i(78306);
-    this.DOe.setVisibility(8);
+    this.Ege.setVisibility(8);
     AppMethodBeat.o(78306);
   }
   
   protected void e(String paramString1, String paramString2, Map<String, String> paramMap)
   {
     AppMethodBeat.i(78321);
-    ad.i("MicroMsg.LuggageMMWebPage", "onUrlRedirect, reqUrl = %s, full = %s", new Object[] { paramString1, paramString2 });
-    if (bt.isNullOrNil(this.tTn)) {
-      this.tTn = paramString2;
+    ae.i("MicroMsg.LuggageMMWebPage", "onUrlRedirect, reqUrl = %s, full = %s", new Object[] { paramString1, paramString2 });
+    if (bu.isNullOrNil(this.uee)) {
+      this.uee = paramString2;
     }
-    this.DON = paramMap;
-    if ((!alw(paramString1)) && (!this.DOR) && (!this.DOW))
+    this.EgN = paramMap;
+    if ((!amu(paramString1)) && (!this.EgR) && (!this.EgW))
     {
       this.chX.stopLoading();
       if ((paramMap != null) && (paramMap.size() > 0))
@@ -1069,48 +1076,48 @@ public class g
     AppMethodBeat.o(78321);
   }
   
-  public final void ePa()
+  public final void eSM()
   {
     AppMethodBeat.i(78286);
-    ad.i("MicroMsg.LuggageMMWebPage", "onAddInContainer");
+    ae.i("MicroMsg.LuggageMMWebPage", "onAddInContainer");
     String str = this.mParams.getString("float_ball_key");
-    if (!bt.isNullOrNil(str)) {
-      this.DOF.ac(5, str);
+    if (!bu.isNullOrNil(str)) {
+      this.EgF.ac(5, str);
     }
     for (;;)
     {
-      this.DOF.eA("rawUrl", bQm());
-      this.DOF.aGX(bQm());
-      if (bt.isNullOrNil(this.DOe.getTitle())) {
-        this.DOF.Wm(bQm());
+      this.EgF.eD("rawUrl", bRn());
+      this.EgF.aIr(bRn());
+      if (bu.isNullOrNil(this.Ege.getTitle())) {
+        this.EgF.WY(bRn());
       }
-      this.DOV = true;
-      if (this.DOU) {
-        this.DOF.bgB();
+      this.EgV = true;
+      if (this.EgU) {
+        this.EgF.bhj();
       }
-      this.DOG = new HandOffURL(bt.nullAsNil(bQm()), bt.nullAsNil(bQm()), "");
-      ((com.tencent.mm.plugin.handoff.a.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.handoff.a.a.class)).a(this.DOG);
-      ePb();
+      this.EgG = new HandOffURL(bu.nullAsNil(bRn()), bu.nullAsNil(bRn()), "");
+      ((com.tencent.mm.plugin.handoff.a.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.handoff.a.a.class)).a(this.EgG);
+      eSN();
       AppMethodBeat.o(78286);
       return;
-      this.DOF.ac(5, com.tencent.mm.plugin.ball.f.b.Wp(bQm()));
+      this.EgF.ac(5, com.tencent.mm.plugin.ball.f.b.Xb(bRn()));
     }
   }
   
-  public final void ePb()
+  public final void eSN()
   {
-    AppMethodBeat.i(207873);
+    AppMethodBeat.i(198053);
     int i = this.mParams.getInt("screen_orientation", -1);
-    if (this.chm.Cd().peek() == this) {
+    if (this.chm.Cg().peek() == this) {
       ((Activity)this.mContext).setRequestedOrientation(i);
     }
-    AppMethodBeat.o(207873);
+    AppMethodBeat.o(198053);
   }
   
-  protected final void ePc()
+  protected final void eSO()
   {
     AppMethodBeat.i(78295);
-    ad.d("MicroMsg.LuggageMMWebPage", "setActionBarColor");
+    ae.d("MicroMsg.LuggageMMWebPage", "setActionBarColor");
     if (Thread.currentThread() != Looper.getMainLooper().getThread())
     {
       this.mHandler.post(new Runnable()
@@ -1118,23 +1125,23 @@ public class g
         public final void run()
         {
           AppMethodBeat.i(78277);
-          g.this.ePc();
+          g.this.eSO();
           AppMethodBeat.o(78277);
         }
       });
       AppMethodBeat.o(78295);
       return;
     }
-    this.DOe.i(this.DOQ, this.DOY.DPm, this.DOY.DPn);
+    this.Ege.i(this.EgQ, this.EgY.Ehm, this.EgY.Ehn);
     AppMethodBeat.o(78295);
   }
   
-  public final boolean ePd()
+  public final boolean eSP()
   {
     AppMethodBeat.i(78304);
-    if (this.DOe != null)
+    if (this.Ege != null)
     {
-      boolean bool = this.DOe.ePd();
+      boolean bool = this.Ege.eSP();
       AppMethodBeat.o(78304);
       return bool;
     }
@@ -1142,53 +1149,53 @@ public class g
     return false;
   }
   
-  public final m ePe()
+  public final m eSQ()
   {
-    return this.DOe;
+    return this.Ege;
   }
   
-  public final void ePf()
+  public final void eSR()
   {
     AppMethodBeat.i(78309);
     this.mHandler.post(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(207858);
-        g.this.DOu.setPullDownEnabled(false);
-        AppMethodBeat.o(207858);
+        AppMethodBeat.i(198038);
+        g.this.Egu.setPullDownEnabled(false);
+        AppMethodBeat.o(198038);
       }
     });
     AppMethodBeat.o(78309);
   }
   
-  public final boolean ePg()
+  public final boolean eSS()
   {
-    return this.DOO;
+    return this.EgO;
   }
   
-  public final String ePh()
+  public final String eST()
   {
-    return this.tTn;
+    return this.uee;
   }
   
-  public final com.tencent.mm.plugin.webview.e.c ePi()
+  public final com.tencent.mm.plugin.webview.e.c eSU()
   {
-    return this.DOK;
+    return this.EgK;
   }
   
-  public final q.a ePj()
+  public final q.a eSV()
   {
-    return this.DOM;
+    return this.EgM;
   }
   
-  public final boolean ePk()
+  public final boolean eSW()
   {
     AppMethodBeat.i(78324);
     boolean bool1 = this.mParams.getBoolean("forceHideShare", false);
     boolean bool2 = this.mParams.getBoolean("showShare", true);
-    ad.i("MicroMsg.LuggageMMWebPage", "forceHideShare:%b showShareBtn:%b enableMinimize:%b", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2), Boolean.valueOf(bQO()) });
-    if ((!bool1) && (bool2) && (bQO()))
+    ae.i("MicroMsg.LuggageMMWebPage", "forceHideShare:%b showShareBtn:%b enableMinimize:%b", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2), Boolean.valueOf(bRP()) });
+    if ((!bool1) && (bool2) && (bRP()))
     {
       AppMethodBeat.o(78324);
       return true;
@@ -1197,39 +1204,39 @@ public class g
     return false;
   }
   
-  public final q ePl()
+  public final q eSX()
   {
-    return this.DOF;
+    return this.EgF;
   }
   
-  public final HandOffURL ePm()
+  public final HandOffURL eSY()
   {
-    return this.DOG;
+    return this.EgG;
   }
   
-  public final void ePn()
+  public final void eSZ()
   {
     AppMethodBeat.i(78326);
     if (Thread.currentThread() == Looper.getMainLooper().getThread())
     {
-      int i = this.chm.Cd().indexOf(this);
+      int i = this.chm.Cg().indexOf(this);
       if (i < 0)
       {
         AppMethodBeat.o(78326);
         return;
       }
-      if (!this.chm.Ce().remove(i))
+      if (!this.chm.Ch().remove(i))
       {
-        this.chm.Cg().finish();
+        this.chm.Cj().finish();
         AppMethodBeat.o(78326);
         return;
       }
-      com.tencent.e.h.LTJ.q(new Runnable()
+      com.tencent.e.h.MqF.q(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(78273);
-          com.tencent.luggage.d.h localh = (com.tencent.luggage.d.h)g.this.chm.Cd().peek();
+          com.tencent.luggage.d.h localh = (com.tencent.luggage.d.h)g.this.chm.Cg().peek();
           if ((localh != null) && ((localh instanceof g))) {
             g.j((g)localh);
           }
@@ -1239,13 +1246,13 @@ public class g
       AppMethodBeat.o(78326);
       return;
     }
-    com.tencent.mm.ipcinvoker.p.z(new Runnable()
+    com.tencent.mm.ipcinvoker.p.x(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(207869);
-        g.this.ePn();
-        AppMethodBeat.o(207869);
+        AppMethodBeat.i(198049);
+        g.this.eSZ();
+        AppMethodBeat.o(198049);
       }
     });
     AppMethodBeat.o(78326);
@@ -1254,53 +1261,83 @@ public class g
   public void g(String paramString, Bundle paramBundle)
   {
     AppMethodBeat.i(78313);
-    ad.i("MicroMsg.LuggageMMWebPage", "load url, url: %s, fromStash: %b", new Object[] { paramString, Boolean.valueOf(this.DOR) });
+    ae.i("MicroMsg.LuggageMMWebPage", "load url, url: %s, fromStash: %b", new Object[] { paramString, Boolean.valueOf(this.EgR) });
     this.chX.mUrl = paramString;
-    if (this.DOR)
+    if (this.EgR)
     {
-      ad.i("MicroMsg.LuggageMMWebPage", "stash url");
-      this.DOe.setOptionEnable(true);
-      if (!bt.isNullOrNil(this.mParams.getString("title"))) {
-        dJ(this.mParams.getString("title"), 0);
+      ae.i("MicroMsg.LuggageMMWebPage", "stash url");
+      this.Ege.setOptionEnable(true);
+      if (!bu.isNullOrNil(this.mParams.getString("title"))) {
+        dN(this.mParams.getString("title"), 0);
       }
-      this.lvf = false;
-      if (this.DOK == null) {
-        this.DOK = new com.tencent.mm.plugin.webview.e.c();
+      this.lzD = false;
+      if (this.EgK == null) {
+        this.EgK = new com.tencent.mm.plugin.webview.e.c();
       }
-      aly(paramString);
+      amw(paramString);
       AppMethodBeat.o(78313);
       return;
     }
-    cXk();
+    cZT();
     paramBundle = paramBundle.getString("game_open_html");
-    if (!bt.isNullOrNil(paramBundle))
+    if (!bu.isNullOrNil(paramBundle))
     {
-      this.DOW = true;
-      this.DOt.loadDataWithBaseURL(paramString, paramBundle, "text/html", "utf-8", null);
+      this.EgW = true;
+      this.Egt.loadDataWithBaseURL(paramString, paramBundle, "text/html", "utf-8", null);
     }
     do
     {
       for (;;)
       {
-        aly(paramString);
-        this.lvf = false;
+        amw(paramString);
+        this.lzD = false;
         AppMethodBeat.o(78313);
         return;
-        if (!alw(paramString)) {
+        if (!amu(paramString)) {
           break;
         }
-        alz(paramString);
+        amx(paramString);
       }
-    } while (this.lvf);
+    } while (this.lzD);
     g(paramString, null);
     AppMethodBeat.o(78313);
   }
   
+  public final void ge(final boolean paramBoolean)
+  {
+    AppMethodBeat.i(78327);
+    if ((this.EgF != null) && (this.EgF.sy(1)))
+    {
+      AppMethodBeat.o(78327);
+      return;
+    }
+    if (Thread.currentThread() == Looper.getMainLooper().getThread())
+    {
+      if (!this.chm.Ch().bp(paramBoolean))
+      {
+        this.chm.Cj().finish();
+        AppMethodBeat.o(78327);
+      }
+    }
+    else {
+      com.tencent.mm.ipcinvoker.p.x(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(198050);
+          g.this.ge(paramBoolean);
+          AppMethodBeat.o(198050);
+        }
+      });
+    }
+    AppMethodBeat.o(78327);
+  }
+  
   public final String getTitle()
   {
-    AppMethodBeat.i(221641);
-    String str = this.DOe.getTitle();
-    AppMethodBeat.o(221641);
+    AppMethodBeat.i(224324);
+    String str = this.Ege.getTitle();
+    AppMethodBeat.o(224324);
     return str;
   }
   
@@ -1314,37 +1351,7 @@ public class g
   
   public final MMWebView getWebView()
   {
-    return this.DOt;
-  }
-  
-  public final void gg(final boolean paramBoolean)
-  {
-    AppMethodBeat.i(78327);
-    if ((this.DOF != null) && (this.DOF.sv(1)))
-    {
-      AppMethodBeat.o(78327);
-      return;
-    }
-    if (Thread.currentThread() == Looper.getMainLooper().getThread())
-    {
-      if (!this.chm.Ce().bp(paramBoolean))
-      {
-        this.chm.Cg().finish();
-        AppMethodBeat.o(78327);
-      }
-    }
-    else {
-      com.tencent.mm.ipcinvoker.p.z(new Runnable()
-      {
-        public final void run()
-        {
-          AppMethodBeat.i(207870);
-          g.this.gg(paramBoolean);
-          AppMethodBeat.o(207870);
-        }
-      });
-    }
-    AppMethodBeat.o(78327);
+    return this.Egt;
   }
   
   public final boolean isFullScreen()
@@ -1355,19 +1362,54 @@ public class g
     return bool;
   }
   
-  protected void na(boolean paramBoolean)
+  public final void n(String paramString, final float paramFloat)
+  {
+    AppMethodBeat.i(198054);
+    if (!bu.isNullOrNil(paramString)) {}
+    try
+    {
+      int i = Color.parseColor(paramString);
+      this.EgP = true;
+      this.EgQ = (i | 0xFF000000);
+      this.Ege.setActionBarColorValue(this.EgQ);
+      label43:
+      if ((paramFloat < 0.0F) || (paramFloat > 1.0F))
+      {
+        eSO();
+        AppMethodBeat.o(198054);
+        return;
+      }
+      this.mHandler.post(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(78278);
+          g.this.Ege.setAlpha(paramFloat);
+          AppMethodBeat.o(78278);
+        }
+      });
+      AppMethodBeat.o(198054);
+      return;
+    }
+    catch (Exception paramString)
+    {
+      break label43;
+    }
+  }
+  
+  protected void ne(boolean paramBoolean)
   {
     AppMethodBeat.i(78292);
     if (paramBoolean)
     {
-      this.DOe.setVisibility(8);
-      this.DOB.setVisibility(0);
+      this.Ege.setVisibility(8);
+      this.EgB.setVisibility(0);
       com.tencent.mm.plugin.webview.luggage.c.a.b(((Activity)this.mContext).getWindow(), true);
       AppMethodBeat.o(78292);
       return;
     }
-    this.DOe.setVisibility(0);
-    this.DOB.setVisibility(8);
+    this.Ege.setVisibility(0);
+    this.EgB.setVisibility(8);
     com.tencent.mm.plugin.webview.luggage.c.a.b(((Activity)this.mContext).getWindow(), false);
     AppMethodBeat.o(78292);
   }
@@ -1375,14 +1417,14 @@ public class g
   public void onBackground()
   {
     AppMethodBeat.i(78288);
-    ad.i("MicroMsg.LuggageMMWebPage", "onBackground");
-    this.DOU = false;
-    aas("onPause");
-    this.DOe.cXq();
-    this.DOt.onPause();
-    this.DOS = false;
-    if (this.DOF != null) {
-      this.DOF.bgC();
+    ae.i("MicroMsg.LuggageMMWebPage", "onBackground");
+    this.EgU = false;
+    abj("onPause");
+    this.Ege.daa();
+    this.Egt.onPause();
+    this.EgS = false;
+    if (this.EgF != null) {
+      this.EgF.bhk();
     }
     AppMethodBeat.o(78288);
   }
@@ -1390,104 +1432,78 @@ public class g
   public void onDestroy()
   {
     AppMethodBeat.i(78289);
-    if (!this.tWp)
+    if (!this.uhn)
     {
-      this.tWp = true;
-      ad.i("MicroMsg.LuggageMMWebPage", "onDestroy");
-      this.DOE.DOl = null;
+      this.uhn = true;
+      ae.i("MicroMsg.LuggageMMWebPage", "onDestroy");
+      this.EgE.Egl = null;
       j.c(this);
       this.mRootView.removeAllViews();
-      this.chX.setContext(aj.getContext());
-      if (this.DOF != null)
+      this.chX.setContext(ak.getContext());
+      if (this.EgF != null)
       {
-        this.DOF.onDestroy();
-        if (!this.DOF.bKz()) {
+        this.EgF.onDestroy();
+        if (!this.EgF.bLw()) {
           break label144;
         }
-        r.a(this.DOF.DPV, this.chX, this.DOK);
+        r.a(this.EgF.EhV, this.chX, this.EgK);
       }
     }
     for (;;)
     {
-      if (this.DOG != null) {
-        ((com.tencent.mm.plugin.handoff.a.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.handoff.a.a.class)).b(this.DOG);
+      if (this.EgG != null) {
+        ((com.tencent.mm.plugin.handoff.a.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.handoff.a.a.class)).b(this.EgG);
       }
-      this.DOK.DGd = true;
-      this.DOe.onDestroy();
+      this.EgK.DYb = true;
+      this.Ege.onDestroy();
       AppMethodBeat.o(78289);
       return;
       label144:
-      aas("onDestroy");
+      abj("onDestroy");
     }
   }
   
   public void onForeground()
   {
     AppMethodBeat.i(78287);
-    if (this.DOU)
+    if (this.EgU)
     {
       AppMethodBeat.o(78287);
       return;
     }
-    this.DOU = true;
-    ad.i("MicroMsg.LuggageMMWebPage", "onForeground");
-    if (this.DOT)
+    this.EgU = true;
+    ae.i("MicroMsg.LuggageMMWebPage", "onForeground");
+    if (this.EgT)
     {
-      gg(false);
+      ge(false);
       AppMethodBeat.o(78287);
       return;
     }
-    ePb();
-    na(isFullScreen());
-    cXu();
-    aas("onResume");
-    this.DOt.onResume();
-    this.DOS = true;
-    WH(0);
-    if (this.DOV) {
-      this.DOF.bgB();
+    eSN();
+    ne(isFullScreen());
+    dae();
+    abj("onResume");
+    this.Egt.onResume();
+    this.EgS = true;
+    Xo(0);
+    if (this.EgV) {
+      this.EgF.bhj();
     }
-    this.DOe.onForeground();
+    this.Ege.onForeground();
     AppMethodBeat.o(78287);
   }
   
   public void reload()
   {
     AppMethodBeat.i(78290);
-    this.DOt.reload();
+    this.Egt.reload();
     AppMethodBeat.o(78290);
-  }
-  
-  public final void u(int paramInt, final float paramFloat)
-  {
-    AppMethodBeat.i(207874);
-    if (paramInt != -1)
-    {
-      this.DOP = true;
-      this.DOQ = paramInt;
-    }
-    if ((paramFloat < 0.0F) || (paramFloat > 1.0F))
-    {
-      ePc();
-      AppMethodBeat.o(207874);
-      return;
-    }
-    this.mHandler.post(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(78278);
-        g.this.DOe.setAlpha(paramFloat);
-        AppMethodBeat.o(78278);
-      }
-    });
-    AppMethodBeat.o(207874);
   }
   
   static final class a
   {
-    boolean DPm;
-    boolean DPn;
+    boolean Ehm;
+    boolean Ehn;
   }
 }
 

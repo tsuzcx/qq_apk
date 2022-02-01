@@ -4,7 +4,7 @@ import com.danikula.videocache.HttpProxyCacheServer;
 
 public final class a
 {
-  public static HttpProxyCacheServer BEP;
+  public static HttpProxyCacheServer BWn;
 }
 
 

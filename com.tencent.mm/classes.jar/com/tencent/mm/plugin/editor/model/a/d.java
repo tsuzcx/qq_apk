@@ -1,14 +1,14 @@
 package com.tencent.mm.plugin.editor.model.a;
 
-import com.tencent.mm.protocal.protobuf.ajn;
+import com.tencent.mm.protocal.protobuf.ajx;
 
 public class d
   extends a
 {
-  public String dBx;
-  public ajn ptR;
-  public String ptS = "";
-  public boolean ptT;
+  public String dCC;
+  public ajx pAv;
+  public String pAw = "";
+  public boolean pAx;
   public int type;
 }
 

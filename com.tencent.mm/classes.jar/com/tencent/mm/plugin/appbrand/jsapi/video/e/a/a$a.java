@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.appbrand.jsapi.video.e.a;
 
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/video/player/advance/AdvanceBandwidthMeter$Companion;", "", "()V", "BYTES_TRANSFERRED_FOR_ESTIMATE", "", "DEFAULT_MAX_WEIGHT", "", "getDEFAULT_MAX_WEIGHT", "()I", "ELAPSED_MILLIS_FOR_ESTIMATE", "luggage-commons-jsapi-video-ext_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsapi/video/player/advance/AdvanceBandwidthMeter$Companion;", "", "()V", "BYTES_TRANSFERRED_FOR_ESTIMATE", "", "DEFAULT_MAX_WEIGHT", "", "getDEFAULT_MAX_WEIGHT", "()I", "ELAPSED_MILLIS_FOR_ESTIMATE", "luggage-commons-jsapi-video-ext_release"})
 public final class a$a {}
 
 

@@ -5,11 +5,11 @@ import java.util.List;
 
 public final class a
 {
-  private static List<a> viA;
-  private static String viB;
+  private static List<a> vuF;
+  private static String vuG;
   
   /* Error */
-  public static List<a> aoO(String paramString)
+  public static List<a> apT(String paramString)
   {
     // Byte code:
     //   0: ldc 2
@@ -19,10 +19,10 @@ public final class a
     //   8: aload_0
     //   9: ifnull +27 -> 36
     //   12: aload_0
-    //   13: getstatic 23	com/tencent/mm/plugin/l/a:viB	Ljava/lang/String;
+    //   13: getstatic 23	com/tencent/mm/plugin/l/a:vuG	Ljava/lang/String;
     //   16: invokevirtual 29	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   19: ifeq +17 -> 36
-    //   22: getstatic 31	com/tencent/mm/plugin/l/a:viA	Ljava/util/List;
+    //   22: getstatic 31	com/tencent/mm/plugin/l/a:vuF	Ljava/util/List;
     //   25: astore_0
     //   26: ldc 15
     //   28: invokestatic 34	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -50,12 +50,12 @@ public final class a
     //   38	43	46	finally
   }
   
-  public static void u(String paramString, List<a> paramList)
+  public static void v(String paramString, List<a> paramList)
   {
     try
     {
-      viB = paramString;
-      viA = paramList;
+      vuG = paramString;
+      vuF = paramList;
       return;
     }
     finally
@@ -67,14 +67,14 @@ public final class a
   
   public static final class a
   {
-    public String lEN;
-    public int viC;
-    public SKBuiltinBuffer_t viD;
+    public String lJm;
+    public int vuH;
+    public SKBuiltinBuffer_t vuI;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.l.a
  * JD-Core Version:    0.7.0.1
  */

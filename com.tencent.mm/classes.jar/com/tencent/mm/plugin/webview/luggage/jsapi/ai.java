@@ -7,7 +7,7 @@ import com.tencent.luggage.bridge.k;
 import com.tencent.luggage.d.b.a;
 import com.tencent.luggage.d.s;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import org.json.JSONObject;
 
 public class ai
@@ -19,19 +19,19 @@ public class ai
   {
     AppMethodBeat.i(78579);
     parama = parama.chh.cgn;
-    h.LTJ.aR(new Runnable()
+    h.MqF.aO(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(207909);
-        ad.i("MicroMsg.JsApiLog", "jslog : " + parama.optString("msg"));
-        AppMethodBeat.o(207909);
+        AppMethodBeat.i(198089);
+        ae.i("MicroMsg.JsApiLog", "jslog : " + parama.optString("msg"));
+        AppMethodBeat.o(198089);
       }
     });
     AppMethodBeat.o(78579);
   }
   
-  public final int ccO()
+  public final int ced()
   {
     return 0;
   }

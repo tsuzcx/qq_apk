@@ -6,16 +6,16 @@ import com.tencent.mm.plugin.fts.a.a;
 public final class c
   extends a
 {
-  public final void agy()
+  public final void agM()
   {
     AppMethodBeat.i(45022);
-    if (agz()) {
-      S(-104L, 3L);
+    if (agN()) {
+      R(-104L, 3L);
     }
     AppMethodBeat.o(45022);
   }
   
-  public final boolean agz()
+  public final boolean agN()
   {
     AppMethodBeat.i(45023);
     if (!ge(-104, 3))

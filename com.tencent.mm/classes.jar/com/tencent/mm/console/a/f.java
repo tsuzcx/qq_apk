@@ -5,7 +5,7 @@ import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.secinforeport.a.d;
 import com.tencent.mm.pluginsdk.cmd.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class f
   implements a
@@ -22,7 +22,7 @@ public final class f
   public final boolean a(Context paramContext, String[] paramArrayOfString, String paramString)
   {
     AppMethodBeat.i(20179);
-    if (!com.tencent.mm.sdk.a.b.fjN())
+    if (!com.tencent.mm.sdk.a.b.fnF())
     {
       AppMethodBeat.o(20179);
       return false;
@@ -62,19 +62,19 @@ public final class f
           break;
         }
       }
-      d.yBQ.hu(0, 31);
+      d.yRQ.hw(0, 31);
       Toast.makeText(paramContext, "info is reported.", 0).show();
       for (;;)
       {
         long l2 = System.nanoTime();
         paramArrayOfString = String.format("[NorMsgTest] cmd: %s, time: %d ns.", new Object[] { paramArrayOfString[1], Long.valueOf(l2 - l1) });
-        ad.i("MicroMsg.NorMsgTest", paramArrayOfString);
+        ae.i("MicroMsg.NorMsgTest", paramArrayOfString);
         Toast.makeText(paramContext, paramArrayOfString, 0).show();
         AppMethodBeat.o(20179);
         return true;
-        paramString = com.tencent.mm.plugin.normsg.a.b.wtJ.aaC();
+        paramString = com.tencent.mm.plugin.normsg.a.b.wJt.aaL();
         Toast.makeText(paramContext, "oaid: ".concat(String.valueOf(paramString)), 1).show();
-        ad.i("MicroMsg.NorMsgTest", "[+] oaid: %s", new Object[] { paramString });
+        ae.i("MicroMsg.NorMsgTest", "[+] oaid: %s", new Object[] { paramString });
       }
     }
     catch (Exception paramString)

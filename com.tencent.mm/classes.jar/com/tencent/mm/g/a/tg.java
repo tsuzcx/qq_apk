@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class tg
   extends b
 {
-  public a dHL;
+  public a dIN;
   
   public tg()
   {
@@ -15,18 +15,18 @@ public final class tg
   
   private tg(byte paramByte)
   {
-    AppMethodBeat.i(190904);
-    this.dHL = new a();
-    this.IbR = false;
+    AppMethodBeat.i(195260);
+    this.dIN = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(190904);
+    AppMethodBeat.o(195260);
   }
   
   public static final class a
   {
-    public Boolean dHI;
-    public long dHK;
-    public String duO;
+    public Boolean dIM;
+    public long dIO;
+    public String dvT;
   }
 }
 

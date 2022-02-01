@@ -8,13 +8,15 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.g.a.cc;
 import com.tencent.mm.g.a.cc.a;
 import com.tencent.mm.g.a.cc.b;
 import com.tencent.mm.kernel.b;
-import com.tencent.mm.ui.base.h;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.plugin.wallet_core.c.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.base.preference.f;
 import com.tencent.mm.wallet_core.ui.WalletPreferenceUI;
@@ -23,21 +25,21 @@ import com.tencent.mm.wallet_core.ui.WalletPreferenceUI;
 public class WalletBiometricPaySettingsUI
   extends WalletPreferenceUI
 {
-  private boolean CLA;
-  private boolean CLB;
-  private Preference CLt;
-  private Preference CLu;
-  private Preference CLv;
-  private Preference CLw;
-  private int CLx = 0;
-  private boolean CLy;
-  private boolean CLz;
-  private com.tencent.mm.plugin.fingerprint.d.a tgq;
+  private Preference Ddc;
+  private Preference Ddd;
+  private Preference Dde;
+  private Preference Ddf;
+  private int Ddg = 0;
+  private boolean Ddh;
+  private boolean Ddi;
+  private boolean Ddj;
+  private boolean Ddk;
+  private com.tencent.mm.plugin.fingerprint.d.a trj;
   
-  private void Vq(int paramInt)
+  private void VY(int paramInt)
   {
     AppMethodBeat.i(69611);
-    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.WalletBiometricPaySettingsUI", "start open process: %s", new Object[] { Integer.valueOf(paramInt) });
+    ae.i("MicroMsg.WalletBiometricPaySettingsUI", "start open process: %s", new Object[] { Integer.valueOf(paramInt) });
     Bundle localBundle = new Bundle();
     localBundle.putInt("open_scene", 1);
     localBundle.putInt("key_open_biometric_type", paramInt);
@@ -45,15 +47,15 @@ public class WalletBiometricPaySettingsUI
     AppMethodBeat.o(69611);
   }
   
-  private void Vr(int paramInt)
+  private void VZ(int paramInt)
   {
     AppMethodBeat.i(69612);
-    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.WalletBiometricPaySettingsUI", "show enroll biometric guide: %s", new Object[] { Integer.valueOf(paramInt) });
+    ae.i("MicroMsg.WalletBiometricPaySettingsUI", "show enroll biometric guide: %s", new Object[] { Integer.valueOf(paramInt) });
     String str = getString(2131765650);
     if (paramInt == 1) {
       str = getString(2131765652);
     }
-    h.a(this, str, "", getString(2131765649), new DialogInterface.OnClickListener()
+    com.tencent.mm.ui.base.h.a(this, str, "", getString(2131765649), new DialogInterface.OnClickListener()
     {
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt) {}
     });
@@ -74,100 +76,100 @@ public class WalletBiometricPaySettingsUI
   
   private static boolean a(Preference paramPreference)
   {
-    return paramPreference.JtL == 2131494878;
+    return paramPreference.JOA == 2131494878;
   }
   
-  private void eDZ()
+  private void eHG()
   {
     AppMethodBeat.i(69607);
-    if (this.CLx == 1)
+    if (this.Ddg == 1)
     {
-      a(this.CLv, false);
-      a(this.CLw, false);
+      a(this.Dde, false);
+      a(this.Ddf, false);
     }
     for (;;)
     {
-      a(this.CLt, true);
+      a(this.Ddc, true);
       AppMethodBeat.o(69607);
       return;
-      a(this.CLu, false);
+      a(this.Ddd, false);
     }
   }
   
-  private void eEa()
+  private void eHH()
   {
     AppMethodBeat.i(69608);
-    if ((this.CLx == 2) || (this.CLx == 3))
+    if ((this.Ddg == 2) || (this.Ddg == 3))
     {
-      a(this.CLu, true);
-      a(this.CLt, false);
+      a(this.Ddd, true);
+      a(this.Ddc, false);
     }
     AppMethodBeat.o(69608);
   }
   
-  private void eEb()
+  private void eHI()
   {
     AppMethodBeat.i(69609);
-    if (this.CLx == 1)
+    if (this.Ddg == 1)
     {
-      a(this.CLv, true);
-      a(this.CLw, false);
-      a(this.CLt, false);
+      a(this.Dde, true);
+      a(this.Ddf, false);
+      a(this.Ddc, false);
     }
     AppMethodBeat.o(69609);
   }
   
-  private void eEc()
+  private void eHJ()
   {
     AppMethodBeat.i(69610);
-    if (this.CLx == 1)
+    if (this.Ddg == 1)
     {
-      a(this.CLv, false);
-      a(this.CLw, true);
-      a(this.CLt, false);
+      a(this.Dde, false);
+      a(this.Ddf, true);
+      a(this.Ddc, false);
     }
     AppMethodBeat.o(69610);
   }
   
-  private void eEd()
+  private void eHK()
   {
     AppMethodBeat.i(69613);
-    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.WalletBiometricPaySettingsUI", "on click open fingerprint");
-    if (this.tgq.cPu())
+    ae.i("MicroMsg.WalletBiometricPaySettingsUI", "on click open fingerprint");
+    if (this.trj.cRZ())
     {
-      Vq(1);
-      if (this.CLx == 1)
+      VY(1);
+      if (this.Ddg == 1)
       {
-        eEb();
+        eHI();
         AppMethodBeat.o(69613);
         return;
       }
-      eEa();
+      eHH();
       AppMethodBeat.o(69613);
       return;
     }
-    Vr(1);
+    VZ(1);
     AppMethodBeat.o(69613);
   }
   
-  private void eEe()
+  private void eHL()
   {
     AppMethodBeat.i(69614);
-    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.WalletBiometricPaySettingsUI", "on click open faceid");
-    if (this.tgq.cPC())
+    ae.i("MicroMsg.WalletBiometricPaySettingsUI", "on click open faceid");
+    if (this.trj.cSh())
     {
-      Vq(2);
-      if (this.CLx == 1)
+      VY(2);
+      if (this.Ddg == 1)
       {
-        eEc();
+        eHJ();
         AppMethodBeat.o(69614);
         return;
       }
-      eEa();
+      eHH();
       AppMethodBeat.o(69614);
       return;
     }
-    Vr(2);
+    VZ(2);
     AppMethodBeat.o(69614);
   }
   
@@ -185,32 +187,32 @@ public class WalletBiometricPaySettingsUI
   {
     AppMethodBeat.i(69603);
     f localf = getPreferenceScreen();
-    this.CLt = localf.aVD("biometric_pay_close");
-    this.CLt.acw(8);
-    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.WalletBiometricPaySettingsUI", "fingerprint: %s, faceid: %s", new Object[] { Boolean.valueOf(this.tgq.cPo()), Boolean.valueOf(this.tgq.cPr()) });
-    if ((this.CLx == 2) || (this.CLx == 3))
+    this.Ddc = localf.aXe("biometric_pay_close");
+    this.Ddc.ade(8);
+    ae.i("MicroMsg.WalletBiometricPaySettingsUI", "fingerprint: %s, faceid: %s", new Object[] { Boolean.valueOf(this.trj.cRT()), Boolean.valueOf(this.trj.cRW()) });
+    if ((this.Ddg == 2) || (this.Ddg == 3))
     {
-      this.CLu = new Preference(this);
-      this.CLu.setKey("key_single_open");
-      this.CLu.setTitle(2131765073);
-      this.CLu.JtB = false;
-      localf.a(this.CLu, 0);
-      this.CLu.acw(8);
+      this.Ddd = new Preference(this);
+      this.Ddd.setKey("key_single_open");
+      this.Ddd.setTitle(2131765073);
+      this.Ddd.JOq = false;
+      localf.a(this.Ddd, 0);
+      this.Ddd.ade(8);
       AppMethodBeat.o(69603);
       return;
     }
-    if (this.CLx == 1)
+    if (this.Ddg == 1)
     {
-      this.CLw = new Preference(this);
-      this.CLw.setKey("key_faceid_open");
-      this.CLw.setTitle(2131765074);
-      localf.a(this.CLw, 0);
-      this.CLv = new Preference(this);
-      this.CLv.setKey("key_fingerprint_open");
-      this.CLv.setTitle(2131765075);
-      localf.a(this.CLv, 1);
-      this.CLw.acw(8);
-      this.CLv.acw(8);
+      this.Ddf = new Preference(this);
+      this.Ddf.setKey("key_faceid_open");
+      this.Ddf.setTitle(2131765074);
+      localf.a(this.Ddf, 0);
+      this.Dde = new Preference(this);
+      this.Dde.setKey("key_fingerprint_open");
+      this.Dde.setTitle(2131765075);
+      localf.a(this.Dde, 1);
+      this.Ddf.ade(8);
+      this.Dde.ade(8);
     }
     AppMethodBeat.o(69603);
   }
@@ -219,10 +221,10 @@ public class WalletBiometricPaySettingsUI
   {
     AppMethodBeat.i(69602);
     super.onCreate(paramBundle);
-    if ((com.tencent.mm.plugin.wallet.b.a.eED()) && (com.tencent.mm.plugin.wallet.b.a.eEC()))
+    if ((com.tencent.mm.plugin.wallet.b.a.eIk()) && (com.tencent.mm.plugin.wallet.b.a.eIj()))
     {
-      this.CLx = 1;
-      if (this.CLx != 1) {
+      this.Ddg = 1;
+      if (this.Ddg != 1) {
         break label143;
       }
       setMMTitle(2131765072);
@@ -239,26 +241,26 @@ public class WalletBiometricPaySettingsUI
           return false;
         }
       });
-      this.tgq = ((com.tencent.mm.plugin.fingerprint.d.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.fingerprint.d.a.class));
-      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.WalletBiometricPaySettingsUI", "biometric mode: %s", new Object[] { Integer.valueOf(this.CLx) });
+      this.trj = ((com.tencent.mm.plugin.fingerprint.d.a)g.ab(com.tencent.mm.plugin.fingerprint.d.a.class));
+      ae.i("MicroMsg.WalletBiometricPaySettingsUI", "biometric mode: %s", new Object[] { Integer.valueOf(this.Ddg) });
       initView();
       AppMethodBeat.o(69602);
       return;
-      if (com.tencent.mm.plugin.wallet.b.a.eEC())
+      if (com.tencent.mm.plugin.wallet.b.a.eIj())
       {
-        this.CLx = 2;
+        this.Ddg = 2;
         break;
       }
-      if (com.tencent.mm.plugin.wallet.b.a.eED())
+      if (com.tencent.mm.plugin.wallet.b.a.eIk())
       {
-        this.CLx = 3;
+        this.Ddg = 3;
         break;
       }
-      com.tencent.mm.sdk.platformtools.ad.w("MicroMsg.WalletBiometricPaySettingsUI", "device not support biometric pay!");
+      ae.w("MicroMsg.WalletBiometricPaySettingsUI", "device not support biometric pay!");
       finish();
       break;
       label143:
-      if (this.CLx == 2) {
+      if (this.Ddg == 2) {
         setMMTitle(2131765637);
       } else {
         setMMTitle(2131765635);
@@ -269,55 +271,55 @@ public class WalletBiometricPaySettingsUI
   public boolean onPreferenceTreeClick(final f paramf, Preference paramPreference)
   {
     AppMethodBeat.i(69605);
-    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.WalletBiometricPaySettingsUI", "click key: %s", new Object[] { paramPreference.mKey });
-    this.CLB = a(this.CLt);
-    if (this.CLx == 1)
+    ae.i("MicroMsg.WalletBiometricPaySettingsUI", "click key: %s", new Object[] { paramPreference.mKey });
+    this.Ddk = a(this.Ddc);
+    if (this.Ddg == 1)
     {
-      this.CLz = a(this.CLw);
-      this.CLA = a(this.CLv);
+      this.Ddi = a(this.Ddf);
+      this.Ddj = a(this.Dde);
     }
     for (;;)
     {
-      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.WalletBiometricPaySettingsUI", "is checked: %s", new Object[] { Boolean.valueOf(a(paramPreference)) });
+      ae.i("MicroMsg.WalletBiometricPaySettingsUI", "is checked: %s", new Object[] { Boolean.valueOf(a(paramPreference)) });
       if (!a(paramPreference)) {
         break;
       }
       AppMethodBeat.o(69605);
       return false;
-      this.CLy = a(this.CLu);
+      this.Ddh = a(this.Ddd);
     }
     if ("biometric_pay_close".equals(paramPreference.mKey))
     {
       paramPreference = getString(2131759404);
-      if (this.tgq.cPr()) {
+      if (this.trj.cRW()) {
         paramPreference = getString(2131758805);
       }
-      h.a(this, false, paramPreference, "", getString(2131755835), getString(2131755691), new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+      com.tencent.mm.ui.base.h.a(this, false, paramPreference, "", getString(2131755835), getString(2131755691), new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
       {
         public final void onClick(final DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
           AppMethodBeat.i(69601);
-          paramAnonymousDialogInterface = com.tencent.mm.wallet_core.ui.g.c(WalletBiometricPaySettingsUI.this.getContext(), false, null);
+          paramAnonymousDialogInterface = com.tencent.mm.wallet_core.ui.h.c(WalletBiometricPaySettingsUI.this.getContext(), false, null);
           final cc localcc = new cc();
-          cc.a locala = localcc.dmX;
-          if (WalletBiometricPaySettingsUI.a(WalletBiometricPaySettingsUI.this).cPo()) {}
+          cc.a locala = localcc.dnZ;
+          if (WalletBiometricPaySettingsUI.a(WalletBiometricPaySettingsUI.this).cRT()) {}
           for (paramAnonymousInt = 1;; paramAnonymousInt = 2)
           {
-            locala.dmZ = paramAnonymousInt;
+            locala.dob = paramAnonymousInt;
             localcc.callback = new Runnable()
             {
               public final void run()
               {
                 AppMethodBeat.i(69600);
-                if (localcc.dmY != null)
+                if (localcc.doa != null)
                 {
                   if (paramAnonymousDialogInterface != null) {
                     paramAnonymousDialogInterface.dismiss();
                   }
-                  com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.WalletBiometricPaySettingsUI", "close event result: %s", new Object[] { Integer.valueOf(localcc.dmY.retCode) });
-                  if (localcc.dmY.retCode == 0)
+                  ae.i("MicroMsg.WalletBiometricPaySettingsUI", "close event result: %s", new Object[] { Integer.valueOf(localcc.doa.retCode) });
+                  if (localcc.doa.retCode == 0)
                   {
-                    com.tencent.mm.kernel.g.ajB().gAO.a(new com.tencent.mm.plugin.wallet_core.c.ad(null, 19), 0);
+                    g.ajQ().gDv.a(new ad(null, 19), 0);
                     AppMethodBeat.o(69600);
                     return;
                   }
@@ -327,7 +329,7 @@ public class WalletBiometricPaySettingsUI
                 AppMethodBeat.o(69600);
               }
             };
-            com.tencent.mm.sdk.b.a.IbL.a(localcc, WalletBiometricPaySettingsUI.this.getMainLooper());
+            com.tencent.mm.sdk.b.a.IvT.a(localcc, WalletBiometricPaySettingsUI.this.getMainLooper());
             WalletBiometricPaySettingsUI.d(WalletBiometricPaySettingsUI.this);
             paramf.notifyDataSetChanged();
             AppMethodBeat.o(69601);
@@ -346,16 +348,16 @@ public class WalletBiometricPaySettingsUI
       return false;
       if ("key_single_open".equals(paramPreference.mKey))
       {
-        if (this.CLx == 2) {
-          eEd();
-        } else if (this.CLx == 3) {
-          eEe();
+        if (this.Ddg == 2) {
+          eHK();
+        } else if (this.Ddg == 3) {
+          eHL();
         }
       }
       else if ("key_fingerprint_open".equals(paramPreference.mKey)) {
-        eEd();
+        eHK();
       } else if ("key_faceid_open".equals(paramPreference.mKey)) {
-        eEe();
+        eHL();
       }
     }
   }
@@ -364,10 +366,10 @@ public class WalletBiometricPaySettingsUI
   {
     AppMethodBeat.i(69604);
     super.onResume();
-    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.WalletBiometricPaySettingsUI", "update pref check state: %s, %s", new Object[] { Boolean.valueOf(this.tgq.cPo()), Boolean.valueOf(this.tgq.cPr()) });
-    if (this.CLx == 1) {
-      if (this.tgq.cPo()) {
-        eEb();
+    ae.i("MicroMsg.WalletBiometricPaySettingsUI", "update pref check state: %s, %s", new Object[] { Boolean.valueOf(this.trj.cRT()), Boolean.valueOf(this.trj.cRW()) });
+    if (this.Ddg == 1) {
+      if (this.trj.cRT()) {
+        eHI();
       }
     }
     for (;;)
@@ -375,18 +377,18 @@ public class WalletBiometricPaySettingsUI
       getPreferenceScreen().notifyDataSetChanged();
       AppMethodBeat.o(69604);
       return;
-      if (this.tgq.cPr())
+      if (this.trj.cRW())
       {
-        eEc();
+        eHJ();
       }
       else
       {
-        eDZ();
+        eHG();
         continue;
-        if ((this.tgq.cPo()) || (this.tgq.cPr())) {
-          eEa();
+        if ((this.trj.cRT()) || (this.trj.cRW())) {
+          eHH();
         } else {
-          eDZ();
+          eHG();
         }
       }
     }
@@ -400,7 +402,7 @@ public class WalletBiometricPaySettingsUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.pwd.ui.WalletBiometricPaySettingsUI
  * JD-Core Version:    0.7.0.1
  */

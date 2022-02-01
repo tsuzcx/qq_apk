@@ -15,19 +15,19 @@ public abstract interface n
   
   public abstract void fA(View paramView);
   
-  public abstract void fB(View paramView);
+  public abstract void fy(View paramView);
   
   public abstract void fz(View paramView);
   
-  public abstract AbsStoryMuteView gr(Context paramContext);
+  public abstract AbsStoryMuteView gw(Context paramContext);
   
-  public abstract AbsStoryHeaderTipView gs(Context paramContext);
+  public abstract AbsStoryHeaderTipView gx(Context paramContext);
   
-  public abstract i gt(Context paramContext);
+  public abstract i gy(Context paramContext);
   
   public abstract MMFragment instantiateAlbumFragment(Context paramContext, Bundle paramBundle);
   
-  public abstract Drawable sh(boolean paramBoolean);
+  public abstract Drawable so(boolean paramBoolean);
 }
 
 

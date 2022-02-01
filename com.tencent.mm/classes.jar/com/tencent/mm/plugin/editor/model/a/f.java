@@ -3,14 +3,14 @@ package com.tencent.mm.plugin.editor.model.a;
 public class f
   extends d
 {
-  public int dtc;
-  public int dtd;
-  public String kRE;
+  public int dui;
+  public int duj;
+  public String kVn;
   public int length;
-  public String ptU = "amr";
-  public int ptV;
-  public String ptW;
-  public String ptX;
+  public String pAA;
+  public String pAB;
+  public String pAy = "amr";
+  public int pAz;
 }
 
 

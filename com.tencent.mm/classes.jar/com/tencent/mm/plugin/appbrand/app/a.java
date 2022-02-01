@@ -1,13 +1,13 @@
 package com.tencent.mm.plugin.appbrand.app;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.appcache.ah;
 import com.tencent.mm.plugin.appbrand.appcache.ai;
-import com.tencent.mm.plugin.appbrand.appcache.am;
-import com.tencent.mm.plugin.appbrand.appcache.ao;
+import com.tencent.mm.plugin.appbrand.appcache.aj;
+import com.tencent.mm.plugin.appbrand.appcache.an;
+import com.tencent.mm.plugin.appbrand.appcache.ap;
 import com.tencent.mm.plugin.appbrand.appcache.b.e.h;
-import com.tencent.mm.plugin.appbrand.appcache.bj;
 import com.tencent.mm.plugin.appbrand.appcache.bk;
+import com.tencent.mm.plugin.appbrand.appcache.bl;
 import com.tencent.mm.plugin.appbrand.appusage.k;
 import com.tencent.mm.plugin.appbrand.appusage.n;
 import com.tencent.mm.plugin.appbrand.appusage.u;
@@ -24,39 +24,39 @@ import junit.framework.Assert;
 
 public final class a
 {
-  static final Map<a, String[]> jDg;
-  private static final Map<Class, Object> jDh;
+  static final Map<a, String[]> jGe;
+  private static final Map<Class, Object> jGf;
   
   static
   {
     AppMethodBeat.i(44088);
-    jDg = new HashMap();
-    a(new a() {}, t.hEf);
-    a(new a() {}, ah.hEf);
-    a(new a() {}, n.hEf);
-    a(new a() {}, com.tencent.mm.plugin.appbrand.appcache.b.e.e.hEf);
-    a(new a() {}, ao.hEf);
-    a(new a() {}, k.hEf);
-    a(new a.22(), h.hEf);
-    a(new a() {}, com.tencent.mm.plugin.appbrand.appcache.b.e.d.hEf);
-    a(new a() {}, am.hEf);
-    a(new a.2(), com.tencent.mm.plugin.appbrand.appcache.b.e.b.hEf);
-    a(new a() {}, com.tencent.mm.plugin.appbrand.appusage.a.b.hEf);
-    a(new a() {}, u.hEf);
-    a(new a() {}, com.tencent.mm.plugin.appbrand.backgroundfetch.d.hEf);
-    a(new a() {}, g.hEf);
-    a(new a() {}, com.tencent.mm.plugin.appbrand.appcache.b.d.a.hEf);
-    a(new a() {}, ai.hEf);
-    a(new a.9(), com.tencent.mm.plugin.appbrand.appstorage.b.hEf);
-    a(new a() {}, az.hEf);
-    a(new a() {}, com.tencent.mm.plugin.appbrand.page.web_renderingcache.b.hEf);
-    a(new a() {}, bj.hEf);
-    a(new a() {}, com.tencent.mm.plugin.appbrand.appcache.a.hEf);
-    a(new a() {}, com.tencent.mm.plugin.appbrand.appcache.c.hEf);
-    a(new a() {}, com.tencent.mm.plugin.appbrand.config.a.a.hEf);
-    a(new a() {}, com.tencent.mm.plugin.appbrand.ui.c.a.b.hEf);
-    a(s.a.jYS, s.hEf);
-    jDh = new HashMap();
+    jGe = new HashMap();
+    a(new a() {}, t.hGX);
+    a(new a.12(), ai.hGX);
+    a(new a() {}, n.hGX);
+    a(new a() {}, com.tencent.mm.plugin.appbrand.appcache.b.e.e.hGX);
+    a(new a() {}, ap.hGX);
+    a(new a() {}, k.hGX);
+    a(new a.22(), h.hGX);
+    a(new a() {}, com.tencent.mm.plugin.appbrand.appcache.b.e.d.hGX);
+    a(new a() {}, an.hGX);
+    a(new a.2(), com.tencent.mm.plugin.appbrand.appcache.b.e.b.hGX);
+    a(new a() {}, com.tencent.mm.plugin.appbrand.appusage.a.b.hGX);
+    a(new a() {}, u.hGX);
+    a(new a() {}, com.tencent.mm.plugin.appbrand.backgroundfetch.d.hGX);
+    a(new a() {}, g.hGX);
+    a(new a() {}, com.tencent.mm.plugin.appbrand.appcache.b.d.a.hGX);
+    a(new a.8(), aj.hGX);
+    a(new a.9(), com.tencent.mm.plugin.appbrand.appstorage.b.hGX);
+    a(new a() {}, az.hGX);
+    a(new a() {}, com.tencent.mm.plugin.appbrand.page.web_renderingcache.b.hGX);
+    a(new a() {}, bk.hGX);
+    a(new a() {}, com.tencent.mm.plugin.appbrand.appcache.a.hGX);
+    a(new a() {}, com.tencent.mm.plugin.appbrand.appcache.c.hGX);
+    a(new a() {}, com.tencent.mm.plugin.appbrand.config.a.a.hGX);
+    a(new a() {}, com.tencent.mm.plugin.appbrand.ui.c.a.b.hGX);
+    a(s.a.kcj, s.hGX);
+    jGf = new HashMap();
     AppMethodBeat.o(44088);
   }
   
@@ -70,9 +70,9 @@ public final class a
     for (;;)
     {
       Assert.assertTrue("Cant pass Null class here", bool);
-      synchronized (jDh)
+      synchronized (jGf)
       {
-        paramClass = jDh.get(paramClass);
+        paramClass = jGf.get(paramClass);
         AppMethodBeat.o(44087);
         return paramClass;
         bool = false;
@@ -83,32 +83,32 @@ public final class a
   private static void a(a parama, String[] paramArrayOfString)
   {
     AppMethodBeat.i(44084);
-    jDg.put(parama, paramArrayOfString);
+    jGe.put(parama, paramArrayOfString);
     AppMethodBeat.o(44084);
   }
   
   static void a(com.tencent.mm.sdk.e.e parame)
   {
     AppMethodBeat.i(44085);
-    synchronized (jDh)
+    synchronized (jGf)
     {
-      jDh.clear();
-      Iterator localIterator = jDg.keySet().iterator();
+      jGf.clear();
+      Iterator localIterator = jGe.keySet().iterator();
       if (localIterator.hasNext())
       {
         Object localObject = ((a)localIterator.next()).b(parame);
-        jDh.put(localObject.getClass(), localObject);
+        jGf.put(localObject.getClass(), localObject);
       }
     }
     AppMethodBeat.o(44085);
   }
   
-  static void aYw()
+  static void aYR()
   {
     AppMethodBeat.i(44086);
-    synchronized (jDh)
+    synchronized (jGf)
     {
-      jDh.clear();
+      jGf.clear();
       AppMethodBeat.o(44086);
       return;
     }

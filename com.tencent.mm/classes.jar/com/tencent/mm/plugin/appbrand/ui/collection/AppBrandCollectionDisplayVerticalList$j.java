@@ -7,7 +7,7 @@ import d.g.b.q;
 import d.l;
 import d.z;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "", "kotlin.jvm.PlatformType", "onFinish"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "", "kotlin.jvm.PlatformType", "onFinish"})
 final class AppBrandCollectionDisplayVerticalList$j
   implements h.b
 {
@@ -20,7 +20,7 @@ final class AppBrandCollectionDisplayVerticalList$j
     {
       paramCharSequence = paramCharSequence.toString();
       if (paramCharSequence != null) {
-        AppBrandCollectionDisplayVerticalList.e(paramCharSequence, (b)1.mIz);
+        AppBrandCollectionDisplayVerticalList.e(paramCharSequence, (b)1.mNC);
       }
     }
     AppMethodBeat.o(175223);

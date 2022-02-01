@@ -10,7 +10,7 @@ import android.view.WindowManager.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.video.e.b;
 import com.tencent.mm.plugin.appbrand.jsapi.video.e.b.c;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.text.SimpleDateFormat;
 import java.util.TimeZone;
 
@@ -18,10 +18,10 @@ public final class l
 {
   public static void b(Context paramContext, float paramFloat)
   {
-    AppMethodBeat.i(205953);
+    AppMethodBeat.i(210980);
     if (!(paramContext instanceof Activity))
     {
-      AppMethodBeat.o(205953);
+      AppMethodBeat.o(210980);
       return;
     }
     float f;
@@ -34,7 +34,7 @@ public final class l
       WindowManager.LayoutParams localLayoutParams = paramContext.getWindow().getAttributes();
       localLayoutParams.screenBrightness = f;
       paramContext.getWindow().setAttributes(localLayoutParams);
-      AppMethodBeat.o(205953);
+      AppMethodBeat.o(210980);
       return;
       f = paramFloat;
       if (paramFloat > 1.0F) {
@@ -43,9 +43,9 @@ public final class l
     }
   }
   
-  private static int bmG()
+  private static int bnp()
   {
-    AppMethodBeat.i(205952);
+    AppMethodBeat.i(210979);
     int k = 255;
     j = k;
     try
@@ -60,44 +60,21 @@ public final class l
         i = localResources.getInteger(m);
       }
       j = i;
-      ad.d("MicroMsg.VideoPlayerUtils", "getMaxBrightness %d", new Object[] { Integer.valueOf(i) });
+      ae.d("MicroMsg.VideoPlayerUtils", "getMaxBrightness %d", new Object[] { Integer.valueOf(i) });
     }
     catch (Exception localException)
     {
       for (;;)
       {
-        ad.i("MicroMsg.VideoPlayerUtils", "get max brightness fail, fallback to 255");
+        ae.i("MicroMsg.VideoPlayerUtils", "get max brightness fail, fallback to 255");
         int i = j;
       }
     }
-    AppMethodBeat.o(205952);
+    AppMethodBeat.o(210979);
     return i;
   }
   
-  private static float du(Context paramContext)
-  {
-    AppMethodBeat.i(137848);
-    paramContext = paramContext.getContentResolver();
-    float f1 = 0.0F;
-    try
-    {
-      float f2 = Settings.System.getInt(paramContext, "screen_brightness");
-      f1 = f2;
-      int i = bmG();
-      f1 = f2 / i;
-    }
-    catch (Settings.SettingNotFoundException paramContext)
-    {
-      for (;;)
-      {
-        ad.printErrStackTrace("MicroMsg.VideoPlayerUtils", paramContext, "", new Object[0]);
-      }
-    }
-    AppMethodBeat.o(137848);
-    return f1;
-  }
-  
-  public static float dw(Context paramContext)
+  public static float dA(Context paramContext)
   {
     AppMethodBeat.i(137849);
     if (!(paramContext instanceof Activity))
@@ -108,7 +85,7 @@ public final class l
     WindowManager.LayoutParams localLayoutParams = ((Activity)paramContext).getWindow().getAttributes();
     if (localLayoutParams.screenBrightness < 0.0F)
     {
-      f = du(paramContext);
+      f = dy(paramContext);
       AppMethodBeat.o(137849);
       return f;
     }
@@ -117,12 +94,35 @@ public final class l
     return f;
   }
   
+  private static float dy(Context paramContext)
+  {
+    AppMethodBeat.i(137848);
+    paramContext = paramContext.getContentResolver();
+    float f1 = 0.0F;
+    try
+    {
+      float f2 = Settings.System.getInt(paramContext, "screen_brightness");
+      f1 = f2;
+      int i = bnp();
+      f1 = f2 / i;
+    }
+    catch (Settings.SettingNotFoundException paramContext)
+    {
+      for (;;)
+      {
+        ae.printErrStackTrace("MicroMsg.VideoPlayerUtils", paramContext, "", new Object[0]);
+      }
+    }
+    AppMethodBeat.o(137848);
+    return f1;
+  }
+  
   public static boolean f(b paramb)
   {
     return paramb instanceof c;
   }
   
-  public static String sm(long paramLong)
+  public static String sz(long paramLong)
   {
     AppMethodBeat.i(137850);
     if (paramLong < 3600000L) {}

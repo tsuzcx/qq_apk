@@ -11,19 +11,19 @@ public abstract class bz
   extends c
 {
   public static final String[] INDEX_CREATE = { "CREATE INDEX IF NOT EXISTS FavSearchInfo_Content_Index ON FavSearchInfo(content)", "CREATE INDEX IF NOT EXISTS FavSearchInfo_TagContent_Index ON FavSearchInfo(tagContent)", "CREATE INDEX IF NOT EXISTS FavSearchInfo_SubType_Index ON FavSearchInfo(subtype)" };
-  private static final int eEm;
-  private static final int eMk;
-  private static final int eVZ;
-  private static final int eVj = "localId".hashCode();
-  private static final int eWa = "subtype".hashCode();
+  private static final int eFV;
+  private static final int eNV;
+  private static final int eWU = "localId".hashCode();
+  private static final int eXK;
+  private static final int eXL = "subtype".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
   private static final int type_HASHCODE;
   private boolean __hadSettype = true;
-  private boolean eDP = true;
-  private boolean eLR = true;
-  private boolean eVX = true;
-  private boolean eVY = true;
-  private boolean eVh = true;
+  private boolean eFy = true;
+  private boolean eNC = true;
+  private boolean eWS = true;
+  private boolean eXI = true;
+  private boolean eXJ = true;
   public String field_content;
   public long field_localId;
   public int field_subtype;
@@ -33,41 +33,41 @@ public abstract class bz
   
   static
   {
-    eEm = "content".hashCode();
-    eVZ = "tagContent".hashCode();
-    eMk = "time".hashCode();
+    eFV = "content".hashCode();
+    eXK = "tagContent".hashCode();
+    eNV = "time".hashCode();
     type_HASHCODE = "type".hashCode();
   }
   
-  public static c.a Vv()
+  public static c.a VD()
   {
     c.a locala = new c.a();
-    locala.IhA = new Field[6];
+    locala.IBL = new Field[6];
     locala.columns = new String[7];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "localId";
-    locala.IhC.put("localId", "LONG PRIMARY KEY ");
+    locala.IBN.put("localId", "LONG PRIMARY KEY ");
     localStringBuilder.append(" localId LONG PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.IhB = "localId";
+    locala.IBM = "localId";
     locala.columns[1] = "content";
-    locala.IhC.put("content", "TEXT");
+    locala.IBN.put("content", "TEXT");
     localStringBuilder.append(" content TEXT");
     localStringBuilder.append(", ");
     locala.columns[2] = "tagContent";
-    locala.IhC.put("tagContent", "TEXT");
+    locala.IBN.put("tagContent", "TEXT");
     localStringBuilder.append(" tagContent TEXT");
     localStringBuilder.append(", ");
     locala.columns[3] = "time";
-    locala.IhC.put("time", "LONG");
+    locala.IBN.put("time", "LONG");
     localStringBuilder.append(" time LONG");
     localStringBuilder.append(", ");
     locala.columns[4] = "type";
-    locala.IhC.put("type", "INTEGER");
+    locala.IBN.put("type", "INTEGER");
     localStringBuilder.append(" type INTEGER");
     localStringBuilder.append(", ");
     locala.columns[5] = "subtype";
-    locala.IhC.put("subtype", "INTEGER default '0' ");
+    locala.IBN.put("subtype", "INTEGER default '0' ");
     localStringBuilder.append(" subtype INTEGER default '0' ");
     locala.columns[6] = "rowid";
     locala.sql = localStringBuilder.toString();
@@ -87,11 +87,11 @@ public abstract class bz
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eVj != k) {
+      if (eWU != k) {
         break label65;
       }
       this.field_localId = paramCursor.getLong(i);
-      this.eVh = true;
+      this.eWS = true;
     }
     for (;;)
     {
@@ -99,15 +99,15 @@ public abstract class bz
       break label20;
       break;
       label65:
-      if (eEm == k) {
+      if (eFV == k) {
         this.field_content = paramCursor.getString(i);
-      } else if (eVZ == k) {
+      } else if (eXK == k) {
         this.field_tagContent = paramCursor.getString(i);
-      } else if (eMk == k) {
+      } else if (eNV == k) {
         this.field_time = paramCursor.getLong(i);
       } else if (type_HASHCODE == k) {
         this.field_type = paramCursor.getInt(i);
-      } else if (eWa == k) {
+      } else if (eXL == k) {
         this.field_subtype = paramCursor.getInt(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
@@ -118,22 +118,22 @@ public abstract class bz
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eVh) {
+    if (this.eWS) {
       localContentValues.put("localId", Long.valueOf(this.field_localId));
     }
-    if (this.eDP) {
+    if (this.eFy) {
       localContentValues.put("content", this.field_content);
     }
-    if (this.eVX) {
+    if (this.eXI) {
       localContentValues.put("tagContent", this.field_tagContent);
     }
-    if (this.eLR) {
+    if (this.eNC) {
       localContentValues.put("time", Long.valueOf(this.field_time));
     }
     if (this.__hadSettype) {
       localContentValues.put("type", Integer.valueOf(this.field_type));
     }
-    if (this.eVY) {
+    if (this.eXJ) {
       localContentValues.put("subtype", Integer.valueOf(this.field_subtype));
     }
     if (this.systemRowid > 0L) {

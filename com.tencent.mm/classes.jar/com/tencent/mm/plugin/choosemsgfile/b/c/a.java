@@ -4,75 +4,75 @@ import android.support.v7.widget.RecyclerView.a;
 import android.support.v7.widget.RecyclerView.w;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.plugin.choosemsgfile.ui.c;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.List;
 
 public abstract class a
   extends RecyclerView.a
   implements g
 {
-  static g.b oSQ;
-  protected List<com.tencent.mm.plugin.choosemsgfile.b.b.a> mYL;
-  private c oSN;
-  private boolean oSO;
-  g.a oSP;
+  static g.b oZs;
+  protected List<com.tencent.mm.plugin.choosemsgfile.b.b.a> ndS;
+  private c oZp;
+  private boolean oZq;
+  g.a oZr;
   
   public a(c paramc, List<com.tencent.mm.plugin.choosemsgfile.b.b.a> paramList)
   {
-    this.oSN = paramc;
-    this.mYL = paramList;
-    this.oSO = com.tencent.mm.kernel.g.ajC().isSDCardAvailable();
+    this.oZp = paramc;
+    this.ndS = paramList;
+    this.oZq = com.tencent.mm.kernel.g.ajR().isSDCardAvailable();
   }
   
-  public final com.tencent.mm.plugin.choosemsgfile.b.b.a AS(int paramInt)
+  public final com.tencent.mm.plugin.choosemsgfile.b.b.a Be(int paramInt)
   {
-    if ((this.mYL == null) || (this.mYL.size() <= paramInt)) {
+    if ((this.ndS == null) || (this.ndS.size() <= paramInt)) {
       return null;
     }
-    return (com.tencent.mm.plugin.choosemsgfile.b.b.a)this.mYL.get(paramInt);
+    return (com.tencent.mm.plugin.choosemsgfile.b.b.a)this.ndS.get(paramInt);
   }
   
   public final void a(RecyclerView.w paramw, int paramInt)
   {
-    if (!this.oSO)
+    if (!this.oZq)
     {
-      ad.e("MicroMsg.BaseChooseFileAdapter", "[onBindViewHolder] isSDCardAvailable:%b", new Object[] { Boolean.valueOf(this.oSO) });
+      ae.e("MicroMsg.BaseChooseFileAdapter", "[onBindViewHolder] isSDCardAvailable:%b", new Object[] { Boolean.valueOf(this.oZq) });
       return;
     }
-    AS(paramInt).a(paramw, paramInt, AS(paramInt + 1));
+    Be(paramInt).a(paramw, paramInt, Be(paramInt + 1));
   }
   
   public final void a(RecyclerView.w paramw, int paramInt, List paramList)
   {
-    AS(paramInt);
+    Be(paramInt);
     super.a(paramw, paramInt, paramList);
   }
   
   public final void a(boolean paramBoolean, com.tencent.mm.plugin.choosemsgfile.b.b.a parama, RecyclerView.w paramw)
   {
-    if (this.oSP != null) {
-      this.oSP.a(paramBoolean, parama, paramw);
+    if (this.oZr != null) {
+      this.oZr.a(paramBoolean, parama, paramw);
     }
   }
   
-  public final c bZx()
+  public final c caM()
   {
-    return this.oSN;
+    return this.oZp;
   }
   
-  public boolean bZy()
+  public boolean caN()
   {
     return false;
   }
   
   public final int getItemCount()
   {
-    return this.mYL.size();
+    return this.ndS.size();
   }
   
   public final int getItemViewType(int paramInt)
   {
-    return AS(paramInt).getType();
+    return Be(paramInt).getType();
   }
 }
 

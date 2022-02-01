@@ -6,10 +6,12 @@ import com.tencent.mm.kernel.g;
 import com.tencent.mm.modelcontrol.VideoTransPara;
 import com.tencent.mm.plugin.expt.b.b.a;
 import com.tencent.mm.plugin.recordvideo.ui.editor.b.c;
-import com.tencent.mm.protocal.protobuf.aan;
-import com.tencent.mm.protocal.protobuf.aao;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.vfs.i;
+import com.tencent.mm.protocal.protobuf.aap;
+import com.tencent.mm.protocal.protobuf.aaq;
+import com.tencent.mm.protocal.protobuf.aar;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.vfs.o;
 import com.tencent.mm.videocomposition.h;
 import com.tencent.mm.videocomposition.h.b;
 import d.a.j;
@@ -23,27 +25,27 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/vlog/model/CompositionExporter;", "", "()V", "background", "", "getBackground", "()Z", "setBackground", "(Z)V", "calculateAba", "progressCallback", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "progress", "", "retryCount", "", "getRetryCount", "()I", "setRetryCount", "(I)V", "videoTransPara", "Lcom/tencent/mm/modelcontrol/VideoTransPara;", "export", "compositionInfo", "Lcom/tencent/mm/protocal/protobuf/CompositionInfo;", "callback", "reportStartExport", "composition", "Lcom/tencent/mm/plugin/vlog/model/VLogComposition;", "outputPath", "", "setCalculateAdaptiveBitrate", "enable", "setProgressCallback", "Companion", "plugin-vlog_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/vlog/model/CompositionExporter;", "", "()V", "background", "", "getBackground", "()Z", "setBackground", "(Z)V", "calculateAba", "progressCallback", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "progress", "", "retryCount", "", "getRetryCount", "()I", "setRetryCount", "(I)V", "videoTransPara", "Lcom/tencent/mm/modelcontrol/VideoTransPara;", "export", "compositionInfo", "Lcom/tencent/mm/protocal/protobuf/CompositionInfo;", "callback", "reportStartExport", "composition", "Lcom/tencent/mm/plugin/vlog/model/VLogComposition;", "outputPath", "", "setCalculateAdaptiveBitrate", "enable", "setProgressCallback", "Companion", "plugin-vlog_release"})
 public final class d
 {
-  public static final a BEW;
-  private boolean BEU;
-  public d.g.a.b<? super Float, z> BEV;
+  public static final d.a BWu;
+  private boolean BWs;
+  public d.g.a.b<? super Float, z> BWt;
   public int retryCount = 1;
-  public boolean vCC = true;
-  private VideoTransPara vNU;
+  public boolean vOG = true;
+  private VideoTransPara vZX;
   
   static
   {
-    AppMethodBeat.i(195695);
-    BEW = new a((byte)0);
-    AppMethodBeat.o(195695);
+    AppMethodBeat.i(191152);
+    BWu = new d.a((byte)0);
+    AppMethodBeat.o(191152);
   }
   
   private static void a(v paramv, String paramString)
   {
-    AppMethodBeat.i(195694);
-    paramv = (List)paramv.BGl;
+    AppMethodBeat.i(191151);
+    paramv = (List)paramv.BXJ;
     Object localObject2 = (Iterable)paramv;
     Object localObject1 = (Collection)new ArrayList();
     localObject2 = ((Iterable)localObject2).iterator();
@@ -68,93 +70,128 @@ public final class d
       ((Collection)localObject1).add(((w)((Iterator)localObject2).next()).path);
     }
     localObject1 = (List)localObject1;
-    localObject2 = com.tencent.mm.plugin.vlog.model.report.a.BHO;
+    localObject2 = com.tencent.mm.plugin.vlog.model.report.a.BZn;
     int i = paramv.size();
     if (((List)localObject1).size() < paramv.size()) {}
     for (boolean bool = true;; bool = false)
     {
-      com.tencent.mm.plugin.vlog.model.report.a.aK(i, bool);
-      paramv = com.tencent.mm.plugin.vlog.model.report.a.BHO;
+      com.tencent.mm.plugin.vlog.model.report.a.aN(i, bool);
+      paramv = com.tencent.mm.plugin.vlog.model.report.a.BZn;
       com.tencent.mm.plugin.vlog.model.report.a.q((List)localObject1, paramString);
-      AppMethodBeat.o(195694);
+      AppMethodBeat.o(191151);
       return;
     }
   }
   
-  public final float a(final aan paramaan, final d.g.a.b<? super Boolean, z> paramb)
+  public final float a(final aaq paramaaq, final d.g.a.b<? super Boolean, z> paramb)
   {
-    AppMethodBeat.i(195693);
-    p.h(paramaan, "compositionInfo");
+    AppMethodBeat.i(191150);
+    p.h(paramaaq, "compositionInfo");
     p.h(paramb, "callback");
-    final aao localaao = paramaan.BEZ;
-    v localv = f.a(paramaan);
-    Object localObject1 = localaao.pSc;
-    p.g(localObject1, "outputConfig.outputPath");
-    a(localv, (String)localObject1);
+    final aar localaar = paramaaq.BWx;
+    v localv = f.a(paramaaq);
+    int i;
+    Object localObject1;
     Object localObject2;
-    if ((this.BEU) && (this.vNU != null))
+    boolean bool;
+    if (!bu.isNullOrNil(paramaaq.hoZ))
     {
-      localObject1 = e.BFe;
-      localObject1 = this.vNU;
-      if (localObject1 == null) {
-        p.gfZ();
+      i = 1;
+      localObject1 = localaar.pYH;
+      p.g(localObject1, "outputConfig.outputPath");
+      a(localv, (String)localObject1);
+      if ((!this.BWs) || (this.vZX == null)) {
+        break label570;
       }
-      localObject1 = e.a.a(localv, (VideoTransPara)localObject1, localaao.targetWidth, localaao.targetHeight);
-      localObject2 = e.BFe;
-      p.g(localaao, "outputConfig");
-      e.a.a((a)localObject1, localaao);
-      if ((((a)localObject1).sIH == null) || (((a)localObject1).sIH.length < 28)) {}
+      localObject1 = e.BWC;
+      localObject1 = this.vZX;
+      if (localObject1 == null) {
+        p.gkB();
+      }
+      int j = localaar.targetWidth;
+      int k = localaar.targetHeight;
+      localObject2 = paramaaq.BWy.GrR;
+      p.g(localObject2, "compositionInfo.editData.baseItemData");
+      if (((Collection)localObject2).isEmpty()) {
+        break label473;
+      }
+      bool = true;
+      label142:
+      localObject1 = e.a.a(localv, (VideoTransPara)localObject1, j, k, bool);
+      localObject2 = e.BWC;
+      p.g(localaar, "outputConfig");
+      e.a.a((a)localObject1, localaar);
+      if ((((a)localObject1).sTT == null) || (((a)localObject1).sTT.length < 28)) {
+        break label570;
+      }
     }
-    for (float f = localObject1.sIH[27];; f = 0.0F)
+    label570:
+    for (float f = localObject1.sTT[27];; f = 0.0F)
     {
-      paramaan = f.b(paramaan);
-      localv.E((d.g.a.b)paramaan);
-      paramaan.start();
-      if (((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qHF, 1) == 1) {}
-      for (boolean bool = true;; bool = false)
+      paramaaq = f.b(paramaaq);
+      localv.F((d.g.a.b)paramaaq);
+      paramaaq.start();
+      if (i != 0)
       {
-        localObject1 = new h.b(new Size(localaao.targetWidth, localaao.targetHeight), localaao.videoBitrate, localaao.fps, localaao.hmx, localaao.audioBitrate, localaao.audioSampleRate, localaao.audioChannelCount, bool);
-        localObject2 = localaao.pSc;
-        str = i.aYr((String)localObject2);
-        if (!i.fv(str)) {
-          i.aYg(str);
+        ae.i("MicroMsg.VLogCompositionBlendExporter", "export: has music, audio info " + localaar.audioBitrate + ", " + localaar.audioSampleRate + ", " + localaar.audioChannelCount);
+        if (localaar.audioBitrate == 0) {
+          localaar.audioBitrate = 128000;
         }
-        if (i.aYs((String)localObject2)) {
-          break;
+        if (localaar.audioSampleRate == 0) {
+          localaar.audioSampleRate = 44100;
+        }
+        if (localaar.audioChannelCount == 0) {
+          localaar.audioChannelCount = 1;
+        }
+      }
+      if (((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qPl, 1) == 1) {}
+      for (bool = true;; bool = false)
+      {
+        localObject1 = new h.b(new Size(localaar.targetWidth, localaar.targetHeight), localaar.videoBitrate, localaar.fps, localaar.hpl, localaar.audioBitrate, localaar.audioSampleRate, localaar.audioChannelCount, bool);
+        localObject2 = localaar.pYH;
+        str = o.aZU((String)localObject2);
+        if (!o.fB(str)) {
+          o.aZI(str);
+        }
+        if (o.aZV((String)localObject2)) {
+          break label485;
         }
         paramb.invoke(Boolean.FALSE);
-        AppMethodBeat.o(195693);
+        AppMethodBeat.o(191150);
         return 0.0F;
+        i = 0;
+        break;
+        label473:
+        bool = false;
+        break label142;
       }
-      String str = i.k((String)localObject2, true);
-      final long l = bt.HI();
-      localv.lF(((h.b)localObject1).audioSampleRate, ((h.b)localObject1).audioChannelCount);
+      label485:
+      String str = o.k((String)localObject2, true);
+      final long l = bu.HQ();
+      localv.is(((h.b)localObject1).audioSampleRate, ((h.b)localObject1).audioChannelCount);
       h localh = localv.getComposition();
       p.g(str, "exportPath");
-      h.a(localh, str, (h.b)localObject1, (m)new b(this, paramaan, (String)localObject2, l, localv, localaao, paramb), this.BEV);
-      AppMethodBeat.o(195693);
+      h.a(localh, str, (h.b)localObject1, (m)new b(this, paramaaq, (String)localObject2, l, localv, localaar, paramb), this.BWt);
+      AppMethodBeat.o(191150);
       return f;
     }
   }
   
   public final void r(VideoTransPara paramVideoTransPara)
   {
-    AppMethodBeat.i(195692);
+    AppMethodBeat.i(191149);
     p.h(paramVideoTransPara, "videoTransPara");
-    this.BEU = true;
-    this.vNU = paramVideoTransPara;
-    AppMethodBeat.o(195692);
+    this.BWs = true;
+    this.vZX = paramVideoTransPara;
+    AppMethodBeat.o(191149);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/vlog/model/CompositionExporter$Companion;", "", "()V", "TAG", "", "plugin-vlog_release"})
-  public static final class a {}
-  
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "success", "", "errCode", "", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "success", "", "errCode", "", "invoke"})
   static final class b
     extends q
     implements m<Boolean, Integer, z>
   {
-    b(d paramd, c paramc, String paramString, long paramLong, v paramv, aao paramaao, d.g.a.b paramb)
+    b(d paramd, c paramc, String paramString, long paramLong, v paramv, aar paramaar, d.g.a.b paramb)
     {
       super();
     }
@@ -162,7 +199,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.vlog.model.d
  * JD-Core Version:    0.7.0.1
  */

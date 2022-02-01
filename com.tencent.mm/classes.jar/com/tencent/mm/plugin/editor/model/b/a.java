@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.editor.model.b;
 
 public abstract interface a
 {
-  public abstract void cec();
+  public abstract void cfr();
   
-  public abstract void ced();
+  public abstract void cfs();
 }
 
 

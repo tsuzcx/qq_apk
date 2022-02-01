@@ -15,7 +15,7 @@ public abstract class i$a
     attachInterface(this, "com.tencent.mm.plugin.exdevice.service.IBTOnDeviceRequest_AIDL");
   }
   
-  public static i w(IBinder paramIBinder)
+  public static i x(IBinder paramIBinder)
   {
     if (paramIBinder == null) {
       return null;

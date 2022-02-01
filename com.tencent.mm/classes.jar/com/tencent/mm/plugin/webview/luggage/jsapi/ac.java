@@ -7,7 +7,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.downloader.model.FileDownloadTaskInfo;
 import com.tencent.mm.plugin.downloader.model.d;
 import com.tencent.mm.plugin.downloader.model.f;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -17,7 +17,7 @@ public class ac
   public final void a(Context paramContext, String paramString, final bq.a parama)
   {
     AppMethodBeat.i(78567);
-    ad.i("MicroMsg.JsApiInstallDownloadTask", "invokeInOwn");
+    ae.i("MicroMsg.JsApiInstallDownloadTask", "invokeInOwn");
     long l;
     try
     {
@@ -25,7 +25,7 @@ public class ac
       l = paramContext.optLong("download_id");
       if (l <= 0L)
       {
-        ad.i("MicroMsg.JsApiInstallDownloadTask", "data is null");
+        ae.i("MicroMsg.JsApiInstallDownloadTask", "data is null");
         parama.f("fail_invalid_data", null);
         AppMethodBeat.o(78567);
         return;
@@ -33,27 +33,27 @@ public class ac
     }
     catch (JSONException paramContext)
     {
-      ad.e("MicroMsg.JsApiInstallDownloadTask", "paras data error: " + paramContext.getMessage());
+      ae.e("MicroMsg.JsApiInstallDownloadTask", "paras data error: " + paramContext.getMessage());
       parama.f("fail", null);
       AppMethodBeat.o(78567);
       return;
     }
-    paramString = f.ccl().tS(l);
+    paramString = f.cdA().uj(l);
     if (paramString.status == -1)
     {
-      ad.e("MicroMsg.JsApiInstallDownloadTask", "installDownloadTask fail, apilevel not supported");
+      ae.e("MicroMsg.JsApiInstallDownloadTask", "installDownloadTask fail, apilevel not supported");
       parama.f("fail", null);
       AppMethodBeat.o(78567);
       return;
     }
     if (paramString.status != 3)
     {
-      ad.e("MicroMsg.JsApiInstallDownloadTask", "installDownloadTask fail, invalid status = " + paramString.status);
+      ae.e("MicroMsg.JsApiInstallDownloadTask", "installDownloadTask fail, invalid status = " + paramString.status);
       parama.f("fail", null);
       AppMethodBeat.o(78567);
       return;
     }
-    com.tencent.mm.plugin.downloader.g.a locala = d.ua(l);
+    com.tencent.mm.plugin.downloader.g.a locala = d.ur(l);
     if (locala != null)
     {
       int i = paramContext.optInt("scene");
@@ -68,7 +68,7 @@ public class ac
     }
     com.tencent.mm.plugin.downloader.i.a.a(paramString.id, false, new com.tencent.mm.pluginsdk.permission.a()
     {
-      public final void gp(boolean paramAnonymousBoolean)
+      public final void gn(boolean paramAnonymousBoolean)
       {
         AppMethodBeat.i(78566);
         if (paramAnonymousBoolean)
@@ -86,7 +86,7 @@ public class ac
   
   public final void b(b<s>.a paramb) {}
   
-  public final int ccO()
+  public final int ced()
   {
     return 1;
   }

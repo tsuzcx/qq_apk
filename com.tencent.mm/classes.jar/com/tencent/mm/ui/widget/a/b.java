@@ -43,7 +43,7 @@ public final class b
     AppMethodBeat.o(159284);
   }
   
-  private boolean aol()
+  private boolean aoA()
   {
     AppMethodBeat.i(159291);
     if (this.mContext.getResources().getConfiguration().orientation == 2)
@@ -63,13 +63,13 @@ public final class b
     label70:
     ViewGroup localViewGroup;
     View localView;
-    if (aol())
+    if (aoA())
     {
       ((Window)localObject1).setGravity(5);
       ((Window)localObject1).setWindowAnimations(2131821249);
       ((Window)localObject1).getDecorView().setPadding(0, 0, 0, 0);
       localObject2 = ((Window)localObject1).getAttributes();
-      if (!aol()) {
+      if (!aoA()) {
         break label270;
       }
       ((WindowManager.LayoutParams)localObject2).width = -2;
@@ -85,7 +85,7 @@ public final class b
           localObject1 = getLayoutInflater().inflate(paramInt, localViewGroup, false);
         }
       }
-      if (!ar.jR(this.mContext)) {
+      if (!ar.jY(this.mContext)) {
         break label364;
       }
     }
@@ -93,9 +93,9 @@ public final class b
     label210:
     label354:
     label364:
-    for (paramInt = ar.ej(this.mContext);; paramInt = 0)
+    for (paramInt = ar.en(this.mContext);; paramInt = 0)
     {
-      if (aol())
+      if (aoA())
       {
         localObject2 = (FrameLayout)localViewGroup.findViewById(2131302250);
         paramView = (View)localObject2;
@@ -120,7 +120,7 @@ public final class b
       }
       for (;;)
       {
-        if (eUt()) {
+        if (eYg()) {
           localView.setOnClickListener(new View.OnClickListener()
           {
             public final void onClick(View paramAnonymousView)
@@ -128,7 +128,7 @@ public final class b
               AppMethodBeat.i(159283);
               com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
               localb.bd(paramAnonymousView);
-              a.b("com/tencent/mm/ui/widget/dialog/CustomSheetDialog$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+              a.b("com/tencent/mm/ui/widget/dialog/CustomSheetDialog$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
               if (b.this.isShowing()) {
                 b.this.cancel();
               }
@@ -165,7 +165,7 @@ public final class b
     }
   }
   
-  private boolean eUt()
+  private boolean eYg()
   {
     AppMethodBeat.i(159290);
     if (Build.VERSION.SDK_INT < 11)

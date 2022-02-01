@@ -14,20 +14,20 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
-import com.tencent.mm.g.b.a.hg;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.g.b.a.hi;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.plugin.report.service.g;
 import com.tencent.mm.plugin.wallet_core.model.am;
 import com.tencent.mm.plugin.wallet_core.model.an;
 import com.tencent.mm.plugin.wallet_core.model.t;
 import com.tencent.mm.plugin.wallet_core.model.x;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.wallet_core.c.p;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
-import com.tencent.mm.wallet_core.ui.e;
+import com.tencent.mm.wallet_core.ui.f;
 import com.tencent.mm.wallet_core.ui.formview.WalletFormView;
 import com.tencent.mm.wallet_core.ui.formview.WalletFormView.a;
 import com.tencent.mm.wallet_core.ui.formview.a.a;
@@ -37,16 +37,16 @@ public class WalletIdCardCheckUI
   extends WalletBaseUI
   implements TextView.OnEditorActionListener, WalletFormView.a
 {
-  private Button CMA;
-  private int CMB = 1;
-  private WalletFormView CMx;
-  private TextView CMy;
-  private TextView CMz;
+  private WalletFormView Def;
+  private TextView Deg;
+  private TextView Deh;
+  private Button Dei;
+  private int Dej = 1;
   
   public void forceCancel()
   {
     AppMethodBeat.i(69704);
-    ad.d("Micromsg.WalletIdCardCheckUI", "check pwd ");
+    ae.d("Micromsg.WalletIdCardCheckUI", "check pwd ");
     cleanScenes();
     AppMethodBeat.o(69704);
   }
@@ -64,16 +64,16 @@ public class WalletIdCardCheckUI
   public void initView()
   {
     AppMethodBeat.i(69708);
-    this.CMx = ((WalletFormView)findViewById(2131300910));
-    this.CMz = ((TextView)findViewById(2131306711));
-    this.CMy = ((TextView)findViewById(2131306712));
-    this.CMx.setOnInputValidChangeListener(this);
-    this.CMx.setOnEditorActionListener(this);
-    this.CMz.setVisibility(4);
-    this.CMA = ((Button)findViewById(2131301039));
-    com.tencent.mm.wallet_core.ui.formview.a.d(this.CMx);
-    setEditFocusListener(this.CMx, 1, false);
-    this.CMx.getContentEt().post(new Runnable()
+    this.Def = ((WalletFormView)findViewById(2131300910));
+    this.Deh = ((TextView)findViewById(2131306711));
+    this.Deg = ((TextView)findViewById(2131306712));
+    this.Def.setOnInputValidChangeListener(this);
+    this.Def.setOnEditorActionListener(this);
+    this.Deh.setVisibility(4);
+    this.Dei = ((Button)findViewById(2131301039));
+    com.tencent.mm.wallet_core.ui.formview.a.d(this.Def);
+    setEditFocusListener(this.Def, 1, false);
+    this.Def.getContentEt().post(new Runnable()
     {
       public final void run()
       {
@@ -82,62 +82,62 @@ public class WalletIdCardCheckUI
         AppMethodBeat.o(69700);
       }
     });
-    this.CMA.setOnClickListener(new View.OnClickListener()
+    this.Dei.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(69701);
         b localb = new b();
         localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/wallet/pwd/ui/WalletIdCardCheckUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/wallet/pwd/ui/WalletIdCardCheckUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
         if (WalletIdCardCheckUI.b(WalletIdCardCheckUI.this))
         {
-          paramAnonymousView = new hg();
-          paramAnonymousView.ecM = 1L;
-          paramAnonymousView.erV = 1L;
-          paramAnonymousView.aLk();
-          g.yhR.f(13731, new Object[] { Integer.valueOf(2) });
-          paramAnonymousView = new p(WalletIdCardCheckUI.a(WalletIdCardCheckUI.this).getText(), WalletIdCardCheckUI.c(WalletIdCardCheckUI.this), t.eFy().getTrueName());
+          paramAnonymousView = new hi();
+          paramAnonymousView.eeh = 1L;
+          paramAnonymousView.etC = 1L;
+          paramAnonymousView.aLH();
+          g.yxI.f(13731, new Object[] { Integer.valueOf(2) });
+          paramAnonymousView = new p(WalletIdCardCheckUI.a(WalletIdCardCheckUI.this).getText(), WalletIdCardCheckUI.c(WalletIdCardCheckUI.this), t.eJf().getTrueName());
           WalletIdCardCheckUI.this.doSceneProgress(paramAnonymousView);
         }
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/wallet/pwd/ui/WalletIdCardCheckUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(69701);
       }
     });
-    this.CMB = t.eFy().eGk();
-    Object localObject1 = t.eFy();
-    if (((an)localObject1).DaU != null)
+    this.Dej = t.eJf().eJR();
+    Object localObject1 = t.eJf();
+    if (((an)localObject1).Dsy != null)
     {
-      localObject1 = ((an)localObject1).DaU.field_cre_name;
-      ad.i("Micromsg.WalletIdCardCheckUI", "mIdentityType %d %s", new Object[] { Integer.valueOf(this.CMB), localObject1 });
-      if (!bt.isNullOrNil((String)localObject1)) {
+      localObject1 = ((an)localObject1).Dsy.field_cre_name;
+      ae.i("Micromsg.WalletIdCardCheckUI", "mIdentityType %d %s", new Object[] { Integer.valueOf(this.Dej), localObject1 });
+      if (!bu.isNullOrNil((String)localObject1)) {
         break label324;
       }
-      localObject1 = t.eFG().am(this, this.CMB);
+      localObject1 = t.eJn().am(this, this.Dej);
     }
     label324:
     for (;;)
     {
-      Object localObject2 = this.CMx;
-      int i = this.CMB;
+      Object localObject2 = this.Def;
+      int i = this.Dej;
       localObject2 = ((WalletFormView)localObject2).getLogicDelegate();
       if ((localObject2 instanceof a.a)) {
-        ((a.a)localObject2).ags(i);
+        ((a.a)localObject2).ahb(i);
       }
-      this.CMx.setTitleText((String)localObject1);
-      this.CMx.dEe();
-      if (this.CMB == 1) {
-        setEditFocusListener(this.CMx, 1, false);
+      this.Def.setTitleText((String)localObject1);
+      this.Def.dHv();
+      if (this.Dej == 1) {
+        setEditFocusListener(this.Def, 1, false);
       }
       for (;;)
       {
-        localObject1 = t.eFy().getTrueName();
-        this.CMx.setHint(getString(2131765608, new Object[] { e.aYK((String)localObject1) }));
+        localObject1 = t.eJf().getTrueName();
+        this.Def.setHint(getString(2131765608, new Object[] { f.ban((String)localObject1) }));
         AppMethodBeat.o(69708);
         return;
         localObject1 = "";
         break;
-        setEditFocusListener(this.CMx, 1, true);
+        setEditFocusListener(this.Def, 1, true);
       }
     }
   }
@@ -154,7 +154,7 @@ public class WalletIdCardCheckUI
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
         AppMethodBeat.i(69699);
-        ad.i("Micromsg.WalletIdCardCheckUI", "onbackbtn click");
+        ae.i("Micromsg.WalletIdCardCheckUI", "onbackbtn click");
         WalletIdCardCheckUI.this.finish();
         AppMethodBeat.o(69699);
         return false;
@@ -179,7 +179,7 @@ public class WalletIdCardCheckUI
   public final void onInputValidChange(boolean paramBoolean)
   {
     AppMethodBeat.i(69711);
-    this.CMz.setVisibility(4);
+    this.Deh.setVisibility(4);
     AppMethodBeat.o(69711);
   }
   
@@ -207,13 +207,13 @@ public class WalletIdCardCheckUI
   public boolean onPreSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     AppMethodBeat.i(69710);
-    ad.d("Micromsg.WalletIdCardCheckUI", " errCode: " + paramInt2 + " errMsg :" + paramString);
+    ae.d("Micromsg.WalletIdCardCheckUI", " errCode: " + paramInt2 + " errMsg :" + paramString);
     if ((paramInt1 == 0) && (paramInt2 == 0) && ((paramn instanceof p)))
     {
-      paramString = new hg();
-      paramString.ecM = 1L;
-      paramString.erV = 2L;
-      paramString.aLk();
+      paramString = new hi();
+      paramString.eeh = 1L;
+      paramString.etC = 2L;
+      paramString.aLH();
       h.a(this, getString(2131765611), "", getString(2131765291), false, new DialogInterface.OnClickListener()
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
@@ -249,7 +249,7 @@ public class WalletIdCardCheckUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.pwd.ui.WalletIdCardCheckUI
  * JD-Core Version:    0.7.0.1
  */

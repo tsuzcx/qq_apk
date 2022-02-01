@@ -5,18 +5,18 @@ import d.g.b.p;
 import d.l;
 import java.util.Arrays;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/media/encoder/MediaCodecAACEncoderAsync$EncoderData;", "", "pcmData", "", "pts", "", "isLast", "", "([BJZ)V", "()Z", "setLast", "(Z)V", "getPcmData", "()[B", "setPcmData", "([B)V", "getPts", "()J", "setPts", "(J)V", "component1", "component2", "component3", "copy", "equals", "other", "hashCode", "", "toString", "", "plugin-mediaeditor_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/media/encoder/MediaCodecAACEncoderAsync$EncoderData;", "", "pcmData", "", "pts", "", "isLast", "", "([BJZ)V", "()Z", "setLast", "(Z)V", "getPcmData", "()[B", "setPcmData", "([B)V", "getPts", "()J", "setPts", "(J)V", "component1", "component2", "component3", "copy", "equals", "other", "hashCode", "", "toString", "", "plugin-mediaeditor_release"})
 public final class d$b
 {
-  byte[] dbX;
-  boolean hjE;
+  byte[] dcZ;
+  boolean hms;
   long pts;
   
   public d$b(byte[] paramArrayOfByte, long paramLong, boolean paramBoolean)
   {
-    this.dbX = paramArrayOfByte;
+    this.dcZ = paramArrayOfByte;
     this.pts = paramLong;
-    this.hjE = paramBoolean;
+    this.hms = paramBoolean;
   }
   
   public final boolean equals(Object paramObject)
@@ -27,7 +27,7 @@ public final class d$b
       if ((paramObject instanceof b))
       {
         paramObject = (b)paramObject;
-        if ((!p.i(this.dbX, paramObject.dbX)) || (this.pts != paramObject.pts) || (this.hjE != paramObject.hjE)) {}
+        if ((!p.i(this.dcZ, paramObject.dcZ)) || (this.pts != paramObject.pts) || (this.hms != paramObject.hms)) {}
       }
     }
     else
@@ -47,7 +47,7 @@ public final class d$b
   public final String toString()
   {
     AppMethodBeat.i(93627);
-    String str = "EncoderData(pcmData=" + Arrays.toString(this.dbX) + ", pts=" + this.pts + ", isLast=" + this.hjE + ")";
+    String str = "EncoderData(pcmData=" + Arrays.toString(this.dcZ) + ", pts=" + this.pts + ", isLast=" + this.hms + ")";
     AppMethodBeat.o(93627);
     return str;
   }

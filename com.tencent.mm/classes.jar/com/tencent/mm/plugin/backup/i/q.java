@@ -3,19 +3,19 @@ package com.tencent.mm.plugin.backup.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class q
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
   public String Version;
-  public String nDN;
-  public String nDO;
-  public String nDP;
-  public String nDQ;
-  public long nDR;
-  public long nDS;
-  public String nDT;
-  public com.tencent.mm.bx.b nDU;
-  public com.tencent.mm.bx.b nDV;
-  public String nDt;
+  public String nIO;
+  public String nJi;
+  public String nJj;
+  public String nJk;
+  public String nJl;
+  public long nJm;
+  public long nJn;
+  public String nJo;
+  public com.tencent.mm.bw.b nJp;
+  public com.tencent.mm.bw.b nJq;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -23,37 +23,37 @@ public final class q
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.nDN == null)
+      if (this.nJi == null)
       {
         paramVarArgs = new f.a.a.b("Not all required fields were included: WeChatVersion");
         AppMethodBeat.o(22121);
         throw paramVarArgs;
       }
-      if (this.nDO == null)
+      if (this.nJj == null)
       {
         paramVarArgs = new f.a.a.b("Not all required fields were included: WeChatUserID");
         AppMethodBeat.o(22121);
         throw paramVarArgs;
       }
-      if (this.nDP == null)
+      if (this.nJk == null)
       {
         paramVarArgs = new f.a.a.b("Not all required fields were included: WeChatNickName");
         AppMethodBeat.o(22121);
         throw paramVarArgs;
       }
-      if (this.nDQ == null)
+      if (this.nJl == null)
       {
         paramVarArgs = new f.a.a.b("Not all required fields were included: WeChatInstallDir");
         AppMethodBeat.o(22121);
         throw paramVarArgs;
       }
-      if (this.nDT == null)
+      if (this.nJo == null)
       {
         paramVarArgs = new f.a.a.b("Not all required fields were included: Manufacturer");
         AppMethodBeat.o(22121);
         throw paramVarArgs;
       }
-      if (this.nDt == null)
+      if (this.nIO == null)
       {
         paramVarArgs = new f.a.a.b("Not all required fields were included: Model");
         AppMethodBeat.o(22121);
@@ -65,120 +65,120 @@ public final class q
         AppMethodBeat.o(22121);
         throw paramVarArgs;
       }
-      if (this.nDN != null) {
-        paramVarArgs.d(1, this.nDN);
+      if (this.nJi != null) {
+        paramVarArgs.d(1, this.nJi);
       }
-      if (this.nDO != null) {
-        paramVarArgs.d(2, this.nDO);
+      if (this.nJj != null) {
+        paramVarArgs.d(2, this.nJj);
       }
-      if (this.nDP != null) {
-        paramVarArgs.d(3, this.nDP);
+      if (this.nJk != null) {
+        paramVarArgs.d(3, this.nJk);
       }
-      if (this.nDQ != null) {
-        paramVarArgs.d(4, this.nDQ);
+      if (this.nJl != null) {
+        paramVarArgs.d(4, this.nJl);
       }
-      paramVarArgs.aY(5, this.nDR);
-      paramVarArgs.aY(6, this.nDS);
-      if (this.nDT != null) {
-        paramVarArgs.d(7, this.nDT);
+      paramVarArgs.aZ(5, this.nJm);
+      paramVarArgs.aZ(6, this.nJn);
+      if (this.nJo != null) {
+        paramVarArgs.d(7, this.nJo);
       }
-      if (this.nDt != null) {
-        paramVarArgs.d(8, this.nDt);
+      if (this.nIO != null) {
+        paramVarArgs.d(8, this.nIO);
       }
       if (this.Version != null) {
         paramVarArgs.d(9, this.Version);
       }
-      if (this.nDU != null) {
-        paramVarArgs.c(10, this.nDU);
+      if (this.nJp != null) {
+        paramVarArgs.c(10, this.nJp);
       }
-      if (this.nDV != null) {
-        paramVarArgs.c(11, this.nDV);
+      if (this.nJq != null) {
+        paramVarArgs.c(11, this.nJq);
       }
       AppMethodBeat.o(22121);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.nDN == null) {
+      if (this.nJi == null) {
         break label1159;
       }
     }
     label1159:
-    for (int i = f.a.a.b.b.a.e(1, this.nDN) + 0;; i = 0)
+    for (int i = f.a.a.b.b.a.e(1, this.nJi) + 0;; i = 0)
     {
       paramInt = i;
-      if (this.nDO != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.nDO);
+      if (this.nJj != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.nJj);
       }
       i = paramInt;
-      if (this.nDP != null) {
-        i = paramInt + f.a.a.b.b.a.e(3, this.nDP);
+      if (this.nJk != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.nJk);
       }
       paramInt = i;
-      if (this.nDQ != null) {
-        paramInt = i + f.a.a.b.b.a.e(4, this.nDQ);
+      if (this.nJl != null) {
+        paramInt = i + f.a.a.b.b.a.e(4, this.nJl);
       }
-      i = paramInt + f.a.a.b.b.a.p(5, this.nDR) + f.a.a.b.b.a.p(6, this.nDS);
+      i = paramInt + f.a.a.b.b.a.p(5, this.nJm) + f.a.a.b.b.a.p(6, this.nJn);
       paramInt = i;
-      if (this.nDT != null) {
-        paramInt = i + f.a.a.b.b.a.e(7, this.nDT);
+      if (this.nJo != null) {
+        paramInt = i + f.a.a.b.b.a.e(7, this.nJo);
       }
       i = paramInt;
-      if (this.nDt != null) {
-        i = paramInt + f.a.a.b.b.a.e(8, this.nDt);
+      if (this.nIO != null) {
+        i = paramInt + f.a.a.b.b.a.e(8, this.nIO);
       }
       paramInt = i;
       if (this.Version != null) {
         paramInt = i + f.a.a.b.b.a.e(9, this.Version);
       }
       i = paramInt;
-      if (this.nDU != null) {
-        i = paramInt + f.a.a.b.b.a.b(10, this.nDU);
+      if (this.nJp != null) {
+        i = paramInt + f.a.a.b.b.a.b(10, this.nJp);
       }
       paramInt = i;
-      if (this.nDV != null) {
-        paramInt = i + f.a.a.b.b.a.b(11, this.nDV);
+      if (this.nJq != null) {
+        paramInt = i + f.a.a.b.b.a.b(11, this.nJq);
       }
       AppMethodBeat.o(22121);
       return paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
-        if (this.nDN == null)
+        if (this.nJi == null)
         {
           paramVarArgs = new f.a.a.b("Not all required fields were included: WeChatVersion");
           AppMethodBeat.o(22121);
           throw paramVarArgs;
         }
-        if (this.nDO == null)
+        if (this.nJj == null)
         {
           paramVarArgs = new f.a.a.b("Not all required fields were included: WeChatUserID");
           AppMethodBeat.o(22121);
           throw paramVarArgs;
         }
-        if (this.nDP == null)
+        if (this.nJk == null)
         {
           paramVarArgs = new f.a.a.b("Not all required fields were included: WeChatNickName");
           AppMethodBeat.o(22121);
           throw paramVarArgs;
         }
-        if (this.nDQ == null)
+        if (this.nJl == null)
         {
           paramVarArgs = new f.a.a.b("Not all required fields were included: WeChatInstallDir");
           AppMethodBeat.o(22121);
           throw paramVarArgs;
         }
-        if (this.nDT == null)
+        if (this.nJo == null)
         {
           paramVarArgs = new f.a.a.b("Not all required fields were included: Manufacturer");
           AppMethodBeat.o(22121);
           throw paramVarArgs;
         }
-        if (this.nDt == null)
+        if (this.nIO == null)
         {
           paramVarArgs = new f.a.a.b("Not all required fields were included: Model");
           AppMethodBeat.o(22121);
@@ -203,47 +203,47 @@ public final class q
           AppMethodBeat.o(22121);
           return -1;
         case 1: 
-          localq.nDN = locala.NPN.readString();
+          localq.nJi = locala.OmT.readString();
           AppMethodBeat.o(22121);
           return 0;
         case 2: 
-          localq.nDO = locala.NPN.readString();
+          localq.nJj = locala.OmT.readString();
           AppMethodBeat.o(22121);
           return 0;
         case 3: 
-          localq.nDP = locala.NPN.readString();
+          localq.nJk = locala.OmT.readString();
           AppMethodBeat.o(22121);
           return 0;
         case 4: 
-          localq.nDQ = locala.NPN.readString();
+          localq.nJl = locala.OmT.readString();
           AppMethodBeat.o(22121);
           return 0;
         case 5: 
-          localq.nDR = locala.NPN.zd();
+          localq.nJm = locala.OmT.zd();
           AppMethodBeat.o(22121);
           return 0;
         case 6: 
-          localq.nDS = locala.NPN.zd();
+          localq.nJn = locala.OmT.zd();
           AppMethodBeat.o(22121);
           return 0;
         case 7: 
-          localq.nDT = locala.NPN.readString();
+          localq.nJo = locala.OmT.readString();
           AppMethodBeat.o(22121);
           return 0;
         case 8: 
-          localq.nDt = locala.NPN.readString();
+          localq.nIO = locala.OmT.readString();
           AppMethodBeat.o(22121);
           return 0;
         case 9: 
-          localq.Version = locala.NPN.readString();
+          localq.Version = locala.OmT.readString();
           AppMethodBeat.o(22121);
           return 0;
         case 10: 
-          localq.nDU = locala.NPN.gxI();
+          localq.nJp = locala.OmT.gCk();
           AppMethodBeat.o(22121);
           return 0;
         }
-        localq.nDV = locala.NPN.gxI();
+        localq.nJq = locala.OmT.gCk();
         AppMethodBeat.o(22121);
         return 0;
       }

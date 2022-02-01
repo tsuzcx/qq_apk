@@ -19,7 +19,7 @@ public abstract interface j
       attachInterface(this, "com.tencent.mm.network.IOnAutoAuth_AIDL");
     }
     
-    public static j o(IBinder paramIBinder)
+    public static j p(IBinder paramIBinder)
     {
       if (paramIBinder == null) {
         return null;
@@ -47,7 +47,7 @@ public abstract interface j
         return true;
       }
       paramParcel1.enforceInterface("com.tencent.mm.network.IOnAutoAuth_AIDL");
-      a(r.a.p(paramParcel1.readStrongBinder()), paramParcel1.readInt(), paramParcel1.readInt(), paramParcel1.readString());
+      a(r.a.q(paramParcel1.readStrongBinder()), paramParcel1.readInt(), paramParcel1.readInt(), paramParcel1.readString());
       paramParcel2.writeNoException();
       return true;
     }

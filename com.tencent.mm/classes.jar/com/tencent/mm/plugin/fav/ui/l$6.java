@@ -4,10 +4,10 @@ import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.messenger.a.d;
 import com.tencent.mm.plugin.messenger.a.g;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.vfs.e;
-import com.tencent.mm.vfs.q;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.vfs.k;
+import com.tencent.mm.vfs.w;
 
 public final class l$6
   implements Runnable
@@ -18,20 +18,20 @@ public final class l$6
   {
     AppMethodBeat.i(106893);
     Context localContext = this.val$context;
-    String str1 = this.cWl;
-    Object localObject = this.rxV;
-    String str2 = this.iaG;
-    int i = this.leQ;
-    String str3 = this.rxW;
-    String str4 = this.rwU;
-    localObject = new e((String)localObject);
-    if (((e)localObject).exists())
+    String str1 = this.cXi;
+    Object localObject = this.rGg;
+    String str2 = this.idz;
+    int i = this.liC;
+    String str3 = this.rGh;
+    String str4 = this.rFg;
+    localObject = new k((String)localObject);
+    if (((k)localObject).exists())
     {
-      e locale = new e(str2);
-      ad.i("MicroMsg.FavSendLogic", "sendVideo::data path[%s] thumb path[%s]", new Object[] { q.B(((e)localObject).fOK()), q.B(locale.fOK()) });
-      g.dlD().a(localContext, str1, q.B(((e)localObject).fOK()), str2, 1, i, str3, str4);
+      k localk = new k(str2);
+      ae.i("MicroMsg.FavSendLogic", "sendVideo::data path[%s] thumb path[%s]", new Object[] { w.B(((k)localObject).fTh()), w.B(localk.fTh()) });
+      g.doC().a(localContext, str1, w.B(((k)localObject).fTh()), str2, 1, i, str3, str4);
     }
-    aq.f(this.val$callback);
+    ar.f(this.val$callback);
     AppMethodBeat.o(106893);
   }
   

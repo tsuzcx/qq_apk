@@ -28,29 +28,29 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.k.b;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
-import com.tencent.mm.model.ba;
-import com.tencent.mm.model.w;
-import com.tencent.mm.modelsimple.y;
+import com.tencent.mm.ah.k.b;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.model.bc;
+import com.tencent.mm.model.x;
+import com.tencent.mm.modelsimple.z;
+import com.tencent.mm.modelvoice.p;
 import com.tencent.mm.modelvoice.s;
 import com.tencent.mm.plugin.messenger.foundation.a.l;
 import com.tencent.mm.pluginsdk.ui.a.b;
 import com.tencent.mm.pluginsdk.ui.span.k;
-import com.tencent.mm.protocal.protobuf.ake;
-import com.tencent.mm.protocal.protobuf.bhu;
-import com.tencent.mm.protocal.protobuf.cbo;
-import com.tencent.mm.protocal.protobuf.ctd;
-import com.tencent.mm.protocal.protobuf.dci;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.am;
-import com.tencent.mm.storage.bp;
-import com.tencent.mm.storage.bu.d;
+import com.tencent.mm.protocal.protobuf.ako;
+import com.tencent.mm.protocal.protobuf.bik;
+import com.tencent.mm.protocal.protobuf.cci;
+import com.tencent.mm.protocal.protobuf.ctx;
+import com.tencent.mm.protocal.protobuf.ddc;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.an;
+import com.tencent.mm.storage.bq;
+import com.tencent.mm.storage.bv.d;
 import com.tencent.mm.ui.base.n.e;
 import java.io.IOException;
 import java.util.Iterator;
@@ -59,27 +59,27 @@ import java.util.List;
 
 public class AllRemindMsgUI
   extends MMActivity
-  implements com.tencent.mm.al.f
+  implements com.tencent.mm.ak.f
 {
-  private static final com.tencent.mm.b.f<Integer, com.tencent.mm.protocal.b.a.c> fTI;
-  private View ISv;
-  private b ISw;
-  private a ISx;
+  private static final com.tencent.mm.b.f<Integer, com.tencent.mm.protocal.b.a.c> fVO;
+  private View Jnd;
+  private b Jne;
+  private a Jnf;
   private RecyclerView anl;
-  private ProgressBar jqx;
-  private LinkedList<d> oEr;
+  private ProgressBar jtq;
+  private LinkedList<d> oKT;
   
   static
   {
     AppMethodBeat.i(32960);
-    fTI = new com.tencent.mm.memory.a.c(32);
+    fVO = new com.tencent.mm.memory.a.c(32);
     AppMethodBeat.o(32960);
   }
   
   public AllRemindMsgUI()
   {
     AppMethodBeat.i(32953);
-    this.ISx = new a();
+    this.Jnf = new a();
     AppMethodBeat.o(32953);
   }
   
@@ -87,7 +87,7 @@ public class AllRemindMsgUI
   {
     AppMethodBeat.i(32959);
     String str = "";
-    Object localObject = k.b.yr(paramString);
+    Object localObject = k.b.zb(paramString);
     switch (paramInt1)
     {
     default: 
@@ -99,7 +99,7 @@ public class AllRemindMsgUI
       return localObject;
       localObject = paramContext.getString(2131755904);
       continue;
-      localObject = paramContext.getString(2131762255, new Object[] { Integer.valueOf((int)s.sv(new com.tencent.mm.modelvoice.p(paramString).time)) });
+      localObject = paramContext.getString(2131762255, new Object[] { Integer.valueOf((int)s.sI(new p(paramString).time)) });
       continue;
       localObject = paramContext.getString(2131755853);
       continue;
@@ -109,22 +109,22 @@ public class AllRemindMsgUI
         localObject = paramContext.getString(paramInt1);
         break;
       }
-      ba.aBQ();
-      com.tencent.mm.model.c.azs().aql(paramString);
+      bc.aCg();
+      com.tencent.mm.model.c.azI().arq(paramString);
       localObject = paramContext.getString(2131762242, new Object[] { "" });
       continue;
       localObject = paramContext.getString(2131755782);
       continue;
       if (localObject == null)
       {
-        ad.e("MicroMsg.emoji.AllRemindMsgUI", "decode msg content failed");
+        ae.e("MicroMsg.emoji.AllRemindMsgUI", "decode msg content failed");
         AppMethodBeat.o(32959);
         return "";
       }
       switch (((k.b)localObject).type)
       {
       default: 
-        ad.i("MicroMsg.emoji.AllRemindMsgUI", "default type:%s", new Object[] { Integer.valueOf(((k.b)localObject).type) });
+        ae.i("MicroMsg.emoji.AllRemindMsgUI", "default type:%s", new Object[] { Integer.valueOf(((k.b)localObject).type) });
         break;
       case 33: 
         localObject = paramContext.getString(2131755375);
@@ -166,7 +166,7 @@ public class AllRemindMsgUI
         localObject = paramContext.getString(2131755853);
         break;
       case 44: 
-        if (bt.isNullOrNil(((k.b)localObject).t(paramContext, true))) {
+        if (bu.isNullOrNil(((k.b)localObject).t(paramContext, true))) {
           break;
         }
         localObject = ((k.b)localObject).t(paramContext, true) + " " + ((k.b)localObject).title;
@@ -177,25 +177,25 @@ public class AllRemindMsgUI
         continue;
         if (localObject == null)
         {
-          ad.e("MicroMsg.emoji.AllRemindMsgUI", "decode msg content failed");
+          ae.e("MicroMsg.emoji.AllRemindMsgUI", "decode msg content failed");
           AppMethodBeat.o(32959);
           return "";
         }
         if (paramInt2 == 1)
         {
-          localObject = paramContext.getString(2131762234, new Object[] { ((k.b)localObject).hBu, "" });
+          localObject = paramContext.getString(2131762234, new Object[] { ((k.b)localObject).hEi, "" });
         }
         else
         {
-          localObject = paramContext.getString(2131762234, new Object[] { ((k.b)localObject).hBu, "" });
+          localObject = paramContext.getString(2131762234, new Object[] { ((k.b)localObject).hEi, "" });
           continue;
           if (localObject == null)
           {
-            ad.e("MicroMsg.emoji.AllRemindMsgUI", "decode msg content failed");
+            ae.e("MicroMsg.emoji.AllRemindMsgUI", "decode msg content failed");
             AppMethodBeat.o(32959);
             return "";
           }
-          localObject = paramContext.getString(2131762234, new Object[] { ((k.b)localObject).hBu, "" });
+          localObject = paramContext.getString(2131762234, new Object[] { ((k.b)localObject).hEi, "" });
           continue;
           localObject = paramContext.getString(2131762235, new Object[] { "" });
           continue;
@@ -211,12 +211,12 @@ public class AllRemindMsgUI
             localObject = str;
             if (paramString.length() > 0)
             {
-              paramString = bu.d.aUe(paramString);
+              paramString = bv.d.aVF(paramString);
               localObject = str;
-              if (paramString.dHm != null)
+              if (paramString.cUA != null)
               {
                 localObject = str;
-                if (paramString.dHm.length() > 0) {
+                if (paramString.cUA.length() > 0) {
                   switch (paramString.scene)
                   {
                   case 19: 
@@ -262,21 +262,21 @@ public class AllRemindMsgUI
     AppMethodBeat.i(32956);
     setMMTitle(2131762415);
     this.anl = ((RecyclerView)findViewById(2131296644));
-    this.jqx = ((ProgressBar)findViewById(2131303518));
-    this.ISv = findViewById(2131300746);
+    this.jtq = ((ProgressBar)findViewById(2131303518));
+    this.Jnd = findViewById(2131300746);
     this.anl.setVisibility(8);
     RecyclerView localRecyclerView = this.anl;
     getContext();
     localRecyclerView.setLayoutManager(new LinearLayoutManager());
-    this.ISw = new b();
-    this.anl.setAdapter(this.ISw);
-    this.ISw.a(new RecyclerView.c()
+    this.Jne = new b();
+    this.anl.setAdapter(this.Jne);
+    this.Jne.a(new RecyclerView.c()
     {
       public final void onChanged()
       {
         AppMethodBeat.i(32936);
         super.onChanged();
-        ad.i("MicroMsg.emoji.AllRemindMsgUI", "[onChanged] size:%s", new Object[] { Integer.valueOf(AllRemindMsgUI.a(AllRemindMsgUI.this).getItemCount()) });
+        ae.i("MicroMsg.emoji.AllRemindMsgUI", "[onChanged] size:%s", new Object[] { Integer.valueOf(AllRemindMsgUI.a(AllRemindMsgUI.this).getItemCount()) });
         if (AllRemindMsgUI.a(AllRemindMsgUI.this).getItemCount() == 0)
         {
           AllRemindMsgUI.b(AllRemindMsgUI.this).setVisibility(0);
@@ -313,9 +313,9 @@ public class AllRemindMsgUI
   {
     AppMethodBeat.i(32954);
     super.onCreate(paramBundle);
-    ba.aiU().a(866, this.ISx);
-    ba.aiU().a(525, this);
-    com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(795L, 3L, 1L, false);
+    bc.ajj().a(866, this.Jnf);
+    bc.ajj().a(525, this);
+    com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(795L, 3L, 1L, false);
     initView();
     com.tencent.mm.sdk.g.b.c(new a(), "load remind data!");
     AppMethodBeat.o(32954);
@@ -325,15 +325,15 @@ public class AllRemindMsgUI
   {
     AppMethodBeat.i(32955);
     super.onDestroy();
-    ba.aiU().b(866, this.ISx);
-    ba.aiU().b(525, this);
+    bc.ajj().b(866, this.Jnf);
+    bc.ajj().b(525, this);
     AppMethodBeat.o(32955);
   }
   
   public void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     AppMethodBeat.i(32958);
-    ad.i("MicroMsg.emoji.AllRemindMsgUI", "[onSceneEnd] errType:%s,errCode:%s,errMsg:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    ae.i("MicroMsg.emoji.AllRemindMsgUI", "[onSceneEnd] errType:%s,errCode:%s,errMsg:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
       if (paramn.getType() != 525)
@@ -341,18 +341,18 @@ public class AllRemindMsgUI
         AppMethodBeat.o(32958);
         return;
       }
-      paramString = (dci)((y)paramn).hWL.hNK.hNQ;
-      paramn = this.oEr.listIterator();
+      paramString = (ddc)((z)paramn).hZD.hQD.hQJ;
+      paramn = this.oKT.listIterator();
       while (paramn.hasNext()) {
-        if (((d)paramn.next()).ISG == paramString.Hry.Hlt) {
+        if (((d)paramn.next()).Jno == paramString.HLa.HET) {
           paramn.remove();
         }
       }
-      this.ISw.asY.notifyChanged();
+      this.Jne.asY.notifyChanged();
       AppMethodBeat.o(32958);
       return;
     }
-    Toast.makeText(getContext(), bt.bI(paramString, getString(2131761751)), 0).show();
+    Toast.makeText(getContext(), bu.bI(paramString, getString(2131761751)), 0).show();
     AppMethodBeat.o(32958);
   }
   
@@ -363,14 +363,14 @@ public class AllRemindMsgUI
   }
   
   final class a
-    implements com.tencent.mm.al.f, Runnable
+    implements com.tencent.mm.ak.f, Runnable
   {
     a() {}
     
     public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, final n paramn)
     {
       AppMethodBeat.i(32941);
-      ad.i("MicroMsg.emoji.AllRemindMsgUI", "[onSceneEnd] errType:%s,errCode:%s,errMsg:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+      ae.i("MicroMsg.emoji.AllRemindMsgUI", "[onSceneEnd] errType:%s,errCode:%s,errMsg:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
         if (paramn.getType() != 866)
@@ -383,48 +383,48 @@ public class AllRemindMsgUI
           public final void run()
           {
             AppMethodBeat.i(32939);
-            Object localObject1 = ((bhu)((com.tencent.mm.modelsimple.p)paramn).hWL.hNL.hNQ).GCW;
+            Object localObject1 = ((bik)((com.tencent.mm.modelsimple.q)paramn).hZD.hQE.hQJ).GWw;
             LinkedList localLinkedList = new LinkedList();
             if (localObject1 != null)
             {
               Iterator localIterator = ((List)localObject1).iterator();
               if (localIterator.hasNext())
               {
-                localObject1 = (ctd)localIterator.next();
+                localObject1 = (ctx)localIterator.next();
                 AllRemindMsgUI.d locald = new AllRemindMsgUI.d(AllRemindMsgUI.this);
-                locald.ISF = ((ctd)localObject1);
-                locald.timestamp = (((ctd)localObject1).qex * 1000L);
-                locald.subType = ((ctd)localObject1).HfH;
-                locald.ISG = ((ctd)localObject1).Hlt;
+                locald.Jnn = ((ctx)localObject1);
+                locald.timestamp = (((ctx)localObject1).qlc * 1000L);
+                locald.subType = ((ctx)localObject1).Hzh;
+                locald.Jno = ((ctx)localObject1).HET;
                 Object localObject3;
-                if (((ctd)localObject1).HfH == 1) {
-                  localObject3 = new cbo();
+                if (((ctx)localObject1).Hzh == 1) {
+                  localObject3 = new cci();
                 }
                 for (;;)
                 {
                   try
                   {
-                    ((cbo)localObject3).parseFrom(((ctd)localObject1).Gcf.zr);
-                    locald.title = ((cbo)localObject3).Title;
-                    locald.username = ((cbo)localObject3).nDo;
-                    locald.msgId = ((cbo)localObject3).xbt;
+                    ((cci)localObject3).parseFrom(((ctx)localObject1).GuM.zr);
+                    locald.title = ((cci)localObject3).Title;
+                    locald.username = ((cci)localObject3).nIJ;
+                    locald.msgId = ((cci)localObject3).xrk;
                     if (locald.username != null)
                     {
-                      if (!w.vF(locald.username)) {
+                      if (!x.wb(locald.username)) {
                         continue;
                       }
-                      localObject1 = ((l)com.tencent.mm.kernel.g.ab(l.class)).azp().Bf(locald.username);
+                      localObject1 = ((l)com.tencent.mm.kernel.g.ab(l.class)).azF().BH(locald.username);
                       if (localObject1 != null)
                       {
-                        if (((am)localObject1).adv() == null)
+                        if (((an)localObject1).adG() == null)
                         {
-                          localObject1 = ((am)localObject1).adu();
+                          localObject1 = ((an)localObject1).adF();
                           locald.nickname = ((String)localObject1);
                         }
                       }
                       else
                       {
-                        if (!bt.isNullOrNil(locald.nickname)) {
+                        if (!bu.isNullOrNil(locald.nickname)) {
                           continue;
                         }
                         localObject1 = AllRemindMsgUI.this.getString(2131757293);
@@ -433,41 +433,41 @@ public class AllRemindMsgUI
                     }
                     else
                     {
-                      ad.i("MicroMsg.emoji.AllRemindMsgUI", "[onSceneEnd] getRemind:%s", new Object[] { locald });
+                      ae.i("MicroMsg.emoji.AllRemindMsgUI", "[onSceneEnd] getRemind:%s", new Object[] { locald });
                       localLinkedList.add(locald);
                     }
                   }
                   catch (IOException localIOException1)
                   {
-                    ad.e("MicroMsg.emoji.AllRemindMsgUI", "[onSceneEnd] %s", new Object[] { localIOException1.toString() });
+                    ae.e("MicroMsg.emoji.AllRemindMsgUI", "[onSceneEnd] %s", new Object[] { localIOException1.toString() });
                     continue;
-                    localObject2 = localIOException1.adv();
+                    localObject2 = localIOException1.adG();
                     continue;
                     localObject2 = locald.nickname;
                     continue;
-                    localObject2 = ((l)com.tencent.mm.kernel.g.ab(l.class)).azp().Bf(locald.username);
-                    if (((am)localObject2).adv() != null) {}
+                    localObject2 = ((l)com.tencent.mm.kernel.g.ab(l.class)).azF().BH(locald.username);
+                    if (((an)localObject2).adG() != null) {}
                   }
-                  for (Object localObject2 = ((am)localObject2).adu();; localObject2 = ((am)localObject2).adv())
+                  for (Object localObject2 = ((an)localObject2).adF();; localObject2 = ((an)localObject2).adG())
                   {
                     locald.nickname = ((String)localObject2);
                     break;
                   }
-                  if (((ctd)localObject2).HfH == 2)
+                  if (((ctx)localObject2).Hzh == 2)
                   {
-                    localObject3 = new ake();
+                    localObject3 = new ako();
                     try
                     {
-                      ((ake)localObject3).parseFrom(((ctd)localObject2).Gcf.zr);
-                      locald.title = ((ake)localObject3).Title;
-                      locald.sourceType = ((ake)localObject3).Fva;
-                      locald.GiT = ((ake)localObject3).Fvb;
+                      ((ako)localObject3).parseFrom(((ctx)localObject2).GuM.zr);
+                      locald.title = ((ako)localObject3).Title;
+                      locald.sourceType = ((ako)localObject3).FNy;
+                      locald.GBC = ((ako)localObject3).FNz;
                     }
                     catch (IOException localIOException2)
                     {
                       for (;;)
                       {
-                        ad.e("MicroMsg.emoji.AllRemindMsgUI", "[onSceneEnd] %s", new Object[] { localIOException2.toString() });
+                        ae.e("MicroMsg.emoji.AllRemindMsgUI", "[onSceneEnd] %s", new Object[] { localIOException2.toString() });
                       }
                     }
                   }
@@ -475,7 +475,7 @@ public class AllRemindMsgUI
               }
               AllRemindMsgUI.a(AllRemindMsgUI.this, localLinkedList);
             }
-            aq.f(new Runnable()
+            ar.f(new Runnable()
             {
               public final void run()
               {
@@ -492,7 +492,7 @@ public class AllRemindMsgUI
         AppMethodBeat.o(32941);
         return;
       }
-      ad.e("MicroMsg.emoji.AllRemindMsgUI", "[onSceneEnd] errType:%s,errCode:%s,errMsg:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+      ae.e("MicroMsg.emoji.AllRemindMsgUI", "[onSceneEnd] errType:%s,errCode:%s,errMsg:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
       AllRemindMsgUI.c(AllRemindMsgUI.this).setVisibility(0);
       AllRemindMsgUI.e(AllRemindMsgUI.this).setVisibility(8);
       AppMethodBeat.o(32941);
@@ -501,8 +501,8 @@ public class AllRemindMsgUI
     public final void run()
     {
       AppMethodBeat.i(32940);
-      com.tencent.mm.modelsimple.p localp = new com.tencent.mm.modelsimple.p();
-      ba.aiU().a(localp, 0);
+      com.tencent.mm.modelsimple.q localq = new com.tencent.mm.modelsimple.q();
+      bc.ajj().a(localq, 0);
       AppMethodBeat.o(32940);
     }
   }
@@ -526,26 +526,26 @@ public class AllRemindMsgUI
       AppMethodBeat.i(32943);
       AllRemindMsgUI.d locald = (AllRemindMsgUI.d)AllRemindMsgUI.d(AllRemindMsgUI.this).get(paramInt);
       ((AllRemindMsgUI.c)paramw).auu.setTag(locald);
-      ((AllRemindMsgUI.c)paramw).opA.setText(k.b(AllRemindMsgUI.this.getContext(), locald.nickname, ((AllRemindMsgUI.c)paramw).opA.getTextSize()));
+      ((AllRemindMsgUI.c)paramw).ovs.setText(k.b(AllRemindMsgUI.this.getContext(), locald.nickname, ((AllRemindMsgUI.c)paramw).ovs.getTextSize()));
       ((AllRemindMsgUI.c)paramw).titleTv.setText(k.b(AllRemindMsgUI.this.getContext(), locald.title, ((AllRemindMsgUI.c)paramw).titleTv.getTextSize()));
       long l = System.currentTimeMillis();
       if (locald.timestamp - l < 60000L) {
-        ((AllRemindMsgUI.c)paramw).ISB.setText(AllRemindMsgUI.this.getContext().getString(2131759514, new Object[] { Integer.valueOf(1) }));
+        ((AllRemindMsgUI.c)paramw).Jnj.setText(AllRemindMsgUI.this.getContext().getString(2131759514, new Object[] { Integer.valueOf(1) }));
       }
       while (locald.subType == 2)
       {
-        ((AllRemindMsgUI.c)paramw).jdF.setImageDrawable(AllRemindMsgUI.this.getContext().getResources().getDrawable(2131230943));
+        ((AllRemindMsgUI.c)paramw).jgy.setImageDrawable(AllRemindMsgUI.this.getContext().getResources().getDrawable(2131230943));
         AppMethodBeat.o(32943);
         return;
         if (locald.timestamp - l < 3600000L) {
-          ((AllRemindMsgUI.c)paramw).ISB.setText(AllRemindMsgUI.this.getContext().getString(2131759514, new Object[] { Long.valueOf((locald.timestamp - l) / 60000L) }));
+          ((AllRemindMsgUI.c)paramw).Jnj.setText(AllRemindMsgUI.this.getContext().getString(2131759514, new Object[] { Long.valueOf((locald.timestamp - l) / 60000L) }));
         } else if (locald.timestamp - l < 10800000L) {
-          ((AllRemindMsgUI.c)paramw).ISB.setText(AllRemindMsgUI.this.getContext().getString(2131759513, new Object[] { Long.valueOf((locald.timestamp - l) / 3600000L), Long.valueOf((locald.timestamp - l - (locald.timestamp - l) / 3600000L * 3600000L) / 60000L) }));
+          ((AllRemindMsgUI.c)paramw).Jnj.setText(AllRemindMsgUI.this.getContext().getString(2131759513, new Object[] { Long.valueOf((locald.timestamp - l) / 3600000L), Long.valueOf((locald.timestamp - l - (locald.timestamp - l) / 3600000L * 3600000L) / 60000L) }));
         } else {
-          ((AllRemindMsgUI.c)paramw).ISB.setText(com.tencent.mm.pluginsdk.i.i.c(AllRemindMsgUI.this.getContext(), locald.timestamp, true));
+          ((AllRemindMsgUI.c)paramw).Jnj.setText(com.tencent.mm.pluginsdk.i.i.c(AllRemindMsgUI.this.getContext(), locald.timestamp, true));
         }
       }
-      a.b.c(((AllRemindMsgUI.c)paramw).jdF, locald.username);
+      a.b.c(((AllRemindMsgUI.c)paramw).jgy, locald.username);
       AppMethodBeat.o(32943);
     }
     
@@ -566,10 +566,10 @@ public class AllRemindMsgUI
   final class c
     extends RecyclerView.w
   {
-    TextView ISB;
+    TextView Jnj;
     View auu;
-    ImageView jdF;
-    TextView opA;
+    ImageView jgy;
+    TextView ovs;
     TextView titleTv;
     
     public c(View paramView)
@@ -578,9 +578,9 @@ public class AllRemindMsgUI
       AppMethodBeat.i(32950);
       this.auu = paramView;
       this.titleTv = ((TextView)paramView.findViewById(2131305902));
-      this.ISB = ((TextView)paramView.findViewById(2131305846));
-      this.opA = ((TextView)paramView.findViewById(2131302863));
-      this.jdF = ((ImageView)paramView.findViewById(2131296996));
+      this.Jnj = ((TextView)paramView.findViewById(2131305846));
+      this.ovs = ((TextView)paramView.findViewById(2131302863));
+      this.jgy = ((ImageView)paramView.findViewById(2131296996));
       this.auu.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
@@ -588,10 +588,10 @@ public class AllRemindMsgUI
           AppMethodBeat.i(32945);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
           localb.bd(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/AllRemindMsgUI$RemindHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/AllRemindMsgUI$RemindHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
           paramAnonymousView = (AllRemindMsgUI.d)paramAnonymousView.getTag();
-          ad.i("MicroMsg.emoji.AllRemindMsgUI", "[onClick] :%s", new Object[] { paramAnonymousView });
-          AllRemindMsgUI.c.b(AllRemindMsgUI.this, paramAnonymousView.username, paramAnonymousView.msgId);
+          ae.i("MicroMsg.emoji.AllRemindMsgUI", "[onClick] :%s", new Object[] { paramAnonymousView });
+          AllRemindMsgUI.c.c(AllRemindMsgUI.this, paramAnonymousView.username, paramAnonymousView.msgId);
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/AllRemindMsgUI$RemindHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(32945);
         }
@@ -604,7 +604,7 @@ public class AllRemindMsgUI
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
           localb.bd(paramAnonymousView);
           localb.bd(paramAnonymousMotionEvent);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/AllRemindMsgUI$RemindHolder$2", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahq());
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/AllRemindMsgUI$RemindHolder$2", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahF());
           paramAnonymousView.setTag(2131306044, new int[] { (int)paramAnonymousMotionEvent.getRawX(), (int)paramAnonymousMotionEvent.getRawY() });
           com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/mm/ui/AllRemindMsgUI$RemindHolder$2", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
           AppMethodBeat.o(32946);
@@ -618,7 +618,7 @@ public class AllRemindMsgUI
           AppMethodBeat.i(32949);
           Object localObject = new com.tencent.mm.hellhoundlib.b.b();
           ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/AllRemindMsgUI$RemindHolder$3", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahq());
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/AllRemindMsgUI$RemindHolder$3", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahF());
           com.tencent.mm.ui.widget.b.a locala = new com.tencent.mm.ui.widget.b.a(AllRemindMsgUI.this.getContext());
           localObject = new int[2];
           if ((paramAnonymousView.getTag(2131306044) instanceof int[])) {
@@ -638,9 +638,9 @@ public class AllRemindMsgUI
             {
               AppMethodBeat.i(32948);
               paramAnonymous2MenuItem = (AllRemindMsgUI.d)paramAnonymousView.getTag();
-              ad.i("MicroMsg.emoji.AllRemindMsgUI", "[onMMMenuItemSelected] delete item:%s", new Object[] { paramAnonymous2MenuItem });
-              paramAnonymous2MenuItem = new y(2, paramAnonymous2MenuItem.ISF);
-              ba.aiU().a(paramAnonymous2MenuItem, 0);
+              ae.i("MicroMsg.emoji.AllRemindMsgUI", "[onMMMenuItemSelected] delete item:%s", new Object[] { paramAnonymous2MenuItem });
+              paramAnonymous2MenuItem = new z(2, paramAnonymous2MenuItem.Jnn);
+              bc.ajj().a(paramAnonymous2MenuItem, 0);
               AppMethodBeat.o(32948);
             }
           }, localObject[0], localObject[1]);
@@ -655,9 +655,9 @@ public class AllRemindMsgUI
   
   final class d
   {
-    String GiT;
-    ctd ISF;
-    String ISG;
+    String GBC;
+    ctx Jnn;
+    String Jno;
     long msgId;
     String nickname;
     int sourceType;
@@ -671,7 +671,7 @@ public class AllRemindMsgUI
     public final String toString()
     {
       AppMethodBeat.i(32952);
-      String str = "RemindItem{username='" + this.username + '\'' + ", nickname='" + this.nickname + '\'' + ", title='" + bt.aRp(this.title) + '\'' + ", timestamp=" + this.timestamp + ", subType=" + this.subType + ", msgId=" + this.msgId + ", sourceType=" + this.sourceType + ", sourceId='" + this.GiT + '\'' + '}';
+      String str = "RemindItem{username='" + this.username + '\'' + ", nickname='" + this.nickname + '\'' + ", title='" + bu.aSM(this.title) + '\'' + ", timestamp=" + this.timestamp + ", subType=" + this.subType + ", msgId=" + this.msgId + ", sourceType=" + this.sourceType + ", sourceId='" + this.GBC + '\'' + '}';
       AppMethodBeat.o(32952);
       return str;
     }

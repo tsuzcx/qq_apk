@@ -33,7 +33,7 @@ public final class a
       localJSONObject.put("stack", paramIOIssue.stack);
       localJSONObject.put("repeat", paramIOIssue.repeatReadCnt);
       label136:
-      localc.cEZ = localJSONObject;
+      localc.cFG = localJSONObject;
       return localc;
     }
     catch (JSONException paramIOIssue)

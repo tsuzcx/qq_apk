@@ -3,79 +3,65 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class dnb
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public String path;
-  public String username;
-  public int version;
+  public int HUl;
+  public String nIJ;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(91716);
+    AppMethodBeat.i(152711);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.username != null) {
-        paramVarArgs.d(1, this.username);
+      paramVarArgs.aS(1, this.HUl);
+      if (this.nIJ != null) {
+        paramVarArgs.d(2, this.nIJ);
       }
-      if (this.path != null) {
-        paramVarArgs.d(2, this.path);
-      }
-      paramVarArgs.aS(3, this.version);
-      AppMethodBeat.o(91716);
+      AppMethodBeat.o(152711);
       return 0;
     }
-    if (paramInt == 1) {
-      if (this.username == null) {
-        break label318;
-      }
-    }
-    label318:
-    for (paramInt = f.a.a.b.b.a.e(1, this.username) + 0;; paramInt = 0)
+    if (paramInt == 1)
     {
-      int i = paramInt;
-      if (this.path != null) {
-        i = paramInt + f.a.a.b.b.a.e(2, this.path);
+      int i = f.a.a.b.b.a.bz(1, this.HUl) + 0;
+      paramInt = i;
+      if (this.nIJ != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.nIJ);
       }
-      paramInt = f.a.a.b.b.a.bz(3, this.version);
-      AppMethodBeat.o(91716);
-      return i + paramInt;
-      if (paramInt == 2)
-      {
-        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
-          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
-          }
-        }
-        AppMethodBeat.o(91716);
-        return 0;
-      }
-      if (paramInt == 3)
-      {
-        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
-        dnb localdnb = (dnb)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
-        {
-        default: 
-          AppMethodBeat.o(91716);
-          return -1;
-        case 1: 
-          localdnb.username = locala.NPN.readString();
-          AppMethodBeat.o(91716);
-          return 0;
-        case 2: 
-          localdnb.path = locala.NPN.readString();
-          AppMethodBeat.o(91716);
-          return 0;
-        }
-        localdnb.version = locala.NPN.zc();
-        AppMethodBeat.o(91716);
-        return 0;
-      }
-      AppMethodBeat.o(91716);
-      return -1;
+      AppMethodBeat.o(152711);
+      return paramInt;
     }
+    if (paramInt == 2)
+    {
+      paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.gCg();
+        }
+      }
+      AppMethodBeat.o(152711);
+      return 0;
+    }
+    if (paramInt == 3)
+    {
+      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+      dnb localdnb = (dnb)paramVarArgs[1];
+      switch (((Integer)paramVarArgs[2]).intValue())
+      {
+      default: 
+        AppMethodBeat.o(152711);
+        return -1;
+      case 1: 
+        localdnb.HUl = locala.OmT.zc();
+        AppMethodBeat.o(152711);
+        return 0;
+      }
+      localdnb.nIJ = locala.OmT.readString();
+      AppMethodBeat.o(152711);
+      return 0;
+    }
+    AppMethodBeat.o(152711);
+    return -1;
   }
 }
 

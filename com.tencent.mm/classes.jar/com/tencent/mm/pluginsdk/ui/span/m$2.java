@@ -10,13 +10,13 @@ final class m$2
 {
   m$2(DialogInterface.OnDismissListener paramOnDismissListener, String paramString, Context paramContext) {}
   
-  public final void lf(int paramInt)
+  public final void lh(int paramInt)
   {
     AppMethodBeat.i(31922);
-    if (this.FhF != null) {
-      this.FhF.onDismiss(null);
+    if (this.FAd != null) {
+      this.FAd.onDismiss(null);
     }
-    String str = this.FhG.replace(" ", "").replace("#", "@");
+    String str = this.FAe.replace(" ", "").replace("#", "@");
     switch (paramInt)
     {
     }
@@ -24,7 +24,7 @@ final class m$2
     {
       AppMethodBeat.o(31922);
       return;
-      m.bT(this.val$context, str);
+      m.bU(this.val$context, str);
     }
   }
 }

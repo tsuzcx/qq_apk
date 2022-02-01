@@ -10,7 +10,7 @@ public final class e
   {
     super(paramInt1, paramInt2, paramInt3, 2, paramInt4, 1);
     AppMethodBeat.i(155555);
-    g.lk(hashCode());
+    g.lm(hashCode());
     AppMethodBeat.o(155555);
   }
   
@@ -18,7 +18,7 @@ public final class e
   {
     AppMethodBeat.i(155556);
     super.release();
-    g.ll(hashCode());
+    g.ln(hashCode());
     AppMethodBeat.o(155556);
   }
 }

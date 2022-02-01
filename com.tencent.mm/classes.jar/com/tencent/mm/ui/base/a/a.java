@@ -8,16 +8,16 @@ import android.view.View.OnClickListener;
 import android.view.View.OnLongClickListener;
 import android.view.ViewGroup;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.ArrayList;
 import java.util.List;
 
 public abstract class a<T, V extends View>
   extends RecyclerView.a<b>
 {
-  public a Jrp = null;
-  public List<T> cje = new ArrayList();
-  private RecyclerView gmV;
+  public a JMe = null;
+  public List<T> cjg = new ArrayList();
+  private RecyclerView gpr;
   
   public void a(final b paramb, final int paramInt)
   {
@@ -28,18 +28,18 @@ public abstract class a<T, V extends View>
         AppMethodBeat.i(164160);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
         localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/base/adapter/RecyclerViewAdapterBase$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-        if (a.this.Jrp != null)
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/base/adapter/RecyclerViewAdapterBase$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        if (a.this.JMe != null)
         {
           int i = ((b)((RecyclerView)paramb.auu.getParent()).bu(paramb.auu)).lN();
           if (i < 0)
           {
-            ad.e("MicroMsg.RecyclerViewAdapterBase", "[onBindViewHolder#setOnClickListener] pos=%s", new Object[] { Integer.valueOf(i) });
+            ae.e("MicroMsg.RecyclerViewAdapterBase", "[onBindViewHolder#setOnClickListener] pos=%s", new Object[] { Integer.valueOf(i) });
             com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/base/adapter/RecyclerViewAdapterBase$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
             AppMethodBeat.o(164160);
             return;
           }
-          a.this.Jrp.a(i, paramAnonymousView, a.this.getItemAtPosition(i));
+          a.this.JMe.a(i, paramAnonymousView, a.this.getItemAtPosition(i));
         }
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/base/adapter/RecyclerViewAdapterBase$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(164160);
@@ -52,10 +52,10 @@ public abstract class a<T, V extends View>
         AppMethodBeat.i(164161);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
         localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/base/adapter/RecyclerViewAdapterBase$2", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.ahq());
-        if (a.this.Jrp != null)
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/base/adapter/RecyclerViewAdapterBase$2", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.ahF());
+        if (a.this.JMe != null)
         {
-          boolean bool = a.this.Jrp.a(paramAnonymousView, a.this.getItemAtPosition(paramInt));
+          boolean bool = a.this.JMe.a(paramAnonymousView, a.this.getItemAtPosition(paramInt));
           com.tencent.mm.hellhoundlib.a.a.a(bool, this, "com/tencent/mm/ui/base/adapter/RecyclerViewAdapterBase$2", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
           AppMethodBeat.o(164161);
           return bool;
@@ -70,38 +70,38 @@ public abstract class a<T, V extends View>
   public void a(b paramb, int paramInt, List<Object> paramList)
   {
     super.a(paramb, paramInt, paramList);
-    paramb.gmV = this.gmV;
+    paramb.gpr = this.gpr;
   }
   
   public final void c(RecyclerView paramRecyclerView)
   {
     super.c(paramRecyclerView);
-    this.gmV = paramRecyclerView;
+    this.gpr = paramRecyclerView;
   }
   
   public final void clearItems()
   {
-    int i = this.cje.size();
-    this.cje.clear();
+    int i = this.cjg.size();
+    this.cjg.clear();
     as(0, i);
   }
   
   public final T getItemAtPosition(int paramInt)
   {
-    return this.cje.get(paramInt);
+    return this.cjg.get(paramInt);
   }
   
   public final int getItemCount()
   {
-    return this.cje.size();
+    return this.cjg.size();
   }
   
-  public final void hQ(List<T> paramList)
+  public final void ia(List<T> paramList)
   {
     if (paramList != null)
     {
-      int i = this.cje.size();
-      this.cje.addAll(paramList);
+      int i = this.cjg.size();
+      this.cjg.addAll(paramList);
       ar(i, paramList.size());
     }
   }
@@ -112,7 +112,7 @@ public abstract class a<T, V extends View>
   {
     if (paramList != null)
     {
-      this.cje = paramList;
+      this.cjg = paramList;
       this.asY.notifyChanged();
     }
   }
@@ -126,7 +126,7 @@ public abstract class a<T, V extends View>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.base.a.a
  * JD-Core Version:    0.7.0.1
  */

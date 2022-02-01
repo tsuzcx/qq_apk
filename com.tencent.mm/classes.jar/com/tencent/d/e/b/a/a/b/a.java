@@ -6,13 +6,13 @@ import java.security.NoSuchAlgorithmException;
 
 public final class a
 {
-  public static byte[] cM(byte[] paramArrayOfByte)
+  public static byte[] cP(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(138448);
     Object localObject = null;
     try
     {
-      MessageDigest localMessageDigest = MessageDigest.getInstance(new String(b.YY("4D4435")));
+      MessageDigest localMessageDigest = MessageDigest.getInstance(new String(b.ZP("4D4435")));
       localMessageDigest.update(paramArrayOfByte);
       paramArrayOfByte = localMessageDigest.digest();
       AppMethodBeat.o(138448);

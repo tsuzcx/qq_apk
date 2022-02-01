@@ -1,6 +1,6 @@
 package com.tencent.mm.plugin.messenger.foundation.a;
 
-import com.tencent.mm.al.e.a;
+import com.tencent.mm.ak.e.a;
 import java.util.Map;
 
 public abstract interface q
@@ -9,7 +9,7 @@ public abstract interface q
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.messenger.foundation.a.q
  * JD-Core Version:    0.7.0.1
  */

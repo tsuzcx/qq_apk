@@ -4,9 +4,9 @@ import io.flutter.plugin.a.i;
 
 public abstract class d
 {
-  final i<Object> MGC;
+  final i<Object> NdH;
   
-  public abstract c gfk();
+  public abstract c gjM();
 }
 
 

@@ -18,13 +18,13 @@ import java.util.List;
 final class e
   implements b
 {
-  public static final e NEn;
+  public static final e Obu;
   private static final String description = "second parameter must be of type KProperty<*> or its supertype";
   
   static
   {
     AppMethodBeat.i(61295);
-    NEn = new e();
+    Obu = new e();
     description = "second parameter must be of type KProperty<*> or its supertype";
     AppMethodBeat.o(61295);
   }
@@ -38,30 +38,30 @@ final class e
   {
     AppMethodBeat.i(61294);
     p.h(paramt, "functionDescriptor");
-    Object localObject1 = (av)paramt.gis().get(1);
-    paramt = i.MSf;
+    Object localObject1 = (av)paramt.gmU().get(1);
+    paramt = i.Npk;
     p.g(localObject1, "secondParameter");
     paramt = d.l.b.a.b.j.d.a.F((l)localObject1);
     p.h(paramt, "module");
-    Object localObject2 = d.l.b.a.b.a.g.MQb.MRq;
+    Object localObject2 = d.l.b.a.b.a.g.Nng.Nov;
     p.g(localObject2, "KotlinBuiltIns.FQ_NAMES.kProperty");
     paramt = s.b(paramt, (d.l.b.a.b.f.a)localObject2);
     if (paramt == null) {}
     Object localObject3;
     for (paramt = null; paramt != null; paramt = (ab)ac.a((d.l.b.a.b.b.a.g)localObject2, paramt, j.listOf(new ao((as)localObject3))))
     {
-      localObject1 = ((av)localObject1).gju();
+      localObject1 = ((av)localObject1).gnW();
       p.g(localObject1, "secondParameter.type");
       boolean bool = d.l.b.a.b.m.d.a.c(paramt, d.l.b.a.b.m.d.a.aE((ab)localObject1));
       AppMethodBeat.o(61294);
       return bool;
-      localObject2 = d.l.b.a.b.b.a.g.MVP;
-      localObject2 = d.l.b.a.b.b.a.g.a.gjL();
-      localObject3 = paramt.ghu();
+      localObject2 = d.l.b.a.b.b.a.g.NsU;
+      localObject2 = d.l.b.a.b.b.a.g.a.gon();
+      localObject3 = paramt.glW();
       p.g(localObject3, "kPropertyClass.typeConstructor");
       localObject3 = ((at)localObject3).getParameters();
       p.g(localObject3, "kPropertyClass.typeConstructor.parameters");
-      localObject3 = j.jg((List)localObject3);
+      localObject3 = j.jp((List)localObject3);
       p.g(localObject3, "kPropertyClass.typeConstructor.parameters.single()");
     }
     AppMethodBeat.o(61294);
@@ -79,7 +79,7 @@ final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.n.e
  * JD-Core Version:    0.7.0.1
  */

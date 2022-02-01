@@ -1,10 +1,13 @@
 package com.tencent.mm.g.a;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class vi
   extends b
 {
+  public a dKE;
+  
   public vi()
   {
     this((byte)0);
@@ -12,8 +15,19 @@ public final class vi
   
   private vi(byte paramByte)
   {
-    this.IbR = false;
+    AppMethodBeat.i(125647);
+    this.dKE = new a();
+    this.IvZ = false;
     this.callback = null;
+    AppMethodBeat.o(125647);
+  }
+  
+  public static final class a
+  {
+    public String dKF;
+    public String id;
+    public String result;
+    public int type;
   }
 }
 

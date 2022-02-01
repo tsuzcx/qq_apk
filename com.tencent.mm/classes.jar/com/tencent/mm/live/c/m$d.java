@@ -1,12 +1,12 @@
 package com.tencent.mm.live.c;
 
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.live.view.a.a;
 import d.g.a.b;
 import d.g.b.q;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Lcom/tencent/mm/live/view/adapter/CommentData;", "invoke"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Lcom/tencent/mm/live/view/adapter/CommentData;", "invoke"})
 final class m$d
   extends q
   implements b<a, Boolean>

@@ -4,19 +4,19 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class i
 {
-  public long iwr;
+  public long izk;
   
   public i(int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(130039);
-    this.iwr = MediaRecorder.SilkEncInit(paramInt1, paramInt2, paramInt3, MediaRecorder.ivY);
+    this.izk = MediaRecorder.SilkEncInit(paramInt1, paramInt2, paramInt3, MediaRecorder.iyR);
     AppMethodBeat.o(130039);
   }
   
   public final int ds(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(130040);
-    paramInt1 = MediaRecorder.SetVoiceSilkControl(paramInt1, paramInt2, this.iwr);
+    paramInt1 = MediaRecorder.SetVoiceSilkControl(paramInt1, paramInt2, this.izk);
     AppMethodBeat.o(130040);
     return paramInt1;
   }

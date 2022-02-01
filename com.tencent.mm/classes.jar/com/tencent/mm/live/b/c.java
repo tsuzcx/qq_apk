@@ -13,134 +13,134 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/live/model/LiveCallbacks;", "", "()V", "liveBanCommentCallbacks", "Ljava/util/HashMap;", "", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "sysTip", "", "Lkotlin/collections/HashMap;", "liveKickedCallbacks", "Lkotlin/Function0;", "liveMessageCallbacks", "liveOnlineCntChangeCallbacks", "livelinkMicCallbacks", "Lkotlin/Function2;", "", "linked", "callingUser", "callbackBanComment", "callbackKicked", "callbackLinkMic", "callbackLiveMessage", "callbackOnlineCntChanged", "registerLiveBanCommentCallback", "key", "callback", "registerLiveKickedCallback", "registerLiveLinkMicCallback", "registerLiveMessageCallback", "registerOnlineCntChangedCallback", "releaseCallbacks", "plugin-logic_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/live/model/LiveCallbacks;", "", "()V", "liveBanCommentCallbacks", "Ljava/util/HashMap;", "", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "sysTip", "", "Lkotlin/collections/HashMap;", "liveKickedCallbacks", "Lkotlin/Function0;", "liveMessageCallbacks", "liveOnlineCntChangeCallbacks", "livelinkMicCallbacks", "Lkotlin/Function2;", "", "linked", "callingUser", "callbackBanComment", "callbackKicked", "callbackLinkMic", "callbackLiveMessage", "callbackOnlineCntChanged", "registerLiveBanCommentCallback", "key", "callback", "registerLiveKickedCallback", "registerLiveLinkMicCallback", "registerLiveMessageCallback", "registerOnlineCntChangedCallback", "releaseCallbacks", "plugin-logic_release"})
 public final class c
 {
-  private static final HashMap<String, a<z>> gMJ;
-  private static final HashMap<String, a<z>> gMK;
-  private static final HashMap<String, b<String, z>> gML;
-  private static final HashMap<String, m<Boolean, String, z>> gMM;
-  private static final HashMap<String, a<z>> gMN;
-  public static final c gMO;
+  private static final HashMap<String, a<z>> gPs;
+  private static final HashMap<String, a<z>> gPt;
+  private static final HashMap<String, b<String, z>> gPu;
+  private static final HashMap<String, m<Boolean, String, z>> gPv;
+  private static final HashMap<String, a<z>> gPw;
+  public static final c gPx;
   
   static
   {
-    AppMethodBeat.i(212035);
-    gMO = new c();
-    gMJ = new HashMap();
-    gMK = new HashMap();
-    gML = new HashMap();
-    gMM = new HashMap();
-    gMN = new HashMap();
-    AppMethodBeat.o(212035);
+    AppMethodBeat.i(215654);
+    gPx = new c();
+    gPs = new HashMap();
+    gPt = new HashMap();
+    gPu = new HashMap();
+    gPv = new HashMap();
+    gPw = new HashMap();
+    AppMethodBeat.o(215654);
   }
   
   public static void a(String paramString, b<? super String, z> paramb)
   {
-    AppMethodBeat.i(212030);
+    AppMethodBeat.i(215649);
     p.h(paramString, "key");
     p.h(paramb, "callback");
-    ((Map)gML).put(paramString, paramb);
-    AppMethodBeat.o(212030);
+    ((Map)gPu).put(paramString, paramb);
+    AppMethodBeat.o(215649);
   }
   
   public static void a(String paramString, m<? super Boolean, ? super String, z> paramm)
   {
-    AppMethodBeat.i(212031);
+    AppMethodBeat.i(215650);
     p.h(paramString, "key");
     p.h(paramm, "callback");
-    ((Map)gMM).put(paramString, paramm);
-    AppMethodBeat.o(212031);
+    ((Map)gPv).put(paramString, paramm);
+    AppMethodBeat.o(215650);
   }
   
-  public static void amO()
+  public static void and()
   {
-    AppMethodBeat.i(212024);
-    Iterator localIterator = ((Map)gMK).entrySet().iterator();
+    AppMethodBeat.i(215643);
+    Iterator localIterator = ((Map)gPt).entrySet().iterator();
     while (localIterator.hasNext()) {
       ((a)((Map.Entry)localIterator.next()).getValue()).invoke();
     }
-    AppMethodBeat.o(212024);
+    AppMethodBeat.o(215643);
   }
   
-  public static void amP()
+  public static void ane()
   {
-    AppMethodBeat.i(212027);
-    Iterator localIterator = ((Map)gMJ).entrySet().iterator();
+    AppMethodBeat.i(215646);
+    Iterator localIterator = ((Map)gPs).entrySet().iterator();
     while (localIterator.hasNext()) {
       ((a)((Map.Entry)localIterator.next()).getValue()).invoke();
     }
-    AppMethodBeat.o(212027);
+    AppMethodBeat.o(215646);
   }
   
-  public static void amQ()
+  public static void anf()
   {
-    AppMethodBeat.i(212028);
-    Iterator localIterator = ((Map)gMN).entrySet().iterator();
+    AppMethodBeat.i(215647);
+    Iterator localIterator = ((Map)gPw).entrySet().iterator();
     while (localIterator.hasNext()) {
       ((a)((Map.Entry)localIterator.next()).getValue()).invoke();
     }
-    AppMethodBeat.o(212028);
+    AppMethodBeat.o(215647);
   }
   
-  public static void amR()
+  public static void ang()
   {
-    AppMethodBeat.i(212034);
-    gMK.clear();
-    gML.clear();
-    gMM.clear();
-    gMJ.clear();
-    gMN.clear();
-    AppMethodBeat.o(212034);
+    AppMethodBeat.i(215653);
+    gPt.clear();
+    gPu.clear();
+    gPv.clear();
+    gPs.clear();
+    gPw.clear();
+    AppMethodBeat.o(215653);
   }
   
   public static void d(String paramString, a<z> parama)
   {
-    AppMethodBeat.i(212029);
+    AppMethodBeat.i(215648);
     p.h(paramString, "key");
     p.h(parama, "callback");
-    ((Map)gMK).put(paramString, parama);
-    AppMethodBeat.o(212029);
+    ((Map)gPt).put(paramString, parama);
+    AppMethodBeat.o(215648);
   }
   
   public static void e(String paramString, a<z> parama)
   {
-    AppMethodBeat.i(212032);
+    AppMethodBeat.i(215651);
     p.h(paramString, "key");
     p.h(parama, "callback");
-    ((Map)gMJ).put(paramString, parama);
-    AppMethodBeat.o(212032);
+    ((Map)gPs).put(paramString, parama);
+    AppMethodBeat.o(215651);
   }
   
   public static void f(String paramString, a<z> parama)
   {
-    AppMethodBeat.i(212033);
+    AppMethodBeat.i(215652);
     p.h(paramString, "key");
     p.h(parama, "callback");
-    ((Map)gMN).put(paramString, parama);
-    AppMethodBeat.o(212033);
+    ((Map)gPw).put(paramString, parama);
+    AppMethodBeat.o(215652);
   }
   
   public static void g(boolean paramBoolean, String paramString)
   {
-    AppMethodBeat.i(212026);
+    AppMethodBeat.i(215645);
     p.h(paramString, "callingUser");
-    Iterator localIterator = ((Map)gMM).entrySet().iterator();
+    Iterator localIterator = ((Map)gPv).entrySet().iterator();
     while (localIterator.hasNext()) {
       ((m)((Map.Entry)localIterator.next()).getValue()).p(Boolean.valueOf(paramBoolean), paramString);
     }
-    AppMethodBeat.o(212026);
+    AppMethodBeat.o(215645);
   }
   
-  public static void xD(String paramString)
+  public static void ym(String paramString)
   {
-    AppMethodBeat.i(212025);
+    AppMethodBeat.i(215644);
     p.h(paramString, "sysTip");
-    Iterator localIterator = ((Map)gML).entrySet().iterator();
+    Iterator localIterator = ((Map)gPu).entrySet().iterator();
     while (localIterator.hasNext()) {
       ((b)((Map.Entry)localIterator.next()).getValue()).invoke(paramString);
     }
-    AppMethodBeat.o(212025);
+    AppMethodBeat.o(215644);
   }
 }
 

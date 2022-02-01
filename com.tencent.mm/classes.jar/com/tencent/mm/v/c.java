@@ -2,159 +2,129 @@ package com.tencent.mm.v;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.api.h;
-import com.tencent.mm.model.cf;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.api.q;
+import com.tencent.mm.model.ch;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.storage.bn;
+import com.tencent.mm.u.b.a;
+import com.tencent.mm.u.d;
+import com.tencent.mm.u.e;
 import d.g.b.p;
-import d.g.b.y.f;
 import d.l;
-import d.z;
-import java.util.HashMap;
 import java.util.LinkedList;
-import java.util.ListIterator;
-import java.util.Map;
+import java.util.List;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/engine/FunctionMsgQueue;", "", "timer", "Lcom/tencent/mm/engine/FunctionMsgTimer;", "(Lcom/tencent/mm/engine/FunctionMsgTimer;)V", "lock", "mList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/engine/FunctionMsgTask;", "mMap", "Ljava/util/HashMap;", "", "mTimer", "add", "", "task", "isNeedRemove", "", "old", "new", "loop", "Companion", "plugin-functionmsg_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/executor/OpDelayExecutor;", "Lcom/tencent/mm/executor/IOpExecutor;", "()V", "execute", "", "timer", "Lcom/tencent/mm/engine/FunctionMsgTimer;", "dispatcher", "Lcom/tencent/mm/api/IFunctionMsgDispatcher;", "storage", "Lcom/tencent/mm/storage/FunctionMsgStorage;", "newFunctionMsgItem", "Lcom/tencent/mm/api/FunctionMsgItem;", "oldFunctionMsgItem", "newXmlCreateTime", "", "onTaskExpired", "task", "Lcom/tencent/mm/engine/FunctionMsgTask;", "Companion", "plugin-functionmsg_release"})
 public final class c
+  implements b
 {
-  public static final c.a gqJ;
-  private final HashMap<String, d> dz;
-  private final e gqA;
-  private final LinkedList<d> gqI;
-  private final Object lock;
+  public static final c.a gtq;
   
   static
   {
-    AppMethodBeat.i(114119);
-    gqJ = new c.a((byte)0);
-    AppMethodBeat.o(114119);
+    AppMethodBeat.i(114133);
+    gtq = new c.a((byte)0);
+    AppMethodBeat.o(114133);
   }
   
-  public c(e parame)
+  public final void a(e parame, q paramq, bn parambn, h paramh1, h paramh2, long paramLong)
   {
-    AppMethodBeat.i(114118);
-    this.gqI = new LinkedList();
-    this.dz = new HashMap();
-    this.gqA = parame;
-    this.lock = new Object();
-    AppMethodBeat.o(114118);
-  }
-  
-  public final void a(d paramd)
-  {
-    AppMethodBeat.i(114116);
-    p.h(paramd, "task");
-    for (;;)
+    AppMethodBeat.i(114131);
+    p.h(parame, "timer");
+    p.h(paramq, "dispatcher");
+    p.h(parambn, "storage");
+    p.h(paramh1, "newFunctionMsgItem");
+    if (paramh2 != null)
     {
-      synchronized (this.lock)
+      paramh1.bZ(true);
+      paramh2.ba(paramh2.getVersion());
+      paramh2.aZ(paramh1.getVersion());
+      if (0L < paramh1.Lg()) {
+        paramh2.bc(paramh1.Lg() + paramh1.Lf());
+      }
+      for (;;)
       {
-        localObject1 = new y.f();
-        ((y.f)localObject1).MLV = null;
-        if (this.dz.containsKey(paramd.gqK.KS())) {
-          ((y.f)localObject1).MLV = ((d)this.dz.remove(paramd.gqK.KS()));
-        }
-        if ((d)((y.f)localObject1).MLV != null)
-        {
-          Object localObject3 = (d)((y.f)localObject1).MLV;
-          if (101 == paramd.drZ)
-          {
-            i = 1;
-            if (i != 0)
-            {
-              ad.w("FunctionMsg.FunctionMsgQueue", "[add] remove old task[%s]", new Object[] { (d)((y.f)localObject1).MLV });
-              this.gqI.remove((d)((y.f)localObject1).MLV);
-              localObject3 = new Object[2];
-              localObject3[0] = paramd;
-              if ((d)((y.f)localObject1).MLV == null) {
-                break label371;
-              }
-              localObject1 = (d)((y.f)localObject1).MLV;
-              if (localObject1 != null) {
-                break label368;
-              }
-              break label371;
-              localObject3[1] = localObject1;
-              ad.i("FunctionMsg.FunctionMsgQueue", "[add] add task[%s] old Task[%s]", (Object[])localObject3);
-              this.gqI.add(paramd);
-              localObject1 = (Map)this.dz;
-              localObject3 = paramd.gqK.KS();
-              p.g(localObject3, "task.mItem.functionMsgId");
-              ((Map)localObject1).put(localObject3, paramd);
-              paramd = z.MKo;
-              AppMethodBeat.o(114116);
-            }
-          }
-          else
-          {
-            if (1 == paramd.drZ)
-            {
-              if (((d)localObject3).gqK.getVersion() < paramd.gqK.getVersion()) {
-                break label377;
-              }
-              if (paramd.gqK.getVersion() != 0L) {
-                break label382;
-              }
-              break label377;
-            }
-            if (((d)localObject3).gqK.getVersion() >= paramd.gqK.getVersion()) {
-              break label387;
-            }
-            i = 1;
-            continue;
-          }
-        }
-        if ((d)((y.f)localObject1).MLV == null) {
-          continue;
-        }
-        ad.e("FunctionMsg.FunctionMsgQueue", "[add] is wrong! new task:%s old task:%s", new Object[] { paramd, (d)((y.f)localObject1).MLV });
-        AppMethodBeat.o(114116);
+        paramh2.eN(paramh1.Lc());
+        paramq = paramh2.La();
+        p.g(paramq, "oldFunctionMsgItem!!.functionMsgId");
+        bn.a(paramq, paramh2);
+        ae.i("FunctionMsg.OpDelayExecutor", "[OpDelayExecutor], functionMsgId: " + paramh1.La() + ", op delay! update the exist one, new ActionTime:" + paramh1.Lg() + " new delay:" + paramh1.Lf() + " reslt:" + paramh2);
+        parame.a(101, paramh2, (b)this);
+        AppMethodBeat.o(114131);
+        return;
+        paramh2.bc(paramh2.Lg() + paramh1.Lf());
+      }
+    }
+    ae.i("FunctionMsg.OpDelayExecutor", "[OpDelayExecutor] op delay, oldFunctionMsgItem is null! newFunctionMsgItem: ".concat(String.valueOf(paramh1)));
+    AppMethodBeat.o(114131);
+  }
+  
+  public final void a(e parame, final q paramq, final d paramd)
+  {
+    AppMethodBeat.i(114132);
+    p.h(parame, "timer");
+    p.h(paramq, "dispatcher");
+    p.h(paramd, "task");
+    final h localh = paramd.gtk;
+    if (localh.getStatus() == -1)
+    {
+      LinkedList localLinkedList = new LinkedList();
+      localLinkedList.add(localh);
+      new com.tencent.mm.u.b((List)localLinkedList, paramq, (b.a)new b(parame, paramd, localh, paramq)).agI();
+      AppMethodBeat.o(114132);
+      return;
+    }
+    if ((localh.getStatus() == 2) || (localh.getStatus() == -2))
+    {
+      ae.i("FunctionMsg.OpDelayExecutor", "[onTaskExpired] id" + localh.La() + " actionTime:" + localh.Lg());
+      if (localh.Lg() <= ch.aDa() / 1000L)
+      {
+        paramq.a(localh.La(), localh, localh.Ld());
+        AppMethodBeat.o(114132);
         return;
       }
-      label368:
-      continue;
-      label371:
-      Object localObject1 = "@null";
-      continue;
-      label377:
-      int i = 1;
-      continue;
-      label382:
-      i = 0;
-      continue;
-      label387:
-      i = 0;
+      parame.a(localh.KZ(), localh, paramd.gtl);
     }
+    AppMethodBeat.o(114132);
   }
   
-  public final void loop()
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/executor/OpDelayExecutor$onTaskExpired$1", "Lcom/tencent/mm/engine/FunctionMsgFetcher$IFunctionMsgFetcherCallback;", "onFailFetch", "", "item", "Lcom/tencent/mm/api/FunctionMsgItem;", "onSuccessFetch", "plugin-functionmsg_release"})
+  public static final class b
+    implements b.a
   {
-    AppMethodBeat.i(114117);
-    synchronized (this.lock)
+    b(e parame, d paramd, h paramh, q paramq) {}
+    
+    public final void a(h paramh)
     {
-      ad.i("FunctionMsg.FunctionMsgQueue", "[loop] size:" + this.gqI.size());
-      ListIterator localListIterator = this.gqI.listIterator();
-      p.g(localListIterator, "mList.listIterator()");
-      while (localListIterator.hasNext())
+      AppMethodBeat.i(114130);
+      p.h(paramh, "item");
+      ae.i("FunctionMsg.OpDelayExecutor", "[onSuccessFetch] item:".concat(String.valueOf(paramh)));
+      if (paramh.Lg() > ch.aDa() / 1000L)
       {
-        Object localObject3 = localListIterator.next();
-        p.g(localObject3, "iterator.next()");
-        localObject3 = (d)localObject3;
-        if (((d)localObject3).gqK.KY() <= cf.aCK() / 1000L)
-        {
-          localListIterator.remove();
-          this.dz.remove(((d)localObject3).gqK.KS());
-          e locale = this.gqA;
-          p.h(localObject3, "task");
-          locale.gqM.a(((d)localObject3).drZ, (d)localObject3);
-        }
+        this.gtr.a(101, paramh, paramd.gtl);
+        AppMethodBeat.o(114130);
+        return;
       }
+      ae.i("FunctionMsg.OpDelayExecutor", "[onTaskExpired] to show! id" + localh.La());
+      paramq.a(paramh.La(), paramh, paramh.Ld());
+      AppMethodBeat.o(114130);
     }
-    z localz = z.MKo;
-    AppMethodBeat.o(114117);
+    
+    public final void b(h paramh)
+    {
+      AppMethodBeat.i(114129);
+      p.h(paramh, "item");
+      ae.w("FunctionMsg.OpDelayExecutor", "[onFailFetch] item:".concat(String.valueOf(paramh)));
+      if (paramh.getStatus() == -1) {
+        this.gtr.a(-1, paramh, paramd.gtl);
+      }
+      AppMethodBeat.o(114129);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.v.c
  * JD-Core Version:    0.7.0.1
  */

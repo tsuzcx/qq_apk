@@ -3,7 +3,7 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class FinderJsApiMediaThumbInfo
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
   public int thumbHeight;
   public String thumbPath;
@@ -36,9 +36,9 @@ public class FinderJsApiMediaThumbInfo
     if (paramInt == 2)
     {
       paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gxE();
+          paramVarArgs.gCg();
         }
       }
       AppMethodBeat.o(169001);
@@ -54,15 +54,15 @@ public class FinderJsApiMediaThumbInfo
         AppMethodBeat.o(169001);
         return -1;
       case 1: 
-        localFinderJsApiMediaThumbInfo.thumbWidth = locala.NPN.zc();
+        localFinderJsApiMediaThumbInfo.thumbWidth = locala.OmT.zc();
         AppMethodBeat.o(169001);
         return 0;
       case 2: 
-        localFinderJsApiMediaThumbInfo.thumbHeight = locala.NPN.zc();
+        localFinderJsApiMediaThumbInfo.thumbHeight = locala.OmT.zc();
         AppMethodBeat.o(169001);
         return 0;
       }
-      localFinderJsApiMediaThumbInfo.thumbPath = locala.NPN.readString();
+      localFinderJsApiMediaThumbInfo.thumbPath = locala.OmT.readString();
       AppMethodBeat.o(169001);
       return 0;
     }

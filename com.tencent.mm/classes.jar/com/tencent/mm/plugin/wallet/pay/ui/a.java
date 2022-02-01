@@ -6,35 +6,35 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.in;
-import com.tencent.mm.g.a.in.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.wallet_core.ui.g;
+import com.tencent.mm.g.a.io;
+import com.tencent.mm.g.a.io.b;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.wallet_core.ui.h;
 
 public final class a
 {
-  a CID = null;
+  a Daj = null;
   private Context mContext;
   private Dialog tipDialog = null;
   
   public a(Context paramContext, a parama)
   {
     this.mContext = paramContext;
-    this.CID = parama;
+    this.Daj = parama;
   }
   
   public final void b(boolean paramBoolean, int paramInt, String paramString)
   {
     AppMethodBeat.i(69303);
-    final in localin = new in();
-    localin.dvb = null;
-    localin.dva.dvc = paramBoolean;
+    final io localio = new io();
+    localio.dwg = null;
+    localio.dwf.dwh = paramBoolean;
     if ((paramBoolean) && ((this.tipDialog == null) || ((this.tipDialog != null) && (!this.tipDialog.isShowing()))))
     {
       if (this.tipDialog != null) {
         this.tipDialog.dismiss();
       }
-      this.tipDialog = g.a(this.mContext, false, new DialogInterface.OnCancelListener()
+      this.tipDialog = h.a(this.mContext, false, new DialogInterface.OnCancelListener()
       {
         public final void onCancel(DialogInterface paramAnonymousDialogInterface)
         {
@@ -44,43 +44,43 @@ public final class a
         }
       });
     }
-    localin.dva.dvd = paramInt;
-    localin.dva.dve = paramString;
-    localin.callback = new Runnable()
+    localio.dwf.dwi = paramInt;
+    localio.dwf.dwj = paramString;
+    localio.callback = new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(69301);
-        ad.i("MicroMsg.RegenFingerPrintRsaKey", "GenFingerPrintRsaKeyEvent callback");
-        in.b localb = localin.dvb;
-        if ((localb != null) && (localb.dpX))
+        ae.i("MicroMsg.RegenFingerPrintRsaKey", "GenFingerPrintRsaKeyEvent callback");
+        io.b localb = localio.dwg;
+        if ((localb != null) && (localb.drc))
         {
-          ad.i("MicroMsg.RegenFingerPrintRsaKey", "GenFingerPrintRsaKeyEvent callback, result.isSuccess is true");
+          ae.i("MicroMsg.RegenFingerPrintRsaKey", "GenFingerPrintRsaKeyEvent callback, result.isSuccess is true");
           a.this.closeTipDialog();
-          if (a.this.CID != null)
+          if (a.this.Daj != null)
           {
-            a.this.CID.d(localb.dpX, localb.dvf, localb.dvg);
+            a.this.Daj.d(localb.drc, localb.dwk, localb.dwl);
             AppMethodBeat.o(69301);
           }
         }
         else
         {
-          if ((localb != null) && (!localb.dpX))
+          if ((localb != null) && (!localb.drc))
           {
             a.this.closeTipDialog();
-            if (a.this.CID != null) {
-              a.this.CID.d(localb.dpX, localb.dvf, localb.dvg);
+            if (a.this.Daj != null) {
+              a.this.Daj.d(localb.drc, localb.dwk, localb.dwl);
             }
-            ad.e("MicroMsg.RegenFingerPrintRsaKey", "GenFingerPrintRsaKeyEvent callback, result.isSuccess is false");
+            ae.e("MicroMsg.RegenFingerPrintRsaKey", "GenFingerPrintRsaKeyEvent callback, result.isSuccess is false");
             AppMethodBeat.o(69301);
             return;
           }
-          ad.i("MicroMsg.RegenFingerPrintRsaKey", "GenFingerPrintRsaKeyEvent callback, result == null");
+          ae.i("MicroMsg.RegenFingerPrintRsaKey", "GenFingerPrintRsaKeyEvent callback, result == null");
         }
         AppMethodBeat.o(69301);
       }
     };
-    com.tencent.mm.sdk.b.a.IbL.a(localin, Looper.getMainLooper());
+    com.tencent.mm.sdk.b.a.IvT.a(localio, Looper.getMainLooper());
     AppMethodBeat.o(69303);
   }
   
@@ -97,7 +97,7 @@ public final class a
   
   public final void release()
   {
-    this.CID = null;
+    this.Daj = null;
     this.mContext = null;
   }
   
@@ -108,7 +108,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.pay.ui.a
  * JD-Core Version:    0.7.0.1
  */

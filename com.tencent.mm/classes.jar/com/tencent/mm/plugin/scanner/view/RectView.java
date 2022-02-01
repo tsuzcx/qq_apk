@@ -16,26 +16,26 @@ public class RectView
 {
   private Paint paint;
   private Rect rect;
-  int yAN;
-  int yAO;
-  private Paint ysE;
-  private Bitmap ysf;
-  private Bitmap ysg;
-  private Bitmap ysh;
-  private Bitmap ysi;
+  private Paint yIE;
+  private Bitmap yIf;
+  private Bitmap yIg;
+  private Bitmap yIh;
+  private Bitmap yIi;
+  int yQN;
+  int yQO;
   
   public RectView(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(91085);
-    this.ysf = null;
-    this.ysg = null;
-    this.ysh = null;
-    this.ysi = null;
-    this.yAN = 0;
-    this.yAO = 0;
+    this.yIf = null;
+    this.yIg = null;
+    this.yIh = null;
+    this.yIi = null;
+    this.yQN = 0;
+    this.yQO = 0;
     this.paint = new Paint();
-    this.ysE = new Paint();
+    this.yIE = new Paint();
     init();
     AppMethodBeat.o(91085);
   }
@@ -44,14 +44,14 @@ public class RectView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(91086);
-    this.ysf = null;
-    this.ysg = null;
-    this.ysh = null;
-    this.ysi = null;
-    this.yAN = 0;
-    this.yAO = 0;
+    this.yIf = null;
+    this.yIg = null;
+    this.yIh = null;
+    this.yIi = null;
+    this.yQN = 0;
+    this.yQO = 0;
     this.paint = new Paint();
-    this.ysE = new Paint();
+    this.yIE = new Paint();
     init();
     AppMethodBeat.o(91086);
   }
@@ -60,14 +60,14 @@ public class RectView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(91087);
-    this.ysf = null;
-    this.ysg = null;
-    this.ysh = null;
-    this.ysi = null;
-    this.yAN = 0;
-    this.yAO = 0;
+    this.yIf = null;
+    this.yIg = null;
+    this.yIh = null;
+    this.yIi = null;
+    this.yQN = 0;
+    this.yQO = 0;
     this.paint = new Paint();
-    this.ysE = new Paint();
+    this.yIE = new Paint();
     init();
     AppMethodBeat.o(91087);
   }
@@ -75,14 +75,14 @@ public class RectView
   private void init()
   {
     AppMethodBeat.i(91088);
-    this.ysf = BitmapFactory.decodeResource(getResources(), 2131233910);
-    this.ysg = BitmapFactory.decodeResource(getResources(), 2131233911);
-    this.ysh = BitmapFactory.decodeResource(getResources(), 2131233912);
-    this.ysi = BitmapFactory.decodeResource(getResources(), 2131233913);
-    this.yAN = this.ysf.getWidth();
-    this.yAO = this.ysf.getHeight();
+    this.yIf = BitmapFactory.decodeResource(getResources(), 2131233910);
+    this.yIg = BitmapFactory.decodeResource(getResources(), 2131233911);
+    this.yIh = BitmapFactory.decodeResource(getResources(), 2131233912);
+    this.yIi = BitmapFactory.decodeResource(getResources(), 2131233913);
+    this.yQN = this.yIf.getWidth();
+    this.yQO = this.yIf.getHeight();
     this.paint.setAntiAlias(true);
-    this.ysE.setAntiAlias(true);
+    this.yIE.setAntiAlias(true);
     AppMethodBeat.o(91088);
   }
   
@@ -102,10 +102,10 @@ public class RectView
     paramCanvas.clipRect(this.rect, Region.Op.DIFFERENCE);
     paramCanvas.drawRect(this.rect, this.paint);
     paramCanvas.restore();
-    paramCanvas.drawBitmap(this.ysf, this.rect.left, this.rect.top, this.ysE);
-    paramCanvas.drawBitmap(this.ysg, this.rect.right - this.yAN, this.rect.top, this.ysE);
-    paramCanvas.drawBitmap(this.ysh, this.rect.left, this.rect.bottom - this.yAO, this.ysE);
-    paramCanvas.drawBitmap(this.ysi, this.rect.right - this.yAN, this.rect.bottom - this.yAO, this.ysE);
+    paramCanvas.drawBitmap(this.yIf, this.rect.left, this.rect.top, this.yIE);
+    paramCanvas.drawBitmap(this.yIg, this.rect.right - this.yQN, this.rect.top, this.yIE);
+    paramCanvas.drawBitmap(this.yIh, this.rect.left, this.rect.bottom - this.yQO, this.yIE);
+    paramCanvas.drawBitmap(this.yIi, this.rect.right - this.yQN, this.rect.bottom - this.yQO, this.yIE);
     AppMethodBeat.o(91090);
   }
   

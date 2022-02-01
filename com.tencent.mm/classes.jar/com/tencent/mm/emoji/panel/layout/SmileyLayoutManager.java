@@ -10,17 +10,17 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/emoji/panel/layout/SmileyLayoutManager;", "Landroid/support/v7/widget/GridLayoutManager;", "context", "Landroid/content/Context;", "spanCount", "", "(Landroid/content/Context;I)V", "hideRect", "Landroid/graphics/Rect;", "onLayoutChildren", "", "recycler", "Landroid/support/v7/widget/RecyclerView$Recycler;", "Landroid/support/v7/widget/RecyclerView;", "state", "Landroid/support/v7/widget/RecyclerView$State;", "scrollHorizontallyBy", "dx", "scrollVerticallyBy", "dy", "updateChildren", "updateHideArea", "rect", "plugin-emojisdk_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/emoji/panel/layout/SmileyLayoutManager;", "Landroid/support/v7/widget/GridLayoutManager;", "context", "Landroid/content/Context;", "spanCount", "", "(Landroid/content/Context;I)V", "hideRect", "Landroid/graphics/Rect;", "onLayoutChildren", "", "recycler", "Landroid/support/v7/widget/RecyclerView$Recycler;", "Landroid/support/v7/widget/RecyclerView;", "state", "Landroid/support/v7/widget/RecyclerView$State;", "scrollHorizontallyBy", "dx", "scrollVerticallyBy", "dy", "updateChildren", "updateHideArea", "rect", "plugin-emojisdk_release"})
 public final class SmileyLayoutManager
   extends GridLayoutManager
 {
-  public final Rect gmZ;
+  public final Rect gpv;
   
   public SmileyLayoutManager(Context paramContext, int paramInt)
   {
     super(paramInt);
     AppMethodBeat.i(105722);
-    this.gmZ = new Rect();
+    this.gpv = new Rect();
     AppMethodBeat.o(105722);
   }
   
@@ -28,15 +28,15 @@ public final class SmileyLayoutManager
   {
     AppMethodBeat.i(105719);
     paramInt = super.a(paramInt, paramo, paramt);
-    afU();
+    agi();
     AppMethodBeat.o(105719);
     return paramInt;
   }
   
-  public final void afU()
+  public final void agi()
   {
     AppMethodBeat.i(105721);
-    if (this.gmZ.isEmpty())
+    if (this.gpv.isEmpty())
     {
       AppMethodBeat.o(105721);
       return;
@@ -67,10 +67,10 @@ public final class SmileyLayoutManager
           c(localView, localRect);
           int m = bI(localView);
           int k = bJ(localView);
-          if ((m > this.gmZ.left) && (k > this.gmZ.top)) {
+          if ((m > this.gpv.left) && (k > this.gpv.top)) {
             m = bH(localView);
           }
-          for (float f = 1.0F - (k - this.gmZ.top) / ((k - m) * 0.4F);; f = 1.0F)
+          for (float f = 1.0F - (k - this.gpv.top) / ((k - m) * 0.4F);; f = 1.0F)
           {
             localView.setAlpha(f);
             if (f <= 0.7D) {
@@ -91,7 +91,7 @@ public final class SmileyLayoutManager
   {
     AppMethodBeat.i(105720);
     paramInt = super.b(paramInt, paramo, paramt);
-    afU();
+    agi();
     AppMethodBeat.o(105720);
     return paramInt;
   }
@@ -100,13 +100,13 @@ public final class SmileyLayoutManager
   {
     AppMethodBeat.i(105718);
     super.c(paramo, paramt);
-    afU();
+    agi();
     AppMethodBeat.o(105718);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.emoji.panel.layout.SmileyLayoutManager
  * JD-Core Version:    0.7.0.1
  */

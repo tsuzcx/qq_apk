@@ -1,14 +1,14 @@
 package com.tencent.mm.plugin.appbrand.launching.report;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.b.a.it;
-import com.tencent.mm.g.b.a.it.a;
+import com.tencent.mm.g.b.a.iv;
+import com.tencent.mm.g.b.a.iv.a;
 import com.tencent.mm.plugin.appbrand.config.WxaAttributes.WxaPluginCodeInfo;
 import com.tencent.mm.plugin.appbrand.report.q;
 import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -17,18 +17,18 @@ public final class c
 {
   private int aDD;
   private String appId;
-  private int dkg;
-  private String lEv;
-  private int lNH;
-  public boolean lNI;
-  private List<Integer> lNJ;
+  private int dli;
+  private String lIU;
+  private int lSi;
+  public boolean lSj;
+  private List<Integer> lSk;
   private String provider;
   private int scene;
   
   public c(String paramString1, int paramInt1, int paramInt2, String paramString2, int paramInt3, List<WxaAttributes.WxaPluginCodeInfo> paramList)
   {
     AppMethodBeat.i(47465);
-    this.lNJ = new ArrayList();
+    this.lSk = new ArrayList();
     this.appId = paramString1;
     this.aDD = paramInt1;
     switch (paramInt2)
@@ -39,73 +39,73 @@ public final class c
       if ((paramList != null) && (paramList.size() > 0))
       {
         this.provider = ((WxaAttributes.WxaPluginCodeInfo)paramList.get(0)).provider;
-        this.lNH = ((WxaAttributes.WxaPluginCodeInfo)paramList.get(0)).version;
+        this.lSi = ((WxaAttributes.WxaPluginCodeInfo)paramList.get(0)).version;
       }
-      this.lEv = paramString2;
+      this.lIU = paramString2;
       this.scene = paramInt3;
-      ad.i("MicroMsg.LaunchPrepareSplitPluginCodeReporter", "appid:%s,appVersion:%s,appState:%s,instanceId:%s,scene:%d", new Object[] { paramString1, Integer.valueOf(paramInt1), Integer.valueOf(this.dkg), paramString2, Integer.valueOf(paramInt3) });
+      ae.i("MicroMsg.LaunchPrepareSplitPluginCodeReporter", "appid:%s,appVersion:%s,appState:%s,instanceId:%s,scene:%d", new Object[] { paramString1, Integer.valueOf(paramInt1), Integer.valueOf(this.dli), paramString2, Integer.valueOf(paramInt3) });
       AppMethodBeat.o(47465);
       return;
-      this.dkg = 1;
+      this.dli = 1;
       continue;
-      this.dkg = 2;
+      this.dli = 2;
       continue;
-      this.dkg = 3;
+      this.dli = 3;
     }
   }
   
-  public static void up(int paramInt)
+  public static void uv(int paramInt)
   {
     AppMethodBeat.i(47466);
-    ad.i("MicroMsg.LaunchPrepareSplitPluginCodeReporter", "idkeyReport id:%d,key:%d", new Object[] { Integer.valueOf(1027), Integer.valueOf(paramInt) });
-    g.yhR.idkeyStat(1027L, paramInt, 1L, false);
+    ae.i("MicroMsg.LaunchPrepareSplitPluginCodeReporter", "idkeyReport id:%d,key:%d", new Object[] { Integer.valueOf(1027), Integer.valueOf(paramInt) });
+    g.yxI.idkeyStat(1027L, paramInt, 1L, false);
     AppMethodBeat.o(47466);
   }
   
   public final void report()
   {
     AppMethodBeat.i(47468);
-    if (this.lNI)
+    if (this.lSj)
     {
-      if ((this.lNJ != null) && (this.lNJ.size() > 0))
+      if ((this.lSk != null) && (this.lSk.size() > 0))
       {
-        Iterator localIterator = this.lNJ.iterator();
+        Iterator localIterator = this.lSk.iterator();
         while (localIterator.hasNext())
         {
           int i = ((Integer)localIterator.next()).intValue();
-          it localit = new it();
-          localit.rp(this.appId);
-          localit.eru = this.aDD;
-          localit.exN = it.a.jy(this.dkg);
-          localit.esT = 1004L;
-          localit.rq(this.provider);
-          localit.exP = this.lNH;
-          localit.exQ = i;
-          localit.rr(q.dK(aj.getContext()));
-          localit.rs(this.lEv);
-          localit.dVd = this.scene;
-          localit.aLk();
-          ad.i("MicroMsg.LaunchPrepareSplitPluginCodeReporter", "kvReportStatis report:%s", new Object[] { localit.RE() });
+          iv localiv = new iv();
+          localiv.rK(this.appId);
+          localiv.etb = this.aDD;
+          localiv.ezx = iv.a.jA(this.dli);
+          localiv.euA = 1004L;
+          localiv.rL(this.provider);
+          localiv.ezz = this.lSi;
+          localiv.ezA = i;
+          localiv.rM(q.dO(ak.getContext()));
+          localiv.rN(this.lIU);
+          localiv.dWt = this.scene;
+          localiv.aLH();
+          ae.i("MicroMsg.LaunchPrepareSplitPluginCodeReporter", "kvReportStatis report:%s", new Object[] { localiv.RD() });
         }
         AppMethodBeat.o(47468);
       }
     }
     else {
-      ad.i("MicroMsg.LaunchPrepareSplitPluginCodeReporter", "hot startUp!");
+      ae.i("MicroMsg.LaunchPrepareSplitPluginCodeReporter", "hot startUp!");
     }
     AppMethodBeat.o(47468);
   }
   
-  public final void uq(int paramInt)
+  public final void uw(int paramInt)
   {
     AppMethodBeat.i(47467);
-    if ((bt.isNullOrNil(this.appId)) || (bt.isNullOrNil(this.provider)))
+    if ((bu.isNullOrNil(this.appId)) || (bu.isNullOrNil(this.provider)))
     {
-      ad.i("MicroMsg.LaunchPrepareSplitPluginCodeReporter", "kvReportStatis appId or provider null!");
+      ae.i("MicroMsg.LaunchPrepareSplitPluginCodeReporter", "kvReportStatis appId or provider null!");
       AppMethodBeat.o(47467);
       return;
     }
-    this.lNJ.add(Integer.valueOf(paramInt));
+    this.lSk.add(Integer.valueOf(paramInt));
     AppMethodBeat.o(47467);
   }
 }

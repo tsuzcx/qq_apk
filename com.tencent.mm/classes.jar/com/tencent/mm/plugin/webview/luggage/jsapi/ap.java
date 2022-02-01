@@ -6,7 +6,7 @@ import com.tencent.luggage.d.s;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.downloader.model.d;
 import com.tencent.mm.plugin.downloader.model.f;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -23,7 +23,7 @@ public class ap
       l = paramContext.optLong("download_id");
       if (l <= 0L)
       {
-        ad.e("MicroMsg.JsApiPauseDownloadTask", "fail, invalid downloadId = ".concat(String.valueOf(l)));
+        ae.e("MicroMsg.JsApiPauseDownloadTask", "fail, invalid downloadId = ".concat(String.valueOf(l)));
         parama.f("invalid_downloadid", null);
         AppMethodBeat.o(78593);
         return;
@@ -31,12 +31,12 @@ public class ap
     }
     catch (JSONException paramContext)
     {
-      ad.e("MicroMsg.JsApiPauseDownloadTask", "paras data error: " + paramContext.getMessage());
+      ae.e("MicroMsg.JsApiPauseDownloadTask", "paras data error: " + paramContext.getMessage());
       parama.f("fail", null);
       AppMethodBeat.o(78593);
       return;
     }
-    paramString = d.ua(l);
+    paramString = d.ur(l);
     if (paramString == null)
     {
       parama.f(null, null);
@@ -53,7 +53,7 @@ public class ap
     paramString.field_ssid = m;
     paramString.field_downloadInWifi = false;
     d.e(paramString);
-    if (f.ccl().tT(l))
+    if (f.cdA().uk(l))
     {
       parama.f(null, null);
       AppMethodBeat.o(78593);
@@ -65,7 +65,7 @@ public class ap
   
   public final void b(b<s>.a paramb) {}
   
-  public final int ccO()
+  public final int ced()
   {
     return 1;
   }

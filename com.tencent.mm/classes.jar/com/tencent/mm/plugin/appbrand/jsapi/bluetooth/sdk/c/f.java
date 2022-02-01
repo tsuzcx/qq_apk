@@ -4,13 +4,13 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class f
 {
-  public static String sS(int paramInt)
+  public static String sV(int paramInt)
   {
     AppMethodBeat.i(144593);
     switch (paramInt)
     {
     default: 
-      String str = sT(paramInt);
+      String str = sW(paramInt);
       AppMethodBeat.o(144593);
       return str;
     case 1: 
@@ -39,7 +39,7 @@ public final class f
     return "GATT ERROR";
   }
   
-  private static String sT(int paramInt)
+  private static String sW(int paramInt)
   {
     AppMethodBeat.i(144594);
     switch (paramInt)

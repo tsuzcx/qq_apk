@@ -2,26 +2,26 @@ package com.tencent.mm.chatroom.ui;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.ak;
-import com.tencent.mm.model.as.b.a;
+import com.tencent.mm.model.al;
+import com.tencent.mm.model.au.b.a;
 import com.tencent.mm.plugin.chatroom.a.c;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.ar;
 
 final class ChatroomInfoUI$20
-  implements as.b.a
+  implements au.b.a
 {
   ChatroomInfoUI$20(ChatroomInfoUI paramChatroomInfoUI) {}
   
   public final void p(final String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(12534);
-    if ((paramBoolean) && (ChatroomInfoUI.b(this.fNj).equals(paramString))) {
-      g.ajF().ay(new Runnable()
+    if ((paramBoolean) && (ChatroomInfoUI.b(this.fPr).equals(paramString))) {
+      g.ajU().aw(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(12532);
-          ((c)g.ab(c.class)).azz().y(paramString, System.currentTimeMillis());
+          ((c)g.ab(c.class)).azP().y(paramString, System.currentTimeMillis());
           AppMethodBeat.o(12532);
         }
         

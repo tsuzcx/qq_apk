@@ -10,22 +10,22 @@ import java.util.List;
 public final class b
   extends s
 {
-  public View.OnClickListener Arb = null;
+  public View.OnClickListener AIp = null;
   
   public b(MMBaseSelectContactUI paramMMBaseSelectContactUI)
   {
     super(paramMMBaseSelectContactUI, null, true, 0);
   }
   
-  public final com.tencent.mm.ui.contact.a.a Rx(int paramInt)
+  public final com.tencent.mm.ui.contact.a.a Se(int paramInt)
   {
     AppMethodBeat.i(99812);
-    int i = this.Kki;
+    int i = this.KGC;
     com.tencent.mm.plugin.sns.ui.a.a.a locala = new com.tencent.mm.plugin.sns.ui.a.a.a(paramInt);
     locala.query = this.query;
-    locala.Arb = this.Arb;
-    locala.kjY = ((m)this.txG.get(paramInt - i - 1));
-    locala.KmP = dQK();
+    locala.AIp = this.AIp;
+    locala.kno = ((m)this.tIx.get(paramInt - i - 1));
+    locala.KJj = dUh();
     AppMethodBeat.o(99812);
     return locala;
   }

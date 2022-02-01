@@ -1,13 +1,13 @@
 package com.tencent.mm.plugin.finder.feed.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.model.m;
+import com.tencent.mm.plugin.finder.model.n;
 import com.tencent.mm.plugin.finder.storage.ab;
 import com.tencent.mm.plugin.finder.storage.data.e;
 import com.tencent.mm.plugin.finder.storage.data.e.b;
 import com.tencent.mm.protocal.protobuf.FinderCommentInfo;
-import com.tencent.mm.protocal.protobuf.alh;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.alr;
+import com.tencent.mm.sdk.platformtools.ae;
 import d.a.j;
 import d.b.a;
 import d.g.b.p;
@@ -20,20 +20,20 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/feed/model/FinderCommentLoader;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "curFeedId", "", "curRefCommentId", "data", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/finder/model/FinderFeedComment;", "Lkotlin/collections/ArrayList;", "addItem", "", "item", "sort", "", "addItems", "", "itemList", "", "toHead", "toTail", "addLevel2Items", "Lkotlin/Pair;", "rootComment", "down", "clearData", "delItemById", "commentId", "delItemByLocalId", "localCommentId", "filterComment", "", "get", "index", "getData", "getPositionToInsertLevel2Comment", "rootCommentId", "getSize", "hasLevel2Item", "root", "hasLevel2ItemAfter", "level2Comment", "hasLevel2ItemBefore", "onAttach", "Lcom/tencent/mm/plugin/finder/storage/data/FinderCommentCache$Extra;", "feedId", "refCommentId", "useCache", "onDetach", "pos", "lastBuffer", "Lcom/tencent/mm/protobuf/ByteString;", "upContinue", "downContinue", "hasExpand", "sameComment", "comment1", "comment2", "sameParent", "updateItem", "Lcom/tencent/mm/plugin/finder/storage/LocalFinderCommentObject;", "Companion", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/feed/model/FinderCommentLoader;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "curFeedId", "", "curRefCommentId", "data", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/finder/model/FinderFeedComment;", "Lkotlin/collections/ArrayList;", "addItem", "", "item", "sort", "", "addItems", "", "itemList", "", "toHead", "toTail", "addLevel2Items", "Lkotlin/Pair;", "rootComment", "down", "clearData", "delItemById", "commentId", "delItemByLocalId", "localCommentId", "filterComment", "", "get", "index", "getData", "getPositionToInsertLevel2Comment", "rootCommentId", "getSize", "hasLevel2Item", "root", "hasLevel2ItemAfter", "level2Comment", "hasLevel2ItemBefore", "onAttach", "Lcom/tencent/mm/plugin/finder/storage/data/FinderCommentCache$Extra;", "feedId", "refCommentId", "useCache", "onDetach", "pos", "lastBuffer", "Lcom/tencent/mm/protobuf/ByteString;", "upContinue", "downContinue", "hasExpand", "sameComment", "comment1", "comment2", "sameParent", "updateItem", "Lcom/tencent/mm/plugin/finder/storage/LocalFinderCommentObject;", "Companion", "plugin-finder_release"})
 public final class c
 {
-  public static final boolean sbf = false;
-  public static final a sbg;
+  public static final boolean sjU = false;
+  public static final a sjV;
   public final String TAG;
-  public final ArrayList<m> data;
-  public long sbd;
-  public long sbe;
+  public final ArrayList<n> data;
+  public long sjS;
+  public long sjT;
   
   static
   {
     AppMethodBeat.i(166031);
-    sbg = new a((byte)0);
+    sjV = new a((byte)0);
     AppMethodBeat.o(166031);
   }
   
@@ -45,12 +45,12 @@ public final class c
     AppMethodBeat.o(166030);
   }
   
-  public static boolean a(m paramm1, m paramm2)
+  public static boolean a(n paramn1, n paramn2)
   {
     AppMethodBeat.i(178290);
-    p.h(paramm1, "comment1");
-    p.h(paramm2, "comment2");
-    if ((paramm1.skh.field_actionInfo.rID != 0L) && (paramm1.skh.field_actionInfo.rID == paramm2.skh.field_actionInfo.rID))
+    p.h(paramn1, "comment1");
+    p.h(paramn2, "comment2");
+    if ((paramn1.ste.field_actionInfo.rQN != 0L) && (paramn1.ste.field_actionInfo.rQN == paramn2.ste.field_actionInfo.rQN))
     {
       AppMethodBeat.o(178290);
       return true;
@@ -59,12 +59,12 @@ public final class c
     return false;
   }
   
-  public static boolean b(m paramm1, m paramm2)
+  public static boolean b(n paramn1, n paramn2)
   {
     AppMethodBeat.i(178291);
-    p.h(paramm1, "comment1");
-    p.h(paramm2, "comment2");
-    if (paramm1.skh.field_actionInfo.Gla.commentId == paramm2.skh.field_actionInfo.Gla.commentId)
+    p.h(paramn1, "comment1");
+    p.h(paramn2, "comment2");
+    if (paramn1.ste.cLl().commentId == paramn2.ste.cLl().commentId)
     {
       AppMethodBeat.o(178291);
       return true;
@@ -73,27 +73,27 @@ public final class c
     return false;
   }
   
-  public final m EB(int paramInt)
+  public final n EO(int paramInt)
   {
     AppMethodBeat.i(166026);
     Object localObject = this.data.get(paramInt);
     p.g(localObject, "data[index]");
-    localObject = (m)localObject;
+    localObject = (n)localObject;
     AppMethodBeat.o(166026);
     return localObject;
   }
   
-  public final void a(List<? extends m> paramList, boolean paramBoolean1, boolean paramBoolean2)
+  public final void a(List<? extends n> paramList, boolean paramBoolean1, boolean paramBoolean2)
   {
     AppMethodBeat.i(166028);
     p.h(paramList, "itemList");
-    List localList = dD(paramList);
+    List localList = dG(paramList);
     if (localList.size() > 1) {
       j.a(localList, (Comparator)new b());
     }
     int i = paramList.size();
     int j = localList.size();
-    ad.i(this.TAG, "reduce size: " + (i - j) + ", data size: " + this.data.size());
+    ae.i(this.TAG, "reduce size: " + (i - j) + ", data size: " + this.data.size());
     if (paramBoolean1)
     {
       this.data.addAll(0, (Collection)localList);
@@ -106,25 +106,25 @@ public final class c
     AppMethodBeat.o(166028);
   }
   
-  public final int b(m paramm)
+  public final int b(n paramn)
   {
     int k = 0;
     AppMethodBeat.i(178286);
-    p.h(paramm, "item");
-    ad.i(this.TAG, "addItem " + paramm.skh.field_actionInfo.Gla.commentId + ", sort:true");
+    p.h(paramn, "item");
+    ae.i(this.TAG, "addItem " + paramn.ste.cLl().commentId + ", sort:true");
     Iterator localIterator;
     int j;
-    if (paramm.skh.field_actionInfo.Gla.commentId == 0L)
+    if (paramn.ste.cLl().commentId == 0L)
     {
       localIterator = ((List)this.data).iterator();
       i = 0;
       if (localIterator.hasNext()) {
-        if (((m)localIterator.next()).skh.field_localCommentId == paramm.skh.field_localCommentId)
+        if (((n)localIterator.next()).ste.field_localCommentId == paramn.ste.field_localCommentId)
         {
           j = 1;
-          label127:
+          label121:
           if (j == 0) {
-            break label157;
+            break label151;
           }
         }
       }
@@ -132,14 +132,14 @@ public final class c
     for (;;)
     {
       if (i < 0) {
-        break label260;
+        break label248;
       }
-      this.data.set(i, paramm);
+      this.data.set(i, paramn);
       AppMethodBeat.o(178286);
       return i;
       j = 0;
-      break label127;
-      label157:
+      break label121;
+      label151:
       i += 1;
       break;
       i = -1;
@@ -149,52 +149,51 @@ public final class c
       for (;;)
       {
         if (!localIterator.hasNext()) {
-          break label255;
+          break label243;
         }
-        if (((m)localIterator.next()).skh.field_actionInfo.Gla.commentId == paramm.skh.field_actionInfo.Gla.commentId) {}
+        if (((n)localIterator.next()).ste.cLl().commentId == paramn.ste.cLl().commentId) {}
         for (j = 1;; j = 0)
         {
           if (j == 0) {
-            break label248;
+            break label236;
           }
           break;
         }
-        label248:
+        label236:
         i += 1;
       }
-      label255:
+      label243:
       i = -1;
     }
-    label260:
-    if (paramm.skh.field_actionInfo.rID == 0L)
+    label248:
+    if (paramn.ste.field_actionInfo.rQN == 0L)
     {
       this.data.size();
       i = k;
-      if (paramm.skh.field_state != -1)
+      if (paramn.ste.field_state != -1)
       {
-        if (paramm.skh.field_actionInfo.Gla.displayid == 0L) {
+        if (paramn.ste.cLl().displayid == 0L) {
           i = k;
         }
       }
       else
       {
-        this.data.add(i, paramm);
+        this.data.add(i, paramn);
         AppMethodBeat.o(178286);
         return i;
       }
       localIterator = ((List)this.data).iterator();
       i = 0;
-      label350:
       if (localIterator.hasNext()) {
-        if (((m)localIterator.next()).skh.field_actionInfo.Gla.displayid <= paramm.skh.field_actionInfo.Gla.displayid)
+        if (((n)localIterator.next()).ste.cLl().displayid <= paramn.ste.cLl().displayid)
         {
           j = 1;
+          label380:
           if (j == 0) {
-            break label429;
+            break label408;
           }
         }
       }
-      label401:
       for (j = i;; j = -1)
       {
         i = j;
@@ -204,14 +203,15 @@ public final class c
         i = this.data.size();
         break;
         j = 0;
-        break label401;
-        label429:
+        break label380;
         i += 1;
-        break label350;
+        break label335;
       }
     }
-    int i = t(paramm.skh.field_actionInfo.rID, true);
-    this.data.add(i, paramm);
+    label335:
+    int i = t(paramn.ste.field_actionInfo.rQN, true);
+    label408:
+    this.data.add(i, paramn);
     AppMethodBeat.o(178286);
     return i;
   }
@@ -219,8 +219,8 @@ public final class c
   public final o<e.b, Boolean> b(long paramLong1, long paramLong2, boolean paramBoolean)
   {
     AppMethodBeat.i(166025);
-    this.sbd = paramLong1;
-    this.sbe = paramLong2;
+    this.sjS = paramLong1;
+    this.sjT = paramLong2;
     if (this.data.size() > 0) {
       this.data.clear();
     }
@@ -228,7 +228,7 @@ public final class c
     boolean bool = false;
     if (paramBoolean)
     {
-      localObject1 = e.szM.P(paramLong1, paramLong2);
+      localObject1 = e.sKJ.O(paramLong1, paramLong2);
       paramBoolean = bool;
       if (localObject1 != null)
       {
@@ -237,13 +237,13 @@ public final class c
         Collection localCollection = (Collection)new ArrayList(j.a((Iterable)localObject2, 10));
         localObject2 = ((Iterable)localObject2).iterator();
         while (((Iterator)localObject2).hasNext()) {
-          localCollection.add(new m((ab)((Iterator)localObject2).next()));
+          localCollection.add(new n((ab)((Iterator)localObject2).next()));
         }
         localArrayList.addAll((Collection)localCollection);
-        ad.i(this.TAG, "onAttach hit datacache, " + ((List)localObject1).size());
+        ae.i(this.TAG, "onAttach hit datacache, " + ((List)localObject1).size());
         paramBoolean = true;
       }
-      localObject1 = e.szM.Q(paramLong1, paramLong2);
+      localObject1 = e.sKJ.P(paramLong1, paramLong2);
     }
     for (;;)
     {
@@ -251,7 +251,7 @@ public final class c
       for (int i = ((e.b)localObject1).pos; i >= 0; i = -1)
       {
         if (localObject1 == null) {
-          p.gfZ();
+          p.gkB();
         }
         localObject1 = new o(localObject1, Boolean.valueOf(paramBoolean));
         AppMethodBeat.o(166025);
@@ -261,7 +261,7 @@ public final class c
       if (paramLong2 == 0L) {
         bool = false;
       }
-      ad.i(this.TAG, "miss cache, upContinue:" + bool + ", downContinue:true");
+      ae.i(this.TAG, "miss cache, upContinue:" + bool + ", downContinue:true");
       localObject1 = new o(new e.b(0, null, bool, true, false), Boolean.valueOf(paramBoolean));
       AppMethodBeat.o(166025);
       return localObject1;
@@ -269,10 +269,10 @@ public final class c
     }
   }
   
-  public final boolean c(m paramm)
+  public final boolean c(n paramn)
   {
     AppMethodBeat.i(178289);
-    p.h(paramm, "level2Comment");
+    p.h(paramn, "level2Comment");
     Iterator localIterator = ((Iterable)this.data).iterator();
     int i = 0;
     int j = -1;
@@ -280,12 +280,12 @@ public final class c
     {
       Object localObject = localIterator.next();
       if (i < 0) {
-        j.gfB();
+        j.gkd();
       }
-      localObject = (m)localObject;
-      if (b((m)localObject, paramm))
+      localObject = (n)localObject;
+      if (b((n)localObject, paramn))
       {
-        ad.d(this.TAG, "hasLevel2ItemAfter cur:" + i + ", before:" + j);
+        ae.d(this.TAG, "hasLevel2ItemAfter cur:" + i + ", before:" + j);
         if (j < 0) {}
         while (i <= j)
         {
@@ -295,7 +295,7 @@ public final class c
         AppMethodBeat.o(178289);
         return true;
       }
-      if (!a((m)localObject, paramm)) {
+      if (!a((n)localObject, paramn)) {
         break label158;
       }
       j = i;
@@ -310,75 +310,75 @@ public final class c
     }
   }
   
-  public final List<m> dD(List<? extends m> paramList)
+  public final List<n> dG(List<? extends n> paramList)
   {
     AppMethodBeat.i(178287);
     List localList = (List)new ArrayList();
     paramList = ((Iterable)paramList).iterator();
     while (paramList.hasNext())
     {
-      m localm = (m)paramList.next();
+      n localn = (n)paramList.next();
       Object localObject = (List)this.data;
       int i = 0;
       localObject = ((List)localObject).iterator();
       label68:
       int j;
+      label114:
       label120:
-      label126:
       int k;
       if (((Iterator)localObject).hasNext()) {
-        if (((m)((Iterator)localObject).next()).skh.field_actionInfo.Gla.commentId == localm.skh.field_actionInfo.Gla.commentId)
+        if (((n)((Iterator)localObject).next()).ste.cLl().commentId == localn.ste.cLl().commentId)
         {
           j = 1;
           if (j == 0) {
-            break label272;
+            break label257;
           }
           j = i;
           localObject = localList.iterator();
           i = 0;
-          label137:
+          label131:
           if (!((Iterator)localObject).hasNext()) {
-            break label297;
+            break label282;
           }
-          if (((m)((Iterator)localObject).next()).skh.field_actionInfo.Gla.commentId != localm.skh.field_actionInfo.Gla.commentId) {
-            break label284;
+          if (((n)((Iterator)localObject).next()).ste.cLl().commentId != localn.ste.cLl().commentId) {
+            break label269;
           }
           k = 1;
-          label190:
+          label178:
           if (k == 0) {
-            break label290;
+            break label275;
           }
         }
       }
       for (;;)
       {
         if (j < 0) {
-          break label302;
+          break label287;
         }
-        this.data.set(j, localm);
-        ad.i(this.TAG, "filter1:" + localm.skh.field_actionInfo.Gla.commentId + ", " + localm.skh.cIN());
+        this.data.set(j, localn);
+        ae.i(this.TAG, "filter1:" + localn.ste.cLl().commentId + ", " + localn.ste.cLq());
         break;
         j = 0;
-        break label120;
-        label272:
+        break label114;
+        label257:
         i += 1;
         break label68;
         j = -1;
-        break label126;
-        label284:
+        break label120;
+        label269:
         k = 0;
-        break label190;
-        label290:
+        break label178;
+        label275:
         i += 1;
-        break label137;
-        label297:
+        break label131;
+        label282:
         i = -1;
       }
-      label302:
+      label287:
       if (i >= 0) {
-        ad.i(this.TAG, "filter2:" + localm.skh.field_actionInfo.Gla.commentId);
+        ae.i(this.TAG, "filter2:" + localn.ste.cLl().commentId);
       } else {
-        localList.add(localm);
+        localList.add(localn);
       }
     }
     AppMethodBeat.o(178287);
@@ -393,54 +393,54 @@ public final class c
     int i = 0;
     int j;
     if (((Iterator)localObject).hasNext()) {
-      if (((m)((Iterator)localObject).next()).skh.field_actionInfo.Gla.commentId == paramLong)
+      if (((n)((Iterator)localObject).next()).ste.cLl().commentId == paramLong)
       {
         j = 1;
-        label66:
+        label63:
         if (j == 0) {
-          break label177;
+          break label174;
         }
-        label71:
+        label68:
         localObject = (List)this.data;
         localObject = ((List)localObject).listIterator(((List)localObject).size());
       }
     }
-    label177:
-    label192:
-    label196:
+    label174:
+    label189:
+    label193:
     for (;;)
     {
       j = k;
       if (((ListIterator)localObject).hasPrevious()) {
-        if (((m)((ListIterator)localObject).previous()).skh.field_actionInfo.rID != paramLong) {
-          break label192;
+        if (((n)((ListIterator)localObject).previous()).ste.field_actionInfo.rQN != paramLong) {
+          break label189;
         }
       }
       for (j = 1;; j = 0)
       {
         if (j == 0) {
-          break label196;
+          break label193;
         }
         j = ((ListIterator)localObject).nextIndex();
         if ((!paramBoolean) || (j < 0)) {
-          break label198;
+          break label195;
         }
         AppMethodBeat.o(178288);
         return j + 1;
         j = 0;
-        break label66;
+        break label63;
         i += 1;
         break;
         i = -1;
-        break label71;
+        break label68;
       }
     }
-    label198:
+    label195:
     AppMethodBeat.o(178288);
     return i + 1;
   }
   
-  public final void wi(long paramLong)
+  public final void wy(long paramLong)
   {
     AppMethodBeat.i(166029);
     Object localObject2 = (Iterable)this.data;
@@ -450,7 +450,7 @@ public final class c
     while (((Iterator)localObject2).hasNext())
     {
       Object localObject3 = ((Iterator)localObject2).next();
-      if (((m)localObject3).skh.field_localCommentId == paramLong) {}
+      if (((n)localObject3).ste.field_localCommentId == paramLong) {}
       for (int i = 1;; i = 0)
       {
         if (i == 0) {
@@ -465,51 +465,51 @@ public final class c
     AppMethodBeat.o(166029);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/feed/model/FinderCommentLoader$Companion;", "", "()V", "debugDisable", "", "clearCache", "", "feedId", "", "putCache", "commentId", "data", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/finder/model/FinderFeedComment;", "Lkotlin/collections/ArrayList;", "plugin-finder_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/feed/model/FinderCommentLoader$Companion;", "", "()V", "debugDisable", "", "clearCache", "", "feedId", "", "putCache", "commentId", "data", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/finder/model/FinderFeedComment;", "Lkotlin/collections/ArrayList;", "plugin-finder_release"})
   public static final class a
   {
-    public static void a(long paramLong1, long paramLong2, ArrayList<m> paramArrayList)
+    public static void a(long paramLong1, long paramLong2, ArrayList<n> paramArrayList)
     {
       AppMethodBeat.i(166023);
       p.h(paramArrayList, "data");
-      if (c.cBS())
+      if (c.cDE())
       {
         AppMethodBeat.o(166023);
         return;
       }
-      e locale = e.szM;
+      e locale = e.sKJ;
       Object localObject = (Iterable)paramArrayList;
       paramArrayList = (Collection)new ArrayList(j.a((Iterable)localObject, 10));
       localObject = ((Iterable)localObject).iterator();
       while (((Iterator)localObject).hasNext()) {
-        paramArrayList.add(((m)((Iterator)localObject).next()).skh);
+        paramArrayList.add(((n)((Iterator)localObject).next()).ste);
       }
       locale.a(paramLong1, paramLong2, (List)paramArrayList);
       AppMethodBeat.o(166023);
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "T", "a", "kotlin.jvm.PlatformType", "b", "compare", "(Ljava/lang/Object;Ljava/lang/Object;)I", "kotlin/comparisons/ComparisonsKt__ComparisonsKt$compareByDescending$1"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "T", "a", "kotlin.jvm.PlatformType", "b", "compare", "(Ljava/lang/Object;Ljava/lang/Object;)I", "kotlin/comparisons/ComparisonsKt__ComparisonsKt$compareByDescending$1"})
   public static final class b<T>
     implements Comparator<T>
   {
     public final int compare(T paramT1, T paramT2)
     {
       AppMethodBeat.i(166024);
-      int i = a.a((Comparable)Long.valueOf(((m)paramT2).skh.field_actionInfo.Gla.displayid), (Comparable)Long.valueOf(((m)paramT1).skh.field_actionInfo.Gla.displayid));
+      int i = a.a((Comparable)Long.valueOf(((n)paramT2).ste.cLl().displayid), (Comparable)Long.valueOf(((n)paramT1).ste.cLl().displayid));
       AppMethodBeat.o(166024);
       return i;
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "T", "a", "kotlin.jvm.PlatformType", "b", "compare", "(Ljava/lang/Object;Ljava/lang/Object;)I", "kotlin/comparisons/ComparisonsKt__ComparisonsKt$compareByDescending$1"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "T", "a", "kotlin.jvm.PlatformType", "b", "compare", "(Ljava/lang/Object;Ljava/lang/Object;)I", "kotlin/comparisons/ComparisonsKt__ComparisonsKt$compareByDescending$1"})
   public static final class c<T>
     implements Comparator<T>
   {
     public final int compare(T paramT1, T paramT2)
     {
       AppMethodBeat.i(178285);
-      int i = a.a((Comparable)Long.valueOf(((m)paramT2).skh.field_actionInfo.Gla.displayid), (Comparable)Long.valueOf(((m)paramT1).skh.field_actionInfo.Gla.displayid));
+      int i = a.a((Comparable)Long.valueOf(((n)paramT2).ste.cLl().displayid), (Comparable)Long.valueOf(((n)paramT1).ste.cLl().displayid));
       AppMethodBeat.o(178285);
       return i;
     }
@@ -517,7 +517,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.feed.model.c
  * JD-Core Version:    0.7.0.1
  */

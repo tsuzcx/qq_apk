@@ -16,8 +16,8 @@ final class BaseVoicePrintUI$2
     AppMethodBeat.i(29812);
     b localb = new b();
     localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/voiceprint/ui/BaseVoicePrintUI$10", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-    this.BWj.finish();
+    a.b("com/tencent/mm/plugin/voiceprint/ui/BaseVoicePrintUI$10", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+    this.CnK.finish();
     a.a(this, "com/tencent/mm/plugin/voiceprint/ui/BaseVoicePrintUI$10", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(29812);
   }

@@ -5,7 +5,7 @@ import java.util.List;
 
 public abstract interface e
 {
-  public abstract List<r> bon();
+  public abstract List<r> boX();
 }
 
 

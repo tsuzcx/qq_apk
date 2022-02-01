@@ -21,13 +21,13 @@ import com.tencent.mm.ui.MMActivity;
 public class WebViewSearchContentInputFooter
   extends LinearLayout
 {
-  private a EsA;
-  private View Esv;
-  private EditText Esw;
-  private View Esx;
-  private View Esy;
-  private TextView Esz;
-  private View mSz;
+  private View EKL;
+  private EditText EKM;
+  private View EKN;
+  private View EKO;
+  private TextView EKP;
+  private a EKQ;
+  private View mXI;
   
   public WebViewSearchContentInputFooter(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -49,53 +49,53 @@ public class WebViewSearchContentInputFooter
   {
     AppMethodBeat.i(82299);
     View localView = inflate(getContext(), 2131496088, this);
-    this.Esw = ((EditText)localView.findViewById(2131299306));
-    this.mSz = localView.findViewById(2131298364);
-    this.Esx = localView.findViewById(2131303374);
-    this.Esy = localView.findViewById(2131302856);
-    this.Esz = ((TextView)localView.findViewById(2131301000));
-    this.Esv = localView.findViewById(2131301030);
-    this.mSz.setOnClickListener(new WebViewSearchContentInputFooter.1(this));
-    this.Esx.setOnClickListener(new View.OnClickListener()
+    this.EKM = ((EditText)localView.findViewById(2131299306));
+    this.mXI = localView.findViewById(2131298364);
+    this.EKN = localView.findViewById(2131303374);
+    this.EKO = localView.findViewById(2131302856);
+    this.EKP = ((TextView)localView.findViewById(2131301000));
+    this.EKL = localView.findViewById(2131301030);
+    this.mXI.setOnClickListener(new WebViewSearchContentInputFooter.1(this));
+    this.EKN.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(82291);
         b localb = new b();
         localb.bd(paramAnonymousView);
-        a.b("com/tencent/mm/plugin/webview/ui/tools/widget/WebViewSearchContentInputFooter$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        a.b("com/tencent/mm/plugin/webview/ui/tools/widget/WebViewSearchContentInputFooter$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
         if (WebViewSearchContentInputFooter.c(WebViewSearchContentInputFooter.this) != null) {
-          WebViewSearchContentInputFooter.c(WebViewSearchContentInputFooter.this).ePu();
+          WebViewSearchContentInputFooter.c(WebViewSearchContentInputFooter.this).eTg();
         }
         a.a(this, "com/tencent/mm/plugin/webview/ui/tools/widget/WebViewSearchContentInputFooter$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(82291);
       }
     });
-    this.Esy.setOnClickListener(new View.OnClickListener()
+    this.EKO.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(82292);
         b localb = new b();
         localb.bd(paramAnonymousView);
-        a.b("com/tencent/mm/plugin/webview/ui/tools/widget/WebViewSearchContentInputFooter$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        a.b("com/tencent/mm/plugin/webview/ui/tools/widget/WebViewSearchContentInputFooter$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
         if (WebViewSearchContentInputFooter.c(WebViewSearchContentInputFooter.this) != null) {
-          WebViewSearchContentInputFooter.c(WebViewSearchContentInputFooter.this).ePv();
+          WebViewSearchContentInputFooter.c(WebViewSearchContentInputFooter.this).eTh();
         }
         a.a(this, "com/tencent/mm/plugin/webview/ui/tools/widget/WebViewSearchContentInputFooter$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(82292);
       }
     });
-    this.Esw.setOnKeyListener(new View.OnKeyListener()
+    this.EKM.setOnKeyListener(new View.OnKeyListener()
     {
       public final boolean onKey(View paramAnonymousView, int paramAnonymousInt, KeyEvent paramAnonymousKeyEvent)
       {
         AppMethodBeat.i(82293);
         b localb = new b();
         localb.bd(paramAnonymousView);
-        localb.mr(paramAnonymousInt);
+        localb.mu(paramAnonymousInt);
         localb.bd(paramAnonymousKeyEvent);
-        a.b("com/tencent/mm/plugin/webview/ui/tools/widget/WebViewSearchContentInputFooter$4", "android/view/View$OnKeyListener", "onKey", "(Landroid/view/View;ILandroid/view/KeyEvent;)Z", this, localb.ahq());
+        a.b("com/tencent/mm/plugin/webview/ui/tools/widget/WebViewSearchContentInputFooter$4", "android/view/View$OnKeyListener", "onKey", "(Landroid/view/View;ILandroid/view/KeyEvent;)Z", this, localb.ahF());
         if (WebViewSearchContentInputFooter.c(WebViewSearchContentInputFooter.this) != null) {
           WebViewSearchContentInputFooter.c(WebViewSearchContentInputFooter.this).c(paramAnonymousInt, paramAnonymousKeyEvent);
         }
@@ -115,7 +115,7 @@ public class WebViewSearchContentInputFooter
         return false;
       }
     });
-    this.Esw.setOnFocusChangeListener(new View.OnFocusChangeListener()
+    this.EKM.setOnFocusChangeListener(new View.OnFocusChangeListener()
     {
       public final void onFocusChange(View paramAnonymousView, boolean paramAnonymousBoolean)
       {
@@ -131,7 +131,7 @@ public class WebViewSearchContentInputFooter
         AppMethodBeat.o(82294);
       }
     });
-    this.Esw.addTextChangedListener(new TextWatcher()
+    this.EKM.addTextChangedListener(new TextWatcher()
     {
       public final void afterTextChanged(Editable paramAnonymousEditable) {}
       
@@ -152,7 +152,7 @@ public class WebViewSearchContentInputFooter
         AppMethodBeat.o(82295);
       }
     });
-    this.Esw.setSelectAllOnFocus(true);
+    this.EKM.setSelectAllOnFocus(true);
     reset();
     AppMethodBeat.o(82299);
   }
@@ -166,19 +166,19 @@ public class WebViewSearchContentInputFooter
       AppMethodBeat.o(82305);
       return;
     }
-    Object localObject = this.Esz;
+    Object localObject = this.EKP;
     if (paramInt2 == 0)
     {
       paramInt1 = 0;
       ((TextView)localObject).setText(String.format("%d/%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }));
-      localObject = this.Esy;
+      localObject = this.EKO;
       if (paramInt2 <= 0) {
         break label108;
       }
       paramBoolean = true;
       label70:
       ((View)localObject).setEnabled(paramBoolean);
-      localObject = this.Esx;
+      localObject = this.EKN;
       if (paramInt2 <= 0) {
         break label113;
       }
@@ -197,17 +197,17 @@ public class WebViewSearchContentInputFooter
     }
   }
   
-  public final void eVK()
+  public final void eZx()
   {
     AppMethodBeat.i(82301);
-    this.Esw.setText("");
+    this.EKM.setText("");
     AppMethodBeat.o(82301);
   }
   
   public String getSearchContent()
   {
     AppMethodBeat.i(82306);
-    String str = this.Esw.getText().toString();
+    String str = this.EKM.getText().toString();
     AppMethodBeat.o(82306);
     return str;
   }
@@ -215,14 +215,14 @@ public class WebViewSearchContentInputFooter
   public final void hide()
   {
     AppMethodBeat.i(82304);
-    Context localContext = this.Esw.getContext();
+    Context localContext = this.EKM.getContext();
     if ((localContext instanceof MMActivity)) {
-      ((MMActivity)localContext).hideVKB(this.Esw);
+      ((MMActivity)localContext).hideVKB(this.EKM);
     }
-    this.Esw.clearFocus();
+    this.EKM.clearFocus();
     setVisibility(8);
-    if (this.EsA != null) {
-      this.EsA.ePt();
+    if (this.EKQ != null) {
+      this.EKQ.eTf();
     }
     AppMethodBeat.o(82304);
   }
@@ -242,22 +242,22 @@ public class WebViewSearchContentInputFooter
   public final void reset()
   {
     AppMethodBeat.i(82300);
-    this.Esz.setText("");
-    this.Esx.setEnabled(false);
-    this.Esy.setEnabled(false);
+    this.EKP.setText("");
+    this.EKN.setEnabled(false);
+    this.EKO.setEnabled(false);
     AppMethodBeat.o(82300);
   }
   
   public void setActionDelegate(a parama)
   {
-    this.EsA = parama;
+    this.EKQ = parama;
   }
   
   public final void show()
   {
     AppMethodBeat.i(82303);
     setVisibility(0);
-    this.Esw.requestFocus();
+    this.EKM.requestFocus();
     postDelayed(new Runnable()
     {
       public final void run()
@@ -278,11 +278,11 @@ public class WebViewSearchContentInputFooter
     
     public abstract boolean c(int paramInt, KeyEvent paramKeyEvent);
     
-    public abstract void ePt();
+    public abstract void eTf();
     
-    public abstract void ePu();
+    public abstract void eTg();
     
-    public abstract void ePv();
+    public abstract void eTh();
   }
 }
 

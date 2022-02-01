@@ -2,7 +2,7 @@ package com.tencent.mm.modelappbrand;
 
 public final class x
 {
-  public String duW;
+  public String dwb;
   public String md5;
   public int version;
 }

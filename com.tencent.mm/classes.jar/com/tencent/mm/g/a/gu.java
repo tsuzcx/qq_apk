@@ -6,30 +6,30 @@ import com.tencent.mm.sdk.b.b;
 public final class gu
   extends b
 {
-  public a dsQ;
+  public a dtU;
   
   public gu()
   {
     this((byte)0);
   }
   
-  private gu(byte paramByte)
+  public gu(byte paramByte)
   {
-    AppMethodBeat.i(127404);
-    this.dsQ = new a();
-    this.IbR = false;
+    AppMethodBeat.i(183843);
+    this.dtU = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(127404);
+    AppMethodBeat.o(183843);
   }
   
   public static final class a
   {
-    public byte[] dsR;
+    public int dtV = 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.a.gu
  * JD-Core Version:    0.7.0.1
  */

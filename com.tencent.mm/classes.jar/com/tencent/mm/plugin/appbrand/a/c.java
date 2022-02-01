@@ -8,40 +8,40 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 public final class c
 {
-  public final d jKT;
-  public final a<c.a, c> jKU;
-  final AppBrandRuntime jzY;
+  final AppBrandRuntime jDb;
+  public final d jOf;
+  public final a<c.a, c> jOg;
   
   public c(AppBrandRuntime paramAppBrandRuntime)
   {
     AppMethodBeat.i(134712);
-    this.jKU = new a();
-    this.jzY = paramAppBrandRuntime;
-    this.jKT = new d(paramAppBrandRuntime)
+    this.jOg = new a();
+    this.jDb = paramAppBrandRuntime;
+    this.jOf = new d(paramAppBrandRuntime)
     {
       final void a(b paramAnonymousb)
       {
         AppMethodBeat.i(134711);
         c localc = c.this;
-        synchronized (localc.jKU)
+        synchronized (localc.jOg)
         {
-          c.a[] arrayOfa = new c.a[localc.jKU.size()];
-          arrayOfa = (c.a[])localc.jKU.keySet().toArray(arrayOfa);
+          c.a[] arrayOfa = new c.a[localc.jOg.size()];
+          arrayOfa = (c.a[])localc.jOg.keySet().toArray(arrayOfa);
           int j = arrayOfa.length;
           int i = 0;
           if (i < j)
           {
-            arrayOfa[i].a(localc.jzY.mAppId, paramAnonymousb);
+            arrayOfa[i].a(localc.jDb.mAppId, paramAnonymousb);
             i += 1;
           }
         }
         AppMethodBeat.o(134711);
       }
       
-      final void bbe()
+      final void bbG()
       {
         AppMethodBeat.i(134710);
-        c.this.jzY.finish();
+        c.this.jDb.finish();
         AppMethodBeat.o(134710);
       }
     };
@@ -51,14 +51,14 @@ public final class c
   public final void a(c.a parama)
   {
     AppMethodBeat.i(134713);
-    if ((parama == null) || (this.jKT.jLd.get()))
+    if ((parama == null) || (this.jOf.jOp.get()))
     {
       AppMethodBeat.o(134713);
       return;
     }
-    synchronized (this.jKU)
+    synchronized (this.jOg)
     {
-      this.jKU.put(parama, this);
+      this.jOg.put(parama, this);
       AppMethodBeat.o(134713);
       return;
     }
@@ -67,23 +67,23 @@ public final class c
   public final void b(c.a parama)
   {
     AppMethodBeat.i(134714);
-    if ((parama == null) || (b.jKR == this.jKT.bbg()))
+    if ((parama == null) || (b.jOd == this.jOf.bbI()))
     {
       AppMethodBeat.o(134714);
       return;
     }
-    synchronized (this.jKU)
+    synchronized (this.jOg)
     {
-      this.jKU.remove(parama);
+      this.jOg.remove(parama);
       AppMethodBeat.o(134714);
       return;
     }
   }
   
-  public final void fP(boolean paramBoolean)
+  public final void fO(boolean paramBoolean)
   {
     AppMethodBeat.i(162077);
-    this.jKT.fP(paramBoolean);
+    this.jOf.fO(paramBoolean);
     AppMethodBeat.o(162077);
   }
 }

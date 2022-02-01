@@ -50,10 +50,10 @@ final class HttpProxyCacheServerClients
   
   private HttpProxyCache newHttpProxyCache()
   {
-    AppMethodBeat.i(215859);
+    AppMethodBeat.i(195143);
     HttpProxyCache localHttpProxyCache = new HttpProxyCache(new HttpUrlSource(this.url, this.config.sourceInfoStorage, this.config.headerInjector), new FileCache(this.config.generateCacheFile(this.url), this.config.diskUsage));
     localHttpProxyCache.registerCacheListener(this.uiCacheListener);
-    AppMethodBeat.o(215859);
+    AppMethodBeat.o(195143);
     return localHttpProxyCache;
   }
   
@@ -102,15 +102,15 @@ final class HttpProxyCacheServerClients
   
   public final int getClientsCount()
   {
-    AppMethodBeat.i(215858);
+    AppMethodBeat.i(195142);
     int i = this.clientsCount.get();
-    AppMethodBeat.o(215858);
+    AppMethodBeat.o(195142);
     return i;
   }
   
   public final void processRequest(GetRequest paramGetRequest, Socket paramSocket)
   {
-    AppMethodBeat.i(215854);
+    AppMethodBeat.i(195138);
     startProcessRequest();
     try
     {
@@ -121,20 +121,20 @@ final class HttpProxyCacheServerClients
     finally
     {
       finishProcessRequest();
-      AppMethodBeat.o(215854);
+      AppMethodBeat.o(195138);
     }
   }
   
   public final void registerCacheListener(CacheListener paramCacheListener)
   {
-    AppMethodBeat.i(215855);
+    AppMethodBeat.i(195139);
     this.listeners.add(paramCacheListener);
-    AppMethodBeat.o(215855);
+    AppMethodBeat.o(195139);
   }
   
   public final void shutdown()
   {
-    AppMethodBeat.i(215857);
+    AppMethodBeat.i(195141);
     this.listeners.clear();
     if (this.proxyCache != null)
     {
@@ -143,14 +143,14 @@ final class HttpProxyCacheServerClients
       this.proxyCache = null;
     }
     this.clientsCount.set(0);
-    AppMethodBeat.o(215857);
+    AppMethodBeat.o(195141);
   }
   
   public final void unregisterCacheListener(CacheListener paramCacheListener)
   {
-    AppMethodBeat.i(215856);
+    AppMethodBeat.i(195140);
     this.listeners.remove(paramCacheListener);
-    AppMethodBeat.o(215856);
+    AppMethodBeat.o(195140);
   }
   
   static final class UiListenerHandler
@@ -181,12 +181,12 @@ final class HttpProxyCacheServerClients
     
     public final void onCacheAvailable(File paramFile, String paramString, int paramInt)
     {
-      AppMethodBeat.i(215853);
+      AppMethodBeat.i(195137);
       paramString = obtainMessage();
       paramString.arg1 = paramInt;
       paramString.obj = paramFile;
       sendMessage(paramString);
-      AppMethodBeat.o(215853);
+      AppMethodBeat.o(195137);
     }
   }
 }

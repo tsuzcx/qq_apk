@@ -1,13 +1,12 @@
 package com.tencent.mm.g.a;
 
-import com.tencent.mars.cdn.CdnLogic.C2CDownloadResult;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class zs
   extends b
 {
-  public a dPg;
+  public zs.a dQc;
   
   public zs()
   {
@@ -16,22 +15,16 @@ public final class zs
   
   private zs(byte paramByte)
   {
-    AppMethodBeat.i(207424);
-    this.dPg = new a();
-    this.IbR = false;
+    AppMethodBeat.i(110508);
+    this.dQc = new zs.a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(207424);
-  }
-  
-  public static final class a
-  {
-    public int dPb = 0;
-    public CdnLogic.C2CDownloadResult dPh;
+    AppMethodBeat.o(110508);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.a.zs
  * JD-Core Version:    0.7.0.1
  */

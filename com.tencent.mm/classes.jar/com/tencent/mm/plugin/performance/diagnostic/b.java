@@ -8,21 +8,21 @@ import java.util.Map;
 public final class b
   extends a
 {
-  protected final void av(Map<String, String> paramMap)
+  protected final void aB(Map<String, String> paramMap)
   {
     AppMethodBeat.i(124913);
-    if ((paramMap.containsKey(".cmd.diagnostic.report" + ".memory")) && ((MemoryHookLogic)com.tencent.mm.plugin.performance.a.a.wGn.aR(MemoryHookLogic.class) != null)) {
+    if ((paramMap.containsKey(".cmd.diagnostic.report" + ".memory")) && ((MemoryHookLogic)com.tencent.mm.plugin.performance.a.a.wWa.aR(MemoryHookLogic.class) != null)) {
       MemoryHookLogic.report();
     }
     if (paramMap.containsKey(".cmd.diagnostic.report" + ".pthread"))
     {
-      com.tencent.mm.plugin.performance.a.a.wGn.aR(PthreadHookLogic.class);
+      com.tencent.mm.plugin.performance.a.a.wWa.aR(PthreadHookLogic.class);
       PthreadHookLogic.report();
     }
     AppMethodBeat.o(124913);
   }
   
-  public final String dyy()
+  public final String dBO()
   {
     return ".cmd.diagnostic.report";
   }

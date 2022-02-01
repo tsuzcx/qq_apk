@@ -5,8 +5,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Handler;
-import com.tencent.map.tools.internal.r;
-import com.tencent.map.tools.internal.y;
+import com.tencent.map.tools.internal.q;
+import com.tencent.map.tools.internal.x;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class SheetNetworkStateMonitor
@@ -53,7 +53,7 @@ public class SheetNetworkStateMonitor
     {
       if (paramIntent.getBooleanExtra("noConnectivity", false))
       {
-        r.a(this.mhandler, 10010, 0L);
+        q.a(this.mhandler, 10010, 0L);
         AppMethodBeat.o(180969);
         return;
       }
@@ -63,13 +63,13 @@ public class SheetNetworkStateMonitor
       AppMethodBeat.o(180969);
       return;
     }
-    if (y.f(paramContext))
+    if (x.f(paramContext))
     {
-      r.a(this.mhandler, 10009, 0L);
+      q.a(this.mhandler, 10009, 0L);
       AppMethodBeat.o(180969);
       return;
     }
-    r.a(this.mhandler, 10008, 0L);
+    q.a(this.mhandler, 10008, 0L);
     AppMethodBeat.o(180969);
   }
   

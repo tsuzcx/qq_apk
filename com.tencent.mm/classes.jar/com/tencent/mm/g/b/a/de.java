@@ -2,32 +2,32 @@ package com.tencent.mm.g.b.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.a;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.Arrays;
 
 public final class de
   extends a
 {
-  public long dYD;
-  public long eeA;
-  public String eey;
-  public long eez;
+  public long dZW;
+  public String efY;
+  public long efZ;
+  public long ega;
   
   public de()
   {
-    this.eey = "";
-    this.dYD = 0L;
-    this.eez = 0L;
-    this.eeA = 0L;
+    this.efY = "";
+    this.dZW = 0L;
+    this.efZ = 0L;
+    this.ega = 0L;
   }
   
   public de(String paramString)
   {
     AppMethodBeat.i(121753);
-    this.eey = "";
-    this.dYD = 0L;
-    this.eez = 0L;
-    this.eeA = 0L;
+    this.efY = "";
+    this.dZW = 0L;
+    this.efZ = 0L;
+    this.ega = 0L;
     if (paramString != null)
     {
       paramString = paramString.split(",");
@@ -45,43 +45,43 @@ public final class de
     label123:
     for (;;)
     {
-      ms(paramString[0]);
-      this.dYD = bt.getLong(paramString[1], 0L);
-      jp(bt.getLong(paramString[2], 0L));
-      this.eeA = bt.getLong(paramString[3], 0L);
+      mK(paramString[0]);
+      this.dZW = bu.getLong(paramString[1], 0L);
+      jz(bu.getLong(paramString[2], 0L));
+      this.ega = bu.getLong(paramString[3], 0L);
       AppMethodBeat.o(121753);
       return;
     }
   }
   
-  public final String RD()
+  public final String RC()
   {
     AppMethodBeat.i(121756);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.eey);
+    ((StringBuffer)localObject).append(this.efY);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dYD);
+    ((StringBuffer)localObject).append(this.dZW);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eez);
+    ((StringBuffer)localObject).append(this.efZ);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eeA);
+    ((StringBuffer)localObject).append(this.ega);
     localObject = ((StringBuffer)localObject).toString();
-    awz((String)localObject);
+    axO((String)localObject);
     AppMethodBeat.o(121756);
     return localObject;
   }
   
-  public final String RE()
+  public final String RD()
   {
     AppMethodBeat.i(121757);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("Name:").append(this.eey);
+    ((StringBuffer)localObject).append("Name:").append(this.efY);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("Type:").append(this.dYD);
+    ((StringBuffer)localObject).append("Type:").append(this.dZW);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("TimeStampMs:").append(this.eez);
+    ((StringBuffer)localObject).append("TimeStampMs:").append(this.efZ);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("HashCode:").append(this.eeA);
+    ((StringBuffer)localObject).append("HashCode:").append(this.ega);
     localObject = ((StringBuffer)localObject).toString();
     AppMethodBeat.o(121757);
     return localObject;
@@ -92,26 +92,26 @@ public final class de
     return 0;
   }
   
-  public final de jp(long paramLong)
+  public final de jz(long paramLong)
   {
     AppMethodBeat.i(121755);
-    this.eez = paramLong;
-    super.bg("TimeStampMs", this.eez);
+    this.efZ = paramLong;
+    super.bh("TimeStampMs", this.efZ);
     AppMethodBeat.o(121755);
     return this;
   }
   
-  public final de ms(String paramString)
+  public final de mK(String paramString)
   {
     AppMethodBeat.i(121754);
-    this.eey = t("Name", paramString, true);
+    this.efY = t("Name", paramString, true);
     AppMethodBeat.o(121754);
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.g.b.a.de
  * JD-Core Version:    0.7.0.1
  */

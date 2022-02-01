@@ -11,7 +11,7 @@ class c$a
   public void invoke(Object paramObject, d paramd)
   {
     AppMethodBeat.i(110794);
-    c.eXC();
+    c.fbo();
     AppMethodBeat.o(110794);
   }
 }

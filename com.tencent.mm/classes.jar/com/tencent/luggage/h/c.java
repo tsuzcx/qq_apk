@@ -6,17 +6,17 @@ import d.g.b.p;
 import d.l;
 import d.n.n;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"startsWithIgnoreCase", "", "", "prefix", "protocol", "startsWithIgnoreCaseAndBlank", "luggage-commons_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"optStringStrictly", "", "Lorg/json/JSONObject;", "name", "startsWithIgnoreCase", "", "prefix", "protocol", "startsWithIgnoreCaseAndBlank", "luggage-commons_release"})
 public final class c
 {
   public static final boolean a(String paramString1, String paramString2, boolean paramBoolean)
   {
-    AppMethodBeat.i(187560);
+    AppMethodBeat.i(201127);
     p.h(paramString1, "$this$startsWithIgnoreCase");
     p.h(paramString2, "prefix");
-    if (n.aE((CharSequence)paramString2))
+    if (n.aD((CharSequence)paramString2))
     {
-      AppMethodBeat.o(187560);
+      AppMethodBeat.o(201127);
       return false;
     }
     String str = paramString1;
@@ -31,7 +31,7 @@ public final class c
     for (;;)
     {
       paramBoolean = k.C(str, paramString2);
-      AppMethodBeat.o(187560);
+      AppMethodBeat.o(201127);
       return paramBoolean;
       label73:
       str = paramString1;

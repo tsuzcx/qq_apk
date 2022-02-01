@@ -2,16 +2,16 @@ package com.tencent.mm.plugin.appbrand.jsapi.media;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.h.d;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.vfs.i;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.vfs.o;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/media/VideoMetaData;", "", "duration", "", "size", "width", "", "height", "(JJII)V", "getDuration", "()J", "getHeight", "()I", "getSize", "getWidth", "component1", "component2", "component3", "component4", "copy", "equals", "", "other", "hashCode", "toString", "", "Companion", "plugin-appbrand-integration_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsapi/media/VideoMetaData;", "", "duration", "", "size", "width", "", "height", "(JJII)V", "getDuration", "()J", "getHeight", "()I", "getSize", "getWidth", "component1", "component2", "component3", "component4", "copy", "equals", "", "other", "hashCode", "toString", "", "Companion", "plugin-appbrand-integration_release"})
 public final class u
 {
-  public static final a kVP;
+  public static final a kZx;
   final long duration;
   final int height;
   final long size;
@@ -20,7 +20,7 @@ public final class u
   static
   {
     AppMethodBeat.i(50581);
-    kVP = new a((byte)0);
+    kZx = new a((byte)0);
     AppMethodBeat.o(50581);
   }
   
@@ -64,14 +64,14 @@ public final class u
     return str;
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/media/VideoMetaData$Companion;", "", "()V", "TAG", "", "obtain", "Lcom/tencent/mm/plugin/appbrand/jsapi/media/VideoMetaData;", "path", "plugin-appbrand-integration_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsapi/media/VideoMetaData$Companion;", "", "()V", "TAG", "", "obtain", "Lcom/tencent/mm/plugin/appbrand/jsapi/media/VideoMetaData;", "path", "plugin-appbrand-integration_release"})
   public static final class a
   {
-    public static u Qg(String paramString)
+    public static u QP(String paramString)
     {
       AppMethodBeat.i(50580);
       p.h(paramString, "path");
-      if (!i.fv(paramString))
+      if (!o.fB(paramString))
       {
         AppMethodBeat.o(50580);
         return null;
@@ -83,26 +83,26 @@ public final class u
         {
           locald = new d();
           locald.setDataSource(paramString);
-          i = bt.getInt(locald.extractMetadata(24), 0);
+          i = bu.getInt(locald.extractMetadata(24), 0);
           if ((i == 90) || (i == 270))
           {
-            i = bt.getInt(locald.extractMetadata(19), 0);
-            j = bt.getInt(locald.extractMetadata(18), 0);
-            long l = bt.getLong(locald.extractMetadata(9), 0L);
+            i = bu.getInt(locald.extractMetadata(19), 0);
+            j = bu.getInt(locald.extractMetadata(18), 0);
+            long l = bu.getLong(locald.extractMetadata(9), 0L);
             locald.release();
-            paramString = new u(l, i.aYo(paramString), i, j);
+            paramString = new u(l, o.aZR(paramString), i, j);
             AppMethodBeat.o(50580);
             return paramString;
           }
         }
         catch (Exception paramString)
         {
-          ad.e("MicroMsg.VideoMetaData", "MetaDataRetriever failed, e = ".concat(String.valueOf(paramString)));
+          ae.e("MicroMsg.VideoMetaData", "MetaDataRetriever failed, e = ".concat(String.valueOf(paramString)));
           AppMethodBeat.o(50580);
           return null;
         }
-        int i = bt.getInt(locald.extractMetadata(18), 0);
-        int j = bt.getInt(locald.extractMetadata(19), 0);
+        int i = bu.getInt(locald.extractMetadata(18), 0);
+        int j = bu.getInt(locald.extractMetadata(19), 0);
       }
     }
   }

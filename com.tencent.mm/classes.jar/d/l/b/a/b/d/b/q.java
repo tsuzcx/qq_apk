@@ -10,19 +10,19 @@ import java.util.Map;
 public final class q
   implements an
 {
-  private final h Nfc;
+  private final h NCh;
   
   public q(h paramh)
   {
     AppMethodBeat.i(58227);
-    this.Nfc = paramh;
+    this.NCh = paramh;
     AppMethodBeat.o(58227);
   }
   
-  public final ao gjq()
+  public final ao gnS()
   {
     AppMethodBeat.i(58226);
-    ao localao = ao.MUY;
+    ao localao = ao.Nsd;
     p.g(localao, "SourceFile.NO_SOURCE_FILE");
     AppMethodBeat.o(58226);
     return localao;
@@ -31,14 +31,14 @@ public final class q
   public final String toString()
   {
     AppMethodBeat.i(58225);
-    String str = this.Nfc + ": " + this.Nfc.glP().keySet();
+    String str = this.NCh + ": " + this.NCh.gqr().keySet();
     AppMethodBeat.o(58225);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.d.b.q
  * JD-Core Version:    0.7.0.1
  */

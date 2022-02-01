@@ -18,22 +18,22 @@ public class b
   
   public b(Context paramContext)
   {
-    AppMethodBeat.i(190422);
+    AppMethodBeat.i(210687);
     this.c = null;
     this.d = "";
     this.b = paramContext;
     this.c = new ArrayList();
-    AppMethodBeat.o(190422);
+    AppMethodBeat.o(210687);
   }
   
   public static b a(Context paramContext)
   {
-    AppMethodBeat.i(190423);
+    AppMethodBeat.i(210688);
     if (a == null) {
       a = new b(paramContext);
     }
     paramContext = a;
-    AppMethodBeat.o(190423);
+    AppMethodBeat.o(210688);
     return paramContext;
   }
   
@@ -42,7 +42,7 @@ public class b
   {
     try
     {
-      AppMethodBeat.i(190425);
+      AppMethodBeat.i(210690);
       l.a(this.b);
       Object localObject1 = this.c;
       Object localObject6;
@@ -114,7 +114,7 @@ public class b
           localObject3 = e.a(this.b);
           localObject6 = new StringBuilder();
           ((e)localObject3).a("CPL", "suc:" + q.d);
-          AppMethodBeat.o(190425);
+          AppMethodBeat.o(210690);
           localObject3 = localObject5;
           return localObject3;
         }
@@ -159,7 +159,7 @@ public class b
         localObject3 = e.a(this.b);
         localObject7 = new StringBuilder();
         ((e)localObject3).a("CPL", "suc:c" + q.d);
-        AppMethodBeat.o(190425);
+        AppMethodBeat.o(210690);
         localObject3 = localDexClassLoader;
       }
       catch (Throwable localThrowable1)
@@ -168,16 +168,16 @@ public class b
         break label622;
       }
       j.a("try once failed", (Throwable)localObject5);
-      AppMethodBeat.o(190425);
+      AppMethodBeat.o(210690);
       continue;
-      AppMethodBeat.o(190425);
+      AppMethodBeat.o(210690);
       Object localObject3 = null;
     }
   }
   
   public DexClassLoader a(List<a> paramList, String paramString)
   {
-    AppMethodBeat.i(190424);
+    AppMethodBeat.i(210689);
     this.c = paramList;
     this.d = paramString;
     int i = 0;
@@ -204,7 +204,7 @@ public class b
           if (paramList != null)
           {
             l.f(this.b);
-            AppMethodBeat.o(190424);
+            AppMethodBeat.o(210689);
             return paramList;
           }
           i = j;
@@ -220,7 +220,7 @@ public class b
     paramString = paramList;
     label126:
     l.f(this.b);
-    AppMethodBeat.o(190424);
+    AppMethodBeat.o(210689);
     return paramString;
   }
 }

@@ -1,59 +1,59 @@
 package com.tencent.mm.plugin.gallery.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import d.l;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Set;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/gallery/model/PreLoadManager;", "", "()V", "lastState", "Lcom/tencent/mm/plugin/gallery/model/PreLoadManager$State;", "mediaItems", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/gallery/model/GalleryItem$MediaItem;", "Lkotlin/collections/ArrayList;", "preloadList", "Lcom/tencent/mm/plugin/gallery/model/IPreload;", "addPreload", "", "preload", "dispatchPreload", "state", "first", "", "last", "limit", "executePreload", "items", "", "removePreload", "reset", "syncMediaItems", "", "Companion", "SingletonHolder", "State", "plugin-gallery_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/gallery/model/PreLoadManager;", "", "()V", "lastState", "Lcom/tencent/mm/plugin/gallery/model/PreLoadManager$State;", "mediaItems", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/gallery/model/GalleryItem$MediaItem;", "Lkotlin/collections/ArrayList;", "preloadList", "Lcom/tencent/mm/plugin/gallery/model/IPreload;", "addPreload", "", "preload", "dispatchPreload", "state", "first", "", "last", "limit", "executePreload", "items", "", "removePreload", "reset", "syncMediaItems", "", "Companion", "SingletonHolder", "State", "plugin-gallery_release"})
 public final class p
 {
-  private static final p tHr;
-  public static final p.a tHs;
-  ArrayList<j> tHo;
-  public final ArrayList<GalleryItem.MediaItem> tHp;
-  private p.c tHq;
+  private static final p tSi;
+  public static final p.a tSj;
+  ArrayList<j> tSf;
+  public final ArrayList<GalleryItem.MediaItem> tSg;
+  private p.c tSh;
   
   static
   {
     AppMethodBeat.i(111798);
-    tHs = new p.a((byte)0);
-    b localb = b.tHu;
-    tHr = b.cVw();
+    tSj = new p.a((byte)0);
+    b localb = b.tSl;
+    tSi = b.cYb();
     AppMethodBeat.o(111798);
   }
   
   private p()
   {
     AppMethodBeat.i(111797);
-    this.tHo = new ArrayList();
-    this.tHp = new ArrayList();
-    this.tHq = p.c.tHv;
+    this.tSf = new ArrayList();
+    this.tSg = new ArrayList();
+    this.tSh = p.c.tSm;
     AppMethodBeat.o(111797);
   }
   
   private final void m(Set<Integer> paramSet)
   {
     AppMethodBeat.i(111796);
-    ad.d("MicroMsg.PreLoadManager", "mediaItems.size: %s.", new Object[] { Integer.valueOf(this.tHp.size()) });
+    ae.d("MicroMsg.PreLoadManager", "mediaItems.size: %s.", new Object[] { Integer.valueOf(this.tSg.size()) });
     paramSet = paramSet.iterator();
     while (paramSet.hasNext())
     {
       int i = ((Number)paramSet.next()).intValue();
-      if (i < this.tHp.size())
+      if (i < this.tSg.size())
       {
-        c localc = e.cUL();
-        Object localObject1 = this.tHp.get(i);
+        c localc = e.cXq();
+        Object localObject1 = this.tSg.get(i);
         d.g.b.p.g(localObject1, "mediaItems[item]");
-        localObject1 = ((GalleryItem.MediaItem)localObject1).axA();
-        Object localObject2 = this.tHp.get(i);
+        localObject1 = ((GalleryItem.MediaItem)localObject1).axP();
+        Object localObject2 = this.tSg.get(i);
         d.g.b.p.g(localObject2, "mediaItems[item]");
         int j = ((GalleryItem.MediaItem)localObject2).getType();
-        localObject2 = this.tHp.get(i);
+        localObject2 = this.tSg.get(i);
         d.g.b.p.g(localObject2, "mediaItems[item]");
-        localc.b((String)localObject1, j, ((GalleryItem.MediaItem)localObject2).cVj(), ((GalleryItem.MediaItem)this.tHp.get(i)).tGV, ((GalleryItem.MediaItem)this.tHp.get(i)).tGW);
+        localc.b((String)localObject1, j, ((GalleryItem.MediaItem)localObject2).cXO(), ((GalleryItem.MediaItem)this.tSg.get(i)).tRM, ((GalleryItem.MediaItem)this.tSg.get(i)).tRN);
       }
     }
     AppMethodBeat.o(111796);
@@ -63,7 +63,7 @@ public final class p
   {
     AppMethodBeat.i(111794);
     d.g.b.p.h(paramj, "preload");
-    this.tHo.add(paramj);
+    this.tSf.add(paramj);
     AppMethodBeat.o(111794);
   }
   
@@ -71,47 +71,47 @@ public final class p
   {
     AppMethodBeat.i(111795);
     d.g.b.p.h(paramc, "state");
-    ad.d("MicroMsg.PreLoadManager", "dispatchPreload, %s %s %s %s.", new Object[] { paramc, this.tHq, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    if (this.tHq != paramc) {
-      this.tHq = paramc;
+    ae.d("MicroMsg.PreLoadManager", "dispatchPreload, %s %s %s %s.", new Object[] { paramc, this.tSh, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    if (this.tSh != paramc) {
+      this.tSh = paramc;
     }
-    Iterator localIterator = this.tHo.iterator();
+    Iterator localIterator = this.tSf.iterator();
     while (localIterator.hasNext())
     {
       j localj = (j)localIterator.next();
-      if ((p.c.tHv == paramc) && (localj.cVo())) {
-        m(localj.a(paramc, this.tHq, paramInt1, paramInt2, paramInt3));
+      if ((p.c.tSm == paramc) && (localj.cXT())) {
+        m(localj.a(paramc, this.tSh, paramInt1, paramInt2, paramInt3));
       }
-      if (!localj.cVo()) {
-        m(localj.a(paramc, this.tHq, paramInt1, paramInt2, paramInt3));
+      if (!localj.cXT()) {
+        m(localj.a(paramc, this.tSh, paramInt1, paramInt2, paramInt3));
       }
     }
     AppMethodBeat.o(111795);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/gallery/model/PreLoadManager$SingletonHolder;", "", "()V", "holder", "Lcom/tencent/mm/plugin/gallery/model/PreLoadManager;", "getHolder", "()Lcom/tencent/mm/plugin/gallery/model/PreLoadManager;", "plugin-gallery_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/gallery/model/PreLoadManager$SingletonHolder;", "", "()V", "holder", "Lcom/tencent/mm/plugin/gallery/model/PreLoadManager;", "getHolder", "()Lcom/tencent/mm/plugin/gallery/model/PreLoadManager;", "plugin-gallery_release"})
   static final class b
   {
-    private static final p tHt;
-    public static final b tHu;
+    private static final p tSk;
+    public static final b tSl;
     
     static
     {
       AppMethodBeat.i(111790);
-      tHu = new b();
-      tHt = new p((byte)0);
+      tSl = new b();
+      tSk = new p((byte)0);
       AppMethodBeat.o(111790);
     }
     
-    public static p cVw()
+    public static p cYb()
     {
-      return tHt;
+      return tSk;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.gallery.model.p
  * JD-Core Version:    0.7.0.1
  */

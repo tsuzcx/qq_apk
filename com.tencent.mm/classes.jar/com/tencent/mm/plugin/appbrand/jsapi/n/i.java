@@ -6,8 +6,8 @@ import com.tencent.mm.plugin.appbrand.config.k;
 import com.tencent.mm.plugin.appbrand.d;
 import com.tencent.mm.plugin.appbrand.jsapi.a;
 import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.plugin.appbrand.page.u;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.plugin.appbrand.page.t;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class i
   extends a<d>
@@ -15,7 +15,7 @@ public final class i
   public static final int CTRL_INDEX = 14;
   public static final String NAME = "navigateTo";
   
-  public final boolean bib()
+  public final boolean biK()
   {
     return true;
   }

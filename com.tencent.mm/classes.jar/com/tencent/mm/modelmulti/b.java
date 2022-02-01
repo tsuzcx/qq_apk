@@ -4,9 +4,9 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.n.b;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.n.b;
 import com.tencent.mm.b.l;
 import com.tencent.mm.booter.CoreService;
 import com.tencent.mm.compatible.util.f.a;
@@ -19,21 +19,22 @@ import com.tencent.mm.pointers.PString;
 import com.tencent.mm.protocal.d;
 import com.tencent.mm.protocal.l.d;
 import com.tencent.mm.protocal.l.e;
-import com.tencent.mm.protocal.protobuf.ccr;
-import com.tencent.mm.protocal.protobuf.ccs;
+import com.tencent.mm.protocal.protobuf.cdl;
+import com.tencent.mm.protocal.protobuf.cdm;
 import com.tencent.mm.protocal.protobuf.cv;
-import com.tencent.mm.protocal.protobuf.cwt;
-import com.tencent.mm.protocal.protobuf.zu;
-import com.tencent.mm.protocal.protobuf.zv;
+import com.tencent.mm.protocal.protobuf.cxn;
+import com.tencent.mm.protocal.protobuf.zx;
+import com.tencent.mm.protocal.protobuf.zy;
 import com.tencent.mm.protocal.v.a;
 import com.tencent.mm.protocal.v.b;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.av;
-import com.tencent.mm.sdk.platformtools.av.a;
-import com.tencent.mm.sdk.platformtools.ay;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.sdk.platformtools.bw;
-import com.tencent.mm.vfs.i;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.aw;
+import com.tencent.mm.sdk.platformtools.aw.a;
+import com.tencent.mm.sdk.platformtools.az;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.bx;
+import com.tencent.mm.vfs.o;
 import java.io.IOException;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -43,17 +44,17 @@ public final class b
   extends n
   implements k
 {
-  protected static int duf = 7;
+  protected static int dvk = 7;
   private f callback;
   private int errCode;
   private String errMsg;
   private int errType;
-  private f.a gFK;
-  private av hMj;
-  private int ier;
-  private StringBuilder ies;
-  private long iet;
-  private boolean ieu;
+  private f.a gIr;
+  private aw hPc;
+  private int ihj;
+  private StringBuilder ihk;
+  private long ihl;
+  private boolean ihm;
   
   public b()
   {
@@ -61,13 +62,13 @@ public final class b
     this.errType = 0;
     this.errCode = 0;
     this.errMsg = "";
-    this.ier = 0;
-    this.ies = new StringBuilder();
-    this.iet = -1L;
-    this.ieu = false;
-    com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.NetPushSync", "dksord NetSceneSync hash:%d stack:%s", new Object[] { Integer.valueOf(hashCode()), bt.flS() });
-    this.gFK = new f.a();
-    this.ies.append("stack:" + bt.flS() + " time:" + bt.aQJ());
+    this.ihj = 0;
+    this.ihk = new StringBuilder();
+    this.ihl = -1L;
+    this.ihm = false;
+    ae.d("MicroMsg.NetPushSync", "dksord NetSceneSync hash:%d stack:%s", new Object[] { Integer.valueOf(hashCode()), bu.fpN() });
+    this.gIr = new f.a();
+    this.ihk.append("stack:" + bu.fpN() + " time:" + bu.aRi());
     AppMethodBeat.o(132542);
   }
   
@@ -75,10 +76,10 @@ public final class b
   {
     this();
     AppMethodBeat.i(132543);
-    this.ier = paramInt;
-    this.iet = paramLong;
-    com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.NetPushSync", "dkpush do scene resp SCENE_SYNC_WAIT");
-    this.hMj = new av(com.tencent.e.j.a.aZF("MMPushCore"), new av.a()
+    this.ihj = paramInt;
+    this.ihl = paramLong;
+    ae.d("MicroMsg.NetPushSync", "dkpush do scene resp SCENE_SYNC_WAIT");
+    this.hPc = new aw(com.tencent.e.j.a.bbi("MMPushCore"), new aw.a()
     {
       public final boolean onTimerExpired()
       {
@@ -105,29 +106,29 @@ public final class b
     boolean bool = false;
     AppMethodBeat.i(132547);
     this.callback = paramf;
-    this.ies.append(" lastd:" + this.lastdispatch + " dotime:" + bt.aQJ() + " net:" + ay.getNetType(aj.getContext()));
+    this.ihk.append(" lastd:" + this.lastdispatch + " dotime:" + bu.aRi() + " net:" + az.getNetType(ak.getContext()));
     int i = hashCode();
-    int j = duf;
-    if (this.hMj != null) {
+    int j = dvk;
+    if (this.hPc != null) {
       bool = true;
     }
-    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.NetPushSync", "doScene[%d] selector:%d pusher:%b ", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Boolean.valueOf(bool) });
-    if (this.hMj != null)
+    ae.i("MicroMsg.NetPushSync", "doScene[%d] selector:%d pusher:%b ", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Boolean.valueOf(bool) });
+    if (this.hPc != null)
     {
       prepareDispatcher(parame);
-      this.hMj.az(0L, 0L);
-      this.hMj = null;
+      this.hPc.ay(0L, 0L);
+      this.hPc = null;
       AppMethodBeat.o(132547);
       return -1;
     }
     paramf = new a();
-    paramf.uin = com.tencent.mm.network.ad.aPm().iEM.getUin();
-    ccr localccr = ((v.a)paramf.getReqObj()).Fox;
-    localccr.FRq = duf;
-    localccr.FRr = z.al(bt.aRa(aj.getContext().getSharedPreferences("notify_sync_pref", com.tencent.mm.compatible.util.g.abm()).getString("notify_sync_key_keybuf", "")));
-    localccr.Scene = 1;
-    localccr.GWT = new zv();
-    localccr.FzJ = d.hgH;
+    paramf.uin = com.tencent.mm.network.ad.aPK().iHF.getUin();
+    cdl localcdl = ((v.a)paramf.getReqObj()).FGV;
+    localcdl.GjP = dvk;
+    localcdl.GjQ = z.al(bu.aSx(ak.getContext().getSharedPreferences("notify_sync_pref", com.tencent.mm.compatible.util.g.abv()).getString("notify_sync_key_keybuf", "")));
+    localcdl.Scene = 1;
+    localcdl.Hqt = new zy();
+    localcdl.FSh = d.hjv;
     i = dispatch(parame, paramf, this);
     AppMethodBeat.o(132547);
     return i;
@@ -136,7 +137,7 @@ public final class b
   public final String getInfo()
   {
     AppMethodBeat.i(132544);
-    String str = this.ies.toString();
+    String str = this.ihk.toString();
     AppMethodBeat.o(132544);
     return str;
   }
@@ -154,13 +155,13 @@ public final class b
       if (paramq == null) {}
       for (paramInt1 = -2;; paramInt1 = paramq.getType())
       {
-        com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.NetPushSync", "onGYNetEnd error type:%d", new Object[] { Integer.valueOf(paramInt1) });
+        ae.e("MicroMsg.NetPushSync", "onGYNetEnd error type:%d", new Object[] { Integer.valueOf(paramInt1) });
         AppMethodBeat.o(132548);
         return;
       }
     }
-    this.ies.append(" endtime:" + bt.aQJ());
-    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.NetPushSync", "onGYNetEnd: %d [%d,%d,%s] hash isnotifydata:%b time:%d [%s]", new Object[] { Integer.valueOf(hashCode()), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString, Boolean.valueOf(this.ieu), Long.valueOf(this.gFK.abj()), this.ies });
+    this.ihk.append(" endtime:" + bu.aRi());
+    ae.i("MicroMsg.NetPushSync", "onGYNetEnd: %d [%d,%d,%s] hash isnotifydata:%b time:%d [%s]", new Object[] { Integer.valueOf(hashCode()), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString, Boolean.valueOf(this.ihm), Long.valueOf(this.gIr.abs()), this.ihk });
     v.b localb;
     label260:
     label349:
@@ -179,18 +180,18 @@ public final class b
       localb = (v.b)paramq.getRespObj();
       if (paramInt1 == 0)
       {
-        paramString = z.a(((v.a)paramq.getReqObj()).Fox.FRr);
+        paramString = z.a(((v.a)paramq.getReqObj()).FGV.GjQ);
         if (paramString == null)
         {
           paramInt1 = -1;
-          com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.NetPushSync", "dkpush req Key : %d[%s]", new Object[] { Integer.valueOf(paramInt1), bt.cB(paramString) });
-          if (!bt.cC(paramString)) {
+          ae.d("MicroMsg.NetPushSync", "dkpush req Key : %d[%s]", new Object[] { Integer.valueOf(paramInt1), bu.cE(paramString) });
+          if (!bu.cF(paramString)) {
             break label1820;
           }
-          paramString = bt.aRa(aj.getContext().getSharedPreferences("notify_sync_pref", com.tencent.mm.compatible.util.g.abm()).getString("notify_sync_key_keybuf", ""));
-          com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.NetPushSync", "dkpush userinfo key : %d[%s]", new Object[] { Integer.valueOf(paramString.length), bt.cB(paramString) });
-          paramq = z.a(localb.Foy.FRr);
-          paramArrayOfByte = com.tencent.mm.protocal.ad.k(paramString, paramq);
+          paramString = bu.aSx(ak.getContext().getSharedPreferences("notify_sync_pref", com.tencent.mm.compatible.util.g.abv()).getString("notify_sync_key_keybuf", ""));
+          ae.d("MicroMsg.NetPushSync", "dkpush userinfo key : %d[%s]", new Object[] { Integer.valueOf(paramString.length), bu.cE(paramString) });
+          paramq = z.a(localb.FGW.GjQ);
+          paramArrayOfByte = com.tencent.mm.protocal.ad.l(paramString, paramq);
           if (paramArrayOfByte != null)
           {
             paramString = paramArrayOfByte;
@@ -198,34 +199,34 @@ public final class b
           }
           else
           {
-            com.tencent.mm.sdk.platformtools.ad.w("MicroMsg.NetPushSync", "merge key failed, use server side instead");
+            ae.w("MicroMsg.NetPushSync", "merge key failed, use server side instead");
             paramString = paramq;
           }
-          localb.Foy.FRr = z.al(paramString);
-          if ((localb.Foy.FRu != null) && (localb.Foy.FRu.nDj != null)) {
+          localb.FGW.GjQ = z.al(paramString);
+          if ((localb.FGW.GjT != null) && (localb.FGW.GjT.nIE != null)) {
             break label726;
           }
           paramInt1 = 0;
           label438:
-          com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.NetPushSync", "newMsgSize:%d", new Object[] { Integer.valueOf(paramInt1) });
+          ae.i("MicroMsg.NetPushSync", "newMsgSize:%d", new Object[] { Integer.valueOf(paramInt1) });
           if (paramString != null) {
             break label744;
           }
           paramInt2 = -1;
           label464:
-          com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.NetPushSync", "newMsgSize:%d, mergeKey: %d[%s]", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), bt.cB(paramString) });
+          ae.d("MicroMsg.NetPushSync", "newMsgSize:%d, mergeKey: %d[%s]", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), bu.cE(paramString) });
         }
       }
       else
       {
-        paramArrayOfByte = localb.Foy.FRu.nDj.iterator();
+        paramArrayOfByte = localb.FGW.GjT.nIE.iterator();
         paramInt2 = 0;
         label516:
         while (paramArrayOfByte.hasNext())
         {
-          localObject1 = (zu)paramArrayOfByte.next();
-          if (((zu)localObject1).FYU == 5) {
-            paramString = z.a(((zu)localObject1).FYV);
+          localObject1 = (zx)paramArrayOfByte.next();
+          if (((zx)localObject1).Gru == 5) {
+            paramString = z.a(((zx)localObject1).Grv);
           }
         }
       }
@@ -241,24 +242,24 @@ public final class b
       {
         localObject2 = new cv();
         ((cv)localObject2).parseFrom(paramString);
-        int i = ((cv)localObject2).ugm;
-        paramString = ((cv)localObject2).Fvi.HoB;
-        l = ((cv)localObject2).xbt;
-        if (((cv)localObject2).Fvo == null)
+        int i = ((cv)localObject2).urJ;
+        paramString = ((cv)localObject2).FNG.HId;
+        l = ((cv)localObject2).xrk;
+        if (((cv)localObject2).FNM == null)
         {
           paramInt1 = 0;
-          if (((cv)localObject2).Fvk.HoB != null) {
+          if (((cv)localObject2).FNI.HId != null) {
             continue;
           }
           paramInt3 = 0;
-          com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.NetPushSync", "oreh msgType:%d, talker:%s, newmsgID:%d, pushContent.len:%d, content.len:%d", new Object[] { Integer.valueOf(i), paramString, Long.valueOf(l), Integer.valueOf(paramInt1), Integer.valueOf(paramInt3) });
-          paramInt1 = ((cv)localObject2).ugm;
-          paramString = ((cv)localObject2).Fvi.HoB;
-          paramq = ((cv)localObject2).Fvk.HoB;
+          ae.i("MicroMsg.NetPushSync", "oreh msgType:%d, talker:%s, newmsgID:%d, pushContent.len:%d, content.len:%d", new Object[] { Integer.valueOf(i), paramString, Long.valueOf(l), Integer.valueOf(paramInt1), Integer.valueOf(paramInt3) });
+          paramInt1 = ((cv)localObject2).urJ;
+          paramString = ((cv)localObject2).FNG.HId;
+          paramq = ((cv)localObject2).FNI.HId;
           if (paramInt1 != 50) {
             continue;
           }
-          com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.NetPushSync", "hit voip");
+          ae.i("MicroMsg.NetPushSync", "hit voip");
           paramInt1 = 1;
           if (paramInt1 == 0) {
             continue;
@@ -267,77 +268,77 @@ public final class b
           break label516;
           paramInt1 = paramString.length;
           break label260;
-          paramInt1 = localb.Foy.FRu.nDj.size();
+          paramInt1 = localb.FGW.GjT.nIE.size();
           break label438;
           paramInt2 = paramString.length;
           break label464;
         }
-        paramInt1 = ((cv)localObject2).Fvo.length();
+        paramInt1 = ((cv)localObject2).FNM.length();
         continue;
-        paramInt3 = ((cv)localObject2).Fvk.HoB.length();
+        paramInt3 = ((cv)localObject2).FNI.HId.length();
         continue;
-        if ((bt.isNullOrNil(paramq)) || (bt.isNullOrNil(paramString)))
+        if ((bu.isNullOrNil(paramq)) || (bu.isNullOrNil(paramString)))
         {
-          com.tencent.mm.sdk.platformtools.ad.w("MicroMsg.NetPushSync", "check should launch to mm ,content or from username is null.");
+          ae.w("MicroMsg.NetPushSync", "check should launch to mm ,content or from username is null.");
           break label1828;
         }
         if ((paramInt1 == 9998) && (paramString.equalsIgnoreCase("weixin")))
         {
-          com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.NetPushSync", "hit ipxx");
+          ae.i("MicroMsg.NetPushSync", "hit ipxx");
           paramInt1 = 1;
           continue;
         }
         if ((paramInt1 != 10002) || (!paramq.contains("revokemsg"))) {
           break label1828;
         }
-        com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.NetPushSync", "hit MM_DATA_SYSCMD_NEWXML_SUBTYPE_REVOKE");
+        ae.i("MicroMsg.NetPushSync", "hit MM_DATA_SYSCMD_NEWXML_SUBTYPE_REVOKE");
         paramInt1 = 1;
         continue;
-        l = ((cv)localObject2).xbt;
-        str = ((cv)localObject2).Fvi.HoB;
-        paramString = ((cv)localObject2).Fvo;
-        paramInt1 = ((cv)localObject2).ugm;
-        if (!bt.isNullOrNil(paramString)) {
+        l = ((cv)localObject2).xrk;
+        str = ((cv)localObject2).FNG.HId;
+        paramString = ((cv)localObject2).FNM;
+        paramInt1 = ((cv)localObject2).urJ;
+        if (!bu.isNullOrNil(paramString)) {
           break label978;
         }
-        com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.NetPushSync", "showNotifyCation pushContent is null, skip");
-        if (((cv)localObject2).ugm != 10002) {
+        ae.i("MicroMsg.NetPushSync", "showNotifyCation pushContent is null, skip");
+        if (((cv)localObject2).urJ != 10002) {
           break label1210;
         }
         paramInt1 = 1;
         if (paramInt1 == 0) {
           break label516;
         }
-        com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.NetPushSync", "need remove pushContent");
-        ((cv)localObject2).Fvo = null;
-        ((zu)localObject1).FYV = z.al(((cv)localObject2).toByteArray());
+        ae.i("MicroMsg.NetPushSync", "need remove pushContent");
+        ((cv)localObject2).FNM = null;
+        ((zx)localObject1).Grv = z.al(((cv)localObject2).toByteArray());
       }
       catch (IOException paramString)
       {
-        com.tencent.mm.sdk.platformtools.ad.printErrStackTrace("MicroMsg.NetPushSync", paramString, "", new Object[0]);
+        ae.printErrStackTrace("MicroMsg.NetPushSync", paramString, "", new Object[0]);
       }
       break label516;
       label978:
       PString localPString1 = new PString();
       PString localPString2 = new PString();
-      paramq = bt.aRd(paramString);
+      paramq = bu.aSA(paramString);
       paramInt3 = paramq.indexOf("<pushcontent");
       paramString = paramq;
       if (paramInt3 > 0) {
         paramString = paramq.substring(paramInt3);
       }
-      paramString = bw.M(paramString, "pushcontent");
+      paramString = bx.M(paramString, "pushcontent");
       if (paramString == null) {
-        com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.NetPushSync", "inval xml");
+        ae.e("MicroMsg.NetPushSync", "inval xml");
       }
       for (;;)
       {
         paramString = (PluginZero)com.tencent.mm.kernel.g.ad(PluginZero.class);
-        if (paramString.Oeo == null) {
+        if (paramString.LGn == null) {
           break;
         }
-        paramq = com.tencent.mm.loader.j.b.arL() + com.tencent.mm.b.g.getMessageDigest(new StringBuilder("mm").append(com.tencent.mm.network.ad.aPm().iEM.getUin()).toString().getBytes());
-        paramString.Oeo.a(l, str, localPString2.value, localPString1.value, paramq + "/avatar/", paramInt1);
+        paramq = com.tencent.mm.loader.j.b.asa() + com.tencent.mm.b.g.getMessageDigest(new StringBuilder("mm").append(com.tencent.mm.network.ad.aPK().iHF.getUin()).toString().getBytes());
+        paramString.LGn.a(l, str, localPString2.value, localPString1.value, paramq + "/avatar/", paramInt1);
         break;
         localPString1.value = ((String)paramString.get(".pushcontent.$content"));
         localPString2.value = ((String)paramString.get(".pushcontent.$nickname"));
@@ -347,65 +348,65 @@ public final class b
       continue;
       try
       {
-        paramq = localb.Foy.toByteArray();
-        paramInt3 = com.tencent.mm.network.ad.aPm().iEM.getUin();
-        paramString = com.tencent.mm.booter.g.kM(paramInt3);
-        paramInt1 = com.tencent.mm.booter.g.uf(paramString) + 1;
+        paramq = localb.FGW.toByteArray();
+        paramInt3 = com.tencent.mm.network.ad.aPK().iHF.getUin();
+        paramString = com.tencent.mm.booter.g.kO(paramInt3);
+        paramInt1 = com.tencent.mm.booter.g.uA(paramString) + 1;
         paramArrayOfByte = paramString + "/syncResp.bin" + paramInt1;
         localObject1 = com.tencent.mm.b.g.getMessageDigest((com.tencent.mm.compatible.deviceinfo.q.cH(true) + paramInt3).getBytes());
         localObject2 = l.e(paramq, ((String)localObject1).getBytes());
-        com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.NotifySyncMgr", "writeFile %d, len:%d, resultLen:%d, file:%s, dump %s -> %s, key:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramq.length), Integer.valueOf(localObject2.length), paramArrayOfByte, com.tencent.mm.booter.g.N(paramq), com.tencent.mm.booter.g.N((byte[])localObject2), com.tencent.mm.booter.g.N(((String)localObject1).getBytes()) });
-        if (bt.cC((byte[])localObject2)) {
-          com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.NotifySyncMgr", "encry failed");
+        ae.i("MicroMsg.NotifySyncMgr", "writeFile %d, len:%d, resultLen:%d, file:%s, dump %s -> %s, key:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramq.length), Integer.valueOf(localObject2.length), paramArrayOfByte, com.tencent.mm.booter.g.N(paramq), com.tencent.mm.booter.g.N((byte[])localObject2), com.tencent.mm.booter.g.N(((String)localObject1).getBytes()) });
+        if (bu.cF((byte[])localObject2)) {
+          ae.e("MicroMsg.NotifySyncMgr", "encry failed");
         }
         for (;;)
         {
-          com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.NetPushSync", "onRespHandled sync");
-          aj.getContext().getSharedPreferences("notify_sync_pref", com.tencent.mm.compatible.util.g.abm()).edit().putString("notify_sync_key_keybuf", bt.cE(z.a(localb.Foy.FRr))).commit();
-          com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.NetPushSync", "dkpush pushSyncFlag:%d", new Object[] { Integer.valueOf(this.ier) });
+          ae.d("MicroMsg.NetPushSync", "onRespHandled sync");
+          ak.getContext().getSharedPreferences("notify_sync_pref", com.tencent.mm.compatible.util.g.abv()).edit().putString("notify_sync_key_keybuf", bu.cH(z.a(localb.FGW.GjQ))).commit();
+          ae.d("MicroMsg.NetPushSync", "dkpush pushSyncFlag:%d", new Object[] { Integer.valueOf(this.ihj) });
           if (paramInt2 != 0) {
             break label1732;
           }
-          if (((localb.Foy.FMr & duf) == 0) || (securityLimitCountReach())) {
+          if (((localb.FGW.GeQ & dvk) == 0) || (securityLimitCountReach())) {
             break label1727;
           }
           paramInt1 = 1;
-          com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.NetPushSync", "continue flag=" + localb.Foy.FMr + ", selector=" + duf + ", limit reach=" + securityLimitCountReach());
+          ae.i("MicroMsg.NetPushSync", "continue flag=" + localb.FGW.GeQ + ", selector=" + dvk + ", limit reach=" + securityLimitCountReach());
           if (paramInt1 == 0) {
             break label1732;
           }
           doScene(dispatcher(), this.callback);
           if (paramInt2 != 0) {
-            CoreService.Ww();
+            CoreService.WE();
           }
           AppMethodBeat.o(132548);
           return;
-          paramInt3 = i.f(paramArrayOfByte, (byte[])localObject2, localObject2.length);
-          boolean bool = i.fv(paramArrayOfByte);
+          paramInt3 = o.f(paramArrayOfByte, (byte[])localObject2, localObject2.length);
+          boolean bool = o.fB(paramArrayOfByte);
           if ((paramInt3 == 0) && (bool)) {
             break;
           }
-          com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.NotifySyncMgr", "writeFile failed:!!!!!, writeResult:%d, writedFileExit:%b", new Object[] { Integer.valueOf(paramInt3), Boolean.valueOf(bool) });
+          ae.e("MicroMsg.NotifySyncMgr", "writeFile failed:!!!!!, writeResult:%d, writedFileExit:%b", new Object[] { Integer.valueOf(paramInt3), Boolean.valueOf(bool) });
         }
       }
       catch (IOException paramString)
       {
         for (;;)
         {
-          com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.NetPushSync", "write syncResp buf err:%s", new Object[] { paramString });
-          com.tencent.mm.sdk.platformtools.ad.printErrStackTrace("MicroMsg.NetPushSync", paramString, "", new Object[0]);
+          ae.e("MicroMsg.NetPushSync", "write syncResp buf err:%s", new Object[] { paramString });
+          ae.printErrStackTrace("MicroMsg.NetPushSync", paramString, "", new Object[0]);
           continue;
           paramq = String.valueOf(paramInt1).getBytes();
-          i.f(paramString + "/syncResp.ini", paramq, paramq.length);
+          o.f(paramString + "/syncResp.ini", paramq, paramq.length);
           continue;
           label1727:
           paramInt1 = 0;
           continue;
           label1732:
-          if ((this.ier & 0x1) > 0)
+          if ((this.ihj & 0x1) > 0)
           {
-            com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.NetPushSync", "oreh NotifyData ack");
-            new g(this.iet, z.a(localb.Foy.FRr), com.tencent.mm.network.ad.aPm().iEM.getUin()).doScene(com.tencent.mm.network.ad.aPm(), new b.2(this));
+            ae.i("MicroMsg.NetPushSync", "oreh NotifyData ack");
+            new g(this.ihl, z.a(localb.FGW.GjQ), com.tencent.mm.network.ad.aPK().iHF.getUin()).doScene(com.tencent.mm.network.ad.aPK(), new b.2(this));
           }
           this.callback.onSceneEnd(this.errType, this.errCode, this.errMsg, this);
         }
@@ -434,32 +435,32 @@ public final class b
   
   public final n.b securityVerificationChecked(com.tencent.mm.network.q paramq)
   {
-    return n.b.hOp;
+    return n.b.hRi;
   }
   
   public static final class a
     implements com.tencent.mm.network.q
   {
-    private final v.a iex;
-    private final v.b iey;
-    private final boolean iez;
+    private final v.a ihp;
+    private final v.b ihq;
+    private final boolean ihr;
     int uin;
     
     public a()
     {
       AppMethodBeat.i(132539);
-      this.iex = new v.a();
-      this.iey = new v.b();
-      this.iez = false;
+      this.ihp = new v.a();
+      this.ihq = new v.b();
+      this.ihr = false;
       AppMethodBeat.o(132539);
     }
     
     public a(v.b paramb)
     {
       AppMethodBeat.i(132540);
-      this.iex = new v.a();
-      this.iey = paramb;
-      this.iez = true;
+      this.ihp = new v.a();
+      this.ihq = paramb;
+      this.ihr = true;
       AppMethodBeat.o(132540);
     }
     
@@ -491,18 +492,18 @@ public final class b
     public final l.d getReqObj()
     {
       AppMethodBeat.i(132541);
-      this.iex.setDeviceID(com.tencent.mm.compatible.deviceinfo.q.aay());
-      this.iex.setDeviceType(d.hgH);
-      this.iex.setClientVersion(d.Fnj);
-      this.iex.setUin(this.uin);
-      v.a locala = this.iex;
+      this.ihp.setDeviceID(com.tencent.mm.compatible.deviceinfo.q.aaH());
+      this.ihp.setDeviceType(d.hjv);
+      this.ihp.setClientVersion(d.FFH);
+      this.ihp.setUin(this.uin);
+      v.a locala = this.ihp;
       AppMethodBeat.o(132541);
       return locala;
     }
     
     public final l.e getRespObj()
     {
-      return this.iey;
+      return this.ihq;
     }
     
     public final int getTimeOut()
@@ -535,7 +536,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.modelmulti.b
  * JD-Core Version:    0.7.0.1
  */

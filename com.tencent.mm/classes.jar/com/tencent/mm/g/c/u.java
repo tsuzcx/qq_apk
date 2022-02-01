@@ -8,15 +8,15 @@ public abstract class u
   extends c
 {
   public static final String[] INDEX_CREATE = { "CREATE INDEX IF NOT EXISTS AppBrandStarAppUpdateTimeIndex ON AppBrandStarApp(updateTime)", "CREATE INDEX IF NOT EXISTS AppBrandStarAppOrderSequenceIndex ON AppBrandStarApp(orderSequence)" };
-  private static final int eFF = "versionType".hashCode();
-  private static final int eFp = "username".hashCode();
-  private static final int eFq = "updateTime".hashCode();
-  private static final int eGc = "orderSequence".hashCode();
+  private static final int eGY = "username".hashCode();
+  private static final int eGZ = "updateTime".hashCode();
+  private static final int eHL = "orderSequence".hashCode();
+  private static final int eHo = "versionType".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eFB = true;
-  private boolean eFm = true;
-  private boolean eFn = true;
-  private boolean eGb = true;
+  private boolean eGV = true;
+  private boolean eGW = true;
+  private boolean eHK = true;
+  private boolean eHk = true;
   public long field_orderSequence;
   public long field_updateTime;
   public String field_username;
@@ -35,7 +35,7 @@ public abstract class u
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eFp != k) {
+      if (eGY != k) {
         break label60;
       }
       this.field_username = paramCursor.getString(i);
@@ -46,11 +46,11 @@ public abstract class u
       break label20;
       break;
       label60:
-      if (eFF == k) {
+      if (eHo == k) {
         this.field_versionType = paramCursor.getInt(i);
-      } else if (eFq == k) {
+      } else if (eGZ == k) {
         this.field_updateTime = paramCursor.getLong(i);
-      } else if (eGc == k) {
+      } else if (eHL == k) {
         this.field_orderSequence = paramCursor.getLong(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
@@ -61,16 +61,16 @@ public abstract class u
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eFm) {
+    if (this.eGV) {
       localContentValues.put("username", this.field_username);
     }
-    if (this.eFB) {
+    if (this.eHk) {
       localContentValues.put("versionType", Integer.valueOf(this.field_versionType));
     }
-    if (this.eFn) {
+    if (this.eGW) {
       localContentValues.put("updateTime", Long.valueOf(this.field_updateTime));
     }
-    if (this.eGb) {
+    if (this.eHK) {
       localContentValues.put("orderSequence", Long.valueOf(this.field_orderSequence));
     }
     if (this.systemRowid > 0L) {

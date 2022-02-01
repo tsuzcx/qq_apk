@@ -8,11 +8,9 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.ViewGroup.MarginLayoutParams;
 import android.view.ViewPropertyAnimator;
 import android.view.Window;
 import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
 import android.view.animation.AnimationSet;
 import android.view.animation.ScaleAnimation;
 import android.view.animation.TranslateAnimation;
@@ -26,9 +24,10 @@ import com.tencent.mm.plugin.facedetectaction.b.a.a;
 import com.tencent.mm.plugin.facedetectaction.b.d;
 import com.tencent.mm.plugin.facedetectaction.b.d.a;
 import com.tencent.mm.plugin.facedetectlight.ui.PreviewFrameLayout;
-import com.tencent.mm.protocal.protobuf.bbf;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.bbv;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.MMTextureView;
 
@@ -36,35 +35,35 @@ import com.tencent.mm.ui.base.MMTextureView;
 public class FaceActionUI
   extends MMActivity
 {
-  int dnL;
+  int doQ;
   private long endTime;
-  RelativeLayout rlA;
-  RelativeLayout rlB;
-  RelativeLayout rlC;
-  ImageView rlD;
-  ImageView rlE;
-  ImageView rlF;
-  RelativeLayout rpW;
-  private PreviewFrameLayout rpX;
-  private FaceActionMask rpY;
-  private MMTextureView rpZ;
-  private int rpj;
-  private String rpk;
-  private a.a rpn;
-  ImageView rqa;
-  private TextView rqb;
-  private TextView rqc;
-  private ImageView rqd;
-  private Button rqe;
-  private Button rqf;
-  private TextView rqg;
-  public boolean rqh = false;
-  com.tencent.mm.plugin.facedetectlight.ui.b rqi;
-  private int rqj;
-  private int rqk;
-  private String rql;
-  private int rqm;
-  private String rqn = "";
+  RelativeLayout rtF;
+  RelativeLayout rtG;
+  RelativeLayout rtH;
+  ImageView rtI;
+  ImageView rtJ;
+  ImageView rtK;
+  private int rxn;
+  private String rxo;
+  private a.a rxr;
+  RelativeLayout rya;
+  private PreviewFrameLayout ryb;
+  private FaceActionMask ryc;
+  private MMTextureView ryd;
+  ImageView rye;
+  private TextView ryf;
+  private TextView ryg;
+  private ImageView ryh;
+  private Button ryi;
+  private Button ryj;
+  private TextView ryk;
+  public boolean ryl = false;
+  com.tencent.mm.plugin.facedetectlight.ui.b rym;
+  private int ryn;
+  private int ryo;
+  private String ryp;
+  private int ryq;
+  private String ryr = "";
   private int scene;
   private long startTime;
   
@@ -112,26 +111,56 @@ public class FaceActionUI
     AppMethodBeat.o(104260);
   }
   
-  private void ctI()
+  private void cvP()
+  {
+    AppMethodBeat.i(104257);
+    this.rya = ((RelativeLayout)findViewById(2131299697));
+    this.ryb = ((PreviewFrameLayout)findViewById(2131299689));
+    this.ryd = ((MMTextureView)findViewById(2131299688));
+    this.ryd.setVisibility(4);
+    this.ryc = ((FaceActionMask)findViewById(2131299690));
+    this.ryh = ((ImageView)findViewById(2131299657));
+    this.ryh.post(new FaceActionUI.3(this));
+    this.ryf = ((TextView)findViewById(2131299691));
+    this.ryf.post(new FaceActionUI.4(this));
+    this.ryg = ((TextView)findViewById(2131299656));
+    this.ryg.setOnClickListener(new FaceActionUI.5(this));
+    AppMethodBeat.o(104257);
+  }
+  
+  private void cvQ()
+  {
+    AppMethodBeat.i(104263);
+    ae.i("MicroMsg.FaceActionUI", "preview");
+    if (this.rym != null)
+    {
+      this.rym.rzb = true;
+      ae.i("MicroMsg.FaceActionUI", "mCamera ！= null");
+    }
+    this.ryf.setText(2131758753);
+    AppMethodBeat.o(104263);
+  }
+  
+  private void cvj()
   {
     AppMethodBeat.i(104251);
-    this.rpn = new a.a() {};
-    d.rpy.rpE = new d.a()
+    this.rxr = new a.a() {};
+    d.rxC.rxI = new d.a()
     {
       public final void a(int paramAnonymousInt1, final int paramAnonymousInt2, final String paramAnonymousString1, final String paramAnonymousString2, final int paramAnonymousInt3)
       {
-        AppMethodBeat.i(213179);
-        ad.i("MicroMsg.FaceActionUI", "onError, err: %s, cgiErrCode: %s, cgiErrMsg: %s,retry: %s", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString1, Integer.valueOf(paramAnonymousInt3) });
+        AppMethodBeat.i(188651);
+        ae.i("MicroMsg.FaceActionUI", "onError, err: %s, cgiErrCode: %s, cgiErrMsg: %s,retry: %s", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString1, Integer.valueOf(paramAnonymousInt3) });
         FaceActionUI.b(FaceActionUI.this, paramAnonymousInt1);
         FaceActionUI.c(FaceActionUI.this, paramAnonymousInt2);
         FaceActionUI.c(FaceActionUI.this, paramAnonymousString1);
         FaceActionUI.b(FaceActionUI.this, paramAnonymousString2);
-        com.tencent.mm.sdk.platformtools.aq.f(new Runnable()
+        ar.f(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(104237);
-            if (!bt.isNullOrNil(paramAnonymousString1))
+            if (!bu.isNullOrNil(paramAnonymousString1))
             {
               FaceActionUI.f(FaceActionUI.this).setText(paramAnonymousString1);
               FaceActionUI.g(FaceActionUI.this);
@@ -146,8 +175,8 @@ public class FaceActionUI
                   AppMethodBeat.i(104235);
                   com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
                   localb.bd(paramAnonymous3View);
-                  com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/facedetectaction/ui/FaceActionUI$2$4$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-                  ad.i("MicroMsg.FaceActionUI", "click retry");
+                  com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/facedetectaction/ui/FaceActionUI$2$4$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+                  ae.i("MicroMsg.FaceActionUI", "click retry");
                   FaceActionUI.i(FaceActionUI.this);
                   com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/facedetectaction/ui/FaceActionUI$2$4$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
                   AppMethodBeat.o(104235);
@@ -158,12 +187,12 @@ public class FaceActionUI
             {
               FaceActionUI.e(FaceActionUI.this).clearAnimation();
               FaceActionUI localFaceActionUI = FaceActionUI.this;
-              localFaceActionUI.rpW.setVisibility(8);
-              localFaceActionUI.rlC.setVisibility(0);
-              localFaceActionUI.rlE.clearAnimation();
-              localFaceActionUI.rqa.setVisibility(0);
-              localFaceActionUI.rlA.setVisibility(8);
-              d.rpy.mStatus = 3;
+              localFaceActionUI.rya.setVisibility(8);
+              localFaceActionUI.rtH.setVisibility(0);
+              localFaceActionUI.rtJ.clearAnimation();
+              localFaceActionUI.rye.setVisibility(0);
+              localFaceActionUI.rtF.setVisibility(8);
+              d.rxC.mStatus = 3;
               AppMethodBeat.o(104237);
               return;
               FaceActionUI.f(FaceActionUI.this).setText(2131758680);
@@ -177,9 +206,9 @@ public class FaceActionUI
                   AppMethodBeat.i(104236);
                   com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
                   localb.bd(paramAnonymous3View);
-                  com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/facedetectaction/ui/FaceActionUI$2$4$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-                  ad.i("MicroMsg.FaceActionUI", "click finish");
-                  FaceActionUI.this.g("fail", FaceActionUI.2.4.this.rqv, "", FaceActionUI.2.4.this.rqw);
+                  com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/facedetectaction/ui/FaceActionUI$2$4$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+                  ae.i("MicroMsg.FaceActionUI", "click finish");
+                  FaceActionUI.this.g("fail", FaceActionUI.2.4.this.ryz, "", FaceActionUI.2.4.this.ryA);
                   com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/facedetectaction/ui/FaceActionUI$2$4$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
                   AppMethodBeat.o(104236);
                 }
@@ -187,49 +216,49 @@ public class FaceActionUI
             }
           }
         });
-        AppMethodBeat.o(213179);
+        AppMethodBeat.o(188651);
       }
       
-      public final void a(final bbf paramAnonymousbbf)
+      public final void a(final bbv paramAnonymousbbv)
       {
-        AppMethodBeat.i(213178);
-        ad.i("MicroMsg.FaceActionUI", "onVerifyFinish:   authToken ：%s", new Object[] { paramAnonymousbbf.Gbt });
-        com.tencent.mm.sdk.platformtools.aq.f(new Runnable()
+        AppMethodBeat.i(188650);
+        ae.i("MicroMsg.FaceActionUI", "onVerifyFinish:   authToken ：%s", new Object[] { paramAnonymousbbv.Gua });
+        ar.f(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(104234);
             FaceActionUI.e(FaceActionUI.this).clearAnimation();
             FaceActionUI localFaceActionUI = FaceActionUI.this;
-            localFaceActionUI.rpW.setVisibility(8);
-            localFaceActionUI.rlE.clearAnimation();
-            localFaceActionUI.rlA.setVisibility(8);
-            localFaceActionUI.rqa.setVisibility(0);
-            localFaceActionUI.rlB.setVisibility(0);
-            localFaceActionUI.rlF.setScaleX(0.0F);
-            localFaceActionUI.rlF.setScaleY(0.0F);
-            localFaceActionUI.rlF.animate().scaleX(1.0F).scaleY(1.0F).setDuration(800L);
-            FaceActionUI.b(FaceActionUI.this, paramAnonymousbbf.Gyp);
+            localFaceActionUI.rya.setVisibility(8);
+            localFaceActionUI.rtJ.clearAnimation();
+            localFaceActionUI.rtF.setVisibility(8);
+            localFaceActionUI.rye.setVisibility(0);
+            localFaceActionUI.rtG.setVisibility(0);
+            localFaceActionUI.rtK.setScaleX(0.0F);
+            localFaceActionUI.rtK.setScaleY(0.0F);
+            localFaceActionUI.rtK.animate().scaleX(1.0F).scaleY(1.0F).setDuration(800L);
+            FaceActionUI.b(FaceActionUI.this, paramAnonymousbbv.GRP);
             localFaceActionUI = FaceActionUI.this;
-            String str1 = paramAnonymousbbf.Gbt;
-            String str2 = paramAnonymousbbf.Gyp;
-            ad.i("MicroMsg.FaceActionUI", "callbackDetectSuccess（）");
+            String str1 = paramAnonymousbbv.Gua;
+            String str2 = paramAnonymousbbv.GRP;
+            ae.i("MicroMsg.FaceActionUI", "callbackDetectSuccess（）");
             Bundle localBundle = new Bundle();
             localBundle.putString("token", str1);
             localBundle.putString("serial_id", str2);
-            localFaceActionUI.dnL = 0;
-            localFaceActionUI.a("ok", 0, localBundle, Boolean.valueOf(localFaceActionUI.rqh));
+            localFaceActionUI.doQ = 0;
+            localFaceActionUI.a("ok", 0, localBundle, Boolean.valueOf(localFaceActionUI.ryl));
             AppMethodBeat.o(104234);
           }
         });
-        AppMethodBeat.o(213178);
+        AppMethodBeat.o(188650);
       }
       
-      public final void aW(final int paramAnonymousInt, final String paramAnonymousString)
+      public final void aV(final int paramAnonymousInt, final String paramAnonymousString)
       {
         AppMethodBeat.i(104238);
-        ad.i("MicroMsg.FaceActionUI", "onInitFaceCheckFinish: %s", new Object[] { Integer.valueOf(paramAnonymousInt) });
-        com.tencent.mm.sdk.platformtools.aq.f(new Runnable()
+        ae.i("MicroMsg.FaceActionUI", "onInitFaceCheckFinish: %s", new Object[] { Integer.valueOf(paramAnonymousInt) });
+        ar.f(new Runnable()
         {
           public final void run()
           {
@@ -245,22 +274,22 @@ public class FaceActionUI
         AppMethodBeat.o(104238);
       }
       
-      public final void cun()
+      public final void cvO()
       {
         AppMethodBeat.i(104239);
-        ad.i("MicroMsg.FaceActionUI", "onStartUpload");
-        com.tencent.mm.sdk.platformtools.aq.f(new Runnable()
+        ae.i("MicroMsg.FaceActionUI", "onStartUpload");
+        ar.f(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(104233);
             FaceActionUI localFaceActionUI = FaceActionUI.this;
-            if (localFaceActionUI.rqi != null) {
-              localFaceActionUI.rqi.stopPreview();
+            if (localFaceActionUI.rym != null) {
+              localFaceActionUI.rym.stopPreview();
             }
-            localFaceActionUI.rpW.setVisibility(8);
-            localFaceActionUI.rlA.setVisibility(0);
-            TranslateAnimation localTranslateAnimation = new TranslateAnimation(0.0F, 0.0F, 0.0F, localFaceActionUI.rlD.getHeight());
+            localFaceActionUI.rya.setVisibility(8);
+            localFaceActionUI.rtF.setVisibility(0);
+            TranslateAnimation localTranslateAnimation = new TranslateAnimation(0.0F, 0.0F, 0.0F, localFaceActionUI.rtI.getHeight());
             localTranslateAnimation.setDuration(2000L);
             localTranslateAnimation.setRepeatMode(2);
             localTranslateAnimation.setRepeatCount(-1);
@@ -273,83 +302,16 @@ public class FaceActionUI
             localAnimationSet.addAnimation(localScaleAnimation);
             localAnimationSet.setAnimationListener(new FaceActionUI.7(localFaceActionUI));
             localAnimationSet.setRepeatCount(-1);
-            localFaceActionUI.rlE.startAnimation(localAnimationSet);
+            localFaceActionUI.rtJ.startAnimation(localAnimationSet);
             AppMethodBeat.o(104233);
           }
         });
         AppMethodBeat.o(104239);
       }
     };
-    d.rpy.fLP = this;
-    d.rpy.a(this);
+    d.rxC.fNT = this;
+    d.rxC.a(this);
     AppMethodBeat.o(104251);
-  }
-  
-  private void cuo()
-  {
-    AppMethodBeat.i(104257);
-    this.rpW = ((RelativeLayout)findViewById(2131299697));
-    this.rpX = ((PreviewFrameLayout)findViewById(2131299689));
-    this.rpZ = ((MMTextureView)findViewById(2131299688));
-    this.rpZ.setVisibility(4);
-    this.rpY = ((FaceActionMask)findViewById(2131299690));
-    this.rqd = ((ImageView)findViewById(2131299657));
-    this.rqd.post(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(104242);
-        ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)FaceActionUI.j(FaceActionUI.this).getLayoutParams();
-        localMarginLayoutParams.topMargin = ((int)(FaceActionUI.k(FaceActionUI.this).getHeight() * 0.4D));
-        FaceActionUI.j(FaceActionUI.this).setLayoutParams(localMarginLayoutParams);
-        FaceActionUI.j(FaceActionUI.this).setVisibility(0);
-        AppMethodBeat.o(104242);
-      }
-    });
-    this.rqb = ((TextView)findViewById(2131299691));
-    this.rqb.post(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(104243);
-        ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)FaceActionUI.l(FaceActionUI.this).getLayoutParams();
-        int i = (int)(FaceActionUI.k(FaceActionUI.this).getHeight() * 0.4D) + (int)(FaceActionUI.k(FaceActionUI.this).getWidth() * 0.35D) + com.tencent.mm.ui.aq.fromDPToPix(FaceActionUI.this, 30);
-        localMarginLayoutParams.topMargin = i;
-        ad.i("MicroMsg.FaceActionUI", "topMargin：%d", new Object[] { Integer.valueOf(i) });
-        FaceActionUI.l(FaceActionUI.this).setLayoutParams(localMarginLayoutParams);
-        FaceActionUI.l(FaceActionUI.this).setVisibility(0);
-        AppMethodBeat.o(104243);
-      }
-    });
-    this.rqc = ((TextView)findViewById(2131299656));
-    this.rqc.setOnClickListener(new View.OnClickListener()
-    {
-      public final void onClick(View paramAnonymousView)
-      {
-        AppMethodBeat.i(104244);
-        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/facedetectaction/ui/FaceActionUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-        d.rpy.onBackPressed();
-        FaceActionUI.this.finish();
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/facedetectaction/ui/FaceActionUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(104244);
-      }
-    });
-    AppMethodBeat.o(104257);
-  }
-  
-  private void cup()
-  {
-    AppMethodBeat.i(104263);
-    ad.i("MicroMsg.FaceActionUI", "preview");
-    if (this.rqi != null)
-    {
-      this.rqi.rqM = true;
-      ad.i("MicroMsg.FaceActionUI", "mCamera ！= null");
-    }
-    this.rqb.setText(2131758753);
-    AppMethodBeat.o(104263);
   }
   
   private Intent d(String paramString, int paramInt, Bundle paramBundle)
@@ -359,11 +321,11 @@ public class FaceActionUI
     localBundle.putInt("err_code", paramInt);
     localBundle.putString("err_msg", paramString);
     localBundle.putInt("scene", this.scene);
-    localBundle.putInt("countFace", this.rqm);
-    localBundle.putInt("err_type", this.dnL);
-    this.endTime = bt.HI();
-    ad.i("MicroMsg.FaceActionUI", "endTime：" + this.endTime);
-    ad.i("MicroMsg.FaceActionUI", "startTime：" + this.startTime);
+    localBundle.putInt("countFace", this.ryq);
+    localBundle.putInt("err_type", this.doQ);
+    this.endTime = bu.HQ();
+    ae.i("MicroMsg.FaceActionUI", "endTime：" + this.endTime);
+    ae.i("MicroMsg.FaceActionUI", "startTime：" + this.startTime);
     localBundle.putLong("totalTime", this.endTime - this.startTime);
     if (paramBundle != null) {
       localBundle.putAll(paramBundle);
@@ -377,7 +339,7 @@ public class FaceActionUI
   public final void a(String paramString, int paramInt, Bundle paramBundle, Boolean paramBoolean)
   {
     AppMethodBeat.i(104259);
-    ad.i("MicroMsg.FaceActionUI", "finishWithResult errMsg: %s, errCode: %d", new Object[] { paramString, Integer.valueOf(paramInt) });
+    ae.i("MicroMsg.FaceActionUI", "finishWithResult errMsg: %s, errCode: %d", new Object[] { paramString, Integer.valueOf(paramInt) });
     if (paramBoolean.booleanValue()) {}
     for (paramBoolean = "yes";; paramBoolean = "no")
     {
@@ -386,8 +348,8 @@ public class FaceActionUI
       if (paramBundle != null) {
         localBundle.putAll(paramBundle);
       }
-      ad.i("MicroMsg.FaceActionUI", "seriaId:%s", new Object[] { this.rqn });
-      localBundle.putString("serial_id", this.rqn);
+      ae.i("MicroMsg.FaceActionUI", "seriaId:%s", new Object[] { this.ryr });
+      localBundle.putString("serial_id", this.ryr);
       c(paramString, paramInt, localBundle);
       finish();
       AppMethodBeat.o(104259);
@@ -397,13 +359,13 @@ public class FaceActionUI
   
   public final void g(String paramString1, int paramInt, String paramString2, String paramString3)
   {
-    AppMethodBeat.i(213180);
-    ad.i("MicroMsg.FaceActionUI", "callbackDetectFailed（）");
+    AppMethodBeat.i(188652);
+    ae.i("MicroMsg.FaceActionUI", "callbackDetectFailed（）");
     Bundle localBundle = new Bundle();
     localBundle.putString("token", paramString2);
     localBundle.putString("serial_id", paramString3);
-    a(paramString1, paramInt, localBundle, Boolean.valueOf(this.rqh));
-    AppMethodBeat.o(213180);
+    a(paramString1, paramInt, localBundle, Boolean.valueOf(this.ryl));
+    AppMethodBeat.o(188652);
   }
   
   public int getLayoutId()
@@ -414,7 +376,7 @@ public class FaceActionUI
   public void onBackPressed()
   {
     AppMethodBeat.i(104262);
-    d.rpy.onBackPressed();
+    d.rxC.onBackPressed();
     finish();
     AppMethodBeat.o(104262);
   }
@@ -422,61 +384,47 @@ public class FaceActionUI
   public void onCreate(Bundle paramBundle)
   {
     AppMethodBeat.i(104250);
-    ad.d("MicroMsg.FaceActionUI", "start VerifyActivity");
+    ae.d("MicroMsg.FaceActionUI", "start VerifyActivity");
     super.onCreate(paramBundle);
     getWindow().setFlags(1024, 1024);
     getWindow().addFlags(2097280);
     this.scene = getIntent().getIntExtra("scene", 0);
-    this.rqm = 0;
-    this.startTime = bt.HI();
-    this.dnL = 4;
+    this.ryq = 0;
+    this.startTime = bu.HQ();
+    this.doQ = 4;
     if (Build.VERSION.SDK_INT >= 16) {
       getWindow().getDecorView().setSystemUiVisibility(1280);
     }
     setActionbarColor(getContext().getResources().getColor(2131101179));
-    ad.d("MicroMsg.FaceActionUI", "initLayout");
-    this.rqa = ((ImageView)findViewById(2131297031));
-    cuo();
-    this.rlA = ((RelativeLayout)findViewById(2131299731));
-    this.rlB = ((RelativeLayout)findViewById(2131299732));
-    this.rlC = ((RelativeLayout)findViewById(2131299730));
-    this.rlA.setVisibility(4);
-    this.rlB.setVisibility(4);
-    this.rlC.setVisibility(4);
-    this.rlD = ((ImageView)findViewById(2131299673));
-    this.rlE = ((ImageView)findViewById(2131299670));
-    this.rlF = ((ImageView)findViewById(2131299680));
-    this.rqg = ((TextView)findViewById(2131299678));
-    this.rqe = ((Button)findViewById(2131299676));
-    this.rqf = ((Button)findViewById(2131299677));
-    if (!bt.isNullOrNil(d.rpy.dFU))
+    ae.d("MicroMsg.FaceActionUI", "initLayout");
+    this.rye = ((ImageView)findViewById(2131297031));
+    cvP();
+    this.rtF = ((RelativeLayout)findViewById(2131299731));
+    this.rtG = ((RelativeLayout)findViewById(2131299732));
+    this.rtH = ((RelativeLayout)findViewById(2131299730));
+    this.rtF.setVisibility(4);
+    this.rtG.setVisibility(4);
+    this.rtH.setVisibility(4);
+    this.rtI = ((ImageView)findViewById(2131299673));
+    this.rtJ = ((ImageView)findViewById(2131299670));
+    this.rtK = ((ImageView)findViewById(2131299680));
+    this.ryk = ((TextView)findViewById(2131299678));
+    this.ryi = ((Button)findViewById(2131299676));
+    this.ryj = ((Button)findViewById(2131299677));
+    if (!bu.isNullOrNil(d.rxC.dGZ))
     {
-      this.rqf.setText(d.rpy.dFU);
-      this.rqf.setOnClickListener(new View.OnClickListener()
-      {
-        public final void onClick(View paramAnonymousView)
-        {
-          AppMethodBeat.i(104245);
-          com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bd(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/facedetectaction/ui/FaceActionUI$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-          ad.i("MicroMsg.FaceActionUI", "click mUploadFailedConfig");
-          FaceActionUI.m(FaceActionUI.this);
-          FaceActionUI.this.g("fail", FaceActionUI.n(FaceActionUI.this), "", "");
-          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/facedetectaction/ui/FaceActionUI$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-          AppMethodBeat.o(104245);
-        }
-      });
+      this.ryj.setText(d.rxC.dGZ);
+      this.ryj.setOnClickListener(new FaceActionUI.6(this));
     }
-    while (p.al(this))
+    while (p.am(this))
     {
-      ad.i("MicroMsg.FaceActionUI", "carson: checkFacePermissionAnd Request true and do init ");
-      ctI();
+      ae.i("MicroMsg.FaceActionUI", "carson: checkFacePermissionAnd Request true and do init ");
+      cvj();
       AppMethodBeat.o(104250);
       return;
-      this.rqf.setVisibility(8);
+      this.ryj.setVisibility(8);
     }
-    ad.i("MicroMsg.FaceActionUI", "carson: no camera permission. request permission");
+    ae.i("MicroMsg.FaceActionUI", "carson: no camera permission. request permission");
     AppMethodBeat.o(104250);
   }
   
@@ -484,15 +432,15 @@ public class FaceActionUI
   {
     AppMethodBeat.i(104256);
     super.onDestroy();
-    ad.i("MicroMsg.FaceActionUI", "onDestroy");
-    d.rpy.release(true);
+    ae.i("MicroMsg.FaceActionUI", "onDestroy");
+    d.rxC.release(true);
     AppMethodBeat.o(104256);
   }
   
   public void onPause()
   {
     AppMethodBeat.i(104254);
-    ad.d("MicroMsg.FaceActionUI", "onPause");
+    ae.d("MicroMsg.FaceActionUI", "onPause");
     super.onPause();
     AppMethodBeat.o(104254);
   }
@@ -500,7 +448,7 @@ public class FaceActionUI
   public void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
     AppMethodBeat.i(104264);
-    ad.i("MicroMsg.FaceActionUI", "carson onRequestPermissionsResult");
+    ae.i("MicroMsg.FaceActionUI", "carson onRequestPermissionsResult");
     if ((paramArrayOfInt == null) || (paramArrayOfInt.length <= 0))
     {
       AppMethodBeat.o(104264);
@@ -528,7 +476,7 @@ public class FaceActionUI
       if (paramInt == 0) {
         break label300;
       }
-      ctI();
+      cvj();
     }
     String str1;
     Object localObject;
@@ -539,30 +487,17 @@ public class FaceActionUI
     }
     for (;;)
     {
-      ad.i("MicroMsg.FaceActionUI", "carson PermissionsResult:errMsg".concat(String.valueOf(str1)));
-      ad.i("MicroMsg.FaceActionUI", "carson PermissionsResult:showErrMsg".concat(String.valueOf(localObject)));
-      ad.i("MicroMsg.FaceActionUI", "checkPermissionFailedAnimation");
-      this.rqg.setText((CharSequence)localObject);
-      this.rqe.setText(2131758760);
-      this.rqe.setOnClickListener(new View.OnClickListener()
-      {
-        public final void onClick(View paramAnonymousView)
-        {
-          AppMethodBeat.i(104248);
-          com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bd(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/facedetectaction/ui/FaceActionUI$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-          ad.i("MicroMsg.FaceActionUI", "click finish");
-          FaceActionUI.this.g("fail", 90010, "", "");
-          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/facedetectaction/ui/FaceActionUI$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-          AppMethodBeat.o(104248);
-        }
-      });
-      this.rpW.setVisibility(8);
-      this.rlC.setVisibility(0);
-      this.rlE.clearAnimation();
-      this.rqa.setVisibility(0);
-      this.rlA.setVisibility(8);
+      ae.i("MicroMsg.FaceActionUI", "carson PermissionsResult:errMsg".concat(String.valueOf(str1)));
+      ae.i("MicroMsg.FaceActionUI", "carson PermissionsResult:showErrMsg".concat(String.valueOf(localObject)));
+      ae.i("MicroMsg.FaceActionUI", "checkPermissionFailedAnimation");
+      this.ryk.setText((CharSequence)localObject);
+      this.ryi.setText(2131758760);
+      this.ryi.setOnClickListener(new FaceActionUI.8(this));
+      this.rya.setVisibility(8);
+      this.rtH.setVisibility(0);
+      this.rtJ.clearAnimation();
+      this.rye.setVisibility(0);
+      this.rtF.setVisibility(8);
       paramInt = 0;
       break label77;
       localObject = str3;
@@ -616,20 +551,20 @@ public class FaceActionUI
   {
     AppMethodBeat.i(104253);
     super.onResume();
-    ad.d("MicroMsg.FaceActionUI", "onResume");
-    cup();
+    ae.d("MicroMsg.FaceActionUI", "onResume");
+    cvQ();
     AppMethodBeat.o(104253);
   }
   
   public void onStart()
   {
     AppMethodBeat.i(104252);
-    ad.d("MicroMsg.FaceActionUI", "onStart");
+    ae.d("MicroMsg.FaceActionUI", "onStart");
     super.onStart();
-    if (this.rqi != null)
+    if (this.rym != null)
     {
-      this.rqi.a(this.rpZ);
-      this.rqi.cuu();
+      this.rym.a(this.ryd);
+      this.rym.cvV();
     }
     AppMethodBeat.o(104252);
   }
@@ -637,10 +572,10 @@ public class FaceActionUI
   public void onStop()
   {
     AppMethodBeat.i(104255);
-    ad.i("MicroMsg.FaceActionUI", "onStop");
+    ae.i("MicroMsg.FaceActionUI", "onStop");
     super.onStop();
-    if (this.rqi != null) {
-      this.rqi.rkX = false;
+    if (this.rym != null) {
+      this.rym.rtb = false;
     }
     AppMethodBeat.o(104255);
   }

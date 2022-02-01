@@ -1,86 +1,86 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.LinkedList;
 
 public final class ahk
-  extends com.tencent.mm.bx.a
+  extends cvw
 {
-  public int FMH;
-  public String Name;
-  public String PriceType;
-  public int ukh;
+  public String GxA;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(91446);
+    AppMethodBeat.i(82398);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.Name != null) {
-        paramVarArgs.d(1, this.Name);
+      if (this.BaseRequest != null)
+      {
+        paramVarArgs.lJ(1, this.BaseRequest.computeSize());
+        this.BaseRequest.writeFields(paramVarArgs);
       }
-      paramVarArgs.aS(2, this.FMH);
-      if (this.PriceType != null) {
-        paramVarArgs.d(3, this.PriceType);
+      if (this.GxA != null) {
+        paramVarArgs.d(2, this.GxA);
       }
-      paramVarArgs.aS(4, this.ukh);
-      AppMethodBeat.o(91446);
+      AppMethodBeat.o(82398);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.Name == null) {
-        break label362;
+      if (this.BaseRequest == null) {
+        break label370;
       }
     }
-    label362:
-    for (paramInt = f.a.a.b.b.a.e(1, this.Name) + 0;; paramInt = 0)
+    label370:
+    for (paramInt = f.a.a.a.lI(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
     {
-      int i = paramInt + f.a.a.b.b.a.bz(2, this.FMH);
-      paramInt = i;
-      if (this.PriceType != null) {
-        paramInt = i + f.a.a.b.b.a.e(3, this.PriceType);
+      int i = paramInt;
+      if (this.GxA != null) {
+        i = paramInt + f.a.a.b.b.a.e(2, this.GxA);
       }
-      i = f.a.a.b.b.a.bz(4, this.ukh);
-      AppMethodBeat.o(91446);
-      return paramInt + i;
+      AppMethodBeat.o(82398);
+      return i;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = cvw.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cvw.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
-        AppMethodBeat.o(91446);
+        AppMethodBeat.o(82398);
         return 0;
       }
       if (paramInt == 3)
       {
-        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+        Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
         ahk localahk = (ahk)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(91446);
+          AppMethodBeat.o(82398);
           return -1;
         case 1: 
-          localahk.Name = locala.NPN.readString();
-          AppMethodBeat.o(91446);
-          return 0;
-        case 2: 
-          localahk.FMH = locala.NPN.zc();
-          AppMethodBeat.o(91446);
-          return 0;
-        case 3: 
-          localahk.PriceType = locala.NPN.readString();
-          AppMethodBeat.o(91446);
+          paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            Object localObject2 = (byte[])paramVarArgs.get(paramInt);
+            localObject1 = new jc();
+            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
+            for (boolean bool = true; bool; bool = ((jc)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cvw.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            localahk.BaseRequest = ((jc)localObject1);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(82398);
           return 0;
         }
-        localahk.ukh = locala.NPN.zc();
-        AppMethodBeat.o(91446);
+        localahk.GxA = ((f.a.a.a.a)localObject1).OmT.readString();
+        AppMethodBeat.o(82398);
         return 0;
       }
-      AppMethodBeat.o(91446);
+      AppMethodBeat.o(82398);
       return -1;
     }
   }

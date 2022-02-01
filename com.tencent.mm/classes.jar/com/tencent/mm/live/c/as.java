@@ -10,100 +10,100 @@ import com.tencent.mm.ui.ar;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/live/plugin/LiveShadowPlugin;", "Lcom/tencent/mm/live/plugin/BaseLivePlugin;", "root", "Landroid/view/ViewGroup;", "statueMonitor", "Lcom/tencent/mm/live/plugin/ILiveStatus;", "(Landroid/view/ViewGroup;Lcom/tencent/mm/live/plugin/ILiveStatus;)V", "shadowDown", "Landroid/view/View;", "kotlin.jvm.PlatformType", "shadowUp", "getShadowRects", "", "Landroid/graphics/Rect;", "()[Landroid/graphics/Rect;", "statusChange", "", "status", "Lcom/tencent/mm/live/plugin/ILiveStatus$LiveStatus;", "param", "Landroid/os/Bundle;", "plugin-logic_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/live/plugin/LiveShadowPlugin;", "Lcom/tencent/mm/live/plugin/BaseLivePlugin;", "root", "Landroid/view/ViewGroup;", "statueMonitor", "Lcom/tencent/mm/live/plugin/ILiveStatus;", "(Landroid/view/ViewGroup;Lcom/tencent/mm/live/plugin/ILiveStatus;)V", "shadowDown", "Landroid/view/View;", "kotlin.jvm.PlatformType", "shadowUp", "getShadowRects", "", "Landroid/graphics/Rect;", "()[Landroid/graphics/Rect;", "statusChange", "", "status", "Lcom/tencent/mm/live/plugin/ILiveStatus$LiveStatus;", "param", "Landroid/os/Bundle;", "plugin-logic_release"})
 public final class as
   extends a
 {
-  private final b gSV;
-  private final View gWM;
-  private final View gWN;
+  private final b gVE;
+  private final View gZA;
+  private final View gZz;
   
   public as(ViewGroup paramViewGroup, b paramb)
   {
     super(paramViewGroup, paramb);
-    AppMethodBeat.i(212567);
-    this.gSV = paramb;
-    this.gWM = paramViewGroup.findViewById(2131307770);
-    this.gWN = paramViewGroup.findViewById(2131307772);
-    if (!aol())
+    AppMethodBeat.i(216193);
+    this.gVE = paramb;
+    this.gZz = paramViewGroup.findViewById(2131307770);
+    this.gZA = paramViewGroup.findViewById(2131307772);
+    if (!aoA())
     {
-      paramb = this.gWM;
+      paramb = this.gZz;
       p.g(paramb, "shadowDown");
       paramb = paramb.getLayoutParams();
-      paramb.height += ar.ej(paramViewGroup.getContext());
+      paramb.height += ar.en(paramViewGroup.getContext());
     }
-    AppMethodBeat.o(212567);
+    AppMethodBeat.o(216193);
   }
   
   public final void a(b.c paramc, Bundle paramBundle)
   {
-    AppMethodBeat.i(212566);
+    AppMethodBeat.i(216192);
     p.h(paramc, "status");
-    switch (at.cpQ[paramc.ordinal()])
+    switch (at.cqt[paramc.ordinal()])
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(212566);
+      AppMethodBeat.o(216192);
       return;
-      nI(4);
-      AppMethodBeat.o(212566);
+      nL(4);
+      AppMethodBeat.o(216192);
       return;
-      if (this.gSV.getLiveRole() != 1)
+      if (this.gVE.getLiveRole() != 1)
       {
-        nI(4);
-        AppMethodBeat.o(212566);
+        nL(4);
+        AppMethodBeat.o(216192);
         return;
-        nI(0);
-        AppMethodBeat.o(212566);
+        nL(0);
+        AppMethodBeat.o(216192);
         return;
-        if (this.gSV.getLiveRole() == 0)
+        if (this.gVE.getLiveRole() == 0)
         {
           if ((paramBundle != null) && (paramBundle.getBoolean("PARAM_IS_ENTERING_COMMENT") == true))
           {
-            nI(4);
-            AppMethodBeat.o(212566);
+            nL(4);
+            AppMethodBeat.o(216192);
             return;
           }
-          nI(0);
+          nL(0);
         }
       }
     }
   }
   
-  public final Rect[] aoT()
+  public final Rect[] aph()
   {
-    AppMethodBeat.i(212565);
+    AppMethodBeat.i(216191);
     Object localObject1 = new int[2];
-    this.gWM.getLocationOnScreen((int[])localObject1);
+    this.gZz.getLocationOnScreen((int[])localObject1);
     int i = localObject1[0];
     int j = localObject1[1];
     int k = localObject1[0];
-    Object localObject2 = this.gWM;
+    Object localObject2 = this.gZz;
     p.g(localObject2, "shadowDown");
     int m = ((View)localObject2).getWidth();
     int n = localObject1[1];
-    localObject2 = this.gWM;
+    localObject2 = this.gZz;
     p.g(localObject2, "shadowDown");
     localObject2 = new Rect(i, j, k + m, n + ((View)localObject2).getHeight());
-    this.gWN.getLocationOnScreen((int[])localObject1);
+    this.gZA.getLocationOnScreen((int[])localObject1);
     i = localObject1[0];
     j = localObject1[1];
     k = localObject1[0];
-    View localView = this.gWN;
+    View localView = this.gZA;
     p.g(localView, "shadowUp");
     m = localView.getWidth();
     n = localObject1[1];
-    localObject1 = this.gWN;
+    localObject1 = this.gZA;
     p.g(localObject1, "shadowUp");
     localObject1 = new Rect(i, j, k + m, n + ((View)localObject1).getHeight());
-    AppMethodBeat.o(212565);
+    AppMethodBeat.o(216191);
     return new Rect[] { localObject2, localObject1 };
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.live.c.as
  * JD-Core Version:    0.7.0.1
  */

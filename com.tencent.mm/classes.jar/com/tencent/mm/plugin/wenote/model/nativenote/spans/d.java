@@ -14,26 +14,26 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class d
   implements LeadingMarginSpan, f<Boolean>, g<Boolean>
 {
-  private static Path pxg = null;
-  private final int pxh;
-  public boolean pxi;
+  private static Path pDK = null;
+  private final int pDL;
+  public boolean pDM;
   
   private d(int paramInt, boolean paramBoolean)
   {
-    this.pxh = paramInt;
-    this.pxi = paramBoolean;
+    this.pDL = paramInt;
+    this.pDM = paramBoolean;
   }
   
   public d(int paramInt, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
     AppMethodBeat.i(30631);
-    this.pxh = paramInt;
+    this.pDL = paramInt;
     if ((paramBoolean1) && (paramBoolean3) && (!paramBoolean2)) {}
     for (paramBoolean1 = true;; paramBoolean1 = false)
     {
-      this.pxi = paramBoolean1;
-      if (pxg == null) {
-        pxg = new Path();
+      this.pDM = paramBoolean1;
+      if (pDK == null) {
+        pDK = new Path();
       }
       AppMethodBeat.o(30631);
       return;
@@ -44,18 +44,18 @@ public final class d
   {
     AppMethodBeat.i(30632);
     paramCharSequence = (Spanned)paramCharSequence;
-    if ((!this.pxi) && (paramCharSequence.getSpanStart(this) == paramInt6))
+    if ((!this.pDM) && (paramCharSequence.getSpanStart(this) == paramInt6))
     {
       paramCharSequence = paramPaint.getStyle();
       paramPaint.setStyle(Paint.Style.FILL);
-      pxg.reset();
-      pxg.addCircle(0.0F, 0.0F, 6.0F, Path.Direction.CW);
+      pDK.reset();
+      pDK.addCircle(0.0F, 0.0F, 6.0F, Path.Direction.CW);
       paramLayout = paramPaint.getFontMetricsInt();
       paramInt3 = paramLayout.descent;
       paramInt3 = (paramLayout.ascent + (paramInt3 + paramInt4 + paramInt4)) / 2;
       paramCanvas.save();
       paramCanvas.translate(paramInt2 * 6 + paramInt1, paramInt3);
-      paramCanvas.drawPath(pxg, paramPaint);
+      paramCanvas.drawPath(pDK, paramPaint);
       paramCanvas.restore();
       paramPaint.setStyle(paramCharSequence);
     }
@@ -64,10 +64,10 @@ public final class d
   
   public final int getLeadingMargin(boolean paramBoolean)
   {
-    if (this.pxi) {
+    if (this.pDM) {
       return 0;
     }
-    return this.pxh;
+    return this.pDL;
   }
 }
 

@@ -9,8 +9,8 @@ import com.tencent.mm.ipcinvoker.d;
 import com.tencent.mm.ipcinvoker.h;
 import com.tencent.mm.plugin.webview.luggage.jsapi.bq;
 import com.tencent.mm.plugin.webview.luggage.jsapi.bq.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -26,11 +26,11 @@ public class j
   public final void b(final com.tencent.luggage.d.b<com.tencent.mm.plugin.game.luggage.f.g>.a paramb)
   {
     AppMethodBeat.i(180134);
-    ad.i("MicroMsg.JsApiGetGameCommInfo", "invoke");
+    ae.i("MicroMsg.JsApiGetGameCommInfo", "invoke");
     Object localObject = paramb.chh.cgn;
     if (localObject == null)
     {
-      ad.e("MicroMsg.JsApiGetGameCommInfo", "data is null");
+      ae.e("MicroMsg.JsApiGetGameCommInfo", "data is null");
       paramb.a("null_data", null);
       AppMethodBeat.o(180134);
       return;
@@ -44,7 +44,7 @@ public class j
     if (i == 10008) {
       try
       {
-        localJSONObject.put("page_start_time", ((com.tencent.mm.plugin.game.luggage.f.g)paramb.chg).tVA.Ejp);
+        localJSONObject.put("page_start_time", ((com.tencent.mm.plugin.game.luggage.f.g)paramb.chg).ugx.EBt);
         paramb.a("", localJSONObject);
         AppMethodBeat.o(180134);
         return;
@@ -58,7 +58,7 @@ public class j
     }
     if (i == 10009)
     {
-      ((com.tencent.mm.plugin.game.luggage.f.g)paramb.chg).tVB = bt.getLong(localJSONException, System.currentTimeMillis());
+      ((com.tencent.mm.plugin.game.luggage.f.g)paramb.chg).ugy = bu.getLong(localJSONException, System.currentTimeMillis());
       paramb.a("", null);
       AppMethodBeat.o(180134);
       return;
@@ -67,7 +67,7 @@ public class j
     AppMethodBeat.o(180134);
   }
   
-  public final int ccO()
+  public final int ced()
   {
     return 0;
   }

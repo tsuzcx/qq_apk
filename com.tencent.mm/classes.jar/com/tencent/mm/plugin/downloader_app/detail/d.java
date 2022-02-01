@@ -8,37 +8,37 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.game.luggage.g;
 import com.tencent.mm.plugin.game.luggage.h;
 import com.tencent.mm.plugin.game.luggage.h.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public final class d
 {
-  private static com.tencent.luggage.d.p poi;
-  private static String poj = "";
-  private static String pok = "action_id";
-  private static String pol = "preload_url";
-  private static String pom = "detail_url";
-  private static int pon = 1;
-  private static int poo = 2;
-  private static int pop = 3;
-  private static int poq = 4;
+  private static com.tencent.luggage.d.p puP;
+  private static String puQ = "";
+  private static String puR = "action_id";
+  private static String puS = "preload_url";
+  private static String puT = "detail_url";
+  private static int puU = 1;
+  private static int puV = 2;
+  private static int puW = 3;
+  private static int puX = 4;
   
-  public static void aat(String paramString)
+  public static void abk(String paramString)
   {
     AppMethodBeat.i(8813);
-    if (bt.isNullOrNil(paramString))
+    if (bu.isNullOrNil(paramString))
     {
       AppMethodBeat.o(8813);
       return;
     }
-    if ((!aj.fkI()) && (!aj.fkJ()))
+    if ((!ak.foC()) && (!ak.foD()))
     {
       localObject = new Bundle();
-      ((Bundle)localObject).putInt(pok, pop);
-      ((Bundle)localObject).putString(pol, paramString);
+      ((Bundle)localObject).putInt(puR, puW);
+      ((Bundle)localObject).putString(puS, paramString);
       com.tencent.mm.plugin.game.luggage.b.b((Parcelable)localObject, a.class, null);
       AppMethodBeat.o(8813);
       return;
@@ -54,47 +54,47 @@ public final class d
       }
       localObject = paramString.substring(k, i);
     }
-    if (!bt.isNullOrNil((String)localObject)) {}
+    if (!bu.isNullOrNil((String)localObject)) {}
     for (paramString = paramString.replace((CharSequence)localObject, "");; paramString = "")
     {
-      if ((!bt.isNullOrNil(paramString)) && (!paramString.equals(poj)))
+      if ((!bu.isNullOrNil(paramString)) && (!paramString.equals(puQ)))
       {
-        poj = paramString;
-        ad.i("MicroMsg.PreloadDetailHelp", "setPreloadlUrl : %s", new Object[] { poj });
-        ccK();
+        puQ = paramString;
+        ae.i("MicroMsg.PreloadDetailHelp", "setPreloadlUrl : %s", new Object[] { puQ });
+        cdZ();
       }
       AppMethodBeat.o(8813);
       return;
     }
   }
   
-  private static void ccK()
+  private static void cdZ()
   {
     AppMethodBeat.i(8814);
-    if ((!aj.fkI()) && (!aj.fkJ()))
+    if ((!ak.foC()) && (!ak.foD()))
     {
       Bundle localBundle = new Bundle();
-      localBundle.putInt(pok, pon);
+      localBundle.putInt(puR, puU);
       com.tencent.mm.plugin.game.luggage.b.b(localBundle, a.class, null);
       AppMethodBeat.o(8814);
       return;
     }
-    if (bt.isNullOrNil(poj))
+    if (bu.isNullOrNil(puQ))
     {
       AppMethodBeat.o(8814);
       return;
     }
-    h.a(b.class, poj, new h.a()
+    h.a(b.class, puQ, new h.a()
     {
-      public final void BJ()
+      public final void BK()
       {
         AppMethodBeat.i(8809);
-        if (d.ccL() != null) {
+        if (d.cea() != null) {
           d.destroy();
         }
-        d.a(h.at(aj.getContext(), d.poj));
-        if (d.ccL() != null) {
-          g.a(d.ccL(), d.poj, false);
+        d.a(h.av(ak.getContext(), d.puQ));
+        if (d.cea() != null) {
+          g.a(d.cea(), d.puQ, false);
         }
         AppMethodBeat.o(8809);
       }
@@ -105,27 +105,27 @@ public final class d
   public static void destroy()
   {
     AppMethodBeat.i(8817);
-    if ((!aj.fkI()) && (!aj.fkJ()))
+    if ((!ak.foC()) && (!ak.foD()))
     {
       Bundle localBundle = new Bundle();
-      localBundle.putInt(pok, poo);
+      localBundle.putInt(puR, puV);
       com.tencent.mm.plugin.game.luggage.b.b(localBundle, a.class, null);
       AppMethodBeat.o(8817);
       return;
     }
-    if (poi != null)
+    if (puP != null)
     {
-      poi.destroy();
-      poi = null;
+      puP.destroy();
+      puP = null;
     }
     AppMethodBeat.o(8817);
   }
   
-  public static com.tencent.luggage.d.p ex(Context paramContext)
+  public static com.tencent.luggage.d.p eB(Context paramContext)
   {
     AppMethodBeat.i(8815);
-    if (poi != null) {
-      poi.setContext(paramContext);
+    if (puP != null) {
+      puP.setContext(paramContext);
     }
     com.tencent.mm.ipcinvoker.p.postDelayed(new Runnable()
     {
@@ -136,8 +136,8 @@ public final class d
         AppMethodBeat.o(8810);
       }
     }, 50L);
-    paramContext = poi;
-    poi = null;
+    paramContext = puP;
+    puP = null;
     AppMethodBeat.o(8815);
     return paramContext;
   }
@@ -145,21 +145,21 @@ public final class d
   public static void setUrl(String paramString)
   {
     AppMethodBeat.i(8816);
-    if ((aj.fkI()) || (aj.fkJ()))
+    if ((ak.foC()) || (ak.foD()))
     {
-      if (poi != null)
+      if (puP != null)
       {
-        ad.i("MicroMsg.PreloadDetailHelp", "setUrl: %s", new Object[] { paramString });
+        ae.i("MicroMsg.PreloadDetailHelp", "setUrl: %s", new Object[] { paramString });
         paramString = Uri.parse(paramString).getQueryParameter("appid");
-        poi.a(new com.tencent.luggage.d.d()
+        puP.a(new com.tencent.luggage.d.d()
         {
-          public final JSONObject BO()
+          public final JSONObject BP()
           {
             AppMethodBeat.i(8811);
             JSONObject localJSONObject = new JSONObject();
             try
             {
-              localJSONObject.put("appid", this.jBr);
+              localJSONObject.put("appid", this.jEl);
               label25:
               AppMethodBeat.o(8811);
               return localJSONObject;
@@ -181,8 +181,8 @@ public final class d
     else
     {
       Bundle localBundle = new Bundle();
-      localBundle.putInt(pok, poq);
-      localBundle.putString(pom, paramString);
+      localBundle.putInt(puR, puX);
+      localBundle.putString(puT, paramString);
       com.tencent.mm.plugin.game.luggage.b.b(localBundle, a.class, null);
     }
     AppMethodBeat.o(8816);

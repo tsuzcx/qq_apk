@@ -1,100 +1,73 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
+import f.a.a.b;
 
 public final class aij
-  extends cvc
+  extends com.tencent.mm.bw.a
 {
-  public double latitude;
-  public double longitude;
-  public String vkl;
+  public String GxR;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(91448);
+    AppMethodBeat.i(32201);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.BaseRequest != null)
+      if (this.GxR == null)
       {
-        paramVarArgs.lC(1, this.BaseRequest.computeSize());
-        this.BaseRequest.writeFields(paramVarArgs);
+        paramVarArgs = new b("Not all required fields were included: LoginUrl");
+        AppMethodBeat.o(32201);
+        throw paramVarArgs;
       }
-      if (this.vkl != null) {
-        paramVarArgs.d(2, this.vkl);
+      if (this.GxR != null) {
+        paramVarArgs.d(1, this.GxR);
       }
-      paramVarArgs.e(3, this.latitude);
-      paramVarArgs.e(4, this.longitude);
-      AppMethodBeat.o(91448);
+      AppMethodBeat.o(32201);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.BaseRequest == null) {
-        break label460;
+      if (this.GxR == null) {
+        break label268;
       }
     }
-    label460:
-    for (paramInt = f.a.a.a.lB(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
+    label268:
+    for (paramInt = f.a.a.b.b.a.e(1, this.GxR) + 0;; paramInt = 0)
     {
-      int i = paramInt;
-      if (this.vkl != null) {
-        i = paramInt + f.a.a.b.b.a.e(2, this.vkl);
-      }
-      paramInt = f.a.a.b.b.a.alT(3);
-      int j = f.a.a.b.b.a.alT(4);
-      AppMethodBeat.o(91448);
-      return i + paramInt + j;
+      AppMethodBeat.o(32201);
+      return paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = cvc.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cvc.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
-        AppMethodBeat.o(91448);
+        if (this.GxR == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: LoginUrl");
+          AppMethodBeat.o(32201);
+          throw paramVarArgs;
+        }
+        AppMethodBeat.o(32201);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
+        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
         aij localaij = (aij)paramVarArgs[1];
-        paramInt = ((Integer)paramVarArgs[2]).intValue();
-        switch (paramInt)
+        switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(91448);
+          AppMethodBeat.o(32201);
           return -1;
-        case 1: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new jc();
-            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((jc)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, cvc.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-            localaij.BaseRequest = ((jc)localObject1);
-            paramInt += 1;
-          }
-          AppMethodBeat.o(91448);
-          return 0;
-        case 2: 
-          localaij.vkl = ((f.a.a.a.a)localObject1).NPN.readString();
-          AppMethodBeat.o(91448);
-          return 0;
-        case 3: 
-          localaij.latitude = Double.longBitsToDouble(((f.a.a.a.a)localObject1).NPN.grA());
-          AppMethodBeat.o(91448);
-          return 0;
         }
-        localaij.longitude = Double.longBitsToDouble(((f.a.a.a.a)localObject1).NPN.grA());
-        AppMethodBeat.o(91448);
+        localaij.GxR = locala.OmT.readString();
+        AppMethodBeat.o(32201);
         return 0;
       }
-      AppMethodBeat.o(91448);
+      AppMethodBeat.o(32201);
       return -1;
     }
   }

@@ -3,63 +3,63 @@ package com.tencent.mm.live.b.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.cf;
-import com.tencent.mm.protocal.protobuf.bun;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.vfs.i;
+import com.tencent.mm.model.ch;
+import com.tencent.mm.protocal.protobuf.bvh;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.vfs.o;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/live/model/storage/LiveAnchorStorage;", "", "()V", "EXPIRATION_TIME", "", "FILE_NAME", "", "PATH", "TAG", "cleanCache", "", "getLiveAnchorInfo", "Lcom/tencent/mm/protocal/protobuf/LiveAnchorInfo;", "hasLiveAnchorInfo", "", "liveFinish", "liveId", "", "liveStart", "roomId", "rotation", "liveName", "createTimeS", "anchorName", "plugin-logic_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/live/model/storage/LiveAnchorStorage;", "", "()V", "EXPIRATION_TIME", "", "FILE_NAME", "", "PATH", "TAG", "cleanCache", "", "getLiveAnchorInfo", "Lcom/tencent/mm/protocal/protobuf/LiveAnchorInfo;", "hasLiveAnchorInfo", "", "liveFinish", "liveId", "", "liveStart", "roomId", "rotation", "liveName", "createTimeS", "anchorName", "plugin-logic_release"})
 public final class a
 {
   private static final String FILE_NAME = "anchor.proto";
   private static final String PATH;
   private static final String TAG = "MicroMsg.LiveAnchorStorage";
-  private static final int gQZ = 86400;
-  public static final a gRa;
+  private static final int gTH = 86400;
+  public static final a gTI;
   
   static
   {
-    AppMethodBeat.i(212274);
-    gRa = new a();
+    AppMethodBeat.i(215894);
+    gTI = new a();
     TAG = "MicroMsg.LiveAnchorStorage";
     StringBuilder localStringBuilder = new StringBuilder();
-    e locale = g.ajC();
+    e locale = g.ajR();
     p.g(locale, "MMKernel.storage()");
     PATH = locale.getAccPath() + "live/";
     FILE_NAME = "anchor.proto";
-    gQZ = 86400;
-    AppMethodBeat.o(212274);
+    gTH = 86400;
+    AppMethodBeat.o(215894);
   }
   
   public static void a(long paramLong, String paramString1, int paramInt1, String paramString2, int paramInt2, String paramString3)
   {
-    AppMethodBeat.i(212270);
+    AppMethodBeat.i(215890);
     p.h(paramString1, "roomId");
     p.h(paramString2, "liveName");
     p.h(paramString3, "anchorName");
-    ad.i(TAG, "liveStart liveId:" + paramLong + ", roomId:" + paramString1 + ", rotation:" + paramInt1 + ", liveName:" + paramString2 + ", createTime:" + paramInt2);
-    if (!i.fv(PATH)) {
-      i.aYg(PATH);
+    ae.i(TAG, "liveStart liveId:" + paramLong + ", roomId:" + paramString1 + ", rotation:" + paramInt1 + ", liveName:" + paramString2 + ", createTime:" + paramInt2);
+    if (!o.fB(PATH)) {
+      o.aZI(PATH);
     }
-    bun localbun = new bun();
-    localbun.Fsa = paramLong;
-    localbun.GOz = paramString1;
-    localbun.rotation = paramInt1;
-    localbun.Gbw = paramString2;
-    localbun.FHr = paramInt2;
-    localbun.GOA = paramString3;
-    paramString1 = localbun.toByteArray();
-    i.C(PATH + FILE_NAME, paramString1);
-    AppMethodBeat.o(212270);
+    bvh localbvh = new bvh();
+    localbvh.FKy = paramLong;
+    localbvh.HhZ = paramString1;
+    localbvh.rotation = paramInt1;
+    localbvh.Gud = paramString2;
+    localbvh.FZN = paramInt2;
+    localbvh.Hia = paramString3;
+    paramString1 = localbvh.toByteArray();
+    o.C(PATH + FILE_NAME, paramString1);
+    AppMethodBeat.o(215890);
   }
   
-  public static bun aow()
+  public static bvh aoL()
   {
-    AppMethodBeat.i(212272);
-    bun localbun = new bun();
-    byte[] arrayOfByte = i.aY(PATH + FILE_NAME, 0, -1);
+    AppMethodBeat.i(215892);
+    bvh localbvh = new bvh();
+    byte[] arrayOfByte = o.bb(PATH + FILE_NAME, 0, -1);
     int i;
     if (arrayOfByte != null)
     {
@@ -70,31 +70,31 @@ public final class a
     }
     for (;;)
     {
-      com.tencent.mm.bx.a locala;
+      com.tencent.mm.bw.a locala;
       if (i == 0)
       {
         i = 1;
         if (i != 0) {
-          locala = (com.tencent.mm.bx.a)localbun;
+          locala = (com.tencent.mm.bw.a)localbvh;
         }
       }
       try
       {
         locala.parseFrom(arrayOfByte);
-        if ((localbun.FHr > 0) && (cf.aCN() - localbun.FHr >= gQZ))
+        if ((localbvh.FZN > 0) && (ch.aDd() - localbvh.FZN >= gTH))
         {
-          ad.i(TAG, "liveAnchorInfo expirated, liveId:" + localbun.Fsa);
-          localbun.Fsa = 0L;
-          localbun.GOz = "";
-          localbun.rotation = -1;
-          localbun.Gbw = "";
-          localbun.FHr = 0;
-          localbun.GOA = "";
-          arrayOfByte = localbun.toByteArray();
-          i.C(PATH + FILE_NAME, arrayOfByte);
+          ae.i(TAG, "liveAnchorInfo expirated, liveId:" + localbvh.FKy);
+          localbvh.FKy = 0L;
+          localbvh.HhZ = "";
+          localbvh.rotation = -1;
+          localbvh.Gud = "";
+          localbvh.FZN = 0;
+          localbvh.Hia = "";
+          arrayOfByte = localbvh.toByteArray();
+          o.C(PATH + FILE_NAME, arrayOfByte);
         }
-        AppMethodBeat.o(212272);
-        return localbun;
+        AppMethodBeat.o(215892);
+        return localbvh;
         label191:
         i = 0;
         continue;
@@ -104,34 +104,34 @@ public final class a
       {
         for (;;)
         {
-          ad.l("safeParser", "", new Object[] { localException });
+          ae.l("safeParser", "", new Object[] { localException });
         }
       }
     }
   }
   
-  public static void aox()
+  public static void aoM()
   {
-    AppMethodBeat.i(212273);
-    ad.i(TAG, "liveAnchorInfo cleanCache");
-    Object localObject = new bun();
-    ((bun)localObject).Fsa = 0L;
-    ((bun)localObject).GOz = "";
-    ((bun)localObject).rotation = -1;
-    ((bun)localObject).Gbw = "";
-    ((bun)localObject).FHr = 0;
-    ((bun)localObject).GOA = "";
-    localObject = ((bun)localObject).toByteArray();
-    i.C(PATH + FILE_NAME, (byte[])localObject);
-    AppMethodBeat.o(212273);
+    AppMethodBeat.i(215893);
+    ae.i(TAG, "liveAnchorInfo cleanCache");
+    Object localObject = new bvh();
+    ((bvh)localObject).FKy = 0L;
+    ((bvh)localObject).HhZ = "";
+    ((bvh)localObject).rotation = -1;
+    ((bvh)localObject).Gud = "";
+    ((bvh)localObject).FZN = 0;
+    ((bvh)localObject).Hia = "";
+    localObject = ((bvh)localObject).toByteArray();
+    o.C(PATH + FILE_NAME, (byte[])localObject);
+    AppMethodBeat.o(215893);
   }
   
-  public static void rm(long paramLong)
+  public static void rz(long paramLong)
   {
-    AppMethodBeat.i(212271);
-    ad.i(TAG, "liveFinish liveId:".concat(String.valueOf(paramLong)));
-    Object localObject = new bun();
-    byte[] arrayOfByte = i.aY(PATH + FILE_NAME, 0, -1);
+    AppMethodBeat.i(215891);
+    ae.i(TAG, "liveFinish liveId:".concat(String.valueOf(paramLong)));
+    Object localObject = new bvh();
+    byte[] arrayOfByte = o.bb(PATH + FILE_NAME, 0, -1);
     int i;
     if (arrayOfByte != null)
     {
@@ -142,29 +142,29 @@ public final class a
     }
     for (;;)
     {
-      com.tencent.mm.bx.a locala;
+      com.tencent.mm.bw.a locala;
       if (i == 0)
       {
         i = 1;
         if (i != 0) {
-          locala = (com.tencent.mm.bx.a)localObject;
+          locala = (com.tencent.mm.bw.a)localObject;
         }
       }
       try
       {
         locala.parseFrom(arrayOfByte);
-        if (((bun)localObject).Fsa == paramLong)
+        if (((bvh)localObject).FKy == paramLong)
         {
-          ((bun)localObject).Fsa = 0L;
-          ((bun)localObject).GOz = "";
-          ((bun)localObject).rotation = -1;
-          ((bun)localObject).Gbw = "";
-          ((bun)localObject).FHr = 0;
-          ((bun)localObject).GOA = "";
-          localObject = ((bun)localObject).toByteArray();
-          i.C(PATH + FILE_NAME, (byte[])localObject);
+          ((bvh)localObject).FKy = 0L;
+          ((bvh)localObject).HhZ = "";
+          ((bvh)localObject).rotation = -1;
+          ((bvh)localObject).Gud = "";
+          ((bvh)localObject).FZN = 0;
+          ((bvh)localObject).Hia = "";
+          localObject = ((bvh)localObject).toByteArray();
+          o.C(PATH + FILE_NAME, (byte[])localObject);
         }
-        AppMethodBeat.o(212271);
+        AppMethodBeat.o(215891);
         return;
         label174:
         i = 0;
@@ -175,7 +175,7 @@ public final class a
       {
         for (;;)
         {
-          ad.l("safeParser", "", new Object[] { localException });
+          ae.l("safeParser", "", new Object[] { localException });
         }
       }
     }
@@ -183,7 +183,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.live.b.c.a
  * JD-Core Version:    0.7.0.1
  */

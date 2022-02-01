@@ -2,7 +2,7 @@ package com.tencent.magicbrush.a;
 
 public abstract interface d$a
 {
-  public abstract void gS(int paramInt);
+  public abstract void gT(int paramInt);
 }
 
 

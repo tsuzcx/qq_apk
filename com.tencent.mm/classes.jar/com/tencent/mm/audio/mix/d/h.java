@@ -9,19 +9,19 @@ import java.util.concurrent.TimeUnit;
 
 public class h
 {
-  private static h ddH;
-  private ThreadPoolExecutor ddI;
-  private PriorityBlockingQueue<Runnable> ddJ;
-  private LinkedList<i> ddK;
-  private int ddL;
+  private static h deJ;
+  private ThreadPoolExecutor deK;
+  private PriorityBlockingQueue<Runnable> deL;
+  private LinkedList<i> deM;
+  private int deN;
   private Object lock;
   
   private h()
   {
     AppMethodBeat.i(136825);
     this.lock = new Object();
-    this.ddJ = new PriorityBlockingQueue(33);
-    this.ddK = new LinkedList();
+    this.deL = new PriorityBlockingQueue(33);
+    this.deM = new LinkedList();
     int j = Runtime.getRuntime().availableProcessors();
     b.i("MicroMsg.Mix.AudioThreadPool", "getNormalCorePoolSize cpuCount:%d", new Object[] { Integer.valueOf(j) });
     j = j * 2 + 2;
@@ -30,9 +30,9 @@ public class h
     }
     for (;;)
     {
-      this.ddL = i;
-      this.ddI = new ThreadPoolExecutor(i, 32, 120L, TimeUnit.SECONDS, this.ddJ, new g());
-      this.ddI.setMaximumPoolSize(32);
+      this.deN = i;
+      this.deK = new ThreadPoolExecutor(i, 32, 120L, TimeUnit.SECONDS, this.deL, new g());
+      this.deK.setMaximumPoolSize(32);
       b.i("MicroMsg.Mix.AudioThreadPool", "new AudioThreadPool poolSize:%d", new Object[] { Integer.valueOf(i) });
       AppMethodBeat.o(136825);
       return;
@@ -42,16 +42,16 @@ public class h
     }
   }
   
-  public static h OY()
+  public static h OW()
   {
     AppMethodBeat.i(136824);
-    if (ddH == null) {}
+    if (deJ == null) {}
     try
     {
-      if (ddH == null) {
-        ddH = new h();
+      if (deJ == null) {
+        deJ = new h();
       }
-      h localh = ddH;
+      h localh = deJ;
       AppMethodBeat.o(136824);
       return localh;
     }
@@ -64,16 +64,16 @@ public class h
   public static void a(i parami)
   {
     AppMethodBeat.i(136827);
-    h localh = OY();
+    h localh = OW();
     synchronized (localh.lock)
     {
       parami.reset();
-      localh.ddK.add(parami);
-      int i = localh.ddL;
-      if (localh.ddK.size() > i) {
+      localh.deM.add(parami);
+      int i = localh.deN;
+      if (localh.deM.size() > i) {
         localh.setCorePoolSize(i + 2);
       }
-      localh.ddI.execute(parami);
+      localh.deK.execute(parami);
       AppMethodBeat.o(136827);
       return;
     }
@@ -82,16 +82,16 @@ public class h
   public static void b(i parami)
   {
     AppMethodBeat.i(136828);
-    h localh = OY();
+    h localh = OW();
     synchronized (localh.lock)
     {
-      localh.ddK.remove(parami);
-      if (localh.ddK.size() <= 4)
+      localh.deM.remove(parami);
+      if (localh.deM.size() <= 4)
       {
-        localh.ddL = 4;
-        localh.setCorePoolSize(localh.ddL);
+        localh.deN = 4;
+        localh.setCorePoolSize(localh.deN);
       }
-      localh.ddI.remove(parami);
+      localh.deK.remove(parami);
       AppMethodBeat.o(136828);
       return;
     }
@@ -101,25 +101,25 @@ public class h
   {
     AppMethodBeat.i(136826);
     if (paramInt > 32) {
-      this.ddL = 32;
+      this.deN = 32;
     }
     for (;;)
     {
       b.i("MicroMsg.Mix.AudioThreadPool", "setCorePoolSize poolSize:%d", new Object[] { Integer.valueOf(paramInt) });
-      this.ddI.setCorePoolSize(paramInt);
+      this.deK.setCorePoolSize(paramInt);
       AppMethodBeat.o(136826);
       return;
       if (paramInt < 4) {
-        this.ddL = 4;
+        this.deN = 4;
       } else {
-        this.ddL = paramInt;
+        this.deN = paramInt;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.audio.mix.d.h
  * JD-Core Version:    0.7.0.1
  */

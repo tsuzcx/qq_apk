@@ -2,11 +2,13 @@ package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.storage.bv;
 
 public final class li
   extends b
 {
-  public a dyH;
+  public a dzI;
+  public b dzJ;
   
   public li()
   {
@@ -15,22 +17,31 @@ public final class li
   
   private li(byte paramByte)
   {
-    AppMethodBeat.i(155372);
-    this.dyH = new a();
-    this.IbR = false;
+    AppMethodBeat.i(55664);
+    this.dzI = new a();
+    this.dzJ = new b();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(155372);
+    AppMethodBeat.o(55664);
   }
   
   public static final class a
   {
-    public String content;
-    public String url;
+    public bv dlw;
+    public int dzC = 0;
+    public boolean dzK = false;
+    public String language;
+  }
+  
+  public static final class b
+  {
+    public String dvD;
+    public String dzL;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.a.li
  * JD-Core Version:    0.7.0.1
  */

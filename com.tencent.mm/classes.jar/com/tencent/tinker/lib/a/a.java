@@ -89,7 +89,7 @@ public class a
   
   public static boolean a(ApplicationLike paramApplicationLike, String paramString)
   {
-    Object localObject = b.e(paramApplicationLike);
+    Object localObject = b.d(paramApplicationLike);
     if (ShareTinkerInternals.isNullOrNil((String)localObject))
     {
       ShareTinkerLog.e("Tinker.LoadLibrary", "failed to get current patch version.", new Object[0]);

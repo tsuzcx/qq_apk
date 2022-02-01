@@ -4,7 +4,7 @@ import android.graphics.Path;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.path.BasePathActionArg;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.path.PathBezierCurveToActionArg;
-import com.tencent.mm.plugin.appbrand.z.g;
+import com.tencent.mm.plugin.appbrand.y.g;
 import org.json.JSONArray;
 
 public final class d
@@ -45,7 +45,7 @@ public final class d
     return bool;
   }
   
-  public final BasePathActionArg bdz()
+  public final BasePathActionArg bee()
   {
     AppMethodBeat.i(145358);
     PathBezierCurveToActionArg localPathBezierCurveToActionArg = new PathBezierCurveToActionArg();

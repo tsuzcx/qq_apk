@@ -16,15 +16,15 @@ import java.util.HashMap;
 public final class d
   implements Cursor, com.tencent.mm.storagebase.a.d
 {
-  private static Cursor IOC;
+  private static Cursor Jji;
   
-  public static Cursor ftG()
+  public static Cursor fxH()
   {
     AppMethodBeat.i(133330);
-    if (IOC == null) {
-      IOC = new d();
+    if (Jji == null) {
+      Jji = new d();
     }
-    Cursor localCursor = IOC;
+    Cursor localCursor = Jji;
     AppMethodBeat.o(133330);
     return localCursor;
   }
@@ -36,45 +36,45 @@ public final class d
     return false;
   }
   
-  public final boolean abi(int paramInt)
+  public final boolean abQ(int paramInt)
   {
     return false;
   }
   
-  public final a abj(int paramInt)
+  public final a abR(int paramInt)
   {
     return null;
   }
   
-  public final void abk(int paramInt) {}
+  public final void abS(int paramInt) {}
   
   public final void close() {}
   
   public final void copyStringToBuffer(int paramInt, CharArrayBuffer paramCharArrayBuffer) {}
   
-  public final boolean dX(Object paramObject)
+  public final boolean dY(Object paramObject)
   {
     return false;
   }
   
-  public final a dY(Object paramObject)
+  public final a dZ(Object paramObject)
   {
     return null;
   }
   
   public final void deactivate() {}
   
-  public final SparseArray[] ftH()
+  public final SparseArray[] fxI()
   {
     return null;
   }
   
-  public final HashMap ftI()
+  public final HashMap fxJ()
   {
     return null;
   }
   
-  public final boolean ftJ()
+  public final boolean fxK()
   {
     return false;
   }
@@ -251,7 +251,7 @@ public final class d
   
   public final void unregisterDataSetObserver(DataSetObserver paramDataSetObserver) {}
   
-  public final void wS(boolean paramBoolean) {}
+  public final void xa(boolean paramBoolean) {}
 }
 
 

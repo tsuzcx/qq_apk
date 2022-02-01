@@ -7,14 +7,14 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class c$a
   implements Interpolator
 {
-  private int kKB;
-  private final PointF kKC;
-  private final PointF kKD;
-  protected PointF kKE;
-  protected PointF kKF;
-  protected PointF kKG;
-  protected PointF kKH;
-  protected PointF kKI;
+  private int kNQ;
+  private final PointF kNR;
+  private final PointF kNS;
+  protected PointF kNT;
+  protected PointF kNU;
+  protected PointF kNV;
+  protected PointF kNW;
+  protected PointF kNX;
   
   public c$a(c paramc)
   {
@@ -26,12 +26,12 @@ public final class c$a
   private c$a(c paramc, PointF paramPointF1, PointF paramPointF2)
   {
     AppMethodBeat.i(137511);
-    this.kKB = 0;
-    this.kKC = new PointF();
-    this.kKD = new PointF();
-    this.kKG = new PointF();
-    this.kKH = new PointF();
-    this.kKI = new PointF();
+    this.kNQ = 0;
+    this.kNR = new PointF();
+    this.kNS = new PointF();
+    this.kNV = new PointF();
+    this.kNW = new PointF();
+    this.kNX = new PointF();
     if ((paramPointF1.x < 0.0F) || (paramPointF1.x > 1.0F))
     {
       paramc = new IllegalArgumentException("startX value must be in the range [0, 1]");
@@ -44,8 +44,8 @@ public final class c$a
       AppMethodBeat.o(137511);
       throw paramc;
     }
-    this.kKE = paramPointF1;
-    this.kKF = paramPointF2;
+    this.kNT = paramPointF1;
+    this.kNU = paramPointF2;
     AppMethodBeat.o(137511);
   }
   
@@ -56,22 +56,22 @@ public final class c$a
     float f1 = paramFloat;
     while (i < 14)
     {
-      this.kKI.x = (this.kKE.x * 3.0F);
-      this.kKH.x = ((this.kKF.x - this.kKE.x) * 3.0F - this.kKI.x);
-      this.kKG.x = (1.0F - this.kKI.x - this.kKH.x);
-      f2 = (this.kKI.x + (this.kKH.x + this.kKG.x * f1) * f1) * f1 - paramFloat;
+      this.kNX.x = (this.kNT.x * 3.0F);
+      this.kNW.x = ((this.kNU.x - this.kNT.x) * 3.0F - this.kNX.x);
+      this.kNV.x = (1.0F - this.kNX.x - this.kNW.x);
+      f2 = (this.kNX.x + (this.kNW.x + this.kNV.x * f1) * f1) * f1 - paramFloat;
       if (Math.abs(f2) < 0.001D) {
         break;
       }
-      f1 -= f2 / (this.kKI.x + (2.0F * this.kKH.x + this.kKG.x * 3.0F * f1) * f1);
+      f1 -= f2 / (this.kNX.x + (2.0F * this.kNW.x + this.kNV.x * 3.0F * f1) * f1);
       i += 1;
     }
-    this.kKI.y = (this.kKE.y * 3.0F);
-    this.kKH.y = ((this.kKF.y - this.kKE.y) * 3.0F - this.kKI.y);
-    this.kKG.y = (1.0F - this.kKI.y - this.kKH.y);
-    paramFloat = this.kKI.y;
-    float f2 = this.kKH.y;
-    float f3 = this.kKG.y;
+    this.kNX.y = (this.kNT.y * 3.0F);
+    this.kNW.y = ((this.kNU.y - this.kNT.y) * 3.0F - this.kNX.y);
+    this.kNV.y = (1.0F - this.kNX.y - this.kNW.y);
+    paramFloat = this.kNX.y;
+    float f2 = this.kNW.y;
+    float f3 = this.kNV.y;
     AppMethodBeat.o(137513);
     return (paramFloat + (f2 + f3 * f1) * f1) * f1;
   }

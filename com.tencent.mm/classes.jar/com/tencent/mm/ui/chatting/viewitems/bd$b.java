@@ -5,19 +5,19 @@ import com.tencent.mm.ui.chatting.e.a;
 abstract class bd$b
   extends c
 {
-  protected bd.h KgZ;
+  protected bd.h KDu;
   
-  public boolean fHh()
+  public boolean fLz()
   {
     return true;
   }
   
   protected final bd.h o(a parama)
   {
-    if (this.KgZ == null) {
-      this.KgZ = new bd.h(parama);
+    if (this.KDu == null) {
+      this.KDu = new bd.h(parama);
     }
-    return this.KgZ;
+    return this.KDu;
   }
 }
 

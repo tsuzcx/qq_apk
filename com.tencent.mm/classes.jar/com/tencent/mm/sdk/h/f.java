@@ -2,13 +2,13 @@ package com.tencent.mm.sdk.h;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 public final class f
 {
-  public static boolean jt(Context paramContext)
+  public static boolean jz(Context paramContext)
   {
     AppMethodBeat.i(153484);
     if (paramContext == null)
@@ -20,33 +20,33 @@ public final class f
     {
       paramContext = paramContext.getClassLoader().loadClass("android.util.FtFeature");
       boolean bool = ((Boolean)paramContext.getMethod("isFeatureSupport", new Class[] { Integer.TYPE }).invoke(paramContext, new Object[] { Integer.valueOf(32) })).booleanValue();
-      ad.d("MicroMsg.Vendor.Vivo", "vivo hasCutOut: %s", new Object[] { Boolean.valueOf(bool) });
+      ae.d("MicroMsg.Vendor.Vivo", "vivo hasCutOut: %s", new Object[] { Boolean.valueOf(bool) });
       AppMethodBeat.o(153484);
       return bool;
     }
     catch (ClassNotFoundException paramContext)
     {
-      ad.e("MicroMsg.Vendor.Vivo", "hasCutOut, ClassNotFoundException!!");
+      ae.e("MicroMsg.Vendor.Vivo", "hasCutOut, ClassNotFoundException!!");
       return false;
     }
     catch (NoSuchMethodException paramContext)
     {
-      ad.e("MicroMsg.Vendor.Vivo", "hasCutOut, NoSuchMethodException!!");
+      ae.e("MicroMsg.Vendor.Vivo", "hasCutOut, NoSuchMethodException!!");
       return false;
     }
     catch (IllegalAccessException paramContext)
     {
-      ad.e("MicroMsg.Vendor.Vivo", "hasCutOut, IllegalAccessException!!");
+      ae.e("MicroMsg.Vendor.Vivo", "hasCutOut, IllegalAccessException!!");
       return false;
     }
     catch (InvocationTargetException paramContext)
     {
-      ad.e("MicroMsg.Vendor.Vivo", "hasCutOut, InvocationTargetException!!");
+      ae.e("MicroMsg.Vendor.Vivo", "hasCutOut, InvocationTargetException!!");
       return false;
     }
     finally
     {
-      ad.d("MicroMsg.Vendor.Vivo", "vivo hasCutOut: %s", new Object[] { Boolean.FALSE });
+      ae.d("MicroMsg.Vendor.Vivo", "vivo hasCutOut: %s", new Object[] { Boolean.FALSE });
       AppMethodBeat.o(153484);
     }
     return false;

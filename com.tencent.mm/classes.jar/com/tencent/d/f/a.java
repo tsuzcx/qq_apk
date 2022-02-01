@@ -72,7 +72,7 @@ public final class a
     //   54	58	69	java/io/IOException
   }
   
-  public static List<byte[]> cx(Context paramContext, String paramString)
+  public static List<byte[]> cy(Context paramContext, String paramString)
   {
     AppMethodBeat.i(138452);
     localArrayList = new ArrayList();
@@ -91,14 +91,14 @@ public final class a
             if (paramString != null) {}
             try
             {
-              localArrayList.add(e.cQ(paramString.getEncoded()));
+              localArrayList.add(e.cT(paramString.getEncoded()));
               i += 1;
             }
             catch (CertificateEncodingException paramString)
             {
               for (;;)
               {
-                h.et("extractPkgCertMd5s(), CertificateEncodingException: ".concat(String.valueOf(paramString)));
+                h.ew("extractPkgCertMd5s(), CertificateEncodingException: ".concat(String.valueOf(paramString)));
               }
             }
           }
@@ -108,24 +108,24 @@ public final class a
     }
     catch (Throwable paramContext)
     {
-      h.et("extractPkgCertMd5s(), Exception: ".concat(String.valueOf(paramContext)));
+      h.ew("extractPkgCertMd5s(), Exception: ".concat(String.valueOf(paramContext)));
       AppMethodBeat.o(138452);
     }
   }
   
-  public static com.tencent.d.a.a cy(Context paramContext, String paramString)
+  public static com.tencent.d.a.a cz(Context paramContext, String paramString)
   {
     AppMethodBeat.i(138453);
     com.tencent.d.a.a locala = new com.tencent.d.a.a();
     try
     {
       paramContext = paramContext.getPackageManager().getPackageInfo(paramString, 64);
-      locala.dFD = paramString;
+      locala.dGI = paramString;
       locala.versionName = paramContext.versionName;
       locala.versionCode = paramContext.versionCode;
       paramContext = (X509Certificate)a(CertificateFactory.getInstance("X.509"), paramContext.signatures[0]);
       if (paramContext != null) {
-        locala.LLq = e.bytesToHexString(e.cQ(paramContext.getEncoded()));
+        locala.Mip = e.bytesToHexString(e.cT(paramContext.getEncoded()));
       }
     }
     catch (Throwable paramContext)
@@ -137,7 +137,7 @@ public final class a
     return locala;
   }
   
-  public static List<com.tencent.d.a.a> kV(Context paramContext)
+  public static List<com.tencent.d.a.a> lc(Context paramContext)
   {
     AppMethodBeat.i(138451);
     ArrayList localArrayList = new ArrayList();
@@ -159,27 +159,27 @@ public final class a
           break label226;
         }
         i = 1;
-        locala = cy(paramContext, localApplicationInfo.packageName);
-        locala.LLp = localPackageManager.getApplicationLabel(localApplicationInfo).toString();
-        if (locala.LLp != null) {
+        locala = cz(paramContext, localApplicationInfo.packageName);
+        locala.Mio = localPackageManager.getApplicationLabel(localApplicationInfo).toString();
+        if (locala.Mio != null) {
           break label236;
         }
-        locala.LLp = "";
+        locala.Mio = "";
       }
       catch (Throwable paramContext)
       {
         ApplicationInfo localApplicationInfo;
         com.tencent.d.a.a locala;
-        h.es("getAllAppInfos(), exception: ".concat(String.valueOf(paramContext)));
+        h.ev("getAllAppInfos(), exception: ".concat(String.valueOf(paramContext)));
         AppMethodBeat.o(138451);
         return localArrayList;
       }
       locala.appType = i;
       locala.fileSize = new File(localApplicationInfo.sourceDir).length();
-      locala.LLr = localApplicationInfo.sourceDir;
+      locala.Miq = localApplicationInfo.sourceDir;
       localArrayList.add(locala);
       new StringBuilder("add app: ").append(localApplicationInfo.packageName);
-      h.fUh();
+      h.fYG();
       continue;
       label226:
       int i = 0;

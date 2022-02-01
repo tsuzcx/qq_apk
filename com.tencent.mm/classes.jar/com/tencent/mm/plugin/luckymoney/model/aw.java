@@ -1,14 +1,14 @@
 package com.tencent.mm.plugin.luckymoney.model;
 
-import com.tencent.mm.protocal.protobuf.bnu;
+import com.tencent.mm.protocal.protobuf.bom;
 
 public final class aw
 {
-  public bnu vqP;
+  public bom vCU;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.model.aw
  * JD-Core Version:    0.7.0.1
  */

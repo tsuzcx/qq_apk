@@ -9,14 +9,14 @@ import com.tencent.mm.booter.TrafficStatsReceiver;
 import com.tencent.mm.modelfriend.AddrBookObserver;
 import com.tencent.mm.modelstat.WatchDogPushReceiver;
 import com.tencent.mm.plugin.zero.a.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class g
   implements a
 {
-  private AddrBookObserver nOC;
-  private WatchDogPushReceiver nOD;
-  private TrafficStatsReceiver nOE;
+  private AddrBookObserver nUi;
+  private WatchDogPushReceiver nUj;
+  private TrafficStatsReceiver nUk;
   
   public final void a(Service paramService)
   {
@@ -34,13 +34,13 @@ public final class g
       if (bool2) {}
       try
       {
-        this.nOC = new AddrBookObserver(paramService);
-        paramService.getContentResolver().registerContentObserver(com.tencent.mm.pluginsdk.b.eYG(), true, this.nOC);
-        this.nOD = new WatchDogPushReceiver();
-        paramService.registerReceiver(this.nOD, new IntentFilter("com.tencent.mm.WatchDogPushReceiver"));
-        this.nOE = new TrafficStatsReceiver();
-        paramService.registerReceiver(this.nOE, new IntentFilter("com.tencent.mm.TrafficStatsReceiver"));
-        TrafficStatsReceiver.bP(paramService);
+        this.nUi = new AddrBookObserver(paramService);
+        paramService.getContentResolver().registerContentObserver(com.tencent.mm.pluginsdk.b.fcu(), true, this.nUi);
+        this.nUj = new WatchDogPushReceiver();
+        paramService.registerReceiver(this.nUj, new IntentFilter("com.tencent.mm.WatchDogPushReceiver"));
+        this.nUk = new TrafficStatsReceiver();
+        paramService.registerReceiver(this.nUk, new IntentFilter("com.tencent.mm.TrafficStatsReceiver"));
+        TrafficStatsReceiver.bR(paramService);
         AppMethodBeat.o(22357);
         return;
         bool1 = false;
@@ -49,8 +49,8 @@ public final class g
       {
         for (;;)
         {
-          this.nOC = null;
-          ad.e("MicroMsg.CoreService", "onCreate registerContentObserver() Exception = %s", new Object[] { localException.getMessage() });
+          this.nUi = null;
+          ae.e("MicroMsg.CoreService", "onCreate registerContentObserver() Exception = %s", new Object[] { localException.getMessage() });
         }
       }
     }
@@ -59,14 +59,14 @@ public final class g
   public final void b(Service paramService)
   {
     AppMethodBeat.i(22358);
-    if (this.nOC != null)
+    if (this.nUi != null)
     {
-      paramService.getContentResolver().unregisterContentObserver(this.nOC);
-      this.nOC = null;
+      paramService.getContentResolver().unregisterContentObserver(this.nUi);
+      this.nUi = null;
     }
-    paramService.unregisterReceiver(this.nOD);
-    paramService.unregisterReceiver(this.nOE);
-    TrafficStatsReceiver.bQ(paramService);
+    paramService.unregisterReceiver(this.nUj);
+    paramService.unregisterReceiver(this.nUk);
+    TrafficStatsReceiver.bS(paramService);
     AppMethodBeat.o(22358);
   }
 }

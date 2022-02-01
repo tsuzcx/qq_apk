@@ -5,30 +5,30 @@ import java.io.Serializable;
 public final class a
   implements Serializable
 {
-  private boolean gIX = false;
-  public int gIY = 0;
-  private boolean gIZ = false;
-  private boolean gJa = false;
-  private boolean gJb = true;
-  private boolean gJc = true;
-  public boolean gJd = true;
-  public boolean gJe = true;
-  private transient boolean gJf = true;
-  private transient boolean gJg = false;
+  private boolean gLG = false;
+  public int gLH = 0;
+  private boolean gLI = false;
+  private boolean gLJ = false;
+  private boolean gLK = true;
+  private boolean gLL = true;
+  public boolean gLM = true;
+  public boolean gLN = true;
+  private transient boolean gLO = true;
+  private transient boolean gLP = false;
   
-  public final boolean alX()
+  public final boolean amm()
   {
-    return this.gJc;
+    return this.gLL;
   }
   
-  public final void dG(boolean paramBoolean)
+  public final void dH(boolean paramBoolean)
   {
-    this.gJb = paramBoolean;
+    this.gLK = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.live.core.core.trtc.a.a.a
  * JD-Core Version:    0.7.0.1
  */

@@ -11,14 +11,14 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cc.a;
+import com.tencent.mm.cb.a;
 import com.tencent.mm.platformtools.u;
 import com.tencent.mm.platformtools.u.a;
 import com.tencent.mm.plugin.scanner.util.n;
 import com.tencent.mm.pluginsdk.ui.span.k;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.base.preference.f;
 import java.io.IOException;
@@ -27,23 +27,23 @@ public final class c
   extends Preference
   implements u.a
 {
-  private TextView lCL;
+  private TextView lHk;
   String mContent;
   private View mView;
-  String oSs;
-  private ImageView pcD;
+  String oYU;
+  private ImageView pjj;
   private f screen;
-  private TextView yqw;
-  String yqx;
+  private TextView yGw;
+  String yGx;
   
   public c(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(51785);
     this.mView = null;
-    this.pcD = null;
-    this.lCL = null;
-    this.yqw = null;
+    this.pjj = null;
+    this.lHk = null;
+    this.yGw = null;
     setLayoutResource(2131495110);
     u.a(this);
     AppMethodBeat.o(51785);
@@ -64,10 +64,10 @@ public final class c
   public final void k(String paramString, Bitmap paramBitmap)
   {
     AppMethodBeat.i(51788);
-    if ((!bt.isNullOrNil(paramString)) && (paramString.equals(this.yqx)) && (paramBitmap != null) && (!paramBitmap.isRecycled()))
+    if ((!bu.isNullOrNil(paramString)) && (paramString.equals(this.yGx)) && (paramBitmap != null) && (!paramBitmap.isRecycled()))
     {
-      this.pcD.setImageBitmap(paramBitmap);
-      this.pcD.setBackgroundColor(0);
+      this.pjj.setImageBitmap(paramBitmap);
+      this.pjj.setBackgroundColor(0);
       if (this.screen != null) {
         this.screen.notifyDataSetChanged();
       }
@@ -79,60 +79,60 @@ public final class c
   {
     AppMethodBeat.i(51787);
     super.onBindView(paramView);
-    this.pcD = ((ImageView)paramView.findViewById(2131298507));
-    this.lCL = ((TextView)paramView.findViewById(2131298528));
-    this.yqw = ((TextView)paramView.findViewById(2131298510));
+    this.pjj = ((ImageView)paramView.findViewById(2131298507));
+    this.lHk = ((TextView)paramView.findViewById(2131298528));
+    this.yGw = ((TextView)paramView.findViewById(2131298510));
     Object localObject;
-    if (!bt.isNullOrNil(this.yqx))
+    if (!bu.isNullOrNil(this.yGx))
     {
-      localObject = u.a(new n(this.yqx));
+      localObject = u.a(new n(this.yGx));
       if ((localObject != null) && (!((Bitmap)localObject).isRecycled()))
       {
-        this.pcD.setImageBitmap((Bitmap)localObject);
-        this.pcD.setBackgroundColor(0);
-        if (bt.isNullOrNil(this.oSs)) {
+        this.pjj.setImageBitmap((Bitmap)localObject);
+        this.pjj.setBackgroundColor(0);
+        if (bu.isNullOrNil(this.oYU)) {
           break label289;
         }
-        this.lCL.setText(k.b(this.mContext, this.oSs, this.lCL.getTextSize()));
+        this.lHk.setText(k.b(this.mContext, this.oYU, this.lHk.getTextSize()));
         label136:
-        if (bt.isNullOrNil(this.mContent)) {
+        if (bu.isNullOrNil(this.mContent)) {
           break label301;
         }
-        this.yqw.setText(this.mContent);
+        this.yGw.setText(this.mContent);
       }
     }
     for (;;)
     {
       for (;;)
       {
-        if ((bt.isNullOrNil(this.oSs)) && (bt.isNullOrNil(this.yqx)))
+        if ((bu.isNullOrNil(this.oYU)) && (bu.isNullOrNil(this.yGx)))
         {
           paramView = (LinearLayout)paramView.findViewById(2131298509);
           localObject = paramView.getLayoutParams();
           ((ViewGroup.LayoutParams)localObject).height = this.mContext.getResources().getDimensionPixelSize(2131166694);
-          paramView.setPadding(BackwardSupportUtil.b.g(this.mContext, 9.0F), 0, 0, 0);
+          paramView.setPadding(BackwardSupportUtil.b.h(this.mContext, 9.0F), 0, 0, 0);
           paramView.setLayoutParams((ViewGroup.LayoutParams)localObject);
         }
         AppMethodBeat.o(51787);
         return;
         try
         {
-          localObject = BackwardSupportUtil.b.b(aj.getContext().getAssets().open("avatar/default_nor_avatar.png"), a.getDensity(null));
-          this.pcD.setImageBitmap((Bitmap)localObject);
+          localObject = BackwardSupportUtil.b.b(ak.getContext().getAssets().open("avatar/default_nor_avatar.png"), a.getDensity(null));
+          this.pjj.setImageBitmap((Bitmap)localObject);
         }
         catch (IOException localIOException)
         {
-          this.pcD.setImageBitmap(null);
+          this.pjj.setImageBitmap(null);
         }
       }
       break;
-      this.pcD.setVisibility(8);
+      this.pjj.setVisibility(8);
       break;
       label289:
-      this.lCL.setVisibility(8);
+      this.lHk.setVisibility(8);
       break label136;
       label301:
-      this.yqw.setVisibility(8);
+      this.yGw.setVisibility(8);
     }
   }
 }

@@ -1,434 +1,141 @@
 package com.tencent.mm.plugin.appbrand.page;
 
-import android.os.SystemClock;
+import android.content.Context;
+import android.content.res.Configuration;
+import android.content.res.Resources;
+import android.util.DisplayMetrics;
+import android.view.ViewGroup.MarginLayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.appcache.j.a;
-import com.tencent.mm.plugin.appbrand.appstorage.ICommLibReader;
-import com.tencent.mm.plugin.appbrand.jsruntime.ac;
-import com.tencent.mm.plugin.appbrand.o;
-import com.tencent.mm.vfs.i;
-import com.tencent.xweb.WebView;
-import com.tencent.xweb.ag;
+import com.tencent.mm.plugin.appbrand.page.a.a;
+import com.tencent.mm.plugin.appbrand.page.capsulebar.AppBrandCapsuleBarPlaceHolderView;
+import com.tencent.mm.plugin.appbrand.widget.actionbar.b;
+import com.tencent.mm.plugin.appbrand.widget.actionbar.b.d;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.j;
 import d.g.b.p;
 import d.l;
-import d.n.n;
 import d.v;
-import java.io.FileNotFoundException;
-import java.nio.charset.Charset;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/page/MPPageScriptProviderXWebCodeCacheImpl;", "Lcom/tencent/mm/plugin/appbrand/page/MPPageScriptProviderDefaultImpl;", "renderer", "Lcom/tencent/mm/plugin/appbrand/page/AppBrandPageViewRendererWC;", "(Lcom/tencent/mm/plugin/appbrand/page/AppBrandPageViewRendererWC;)V", "checkScriptSerialized", "", "scriptName", "scriptSource", "onScriptCodeCacheProvided", "", "name", "provideScript", "resourceName", "contentMD5", "fileMD5", "stripParentFilePath", "urlEncode", "Companion", "plugin-appbrand-integration_release"})
-public class bg
-  extends bf
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/page/MPPageViewActionBarExtensionImpl;", "Lcom/tencent/mm/plugin/appbrand/page/extensions/AppBrandPageViewActionBarExtension;", "page", "Lcom/tencent/mm/plugin/appbrand/page/AppBrandPageView;", "(Lcom/tencent/mm/plugin/appbrand/page/AppBrandPageView;)V", "isInForeground", "", "applyActionBarSizeProperty", "", "actionBar", "Lcom/tencent/mm/plugin/appbrand/widget/actionbar/AppBrandActionBar;", "onActionbarInstalled", "onBackground", "onConfigurationChanged", "newConfig", "Landroid/content/res/Configuration;", "onDestroy", "onForeground", "Companion", "luggage-wechat-full-sdk_release"})
+public final class bg
+  implements a
 {
-  private static final String[] meF;
-  public static final a meG;
-  private final ad meE;
+  public static final a mjc;
+  private final z clw;
+  private boolean mjb;
   
   static
   {
-    AppMethodBeat.i(50948);
-    meG = new a((byte)0);
-    meF = new String[] { "app-wxss.js", "page-frame.html" };
-    com.tencent.mm.plugin.appbrand.utils.q.Vd("//XWEB_SCRIPT:");
-    String str = ac.bhw() + "/page";
-    if (i.fv(str)) {
-      i.cZ(str, true);
-    }
-    AppMethodBeat.o(50948);
+    AppMethodBeat.i(183075);
+    mjc = new a((byte)0);
+    AppMethodBeat.o(183075);
   }
   
-  public bg(ad paramad)
+  public bg(z paramz)
   {
-    super((a)paramad);
-    AppMethodBeat.i(50947);
-    this.meE = paramad;
-    AppMethodBeat.o(50947);
+    AppMethodBeat.i(183074);
+    this.clw = paramz;
+    AppMethodBeat.o(183074);
   }
   
-  /* Error */
-  private static String Tu(String paramString)
+  private static void c(b paramb)
   {
-    // Byte code:
-    //   0: aconst_null
-    //   1: astore_1
-    //   2: ldc 124
-    //   4: invokestatic 48	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   7: getstatic 130	d/n/d:UTF_8	Ljava/nio/charset/Charset;
-    //   10: astore_2
-    //   11: aload_0
-    //   12: ifnonnull +20 -> 32
-    //   15: new 132	d/v
-    //   18: dup
-    //   19: ldc 134
-    //   21: invokespecial 136	d/v:<init>	(Ljava/lang/String;)V
-    //   24: astore_0
-    //   25: ldc 124
-    //   27: invokestatic 102	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   30: aload_0
-    //   31: athrow
-    //   32: aload_0
-    //   33: aload_2
-    //   34: invokevirtual 140	java/lang/String:getBytes	(Ljava/nio/charset/Charset;)[B
-    //   37: astore_0
-    //   38: aload_0
-    //   39: ldc 142
-    //   41: invokestatic 145	d/g/b/p:g	(Ljava/lang/Object;Ljava/lang/String;)V
-    //   44: new 147	java/io/ByteArrayInputStream
-    //   47: dup
-    //   48: aload_0
-    //   49: invokespecial 150	java/io/ByteArrayInputStream:<init>	([B)V
-    //   52: checkcast 152	java/io/Closeable
-    //   55: astore_2
-    //   56: aload_2
-    //   57: checkcast 147	java/io/ByteArrayInputStream
-    //   60: checkcast 154	java/io/InputStream
-    //   63: sipush 16384
-    //   66: invokestatic 160	com/tencent/mm/b/g:b	(Ljava/io/InputStream;I)Ljava/lang/String;
-    //   69: astore_0
-    //   70: aload_0
-    //   71: ldc 162
-    //   73: invokestatic 145	d/g/b/p:g	(Ljava/lang/Object;Ljava/lang/String;)V
-    //   76: aload_2
-    //   77: aconst_null
-    //   78: invokestatic 167	d/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
-    //   81: ldc 124
-    //   83: invokestatic 102	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   86: aload_0
-    //   87: areturn
-    //   88: astore_1
-    //   89: ldc 124
-    //   91: invokestatic 102	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   94: aload_1
-    //   95: athrow
-    //   96: astore_0
-    //   97: aload_2
-    //   98: aload_1
-    //   99: invokestatic 167	d/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
-    //   102: ldc 124
-    //   104: invokestatic 102	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   107: aload_0
-    //   108: athrow
-    //   109: astore_0
-    //   110: goto -13 -> 97
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	113	0	paramString	String
-    //   1	1	1	localObject1	Object
-    //   88	11	1	localThrowable	java.lang.Throwable
-    //   10	88	2	localObject2	Object
-    // Exception table:
-    //   from	to	target	type
-    //   56	76	88	java/lang/Throwable
-    //   89	96	96	finally
-    //   56	76	109	finally
-  }
-  
-  /* Error */
-  private static String Tv(String paramString)
-  {
-    // Byte code:
-    //   0: aconst_null
-    //   1: astore_1
-    //   2: ldc 169
-    //   4: invokestatic 48	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   7: aload_0
-    //   8: invokestatic 173	com/tencent/mm/vfs/i:openRead	(Ljava/lang/String;)Ljava/io/InputStream;
-    //   11: checkcast 152	java/io/Closeable
-    //   14: astore_2
-    //   15: aload_2
-    //   16: checkcast 154	java/io/InputStream
-    //   19: sipush 16384
-    //   22: invokestatic 160	com/tencent/mm/b/g:b	(Ljava/io/InputStream;I)Ljava/lang/String;
-    //   25: astore_0
-    //   26: aload_2
-    //   27: aconst_null
-    //   28: invokestatic 167	d/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
-    //   31: ldc 169
-    //   33: invokestatic 102	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   36: aload_0
-    //   37: areturn
-    //   38: astore_1
-    //   39: ldc 169
-    //   41: invokestatic 102	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   44: aload_1
-    //   45: athrow
-    //   46: astore_0
-    //   47: aload_2
-    //   48: aload_1
-    //   49: invokestatic 167	d/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
-    //   52: ldc 169
-    //   54: invokestatic 102	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   57: aload_0
-    //   58: athrow
-    //   59: astore_0
-    //   60: goto -13 -> 47
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	63	0	paramString	String
-    //   1	1	1	localObject	Object
-    //   38	11	1	localThrowable	java.lang.Throwable
-    //   14	34	2	localCloseable	java.io.Closeable
-    // Exception table:
-    //   from	to	target	type
-    //   15	26	38	java/lang/Throwable
-    //   39	46	46	finally
-    //   15	26	59	finally
-  }
-  
-  public static final String bQ(String paramString, int paramInt)
-  {
-    AppMethodBeat.i(50950);
-    paramString = a.bQ(paramString, paramInt);
-    AppMethodBeat.o(50950);
-    return paramString;
-  }
-  
-  private final String ej(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(50943);
-    String str3 = Tu(paramString2);
-    Object localObject1 = com.tencent.luggage.sdk.b.a.d.cnu;
-    p.g(localObject1, "SCRIPTS_LIB_FOR_WEBVIEW");
-    Object localObject2;
-    String str1;
-    String str2;
-    if (d.a.e.contains((Object[])localObject1, paramString1)) {
-      if (p.i(paramString1, "WAWebview.js"))
-      {
-        localObject1 = new StringBuilder().append(a.CP()).append('/');
-        localObject2 = this.meE.aVF();
-        p.g(localObject2, "renderer.libReader");
-        p.h(localObject2, "reader");
-        localObject1 = a.uV(((ICommLibReader)localObject2).aZp());
-        i.aYg((String)localObject1);
-        localObject2 = new StringBuilder().append((String)localObject1).append('/').append(str3).append('-');
-        str1 = com.tencent.mm.compatible.util.q.encode(paramString1, "UTF-8");
-        p.g(str1, "URLEncoder.encode(this, \"UTF-8\")");
-        str2 = str1;
-      }
-    }
-    for (;;)
+    AppMethodBeat.i(220981);
+    Object localObject1 = paramb.getContext();
+    Object localObject2 = paramb.getCapsuleView();
+    if (localObject2 != null)
     {
-      String str4;
-      try
-      {
-        if (i.fv(str2))
-        {
-          str4 = "check serialized file md5 script[" + paramString1 + "] appId[" + this.meE.getAppId() + ']';
-          l = SystemClock.elapsedRealtime();
-          String str5 = Tv(str2);
-          if (str5 == null) {
-            break label1053;
-          }
-          str1 = str5.toString();
-          localObject2 = str1;
-          if (str1 == null) {
-            break label1053;
-          }
-          bool = com.tencent.mm.plugin.appbrand.utils.ad.Ch();
-          l = SystemClock.elapsedRealtime() - l;
-          if ((l <= 32L) || (!bool)) {
-            break label665;
-          }
-          com.tencent.mm.sdk.platformtools.ad.w("Luggage.Utils.Profile", "block main thread and skip " + (int)(l / 16L) + " frames! runProfiled:log:" + str4 + " cost " + l + " ms result:" + (String)localObject2 + " isMainThread: " + bool + ' ');
-          if (!(p.i(str5, str3) ^ true)) {
-            break label873;
-          }
-        }
-        str1 = "serialize script[" + paramString1 + "] appId[" + this.meE.getAppId() + ']';
-        l = SystemClock.elapsedRealtime();
-        i.deleteFile(str2 + ".utf16");
-        localObject2 = d.n.d.UTF_8;
-        if (paramString2 != null) {
-          break label730;
-        }
-        paramString2 = new v("null cannot be cast to non-null type java.lang.String");
-        AppMethodBeat.o(50943);
-        throw paramString2;
+      p.g(localObject2, "it");
+      if (!(((AppBrandCapsuleBarPlaceHolderView)localObject2).getLayoutParams() instanceof ViewGroup.MarginLayoutParams)) {
+        break label227;
       }
-      catch (FileNotFoundException paramString2)
+      Object localObject3 = ((AppBrandCapsuleBarPlaceHolderView)localObject2).getLayoutParams();
+      if (localObject3 == null)
       {
-        com.tencent.mm.sdk.platformtools.ad.e("Luggage.WXA.MPPageScriptProviderXWebCodeCacheImpl", "checkScriptSerialized appId[" + this.meE.getAppId() + "] scriptName[" + paramString1 + "] e=" + paramString2);
-        AppMethodBeat.o(50943);
-        return null;
+        paramb = new v("null cannot be cast to non-null type android.view.ViewGroup.MarginLayoutParams");
+        AppMethodBeat.o(220981);
+        throw paramb;
       }
-      AppMethodBeat.o(50943);
-      return null;
-      localObject1 = this.meE.getRuntime();
-      p.g(localObject1, "renderer.runtime");
-      if (!j.a.rQ(((o)localObject1).aVL()))
+      localObject3 = (ViewGroup.MarginLayoutParams)localObject3;
+      p.g(localObject1, "context");
+      i = ((Context)localObject1).getResources().getDimensionPixelSize(2131167028);
+      if (((ViewGroup.MarginLayoutParams)localObject3).rightMargin != i)
       {
-        AppMethodBeat.o(50943);
-        return null;
+        ((ViewGroup.MarginLayoutParams)localObject3).rightMargin = i;
+        ae.i("MPPageViewActionBarExtensionImpl", "[applyActionBarSizeProperty] reset capsule rightMargin:".concat(String.valueOf(i)));
+        ((AppBrandCapsuleBarPlaceHolderView)localObject2).requestLayout();
       }
-      if ((d.a.e.contains(meF, paramString1)) || (n.nA(paramString1, "page-frame.js"))) {}
-      for (int i = 1; i == 0; i = 0)
-      {
-        AppMethodBeat.o(50943);
-        return null;
-      }
-      localObject1 = new StringBuilder().append(a.CP()).append('/');
-      localObject2 = this.meE.getAppId();
-      p.g(localObject2, "renderer.appId");
-      localObject1 = a.bQ((String)localObject2, this.meE.EX());
-      i.aYg((String)localObject1);
-      break;
-      label665:
-      com.tencent.mm.sdk.platformtools.ad.i("Luggage.Utils.Profile", "runProfiled:log:" + str4 + " cost " + l + " ms result:" + (String)localObject2 + " isMainThread: " + bool + ' ');
-      continue;
-      label730:
-      paramString2 = paramString2.getBytes((Charset)localObject2);
-      p.g(paramString2, "(this as java.lang.String).getBytes(charset)");
-      localObject2 = Integer.valueOf(i.C(str2, paramString2)).toString();
-      paramString2 = (String)localObject2;
-      if (localObject2 == null) {
-        paramString2 = "";
-      }
-      boolean bool = com.tencent.mm.plugin.appbrand.utils.ad.Ch();
-      long l = SystemClock.elapsedRealtime() - l;
-      if ((l > 32L) && (bool))
-      {
-        com.tencent.mm.sdk.platformtools.ad.w("Luggage.Utils.Profile", "block main thread and skip " + (int)(l / 16L) + " frames! runProfiled:log:" + str1 + " cost " + l + " ms result:" + paramString2 + " isMainThread: " + bool + ' ');
-        label873:
-        localObject1 = new com.tencent.mm.vfs.e((String)localObject1).fOM();
-        if (localObject1 != null)
-        {
-          int j = localObject1.length;
-          i = 0;
-          label899:
-          if (i >= j) {
-            break label1048;
-          }
-          paramString2 = localObject1[i];
-          p.g(paramString2, "file");
-          localObject2 = paramString2.getAbsolutePath();
-          p.g(localObject2, "file.absolutePath");
-          if (!n.nz((String)localObject2, str2 + ".cachedata")) {
-            break label1041;
-          }
-        }
-      }
-      for (;;)
-      {
-        if (paramString2 != null) {
-          Ts(paramString1);
-        }
-        AppMethodBeat.o(50943);
-        return str2;
-        com.tencent.mm.sdk.platformtools.ad.i("Luggage.Utils.Profile", "runProfiled:log:" + str1 + " cost " + l + " ms result:" + paramString2 + " isMainThread: " + bool + ' ');
+    }
+    localObject2 = paramb.getNavResetStyleListener();
+    if (localObject2 != null) {}
+    for (int i = ((b.d)localObject2).bvI();; i = b.d.mZd)
+    {
+      paramb.bDc();
+      p.g(localObject1, "context");
+      paramb.setNavContainerMinimumWidth(((Context)localObject1).getResources().getDimensionPixelOffset(i));
+      i = ((Context)localObject1).getResources().getDimensionPixelOffset(2131165742);
+      paramb.setActionBarHeight(i);
+      paramb = new StringBuilder("[applyActionBarSizeProperty] ActionBar height=").append(i).append("  density=");
+      localObject1 = ((Context)localObject1).getResources();
+      p.g(localObject1, "context.resources");
+      ae.i("MPPageViewActionBarExtensionImpl", ((Resources)localObject1).getDisplayMetrics().density);
+      AppMethodBeat.o(220981);
+      return;
+      label227:
+      if ((!j.IS_FLAVOR_RED) && (!j.DEBUG)) {
         break;
-        label1041:
-        i += 1;
-        break label899;
-        label1048:
-        paramString2 = null;
       }
-      label1053:
-      localObject2 = "";
+      paramb = (Throwable)new RuntimeException("it is not MarginLayoutParams");
+      AppMethodBeat.o(220981);
+      throw paramb;
     }
   }
   
-  public static final String uV(int paramInt)
+  public final void a(b paramb)
   {
-    AppMethodBeat.i(50949);
-    String str = a.uV(paramInt);
-    AppMethodBeat.o(50949);
-    return str;
+    AppMethodBeat.i(220980);
+    p.h(paramb, "actionBar");
+    c(paramb);
+    AppMethodBeat.o(220980);
   }
   
-  public final String Si(String paramString)
+  public final void onBackground()
   {
-    AppMethodBeat.i(50942);
-    Object localObject = (CharSequence)paramString;
-    if ((localObject == null) || (((CharSequence)localObject).length() == 0)) {}
-    for (int i = 1; i != 0; i = 0)
-    {
-      AppMethodBeat.o(50942);
-      return null;
-    }
-    String str = super.Si(paramString);
-    localObject = (CharSequence)str;
-    if ((localObject == null) || (((CharSequence)localObject).length() == 0)) {}
-    for (i = 1; i != 0; i = 0)
-    {
-      if (p.i("WAWebview.js", paramString)) {
-        com.tencent.mm.plugin.report.service.g.yhR.dD(370, 71);
-      }
-      AppMethodBeat.o(50942);
-      return null;
-    }
-    localObject = ej(paramString, str);
-    if (localObject != null)
-    {
-      StringBuilder localStringBuilder = new StringBuilder("provideScript use XWEBScript appId[").append(this.meE.getAppId()).append("] name[").append(paramString).append("], path[");
-      i = n.b((CharSequence)localObject, '/');
-      if (i > 0)
-      {
-        int j = ((String)localObject).length();
-        if (localObject == null)
-        {
-          paramString = new v("null cannot be cast to non-null type java.lang.String");
-          AppMethodBeat.o(50942);
-          throw paramString;
-        }
-        paramString = ((String)localObject).substring(i, j);
-        p.g(paramString, "(this as java.lang.Strin…ing(startIndex, endIndex)");
-      }
-      for (;;)
-      {
-        com.tencent.mm.sdk.platformtools.ad.i("Luggage.WXA.MPPageScriptProviderXWebCodeCacheImpl", paramString + ']');
-        paramString = new ag(3, 0, (WebView)this.meE.buR());
-        paramString.na((String)localObject, com.tencent.mm.plugin.appbrand.utils.q.bBu());
-        paramString.bbe(str);
-        paramString = paramString.toString();
-        AppMethodBeat.o(50942);
-        return paramString;
-        paramString = (String)localObject;
-      }
-    }
-    AppMethodBeat.o(50942);
-    return str;
+    this.mjb = false;
   }
   
-  public void Ts(String paramString)
+  public final void onConfigurationChanged(Configuration paramConfiguration)
   {
-    AppMethodBeat.i(50944);
-    p.h(paramString, "name");
-    AppMethodBeat.o(50944);
+    AppMethodBeat.i(183072);
+    p.h(paramConfiguration, "newConfig");
+    if (!this.mjb)
+    {
+      AppMethodBeat.o(183072);
+      return;
+    }
+    paramConfiguration = this.clw.bvi();
+    p.g(paramConfiguration, "page.actionBar");
+    c(paramConfiguration);
+    AppMethodBeat.o(183072);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/page/MPPageScriptProviderXWebCodeCacheImpl$Companion;", "", "()V", "DIR_NAME", "", "LIB_MAGIC_WORD", "MAIN_MODULE_APP_SCRIPTS", "", "[Ljava/lang/String;", "SPLITTER", "", "TAG", "codeCacheDir", "getCodeCacheDir", "()Ljava/lang/String;", "generateAppScriptSerializeNamePrefix", "appId", "version", "", "generateSdkScriptSerializeNamePrefix", "reader", "Lcom/tencent/mm/plugin/appbrand/appstorage/ICommLibReader;", "versionCode", "mkdirs", "path", "plugin-appbrand-integration_release"})
-  public static final class a
+  public final void onDestroy()
   {
-    public static String CP()
-    {
-      AppMethodBeat.i(50939);
-      Object localObject = bg.meG;
-      localObject = ac.bhw() + "/page_scripts";
-      i.aYg((String)localObject);
-      AppMethodBeat.o(50939);
-      return localObject;
-    }
-    
-    public static String bQ(String paramString, int paramInt)
-    {
-      AppMethodBeat.i(50941);
-      p.h(paramString, "appId");
-      paramString = org.apache.commons.b.g.a(new String[] { paramString, "v".concat(String.valueOf(paramInt)) }, '-', 2);
-      p.g(paramString, "StringUtils.join(arrayOf…, \"v$version\"), SPLITTER)");
-      AppMethodBeat.o(50941);
-      return paramString;
-    }
-    
-    public static String uV(int paramInt)
-    {
-      AppMethodBeat.i(50940);
-      String str = org.apache.commons.b.g.a(new String[] { "LIB", "v".concat(String.valueOf(paramInt)) }, '-', 2);
-      p.g(str, "StringUtils.join(arrayOf…$versionCode\"), SPLITTER)");
-      AppMethodBeat.o(50940);
-      return str;
-    }
+    this.mjb = false;
   }
+  
+  public final void onForeground()
+  {
+    AppMethodBeat.i(183071);
+    this.mjb = true;
+    b localb = this.clw.bvi();
+    p.g(localb, "page.actionBar");
+    c(localb);
+    AppMethodBeat.o(183071);
+  }
+  
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/page/MPPageViewActionBarExtensionImpl$Companion;", "", "()V", "TAG", "", "luggage-wechat-full-sdk_release"})
+  public static final class a {}
 }
 
 

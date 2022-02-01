@@ -13,7 +13,7 @@ final class d
   
   public final void destroy() {}
   
-  public final Bitmap.Config fAh()
+  public final Bitmap.Config fEj()
   {
     return Bitmap.Config.ARGB_8888;
   }

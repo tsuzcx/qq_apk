@@ -3,37 +3,37 @@ package com.tencent.luggage.xweb_ext.extendplugin.component.video.a.a;
 import android.net.Uri;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.video.b.c.f;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ao;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.vfs.e;
-import com.tencent.mm.vfs.q;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.vfs.k;
+import com.tencent.mm.vfs.w;
 
 public final class a
   implements f
 {
-  ao cvu;
+  ap cvY;
   
   public a()
   {
     AppMethodBeat.i(177186);
-    this.cvu = new ao("bizplaylist", 86400L);
+    this.cvY = new ap("bizplaylist", 86400L);
     AppMethodBeat.o(177186);
   }
   
-  public final e dy(String paramString)
+  public final k dB(String paramString)
   {
     AppMethodBeat.i(177187);
-    if (!bt.isNullOrNil(paramString))
+    if (!bu.isNullOrNil(paramString))
     {
       String str = Uri.parse(paramString).getLastPathSegment();
-      if (!bt.isNullOrNil(str))
+      if (!bu.isNullOrNil(str))
       {
-        e locale = (e)this.cvu.aQb(str);
-        if (locale != null)
+        k localk = (k)this.cvY.aRy(str);
+        if (localk != null)
         {
-          ad.i("PlaylistFileInterceptor", "intercept success, contentId:%s, url:%s", new Object[] { str, paramString });
-          paramString = new e(String.format("%s/%s", new Object[] { q.B(locale.mUri), str }));
+          ae.i("PlaylistFileInterceptor", "intercept success, contentId:%s, url:%s", new Object[] { str, paramString });
+          paramString = new k(String.format("%s/%s", new Object[] { w.B(localk.mUri), str }));
           AppMethodBeat.o(177187);
           return paramString;
         }

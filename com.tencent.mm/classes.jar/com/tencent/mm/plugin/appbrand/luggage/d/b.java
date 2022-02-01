@@ -4,19 +4,19 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.g;
 
 public final class b
-  implements com.tencent.mm.plugin.appbrand.t.b
+  implements com.tencent.mm.plugin.appbrand.s.b
 {
   public final void f(int paramInt, Object... paramVarArgs)
   {
     AppMethodBeat.i(47580);
-    g.yhR.f(paramInt, paramVarArgs);
+    g.yxI.f(paramInt, paramVarArgs);
     AppMethodBeat.o(47580);
   }
   
   public final void kvStat(int paramInt, String paramString)
   {
     AppMethodBeat.i(47581);
-    g.yhR.kvStat(paramInt, paramString);
+    g.yxI.kvStat(paramInt, paramString);
     AppMethodBeat.o(47581);
   }
 }

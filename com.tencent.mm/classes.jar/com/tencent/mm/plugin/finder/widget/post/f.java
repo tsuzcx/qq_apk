@@ -5,7 +5,7 @@ import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/widget/post/PostPlainTextWidget;", "Lcom/tencent/mm/plugin/finder/widget/post/BasePostMediaWidget;", "activity", "Landroid/content/Context;", "(Landroid/content/Context;)V", "getUploadData", "Lcom/tencent/mm/plugin/finder/widget/post/UploadData;", "inflateView", "Landroid/view/View;", "onCreate", "", "onDestroy", "refresh", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/widget/post/PostPlainTextWidget;", "Lcom/tencent/mm/plugin/finder/widget/post/BasePostMediaWidget;", "activity", "Landroid/content/Context;", "(Landroid/content/Context;)V", "getUploadData", "Lcom/tencent/mm/plugin/finder/widget/post/UploadData;", "inflateView", "Landroid/view/View;", "onCreate", "", "onDestroy", "refresh", "plugin-finder_release"})
 public final class f
   extends a
 {
@@ -16,16 +16,16 @@ public final class f
     AppMethodBeat.o(168617);
   }
   
-  public final View cON()
+  public final View cRs()
   {
     return null;
   }
   
-  public final h cOO()
+  public final h cRt()
   {
-    AppMethodBeat.i(205812);
+    AppMethodBeat.i(206426);
     h localh = new h(true, 1, null);
-    AppMethodBeat.o(205812);
+    AppMethodBeat.o(206426);
     return localh;
   }
   

@@ -11,12 +11,12 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 
 public final class c
 {
-  private static ConcurrentLinkedQueue<WeakReference<a>> EEB;
+  private static ConcurrentLinkedQueue<WeakReference<a>> EWX;
   
   static
   {
     AppMethodBeat.i(110644);
-    EEB = new ConcurrentLinkedQueue();
+    EWX = new ConcurrentLinkedQueue();
     AppMethodBeat.o(110644);
   }
   
@@ -28,8 +28,8 @@ public final class c
       public final void be(Object paramAnonymousObject)
       {
         AppMethodBeat.i(110638);
-        if (this.EEC != null) {
-          this.EEC.dur();
+        if (this.EWY != null) {
+          this.EWY.dxH();
         }
         AppMethodBeat.o(110638);
       }
@@ -40,19 +40,19 @@ public final class c
   public static void a(a parama)
   {
     AppMethodBeat.i(110640);
-    EEB.add(new WeakReference(parama));
+    EWX.add(new WeakReference(parama));
     AppMethodBeat.o(110640);
   }
   
   public static void b(a parama)
   {
     AppMethodBeat.i(110641);
-    Iterator localIterator = EEB.iterator();
+    Iterator localIterator = EWX.iterator();
     while (localIterator.hasNext())
     {
       WeakReference localWeakReference = (WeakReference)localIterator.next();
       if (localWeakReference.get() == parama) {
-        EEB.remove(localWeakReference);
+        EWX.remove(localWeakReference);
       }
     }
     AppMethodBeat.o(110641);
@@ -61,13 +61,13 @@ public final class c
   public static void clear()
   {
     AppMethodBeat.i(110642);
-    EEB.clear();
+    EWX.clear();
     AppMethodBeat.o(110642);
   }
   
   public static abstract interface a
   {
-    public abstract void dur();
+    public abstract void dxH();
   }
   
   static class b
@@ -76,12 +76,12 @@ public final class c
     public void invoke(Object paramObject, d paramd)
     {
       AppMethodBeat.i(110639);
-      Iterator localIterator = c.aBt().iterator();
+      Iterator localIterator = c.aBJ().iterator();
       while (localIterator.hasNext())
       {
         WeakReference localWeakReference = (WeakReference)localIterator.next();
         if (localWeakReference.get() != null) {
-          ((a)localWeakReference.get()).dL(paramObject);
+          ((a)localWeakReference.get()).dM(paramObject);
         }
       }
       paramd.be(null);

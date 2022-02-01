@@ -1,75 +1,78 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
 
 public final class aqa
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public LinkedList<FinderCommentInfo> commentList;
-  
-  public aqa()
-  {
-    AppMethodBeat.i(169025);
-    this.commentList = new LinkedList();
-    AppMethodBeat.o(169025);
-  }
+  public long GHa;
+  public int dGO;
+  public String objectNonceId;
+  public int scene;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(169026);
+    AppMethodBeat.i(169013);
     if (paramInt == 0)
     {
-      ((f.a.a.c.a)paramVarArgs[0]).e(1, 8, this.commentList);
-      AppMethodBeat.o(169026);
+      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.aZ(1, this.GHa);
+      paramVarArgs.aS(2, this.scene);
+      paramVarArgs.aS(3, this.dGO);
+      if (this.objectNonceId != null) {
+        paramVarArgs.d(4, this.objectNonceId);
+      }
+      AppMethodBeat.o(169013);
       return 0;
     }
     if (paramInt == 1)
     {
-      paramInt = f.a.a.a.c(1, 8, this.commentList);
-      AppMethodBeat.o(169026);
-      return paramInt + 0;
+      int i = f.a.a.b.b.a.p(1, this.GHa) + 0 + f.a.a.b.b.a.bz(2, this.scene) + f.a.a.b.b.a.bz(3, this.dGO);
+      paramInt = i;
+      if (this.objectNonceId != null) {
+        paramInt = i + f.a.a.b.b.a.e(4, this.objectNonceId);
+      }
+      AppMethodBeat.o(169013);
+      return paramInt;
     }
     if (paramInt == 2)
     {
-      paramVarArgs = (byte[])paramVarArgs[0];
-      this.commentList.clear();
-      paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+      paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gxE();
+          paramVarArgs.gCg();
         }
       }
-      AppMethodBeat.o(169026);
+      AppMethodBeat.o(169013);
       return 0;
     }
     if (paramInt == 3)
     {
-      Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
+      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
       aqa localaqa = (aqa)paramVarArgs[1];
-      paramInt = ((Integer)paramVarArgs[2]).intValue();
-      switch (paramInt)
+      switch (((Integer)paramVarArgs[2]).intValue())
       {
       default: 
-        AppMethodBeat.o(169026);
+        AppMethodBeat.o(169013);
         return -1;
+      case 1: 
+        localaqa.GHa = locala.OmT.zd();
+        AppMethodBeat.o(169013);
+        return 0;
+      case 2: 
+        localaqa.scene = locala.OmT.zc();
+        AppMethodBeat.o(169013);
+        return 0;
+      case 3: 
+        localaqa.dGO = locala.OmT.zc();
+        AppMethodBeat.o(169013);
+        return 0;
       }
-      paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
-      int i = paramVarArgs.size();
-      paramInt = 0;
-      while (paramInt < i)
-      {
-        Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-        localObject1 = new FinderCommentInfo();
-        localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-        for (boolean bool = true; bool; bool = ((FinderCommentInfo)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, com.tencent.mm.bx.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-        localaqa.commentList.add(localObject1);
-        paramInt += 1;
-      }
-      AppMethodBeat.o(169026);
+      localaqa.objectNonceId = locala.OmT.readString();
+      AppMethodBeat.o(169013);
       return 0;
     }
-    AppMethodBeat.o(169026);
+    AppMethodBeat.o(169013);
     return -1;
   }
 }

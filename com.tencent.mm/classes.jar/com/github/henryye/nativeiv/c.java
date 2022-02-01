@@ -41,16 +41,16 @@ public class c
   
   private void sN()
   {
-    AppMethodBeat.i(194925);
+    AppMethodBeat.i(209410);
     if (this.baB != null) {
       this.baB.recycle();
     }
-    AppMethodBeat.o(194925);
+    AppMethodBeat.o(209410);
   }
   
   public final void a(com.github.henryye.nativeiv.bitmap.b<Bitmap> paramb)
   {
-    AppMethodBeat.i(194926);
+    AppMethodBeat.i(209411);
     BitmapType localBitmapType = BitmapType.Legacy;
     synchronized (baA)
     {
@@ -66,7 +66,7 @@ public class c
       }
       ((Map)localObject1).put(localBitmapType, paramb);
       localb.bay.append(i, localObject1);
-      AppMethodBeat.o(194926);
+      AppMethodBeat.o(209411);
       return;
     }
   }
@@ -78,23 +78,23 @@ public class c
   
   public final com.github.henryye.nativeiv.bitmap.d h(InputStream paramInputStream)
   {
-    AppMethodBeat.i(194923);
+    AppMethodBeat.i(209408);
     sN();
     if (paramInputStream != null)
     {
       paramInputStream = i(paramInputStream);
-      AppMethodBeat.o(194923);
+      AppMethodBeat.o(209408);
       return paramInputStream;
     }
-    AppMethodBeat.o(194923);
+    AppMethodBeat.o(209408);
     return null;
   }
   
   protected com.github.henryye.nativeiv.bitmap.d i(InputStream paramInputStream)
   {
-    AppMethodBeat.i(194924);
+    AppMethodBeat.i(209409);
     paramInputStream = com.github.henryye.nativeiv.c.d.k(paramInputStream);
-    AppMethodBeat.o(194924);
+    AppMethodBeat.o(209409);
     return paramInputStream;
   }
   

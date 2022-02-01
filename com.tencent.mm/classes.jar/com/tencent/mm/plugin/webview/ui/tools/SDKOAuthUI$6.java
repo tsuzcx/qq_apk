@@ -1,24 +1,24 @@
 package com.tencent.mm.plugin.webview.ui.tools;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.av.a;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aw.a;
 
 final class SDKOAuthUI$6
-  implements av.a
+  implements aw.a
 {
   SDKOAuthUI$6(SDKOAuthUI paramSDKOAuthUI) {}
   
   public final boolean onTimerExpired()
   {
     AppMethodBeat.i(79737);
-    if (this.Eab.isFinishing())
+    if (this.Esd.isFinishing())
     {
-      ad.i("MicroMsg.SdkOAuthUI", "onTimerExpired isFinishing");
+      ae.i("MicroMsg.SdkOAuthUI", "onTimerExpired isFinishing");
       AppMethodBeat.o(79737);
       return false;
     }
-    SDKOAuthUI.q(this.Eab);
+    SDKOAuthUI.q(this.Esd);
     AppMethodBeat.o(79737);
     return false;
   }

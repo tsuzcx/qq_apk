@@ -25,7 +25,7 @@ public class RecoveryTinkerResultService
     localRecoveryHandleItem.clientVersion = localCommonOptions.getClientVersion();
     localRecoveryHandleItem.timestamp = System.currentTimeMillis();
     localRecoveryHandleItem.key = "KeyPatchResultTotalCount";
-    if (parama.dpX)
+    if (parama.drc)
     {
       RecoveryLog.i("Recovery.RecoveryTinkerResultService", "patch success", new Object[0]);
       localRecoveryHandleItem.key = "KeyPatchResultSuccessCount";
@@ -68,7 +68,7 @@ public class RecoveryTinkerResultService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.modelrecovery.RecoveryTinkerResultService
  * JD-Core Version:    0.7.0.1
  */

@@ -3,12 +3,12 @@ package com.tencent.mm.plugin.webview.ui.tools.bag;
 import android.content.Context;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.a;
+import com.tencent.mm.bq.a;
 import com.tencent.mm.compatible.d.b;
 import com.tencent.mm.pluginsdk.permission.RequestFloatWindowPermissionDialog;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public final class f$a$1
   implements Runnable
@@ -19,74 +19,74 @@ public final class f$a$1
   {
     int i = 0;
     AppMethodBeat.i(80463);
-    switch (this.cWS)
+    switch (this.cXP)
     {
     }
     for (;;)
     {
       AppMethodBeat.o(80463);
       return;
-      Object localObject = this.cWK.getString("key_url");
-      String str = this.cWK.getString("key_bag_icon");
-      i = this.cWK.getInt("key_scene", 0);
-      boolean bool = this.cWK.getBoolean("key_from_bag", false);
-      Bundle localBundle = this.cWK.getBundle("key_extras");
-      d locald = d.Efz;
-      if (!b.ca(aj.getContext()))
+      Object localObject = this.cXH.getString("key_url");
+      String str = this.cXH.getString("key_bag_icon");
+      i = this.cXH.getInt("key_scene", 0);
+      boolean bool = this.cXH.getBoolean("key_from_bag", false);
+      Bundle localBundle = this.cXH.getBundle("key_extras");
+      d locald = d.ExC;
+      if (!b.cc(ak.getContext()))
       {
-        ad.w("MicroMsg.WebViewBagMgr", "showBag: no float window permission");
-        Context localContext = aj.getContext();
-        RequestFloatWindowPermissionDialog.a(localContext, localContext.getString(2131766076), new d.1(locald, (String)localObject, i, str, localBundle, bool), a.abB());
+        ae.w("MicroMsg.WebViewBagMgr", "showBag: no float window permission");
+        Context localContext = ak.getContext();
+        RequestFloatWindowPermissionDialog.a(localContext, localContext.getString(2131766076), new d.1(locald, (String)localObject, i, str, localBundle, bool), a.abK());
         AppMethodBeat.o(80463);
         return;
       }
       locald.a((String)localObject, i, str, localBundle, bool);
-      locald.eTC();
+      locald.eXp();
       AppMethodBeat.o(80463);
       return;
-      d.Efz.eTD();
+      d.ExC.eXq();
       AppMethodBeat.o(80463);
       return;
-      localObject = d.Efz;
-      ad.i("MicroMsg.WebViewBagMgr", "checkResumeBag mInWebViewUIFromBag:%b", new Object[] { Boolean.valueOf(((d)localObject).EfC) });
-      if ((!bt.isNullOrNil(((d)localObject).EfD.url)) && (!((d)localObject).EfC))
+      localObject = d.ExC;
+      ae.i("MicroMsg.WebViewBagMgr", "checkResumeBag mInWebViewUIFromBag:%b", new Object[] { Boolean.valueOf(((d)localObject).ExF) });
+      if ((!bu.isNullOrNil(((d)localObject).ExG.url)) && (!((d)localObject).ExF))
       {
-        if (System.currentTimeMillis() - ((d)localObject).yVn > 500L) {
+        if (System.currentTimeMillis() - ((d)localObject).zlx > 500L) {
           i = 1;
         }
         if (i == 0) {
-          ad.w("MicroMsg.WebViewBagMgr", "click to fast!!!");
+          ae.w("MicroMsg.WebViewBagMgr", "click to fast!!!");
         }
         if (i != 0)
         {
-          if ((((d)localObject).EfA != null) && (((d)localObject).EfA.getVisibility() == 0))
+          if ((((d)localObject).ExD != null) && (((d)localObject).ExD.getVisibility() == 0))
           {
-            ad.i("MicroMsg.WebViewBagMgr", "already show");
-            ((d)localObject).EfA.setTouchEnable(true);
+            ae.i("MicroMsg.WebViewBagMgr", "already show");
+            ((d)localObject).ExD.setTouchEnable(true);
             AppMethodBeat.o(80463);
             return;
           }
-          ((d)localObject).eTC();
-          ad.i("MicroMsg.WebViewBagMgr", "checkResumeBag show bag");
+          ((d)localObject).eXp();
+          ae.i("MicroMsg.WebViewBagMgr", "checkResumeBag show bag");
           AppMethodBeat.o(80463);
           return;
         }
       }
-      ((d)localObject).eTD();
-      ad.i("MicroMsg.WebViewBagMgr", "checkResumeBag hide bag");
+      ((d)localObject).eXq();
+      ae.i("MicroMsg.WebViewBagMgr", "checkResumeBag hide bag");
       AppMethodBeat.o(80463);
       return;
-      d.Efz.eTB();
+      d.ExC.eXo();
       AppMethodBeat.o(80463);
       return;
-      float f = this.cWK.getFloat("key_alpha", 1.0F);
-      d.Efz.bM(f);
+      float f = this.cXH.getFloat("key_alpha", 1.0F);
+      d.ExC.bK(f);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.bag.f.a.1
  * JD-Core Version:    0.7.0.1
  */

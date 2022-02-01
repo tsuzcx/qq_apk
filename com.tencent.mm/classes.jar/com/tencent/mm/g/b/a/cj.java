@@ -6,29 +6,29 @@ import com.tencent.mm.plugin.report.a;
 public final class cj
   extends a
 {
-  private String ecw = "";
-  public long ecy;
+  private String edR = "";
+  public long edT;
   
-  public final String RD()
+  public final String RC()
   {
     AppMethodBeat.i(184630);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.ecw);
+    ((StringBuffer)localObject).append(this.edR);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ecy);
+    ((StringBuffer)localObject).append(this.edT);
     localObject = ((StringBuffer)localObject).toString();
-    awz((String)localObject);
+    axO((String)localObject);
     AppMethodBeat.o(184630);
     return localObject;
   }
   
-  public final String RE()
+  public final String RD()
   {
     AppMethodBeat.i(184631);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("Roomid:").append(this.ecw);
+    ((StringBuffer)localObject).append("Roomid:").append(this.edR);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ErrCode:").append(this.ecy);
+    ((StringBuffer)localObject).append("ErrCode:").append(this.edT);
     localObject = ((StringBuffer)localObject).toString();
     AppMethodBeat.o(184631);
     return localObject;
@@ -39,10 +39,10 @@ public final class cj
     return 19352;
   }
   
-  public final cj lK(String paramString)
+  public final cj mb(String paramString)
   {
     AppMethodBeat.i(184629);
-    this.ecw = t("Roomid", paramString, true);
+    this.edR = t("Roomid", paramString, true);
     AppMethodBeat.o(184629);
     return this;
   }

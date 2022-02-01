@@ -46,10 +46,10 @@ public class p
     return paramT;
   }
   
-  public static void bcb(String paramString)
+  public static void bdF(String paramString)
   {
     AppMethodBeat.i(128975);
-    paramString = (y)p(new y("lateinit property " + paramString + " has not been initialized"));
+    paramString = (y)q(new y("lateinit property " + paramString + " has not been initialized"));
     AppMethodBeat.o(128975);
     throw paramString;
   }
@@ -70,17 +70,17 @@ public class p
     AppMethodBeat.i(128976);
     if (paramObject == null)
     {
-      paramObject = (IllegalStateException)p(new IllegalStateException(paramString + " must not be null"));
+      paramObject = (IllegalStateException)q(new IllegalStateException(paramString + " must not be null"));
       AppMethodBeat.o(128976);
       throw paramObject;
     }
     AppMethodBeat.o(128976);
   }
   
-  public static void gfZ()
+  public static void gkB()
   {
     AppMethodBeat.i(128974);
-    e locale = (e)p(new e());
+    e locale = (e)q(new e());
     AppMethodBeat.o(128974);
     throw locale;
   }
@@ -93,7 +93,7 @@ public class p
       Object localObject = java.lang.Thread.currentThread().getStackTrace()[3];
       paramObject = ((StackTraceElement)localObject).getClassName();
       localObject = ((StackTraceElement)localObject).getMethodName();
-      paramObject = (IllegalArgumentException)p(new IllegalArgumentException("Parameter specified as non-null is null: method " + paramObject + "." + (String)localObject + ", parameter " + paramString));
+      paramObject = (IllegalArgumentException)q(new IllegalArgumentException("Parameter specified as non-null is null: method " + paramObject + "." + (String)localObject + ", parameter " + paramString));
       AppMethodBeat.o(128977);
       throw paramObject;
     }
@@ -118,7 +118,7 @@ public class p
     return bool;
   }
   
-  private static <T extends Throwable> T p(T paramT)
+  private static <T extends Throwable> T q(T paramT)
   {
     AppMethodBeat.i(128980);
     paramT = b(paramT, p.class.getName());

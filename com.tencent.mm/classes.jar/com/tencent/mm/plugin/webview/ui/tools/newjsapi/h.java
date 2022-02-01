@@ -8,51 +8,50 @@ import com.tencent.mm.plugin.webview.c.c.a;
 import com.tencent.mm.plugin.webview.c.d;
 import com.tencent.mm.plugin.webview.c.f;
 import com.tencent.mm.plugin.webview.stub.e;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.sdk.platformtools.g;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import d.g.b.p;
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
 import java.util.HashMap;
 import java.util.Map;
 
-@d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/webview/ui/tools/newjsapi/JsApiGetLocalImgData;", "Lcom/tencent/mm/plugin/webview/jsapi/newjsapi/BaseJsApi;", "()V", "TAG", "", "controlByte", "", "getControlByte", "()I", "funcName", "getFuncName", "()Ljava/lang/String;", "handleMsg", "", "env", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiEnv;", "msg", "Lcom/tencent/mm/plugin/webview/jsapi/MsgWrapper;", "plugin-webview_release"})
+@d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/webview/ui/tools/newjsapi/JsApiGetLocalImgData;", "Lcom/tencent/mm/plugin/webview/jsapi/newjsapi/BaseJsApi;", "()V", "TAG", "", "controlByte", "", "getControlByte", "()I", "funcName", "getFuncName", "()Ljava/lang/String;", "handleMsg", "", "env", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiEnv;", "msg", "Lcom/tencent/mm/plugin/webview/jsapi/MsgWrapper;", "plugin-webview_release"})
 public final class h
   extends a
 {
-  private static final int EkT = 249;
-  public static final h Epu;
-  private static final String dKm = "getLocalImgData";
+  private static final int ECX = 249;
+  public static final h EHC;
+  private static final String dLB = "getLocalImgData";
   
   static
   {
-    AppMethodBeat.i(207641);
-    Epu = new h();
-    EkT = 249;
-    dKm = "getLocalImgData";
-    AppMethodBeat.o(207641);
+    AppMethodBeat.i(199400);
+    EHC = new h();
+    ECX = 249;
+    dLB = "getLocalImgData";
+    AppMethodBeat.o(199400);
   }
   
   public final boolean a(d paramd, com.tencent.mm.plugin.webview.c.l paraml)
   {
-    AppMethodBeat.i(207640);
+    AppMethodBeat.i(199399);
     p.h(paramd, "env");
     p.h(paraml, "msg");
-    Object localObject1 = (String)paraml.xaW.get("localId");
-    if (bt.isNullOrNil((String)localObject1))
+    Object localObject1 = (String)paraml.xqN.get("localId");
+    if (bu.isNullOrNil((String)localObject1))
     {
-      paramd.Dyx.i(paraml.DNz, "getLocalImgData:fail_invaild_localid", null);
-      AppMethodBeat.o(207640);
+      paramd.DQe.i(paraml.Efy, "getLocalImgData:fail_invaild_localid", null);
+      AppMethodBeat.o(199399);
       return false;
     }
     try
     {
-      Object localObject2 = paramd.lvv;
+      Object localObject2 = paramd.lzT;
       if (localObject2 != null) {}
-      for (localObject1 = ((e)localObject2).fM((String)localObject1, 2); localObject1 != null; localObject1 = null)
+      for (localObject1 = ((e)localObject2).fX((String)localObject1, 2); localObject1 != null; localObject1 = null)
       {
-        localObject1 = g.decodeFile((String)localObject1);
+        localObject1 = com.tencent.mm.sdk.platformtools.h.decodeFile((String)localObject1);
         if ((localObject1 == null) || (((Bitmap)localObject1).isRecycled())) {
           break;
         }
@@ -60,35 +59,35 @@ public final class h
         ((Bitmap)localObject1).compress(Bitmap.CompressFormat.JPEG, 90, (OutputStream)localObject2);
         Object localObject3 = ((ByteArrayOutputStream)localObject2).toByteArray();
         localObject2 = Base64.encodeToString((byte[])localObject3, 0);
-        ad.i("MicroMsg.JsApiGetLocalImgData", "rawData lenght = %d, base64 lenght = %d", new Object[] { Integer.valueOf(localObject3.length), Integer.valueOf(((String)localObject2).length()) });
+        ae.i("MicroMsg.JsApiGetLocalImgData", "rawData lenght = %d, base64 lenght = %d", new Object[] { Integer.valueOf(localObject3.length), Integer.valueOf(((String)localObject2).length()) });
         localObject3 = new HashMap();
         Map localMap = (Map)localObject3;
         p.g(localObject2, "base64Content");
         localMap.put("localData", localObject2);
-        paramd.Dyx.i(paraml.DNz, "getLocalImgData:ok", (Map)localObject3);
-        ad.i("MicroMsg.JsApiGetLocalImgData", "bitmap recycle %s", new Object[] { ((Bitmap)localObject1).toString() });
+        paramd.DQe.i(paraml.Efy, "getLocalImgData:ok", (Map)localObject3);
+        ae.i("MicroMsg.JsApiGetLocalImgData", "bitmap recycle %s", new Object[] { ((Bitmap)localObject1).toString() });
         ((Bitmap)localObject1).recycle();
-        AppMethodBeat.o(207640);
+        AppMethodBeat.o(199399);
         return true;
       }
       return false;
     }
     catch (Exception localException)
     {
-      ad.e("MicroMsg.JsApiGetLocalImgData", localException.getMessage());
-      paramd.Dyx.i(paraml.DNz, "getLocalImgData:fail", null);
-      AppMethodBeat.o(207640);
+      ae.e("MicroMsg.JsApiGetLocalImgData", localException.getMessage());
+      paramd.DQe.i(paraml.Efy, "getLocalImgData:fail", null);
+      AppMethodBeat.o(199399);
     }
   }
   
-  public final int eOL()
+  public final int eSw()
   {
-    return EkT;
+    return ECX;
   }
   
-  public final String eOM()
+  public final String eSx()
   {
-    return dKm;
+    return dLB;
   }
 }
 

@@ -25,8 +25,9 @@ import android.view.inputmethod.InputMethodManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.g.b;
 import com.tencent.mm.compatible.util.d;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.i.a;
 import com.tencent.mm.ui.tools.r;
 import com.tencent.mm.ui.widget.SwipeBackLayout;
@@ -151,7 +152,7 @@ public abstract class MMFragment
     label134:
     for (paramBoolean2 = true;; paramBoolean2 = false)
     {
-      ad.i("MicroMsg.MMFragment", "[filterAndNotifyVisibility] visible = %s parent = %s, super = %s, hint = %s name:%s", new Object[] { Boolean.valueOf(paramBoolean2), Boolean.valueOf(paramBoolean1), Boolean.valueOf(bool1), Boolean.valueOf(bool2), getClass().getName() });
+      ae.i("MicroMsg.MMFragment", "[filterAndNotifyVisibility] visible = %s parent = %s, super = %s, hint = %s name:%s", new Object[] { Boolean.valueOf(paramBoolean2), Boolean.valueOf(paramBoolean1), Boolean.valueOf(bool1), Boolean.valueOf(bool2), getClass().getName() });
       if (paramBoolean2 == this.mCurVisible) {
         break;
       }
@@ -182,7 +183,7 @@ public abstract class MMFragment
     {
       this.mSwipeBackLayout.addView(localView);
       this.mSwipeBackLayout.setContentView(localView);
-      this.mSwipeBackLayout.yL(true);
+      this.mSwipeBackLayout.yZ(true);
       this.mSwipeBackLayout.setSwipeGestureDelegate(new SwipeBackLayout.a()
       {
         public final void onCancel()
@@ -261,21 +262,21 @@ public abstract class MMFragment
   public void addIconOptionMenu(int paramInt1, int paramInt2, MenuItem.OnMenuItemClickListener paramOnMenuItemClickListener, int paramInt3)
   {
     s locals = this.mController;
-    s.b localb = s.b.JbR;
+    s.b localb = s.b.Jwz;
     s.a locala = new s.a();
-    locala.ITC = paramInt1;
-    locala.JbN = paramInt3;
-    locala.ITD = paramInt2;
+    locala.Jok = paramInt1;
+    locala.Jwv = paramInt3;
+    locala.Jol = paramInt2;
     locala.text = "";
-    locala.jil = paramOnMenuItemClickListener;
-    locala.rAj = null;
-    locala.JbP = localb;
-    locala.JbQ = false;
-    if ((locala.ITD == 2131233291) && (bt.isNullOrNil(""))) {
+    locala.jle = paramOnMenuItemClickListener;
+    locala.rIu = null;
+    locala.Jwx = localb;
+    locala.Jwy = false;
+    if ((locala.Jol == 2131233291) && (bu.isNullOrNil(""))) {
       locala.text = locals.mContext.getString(2131755815);
     }
-    locals.abG(locala.ITC);
-    locals.ITt.add(locala);
+    locals.aco(locala.Jok);
+    locals.Job.add(locala);
     locals.supportInvalidateOptionsMenu();
   }
   
@@ -338,7 +339,7 @@ public abstract class MMFragment
   
   public s.a findMenuInfo(int paramInt)
   {
-    return this.mController.abH(paramInt);
+    return this.mController.acp(paramInt);
   }
   
   public void finish()
@@ -363,7 +364,7 @@ public abstract class MMFragment
   
   public View getBodyView()
   {
-    return this.mController.BKn;
+    return this.mController.CbM;
   }
   
   public final View getContentView()
@@ -373,7 +374,7 @@ public abstract class MMFragment
   
   public final Activity getContext()
   {
-    return this.mController.Jbc;
+    return this.mController.JvK;
   }
   
   public s getController()
@@ -475,7 +476,7 @@ public abstract class MMFragment
   
   public boolean isScreenEnable()
   {
-    return this.mController.JaQ;
+    return this.mController.Jvy;
   }
   
   public boolean isSupportCustomActionBar()
@@ -485,7 +486,7 @@ public abstract class MMFragment
   
   public final boolean isSupportNavigationSwipeBack()
   {
-    if ((d.ly(19)) && (b.abd())) {
+    if ((d.lA(19)) && (b.abm())) {
       return supportNavigationSwipeBack();
     }
     return false;
@@ -498,7 +499,7 @@ public abstract class MMFragment
   
   public int keyboardState()
   {
-    return this.mController.JbA;
+    return this.mController.Jwi;
   }
   
   public boolean needShowIdcError()
@@ -554,7 +555,7 @@ public abstract class MMFragment
   public void onDestroy()
   {
     super.onDestroy();
-    this.mController.jK(getActivity());
+    this.mController.jR(getActivity());
   }
   
   public void onDestroyView()
@@ -626,7 +627,7 @@ public abstract class MMFragment
     aj.cQ(2, this.className);
     super.onPause();
     this.mController.onPause();
-    ad.v("MicroMsg.INIT", "KEVIN MMActivity onPause:" + (System.currentTimeMillis() - l));
+    ae.v("MicroMsg.INIT", "KEVIN MMActivity onPause:" + (System.currentTimeMillis() - l));
     onParentVisibilityChanged(false);
   }
   
@@ -641,9 +642,9 @@ public abstract class MMFragment
     long l = System.currentTimeMillis();
     aj.cQ(1, this.className);
     super.onResume();
-    ad.v("MicroMsg.INIT", "KEVIN MMActivity super..onResume " + (System.currentTimeMillis() - l));
+    ae.v("MicroMsg.INIT", "KEVIN MMActivity super..onResume " + (System.currentTimeMillis() - l));
     this.mController.onResume();
-    ad.v("MicroMsg.INIT", "KEVIN MMActivity onResume :" + (System.currentTimeMillis() - l));
+    ae.v("MicroMsg.INIT", "KEVIN MMActivity onResume :" + (System.currentTimeMillis() - l));
     onParentVisibilityChanged(true);
   }
   
@@ -692,7 +693,7 @@ public abstract class MMFragment
         i = localBundle.getInt(getClass().getName());
       }
     }
-    ad.i("MicroMsg.MMFragment", "[onVisibilityChanged] visible:%s name:%s id:%s", new Object[] { Boolean.valueOf(paramBoolean), getClass().getName(), Integer.valueOf(i) });
+    ae.i("MicroMsg.MMFragment", "[onVisibilityChanged] visible:%s name:%s id:%s", new Object[] { Boolean.valueOf(paramBoolean), getClass().getName(), Integer.valueOf(i) });
   }
   
   public void removeAllOptionMenu()
@@ -810,7 +811,7 @@ public abstract class MMFragment
   
   public void setUserVisibleHint(boolean paramBoolean)
   {
-    ad.i("MicroMsg.MMFragment", "[setUserVisibleHint] isVisibleToUser:%s name:%s", new Object[] { Boolean.valueOf(paramBoolean), getClass().getName() });
+    ae.i("MicroMsg.MMFragment", "[setUserVisibleHint] isVisibleToUser:%s name:%s", new Object[] { Boolean.valueOf(paramBoolean), getClass().getName() });
     super.setUserVisibleHint(paramBoolean);
     filterAndNotifyVisibility(paramBoolean);
   }
@@ -837,7 +838,7 @@ public abstract class MMFragment
   
   public void showVKB()
   {
-    s.showVKB(this.mController.Jbc);
+    s.showVKB(this.mController.JvK);
   }
   
   public void startActivity(Intent paramIntent)
@@ -857,8 +858,8 @@ public abstract class MMFragment
   
   public FragmentActivity thisActivity()
   {
-    if (this.mController.Jbc != null) {
-      return this.mController.Jbc;
+    if (this.mController.JvK != null) {
+      return this.mController.JvK;
     }
     return super.getActivity();
   }
@@ -867,7 +868,7 @@ public abstract class MMFragment
   {
     FragmentActivity localFragmentActivity = super.getActivity();
     if (localFragmentActivity == null) {
-      return com.tencent.mm.sdk.platformtools.aj.getContext().getResources();
+      return ak.getContext().getResources();
     }
     return localFragmentActivity.getResources();
   }
@@ -885,11 +886,11 @@ public abstract class MMFragment
   public void updateOptionMenu(int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean, MenuItem.OnMenuItemClickListener paramOnMenuItemClickListener)
   {
     s locals = this.mController;
-    locals.updateOptionMenuText(paramInt1, locals.Jbc.getString(paramInt2));
+    locals.updateOptionMenuText(paramInt1, locals.JvK.getString(paramInt2));
     this.mController.updateOptionMenuIcon(paramInt1, paramInt3);
     this.mController.updateOptionMenuListener(paramInt1, paramOnMenuItemClickListener, null);
     this.mController.updateOptionMenuRedDot(paramInt1, paramBoolean);
-    this.mController.a(this.mController.abH(paramInt1));
+    this.mController.a(this.mController.acp(paramInt1));
   }
   
   public void updateOptionMenu(int paramInt1, int paramInt2, MenuItem.OnMenuItemClickListener paramOnMenuItemClickListener, int paramInt3)
@@ -897,14 +898,14 @@ public abstract class MMFragment
     this.mController.updateOptionMenuIcon(paramInt1, paramInt2);
     this.mController.updateOptionMenuListener(paramInt1, paramOnMenuItemClickListener, null);
     paramOnMenuItemClickListener = this.mController;
-    s.a locala = paramOnMenuItemClickListener.abH(paramInt1);
-    if ((locala != null) && (locala.ITD != paramInt2))
+    s.a locala = paramOnMenuItemClickListener.acp(paramInt1);
+    if ((locala != null) && (locala.Jol != paramInt2))
     {
-      locala.ITD = paramInt2;
-      locala.JbN = paramInt3;
+      locala.Jol = paramInt2;
+      locala.Jwv = paramInt3;
       paramOnMenuItemClickListener.supportInvalidateOptionsMenu();
     }
-    this.mController.a(this.mController.abH(paramInt1));
+    this.mController.a(this.mController.acp(paramInt1));
   }
   
   public void updateOptionMenuIcon(int paramInt1, int paramInt2)

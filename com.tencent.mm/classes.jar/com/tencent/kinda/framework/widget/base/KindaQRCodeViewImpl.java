@@ -4,8 +4,8 @@ import android.graphics.Bitmap;
 import android.text.TextUtils;
 import com.tencent.kinda.gen.KQRCodeView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bz.a.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.by.a.a;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public class KindaQRCodeViewImpl
   extends BaseKindaCodeView
@@ -16,7 +16,7 @@ public class KindaQRCodeViewImpl
     AppMethodBeat.i(18937);
     if (TextUtils.isEmpty(paramString))
     {
-      ad.e("base_MMKView", "kinda getBitmap mQRcode == null");
+      ae.e("base_MMKView", "kinda getBitmap mQRcode == null");
       AppMethodBeat.o(18937);
       return null;
     }

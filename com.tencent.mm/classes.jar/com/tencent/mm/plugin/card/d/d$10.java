@@ -4,9 +4,9 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.jv;
+import com.tencent.mm.g.a.jw;
 import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 final class d$10
   implements DialogInterface.OnClickListener
@@ -17,10 +17,10 @@ final class d$10
   {
     AppMethodBeat.i(113762);
     paramDialogInterface.dismiss();
-    paramDialogInterface = new jv();
-    paramDialogInterface.dwO.context = this.val$context;
-    a.IbL.l(paramDialogInterface);
-    ad.i("MicroMsg.CardDialogHelper", "enter to cardhome");
+    paramDialogInterface = new jw();
+    paramDialogInterface.dxT.context = this.val$context;
+    a.IvT.l(paramDialogInterface);
+    ae.i("MicroMsg.CardDialogHelper", "enter to cardhome");
     AppMethodBeat.o(113762);
   }
 }

@@ -15,14 +15,14 @@ import java.util.ArrayList;
 public class StoryLoadIconPreference
   extends Preference
 {
-  private StoryAvatarDotsView fUW;
-  private b.h fUX;
-  private int fUY;
-  private int fUZ;
-  private int fVa;
-  private int fVb;
-  private int fVc;
-  private ArrayList<String> fVd;
+  private StoryAvatarDotsView fXc;
+  private b.h fXd;
+  private int fXe;
+  private int fXf;
+  private int fXg;
+  private int fXh;
+  private int fXi;
+  private ArrayList<String> fXj;
   private Context mContext;
   private View mView;
   
@@ -31,10 +31,10 @@ public class StoryLoadIconPreference
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(13018);
     this.mView = null;
-    this.fVb = -1;
-    this.fVc = -1;
-    this.fVd = new ArrayList();
-    bV(paramContext);
+    this.fXh = -1;
+    this.fXi = -1;
+    this.fXj = new ArrayList();
+    bX(paramContext);
     AppMethodBeat.o(13018);
   }
   
@@ -43,14 +43,14 @@ public class StoryLoadIconPreference
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(13019);
     this.mView = null;
-    this.fVb = -1;
-    this.fVc = -1;
-    this.fVd = new ArrayList();
-    bV(paramContext);
+    this.fXh = -1;
+    this.fXi = -1;
+    this.fXj = new ArrayList();
+    bX(paramContext);
     AppMethodBeat.o(13019);
   }
   
-  private void bV(Context paramContext)
+  private void bX(Context paramContext)
   {
     AppMethodBeat.i(13020);
     setLayoutResource(2131494804);
@@ -62,32 +62,32 @@ public class StoryLoadIconPreference
   {
     AppMethodBeat.i(13022);
     super.onBindView(paramView);
-    this.fUY = com.tencent.mm.cc.a.fromDPToPix(this.mContext, 21);
-    this.fVa = com.tencent.mm.cc.a.fromDPToPix(this.mContext, 2);
-    this.fUZ = com.tencent.mm.cc.a.fromDPToPix(this.mContext, this.fUY);
-    this.fVb = this.mContext.getResources().getColor(2131100498);
-    this.fUW = ((StoryAvatarDotsView)paramView.findViewById(2131305458));
-    this.fUW.setIconSize(this.fUY + this.fVa * 2);
-    this.fUW.setIconGap(this.fUZ / 2);
-    if (this.fUW != null)
+    this.fXe = com.tencent.mm.cb.a.fromDPToPix(this.mContext, 21);
+    this.fXg = com.tencent.mm.cb.a.fromDPToPix(this.mContext, 2);
+    this.fXf = com.tencent.mm.cb.a.fromDPToPix(this.mContext, this.fXe);
+    this.fXh = this.mContext.getResources().getColor(2131100498);
+    this.fXc = ((StoryAvatarDotsView)paramView.findViewById(2131305458));
+    this.fXc.setIconSize(this.fXe + this.fXg * 2);
+    this.fXc.setIconGap(this.fXf / 2);
+    if (this.fXc != null)
     {
-      if (this.fVd.size() > 0)
+      if (this.fXj.size() > 0)
       {
-        this.fUW.setVisibility(0);
-        this.fUW.setIconLayerCount(Math.min(this.fVd.size(), 3));
-        if (this.fUX == null) {
-          this.fUX = new com.tencent.mm.plugin.appbrand.ui.widget.a(this.fUY, this.fVa, this.fVb);
+        this.fXc.setVisibility(0);
+        this.fXc.setIconLayerCount(Math.min(this.fXj.size(), 3));
+        if (this.fXd == null) {
+          this.fXd = new com.tencent.mm.plugin.appbrand.ui.widget.a(this.fXe, this.fXg, this.fXh);
         }
         int i = 0;
-        while (i < this.fUW.getChildCount())
+        while (i < this.fXc.getChildCount())
         {
-          a.b.a(this.fUW.vQ(i), (String)this.fVd.get(i), 0.5F, false);
+          a.b.a(this.fXc.vV(i), (String)this.fXj.get(i), 0.5F, false);
           i += 1;
         }
         AppMethodBeat.o(13022);
         return;
       }
-      this.fUW.setVisibility(8);
+      this.fXc.setVisibility(8);
     }
     AppMethodBeat.o(13022);
   }

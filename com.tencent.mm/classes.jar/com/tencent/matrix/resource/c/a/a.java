@@ -2,15 +2,15 @@ package com.tencent.matrix.resource.c.a;
 
 public final class a
 {
-  public final int cIg;
-  public final b cIh;
-  public final Object cIi;
+  public final int cIP;
+  public final b cIQ;
+  public final Object cIR;
   
   public a(int paramInt, b paramb, Object paramObject)
   {
-    this.cIg = paramInt;
-    this.cIh = paramb;
-    this.cIi = paramObject;
+    this.cIP = paramInt;
+    this.cIQ = paramb;
+    this.cIR = paramObject;
   }
   
   public final boolean equals(Object paramObject)
@@ -23,19 +23,19 @@ public final class a
         return false;
       }
       paramObject = (a)paramObject;
-      if (this.cIg != paramObject.cIg) {
+      if (this.cIP != paramObject.cIP) {
         return false;
       }
-      if (!this.cIh.equals(paramObject.cIh)) {
+      if (!this.cIQ.equals(paramObject.cIQ)) {
         return false;
       }
-    } while (((this.cIi == null) || (this.cIi.equals(paramObject.cIi))) && ((paramObject.cIi == null) || (paramObject.cIi.equals(this.cIi))));
+    } while (((this.cIR == null) || (this.cIR.equals(paramObject.cIR))) && ((paramObject.cIR == null) || (paramObject.cIR.equals(this.cIR))));
     return false;
   }
   
   public final int hashCode()
   {
-    return (this.cIh.hashCode() << 31) + this.cIg;
+    return (this.cIQ.hashCode() << 31) + this.cIP;
   }
 }
 

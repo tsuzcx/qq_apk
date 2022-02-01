@@ -4,8 +4,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.e.c.a;
 import com.tencent.mm.sdk.e.e;
 import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.storagebase.g;
 import com.tencent.mm.storagebase.g.a;
 
@@ -45,26 +45,26 @@ public final class q
     AppMethodBeat.i(105124);
     if (paramp == null)
     {
-      ad.w("MicroMsg.emoji.EmotionRewardTipStorage", "save failed info is null");
+      ae.w("MicroMsg.emoji.EmotionRewardTipStorage", "save failed info is null");
       AppMethodBeat.o(105124);
       return false;
     }
     long l = this.db.replace("EmotionRewardTipInfo", "prodcutID", paramp.convertTo());
     if (l > 0L) {
-      ad.i("MicroMsg.emoji.EmotionRewardTipStorage", "save success");
+      ae.i("MicroMsg.emoji.EmotionRewardTipStorage", "save success");
     }
     while (l > 0L)
     {
       AppMethodBeat.o(105124);
       return true;
-      ad.i("MicroMsg.emoji.EmotionRewardTipStorage", "save failed");
+      ae.i("MicroMsg.emoji.EmotionRewardTipStorage", "save failed");
     }
     AppMethodBeat.o(105124);
     return false;
   }
   
   /* Error */
-  public final p ftC()
+  public final p fxD()
   {
     // Byte code:
     //   0: ldc 87
@@ -123,9 +123,9 @@ public final class q
     //   101: dup
     //   102: iconst_0
     //   103: aload_3
-    //   104: invokestatic 117	com/tencent/mm/sdk/platformtools/bt:n	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   104: invokestatic 116	com/tencent/mm/sdk/platformtools/bu:o	(Ljava/lang/Throwable;)Ljava/lang/String;
     //   107: aastore
-    //   108: invokestatic 121	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   108: invokestatic 120	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   111: aload_2
     //   112: ifnull -31 -> 81
     //   115: aload_2
@@ -169,25 +169,25 @@ public final class q
     //   49	54	148	java/lang/Exception
   }
   
-  public final boolean gs(String paramString, int paramInt)
+  public final boolean gB(String paramString, int paramInt)
   {
     AppMethodBeat.i(105123);
-    if (bt.isNullOrNil(paramString))
+    if (bu.isNullOrNil(paramString))
     {
-      ad.w("MicroMsg.emoji.EmotionRewardTipStorage", "product id is null.");
+      ae.w("MicroMsg.emoji.EmotionRewardTipStorage", "product id is null.");
       AppMethodBeat.o(105123);
       return false;
     }
     paramString = "UPDATE EmotionRewardTipInfo SET flag=" + paramInt + ",setFlagTime=" + System.currentTimeMillis() + " WHERE prodcutID='" + paramString + "'";
     boolean bool = this.db.execSQL("EmotionRewardTipInfo", paramString);
-    ad.i("MicroMsg.emoji.EmotionRewardTipStorage", "updateFlag result:%b", new Object[] { Boolean.valueOf(bool) });
+    ae.i("MicroMsg.emoji.EmotionRewardTipStorage", "updateFlag result:%b", new Object[] { Boolean.valueOf(bool) });
     AppMethodBeat.o(105123);
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.storage.emotion.q
  * JD-Core Version:    0.7.0.1
  */

@@ -9,7 +9,7 @@ public abstract interface d
 {
   public abstract void a(String paramString1, String paramString2, long paramLong, int paramInt1, int paramInt2, boolean paramBoolean);
   
-  public abstract void aV(String paramString, boolean paramBoolean);
+  public abstract void aX(String paramString, boolean paramBoolean);
   
   public abstract void lj(boolean paramBoolean);
   

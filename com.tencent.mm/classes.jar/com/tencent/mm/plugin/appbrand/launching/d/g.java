@@ -1,183 +1,183 @@
 package com.tencent.mm.plugin.appbrand.launching.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.a.a;
-import com.tencent.mm.g.b.a.ix;
-import com.tencent.mm.g.b.a.ix.b;
-import com.tencent.mm.g.b.a.ix.c;
+import com.tencent.mm.ak.a.a;
+import com.tencent.mm.g.b.a.iz;
+import com.tencent.mm.g.b.a.iz.b;
+import com.tencent.mm.g.b.a.iz.c;
 import com.tencent.mm.plugin.appbrand.config.AppBrandLaunchReferrer;
 import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
 import com.tencent.mm.plugin.appbrand.report.quality.QualitySession;
 import com.tencent.mm.plugin.appbrand.report.quality.f;
-import com.tencent.mm.protocal.protobuf.btg;
-import com.tencent.mm.protocal.protobuf.xf;
+import com.tencent.mm.protocal.protobuf.bua;
+import com.tencent.mm.protocal.protobuf.xi;
 import d.g.b.p;
 import d.l;
 import java.util.concurrent.FutureTask;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/launching/parallel/PreFetchLaunchTask;", "Lcom/tencent/mm/plugin/appbrand/launching/parallel/AppBrandBasePreFetchTaskWC;", "Lcom/tencent/mm/modelbase/Cgi$CgiBack;", "Lcom/tencent/mm/protocal/protobuf/LaunchWxaAppResponse;", "userName", "", "versionType", "", "enterScene", "enterPath", "stat", "Lcom/tencent/mm/plugin/appbrand/report/AppBrandStatObject;", "referrer", "Lcom/tencent/mm/plugin/appbrand/config/AppBrandLaunchReferrer;", "appId", "appbrandPushMsgId", "(Ljava/lang/String;IILjava/lang/String;Lcom/tencent/mm/plugin/appbrand/report/AppBrandStatObject;Lcom/tencent/mm/plugin/appbrand/config/AppBrandLaunchReferrer;Ljava/lang/String;Ljava/lang/String;)V", "getAppId", "()Ljava/lang/String;", "getAppbrandPushMsgId", "cgiBack", "getEnterPath", "getEnterScene", "()I", "isBackground", "", "isBackground$annotations", "()V", "isSync", "()Z", "setSync", "(Z)V", "getReferrer", "()Lcom/tencent/mm/plugin/appbrand/config/AppBrandLaunchReferrer;", "getStat", "()Lcom/tencent/mm/plugin/appbrand/report/AppBrandStatObject;", "getUserName", "getVersionType", "getPreFetchResult", "timeoutMs", "key", "preFetch", "report", "", "qualitySession", "Lcom/tencent/mm/plugin/appbrand/report/quality/QualitySession;", "setIsUsed", "used", "Companion", "plugin-appbrand-integration_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/launching/parallel/PreFetchLaunchTask;", "Lcom/tencent/mm/plugin/appbrand/launching/parallel/AppBrandBasePreFetchTaskWC;", "Lcom/tencent/mm/modelbase/Cgi$CgiBack;", "Lcom/tencent/mm/protocal/protobuf/LaunchWxaAppResponse;", "userName", "", "versionType", "", "enterScene", "enterPath", "stat", "Lcom/tencent/mm/plugin/appbrand/report/AppBrandStatObject;", "referrer", "Lcom/tencent/mm/plugin/appbrand/config/AppBrandLaunchReferrer;", "appId", "appbrandPushMsgId", "(Ljava/lang/String;IILjava/lang/String;Lcom/tencent/mm/plugin/appbrand/report/AppBrandStatObject;Lcom/tencent/mm/plugin/appbrand/config/AppBrandLaunchReferrer;Ljava/lang/String;Ljava/lang/String;)V", "getAppId", "()Ljava/lang/String;", "getAppbrandPushMsgId", "cgiBack", "getEnterPath", "getEnterScene", "()I", "isBackground", "", "isBackground$annotations", "()V", "isSync", "()Z", "setSync", "(Z)V", "getReferrer", "()Lcom/tencent/mm/plugin/appbrand/config/AppBrandLaunchReferrer;", "getStat", "()Lcom/tencent/mm/plugin/appbrand/report/AppBrandStatObject;", "getUserName", "getVersionType", "getPreFetchResult", "timeoutMs", "key", "preFetch", "report", "", "qualitySession", "Lcom/tencent/mm/plugin/appbrand/report/quality/QualitySession;", "setIsUsed", "used", "Companion", "plugin-appbrand-integration_release"})
 public final class g
-  extends a<a.a<btg>>
+  extends a<a.a<bua>>
 {
-  public static final a lMY;
+  public static final a lRz;
   private final String appId;
-  private final AppBrandLaunchReferrer cmv;
+  private final AppBrandLaunchReferrer cmx;
   private final int enterScene;
-  private final int hQh;
-  private final String jCN;
-  private final AppBrandStatObject jDH;
-  private final String jXO;
-  public boolean jpu;
-  private boolean kPK;
-  private a.a<btg> lMW;
+  private final int hSZ;
+  private final String jFL;
+  private final AppBrandStatObject jGF;
+  public boolean jsn;
+  private boolean kTs;
+  private final String kbd;
+  private a.a<bua> lRx;
   private final String userName;
   
   static
   {
     AppMethodBeat.i(50815);
-    lMY = new a((byte)0);
+    lRz = new a((byte)0);
     AppMethodBeat.o(50815);
   }
   
   public g(String paramString1, int paramInt1, int paramInt2, String paramString2, AppBrandStatObject paramAppBrandStatObject, AppBrandLaunchReferrer paramAppBrandLaunchReferrer, String paramString3, String paramString4)
   {
     this.userName = paramString1;
-    this.hQh = paramInt1;
+    this.hSZ = paramInt1;
     this.enterScene = paramInt2;
-    this.jCN = paramString2;
-    this.jDH = paramAppBrandStatObject;
-    this.cmv = paramAppBrandLaunchReferrer;
+    this.jFL = paramString2;
+    this.jGF = paramAppBrandStatObject;
+    this.cmx = paramAppBrandLaunchReferrer;
     this.appId = paramString3;
-    this.jXO = paramString4;
+    this.kbd = paramString4;
   }
   
-  public final int Fk()
+  public final int Fp()
   {
     return 0;
   }
   
   public final void c(QualitySession paramQualitySession)
   {
-    AppMethodBeat.i(189333);
+    AppMethodBeat.i(223593);
     p.h(paramQualitySession, "qualitySession");
-    if (this.lMW == null)
+    if (this.lRx == null)
     {
-      AppMethodBeat.o(189333);
+      AppMethodBeat.o(223593);
       return;
     }
-    ix localix = f.f(paramQualitySession);
+    iz localiz = f.f(paramQualitySession);
     String str = this.appId;
     paramQualitySession = str;
     if (str == null) {
       paramQualitySession = "";
     }
-    localix.rB(paramQualitySession);
-    localix.rC(this.userName);
-    localix.Vn();
-    localix.pj(f.getNetworkType());
+    localiz.rW(paramQualitySession);
+    localiz.rX(this.userName);
+    localiz.Vv();
+    localiz.pw(f.getNetworkType());
     long l;
-    if (this.jpu)
+    if (this.jsn)
     {
-      paramQualitySession = ix.b.eyM;
-      localix.a(paramQualitySession);
-      localix.ph(this.cpw);
-      localix.pi(this.cpx);
-      localix.pf(this.cpx - this.cpw);
-      if (!this.kPK) {
+      paramQualitySession = iz.b.eAv;
+      localiz.a(paramQualitySession);
+      localiz.pu(this.cpZ);
+      localiz.pv(this.cqa);
+      localiz.ps(this.cqa - this.cpZ);
+      if (!this.kTs) {
         break label276;
       }
       l = 1L;
       label147:
-      localix.pk(l);
-      paramQualitySession = this.lMW;
+      localiz.px(l);
+      paramQualitySession = this.lRx;
       if (paramQualitySession == null) {
-        p.gfZ();
+        p.gkB();
       }
       int i = paramQualitySession.errType;
-      paramQualitySession = this.lMW;
+      paramQualitySession = this.lRx;
       if (paramQualitySession == null) {
-        p.gfZ();
+        p.gkB();
       }
       int j = paramQualitySession.errCode;
-      paramQualitySession = this.lMW;
+      paramQualitySession = this.lRx;
       if (paramQualitySession == null) {
-        p.gfZ();
+        p.gkB();
       }
-      if (!com.tencent.mm.plugin.appbrand.n.a.a(i, j, paramQualitySession.hNC)) {
+      if (!com.tencent.mm.plugin.appbrand.n.a.a(i, j, paramQualitySession.hQv)) {
         break label343;
       }
-      paramQualitySession = this.lMW;
+      paramQualitySession = this.lRx;
       if (paramQualitySession == null) {
-        p.gfZ();
+        p.gkB();
       }
-      paramQualitySession = paramQualitySession.hNC;
+      paramQualitySession = paramQualitySession.hQv;
       if (paramQualitySession == null) {
-        p.gfZ();
+        p.gkB();
       }
-      if (((btg)paramQualitySession).GNK != null) {
+      if (((bua)paramQualitySession).Hhk != null) {
         break label282;
       }
-      localix.a(ix.c.eyR);
+      localiz.a(iz.c.eAA);
     }
     for (;;)
     {
-      localix.aLk();
-      AppMethodBeat.o(189333);
+      localiz.aLH();
+      AppMethodBeat.o(223593);
       return;
-      paramQualitySession = ix.b.eyN;
+      paramQualitySession = iz.b.eAw;
       break;
       label276:
       l = 0L;
       break label147;
       label282:
-      paramQualitySession = this.lMW;
+      paramQualitySession = this.lRx;
       if (paramQualitySession == null) {
-        p.gfZ();
+        p.gkB();
       }
-      paramQualitySession = paramQualitySession.hNC;
+      paramQualitySession = paramQualitySession.hQv;
       if (paramQualitySession == null) {
-        p.gfZ();
+        p.gkB();
       }
-      if (((btg)paramQualitySession).GNK.FWI == null)
+      if (((bua)paramQualitySession).Hhk.Gph == null)
       {
-        localix.a(ix.c.eyS);
+        localiz.a(iz.c.eAB);
       }
       else
       {
-        localix.a(ix.c.eyP);
+        localiz.a(iz.c.eAy);
         continue;
         label343:
-        localix.a(ix.c.eyQ);
+        localiz.a(iz.c.eAz);
       }
     }
   }
   
-  public final a.a<btg> uo(int paramInt)
+  public final a.a<bua> uu(int paramInt)
   {
     AppMethodBeat.i(180641);
-    if (((com.tencent.luggage.sdk.e.a)this).cpv == null)
+    if (((com.tencent.luggage.sdk.e.a)this).cpY == null)
     {
       localObject = (Throwable)new IllegalStateException();
       AppMethodBeat.o(180641);
       throw ((Throwable)localObject);
     }
-    Object localObject = this.cpv;
+    Object localObject = this.cpY;
     if (localObject == null) {
-      p.bcb("futureTask");
+      p.bdF("futureTask");
     }
     if (((FutureTask)localObject).isDone()) {
-      b.ma(5);
+      b.md(5);
     }
     for (;;)
     {
-      localObject = (a.a)super.gC(paramInt);
+      localObject = (a.a)super.gD(paramInt);
       AppMethodBeat.o(180641);
       return localObject;
-      b.ma(6);
+      b.md(6);
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/launching/parallel/PreFetchLaunchTask$Companion;", "", "()V", "TAG", "", "plugin-appbrand-integration_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/launching/parallel/PreFetchLaunchTask$Companion;", "", "()V", "TAG", "", "plugin-appbrand-integration_release"})
   public static final class a {}
 }
 

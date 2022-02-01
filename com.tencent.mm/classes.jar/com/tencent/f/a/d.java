@@ -2,7 +2,7 @@ package com.tencent.f.a;
 
 public abstract interface d
 {
-  public abstract void hd(String paramString, int paramInt);
+  public abstract void hm(String paramString, int paramInt);
 }
 
 

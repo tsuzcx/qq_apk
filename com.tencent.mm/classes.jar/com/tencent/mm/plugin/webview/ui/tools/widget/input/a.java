@@ -5,15 +5,15 @@ import android.view.View;
 
 public abstract class a
 {
-  protected c EsP;
-  Context nhZ;
-  int nib = 0;
+  protected c ELj;
+  Context nnh;
+  int nnj = 0;
   
-  public abstract int bEX();
+  public abstract int bFP();
   
-  public abstract int bEY();
+  public abstract int bFQ();
   
-  public abstract int bEZ();
+  public abstract int bFR();
   
   public abstract int getPageCount();
   
@@ -23,10 +23,10 @@ public abstract class a
   
   public final void setPanelManager(c paramc)
   {
-    this.EsP = paramc;
+    this.ELj = paramc;
   }
   
-  public abstract View wC(int paramInt);
+  public abstract View wH(int paramInt);
 }
 
 

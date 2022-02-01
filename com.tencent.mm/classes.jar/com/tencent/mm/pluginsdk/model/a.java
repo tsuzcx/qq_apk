@@ -3,9 +3,9 @@ package com.tencent.mm.pluginsdk.model;
 import com.tencent.e.h;
 import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aw.a.d.b;
-import com.tencent.mm.sdk.platformtools.aq;
-import d.a.ae;
+import com.tencent.mm.av.a.d.b;
+import com.tencent.mm.sdk.platformtools.ar;
+import d.g.b.ad;
 import d.g.b.p;
 import d.l;
 import d.n.d;
@@ -17,28 +17,28 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/pluginsdk/model/BizImageBlankReporter;", "", "()V", "ENABLE_CHECK_ON_SCREEN", "", "HOST_NAME_MAP", "Ljava/util/HashMap;", "", "Lkotlin/collections/HashMap;", "REPORT_THREAD_LOOP_TAG", "TAG", "appMsgUrlMap", "isFlinging", "mLoadCountInfo", "Lcom/tencent/mm/pluginsdk/model/BizImageBlankReporter$ImageLoadCountInfo;", "reportInfoMap", "Lcom/tencent/mm/pluginsdk/model/BizImageBlankReporter$BizImageBlankReportInfo;", "clearAppMsgUrl", "", "fillReportInfo", "reportInfo", "response", "Lcom/tencent/mm/modelimage/loader/model/Response;", "finishAction", "action", "", "url", "timestamp", "", "finishAndReport", "getAppMsgKey", "msgId", "msgIndex", "getIdByUrl", "plusImageLoadCount", "reportBlank", "reportImageLoadCountInfo", "resetImageLoadCountInfo", "resumeAll", "retryDownload", "runTask", "runnable", "Ljava/lang/Runnable;", "setAppMsgUrl", "appMsgUrl", "showList", "urlSet", "", "simplifyUrl", "startAction", "startLoad", "item", "Lcom/tencent/mm/message/BizReaderItem;", "cellPosition", "stopAllByFling", "Action", "ActionTimeInfo", "BizImageBlankReportInfo", "ImageLoadCountInfo", "Status", "plugin-biz_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/pluginsdk/model/BizImageBlankReporter;", "", "()V", "ENABLE_CHECK_ON_SCREEN", "", "HOST_NAME_MAP", "Ljava/util/HashMap;", "", "Lkotlin/collections/HashMap;", "REPORT_THREAD_LOOP_TAG", "TAG", "appMsgUrlMap", "isFlinging", "mLoadCountInfo", "Lcom/tencent/mm/pluginsdk/model/BizImageBlankReporter$ImageLoadCountInfo;", "reportInfoMap", "Lcom/tencent/mm/pluginsdk/model/BizImageBlankReporter$BizImageBlankReportInfo;", "clearAppMsgUrl", "", "fillReportInfo", "reportInfo", "response", "Lcom/tencent/mm/modelimage/loader/model/Response;", "finishAction", "action", "", "url", "timestamp", "", "finishAndReport", "getAppMsgKey", "msgId", "msgIndex", "getIdByUrl", "plusImageLoadCount", "reportBlank", "reportImageLoadCountInfo", "resetImageLoadCountInfo", "resumeAll", "retryDownload", "runTask", "runnable", "Ljava/lang/Runnable;", "setAppMsgUrl", "appMsgUrl", "showList", "urlSet", "", "simplifyUrl", "startAction", "startLoad", "item", "Lcom/tencent/mm/message/BizReaderItem;", "cellPosition", "stopAllByFling", "Action", "ActionTimeInfo", "BizImageBlankReportInfo", "ImageLoadCountInfo", "Status", "plugin-biz_release"})
 public final class a
 {
-  static final HashMap<String, b> EKT;
-  static final HashMap<String, String> EKU;
-  private static c EKV;
-  public static boolean EKW;
-  private static final HashMap<String, String> EKX;
-  public static final a EKY;
+  static final HashMap<String, b> Fdr;
+  static final HashMap<String, String> Fds;
+  private static c Fdt;
+  public static boolean Fdu;
+  private static final HashMap<String, String> Fdv;
+  public static final a Fdw;
   
   static
   {
     AppMethodBeat.i(124821);
-    EKY = new a();
-    EKT = new HashMap();
-    EKU = new HashMap();
-    EKV = new c();
-    EKX = ae.c(new o[] { u.S("mp.weixin.qq.com", "1"), u.S("mmbiz.qpic.cn", "2"), u.S("vpic.video.qq.com", "3"), u.S("mmbiz.qlogo.cn", "4") });
+    Fdw = new a();
+    Fdr = new HashMap();
+    Fds = new HashMap();
+    Fdt = new c();
+    Fdv = d.a.ae.c(new o[] { u.R("mp.weixin.qq.com", "1"), u.R("mmbiz.qpic.cn", "2"), u.R("vpic.video.qq.com", "3"), u.R("mmbiz.qlogo.cn", "4") });
     AppMethodBeat.o(124821);
   }
   
-  public static String aLt(String paramString)
+  public static String aMP(String paramString)
   {
     AppMethodBeat.i(124820);
     p.h(paramString, "url");
@@ -71,50 +71,50 @@ public final class a
     if (paramLong != 0L) {}
     for (;;)
     {
-      v((Runnable)new k(paramString, paramInt, paramLong));
+      t((Runnable)new k(paramString, paramInt, paramLong));
       AppMethodBeat.o(124815);
       return;
       paramLong = System.currentTimeMillis();
     }
   }
   
-  public static void eZl()
+  public static void fcZ()
   {
     AppMethodBeat.i(124813);
-    EKU.clear();
+    Fds.clear();
     AppMethodBeat.o(124813);
   }
   
-  public static void eZm()
+  public static void fda()
   {
     AppMethodBeat.i(124819);
-    h.LTJ.f((Runnable)g.ELv, "biz_image_blank_report");
+    h.MqF.f((Runnable)g.FdT, "biz_image_blank_report");
     AppMethodBeat.o(124819);
   }
   
-  public static void m(long paramLong, int paramInt, String paramString)
+  public static void l(long paramLong, int paramInt, String paramString)
   {
     AppMethodBeat.i(124812);
     p.h(paramString, "appMsgUrl");
-    ((Map)EKU).put(ai(paramLong, paramInt), paramString);
+    ((Map)Fds).put(ai(paramLong, paramInt), paramString);
     AppMethodBeat.o(124812);
   }
   
-  public static void v(Runnable paramRunnable)
+  public static void t(Runnable paramRunnable)
   {
     AppMethodBeat.i(124818);
     p.h(paramRunnable, "runnable");
-    aq.f(paramRunnable);
+    ar.f(paramRunnable);
     AppMethodBeat.o(124818);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/pluginsdk/model/BizImageBlankReporter$ActionTimeInfo;", "", "id", "", "action", "", "(Ljava/lang/String;I)V", "getAction", "()I", "setAction", "(I)V", "begin", "", "getBegin", "()J", "setBegin", "(J)V", "end", "getEnd", "setEnd", "getId", "()Ljava/lang/String;", "setId", "(Ljava/lang/String;)V", "status", "getStatus", "setStatus", "total", "getTotal", "setTotal", "addTime", "", "finish", "timestamp", "isFinished", "", "onResume", "pause", "reset", "resume", "start", "plugin-biz_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/pluginsdk/model/BizImageBlankReporter$ActionTimeInfo;", "", "id", "", "action", "", "(Ljava/lang/String;I)V", "getAction", "()I", "setAction", "(I)V", "begin", "", "getBegin", "()J", "setBegin", "(J)V", "end", "getEnd", "setEnd", "getId", "()Ljava/lang/String;", "setId", "(Ljava/lang/String;)V", "status", "getStatus", "setStatus", "total", "getTotal", "setTotal", "addTime", "", "finish", "timestamp", "isFinished", "", "onResume", "pause", "reset", "resume", "start", "plugin-biz_release"})
   public static final class a
   {
     int action;
     long bpc;
-    private long cAI;
-    long dyS;
+    private long cBp;
+    long dzX;
     String id;
     int status;
     
@@ -123,8 +123,8 @@ public final class a
       AppMethodBeat.i(124794);
       this.action = -1;
       this.id = "";
-      this.dyS = 0L;
-      this.cAI = 0L;
+      this.dzX = 0L;
+      this.cBp = 0L;
       this.bpc = 0L;
       this.status = 0;
       this.id = paramString;
@@ -132,12 +132,12 @@ public final class a
       AppMethodBeat.o(124794);
     }
     
-    public final void Cy(long paramLong)
+    public final void CW(long paramLong)
     {
       AppMethodBeat.i(124792);
       if ((this.status == 3) || (this.status == 1))
       {
-        com.tencent.mm.sdk.platformtools.ad.v("MicroMsg.BizImageBlankReporter", "alvinluo resume action: %d, id: %s, timestamp: %d", new Object[] { Integer.valueOf(this.action), this.id, Long.valueOf(paramLong) });
+        com.tencent.mm.sdk.platformtools.ae.v("MicroMsg.BizImageBlankReporter", "alvinluo resume action: %d, id: %s, timestamp: %d", new Object[] { Integer.valueOf(this.action), this.id, Long.valueOf(paramLong) });
         this.status = 2;
         if (paramLong < 0L) {
           break label83;
@@ -145,7 +145,7 @@ public final class a
       }
       for (;;)
       {
-        this.cAI = paramLong;
+        this.cBp = paramLong;
         this.bpc = 0L;
         AppMethodBeat.o(124792);
         return;
@@ -154,12 +154,12 @@ public final class a
       }
     }
     
-    public final void Cz(long paramLong)
+    public final void CX(long paramLong)
     {
       AppMethodBeat.i(124793);
       if (this.status == 2)
       {
-        com.tencent.mm.sdk.platformtools.ad.v("MicroMsg.BizImageBlankReporter", "alvinluo pause action: %d, id: %s, status: %d, timestamp: %d", new Object[] { Integer.valueOf(this.action), this.id, Integer.valueOf(this.status), Long.valueOf(paramLong) });
+        com.tencent.mm.sdk.platformtools.ae.v("MicroMsg.BizImageBlankReporter", "alvinluo pause action: %d, id: %s, status: %d, timestamp: %d", new Object[] { Integer.valueOf(this.action), this.id, Integer.valueOf(this.status), Long.valueOf(paramLong) });
         if (paramLong < 0L) {
           break label84;
         }
@@ -167,7 +167,7 @@ public final class a
       for (;;)
       {
         this.bpc = paramLong;
-        eZq();
+        fde();
         this.status = 3;
         AppMethodBeat.o(124793);
         return;
@@ -176,10 +176,10 @@ public final class a
       }
     }
     
-    final void eZq()
+    final void fde()
     {
-      if (this.bpc >= this.cAI) {
-        this.dyS += this.bpc - this.cAI;
+      if (this.bpc >= this.cBp) {
+        this.dzX += this.bpc - this.cBp;
       }
     }
     
@@ -189,46 +189,46 @@ public final class a
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/pluginsdk/model/BizImageBlankReporter$BizImageBlankReportInfo;", "", "url", "", "(Ljava/lang/String;)V", "actionTimePointMap", "Ljava/util/HashMap;", "", "Lcom/tencent/mm/pluginsdk/model/BizImageBlankReporter$ActionTimeInfo;", "Lkotlin/collections/HashMap;", "appMsgUrl", "getAppMsgUrl", "()Ljava/lang/String;", "setAppMsgUrl", "currentAction", "getCurrentAction", "()I", "setCurrentAction", "(I)V", "downloadSuccess", "", "getDownloadSuccess", "()Z", "setDownloadSuccess", "(Z)V", "hasTask", "getHasTask", "setHasTask", "id", "imageSize", "", "getImageSize", "()J", "setImageSize", "(J)V", "isPausedByScrollFling", "setPausedByScrollFling", "isTaskRunning", "setTaskRunning", "local", "getLocal", "setLocal", "netType", "getNetType", "setNetType", "onScreen", "getOnScreen", "setOnScreen", "position", "getPosition", "setPosition", "resultValid", "retryCount", "getRetryCount", "setRetryCount", "timeFile", "getTimeFile", "setTimeFile", "timeHevc", "getTimeHevc", "setTimeHevc", "timeNet", "getTimeNet", "setTimeNet", "timeScroll", "getTimeScroll", "setTimeScroll", "timeTaskRun", "getTimeTaskRun", "setTimeTaskRun", "timeThread", "getTimeThread", "setTimeThread", "timeTotal", "getTimeTotal", "setTimeTotal", "getUrl", "setUrl", "fillResult", "", "fillTime", "action", "time", "finish", "timestamp", "hide", "isBlank", "isFinished", "isResultValid", "offScreen", "pause", "reset", "resume", "retryDownload", "show", "start", "toString", "plugin-biz_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/pluginsdk/model/BizImageBlankReporter$BizImageBlankReportInfo;", "", "url", "", "(Ljava/lang/String;)V", "actionTimePointMap", "Ljava/util/HashMap;", "", "Lcom/tencent/mm/pluginsdk/model/BizImageBlankReporter$ActionTimeInfo;", "Lkotlin/collections/HashMap;", "appMsgUrl", "getAppMsgUrl", "()Ljava/lang/String;", "setAppMsgUrl", "currentAction", "getCurrentAction", "()I", "setCurrentAction", "(I)V", "downloadSuccess", "", "getDownloadSuccess", "()Z", "setDownloadSuccess", "(Z)V", "hasTask", "getHasTask", "setHasTask", "id", "imageSize", "", "getImageSize", "()J", "setImageSize", "(J)V", "isPausedByScrollFling", "setPausedByScrollFling", "isTaskRunning", "setTaskRunning", "local", "getLocal", "setLocal", "netType", "getNetType", "setNetType", "onScreen", "getOnScreen", "setOnScreen", "position", "getPosition", "setPosition", "resultValid", "retryCount", "getRetryCount", "setRetryCount", "timeFile", "getTimeFile", "setTimeFile", "timeHevc", "getTimeHevc", "setTimeHevc", "timeNet", "getTimeNet", "setTimeNet", "timeScroll", "getTimeScroll", "setTimeScroll", "timeTaskRun", "getTimeTaskRun", "setTimeTaskRun", "timeThread", "getTimeThread", "setTimeThread", "timeTotal", "getTimeTotal", "setTimeTotal", "getUrl", "setUrl", "fillResult", "", "fillTime", "action", "time", "finish", "timestamp", "hide", "isBlank", "isFinished", "isResultValid", "offScreen", "pause", "reset", "resume", "retryDownload", "show", "start", "toString", "plugin-biz_release"})
   public static final class b
   {
-    long EKZ;
-    long ELa;
-    long ELb;
-    long ELc;
-    long ELd;
-    long ELe;
-    private long ELf;
-    String ELg;
-    long ELh;
-    boolean ELi;
-    boolean ELj;
-    boolean ELk;
-    boolean ELl;
-    boolean ELm;
-    HashMap<Integer, a.a> ELn;
-    boolean ELo;
-    int iDQ;
+    long FdA;
+    long FdB;
+    long FdC;
+    private long FdD;
+    String FdE;
+    long FdF;
+    boolean FdG;
+    boolean FdH;
+    boolean FdI;
+    boolean FdJ;
+    boolean FdK;
+    HashMap<Integer, a.a> FdL;
+    boolean FdM;
+    long Fdx;
+    long Fdy;
+    long Fdz;
+    int iGJ;
     String id;
     int position;
     int retryCount;
-    String srd;
-    boolean tOi;
+    String sBn;
+    boolean tYZ;
     String url;
     
     public b(String paramString)
     {
       AppMethodBeat.i(124800);
       this.url = "";
-      this.ELg = "";
-      this.srd = "";
+      this.FdE = "";
+      this.sBn = "";
       this.position = -1;
-      this.iDQ = -1;
+      this.iGJ = -1;
       this.id = "";
-      this.ELn = new HashMap();
+      this.FdL = new HashMap();
       this.url = paramString;
-      a locala = a.EKY;
-      this.id = a.aLt(paramString);
+      a locala = a.Fdw;
+      this.id = a.aMP(paramString);
       AppMethodBeat.o(124800);
     }
     
@@ -238,57 +238,49 @@ public final class a
       a.a locala1;
       if (paramInt == 2)
       {
-        this.tOi = true;
-        this.ELk = true;
-        a.a locala2 = (a.a)this.ELn.get(Integer.valueOf(paramInt));
+        this.tYZ = true;
+        this.FdI = true;
+        a.a locala2 = (a.a)this.FdL.get(Integer.valueOf(paramInt));
         locala1 = locala2;
         if (locala2 == null)
         {
           locala1 = new a.a(this.id, paramInt);
-          ((Map)this.ELn).put(Integer.valueOf(paramInt), locala1);
+          ((Map)this.FdL).put(Integer.valueOf(paramInt), locala1);
         }
         if (locala1.status == 0)
         {
-          com.tencent.mm.sdk.platformtools.ad.v("MicroMsg.BizImageBlankReporter", "alvinluo start action: %d, id: %s, status: %d, timestamp: %d", new Object[] { Integer.valueOf(locala1.action), locala1.id, Integer.valueOf(locala1.status), Long.valueOf(paramLong) });
+          com.tencent.mm.sdk.platformtools.ae.v("MicroMsg.BizImageBlankReporter", "alvinluo start action: %d, id: %s, status: %d, timestamp: %d", new Object[] { Integer.valueOf(locala1.action), locala1.id, Integer.valueOf(locala1.status), Long.valueOf(paramLong) });
           locala1.status = 1;
         }
         if ((paramInt != 1) && (paramInt != 2)) {
           break label187;
         }
-        locala1.Cy(paramLong);
+        locala1.CW(paramLong);
       }
       for (;;)
       {
         if (paramInt != 9) {
-          this.iDQ = paramInt;
+          this.iGJ = paramInt;
         }
         AppMethodBeat.o(124797);
         return;
         if (paramInt != 9) {
           break;
         }
-        this.ELl = true;
+        this.FdJ = true;
         break;
         label187:
-        locala1.Cy(paramLong);
+        locala1.CW(paramLong);
       }
-    }
-    
-    public final void aLu(String paramString)
-    {
-      AppMethodBeat.i(124795);
-      p.h(paramString, "<set-?>");
-      this.ELg = paramString;
-      AppMethodBeat.o(124795);
     }
     
     public final void aM(int paramInt, long paramLong)
     {
       AppMethodBeat.i(124798);
-      a.a locala = (a.a)this.ELn.get(Integer.valueOf(paramInt));
+      a.a locala = (a.a)this.FdL.get(Integer.valueOf(paramInt));
       if ((locala != null) && ((locala.status == 2) || (locala.status == 3)))
       {
-        com.tencent.mm.sdk.platformtools.ad.v("MicroMsg.BizImageBlankReporter", "alvinluo finish action: %d, id: %s, status: %d, timestamp: %d", new Object[] { Integer.valueOf(locala.action), locala.id, Integer.valueOf(locala.status), Long.valueOf(paramLong) });
+        com.tencent.mm.sdk.platformtools.ae.v("MicroMsg.BizImageBlankReporter", "alvinluo finish action: %d, id: %s, status: %d, timestamp: %d", new Object[] { Integer.valueOf(locala.action), locala.id, Integer.valueOf(locala.status), Long.valueOf(paramLong) });
         if (locala.status == 2) {
           if (paramLong < 0L) {
             break label146;
@@ -298,17 +290,25 @@ public final class a
       for (;;)
       {
         locala.bpc = paramLong;
-        locala.eZq();
+        locala.fde();
         locala.status = 4;
-        this.iDQ = -1;
+        this.iGJ = -1;
         if (paramInt == 9) {
-          this.ELl = false;
+          this.FdJ = false;
         }
         AppMethodBeat.o(124798);
         return;
         label146:
         paramLong = System.currentTimeMillis();
       }
+    }
+    
+    public final void aMQ(String paramString)
+    {
+      AppMethodBeat.i(124795);
+      p.h(paramString, "<set-?>");
+      this.FdE = paramString;
+      AppMethodBeat.o(124795);
     }
     
     final void aN(int paramInt, long paramLong)
@@ -318,33 +318,33 @@ public final class a
       default: 
         return;
       case 1: 
-        this.EKZ = paramLong;
+        this.Fdx = paramLong;
         return;
       case 3: 
-        this.ELb = paramLong;
+        this.Fdz = paramLong;
         return;
       case 5: 
       case 6: 
       case 7: 
-        this.ELa += paramLong;
+        this.Fdy += paramLong;
         return;
       case 4: 
-        this.EKZ = paramLong;
+        this.Fdx = paramLong;
         return;
       case 8: 
-        this.ELe = paramLong;
+        this.FdC = paramLong;
         return;
       case 2: 
-        this.ELf = paramLong;
+        this.FdD = paramLong;
         return;
       }
-      this.ELc = paramLong;
+      this.FdA = paramLong;
     }
     
-    public final boolean eZr()
+    public final boolean fdf()
     {
       AppMethodBeat.i(124799);
-      a.a locala = (a.a)this.ELn.get(Integer.valueOf(1));
+      a.a locala = (a.a)this.FdL.get(Integer.valueOf(1));
       if (locala != null)
       {
         boolean bool = locala.isFinished();
@@ -358,36 +358,36 @@ public final class a
     public final String toString()
     {
       AppMethodBeat.i(124796);
-      Object localObject = d.g.b.ad.MLZ;
+      Object localObject = ad.Njc;
       int i = hashCode();
-      localObject = a.EKY;
-      localObject = String.format("BizImageBlankReportInfo %s {id: %s, timeTotal: %d, timeTaskRun: %d, timeFile: %d, timeNet: %d, timeScroll: %d, timeHevc: %d, timeThread: %d, \nnetType: %s, position: %d, imageSize: %d, retryCount: %d, downloadSuccess: %b, local: %b, \nurl: %s}", Arrays.copyOf(new Object[] { Integer.valueOf(i), a.aLt(this.url), Long.valueOf(this.EKZ), Long.valueOf(this.ELf), Long.valueOf(this.ELa), Long.valueOf(this.ELb), Long.valueOf(this.ELc), Long.valueOf(this.ELd), Long.valueOf(this.ELe), this.srd, Integer.valueOf(this.position), Long.valueOf(this.ELh), Integer.valueOf(this.retryCount), Boolean.valueOf(this.ELi), Boolean.valueOf(this.ELj), this.url }, 16));
+      localObject = a.Fdw;
+      localObject = String.format("BizImageBlankReportInfo %s {id: %s, timeTotal: %d, timeTaskRun: %d, timeFile: %d, timeNet: %d, timeScroll: %d, timeHevc: %d, timeThread: %d, \nnetType: %s, position: %d, imageSize: %d, retryCount: %d, downloadSuccess: %b, local: %b, \nurl: %s}", Arrays.copyOf(new Object[] { Integer.valueOf(i), a.aMP(this.url), Long.valueOf(this.Fdx), Long.valueOf(this.FdD), Long.valueOf(this.Fdy), Long.valueOf(this.Fdz), Long.valueOf(this.FdA), Long.valueOf(this.FdB), Long.valueOf(this.FdC), this.sBn, Integer.valueOf(this.position), Long.valueOf(this.FdF), Integer.valueOf(this.retryCount), Boolean.valueOf(this.FdG), Boolean.valueOf(this.FdH), this.url }, 16));
       p.g(localObject, "java.lang.String.format(format, *args)");
       AppMethodBeat.o(124796);
       return localObject;
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/pluginsdk/model/BizImageBlankReporter$ImageLoadCountInfo;", "", "()V", "fromFileCount", "", "getFromFileCount", "()I", "setFromFileCount", "(I)V", "fromMemoryCount", "getFromMemoryCount", "setFromMemoryCount", "fromNetCount", "getFromNetCount", "setFromNetCount", "totalCount", "getTotalCount", "setTotalCount", "reset", "", "toString", "", "plugin-biz_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/pluginsdk/model/BizImageBlankReporter$ImageLoadCountInfo;", "", "()V", "fromFileCount", "", "getFromFileCount", "()I", "setFromFileCount", "(I)V", "fromMemoryCount", "getFromMemoryCount", "setFromMemoryCount", "fromNetCount", "getFromNetCount", "setFromNetCount", "totalCount", "getTotalCount", "setTotalCount", "reset", "", "toString", "", "plugin-biz_release"})
   public static final class c
   {
-    int ELp;
-    int ELq;
-    int ELr;
-    int fTM;
+    int FdN;
+    int FdO;
+    int FdP;
+    int fVS;
     
     public final String toString()
     {
       AppMethodBeat.i(124801);
-      Object localObject = d.g.b.ad.MLZ;
-      localObject = String.format("totalCount: %d, fromNetCount: %d, fromFileCount: %d, fromMemoryCount: %d", Arrays.copyOf(new Object[] { Integer.valueOf(this.fTM), Integer.valueOf(this.ELp), Integer.valueOf(this.ELq), Integer.valueOf(this.ELr) }, 4));
+      Object localObject = ad.Njc;
+      localObject = String.format("totalCount: %d, fromNetCount: %d, fromFileCount: %d, fromMemoryCount: %d", Arrays.copyOf(new Object[] { Integer.valueOf(this.fVS), Integer.valueOf(this.FdN), Integer.valueOf(this.FdO), Integer.valueOf(this.FdP) }, 4));
       p.g(localObject, "java.lang.String.format(format, *args)");
       AppMethodBeat.o(124801);
       return localObject;
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
   static final class d
     implements Runnable
   {
@@ -396,11 +396,11 @@ public final class a
     public final void run()
     {
       AppMethodBeat.i(124802);
-      Object localObject = a.EKY;
-      localObject = (a.b)a.eZn().get(this.lby);
+      Object localObject = a.Fdw;
+      localObject = (a.b)a.fdb().get(this.lfj);
       if (localObject != null)
       {
-        ((a.b)localObject).aM(this.iBD, this.ELs);
+        ((a.b)localObject).aM(this.iEw, this.FdQ);
         AppMethodBeat.o(124802);
         return;
       }
@@ -408,7 +408,7 @@ public final class a
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
   static final class e
     implements Runnable
   {
@@ -417,44 +417,44 @@ public final class a
     public final void run()
     {
       AppMethodBeat.i(124803);
-      if (((CharSequence)this.lby).length() == 0) {}
+      if (((CharSequence)this.lfj).length() == 0) {}
       for (int i = 1; i != 0; i = 0)
       {
         AppMethodBeat.o(124803);
         return;
       }
-      Object localObject = a.EKY;
-      a.b localb = (a.b)a.eZn().get(this.lby);
+      Object localObject = a.Fdw;
+      a.b localb = (a.b)a.fdb().get(this.lfj);
       if (localb == null)
       {
         AppMethodBeat.o(124803);
         return;
       }
-      if (localb.eZr())
+      if (localb.fdf())
       {
-        localObject = a.EKY;
-        com.tencent.mm.sdk.platformtools.ad.w("MicroMsg.BizImageBlankReporter", "alvinluo finishAndReport id: %s TOTAL is finished", new Object[] { a.aLt(this.lby) });
-        localObject = a.EKY;
-        a.eZn().remove(this.lby);
+        localObject = a.Fdw;
+        com.tencent.mm.sdk.platformtools.ae.w("MicroMsg.BizImageBlankReporter", "alvinluo finishAndReport id: %s TOTAL is finished", new Object[] { a.aMP(this.lfj) });
+        localObject = a.Fdw;
+        a.fdb().remove(this.lfj);
         AppMethodBeat.o(124803);
         return;
       }
-      localb.aM(1, this.iBG);
-      localObject = localb.ELn.keySet();
+      localb.aM(1, this.iEz);
+      localObject = localb.FdL.keySet();
       p.g(localObject, "actionTimePointMap.keys");
       localObject = ((Iterable)localObject).iterator();
       boolean bool = true;
       while (((Iterator)localObject).hasNext())
       {
         Integer localInteger = (Integer)((Iterator)localObject).next();
-        a.a locala = (a.a)localb.ELn.get(localInteger);
+        a.a locala = (a.a)localb.FdL.get(localInteger);
         if (locala == null) {
           break label422;
         }
         if (locala.isFinished())
         {
           p.g(localInteger, "action");
-          localb.aN(localInteger.intValue(), locala.dyS);
+          localb.aN(localInteger.intValue(), locala.dzX);
         }
         else
         {
@@ -465,12 +465,12 @@ public final class a
             }
           }
           label311:
-          while ((localInteger.intValue() != 9) || (localb.ELk))
+          while ((localInteger.intValue() != 9) || (localb.FdI))
           {
-            com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.BizImageBlankReporter", "alvinluo blankReportInfo fillResult invalid action: %d, id: %s", new Object[] { localInteger, localb.id });
+            com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.BizImageBlankReporter", "alvinluo blankReportInfo fillResult invalid action: %d, id: %s", new Object[] { localInteger, localb.id });
             bool = false;
             break;
-            if ((localInteger.intValue() != 8) || (localb.ELk)) {
+            if ((localInteger.intValue() != 8) || (localb.FdI)) {
               break label236;
             }
             p.g(localInteger, "action");
@@ -483,25 +483,25 @@ public final class a
           bool = true;
         }
       }
-      localb.ELo = bool;
-      bool = localb.ELo;
-      localObject = (a.a)localb.ELn.get(Integer.valueOf(1));
+      localb.FdM = bool;
+      bool = localb.FdM;
+      localObject = (a.a)localb.FdL.get(Integer.valueOf(1));
       if (localObject != null) {}
-      for (localObject = Long.valueOf(((a.a)localObject).dyS);; localObject = null)
+      for (localObject = Long.valueOf(((a.a)localObject).dzX);; localObject = null)
       {
-        com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.BizImageBlankReporter", "alvinluo blankReportInfo fillResult resultValid: %b, timeTotal: %s, id: %s", new Object[] { Boolean.valueOf(bool), localObject, localb.id });
+        com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.BizImageBlankReporter", "alvinluo blankReportInfo fillResult resultValid: %b, timeTotal: %s, id: %s", new Object[] { Boolean.valueOf(bool), localObject, localb.id });
         label422:
-        localObject = a.EKY;
-        a.eZn().remove(this.lby);
-        localObject = a.EKY;
-        a.a(localb, this.ELt);
+        localObject = a.Fdw;
+        a.fdb().remove(this.lfj);
+        localObject = a.Fdw;
+        a.a(localb, this.FdR);
         AppMethodBeat.o(124803);
         return;
       }
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
   static final class f
     implements Runnable
   {
@@ -510,17 +510,17 @@ public final class a
     public final void run()
     {
       AppMethodBeat.i(124804);
-      Object localObject = a.EKY;
-      a.b(this.ELu, this.ELt);
-      localObject = a.EKY;
-      a.a(this.ELt);
-      if (this.ELu.ELo)
+      Object localObject = a.Fdw;
+      a.b(this.FdS, this.FdR);
+      localObject = a.Fdw;
+      a.a(this.FdR);
+      if (this.FdS.FdM)
       {
-        localObject = this.ELu;
-        long l1 = ((a.b)localObject).ELa;
-        long l2 = ((a.b)localObject).ELb;
-        long l3 = ((a.b)localObject).ELc;
-        if (((a.b)localObject).ELd + (l1 + l2 + l3) < 50L) {
+        localObject = this.FdS;
+        long l1 = ((a.b)localObject).Fdy;
+        long l2 = ((a.b)localObject).Fdz;
+        long l3 = ((a.b)localObject).FdA;
+        if (((a.b)localObject).FdB + (l1 + l2 + l3) < 50L) {
           break label113;
         }
       }
@@ -529,8 +529,8 @@ public final class a
       {
         if (i != 0)
         {
-          localObject = a.EKY;
-          a.a(this.ELu);
+          localObject = a.Fdw;
+          a.a(this.FdS);
         }
         AppMethodBeat.o(124804);
         return;
@@ -538,40 +538,40 @@ public final class a
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
   static final class g
     implements Runnable
   {
-    public static final g ELv;
+    public static final g FdT;
     
     static
     {
       AppMethodBeat.i(124806);
-      ELv = new g();
+      FdT = new g();
       AppMethodBeat.o(124806);
     }
     
     public final void run()
     {
       AppMethodBeat.i(124805);
-      Object localObject = a.EKY;
-      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.BizImageBlankReporter", "alvinluo reportImageLoadCountInfo %s", new Object[] { a.eZo() });
-      localObject = com.tencent.mm.plugin.report.service.g.yhR;
-      a locala = a.EKY;
-      int i = a.eZo().fTM;
-      locala = a.EKY;
-      int j = a.eZo().ELr;
-      locala = a.EKY;
-      int k = a.eZo().ELq;
-      locala = a.EKY;
-      ((com.tencent.mm.plugin.report.service.g)localObject).f(17890, new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(a.eZo().ELp) });
-      localObject = a.EKY;
-      a.eZp();
+      Object localObject = a.Fdw;
+      com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.BizImageBlankReporter", "alvinluo reportImageLoadCountInfo %s", new Object[] { a.fdc() });
+      localObject = com.tencent.mm.plugin.report.service.g.yxI;
+      a locala = a.Fdw;
+      int i = a.fdc().fVS;
+      locala = a.Fdw;
+      int j = a.fdc().FdP;
+      locala = a.Fdw;
+      int k = a.fdc().FdO;
+      locala = a.Fdw;
+      ((com.tencent.mm.plugin.report.service.g)localObject).f(17890, new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(a.fdc().FdN) });
+      localObject = a.Fdw;
+      a.fdd();
       AppMethodBeat.o(124805);
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
   public static final class h
     implements Runnable
   {
@@ -580,31 +580,31 @@ public final class a
     public final void run()
     {
       AppMethodBeat.i(124807);
-      com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.BizImageBlankReporter", "alvinluo resumeAll");
-      Object localObject1 = a.EKY;
-      a.vC(false);
-      localObject1 = a.EKY;
-      localObject1 = a.eZn().keySet();
+      com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.BizImageBlankReporter", "alvinluo resumeAll");
+      Object localObject1 = a.Fdw;
+      a.vK(false);
+      localObject1 = a.Fdw;
+      localObject1 = a.fdb().keySet();
       p.g(localObject1, "reportInfoMap.keys");
       localObject1 = ((Iterable)localObject1).iterator();
       while (((Iterator)localObject1).hasNext())
       {
         String str = (String)((Iterator)localObject1).next();
-        Object localObject2 = a.EKY;
-        localObject2 = (a.b)a.eZn().get(str);
-        if ((localObject2 != null) && (((a.b)localObject2).ELl))
+        Object localObject2 = a.Fdw;
+        localObject2 = (a.b)a.fdb().get(str);
+        if ((localObject2 != null) && (((a.b)localObject2).FdJ))
         {
-          a locala = a.EKY;
+          a locala = a.Fdw;
           p.g(str, "url");
-          com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.BizImageBlankReporter", "alvinluo resume Scroll_Fling id: %s", new Object[] { a.aLt(str) });
-          ((a.b)localObject2).aM(9, this.iBG);
+          com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.BizImageBlankReporter", "alvinluo resume Scroll_Fling id: %s", new Object[] { a.aMP(str) });
+          ((a.b)localObject2).aM(9, this.iEz);
         }
       }
       AppMethodBeat.o(124807);
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
   public static final class i
     implements Runnable
   {
@@ -613,20 +613,20 @@ public final class a
     public final void run()
     {
       AppMethodBeat.i(124808);
-      Object localObject = a.EKY;
-      localObject = (a.b)a.eZn().get(this.lby);
+      Object localObject = a.Fdw;
+      localObject = (a.b)a.fdb().get(this.lfj);
       if (localObject != null)
       {
-        long l = this.iBG;
+        long l = this.iEz;
         ((a.b)localObject).retryCount += 1;
-        a.a locala = (a.a)((a.b)localObject).ELn.get(Integer.valueOf(3));
+        a.a locala = (a.a)((a.b)localObject).FdL.get(Integer.valueOf(3));
         if (locala != null)
         {
           if (locala.status == 4)
           {
-            com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.BizImageBlankReporter", "alvinluo retryDownload force restart id: %s", new Object[] { ((a.b)localObject).id });
+            com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.BizImageBlankReporter", "alvinluo retryDownload force restart id: %s", new Object[] { ((a.b)localObject).id });
             locala.status = 1;
-            locala.Cy(l);
+            locala.CW(l);
           }
           AppMethodBeat.o(124808);
           return;
@@ -638,7 +638,7 @@ public final class a
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
   public static final class j
     implements Runnable
   {
@@ -647,7 +647,7 @@ public final class a
     public final void run()
     {
       AppMethodBeat.i(124809);
-      Object localObject1 = ((Iterable)this.ELw).iterator();
+      Object localObject1 = ((Iterable)this.FdU).iterator();
       Object localObject2;
       Object localObject3;
       long l;
@@ -661,50 +661,50 @@ public final class a
           if (i != 0) {
             break label169;
           }
-          localObject3 = a.EKY;
-          localObject2 = (a.b)a.eZn().get(localObject2);
+          localObject3 = a.Fdw;
+          localObject2 = (a.b)a.fdb().get(localObject2);
           if (localObject2 == null) {
             break;
           }
-          l = this.iBG;
-          localObject3 = (a.a)((a.b)localObject2).ELn.get(Integer.valueOf(((a.b)localObject2).iDQ));
+          l = this.iEz;
+          localObject3 = (a.a)((a.b)localObject2).FdL.get(Integer.valueOf(((a.b)localObject2).iGJ));
           if (localObject3 != null) {
-            ((a.a)localObject3).Cy(l);
+            ((a.a)localObject3).CW(l);
           }
-          ((a.b)localObject2).ELm = true;
-          if (!((a.b)localObject2).ELl) {
+          ((a.b)localObject2).FdK = true;
+          if (!((a.b)localObject2).FdJ) {
             break;
           }
-          localObject2 = (a.a)((a.b)localObject2).ELn.get(Integer.valueOf(9));
+          localObject2 = (a.a)((a.b)localObject2).FdL.get(Integer.valueOf(9));
           if (localObject2 == null) {
             break;
           }
-          ((a.a)localObject2).Cy(l);
+          ((a.a)localObject2).CW(l);
           break;
         }
       }
-      localObject1 = a.EKY;
-      localObject1 = a.eZn().keySet();
+      localObject1 = a.Fdw;
+      localObject1 = a.fdb().keySet();
       p.g(localObject1, "reportInfoMap.keys");
       localObject1 = ((Iterable)localObject1).iterator();
       while (((Iterator)localObject1).hasNext())
       {
         localObject2 = (String)((Iterator)localObject1).next();
-        localObject3 = a.EKY;
-        localObject2 = (a.b)a.eZn().get(localObject2);
-        if ((localObject2 != null) && (!this.ELw.contains(((a.b)localObject2).url)))
+        localObject3 = a.Fdw;
+        localObject2 = (a.b)a.fdb().get(localObject2);
+        if ((localObject2 != null) && (!this.FdU.contains(((a.b)localObject2).url)))
         {
-          l = this.iBG;
-          localObject3 = (a.a)((a.b)localObject2).ELn.get(Integer.valueOf(((a.b)localObject2).iDQ));
+          l = this.iEz;
+          localObject3 = (a.a)((a.b)localObject2).FdL.get(Integer.valueOf(((a.b)localObject2).iGJ));
           if (localObject3 != null) {
-            ((a.a)localObject3).Cz(l);
+            ((a.a)localObject3).CX(l);
           }
-          ((a.b)localObject2).ELm = false;
-          if (((a.b)localObject2).ELl)
+          ((a.b)localObject2).FdK = false;
+          if (((a.b)localObject2).FdJ)
           {
-            localObject2 = (a.a)((a.b)localObject2).ELn.get(Integer.valueOf(9));
+            localObject2 = (a.a)((a.b)localObject2).FdL.get(Integer.valueOf(9));
             if (localObject2 != null) {
-              ((a.a)localObject2).Cz(l);
+              ((a.a)localObject2).CX(l);
             }
           }
         }
@@ -713,7 +713,7 @@ public final class a
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
   static final class k
     implements Runnable
   {
@@ -722,21 +722,21 @@ public final class a
     public final void run()
     {
       AppMethodBeat.i(124810);
-      Object localObject1 = a.EKY;
-      Object localObject2 = (a.b)a.eZn().get(this.lby);
+      Object localObject1 = a.Fdw;
+      Object localObject2 = (a.b)a.fdb().get(this.lfj);
       localObject1 = localObject2;
       if (localObject2 == null)
       {
-        localObject1 = new a.b(this.lby);
-        localObject2 = a.EKY;
-        ((Map)a.eZn()).put(this.lby, localObject1);
+        localObject1 = new a.b(this.lfj);
+        localObject2 = a.Fdw;
+        ((Map)a.fdb()).put(this.lfj, localObject1);
       }
       ((a.b)localObject1).aL(paramInt, paramLong);
       AppMethodBeat.o(124810);
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
   public static final class l
     implements Runnable
   {
@@ -745,23 +745,23 @@ public final class a
     public final void run()
     {
       AppMethodBeat.i(124811);
-      com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.BizImageBlankReporter", "alvinluo stopAllByFling");
-      Object localObject1 = a.EKY;
-      a.vC(true);
-      localObject1 = a.EKY;
-      localObject1 = a.eZn().keySet();
+      com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.BizImageBlankReporter", "alvinluo stopAllByFling");
+      Object localObject1 = a.Fdw;
+      a.vK(true);
+      localObject1 = a.Fdw;
+      localObject1 = a.fdb().keySet();
       p.g(localObject1, "reportInfoMap.keys");
       localObject1 = ((Iterable)localObject1).iterator();
       while (((Iterator)localObject1).hasNext())
       {
         Object localObject2 = (String)((Iterator)localObject1).next();
-        a locala = a.EKY;
-        localObject2 = (a.b)a.eZn().get(localObject2);
-        if ((localObject2 != null) && (!((a.b)localObject2).tOi) && (!((a.b)localObject2).eZr()))
+        a locala = a.Fdw;
+        localObject2 = (a.b)a.fdb().get(localObject2);
+        if ((localObject2 != null) && (!((a.b)localObject2).tYZ) && (!((a.b)localObject2).fdf()))
         {
-          locala = a.EKY;
-          com.tencent.mm.sdk.platformtools.ad.v("MicroMsg.BizImageBlankReporter", "alvinluo stopAllByFling task not running and start SCROLL_FLING id: %s, %s", new Object[] { a.aLt(((a.b)localObject2).url), ((a.b)localObject2).url });
-          ((a.b)localObject2).aL(9, this.iBG);
+          locala = a.Fdw;
+          com.tencent.mm.sdk.platformtools.ae.v("MicroMsg.BizImageBlankReporter", "alvinluo stopAllByFling task not running and start SCROLL_FLING id: %s, %s", new Object[] { a.aMP(((a.b)localObject2).url), ((a.b)localObject2).url });
+          ((a.b)localObject2).aL(9, this.iEz);
         }
       }
       AppMethodBeat.o(124811);

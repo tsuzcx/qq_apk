@@ -2,26 +2,26 @@ package com.tencent.mm.dynamicbackground.model;
 
 import d.l;
 
-@l(gfx={1, 1, 11}, gfy={""}, gfz={"Lcom/tencent/mm/dynamicbackground/model/DynamicBgCrashListener;", "", "isInitCrash", "", "markDrawEndPoint", "", "markDrawStartPoint", "markWillCrash", "needMarkDrawPoint", "onInitCrash", "onInitEnd", "onInitStart", "willCrash", "Companion", "dynamicbg_release"})
+@l(gjZ={1, 1, 11}, gka={""}, gkb={"Lcom/tencent/mm/dynamicbackground/model/DynamicBgCrashListener;", "", "isInitCrash", "", "markDrawEndPoint", "", "markDrawStartPoint", "markWillCrash", "needMarkDrawPoint", "onInitCrash", "onInitEnd", "onInitStart", "willCrash", "Companion", "dynamicbg_release"})
 public abstract interface b
 {
-  public static final b.a gfw = b.a.gfx;
+  public static final b.a ghO = b.a.ghP;
   
-  public abstract boolean adL();
+  public abstract boolean adX();
   
-  public abstract void adM();
+  public abstract void adY();
   
-  public abstract void adN();
+  public abstract void adZ();
   
-  public abstract void adO();
+  public abstract void aea();
   
-  public abstract boolean adP();
+  public abstract boolean aeb();
   
-  public abstract boolean adQ();
+  public abstract boolean aec();
   
-  public abstract void adR();
+  public abstract void aed();
   
-  public abstract void adS();
+  public abstract void aee();
 }
 
 

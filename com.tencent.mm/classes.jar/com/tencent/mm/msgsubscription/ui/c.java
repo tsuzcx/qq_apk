@@ -12,7 +12,7 @@ import d.g.b.p;
 import d.l;
 import d.z;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"getAppropriateLargeScreenRequestDialogWidth", "", "context", "Landroid/content/Context;", "dialogMeasuredWidth", "dp2Px", "dp", "isLargeScreenEnv", "", "onPreDrawOnce", "", "Landroid/view/View;", "block", "Lkotlin/Function0;", "postRequestLayout", "wxbiz-msgsubscription-sdk_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"getAppropriateLargeScreenRequestDialogWidth", "", "context", "Landroid/content/Context;", "dialogMeasuredWidth", "dp2Px", "dp", "isLargeScreenEnv", "", "onPreDrawOnce", "", "Landroid/view/View;", "block", "Lkotlin/Function0;", "postRequestLayout", "wxbiz-msgsubscription-sdk_release"})
 public final class c
 {
   static final void a(View paramView, final d.g.a.a<z> parama)
@@ -29,17 +29,17 @@ public final class c
     AppMethodBeat.o(174572);
   }
   
-  static final int cM(Context paramContext)
+  static final int cO(Context paramContext)
   {
     AppMethodBeat.i(174570);
     paramContext = paramContext.getResources();
     p.g(paramContext, "this.resources");
-    int i = d.h.a.co(paramContext.getDisplayMetrics().density * 375.0F);
+    int i = d.h.a.cm(paramContext.getDisplayMetrics().density * 375.0F);
     AppMethodBeat.o(174570);
     return i;
   }
   
-  static final boolean cN(Context paramContext)
+  static final boolean cP(Context paramContext)
   {
     AppMethodBeat.i(174571);
     paramContext = paramContext.getResources();
@@ -53,7 +53,7 @@ public final class c
     return false;
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/msgsubscription/ui/SubscribeMsgRequestDialogKt$onPreDrawOnce$1", "Landroid/view/ViewTreeObserver$OnPreDrawListener;", "onPreDraw", "", "wxbiz-msgsubscription-sdk_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/msgsubscription/ui/SubscribeMsgRequestDialogKt$onPreDrawOnce$1", "Landroid/view/ViewTreeObserver$OnPreDrawListener;", "onPreDraw", "", "wxbiz-msgsubscription-sdk_release"})
   public static final class a
     implements ViewTreeObserver.OnPreDrawListener
   {
@@ -62,28 +62,14 @@ public final class c
     public final boolean onPreDraw()
     {
       AppMethodBeat.i(174568);
-      ViewTreeObserver localViewTreeObserver = this.iDM.getViewTreeObserver();
+      ViewTreeObserver localViewTreeObserver = this.iGF.getViewTreeObserver();
       p.g(localViewTreeObserver, "this@onPreDrawOnce.viewTreeObserver");
       if (localViewTreeObserver.isAlive()) {
-        this.iDM.getViewTreeObserver().removeOnPreDrawListener((ViewTreeObserver.OnPreDrawListener)this);
+        this.iGF.getViewTreeObserver().removeOnPreDrawListener((ViewTreeObserver.OnPreDrawListener)this);
       }
       parama.invoke();
       AppMethodBeat.o(174568);
       return false;
-    }
-  }
-  
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
-  static final class b
-    implements Runnable
-  {
-    b(View paramView) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(174569);
-      this.iDN.requestLayout();
-      AppMethodBeat.o(174569);
     }
   }
 }

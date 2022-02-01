@@ -7,17 +7,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.storage.RegionCodeDecoder.Region;
 import com.tencent.mm.ui.base.preference.Preference;
 
 public class ZonePreference
   extends Preference
 {
-  RegionCodeDecoder.Region KLW;
-  private CharSequence KLX;
-  private TextView KLY;
+  RegionCodeDecoder.Region Liu;
+  private CharSequence Liv;
+  private TextView Liw;
   
   public ZonePreference(Context paramContext)
   {
@@ -37,37 +37,37 @@ public class ZonePreference
     AppMethodBeat.o(39205);
   }
   
-  private void fKM()
+  private void fPf()
   {
     AppMethodBeat.i(39208);
-    if (this.KLY == null)
+    if (this.Liw == null)
     {
       AppMethodBeat.o(39208);
       return;
     }
-    if ((this.KLX != null) && (!bt.isNullOrNil(this.KLX.toString()))) {
-      this.KLY.setVisibility(0);
+    if ((this.Liv != null) && (!bu.isNullOrNil(this.Liv.toString()))) {
+      this.Liw.setVisibility(0);
     }
     for (;;)
     {
-      this.KLY.setText(this.KLX);
+      this.Liw.setText(this.Liv);
       AppMethodBeat.o(39208);
       return;
-      this.KLY.setVisibility(8);
+      this.Liw.setVisibility(8);
     }
   }
   
   public final void a(RegionCodeDecoder.Region paramRegion)
   {
     AppMethodBeat.i(39206);
-    if ((paramRegion == null) || (bt.isNullOrNil(paramRegion.getName())) || (bt.isNullOrNil(paramRegion.getCode())))
+    if ((paramRegion == null) || (bu.isNullOrNil(paramRegion.getName())) || (bu.isNullOrNil(paramRegion.getCode())))
     {
-      ad.e("MicroMsg.ZonePreference", "setZoneItem item = null");
+      ae.e("MicroMsg.ZonePreference", "setZoneItem item = null");
       AppMethodBeat.o(39206);
       return;
     }
     setKey(paramRegion.getCode() + paramRegion.isCity());
-    this.KLW = paramRegion;
+    this.Liu = paramRegion;
     AppMethodBeat.o(39206);
   }
   
@@ -75,14 +75,14 @@ public class ZonePreference
   {
     AppMethodBeat.i(39210);
     super.onBindView(paramView);
-    if (this.KLW == null)
+    if (this.Liu == null)
     {
       AppMethodBeat.o(39210);
       return;
     }
-    ((TextView)paramView.findViewById(2131307140)).setText(this.KLW.getName());
-    this.KLY = ((TextView)paramView.findViewById(2131305556));
-    fKM();
+    ((TextView)paramView.findViewById(2131307140)).setText(this.Liu.getName());
+    this.Liw = ((TextView)paramView.findViewById(2131305556));
+    fPf();
     AppMethodBeat.o(39210);
   }
   
@@ -101,8 +101,8 @@ public class ZonePreference
   public final void setSummary(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(39207);
-    this.KLX = paramCharSequence;
-    fKM();
+    this.Liv = paramCharSequence;
+    fPf();
     AppMethodBeat.o(39207);
   }
 }

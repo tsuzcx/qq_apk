@@ -8,7 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.collect.model.e;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.z;
 import com.tencent.mm.wallet_core.ui.WalletTextView;
 import java.text.SimpleDateFormat;
@@ -20,12 +20,12 @@ public final class a
   extends BaseAdapter
 {
   private Context mContext;
-  List<com.tencent.mm.plugin.collect.model.a> pdB;
+  List<com.tencent.mm.plugin.collect.model.a> pkh;
   
   public a(Context paramContext)
   {
     AppMethodBeat.i(64030);
-    this.pdB = new ArrayList();
+    this.pkh = new ArrayList();
     this.mContext = paramContext;
     AppMethodBeat.o(64030);
   }
@@ -33,7 +33,7 @@ public final class a
   public final int getCount()
   {
     AppMethodBeat.i(64031);
-    int i = this.pdB.size();
+    int i = this.pkh.size();
     AppMethodBeat.o(64031);
     return i;
   }
@@ -41,7 +41,7 @@ public final class a
   public final Object getItem(int paramInt)
   {
     AppMethodBeat.i(64032);
-    Object localObject = this.pdB.get(paramInt);
+    Object localObject = this.pkh.get(paramInt);
     AppMethodBeat.o(64032);
     return localObject;
   }
@@ -57,41 +57,41 @@ public final class a
     View localView = paramView;
     if (paramView == null)
     {
-      localView = z.jO(this.mContext).inflate(2131493553, paramViewGroup, false);
+      localView = z.jV(this.mContext).inflate(2131493553, paramViewGroup, false);
       localView.setTag(new a(localView));
     }
-    paramView = (com.tencent.mm.plugin.collect.model.a)this.pdB.get(paramInt);
+    paramView = (com.tencent.mm.plugin.collect.model.a)this.pkh.get(paramInt);
     paramViewGroup = (a)localView.getTag();
-    TextView localTextView = paramViewGroup.oTF;
+    TextView localTextView = paramViewGroup.pah;
     Context localContext = this.mContext;
     long l = paramView.timestamp;
     localTextView.setText(new SimpleDateFormat(localContext.getString(2131757436)).format(new Date(l * 1000L)));
-    paramViewGroup.pdC.setText(e.Bh(paramView.dnd));
-    if (!bt.isNullOrNil(paramView.desc))
+    paramViewGroup.pki.setText(e.Bt(paramView.dof));
+    if (!bu.isNullOrNil(paramView.desc))
     {
-      paramViewGroup.lDu.setText(paramView.desc);
-      paramViewGroup.lDu.setVisibility(0);
+      paramViewGroup.lHT.setText(paramView.desc);
+      paramViewGroup.lHT.setVisibility(0);
     }
     for (;;)
     {
       AppMethodBeat.o(64033);
       return localView;
-      paramViewGroup.lDu.setVisibility(8);
+      paramViewGroup.lHT.setVisibility(8);
     }
   }
   
   static final class a
   {
-    TextView lDu;
-    TextView oTF;
-    WalletTextView pdC;
+    TextView lHT;
+    TextView pah;
+    WalletTextView pki;
     
     public a(View paramView)
     {
       AppMethodBeat.i(64029);
-      this.oTF = ((TextView)paramView.findViewById(2131298427));
-      this.pdC = ((WalletTextView)paramView.findViewById(2131298444));
-      this.lDu = ((TextView)paramView.findViewById(2131298428));
+      this.pah = ((TextView)paramView.findViewById(2131298427));
+      this.pki = ((WalletTextView)paramView.findViewById(2131298444));
+      this.lHT = ((TextView)paramView.findViewById(2131298428));
       AppMethodBeat.o(64029);
     }
   }

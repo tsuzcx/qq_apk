@@ -3,26 +3,26 @@ package com.tencent.mm.plugin.qqmail.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class al
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
   public String nickname;
   public long uin;
-  public String xcQ;
+  public String xsH;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(215226);
+    AppMethodBeat.i(217972);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
       if (this.nickname != null) {
         paramVarArgs.d(1, this.nickname);
       }
-      if (this.xcQ != null) {
-        paramVarArgs.d(2, this.xcQ);
+      if (this.xsH != null) {
+        paramVarArgs.d(2, this.xsH);
       }
-      paramVarArgs.aY(3, this.uin);
-      AppMethodBeat.o(215226);
+      paramVarArgs.aZ(3, this.uin);
+      AppMethodBeat.o(217972);
       return 0;
     }
     if (paramInt == 1) {
@@ -34,21 +34,21 @@ public final class al
     for (paramInt = f.a.a.b.b.a.e(1, this.nickname) + 0;; paramInt = 0)
     {
       int i = paramInt;
-      if (this.xcQ != null) {
-        i = paramInt + f.a.a.b.b.a.e(2, this.xcQ);
+      if (this.xsH != null) {
+        i = paramInt + f.a.a.b.b.a.e(2, this.xsH);
       }
       paramInt = f.a.a.b.b.a.p(3, this.uin);
-      AppMethodBeat.o(215226);
+      AppMethodBeat.o(217972);
       return i + paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
-        AppMethodBeat.o(215226);
+        AppMethodBeat.o(217972);
         return 0;
       }
       if (paramInt == 3)
@@ -58,22 +58,22 @@ public final class al
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(215226);
+          AppMethodBeat.o(217972);
           return -1;
         case 1: 
-          localal.nickname = locala.NPN.readString();
-          AppMethodBeat.o(215226);
+          localal.nickname = locala.OmT.readString();
+          AppMethodBeat.o(217972);
           return 0;
         case 2: 
-          localal.xcQ = locala.NPN.readString();
-          AppMethodBeat.o(215226);
+          localal.xsH = locala.OmT.readString();
+          AppMethodBeat.o(217972);
           return 0;
         }
-        localal.uin = locala.NPN.zd();
-        AppMethodBeat.o(215226);
+        localal.uin = locala.OmT.zd();
+        AppMethodBeat.o(217972);
         return 0;
       }
-      AppMethodBeat.o(215226);
+      AppMethodBeat.o(217972);
       return -1;
     }
   }

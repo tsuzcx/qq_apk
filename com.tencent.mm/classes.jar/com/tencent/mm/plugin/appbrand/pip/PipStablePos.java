@@ -5,31 +5,31 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/pip/PipStablePos;", "Landroid/os/Parcelable;", "appId", "", "point", "Landroid/graphics/Point;", "(Ljava/lang/String;Landroid/graphics/Point;)V", "getAppId", "()Ljava/lang/String;", "getPoint", "()Landroid/graphics/Point;", "component1", "component2", "copy", "describeContents", "", "equals", "", "other", "", "hashCode", "toString", "writeToParcel", "", "parcel", "Landroid/os/Parcel;", "flags", "CREATOR", "plugin-appbrand-integration_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/pip/PipStablePos;", "Landroid/os/Parcelable;", "appId", "", "point", "Landroid/graphics/Point;", "(Ljava/lang/String;Landroid/graphics/Point;)V", "getAppId", "()Ljava/lang/String;", "getPoint", "()Landroid/graphics/Point;", "component1", "component2", "copy", "describeContents", "", "equals", "", "other", "", "hashCode", "toString", "writeToParcel", "", "parcel", "Landroid/os/Parcel;", "flags", "CREATOR", "plugin-appbrand-integration_release"})
 final class PipStablePos
   implements Parcelable
 {
   public static final a CREATOR;
   final String appId;
-  final Point mop;
+  final Point mtn;
   
   static
   {
-    AppMethodBeat.i(189573);
+    AppMethodBeat.i(223842);
     CREATOR = new a((byte)0);
-    AppMethodBeat.o(189573);
+    AppMethodBeat.o(223842);
   }
   
   public PipStablePos(String paramString, Point paramPoint)
   {
-    AppMethodBeat.i(189572);
+    AppMethodBeat.i(223841);
     this.appId = paramString;
-    this.mop = paramPoint;
-    AppMethodBeat.o(189572);
+    this.mtn = paramPoint;
+    AppMethodBeat.o(223841);
   }
   
   public final int describeContents()
@@ -39,74 +39,74 @@ final class PipStablePos
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(189576);
+    AppMethodBeat.i(223845);
     if (this != paramObject)
     {
       if ((paramObject instanceof PipStablePos))
       {
         paramObject = (PipStablePos)paramObject;
-        if ((!p.i(this.appId, paramObject.appId)) || (!p.i(this.mop, paramObject.mop))) {}
+        if ((!p.i(this.appId, paramObject.appId)) || (!p.i(this.mtn, paramObject.mtn))) {}
       }
     }
     else
     {
-      AppMethodBeat.o(189576);
+      AppMethodBeat.o(223845);
       return true;
     }
-    AppMethodBeat.o(189576);
+    AppMethodBeat.o(223845);
     return false;
   }
   
   public final int hashCode()
   {
     int j = 0;
-    AppMethodBeat.i(189575);
+    AppMethodBeat.i(223844);
     Object localObject = this.appId;
     if (localObject != null) {}
     for (int i = localObject.hashCode();; i = 0)
     {
-      localObject = this.mop;
+      localObject = this.mtn;
       if (localObject != null) {
         j = localObject.hashCode();
       }
-      AppMethodBeat.o(189575);
+      AppMethodBeat.o(223844);
       return i * 31 + j;
     }
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(189574);
-    String str = "PipStablePos(appId=" + this.appId + ", point=" + this.mop + ")";
-    AppMethodBeat.o(189574);
+    AppMethodBeat.i(223843);
+    String str = "PipStablePos(appId=" + this.appId + ", point=" + this.mtn + ")";
+    AppMethodBeat.o(223843);
     return str;
   }
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(189571);
+    AppMethodBeat.i(223840);
     p.h(paramParcel, "parcel");
     try
     {
       paramParcel.writeString(this.appId);
-      paramParcel.writeParcelable((Parcelable)this.mop, paramInt);
-      AppMethodBeat.o(189571);
+      paramParcel.writeParcelable((Parcelable)this.mtn, paramInt);
+      AppMethodBeat.o(223840);
       return;
     }
     catch (Exception paramParcel)
     {
-      ad.w("MicroMsg.AppBrand.AppBrandPipStablePosLogicWC", "writeToParcel fail since ".concat(String.valueOf(paramParcel)));
-      AppMethodBeat.o(189571);
+      ae.w("MicroMsg.AppBrand.AppBrandPipStablePosLogicWC", "writeToParcel fail since ".concat(String.valueOf(paramParcel)));
+      AppMethodBeat.o(223840);
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/pip/PipStablePos$CREATOR;", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/appbrand/pip/PipStablePos;", "()V", "createFromParcel", "parcel", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/mm/plugin/appbrand/pip/PipStablePos;", "plugin-appbrand-integration_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/pip/PipStablePos$CREATOR;", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/appbrand/pip/PipStablePos;", "()V", "createFromParcel", "parcel", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/mm/plugin/appbrand/pip/PipStablePos;", "plugin-appbrand-integration_release"})
   public static final class a
     implements Parcelable.Creator<PipStablePos>
   {
     private static PipStablePos l(Parcel paramParcel)
     {
-      AppMethodBeat.i(189569);
+      AppMethodBeat.i(223838);
       p.h(paramParcel, "parcel");
       for (;;)
       {
@@ -117,17 +117,17 @@ final class PipStablePos
           if ((str != null) && (paramParcel != null)) {
             continue;
           }
-          ad.w("MicroMsg.AppBrand.AppBrandPipStablePosLogicWC", "createFromParcel fail, appId: " + str + ", point: " + paramParcel);
-          paramParcel = m.bwG();
+          ae.w("MicroMsg.AppBrand.AppBrandPipStablePosLogicWC", "createFromParcel fail, appId: " + str + ", point: " + paramParcel);
+          paramParcel = m.bxx();
         }
         catch (Exception paramParcel)
         {
           String str;
-          ad.w("MicroMsg.AppBrand.AppBrandPipStablePosLogicWC", "createFromParcel fail since ".concat(String.valueOf(paramParcel)));
-          paramParcel = m.bwG();
+          ae.w("MicroMsg.AppBrand.AppBrandPipStablePosLogicWC", "createFromParcel fail since ".concat(String.valueOf(paramParcel)));
+          paramParcel = m.bxx();
           continue;
         }
-        AppMethodBeat.o(189569);
+        AppMethodBeat.o(223838);
         return paramParcel;
         paramParcel = new PipStablePos(str, paramParcel);
       }

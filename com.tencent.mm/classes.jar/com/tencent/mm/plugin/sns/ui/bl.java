@@ -2,13 +2,13 @@ package com.tencent.mm.plugin.sns.ui;
 
 public final class bl
 {
-  public String ApH;
-  public String ApI;
+  public String AGU;
+  public String AGV;
   
   public bl(String paramString1, String paramString2)
   {
-    this.ApI = paramString2;
-    this.ApH = paramString1;
+    this.AGV = paramString2;
+    this.AGU = paramString1;
   }
 }
 

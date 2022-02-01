@@ -10,21 +10,21 @@ public final class b$a$a
 {
   final int targetHeight;
   View view;
-  final int wns;
+  final int wDb;
   
   public b$a$a(b.a parama, View paramView, int paramInt)
   {
     AppMethodBeat.i(63214);
     this.view = paramView;
     this.targetHeight = paramInt;
-    this.wns = paramView.getHeight();
+    this.wDb = paramView.getHeight();
     AppMethodBeat.o(63214);
   }
   
   protected final void applyTransformation(float paramFloat, Transformation paramTransformation)
   {
     AppMethodBeat.i(63215);
-    int i = (int)(this.wns + (this.targetHeight - this.wns) * paramFloat);
+    int i = (int)(this.wDb + (this.targetHeight - this.wDb) * paramFloat);
     this.view.getLayoutParams().height = i;
     this.view.requestLayout();
     AppMethodBeat.o(63215);

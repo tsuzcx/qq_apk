@@ -5,19 +5,19 @@ import com.tencent.luggage.h.e.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.m;
 import com.tencent.mm.plugin.appbrand.service.c;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class g
   extends com.tencent.mm.plugin.appbrand.jsapi.a<c>
 {
   public static final int CTRL_INDEX = 714;
   public static final String NAME = "requestBizSplitBillPayment";
-  private final int lde;
+  private final int lgP;
   
   public g()
   {
     AppMethodBeat.i(174867);
-    this.lde = com.tencent.luggage.sdk.g.a.aC(this);
+    this.lgP = com.tencent.luggage.sdk.g.a.aC(this);
     AppMethodBeat.o(174867);
   }
 }

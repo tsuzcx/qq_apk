@@ -7,14 +7,14 @@ import android.view.View;
 import android.view.View.OnTouchListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/ui/widget/cropview/RoundCropLayout$SimpleTouchListener;", "Landroid/view/View$OnTouchListener;", "(Lcom/tencent/mm/ui/widget/cropview/RoundCropLayout;)V", "isScale", "", "onTouch", "v", "Landroid/view/View;", "event", "Landroid/view/MotionEvent;", "libmmui_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/ui/widget/cropview/RoundCropLayout$SimpleTouchListener;", "Landroid/view/View$OnTouchListener;", "(Lcom/tencent/mm/ui/widget/cropview/RoundCropLayout;)V", "isScale", "", "onTouch", "v", "Landroid/view/View;", "event", "Landroid/view/MotionEvent;", "libmmui_release"})
 final class RoundCropLayout$b
   implements View.OnTouchListener
 {
-  private boolean gLe;
+  private boolean gNN;
   
   public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
@@ -22,11 +22,11 @@ final class RoundCropLayout$b
     b localb = new b();
     localb.bd(paramView);
     localb.bd(paramMotionEvent);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/widget/cropview/RoundCropLayout$SimpleTouchListener", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahq());
+    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/widget/cropview/RoundCropLayout$SimpleTouchListener", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahF());
     if (paramMotionEvent != null)
     {
       paramView = Integer.valueOf(paramMotionEvent.getActionMasked());
-      ad.d(RoundCropLayout.a(this.KVR), "action ".concat(String.valueOf(paramView)));
+      ae.d(RoundCropLayout.a(this.Lsp), "action ".concat(String.valueOf(paramView)));
       if (paramView != null) {
         break label191;
       }
@@ -37,13 +37,13 @@ final class RoundCropLayout$b
     }
     for (;;)
     {
-      RoundCropLayout.b(this.KVR).onTouchEvent(paramMotionEvent);
-      if (!this.gLe)
+      RoundCropLayout.b(this.Lsp).onTouchEvent(paramMotionEvent);
+      if (!this.gNN)
       {
-        paramView = RoundCropLayout.c(this.KVR);
+        paramView = RoundCropLayout.c(this.Lsp);
         paramMotionEvent = new com.tencent.mm.hellhoundlib.b.a().bc(paramMotionEvent);
-        com.tencent.mm.hellhoundlib.a.a.a(paramView, paramMotionEvent.ahp(), "com/tencent/mm/ui/widget/cropview/RoundCropLayout$SimpleTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
-        com.tencent.mm.hellhoundlib.a.a.a(paramView, paramView.onTouchEvent((MotionEvent)paramMotionEvent.mq(0)), "com/tencent/mm/ui/widget/cropview/RoundCropLayout$SimpleTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
+        com.tencent.mm.hellhoundlib.a.a.a(paramView, paramMotionEvent.ahE(), "com/tencent/mm/ui/widget/cropview/RoundCropLayout$SimpleTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
+        com.tencent.mm.hellhoundlib.a.a.a(paramView, paramView.onTouchEvent((MotionEvent)paramMotionEvent.mt(0)), "com/tencent/mm/ui/widget/cropview/RoundCropLayout$SimpleTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
       }
       com.tencent.mm.hellhoundlib.a.a.a(true, this, "com/tencent/mm/ui/widget/cropview/RoundCropLayout$SimpleTouchListener", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
       AppMethodBeat.o(164457);
@@ -54,11 +54,11 @@ final class RoundCropLayout$b
       if (paramView.intValue() != 0) {
         break label74;
       }
-      this.gLe = false;
+      this.gNN = false;
       continue;
       label206:
       if ((paramView.intValue() == 5) && (paramMotionEvent.getPointerCount() == 2)) {
-        this.gLe = true;
+        this.gNN = true;
       }
     }
   }

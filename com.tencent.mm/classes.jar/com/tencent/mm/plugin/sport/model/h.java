@@ -3,15 +3,15 @@ package com.tencent.mm.plugin.sport.model;
 import android.content.Context;
 import android.content.res.AssetManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.sport.PluginSport;
-import com.tencent.mm.protocal.protobuf.ecd;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.edu;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.io.IOException;
 import java.io.InputStream;
 import org.json.JSONException;
@@ -19,15 +19,15 @@ import org.json.JSONObject;
 
 public final class h
 {
-  private static long AHf;
-  private static JSONObject AHg;
-  private static a AHh;
-  private static f hPn;
+  private static long AYI;
+  private static JSONObject AYJ;
+  private static a AYK;
+  private static f ghB;
   
   static
   {
     AppMethodBeat.i(149325);
-    hPn = new f()
+    ghB = new f()
     {
       public final void onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, n paramAnonymousn)
       {
@@ -35,20 +35,20 @@ public final class h
         AppMethodBeat.i(149318);
         if ((paramAnonymousn instanceof e))
         {
-          g.aiU().b(1947, h.egs());
+          g.ajj().b(1947, h.eka());
           if ((paramAnonymousInt1 == 0) && (paramAnonymousInt2 == 0))
           {
-            paramAnonymousString = ((e)paramAnonymousn).AGT;
-            ad.i("MicroMsg.Sport.SportConfigLogic", "onSceneEnd config=%s", new Object[] { paramAnonymousString.Fwh });
-            h.aBo(paramAnonymousString.Fwh);
+            paramAnonymousString = ((e)paramAnonymousn).AYw;
+            ae.i("MicroMsg.Sport.SportConfigLogic", "onSceneEnd config=%s", new Object[] { paramAnonymousString.FOF });
+            h.aCH(paramAnonymousString.FOF);
           }
         }
         for (;;)
         {
           try
           {
-            paramAnonymousString = h.egq();
-            if (!l.efY()) {
+            paramAnonymousString = h.ejY();
+            if (!l.ejG()) {
               continue;
             }
             paramAnonymousInt1 = i;
@@ -58,11 +58,11 @@ public final class h
           {
             continue;
           }
-          paramAnonymousString = h.egq().toString();
-          k.aBp(paramAnonymousString);
-          ((PluginSport)g.ad(PluginSport.class)).getDeviceStepManager().aBn(paramAnonymousString);
-          if (h.egt() != null) {
-            h.egt().agl();
+          paramAnonymousString = h.ejY().toString();
+          k.aCI(paramAnonymousString);
+          ((PluginSport)g.ad(PluginSport.class)).getDeviceStepManager().aCG(paramAnonymousString);
+          if (h.ekb() != null) {
+            h.ekb().agz();
           }
           AppMethodBeat.o(149318);
           return;
@@ -75,26 +75,26 @@ public final class h
   
   public static void a(a parama)
   {
-    AHh = parama;
+    AYK = parama;
   }
   
-  public static void aBo(String paramString)
+  public static void aCH(String paramString)
   {
     AppMethodBeat.i(149321);
-    if (bt.isNullOrNil(paramString))
+    if (bu.isNullOrNil(paramString))
     {
       AppMethodBeat.o(149321);
       return;
     }
     try
     {
-      AHg = new JSONObject(paramString);
+      AYJ = new JSONObject(paramString);
       AppMethodBeat.o(149321);
       return;
     }
     catch (Exception paramString)
     {
-      AHg = null;
+      AYJ = null;
       AppMethodBeat.o(149321);
     }
   }
@@ -105,14 +105,14 @@ public final class h
     AppMethodBeat.i(149323);
     try
     {
-      if (aj.cmR())
+      if (ak.coh())
       {
-        if (!l.efY()) {
+        if (!l.ejG()) {
           break label75;
         }
         i = 1;
         if (paramJSONObject.optInt("checkWeSportInstall", 0) != i) {
-          if (!l.efY()) {
+          if (!l.ejG()) {
             break label80;
           }
         }
@@ -122,8 +122,8 @@ public final class h
       for (int i = j;; i = 0)
       {
         paramJSONObject.put("checkWeSportInstall", i);
-        k.aBp(paramJSONObject.toString());
-        com.tencent.mm.plugin.report.e.ygI.idkeyStat(323L, 5L, 1L, false);
+        k.aCI(paramJSONObject.toString());
+        com.tencent.mm.plugin.report.e.ywz.idkeyStat(323L, 5L, 1L, false);
         AppMethodBeat.o(149323);
         return;
         i = 0;
@@ -137,38 +137,38 @@ public final class h
     }
   }
   
-  public static boolean egp()
+  public static boolean ejX()
   {
     AppMethodBeat.i(149319);
-    if (AHf == 0L) {
-      AHf = k.aC(1, 0L);
+    if (AYI == 0L) {
+      AYI = k.aC(1, 0L);
     }
-    if (System.currentTimeMillis() - AHf > 86400000L)
+    if (System.currentTimeMillis() - AYI > 86400000L)
     {
-      AHf = System.currentTimeMillis();
-      k.aD(1, AHf);
-      ad.i("MicroMsg.Sport.SportConfigLogic", "start to request sport config");
-      g.aiU().a(1947, hPn);
-      g.aiU().a(new e(), 0);
+      AYI = System.currentTimeMillis();
+      k.aD(1, AYI);
+      ae.i("MicroMsg.Sport.SportConfigLogic", "start to request sport config");
+      g.ajj().a(1947, ghB);
+      g.ajj().a(new e(), 0);
       AppMethodBeat.o(149319);
       return true;
     }
-    ad.i("MicroMsg.Sport.SportConfigLogic", "last request time is %s", new Object[] { l.sm(AHf) });
+    ae.i("MicroMsg.Sport.SportConfigLogic", "last request time is %s", new Object[] { l.sz(AYI) });
     AppMethodBeat.o(149319);
     return false;
   }
   
-  public static JSONObject egq()
+  public static JSONObject ejY()
   {
     AppMethodBeat.i(149322);
     Object localObject;
-    if (AHg == null)
+    if (AYJ == null)
     {
-      if (!aj.cmR()) {
+      if (!ak.coh()) {
         break label137;
       }
       localObject = ((PluginSport)g.ad(PluginSport.class)).getSportFileStorage().getString(2, "");
-      if (bt.isNullOrNil((String)localObject)) {
+      if (bu.isNullOrNil((String)localObject)) {
         break label158;
       }
     }
@@ -178,38 +178,38 @@ public final class h
       try
       {
         localObject = new JSONObject((String)localObject);
-        AHg = (JSONObject)localObject;
+        AYJ = (JSONObject)localObject;
         aR((JSONObject)localObject);
         localObject = "server config";
-        if (AHg == null)
+        if (AYJ == null)
         {
-          localObject = egr();
-          AHg = (JSONObject)localObject;
+          localObject = ejZ();
+          AYJ = (JSONObject)localObject;
           aR((JSONObject)localObject);
           localObject = "asset";
         }
-        if (AHg == null)
+        if (AYJ == null)
         {
-          AHg = new JSONObject();
+          AYJ = new JSONObject();
           localObject = "new";
         }
-        ad.i("MicroMsg.Sport.SportConfigLogic", "get sport config from %s: %s", new Object[] { localObject, AHg.toString() });
-        localObject = AHg;
+        ae.i("MicroMsg.Sport.SportConfigLogic", "get sport config from %s: %s", new Object[] { localObject, AYJ.toString() });
+        localObject = AYJ;
         AppMethodBeat.o(149322);
         return localObject;
       }
       catch (Exception localException) {}
-      localObject = new j(com.tencent.mm.plugin.sport.a.a.AGy).getString(2, "");
+      localObject = new j(com.tencent.mm.plugin.sport.a.a.AYb).getString(2, "");
       break;
       label158:
       String str = "";
     }
   }
   
-  private static JSONObject egr()
+  private static JSONObject ejZ()
   {
     AppMethodBeat.i(149324);
-    Object localObject4 = aj.getContext().getAssets();
+    Object localObject4 = ak.getContext().getAssets();
     localObject3 = null;
     localObject1 = null;
     try
@@ -225,7 +225,7 @@ public final class h
       for (;;)
       {
         localObject3 = localObject1;
-        ad.printErrStackTrace("MicroMsg.Sport.SportConfigLogic", localException, "get assets sport config json", new Object[0]);
+        ae.printErrStackTrace("MicroMsg.Sport.SportConfigLogic", localException, "get assets sport config json", new Object[0]);
         localObject3 = localObject1;
         JSONObject localJSONObject1 = new JSONObject();
         localObject3 = localJSONObject1;
@@ -270,10 +270,10 @@ public final class h
     return localObject3;
   }
   
-  public static void se(boolean paramBoolean)
+  public static void sl(boolean paramBoolean)
   {
     AppMethodBeat.i(149320);
-    Object localObject = egq();
+    Object localObject = ejY();
     int i;
     if (paramBoolean) {
       i = 1;
@@ -285,10 +285,10 @@ public final class h
         ((JSONObject)localObject).put("checkWeSportInstall", i);
         label23:
         localObject = ((JSONObject)localObject).toString();
-        k.aBp((String)localObject);
-        ((PluginSport)g.ad(PluginSport.class)).getDeviceStepManager().aBn((String)localObject);
-        if (AHh != null) {
-          AHh.agl();
+        k.aCI((String)localObject);
+        ((PluginSport)g.ad(PluginSport.class)).getDeviceStepManager().aCG((String)localObject);
+        if (AYK != null) {
+          AYK.agz();
         }
         AppMethodBeat.o(149320);
         return;
@@ -303,12 +303,12 @@ public final class h
   
   public static abstract interface a
   {
-    public abstract void agl();
+    public abstract void agz();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.sport.model.h
  * JD-Core Version:    0.7.0.1
  */

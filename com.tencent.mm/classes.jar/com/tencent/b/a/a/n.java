@@ -12,9 +12,9 @@ import org.json.JSONObject;
 public final class n
   implements Runnable
 {
-  public static long cOQ = -1L;
-  private a cOO = null;
-  int cOP = 0;
+  public static long cPA = -1L;
+  private a cPy = null;
+  int cPz = 0;
   private Context mContext = null;
   private int mType = 0;
   
@@ -24,49 +24,49 @@ public final class n
     this.mType = paramInt;
   }
   
-  private void JH()
+  private void JP()
   {
     AppMethodBeat.i(87614);
-    g localg1 = r.aX(this.mContext).G(new ArrayList(Arrays.asList(new Integer[] { Integer.valueOf(1) })));
-    g localg2 = r.aX(this.mContext).G(new ArrayList(Arrays.asList(new Integer[] { Integer.valueOf(2) })));
-    g localg3 = r.aX(this.mContext).G(new ArrayList(Arrays.asList(new Integer[] { Integer.valueOf(4) })));
+    g localg1 = r.aY(this.mContext).G(new ArrayList(Arrays.asList(new Integer[] { Integer.valueOf(1) })));
+    g localg2 = r.aY(this.mContext).G(new ArrayList(Arrays.asList(new Integer[] { Integer.valueOf(2) })));
+    g localg3 = r.aY(this.mContext).G(new ArrayList(Arrays.asList(new Integer[] { Integer.valueOf(4) })));
     if ((s.b(localg1, localg2)) && (s.b(localg1, localg3)))
     {
-      s.JK();
+      s.JS();
       AppMethodBeat.o(87614);
       return;
     }
     localg1 = s.a(s.a(localg1, localg2), s.a(localg1, localg3));
     new StringBuilder("local mid check failed, redress with mid:").append(localg1.toString());
-    s.JK();
-    r.aX(this.mContext).b(localg1);
+    s.JS();
+    r.aY(this.mContext).b(localg1);
     AppMethodBeat.o(87614);
   }
   
   private void n(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(87615);
-    if (i.cOE != null)
+    if (i.cPo != null)
     {
-      if (j.cOK == 1)
+      if (j.cPu == 1)
       {
-        s.JK();
+        s.JS();
         AppMethodBeat.o(87615);
         return;
       }
-      if ((j.cOL > 0) && (this.cOP > j.cOL))
+      if ((j.cPv > 0) && (this.cPz > j.cPv))
       {
-        new StringBuilder("limit dispatch:").append(j.cOL);
-        s.JK();
+        new StringBuilder("limit dispatch:").append(j.cPv);
+        s.JS();
         AppMethodBeat.o(87615);
         return;
       }
       paramJSONObject = new m(this.mContext, paramJSONObject).toJSONObject().toString();
       "request data:".concat(String.valueOf(paramJSONObject));
-      s.JK();
-      i.cOE.ei("[" + paramJSONObject + "]");
-      cOQ = System.currentTimeMillis();
-      this.cOP += 1;
+      s.JS();
+      i.cPo.en("[" + paramJSONObject + "]");
+      cPA = System.currentTimeMillis();
+      this.cPz += 1;
     }
     AppMethodBeat.o(87615);
   }
@@ -75,12 +75,12 @@ public final class n
   {
     AppMethodBeat.i(87616);
     new StringBuilder("request type:").append(this.mType);
-    s.JK();
+    s.JS();
     switch (this.mType)
     {
     default: 
       new StringBuilder("wrong type:").append(this.mType);
-      s.JK();
+      s.JS();
       AppMethodBeat.o(87616);
       return;
     case 1: 
@@ -88,44 +88,44 @@ public final class n
       AppMethodBeat.o(87616);
       return;
     }
-    if (this.cOO == null) {
-      this.cOO = r.aX(this.mContext).JJ();
+    if (this.cPy == null) {
+      this.cPy = r.aY(this.mContext).JR();
     }
     long l1 = System.currentTimeMillis();
-    if (i.cOF <= 0L) {
-      i.cOF = PreferenceManager.getDefaultSharedPreferences(this.mContext).getLong("__MID_LAST_CHECK_TIME__", 0L);
+    if (i.cPp <= 0L) {
+      i.cPp = PreferenceManager.getDefaultSharedPreferences(this.mContext).getLong("__MID_LAST_CHECK_TIME__", 0L);
     }
-    long l2 = Math.abs(l1 - i.cOF);
-    new StringBuilder("check entity: ").append(this.cOO.toString()).append(",duration:").append(l2);
-    s.JK();
-    if ((this.cOO.cOh < 0) || (this.cOO.cOh > 100)) {
-      this.cOO.cOh = 3;
+    long l2 = Math.abs(l1 - i.cPp);
+    new StringBuilder("check entity: ").append(this.cPy.toString()).append(",duration:").append(l2);
+    s.JS();
+    if ((this.cPy.cOR < 0) || (this.cPy.cOR > 100)) {
+      this.cPy.cOR = 3;
     }
-    long l3 = this.cOO.cOh * e.cOz;
-    new StringBuilder("duration:").append(l2).append(",maxCheckDays:").append(l3).append(",mLastCheckTime:").append(i.cOF).append(",mCheckEntity:").append(this.cOO);
-    s.JK();
+    long l3 = this.cPy.cOR * e.cPj;
+    new StringBuilder("duration:").append(l2).append(",maxCheckDays:").append(l3).append(",mLastCheckTime:").append(i.cPp).append(",mCheckEntity:").append(this.cPy);
+    s.JS();
     JSONObject localJSONObject;
     if (l2 < l3)
     {
-      if (l2 > e.cOz)
+      if (l2 > e.cPj)
       {
-        JH();
+        JP();
         AppMethodBeat.o(87616);
       }
     }
     else
     {
-      JH();
+      JP();
       localJSONObject = new JSONObject();
     }
     try
     {
       localJSONObject.put("dur", l2);
       localJSONObject.put("md", l3);
-      localJSONObject.put("lct", i.cOF);
+      localJSONObject.put("lct", i.cPp);
       localJSONObject.put("cur", l1);
       label352:
-      if (cOQ <= 0L) {
+      if (cPA <= 0L) {
         n(localJSONObject);
       }
       AppMethodBeat.o(87616);

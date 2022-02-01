@@ -6,7 +6,7 @@ import com.google.b.a.e;
 public final class a$c
   extends e
 {
-  public a.x[] LFW = a.x.fSZ();
+  public a.x[] Mda = a.x.fXz();
   
   public a$c()
   {
@@ -15,12 +15,12 @@ public final class a$c
   
   public final void a(b paramb)
   {
-    if ((this.LFW != null) && (this.LFW.length > 0))
+    if ((this.Mda != null) && (this.Mda.length > 0))
     {
       int i = 0;
-      while (i < this.LFW.length)
+      while (i < this.Mda.length)
       {
-        a.x localx = this.LFW[i];
+        a.x localx = this.Mda[i];
         if (localx != null) {
           paramb.a(1, localx);
         }
@@ -34,19 +34,19 @@ public final class a$c
   {
     int i = super.zq();
     int k = i;
-    if (this.LFW != null)
+    if (this.Mda != null)
     {
       k = i;
-      if (this.LFW.length > 0)
+      if (this.Mda.length > 0)
       {
         int j = 0;
         for (;;)
         {
           k = i;
-          if (j >= this.LFW.length) {
+          if (j >= this.Mda.length) {
             break;
           }
-          a.x localx = this.LFW[j];
+          a.x localx = this.Mda[j];
           k = i;
           if (localx != null) {
             k = i + b.b(1, localx);

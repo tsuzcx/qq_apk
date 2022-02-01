@@ -2,11 +2,11 @@ package com.tencent.mm.pluginsdk.i;
 
 public final class g
 {
-  public static a EPa;
+  public static a Fhv;
   
   public static abstract interface a
   {
-    public abstract boolean emQ();
+    public abstract boolean eqz();
   }
 }
 

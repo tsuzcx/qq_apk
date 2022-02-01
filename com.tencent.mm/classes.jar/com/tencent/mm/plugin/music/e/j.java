@@ -15,7 +15,7 @@ public class j
     return localAudioTrack;
   }
   
-  public MediaPlayer dsM()
+  public MediaPlayer dwb()
   {
     AppMethodBeat.i(137282);
     MediaPlayer localMediaPlayer = new MediaPlayer();

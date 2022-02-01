@@ -1,24 +1,20 @@
 package com.tencent.mm.plugin.gamelife.a;
 
-import com.tencent.mm.kernel.c.a;
+import com.tencent.mm.plugin.gamelife.b.c;
 
 public abstract interface e
-  extends a
 {
-  public abstract void a(String paramString1, String paramString2, a parama);
+  public abstract String Wa();
   
-  public abstract String aii(String paramString);
+  public abstract c ddw();
   
-  public abstract d amC(String paramString);
+  public abstract String getSelfUsername();
   
-  public static abstract interface a
-  {
-    public abstract void onDone(String paramString);
-  }
+  public abstract String getSessionId();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.gamelife.a.e
  * JD-Core Version:    0.7.0.1
  */

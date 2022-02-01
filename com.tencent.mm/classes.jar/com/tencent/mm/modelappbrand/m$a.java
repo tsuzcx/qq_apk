@@ -1,10 +1,10 @@
 package com.tencent.mm.modelappbrand;
 
-import com.tencent.mm.protocal.protobuf.dqt;
+import com.tencent.mm.protocal.protobuf.drq;
 
 public abstract interface m$a
 {
-  public abstract void a(String paramString, dqt paramdqt);
+  public abstract void a(String paramString, drq paramdrq);
 }
 
 

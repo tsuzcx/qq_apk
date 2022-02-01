@@ -15,10 +15,10 @@ public class an
   implements View.OnTouchListener
 {
   private static final int Pj;
-  private final Handler ngW;
-  private float ngX;
-  private float ngY;
-  private boolean ngZ;
+  private final Handler nme;
+  private float nmf;
+  private float nmg;
+  private boolean nmh;
   
   static
   {
@@ -30,7 +30,7 @@ public class an
   public an()
   {
     AppMethodBeat.i(136607);
-    this.ngW = new Handler(Looper.getMainLooper())
+    this.nme = new Handler(Looper.getMainLooper())
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
@@ -48,7 +48,7 @@ public class an
         }
       }
     };
-    this.ngZ = false;
+    this.nmh = false;
     AppMethodBeat.o(136607);
   }
   
@@ -56,15 +56,15 @@ public class an
   {
     AppMethodBeat.i(136609);
     paramView.setPressed(false);
-    this.ngZ = false;
-    this.ngW.removeMessages(1);
-    this.ngW.removeMessages(2);
+    this.nmh = false;
+    this.nme.removeMessages(1);
+    this.nme.removeMessages(2);
     AppMethodBeat.o(136609);
   }
   
-  protected void bEy() {}
+  protected void bFq() {}
   
-  protected void bmV() {}
+  protected void bnF() {}
   
   public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
@@ -72,7 +72,7 @@ public class an
     b localb = new b();
     localb.bd(paramView);
     localb.bd(paramMotionEvent);
-    a.b("com/tencent/mm/plugin/appbrand/widget/input/RepeatKeyTouchListener", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahq());
+    a.b("com/tencent/mm/plugin/appbrand/widget/input/RepeatKeyTouchListener", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahF());
     switch (paramMotionEvent.getActionMasked())
     {
     }
@@ -83,8 +83,8 @@ public class an
       return true;
       dr(paramView);
       continue;
-      if ((!this.ngZ) && (this.ngW.hasMessages(1))) {
-        bmV();
+      if ((!this.nmh) && (this.nme.hasMessages(1))) {
+        bnF();
       }
       dr(paramView);
       continue;
@@ -93,12 +93,12 @@ public class an
       float f2 = paramMotionEvent.getY();
       if ((-i > f1) || (f1 > paramView.getWidth() + i) || (-i > f2) || (f2 > i + paramView.getHeight()))
       {
-        this.ngZ = true;
+        this.nmh = true;
         continue;
         paramView.setPressed(true);
-        this.ngW.sendMessageDelayed(Message.obtain(this.ngW, 1), Pj);
-        this.ngX = paramMotionEvent.getX();
-        this.ngY = paramMotionEvent.getY();
+        this.nme.sendMessageDelayed(Message.obtain(this.nme, 1), Pj);
+        this.nmf = paramMotionEvent.getX();
+        this.nmg = paramMotionEvent.getY();
       }
     }
   }

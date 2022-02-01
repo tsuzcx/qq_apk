@@ -6,7 +6,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.a.m;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "resultCode", "", "data", "Landroid/content/Intent;", "kotlin.jvm.PlatformType", "onResult"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "resultCode", "", "data", "Landroid/content/Intent;", "kotlin.jvm.PlatformType", "onResult"})
 final class i$b
   implements e.b
 {
@@ -15,7 +15,7 @@ final class i$b
   public final void a(int paramInt, Intent paramIntent)
   {
     AppMethodBeat.i(148043);
-    this.mju.p(Integer.valueOf(paramInt), paramIntent);
+    this.mor.p(Integer.valueOf(paramInt), paramIntent);
     AppMethodBeat.o(148043);
   }
 }

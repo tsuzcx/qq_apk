@@ -5,27 +5,27 @@ import android.graphics.Point;
 import android.support.v7.widget.RecyclerView.a;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.u;
+import com.tencent.mm.model.v;
 import com.tencent.mm.ui.al;
 import d.g.b.p;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 
-@d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/multitalk/ui/widget/SmallAvatarAdapterInContactUI;", "Landroid/support/v7/widget/RecyclerView$Adapter;", "Lcom/tencent/mm/plugin/multitalk/ui/widget/SmallAvatarHolderInContactUI;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "contactList", "Ljava/util/ArrayList;", "", "Lkotlin/collections/ArrayList;", "getContext", "()Landroid/content/Context;", "setContext", "headerCount", "", "smallAvatarClickListener", "Landroid/view/View$OnClickListener;", "checkIsExists", "", "userName", "decreaseContact", "", "userNameList", "onClickListener", "index", "getItemCount", "getItemViewType", "position", "getMarginStart", "getMarginStartFrom", "increaseContact", "onBindViewHolder", "holder", "onCreateViewHolder", "parent", "Landroid/view/ViewGroup;", "viewType", "updateContactList", "Companion", "plugin-multitalk_release"})
+@d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/multitalk/ui/widget/SmallAvatarAdapterInContactUI;", "Landroid/support/v7/widget/RecyclerView$Adapter;", "Lcom/tencent/mm/plugin/multitalk/ui/widget/SmallAvatarHolderInContactUI;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "contactList", "Ljava/util/ArrayList;", "", "Lkotlin/collections/ArrayList;", "getContext", "()Landroid/content/Context;", "setContext", "headerCount", "", "smallAvatarClickListener", "Landroid/view/View$OnClickListener;", "checkIsExists", "", "userName", "decreaseContact", "", "userNameList", "onClickListener", "index", "getItemCount", "getItemViewType", "position", "getMarginStart", "getMarginStartFrom", "increaseContact", "onBindViewHolder", "holder", "onCreateViewHolder", "parent", "Landroid/view/ViewGroup;", "viewType", "updateContactList", "Companion", "plugin-multitalk_release"})
 public final class k
   extends RecyclerView.a<l>
 {
-  public static final k.a whv;
+  public static final k.a wwZ;
   private Context context;
-  public final int sWU;
-  public final ArrayList<String> sec;
-  public View.OnClickListener whu;
+  public final ArrayList<String> smS;
+  public final int tii;
+  public View.OnClickListener wwY;
   
   static
   {
     AppMethodBeat.i(178984);
-    whv = new k.a((byte)0);
+    wwZ = new k.a((byte)0);
     AppMethodBeat.o(178984);
   }
   
@@ -33,24 +33,24 @@ public final class k
   {
     AppMethodBeat.i(178983);
     this.context = paramContext;
-    this.sec = new ArrayList();
-    this.sWU = 1;
+    this.smS = new ArrayList();
+    this.tii = 1;
     AppMethodBeat.o(178983);
   }
   
-  private final int dqY()
+  private final int duk()
   {
     AppMethodBeat.i(178979);
-    int i = (al.ci(this.context).x - (f.wfO * this.sec.size() + f.wfH * (this.sec.size() - 1))) / 2;
-    int j = f.wfO;
+    int i = (al.ck(this.context).x - (f.wvr * this.smS.size() + f.wvk * (this.smS.size() - 1))) / 2;
+    int j = f.wvr;
     AppMethodBeat.o(178979);
     return i - j;
   }
   
-  public final boolean arH(String paramString)
+  public final boolean asU(String paramString)
   {
     AppMethodBeat.i(178978);
-    Iterator localIterator = ((Iterable)this.sec).iterator();
+    Iterator localIterator = ((Iterable)this.smS).iterator();
     Object localObject;
     do
     {
@@ -73,20 +73,20 @@ public final class k
     AppMethodBeat.i(178977);
     p.h(paramArrayList, "userNameList");
     p.h(paramOnClickListener, "onClickListener");
-    this.sec.clear();
-    this.sec.add(u.aAm());
+    this.smS.clear();
+    this.smS.add(v.aAC());
     int i = 0;
     int j = ((Collection)paramArrayList).size();
     while (i < j)
     {
       Object localObject = paramArrayList.get(i);
       p.g(localObject, "userNameList[i]");
-      if ((!arH((String)localObject)) && ((p.i((String)paramArrayList.get(i), u.aAm()) ^ true))) {
-        this.sec.add(paramArrayList.get(i));
+      if ((!asU((String)localObject)) && ((p.i((String)paramArrayList.get(i), v.aAC()) ^ true))) {
+        this.smS.add(paramArrayList.get(i));
       }
       i += 1;
     }
-    this.whu = paramOnClickListener;
+    this.wwY = paramOnClickListener;
     notifyDataSetChanged();
     AppMethodBeat.o(178977);
   }
@@ -94,8 +94,8 @@ public final class k
   public final int getItemCount()
   {
     AppMethodBeat.i(178982);
-    int i = this.sec.size();
-    int j = this.sWU;
+    int i = this.smS.size();
+    int j = this.tii;
     AppMethodBeat.o(178982);
     return i + j;
   }

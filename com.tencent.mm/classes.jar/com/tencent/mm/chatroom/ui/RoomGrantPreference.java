@@ -11,22 +11,22 @@ import com.tencent.mm.ui.base.preference.Preference;
 public class RoomGrantPreference
   extends Preference
 {
-  TextView fRf;
-  String fRg;
+  TextView fTl;
+  String fTm;
   
   public RoomGrantPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.fRf = null;
-    this.fRg = "";
+    this.fTl = null;
+    this.fTm = "";
   }
   
   public RoomGrantPreference(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(12731);
-    this.fRf = null;
-    this.fRg = "";
+    this.fTl = null;
+    this.fTm = "";
     setLayoutResource(2131494804);
     setWidgetLayoutResource(2131494884);
     AppMethodBeat.o(12731);
@@ -35,10 +35,10 @@ public class RoomGrantPreference
   public final void onBindView(View paramView)
   {
     AppMethodBeat.i(12733);
-    if (this.fRf == null) {
-      this.fRf = ((TextView)paramView.findViewById(2131298778));
+    if (this.fTl == null) {
+      this.fTl = ((TextView)paramView.findViewById(2131298778));
     }
-    this.fRf.setText(this.fRg);
+    this.fTl.setText(this.fTm);
     super.onBindView(paramView);
     AppMethodBeat.o(12733);
   }

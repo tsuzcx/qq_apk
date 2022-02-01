@@ -6,17 +6,17 @@ import com.tencent.mm.plugin.fts.a.a.a;
 final class c$b
   extends a
 {
-  private long fGN;
+  private long fIR;
   
   public c$b(c paramc, long paramLong)
   {
-    this.fGN = paramLong;
+    this.fIR = paramLong;
   }
   
-  public final String bgU()
+  public final String bhC()
   {
     AppMethodBeat.i(52723);
-    String str = String.format("{MsgId: %d}", new Object[] { Long.valueOf(this.fGN) });
+    String str = String.format("{MsgId: %d}", new Object[] { Long.valueOf(this.fIR) });
     AppMethodBeat.o(52723);
     return str;
   }
@@ -24,7 +24,7 @@ final class c$b
   public final boolean execute()
   {
     AppMethodBeat.i(52722);
-    this.txg.txa.c(com.tencent.mm.plugin.fts.a.c.tsM, this.fGN);
+    this.tHX.tHR.c(com.tencent.mm.plugin.fts.a.c.tDD, this.fIR);
     AppMethodBeat.o(52722);
     return true;
   }

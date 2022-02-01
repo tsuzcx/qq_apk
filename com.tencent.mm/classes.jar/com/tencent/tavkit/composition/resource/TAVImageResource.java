@@ -21,37 +21,37 @@ public class TAVImageResource
   
   public TAVImageResource(CIImage paramCIImage, CMTime paramCMTime, boolean paramBoolean)
   {
-    AppMethodBeat.i(219889);
+    AppMethodBeat.i(200920);
     this.ciImageHashMap = new HashMap();
     this.image = paramCIImage;
     this.duration = paramCMTime;
     this.sourceTimeRange = new CMTimeRange(CMTime.CMTimeZero, paramCMTime);
     this.emptyAudioTrack = paramBoolean;
-    AppMethodBeat.o(219889);
+    AppMethodBeat.o(200920);
   }
   
   public TAVResource clone()
   {
-    AppMethodBeat.i(219892);
+    AppMethodBeat.i(200923);
     TAVImageResource localTAVImageResource = new TAVImageResource(this.image, this.duration.clone(), this.emptyAudioTrack);
     localTAVImageResource.sourceTimeRange = this.sourceTimeRange.clone();
     localTAVImageResource.scaledDuration = this.scaledDuration.clone();
     localTAVImageResource.ciImageHashMap = this.ciImageHashMap;
-    AppMethodBeat.o(219892);
+    AppMethodBeat.o(200923);
     return localTAVImageResource;
   }
   
   public CIImage imageAtTime(CMTime paramCMTime, CGSize paramCGSize)
   {
-    AppMethodBeat.i(219890);
+    AppMethodBeat.i(200921);
     if (!this.sourceTimeRange.containsTime(paramCMTime))
     {
-      AppMethodBeat.o(219890);
+      AppMethodBeat.o(200921);
       return null;
     }
     if (this.image == null)
     {
-      AppMethodBeat.o(219890);
+      AppMethodBeat.o(200921);
       return null;
     }
     Thread localThread = Thread.currentThread();
@@ -63,27 +63,27 @@ public class TAVImageResource
       this.ciImageHashMap.put(localThread, paramCMTime);
     }
     paramCMTime.reset();
-    AppMethodBeat.o(219890);
+    AppMethodBeat.o(200921);
     return paramCMTime;
   }
   
   public TrackInfo trackInfoForType(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(219891);
+    AppMethodBeat.i(200922);
     TrackInfo localTrackInfo;
     if (paramInt1 == 1)
     {
       localTrackInfo = newEmptyTrackInfo(paramInt1, paramInt2);
-      AppMethodBeat.o(219891);
+      AppMethodBeat.o(200922);
       return localTrackInfo;
     }
     if ((this.emptyAudioTrack) && (paramInt1 == 2))
     {
       localTrackInfo = newEmptyTrackInfo(paramInt1, paramInt2);
-      AppMethodBeat.o(219891);
+      AppMethodBeat.o(200922);
       return localTrackInfo;
     }
-    AppMethodBeat.o(219891);
+    AppMethodBeat.o(200922);
     return null;
   }
 }

@@ -10,14 +10,14 @@ public final class al
   extends n
   implements bd
 {
-  private final ab NCa;
-  private final aj Nhg;
+  private final aj NEl;
+  private final ab NZh;
   
   public al(aj paramaj, ab paramab)
   {
     AppMethodBeat.i(60801);
-    this.Nhg = paramaj;
-    this.NCa = paramab;
+    this.NEl = paramaj;
+    this.NZh = paramab;
     AppMethodBeat.o(60801);
   }
   
@@ -25,22 +25,22 @@ public final class al
   {
     AppMethodBeat.i(60797);
     p.h(parami, "kotlinTypeRefiner");
-    ab localab = parami.aL((ab)this.Nhg);
+    ab localab = parami.aL((ab)this.NEl);
     if (localab == null)
     {
       parami = new v("null cannot be cast to non-null type org.jetbrains.kotlin.types.SimpleType");
       AppMethodBeat.o(60797);
       throw parami;
     }
-    parami = new al((aj)localab, parami.aL(this.NCa));
+    parami = new al((aj)localab, parami.aL(this.NZh));
     AppMethodBeat.o(60797);
     return parami;
   }
   
-  public final aj Ac(boolean paramBoolean)
+  public final aj Ap(boolean paramBoolean)
   {
     AppMethodBeat.i(60794);
-    Object localObject = be.b(((bg)this.Nhg).Ab(paramBoolean), (ab)this.NCa.gua().Ab(paramBoolean));
+    Object localObject = be.b(((bg)this.NEl).Ao(paramBoolean), (ab)this.NZh.gyC().Ao(paramBoolean));
     if (localObject == null)
     {
       localObject = new v("null cannot be cast to non-null type org.jetbrains.kotlin.types.SimpleType");
@@ -56,7 +56,7 @@ public final class al
   {
     AppMethodBeat.i(60792);
     p.h(paramg, "newAnnotations");
-    paramg = be.b(((bg)this.Nhg).b(paramg), this.NCa);
+    paramg = be.b(((bg)this.NEl).b(paramg), this.NZh);
     if (paramg == null)
     {
       paramg = new v("null cannot be cast to non-null type org.jetbrains.kotlin.types.SimpleType");
@@ -68,24 +68,24 @@ public final class al
     return paramg;
   }
   
-  protected final aj glS()
+  protected final aj gqu()
   {
-    return this.Nhg;
+    return this.NEl;
   }
   
-  public final bg gtX()
+  public final ab gyA()
   {
-    return (bg)this.Nhg;
+    return this.NZh;
   }
   
-  public final ab gtY()
+  public final bg gyz()
   {
-    return this.NCa;
+    return (bg)this.NEl;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.m.al
  * JD-Core Version:    0.7.0.1
  */

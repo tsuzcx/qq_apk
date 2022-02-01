@@ -2,24 +2,24 @@ package com.tencent.mm.emoji.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class b
 {
-  private static b goz;
-  public boolean glU;
-  public long goA;
-  public int goB;
-  public int goC;
+  private static b gqU;
+  public boolean goq;
+  public long gqV;
+  public int gqW;
+  public int gqX;
   public int scene;
   
-  public static b afY()
+  public static b agm()
   {
     AppMethodBeat.i(104481);
-    if (goz == null) {
-      goz = new b();
+    if (gqU == null) {
+      gqU = new b();
     }
-    b localb = goz;
+    b localb = gqU;
     AppMethodBeat.o(104481);
     return localb;
   }
@@ -29,21 +29,21 @@ public final class b
     int j = 1;
     AppMethodBeat.i(104483);
     long l1 = System.currentTimeMillis();
-    long l2 = this.goA;
-    g localg = g.yhR;
+    long l2 = this.gqV;
+    g localg = g.yxI;
     int k = this.scene;
     int i;
     if (paramBoolean)
     {
       i = 1;
-      if (!this.glU) {
+      if (!this.goq) {
         break label183;
       }
     }
     for (;;)
     {
-      localg.f(13470, new Object[] { paramString, Integer.valueOf(k), Integer.valueOf(i), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(paramInt), Integer.valueOf(j), Integer.valueOf(this.goC), Integer.valueOf(this.goB), Long.valueOf(l1 - l2), Long.valueOf(l1), Long.valueOf(this.goA) });
-      this.goB += 1;
+      localg.f(13470, new Object[] { paramString, Integer.valueOf(k), Integer.valueOf(i), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(paramInt), Integer.valueOf(j), Integer.valueOf(this.gqX), Integer.valueOf(this.gqW), Long.valueOf(l1 - l2), Long.valueOf(l1), Long.valueOf(this.gqV) });
+      this.gqW += 1;
       AppMethodBeat.o(104483);
       return;
       i = 0;
@@ -53,12 +53,12 @@ public final class b
     }
   }
   
-  public final void qT(long paramLong)
+  public final void rg(long paramLong)
   {
     AppMethodBeat.i(104482);
-    ad.i("EmojiClickReport", "panelShow");
-    this.goA = paramLong;
-    this.goB = 1;
+    ae.i("EmojiClickReport", "panelShow");
+    this.gqV = paramLong;
+    this.gqW = 1;
     AppMethodBeat.o(104482);
   }
 }

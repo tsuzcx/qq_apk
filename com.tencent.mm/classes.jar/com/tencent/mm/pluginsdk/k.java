@@ -2,12 +2,12 @@ package com.tencent.mm.pluginsdk;
 
 import android.content.Intent;
 import com.tencent.mm.kernel.c.a;
-import com.tencent.mm.protocal.protobuf.cyc;
+import com.tencent.mm.protocal.protobuf.cyw;
 
 public abstract interface k
   extends a
 {
-  public abstract void a(Intent paramIntent, cyc paramcyc, int paramInt);
+  public abstract void a(Intent paramIntent, cyw paramcyw, int paramInt);
 }
 
 

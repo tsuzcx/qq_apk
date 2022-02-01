@@ -3,140 +3,99 @@ package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageCom
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.text.TextUtils;
 import android.view.ViewGroup;
-import android.widget.Button;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bs.d;
+import com.tencent.mm.ch.a;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.a.d.a;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ae;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.l;
-import com.tencent.mm.sdk.platformtools.bt;
-import org.json.JSONObject;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.p;
+import com.tencent.mm.pluginsdk.model.app.g;
+import com.tencent.mm.pluginsdk.model.app.h;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public final class z
-  extends p
+  extends q
 {
-  public z(Context paramContext, l paraml, ViewGroup paramViewGroup)
+  public z(Context paramContext, p paramp, ViewGroup paramViewGroup)
   {
-    super(paramContext, paraml, paramViewGroup);
-    AppMethodBeat.i(96660);
-    this.zEb.jB("canvasId", paraml.zyG);
-    this.zEb.jB("canvasExt", paraml.zyH);
-    AppMethodBeat.o(96660);
-  }
-  
-  private boolean dXj()
-  {
-    AppMethodBeat.i(96662);
-    if (((l)dXf()).zyJ == 1)
+    super(paramContext, paramp, paramViewGroup);
+    AppMethodBeat.i(96657);
+    paramContext = h.m(paramp.zQt, true, false);
+    paramViewGroup = this.zVg;
+    if (paramContext == null) {}
+    for (paramContext = "";; paramContext = paramContext.field_packageName)
     {
-      AppMethodBeat.o(96662);
-      return true;
+      paramViewGroup.jH("pkg", paramContext);
+      this.zVg.jH("appid", paramp.zQt);
+      AppMethodBeat.o(96657);
+      return;
     }
-    AppMethodBeat.o(96662);
-    return false;
   }
   
-  private boolean dXk()
+  private boolean E(Context paramContext, final String paramString1, final String paramString2)
   {
-    AppMethodBeat.i(96663);
-    if (((l)dXf()).zyK == 1)
+    AppMethodBeat.i(96659);
+    if ((paramContext == null) || (TextUtils.isEmpty(paramString1)))
     {
-      AppMethodBeat.o(96663);
-      return true;
+      AppMethodBeat.o(96659);
+      return false;
     }
-    AppMethodBeat.o(96663);
-    return false;
-  }
-  
-  protected final void dXg()
-  {
-    AppMethodBeat.i(96661);
-    Object localObject2 = (l)dXf();
-    if (this.zEf) {}
-    for (int i = 20;; i = 14)
+    try
     {
-      Context localContext = this.context;
-      Object localObject1 = ((l)localObject2).zyG;
-      String str1 = ((l)localObject2).zyH;
-      int j = ((l)localObject2).zyI;
-      localObject2 = new Intent();
-      ((Intent)localObject2).putExtra("sns_landig_pages_from_source", i);
-      ((Intent)localObject2).putExtra("sns_landig_pages_origin_from_source", dWZ().zAN);
-      ((Intent)localObject2).putExtra("sns_landing_pages_xml", "");
-      String str3;
-      String str2;
-      JSONObject localJSONObject;
-      if (dXk())
+      final Intent localIntent = paramContext.getPackageManager().getLaunchIntentForPackage(paramString1);
+      if (localIntent != null)
       {
-        ((Intent)localObject2).putExtra("sns_landing_pages_canvasid", (String)localObject1);
-        ((Intent)localObject2).putExtra("sns_landing_pages_canvas_ext", str1);
-        if (dXj())
-        {
-          localObject1 = new int[2];
-          this.zEd.getLocationOnScreen((int[])localObject1);
-          ((Intent)localObject2).putExtra("img_gallery_top", localObject1[1]);
-          ((Intent)localObject2).putExtra("img_gallery_left", localObject1[0]);
-          ((Intent)localObject2).putExtra("img_gallery_width", this.zEd.getWidth());
-          ((Intent)localObject2).putExtra("img_gallery_height", this.zEd.getHeight());
+        paramString1 = paramContext;
+        if (!(paramContext instanceof Activity)) {
+          paramString1 = this.context;
         }
-        ((Intent)localObject2).putExtra("sns_landing_pages_need_enter_and_exit_animation", dXj());
-        ((Intent)localObject2).putExtra("sns_landing_pages_extra", "");
-        ((Intent)localObject2).putExtra("sns_landing_pages_no_store", j);
-        ((Intent)localObject2).putExtra("sns_landing_pages_ux_info", dWZ().dFy);
-        ((Intent)localObject2).putExtra("sns_landing_is_native_sight_ad", dWZ().zAO);
-        if (((localContext instanceof Activity)) && (dXk()) && (dWZ().bizId == 2))
+        a.post(new Runnable()
         {
-          str3 = ((Activity)localContext).getIntent().getStringExtra("sns_landing_pages_sessionId");
-          str1 = ((Activity)localContext).getIntent().getStringExtra("sns_landing_pages_ad_buffer");
-          if (!bt.isNullOrNil(str3))
+          public final void run()
           {
-            str2 = String.valueOf(System.currentTimeMillis() / 1000L);
-            localJSONObject = new JSONObject();
+            AppMethodBeat.i(96656);
+            h.b(paramString1, localIntent, paramString2);
+            AppMethodBeat.o(96656);
           }
-        }
-      }
-      for (;;)
-      {
-        try
-        {
-          localJSONObject.put("sessionId", str2);
-          localJSONObject.put("cid", dXf().zAg);
-          if (bt.isNullOrNil(str1)) {
-            continue;
-          }
-          localObject1 = str1;
-          localJSONObject.put("adBuffer", localObject1);
-          localJSONObject.put("preSessionId", str3);
-        }
-        catch (Exception localException)
-        {
-          continue;
-        }
-        ((Intent)localObject2).putExtra("sns_landing_pages_search_extra", localJSONObject.toString());
-        ((Intent)localObject2).putExtra("sns_landing_pages_sessionId", str2);
-        ((Intent)localObject2).putExtra("sns_landing_pages_ad_buffer", str1);
-        if ((localContext instanceof Activity))
-        {
-          localObject1 = ((Activity)localContext).getIntent().getStringExtra("sns_landing_pages_rawSnsId");
-          str1 = ((Activity)localContext).getIntent().getStringExtra("sns_landing_pages_share_sns_id");
-          ((Intent)localObject2).putExtra("sns_landing_pages_rawSnsId", (String)localObject1);
-          ((Intent)localObject2).putExtra("sns_landing_pages_share_sns_id", str1);
-        }
-        d.b(localContext, "sns", ".ui.SnsAdNativeLandingPagesPreviewUI", (Intent)localObject2);
-        dXe();
-        AppMethodBeat.o(96661);
-        return;
-        ((Intent)localObject2).putExtra("sns_landing_pages_pageid", bt.aRf((String)localObject1));
-        break;
-        localObject1 = "";
+        });
+        AppMethodBeat.o(96659);
+        return true;
       }
     }
+    catch (Exception paramContext)
+    {
+      ae.e("AdLandingPageOpenAppBtnComp", bu.o(paramContext));
+      AppMethodBeat.o(96659);
+    }
+    return false;
+  }
+  
+  protected final void eap()
+  {
+    AppMethodBeat.i(96658);
+    Object localObject = eaI();
+    if (h.s(this.context, ((p)localObject).zQt))
+    {
+      localObject = h.m(((p)localObject).zQt, true, false);
+      if ((localObject != null) && (!TextUtils.isEmpty(((g)localObject).field_packageName)) && (E(this.context, ((g)localObject).field_packageName, h.a(this.context, (g)localObject, null))))
+      {
+        eaq();
+        AppMethodBeat.o(96658);
+        return;
+      }
+      super.eap();
+      AppMethodBeat.o(96658);
+      return;
+    }
+    super.eap();
+    AppMethodBeat.o(96658);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.z
  * JD-Core Version:    0.7.0.1
  */

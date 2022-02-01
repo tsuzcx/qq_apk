@@ -1,53 +1,53 @@
 package com.tencent.mm.plugin.honey_pay.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.f;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.f;
 import com.tencent.mm.network.q;
 import com.tencent.mm.plugin.honey_pay.model.c;
 import com.tencent.mm.plugin.wallet_core.model.k;
-import com.tencent.mm.protocal.protobuf.bci;
-import com.tencent.mm.protocal.protobuf.bcj;
-import com.tencent.mm.protocal.protobuf.rs;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.bcy;
+import com.tencent.mm.protocal.protobuf.bcz;
+import com.tencent.mm.protocal.protobuf.ru;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.wallet_core.c.r;
 
 public final class e
   extends r
 {
   private final String TAG;
-  public bcj uFk;
+  public bcz uQX;
   
   public e(String paramString)
   {
     AppMethodBeat.i(64620);
     this.TAG = "MicroMsg.NetSceneGetHoneyPayCard";
     Object localObject = new b.a();
-    ((b.a)localObject).hNM = new bci();
-    ((b.a)localObject).hNN = new bcj();
+    ((b.a)localObject).hQF = new bcy();
+    ((b.a)localObject).hQG = new bcz();
     ((b.a)localObject).funcId = getType();
     ((b.a)localObject).uri = "/cgi-bin/mmpay-bin/gethpcard";
-    ((b.a)localObject).hNO = 0;
+    ((b.a)localObject).hQH = 0;
     ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).aDC();
-    localObject = (bci)this.rr.hNK.hNQ;
-    ((bci)localObject).GyY = paramString;
-    ((bci)localObject).Gxf = k.dos();
-    ad.i("MicroMsg.NetSceneGetHoneyPayCard", "card no: %s", new Object[] { paramString });
+    this.rr = ((b.a)localObject).aDS();
+    localObject = (bcy)this.rr.hQD.hQJ;
+    ((bcy)localObject).GSy = paramString;
+    ((bcy)localObject).GQF = k.drq();
+    ae.i("MicroMsg.NetSceneGetHoneyPayCard", "card no: %s", new Object[] { paramString });
     AppMethodBeat.o(64620);
   }
   
   public final void b(int paramInt1, int paramInt2, String paramString, q paramq)
   {
     AppMethodBeat.i(64621);
-    ad.i("MicroMsg.NetSceneGetHoneyPayCard", "errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-    this.uFk = ((bcj)((b)paramq).hNL.hNQ);
-    ad.i("MicroMsg.NetSceneGetHoneyPayCard", "retcode: %s, retmsg: %s", new Object[] { Integer.valueOf(this.uFk.ozR), this.uFk.ozS });
-    if (this.uFk.GyZ != null) {
-      c.o(this.uFk.GyZ.dEn, this.uFk.GyZ.FNP, this.uFk.GyZ.dDE, null);
+    ae.i("MicroMsg.NetSceneGetHoneyPayCard", "errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    this.uQX = ((bcz)((b)paramq).hQE.hQJ);
+    ae.i("MicroMsg.NetSceneGetHoneyPayCard", "retcode: %s, retmsg: %s", new Object[] { Integer.valueOf(this.uQX.oGt), this.uQX.oGu });
+    if (this.uQX.GSz != null) {
+      c.o(this.uQX.GSz.dFs, this.uQX.GSz.Ggo, this.uQX.GSz.dEJ, null);
     }
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt1, paramInt2, paramString, this);
@@ -57,9 +57,9 @@ public final class e
   
   public final void e(q paramq)
   {
-    paramq = (bcj)((b)paramq).hNL.hNQ;
-    this.Lyu = paramq.ozR;
-    this.Lyv = paramq.ozS;
+    paramq = (bcz)((b)paramq).hQE.hQJ;
+    this.LVj = paramq.oGt;
+    this.LVk = paramq.oGu;
   }
   
   public final int getType()

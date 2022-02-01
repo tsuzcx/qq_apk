@@ -11,48 +11,48 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/serialization/SerialDescriptorBuilder;", "", "serialName", "", "(Ljava/lang/String;)V", "annotations", "", "", "getAnnotations", "()Ljava/util/List;", "setAnnotations", "(Ljava/util/List;)V", "elementAnnotations", "", "getElementAnnotations$kotlinx_serialization_runtime", "elementDescriptors", "Lkotlinx/serialization/SerialDescriptor;", "getElementDescriptors$kotlinx_serialization_runtime", "elementNames", "getElementNames$kotlinx_serialization_runtime", "elementOptionality", "", "getElementOptionality$kotlinx_serialization_runtime", "isNullable", "()Z", "setNullable", "(Z)V", "getSerialName", "()Ljava/lang/String;", "uniqueNames", "", "element", "", "T", "elementName", "isOptional", "descriptor", "kotlinx-serialization-runtime"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/serialization/SerialDescriptorBuilder;", "", "serialName", "", "(Ljava/lang/String;)V", "annotations", "", "", "getAnnotations", "()Ljava/util/List;", "setAnnotations", "(Ljava/util/List;)V", "elementAnnotations", "", "getElementAnnotations$kotlinx_serialization_runtime", "elementDescriptors", "Lkotlinx/serialization/SerialDescriptor;", "getElementDescriptors$kotlinx_serialization_runtime", "elementNames", "getElementNames$kotlinx_serialization_runtime", "elementOptionality", "", "getElementOptionality$kotlinx_serialization_runtime", "isNullable", "()Z", "setNullable", "(Z)V", "getSerialName", "()Ljava/lang/String;", "uniqueNames", "", "element", "", "T", "elementName", "isOptional", "descriptor", "kotlinx-serialization-runtime"})
 public final class o
 {
-  List<? extends Annotation> MVS;
-  boolean NLA;
-  final List<String> NLB;
-  private final Set<String> NLC;
-  final List<n> NLD;
-  final List<List<Annotation>> NLE;
-  final List<Boolean> NLF;
-  private final String NLG;
+  List<? extends Annotation> NsX;
+  boolean OiG;
+  final List<String> OiH;
+  private final Set<String> OiI;
+  final List<n> OiJ;
+  final List<List<Annotation>> OiK;
+  final List<Boolean> OiL;
+  private final String OiM;
   
   public o(String paramString)
   {
-    AppMethodBeat.i(191024);
-    this.NLG = paramString;
-    this.MVS = ((List)v.MKE);
-    this.NLB = ((List)new ArrayList());
-    this.NLC = ((Set)new HashSet());
-    this.NLD = ((List)new ArrayList());
-    this.NLE = ((List)new ArrayList());
-    this.NLF = ((List)new ArrayList());
-    AppMethodBeat.o(191024);
+    AppMethodBeat.i(199612);
+    this.OiM = paramString;
+    this.NsX = ((List)v.NhH);
+    this.OiH = ((List)new ArrayList());
+    this.OiI = ((Set)new HashSet());
+    this.OiJ = ((List)new ArrayList());
+    this.OiK = ((List)new ArrayList());
+    this.OiL = ((List)new ArrayList());
+    AppMethodBeat.o(199612);
   }
   
   private void a(String paramString, n paramn, List<? extends Annotation> paramList)
   {
-    AppMethodBeat.i(191022);
+    AppMethodBeat.i(199610);
     p.h(paramString, "elementName");
     p.h(paramn, "descriptor");
     p.h(paramList, "annotations");
-    if (!this.NLC.add(paramString))
+    if (!this.OiI.add(paramString))
     {
       paramString = (Throwable)new IllegalArgumentException(("Element with name '" + paramString + "' is already registered").toString());
-      AppMethodBeat.o(191022);
+      AppMethodBeat.o(199610);
       throw paramString;
     }
-    ((Collection)this.NLB).add(paramString);
-    ((Collection)this.NLD).add(paramn);
-    ((Collection)this.NLE).add(paramList);
-    ((Collection)this.NLF).add(Boolean.FALSE);
-    AppMethodBeat.o(191022);
+    ((Collection)this.OiH).add(paramString);
+    ((Collection)this.OiJ).add(paramn);
+    ((Collection)this.OiK).add(paramList);
+    ((Collection)this.OiL).add(Boolean.FALSE);
+    AppMethodBeat.o(199610);
   }
 }
 

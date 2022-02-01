@@ -573,8 +573,8 @@ public class ActivityChooserView
           ((Intent)localObject).addFlags(524288);
           paramView = ActivityChooserView.this.getContext();
           localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
-          com.tencent.mm.hellhoundlib.a.a.a(paramView, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahp(), "android/support/v7/widget/ActivityChooserView$Callbacks", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          paramView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mq(0));
+          com.tencent.mm.hellhoundlib.a.a.a(paramView, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahE(), "android/support/v7/widget/ActivityChooserView$Callbacks", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          paramView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mt(0));
           com.tencent.mm.hellhoundlib.a.a.a(paramView, "android/support/v7/widget/ActivityChooserView$Callbacks", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
         }
         return;
@@ -642,8 +642,8 @@ public class ActivityChooserView
         paramView.addFlags(524288);
         ??? = ActivityChooserView.this.getContext();
         paramView = new com.tencent.mm.hellhoundlib.b.a().bc(paramView);
-        com.tencent.mm.hellhoundlib.a.a.a(???, paramView.ahp(), "android/support/v7/widget/ActivityChooserView$Callbacks", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        ???.startActivity((Intent)paramView.mq(0));
+        com.tencent.mm.hellhoundlib.a.a.a(???, paramView.ahE(), "android/support/v7/widget/ActivityChooserView$Callbacks", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        ???.startActivity((Intent)paramView.mt(0));
         com.tencent.mm.hellhoundlib.a.a.a(???, "android/support/v7/widget/ActivityChooserView$Callbacks", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
         return;
         paramInt += 1;

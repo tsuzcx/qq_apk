@@ -7,9 +7,9 @@ public enum MMPwdInputView$b
   static
   {
     AppMethodBeat.i(27696);
-    wZW = new b("Normal", 0);
-    wZX = new b("Shine", 1);
-    wZY = new b[] { wZW, wZX };
+    xpN = new b("Normal", 0);
+    xpO = new b("Shine", 1);
+    xpP = new b[] { xpN, xpO };
     AppMethodBeat.o(27696);
   }
   

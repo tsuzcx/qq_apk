@@ -11,12 +11,12 @@ public class AppBrandBackgroundRunningOperationParcel
   public static final Parcelable.Creator<AppBrandBackgroundRunningOperationParcel> CREATOR;
   public String appId;
   public int beO;
-  public String dDH;
-  public int dkM;
-  public int hQh;
-  public String jRQ;
-  public String jRR;
-  public boolean jSb;
+  public String dEM;
+  public int dlO;
+  public int hSZ;
+  public String jVi;
+  public String jVj;
+  public boolean jVs;
   public String name;
   public String process;
   public String username;
@@ -30,23 +30,23 @@ public class AppBrandBackgroundRunningOperationParcel
   
   public AppBrandBackgroundRunningOperationParcel()
   {
-    this.jSb = false;
+    this.jVs = false;
   }
   
   protected AppBrandBackgroundRunningOperationParcel(Parcel paramParcel)
   {
     AppMethodBeat.i(153210);
-    this.jSb = false;
+    this.jVs = false;
     this.appId = paramParcel.readString();
-    this.hQh = paramParcel.readInt();
+    this.hSZ = paramParcel.readInt();
     this.beO = paramParcel.readInt();
-    this.dkM = paramParcel.readInt();
-    this.jRQ = paramParcel.readString();
+    this.dlO = paramParcel.readInt();
+    this.jVi = paramParcel.readString();
     this.name = paramParcel.readString();
-    this.dDH = paramParcel.readString();
+    this.dEM = paramParcel.readString();
     this.username = paramParcel.readString();
     this.process = paramParcel.readString();
-    this.jRR = paramParcel.readString();
+    this.jVj = paramParcel.readString();
     AppMethodBeat.o(153210);
   }
   
@@ -58,7 +58,7 @@ public class AppBrandBackgroundRunningOperationParcel
   public String toString()
   {
     AppMethodBeat.i(153211);
-    String str = "operation{appId='" + this.appId + '\'' + ", versionType=" + this.hQh + ", usage=" + this.beO + ", operation=" + this.dkM + ", uiclass='" + this.jRQ + '\'' + ", name='" + this.name + '\'' + ", icon='" + this.dDH + '\'' + ", username='" + this.username + '\'' + ", process='" + this.process + '\'' + ", customNotificationLogicClassName='" + this.jRR + '\'' + ", justNotify=" + this.jSb + '}';
+    String str = "operation{appId='" + this.appId + '\'' + ", versionType=" + this.hSZ + ", usage=" + this.beO + ", operation=" + this.dlO + ", uiclass='" + this.jVi + '\'' + ", name='" + this.name + '\'' + ", icon='" + this.dEM + '\'' + ", username='" + this.username + '\'' + ", process='" + this.process + '\'' + ", customNotificationLogicClassName='" + this.jVj + '\'' + ", justNotify=" + this.jVs + '}';
     AppMethodBeat.o(153211);
     return str;
   }
@@ -67,15 +67,15 @@ public class AppBrandBackgroundRunningOperationParcel
   {
     AppMethodBeat.i(153212);
     paramParcel.writeString(this.appId);
-    paramParcel.writeInt(this.hQh);
+    paramParcel.writeInt(this.hSZ);
     paramParcel.writeInt(this.beO);
-    paramParcel.writeInt(this.dkM);
-    paramParcel.writeString(this.jRQ);
+    paramParcel.writeInt(this.dlO);
+    paramParcel.writeString(this.jVi);
     paramParcel.writeString(this.name);
-    paramParcel.writeString(this.dDH);
+    paramParcel.writeString(this.dEM);
     paramParcel.writeString(this.username);
     paramParcel.writeString(this.process);
-    paramParcel.writeString(this.jRR);
+    paramParcel.writeString(this.jVj);
     AppMethodBeat.o(153212);
   }
 }

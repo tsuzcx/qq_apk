@@ -7,7 +7,7 @@ import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bs.d;
+import com.tencent.mm.br.d;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.plugin.order.model.MallTransactionObject;
 import com.tencent.mm.ui.base.h;
@@ -22,15 +22,15 @@ final class a$3
     AppMethodBeat.i(66794);
     b localb = new b();
     localb.bd(paramView);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/order/ui/preference/DefaultOrderPrefFactory$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/order/ui/preference/DefaultOrderPrefFactory$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
     h.e(this.val$context, this.val$context.getString(2131762443), this.val$context.getString(2131755873), this.val$context.getString(2131762519), this.val$context.getString(2131755691), new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
     {
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
         AppMethodBeat.i(66793);
         paramAnonymousDialogInterface = new Intent();
-        paramAnonymousDialogInterface.putExtra("transaction_id", a.3.this.wCn.dlv);
-        paramAnonymousDialogInterface.putExtra("receiver_name", a.3.this.wCn.wCU);
+        paramAnonymousDialogInterface.putExtra("transaction_id", a.3.this.wRY.dmx);
+        paramAnonymousDialogInterface.putExtra("receiver_name", a.3.this.wRY.wSF);
         paramAnonymousDialogInterface.putExtra("resend_msg_from_flag", 1);
         d.b(a.3.this.val$context, "remittance", ".ui.RemittanceResendMsgUI", paramAnonymousDialogInterface);
         AppMethodBeat.o(66793);

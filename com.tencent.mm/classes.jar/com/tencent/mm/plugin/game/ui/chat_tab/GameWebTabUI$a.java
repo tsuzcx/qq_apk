@@ -13,31 +13,31 @@ import com.tencent.mm.sdk.e.m;
 class GameWebTabUI$a
   implements b<IPCInteger, IPCInteger>
 {
-  private k.a utD;
-  private d<IPCInteger> uup;
+  private k.a uEW;
+  private d<IPCInteger> uFL;
   
   private GameWebTabUI$a()
   {
-    AppMethodBeat.i(206938);
-    this.utD = new k.a()
+    AppMethodBeat.i(195762);
+    this.uEW = new k.a()
     {
       public final void a(String paramAnonymousString, m paramAnonymousm)
       {
-        AppMethodBeat.i(206937);
+        AppMethodBeat.i(195761);
         if (((paramAnonymousm.obj instanceof a)) && (GameWebTabUI.a.a(GameWebTabUI.a.this) != null))
         {
-          int i = ((c)g.ab(c.class)).daD();
+          int i = ((c)g.ab(c.class)).ddp();
           GameWebTabUI.a.a(GameWebTabUI.a.this).be(new IPCInteger(i));
         }
-        AppMethodBeat.o(206937);
+        AppMethodBeat.o(195761);
       }
     };
-    AppMethodBeat.o(206938);
+    AppMethodBeat.o(195762);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.chat_tab.GameWebTabUI.a
  * JD-Core Version:    0.7.0.1
  */

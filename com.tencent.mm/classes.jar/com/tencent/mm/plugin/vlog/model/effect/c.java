@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.vlog.model.effect;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ak;
 import d.g.b.p;
 import d.l;
 import java.util.Collection;
@@ -10,52 +10,52 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/vlog/model/effect/MagicListData;", "", "()V", "addedEffectList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/plugin/vlog/model/effect/MagicAddEffectItem;", "effectList", "Lcom/tencent/mm/plugin/vlog/model/effect/EffectInfo;", "addEffect", "", "item", "getAddItemList", "", "getItemList", "Lcom/tencent/mm/plugin/vlog/model/effect/MagicListItem;", "removeEffect", "Companion", "plugin-vlog_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/vlog/model/effect/MagicListData;", "", "()V", "addedEffectList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/plugin/vlog/model/effect/MagicAddEffectItem;", "effectList", "Lcom/tencent/mm/plugin/vlog/model/effect/EffectInfo;", "addEffect", "", "item", "getAddItemList", "", "getItemList", "Lcom/tencent/mm/plugin/vlog/model/effect/MagicListItem;", "removeEffect", "Companion", "plugin-vlog_release"})
 public final class c
 {
-  public static final a BHk;
-  public final LinkedList<b> BHi;
-  private final LinkedList<a> BHj;
+  public static final a BYJ;
+  public final LinkedList<b> BYH;
+  private final LinkedList<a> BYI;
   
   static
   {
-    AppMethodBeat.i(195830);
-    BHk = new a((byte)0);
-    AppMethodBeat.o(195830);
+    AppMethodBeat.i(191289);
+    BYJ = new a((byte)0);
+    AppMethodBeat.o(191289);
   }
   
   public c()
   {
-    AppMethodBeat.i(195829);
-    this.BHi = new LinkedList();
-    this.BHj = new LinkedList();
-    AppMethodBeat.o(195829);
+    AppMethodBeat.i(191288);
+    this.BYH = new LinkedList();
+    this.BYI = new LinkedList();
+    AppMethodBeat.o(191288);
   }
   
-  public final List<e> afl()
+  public final List<e> afz()
   {
-    AppMethodBeat.i(195828);
+    AppMethodBeat.i(191287);
     Object localObject1 = new LinkedList();
-    if (this.BHi.size() > 0)
+    if (this.BYH.size() > 0)
     {
-      localObject2 = aj.getContext().getString(2131767099);
+      localObject2 = ak.getContext().getString(2131767099);
       p.g(localObject2, "MMApplicationContext.get…g.magic_list_title_added)");
       ((LinkedList)localObject1).add(new f((String)localObject2));
-      ((LinkedList)localObject1).addAll((Collection)this.BHi);
+      ((LinkedList)localObject1).addAll((Collection)this.BYH);
     }
-    Object localObject2 = aj.getContext().getString(2131767100);
+    Object localObject2 = ak.getContext().getString(2131767100);
     p.g(localObject2, "MMApplicationContext.get…ing.magic_list_title_all)");
     ((LinkedList)localObject1).add(new f((String)localObject2));
-    localObject2 = ((Iterable)this.BHj).iterator();
+    localObject2 = ((Iterable)this.BYI).iterator();
     while (((Iterator)localObject2).hasNext()) {
       ((LinkedList)localObject1).add(new d((a)((Iterator)localObject2).next()));
     }
     localObject1 = (List)localObject1;
-    AppMethodBeat.o(195828);
+    AppMethodBeat.o(191287);
     return localObject1;
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/vlog/model/effect/MagicListData$Companion;", "", "()V", "MAGIC_CONFIG", "", "MAGIC_PATH", "TAG", "plugin-vlog_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/vlog/model/effect/MagicListData$Companion;", "", "()V", "MAGIC_CONFIG", "", "MAGIC_PATH", "TAG", "plugin-vlog_release"})
   public static final class a {}
 }
 

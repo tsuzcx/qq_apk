@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.appbrand.debugger;
 
 public final class l
 {
-  public long kaJ;
+  public long kdZ;
   public int size;
 }
 

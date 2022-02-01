@@ -6,23 +6,23 @@ import com.tencent.thumbplayer.core.downloadproxy.api.ITPDownloadProxy;
 public final class g
   implements b
 {
-  private ITPDownloadProxy MaH;
+  private ITPDownloadProxy MxC;
   
   public g(ITPDownloadProxy paramITPDownloadProxy)
   {
-    this.MaH = paramITPDownloadProxy;
+    this.MxC = paramITPDownloadProxy;
   }
   
-  public final ITPDownloadProxy fXb()
+  public final ITPDownloadProxy gbA()
   {
-    return this.MaH;
+    return this.MxC;
   }
   
   public final void pushEvent(int paramInt)
   {
-    AppMethodBeat.i(191964);
-    this.MaH.pushEvent(paramInt);
-    AppMethodBeat.o(191964);
+    AppMethodBeat.i(194642);
+    this.MxC.pushEvent(paramInt);
+    AppMethodBeat.o(194642);
   }
 }
 

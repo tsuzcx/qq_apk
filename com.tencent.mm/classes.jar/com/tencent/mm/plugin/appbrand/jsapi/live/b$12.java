@@ -2,8 +2,8 @@ package com.tencent.mm.plugin.appbrand.jsapi.live;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.e;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.HashMap;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -16,14 +16,14 @@ final class b$12
   public final void a(int paramInt, String paramString, HashMap<String, Object> paramHashMap)
   {
     AppMethodBeat.i(145876);
-    ad.i("MicroMsg.JsApiInsertLivePusher", "onError, error:%s", new Object[] { Integer.valueOf(paramInt) });
+    ae.i("MicroMsg.JsApiInsertLivePusher", "onError, error:%s", new Object[] { Integer.valueOf(paramInt) });
     b.e locale = new b.e((byte)0);
     JSONObject localJSONObject = new JSONObject();
     try
     {
       localJSONObject.put("errCode", paramInt);
-      localJSONObject.put("errMsg", bt.nullAsNil(paramString));
-      localJSONObject.put("livePusherId", this.kCh);
+      localJSONObject.put("errMsg", bu.nullAsNil(paramString));
+      localJSONObject.put("livePusherId", this.kFw);
       if ((paramHashMap != null) && (!paramHashMap.isEmpty())) {
         localJSONObject.put("data", new JSONObject(paramHashMap));
       }
@@ -32,10 +32,10 @@ final class b$12
     {
       for (;;)
       {
-        ad.e("MicroMsg.JsApiInsertLivePusher", "onError fail", new Object[] { paramString });
+        ae.e("MicroMsg.JsApiInsertLivePusher", "onError fail", new Object[] { paramString });
       }
     }
-    this.kCd.b(locale.Pi(localJSONObject.toString()));
+    this.kFs.b(locale.PQ(localJSONObject.toString()));
     AppMethodBeat.o(145876);
   }
 }

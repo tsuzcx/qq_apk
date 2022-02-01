@@ -9,7 +9,8 @@ import android.text.style.RelativeSizeSpan;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.lang.reflect.Method;
 
  enum aj$a
@@ -142,7 +143,7 @@ import java.lang.reflect.Method;
     }
     catch (NoSuchMethodException localNoSuchMethodException)
     {
-      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.AppBrand.InputUtil.EditTextUtil", "setNoSystemInputOnEditText, setShowSoftInputOnFocus no such method, api level = %d", new Object[] { Integer.valueOf(Build.VERSION.SDK_INT) });
+      ae.i("MicroMsg.AppBrand.InputUtil.EditTextUtil", "setNoSystemInputOnEditText, setShowSoftInputOnFocus no such method, api level = %d", new Object[] { Integer.valueOf(Build.VERSION.SDK_INT) });
       try
       {
         Method localMethod2 = EditText.class.getMethod("setSoftInputShownOnFocus", new Class[] { Boolean.TYPE });
@@ -154,7 +155,7 @@ import java.lang.reflect.Method;
       }
       catch (Exception localException)
       {
-        com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.AppBrand.InputUtil.EditTextUtil", "setNoSystemInputOnEditText, reflect method [setSoftInputShownOnFocus], exp = %s", new Object[] { bt.n(localException) });
+        ae.e("MicroMsg.AppBrand.InputUtil.EditTextUtil", "setNoSystemInputOnEditText, reflect method [setSoftInputShownOnFocus], exp = %s", new Object[] { bu.o(localException) });
         if ((paramEditText.getContext() != null) && ((paramEditText.getContext() instanceof ad))) {
           ((ad)paramEditText.getContext()).hideVKB(paramEditText);
         }
@@ -164,7 +165,7 @@ import java.lang.reflect.Method;
     }
     catch (Exception paramEditText)
     {
-      com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.AppBrand.InputUtil.EditTextUtil", "setNoSystemInputOnEditText, reflect method [setShowSoftInputOnFocus], exp = %s", new Object[] { bt.n(paramEditText) });
+      ae.e("MicroMsg.AppBrand.InputUtil.EditTextUtil", "setNoSystemInputOnEditText, reflect method [setShowSoftInputOnFocus], exp = %s", new Object[] { bu.o(paramEditText) });
       AppMethodBeat.o(136586);
     }
   }

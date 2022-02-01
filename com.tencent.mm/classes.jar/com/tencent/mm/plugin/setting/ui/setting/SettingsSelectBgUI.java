@@ -20,21 +20,21 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
-import com.tencent.mm.bc.k;
-import com.tencent.mm.bc.l;
-import com.tencent.mm.bc.o;
-import com.tencent.mm.bc.t;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.bb.k;
+import com.tencent.mm.bb.l;
+import com.tencent.mm.bb.o;
+import com.tencent.mm.bb.t;
 import com.tencent.mm.kernel.e;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.av;
-import com.tencent.mm.sdk.platformtools.av.a;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storagebase.h;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.aw;
+import com.tencent.mm.sdk.platformtools.aw.a;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.aj;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.r;
 import java.util.ArrayList;
@@ -45,19 +45,19 @@ public class SettingsSelectBgUI
   extends MMActivity
   implements f
 {
-  private List<k> gto;
+  private List<k> gvV;
   private String username;
-  private boolean yGA;
-  private a yIX;
-  private GridView yIY;
-  private k yIZ;
-  private av yJa;
+  private boolean yWJ;
+  private a yZh;
+  private GridView yZi;
+  private k yZj;
+  private aw yZk;
   
   public SettingsSelectBgUI()
   {
     AppMethodBeat.i(74416);
-    this.gto = new ArrayList();
-    this.yJa = new av(new av.a()
+    this.gvV = new ArrayList();
+    this.yZk = new aw(new aw.a()
     {
       public final boolean onTimerExpired()
       {
@@ -75,17 +75,17 @@ public class SettingsSelectBgUI
     AppMethodBeat.o(74416);
   }
   
-  private void fC(List<k> paramList)
+  private void fK(List<k> paramList)
   {
     AppMethodBeat.i(74421);
     if (paramList.size() > 0)
     {
-      this.yIZ = ((k)paramList.remove(0));
-      com.tencent.mm.kernel.g.aiU().a(this.yIZ, 0);
+      this.yZj = ((k)paramList.remove(0));
+      g.ajj().a(this.yZj, 0);
       AppMethodBeat.o(74421);
       return;
     }
-    this.yIZ = null;
+    this.yZj = null;
     AppMethodBeat.o(74421);
   }
   
@@ -108,9 +108,9 @@ public class SettingsSelectBgUI
         return true;
       }
     });
-    this.yGA = getIntent().getBooleanExtra("isApplyToAll", true);
+    this.yWJ = getIntent().getBooleanExtra("isApplyToAll", true);
     this.username = getIntent().getStringExtra("username");
-    this.yJa.az(20L, 20L);
+    this.yZk.ay(20L, 20L);
     AppMethodBeat.o(74419);
   }
   
@@ -119,12 +119,12 @@ public class SettingsSelectBgUI
     AppMethodBeat.i(74417);
     super.onCreate(paramBundle);
     initView();
-    com.tencent.mm.kernel.g.aiU().a(159, this);
-    com.tencent.mm.kernel.g.aiU().a(160, this);
-    if (com.tencent.mm.kernel.g.ajC().isSDCardAvailable())
+    g.ajj().a(159, this);
+    g.ajj().a(160, this);
+    if (g.ajR().isSDCardAvailable())
     {
       paramBundle = new l(1);
-      com.tencent.mm.kernel.g.aiU().a(paramBundle, 0);
+      g.ajj().a(paramBundle, 0);
     }
     AppMethodBeat.o(74417);
   }
@@ -133,32 +133,32 @@ public class SettingsSelectBgUI
   {
     AppMethodBeat.i(74418);
     super.onDestroy();
-    if (this.yIZ != null)
+    if (this.yZj != null)
     {
-      com.tencent.mm.kernel.g.aiU().a(this.yIZ);
-      t.aJZ().dn(this.yIZ.ijm, 1);
+      g.ajj().a(this.yZj);
+      t.aKs().dn(this.yZj.imf, 1);
     }
-    List localList = this.gto;
+    List localList = this.gvV;
     Iterator localIterator = localList.iterator();
     while (localIterator.hasNext())
     {
       k localk = (k)localIterator.next();
-      t.aJZ().dn(localk.ijm, 1);
+      t.aKs().dn(localk.imf, 1);
     }
     localList.clear();
-    com.tencent.mm.kernel.g.aiU().b(159, this);
-    com.tencent.mm.kernel.g.aiU().b(160, this);
-    this.yIX.det();
-    t.aJZ().remove(this.yIX);
+    g.ajj().b(159, this);
+    g.ajj().b(160, this);
+    this.yZh.dhl();
+    t.aKs().remove(this.yZh);
     AppMethodBeat.o(74418);
   }
   
   public void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     AppMethodBeat.i(74420);
-    if ((!(paramn instanceof com.tencent.mm.al.p)) || (((com.tencent.mm.al.p)paramn).aEM() != 1))
+    if ((!(paramn instanceof com.tencent.mm.ak.p)) || (((com.tencent.mm.ak.p)paramn).aFc() != 1))
     {
-      ad.d("MicroMsg.SettingsSelectBgUI", "another scene");
+      ae.d("MicroMsg.SettingsSelectBgUI", "another scene");
       AppMethodBeat.o(74420);
       return;
     }
@@ -169,7 +169,7 @@ public class SettingsSelectBgUI
       return;
     }
     if (i == 160) {
-      fC(this.gto);
+      fK(this.gvV);
     }
     if ((paramInt1 != 0) || (paramInt2 != 0))
     {
@@ -189,29 +189,29 @@ public class SettingsSelectBgUI
     extends r<o>
   {
     private Context context;
-    private int oQH;
+    private int oXj;
     
     public a(Context paramContext, int paramInt)
     {
       super(new o());
       AppMethodBeat.i(74410);
       this.context = paramContext;
-      this.oQH = paramInt;
+      this.oXj = paramInt;
       AppMethodBeat.o(74410);
     }
     
-    public final void Zu()
+    public final void ZD()
     {
       AppMethodBeat.i(74413);
-      setCursor(t.aJZ().aJV());
+      setCursor(t.aKs().aKo());
       super.notifyDataSetChanged();
       AppMethodBeat.o(74413);
     }
     
-    public final void Zv()
+    public final void ZE()
     {
       AppMethodBeat.i(74412);
-      Zu();
+      ZD();
       AppMethodBeat.o(74412);
     }
     
@@ -227,68 +227,68 @@ public class SettingsSelectBgUI
     {
       AppMethodBeat.i(74414);
       int i;
-      com.tencent.mm.bc.a locala;
+      com.tencent.mm.bb.a locala;
       if (paramView == null)
       {
         paramView = View.inflate(this.context, 2131495405, null);
-        paramView.setLayoutParams(new AbsListView.LayoutParams(this.oQH, this.oQH));
+        paramView.setLayoutParams(new AbsListView.LayoutParams(this.oXj, this.oXj));
         paramViewGroup = new b();
-        paramViewGroup.yKI = ((LinearLayout)paramView.findViewById(2131304495));
-        paramViewGroup.yKJ = ((LinearLayout)paramView.findViewById(2131304494));
-        paramViewGroup.yKK = ((LinearLayout)paramView.findViewById(2131304499));
-        paramViewGroup.yKL = ((LinearLayout)paramView.findViewById(2131304500));
-        paramViewGroup.yKM = ((LinearLayout)paramView.findViewById(2131304493));
+        paramViewGroup.zaS = ((LinearLayout)paramView.findViewById(2131304495));
+        paramViewGroup.zaT = ((LinearLayout)paramView.findViewById(2131304494));
+        paramViewGroup.zaU = ((LinearLayout)paramView.findViewById(2131304499));
+        paramViewGroup.zaV = ((LinearLayout)paramView.findViewById(2131304500));
+        paramViewGroup.zaW = ((LinearLayout)paramView.findViewById(2131304493));
         paramView.setTag(paramViewGroup);
-        i = bt.a((Integer)com.tencent.mm.kernel.g.ajC().ajl().get(12311, null), -2);
-        locala = t.aKa().Gb(SettingsSelectBgUI.f(SettingsSelectBgUI.this));
+        i = bu.a((Integer)g.ajR().ajA().get(12311, null), -2);
+        locala = t.aKt().GD(SettingsSelectBgUI.f(SettingsSelectBgUI.this));
         if (paramInt != 0) {
           break label278;
         }
-        if (((!SettingsSelectBgUI.c(SettingsSelectBgUI.this)) || (i != -2)) && ((SettingsSelectBgUI.c(SettingsSelectBgUI.this)) || (i != -2) || (locala != null)) && ((locala == null) || (locala.iiM != -2))) {
+        if (((!SettingsSelectBgUI.c(SettingsSelectBgUI.this)) || (i != -2)) && ((SettingsSelectBgUI.c(SettingsSelectBgUI.this)) || (i != -2) || (locala != null)) && ((locala == null) || (locala.ilF != -2))) {
           break label269;
         }
-        paramViewGroup.axi("using");
+        paramViewGroup.ayy("using");
       }
       for (;;)
       {
-        paramViewGroup = com.tencent.mm.sdk.platformtools.g.a(BitmapFactory.decodeResource(this.context.getResources(), 2131231652), true, 10.0F);
+        paramViewGroup = com.tencent.mm.sdk.platformtools.h.a(BitmapFactory.decodeResource(this.context.getResources(), 2131231652), true, 10.0F);
         ((ImageView)paramView.findViewById(2131304497)).setImageBitmap(paramViewGroup);
         AppMethodBeat.o(74414);
         return paramView;
         paramViewGroup = (b)paramView.getTag();
         break;
         label269:
-        paramViewGroup.axi("downloaded");
+        paramViewGroup.ayy("downloaded");
       }
       label278:
       if (paramInt == 1)
       {
-        if (((SettingsSelectBgUI.c(SettingsSelectBgUI.this)) && (i == 0)) || ((!SettingsSelectBgUI.c(SettingsSelectBgUI.this)) && (i == 0) && (locala == null)) || ((locala != null) && (locala.iiM == 0))) {
-          paramViewGroup.axi("using");
+        if (((SettingsSelectBgUI.c(SettingsSelectBgUI.this)) && (i == 0)) || ((!SettingsSelectBgUI.c(SettingsSelectBgUI.this)) && (i == 0) && (locala == null)) || ((locala != null) && (locala.ilF == 0))) {
+          paramViewGroup.ayy("using");
         }
         for (;;)
         {
-          paramViewGroup = com.tencent.mm.sdk.platformtools.g.a(BitmapFactory.decodeResource(this.context.getResources(), 2131231651), true, 10.0F);
+          paramViewGroup = com.tencent.mm.sdk.platformtools.h.a(BitmapFactory.decodeResource(this.context.getResources(), 2131231651), true, 10.0F);
           ((ImageView)paramView.findViewById(2131304497)).setImageBitmap(paramViewGroup);
           AppMethodBeat.o(74414);
           return paramView;
-          paramViewGroup.axi("downloaded");
+          paramViewGroup.ayy("downloaded");
         }
       }
       o localo = (o)getItem(paramInt - 2);
-      com.tencent.mm.bc.p localp = t.aJZ();
-      if (!com.tencent.mm.kernel.g.ajC().isSDCardAvailable()) {}
-      for (Bitmap localBitmap = BitmapFactory.decodeResource(SettingsSelectBgUI.this.getResources(), 2131233477); localBitmap == null; localBitmap = com.tencent.mm.sdk.platformtools.g.aQf(com.tencent.mm.bc.p.aJW() + com.tencent.mm.bc.p.dk(localo.id, localo.dtF)))
+      com.tencent.mm.bb.p localp = t.aKs();
+      if (!g.ajR().isSDCardAvailable()) {}
+      for (Bitmap localBitmap = BitmapFactory.decodeResource(SettingsSelectBgUI.this.getResources(), 2131233477); localBitmap == null; localBitmap = com.tencent.mm.sdk.platformtools.h.aRC(com.tencent.mm.bb.p.aKp() + com.tencent.mm.bb.p.dk(localo.id, localo.duK)))
       {
         paramInt = localo.id;
-        i = localo.dtF;
-        if (localp.hHS.delete("packageinfo2", "id= ? and type =?", new String[] { String.valueOf(paramInt), String.valueOf(i) }) > 0) {
+        i = localo.duK;
+        if (localp.hKK.delete("packageinfo2", "id= ? and type =?", new String[] { String.valueOf(paramInt), String.valueOf(i) }) > 0) {
           localp.doNotify();
         }
         AppMethodBeat.o(74414);
         return paramView;
       }
-      localBitmap = com.tencent.mm.sdk.platformtools.g.a(localBitmap, true, 10.0F);
+      localBitmap = com.tencent.mm.sdk.platformtools.h.a(localBitmap, true, 10.0F);
       ((ImageView)paramView.findViewById(2131304497)).setImageBitmap(localBitmap);
       switch (localo.status)
       {
@@ -297,27 +297,27 @@ public class SettingsSelectBgUI
       {
         AppMethodBeat.o(74414);
         return paramView;
-        paramViewGroup.axi("downloading");
+        paramViewGroup.ayy("downloading");
         continue;
-        if ((!SettingsSelectBgUI.c(SettingsSelectBgUI.this)) && (locala != null) && (locala.iiM == localo.id))
+        if ((!SettingsSelectBgUI.c(SettingsSelectBgUI.this)) && (locala != null) && (locala.ilF == localo.id))
         {
-          paramViewGroup.axi("using");
+          paramViewGroup.ayy("using");
         }
         else
         {
-          paramViewGroup.axi("downloaded");
+          paramViewGroup.ayy("downloaded");
           continue;
-          paramViewGroup.axi("undownloaded");
+          paramViewGroup.ayy("undownloaded");
           continue;
-          if ((!SettingsSelectBgUI.c(SettingsSelectBgUI.this)) && (locala != null) && (locala.iiM != localo.id))
+          if ((!SettingsSelectBgUI.c(SettingsSelectBgUI.this)) && (locala != null) && (locala.ilF != localo.id))
           {
-            paramViewGroup.axi("downloaded");
+            paramViewGroup.ayy("downloaded");
           }
           else
           {
-            paramViewGroup.axi("using");
+            paramViewGroup.ayy("using");
             continue;
-            paramViewGroup.axi("canceling");
+            paramViewGroup.ayy("canceling");
           }
         }
       }

@@ -10,12 +10,12 @@ import java.util.Collection;
 public final class x
   implements w<k>
 {
-  public static final x Nji;
+  public static final x NGo;
   
   static
   {
     AppMethodBeat.i(58268);
-    Nji = new x();
+    NGo = new x();
     AppMethodBeat.o(58268);
   }
   
@@ -64,7 +64,7 @@ public final class x
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.d.b.x
  * JD-Core Version:    0.7.0.1
  */

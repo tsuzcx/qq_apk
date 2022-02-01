@@ -16,9 +16,9 @@ public final class b
   extends a
   implements h.a, o.a
 {
-  a JgX;
-  boolean JgY;
-  private final Runnable JgZ;
+  a JBI;
+  boolean JBJ;
+  private final Runnable JBK;
   public ViewGroup WA;
   private boolean Yz;
   private h aaD;
@@ -27,7 +27,7 @@ public final class b
   {
     super(paramActivity);
     AppMethodBeat.i(141510);
-    this.JgZ = new Runnable()
+    this.JBK = new Runnable()
     {
       public final void run()
       {
@@ -40,23 +40,23 @@ public final class b
         }
         localObject = new h((Context)localObject);
         ((h)localObject).a(localb);
-        if (b.this.JgX != null)
+        if (b.this.JBI != null)
         {
-          b.this.JgX.e((Menu)localObject);
-          b.this.JgX.d((Menu)localObject);
+          b.this.JBI.e((Menu)localObject);
+          b.this.JBI.d((Menu)localObject);
           b.a(b.this, (h)localObject);
         }
         for (;;)
         {
           ((h)localObject).r(true);
-          b.this.JgY = false;
+          b.this.JBJ = false;
           AppMethodBeat.o(141509);
           return;
           b.a(b.this, null);
         }
       }
     };
-    this.JgX = parama;
+    this.JBI = parama;
     AppMethodBeat.o(141510);
   }
   
@@ -76,9 +76,9 @@ public final class b
   public final boolean a(h paramh, MenuItem paramMenuItem)
   {
     AppMethodBeat.i(141513);
-    if (this.JgX != null)
+    if (this.JBI != null)
     {
-      boolean bool = this.JgX.f(paramMenuItem);
+      boolean bool = this.JBI.f(paramMenuItem);
       AppMethodBeat.o(141513);
       return bool;
     }
@@ -118,7 +118,7 @@ public final class b
     return false;
   }
   
-  public final ActionBar fyg()
+  public final ActionBar fCi()
   {
     AppMethodBeat.i(141511);
     gy();
@@ -133,10 +133,10 @@ public final class b
   public final void supportInvalidateOptionsMenu()
   {
     AppMethodBeat.i(141515);
-    if (!this.JgY)
+    if (!this.JBJ)
     {
-      this.JgY = true;
-      this.JgZ.run();
+      this.JBJ = true;
+      this.JBK.run();
     }
     AppMethodBeat.o(141515);
   }

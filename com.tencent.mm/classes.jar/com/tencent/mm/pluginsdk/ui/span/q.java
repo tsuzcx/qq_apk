@@ -15,10 +15,10 @@ import com.tencent.mm.memory.a.c;
 import com.tencent.mm.platformtools.ac;
 import com.tencent.mm.pluginsdk.ui.applet.u;
 import com.tencent.mm.pluginsdk.ui.applet.z;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.sdk.platformtools.bw;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.bx;
 import com.tencent.mm.ui.al;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -28,31 +28,31 @@ import java.util.regex.Pattern;
 
 final class q
 {
-  private static final f<String, SpannableString> FhY;
-  private static Class<?>[] Fiw;
-  private ArrayList<u> FhZ;
-  private ArrayList<a> Fia;
-  private ArrayList<z> Fib;
-  boolean Fic;
-  boolean Fid;
-  boolean Fie;
-  boolean Fif;
-  boolean Fig;
-  boolean Fih;
-  boolean Fii;
-  boolean Fij;
-  boolean Fik;
-  boolean Fil;
-  boolean Fim;
-  boolean Fin;
-  boolean Fio;
-  boolean Fip;
-  boolean Fiq;
-  boolean Fir;
-  int Fis;
-  private int Fit;
-  boolean Fiu;
-  Object Fiv;
+  private static Class<?>[] FAV;
+  private static final f<String, SpannableString> FAw;
+  boolean FAA;
+  boolean FAB;
+  boolean FAC;
+  boolean FAD;
+  boolean FAE;
+  boolean FAF;
+  boolean FAG;
+  boolean FAH;
+  boolean FAI;
+  boolean FAJ;
+  boolean FAK;
+  boolean FAL;
+  boolean FAM;
+  boolean FAN;
+  boolean FAO;
+  boolean FAP;
+  int FAQ;
+  private int FAS;
+  boolean FAT;
+  Object FAU;
+  private ArrayList<u> FAx;
+  private ArrayList<a> FAy;
+  private ArrayList<z> FAz;
   private TextView Wf;
   private Context mContext;
   String mSessionId;
@@ -60,86 +60,86 @@ final class q
   static
   {
     AppMethodBeat.i(152370);
-    FhY = new c(500);
-    Fiw = new Class[] { com.tencent.mm.ui.widget.a.class, o.class, ForegroundColorSpan.class };
+    FAw = new c(500);
+    FAV = new Class[] { com.tencent.mm.ui.widget.a.class, o.class, ForegroundColorSpan.class };
     AppMethodBeat.o(152370);
   }
   
   public q(Context paramContext)
   {
     AppMethodBeat.i(152345);
-    this.FhZ = new ArrayList();
-    this.Fia = new ArrayList();
-    this.Fib = new ArrayList();
+    this.FAx = new ArrayList();
+    this.FAy = new ArrayList();
+    this.FAz = new ArrayList();
     this.Wf = null;
-    this.Fic = false;
-    this.Fid = false;
-    this.Fie = true;
-    this.Fif = false;
-    this.Fig = false;
-    this.Fih = true;
-    this.Fii = true;
-    this.Fij = false;
-    this.Fik = false;
-    this.Fil = false;
-    this.Fim = false;
-    this.Fin = false;
-    this.Fio = false;
-    this.Fip = true;
-    this.Fiq = false;
-    this.Fir = false;
-    this.Fis = 0;
-    this.Fit = 0;
+    this.FAA = false;
+    this.FAB = false;
+    this.FAC = true;
+    this.FAD = false;
+    this.FAE = false;
+    this.FAF = true;
+    this.FAG = true;
+    this.FAH = false;
+    this.FAI = false;
+    this.FAJ = false;
+    this.FAK = false;
+    this.FAL = false;
+    this.FAM = false;
+    this.FAN = true;
+    this.FAO = false;
+    this.FAP = false;
+    this.FAQ = 0;
+    this.FAS = 0;
     this.mContext = null;
-    this.Fiu = false;
-    this.FhZ = new ArrayList();
-    this.Fia = new ArrayList();
-    this.Fib = new ArrayList();
+    this.FAT = false;
+    this.FAx = new ArrayList();
+    this.FAy = new ArrayList();
+    this.FAz = new ArrayList();
     this.mContext = paramContext;
     AppMethodBeat.o(152345);
   }
   
-  private String S(CharSequence paramCharSequence)
+  private String R(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(152347);
-    paramCharSequence = paramCharSequence + "@" + this.Fit + "@" + this.Fic + "@" + this.Fid + "@" + this.Fig + "@" + this.Fih + "@" + this.Fii + "@" + this.Fis + "@" + this.Fiu + "@" + this.Fim + "@" + this.Fin + "@" + this.Fio;
+    paramCharSequence = paramCharSequence + "@" + this.FAS + "@" + this.FAA + "@" + this.FAB + "@" + this.FAE + "@" + this.FAF + "@" + this.FAG + "@" + this.FAQ + "@" + this.FAT + "@" + this.FAK + "@" + this.FAL + "@" + this.FAM;
     AppMethodBeat.o(152347);
     return paramCharSequence;
   }
   
-  private SpannableString T(CharSequence paramCharSequence)
+  private SpannableString S(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(152350);
-    this.FhZ = new ArrayList();
+    this.FAx = new ArrayList();
     Object localObject;
-    if (this.Fit <= 0)
+    if (this.FAS <= 0)
     {
       if (this.Wf != null) {
-        this.Fit = ((int)this.Wf.getTextSize());
+        this.FAS = ((int)this.Wf.getTextSize());
       }
     }
     else
     {
-      if (this.FhZ == null) {
-        this.FhZ = new ArrayList();
+      if (this.FAx == null) {
+        this.FAx = new ArrayList();
       }
-      if (this.Fia == null) {
-        this.Fia = new ArrayList();
+      if (this.FAy == null) {
+        this.FAy = new ArrayList();
       }
-      this.FhZ.clear();
-      this.Fia.clear();
+      this.FAx.clear();
+      this.FAy.clear();
       localObject = paramCharSequence;
       if (com.tencent.mm.compatible.util.o.v(paramCharSequence))
       {
         localObject = paramCharSequence;
-        if (this.Fip)
+        if (this.FAN)
         {
           localObject = paramCharSequence;
-          if (e.a.Fhf != null) {
-            if (!e.a.Fhf.K(paramCharSequence))
+          if (e.a.FzD != null) {
+            if (!e.a.FzD.J(paramCharSequence))
             {
               localObject = paramCharSequence;
-              if (!e.a.Fhf.J(paramCharSequence)) {}
+              if (!e.a.FzD.I(paramCharSequence)) {}
             }
             else
             {
@@ -149,42 +149,42 @@ final class q
         }
       }
       paramCharSequence = (CharSequence)localObject;
-      if (this.Fic)
+      if (this.FAA)
       {
         if (!((CharSequence)localObject).toString().contains("data-miniprogram-appid")) {
           break label295;
         }
-        paramCharSequence = W((CharSequence)localObject);
+        paramCharSequence = V((CharSequence)localObject);
       }
       label187:
       localObject = paramCharSequence;
-      if (this.Fim) {
-        localObject = U(paramCharSequence);
+      if (this.FAK) {
+        localObject = T(paramCharSequence);
       }
       paramCharSequence = (CharSequence)localObject;
-      if (this.Fio) {
-        paramCharSequence = b((CharSequence)localObject, this.Fir);
+      if (this.FAM) {
+        paramCharSequence = b((CharSequence)localObject, this.FAP);
       }
-      if ((!this.Fip) || (e.a.Fhf == null)) {
+      if ((!this.FAN) || (e.a.FzD == null)) {
         break label320;
       }
-      paramCharSequence = e.a.Fhf.n(paramCharSequence, this.Fit);
+      paramCharSequence = e.a.FzD.n(paramCharSequence, this.FAS);
     }
     label295:
     label320:
     for (;;)
     {
-      if (this.Fie) {
-        X(paramCharSequence);
+      if (this.FAC) {
+        W(paramCharSequence);
       }
       if ((paramCharSequence instanceof Spannable))
       {
         paramCharSequence = (SpannableString)paramCharSequence;
         AppMethodBeat.o(152350);
         return paramCharSequence;
-        this.Fit = com.tencent.mm.cc.a.ax(this.mContext, 2131165517);
+        this.FAS = com.tencent.mm.cb.a.ax(this.mContext, 2131165517);
         break;
-        paramCharSequence = V((CharSequence)localObject);
+        paramCharSequence = U((CharSequence)localObject);
         break label187;
       }
       paramCharSequence = new SpannableString(paramCharSequence);
@@ -193,20 +193,20 @@ final class q
     }
   }
   
-  private CharSequence U(CharSequence paramCharSequence)
+  private CharSequence T(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(152351);
-    Object localObject2 = j.a.Fhn.matcher(paramCharSequence.toString());
+    Object localObject2 = j.a.FzL.matcher(paramCharSequence.toString());
     Object localObject1 = paramCharSequence;
     paramCharSequence = (CharSequence)localObject2;
     if (paramCharSequence.find())
     {
-      if (this.Fin) {
+      if (this.FAL) {
         paramCharSequence = ((CharSequence)localObject1).toString().replace(paramCharSequence.group(0), "");
       }
       for (;;)
       {
-        localObject2 = j.a.Fhi.matcher(paramCharSequence);
+        localObject2 = j.a.FzG.matcher(paramCharSequence);
         localObject1 = paramCharSequence;
         paramCharSequence = (CharSequence)localObject2;
         break;
@@ -217,17 +217,17 @@ final class q
         if (j != 0)
         {
           paramCharSequence = new z(i, i + 2, j);
-          if ((!bt.isNullOrNil((String)localObject2)) && ("original_label".equals(localObject2)))
+          if ((!bu.isNullOrNil((String)localObject2)) && ("original_label".equals(localObject2)))
           {
             paramCharSequence.height = 15;
             paramCharSequence.width = 35;
           }
-          this.Fib.add(paramCharSequence);
+          this.FAz.add(paramCharSequence);
           paramCharSequence = (CharSequence)localObject1;
         }
         else
         {
-          ad.w("MicroMsg.SpanProcessor", "dz[parseImgSpan:error drawable name %s]", new Object[] { localObject2 });
+          ae.w("MicroMsg.SpanProcessor", "dz[parseImgSpan:error drawable name %s]", new Object[] { localObject2 });
           paramCharSequence = (CharSequence)localObject1;
         }
       }
@@ -236,13 +236,13 @@ final class q
     return localObject1;
   }
   
-  private CharSequence V(CharSequence paramCharSequence)
+  private CharSequence U(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(152353);
     String str1 = paramCharSequence.toString();
     Matcher localMatcher;
     if (str1.length() < 1500) {
-      localMatcher = j.a.Fhi.matcher(str1);
+      localMatcher = j.a.FzG.matcher(str1);
     }
     while (localMatcher.find())
     {
@@ -263,17 +263,17 @@ final class q
         int j = str3.length() + i;
         if ((i < 0) || (j > paramCharSequence.length()))
         {
-          ad.e("MicroMsg.SpanProcessor", "parseHref error, start:%d, end:%d, source.length:%d", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(paramCharSequence.length()) });
+          ae.e("MicroMsg.SpanProcessor", "parseHref error, start:%d, end:%d, source.length:%d", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(paramCharSequence.length()) });
           continue;
-          localMatcher = j.a.Fhh.matcher(str1);
+          localMatcher = j.a.FzF.matcher(str1);
         }
         else
         {
-          aJ(str2, i, j);
+          aL(str2, i, j);
           if (str1.length() < 1500) {
-            localMatcher = j.a.Fhi.matcher(str1);
+            localMatcher = j.a.FzG.matcher(str1);
           } else {
-            localMatcher = j.a.Fhh.matcher(str1);
+            localMatcher = j.a.FzF.matcher(str1);
           }
         }
       }
@@ -282,25 +282,25 @@ final class q
     return str1;
   }
   
-  private CharSequence W(CharSequence paramCharSequence)
+  private CharSequence V(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(152354);
     Object localObject1 = paramCharSequence.toString();
     Object localObject2;
     if (((String)localObject1).length() < 1500) {
-      localObject2 = j.a.Fhk.matcher((CharSequence)localObject1);
+      localObject2 = j.a.FzI.matcher((CharSequence)localObject1);
     }
     while (((Matcher)localObject2).find())
     {
       String str4 = ((Matcher)localObject2).group(0);
       String str1 = ((Matcher)localObject2).group(1);
       String str3 = ((Matcher)localObject2).group(2);
-      Object localObject3 = bw.M(str4.replace(str1, " ").replace(str3, " "), "a");
+      Object localObject3 = bx.M(str4.replace(str1, " ").replace(str3, " "), "a");
       if (localObject3 == null)
       {
-        ad.e("MicroMsg.SpanProcessor", "XmlParser parse return null, so continue");
+        ae.e("MicroMsg.SpanProcessor", "XmlParser parse return null, so continue");
         continue;
-        localObject2 = j.a.Fhj.matcher((CharSequence)localObject1);
+        localObject2 = j.a.FzH.matcher((CharSequence)localObject1);
       }
       else
       {
@@ -309,10 +309,10 @@ final class q
         int i;
         label163:
         int j;
-        if (!bt.isNullOrNil(str1))
+        if (!bu.isNullOrNil(str1))
         {
           i = 1;
-          if (bt.isNullOrNil(str2)) {
+          if (bu.isNullOrNil(str2)) {
             break label280;
           }
           j = 1;
@@ -329,7 +329,7 @@ final class q
             j = str3.length() + i;
             if ((i < 0) || (j > paramCharSequence.length()))
             {
-              ad.e("MicroMsg.SpanProcessor", "parseHref error, start:%d, end:%d, source.length:%d", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(paramCharSequence.length()) });
+              ae.e("MicroMsg.SpanProcessor", "parseHref error, start:%d, end:%d, source.length:%d", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(paramCharSequence.length()) });
               break;
               i = 0;
               break label163;
@@ -337,18 +337,18 @@ final class q
               j = 0;
               continue;
             }
-            aJ(str1, i, j);
+            aL(str1, i, j);
           }
         }
         for (;;)
         {
           if (((String)localObject1).length() < 1500)
           {
-            localObject2 = j.a.Fhk.matcher((CharSequence)localObject1);
+            localObject2 = j.a.FzI.matcher((CharSequence)localObject1);
             break;
             if (j != 0)
             {
-              if (this.Fin)
+              if (this.FAL)
               {
                 localObject1 = ((String)localObject1).toString().replace(str4, str3);
                 i = ((Matcher)localObject2).start(0);
@@ -356,7 +356,7 @@ final class q
                 localObject2 = new u(str1, 45, null);
                 ((u)localObject2).start = i;
                 ((u)localObject2).end = (j + i);
-                this.FhZ.add(localObject2);
+                this.FAx.add(localObject2);
               }
               else
               {
@@ -367,11 +367,11 @@ final class q
                 if (al.isDarkMode()) {}
                 for (localObject1 = new z(i + 1, i + 3, 2131691250);; localObject1 = new z(i + 1, i + 3, 2131691249))
                 {
-                  this.Fib.add(localObject1);
+                  this.FAz.add(localObject1);
                   localObject1 = new u(str2, 45, localObject3);
                   ((u)localObject1).start = (i + 4);
                   ((u)localObject1).end = (i + j);
-                  this.FhZ.add(localObject1);
+                  this.FAx.add(localObject1);
                   localObject1 = str1;
                   break;
                 }
@@ -379,57 +379,57 @@ final class q
             }
             else
             {
-              ad.e("MicroMsg.SpanProcessor", "url && appId is null, continue");
+              ae.e("MicroMsg.SpanProcessor", "url && appId is null, continue");
               break;
             }
           }
         }
-        localObject2 = j.a.Fhj.matcher((CharSequence)localObject1);
+        localObject2 = j.a.FzH.matcher((CharSequence)localObject1);
       }
     }
     AppMethodBeat.o(152354);
     return localObject1;
   }
   
-  private void X(CharSequence paramCharSequence)
+  private void W(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(152355);
-    if (this.Fih) {
-      this.Fia.addAll(Y(paramCharSequence));
+    if (this.FAF) {
+      this.FAy.addAll(X(paramCharSequence));
     }
-    if (this.Fid) {
-      this.Fia.addAll(aa(paramCharSequence));
+    if (this.FAB) {
+      this.FAy.addAll(Z(paramCharSequence));
     }
-    if (this.Fif) {
-      this.Fia.addAll(ab(paramCharSequence));
+    if (this.FAD) {
+      this.FAy.addAll(aa(paramCharSequence));
     }
-    if (this.Fil) {
-      this.Fia.addAll(ag(paramCharSequence));
+    if (this.FAJ) {
+      this.FAy.addAll(af(paramCharSequence));
     }
-    if (this.Fii) {
-      this.Fia.addAll(ac(paramCharSequence));
+    if (this.FAG) {
+      this.FAy.addAll(ab(paramCharSequence));
     }
-    if (this.Fij) {
-      this.Fia.addAll(ad(paramCharSequence));
+    if (this.FAH) {
+      this.FAy.addAll(ac(paramCharSequence));
     }
-    if (this.Fig) {
-      this.Fia.addAll(ae(paramCharSequence));
+    if (this.FAE) {
+      this.FAy.addAll(ad(paramCharSequence));
     }
-    if (this.Fik) {
-      this.Fia.addAll(af(paramCharSequence));
+    if (this.FAI) {
+      this.FAy.addAll(ae(paramCharSequence));
     }
-    if (this.Fiq) {
-      this.Fia.addAll(Z(paramCharSequence));
+    if (this.FAO) {
+      this.FAy.addAll(Y(paramCharSequence));
     }
     AppMethodBeat.o(152355);
   }
   
-  private ArrayList<a> Y(CharSequence paramCharSequence)
+  private ArrayList<a> X(CharSequence paramCharSequence)
   {
     int i = 2000;
     AppMethodBeat.i(152356);
     ArrayList localArrayList = new ArrayList();
-    Object localObject = j.a.Fhr;
+    Object localObject = j.a.FzP;
     if (paramCharSequence.length() > 2000) {}
     for (;;)
     {
@@ -441,9 +441,9 @@ final class q
         localObject = new u(paramCharSequence.group(), 24, null);
         ((u)localObject).start = i;
         ((u)localObject).end = j;
-        if (!a(this.Fia, new a(i, j)))
+        if (!a(this.FAy, new a(i, j)))
         {
-          this.FhZ.add(localObject);
+          this.FAx.add(localObject);
           localArrayList.add(new a(i, j));
         }
       }
@@ -453,12 +453,12 @@ final class q
     return localArrayList;
   }
   
-  private ArrayList<a> Z(CharSequence paramCharSequence)
+  private ArrayList<a> Y(CharSequence paramCharSequence)
   {
     int i = 2000;
     AppMethodBeat.i(152357);
     ArrayList localArrayList = new ArrayList();
-    Object localObject = j.a.Fhs;
+    Object localObject = j.a.FzQ;
     if (paramCharSequence.length() > 2000) {}
     for (;;)
     {
@@ -470,15 +470,49 @@ final class q
         localObject = new u(paramCharSequence.group(), 48, null);
         ((u)localObject).start = i;
         ((u)localObject).end = j;
-        if (!a(this.Fia, new a(i, j)))
+        if (!a(this.FAy, new a(i, j)))
         {
-          this.FhZ.add(localObject);
+          this.FAx.add(localObject);
           localArrayList.add(new a(i, j));
         }
       }
       i = paramCharSequence.length();
     }
     AppMethodBeat.o(152357);
+    return localArrayList;
+  }
+  
+  private ArrayList<a> Z(CharSequence paramCharSequence)
+  {
+    AppMethodBeat.i(152358);
+    ArrayList localArrayList = new ArrayList();
+    String str = paramCharSequence.toString();
+    if (str.length() > 500) {
+      paramCharSequence = j.a.FzO.matcher(str.toLowerCase());
+    }
+    while (paramCharSequence.find())
+    {
+      int i = paramCharSequence.start();
+      int j = paramCharSequence.end();
+      if ((!a(this.FAy, new a(i, j))) && (i >= 0) && (j <= str.length())) {
+        if (j < str.length())
+        {
+          int k = str.charAt(j);
+          if ((97 <= k) && (k <= 122)) {}
+        }
+        else
+        {
+          u localu = new u(str.substring(i, j), 1, this.FAU);
+          localu.start = i;
+          localu.end = j;
+          this.FAx.add(localu);
+          localArrayList.add(new a(i, j));
+          continue;
+          paramCharSequence = j.a.FzN.matcher(str.toLowerCase());
+        }
+      }
+    }
+    AppMethodBeat.o(152358);
     return localArrayList;
   }
   
@@ -525,17 +559,17 @@ final class q
     return false;
   }
   
-  private boolean aJ(String paramString, int paramInt1, int paramInt2)
+  private boolean aL(String paramString, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(152365);
     paramString = a.a(this.mContext, paramString, paramInt1, paramInt2);
     if (paramString != null)
     {
-      if (this.Fiv != null) {
-        paramString.data = this.Fiv;
+      if (this.FAU != null) {
+        paramString.data = this.FAU;
       }
-      this.FhZ.add(paramString);
-      this.Fia.add(new a(paramInt1, paramInt2));
+      this.FAx.add(paramString);
+      this.FAy.add(new a(paramInt1, paramInt2));
       AppMethodBeat.o(152365);
       return true;
     }
@@ -545,40 +579,6 @@ final class q
   
   private ArrayList<a> aa(CharSequence paramCharSequence)
   {
-    AppMethodBeat.i(152358);
-    ArrayList localArrayList = new ArrayList();
-    String str = paramCharSequence.toString();
-    if (str.length() > 500) {
-      paramCharSequence = j.a.Fhq.matcher(str.toLowerCase());
-    }
-    while (paramCharSequence.find())
-    {
-      int i = paramCharSequence.start();
-      int j = paramCharSequence.end();
-      if ((!a(this.Fia, new a(i, j))) && (i >= 0) && (j <= str.length())) {
-        if (j < str.length())
-        {
-          int k = str.charAt(j);
-          if ((97 <= k) && (k <= 122)) {}
-        }
-        else
-        {
-          u localu = new u(str.substring(i, j), 1, this.Fiv);
-          localu.start = i;
-          localu.end = j;
-          this.FhZ.add(localu);
-          localArrayList.add(new a(i, j));
-          continue;
-          paramCharSequence = j.a.Fhp.matcher(str.toLowerCase());
-        }
-      }
-    }
-    AppMethodBeat.o(152358);
-    return localArrayList;
-  }
-  
-  private ArrayList<a> ab(CharSequence paramCharSequence)
-  {
     AppMethodBeat.i(152359);
     ArrayList localArrayList = new ArrayList();
     paramCharSequence = paramCharSequence.toString();
@@ -587,17 +587,17 @@ final class q
       AppMethodBeat.o(152359);
       return localArrayList;
     }
-    Matcher localMatcher = j.a.Fhx.matcher(paramCharSequence);
+    Matcher localMatcher = j.a.FzV.matcher(paramCharSequence);
     while (localMatcher.find())
     {
       int i = localMatcher.start();
       int j = localMatcher.end();
-      if ((!a(this.Fia, new a(i, j))) && (i >= 0) && (j <= paramCharSequence.length()))
+      if ((!a(this.FAy, new a(i, j))) && (i >= 0) && (j <= paramCharSequence.length()))
       {
-        u localu = new u(paramCharSequence.substring(i, j), 44, this.Fiv);
+        u localu = new u(paramCharSequence.substring(i, j), 44, this.FAU);
         localu.start = i;
         localu.end = j;
-        this.FhZ.add(localu);
+        this.FAx.add(localu);
         localArrayList.add(new a(i, j));
       }
     }
@@ -605,22 +605,22 @@ final class q
     return localArrayList;
   }
   
-  private ArrayList<a> ac(CharSequence paramCharSequence)
+  private ArrayList<a> ab(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(152360);
     ArrayList localArrayList = new ArrayList();
     String str = paramCharSequence.toString();
-    paramCharSequence = j.a.Fhu.matcher(paramCharSequence);
+    paramCharSequence = j.a.FzS.matcher(paramCharSequence);
     while (paramCharSequence.find())
     {
       int i = paramCharSequence.start();
       int j = paramCharSequence.end();
-      if ((!a(this.Fia, new a(i, j))) && (i >= 0) && (j <= str.length()))
+      if ((!a(this.FAy, new a(i, j))) && (i >= 0) && (j <= str.length()))
       {
         u localu = new u(str.substring(i, j), 28, null);
         localu.start = i;
         localu.end = j;
-        this.FhZ.add(localu);
+        this.FAx.add(localu);
         localArrayList.add(new a(i, j));
       }
     }
@@ -628,25 +628,25 @@ final class q
     return localArrayList;
   }
   
-  private ArrayList<a> ad(CharSequence paramCharSequence)
+  private ArrayList<a> ac(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(152361);
     ArrayList localArrayList = new ArrayList();
     String str = paramCharSequence.toString();
-    paramCharSequence = j.a.Fhy.matcher(paramCharSequence);
+    paramCharSequence = j.a.FzW.matcher(paramCharSequence);
     while (paramCharSequence.find())
     {
       Object localObject = paramCharSequence.group();
-      if (b.Fha.aNh((String)localObject))
+      if (b.Fzy.aOE((String)localObject))
       {
         int i = paramCharSequence.start();
         int j = paramCharSequence.end();
-        if ((!a(this.Fia, new a(i, j))) && (i >= 0) && (j <= str.length()))
+        if ((!a(this.FAy, new a(i, j))) && (i >= 0) && (j <= str.length()))
         {
-          localObject = new u(str.substring(i, j), 50, this.Fiv);
+          localObject = new u(str.substring(i, j), 50, this.FAU);
           ((u)localObject).start = i;
           ((u)localObject).end = j;
-          this.FhZ.add(localObject);
+          this.FAx.add(localObject);
           localArrayList.add(new a(i, j));
         }
       }
@@ -655,11 +655,11 @@ final class q
     return localArrayList;
   }
   
-  private ArrayList<a> ae(CharSequence paramCharSequence)
+  private ArrayList<a> ad(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(152362);
     ArrayList localArrayList = new ArrayList();
-    paramCharSequence = j.a.Fht.matcher(paramCharSequence);
+    paramCharSequence = j.a.FzR.matcher(paramCharSequence);
     while (paramCharSequence.find())
     {
       int k = paramCharSequence.start();
@@ -670,12 +670,12 @@ final class q
       if (((String)localObject).startsWith("+")) {
         i = j - 1;
       }
-      if (((i != 6) && (i != 5)) || (("+12306+12110+12395+12121+12117+12119+95555+95566+95533+95588+95558+95599+95568+95595+95559+95508+95528+95501+95577+95561+10086+10010+10000+17951+17911+17900+118114+116114+950718+95598+12318+12315+12358+12365+12310+12369+12333+12366+95518+95519+95511+95500+95522+95567+95017".contains((CharSequence)localObject)) && (i < 100) && (!a(this.Fia, new a(k, m)))))
+      if (((i != 6) && (i != 5)) || (("+12306+12110+12395+12121+12117+12119+95555+95566+95533+95588+95558+95599+95568+95595+95559+95508+95528+95501+95577+95561+10086+10010+10000+17951+17911+17900+118114+116114+950718+95598+12318+12315+12358+12365+12310+12369+12333+12366+95518+95519+95511+95500+95522+95567+95017".contains((CharSequence)localObject)) && (i < 100) && (!a(this.FAy, new a(k, m)))))
       {
-        localObject = new u((String)localObject, 25, this.Fiv);
+        localObject = new u((String)localObject, 25, this.FAU);
         ((u)localObject).start = k;
         ((u)localObject).end = m;
-        this.FhZ.add(localObject);
+        this.FAx.add(localObject);
         localArrayList.add(new a(k, m));
       }
     }
@@ -683,18 +683,18 @@ final class q
     return localArrayList;
   }
   
-  private ArrayList<a> af(CharSequence paramCharSequence)
+  private ArrayList<a> ae(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(152363);
     ArrayList localArrayList = new ArrayList();
-    paramCharSequence = a.bS(this.mContext, paramCharSequence.toString()).iterator();
+    paramCharSequence = a.bT(this.mContext, paramCharSequence.toString()).iterator();
     while (paramCharSequence.hasNext())
     {
       u localu = (u)paramCharSequence.next();
       a locala = new a(localu.start, localu.end);
-      if (!a(this.Fia, locala))
+      if (!a(this.FAy, locala))
       {
-        this.FhZ.add(localu);
+        this.FAx.add(localu);
         localArrayList.add(locala);
       }
     }
@@ -702,12 +702,12 @@ final class q
     return localArrayList;
   }
   
-  private ArrayList<a> ag(CharSequence paramCharSequence)
+  private ArrayList<a> af(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(152364);
     ArrayList localArrayList = new ArrayList();
     paramCharSequence = paramCharSequence.toString();
-    Matcher localMatcher = j.a.Fhw.matcher(paramCharSequence);
+    Matcher localMatcher = j.a.FzU.matcher(paramCharSequence);
     int i;
     int j;
     a locala;
@@ -717,29 +717,29 @@ final class q
       i = localMatcher.start();
       j = localMatcher.end();
       locala = new a(i, j);
-      if ((!a(this.Fia, locala)) && (i >= 0) && (j <= paramCharSequence.length()))
+      if ((!a(this.FAy, locala)) && (i >= 0) && (j <= paramCharSequence.length()))
       {
         localu = new u(paramCharSequence.substring(i, j), 30, null);
         localu.start = i;
         localu.end = j;
-        this.FhZ.add(localu);
+        this.FAx.add(localu);
         localArrayList.add(locala);
       }
     }
     if (localArrayList.size() <= 0)
     {
-      localMatcher = j.a.Fhv.matcher(paramCharSequence);
+      localMatcher = j.a.FzT.matcher(paramCharSequence);
       while (localMatcher.find())
       {
         i = localMatcher.start();
         j = localMatcher.end();
         locala = new a(i, j);
-        if ((!a(this.Fia, locala)) && (i >= 0) && (j <= paramCharSequence.length()))
+        if ((!a(this.FAy, locala)) && (i >= 0) && (j <= paramCharSequence.length()))
         {
           localu = new u(paramCharSequence.substring(i, j), 30, null);
           localu.start = i;
           localu.end = j;
-          this.FhZ.add(localu);
+          this.FAx.add(localu);
           localArrayList.add(locala);
         }
       }
@@ -751,7 +751,7 @@ final class q
   private CharSequence b(CharSequence paramCharSequence, boolean paramBoolean)
   {
     AppMethodBeat.i(152352);
-    Object localObject2 = j.a.Fhl.matcher(paramCharSequence);
+    Object localObject2 = j.a.FzJ.matcher(paramCharSequence);
     int i = 0;
     Object localObject1 = paramCharSequence;
     String str1;
@@ -771,19 +771,19 @@ final class q
         int k = str2.length() + j;
         if ((j < 0) || (k > paramCharSequence.length()))
         {
-          ad.e("MicroMsg.SpanProcessor", "dz[parseWCCustomLink error: start:%d, end:%d, source.length:%d]", new Object[] { Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(paramCharSequence.length()) });
+          ae.e("MicroMsg.SpanProcessor", "dz[parseWCCustomLink error: start:%d, end:%d, source.length:%d]", new Object[] { Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(paramCharSequence.length()) });
           continue;
         }
         try
         {
           i = Color.parseColor((String)localObject4);
-          if (bt.isNullOrNil(str1))
+          if (bu.isNullOrNil(str1))
           {
             localObject2 = new u(j, k);
             ((u)localObject2).linkColor = i;
-            this.FhZ.add(localObject2);
-            this.Fia.add(new a(j, k));
-            localObject2 = j.a.Fhl.matcher((CharSequence)localObject1);
+            this.FAx.add(localObject2);
+            this.FAy.add(new a(j, k));
+            localObject2 = j.a.FzJ.matcher((CharSequence)localObject1);
             i = 1;
           }
         }
@@ -791,22 +791,22 @@ final class q
         {
           for (;;)
           {
-            localObject3 = aj.getContext();
+            localObject3 = ak.getContext();
             int m = ((Context)localObject3).getResources().getIdentifier((String)localObject4, "color", ((Context)localObject3).getPackageName());
             if (m <= 0) {}
-            for (i = 0;; i = aj.getContext().getResources().getColor(m))
+            for (i = 0;; i = ak.getContext().getResources().getColor(m))
             {
-              ad.w("MicroMsg.SpanProcessor", "dz[parseWCCustomLink error at color : %s, resId : %s]", new Object[] { localObject4, Integer.valueOf(m) });
+              ae.w("MicroMsg.SpanProcessor", "dz[parseWCCustomLink error at color : %s, resId : %s]", new Object[] { localObject4, Integer.valueOf(m) });
               break;
             }
             localObject3 = a.a(this.mContext, str1, j, k, i, i & 0x99FFFFFF);
             if (localObject3 != null)
             {
-              if (this.Fiv != null) {
-                ((u)localObject3).data = this.Fiv;
+              if (this.FAU != null) {
+                ((u)localObject3).data = this.FAU;
               }
-              this.FhZ.add(localObject3);
-              this.Fia.add(new a(j, k));
+              this.FAx.add(localObject3);
+              this.FAy.add(new a(j, k));
             }
           }
         }
@@ -815,7 +815,7 @@ final class q
     Object localObject4 = localObject1;
     if (i == 0)
     {
-      localObject3 = j.a.Fhm.matcher(paramCharSequence);
+      localObject3 = j.a.FzK.matcher(paramCharSequence);
       for (;;)
       {
         localObject4 = localObject1;
@@ -832,25 +832,25 @@ final class q
           j = str1.length() + i;
           if ((i < 0) || (j > paramCharSequence.length()))
           {
-            ad.e("MicroMsg.SpanProcessor", "dz[parseWCCustomLink error: start:%d, end:%d, source.length:%d]", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(paramCharSequence.length()) });
+            ae.e("MicroMsg.SpanProcessor", "dz[parseWCCustomLink error: start:%d, end:%d, source.length:%d]", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(paramCharSequence.length()) });
           }
           else
           {
-            if ((!aJ((String)localObject4, i, j)) && (paramBoolean))
+            if ((!aL((String)localObject4, i, j)) && (paramBoolean))
             {
               localObject3 = new u((String)localObject4, 2147483646, null);
-              if (this.Fiv != null) {
-                ((u)localObject3).data = this.Fiv;
+              if (this.FAU != null) {
+                ((u)localObject3).data = this.FAU;
               }
               ((u)localObject3).start = i;
               ((u)localObject3).end = j;
-              if (!a(this.Fia, new a(i, j)))
+              if (!a(this.FAy, new a(i, j)))
               {
-                this.FhZ.add(localObject3);
-                this.Fia.add(new a(i, j));
+                this.FAx.add(localObject3);
+                this.FAy.add(new a(i, j));
               }
             }
-            localObject3 = j.a.Fhl.matcher((CharSequence)localObject1);
+            localObject3 = j.a.FzJ.matcher((CharSequence)localObject1);
           }
         }
       }
@@ -862,7 +862,7 @@ final class q
   public static void clearCache()
   {
     AppMethodBeat.i(152369);
-    FhY.clear();
+    FAw.clear();
     AppMethodBeat.o(152369);
   }
   
@@ -877,8 +877,8 @@ final class q
       Object localObject = arrayOfObject[i];
       int j = 0;
       label42:
-      if (j < Fiw.length) {
-        if (!Fiw[j].isInstance(localObject)) {}
+      if (j < FAV.length) {
+        if (!FAV[j].isInstance(localObject)) {}
       }
       for (j = 1;; j = 0)
       {
@@ -897,9 +897,9 @@ final class q
   private void g(Spannable paramSpannable)
   {
     AppMethodBeat.i(152367);
-    if ((this.Wf != null) && (!bt.isNullOrNil(paramSpannable.toString())))
+    if ((this.Wf != null) && (!bu.isNullOrNil(paramSpannable.toString())))
     {
-      if (ac.iPo)
+      if (ac.iSi)
       {
         this.Wf.setText(paramSpannable, TextView.BufferType.SPANNABLE);
         AppMethodBeat.o(152367);
@@ -919,11 +919,11 @@ final class q
       AppMethodBeat.o(152348);
       return paramCharSequence;
     }
-    this.Fit = paramInt;
-    String str = S(paramCharSequence);
+    this.FAS = paramInt;
+    String str = R(paramCharSequence);
     if (paramBoolean)
     {
-      localObject1 = (SpannableString)FhY.get(str);
+      localObject1 = (SpannableString)FAw.get(str);
       if (localObject1 != null)
       {
         f((Spannable)localObject1);
@@ -933,23 +933,23 @@ final class q
         return localObject1;
       }
     }
-    paramCharSequence = T(paramCharSequence);
+    paramCharSequence = S(paramCharSequence);
     Object localObject2;
-    if (this.Fiu)
+    if (this.FAT)
     {
-      localObject1 = this.FhZ.iterator();
+      localObject1 = this.FAx.iterator();
       while (((Iterator)localObject1).hasNext())
       {
         localObject2 = (u)((Iterator)localObject1).next();
         ((u)localObject2).mSessionId = this.mSessionId;
-        if (bt.isNullOrNil(((u)localObject2).url)) {
+        if (bu.isNullOrNil(((u)localObject2).url)) {
           paramCharSequence.setSpan(new ForegroundColorSpan(((u)localObject2).linkColor), ((u)localObject2).start, ((u)localObject2).end, 33);
         } else if ((((u)localObject2).start <= paramCharSequence.length()) && (((u)localObject2).end <= paramCharSequence.length())) {
-          paramCharSequence.setSpan(new o(this.Fis, (u)localObject2), ((u)localObject2).start, ((u)localObject2).end, 33);
+          paramCharSequence.setSpan(new o(this.FAQ, (u)localObject2), ((u)localObject2).start, ((u)localObject2).end, 33);
         }
       }
     }
-    Object localObject1 = this.Fib.iterator();
+    Object localObject1 = this.FAz.iterator();
     while (((Iterator)localObject1).hasNext())
     {
       localObject2 = (z)((Iterator)localObject1).next();
@@ -958,15 +958,15 @@ final class q
         Object localObject3 = this.mContext.getResources().getDrawable(((z)localObject2).id);
         if ((((z)localObject2).width > 0) && (((z)localObject2).height > 0))
         {
-          ((Drawable)localObject3).setBounds(0, 0, com.tencent.mm.cc.a.fromDPToPix(this.mContext, ((z)localObject2).width), com.tencent.mm.cc.a.fromDPToPix(this.mContext, ((z)localObject2).height));
+          ((Drawable)localObject3).setBounds(0, 0, com.tencent.mm.cb.a.fromDPToPix(this.mContext, ((z)localObject2).width), com.tencent.mm.cb.a.fromDPToPix(this.mContext, ((z)localObject2).height));
           localObject3 = new com.tencent.mm.ui.widget.a((Drawable)localObject3);
-          ((com.tencent.mm.ui.widget.a)localObject3).KQg = com.tencent.mm.cc.a.fromDPToPix(this.mContext, 2);
+          ((com.tencent.mm.ui.widget.a)localObject3).LmE = com.tencent.mm.cb.a.fromDPToPix(this.mContext, 2);
           paramCharSequence.setSpan(localObject3, ((z)localObject2).start, ((z)localObject2).start + 1, 18);
         }
         else
         {
           if (this.Wf == null) {}
-          for (paramInt = (int)(this.Fit * 1.3F);; paramInt = (int)(this.Wf.getTextSize() * 1.3F))
+          for (paramInt = (int)(this.FAS * 1.3F);; paramInt = (int)(this.Wf.getTextSize() * 1.3F))
           {
             ((Drawable)localObject3).setBounds(0, 0, paramInt, paramInt);
             break;
@@ -977,13 +977,13 @@ final class q
     g(paramCharSequence);
     a(paramCharSequence);
     if (paramBoolean) {
-      FhY.q(str, new SpannableString(paramCharSequence));
+      FAw.q(str, new SpannableString(paramCharSequence));
     }
     AppMethodBeat.o(152348);
     return paramCharSequence;
   }
   
-  public final q w(TextView paramTextView)
+  public final q u(TextView paramTextView)
   {
     AppMethodBeat.i(152346);
     this.Wf = paramTextView;
@@ -1013,7 +1013,7 @@ final class q
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.span.q
  * JD-Core Version:    0.7.0.1
  */

@@ -2,105 +2,105 @@ package com.tencent.mm.plugin.finder.shell;
 
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.fl;
-import com.tencent.mm.g.a.tr;
+import com.tencent.mm.g.a.fm;
+import com.tencent.mm.g.a.ts;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.expt.b.b;
 import com.tencent.mm.plugin.expt.b.b.a;
 import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.al.a;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bv;
+import com.tencent.mm.storage.aj;
+import com.tencent.mm.storage.am.a;
 import d.g.b.p;
 import d.l;
 import org.json.JSONObject;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/shell/FinderShell;", "", "()V", "TAG", "", "entryConfigChangeListener", "com/tencent/mm/plugin/finder/shell/FinderShell$entryConfigChangeListener$1", "Lcom/tencent/mm/plugin/finder/shell/FinderShell$entryConfigChangeListener$1;", "listener", "com/tencent/mm/plugin/finder/shell/FinderShell$listener$1", "Lcom/tencent/mm/plugin/finder/shell/FinderShell$listener$1;", "exec", "", "intent", "Landroid/content/Intent;", "setup", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/shell/FinderShell;", "", "()V", "TAG", "", "entryConfigChangeListener", "com/tencent/mm/plugin/finder/shell/FinderShell$entryConfigChangeListener$1", "Lcom/tencent/mm/plugin/finder/shell/FinderShell$entryConfigChangeListener$1;", "listener", "com/tencent/mm/plugin/finder/shell/FinderShell$listener$1", "Lcom/tencent/mm/plugin/finder/shell/FinderShell$listener$1;", "exec", "", "intent", "Landroid/content/Intent;", "setup", "plugin-finder_release"})
 public final class a
 {
-  private static final b sux;
-  private static final a suy;
-  public static final a suz;
+  private static final b sEH;
+  private static final a sEI;
+  public static final a sEJ;
   
   static
   {
-    AppMethodBeat.i(203549);
-    suz = new a();
-    sux = new b();
-    suy = new a();
-    AppMethodBeat.o(203549);
+    AppMethodBeat.i(204109);
+    sEJ = new a();
+    sEH = new b();
+    sEI = new a();
+    AppMethodBeat.o(204109);
   }
   
   public static void setup()
   {
-    AppMethodBeat.i(203548);
-    if (bu.flY()) {
-      sux.alive();
+    AppMethodBeat.i(204108);
+    if (bv.fpT()) {
+      sEH.alive();
     }
-    AppMethodBeat.o(203548);
+    AppMethodBeat.o(204108);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/finder/shell/FinderShell$entryConfigChangeListener$1", "Lcom/tencent/mm/sdk/event/IListener;", "Lcom/tencent/mm/autogen/events/ExptChangeEvent;", "callback", "", "event", "plugin-finder_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/finder/shell/FinderShell$entryConfigChangeListener$1", "Lcom/tencent/mm/sdk/event/IListener;", "Lcom/tencent/mm/autogen/events/ExptChangeEvent;", "callback", "", "event", "plugin-finder_release"})
   public static final class a
-    extends c<fl>
+    extends c<fm>
   {
-    private static boolean a(fl paramfl)
+    private static boolean a(fm paramfm)
     {
-      AppMethodBeat.i(203545);
-      p.h(paramfl, "event");
-      paramfl = ((b)g.ab(b.class)).a(b.a.qAa, "");
-      Object localObject = (CharSequence)paramfl;
+      AppMethodBeat.i(204105);
+      p.h(paramfm, "event");
+      paramfm = ((b)g.ab(b.class)).a(b.a.qHj, "");
+      Object localObject = (CharSequence)paramfm;
       if ((localObject == null) || (((CharSequence)localObject).length() == 0)) {}
       for (int i = 1; i != 0; i = 0)
       {
-        AppMethodBeat.o(203545);
+        AppMethodBeat.o(204105);
         return true;
       }
       for (;;)
       {
         try
         {
-          paramfl = new JSONObject(paramfl);
-          i = paramfl.getInt("version");
-          localObject = g.ajC();
+          paramfm = new JSONObject(paramfm);
+          i = paramfm.getInt("version");
+          localObject = g.ajR();
           p.g(localObject, "MMKernel.storage()");
-          int j = ((e)localObject).ajl().getInt(al.a.IIS, 0);
-          ad.i("Finder.Shell", "lastVersion=" + j + " version=" + i + " json=" + paramfl);
+          int j = ((e)localObject).ajA().getInt(am.a.Jdx, 0);
+          ae.i("Finder.Shell", "lastVersion=" + j + " version=" + i + " json=" + paramfm);
           if (j == i) {}
         }
-        catch (Exception paramfl)
+        catch (Exception paramfm)
         {
           continue;
         }
         try
         {
           localObject = new Intent();
-          ((Intent)localObject).putExtra("sql", paramfl.getString("sql"));
-          ((Intent)localObject).putExtra("db", paramfl.getString("db"));
-          paramfl = a.suz;
-          a.ak((Intent)localObject);
-          paramfl = g.ajC();
-          p.g(paramfl, "MMKernel.storage()");
-          paramfl.ajl().set(al.a.IIS, Integer.valueOf(i));
-          AppMethodBeat.o(203545);
+          ((Intent)localObject).putExtra("sql", paramfm.getString("sql"));
+          ((Intent)localObject).putExtra("db", paramfm.getString("db"));
+          paramfm = a.sEJ;
+          a.al((Intent)localObject);
+          paramfm = g.ajR();
+          p.g(paramfm, "MMKernel.storage()");
+          paramfm.ajA().set(am.a.Jdx, Integer.valueOf(i));
+          AppMethodBeat.o(204105);
           return true;
         }
         finally
         {
-          localObject = g.ajC();
+          localObject = g.ajR();
           p.g(localObject, "MMKernel.storage()");
-          ((e)localObject).ajl().set(al.a.IIS, Integer.valueOf(i));
-          AppMethodBeat.o(203545);
+          ((e)localObject).ajA().set(am.a.Jdx, Integer.valueOf(i));
+          AppMethodBeat.o(204105);
         }
       }
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/finder/shell/FinderShell$listener$1", "Lcom/tencent/mm/sdk/event/IListener;", "Lcom/tencent/mm/autogen/events/ShellExecEvent;", "callback", "", "event", "plugin-finder_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/finder/shell/FinderShell$listener$1", "Lcom/tencent/mm/sdk/event/IListener;", "Lcom/tencent/mm/autogen/events/ShellExecEvent;", "callback", "", "event", "plugin-finder_release"})
   public static final class b
-    extends c<tr>
+    extends c<ts>
   {}
 }
 

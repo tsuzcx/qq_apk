@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.appbrand.canvas.action.arg;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.z.g;
+import com.tencent.mm.plugin.appbrand.y.g;
 import java.util.Objects;
 import org.json.JSONObject;
 
@@ -28,7 +28,7 @@ public class TranslateActionArg
     super(paramParcel, (byte)0);
   }
   
-  public final boolean bdo()
+  public final boolean bdT()
   {
     return (this.x == 0.0F) && (this.y == 0.0F);
   }

@@ -15,32 +15,32 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/scanner/ui/scangoods/widget/ScanAnimationHelper;", "", "()V", "TAG", "", "animateCustomSuccessView", "", "successView", "Landroid/view/View;", "animateDefaultSuccessView", "successMarkView", "successAnimationListener", "Lcom/tencent/mm/plugin/scanner/view/ScanResultAnimationListener;", "animateScanTipsImage", "Landroid/support/animation/SpringAnimation;", "view", "doSpringAnimation", "plugin-scan_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/scanner/ui/scangoods/widget/ScanAnimationHelper;", "", "()V", "TAG", "", "animateCustomSuccessView", "", "successView", "Landroid/view/View;", "animateDefaultSuccessView", "successMarkView", "successAnimationListener", "Lcom/tencent/mm/plugin/scanner/view/ScanResultAnimationListener;", "animateScanTipsImage", "Landroid/support/animation/SpringAnimation;", "view", "doSpringAnimation", "plugin-scan_release"})
 public final class h
 {
-  public static final h yvS;
+  public static final h yLS;
   
   static
   {
-    AppMethodBeat.i(186353);
-    yvS = new h();
-    AppMethodBeat.o(186353);
+    AppMethodBeat.i(189648);
+    yLS = new h();
+    AppMethodBeat.o(189648);
   }
   
   public static final void a(View paramView, com.tencent.mm.plugin.scanner.view.c paramc)
   {
-    AppMethodBeat.i(186350);
+    AppMethodBeat.i(189645);
     p.h(paramView, "successMarkView");
     paramView.setAlpha(0.0F);
     paramView.setScaleX(0.0F);
     paramView.setScaleY(0.0F);
     paramView.animate().alpha(1.0F).scaleX(1.0F).scaleY(1.0F).setDuration(300L).setListener((Animator.AnimatorListener)new b(paramc)).setInterpolator((TimeInterpolator)new LinearInterpolator()).start();
-    AppMethodBeat.o(186350);
+    AppMethodBeat.o(189645);
   }
   
   public static final void eF(View paramView)
   {
-    AppMethodBeat.i(186351);
+    AppMethodBeat.i(189646);
     p.h(paramView, "successView");
     paramView.setAlpha(1.0F);
     Object localObject1 = new d(paramView, (android.support.a.c)d.fL, (byte)0);
@@ -66,12 +66,12 @@ public final class h
     ((ValueAnimator)localObject1).setInterpolator((TimeInterpolator)new LinearInterpolator());
     ((ValueAnimator)localObject1).addUpdateListener((ValueAnimator.AnimatorUpdateListener)new h.a(paramView));
     ((ValueAnimator)localObject1).start();
-    AppMethodBeat.o(186351);
+    AppMethodBeat.o(189646);
   }
   
   public static final d eG(View paramView)
   {
-    AppMethodBeat.i(186352);
+    AppMethodBeat.i(189647);
     p.h(paramView, "view");
     paramView = new d(paramView, (android.support.a.c)d.fI);
     paramView.aF();
@@ -81,11 +81,11 @@ public final class h
     paramView.a(locale);
     paramView.e(-10.0F);
     paramView.start();
-    AppMethodBeat.o(186352);
+    AppMethodBeat.o(189647);
     return paramView;
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/scanner/ui/scangoods/widget/ScanAnimationHelper$animateDefaultSuccessView$1", "Landroid/animation/AnimatorListenerAdapter;", "onAnimationEnd", "", "animation", "Landroid/animation/Animator;", "onAnimationStart", "plugin-scan_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/scanner/ui/scangoods/widget/ScanAnimationHelper$animateDefaultSuccessView$1", "Landroid/animation/AnimatorListenerAdapter;", "onAnimationEnd", "", "animation", "Landroid/animation/Animator;", "onAnimationStart", "plugin-scan_release"})
   public static final class b
     extends AnimatorListenerAdapter
   {
@@ -93,15 +93,15 @@ public final class h
     
     public final void onAnimationEnd(Animator paramAnimator)
     {
-      AppMethodBeat.i(186349);
-      paramAnimator = this.yvU;
+      AppMethodBeat.i(189644);
+      paramAnimator = this.yLU;
       if (paramAnimator != null)
       {
-        paramAnimator.dLD();
-        AppMethodBeat.o(186349);
+        paramAnimator.dOW();
+        AppMethodBeat.o(189644);
         return;
       }
-      AppMethodBeat.o(186349);
+      AppMethodBeat.o(189644);
     }
     
     public final void onAnimationStart(Animator paramAnimator) {}

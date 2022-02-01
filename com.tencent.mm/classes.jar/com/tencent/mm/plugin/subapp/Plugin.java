@@ -1,11 +1,11 @@
 package com.tencent.mm.plugin.subapp;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.ax;
+import com.tencent.mm.model.az;
 import com.tencent.mm.pluginsdk.b.c;
 import com.tencent.mm.pluginsdk.b.d;
 import com.tencent.mm.pluginsdk.n;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class Plugin
   implements d
@@ -13,23 +13,23 @@ public final class Plugin
   public Plugin()
   {
     AppMethodBeat.i(28828);
-    ad.i("MicroMsg.Plugin.subapp", "subapp constructor " + System.currentTimeMillis());
+    ae.i("MicroMsg.Plugin.subapp", "subapp constructor " + System.currentTimeMillis());
     AppMethodBeat.o(28828);
   }
   
   public final n createApplication()
   {
     AppMethodBeat.i(28829);
-    ad.i("MicroMsg.Plugin.subapp", "subapp createApplication " + System.currentTimeMillis());
+    ae.i("MicroMsg.Plugin.subapp", "subapp createApplication " + System.currentTimeMillis());
     b localb = new b();
     AppMethodBeat.o(28829);
     return localb;
   }
   
-  public final ax createSubCore()
+  public final az createSubCore()
   {
     AppMethodBeat.i(28831);
-    ad.i("MicroMsg.Plugin.subapp", "subapp createSubCore " + System.currentTimeMillis());
+    ae.i("MicroMsg.Plugin.subapp", "subapp createSubCore " + System.currentTimeMillis());
     a locala = new a();
     AppMethodBeat.o(28831);
     return locala;
@@ -38,7 +38,7 @@ public final class Plugin
   public final c getContactWidgetFactory()
   {
     AppMethodBeat.i(28830);
-    ad.i("MicroMsg.Plugin.subapp", "subapp getContactWidgetFactory " + System.currentTimeMillis());
+    ae.i("MicroMsg.Plugin.subapp", "subapp getContactWidgetFactory " + System.currentTimeMillis());
     AppMethodBeat.o(28830);
     return null;
   }

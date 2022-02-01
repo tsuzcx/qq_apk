@@ -9,8 +9,8 @@ import java.util.ArrayList;
 public final class e
   implements AbsListView.OnScrollListener
 {
-  private AbsListView.OnScrollListener ERY;
-  private ArrayList<WeakReference<a>> ERZ;
+  private AbsListView.OnScrollListener Fkt;
+  private ArrayList<WeakReference<a>> Fku;
   
   public e()
   {
@@ -20,18 +20,18 @@ public final class e
   public e(AbsListView.OnScrollListener paramOnScrollListener)
   {
     AppMethodBeat.i(152123);
-    this.ERZ = new ArrayList();
-    this.ERY = paramOnScrollListener;
+    this.Fku = new ArrayList();
+    this.Fkt = paramOnScrollListener;
     AppMethodBeat.o(152123);
   }
   
-  private void vH(boolean paramBoolean)
+  private void vP(boolean paramBoolean)
   {
     AppMethodBeat.i(152127);
     int i = 0;
-    if (i < this.ERZ.size())
+    if (i < this.Fku.size())
     {
-      Object localObject = (WeakReference)this.ERZ.get(i);
+      Object localObject = (WeakReference)this.Fku.get(i);
       if (localObject != null)
       {
         localObject = (a)((WeakReference)localObject).get();
@@ -43,9 +43,9 @@ public final class e
       {
         i += 1;
         break;
-        this.ERZ.remove(i);
+        this.Fku.remove(i);
         continue;
-        this.ERZ.remove(i);
+        this.Fku.remove(i);
       }
     }
     AppMethodBeat.o(152127);
@@ -54,15 +54,15 @@ public final class e
   public final void a(a parama)
   {
     AppMethodBeat.i(152126);
-    this.ERZ.add(new WeakReference(parama));
+    this.Fku.add(new WeakReference(parama));
     AppMethodBeat.o(152126);
   }
   
   public final void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(152124);
-    if (this.ERY != null) {
-      this.ERY.onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
+    if (this.Fkt != null) {
+      this.Fkt.onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
     }
     AppMethodBeat.o(152124);
   }
@@ -71,16 +71,16 @@ public final class e
   {
     AppMethodBeat.i(152125);
     if (paramInt == 2) {
-      vH(true);
+      vP(true);
     }
     for (;;)
     {
-      if (this.ERY != null) {
-        this.ERY.onScrollStateChanged(paramAbsListView, paramInt);
+      if (this.Fkt != null) {
+        this.Fkt.onScrollStateChanged(paramAbsListView, paramInt);
       }
       AppMethodBeat.o(152125);
       return;
-      vH(false);
+      vP(false);
     }
   }
   

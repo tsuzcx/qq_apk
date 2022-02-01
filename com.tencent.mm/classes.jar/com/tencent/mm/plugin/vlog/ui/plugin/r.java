@@ -24,105 +24,105 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/vlog/ui/plugin/MultiVideoPlayStatusPlugin;", "Lcom/tencent/mm/plugin/recordvideo/plugin/IBaseRecordPlugin;", "parent", "Landroid/view/ViewGroup;", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "(Landroid/view/ViewGroup;Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "context", "Landroid/content/Context;", "kotlin.jvm.PlatformType", "getContext", "()Landroid/content/Context;", "context$delegate", "Lkotlin/Lazy;", "isPlaying", "", "listeners", "", "Lcom/tencent/mm/plugin/vlog/ui/plugin/MultiVideoPlayStatusPlugin$PlayStatusListener;", "getParent", "()Landroid/view/ViewGroup;", "setParent", "(Landroid/view/ViewGroup;)V", "getStatus", "()Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "setStatus", "(Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "statusIcon", "Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "getStatusIcon", "()Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "statusIcon$delegate", "useOperatePlaying", "addPlayStatusListener", "", "listener", "needPlay", "onPause", "onResume", "removePlayStatusListener", "showPauseStatus", "showPlayStatus", "PlayStatusListener", "plugin-vlog_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/vlog/ui/plugin/MultiVideoPlayStatusPlugin;", "Lcom/tencent/mm/plugin/recordvideo/plugin/IBaseRecordPlugin;", "parent", "Landroid/view/ViewGroup;", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "(Landroid/view/ViewGroup;Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "context", "Landroid/content/Context;", "kotlin.jvm.PlatformType", "getContext", "()Landroid/content/Context;", "context$delegate", "Lkotlin/Lazy;", "isPlaying", "", "listeners", "", "Lcom/tencent/mm/plugin/vlog/ui/plugin/MultiVideoPlayStatusPlugin$PlayStatusListener;", "getParent", "()Landroid/view/ViewGroup;", "setParent", "(Landroid/view/ViewGroup;)V", "getStatus", "()Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "setStatus", "(Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "statusIcon", "Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "getStatusIcon", "()Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "statusIcon$delegate", "useOperatePlaying", "addPlayStatusListener", "", "listener", "needPlay", "onPause", "onResume", "removePlayStatusListener", "showPauseStatus", "showPlayStatus", "PlayStatusListener", "plugin-vlog_release"})
 public final class r
   implements t
 {
-  private final f BNK;
-  boolean BNL;
-  ViewGroup gqv;
-  boolean lQV;
+  private final f Cfj;
+  boolean Cfk;
+  ViewGroup gsV;
+  boolean lVw;
   public final List<a> listeners;
-  private final f rUo;
-  d sQE;
+  private final f scS;
+  d tbP;
   
   public r(ViewGroup paramViewGroup, d paramd)
   {
-    AppMethodBeat.i(196305);
-    this.gqv = paramViewGroup;
-    this.sQE = paramd;
-    this.rUo = g.O((d.g.a.a)new b(this));
-    this.BNK = g.O((d.g.a.a)new c(this));
-    this.lQV = true;
-    this.BNL = this.lQV;
+    AppMethodBeat.i(191764);
+    this.gsV = paramViewGroup;
+    this.tbP = paramd;
+    this.scS = g.O((d.g.a.a)new b(this));
+    this.Cfj = g.O((d.g.a.a)new c(this));
+    this.lVw = true;
+    this.Cfk = this.lVw;
     this.listeners = ((List)new ArrayList());
-    etw().setOnClickListener((View.OnClickListener)new View.OnClickListener()
+    exd().setOnClickListener((View.OnClickListener)new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(196296);
+        AppMethodBeat.i(191755);
         Object localObject = new b();
         ((b)localObject).bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/vlog/ui/plugin/MultiVideoPlayStatusPlugin$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahq());
-        if (this.BNM.lQV) {
-          this.BNM.ety();
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/vlog/ui/plugin/MultiVideoPlayStatusPlugin$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahF());
+        if (this.Cfl.lVw) {
+          this.Cfl.exf();
         }
-        for (paramAnonymousView = d.c.xES;; paramAnonymousView = d.c.xET)
+        for (paramAnonymousView = d.c.xUN;; paramAnonymousView = d.c.xUO)
         {
-          this.BNM.BNL = this.BNM.lQV;
+          this.Cfl.Cfk = this.Cfl.lVw;
           localObject = new Bundle();
           ((Bundle)localObject).putBoolean("PARAM_1_BOOLEAN", true);
-          this.BNM.sQE.a(paramAnonymousView, (Bundle)localObject);
+          this.Cfl.tbP.a(paramAnonymousView, (Bundle)localObject);
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/vlog/ui/plugin/MultiVideoPlayStatusPlugin$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-          AppMethodBeat.o(196296);
+          AppMethodBeat.o(191755);
           return;
-          this.BNM.etx();
+          this.Cfl.exe();
         }
       }
     });
-    AppMethodBeat.o(196305);
+    AppMethodBeat.o(191764);
   }
   
-  private final WeImageView etw()
+  private final WeImageView exd()
   {
-    AppMethodBeat.i(196300);
-    WeImageView localWeImageView = (WeImageView)this.BNK.getValue();
-    AppMethodBeat.o(196300);
+    AppMethodBeat.i(191759);
+    WeImageView localWeImageView = (WeImageView)this.Cfj.getValue();
+    AppMethodBeat.o(191759);
     return localWeImageView;
   }
   
   private final Context getContext()
   {
-    AppMethodBeat.i(196299);
-    Context localContext = (Context)this.rUo.getValue();
-    AppMethodBeat.o(196299);
+    AppMethodBeat.i(191758);
+    Context localContext = (Context)this.scS.getValue();
+    AppMethodBeat.o(191758);
     return localContext;
   }
   
-  public final boolean aoB()
+  public final boolean aoQ()
   {
     return false;
   }
   
-  public final void ayX() {}
+  public final void azm() {}
   
-  public final void etx()
+  public final void exe()
   {
-    AppMethodBeat.i(196301);
-    etw().setImageDrawable(ao.k(getContext(), 2131690445, -1));
-    this.lQV = true;
+    AppMethodBeat.i(191760);
+    exd().setImageDrawable(ao.k(getContext(), 2131690445, -1));
+    this.lVw = true;
     Iterator localIterator = ((Iterable)this.listeners).iterator();
     while (localIterator.hasNext()) {
       ((a)localIterator.next()).onVideoPlay();
     }
-    AppMethodBeat.o(196301);
+    AppMethodBeat.o(191760);
   }
   
-  public final void ety()
+  public final void exf()
   {
-    AppMethodBeat.i(196302);
-    etw().setImageDrawable(ao.k(getContext(), 2131690459, -1));
-    this.lQV = false;
+    AppMethodBeat.i(191761);
+    exd().setImageDrawable(ao.k(getContext(), 2131690459, -1));
+    this.lVw = false;
     Iterator localIterator = ((Iterable)this.listeners).iterator();
     while (localIterator.hasNext()) {
       localIterator.next();
     }
-    AppMethodBeat.o(196302);
+    AppMethodBeat.o(191761);
   }
   
-  public final boolean etz()
+  public final boolean exg()
   {
-    return this.BNL;
+    return this.Cfk;
   }
   
   public final String name()
@@ -136,30 +136,30 @@ public final class r
   
   public final void onPause()
   {
-    AppMethodBeat.i(196304);
-    ety();
-    d.b.a(this.sQE, d.c.xES);
-    AppMethodBeat.o(196304);
+    AppMethodBeat.i(191763);
+    exf();
+    d.b.a(this.tbP, d.c.xUN);
+    AppMethodBeat.o(191763);
   }
   
   public final void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    AppMethodBeat.i(196306);
+    AppMethodBeat.i(191765);
     p.h(paramArrayOfString, "permissions");
     p.h(paramArrayOfInt, "grantResults");
     t.a.a(paramArrayOfString, paramArrayOfInt);
-    AppMethodBeat.o(196306);
+    AppMethodBeat.o(191765);
   }
   
   public final void onResume()
   {
-    AppMethodBeat.i(196303);
-    if (this.BNL)
+    AppMethodBeat.i(191762);
+    if (this.Cfk)
     {
-      etx();
-      d.b.a(this.sQE, d.c.xET);
+      exe();
+      d.b.a(this.tbP, d.c.xUO);
     }
-    AppMethodBeat.o(196303);
+    AppMethodBeat.o(191762);
   }
   
   public final void release() {}
@@ -168,13 +168,13 @@ public final class r
   
   public final void setVisibility(int paramInt) {}
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/vlog/ui/plugin/MultiVideoPlayStatusPlugin$PlayStatusListener;", "", "onVideoPause", "", "onVideoPlay", "plugin-vlog_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/vlog/ui/plugin/MultiVideoPlayStatusPlugin$PlayStatusListener;", "", "onVideoPause", "", "onVideoPlay", "plugin-vlog_release"})
   public static abstract interface a
   {
     public abstract void onVideoPlay();
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "Landroid/content/Context;", "kotlin.jvm.PlatformType", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "Landroid/content/Context;", "kotlin.jvm.PlatformType", "invoke"})
   static final class b
     extends q
     implements d.g.a.a<Context>
@@ -185,7 +185,7 @@ public final class r
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "kotlin.jvm.PlatformType", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "kotlin.jvm.PlatformType", "invoke"})
   static final class c
     extends q
     implements d.g.a.a<WeImageView>

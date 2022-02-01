@@ -3,49 +3,49 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class bsu
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public String Name;
-  public String yhw;
+  public String Hgt;
+  public String Hgu;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(152618);
+    AppMethodBeat.i(123622);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.Name != null) {
-        paramVarArgs.d(1, this.Name);
+      if (this.Hgt != null) {
+        paramVarArgs.d(1, this.Hgt);
       }
-      if (this.yhw != null) {
-        paramVarArgs.d(2, this.yhw);
+      if (this.Hgu != null) {
+        paramVarArgs.d(2, this.Hgu);
       }
-      AppMethodBeat.o(152618);
+      AppMethodBeat.o(123622);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.Name == null) {
+      if (this.Hgt == null) {
         break label274;
       }
     }
     label274:
-    for (paramInt = f.a.a.b.b.a.e(1, this.Name) + 0;; paramInt = 0)
+    for (paramInt = f.a.a.b.b.a.e(1, this.Hgt) + 0;; paramInt = 0)
     {
       int i = paramInt;
-      if (this.yhw != null) {
-        i = paramInt + f.a.a.b.b.a.e(2, this.yhw);
+      if (this.Hgu != null) {
+        i = paramInt + f.a.a.b.b.a.e(2, this.Hgu);
       }
-      AppMethodBeat.o(152618);
+      AppMethodBeat.o(123622);
       return i;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
-        AppMethodBeat.o(152618);
+        AppMethodBeat.o(123622);
         return 0;
       }
       if (paramInt == 3)
@@ -55,18 +55,18 @@ public final class bsu
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(152618);
+          AppMethodBeat.o(123622);
           return -1;
         case 1: 
-          localbsu.Name = locala.NPN.readString();
-          AppMethodBeat.o(152618);
+          localbsu.Hgt = locala.OmT.readString();
+          AppMethodBeat.o(123622);
           return 0;
         }
-        localbsu.yhw = locala.NPN.readString();
-        AppMethodBeat.o(152618);
+        localbsu.Hgu = locala.OmT.readString();
+        AppMethodBeat.o(123622);
         return 0;
       }
-      AppMethodBeat.o(152618);
+      AppMethodBeat.o(123622);
       return -1;
     }
   }

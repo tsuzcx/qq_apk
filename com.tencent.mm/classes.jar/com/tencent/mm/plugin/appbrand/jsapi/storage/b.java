@@ -18,7 +18,7 @@ public final class b
     AppMethodBeat.i(147231);
     JsApiClearStorageTask localJsApiClearStorageTask = new JsApiClearStorageTask();
     localJsApiClearStorageTask.appId = paramh.getAppId();
-    localJsApiClearStorageTask.liU = paramInt;
+    localJsApiClearStorageTask.lmG = paramInt;
     AppBrandMainProcessService.b(localJsApiClearStorageTask);
     paramh = e("ok", null);
     AppMethodBeat.o(147231);
@@ -28,7 +28,7 @@ public final class b
   private String c(com.tencent.mm.plugin.appbrand.jsapi.h paramh, int paramInt)
   {
     AppMethodBeat.i(147232);
-    ((a)e.K(a.class)).dg(paramh.getAppId()).U(paramInt, paramh.getAppId());
+    ((a)e.K(a.class)).dl(paramh.getAppId()).U(paramInt, paramh.getAppId());
     paramh = e("ok", null);
     AppMethodBeat.o(147232);
     return paramh;

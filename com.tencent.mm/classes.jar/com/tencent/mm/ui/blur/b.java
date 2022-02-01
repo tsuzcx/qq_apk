@@ -9,7 +9,7 @@ public abstract interface b
   
   public abstract void destroy();
   
-  public abstract Bitmap.Config fAh();
+  public abstract Bitmap.Config fEj();
 }
 
 

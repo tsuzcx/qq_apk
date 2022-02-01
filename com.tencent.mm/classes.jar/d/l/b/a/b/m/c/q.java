@@ -67,7 +67,7 @@ public abstract interface q
   
   public abstract l j(j paramj);
   
-  public abstract h ju(List<? extends h> paramList);
+  public abstract h jD(List<? extends h> paramList);
   
   public abstract Collection<h> k(n paramn);
   
@@ -136,7 +136,7 @@ public abstract interface q
         localObject = paramq;
         if (paramq == null)
         {
-          p.gfZ();
+          p.gkB();
           localObject = paramq;
         }
       }
@@ -209,7 +209,7 @@ public abstract interface q
         localObject = paramq;
         if (paramq == null)
         {
-          p.gfZ();
+          p.gkB();
           localObject = paramq;
         }
       }
@@ -308,7 +308,7 @@ public abstract interface q
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.m.c.q
  * JD-Core Version:    0.7.0.1
  */

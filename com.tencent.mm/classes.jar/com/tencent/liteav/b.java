@@ -44,7 +44,7 @@ public class b
   
   public b(Context paramContext, f paramf, m paramm, boolean paramBoolean)
   {
-    AppMethodBeat.i(187212);
+    AppMethodBeat.i(221341);
     this.g = 0;
     this.h = null;
     this.i = false;
@@ -65,7 +65,7 @@ public class b
       this.h.setSurfaceTextureListener(this);
       this.f.W = paramBoolean;
       this.c.b(this.f.U);
-      AppMethodBeat.o(187212);
+      AppMethodBeat.o(221341);
       return;
     }
     catch (CloneNotSupportedException paramf)
@@ -190,38 +190,38 @@ public class b
   
   private a.a n()
   {
-    AppMethodBeat.i(187213);
+    AppMethodBeat.i(221342);
     if (this.f.T)
     {
       locala = a.a.i;
-      AppMethodBeat.o(187213);
+      AppMethodBeat.o(221342);
       return locala;
     }
     switch (3.a[this.f.k.ordinal()])
     {
     default: 
       locala = a.a.g;
-      AppMethodBeat.o(187213);
+      AppMethodBeat.o(221342);
       return locala;
     case 1: 
       locala = a.a.a;
-      AppMethodBeat.o(187213);
+      AppMethodBeat.o(221342);
       return locala;
     case 2: 
       locala = a.a.e;
-      AppMethodBeat.o(187213);
+      AppMethodBeat.o(221342);
       return locala;
     case 3: 
       locala = a.a.f;
-      AppMethodBeat.o(187213);
+      AppMethodBeat.o(221342);
       return locala;
     case 4: 
       locala = a.a.h;
-      AppMethodBeat.o(187213);
+      AppMethodBeat.o(221342);
       return locala;
     }
     a.a locala = a.a.d;
-    AppMethodBeat.o(187213);
+    AppMethodBeat.o(221342);
     return locala;
   }
   
@@ -587,11 +587,11 @@ public class b
   
   public void e(boolean paramBoolean)
   {
-    AppMethodBeat.i(187214);
+    AppMethodBeat.i(221343);
     this.f.U = paramBoolean;
     this.c.b(paramBoolean);
     this.r = true;
-    AppMethodBeat.o(187214);
+    AppMethodBeat.o(221343);
   }
   
   public EGLContext f()

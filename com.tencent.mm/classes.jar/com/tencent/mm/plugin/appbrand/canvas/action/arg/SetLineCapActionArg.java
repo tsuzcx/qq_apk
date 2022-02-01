@@ -11,7 +11,7 @@ public class SetLineCapActionArg
   extends BaseDrawActionArg
 {
   public static final Parcelable.Creator<SetLineCapActionArg> CREATOR;
-  public String jTx;
+  public String jWO;
   
   static
   {
@@ -51,7 +51,7 @@ public class SetLineCapActionArg
       return false;
     }
     paramObject = (SetLineCapActionArg)paramObject;
-    boolean bool = Objects.equals(this.jTx, paramObject.jTx);
+    boolean bool = Objects.equals(this.jWO, paramObject.jWO);
     AppMethodBeat.o(145193);
     return bool;
   }
@@ -60,14 +60,14 @@ public class SetLineCapActionArg
   {
     AppMethodBeat.i(145190);
     super.h(paramParcel);
-    this.jTx = paramParcel.readString();
+    this.jWO = paramParcel.readString();
     AppMethodBeat.o(145190);
   }
   
   public int hashCode()
   {
     AppMethodBeat.i(145194);
-    int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), this.jTx });
+    int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), this.jWO });
     AppMethodBeat.o(145194);
     return i;
   }
@@ -76,7 +76,7 @@ public class SetLineCapActionArg
   {
     AppMethodBeat.i(145191);
     super.parse(paramJSONObject);
-    this.jTx = paramJSONObject.optJSONArray("data").optString(0);
+    this.jWO = paramJSONObject.optJSONArray("data").optString(0);
     AppMethodBeat.o(145191);
   }
   
@@ -84,7 +84,7 @@ public class SetLineCapActionArg
   {
     AppMethodBeat.i(145192);
     super.writeToParcel(paramParcel, paramInt);
-    paramParcel.writeString(this.jTx);
+    paramParcel.writeString(this.jWO);
     AppMethodBeat.o(145192);
   }
 }

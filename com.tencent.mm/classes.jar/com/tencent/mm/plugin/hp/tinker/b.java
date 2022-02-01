@@ -7,14 +7,14 @@ import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ax;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.ay;
 
 public final class b
 {
-  private final String uIU;
-  private final String uIV;
+  private final String uUH;
+  private final String uUI;
   
   private b(String paramString1, String paramString2)
   {
@@ -31,12 +31,12 @@ public final class b
       AppMethodBeat.o(117456);
       throw paramString1;
     }
-    this.uIU = paramString1;
-    this.uIV = paramString2;
+    this.uUH = paramString1;
+    this.uUI = paramString2;
     AppMethodBeat.o(117456);
   }
   
-  private static int anm(String paramString)
+  private static int aoo(String paramString)
   {
     AppMethodBeat.i(117459);
     Object localObject = paramString;
@@ -71,16 +71,16 @@ public final class b
     }
     catch (Throwable paramString)
     {
-      ad.e("MicroMsg.TinkerDeployStatistic", "[-] Fail to parse hex string: %s", new Object[] { localObject });
+      ae.e("MicroMsg.TinkerDeployStatistic", "[-] Fail to parse hex string: %s", new Object[] { localObject });
       AppMethodBeat.o(117459);
     }
   }
   
   @SuppressLint({"ApplySharedPref"})
-  private static void ann(String paramString)
+  private static void aop(String paramString)
   {
     AppMethodBeat.i(117462);
-    SharedPreferences localSharedPreferences = dcv();
+    SharedPreferences localSharedPreferences = dfn();
     if (!localSharedPreferences.contains(paramString))
     {
       long l = System.currentTimeMillis();
@@ -89,25 +89,25 @@ public final class b
     AppMethodBeat.o(117462);
   }
   
-  public static SharedPreferences dcv()
+  public static SharedPreferences dfn()
   {
     AppMethodBeat.i(117458);
     try
     {
-      ax localax = ax.aQB("tinker_deploy_stats_ts");
+      ay localay = ay.aRY("tinker_deploy_stats_ts");
       AppMethodBeat.o(117458);
-      return localax;
+      return localay;
     }
     catch (Throwable localThrowable)
     {
-      ad.printErrStackTrace("MicroMsg.TinkerDeployStatistic", localThrowable, "[-] Fail to init mmkv storage, fallback to system sp.", new Object[0]);
-      SharedPreferences localSharedPreferences = aj.getContext().getSharedPreferences("tinker_deploy_stats_ts", 4);
+      ae.printErrStackTrace("MicroMsg.TinkerDeployStatistic", localThrowable, "[-] Fail to init mmkv storage, fallback to system sp.", new Object[0]);
+      SharedPreferences localSharedPreferences = ak.getContext().getSharedPreferences("tinker_deploy_stats_ts", 4);
       AppMethodBeat.o(117458);
       return localSharedPreferences;
     }
   }
   
-  public static b ht(String paramString1, String paramString2)
+  public static b hA(String paramString1, String paramString2)
   {
     AppMethodBeat.i(117457);
     paramString1 = new b(paramString1, paramString2);
@@ -115,10 +115,10 @@ public final class b
     return paramString1;
   }
   
-  public final String Iv(int paramInt)
+  public final String IT(int paramInt)
   {
     AppMethodBeat.i(117460);
-    String str = "mmkv_key_" + anm(this.uIU) + "_" + anm(this.uIV) + "_" + paramInt;
+    String str = "mmkv_key_" + aoo(this.uUH) + "_" + aoo(this.uUI) + "_" + paramInt;
     AppMethodBeat.o(117460);
     return str;
   }
@@ -126,43 +126,43 @@ public final class b
   public final void ak(int paramInt, long paramLong)
   {
     AppMethodBeat.i(184835);
-    String str = String.valueOf(paramInt) + ',' + anm(this.uIU) + ',' + anm(this.uIV) + ',' + paramLong;
-    g.yhR.a(17676, str, true, true);
+    String str = String.valueOf(paramInt) + ',' + aoo(this.uUH) + ',' + aoo(this.uUI) + ',' + paramLong;
+    g.yxI.a(17676, str, true, true);
     AppMethodBeat.o(184835);
   }
   
-  public final void dcw()
+  public final void dfo()
   {
     AppMethodBeat.i(117463);
-    ann(Iv(1));
+    aop(IT(1));
     AppMethodBeat.o(117463);
   }
   
-  public final void dcx()
+  public final void dfp()
   {
-    AppMethodBeat.i(218918);
-    ann(Iv(2));
-    AppMethodBeat.o(218918);
+    AppMethodBeat.i(196785);
+    aop(IT(2));
+    AppMethodBeat.o(196785);
   }
   
   @SuppressLint({"ApplySharedPref"})
-  public final void dcy()
+  public final void dfq()
   {
-    AppMethodBeat.i(218919);
-    SharedPreferences localSharedPreferences = dcv();
-    String str = Iv(1);
+    AppMethodBeat.i(196786);
+    SharedPreferences localSharedPreferences = dfn();
+    String str = IT(1);
     if (localSharedPreferences.contains(str))
     {
       long l = localSharedPreferences.getLong(str, 0L);
       ak(1, System.currentTimeMillis() - l);
       localSharedPreferences.edit().remove(str).commit();
     }
-    AppMethodBeat.o(218919);
+    AppMethodBeat.o(196786);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.hp.tinker.b
  * JD-Core Version:    0.7.0.1
  */

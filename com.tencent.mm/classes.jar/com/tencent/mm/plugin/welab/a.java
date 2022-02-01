@@ -2,12 +2,12 @@ package com.tencent.mm.plugin.welab;
 
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aw.a.a.c;
-import com.tencent.mm.aw.a.a.c.a;
-import com.tencent.mm.g.a.mg;
-import com.tencent.mm.g.a.py;
+import com.tencent.mm.av.a.a.c;
+import com.tencent.mm.av.a.a.c.a;
+import com.tencent.mm.g.a.mh;
+import com.tencent.mm.g.a.pz;
 import com.tencent.mm.plugin.welab.a.a.b;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -16,27 +16,27 @@ import java.util.Map;
 
 public final class a
 {
-  public static final a ExH;
-  public c DEF;
-  public com.tencent.mm.plugin.welab.d.a ExI;
-  public Map<String, b> ExJ;
-  public b ExK;
+  public static final a EQd;
+  public c DWD;
+  public com.tencent.mm.plugin.welab.d.a EQe;
+  public Map<String, b> EQf;
+  public b EQg;
   
   static
   {
     AppMethodBeat.i(146208);
-    ExH = new a();
+    EQd = new a();
     AppMethodBeat.o(146208);
   }
   
   public a()
   {
     AppMethodBeat.i(146200);
-    this.ExJ = new HashMap();
+    this.EQf = new HashMap();
     c.a locala = new c.a();
-    locala.idr = true;
-    locala.idq = true;
-    this.DEF = locala.aJc();
+    locala.igk = true;
+    locala.igj = true;
+    this.DWD = locala.aJu();
     AppMethodBeat.o(146200);
   }
   
@@ -44,44 +44,44 @@ public final class a
   {
     AppMethodBeat.i(146201);
     String str = "";
-    Object localObject = ExH.aJM(parama.field_LabsAppId);
+    Object localObject = EQd.aLi(parama.field_LabsAppId);
     if (localObject != null)
     {
-      str = ((b)localObject).eWv();
-      ad.i("WelabMgr", "get appName from opener , appid %s, appName %s", new Object[] { parama.field_LabsAppId, str });
+      str = ((b)localObject).fah();
+      ae.i("WelabMgr", "get appName from opener , appid %s, appName %s", new Object[] { parama.field_LabsAppId, str });
     }
     localObject = str;
     if (TextUtils.isEmpty(str)) {
-      localObject = parama.aJV("field_Title");
+      localObject = parama.aLr("field_Title");
     }
     AppMethodBeat.o(146201);
     return localObject;
   }
   
-  private b aJM(String paramString)
-  {
-    AppMethodBeat.i(146203);
-    paramString = (b)this.ExJ.get(paramString);
-    AppMethodBeat.o(146203);
-    return paramString;
-  }
-  
-  public static void aK(boolean paramBoolean1, boolean paramBoolean2)
+  public static void aJ(boolean paramBoolean1, boolean paramBoolean2)
   {
     AppMethodBeat.i(146204);
-    e.aL(paramBoolean1, paramBoolean2);
+    e.aK(paramBoolean1, paramBoolean2);
     AppMethodBeat.o(146204);
+  }
+  
+  private b aLi(String paramString)
+  {
+    AppMethodBeat.i(146203);
+    paramString = (b)this.EQf.get(paramString);
+    AppMethodBeat.o(146203);
+    return paramString;
   }
   
   public static String b(com.tencent.mm.plugin.welab.d.a.a parama)
   {
     AppMethodBeat.i(146202);
     String str = "";
-    Object localObject = ExH.aJM(parama.field_LabsAppId);
+    Object localObject = EQd.aLi(parama.field_LabsAppId);
     if (localObject != null)
     {
-      str = ((b)localObject).eWu();
-      ad.i("WelabMgr", "get icon url from opener , appid %s, url %s", new Object[] { parama.field_LabsAppId, str });
+      str = ((b)localObject).fag();
+      ae.i("WelabMgr", "get icon url from opener , appid %s, url %s", new Object[] { parama.field_LabsAppId, str });
     }
     localObject = str;
     if (TextUtils.isEmpty(str)) {
@@ -91,12 +91,12 @@ public final class a
     return localObject;
   }
   
-  public static a eWo()
+  public static a faa()
   {
-    return ExH;
+    return EQd;
   }
   
-  public static void gY(List<com.tencent.mm.plugin.welab.d.a.a> paramList)
+  public static void hi(List<com.tencent.mm.plugin.welab.d.a.a> paramList)
   {
     AppMethodBeat.i(146207);
     if (!paramList.isEmpty())
@@ -106,18 +106,18 @@ public final class a
       while (paramList.hasNext())
       {
         com.tencent.mm.plugin.welab.d.a.a locala = (com.tencent.mm.plugin.welab.d.a.a)paramList.next();
-        if ((!locala.eWz()) && (!locala.isExpired())) {
+        if ((!locala.fal()) && (!locala.isExpired())) {
           localArrayList.add(locala.field_LabsAppId);
         }
       }
-      paramList = new py();
-      paramList.dEr.dEs = localArrayList;
-      com.tencent.mm.sdk.b.a.IbL.l(paramList);
+      paramList = new pz();
+      paramList.dFw.dFx = localArrayList;
+      com.tencent.mm.sdk.b.a.IvT.l(paramList);
       paramList = localArrayList.iterator();
       while (paramList.hasNext()) {
         if ("labs_nearbylife".equals((String)paramList.next()))
         {
-          com.tencent.mm.sdk.b.a.IbL.l(new mg());
+          com.tencent.mm.sdk.b.a.IvT.l(new mh());
           AppMethodBeat.o(146207);
           return;
         }
@@ -126,10 +126,10 @@ public final class a
     AppMethodBeat.o(146207);
   }
   
-  public final com.tencent.mm.plugin.welab.d.a.a aJN(String paramString)
+  public final com.tencent.mm.plugin.welab.d.a.a aLj(String paramString)
   {
     AppMethodBeat.i(146206);
-    com.tencent.mm.plugin.welab.d.a locala = this.ExI;
+    com.tencent.mm.plugin.welab.d.a locala = this.EQe;
     com.tencent.mm.plugin.welab.d.a.a locala1 = new com.tencent.mm.plugin.welab.d.a.a();
     locala1.field_LabsAppId = paramString;
     locala.get(locala1, new String[0]);
@@ -137,10 +137,10 @@ public final class a
     return locala1;
   }
   
-  public final List<com.tencent.mm.plugin.welab.d.a.a> eWp()
+  public final List<com.tencent.mm.plugin.welab.d.a.a> fab()
   {
     AppMethodBeat.i(146205);
-    List localList = this.ExI.eWw();
+    List localList = this.EQe.fai();
     Iterator localIterator = localList.iterator();
     while (localIterator.hasNext())
     {
@@ -149,14 +149,14 @@ public final class a
         localIterator.remove();
       }
     }
-    ad.i("WelabMgr", "online lab %s", new Object[] { localList.toString() });
+    ae.i("WelabMgr", "online lab %s", new Object[] { localList.toString() });
     AppMethodBeat.o(146205);
     return localList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.welab.a
  * JD-Core Version:    0.7.0.1
  */

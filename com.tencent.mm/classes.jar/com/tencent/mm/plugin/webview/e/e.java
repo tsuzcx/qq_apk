@@ -5,28 +5,28 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public final class e
 {
-  private static ConcurrentHashMap<Integer, c> DXc;
+  private static ConcurrentHashMap<Integer, c> Epe;
   
   static
   {
-    AppMethodBeat.i(213979);
-    DXc = new ConcurrentHashMap();
-    AppMethodBeat.o(213979);
+    AppMethodBeat.i(213810);
+    Epe = new ConcurrentHashMap();
+    AppMethodBeat.o(213810);
   }
   
-  public static c WR(int paramInt)
+  public static c Xx(int paramInt)
   {
-    AppMethodBeat.i(213978);
-    c localc = (c)DXc.remove(Integer.valueOf(paramInt));
-    AppMethodBeat.o(213978);
+    AppMethodBeat.i(213809);
+    c localc = (c)Epe.remove(Integer.valueOf(paramInt));
+    AppMethodBeat.o(213809);
     return localc;
   }
   
   public static void a(int paramInt, c paramc)
   {
-    AppMethodBeat.i(213977);
-    DXc.put(Integer.valueOf(paramInt), paramc);
-    AppMethodBeat.o(213977);
+    AppMethodBeat.i(213808);
+    Epe.put(Integer.valueOf(paramInt), paramc);
+    AppMethodBeat.o(213808);
   }
 }
 

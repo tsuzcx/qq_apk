@@ -1,77 +1,78 @@
 package com.tencent.mm.plugin.sns;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
-import com.tencent.mm.g.a.jm;
-import com.tencent.mm.g.a.jm.a;
-import com.tencent.mm.g.a.rx;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.g.a.jn;
+import com.tencent.mm.g.a.jn.a;
+import com.tencent.mm.g.a.ry;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.sns.model.ag;
-import com.tencent.mm.plugin.sns.model.ak;
+import com.tencent.mm.plugin.sns.model.ah;
+import com.tencent.mm.plugin.sns.model.al;
+import com.tencent.mm.plugin.sns.storage.p;
 import com.tencent.mm.protocal.protobuf.SnsObject;
-import com.tencent.mm.protocal.protobuf.dga;
+import com.tencent.mm.protocal.protobuf.dgu;
 import com.tencent.mm.sdk.b.a;
 import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.av;
-import com.tencent.mm.sdk.platformtools.av.a;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aw;
+import com.tencent.mm.sdk.platformtools.aw.a;
 import java.util.LinkedList;
 
 public final class d
-  extends c<jm>
+  extends c<jn>
   implements f
 {
-  private int yVK;
-  private SnsObject yVL;
-  private com.tencent.mm.plugin.sns.storage.p yVM;
-  private av yVN;
+  private int zlU;
+  private SnsObject zlV;
+  private p zlW;
+  private aw zlX;
   
   public d()
   {
     AppMethodBeat.i(160632);
-    this.__eventId = jm.class.getName().hashCode();
+    this.__eventId = jn.class.getName().hashCode();
     AppMethodBeat.o(160632);
   }
   
-  private boolean a(jm paramjm)
+  private boolean a(jn paramjn)
   {
     AppMethodBeat.i(94890);
-    if (!(paramjm instanceof jm))
+    if (!(paramjn instanceof jn))
     {
-      ad.f("MicroMsg.GetSnsObjectDetailListener", "mismatched event");
+      ae.f("MicroMsg.GetSnsObjectDetailListener", "mismatched event");
       AppMethodBeat.o(94890);
       return false;
     }
-    this.yVK = paramjm.dwo.dqR;
-    this.yVM = ag.dUe().QP(this.yVK);
-    this.yVL = ak.u(this.yVM);
-    if ((this.yVL != null) && (((this.yVL.ExtFlag == 3) && (this.yVL.BlackList != null) && (this.yVL.BlackList.size() > 0)) || ((this.yVL.ExtFlag == 5) && (this.yVL.GroupUser != null) && (this.yVL.GroupUser.size() > 0))))
+    this.zlU = paramjn.dxt.drW;
+    this.zlW = ah.dXE().Rw(this.zlU);
+    this.zlV = al.u(this.zlW);
+    if ((this.zlV != null) && (((this.zlV.ExtFlag == 3) && (this.zlV.BlackList != null) && (this.zlV.BlackList.size() > 0)) || ((this.zlV.ExtFlag == 5) && (this.zlV.GroupUser != null) && (this.zlV.GroupUser.size() > 0))))
     {
-      paramjm.dwp.dwq = this.yVL;
+      paramjn.dxu.dxv = this.zlV;
       AppMethodBeat.o(94890);
       return true;
     }
-    paramjm = new com.tencent.mm.plugin.sns.model.p(this.yVM.field_snsId);
-    ((dga)paramjm.rr.hNK.hNQ).Hun = 1;
-    g.ajD();
-    g.ajB().gAO.a(210, this);
-    g.ajD();
-    g.ajB().gAO.a(paramjm, 0);
-    this.yVN = new av(new av.a()
+    paramjn = new com.tencent.mm.plugin.sns.model.q(this.zlW.field_snsId);
+    ((dgu)paramjn.rr.hQD.hQJ).HNQ = 1;
+    g.ajS();
+    g.ajQ().gDv.a(210, this);
+    g.ajS();
+    g.ajQ().gDv.a(paramjn, 0);
+    this.zlX = new aw(new aw.a()
     {
       public final boolean onTimerExpired()
       {
         AppMethodBeat.i(94889);
-        rx localrx = new rx();
-        localrx.dGw.dwq = null;
-        a.IbL.l(localrx);
+        ry localry = new ry();
+        localry.dHC.dxv = null;
+        a.IvT.l(localry);
         AppMethodBeat.o(94889);
         return false;
       }
     }, false);
-    this.yVN.az(10000L, 10000L);
+    this.zlX.ay(10000L, 10000L);
     AppMethodBeat.o(94890);
     return true;
   }
@@ -79,20 +80,20 @@ public final class d
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     AppMethodBeat.i(94891);
-    ad.i("MicroMsg.GetSnsObjectDetailListener", "dz:[onSceneEnd]errType:%d errCode:%d errMsg:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-    this.yVN.stopTimer();
+    ae.i("MicroMsg.GetSnsObjectDetailListener", "dz:[onSceneEnd]errType:%d errCode:%d errMsg:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    this.zlX.stopTimer();
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      paramString = ag.dUe().Ai(this.yVM.field_snsId);
-      paramn = new rx();
-      paramn.dGw.dwq = ak.u(paramString);
-      a.IbL.l(paramn);
+      paramString = ah.dXE().AG(this.zlW.field_snsId);
+      paramn = new ry();
+      paramn.dHC.dxv = al.u(paramString);
+      a.IvT.l(paramn);
       AppMethodBeat.o(94891);
       return;
     }
-    paramString = new rx();
-    paramString.dGw.dwq = null;
-    a.IbL.l(paramString);
+    paramString = new ry();
+    paramString.dHC.dxv = null;
+    a.IvT.l(paramString);
     AppMethodBeat.o(94891);
   }
 }

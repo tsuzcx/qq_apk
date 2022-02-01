@@ -1,75 +1,109 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
 
 public final class akp
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public LinkedList<ako> tSj;
-  
-  public akp()
-  {
-    AppMethodBeat.i(127488);
-    this.tSj = new LinkedList();
-    AppMethodBeat.o(127488);
-  }
+  public int dKW;
+  public int index;
+  public int otZ;
+  public String query;
+  public String rAT;
+  public int scene;
+  public String sessionId;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(127489);
+    AppMethodBeat.i(127475);
     if (paramInt == 0)
     {
-      ((f.a.a.c.a)paramVarArgs[0]).e(1, 8, this.tSj);
-      AppMethodBeat.o(127489);
+      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.aS(1, this.scene);
+      paramVarArgs.aS(2, this.otZ);
+      paramVarArgs.aS(3, this.index);
+      if (this.sessionId != null) {
+        paramVarArgs.d(4, this.sessionId);
+      }
+      if (this.query != null) {
+        paramVarArgs.d(5, this.query);
+      }
+      if (this.rAT != null) {
+        paramVarArgs.d(6, this.rAT);
+      }
+      paramVarArgs.aS(7, this.dKW);
+      AppMethodBeat.o(127475);
       return 0;
     }
     if (paramInt == 1)
     {
-      paramInt = f.a.a.a.c(1, 8, this.tSj);
-      AppMethodBeat.o(127489);
-      return paramInt + 0;
+      int i = f.a.a.b.b.a.bz(1, this.scene) + 0 + f.a.a.b.b.a.bz(2, this.otZ) + f.a.a.b.b.a.bz(3, this.index);
+      paramInt = i;
+      if (this.sessionId != null) {
+        paramInt = i + f.a.a.b.b.a.e(4, this.sessionId);
+      }
+      i = paramInt;
+      if (this.query != null) {
+        i = paramInt + f.a.a.b.b.a.e(5, this.query);
+      }
+      paramInt = i;
+      if (this.rAT != null) {
+        paramInt = i + f.a.a.b.b.a.e(6, this.rAT);
+      }
+      i = f.a.a.b.b.a.bz(7, this.dKW);
+      AppMethodBeat.o(127475);
+      return paramInt + i;
     }
     if (paramInt == 2)
     {
-      paramVarArgs = (byte[])paramVarArgs[0];
-      this.tSj.clear();
-      paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+      paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gxE();
+          paramVarArgs.gCg();
         }
       }
-      AppMethodBeat.o(127489);
+      AppMethodBeat.o(127475);
       return 0;
     }
     if (paramInt == 3)
     {
-      Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
+      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
       akp localakp = (akp)paramVarArgs[1];
-      paramInt = ((Integer)paramVarArgs[2]).intValue();
-      switch (paramInt)
+      switch (((Integer)paramVarArgs[2]).intValue())
       {
       default: 
-        AppMethodBeat.o(127489);
+        AppMethodBeat.o(127475);
         return -1;
+      case 1: 
+        localakp.scene = locala.OmT.zc();
+        AppMethodBeat.o(127475);
+        return 0;
+      case 2: 
+        localakp.otZ = locala.OmT.zc();
+        AppMethodBeat.o(127475);
+        return 0;
+      case 3: 
+        localakp.index = locala.OmT.zc();
+        AppMethodBeat.o(127475);
+        return 0;
+      case 4: 
+        localakp.sessionId = locala.OmT.readString();
+        AppMethodBeat.o(127475);
+        return 0;
+      case 5: 
+        localakp.query = locala.OmT.readString();
+        AppMethodBeat.o(127475);
+        return 0;
+      case 6: 
+        localakp.rAT = locala.OmT.readString();
+        AppMethodBeat.o(127475);
+        return 0;
       }
-      paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
-      int i = paramVarArgs.size();
-      paramInt = 0;
-      while (paramInt < i)
-      {
-        Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-        localObject1 = new ako();
-        localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-        for (boolean bool = true; bool; bool = ((ako)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, com.tencent.mm.bx.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-        localakp.tSj.add(localObject1);
-        paramInt += 1;
-      }
-      AppMethodBeat.o(127489);
+      localakp.dKW = locala.OmT.zc();
+      AppMethodBeat.o(127475);
       return 0;
     }
-    AppMethodBeat.o(127489);
+    AppMethodBeat.o(127475);
     return -1;
   }
 }

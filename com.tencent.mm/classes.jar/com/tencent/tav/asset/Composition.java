@@ -19,31 +19,31 @@ public class Composition<CTrack extends CompositionTrack>
   
   protected Composition()
   {
-    AppMethodBeat.i(217669);
+    AppMethodBeat.i(214307);
     this.tracks = new ArrayList();
-    AppMethodBeat.o(217669);
+    AppMethodBeat.o(214307);
   }
   
   protected Composition(String paramString)
   {
     super(paramString);
-    AppMethodBeat.i(217671);
+    AppMethodBeat.i(214309);
     this.tracks = new ArrayList();
-    AppMethodBeat.o(217671);
+    AppMethodBeat.o(214309);
   }
   
   protected Composition(URL paramURL)
   {
     super(paramURL);
-    AppMethodBeat.i(217670);
+    AppMethodBeat.i(214308);
     this.tracks = new ArrayList();
-    AppMethodBeat.o(217670);
+    AppMethodBeat.o(214308);
   }
   
   @TargetApi(16)
   protected void createTracks()
   {
-    AppMethodBeat.i(217674);
+    AppMethodBeat.i(214312);
     int j = this.extractor.getTrackCount();
     if (this.tracks == null) {
       this.tracks = new ArrayList();
@@ -74,12 +74,12 @@ public class Composition<CTrack extends CompositionTrack>
       }
     }
     Logger.e("Asset", " Composition createTracks finish, has track count: " + this.tracks);
-    AppMethodBeat.o(217674);
+    AppMethodBeat.o(214312);
   }
   
   protected CMTime getAudioDuration()
   {
-    AppMethodBeat.i(217673);
+    AppMethodBeat.i(214311);
     Object localObject1 = CMTime.CMTimeZero;
     Iterator localIterator = this.tracks.iterator();
     if (localIterator.hasNext())
@@ -99,23 +99,23 @@ public class Composition<CTrack extends CompositionTrack>
     for (;;)
     {
       break;
-      AppMethodBeat.o(217673);
+      AppMethodBeat.o(214311);
       return localObject1;
     }
   }
   
   public List<CTrack> getTracks()
   {
-    AppMethodBeat.i(217675);
+    AppMethodBeat.i(214313);
     new StringBuilder("getTracks finish, has track count: ").append(this.tracks);
     List localList = this.tracks;
-    AppMethodBeat.o(217675);
+    AppMethodBeat.o(214313);
     return localList;
   }
   
   protected CMTime getVideoDuration()
   {
-    AppMethodBeat.i(217672);
+    AppMethodBeat.i(214310);
     Object localObject1 = CMTime.CMTimeZero;
     Iterator localIterator = this.tracks.iterator();
     if (localIterator.hasNext())
@@ -135,7 +135,7 @@ public class Composition<CTrack extends CompositionTrack>
     for (;;)
     {
       break;
-      AppMethodBeat.o(217672);
+      AppMethodBeat.o(214310);
       return localObject1;
     }
   }
@@ -149,9 +149,9 @@ public class Composition<CTrack extends CompositionTrack>
   
   public String toString()
   {
-    AppMethodBeat.i(217676);
+    AppMethodBeat.i(214314);
     String str = "Composition{\ntracks=" + this.tracks + "\ntrackCount=" + this.trackCount + '}';
-    AppMethodBeat.o(217676);
+    AppMethodBeat.o(214314);
     return str;
   }
 }

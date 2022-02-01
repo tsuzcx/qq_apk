@@ -2,36 +2,36 @@ package kotlinx.a.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.b.p;
-import d.k.h;
+import d.k.j;
 import d.l;
 import java.util.Arrays;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/serialization/internal/LongArrayBuilder;", "Lkotlinx/serialization/internal/PrimitiveArrayBuilder;", "", "bufferWithData", "([J)V", "buffer", "<set-?>", "", "position", "getPosition", "()I", "append", "", "c", "", "append$kotlinx_serialization_runtime", "build", "ensureCapacity", "requiredCapacity", "kotlinx-serialization-runtime"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/serialization/internal/LongArrayBuilder;", "Lkotlinx/serialization/internal/PrimitiveArrayBuilder;", "", "bufferWithData", "([J)V", "buffer", "<set-?>", "", "position", "getPosition", "()I", "append", "", "c", "", "append$kotlinx_serialization_runtime", "build", "ensureCapacity", "requiredCapacity", "kotlinx-serialization-runtime"})
 public final class aj
   extends av<long[]>
 {
-  long[] NMy;
+  long[] OjE;
   int position;
   
   public aj(long[] paramArrayOfLong)
   {
-    AppMethodBeat.i(191178);
-    this.NMy = paramArrayOfLong;
+    AppMethodBeat.i(199766);
+    this.OjE = paramArrayOfLong;
     this.position = paramArrayOfLong.length;
     ensureCapacity(10);
-    AppMethodBeat.o(191178);
+    AppMethodBeat.o(199766);
   }
   
   public final void ensureCapacity(int paramInt)
   {
-    AppMethodBeat.i(191176);
-    if (this.NMy.length < paramInt)
+    AppMethodBeat.i(199764);
+    if (this.OjE.length < paramInt)
     {
-      long[] arrayOfLong = Arrays.copyOf(this.NMy, h.lp(paramInt, this.NMy.length * 2));
+      long[] arrayOfLong = Arrays.copyOf(this.OjE, j.lw(paramInt, this.OjE.length * 2));
       p.g(arrayOfLong, "java.util.Arrays.copyOf(this, newSize)");
-      this.NMy = arrayOfLong;
+      this.OjE = arrayOfLong;
     }
-    AppMethodBeat.o(191176);
+    AppMethodBeat.o(199764);
   }
   
   public final int getPosition()

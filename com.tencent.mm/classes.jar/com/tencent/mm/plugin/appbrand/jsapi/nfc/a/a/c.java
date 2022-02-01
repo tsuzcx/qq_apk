@@ -19,17 +19,15 @@ import android.nfc.tech.NfcF;
 import android.nfc.tech.NfcV;
 import android.nfc.tech.TagTechnology;
 import android.util.ArrayMap;
-import com.tencent.e.h;
 import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.g;
-import com.tencent.mm.plugin.appbrand.g.c;
-import com.tencent.mm.plugin.appbrand.g.d;
+import com.tencent.mm.plugin.appbrand.h.c;
+import com.tencent.mm.plugin.appbrand.h.d;
 import com.tencent.mm.plugin.appbrand.jsapi.nfc.a.b.b.a;
 import com.tencent.mm.plugin.appbrand.jsapi.nfc.a.b.b.b;
 import com.tencent.mm.plugin.appbrand.jsapi.nfc.a.b.b.c;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
 import d.g.b.p;
 import d.l;
 import d.v;
@@ -44,49 +42,49 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/logic/NFCReadWriteManager;", "", "appId", "", "activity", "Landroid/app/Activity;", "component", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "(Ljava/lang/String;Landroid/app/Activity;Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;)V", "getActivity", "()Landroid/app/Activity;", "activityEventInterceptor", "Lkotlin/Function1;", "Landroid/content/Intent;", "", "getAppId", "()Ljava/lang/String;", "getComponent", "()Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "connectedTech", "", "Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/model/NFCTech;", "kotlin.jvm.PlatformType", "", "isActivityEventInterceptorAdded", "isLifeCycleListenerAdded", "isNFCDiscovering", "Ljava/util/concurrent/atomic/AtomicBoolean;", "isNFCDiscoverySticky", "lifeCycleListener", "com/tencent/mm/plugin/appbrand/jsapi/nfc/rw/logic/NFCReadWriteManager$lifeCycleListener$1", "Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/logic/NFCReadWriteManager$lifeCycleListener$1;", "nfcTagDiscoveredCallback", "Lkotlin/Function3;", "", "Lkotlin/ParameterName;", "name", "id", "", "techs", "Landroid/nfc/NdefMessage;", "ndefMessages", "", "Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/logic/NFCTagDiscoveredCallback;", "getNfcTagDiscoveredCallback", "()Lkotlin/jvm/functions/Function3;", "setNfcTagDiscoveredCallback", "(Lkotlin/jvm/functions/Function3;)V", "pendingIntent", "Landroid/app/PendingIntent;", "requireForegroundDispatch", "getRequireForegroundDispatch", "()Z", "setRequireForegroundDispatch", "(Z)V", "tag", "Landroid/nfc/Tag;", "addActivityEventInterceptorOnce", "addLifeCycleListenerOnce", "close", "techName", "callback", "Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/logic/NFCReadWriteResult;", "result", "Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/logic/NFCReadWriteCallback;", "connect", "execTechLogic", "function", "params", "Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/model/INFCTechExecParams;", "execTechLogicAsync", "getMaxTransceiveLength", "", "getNFCTech", "T", "getTag", "getTagTechnology", "Landroid/nfc/tech/TagTechnology;", "nfcTech", "tagSnapshot", "isConnected", "removeActivityEventInterceptorIfNecessary", "removeLifeCycleListenerIfNecessary", "setTimeout", "timeoutMs", "startNFCDiscovery", "stopNFCDiscovery", "transceive", "reqData", "tryDispatchNfcTagDiscovered", "intent", "tryParseMessageMap", "writeNdefMessage", "message", "Companion", "luggage-commons-jsapi-nfc-ext_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/logic/NFCReadWriteManager;", "", "appId", "", "activity", "Landroid/app/Activity;", "component", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "(Ljava/lang/String;Landroid/app/Activity;Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;)V", "getActivity", "()Landroid/app/Activity;", "activityEventInterceptor", "Lkotlin/Function1;", "Landroid/content/Intent;", "", "getAppId", "()Ljava/lang/String;", "getComponent", "()Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "connectedTech", "", "Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/model/NFCTech;", "kotlin.jvm.PlatformType", "", "isActivityEventInterceptorAdded", "isLifeCycleListenerAdded", "isNFCDiscovering", "Ljava/util/concurrent/atomic/AtomicBoolean;", "isNFCDiscoverySticky", "lifeCycleListener", "com/tencent/mm/plugin/appbrand/jsapi/nfc/rw/logic/NFCReadWriteManager$lifeCycleListener$1", "Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/logic/NFCReadWriteManager$lifeCycleListener$1;", "nfcTagDiscoveredCallback", "Lkotlin/Function3;", "", "Lkotlin/ParameterName;", "name", "id", "", "techs", "Landroid/nfc/NdefMessage;", "ndefMessages", "", "Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/logic/NFCTagDiscoveredCallback;", "getNfcTagDiscoveredCallback", "()Lkotlin/jvm/functions/Function3;", "setNfcTagDiscoveredCallback", "(Lkotlin/jvm/functions/Function3;)V", "pendingIntent", "Landroid/app/PendingIntent;", "requireForegroundDispatch", "getRequireForegroundDispatch", "()Z", "setRequireForegroundDispatch", "(Z)V", "tag", "Landroid/nfc/Tag;", "addActivityEventInterceptorOnce", "addLifeCycleListenerOnce", "close", "techName", "callback", "Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/logic/NFCReadWriteResult;", "result", "Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/logic/NFCReadWriteCallback;", "connect", "execTechLogic", "function", "params", "Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/model/INFCTechExecParams;", "execTechLogicAsync", "getMaxTransceiveLength", "", "getNFCTech", "T", "getTag", "getTagTechnology", "Landroid/nfc/tech/TagTechnology;", "nfcTech", "tagSnapshot", "isConnected", "removeActivityEventInterceptorIfNecessary", "removeLifeCycleListenerIfNecessary", "setTimeout", "timeoutMs", "startNFCDiscovery", "stopNFCDiscovery", "transceive", "reqData", "tryDispatchNfcTagDiscovered", "intent", "tryParseMessageMap", "writeNdefMessage", "message", "messageToString", "", "Companion", "luggage-commons-jsapi-nfc-ext_release"})
 public class c
 {
-  private static final Map<String, c> kZI;
-  private static final IntentFilter[] kZJ;
-  private static final String[][] kZK;
-  private static c.a.a kZL;
-  public static final a kZM;
+  private static final Map<String, c> ldr;
+  private static final IntentFilter[] lds;
+  private static final String[][] ldt;
+  private static c.a.a ldu;
+  public static final a ldv;
   final Activity activity;
   public final String appId;
-  private boolean kZA;
-  private final d.g.a.b<Intent, Boolean> kZB;
-  private final AtomicBoolean kZC;
-  private boolean kZD;
-  private boolean kZE;
-  private final i kZF;
-  private volatile Tag kZG;
-  private final Set<com.tencent.mm.plugin.appbrand.jsapi.nfc.a.b.b> kZH;
-  private volatile boolean kZy;
-  public volatile d.g.a.q<? super byte[], ? super List<String>, ? super List<NdefMessage>, z> kZz;
-  protected final com.tencent.mm.plugin.appbrand.jsapi.c kjg;
+  protected final com.tencent.mm.plugin.appbrand.jsapi.c kmw;
+  private volatile boolean ldh;
+  public volatile d.g.a.q<? super byte[], ? super List<String>, ? super List<NdefMessage>, z> ldi;
+  private boolean ldj;
+  private final d.g.a.b<Intent, Boolean> ldk;
+  private final AtomicBoolean ldl;
+  private boolean ldm;
+  private boolean ldn;
+  private final i ldo;
+  private volatile Tag ldp;
+  private final Set<com.tencent.mm.plugin.appbrand.jsapi.nfc.a.b.b> ldq;
   private final PendingIntent pendingIntent;
   
   static
   {
     AppMethodBeat.i(183681);
-    kZM = new a((byte)0);
-    kZI = (Map)new ConcurrentHashMap();
+    ldv = new a((byte)0);
+    ldr = (Map)new ConcurrentHashMap();
     Object localObject = new IntentFilter("android.nfc.action.TAG_DISCOVERED");
     try
     {
       ((IntentFilter)localObject).addDataType("*/*");
-      kZJ = new IntentFilter[] { localObject };
-      String[] arrayOfString1 = { NfcA.class.getName() };
-      localObject = NfcB.class.getName();
-      String[] arrayOfString2 = { IsoDep.class.getName() };
-      String[] arrayOfString3 = { NfcF.class.getName() };
-      String[] arrayOfString4 = { NfcV.class.getName() };
-      String str = MifareClassic.class.getName();
-      String[] arrayOfString5 = { MifareUltralight.class.getName() };
-      String[] arrayOfString6 = { Ndef.class.getName() };
-      kZK = (String[][])new String[][] { arrayOfString1, { localObject }, arrayOfString2, arrayOfString3, arrayOfString4, { str }, arrayOfString5, arrayOfString6 };
-      kZL = (c.a.a)new b();
+      lds = new IntentFilter[] { localObject };
+      localObject = NfcA.class.getName();
+      String[] arrayOfString = { NfcB.class.getName() };
+      String str1 = IsoDep.class.getName();
+      String str2 = NfcF.class.getName();
+      String str3 = NfcV.class.getName();
+      String str4 = MifareClassic.class.getName();
+      String str5 = MifareUltralight.class.getName();
+      String str6 = Ndef.class.getName();
+      ldt = (String[][])new String[][] { { localObject }, arrayOfString, { str1 }, { str2 }, { str3 }, { str4 }, { str5 }, { str6 } };
+      ldu = (c.a.a)new b();
       AppMethodBeat.o(183681);
       return;
     }
@@ -94,48 +92,48 @@ public class c
     {
       for (;;)
       {
-        ad.w("MicroMsg.AppBrand.NFCReadWriteManager", "addDataType failed");
+        ae.w("MicroMsg.AppBrand.NFCReadWriteManager", "addDataType failed");
       }
     }
   }
   
   public c(String paramString, Activity paramActivity, com.tencent.mm.plugin.appbrand.jsapi.c paramc)
   {
-    AppMethodBeat.i(199708);
+    AppMethodBeat.i(208222);
     this.appId = paramString;
     this.activity = paramActivity;
-    this.kjg = paramc;
+    this.kmw = paramc;
     paramString = new Intent((Context)this.activity, this.activity.getClass()).addFlags(536870912);
     this.pendingIntent = PendingIntent.getActivity((Context)this.activity, 0, paramString, 0);
-    this.kZB = ((d.g.a.b)new c(this));
-    this.kZC = new AtomicBoolean(false);
-    this.kZF = new i(this);
-    this.kZH = Collections.newSetFromMap((Map)new ConcurrentHashMap());
-    g.a(this.appId, (g.c)new g.c()
+    this.ldk = ((d.g.a.b)new c(this));
+    this.ldl = new AtomicBoolean(false);
+    this.ldo = new i(this);
+    this.ldq = Collections.newSetFromMap((Map)new ConcurrentHashMap());
+    com.tencent.mm.plugin.appbrand.h.a(this.appId, (h.c)new h.c()
     {
       public final void onDestroy()
       {
         AppMethodBeat.i(183669);
         super.onDestroy();
-        ad.d("MicroMsg.AppBrand.NFCReadWriteManager", "onDestroy");
-        c.blT().remove(this.kZN.appId);
+        ae.d("MicroMsg.AppBrand.NFCReadWriteManager", "onDestroy");
+        c.bmC().remove(this.ldw.appId);
         AppMethodBeat.o(183669);
       }
     });
-    AppMethodBeat.o(199708);
+    AppMethodBeat.o(208222);
   }
   
   private static List<NdefMessage> F(Intent paramIntent)
   {
-    AppMethodBeat.i(199707);
-    ad.d("MicroMsg.AppBrand.NFCReadWriteManager", "tryParseMessageMap");
+    AppMethodBeat.i(208221);
+    ae.d("MicroMsg.AppBrand.NFCReadWriteManager", "tryParseMessageMap");
     paramIntent = paramIntent.getParcelableArrayExtra("android.nfc.extra.NDEF_MESSAGES");
     if (paramIntent != null)
     {
       Object localObject = new StringBuilder("tryDispatchNdefMessagesRead, rawMessages: ");
       String str = Arrays.toString(paramIntent);
       p.g(str, "java.util.Arrays.toString(this)");
-      ad.i("MicroMsg.AppBrand.NFCReadWriteManager", str);
+      ae.i("MicroMsg.AppBrand.NFCReadWriteManager", str);
       localObject = (Collection)new ArrayList(paramIntent.length);
       int j = paramIntent.length;
       int i = 0;
@@ -145,38 +143,38 @@ public class c
         if (str == null)
         {
           paramIntent = new v("null cannot be cast to non-null type android.nfc.NdefMessage");
-          AppMethodBeat.o(199707);
+          AppMethodBeat.o(208221);
           throw paramIntent;
         }
         ((Collection)localObject).add((NdefMessage)str);
         i += 1;
       }
       paramIntent = (List)localObject;
-      AppMethodBeat.o(199707);
+      AppMethodBeat.o(208221);
       return paramIntent;
     }
-    AppMethodBeat.o(199707);
+    AppMethodBeat.o(208221);
     return null;
   }
   
   public static final boolean u(com.tencent.mm.plugin.appbrand.jsapi.c paramc)
   {
-    AppMethodBeat.i(199709);
+    AppMethodBeat.i(208224);
     boolean bool = a.u(paramc);
-    AppMethodBeat.o(199709);
+    AppMethodBeat.o(208224);
     return bool;
   }
   
   public void E(Intent paramIntent)
   {
     Object localObject2 = null;
-    AppMethodBeat.i(199706);
+    AppMethodBeat.i(208220);
     p.h(paramIntent, "intent");
-    ad.d("MicroMsg.AppBrand.NFCReadWriteManager", "tryDispatchNfcTagDiscovered");
-    d.g.a.q localq = this.kZz;
+    ae.d("MicroMsg.AppBrand.NFCReadWriteManager", "tryDispatchNfcTagDiscovered");
+    d.g.a.q localq = this.ldi;
     if (localq != null)
     {
-      Object localObject1 = this.kZG;
+      Object localObject1 = this.ldp;
       if (localObject1 != null)
       {
         localObject1 = ((Tag)localObject1).getTechList();
@@ -188,8 +186,8 @@ public class c
           while (i < j)
           {
             localObject4 = localObject1[i];
-            localObject5 = com.tencent.mm.plugin.appbrand.jsapi.nfc.a.b.b.lam;
-            localObject4 = (String)com.tencent.mm.plugin.appbrand.jsapi.nfc.a.b.b.blW().get(localObject4);
+            localObject5 = com.tencent.mm.plugin.appbrand.jsapi.nfc.a.b.b.ldV;
+            localObject4 = (String)com.tencent.mm.plugin.appbrand.jsapi.nfc.a.b.b.bmF().get(localObject4);
             if (localObject4 != null) {
               ((Collection)localObject3).add(localObject4);
             }
@@ -202,7 +200,7 @@ public class c
           {
             localObject1 = Arrays.toString((byte[])localObject4);
             p.g(localObject1, "java.util.Arrays.toString(this)");
-            ad.i("MicroMsg.AppBrand.NFCReadWriteManager", (String)localObject1 + ", techs: " + localObject3);
+            ae.i("MicroMsg.AppBrand.NFCReadWriteManager", (String)localObject1 + ", techs: " + localObject3);
             if (((Collection)localObject3).isEmpty()) {
               break label275;
             }
@@ -213,12 +211,12 @@ public class c
             if (i != 0)
             {
               localObject1 = localObject2;
-              if (((List)localObject3).contains(com.tencent.mm.plugin.appbrand.jsapi.nfc.a.b.b.laf.kYN)) {
+              if (((List)localObject3).contains(com.tencent.mm.plugin.appbrand.jsapi.nfc.a.b.b.ldO.lcw)) {
                 localObject1 = F(paramIntent);
               }
               localq.d(localObject4, localObject3, localObject1);
             }
-            AppMethodBeat.o(199706);
+            AppMethodBeat.o(208220);
             return;
             localObject1 = null;
             break;
@@ -226,7 +224,7 @@ public class c
         }
       }
     }
-    AppMethodBeat.o(199706);
+    AppMethodBeat.o(208220);
   }
   
   public final void a(final NdefMessage paramNdefMessage, final d.g.a.b<? super e<z>, z> paramb)
@@ -234,34 +232,34 @@ public class c
     AppMethodBeat.i(183679);
     p.h(paramNdefMessage, "message");
     p.h(paramb, "callback");
-    ad.d("MicroMsg.AppBrand.NFCReadWriteManager", "writeNdefMessage, message: ".concat(String.valueOf(paramNdefMessage)));
-    h.LTJ.f((Runnable)new n(this, paramb, paramNdefMessage), "NFC-IO");
+    ae.d("MicroMsg.AppBrand.NFCReadWriteManager", "writeNdefMessage, message: ".concat(String.valueOf(paramNdefMessage)));
+    com.tencent.e.h.MqF.f((Runnable)new n(this, paramb, paramNdefMessage), "NFC-IO");
     AppMethodBeat.o(183679);
   }
   
-  public void gO(boolean paramBoolean)
+  public void gN(boolean paramBoolean)
   {
-    this.kZy = paramBoolean;
+    this.ldh = paramBoolean;
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/logic/NFCReadWriteManager$Companion;", "", "()V", "METHOD_NAME_GET", "", "METHOD_NAME_GET_MAX_TRANSCEIVE_LENGTH", "METHOD_NAME_SET_TIMEOUT", "METHOD_NAME_TRANSCEIVE", "NFC_IO_LOOP_TAG", "TAG", "appId2ManagerMap", "", "Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/logic/NFCReadWriteManager;", "factory", "Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/logic/NFCReadWriteManager$Companion$IFactory;", "getFactory", "()Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/logic/NFCReadWriteManager$Companion$IFactory;", "setFactory", "(Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/logic/NFCReadWriteManager$Companion$IFactory;)V", "intentFiltersArray", "", "Landroid/content/IntentFilter;", "[Landroid/content/IntentFilter;", "techListsArray", "kotlin.jvm.PlatformType", "[[Ljava/lang/String;", "get", "component", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "isNFCUsing", "", "manager", "appId", "IFactory", "luggage-commons-jsapi-nfc-ext_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/logic/NFCReadWriteManager$Companion;", "", "()V", "METHOD_NAME_GET", "", "METHOD_NAME_GET_MAX_TRANSCEIVE_LENGTH", "METHOD_NAME_SET_TIMEOUT", "METHOD_NAME_TRANSCEIVE", "NFC_IO_LOOP_TAG", "TAG", "appId2ManagerMap", "", "Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/logic/NFCReadWriteManager;", "factory", "Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/logic/NFCReadWriteManager$Companion$IFactory;", "getFactory", "()Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/logic/NFCReadWriteManager$Companion$IFactory;", "setFactory", "(Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/logic/NFCReadWriteManager$Companion$IFactory;)V", "intentFiltersArray", "", "Landroid/content/IntentFilter;", "[Landroid/content/IntentFilter;", "techListsArray", "kotlin.jvm.PlatformType", "[[Ljava/lang/String;", "get", "component", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "isNFCUsing", "", "manager", "appId", "IFactory", "luggage-commons-jsapi-nfc-ext_release"})
   public static final class a
   {
     public static void b(a parama)
     {
-      AppMethodBeat.i(199698);
+      AppMethodBeat.i(208212);
       p.h(parama, "<set-?>");
       c.a(parama);
-      AppMethodBeat.o(199698);
+      AppMethodBeat.o(208212);
     }
     
     private static boolean j(c paramc)
     {
-      AppMethodBeat.i(199700);
+      AppMethodBeat.i(208214);
       if (c.a(paramc).get())
       {
-        ad.i("MicroMsg.AppBrand.NFCReadWriteManager", "isNFCUsing, isDiscovering, using");
-        AppMethodBeat.o(199700);
+        ae.i("MicroMsg.AppBrand.NFCReadWriteManager", "isNFCUsing, isDiscovering, using");
+        AppMethodBeat.o(208214);
         return true;
       }
       paramc = c.h(paramc);
@@ -269,28 +267,28 @@ public class c
       if (!((Collection)paramc).isEmpty()) {}
       for (int i = 1; i != 0; i = 0)
       {
-        ad.i("MicroMsg.AppBrand.NFCReadWriteManager", "isNFCUsing, connected, using");
-        AppMethodBeat.o(199700);
+        ae.i("MicroMsg.AppBrand.NFCReadWriteManager", "isNFCUsing, connected, using");
+        AppMethodBeat.o(208214);
         return true;
       }
-      ad.i("MicroMsg.AppBrand.NFCReadWriteManager", "isNFCUsing, not using");
-      AppMethodBeat.o(199700);
+      ae.i("MicroMsg.AppBrand.NFCReadWriteManager", "isNFCUsing, not using");
+      AppMethodBeat.o(208214);
       return false;
     }
     
     public static boolean u(com.tencent.mm.plugin.appbrand.jsapi.c paramc)
     {
-      AppMethodBeat.i(199699);
+      AppMethodBeat.i(208213);
       p.h(paramc, "component");
       paramc = w(paramc);
       if (paramc == null)
       {
-        ad.i("MicroMsg.AppBrand.NFCReadWriteManager", "isNFCUsing, manager is null, not using");
-        AppMethodBeat.o(199699);
+        ae.i("MicroMsg.AppBrand.NFCReadWriteManager", "isNFCUsing, manager is null, not using");
+        AppMethodBeat.o(208213);
         return false;
       }
       boolean bool = j(paramc);
-      AppMethodBeat.o(199699);
+      AppMethodBeat.o(208213);
       return bool;
     }
     
@@ -298,20 +296,20 @@ public class c
     {
       AppMethodBeat.i(183670);
       p.h(paramc, "component");
-      Object localObject2 = (c)c.blT().get(paramc.getAppId());
+      Object localObject2 = (c)c.bmC().get(paramc.getAppId());
       Object localObject1 = localObject2;
       if (localObject2 == null)
       {
-        localObject1 = com.tencent.mm.sdk.f.a.jq(paramc.getContext());
+        localObject1 = com.tencent.mm.sdk.f.a.jw(paramc.getContext());
         if (localObject1 != null)
         {
-          localObject2 = c.kZM;
-          localObject2 = c.blU();
+          localObject2 = c.ldv;
+          localObject2 = c.bmD();
           String str = paramc.getAppId();
           p.g(str, "component.appId");
           p.g(localObject1, "activity");
           localObject1 = ((a)localObject2).a(str, (Activity)localObject1, paramc);
-          localObject2 = c.blT();
+          localObject2 = c.bmC();
           paramc = paramc.getAppId();
           p.g(paramc, "component.appId");
           ((Map)localObject2).put(paramc, localObject1);
@@ -324,30 +322,30 @@ public class c
       return localObject1;
     }
     
-    @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/logic/NFCReadWriteManager$Companion$IFactory;", "", "createNFCReadWriteManager", "Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/logic/NFCReadWriteManager;", "appId", "", "activity", "Landroid/app/Activity;", "component", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "luggage-commons-jsapi-nfc-ext_release"})
+    @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/logic/NFCReadWriteManager$Companion$IFactory;", "", "createNFCReadWriteManager", "Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/logic/NFCReadWriteManager;", "appId", "", "activity", "Landroid/app/Activity;", "component", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "luggage-commons-jsapi-nfc-ext_release"})
     public static abstract interface a
     {
       public abstract c a(String paramString, Activity paramActivity, com.tencent.mm.plugin.appbrand.jsapi.c paramc);
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/appbrand/jsapi/nfc/rw/logic/NFCReadWriteManager$Companion$factory$1", "Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/logic/NFCReadWriteManager$Companion$IFactory;", "createNFCReadWriteManager", "Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/logic/NFCReadWriteManager;", "appId", "", "activity", "Landroid/app/Activity;", "component", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "luggage-commons-jsapi-nfc-ext_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/appbrand/jsapi/nfc/rw/logic/NFCReadWriteManager$Companion$factory$1", "Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/logic/NFCReadWriteManager$Companion$IFactory;", "createNFCReadWriteManager", "Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/logic/NFCReadWriteManager;", "appId", "", "activity", "Landroid/app/Activity;", "component", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "luggage-commons-jsapi-nfc-ext_release"})
   public static final class b
     implements c.a.a
   {
     public final c a(String paramString, Activity paramActivity, com.tencent.mm.plugin.appbrand.jsapi.c paramc)
     {
-      AppMethodBeat.i(199697);
+      AppMethodBeat.i(208211);
       p.h(paramString, "appId");
       p.h(paramActivity, "activity");
       p.h(paramc, "component");
       paramString = new c(paramString, paramActivity, paramc);
-      AppMethodBeat.o(199697);
+      AppMethodBeat.o(208211);
       return paramString;
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "intent", "Landroid/content/Intent;", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "intent", "Landroid/content/Intent;", "invoke"})
   static final class c
     extends d.g.b.q
     implements d.g.a.b<Intent, Boolean>
@@ -358,7 +356,7 @@ public class c
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
   public static final class d
     implements Runnable
   {
@@ -366,45 +364,45 @@ public class c
     
     public final void run()
     {
-      AppMethodBeat.i(199701);
-      Object localObject1 = this.kZN;
-      Object localObject2 = this.giT;
+      AppMethodBeat.i(208215);
+      Object localObject1 = this.ldw;
+      Object localObject2 = this.gll;
       localObject1 = c.e((c)localObject1);
       if (localObject1 == null) {
         ((d.g.a.b)localObject2).invoke(new e.a(13013, "NFC tag has not been discovered"));
       }
       if (localObject1 == null)
       {
-        AppMethodBeat.o(199701);
+        AppMethodBeat.o(208215);
         return;
       }
-      localObject2 = this.kZO;
-      d.g.a.b localb = this.giT;
-      b.a locala = com.tencent.mm.plugin.appbrand.jsapi.nfc.a.b.b.lam;
-      localObject2 = (com.tencent.mm.plugin.appbrand.jsapi.nfc.a.b.b)com.tencent.mm.plugin.appbrand.jsapi.nfc.a.b.b.blV().get(localObject2);
+      localObject2 = this.ldx;
+      d.g.a.b localb = this.gll;
+      b.a locala = com.tencent.mm.plugin.appbrand.jsapi.nfc.a.b.b.ldV;
+      localObject2 = (com.tencent.mm.plugin.appbrand.jsapi.nfc.a.b.b)com.tencent.mm.plugin.appbrand.jsapi.nfc.a.b.b.bmE().get(localObject2);
       if (localObject2 == null) {
         localb.invoke(new e.a(13014, "invalid tech"));
       }
       if (localObject2 == null)
       {
-        AppMethodBeat.o(199701);
+        AppMethodBeat.o(208215);
         return;
       }
-      if (!c.h(this.kZN).contains(localObject2))
+      if (!c.h(this.ldw).contains(localObject2))
       {
-        this.giT.invoke(new e.a(13023, "Tech has not connected"));
-        AppMethodBeat.o(199701);
+        this.gll.invoke(new e.a(13023, "Tech has not connected"));
+        AppMethodBeat.o(208215);
         return;
       }
-      localb = this.giT;
+      localb = this.gll;
       TagTechnology localTagTechnology;
       try
       {
-        localObject1 = org.a.a.bF(org.a.a.forName(((com.tencent.mm.plugin.appbrand.jsapi.nfc.a.b.b)localObject2).lai)).C("get", new Object[] { localObject1 }).object;
+        localObject1 = org.a.a.bF(org.a.a.forName(((com.tencent.mm.plugin.appbrand.jsapi.nfc.a.b.b)localObject2).ldR)).A("get", new Object[] { localObject1 }).object;
         if (localObject1 == null)
         {
           localObject1 = (Throwable)new IllegalArgumentException("Required value was null.".toString());
-          AppMethodBeat.o(199701);
+          AppMethodBeat.o(208215);
           throw ((Throwable)localObject1);
         }
       }
@@ -413,29 +411,29 @@ public class c
         localb.invoke(new e.a(13015, "unavailable tech"));
         for (localTagTechnology = null; localTagTechnology == null; localTagTechnology = (TagTechnology)localTagTechnology)
         {
-          AppMethodBeat.o(199701);
+          AppMethodBeat.o(208215);
           return;
         }
       }
       try
       {
         localTagTechnology.close();
-        c.h(this.kZN).remove(localObject2);
-        this.giT.invoke(new e.b(z.MKo));
-        AppMethodBeat.o(199701);
+        c.h(this.ldw).remove(localObject2);
+        this.gll.invoke(new e.b(z.Nhr));
+        AppMethodBeat.o(208215);
         return;
       }
       catch (Exception localException2)
       {
         for (;;)
         {
-          ad.i("MicroMsg.AppBrand.NFCReadWriteManager", "close failed since ".concat(String.valueOf(localException2)));
+          ae.i("MicroMsg.AppBrand.NFCReadWriteManager", "close failed since ".concat(String.valueOf(localException2)));
         }
       }
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
   public static final class e
     implements Runnable
   {
@@ -443,44 +441,44 @@ public class c
     
     public final void run()
     {
-      AppMethodBeat.i(199702);
-      Object localObject1 = this.kZN;
-      Object localObject2 = this.giT;
+      AppMethodBeat.i(208216);
+      Object localObject1 = this.ldw;
+      Object localObject2 = this.gll;
       localObject1 = c.e((c)localObject1);
       if (localObject1 == null) {
         ((d.g.a.b)localObject2).invoke(new e.a(13013, "NFC tag has not been discovered"));
       }
       if (localObject1 == null)
       {
-        AppMethodBeat.o(199702);
+        AppMethodBeat.o(208216);
         return;
       }
-      localObject2 = this.kZO;
-      d.g.a.b localb = this.giT;
-      b.a locala = com.tencent.mm.plugin.appbrand.jsapi.nfc.a.b.b.lam;
-      localObject2 = (com.tencent.mm.plugin.appbrand.jsapi.nfc.a.b.b)com.tencent.mm.plugin.appbrand.jsapi.nfc.a.b.b.blV().get(localObject2);
+      localObject2 = this.ldx;
+      d.g.a.b localb = this.gll;
+      b.a locala = com.tencent.mm.plugin.appbrand.jsapi.nfc.a.b.b.ldV;
+      localObject2 = (com.tencent.mm.plugin.appbrand.jsapi.nfc.a.b.b)com.tencent.mm.plugin.appbrand.jsapi.nfc.a.b.b.bmE().get(localObject2);
       if (localObject2 == null) {
         localb.invoke(new e.a(13014, "invalid tech"));
       }
       if (localObject2 == null)
       {
-        AppMethodBeat.o(199702);
+        AppMethodBeat.o(208216);
         return;
       }
-      if (c.h(this.kZN).contains(localObject2))
+      if (c.h(this.ldw).contains(localObject2))
       {
-        this.giT.invoke(new e.a(13022, "Tech already connected"));
-        AppMethodBeat.o(199702);
+        this.gll.invoke(new e.a(13022, "Tech already connected"));
+        AppMethodBeat.o(208216);
         return;
       }
-      localb = this.giT;
+      localb = this.gll;
       try
       {
-        localObject1 = org.a.a.bF(org.a.a.forName(((com.tencent.mm.plugin.appbrand.jsapi.nfc.a.b.b)localObject2).lai)).C("get", new Object[] { localObject1 }).object;
+        localObject1 = org.a.a.bF(org.a.a.forName(((com.tencent.mm.plugin.appbrand.jsapi.nfc.a.b.b)localObject2).ldR)).A("get", new Object[] { localObject1 }).object;
         if (localObject1 == null)
         {
           localObject1 = (Throwable)new IllegalArgumentException("Required value was null.".toString());
-          AppMethodBeat.o(199702);
+          AppMethodBeat.o(208216);
           throw ((Throwable)localObject1);
         }
       }
@@ -489,28 +487,28 @@ public class c
         localb.invoke(new e.a(13015, "unavailable tech"));
         for (TagTechnology localTagTechnology = null; localTagTechnology == null; localTagTechnology = (TagTechnology)localTagTechnology)
         {
-          AppMethodBeat.o(199702);
+          AppMethodBeat.o(208216);
           return;
         }
         try
         {
           localTagTechnology.connect();
-          c.h(this.kZN).add(localObject2);
-          this.giT.invoke(new e.b(z.MKo));
-          AppMethodBeat.o(199702);
+          c.h(this.ldw).add(localObject2);
+          this.gll.invoke(new e.b(z.Nhr));
+          AppMethodBeat.o(208216);
           return;
         }
         catch (Exception localException2)
         {
-          ad.w("MicroMsg.AppBrand.NFCReadWriteManager", "connect failed since ".concat(String.valueOf(localException2)));
-          this.giT.invoke(new e.a(13017, "system internal error"));
-          AppMethodBeat.o(199702);
+          ae.w("MicroMsg.AppBrand.NFCReadWriteManager", "connect failed since ".concat(String.valueOf(localException2)));
+          this.gll.invoke(new e.a(13017, "system internal error"));
+          AppMethodBeat.o(208216);
         }
       }
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
   public static final class f
     implements Runnable
   {
@@ -518,43 +516,43 @@ public class c
     
     public final void run()
     {
-      AppMethodBeat.i(199703);
-      Object localObject1 = this.kZN;
-      Object localObject2 = this.giT;
+      AppMethodBeat.i(208217);
+      Object localObject1 = this.ldw;
+      Object localObject2 = this.gll;
       localObject1 = c.e((c)localObject1);
       if (localObject1 == null) {
         ((d.g.a.b)localObject2).invoke(new e.a(13013, "NFC tag has not been discovered"));
       }
       if (localObject1 == null)
       {
-        AppMethodBeat.o(199703);
+        AppMethodBeat.o(208217);
         return;
       }
-      Object localObject3 = this.kZO;
-      localObject2 = this.giT;
-      b.a locala = com.tencent.mm.plugin.appbrand.jsapi.nfc.a.b.b.lam;
-      localObject3 = (com.tencent.mm.plugin.appbrand.jsapi.nfc.a.b.b)com.tencent.mm.plugin.appbrand.jsapi.nfc.a.b.b.blV().get(localObject3);
+      Object localObject3 = this.ldx;
+      localObject2 = this.gll;
+      b.a locala = com.tencent.mm.plugin.appbrand.jsapi.nfc.a.b.b.ldV;
+      localObject3 = (com.tencent.mm.plugin.appbrand.jsapi.nfc.a.b.b)com.tencent.mm.plugin.appbrand.jsapi.nfc.a.b.b.bmE().get(localObject3);
       if (localObject3 == null) {
         ((d.g.a.b)localObject2).invoke(new e.a(13014, "invalid tech"));
       }
       if (localObject3 == null)
       {
-        AppMethodBeat.o(199703);
+        AppMethodBeat.o(208217);
         return;
       }
-      localObject2 = ((com.tencent.mm.plugin.appbrand.jsapi.nfc.a.b.b)localObject3).laj;
+      localObject2 = ((com.tencent.mm.plugin.appbrand.jsapi.nfc.a.b.b)localObject3).ldS;
       if (localObject2 == null)
       {
-        this.giT.invoke(new e.a(13024, "function not support"));
-        AppMethodBeat.o(199703);
+        this.gll.invoke(new e.a(13024, "function not support"));
+        AppMethodBeat.o(208217);
         return;
       }
-      ((a)localObject2).a((Tag)localObject1, this.kZP, this.giT);
-      AppMethodBeat.o(199703);
+      ((a)localObject2).a((Tag)localObject1, this.ldy, this.gll);
+      AppMethodBeat.o(208217);
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
   public static final class g
     implements Runnable
   {
@@ -563,8 +561,8 @@ public class c
     public final void run()
     {
       AppMethodBeat.i(183672);
-      Object localObject1 = this.kZN;
-      d.g.a.b localb = this.giT;
+      Object localObject1 = this.ldw;
+      d.g.a.b localb = this.gll;
       localObject1 = c.e((c)localObject1);
       if (localObject1 == null) {
         localb.invoke(new e.a(13013, "NFC tag has not been discovered"));
@@ -574,10 +572,10 @@ public class c
         AppMethodBeat.o(183672);
         return;
       }
-      Object localObject3 = this.kZO;
-      localb = this.giT;
-      b.a locala = com.tencent.mm.plugin.appbrand.jsapi.nfc.a.b.b.lam;
-      localObject3 = (com.tencent.mm.plugin.appbrand.jsapi.nfc.a.b.b)com.tencent.mm.plugin.appbrand.jsapi.nfc.a.b.b.blV().get(localObject3);
+      Object localObject3 = this.ldx;
+      localb = this.gll;
+      b.a locala = com.tencent.mm.plugin.appbrand.jsapi.nfc.a.b.b.ldV;
+      localObject3 = (com.tencent.mm.plugin.appbrand.jsapi.nfc.a.b.b)com.tencent.mm.plugin.appbrand.jsapi.nfc.a.b.b.bmE().get(localObject3);
       if (localObject3 == null) {
         localb.invoke(new e.a(13014, "invalid tech"));
       }
@@ -586,16 +584,16 @@ public class c
         AppMethodBeat.o(183672);
         return;
       }
-      if (com.tencent.mm.plugin.appbrand.jsapi.nfc.a.b.b.laf == localObject3)
+      if (com.tencent.mm.plugin.appbrand.jsapi.nfc.a.b.b.ldO == localObject3)
       {
-        this.giT.invoke(new e.a(13024, "function not support"));
+        this.gll.invoke(new e.a(13024, "function not support"));
         AppMethodBeat.o(183672);
         return;
       }
-      localb = this.giT;
+      localb = this.gll;
       try
       {
-        localObject1 = org.a.a.bF(org.a.a.forName(((com.tencent.mm.plugin.appbrand.jsapi.nfc.a.b.b)localObject3).lai)).C("get", new Object[] { localObject1 }).object;
+        localObject1 = org.a.a.bF(org.a.a.forName(((com.tencent.mm.plugin.appbrand.jsapi.nfc.a.b.b)localObject3).ldR)).A("get", new Object[] { localObject1 }).object;
         if (localObject1 == null)
         {
           localObject1 = (Throwable)new IllegalArgumentException("Required value was null.".toString());
@@ -613,8 +611,8 @@ public class c
         }
         try
         {
-          localObject2 = (Integer)org.a.a.gy(localObject2).bdZ("getMaxTransceiveLength").object;
-          localb = this.giT;
+          localObject2 = (Integer)org.a.a.gB(localObject2).bfD("getMaxTransceiveLength").object;
+          localb = this.gll;
           p.g(localObject2, "length");
           localb.invoke(new e.b(localObject2));
           AppMethodBeat.o(183672);
@@ -622,15 +620,15 @@ public class c
         }
         catch (Exception localException2)
         {
-          ad.w("MicroMsg.AppBrand.NFCReadWriteManager", "getMaxTransceiveLength failed since ".concat(String.valueOf(localException2)));
-          this.giT.invoke(new e.a(13017, "system internal error"));
+          ae.w("MicroMsg.AppBrand.NFCReadWriteManager", "getMaxTransceiveLength failed since " + c.g((Throwable)localException2));
+          this.gll.invoke(new e.a(13017, "system internal error"));
           AppMethodBeat.o(183672);
         }
       }
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
   public static final class h
     implements Runnable
   {
@@ -638,38 +636,38 @@ public class c
     
     public final void run()
     {
-      AppMethodBeat.i(199704);
-      Object localObject1 = this.kZN;
-      d.g.a.b localb = this.giT;
+      AppMethodBeat.i(208218);
+      Object localObject1 = this.ldw;
+      d.g.a.b localb = this.gll;
       localObject1 = c.e((c)localObject1);
       if (localObject1 == null) {
         localb.invoke(new e.a(13013, "NFC tag has not been discovered"));
       }
       if (localObject1 == null)
       {
-        AppMethodBeat.o(199704);
+        AppMethodBeat.o(208218);
         return;
       }
-      Object localObject2 = this.kZO;
-      localb = this.giT;
-      b.a locala = com.tencent.mm.plugin.appbrand.jsapi.nfc.a.b.b.lam;
-      localObject2 = (com.tencent.mm.plugin.appbrand.jsapi.nfc.a.b.b)com.tencent.mm.plugin.appbrand.jsapi.nfc.a.b.b.blV().get(localObject2);
+      Object localObject2 = this.ldx;
+      localb = this.gll;
+      b.a locala = com.tencent.mm.plugin.appbrand.jsapi.nfc.a.b.b.ldV;
+      localObject2 = (com.tencent.mm.plugin.appbrand.jsapi.nfc.a.b.b)com.tencent.mm.plugin.appbrand.jsapi.nfc.a.b.b.bmE().get(localObject2);
       if (localObject2 == null) {
         localb.invoke(new e.a(13014, "invalid tech"));
       }
       if (localObject2 == null)
       {
-        AppMethodBeat.o(199704);
+        AppMethodBeat.o(208218);
         return;
       }
-      localb = this.giT;
+      localb = this.gll;
       try
       {
-        localObject1 = org.a.a.bF(org.a.a.forName(((com.tencent.mm.plugin.appbrand.jsapi.nfc.a.b.b)localObject2).lai)).C("get", new Object[] { localObject1 }).object;
+        localObject1 = org.a.a.bF(org.a.a.forName(((com.tencent.mm.plugin.appbrand.jsapi.nfc.a.b.b)localObject2).ldR)).A("get", new Object[] { localObject1 }).object;
         if (localObject1 == null)
         {
           localObject1 = (Throwable)new IllegalArgumentException("Required value was null.".toString());
-          AppMethodBeat.o(199704);
+          AppMethodBeat.o(208218);
           throw ((Throwable)localObject1);
         }
       }
@@ -678,53 +676,53 @@ public class c
         localb.invoke(new e.a(13015, "unavailable tech"));
         for (TagTechnology localTagTechnology = null; localTagTechnology == null; localTagTechnology = (TagTechnology)localTagTechnology)
         {
-          AppMethodBeat.o(199704);
+          AppMethodBeat.o(208218);
           return;
         }
         try
         {
-          this.giT.invoke(new e.b(Boolean.valueOf(localTagTechnology.isConnected())));
-          AppMethodBeat.o(199704);
+          this.gll.invoke(new e.b(Boolean.valueOf(localTagTechnology.isConnected())));
+          AppMethodBeat.o(208218);
           return;
         }
         catch (Exception localException2)
         {
-          ad.i("MicroMsg.AppBrand.NFCReadWriteManager", "check isConnected failed since ".concat(String.valueOf(localException2)));
-          this.giT.invoke(new e.a(13017, "system internal error"));
-          AppMethodBeat.o(199704);
+          ae.i("MicroMsg.AppBrand.NFCReadWriteManager", "check isConnected failed since ".concat(String.valueOf(localException2)));
+          this.gll.invoke(new e.a(13017, "system internal error"));
+          AppMethodBeat.o(208218);
         }
       }
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/appbrand/jsapi/nfc/rw/logic/NFCReadWriteManager$lifeCycleListener$1", "Lcom/tencent/mm/plugin/appbrand/AppBrandLifeCycle$Listener;", "onPause", "", "type", "Lcom/tencent/mm/plugin/appbrand/AppBrandLifeCycle$PauseType;", "onResume", "luggage-commons-jsapi-nfc-ext_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/appbrand/jsapi/nfc/rw/logic/NFCReadWriteManager$lifeCycleListener$1", "Lcom/tencent/mm/plugin/appbrand/AppBrandLifeCycle$Listener;", "onPause", "", "type", "Lcom/tencent/mm/plugin/appbrand/AppBrandLifeCycle$PauseType;", "onResume", "luggage-commons-jsapi-nfc-ext_release"})
   public static final class i
-    extends g.c
+    extends h.c
   {
-    public final void a(g.d paramd)
+    public final void a(h.d paramd)
     {
       AppMethodBeat.i(183674);
       super.a(paramd);
-      ad.d("MicroMsg.AppBrand.NFCReadWriteManager", "onPause");
-      if (c.a(this.kZN).getAndSet(false)) {
-        ad.i("MicroMsg.AppBrand.NFCReadWriteManager", "onPause, isNFCDiscovering");
+      ae.d("MicroMsg.AppBrand.NFCReadWriteManager", "onPause");
+      if (c.a(this.ldw).getAndSet(false)) {
+        ae.i("MicroMsg.AppBrand.NFCReadWriteManager", "onPause, isNFCDiscovering");
       }
       try
       {
-        ad.i("MicroMsg.AppBrand.NFCReadWriteManager", "disableForegroundDispatch");
-        paramd = NfcAdapter.getDefaultAdapter(aj.getContext());
+        ae.i("MicroMsg.AppBrand.NFCReadWriteManager", "disableForegroundDispatch");
+        paramd = NfcAdapter.getDefaultAdapter(ak.getContext());
         if (paramd != null) {
-          paramd.disableForegroundDispatch(this.kZN.activity);
+          paramd.disableForegroundDispatch(this.ldw.activity);
         }
       }
       catch (Exception paramd)
       {
         for (;;)
         {
-          ad.w("MicroMsg.AppBrand.NFCReadWriteManager", "disableForegroundDispatch failed since ".concat(String.valueOf(paramd)));
+          ae.w("MicroMsg.AppBrand.NFCReadWriteManager", "disableForegroundDispatch failed since ".concat(String.valueOf(paramd)));
         }
       }
-      c.a(this.kZN, true);
+      c.a(this.ldw, true);
       AppMethodBeat.o(183674);
     }
     
@@ -732,36 +730,36 @@ public class c
     {
       AppMethodBeat.i(183673);
       super.onResume();
-      ad.d("MicroMsg.AppBrand.NFCReadWriteManager", "onResume");
-      if (c.i(this.kZN))
+      ae.d("MicroMsg.AppBrand.NFCReadWriteManager", "onResume");
+      if (c.i(this.ldw))
       {
-        ad.i("MicroMsg.AppBrand.NFCReadWriteManager", "onResume, isNFCDiscoverySticky");
-        if ((this.kZN.activity instanceof com.tencent.mm.plugin.appbrand.jsapi.nfc.b)) {
-          ((com.tencent.mm.plugin.appbrand.jsapi.nfc.b)this.kZN.activity).blB();
+        ae.i("MicroMsg.AppBrand.NFCReadWriteManager", "onResume, isNFCDiscoverySticky");
+        if ((this.ldw.activity instanceof com.tencent.mm.plugin.appbrand.jsapi.nfc.b)) {
+          ((com.tencent.mm.plugin.appbrand.jsapi.nfc.b)this.ldw.activity).bmk();
         }
       }
       try
       {
-        ad.i("MicroMsg.AppBrand.NFCReadWriteManager", "enableForegroundDispatch");
-        NfcAdapter localNfcAdapter = NfcAdapter.getDefaultAdapter(aj.getContext());
+        ae.i("MicroMsg.AppBrand.NFCReadWriteManager", "enableForegroundDispatch");
+        NfcAdapter localNfcAdapter = NfcAdapter.getDefaultAdapter(ak.getContext());
         if (localNfcAdapter != null) {
-          localNfcAdapter.enableForegroundDispatch(this.kZN.activity, c.b(this.kZN), c.blR(), c.blS());
+          localNfcAdapter.enableForegroundDispatch(this.ldw.activity, c.b(this.ldw), c.bmA(), c.bmB());
         }
       }
       catch (Exception localException)
       {
         for (;;)
         {
-          ad.w("MicroMsg.AppBrand.NFCReadWriteManager", "enableForegroundDispatch failed since ".concat(String.valueOf(localException)));
+          ae.w("MicroMsg.AppBrand.NFCReadWriteManager", "enableForegroundDispatch failed since ".concat(String.valueOf(localException)));
         }
       }
-      c.a(this.kZN).set(true);
-      c.a(this.kZN, false);
+      c.a(this.ldw).set(true);
+      c.a(this.ldw, false);
       AppMethodBeat.o(183673);
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
   public static final class j
     implements Runnable
   {
@@ -769,28 +767,28 @@ public class c
     
     public final void run()
     {
-      AppMethodBeat.i(199705);
-      Object localObject2 = this.kZN;
-      Object localObject1 = this.giT;
+      AppMethodBeat.i(208219);
+      Object localObject2 = this.ldw;
+      Object localObject1 = this.gll;
       Tag localTag = c.e((c)localObject2);
       if (localTag == null) {
         ((d.g.a.b)localObject1).invoke(new e.a(13013, "NFC tag has not been discovered"));
       }
       if (localTag == null)
       {
-        AppMethodBeat.o(199705);
+        AppMethodBeat.o(208219);
         return;
       }
-      localObject2 = this.kZO;
-      localObject1 = this.giT;
-      Object localObject3 = com.tencent.mm.plugin.appbrand.jsapi.nfc.a.b.b.lam;
-      localObject3 = (com.tencent.mm.plugin.appbrand.jsapi.nfc.a.b.b)com.tencent.mm.plugin.appbrand.jsapi.nfc.a.b.b.blV().get(localObject2);
+      localObject2 = this.ldx;
+      localObject1 = this.gll;
+      Object localObject3 = com.tencent.mm.plugin.appbrand.jsapi.nfc.a.b.b.ldV;
+      localObject3 = (com.tencent.mm.plugin.appbrand.jsapi.nfc.a.b.b)com.tencent.mm.plugin.appbrand.jsapi.nfc.a.b.b.bmE().get(localObject2);
       if (localObject3 == null) {
         ((d.g.a.b)localObject1).invoke(new e.a(13014, "invalid tech"));
       }
       if (localObject3 == null)
       {
-        AppMethodBeat.o(199705);
+        AppMethodBeat.o(208219);
         return;
       }
       Class[] arrayOfClass = new Class[1];
@@ -798,7 +796,7 @@ public class c
       p.h("setTimeout", "name");
       p.h(arrayOfClass, "parameterTypes");
       b.b localb = new b.b("setTimeout", arrayOfClass);
-      localObject2 = (Boolean)((com.tencent.mm.plugin.appbrand.jsapi.nfc.a.b.b)localObject3).lah.get(localb);
+      localObject2 = (Boolean)((com.tencent.mm.plugin.appbrand.jsapi.nfc.a.b.b)localObject3).ldQ.get(localb);
       localObject1 = localObject2;
       if (localObject2 == null) {
         localObject1 = (Boolean)((d.g.a.a)new b.c(localb, (com.tencent.mm.plugin.appbrand.jsapi.nfc.a.b.b)localObject3, "setTimeout", arrayOfClass)).invoke();
@@ -806,19 +804,19 @@ public class c
       p.g(localObject1, "MethodSignature(name, pa…            }()\n        }");
       if (!((Boolean)localObject1).booleanValue())
       {
-        ad.i("MicroMsg.AppBrand.NFCReadWriteManager", "setTimeout, " + ((com.tencent.mm.plugin.appbrand.jsapi.nfc.a.b.b)localObject3).kYN + ".setTimeout is not supported");
-        this.giT.invoke(new e.a(13024, "function not support"));
-        AppMethodBeat.o(199705);
+        ae.i("MicroMsg.AppBrand.NFCReadWriteManager", "setTimeout, " + ((com.tencent.mm.plugin.appbrand.jsapi.nfc.a.b.b)localObject3).lcw + ".setTimeout is not supported");
+        this.gll.invoke(new e.a(13024, "function not support"));
+        AppMethodBeat.o(208219);
         return;
       }
-      localObject2 = this.giT;
+      localObject2 = this.gll;
       try
       {
-        localObject1 = org.a.a.bF(org.a.a.forName(((com.tencent.mm.plugin.appbrand.jsapi.nfc.a.b.b)localObject3).lai)).C("get", new Object[] { localTag }).object;
+        localObject1 = org.a.a.bF(org.a.a.forName(((com.tencent.mm.plugin.appbrand.jsapi.nfc.a.b.b)localObject3).ldR)).A("get", new Object[] { localTag }).object;
         if (localObject1 == null)
         {
           localObject1 = (Throwable)new IllegalArgumentException("Required value was null.".toString());
-          AppMethodBeat.o(199705);
+          AppMethodBeat.o(208219);
           throw ((Throwable)localObject1);
         }
       }
@@ -827,27 +825,27 @@ public class c
         ((d.g.a.b)localObject2).invoke(new e.a(13015, "unavailable tech"));
         for (TagTechnology localTagTechnology = null; localTagTechnology == null; localTagTechnology = (TagTechnology)localTagTechnology)
         {
-          AppMethodBeat.o(199705);
+          AppMethodBeat.o(208219);
           return;
         }
         try
         {
-          org.a.a.gy(localTagTechnology).C("setTimeout", new Object[] { Integer.valueOf(this.kZR) });
-          this.giT.invoke(new e.b(z.MKo));
-          AppMethodBeat.o(199705);
+          org.a.a.gB(localTagTechnology).A("setTimeout", new Object[] { Integer.valueOf(this.ldA) });
+          this.gll.invoke(new e.b(z.Nhr));
+          AppMethodBeat.o(208219);
           return;
         }
         catch (Exception localException2)
         {
-          ad.w("MicroMsg.AppBrand.NFCReadWriteManager", "setTimeout failed since ".concat(String.valueOf(localException2)));
-          this.giT.invoke(new e.a(13017, "system internal error"));
-          AppMethodBeat.o(199705);
+          ae.w("MicroMsg.AppBrand.NFCReadWriteManager", "setTimeout failed since " + c.g((Throwable)localException2));
+          this.gll.invoke(new e.a(13017, "system internal error"));
+          AppMethodBeat.o(208219);
         }
       }
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
   public static final class k
     implements Runnable
   {
@@ -856,37 +854,37 @@ public class c
     public final void run()
     {
       AppMethodBeat.i(183675);
-      if (c.a(this.kZN).get())
+      if (c.a(this.ldw).get())
       {
-        this.giT.invoke(new e.a(13021, "NFC discovery already started"));
+        this.gll.invoke(new e.a(13021, "NFC discovery already started"));
         AppMethodBeat.o(183675);
         return;
       }
       try
       {
-        ad.i("MicroMsg.AppBrand.NFCReadWriteManager", "enableForegroundDispatch");
-        NfcAdapter localNfcAdapter = NfcAdapter.getDefaultAdapter(aj.getContext());
+        ae.i("MicroMsg.AppBrand.NFCReadWriteManager", "enableForegroundDispatch");
+        NfcAdapter localNfcAdapter = NfcAdapter.getDefaultAdapter(ak.getContext());
         if (localNfcAdapter == null) {
-          p.gfZ();
+          p.gkB();
         }
-        localNfcAdapter.enableForegroundDispatch(this.kZN.activity, c.b(this.kZN), c.blR(), c.blS());
-        c.c(this.kZN);
-        this.giT.invoke(new e.b(z.MKo));
-        c.a(this.kZN).set(true);
-        c.d(this.kZN);
+        localNfcAdapter.enableForegroundDispatch(this.ldw.activity, c.b(this.ldw), c.bmA(), c.bmB());
+        c.c(this.ldw);
+        this.gll.invoke(new e.b(z.Nhr));
+        c.a(this.ldw).set(true);
+        c.d(this.ldw);
         AppMethodBeat.o(183675);
         return;
       }
       catch (Exception localException)
       {
-        ad.w("MicroMsg.AppBrand.NFCReadWriteManager", "enableForegroundDispatch failed since ".concat(String.valueOf(localException)));
-        this.giT.invoke(new e.a(13017, "system internal error"));
+        ae.w("MicroMsg.AppBrand.NFCReadWriteManager", "enableForegroundDispatch failed since ".concat(String.valueOf(localException)));
+        this.gll.invoke(new e.a(13017, "system internal error"));
         AppMethodBeat.o(183675);
       }
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
   public static final class l
     implements Runnable
   {
@@ -895,38 +893,38 @@ public class c
     public final void run()
     {
       AppMethodBeat.i(183676);
-      if (!c.a(this.kZN).get())
+      if (!c.a(this.ldw).get())
       {
-        this.giT.invoke(new e.a(13018, "NFC discovery has not started"));
+        this.gll.invoke(new e.a(13018, "NFC discovery has not started"));
         AppMethodBeat.o(183676);
         return;
       }
       try
       {
-        ad.i("MicroMsg.AppBrand.NFCReadWriteManager", "disableForegroundDispatch");
-        NfcAdapter localNfcAdapter = NfcAdapter.getDefaultAdapter(aj.getContext());
+        ae.i("MicroMsg.AppBrand.NFCReadWriteManager", "disableForegroundDispatch");
+        NfcAdapter localNfcAdapter = NfcAdapter.getDefaultAdapter(ak.getContext());
         if (localNfcAdapter == null) {
-          p.gfZ();
+          p.gkB();
         }
-        localNfcAdapter.disableForegroundDispatch(this.kZN.activity);
-        c.a(this.kZN, null);
-        c.f(this.kZN);
-        this.giT.invoke(new e.b(z.MKo));
-        c.a(this.kZN).set(false);
-        c.g(this.kZN);
+        localNfcAdapter.disableForegroundDispatch(this.ldw.activity);
+        c.a(this.ldw, null);
+        c.f(this.ldw);
+        this.gll.invoke(new e.b(z.Nhr));
+        c.a(this.ldw).set(false);
+        c.g(this.ldw);
         AppMethodBeat.o(183676);
         return;
       }
       catch (Exception localException)
       {
-        ad.w("MicroMsg.AppBrand.NFCReadWriteManager", "disableForegroundDispatch failed since ".concat(String.valueOf(localException)));
-        this.giT.invoke(new e.a(13017, "system internal error"));
+        ae.w("MicroMsg.AppBrand.NFCReadWriteManager", "disableForegroundDispatch failed since ".concat(String.valueOf(localException)));
+        this.gll.invoke(new e.a(13017, "system internal error"));
         AppMethodBeat.o(183676);
       }
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
   public static final class m
     implements Runnable
   {
@@ -936,8 +934,8 @@ public class c
     {
       Object localObject3 = null;
       AppMethodBeat.i(183677);
-      Object localObject1 = this.kZN;
-      Object localObject4 = this.giT;
+      Object localObject1 = this.ldw;
+      Object localObject4 = this.gll;
       localObject1 = c.e((c)localObject1);
       if (localObject1 == null) {
         ((d.g.a.b)localObject4).invoke(new e.a(13013, "NFC tag has not been discovered"));
@@ -947,10 +945,10 @@ public class c
         AppMethodBeat.o(183677);
         return;
       }
-      Object localObject5 = this.kZO;
-      localObject4 = this.giT;
-      b.a locala = com.tencent.mm.plugin.appbrand.jsapi.nfc.a.b.b.lam;
-      localObject5 = (com.tencent.mm.plugin.appbrand.jsapi.nfc.a.b.b)com.tencent.mm.plugin.appbrand.jsapi.nfc.a.b.b.blV().get(localObject5);
+      Object localObject5 = this.ldx;
+      localObject4 = this.gll;
+      b.a locala = com.tencent.mm.plugin.appbrand.jsapi.nfc.a.b.b.ldV;
+      localObject5 = (com.tencent.mm.plugin.appbrand.jsapi.nfc.a.b.b)com.tencent.mm.plugin.appbrand.jsapi.nfc.a.b.b.bmE().get(localObject5);
       if (localObject5 == null) {
         ((d.g.a.b)localObject4).invoke(new e.a(13014, "invalid tech"));
       }
@@ -959,16 +957,16 @@ public class c
         AppMethodBeat.o(183677);
         return;
       }
-      if (com.tencent.mm.plugin.appbrand.jsapi.nfc.a.b.b.laf == localObject5)
+      if (com.tencent.mm.plugin.appbrand.jsapi.nfc.a.b.b.ldO == localObject5)
       {
-        this.giT.invoke(new e.a(13024, "function not support"));
+        this.gll.invoke(new e.a(13024, "function not support"));
         AppMethodBeat.o(183677);
         return;
       }
-      localObject4 = this.giT;
+      localObject4 = this.gll;
       try
       {
-        localObject1 = org.a.a.bF(org.a.a.forName(((com.tencent.mm.plugin.appbrand.jsapi.nfc.a.b.b)localObject5).lai)).C("get", new Object[] { localObject1 }).object;
+        localObject1 = org.a.a.bF(org.a.a.forName(((com.tencent.mm.plugin.appbrand.jsapi.nfc.a.b.b)localObject5).ldR)).A("get", new Object[] { localObject1 }).object;
         if (localObject1 == null)
         {
           localObject1 = (Throwable)new IllegalArgumentException("Required value was null.".toString());
@@ -986,7 +984,7 @@ public class c
         }
         try
         {
-          localObject4 = (byte[])org.a.a.gy(localObject2).C("transceive", new Object[] { this.kZS }).object;
+          localObject4 = (byte[])org.a.a.gB(localObject2).A("transceive", new Object[] { this.ldB }).object;
           localObject5 = new StringBuilder("transceive, rspData: ");
           localObject2 = localObject3;
           if (localObject4 != null)
@@ -994,8 +992,8 @@ public class c
             localObject2 = Arrays.toString((byte[])localObject4);
             p.g(localObject2, "java.util.Arrays.toString(this)");
           }
-          ad.d("MicroMsg.AppBrand.NFCReadWriteManager", (String)localObject2);
-          localObject2 = this.giT;
+          ae.d("MicroMsg.AppBrand.NFCReadWriteManager", (String)localObject2);
+          localObject2 = this.gll;
           p.g(localObject4, "rspData");
           ((d.g.a.b)localObject2).invoke(new e.b(localObject4));
           AppMethodBeat.o(183677);
@@ -1003,15 +1001,15 @@ public class c
         }
         catch (Exception localException2)
         {
-          ad.w("MicroMsg.AppBrand.NFCReadWriteManager", "transceive failed since ".concat(String.valueOf(localException2)));
-          this.giT.invoke(new e.a(13017, "system internal error"));
+          ae.w("MicroMsg.AppBrand.NFCReadWriteManager", "transceive failed since " + c.g((Throwable)localException2));
+          this.gll.invoke(new e.a(13017, "system internal error"));
           AppMethodBeat.o(183677);
         }
       }
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
   static final class n
     implements Runnable
   {
@@ -1020,7 +1018,7 @@ public class c
     public final void run()
     {
       AppMethodBeat.i(183678);
-      Object localObject2 = this.kZN;
+      Object localObject2 = this.ldw;
       Object localObject1 = paramb;
       localObject2 = c.e((c)localObject2);
       if (localObject2 == null) {
@@ -1041,13 +1039,13 @@ public class c
       try
       {
         ((Ndef)localObject1).writeNdefMessage(paramNdefMessage);
-        paramb.invoke(new e.b(z.MKo));
+        paramb.invoke(new e.b(z.Nhr));
         AppMethodBeat.o(183678);
         return;
       }
       catch (Exception localException)
       {
-        ad.w("MicroMsg.AppBrand.NFCReadWriteManager", "writeNdefMessage failed since ".concat(String.valueOf(localException)));
+        ae.w("MicroMsg.AppBrand.NFCReadWriteManager", "writeNdefMessage failed since ".concat(String.valueOf(localException)));
         paramb.invoke(new e.a(13017, "system internal error"));
         AppMethodBeat.o(183678);
       }

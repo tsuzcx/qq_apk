@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.View.OnTouchListener;
 import android.widget.FrameLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public abstract class b
   extends com.tencent.mm.plugin.k.a
@@ -18,29 +18,18 @@ public abstract class b
   protected float aTM = 0.0F;
   public Activity activity;
   protected int type = 0;
-  protected com.tencent.mm.plugin.k.d vcZ;
+  protected com.tencent.mm.plugin.k.d vpk;
   
   public b(Activity paramActivity)
   {
     this.activity = paramActivity;
   }
   
-  public final boolean dgX()
-  {
-    return false;
-  }
-  
-  public abstract com.tencent.mm.plugin.k.d dgY();
-  
-  public void dgZ() {}
-  
-  public void dha() {}
-  
   public boolean dispatchKeyEvent(KeyEvent paramKeyEvent)
   {
     if ((paramKeyEvent.getKeyCode() == 4) && (paramKeyEvent.getAction() == 0))
     {
-      ad.d("MicroMsg.MMBaseMapUI", "dispatchKeyEvent");
+      ae.d("MicroMsg.MMBaseMapUI", "dispatchKeyEvent");
       this.activity.finish();
       return true;
     }
@@ -51,6 +40,17 @@ public abstract class b
   {
     return false;
   }
+  
+  public final boolean djW()
+  {
+    return false;
+  }
+  
+  public abstract com.tencent.mm.plugin.k.d djX();
+  
+  public void djY() {}
+  
+  public void djZ() {}
   
   public final View findViewById(int paramInt)
   {
@@ -64,10 +64,10 @@ public abstract class b
     this.activity.requestWindowFeature(1);
     this.activity.setContentView(2131495097);
     this.type = this.activity.getIntent().getIntExtra("map_view_type", 0);
-    ad.i("MicroMsg.MMBaseMapUI", "init oncreate type %d", new Object[] { Integer.valueOf(this.type) });
-    ((FrameLayout)findViewById(2131302155)).addView(d.fG(this.activity));
-    this.vcZ = dgY();
-    this.vcZ.setMapViewOnTouchListener(new View.OnTouchListener()
+    ae.i("MicroMsg.MMBaseMapUI", "init oncreate type %d", new Object[] { Integer.valueOf(this.type) });
+    ((FrameLayout)findViewById(2131302155)).addView(d.fM(this.activity));
+    this.vpk = djX();
+    this.vpk.setMapViewOnTouchListener(new View.OnTouchListener()
     {
       public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
       {
@@ -75,9 +75,9 @@ public abstract class b
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
         localb.bd(paramAnonymousView);
         localb.bd(paramAnonymousMotionEvent);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/location/ui/impl/MMBaseMapUI$1", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahq());
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/location/ui/impl/MMBaseMapUI$1", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahF());
         int i = paramAnonymousMotionEvent.getAction();
-        ad.i("MicroMsg.MMBaseMapUI", "map action ".concat(String.valueOf(i)));
+        ae.i("MicroMsg.MMBaseMapUI", "map action ".concat(String.valueOf(i)));
         switch (i)
         {
         }
@@ -88,20 +88,20 @@ public abstract class b
           return false;
           b.this.aTL = paramAnonymousMotionEvent.getX();
           b.this.aTM = paramAnonymousMotionEvent.getY();
-          b.this.dgZ();
+          b.this.djY();
           continue;
           if ((Math.abs(paramAnonymousMotionEvent.getX() - b.this.aTL) > 10.0F) || (Math.abs(paramAnonymousMotionEvent.getY() - b.this.aTM) > 10.0F)) {
-            b.this.dha();
+            b.this.djZ();
           }
         }
       }
     });
-    this.vcZ.setMapAnchor(0.5F, 0.5F);
+    this.vpk.setMapAnchor(0.5F, 0.5F);
   }
   
   public void onDestroy()
   {
-    this.vcZ.destroy();
+    this.vpk.destroy();
   }
   
   public void onPause() {}

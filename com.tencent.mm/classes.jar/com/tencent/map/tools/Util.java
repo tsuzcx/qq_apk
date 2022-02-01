@@ -486,10 +486,10 @@ public class Util
   
   public static Object invokeStaticMethod(Class paramClass, String paramString, Class[] paramArrayOfClass, Object[] paramArrayOfObject)
   {
-    AppMethodBeat.i(195075);
+    AppMethodBeat.i(209786);
     if (paramClass == null)
     {
-      AppMethodBeat.o(195075);
+      AppMethodBeat.o(209786);
       return null;
     }
     try
@@ -499,19 +499,19 @@ public class Util
       {
         paramString.setAccessible(true);
         paramClass = paramString.invoke(paramClass, paramArrayOfObject);
-        AppMethodBeat.o(195075);
+        AppMethodBeat.o(209786);
         return paramClass;
       }
     }
     catch (InvocationTargetException paramClass)
     {
       paramClass = new RuntimeException(paramClass.getTargetException());
-      AppMethodBeat.o(195075);
+      AppMethodBeat.o(209786);
       throw paramClass;
     }
     catch (IllegalAccessException paramClass)
     {
-      AppMethodBeat.o(195075);
+      AppMethodBeat.o(209786);
     }
     return null;
   }

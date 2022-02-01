@@ -8,11 +8,11 @@ public abstract class be
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eQR = "bakLogId".hashCode();
-  private static final int eQS = "valueStr".hashCode();
+  private static final int eSC = "bakLogId".hashCode();
+  private static final int eSD = "valueStr".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eQP;
-  private boolean eQQ;
+  private boolean eSA;
+  private boolean eSB;
   public int field_bakLogId;
   public String field_valueStr;
   
@@ -29,7 +29,7 @@ public abstract class be
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eQR != k) {
+      if (eSC != k) {
         break label60;
       }
       this.field_bakLogId = paramCursor.getInt(i);
@@ -40,7 +40,7 @@ public abstract class be
       break label20;
       break;
       label60:
-      if (eQS == k) {
+      if (eSD == k) {
         this.field_valueStr = paramCursor.getString(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
@@ -51,10 +51,10 @@ public abstract class be
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eQP) {
+    if (this.eSA) {
       localContentValues.put("bakLogId", Integer.valueOf(this.field_bakLogId));
     }
-    if (this.eQQ) {
+    if (this.eSB) {
       localContentValues.put("valueStr", this.field_valueStr);
     }
     if (this.systemRowid > 0L) {

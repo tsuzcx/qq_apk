@@ -16,38 +16,38 @@ import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ac.i;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
-import com.tencent.mm.g.a.jx;
+import com.tencent.mm.ab.i;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.g.a.jy;
 import com.tencent.mm.kernel.d;
 import com.tencent.mm.plugin.sns.ui.SnsEditText;
-import com.tencent.mm.protocal.protobuf.dnr;
-import com.tencent.mm.protocal.protobuf.dns;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.protocal.protobuf.doo;
+import com.tencent.mm.protocal.protobuf.dop;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.az;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.p;
 import com.tencent.mm.ui.base.t;
 
 public class TopStoryCommentFloatDialog
   extends RelativeLayout
-  implements com.tencent.mm.al.f, com.tencent.mm.ui.tools.g
+  implements com.tencent.mm.ak.f, com.tencent.mm.ui.tools.g
 {
-  long Apa;
-  TextView Btw;
-  SnsEditText Btz;
-  com.tencent.mm.plugin.topstory.a.c.f ByM;
-  View ByU;
-  boolean ByV;
-  a ByW;
-  TextView ByX;
-  private View.OnClickListener ByY;
+  long AGn;
+  TextView BKU;
+  SnsEditText BKX;
+  com.tencent.mm.plugin.topstory.a.c.f BQk;
+  View BQs;
+  boolean BQt;
+  a BQu;
+  TextView BQv;
+  private View.OnClickListener BQw;
   MMActivity activity;
-  public com.tencent.mm.ui.tools.h fQT;
-  TextView hch;
+  public com.tencent.mm.ui.tools.h fSZ;
+  TextView heV;
   p tipDialog;
   
   public TopStoryCommentFloatDialog(Context paramContext, AttributeSet paramAttributeSet)
@@ -55,16 +55,16 @@ public class TopStoryCommentFloatDialog
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(126657);
     this.tipDialog = null;
-    this.ByV = false;
-    this.Apa = 0L;
-    this.ByY = new View.OnClickListener()
+    this.BQt = false;
+    this.AGn = 0L;
+    this.BQw = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(126656);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
         localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/topstory/ui/widget/TopStoryCommentFloatDialog$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/topstory/ui/widget/TopStoryCommentFloatDialog$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
         if (TopStoryCommentFloatDialog.this.getVisibility() == 0) {
           TopStoryCommentFloatDialog.this.hide();
         }
@@ -81,16 +81,16 @@ public class TopStoryCommentFloatDialog
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(126658);
     this.tipDialog = null;
-    this.ByV = false;
-    this.Apa = 0L;
-    this.ByY = new View.OnClickListener()
+    this.BQt = false;
+    this.AGn = 0L;
+    this.BQw = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(126656);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
         localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/topstory/ui/widget/TopStoryCommentFloatDialog$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/topstory/ui/widget/TopStoryCommentFloatDialog$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
         if (TopStoryCommentFloatDialog.this.getVisibility() == 0) {
           TopStoryCommentFloatDialog.this.hide();
         }
@@ -102,12 +102,12 @@ public class TopStoryCommentFloatDialog
     AppMethodBeat.o(126658);
   }
   
-  protected static boolean cUk()
+  protected static boolean cWP()
   {
     AppMethodBeat.i(126670);
-    if (((com.tencent.mm.kernel.b.h)com.tencent.mm.kernel.g.ajz().ajb()).akw())
+    if (((com.tencent.mm.kernel.b.h)com.tencent.mm.kernel.g.ajO().ajq()).akL())
     {
-      i = com.tencent.mm.kernel.g.aiU().aEN();
+      i = com.tencent.mm.kernel.g.ajj().aFd();
       if ((i == 4) || (i == 6))
       {
         AppMethodBeat.o(126670);
@@ -116,7 +116,7 @@ public class TopStoryCommentFloatDialog
       AppMethodBeat.o(126670);
       return false;
     }
-    if (ay.isConnected(aj.getContext())) {}
+    if (az.isConnected(ak.getContext())) {}
     for (int i = 6; i == 6; i = 0)
     {
       AppMethodBeat.o(126670);
@@ -126,41 +126,41 @@ public class TopStoryCommentFloatDialog
     return false;
   }
   
-  private void epr()
+  private void esY()
   {
     AppMethodBeat.i(126667);
-    int j = this.Btz.getText().toString().length();
+    int j = this.BKX.getText().toString().length();
     if (j < 180)
     {
-      this.hch.setVisibility(8);
-      this.Btw.setVisibility(8);
+      this.heV.setVisibility(8);
+      this.BKU.setVisibility(8);
       AppMethodBeat.o(126667);
       return;
     }
-    this.hch.setVisibility(0);
-    this.Btw.setVisibility(0);
+    this.heV.setVisibility(0);
+    this.BKU.setVisibility(0);
     if (j <= 200) {}
     for (int i = getResources().getColor(2131101042);; i = getResources().getColor(2131100798))
     {
-      this.hch.setText(String.valueOf(j));
-      this.hch.setTextColor(i);
+      this.heV.setText(String.valueOf(j));
+      this.heV.setTextColor(i);
       AppMethodBeat.o(126667);
       return;
     }
   }
   
-  private void eqZ()
+  private void euG()
   {
     AppMethodBeat.i(126668);
-    int i = this.Btz.getText().toString().length();
-    int j = this.Btz.getText().toString().trim().length();
+    int i = this.BKX.getText().toString().length();
+    int j = this.BKX.getText().toString().trim().length();
     if ((i > 200) || (i <= 0) || (j <= 0))
     {
-      this.ByX.setBackgroundResource(2131234414);
+      this.BQv.setBackgroundResource(2131234414);
       AppMethodBeat.o(126668);
       return;
     }
-    this.ByX.setBackgroundResource(2131234413);
+    this.BQv.setBackgroundResource(2131234413);
     AppMethodBeat.o(126668);
   }
   
@@ -168,40 +168,40 @@ public class TopStoryCommentFloatDialog
   {
     AppMethodBeat.i(126659);
     inflate(getContext(), 2131495774, this);
-    this.ByU = findViewById(2131298512);
-    this.Btz = ((SnsEditText)findViewById(2131298540));
-    this.hch = ((TextView)findViewById(2131298381));
-    this.Btw = ((TextView)findViewById(2131298382));
+    this.BQs = findViewById(2131298512);
+    this.BKX = ((SnsEditText)findViewById(2131298540));
+    this.heV = ((TextView)findViewById(2131298381));
+    this.BKU = ((TextView)findViewById(2131298382));
     AppMethodBeat.o(126659);
   }
   
   public final void a(com.tencent.mm.plugin.topstory.a.c.f paramf, a parama, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(126661);
-    this.ByV = true;
-    this.ByM = paramf;
+    this.BQt = true;
+    this.BQk = paramf;
     setVisibility(0);
-    this.Btz.requestFocus();
+    this.BKX.requestFocus();
     this.activity.showVKB();
-    this.ByW = parama;
-    paramf = paramf.eoY();
-    paramf = "action=14&channelId=" + paramInt1 + "&mpScene=0&kykScene=" + paramf.Scene + "&kykSubScene=0&itemType=" + paramInt2 + "&searchId=" + paramf.GRx + "&docId=" + paramf.HbR + "&byPass=" + paramf.HmJ;
-    com.tencent.mm.plugin.report.service.g.yhR.f(17080, new Object[] { Integer.valueOf(7), Integer.valueOf(2), paramf });
+    this.BQu = parama;
+    paramf = paramf.esF();
+    paramf = "action=14&channelId=" + paramInt1 + "&mpScene=0&kykScene=" + paramf.Scene + "&kykSubScene=0&itemType=" + paramInt2 + "&searchId=" + paramf.HkY + "&docId=" + paramf.Hvr + "&byPass=" + paramf.HGj;
+    com.tencent.mm.plugin.report.service.g.yxI.f(17080, new Object[] { Integer.valueOf(7), Integer.valueOf(2), paramf });
     AppMethodBeat.o(126661);
   }
   
-  public final void eqY()
+  public final void euF()
   {
     AppMethodBeat.i(126663);
-    this.Btz.setText("");
+    this.BKX.setText("");
     setVisibility(8);
-    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.ByU.getLayoutParams();
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.BQs.getLayoutParams();
     localLayoutParams.bottomMargin = 0;
-    this.ByU.setLayoutParams(localLayoutParams);
+    this.BQs.setLayoutParams(localLayoutParams);
     this.activity.hideVKB();
-    this.ByV = false;
-    if (this.ByW != null) {
-      this.ByW.onDismiss();
+    this.BQt = false;
+    if (this.BQu != null) {
+      this.BQu.onDismiss();
     }
     AppMethodBeat.o(126663);
   }
@@ -209,14 +209,14 @@ public class TopStoryCommentFloatDialog
   public final void hide()
   {
     AppMethodBeat.i(126662);
-    if (this.Btz.getText().toString().length() > 0)
+    if (this.BKX.getText().toString().length() > 0)
     {
       com.tencent.mm.ui.base.h.a(this.activity, 2131764486, 0, 2131755939, 2131755831, true, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
           AppMethodBeat.i(126655);
-          TopStoryCommentFloatDialog.this.eqY();
+          TopStoryCommentFloatDialog.this.euF();
           AppMethodBeat.o(126655);
         }
       }, new DialogInterface.OnClickListener()
@@ -226,7 +226,7 @@ public class TopStoryCommentFloatDialog
       AppMethodBeat.o(126662);
       return;
     }
-    eqY();
+    euF();
     AppMethodBeat.o(126662);
   }
   
@@ -234,8 +234,8 @@ public class TopStoryCommentFloatDialog
   {
     AppMethodBeat.i(126660);
     this.activity = paramMMActivity;
-    this.fQT = new com.tencent.mm.ui.tools.h(paramMMActivity);
-    setOnClickListener(this.ByY);
+    this.fSZ = new com.tencent.mm.ui.tools.h(paramMMActivity);
+    setOnClickListener(this.BQw);
     findViewById(2131297692).setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
@@ -243,29 +243,29 @@ public class TopStoryCommentFloatDialog
         AppMethodBeat.i(126650);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
         localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/topstory/ui/widget/TopStoryCommentFloatDialog$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/topstory/ui/widget/TopStoryCommentFloatDialog$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
         TopStoryCommentFloatDialog.this.hide();
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/topstory/ui/widget/TopStoryCommentFloatDialog$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(126650);
       }
     });
-    this.ByX = ((TextView)findViewById(2131303360));
-    this.ByX.setOnClickListener(new View.OnClickListener()
+    this.BQv = ((TextView)findViewById(2131303360));
+    this.BQv.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(126651);
         Object localObject = new com.tencent.mm.hellhoundlib.b.b();
         ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/topstory/ui/widget/TopStoryCommentFloatDialog$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahq());
-        if (System.currentTimeMillis() - TopStoryCommentFloatDialog.this.Apa < 500L)
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/topstory/ui/widget/TopStoryCommentFloatDialog$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahF());
+        if (System.currentTimeMillis() - TopStoryCommentFloatDialog.this.AGn < 500L)
         {
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/topstory/ui/widget/TopStoryCommentFloatDialog$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(126651);
           return;
         }
-        TopStoryCommentFloatDialog.this.Apa = System.currentTimeMillis();
-        paramAnonymousView = TopStoryCommentFloatDialog.this.Btz.getText().toString();
+        TopStoryCommentFloatDialog.this.AGn = System.currentTimeMillis();
+        paramAnonymousView = TopStoryCommentFloatDialog.this.BKX.getText().toString();
         if (paramAnonymousView.length() > 200)
         {
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/topstory/ui/widget/TopStoryCommentFloatDialog$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
@@ -278,7 +278,7 @@ public class TopStoryCommentFloatDialog
           AppMethodBeat.o(126651);
           return;
         }
-        if (!TopStoryCommentFloatDialog.cUk())
+        if (!TopStoryCommentFloatDialog.cWP())
         {
           com.tencent.mm.ui.base.h.c(paramMMActivity, paramMMActivity.getString(2131759511), "", true);
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/topstory/ui/widget/TopStoryCommentFloatDialog$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
@@ -286,16 +286,16 @@ public class TopStoryCommentFloatDialog
           return;
         }
         TopStoryCommentFloatDialog.this.tipDialog = com.tencent.mm.ui.base.h.b(paramMMActivity, paramMMActivity.getString(2131755886), false, null);
-        localObject = new com.tencent.mm.plugin.topstory.a.c.f(TopStoryCommentFloatDialog.this.ByM);
-        ((dnr)((com.tencent.mm.plugin.topstory.a.c.f)localObject).rr.hNK.hNQ).hDa = paramAnonymousView;
-        com.tencent.mm.kernel.g.aiU().a((n)localObject, 0);
+        localObject = new com.tencent.mm.plugin.topstory.a.c.f(TopStoryCommentFloatDialog.this.BQk);
+        ((doo)((com.tencent.mm.plugin.topstory.a.c.f)localObject).rr.hQD.hQJ).hFS = paramAnonymousView;
+        com.tencent.mm.kernel.g.ajj().a((n)localObject, 0);
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/topstory/ui/widget/TopStoryCommentFloatDialog$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(126651);
       }
     });
-    epr();
-    eqZ();
-    this.Btz.addTextChangedListener(new TextWatcher()
+    esY();
+    euG();
+    this.BKX.addTextChangedListener(new TextWatcher()
     {
       public final void afterTextChanged(Editable paramAnonymousEditable)
       {
@@ -314,7 +314,7 @@ public class TopStoryCommentFloatDialog
       public final void run()
       {
         AppMethodBeat.i(126653);
-        TopStoryCommentFloatDialog.this.fQT.start();
+        TopStoryCommentFloatDialog.this.fSZ.start();
         AppMethodBeat.o(126653);
       }
     });
@@ -324,16 +324,16 @@ public class TopStoryCommentFloatDialog
   public final void onPause()
   {
     AppMethodBeat.i(126664);
-    this.fQT.KIP = null;
-    com.tencent.mm.kernel.g.aiU().b(2906, this);
+    this.fSZ.Lfj = null;
+    com.tencent.mm.kernel.g.ajj().b(2906, this);
     AppMethodBeat.o(126664);
   }
   
   public final void onResume()
   {
     AppMethodBeat.i(126665);
-    this.fQT.KIP = this;
-    com.tencent.mm.kernel.g.aiU().a(2906, this);
+    this.fSZ.Lfj = this;
+    com.tencent.mm.kernel.g.ajj().a(2906, this);
     AppMethodBeat.o(126665);
   }
   
@@ -352,9 +352,9 @@ public class TopStoryCommentFloatDialog
       if (paramInt1 == 0) {
         break label271;
       }
-      eqY();
-      if (this.ByW != null) {
-        this.ByW.eqO();
+      euF();
+      if (this.BQu != null) {
+        this.BQu.euv();
       }
       if ((paramn instanceof com.tencent.mm.plugin.topstory.a.c.f))
       {
@@ -366,28 +366,28 @@ public class TopStoryCommentFloatDialog
     {
       try
       {
-        paramString = (dnr)localf.rr.hNK.hNQ;
+        paramString = (doo)localf.rr.hQD.hQJ;
         if (paramString == null) {
           continue;
         }
-        paramString = paramString.hDa;
+        paramString = paramString.hFS;
         paramn.h("content", paramString);
-        paramn.h("id", localf.eoX().HBK);
-        paramString = (dnr)localf.rr.hNK.hNQ;
+        paramn.h("id", localf.esE().HVx);
+        paramString = (doo)localf.rr.hQD.hQJ;
         if (paramString == null) {
           continue;
         }
-        paramString = paramString.HbR;
+        paramString = paramString.Hvr;
         paramn.h("docId", paramString);
         paramn.h("opType", "REPLY_ARTICLE_BY_ME");
-        paramString = new jx();
-        paramString.dwR.dwS = paramn.toString();
-        paramString.dwR.dwT = "";
-        com.tencent.mm.sdk.b.a.IbL.l(paramString);
+        paramString = new jy();
+        paramString.dxW.dxX = paramn.toString();
+        paramString.dxW.dxY = "";
+        com.tencent.mm.sdk.b.a.IvT.l(paramString);
       }
-      catch (com.tencent.mm.ac.g paramString)
+      catch (com.tencent.mm.ab.g paramString)
       {
-        ad.e("MicroMsg.TopStoryCommentFloatDialog", "notify tl failed");
+        ae.e("MicroMsg.TopStoryCommentFloatDialog", "notify tl failed");
         continue;
       }
       t.makeText(this.activity, 2131764488, 0).show();
@@ -407,21 +407,21 @@ public class TopStoryCommentFloatDialog
   public final void u(final int paramInt, boolean paramBoolean)
   {
     AppMethodBeat.i(126666);
-    ad.i("MicroMsg.TopStoryCommentFloatDialog", "onKeyboardHeightChanged in pixels: ".concat(String.valueOf(paramInt)));
+    ae.i("MicroMsg.TopStoryCommentFloatDialog", "onKeyboardHeightChanged in pixels: ".concat(String.valueOf(paramInt)));
     Animation local5;
-    if (this.ByV)
+    if (this.BQt)
     {
-      this.ByU.setVisibility(0);
-      if (((RelativeLayout.LayoutParams)this.ByU.getLayoutParams()).bottomMargin != paramInt)
+      this.BQs.setVisibility(0);
+      if (((RelativeLayout.LayoutParams)this.BQs.getLayoutParams()).bottomMargin != paramInt)
       {
         local5 = new Animation()
         {
           protected final void applyTransformation(float paramAnonymousFloat, Transformation paramAnonymousTransformation)
           {
             AppMethodBeat.i(126654);
-            paramAnonymousTransformation = (RelativeLayout.LayoutParams)TopStoryCommentFloatDialog.this.ByU.getLayoutParams();
+            paramAnonymousTransformation = (RelativeLayout.LayoutParams)TopStoryCommentFloatDialog.this.BQs.getLayoutParams();
             paramAnonymousTransformation.bottomMargin = ((int)(paramInt * paramAnonymousFloat));
-            TopStoryCommentFloatDialog.this.ByU.setLayoutParams(paramAnonymousTransformation);
+            TopStoryCommentFloatDialog.this.BQs.setLayoutParams(paramAnonymousTransformation);
             AppMethodBeat.o(126654);
           }
         };
@@ -433,8 +433,8 @@ public class TopStoryCommentFloatDialog
     }
     for (;;)
     {
-      this.ByU.startAnimation(local5);
-      this.Btz.requestFocus();
+      this.BQs.startAnimation(local5);
+      this.BKX.requestFocus();
       setVisibility(0);
       AppMethodBeat.o(126666);
       return;
@@ -445,14 +445,14 @@ public class TopStoryCommentFloatDialog
   
   public static abstract interface a
   {
-    public abstract void eqO();
+    public abstract void euv();
     
     public abstract void onDismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.ui.widget.TopStoryCommentFloatDialog
  * JD-Core Version:    0.7.0.1
  */

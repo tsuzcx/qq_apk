@@ -10,12 +10,12 @@ import org.json.JSONObject;
 public class at
   extends b
 {
-  private c cnl;
-  private String kse;
-  private Map<String, Object> ksf;
-  int ksg;
+  private c cnn;
+  private String kvu;
+  private Map<String, Object> kvv;
+  int kvw;
   
-  public at B(Map<String, Object> paramMap)
+  public at I(Map<String, Object> paramMap)
   {
     AppMethodBeat.i(140645);
     if (paramMap == null)
@@ -23,40 +23,40 @@ public class at
       AppMethodBeat.o(140645);
       return this;
     }
-    d.d(paramMap);
-    this.ksf = paramMap;
+    d.k(paramMap);
+    this.kvv = paramMap;
     AppMethodBeat.o(140645);
     return this;
   }
   
-  public at Pi(String paramString)
+  public at PQ(String paramString)
   {
-    this.kse = paramString;
+    this.kvu = paramString;
     return this;
   }
   
   public final void a(o paramo)
   {
-    AppMethodBeat.i(187611);
-    if (this.cnl == null)
+    AppMethodBeat.i(201178);
+    if (this.cnn == null)
     {
-      AppMethodBeat.o(187611);
+      AppMethodBeat.o(201178);
       return;
     }
-    this.cnl.a(this, paramo);
-    AppMethodBeat.o(187611);
+    this.cnn.a(this, paramo);
+    AppMethodBeat.o(201178);
   }
   
   public at b(c paramc, int paramInt)
   {
     AppMethodBeat.i(140643);
     h(paramc);
-    this.ksg = paramInt;
+    this.kvw = paramInt;
     AppMethodBeat.o(140643);
     return this;
   }
   
-  public void bir()
+  public void bja()
   {
     AppMethodBeat.i(140647);
     a(null);
@@ -67,16 +67,16 @@ public class at
   {
     AppMethodBeat.i(140646);
     String str;
-    if (this.kse != null)
+    if (this.kvu != null)
     {
-      str = this.kse;
+      str = this.kvu;
       AppMethodBeat.o(140646);
       return str;
     }
-    if (this.ksf != null)
+    if (this.kvv != null)
     {
-      d.d(this.ksf);
-      str = new JSONObject(this.ksf).toString();
+      d.k(this.kvv);
+      str = new JSONObject(this.kvv).toString();
       AppMethodBeat.o(140646);
       return str;
     }
@@ -89,25 +89,25 @@ public class at
     if (paramc == null) {
       return this;
     }
-    this.cnl = paramc;
-    this.ksg = 0;
+    this.cnn = paramc;
+    this.kvw = 0;
     return this;
   }
   
   public final at p(String paramString, Object paramObject)
   {
     AppMethodBeat.i(140644);
-    if (this.ksf == null) {
-      this.ksf = new HashMap();
+    if (this.kvv == null) {
+      this.kvv = new HashMap();
     }
-    this.ksf.put(paramString, paramObject);
+    this.kvv.put(paramString, paramObject);
     AppMethodBeat.o(140644);
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.at
  * JD-Core Version:    0.7.0.1
  */

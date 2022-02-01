@@ -92,7 +92,7 @@ public class ViewPager
   private boolean mInLayout;
   private float mInitialMotionX;
   private float mInitialMotionY;
-  private ViewPager.OnPageChangeListener mInternalPageChangeListener;
+  private OnPageChangeListener mInternalPageChangeListener;
   private boolean mIsBeingDragged;
   private boolean mIsScrollStarted;
   private boolean mIsUnableToDrag;
@@ -107,10 +107,10 @@ public class ViewPager
   private boolean mNeedCalculatePageOffsets = false;
   private e mObserver;
   private int mOffscreenPageLimit = 1;
-  private ViewPager.OnPageChangeListener mOnPageChangeListener;
-  private List<ViewPager.OnPageChangeListener> mOnPageChangeListeners;
+  private OnPageChangeListener mOnPageChangeListener;
+  private List<OnPageChangeListener> mOnPageChangeListeners;
   private int mPageMargin;
-  private ViewPager.d mPageTransformer;
+  private d mPageTransformer;
   private int mPageTransformerLayerType;
   private boolean mPopulatePending;
   private Parcelable mRestoredAdapterState = null;
@@ -388,7 +388,7 @@ public class ViewPager
       int i = 0;
       while (i < j)
       {
-        ViewPager.OnPageChangeListener localOnPageChangeListener = (ViewPager.OnPageChangeListener)this.mOnPageChangeListeners.get(i);
+        OnPageChangeListener localOnPageChangeListener = (OnPageChangeListener)this.mOnPageChangeListeners.get(i);
         if (localOnPageChangeListener != null) {
           localOnPageChangeListener.onPageScrolled(paramInt1, paramFloat, paramInt2);
         }
@@ -411,7 +411,7 @@ public class ViewPager
       int i = 0;
       while (i < j)
       {
-        ViewPager.OnPageChangeListener localOnPageChangeListener = (ViewPager.OnPageChangeListener)this.mOnPageChangeListeners.get(i);
+        OnPageChangeListener localOnPageChangeListener = (OnPageChangeListener)this.mOnPageChangeListeners.get(i);
         if (localOnPageChangeListener != null) {
           localOnPageChangeListener.onPageSelected(paramInt);
         }
@@ -434,7 +434,7 @@ public class ViewPager
       int i = 0;
       while (i < j)
       {
-        ViewPager.OnPageChangeListener localOnPageChangeListener = (ViewPager.OnPageChangeListener)this.mOnPageChangeListeners.get(i);
+        OnPageChangeListener localOnPageChangeListener = (OnPageChangeListener)this.mOnPageChangeListeners.get(i);
         if (localOnPageChangeListener != null) {
           localOnPageChangeListener.onPageScrollStateChanged(paramInt);
         }
@@ -871,7 +871,7 @@ public class ViewPager
     this.mAdapterChangeListeners.add(paramc);
   }
   
-  public void addOnPageChangeListener(ViewPager.OnPageChangeListener paramOnPageChangeListener)
+  public void addOnPageChangeListener(OnPageChangeListener paramOnPageChangeListener)
   {
     if (this.mOnPageChangeListeners == null) {
       this.mOnPageChangeListeners = new ArrayList();
@@ -2574,7 +2574,7 @@ public class ViewPager
     }
   }
   
-  public void removeOnPageChangeListener(ViewPager.OnPageChangeListener paramOnPageChangeListener)
+  public void removeOnPageChangeListener(OnPageChangeListener paramOnPageChangeListener)
   {
     if (this.mOnPageChangeListeners != null) {
       this.mOnPageChangeListeners.remove(paramOnPageChangeListener);
@@ -2726,9 +2726,9 @@ public class ViewPager
     scrollToItem(i, paramBoolean1, paramInt2, paramBoolean2);
   }
   
-  ViewPager.OnPageChangeListener setInternalPageChangeListener(ViewPager.OnPageChangeListener paramOnPageChangeListener)
+  OnPageChangeListener setInternalPageChangeListener(OnPageChangeListener paramOnPageChangeListener)
   {
-    ViewPager.OnPageChangeListener localOnPageChangeListener = this.mInternalPageChangeListener;
+    OnPageChangeListener localOnPageChangeListener = this.mInternalPageChangeListener;
     this.mInternalPageChangeListener = paramOnPageChangeListener;
     return localOnPageChangeListener;
   }
@@ -2749,7 +2749,7 @@ public class ViewPager
   }
   
   @Deprecated
-  public void setOnPageChangeListener(ViewPager.OnPageChangeListener paramOnPageChangeListener)
+  public void setOnPageChangeListener(OnPageChangeListener paramOnPageChangeListener)
   {
     this.mOnPageChangeListener = paramOnPageChangeListener;
   }
@@ -2783,12 +2783,12 @@ public class ViewPager
     }
   }
   
-  public void setPageTransformer(boolean paramBoolean, ViewPager.d paramd)
+  public void setPageTransformer(boolean paramBoolean, d paramd)
   {
     setPageTransformer(paramBoolean, paramd, 2);
   }
   
-  public void setPageTransformer(boolean paramBoolean, ViewPager.d paramd, int paramInt)
+  public void setPageTransformer(boolean paramBoolean, d paramd, int paramInt)
   {
     int j = 1;
     boolean bool1;
@@ -2967,6 +2967,15 @@ public class ViewPager
     }
   }
   
+  public static abstract interface OnPageChangeListener
+  {
+    public abstract void onPageScrollStateChanged(int paramInt);
+    
+    public abstract void onPageScrolled(int paramInt1, float paramFloat, int paramInt2);
+    
+    public abstract void onPageSelected(int paramInt);
+  }
+  
   public static class SavedState
     extends AbsSavedState
   {
@@ -3072,6 +3081,11 @@ public class ViewPager
     public abstract void a(ViewPager paramViewPager, q paramq1, q paramq2);
   }
   
+  public static abstract interface d
+  {
+    public abstract void n(View paramView, float paramFloat);
+  }
+  
   final class e
     extends DataSetObserver
   {
@@ -3086,6 +3100,16 @@ public class ViewPager
     {
       ViewPager.this.dataSetChanged();
     }
+  }
+  
+  public static class f
+    implements ViewPager.OnPageChangeListener
+  {
+    public void onPageScrollStateChanged(int paramInt) {}
+    
+    public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
+    
+    public void onPageSelected(int paramInt) {}
   }
   
   static final class g

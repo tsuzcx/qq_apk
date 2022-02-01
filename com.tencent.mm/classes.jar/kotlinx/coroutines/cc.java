@@ -2,7 +2,7 @@ package kotlinx.coroutines;
 
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/coroutines/NotCompleted;", "", "kotlinx-coroutines-core"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/coroutines/NotCompleted;", "", "kotlinx-coroutines-core"})
 public abstract interface cc {}
 
 

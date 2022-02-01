@@ -2,11 +2,11 @@ package com.tencent.soter.a.f;
 
 public final class d$a
 {
-  public String LRn;
+  public String Mok;
   
   public d$a(String paramString)
   {
-    this.LRn = paramString;
+    this.Mok = paramString;
   }
 }
 

@@ -12,9 +12,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class ClassifyHeader
   extends LinearLayout
 {
-  private TextView gUs;
+  private TextView gXb;
   private Context mContext;
-  private ImageView vEq;
+  private ImageView vQu;
   
   public ClassifyHeader(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -38,15 +38,15 @@ public class ClassifyHeader
     AppMethodBeat.i(97831);
     this.mContext = paramContext;
     paramContext = View.inflate(this.mContext, 2131493538, this);
-    this.vEq = ((ImageView)paramContext.findViewById(2131301385));
-    this.gUs = ((TextView)paramContext.findViewById(2131300715));
+    this.vQu = ((ImageView)paramContext.findViewById(2131301385));
+    this.gXb = ((TextView)paramContext.findViewById(2131300715));
     AppMethodBeat.o(97831);
   }
   
   public void setDesc(String paramString)
   {
     AppMethodBeat.i(97832);
-    this.gUs.setText(String.valueOf(paramString));
+    this.gXb.setText(String.valueOf(paramString));
     AppMethodBeat.o(97832);
   }
 }

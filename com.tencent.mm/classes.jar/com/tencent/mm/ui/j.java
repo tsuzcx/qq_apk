@@ -4,8 +4,8 @@ import android.app.Activity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.modelstat.d;
 import com.tencent.mm.sdk.g.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public final class j
 {
@@ -20,7 +20,7 @@ public final class j
         Activity localActivity = this.val$activity;
         int i = paramInt1;
         int j = paramInt2;
-        ad.i("MicroMsg.LauncherUI.HomeUtil", "clickFlowStat index:%d op:%d %s", new Object[] { Integer.valueOf(j), Integer.valueOf(i), bt.flS() });
+        ae.i("MicroMsg.LauncherUI.HomeUtil", "clickFlowStat index:%d op:%d %s", new Object[] { Integer.valueOf(j), Integer.valueOf(i), bu.fpN() });
         if (j >= 0)
         {
           String str = "MainUI";

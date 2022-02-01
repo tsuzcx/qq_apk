@@ -30,7 +30,7 @@ public final class ai
     AppMethodBeat.o(4254);
   }
   
-  public static ai aq(Context paramContext)
+  public static ai ar(Context paramContext)
   {
     try
     {

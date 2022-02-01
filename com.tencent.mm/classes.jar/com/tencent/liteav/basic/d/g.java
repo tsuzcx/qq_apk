@@ -30,10 +30,10 @@ public class g
   
   public static void a(Handler paramHandler, final HandlerThread paramHandlerThread)
   {
-    AppMethodBeat.i(187319);
+    AppMethodBeat.i(221448);
     if ((paramHandler == null) || (paramHandlerThread == null))
     {
-      AppMethodBeat.o(187319);
+      AppMethodBeat.o(221448);
       return;
     }
     Message localMessage = new Message();
@@ -47,7 +47,7 @@ public class g
         {
           public void run()
           {
-            AppMethodBeat.i(187363);
+            AppMethodBeat.i(221492);
             if (g.1.this.a != null) {
               g.1.this.a.removeCallbacksAndMessages(null);
             }
@@ -56,73 +56,73 @@ public class g
               if (Build.VERSION.SDK_INT >= 18)
               {
                 g.1.this.b.quitSafely();
-                AppMethodBeat.o(187363);
+                AppMethodBeat.o(221492);
                 return;
               }
               g.1.this.b.quit();
             }
-            AppMethodBeat.o(187363);
+            AppMethodBeat.o(221492);
           }
         });
         AppMethodBeat.o(14583);
       }
     };
     paramHandler.sendMessage(localMessage);
-    AppMethodBeat.o(187319);
+    AppMethodBeat.o(221448);
   }
   
   private void a(Message paramMessage)
   {
-    AppMethodBeat.i(187323);
+    AppMethodBeat.i(221452);
     try
     {
       e();
-      AppMethodBeat.o(187323);
+      AppMethodBeat.o(221452);
       return;
     }
     catch (Exception paramMessage)
     {
       TXCLog.e("TXGLThreadHandler", "surface-render: init egl context exception " + this.c);
       this.c = null;
-      AppMethodBeat.o(187323);
+      AppMethodBeat.o(221452);
     }
   }
   
   private void b(Message paramMessage)
   {
-    AppMethodBeat.i(187324);
+    AppMethodBeat.i(221453);
     f();
-    AppMethodBeat.o(187324);
+    AppMethodBeat.o(221453);
   }
   
   private void c(Message paramMessage)
   {
-    AppMethodBeat.i(187325);
+    AppMethodBeat.i(221454);
     try
     {
       if (this.i != null) {
         this.i.d();
       }
-      AppMethodBeat.o(187325);
+      AppMethodBeat.o(221454);
       return;
     }
     catch (Exception paramMessage)
     {
       TXCLog.e("TXGLThreadHandler", "onMsgRend Exception " + paramMessage.getMessage());
-      AppMethodBeat.o(187325);
+      AppMethodBeat.o(221454);
     }
   }
   
   private boolean e()
   {
-    AppMethodBeat.i(187326);
+    AppMethodBeat.i(221455);
     TXCLog.i("TXGLThreadHandler", String.format("init egl size[%d/%d]", new Object[] { Integer.valueOf(this.a), Integer.valueOf(this.b) }));
     if (!this.d) {
       this.g = b.a(null, this.h, this.c, this.a, this.b);
     }
     while ((this.g == null) && (this.e == null))
     {
-      AppMethodBeat.o(187326);
+      AppMethodBeat.o(221455);
       return false;
       this.e = c.a(null, this.f, this.c, this.a, this.b);
     }
@@ -130,7 +130,7 @@ public class g
     if (this.i != null) {
       this.i.c();
     }
-    AppMethodBeat.o(187326);
+    AppMethodBeat.o(221455);
     return true;
   }
   
@@ -157,14 +157,14 @@ public class g
   
   public javax.microedition.khronos.egl.EGLContext a()
   {
-    AppMethodBeat.i(187320);
+    AppMethodBeat.i(221449);
     if (this.g != null)
     {
       javax.microedition.khronos.egl.EGLContext localEGLContext = this.g.d();
-      AppMethodBeat.o(187320);
+      AppMethodBeat.o(221449);
       return localEGLContext;
     }
-    AppMethodBeat.o(187320);
+    AppMethodBeat.o(221449);
     return null;
   }
   
@@ -180,14 +180,14 @@ public class g
   
   public void c()
   {
-    AppMethodBeat.i(187321);
+    AppMethodBeat.i(221450);
     if (this.g != null) {
       this.g.a();
     }
     if (this.e != null) {
       this.e.d();
     }
-    AppMethodBeat.o(187321);
+    AppMethodBeat.o(221450);
   }
   
   public void d()
@@ -204,10 +204,10 @@ public class g
   
   public void handleMessage(Message paramMessage)
   {
-    AppMethodBeat.i(187322);
+    AppMethodBeat.i(221451);
     if (paramMessage == null)
     {
-      AppMethodBeat.o(187322);
+      AppMethodBeat.o(221451);
       return;
     }
     switch (paramMessage.what)
@@ -218,7 +218,7 @@ public class g
       if ((paramMessage != null) && (paramMessage.obj != null)) {
         ((Runnable)paramMessage.obj).run();
       }
-      AppMethodBeat.o(187322);
+      AppMethodBeat.o(221451);
       return;
       a(paramMessage);
       continue;

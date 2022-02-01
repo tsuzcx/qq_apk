@@ -15,14 +15,14 @@ import d.l.k;
 public final class e
   extends g
 {
-  public y MTA;
-  public boolean MTB;
-  private final f MTC;
+  public y NqF;
+  public boolean NqG;
+  private final f NqH;
   
   static
   {
     AppMethodBeat.i(56785);
-    cwV = new k[] { (k)z.a(new x(z.bp(e.class), "settings", "getSettings()Lorg/jetbrains/kotlin/builtins/jvm/JvmBuiltInsSettings;")) };
+    cxA = new k[] { (k)z.a(new x(z.bp(e.class), "settings", "getSettings()Lorg/jetbrains/kotlin/builtins/jvm/JvmBuiltInsSettings;")) };
     AppMethodBeat.o(56785);
   }
   
@@ -30,9 +30,9 @@ public final class e
   {
     super(paramj);
     AppMethodBeat.i(56790);
-    this.MTB = true;
-    this.MTC = paramj.S((d.g.a.a)new b(this, paramj));
-    switch (f.cpQ[parama.ordinal()])
+    this.NqG = true;
+    this.NqH = paramj.S((d.g.a.a)new b(this, paramj));
+    switch (f.cqt[parama.ordinal()])
     {
     }
     for (;;)
@@ -41,33 +41,33 @@ public final class e
       return;
       AppMethodBeat.o(56790);
       return;
-      ggX();
+      glz();
       AppMethodBeat.o(56790);
       return;
-      ggX();
+      glz();
     }
   }
   
-  public final d.l.b.a.b.b.b.a ggY()
+  public final d.l.b.a.b.b.b.a glA()
   {
     AppMethodBeat.i(56788);
-    d.l.b.a.b.b.b.a locala = (d.l.b.a.b.b.b.a)gic();
+    d.l.b.a.b.b.b.a locala = (d.l.b.a.b.b.b.a)gmE();
     AppMethodBeat.o(56788);
     return locala;
   }
   
-  public final c ggZ()
+  public final c glB()
   {
     AppMethodBeat.i(56787);
-    c localc = (c)gic();
+    c localc = (c)gmE();
     AppMethodBeat.o(56787);
     return localc;
   }
   
-  public final h gic()
+  public final h gmE()
   {
     AppMethodBeat.i(56786);
-    h localh = (h)i.a(this.MTC, cwV[0]);
+    h localh = (h)i.a(this.NqH, cxA[0]);
     AppMethodBeat.o(56786);
     return localh;
   }
@@ -78,12 +78,12 @@ public final class e
     {
       AppMethodBeat.i(56778);
       a locala1 = new a("FROM_DEPENDENCIES", 0);
-      MTD = locala1;
+      NqI = locala1;
       a locala2 = new a("FROM_CLASS_LOADER", 1);
-      MTE = locala2;
+      NqJ = locala2;
       a locala3 = new a("FALLBACK", 2);
-      MTF = locala3;
-      MTG = new a[] { locala1, locala2, locala3 };
+      NqK = locala3;
+      NqL = new a[] { locala1, locala2, locala3 };
       AppMethodBeat.o(56778);
     }
     
@@ -102,7 +102,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.a.b.e
  * JD-Core Version:    0.7.0.1
  */

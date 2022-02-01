@@ -9,13 +9,13 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.FrameLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cc.a;
+import com.tencent.mm.cb.a;
 import com.tencent.mm.plugin.vlog.model.v;
 import com.tencent.mm.plugin.vlog.model.w;
 import com.tencent.mm.plugin.vlog.ui.thumb.FrameListView;
 import com.tencent.mm.plugin.vlog.ui.thumb.c;
 import com.tencent.mm.plugin.vlog.ui.thumb.c.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.tav.coremedia.CMTimeRange;
 import d.a.j;
 import d.g.b.p;
@@ -26,65 +26,65 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/vlog/ui/plugin/timecrop/TimeCropViewGroup;", "Landroid/widget/FrameLayout;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "(Landroid/content/Context;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "TAG", "", "callback", "Lcom/tencent/mm/plugin/vlog/ui/plugin/timecrop/TimeCropViewGroup$OnCropCallback;", "getCallback", "()Lcom/tencent/mm/plugin/vlog/ui/plugin/timecrop/TimeCropViewGroup$OnCropCallback;", "setCallback", "(Lcom/tencent/mm/plugin/vlog/ui/plugin/timecrop/TimeCropViewGroup$OnCropCallback;)V", "cutCnt", "getCutCnt", "()I", "setCutCnt", "(I)V", "dragCnt", "getDragCnt", "setDragCnt", "duration", "", "endEmptyTrack", "Lcom/tencent/mm/plugin/vlog/ui/thumb/TrackThumbInfo;", "endInTrack", "frameAdapter", "Lcom/tencent/mm/plugin/vlog/ui/thumb/FrameListAdapter;", "lastTime", "layoutManager", "Landroid/support/v7/widget/LinearLayoutManager;", "maxCropDuration", "padding", "realTimeCallback", "getRealTimeCallback", "setRealTimeCallback", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "runOnSize", "Ljava/lang/Runnable;", "<set-?>", "Lcom/tencent/mm/plugin/vlog/ui/plugin/timecrop/TimeCropSliderSeekBar;", "seekSlider", "getSeekSlider", "()Lcom/tencent/mm/plugin/vlog/ui/plugin/timecrop/TimeCropSliderSeekBar;", "seekSliderListener", "Lcom/tencent/mm/plugin/vlog/ui/plugin/timecrop/TimeCropSliderSeekBar$OnSliderTouchListener;", "sizePerTime", "", "startEmptyTrack", "startInTrack", "thumbCropMaxWidth", "thumbDisplayWidth", "thumbHeight", "thumbWidth", "totalWidth", "getScrollTime", "onFinishInflate", "", "onLayout", "changed", "", "left", "top", "right", "bottom", "setEnableLengthEdit", "enable", "setProgress", "timeMs", "setTrack", "composition", "Lcom/tencent/mm/plugin/vlog/model/VLogComposition;", "initStart", "initEnd", "updateTrackCrop", "OnCropCallback", "plugin-vlog_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/vlog/ui/plugin/timecrop/TimeCropViewGroup;", "Landroid/widget/FrameLayout;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "(Landroid/content/Context;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "TAG", "", "callback", "Lcom/tencent/mm/plugin/vlog/ui/plugin/timecrop/TimeCropViewGroup$OnCropCallback;", "getCallback", "()Lcom/tencent/mm/plugin/vlog/ui/plugin/timecrop/TimeCropViewGroup$OnCropCallback;", "setCallback", "(Lcom/tencent/mm/plugin/vlog/ui/plugin/timecrop/TimeCropViewGroup$OnCropCallback;)V", "cutCnt", "getCutCnt", "()I", "setCutCnt", "(I)V", "dragCnt", "getDragCnt", "setDragCnt", "duration", "", "endEmptyTrack", "Lcom/tencent/mm/plugin/vlog/ui/thumb/TrackThumbInfo;", "endInTrack", "frameAdapter", "Lcom/tencent/mm/plugin/vlog/ui/thumb/FrameListAdapter;", "lastTime", "layoutManager", "Landroid/support/v7/widget/LinearLayoutManager;", "maxCropDuration", "padding", "realTimeCallback", "getRealTimeCallback", "setRealTimeCallback", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "runOnSize", "Ljava/lang/Runnable;", "<set-?>", "Lcom/tencent/mm/plugin/vlog/ui/plugin/timecrop/TimeCropSliderSeekBar;", "seekSlider", "getSeekSlider", "()Lcom/tencent/mm/plugin/vlog/ui/plugin/timecrop/TimeCropSliderSeekBar;", "seekSliderListener", "Lcom/tencent/mm/plugin/vlog/ui/plugin/timecrop/TimeCropSliderSeekBar$OnSliderTouchListener;", "sizePerTime", "", "startEmptyTrack", "startInTrack", "thumbCropMaxWidth", "thumbDisplayWidth", "thumbHeight", "thumbWidth", "totalWidth", "getScrollTime", "onFinishInflate", "", "onLayout", "changed", "", "left", "top", "right", "bottom", "setEnableLengthEdit", "enable", "setProgress", "timeMs", "setTrack", "composition", "Lcom/tencent/mm/plugin/vlog/model/VLogComposition;", "initStart", "initEnd", "updateTrackCrop", "OnCropCallback", "plugin-vlog_release"})
 public final class TimeCropViewGroup
   extends FrameLayout
 {
-  private com.tencent.mm.plugin.vlog.ui.thumb.b BOH;
-  private int BOK;
-  private float BOP;
-  private Runnable BOQ;
-  private final c BOS;
-  private TimeCropSliderSeekBar BRF;
-  private long BRG;
-  private long BRH;
-  private long BRI;
-  private int BRJ;
-  private int BRK;
-  private final c BRL;
-  private int BRM;
-  private int BRN;
-  private TimeCropSliderSeekBar.a BRO;
-  private TimeCropViewGroup.a BRP;
-  private TimeCropViewGroup.a BRQ;
+  private com.tencent.mm.plugin.vlog.ui.thumb.b Cgg;
+  private int Cgj;
+  private float Cgo;
+  private Runnable Cgp;
+  private final c Cgr;
+  private TimeCropSliderSeekBar Cjf;
+  private long Cjg;
+  private long Cjh;
+  private long Cji;
+  private int Cjj;
+  private int Cjk;
+  private final c Cjl;
+  private int Cjm;
+  private int Cjn;
+  private TimeCropSliderSeekBar.a Cjo;
+  private a Cjp;
+  private a Cjq;
   private final String TAG;
   private long duration;
-  private RecyclerView gmV;
-  private long hfU;
+  private RecyclerView gpr;
+  private long hiI;
   private int padding;
   private int thumbHeight;
   private int thumbWidth;
-  private LinearLayoutManager zCm;
+  private LinearLayoutManager zTo;
   
   public TimeCropViewGroup(Context paramContext, AttributeSet paramAttributeSet)
   {
     this(paramContext, paramAttributeSet, 0);
-    AppMethodBeat.i(196637);
-    AppMethodBeat.o(196637);
+    AppMethodBeat.i(192098);
+    AppMethodBeat.o(192098);
   }
   
   public TimeCropViewGroup(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(196636);
+    AppMethodBeat.i(192097);
     this.TAG = "MicroMsg.TrackCropView";
     this.thumbHeight = 112;
     this.thumbWidth = 63;
-    this.BOK = 1;
-    this.BRI = 1L;
-    this.BOP = 1.0F;
-    paramContext = c.BUN;
-    this.BRL = c.a.euf();
-    paramContext = c.BUN;
-    this.BOS = c.a.euf();
-    AppMethodBeat.o(196636);
+    this.Cgj = 1;
+    this.Cji = 1L;
+    this.Cgo = 1.0F;
+    paramContext = c.Cmo;
+    this.Cjl = c.a.exL();
+    paramContext = c.Cmo;
+    this.Cgr = c.a.exL();
+    AppMethodBeat.o(192097);
   }
   
   private final long getScrollTime()
   {
-    AppMethodBeat.i(196635);
+    AppMethodBeat.i(192096);
     Object localObject = null;
-    RecyclerView localRecyclerView = this.gmV;
+    RecyclerView localRecyclerView = this.gpr;
     int i;
     if (localRecyclerView != null)
     {
@@ -100,18 +100,18 @@ public final class TimeCropViewGroup
           localObject = localView;
           if (k >= 0)
           {
-            com.tencent.mm.plugin.vlog.ui.thumb.b localb = this.BOH;
+            com.tencent.mm.plugin.vlog.ui.thumb.b localb = this.Cgg;
             if (localb == null) {
-              p.gfZ();
+              p.gkB();
             }
             localObject = localView;
             if (k < localb.getItemCount())
             {
-              localObject = this.BOH;
+              localObject = this.Cgg;
               if (localObject == null) {
-                p.gfZ();
+                p.gkB();
               }
-              l = ((com.tencent.mm.plugin.vlog.ui.thumb.b)localObject).TK(k).BUL.BGw.startTimeMs;
+              l = ((com.tencent.mm.plugin.vlog.ui.thumb.b)localObject).Ur(k).Cmm.BXV.startTimeMs;
               localObject = localView;
             }
           }
@@ -123,7 +123,7 @@ public final class TimeCropViewGroup
       if (localObject != null) {
         break label160;
       }
-      AppMethodBeat.o(196635);
+      AppMethodBeat.o(192096);
       return 0L;
       i += 1;
       break;
@@ -133,33 +133,33 @@ public final class TimeCropViewGroup
     }
     label160:
     if (localObject == null) {
-      p.gfZ();
+      p.gkB();
     }
-    long l = (((View)localObject).getLeft() / this.BOP + (float)l);
-    AppMethodBeat.o(196635);
+    long l = (((View)localObject).getLeft() / this.Cgo + (float)l);
+    AppMethodBeat.o(192096);
     return l;
   }
   
   public final void a(v paramv, long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(196633);
+    AppMethodBeat.i(192094);
     p.h(paramv, "composition");
-    this.BRM = 0;
-    this.BRN = 0;
+    this.Cjm = 0;
+    this.Cjn = 0;
     final LinkedList localLinkedList = new LinkedList();
-    this.BOK = 0;
-    this.hfU = 0L;
+    this.Cgj = 0;
+    this.hiI = 0L;
     this.duration = paramv.getDurationMs();
-    Object localObject1 = paramv.esb();
-    this.BRG = paramv.getDurationMs();
-    this.BRH = paramLong1;
-    this.BRI = paramLong2;
+    Object localObject1 = paramv.evI();
+    this.Cjg = paramv.getDurationMs();
+    this.Cjh = paramLong1;
+    this.Cji = paramLong2;
     if ((paramLong1 < 0L) || (paramLong2 < 0L))
     {
-      this.BRH = (((CMTimeRange)localObject1).getStartUs() / 1000L);
-      this.BRI = (((CMTimeRange)localObject1).getEndUs() / 1000L);
+      this.Cjh = (((CMTimeRange)localObject1).getStartUs() / 1000L);
+      this.Cji = (((CMTimeRange)localObject1).getEndUs() / 1000L);
     }
-    localObject1 = (Iterable)paramv.esg();
+    localObject1 = (Iterable)paramv.evN();
     paramv = (Collection)new ArrayList(j.a((Iterable)localObject1, 10));
     int i = 0;
     localObject1 = ((Iterable)localObject1).iterator();
@@ -167,7 +167,7 @@ public final class TimeCropViewGroup
     {
       Object localObject2 = ((Iterator)localObject1).next();
       if (i < 0) {
-        j.gfB();
+        j.gkd();
       }
       localObject2 = new c((w)localObject2);
       ((c)localObject2).trackIndex = i;
@@ -180,97 +180,97 @@ public final class TimeCropViewGroup
     if (localLinkedList.size() == 1) {
       localLinkedList.get(0);
     }
-    this.BOQ = ((Runnable)new c(this, localLinkedList));
-    paramv = this.BOQ;
+    this.Cgp = ((Runnable)new c(this, localLinkedList));
+    paramv = this.Cgp;
     if (paramv != null)
     {
       paramv.run();
-      AppMethodBeat.o(196633);
+      AppMethodBeat.o(192094);
       return;
     }
-    AppMethodBeat.o(196633);
+    AppMethodBeat.o(192094);
   }
   
-  public final TimeCropViewGroup.a getCallback()
+  public final a getCallback()
   {
-    return this.BRP;
+    return this.Cjp;
   }
   
   public final int getCutCnt()
   {
-    return this.BRN;
+    return this.Cjn;
   }
   
   public final int getDragCnt()
   {
-    return this.BRM;
+    return this.Cjm;
   }
   
-  public final TimeCropViewGroup.a getRealTimeCallback()
+  public final a getRealTimeCallback()
   {
-    return this.BRQ;
+    return this.Cjq;
   }
   
   public final TimeCropSliderSeekBar getSeekSlider()
   {
-    return this.BRF;
+    return this.Cjf;
   }
   
   protected final void onFinishInflate()
   {
-    AppMethodBeat.i(196630);
+    AppMethodBeat.i(192091);
     super.onFinishInflate();
-    this.gmV = ((RecyclerView)findViewById(2131308041));
-    this.BRF = ((TimeCropSliderSeekBar)findViewById(2131308040));
-    Object localObject = this.BRF;
+    this.gpr = ((RecyclerView)findViewById(2131308041));
+    this.Cjf = ((TimeCropSliderSeekBar)findViewById(2131308040));
+    Object localObject = this.Cjf;
     if (localObject != null) {
       ((TimeCropSliderSeekBar)localObject).setMaskColor(1999383596);
     }
-    localObject = this.BRF;
+    localObject = this.Cjf;
     if (localObject != null) {
       ((TimeCropSliderSeekBar)localObject).setEnableHapticAtEdge(true);
     }
     getContext();
-    this.zCm = new LinearLayoutManager(0);
-    localObject = this.gmV;
+    this.zTo = new LinearLayoutManager(0);
+    localObject = this.gpr;
     if (localObject != null) {
-      ((RecyclerView)localObject).setLayoutManager((RecyclerView.i)this.zCm);
+      ((RecyclerView)localObject).setLayoutManager((RecyclerView.i)this.zTo);
     }
-    this.BOH = new com.tencent.mm.plugin.vlog.ui.thumb.b();
-    localObject = this.BOH;
+    this.Cgg = new com.tencent.mm.plugin.vlog.ui.thumb.b();
+    localObject = this.Cgg;
     if (localObject != null) {
-      ((com.tencent.mm.plugin.vlog.ui.thumb.b)localObject).BUb = true;
+      ((com.tencent.mm.plugin.vlog.ui.thumb.b)localObject).ClC = true;
     }
-    localObject = this.gmV;
+    localObject = this.gpr;
     if (localObject != null) {
-      ((RecyclerView)localObject).setAdapter((RecyclerView.a)this.BOH);
+      ((RecyclerView)localObject).setAdapter((RecyclerView.a)this.Cgg);
     }
-    localObject = this.gmV;
+    localObject = this.gpr;
     if (localObject != null) {
       ((RecyclerView)localObject).setItemAnimator(null);
     }
-    this.BRO = ((TimeCropSliderSeekBar.a)new b(this));
-    localObject = this.BRF;
+    this.Cjo = ((TimeCropSliderSeekBar.a)new b(this));
+    localObject = this.Cjf;
     if (localObject != null)
     {
-      ((TimeCropSliderSeekBar)localObject).setOnSliderTouchListener(this.BRO);
-      AppMethodBeat.o(196630);
+      ((TimeCropSliderSeekBar)localObject).setOnSliderTouchListener(this.Cjo);
+      AppMethodBeat.o(192091);
       return;
     }
-    AppMethodBeat.o(196630);
+    AppMethodBeat.o(192091);
   }
   
   protected final void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     int i = 0;
-    AppMethodBeat.i(196631);
+    AppMethodBeat.i(192092);
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    ad.i(this.TAG, "onLayout");
-    TimeCropSliderSeekBar localTimeCropSliderSeekBar = this.BRF;
+    ae.i(this.TAG, "onLayout");
+    TimeCropSliderSeekBar localTimeCropSliderSeekBar = this.Cjf;
     RecyclerView localRecyclerView;
     if (localTimeCropSliderSeekBar != null)
     {
-      localRecyclerView = this.gmV;
+      localRecyclerView = this.gpr;
       if (localRecyclerView == null) {
         break label108;
       }
@@ -279,115 +279,121 @@ public final class TimeCropViewGroup
     for (paramInt1 = localRecyclerView.getTop();; paramInt1 = 0)
     {
       localTimeCropSliderSeekBar.setContentTop(paramInt1);
-      localTimeCropSliderSeekBar = this.BRF;
+      localTimeCropSliderSeekBar = this.Cjf;
       if (localTimeCropSliderSeekBar == null) {
         break;
       }
-      localRecyclerView = this.gmV;
+      localRecyclerView = this.gpr;
       paramInt1 = i;
       if (localRecyclerView != null) {
         paramInt1 = localRecyclerView.getMeasuredHeight();
       }
       localTimeCropSliderSeekBar.setContentHeight(paramInt1);
-      AppMethodBeat.o(196631);
+      AppMethodBeat.o(192092);
       return;
     }
-    AppMethodBeat.o(196631);
+    AppMethodBeat.o(192092);
   }
   
-  public final void setCallback(TimeCropViewGroup.a parama)
+  public final void setCallback(a parama)
   {
-    this.BRP = parama;
+    this.Cjp = parama;
   }
   
   public final void setCutCnt(int paramInt)
   {
-    this.BRN = paramInt;
+    this.Cjn = paramInt;
   }
   
   public final void setDragCnt(int paramInt)
   {
-    this.BRM = paramInt;
+    this.Cjm = paramInt;
   }
   
   public final void setEnableLengthEdit(boolean paramBoolean)
   {
-    AppMethodBeat.i(196632);
+    AppMethodBeat.i(192093);
     if (paramBoolean)
     {
-      localTimeCropSliderSeekBar = this.BRF;
+      localTimeCropSliderSeekBar = this.Cjf;
       if (localTimeCropSliderSeekBar != null)
       {
-        localTimeCropSliderSeekBar.dnM();
-        AppMethodBeat.o(196632);
+        localTimeCropSliderSeekBar.dqK();
+        AppMethodBeat.o(192093);
         return;
       }
-      AppMethodBeat.o(196632);
+      AppMethodBeat.o(192093);
       return;
     }
-    TimeCropSliderSeekBar localTimeCropSliderSeekBar = this.BRF;
+    TimeCropSliderSeekBar localTimeCropSliderSeekBar = this.Cjf;
     if (localTimeCropSliderSeekBar != null)
     {
-      localTimeCropSliderSeekBar.dnL();
-      AppMethodBeat.o(196632);
+      localTimeCropSliderSeekBar.dqJ();
+      AppMethodBeat.o(192093);
       return;
     }
-    AppMethodBeat.o(196632);
+    AppMethodBeat.o(192093);
   }
   
   public final void setProgress(long paramLong)
   {
-    AppMethodBeat.i(196634);
-    float f = this.padding / this.BOP;
-    TimeCropSliderSeekBar localTimeCropSliderSeekBar = this.BRF;
+    AppMethodBeat.i(192095);
+    float f = this.padding / this.Cgo;
+    TimeCropSliderSeekBar localTimeCropSliderSeekBar = this.Cjf;
     if (localTimeCropSliderSeekBar != null)
     {
-      localTimeCropSliderSeekBar.setCursorPos((float)(getScrollTime() + paramLong) / (f * 2.0F + (float)this.BRG));
-      AppMethodBeat.o(196634);
+      localTimeCropSliderSeekBar.setCursorPos((float)(getScrollTime() + paramLong) / (f * 2.0F + (float)this.Cjg));
+      AppMethodBeat.o(192095);
       return;
     }
-    AppMethodBeat.o(196634);
+    AppMethodBeat.o(192095);
   }
   
-  public final void setRealTimeCallback(TimeCropViewGroup.a parama)
+  public final void setRealTimeCallback(a parama)
   {
-    this.BRQ = parama;
+    this.Cjq = parama;
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/vlog/ui/plugin/timecrop/TimeCropViewGroup$onFinishInflate$1", "Lcom/tencent/mm/plugin/vlog/ui/plugin/timecrop/TimeCropSliderSeekBar$OnSliderTouchListener;", "onDown", "", "left", "", "onMove", "onUp", "plugin-vlog_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/vlog/ui/plugin/timecrop/TimeCropViewGroup$OnCropCallback;", "", "onCrop", "", "start", "", "end", "onUp", "", "plugin-vlog_release"})
+  public static abstract interface a
+  {
+    public abstract void f(long paramLong1, long paramLong2, boolean paramBoolean);
+  }
+  
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/vlog/ui/plugin/timecrop/TimeCropViewGroup$onFinishInflate$1", "Lcom/tencent/mm/plugin/vlog/ui/plugin/timecrop/TimeCropSliderSeekBar$OnSliderTouchListener;", "onDown", "", "left", "", "onMove", "onUp", "plugin-vlog_release"})
   public static final class b
     implements TimeCropSliderSeekBar.a
   {
-    public final void dnK()
+    public final void dqI()
     {
-      AppMethodBeat.i(196626);
-      TimeCropViewGroup.a(this.BRR);
-      TimeCropViewGroup.a locala = this.BRR.getCallback();
+      AppMethodBeat.i(192087);
+      TimeCropViewGroup.a(this.Cjr);
+      TimeCropViewGroup.a locala = this.Cjr.getCallback();
       if (locala != null)
       {
-        locala.f(TimeCropViewGroup.b(this.BRR), TimeCropViewGroup.c(this.BRR), true);
-        AppMethodBeat.o(196626);
+        locala.f(TimeCropViewGroup.b(this.Cjr), TimeCropViewGroup.c(this.Cjr), true);
+        AppMethodBeat.o(192087);
         return;
       }
-      AppMethodBeat.o(196626);
+      AppMethodBeat.o(192087);
     }
     
-    public final void etP()
+    public final void exw()
     {
-      AppMethodBeat.i(196627);
-      TimeCropViewGroup.a(this.BRR);
-      TimeCropViewGroup.a locala = this.BRR.getRealTimeCallback();
+      AppMethodBeat.i(192088);
+      TimeCropViewGroup.a(this.Cjr);
+      TimeCropViewGroup.a locala = this.Cjr.getRealTimeCallback();
       if (locala != null)
       {
-        locala.f(TimeCropViewGroup.b(this.BRR), TimeCropViewGroup.c(this.BRR), false);
-        AppMethodBeat.o(196627);
+        locala.f(TimeCropViewGroup.b(this.Cjr), TimeCropViewGroup.c(this.Cjr), false);
+        AppMethodBeat.o(192088);
         return;
       }
-      AppMethodBeat.o(196627);
+      AppMethodBeat.o(192088);
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
   static final class c
     implements Runnable
   {
@@ -395,63 +401,63 @@ public final class TimeCropViewGroup
     
     public final void run()
     {
-      AppMethodBeat.i(196629);
-      Object localObject1 = TimeCropViewGroup.d(this.BRR);
+      AppMethodBeat.i(192090);
+      Object localObject1 = TimeCropViewGroup.d(this.Cjr);
       if (localObject1 != null)
       {
         if (((RecyclerView)localObject1).getWidth() <= 0)
         {
-          ((RecyclerView)localObject1).post(TimeCropViewGroup.e(this.BRR));
-          AppMethodBeat.o(196629);
+          ((RecyclerView)localObject1).post(TimeCropViewGroup.e(this.Cjr));
+          AppMethodBeat.o(192090);
           return;
         }
-        TimeCropViewGroup.a(this.BRR, a.fromDPToPix(this.BRR.getContext(), 40));
-        float f = ((RecyclerView)localObject1).getHeight() * 1.0F / TimeCropViewGroup.g(this.BRR);
-        TimeCropViewGroup.b(this.BRR, ((RecyclerView)localObject1).getWidth() - TimeCropViewGroup.f(this.BRR) * 2);
-        TimeCropViewGroup.a(this.BRR, TimeCropViewGroup.h(this.BRR) * 1.0F / (float)TimeCropViewGroup.j(this.BRR));
-        TimeCropViewGroup.c(this.BRR, (int)(TimeCropViewGroup.i(this.BRR) * (float)TimeCropViewGroup.l(this.BRR)));
-        f = TimeCropViewGroup.k(this.BRR) / (f * TimeCropViewGroup.m(this.BRR));
+        TimeCropViewGroup.a(this.Cjr, a.fromDPToPix(this.Cjr.getContext(), 40));
+        float f = ((RecyclerView)localObject1).getHeight() * 1.0F / TimeCropViewGroup.g(this.Cjr);
+        TimeCropViewGroup.b(this.Cjr, ((RecyclerView)localObject1).getWidth() - TimeCropViewGroup.f(this.Cjr) * 2);
+        TimeCropViewGroup.a(this.Cjr, TimeCropViewGroup.h(this.Cjr) * 1.0F / (float)TimeCropViewGroup.j(this.Cjr));
+        TimeCropViewGroup.c(this.Cjr, (int)(TimeCropViewGroup.i(this.Cjr) * (float)TimeCropViewGroup.l(this.Cjr)));
+        f = TimeCropViewGroup.k(this.Cjr) / (f * TimeCropViewGroup.m(this.Cjr));
         Object localObject2 = ((Iterable)localLinkedList).iterator();
         while (((Iterator)localObject2).hasNext())
         {
           c localc = (c)((Iterator)localObject2).next();
-          localc.BUI = (f / (float)TimeCropViewGroup.l(this.BRR) * (float)localc.euc() / localc.BUL.BGw.llC);
-          localc.eud();
+          localc.Cmj = (f / (float)TimeCropViewGroup.l(this.Cjr) * (float)localc.exI() / localc.Cmm.BXV.lqb);
+          localc.exJ();
         }
-        TimeCropViewGroup.n(this.BRR).gLD = TimeCropViewGroup.f(this.BRR);
-        TimeCropViewGroup.o(this.BRR).gLD = TimeCropViewGroup.f(this.BRR);
-        localLinkedList.add(0, TimeCropViewGroup.n(this.BRR));
-        localLinkedList.add(TimeCropViewGroup.o(this.BRR));
-        localObject2 = TimeCropViewGroup.p(this.BRR);
+        TimeCropViewGroup.n(this.Cjr).gOm = TimeCropViewGroup.f(this.Cjr);
+        TimeCropViewGroup.o(this.Cjr).gOm = TimeCropViewGroup.f(this.Cjr);
+        localLinkedList.add(0, TimeCropViewGroup.n(this.Cjr));
+        localLinkedList.add(TimeCropViewGroup.o(this.Cjr));
+        localObject2 = TimeCropViewGroup.p(this.Cjr);
         if (localObject2 != null) {
-          ((com.tencent.mm.plugin.vlog.ui.thumb.b)localObject2).gq((List)localLinkedList);
+          ((com.tencent.mm.plugin.vlog.ui.thumb.b)localObject2).gz((List)localLinkedList);
         }
-        localObject2 = TimeCropViewGroup.p(this.BRR);
+        localObject2 = TimeCropViewGroup.p(this.Cjr);
         if (localObject2 != null) {
           ((com.tencent.mm.plugin.vlog.ui.thumb.b)localObject2).notifyDataSetChanged();
         }
-        localObject2 = this.BRR.getSeekSlider();
+        localObject2 = this.Cjr.getSeekSlider();
         if (localObject2 != null) {
-          ((TimeCropSliderSeekBar)localObject2).aj(((RecyclerView)localObject1).getWidth() - TimeCropViewGroup.f(this.BRR) * 2, (int)((float)this.BRT * TimeCropViewGroup.i(this.BRR)), TimeCropViewGroup.f(this.BRR));
+          ((TimeCropSliderSeekBar)localObject2).aj(((RecyclerView)localObject1).getWidth() - TimeCropViewGroup.f(this.Cjr) * 2, (int)((float)this.Cjt * TimeCropViewGroup.i(this.Cjr)), TimeCropViewGroup.f(this.Cjr));
         }
-        localObject1 = this.BRR.getSeekSlider();
+        localObject1 = this.Cjr.getSeekSlider();
         if (localObject1 != null) {
           ((TimeCropSliderSeekBar)localObject1).setCursorPos(0.0F);
         }
-        localObject1 = this.BRR.getSeekSlider();
+        localObject1 = this.Cjr.getSeekSlider();
         if (localObject1 != null)
         {
           ((TimeCropSliderSeekBar)localObject1).post((Runnable)new a(this));
-          AppMethodBeat.o(196629);
+          AppMethodBeat.o(192090);
           return;
         }
-        AppMethodBeat.o(196629);
+        AppMethodBeat.o(192090);
         return;
       }
-      AppMethodBeat.o(196629);
+      AppMethodBeat.o(192090);
     }
     
-    @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run", "com/tencent/mm/plugin/vlog/ui/plugin/timecrop/TimeCropViewGroup$setTrack$2$1$2"})
+    @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run", "com/tencent/mm/plugin/vlog/ui/plugin/timecrop/TimeCropViewGroup$setTrack$2$1$2"})
     static final class a
       implements Runnable
     {
@@ -459,19 +465,19 @@ public final class TimeCropViewGroup
       
       public final void run()
       {
-        AppMethodBeat.i(196628);
-        TimeCropSliderSeekBar localTimeCropSliderSeekBar = this.BRU.BRR.getSeekSlider();
+        AppMethodBeat.i(192089);
+        TimeCropSliderSeekBar localTimeCropSliderSeekBar = this.Cju.Cjr.getSeekSlider();
         if (localTimeCropSliderSeekBar != null) {
-          localTimeCropSliderSeekBar.b(true, TimeCropViewGroup.f(this.BRU.BRR) + (float)TimeCropViewGroup.b(this.BRU.BRR) * TimeCropViewGroup.i(this.BRU.BRR));
+          localTimeCropSliderSeekBar.b(true, TimeCropViewGroup.f(this.Cju.Cjr) + (float)TimeCropViewGroup.b(this.Cju.Cjr) * TimeCropViewGroup.i(this.Cju.Cjr));
         }
-        localTimeCropSliderSeekBar = this.BRU.BRR.getSeekSlider();
+        localTimeCropSliderSeekBar = this.Cju.Cjr.getSeekSlider();
         if (localTimeCropSliderSeekBar != null)
         {
-          localTimeCropSliderSeekBar.b(false, TimeCropViewGroup.f(this.BRU.BRR) + (float)TimeCropViewGroup.c(this.BRU.BRR) * TimeCropViewGroup.i(this.BRU.BRR));
-          AppMethodBeat.o(196628);
+          localTimeCropSliderSeekBar.b(false, TimeCropViewGroup.f(this.Cju.Cjr) + (float)TimeCropViewGroup.c(this.Cju.Cjr) * TimeCropViewGroup.i(this.Cju.Cjr));
+          AppMethodBeat.o(192089);
           return;
         }
-        AppMethodBeat.o(196628);
+        AppMethodBeat.o(192089);
       }
     }
   }

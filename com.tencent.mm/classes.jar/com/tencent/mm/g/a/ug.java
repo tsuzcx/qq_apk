@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class ug
   extends b
 {
-  public a dID;
+  public a dJO;
   
   public ug()
   {
@@ -15,22 +15,21 @@ public final class ug
   
   private ug(byte paramByte)
   {
-    AppMethodBeat.i(125633);
-    this.dID = new a();
-    this.IbR = false;
+    AppMethodBeat.i(218970);
+    this.dJO = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(125633);
+    AppMethodBeat.o(218970);
   }
   
   public static final class a
   {
-    public String dIE;
-    public String dzb;
+    public int dJP = 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.g.a.ug
  * JD-Core Version:    0.7.0.1
  */

@@ -7,122 +7,122 @@ import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.content.res.Resources;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.g.c.ei;
-import com.tencent.mm.model.ba;
-import com.tencent.mm.modelsimple.v;
-import com.tencent.mm.protocal.protobuf.cvx;
+import com.tencent.mm.model.bc;
+import com.tencent.mm.modelsimple.w;
+import com.tencent.mm.protocal.protobuf.cwr;
 import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.bu;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.bv;
 import com.tencent.mm.ui.LauncherUI;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.chatting.BaseChattingUIFragment;
-import com.tencent.mm.ui.chatting.ak;
-import com.tencent.mm.ui.chatting.ak.a;
+import com.tencent.mm.ui.chatting.al;
+import com.tencent.mm.ui.chatting.al.a;
 import com.tencent.mm.ui.chatting.d.b.ah;
 import com.tencent.mm.ui.widget.a.d;
 import com.tencent.mm.ui.y;
 import com.tencent.mm.ui.y.a;
 
-@com.tencent.mm.ui.chatting.d.a.a(fFo=ah.class)
+@com.tencent.mm.ui.chatting.d.a.a(fJv=ah.class)
 public class ar
   extends a
   implements f, ah
 {
-  private d JMt;
-  private final c fGq;
+  private d Khp;
+  private final c fIu;
   
   public ar()
   {
     AppMethodBeat.i(35530);
-    this.fGq = new ak(ak.a.JEg, null);
-    this.JMt = null;
+    this.fIu = new al(al.a.JYX, null);
+    this.Khp = null;
     AppMethodBeat.o(35530);
   }
   
-  public final void bP(final bu parambu)
+  public final void bO(final bv parambv)
   {
     AppMethodBeat.i(35536);
-    final v localv = new v(parambu, this.cWM.JOR.getMMResources().getString(2131757292));
-    this.cWM.b(this.cWM.JOR.getContext(), this.cWM.JOR.getMMResources().getString(2131757291), new DialogInterface.OnCancelListener()
+    final w localw = new w(parambv, this.cXJ.Kkd.getMMResources().getString(2131757292));
+    this.cXJ.b(this.cXJ.Kkd.getContext(), this.cXJ.Kkd.getMMResources().getString(2131757291), new DialogInterface.OnCancelListener()
     {
       public final void onCancel(DialogInterface paramAnonymousDialogInterface)
       {
         AppMethodBeat.i(35526);
-        ad.i("MicroMsg.ChattingUI.VerifyUserComponent", "cancel revoke msg:%d", new Object[] { Long.valueOf(parambu.field_msgId) });
-        ba.aiU().a(localv);
+        ae.i("MicroMsg.ChattingUI.VerifyUserComponent", "cancel revoke msg:%d", new Object[] { Long.valueOf(parambv.field_msgId) });
+        bc.ajj().a(localw);
         AppMethodBeat.o(35526);
       }
     });
-    ba.aiU().a(localv, 0);
+    bc.ajj().a(localw, 0);
     AppMethodBeat.o(35536);
   }
   
-  public final void fCC()
-  {
-    AppMethodBeat.i(35535);
-    super.fCC();
-    com.tencent.mm.sdk.b.a.IbL.d(this.fGq);
-    ba.aiU().b(594, this);
-    AppMethodBeat.o(35535);
-  }
-  
-  public final void fwu()
+  public final void fAu()
   {
     AppMethodBeat.i(35531);
-    ba.aiU().a(594, this);
+    bc.ajj().a(594, this);
     AppMethodBeat.o(35531);
   }
   
-  public final void fwv()
+  public final void fAv()
   {
     AppMethodBeat.i(35532);
-    if (!com.tencent.mm.sdk.b.a.IbL.e(this.fGq)) {
-      com.tencent.mm.sdk.b.a.IbL.c(this.fGq);
+    if (!com.tencent.mm.sdk.b.a.IvT.e(this.fIu)) {
+      com.tencent.mm.sdk.b.a.IvT.c(this.fIu);
     }
     AppMethodBeat.o(35532);
   }
   
-  public final void fww()
+  public final void fAw()
   {
     AppMethodBeat.i(35533);
-    com.tencent.mm.sdk.b.a.IbL.d(this.fGq);
+    com.tencent.mm.sdk.b.a.IvT.d(this.fIu);
     AppMethodBeat.o(35533);
   }
   
-  public final void fwx()
+  public final void fAx()
   {
     AppMethodBeat.i(35534);
-    ba.aiU().b(594, this);
+    bc.ajj().b(594, this);
     AppMethodBeat.o(35534);
+  }
+  
+  public final void fGE()
+  {
+    AppMethodBeat.i(35535);
+    super.fGE();
+    com.tencent.mm.sdk.b.a.IvT.d(this.fIu);
+    bc.ajj().b(594, this);
+    AppMethodBeat.o(35535);
   }
   
   public void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     AppMethodBeat.i(35537);
-    ad.i("MicroMsg.ChattingUI.VerifyUserComponent", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString + " sceneType:" + paramn.getType());
-    this.cWM.dismissDialog();
-    if (this.JMt != null)
+    ae.i("MicroMsg.ChattingUI.VerifyUserComponent", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString + " sceneType:" + paramn.getType());
+    this.cXJ.dismissDialog();
+    if (this.Khp != null)
     {
-      this.JMt.dismiss();
-      this.JMt = null;
+      this.Khp.dismiss();
+      this.Khp = null;
     }
-    if (!this.cWM.cBJ)
+    if (!this.cXJ.cCq)
     {
-      ad.i("MicroMsg.ChattingUI.VerifyUserComponent", "onSceneEnd fragment not foreground, return");
+      ae.i("MicroMsg.ChattingUI.VerifyUserComponent", "onSceneEnd fragment not foreground, return");
       AppMethodBeat.o(35537);
       return;
     }
-    if (!bt.jh(this.cWM.JOR.getContext()))
+    if (!bu.jn(this.cXJ.Kkd.getContext()))
     {
       AppMethodBeat.o(35537);
       return;
     }
-    Activity localActivity = this.cWM.JOR.getContext();
+    Activity localActivity = this.cXJ.Kkd.getContext();
     int i;
     if (y.a.a(localActivity, paramInt1, paramInt2, paramString, 7)) {
       i = 1;
@@ -145,11 +145,11 @@ public class ar
         AppMethodBeat.o(35537);
         return;
       }
-      if ((paramn instanceof v))
+      if ((paramn instanceof w))
       {
-        paramString = ((v)paramn).aLa();
-        if (!bt.isNullOrNil(paramString.HnZ)) {
-          h.a(this.cWM.JOR.getContext(), paramString.HnZ, "", this.cWM.JOR.getMMResources().getString(2131757289), new DialogInterface.OnClickListener()
+        paramString = ((w)paramn).aLx();
+        if (!bu.isNullOrNil(paramString.HHz)) {
+          h.a(this.cXJ.Kkd.getContext(), paramString.HHz, "", this.cXJ.Kkd.getMMResources().getString(2131757289), new DialogInterface.OnClickListener()
           {
             public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
             {
@@ -164,15 +164,15 @@ public class ar
         AppMethodBeat.o(35537);
       }
     }
-    else if ((paramn.getType() == 594) && ((paramn instanceof v)))
+    else if ((paramn.getType() == 594) && ((paramn instanceof w)))
     {
-      paramString = ((v)paramn).aLa();
-      ad.d("MicroMsg.ChattingUI.VerifyUserComponent", "[oneliang][revokeMsgTimeout] sysWording:%s", new Object[] { paramString.Hoa });
-      if ((paramInt2 != 0) && (!bt.isNullOrNil(paramString.Hoa))) {}
+      paramString = ((w)paramn).aLx();
+      ae.d("MicroMsg.ChattingUI.VerifyUserComponent", "[oneliang][revokeMsgTimeout] sysWording:%s", new Object[] { paramString.HHA });
+      if ((paramInt2 != 0) && (!bu.isNullOrNil(paramString.HHA))) {}
       for (paramInt1 = 0; paramInt1 == 0; paramInt1 = 1)
       {
-        ad.d("MicroMsg.ChattingUI.VerifyUserComponent", "[oneliang][revokeMsg] sysWording:%s", new Object[] { paramString.Hoa });
-        this.JMt = h.a(this.cWM.JOR.getContext(), paramString.Hoa, "", this.cWM.JOR.getMMResources().getString(2131757289), new DialogInterface.OnClickListener()
+        ae.d("MicroMsg.ChattingUI.VerifyUserComponent", "[oneliang][revokeMsg] sysWording:%s", new Object[] { paramString.HHA });
+        this.Khp = h.a(this.cXJ.Kkd.getContext(), paramString.HHA, "", this.cXJ.Kkd.getMMResources().getString(2131757289), new DialogInterface.OnClickListener()
         {
           public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
           {
@@ -186,8 +186,8 @@ public class ar
         AppMethodBeat.o(35537);
         return;
       }
-      ad.d("MicroMsg.ChattingUI.VerifyUserComponent", "[oneliang][revokeMsg] errorCode:%s,sysWording:%s", new Object[] { Integer.valueOf(paramInt2), paramString.Hoa });
-      this.JMt = h.a(this.cWM.JOR.getContext(), this.cWM.JOR.getMMResources().getString(2131757290), "", this.cWM.JOR.getMMResources().getString(2131757289), new DialogInterface.OnClickListener()
+      ae.d("MicroMsg.ChattingUI.VerifyUserComponent", "[oneliang][revokeMsg] errorCode:%s,sysWording:%s", new Object[] { Integer.valueOf(paramInt2), paramString.HHA });
+      this.Khp = h.a(this.cXJ.Kkd.getContext(), this.cXJ.Kkd.getMMResources().getString(2131757290), "", this.cXJ.Kkd.getMMResources().getString(2131757289), new DialogInterface.OnClickListener()
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {

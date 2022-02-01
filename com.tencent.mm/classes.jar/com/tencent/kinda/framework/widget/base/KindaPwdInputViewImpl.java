@@ -6,9 +6,9 @@ import com.tencent.kinda.gen.KPwdInputViewOnEndEnterPasswordCallback;
 import com.tencent.kinda.gen.KPwdInputViewOnPasswordChangeCallback;
 import com.tencent.kinda.gen.PwdViewStyle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.wallet_core.ui.e;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.wallet_core.ui.f;
 import com.tencent.mm.wallet_core.ui.formview.EditHintPasswdView;
 import com.tencent.mm.wallet_core.ui.formview.EditHintPasswdView.a;
 import com.tencent.mm.wallet_core.ui.formview.a;
@@ -28,7 +28,7 @@ public class KindaPwdInputViewImpl
     AppMethodBeat.i(18933);
     this.pwdView = new EditHintPasswdView(paramContext);
     if (this.pwdStyle == PwdViewStyle.CHECKPWDSTYLE) {
-      this.pwdView.agt(1);
+      this.pwdView.ahc(1);
     }
     for (;;)
     {
@@ -42,7 +42,7 @@ public class KindaPwdInputViewImpl
         {
           AppMethodBeat.i(18931);
           if (KindaPwdInputViewImpl.this.pwdView.mEditText != null) {
-            TenpaySecureEditText.setSalt(e.fSb());
+            TenpaySecureEditText.setSalt(f.fWx());
           }
           if (paramAnonymousBoolean)
           {
@@ -65,7 +65,7 @@ public class KindaPwdInputViewImpl
       paramContext = this.pwdView;
       AppMethodBeat.o(18933);
       return paramContext;
-      this.pwdView.agt(0);
+      this.pwdView.ahc(0);
     }
   }
   
@@ -105,7 +105,7 @@ public class KindaPwdInputViewImpl
   {
     AppMethodBeat.i(18935);
     if (paramBoolean) {
-      this.pwdView.dEe();
+      this.pwdView.dHv();
     }
     AppMethodBeat.o(18935);
   }
@@ -114,7 +114,7 @@ public class KindaPwdInputViewImpl
   {
     AppMethodBeat.i(18934);
     if ((paramBoolean) && (this.pwdView.getVisibility() == 0) && (!this.pwdView.hasFocus())) {
-      aq.f(new Runnable()
+      ar.f(new Runnable()
       {
         public void run()
         {
@@ -145,24 +145,24 @@ public class KindaPwdInputViewImpl
   
   public void setPwdStyle(PwdViewStyle paramPwdViewStyle)
   {
-    AppMethodBeat.i(199487);
-    ad.d("base_MMKView", "set pwd: %s", new Object[] { paramPwdViewStyle });
+    AppMethodBeat.i(193203);
+    ae.d("base_MMKView", "set pwd: %s", new Object[] { paramPwdViewStyle });
     this.pwdStyle = paramPwdViewStyle;
     if (this.pwdStyle == PwdViewStyle.CHECKPWDSTYLE)
     {
-      this.pwdView.agt(1);
-      AppMethodBeat.o(199487);
+      this.pwdView.ahc(1);
+      AppMethodBeat.o(193203);
       return;
     }
-    this.pwdView.agt(0);
-    AppMethodBeat.o(199487);
+    this.pwdView.ahc(0);
+    AppMethodBeat.o(193203);
   }
   
   public void setTextLength(long paramLong) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.kinda.framework.widget.base.KindaPwdInputViewImpl
  * JD-Core Version:    0.7.0.1
  */

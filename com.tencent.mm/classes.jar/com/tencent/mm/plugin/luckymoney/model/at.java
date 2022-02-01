@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.luckymoney.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.u;
+import com.tencent.mm.model.v;
 import java.util.HashMap;
 import java.util.Map;
 import org.json.JSONObject;
@@ -17,12 +17,12 @@ public final class at
     localHashMap.put("sendId", paramString2);
     localHashMap.put("channelId", "1");
     localHashMap.put("ver", paramString3);
-    localHashMap.put("sendUserName", u.aAm());
+    localHashMap.put("sendUserName", v.aAC());
     setRequestData(localHashMap);
     AppMethodBeat.o(65311);
   }
   
-  public final String cau()
+  public final String cbJ()
   {
     return "/cgi-bin/mmpay-bin/sharewxhb";
   }
@@ -36,7 +36,7 @@ public final class at
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.model.at
  * JD-Core Version:    0.7.0.1
  */

@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.appbrand.dynamic.f;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ab.b.c;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.aa.b.c;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.az;
 import java.util.HashMap;
 import java.util.Map;
 import org.json.JSONObject;
@@ -26,8 +26,8 @@ public final class d
   {
     AppMethodBeat.i(121394);
     Object localObject = new HashMap();
-    Context localContext = aj.getContext();
-    boolean bool = ay.isConnected(localContext);
+    Context localContext = ak.getContext();
+    boolean bool = az.isConnected(localContext);
     ((HashMap)localObject).put("isConnected", Boolean.valueOf(bool));
     if (!bool) {
       ((HashMap)localObject).put("networkType", "none");
@@ -37,13 +37,13 @@ public final class d
       localObject = new JSONObject((Map)localObject);
       AppMethodBeat.o(121394);
       return localObject;
-      if (ay.is2G(localContext)) {
+      if (az.is2G(localContext)) {
         ((HashMap)localObject).put("networkType", "2g");
-      } else if (ay.is3G(localContext)) {
+      } else if (az.is3G(localContext)) {
         ((HashMap)localObject).put("networkType", "3g");
-      } else if (ay.is4G(localContext)) {
+      } else if (az.is4G(localContext)) {
         ((HashMap)localObject).put("networkType", "4g");
-      } else if (ay.isWifi(localContext)) {
+      } else if (az.isWifi(localContext)) {
         ((HashMap)localObject).put("networkType", "wifi");
       } else {
         ((HashMap)localObject).put("networkType", "unknown");

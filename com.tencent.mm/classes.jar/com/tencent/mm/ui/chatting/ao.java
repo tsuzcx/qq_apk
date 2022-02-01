@@ -1,76 +1,91 @@
 package com.tencent.mm.ui.chatting;
 
+import android.content.Context;
 import android.view.View;
+import android.widget.LinearLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
+import com.tencent.mm.plugin.newtips.a.a;
+import com.tencent.mm.plugin.newtips.a.k;
+import com.tencent.mm.protocal.protobuf.dnz;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class ao
+  implements a
 {
-  private static LinkedList<View> JEQ;
-  private static LinkedList<View> JER;
-  private static LinkedList<View> JES;
+  private String JZn;
+  private LinearLayout JZo;
+  private a JZp;
+  private Context mContext;
   
-  static
+  public ao(Context paramContext, String paramString, a parama)
   {
-    AppMethodBeat.i(123728);
-    JEQ = new LinkedList();
-    JER = new LinkedList();
-    JES = new LinkedList();
-    AppMethodBeat.o(123728);
+    AppMethodBeat.i(187180);
+    this.JZn = paramString;
+    this.mContext = paramContext;
+    this.JZp = parama;
+    this.JZo = new LinearLayout(this.mContext);
+    AppMethodBeat.o(187180);
   }
   
-  public static void aC(View paramView, int paramInt)
+  public final void a(k paramk, boolean paramBoolean) {}
+  
+  public final boolean a(boolean paramBoolean, dnz paramdnz)
   {
-    AppMethodBeat.i(123726);
-    LinkedList localLinkedList;
-    if (paramInt == 1) {
-      localLinkedList = JEQ;
-    }
-    for (;;)
-    {
-      if (localLinkedList.size() >= 35) {
-        localLinkedList.removeFirst();
-      }
-      localLinkedList.addLast(paramView);
-      AppMethodBeat.o(123726);
-      return;
-      if (paramInt == 2) {
-        localLinkedList = JER;
-      } else {
-        localLinkedList = JES;
-      }
-    }
+    return false;
   }
   
-  public static View acZ(int paramInt)
+  public final boolean b(boolean paramBoolean, dnz paramdnz)
   {
-    AppMethodBeat.i(123725);
-    Object localObject;
-    if (paramInt == 1) {
-      localObject = JEQ;
-    }
-    while (((LinkedList)localObject).size() != 0)
-    {
-      localObject = (View)((LinkedList)localObject).removeFirst();
-      AppMethodBeat.o(123725);
-      return localObject;
-      if (paramInt == 2) {
-        localObject = JER;
-      } else {
-        localObject = JES;
-      }
-    }
-    AppMethodBeat.o(123725);
-    return null;
+    return false;
   }
   
-  public static void clear()
+  public final boolean c(boolean paramBoolean, dnz paramdnz)
   {
-    AppMethodBeat.i(123727);
-    JEQ.clear();
-    JER.clear();
-    JES.clear();
-    AppMethodBeat.o(123727);
+    return false;
+  }
+  
+  public final boolean d(boolean paramBoolean, dnz paramdnz)
+  {
+    return false;
+  }
+  
+  public final boolean dnD()
+  {
+    return true;
+  }
+  
+  public final String getPath()
+  {
+    return this.JZn;
+  }
+  
+  public final View getRoot()
+  {
+    return this.JZo;
+  }
+  
+  public final boolean oq(boolean paramBoolean)
+  {
+    return false;
+  }
+  
+  public final boolean or(boolean paramBoolean)
+  {
+    AppMethodBeat.i(187181);
+    ae.i("MicroMsg.ShowRedDotCompoent", "menuKey:%s，show：%s", new Object[] { this.JZn, Boolean.valueOf(paramBoolean) });
+    this.JZp.N(paramBoolean, this.JZn);
+    AppMethodBeat.o(187181);
+    return true;
+  }
+  
+  public final boolean os(boolean paramBoolean)
+  {
+    return false;
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void N(boolean paramBoolean, String paramString);
   }
 }
 

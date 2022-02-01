@@ -1,6 +1,7 @@
 package com.e.a.c;
 
 import java.util.Collection;
+import java.util.ConcurrentModificationException;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -12,9 +13,9 @@ public final class d<K, V>
 {
   protected transient V[] cfJ;
   
-  private d<K, V> BA()
+  private d<K, V> BB()
   {
-    d locald = (d)super.BB();
+    d locald = (d)super.BC();
     locald.cfJ = ((Object[])this.cfJ.clone());
     return locald;
   }
@@ -242,6 +243,43 @@ public final class d<K, V>
   public final Collection<V> values()
   {
     return new g();
+  }
+  
+  final class a
+    implements Map.Entry<K, V>
+  {
+    private final K aIw;
+    private V cfK;
+    private final int index;
+    
+    a(V paramV, int paramInt)
+    {
+      this.aIw = paramV;
+      this.cfK = paramInt;
+      int i;
+      this.index = i;
+    }
+    
+    public final K getKey()
+    {
+      return this.aIw;
+    }
+    
+    public final V getValue()
+    {
+      return this.cfK;
+    }
+    
+    public final V setValue(V paramV)
+    {
+      if (d.this.cfJ[this.index] != this.cfK) {
+        throw new ConcurrentModificationException();
+      }
+      d.this.cfJ[this.index] = paramV;
+      Object localObject = this.cfK;
+      this.cfK = paramV;
+      return localObject;
+    }
   }
   
   public final class b

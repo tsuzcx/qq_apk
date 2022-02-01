@@ -1,220 +1,151 @@
 package com.tencent.mm.plugin.appbrand.page;
 
-import android.graphics.Color;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.View.OnAttachStateChangeListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
-import com.tencent.mm.plugin.appbrand.jsapi.f.b;
-import com.tencent.mm.plugin.appbrand.jsapi.f.c;
-import com.tencent.mm.plugin.appbrand.menu.q;
-import com.tencent.mm.plugin.appbrand.r.a.c;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.ui.base.l;
-import com.tencent.mm.ui.base.n.d;
-import com.tencent.mm.ui.base.n.e;
+import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
+import com.tencent.mm.plugin.appbrand.config.AppBrandSysConfigWC;
+import com.tencent.mm.plugin.appbrand.menu.b;
+import com.tencent.mm.plugin.appbrand.menu.n;
+import com.tencent.mm.plugin.appbrand.menu.o;
+import com.tencent.mm.plugin.appbrand.page.capsulebar.a;
+import com.tencent.mm.plugin.appbrand.page.capsulebar.a.a;
+import com.tencent.mm.plugin.appbrand.page.capsulebar.a.b;
+import com.tencent.mm.plugin.appbrand.report.h;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.widget.a.e;
+import com.tencent.mm.ui.widget.a.e.a;
+import com.tencent.mm.ui.widget.a.e.b;
 import java.util.List;
 
-public class s
-  implements f.b, f.c
+public final class s
+  extends r
 {
-  aa ckN;
-  private e jCA;
-  private List<q> jCB;
-  private String mAppId;
-  private View mag;
-  
-  public s(aa paramaa, List<q> paramList)
+  public s(ad paramad, List<com.tencent.mm.plugin.appbrand.menu.r> paramList)
   {
-    this(paramaa, paramList, true);
-    AppMethodBeat.i(135013);
-    AppMethodBeat.o(135013);
+    super(paramad, paramList);
   }
   
-  public s(aa paramaa, List<q> paramList, boolean paramBoolean)
+  protected final void a(e parame)
   {
-    AppMethodBeat.i(176563);
-    this.mag = null;
-    this.mAppId = paramaa.getAppId();
-    this.ckN = paramaa;
-    this.jCB = paramList;
-    paramList = paramaa.getRuntime().getWindowAndroid();
-    if ((paramList != null) && (paramList.aWN())) {}
-    for (boolean bool = false;; bool = true)
-    {
-      paramaa = paramaa.getContext();
-      if (paramBoolean) {}
-      for (;;)
+    AppMethodBeat.i(47798);
+    super.a(parame);
+    Object localObject = (ad)this.ckP;
+    boolean bool;
+    label74:
+    label80:
+    int m;
+    label135:
+    int j;
+    label150:
+    int k;
+    if (((ad)localObject).getRuntime().Ee()) {
+      if ((((ad)localObject).isFullScreen()) || (((ad)localObject).bvy()))
       {
-        this.jCA = new e(paramaa, bool, i);
-        paramaa = this.ckN.Ep();
-        if (paramaa != null)
-        {
-          this.jCA.K(paramaa, true);
-          this.mag = paramaa;
-        }
-        paramList = this.ckN.buL();
-        if (paramList != null) {
-          this.jCA.setFooterView(paramList);
-        }
-        this.jCA.KJy = new n.d()
-        {
-          public final void onCreateMMMenu(l paramAnonymousl)
-          {
-            AppMethodBeat.i(135008);
-            s.a(s.this, paramAnonymousl, true);
-            AppMethodBeat.o(135008);
-          }
-        };
-        this.jCA.KJz = new n.e()
-        {
-          public final void onMMMenuItemSelected(MenuItem paramAnonymousMenuItem, int paramAnonymousInt)
-          {
-            AppMethodBeat.i(135009);
-            s.a(s.this, paramAnonymousMenuItem);
-            AppMethodBeat.o(135009);
-          }
-        };
-        this.jCA.KWs = new n.d()
-        {
-          public final void onCreateMMMenu(l paramAnonymousl)
-          {
-            AppMethodBeat.i(135010);
-            s.a(s.this, paramAnonymousl, false);
-            AppMethodBeat.o(135010);
-          }
-        };
-        this.jCA.KWv = new n.e()
-        {
-          public final void onMMMenuItemSelected(MenuItem paramAnonymousMenuItem, int paramAnonymousInt)
-          {
-            AppMethodBeat.i(135011);
-            s.a(s.this, paramAnonymousMenuItem);
-            AppMethodBeat.o(135011);
-          }
-        };
-        if (this.ckN.mbY) {
-          this.jCA.setBackgroundColor(Color.parseColor("#000000"));
-        }
-        paramList = this.ckN.getRuntime().getWindowAndroid();
-        if ((paramaa != null) && (paramList != null)) {
-          paramaa.addOnAttachStateChangeListener(new View.OnAttachStateChangeListener()
-          {
-            public final void onViewAttachedToWindow(View paramAnonymousView)
-            {
-              AppMethodBeat.i(135012);
-              paramAnonymousView = paramAnonymousView.getRootView().findViewById(2131297463);
-              if ((s.this.ckN.buM()) || (paramAnonymousView == null))
-              {
-                AppMethodBeat.o(135012);
-                return;
-              }
-              AppMethodBeat.o(135012);
-            }
-            
-            public final void onViewDetachedFromWindow(View paramAnonymousView) {}
-          });
-        }
-        AppMethodBeat.o(176563);
-        return;
-        i = 1;
-      }
-    }
-  }
-  
-  private boolean aYs()
-  {
-    AppMethodBeat.i(135015);
-    try
-    {
-      this.jCA.bpT();
-      this.ckN.b(this);
-      this.ckN.b(this);
-      AppMethodBeat.o(135015);
-      return true;
-    }
-    catch (Exception localException)
-    {
-      ad.e("MicroMsg.AppBrandPageActionSheet", "hide exception = %s", new Object[] { localException });
-      AppMethodBeat.o(135015);
-    }
-    return false;
-  }
-  
-  protected void a(e parame) {}
-  
-  public final boolean aYr()
-  {
-    AppMethodBeat.i(135014);
-    for (;;)
-    {
-      try
-      {
-        e locale = this.jCA;
-        if (!this.ckN.buM())
-        {
-          if (this.ckN.isFullScreen())
-          {
-            break label142;
-            locale.lzG = bool;
-            locale = this.jCA;
-            if (this.ckN.buM()) {
-              break label147;
-            }
-            if (this.ckN.isFullScreen())
-            {
-              break label147;
-              locale.lzH = bool;
-              a(this.jCA);
-              this.jCA.cMW();
-              this.ckN.a(this);
-              this.ckN.a(this);
-              AppMethodBeat.o(135014);
-              return true;
-            }
-          }
-          else
-          {
-            bool = false;
-            continue;
-          }
-          bool = false;
-          continue;
+        bool = true;
+        parame.lEe = bool;
+        if ((!((ad)localObject).isFullScreen()) && (!((ad)localObject).bvy())) {
+          break label272;
         }
         bool = true;
+        parame.lEf = bool;
+        parame.KtV = new e.b()
+        {
+          public final void onDismiss()
+          {
+            AppMethodBeat.i(47796);
+            h.a(this.meB.getAppId(), this.meB.kxv, 38, "", bu.aRi(), 1, 0);
+            AppMethodBeat.o(47796);
+          }
+        };
+        parame.LsV = new e.a()
+        {
+          public final void onClick()
+          {
+            AppMethodBeat.i(47797);
+            h.a(this.meB.getAppId(), this.meB.kxv, 37, "", bu.aRi(), 1, 0);
+            AppMethodBeat.o(47797);
+          }
+        };
+        parame = (ad)this.ckP;
+        localObject = a.a.ag(parame.getRuntime());
+        if (!n.f(parame)) {
+          break label299;
+        }
+        m = 1;
+        if (!parame.getRuntime().aXx().Ee()) {
+          break label305;
+        }
+        j = 2;
+        if (((a)localObject).bwn() != a.b.mkt.ordinal()) {
+          break label322;
+        }
+        k = 1;
       }
-      catch (Exception localException)
-      {
-        ad.e("MicroMsg.AppBrandPageActionSheet", "show exception = %s", new Object[] { localException });
-        AppMethodBeat.o(135014);
-        return false;
-      }
-      label142:
-      continue;
-      label147:
-      boolean bool = true;
     }
-  }
-  
-  public final void onBackground()
-  {
-    AppMethodBeat.i(135017);
-    aYs();
-    AppMethodBeat.o(135017);
-  }
-  
-  public final void onDestroy()
-  {
-    AppMethodBeat.i(135016);
-    aYs();
-    AppMethodBeat.o(135016);
+    for (;;)
+    {
+      label169:
+      int n;
+      label179:
+      int i;
+      if (o.f(parame))
+      {
+        n = 1;
+        if (com.tencent.mm.plugin.appbrand.menu.p.dK(parame.getContext())) {
+          break label350;
+        }
+        i = 1;
+      }
+      for (;;)
+      {
+        localObject = String.format("%d_%d_%d_%d_%d", new Object[] { Integer.valueOf(m), Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(n), Integer.valueOf(i) });
+        h.a(parame.getAppId(), parame.kxv, 28, (String)localObject, bu.aRi(), 1, 0);
+        AppMethodBeat.o(47798);
+        return;
+        bool = false;
+        break;
+        label272:
+        bool = false;
+        break label74;
+        parame.lEe = ((ad)localObject).isFullScreen();
+        parame.lEf = ((ad)localObject).isFullScreen();
+        break label80;
+        label299:
+        m = 0;
+        break label135;
+        label305:
+        if (b.f(parame))
+        {
+          j = 1;
+          break label150;
+        }
+        j = 0;
+        break label150;
+        label322:
+        if (((a)localObject).bwn() != a.b.mku.ordinal()) {
+          break label402;
+        }
+        k = 2;
+        break label169;
+        n = 0;
+        break label179;
+        label350:
+        localObject = parame.getRuntime().aXw();
+        if (localObject == null) {
+          i = 1;
+        } else if ((((AppBrandSysConfigWC)localObject).kbD == null) || (((AppBrandSysConfigWC)localObject).kbD.length <= 0)) {
+          i = 0;
+        } else {
+          i = localObject.kbD[0];
+        }
+      }
+      label402:
+      k = 0;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.page.s
  * JD-Core Version:    0.7.0.1
  */

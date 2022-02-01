@@ -3,24 +3,24 @@ package com.tencent.mm.plugin.appbrand.ui.b;
 import android.graphics.Bitmap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.modelappbrand.a.b.h;
-import com.tencent.mm.sdk.platformtools.g;
+import com.tencent.mm.sdk.platformtools.h;
 
 public final class a
   implements b.h
 {
-  private final int mJj;
+  private final int mOl;
   
   public a(int paramInt)
   {
-    this.mJj = paramInt;
+    this.mOl = paramInt;
   }
   
-  public final String BM()
+  public final String BN()
   {
     return "AppBrandProfileLikeImageTransformation";
   }
   
-  public final Bitmap F(Bitmap paramBitmap)
+  public final Bitmap G(Bitmap paramBitmap)
   {
     AppMethodBeat.i(49043);
     if ((paramBitmap.getWidth() <= 0) || (paramBitmap.getHeight() <= 0))
@@ -28,7 +28,7 @@ public final class a
       AppMethodBeat.o(49043);
       return paramBitmap;
     }
-    Bitmap localBitmap = g.a(paramBitmap, false, this.mJj, false);
+    Bitmap localBitmap = h.a(paramBitmap, false, this.mOl, false);
     if (localBitmap != null)
     {
       AppMethodBeat.o(49043);

@@ -16,10 +16,10 @@ import rx.internal.util.unsafe.UnsafeAccess;
 public abstract class d<T>
   implements j
 {
-  private final long Oao = 67L;
-  private final AtomicReference<Future<?>> Oap = new AtomicReference();
+  private final long Oxt = 67L;
+  private final AtomicReference<Future<?>> Oxu = new AtomicReference();
   Queue<T> aJa;
-  final int ijq = 0;
+  final int imj = 0;
   final int maxSize = 0;
   
   public d()
@@ -37,11 +37,11 @@ public abstract class d<T>
     }
   }
   
-  protected abstract T gzg();
+  protected abstract T gDI();
   
   public final void shutdown()
   {
-    Future localFuture = (Future)this.Oap.getAndSet(null);
+    Future localFuture = (Future)this.Oxu.getAndSet(null);
     if (localFuture != null) {
       localFuture.cancel(false);
     }
@@ -51,11 +51,11 @@ public abstract class d<T>
   {
     for (;;)
     {
-      if (this.Oap.get() != null) {
+      if (this.Oxu.get() != null) {
         label10:
         return;
       }
-      Object localObject = rx.internal.c.d.gzb();
+      Object localObject = rx.internal.c.d.gDD();
       try
       {
         localObject = ((ScheduledExecutorService)localObject).scheduleAtFixedRate(new Runnable()
@@ -66,12 +66,12 @@ public abstract class d<T>
             int i = 0;
             AppMethodBeat.i(90198);
             int k = d.this.aJa.size();
-            if (k < d.this.ijq)
+            if (k < d.this.imj)
             {
               j = d.this.maxSize;
               while (i < j - k)
               {
-                d.this.aJa.add(d.this.gzg());
+                d.this.aJa.add(d.this.gDI());
                 i += 1;
               }
               AppMethodBeat.o(90198);
@@ -89,8 +89,8 @@ public abstract class d<T>
             }
             AppMethodBeat.o(90198);
           }
-        }, this.Oao, this.Oao, TimeUnit.SECONDS);
-        if (this.Oap.compareAndSet(null, localObject)) {
+        }, this.Oxt, this.Oxt, TimeUnit.SECONDS);
+        if (this.Oxu.compareAndSet(null, localObject)) {
           break label10;
         }
         ((Future)localObject).cancel(false);
@@ -104,7 +104,7 @@ public abstract class d<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     rx.internal.util.d
  * JD-Core Version:    0.7.0.1
  */

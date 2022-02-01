@@ -29,7 +29,7 @@
                         </RelativeLayout>
                         <RelativeLayout android:id="@id/gxk" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="24.0dip">
                             <RelativeLayout android:orientation="vertical" android:id="@id/gxm" android:layout_width="wrap_content" android:layout_height="wrap_content">
-                                <RelativeLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                                <RelativeLayout android:orientation="vertical" android:background="@color/a_r" android:layout_width="wrap_content" android:layout_height="wrap_content">
                                     <ImageView android:id="@id/gxj" android:background="@drawable/c2f" android:layout_width="wrap_content" android:layout_height="wrap_content" />
                                 </RelativeLayout>
                                 <TextView android:textSize="10.0dip" android:textColor="@color/BW_0_Alpha_0_2" android:gravity="center_horizontal" android:id="@id/gxp" android:layout_width="24.0dip" android:layout_height="14.0dip" android:layout_marginTop="8.0dip" android:text="[万]" />

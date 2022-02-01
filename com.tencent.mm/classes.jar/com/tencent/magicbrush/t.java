@@ -7,25 +7,25 @@ import d.l.b;
 import d.l.d;
 import d.l.h;
 
-@l(gfx={1, 1, 13})
+@l(gjZ={1, 1, 13})
 final class t
   extends d.g.b.t
 {
-  public static final h cxK;
+  public static final h cyr;
   
   static
   {
     AppMethodBeat.i(140148);
-    cxK = new t();
+    cyr = new t();
     AppMethodBeat.o(140148);
   }
   
-  public final String Hu()
+  public final String HC()
   {
     return "getEnable_request_animation_frame()Z";
   }
   
-  public final d Hv()
+  public final d HD()
   {
     AppMethodBeat.i(140149);
     b localb = z.bp(MBRuntime.MBParams.class);
@@ -55,7 +55,7 @@ final class t
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.magicbrush.t
  * JD-Core Version:    0.7.0.1
  */

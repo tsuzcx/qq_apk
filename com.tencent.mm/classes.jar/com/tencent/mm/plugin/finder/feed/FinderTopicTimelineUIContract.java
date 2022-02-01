@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.finder.feed;
 
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/feed/FinderTopicTimelineUIContract;", "", "()V", "Loader", "Presenter", "TopicCustomData", "ViewCallback", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/feed/FinderTopicTimelineUIContract;", "", "()V", "Loader", "Presenter", "TopicCustomData", "ViewCallback", "plugin-finder_release"})
 public final class FinderTopicTimelineUIContract {}
 
 

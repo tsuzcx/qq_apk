@@ -11,21 +11,23 @@ import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.view.ViewGroup.MarginLayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.ue;
+import com.tencent.mm.g.a.ue.a;
 import com.tencent.mm.plugin.sns.ad.landingpage.helper.a.a;
 import com.tencent.mm.plugin.sns.ad.landingpage.helper.a.b;
-import com.tencent.mm.plugin.sns.data.q;
+import com.tencent.mm.plugin.sns.data.r;
 import com.tencent.mm.plugin.sns.model.AdLandingPagesProxy;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ae;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ak;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.x;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.h;
-import com.tencent.mm.plugin.webview.ui.tools.widget.c;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.af;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.al;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.y;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.i;
 import com.tencent.mm.plugin.webview.ui.tools.widget.c.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.widget.MMWebView;
-import com.tencent.mm.vfs.e;
+import com.tencent.mm.vfs.k;
+import com.tencent.mm.vfs.o;
 import com.tencent.xweb.WebView;
 import com.tencent.xweb.z;
 import java.io.OutputStream;
@@ -33,44 +35,45 @@ import java.lang.reflect.Method;
 import org.json.JSONObject;
 
 public final class j
-  extends l
+  extends m
 {
-  MMWebView hJc;
-  com.tencent.mm.plugin.webview.c.f lvH;
+  MMWebView hLV;
+  com.tencent.mm.plugin.webview.c.f lAf;
   volatile boolean mIsDestroyed;
-  private Runnable zDw;
-  com.tencent.mm.plugin.sns.data.g zDx;
+  com.tencent.mm.plugin.sns.data.h zUA;
+  com.tencent.mm.sdk.b.c<ue> zUy;
+  private Runnable zUz;
   
-  public j(Context paramContext, x paramx, ViewGroup paramViewGroup)
+  public j(Context paramContext, y paramy, ViewGroup paramViewGroup)
   {
-    super(paramContext, paramx, paramViewGroup);
-    AppMethodBeat.i(197937);
+    super(paramContext, paramy, paramViewGroup);
+    AppMethodBeat.i(219437);
     this.mIsDestroyed = false;
-    this.zDw = new j.2(this);
-    this.zDx = null;
-    AppMethodBeat.o(197937);
+    this.zUz = new j.2(this);
+    this.zUA = null;
+    AppMethodBeat.o(219437);
   }
   
   static Method aU(Class<?> paramClass)
   {
-    AppMethodBeat.i(197940);
+    AppMethodBeat.i(219440);
     try
     {
       paramClass = paramClass.getMethod("getJsapi", new Class[0]);
-      AppMethodBeat.o(197940);
+      AppMethodBeat.o(219440);
       return paramClass;
     }
     catch (Throwable paramClass)
     {
-      ad.e("AdLandingNewH5Comp", "there is no method named getJsapi");
-      AppMethodBeat.o(197940);
+      ae.e("AdLandingNewH5Comp", "there is no method named getJsapi");
+      AppMethodBeat.o(219440);
     }
     return null;
   }
   
   static Method aV(Class<?> paramClass)
   {
-    AppMethodBeat.i(197941);
+    AppMethodBeat.i(219441);
     Object localObject3 = null;
     Object localObject2 = null;
     Object localObject1 = localObject3;
@@ -80,10 +83,10 @@ public final class j
       {
         Method[] arrayOfMethod = paramClass.getDeclaredMethods();
         localObject1 = localObject3;
-        int k = arrayOfMethod.length;
+        int j = arrayOfMethod.length;
         i = 0;
         paramClass = localObject2;
-        if (i < k)
+        if (i < j)
         {
           paramClass = arrayOfMethod[i];
           localObject1 = localObject3;
@@ -93,105 +96,138 @@ public final class j
           if (localClass != com.tencent.mm.plugin.webview.c.f.class) {
             continue;
           }
-          if (arrayOfClass == null) {
-            continue;
-          }
           localObject1 = localObject3;
-          if (arrayOfClass.length != 0) {
+          if (!com.tencent.mm.plugin.sns.ad.f.c.w(arrayOfClass)) {
             continue;
           }
+        }
+        localObject1 = paramClass;
+        if (paramClass == null)
+        {
+          localObject1 = paramClass;
+          ae.w("AdLandingNewH5Comp", "there is no method satisfying the condition");
+          localObject1 = paramClass;
         }
       }
       catch (Throwable paramClass)
       {
         int i;
-        ad.e("AdLandingNewH5Comp", "finding the js method occurs something exception");
-        continue;
-        int j = 1;
-        if (j == 0) {
-          continue;
-        }
+        ae.e("AdLandingNewH5Comp", "finding the js method occurs something exception");
         continue;
       }
-      localObject1 = paramClass;
-      if (paramClass == null)
-      {
-        localObject1 = paramClass;
-        ad.w("AdLandingNewH5Comp", "there is no method satisfying the condition");
-        localObject1 = paramClass;
-      }
-      AppMethodBeat.o(197941);
+      AppMethodBeat.o(219441);
       return localObject1;
-      j = 0;
-      continue;
       i += 1;
     }
   }
   
-  protected final void dRl()
+  protected final void dUJ()
   {
     AppMethodBeat.i(96462);
     WebView localWebView;
     Object localObject;
     String str1;
-    if ((ak)dWY() != null)
+    if ((al)eaC() != null)
     {
       localWebView = (WebView)getView();
-      localObject = (ak)dWY();
-      if (TextUtils.isEmpty(((ak)localObject).url)) {
-        break label189;
+      localObject = (al)eaC();
+      if (TextUtils.isEmpty(((al)localObject).url)) {
+        break label216;
       }
-      str1 = "uxinfo=" + dWZ().dFy;
+      str1 = "uxinfo=" + eaD().dGD;
       String str2 = AdLandingPagesProxy.getInstance().getUin();
       String str3 = "uin=".concat(String.valueOf(str2));
-      str1 = am.n(((ak)localObject).url, new String[] { str1, str3 });
-      if (((ak)localObject).subType != 1) {
-        break label197;
+      str1 = an.n(((al)localObject).url, new String[] { str1, str3 });
+      if (((al)localObject).subType != 1) {
+        break label231;
       }
-      localObject = AdLandingPagesProxy.getInstance().getAdVoteInfo(((ak)localObject).url, dWZ().dFy, str2);
-      if (bt.isNullOrNil((String)localObject)) {
-        break label197;
+      localObject = AdLandingPagesProxy.getInstance().getAdVoteInfo(((al)localObject).url, eaD().dGD, str2);
+      if (bu.isNullOrNil((String)localObject)) {
+        break label231;
       }
       str1 = str1 + "&" + (String)localObject;
     }
-    label189:
-    label197:
+    label216:
+    label231:
     for (;;)
     {
-      ad.i("AdLandingNewH5Comp", "final url=".concat(String.valueOf(str1)));
+      ae.i("AdLandingNewH5Comp", "final url=".concat(String.valueOf(str1)));
       for (;;)
       {
         localWebView.loadUrl(str1);
-        AppMethodBeat.o(96462);
-        return;
-        str1 = ((ak)localObject).url;
+        try
+        {
+          if (this.zUy == null)
+          {
+            this.zUy = new com.tencent.mm.sdk.b.c()
+            {
+              private boolean a(ue paramAnonymousue)
+              {
+                AppMethodBeat.i(219433);
+                try
+                {
+                  j localj = j.this;
+                  int i = paramAnonymousue.dJH.dJI;
+                  if (localj.zUy != null)
+                  {
+                    localj.zUy.dead();
+                    localj.zUy = null;
+                  }
+                  if (5 == i)
+                  {
+                    paramAnonymousue = localj.hLV;
+                    if (paramAnonymousue != null) {
+                      paramAnonymousue.setCleanOnDetached(true);
+                    }
+                  }
+                }
+                catch (Throwable paramAnonymousue)
+                {
+                  label56:
+                  break label56;
+                }
+                AppMethodBeat.o(219433);
+                return false;
+              }
+            };
+            this.zUy.alive();
+          }
+          AppMethodBeat.o(96462);
+          return;
+        }
+        catch (Throwable localThrowable)
+        {
+          AppMethodBeat.o(96462);
+          return;
+        }
+        str1 = ((al)localObject).url;
       }
     }
   }
   
-  public final void dRm()
+  public final void dUK()
   {
-    AppMethodBeat.i(197938);
-    super.dRm();
+    AppMethodBeat.i(219438);
+    super.dUK();
     try
     {
-      MMWebView localMMWebView = this.hJc;
+      MMWebView localMMWebView = this.hLV;
       if (localMMWebView != null) {
-        localMMWebView.postOnAnimation(this.zDw);
+        localMMWebView.postOnAnimation(this.zUz);
       }
-      AppMethodBeat.o(197938);
+      AppMethodBeat.o(219438);
       return;
     }
     catch (Throwable localThrowable)
     {
-      AppMethodBeat.o(197938);
+      AppMethodBeat.o(219438);
     }
   }
   
-  public final void dRo()
+  public final void dUM()
   {
     AppMethodBeat.i(96465);
-    super.dRo();
+    super.dUM();
     WebView localWebView = (WebView)getView();
     if ((localWebView != null) && (localWebView.getParent() != null))
     {
@@ -200,25 +236,26 @@ public final class j
       localWebView.destroy();
     }
     this.mIsDestroyed = true;
-    this.lvH = null;
+    this.lAf = null;
     this.contentView = null;
     AppMethodBeat.o(96465);
   }
   
-  protected final View dWC()
+  protected final View eae()
   {
     AppMethodBeat.i(96464);
     this.mIsDestroyed = false;
-    this.hJc = com.tencent.mm.plugin.webview.ui.tools.widget.f.a.Eqm.eo(this.context);
-    this.hJc.getSettings().gaY();
-    this.hJc.getSettings().gbc();
-    this.hJc.getSettings().gbb();
-    this.hJc.setWebViewClient(c.a.Eql.a(this.hJc, false, new com.tencent.mm.plugin.webview.ui.tools.widget.d()
+    this.hLV = com.tencent.mm.plugin.webview.ui.tools.widget.f.a.EIC.es(this.context);
+    this.hLV.setCleanOnDetached(false);
+    this.hLV.getSettings().gfA();
+    this.hLV.getSettings().gfE();
+    this.hLV.getSettings().gfD();
+    this.hLV.setWebViewClient(c.a.EIB.a(this.hLV, false, new com.tencent.mm.plugin.webview.ui.tools.widget.d()
     {
       public final boolean g(int paramAnonymousInt, Bundle paramAnonymousBundle)
       {
         AppMethodBeat.i(96461);
-        ad.i("AdLandingNewH5Comp", "callback, actionCode=".concat(String.valueOf(paramAnonymousInt)));
+        ae.i("AdLandingNewH5Comp", "callback, actionCode=".concat(String.valueOf(paramAnonymousInt)));
         switch (paramAnonymousInt)
         {
         default: 
@@ -227,10 +264,10 @@ public final class j
           {
             AppMethodBeat.o(96461);
             return false;
-            localObject = (ak)j.this.dWY();
+            localObject = (al)j.this.eaC();
             paramAnonymousInt = paramAnonymousBundle.getInt("sns_landing_pages_ad_vote_index");
             paramAnonymousBundle = paramAnonymousBundle.getString("sns_landing_pages_ad_vote_result");
-            AdLandingPagesProxy.getInstance().saveAdVoteInfo(((ak)localObject).url, j.this.dWZ().dFy, j.this.dWZ().uin, paramAnonymousInt, 0, paramAnonymousBundle);
+            AdLandingPagesProxy.getInstance().saveAdVoteInfo(((al)localObject).url, j.this.eaD().dGD, j.this.eaD().uin, paramAnonymousInt, 0, paramAnonymousBundle);
           }
         case 151: 
           for (;;)
@@ -238,94 +275,94 @@ public final class j
             try
             {
               localObject = new Intent();
-              String str = am.n(paramAnonymousBundle.getString("sns_landing_pages_ad_jumpurl"), new String[] { "traceid=" + j.this.dWZ().jSR, "aid=" + j.this.dWZ().zuP });
-              paramAnonymousBundle = j.this.dWZ().zAP;
+              String str = an.n(paramAnonymousBundle.getString("sns_landing_pages_ad_jumpurl"), new String[] { "traceid=" + j.this.eaD().jWi, "aid=" + j.this.eaD().zMk });
+              paramAnonymousBundle = j.this.eaD().zRP;
               if (!TextUtils.isEmpty(paramAnonymousBundle)) {
                 break label356;
               }
-              paramAnonymousBundle = j.this.dWZ().dFy;
-              ad.i("AdLandingNewH5Comp", "opJumpView, use orig_UxInfo:".concat(String.valueOf(paramAnonymousBundle)));
-              str = q.jh(str, paramAnonymousBundle);
-              q.g((Intent)localObject, paramAnonymousBundle);
+              paramAnonymousBundle = j.this.eaD().dGD;
+              ae.i("AdLandingNewH5Comp", "opJumpView, use orig_UxInfo:".concat(String.valueOf(paramAnonymousBundle)));
+              str = r.jo(str, paramAnonymousBundle);
+              r.g((Intent)localObject, paramAnonymousBundle);
               ((Intent)localObject).putExtra("rawUrl", str);
               ((Intent)localObject).putExtra("useJs", true);
               ((Intent)localObject).putExtra("type", -255);
               ((Intent)localObject).putExtra("geta8key_scene", 2);
-              com.tencent.mm.bs.d.b(j.this.context, "webview", ".ui.tools.WebViewUI", (Intent)localObject);
-              ad.i("AdLandingNewH5Comp", "jumpUrl, finalUrl=".concat(String.valueOf(str)));
+              com.tencent.mm.br.d.b(j.this.context, "webview", ".ui.tools.WebViewUI", (Intent)localObject);
+              ae.i("AdLandingNewH5Comp", "jumpUrl, finalUrl=".concat(String.valueOf(str)));
             }
             catch (Exception paramAnonymousBundle)
             {
-              ad.e("AdLandingNewH5Comp", "OptJump exp=" + paramAnonymousBundle.toString());
+              ae.e("AdLandingNewH5Comp", "OptJump exp=" + paramAnonymousBundle.toString());
             }
             break;
             label356:
-            ad.i("AdLandingNewH5Comp", "opJumpView, use updated_UxInfo:".concat(String.valueOf(paramAnonymousBundle)));
+            ae.i("AdLandingNewH5Comp", "opJumpView, use updated_UxInfo:".concat(String.valueOf(paramAnonymousBundle)));
           }
         }
         Object localObject = paramAnonymousBundle.getString("sns_landing_pages_h5_params");
         paramAnonymousBundle = paramAnonymousBundle.getString("callbackId");
-        boolean bool = j.this.jy((String)localObject, paramAnonymousBundle);
+        boolean bool = j.this.jF((String)localObject, paramAnonymousBundle);
         AppMethodBeat.o(96461);
         return bool;
       }
     }));
-    MMWebView localMMWebView = this.hJc;
+    MMWebView localMMWebView = this.hLV;
     AppMethodBeat.o(96464);
     return localMMWebView;
   }
   
-  protected final void dWF()
+  protected final void eah()
   {
     AppMethodBeat.i(96463);
     ViewGroup.LayoutParams localLayoutParams = this.contentView.getLayoutParams();
     if ((localLayoutParams instanceof ViewGroup.MarginLayoutParams)) {
-      ((ViewGroup.MarginLayoutParams)localLayoutParams).setMargins((int)this.zDK.paddingLeft, (int)this.zDK.paddingTop, (int)this.zDK.paddingRight, (int)this.zDK.paddingBottom);
+      ((ViewGroup.MarginLayoutParams)localLayoutParams).setMargins((int)this.zUP.paddingLeft, (int)this.zUP.paddingTop, (int)this.zUP.paddingRight, (int)this.zUP.paddingBottom);
     }
     this.contentView.setLayoutParams(localLayoutParams);
     AppMethodBeat.o(96463);
   }
   
-  final boolean jy(String paramString1, final String paramString2)
+  final boolean jF(String paramString1, final String paramString2)
   {
-    AppMethodBeat.i(197939);
+    AppMethodBeat.i(219439);
     try
     {
-      ad.i("AdLandingNewH5Comp", "handleJSAPI, params=".concat(String.valueOf(paramString1)));
+      ae.i("AdLandingNewH5Comp", "handleJSAPI, params=".concat(String.valueOf(paramString1)));
       paramString1 = new JSONObject(paramString1);
       localObject = paramString1.optString("funcName");
       if ("opUpdateContentHeight".equals(localObject)) {
-        aq.f(new Runnable()
+        ar.f(new Runnable()
         {
           public final void run()
           {
-            AppMethodBeat.i(197932);
-            if ((j.this.contentView != null) && (this.zDz >= 0)) {
+            AppMethodBeat.i(219429);
+            if ((j.this.contentView != null) && (this.zUC >= 0)) {
               try
               {
                 ViewGroup.LayoutParams localLayoutParams = j.this.contentView.getLayoutParams();
-                int i = (int)com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.i.a(this.zDz, 1, 750, 1);
-                ad.i("AdLandingNewH5Comp", "adJuestHeight, curH=" + localLayoutParams.height + ", newH=" + this.zDz + ", newPx=" + i);
+                int i = (int)i.a(this.zUC, 1, 750, 1);
+                ae.i("AdLandingNewH5Comp", "adJuestHeight, curH=" + localLayoutParams.height + ", newH=" + this.zUC + ", newPx=" + i);
                 if (localLayoutParams.height != i)
                 {
-                  ((ak)j.this.dWY()).zAj = i;
-                  j.this.dWW();
+                  ((al)j.this.eaC()).zRj = i;
+                  j.this.eaA();
                 }
-                AppMethodBeat.o(197932);
+                AppMethodBeat.o(219429);
                 return;
               }
               catch (Exception localException)
               {
-                ad.e("AdLandingNewH5Comp", "adJuestHeight exp=" + localException.toString());
+                ae.e("AdLandingNewH5Comp", "adJuestHeight exp=" + localException.toString());
               }
             }
-            AppMethodBeat.o(197932);
+            AppMethodBeat.o(219429);
           }
         });
       }
       for (;;)
       {
-        AppMethodBeat.o(197939);
+        AppMethodBeat.o(219439);
         return false;
         if (!"opStartQRScan".equals(localObject)) {
           break;
@@ -342,7 +379,7 @@ public final class j
       {
         for (;;)
         {
-          ad.e("AdLandingNewH5Comp", "handleJSAPI, exp=" + paramString1.toString());
+          ae.e("AdLandingNewH5Comp", "handleJSAPI, exp=" + paramString1.toString());
           continue;
           if (!"opEndQRScan".equals(localObject)) {
             break;
@@ -352,62 +389,62 @@ public final class j
           {
             try
             {
-              if (this.zDx == null)
+              if (this.zUA == null)
               {
                 localObject = new Bundle();
-                paramString1 = (ak)dWY();
+                paramString1 = (al)eaC();
                 if (paramString1 == null) {
                   break label289;
                 }
-                paramString1 = paramString1.zzN;
+                paramString1 = paramString1.zQM;
                 ((Bundle)localObject).putString("qrExtInfo", paramString1);
-                this.zDx = new com.tencent.mm.plugin.sns.data.g(this.context, dWZ(), 2, (Bundle)localObject);
+                this.zUA = new com.tencent.mm.plugin.sns.data.h(this.context, eaD(), 2, (Bundle)localObject);
               }
-              paramString1 = h.jF("adId", paramString2);
-              if ((TextUtils.isEmpty(paramString1)) || (!com.tencent.mm.vfs.i.fv(paramString1))) {
+              paramString1 = com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.h.jL("adId", paramString2);
+              if ((TextUtils.isEmpty(paramString1)) || (!o.fB(paramString1))) {
                 break label296;
               }
-              ad.i("AdLandingNewH5Comp", "local file exists, imageUrl=".concat(String.valueOf(paramString2)));
-              this.zDx.je(paramString1, paramString2);
+              ae.i("AdLandingNewH5Comp", "local file exists, imageUrl=".concat(String.valueOf(paramString2)));
+              this.zUA.jl(paramString1, paramString2);
             }
             catch (Throwable paramString1)
             {
-              ad.e("AdLandingNewH5Comp", "handleQR, exp=" + paramString1.toString());
+              ae.e("AdLandingNewH5Comp", "handleQR, exp=" + paramString1.toString());
             }
             break;
             paramString1 = "";
           }
-          paramString1 = com.tencent.mm.sdk.platformtools.g.ga(this.contentView);
+          paramString1 = com.tencent.mm.sdk.platformtools.h.fZ(this.contentView);
           if (paramString1 != null)
           {
-            ad.i("AdLandingNewH5Comp", "shoot webView succ");
-            localObject = h.jF("adId", paramString2 + "_shoot");
-            OutputStream localOutputStream = com.tencent.mm.vfs.i.aj(new e((String)localObject));
+            ae.i("AdLandingNewH5Comp", "shoot webView succ");
+            localObject = com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.h.jL("adId", paramString2 + "_shoot");
+            OutputStream localOutputStream = o.aj(new k((String)localObject));
             boolean bool = paramString1.compress(Bitmap.CompressFormat.JPEG, 100, localOutputStream);
             localOutputStream.flush();
             localOutputStream.close();
             if (bool)
             {
-              ad.i("AdLandingNewH5Comp", "shoot save succ");
-              this.zDx.je((String)localObject, paramString2);
+              ae.i("AdLandingNewH5Comp", "shoot save succ");
+              this.zUA.jl((String)localObject, paramString2);
             }
           }
-          h.a(paramString2, ((ak)dWY()).zAh, new com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.f.a()
+          com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.h.a(paramString2, ((al)eaC()).zRh, new com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.f.a()
           {
-            public final void axG(String paramAnonymousString)
+            public final void ayY(String paramAnonymousString)
             {
-              AppMethodBeat.i(197934);
-              ad.i("AdLandingNewH5Comp", "onDownloaded, imageUrl=" + paramString2);
-              AppMethodBeat.o(197934);
+              AppMethodBeat.i(219431);
+              ae.i("AdLandingNewH5Comp", "onDownloaded, imageUrl=" + paramString2);
+              AppMethodBeat.o(219431);
             }
             
-            public final void dRW() {}
+            public final void dVu() {}
             
-            public final void dRX()
+            public final void dVv()
             {
-              AppMethodBeat.i(197933);
-              ad.e("AdLandingNewH5Comp", "onDownloadError, imageUrl=" + paramString2);
-              AppMethodBeat.o(197933);
+              AppMethodBeat.i(219430);
+              ae.e("AdLandingNewH5Comp", "onDownloadError, imageUrl=" + paramString2);
+              AppMethodBeat.o(219430);
             }
           });
         }
@@ -417,7 +454,7 @@ public final class j
       if (paramString2 != null) {
         paramString2.request(paramString1);
       }
-      AppMethodBeat.o(197939);
+      AppMethodBeat.o(219439);
     }
     return true;
   }

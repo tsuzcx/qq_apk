@@ -1,19 +1,19 @@
 package com.tencent.mm.ui.contact;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.storage.am;
-import com.tencent.mm.storage.at;
+import com.tencent.mm.storage.an;
+import com.tencent.mm.storage.au;
 
 public final class f
 {
-  public am contact;
-  public at conversation;
+  public an contact;
+  public au conversation;
   
   public f()
   {
     AppMethodBeat.i(102820);
-    this.contact = new am();
-    this.conversation = new at();
+    this.contact = new an();
+    this.conversation = new au();
     AppMethodBeat.o(102820);
   }
 }

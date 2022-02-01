@@ -6,34 +6,34 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.content.DialogInterface.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.plugin.account.friend.a.ak;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.ui.base.h;
 
 public final class g
   implements f
 {
   private Context context;
-  private ProgressDialog hNi;
-  a jgL;
-  private boolean jgM = true;
-  String jgN = "";
+  private ProgressDialog hQb;
+  a jjE;
+  private boolean jjF = true;
+  String jjG = "";
   
   public g(Context paramContext, a parama)
   {
     this.context = paramContext;
-    this.jgL = parama;
-    this.jgM = true;
+    this.jjE = parama;
+    this.jjF = true;
   }
   
   public g(Context paramContext, a parama, byte paramByte)
   {
     this.context = paramContext;
-    this.jgL = parama;
-    this.jgM = false;
+    this.jjE = parama;
+    this.jjF = false;
   }
   
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
@@ -44,55 +44,55 @@ public final class g
       AppMethodBeat.o(131311);
       return;
     }
-    if (this.hNi != null)
+    if (this.hQb != null)
     {
-      this.hNi.dismiss();
-      this.hNi = null;
+      this.hQb.dismiss();
+      this.hQb = null;
     }
-    com.tencent.mm.kernel.g.aiU().b(116, this);
+    com.tencent.mm.kernel.g.ajj().b(116, this);
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      ad.i("MicroMsg.SendInviteEmail", "dealSendInviteEmailSuccess");
-      if (this.jgM)
+      ae.i("MicroMsg.SendInviteEmail", "dealSendInviteEmailSuccess");
+      if (this.jjF)
       {
         h.a(this.context, 2131760375, 2131755906, new DialogInterface.OnClickListener()
         {
           public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
           {
             AppMethodBeat.i(131309);
-            g.this.jgL.h(true, g.this.jgN);
+            g.this.jjE.h(true, g.this.jjG);
             AppMethodBeat.o(131309);
           }
         });
         AppMethodBeat.o(131311);
         return;
       }
-      this.jgL.h(true, this.jgN);
+      this.jjE.h(true, this.jjG);
       AppMethodBeat.o(131311);
       return;
     }
-    ad.i("MicroMsg.SendInviteEmail", "dealSendInviteEmailFail");
-    this.jgL.h(false, this.jgN);
+    ae.i("MicroMsg.SendInviteEmail", "dealSendInviteEmailFail");
+    this.jjE.h(false, this.jjG);
     AppMethodBeat.o(131311);
   }
   
   public final void r(final int[] paramArrayOfInt)
   {
     AppMethodBeat.i(131310);
-    com.tencent.mm.kernel.g.aiU().a(116, this);
+    com.tencent.mm.kernel.g.ajj().a(116, this);
     paramArrayOfInt = new ak(paramArrayOfInt);
-    com.tencent.mm.kernel.g.aiU().a(paramArrayOfInt, 0);
-    if (this.jgM)
+    com.tencent.mm.kernel.g.ajj().a(paramArrayOfInt, 0);
+    if (this.jjF)
     {
       Context localContext = this.context;
       this.context.getString(2131760378);
-      this.hNi = h.b(localContext, this.context.getString(2131760376), true, new DialogInterface.OnCancelListener()
+      this.hQb = h.b(localContext, this.context.getString(2131760376), true, new DialogInterface.OnCancelListener()
       {
         public final void onCancel(DialogInterface paramAnonymousDialogInterface)
         {
           AppMethodBeat.i(131308);
-          com.tencent.mm.kernel.g.aiU().a(paramArrayOfInt);
-          g.this.jgL.h(false, g.this.jgN);
+          com.tencent.mm.kernel.g.ajj().a(paramArrayOfInt);
+          g.this.jjE.h(false, g.this.jjG);
           AppMethodBeat.o(131308);
         }
       });

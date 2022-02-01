@@ -1,97 +1,124 @@
 package com.tencent.mm.model;
 
+import android.os.SystemClock;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.e;
-import com.tencent.mm.al.e.a;
-import com.tencent.mm.al.e.b;
-import com.tencent.mm.al.e.c;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
-import com.tencent.mm.bc.l;
-import com.tencent.mm.kernel.b;
+import com.tencent.mm.kernel.a;
+import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.platformtools.z;
-import com.tencent.mm.protocal.protobuf.cv;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import java.io.ByteArrayInputStream;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.NamedNodeMap;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
-import org.xml.sax.InputSource;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.storage.aj;
+import com.tencent.mm.storage.am.a;
 
 public final class ch
-  implements e
 {
-  public final e.b b(e.a parama)
+  private static volatile boolean hLl;
+  private static long hLm;
+  private static long hLn;
+  private static final Object lock;
+  
+  static
   {
-    AppMethodBeat.i(150190);
-    parama = parama.gqE;
-    if ((parama == null) || (parama.Fvk == null))
+    AppMethodBeat.i(193549);
+    hLl = false;
+    hLm = -1L;
+    hLn = -1L;
+    lock = new Object();
+    AppMethodBeat.o(193549);
+  }
+  
+  public static long aDa()
+  {
+    AppMethodBeat.i(132281);
+    if ((ak.coh()) && (g.ajS().gED))
     {
-      ad.f("MicroMsg.UpdatePackageMsgExtension", "[oneliang]UpdatePackageMsgExtension failed, invalid cmdAM");
-      AppMethodBeat.o(150190);
-      return null;
+      g.ajS();
+      if (g.ajP().aiZ()) {}
     }
-    ad.i("MicroMsg.UpdatePackageMsgExtension", "[oneliang]UpdatePackageMsgExtension start");
-    parama = z.a(parama.Fvk);
-    Object localObject = DocumentBuilderFactory.newInstance();
-    for (;;)
+    else
     {
-      int i;
-      try
+      ae.i("MicroMsg.TimeHelper", "account error");
+      AppMethodBeat.o(132281);
+      return 0L;
+    }
+    try
+    {
+      long l = aDc();
+      AppMethodBeat.o(132281);
+      return l;
+    }
+    catch (Throwable localThrowable)
+    {
+      ae.e("MicroMsg.TimeHelper", localThrowable.getMessage());
+      AppMethodBeat.o(132281);
+    }
+    return 0L;
+  }
+  
+  public static long aDb()
+  {
+    AppMethodBeat.i(224419);
+    long l = aDc();
+    AppMethodBeat.o(224419);
+    return l;
+  }
+  
+  public static long aDc()
+  {
+    AppMethodBeat.i(162133);
+    if (hLl) {
+      synchronized (lock)
       {
-        parama = ((DocumentBuilderFactory)localObject).newDocumentBuilder().parse(new InputSource(new ByteArrayInputStream(parama.getBytes("utf-8"))));
-        parama.normalize();
-        parama = parama.getDocumentElement().getElementsByTagName("updatepackage");
-        if ((parama != null) && (parama.getLength() == 1))
-        {
-          parama = parama.item(0).getChildNodes();
-          int j = parama.getLength();
-          i = 0;
-          if (i < j)
-          {
-            localObject = parama.item(i);
-            if ((localObject == null) || (((Node)localObject).getNodeName() == null) || (!((Node)localObject).getNodeName().equals("pack"))) {
-              break label290;
-            }
-            localObject = ((Node)localObject).getAttributes();
-            if (localObject == null) {
-              break label290;
-            }
-            localObject = ((NamedNodeMap)localObject).getNamedItem("type");
-            if (localObject == null) {
-              break label290;
-            }
-            localObject = new l(bt.getInt(((Node)localObject).getNodeValue(), 0));
-            g.ajB().gAO.a((n)localObject, 0);
-            break label290;
-          }
-        }
-        ad.i("MicroMsg.UpdatePackageMsgExtension", "[oneliang]UpdatePackageMsgExtension end");
-        AppMethodBeat.o(150190);
-        return null;
+        l1 = Math.max(0L, SystemClock.elapsedRealtime() - hLn);
+        long l2 = hLm;
+        AppMethodBeat.o(162133);
+        return l1 + l2;
       }
-      catch (Exception parama)
+    }
+    long l1 = System.currentTimeMillis();
+    AppMethodBeat.o(162133);
+    return l1;
+  }
+  
+  public static int aDd()
+  {
+    AppMethodBeat.i(132284);
+    int i = (int)(aDc() / 1000L);
+    AppMethodBeat.o(132284);
+    return i;
+  }
+  
+  public static void rY(long paramLong)
+  {
+    AppMethodBeat.i(132282);
+    synchronized (lock)
+    {
+      if (!hLl)
       {
-        ad.e("MicroMsg.UpdatePackageMsgExtension", "exception:%s", new Object[] { bt.n(parama) });
-        AppMethodBeat.o(150190);
-        return null;
+        hLm = paramLong;
+        hLn = SystemClock.elapsedRealtime();
+        hLl = true;
+        ??? = g.ajR().ajA();
+        ((aj)???).set(am.a.ITC, Long.valueOf(hLm));
+        ((aj)???).set(am.a.ITD, Long.valueOf(hLn));
+        AppMethodBeat.o(132282);
+        return;
       }
-      label290:
-      i += 1;
+      hLm = Math.max(paramLong, aDc());
     }
   }
   
-  public final void b(e.c paramc) {}
+  public static long rZ(long paramLong)
+  {
+    AppMethodBeat.i(132285);
+    long l = aDc() / 1000L;
+    AppMethodBeat.o(132285);
+    return l - paramLong;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.model.ch
  * JD-Core Version:    0.7.0.1
  */

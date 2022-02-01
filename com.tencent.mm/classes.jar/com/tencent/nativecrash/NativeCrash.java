@@ -6,56 +6,56 @@ import java.nio.charset.Charset;
 
 public final class NativeCrash
 {
-  private static c LDh;
-  private static a LDi;
-  private static final Charset LDj;
+  private static c Mal;
+  private static a Mam;
+  private static final Charset Man;
   
   static
   {
     AppMethodBeat.i(40117);
-    LDj = Charset.forName("UTF-8");
+    Man = Charset.forName("UTF-8");
     AppMethodBeat.o(40117);
   }
   
   public static a a(a parama)
   {
-    a locala = LDi;
-    LDi = parama;
+    a locala = Mam;
+    Mam = parama;
     return locala;
   }
   
   public static c a(c paramc)
   {
-    c localc = LDh;
-    LDh = paramc;
+    c localc = Mal;
+    Mal = paramc;
     return localc;
   }
   
-  public static void aYX(String paramString)
+  public static void baA(String paramString)
   {
-    AppMethodBeat.i(186408);
+    AppMethodBeat.i(194923);
     if (!InitializationProbe.libLoaded) {
       System.loadLibrary("wechatcrash");
     }
     nativeInit(paramString, 1871, 2048, true);
-    AppMethodBeat.o(186408);
+    AppMethodBeat.o(194923);
   }
   
-  public static void fSA()
+  public static c fWY()
+  {
+    return Mal;
+  }
+  
+  public static a fWZ()
+  {
+    return Mam;
+  }
+  
+  public static void fXa()
   {
     AppMethodBeat.i(40115);
     nativeResetCustomInfo();
     AppMethodBeat.o(40115);
-  }
-  
-  public static c fSy()
-  {
-    return LDh;
-  }
-  
-  public static a fSz()
-  {
-    return LDi;
   }
   
   private static native void nativeCustomInfo(byte[] paramArrayOfByte);
@@ -67,22 +67,22 @@ public final class NativeCrash
   @Keep
   private static boolean onANRDumped(int paramInt, String paramString)
   {
-    AppMethodBeat.i(186410);
+    AppMethodBeat.i(194925);
     boolean bool = new b(true, paramInt, null, paramString).hZ();
-    AppMethodBeat.o(186410);
+    AppMethodBeat.o(194925);
     return bool;
   }
   
   @Keep
   private static boolean onCrashDumped(int paramInt, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(186409);
+    AppMethodBeat.i(194924);
     boolean bool = new b(false, paramInt, paramString1, paramString2).hZ();
-    AppMethodBeat.o(186409);
+    AppMethodBeat.o(194924);
     return bool;
   }
   
-  public static void vN(String paramString)
+  public static void wu(String paramString)
   {
     AppMethodBeat.i(40114);
     if (paramString == null)
@@ -93,7 +93,7 @@ public final class NativeCrash
     if (!paramString.endsWith("\n")) {}
     for (paramString = paramString + "";; paramString = paramString + '\000')
     {
-      nativeCustomInfo(paramString.getBytes(LDj));
+      nativeCustomInfo(paramString.getBytes(Man));
       AppMethodBeat.o(40114);
       return;
     }
@@ -101,81 +101,81 @@ public final class NativeCrash
   
   public static abstract interface a
   {
-    public abstract boolean adA();
+    public abstract boolean adM();
   }
   
   static final class b
     implements Runnable
   {
-    final NativeCrash.c LDh;
-    final NativeCrash.a LDi;
-    Throwable LDk;
-    final String LDl;
-    final String LDm;
+    final NativeCrash.c Mal;
+    final NativeCrash.a Mam;
+    Throwable Mao;
+    final String Map;
+    final String Maq;
     final int mStatus;
-    boolean uYv;
+    boolean vkk;
     
     b(boolean paramBoolean, int paramInt, String paramString1, String paramString2)
     {
-      AppMethodBeat.i(186405);
-      this.uYv = false;
-      this.LDk = null;
+      AppMethodBeat.i(194920);
+      this.vkk = false;
+      this.Mao = null;
       if (paramBoolean) {
-        this.LDh = null;
+        this.Mal = null;
       }
-      for (this.LDi = NativeCrash.fSz();; this.LDi = null)
+      for (this.Mam = NativeCrash.fWZ();; this.Mam = null)
       {
         this.mStatus = paramInt;
-        this.LDl = paramString1;
-        this.LDm = paramString2;
-        AppMethodBeat.o(186405);
+        this.Map = paramString1;
+        this.Maq = paramString2;
+        AppMethodBeat.o(194920);
         return;
-        this.LDh = NativeCrash.fSy();
+        this.Mal = NativeCrash.fWY();
       }
     }
     
     final boolean hZ()
     {
-      AppMethodBeat.i(186406);
-      if ((this.LDh == null) && (this.LDi == null))
+      AppMethodBeat.i(194921);
+      if ((this.Mal == null) && (this.Mam == null))
       {
-        AppMethodBeat.o(186406);
+        AppMethodBeat.o(194921);
         return false;
       }
       Thread localThread = new Thread(this, "NativeCrash Dump Callback");
       localThread.start();
       localThread.join(5000L);
-      boolean bool = this.uYv;
-      AppMethodBeat.o(186406);
+      boolean bool = this.vkk;
+      AppMethodBeat.o(194921);
       return bool;
     }
     
     public final void run()
     {
-      AppMethodBeat.i(186407);
+      AppMethodBeat.i(194922);
       try
       {
-        if (this.LDi != null)
+        if (this.Mam != null)
         {
-          this.uYv = this.LDi.adA();
-          AppMethodBeat.o(186407);
+          this.vkk = this.Mam.adM();
+          AppMethodBeat.o(194922);
           return;
         }
-        if (this.LDh != null)
+        if (this.Mal != null)
         {
-          this.uYv = this.LDh.onCrashDumped(this.mStatus, this.LDl, this.LDm);
-          AppMethodBeat.o(186407);
+          this.vkk = this.Mal.onCrashDumped(this.mStatus, this.Map, this.Maq);
+          AppMethodBeat.o(194922);
           return;
         }
       }
       catch (Throwable localThrowable)
       {
-        this.LDk = localThrowable;
-        AppMethodBeat.o(186407);
+        this.Mao = localThrowable;
+        AppMethodBeat.o(194922);
         return;
       }
-      this.uYv = false;
-      AppMethodBeat.o(186407);
+      this.vkk = false;
+      AppMethodBeat.o(194922);
     }
   }
   

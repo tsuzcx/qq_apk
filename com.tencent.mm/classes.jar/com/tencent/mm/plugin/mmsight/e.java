@@ -1,8 +1,8 @@
 package com.tencent.mm.plugin.mmsight;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.uo;
-import com.tencent.mm.model.ax;
+import com.tencent.mm.g.a.us;
+import com.tencent.mm.model.az;
 import com.tencent.mm.modelvideo.o;
 import com.tencent.mm.modelvideo.y.a;
 import com.tencent.mm.plugin.mmsight.model.a.k;
@@ -13,18 +13,18 @@ import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
 
 public class e
-  implements ax
+  implements az
 {
-  private n vMN;
-  private c vMO;
-  private c vMP;
+  private n vYQ;
+  private c vYR;
+  private c vYS;
   
   public e()
   {
     AppMethodBeat.i(89317);
-    this.vMN = new n();
-    this.vMO = new c() {};
-    this.vMP = new e.2(this);
+    this.vYQ = new n();
+    this.vYR = new c() {};
+    this.vYS = new e.2(this);
     AppMethodBeat.o(89317);
   }
   
@@ -38,19 +38,19 @@ public class e
   public void onAccountPostReset(boolean paramBoolean)
   {
     AppMethodBeat.i(89318);
-    o.aMO().a(this.vMN);
-    a.IbL.b(this.vMP);
-    a.IbL.c(this.vMO);
+    o.aNm().a(this.vYQ);
+    a.IvT.b(this.vYS);
+    a.IvT.c(this.vYR);
     AppMethodBeat.o(89318);
   }
   
   public void onAccountRelease()
   {
     AppMethodBeat.i(89319);
-    o.aMO().b(this.vMN);
-    a.IbL.d(this.vMP);
-    k.vQc.ayw();
-    a.IbL.d(this.vMO);
+    o.aNm().b(this.vYQ);
+    a.IvT.d(this.vYS);
+    k.wcg.ayL();
+    a.IvT.d(this.vYR);
     AppMethodBeat.o(89319);
   }
   

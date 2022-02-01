@@ -12,7 +12,7 @@ final class SnsStrangerCommentDetailUI$4
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
     AppMethodBeat.i(99142);
-    this.Ajl.finish();
+    this.AAw.finish();
     AppMethodBeat.o(99142);
     return true;
   }

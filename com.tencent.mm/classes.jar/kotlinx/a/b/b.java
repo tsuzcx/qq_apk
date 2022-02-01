@@ -11,27 +11,27 @@ import kotlinx.a.h.a;
 import kotlinx.a.n;
 import kotlinx.a.t;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/serialization/internal/AbstractPolymorphicSerializer;", "T", "", "Lkotlinx/serialization/KSerializer;", "()V", "baseClass", "Lkotlin/reflect/KClass;", "getBaseClass", "()Lkotlin/reflect/KClass;", "decodeSequentially", "compositeDecoder", "Lkotlinx/serialization/CompositeDecoder;", "(Lkotlinx/serialization/CompositeDecoder;)Ljava/lang/Object;", "deserialize", "decoder", "Lkotlinx/serialization/Decoder;", "(Lkotlinx/serialization/Decoder;)Ljava/lang/Object;", "findPolymorphicSerializer", "klassName", "", "encoder", "Lkotlinx/serialization/Encoder;", "value", "(Lkotlinx/serialization/Encoder;Ljava/lang/Object;)Lkotlinx/serialization/KSerializer;", "serialize", "", "(Lkotlinx/serialization/Encoder;Ljava/lang/Object;)V", "kotlinx-serialization-runtime"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/serialization/internal/AbstractPolymorphicSerializer;", "T", "", "Lkotlinx/serialization/KSerializer;", "()V", "baseClass", "Lkotlin/reflect/KClass;", "getBaseClass", "()Lkotlin/reflect/KClass;", "decodeSequentially", "compositeDecoder", "Lkotlinx/serialization/CompositeDecoder;", "(Lkotlinx/serialization/CompositeDecoder;)Ljava/lang/Object;", "deserialize", "decoder", "Lkotlinx/serialization/Decoder;", "(Lkotlinx/serialization/Decoder;)Ljava/lang/Object;", "findPolymorphicSerializer", "klassName", "", "encoder", "Lkotlinx/serialization/Encoder;", "value", "(Lkotlinx/serialization/Encoder;Ljava/lang/Object;)Lkotlinx/serialization/KSerializer;", "serialize", "", "(Lkotlinx/serialization/Encoder;Ljava/lang/Object;)V", "kotlinx-serialization-runtime"})
 public abstract class b<T>
   implements h<T>
 {
   public final T a(kotlinx.a.c paramc)
   {
     p.h(paramc, "decoder");
-    Object localObject2 = eLj();
+    Object localObject2 = eOR();
     a locala = paramc.a((n)localObject2, new h[0]);
     Object localObject1 = null;
     paramc = null;
     int i;
     for (;;)
     {
-      i = locala.b(eLj());
+      i = locala.b(eOR());
       if (i == -1) {
         break label170;
       }
       if (i == 0)
       {
-        paramc = locala.i(eLj(), i);
+        paramc = locala.i(eOR(), i);
       }
       else
       {
@@ -42,7 +42,7 @@ public abstract class b<T>
           throw ((Throwable)new IllegalArgumentException("Cannot read polymorphic value before its type token".toString()));
         }
         localObject1 = a(locala, paramc);
-        localObject1 = locala.a(eLj(), i, (f)localObject1);
+        localObject1 = locala.a(eOR(), i, (f)localObject1);
       }
     }
     localObject2 = new StringBuilder("Invalid index in polymorphic deserialization of ");
@@ -70,10 +70,10 @@ public abstract class b<T>
   {
     p.h(parama, "decoder");
     p.h(paramString, "klassName");
-    parama = parama.gwB().a(gwP(), paramString);
+    parama = parama.gBd().a(gBr(), paramString);
     if (parama == null)
     {
-      c.a(paramString, gwP());
+      c.a(paramString, gBr());
       throw null;
     }
     return parama;
@@ -84,10 +84,10 @@ public abstract class b<T>
     p.h(paramg, "encoder");
     p.h(paramT, "value");
     h localh = b(paramg, paramT);
-    n localn1 = eLj();
+    n localn1 = eOR();
     paramg = paramg.b(localn1, new h[0]);
-    paramg.a(eLj(), localh.eLj().gwQ());
-    n localn2 = eLj();
+    paramg.a(eOR(), localh.eOR().gBs());
+    n localn2 = eOR();
     if (localh == null) {
       throw new d.v("null cannot be cast to non-null type kotlinx.serialization.KSerializer<T>");
     }
@@ -99,11 +99,11 @@ public abstract class b<T>
   {
     p.h(paramg, "encoder");
     p.h(paramT, "value");
-    paramg = paramg.gwB().a(gwP(), paramT);
+    paramg = paramg.gBd().a(gBr(), paramT);
     if (paramg == null)
     {
       paramg = z.bp(paramT.getClass());
-      paramT = gwP();
+      paramT = gBr();
       p.h(paramg, "subClass");
       p.h(paramT, "baseClass");
       c.a(paramg.toString(), paramT);
@@ -112,7 +112,7 @@ public abstract class b<T>
     return paramg;
   }
   
-  public abstract d.l.b<T> gwP();
+  public abstract d.l.b<T> gBr();
 }
 
 

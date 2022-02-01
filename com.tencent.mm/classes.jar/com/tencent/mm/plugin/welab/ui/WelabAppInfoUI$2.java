@@ -12,14 +12,14 @@ final class WelabAppInfoUI$2
   public final void onStatusChange(boolean paramBoolean)
   {
     AppMethodBeat.i(146271);
-    if (WelabAppInfoUI.a(this.Eyg).field_Switch == 2)
+    if (WelabAppInfoUI.a(this.EQC).field_Switch == 2)
     {
-      WelabAppInfoUI.a(this.Eyg).field_Switch = 1;
+      WelabAppInfoUI.a(this.EQC).field_Switch = 1;
       AppMethodBeat.o(146271);
       return;
     }
-    if (WelabAppInfoUI.a(this.Eyg).field_Switch == 1) {
-      WelabAppInfoUI.a(this.Eyg).field_Switch = 2;
+    if (WelabAppInfoUI.a(this.EQC).field_Switch == 1) {
+      WelabAppInfoUI.a(this.EQC).field_Switch = 2;
     }
     AppMethodBeat.o(146271);
   }

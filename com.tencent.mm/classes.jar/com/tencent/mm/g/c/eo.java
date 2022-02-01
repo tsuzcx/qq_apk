@@ -2,41 +2,41 @@ package com.tencent.mm.g.c;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import com.tencent.mm.protocal.protobuf.dnf;
+import com.tencent.mm.protocal.protobuf.doc;
 import com.tencent.mm.sdk.e.c;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.io.IOException;
 
 public abstract class eo
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eEs;
-  private static final int eFw;
-  private static final int eHT;
-  private static final int eKz = "extInfo".hashCode();
-  private static final int eST = "state".hashCode();
-  private static final int fcW;
-  private static final int fmD;
-  private static final int fmG;
-  private static final int fmK;
-  private static final int fmL;
-  private static final int fmM;
-  private static final int fmX = "uniqueId".hashCode();
-  private static final int fmY;
-  private static final int fmZ;
-  private static final int fna;
-  private static final int fnb;
-  private static final int fnc;
-  private static final int fnd;
-  private static final int fne = "dynamicPath".hashCode();
+  private static final int eGb;
+  private static final int eHf;
+  private static final int eJC;
+  private static final int eMi = "extInfo".hashCode();
+  private static final int eUE = "state".hashCode();
+  private static final int feO;
+  private static final int foD;
+  private static final int foG;
+  private static final int foK;
+  private static final int foL;
+  private static final int foM;
+  private static final int foX = "uniqueId".hashCode();
+  private static final int foY;
+  private static final int foZ;
+  private static final int fpa;
+  private static final int fpb;
+  private static final int fpc;
+  private static final int fpd;
+  private static final int fpe = "dynamicPath".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eDV = true;
-  private boolean eFs = true;
-  private boolean eHQ = true;
-  private boolean eKl = true;
-  private boolean eSh = true;
-  private boolean fcL = true;
+  private boolean eFE = true;
+  private boolean eHb = true;
+  private boolean eJz = true;
+  private boolean eLU = true;
+  private boolean eTS = true;
+  private boolean feC = true;
   public long field_beginShowTime;
   public long field_disappearTime;
   public String field_dynamicPath;
@@ -47,7 +47,7 @@ public abstract class eo
   public int field_maxClientVersion;
   public int field_minClientVersion;
   public long field_overdueTime;
-  public dnf field_parents;
+  public doc field_parents;
   public int field_path;
   public int field_priority;
   public int field_showType;
@@ -56,37 +56,37 @@ public abstract class eo
   public int field_tipType;
   public String field_title;
   public String field_uniqueId;
-  private boolean fmA = true;
-  private boolean fmP = true;
-  private boolean fmQ = true;
-  private boolean fmR = true;
-  private boolean fmS = true;
-  private boolean fmT = true;
-  private boolean fmU = true;
-  private boolean fmV = true;
-  private boolean fmW = true;
-  private boolean fmr = true;
-  private boolean fmu = true;
-  private boolean fmy = true;
-  private boolean fmz = true;
+  private boolean foA = true;
+  private boolean foP = true;
+  private boolean foQ = true;
+  private boolean foR = true;
+  private boolean foS = true;
+  private boolean foT = true;
+  private boolean foU = true;
+  private boolean foV = true;
+  private boolean foW = true;
+  private boolean jdField_for = true;
+  private boolean fou = true;
+  private boolean foy = true;
+  private boolean foz = true;
   
   static
   {
-    eFw = "path".hashCode();
-    fcW = "showType".hashCode();
-    eHT = "title".hashCode();
-    fmY = "icon_url".hashCode();
-    fmZ = "parents".hashCode();
-    fmD = "tipId".hashCode();
-    fna = "priority".hashCode();
-    fmG = "tipType".hashCode();
-    fmK = "beginShowTime".hashCode();
-    eEs = "exposureTime".hashCode();
-    fmM = "overdueTime".hashCode();
-    fmL = "disappearTime".hashCode();
-    fnb = "exposureDisappearTime".hashCode();
-    fnc = "minClientVersion".hashCode();
-    fnd = "maxClientVersion".hashCode();
+    eHf = "path".hashCode();
+    feO = "showType".hashCode();
+    eJC = "title".hashCode();
+    foY = "icon_url".hashCode();
+    foZ = "parents".hashCode();
+    foD = "tipId".hashCode();
+    fpa = "priority".hashCode();
+    foG = "tipType".hashCode();
+    foK = "beginShowTime".hashCode();
+    eGb = "exposureTime".hashCode();
+    foM = "overdueTime".hashCode();
+    foL = "disappearTime".hashCode();
+    fpb = "exposureDisappearTime".hashCode();
+    fpc = "minClientVersion".hashCode();
+    fpd = "maxClientVersion".hashCode();
   }
   
   public void convertFrom(Cursor paramCursor)
@@ -102,7 +102,7 @@ public abstract class eo
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (fmX != k) {
+      if (foX != k) {
         break label60;
       }
       this.field_uniqueId = paramCursor.getString(i);
@@ -113,52 +113,52 @@ public abstract class eo
       break label20;
       break;
       label60:
-      if (eFw == k) {
+      if (eHf == k) {
         this.field_path = paramCursor.getInt(i);
-      } else if (fcW == k) {
+      } else if (feO == k) {
         this.field_showType = paramCursor.getInt(i);
-      } else if (eHT == k) {
+      } else if (eJC == k) {
         this.field_title = paramCursor.getString(i);
-      } else if (fmY == k) {
+      } else if (foY == k) {
         this.field_icon_url = paramCursor.getString(i);
-      } else if (fmZ == k) {
+      } else if (foZ == k) {
         try
         {
           byte[] arrayOfByte = paramCursor.getBlob(i);
           if ((arrayOfByte == null) || (arrayOfByte.length <= 0)) {
             continue;
           }
-          this.field_parents = ((dnf)new dnf().parseFrom(arrayOfByte));
+          this.field_parents = ((doc)new doc().parseFrom(arrayOfByte));
         }
         catch (IOException localIOException)
         {
-          ad.e("MicroMsg.SDK.BaseNewTipsInfo2", localIOException.getMessage());
+          ae.e("MicroMsg.SDK.BaseNewTipsInfo2", localIOException.getMessage());
         }
-      } else if (fmD == k) {
+      } else if (foD == k) {
         this.field_tipId = paramCursor.getInt(i);
-      } else if (fna == k) {
+      } else if (fpa == k) {
         this.field_priority = paramCursor.getInt(i);
-      } else if (fmG == k) {
+      } else if (foG == k) {
         this.field_tipType = paramCursor.getInt(i);
-      } else if (fmK == k) {
+      } else if (foK == k) {
         this.field_beginShowTime = paramCursor.getLong(i);
-      } else if (eEs == k) {
+      } else if (eGb == k) {
         this.field_exposureTime = paramCursor.getLong(i);
-      } else if (fmM == k) {
+      } else if (foM == k) {
         this.field_overdueTime = paramCursor.getLong(i);
-      } else if (fmL == k) {
+      } else if (foL == k) {
         this.field_disappearTime = paramCursor.getLong(i);
-      } else if (fnb == k) {
+      } else if (fpb == k) {
         this.field_exposureDisappearTime = paramCursor.getLong(i);
-      } else if (fnc == k) {
+      } else if (fpc == k) {
         this.field_minClientVersion = paramCursor.getInt(i);
-      } else if (fnd == k) {
+      } else if (fpd == k) {
         this.field_maxClientVersion = paramCursor.getInt(i);
-      } else if (eKz == k) {
+      } else if (eMi == k) {
         this.field_extInfo = paramCursor.getString(i);
-      } else if (eST == k) {
+      } else if (eUE == k) {
         this.field_state = paramCursor.getInt(i);
-      } else if (fne == k) {
+      } else if (fpe == k) {
         this.field_dynamicPath = paramCursor.getString(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
@@ -169,62 +169,62 @@ public abstract class eo
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.fmP) {
+    if (this.foP) {
       localContentValues.put("uniqueId", this.field_uniqueId);
     }
-    if (this.eFs) {
+    if (this.eHb) {
       localContentValues.put("path", Integer.valueOf(this.field_path));
     }
-    if (this.fcL) {
+    if (this.feC) {
       localContentValues.put("showType", Integer.valueOf(this.field_showType));
     }
-    if (this.eHQ) {
+    if (this.eJz) {
       localContentValues.put("title", this.field_title);
     }
-    if (this.fmQ) {
+    if (this.foQ) {
       localContentValues.put("icon_url", this.field_icon_url);
     }
-    if ((this.fmR) && (this.field_parents != null)) {}
+    if ((this.foR) && (this.field_parents != null)) {}
     try
     {
       localContentValues.put("parents", this.field_parents.toByteArray());
-      if (this.fmr) {
+      if (this.jdField_for) {
         localContentValues.put("tipId", Integer.valueOf(this.field_tipId));
       }
-      if (this.fmS) {
+      if (this.foS) {
         localContentValues.put("priority", Integer.valueOf(this.field_priority));
       }
-      if (this.fmu) {
+      if (this.fou) {
         localContentValues.put("tipType", Integer.valueOf(this.field_tipType));
       }
-      if (this.fmy) {
+      if (this.foy) {
         localContentValues.put("beginShowTime", Long.valueOf(this.field_beginShowTime));
       }
-      if (this.eDV) {
+      if (this.eFE) {
         localContentValues.put("exposureTime", Long.valueOf(this.field_exposureTime));
       }
-      if (this.fmA) {
+      if (this.foA) {
         localContentValues.put("overdueTime", Long.valueOf(this.field_overdueTime));
       }
-      if (this.fmz) {
+      if (this.foz) {
         localContentValues.put("disappearTime", Long.valueOf(this.field_disappearTime));
       }
-      if (this.fmT) {
+      if (this.foT) {
         localContentValues.put("exposureDisappearTime", Long.valueOf(this.field_exposureDisappearTime));
       }
-      if (this.fmU) {
+      if (this.foU) {
         localContentValues.put("minClientVersion", Integer.valueOf(this.field_minClientVersion));
       }
-      if (this.fmV) {
+      if (this.foV) {
         localContentValues.put("maxClientVersion", Integer.valueOf(this.field_maxClientVersion));
       }
-      if (this.eKl) {
+      if (this.eLU) {
         localContentValues.put("extInfo", this.field_extInfo);
       }
-      if (this.eSh) {
+      if (this.eTS) {
         localContentValues.put("state", Integer.valueOf(this.field_state));
       }
-      if (this.fmW) {
+      if (this.foW) {
         localContentValues.put("dynamicPath", this.field_dynamicPath);
       }
       if (this.systemRowid > 0L) {
@@ -236,14 +236,14 @@ public abstract class eo
     {
       for (;;)
       {
-        ad.e("MicroMsg.SDK.BaseNewTipsInfo2", localIOException.getMessage());
+        ae.e("MicroMsg.SDK.BaseNewTipsInfo2", localIOException.getMessage());
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.c.eo
  * JD-Core Version:    0.7.0.1
  */

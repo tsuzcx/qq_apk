@@ -3,16 +3,20 @@ package com.tencent.mm.plugin.appbrand.jsapi.r;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
+import android.text.TextUtils.TruncateAt;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 import com.tencent.luggage.h.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.a;
 import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.plugin.appbrand.page.aa;
-import com.tencent.mm.plugin.appbrand.page.aw;
-import com.tencent.mm.plugin.appbrand.page.bc;
-import com.tencent.mm.plugin.appbrand.q;
-import com.tencent.mm.plugin.appbrand.z.g;
+import com.tencent.mm.plugin.appbrand.page.av;
+import com.tencent.mm.plugin.appbrand.page.bb;
+import com.tencent.mm.plugin.appbrand.page.z;
+import com.tencent.mm.plugin.appbrand.r;
+import com.tencent.mm.plugin.appbrand.y.g;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.base.l;
 import com.tencent.mm.ui.base.n.d;
 import com.tencent.mm.ui.base.n.e;
@@ -25,20 +29,20 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 public final class b
-  extends a<q>
+  extends com.tencent.mm.plugin.appbrand.jsapi.a<r>
 {
   private static final int CTRL_INDEX = 107;
   private static final String NAME = "showActionSheet";
-  public static a leC;
+  public static a lin;
   
   public static abstract interface a
   {
-    public abstract void tm(int paramInt);
+    public abstract void tp(int paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.r.b
  * JD-Core Version:    0.7.0.1
  */

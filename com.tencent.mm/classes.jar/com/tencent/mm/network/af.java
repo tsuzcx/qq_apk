@@ -4,33 +4,33 @@ import android.os.Build.VERSION;
 import android.os.RemoteCallbackList;
 import android.os.RemoteException;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.av;
-import com.tencent.mm.sdk.platformtools.av.a;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aw;
+import com.tencent.mm.sdk.platformtools.aw.a;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public final class af
   extends i.a
 {
-  private av hMj;
-  private int iGw;
-  private long iGx;
-  private int iGy;
-  private final RemoteCallbackList<n> iGz;
+  private aw hPc;
+  private int iJp;
+  private long iJq;
+  private int iJr;
+  private final RemoteCallbackList<n> iJs;
   
   public af()
   {
     AppMethodBeat.i(132934);
-    this.iGw = 4;
-    this.iGy = 0;
-    this.iGz = new RemoteCallbackList();
-    this.hMj = new av(new av.a()
+    this.iJp = 4;
+    this.iJr = 0;
+    this.iJs = new RemoteCallbackList();
+    this.hPc = new aw(new aw.a()
     {
       public final boolean onTimerExpired()
       {
         AppMethodBeat.i(132933);
         int i = af.b(af.this).beginBroadcast();
-        ad.i("MicroMsg.NetworkEvent", "listeners ct : %d", new Object[] { Integer.valueOf(i) });
+        ae.i("MicroMsg.NetworkEvent", "listeners ct : %d", new Object[] { Integer.valueOf(i) });
         i -= 1;
         for (;;)
         {
@@ -46,7 +46,7 @@ public final class af
             {
               for (;;)
               {
-                ad.e("MicroMsg.NetworkEvent", "exception:%s", new Object[] { bt.n(localRemoteException) });
+                ae.e("MicroMsg.NetworkEvent", "exception:%s", new Object[] { bu.o(localRemoteException) });
               }
             }
           }
@@ -59,9 +59,9 @@ public final class af
     AppMethodBeat.o(132934);
   }
   
-  private boolean qG(int paramInt)
+  private boolean qJ(int paramInt)
   {
-    if (paramInt == this.iGw) {}
+    if (paramInt == this.iJp) {}
     do
     {
       do
@@ -70,56 +70,56 @@ public final class af
         if (3 != paramInt) {
           break;
         }
-      } while (this.iGw != 2);
-      this.iGw = paramInt;
+      } while (this.iJp != 2);
+      this.iJp = paramInt;
       return true;
       if (2 != paramInt) {
         break;
       }
-    } while ((this.iGw == 0) || (this.iGw == 1));
-    this.iGy += 1;
-    if (this.iGy > 0)
+    } while ((this.iJp == 0) || (this.iJp == 1));
+    this.iJr += 1;
+    if (this.iJr > 0)
     {
-      this.iGw = 2;
+      this.iJp = 2;
       return true;
       if (4 == paramInt)
       {
-        this.iGy = 0;
-        this.iGw = 4;
+        this.iJr = 0;
+        this.iJp = 4;
         return true;
       }
       if ((Build.VERSION.SDK_INT >= 26) && (paramInt == -1))
       {
-        this.iGw = 0;
+        this.iJp = 0;
         return true;
       }
     }
-    this.iGw = paramInt;
+    this.iJp = paramInt;
     return true;
   }
   
-  public final int aOK()
+  public final int aPh()
   {
     AppMethodBeat.i(132935);
-    if (0L > bt.rM(this.iGx)) {}
-    for (int i = 5;; i = this.iGw)
+    if (0L > bu.rZ(this.iJq)) {}
+    for (int i = 5;; i = this.iJp)
     {
-      ad.i("MicroMsg.NetworkEvent", "getNowStatus = %d", new Object[] { Integer.valueOf(i) });
+      ae.i("MicroMsg.NetworkEvent", "getNowStatus = %d", new Object[] { Integer.valueOf(i) });
       AppMethodBeat.o(132935);
       return i;
     }
   }
   
-  public final void aOL()
+  public final void aPi()
   {
     AppMethodBeat.i(132938);
-    this.iGz.kill();
+    this.iJs.kill();
     AppMethodBeat.o(132938);
   }
   
-  public final long aOM()
+  public final long aPj()
   {
-    return this.iGx;
+    return this.iJq;
   }
   
   public final boolean c(n paramn)
@@ -127,7 +127,7 @@ public final class af
     AppMethodBeat.i(132936);
     try
     {
-      this.iGz.register(paramn);
+      this.iJs.register(paramn);
       AppMethodBeat.o(132936);
       return true;
     }
@@ -135,8 +135,8 @@ public final class af
     {
       for (;;)
       {
-        ad.e("MicroMsg.NetworkEvent", "addListener %s", new Object[] { paramn });
-        ad.e("MicroMsg.NetworkEvent", "exception:%s", new Object[] { bt.n(paramn) });
+        ae.e("MicroMsg.NetworkEvent", "addListener %s", new Object[] { paramn });
+        ae.e("MicroMsg.NetworkEvent", "exception:%s", new Object[] { bu.o(paramn) });
       }
     }
   }
@@ -147,36 +147,36 @@ public final class af
     AppMethodBeat.i(132937);
     try
     {
-      boolean bool2 = this.iGz.unregister(paramn);
+      boolean bool2 = this.iJs.unregister(paramn);
       bool1 = bool2;
     }
     catch (Exception paramn)
     {
       for (;;)
       {
-        ad.e("MicroMsg.NetworkEvent", "removeListener %s", new Object[] { paramn });
-        ad.e("MicroMsg.NetworkEvent", "exception:%s", new Object[] { bt.n(paramn) });
+        ae.e("MicroMsg.NetworkEvent", "removeListener %s", new Object[] { paramn });
+        ae.e("MicroMsg.NetworkEvent", "exception:%s", new Object[] { bu.o(paramn) });
       }
     }
     AppMethodBeat.o(132937);
     return bool1;
   }
   
-  public final void qH(int paramInt)
+  public final void qK(int paramInt)
   {
     AppMethodBeat.i(132939);
-    ad.i("MicroMsg.NetworkEvent", "networkChange : %d", new Object[] { Integer.valueOf(paramInt) });
-    if (!qG(paramInt))
+    ae.i("MicroMsg.NetworkEvent", "networkChange : %d", new Object[] { Integer.valueOf(paramInt) });
+    if (!qJ(paramInt))
     {
       AppMethodBeat.o(132939);
       return;
     }
-    if ((this.iGw != 0) && (this.iGw != 4) && (this.iGw != 6))
+    if ((this.iJp != 0) && (this.iJp != 4) && (this.iJp != 6))
     {
       AppMethodBeat.o(132939);
       return;
     }
-    this.hMj.az(1000L, 1000L);
+    this.hPc.ay(1000L, 1000L);
     AppMethodBeat.o(132939);
   }
 }

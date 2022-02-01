@@ -2,79 +2,80 @@ package com.tencent.mm.plugin.websearch.api;
 
 import android.os.Build.VERSION;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.f;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.f;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.aag;
-import com.tencent.mm.protocal.protobuf.eej;
-import com.tencent.mm.protocal.protobuf.eek;
+import com.tencent.mm.protocal.protobuf.aaj;
+import com.tencent.mm.protocal.protobuf.ega;
+import com.tencent.mm.protocal.protobuf.egb;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.LinkedList;
 
 public final class v
   extends a
   implements k
 {
-  private s DBv;
+  private s DTs;
   private f callback;
   private b rr;
   
   public v(s params)
   {
     AppMethodBeat.i(117630);
-    this.DBv = params;
-    this.tQe = params.dld;
+    this.DTs = params;
+    this.uaV = params.dmf;
     this.fq = params.offset;
     this.mScene = params.scene;
-    this.DAT = params.dCT;
-    this.DBv = params;
-    this.DAU = params.yjJ;
+    this.DSQ = params.dDY;
+    this.DTs = params;
+    this.DSR = params.yzF;
     Object localObject1 = new b.a();
     ((b.a)localObject1).funcId = getType();
     ((b.a)localObject1).uri = "/cgi-bin/mmsearch-bin/mmwebrecommend";
-    ((b.a)localObject1).hNM = new eej();
-    ((b.a)localObject1).hNN = new eek();
-    this.rr = ((b.a)localObject1).aDC();
-    localObject1 = (eej)this.rr.hNK.hNQ;
-    ((eej)localObject1).FMu = params.offset;
-    ((eej)localObject1).GDa = ad.We(1);
-    ((eej)localObject1).Hmr = params.DAZ;
-    ((eej)localObject1).Gsr = params.dld;
-    ((eej)localObject1).GRt = ad.bNG();
-    ((eej)localObject1).Scene = params.scene;
-    ((eej)localObject1).FMt = params.pLL;
-    ((eej)localObject1).Hmv = params.dDa;
-    ((eej)localObject1).HPA = params.DBf;
-    ((eej)localObject1).HAv = params.cSc;
-    ((eej)localObject1).HPC = params.DBr;
-    Object localObject2 = new aag();
-    ((aag)localObject2).key = "client_system_version";
-    ((aag)localObject2).FZe = Build.VERSION.SDK_INT;
-    params.DBj.add(localObject2);
-    ((eej)localObject1).HOp = params.DBj;
-    ((eej)localObject1).HPB = params.sessionId;
-    this.dCX = params.dwW;
+    ((b.a)localObject1).hQF = new ega();
+    ((b.a)localObject1).hQG = new egb();
+    this.rr = ((b.a)localObject1).aDS();
+    localObject1 = (ega)this.rr.hQD.hQJ;
+    ((ega)localObject1).GeT = params.offset;
+    ((ega)localObject1).GWA = ad.WL(1);
+    ((ega)localObject1).HFR = params.DSW;
+    ((ega)localObject1).GLP = params.dmf;
+    ((ega)localObject1).HkU = ad.bOD();
+    ((ega)localObject1).Scene = params.scene;
+    ((ega)localObject1).GeS = params.pSq;
+    ((ega)localObject1).HFV = params.dEf;
+    ((ega)localObject1).IjH = params.DTc;
+    ((ega)localObject1).HUi = params.cSM;
+    ((ega)localObject1).IjJ = params.DTo;
+    Object localObject2 = new aaj();
+    ((aaj)localObject2).key = "client_system_version";
+    ((aaj)localObject2).GrE = Build.VERSION.SDK_INT;
+    params.DTg.add(localObject2);
+    ((ega)localObject1).Iiw = params.DTg;
+    ((ega)localObject1).IjI = params.sessionId;
+    this.dEc = params.dyb;
     int i;
     String str;
     int j;
-    if (params.DBt)
+    if (params.DTq)
     {
       i = params.scene;
       localObject1 = params.sessionId;
-      localObject2 = params.dCW;
-      str = params.pLL;
+      localObject2 = params.dEb;
+      str = params.pSq;
       j = params.offset;
-      if (params.DAZ != 1) {
+      if (params.DSW != 1) {
         break label372;
       }
     }
     for (;;)
     {
-      ac.a(i, (String)localObject1, (String)localObject2, str, j, bool, params.dwW, params.dld, params.businessType, params.DBp);
+      ac.a(i, (String)localObject1, (String)localObject2, str, j, bool, params.dyb, params.dmf, params.businessType, params.DTm);
       AppMethodBeat.o(117630);
       return;
       label372:
@@ -82,27 +83,27 @@ public final class v
     }
   }
   
-  private eek eLW()
+  private egb ePF()
   {
-    return (eek)this.rr.hNL.hNQ;
+    return (egb)this.rr.hQE.hQJ;
   }
   
   public final int doScene(e parame, f paramf)
   {
     AppMethodBeat.i(117631);
-    am.iR(this.mScene, 2);
+    am.iV(this.mScene, 2);
     this.callback = paramf;
     int i = dispatch(parame, this.rr, this);
     AppMethodBeat.o(117631);
     return i;
   }
   
-  public final String eLN()
+  public final String ePw()
   {
     AppMethodBeat.i(117633);
-    if (eLW() != null)
+    if (ePF() != null)
     {
-      String str = eLW().GDb;
+      String str = ePF().GWB;
       AppMethodBeat.o(117633);
       return str;
     }
@@ -110,12 +111,12 @@ public final class v
     return "";
   }
   
-  public final int eLO()
+  public final int ePx()
   {
     AppMethodBeat.i(117634);
-    if (eLW() != null)
+    if (ePF() != null)
     {
-      int i = eLW().HPG;
+      int i = ePF().IjN;
       AppMethodBeat.o(117634);
       return i;
     }
@@ -131,30 +132,30 @@ public final class v
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(117632);
-    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.FTS.NetSceneWebRecommend", "netId %d | errType %d | errCode %d | errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    ae.i("MicroMsg.FTS.NetSceneWebRecommend", "netId %d | errType %d | errCode %d | errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
     boolean bool1;
     boolean bool2;
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
       bool1 = true;
-      if (this.DBv.DBt)
+      if (this.DTs.DTq)
       {
-        paramInt1 = this.DBv.scene;
-        paramq = this.DBv.sessionId;
-        paramArrayOfByte = this.DBv.dCW;
-        String str = this.DBv.pLL;
-        int i = this.DBv.offset;
-        if (this.DBv.DAZ != 1) {
+        paramInt1 = this.DTs.scene;
+        paramq = this.DTs.sessionId;
+        paramArrayOfByte = this.DTs.dEb;
+        String str = this.DTs.pSq;
+        int i = this.DTs.offset;
+        if (this.DTs.DSW != 1) {
           break label208;
         }
         bool2 = true;
         label124:
-        ac.a(paramInt1, paramq, paramArrayOfByte, str, i, bool2, this.DBv.dwW, bool1, this.DBv.dld, this.DBv.businessType, this.DBv.DBp);
+        ac.a(paramInt1, paramq, paramArrayOfByte, str, i, bool2, this.DTs.dyb, bool1, this.DTs.dmf, this.DTs.businessType, this.DTs.DTm);
       }
       if (paramInt3 != -1) {
         break label214;
       }
-      am.iR(this.mScene, 4);
+      am.iV(this.mScene, 4);
     }
     for (;;)
     {
@@ -168,16 +169,16 @@ public final class v
       break label124;
       label214:
       if ((paramInt2 != 0) || (paramInt3 != 0)) {
-        am.iR(this.mScene, 8);
+        am.iV(this.mScene, 8);
       } else {
-        am.iR(this.mScene, 3);
+        am.iV(this.mScene, 3);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.websearch.api.v
  * JD-Core Version:    0.7.0.1
  */

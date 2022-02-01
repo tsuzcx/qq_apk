@@ -8,19 +8,19 @@ public abstract class fc
   extends c
 {
   public static final String[] INDEX_CREATE = { "CREATE INDEX IF NOT EXISTS PredownloadBlockCgiRequestAppIDIndex ON PredownloadBlockCgiRequest(appId)", "CREATE INDEX IF NOT EXISTS PredownloadBlockCgiRequestStartTimeIndex ON PredownloadBlockCgiRequest(startTime)", "CREATE INDEX IF NOT EXISTS PredownloadBlockCgiRequestEndTimeIndex ON PredownloadBlockCgiRequest(endTime)" };
-  private static final int eDo;
-  private static final int eDp;
-  private static final int eEU;
-  private static final int eFp = "username".hashCode();
-  private static final int eGy = "reportId".hashCode();
-  private static final int fol;
-  private static final int fom;
+  private static final int eEX;
+  private static final int eEY;
+  private static final int eGD;
+  private static final int eGY = "username".hashCode();
+  private static final int eIh = "reportId".hashCode();
+  private static final int fqm;
+  private static final int fqn;
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eDh = true;
-  private boolean eDi = true;
-  private boolean eED = true;
-  private boolean eFm = true;
-  private boolean eGt = true;
+  private boolean eEQ = true;
+  private boolean eER = true;
+  private boolean eGV = true;
+  private boolean eGm = true;
+  private boolean eIc = true;
   public String field_appId;
   public String field_cgiList;
   public long field_endTime;
@@ -28,16 +28,16 @@ public abstract class fc
   public String field_sceneList;
   public long field_startTime;
   public String field_username;
-  private boolean foj = true;
-  private boolean fok = true;
+  private boolean fqk = true;
+  private boolean fql = true;
   
   static
   {
-    eEU = "appId".hashCode();
-    eDo = "startTime".hashCode();
-    eDp = "endTime".hashCode();
-    fol = "sceneList".hashCode();
-    fom = "cgiList".hashCode();
+    eGD = "appId".hashCode();
+    eEX = "startTime".hashCode();
+    eEY = "endTime".hashCode();
+    fqm = "sceneList".hashCode();
+    fqn = "cgiList".hashCode();
   }
   
   public void convertFrom(Cursor paramCursor)
@@ -53,11 +53,11 @@ public abstract class fc
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eFp != k) {
+      if (eGY != k) {
         break label65;
       }
       this.field_username = paramCursor.getString(i);
-      this.eFm = true;
+      this.eGV = true;
     }
     for (;;)
     {
@@ -65,17 +65,17 @@ public abstract class fc
       break label20;
       break;
       label65:
-      if (eEU == k) {
+      if (eGD == k) {
         this.field_appId = paramCursor.getString(i);
-      } else if (eDo == k) {
+      } else if (eEX == k) {
         this.field_startTime = paramCursor.getLong(i);
-      } else if (eDp == k) {
+      } else if (eEY == k) {
         this.field_endTime = paramCursor.getLong(i);
-      } else if (fol == k) {
+      } else if (fqm == k) {
         this.field_sceneList = paramCursor.getString(i);
-      } else if (fom == k) {
+      } else if (fqn == k) {
         this.field_cgiList = paramCursor.getString(i);
-      } else if (eGy == k) {
+      } else if (eIh == k) {
         this.field_reportId = paramCursor.getInt(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
@@ -86,25 +86,25 @@ public abstract class fc
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eFm) {
+    if (this.eGV) {
       localContentValues.put("username", this.field_username);
     }
-    if (this.eED) {
+    if (this.eGm) {
       localContentValues.put("appId", this.field_appId);
     }
-    if (this.eDh) {
+    if (this.eEQ) {
       localContentValues.put("startTime", Long.valueOf(this.field_startTime));
     }
-    if (this.eDi) {
+    if (this.eER) {
       localContentValues.put("endTime", Long.valueOf(this.field_endTime));
     }
-    if (this.foj) {
+    if (this.fqk) {
       localContentValues.put("sceneList", this.field_sceneList);
     }
-    if (this.fok) {
+    if (this.fql) {
       localContentValues.put("cgiList", this.field_cgiList);
     }
-    if (this.eGt) {
+    if (this.eIc) {
       localContentValues.put("reportId", Integer.valueOf(this.field_reportId));
     }
     if (this.systemRowid > 0L) {

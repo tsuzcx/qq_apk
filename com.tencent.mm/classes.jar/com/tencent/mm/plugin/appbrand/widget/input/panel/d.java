@@ -6,8 +6,8 @@ public final class d
 {
   Context mContext;
   int mIndex;
-  c nia;
-  a niv;
+  a nnD;
+  c nni;
 }
 
 

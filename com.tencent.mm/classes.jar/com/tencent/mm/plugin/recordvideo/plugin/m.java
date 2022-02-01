@@ -18,50 +18,50 @@ import com.tencent.mm.ui.ao;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/recordvideo/plugin/EditPhotoPencilPlugin;", "Landroid/view/View$OnClickListener;", "Lcom/tencent/mm/plugin/recordvideo/plugin/IBaseRecordPlugin;", "viewGroup", "Landroid/view/ViewGroup;", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "(Landroid/view/ViewGroup;Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "editPhotoDoodlePlugin", "Lcom/tencent/mm/plugin/recordvideo/plugin/doodle/PhotoDoodlePlugin;", "isSelected", "", "getStatus", "()Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "setStatus", "(Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "view", "Landroid/widget/ImageView;", "getViewGroup", "()Landroid/view/ViewGroup;", "setViewGroup", "(Landroid/view/ViewGroup;)V", "checkDoodleStatus", "", "hideDooldeLayout", "hideMosaic", "hide", "onBackPress", "onClick", "v", "Landroid/view/View;", "reset", "setVisibility", "visibility", "", "plugin-recordvideo_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/recordvideo/plugin/EditPhotoPencilPlugin;", "Landroid/view/View$OnClickListener;", "Lcom/tencent/mm/plugin/recordvideo/plugin/IBaseRecordPlugin;", "viewGroup", "Landroid/view/ViewGroup;", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "(Landroid/view/ViewGroup;Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "editPhotoDoodlePlugin", "Lcom/tencent/mm/plugin/recordvideo/plugin/doodle/PhotoDoodlePlugin;", "isSelected", "", "getStatus", "()Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "setStatus", "(Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "view", "Landroid/widget/ImageView;", "getViewGroup", "()Landroid/view/ViewGroup;", "setViewGroup", "(Landroid/view/ViewGroup;)V", "checkDoodleStatus", "", "hideDooldeLayout", "hideMosaic", "hide", "onBackPress", "onClick", "v", "Landroid/view/View;", "reset", "setVisibility", "visibility", "", "plugin-recordvideo_release"})
 public final class m
   implements View.OnClickListener, t
 {
   private boolean isSelected;
-  private final ImageView rCL;
-  private d sQE;
-  public final PhotoDoodlePlugin xAS;
-  private ViewGroup xAT;
+  private final ImageView rKW;
+  private d tbP;
+  public final PhotoDoodlePlugin xQN;
+  private ViewGroup xQO;
   
   public m(ViewGroup paramViewGroup, d paramd)
   {
     AppMethodBeat.i(75562);
-    this.xAT = paramViewGroup;
-    this.sQE = paramd;
-    paramViewGroup = this.xAT.findViewById(2131299181);
+    this.xQO = paramViewGroup;
+    this.tbP = paramd;
+    paramViewGroup = this.xQO.findViewById(2131299181);
     p.g(paramViewGroup, "viewGroup.findViewById(R.id.doddle_layout)");
-    this.xAS = ((PhotoDoodlePlugin)paramViewGroup);
-    this.xAS.setStatus(this.sQE);
-    paramViewGroup = this.xAT.findViewById(2131299280);
+    this.xQN = ((PhotoDoodlePlugin)paramViewGroup);
+    this.xQN.setStatus(this.tbP);
+    paramViewGroup = this.xQO.findViewById(2131299280);
     p.g(paramViewGroup, "viewGroup.findViewById(R.id.editor_add_pencil)");
-    this.rCL = ((ImageView)paramViewGroup);
-    this.rCL.setImageDrawable(ao.k(this.rCL.getContext(), 2131690394, -1));
-    this.rCL.setOnClickListener((View.OnClickListener)this);
+    this.rKW = ((ImageView)paramViewGroup);
+    this.rKW.setImageDrawable(ao.k(this.rKW.getContext(), 2131690394, -1));
+    this.rKW.setOnClickListener((View.OnClickListener)this);
     AppMethodBeat.o(75562);
   }
   
-  public final boolean aoB()
+  public final boolean aoQ()
   {
     return false;
   }
   
-  public final void ayX() {}
+  public final void azm() {}
   
-  public final void dGx()
+  public final void dJO()
   {
     AppMethodBeat.i(75561);
     if (this.isSelected)
     {
-      this.xAS.setVisibility(0);
+      this.xQN.setVisibility(0);
       AppMethodBeat.o(75561);
       return;
     }
-    this.xAS.setVisibility(4);
+    this.xQN.setVisibility(4);
     AppMethodBeat.o(75561);
   }
   
@@ -77,7 +77,7 @@ public final class m
     AppMethodBeat.i(75559);
     b localb = new b();
     localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/recordvideo/plugin/EditPhotoPencilPlugin", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+    a.b("com/tencent/mm/plugin/recordvideo/plugin/EditPhotoPencilPlugin", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
     boolean bool;
     if (!this.isSelected)
     {
@@ -86,24 +86,24 @@ public final class m
       if (!this.isSelected) {
         break label141;
       }
-      paramView = c.xHa;
-      c.avN("KEY_CLICK_DOODLE_COUNT_INT");
-      paramView = c.xHa;
-      c.NM(7);
-      this.rCL.setImageDrawable(ao.k(this.rCL.getContext(), 2131690394, this.rCL.getResources().getColor(2131101171)));
-      d.b.a(this.sQE, d.c.xFc);
+      paramView = c.xWV;
+      c.axc("KEY_CLICK_DOODLE_COUNT_INT");
+      paramView = c.xWV;
+      c.Os(7);
+      this.rKW.setImageDrawable(ao.k(this.rKW.getContext(), 2131690394, this.rKW.getResources().getColor(2131101171)));
+      d.b.a(this.tbP, d.c.xUX);
     }
     for (;;)
     {
-      dGx();
+      dJO();
       a.a(this, "com/tencent/mm/plugin/recordvideo/plugin/EditPhotoPencilPlugin", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(75559);
       return;
       bool = false;
       break;
       label141:
-      d.b.a(this.sQE, d.c.xFg);
-      this.rCL.setImageDrawable(ao.k(this.rCL.getContext(), 2131690394, -1));
+      d.b.a(this.tbP, d.c.xVb);
+      this.rKW.setImageDrawable(ao.k(this.rKW.getContext(), 2131690394, -1));
     }
   }
   
@@ -113,11 +113,11 @@ public final class m
   
   public final void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    AppMethodBeat.i(200317);
+    AppMethodBeat.i(206578);
     p.h(paramArrayOfString, "permissions");
     p.h(paramArrayOfInt, "grantResults");
     t.a.a(paramArrayOfString, paramArrayOfInt);
-    AppMethodBeat.o(200317);
+    AppMethodBeat.o(206578);
   }
   
   public final void onResume() {}
@@ -128,22 +128,22 @@ public final class m
   {
     AppMethodBeat.i(75560);
     this.isSelected = false;
-    dGx();
-    d.b.a(this.sQE, d.c.xFg);
-    this.rCL.setImageDrawable(ao.k(this.rCL.getContext(), 2131690394, -1));
+    dJO();
+    d.b.a(this.tbP, d.c.xVb);
+    this.rKW.setImageDrawable(ao.k(this.rKW.getContext(), 2131690394, -1));
     AppMethodBeat.o(75560);
   }
   
   public final void setVisibility(int paramInt)
   {
-    AppMethodBeat.i(200316);
-    this.rCL.setVisibility(paramInt);
-    AppMethodBeat.o(200316);
+    AppMethodBeat.i(206577);
+    this.rKW.setVisibility(paramInt);
+    AppMethodBeat.o(206577);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.plugin.m
  * JD-Core Version:    0.7.0.1
  */

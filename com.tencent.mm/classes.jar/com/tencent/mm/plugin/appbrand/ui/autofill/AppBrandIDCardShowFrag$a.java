@@ -11,22 +11,22 @@ import java.util.List;
 public final class AppBrandIDCardShowFrag$a
   extends RecyclerView.a<a>
 {
-  private List<hf> mHf;
+  private List<hf> mMj;
   
   public AppBrandIDCardShowFrag$a(List<hf> paramList)
   {
-    this.mHf = paramList;
+    this.mMj = paramList;
   }
   
   public final int getItemCount()
   {
     AppMethodBeat.i(48917);
-    if (this.mHf == null)
+    if (this.mMj == null)
     {
       AppMethodBeat.o(48917);
       return 0;
     }
-    int i = this.mHf.size();
+    int i = this.mMj.size();
     AppMethodBeat.o(48917);
     return i;
   }
@@ -34,15 +34,15 @@ public final class AppBrandIDCardShowFrag$a
   public static final class a
     extends RecyclerView.w
   {
-    public TextView fQd;
-    public TextView mHg;
+    public TextView fSj;
+    public TextView mMk;
     
     public a(View paramView)
     {
       super();
       AppMethodBeat.i(48916);
-      this.fQd = ((TextView)paramView.findViewById(2131296745));
-      this.mHg = ((TextView)paramView.findViewById(2131296746));
+      this.fSj = ((TextView)paramView.findViewById(2131296745));
+      this.mMk = ((TextView)paramView.findViewById(2131296746));
       AppMethodBeat.o(48916);
     }
   }

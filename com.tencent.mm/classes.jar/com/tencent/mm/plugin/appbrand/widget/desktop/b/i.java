@@ -4,7 +4,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.w;
 import android.view.View;
 import android.view.ViewParent;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public abstract class i<T extends RecyclerView.w>
   implements j<T>
@@ -56,7 +56,7 @@ public abstract class i<T extends RecyclerView.w>
       }
       catch (Exception paramRecyclerView)
       {
-        ad.printErrStackTrace("alvinluo", paramRecyclerView, "alvinluo getTransX exception", new Object[0]);
+        ae.printErrStackTrace("alvinluo", paramRecyclerView, "alvinluo getTransX exception", new Object[0]);
         return 0.0F;
       }
     }
@@ -65,7 +65,7 @@ public abstract class i<T extends RecyclerView.w>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.desktop.b.i
  * JD-Core Version:    0.7.0.1
  */

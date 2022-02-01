@@ -4,18 +4,17 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
 import com.tencent.mm.plugin.appbrand.jsapi.a;
 import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.plugin.appbrand.page.aa;
-import com.tencent.mm.plugin.appbrand.page.u;
-import com.tencent.mm.plugin.appbrand.q;
+import com.tencent.mm.plugin.appbrand.page.t;
+import com.tencent.mm.plugin.appbrand.r;
 import org.json.JSONObject;
 
 public final class z
-  extends a<q>
+  extends a<r>
 {
   private static final int CTRL_INDEX = 197;
   private static final String NAME = "setStatusBarStyle";
   
-  public final boolean bib()
+  public final boolean biK()
   {
     return true;
   }

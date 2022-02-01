@@ -17,143 +17,143 @@ import d.g.b.q;
 import d.l;
 import d.z;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/vlog/ui/plugin/timeedit/TimeEditMenuView;", "Landroid/widget/LinearLayout;", "Landroid/view/View$OnClickListener;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "captionMenu", "Landroid/view/ViewGroup;", "deleteListener", "Lkotlin/Function0;", "", "getDeleteListener", "()Lkotlin/jvm/functions/Function0;", "setDeleteListener", "(Lkotlin/jvm/functions/Function0;)V", "deleteMenu", "downDrawable", "Landroid/graphics/drawable/Drawable;", "kotlin.jvm.PlatformType", "getDownDrawable", "()Landroid/graphics/drawable/Drawable;", "downDrawable$delegate", "Lkotlin/Lazy;", "editCaptionListener", "getEditCaptionListener", "setEditCaptionListener", "editContentListener", "getEditContentListener", "setEditContentListener", "editMenu", "editTimeListener", "getEditTimeListener", "setEditTimeListener", "enableReadMenu", "", "readMenu", "readTextListener", "getReadTextListener", "setReadTextListener", "timeMenu", "upDrawable", "getUpDrawable", "upDrawable$delegate", "doSetMenuChecked", "menu", "visibility", "", "downBackground", "loadMenuLayout", "layout", "iconRes", "titleRes", "onClick", "v", "Landroid/view/View;", "setMenuChecked", "checked", "showCaptionMenu", "showNormalMenu", "enableTimeEdit", "showTextMenu", "upwardsBackground", "Companion", "plugin-vlog_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/vlog/ui/plugin/timeedit/TimeEditMenuView;", "Landroid/widget/LinearLayout;", "Landroid/view/View$OnClickListener;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "captionMenu", "Landroid/view/ViewGroup;", "deleteListener", "Lkotlin/Function0;", "", "getDeleteListener", "()Lkotlin/jvm/functions/Function0;", "setDeleteListener", "(Lkotlin/jvm/functions/Function0;)V", "deleteMenu", "downDrawable", "Landroid/graphics/drawable/Drawable;", "kotlin.jvm.PlatformType", "getDownDrawable", "()Landroid/graphics/drawable/Drawable;", "downDrawable$delegate", "Lkotlin/Lazy;", "editCaptionListener", "getEditCaptionListener", "setEditCaptionListener", "editContentListener", "getEditContentListener", "setEditContentListener", "editMenu", "editTimeListener", "getEditTimeListener", "setEditTimeListener", "enableReadMenu", "", "readMenu", "readTextListener", "getReadTextListener", "setReadTextListener", "timeMenu", "upDrawable", "getUpDrawable", "upDrawable$delegate", "doSetMenuChecked", "menu", "visibility", "", "downBackground", "loadMenuLayout", "layout", "iconRes", "titleRes", "onClick", "v", "Landroid/view/View;", "setMenuChecked", "checked", "showCaptionMenu", "showNormalMenu", "enableTimeEdit", "showTextMenu", "upwardsBackground", "Companion", "plugin-vlog_release"})
 public final class b
   extends LinearLayout
   implements View.OnClickListener
 {
-  public static final b.a BSy;
-  private d.g.a.a<z> BSl;
-  private d.g.a.a<z> BSm;
-  private d.g.a.a<z> BSn;
-  private d.g.a.a<z> BSo;
-  private d.g.a.a<z> BSp;
-  ViewGroup BSq;
-  private ViewGroup BSr;
-  ViewGroup BSs;
-  ViewGroup BSt;
-  ViewGroup BSu;
-  final boolean BSv;
-  private final f BSw;
-  private final f BSx;
+  public static final b.a CjY;
+  private d.g.a.a<z> CjL;
+  private d.g.a.a<z> CjM;
+  private d.g.a.a<z> CjN;
+  private d.g.a.a<z> CjO;
+  private d.g.a.a<z> CjP;
+  ViewGroup CjQ;
+  private ViewGroup CjR;
+  ViewGroup CjS;
+  ViewGroup CjT;
+  ViewGroup CjU;
+  final boolean CjV;
+  private final f CjW;
+  private final f CjX;
   
   static
   {
-    AppMethodBeat.i(196704);
-    BSy = new b.a((byte)0);
-    AppMethodBeat.o(196704);
+    AppMethodBeat.i(192165);
+    CjY = new b.a((byte)0);
+    AppMethodBeat.o(192165);
   }
   
   public b(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(196703);
-    this.BSv = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(com.tencent.mm.plugin.expt.b.b.a.qBc, false);
-    this.BSw = d.g.O((d.g.a.a)new c(this));
-    this.BSx = d.g.O((d.g.a.a)new b(this));
+    AppMethodBeat.i(192164);
+    this.CjV = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(com.tencent.mm.plugin.expt.b.b.a.qIo, false);
+    this.CjW = d.g.O((d.g.a.a)new c(this));
+    this.CjX = d.g.O((d.g.a.a)new b(this));
     LayoutInflater.from(paramContext).inflate(2131496494, (ViewGroup)this, true);
     paramContext = findViewById(2131308340);
     p.g(paramContext, "findViewById(R.id.item_menu_time)");
-    this.BSq = ((ViewGroup)paramContext);
+    this.CjQ = ((ViewGroup)paramContext);
     paramContext = findViewById(2131308337);
     p.g(paramContext, "findViewById(R.id.item_menu_delete)");
-    this.BSr = ((ViewGroup)paramContext);
+    this.CjR = ((ViewGroup)paramContext);
     paramContext = findViewById(2131308338);
     p.g(paramContext, "findViewById(R.id.item_menu_edit)");
-    this.BSs = ((ViewGroup)paramContext);
+    this.CjS = ((ViewGroup)paramContext);
     paramContext = findViewById(2131308336);
     p.g(paramContext, "findViewById(R.id.item_menu_caption)");
-    this.BSt = ((ViewGroup)paramContext);
+    this.CjT = ((ViewGroup)paramContext);
     paramContext = findViewById(2131308339);
     p.g(paramContext, "findViewById(R.id.item_menu_read)");
-    this.BSu = ((ViewGroup)paramContext);
-    if (!this.BSv) {
-      this.BSu.setVisibility(8);
+    this.CjU = ((ViewGroup)paramContext);
+    if (!this.CjV) {
+      this.CjU.setVisibility(8);
     }
-    e(this.BSq, 2131690487, 2131767231);
-    e(this.BSr, 2131690384, 2131767228);
-    e(this.BSs, 2131690457, 2131767229);
-    e(this.BSt, 2131691600, 2131767227);
-    e(this.BSu, 2131690485, 2131767230);
-    AppMethodBeat.o(196703);
+    e(this.CjQ, 2131690487, 2131767231);
+    e(this.CjR, 2131690384, 2131767228);
+    e(this.CjS, 2131690457, 2131767229);
+    e(this.CjT, 2131691600, 2131767227);
+    e(this.CjU, 2131690485, 2131767230);
+    AppMethodBeat.o(192164);
   }
   
   private final void e(ViewGroup paramViewGroup, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(196699);
+    AppMethodBeat.i(192160);
     Object localObject = paramViewGroup.findViewById(2131305902);
     p.g(localObject, "layout.findViewById<TextView>(R.id.title)");
-    ((TextView)localObject).setText((CharSequence)com.tencent.mm.cc.a.az(getContext(), paramInt2));
+    ((TextView)localObject).setText((CharSequence)com.tencent.mm.cb.a.az(getContext(), paramInt2));
     ((WeImageView)paramViewGroup.findViewById(2131300874)).setImageResource(paramInt1);
     localObject = (ImageView)paramViewGroup.findViewById(2131298214);
     if (localObject != null) {
-      ((ImageView)localObject).setImageDrawable(com.tencent.mm.cc.a.l(getContext(), 2131691551));
+      ((ImageView)localObject).setImageDrawable(com.tencent.mm.cb.a.l(getContext(), 2131691551));
     }
     paramViewGroup.setOnClickListener((View.OnClickListener)this);
-    AppMethodBeat.o(196699);
+    AppMethodBeat.o(192160);
   }
   
   private final Drawable getDownDrawable()
   {
-    AppMethodBeat.i(196697);
-    Drawable localDrawable = (Drawable)this.BSx.getValue();
-    AppMethodBeat.o(196697);
+    AppMethodBeat.i(192158);
+    Drawable localDrawable = (Drawable)this.CjX.getValue();
+    AppMethodBeat.o(192158);
     return localDrawable;
   }
   
   private final Drawable getUpDrawable()
   {
-    AppMethodBeat.i(196696);
-    Drawable localDrawable = (Drawable)this.BSw.getValue();
-    AppMethodBeat.o(196696);
+    AppMethodBeat.i(192157);
+    Drawable localDrawable = (Drawable)this.CjW.getValue();
+    AppMethodBeat.o(192157);
     return localDrawable;
   }
   
-  public final void etV()
+  public final void exC()
   {
-    AppMethodBeat.i(196701);
+    AppMethodBeat.i(192162);
     setBackground(getUpDrawable());
-    AppMethodBeat.o(196701);
+    AppMethodBeat.o(192162);
   }
   
-  public final void etW()
+  public final void exD()
   {
-    AppMethodBeat.i(196702);
+    AppMethodBeat.i(192163);
     setBackground(getDownDrawable());
-    AppMethodBeat.o(196702);
+    AppMethodBeat.o(192163);
   }
   
   public final d.g.a.a<z> getDeleteListener()
   {
-    return this.BSm;
+    return this.CjM;
   }
   
   public final d.g.a.a<z> getEditCaptionListener()
   {
-    return this.BSo;
+    return this.CjO;
   }
   
   public final d.g.a.a<z> getEditContentListener()
   {
-    return this.BSn;
+    return this.CjN;
   }
   
   public final d.g.a.a<z> getEditTimeListener()
   {
-    return this.BSl;
+    return this.CjL;
   }
   
   public final d.g.a.a<z> getReadTextListener()
   {
-    return this.BSp;
+    return this.CjP;
   }
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(196698);
+    AppMethodBeat.i(192159);
     com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
     localb.bd(paramView);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/vlog/ui/plugin/timeedit/TimeEditMenuView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/vlog/ui/plugin/timeedit/TimeEditMenuView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
     if (paramView != null)
     {
       paramView = Integer.valueOf(paramView.getId());
@@ -180,7 +180,7 @@ public final class b
     for (;;)
     {
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/vlog/ui/plugin/timeedit/TimeEditMenuView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(196698);
+      AppMethodBeat.o(192159);
       return;
       paramView = null;
       break;
@@ -188,7 +188,7 @@ public final class b
       if (paramView.intValue() != 2131308337) {
         break label55;
       }
-      paramView = this.BSm;
+      paramView = this.CjM;
       if (paramView != null)
       {
         paramView.invoke();
@@ -197,7 +197,7 @@ public final class b
         if (paramView.intValue() != 2131308340) {
           break label59;
         }
-        paramView = this.BSl;
+        paramView = this.CjL;
         if (paramView != null)
         {
           paramView.invoke();
@@ -206,7 +206,7 @@ public final class b
           if (paramView.intValue() != 2131308338) {
             break label63;
           }
-          paramView = this.BSn;
+          paramView = this.CjN;
           if (paramView != null)
           {
             paramView.invoke();
@@ -215,7 +215,7 @@ public final class b
             if (paramView.intValue() != 2131308336) {
               break label67;
             }
-            paramView = this.BSo;
+            paramView = this.CjO;
             if (paramView != null)
             {
               paramView.invoke();
@@ -223,7 +223,7 @@ public final class b
               label211:
               if (paramView.intValue() == 2131308339)
               {
-                paramView = this.BSp;
+                paramView = this.CjP;
                 if (paramView != null) {
                   paramView.invoke();
                 }
@@ -237,47 +237,47 @@ public final class b
   
   public final void setDeleteListener(d.g.a.a<z> parama)
   {
-    this.BSm = parama;
+    this.CjM = parama;
   }
   
   public final void setEditCaptionListener(d.g.a.a<z> parama)
   {
-    this.BSo = parama;
+    this.CjO = parama;
   }
   
   public final void setEditContentListener(d.g.a.a<z> parama)
   {
-    this.BSn = parama;
+    this.CjN = parama;
   }
   
   public final void setEditTimeListener(d.g.a.a<z> parama)
   {
-    this.BSl = parama;
+    this.CjL = parama;
   }
   
   public final void setMenuChecked$2563266(boolean paramBoolean)
   {
-    AppMethodBeat.i(196700);
+    AppMethodBeat.i(192161);
     if (paramBoolean) {}
     for (int i = 0;; i = 4)
     {
-      View localView = this.BSu.findViewById(2131298214);
+      View localView = this.CjU.findViewById(2131298214);
       if (localView == null) {
         break;
       }
       localView.setVisibility(i);
-      AppMethodBeat.o(196700);
+      AppMethodBeat.o(192161);
       return;
     }
-    AppMethodBeat.o(196700);
+    AppMethodBeat.o(192161);
   }
   
   public final void setReadTextListener(d.g.a.a<z> parama)
   {
-    this.BSp = parama;
+    this.CjP = parama;
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "Landroid/graphics/drawable/Drawable;", "kotlin.jvm.PlatformType", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "Landroid/graphics/drawable/Drawable;", "kotlin.jvm.PlatformType", "invoke"})
   static final class b
     extends q
     implements d.g.a.a<Drawable>
@@ -288,7 +288,7 @@ public final class b
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "Landroid/graphics/drawable/Drawable;", "kotlin.jvm.PlatformType", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "Landroid/graphics/drawable/Drawable;", "kotlin.jvm.PlatformType", "invoke"})
   static final class c
     extends q
     implements d.g.a.a<Drawable>
@@ -301,7 +301,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.vlog.ui.plugin.timeedit.b
  * JD-Core Version:    0.7.0.1
  */

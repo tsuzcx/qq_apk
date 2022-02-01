@@ -5,8 +5,8 @@ import android.content.DialogInterface.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ai;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.aj;
 
 final class SnsUIAction$5
   implements DialogInterface.OnClickListener
@@ -16,11 +16,11 @@ final class SnsUIAction$5
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     AppMethodBeat.i(176356);
-    g.ajD();
-    paramInt = bt.a((Integer)g.ajC().ajl().get(68386, null), 0);
-    g.ajD();
-    g.ajC().ajl().set(68386, Integer.valueOf(paramInt + 1));
-    this.Aoi.Ru(this.val$type);
+    g.ajS();
+    paramInt = bu.a((Integer)g.ajR().ajA().get(68386, null), 0);
+    g.ajS();
+    g.ajR().ajA().set(68386, Integer.valueOf(paramInt + 1));
+    this.AFv.Sb(this.val$type);
     AppMethodBeat.o(176356);
   }
 }

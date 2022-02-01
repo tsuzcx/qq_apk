@@ -6,8 +6,8 @@ import com.tencent.mm.sdk.b.b;
 public final class ds
   extends b
 {
-  public a doB;
-  public b doC;
+  public a dpD;
+  public b dpE;
   
   public ds()
   {
@@ -16,29 +16,28 @@ public final class ds
   
   private ds(byte paramByte)
   {
-    AppMethodBeat.i(115980);
-    this.doB = new a();
-    this.doC = new b();
-    this.IbR = false;
+    AppMethodBeat.i(115979);
+    this.dpD = new a();
+    this.dpE = new b();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(115980);
+    AppMethodBeat.o(115979);
   }
   
   public static final class a
   {
-    public String cUi;
-    public String doD;
-    public boolean doE = false;
+    public String cVh;
+    public String dpB;
   }
   
   public static final class b
   {
-    public boolean doF;
+    public boolean dpF;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.a.ds
  * JD-Core Version:    0.7.0.1
  */

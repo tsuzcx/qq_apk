@@ -14,13 +14,13 @@ import javax.crypto.CipherInputStream;
 import javax.crypto.CipherOutputStream;
 
 public class RC4EncryptedFileSystem
-  extends WrapperFileSystem<FileSystem>
+  extends AbstractFileSystem
 {
   public static final Parcelable.Creator<RC4EncryptedFileSystem> CREATOR;
-  private final a.b LkM;
-  private final boolean LkN;
-  private volatile Key LkO;
-  private final String gaR;
+  protected final FileSystem LFX;
+  protected final e.b LHm;
+  private final Key LHn;
+  protected final String gcZ;
   
   static
   {
@@ -31,165 +31,67 @@ public class RC4EncryptedFileSystem
   
   private RC4EncryptedFileSystem(Parcel paramParcel)
   {
-    super(paramParcel);
     AppMethodBeat.i(13205);
-    q.a(paramParcel, RC4EncryptedFileSystem.class, 2);
-    this.LkM = a.gzV();
-    this.gaR = paramParcel.readString();
-    if (this.LkM == null)
+    w.a(paramParcel, RC4EncryptedFileSystem.class, 3);
+    this.LHm = e.gEj();
+    if (this.LHm == null)
     {
       paramParcel = new RuntimeException("Set global generator by calling setGlobalKeyGenerator(...) before initializing FileSystem objects.");
       AppMethodBeat.o(13205);
       throw paramParcel;
     }
-    this.LkO = this.LkM.R(this.gaR, a.gzU().Ofy.fOF());
-    if (this.LkO != null) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.LkN = bool;
-      AppMethodBeat.o(13205);
-      return;
-    }
+    this.LFX = ((FileSystem)paramParcel.readParcelable(getClass().getClassLoader()));
+    this.gcZ = paramParcel.readString();
+    this.LHn = this.LHm.S(this.gcZ, e.fSU().OAF.fTa());
+    AppMethodBeat.o(13205);
   }
   
   public RC4EncryptedFileSystem(FileSystem paramFileSystem, String paramString)
   {
-    super(paramFileSystem);
     AppMethodBeat.i(13204);
-    this.LkM = a.gzV();
-    this.gaR = paramString;
-    if (this.LkM == null)
+    this.LHm = e.gEj();
+    if (this.LHm == null)
     {
       paramFileSystem = new RuntimeException("Set global generator by calling setKeyGenerator(...) before initializing FileSystem objects.");
       AppMethodBeat.o(13204);
       throw paramFileSystem;
     }
-    this.LkO = this.LkM.R(this.gaR, a.gzU().Ofy.fOF());
-    if (this.LkO != null) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.LkN = bool;
-      AppMethodBeat.o(13204);
-      return;
-    }
+    this.LFX = paramFileSystem;
+    this.gcZ = paramString;
+    this.LHn = this.LHm.S(this.gcZ, e.fSU().OAF.fTa());
+    AppMethodBeat.o(13204);
   }
   
-  protected final boolean b(String paramString1, FileSystem paramFileSystem, String paramString2)
+  public final FileSystem.b cd(Map<String, String> paramMap)
   {
-    AppMethodBeat.i(13209);
-    if ((paramFileSystem instanceof RC4EncryptedFileSystem))
-    {
-      RC4EncryptedFileSystem localRC4EncryptedFileSystem = (RC4EncryptedFileSystem)paramFileSystem;
-      if ((localRC4EncryptedFileSystem.LkM == this.LkM) && (localRC4EncryptedFileSystem.gaR.equals(this.gaR)) && (localRC4EncryptedFileSystem.LkO.equals(this.LkO)) && ((this.Ljf instanceof AbstractFileSystem)))
-      {
-        bool = ((AbstractFileSystem)this.Ljf).b(paramString1, localRC4EncryptedFileSystem.Ljf, paramString2);
-        AppMethodBeat.o(13209);
-        return bool;
-      }
+    AppMethodBeat.i(193435);
+    Object localObject;
+    if (this.LHn != null) {
+      localObject = this.LHn;
     }
-    boolean bool = super.b(paramString1, paramFileSystem, paramString2);
-    AppMethodBeat.o(13209);
-    return bool;
+    Key localKey;
+    do
+    {
+      paramMap = new a(this.LFX.cd(paramMap), (Key)localObject);
+      AppMethodBeat.o(193435);
+      return paramMap;
+      localKey = this.LHm.S(this.gcZ, paramMap);
+      localObject = localKey;
+    } while (localKey != null);
+    paramMap = new RuntimeException("Cannot generate key.");
+    AppMethodBeat.o(193435);
+    throw paramMap;
   }
   
-  public final void bY(Map<String, String> paramMap)
+  public int describeContents()
   {
-    AppMethodBeat.i(13211);
-    super.bY(paramMap);
-    if (!this.LkN) {
-      this.LkO = this.LkM.R(this.gaR, paramMap);
-    }
-    AppMethodBeat.o(13211);
-  }
-  
-  public final OutputStream cX(String paramString, boolean paramBoolean)
-  {
-    AppMethodBeat.i(13208);
-    Key localKey = this.LkO;
-    if (localKey == null)
-    {
-      paramString = new FileNotFoundException("Key is not initialized.");
-      AppMethodBeat.o(13208);
-      throw paramString;
-    }
-    if (paramBoolean)
-    {
-      paramString = new FileNotFoundException("Appending encrypted files is not supported.");
-      AppMethodBeat.o(13208);
-      throw paramString;
-    }
-    try
-    {
-      Cipher localCipher = Cipher.getInstance("RC4");
-      localCipher.init(1, localKey);
-      paramString = new CipherOutputStream(this.Ljf.cX(paramString, false), localCipher);
-      AppMethodBeat.o(13208);
-      return paramString;
-    }
-    catch (GeneralSecurityException paramString)
-    {
-      paramString = (FileNotFoundException)new FileNotFoundException("Failed to initialize cipher: " + paramString.getMessage()).initCause(paramString);
-      AppMethodBeat.o(13208);
-      throw paramString;
-    }
-  }
-  
-  protected final long d(String paramString1, FileSystem paramFileSystem, String paramString2)
-  {
-    AppMethodBeat.i(13210);
-    if ((paramFileSystem instanceof RC4EncryptedFileSystem))
-    {
-      RC4EncryptedFileSystem localRC4EncryptedFileSystem = (RC4EncryptedFileSystem)paramFileSystem;
-      if ((localRC4EncryptedFileSystem.LkM == this.LkM) && (localRC4EncryptedFileSystem.gaR.equals(this.gaR)) && (localRC4EncryptedFileSystem.LkO.equals(this.LkO)) && ((this.Ljf instanceof AbstractFileSystem)))
-      {
-        l = ((AbstractFileSystem)this.Ljf).d(paramString1, localRC4EncryptedFileSystem.Ljf, paramString2);
-        AppMethodBeat.o(13210);
-        return l;
-      }
-    }
-    long l = super.d(paramString1, paramFileSystem, paramString2);
-    AppMethodBeat.o(13210);
-    return l;
-  }
-  
-  public final int fOp()
-  {
-    AppMethodBeat.i(13206);
-    int i = this.Ljf.fOp();
-    AppMethodBeat.o(13206);
-    return i & 0xFFFFFFED;
-  }
-  
-  public final InputStream openRead(String paramString)
-  {
-    AppMethodBeat.i(13207);
-    Key localKey = this.LkO;
-    if (localKey == null)
-    {
-      paramString = new FileNotFoundException("Key is not initialized.");
-      AppMethodBeat.o(13207);
-      throw paramString;
-    }
-    try
-    {
-      Cipher localCipher = Cipher.getInstance("RC4");
-      localCipher.init(2, localKey);
-      paramString = new CipherInputStream(this.Ljf.openRead(paramString), localCipher);
-      AppMethodBeat.o(13207);
-      return paramString;
-    }
-    catch (GeneralSecurityException paramString)
-    {
-      paramString = (FileNotFoundException)new FileNotFoundException("Failed to initialize cipher: " + paramString.getMessage()).initCause(paramString);
-      AppMethodBeat.o(13207);
-      throw paramString;
-    }
+    return 0;
   }
   
   public String toString()
   {
     AppMethodBeat.i(13212);
-    String str = "RC4 [" + this.Ljf.toString() + "]";
+    String str = "RC4 [" + this.LFX.toString() + "]";
     AppMethodBeat.o(13212);
     return str;
   }
@@ -197,10 +99,124 @@ public class RC4EncryptedFileSystem
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(13213);
-    super.writeToParcel(paramParcel, paramInt);
-    q.b(paramParcel, RC4EncryptedFileSystem.class, 2);
-    paramParcel.writeString(this.gaR);
+    w.b(paramParcel, RC4EncryptedFileSystem.class, 3);
+    paramParcel.writeParcelable(this.LFX, paramInt);
+    paramParcel.writeString(this.gcZ);
     AppMethodBeat.o(13213);
+  }
+  
+  protected final class a
+    extends x
+  {
+    protected final Key LHo;
+    
+    a(FileSystem.b paramb, Key paramKey)
+    {
+      super();
+      this.LHo = paramKey;
+    }
+    
+    protected final boolean b(String paramString1, FileSystem.b paramb, String paramString2)
+    {
+      AppMethodBeat.i(193433);
+      if ((paramb instanceof a))
+      {
+        a locala = (a)paramb;
+        if ((locala.LHp.LHm == RC4EncryptedFileSystem.this.LHm) && (locala.LHp.gcZ.equals(RC4EncryptedFileSystem.this.gcZ)) && (locala.LHo.equals(this.LHo)) && ((this.LFY instanceof a)))
+        {
+          bool = ((a)this.LFY).b(paramString1, ((a)paramb).LFY, paramString2);
+          AppMethodBeat.o(193433);
+          return bool;
+        }
+      }
+      boolean bool = super.b(paramString1, paramb, paramString2);
+      AppMethodBeat.o(193433);
+      return bool;
+    }
+    
+    protected final long d(String paramString1, FileSystem.b paramb, String paramString2)
+    {
+      AppMethodBeat.i(193434);
+      if ((paramb instanceof a))
+      {
+        a locala = (a)paramb;
+        if ((locala.LHp.LHm == RC4EncryptedFileSystem.this.LHm) && (locala.LHp.gcZ.equals(RC4EncryptedFileSystem.this.gcZ)) && (locala.LHo.equals(this.LHo)) && ((this.LFY instanceof a)))
+        {
+          l = ((a)this.LFY).d(paramString1, ((a)paramb).LFY, paramString2);
+          AppMethodBeat.o(193434);
+          return l;
+        }
+      }
+      long l = super.d(paramString1, paramb, paramString2);
+      AppMethodBeat.o(193434);
+      return l;
+    }
+    
+    public final OutputStream db(String paramString, boolean paramBoolean)
+    {
+      AppMethodBeat.i(193432);
+      Key localKey = this.LHo;
+      if (localKey == null)
+      {
+        paramString = new FileNotFoundException("Key is not initialized.");
+        AppMethodBeat.o(193432);
+        throw paramString;
+      }
+      if (paramBoolean)
+      {
+        paramString = new FileNotFoundException("Appending encrypted files is not supported.");
+        AppMethodBeat.o(193432);
+        throw paramString;
+      }
+      try
+      {
+        Cipher localCipher = Cipher.getInstance("RC4");
+        localCipher.init(1, localKey);
+        paramString = new CipherOutputStream(this.LFY.db(paramString, false), localCipher);
+        AppMethodBeat.o(193432);
+        return paramString;
+      }
+      catch (GeneralSecurityException paramString)
+      {
+        paramString = (FileNotFoundException)new FileNotFoundException("Failed to initialize cipher: " + paramString.getMessage()).initCause(paramString);
+        AppMethodBeat.o(193432);
+        throw paramString;
+      }
+    }
+    
+    public final int fSL()
+    {
+      AppMethodBeat.i(193430);
+      int i = this.LFY.fSL();
+      AppMethodBeat.o(193430);
+      return i & 0xFFFFFFED;
+    }
+    
+    public final InputStream openRead(String paramString)
+    {
+      AppMethodBeat.i(193431);
+      Key localKey = this.LHo;
+      if (localKey == null)
+      {
+        paramString = new FileNotFoundException("Key is not initialized.");
+        AppMethodBeat.o(193431);
+        throw paramString;
+      }
+      try
+      {
+        Cipher localCipher = Cipher.getInstance("RC4");
+        localCipher.init(2, localKey);
+        paramString = new CipherInputStream(this.LFY.openRead(paramString), localCipher);
+        AppMethodBeat.o(193431);
+        return paramString;
+      }
+      catch (GeneralSecurityException paramString)
+      {
+        paramString = (FileNotFoundException)new FileNotFoundException("Failed to initialize cipher: " + paramString.getMessage()).initCause(paramString);
+        AppMethodBeat.o(193431);
+        throw paramString;
+      }
+    }
   }
 }
 

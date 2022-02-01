@@ -15,16 +15,16 @@ import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.account.friend.a.l;
 import com.tencent.mm.plugin.account.friend.a.l.a;
-import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.aj;
 import com.tencent.mm.ui.MMWizardActivity;
 
 public class BindMContactStatusUI
   extends MMWizardActivity
 {
-  private Button gUt;
-  private ImageView iZF;
-  private TextView iZX;
-  private TextView iZY;
+  private Button gXc;
+  private TextView jcQ;
+  private TextView jcR;
+  private ImageView jcy;
   
   public int getLayoutId()
   {
@@ -34,14 +34,14 @@ public class BindMContactStatusUI
   public void initView()
   {
     AppMethodBeat.i(109883);
-    this.iZF = ((ImageView)findViewById(2131297240));
-    this.iZX = ((TextView)findViewById(2131297238));
-    this.iZY = ((TextView)findViewById(2131297236));
-    this.gUt = ((Button)findViewById(2131297239));
-    if (l.aSO() == l.a.jdO)
+    this.jcy = ((ImageView)findViewById(2131297240));
+    this.jcQ = ((TextView)findViewById(2131297238));
+    this.jcR = ((TextView)findViewById(2131297236));
+    this.gXc = ((Button)findViewById(2131297239));
+    if (l.aTn() == l.a.jgH)
     {
-      this.iZF.setImageResource(2131690819);
-      String str2 = (String)g.ajC().ajl().get(6, null);
+      this.jcy.setImageResource(2131690819);
+      String str2 = (String)g.ajR().ajA().get(6, null);
       String str1;
       if (str2 != null)
       {
@@ -50,21 +50,21 @@ public class BindMContactStatusUI
       }
       else
       {
-        str1 = (String)g.ajC().ajl().get(4097, null);
+        str1 = (String)g.ajR().ajA().get(4097, null);
       }
-      this.iZY.setText(getString(2131756485));
-      this.iZX.setText(getString(2131756511, new Object[] { str1 }));
+      this.jcR.setText(getString(2131756485));
+      this.jcQ.setText(getString(2131756511, new Object[] { str1 }));
     }
     for (;;)
     {
-      this.gUt.setOnClickListener(new View.OnClickListener()
+      this.gXc.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(109881);
           b localb = new b();
           localb.bd(paramAnonymousView);
-          a.b("com/tencent/mm/plugin/account/bind/ui/BindMContactStatusUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+          a.b("com/tencent/mm/plugin/account/bind/ui/BindMContactStatusUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
           BindMContactStatusUI.a(BindMContactStatusUI.this);
           a.a(this, "com/tencent/mm/plugin/account/bind/ui/BindMContactStatusUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(109881);
@@ -72,10 +72,10 @@ public class BindMContactStatusUI
       });
       AppMethodBeat.o(109883);
       return;
-      this.iZF.setImageResource(2131690820);
-      this.iZY.setText(2131756497);
-      this.iZX.setText(2131756497);
-      this.iZY.setVisibility(8);
+      this.jcy.setImageResource(2131690820);
+      this.jcR.setText(2131756497);
+      this.jcQ.setText(2131756497);
+      this.jcR.setVisibility(8);
     }
   }
   
@@ -93,7 +93,7 @@ public class BindMContactStatusUI
     AppMethodBeat.i(109884);
     if (paramInt == 4)
     {
-      abK(1);
+      acs(1);
       AppMethodBeat.o(109884);
       return true;
     }
@@ -110,7 +110,7 @@ public class BindMContactStatusUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.account.bind.ui.BindMContactStatusUI
  * JD-Core Version:    0.7.0.1
  */

@@ -13,9 +13,9 @@ public class DividerPreference
   extends Preference
 {
   private View mView;
-  private boolean nlS;
-  private boolean wFg;
-  private boolean wFh;
+  private boolean nrc;
+  private boolean wUR;
+  private boolean wUS;
   
   public DividerPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -27,9 +27,9 @@ public class DividerPreference
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(70645);
     this.mView = null;
-    this.wFg = false;
-    this.wFh = false;
-    this.nlS = true;
+    this.wUR = false;
+    this.wUS = false;
+    this.nrc = true;
     setLayoutResource(2131493717);
     AppMethodBeat.o(70645);
   }
@@ -52,16 +52,16 @@ public class DividerPreference
     super.onBindView(paramView);
     paramView = paramView.findViewById(2131299166);
     LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)paramView.getLayoutParams();
-    int i = BackwardSupportUtil.b.g(this.mContext, 10.0F);
-    if (this.wFg) {}
+    int i = BackwardSupportUtil.b.h(this.mContext, 10.0F);
+    if (this.wUR) {}
     for (int j = i;; j = 0)
     {
-      if (this.wFh) {}
+      if (this.wUS) {}
       for (;;)
       {
         localLayoutParams.setMargins(0, j, 0, i);
         paramView.setLayoutParams(localLayoutParams);
-        if (!this.nlS)
+        if (!this.nrc)
         {
           paramView.setVisibility(4);
           AppMethodBeat.o(70647);

@@ -6,14 +6,14 @@ import oicq.wlogin_sdk.tools.util;
 public final class aa
   extends a
 {
-  int NRC = 0;
+  int OoI = 0;
   
   public aa()
   {
-    this.NQs = 296;
+    this.Ony = 296;
   }
   
-  private static int ag(byte[] paramArrayOfByte, int paramInt)
+  private static int ak(byte[] paramArrayOfByte, int paramInt)
   {
     if (paramArrayOfByte != null)
     {
@@ -28,26 +28,26 @@ public final class aa
   public final byte[] a(int paramInt1, int paramInt2, int paramInt3, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
     AppMethodBeat.i(88134);
-    int j = ag(paramArrayOfByte1, 32);
-    int i = ag(paramArrayOfByte2, 16);
-    this.NRC = (j + 11 + 2 + i + 2);
-    byte[] arrayOfByte = new byte[this.NRC];
-    util.W(arrayOfByte, 0, 0);
-    util.V(arrayOfByte, 2, paramInt1);
-    util.V(arrayOfByte, 3, paramInt2);
-    util.V(arrayOfByte, 4, paramInt3);
-    util.X(arrayOfByte, 5, 0);
-    util.W(arrayOfByte, 9, j);
+    int j = ak(paramArrayOfByte1, 32);
+    int i = ak(paramArrayOfByte2, 16);
+    this.OoI = (j + 11 + 2 + i + 2);
+    byte[] arrayOfByte = new byte[this.OoI];
+    util.X(arrayOfByte, 0, 0);
+    util.W(arrayOfByte, 2, paramInt1);
+    util.W(arrayOfByte, 3, paramInt2);
+    util.W(arrayOfByte, 4, paramInt3);
+    util.Y(arrayOfByte, 5, 0);
+    util.X(arrayOfByte, 9, j);
     System.arraycopy(paramArrayOfByte1, 0, arrayOfByte, 11, j);
     paramInt1 = j + 11;
-    util.W(arrayOfByte, paramInt1, i);
+    util.X(arrayOfByte, paramInt1, i);
     paramInt1 += 2;
     System.arraycopy(paramArrayOfByte2, 0, arrayOfByte, paramInt1, i);
-    util.W(arrayOfByte, paramInt1 + i, 0);
-    super.alW(this.NQs);
-    super.af(arrayOfByte, this.NRC);
-    super.gxV();
-    paramArrayOfByte1 = super.gxR();
+    util.X(arrayOfByte, paramInt1 + i, 0);
+    super.amG(this.Ony);
+    super.aj(arrayOfByte, this.OoI);
+    super.gCx();
+    paramArrayOfByte1 = super.gCt();
     AppMethodBeat.o(88134);
     return paramArrayOfByte1;
   }

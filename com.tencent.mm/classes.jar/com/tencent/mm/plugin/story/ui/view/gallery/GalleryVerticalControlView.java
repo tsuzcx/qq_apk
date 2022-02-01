@@ -27,37 +27,37 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/story/ui/view/gallery/GalleryVerticalControlView;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "(Landroid/content/Context;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "allFavBtn", "Landroid/widget/ImageView;", "avatarRecycler", "Landroid/support/v7/widget/RecyclerView;", "value", "", "chatRoom", "getChatRoom", "()Ljava/lang/String;", "setChatRoom", "(Ljava/lang/String;)V", "checkedChangeListener", "Lkotlin/Function2;", "Landroid/widget/CompoundButton;", "", "", "closeView", "dataAdapter", "Lcom/tencent/mm/plugin/story/ui/adapter/GalleryHeaderAdapter;", "dataLayoutManager", "Lcom/tencent/mm/plugin/story/ui/layout/AvatarLayoutManager;", "favCheckBox", "Landroid/widget/CheckBox;", "galleryType", "Lcom/tencent/mm/plugin/story/api/IStoryUIFactory$GalleryType;", "itemStatusGroup", "Landroid/view/View;", "menuBtn", "onAllFav", "Lkotlin/Function0;", "getOnAllFav", "()Lkotlin/jvm/functions/Function0;", "setOnAllFav", "(Lkotlin/jvm/functions/Function0;)V", "onCheckedFav", "Lkotlin/ParameterName;", "name", "checkBox", "isChecked", "getOnCheckedFav", "()Lkotlin/jvm/functions/Function2;", "setOnCheckedFav", "(Lkotlin/jvm/functions/Function2;)V", "onClickRangeIcon", "getOnClickRangeIcon", "setOnClickRangeIcon", "onClose", "getOnClose", "setOnClose", "onMenu", "getOnMenu", "setOnMenu", "privacyIcon", "rangeIcon", "recyclerViewContainer", "Landroid/widget/FrameLayout;", "snsIcon", "initWithGalleryType", "needAction", "relayoutDateRecyclerView", "relayoutProfileRecyclerView", "relayoutSelfFavBtn", "removeUser", "userIndex", "setScrollOffset", "position", "offset", "", "setShowClose", "setUserList", "userList", "", "showFavoriteIcon", "isShow", "showPrivacyIcon", "showRangeIcon", "showSnsIcon", "toggleActiveState", "active", "updateFavCheckedStatus", "Companion", "plugin-story_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/story/ui/view/gallery/GalleryVerticalControlView;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "(Landroid/content/Context;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "allFavBtn", "Landroid/widget/ImageView;", "avatarRecycler", "Landroid/support/v7/widget/RecyclerView;", "value", "", "chatRoom", "getChatRoom", "()Ljava/lang/String;", "setChatRoom", "(Ljava/lang/String;)V", "checkedChangeListener", "Lkotlin/Function2;", "Landroid/widget/CompoundButton;", "", "", "closeView", "dataAdapter", "Lcom/tencent/mm/plugin/story/ui/adapter/GalleryHeaderAdapter;", "dataLayoutManager", "Lcom/tencent/mm/plugin/story/ui/layout/AvatarLayoutManager;", "favCheckBox", "Landroid/widget/CheckBox;", "galleryType", "Lcom/tencent/mm/plugin/story/api/IStoryUIFactory$GalleryType;", "itemStatusGroup", "Landroid/view/View;", "menuBtn", "onAllFav", "Lkotlin/Function0;", "getOnAllFav", "()Lkotlin/jvm/functions/Function0;", "setOnAllFav", "(Lkotlin/jvm/functions/Function0;)V", "onCheckedFav", "Lkotlin/ParameterName;", "name", "checkBox", "isChecked", "getOnCheckedFav", "()Lkotlin/jvm/functions/Function2;", "setOnCheckedFav", "(Lkotlin/jvm/functions/Function2;)V", "onClickRangeIcon", "getOnClickRangeIcon", "setOnClickRangeIcon", "onClose", "getOnClose", "setOnClose", "onMenu", "getOnMenu", "setOnMenu", "privacyIcon", "rangeIcon", "recyclerViewContainer", "Landroid/widget/FrameLayout;", "snsIcon", "initWithGalleryType", "needAction", "relayoutDateRecyclerView", "relayoutProfileRecyclerView", "relayoutSelfFavBtn", "removeUser", "userIndex", "setScrollOffset", "position", "offset", "", "setShowClose", "setUserList", "userList", "", "showFavoriteIcon", "isShow", "showPrivacyIcon", "showRangeIcon", "showSnsIcon", "toggleActiveState", "active", "updateFavCheckedStatus", "Companion", "plugin-story_release"})
 public final class GalleryVerticalControlView
   extends RelativeLayout
 {
-  public static final GalleryVerticalControlView.a BdF;
+  public static final GalleryVerticalControlView.a Bvd;
   private static final String TAG = "MicroMsg.GalleryVerticalControlView";
-  private final ImageView Bcm;
-  private d.g.a.a<z> BdA;
-  private d.g.a.a<z> BdB;
-  private d.g.a.a<z> BdC;
-  m<? super CompoundButton, ? super Boolean, z> BdD;
-  private d.g.a.a<z> BdE;
-  final ImageView Bdq;
-  final ImageView Bdr;
-  final RecyclerView Bds;
-  private final View Bdt;
-  final ImageView Bdu;
-  final CheckBox Bdv;
-  n.a Bdw;
-  d<?> Bdx;
-  AvatarLayoutManager Bdy;
-  private m<? super CompoundButton, ? super Boolean, z> Bdz;
-  final FrameLayout iCS;
-  private String iXK;
-  final ImageView xMt;
-  final ImageView ySX;
+  private final ImageView BtK;
+  final ImageView BuO;
+  final ImageView BuP;
+  final RecyclerView BuQ;
+  private final View BuR;
+  final ImageView BuS;
+  final CheckBox BuT;
+  n.a BuU;
+  d<?> BuV;
+  AvatarLayoutManager BuW;
+  private m<? super CompoundButton, ? super Boolean, z> BuX;
+  private d.g.a.a<z> BuY;
+  private d.g.a.a<z> BuZ;
+  private d.g.a.a<z> Bva;
+  m<? super CompoundButton, ? super Boolean, z> Bvb;
+  private d.g.a.a<z> Bvc;
+  final FrameLayout iFL;
+  private String jaD;
+  final ImageView ycn;
+  final ImageView zjh;
   
   static
   {
     AppMethodBeat.i(120392);
-    BdF = new GalleryVerticalControlView.a((byte)0);
+    Bvd = new GalleryVerticalControlView.a((byte)0);
     TAG = "MicroMsg.GalleryVerticalControlView";
     AppMethodBeat.o(120392);
   }
@@ -73,50 +73,50 @@ public final class GalleryVerticalControlView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(120390);
-    this.Bdz = ((m)new b(this));
+    this.BuX = ((m)new b(this));
     View.inflate(paramContext, 2131495723, (ViewGroup)this);
     paramAttributeSet = findViewById(2131305420);
     p.g(paramAttributeSet, "findViewById(R.id.story_gallery_close)");
-    this.Bdq = ((ImageView)paramAttributeSet);
+    this.BuO = ((ImageView)paramAttributeSet);
     paramAttributeSet = findViewById(2131305439);
     p.g(paramAttributeSet, "findViewById(R.id.story_gallery_privacy)");
-    this.Bcm = ((ImageView)paramAttributeSet);
+    this.BtK = ((ImageView)paramAttributeSet);
     paramAttributeSet = findViewById(2131305418);
     p.g(paramAttributeSet, "findViewById(R.id.story_gallery_avatar_recycler)");
-    this.Bds = ((RecyclerView)paramAttributeSet);
+    this.BuQ = ((RecyclerView)paramAttributeSet);
     paramAttributeSet = findViewById(2131305419);
     p.g(paramAttributeSet, "findViewById(R.id.story_…vatar_recycler_container)");
-    this.iCS = ((FrameLayout)paramAttributeSet);
+    this.iFL = ((FrameLayout)paramAttributeSet);
     paramAttributeSet = findViewById(2131305435);
     p.g(paramAttributeSet, "findViewById(R.id.story_gallery_menu)");
-    this.ySX = ((ImageView)paramAttributeSet);
+    this.zjh = ((ImageView)paramAttributeSet);
     paramAttributeSet = findViewById(2131305444);
     p.g(paramAttributeSet, "findViewById(R.id.story_gallery_sns)");
-    this.Bdr = ((ImageView)paramAttributeSet);
+    this.BuP = ((ImageView)paramAttributeSet);
     paramAttributeSet = findViewById(2131305417);
     p.g(paramAttributeSet, "findViewById(R.id.story_gallery_all_fav)");
-    this.Bdu = ((ImageView)paramAttributeSet);
+    this.BuS = ((ImageView)paramAttributeSet);
     paramAttributeSet = findViewById(2131305433);
     p.g(paramAttributeSet, "findViewById(R.id.story_gallery_item_status_group)");
-    this.Bdt = paramAttributeSet;
+    this.BuR = paramAttributeSet;
     paramAttributeSet = findViewById(2131305443);
     p.g(paramAttributeSet, "findViewById(R.id.story_gallery_select_fav)");
-    this.Bdv = ((CheckBox)paramAttributeSet);
+    this.BuT = ((CheckBox)paramAttributeSet);
     paramAttributeSet = findViewById(2131305440);
     p.g(paramAttributeSet, "findViewById(R.id.story_gallery_range)");
-    this.xMt = ((ImageView)paramAttributeSet);
-    this.Bds.setItemAnimator(null);
-    this.ySX.setImageDrawable(ao.k(paramContext, 2131690436, -1));
-    this.Bdu.setImageDrawable(ao.k(paramContext, 2131690380, -1));
-    this.Bdq.setOnClickListener((View.OnClickListener)new View.OnClickListener()
+    this.ycn = ((ImageView)paramAttributeSet);
+    this.BuQ.setItemAnimator(null);
+    this.zjh.setImageDrawable(ao.k(paramContext, 2131690436, -1));
+    this.BuS.setImageDrawable(ao.k(paramContext, 2131690380, -1));
+    this.BuO.setOnClickListener((View.OnClickListener)new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(120379);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
         localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/story/ui/view/gallery/GalleryVerticalControlView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-        paramAnonymousView = this.BdG.getOnClose();
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/story/ui/view/gallery/GalleryVerticalControlView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        paramAnonymousView = this.Bve.getOnClose();
         if (paramAnonymousView != null) {
           paramAnonymousView.invoke();
         }
@@ -124,15 +124,15 @@ public final class GalleryVerticalControlView
         AppMethodBeat.o(120379);
       }
     });
-    this.ySX.setOnClickListener((View.OnClickListener)new View.OnClickListener()
+    this.zjh.setOnClickListener((View.OnClickListener)new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(120380);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
         localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/story/ui/view/gallery/GalleryVerticalControlView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-        paramAnonymousView = this.BdG.getOnMenu();
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/story/ui/view/gallery/GalleryVerticalControlView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        paramAnonymousView = this.Bve.getOnMenu();
         if (paramAnonymousView != null) {
           paramAnonymousView.invoke();
         }
@@ -140,15 +140,15 @@ public final class GalleryVerticalControlView
         AppMethodBeat.o(120380);
       }
     });
-    this.Bdu.setOnClickListener((View.OnClickListener)new View.OnClickListener()
+    this.BuS.setOnClickListener((View.OnClickListener)new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(120381);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
         localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/story/ui/view/gallery/GalleryVerticalControlView$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-        paramAnonymousView = this.BdG.getOnAllFav();
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/story/ui/view/gallery/GalleryVerticalControlView$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        paramAnonymousView = this.Bve.getOnAllFav();
         if (paramAnonymousView != null) {
           paramAnonymousView.invoke();
         }
@@ -156,23 +156,23 @@ public final class GalleryVerticalControlView
         AppMethodBeat.o(120381);
       }
     });
-    paramAttributeSet = this.Bdv;
-    paramContext = this.BdD;
+    paramAttributeSet = this.BuT;
+    paramContext = this.Bvb;
     if (paramContext != null) {
       paramContext = new h(paramContext);
     }
     for (;;)
     {
       paramAttributeSet.setOnCheckedChangeListener((CompoundButton.OnCheckedChangeListener)paramContext);
-      this.xMt.setOnClickListener((View.OnClickListener)new View.OnClickListener()
+      this.ycn.setOnClickListener((View.OnClickListener)new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(120382);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
           localb.bd(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/story/ui/view/gallery/GalleryVerticalControlView$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-          paramAnonymousView = this.BdG.getOnClickRangeIcon();
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/story/ui/view/gallery/GalleryVerticalControlView$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+          paramAnonymousView = this.Bve.getOnClickRangeIcon();
           if (paramAnonymousView != null) {
             paramAnonymousView.invoke();
           }
@@ -187,125 +187,63 @@ public final class GalleryVerticalControlView
   
   public final String getChatRoom()
   {
-    return this.iXK;
+    return this.jaD;
   }
   
   public final d.g.a.a<z> getOnAllFav()
   {
-    return this.BdC;
+    return this.Bva;
   }
   
   public final m<CompoundButton, Boolean, z> getOnCheckedFav()
   {
-    return this.BdD;
+    return this.Bvb;
   }
   
   public final d.g.a.a<z> getOnClickRangeIcon()
   {
-    return this.BdE;
+    return this.Bvc;
   }
   
   public final d.g.a.a<z> getOnClose()
   {
-    return this.BdA;
+    return this.BuY;
   }
   
   public final d.g.a.a<z> getOnMenu()
   {
-    return this.BdB;
+    return this.BuZ;
   }
   
-  public final void setChatRoom(String paramString)
-  {
-    this.iXK = paramString;
-    d locald = this.Bdx;
-    Object localObject = locald;
-    if (!(locald instanceof com.tencent.mm.plugin.story.ui.a.b)) {
-      localObject = null;
-    }
-    localObject = (com.tencent.mm.plugin.story.ui.a.b)localObject;
-    if (localObject != null) {
-      ((com.tencent.mm.plugin.story.ui.a.b)localObject).iXK = paramString;
-    }
-  }
-  
-  public final void setOnAllFav(d.g.a.a<z> parama)
-  {
-    this.BdC = parama;
-  }
-  
-  public final void setOnCheckedFav(m<? super CompoundButton, ? super Boolean, z> paramm)
-  {
-    this.BdD = paramm;
-  }
-  
-  public final void setOnClickRangeIcon(d.g.a.a<z> parama)
-  {
-    this.BdE = parama;
-  }
-  
-  public final void setOnClose(d.g.a.a<z> parama)
-  {
-    this.BdA = parama;
-  }
-  
-  public final void setOnMenu(d.g.a.a<z> parama)
-  {
-    this.BdB = parama;
-  }
-  
-  public final void setUserList(List<String> paramList)
-  {
-    AppMethodBeat.i(120386);
-    p.h(paramList, "userList");
-    d locald = this.Bdx;
-    if (locald != null)
-    {
-      p.h(paramList, "users");
-      locald.jfg.clear();
-      locald.jfg.add("");
-      locald.jfg.addAll((Collection)paramList);
-      locald.jfg.add("");
-    }
-    paramList = this.Bdx;
-    if (paramList != null)
-    {
-      paramList.notifyDataSetChanged();
-      AppMethodBeat.o(120386);
-      return;
-    }
-    AppMethodBeat.o(120386);
-  }
-  
-  public final void sx(boolean paramBoolean)
+  public final void sE(boolean paramBoolean)
   {
     AppMethodBeat.i(120387);
     if (paramBoolean)
     {
-      this.Bcm.setVisibility(0);
-      this.Bcm.setImageDrawable(ao.k(getContext(), 2131690423, getResources().getColor(2131100987)));
+      this.BtK.setVisibility(0);
+      this.BtK.setImageDrawable(ao.k(getContext(), 2131690423, getResources().getColor(2131100987)));
       AppMethodBeat.o(120387);
       return;
     }
-    this.Bcm.setVisibility(8);
+    this.BtK.setVisibility(8);
     AppMethodBeat.o(120387);
   }
   
-  public final void sy(boolean paramBoolean)
+  public final void sF(boolean paramBoolean)
   {
     AppMethodBeat.i(120388);
-    if ((paramBoolean) && (com.tencent.mm.plugin.story.c.a.a.AIv.egU()))
+    if ((paramBoolean) && (com.tencent.mm.plugin.story.c.a.a.AZY.ekC()))
     {
-      this.Bcm.setVisibility(0);
-      this.Bcm.setImageDrawable(ao.k(getContext(), 2131690480, getResources().getColor(2131100987)));
+      this.BtK.setVisibility(0);
+      this.BtK.setImageDrawable(ao.k(getContext(), 2131690480, getResources().getColor(2131100987)));
       AppMethodBeat.o(120388);
       return;
     }
-    this.Bcm.setVisibility(8);
+    this.BtK.setVisibility(8);
     AppMethodBeat.o(120388);
   }
   
-  public final void sz(boolean paramBoolean)
+  public final void sG(boolean paramBoolean)
   {
     AppMethodBeat.i(120389);
     if (paramBoolean)
@@ -318,7 +256,69 @@ public final class GalleryVerticalControlView
     AppMethodBeat.o(120389);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "checkBox", "Landroid/widget/CompoundButton;", "isChecked", "", "invoke", "(Landroid/widget/CompoundButton;Z)Lkotlin/Unit;"})
+  public final void setChatRoom(String paramString)
+  {
+    this.jaD = paramString;
+    d locald = this.BuV;
+    Object localObject = locald;
+    if (!(locald instanceof com.tencent.mm.plugin.story.ui.a.b)) {
+      localObject = null;
+    }
+    localObject = (com.tencent.mm.plugin.story.ui.a.b)localObject;
+    if (localObject != null) {
+      ((com.tencent.mm.plugin.story.ui.a.b)localObject).jaD = paramString;
+    }
+  }
+  
+  public final void setOnAllFav(d.g.a.a<z> parama)
+  {
+    this.Bva = parama;
+  }
+  
+  public final void setOnCheckedFav(m<? super CompoundButton, ? super Boolean, z> paramm)
+  {
+    this.Bvb = paramm;
+  }
+  
+  public final void setOnClickRangeIcon(d.g.a.a<z> parama)
+  {
+    this.Bvc = parama;
+  }
+  
+  public final void setOnClose(d.g.a.a<z> parama)
+  {
+    this.BuY = parama;
+  }
+  
+  public final void setOnMenu(d.g.a.a<z> parama)
+  {
+    this.BuZ = parama;
+  }
+  
+  public final void setUserList(List<String> paramList)
+  {
+    AppMethodBeat.i(120386);
+    p.h(paramList, "userList");
+    d locald = this.BuV;
+    if (locald != null)
+    {
+      p.h(paramList, "users");
+      locald.jhZ.clear();
+      locald.jhZ.add("");
+      locald.jhZ.addAll((Collection)paramList);
+      locald.jhZ.add("");
+    }
+    paramList = this.BuV;
+    if (paramList != null)
+    {
+      paramList.notifyDataSetChanged();
+      AppMethodBeat.o(120386);
+      return;
+    }
+    AppMethodBeat.o(120386);
+  }
+  
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "checkBox", "Landroid/widget/CompoundButton;", "isChecked", "", "invoke", "(Landroid/widget/CompoundButton;Z)Lkotlin/Unit;"})
   static final class b
     extends q
     implements m<CompoundButton, Boolean, z>
@@ -331,7 +331,7 @@ public final class GalleryVerticalControlView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.story.ui.view.gallery.GalleryVerticalControlView
  * JD-Core Version:    0.7.0.1
  */

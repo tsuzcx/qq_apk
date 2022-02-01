@@ -8,8 +8,8 @@ import com.tencent.mm.plugin.appbrand.jsapi.m;
 import com.tencent.mm.plugin.appbrand.jsruntime.o;
 import com.tencent.mm.plugin.appbrand.o.e;
 import com.tencent.mm.plugin.appbrand.o.f;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.HashMap;
 import java.util.Map;
 import org.json.JSONObject;
@@ -23,56 +23,56 @@ public final class d
   public final void a(c paramc, JSONObject paramJSONObject, int paramInt)
   {
     AppMethodBeat.i(179534);
-    a(paramc, paramJSONObject, paramInt, paramc.aYh());
+    a(paramc, paramJSONObject, paramInt, paramc.aYB());
     AppMethodBeat.o(179534);
   }
   
   public final void a(c paramc, JSONObject paramJSONObject, int paramInt, o paramo)
   {
-    AppMethodBeat.i(187750);
-    ad.d("MicroMsg.JsApiOperateRequestTask", "JsApiOperateRequestTask");
+    AppMethodBeat.i(193479);
+    ae.d("MicroMsg.JsApiOperateRequestTask", "JsApiOperateRequestTask");
     if (paramJSONObject == null)
     {
       paramc.h(paramInt, e("fail:data is null", null));
-      ad.e("MicroMsg.JsApiOperateRequestTask", "data is null");
-      AppMethodBeat.o(187750);
+      ae.e("MicroMsg.JsApiOperateRequestTask", "data is null");
+      AppMethodBeat.o(193479);
       return;
     }
     String str = paramJSONObject.optString("requestTaskId");
-    if (bt.isNullOrNil(str))
+    if (bu.isNullOrNil(str))
     {
-      ad.e("MicroMsg.JsApiOperateRequestTask", "requestTaskId is null");
+      ae.e("MicroMsg.JsApiOperateRequestTask", "requestTaskId is null");
       paramc.h(paramInt, e("fail:requestTaskId is null or nil", null));
-      AppMethodBeat.o(187750);
+      AppMethodBeat.o(193479);
       return;
     }
     paramJSONObject = paramJSONObject.optString("operationType");
-    if (bt.isNullOrNil(paramJSONObject))
+    if (bu.isNullOrNil(paramJSONObject))
     {
-      ad.e("MicroMsg.JsApiOperateRequestTask", "operationType is null");
+      ae.e("MicroMsg.JsApiOperateRequestTask", "operationType is null");
       paramc.h(paramInt, e("fail:operationType is null or nil", null));
-      AppMethodBeat.o(187750);
+      AppMethodBeat.o(193479);
       return;
     }
     if (paramJSONObject.equals("abort"))
     {
-      paramJSONObject = f.bti().SM(paramc.getAppId());
+      paramJSONObject = f.btT().Tv(paramc.getAppId());
       if (paramJSONObject == null)
       {
         paramc.h(paramInt, e("fail:no task", null));
-        ad.w("MicroMsg.JsApiOperateRequestTask", "request is null");
-        AppMethodBeat.o(187750);
+        ae.w("MicroMsg.JsApiOperateRequestTask", "request is null");
+        AppMethodBeat.o(193479);
         return;
       }
-      e locale = paramJSONObject.SL(str);
+      e locale = paramJSONObject.Tu(str);
       if (locale != null) {
         paramJSONObject.b(locale);
       }
-      for (boolean bool = true; !bool; bool = paramJSONObject.SJ(str))
+      for (boolean bool = true; !bool; bool = paramJSONObject.Ts(str))
       {
         paramc.h(paramInt, e("fail:no task", null));
-        ad.w("MicroMsg.JsApiOperateRequestTask", "requestInfo is null requestTaskId:%s, appId:%s", new Object[] { str, paramc.getAppId() });
-        AppMethodBeat.o(187750);
+        ae.w("MicroMsg.JsApiOperateRequestTask", "requestInfo is null requestTaskId:%s, appId:%s", new Object[] { str, paramc.getAppId() });
+        AppMethodBeat.o(193479);
         return;
       }
       paramc.h(paramInt, e("ok", null));
@@ -81,16 +81,16 @@ public final class d
       paramJSONObject.put("state", "fail");
       paramJSONObject.put("errMsg", "abort");
       paramJSONObject = new JSONObject(paramJSONObject).toString();
-      new a.a().h(paramc).Pi(paramJSONObject).a(paramo);
-      ad.i("MicroMsg.JsApiOperateRequestTask", "abortTask finish requestId:%s, appId:%s", new Object[] { str, paramc.getAppId() });
-      AppMethodBeat.o(187750);
+      new a.a().h(paramc).PQ(paramJSONObject).a(paramo);
+      ae.i("MicroMsg.JsApiOperateRequestTask", "abortTask finish requestId:%s, appId:%s", new Object[] { str, paramc.getAppId() });
+      AppMethodBeat.o(193479);
       return;
     }
     paramc.h(paramInt, e("fail:unknown operationType", null));
-    AppMethodBeat.o(187750);
+    AppMethodBeat.o(193479);
   }
   
-  public final boolean bij()
+  public final boolean biS()
   {
     return true;
   }

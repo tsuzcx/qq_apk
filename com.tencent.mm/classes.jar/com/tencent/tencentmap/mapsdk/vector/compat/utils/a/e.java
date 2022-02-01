@@ -18,15 +18,15 @@ public class e
   
   public void draw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(192900);
+    AppMethodBeat.i(217570);
     paramCanvas.translate(this.b / 2, this.a / 2);
     super.draw(paramCanvas);
-    AppMethodBeat.o(192900);
+    AppMethodBeat.o(217570);
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(192899);
+    AppMethodBeat.i(217569);
     super.onMeasure(paramInt1, paramInt2);
     paramInt1 = getMeasuredWidth();
     paramInt2 = getMeasuredHeight();
@@ -37,7 +37,7 @@ public class e
     for (this.b = 0;; this.b = (paramInt2 - paramInt1))
     {
       setMeasuredDimension(i, i);
-      AppMethodBeat.o(192899);
+      AppMethodBeat.o(217569);
       return;
       this.a = 0;
     }

@@ -3,7 +3,7 @@ package com.tencent.mm.pluginsdk.b;
 public abstract interface b
   extends a
 {
-  public abstract boolean agA();
+  public abstract boolean agO();
   
   public abstract boolean onCreate();
 }

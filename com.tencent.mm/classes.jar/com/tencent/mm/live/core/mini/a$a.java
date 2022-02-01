@@ -2,7 +2,7 @@ package com.tencent.mm.live.core.mini;
 
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/live/core/mini/LiveMiniManager$Companion;", "", "()V", "ROUTE_TO_MAXIMIZE", "", "TAG", "plugin-core_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/live/core/mini/LiveMiniManager$Companion;", "", "()V", "ROUTE_TO_MAXIMIZE", "", "TAG", "plugin-core_release"})
 public final class a$a {}
 
 

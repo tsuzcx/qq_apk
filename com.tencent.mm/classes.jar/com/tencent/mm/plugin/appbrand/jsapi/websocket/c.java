@@ -4,10 +4,10 @@ import java.net.URI;
 import java.util.Map;
 
 public abstract class c
-  extends com.tencent.mm.plugin.appbrand.aa.a.a
+  extends com.tencent.mm.plugin.appbrand.z.a.a
   implements e
 {
-  public c(URI paramURI, com.tencent.mm.plugin.appbrand.aa.b.a parama, Map<String, String> paramMap, int paramInt)
+  public c(URI paramURI, com.tencent.mm.plugin.appbrand.z.b.a parama, Map<String, String> paramMap, int paramInt)
   {
     super(paramURI, parama, paramMap, paramInt);
   }

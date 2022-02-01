@@ -1,768 +1,837 @@
 package com.tencent.mm.at;
 
+import android.database.Cursor;
 import android.os.HandlerThread;
+import android.os.Looper;
+import android.util.Pair;
+import android.util.SparseArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.k.b;
-import com.tencent.mm.al.e.a;
-import com.tencent.mm.g.a.iu;
-import com.tencent.mm.g.a.iu.a;
-import com.tencent.mm.g.a.ty;
-import com.tencent.mm.g.a.ty.a;
-import com.tencent.mm.g.c.ei;
-import com.tencent.mm.k.a.a.d;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.x.a;
+import com.tencent.mm.b.f;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.cd;
-import com.tencent.mm.modelmulti.p;
-import com.tencent.mm.platformtools.af;
+import com.tencent.mm.model.au.b;
+import com.tencent.mm.model.au.b.a;
+import com.tencent.mm.model.bc;
+import com.tencent.mm.model.r;
+import com.tencent.mm.model.v;
+import com.tencent.mm.openim.b.s;
 import com.tencent.mm.platformtools.z;
-import com.tencent.mm.plugin.messenger.foundation.a.a.o;
-import com.tencent.mm.plugin.messenger.foundation.a.l;
-import com.tencent.mm.plugin.messenger.foundation.a.r;
-import com.tencent.mm.pluginsdk.model.app.k;
-import com.tencent.mm.pointers.PInt;
-import com.tencent.mm.pointers.PString;
-import com.tencent.mm.protocal.protobuf.cv;
-import com.tencent.mm.protocal.protobuf.cw;
-import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.e.k.a;
-import com.tencent.mm.sdk.e.n;
-import com.tencent.mm.sdk.e.n.b;
+import com.tencent.mm.plugin.report.e;
+import com.tencent.mm.protocal.protobuf.bai;
+import com.tencent.mm.protocal.protobuf.baj;
+import com.tencent.mm.protocal.protobuf.bfs;
+import com.tencent.mm.protocal.protobuf.bft;
+import com.tencent.mm.protocal.protobuf.caj;
+import com.tencent.mm.protocal.protobuf.cxn;
+import com.tencent.mm.protocal.protobuf.dar;
+import com.tencent.mm.protocal.protobuf.dwb;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bj;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.sdk.platformtools.bw;
-import com.tencent.mm.storage.at;
-import com.tencent.mm.storage.bn;
+import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.platformtools.aw;
+import com.tencent.mm.sdk.platformtools.aw.a;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.an;
 import com.tencent.mm.storage.bq;
-import com.tencent.mm.storage.bq.b;
-import com.tencent.mm.storage.bu;
-import java.util.Collection;
+import com.tencent.mm.storagebase.h;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Queue;
+import java.util.Set;
 
-public final class c
-  extends com.tencent.mm.sdk.b.c<ty>
-  implements b.a, k.a, n.b
+final class c
+  implements au.b
 {
-  public final com.tencent.mm.sdk.b.c hYn;
-  private Map<Long, bn> hYo;
+  boolean hOU;
+  private long hPf;
+  f<String, Integer> ibm;
+  Map<String, LinkedList<au.b.a>> ibn;
+  Queue<bai> ibo;
+  Queue<a> ibp;
+  long ibq;
+  final int ibr;
+  final int ibs;
+  aw ibt;
+  final aw ibu;
   
-  public c()
+  c()
   {
-    AppMethodBeat.i(20506);
-    this.hYn = new com.tencent.mm.sdk.b.c()
+    AppMethodBeat.i(20524);
+    this.hOU = false;
+    this.ibm = new com.tencent.mm.memory.a.c(200);
+    this.ibn = new HashMap();
+    this.ibo = new LinkedList();
+    this.ibp = new LinkedList();
+    this.ibq = 0L;
+    this.ibr = 500;
+    this.ibs = 10000;
+    this.hPf = 0L;
+    this.ibt = new aw(bc.ajU().IxZ.getLooper(), new aw.a()
     {
-      private static boolean a(iu paramAnonymousiu)
+      public final boolean onTimerExpired()
       {
-        AppMethodBeat.i(20503);
-        long l2 = System.currentTimeMillis();
+        AppMethodBeat.i(20517);
+        ae.d("MicroMsg.GetContactService", "pusherTry onTimerExpired tryStartNetscene");
+        c.this.aIq();
+        AppMethodBeat.o(20517);
+        return false;
+      }
+    }, false);
+    this.ibu = new aw(bc.ajU().IxZ.getLooper(), new aw.a()
+    {
+      public final boolean onTimerExpired()
+      {
+        AppMethodBeat.i(20523);
+        if (c.this.ibp.isEmpty())
+        {
+          ae.i("MicroMsg.GetContactService", "tryStartNetscene respHandler queue maybe this time is null , wait doscene!");
+          AppMethodBeat.o(20523);
+          return false;
+        }
+        long l1 = bu.fpO();
+        int i;
+        ArrayList localArrayList;
+        int j;
+        label67:
+        c.a locala;
+        final boolean bool;
+        if (c.this.hOU)
+        {
+          i = 5;
+          localArrayList = new ArrayList(i * 2);
+          j = 0;
+          if (j >= i) {
+            break label1096;
+          }
+          locala = (c.a)c.this.ibp.peek();
+          if (locala != null) {
+            break label172;
+          }
+          ae.i("MicroMsg.GetContactService", "tryStartNetscene respHandler queue maybe this time is null , break and wait doscene!");
+          bool = false;
+        }
         for (;;)
         {
-          bu localbu;
+          label104:
+          int k = localArrayList.size();
+          if (k > 0)
+          {
+            bc.aCg();
+            long l2 = com.tencent.mm.model.c.getDataDB().yi(Thread.currentThread().getId());
+            Object localObject1 = d.aIs();
+            j = 0;
+            for (;;)
+            {
+              if (j < k)
+              {
+                ((b)localObject1).FC((String)localArrayList.get(j));
+                j += 1;
+                continue;
+                i = 15;
+                break;
+                label172:
+                Object localObject2 = locala.ibD.GQv;
+                localObject1 = locala.ibD.GNm;
+                Object localObject3 = locala.ibD.GQx;
+                if ((localObject3 != null) && (((LinkedList)localObject3).size() > 0))
+                {
+                  localObject3 = ((LinkedList)localObject3).iterator();
+                  while (((Iterator)localObject3).hasNext())
+                  {
+                    localObject4 = (dar)((Iterator)localObject3).next();
+                    if (localObject4 != null) {
+                      ((com.tencent.mm.plugin.messenger.foundation.a.l)g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azF().me(((dar)localObject4).nIJ, ((dar)localObject4).xrf);
+                    }
+                  }
+                }
+                k = locala.ibE;
+                if (((LinkedList)localObject1).size() != ((LinkedList)localObject2).size()) {
+                  ae.w("MicroMsg.GetContactService", "find warn %s %s", new Object[] { Integer.valueOf(((LinkedList)localObject1).size()), Integer.valueOf(((LinkedList)localObject2).size()) });
+                }
+                int m = Math.min(((LinkedList)localObject1).size(), ((LinkedList)localObject2).size());
+                if (m <= k)
+                {
+                  c.this.ibp.poll();
+                  if (c.this.ibp.isEmpty())
+                  {
+                    ae.i("MicroMsg.GetContactService", "tryStartNetscene respHandler resp proc fin gr.curIdx:%d size:%d and retList is empty break", new Object[] { Integer.valueOf(k), Integer.valueOf(m) });
+                    c.this.ibq = 0L;
+                    c.this.ibt.ay(0L, 0L);
+                    bool = false;
+                    break label104;
+                  }
+                  ae.i("MicroMsg.GetContactService", "tryStartNetscene respHandler resp proc fin gr.curIdx:%d size:%d and retList is not empty continue next", new Object[] { Integer.valueOf(k), Integer.valueOf(m) });
+                  j += 1;
+                  break label67;
+                }
+                localObject2 = (caj)((LinkedList)localObject2).get(k);
+                m = ((Integer)((LinkedList)localObject1).get(k)).intValue();
+                localObject3 = bu.bI(z.a(((caj)localObject2).GuF), "");
+                Object localObject4 = bu.bI(((caj)localObject2).jga, "");
+                localObject1 = bu.bI(((caj)localObject2).HnT, "");
+                localArrayList.add(localObject3);
+                localArrayList.add(localObject4);
+                localArrayList.add(localObject1);
+                switch (m)
+                {
+                default: 
+                  ae.e("MicroMsg.GetContactService", "respHandler getFailed :%d ErrName: %s %s %s", new Object[] { Integer.valueOf(m), localObject3, localObject4, Boolean.valueOf(r.zw((String)localObject3)) });
+                  e.ywz.idkeyStat(832L, 2L, 1L, false);
+                  bool = false;
+                }
+                for (;;)
+                {
+                  new aq(Looper.getMainLooper()).post(new Runnable()
+                  {
+                    public final void run()
+                    {
+                      AppMethodBeat.i(20522);
+                      ae.i("MicroMsg.GetContactService", "callback user:%s alias:%s", new Object[] { bu.bI(this.cXC, ""), bu.bI(this.ibA, "") });
+                      try
+                      {
+                        Object localObject2 = (LinkedList)c.this.ibn.remove(this.cXC);
+                        if (bu.isNullOrNil(this.ibA)) {}
+                        for (LinkedList localLinkedList = null;; localLinkedList = (LinkedList)c.this.ibn.remove(this.ibA))
+                        {
+                          if (localObject2 == null) {
+                            break;
+                          }
+                          ae.i("MicroMsg.GetContactService", "callback userCallbackContainer user:%s size:%s", new Object[] { bu.bI(this.cXC, ""), Integer.valueOf(((LinkedList)localObject2).size()) });
+                          localObject2 = ((LinkedList)localObject2).iterator();
+                          while (((Iterator)localObject2).hasNext()) {
+                            ((au.b.a)((Iterator)localObject2).next()).p(this.cXC, bool);
+                          }
+                        }
+                        if (localObject1 == null) {
+                          break label269;
+                        }
+                      }
+                      finally
+                      {
+                        AppMethodBeat.o(20522);
+                      }
+                      ae.i("MicroMsg.GetContactService", "callback aliasCallbackContainer user:%s size:%s", new Object[] { bu.bI(this.cXC, ""), Integer.valueOf(localObject1.size()) });
+                      Iterator localIterator = localObject1.iterator();
+                      while (localIterator.hasNext()) {
+                        ((au.b.a)localIterator.next()).p(this.cXC, bool);
+                      }
+                      label269:
+                      AppMethodBeat.o(20522);
+                    }
+                  });
+                  locala.ibE += 1;
+                  break;
+                  if ((locala.ibD.GQw == null) || (locala.ibD.GQw.size() <= k) || (!((String)localObject3).equals(((dwb)locala.ibD.GQw.get(k)).username))) {
+                    if (locala.ibD.GQw == null)
+                    {
+                      localObject1 = "null";
+                      label753:
+                      ae.w("MicroMsg.GetContactService", "get antispamticket from resp failed: list:%s idx:%d  user:%s", new Object[] { localObject1, Integer.valueOf(k), localObject3 });
+                    }
+                  }
+                  for (localObject1 = "";; localObject1 = bu.bI(((dwb)locala.ibD.GQw.get(k)).Ibw, ""))
+                  {
+                    ae.i("MicroMsg.GetContactService", "dkverify respHandler mod contact: %s %s %s %s", new Object[] { localObject3, localObject4, localObject1, Integer.valueOf(locala.ibF) });
+                    com.tencent.mm.plugin.subapp.b.iUA.a((caj)localObject2, (String)localObject1, locala.ibF);
+                    e.ywz.idkeyStat(832L, 0L, 1L, false);
+                    bool = true;
+                    break;
+                    localObject1 = Integer.valueOf(locala.ibD.GQw.size());
+                    break label753;
+                  }
+                  ae.e("MicroMsg.GetContactService", "respHandler getFailed USERNAME_INVAILD :%d ErrName: %s %s %s %s %s", new Object[] { Integer.valueOf(m), localObject3, localObject4, Boolean.valueOf(d.aIs().FC((String)localObject3)), Boolean.valueOf(d.aIs().FC((String)localObject4)), Boolean.valueOf(r.zw((String)localObject3)) });
+                  e.ywz.idkeyStat(832L, 1L, 1L, false);
+                  bool = false;
+                }
+              }
+            }
+            bc.aCg();
+            com.tencent.mm.model.c.getDataDB().sW(l2);
+          }
+          ae.i("MicroMsg.GetContactService", "tryStartNetscene respHandler onTimerExpired netSceneRunning : " + c.this.hOU + " ret: " + bool + " maxCnt: " + i + " deleteCount: " + k + " take: " + (bu.fpO() - l1) + "ms");
+          AppMethodBeat.o(20523);
+          return bool;
+          label1096:
+          bool = true;
+        }
+      }
+    }, true);
+    AppMethodBeat.o(20524);
+  }
+  
+  private void aIp()
+  {
+    AppMethodBeat.i(20531);
+    Object localObject1 = d.aIs();
+    long l = this.ibq;
+    Cursor localCursor = ((b)localObject1).hKK.a("select getcontactinfov2.username,getcontactinfov2.inserttime,getcontactinfov2.type,getcontactinfov2.lastgettime,getcontactinfov2.reserved1,getcontactinfov2.reserved2,getcontactinfov2.reserved3,getcontactinfov2.reserved4 from getcontactinfov2 where inserttime> ?  order by inserttime asc limit ?", new String[] { String.valueOf(l), "80" }, 0);
+    if (localCursor == null)
+    {
+      AppMethodBeat.o(20531);
+      return;
+    }
+    int i = localCursor.getCount();
+    ae.i("MicroMsg.GetContactService", "getFromDb count:%d", new Object[] { Integer.valueOf(i) });
+    if (i <= 0)
+    {
+      localCursor.close();
+      AppMethodBeat.o(20531);
+      return;
+    }
+    Object localObject2 = new LinkedList();
+    localObject1 = new LinkedList();
+    LinkedList localLinkedList2 = new LinkedList();
+    SparseArray localSparseArray = new SparseArray();
+    LinkedList localLinkedList1 = new LinkedList();
+    Object localObject4;
+    Object localObject3;
+    if (localCursor.moveToNext())
+    {
+      Object localObject6 = new a();
+      ((a)localObject6).username = localCursor.getString(0);
+      ((a)localObject6).ibj = localCursor.getLong(1);
+      ((a)localObject6).type = localCursor.getInt(2);
+      ((a)localObject6).ibk = localCursor.getInt(3);
+      ((a)localObject6).hKD = localCursor.getInt(4);
+      ((a)localObject6).ibl = localCursor.getInt(5);
+      ((a)localObject6).hKF = localCursor.getString(6);
+      ((a)localObject6).hKG = localCursor.getString(7);
+      localObject4 = ((a)localObject6).getUsername();
+      localObject3 = bu.nullAsNil(((a)localObject6).aIo());
+      i = bu.o(Integer.valueOf(((a)localObject6).ibl));
+      Object localObject5 = bu.nullAsNil(((a)localObject6).aCG());
+      this.ibq = ((a)localObject6).ibj;
+      localObject6 = (String)localObject4 + "#" + (String)localObject3;
+      int j = bu.a((Integer)this.ibm.aL(localObject6), 0);
+      if (j < 3)
+      {
+        this.ibm.q(localObject6, Integer.valueOf(j + 1));
+        if (com.tencent.mm.model.x.zV((String)localObject4))
+        {
+          localObject5 = new bai();
+          ((LinkedList)localObject2).add(new cxn().aQV((String)localObject4));
+          ((LinkedList)localObject1).add(new cxn().aQV((String)localObject3));
+          ((bai)localObject5).FNk = ((LinkedList)localObject2);
+          ((bai)localObject5).GQr = ((LinkedList)localObject1);
+          this.ibo.add(localObject5);
+          localObject2 = new LinkedList();
+          localObject1 = new LinkedList();
+          ae.i("MicroMsg.GetContactService", "getFromDb this is openRoom now reqlist size:%d , this req usr count:%d usr %s", new Object[] { Integer.valueOf(this.ibo.size()), Integer.valueOf(((bai)localObject5).FNk.size()), localObject4 });
+        }
+      }
+      for (;;)
+      {
+        if (((LinkedList)localObject2).size() < 20)
+        {
+          localObject4 = localObject1;
+          localObject3 = localObject2;
+          if (!localCursor.isLast()) {}
+        }
+        else
+        {
+          localObject5 = new bai();
+          ((bai)localObject5).FNk = ((LinkedList)localObject2);
+          ((bai)localObject5).GQn = ((LinkedList)localObject2).size();
+          ((bai)localObject5).GQr = ((LinkedList)localObject1);
+          ((bai)localObject5).GQq = ((LinkedList)localObject1).size();
+          this.ibo.add(localObject5);
+          localObject3 = new LinkedList();
+          localObject4 = new LinkedList();
+          ae.i("MicroMsg.GetContactService", "getFromDb now reqlist size:%d , this req usr count:%d getScene=%s", new Object[] { Integer.valueOf(this.ibo.size()), Integer.valueOf(((bai)localObject5).FNk.size()), Integer.valueOf(i) });
+        }
+        localObject1 = localObject4;
+        localObject2 = localObject3;
+        break;
+        if (an.aUq((String)localObject4))
+        {
+          localObject5 = new bai();
+          ((LinkedList)localObject2).add(new cxn().aQV((String)localObject4));
+          ((LinkedList)localObject1).add(new cxn().aQV((String)localObject3));
+          ((bai)localObject5).FNk = ((LinkedList)localObject2);
+          ((bai)localObject5).GQr = ((LinkedList)localObject1);
+          this.ibo.add(localObject5);
+          localObject2 = new LinkedList();
+          localObject1 = new LinkedList();
+          ae.i("MicroMsg.GetContactService", "getFromDb this is isOpenIM now reqlist size:%d , this req usr count:%d usr %s", new Object[] { Integer.valueOf(this.ibo.size()), Integer.valueOf(((bai)localObject5).FNk.size()), localObject4 });
+        }
+        else if (i == 1)
+        {
+          localLinkedList2.add(new Pair(new cxn().aQV((String)localObject4), new cxn().aQV((String)localObject5)));
+          ae.i("MicroMsg.GetContactService", "getFromDb add user:%s scene:%s ticket:%s", new Object[] { localObject4, Integer.valueOf(i), localObject5 });
+        }
+        else
+        {
+          if (i != 0)
+          {
+            if (localSparseArray.indexOfKey(i) < 0)
+            {
+              localObject3 = new LinkedList();
+              localSparseArray.put(i, localObject3);
+            }
+            for (;;)
+            {
+              ((List)localObject3).add(localObject4);
+              break;
+              localObject3 = (List)localSparseArray.get(i);
+            }
+          }
+          ((LinkedList)localObject2).add(new cxn().aQV((String)localObject4));
+          ((LinkedList)localObject1).add(new cxn().aQV((String)localObject3));
+          ae.i("MicroMsg.GetContactService", "getFromDb add user:%s getScene:%s room:%s", new Object[] { localObject4, Integer.valueOf(i), localObject3 });
+          continue;
+          localLinkedList1.add(localObject4);
+          Q((String)localObject4, false);
+        }
+      }
+    }
+    localCursor.close();
+    c(localSparseArray);
+    localObject1 = localLinkedList2.iterator();
+    while (((Iterator)localObject1).hasNext())
+    {
+      localObject2 = (Pair)((Iterator)localObject1).next();
+      localObject3 = new bai();
+      localObject4 = new LinkedList();
+      ((LinkedList)localObject4).add(((Pair)localObject2).first);
+      ((bai)localObject3).FNk = ((LinkedList)localObject4);
+      ((bai)localObject3).GQn = ((LinkedList)localObject4).size();
+      ((bai)localObject3).GQs = 1;
+      ((bai)localObject3).GQt = ((cxn)((Pair)localObject2).second);
+      this.ibo.add(localObject3);
+    }
+    localLinkedList2.clear();
+    i = 0;
+    while (i < localLinkedList1.size())
+    {
+      localObject1 = (String)localLinkedList1.get(i);
+      boolean bool1 = com.tencent.mm.model.x.wb((String)localObject1);
+      ae.w("MicroMsg.GetContactService", "getFromDb try getContact Too much room usr:%s; remove from table:%s ", new Object[] { localObject1, Boolean.valueOf(bool1) });
+      if (bool1) {
+        d.aIs().FC((String)localObject1);
+      }
+      boolean bool2 = com.tencent.mm.model.x.Ab((String)localObject1);
+      ae.w("MicroMsg.GetContactService", "getFromDb try getContact Too much biz usr:%s; remove from table:%s ", new Object[] { localObject1, Boolean.valueOf(bool1) });
+      if (bool2)
+      {
+        d.aIs().FC((String)localObject1);
+        e.ywz.idkeyStat(832L, 3L, 1L, false);
+      }
+      i += 1;
+    }
+    AppMethodBeat.o(20531);
+  }
+  
+  private static boolean bn(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(20530);
+    if (bu.isNullOrNil(paramString1))
+    {
+      AppMethodBeat.o(20530);
+      return false;
+    }
+    Object localObject = v.aAC();
+    String str = v.aAD();
+    if ((paramString1.equals(localObject)) || (paramString1.equals(str)))
+    {
+      ae.i("MicroMsg.GetContactService", "addToStg username: " + paramString1 + " equal to user: " + (String)localObject + " alias: " + str + " ret");
+      AppMethodBeat.o(20530);
+      return false;
+    }
+    localObject = new a();
+    ((a)localObject).username = paramString1;
+    ((a)localObject).hKF = bu.nullAsNil(paramString2);
+    ((a)localObject).ibj = bu.fpO();
+    boolean bool = d.aIs().a((a)localObject);
+    AppMethodBeat.o(20530);
+    return bool;
+  }
+  
+  private void c(SparseArray<List<String>> paramSparseArray)
+  {
+    AppMethodBeat.i(186364);
+    int i = 0;
+    while (i < paramSparseArray.size())
+    {
+      bai localbai = new bai();
+      int j = paramSparseArray.keyAt(i);
+      Object localObject = (List)paramSparseArray.valueAt(i);
+      LinkedList localLinkedList = new LinkedList();
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        String str = (String)((Iterator)localObject).next();
+        localLinkedList.add(new cxn().aQV(str));
+      }
+      localbai.FNk.addAll(localLinkedList);
+      localbai.GQn = localbai.FNk.size();
+      localbai.GQs = j;
+      this.ibo.add(localbai);
+      ae.i("MicroMsg.GetContactService", "[buildSceneReqList] scene=%s count=%s req size=%s", new Object[] { Integer.valueOf(localbai.GQs), Integer.valueOf(localbai.GQn), Integer.valueOf(this.ibo.size()) });
+      i += 1;
+    }
+    paramSparseArray.clear();
+    AppMethodBeat.o(186364);
+  }
+  
+  public final void Bt(String paramString)
+  {
+    AppMethodBeat.i(20525);
+    try
+    {
+      this.ibn.remove(paramString);
+      return;
+    }
+    finally
+    {
+      AppMethodBeat.o(20525);
+    }
+  }
+  
+  public final void Bu(final String paramString)
+  {
+    AppMethodBeat.i(20529);
+    bc.ajU().aw(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(20516);
+        Object[] arrayOfObject = c.this.ibm.keySet().toArray();
+        int i = 0;
+        while (i < arrayOfObject.length)
+        {
+          String str = (String)arrayOfObject[i];
+          if (str.startsWith(paramString))
+          {
+            ae.d("MicroMsg.GetContactService", "clearMapRecentDown(): key = %s", new Object[] { str });
+            c.this.ibm.remove(str);
+          }
+          i += 1;
+        }
+        AppMethodBeat.o(20516);
+      }
+    });
+    AppMethodBeat.o(20529);
+  }
+  
+  final void Q(final String paramString, final boolean paramBoolean)
+  {
+    AppMethodBeat.i(20532);
+    ar.f(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(20518);
+        if (c.this.ibn.containsKey(paramString)) {
           try
           {
-            Object localObject1 = ((l)g.ab(l.class)).dlF();
-            if (!((com.tencent.mm.plugin.messenger.foundation.a.a.b)localObject1).apF(paramAnonymousiu.dvt.username))
+            Object localObject1 = (LinkedList)c.this.ibn.get(paramString);
+            c.this.ibn.remove(paramString);
+            if (localObject1 != null)
             {
-              localObject2 = new com.tencent.mm.storage.ad();
-              ((com.tencent.mm.storage.ad)localObject2).field_username = paramAnonymousiu.dvt.username;
-              if (paramAnonymousiu.dvt.dvu <= paramAnonymousiu.dvt.dvw)
-              {
-                l1 = paramAnonymousiu.dvt.dvw;
-                ((com.tencent.mm.storage.ad)localObject2).field_lastPushSeq = l1;
-                ((com.tencent.mm.storage.ad)localObject2).field_lastLocalSeq = paramAnonymousiu.dvt.dvw;
-                ((com.tencent.mm.storage.ad)localObject2).field_lastPushCreateTime = paramAnonymousiu.dvt.dvv;
-                ((com.tencent.mm.storage.ad)localObject2).field_lastLocalCreateTime = paramAnonymousiu.dvt.dvx;
-                l1 = ((com.tencent.mm.plugin.messenger.foundation.a.a.b)localObject1).a((com.tencent.mm.storage.ad)localObject2, true);
-                localObject1 = com.tencent.mm.ui.chatting.l.b.JWt;
-                com.tencent.mm.ui.chatting.l.b.fGU();
-                com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.GetChatroomMsgReceiver", "[GetChatRoomWrapEvent#callback] ret:%s,chatRoomId:%s lastPushSeq:%s lastPushCreateTime:%s lastLocalSeq:%s lastLocalCreateTime:%s", new Object[] { Long.valueOf(l1), paramAnonymousiu.dvt.username, Long.valueOf(paramAnonymousiu.dvt.dvu), Long.valueOf(paramAnonymousiu.dvt.dvv), Long.valueOf(paramAnonymousiu.dvt.dvw), Long.valueOf(paramAnonymousiu.dvt.dvx) });
-                return true;
+              localObject1 = ((LinkedList)localObject1).iterator();
+              while (((Iterator)localObject1).hasNext()) {
+                ((au.b.a)((Iterator)localObject1).next()).p(paramString, paramBoolean);
               }
-              l1 = paramAnonymousiu.dvt.dvu;
-              continue;
             }
-            Object localObject2 = paramAnonymousiu.dvt.username;
-            localbu = ((l)g.ab(l.class)).dlK().apZ((String)localObject2);
-            l1 = paramAnonymousiu.dvt.dvu;
-            long l3 = paramAnonymousiu.dvt.dvv;
-            paramAnonymousiu = ((com.tencent.mm.plugin.messenger.foundation.a.a.b)localObject1).apH((String)localObject2);
-            long l4 = paramAnonymousiu.field_lastLocalSeq;
-            long l5 = paramAnonymousiu.field_lastLocalCreateTime;
-            long l6 = paramAnonymousiu.field_lastPushSeq;
-            long l7 = paramAnonymousiu.field_lastPushCreateTime;
-            com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.GetChatroomMsgReceiver", "[GetChatRoomWrapEvent#callback] isGetChatroom! %s conPushSeq:%s conPushCreateTime:%s localSeq:%s localCreateTime:%s pushSeq:%s pushCreateTime:%s", new Object[] { localObject2, Long.valueOf(l1), Long.valueOf(l3), Long.valueOf(l4), Long.valueOf(l5), Long.valueOf(l6), Long.valueOf(l7) });
-            if ((localbu != null) && (localbu.field_msgId != 0L))
-            {
-              long l8 = localbu.field_msgSeq;
-              if (l8 > l4)
-              {
-                paramAnonymousiu.field_lastLocalSeq = l8;
-                paramAnonymousiu.field_lastLocalCreateTime = localbu.field_createTime;
-                com.tencent.mm.k.a.a.c localc = new com.tencent.mm.k.a.a.c();
-                localc.fVm = (1L + l4);
-                localc.fVo = (l5 + 1L);
-                localc.fVn = (l8 - 1L);
-                localc.fVp = (l7 - 1L);
-                if (paramAnonymousiu.field_seqBlockInfo == null) {
-                  paramAnonymousiu.field_seqBlockInfo = new d();
-                }
-                paramAnonymousiu.field_seqBlockInfo.fVq.addLast(localc);
-                com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.GetChatroomMsgReceiver", "[GetChatRoomWrapEvent#callback] fix chatroomMsgSeqStorage local seq is smaller than MsgInfoStg local seq! ret:[%s]", new Object[] { Long.valueOf(((com.tencent.mm.plugin.messenger.foundation.a.a.b)localObject1).b(paramAnonymousiu)) });
-              }
-              if (l6 < l1) {
-                com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.GetChatroomMsgReceiver", "[GetChatRoomWrapEvent#callback] fix chatroomMsgSeqStorage push seq is smaller than conversation seq! ret:[%s,%s] [%s,%s]", new Object[] { Boolean.valueOf(((com.tencent.mm.plugin.messenger.foundation.a.a.b)localObject1).aA((String)localObject2, l1)), Boolean.valueOf(((com.tencent.mm.plugin.messenger.foundation.a.a.b)localObject1).aC((String)localObject2, l3)), Long.valueOf(localbu.field_msgSeq), Long.valueOf(l4) });
-              }
-              return true;
-            }
-            if (localbu == null)
-            {
-              bool = true;
-              if (localbu != null) {
-                break label747;
-              }
-              l1 = -1L;
-              com.tencent.mm.sdk.platformtools.ad.w("MicroMsg.GetChatroomMsgReceiver", "lastMsgInfo is null? %s lastMsgInfo id:%s", new Object[] { Boolean.valueOf(bool), Long.valueOf(l1) });
-              continue;
-            }
-            boolean bool = false;
+            AppMethodBeat.o(20518);
           }
           finally
           {
-            com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.GetChatroomMsgReceiver", "handle GetChatRoomWrapEvent cost:%d", new Object[] { Long.valueOf(System.currentTimeMillis() - l2) });
-            AppMethodBeat.o(20503);
+            AppMethodBeat.o(20518);
           }
-          continue;
-          label747:
-          long l1 = localbu.field_msgId;
         }
       }
-    };
-    this.hYo = new HashMap();
-    a.IbL.c(this.hYn);
-    b.aHW().hYg = this;
-    ((l)g.ab(l.class)).azv().a(this, g.ajF().IdO.getLooper());
-    p.aJy();
-    p.aJw().add(this, com.tencent.mm.model.ba.ajF().IdO.getLooper());
-    this.__eventId = ty.class.getName().hashCode();
-    AppMethodBeat.o(20506);
+    });
+    AppMethodBeat.o(20532);
   }
   
-  private static List<com.tencent.mm.k.a.a.c> a(String paramString, LinkedList<bu> paramLinkedList)
+  public final void a(String paramString1, String paramString2, au.b.a parama)
   {
-    AppMethodBeat.i(20509);
-    Object localObject2 = ((l)g.ab(l.class)).dlF();
-    Object localObject1 = ((com.tencent.mm.plugin.messenger.foundation.a.a.b)localObject2).apE(paramString);
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("\nchatroomId:").append(paramString);
-    long l1 = ((bu)paramLinkedList.getFirst()).field_msgSeq;
-    long l2 = ((bu)paramLinkedList.getLast()).field_msgSeq;
-    long l3 = ((bu)paramLinkedList.getFirst()).field_createTime;
-    long l4 = ((bu)paramLinkedList.getLast()).field_createTime;
-    localStringBuilder.append("\ngetFirst:").append(l1);
-    localStringBuilder.append(" getLast:").append(l2);
-    localStringBuilder.append(" getFirstCreateTime:").append(l3);
-    localStringBuilder.append(" getLastCreateTime:").append(l4);
-    localStringBuilder.append("\nblock ");
-    paramLinkedList = new com.tencent.mm.k.a.a.c();
-    paramLinkedList.fVm = (((com.tencent.mm.plugin.messenger.foundation.a.a.b)localObject2).apB(paramString) + 1L);
-    paramLinkedList.fVo = (((com.tencent.mm.plugin.messenger.foundation.a.a.b)localObject2).apD(paramString) + 1L);
-    paramLinkedList.fVn = ((com.tencent.mm.plugin.messenger.foundation.a.a.b)localObject2).apA(paramString);
-    paramLinkedList.fVp = ((com.tencent.mm.plugin.messenger.foundation.a.a.b)localObject2).apC(paramString);
-    if (paramLinkedList.fVn - paramLinkedList.fVm >= 0L) {
-      ((d)localObject1).fVq.add(paramLinkedList);
+    AppMethodBeat.i(20528);
+    ae.i("MicroMsg.GetContactService", "dkverify getNow :" + paramString1 + " chatroom: " + paramString2 + " stack:" + bu.fpN());
+    if (bn(paramString1, paramString2))
+    {
+      if (parama != null) {
+        break label100;
+      }
+      ae.i("MicroMsg.GetContactService", "addGetContactCallBack %s, addGetContactCallBack is null", new Object[] { bu.bI(paramString1, "") });
     }
     for (;;)
     {
-      paramString = new LinkedList();
-      paramLinkedList = ((d)localObject1).fVq.iterator();
-      while (paramLinkedList.hasNext())
-      {
-        localObject1 = (com.tencent.mm.k.a.a.c)paramLinkedList.next();
-        int j = 0;
-        long l5 = ((com.tencent.mm.k.a.a.c)localObject1).fVm;
-        long l6 = ((com.tencent.mm.k.a.a.c)localObject1).fVn;
-        long l7 = ((com.tencent.mm.k.a.a.c)localObject1).fVo;
-        long l8 = ((com.tencent.mm.k.a.a.c)localObject1).fVp;
-        localStringBuilder.append("[").append(l5).append(":").append(l6).append("][").append(l7).append(":").append(l8).append("] | ");
-        int i = j;
-        if (l5 <= l1)
-        {
-          i = j;
-          if (l1 <= l6)
-          {
-            localObject2 = new com.tencent.mm.k.a.a.c();
-            ((com.tencent.mm.k.a.a.c)localObject2).fVm = ((com.tencent.mm.k.a.a.c)localObject1).fVm;
-            ((com.tencent.mm.k.a.a.c)localObject2).fVn = (l1 - 1L);
-            ((com.tencent.mm.k.a.a.c)localObject2).fVo = l7;
-            ((com.tencent.mm.k.a.a.c)localObject2).fVp = (l3 - 1L);
-            i = j;
-            if (((com.tencent.mm.k.a.a.c)localObject2).fVn - ((com.tencent.mm.k.a.a.c)localObject2).fVm >= 0L)
-            {
-              paramString.add(localObject2);
-              i = 1;
-            }
-          }
-        }
-        j = i;
-        if (l5 <= l2)
-        {
-          j = i;
-          if (l2 <= l6)
-          {
-            localObject2 = new com.tencent.mm.k.a.a.c();
-            ((com.tencent.mm.k.a.a.c)localObject2).fVm = (1L + l2);
-            ((com.tencent.mm.k.a.a.c)localObject2).fVn = l6;
-            ((com.tencent.mm.k.a.a.c)localObject2).fVo = (1L + l4);
-            ((com.tencent.mm.k.a.a.c)localObject2).fVp = l8;
-            j = i;
-            if (((com.tencent.mm.k.a.a.c)localObject2).fVn - ((com.tencent.mm.k.a.a.c)localObject2).fVm >= 0L)
-            {
-              paramString.add(localObject2);
-              j = 1;
-            }
-          }
-        }
-        if ((j == 0) && ((l1 > l6) || (l2 < l5)))
-        {
-          paramString.add(localObject1);
-          com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.GetChatroomMsgReceiver", "[createBlocks] add raw block!");
-        }
-      }
-      com.tencent.mm.sdk.platformtools.ad.w("MicroMsg.GetChatroomMsgReceiver", "[createBlocks] lastSeq[%s]<firstSeq[%s]", new Object[] { Long.valueOf(paramLinkedList.fVn), Long.valueOf(paramLinkedList.fVm) });
-    }
-    paramLinkedList = new StringBuilder();
-    localObject1 = paramString.iterator();
-    while (((Iterator)localObject1).hasNext())
-    {
-      localObject2 = (com.tencent.mm.k.a.a.c)((Iterator)localObject1).next();
-      paramLinkedList.append("[").append(((com.tencent.mm.k.a.a.c)localObject2).fVm).append(":").append(((com.tencent.mm.k.a.a.c)localObject2).fVn).append("][").append(((com.tencent.mm.k.a.a.c)localObject2).fVo).append(":").append(((com.tencent.mm.k.a.a.c)localObject2).fVp).append("] | ");
-    }
-    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.GetChatroomMsgReceiver", "[createBlocks] " + localStringBuilder.toString() + "\nnew blockList:" + paramLinkedList.toString());
-    AppMethodBeat.o(20509);
-    return paramString;
-  }
-  
-  private static void d(Map<Long, bn> paramMap, String paramString)
-  {
-    AppMethodBeat.i(20511);
-    if ((paramMap.size() == 0) || (af.isNullOrNil(paramString)))
-    {
-      AppMethodBeat.o(20511);
+      this.ibt.ay(0L, 0L);
+      AppMethodBeat.o(20528);
       return;
-    }
-    paramMap = paramMap.values().iterator();
-    if (paramMap != null) {
-      while (paramMap.hasNext())
-      {
-        Object localObject1 = (bn)paramMap.next();
-        if ((localObject1 != null) && (paramString.equals(((bn)localObject1).field_fromUserName)))
-        {
-          com.tencent.mm.model.ba.aBQ();
-          Object localObject2 = com.tencent.mm.model.c.azs().aI(paramString, ((bn)localObject1).field_originSvrId);
-          if (((ei)localObject2).field_msgId != 0L)
-          {
-            com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.GetChatroomMsgReceiver", "summerbadcr dealSysCmdMsg msg id[%d], originsvrid[%d]", new Object[] { Long.valueOf(((ei)localObject2).field_msgId), Long.valueOf(((ei)localObject2).field_msgSvrId) });
-            localObject2 = new cv();
-            ((cv)localObject2).xbt = ((bn)localObject1).field_newMsgId;
-            ((cv)localObject2).Fvi = z.IX(((bn)localObject1).field_fromUserName);
-            ((cv)localObject2).Fvj = z.IX(((bn)localObject1).field_toUserName);
-            ((cv)localObject2).CreateTime = ((int)((bn)localObject1).field_createTime);
-            ((cv)localObject2).Fvk = z.IX(((bn)localObject1).field_content);
-            ((cv)localObject2).Fvn = ((bn)localObject1).field_msgSource;
-            ((cv)localObject2).Fvp = ((bn)localObject1).field_msgSeq;
-            int i = ((bn)localObject1).field_flag;
-            ((cv)localObject2).ugm = 10002;
-            localObject1 = com.tencent.mm.model.ba.getSysCmdMsgExtension();
-            boolean bool1;
-            label262:
-            boolean bool2;
-            if ((i & 0x2) != 0)
-            {
-              bool1 = true;
-              if ((i & 0x1) == 0) {
-                break label308;
-              }
-              bool2 = true;
-              label271:
-              if ((i & 0x4) == 0) {
-                break label314;
-              }
-            }
-            label308:
-            label314:
-            for (boolean bool3 = true;; bool3 = false)
-            {
-              ((cd)localObject1).b(new e.a((cv)localObject2, bool1, bool2, bool3));
-              break;
-              bool1 = false;
-              break label262;
-              bool2 = false;
-              break label271;
-            }
-          }
-        }
-      }
-    }
-    AppMethodBeat.o(20511);
-  }
-  
-  public final void a(int paramInt, n paramn, Object paramObject)
-  {
-    AppMethodBeat.i(20508);
-    if ((paramn == ((l)g.ab(l.class)).azv()) && ((paramObject instanceof String)) && (5 == paramInt))
-    {
-      paramn = ((l)g.ab(l.class)).dlF();
-      paramObject = (String)paramObject;
-      if (paramn.apF(paramObject))
-      {
-        com.tencent.mm.storage.ad localad = paramn.apH(paramObject);
-        if (localad.field_seqBlockInfo != null) {
-          localad.field_seqBlockInfo.fVq.clear();
-        }
-        localad.field_lastLocalSeq = localad.field_lastPushSeq;
-        localad.field_lastLocalCreateTime = localad.field_lastPushCreateTime;
-        long l = paramn.b(localad);
-        com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.GetChatroomMsgReceiver", "[onNotifyChange] username:" + paramObject + " ret:" + l + " chatroomMsgSeq:" + localad.toString());
-      }
-    }
-    AppMethodBeat.o(20508);
-  }
-  
-  public final void a(String paramString, com.tencent.mm.sdk.e.m paramm)
-  {
-    AppMethodBeat.i(20510);
-    if (!af.isNullOrNil(paramString)) {
       try
       {
-        long l = Long.valueOf(paramString).longValue();
-        paramString = new bn();
-        paramString.field_originSvrId = l;
-        p.aJy();
-        if (p.aJw().get(paramString, new String[0]))
+        label100:
+        Object localObject = (LinkedList)this.ibn.get(paramString1);
+        paramString2 = (String)localObject;
+        if (localObject == null)
         {
-          this.hYo.put(Long.valueOf(l), paramString);
-          com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.GetChatroomMsgReceiver", "summerbadcr dealSysCmdMsg onNotifyChange put info systemRowid[%d], svrId[%d]", new Object[] { Long.valueOf(paramString.systemRowid), Long.valueOf(l) });
-          AppMethodBeat.o(20510);
-          return;
+          localObject = this.ibn;
+          paramString2 = new LinkedList();
+          ((Map)localObject).put(paramString1, paramString2);
         }
-        this.hYo.remove(Long.valueOf(l));
-        com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.GetChatroomMsgReceiver", "summerbadcr dealSysCmdMsg onNotifyChange remove info svrId[%d]", new Object[] { Long.valueOf(l) });
-        AppMethodBeat.o(20510);
-        return;
+        if (paramString2.contains(parama)) {
+          continue;
+        }
       }
-      catch (Exception paramString)
+      finally
       {
-        com.tencent.mm.sdk.platformtools.ad.printErrStackTrace("MicroMsg.GetChatroomMsgReceiver", paramString, "summerbadcr dealSysCmdMsg onNotifyChange:", new Object[0]);
+        AppMethodBeat.o(20528);
       }
-    }
-    AppMethodBeat.o(20510);
-  }
-  
-  public final void a(String paramString, boolean paramBoolean1, LinkedList<bu> paramLinkedList, com.tencent.mm.k.a.a.c paramc, boolean paramBoolean2)
-  {
-    AppMethodBeat.i(20507);
-    if ((paramLinkedList.size() <= 0) || (paramBoolean2))
-    {
-      com.tencent.mm.sdk.platformtools.ad.w("MicroMsg.GetChatroomMsgReceiver", "[onFetched] fetchList.size() == 0! removeBlock! isBlockAll:".concat(String.valueOf(paramBoolean2)));
-      l1 = paramc.fVm;
-      l2 = paramc.fVn;
-      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.GetChatroomMsgReceiver", "[removeBlock] firstMsgSeq:" + l1 + " lastMsgSeq:" + l2 + " chatroomId:" + paramString);
-      paramLinkedList = ((l)g.ab(l.class)).dlF();
-      paramc = paramLinkedList.apH(paramString);
-      if (paramc.field_seqBlockInfo != null)
-      {
-        localObject1 = new LinkedList();
-        localObject2 = paramc.field_seqBlockInfo.fVq.iterator();
-        while (((Iterator)localObject2).hasNext())
-        {
-          com.tencent.mm.k.a.a.c localc = (com.tencent.mm.k.a.a.c)((Iterator)localObject2).next();
-          if ((localc.fVm == l1) && (localc.fVn == l2)) {
-            ((List)localObject1).add(localc);
-          }
-        }
-        paramc.field_seqBlockInfo.fVq.removeAll((Collection)localObject1);
-        l3 = paramLinkedList.b(paramc);
-        com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.GetChatroomMsgReceiver", "[removeBlock] firstMsgSeq:" + l1 + " lastMsgSeq:" + l2 + " chatroomId:" + paramString + " ret:" + l3 + " remove list:" + ((List)localObject1).size());
-        if (((List)localObject1).size() > 0)
-        {
-          localObject1 = com.tencent.mm.ui.chatting.l.b.JWt;
-          com.tencent.mm.ui.chatting.l.b.fGW();
-        }
-      }
-      paramc.field_lastLocalSeq = paramc.field_lastPushSeq;
-      paramc.field_lastLocalCreateTime = paramc.field_lastPushCreateTime;
-      l3 = paramLinkedList.b(paramc);
-      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.GetChatroomMsgReceiver", "[removeBlock] firstMsgSeq:" + l1 + " lastMsgSeq:" + l2 + " chatroomId:" + paramString + " ret:" + l3 + " lastPushSeq:" + paramc.field_lastPushSeq + " field_lastPushCreateTime:" + paramc.field_lastPushCreateTime);
-      AppMethodBeat.o(20507);
-      return;
-    }
-    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.GetChatroomMsgReceiver", "[onFetched] insert msg count[%s] isFetchUp:%s", new Object[] { Integer.valueOf(paramLinkedList.size()), Boolean.valueOf(paramBoolean1) });
-    paramc = ((l)g.ab(l.class)).dlF();
-    Object localObject1 = a(paramString, paramLinkedList);
-    Object localObject2 = paramc.apE(paramString);
-    ((d)localObject2).fVq.clear();
-    ((d)localObject2).fVq.addAll((Collection)localObject1);
-    paramBoolean1 = paramc.a(paramString, (d)localObject2);
-    long l1 = ((bu)paramLinkedList.getLast()).field_msgSeq;
-    long l2 = ((bu)paramLinkedList.getLast()).field_createTime;
-    long l3 = paramc.apB(paramString);
-    long l4 = paramc.apD(paramString);
-    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.GetChatroomMsgReceiver", "[onFetched] blockList size:%s ret:%s GetSeq:[last %s:old %s] GetLocalCreateTime:[last %s:old %s]", new Object[] { Integer.valueOf(((d)localObject2).fVq.size()), Boolean.valueOf(paramBoolean1), Long.valueOf(l1), Long.valueOf(l3), Long.valueOf(l2), Long.valueOf(l4) });
-    if (l3 < l1)
-    {
-      paramc.aD(paramString, l1);
-      paramc.aB(paramString, l2);
-    }
-    for (;;)
-    {
-      d(new HashMap(this.hYo), paramString);
-      AppMethodBeat.o(20507);
-      return;
-      com.tencent.mm.sdk.platformtools.ad.w("MicroMsg.GetChatroomMsgReceiver", "oldGetSeq>=lastGetSeq [%s:%s]", new Object[] { Long.valueOf(l3), Long.valueOf(l1) });
+      paramString2.add(parama);
     }
   }
   
-  static final class a
-    implements Runnable
+  public final void aBI()
   {
-    ty hYq;
-    
-    private a(ty paramty)
+    AppMethodBeat.i(186363);
+    ae.i("MicroMsg.GetContactService", "[checkPendingGetContact] %s", new Object[] { Boolean.valueOf(com.tencent.mm.plugin.subapp.b.iUA.MT()) });
+    this.ibt.ay(500L, 500L);
+    AppMethodBeat.o(186363);
+  }
+  
+  final void aIq()
+  {
+    long l;
+    try
     {
-      this.hYq = paramty;
-    }
-    
-    public final void run()
-    {
-      AppMethodBeat.i(20505);
-      long l3 = System.currentTimeMillis();
-      label512:
-      label521:
-      label808:
-      label2093:
+      AppMethodBeat.i(20533);
+      if (com.tencent.mm.plugin.subapp.b.iUA.MT())
+      {
+        ae.w("MicroMsg.GetContactService", "tryStartNetscene need init , never get contact");
+        AppMethodBeat.o(20533);
+      }
       for (;;)
       {
-        Object localObject3;
-        Object localObject4;
-        int i;
-        long l5;
-        Object localObject5;
-        long l2;
-        Object localObject6;
-        int n;
-        long l1;
-        int j;
-        int m;
-        bu localbu;
-        label617:
-        label624:
-        Object localObject2;
-        try
+        return;
+        l = bu.fpO();
+        if ((this.hOU) && (l - this.hPf > 600000L))
         {
-          if (!g.ajx())
-          {
-            com.tencent.mm.sdk.platformtools.ad.w("MicroMsg.GetChatroomMsgReceiver", "[UpdateMsgSeqStorageTask$run] accHasReady no!");
-            com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.GetChatroomMsgReceiver", "[HandlePushTask$run] cost:" + (System.currentTimeMillis() - l3));
-            AppMethodBeat.o(20505);
-            return;
-          }
-          localObject1 = this.hYq.dIv.data;
-          if (localObject1 == null) {
-            break label2007;
-          }
-          localObject3 = new cw();
+          ae.w("MicroMsg.GetContactService", "tryStartNetscene Not Callback too long:%d . Force Run Now", new Object[] { Long.valueOf(l - this.hPf) });
+          this.hOU = false;
         }
-        catch (Exception localException1)
-        {
-          try
-          {
-            Object localObject1;
-            ((cw)localObject3).parseFrom((byte[])localObject1);
-            long l4 = System.currentTimeMillis();
-            localObject4 = z.a(((cw)localObject3).Fvq);
-            i = ((cw)localObject3).Fvp;
-            l5 = 1000L * ((cw)localObject3).CreateTime;
-            localObject5 = ((l)g.ab(l.class)).dlF();
-            if (((com.tencent.mm.plugin.messenger.foundation.a.a.b)localObject5).apF((String)localObject4))
-            {
-              com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.GetChatroomMsgReceiver", "[UpdateMsgSeqStorageTask$run#update] chatRoomId:%s updatePushSeqRet[%s]:%s updatePushCreateTimeRet[%s]:%s", new Object[] { localObject4, Integer.valueOf(i), Boolean.valueOf(((com.tencent.mm.plugin.messenger.foundation.a.a.b)localObject5).aA((String)localObject4, i)), Long.valueOf(l5), Boolean.valueOf(((com.tencent.mm.plugin.messenger.foundation.a.a.b)localObject5).aC((String)localObject4, l5)) });
-              com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.GetChatroomMsgReceiver", "[updateChatroomMsgSeq] cost:" + (System.currentTimeMillis() - l4));
-              l2 = System.currentTimeMillis();
-              localObject6 = z.a(((cw)localObject3).Fvq);
-              n = ((cw)localObject3).Fvp;
-              l1 = ((cw)localObject3).xbt;
-              j = ((cw)localObject3).CreateTime;
-              int k = ((cw)localObject3).Fvt;
-              m = ((cw)localObject3).ugm;
-              i = ((cw)localObject3).Fvr;
-              localObject3 = z.a(((cw)localObject3).Fvs);
-              com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.GetChatroomMsgReceiver", "summerbadcr updateConv chatRoomId[%s], newMsgId[%d], createTime[%d], isActed[%d], msgseq[%d], msgType[%d], unDeliverCount[%d], content[%s]", new Object[] { localObject6, Long.valueOf(l1), Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(n), Integer.valueOf(m), Integer.valueOf(i), bt.aRp((String)localObject3) });
-              localObject1 = ((l)g.ab(l.class)).azv().aTz((String)localObject6);
-              if (localObject1 != null) {
-                break label1237;
-              }
-              localObject1 = new at((String)localObject6);
-              ((at)localObject1).qu(j * 1000L);
-              ((at)localObject1).qw(n);
-              ((at)localObject1).kp(1);
-              ((at)localObject1).kw(1);
-              b.aHW();
-              b.EZ((String)localObject6);
-              l1 = ((l)g.ab(l.class)).azS().apJ((String)localObject6);
-              com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.GetChatroomMsgReceiver", "summerbadcr updateConv new conv lastDeleteSeq(FirstUnDeliverSeq)[%d], msgSeq[%d]", new Object[] { Long.valueOf(l1), Integer.valueOf(n) });
-              if (l1 <= 0L) {
-                break label2057;
-              }
-              ((at)localObject1).qx(l1);
-              i = 1;
-              if (k > 0) {
-                ((at)localObject1).ku(((com.tencent.mm.g.c.ba)localObject1).field_atCount + k);
-              }
-              localbu = new bu();
-              localbu.kr(0);
-              localbu.tN((String)localObject6);
-              localbu.setType(m);
-              localbu.setContent((String)localObject3);
-              if (m != 49) {
-                break label1566;
-              }
-              localObject4 = k.b.yr(k.ls((String)localObject6, (String)localObject3));
-              localbu.setType(com.tencent.mm.pluginsdk.model.app.m.g((k.b)localObject4));
-              if (!localbu.fpd()) {
-                break label2080;
-              }
-              localObject3 = ((k.b)localObject4).content;
-              localbu.setContent((String)localObject3);
-              ((at)localObject1).kr(0);
-              ((at)localObject1).setContent(localbu.field_content);
-              ((at)localObject1).tA(Integer.toString(localbu.getType()));
-              localObject3 = ((l)g.ab(l.class)).azv().Na();
-              if (localObject3 == null) {
-                break label1897;
-              }
-              localObject4 = new PString();
-              localObject5 = new PString();
-              PInt localPInt = new PInt();
-              ((bq.b)localObject3).a(localbu, (PString)localObject4, (PString)localObject5, localPInt, false);
-              ((at)localObject1).tB(((PString)localObject4).value);
-              ((at)localObject1).tC(((PString)localObject5).value);
-              ((at)localObject1).ks(localPInt.value);
-              if (localbu.getType() == 49)
-              {
-                localObject3 = (String)bw.M(((com.tencent.mm.g.c.ba)localObject1).field_content, "msg").get(".msg.appmsg.title");
-                localObject4 = bt.nullAsNil(((com.tencent.mm.g.c.ba)localObject1).field_digest);
-                if (!bt.isNullOrNil((String)localObject3)) {
-                  break label1871;
-                }
-                localObject3 = "";
-                ((at)localObject1).tB(((String)localObject4).concat((String)localObject3));
-              }
-              label820:
-              if (i == 0) {
-                break label1910;
-              }
-              com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.GetChatroomMsgReceiver", "summerbadcr updateConv insert username[%s], ret[%d], firstSeq[%d], lastSeq[%d], undeliver[%d]", new Object[] { localObject6, Long.valueOf(((l)g.ab(l.class)).azv().e((at)localObject1)), Long.valueOf(((com.tencent.mm.g.c.ba)localObject1).field_firstUnDeliverSeq), Long.valueOf(((com.tencent.mm.g.c.ba)localObject1).field_lastSeq), Integer.valueOf(((com.tencent.mm.g.c.ba)localObject1).field_UnDeliverCount) });
-              com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.GetChatroomMsgReceiver", "[updateConv] cost:" + (System.currentTimeMillis() - l2));
-              continue;
-              localException1 = localException1;
-              com.tencent.mm.sdk.platformtools.ad.printErrStackTrace("MicroMsg.GetChatroomMsgReceiver", localException1, "", new Object[0]);
-            }
-          }
-          catch (Exception localException2)
-          {
-            com.tencent.mm.sdk.platformtools.ad.printErrStackTrace("MicroMsg.GetChatroomMsgReceiver", localException2, "", new Object[0]);
-            continue;
-            localObject2 = ((l)g.ab(l.class)).dlK().apZ((String)localObject4);
-            if (localObject2 == null) {
-              break label2018;
-            }
-          }
-        }
-        if (((ei)localObject2).field_msgId == 0L)
-        {
-          com.tencent.mm.sdk.platformtools.ad.w("MicroMsg.GetChatroomMsgReceiver", "[UpdateMsgSeqStorageTask$run] has not any ReceivedMsg!");
-          localObject2 = null;
-          label1016:
-          if (localObject2 != null)
-          {
-            localObject6 = com.tencent.mm.pluginsdk.i.i.formatTime("yyyy-MM-dd HH:mm:ss", ((ei)localObject2).field_createTime / 1000L);
-            com.tencent.mm.sdk.platformtools.ad.w("MicroMsg.GetChatroomMsgReceiver", "[lastFaultMsgInfo] lastFaultMsgInfo:%s timeFormat:%s", new Object[] { bt.aRp(((ei)localObject2).field_content), localObject6 });
-          }
-          localObject6 = new com.tencent.mm.storage.ad();
-          ((com.tencent.mm.storage.ad)localObject6).field_username = ((String)localObject4);
-          ((com.tencent.mm.storage.ad)localObject6).field_lastPushSeq = i;
-          if (localObject2 == null) {
-            break label2021;
-          }
-          l1 = ((ei)localObject2).field_msgSeq;
-          label1101:
-          ((com.tencent.mm.storage.ad)localObject6).field_lastLocalSeq = l1;
-          ((com.tencent.mm.storage.ad)localObject6).field_lastPushCreateTime = l5;
-          if (localObject2 == null) {
-            break label2030;
-          }
-          l1 = ((ei)localObject2).field_createTime;
-          label1127:
-          ((com.tencent.mm.storage.ad)localObject6).field_lastLocalCreateTime = l1;
-          long l6 = ((com.tencent.mm.plugin.messenger.foundation.a.a.b)localObject5).a((com.tencent.mm.storage.ad)localObject6);
-          if (localObject2 == null) {
-            break label2039;
-          }
-          l1 = ((ei)localObject2).field_msgSeq;
-          if (localObject2 == null) {
-            break label2048;
-          }
-          l2 = ((ei)localObject2).field_createTime;
-          com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.GetChatroomMsgReceiver", "[UpdateMsgSeqStorageTask$run#insert] ret:%s,chatRoomId:%s updatePushSeq:%s updatePushCreateTime:%s field_lastLocalSeq:%s field_lastLocalCreateTime:%s", new Object[] { Long.valueOf(l6), localObject4, Integer.valueOf(i), Long.valueOf(l5), Long.valueOf(l1), Long.valueOf(l2) });
-          localObject2 = com.tencent.mm.ui.chatting.l.b.JWt;
-          com.tencent.mm.ui.chatting.l.b.fGU();
-          continue;
-          label1237:
-          int i1 = (int)((com.tencent.mm.g.c.ba)localObject2).field_lastSeq;
-          if (n > i1)
-          {
-            ((at)localObject2).qw(n);
-            int i2 = ((com.tencent.mm.g.c.ba)localObject2).field_UnDeliverCount;
-            ((at)localObject2).kw(i);
-            ((at)localObject2).qu(j * 1000L);
-            if (i > ((com.tencent.mm.g.c.ba)localObject2).field_unReadCount) {}
-            for (;;)
-            {
-              j = i;
-              if (i < 0)
-              {
-                com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.GetChatroomMsgReceiver", "why???, unreadCount %d", new Object[] { Integer.valueOf(i) });
-                j = 0;
-              }
-              ((at)localObject2).kp(j);
-              l1 = ((com.tencent.mm.g.c.ba)localObject2).field_firstUnDeliverSeq;
-              com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.GetChatroomMsgReceiver", "summerbadcr updateConv  msgSeq[%d], firstSeq[%d], lastseq[%d]", new Object[] { Integer.valueOf(n), Long.valueOf(l1), Integer.valueOf(i1) });
-              if (l1 <= 0L) {
-                break;
-              }
-              localObject4 = ((l)g.ab(l.class)).dlK().aJ((String)localObject6, i1);
-              if (((ei)localObject4).field_msgId <= 0L) {
-                break label2065;
-              }
-              ((at)localObject2).qx(((ei)localObject4).field_msgSeq);
-              break label2065;
-              i = i - i2 + ((com.tencent.mm.g.c.ba)localObject2).field_unReadCount;
-            }
-            l1 = ((l)g.ab(l.class)).azS().apJ((String)localObject6);
-            if (l1 > 0L)
-            {
-              ((at)localObject2).qx(l1);
-              i = 0;
-              continue;
-            }
-            l1 = ((l)g.ab(l.class)).dlK().aqr((String)localObject6);
-            com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.GetChatroomMsgReceiver", "summerbadcr updateConv lastMsgSeq[%s]", new Object[] { Long.valueOf(l1) });
-            if (l1 <= 0L) {
-              break label2070;
-            }
-            ((at)localObject2).qx(l1);
-            break label2070;
-          }
-          if ((n != i1) || (i != 0) || (((com.tencent.mm.g.c.ba)localObject2).field_unReadCount <= 0)) {
-            break label2075;
-          }
-          ((at)localObject2).kp(0);
-          break label2075;
-          if (m != 10002) {
-            continue;
-          }
-          ((r)g.ad(r.class)).getSysCmdMsgExtension();
-          if ((localbu.getType() != 10002) || (bt.isNullOrNil((String)localObject3))) {
-            continue;
-          }
-          if (bt.isNullOrNil((String)localObject3))
-          {
-            com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.SysCmdMsgExtension", "null msg content");
-            continue;
-          }
-          if (((String)localObject3).startsWith("~SEMI_XML~"))
-          {
-            localObject5 = bj.aQM((String)localObject3);
-            if (localObject5 != null) {
-              break label2083;
-            }
-            com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.SysCmdMsgExtension", "SemiXml values is null, msgContent %s", new Object[] { localObject3 });
-            continue;
-          }
-        }
-        for (;;)
-        {
-          if ((localObject4 == null) || (!((String)localObject4).equals("revokemsg"))) {
-            break label2093;
-          }
-          com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.SysCmdMsgExtension", "mm hit MM_DATA_SYSCMD_NEWXML_SUBTYPE_REVOKE");
-          ((Map)localObject3).get(".sysmsg.revokemsg.session");
-          localObject4 = (String)((Map)localObject3).get(".sysmsg.revokemsg.newmsgid");
-          localObject3 = (String)((Map)localObject3).get(".sysmsg.revokemsg.replacemsg");
-          com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.SysCmdMsgExtension", "ashutest::[oneliang][xml parse] ,msgId:%s,replaceMsg:%s ", new Object[] { localObject4, localObject3 });
-          localbu.setContent((String)localObject3);
-          localbu.setType(10000);
-          break label624;
-          j = ((String)localObject3).indexOf("<sysmsg");
-          if (j == -1)
-          {
-            com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.SysCmdMsgExtension", "msgContent not start with <sysmsg");
-            break label624;
-          }
-          localObject4 = bw.M(((String)localObject3).substring(j), "sysmsg");
-          if (localObject4 == null)
-          {
-            com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.SysCmdMsgExtension", "XmlParser values is null, msgContent %s", new Object[] { localObject3 });
-            break label624;
-          }
-          localObject5 = (String)((Map)localObject4).get(".sysmsg.$type");
-          localObject3 = localObject4;
-          localObject4 = localObject5;
-          continue;
-          label1871:
-          localObject3 = " " + bt.nullAsNil((String)localObject3);
-          break label808;
-          label1897:
-          ((at)localObject2).tB(((com.tencent.mm.g.c.ba)localObject2).field_content);
-          break label820;
-          label1910:
-          ((at)localObject2).kt(((com.tencent.mm.g.c.ba)localObject2).field_attrflag & 0xFFEFFFFF);
-          com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.GetChatroomMsgReceiver", "summerbadcr updateConv update username[%s], ret[%d], firstSeq[%d], lastSeq[%d], undeliver[%d]", new Object[] { localObject6, Long.valueOf(((l)g.ab(l.class)).azv().a((at)localObject2, (String)localObject6, true)), Long.valueOf(((com.tencent.mm.g.c.ba)localObject2).field_firstUnDeliverSeq), Long.valueOf(((com.tencent.mm.g.c.ba)localObject2).field_lastSeq), Integer.valueOf(((com.tencent.mm.g.c.ba)localObject2).field_UnDeliverCount) });
-          break label900;
-          label2007:
-          com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.GetChatroomMsgReceiver", "[UpdateMsgSeqStorageTask$run] data is null");
+        if (!this.hOU) {
           break;
-          label2018:
-          break label1016;
-          label2021:
-          l1 = i - 1;
-          break label1101;
-          label2030:
-          l1 = l5 - 1L;
-          break label1127;
-          label2039:
-          l1 = i - 1;
-          break label1157;
-          l2 = l5 - 1L;
-          break label1169;
-          l1 = n;
-          break label512;
-          i = 0;
-          break label521;
-          i = 0;
-          break label521;
-          i = 0;
-          break label521;
-          break label617;
-          localObject4 = "brand_service";
-          localObject3 = localObject5;
+        }
+        ae.i("MicroMsg.GetContactService", "tryStartNetscene netSceneRunning: " + this.hOU + " ret");
+        AppMethodBeat.o(20533);
+      }
+      localObject2 = (bai)this.ibo.poll();
+    }
+    finally {}
+    Object localObject2;
+    Object localObject3 = localObject2;
+    if (localObject2 == null)
+    {
+      aIp();
+      for (localObject2 = (bai)this.ibo.poll(); ((localObject2 == null) || (((bai)localObject2).FNk == null) || (((bai)localObject2).FNk.size() == 0)) && (this.ibo.size() > 0); localObject2 = (bai)this.ibo.poll()) {}
+      if ((localObject2 != null) && (((bai)localObject2).FNk != null))
+      {
+        localObject3 = localObject2;
+        if (((bai)localObject2).FNk.size() != 0) {}
+      }
+      else
+      {
+        if (localObject2 != null) {
+          break label728;
         }
       }
     }
+    label728:
+    for (boolean bool = true;; bool = false)
+    {
+      ae.e("MicroMsg.GetContactService", "tryStartNetscene Not any more contact. req is null? %s", new Object[] { Boolean.valueOf(bool) });
+      AppMethodBeat.o(20533);
+      break;
+      this.hPf = l;
+      this.hOU = true;
+      localObject2 = new LinkedList();
+      Object localObject4 = new LinkedList();
+      Object localObject5 = ((bai)localObject3).FNk.iterator();
+      Object localObject6;
+      while (((Iterator)localObject5).hasNext())
+      {
+        localObject6 = z.a((cxn)((Iterator)localObject5).next());
+        if (com.tencent.mm.model.x.zV((String)localObject6)) {
+          ((LinkedList)localObject2).add(localObject6);
+        }
+        if (an.aUq((String)localObject6)) {
+          ((LinkedList)localObject4).add(localObject6);
+        }
+      }
+      if (((LinkedList)localObject2).size() > 0)
+      {
+        localObject2 = (String)((LinkedList)localObject2).get(0);
+        if (com.tencent.mm.model.x.zV((String)localObject2)) {
+          com.tencent.mm.roomsdk.a.b.aRc((String)localObject2).vc((String)localObject2).d(new com.tencent.mm.roomsdk.a.b.b() {}).cAs();
+        }
+        AppMethodBeat.o(20533);
+        break;
+      }
+      if (((LinkedList)localObject4).size() > 0)
+      {
+        localObject5 = (String)((LinkedList)localObject4).get(0);
+        localObject6 = new bfs();
+        ((bfs)localObject6).iKt = ((String)localObject5);
+        localObject4 = "";
+        localObject2 = localObject4;
+        if (((bai)localObject3).GQr != null)
+        {
+          localObject2 = localObject4;
+          if (((bai)localObject3).GQr.size() > 0) {
+            localObject2 = z.a((cxn)((bai)localObject3).GQr.get(0));
+          }
+        }
+        ((bfs)localObject6).dwx = ((String)localObject2);
+        localObject3 = new b.a();
+        ((b.a)localObject3).hQF = ((com.tencent.mm.bw.a)localObject6);
+        ((b.a)localObject3).hQG = new bft();
+        ((b.a)localObject3).uri = "/cgi-bin/micromsg-bin/getopenimcontact";
+        ((b.a)localObject3).funcId = 881;
+        ae.i("MicroMsg.GetContactService", "request roomName %s userOpenImname %s", new Object[] { localObject2, localObject5 });
+        com.tencent.mm.ak.x.a(((b.a)localObject3).aDS(), new x.a()
+        {
+          public final int a(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, com.tencent.mm.ak.b paramAnonymousb, n paramAnonymousn)
+          {
+            AppMethodBeat.i(20520);
+            if (paramAnonymousn.getType() != 881)
+            {
+              AppMethodBeat.o(20520);
+              return 0;
+            }
+            c.this.hOU = false;
+            if ((paramAnonymousInt1 != 0) || (paramAnonymousInt2 != 0))
+            {
+              ae.e("MicroMsg.GetContactService", "tryStartNetscene onSceneEnd openImUser errType: %s  errCode: %s username %s will retry/del ", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), this.iby });
+              if (paramAnonymousInt1 == 4) {
+                d.aIs().FC(this.iby);
+              }
+              c.this.ibt.ay(10000L, 10000L);
+              c.this.Q(this.iby, false);
+              AppMethodBeat.o(20520);
+              return 0;
+            }
+            if ((!c.this.ibo.isEmpty()) && (c.this.ibt.foU())) {
+              c.this.ibt.ay(500L, 500L);
+            }
+            s.a((bft)paramAnonymousb.hQE.hQJ);
+            ae.i("MicroMsg.GetContactService", "getopenimcontact onResult %s %s", new Object[] { Boolean.valueOf(d.aIs().FC(this.iby)), this.iby });
+            c.this.Q(this.iby, true);
+            AppMethodBeat.o(20520);
+            return 0;
+          }
+        }, true);
+        AppMethodBeat.o(20533);
+        break;
+      }
+      localObject2 = new b.a();
+      ((b.a)localObject2).hQF = ((com.tencent.mm.bw.a)localObject3);
+      ((b.a)localObject2).hQG = new baj();
+      ((b.a)localObject2).uri = "/cgi-bin/micromsg-bin/getcontact";
+      ((b.a)localObject2).funcId = 182;
+      final int i = ((bai)localObject3).GQs;
+      com.tencent.mm.ak.x.a(((b.a)localObject2).aDS(), new x.a()
+      {
+        public final int a(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, com.tencent.mm.ak.b paramAnonymousb, n paramAnonymousn)
+        {
+          AppMethodBeat.i(20521);
+          if (paramAnonymousn.getType() != 182)
+          {
+            AppMethodBeat.o(20521);
+            return 0;
+          }
+          c.this.hOU = false;
+          if ((paramAnonymousInt1 != 0) || (paramAnonymousInt2 != 0))
+          {
+            ae.e("MicroMsg.GetContactService", "tryStartNetscene onSceneEnd errType:" + paramAnonymousInt1 + " errCode:" + paramAnonymousInt2 + " getScene:" + i + " will retry");
+            c.this.ibt.ay(10000L, 10000L);
+            AppMethodBeat.o(20521);
+            return 0;
+          }
+          if ((!c.this.ibo.isEmpty()) && (c.this.ibt.foU())) {
+            c.this.ibt.ay(500L, 500L);
+          }
+          if (paramAnonymousb != null)
+          {
+            paramAnonymousn = new c.a(c.this);
+            paramAnonymousn.ibF = i;
+            paramAnonymousn.errType = paramAnonymousInt1;
+            paramAnonymousn.errCode = paramAnonymousInt2;
+            paramAnonymousn.errMsg = paramAnonymousString;
+            paramAnonymousn.ibD = ((baj)paramAnonymousb.hQE.hQJ);
+            c.this.ibp.add(paramAnonymousn);
+          }
+          if ((!c.this.ibp.isEmpty()) && (c.this.ibu.foU())) {
+            c.this.ibu.ay(50L, 50L);
+          }
+          AppMethodBeat.o(20521);
+          return 0;
+        }
+      }, true);
+      AppMethodBeat.o(20533);
+      break;
+    }
+  }
+  
+  public final void aJ(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(20526);
+    ae.i("MicroMsg.GetContactService", "dkverify add Contact :" + paramString1 + " chatroom: " + paramString2 + " stack:" + bu.fpN());
+    if (bn(paramString1, paramString2)) {
+      this.ibt.ay(500L, 500L);
+    }
+    AppMethodBeat.o(20526);
+  }
+  
+  public final void g(String paramString1, int paramInt, String paramString2)
+  {
+    boolean bool = false;
+    AppMethodBeat.i(186362);
+    if (bu.isNullOrNil(paramString1)) {}
+    for (;;)
+    {
+      if (bool) {
+        this.ibt.ay(500L, 500L);
+      }
+      AppMethodBeat.o(186362);
+      return;
+      Object localObject = v.aAC();
+      String str = v.aAD();
+      if ((paramString1.equals(localObject)) || (paramString1.equals(str)))
+      {
+        ae.i("MicroMsg.GetContactService", "addToStg username: " + paramString1 + " equal to user: " + (String)localObject + " alias: " + str + " ret");
+      }
+      else
+      {
+        localObject = new a();
+        ((a)localObject).username = paramString1;
+        ((a)localObject).hKG = bu.nullAsNil(paramString2);
+        ((a)localObject).ibl = bu.o(Integer.valueOf(paramInt));
+        ((a)localObject).ibj = bu.fpO();
+        bool = d.aIs().a((a)localObject);
+      }
+    }
+  }
+  
+  final class a
+  {
+    int errCode;
+    String errMsg;
+    int errType;
+    baj ibD;
+    int ibE = 0;
+    int ibF;
+    
+    a() {}
   }
 }
 

@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.priority.model.a.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.priority.model.a.a;
 import com.tencent.mm.plugin.priority.model.b;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class d
   extends a
@@ -12,11 +12,11 @@ public final class d
   {
     super(paramb);
     AppMethodBeat.i(87842);
-    ad.i("MicroMsg.Priority.C2CMsgFileUsageStorage", "Create FileUsageStorage");
+    ae.i("MicroMsg.Priority.C2CMsgFileUsageStorage", "Create FileUsageStorage");
     AppMethodBeat.o(87842);
   }
   
-  public final long dzm()
+  public final long dCD()
   {
     return 33L;
   }
@@ -28,7 +28,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.priority.model.a.b.d
  * JD-Core Version:    0.7.0.1
  */

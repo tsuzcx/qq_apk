@@ -1,11 +1,11 @@
 package com.tencent.mm.plugin.aa.model.cgi;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.a;
-import com.tencent.mm.al.b.a;
+import com.tencent.mm.ak.a;
+import com.tencent.mm.ak.b.a;
 import com.tencent.mm.protocal.protobuf.s;
 import com.tencent.mm.protocal.protobuf.t;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class b
   extends a<t>
@@ -15,17 +15,17 @@ public final class b
     AppMethodBeat.i(63371);
     b.a locala = new b.a();
     s locals = new s();
-    locals.FpG = paramString1;
-    locals.FpH = paramString2;
+    locals.FIe = paramString1;
+    locals.FIf = paramString2;
     locals.scene = paramInt;
-    locala.hNM = locals;
-    locala.hNN = new t();
+    locala.hQF = locals;
+    locala.hQG = new t();
     locala.uri = "/cgi-bin/mmpay-bin/newaapayurge";
     locala.funcId = 1644;
-    locala.hNO = 0;
+    locala.hQH = 0;
     locala.respCmdId = 0;
-    c(locala.aDC());
-    ad.i("MicroMsg.CgiAAPayUrge", "CgiAAPayUrge, billNo: %s, chatroom: %s, scene: %s", new Object[] { paramString1, paramString2, Integer.valueOf(paramInt) });
+    c(locala.aDS());
+    ae.i("MicroMsg.CgiAAPayUrge", "CgiAAPayUrge, billNo: %s, chatroom: %s, scene: %s", new Object[] { paramString1, paramString2, Integer.valueOf(paramInt) });
     AppMethodBeat.o(63371);
   }
 }

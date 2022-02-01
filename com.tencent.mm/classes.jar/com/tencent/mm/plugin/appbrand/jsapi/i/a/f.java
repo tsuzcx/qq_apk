@@ -7,10 +7,10 @@ import org.json.JSONObject;
 
 public final class f
 {
-  private static double kSA = -85.0D;
-  private static double kSB = -1000.0D;
-  private static double kSy = -85.0D;
-  private static double kSz = -1000.0D;
+  private static double kWh = -85.0D;
+  private static double kWi = -1000.0D;
+  private static double kWj = -85.0D;
+  private static double kWk = -1000.0D;
   
   public static int S(JSONObject paramJSONObject)
   {
@@ -31,7 +31,7 @@ public final class f
   public static int a(Map<String, Object> paramMap, String paramString, int paramInt)
   {
     AppMethodBeat.i(143716);
-    paramMap = cw(paramMap.get(paramString));
+    paramMap = cx(paramMap.get(paramString));
     if (paramMap != null)
     {
       paramInt = paramMap.intValue();
@@ -67,7 +67,7 @@ public final class f
   {
     AppMethodBeat.i(143711);
     boolean bool = false;
-    if (f.a.kSC.name().equalsIgnoreCase(paramString))
+    if (f.a.kWl.name().equalsIgnoreCase(paramString))
     {
       if (paramDouble5 == 0.0D) {
         bool = false;
@@ -83,7 +83,7 @@ public final class f
     {
       bool = true;
       break;
-      if (!f.a.kSD.name().equalsIgnoreCase(paramString)) {
+      if (!f.a.kWm.name().equalsIgnoreCase(paramString)) {
         break;
       }
       int i;
@@ -125,7 +125,7 @@ public final class f
     return (((int)paramFloat * -1 / 360 + 1) * 360 + paramFloat) % 360.0F;
   }
   
-  private static Integer cw(Object paramObject)
+  private static Integer cx(Object paramObject)
   {
     AppMethodBeat.i(143717);
     if ((paramObject instanceof Integer))
@@ -157,13 +157,13 @@ public final class f
   public static double h(double paramDouble1, double paramDouble2)
   {
     AppMethodBeat.i(143712);
-    kSA = paramDouble1;
-    kSB = paramDouble2;
-    if ((kSy == -85.0D) || (kSz == -1000.0D)) {}
-    for (paramDouble1 = 0.0D;; paramDouble1 = Math.atan2(kSB - kSz, kSA - kSy) * 180.0D / 3.141592D)
+    kWj = paramDouble1;
+    kWk = paramDouble2;
+    if ((kWh == -85.0D) || (kWi == -1000.0D)) {}
+    for (paramDouble1 = 0.0D;; paramDouble1 = Math.atan2(kWk - kWi, kWj - kWh) * 180.0D / 3.141592D)
     {
-      kSy = kSA;
-      kSz = kSB;
+      kWh = kWj;
+      kWi = kWk;
       AppMethodBeat.o(143712);
       return paramDouble1;
     }
@@ -178,14 +178,14 @@ public final class f
       AppMethodBeat.o(143713);
       return "invalid_map_id";
     }
-    paramc = paramc.aXC() + "&" + i;
+    paramc = paramc.aXX() + "&" + i;
     AppMethodBeat.o(143713);
     return paramc;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.i.a.f
  * JD-Core Version:    0.7.0.1
  */

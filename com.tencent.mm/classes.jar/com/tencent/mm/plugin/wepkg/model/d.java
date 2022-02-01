@@ -2,29 +2,29 @@ package com.tencent.mm.plugin.wepkg.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.game.commlib.util.b;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public final class d
 {
-  public static String aKI(String paramString)
+  public static String aMe(String paramString)
   {
     AppMethodBeat.i(110675);
-    if (bt.isNullOrNil(paramString))
+    if (bu.isNullOrNil(paramString))
     {
       AppMethodBeat.o(110675);
       return "";
     }
-    paramString = eXZ() + paramString + "/";
+    paramString = fbL() + paramString + "/";
     AppMethodBeat.o(110675);
     return paramString;
   }
   
-  public static String aKJ(String paramString)
+  public static String aMf(String paramString)
   {
-    AppMethodBeat.i(214468);
+    AppMethodBeat.i(209396);
     if (paramString == null)
     {
-      AppMethodBeat.o(214468);
+      AppMethodBeat.o(209396);
       return "";
     }
     try
@@ -32,36 +32,36 @@ public final class d
       paramString = paramString.split("/wepkg/");
       if (paramString.length <= 1)
       {
-        AppMethodBeat.o(214468);
+        AppMethodBeat.o(209396);
         return "";
       }
       paramString = paramString[1];
       if (paramString == null)
       {
-        AppMethodBeat.o(214468);
+        AppMethodBeat.o(209396);
         return "";
       }
       paramString = paramString.split("/");
       if (paramString.length > 0)
       {
         paramString = paramString[0];
-        AppMethodBeat.o(214468);
+        AppMethodBeat.o(209396);
         return paramString;
       }
     }
     catch (Exception paramString)
     {
-      AppMethodBeat.o(214468);
+      AppMethodBeat.o(209396);
     }
     return "";
   }
   
-  public static String aKK(String paramString)
+  public static String aMg(String paramString)
   {
-    AppMethodBeat.i(214469);
+    AppMethodBeat.i(209397);
     if (paramString == null)
     {
-      AppMethodBeat.o(214469);
+      AppMethodBeat.o(209397);
       return "";
     }
     try
@@ -69,47 +69,47 @@ public final class d
       paramString = paramString.split("/wepkg/");
       if (paramString.length <= 1)
       {
-        AppMethodBeat.o(214469);
+        AppMethodBeat.o(209397);
         return "";
       }
       paramString = paramString[1];
       if (paramString == null)
       {
-        AppMethodBeat.o(214469);
+        AppMethodBeat.o(209397);
         return "";
       }
       paramString = paramString.split("/");
       if (paramString.length > 1)
       {
         paramString = paramString[1];
-        AppMethodBeat.o(214469);
+        AppMethodBeat.o(209397);
         return paramString;
       }
     }
     catch (Exception paramString)
     {
-      AppMethodBeat.o(214469);
+      AppMethodBeat.o(209397);
     }
     return "";
   }
   
-  public static String eXZ()
+  public static String fbL()
   {
-    AppMethodBeat.i(214467);
-    String str = b.cWZ() + "wepkg/";
-    AppMethodBeat.o(214467);
+    AppMethodBeat.i(209395);
+    String str = b.cZG() + "wepkg/";
+    AppMethodBeat.o(209395);
     return str;
   }
   
-  public static String lm(String paramString1, String paramString2)
+  public static String lt(String paramString1, String paramString2)
   {
     AppMethodBeat.i(110676);
-    if ((bt.isNullOrNil(paramString1)) || (bt.isNullOrNil(paramString2)))
+    if ((bu.isNullOrNil(paramString1)) || (bu.isNullOrNil(paramString2)))
     {
       AppMethodBeat.o(110676);
       return "";
     }
-    paramString1 = aKI(paramString1) + paramString2;
+    paramString1 = aMe(paramString1) + paramString2;
     AppMethodBeat.o(110676);
     return paramString1;
   }

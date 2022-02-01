@@ -14,20 +14,20 @@ import java.util.List;
 public class g
 {
   private static final String TAG;
-  private static List<NetworkInterface> kdZ;
+  private static List<NetworkInterface> khq;
   
   static
   {
     AppMethodBeat.i(158991);
     TAG = g.class.getSimpleName();
-    kdZ = new ArrayList();
+    khq = new ArrayList();
     AppMethodBeat.o(158991);
   }
   
-  public static List<NetworkInterface> bfy()
+  public static List<NetworkInterface> bgg()
   {
     AppMethodBeat.i(158988);
-    kdZ.clear();
+    khq.clear();
     for (;;)
     {
       try
@@ -44,7 +44,7 @@ public class g
         Iterator localIterator;
         continue;
       }
-      localObject = kdZ;
+      localObject = khq;
       AppMethodBeat.o(158988);
       return localObject;
       localObject = Collections.list((Enumeration)localObject).iterator();
@@ -54,14 +54,14 @@ public class g
         localIterator = Collections.list(localNetworkInterface.getInetAddresses()).iterator();
         if (localIterator.hasNext()) {
           if (((InetAddress)localIterator.next()).getHostAddress().startsWith("192.168")) {
-            kdZ.add(localNetworkInterface);
+            khq.add(localNetworkInterface);
           }
         }
       }
     }
   }
   
-  public static String bfz()
+  public static String bgh()
   {
     AppMethodBeat.i(158989);
     Object localObject1 = null;
@@ -111,7 +111,7 @@ public class g
     }
   }
   
-  public static String o(String paramString1, int paramInt, String paramString2)
+  public static String q(String paramString1, int paramInt, String paramString2)
   {
     AppMethodBeat.i(158990);
     if (paramString2.startsWith("/"))

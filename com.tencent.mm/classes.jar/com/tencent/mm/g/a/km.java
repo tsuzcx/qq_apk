@@ -1,14 +1,10 @@
 package com.tencent.mm.g.a;
 
-import android.content.Context;
-import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class km
   extends b
 {
-  public a dxu;
-  
   public km()
   {
     this((byte)0);
@@ -16,19 +12,8 @@ public final class km
   
   private km(byte paramByte)
   {
-    AppMethodBeat.i(63289);
-    this.dxu = new a();
-    this.IbR = false;
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(63289);
-  }
-  
-  public static final class a
-  {
-    public Context context;
-    public String dxv;
-    public Long dxw;
-    public String username;
   }
 }
 

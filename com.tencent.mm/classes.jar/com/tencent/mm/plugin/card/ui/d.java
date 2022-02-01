@@ -7,18 +7,18 @@ import com.tencent.mm.plugin.card.model.am;
 public final class d
   implements a
 {
-  private c oEF;
+  private c oLh;
   
   public d(c paramc)
   {
-    this.oEF = paramc;
+    this.oLh = paramc;
   }
   
   public final void onCreate()
   {
     AppMethodBeat.i(113185);
-    if (this.oEF != null) {
-      am.bUN().add(this.oEF);
+    if (this.oLh != null) {
+      am.bWc().add(this.oLh);
     }
     AppMethodBeat.o(113185);
   }
@@ -26,11 +26,11 @@ public final class d
   public final void onDestroy()
   {
     AppMethodBeat.i(113186);
-    if (this.oEF != null)
+    if (this.oLh != null)
     {
-      am.bUN().remove(this.oEF);
-      this.oEF.release();
-      this.oEF = null;
+      am.bWc().remove(this.oLh);
+      this.oLh.release();
+      this.oLh = null;
     }
     AppMethodBeat.o(113186);
   }
@@ -38,8 +38,8 @@ public final class d
   public final void onNotify()
   {
     AppMethodBeat.i(113187);
-    if (this.oEF != null) {
-      this.oEF.a(null, null);
+    if (this.oLh != null) {
+      this.oLh.a(null, null);
     }
     AppMethodBeat.o(113187);
   }

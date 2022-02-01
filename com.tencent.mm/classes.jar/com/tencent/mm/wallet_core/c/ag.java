@@ -3,10 +3,10 @@ package com.tencent.mm.wallet_core.c;
 import android.content.Context;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cc.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.at;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.cb.a;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.au;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public final class ag
 {
@@ -50,7 +50,7 @@ public final class ag
     }
   }
   
-  public static int ago(int paramInt)
+  public static int agX(int paramInt)
   {
     switch (paramInt)
     {
@@ -65,7 +65,7 @@ public final class ag
     return 2;
   }
   
-  public static boolean bw(Intent paramIntent)
+  public static boolean bx(Intent paramIntent)
   {
     AppMethodBeat.i(163884);
     if (paramIntent == null)
@@ -76,7 +76,7 @@ public final class ag
     int i = paramIntent.getIntExtra("key_pay_reslut_type", 0);
     if (i == 1000)
     {
-      ad.i("MicroMsg.WalletPayUtil", "onActivityResult isCanFinish %s %s", new Object[] { Integer.valueOf(i), bt.flS().toString() });
+      ae.i("MicroMsg.WalletPayUtil", "onActivityResult isCanFinish %s %s", new Object[] { Integer.valueOf(i), bu.fpN().toString() });
       AppMethodBeat.o(163884);
       return true;
     }
@@ -84,7 +84,7 @@ public final class ag
     return false;
   }
   
-  public static boolean bx(Intent paramIntent)
+  public static boolean by(Intent paramIntent)
   {
     AppMethodBeat.i(163885);
     if (paramIntent == null)
@@ -95,7 +95,7 @@ public final class ag
     int i = paramIntent.getIntExtra("key_pay_reslut_type", 0);
     if (i == 1001)
     {
-      ad.i("MicroMsg.WalletPayUtil", "onActivityResult isCanIgnore %s %s", new Object[] { Integer.valueOf(i), bt.flS().toString() });
+      ae.i("MicroMsg.WalletPayUtil", "onActivityResult isCanIgnore %s %s", new Object[] { Integer.valueOf(i), bu.fpN().toString() });
       AppMethodBeat.o(163885);
       return true;
     }
@@ -105,7 +105,7 @@ public final class ag
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.wallet_core.c.ag
  * JD-Core Version:    0.7.0.1
  */

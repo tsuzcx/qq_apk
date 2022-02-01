@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.order.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.wallet_core.tenpay.model.m;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -14,17 +14,17 @@ import org.json.JSONObject;
 public final class e
   extends m
 {
-  public int par;
-  private int vpI;
-  public List<i> wDj;
-  public List<d> wDk;
-  public String wDl;
+  public int pgV;
+  private int vBN;
+  public List<i> wSU;
+  public List<d> wSV;
+  public String wSW;
   
   public e(int paramInt, String paramString)
   {
     AppMethodBeat.i(66681);
-    this.wDj = null;
-    this.wDk = null;
+    this.wSU = null;
+    this.wSV = null;
     HashMap localHashMap = new HashMap();
     localHashMap.put("Limit", "10");
     localHashMap.put("Offset", String.valueOf(paramInt));
@@ -42,13 +42,13 @@ public final class e
   {
     int i = 0;
     AppMethodBeat.i(66682);
-    ad.d("MicroMsg.NetScenePatchQueryUserRoll", "errCode " + paramInt + " errMsg: " + paramString);
-    this.wDj = new LinkedList();
+    ae.d("MicroMsg.NetScenePatchQueryUserRoll", "errCode " + paramInt + " errMsg: " + paramString);
+    this.wSU = new LinkedList();
     try
     {
-      this.par = paramJSONObject.getInt("TotalNum");
-      this.vpI = paramJSONObject.getInt("RecNum");
-      this.wDl = paramJSONObject.optString("Extbuf");
+      this.pgV = paramJSONObject.getInt("TotalNum");
+      this.vBN = paramJSONObject.getInt("RecNum");
+      this.wSW = paramJSONObject.optString("Extbuf");
       paramString = paramJSONObject.getJSONArray("UserRollList");
       Object localObject;
       if (paramString != null)
@@ -58,24 +58,24 @@ public final class e
         {
           localObject = new i();
           JSONObject localJSONObject = paramString.getJSONObject(paramInt);
-          ((i)localObject).wDv = localJSONObject.optInt("PayType");
-          ((i)localObject).wDo = localJSONObject.optString("Transid");
-          ((i)localObject).wDp = localJSONObject.optDouble("TotalFee");
-          ((i)localObject).wDq = localJSONObject.optString("GoodsName");
+          ((i)localObject).wTg = localJSONObject.optInt("PayType");
+          ((i)localObject).wSZ = localJSONObject.optString("Transid");
+          ((i)localObject).wTa = localJSONObject.optDouble("TotalFee");
+          ((i)localObject).wTb = localJSONObject.optString("GoodsName");
           ((i)localObject).CreateTime = localJSONObject.optInt("CreateTime");
-          ((i)localObject).wDs = localJSONObject.optInt("ModifyTime");
-          ((i)localObject).wDt = localJSONObject.optString("FeeType");
-          ((i)localObject).wDy = localJSONObject.optString("AppThumbUrl");
-          ((i)localObject).wDr = localJSONObject.optString("TradeStateName");
-          ((i)localObject).wDD = localJSONObject.optString("StatusColor");
-          ((i)localObject).wDE = localJSONObject.optString("FeeColor");
-          ((i)localObject).wDF = localJSONObject.optDouble("ActualPayFee");
-          ((i)localObject).wDG = localJSONObject.optString("BillId");
-          this.wDj.add(localObject);
+          ((i)localObject).wTd = localJSONObject.optInt("ModifyTime");
+          ((i)localObject).wTe = localJSONObject.optString("FeeType");
+          ((i)localObject).wTj = localJSONObject.optString("AppThumbUrl");
+          ((i)localObject).wTc = localJSONObject.optString("TradeStateName");
+          ((i)localObject).wTo = localJSONObject.optString("StatusColor");
+          ((i)localObject).wTp = localJSONObject.optString("FeeColor");
+          ((i)localObject).wTq = localJSONObject.optDouble("ActualPayFee");
+          ((i)localObject).wTr = localJSONObject.optString("BillId");
+          this.wSU.add(localObject);
           paramInt += 1;
         }
       }
-      this.wDk = new LinkedList();
+      this.wSV = new LinkedList();
       paramString = paramJSONObject.optJSONArray("month_info");
       if (paramString != null)
       {
@@ -86,8 +86,8 @@ public final class e
           localObject = new d();
           ((d)localObject).year = paramJSONObject.optInt("year");
           ((d)localObject).month = paramJSONObject.optInt("month");
-          ((d)localObject).wDi = paramJSONObject.optString("feetext");
-          this.wDk.add(localObject);
+          ((d)localObject).wST = paramJSONObject.optString("feetext");
+          this.wSV.add(localObject);
           paramInt += 1;
         }
       }
@@ -96,14 +96,14 @@ public final class e
     }
     catch (JSONException paramString)
     {
-      ad.e("MicroMsg.NetScenePatchQueryUserRoll", "Parse Json exp:" + paramString.getLocalizedMessage());
+      ae.e("MicroMsg.NetScenePatchQueryUserRoll", "Parse Json exp:" + paramString.getLocalizedMessage());
       AppMethodBeat.o(66682);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.order.model.e
  * JD-Core Version:    0.7.0.1
  */

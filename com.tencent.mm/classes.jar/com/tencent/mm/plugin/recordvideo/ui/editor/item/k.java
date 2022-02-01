@@ -3,119 +3,119 @@ package com.tencent.mm.plugin.recordvideo.ui.editor.item;
 import android.graphics.Matrix;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.bvs;
+import com.tencent.mm.protocal.protobuf.bwm;
 import com.tencent.mm.protocal.protobuf.ja;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import d.g.b.p;
 import d.l;
 import java.io.IOException;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/LocationItem;", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/BaseEditorData;", "cityName", "", "poiName", "longitude", "", "latitude", "matrix", "Landroid/graphics/Matrix;", "(Ljava/lang/String;Ljava/lang/String;FFLandroid/graphics/Matrix;)V", "proto", "Lcom/tencent/mm/protocal/protobuf/BaseItemData;", "(Lcom/tencent/mm/protocal/protobuf/BaseItemData;)V", "<set-?>", "getCityName", "()Ljava/lang/String;", "getLatitude", "()F", "getLongitude", "getPoiName", "isValid", "", "toProtoBuf", "Lcom/tencent/mm/protobuf/BaseProtoBuf;", "toString", "Companion", "plugin-recordvideo_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/LocationItem;", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/BaseEditorData;", "cityName", "", "poiName", "longitude", "", "latitude", "matrix", "Landroid/graphics/Matrix;", "(Ljava/lang/String;Ljava/lang/String;FFLandroid/graphics/Matrix;)V", "proto", "Lcom/tencent/mm/protocal/protobuf/BaseItemData;", "(Lcom/tencent/mm/protocal/protobuf/BaseItemData;)V", "<set-?>", "getCityName", "()Ljava/lang/String;", "getLatitude", "()F", "getLongitude", "getPoiName", "isValid", "", "toProtoBuf", "Lcom/tencent/mm/protobuf/BaseProtoBuf;", "toString", "Companion", "plugin-recordvideo_release"})
 public final class k
   extends a
 {
-  public static final k.a xOE;
-  float dAp;
-  float dyz;
-  String jDf;
-  String xOD;
+  public static final k.a yex;
+  float dBu;
+  float dzE;
+  String jGd;
+  String yew;
   
   static
   {
-    AppMethodBeat.i(200684);
-    xOE = new k.a((byte)0);
-    AppMethodBeat.o(200684);
+    AppMethodBeat.i(206942);
+    yex = new k.a((byte)0);
+    AppMethodBeat.o(206942);
   }
   
   public k(ja paramja)
   {
-    super(d.xNP);
-    AppMethodBeat.i(200683);
-    this.xOD = "";
-    this.jDf = "";
+    super(d.ydI);
+    AppMethodBeat.i(206941);
+    this.yew = "";
+    this.jGd = "";
     try
     {
-      Object localObject = (com.tencent.mm.bx.a)new bvs();
-      paramja = paramja.FCa;
+      Object localObject = (com.tencent.mm.bw.a)new bwm();
+      paramja = paramja.FUv;
       p.g(paramja, "proto.itemData");
       paramja = paramja.getBuffer();
       p.g(paramja, "proto.itemData.buffer");
       paramja = paramja.getBytes();
       try
       {
-        ((com.tencent.mm.bx.a)localObject).parseFrom(paramja);
+        ((com.tencent.mm.bw.a)localObject).parseFrom(paramja);
         paramja = (ja)localObject;
       }
       catch (Exception paramja)
       {
         for (;;)
         {
-          ad.l("safeParser", "", new Object[] { paramja });
+          ae.l("safeParser", "", new Object[] { paramja });
           paramja = null;
         }
       }
-      paramja = (bvs)paramja;
+      paramja = (bwm)paramja;
       if (paramja != null)
       {
-        localObject = paramja.xOD;
+        localObject = paramja.yew;
         p.g(localObject, "it.cityName");
-        this.xOD = ((String)localObject);
-        localObject = paramja.jDf;
+        this.yew = ((String)localObject);
+        localObject = paramja.jGd;
         p.g(localObject, "it.poiName");
-        this.jDf = ((String)localObject);
-        this.dAp = paramja.dAp;
-        this.dyz = paramja.dyz;
+        this.jGd = ((String)localObject);
+        this.dBu = paramja.dBu;
+        this.dzE = paramja.dzE;
         localObject = this.gR;
-        paramja = paramja.FPc;
+        paramja = paramja.GhB;
         p.g(paramja, "it.matrix");
         ((Matrix)localObject).setValues(a(paramja));
       }
       com.tencent.mm.audio.mix.h.b.i("MicroMsg.LocationItem", toString());
-      AppMethodBeat.o(200683);
+      AppMethodBeat.o(206941);
       return;
     }
     catch (IOException paramja)
     {
       com.tencent.mm.audio.mix.h.b.printErrStackTrace("MicroMsg.LocationItem", (Throwable)paramja, "LocationItem parse error", new Object[0]);
-      AppMethodBeat.o(200683);
+      AppMethodBeat.o(206941);
     }
   }
   
   public k(String paramString1, String paramString2, float paramFloat1, float paramFloat2, Matrix paramMatrix)
   {
-    super(d.xNR);
-    AppMethodBeat.i(200681);
-    this.xOD = "";
-    this.jDf = "";
-    this.xOD = paramString1;
-    this.jDf = paramString2;
-    this.dyz = paramFloat2;
-    this.dAp = paramFloat1;
+    super(d.ydK);
+    AppMethodBeat.i(206939);
+    this.yew = "";
+    this.jGd = "";
+    this.yew = paramString1;
+    this.jGd = paramString2;
+    this.dzE = paramFloat2;
+    this.dBu = paramFloat1;
     p.h(paramMatrix, "<set-?>");
     this.gR = paramMatrix;
     com.tencent.mm.audio.mix.h.b.i("MicroMsg.LocationItem", toString());
-    AppMethodBeat.o(200681);
+    AppMethodBeat.o(206939);
   }
   
-  public final com.tencent.mm.bx.a dHT()
+  public final com.tencent.mm.bw.a dLk()
   {
-    AppMethodBeat.i(200679);
-    Object localObject = new bvs();
-    ((bvs)localObject).xOD = this.xOD;
-    ((bvs)localObject).jDf = this.jDf;
-    ((bvs)localObject).FPc = f(this.gR);
-    ((bvs)localObject).dAp = this.dAp;
-    ((bvs)localObject).dyz = this.dyz;
-    localObject = (com.tencent.mm.bx.a)localObject;
-    AppMethodBeat.o(200679);
+    AppMethodBeat.i(206937);
+    Object localObject = new bwm();
+    ((bwm)localObject).yew = this.yew;
+    ((bwm)localObject).jGd = this.jGd;
+    ((bwm)localObject).GhB = f(this.gR);
+    ((bwm)localObject).dBu = this.dBu;
+    ((bwm)localObject).dzE = this.dzE;
+    localObject = (com.tencent.mm.bw.a)localObject;
+    AppMethodBeat.o(206937);
     return localObject;
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(200680);
-    String str = "[" + hashCode() + "]poiName:" + this.jDf + " cityName:" + this.xOD;
-    AppMethodBeat.o(200680);
+    AppMethodBeat.i(206938);
+    String str = "[" + hashCode() + "]poiName:" + this.jGd + " cityName:" + this.yew;
+    AppMethodBeat.o(206938);
     return str;
   }
 }

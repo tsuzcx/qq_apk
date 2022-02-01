@@ -11,8 +11,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aw.a.a.c;
-import com.tencent.mm.aw.a.a.c.a;
+import com.tencent.mm.av.a.a.c;
+import com.tencent.mm.av.a.a.c.a;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.ui.z;
 
@@ -20,22 +20,22 @@ public class BtnSwitchFooter
   extends LinearLayout
   implements a
 {
-  private c DEF;
-  private TextView DFo;
-  private View DFp;
-  private View DFq;
-  private a.a DFr;
+  private c DWD;
+  private TextView DXl;
+  private View DXm;
+  private View DXn;
+  private a.a DXo;
   private Context context;
-  private ImageView mMM;
+  private ImageView mRP;
   
   public BtnSwitchFooter(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(116733);
     c.a locala = new c.a();
-    locala.idr = true;
-    locala.idq = true;
-    this.DEF = locala.aJc();
+    locala.igk = true;
+    locala.igj = true;
+    this.DWD = locala.aJu();
     this.context = paramContext;
     init();
     AppMethodBeat.o(116733);
@@ -46,9 +46,9 @@ public class BtnSwitchFooter
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(116734);
     paramAttributeSet = new c.a();
-    paramAttributeSet.idr = true;
-    paramAttributeSet.idq = true;
-    this.DEF = paramAttributeSet.aJc();
+    paramAttributeSet.igk = true;
+    paramAttributeSet.igj = true;
+    this.DWD = paramAttributeSet.aJu();
     this.context = paramContext;
     init();
     AppMethodBeat.o(116734);
@@ -57,22 +57,22 @@ public class BtnSwitchFooter
   private void init()
   {
     AppMethodBeat.i(116735);
-    ViewGroup localViewGroup = (ViewGroup)z.jO(this.context).inflate(2131496109, this);
-    this.DFq = localViewGroup.findViewById(2131300200);
-    this.DFp = localViewGroup.findViewById(2131300210);
-    this.DFo = ((TextView)localViewGroup.findViewById(2131300214));
-    this.mMM = ((ImageView)localViewGroup.findViewById(2131300201));
-    this.DFq.setVisibility(8);
-    this.DFp.setOnClickListener(new View.OnClickListener()
+    ViewGroup localViewGroup = (ViewGroup)z.jV(this.context).inflate(2131496109, this);
+    this.DXn = localViewGroup.findViewById(2131300200);
+    this.DXm = localViewGroup.findViewById(2131300210);
+    this.DXl = ((TextView)localViewGroup.findViewById(2131300214));
+    this.mRP = ((ImageView)localViewGroup.findViewById(2131300201));
+    this.DXn.setVisibility(8);
+    this.DXm.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(116732);
         b localb = new b();
         localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/websearch/widget/view/footer/BtnSwitchFooter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/websearch/widget/view/footer/BtnSwitchFooter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
         if (BtnSwitchFooter.a(BtnSwitchFooter.this) != null) {
-          BtnSwitchFooter.a(BtnSwitchFooter.this).eNa();
+          BtnSwitchFooter.a(BtnSwitchFooter.this).eQL();
         }
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/websearch/widget/view/footer/BtnSwitchFooter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(116732);
@@ -84,16 +84,16 @@ public class BtnSwitchFooter
   public void setCallback(a.a parama)
   {
     AppMethodBeat.i(116740);
-    this.DFr = parama;
+    this.DXo = parama;
     if (parama != null)
     {
       if (parama.getItemCount() > 1)
       {
-        this.DFp.setVisibility(0);
+        this.DXm.setVisibility(0);
         AppMethodBeat.o(116740);
         return;
       }
-      this.DFp.setVisibility(8);
+      this.DXm.setVisibility(8);
     }
     AppMethodBeat.o(116740);
   }
@@ -103,33 +103,33 @@ public class BtnSwitchFooter
     AppMethodBeat.i(116739);
     if (TextUtils.isEmpty(paramString))
     {
-      this.mMM.setVisibility(8);
+      this.mRP.setVisibility(8);
       AppMethodBeat.o(116739);
       return;
     }
-    this.mMM.setVisibility(0);
-    com.tencent.mm.aw.a.a.aIP().a(paramString, this.mMM, this.DEF);
+    this.mRP.setVisibility(0);
+    com.tencent.mm.av.a.a.aJh().a(paramString, this.mRP, this.DWD);
     AppMethodBeat.o(116739);
   }
   
   public void setSwitchClickLsn(View.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(116736);
-    this.DFp.setOnClickListener(paramOnClickListener);
+    this.DXm.setOnClickListener(paramOnClickListener);
     AppMethodBeat.o(116736);
   }
   
   public void setSwitchVisible(int paramInt)
   {
     AppMethodBeat.i(116737);
-    this.DFp.setVisibility(paramInt);
+    this.DXm.setVisibility(paramInt);
     AppMethodBeat.o(116737);
   }
   
   public void setTitle(String paramString)
   {
     AppMethodBeat.i(116738);
-    this.DFo.setText(paramString);
+    this.DXl.setText(paramString);
     AppMethodBeat.o(116738);
   }
 }

@@ -15,7 +15,7 @@ final class PickPoi$1
   {
     AppMethodBeat.i(56080);
     FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.val$view.getLayoutParams();
-    localLayoutParams.bottomMargin = ((int)(PickPoi.a(this.vgM).getHeight() / 2.0D + 0.5D) + aq.fromDPToPix(this.val$context, 20));
+    localLayoutParams.bottomMargin = ((int)(PickPoi.a(this.vsT).getHeight() / 2.0D + 0.5D) + aq.fromDPToPix(this.val$context, 20));
     this.val$view.setLayoutParams(localLayoutParams);
     AppMethodBeat.o(56080);
   }

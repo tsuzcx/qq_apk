@@ -1,146 +1,82 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.LinkedList;
 
 public final class cis
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public long FsE;
-  public String FsF;
-  public String FsG;
-  public String FsH;
-  public String FsI;
-  public String ePu;
-  public String ePv;
-  public double latitude;
-  public double longitude;
+  public buh HkU;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(152660);
+    AppMethodBeat.i(117884);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.ePu != null) {
-        paramVarArgs.d(1, this.ePu);
+      if (this.HkU != null)
+      {
+        paramVarArgs.lJ(1, this.HkU.computeSize());
+        this.HkU.writeFields(paramVarArgs);
       }
-      if (this.ePv != null) {
-        paramVarArgs.d(2, this.ePv);
-      }
-      paramVarArgs.e(3, this.latitude);
-      paramVarArgs.e(4, this.longitude);
-      paramVarArgs.aY(5, this.FsE);
-      if (this.FsF != null) {
-        paramVarArgs.d(6, this.FsF);
-      }
-      if (this.FsG != null) {
-        paramVarArgs.d(7, this.FsG);
-      }
-      if (this.FsH != null) {
-        paramVarArgs.d(8, this.FsH);
-      }
-      if (this.FsI != null) {
-        paramVarArgs.d(9, this.FsI);
-      }
-      AppMethodBeat.o(152660);
+      AppMethodBeat.o(117884);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.ePu == null) {
-        break label648;
+      if (this.HkU == null) {
+        break label310;
       }
     }
-    label648:
-    for (paramInt = f.a.a.b.b.a.e(1, this.ePu) + 0;; paramInt = 0)
+    label310:
+    for (paramInt = f.a.a.a.lI(1, this.HkU.computeSize()) + 0;; paramInt = 0)
     {
-      int i = paramInt;
-      if (this.ePv != null) {
-        i = paramInt + f.a.a.b.b.a.e(2, this.ePv);
-      }
-      i = i + f.a.a.b.b.a.alT(3) + f.a.a.b.b.a.alT(4) + f.a.a.b.b.a.p(5, this.FsE);
-      paramInt = i;
-      if (this.FsF != null) {
-        paramInt = i + f.a.a.b.b.a.e(6, this.FsF);
-      }
-      i = paramInt;
-      if (this.FsG != null) {
-        i = paramInt + f.a.a.b.b.a.e(7, this.FsG);
-      }
-      paramInt = i;
-      if (this.FsH != null) {
-        paramInt = i + f.a.a.b.b.a.e(8, this.FsH);
-      }
-      i = paramInt;
-      if (this.FsI != null) {
-        i = paramInt + f.a.a.b.b.a.e(9, this.FsI);
-      }
-      AppMethodBeat.o(152660);
-      return i;
+      AppMethodBeat.o(117884);
+      return paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
-        AppMethodBeat.o(152660);
+        AppMethodBeat.o(117884);
         return 0;
       }
       if (paramInt == 3)
       {
-        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+        Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
         cis localcis = (cis)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(152660);
+          AppMethodBeat.o(117884);
           return -1;
-        case 1: 
-          localcis.ePu = locala.NPN.readString();
-          AppMethodBeat.o(152660);
-          return 0;
-        case 2: 
-          localcis.ePv = locala.NPN.readString();
-          AppMethodBeat.o(152660);
-          return 0;
-        case 3: 
-          localcis.latitude = Double.longBitsToDouble(locala.NPN.grA());
-          AppMethodBeat.o(152660);
-          return 0;
-        case 4: 
-          localcis.longitude = Double.longBitsToDouble(locala.NPN.grA());
-          AppMethodBeat.o(152660);
-          return 0;
-        case 5: 
-          localcis.FsE = locala.NPN.zd();
-          AppMethodBeat.o(152660);
-          return 0;
-        case 6: 
-          localcis.FsF = locala.NPN.readString();
-          AppMethodBeat.o(152660);
-          return 0;
-        case 7: 
-          localcis.FsG = locala.NPN.readString();
-          AppMethodBeat.o(152660);
-          return 0;
-        case 8: 
-          localcis.FsH = locala.NPN.readString();
-          AppMethodBeat.o(152660);
-          return 0;
         }
-        localcis.FsI = locala.NPN.readString();
-        AppMethodBeat.o(152660);
+        paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
+        int i = paramVarArgs.size();
+        paramInt = 0;
+        while (paramInt < i)
+        {
+          Object localObject2 = (byte[])paramVarArgs.get(paramInt);
+          localObject1 = new buh();
+          localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
+          for (boolean bool = true; bool; bool = ((buh)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+          localcis.HkU = ((buh)localObject1);
+          paramInt += 1;
+        }
+        AppMethodBeat.o(117884);
         return 0;
       }
-      AppMethodBeat.o(152660);
+      AppMethodBeat.o(117884);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.cis
  * JD-Core Version:    0.7.0.1
  */

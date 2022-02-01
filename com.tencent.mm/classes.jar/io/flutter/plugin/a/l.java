@@ -10,13 +10,13 @@ public abstract interface l
   
   public abstract ByteBuffer b(j paramj);
   
-  public abstract ByteBuffer eH(Object paramObject);
+  public abstract ByteBuffer eK(Object paramObject);
   
   public abstract ByteBuffer k(String paramString1, String paramString2, Object paramObject);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     io.flutter.plugin.a.l
  * JD-Core Version:    0.7.0.1
  */

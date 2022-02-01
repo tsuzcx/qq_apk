@@ -6,19 +6,19 @@ import com.tencent.mm.protocal.l;
 import com.tencent.mm.protocal.l.b;
 import com.tencent.mm.protocal.l.d;
 import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.afz;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.agi;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public final class s$a
   extends l.d
   implements l.b
 {
-  public afz jdU;
+  public agi jgN;
   
   public s$a()
   {
     AppMethodBeat.i(131067);
-    this.jdU = new afz();
+    this.jgN = new agi();
     AppMethodBeat.o(131067);
   }
   
@@ -30,10 +30,10 @@ public final class s$a
   public final byte[] toProtoBuf()
   {
     AppMethodBeat.i(131068);
-    setRsaInfo(ac.fgz());
-    this.jdU.FDQ = new SKBuiltinBuffer_t().setBuffer(bt.flL());
-    this.jdU.setBaseRequest(l.a(this));
-    byte[] arrayOfByte = this.jdU.toByteArray();
+    setRsaInfo(ac.fkp());
+    this.jgN.FWl = new SKBuiltinBuffer_t().setBuffer(bu.fpG());
+    this.jgN.setBaseRequest(l.a(this));
+    byte[] arrayOfByte = this.jgN.toByteArray();
     AppMethodBeat.o(131068);
     return arrayOfByte;
   }

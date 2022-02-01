@@ -17,10 +17,10 @@ final class WalletLqtSaveFetchUI$1
     AppMethodBeat.i(68967);
     b localb = new b();
     localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/wallet/balance/ui/lqt/WalletLqtSaveFetchUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-    this.CEJ.hideTenpayKB();
-    WalletLqtSaveFetchUI.a(this.CEJ);
-    g.yhR.f(20287, new Object[] { Integer.valueOf(3) });
+    a.b("com/tencent/mm/plugin/wallet/balance/ui/lqt/WalletLqtSaveFetchUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+    this.CWq.hideTenpayKB();
+    WalletLqtSaveFetchUI.a(this.CWq);
+    g.yxI.f(20287, new Object[] { Integer.valueOf(3) });
     a.a(this, "com/tencent/mm/plugin/wallet/balance/ui/lqt/WalletLqtSaveFetchUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(68967);
   }

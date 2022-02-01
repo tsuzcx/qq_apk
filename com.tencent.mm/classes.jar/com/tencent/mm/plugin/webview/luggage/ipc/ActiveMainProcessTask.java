@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.webview.luggage.ipc;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public class ActiveMainProcessTask
   extends MainProcessTask
@@ -22,18 +22,18 @@ public class ActiveMainProcessTask
   
   private ActiveMainProcessTask(byte paramByte) {}
   
-  public final void aOA()
+  public final void aOX()
   {
     AppMethodBeat.i(78484);
-    ad.i("MicroMsg.ActiveMainProcessTask", "active");
-    bhX();
+    ae.i("MicroMsg.ActiveMainProcessTask", "active");
+    biG();
     AppMethodBeat.o(78484);
   }
   
-  public final void aOB()
+  public final void aOY()
   {
     AppMethodBeat.i(78485);
-    ad.i("MicroMsg.ActiveMainProcessTask", "runInClientProcess");
+    ae.i("MicroMsg.ActiveMainProcessTask", "runInClientProcess");
     if (this.callback != null) {
       this.callback.run();
     }

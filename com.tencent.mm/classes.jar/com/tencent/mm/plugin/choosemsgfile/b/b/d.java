@@ -7,20 +7,20 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aw.q;
+import com.tencent.mm.av.q;
 import com.tencent.mm.g.c.ei;
 import com.tencent.mm.plugin.choosemsgfile.b.c.g;
 import com.tencent.mm.plugin.choosemsgfile.b.d.c;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.storage.bu;
+import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.storage.bv;
 import com.tencent.mm.ui.widget.MMPinProgressBtn;
 
 public abstract class d
   extends a<m>
 {
-  public d(g paramg, bu parambu)
+  public d(g paramg, bv parambv)
   {
-    super(paramg, parambu);
+    super(paramg, parambv);
   }
   
   private void a(final m paramm)
@@ -30,7 +30,7 @@ public abstract class d
       b(paramm);
       return;
     }
-    aq.f(new Runnable()
+    ar.f(new Runnable()
     {
       public final void run()
       {
@@ -43,7 +43,7 @@ public abstract class d
   
   private void b(m paramm)
   {
-    switch (this.oSe)
+    switch (this.oYG)
     {
     default: 
     case 1: 
@@ -51,84 +51,84 @@ public abstract class d
       do
       {
         return;
-        paramm.jcf.setVisibility(0);
-        paramm.oSC.setVisibility(8);
-        paramm.fQc.setVisibility(8);
-        paramm.oSI.setVisibility(8);
-        paramm.oSJ.setVisibility(8);
+        paramm.jeY.setVisibility(0);
+        paramm.oZe.setVisibility(8);
+        paramm.fSi.setVisibility(8);
+        paramm.oZk.setVisibility(8);
+        paramm.oZl.setVisibility(8);
         return;
-        paramm.jcf.setVisibility(0);
-        paramm.oSC.setVisibility(0);
-        paramm.fQc.setVisibility(8);
-        paramm.oSI.setVisibility(8);
-        paramm.oSJ.setVisibility(8);
+        paramm.jeY.setVisibility(0);
+        paramm.oZe.setVisibility(0);
+        paramm.fSi.setVisibility(8);
+        paramm.oZk.setVisibility(8);
+        paramm.oZl.setVisibility(8);
       } while (this.apW <= 0);
       int i = (int)(this.fq / this.apW * 100.0F);
       if ((i == -1) || (i >= 100))
       {
-        paramm.oSC.setProgress(100);
+        paramm.oZe.setProgress(100);
         return;
       }
-      paramm.oSC.setProgress(i);
+      paramm.oZe.setProgress(i);
       return;
     case 3: 
-      paramm.jcf.setVisibility(8);
-      paramm.oSC.setVisibility(8);
-      paramm.fQc.setVisibility(0);
-      paramm.oSI.setVisibility(0);
-      paramm.oSJ.setVisibility(8);
+      paramm.jeY.setVisibility(8);
+      paramm.oZe.setVisibility(8);
+      paramm.fSi.setVisibility(0);
+      paramm.oZk.setVisibility(0);
+      paramm.oZl.setVisibility(8);
       return;
     case 4: 
-      paramm.jcf.setVisibility(8);
-      paramm.oSC.setVisibility(8);
-      paramm.fQc.setVisibility(8);
-      paramm.oSI.setVisibility(8);
-      paramm.oSJ.setVisibility(0);
+      paramm.jeY.setVisibility(8);
+      paramm.oZe.setVisibility(8);
+      paramm.fSi.setVisibility(8);
+      paramm.oZk.setVisibility(8);
+      paramm.oZl.setVisibility(0);
       return;
     case 5: 
-      paramm.jcf.setVisibility(8);
-      paramm.oSC.setVisibility(8);
-      paramm.fQc.setVisibility(8);
-      paramm.oSI.setVisibility(8);
-      paramm.oSJ.setVisibility(0);
+      paramm.jeY.setVisibility(8);
+      paramm.oZe.setVisibility(8);
+      paramm.fSi.setVisibility(8);
+      paramm.oZk.setVisibility(8);
+      paramm.oZl.setVisibility(0);
       return;
     }
-    paramm.jcf.setVisibility(8);
-    paramm.oSC.setVisibility(8);
-    paramm.fQc.setVisibility(0);
-    paramm.oSI.setVisibility(0);
-    paramm.fQc.setChecked(false);
-    paramm.oSJ.setVisibility(8);
+    paramm.jeY.setVisibility(8);
+    paramm.oZe.setVisibility(8);
+    paramm.fSi.setVisibility(0);
+    paramm.oZk.setVisibility(0);
+    paramm.fSi.setChecked(false);
+    paramm.oZl.setVisibility(8);
   }
   
   public void a(m paramm, int paramInt, a parama)
   {
-    paramm.oSB.setTag(this);
-    paramm.oSI.setTag(this);
-    q.aIJ().a(aCp(), paramm.oSB, c.et(getContext()));
-    paramm.oSF.setVisibility(8);
-    paramm.oSG.setVisibility(8);
-    paramm.oSD.setVisibility(8);
-    paramm.oSE.setVisibility(8);
-    paramm.oSI.setVisibility(0);
-    paramm.fQc.setVisibility(0);
+    paramm.oZd.setTag(this);
+    paramm.oZk.setTag(this);
+    q.aJb().a(aCF(), paramm.oZd, c.ex(getContext()));
+    paramm.oZh.setVisibility(8);
+    paramm.oZi.setVisibility(8);
+    paramm.oZf.setVisibility(8);
+    paramm.oZg.setVisibility(8);
+    paramm.oZk.setVisibility(0);
+    paramm.fSi.setVisibility(0);
     a(paramm);
-    if (bZm().tC(this.oRU.field_msgId))
+    if (caB().tT(this.oYw.field_msgId))
     {
-      paramm.oSH.setVisibility(8);
-      paramm.fQc.setChecked(true);
+      paramm.oZj.setVisibility(8);
+      paramm.fSi.setChecked(true);
     }
     while (isEnable())
     {
-      paramm.oSA.setAlpha(1.0F);
+      paramm.oZc.setAlpha(1.0F);
       return;
-      paramm.oSH.setVisibility(0);
-      paramm.fQc.setChecked(false);
+      paramm.oZj.setVisibility(0);
+      paramm.fSi.setChecked(false);
     }
-    paramm.oSA.setAlpha(0.6F);
+    paramm.oZc.setAlpha(0.6F);
   }
   
-  protected String aCp()
+  protected String aCF()
   {
     return "";
   }

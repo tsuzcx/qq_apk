@@ -3,7 +3,7 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class EmotionBannerImg
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
   public int Height;
   public String ImgUrl;
@@ -45,9 +45,9 @@ public class EmotionBannerImg
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
         AppMethodBeat.o(104769);
@@ -63,19 +63,19 @@ public class EmotionBannerImg
           AppMethodBeat.o(104769);
           return -1;
         case 1: 
-          localEmotionBannerImg.ImgUrl = locala.NPN.readString();
+          localEmotionBannerImg.ImgUrl = locala.OmT.readString();
           AppMethodBeat.o(104769);
           return 0;
         case 2: 
-          localEmotionBannerImg.Width = locala.NPN.zc();
+          localEmotionBannerImg.Width = locala.OmT.zc();
           AppMethodBeat.o(104769);
           return 0;
         case 3: 
-          localEmotionBannerImg.Height = locala.NPN.zc();
+          localEmotionBannerImg.Height = locala.OmT.zc();
           AppMethodBeat.o(104769);
           return 0;
         }
-        localEmotionBannerImg.StripUrl = locala.NPN.readString();
+        localEmotionBannerImg.StripUrl = locala.OmT.readString();
         AppMethodBeat.o(104769);
         return 0;
       }

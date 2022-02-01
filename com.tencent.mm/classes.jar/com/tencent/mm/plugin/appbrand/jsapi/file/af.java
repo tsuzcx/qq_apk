@@ -1,45 +1,23 @@
 package com.tencent.mm.plugin.appbrand.jsapi.file;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.appstorage.p;
-import com.tencent.mm.plugin.appbrand.jsapi.a;
-import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.vfs.e;
-import org.json.JSONObject;
 
 public final class af
-  extends a
+  extends e<bc>
 {
-  private static final int CTRL_INDEX = 117;
-  private static final String NAME = "removeSavedFile";
+  private static final int CTRL_INDEX = 233;
+  private static final String NAME = "readFile";
   
-  public final void a(c paramc, JSONObject paramJSONObject, int paramInt)
+  public af()
   {
-    AppMethodBeat.i(128891);
-    paramJSONObject = paramJSONObject.optString("filePath", "");
-    if (bt.isNullOrNil(paramJSONObject)) {
-      paramJSONObject = "fail:invalid data";
-    }
-    for (;;)
-    {
-      paramc.h(paramInt, e(paramJSONObject, null));
-      AppMethodBeat.o(128891);
-      return;
-      if (!paramc.Fg().Mm(paramJSONObject)) {
-        paramJSONObject = "fail not a store filePath";
-      } else if (paramc.Fg().Mj(paramJSONObject).delete()) {
-        paramJSONObject = "ok";
-      } else {
-        paramJSONObject = "fail";
-      }
-    }
+    super(new bc());
+    AppMethodBeat.i(128888);
+    AppMethodBeat.o(128888);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.file.af
  * JD-Core Version:    0.7.0.1
  */

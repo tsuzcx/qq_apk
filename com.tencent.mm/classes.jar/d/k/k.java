@@ -1,57 +1,31 @@
 package d.k;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import d.g.b.p;
+import d.l;
 
-@d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlin/ranges/ClosedDoubleRange;", "Lkotlin/ranges/ClosedFloatingPointRange;", "", "start", "endInclusive", "(DD)V", "_endInclusive", "_start", "getEndInclusive", "()Ljava/lang/Double;", "getStart", "contains", "", "value", "equals", "other", "", "hashCode", "", "isEmpty", "lessThanOrEquals", "a", "b", "toString", "", "kotlin-stdlib"})
-final class k
-  implements l<Double>
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"checkStepIsPositive", "", "isPositive", "", "step", "", "contains", "T", "", "R", "", "Lkotlin/ranges/ClosedRange;", "element", "(Ljava/lang/Iterable;Ljava/lang/Object;)Z", "rangeTo", "", "that", "(Ljava/lang/Comparable;Ljava/lang/Comparable;)Lkotlin/ranges/ClosedRange;", "Lkotlin/ranges/ClosedFloatingPointRange;", "", "", "kotlin-stdlib"}, gkc=1)
+public class k
 {
-  private final double OfN;
-  private final double OfO;
-  
-  public k(double paramDouble)
+  public static final b<Double> L(double paramDouble)
   {
-    this.OfN = paramDouble;
-    this.OfO = 1.777777777777778D;
+    AppMethodBeat.i(188736);
+    b localb = (b)new a(paramDouble);
+    AppMethodBeat.o(188736);
+    return localb;
   }
   
-  private boolean isEmpty()
+  public static final void a(boolean paramBoolean, Number paramNumber)
   {
-    return this.OfN > this.OfO;
-  }
-  
-  public final boolean equals(Object paramObject)
-  {
-    AppMethodBeat.i(221198);
-    if (((paramObject instanceof k)) && (((isEmpty()) && (((k)paramObject).isEmpty())) || ((this.OfN == ((k)paramObject).OfN) && (this.OfO == ((k)paramObject).OfO))))
+    AppMethodBeat.i(129312);
+    p.h(paramNumber, "step");
+    if (!paramBoolean)
     {
-      AppMethodBeat.o(221198);
-      return true;
+      paramNumber = (Throwable)new IllegalArgumentException("Step must be positive, was: " + paramNumber + '.');
+      AppMethodBeat.o(129312);
+      throw paramNumber;
     }
-    AppMethodBeat.o(221198);
-    return false;
-  }
-  
-  public final int hashCode()
-  {
-    AppMethodBeat.i(221199);
-    if (isEmpty())
-    {
-      AppMethodBeat.o(221199);
-      return -1;
-    }
-    int i = Double.valueOf(this.OfN).hashCode();
-    int j = Double.valueOf(this.OfO).hashCode();
-    AppMethodBeat.o(221199);
-    return i * 31 + j;
-  }
-  
-  public final String toString()
-  {
-    AppMethodBeat.i(221200);
-    String str = this.OfN + ".." + this.OfO;
-    AppMethodBeat.o(221200);
-    return str;
+    AppMethodBeat.o(129312);
   }
 }
 

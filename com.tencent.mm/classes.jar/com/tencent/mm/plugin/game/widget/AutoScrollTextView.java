@@ -9,29 +9,29 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.ui.span.k;
-import com.tencent.mm.sdk.platformtools.av;
-import com.tencent.mm.sdk.platformtools.av.a;
+import com.tencent.mm.sdk.platformtools.aw;
+import com.tencent.mm.sdk.platformtools.aw.a;
 import java.util.ArrayList;
 import java.util.List;
 
 public class AutoScrollTextView
   extends LinearLayout
 {
-  private int pPf;
-  private av ulh;
-  private Animation umE;
-  private Animation umF;
-  private ArrayList<String> umx;
-  private TextView uvN;
-  private TextView uvO;
+  private int pVK;
+  private TextView uHm;
+  private TextView uHn;
+  private aw uwE;
+  private ArrayList<String> uxU;
+  private Animation uyb;
+  private Animation uyc;
   
   public AutoScrollTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(42571);
-    this.umx = new ArrayList();
-    this.pPf = 0;
-    this.ulh = new av(new av.a()
+    this.uxU = new ArrayList();
+    this.pVK = 0;
+    this.uwE = new aw(new aw.a()
     {
       public final boolean onTimerExpired()
       {
@@ -41,17 +41,17 @@ public class AutoScrollTextView
         return true;
       }
     }, true);
-    this.uvN = new TextView(paramContext, paramAttributeSet);
-    this.uvN.setVisibility(8);
-    this.uvO = new TextView(paramContext, paramAttributeSet);
-    this.uvO.setVisibility(8);
-    addView(this.uvN);
-    addView(this.uvO);
+    this.uHm = new TextView(paramContext, paramAttributeSet);
+    this.uHm.setVisibility(8);
+    this.uHn = new TextView(paramContext, paramAttributeSet);
+    this.uHn.setVisibility(8);
+    addView(this.uHm);
+    addView(this.uHn);
     setOrientation(1);
     setGravity(17);
     setPadding(0, 0, 0, 0);
-    this.umE = AnimationUtils.loadAnimation(paramContext, 2130772139);
-    this.umF = AnimationUtils.loadAnimation(paramContext, 2130772147);
+    this.uyb = AnimationUtils.loadAnimation(paramContext, 2130772139);
+    this.uyc = AnimationUtils.loadAnimation(paramContext, 2130772147);
     AppMethodBeat.o(42571);
   }
   
@@ -66,32 +66,32 @@ public class AutoScrollTextView
   {
     AppMethodBeat.i(42574);
     super.onDetachedFromWindow();
-    this.ulh.stopTimer();
+    this.uwE.stopTimer();
     AppMethodBeat.o(42574);
   }
   
   public void setText(List<String> paramList)
   {
     AppMethodBeat.i(42572);
-    this.umx.clear();
-    this.ulh.stopTimer();
+    this.uxU.clear();
+    this.uwE.stopTimer();
     if ((paramList == null) || (paramList.size() == 0))
     {
-      this.uvN.setVisibility(8);
-      this.uvO.setVisibility(8);
+      this.uHm.setVisibility(8);
+      this.uHn.setVisibility(8);
       AppMethodBeat.o(42572);
       return;
     }
-    this.umx.addAll(paramList);
-    c(this.uvN, (String)this.umx.get(0));
-    this.uvN.setVisibility(0);
-    this.pPf = 0;
-    if (this.umx.size() == 1)
+    this.uxU.addAll(paramList);
+    c(this.uHm, (String)this.uxU.get(0));
+    this.uHm.setVisibility(0);
+    this.pVK = 0;
+    if (this.uxU.size() == 1)
     {
       AppMethodBeat.o(42572);
       return;
     }
-    this.ulh.az(5000L, 5000L);
+    this.uwE.ay(5000L, 5000L);
     AppMethodBeat.o(42572);
   }
 }

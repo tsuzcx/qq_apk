@@ -1,24 +1,24 @@
 package com.tencent.mm.openim.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.ak;
+import com.tencent.mm.model.al;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
 import com.tencent.mm.plugin.chatroom.a.c;
 import com.tencent.mm.protocal.l.e;
-import com.tencent.mm.protocal.protobuf.adi;
-import com.tencent.mm.protocal.protobuf.adj;
-import com.tencent.mm.protocal.protobuf.ces;
-import com.tencent.mm.protocal.protobuf.cet;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.storage.ab;
+import com.tencent.mm.protocal.protobuf.adr;
+import com.tencent.mm.protocal.protobuf.ads;
+import com.tencent.mm.protocal.protobuf.cfm;
+import com.tencent.mm.protocal.protobuf.cfn;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.storage.ac;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -28,23 +28,23 @@ public final class d
   implements k
 {
   private f callback;
-  private String dvs;
-  private final com.tencent.mm.al.b rr;
+  private String dwx;
+  private final com.tencent.mm.ak.b rr;
   
-  public d(String paramString, LinkedList<ces> paramLinkedList)
+  public d(String paramString, LinkedList<cfm> paramLinkedList)
   {
     AppMethodBeat.i(151187);
     Object localObject = new b.a();
-    ((b.a)localObject).hNM = new adi();
-    ((b.a)localObject).hNN = new adj();
+    ((b.a)localObject).hQF = new adr();
+    ((b.a)localObject).hQG = new ads();
     ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/delopenimchatroommember";
     ((b.a)localObject).funcId = 943;
-    this.rr = ((b.a)localObject).aDC();
-    this.dvs = paramString;
-    localObject = (adi)this.rr.hNK.hNQ;
-    ((adi)localObject).iHB = paramString;
-    ((adi)localObject).Fvu = paramLinkedList;
-    ad.i("MicroMsg.Openim.NetSceneDelOpenIMChatRoomMember", "roomname: %s, size:%d", new Object[] { paramString, Integer.valueOf(paramLinkedList.size()) });
+    this.rr = ((b.a)localObject).aDS();
+    this.dwx = paramString;
+    localObject = (adr)this.rr.hQD.hQJ;
+    ((adr)localObject).iKu = paramString;
+    ((adr)localObject).FNS = paramLinkedList;
+    ae.i("MicroMsg.Openim.NetSceneDelOpenIMChatRoomMember", "roomname: %s, size:%d", new Object[] { paramString, Integer.valueOf(paramLinkedList.size()) });
     AppMethodBeat.o(151187);
   }
   
@@ -65,16 +65,16 @@ public final class d
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(151188);
-    ad.i("MicroMsg.Openim.NetSceneDelOpenIMChatRoomMember", "onGYNetEnd : errType : %d, errCode : %d, errMsg : %s, roomname: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString, this.dvs });
+    ae.i("MicroMsg.Openim.NetSceneDelOpenIMChatRoomMember", "onGYNetEnd : errType : %d, errCode : %d, errMsg : %s, roomname: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString, this.dwx });
     Object localObject;
     if (paramq.getRespObj().getRetCode() == 0)
     {
-      localObject = (adj)((com.tencent.mm.al.b)paramq).hNL.hNQ;
-      paramArrayOfByte = this.dvs;
-      if ((paramArrayOfByte.toLowerCase().endsWith("@im.chatroom")) && (!((adj)localObject).Fvu.isEmpty())) {
+      localObject = (ads)((com.tencent.mm.ak.b)paramq).hQE.hQJ;
+      paramArrayOfByte = this.dwx;
+      if ((paramArrayOfByte.toLowerCase().endsWith("@im.chatroom")) && (!((ads)localObject).FNS.isEmpty())) {
         break label169;
       }
-      ad.e("MicroMsg.Openim.NetSceneDelOpenIMChatRoomMember", "DelChatroomMember: room:[" + paramArrayOfByte + "] listCnt:" + ((adj)localObject).Fvu.size());
+      ae.e("MicroMsg.Openim.NetSceneDelOpenIMChatRoomMember", "DelChatroomMember: room:[" + paramArrayOfByte + "] listCnt:" + ((ads)localObject).FNS.size());
     }
     for (;;)
     {
@@ -84,18 +84,18 @@ public final class d
       AppMethodBeat.o(151188);
       return;
       label169:
-      paramq = ((c)g.ab(c.class)).azz();
-      paramArrayOfByte = paramq.AN(paramArrayOfByte);
-      List localList = ab.aSK(paramArrayOfByte.field_memberlist);
-      ad.d("MicroMsg.Openim.NetSceneDelOpenIMChatRoomMember", "DelChatroomMember before " + localList.size());
-      localObject = ((adj)localObject).Fvu.iterator();
+      paramq = ((c)g.ab(c.class)).azP();
+      paramArrayOfByte = paramq.Bx(paramArrayOfByte);
+      List localList = ac.aUj(paramArrayOfByte.field_memberlist);
+      ae.d("MicroMsg.Openim.NetSceneDelOpenIMChatRoomMember", "DelChatroomMember before " + localList.size());
+      localObject = ((ads)localObject).FNS.iterator();
       while (((Iterator)localObject).hasNext()) {
-        localList.remove(((cet)((Iterator)localObject).next()).userName);
+        localList.remove(((cfn)((Iterator)localObject).next()).userName);
       }
-      ad.d("MicroMsg.Openim.NetSceneDelOpenIMChatRoomMember", "DelChatroomMember after " + localList.size());
+      ae.d("MicroMsg.Openim.NetSceneDelOpenIMChatRoomMember", "DelChatroomMember after " + localList.size());
       localObject = ((com.tencent.mm.plugin.chatroom.a.b)g.ab(com.tencent.mm.plugin.chatroom.a.b.class)).af(localList);
-      paramArrayOfByte.hq(localList).field_displayname = ((String)localObject);
-      ad.d("MicroMsg.Openim.NetSceneDelOpenIMChatRoomMember", "delChatroomMember ".concat(String.valueOf(paramq.replace(paramArrayOfByte))));
+      paramArrayOfByte.hA(localList).field_displayname = ((String)localObject);
+      ae.d("MicroMsg.Openim.NetSceneDelOpenIMChatRoomMember", "delChatroomMember ".concat(String.valueOf(paramq.replace(paramArrayOfByte))));
     }
   }
 }

@@ -4,27 +4,27 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.messenger.foundation.a.u;
+import com.tencent.mm.plugin.messenger.foundation.a.v;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "arg0", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "arg1", "", "onClick"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "arg0", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "arg1", "", "onClick"})
 final class a$f
   implements DialogInterface.OnClickListener
 {
-  public static final f fMb;
+  public static final f fOf;
   
   static
   {
-    AppMethodBeat.i(213601);
-    fMb = new f();
-    AppMethodBeat.o(213601);
+    AppMethodBeat.i(217319);
+    fOf = new f();
+    AppMethodBeat.o(217319);
   }
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    AppMethodBeat.i(221606);
-    ((u)g.ab(u.class)).JL(4);
-    AppMethodBeat.o(221606);
+    AppMethodBeat.i(217318);
+    ((v)g.ab(v.class)).Kk(4);
+    AppMethodBeat.o(217318);
   }
 }
 

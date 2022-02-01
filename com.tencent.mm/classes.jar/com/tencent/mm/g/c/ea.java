@@ -8,21 +8,15 @@ public abstract class ea
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eTf = "thumbUrl".hashCode();
-  private static final int fiY = "liveId".hashCode();
-  private static final int fiZ = "hostRoomId".hashCode();
-  private static final int fja = "liveName".hashCode();
-  private static final int fjb = "anchorUsername".hashCode();
-  private static final int fjc = "isSender".hashCode();
-  private static final int fjd = "timeStamp".hashCode();
+  private static final int eUQ = "thumbUrl".hashCode();
+  private static final int fkV = "liveId".hashCode();
+  private static final int fkW = "hostRoomId".hashCode();
+  private static final int fkX = "liveName".hashCode();
+  private static final int fkY = "anchorUsername".hashCode();
+  private static final int fkZ = "isSender".hashCode();
+  private static final int fla = "timeStamp".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eSt = true;
-  private boolean fiS = true;
-  private boolean fiT = true;
-  private boolean fiU = true;
-  private boolean fiV = true;
-  private boolean fiW = true;
-  private boolean fiX = true;
+  private boolean eUe = true;
   public String field_anchorUsername;
   public String field_hostRoomId;
   public boolean field_isSender;
@@ -30,6 +24,12 @@ public abstract class ea
   public String field_liveName;
   public String field_thumbUrl;
   public long field_timeStamp;
+  private boolean fkP = true;
+  private boolean fkQ = true;
+  private boolean fkR = true;
+  private boolean fkS = true;
+  private boolean fkT = true;
+  private boolean fkU = true;
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -44,11 +44,11 @@ public abstract class ea
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (fiY != k) {
+      if (fkV != k) {
         break label65;
       }
       this.field_liveId = paramCursor.getLong(i);
-      this.fiS = true;
+      this.fkP = true;
     }
     for (;;)
     {
@@ -56,25 +56,25 @@ public abstract class ea
       break label20;
       break;
       label65:
-      if (fiZ == k)
+      if (fkW == k)
       {
         this.field_hostRoomId = paramCursor.getString(i);
       }
-      else if (fja == k)
+      else if (fkX == k)
       {
         this.field_liveName = paramCursor.getString(i);
       }
-      else if (eTf == k)
+      else if (eUQ == k)
       {
         this.field_thumbUrl = paramCursor.getString(i);
       }
-      else if (fjb == k)
+      else if (fkY == k)
       {
         this.field_anchorUsername = paramCursor.getString(i);
       }
       else
       {
-        if (fjc == k)
+        if (fkZ == k)
         {
           if (paramCursor.getInt(i) != 0) {}
           for (boolean bool = true;; bool = false)
@@ -83,7 +83,7 @@ public abstract class ea
             break;
           }
         }
-        if (fjd == k) {
+        if (fla == k) {
           this.field_timeStamp = paramCursor.getLong(i);
         } else if (rowid_HASHCODE == k) {
           this.systemRowid = paramCursor.getLong(i);
@@ -95,37 +95,37 @@ public abstract class ea
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.fiS) {
+    if (this.fkP) {
       localContentValues.put("liveId", Long.valueOf(this.field_liveId));
     }
     if (this.field_hostRoomId == null) {
       this.field_hostRoomId = "";
     }
-    if (this.fiT) {
+    if (this.fkQ) {
       localContentValues.put("hostRoomId", this.field_hostRoomId);
     }
     if (this.field_liveName == null) {
       this.field_liveName = "";
     }
-    if (this.fiU) {
+    if (this.fkR) {
       localContentValues.put("liveName", this.field_liveName);
     }
     if (this.field_thumbUrl == null) {
       this.field_thumbUrl = "";
     }
-    if (this.eSt) {
+    if (this.eUe) {
       localContentValues.put("thumbUrl", this.field_thumbUrl);
     }
     if (this.field_anchorUsername == null) {
       this.field_anchorUsername = "";
     }
-    if (this.fiV) {
+    if (this.fkS) {
       localContentValues.put("anchorUsername", this.field_anchorUsername);
     }
-    if (this.fiW) {
+    if (this.fkT) {
       localContentValues.put("isSender", Boolean.valueOf(this.field_isSender));
     }
-    if (this.fiX) {
+    if (this.fkU) {
       localContentValues.put("timeStamp", Long.valueOf(this.field_timeStamp));
     }
     if (this.systemRowid > 0L) {

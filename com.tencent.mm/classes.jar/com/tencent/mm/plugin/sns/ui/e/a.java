@@ -6,7 +6,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.story.api.e;
 import com.tencent.mm.plugin.story.api.m;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.ar;
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -15,27 +15,27 @@ import java.util.Set;
 
 public final class a
 {
-  private static SparseArray<HashMap> AAP;
-  private static m AAQ;
+  private static SparseArray<HashMap> ASk;
+  private static m ASl;
   
   static
   {
     AppMethodBeat.i(100382);
-    AAP = new SparseArray();
-    AAQ = new m()
+    ASk = new SparseArray();
+    ASl = new m()
     {
-      public final void bV(final String paramAnonymousString, final boolean paramAnonymousBoolean)
+      public final void bZ(final String paramAnonymousString, final boolean paramAnonymousBoolean)
       {
         AppMethodBeat.i(100378);
-        aq.f(new Runnable()
+        ar.f(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(100377);
             int i = 0;
-            while (i < a.eeC().size())
+            while (i < a.eik().size())
             {
-              Object localObject = (Set)((HashMap)a.eeC().valueAt(i)).get(paramAnonymousString);
+              Object localObject = (Set)((HashMap)a.eik().valueAt(i)).get(paramAnonymousString);
               if ((localObject == null) || (((Set)localObject).size() == 0))
               {
                 AppMethodBeat.o(100377);
@@ -46,7 +46,7 @@ public final class a
               {
                 m localm = (m)((WeakReference)((Iterator)localObject).next()).get();
                 if (localm != null) {
-                  localm.bV(paramAnonymousString, paramAnonymousBoolean);
+                  localm.bZ(paramAnonymousString, paramAnonymousBoolean);
                 }
               }
               i += 1;
@@ -57,7 +57,7 @@ public final class a
         AppMethodBeat.o(100378);
       }
     };
-    ((e)g.ad(e.class)).addStoryStatusNotifyListener(AAQ);
+    ((e)g.ad(e.class)).addStoryStatusNotifyListener(ASl);
     AppMethodBeat.o(100382);
   }
   
@@ -69,7 +69,7 @@ public final class a
       AppMethodBeat.o(100379);
       return;
     }
-    HashMap localHashMap = (HashMap)AAP.get(paramInt);
+    HashMap localHashMap = (HashMap)ASk.get(paramInt);
     if (localHashMap == null) {
       localHashMap = new HashMap();
     }
@@ -82,7 +82,7 @@ public final class a
       }
       ((Set)localObject).add(new WeakReference(paramm));
       localHashMap.put(paramString, localObject);
-      AAP.put(paramInt, localHashMap);
+      ASk.put(paramInt, localHashMap);
       AppMethodBeat.o(100379);
       return;
     }
@@ -96,7 +96,7 @@ public final class a
       AppMethodBeat.o(100380);
       return;
     }
-    Object localObject = (HashMap)AAP.get(paramInt);
+    Object localObject = (HashMap)ASk.get(paramInt);
     if (localObject == null)
     {
       AppMethodBeat.o(100380);
@@ -119,10 +119,10 @@ public final class a
     AppMethodBeat.o(100380);
   }
   
-  public static void eeB()
+  public static void eij()
   {
     AppMethodBeat.i(100381);
-    AAP.remove(4);
+    ASk.remove(4);
     AppMethodBeat.o(100381);
   }
 }

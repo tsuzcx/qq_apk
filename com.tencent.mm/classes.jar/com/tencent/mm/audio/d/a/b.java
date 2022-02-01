@@ -2,35 +2,35 @@ package com.tencent.mm.audio.d.a;
 
 import android.media.AudioRecord;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class b
 {
-  private AudioRecord dhg;
-  private boolean diW;
+  private AudioRecord dii;
+  private boolean djY;
   
-  public final boolean PG()
+  public final boolean PF()
   {
     AppMethodBeat.i(146312);
-    if (this.dhg == null) {
-      ad.e("MicroMsg.RecorderPcm", "mAudioRecord is null, return");
+    if (this.dii == null) {
+      ae.e("MicroMsg.RecorderPcm", "mAudioRecord is null, return");
     }
     for (int i = 1; i != 0; i = 0)
     {
       AppMethodBeat.o(146312);
       return false;
     }
-    this.diW = false;
+    this.djY = false;
     try
     {
-      this.dhg.stop();
+      this.dii.stop();
       release();
       AppMethodBeat.o(146312);
       return true;
     }
     catch (Exception localException)
     {
-      ad.m("MicroMsg.RecorderPcm", "", new Object[] { localException });
+      ae.m("MicroMsg.RecorderPcm", "", new Object[] { localException });
       AppMethodBeat.o(146312);
     }
     return false;
@@ -39,11 +39,11 @@ public final class b
   public final void release()
   {
     AppMethodBeat.i(146313);
-    if (this.dhg != null)
+    if (this.dii != null)
     {
-      this.dhg.setRecordPositionUpdateListener(null);
-      this.dhg.release();
-      this.dhg = null;
+      this.dii.setRecordPositionUpdateListener(null);
+      this.dii.release();
+      this.dii = null;
     }
     AppMethodBeat.o(146313);
   }

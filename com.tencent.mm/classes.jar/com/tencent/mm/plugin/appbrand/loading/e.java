@@ -8,21 +8,21 @@ import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/loading/PendingIntentTask;", "", "ctx", "Landroid/content/Context;", "intent", "Landroid/content/Intent;", "initConfig", "Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfigWC;", "statObject", "Lcom/tencent/mm/plugin/appbrand/report/AppBrandStatObject;", "(Landroid/content/Context;Landroid/content/Intent;Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfigWC;Lcom/tencent/mm/plugin/appbrand/report/AppBrandStatObject;)V", "getCtx", "()Landroid/content/Context;", "setCtx", "(Landroid/content/Context;)V", "getInitConfig", "()Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfigWC;", "getIntent", "()Landroid/content/Intent;", "setIntent", "(Landroid/content/Intent;)V", "getStatObject", "()Lcom/tencent/mm/plugin/appbrand/report/AppBrandStatObject;", "component1", "component2", "component3", "component4", "copy", "equals", "", "other", "hashCode", "", "toString", "", "plugin-appbrand-integration_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/loading/PendingIntentTask;", "", "ctx", "Landroid/content/Context;", "intent", "Landroid/content/Intent;", "initConfig", "Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfigWC;", "statObject", "Lcom/tencent/mm/plugin/appbrand/report/AppBrandStatObject;", "(Landroid/content/Context;Landroid/content/Intent;Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfigWC;Lcom/tencent/mm/plugin/appbrand/report/AppBrandStatObject;)V", "getCtx", "()Landroid/content/Context;", "setCtx", "(Landroid/content/Context;)V", "getInitConfig", "()Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfigWC;", "getIntent", "()Landroid/content/Intent;", "setIntent", "(Landroid/content/Intent;)V", "getStatObject", "()Lcom/tencent/mm/plugin/appbrand/report/AppBrandStatObject;", "component1", "component2", "component3", "component4", "copy", "equals", "", "other", "hashCode", "", "toString", "", "plugin-appbrand-integration_release"})
 public final class e
 {
-  public final AppBrandStatObject cmC;
+  public final AppBrandStatObject cmE;
   Context ctx;
   public Intent intent;
-  public final AppBrandInitConfigWC lFx;
+  public final AppBrandInitConfigWC lJW;
   
   public e(Context paramContext, Intent paramIntent, AppBrandInitConfigWC paramAppBrandInitConfigWC, AppBrandStatObject paramAppBrandStatObject)
   {
     AppMethodBeat.i(50841);
     this.ctx = paramContext;
     this.intent = paramIntent;
-    this.lFx = paramAppBrandInitConfigWC;
-    this.cmC = paramAppBrandStatObject;
+    this.lJW = paramAppBrandInitConfigWC;
+    this.cmE = paramAppBrandStatObject;
     AppMethodBeat.o(50841);
   }
   
@@ -34,7 +34,7 @@ public final class e
       if ((paramObject instanceof e))
       {
         paramObject = (e)paramObject;
-        if ((!p.i(this.ctx, paramObject.ctx)) || (!p.i(this.intent, paramObject.intent)) || (!p.i(this.lFx, paramObject.lFx)) || (!p.i(this.cmC, paramObject.cmC))) {}
+        if ((!p.i(this.ctx, paramObject.ctx)) || (!p.i(this.intent, paramObject.intent)) || (!p.i(this.lJW, paramObject.lJW)) || (!p.i(this.cmE, paramObject.cmE))) {}
       }
     }
     else
@@ -62,7 +62,7 @@ public final class e
       }
       j = localObject.hashCode();
       label42:
-      localObject = this.lFx;
+      localObject = this.lJW;
       if (localObject == null) {
         break label110;
       }
@@ -71,7 +71,7 @@ public final class e
     label110:
     for (int k = localObject.hashCode();; k = 0)
     {
-      localObject = this.cmC;
+      localObject = this.cmE;
       if (localObject != null) {
         m = localObject.hashCode();
       }
@@ -87,7 +87,7 @@ public final class e
   public final String toString()
   {
     AppMethodBeat.i(50842);
-    String str = "PendingIntentTask(ctx=" + this.ctx + ", intent=" + this.intent + ", initConfig=" + this.lFx + ", statObject=" + this.cmC + ")";
+    String str = "PendingIntentTask(ctx=" + this.ctx + ", intent=" + this.intent + ", initConfig=" + this.lJW + ", statObject=" + this.cmE + ")";
     AppMethodBeat.o(50842);
     return str;
   }

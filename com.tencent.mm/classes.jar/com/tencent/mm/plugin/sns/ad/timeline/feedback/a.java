@@ -5,15 +5,16 @@ import android.text.TextUtils;
 import android.util.ArrayMap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
+import com.tencent.mm.plugin.sns.ad.f.c;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.i;
 import com.tencent.mm.plugin.sns.storage.a.c;
 import com.tencent.mm.plugin.sns.storage.a.c.a;
-import com.tencent.mm.plugin.sns.storage.b.e;
 import com.tencent.mm.plugin.sns.storage.b.f;
+import com.tencent.mm.plugin.sns.storage.b.g;
 import com.tencent.mm.plugin.sns.storage.p;
 import com.tencent.mm.plugin.sns.ui.bn;
 import com.tencent.mm.protocal.protobuf.TimeLineObject;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
@@ -23,99 +24,99 @@ import java.util.Map;
 public final class a
   implements b.b
 {
-  p yVM;
-  com.tencent.mm.plugin.sns.data.b zav;
-  String zaw = "zh_CN";
+  p zlW;
+  com.tencent.mm.plugin.sns.data.b zqW;
+  String zqX = "zh_CN";
   
-  private List<b.d> dRI()
+  private List<b.d> dVg()
   {
-    AppMethodBeat.i(197618);
+    AppMethodBeat.i(219084);
     ArrayList localArrayList = new ArrayList();
-    Object localObject = dRK();
-    if ((localObject != null) && (((com.tencent.mm.plugin.sns.storage.a)localObject).zuT != null))
+    Object localObject = dVi();
+    if ((localObject != null) && (((com.tencent.mm.plugin.sns.storage.a)localObject).zMo != null))
     {
-      localObject = ((com.tencent.mm.plugin.sns.storage.a)localObject).zuT.dVR();
-      if (com.tencent.mm.plugin.sns.ad.e.b.m((Collection)localObject))
+      localObject = ((com.tencent.mm.plugin.sns.storage.a)localObject).zMo.dZs();
+      if (c.m((Collection)localObject))
       {
         Iterator localIterator = ((List)localObject).iterator();
         if (localIterator.hasNext())
         {
           localObject = (a.c.a)localIterator.next();
-          int i = ((a.c.a)localObject).zvp;
-          if ("zh_CN".equals(this.zaw)) {
-            localObject = ((a.c.a)localObject).zvm;
+          int i = ((a.c.a)localObject).zMK;
+          if ("zh_CN".equals(this.zqX)) {
+            localObject = ((a.c.a)localObject).zMH;
           }
           for (;;)
           {
             localArrayList.add(new b.d(i, (String)localObject));
             break;
-            if (("zh_HK".equals(this.zaw)) || ("zh_TW".equals(this.zaw))) {
-              localObject = ((a.c.a)localObject).zvn;
+            if (("zh_HK".equals(this.zqX)) || ("zh_TW".equals(this.zqX))) {
+              localObject = ((a.c.a)localObject).zMI;
             } else {
-              localObject = ((a.c.a)localObject).zvo;
+              localObject = ((a.c.a)localObject).zMJ;
             }
           }
         }
       }
     }
-    AppMethodBeat.o(197618);
+    AppMethodBeat.o(219084);
     return localArrayList;
   }
   
-  private String dRJ()
+  private String dVh()
   {
-    AppMethodBeat.i(197619);
-    Object localObject = dRL();
+    AppMethodBeat.i(219085);
+    Object localObject = dVj();
     if (localObject != null)
     {
-      if ("zh_CN".equals(this.zaw))
+      if ("zh_CN".equals(this.zqX))
       {
-        localObject = ((com.tencent.mm.plugin.sns.storage.b)localObject).zvN;
-        AppMethodBeat.o(197619);
+        localObject = ((com.tencent.mm.plugin.sns.storage.b)localObject).zNi;
+        AppMethodBeat.o(219085);
         return localObject;
       }
-      if (("zh_TW".equals(this.zaw)) || ("zh_HK".equals(this.zaw)))
+      if (("zh_TW".equals(this.zqX)) || ("zh_HK".equals(this.zqX)))
       {
-        localObject = ((com.tencent.mm.plugin.sns.storage.b)localObject).zvP;
-        AppMethodBeat.o(197619);
+        localObject = ((com.tencent.mm.plugin.sns.storage.b)localObject).zNk;
+        AppMethodBeat.o(219085);
         return localObject;
       }
-      localObject = ((com.tencent.mm.plugin.sns.storage.b)localObject).zvO;
-      AppMethodBeat.o(197619);
+      localObject = ((com.tencent.mm.plugin.sns.storage.b)localObject).zNj;
+      AppMethodBeat.o(219085);
       return localObject;
     }
-    ad.w("FeedbackDisplayDataSupplier", "the ad xml is null in data");
-    AppMethodBeat.o(197619);
+    ae.w("FeedbackDisplayDataSupplier", "the ad xml is null in data");
+    AppMethodBeat.o(219085);
     return "";
   }
   
-  public final com.tencent.mm.plugin.sns.model.q Pz(int paramInt)
+  public final com.tencent.mm.plugin.sns.model.r Qg(int paramInt)
   {
-    AppMethodBeat.i(197616);
-    Object localObject = this.yVM;
-    com.tencent.mm.plugin.sns.data.b localb = this.zav;
+    AppMethodBeat.i(219082);
+    Object localObject = this.zlW;
+    com.tencent.mm.plugin.sns.data.b localb = this.zqW;
     if ((localObject == null) || (localb == null))
     {
-      AppMethodBeat.o(197616);
+      AppMethodBeat.o(219082);
       return null;
     }
     a.c.a locala = new a.c.a();
     if (paramInt == 0) {
-      locala.zvp = a.c.a.zvl;
+      locala.zMK = a.c.a.zMG;
     }
-    locala.zcr = localb.zcr;
+    locala.zte = localb.zte;
     if (paramInt == 0) {}
-    for (locala.zvq = 0L;; locala.zvq = System.currentTimeMillis())
+    for (locala.zML = 0L;; locala.zML = System.currentTimeMillis())
     {
-      localObject = new com.tencent.mm.plugin.sns.model.q(((p)localObject).field_snsId, 8, locala);
-      AppMethodBeat.o(197616);
+      localObject = new com.tencent.mm.plugin.sns.model.r(((p)localObject).field_snsId, 8, locala);
+      AppMethodBeat.o(219082);
       return localObject;
     }
   }
   
-  public final Map<String, Object> axE(String paramString)
+  public final Map<String, Object> ayW(String paramString)
   {
-    AppMethodBeat.i(197617);
+    AppMethodBeat.i(219083);
     ArrayMap localArrayMap = new ArrayMap();
     int i;
     try
@@ -123,15 +124,15 @@ public final class a
       if (!"ad_delay_interval_day".equals(paramString)) {
         break label140;
       }
-      Object localObject1 = this.zav;
-      if ((localObject1 == null) || (((com.tencent.mm.plugin.sns.data.b)localObject1).zcq == null) || (((com.tencent.mm.plugin.sns.data.b)localObject1).zcq.ApS == null)) {
+      Object localObject1 = this.zqW;
+      if ((localObject1 == null) || (((com.tencent.mm.plugin.sns.data.b)localObject1).ztd == null) || (((com.tencent.mm.plugin.sns.data.b)localObject1).ztd.AHi == null)) {
         break label111;
       }
-      localObject1 = ((com.tencent.mm.plugin.sns.data.b)localObject1).zcq.ApS;
-      if (((com.tencent.mm.plugin.sns.storage.a)localObject1).zuT == null) {
+      localObject1 = ((com.tencent.mm.plugin.sns.data.b)localObject1).ztd.AHi;
+      if (((com.tencent.mm.plugin.sns.storage.a)localObject1).zMo == null) {
         break label101;
       }
-      i = ((com.tencent.mm.plugin.sns.storage.a)localObject1).zuT.zvf;
+      i = ((com.tencent.mm.plugin.sns.storage.a)localObject1).zMo.zMA;
       localArrayMap.put(paramString, Integer.valueOf(i));
     }
     catch (Throwable localThrowable)
@@ -139,78 +140,78 @@ public final class a
       for (;;)
       {
         label93:
-        ad.w("FeedbackDisplayDataSupplier", "there is something wrong in getData. the key is ".concat(String.valueOf(paramString)));
+        ae.w("FeedbackDisplayDataSupplier", "there is something wrong in getData. the key is ".concat(String.valueOf(paramString)));
         continue;
         if ("reason_list".equals(paramString))
         {
-          localArrayMap.put(paramString, dRI());
+          localArrayMap.put(paramString, dVg());
         }
         else
         {
           if (!"expand_title".equals(paramString)) {
             break;
           }
-          localArrayMap.put(paramString, dRJ());
+          localArrayMap.put(paramString, dVh());
         }
       }
       if (!"special_prompt".equals(paramString)) {
         break label334;
       }
-      com.tencent.mm.plugin.sns.storage.a locala = dRK();
+      com.tencent.mm.plugin.sns.storage.a locala = dVi();
       Object localObject3 = "";
       localObject2 = localObject3;
       if (locala == null) {
         break label252;
       }
       localObject2 = localObject3;
-      if (locala.zuT == null) {
+      if (locala.zMo == null) {
         break label252;
       }
-      if (!"zh_CN".equals(this.zaw)) {
+      if (!"zh_CN".equals(this.zqX)) {
         break label284;
       }
-      localObject2 = locala.zuT.zvi;
+      localObject2 = locala.zMo.zMD;
       for (;;)
       {
         localObject3 = localObject2;
         if (TextUtils.isEmpty((CharSequence)localObject2)) {
-          localObject3 = dRJ();
+          localObject3 = dVh();
         }
         localArrayMap.put(paramString, localObject3);
         break;
-        if (("zh_HK".equals(this.zaw)) || ("zh_TW".equals(this.zaw))) {
-          localObject2 = locala.zuT.zvj;
+        if (("zh_HK".equals(this.zqX)) || ("zh_TW".equals(this.zqX))) {
+          localObject2 = locala.zMo.zME;
         } else {
-          localObject2 = locala.zuT.zvk;
+          localObject2 = locala.zMo.zMF;
         }
       }
       if (!"is_special".equals(paramString)) {
         break label376;
       }
     }
-    AppMethodBeat.o(197617);
+    AppMethodBeat.o(219083);
     return localArrayMap;
     label101:
-    ad.e("FeedbackDisplayDataSupplier", "the adUnlikeInfo is null in data tag!");
+    ae.e("FeedbackDisplayDataSupplier", "the adUnlikeInfo is null in data tag!");
     break label409;
     label111:
-    ad.e("FeedbackDisplayDataSupplier", "the data tag is null!");
+    ae.e("FeedbackDisplayDataSupplier", "the data tag is null!");
     break label409;
     label140:
     label252:
-    Object localObject2 = dRK();
+    Object localObject2 = dVi();
     label284:
     label334:
     if (localObject2 != null) {}
-    for (boolean bool = ((com.tencent.mm.plugin.sns.storage.a)localObject2).zuX;; bool = false)
+    for (boolean bool = ((com.tencent.mm.plugin.sns.storage.a)localObject2).zMs;; bool = false)
     {
       localArrayMap.put(paramString, Boolean.valueOf(bool));
       break label93;
       label376:
-      if ((!"unlike_tag".equals(paramString)) || (this.zav == null)) {
+      if ((!"unlike_tag".equals(paramString)) || (this.zqW == null)) {
         break label93;
       }
-      localArrayMap.put(paramString, this.zav);
+      localArrayMap.put(paramString, this.zqW);
       break label93;
       label409:
       i = 7;
@@ -218,66 +219,66 @@ public final class a
     }
   }
   
-  public final boolean dRF()
+  public final boolean dVd()
   {
-    AppMethodBeat.i(197613);
+    AppMethodBeat.i(219079);
     try
     {
-      com.tencent.mm.plugin.sns.storage.b localb = dRL();
+      com.tencent.mm.plugin.sns.storage.b localb = dVj();
       if (localb != null)
       {
-        if (localb.zwB > 0)
+        if (localb.zNX > 0)
         {
-          AppMethodBeat.o(197613);
+          AppMethodBeat.o(219079);
           return true;
         }
-        AppMethodBeat.o(197613);
+        AppMethodBeat.o(219079);
         return false;
       }
     }
     catch (Throwable localThrowable)
     {
-      AppMethodBeat.o(197613);
+      AppMethodBeat.o(219079);
     }
     return false;
   }
   
-  public final boolean dRG()
+  public final boolean dVe()
   {
-    AppMethodBeat.i(197614);
+    AppMethodBeat.i(219080);
     try
     {
-      com.tencent.mm.plugin.sns.storage.a locala = dRK();
-      if ((locala != null) && (locala.zuT != null))
+      com.tencent.mm.plugin.sns.storage.a locala = dVi();
+      if ((locala != null) && (locala.zMo != null))
       {
-        boolean bool = com.tencent.mm.plugin.sns.ad.e.b.m(locala.zuT.dVR());
-        AppMethodBeat.o(197614);
+        boolean bool = c.m(locala.zMo.dZs());
+        AppMethodBeat.o(219080);
         return bool;
       }
     }
     catch (Throwable localThrowable)
     {
-      AppMethodBeat.o(197614);
+      AppMethodBeat.o(219080);
     }
     return false;
   }
   
-  public final Intent dRH()
+  public final Intent dVf()
   {
-    AppMethodBeat.i(197615);
+    AppMethodBeat.i(219081);
     for (;;)
     {
       try
       {
-        localObject1 = dRL();
-        if ((localObject1 != null) && (((com.tencent.mm.plugin.sns.storage.b)localObject1).zwr != null))
+        localObject1 = dVj();
+        if ((localObject1 != null) && (((com.tencent.mm.plugin.sns.storage.b)localObject1).zNM != null))
         {
-          localObject1 = ((com.tencent.mm.plugin.sns.storage.b)localObject1).zwr;
-          if (com.tencent.mm.plugin.sns.ad.e.b.isEmpty(((b.e)localObject1).list))
+          localObject1 = ((com.tencent.mm.plugin.sns.storage.b)localObject1).zNM;
+          if (c.isEmpty(((b.f)localObject1).list))
           {
-            ad.e("FeedbackDisplayDataSupplier", "there is no feedback item!");
+            ae.e("FeedbackDisplayDataSupplier", "there is no feedback item!");
             localObject1 = "";
-            localp = this.yVM;
+            localp = this.zlW;
             boolean bool = TextUtils.isEmpty((CharSequence)localObject1);
             if ((bool) || (localp == null)) {
               continue;
@@ -292,16 +293,16 @@ public final class a
         Object localObject2;
         String str3;
         String str4;
-        AppMethodBeat.o(197615);
+        AppMethodBeat.o(219081);
         return null;
       }
       try
       {
-        localObject2 = String.format("snsid=%s", new Object[] { localp.dYl().Id });
-        str3 = String.format("aid=%s", new Object[] { localp.dYP() });
-        str4 = String.format("traceid=%s", new Object[] { localp.dYQ() });
-        g.ajA();
-        localObject2 = i.n((String)localObject1, new String[] { localObject2, str3, str4, String.format("uin=%s", new Object[] { com.tencent.mm.kernel.a.aiq() }) });
+        localObject2 = String.format("snsid=%s", new Object[] { localp.ebP().Id });
+        str3 = String.format("aid=%s", new Object[] { localp.ect() });
+        str4 = String.format("traceid=%s", new Object[] { localp.ecu() });
+        g.ajP();
+        localObject2 = i.n((String)localObject1, new String[] { localObject2, str3, str4, String.format("uin=%s", new Object[] { com.tencent.mm.kernel.a.aiF() }) });
         localObject1 = localObject2;
       }
       catch (Exception localException)
@@ -314,71 +315,71 @@ public final class a
       localObject2 = new Intent();
       ((Intent)localObject2).putExtra("rawUrl", (String)localObject1);
       ((Intent)localObject2).putExtra("useJs", true);
-      ((Intent)localObject2).putExtra("KPublisherId", "sns_" + com.tencent.mm.plugin.sns.data.q.zw(localp.field_snsId));
+      ((Intent)localObject2).putExtra("KPublisherId", "sns_" + com.tencent.mm.plugin.sns.data.r.zV(localp.field_snsId));
       ((Intent)localObject2).putExtra("pre_username", localp.field_userName);
-      ((Intent)localObject2).putExtra("prePublishId", "sns_" + com.tencent.mm.plugin.sns.data.q.zw(localp.field_snsId));
+      ((Intent)localObject2).putExtra("prePublishId", "sns_" + com.tencent.mm.plugin.sns.data.r.zV(localp.field_snsId));
       ((Intent)localObject2).putExtra("preUsername", localp.field_userName);
-      AppMethodBeat.o(197615);
+      AppMethodBeat.o(219081);
       return localObject2;
-      localObject1 = ((b.e)localObject1).list.iterator();
+      localObject1 = ((b.f)localObject1).list.iterator();
       if (!((Iterator)localObject1).hasNext()) {
         break;
       }
-      localObject2 = (b.f)((Iterator)localObject1).next();
-      if ((localObject2 != null) && (!TextUtils.isEmpty(((b.f)localObject2).url)))
+      localObject2 = (b.g)((Iterator)localObject1).next();
+      if ((localObject2 != null) && (!TextUtils.isEmpty(((b.g)localObject2).url)))
       {
-        localObject2 = ((b.f)localObject2).url;
+        localObject2 = ((b.g)localObject2).url;
         localObject1 = localObject2;
         if (TextUtils.isEmpty((CharSequence)localObject2))
         {
-          ad.e("FeedbackDisplayDataSupplier", "there is feedback item, but no url!!!");
+          ae.e("FeedbackDisplayDataSupplier", "there is feedback item, but no url!!!");
           localObject1 = localObject2;
           continue;
-          ad.e("FeedbackDisplayDataSupplier", "there is no feedback info!!!");
+          ae.e("FeedbackDisplayDataSupplier", "there is no feedback info!!!");
           str1 = "";
         }
       }
     }
   }
   
-  final com.tencent.mm.plugin.sns.storage.a dRK()
+  final com.tencent.mm.plugin.sns.storage.a dVi()
   {
     com.tencent.mm.plugin.sns.storage.a locala = null;
-    AppMethodBeat.i(197620);
-    com.tencent.mm.plugin.sns.data.b localb = this.zav;
-    Object localObject = this.yVM;
+    AppMethodBeat.i(219086);
+    com.tencent.mm.plugin.sns.data.b localb = this.zqW;
+    Object localObject = this.zlW;
     if (localb == null)
     {
-      AppMethodBeat.o(197620);
+      AppMethodBeat.o(219086);
       return null;
     }
     if (localObject != null) {
-      locala = ((p)localObject).dRK();
+      locala = ((p)localObject).dVi();
     }
     localObject = locala;
     if (locala == null)
     {
       localObject = locala;
-      if (localb.zcq != null) {
-        localObject = localb.zcq.ApS;
+      if (localb.ztd != null) {
+        localObject = localb.ztd.AHi;
       }
     }
-    AppMethodBeat.o(197620);
+    AppMethodBeat.o(219086);
     return localObject;
   }
   
-  final com.tencent.mm.plugin.sns.storage.b dRL()
+  final com.tencent.mm.plugin.sns.storage.b dVj()
   {
-    AppMethodBeat.i(197621);
-    com.tencent.mm.plugin.sns.data.b localb = this.zav;
-    p localp = this.yVM;
+    AppMethodBeat.i(219087);
+    com.tencent.mm.plugin.sns.data.b localb = this.zqW;
+    p localp = this.zlW;
     Object localObject2 = null;
     Object localObject1 = localObject2;
     if (localb != null)
     {
       localObject1 = localObject2;
-      if (localb.zcq != null) {
-        localObject1 = localb.zcq.ApR;
+      if (localb.ztd != null) {
+        localObject1 = localb.ztd.AHh;
       }
     }
     localObject2 = localObject1;
@@ -386,10 +387,10 @@ public final class a
     {
       localObject2 = localObject1;
       if (localp != null) {
-        localObject2 = localp.dRL();
+        localObject2 = localp.dVj();
       }
     }
-    AppMethodBeat.o(197621);
+    AppMethodBeat.o(219087);
     return localObject2;
   }
 }

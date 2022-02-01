@@ -7,8 +7,8 @@ import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ai;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.aj;
 import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.base.preference.SelectPreference;
@@ -18,9 +18,9 @@ import com.tencent.mm.ui.s.b;
 public class SelectSexUI
   extends MMPreference
 {
-  private int ePk = -1;
-  private SelectPreference sFY;
-  private SelectPreference sFZ;
+  private int eQV = -1;
+  private SelectPreference sQX;
+  private SelectPreference sQY;
   private f screen;
   
   public int getResourceId()
@@ -32,11 +32,11 @@ public class SelectSexUI
   {
     AppMethodBeat.i(73949);
     this.screen = getPreferenceScreen();
-    this.sFY = ((SelectPreference)this.screen.aVD("select_male"));
-    this.sFZ = ((SelectPreference)this.screen.aVD("select_female"));
-    int i = bt.a((Integer)g.ajC().ajl().get(12290, null), 0);
+    this.sQX = ((SelectPreference)this.screen.aXe("select_male"));
+    this.sQY = ((SelectPreference)this.screen.aXe("select_female"));
+    int i = bu.a((Integer)g.ajR().ajA().get(12290, null), 0);
     if (i == 1) {
-      this.sFY.isSelected = true;
+      this.sQX.isSelected = true;
     }
     for (;;)
     {
@@ -62,11 +62,11 @@ public class SelectSexUI
           AppMethodBeat.o(73947);
           return true;
         }
-      }, null, s.b.JbS);
+      }, null, s.b.JwA);
       AppMethodBeat.o(73949);
       return;
       if (i == 2) {
-        this.sFZ.isSelected = true;
+        this.sQY.isSelected = true;
       }
     }
   }
@@ -85,9 +85,9 @@ public class SelectSexUI
     paramPreference = paramPreference.mKey;
     if (paramPreference.equals("select_male"))
     {
-      this.ePk = 1;
-      this.sFY.isSelected = true;
-      this.sFZ.isSelected = false;
+      this.eQV = 1;
+      this.sQX.isSelected = true;
+      this.sQY.isSelected = false;
       paramf.notifyDataSetChanged();
     }
     for (;;)
@@ -96,9 +96,9 @@ public class SelectSexUI
       return false;
       if (paramPreference.equals("select_female"))
       {
-        this.ePk = 2;
-        this.sFY.isSelected = false;
-        this.sFZ.isSelected = true;
+        this.eQV = 2;
+        this.sQX.isSelected = false;
+        this.sQY.isSelected = true;
         paramf.notifyDataSetChanged();
       }
     }

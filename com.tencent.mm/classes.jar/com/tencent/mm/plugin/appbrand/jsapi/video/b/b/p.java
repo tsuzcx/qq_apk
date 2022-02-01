@@ -14,24 +14,24 @@ public final class p
   int bHj;
   int bHk;
   int bHl;
-  final a[] lnk;
+  final a[] lrJ;
   
   static
   {
-    AppMethodBeat.i(206075);
+    AppMethodBeat.i(211102);
     bHd = new Comparator() {};
     bHe = new Comparator() {};
-    AppMethodBeat.o(206075);
+    AppMethodBeat.o(211102);
   }
   
   public p()
   {
-    AppMethodBeat.i(206074);
+    AppMethodBeat.i(211101);
     this.bHf = 2000;
-    this.lnk = new a[5];
+    this.lrJ = new a[5];
     this.bHg = new ArrayList();
     this.bHi = -1;
-    AppMethodBeat.o(206074);
+    AppMethodBeat.o(211101);
   }
   
   static final class a

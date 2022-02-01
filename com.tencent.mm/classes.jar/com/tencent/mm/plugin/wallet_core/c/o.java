@@ -1,46 +1,46 @@
 package com.tencent.mm.plugin.wallet_core.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.ahh;
-import com.tencent.mm.protocal.protobuf.ahi;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.ahr;
+import com.tencent.mm.protocal.protobuf.ahs;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class o
   extends n
   implements k
 {
-  private boolean COO;
-  private ahh COU;
-  public ahi COV;
+  private boolean Dgt;
+  private ahr Dgy;
+  public ahs Dgz;
   private f callback;
-  private b gPp;
+  private b gRX;
   
   public o(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(69920);
-    this.COO = paramBoolean;
+    this.Dgt = paramBoolean;
     b.a locala = new b.a();
-    locala.hNM = new ahh();
-    locala.hNN = new ahi();
+    locala.hQF = new ahr();
+    locala.hQG = new ahs();
     if (paramBoolean) {
       locala.funcId = 2529;
     }
     for (locala.uri = "/cgi-bin/mmpay-bin/mktf2fmodifyexposure";; locala.uri = "/cgi-bin/mmpay-bin/mktmodifyexposure")
     {
-      locala.hNO = 0;
+      locala.hQH = 0;
       locala.respCmdId = 0;
-      this.gPp = locala.aDC();
-      this.COU = ((ahh)this.gPp.hNK.hNQ);
-      this.COU.GeU = paramString;
+      this.gRX = locala.aDS();
+      this.Dgy = ((ahr)this.gRX.hQD.hQJ);
+      this.Dgy.GxC = paramString;
       AppMethodBeat.o(69920);
       return;
       locala.funcId = 2888;
@@ -51,14 +51,14 @@ public final class o
   {
     AppMethodBeat.i(69921);
     this.callback = paramf;
-    int i = dispatch(parame, this.gPp, this);
+    int i = dispatch(parame, this.gRX, this);
     AppMethodBeat.o(69921);
     return i;
   }
   
   public final int getType()
   {
-    if (this.COO) {
+    if (this.Dgt) {
       return 2529;
     }
     return 2888;
@@ -67,8 +67,8 @@ public final class o
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(69922);
-    ad.i("MicroMsg.NetSceneMktModifyExposure", "onGYNetEnd, netId: %s, errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    this.COV = ((ahi)((b)paramq).hNL.hNQ);
+    ae.i("MicroMsg.NetSceneMktModifyExposure", "onGYNetEnd, netId: %s, errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    this.Dgz = ((ahs)((b)paramq).hQE.hQJ);
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }

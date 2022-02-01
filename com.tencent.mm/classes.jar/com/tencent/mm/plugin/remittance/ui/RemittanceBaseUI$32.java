@@ -16,9 +16,9 @@ final class RemittanceBaseUI$32
     AppMethodBeat.i(67984);
     b localb = new b();
     localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/remittance/ui/RemittanceBaseUI$9", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-    this.ybf.hideTenpayKB();
-    RemittanceBaseUI.dJB();
+    a.b("com/tencent/mm/plugin/remittance/ui/RemittanceBaseUI$9", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+    this.yqW.hideTenpayKB();
+    RemittanceBaseUI.dMT();
     a.a(this, "com/tencent/mm/plugin/remittance/ui/RemittanceBaseUI$9", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(67984);
   }

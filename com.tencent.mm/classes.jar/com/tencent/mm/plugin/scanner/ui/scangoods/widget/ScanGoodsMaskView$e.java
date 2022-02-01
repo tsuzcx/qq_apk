@@ -6,11 +6,11 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import d.l;
 import d.v;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "animation", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "animation", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate"})
 final class ScanGoodsMaskView$e
   implements ValueAnimator.AnimatorUpdateListener
 {
@@ -32,16 +32,16 @@ final class ScanGoodsMaskView$e
       throw paramValueAnimator;
     }
     float f = ((Float)paramValueAnimator).floatValue();
-    ScanGoodsMaskView.d(this.ywB).setAlpha(0.5F - f * 0.5F);
-    if (this.ywE)
+    ScanGoodsMaskView.d(this.yMB).setAlpha(0.5F - f * 0.5F);
+    if (this.yME)
     {
-      ScanGoodsMaskView.e(this.ywB).setAlpha(1.0F - f);
-      ScanGoodsMaskView.f(this.ywB).setAlpha(1.0F - f);
+      ScanGoodsMaskView.e(this.yMB).setAlpha(1.0F - f);
+      ScanGoodsMaskView.f(this.yMB).setAlpha(1.0F - f);
     }
-    if (ScanGoodsMaskView.g(this.ywB)) {
-      ScanGoodsMaskView.c(this.ywB).setAlpha(f);
+    if (ScanGoodsMaskView.g(this.yMB)) {
+      ScanGoodsMaskView.c(this.yMB).setAlpha(f);
     }
-    ad.v("MicroMsg.ScanGoodsMaskView", "alvinluo animateBlurView alpha: %s, factor: %f", new Object[] { Float.valueOf(ScanGoodsMaskView.d(this.ywB).getAlpha()), Float.valueOf(f) });
+    ae.v("MicroMsg.ScanGoodsMaskView", "alvinluo animateBlurView alpha: %s, factor: %f", new Object[] { Float.valueOf(ScanGoodsMaskView.d(this.yMB).getAlpha()), Float.valueOf(f) });
     AppMethodBeat.o(52290);
   }
 }

@@ -16,7 +16,7 @@ final class g$1
     if (paramBoolean)
     {
       paramString = "ok";
-      this.ktg.h(this.cjQ, this.kWc.e(paramString, null));
+      this.kww.h(this.cjS, this.kZK.e(paramString, null));
       AppMethodBeat.o(147183);
       return;
     }

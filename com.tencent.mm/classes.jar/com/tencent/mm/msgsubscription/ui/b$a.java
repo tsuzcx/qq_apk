@@ -2,13 +2,13 @@ package com.tencent.mm.msgsubscription.ui;
 
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/msgsubscription/ui/SubscribeMsgRequestDialog$Companion;", "", "()V", "TAG", "", "Rotation", "TemplateShowSampleListener", "wxbiz-msgsubscription-sdk_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/msgsubscription/ui/SubscribeMsgRequestDialog$Companion;", "", "()V", "TAG", "", "Rotation", "TemplateShowSampleListener", "wxbiz-msgsubscription-sdk_release"})
 public final class b$a
 {
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/msgsubscription/ui/SubscribeMsgRequestDialog$Companion$TemplateShowSampleListener;", "", "onSampleShow", "", "templateId", "", "check", "", "index", "", "wxbiz-msgsubscription-sdk_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/msgsubscription/ui/SubscribeMsgRequestDialog$Companion$TemplateShowSampleListener;", "", "onSampleShow", "", "templateId", "", "check", "", "index", "", "wxbiz-msgsubscription-sdk_release"})
   public static abstract interface a
   {
-    public abstract void ax(String paramString, int paramInt);
+    public abstract void ay(String paramString, int paramInt);
   }
 }
 

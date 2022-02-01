@@ -5,29 +5,29 @@ import android.os.Vibrator;
 import android.view.MotionEvent;
 import android.view.ViewPropertyAnimator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.j.a;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/story/ui/view/gallery/GalleryOverScrollConsumer;", "Lcom/tencent/mm/ui/recyclerview/GalleryScrollConsumer;", "()V", "currScrollType", "", "downX", "", "downY", "galleryView", "Lcom/tencent/mm/plugin/story/ui/view/gallery/StoryGalleryView;", "getGalleryView", "()Lcom/tencent/mm/plugin/story/ui/view/gallery/StoryGalleryView;", "setGalleryView", "(Lcom/tencent/mm/plugin/story/ui/view/gallery/StoryGalleryView;)V", "totalScrollY", "dispatchTouchEvent", "", "event", "Landroid/view/MotionEvent;", "isTouchMoved", "scrollType", "getScrollDirection", "showExitHint", "", "Companion", "plugin-story_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/story/ui/view/gallery/GalleryOverScrollConsumer;", "Lcom/tencent/mm/ui/recyclerview/GalleryScrollConsumer;", "()V", "currScrollType", "", "downX", "", "downY", "galleryView", "Lcom/tencent/mm/plugin/story/ui/view/gallery/StoryGalleryView;", "getGalleryView", "()Lcom/tencent/mm/plugin/story/ui/view/gallery/StoryGalleryView;", "setGalleryView", "(Lcom/tencent/mm/plugin/story/ui/view/gallery/StoryGalleryView;)V", "totalScrollY", "dispatchTouchEvent", "", "event", "Landroid/view/MotionEvent;", "isTouchMoved", "scrollType", "getScrollDirection", "showExitHint", "", "Companion", "plugin-story_release"})
 public final class d
   extends a
 {
-  public static final d.a BcO;
+  public static final d.a Bum;
   private static final String TAG = "MicroMsg.GalleryOverScrollConsumer";
-  StoryGalleryView AUy;
-  private int Aod;
-  private int BcN;
-  private float cNg;
-  private float cNh;
+  private int AFq;
+  StoryGalleryView BlW;
+  private int Bul;
+  private float cNQ;
+  private float cNR;
   
   static
   {
     AppMethodBeat.i(120351);
-    BcO = new d.a((byte)0);
+    Bum = new d.a((byte)0);
     TAG = "MicroMsg.GalleryOverScrollConsumer";
     AppMethodBeat.o(120351);
   }
@@ -45,24 +45,24 @@ public final class d
     {
       AppMethodBeat.o(120350);
       return bool1;
-      this.cNg = paramMotionEvent.getX();
-      this.cNh = paramMotionEvent.getY();
+      this.cNQ = paramMotionEvent.getX();
+      this.cNR = paramMotionEvent.getY();
       continue;
       if (paramBoolean)
       {
-        this.BcN = paramInt;
+        this.Bul = paramInt;
         if (paramInt == 1) {}
         for (paramBoolean = bool2;; paramBoolean = false)
         {
-          float f = paramMotionEvent.getY() - this.cNh;
+          float f = paramMotionEvent.getY() - this.cNR;
           if (f > 0.0F) {
             break label314;
           }
-          paramMotionEvent = this.AUy;
+          paramMotionEvent = this.BlW;
           if (paramMotionEvent == null) {
             break label157;
           }
-          this.Aod = (-(int)f);
+          this.AFq = (-(int)f);
           paramMotionEvent.animate().cancel();
           paramMotionEvent.setTranslationY(f / 2.0F);
           bool1 = paramBoolean;
@@ -71,9 +71,9 @@ public final class d
         label157:
         bool1 = paramBoolean;
         continue;
-        if ((this.Aod > 0) && (this.BcN == 1))
+        if ((this.AFq > 0) && (this.Bul == 1))
         {
-          paramMotionEvent = this.AUy;
+          paramMotionEvent = this.BlW;
           if (paramMotionEvent != null)
           {
             paramMotionEvent = paramMotionEvent.animate();
@@ -85,8 +85,8 @@ public final class d
               }
             }
           }
-          this.BcN = 0;
-          Context localContext = aj.getContext();
+          this.Bul = 0;
+          Context localContext = ak.getContext();
           Object localObject = localContext.getSystemService("vibrator");
           paramMotionEvent = localObject;
           if (!(localObject instanceof Vibrator)) {
@@ -96,17 +96,17 @@ public final class d
           if (paramMotionEvent != null) {
             paramMotionEvent.vibrate(10L);
           }
-          h.ci(localContext, localContext.getString(2131764238));
+          h.cj(localContext, localContext.getString(2131764238));
         }
-        this.Aod = 0;
+        this.AFq = 0;
         continue;
-        ad.i(TAG, "LogStory: touch cancel");
-        this.BcN = 0;
-        paramMotionEvent = this.AUy;
+        ae.i(TAG, "LogStory: touch cancel");
+        this.Bul = 0;
+        paramMotionEvent = this.BlW;
         if (paramMotionEvent != null) {
           paramMotionEvent.setTranslationY(0.0F);
         }
-        this.Aod = 0;
+        this.AFq = 0;
         continue;
         label314:
         bool1 = paramBoolean;
@@ -114,14 +114,14 @@ public final class d
     }
   }
   
-  public final int emc()
+  public final int epL()
   {
     return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.story.ui.view.gallery.d
  * JD-Core Version:    0.7.0.1
  */

@@ -10,7 +10,7 @@ final class q$2
   public final void run()
   {
     AppMethodBeat.i(114539);
-    this.wcl.arq(this.wcm);
+    this.wrN.asy(this.wrO);
     AppMethodBeat.o(114539);
   }
 }

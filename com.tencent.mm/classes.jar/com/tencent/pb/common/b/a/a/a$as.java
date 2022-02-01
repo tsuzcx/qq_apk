@@ -6,8 +6,8 @@ import com.google.b.a.e;
 public final class a$as
   extends e
 {
-  public int LHV = 0;
-  public int LHW = 0;
+  public int MeZ = 0;
+  public int Mfa = 0;
   
   public a$as()
   {
@@ -16,11 +16,11 @@ public final class a$as
   
   public final void a(b paramb)
   {
-    if (this.LHV != 0) {
-      paramb.bx(1, this.LHV);
+    if (this.MeZ != 0) {
+      paramb.bx(1, this.MeZ);
     }
-    if (this.LHW != 0) {
-      paramb.bx(2, this.LHW);
+    if (this.Mfa != 0) {
+      paramb.bx(2, this.Mfa);
     }
     super.a(paramb);
   }
@@ -29,12 +29,12 @@ public final class a$as
   {
     int j = super.zq();
     int i = j;
-    if (this.LHV != 0) {
-      i = j + b.bz(1, this.LHV);
+    if (this.MeZ != 0) {
+      i = j + b.bz(1, this.MeZ);
     }
     j = i;
-    if (this.LHW != 0) {
-      j = i + b.bz(2, this.LHW);
+    if (this.Mfa != 0) {
+      j = i + b.bz(2, this.Mfa);
     }
     return j;
   }

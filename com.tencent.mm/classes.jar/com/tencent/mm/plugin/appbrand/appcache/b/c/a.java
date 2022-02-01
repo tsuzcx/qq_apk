@@ -9,24 +9,24 @@ import com.tencent.mm.plugin.appbrand.appcache.b.b.e;
 import com.tencent.mm.plugin.appbrand.appcache.b.b.f;
 import com.tencent.mm.plugin.appbrand.appcache.b.b.h;
 import com.tencent.mm.plugin.appbrand.appcache.b.b.i;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public enum a
 {
-  public static final a jKB;
-  public static final a jKC;
-  public static final a jKD;
-  public static final a jKE;
+  public static final a jNN;
+  public static final a jNO;
+  public static final a jNP;
+  public static final a jNQ;
   
   static
   {
     AppMethodBeat.i(44429);
-    jKA = new a("INSTANCE");
-    jKF = new a[] { jKA };
-    jKB = new a() {};
-    jKC = new a() {};
-    jKD = new a() {};
-    jKE = new a() {};
+    jNM = new a("INSTANCE");
+    jNR = new a[] { jNM };
+    jNN = new a() {};
+    jNO = new a() {};
+    jNP = new a() {};
+    jNQ = new a() {};
     AppMethodBeat.o(44429);
   }
   
@@ -37,28 +37,28 @@ public enum a
     AppMethodBeat.i(44428);
     if (paramLong2 < 0L)
     {
-      ad.e("MicroMsg.AppBrand.PredownloadReporter", "idkeyStat with invalid ID(%d), key (%d)", new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2) });
+      ae.e("MicroMsg.AppBrand.PredownloadReporter", "idkeyStat with invalid ID(%d), key (%d)", new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2) });
       AppMethodBeat.o(44428);
       return;
     }
     if (paramLong1 > 0L)
     {
-      com.tencent.mm.plugin.report.service.g.yhR.n(paramLong1, paramLong2, 1L);
-      com.tencent.mm.plugin.report.service.g.yhR.f(15272, new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2) });
+      com.tencent.mm.plugin.report.service.g.yxI.n(paramLong1, paramLong2, 1L);
+      com.tencent.mm.plugin.report.service.g.yxI.f(15272, new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2) });
     }
     if (843L != paramLong1)
     {
-      com.tencent.mm.plugin.report.service.g.yhR.n(843L, paramLong2, 1L);
-      com.tencent.mm.plugin.report.service.g.yhR.f(15272, new Object[] { Integer.valueOf(843), Long.valueOf(paramLong2) });
+      com.tencent.mm.plugin.report.service.g.yxI.n(843L, paramLong2, 1L);
+      com.tencent.mm.plugin.report.service.g.yxI.f(15272, new Object[] { Integer.valueOf(843), Long.valueOf(paramLong2) });
     }
     AppMethodBeat.o(44428);
   }
   
   public static void dD(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(221275);
+    AppMethodBeat.i(224361);
     A(paramInt1, paramInt2);
-    AppMethodBeat.o(221275);
+    AppMethodBeat.o(224361);
   }
   
   public static class a<_Key>

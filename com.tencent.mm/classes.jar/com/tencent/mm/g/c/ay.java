@@ -8,19 +8,19 @@ public abstract class ay
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eEf = "createTime".hashCode();
-  private static final int ePY = "labelID".hashCode();
-  private static final int ePZ = "labelName".hashCode();
-  private static final int eQa = "labelPYFull".hashCode();
-  private static final int eQb = "labelPYShort".hashCode();
-  private static final int eQc = "isTemporary".hashCode();
+  private static final int eFO = "createTime".hashCode();
+  private static final int eRJ = "labelID".hashCode();
+  private static final int eRK = "labelName".hashCode();
+  private static final int eRL = "labelPYFull".hashCode();
+  private static final int eRM = "labelPYShort".hashCode();
+  private static final int eRN = "isTemporary".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eDI = true;
-  private boolean ePT = true;
-  private boolean ePU = true;
-  private boolean ePV = true;
-  private boolean ePW = true;
-  private boolean ePX = true;
+  private boolean eFr = true;
+  private boolean eRE = true;
+  private boolean eRF = true;
+  private boolean eRG = true;
+  private boolean eRH = true;
+  private boolean eRI = true;
   public long field_createTime;
   public boolean field_isTemporary;
   public int field_labelID;
@@ -41,11 +41,11 @@ public abstract class ay
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (ePY != k) {
+      if (eRJ != k) {
         break label65;
       }
       this.field_labelID = paramCursor.getInt(i);
-      this.ePT = true;
+      this.eRE = true;
     }
     for (;;)
     {
@@ -53,25 +53,25 @@ public abstract class ay
       break label20;
       break;
       label65:
-      if (ePZ == k)
+      if (eRK == k)
       {
         this.field_labelName = paramCursor.getString(i);
       }
-      else if (eQa == k)
+      else if (eRL == k)
       {
         this.field_labelPYFull = paramCursor.getString(i);
       }
-      else if (eQb == k)
+      else if (eRM == k)
       {
         this.field_labelPYShort = paramCursor.getString(i);
       }
-      else if (eEf == k)
+      else if (eFO == k)
       {
         this.field_createTime = paramCursor.getLong(i);
       }
       else
       {
-        if (eQc == k)
+        if (eRN == k)
         {
           if (paramCursor.getInt(i) != 0) {}
           for (boolean bool = true;; bool = false)
@@ -90,22 +90,22 @@ public abstract class ay
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.ePT) {
+    if (this.eRE) {
       localContentValues.put("labelID", Integer.valueOf(this.field_labelID));
     }
-    if (this.ePU) {
+    if (this.eRF) {
       localContentValues.put("labelName", this.field_labelName);
     }
-    if (this.ePV) {
+    if (this.eRG) {
       localContentValues.put("labelPYFull", this.field_labelPYFull);
     }
-    if (this.ePW) {
+    if (this.eRH) {
       localContentValues.put("labelPYShort", this.field_labelPYShort);
     }
-    if (this.eDI) {
+    if (this.eFr) {
       localContentValues.put("createTime", Long.valueOf(this.field_createTime));
     }
-    if (this.ePX) {
+    if (this.eRI) {
       localContentValues.put("isTemporary", Boolean.valueOf(this.field_isTemporary));
     }
     if (this.systemRowid > 0L) {

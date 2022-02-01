@@ -2,19 +2,19 @@ package com.tencent.mm.app.plugin.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.audio.a.a;
-import com.tencent.mm.g.a.fv;
+import com.tencent.mm.g.a.fw;
 import com.tencent.mm.sdk.b.c;
 
 public final class a$d
-  extends c<fv>
+  extends c<fw>
 {
-  a cXd;
+  a cYa;
   String fileName;
   
   public a$d()
   {
     AppMethodBeat.i(161263);
-    this.__eventId = fv.class.getName().hashCode();
+    this.__eventId = fw.class.getName().hashCode();
     AppMethodBeat.o(161263);
   }
 }

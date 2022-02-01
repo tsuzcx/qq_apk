@@ -2,14 +2,14 @@ package com.tencent.mm.wallet_core.c;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.u;
+import com.tencent.mm.model.v;
 
 public final class ah
 {
-  public static int fRF()
+  public static int fWb()
   {
     AppMethodBeat.i(72821);
-    if (u.aAB())
+    if (v.aAR())
     {
       AppMethodBeat.o(72821);
       return 2131765737;
@@ -18,15 +18,15 @@ public final class ah
     return 2131765738;
   }
   
-  public static String fRG()
+  public static String fWc()
   {
     AppMethodBeat.i(72822);
-    if (u.aAB())
+    if (v.aAR())
     {
       AppMethodBeat.o(72822);
       return "R";
     }
-    if (u.aAC())
+    if (v.aAS())
     {
       AppMethodBeat.o(72822);
       return "HK$";
@@ -35,10 +35,10 @@ public final class ah
     return "¥";
   }
   
-  public static int fRH()
+  public static int fWd()
   {
     AppMethodBeat.i(72823);
-    if (u.aAB())
+    if (v.aAR())
     {
       AppMethodBeat.o(72823);
       return 2131496009;
@@ -47,10 +47,10 @@ public final class ah
     return 2131495941;
   }
   
-  public static int fRI()
+  public static int fWe()
   {
     AppMethodBeat.i(72824);
-    if (u.aAB())
+    if (v.aAR())
     {
       AppMethodBeat.o(72824);
       return 2131765118;
@@ -59,10 +59,10 @@ public final class ah
     return 2131765115;
   }
   
-  public static int fRJ()
+  public static int fWf()
   {
     AppMethodBeat.i(72825);
-    if (u.aAB())
+    if (v.aAR())
     {
       AppMethodBeat.o(72825);
       return 2131493681;
@@ -71,22 +71,22 @@ public final class ah
     return 2131493680;
   }
   
-  public static int fRK()
+  public static int fWg()
   {
-    AppMethodBeat.i(199368);
-    if (u.aAB())
+    AppMethodBeat.i(190252);
+    if (v.aAR())
     {
-      AppMethodBeat.o(199368);
+      AppMethodBeat.o(190252);
       return 2131757460;
     }
-    AppMethodBeat.o(199368);
+    AppMethodBeat.o(190252);
     return 2131757459;
   }
   
-  public static int fRL()
+  public static int fWh()
   {
     AppMethodBeat.i(72827);
-    if (u.aAB())
+    if (v.aAR())
     {
       AppMethodBeat.o(72827);
       return 2131765186;
@@ -95,10 +95,10 @@ public final class ah
     return 2131765185;
   }
   
-  public static String kN(Context paramContext)
+  public static String kU(Context paramContext)
   {
     AppMethodBeat.i(72826);
-    if (u.aAB())
+    if (v.aAR())
     {
       paramContext = paramContext.getString(2131765748);
       AppMethodBeat.o(72826);
@@ -111,7 +111,7 @@ public final class ah
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.wallet_core.c.ah
  * JD-Core Version:    0.7.0.1
  */

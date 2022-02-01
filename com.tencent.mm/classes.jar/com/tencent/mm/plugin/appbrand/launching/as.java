@@ -5,13 +5,13 @@ import com.tencent.mm.plugin.appbrand.config.WxaAttributes;
 
 public abstract interface as
 {
-  public abstract long bru();
+  public abstract long bsf();
   
-  public abstract long brv();
+  public abstract long bsg();
   
-  public abstract long brw();
+  public abstract long bsh();
   
-  public abstract Pair<WxaAttributes, Boolean> brx();
+  public abstract Pair<WxaAttributes, Boolean> bsi();
   
   public abstract String name();
 }

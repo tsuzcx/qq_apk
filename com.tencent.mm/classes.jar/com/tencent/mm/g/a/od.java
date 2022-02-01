@@ -6,8 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class od
   extends b
 {
-  public a dBW;
-  public b dBX;
+  public a dDa;
   
   public od()
   {
@@ -16,36 +15,21 @@ public final class od
   
   private od(byte paramByte)
   {
-    AppMethodBeat.i(140935);
-    this.dBW = new a();
-    this.dBX = new b();
-    this.IbR = false;
+    AppMethodBeat.i(130928);
+    this.dDa = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(140935);
+    AppMethodBeat.o(130928);
   }
   
   public static final class a
   {
-    public int dBY = 0;
-    public int dBZ = 0;
-    public Runnable dCa;
-    public String dve;
-  }
-  
-  public static final class b
-  {
-    public String dCb;
-    public int dCc = 0;
-    public int dvd = 0;
-    public String dvf;
-    public String dvg;
-    public int errCode = -1;
-    public String errMsg;
+    public int retCode;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.a.od
  * JD-Core Version:    0.7.0.1
  */

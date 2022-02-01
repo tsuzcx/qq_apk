@@ -6,7 +6,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.b.b;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
 final class CommentsContainer$b
   implements View.OnClickListener
 {
@@ -17,8 +17,8 @@ final class CommentsContainer$b
     AppMethodBeat.i(120050);
     b localb = new b();
     localb.bd(paramView);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/story/ui/view/CommentsContainer$getItemView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-    paramView = this.AYS.getItemClickListener();
+    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/story/ui/view/CommentsContainer$getItemView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+    paramView = this.Bqq.getItemClickListener();
     if (paramView != null) {
       paramView.invoke();
     }

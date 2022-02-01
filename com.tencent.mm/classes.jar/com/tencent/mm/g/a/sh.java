@@ -1,13 +1,13 @@
 package com.tencent.mm.g.a;
 
-import android.graphics.Bitmap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class sh
   extends b
 {
-  public a dGN;
+  public a dHR;
+  public b dHS;
   
   public sh()
   {
@@ -16,23 +16,24 @@ public final class sh
   
   private sh(byte paramByte)
   {
-    AppMethodBeat.i(146075);
-    this.dGN = new a();
-    this.IbR = false;
+    AppMethodBeat.i(19833);
+    this.dHR = new a();
+    this.dHS = new b();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(146075);
+    AppMethodBeat.o(19833);
   }
   
   public static final class a
   {
-    public int action = 0;
-    public String cardNum;
-    public Bitmap dGO;
+    public String userName;
   }
+  
+  public static final class b {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.a.sh
  * JD-Core Version:    0.7.0.1
  */

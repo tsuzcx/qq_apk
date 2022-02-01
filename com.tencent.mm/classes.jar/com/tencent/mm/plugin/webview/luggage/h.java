@@ -9,33 +9,33 @@ import com.tencent.xweb.x5.export.external.extension.proxy.a;
 public class h
   extends a
 {
-  private a DPo;
+  private a Eho;
   
   public h()
   {
     AppMethodBeat.i(78331);
-    this.DPo = new a();
+    this.Eho = new a();
     AppMethodBeat.o(78331);
   }
   
   public final void a(a parama)
   {
     if (parama != null) {
-      this.DPo = parama;
+      this.Eho = parama;
     }
   }
   
   public void computeScroll(View paramView)
   {
     AppMethodBeat.i(78339);
-    this.DPo.computeScroll(paramView);
+    this.Eho.computeScroll(paramView);
     AppMethodBeat.o(78339);
   }
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent, View paramView)
   {
     AppMethodBeat.i(78335);
-    boolean bool = this.DPo.dispatchTouchEvent(paramMotionEvent, paramView);
+    boolean bool = this.Eho.dispatchTouchEvent(paramMotionEvent, paramView);
     AppMethodBeat.o(78335);
     return bool;
   }
@@ -43,14 +43,14 @@ public class h
   public void invalidate()
   {
     AppMethodBeat.i(78341);
-    this.DPo.invalidate();
+    this.Eho.invalidate();
     AppMethodBeat.o(78341);
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent, View paramView)
   {
     AppMethodBeat.i(78334);
-    boolean bool = this.DPo.onInterceptTouchEvent(paramMotionEvent, paramView);
+    boolean bool = this.Eho.onInterceptTouchEvent(paramMotionEvent, paramView);
     AppMethodBeat.o(78334);
     return bool;
   }
@@ -58,7 +58,7 @@ public class h
   public Object onMiscCallBack(String paramString, Bundle paramBundle)
   {
     AppMethodBeat.i(78332);
-    paramString = this.DPo.onMiscCallBack(paramString, paramBundle);
+    paramString = this.Eho.onMiscCallBack(paramString, paramBundle);
     AppMethodBeat.o(78332);
     return paramString;
   }
@@ -66,21 +66,21 @@ public class h
   public void onOverScrolled(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2, View paramView)
   {
     AppMethodBeat.i(78338);
-    this.DPo.onOverScrolled(paramInt1, paramInt2, paramBoolean1, paramBoolean2, paramView);
+    this.Eho.onOverScrolled(paramInt1, paramInt2, paramBoolean1, paramBoolean2, paramView);
     AppMethodBeat.o(78338);
   }
   
   public void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView)
   {
     AppMethodBeat.i(78337);
-    this.DPo.onScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4, paramView);
+    this.Eho.onScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4, paramView);
     AppMethodBeat.o(78337);
   }
   
   public boolean onShowLongClickPopupMenu()
   {
     AppMethodBeat.i(78340);
-    boolean bool = this.DPo.onShowLongClickPopupMenu();
+    boolean bool = this.Eho.onShowLongClickPopupMenu();
     AppMethodBeat.o(78340);
     return bool;
   }
@@ -88,7 +88,7 @@ public class h
   public boolean onTouchEvent(MotionEvent paramMotionEvent, View paramView)
   {
     AppMethodBeat.i(78333);
-    boolean bool = this.DPo.onTouchEvent(paramMotionEvent, paramView);
+    boolean bool = this.Eho.onTouchEvent(paramMotionEvent, paramView);
     AppMethodBeat.o(78333);
     return bool;
   }
@@ -96,7 +96,7 @@ public class h
   public boolean overScrollBy(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, boolean paramBoolean, View paramView)
   {
     AppMethodBeat.i(78336);
-    paramBoolean = this.DPo.overScrollBy(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7, paramInt8, paramBoolean, paramView);
+    paramBoolean = this.Eho.overScrollBy(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7, paramInt8, paramBoolean, paramView);
     AppMethodBeat.o(78336);
     return paramBoolean;
   }

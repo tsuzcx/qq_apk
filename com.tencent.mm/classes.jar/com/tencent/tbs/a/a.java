@@ -9,12 +9,12 @@ import java.util.Locale;
 
 public final class a
 {
-  private static final DateFormat LSL;
+  private static final DateFormat MpI;
   
   static
   {
     AppMethodBeat.i(174261);
-    LSL = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS", Locale.CHINA);
+    MpI = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS", Locale.CHINA);
     AppMethodBeat.o(174261);
   }
   
@@ -26,7 +26,7 @@ public final class a
       AppMethodBeat.o(174260);
       return "";
     }
-    paramb = LSL.format(new Date(paramb.a)) + " " + Process.myPid() + "-" + Process.myTid() + " " + c.a(paramb.LSM) + "/" + paramb.c + ": " + paramb.d + "\n";
+    paramb = MpI.format(new Date(paramb.a)) + " " + Process.myPid() + "-" + Process.myTid() + " " + c.a(paramb.MpJ) + "/" + paramb.c + ": " + paramb.d + "\n";
     AppMethodBeat.o(174260);
     return paramb;
   }

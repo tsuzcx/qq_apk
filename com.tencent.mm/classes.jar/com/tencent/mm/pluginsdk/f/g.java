@@ -10,12 +10,12 @@ public abstract interface g
   
   public static final class a
   {
-    public String EKL;
-    public String EKS;
+    public String Fdj;
+    public String Fdq;
     public String fileId;
-    public String gjI;
-    public long iQl;
-    public String nUg;
+    public String gmb;
+    public long iTe;
+    public String nZM;
   }
 }
 

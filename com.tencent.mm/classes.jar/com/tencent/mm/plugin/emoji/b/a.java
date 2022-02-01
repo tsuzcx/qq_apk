@@ -6,17 +6,17 @@ import android.text.SpannableString;
 public abstract interface a
   extends com.tencent.mm.kernel.c.a
 {
-  public abstract boolean J(CharSequence paramCharSequence);
+  public abstract boolean I(CharSequence paramCharSequence);
   
-  public abstract boolean K(CharSequence paramCharSequence);
+  public abstract boolean J(CharSequence paramCharSequence);
   
   public abstract SpannableString a(Context paramContext, CharSequence paramCharSequence, float paramFloat);
   
-  public abstract String abd(String paramString);
+  public abstract String abU(String paramString);
   
   public abstract SpannableString b(Context paramContext, CharSequence paramCharSequence, float paramFloat);
   
-  public abstract String fr(String paramString1, String paramString2);
+  public abstract String fv(String paramString1, String paramString2);
 }
 
 

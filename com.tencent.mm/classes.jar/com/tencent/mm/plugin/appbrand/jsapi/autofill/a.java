@@ -7,39 +7,39 @@ import android.text.TextPaint;
 import android.text.style.ClickableSpan;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bs.d;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.br.d;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public final class a
   extends ClickableSpan
 {
-  private String kAo;
-  private int kAp;
+  private String kDD;
+  private int kDE;
   
   public a(String paramString)
   {
     AppMethodBeat.i(46107);
-    this.kAp = aj.getContext().getResources().getColor(2131099769);
-    this.kAo = paramString;
+    this.kDE = ak.getContext().getResources().getColor(2131099769);
+    this.kDD = paramString;
     AppMethodBeat.o(46107);
   }
   
   public final void onClick(View paramView)
   {
     AppMethodBeat.i(46109);
-    if (bt.isNullOrNil(this.kAo))
+    if (bu.isNullOrNil(this.kDD))
     {
-      ad.e("MicroMsg.ExposeSpan", "exposeUrl is null, return");
+      ae.e("MicroMsg.ExposeSpan", "exposeUrl is null, return");
       AppMethodBeat.o(46109);
       return;
     }
     Intent localIntent = new Intent();
-    localIntent.putExtra("rawUrl", this.kAo);
+    localIntent.putExtra("rawUrl", this.kDD);
     localIntent.putExtra("forceHideShare", true);
     d.b(paramView.getContext(), "webview", ".ui.tools.WebViewUI", localIntent);
-    ad.d("MicroMsg.ExposeSpan", "expose click, exposeUrl:%s", new Object[] { this.kAo });
+    ae.d("MicroMsg.ExposeSpan", "expose click, exposeUrl:%s", new Object[] { this.kDD });
     AppMethodBeat.o(46109);
   }
   
@@ -47,7 +47,7 @@ public final class a
   {
     AppMethodBeat.i(46108);
     super.updateDrawState(paramTextPaint);
-    paramTextPaint.setColor(this.kAp);
+    paramTextPaint.setColor(this.kDE);
     paramTextPaint.setUnderlineText(false);
     AppMethodBeat.o(46108);
   }

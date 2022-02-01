@@ -1,79 +1,110 @@
 package com.tencent.mm.model;
 
+import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.contact.c;
+import com.tencent.mm.sdk.e.e;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.br;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public final class bx
-  extends com.tencent.mm.bx.a
 {
-  public String hHZ;
-  public long hfU;
-  public int key;
+  private e db;
+  private br hKQ;
   
-  public final int op(int paramInt, Object... paramVarArgs)
+  public bx(e parame, br parambr)
   {
-    AppMethodBeat.i(143730);
-    if (paramInt == 0)
+    this.db = parame;
+    this.hKQ = parambr;
+  }
+  
+  private String BZ(String paramString)
+  {
+    AppMethodBeat.i(20392);
+    Object localObject1 = new ArrayList();
+    String str = "select username from rcontact where (username like '%" + paramString + "%' or nickname like '%" + paramString + "%' or alias like '%" + paramString + "%' or pyInitial like '%" + paramString + "%' or quanPin like '%" + paramString + "%' or conRemark like '%" + paramString + "%' )and username not like '%@%' and type & " + c.adr() + "=0 ";
+    Object localObject2 = this.db.a(str, null, 2);
+    ae.v("Micro.SimpleSearchConversationModel", "contactsql %s", new Object[] { str });
+    while (((Cursor)localObject2).moveToNext())
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aS(1, this.key);
-      if (this.hHZ != null) {
-        paramVarArgs.d(2, this.hHZ);
+      str = ((Cursor)localObject2).getString(((Cursor)localObject2).getColumnIndex("username"));
+      if (!str.endsWith("@chatroom")) {
+        ((ArrayList)localObject1).add(str);
       }
-      paramVarArgs.aY(3, this.hfU);
-      AppMethodBeat.o(143730);
-      return 0;
     }
-    if (paramInt == 1)
+    ((Cursor)localObject2).close();
+    if (((ArrayList)localObject1).size() != 0)
     {
-      int i = f.a.a.b.b.a.bz(1, this.key) + 0;
-      paramInt = i;
-      if (this.hHZ != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.hHZ);
+      localObject2 = new StringBuffer();
+      ((StringBuffer)localObject2).append(" ( rconversation.username in ( select chatroomname from chatroom where ");
+      ((StringBuffer)localObject2).append("memberlist like '%" + paramString + "%'");
+      localObject1 = ((ArrayList)localObject1).iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        str = (String)((Iterator)localObject1).next();
+        ((StringBuffer)localObject2).append(" or memberlist like '%" + str + "%'");
       }
-      i = f.a.a.b.b.a.p(3, this.hfU);
-      AppMethodBeat.o(143730);
-      return paramInt + i;
+      ((StringBuffer)localObject2).append("))");
     }
-    if (paramInt == 2)
+    for (localObject1 = "" + ((StringBuffer)localObject2).toString() + " or ";; localObject1 = "")
     {
-      paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gxE();
+      paramString = " and ( rconversation.username like '%" + paramString + "%' or " + (String)localObject1 + "rconversation.content like '%" + paramString + "%' or rcontact.nickname like '%" + paramString + "%' or rcontact.alias like '%" + paramString + "%' or rcontact.pyInitial like '%" + paramString + "%' or rcontact.quanPin like '%" + paramString + "%' or rcontact.conRemark like '%" + paramString + "%'  ) ";
+      AppMethodBeat.o(20392);
+      return paramString;
+    }
+  }
+  
+  public final Cursor a(String paramString1, List<String> paramList, String paramString2)
+  {
+    AppMethodBeat.i(20391);
+    String str2 = " ";
+    String str1 = str2;
+    if (paramString2 != null)
+    {
+      str1 = str2;
+      if (paramString2.length() > 0) {
+        str1 = " and rconversation.username = rcontact.username ";
+      }
+    }
+    str2 = "select 1,unReadCount, status, isSend, conversationTime, rconversation.username, content, rconversation.msgType, rconversation.flag, rcontact.nickname from rconversation," + "rcontact" + " " + " where rconversation.username = rcontact.username" + str1 + bu.nullAsNil(paramString1);
+    str1 = "";
+    paramString1 = str1;
+    if (paramList != null)
+    {
+      paramString1 = str1;
+      if (paramList.size() > 0)
+      {
+        paramList = paramList.iterator();
+        for (paramString1 = ""; paramList.hasNext(); paramString1 = paramString1 + " and rconversation.username != '" + str1 + "'") {
+          str1 = (String)paramList.next();
         }
       }
-      AppMethodBeat.o(143730);
-      return 0;
     }
-    if (paramInt == 3)
+    paramList = str2 + paramString1;
+    paramString1 = paramList;
+    if (paramString2 != null)
     {
-      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
-      bx localbx = (bx)paramVarArgs[1];
-      switch (((Integer)paramVarArgs[2]).intValue())
-      {
-      default: 
-        AppMethodBeat.o(143730);
-        return -1;
-      case 1: 
-        localbx.key = locala.NPN.zc();
-        AppMethodBeat.o(143730);
-        return 0;
-      case 2: 
-        localbx.hHZ = locala.NPN.readString();
-        AppMethodBeat.o(143730);
-        return 0;
+      paramString1 = paramList;
+      if (paramString2.length() > 0) {
+        paramString1 = paramList + BZ(paramString2);
       }
-      localbx.hfU = locala.NPN.zd();
-      AppMethodBeat.o(143730);
-      return 0;
     }
-    AppMethodBeat.o(143730);
-    return -1;
+    paramString1 = paramString1 + " order by ";
+    paramString1 = paramString1 + "rconversation.username like '%@chatroom' asc, ";
+    paramString1 = paramString1 + "flag desc, conversationTime desc";
+    ae.v("Micro.SimpleSearchConversationModel", "convsql %s", new Object[] { paramString1 });
+    paramString1 = this.db.rawQuery(paramString1, null);
+    AppMethodBeat.o(20391);
+    return paramString1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.model.bx
  * JD-Core Version:    0.7.0.1
  */

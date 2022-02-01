@@ -7,40 +7,40 @@ import d.g.b.p;
 import d.l;
 import d.m;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/launching/report/LaunchGetWxaAttrsIDKeyConstants;", "", "()V", "ID", "", "KEY_APP_VERSION_LESS_THAN_SYNC_VERSION", "KEY_SYNC_GET_BY_ATTRS_NOT_FOUND", "KEY_SYNC_GET_BY_CMD_UPDATE_VERSION", "KEY_SYNC_GET_BY_INVALID_FIELDS", "KEY_SYNC_GET_BY_MISSING_PKG", "KEY_SYNC_GET_BY_NO_USE_RECENT", "KEY_SYNC_GET_BY_PATH_NOT_FOUND", "KEY_SYNC_GET_BY_VERSION_NOT_FOUND", "KEY_SYNC_GET_TOTAL", "KEY_USERNAME_INVALID", "reportSyncGet", "", "reason", "Lcom/tencent/mm/plugin/appbrand/launching/LaunchStepCostReporter$GetAttrsReason;", "plugin-appbrand-integration_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/launching/report/LaunchGetWxaAttrsIDKeyConstants;", "", "()V", "ID", "", "KEY_APP_VERSION_LESS_THAN_SYNC_VERSION", "KEY_SYNC_GET_BY_ATTRS_NOT_FOUND", "KEY_SYNC_GET_BY_CMD_UPDATE_VERSION", "KEY_SYNC_GET_BY_INVALID_FIELDS", "KEY_SYNC_GET_BY_MISSING_PKG", "KEY_SYNC_GET_BY_NO_USE_RECENT", "KEY_SYNC_GET_BY_PATH_NOT_FOUND", "KEY_SYNC_GET_BY_VERSION_NOT_FOUND", "KEY_SYNC_GET_TOTAL", "KEY_USERNAME_INVALID", "reportSyncGet", "", "reason", "Lcom/tencent/mm/plugin/appbrand/launching/LaunchStepCostReporter$GetAttrsReason;", "plugin-appbrand-integration_release"})
 public final class a
 {
-  public static final a lNG;
+  public static final a lSh;
   
   static
   {
-    AppMethodBeat.i(189343);
-    lNG = new a();
-    AppMethodBeat.o(189343);
+    AppMethodBeat.i(223603);
+    lSh = new a();
+    AppMethodBeat.o(223603);
   }
   
   public static final void a(au.a parama)
   {
-    AppMethodBeat.i(189342);
+    AppMethodBeat.i(223602);
     p.h(parama, "reason");
-    g.yhR.dD(648, 10);
+    g.yxI.dD(648, 10);
     int i;
-    switch (b.cpQ[parama.ordinal()])
+    switch (b.cqt[parama.ordinal()])
     {
     default: 
       parama = new m();
-      AppMethodBeat.o(189342);
+      AppMethodBeat.o(223602);
       throw parama;
     case 1: 
-      AppMethodBeat.o(189342);
+      AppMethodBeat.o(223602);
       return;
     case 2: 
       i = 11;
     }
     for (;;)
     {
-      g.yhR.dD(648, i);
-      AppMethodBeat.o(189342);
+      g.yxI.dD(648, i);
+      AppMethodBeat.o(223602);
       return;
       i = 12;
       continue;

@@ -10,20 +10,20 @@ import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aq;
 import junit.framework.Assert;
 
 public class AsyncMaskImageView
   extends ImageView
 {
+  aq AfN;
+  Runnable AfO;
   private int a;
   private int b;
   private boolean enable;
   private int g;
   private int r;
-  ap zOG;
-  Runnable zOH;
   
   public AsyncMaskImageView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -34,8 +34,8 @@ public class AsyncMaskImageView
     this.g = 0;
     this.b = 0;
     this.enable = true;
-    this.zOG = new ap();
-    this.zOH = new Runnable()
+    this.AfN = new aq();
+    this.AfO = new Runnable()
     {
       public final void run()
       {
@@ -53,7 +53,7 @@ public class AsyncMaskImageView
         Object localObject = new b();
         ((b)localObject).bd(paramAnonymousView);
         ((b)localObject).bd(paramAnonymousMotionEvent);
-        a.b("com/tencent/mm/plugin/sns/ui/AsyncMaskImageView$2", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, ((b)localObject).ahq());
+        a.b("com/tencent/mm/plugin/sns/ui/AsyncMaskImageView$2", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, ((b)localObject).ahF());
         if (!AsyncMaskImageView.a(AsyncMaskImageView.this))
         {
           a.a(false, this, "com/tencent/mm/plugin/sns/ui/AsyncMaskImageView$2", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
@@ -76,9 +76,9 @@ public class AsyncMaskImageView
           return bool;
           paramAnonymousView.setPressed(true);
           paramAnonymousView.invalidate();
-          ((AsyncMaskImageView)localObject).zOG.removeCallbacks(((AsyncMaskImageView)localObject).zOH);
+          ((AsyncMaskImageView)localObject).AfN.removeCallbacks(((AsyncMaskImageView)localObject).AfO);
           break;
-          ((AsyncMaskImageView)localObject).zOG.post(((AsyncMaskImageView)localObject).zOH);
+          ((AsyncMaskImageView)localObject).AfN.post(((AsyncMaskImageView)localObject).AfO);
           break;
         }
       }
@@ -90,7 +90,7 @@ public class AsyncMaskImageView
   {
     AppMethodBeat.i(97758);
     super.onAttachedToWindow();
-    ad.d("MicroMsg.MaskImageView", "onAttachedToWindow");
+    ae.d("MicroMsg.MaskImageView", "onAttachedToWindow");
     AppMethodBeat.o(97758);
   }
   
@@ -98,7 +98,7 @@ public class AsyncMaskImageView
   {
     AppMethodBeat.i(97759);
     super.onDetachedFromWindow();
-    ad.d("MicroMsg.MaskImageView", "onDetachedFromWindow");
+    ae.d("MicroMsg.MaskImageView", "onDetachedFromWindow");
     AppMethodBeat.o(97759);
   }
   

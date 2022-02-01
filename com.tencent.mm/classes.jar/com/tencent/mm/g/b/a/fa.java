@@ -6,86 +6,52 @@ import com.tencent.mm.plugin.report.a;
 public final class fa
   extends a
 {
-  private String dWC;
-  private String ejE;
-  public int ejF;
-  public long ejG;
-  public long ejH;
-  public int ejI;
-  private String ejz;
+  public String elg = "";
+  public String elh = "";
+  public String eli = "";
+  public String elj = "";
+  public String elk = "";
   
-  public final String RD()
+  public final String RC()
   {
-    AppMethodBeat.i(197547);
+    AppMethodBeat.i(94834);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.ejz);
+    ((StringBuffer)localObject).append(this.elg);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ejE);
+    ((StringBuffer)localObject).append(this.elh);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dWC);
+    ((StringBuffer)localObject).append(this.eli);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ejF);
+    ((StringBuffer)localObject).append(this.elj);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ejG);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ejH);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ejI);
+    ((StringBuffer)localObject).append(this.elk);
     localObject = ((StringBuffer)localObject).toString();
-    awz((String)localObject);
-    AppMethodBeat.o(197547);
+    axO((String)localObject);
+    AppMethodBeat.o(94834);
     return localObject;
   }
   
-  public final String RE()
+  public final String RD()
   {
-    AppMethodBeat.i(197548);
+    AppMethodBeat.i(94835);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("PublishId:").append(this.ejz);
+    ((StringBuffer)localObject).append("PublishId:").append(this.elg);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("FriendUsername:").append(this.ejE);
+    ((StringBuffer)localObject).append("CommentIdList:").append(this.elh);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("CommentId:").append(this.dWC);
+    ((StringBuffer)localObject).append("EmojiIdList:").append(this.eli);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("CommentType:").append(this.ejF);
+    ((StringBuffer)localObject).append("ClickEmojiIconIdList:").append(this.elj);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("CurrentLikeCount:").append(this.ejG);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("CurrentCommentCount:").append(this.ejH);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("OpResult:").append(this.ejI);
+    ((StringBuffer)localObject).append("ClickEmojiIdList:").append(this.elk);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(197548);
+    AppMethodBeat.o(94835);
     return localObject;
   }
   
   public final int getId()
   {
-    return 20565;
-  }
-  
-  public final fa oh(String paramString)
-  {
-    AppMethodBeat.i(197544);
-    this.ejz = t("PublishId", paramString, true);
-    AppMethodBeat.o(197544);
-    return this;
-  }
-  
-  public final fa oi(String paramString)
-  {
-    AppMethodBeat.i(197545);
-    this.ejE = t("FriendUsername", paramString, true);
-    AppMethodBeat.o(197545);
-    return this;
-  }
-  
-  public final fa oj(String paramString)
-  {
-    AppMethodBeat.i(197546);
-    this.dWC = t("CommentId", paramString, true);
-    AppMethodBeat.o(197546);
-    return this;
+    return 18670;
   }
 }
 

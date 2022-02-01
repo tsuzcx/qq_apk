@@ -6,28 +6,28 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
-import com.tencent.mm.sdk.platformtools.av;
-import com.tencent.mm.sdk.platformtools.av.a;
+import com.tencent.mm.sdk.platformtools.aw;
+import com.tencent.mm.sdk.platformtools.aw.a;
 
 public class MMProgressBar
   extends LinearLayout
 {
-  private int Jmj;
-  private int Jmk;
-  private TextView Jml;
-  private a Jmm;
+  private int JGX;
+  private int JGY;
+  private TextView JGZ;
+  private a JHa;
   private int max;
-  private av wxw;
-  private TextView ySI;
+  private aw wNh;
+  private TextView ziS;
   
   public MMProgressBar(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(142059);
     this.max = 100;
-    this.Jmj = 0;
-    this.Jmk = 0;
-    this.wxw = new av(new av.a()
+    this.JGX = 0;
+    this.JGY = 0;
+    this.wNh = new aw(new aw.a()
     {
       public final boolean onTimerExpired()
       {
@@ -51,7 +51,7 @@ public class MMProgressBar
           MMProgressBar.b(MMProgressBar.this, MMProgressBar.b(MMProgressBar.this));
           localObject = MMProgressBar.d(MMProgressBar.this);
           long l = (MMProgressBar.c(MMProgressBar.this) - j) * 40 / MMProgressBar.c(MMProgressBar.this);
-          ((av)localObject).az(l, l);
+          ((aw)localObject).ay(l, l);
           AppMethodBeat.o(142058);
           return false;
           label122:
@@ -60,18 +60,18 @@ public class MMProgressBar
       }
     }, false);
     inflate(getContext(), 2131494895, this);
-    this.Jml = ((TextView)findViewById(2131302336));
-    this.ySI = ((TextView)findViewById(2131302337));
+    this.JGZ = ((TextView)findViewById(2131302336));
+    this.ziS = ((TextView)findViewById(2131302337));
     AppMethodBeat.o(142059);
   }
   
   private int getProgressLength()
   {
     AppMethodBeat.i(142063);
-    int j = getWidth() * this.Jmj / this.max;
+    int j = getWidth() * this.JGX / this.max;
     int i = j;
-    if (j < BackwardSupportUtil.b.g(getContext(), 20.0F)) {
-      i = BackwardSupportUtil.b.g(getContext(), 20.0F);
+    if (j < BackwardSupportUtil.b.h(getContext(), 20.0F)) {
+      i = BackwardSupportUtil.b.h(getContext(), 20.0F);
     }
     AppMethodBeat.o(142063);
     return i;
@@ -84,7 +84,7 @@ public class MMProgressBar
   
   public int getProgress()
   {
-    return this.Jmk;
+    return this.JGY;
   }
   
   public void setAutoProgress(boolean paramBoolean)
@@ -92,11 +92,11 @@ public class MMProgressBar
     AppMethodBeat.i(142061);
     if (paramBoolean)
     {
-      this.wxw.az(40L, 40L);
+      this.wNh.ay(40L, 40L);
       AppMethodBeat.o(142061);
       return;
     }
-    this.wxw.stopTimer();
+    this.wNh.stopTimer();
     AppMethodBeat.o(142061);
   }
   
@@ -107,7 +107,7 @@ public class MMProgressBar
   
   public void setOnProgressChangedListener(a parama)
   {
-    this.Jmm = parama;
+    this.JHa = parama;
   }
   
   public void setProgress(int paramInt)
@@ -117,8 +117,8 @@ public class MMProgressBar
     if (paramInt > this.max) {
       i = this.max;
     }
-    this.Jmk = i;
-    if (this.wxw.fkZ()) {
+    this.JGY = i;
+    if (this.wNh.foU()) {
       setAutoProgress(true);
     }
     AppMethodBeat.o(142060);
@@ -127,18 +127,18 @@ public class MMProgressBar
   public void setTips(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(142062);
-    this.ySI.setText(paramCharSequence);
+    this.ziS.setText(paramCharSequence);
     AppMethodBeat.o(142062);
   }
   
   public static abstract interface a
   {
-    public abstract void Tj(int paramInt);
+    public abstract void TQ(int paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.ui.base.MMProgressBar
  * JD-Core Version:    0.7.0.1
  */

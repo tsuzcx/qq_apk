@@ -6,40 +6,40 @@ import com.tencent.mm.plugin.recordvideo.background.VideoMixer.MixConfig;
 import com.tencent.mm.plugin.recordvideo.background.c;
 import com.tencent.mm.plugin.recordvideo.background.e;
 import com.tencent.mm.plugin.recordvideo.jumper.CaptureDataManager.CaptureVideoNormalModel;
-import com.tencent.mm.protocal.protobuf.afy;
-import com.tencent.mm.protocal.protobuf.aif;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.agh;
+import com.tencent.mm.protocal.protobuf.aip;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.ui.MMActivity;
 
 public final class a
   implements com.tencent.mm.plugin.recordvideo.background.b
 {
-  public afy ABG;
-  public VideoMixer.MixConfig ABH;
-  public aif ABI;
-  private a ABJ;
-  private MMActivity fLP;
+  public agh ATh;
+  public VideoMixer.MixConfig ATi;
+  public aip ATj;
+  private a ATk;
+  private MMActivity fNT;
   public String taskId;
-  public boolean ycd;
+  public boolean yrU;
   
   public a(MMActivity paramMMActivity, a parama)
   {
     AppMethodBeat.i(100444);
-    this.ycd = true;
-    ad.i("MicroMsg.SnsFakeVLogHelper", "SnsFakeVLogHelper");
-    this.fLP = paramMMActivity;
-    this.ABJ = parama;
+    this.yrU = true;
+    ae.i("MicroMsg.SnsFakeVLogHelper", "SnsFakeVLogHelper");
+    this.fNT = paramMMActivity;
+    this.ATk = parama;
     AppMethodBeat.o(100444);
   }
   
   public final boolean L(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     AppMethodBeat.i(100449);
-    if (this.ABG == null) {}
+    if (this.ATh == null) {}
     for (boolean bool = true;; bool = false)
     {
-      ad.i("MicroMsg.SnsFakeVLogHelper", "doClick %b", new Object[] { Boolean.valueOf(bool) });
-      if (this.ABG != null) {
+      ae.i("MicroMsg.SnsFakeVLogHelper", "doClick %b", new Object[] { Boolean.valueOf(bool) });
+      if (this.ATh != null) {
         break;
       }
       AppMethodBeat.o(100449);
@@ -47,16 +47,16 @@ public final class a
     }
     try
     {
-      Intent localIntent = new Intent(this.fLP, Class.forName("com.tencent.mm.plugin.vlog.ui.fake.VLogFakePlayActivity"));
+      Intent localIntent = new Intent(this.fNT, Class.forName("com.tencent.mm.plugin.vlog.ui.fake.VLogFakePlayActivity"));
       localIntent.putExtra("intent_taskid", this.taskId);
-      localIntent.putExtra("intent_thumbpath", this.ABG.thumbPath);
+      localIntent.putExtra("intent_thumbpath", this.ATh.thumbPath);
       localIntent.putExtra("sns_video_scene", 6);
       localIntent.putExtra("img_gallery_left", paramInt1);
       localIntent.putExtra("img_gallery_top", paramInt2);
       localIntent.putExtra("img_gallery_width", paramInt3);
       localIntent.putExtra("img_gallery_height", paramInt4);
-      this.fLP.startActivityForResult(localIntent, 12);
-      this.fLP.overridePendingTransition(0, 0);
+      this.fNT.startActivityForResult(localIntent, 12);
+      this.fNT.overridePendingTransition(0, 0);
       label166:
       AppMethodBeat.o(100449);
       return true;
@@ -70,48 +70,48 @@ public final class a
   public final void a(String paramString, boolean paramBoolean, CaptureDataManager.CaptureVideoNormalModel paramCaptureVideoNormalModel)
   {
     AppMethodBeat.i(100448);
-    ad.i("MicroMsg.SnsFakeVLogHelper", "onFinish,success:%b taskId:%s", new Object[] { Boolean.valueOf(paramBoolean), paramString });
+    ae.i("MicroMsg.SnsFakeVLogHelper", "onFinish,success:%b taskId:%s", new Object[] { Boolean.valueOf(paramBoolean), paramString });
     if ((paramString != null) && (paramString.equals(this.taskId)))
     {
-      this.ycd = true;
-      paramString = com.tencent.mm.plugin.recordvideo.background.a.xua;
+      this.yrU = true;
+      paramString = com.tencent.mm.plugin.recordvideo.background.a.xJX;
       com.tencent.mm.plugin.recordvideo.background.a.b(7, this);
-      paramString = com.tencent.mm.plugin.recordvideo.e.b.xRl;
+      paramString = com.tencent.mm.plugin.recordvideo.e.b.yhe;
       com.tencent.mm.plugin.recordvideo.e.b.c(paramCaptureVideoNormalModel);
-      this.ABJ.d(paramCaptureVideoNormalModel);
+      this.ATk.d(paramCaptureVideoNormalModel);
     }
     AppMethodBeat.o(100448);
   }
   
-  public final void alO(String paramString)
+  public final void amO(String paramString)
   {
     AppMethodBeat.i(100445);
-    ad.i("MicroMsg.SnsFakeVLogHelper", "onInit, taskId:%s", new Object[] { paramString });
-    e locale = e.xuo;
-    e.avy(paramString).dEG();
-    locale = e.xuo;
-    e.dES();
+    ae.i("MicroMsg.SnsFakeVLogHelper", "onInit, taskId:%s", new Object[] { paramString });
+    e locale = e.xKl;
+    e.awN(paramString).dHX();
+    locale = e.xKl;
+    e.dIj();
     this.taskId = paramString;
     AppMethodBeat.o(100445);
   }
   
-  public final void alP(String paramString)
+  public final void amP(String paramString)
   {
     AppMethodBeat.i(100447);
-    ad.i("MicroMsg.SnsFakeVLogHelper", "onWait, taskId:%s", new Object[] { paramString });
+    ae.i("MicroMsg.SnsFakeVLogHelper", "onWait, taskId:%s", new Object[] { paramString });
     AppMethodBeat.o(100447);
   }
   
-  public final void dO(String paramString, int paramInt)
+  public final void dS(String paramString, int paramInt)
   {
     AppMethodBeat.i(100446);
-    ad.i("MicroMsg.SnsFakeVLogHelper", "onRun, taskId:%s", new Object[] { paramString });
+    ae.i("MicroMsg.SnsFakeVLogHelper", "onRun, taskId:%s", new Object[] { paramString });
     AppMethodBeat.o(100446);
   }
   
-  public final boolean eeR()
+  public final boolean eiy()
   {
-    return !this.ycd;
+    return !this.yrU;
   }
   
   public static abstract interface a

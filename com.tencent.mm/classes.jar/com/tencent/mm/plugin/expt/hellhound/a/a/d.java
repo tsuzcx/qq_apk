@@ -1,9 +1,9 @@
 package com.tencent.mm.plugin.expt.hellhound.a.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.dfu;
-import com.tencent.mm.protocal.protobuf.dhc;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.dgo;
+import com.tencent.mm.protocal.protobuf.dhw;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.vending.j.a;
 import com.tencent.mm.vending.j.c;
 import java.math.BigDecimal;
@@ -14,10 +14,10 @@ import org.json.JSONObject;
 
 final class d
 {
-  static c<String, Integer> a(dhc paramdhc)
+  static c<String, Integer> a(dhw paramdhw)
   {
     AppMethodBeat.i(177365);
-    Object localObject = paramdhc.HvC;
+    Object localObject = paramdhw.HPf;
     JSONArray localJSONArray;
     try
     {
@@ -25,51 +25,51 @@ final class d
       localObject = ((LinkedList)localObject).iterator();
       while (((Iterator)localObject).hasNext())
       {
-        dfu localdfu = (dfu)((Iterator)localObject).next();
-        if (localdfu != null)
+        dgo localdgo = (dgo)((Iterator)localObject).next();
+        if (localdgo != null)
         {
           JSONObject localJSONObject = new JSONObject();
-          localJSONObject.put("feedId", localdfu.feedId);
-          localJSONObject.put("viewLikeCount", localdfu.likeCount);
-          localJSONObject.put("viewCommentCount", localdfu.commentCount);
-          localJSONObject.put("userName", localdfu.userName);
-          localJSONObject.put("nickName", localdfu.bVF);
-          localJSONObject.put("isAd", localdfu.isAd);
-          localJSONObject.put("feedheight", localdfu.height);
-          localdfu.Huk = new BigDecimal(localdfu.Huk).setScale(2, 4).doubleValue();
-          localJSONObject.put("realShowTime", localdfu.Huk);
-          localdfu.Huj = new BigDecimal(localdfu.Huj).setScale(2, 4).doubleValue();
-          localJSONObject.put("stayTimeRelative", localdfu.Huj);
-          localJSONObject.put("realScreenHeight", localdfu.ltB - localdfu.yYM - localdfu.sFm - localdfu.Hug);
+          localJSONObject.put("feedId", localdgo.feedId);
+          localJSONObject.put("viewLikeCount", localdgo.likeCount);
+          localJSONObject.put("viewCommentCount", localdgo.commentCount);
+          localJSONObject.put("userName", localdgo.userName);
+          localJSONObject.put("nickName", localdgo.bVF);
+          localJSONObject.put("isAd", localdgo.isAd);
+          localJSONObject.put("feedheight", localdgo.height);
+          localdgo.HNN = new BigDecimal(localdgo.HNN).setScale(2, 4).doubleValue();
+          localJSONObject.put("realShowTime", localdgo.HNN);
+          localdgo.HNM = new BigDecimal(localdgo.HNM).setScale(2, 4).doubleValue();
+          localJSONObject.put("stayTimeRelative", localdgo.HNM);
+          localJSONObject.put("realScreenHeight", localdgo.lya - localdgo.zpn - localdgo.sQl - localdgo.HNJ);
           localJSONArray.put(localJSONObject);
         }
       }
       i = localJSONArray.length();
     }
-    catch (Exception paramdhc)
+    catch (Exception paramdhw)
     {
-      ad.printErrStackTrace("HABBYGE-MALI.HellTimelineReport", paramdhc, "_feedList2JsonV2-crash, %s", new Object[] { paramdhc.getMessage() });
+      ae.printErrStackTrace("HABBYGE-MALI.HellTimelineReport", paramdhw, "_feedList2JsonV2-crash, %s", new Object[] { paramdhw.getMessage() });
       AppMethodBeat.o(177365);
       return null;
     }
     int i;
     if (i > 0)
     {
-      paramdhc = a.N(localJSONArray.toString(), Integer.valueOf(i));
+      paramdhw = a.N(localJSONArray.toString(), Integer.valueOf(i));
       AppMethodBeat.o(177365);
-      return paramdhc;
+      return paramdhw;
     }
-    ad.e("HABBYGE-MALI.HellTimelineReport", "_feedList2JsonV2 jsonArray Empty !!!!");
-    localJSONArray.put(b(paramdhc));
-    paramdhc = a.N(localJSONArray.toString(), Integer.valueOf(1));
+    ae.e("HABBYGE-MALI.HellTimelineReport", "_feedList2JsonV2 jsonArray Empty !!!!");
+    localJSONArray.put(b(paramdhw));
+    paramdhw = a.N(localJSONArray.toString(), Integer.valueOf(1));
     AppMethodBeat.o(177365);
-    return paramdhc;
+    return paramdhw;
   }
   
-  private static JSONObject b(dhc paramdhc)
+  private static JSONObject b(dhw paramdhw)
   {
     AppMethodBeat.i(177366);
-    ad.w("HABBYGE-MALI.HellTimelineReport", "createInvalidateFeed, timeline: %s, %s, %s", new Object[] { Long.valueOf(paramdhc.Hvz), Long.valueOf(paramdhc.HvA), Long.valueOf(paramdhc.HvB) });
+    ae.w("HABBYGE-MALI.HellTimelineReport", "createInvalidateFeed, timeline: %s, %s, %s", new Object[] { Long.valueOf(paramdhw.HPc), Long.valueOf(paramdhw.HPd), Long.valueOf(paramdhw.HPe) });
     JSONObject localJSONObject = new JSONObject();
     try
     {
@@ -78,24 +78,24 @@ final class d
       localJSONObject.put("viewCommentCount", 0);
       localJSONObject.put("userName", "");
       localJSONObject.put("feedheight", 0);
-      localJSONObject.put("realShowTime", new BigDecimal(paramdhc.Hvz).setScale(2, 4).doubleValue());
-      localJSONObject.put("stayTimeRelative", new BigDecimal(paramdhc.Hvz).setScale(2, 4).doubleValue());
+      localJSONObject.put("realShowTime", new BigDecimal(paramdhw.HPc).setScale(2, 4).doubleValue());
+      localJSONObject.put("stayTimeRelative", new BigDecimal(paramdhw.HPc).setScale(2, 4).doubleValue());
       localJSONObject.put("realScreenHeight", 0);
       AppMethodBeat.o(177366);
       return localJSONObject;
     }
-    catch (Exception paramdhc)
+    catch (Exception paramdhw)
     {
       for (;;)
       {
-        ad.printErrStackTrace("HABBYGE-MALI.HellTimelineReport", paramdhc, "createInvalidateFeed-crash, %s", new Object[] { paramdhc.getMessage() });
+        ae.printErrStackTrace("HABBYGE-MALI.HellTimelineReport", paramdhw, "createInvalidateFeed-crash, %s", new Object[] { paramdhw.getMessage() });
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.hellhound.a.a.d
  * JD-Core Version:    0.7.0.1
  */

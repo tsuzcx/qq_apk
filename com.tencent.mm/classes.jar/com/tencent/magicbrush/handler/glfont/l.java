@@ -7,9 +7,9 @@ import java.util.ArrayList;
 final class l
   implements d
 {
-  private d.a cza;
-  private int czb;
-  private d.c czc;
+  private d.a czH;
+  private int czI;
+  private d.c czJ;
   private int mHeight;
   private ArrayList<d.b> mNodes;
   private int mWidth;
@@ -18,8 +18,8 @@ final class l
   {
     AppMethodBeat.i(140057);
     this.mNodes = new ArrayList();
-    this.cza = new d.a();
-    this.czc = new d.c();
+    this.czH = new d.a();
+    this.czJ = new d.c();
     AppMethodBeat.o(140057);
   }
   
@@ -37,7 +37,7 @@ final class l
       AppMethodBeat.o(140059);
       return;
     }
-    d.c localc = this.czc;
+    d.c localc = this.czJ;
     localc.x = 0;
     localc.y = 0;
     localc.width = paramInt1;
@@ -110,7 +110,7 @@ final class l
         paramRect.setEmpty();
         AppMethodBeat.o(140059);
         return;
-        localb1 = this.cza.HB();
+        localb1 = this.czH.HJ();
         localb1.x = localc.x;
         localb1.y = (localc.y + paramInt2);
         localb1.z = paramInt1;
@@ -131,7 +131,7 @@ final class l
             break;
           }
           localb1 = (d.b)this.mNodes.remove(i);
-          this.cza.a(localb1);
+          this.czH.a(localb1);
         }
         for (i = 0; i < this.mNodes.size() - 1; i = j + 1)
         {
@@ -143,11 +143,11 @@ final class l
             j = localb1.z;
             localb2.z += j;
             localb1 = (d.b)this.mNodes.remove(i + 1);
-            this.cza.a(localb1);
+            this.czH.a(localb1);
             j = i - 1;
           }
         }
-        this.czb += paramInt1 * paramInt2;
+        this.czI += paramInt1 * paramInt2;
       }
       paramRect.set(localc.x, localc.y, localc.x + paramInt1 - 1, localc.y + paramInt2 - 1);
       AppMethodBeat.o(140059);
@@ -167,17 +167,17 @@ final class l
   public final void reset()
   {
     AppMethodBeat.i(140060);
-    this.czb = 0;
-    this.cza.d(this.mNodes);
-    d.b localb = this.cza.HB();
-    localb.gU(this.mWidth - 2);
+    this.czI = 0;
+    this.czH.d(this.mNodes);
+    d.b localb = this.czH.HJ();
+    localb.gV(this.mWidth - 2);
     this.mNodes.add(localb);
     AppMethodBeat.o(140060);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.magicbrush.handler.glfont.l
  * JD-Core Version:    0.7.0.1
  */

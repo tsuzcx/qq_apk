@@ -3,73 +3,73 @@ package com.tencent.mm.sdk.e;
 import android.content.ContentValues;
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.Map;
 
 final class b
 {
-  private static final Map<Class<?>, String> Ihz;
-  private static final Map<Class<?>, Object> fIp;
-  private static final Map<Class<?>, Object> fIq;
+  private static final Map<Class<?>, String> IBK;
+  private static final Map<Class<?>, Object> fKt;
+  private static final Map<Class<?>, Object> fKu;
   
   static
   {
     AppMethodBeat.i(158081);
-    fIp = new HashMap();
-    fIq = new HashMap();
-    Ihz = new HashMap();
+    fKt = new HashMap();
+    fKu = new HashMap();
+    IBK = new HashMap();
     try
     {
-      fIp.put([B.class, new Object() {});
-      fIp.put(Short.TYPE, new Object() {});
-      fIp.put(Short.class, new Object() {});
-      fIp.put(Boolean.TYPE, new Object() {});
-      fIp.put(Boolean.class, new Object() {});
-      fIp.put(Integer.TYPE, new Object() {});
-      fIp.put(Integer.class, new Object() {});
-      fIp.put(Float.TYPE, new Object() {});
-      fIp.put(Float.class, new Object() {});
-      fIp.put(Double.TYPE, new Object() {});
-      fIp.put(Double.class, new Object() {});
-      fIp.put(Long.TYPE, new Object() {});
-      fIp.put(Long.class, new Object() {});
-      fIp.put(String.class, new Object() {});
-      fIq.put([B.class, new Object() {});
-      fIq.put(Short.TYPE, new Object() {});
-      fIq.put(Short.class, new Object() {});
-      fIq.put(Boolean.TYPE, new Object() {});
-      fIq.put(Boolean.class, new Object() {});
-      fIq.put(Integer.TYPE, new Object() {});
-      fIq.put(Integer.class, new Object() {});
-      fIq.put(Float.TYPE, new Object() {});
-      fIq.put(Float.class, new Object() {});
-      fIq.put(Double.TYPE, new Object() {});
-      fIq.put(Double.class, new Object() {});
-      fIq.put(Long.TYPE, new Object() {});
-      fIq.put(Long.class, new Object() {});
-      fIq.put(String.class, new Object() {});
-      Ihz.put([B.class, "BLOB");
-      Ihz.put(Short.TYPE, "SHORT");
-      Ihz.put(Short.class, "SHORT");
-      Ihz.put(Boolean.TYPE, "INTEGER");
-      Ihz.put(Boolean.class, "INTEGER");
-      Ihz.put(Integer.TYPE, "INTEGER");
-      Ihz.put(Integer.class, "INTEGER");
-      Ihz.put(Float.TYPE, "FLOAT");
-      Ihz.put(Float.class, "FLOAT");
-      Ihz.put(Double.TYPE, "DOUBLE");
-      Ihz.put(Double.class, "DOUBLE");
-      Ihz.put(Long.TYPE, "LONG");
-      Ihz.put(Long.class, "LONG");
-      Ihz.put(String.class, "TEXT");
+      fKt.put([B.class, new Object() {});
+      fKt.put(Short.TYPE, new Object() {});
+      fKt.put(Short.class, new Object() {});
+      fKt.put(Boolean.TYPE, new Object() {});
+      fKt.put(Boolean.class, new Object() {});
+      fKt.put(Integer.TYPE, new Object() {});
+      fKt.put(Integer.class, new Object() {});
+      fKt.put(Float.TYPE, new Object() {});
+      fKt.put(Float.class, new Object() {});
+      fKt.put(Double.TYPE, new Object() {});
+      fKt.put(Double.class, new Object() {});
+      fKt.put(Long.TYPE, new Object() {});
+      fKt.put(Long.class, new Object() {});
+      fKt.put(String.class, new Object() {});
+      fKu.put([B.class, new Object() {});
+      fKu.put(Short.TYPE, new Object() {});
+      fKu.put(Short.class, new Object() {});
+      fKu.put(Boolean.TYPE, new Object() {});
+      fKu.put(Boolean.class, new Object() {});
+      fKu.put(Integer.TYPE, new Object() {});
+      fKu.put(Integer.class, new Object() {});
+      fKu.put(Float.TYPE, new Object() {});
+      fKu.put(Float.class, new Object() {});
+      fKu.put(Double.TYPE, new Object() {});
+      fKu.put(Double.class, new Object() {});
+      fKu.put(Long.TYPE, new Object() {});
+      fKu.put(Long.class, new Object() {});
+      fKu.put(String.class, new Object() {});
+      IBK.put([B.class, "BLOB");
+      IBK.put(Short.TYPE, "SHORT");
+      IBK.put(Short.class, "SHORT");
+      IBK.put(Boolean.TYPE, "INTEGER");
+      IBK.put(Boolean.class, "INTEGER");
+      IBK.put(Integer.TYPE, "INTEGER");
+      IBK.put(Integer.class, "INTEGER");
+      IBK.put(Float.TYPE, "FLOAT");
+      IBK.put(Float.class, "FLOAT");
+      IBK.put(Double.TYPE, "DOUBLE");
+      IBK.put(Double.class, "DOUBLE");
+      IBK.put(Long.TYPE, "LONG");
+      IBK.put(Long.class, "LONG");
+      IBK.put(String.class, "TEXT");
       AppMethodBeat.o(158081);
       return;
     }
     catch (Exception localException)
     {
-      ad.printErrStackTrace("MicroMsg.SDK.CursorFieldHelper", localException, "", new Object[0]);
+      ae.printErrStackTrace("MicroMsg.SDK.CursorFieldHelper", localException, "", new Object[0]);
       AppMethodBeat.o(158081);
     }
   }
@@ -77,7 +77,7 @@ final class b
   public static String ba(Class<?> paramClass)
   {
     AppMethodBeat.i(158064);
-    paramClass = (String)Ihz.get(paramClass);
+    paramClass = (String)IBK.get(paramClass);
     AppMethodBeat.o(158064);
     return paramClass;
   }
@@ -93,7 +93,7 @@ final class b
     }
     catch (Exception paramField)
     {
-      ad.printErrStackTrace("MicroMsg.SDK.CursorFieldHelper", paramField, "", new Object[0]);
+      ae.printErrStackTrace("MicroMsg.SDK.CursorFieldHelper", paramField, "", new Object[0]);
       AppMethodBeat.o(158066);
     }
   }
@@ -115,7 +115,7 @@ final class b
     }
     catch (Exception paramField)
     {
-      ad.printErrStackTrace("MicroMsg.SDK.CursorFieldHelper", paramField, "", new Object[0]);
+      ae.printErrStackTrace("MicroMsg.SDK.CursorFieldHelper", paramField, "", new Object[0]);
       AppMethodBeat.o(158070);
     }
   }
@@ -137,7 +137,7 @@ final class b
     }
     catch (Exception paramField)
     {
-      ad.printErrStackTrace("MicroMsg.SDK.CursorFieldHelper", paramField, "", new Object[0]);
+      ae.printErrStackTrace("MicroMsg.SDK.CursorFieldHelper", paramField, "", new Object[0]);
       AppMethodBeat.o(158076);
     }
   }
@@ -159,7 +159,7 @@ final class b
     }
     catch (Exception paramField)
     {
-      ad.printErrStackTrace("MicroMsg.SDK.CursorFieldHelper", paramField, "", new Object[0]);
+      ae.printErrStackTrace("MicroMsg.SDK.CursorFieldHelper", paramField, "", new Object[0]);
       AppMethodBeat.o(158074);
     }
   }
@@ -181,7 +181,7 @@ final class b
     }
     catch (Exception paramField)
     {
-      ad.printErrStackTrace("MicroMsg.SDK.CursorFieldHelper", paramField, "", new Object[0]);
+      ae.printErrStackTrace("MicroMsg.SDK.CursorFieldHelper", paramField, "", new Object[0]);
       AppMethodBeat.o(158072);
     }
   }
@@ -203,7 +203,7 @@ final class b
     }
     catch (Exception paramField)
     {
-      ad.printErrStackTrace("MicroMsg.SDK.CursorFieldHelper", paramField, "", new Object[0]);
+      ae.printErrStackTrace("MicroMsg.SDK.CursorFieldHelper", paramField, "", new Object[0]);
       AppMethodBeat.o(158078);
     }
   }
@@ -219,7 +219,7 @@ final class b
     }
     catch (Exception paramField)
     {
-      ad.printErrStackTrace("MicroMsg.SDK.CursorFieldHelper", paramField, "", new Object[0]);
+      ae.printErrStackTrace("MicroMsg.SDK.CursorFieldHelper", paramField, "", new Object[0]);
       AppMethodBeat.o(158068);
     }
   }
@@ -235,7 +235,7 @@ final class b
     }
     catch (Exception paramField)
     {
-      ad.printErrStackTrace("MicroMsg.SDK.CursorFieldHelper", paramField, "", new Object[0]);
+      ae.printErrStackTrace("MicroMsg.SDK.CursorFieldHelper", paramField, "", new Object[0]);
       AppMethodBeat.o(158080);
     }
   }
@@ -251,7 +251,7 @@ final class b
     }
     catch (Exception paramField)
     {
-      ad.printErrStackTrace("MicroMsg.SDK.CursorFieldHelper", paramField, "", new Object[0]);
+      ae.printErrStackTrace("MicroMsg.SDK.CursorFieldHelper", paramField, "", new Object[0]);
       AppMethodBeat.o(158065);
     }
   }
@@ -281,7 +281,7 @@ final class b
       }
       catch (Exception paramField)
       {
-        ad.printErrStackTrace("MicroMsg.SDK.CursorFieldHelper", paramField, "", new Object[0]);
+        ae.printErrStackTrace("MicroMsg.SDK.CursorFieldHelper", paramField, "", new Object[0]);
         AppMethodBeat.o(158069);
         return;
       }
@@ -306,7 +306,7 @@ final class b
     }
     catch (Exception paramField)
     {
-      ad.printErrStackTrace("MicroMsg.SDK.CursorFieldHelper", paramField, "", new Object[0]);
+      ae.printErrStackTrace("MicroMsg.SDK.CursorFieldHelper", paramField, "", new Object[0]);
       AppMethodBeat.o(158075);
     }
   }
@@ -328,7 +328,7 @@ final class b
     }
     catch (Exception paramField)
     {
-      ad.printErrStackTrace("MicroMsg.SDK.CursorFieldHelper", paramField, "", new Object[0]);
+      ae.printErrStackTrace("MicroMsg.SDK.CursorFieldHelper", paramField, "", new Object[0]);
       AppMethodBeat.o(158073);
     }
   }
@@ -350,7 +350,7 @@ final class b
     }
     catch (Exception paramField)
     {
-      ad.printErrStackTrace("MicroMsg.SDK.CursorFieldHelper", paramField, "", new Object[0]);
+      ae.printErrStackTrace("MicroMsg.SDK.CursorFieldHelper", paramField, "", new Object[0]);
       AppMethodBeat.o(158071);
     }
   }
@@ -372,7 +372,7 @@ final class b
     }
     catch (Exception paramField)
     {
-      ad.printErrStackTrace("MicroMsg.SDK.CursorFieldHelper", paramField, "", new Object[0]);
+      ae.printErrStackTrace("MicroMsg.SDK.CursorFieldHelper", paramField, "", new Object[0]);
       AppMethodBeat.o(158077);
     }
   }
@@ -394,7 +394,7 @@ final class b
     }
     catch (Exception paramField)
     {
-      ad.printErrStackTrace("MicroMsg.SDK.CursorFieldHelper", paramField, "", new Object[0]);
+      ae.printErrStackTrace("MicroMsg.SDK.CursorFieldHelper", paramField, "", new Object[0]);
       AppMethodBeat.o(158067);
     }
   }
@@ -410,7 +410,7 @@ final class b
     }
     catch (Exception paramField)
     {
-      ad.printErrStackTrace("MicroMsg.SDK.CursorFieldHelper", paramField, "", new Object[0]);
+      ae.printErrStackTrace("MicroMsg.SDK.CursorFieldHelper", paramField, "", new Object[0]);
       AppMethodBeat.o(158079);
     }
   }

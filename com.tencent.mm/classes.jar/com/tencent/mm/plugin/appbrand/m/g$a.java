@@ -4,14 +4,14 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class g$a
 {
-  boolean lUY = false;
-  boolean lUZ = true;
+  boolean lZB = false;
+  boolean lZC = true;
   
   public final String toString()
   {
-    AppMethodBeat.i(192252);
-    String str = "LoadModuleOptions{showPrompt=" + this.lUY + ", injectModuleJS=" + this.lUZ + '}';
-    AppMethodBeat.o(192252);
+    AppMethodBeat.i(220825);
+    String str = "LoadModuleOptions{showPrompt=" + this.lZB + ", injectModuleJS=" + this.lZC + '}';
+    AppMethodBeat.o(220825);
     return str;
   }
 }

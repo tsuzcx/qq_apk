@@ -7,7 +7,7 @@ import com.tencent.mm.sdk.b.b;
 public final class y
   extends b
 {
-  public a dkG;
+  public a dlI;
   
   public y()
   {
@@ -17,15 +17,15 @@ public final class y
   private y(byte paramByte)
   {
     AppMethodBeat.i(19788);
-    this.dkG = new a();
-    this.IbR = false;
+    this.dlI = new a();
+    this.IvZ = false;
     this.callback = null;
     AppMethodBeat.o(19788);
   }
   
   public static final class a
   {
-    public s.e dkH;
+    public s.e dlJ;
     public String title;
     public String username;
   }

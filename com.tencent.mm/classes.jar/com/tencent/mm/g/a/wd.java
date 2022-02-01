@@ -12,13 +12,13 @@ public final class wd
   
   private wd(byte paramByte)
   {
-    this.IbR = false;
+    this.IvZ = false;
     this.callback = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.g.a.wd
  * JD-Core Version:    0.7.0.1
  */

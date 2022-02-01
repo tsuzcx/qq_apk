@@ -23,7 +23,7 @@ public class AppCompatCheckedTextView
   
   public AppCompatCheckedTextView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
-    super(aw.ac(paramContext), paramAttributeSet, paramInt);
+    super(aw.ad(paramContext), paramAttributeSet, paramInt);
     this.ajQ.a(paramAttributeSet, paramInt);
     this.ajQ.jf();
     paramContext = az.a(getContext(), paramAttributeSet, afE, paramInt, 0);

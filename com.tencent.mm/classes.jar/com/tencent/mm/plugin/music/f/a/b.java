@@ -1,25 +1,25 @@
 package com.tencent.mm.plugin.music.f.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ar;
 
 public abstract class b
 {
-  protected com.tencent.mm.az.f wjM;
-  protected f wmr;
-  public g wms = new g();
+  protected f wCa;
+  public g wCb = new g();
+  protected com.tencent.mm.ay.f wzr;
   
-  public final void Lz(final int paramInt)
+  public final void Me(final int paramInt)
   {
-    if (this.wmr != null) {
-      aq.f(new Runnable()
+    if (this.wCa != null) {
+      ar.f(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(137403);
-          if (b.this.dtu()) {
-            b.this.wmr.M(b.this.wjM);
+          if (b.this.dwJ()) {
+            b.this.wCa.M(b.this.wzr);
           }
           AppMethodBeat.o(137403);
         }
@@ -27,23 +27,23 @@ public abstract class b
     }
   }
   
-  public final void N(com.tencent.mm.az.f paramf)
+  public final void N(com.tencent.mm.ay.f paramf)
   {
-    this.wjM = paramf;
+    this.wzr = paramf;
   }
   
   public final void a(f paramf)
   {
-    this.wmr = paramf;
+    this.wCa = paramf;
   }
   
-  public abstract void asL(String paramString);
+  public abstract void atY(String paramString);
   
-  public abstract boolean dtu();
+  public abstract boolean dwJ();
   
-  public abstract int dtv();
+  public abstract int dwK();
   
-  public abstract String dtw();
+  public abstract String dwL();
   
   public abstract int getDuration();
   
@@ -51,14 +51,14 @@ public abstract class b
   
   public final void onStart()
   {
-    if (this.wmr != null) {
-      aq.f(new Runnable()
+    if (this.wCa != null) {
+      ar.f(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(137402);
-          ad.i("MicroMsg.Music.BasePlayer", "onStart %b", new Object[] { Boolean.valueOf(b.this.isPlaying()) });
-          b.this.wmr.n(b.this.wjM);
+          ae.i("MicroMsg.Music.BasePlayer", "onStart %b", new Object[] { Boolean.valueOf(b.this.isPlaying()) });
+          b.this.wCa.n(b.this.wzr);
           AppMethodBeat.o(137402);
         }
       });
@@ -67,39 +67,39 @@ public abstract class b
   
   public abstract void pause();
   
-  public void pd(final boolean paramBoolean)
+  public void pl(final boolean paramBoolean)
   {
-    if (this.wmr != null) {
-      aq.f(new Runnable()
+    if (this.wCa != null) {
+      ar.f(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(137401);
-          ad.i("MicroMsg.Music.BasePlayer", "onError, needRetry:%b", new Object[] { Boolean.valueOf(paramBoolean) });
-          b.this.wmr.d(b.this.wjM, paramBoolean);
+          ae.i("MicroMsg.Music.BasePlayer", "onError, needRetry:%b", new Object[] { Boolean.valueOf(paramBoolean) });
+          b.this.wCa.d(b.this.wzr, paramBoolean);
           AppMethodBeat.o(137401);
         }
       });
     }
   }
   
-  public void pe(final boolean paramBoolean)
+  public abstract void play();
+  
+  public void pm(final boolean paramBoolean)
   {
-    if (this.wmr != null) {
-      aq.f(new Runnable()
+    if (this.wCa != null) {
+      ar.f(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(137404);
-          ad.i("MicroMsg.Music.BasePlayer", "onStop, isComplete:%b", new Object[] { Boolean.valueOf(paramBoolean) });
-          b.this.wmr.c(b.this.wjM, paramBoolean);
+          ae.i("MicroMsg.Music.BasePlayer", "onStop, isComplete:%b", new Object[] { Boolean.valueOf(paramBoolean) });
+          b.this.wCa.c(b.this.wzr, paramBoolean);
           AppMethodBeat.o(137404);
         }
       });
     }
   }
-  
-  public abstract void play();
   
   public abstract void seek(long paramLong);
   

@@ -1,26 +1,18 @@
 package com.tencent.mm.plugin.ball.d;
 
-import android.view.MotionEvent;
+import com.tencent.mm.plugin.ball.model.BallInfo;
 
 public abstract interface b
 {
-  public abstract void L(MotionEvent paramMotionEvent);
+  public abstract void a(BallInfo paramBallInfo, int paramInt);
   
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean1, boolean paramBoolean2);
+  public abstract void e(BallInfo paramBallInfo);
   
-  public abstract void bKh();
-  
-  public abstract void bKi();
-  
-  public abstract void bKj();
-  
-  public abstract void bKk();
-  
-  public abstract void nL(int paramInt);
+  public abstract void w(BallInfo paramBallInfo);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.ball.d.b
  * JD-Core Version:    0.7.0.1
  */

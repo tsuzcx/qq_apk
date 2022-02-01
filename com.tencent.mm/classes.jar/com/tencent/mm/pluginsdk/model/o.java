@@ -2,23 +2,23 @@ package com.tencent.mm.pluginsdk.model;
 
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
 import com.tencent.mm.plugin.c.a;
 import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.duz;
-import com.tencent.mm.protocal.protobuf.dva;
-import com.tencent.mm.protocal.protobuf.dvc;
-import com.tencent.mm.protocal.protobuf.dvd;
-import com.tencent.mm.protocal.protobuf.eah;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.dvw;
+import com.tencent.mm.protocal.protobuf.dvx;
+import com.tencent.mm.protocal.protobuf.dvz;
+import com.tencent.mm.protocal.protobuf.dwa;
+import com.tencent.mm.protocal.protobuf.eby;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.storage.g;
 import java.io.IOException;
 import java.util.Iterator;
@@ -31,28 +31,28 @@ public class o
   extends n
   implements k
 {
-  public List<String> ELU;
-  public String ELV;
-  private List<String> ELW;
+  public List<String> Fes;
+  public String Fet;
+  private List<String> Feu;
   private f callback;
-  public int dsi;
-  public String jex;
-  private final com.tencent.mm.al.b rr;
+  public int dto;
+  public String jhq;
+  private final com.tencent.mm.ak.b rr;
   
   public o(int paramInt, List<String> paramList1, List<Integer> paramList, List<String> paramList2, String paramString1, String paramString2, Map<String, Integer> paramMap, String paramString3, String paramString4)
   {
     AppMethodBeat.i(151639);
-    this.ELU = null;
-    this.dsi = 0;
-    this.ELW = null;
+    this.Fes = null;
+    this.dto = 0;
+    this.Feu = null;
     boolean bool;
     Object localObject;
     if (paramInt != 3)
     {
       bool = true;
       Assert.assertTrue("This NetSceneVerifyUser init NEVER use opcode == MM_VERIFYUSER_VERIFYOK", bool);
-      this.dsi = paramInt;
-      this.ELU = paramList1;
+      this.dto = paramInt;
+      this.Fes = paramList1;
       if (paramList2 != null)
       {
         localObject = paramList2;
@@ -63,19 +63,19 @@ public class o
         localObject = new LinkedList();
       }
       paramList2 = new b.a();
-      paramList2.hNM = new dvc();
-      paramList2.hNN = new dvd();
+      paramList2.hQF = new dvz();
+      paramList2.hQG = new dwa();
       paramList2.uri = "/cgi-bin/micromsg-bin/verifyuser";
       paramList2.funcId = 137;
-      paramList2.hNO = 44;
+      paramList2.hQH = 44;
       paramList2.respCmdId = 1000000044;
-      this.rr = paramList2.aDC();
+      this.rr = paramList2.aDS();
       if ((localObject != null) && (((List)localObject).size() > 0))
       {
         if (((List)localObject).size() == paramList1.size()) {
           break label282;
         }
-        ad.e("MicroMsg.NetSceneVerifyUser.dkverify", "dkverify Error lstAntispamTicket:%d lstVerifyUser:%d", new Object[] { Integer.valueOf(((List)localObject).size()), Integer.valueOf(paramList1.size()) });
+        ae.e("MicroMsg.NetSceneVerifyUser.dkverify", "dkverify Error lstAntispamTicket:%d lstVerifyUser:%d", new Object[] { Integer.valueOf(((List)localObject).size()), Integer.valueOf(paramList1.size()) });
       }
     }
     for (;;)
@@ -86,7 +86,7 @@ public class o
       int i = 0;
       while (i < paramList1.size())
       {
-        ((List)localObject).add(bt.bI(a.aVi().azR().aSl((String)paramList1.get(i)), ""));
+        ((List)localObject).add(bu.bI(a.aVH().aAh().aTI((String)paramList1.get(i)), ""));
         i += 1;
       }
       bool = false;
@@ -95,78 +95,78 @@ public class o
       i = 0;
       while (i < ((List)localObject).size())
       {
-        a.aVi().azR().D((String)paramList1.get(i), 2147483633, (String)((List)localObject).get(i));
+        a.aVH().aAh().F((String)paramList1.get(i), 2147483633, (String)((List)localObject).get(i));
         i += 1;
       }
     }
     label340:
-    dvc localdvc = (dvc)this.rr.hNK.hNQ;
-    localdvc.FAt = paramInt;
-    localdvc.GDx = paramString1;
-    this.ELV = paramString1;
+    dvz localdvz = (dvz)this.rr.hQD.hQJ;
+    localdvz.FSQ = paramInt;
+    localdvz.GXa = paramString1;
+    this.Fet = paramString1;
     paramString1 = new LinkedList();
     paramInt = 0;
     if (paramInt < paramList1.size())
     {
-      duz localduz = new duz();
-      localduz.yhw = ((String)paramList1.get(paramInt));
+      dvw localdvw = new dvw();
+      localdvw.yxn = ((String)paramList1.get(paramInt));
       if (paramString2 == null) {}
       for (paramList2 = "";; paramList2 = paramString2)
       {
-        localduz.HHs = paramList2;
-        paramList2 = a.aVi().azR();
-        String str = localduz.yhw;
+        localdvw.Ibf = paramList2;
+        paramList2 = a.aVH().aAh();
+        String str = localdvw.yxn;
         ((Integer)paramList.get(paramInt)).intValue();
-        localduz.Guj = bt.bI(paramList2.aSl(str), "");
-        if ((TextUtils.isEmpty(localduz.Guj)) && (localObject != null) && (((List)localObject).size() > paramInt)) {
-          localduz.Guj = ((String)((List)localObject).get(paramInt));
+        localdvw.GNI = bu.bI(paramList2.aTI(str), "");
+        if ((TextUtils.isEmpty(localdvw.GNI)) && (localObject != null) && (((List)localObject).size() > paramInt)) {
+          localdvw.GNI = ((String)((List)localObject).get(paramInt));
         }
-        localduz.HnU = paramString3;
-        if ((paramMap != null) && (paramMap.containsKey(localduz.yhw))) {
-          localduz.HHt = ((Integer)paramMap.get(localduz.yhw)).intValue();
+        localdvw.HHu = paramString3;
+        if ((paramMap != null) && (paramMap.containsKey(localdvw.yxn))) {
+          localdvw.Ibg = ((Integer)paramMap.get(localdvw.yxn)).intValue();
         }
-        localduz.HHx = paramString4;
-        ad.i("MicroMsg.NetSceneVerifyUser.dkverify", "dkverify op:%s idx:%s user:%s anti:%s chatroom:%s, reportInfo:%s, friendflag:%d", new Object[] { Integer.valueOf(this.dsi), Integer.valueOf(paramInt), localduz.yhw, localduz.Guj, paramString3, paramString4, Integer.valueOf(localduz.HHt) });
-        paramString1.add(localduz);
+        localdvw.Ibk = paramString4;
+        ae.i("MicroMsg.NetSceneVerifyUser.dkverify", "dkverify op:%s idx:%s user:%s anti:%s chatroom:%s, reportInfo:%s, friendflag:%d", new Object[] { Integer.valueOf(this.dto), Integer.valueOf(paramInt), localdvw.yxn, localdvw.GNI, paramString3, paramString4, Integer.valueOf(localdvw.Ibg) });
+        paramString1.add(localdvw);
         paramInt += 1;
         break;
       }
     }
-    localdvc.HHD = paramString1;
-    localdvc.HHC = paramString1.size();
+    localdvz.Ibq = paramString1;
+    localdvz.Ibp = paramString1.size();
     paramList1 = new LinkedList();
     paramList1.addAll(paramList);
-    localdvc.HHF = paramList1;
-    localdvc.HHE = paramList1.size();
-    if (com.tencent.mm.plugin.normsg.a.b.wtJ.ats("ie_ver_usr")) {
-      com.tencent.mm.plugin.normsg.a.b.wtJ.atr("ie_ver_usr");
+    localdvz.Ibs = paramList1;
+    localdvz.Ibr = paramList1.size();
+    if (com.tencent.mm.plugin.normsg.a.b.wJt.auF("ie_ver_usr")) {
+      com.tencent.mm.plugin.normsg.a.b.wJt.auE("ie_ver_usr");
     }
-    paramList1 = new eah();
-    paramList1.HNj = new SKBuiltinBuffer_t().setBuffer(com.tencent.mm.plugin.normsg.a.b.wtJ.att("ie_ver_usr"));
-    if (paramList1.HNj != null) {
-      paramInt = paramList1.HNj.getILen();
+    paramList1 = new eby();
+    paramList1.Ihq = new SKBuiltinBuffer_t().setBuffer(com.tencent.mm.plugin.normsg.a.b.wJt.auG("ie_ver_usr"));
+    if (paramList1.Ihq != null) {
+      paramInt = paramList1.Ihq.getILen();
     }
     for (;;)
     {
-      ad.d("MicroMsg.NetSceneVerifyUser.dkverify", "[debug] wcstf set on verifyuser , len: %s", new Object[] { Integer.valueOf(paramInt) });
-      paramList1.HNk = new SKBuiltinBuffer_t().setBuffer(com.tencent.mm.plugin.normsg.a.b.wtJ.atw("ce_ver_usr"));
-      if (paramList1.HNk != null)
+      ae.d("MicroMsg.NetSceneVerifyUser.dkverify", "[debug] wcstf set on verifyuser , len: %s", new Object[] { Integer.valueOf(paramInt) });
+      paramList1.Ihr = new SKBuiltinBuffer_t().setBuffer(com.tencent.mm.plugin.normsg.a.b.wJt.auJ("ce_ver_usr"));
+      if (paramList1.Ihr != null)
       {
-        paramInt = paramList1.HNk.getILen();
+        paramInt = paramList1.Ihr.getILen();
         label837:
-        ad.d("MicroMsg.NetSceneVerifyUser.dkverify", "[debug] wcste set on verifyuser , len: %s", new Object[] { Integer.valueOf(paramInt) });
-        paramList1.HNl = new SKBuiltinBuffer_t().setBuffer(com.tencent.mm.plugin.normsg.a.b.wtJ.duO());
-        if (paramList1.HNl == null) {
+        ae.d("MicroMsg.NetSceneVerifyUser.dkverify", "[debug] wcste set on verifyuser , len: %s", new Object[] { Integer.valueOf(paramInt) });
+        paramList1.Ihs = new SKBuiltinBuffer_t().setBuffer(com.tencent.mm.plugin.normsg.a.b.wJt.dye());
+        if (paramList1.Ihs == null) {
           break label1018;
         }
-        paramInt = paramList1.HNl.getILen();
-        ad.d("MicroMsg.NetSceneVerifyUser.dkverify", "[debug] ccData set on verifyuser , len: %s", new Object[] { Integer.valueOf(paramInt) });
+        paramInt = paramList1.Ihs.getILen();
+        ae.d("MicroMsg.NetSceneVerifyUser.dkverify", "[debug] ccData set on verifyuser , len: %s", new Object[] { Integer.valueOf(paramInt) });
       }
       try
       {
-        localdvc.FzL = new SKBuiltinBuffer_t().setBuffer(paramList1.toByteArray());
+        localdvz.FSj = new SKBuiltinBuffer_t().setBuffer(paramList1.toByteArray());
         label929:
-        ad.i("MicroMsg.NetSceneVerifyUser.dkverify", "dkverify op:%d scene:%d user:%d antitickets:%s chatroom:%s stack:%s", new Object[] { Integer.valueOf(this.dsi), Integer.valueOf(localdvc.HHD.size()), Integer.valueOf(localdvc.HHF.size()), bt.m((List)localObject, ","), paramString3, bt.flS() });
+        ae.i("MicroMsg.NetSceneVerifyUser.dkverify", "dkverify op:%d scene:%d user:%d antitickets:%s chatroom:%s stack:%s", new Object[] { Integer.valueOf(this.dto), Integer.valueOf(localdvz.Ibq.size()), Integer.valueOf(localdvz.Ibs.size()), bu.m((List)localObject, ","), paramString3, bu.fpN() });
         AppMethodBeat.o(151639);
         return;
         paramInt = -1;
@@ -191,69 +191,69 @@ public class o
   public o(String paramString1, String paramString2, int paramInt1, String paramString3, int paramInt2)
   {
     AppMethodBeat.i(151638);
-    this.ELU = null;
-    this.dsi = 0;
-    this.ELW = null;
+    this.Fes = null;
+    this.dto = 0;
+    this.Feu = null;
     Assert.assertTrue("This NetSceneVerifyUser init MUST use opcode == MM_VERIFYUSER_VERIFYOK", true);
-    this.ELU = new LinkedList();
-    this.ELU.add(paramString1);
-    this.dsi = 3;
+    this.Fes = new LinkedList();
+    this.Fes.add(paramString1);
+    this.dto = 3;
     Object localObject = new b.a();
-    ((b.a)localObject).hNM = new dvc();
-    ((b.a)localObject).hNN = new dvd();
+    ((b.a)localObject).hQF = new dvz();
+    ((b.a)localObject).hQG = new dwa();
     ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/verifyuser";
     ((b.a)localObject).funcId = 137;
-    ((b.a)localObject).hNO = 44;
+    ((b.a)localObject).hQH = 44;
     ((b.a)localObject).respCmdId = 1000000044;
-    this.rr = ((b.a)localObject).aDC();
-    localObject = (dvc)this.rr.hNK.hNQ;
-    ((dvc)localObject).FAt = 3;
-    ((dvc)localObject).GDx = "";
+    this.rr = ((b.a)localObject).aDS();
+    localObject = (dvz)this.rr.hQD.hQJ;
+    ((dvz)localObject).FSQ = 3;
+    ((dvz)localObject).GXa = "";
     LinkedList localLinkedList = new LinkedList();
-    duz localduz = new duz();
-    localduz.yhw = paramString1;
-    localduz.HHs = paramString2;
-    localduz.Guj = a.aVi().azR().aSl(paramString1);
-    localduz.HnU = paramString3;
+    dvw localdvw = new dvw();
+    localdvw.yxn = paramString1;
+    localdvw.Ibf = paramString2;
+    localdvw.GNI = a.aVH().aAh().aTI(paramString1);
+    localdvw.HHu = paramString3;
     if (paramInt2 > 0) {
-      localduz.HHt = paramInt2;
+      localdvw.Ibg = paramInt2;
     }
-    localLinkedList.add(localduz);
-    ((dvc)localObject).HHD = localLinkedList;
-    ((dvc)localObject).HHC = localLinkedList.size();
+    localLinkedList.add(localdvw);
+    ((dvz)localObject).Ibq = localLinkedList;
+    ((dvz)localObject).Ibp = localLinkedList.size();
     paramString1 = new LinkedList();
     paramString1.add(Integer.valueOf(paramInt1));
-    ((dvc)localObject).HHF = paramString1;
-    ((dvc)localObject).HHE = paramString1.size();
-    if (com.tencent.mm.plugin.normsg.a.b.wtJ.ats("ie_ver_usr")) {
-      com.tencent.mm.plugin.normsg.a.b.wtJ.atr("ie_ver_usr");
+    ((dvz)localObject).Ibs = paramString1;
+    ((dvz)localObject).Ibr = paramString1.size();
+    if (com.tencent.mm.plugin.normsg.a.b.wJt.auF("ie_ver_usr")) {
+      com.tencent.mm.plugin.normsg.a.b.wJt.auE("ie_ver_usr");
     }
-    paramString1 = new eah();
-    paramString1.HNj = new SKBuiltinBuffer_t().setBuffer(com.tencent.mm.plugin.normsg.a.b.wtJ.att("ie_ver_usr"));
-    if (paramString1.HNj != null) {
-      paramInt1 = paramString1.HNj.getILen();
+    paramString1 = new eby();
+    paramString1.Ihq = new SKBuiltinBuffer_t().setBuffer(com.tencent.mm.plugin.normsg.a.b.wJt.auG("ie_ver_usr"));
+    if (paramString1.Ihq != null) {
+      paramInt1 = paramString1.Ihq.getILen();
     }
     for (;;)
     {
-      ad.d("MicroMsg.NetSceneVerifyUser.dkverify", "[debug] wcstf set on verifyuser , len: %s", new Object[] { Integer.valueOf(paramInt1) });
-      paramString1.HNk = new SKBuiltinBuffer_t().setBuffer(com.tencent.mm.plugin.normsg.a.b.wtJ.atw("ce_ver_usr"));
-      if (paramString1.HNk != null)
+      ae.d("MicroMsg.NetSceneVerifyUser.dkverify", "[debug] wcstf set on verifyuser , len: %s", new Object[] { Integer.valueOf(paramInt1) });
+      paramString1.Ihr = new SKBuiltinBuffer_t().setBuffer(com.tencent.mm.plugin.normsg.a.b.wJt.auJ("ce_ver_usr"));
+      if (paramString1.Ihr != null)
       {
-        paramInt1 = paramString1.HNk.getILen();
+        paramInt1 = paramString1.Ihr.getILen();
         label400:
-        ad.d("MicroMsg.NetSceneVerifyUser.dkverify", "[debug] wcste set on verifyuser , len: %s", new Object[] { Integer.valueOf(paramInt1) });
-        paramString1.HNl = new SKBuiltinBuffer_t().setBuffer(com.tencent.mm.plugin.normsg.a.b.wtJ.duO());
-        if (paramString1.HNl == null) {
+        ae.d("MicroMsg.NetSceneVerifyUser.dkverify", "[debug] wcste set on verifyuser , len: %s", new Object[] { Integer.valueOf(paramInt1) });
+        paramString1.Ihs = new SKBuiltinBuffer_t().setBuffer(com.tencent.mm.plugin.normsg.a.b.wJt.dye());
+        if (paramString1.Ihs == null) {
           break label569;
         }
-        paramInt1 = paramString1.HNl.getILen();
-        ad.d("MicroMsg.NetSceneVerifyUser.dkverify", "[debug] ccData set on verifyuser , len: %s", new Object[] { Integer.valueOf(paramInt1) });
+        paramInt1 = paramString1.Ihs.getILen();
+        ae.d("MicroMsg.NetSceneVerifyUser.dkverify", "[debug] ccData set on verifyuser , len: %s", new Object[] { Integer.valueOf(paramInt1) });
       }
       try
       {
-        ((dvc)localObject).FzL = new SKBuiltinBuffer_t().setBuffer(paramString1.toByteArray());
+        ((dvz)localObject).FSj = new SKBuiltinBuffer_t().setBuffer(paramString1.toByteArray());
         label492:
-        ad.i("MicroMsg.NetSceneVerifyUser.dkverify", "dkverify user:%d scene:%d ticket:%s anti:%s, friendFlag:%d", new Object[] { Integer.valueOf(((dvc)localObject).HHD.size()), Integer.valueOf(((dvc)localObject).HHF.size()), paramString2, localduz.Guj, Integer.valueOf(paramInt2) });
+        ae.i("MicroMsg.NetSceneVerifyUser.dkverify", "dkverify user:%d scene:%d ticket:%s anti:%s, friendFlag:%d", new Object[] { Integer.valueOf(((dvz)localObject).Ibq.size()), Integer.valueOf(((dvz)localObject).Ibs.size()), paramString2, localdvw.GNI, Integer.valueOf(paramInt2) });
         AppMethodBeat.o(151638);
         return;
         paramInt1 = -1;
@@ -280,36 +280,36 @@ public class o
     this(2, paramList, paramList1, null, paramString1, paramString2, paramMap, paramString3, "");
   }
   
-  public final void Gl(String paramString)
+  public final void GN(String paramString)
   {
     AppMethodBeat.i(151641);
-    Iterator localIterator = ((dvc)this.rr.hNK.hNQ).HHD.iterator();
+    Iterator localIterator = ((dvz)this.rr.hQD.hQJ).Ibq.iterator();
     while (localIterator.hasNext()) {
-      ((duz)localIterator.next()).GtA = paramString;
+      ((dvw)localIterator.next()).GMZ = paramString;
     }
     AppMethodBeat.o(151641);
   }
   
-  public final void a(dva paramdva)
+  public final void a(dvx paramdvx)
   {
     AppMethodBeat.i(151643);
-    if (paramdva == null)
+    if (paramdvx == null)
     {
       AppMethodBeat.o(151643);
       return;
     }
-    ad.d("MicroMsg.NetSceneVerifyUser.dkverify", "setBizReportInfo SubScene:%d, MpScene:%d, SceneNote:%s", new Object[] { Integer.valueOf(paramdva.FxO), Integer.valueOf(paramdva.HHB), paramdva.Gdg });
-    Iterator localIterator = ((dvc)this.rr.hNK.hNQ).HHD.iterator();
+    ae.d("MicroMsg.NetSceneVerifyUser.dkverify", "setBizReportInfo SubScene:%d, MpScene:%d, SceneNote:%s", new Object[] { Integer.valueOf(paramdvx.FQm), Integer.valueOf(paramdvx.Ibo), paramdvx.GvN });
+    Iterator localIterator = ((dvz)this.rr.hQD.hQJ).Ibq.iterator();
     while (localIterator.hasNext())
     {
-      duz localduz = (duz)localIterator.next();
+      dvw localdvw = (dvw)localIterator.next();
       try
       {
-        localduz.HHA = new SKBuiltinBuffer_t().setBuffer(paramdva.toByteArray());
+        localdvw.Ibn = new SKBuiltinBuffer_t().setBuffer(paramdvx.toByteArray());
       }
       catch (IOException localIOException)
       {
-        ad.e("MicroMsg.NetSceneVerifyUser.dkverify", "setBizReportInfo %s", new Object[] { localIOException.getMessage() });
+        ae.e("MicroMsg.NetSceneVerifyUser.dkverify", "setBizReportInfo %s", new Object[] { localIOException.getMessage() });
       }
     }
     AppMethodBeat.o(151643);
@@ -324,17 +324,17 @@ public class o
     return i;
   }
   
-  public final String eZF()
+  public final String fdt()
   {
-    if ((this.rr != null) && (this.rr.hNL != null)) {
-      return ((dvd)this.rr.hNL.hNQ).nDo;
+    if ((this.rr != null) && (this.rr.hQE != null)) {
+      return ((dwa)this.rr.hQE.hQJ).nIJ;
     }
     return "";
   }
   
-  public final int eZG()
+  public final int fdu()
   {
-    return this.dsi;
+    return this.dto;
   }
   
   public int getType()
@@ -342,15 +342,15 @@ public class o
     return 30;
   }
   
-  public final void lr(String paramString1, String paramString2)
+  public final void ly(String paramString1, String paramString2)
   {
     AppMethodBeat.i(151640);
-    Iterator localIterator = ((dvc)this.rr.hNK.hNQ).HHD.iterator();
+    Iterator localIterator = ((dvz)this.rr.hQD.hQJ).Ibq.iterator();
     while (localIterator.hasNext())
     {
-      duz localduz = (duz)localIterator.next();
-      localduz.HHu = paramString1;
-      localduz.HHv = paramString2;
+      dvw localdvw = (dvw)localIterator.next();
+      localdvw.Ibh = paramString1;
+      localdvw.Ibi = paramString2;
     }
     AppMethodBeat.o(151640);
   }
@@ -360,7 +360,7 @@ public class o
     AppMethodBeat.i(151645);
     updateDispatchId(paramInt1);
     if ((paramInt2 != 0) || (paramInt3 != 0)) {
-      ad.e("MicroMsg.NetSceneVerifyUser.dkverify", "errType:%d, errCode:%d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+      ae.e("MicroMsg.NetSceneVerifyUser.dkverify", "errType:%d, errCode:%d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
     }
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(151645);
@@ -369,22 +369,22 @@ public class o
   public final void setSubScene(int paramInt)
   {
     AppMethodBeat.i(151642);
-    Iterator localIterator = ((dvc)this.rr.hNK.hNQ).HHD.iterator();
+    Iterator localIterator = ((dvz)this.rr.hQD.hQJ).Ibq.iterator();
     while (localIterator.hasNext()) {
-      ((duz)localIterator.next()).FxO = paramInt;
+      ((dvw)localIterator.next()).FQm = paramInt;
     }
     AppMethodBeat.o(151642);
   }
   
-  public final void vE(boolean paramBoolean)
+  public final void vM(boolean paramBoolean)
   {
-    dvc localdvc = (dvc)this.rr.hNK.hNQ;
+    dvz localdvz = (dvz)this.rr.hQD.hQJ;
     if (paramBoolean)
     {
-      localdvc.HHI = 1;
+      localdvz.Ibv = 1;
       return;
     }
-    localdvc.HHI = 0;
+    localdvz.Ibv = 0;
   }
 }
 

@@ -1,47 +1,47 @@
 package com.tencent.mm.plugin.appbrand.dynamic.g;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.modelappbrand.u;
 import com.tencent.mm.plugin.appbrand.api.e;
-import com.tencent.mm.plugin.appbrand.appcache.bg;
+import com.tencent.mm.plugin.appbrand.appcache.bh;
 import com.tencent.mm.plugin.appbrand.widget.k;
-import com.tencent.mm.protocal.protobuf.bth;
-import com.tencent.mm.protocal.protobuf.bti;
-import com.tencent.mm.protocal.protobuf.efj;
-import com.tencent.mm.protocal.protobuf.egj;
-import com.tencent.mm.protocal.protobuf.eiq;
+import com.tencent.mm.protocal.protobuf.bub;
+import com.tencent.mm.protocal.protobuf.buc;
+import com.tencent.mm.protocal.protobuf.eha;
+import com.tencent.mm.protocal.protobuf.eia;
+import com.tencent.mm.protocal.protobuf.ekh;
 
 public final class a
-  extends com.tencent.mm.al.a<bti>
+  extends com.tencent.mm.ak.a<buc>
 {
-  private int dtF;
-  private int khF;
-  public k khZ;
-  public final com.tencent.mm.al.b rr;
+  private int duK;
+  private int kkV;
+  public k klp;
+  public final com.tencent.mm.ak.b rr;
   
-  public a(String paramString, boolean paramBoolean, eiq parameiq)
+  public a(String paramString, boolean paramBoolean, ekh paramekh)
   {
     AppMethodBeat.i(121417);
-    bth localbth = new bth();
-    localbth.iht = paramString;
-    localbth.GNP = parameiq;
+    bub localbub = new bub();
+    localbub.ikm = paramString;
+    localbub.Hhp = paramekh;
     if (paramBoolean) {}
     for (int i = 1;; i = 2)
     {
-      localbth.GDf = i;
+      localbub.GWF = i;
       paramString = new b.a();
       paramString.funcId = 1181;
       paramString.uri = "/cgi-bin/mmbiz-bin/wxaattr/launchwxawidget";
-      paramString.hNM = localbth;
-      paramString.hNN = new bti();
-      paramString = paramString.aDC();
+      paramString.hQF = localbub;
+      paramString.hQG = new buc();
+      paramString = paramString.aDS();
       this.rr = paramString;
       c(paramString);
-      this.khF = parameiq.HTf;
-      this.dtF = com.tencent.mm.plugin.appbrand.dynamic.k.b.dK(this.khF, parameiq.GLq);
+      this.kkV = paramekh.Inm;
+      this.duK = com.tencent.mm.plugin.appbrand.dynamic.k.b.dK(this.kkV, paramekh.HeR);
       AppMethodBeat.o(121417);
       return;
     }
@@ -49,41 +49,41 @@ public final class a
   
   private String getAppId()
   {
-    return ((bth)this.rr.hNK.hNQ).iht;
+    return ((bub)this.rr.hQD.hQJ).ikm;
   }
   
-  public final void a(int paramInt1, int paramInt2, String paramString, bti parambti)
+  public final void a(int paramInt1, int paramInt2, String paramString, buc parambuc)
   {
     AppMethodBeat.i(121418);
     u.i("MicroMsg.CgiLaunchWxaWidget", "onCgiBack, errType %d, errCode %d, errMsg %s, req appId %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString, getAppId() });
-    if ((paramInt1 == 0) && (paramInt2 == 0) && (parambti != null))
+    if ((paramInt1 == 0) && (paramInt2 == 0) && (parambuc != null))
     {
       paramString = getAppId();
-      this.khZ = ((com.tencent.mm.plugin.appbrand.widget.a.b)g.ab(com.tencent.mm.plugin.appbrand.widget.a.b.class)).aYR().a(paramString, this.dtF, this.khF, parambti);
-      if (parambti.GNR != null)
+      this.klp = ((com.tencent.mm.plugin.appbrand.widget.a.b)g.ab(com.tencent.mm.plugin.appbrand.widget.a.b.class)).aZn().a(paramString, this.duK, this.kkV, parambuc);
+      if (parambuc.Hhr != null)
       {
-        String str = ((e)g.ab(e.class)).aYu().aP(paramString, this.dtF);
-        egj localegj = new egj();
-        localegj.HRw = str;
-        localegj.FFN = parambti.GNR.FFN;
-        if (this.dtF == 10102)
+        String str = ((e)g.ab(e.class)).aYP().aS(paramString, this.duK);
+        eia localeia = new eia();
+        localeia.IlD = str;
+        localeia.FYj = parambuc.Hhr.FYj;
+        if (this.duK == 10102)
         {
-          localegj.HRv = parambti.GNR.HQF;
-          ((e)g.ab(e.class)).aYu().a(paramString, localegj, this.dtF);
+          localeia.IlC = parambuc.Hhr.IkM;
+          ((e)g.ab(e.class)).aYP().a(paramString, localeia, this.duK);
           AppMethodBeat.o(121418);
           return;
         }
-        if (this.dtF == 10002)
+        if (this.duK == 10002)
         {
-          localegj.HRv = parambti.GNR.HQE;
-          ((e)g.ab(e.class)).aYu().a(paramString, localegj, this.dtF);
+          localeia.IlC = parambuc.Hhr.IkL;
+          ((e)g.ab(e.class)).aYP().a(paramString, localeia, this.duK);
         }
       }
       AppMethodBeat.o(121418);
       return;
     }
-    com.tencent.mm.plugin.appbrand.dynamic.j.bfM().Ow(getAppId());
-    this.khZ = ((com.tencent.mm.plugin.appbrand.widget.a.b)g.ab(com.tencent.mm.plugin.appbrand.widget.a.b.class)).aYR().T(getAppId(), this.dtF, this.khF);
+    com.tencent.mm.plugin.appbrand.dynamic.j.bgu().Pe(getAppId());
+    this.klp = ((com.tencent.mm.plugin.appbrand.widget.a.b)g.ab(com.tencent.mm.plugin.appbrand.widget.a.b.class)).aZn().T(getAppId(), this.duK, this.kkV);
     AppMethodBeat.o(121418);
   }
 }

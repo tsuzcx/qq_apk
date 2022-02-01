@@ -12,9 +12,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class JsonRecyclerView
   extends RecyclerView
 {
-  private a KBV;
-  float KBW;
-  private RecyclerView.l KBX;
+  private a KYp;
+  float KYq;
+  private RecyclerView.l KYr;
   int mode;
   
   public JsonRecyclerView(Context paramContext, AttributeSet paramAttributeSet)
@@ -26,7 +26,7 @@ public class JsonRecyclerView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(38910);
-    this.KBX = new JsonRecyclerView.1(this);
+    this.KYr = new JsonRecyclerView.1(this);
     getContext();
     setLayoutManager(new LinearLayoutManager());
     AppMethodBeat.o(38910);
@@ -52,12 +52,12 @@ public class JsonRecyclerView
   
   public void setBracesColor(int paramInt)
   {
-    a.KBP = paramInt;
+    a.KYj = paramInt;
   }
   
   public void setKeyColor(int paramInt)
   {
-    a.KBJ = paramInt;
+    a.KYd = paramInt;
   }
   
   public void setScaleEnable(boolean paramBoolean)
@@ -65,11 +65,11 @@ public class JsonRecyclerView
     AppMethodBeat.i(38912);
     if (paramBoolean)
     {
-      a(this.KBX);
+      a(this.KYr);
       AppMethodBeat.o(38912);
       return;
     }
-    b(this.KBX);
+    b(this.KYr);
     AppMethodBeat.o(38912);
   }
   
@@ -80,10 +80,10 @@ public class JsonRecyclerView
     if (paramFloat < 10.0F) {
       f = 10.0F;
     }
-    while (a.KBQ != f)
+    while (a.KYk != f)
     {
-      a.KBQ = f;
-      if (this.KBV == null) {
+      a.KYk = f;
+      if (this.KYp == null) {
         break;
       }
       RecyclerView.i locali = getLayoutManager();
@@ -104,27 +104,27 @@ public class JsonRecyclerView
   
   public void setValueBooleanColor(int paramInt)
   {
-    a.KBM = paramInt;
+    a.KYg = paramInt;
   }
   
   public void setValueNullColor(int paramInt)
   {
-    a.KBL = paramInt;
+    a.KYf = paramInt;
   }
   
   public void setValueNumberColor(int paramInt)
   {
-    a.KBL = paramInt;
+    a.KYf = paramInt;
   }
   
   public void setValueTextColor(int paramInt)
   {
-    a.KBK = paramInt;
+    a.KYe = paramInt;
   }
   
   public void setValueUrlColor(int paramInt)
   {
-    a.KBN = paramInt;
+    a.KYh = paramInt;
   }
 }
 

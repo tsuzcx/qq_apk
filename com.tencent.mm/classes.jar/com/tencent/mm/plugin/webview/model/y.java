@@ -1,28 +1,28 @@
 package com.tencent.mm.plugin.webview.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.bwk;
-import com.tencent.mm.protocal.protobuf.bwl;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.bxe;
+import com.tencent.mm.protocal.protobuf.bxf;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class y
   extends n
   implements k
 {
-  public String DSZ;
-  public int DTa;
-  private f gzH;
-  public String pjK;
-  public String pjL;
+  public String EkZ;
+  public int Ela;
+  private f gCo;
+  public String pqp;
+  public String pqq;
   private final b rr;
   public String sign;
   
@@ -30,24 +30,24 @@ public final class y
   {
     AppMethodBeat.i(78912);
     Object localObject = new b.a();
-    ((b.a)localObject).hNM = new bwk();
-    ((b.a)localObject).hNN = new bwl();
+    ((b.a)localObject).hQF = new bxe();
+    ((b.a)localObject).hQG = new bxf();
     ((b.a)localObject).uri = "/cgi-bin/mmbiz-bin/usrmsg/mmbizjsapi_getuseropenid";
     ((b.a)localObject).funcId = 1177;
-    ((b.a)localObject).hNO = 0;
+    ((b.a)localObject).hQH = 0;
     ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).aDC();
-    localObject = (bwk)this.rr.hNK.hNQ;
-    ((bwk)localObject).app_id = paramString1;
-    ((bwk)localObject).GuJ = paramString2;
-    ((bwk)localObject).oBW = paramString3;
+    this.rr = ((b.a)localObject).aDS();
+    localObject = (bxe)this.rr.hQD.hQJ;
+    ((bxe)localObject).app_id = paramString1;
+    ((bxe)localObject).GOi = paramString2;
+    ((bxe)localObject).oIy = paramString3;
     AppMethodBeat.o(78912);
   }
   
   public final int doScene(e parame, f paramf)
   {
     AppMethodBeat.i(78914);
-    this.gzH = paramf;
+    this.gCo = paramf;
     int i = dispatch(parame, this.rr, this);
     AppMethodBeat.o(78914);
     return i;
@@ -61,18 +61,18 @@ public final class y
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(78913);
-    ad.i("MicroMsg.NetSceneMMBizGetUserOpenId", "errType = %d, errCode = %d, errMsg = %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    ae.i("MicroMsg.NetSceneMMBizGetUserOpenId", "errType = %d, errCode = %d, errMsg = %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      paramq = (bwl)this.rr.hNL.hNQ;
-      this.DSZ = paramq.DSZ;
+      paramq = (bxf)this.rr.hQE.hQJ;
+      this.EkZ = paramq.EkZ;
       this.sign = paramq.sign;
-      this.pjL = paramq.pjL;
-      this.pjK = paramq.pjK;
-      this.DTa = paramq.DTa;
-      ad.d("MicroMsg.NetSceneMMBizGetUserOpenId", "openid:%s, sign:%s, head_img_url:%s, nick_name:%s, friend_relation:%d", new Object[] { this.DSZ, this.sign, this.pjL, this.pjK, Integer.valueOf(this.DTa) });
+      this.pqq = paramq.pqq;
+      this.pqp = paramq.pqp;
+      this.Ela = paramq.Ela;
+      ae.d("MicroMsg.NetSceneMMBizGetUserOpenId", "openid:%s, sign:%s, head_img_url:%s, nick_name:%s, friend_relation:%d", new Object[] { this.EkZ, this.sign, this.pqq, this.pqp, Integer.valueOf(this.Ela) });
     }
-    this.gzH.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    this.gCo.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(78913);
   }
 }

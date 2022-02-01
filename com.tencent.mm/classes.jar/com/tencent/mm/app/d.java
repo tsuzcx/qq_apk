@@ -4,9 +4,9 @@ import com.tencent.tinker.entry.ApplicationLike;
 
 public final class d
 {
-  public static String cDP;
-  public static ApplicationLike cTo;
-  public static long cTp;
+  public static String cEw;
+  public static ApplicationLike cTZ;
+  public static long cUa;
 }
 
 

@@ -18,8 +18,8 @@ final class FavPostVoiceUI$2
     b localb = new b();
     localb.bd(paramView);
     localb.bd(paramMotionEvent);
-    a.b("com/tencent/mm/plugin/fav/ui/FavPostVoiceUI$2", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahq());
-    FavPostVoiceUI.c(this.rxo);
+    a.b("com/tencent/mm/plugin/fav/ui/FavPostVoiceUI$2", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahF());
+    FavPostVoiceUI.c(this.rFz);
     a.a(false, this, "com/tencent/mm/plugin/fav/ui/FavPostVoiceUI$2", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
     AppMethodBeat.o(106790);
     return false;

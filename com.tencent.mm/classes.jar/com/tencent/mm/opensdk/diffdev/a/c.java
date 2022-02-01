@@ -18,16 +18,16 @@ class c
   
   public c(String paramString, OAuthListener paramOAuthListener)
   {
-    AppMethodBeat.i(196995);
+    AppMethodBeat.i(194107);
     this.a = paramString;
     this.c = paramOAuthListener;
     this.b = String.format("https://long.open.weixin.qq.com/connect/l/qrconnect?f=json&uuid=%s", new Object[] { paramString });
-    AppMethodBeat.o(196995);
+    AppMethodBeat.o(194107);
   }
   
   protected Object doInBackground(Object[] paramArrayOfObject)
   {
-    AppMethodBeat.i(196997);
+    AppMethodBeat.i(194109);
     Thread.currentThread().setName("OpenSdkNoopingTask");
     paramArrayOfObject = this.a;
     Object localObject;
@@ -132,7 +132,7 @@ class c
       }
       for (;;)
       {
-        AppMethodBeat.o(196997);
+        AppMethodBeat.o(194109);
         return paramArrayOfObject;
         Log.e("MicroMsg.SDK.NoopingTask", String.format("nooping fail, errCode = %s, uuidStatusCode = %d", new Object[] { paramArrayOfObject.toString(), Integer.valueOf(((a)localObject).c) }));
         paramArrayOfObject = (Object[])localObject;
@@ -153,10 +153,10 @@ class c
   
   protected void onPostExecute(Object paramObject)
   {
-    AppMethodBeat.i(196996);
+    AppMethodBeat.i(194108);
     paramObject = (a)paramObject;
     this.c.onAuthFinish(paramObject.a, paramObject.b);
-    AppMethodBeat.o(196996);
+    AppMethodBeat.o(194108);
   }
   
   static class a

@@ -16,9 +16,9 @@ public abstract interface g
   
   public abstract void b(int paramInt1, int paramInt2, Object paramObject, boolean paramBoolean);
   
-  public abstract void cB(Object paramObject);
+  public abstract void cC(Object paramObject);
   
-  public abstract void cP(View paramView);
+  public abstract void cQ(View paramView);
   
   public abstract View e(RecyclerView paramRecyclerView, RecyclerView.w paramw);
 }

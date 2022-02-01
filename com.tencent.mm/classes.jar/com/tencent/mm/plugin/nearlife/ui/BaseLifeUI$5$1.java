@@ -18,8 +18,8 @@ final class BaseLifeUI$5$1
     b localb = new b();
     localb.bd(paramView);
     localb.bd(paramMotionEvent);
-    a.b("com/tencent/mm/plugin/nearlife/ui/BaseLifeUI$5$1", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahq());
-    this.wqR.wqQ.hideVKB();
+    a.b("com/tencent/mm/plugin/nearlife/ui/BaseLifeUI$5$1", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahF());
+    this.wGA.wGz.hideVKB();
     a.a(false, this, "com/tencent/mm/plugin/nearlife/ui/BaseLifeUI$5$1", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
     AppMethodBeat.o(26564);
     return false;

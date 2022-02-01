@@ -6,8 +6,8 @@ import com.tencent.mm.plugin.appbrand.game.preload.d;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
 import com.tencent.mm.plugin.appbrand.o.b.b;
 import com.tencent.mm.plugin.appbrand.o.m;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.Map;
 import org.json.JSONObject;
 
@@ -25,7 +25,7 @@ public final class e
   public final com.tencent.mm.plugin.appbrand.jsapi.m.a.a a(b.b paramb)
   {
     AppMethodBeat.i(180202);
-    paramb = new a(paramb, this.kXd);
+    paramb = new a(paramb, this.laM);
     AppMethodBeat.o(180202);
     return paramb;
   }
@@ -42,21 +42,21 @@ public final class e
     {
       AppMethodBeat.i(180201);
       Object localObject = paramJSONObject.optString("url");
-      if (bt.isNullOrNil((String)localObject))
+      if (bu.isNullOrNil((String)localObject))
       {
-        ad.i("MicroMsg.JsApiCreateDownloadTaskGame", "url is null");
+        ae.i("MicroMsg.JsApiCreateDownloadTaskGame", "url is null");
         b(paramc, paramString, "url is null or nil");
         AppMethodBeat.o(180201);
         return;
       }
-      if ((((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(com.tencent.mm.plugin.expt.b.b.a.qsl, false)) && (d.bhx().isDownloading((String)localObject)))
+      if ((((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(com.tencent.mm.plugin.expt.b.b.a.qza, false)) && (d.bif().isDownloading((String)localObject)))
       {
-        localObject = d.bhx().kmT;
+        localObject = d.bif().kqj;
         if (localObject != null)
         {
-          int i = parama.jWu;
+          int i = parama.jZJ;
           if (paramBoolean) {}
-          for (paramc = parama.cmY;; paramc = null)
+          for (paramc = parama.cna;; paramc = null)
           {
             ((m)localObject).a(paramJSONObject, paramInt, paramMap, paramc, i, parama1, paramString, "createDownloadTask");
             AppMethodBeat.o(180201);
@@ -71,7 +71,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.appdownload.e
  * JD-Core Version:    0.7.0.1
  */

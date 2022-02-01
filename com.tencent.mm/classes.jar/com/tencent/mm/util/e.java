@@ -2,34 +2,34 @@ package com.tencent.mm.util;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.g.c.ei;
-import com.tencent.mm.model.bj;
-import com.tencent.mm.model.u;
-import com.tencent.mm.model.w;
-import com.tencent.mm.protocal.protobuf.cif;
-import com.tencent.mm.protocal.protobuf.cig;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.sdk.platformtools.bw;
-import com.tencent.mm.storage.bu;
+import com.tencent.mm.model.bl;
+import com.tencent.mm.model.v;
+import com.tencent.mm.model.x;
+import com.tencent.mm.protocal.protobuf.ciz;
+import com.tencent.mm.protocal.protobuf.cja;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.bx;
+import com.tencent.mm.storage.bv;
 import java.util.LinkedList;
 import java.util.Map;
 
 public final class e
 {
-  public static cif Q(String paramString, Map<String, String> paramMap)
+  public static ciz R(String paramString, Map<String, String> paramMap)
   {
-    AppMethodBeat.i(192581);
-    cif localcif = new cif();
+    AppMethodBeat.i(213457);
+    ciz localciz = new ciz();
     int i;
-    cig localcig;
+    cja localcja;
     if (paramMap != null)
     {
-      String str = bt.nullAsNil(paramString) + ".patMsg";
-      localcif.fFR = bt.nullAsNil((String)paramMap.get(str + ".chatUser"));
-      int j = bt.aRe((String)paramMap.get(str + ".records.recordNum"));
+      String str = bu.nullAsNil(paramString) + ".patMsg";
+      localciz.fHV = bu.nullAsNil((String)paramMap.get(str + ".chatUser"));
+      int j = bu.aSB((String)paramMap.get(str + ".records.recordNum"));
       i = 0;
       if (i < j)
       {
-        localcig = new cig();
+        localcja = new cja();
         paramString = str + ".records.record";
         if (i <= 0) {
           break label461;
@@ -40,71 +40,71 @@ public final class e
     label461:
     for (;;)
     {
-      localcig.dyU = bt.nullAsNil((String)paramMap.get(paramString + ".fromUser"));
-      localcig.Hcd = bt.nullAsNil((String)paramMap.get(paramString + ".pattedUser"));
-      localcig.hEb = bt.nullAsNil((String)paramMap.get(paramString + ".template"));
-      if (bt.isNullOrNil(localcig.hEb)) {
-        localcig.hEb = bt.nullAsNil((String)paramMap.get(paramString + ".templete"));
+      localcja.dzZ = bu.nullAsNil((String)paramMap.get(paramString + ".fromUser"));
+      localcja.HvD = bu.nullAsNil((String)paramMap.get(paramString + ".pattedUser"));
+      localcja.hGT = bu.nullAsNil((String)paramMap.get(paramString + ".template"));
+      if (bu.isNullOrNil(localcja.hGT)) {
+        localcja.hGT = bu.nullAsNil((String)paramMap.get(paramString + ".templete"));
       }
-      localcig.createTime = bt.aRf((String)paramMap.get(paramString + ".createTime"));
-      localcig.Hce = bt.aRe((String)paramMap.get(paramString + ".readStatus"));
-      localcig.nxr = bt.aRf((String)paramMap.get(paramString + ".svrId"));
-      localcif.vox.add(localcig);
+      localcja.createTime = bu.aSC((String)paramMap.get(paramString + ".createTime"));
+      localcja.HvE = bu.aSB((String)paramMap.get(paramString + ".readStatus"));
+      localcja.nCM = bu.aSC((String)paramMap.get(paramString + ".svrId"));
+      localciz.vAC.add(localcja);
       i += 1;
       break;
-      AppMethodBeat.o(192581);
-      return localcif;
+      AppMethodBeat.o(213457);
+      return localciz;
     }
   }
   
-  public static cif aXV(String paramString)
+  public static ciz aZx(String paramString)
   {
-    AppMethodBeat.i(192580);
-    cif localcif = new cif();
-    if (!bt.isNullOrNil(paramString))
+    AppMethodBeat.i(213456);
+    ciz localciz = new ciz();
+    if (!bu.isNullOrNil(paramString))
     {
       if (!paramString.contains("appmsg"))
       {
-        paramString = Q("", bw.M(paramString, "patMsg"));
-        AppMethodBeat.o(192580);
+        paramString = R("", bx.M(paramString, "patMsg"));
+        AppMethodBeat.o(213456);
         return paramString;
       }
-      paramString = Q(".msg.appmsg", bw.M(paramString, "msg"));
-      AppMethodBeat.o(192580);
+      paramString = R(".msg.appmsg", bx.M(paramString, "msg"));
+      AppMethodBeat.o(213456);
       return paramString;
     }
-    AppMethodBeat.o(192580);
-    return localcif;
+    AppMethodBeat.o(213456);
+    return localciz;
   }
   
-  public static String cB(bu parambu)
+  public static String cA(bv parambv)
   {
     AppMethodBeat.i(117353);
-    if (parambu == null)
+    if (parambv == null)
     {
       AppMethodBeat.o(117353);
       return "";
     }
-    if (parambu.field_isSend == 1) {
-      parambu = u.aAm();
+    if (parambv.field_isSend == 1) {
+      parambv = v.aAC();
     }
     for (;;)
     {
       AppMethodBeat.o(117353);
-      return parambu;
-      String str1 = parambu.field_talker;
-      if (w.vF(str1))
+      return parambv;
+      String str1 = parambv.field_talker;
+      if (x.wb(str1))
       {
-        String str2 = bj.Bk(parambu.field_content);
+        String str2 = bl.BM(parambv.field_content);
         if ((str1 != null) && (str2 != null))
         {
-          parambu = str2;
+          parambv = str2;
           if (str2.length() > 0) {
             continue;
           }
         }
       }
-      parambu = str1;
+      parambv = str1;
     }
   }
 }

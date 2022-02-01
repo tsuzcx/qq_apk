@@ -8,7 +8,7 @@ import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.canvas.a.a;
 import com.tencent.mm.plugin.appbrand.canvas.d;
-import com.tencent.mm.plugin.appbrand.z.g;
+import com.tencent.mm.plugin.appbrand.y.g;
 import java.util.Arrays;
 import java.util.Objects;
 import org.json.JSONArray;
@@ -18,12 +18,12 @@ public class RealSetStrokeStyleActionLinearArg
   extends RealSetStrokeStyleActionArg
 {
   public static final Parcelable.Creator<RealSetStrokeStyleActionLinearArg> CREATOR;
-  public float jTn;
-  public float jTo;
-  public float jTp;
-  public float jTq;
-  public int[] jTr;
-  public float[] jTs;
+  public float jWE;
+  public float jWF;
+  public float jWG;
+  public float jWH;
+  public int[] jWI;
+  public float[] jWJ;
   
   static
   {
@@ -42,13 +42,13 @@ public class RealSetStrokeStyleActionLinearArg
   public final boolean a(d paramd, Canvas paramCanvas)
   {
     AppMethodBeat.i(145084);
-    if ((this.jTr == null) || (this.jTs == null))
+    if ((this.jWI == null) || (this.jWJ == null))
     {
       AppMethodBeat.o(145084);
       return false;
     }
-    paramCanvas = new LinearGradient(this.jTn, this.jTo, this.jTp, this.jTq, this.jTr, this.jTs, Shader.TileMode.CLAMP);
-    paramd.jSY.setShader(paramCanvas);
+    paramCanvas = new LinearGradient(this.jWE, this.jWF, this.jWG, this.jWH, this.jWI, this.jWJ, Shader.TileMode.CLAMP);
+    paramd.jWp.setShader(paramCanvas);
     AppMethodBeat.o(145084);
     return true;
   }
@@ -77,7 +77,7 @@ public class RealSetStrokeStyleActionLinearArg
       return false;
     }
     paramObject = (RealSetStrokeStyleActionLinearArg)paramObject;
-    if ((Float.compare(paramObject.jTn, this.jTn) == 0) && (Float.compare(paramObject.jTo, this.jTo) == 0) && (Float.compare(paramObject.jTp, this.jTp) == 0) && (Float.compare(paramObject.jTq, this.jTq) == 0) && (Arrays.equals(this.jTr, paramObject.jTr)) && (Arrays.equals(this.jTs, paramObject.jTs)))
+    if ((Float.compare(paramObject.jWE, this.jWE) == 0) && (Float.compare(paramObject.jWF, this.jWF) == 0) && (Float.compare(paramObject.jWG, this.jWG) == 0) && (Float.compare(paramObject.jWH, this.jWH) == 0) && (Arrays.equals(this.jWI, paramObject.jWI)) && (Arrays.equals(this.jWJ, paramObject.jWJ)))
     {
       AppMethodBeat.o(145085);
       return true;
@@ -101,26 +101,26 @@ public class RealSetStrokeStyleActionLinearArg
       AppMethodBeat.o(145089);
       return;
     }
-    this.jTn = g.f(localJSONArray, 0);
-    this.jTo = g.f(localJSONArray, 1);
-    this.jTp = g.f(localJSONArray, 2);
-    this.jTq = g.f(localJSONArray, 3);
+    this.jWE = g.f(localJSONArray, 0);
+    this.jWF = g.f(localJSONArray, 1);
+    this.jWG = g.f(localJSONArray, 2);
+    this.jWH = g.f(localJSONArray, 3);
     paramJSONArray = paramJSONArray.optJSONArray(2);
     if ((paramJSONArray == null) || (paramJSONArray.length() == 0))
     {
       AppMethodBeat.o(145089);
       return;
     }
-    this.jTr = new int[paramJSONArray.length()];
-    this.jTs = new float[paramJSONArray.length()];
+    this.jWI = new int[paramJSONArray.length()];
+    this.jWJ = new float[paramJSONArray.length()];
     int i = 0;
     while (i < paramJSONArray.length())
     {
       localJSONArray = paramJSONArray.optJSONArray(i);
       if (localJSONArray.length() >= 2)
       {
-        this.jTs[i] = ((float)localJSONArray.optDouble(0));
-        this.jTr[i] = g.q(localJSONArray.optJSONArray(1));
+        this.jWJ[i] = ((float)localJSONArray.optDouble(0));
+        this.jWI[i] = g.r(localJSONArray.optJSONArray(1));
       }
       i += 1;
     }
@@ -131,21 +131,21 @@ public class RealSetStrokeStyleActionLinearArg
   {
     AppMethodBeat.i(145087);
     super.h(paramParcel);
-    this.jTn = paramParcel.readFloat();
-    this.jTo = paramParcel.readFloat();
-    this.jTp = paramParcel.readFloat();
-    this.jTq = paramParcel.readFloat();
+    this.jWE = paramParcel.readFloat();
+    this.jWF = paramParcel.readFloat();
+    this.jWG = paramParcel.readFloat();
+    this.jWH = paramParcel.readFloat();
     int i = paramParcel.readInt();
     if (i > 0)
     {
-      this.jTr = new int[i];
-      paramParcel.readIntArray(this.jTr);
+      this.jWI = new int[i];
+      paramParcel.readIntArray(this.jWI);
     }
     i = paramParcel.readInt();
     if (i > 0)
     {
-      this.jTs = new float[i];
-      paramParcel.readFloatArray(this.jTs);
+      this.jWJ = new float[i];
+      paramParcel.readFloatArray(this.jWJ);
     }
     AppMethodBeat.o(145087);
   }
@@ -153,9 +153,9 @@ public class RealSetStrokeStyleActionLinearArg
   public int hashCode()
   {
     AppMethodBeat.i(145086);
-    int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), Float.valueOf(this.jTn), Float.valueOf(this.jTo), Float.valueOf(this.jTp), Float.valueOf(this.jTq) });
-    int j = Arrays.hashCode(this.jTr);
-    int k = Arrays.hashCode(this.jTs);
+    int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), Float.valueOf(this.jWE), Float.valueOf(this.jWF), Float.valueOf(this.jWG), Float.valueOf(this.jWH) });
+    int j = Arrays.hashCode(this.jWI);
+    int k = Arrays.hashCode(this.jWJ);
     AppMethodBeat.o(145086);
     return (i * 31 + j) * 31 + k;
   }
@@ -171,19 +171,19 @@ public class RealSetStrokeStyleActionLinearArg
   {
     AppMethodBeat.i(145088);
     super.writeToParcel(paramParcel, paramInt);
-    paramParcel.writeFloat(this.jTn);
-    paramParcel.writeFloat(this.jTo);
-    paramParcel.writeFloat(this.jTp);
-    paramParcel.writeFloat(this.jTq);
-    if (this.jTr != null)
+    paramParcel.writeFloat(this.jWE);
+    paramParcel.writeFloat(this.jWF);
+    paramParcel.writeFloat(this.jWG);
+    paramParcel.writeFloat(this.jWH);
+    if (this.jWI != null)
     {
-      paramParcel.writeInt(this.jTr.length);
-      paramParcel.writeIntArray(this.jTr);
+      paramParcel.writeInt(this.jWI.length);
+      paramParcel.writeIntArray(this.jWI);
     }
-    while (this.jTs != null)
+    while (this.jWJ != null)
     {
-      paramParcel.writeInt(this.jTs.length);
-      paramParcel.writeFloatArray(this.jTs);
+      paramParcel.writeInt(this.jWJ.length);
+      paramParcel.writeFloatArray(this.jWJ);
       AppMethodBeat.o(145088);
       return;
       paramParcel.writeInt(0);

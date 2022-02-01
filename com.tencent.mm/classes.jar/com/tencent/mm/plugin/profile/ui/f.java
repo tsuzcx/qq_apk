@@ -6,24 +6,24 @@ import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.os.Message;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bs.d;
+import com.tencent.mm.br.d;
 import com.tencent.mm.g.c.aw;
-import com.tencent.mm.model.ba;
+import com.tencent.mm.model.bc;
 import com.tencent.mm.model.c;
-import com.tencent.mm.model.u;
-import com.tencent.mm.model.w;
+import com.tencent.mm.model.v;
+import com.tencent.mm.model.x;
 import com.tencent.mm.plugin.account.ui.FacebookFriendUI;
 import com.tencent.mm.plugin.messenger.foundation.a.a.i;
 import com.tencent.mm.plugin.messenger.foundation.a.a.j;
 import com.tencent.mm.pluginsdk.ui.preference.HelperHeaderPreference;
 import com.tencent.mm.sdk.e.n;
 import com.tencent.mm.sdk.e.n.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.am;
-import com.tencent.mm.storage.bq;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.aj;
+import com.tencent.mm.storage.an;
+import com.tencent.mm.storage.br;
 import com.tencent.mm.ui.base.p;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.base.preference.PreferenceCategory;
@@ -37,31 +37,31 @@ import junit.framework.Assert;
 public final class f
   implements com.tencent.mm.pluginsdk.b.a, n.b
 {
-  private am contact;
+  private an contact;
   Context context;
-  private Map<String, Preference> jjH;
+  private Map<String, Preference> jmA;
   private com.tencent.mm.ui.base.preference.f screen;
   
   public f(Context paramContext)
   {
     AppMethodBeat.i(27127);
-    this.jjH = new HashMap();
+    this.jmA = new HashMap();
     this.context = paramContext;
-    ba.aBQ();
-    c.azv().aTB("facebookapp");
+    bc.aCg();
+    c.azL().aVc("facebookapp");
     AppMethodBeat.o(27127);
   }
   
-  private void cdo()
+  private void ceD()
   {
     AppMethodBeat.i(27131);
     this.screen.removeAll();
     Object localObject;
-    if (this.jjH.containsKey("contact_info_header_helper"))
+    if (this.jmA.containsKey("contact_info_header_helper"))
     {
-      localObject = (HelperHeaderPreference)this.jjH.get("contact_info_header_helper");
+      localObject = (HelperHeaderPreference)this.jmA.get("contact_info_header_helper");
       this.screen.b((Preference)localObject);
-      ((HelperHeaderPreference)localObject).aZ(this.contact.field_username, this.contact.adu(), this.context.getString(2131757661));
+      ((HelperHeaderPreference)localObject).ba(this.contact.field_username, this.contact.adF(), this.context.getString(2131757661));
       if (!isOpen()) {
         break label184;
       }
@@ -70,45 +70,45 @@ public final class f
     for (int i = 1;; i = 0)
     {
       ((HelperHeaderPreference)localObject).updateStatus(i);
-      if (this.jjH.containsKey("contact_info_facebookapp_cat")) {
-        this.screen.b((Preference)this.jjH.get("contact_info_facebookapp_cat"));
+      if (this.jmA.containsKey("contact_info_facebookapp_cat")) {
+        this.screen.b((Preference)this.jmA.get("contact_info_facebookapp_cat"));
       }
       if (isOpen()) {
         break;
       }
-      if (this.jjH.containsKey("contact_info_facebookapp_install")) {
-        this.screen.b((Preference)this.jjH.get("contact_info_facebookapp_install"));
+      if (this.jmA.containsKey("contact_info_facebookapp_install")) {
+        this.screen.b((Preference)this.jmA.get("contact_info_facebookapp_install"));
       }
       AppMethodBeat.o(27131);
       return;
     }
-    if (this.jjH.containsKey("contact_info_facebookapp_account"))
+    if (this.jmA.containsKey("contact_info_facebookapp_account"))
     {
-      localObject = (Preference)this.jjH.get("contact_info_facebookapp_account");
+      localObject = (Preference)this.jmA.get("contact_info_facebookapp_account");
       this.screen.b((Preference)localObject);
-      if (!u.aAS()) {
+      if (!v.aBi()) {
         break label390;
       }
       ((Preference)localObject).setSummary(2131763099);
     }
     for (;;)
     {
-      if (u.aAS())
+      if (v.aBi())
       {
-        com.tencent.mm.ax.b.aJm();
-        if (this.jjH.containsKey("contact_info_facebookapp_addr"))
+        com.tencent.mm.aw.b.aJE();
+        if (this.jmA.containsKey("contact_info_facebookapp_addr"))
         {
-          localObject = (Preference)this.jjH.get("contact_info_facebookapp_addr");
+          localObject = (Preference)this.jmA.get("contact_info_facebookapp_addr");
           this.screen.b((Preference)localObject);
-          ba.aBQ();
-          ((Preference)localObject).setSummary((String)c.ajl().get(65826, null));
+          bc.aCg();
+          ((Preference)localObject).setSummary((String)c.ajA().get(65826, null));
         }
       }
-      if (this.jjH.containsKey("contact_info_facebookapp_cat2")) {
-        this.screen.b((Preference)this.jjH.get("contact_info_facebookapp_cat2"));
+      if (this.jmA.containsKey("contact_info_facebookapp_cat2")) {
+        this.screen.b((Preference)this.jmA.get("contact_info_facebookapp_cat2"));
       }
-      if (this.jjH.containsKey("contact_info_facebookapp_uninstall")) {
-        this.screen.b((Preference)this.jjH.get("contact_info_facebookapp_uninstall"));
+      if (this.jmA.containsKey("contact_info_facebookapp_uninstall")) {
+        this.screen.b((Preference)this.jmA.get("contact_info_facebookapp_uninstall"));
       }
       AppMethodBeat.o(27131);
       return;
@@ -120,7 +120,7 @@ public final class f
   private static boolean isOpen()
   {
     AppMethodBeat.i(27130);
-    if ((u.aAy() & 0x2000) == 0)
+    if ((v.aAO() & 0x2000) == 0)
     {
       AppMethodBeat.o(27130);
       return true;
@@ -137,33 +137,33 @@ public final class f
     {
       paramContext.getString(2131755906);
       paramContext = com.tencent.mm.ui.base.h.b(paramContext, (String)localObject, true, null);
-      localObject = new ap()
+      localObject = new aq()
       {
         public final void handleMessage(Message paramAnonymousMessage)
         {
           AppMethodBeat.i(27125);
-          int i = u.aAy();
-          if (this.prx) {
+          int i = v.aAO();
+          if (this.pyd) {
             i &= 0xFFFFDFFF;
           }
           for (;;)
           {
-            ba.aBQ();
-            c.ajl().set(34, Integer.valueOf(i));
-            ba.aBQ();
-            c.azo().c(new com.tencent.mm.bb.l("", "", "", "", "", "", "", "", i, "", ""));
-            if (!this.prx)
+            bc.aCg();
+            c.ajA().set(34, Integer.valueOf(i));
+            bc.aCg();
+            c.azE().d(new com.tencent.mm.ba.l("", "", "", "", "", "", "", "", i, "", ""));
+            if (!this.pyd)
             {
-              com.tencent.mm.plugin.account.a.getFacebookFrdStg().aSJ();
-              ba.aBQ();
-              c.ajl().set(65828, "");
-              ba.aBQ();
-              c.azv().aTx("facebookapp");
-              ba.aBQ();
-              c.azs().aqe("facebookapp");
+              com.tencent.mm.plugin.account.a.getFacebookFrdStg().aTi();
+              bc.aCg();
+              c.ajA().set(65828, "");
+              bc.aCg();
+              c.azL().aUY("facebookapp");
+              bc.aCg();
+              c.azI().arj("facebookapp");
             }
-            if (this.vHr != null) {
-              this.vHr.a(null, null);
+            if (this.vTv != null) {
+              this.vTv.a(null, null);
             }
             AppMethodBeat.o(27125);
             return;
@@ -176,10 +176,10 @@ public final class f
         public final void run()
         {
           AppMethodBeat.i(27126);
-          if (this.pgW != null)
+          if (this.pnC != null)
           {
-            this.pgW.dismiss();
-            this.uDu.sendEmptyMessage(0);
+            this.pnC.dismiss();
+            this.uOZ.sendEmptyMessage(0);
           }
           AppMethodBeat.o(27126);
         }
@@ -192,12 +192,12 @@ public final class f
   public final void a(int paramInt, n paramn, Object paramObject)
   {
     AppMethodBeat.i(27134);
-    int i = bt.m(paramObject, 0);
-    ad.d("MicroMsg.ContactWidgetFacebookapp", "onNotifyChange event:%d obj:%d stg:%s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i), paramn });
-    ba.aBQ();
-    if ((paramn != c.ajl()) || (i <= 0))
+    int i = bu.m(paramObject, 0);
+    ae.d("MicroMsg.ContactWidgetFacebookapp", "onNotifyChange event:%d obj:%d stg:%s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i), paramn });
+    bc.aCg();
+    if ((paramn != c.ajA()) || (i <= 0))
     {
-      ad.e("MicroMsg.ContactWidgetFacebookapp", "onNotifyChange error obj:%d stg:%s", new Object[] { Integer.valueOf(i), paramn });
+      ae.e("MicroMsg.ContactWidgetFacebookapp", "onNotifyChange error obj:%d stg:%s", new Object[] { Integer.valueOf(i), paramn });
       AppMethodBeat.o(27134);
       return;
     }
@@ -206,11 +206,11 @@ public final class f
       AppMethodBeat.o(27134);
       return;
     }
-    cdo();
+    ceD();
     AppMethodBeat.o(27134);
   }
   
-  public final boolean a(com.tencent.mm.ui.base.preference.f paramf, am paramam, boolean paramBoolean, int paramInt)
+  public final boolean a(com.tencent.mm.ui.base.preference.f paramf, an paraman, boolean paramBoolean, int paramInt)
   {
     boolean bool = false;
     AppMethodBeat.i(27129);
@@ -219,59 +219,59 @@ public final class f
     {
       Assert.assertTrue(paramBoolean);
       paramBoolean = bool;
-      if (paramam != null) {
+      if (paraman != null) {
         paramBoolean = true;
       }
       Assert.assertTrue(paramBoolean);
-      Assert.assertTrue(w.zM(paramam.field_username));
-      ba.aBQ();
-      c.ajl().a(this);
-      this.contact = paramam;
+      Assert.assertTrue(x.Aw(paraman.field_username));
+      bc.aCg();
+      c.ajA().a(this);
+      this.contact = paraman;
       this.screen = paramf;
       paramf.addPreferencesFromResource(2131951639);
-      paramam = paramf.aVD("contact_info_header_helper");
-      if (paramam != null) {
-        this.jjH.put("contact_info_header_helper", paramam);
+      paraman = paramf.aXe("contact_info_header_helper");
+      if (paraman != null) {
+        this.jmA.put("contact_info_header_helper", paraman);
       }
-      paramam = paramf.aVD("contact_info_facebookapp_listfriend");
-      if (paramam != null) {
-        this.jjH.put("contact_info_facebookapp_listfriend", paramam);
+      paraman = paramf.aXe("contact_info_facebookapp_listfriend");
+      if (paraman != null) {
+        this.jmA.put("contact_info_facebookapp_listfriend", paraman);
       }
-      paramam = paramf.aVD("contact_info_facebookapp_account");
-      if (paramam != null) {
-        this.jjH.put("contact_info_facebookapp_account", paramam);
+      paraman = paramf.aXe("contact_info_facebookapp_account");
+      if (paraman != null) {
+        this.jmA.put("contact_info_facebookapp_account", paraman);
       }
-      paramam = (PreferenceCategory)paramf.aVD("contact_info_facebookapp_cat");
-      if (paramam != null) {
-        this.jjH.put("contact_info_facebookapp_cat", paramam);
+      paraman = (PreferenceCategory)paramf.aXe("contact_info_facebookapp_cat");
+      if (paraman != null) {
+        this.jmA.put("contact_info_facebookapp_cat", paraman);
       }
-      paramam = paramf.aVD("contact_info_facebookapp_addr");
-      if (paramam != null) {
-        this.jjH.put("contact_info_facebookapp_addr", paramam);
+      paraman = paramf.aXe("contact_info_facebookapp_addr");
+      if (paraman != null) {
+        this.jmA.put("contact_info_facebookapp_addr", paraman);
       }
-      paramam = (PreferenceCategory)paramf.aVD("contact_info_facebookapp_cat2");
-      if (paramam != null) {
-        this.jjH.put("contact_info_facebookapp_cat2", paramam);
+      paraman = (PreferenceCategory)paramf.aXe("contact_info_facebookapp_cat2");
+      if (paraman != null) {
+        this.jmA.put("contact_info_facebookapp_cat2", paraman);
       }
-      paramam = paramf.aVD("contact_info_facebookapp_install");
-      if (paramam != null) {
-        this.jjH.put("contact_info_facebookapp_install", paramam);
+      paraman = paramf.aXe("contact_info_facebookapp_install");
+      if (paraman != null) {
+        this.jmA.put("contact_info_facebookapp_install", paraman);
       }
-      paramf = paramf.aVD("contact_info_facebookapp_uninstall");
+      paramf = paramf.aXe("contact_info_facebookapp_uninstall");
       if (paramf != null) {
-        this.jjH.put("contact_info_facebookapp_uninstall", paramf);
+        this.jmA.put("contact_info_facebookapp_uninstall", paramf);
       }
-      cdo();
+      ceD();
       AppMethodBeat.o(27129);
       return true;
     }
   }
   
-  public final boolean aaG(String paramString)
+  public final boolean abx(String paramString)
   {
     AppMethodBeat.i(27128);
-    ad.d("MicroMsg.ContactWidgetFacebookapp", "handleEvent : key = ".concat(String.valueOf(paramString)));
-    if (bt.nullAsNil(paramString).length() <= 0)
+    ae.d("MicroMsg.ContactWidgetFacebookapp", "handleEvent : key = ".concat(String.valueOf(paramString)));
+    if (bu.nullAsNil(paramString).length() <= 0)
     {
       AppMethodBeat.o(27128);
       return false;
@@ -301,8 +301,8 @@ public final class f
       Object localObject = new Intent(this.context, FacebookFriendUI.class);
       paramString = this.context;
       localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
-      com.tencent.mm.hellhoundlib.a.a.a(paramString, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahp(), "com/tencent/mm/plugin/profile/ui/ContactWidgetFacebookapp", "handleEvent", "(Ljava/lang/String;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramString.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mq(0));
+      com.tencent.mm.hellhoundlib.a.a.a(paramString, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahE(), "com/tencent/mm/plugin/profile/ui/ContactWidgetFacebookapp", "handleEvent", "(Ljava/lang/String;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramString.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mt(0));
       com.tencent.mm.hellhoundlib.a.a.a(paramString, "com/tencent/mm/plugin/profile/ui/ContactWidgetFacebookapp", "handleEvent", "(Ljava/lang/String;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       AppMethodBeat.o(27128);
       return true;
@@ -319,17 +319,17 @@ public final class f
       AppMethodBeat.o(27128);
       return true;
     }
-    ad.e("MicroMsg.ContactWidgetFacebookapp", "handleEvent : unExpected key = ".concat(String.valueOf(paramString)));
+    ae.e("MicroMsg.ContactWidgetFacebookapp", "handleEvent : unExpected key = ".concat(String.valueOf(paramString)));
     AppMethodBeat.o(27128);
     return false;
   }
   
-  public final boolean cdn()
+  public final boolean ceC()
   {
     AppMethodBeat.i(27133);
-    ba.aBQ();
-    c.ajl().b(this);
-    com.tencent.mm.plugin.profile.b.iRH.MR();
+    bc.aCg();
+    c.ajA().b(this);
+    com.tencent.mm.plugin.profile.b.iUA.MM();
     AppMethodBeat.o(27133);
     return true;
   }

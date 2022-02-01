@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.backup.j;
 
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ak;
 
 final class a$7$1
   implements Runnable
@@ -12,7 +12,7 @@ final class a$7$1
   public final void run()
   {
     AppMethodBeat.i(22150);
-    Toast.makeText(aj.getContext(), "test open", 0).show();
+    Toast.makeText(ak.getContext(), "test open", 0).show();
     AppMethodBeat.o(22150);
   }
 }

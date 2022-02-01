@@ -6,24 +6,24 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.game.h.a;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "T", "<anonymous parameter 0>", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "<anonymous parameter 1>", "", "onClick"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "T", "<anonymous parameter 0>", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "<anonymous parameter 1>", "", "onClick"})
 final class t$c
   implements DialogInterface.OnClickListener
 {
-  public static final c klc;
+  public static final c kos;
   
   static
   {
     AppMethodBeat.i(50394);
-    klc = new c();
+    kos = new c();
     AppMethodBeat.o(50394);
   }
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     AppMethodBeat.i(50393);
-    paramDialogInterface = a.koB;
-    a.bhF();
+    paramDialogInterface = a.krR;
+    a.bin();
     a.suicide();
     AppMethodBeat.o(50393);
   }

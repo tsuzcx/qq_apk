@@ -106,7 +106,7 @@ public final class d
   }
   
   /* Error */
-  public static String ai(File paramFile)
+  public static String ah(File paramFile)
   {
     // Byte code:
     //   0: ldc 49
@@ -317,7 +317,7 @@ public final class d
     }
   }
   
-  public static boolean nh(String paramString1, String paramString2)
+  public static boolean nn(String paramString1, String paramString2)
   {
     AppMethodBeat.i(157007);
     paramString1 = getMD5(paramString1);
@@ -383,7 +383,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.xweb.util.d
  * JD-Core Version:    0.7.0.1
  */

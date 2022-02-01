@@ -10,25 +10,25 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 final class bg
   extends c.a
 {
-  protected TextView Khe;
-  protected TextView Khf;
-  protected Button Khg;
-  protected Button Khh;
-  protected ImageView Khi;
-  protected TextView iCV;
+  protected TextView KDA;
+  protected Button KDB;
+  protected Button KDC;
+  protected ImageView KDD;
+  protected TextView KDz;
+  protected TextView iFO;
   
-  public final bg gM(View paramView)
+  public final bg gR(View paramView)
   {
     AppMethodBeat.i(37551);
-    super.gn(paramView);
-    this.iCV = ((TextView)paramView.findViewById(2131298026));
-    this.Khe = ((TextView)paramView.findViewById(2131298025));
-    this.Khf = ((TextView)paramView.findViewById(2131298048));
-    this.Khg = ((Button)paramView.findViewById(2131298137));
-    this.Khh = ((Button)paramView.findViewById(2131298136));
-    this.Khi = ((ImageView)paramView.findViewById(2131298179));
-    this.iCK = ((CheckBox)paramView.findViewById(2131298068));
-    this.gZU = paramView.findViewById(2131298147);
+    super.gs(paramView);
+    this.iFO = ((TextView)paramView.findViewById(2131298026));
+    this.KDz = ((TextView)paramView.findViewById(2131298025));
+    this.KDA = ((TextView)paramView.findViewById(2131298048));
+    this.KDB = ((Button)paramView.findViewById(2131298137));
+    this.KDC = ((Button)paramView.findViewById(2131298136));
+    this.KDD = ((ImageView)paramView.findViewById(2131298179));
+    this.iFD = ((CheckBox)paramView.findViewById(2131298068));
+    this.hcH = paramView.findViewById(2131298147);
     AppMethodBeat.o(37551);
     return this;
   }

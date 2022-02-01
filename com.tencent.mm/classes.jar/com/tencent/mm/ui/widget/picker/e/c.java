@@ -8,57 +8,57 @@ import java.util.TimerTask;
 public final class c
   extends TimerTask
 {
-  private final WheelView Lcm;
-  private int iKy;
-  private int iKz;
+  private final WheelView LyN;
+  private int iNr;
+  private int iNs;
   private int offset;
   
   public c(WheelView paramWheelView, int paramInt)
   {
-    this.Lcm = paramWheelView;
+    this.LyN = paramWheelView;
     this.offset = paramInt;
-    this.iKy = 2147483647;
-    this.iKz = 0;
+    this.iNr = 2147483647;
+    this.iNs = 0;
   }
   
   public final void run()
   {
-    AppMethodBeat.i(192793);
-    if (this.iKy == 2147483647) {
-      this.iKy = this.offset;
+    AppMethodBeat.i(200566);
+    if (this.iNr == 2147483647) {
+      this.iNr = this.offset;
     }
-    this.iKz = ((int)(this.iKy * 0.1F));
-    if (this.iKz == 0) {
-      if (this.iKy >= 0) {
+    this.iNs = ((int)(this.iNr * 0.1F));
+    if (this.iNs == 0) {
+      if (this.iNr >= 0) {
         break label92;
       }
     }
     label92:
-    for (this.iKz = -1; Math.abs(this.iKy) <= 1; this.iKz = 1)
+    for (this.iNs = -1; Math.abs(this.iNr) <= 1; this.iNs = 1)
     {
-      this.Lcm.aPQ();
-      this.Lcm.getHandler().sendEmptyMessage(3000);
-      AppMethodBeat.o(192793);
+      this.LyN.aQp();
+      this.LyN.getHandler().sendEmptyMessage(3000);
+      AppMethodBeat.o(200566);
       return;
     }
-    this.Lcm.setTotalScrollY(this.Lcm.getTotalScrollY() + this.iKz);
-    if (!this.Lcm.isd)
+    this.LyN.setTotalScrollY(this.LyN.getTotalScrollY() + this.iNs);
+    if (!this.LyN.iuX)
     {
-      float f1 = this.Lcm.getItemHeight();
-      float f2 = -this.Lcm.getInitPosition();
-      float f3 = this.Lcm.getItemsCount() - 1 - this.Lcm.getInitPosition();
-      if ((this.Lcm.getTotalScrollY() <= f2 * f1) || (this.Lcm.getTotalScrollY() >= f1 * f3))
+      float f1 = this.LyN.getItemHeight();
+      float f2 = -this.LyN.getInitPosition();
+      float f3 = this.LyN.getItemsCount() - 1 - this.LyN.getInitPosition();
+      if ((this.LyN.getTotalScrollY() <= f2 * f1) || (this.LyN.getTotalScrollY() >= f1 * f3))
       {
-        this.Lcm.setTotalScrollY(this.Lcm.getTotalScrollY() - this.iKz);
-        this.Lcm.aPQ();
-        this.Lcm.getHandler().sendEmptyMessage(3000);
-        AppMethodBeat.o(192793);
+        this.LyN.setTotalScrollY(this.LyN.getTotalScrollY() - this.iNs);
+        this.LyN.aQp();
+        this.LyN.getHandler().sendEmptyMessage(3000);
+        AppMethodBeat.o(200566);
         return;
       }
     }
-    this.Lcm.getHandler().sendEmptyMessage(1000);
-    this.iKy -= this.iKz;
-    AppMethodBeat.o(192793);
+    this.LyN.getHandler().sendEmptyMessage(1000);
+    this.iNr -= this.iNs;
+    AppMethodBeat.o(200566);
   }
 }
 

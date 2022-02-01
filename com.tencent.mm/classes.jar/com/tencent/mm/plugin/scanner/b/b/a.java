@@ -1,39 +1,39 @@
 package com.tencent.mm.plugin.scanner.b.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.od;
-import com.tencent.mm.protocal.protobuf.oe;
+import com.tencent.mm.protocal.protobuf.of;
+import com.tencent.mm.protocal.protobuf.og;
 
 public final class a
   extends n
   implements k
 {
   private f callback;
-  public String dyV;
-  public com.tencent.mm.al.b rr;
+  public String dAa;
+  public com.tencent.mm.ak.b rr;
   
   public a(String paramString, byte[] paramArrayOfByte, int paramInt)
   {
     AppMethodBeat.i(118333);
-    this.dyV = paramString;
+    this.dAa = paramString;
     b.a locala = new b.a();
     locala.funcId = getType();
-    od localod = new od();
-    localod.FEU = new com.tencent.mm.bx.b(paramArrayOfByte);
-    localod.FEX = paramString;
-    localod.FJt = 3;
-    localod.dnh = 101;
-    localod.FBz = paramInt;
-    locala.hNM = localod;
+    of localof = new of();
+    localof.FXp = new com.tencent.mm.bw.b(paramArrayOfByte);
+    localof.FXs = paramString;
+    localof.GbS = 3;
+    localof.doj = 101;
+    localof.FTU = paramInt;
+    locala.hQF = localof;
     locala.uri = "/cgi-bin/mmpay-bin/ocrgetbankcardinfo";
-    locala.hNN = new oe();
-    this.rr = locala.aDC();
+    locala.hQG = new og();
+    this.rr = locala.aDS();
     AppMethodBeat.o(118333);
   }
   

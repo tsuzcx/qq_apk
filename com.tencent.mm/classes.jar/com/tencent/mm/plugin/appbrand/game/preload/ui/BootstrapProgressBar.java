@@ -22,43 +22,43 @@ import android.view.View;
 import android.view.View.MeasureSpec;
 import android.view.animation.LinearInterpolator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public class BootstrapProgressBar
   extends View
   implements Animator.AnimatorListener, ValueAnimator.AnimatorUpdateListener
 {
-  private ValueAnimator knA;
-  private Paint knB;
-  private Canvas knC;
-  private Bitmap knD;
-  private Bitmap knE;
-  private int knF;
-  private Paint knp;
-  private Paint knq;
-  private Paint knr;
-  private float kns;
-  private float knt;
-  private float knu;
-  private boolean knv;
-  private boolean knw;
-  private boolean knx;
-  private boolean kny;
-  private boolean knz;
+  private Paint kqF;
+  private Paint kqG;
+  private Paint kqH;
+  private float kqI;
+  private float kqJ;
+  private float kqK;
+  private boolean kqL;
+  private boolean kqM;
+  private boolean kqN;
+  private boolean kqO;
+  private boolean kqP;
+  private ValueAnimator kqQ;
+  private Paint kqR;
+  private Canvas kqS;
+  private Bitmap kqT;
+  private Bitmap kqU;
+  private int kqV;
   
   public BootstrapProgressBar(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(45297);
-    this.kns = 0.0F;
-    this.knt = 0.0F;
-    this.knu = 100.0F;
-    this.knv = false;
-    this.knw = false;
-    this.knx = true;
-    this.kny = true;
-    this.knz = true;
-    bhA();
+    this.kqI = 0.0F;
+    this.kqJ = 0.0F;
+    this.kqK = 100.0F;
+    this.kqL = false;
+    this.kqM = false;
+    this.kqN = true;
+    this.kqO = true;
+    this.kqP = true;
+    bii();
     AppMethodBeat.o(45297);
   }
   
@@ -66,53 +66,53 @@ public class BootstrapProgressBar
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(45298);
-    this.kns = 0.0F;
-    this.knt = 0.0F;
-    this.knu = 100.0F;
-    this.knv = false;
-    this.knw = false;
-    this.knx = true;
-    this.kny = true;
-    this.knz = true;
-    bhA();
+    this.kqI = 0.0F;
+    this.kqJ = 0.0F;
+    this.kqK = 100.0F;
+    this.kqL = false;
+    this.kqM = false;
+    this.kqN = true;
+    this.kqO = true;
+    this.kqP = true;
+    bii();
     AppMethodBeat.o(45298);
   }
   
-  private void bhA()
+  private void bii()
   {
     AppMethodBeat.i(45299);
-    ad.d("BootstrapProgressBar", "initialise");
+    ae.d("BootstrapProgressBar", "initialise");
     ValueAnimator.setFrameDelay(15L);
-    this.knB = new Paint();
-    this.knp = new Paint();
-    this.knp.setStyle(Paint.Style.FILL);
-    this.knp.setAntiAlias(true);
-    this.knq = new Paint();
-    this.knq.setStyle(Paint.Style.FILL);
-    this.knq.setAntiAlias(true);
-    this.knr = new Paint();
-    this.knr.setStyle(Paint.Style.FILL);
-    this.knr.setARGB(38, 0, 0, 0);
-    setProgress(this.kns);
-    setMaxProgress(this.knu);
+    this.kqR = new Paint();
+    this.kqF = new Paint();
+    this.kqF.setStyle(Paint.Style.FILL);
+    this.kqF.setAntiAlias(true);
+    this.kqG = new Paint();
+    this.kqG.setStyle(Paint.Style.FILL);
+    this.kqG.setAntiAlias(true);
+    this.kqH = new Paint();
+    this.kqH.setStyle(Paint.Style.FILL);
+    this.kqH.setARGB(38, 0, 0, 0);
+    setProgress(this.kqI);
+    setMaxProgress(this.kqK);
     AppMethodBeat.o(45299);
   }
   
-  private void bhB()
+  private void bij()
   {
     AppMethodBeat.i(45303);
-    if ((!this.knv) || (!this.knw))
+    if ((!this.kqL) || (!this.kqM))
     {
       AppMethodBeat.o(45303);
       return;
     }
     clearAnimation();
-    this.knA = ValueAnimator.ofFloat(new float[] { 0.0F, 0.0F });
-    this.knA.setDuration(300L);
-    this.knA.setRepeatCount(-1);
-    this.knA.setRepeatMode(1);
-    this.knA.setInterpolator(new LinearInterpolator());
-    this.knA.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
+    this.kqQ = ValueAnimator.ofFloat(new float[] { 0.0F, 0.0F });
+    this.kqQ.setDuration(300L);
+    this.kqQ.setRepeatCount(-1);
+    this.kqQ.setRepeatMode(1);
+    this.kqQ.setInterpolator(new LinearInterpolator());
+    this.kqQ.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
     {
       public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
       {
@@ -121,18 +121,18 @@ public class BootstrapProgressBar
         AppMethodBeat.o(45296);
       }
     });
-    this.knA.start();
+    this.kqQ.start();
     AppMethodBeat.o(45303);
   }
   
   public float getMaxProgress()
   {
-    return this.knu;
+    return this.kqK;
   }
   
   public float getProgress()
   {
-    return this.kns;
+    return this.kqI;
   }
   
   public void onAnimationCancel(Animator paramAnimator) {}
@@ -140,7 +140,7 @@ public class BootstrapProgressBar
   public void onAnimationEnd(Animator paramAnimator)
   {
     AppMethodBeat.i(45302);
-    bhB();
+    bij();
     AppMethodBeat.o(45302);
   }
   
@@ -151,7 +151,7 @@ public class BootstrapProgressBar
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
     AppMethodBeat.i(45301);
-    this.knt = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.kqJ = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
     invalidate();
     AppMethodBeat.o(45301);
   }
@@ -166,45 +166,45 @@ public class BootstrapProgressBar
       AppMethodBeat.o(45306);
       return;
     }
-    if (this.knD == null) {
-      this.knD = Bitmap.createBitmap((int)f3, (int)f4, Bitmap.Config.ARGB_8888);
+    if (this.kqT == null) {
+      this.kqT = Bitmap.createBitmap((int)f3, (int)f4, Bitmap.Config.ARGB_8888);
     }
-    if (this.knC == null) {
-      this.knC = new Canvas(this.knD);
+    if (this.kqS == null) {
+      this.kqS = new Canvas(this.kqT);
     }
-    this.knC.drawColor(0, PorterDuff.Mode.CLEAR);
-    float f5 = this.kns / this.knu;
+    this.kqS.drawColor(0, PorterDuff.Mode.CLEAR);
+    float f5 = this.kqI / this.kqK;
     int i = (int)(f3 * f5);
     float f2 = 0.0F;
     float f6 = (float)(System.currentTimeMillis() % 370L) / 370.0F;
     float f1 = f2;
-    if (this.knv)
+    if (this.kqL)
     {
       f1 = f2;
-      if (this.knw) {
+      if (this.kqM) {
         f1 = 2.0F * f4 * (1.0F - f6);
       }
     }
     if (f5 < 1.0F)
     {
-      this.knC.save();
+      this.kqS.save();
       localObject1 = new Path();
       ((Path)localObject1).moveTo(0.0F, 0.0F);
       ((Path)localObject1).lineTo(i, 0.0F);
       ((Path)localObject1).lineTo(i - f4, f4);
       ((Path)localObject1).lineTo(0.0F, f4);
-      this.knC.clipPath((Path)localObject1);
+      this.kqS.clipPath((Path)localObject1);
     }
     Object localObject2;
     Object localObject3;
     Object localObject4;
     Object localObject5;
-    if (this.knv)
+    if (this.kqL)
     {
-      if (this.knE == null)
+      if (this.kqU == null)
       {
-        localObject1 = this.knq;
-        localObject2 = this.knp;
+        localObject1 = this.kqG;
+        localObject2 = this.kqF;
         localObject3 = Bitmap.createBitmap((int)f4 * 2, (int)f4, Bitmap.Config.ARGB_8888);
         localObject4 = new Canvas((Bitmap)localObject3);
         localObject5 = new Path();
@@ -224,28 +224,28 @@ public class BootstrapProgressBar
         ((Path)localObject5).lineTo(f2 - f4, f4);
         ((Path)localObject5).lineTo(f2, f4);
         ((Canvas)localObject4).drawPath((Path)localObject5, (Paint)localObject1);
-        this.knE = ((Bitmap)localObject3);
+        this.kqU = ((Bitmap)localObject3);
       }
-      for (f1 = 0.0F - f1; f1 < i; f1 += this.knE.getWidth()) {
-        this.knC.drawBitmap(this.knE, f1, 0.0F, this.knB);
+      for (f1 = 0.0F - f1; f1 < i; f1 += this.kqU.getWidth()) {
+        this.kqS.drawBitmap(this.kqU, f1, 0.0F, this.kqR);
       }
     }
-    this.knC.drawRect(0.0F, 0.0F, i, f4, this.knp);
+    this.kqS.drawRect(0.0F, 0.0F, i, f4, this.kqF);
     if (f5 < 1.0F) {
-      this.knC.restore();
+      this.kqS.restore();
     }
     Object localObject1 = new Path();
     ((Path)localObject1).moveTo(0.0F, 0.0F);
     ((Path)localObject1).lineTo(f3, 0.0F);
     ((Path)localObject1).lineTo(f3, f4);
     ((Path)localObject1).lineTo(0.0F, f4);
-    this.knC.drawPath((Path)localObject1, this.knr);
-    if (this.knx) {}
+    this.kqS.drawPath((Path)localObject1, this.kqH);
+    if (this.kqN) {}
     for (f1 = f4 / 2.0F;; f1 = 0.0F)
     {
-      localObject1 = this.knD;
-      boolean bool1 = this.knz;
-      boolean bool2 = this.kny;
+      localObject1 = this.kqT;
+      boolean bool1 = this.kqP;
+      boolean bool2 = this.kqO;
       localObject2 = Bitmap.createBitmap(((Bitmap)localObject1).getWidth(), ((Bitmap)localObject1).getHeight(), Bitmap.Config.ARGB_8888);
       localObject3 = new Canvas((Bitmap)localObject2);
       localObject4 = new Paint();
@@ -265,7 +265,7 @@ public class BootstrapProgressBar
       }
       ((Paint)localObject4).setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
       ((Canvas)localObject3).drawBitmap((Bitmap)localObject1, (Rect)localObject5, (Rect)localObject5, (Paint)localObject4);
-      paramCanvas.drawBitmap((Bitmap)localObject2, 0.0F, 0.0F, this.knB);
+      paramCanvas.drawBitmap((Bitmap)localObject2, 0.0F, 0.0F, this.kqR);
       AppMethodBeat.o(45306);
       return;
     }
@@ -282,7 +282,7 @@ public class BootstrapProgressBar
   {
     AppMethodBeat.i(45305);
     if (paramInt2 != paramInt4) {
-      this.knE = null;
+      this.kqU = null;
     }
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     AppMethodBeat.o(45305);
@@ -291,9 +291,9 @@ public class BootstrapProgressBar
   public void setAnimated(boolean paramBoolean)
   {
     AppMethodBeat.i(45309);
-    this.knw = paramBoolean;
+    this.kqM = paramBoolean;
     invalidate();
-    bhB();
+    bij();
     AppMethodBeat.o(45309);
   }
   
@@ -302,7 +302,7 @@ public class BootstrapProgressBar
     AppMethodBeat.i(45310);
     if (getProgress() <= paramFloat)
     {
-      this.knu = paramFloat;
+      this.kqK = paramFloat;
       invalidate();
       AppMethodBeat.o(45310);
       return;
@@ -322,27 +322,27 @@ public class BootstrapProgressBar
     }
     for (;;)
     {
-      this.kns = f;
-      if (!this.knw) {
+      this.kqI = f;
+      if (!this.kqM) {
         break;
       }
       clearAnimation();
-      this.knA = ValueAnimator.ofFloat(new float[] { this.knt, this.kns });
-      this.knA.setDuration(300L);
-      this.knA.setRepeatCount(0);
-      this.knA.setRepeatMode(1);
-      this.knA.setInterpolator(new LinearInterpolator());
-      this.knA.addUpdateListener(this);
-      this.knA.addListener(this);
-      this.knA.start();
+      this.kqQ = ValueAnimator.ofFloat(new float[] { this.kqJ, this.kqI });
+      this.kqQ.setDuration(300L);
+      this.kqQ.setRepeatCount(0);
+      this.kqQ.setRepeatMode(1);
+      this.kqQ.setInterpolator(new LinearInterpolator());
+      this.kqQ.addUpdateListener(this);
+      this.kqQ.addListener(this);
+      this.kqQ.start();
       AppMethodBeat.o(45307);
       return;
       f = paramFloat;
-      if (paramFloat > this.knu) {
+      if (paramFloat > this.kqK) {
         f = 100.0F;
       }
     }
-    this.knt = f;
+    this.kqJ = f;
     invalidate();
     AppMethodBeat.o(45307);
   }
@@ -350,14 +350,14 @@ public class BootstrapProgressBar
   public void setProgressColor(int paramInt)
   {
     AppMethodBeat.i(45300);
-    this.knF = paramInt;
-    this.knp.setColor(this.knF);
-    Paint localPaint = this.knq;
-    paramInt = this.knF;
+    this.kqV = paramInt;
+    this.kqF.setColor(this.kqV);
+    Paint localPaint = this.kqG;
+    paramInt = this.kqV;
     localPaint.setColor(Color.rgb((int)(Color.red(paramInt) * 0.7F + Color.red(-16777216) * 0.3F) / 1, (int)(Color.green(paramInt) * 0.7F + Color.green(-16777216) * 0.3F) / 1, (int)(Color.blue(paramInt) * 0.7F + Color.blue(-16777216) * 0.3F) / 1));
-    this.knE = null;
-    this.knD = null;
-    this.knC = null;
+    this.kqU = null;
+    this.kqT = null;
+    this.kqS = null;
     invalidate();
     AppMethodBeat.o(45300);
   }
@@ -365,9 +365,9 @@ public class BootstrapProgressBar
   public void setStriped(boolean paramBoolean)
   {
     AppMethodBeat.i(45308);
-    this.knv = paramBoolean;
+    this.kqL = paramBoolean;
     invalidate();
-    bhB();
+    bij();
     AppMethodBeat.o(45308);
   }
 }

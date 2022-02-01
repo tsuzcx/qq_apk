@@ -6,7 +6,7 @@ public abstract interface a
 {
   public abstract void clear();
   
-  public abstract void dQa();
+  public abstract void dTx();
   
   public abstract void e(String paramString, boolean paramBoolean, int paramInt);
   
@@ -14,7 +14,7 @@ public abstract interface a
   
   public abstract String getVideoPath();
   
-  public abstract void hw(int paramInt1, int paramInt2);
+  public abstract void hy(int paramInt1, int paramInt2);
   
   public abstract void setCanPlay(boolean paramBoolean);
   
@@ -28,7 +28,7 @@ public abstract interface a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sight.decode.a.a
  * JD-Core Version:    0.7.0.1
  */

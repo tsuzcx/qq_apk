@@ -8,22 +8,22 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/jsapi/FunctionalJsApiPool;", "", "()V", "getPagePool", "", "", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandJsApi;", "getServicePool", "plugin-appbrand-integration_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/jsapi/FunctionalJsApiPool;", "", "()V", "getPagePool", "", "", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandJsApi;", "getServicePool", "plugin-appbrand-integration_release"})
 public final class j
 {
-  public static final j lPw;
+  public static final j lTX;
   
   static
   {
-    AppMethodBeat.i(189438);
-    lPw = new j();
-    AppMethodBeat.o(189438);
+    AppMethodBeat.i(223698);
+    lTX = new j();
+    AppMethodBeat.o(223698);
   }
   
-  public static final Map<String, m> bst()
+  public static final Map<String, m> bte()
   {
-    AppMethodBeat.i(189436);
-    Object localObject = new HashMap(q.bil());
+    AppMethodBeat.i(223696);
+    Object localObject = new HashMap(q.biU());
     Iterator localIterator = ((Iterable)d.a.j.listOf(new m[] { (m)new h(), (m)new i(), (m)new k() })).iterator();
     while (localIterator.hasNext())
     {
@@ -31,14 +31,14 @@ public final class j
       ((HashMap)localObject).put(localm.getName(), localm);
     }
     localObject = (Map)localObject;
-    AppMethodBeat.o(189436);
+    AppMethodBeat.o(223696);
     return localObject;
   }
   
-  public static final Map<String, m> bsu()
+  public static final Map<String, m> btf()
   {
-    AppMethodBeat.i(189437);
-    Object localObject = new HashMap(q.bim());
+    AppMethodBeat.i(223697);
+    Object localObject = new HashMap(q.biV());
     Iterator localIterator = ((Iterable)d.a.j.listOf(new m[] { (m)new h(), (m)new i(), (m)new k() })).iterator();
     while (localIterator.hasNext())
     {
@@ -46,13 +46,13 @@ public final class j
       ((HashMap)localObject).put(localm.getName(), localm);
     }
     localObject = (Map)localObject;
-    AppMethodBeat.o(189437);
+    AppMethodBeat.o(223697);
     return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.luggage.export.functionalpage.jsapi.j
  * JD-Core Version:    0.7.0.1
  */

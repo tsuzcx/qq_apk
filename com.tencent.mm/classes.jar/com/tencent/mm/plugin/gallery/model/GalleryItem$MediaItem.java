@@ -9,18 +9,18 @@ public abstract class GalleryItem$MediaItem
 {
   public double bXD = 91.0D;
   public double bXE = 181.0D;
-  public Object hNZ;
+  public Object hQS;
   public String mMimeType;
-  public String rmz;
-  public String tGS;
-  public String tGT;
-  public String tGU;
-  public long tGV;
-  public long tGW;
-  public long tGX;
-  public String tGY;
-  public boolean tGZ = false;
-  public HashMap<String, Object> tHa = new HashMap();
+  public String ruE;
+  public String tRJ;
+  public String tRK;
+  public String tRL;
+  public long tRM;
+  public long tRN;
+  public long tRO;
+  public String tRP;
+  public boolean tRQ = false;
+  public HashMap<String, Object> tRR = new HashMap();
   
   public GalleryItem$MediaItem()
   {
@@ -34,9 +34,9 @@ public abstract class GalleryItem$MediaItem
   
   public GalleryItem$MediaItem(long paramLong, String paramString1, String paramString2, String paramString3)
   {
-    this.tGV = paramLong;
-    this.tGS = paramString1;
-    this.rmz = paramString2;
+    this.tRM = paramLong;
+    this.tRJ = paramString1;
+    this.ruE = paramString2;
     this.mMimeType = paramString3;
   }
   
@@ -56,16 +56,16 @@ public abstract class GalleryItem$MediaItem
     return new GalleryItem.VideoMediaItem(paramLong);
   }
   
-  public final String aeA()
+  public final String aeM()
   {
-    return this.tGV + "_" + this.tGS.hashCode();
+    return this.tRM + "_" + this.tRJ.hashCode();
   }
   
-  public abstract String axA();
+  public abstract String axP();
   
-  public final String cVj()
+  public final String cXO()
   {
-    return this.tGS;
+    return this.tRJ;
   }
   
   public boolean equals(Object paramObject)
@@ -75,7 +75,7 @@ public abstract class GalleryItem$MediaItem
     if ((paramObject instanceof MediaItem))
     {
       paramObject = (MediaItem)paramObject;
-      if ((this.tGS == null) || (!this.tGS.equals(paramObject.tGS)))
+      if ((this.tRJ == null) || (!this.tRJ.equals(paramObject.tRJ)))
       {
         bool1 = bool2;
         if (this.mMimeType != null)
@@ -84,10 +84,10 @@ public abstract class GalleryItem$MediaItem
           if (this.mMimeType.equals("edit"))
           {
             bool1 = bool2;
-            if (this.tGT != null)
+            if (this.tRK != null)
             {
               bool1 = bool2;
-              if (!this.tGT.equals(paramObject.tGS)) {}
+              if (!this.tRK.equals(paramObject.tRJ)) {}
             }
           }
         }
@@ -104,12 +104,12 @@ public abstract class GalleryItem$MediaItem
   
   public final void s(String paramString, Object paramObject)
   {
-    this.tHa.put(paramString, paramObject);
+    this.tRR.put(paramString, paramObject);
   }
   
   public final <T> T t(String paramString, T paramT)
   {
-    paramString = this.tHa.get(paramString);
+    paramString = this.tRR.get(paramString);
     if (paramString != null) {
       paramT = paramString;
     }
@@ -118,17 +118,17 @@ public abstract class GalleryItem$MediaItem
   
   public final String toSimpleString()
   {
-    return this.tGV + " " + this.mMimeType + " " + this.tGW + " | " + this.tGX;
+    return this.tRM + " " + this.mMimeType + " " + this.tRN + " | " + this.tRO;
   }
   
   public String toString()
   {
-    return "MediaItem{mOriginalPath='" + this.tGS + '\'' + ", mThumbPath='" + this.rmz + '\'' + ", origId=" + this.tGV + ", generateDate=" + this.tGW + ", mMimeType='" + this.mMimeType + '\'' + ", mLongitude='" + this.bXE + '\'' + ", mLatitude='" + this.bXD + '\'' + ", mBusinessTag='" + this.tGY + '\'' + '}';
+    return "MediaItem{mOriginalPath='" + this.tRJ + '\'' + ", mThumbPath='" + this.ruE + '\'' + ", origId=" + this.tRM + ", generateDate=" + this.tRN + ", mMimeType='" + this.mMimeType + '\'' + ", mLongitude='" + this.bXE + '\'' + ", mLatitude='" + this.bXD + '\'' + ", mBusinessTag='" + this.tRP + '\'' + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.gallery.model.GalleryItem.MediaItem
  * JD-Core Version:    0.7.0.1
  */

@@ -3,19 +3,19 @@ package com.tencent.mm.videocomposition.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(gfx={1, 1, 15}, gfy={""}, gfz={"Lcom/tencent/mm/videocomposition/render/PerformanceTick;", "", "tag", "", "(Ljava/lang/String;)V", "getTag", "()Ljava/lang/String;", "thisStartTime", "", "totalCount", "totalTime", "averageRenderCostLog", "end", "", "start", "video_composition_release"})
+@l(gjZ={1, 1, 15}, gka={""}, gkb={"Lcom/tencent/mm/videocomposition/render/PerformanceTick;", "", "tag", "", "(Ljava/lang/String;)V", "getTag", "()Ljava/lang/String;", "thisStartTime", "", "totalCount", "totalTime", "averageRenderCostLog", "end", "", "start", "video_composition_release"})
 public final class d
 {
-  long Lnv;
-  long dcg;
-  long rTp;
+  long LKg;
+  long ddi;
+  long sbT;
   final String tag;
   
   public d(String paramString)
   {
-    AppMethodBeat.i(220906);
+    AppMethodBeat.i(195041);
     this.tag = paramString;
-    AppMethodBeat.o(220906);
+    AppMethodBeat.o(195041);
   }
 }
 

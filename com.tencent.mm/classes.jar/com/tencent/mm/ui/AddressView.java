@@ -25,8 +25,8 @@ import android.view.accessibility.AccessibilityNodeInfo;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.ui.a.a;
 import com.tencent.mm.pluginsdk.ui.e.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.List;
 
 public class AddressView
@@ -87,8 +87,8 @@ public class AddressView
     this.mergeCallback = null;
     this.AVATAR_LAYOUT_WIDTH = 0;
     this.AVATAR_WIDTH = 0;
-    this.NAME_TEXT_SIZE = com.tencent.mm.cc.a.ax(paramContext, 2131165517);
-    this.DESCRIPTION_TEXT_SIZE = com.tencent.mm.cc.a.ax(paramContext, 2131165576);
+    this.NAME_TEXT_SIZE = com.tencent.mm.cb.a.ax(paramContext, 2131165517);
+    this.DESCRIPTION_TEXT_SIZE = com.tencent.mm.cb.a.ax(paramContext, 2131165576);
     this.WEIBO_ICON_SIZE = getResources().getDimensionPixelSize(2131165566);
     this.AVATAR_START_POS = 0;
     this.AVATAR_PADDING = 0;
@@ -159,7 +159,7 @@ public class AddressView
         super.onInitializeAccessibilityNodeInfo(paramAnonymousView, paramAnonymousc);
         CharSequence localCharSequence = AddressView.this.getContentDescription();
         paramAnonymousView = localCharSequence;
-        if (bt.isNullOrNil((String)localCharSequence)) {
+        if (bu.isNullOrNil((String)localCharSequence)) {
           paramAnonymousView = AddressView.this.nickName;
         }
         paramAnonymousc.setText(paramAnonymousView);
@@ -172,7 +172,7 @@ public class AddressView
         super.onPopulateAccessibilityEvent(paramAnonymousView, paramAnonymousAccessibilityEvent);
         CharSequence localCharSequence = AddressView.this.getContentDescription();
         paramAnonymousView = localCharSequence;
-        if (bt.isNullOrNil((String)localCharSequence)) {
+        if (bu.isNullOrNil((String)localCharSequence)) {
           paramAnonymousView = AddressView.this.nickName;
         }
         paramAnonymousAccessibilityEvent.getText().add(paramAnonymousView);
@@ -232,7 +232,7 @@ public class AddressView
     Object localObject = paramCharSequence;
     if (paramCharSequence == null)
     {
-      ad.w("MicroMsg.AddressView", "source is null, set it empty.");
+      ae.w("MicroMsg.AddressView", "source is null, set it empty.");
       localObject = "";
     }
     float f = paramTextPaint.measureText((CharSequence)localObject, 0, ((CharSequence)localObject).length());
@@ -277,7 +277,7 @@ public class AddressView
     AppMethodBeat.i(32902);
     super.onDraw(paramCanvas);
     if (this.mergeCallback != null) {
-      this.mergeCallback.abq(getShowAreaWidth());
+      this.mergeCallback.abY(getShowAreaWidth());
     }
     updatePosition();
     if (this.avatarDrawable != null) {
@@ -295,7 +295,7 @@ public class AddressView
       AppMethodBeat.o(32902);
       return;
     }
-    if (!bt.isNullOrNil(this.description))
+    if (!bu.isNullOrNil(this.description))
     {
       if (this.destNickName != null)
       {
@@ -349,7 +349,7 @@ public class AddressView
     super.onInitializeAccessibilityNodeInfo(paramAccessibilityNodeInfo);
     CharSequence localCharSequence2 = getContentDescription();
     CharSequence localCharSequence1 = localCharSequence2;
-    if (bt.isNullOrNil((String)localCharSequence2)) {
+    if (bu.isNullOrNil((String)localCharSequence2)) {
       localCharSequence1 = this.nickName;
     }
     paramAccessibilityNodeInfo.setText(localCharSequence1);
@@ -363,7 +363,7 @@ public class AddressView
     super.onPopulateAccessibilityEvent(paramAccessibilityEvent);
     CharSequence localCharSequence2 = getContentDescription();
     CharSequence localCharSequence1 = localCharSequence2;
-    if (bt.isNullOrNil((String)localCharSequence2)) {
+    if (bu.isNullOrNil((String)localCharSequence2)) {
       localCharSequence1 = this.nickName;
     }
     paramAccessibilityEvent.getText().add(localCharSequence1);
@@ -387,7 +387,7 @@ public class AddressView
   {
     AppMethodBeat.i(32915);
     if (this.avatarDrawable != null) {
-      ((com.tencent.mm.pluginsdk.ui.c)this.avatarDrawable).fbM();
+      ((com.tencent.mm.pluginsdk.ui.c)this.avatarDrawable).ffA();
     }
     AppMethodBeat.o(32915);
   }
@@ -450,7 +450,7 @@ public class AddressView
   {
     AppMethodBeat.i(32916);
     if (this.avatarDrawable != null) {
-      ((com.tencent.mm.pluginsdk.ui.c)this.avatarDrawable).fbL();
+      ((com.tencent.mm.pluginsdk.ui.c)this.avatarDrawable).ffz();
     }
     AppMethodBeat.o(32916);
   }
@@ -519,7 +519,7 @@ public class AddressView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.AddressView
  * JD-Core Version:    0.7.0.1
  */

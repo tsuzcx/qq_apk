@@ -14,8 +14,8 @@ public class OptionPicker
   private Context mContext;
   private int mMaxWidth;
   private int mMinWidth;
-  private String[] nkL;
-  private int nkM;
+  private String[] npT;
+  private int npU;
   
   public OptionPicker(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -39,7 +39,7 @@ public class OptionPicker
   {
     AppMethodBeat.i(159583);
     this.mMinWidth = aq.fromDPToPix(this.mContext, 120);
-    this.nkM = aq.fromDPToPix(this.mContext, 20);
+    this.npU = aq.fromDPToPix(this.mContext, 20);
     f.a(this, getResources().getDrawable(2131233617));
     setDescendantFocusability(393216);
     f.b(this, this.mContext.getResources().getColor(2131100711));
@@ -66,7 +66,7 @@ public class OptionPicker
       AppMethodBeat.o(159588);
       return;
     }
-    paramInt2 = getMeasuredWidth() + this.nkM * 2;
+    paramInt2 = getMeasuredWidth() + this.npU * 2;
     paramInt1 = paramInt2;
     if (this.mMaxWidth > 0) {
       if (this.mMaxWidth <= paramInt2) {
@@ -93,7 +93,7 @@ public class OptionPicker
   public final void setExtraPadding(int paramInt)
   {
     AppMethodBeat.i(159586);
-    this.nkM = Math.max(paramInt, 0);
+    this.npU = Math.max(paramInt, 0);
     AppMethodBeat.o(159586);
   }
   
@@ -115,7 +115,7 @@ public class OptionPicker
       AppMethodBeat.o(159584);
       return;
     }
-    this.nkL = paramArrayOfString;
+    this.npT = paramArrayOfString;
     setDisplayedValues(null);
     setMinValue(0);
     setMaxValue(Math.max(paramArrayOfString.length - 1, 0));

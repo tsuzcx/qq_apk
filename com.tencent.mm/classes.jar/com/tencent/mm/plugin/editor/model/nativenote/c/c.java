@@ -4,19 +4,19 @@ import com.tencent.mm.plugin.editor.model.nativenote.manager.WXRTEditText;
 
 public final class c
 {
-  public WXRTEditText pwp = null;
-  public WXRTEditText pwq = null;
-  public WXRTEditText pwr = null;
+  public WXRTEditText pCT = null;
+  public WXRTEditText pCU = null;
+  public WXRTEditText pCV = null;
   
   public c(WXRTEditText paramWXRTEditText)
   {
-    this.pwp = paramWXRTEditText;
+    this.pCT = paramWXRTEditText;
   }
   
   public c(WXRTEditText paramWXRTEditText1, WXRTEditText paramWXRTEditText2)
   {
-    this.pwq = paramWXRTEditText1;
-    this.pwr = paramWXRTEditText2;
+    this.pCU = paramWXRTEditText1;
+    this.pCV = paramWXRTEditText2;
   }
 }
 

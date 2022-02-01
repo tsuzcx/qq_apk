@@ -3,24 +3,24 @@ package com.tencent.mm.api;
 import android.content.Context;
 import android.widget.FrameLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public abstract class e
   extends FrameLayout
 {
-  w cRA = new w()
+  w cSk = new w()
   {
     public final void a(g paramAnonymousg)
     {
       AppMethodBeat.i(149423);
-      ad.i("MicroMsg.DrawingView", "Default [onSelectedFeature] features:%s", new Object[] { paramAnonymousg.name() });
+      ae.i("MicroMsg.DrawingView", "Default [onSelectedFeature] features:%s", new Object[] { paramAnonymousg.name() });
       AppMethodBeat.o(149423);
     }
     
     public final void a(g paramAnonymousg, int paramAnonymousInt, Object paramAnonymousObject)
     {
       AppMethodBeat.i(169116);
-      ad.i("MicroMsg.DrawingView", "Default [onSelectedDetailFeature] features:%s index:%s", new Object[] { paramAnonymousg.name(), Integer.valueOf(paramAnonymousInt) });
+      ae.i("MicroMsg.DrawingView", "Default [onSelectedDetailFeature] features:%s index:%s", new Object[] { paramAnonymousg.name(), Integer.valueOf(paramAnonymousInt) });
       AppMethodBeat.o(169116);
     }
     
@@ -34,7 +34,7 @@ public abstract class e
   
   public w getSelectedFeatureListener()
   {
-    return this.cRA;
+    return this.cSk;
   }
   
   public abstract void setActionBarCallback(i parami);
@@ -47,7 +47,7 @@ public abstract class e
   
   public void setSelectedFeatureListener(w paramw)
   {
-    this.cRA = paramw;
+    this.cSk = paramw;
   }
 }
 

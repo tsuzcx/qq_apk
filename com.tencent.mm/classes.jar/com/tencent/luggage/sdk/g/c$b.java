@@ -6,18 +6,18 @@ import d.g.b.q;
 import d.l;
 import d.z;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "<anonymous parameter 0>", "", "<anonymous parameter 1>", "invoke"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "<anonymous parameter 0>", "", "<anonymous parameter 1>", "invoke"})
 final class c$b
   extends q
   implements m<Long, Long, z>
 {
-  public static final b cpN;
+  public static final b cqq;
   
   static
   {
-    AppMethodBeat.i(197478);
-    cpN = new b();
-    AppMethodBeat.o(197478);
+    AppMethodBeat.i(208033);
+    cqq = new b();
+    AppMethodBeat.o(208033);
   }
   
   c$b()

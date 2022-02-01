@@ -4,55 +4,53 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ipcinvoker.b;
 import com.tencent.mm.plugin.appbrand.appstorage.ICommLibReader;
 import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
-import com.tencent.mm.plugin.appbrand.o;
 import com.tencent.mm.protocal.protobuf.ef;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.vfs.i;
-import d.g.b.p;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.vfs.o;
 import d.l;
 import java.io.IOException;
 import java.net.URLEncoder;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/page/web_renderingcache/WebRenderingCacheProviderNewImpl;", "Lcom/tencent/mm/plugin/appbrand/page/web_renderingcache/IPageWebRenderingCacheProvider;", "runtime", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntimeWC;", "(Lcom/tencent/mm/plugin/appbrand/AppBrandRuntimeWC;)V", "appVersionId", "", "commLibVersionId", "enabled", "", "filePrefix", "renderingCachePBMap", "Ljava/util/concurrent/ConcurrentHashMap;", "Lcom/tencent/mm/protocal/protobuf/AppBrandWebRenderingCachePB;", "acquireCachePB", "pagePath", "createIPCOpParcel", "Lcom/tencent/mm/plugin/appbrand/page/web_renderingcache/WebRenderingCacheIPCOperations$WebRenderingCacheRecordParcel;", "path", "getCacheFilePath", "getCachedContent", "getCachedServiceData", "getCachedWebViewData", "saveRenderingCache", "", "content", "webviewData", "serviceData", "urlEncode", "Companion", "plugin-appbrand-integration_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/page/web_renderingcache/WebRenderingCacheProviderNewImpl;", "Lcom/tencent/mm/plugin/appbrand/page/web_renderingcache/IPageWebRenderingCacheProvider;", "runtime", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntimeWC;", "(Lcom/tencent/mm/plugin/appbrand/AppBrandRuntimeWC;)V", "appVersionId", "", "commLibVersionId", "enabled", "", "filePrefix", "renderingCachePBMap", "Ljava/util/concurrent/ConcurrentHashMap;", "Lcom/tencent/mm/protocal/protobuf/AppBrandWebRenderingCachePB;", "acquireCachePB", "pagePath", "createIPCOpParcel", "Lcom/tencent/mm/plugin/appbrand/page/web_renderingcache/WebRenderingCacheIPCOperations$WebRenderingCacheRecordParcel;", "path", "getCacheFilePath", "getCachedContent", "getCachedServiceData", "getCachedWebViewData", "saveRenderingCache", "", "content", "webviewData", "serviceData", "urlEncode", "Companion", "plugin-appbrand-integration_release"})
 public final class g
   implements a
 {
-  public static final a mgZ;
+  public static final a mlY;
   private final boolean enabled;
-  private final o jCo;
-  private final String mgT;
-  private final String mgU;
-  private final String mgX;
-  private final ConcurrentHashMap<String, ef> mgY;
+  private final com.tencent.mm.plugin.appbrand.p jFm;
+  private final String mlS;
+  private final String mlT;
+  private final String mlW;
+  private final ConcurrentHashMap<String, ef> mlX;
   
   static
   {
     AppMethodBeat.i(50993);
-    mgZ = new a((byte)0);
+    mlY = new a((byte)0);
     AppMethodBeat.o(50993);
   }
   
-  private g(o paramo)
+  private g(com.tencent.mm.plugin.appbrand.p paramp)
   {
     AppMethodBeat.i(50992);
-    this.jCo = paramo;
-    paramo = this.jCo.aVF().aZo();
-    p.g(paramo, "runtime.libReader.versionBuildInfo()");
-    this.mgT = paramo;
+    this.jFm = paramp;
+    paramp = this.jFm.aWe().aZL();
+    d.g.b.p.g(paramp, "runtime.libReader.versionBuildInfo()");
+    this.mlS = paramp;
     label104:
     int i;
-    switch (this.jCo.aVL())
+    switch (this.jFm.aWk())
     {
     default: 
-      paramo = String.valueOf(this.jCo.EX());
-      this.mgU = paramo;
-      paramo = this.jCo.aXc().jXC;
-      if (paramo != null)
+      paramp = String.valueOf(this.jFm.Fc());
+      this.mlT = paramp;
+      paramp = this.jFm.aXx().kaR;
+      if (paramp != null)
       {
-        paramo = paramo.mgQ;
-        CharSequence localCharSequence = (CharSequence)paramo;
+        paramp = paramp.mlP;
+        CharSequence localCharSequence = (CharSequence)paramp;
         if ((localCharSequence != null) && (localCharSequence.length() != 0)) {
           break label173;
         }
@@ -65,16 +63,16 @@ public final class g
       }
       break;
     }
-    for (this.mgX = "";; this.mgX = (paramo + '_' + this.mgT.hashCode() + '_' + this.mgU))
+    for (this.mlW = "";; this.mlW = (paramp + '_' + this.mlS.hashCode() + '_' + this.mlT))
     {
-      this.mgY = new ConcurrentHashMap();
+      this.mlX = new ConcurrentHashMap();
       AppMethodBeat.o(50992);
       return;
-      paramo = "TEST";
+      paramp = "TEST";
       break;
-      paramo = "DEMO";
+      paramp = "DEMO";
       break;
-      paramo = null;
+      paramp = null;
       break label104;
       label173:
       i = 0;
@@ -84,38 +82,38 @@ public final class g
     }
   }
   
-  private final String TH(String paramString)
+  private final String Uq(String paramString)
   {
     AppMethodBeat.i(50985);
-    StringBuilder localStringBuilder = new StringBuilder().append(this.mgX).append('_');
+    StringBuilder localStringBuilder = new StringBuilder().append(this.mlW).append('_');
     paramString = URLEncoder.encode(paramString, "UTF-8");
-    p.g(paramString, "URLEncoder.encode(this, \"UTF-8\")");
+    d.g.b.p.g(paramString, "URLEncoder.encode(this, \"UTF-8\")");
     paramString = paramString + ".rc";
     AppMethodBeat.o(50985);
     return paramString;
   }
   
-  private final WebRenderingCacheIPCOperations.WebRenderingCacheRecordParcel TI(String paramString)
+  private final WebRenderingCacheIPCOperations.WebRenderingCacheRecordParcel Ur(String paramString)
   {
     AppMethodBeat.i(50986);
-    String str = this.jCo.getAppId();
-    p.g(str, "runtime.appId");
-    paramString = new WebRenderingCacheIPCOperations.WebRenderingCacheRecordParcel(str, this.mgT, this.mgU, paramString);
+    String str = this.jFm.getAppId();
+    d.g.b.p.g(str, "runtime.appId");
+    paramString = new WebRenderingCacheIPCOperations.WebRenderingCacheRecordParcel(str, this.mlS, this.mlT, paramString);
     AppMethodBeat.o(50986);
     return paramString;
   }
   
-  private final ef TJ(String paramString)
+  private final ef Us(String paramString)
   {
     AppMethodBeat.i(50988);
-    ef localef2 = (ef)this.mgY.get(paramString);
+    ef localef2 = (ef)this.mlX.get(paramString);
     ef localef1 = localef2;
     String str;
     int i;
     if (localef2 == null)
     {
-      str = TH(paramString);
-      long l = i.aYo(str);
+      str = Uq(paramString);
+      long l = o.aZR(str);
       localef1 = localef2;
       if (l > 0L)
       {
@@ -125,8 +123,8 @@ public final class g
     }
     try
     {
-      localef1.parseFrom(i.aY(str, 0, i));
-      ((Map)this.mgY).put(paramString, localef1);
+      localef1.parseFrom(o.bb(str, 0, i));
+      ((Map)this.mlX).put(paramString, localef1);
       AppMethodBeat.o(50988);
       return localef1;
     }
@@ -134,27 +132,27 @@ public final class g
     {
       for (;;)
       {
-        i.deleteFile(str);
+        o.deleteFile(str);
       }
     }
   }
   
-  public static final g y(o paramo)
+  public static final g z(com.tencent.mm.plugin.appbrand.p paramp)
   {
-    AppMethodBeat.i(189560);
-    p.h(paramo, "rt");
-    if (paramo.aVF() == null)
+    AppMethodBeat.i(223829);
+    d.g.b.p.h(paramp, "rt");
+    if (paramp.aWe() == null)
     {
-      ad.e("MicroMsg.AppBrand.WebRenderingCacheProviderNewImpl", "try create provider but rt.libReader is NULL, appId:" + paramo.getAppId());
-      AppMethodBeat.o(189560);
+      ae.e("MicroMsg.AppBrand.WebRenderingCacheProviderNewImpl", "try create provider but rt.libReader is NULL, appId:" + paramp.getAppId());
+      AppMethodBeat.o(223829);
       return null;
     }
-    paramo = new g(paramo, (byte)0);
-    AppMethodBeat.o(189560);
-    return paramo;
+    paramp = new g(paramp, (byte)0);
+    AppMethodBeat.o(223829);
+    return paramp;
   }
   
-  public final String TC(String paramString)
+  public final String Ul(String paramString)
   {
     String str = null;
     AppMethodBeat.i(50989);
@@ -171,7 +169,7 @@ public final class g
       AppMethodBeat.o(50989);
       return null;
     }
-    Object localObject = TJ(paramString);
+    Object localObject = Us(paramString);
     if (localObject != null) {
       str = ((ef)localObject).content;
     }
@@ -180,14 +178,14 @@ public final class g
     for (i = 1;; i = 0)
     {
       if (i == 0) {
-        f.a((b)new WebRenderingCacheIPCOperations.a(), TI(paramString));
+        f.a((b)new WebRenderingCacheIPCOperations.a(), Ur(paramString));
       }
       AppMethodBeat.o(50989);
       return str;
     }
   }
   
-  public final String TD(String paramString)
+  public final String Um(String paramString)
   {
     AppMethodBeat.i(50990);
     if (this.enabled)
@@ -203,10 +201,10 @@ public final class g
       AppMethodBeat.o(50990);
       return null;
     }
-    paramString = TJ(paramString);
+    paramString = Us(paramString);
     if (paramString != null)
     {
-      paramString = paramString.Fwc;
+      paramString = paramString.FOA;
       AppMethodBeat.o(50990);
       return paramString;
     }
@@ -214,7 +212,7 @@ public final class g
     return null;
   }
   
-  public final String TE(String paramString)
+  public final String Un(String paramString)
   {
     AppMethodBeat.i(50991);
     if (this.enabled)
@@ -230,10 +228,10 @@ public final class g
       AppMethodBeat.o(50991);
       return null;
     }
-    paramString = TJ(paramString);
+    paramString = Us(paramString);
     if (paramString != null)
     {
-      paramString = paramString.Fwd;
+      paramString = paramString.FOB;
       AppMethodBeat.o(50991);
       return paramString;
     }
@@ -255,7 +253,7 @@ public final class g
     label95:
     for (int i = 1; i != 0; i = 0)
     {
-      ad.e("MicroMsg.AppBrand.WebRenderingCacheProviderNewImpl", "saveRenderingCache disabled appId[" + this.jCo.getAppId() + "] path[" + paramString1 + ']');
+      ae.e("MicroMsg.AppBrand.WebRenderingCacheProviderNewImpl", "saveRenderingCache disabled appId[" + this.jFm.getAppId() + "] path[" + paramString1 + ']');
       AppMethodBeat.o(50987);
       return;
     }
@@ -276,29 +274,29 @@ public final class g
       if (paramString4 != null) {
         i = paramString4.length();
       }
-      ad.i("MicroMsg.AppBrand.WebRenderingCacheProviderNewImpl", i + ']');
+      ae.i("MicroMsg.AppBrand.WebRenderingCacheProviderNewImpl", i + ']');
       if (paramString2 != null) {
         break label259;
       }
-      i.deleteFile(TH(paramString1));
-      f.a((b)new WebRenderingCacheIPCOperations.c(), TI(paramString1));
+      o.deleteFile(Uq(paramString1));
+      f.a((b)new WebRenderingCacheIPCOperations.c(), Ur(paramString1));
       AppMethodBeat.o(50987);
       return;
       i = -1;
       break;
     }
     label259:
-    localObject = (Map)this.mgY;
+    localObject = (Map)this.mlX;
     ef localef = new ef();
     localef.content = paramString2;
-    localef.Fwc = paramString3;
-    localef.Fwd = paramString4;
-    paramString2 = TH(paramString1);
+    localef.FOA = paramString3;
+    localef.FOB = paramString4;
+    paramString2 = Uq(paramString1);
     try
     {
-      i.C(paramString2, localef.toByteArray());
+      o.C(paramString2, localef.toByteArray());
       paramString3 = (b)new WebRenderingCacheIPCOperations.b();
-      paramString4 = TI(paramString1);
+      paramString4 = Ur(paramString1);
       paramString4.filePath = paramString2;
       f.a(paramString3, paramString4);
       ((Map)localObject).put(paramString1, localef);
@@ -309,12 +307,12 @@ public final class g
     {
       for (;;)
       {
-        ad.e("MicroMsg.AppBrand.WebRenderingCacheProviderNewImpl", "saveRenderingCache appId[" + this.jCo.getAppId() + "] path[" + paramString1 + "] e=" + paramString2);
+        ae.e("MicroMsg.AppBrand.WebRenderingCacheProviderNewImpl", "saveRenderingCache appId[" + this.jFm.getAppId() + "] path[" + paramString1 + "] e=" + paramString2);
       }
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/page/web_renderingcache/WebRenderingCacheProviderNewImpl$Companion;", "", "()V", "TAG", "", "create", "Lcom/tencent/mm/plugin/appbrand/page/web_renderingcache/WebRenderingCacheProviderNewImpl;", "rt", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntimeWC;", "plugin-appbrand-integration_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/page/web_renderingcache/WebRenderingCacheProviderNewImpl$Companion;", "", "()V", "TAG", "", "create", "Lcom/tencent/mm/plugin/appbrand/page/web_renderingcache/WebRenderingCacheProviderNewImpl;", "rt", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntimeWC;", "plugin-appbrand-integration_release"})
   public static final class a {}
 }
 

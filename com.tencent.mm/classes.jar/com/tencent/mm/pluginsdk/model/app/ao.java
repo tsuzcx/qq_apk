@@ -1,39 +1,45 @@
 package com.tencent.mm.pluginsdk.model.app;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.e.d;
-import com.tencent.mm.app.n.a;
+import com.tencent.mm.ak.e.d;
+import com.tencent.mm.app.o.a;
 import com.tencent.mm.blink.b;
-import com.tencent.mm.g.a.db;
-import com.tencent.mm.g.a.hn;
-import com.tencent.mm.g.a.ix;
-import com.tencent.mm.model.ax;
-import com.tencent.mm.model.ba;
-import com.tencent.mm.model.ca;
+import com.tencent.mm.g.a.dc;
+import com.tencent.mm.g.a.ho;
+import com.tencent.mm.g.a.iy;
+import com.tencent.mm.model.az;
+import com.tencent.mm.model.bc;
+import com.tencent.mm.model.cc;
 import com.tencent.mm.plugin.sight.base.SightVideoJNI;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
 
 public class ao
-  implements ax
+  implements az
 {
   private static HashMap<Integer, h.b> baseDBFactories;
-  private p ENN;
-  private an.a ENO;
-  private k ENP;
-  private com.tencent.mm.pluginsdk.model.d ENQ;
-  private com.tencent.mm.sdk.b.c<hn> ENR;
-  private com.tencent.mm.sdk.b.c ENS;
-  private com.tencent.mm.sdk.b.c ENT;
-  private n.a appForegroundListener;
+  private p Fgj;
+  private an.a Fgk;
+  private k Fgl;
+  private com.tencent.mm.pluginsdk.model.d Fgm;
+  private com.tencent.mm.sdk.b.c<ho> Fgn;
+  private com.tencent.mm.sdk.b.c Fgo;
+  private com.tencent.mm.sdk.b.c Fgp;
+  private o.a appForegroundListener;
   
   static
   {
     AppMethodBeat.i(31134);
     HashMap localHashMap = new HashMap();
     baseDBFactories = localHashMap;
-    localHashMap.put(Integer.valueOf("APPMESSAGE_TABLE".hashCode()), new ao.2());
+    localHashMap.put(Integer.valueOf("APPMESSAGE_TABLE".hashCode()), new h.b()
+    {
+      public final String[] getSQLs()
+      {
+        return l.SQL_CREATE;
+      }
+    });
     baseDBFactories.put(Integer.valueOf("APPSORT_TABLE".hashCode()), new ao.3());
     AppMethodBeat.o(31134);
   }
@@ -41,54 +47,54 @@ public class ao
   public ao()
   {
     AppMethodBeat.i(31121);
-    this.ENO = null;
-    this.ENP = new k();
-    this.ENQ = new com.tencent.mm.pluginsdk.model.d();
-    this.ENR = new com.tencent.mm.sdk.b.c() {};
-    this.appForegroundListener = new n.a()
+    this.Fgk = null;
+    this.Fgl = new k();
+    this.Fgm = new com.tencent.mm.pluginsdk.model.d();
+    this.Fgn = new com.tencent.mm.sdk.b.c() {};
+    this.appForegroundListener = new o.a()
     {
       public final void onAppBackground(String paramAnonymousString)
       {
-        AppMethodBeat.i(193434);
-        if ((com.tencent.mm.kernel.g.ajx()) && (com.tencent.mm.kernel.g.ajA().gAD))
+        AppMethodBeat.i(186714);
+        if ((com.tencent.mm.kernel.g.ajM()) && (com.tencent.mm.kernel.g.ajP().gDk))
         {
-          com.tencent.mm.kernel.g.ajA();
-          com.tencent.mm.kernel.a.aiE();
+          com.tencent.mm.kernel.g.ajP();
+          com.tencent.mm.kernel.a.aiT();
         }
-        AppMethodBeat.o(193434);
+        AppMethodBeat.o(186714);
       }
       
       public final void onAppForeground(String paramAnonymousString)
       {
-        AppMethodBeat.i(193433);
-        if ((com.tencent.mm.kernel.g.ajx()) && (com.tencent.mm.kernel.g.ajA().gAD))
+        AppMethodBeat.i(186713);
+        if ((com.tencent.mm.kernel.g.ajM()) && (com.tencent.mm.kernel.g.ajP().gDk))
         {
-          com.tencent.mm.kernel.g.ajA();
-          if (!com.tencent.mm.kernel.a.aiE()) {
-            b.Wi().w(new Runnable()
+          com.tencent.mm.kernel.g.ajP();
+          if (!com.tencent.mm.kernel.a.aiT()) {
+            b.Wq().u(new Runnable()
             {
               public final void run()
               {
-                AppMethodBeat.i(193432);
-                ao.fai().run();
-                AppMethodBeat.o(193432);
+                AppMethodBeat.i(186712);
+                ao.fdW().run();
+                AppMethodBeat.o(186712);
               }
             });
           }
         }
-        AppMethodBeat.o(193433);
+        AppMethodBeat.o(186713);
       }
     };
-    this.ENS = new com.tencent.mm.sdk.b.c()
+    this.Fgo = new com.tencent.mm.sdk.b.c()
     {
-      private static boolean a(ix paramAnonymousix)
+      private static boolean a(iy paramAnonymousiy)
       {
-        AppMethodBeat.i(193435);
+        AppMethodBeat.i(186715);
         for (;;)
         {
           try
           {
-            com.tencent.mm.n.e locale = com.tencent.mm.n.g.acA();
+            com.tencent.mm.n.e locale = com.tencent.mm.n.g.acL();
             if (locale != null) {
               continue;
             }
@@ -99,62 +105,62 @@ public class ao
             int i = 0;
             continue;
           }
-          paramAnonymousix.dvE.dof = i;
-          AppMethodBeat.o(193435);
+          paramAnonymousiy.dwJ.dpk = i;
+          AppMethodBeat.o(186715);
           return false;
-          i = bt.getInt(com.tencent.mm.n.g.acA().getValue("AndroidUseUnicodeEmoji"), 0);
+          i = bu.getInt(com.tencent.mm.n.g.acL().getValue("AndroidUseUnicodeEmoji"), 0);
         }
       }
     };
-    this.ENT = new com.tencent.mm.sdk.b.c() {};
+    this.Fgp = new com.tencent.mm.sdk.b.c() {};
     AppMethodBeat.o(31121);
   }
   
-  public static d bIX()
+  public static d bJV()
   {
     AppMethodBeat.i(31124);
-    d locald = com.tencent.mm.plugin.s.a.bIX();
+    d locald = com.tencent.mm.plugin.s.a.bJV();
     AppMethodBeat.o(31124);
     return locald;
   }
   
-  public static i dxP()
+  public static i dBf()
   {
     AppMethodBeat.i(31125);
-    i locali = com.tencent.mm.plugin.s.a.dxP();
+    i locali = com.tencent.mm.plugin.s.a.dBf();
     AppMethodBeat.o(31125);
     return locali;
   }
   
-  public static j dxQ()
+  public static j dBg()
   {
     AppMethodBeat.i(31126);
-    j localj = com.tencent.mm.plugin.s.a.dxQ();
+    j localj = com.tencent.mm.plugin.s.a.dBg();
     AppMethodBeat.o(31126);
     return localj;
   }
   
-  public static n dxS()
+  public static n dBi()
   {
     AppMethodBeat.i(31130);
-    n localn = com.tencent.mm.plugin.s.a.dxS();
+    n localn = com.tencent.mm.plugin.s.a.dBi();
     AppMethodBeat.o(31130);
     return localn;
   }
   
-  public static e dxT()
+  public static e dBj()
   {
     AppMethodBeat.i(31131);
-    e locale = com.tencent.mm.plugin.s.a.dxT();
+    e locale = com.tencent.mm.plugin.s.a.dBj();
     AppMethodBeat.o(31131);
     return locale;
   }
   
-  private static ao fae()
+  private static ao fdS()
   {
     AppMethodBeat.i(31122);
-    ba.aBK();
-    ao localao2 = (ao)ca.By(ao.class.getName());
+    bc.aCa();
+    ao localao2 = (ao)cc.Ca(ao.class.getName());
     ao localao1 = localao2;
     if (localao2 == null) {
       localao1 = new ao();
@@ -163,45 +169,45 @@ public class ao
     return localao1;
   }
   
-  public static k faf()
+  public static k fdT()
   {
     AppMethodBeat.i(31123);
-    k localk = fae().ENP;
+    k localk = fdS().Fgl;
     AppMethodBeat.o(31123);
     return localk;
   }
   
-  public static l fag()
+  public static l fdU()
   {
     AppMethodBeat.i(31127);
-    l locall = com.tencent.mm.plugin.s.a.dxR();
+    l locall = com.tencent.mm.plugin.s.a.dBh();
     AppMethodBeat.o(31127);
     return locall;
   }
   
-  public static p fah()
+  public static p fdV()
   {
     AppMethodBeat.i(31128);
-    com.tencent.mm.kernel.g.ajA().aiF();
-    if (fae().ENN == null)
+    com.tencent.mm.kernel.g.ajP().aiU();
+    if (fdS().Fgj == null)
     {
-      localObject = fae();
-      ba.aBQ();
-      ((ao)localObject).ENN = new p(com.tencent.mm.model.c.getDataDB());
+      localObject = fdS();
+      bc.aCg();
+      ((ao)localObject).Fgj = new p(com.tencent.mm.model.c.getDataDB());
     }
-    Object localObject = fae().ENN;
+    Object localObject = fdS().Fgj;
     AppMethodBeat.o(31128);
     return localObject;
   }
   
-  public static an.a fai()
+  public static an.a fdW()
   {
     AppMethodBeat.i(31129);
-    com.tencent.mm.kernel.g.ajA().aiF();
-    if (fae().ENO == null) {
-      fae().ENO = new an.a();
+    com.tencent.mm.kernel.g.ajP().aiU();
+    if (fdS().Fgk == null) {
+      fdS().Fgk = new an.a();
     }
-    an.a locala = fae().ENO;
+    an.a locala = fdS().Fgk;
     AppMethodBeat.o(31129);
     return locala;
   }
@@ -216,20 +222,20 @@ public class ao
   public void onAccountPostReset(boolean paramBoolean)
   {
     AppMethodBeat.i(31133);
-    com.tencent.mm.model.ah.a.hFM = com.tencent.mm.plugin.s.a.dxP();
-    e.d.a(Integer.valueOf(47), this.ENQ);
-    e.d.a(Integer.valueOf(49), this.ENP);
-    com.tencent.mm.sdk.b.a.IbL.c(this.ENS);
-    com.tencent.mm.sdk.b.a.IbL.c(this.ENT);
+    com.tencent.mm.model.ai.a.hIE = com.tencent.mm.plugin.s.a.dBf();
+    e.d.a(Integer.valueOf(47), this.Fgm);
+    e.d.a(Integer.valueOf(49), this.Fgl);
+    com.tencent.mm.sdk.b.a.IvT.c(this.Fgo);
+    com.tencent.mm.sdk.b.a.IvT.c(this.Fgp);
     this.appForegroundListener.alive();
-    this.ENR.alive();
+    this.Fgn.alive();
     Runnable local4 = new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(193431);
+        AppMethodBeat.i(186711);
         SightVideoJNI.registerALL();
-        AppMethodBeat.o(193431);
+        AppMethodBeat.o(186711);
       }
     };
     try
@@ -240,7 +246,7 @@ public class ao
     }
     catch (Throwable localThrowable)
     {
-      if (com.tencent.mm.compatible.util.d.lz(20))
+      if (com.tencent.mm.compatible.util.d.lB(20))
       {
         local4.run();
         AppMethodBeat.o(31133);
@@ -254,17 +260,17 @@ public class ao
   public void onAccountRelease()
   {
     AppMethodBeat.i(31132);
-    an.a locala = fae().ENO;
+    an.a locala = fdS().Fgk;
     if (locala != null) {
-      locala.dis = 0;
+      locala.dju = 0;
     }
-    e.d.b(Integer.valueOf(47), this.ENQ);
-    e.d.b(Integer.valueOf(49), this.ENP);
+    e.d.b(Integer.valueOf(47), this.Fgm);
+    e.d.b(Integer.valueOf(49), this.Fgl);
     this.appForegroundListener.dead();
-    com.tencent.mm.sdk.b.a.IbL.d(this.ENS);
-    com.tencent.mm.sdk.b.a.IbL.d(this.ENT);
-    this.ENR.dead();
-    com.tencent.mm.pluginsdk.model.l.eZx();
+    com.tencent.mm.sdk.b.a.IvT.d(this.Fgo);
+    com.tencent.mm.sdk.b.a.IvT.d(this.Fgp);
+    this.Fgn.dead();
+    com.tencent.mm.pluginsdk.model.l.fdl();
     AppMethodBeat.o(31132);
   }
   

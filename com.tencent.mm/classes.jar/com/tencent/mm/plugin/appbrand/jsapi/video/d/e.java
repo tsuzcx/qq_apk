@@ -6,7 +6,7 @@ import com.tencent.mm.plugin.appbrand.jsapi.base.d;
 import com.tencent.mm.plugin.appbrand.jsapi.coverview.CoverViewContainer;
 import com.tencent.mm.plugin.appbrand.jsapi.video.AppBrandVideoView;
 import com.tencent.mm.plugin.appbrand.jsapi.video.c.b;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -18,27 +18,27 @@ public final class e
   
   public final int A(JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(206236);
+    AppMethodBeat.i(211264);
     int i = paramJSONObject.optInt("videoPlayerId");
-    AppMethodBeat.o(206236);
+    AppMethodBeat.o(211264);
     return i;
   }
   
   public final boolean c(com.tencent.mm.plugin.appbrand.jsapi.e parame, int paramInt, View paramView, JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(206237);
-    ad.i("MicroMsg.JsApiUpdateVideoPlayer", "onUpdateView videoPlayerId=%d", new Object[] { Integer.valueOf(paramInt) });
+    AppMethodBeat.i(211265);
+    ae.i("MicroMsg.JsApiUpdateVideoPlayer", "onUpdateView videoPlayerId=%d", new Object[] { Integer.valueOf(paramInt) });
     if (!(paramView instanceof CoverViewContainer))
     {
-      ad.w("MicroMsg.JsApiUpdateVideoPlayer", "view(%s) is not a instance of CoverViewContainer", new Object[] { Integer.valueOf(paramInt) });
-      AppMethodBeat.o(206237);
+      ae.w("MicroMsg.JsApiUpdateVideoPlayer", "view(%s) is not a instance of CoverViewContainer", new Object[] { Integer.valueOf(paramInt) });
+      AppMethodBeat.o(211265);
       return false;
     }
     paramView = (AppBrandVideoView)((CoverViewContainer)paramView).ax(AppBrandVideoView.class);
     if (paramView == null)
     {
-      ad.e("MicroMsg.JsApiUpdateVideoPlayer", "view not AppBrandVideoView");
-      AppMethodBeat.o(206237);
+      ae.e("MicroMsg.JsApiUpdateVideoPlayer", "view not AppBrandVideoView");
+      AppMethodBeat.o(211265);
       return false;
     }
     try
@@ -205,7 +205,7 @@ public final class e
                                             {
                                               if ((paramJSONObject.has("hide")) && (paramJSONObject.getBoolean("hide")))
                                               {
-                                                ad.i("MicroMsg.JsApiUpdateVideoPlayer", "onUpdateView hide stop");
+                                                ae.i("MicroMsg.JsApiUpdateVideoPlayer", "onUpdateView hide stop");
                                                 paramView.stop();
                                               }
                                             }
@@ -286,108 +286,108 @@ public final class e
                                                                   if (paramJSONObject.has("filePath")) {
                                                                     paramView.e(paramJSONObject.getString("filePath"), paramJSONObject.optBoolean("live"), paramJSONObject.optInt("duration"));
                                                                   }
-                                                                  AppMethodBeat.o(206237);
+                                                                  AppMethodBeat.o(211265);
                                                                   return true;
                                                                   localJSONException1 = localJSONException1;
-                                                                  ad.i("MicroMsg.JsApiUpdateVideoPlayer", "onUpdateView param=%s exp=%s", new Object[] { "showDanmuBtn", localJSONException1.getLocalizedMessage() });
+                                                                  ae.i("MicroMsg.JsApiUpdateVideoPlayer", "onUpdateView param=%s exp=%s", new Object[] { "showDanmuBtn", localJSONException1.getLocalizedMessage() });
                                                                   continue;
                                                                   localJSONException2 = localJSONException2;
-                                                                  ad.i("MicroMsg.JsApiUpdateVideoPlayer", "onUpdateView param=%s exp=%s", new Object[] { "danmuList", localJSONException2.getLocalizedMessage() });
+                                                                  ae.i("MicroMsg.JsApiUpdateVideoPlayer", "onUpdateView param=%s exp=%s", new Object[] { "danmuList", localJSONException2.getLocalizedMessage() });
                                                                   continue;
                                                                   localJSONException3 = localJSONException3;
-                                                                  ad.i("MicroMsg.JsApiUpdateVideoPlayer", "onUpdateView param=%s exp=%s", new Object[] { "objectFit", localJSONException3.getLocalizedMessage() });
+                                                                  ae.i("MicroMsg.JsApiUpdateVideoPlayer", "onUpdateView param=%s exp=%s", new Object[] { "objectFit", localJSONException3.getLocalizedMessage() });
                                                                   continue;
                                                                   localJSONException4 = localJSONException4;
-                                                                  ad.i("MicroMsg.JsApiUpdateVideoPlayer", "onUpdateView param=%s exp=%s", new Object[] { "autoplay", localJSONException4.getLocalizedMessage() });
+                                                                  ae.i("MicroMsg.JsApiUpdateVideoPlayer", "onUpdateView param=%s exp=%s", new Object[] { "autoplay", localJSONException4.getLocalizedMessage() });
                                                                   continue;
                                                                   localJSONException5 = localJSONException5;
-                                                                  ad.i("MicroMsg.JsApiUpdateVideoPlayer", "onUpdateView param=%s exp=%s", new Object[] { "showBasicControls", localJSONException5.getLocalizedMessage() });
+                                                                  ae.i("MicroMsg.JsApiUpdateVideoPlayer", "onUpdateView param=%s exp=%s", new Object[] { "showBasicControls", localJSONException5.getLocalizedMessage() });
                                                                   continue;
                                                                   localJSONException6 = localJSONException6;
-                                                                  ad.i("MicroMsg.JsApiUpdateVideoPlayer", "onUpdateView param=%s exp=%s", new Object[] { "poster", localJSONException6.getLocalizedMessage() });
+                                                                  ae.i("MicroMsg.JsApiUpdateVideoPlayer", "onUpdateView param=%s exp=%s", new Object[] { "poster", localJSONException6.getLocalizedMessage() });
                                                                   continue;
                                                                   localException = localException;
-                                                                  ad.i("MicroMsg.JsApiUpdateVideoPlayer", "onUpdateView param=%s exp=%s", new Object[] { "direction", localException.getLocalizedMessage() });
+                                                                  ae.i("MicroMsg.JsApiUpdateVideoPlayer", "onUpdateView param=%s exp=%s", new Object[] { "direction", localException.getLocalizedMessage() });
                                                                   continue;
                                                                   localJSONException7 = localJSONException7;
-                                                                  ad.i("MicroMsg.JsApiUpdateVideoPlayer", "onUpdateView param=%s exp=%s", new Object[] { "muted", localJSONException7.getLocalizedMessage() });
+                                                                  ae.i("MicroMsg.JsApiUpdateVideoPlayer", "onUpdateView param=%s exp=%s", new Object[] { "muted", localJSONException7.getLocalizedMessage() });
                                                                   continue;
                                                                   localJSONException8 = localJSONException8;
-                                                                  ad.i("MicroMsg.JsApiUpdateVideoPlayer", "onUpdateView param=%s exp=%s", new Object[] { "loop", localJSONException8.getLocalizedMessage() });
+                                                                  ae.i("MicroMsg.JsApiUpdateVideoPlayer", "onUpdateView param=%s exp=%s", new Object[] { "loop", localJSONException8.getLocalizedMessage() });
                                                                   continue;
                                                                   localJSONException9 = localJSONException9;
-                                                                  ad.i("MicroMsg.JsApiUpdateVideoPlayer", "onUpdateView param=%s exp=%s", new Object[] { "data", localJSONException9.getLocalizedMessage() });
+                                                                  ae.i("MicroMsg.JsApiUpdateVideoPlayer", "onUpdateView param=%s exp=%s", new Object[] { "data", localJSONException9.getLocalizedMessage() });
                                                                   continue;
                                                                   localJSONException10 = localJSONException10;
-                                                                  ad.i("MicroMsg.JsApiUpdateVideoPlayer", "onUpdateView param=%s exp=%s", new Object[] { "pageGesture", localJSONException10.getLocalizedMessage() });
+                                                                  ae.i("MicroMsg.JsApiUpdateVideoPlayer", "onUpdateView param=%s exp=%s", new Object[] { "pageGesture", localJSONException10.getLocalizedMessage() });
                                                                   continue;
                                                                   localJSONException11 = localJSONException11;
-                                                                  ad.i("MicroMsg.JsApiUpdateVideoPlayer", "onUpdateView param=%s exp=%s", new Object[] { "pageGestureInFullscreen", localJSONException11.getLocalizedMessage() });
+                                                                  ae.i("MicroMsg.JsApiUpdateVideoPlayer", "onUpdateView param=%s exp=%s", new Object[] { "pageGestureInFullscreen", localJSONException11.getLocalizedMessage() });
                                                                   continue;
                                                                   localJSONException12 = localJSONException12;
-                                                                  ad.i("MicroMsg.JsApiUpdateVideoPlayer", "onUpdateView param=%s exp=%s", new Object[] { "showControlProgress", localJSONException12.getLocalizedMessage() });
+                                                                  ae.i("MicroMsg.JsApiUpdateVideoPlayer", "onUpdateView param=%s exp=%s", new Object[] { "showControlProgress", localJSONException12.getLocalizedMessage() });
                                                                   continue;
                                                                   localJSONException13 = localJSONException13;
-                                                                  ad.i("MicroMsg.JsApiUpdateVideoPlayer", "onUpdateView param=%s exp=%s", new Object[] { "showProgress", localJSONException13.getLocalizedMessage() });
+                                                                  ae.i("MicroMsg.JsApiUpdateVideoPlayer", "onUpdateView param=%s exp=%s", new Object[] { "showProgress", localJSONException13.getLocalizedMessage() });
                                                                   continue;
                                                                   localJSONException14 = localJSONException14;
-                                                                  ad.i("MicroMsg.JsApiUpdateVideoPlayer", "onUpdateView param=%s exp=%s", new Object[] { "showProgressInControlMode", localJSONException14.getLocalizedMessage() });
+                                                                  ae.i("MicroMsg.JsApiUpdateVideoPlayer", "onUpdateView param=%s exp=%s", new Object[] { "showProgressInControlMode", localJSONException14.getLocalizedMessage() });
                                                                   continue;
                                                                   localJSONException15 = localJSONException15;
-                                                                  ad.i("MicroMsg.JsApiUpdateVideoPlayer", "onUpdateView param=%s exp=%s", new Object[] { "showFullScreenBtn", localJSONException15.getLocalizedMessage() });
+                                                                  ae.i("MicroMsg.JsApiUpdateVideoPlayer", "onUpdateView param=%s exp=%s", new Object[] { "showFullScreenBtn", localJSONException15.getLocalizedMessage() });
                                                                   continue;
                                                                   localJSONException16 = localJSONException16;
-                                                                  ad.i("MicroMsg.JsApiUpdateVideoPlayer", "onUpdateView param=%s exp=%s", new Object[] { "showPlayBtn", localJSONException16.getLocalizedMessage() });
+                                                                  ae.i("MicroMsg.JsApiUpdateVideoPlayer", "onUpdateView param=%s exp=%s", new Object[] { "showPlayBtn", localJSONException16.getLocalizedMessage() });
                                                                   continue;
                                                                   localJSONException17 = localJSONException17;
-                                                                  ad.i("MicroMsg.JsApiUpdateVideoPlayer", "onUpdateView param=%s exp=%s", new Object[] { "showCenterPlayBtn", localJSONException17.getLocalizedMessage() });
+                                                                  ae.i("MicroMsg.JsApiUpdateVideoPlayer", "onUpdateView param=%s exp=%s", new Object[] { "showCenterPlayBtn", localJSONException17.getLocalizedMessage() });
                                                                   continue;
                                                                   localJSONException18 = localJSONException18;
-                                                                  ad.i("MicroMsg.JsApiUpdateVideoPlayer", "onUpdateView param=%s exp=%s", new Object[] { "enableProgressGesture", localJSONException18.getLocalizedMessage() });
+                                                                  ae.i("MicroMsg.JsApiUpdateVideoPlayer", "onUpdateView param=%s exp=%s", new Object[] { "enableProgressGesture", localJSONException18.getLocalizedMessage() });
                                                                   continue;
                                                                   localJSONException19 = localJSONException19;
-                                                                  ad.i("MicroMsg.JsApiUpdateVideoPlayer", "onUpdateView param=%s exp=%s", new Object[] { "disableScroll", localJSONException19.getLocalizedMessage() });
+                                                                  ae.i("MicroMsg.JsApiUpdateVideoPlayer", "onUpdateView param=%s exp=%s", new Object[] { "disableScroll", localJSONException19.getLocalizedMessage() });
                                                                   continue;
                                                                   localJSONException20 = localJSONException20;
-                                                                  ad.i("MicroMsg.JsApiUpdateVideoPlayer", "onUpdateView param=%s exp=%s", new Object[] { "hide", localJSONException20.getLocalizedMessage() });
+                                                                  ae.i("MicroMsg.JsApiUpdateVideoPlayer", "onUpdateView param=%s exp=%s", new Object[] { "hide", localJSONException20.getLocalizedMessage() });
                                                                   continue;
                                                                   localJSONException21 = localJSONException21;
-                                                                  ad.i("MicroMsg.JsApiUpdateVideoPlayer", "onUpdateView param=%s exp=%s", new Object[] { "initialTime", localJSONException21.getLocalizedMessage() });
+                                                                  ae.i("MicroMsg.JsApiUpdateVideoPlayer", "onUpdateView param=%s exp=%s", new Object[] { "initialTime", localJSONException21.getLocalizedMessage() });
                                                                   continue;
                                                                   label1413:
-                                                                  if (paramView.lkY != null) {}
+                                                                  if (paramView.lpw != null) {}
                                                                   for (paramInt = 1; paramInt == 0; paramInt = 0)
                                                                   {
                                                                     paramView.setCallback(new b(paramView, parame));
                                                                     break;
                                                                     parame = parame;
-                                                                    ad.i("MicroMsg.JsApiUpdateVideoPlayer", "onUpdateView param=%s exp=%s", new Object[] { "needEvent", parame.getLocalizedMessage() });
+                                                                    ae.i("MicroMsg.JsApiUpdateVideoPlayer", "onUpdateView param=%s exp=%s", new Object[] { "needEvent", parame.getLocalizedMessage() });
                                                                     break;
                                                                   }
                                                                   parame = parame;
-                                                                  ad.i("MicroMsg.JsApiUpdateVideoPlayer", "onUpdateView param=%s exp=%s", new Object[] { "showMuteBtn", parame.getLocalizedMessage() });
+                                                                  ae.i("MicroMsg.JsApiUpdateVideoPlayer", "onUpdateView param=%s exp=%s", new Object[] { "showMuteBtn", parame.getLocalizedMessage() });
                                                                   continue;
                                                                   parame = parame;
-                                                                  ad.i("MicroMsg.JsApiUpdateVideoPlayer", "onUpdateView param=%s exp=%s", new Object[] { "title", parame.getLocalizedMessage() });
+                                                                  ae.i("MicroMsg.JsApiUpdateVideoPlayer", "onUpdateView param=%s exp=%s", new Object[] { "title", parame.getLocalizedMessage() });
                                                                   continue;
                                                                   parame = parame;
-                                                                  ad.i("MicroMsg.JsApiUpdateVideoPlayer", "onUpdateView param=%s exp=%s", new Object[] { "playBtnPosition", parame.getLocalizedMessage() });
+                                                                  ae.i("MicroMsg.JsApiUpdateVideoPlayer", "onUpdateView param=%s exp=%s", new Object[] { "playBtnPosition", parame.getLocalizedMessage() });
                                                                   continue;
                                                                   parame = parame;
-                                                                  ad.i("MicroMsg.JsApiUpdateVideoPlayer", "onUpdateView param=%s exp=%s", new Object[] { "enablePlayGesture", parame.getLocalizedMessage() });
+                                                                  ae.i("MicroMsg.JsApiUpdateVideoPlayer", "onUpdateView param=%s exp=%s", new Object[] { "enablePlayGesture", parame.getLocalizedMessage() });
                                                                   continue;
                                                                   parame = parame;
-                                                                  ad.i("MicroMsg.JsApiUpdateVideoPlayer", "onUpdateView param=%s exp=%s", new Object[] { "autoPauseIfOpenNative", parame.getLocalizedMessage() });
+                                                                  ae.i("MicroMsg.JsApiUpdateVideoPlayer", "onUpdateView param=%s exp=%s", new Object[] { "autoPauseIfOpenNative", parame.getLocalizedMessage() });
                                                                   continue;
                                                                   parame = parame;
-                                                                  ad.i("MicroMsg.JsApiUpdateVideoPlayer", "onUpdateView param=%s exp=%s", new Object[] { "autoPauseIfNavigate", parame.getLocalizedMessage() });
+                                                                  ae.i("MicroMsg.JsApiUpdateVideoPlayer", "onUpdateView param=%s exp=%s", new Object[] { "autoPauseIfNavigate", parame.getLocalizedMessage() });
                                                                 }
                                                               }
                                                               catch (JSONException parame)
                                                               {
                                                                 for (;;)
                                                                 {
-                                                                  ad.i("MicroMsg.JsApiUpdateVideoPlayer", "onUpdateView param=%s exp=%s", new Object[] { "filePath", parame.getLocalizedMessage() });
+                                                                  ae.i("MicroMsg.JsApiUpdateVideoPlayer", "onUpdateView param=%s exp=%s", new Object[] { "filePath", parame.getLocalizedMessage() });
                                                                 }
                                                               }
                                                             }

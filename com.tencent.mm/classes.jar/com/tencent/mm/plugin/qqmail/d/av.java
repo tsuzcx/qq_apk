@@ -3,44 +3,44 @@ package com.tencent.mm.plugin.qqmail.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class av
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
   public int color;
-  public String dxD;
+  public String dyI;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(215238);
+    AppMethodBeat.i(217984);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.dxD != null) {
-        paramVarArgs.d(1, this.dxD);
+      if (this.dyI != null) {
+        paramVarArgs.d(1, this.dyI);
       }
       paramVarArgs.aS(2, this.color);
-      AppMethodBeat.o(215238);
+      AppMethodBeat.o(217984);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.dxD == null) {
+      if (this.dyI == null) {
         break label258;
       }
     }
     label258:
-    for (paramInt = f.a.a.b.b.a.e(1, this.dxD) + 0;; paramInt = 0)
+    for (paramInt = f.a.a.b.b.a.e(1, this.dyI) + 0;; paramInt = 0)
     {
       int i = f.a.a.b.b.a.bz(2, this.color);
-      AppMethodBeat.o(215238);
+      AppMethodBeat.o(217984);
       return paramInt + i;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
-        AppMethodBeat.o(215238);
+        AppMethodBeat.o(217984);
         return 0;
       }
       if (paramInt == 3)
@@ -50,18 +50,18 @@ public final class av
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(215238);
+          AppMethodBeat.o(217984);
           return -1;
         case 1: 
-          localav.dxD = locala.NPN.readString();
-          AppMethodBeat.o(215238);
+          localav.dyI = locala.OmT.readString();
+          AppMethodBeat.o(217984);
           return 0;
         }
-        localav.color = locala.NPN.zc();
-        AppMethodBeat.o(215238);
+        localav.color = locala.OmT.zc();
+        AppMethodBeat.o(217984);
         return 0;
       }
-      AppMethodBeat.o(215238);
+      AppMethodBeat.o(217984);
       return -1;
     }
   }

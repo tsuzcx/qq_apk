@@ -16,8 +16,8 @@ final class WalletECardLogoutUI$1
     AppMethodBeat.i(71782);
     b localb = new b();
     localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/wallet_ecard/ui/WalletECardLogoutUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-    WalletECardLogoutUI.a(this.DpD);
+    a.b("com/tencent/mm/plugin/wallet_ecard/ui/WalletECardLogoutUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+    WalletECardLogoutUI.a(this.DHj);
     a.a(this, "com/tencent/mm/plugin/wallet_ecard/ui/WalletECardLogoutUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(71782);
   }

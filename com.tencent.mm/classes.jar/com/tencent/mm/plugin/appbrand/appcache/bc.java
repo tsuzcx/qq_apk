@@ -1,93 +1,253 @@
 package com.tencent.mm.plugin.appbrand.appcache;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.w;
-import com.tencent.mm.sdk.e.c.a;
-import java.lang.reflect.Field;
+import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
+import com.tencent.mm.plugin.appbrand.appstorage.IWxaFileSystemWithModularizing;
+import com.tencent.mm.plugin.appbrand.appstorage.ab;
+import com.tencent.mm.plugin.appbrand.appstorage.j;
+import com.tencent.mm.plugin.appbrand.appstorage.m;
+import com.tencent.mm.sdk.platformtools.ae;
+import java.io.Closeable;
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
+import java.lang.reflect.Proxy;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
+@Deprecated
 public final class bc
-  extends w
+  implements InvocationHandler
 {
-  static final c.a hEe;
-  public static final String[] jIu;
+  private final Map<String, Method> jLg;
+  private final b jLh;
   
-  static
+  private bc(q paramq)
   {
-    int i = 0;
-    AppMethodBeat.i(146004);
-    jIu = new String[] { "appId", "version", "debugType" };
-    Object localObject1 = new c.a();
-    ((c.a)localObject1).IhA = new Field[10];
-    ((c.a)localObject1).columns = new String[11];
-    Object localObject2 = new StringBuilder();
-    ((c.a)localObject1).columns[0] = "appId";
-    ((c.a)localObject1).IhC.put("appId", "TEXT");
-    ((StringBuilder)localObject2).append(" appId TEXT");
-    ((StringBuilder)localObject2).append(", ");
-    ((c.a)localObject1).columns[1] = "version";
-    ((c.a)localObject1).IhC.put("version", "INTEGER");
-    ((StringBuilder)localObject2).append(" version INTEGER");
-    ((StringBuilder)localObject2).append(", ");
-    ((c.a)localObject1).columns[2] = "versionMd5";
-    ((c.a)localObject1).IhC.put("versionMd5", "TEXT");
-    ((StringBuilder)localObject2).append(" versionMd5 TEXT");
-    ((StringBuilder)localObject2).append(", ");
-    ((c.a)localObject1).columns[3] = "NewMd5";
-    ((c.a)localObject1).IhC.put("NewMd5", "TEXT");
-    ((StringBuilder)localObject2).append(" NewMd5 TEXT");
-    ((StringBuilder)localObject2).append(", ");
-    ((c.a)localObject1).columns[4] = "pkgPath";
-    ((c.a)localObject1).IhC.put("pkgPath", "TEXT");
-    ((StringBuilder)localObject2).append(" pkgPath TEXT");
-    ((StringBuilder)localObject2).append(", ");
-    ((c.a)localObject1).columns[5] = "createTime";
-    ((c.a)localObject1).IhC.put("createTime", "LONG");
-    ((StringBuilder)localObject2).append(" createTime LONG");
-    ((StringBuilder)localObject2).append(", ");
-    ((c.a)localObject1).columns[6] = "debugType";
-    ((c.a)localObject1).IhC.put("debugType", "INTEGER default '0' ");
-    ((StringBuilder)localObject2).append(" debugType INTEGER default '0' ");
-    ((StringBuilder)localObject2).append(", ");
-    ((c.a)localObject1).columns[7] = "downloadURL";
-    ((c.a)localObject1).IhC.put("downloadURL", "TEXT");
-    ((StringBuilder)localObject2).append(" downloadURL TEXT");
-    ((StringBuilder)localObject2).append(", ");
-    ((c.a)localObject1).columns[8] = "startTime";
-    ((c.a)localObject1).IhC.put("startTime", "LONG");
-    ((StringBuilder)localObject2).append(" startTime LONG");
-    ((StringBuilder)localObject2).append(", ");
-    ((c.a)localObject1).columns[9] = "endTime";
-    ((c.a)localObject1).IhC.put("endTime", "LONG");
-    ((StringBuilder)localObject2).append(" endTime LONG");
-    ((c.a)localObject1).columns[10] = "rowid";
-    ((c.a)localObject1).sql = ((StringBuilder)localObject2).toString();
-    hEe = (c.a)localObject1;
-    localObject1 = " PRIMARY KEY (";
-    localObject2 = jIu;
-    int j = localObject2.length;
-    while (i < j)
-    {
-      localObject3 = localObject2[i];
-      localObject1 = (String)localObject1 + ", " + (String)localObject3;
-      i += 1;
-    }
-    localObject1 = ((String)localObject1).replaceFirst(",", "");
-    localObject1 = (String)localObject1 + " )";
-    localObject2 = new StringBuilder();
-    Object localObject3 = hEe;
-    ((c.a)localObject3).sql = (((c.a)localObject3).sql + "," + (String)localObject1);
-    AppMethodBeat.o(146004);
+    AppMethodBeat.i(178543);
+    this.jLg = new ConcurrentHashMap();
+    this.jLh = new b(paramq, (byte)0);
+    AppMethodBeat.o(178543);
   }
   
-  public final c.a getDBInfo()
+  public static IWxaFileSystemWithModularizing K(AppBrandRuntime paramAppBrandRuntime)
   {
-    return hEe;
+    AppMethodBeat.i(134684);
+    try
+    {
+      paramAppBrandRuntime = new bc(bg.M(paramAppBrandRuntime));
+      paramAppBrandRuntime = (IWxaFileSystemWithModularizing)Proxy.newProxyInstance(IWxaFileSystemWithModularizing.class.getClassLoader(), new Class[] { IWxaFileSystemWithModularizing.class }, paramAppBrandRuntime);
+      AppMethodBeat.o(134684);
+      return paramAppBrandRuntime;
+    }
+    catch (Exception paramAppBrandRuntime)
+    {
+      ae.e("MicroMsg.AppBrand.WxaPkgFileSystemWithModuleInvokeAdapter", "createInstance e=%s", new Object[] { paramAppBrandRuntime });
+      paramAppBrandRuntime = new a((byte)0);
+      AppMethodBeat.o(134684);
+    }
+    return paramAppBrandRuntime;
+  }
+  
+  private static Object a(Method paramMethod, m paramm)
+  {
+    AppMethodBeat.i(178542);
+    if (paramMethod.getReturnType().equals(m.class))
+    {
+      AppMethodBeat.o(178542);
+      return paramm;
+    }
+    AppMethodBeat.o(178542);
+    return null;
+  }
+  
+  private Method a(Method paramMethod)
+  {
+    AppMethodBeat.i(134687);
+    String str = paramMethod.toGenericString();
+    Method localMethod2 = (Method)this.jLg.get(str);
+    Method localMethod1 = localMethod2;
+    if (localMethod2 == null)
+    {
+      paramMethod = ab.class.getMethod(paramMethod.getName(), paramMethod.getParameterTypes());
+      localMethod1 = paramMethod;
+      if (paramMethod != null)
+      {
+        this.jLg.put(str, paramMethod);
+        localMethod1 = paramMethod;
+      }
+    }
+    AppMethodBeat.o(134687);
+    return localMethod1;
+  }
+  
+  public final Object invoke(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
+  {
+    AppMethodBeat.i(134685);
+    if (paramMethod.getReturnType().equals(Boolean.TYPE))
+    {
+      paramObject = Boolean.TRUE;
+      AppMethodBeat.o(134685);
+      return paramObject;
+    }
+    if (Modifier.isStatic(paramMethod.getModifiers()))
+    {
+      AppMethodBeat.o(134685);
+      return null;
+    }
+    if (paramMethod.getReturnType().equals(WxaPkg.Info.class)) {
+      try
+      {
+        paramObject = b.a(this.jLh).LM((String)paramArrayOfObject[0]);
+        if (paramObject != null)
+        {
+          paramObject = paramObject.bal();
+          AppMethodBeat.o(134685);
+          return paramObject;
+        }
+        AppMethodBeat.o(134685);
+        return null;
+      }
+      catch (Throwable paramObject)
+      {
+        ae.e("MicroMsg.AppBrand.WxaPkgFileSystemWithModuleInvokeAdapter", "invoke with method(%s) args(%s), call openReadPartialInfo get exception(%s)", new Object[] { paramMethod.toGenericString(), Arrays.toString(paramArrayOfObject), paramObject });
+        AppMethodBeat.o(134685);
+        return null;
+      }
+    }
+    if ((paramArrayOfObject != null) && (paramArrayOfObject.length > 0) && ((paramArrayOfObject[0] instanceof String)))
+    {
+      paramObject = this.jLh.Md((String)paramArrayOfObject[0]);
+      if (paramObject == null)
+      {
+        ae.e("MicroMsg.AppBrand.WxaPkgFileSystemWithModuleInvokeAdapter", "invoke with method(%s) args(%s), get NULL targetFS", new Object[] { paramMethod.toGenericString(), Arrays.toString(paramArrayOfObject) });
+        paramObject = a(paramMethod, m.jPS);
+        AppMethodBeat.o(134685);
+        return paramObject;
+      }
+      if (paramMethod.getReturnType().equals(WxaPkg.class))
+      {
+        paramObject = paramObject.jKm;
+        AppMethodBeat.o(134685);
+        return paramObject;
+      }
+      Method localMethod = a(paramMethod);
+      if (localMethod != null)
+      {
+        paramObject = localMethod.invoke(paramObject, paramArrayOfObject);
+        AppMethodBeat.o(134685);
+        return paramObject;
+      }
+    }
+    else if (paramMethod.getReturnType().equals(Void.TYPE))
+    {
+      paramObject = this.jLh.bbg();
+      if (paramObject != null)
+      {
+        paramMethod = a(paramMethod);
+        if (paramMethod != null)
+        {
+          paramObject = paramObject.iterator();
+          while (paramObject.hasNext()) {
+            paramMethod.invoke((ab)paramObject.next(), paramArrayOfObject);
+          }
+        }
+      }
+      AppMethodBeat.o(134685);
+      return null;
+    }
+    ae.e("MicroMsg.AppBrand.WxaPkgFileSystemWithModuleInvokeAdapter", "invoke with method(%s) args(%s), fallback return access denied", new Object[] { paramMethod.toGenericString(), Arrays.toString(paramArrayOfObject) });
+    paramObject = a(paramMethod, m.jPQ);
+    AppMethodBeat.o(134685);
+    return paramObject;
+  }
+  
+  static final class a
+    extends j
+    implements IWxaFileSystemWithModularizing
+  {
+    public final WxaPkg.Info openReadPartialInfo(String paramString)
+    {
+      return null;
+    }
+  }
+  
+  static final class b
+    implements Closeable
+  {
+    private final q jLi;
+    private final Map<WxaPkg, ab> jLj;
+    
+    private b(q paramq)
+    {
+      AppMethodBeat.i(178541);
+      this.jLj = new HashMap();
+      this.jLi = paramq;
+      AppMethodBeat.o(178541);
+    }
+    
+    final ab Md(String paramString)
+    {
+      AppMethodBeat.i(134682);
+      if (this.jLi == null)
+      {
+        AppMethodBeat.o(134682);
+        return null;
+      }
+      WxaPkg localWxaPkg = this.jLi.LK(paramString);
+      if (localWxaPkg == null)
+      {
+        AppMethodBeat.o(134682);
+        return null;
+      }
+      synchronized (this.jLj)
+      {
+        Object localObject = (ab)this.jLj.get(localWxaPkg);
+        paramString = (String)localObject;
+        if (localObject == null)
+        {
+          localObject = this.jLj;
+          paramString = new ab(localWxaPkg);
+          ((Map)localObject).put(localWxaPkg, paramString);
+        }
+        AppMethodBeat.o(134682);
+        return paramString;
+      }
+    }
+    
+    final Collection<ab> bbg()
+    {
+      AppMethodBeat.i(134681);
+      synchronized (this.jLj)
+      {
+        Collection localCollection = this.jLj.values();
+        AppMethodBeat.o(134681);
+        return localCollection;
+      }
+    }
+    
+    public final void close()
+    {
+      AppMethodBeat.i(134683);
+      synchronized (this.jLj)
+      {
+        this.jLj.clear();
+        if (this.jLi != null) {
+          this.jLi.close();
+        }
+        AppMethodBeat.o(134683);
+        return;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appcache.bc
  * JD-Core Version:    0.7.0.1
  */

@@ -10,7 +10,7 @@ import android.widget.FrameLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.pluginsdk.ui.tools.r;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.ArrayList;
 
 final class SnsUploadUI$12
@@ -29,13 +29,13 @@ final class SnsUploadUI$12
         Object localObject1 = new b();
         ((b)localObject1).bd(paramAnonymousView);
         ((b)localObject1).bd(paramAnonymousDragEvent);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/sns/ui/SnsUploadUI$2$1", "android/view/View$OnDragListener", "onDrag", "(Landroid/view/View;Landroid/view/DragEvent;)Z", this, ((b)localObject1).ahq());
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/sns/ui/SnsUploadUI$2$1", "android/view/View$OnDragListener", "onDrag", "(Landroid/view/View;Landroid/view/DragEvent;)Z", this, ((b)localObject1).ahF());
         boolean bool = false;
         int i = paramAnonymousDragEvent.getAction();
         switch (i)
         {
         default: 
-          ad.e("MicroMsg.SnsUploadUI", "Unknown action type received by OnDragListener.");
+          ae.e("MicroMsg.SnsUploadUI", "Unknown action type received by OnDragListener.");
         }
         for (;;)
         {
@@ -43,9 +43,9 @@ final class SnsUploadUI$12
           AppMethodBeat.o(99581);
           return bool;
           bool = true;
-          ad.i("MicroMsg.SnsUploadUI", "ACTION: [%s]", new Object[] { Integer.valueOf(i) });
+          ae.i("MicroMsg.SnsUploadUI", "ACTION: [%s]", new Object[] { Integer.valueOf(i) });
           continue;
-          ad.i("MicroMsg.SnsUploadUI", "ACTION_DROP");
+          ae.i("MicroMsg.SnsUploadUI", "ACTION_DROP");
           paramAnonymousView = paramAnonymousDragEvent.getClipData();
           if (paramAnonymousView != null)
           {
@@ -56,7 +56,7 @@ final class SnsUploadUI$12
             {
               Object localObject2 = paramAnonymousView.getItemAt(i);
               if (localObject2 == null) {
-                ad.e("MicroMsg.SnsUploadUI", "item == null");
+                ae.e("MicroMsg.SnsUploadUI", "item == null");
               }
               for (;;)
               {
@@ -64,16 +64,16 @@ final class SnsUploadUI$12
                 break;
                 if (((ClipData.Item)localObject2).getIntent() != null)
                 {
-                  localObject1 = SnsUploadUI.12.this.Ape;
+                  localObject1 = SnsUploadUI.12.this.AGr;
                   localObject2 = ((ClipData.Item)localObject2).getIntent();
                   localObject2 = new com.tencent.mm.hellhoundlib.b.a().bc(localObject2);
-                  com.tencent.mm.hellhoundlib.a.a.a(localObject1, ((com.tencent.mm.hellhoundlib.b.a)localObject2).ahp(), "com/tencent/mm/plugin/sns/ui/SnsUploadUI$2$1", "onDrag", "(Landroid/view/View;Landroid/view/DragEvent;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-                  ((SnsUploadUI)localObject1).startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject2).mq(0));
+                  com.tencent.mm.hellhoundlib.a.a.a(localObject1, ((com.tencent.mm.hellhoundlib.b.a)localObject2).ahE(), "com/tencent/mm/plugin/sns/ui/SnsUploadUI$2$1", "onDrag", "(Landroid/view/View;Landroid/view/DragEvent;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+                  ((SnsUploadUI)localObject1).startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject2).mt(0));
                   com.tencent.mm.hellhoundlib.a.a.a(localObject1, "com/tencent/mm/plugin/sns/ui/SnsUploadUI$2$1", "onDrag", "(Landroid/view/View;Landroid/view/DragEvent;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
                 }
                 else if (((ClipData.Item)localObject2).getUri() != null)
                 {
-                  localObject1 = new r(SnsUploadUI.12.this.Ape.getContext(), ((ClipData.Item)localObject2).getUri());
+                  localObject1 = new r(SnsUploadUI.12.this.AGr.getContext(), ((ClipData.Item)localObject2).getUri());
                   if ((((r)localObject1).fileType != 0) && (((r)localObject1).filePath != null)) {}
                   switch (((r)localObject1).fileType)
                   {
@@ -82,19 +82,19 @@ final class SnsUploadUI$12
                   case 3: 
                     paramAnonymousDragEvent.add(((r)localObject1).filePath);
                     continue;
-                    ad.e("MicroMsg.SnsUploadUI", "get file path failed");
+                    ae.e("MicroMsg.SnsUploadUI", "get file path failed");
                   }
                 }
               }
             }
             if (paramAnonymousDragEvent.size() < 0)
             {
-              ad.e("MicroMsg.SnsUploadUI", "no image file available");
+              ae.e("MicroMsg.SnsUploadUI", "no image file available");
               com.tencent.mm.hellhoundlib.a.a.a(true, this, "com/tencent/mm/plugin/sns/ui/SnsUploadUI$2$1", "android/view/View$OnDragListener", "onDrag", "(Landroid/view/View;Landroid/view/DragEvent;)Z");
               AppMethodBeat.o(99581);
               return true;
             }
-            ((an)SnsUploadUI.f(SnsUploadUI.12.this.Ape)).c(paramAnonymousDragEvent, 0, false);
+            ((an)SnsUploadUI.f(SnsUploadUI.12.this.AGr)).c(paramAnonymousDragEvent, 0, false);
             bool = true;
           }
           else
@@ -104,8 +104,8 @@ final class SnsUploadUI$12
         }
       }
     };
-    if (SnsUploadUI.g(this.Ape) != null) {
-      SnsUploadUI.g(this.Ape).setOnDragListener(local1);
+    if (SnsUploadUI.g(this.AGr) != null) {
+      SnsUploadUI.g(this.AGr).setOnDragListener(local1);
     }
     AppMethodBeat.o(99582);
   }

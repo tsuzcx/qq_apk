@@ -12,32 +12,32 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class PieView
   extends View
 {
-  private int dAF;
-  private Paint fQa;
-  private int kuN;
-  private int oUA;
-  private int oUB;
-  private int oUC;
-  private int oUD;
-  private int oUE;
-  private int oUF;
-  private Paint oUs;
-  private Paint oUt;
-  private Paint oUu;
-  private Paint oUv;
-  private Paint oUw;
-  private Paint oUx;
-  private int oUy;
-  private int oUz;
+  private int dBK;
+  private Paint fSg;
+  private int kyd;
+  private Paint paV;
+  private Paint paW;
+  private Paint paX;
+  private Paint paY;
+  private Paint paZ;
+  private Paint pba;
+  private int pbb;
+  private int pbc;
+  private int pbd;
+  private int pbe;
+  private int pbf;
+  private int pbg;
+  private int pbh;
+  private int pbi;
   
   public PieView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(22844);
-    this.kuN = 6;
-    this.oUE = 0;
-    this.dAF = 0;
-    this.oUF = -90;
+    this.kyd = 6;
+    this.pbh = 0;
+    this.dBK = 0;
+    this.pbi = -90;
     initView();
     AppMethodBeat.o(22844);
   }
@@ -46,15 +46,15 @@ public class PieView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(22843);
-    this.kuN = 6;
-    this.oUE = 0;
-    this.dAF = 0;
-    this.oUF = -90;
+    this.kyd = 6;
+    this.pbh = 0;
+    this.dBK = 0;
+    this.pbi = -90;
     initView();
     AppMethodBeat.o(22843);
   }
   
-  private static Paint AT(int paramInt)
+  private static Paint Bf(int paramInt)
   {
     AppMethodBeat.i(22846);
     Paint localPaint = new Paint();
@@ -82,13 +82,13 @@ public class PieView
   private void initView()
   {
     AppMethodBeat.i(22845);
-    this.fQa = AT(-1);
-    this.oUs = AT(-657931);
-    this.oUt = AT(-2565928);
-    this.oUu = AT(-15223279);
-    this.oUv = AT(-7876878);
-    this.oUw = AT(-7876878);
-    this.oUx = AT(-1644567);
+    this.fSg = Bf(-1);
+    this.paV = Bf(-657931);
+    this.paW = Bf(-2565928);
+    this.paX = Bf(-15223279);
+    this.paY = Bf(-7876878);
+    this.paZ = Bf(-7876878);
+    this.pba = Bf(-1644567);
     AppMethodBeat.o(22845);
   }
   
@@ -99,37 +99,37 @@ public class PieView
     float f2 = getMeasuredHeight() / 2 + getTop();
     float f3 = getMeasuredHeight() / 3 + 15;
     RectF localRectF1 = new RectF(f1 - f3, f2 - f3, f1 + f3, f2 + f3);
-    if (this.dAF == 0)
+    if (this.dBK == 0)
     {
-      paramCanvas.drawCircle(f1, f2, f3, this.oUs);
-      paramCanvas.drawArc(localRectF1, this.oUF, 45.0F, true, this.oUt);
-      paramCanvas.drawCircle(f1, f2, f3 - 15.0F, this.fQa);
-      this.oUF += 4;
-      this.oUF %= 360;
+      paramCanvas.drawCircle(f1, f2, f3, this.paV);
+      paramCanvas.drawArc(localRectF1, this.pbi, 45.0F, true, this.paW);
+      paramCanvas.drawCircle(f1, f2, f3 - 15.0F, this.fSg);
+      this.pbi += 4;
+      this.pbi %= 360;
     }
     RectF localRectF2;
     int i;
     int j;
-    if (this.dAF == 1)
+    if (this.dBK == 1)
     {
       f3 = 10.0F + f3;
       localRectF2 = new RectF(f1 - f3, f2 - f3, f1 + f3, f3 + f2);
-      this.oUy = V(this.oUy, this.oUC, this.kuN);
-      paramCanvas.drawArc(localRectF2, -90.0F, this.oUy, true, this.oUu);
-      if (this.oUE > 0) {
+      this.pbb = V(this.pbb, this.pbf, this.kyd);
+      paramCanvas.drawArc(localRectF2, -90.0F, this.pbb, true, this.paX);
+      if (this.pbh > 0) {
         break label363;
       }
-      if (this.oUy == this.oUC)
+      if (this.pbb == this.pbf)
       {
-        this.oUA = V(this.oUA, this.oUD, this.kuN);
-        paramCanvas.drawArc(localRectF1, this.oUC - 90, this.oUA, true, this.oUv);
+        this.pbd = V(this.pbd, this.pbg, this.kyd);
+        paramCanvas.drawArc(localRectF1, this.pbf - 90, this.pbd, true, this.paY);
       }
-      if (this.oUA == this.oUD)
+      if (this.pbd == this.pbg)
       {
-        i = this.oUC;
-        j = this.oUD;
-        this.oUz = V(this.oUz, 360 - i - j, this.kuN);
-        paramCanvas.drawArc(localRectF1, this.oUC - 90 + this.oUD, this.oUz, true, this.oUw);
+        i = this.pbf;
+        j = this.pbg;
+        this.pbc = V(this.pbc, 360 - i - j, this.kyd);
+        paramCanvas.drawArc(localRectF1, this.pbf - 90 + this.pbg, this.pbc, true, this.paZ);
       }
     }
     for (;;)
@@ -138,45 +138,45 @@ public class PieView
       AppMethodBeat.o(22847);
       return;
       label363:
-      if (this.oUy == this.oUC)
+      if (this.pbb == this.pbf)
       {
-        this.oUB = V(this.oUB, this.oUE, this.kuN);
-        paramCanvas.drawArc(localRectF2, this.oUC - 90, this.oUB, true, this.oUx);
+        this.pbe = V(this.pbe, this.pbh, this.kyd);
+        paramCanvas.drawArc(localRectF2, this.pbf - 90, this.pbe, true, this.pba);
       }
-      if (this.oUB == this.oUE)
+      if (this.pbe == this.pbh)
       {
-        this.oUA = V(this.oUA, this.oUD, this.kuN);
-        paramCanvas.drawArc(localRectF1, this.oUE - 90 + this.oUC, this.oUA, true, this.oUv);
+        this.pbd = V(this.pbd, this.pbg, this.kyd);
+        paramCanvas.drawArc(localRectF1, this.pbh - 90 + this.pbf, this.pbd, true, this.paY);
       }
-      if (this.oUA == this.oUD)
+      if (this.pbd == this.pbg)
       {
-        i = this.oUC;
-        j = this.oUD;
-        int k = this.oUE;
-        this.oUz = V(this.oUz, 360 - i - j - k, this.kuN);
-        paramCanvas.drawArc(localRectF1, this.oUC - 90 + this.oUD + this.oUE, this.oUz, true, this.oUw);
+        i = this.pbf;
+        j = this.pbg;
+        int k = this.pbh;
+        this.pbc = V(this.pbc, 360 - i - j - k, this.kyd);
+        paramCanvas.drawArc(localRectF1, this.pbf - 90 + this.pbg + this.pbh, this.pbc, true, this.paZ);
       }
     }
   }
   
   public void setDeepGrayTargetAngle(int paramInt)
   {
-    this.oUD = paramInt;
+    this.pbg = paramInt;
   }
   
   public void setGreenTargetAngle(int paramInt)
   {
-    this.oUC = paramInt;
+    this.pbf = paramInt;
   }
   
   public void setOtherAccTargetAngle(int paramInt)
   {
-    this.oUE = paramInt;
+    this.pbh = paramInt;
   }
   
   public void setStage(int paramInt)
   {
-    this.dAF = paramInt;
+    this.dBK = paramInt;
   }
 }
 

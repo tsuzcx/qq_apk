@@ -26,17 +26,17 @@ import java.util.List;
 
 public final class i
 {
-  private static final d.l.b.a.b.h.g Nqc;
-  public static final i Nqd;
+  private static final d.l.b.a.b.h.g NNi;
+  public static final i NNj;
   
   static
   {
     AppMethodBeat.i(59261);
-    Nqd = new i();
-    d.l.b.a.b.h.g localg = d.l.b.a.b.h.g.grD();
+    NNj = new i();
+    d.l.b.a.b.h.g localg = d.l.b.a.b.h.g.gwf();
     d.l.b.a.b.e.c.a.a(localg);
     p.g(localg, "ExtensionRegistryLite.ne…f::registerAllExtensions)");
-    Nqc = localg;
+    NNi = localg;
     AppMethodBeat.o(59261);
   }
   
@@ -47,7 +47,7 @@ public final class i
     p.h(paramc, "nameResolver");
     p.h(paramh, "typeTable");
     Object localObject = (i.c)paramm;
-    i.f localf = d.l.b.a.b.e.c.a.Npe;
+    i.f localf = d.l.b.a.b.e.c.a.NMk;
     p.g(localf, "JvmProtoBuf.propertySignature");
     localObject = (d.l.b.a.b.e.c.a.c)f.a((i.c)localObject, localf);
     if (localObject == null)
@@ -55,20 +55,20 @@ public final class i
       AppMethodBeat.o(59257);
       return null;
     }
-    if (((d.l.b.a.b.e.c.a.c)localObject).gqz()) {}
-    for (localObject = ((d.l.b.a.b.e.c.a.c)localObject).Npq; (localObject == null) && (paramBoolean); localObject = null)
+    if (((d.l.b.a.b.e.c.a.c)localObject).gvb()) {}
+    for (localObject = ((d.l.b.a.b.e.c.a.c)localObject).NMw; (localObject == null) && (paramBoolean); localObject = null)
     {
       AppMethodBeat.o(59257);
       return null;
     }
     int i;
-    if ((localObject != null) && (((a.a)localObject).gnL()))
+    if ((localObject != null) && (((a.a)localObject).gsn()))
     {
-      i = ((a.a)localObject).NlC;
-      if ((localObject == null) || (!((a.a)localObject).gqo())) {
+      i = ((a.a)localObject).NII;
+      if ((localObject == null) || (!((a.a)localObject).guQ())) {
         break label180;
       }
-      paramm = paramc.getString(((a.a)localObject).Npn);
+      paramm = paramc.getString(((a.a)localObject).NMt);
     }
     label180:
     do
@@ -76,7 +76,7 @@ public final class i
       paramm = new e.a(paramc.getString(i), paramm);
       AppMethodBeat.o(59257);
       return paramm;
-      i = paramm.NlC;
+      i = paramm.NII;
       break;
       paramh = b(d.l.b.a.b.e.b.g.a(paramm, paramh), paramc);
       paramm = paramh;
@@ -92,17 +92,17 @@ public final class i
     p.h(paramc1, "nameResolver");
     p.h(paramh, "typeTable");
     Object localObject1 = (i.c)paramc;
-    Object localObject2 = d.l.b.a.b.e.c.a.Npb;
+    Object localObject2 = d.l.b.a.b.e.c.a.NMh;
     p.g(localObject2, "JvmProtoBuf.constructorSignature");
     localObject2 = (d.l.b.a.b.e.c.a.b)f.a((i.c)localObject1, (i.f)localObject2);
-    if ((localObject2 != null) && (((d.l.b.a.b.e.c.a.b)localObject2).gnL()))
+    if ((localObject2 != null) && (((d.l.b.a.b.e.c.a.b)localObject2).gsn()))
     {
-      localObject1 = paramc1.getString(((d.l.b.a.b.e.c.a.b)localObject2).NlC);
-      if ((localObject2 == null) || (!((d.l.b.a.b.e.c.a.b)localObject2).gqo())) {
+      localObject1 = paramc1.getString(((d.l.b.a.b.e.c.a.b)localObject2).NII);
+      if ((localObject2 == null) || (!((d.l.b.a.b.e.c.a.b)localObject2).guQ())) {
         break label124;
       }
     }
-    for (paramc = paramc1.getString(((d.l.b.a.b.e.c.a.b)localObject2).Npn);; paramc = j.a((Iterable)paramc, (CharSequence)"", (CharSequence)"(", (CharSequence)")V", 0, null, null, 56))
+    for (paramc = paramc1.getString(((d.l.b.a.b.e.c.a.b)localObject2).NMt);; paramc = j.a((Iterable)paramc, (CharSequence)"", (CharSequence)"(", (CharSequence)")V", 0, null, null, 56))
     {
       paramc = new e.b((String)localObject1, paramc);
       AppMethodBeat.o(59256);
@@ -110,7 +110,7 @@ public final class i
       localObject1 = "<init>";
       break;
       label124:
-      paramc = paramc.Nll;
+      paramc = paramc.NIr;
       p.g(paramc, "proto.valueParameterList");
       localObject2 = (Iterable)paramc;
       paramc = (Collection)new ArrayList(j.a((Iterable)localObject2, 10));
@@ -137,27 +137,27 @@ public final class i
     p.h(paramc, "nameResolver");
     p.h(paramh1, "typeTable");
     Object localObject1 = (i.c)paramh;
-    Object localObject2 = d.l.b.a.b.e.c.a.Npc;
+    Object localObject2 = d.l.b.a.b.e.c.a.NMi;
     p.g(localObject2, "JvmProtoBuf.methodSignature");
     localObject1 = (d.l.b.a.b.e.c.a.b)f.a((i.c)localObject1, (i.f)localObject2);
     int i;
-    if ((localObject1 != null) && (((d.l.b.a.b.e.c.a.b)localObject1).gnL()))
+    if ((localObject1 != null) && (((d.l.b.a.b.e.c.a.b)localObject1).gsn()))
     {
-      i = ((d.l.b.a.b.e.c.a.b)localObject1).NlC;
-      if ((localObject1 == null) || (!((d.l.b.a.b.e.c.a.b)localObject1).gqo())) {
+      i = ((d.l.b.a.b.e.c.a.b)localObject1).NII;
+      if ((localObject1 == null) || (!((d.l.b.a.b.e.c.a.b)localObject1).guQ())) {
         break label128;
       }
     }
-    for (paramh = paramc.getString(((d.l.b.a.b.e.c.a.b)localObject1).Npn);; paramh = j.a((Iterable)localObject1, (CharSequence)"", (CharSequence)"(", (CharSequence)")", 0, null, null, 56) + paramh)
+    for (paramh = paramc.getString(((d.l.b.a.b.e.c.a.b)localObject1).NMt);; paramh = j.a((Iterable)localObject1, (CharSequence)"", (CharSequence)"(", (CharSequence)")", 0, null, null, 56) + paramh)
     {
       paramh = new e.b(paramc.getString(i), paramh);
       AppMethodBeat.o(59255);
       return paramh;
-      i = paramh.NlC;
+      i = paramh.NII;
       break;
       label128:
-      localObject1 = (Collection)j.eM(d.l.b.a.b.e.b.g.b(paramh, paramh1));
-      localObject2 = paramh.Nll;
+      localObject1 = (Collection)j.eP(d.l.b.a.b.e.b.g.b(paramh, paramh1));
+      localObject2 = paramh.NIr;
       p.g(localObject2, "proto.valueParameterList");
       Object localObject3 = (Iterable)localObject2;
       localObject2 = (Collection)new ArrayList(j.a((Iterable)localObject3, 10));
@@ -194,7 +194,7 @@ public final class i
   private static g a(InputStream paramInputStream, String[] paramArrayOfString)
   {
     AppMethodBeat.i(59254);
-    paramInputStream = a.d.f(paramInputStream, Nqc);
+    paramInputStream = a.d.f(paramInputStream, NNi);
     p.g(paramInputStream, "JvmProtoBuf.StringTableT…this, EXTENSION_REGISTRY)");
     paramInputStream = new g(paramInputStream, paramArrayOfString);
     AppMethodBeat.o(59254);
@@ -204,9 +204,9 @@ public final class i
   private static String b(a.p paramp, c paramc)
   {
     AppMethodBeat.i(59259);
-    if (paramp.goY())
+    if (paramp.gtA())
     {
-      paramp = b.bcC(paramc.akL(paramp.NmG));
+      paramp = b.beg(paramc.alv(paramp.NJM));
       AppMethodBeat.o(59259);
       return paramp;
     }
@@ -224,7 +224,7 @@ public final class i
     p.h(paramArrayOfString1, "bytes");
     p.h(paramArrayOfString2, "strings");
     paramArrayOfString1 = new ByteArrayInputStream(paramArrayOfString1);
-    paramArrayOfString1 = new o(a((InputStream)paramArrayOfString1, paramArrayOfString2), d.l.b.a.b.e.a.b.a((InputStream)paramArrayOfString1, Nqc));
+    paramArrayOfString1 = new o(a((InputStream)paramArrayOfString1, paramArrayOfString2), d.l.b.a.b.e.a.b.a((InputStream)paramArrayOfString1, NNi));
     AppMethodBeat.o(59251);
     return paramArrayOfString1;
   }
@@ -239,7 +239,7 @@ public final class i
     p.h(paramArrayOfString1, "bytes");
     p.h(paramArrayOfString2, "strings");
     paramArrayOfString1 = new ByteArrayInputStream(paramArrayOfString1);
-    paramArrayOfString1 = new o(a((InputStream)paramArrayOfString1, paramArrayOfString2), a.k.c((InputStream)paramArrayOfString1, Nqc));
+    paramArrayOfString1 = new o(a((InputStream)paramArrayOfString1, paramArrayOfString2), a.k.c((InputStream)paramArrayOfString1, NNi));
     AppMethodBeat.o(59252);
     return paramArrayOfString1;
   }
@@ -248,11 +248,11 @@ public final class i
   {
     AppMethodBeat.i(59260);
     p.h(paramm, "proto");
-    Object localObject = d.NpS;
-    localObject = d.gqX();
-    paramm = paramm.e(d.l.b.a.b.e.c.a.Npf);
+    Object localObject = d.NMY;
+    localObject = d.gvz();
+    paramm = paramm.e(d.l.b.a.b.e.c.a.NMl);
     p.g(paramm, "proto.getExtension(JvmProtoBuf.flags)");
-    paramm = ((b.a)localObject).akK(((Number)paramm).intValue());
+    paramm = ((b.a)localObject).alu(((Number)paramm).intValue());
     p.g(paramm, "JvmFlags.IS_MOVED_FROM_I…nsion(JvmProtoBuf.flags))");
     boolean bool = paramm.booleanValue();
     AppMethodBeat.o(59260);
@@ -265,19 +265,19 @@ public final class i
     p.h(paramArrayOfString1, "data");
     p.h(paramArrayOfString2, "strings");
     paramArrayOfString1 = new ByteArrayInputStream(a.ap(paramArrayOfString1));
-    paramArrayOfString1 = new o(a((InputStream)paramArrayOfString1, paramArrayOfString2), a.h.b((InputStream)paramArrayOfString1, Nqc));
+    paramArrayOfString1 = new o(a((InputStream)paramArrayOfString1, paramArrayOfString2), a.h.b((InputStream)paramArrayOfString1, NNi));
     AppMethodBeat.o(59253);
     return paramArrayOfString1;
   }
   
-  public static d.l.b.a.b.h.g gqY()
+  public static d.l.b.a.b.h.g gvA()
   {
-    return Nqc;
+    return NNi;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.e.c.a.i
  * JD-Core Version:    0.7.0.1
  */

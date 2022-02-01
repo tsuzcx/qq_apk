@@ -17,70 +17,70 @@ import java.util.ArrayList;
 
 public final class j
 {
-  public Bitmap jtB;
-  public o jtC;
-  ImageView jtD;
-  View jtE;
-  View.OnClickListener jtG;
-  public Bitmap oCe;
-  float oCm;
-  boolean oFw;
-  MMActivity oJq;
-  Bitmap oJr;
-  TextView oJs;
-  TextView oJt;
-  View oJu;
-  ImageView oJv;
-  MMVerticalTextView oJw;
-  MMVerticalTextView oJx;
-  ArrayList<Bitmap> oJy;
-  String oJz;
-  b owK;
+  View.OnClickListener jwB;
+  public Bitmap jww;
+  public o jwx;
+  ImageView jwy;
+  View jwz;
+  b oDm;
+  public Bitmap oIG;
+  float oIO;
+  boolean oLY;
+  MMActivity oPS;
+  Bitmap oPT;
+  TextView oPU;
+  TextView oPV;
+  View oPW;
+  ImageView oPX;
+  MMVerticalTextView oPY;
+  MMVerticalTextView oPZ;
+  ArrayList<Bitmap> oQa;
+  String oQb;
   
   public j(MMActivity paramMMActivity)
   {
     AppMethodBeat.i(113550);
-    this.oFw = true;
-    this.oJr = null;
-    this.jtC = null;
-    this.oCm = 0.0F;
-    this.oJy = new ArrayList();
-    this.oJz = "";
-    this.jtG = new j.1(this);
-    this.oJq = paramMMActivity;
+    this.oLY = true;
+    this.oPT = null;
+    this.jwx = null;
+    this.oIO = 0.0F;
+    this.oQa = new ArrayList();
+    this.oQb = "";
+    this.jwB = new j.1(this);
+    this.oPS = paramMMActivity;
     AppMethodBeat.o(113550);
   }
   
   private void aW(float paramFloat)
   {
     AppMethodBeat.i(113551);
-    WindowManager.LayoutParams localLayoutParams = this.oJq.getWindow().getAttributes();
+    WindowManager.LayoutParams localLayoutParams = this.oPS.getWindow().getAttributes();
     localLayoutParams.screenBrightness = paramFloat;
-    this.oJq.getWindow().setAttributes(localLayoutParams);
+    this.oPS.getWindow().setAttributes(localLayoutParams);
     AppMethodBeat.o(113551);
   }
   
-  public final void bXd()
+  public final void bYs()
   {
     AppMethodBeat.i(113552);
-    if (this.oCm < 0.8F) {
+    if (this.oIO < 0.8F) {
       aW(0.8F);
     }
     AppMethodBeat.o(113552);
   }
   
-  public final void bXe()
+  public final void bYt()
   {
     AppMethodBeat.i(113553);
-    aW(this.oCm);
+    aW(this.oIO);
     AppMethodBeat.o(113553);
   }
   
-  public final void bXf()
+  public final void bYu()
   {
     AppMethodBeat.i(113554);
-    if ((this.jtC != null) && (this.jtC.isShowing())) {
-      this.jtD.setImageBitmap(this.jtB);
+    if ((this.jwx != null) && (this.jwx.isShowing())) {
+      this.jwy.setImageBitmap(this.jww);
     }
     AppMethodBeat.o(113554);
   }
@@ -88,12 +88,12 @@ public final class j
   final void recycleBmpList()
   {
     AppMethodBeat.i(113555);
-    if (this.oJy.size() > 2)
+    if (this.oQa.size() > 2)
     {
-      int i = this.oJy.size() - 1;
+      int i = this.oQa.size() - 1;
       while (i > 1)
       {
-        l.T((Bitmap)this.oJy.remove(i));
+        l.U((Bitmap)this.oQa.remove(i));
         i -= 1;
       }
     }

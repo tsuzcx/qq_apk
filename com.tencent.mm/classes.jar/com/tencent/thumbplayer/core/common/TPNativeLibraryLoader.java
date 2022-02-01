@@ -16,36 +16,36 @@ public class TPNativeLibraryLoader
   
   static
   {
-    AppMethodBeat.i(220457);
+    AppMethodBeat.i(197396);
     mIsLibLoadedLock = new Object();
     mIsLibLoaded = false;
     mLibLoader = null;
-    AppMethodBeat.o(220457);
+    AppMethodBeat.o(197396);
   }
   
   private static native String _getPlayerCoreVersion();
   
   public static String getLibVersion()
   {
-    AppMethodBeat.i(220450);
+    AppMethodBeat.i(197389);
     String str = getPlayerCoreVersion();
-    AppMethodBeat.o(220450);
+    AppMethodBeat.o(197389);
     return str;
   }
   
   public static String getPlayerCoreVersion()
   {
-    AppMethodBeat.i(220453);
+    AppMethodBeat.i(197392);
     try
     {
       String str = _getPlayerCoreVersion();
-      AppMethodBeat.o(220453);
+      AppMethodBeat.o(197392);
       return str;
     }
     catch (Throwable localThrowable)
     {
       TPNativeLog.printLog(2, "getPlayerCoreVersion: *.so is not loaded yet, return the hard-coded version number:2.3.1.1071.wechat");
-      AppMethodBeat.o(220453);
+      AppMethodBeat.o(197392);
     }
     return "2.3.1.1071.wechat";
   }
@@ -104,7 +104,7 @@ public class TPNativeLibraryLoader
   private static boolean isMatchJavaAndPlayerCore(String paramString1, String paramString2)
   {
     boolean bool2 = false;
-    AppMethodBeat.i(220456);
+    AppMethodBeat.i(197395);
     TPNativeLog.printLog(2, "javaVersion:" + paramString1 + ", coreVersion:" + paramString2);
     boolean bool1 = bool2;
     if (!TextUtils.isEmpty(paramString1))
@@ -116,7 +116,7 @@ public class TPNativeLibraryLoader
     }
     for (;;)
     {
-      AppMethodBeat.o(220456);
+      AppMethodBeat.o(197395);
       return bool1;
       label64:
       paramString1 = paramString1.split("\\.");
@@ -148,11 +148,11 @@ public class TPNativeLibraryLoader
   
   private static boolean loadLib(Context paramContext)
   {
-    AppMethodBeat.i(220454);
+    AppMethodBeat.i(197393);
     TPNativeLog.printLog(2, "loadLib cpu arch:" + TPSystemInfo.getCpuArchitecture());
     if ((TPSystemInfo.getCpuArchitecture() == 3) || (TPSystemInfo.getCpuArchitecture() == 4) || (TPSystemInfo.getCpuArchitecture() == 0))
     {
-      AppMethodBeat.o(220454);
+      AppMethodBeat.o(197393);
       return false;
     }
     String str = "TPCore-master".concat(String.valueOf(""));
@@ -180,7 +180,7 @@ public class TPNativeLibraryLoader
     }
     for (;;)
     {
-      AppMethodBeat.o(220454);
+      AppMethodBeat.o(197393);
       return bool2;
       bool1 = loadLibDefault(str, paramContext);
       break;
@@ -191,7 +191,7 @@ public class TPNativeLibraryLoader
   
   private static boolean loadLibDefault(String paramString, Context paramContext)
   {
-    AppMethodBeat.i(220455);
+    AppMethodBeat.i(197394);
     bool2 = false;
     bool1 = bool2;
     try
@@ -245,13 +245,13 @@ public class TPNativeLibraryLoader
         TPNativeLog.printLog(4, "loadLibDefault loaded " + paramString + " from APK failed," + paramContext.getMessage());
       }
     }
-    AppMethodBeat.o(220455);
+    AppMethodBeat.o(197394);
     return bool2;
   }
   
   public static void loadLibIfNeeded(Context paramContext)
   {
-    AppMethodBeat.i(220451);
+    AppMethodBeat.i(197390);
     for (;;)
     {
       synchronized (mIsLibLoadedLock)
@@ -270,13 +270,13 @@ public class TPNativeLibraryLoader
             break;
           }
           paramContext = new UnsupportedOperationException("Failed to load native library");
-          AppMethodBeat.o(220451);
+          AppMethodBeat.o(197390);
           throw paramContext;
         }
       }
       TPNativeLog.printLog(2, "TPNativeLibraryLoader load lib failed");
     }
-    AppMethodBeat.o(220451);
+    AppMethodBeat.o(197390);
   }
   
   public static void setLibLoader(ITPNativeLibraryExternalLoader paramITPNativeLibraryExternalLoader)

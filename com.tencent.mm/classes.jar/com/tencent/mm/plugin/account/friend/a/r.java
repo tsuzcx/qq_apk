@@ -15,43 +15,43 @@ public final class r
   {
     AppMethodBeat.i(184421);
     c.a locala = new c.a();
-    locala.IhA = new Field[9];
+    locala.IBL = new Field[9];
     locala.columns = new String[10];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "encryptUsername";
-    locala.IhC.put("encryptUsername", "TEXT");
+    locala.IBN.put("encryptUsername", "TEXT");
     localStringBuilder.append(" encryptUsername TEXT");
     localStringBuilder.append(", ");
     locala.columns[1] = "oldUsername";
-    locala.IhC.put("oldUsername", "TEXT");
+    locala.IBN.put("oldUsername", "TEXT");
     localStringBuilder.append(" oldUsername TEXT");
     localStringBuilder.append(", ");
     locala.columns[2] = "ticket";
-    locala.IhC.put("ticket", "TEXT");
+    locala.IBN.put("ticket", "TEXT");
     localStringBuilder.append(" ticket TEXT");
     localStringBuilder.append(", ");
     locala.columns[3] = "nickname";
-    locala.IhC.put("nickname", "TEXT");
+    locala.IBN.put("nickname", "TEXT");
     localStringBuilder.append(" nickname TEXT");
     localStringBuilder.append(", ");
     locala.columns[4] = "addState";
-    locala.IhC.put("addState", "INTEGER");
+    locala.IBN.put("addState", "INTEGER");
     localStringBuilder.append(" addState INTEGER");
     localStringBuilder.append(", ");
     locala.columns[5] = "showHead";
-    locala.IhC.put("showHead", "INTEGER");
+    locala.IBN.put("showHead", "INTEGER");
     localStringBuilder.append(" showHead INTEGER");
     localStringBuilder.append(", ");
     locala.columns[6] = "pinyinName";
-    locala.IhC.put("pinyinName", "TEXT");
+    locala.IBN.put("pinyinName", "TEXT");
     localStringBuilder.append(" pinyinName TEXT");
     localStringBuilder.append(", ");
     locala.columns[7] = "username";
-    locala.IhC.put("username", "TEXT");
+    locala.IBN.put("username", "TEXT");
     localStringBuilder.append(" username TEXT");
     localStringBuilder.append(", ");
     locala.columns[8] = "seq";
-    locala.IhC.put("seq", "INTEGER");
+    locala.IBN.put("seq", "INTEGER");
     localStringBuilder.append(" seq INTEGER");
     locala.columns[9] = "rowid";
     locala.sql = localStringBuilder.toString();
@@ -66,7 +66,7 @@ public final class r
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.account.friend.a.r
  * JD-Core Version:    0.7.0.1
  */

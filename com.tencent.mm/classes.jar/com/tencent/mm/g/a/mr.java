@@ -6,8 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class mr
   extends b
 {
-  public a dAB;
-  public b dAC;
+  public a dBE;
   
   public mr()
   {
@@ -16,24 +15,19 @@ public final class mr
   
   private mr(byte paramByte)
   {
-    AppMethodBeat.i(116462);
-    this.dAB = new a();
-    this.dAC = new b();
-    this.IbR = false;
+    AppMethodBeat.i(149875);
+    this.dBE = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(116462);
+    AppMethodBeat.o(149875);
   }
   
   public static final class a
   {
-    public String chatroomName;
-    public String dAD;
-    public boolean dzW = false;
-  }
-  
-  public static final class b
-  {
-    public int errCode;
+    public b dBF;
+    public int errCode = 0;
+    public String errMsg;
+    public int errType = 0;
   }
 }
 

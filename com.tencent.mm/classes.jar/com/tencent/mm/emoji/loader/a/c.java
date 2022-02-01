@@ -2,7 +2,7 @@ package com.tencent.mm.emoji.loader.a;
 
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"TAG", "", "plugin-emojisdk_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"TAG", "", "plugin-emojisdk_release"})
 public final class c
 {
   private static final String TAG = "MicroMsg.CoverMemoryCache";

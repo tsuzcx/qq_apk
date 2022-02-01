@@ -9,21 +9,21 @@ import com.tencent.mm.ui.chatting.k.c;
 public abstract interface b$a
   extends c<b.b>
 {
-  public abstract String aRw();
+  public abstract String aRV();
   
-  public abstract RecyclerView.a aWm(String paramString);
+  public abstract RecyclerView.a aXN(String paramString);
   
-  public abstract <T extends RecyclerView.i> T bZB();
+  public abstract <T extends RecyclerView.i> T caQ();
   
-  public abstract RecyclerView.h fFD();
+  public abstract RecyclerView.h fJK();
   
-  public abstract void fFE();
+  public abstract void fJL();
   
-  public abstract c.e fFF();
+  public abstract c.e fJM();
   
-  public abstract com.tencent.mm.modelvoiceaddr.ui.b.a fFG();
+  public abstract com.tencent.mm.modelvoiceaddr.ui.b.a fJN();
   
-  public abstract String fFH();
+  public abstract String fJO();
   
   public abstract int getType();
 }

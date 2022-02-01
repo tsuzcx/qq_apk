@@ -3,9 +3,9 @@ package com.tencent.mm.plugin.wallet_core.d;
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wallet_core.model.aj;
-import com.tencent.mm.protocal.protobuf.cjd;
+import com.tencent.mm.protocal.protobuf.cjx;
 import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class j
   extends com.tencent.mm.sdk.e.j<aj>
@@ -26,12 +26,12 @@ public final class j
     this.db = parame;
   }
   
-  public final aj VD(int paramInt)
+  public final aj Wk(int paramInt)
   {
     AppMethodBeat.i(70625);
     Object localObject = "select * from WalletRegionGreyAreaList where wallet_region = ".concat(String.valueOf(paramInt));
     Cursor localCursor = this.db.a((String)localObject, null, 2);
-    ad.i("MicroMsg.WalletRegionGreyItemStg", "getWalletRegionGreyItem ".concat(String.valueOf(localObject)));
+    ae.i("MicroMsg.WalletRegionGreyItemStg", "getWalletRegionGreyItem ".concat(String.valueOf(localObject)));
     if (localCursor == null)
     {
       localObject = new aj();
@@ -44,29 +44,29 @@ public final class j
       localObject = new aj();
       ((aj)localObject).convertFrom(localCursor);
     }
-    ad.i("MicroMsg.WalletRegionGreyItemStg", "get grey item ");
+    ae.i("MicroMsg.WalletRegionGreyItemStg", "get grey item ");
     localCursor.close();
     AppMethodBeat.o(70625);
     return localObject;
   }
   
-  public final void a(int paramInt, cjd paramcjd)
+  public final void a(int paramInt, cjx paramcjx)
   {
     AppMethodBeat.i(70624);
     aj localaj = new aj();
     localaj.field_wallet_region = paramInt;
     try
     {
-      localaj.field_wallet_grey_item_buf = paramcjd.toByteArray();
+      localaj.field_wallet_grey_item_buf = paramcjx.toByteArray();
       super.replace(localaj);
       AppMethodBeat.o(70624);
       return;
     }
-    catch (Exception paramcjd)
+    catch (Exception paramcjx)
     {
       for (;;)
       {
-        ad.e("MicroMsg.WalletRegionGreyItemStg", "setWalletRegionGreyItem error " + paramcjd.getMessage());
+        ae.e("MicroMsg.WalletRegionGreyItemStg", "setWalletRegionGreyItem error " + paramcjx.getMessage());
       }
     }
   }

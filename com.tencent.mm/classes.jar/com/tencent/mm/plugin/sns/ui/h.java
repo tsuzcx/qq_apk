@@ -8,17 +8,17 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class h
   extends LinearLayout
 {
+  private int Agg;
+  private LinearLayout Agh;
   private Context context;
-  private int nUo;
-  private int zOZ;
-  private LinearLayout zPa;
+  private int nZU;
   
   public h(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(97792);
-    this.nUo = 0;
-    this.zOZ = 6;
+    this.nZU = 0;
+    this.Agg = 6;
     this.context = paramContext;
     setOrientation(1);
     AppMethodBeat.o(97792);
@@ -27,26 +27,26 @@ public final class h
   public final void addView(View paramView)
   {
     AppMethodBeat.i(97793);
-    if (this.nUo % this.zOZ == 0)
+    if (this.nZU % this.Agg == 0)
     {
-      this.zPa = new LinearLayout(this.context);
-      this.zPa.setOrientation(0);
-      this.zPa.addView(paramView);
-      super.addView(this.zPa);
+      this.Agh = new LinearLayout(this.context);
+      this.Agh.setOrientation(0);
+      this.Agh.addView(paramView);
+      super.addView(this.Agh);
     }
     for (;;)
     {
-      this.nUo += 1;
+      this.nZU += 1;
       AppMethodBeat.o(97793);
       return;
-      this.zPa.addView(paramView);
+      this.Agh.addView(paramView);
     }
   }
   
   public final void setLineMaxCounte(int paramInt)
   {
     if (paramInt > 0) {
-      this.zOZ = paramInt;
+      this.Agg = paramInt;
     }
   }
 }

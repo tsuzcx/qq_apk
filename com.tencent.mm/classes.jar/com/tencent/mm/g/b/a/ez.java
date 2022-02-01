@@ -2,58 +2,63 @@ package com.tencent.mm.g.b.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.a;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public final class ez
   extends a
 {
-  private String dSb = "";
-  private long ejy = 0L;
+  private String dTr = "";
+  public long ele = 0L;
+  private long elf = 0L;
+  
+  public final String RC()
+  {
+    AppMethodBeat.i(94832);
+    Object localObject = new StringBuffer();
+    ((StringBuffer)localObject).append(this.ele);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.dTr);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.elf);
+    localObject = ((StringBuffer)localObject).toString();
+    axO((String)localObject);
+    AppMethodBeat.o(94832);
+    return localObject;
+  }
   
   public final String RD()
   {
-    AppMethodBeat.i(94838);
+    AppMethodBeat.i(94833);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dSb);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ejy);
-    localObject = ((StringBuffer)localObject).toString();
-    awz((String)localObject);
-    AppMethodBeat.o(94838);
-    return localObject;
-  }
-  
-  public final String RE()
-  {
-    AppMethodBeat.i(94839);
-    Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("SessionId:").append(this.dSb);
+    ((StringBuffer)localObject).append("Entrance:").append(this.ele);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ClickTimeStampMs:").append(this.ejy);
+    ((StringBuffer)localObject).append("SessionId:").append(this.dTr);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("ClickTimeStampMs:").append(this.elf);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(94839);
+    AppMethodBeat.o(94833);
     return localObject;
   }
   
-  public final ez Tn()
+  public final ez Ts()
   {
-    AppMethodBeat.i(94837);
-    this.ejy = bt.flT();
-    super.bg("ClickTimeStampMs", this.ejy);
-    AppMethodBeat.o(94837);
+    AppMethodBeat.i(94831);
+    this.elf = bu.fpO();
+    super.bh("ClickTimeStampMs", this.elf);
+    AppMethodBeat.o(94831);
     return this;
   }
   
   public final int getId()
   {
-    return 15988;
+    return 15987;
   }
   
-  public final ez og(String paramString)
+  public final ez oA(String paramString)
   {
-    AppMethodBeat.i(94836);
-    this.dSb = t("SessionId", paramString, true);
-    AppMethodBeat.o(94836);
+    AppMethodBeat.i(94830);
+    this.dTr = t("SessionId", paramString, true);
+    AppMethodBeat.o(94830);
     return this;
   }
 }

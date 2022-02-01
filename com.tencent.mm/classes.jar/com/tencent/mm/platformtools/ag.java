@@ -7,9 +7,9 @@ import android.content.pm.Signature;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.vfs.e;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.vfs.k;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -43,8 +43,8 @@ public final class ag
               break;
             }
             localc = (c)localIterator.next();
-          } while (TextUtils.isEmpty(localc.dFD));
-          localObject2 = localc.dFD;
+          } while (TextUtils.isEmpty(localc.dGI));
+          localObject2 = localc.dGI;
           localObject1 = new ArrayList();
           localObject3 = paramContext.getPackageResourcePath();
           if (Build.VERSION.SDK_INT < 21) {
@@ -64,11 +64,11 @@ public final class ag
             if (!TextUtils.isEmpty(paramArrayList))
             {
               String str = ((String)localObject3).replace(paramArrayList, (String)localObject2 + "-1");
-              if (new e(str).exists()) {
+              if (new k(str).exists()) {
                 ((List)localObject1).add(str);
               }
               paramArrayList = ((String)localObject3).replace(paramArrayList, (String)localObject2 + "-2");
-              if (new e(paramArrayList).exists()) {
+              if (new k(paramArrayList).exists()) {
                 ((List)localObject1).add(paramArrayList);
               }
             }
@@ -76,8 +76,8 @@ public final class ag
         } while (((List)localObject1).size() <= 0);
         localObject1 = ((List)localObject1).iterator();
       }
-      localObject2 = new e((String)((Iterator)localObject1).next());
-    } while (!((e)localObject2).exists());
+      localObject2 = new k((String)((Iterator)localObject1).next());
+    } while (!((k)localObject2).exists());
     label237:
     paramArrayList = "";
     for (;;)
@@ -88,35 +88,35 @@ public final class ag
         long l = System.currentTimeMillis();
         if (paramBoolean)
         {
-          localObject2 = paramContext.getPackageManager().getPackageInfo(localc.dFD, 64);
+          localObject2 = paramContext.getPackageManager().getPackageInfo(localc.dGI, 64);
           if (((PackageInfo)localObject2).signatures.length <= 0) {
             break label829;
           }
-          paramArrayList = ai.ee(localObject2.signatures[(localObject2.signatures.length - 1)].toCharsString());
+          paramArrayList = aj.ej(localObject2.signatures[(localObject2.signatures.length - 1)].toCharsString());
           break label829;
-          localObject2 = localc.dFD;
-          localObject3 = localc.iQe;
-          if ((TextUtils.isEmpty(paramArrayList)) || (!paramArrayList.equalsIgnoreCase(localc.iQe))) {
+          localObject2 = localc.dGI;
+          localObject3 = localc.iSX;
+          if ((TextUtils.isEmpty(paramArrayList)) || (!paramArrayList.equalsIgnoreCase(localc.iSX))) {
             break label832;
           }
           bool = true;
-          ad.i("MicroMsg.YYBMarketVerify", "summertoken containLowerMarket usesSystemApi[%b], infopkg[%s], infoMD5[%s], sigMD5[%s], equal[%b], takes[%d]ms", new Object[] { Boolean.valueOf(paramBoolean), localObject2, localObject3, paramArrayList, Boolean.valueOf(bool), Long.valueOf(System.currentTimeMillis() - l) });
-          if ((TextUtils.isEmpty(paramArrayList)) || (!paramArrayList.equalsIgnoreCase(localc.iQe))) {
+          ae.i("MicroMsg.YYBMarketVerify", "summertoken containLowerMarket usesSystemApi[%b], infopkg[%s], infoMD5[%s], sigMD5[%s], equal[%b], takes[%d]ms", new Object[] { Boolean.valueOf(paramBoolean), localObject2, localObject3, paramArrayList, Boolean.valueOf(bool), Long.valueOf(System.currentTimeMillis() - l) });
+          if ((TextUtils.isEmpty(paramArrayList)) || (!paramArrayList.equalsIgnoreCase(localc.iSX))) {
             break label256;
           }
           l = System.currentTimeMillis();
           if (!paramBoolean) {
             continue;
           }
-          i = paramContext.getPackageManager().getPackageInfo(localc.dFD, 0).versionCode;
-          paramArrayList = localc.dFD;
-          int j = localc.iQd;
-          if (i > localc.iQd) {
+          i = paramContext.getPackageManager().getPackageInfo(localc.dGI, 0).versionCode;
+          paramArrayList = localc.dGI;
+          int j = localc.iSW;
+          if (i > localc.iSW) {
             continue;
           }
           bool = true;
-          ad.i("MicroMsg.YYBMarketVerify", "summertoken containLowerMarket usesSystemApi[%b], infopkg[%s], infovc[%d], versionCode[%d], less[%b], takes[%d]ms", new Object[] { Boolean.valueOf(paramBoolean), paramArrayList, Integer.valueOf(j), Integer.valueOf(i), Boolean.valueOf(bool), Long.valueOf(System.currentTimeMillis() - l) });
-          j = localc.iQd;
+          ae.i("MicroMsg.YYBMarketVerify", "summertoken containLowerMarket usesSystemApi[%b], infopkg[%s], infovc[%d], versionCode[%d], less[%b], takes[%d]ms", new Object[] { Boolean.valueOf(paramBoolean), paramArrayList, Integer.valueOf(j), Integer.valueOf(i), Boolean.valueOf(bool), Long.valueOf(System.currentTimeMillis() - l) });
+          j = localc.iSW;
           if (i > j) {
             break label256;
           }
@@ -143,26 +143,26 @@ public final class ag
           }
           paramArrayList = ((StringBuilder)localObject3).toString();
           localObject3 = paramArrayList + (String)localObject2 + "-1.apk";
-          if (new e((String)localObject3).exists()) {
+          if (new k((String)localObject3).exists()) {
             ((List)localObject1).add(localObject3);
           }
           paramArrayList = paramArrayList + (String)localObject2 + "-2.apk";
-          if (!new e(paramArrayList).exists()) {
+          if (!new k(paramArrayList).exists()) {
             break label237;
           }
           ((List)localObject1).add(paramArrayList);
           break label237;
         }
-        paramArrayList = ag.b.n(((e)localObject2).fOL());
+        paramArrayList = ag.b.n(((k)localObject2).fTi());
         continue;
-        i = ag.a.M(paramContext, localc.dFD);
+        i = ag.a.N(paramContext, localc.dGI);
         continue;
         bool = false;
         continue;
       }
       catch (Exception paramArrayList)
       {
-        ad.printErrStackTrace("MicroMsg.YYBMarketVerify", paramArrayList, "", new Object[0]);
+        ae.printErrStackTrace("MicroMsg.YYBMarketVerify", paramArrayList, "", new Object[0]);
       }
       AppMethodBeat.o(20754);
       return false;
@@ -178,21 +178,21 @@ public final class ag
   
   public static final class c
   {
-    public final String dFD;
-    public final int iQd;
-    public final String iQe;
+    public final String dGI;
+    public final int iSW;
+    public final String iSX;
     
     public c(String paramString1, int paramInt, String paramString2)
     {
-      this.dFD = paramString1;
-      this.iQd = paramInt;
-      this.iQe = paramString2;
+      this.dGI = paramString1;
+      this.iSW = paramInt;
+      this.iSX = paramString2;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.platformtools.ag
  * JD-Core Version:    0.7.0.1
  */

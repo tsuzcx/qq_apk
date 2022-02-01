@@ -6,37 +6,37 @@ import com.tencent.mm.pluginsdk.model.app.al;
 final class JsApiLaunchApplicationForNative$a
   implements al
 {
-  volatile boolean dye;
-  volatile boolean hOP;
-  volatile boolean ksE;
-  volatile boolean ksF;
-  a kvL;
+  volatile boolean dzj;
+  volatile boolean hRI;
+  volatile boolean kvU;
+  volatile boolean kvV;
+  a kza;
   
   JsApiLaunchApplicationForNative$a(a parama)
   {
-    this.kvL = parama;
+    this.kza = parama;
   }
   
-  final void go(boolean paramBoolean)
+  final void gm(boolean paramBoolean)
   {
     AppMethodBeat.i(45848);
-    this.dye = paramBoolean;
-    this.ksF = true;
-    if ((this.hOP) && (this.kvL != null)) {
-      this.kvL.u(paramBoolean, this.ksE);
+    this.dzj = paramBoolean;
+    this.kvV = true;
+    if ((this.hRI) && (this.kza != null)) {
+      this.kza.u(paramBoolean, this.kvU);
     }
     AppMethodBeat.o(45848);
   }
   
   public final void v(boolean paramBoolean1, boolean paramBoolean2)
   {
-    AppMethodBeat.i(188277);
-    this.hOP = true;
-    this.ksE = paramBoolean1;
-    if ((this.ksF) && (this.kvL != null)) {
-      this.kvL.u(this.dye, paramBoolean1);
+    AppMethodBeat.i(222403);
+    this.hRI = true;
+    this.kvU = paramBoolean1;
+    if ((this.kvV) && (this.kza != null)) {
+      this.kza.u(this.dzj, paramBoolean1);
     }
-    AppMethodBeat.o(188277);
+    AppMethodBeat.o(222403);
   }
   
   static abstract interface a

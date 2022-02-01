@@ -15,9 +15,9 @@ public abstract interface a
   
   public abstract byte[] d(int[] paramArrayOfInt, String paramString);
   
-  public abstract int eny();
+  public abstract int erf();
   
-  public abstract d enz();
+  public abstract d erg();
   
   public abstract int uninitLive();
 }

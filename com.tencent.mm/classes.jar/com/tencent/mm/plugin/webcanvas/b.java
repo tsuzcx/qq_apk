@@ -1,1079 +1,996 @@
 package com.tencent.mm.plugin.webcanvas;
 
-import android.app.Service;
-import android.content.Context;
-import android.content.MutableContextWrapper;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.Paint.Style;
-import android.view.Display;
-import android.view.View;
-import android.view.View.OnLayoutChangeListener;
-import android.view.WindowManager;
-import android.webkit.JavascriptInterface;
-import com.eclipsesource.v8.V8Function;
-import com.eclipsesource.v8.V8Object;
-import com.github.henryye.nativeiv.ImageDecodeConfig;
-import com.tencent.magicbrush.d;
-import com.tencent.magicbrush.f.b;
-import com.tencent.magicbrush.ui.MBViewManager;
-import com.tencent.magicbrush.ui.MBViewManager.a;
-import com.tencent.magicbrush.ui.MagicBrushView;
-import com.tencent.magicbrush.ui.a.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.app.n.a;
-import com.tencent.mm.appbrand.v8.IJSRuntime;
-import com.tencent.mm.appbrand.v8.m;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ar;
-import com.tencent.mm.sdk.platformtools.ax;
-import d.n.k;
+import d.g.b.p;
+import d.l;
 import d.n.n;
-import d.v;
-import d.z;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.Map;
-import kotlinx.a.c.a.r;
 
-@d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/webcanvas/WebCanvasJsEngine;", "Lcom/tencent/mm/plugin/webjsengine/WebJsEngine;", "()V", "JSON", "Lcom/eclipsesource/v8/V8Object;", "kotlin.jvm.PlatformType", "getJSON", "()Lcom/eclipsesource/v8/V8Object;", "JSON$delegate", "Lkotlin/Lazy;", "MAX_HEIGHT", "", "MAX_WIDTH", "TAG", "", "appId", "getAppId", "()Ljava/lang/String;", "bizPkg", "Lcom/tencent/mm/plugin/appbrand/appcache/IWxaPkg;", "getBizPkg", "()Lcom/tencent/mm/plugin/appbrand/appcache/IWxaPkg;", "bizPkg$delegate", "canvasContexts", "Ljava/util/HashMap;", "Lkotlin/collections/HashMap;", "canvasElements", "Lcom/tencent/mm/plugin/webcanvas/WebCanvasJsEngine$CanvasElement;", "dimensions", "Lcom/tencent/mm/plugin/webcanvas/WebCanvasDimension;", "engine", "Lcom/tencent/mm/appbrand/v8/V8ContextEngine;", "getEngine", "()Lcom/tencent/mm/appbrand/v8/V8ContextEngine;", "engine$delegate", "engineReporter", "Lcom/tencent/mm/plugin/webjsengine/WebJsEngineReporter;", "getEngineReporter", "()Lcom/tencent/mm/plugin/webjsengine/WebJsEngineReporter;", "fontSize", "", "getFontSize", "()F", "isDarkMode", "", "()Z", "layoutCaches", "Lcom/tencent/mm/plugin/webcanvas/WebCanvasJsEngine$LayoutCache;", "magicBrush", "Lcom/tencent/magicbrush/MagicBrush;", "performance", "", "popupCloseListener", "Ljava/util/LinkedList;", "Lkotlin/Function1;", "", "Lcom/tencent/mm/plugin/webcanvas/PopupCloseListener;", "popupListener", "Lkotlin/Function10;", "Lkotlin/Function0;", "Lcom/tencent/mm/plugin/webcanvas/PopupListener;", "resizedListener", "Lkotlin/Function3;", "Lcom/tencent/mm/plugin/webcanvas/ResizeListener;", "stubService", "Ljava/lang/Class;", "Landroid/app/Service;", "getStubService", "()Ljava/lang/Class;", "webJsApiHandler", "Lcom/tencent/mm/plugin/webjsengine/WebJsEngineAPI;", "wxaPkg", "getWxaPkg", "wxaPkg$delegate", "addPopupCloseListener", "listener", "addPopupListener", "addResizedListener", "attach", "canvasId", "canvasElementId", "bind", "clear", "create", "type", "data", "elementId", "dimension", "createClientJsApi", "", "detach", "emit", "event", "expend", "getCacheKey", "width", "getCanvasView", "Lcom/tencent/magicbrush/ui/MagicBrushView;", "context", "Landroid/content/Context;", "getLayoutCache", "onError", "contextId", "name", "message", "stackTrace", "onScreenShot", "pause", "removePopupCloseListener", "removePopupListener", "removeResizedListener", "render", "resize", "height", "restoreLayout", "key", "resume", "saveLayout", "layoutCache", "scroll", "unbind", "default", "", "def", "parseJSON", "stringify", "use", "R", "T", "block", "(Lcom/eclipsesource/v8/V8Object;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;", "CanvasElement", "Companion", "LayoutCache", "WebCanvasJsApiInterface", "webview-sdk_release"})
-public abstract class b
-  extends com.tencent.mm.plugin.ac.b
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/webcanvas/WebCanvasHttpImageStreamFetcher;", "Lcom/github/henryye/nativeiv/stream/IImageStreamFetcher;", "()V", "connectionTimeoutMs", "", "readTimeoutMs", "accept", "", "obj", "", "fetch", "Lcom/github/henryye/nativeiv/stream/IImageStreamFetcher$StreamFetchResult;", "config", "Lcom/github/henryye/nativeiv/ImageDecodeConfig;", "getSourceTypeName", "", "toFileName", "Companion", "webview-sdk_release"})
+public final class b
+  implements com.github.henryye.nativeiv.b.b
 {
-  private static final String Dyn;
-  private static final String Dyo = Dyn + "/webtimeline.wspkg";
-  private static final String Dyp = Dyn + "/index.wspkg";
-  private static final d.f Dyq = d.g.O((d.g.a.a)b.i.DyB);
-  private static final d.f Dyr = d.g.O((d.g.a.a)b.h.DyA);
-  public static final g Dys = new g((byte)0);
-  final LinkedList<d.g.a.q<String, Integer, Integer, z>> DxZ = new LinkedList();
-  final LinkedList<d.g.a.c<String, String, Integer, Integer, Integer, Integer, Integer, Integer, d.g.a.a<z>, d.g.a.a<z>, Integer>> Dya = new LinkedList();
-  final LinkedList<d.g.a.b<String, z>> Dyb = new LinkedList();
-  private final d.f Dyc = d.g.O((d.g.a.a)new o(this));
-  private final com.tencent.mm.plugin.ac.g Dyd = new com.tencent.mm.plugin.ac.g();
-  private final HashMap<Integer, Long> Dye = new HashMap();
-  private final d.f Dyf = d.g.O((d.g.a.a)new j(this));
-  private final HashMap<String, b.k> Dyg = new HashMap();
-  private final HashMap<String, Integer> Dyh = new HashMap();
-  final d Dyi;
-  private final d.f Dyj;
-  private final d.f Dyk;
-  final HashMap<String, a> Dyl;
-  final HashMap<String, b.f> Dym;
-  com.tencent.mm.plugin.ac.e OdU;
-  final String TAG = "MicroMsg.WebCanvasJsEngine";
-  private final int ciA = 2048;
-  private final int ciz = 2048;
+  public static final b.a DPE;
+  private int bbx = 30000;
+  private int bby = 30000;
   
   static
   {
-    String str = com.tencent.mm.loader.j.b.arU() + "/skiaCanvas_debug";
-    ad.d("DEBUG_PATH", "WebCanvas debug path = ".concat(String.valueOf(str)));
-    Dyn = str;
+    AppMethodBeat.i(213863);
+    DPE = new b.a((byte)0);
+    AppMethodBeat.o(213863);
   }
-  
-  public b()
-  {
-    Object localObject1 = new com.tencent.magicbrush.e();
-    ((com.tencent.magicbrush.f)localObject1).context = aj.getContext();
-    ((com.tencent.magicbrush.e)localObject1).ad(com.tencent.mm.plugin.appbrand.z.g.bBm());
-    ((com.tencent.magicbrush.f)localObject1).cwX = ((d.g.a.a)new b.a(this));
-    ((com.tencent.magicbrush.f)localObject1).cwW = ((com.tencent.magicbrush.handler.a)new b(this));
-    ((com.tencent.magicbrush.e)localObject1).b(a.b.czP);
-    Object localObject2 = com.tencent.mm.loader.j.b.arO();
-    d.g.b.p.g(localObject2, "CConstants.SDCARD_ROOT()");
-    ((com.tencent.magicbrush.e)localObject1).dB((String)localObject2);
-    ((com.tencent.magicbrush.e)localObject1).bS(false);
-    localObject1 = ((com.tencent.magicbrush.e)localObject1).Ho();
-    if (localObject1 == null) {
-      d.g.b.p.gfZ();
-    }
-    ((d)localObject1).cwJ.a((d.g.a.b)new c((d)localObject1, this));
-    ((d)localObject1).cwM.addListener((MBViewManager.a)new b.d((d)localObject1, this));
-    this.Dyi = ((d)localObject1);
-    this.Dyj = d.g.O((d.g.a.a)new b.r(this));
-    this.Dyk = d.g.O((d.g.a.a)new b.m(this));
-    ad.i(this.TAG, "init");
-    localObject1 = new com.tencent.magicbrush.handler.glfont.i();
-    ((com.tencent.magicbrush.handler.glfont.i)localObject1).init(1024, 1024);
-    localObject2 = bqi();
-    com.tencent.mm.plugin.appbrand.jsruntime.a locala = (com.tencent.mm.plugin.appbrand.jsruntime.a)this;
-    m localm = bqf();
-    d.g.b.p.g(localm, "this@WebCanvasJsEngine.v8Context");
-    this.OdU = ((com.tencent.mm.plugin.ac.e)new b.e(locala, localm, this, (com.tencent.magicbrush.handler.glfont.i)localObject1));
-    ((com.tencent.mm.plugin.appbrand.jsruntime.g)localObject2).addJavascriptInterface(this.OdU, "__weixincore");
-    cxZ();
-    new n.a()
-    {
-      public final void onAppBackground(String paramAnonymousString)
-      {
-        AppMethodBeat.i(214046);
-        d.g.b.p.h(paramAnonymousString, "activity");
-        this.Dyt.evaluateJavascript("WeixinCore.emit('background')", null);
-        AppMethodBeat.o(214046);
-      }
-      
-      public final void onAppForeground(String paramAnonymousString)
-      {
-        AppMethodBeat.i(214045);
-        d.g.b.p.h(paramAnonymousString, "activity");
-        this.Dyt.evaluateJavascript("WeixinCore.emit('foreground')", null);
-        AppMethodBeat.o(214045);
-      }
-    }.alive();
-    this.Dyl = new HashMap();
-    this.Dym = new HashMap();
-  }
-  
-  private final com.tencent.mm.plugin.appbrand.appcache.p eKY()
-  {
-    return (com.tencent.mm.plugin.appbrand.appcache.p)this.Dyk.getValue();
-  }
-  
-  static String fr(String paramString, int paramInt)
-  {
-    paramString = new StringBuilder().append(paramString).append('-');
-    if (paramInt != 0) {}
-    for (;;)
-    {
-      return paramInt + '-' + com.tencent.mm.cc.a.eb(g.getAppContext());
-      paramInt = g.eLi();
-    }
-  }
-  
-  public final void a(final String paramString1, final String paramString2, final String paramString3, final int paramInt, a parama)
-  {
-    d.g.b.p.h(paramString1, "type");
-    d.g.b.p.h(paramString2, "canvasId");
-    d.g.b.p.h(paramString3, "data");
-    if (parama != null) {
-      ((Map)this.Dyl).put(paramString2, parama);
-    }
-    if (this.Dyh.containsKey(paramString2)) {
-      return;
-    }
-    ad.i(this.TAG, "create #" + paramString2 + ':' + paramInt);
-    parama = (Map)this.Dyh;
-    com.tencent.mm.plugin.appbrand.jsruntime.g localg = bqj();
-    localg.addJavascriptInterface(eK(paramString2, paramString3), "__weixincanvas");
-    d.g.b.p.g(localg, "this");
-    a(localg, "CanvasContext#".concat(String.valueOf(paramString2)), getAppId(), eKY(), paramString1, (d.g.a.b)new n(this, paramString2, paramString3, paramString1, paramInt));
-    parama.put(paramString2, Integer.valueOf(localg.bqh()));
-  }
-  
-  final b.k aFx(String paramString)
-  {
-    Object localObject2 = (b.k)this.Dyg.get(paramString);
-    Object localObject1 = localObject2;
-    if (localObject2 == null)
-    {
-      localObject1 = (ax)g.eLh().aQb(paramString);
-      if (localObject1 != null)
-      {
-        localObject1 = ((ax)localObject1).getString(paramString, "");
-        if (localObject1 != null)
-        {
-          d.g.b.p.g(localObject1, "layoutStore");
-          if (!n.aE((CharSequence)localObject1))
-          {
-            i = 1;
-            if (i == 0) {
-              break label236;
-            }
-            localObject2 = kotlinx.a.c.a.NNk;
-            localObject2 = b.k.DyD;
-            localObject2 = (kotlinx.a.f)b.k.a.DyE;
-            d.g.b.p.h(localObject2, "deserializer");
-            d.g.b.p.h(localObject1, "string");
-            kotlinx.a.c.a locala = kotlinx.a.c.a.gxe();
-            d.g.b.p.h(localObject2, "deserializer");
-            d.g.b.p.h(localObject1, "string");
-            localObject1 = new kotlinx.a.c.a.f((String)localObject1);
-            localObject2 = kotlinx.a.e.c((kotlinx.a.c)new kotlinx.a.c.a.l(locala, r.NOw, (kotlinx.a.c.a.f)localObject1), (kotlinx.a.f)localObject2);
-            if (((kotlinx.a.c.a.f)localObject1).NOi != 12) {
-              break label204;
-            }
-          }
-          label204:
-          for (int i = 1;; i = 0)
-          {
-            if (i != 0) {
-              break label209;
-            }
-            throw ((Throwable)new IllegalStateException("Reader has not consumed the whole input: ".concat(String.valueOf(localObject1)).toString()));
-            i = 0;
-            break;
-          }
-          label209:
-          localObject1 = (b.k)localObject2;
-          ((Map)this.Dyg).put(paramString, localObject1);
-          return (b.k)localObject2;
-          label236:
-          return null;
-        }
-      }
-      localObject1 = null;
-    }
-    return localObject1;
-  }
-  
-  public abstract Class<? extends Service> bOJ();
   
   /* Error */
-  public final MagicBrushView bw(final Context paramContext, final String paramString)
+  public final com.github.henryye.nativeiv.b.b.a a(Object paramObject, com.github.henryye.nativeiv.ImageDecodeConfig paramImageDecodeConfig)
   {
     // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_1
-    //   3: ldc_w 793
-    //   6: invokestatic 588	d/g/b/p:h	(Ljava/lang/Object;Ljava/lang/String;)V
-    //   9: aload_2
-    //   10: ldc_w 703
-    //   13: invokestatic 588	d/g/b/p:h	(Ljava/lang/Object;Ljava/lang/String;)V
-    //   16: aload_0
-    //   17: getfield 499	com/tencent/mm/plugin/webcanvas/b:Dym	Ljava/util/HashMap;
-    //   20: astore 5
-    //   22: aload 5
-    //   24: monitorenter
-    //   25: aload_0
-    //   26: getfield 481	com/tencent/mm/plugin/webcanvas/b:OdU	Lcom/tencent/mm/plugin/ac/e;
-    //   29: astore 4
-    //   31: aload 4
-    //   33: ifnull +9 -> 42
-    //   36: aload 4
-    //   38: aload_1
-    //   39: invokevirtual 797	com/tencent/mm/plugin/ac/e:setContext	(Landroid/content/Context;)V
-    //   42: aload_0
-    //   43: getfield 499	com/tencent/mm/plugin/webcanvas/b:Dym	Ljava/util/HashMap;
-    //   46: aload_2
-    //   47: invokevirtual 708	java/util/HashMap:containsKey	(Ljava/lang/Object;)Z
-    //   50: ifne +269 -> 319
-    //   53: new 799	android/content/MutableContextWrapper
-    //   56: dup
-    //   57: aload_1
-    //   58: invokespecial 801	android/content/MutableContextWrapper:<init>	(Landroid/content/Context;)V
-    //   61: astore 6
-    //   63: new 803	com/tencent/magicbrush/ui/MagicBrushView
-    //   66: dup
-    //   67: aload 6
-    //   69: checkcast 524	android/content/Context
-    //   72: getstatic 809	com/tencent/magicbrush/ui/MagicBrushView$h:cAq	Lcom/tencent/magicbrush/ui/MagicBrushView$h;
-    //   75: invokespecial 812	com/tencent/magicbrush/ui/MagicBrushView:<init>	(Landroid/content/Context;Lcom/tencent/magicbrush/ui/MagicBrushView$h;)V
-    //   78: astore 4
-    //   80: aload_0
-    //   81: getfield 439	com/tencent/mm/plugin/webcanvas/b:Dyi	Lcom/tencent/magicbrush/d;
-    //   84: astore 7
-    //   86: aload 7
-    //   88: invokevirtual 815	com/tencent/magicbrush/d:Hd	()V
-    //   91: aload 4
-    //   93: aload 7
-    //   95: invokevirtual 819	com/tencent/magicbrush/ui/MagicBrushView:setMagicBrush	(Lcom/tencent/magicbrush/d;)V
-    //   98: aload_0
-    //   99: getfield 301	com/tencent/mm/plugin/webcanvas/b:TAG	Ljava/lang/String;
-    //   102: new 225	java/lang/StringBuilder
-    //   105: dup
-    //   106: ldc_w 821
-    //   109: invokespecial 522	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   112: aload_2
-    //   113: invokevirtual 236	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   116: bipush 58
-    //   118: invokevirtual 633	java/lang/StringBuilder:append	(C)Ljava/lang/StringBuilder;
-    //   121: aload 4
-    //   123: invokevirtual 824	com/tencent/magicbrush/ui/MagicBrushView:getVirtualElementId	()I
-    //   126: invokevirtual 530	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   129: invokevirtual 241	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   132: invokestatic 454	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   135: aload 4
-    //   137: iconst_0
-    //   138: invokevirtual 827	com/tencent/magicbrush/ui/MagicBrushView:setOpaque	(Z)V
-    //   141: aload 4
-    //   143: iconst_0
-    //   144: invokevirtual 830	com/tencent/magicbrush/ui/MagicBrushView:setClipChildren	(Z)V
-    //   147: aload 4
-    //   149: iconst_0
-    //   150: invokevirtual 833	com/tencent/magicbrush/ui/MagicBrushView:setClipToPadding	(Z)V
-    //   153: aload 4
-    //   155: iconst_1
-    //   156: invokevirtual 836	com/tencent/magicbrush/ui/MagicBrushView:setEnableTouchEvent	(Z)V
-    //   159: aload_0
-    //   160: getfield 499	com/tencent/mm/plugin/webcanvas/b:Dym	Ljava/util/HashMap;
-    //   163: checkcast 547	java/util/Map
-    //   166: aload_2
-    //   167: new 16	com/tencent/mm/plugin/webcanvas/b$f
-    //   170: dup
-    //   171: aload 4
-    //   173: invokevirtual 824	com/tencent/magicbrush/ui/MagicBrushView:getVirtualElementId	()I
-    //   176: aload 6
-    //   178: invokespecial 839	com/tencent/mm/plugin/webcanvas/b$f:<init>	(ILandroid/content/MutableContextWrapper;)V
-    //   181: invokeinterface 551 3 0
-    //   186: pop
-    //   187: aload 4
-    //   189: new 40	com/tencent/mm/plugin/webcanvas/b$p
-    //   192: dup
-    //   193: aload 4
-    //   195: aload 6
-    //   197: aload_0
-    //   198: aload_1
-    //   199: aload_2
-    //   200: invokespecial 842	com/tencent/mm/plugin/webcanvas/b$p:<init>	(Lcom/tencent/magicbrush/ui/MagicBrushView;Landroid/content/MutableContextWrapper;Lcom/tencent/mm/plugin/webcanvas/b;Landroid/content/Context;Ljava/lang/String;)V
-    //   203: checkcast 844	android/view/View$OnLayoutChangeListener
-    //   206: invokevirtual 848	com/tencent/magicbrush/ui/MagicBrushView:addOnLayoutChangeListener	(Landroid/view/View$OnLayoutChangeListener;)V
-    //   209: aload 4
-    //   211: astore_1
-    //   212: aload_0
-    //   213: getfield 301	com/tencent/mm/plugin/webcanvas/b:TAG	Ljava/lang/String;
-    //   216: ldc_w 850
-    //   219: aload_2
-    //   220: invokestatic 251	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   223: invokevirtual 255	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   226: invokestatic 261	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   229: aload_1
-    //   230: invokevirtual 824	com/tencent/magicbrush/ui/MagicBrushView:getVirtualElementId	()I
-    //   233: istore_3
-    //   234: aload_2
-    //   235: ldc_w 703
-    //   238: invokestatic 588	d/g/b/p:h	(Ljava/lang/Object;Ljava/lang/String;)V
-    //   241: aload_0
-    //   242: getfield 301	com/tencent/mm/plugin/webcanvas/b:TAG	Ljava/lang/String;
-    //   245: new 225	java/lang/StringBuilder
-    //   248: dup
-    //   249: ldc_w 852
-    //   252: invokespecial 522	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   255: aload_2
-    //   256: invokevirtual 236	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   259: bipush 58
-    //   261: invokevirtual 633	java/lang/StringBuilder:append	(C)Ljava/lang/StringBuilder;
-    //   264: iload_3
-    //   265: invokevirtual 530	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   268: invokevirtual 241	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   271: invokestatic 454	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   274: aload_0
-    //   275: ldc_w 853
-    //   278: aload_2
-    //   279: iload_3
-    //   280: aconst_null
-    //   281: bipush 8
-    //   283: invokestatic 855	com/tencent/mm/plugin/webcanvas/b:a	(Lcom/tencent/mm/plugin/webcanvas/b;Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;I)V
-    //   286: aload_0
-    //   287: getfield 329	com/tencent/mm/plugin/webcanvas/b:Dye	Ljava/util/HashMap;
-    //   290: checkcast 547	java/util/Map
-    //   293: aload_1
-    //   294: invokevirtual 824	com/tencent/magicbrush/ui/MagicBrushView:getVirtualElementId	()I
-    //   297: invokestatic 508	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   300: invokestatic 861	java/lang/System:currentTimeMillis	()J
-    //   303: invokestatic 866	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   306: invokeinterface 551 3 0
-    //   311: pop
-    //   312: aload 5
-    //   314: monitorexit
-    //   315: aload_0
-    //   316: monitorexit
-    //   317: aload_1
-    //   318: areturn
-    //   319: aload_0
-    //   320: getfield 499	com/tencent/mm/plugin/webcanvas/b:Dym	Ljava/util/HashMap;
-    //   323: aload_2
-    //   324: invokevirtual 738	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   327: astore 4
-    //   329: aload 4
-    //   331: ifnonnull +6 -> 337
-    //   334: invokestatic 407	d/g/b/p:gfZ	()V
-    //   337: aload 4
-    //   339: checkcast 16	com/tencent/mm/plugin/webcanvas/b$f
-    //   342: astore 4
-    //   344: aload 4
-    //   346: getfield 869	com/tencent/mm/plugin/webcanvas/b$f:id	I
-    //   349: istore_3
-    //   350: aload 4
-    //   352: getfield 873	com/tencent/mm/plugin/webcanvas/b$f:Dyz	Landroid/content/MutableContextWrapper;
-    //   355: astore 6
-    //   357: aload_0
-    //   358: getfield 439	com/tencent/mm/plugin/webcanvas/b:Dyi	Lcom/tencent/magicbrush/d;
-    //   361: getfield 426	com/tencent/magicbrush/d:cwM	Lcom/tencent/magicbrush/ui/MBViewManager;
-    //   364: iload_3
-    //   365: invokevirtual 877	com/tencent/magicbrush/ui/MBViewManager:find	(I)Lcom/tencent/magicbrush/ui/MagicBrushView;
-    //   368: astore 4
-    //   370: aload_0
-    //   371: getfield 301	com/tencent/mm/plugin/webcanvas/b:TAG	Ljava/lang/String;
-    //   374: new 225	java/lang/StringBuilder
-    //   377: dup
-    //   378: ldc_w 879
-    //   381: invokespecial 522	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   384: aload_2
-    //   385: invokevirtual 236	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   388: bipush 58
-    //   390: invokevirtual 633	java/lang/StringBuilder:append	(C)Ljava/lang/StringBuilder;
-    //   393: aload 4
-    //   395: invokevirtual 824	com/tencent/magicbrush/ui/MagicBrushView:getVirtualElementId	()I
-    //   398: invokevirtual 530	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   401: ldc_w 881
-    //   404: invokevirtual 236	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   407: aload 6
-    //   409: invokevirtual 884	android/content/MutableContextWrapper:getBaseContext	()Landroid/content/Context;
-    //   412: aload_1
-    //   413: invokestatic 511	d/g/b/p:i	(Ljava/lang/Object;Ljava/lang/Object;)Z
-    //   416: invokevirtual 887	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   419: invokevirtual 241	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   422: invokestatic 454	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   425: new 42	com/tencent/mm/plugin/webcanvas/b$q
-    //   428: dup
-    //   429: aload 4
-    //   431: aload 6
-    //   433: aload_0
-    //   434: aload_1
-    //   435: aload_2
-    //   436: invokespecial 888	com/tencent/mm/plugin/webcanvas/b$q:<init>	(Lcom/tencent/magicbrush/ui/MagicBrushView;Landroid/content/MutableContextWrapper;Lcom/tencent/mm/plugin/webcanvas/b;Landroid/content/Context;Ljava/lang/String;)V
-    //   439: checkcast 279	d/g/a/a
-    //   442: invokestatic 893	com/tencent/mm/ad/c:g	(Ld/g/a/a;)V
-    //   445: aload 4
-    //   447: astore_1
-    //   448: goto -236 -> 212
-    //   451: astore_1
-    //   452: aload 5
-    //   454: monitorexit
-    //   455: aload_1
-    //   456: athrow
-    //   457: astore_1
-    //   458: aload_0
-    //   459: monitorexit
-    //   460: aload_1
-    //   461: athrow
+    //   0: ldc 65
+    //   2: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: aload_1
+    //   6: ldc 66
+    //   8: invokestatic 72	d/g/b/p:h	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   11: aload_2
+    //   12: ldc 73
+    //   14: invokestatic 72	d/g/b/p:h	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   17: aload_1
+    //   18: checkcast 75	java/lang/String
+    //   21: astore 7
+    //   23: new 77	com/github/henryye/nativeiv/b/b$a
+    //   26: dup
+    //   27: invokespecial 78	com/github/henryye/nativeiv/b/b$a:<init>	()V
+    //   30: astore 16
+    //   32: new 80	java/lang/StringBuilder
+    //   35: dup
+    //   36: invokespecial 81	java/lang/StringBuilder:<init>	()V
+    //   39: astore_2
+    //   40: getstatic 87	com/tencent/mm/plugin/webcanvas/h:DQL	Lcom/tencent/mm/plugin/webcanvas/h;
+    //   43: astore 6
+    //   45: aload_2
+    //   46: invokestatic 91	com/tencent/mm/plugin/webcanvas/h:eOX	()Ljava/lang/String;
+    //   49: invokevirtual 95	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   52: ldc 97
+    //   54: invokevirtual 95	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   57: aload 7
+    //   59: invokestatic 103	com/tencent/mm/sdk/platformtools/aj:ej	(Ljava/lang/String;)Ljava/lang/String;
+    //   62: invokevirtual 95	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   65: invokevirtual 106	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   68: astore 17
+    //   70: aload 17
+    //   72: invokestatic 112	com/tencent/mm/vfs/o:fB	(Ljava/lang/String;)Z
+    //   75: istore 5
+    //   77: ldc 114
+    //   79: new 80	java/lang/StringBuilder
+    //   82: dup
+    //   83: ldc 116
+    //   85: invokespecial 119	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   88: aload_1
+    //   89: invokevirtual 122	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   92: bipush 32
+    //   94: invokevirtual 125	java/lang/StringBuilder:append	(C)Ljava/lang/StringBuilder;
+    //   97: aload 17
+    //   99: invokevirtual 95	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   102: ldc 127
+    //   104: invokevirtual 95	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   107: iload 5
+    //   109: invokevirtual 130	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   112: invokevirtual 106	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   115: invokestatic 135	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   118: iload 5
+    //   120: ifeq +108 -> 228
+    //   123: ldc 114
+    //   125: ldc 137
+    //   127: invokestatic 140	com/tencent/mm/sdk/platformtools/ae:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   130: aload 16
+    //   132: new 142	java/io/BufferedInputStream
+    //   135: dup
+    //   136: aload 17
+    //   138: invokestatic 146	com/tencent/mm/vfs/o:openRead	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   141: invokespecial 149	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   144: checkcast 151	java/io/InputStream
+    //   147: putfield 155	com/github/henryye/nativeiv/b/b$a:inputStream	Ljava/io/InputStream;
+    //   150: ldc 65
+    //   152: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   155: aload 16
+    //   157: areturn
+    //   158: astore_1
+    //   159: ldc 114
+    //   161: aload_1
+    //   162: checkcast 157	java/lang/Throwable
+    //   165: ldc 158
+    //   167: iconst_0
+    //   168: anewarray 4	java/lang/Object
+    //   171: invokestatic 162	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   174: getstatic 168	d/g/b/ad:Njc	Ld/g/b/ad;
+    //   177: astore_2
+    //   178: invokestatic 174	com/tencent/mm/sdk/platformtools/ak:getContext	()Landroid/content/Context;
+    //   181: ldc 175
+    //   183: invokevirtual 181	android/content/Context:getString	(I)Ljava/lang/String;
+    //   186: astore_2
+    //   187: aload_2
+    //   188: ldc 183
+    //   190: invokestatic 186	d/g/b/p:g	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   193: aload_2
+    //   194: iconst_1
+    //   195: anewarray 4	java/lang/Object
+    //   198: dup
+    //   199: iconst_0
+    //   200: aload_1
+    //   201: invokevirtual 187	java/lang/Exception:toString	()Ljava/lang/String;
+    //   204: aastore
+    //   205: iconst_1
+    //   206: invokestatic 193	java/util/Arrays:copyOf	([Ljava/lang/Object;I)[Ljava/lang/Object;
+    //   209: invokestatic 197	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   212: astore_1
+    //   213: aload_1
+    //   214: ldc 199
+    //   216: invokestatic 186	d/g/b/p:g	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   219: aload 16
+    //   221: aload_1
+    //   222: putfield 203	com/github/henryye/nativeiv/b/b$a:errorMsg	Ljava/lang/String;
+    //   225: goto -75 -> 150
+    //   228: new 205	d/g/b/y$d
+    //   231: dup
+    //   232: invokespecial 206	d/g/b/y$d:<init>	()V
+    //   235: astore 18
+    //   237: aload 18
+    //   239: iconst_0
+    //   240: putfield 209	d/g/b/y$d:NiW	I
+    //   243: aconst_null
+    //   244: astore 6
+    //   246: aconst_null
+    //   247: astore_2
+    //   248: aconst_null
+    //   249: astore_1
+    //   250: ldc 211
+    //   252: invokestatic 217	com/tencent/mm/kernel/g:ab	(Ljava/lang/Class;)Lcom/tencent/mm/kernel/c/a;
+    //   255: checkcast 211	com/tencent/mm/plugin/expt/b/b
+    //   258: getstatic 223	com/tencent/mm/plugin/expt/b/b$a:qNh	Lcom/tencent/mm/plugin/expt/b/b$a;
+    //   261: iconst_0
+    //   262: invokeinterface 226 3 0
+    //   267: istore 5
+    //   269: new 228	com/tencent/mm/plugin/webcanvas/b$b
+    //   272: dup
+    //   273: aload 18
+    //   275: invokespecial 231	com/tencent/mm/plugin/webcanvas/b$b:<init>	(Ld/g/b/y$d;)V
+    //   278: astore 19
+    //   280: iconst_0
+    //   281: istore_3
+    //   282: iload_3
+    //   283: ifne +1302 -> 1585
+    //   286: iload 5
+    //   288: ifeq +104 -> 392
+    //   291: aload_1
+    //   292: astore 12
+    //   294: aload_2
+    //   295: astore 13
+    //   297: aload 6
+    //   299: astore 14
+    //   301: aload 7
+    //   303: astore 15
+    //   305: aload_1
+    //   306: astore 8
+    //   308: aload_2
+    //   309: astore 9
+    //   311: aload 6
+    //   313: astore 10
+    //   315: aload 7
+    //   317: invokestatic 237	com/tencent/mm/network/b:IT	(Ljava/lang/String;)Lcom/tencent/mm/network/x;
+    //   320: checkcast 239	com/tencent/mm/network/w
+    //   323: astore_1
+    //   324: aload_1
+    //   325: checkcast 241	com/tencent/mm/network/x
+    //   328: invokevirtual 244	com/tencent/mm/network/x:aPt	()V
+    //   331: aload_1
+    //   332: ifnonnull +96 -> 428
+    //   335: aload_1
+    //   336: astore 12
+    //   338: aload_2
+    //   339: astore 13
+    //   341: aload 6
+    //   343: astore 14
+    //   345: aload 7
+    //   347: astore 15
+    //   349: aload_1
+    //   350: astore 8
+    //   352: aload_2
+    //   353: astore 9
+    //   355: aload 6
+    //   357: astore 10
+    //   359: aload 16
+    //   361: ldc 246
+    //   363: putfield 203	com/github/henryye/nativeiv/b/b$a:errorMsg	Ljava/lang/String;
+    //   366: aload_2
+    //   367: ifnull +7 -> 374
+    //   370: aload_2
+    //   371: invokevirtual 251	java/io/OutputStream:close	()V
+    //   374: aload 6
+    //   376: ifnull +8 -> 384
+    //   379: aload 6
+    //   381: invokevirtual 252	java/io/InputStream:close	()V
+    //   384: ldc 65
+    //   386: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   389: aload 16
+    //   391: areturn
+    //   392: aload_1
+    //   393: astore 12
+    //   395: aload_2
+    //   396: astore 13
+    //   398: aload 6
+    //   400: astore 14
+    //   402: aload 7
+    //   404: astore 15
+    //   406: aload_1
+    //   407: astore 8
+    //   409: aload_2
+    //   410: astore 9
+    //   412: aload 6
+    //   414: astore 10
+    //   416: aload 7
+    //   418: invokestatic 256	com/tencent/mm/network/b:IS	(Ljava/lang/String;)Lcom/tencent/mm/network/v;
+    //   421: checkcast 239	com/tencent/mm/network/w
+    //   424: astore_1
+    //   425: goto -94 -> 331
+    //   428: aload_1
+    //   429: astore 12
+    //   431: aload_2
+    //   432: astore 13
+    //   434: aload 6
+    //   436: astore 14
+    //   438: aload 7
+    //   440: astore 15
+    //   442: aload_1
+    //   443: astore 8
+    //   445: aload_2
+    //   446: astore 9
+    //   448: aload 6
+    //   450: astore 10
+    //   452: invokestatic 262	com/tencent/mm/av/t:aJf	()Z
+    //   455: ifeq +140 -> 595
+    //   458: aload_1
+    //   459: astore 12
+    //   461: aload_2
+    //   462: astore 13
+    //   464: aload 6
+    //   466: astore 14
+    //   468: aload 7
+    //   470: astore 15
+    //   472: aload_1
+    //   473: astore 8
+    //   475: aload_2
+    //   476: astore 9
+    //   478: aload 6
+    //   480: astore 10
+    //   482: aload 7
+    //   484: invokestatic 265	com/tencent/mm/av/t:eA	(Ljava/lang/String;)Z
+    //   487: ifeq +108 -> 595
+    //   490: aload_1
+    //   491: astore 12
+    //   493: aload_2
+    //   494: astore 13
+    //   496: aload 6
+    //   498: astore 14
+    //   500: aload 7
+    //   502: astore 15
+    //   504: aload_1
+    //   505: astore 8
+    //   507: aload_2
+    //   508: astore 9
+    //   510: aload 6
+    //   512: astore 10
+    //   514: getstatic 270	com/tencent/mm/protocal/d:FFH	I
+    //   517: invokestatic 273	com/tencent/mm/av/t:pF	(I)Ljava/lang/String;
+    //   520: astore 11
+    //   522: aload_1
+    //   523: astore 12
+    //   525: aload_2
+    //   526: astore 13
+    //   528: aload 6
+    //   530: astore 14
+    //   532: aload 7
+    //   534: astore 15
+    //   536: aload_1
+    //   537: astore 8
+    //   539: aload_2
+    //   540: astore 9
+    //   542: aload 6
+    //   544: astore 10
+    //   546: ldc 114
+    //   548: ldc_w 275
+    //   551: iconst_1
+    //   552: anewarray 4	java/lang/Object
+    //   555: dup
+    //   556: iconst_0
+    //   557: aload 11
+    //   559: aastore
+    //   560: invokestatic 278	com/tencent/mm/sdk/platformtools/ae:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   563: aload_1
+    //   564: astore 12
+    //   566: aload_2
+    //   567: astore 13
+    //   569: aload 6
+    //   571: astore 14
+    //   573: aload 7
+    //   575: astore 15
+    //   577: aload_1
+    //   578: astore 8
+    //   580: aload_2
+    //   581: astore 9
+    //   583: aload 6
+    //   585: astore 10
+    //   587: aload_1
+    //   588: aload 11
+    //   590: invokeinterface 281 2 0
+    //   595: aload_1
+    //   596: astore 12
+    //   598: aload_2
+    //   599: astore 13
+    //   601: aload 6
+    //   603: astore 14
+    //   605: aload 7
+    //   607: astore 15
+    //   609: aload_1
+    //   610: astore 8
+    //   612: aload_2
+    //   613: astore 9
+    //   615: aload 6
+    //   617: astore 10
+    //   619: aload_1
+    //   620: iconst_1
+    //   621: invokeinterface 285 2 0
+    //   626: aload_1
+    //   627: astore 12
+    //   629: aload_2
+    //   630: astore 13
+    //   632: aload 6
+    //   634: astore 14
+    //   636: aload 7
+    //   638: astore 15
+    //   640: aload_1
+    //   641: astore 8
+    //   643: aload_2
+    //   644: astore 9
+    //   646: aload 6
+    //   648: astore 10
+    //   650: aload_1
+    //   651: ldc_w 287
+    //   654: invokeinterface 290 2 0
+    //   659: aload_1
+    //   660: astore 12
+    //   662: aload_2
+    //   663: astore 13
+    //   665: aload 6
+    //   667: astore 14
+    //   669: aload 7
+    //   671: astore 15
+    //   673: aload_1
+    //   674: astore 8
+    //   676: aload_2
+    //   677: astore 9
+    //   679: aload 6
+    //   681: astore 10
+    //   683: aload_1
+    //   684: aload_0
+    //   685: getfield 58	com/tencent/mm/plugin/webcanvas/b:bbx	I
+    //   688: invokeinterface 293 2 0
+    //   693: aload_1
+    //   694: astore 12
+    //   696: aload_2
+    //   697: astore 13
+    //   699: aload 6
+    //   701: astore 14
+    //   703: aload 7
+    //   705: astore 15
+    //   707: aload_1
+    //   708: astore 8
+    //   710: aload_2
+    //   711: astore 9
+    //   713: aload 6
+    //   715: astore 10
+    //   717: aload_1
+    //   718: aload_0
+    //   719: getfield 60	com/tencent/mm/plugin/webcanvas/b:bby	I
+    //   722: invokeinterface 296 2 0
+    //   727: aload_1
+    //   728: astore 12
+    //   730: aload_2
+    //   731: astore 13
+    //   733: aload 6
+    //   735: astore 14
+    //   737: aload 7
+    //   739: astore 15
+    //   741: aload_1
+    //   742: astore 8
+    //   744: aload_2
+    //   745: astore 9
+    //   747: aload 6
+    //   749: astore 10
+    //   751: aload 19
+    //   753: aload_1
+    //   754: invokeinterface 300 1 0
+    //   759: invokevirtual 304	com/tencent/mm/plugin/webcanvas/b$b:zT	(I)Z
+    //   762: ifeq +548 -> 1310
+    //   765: aload_1
+    //   766: astore 12
+    //   768: aload_2
+    //   769: astore 13
+    //   771: aload 6
+    //   773: astore 14
+    //   775: aload 7
+    //   777: astore 15
+    //   779: aload_1
+    //   780: astore 8
+    //   782: aload_2
+    //   783: astore 9
+    //   785: aload 6
+    //   787: astore 10
+    //   789: aload_1
+    //   790: ldc_w 306
+    //   793: invokeinterface 309 2 0
+    //   798: astore 11
+    //   800: aload_1
+    //   801: astore 12
+    //   803: aload_2
+    //   804: astore 13
+    //   806: aload 6
+    //   808: astore 14
+    //   810: aload 7
+    //   812: astore 15
+    //   814: aload_1
+    //   815: astore 8
+    //   817: aload_2
+    //   818: astore 9
+    //   820: aload 6
+    //   822: astore 10
+    //   824: aload 11
+    //   826: ldc_w 311
+    //   829: invokestatic 186	d/g/b/p:g	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   832: aload_1
+    //   833: astore 8
+    //   835: aload_2
+    //   836: astore 9
+    //   838: aload 6
+    //   840: astore 10
+    //   842: aload 18
+    //   844: aload 18
+    //   846: getfield 209	d/g/b/y$d:NiW	I
+    //   849: iconst_1
+    //   850: iadd
+    //   851: putfield 209	d/g/b/y$d:NiW	I
+    //   854: aload_1
+    //   855: astore 8
+    //   857: aload_2
+    //   858: astore 9
+    //   860: aload 6
+    //   862: astore 10
+    //   864: aload 18
+    //   866: getfield 209	d/g/b/y$d:NiW	I
+    //   869: istore_3
+    //   870: iload_3
+    //   871: bipush 15
+    //   873: if_icmpge +45 -> 918
+    //   876: iconst_0
+    //   877: istore_3
+    //   878: aload_2
+    //   879: ifnull +7 -> 886
+    //   882: aload_2
+    //   883: invokevirtual 251	java/io/OutputStream:close	()V
+    //   886: aload 6
+    //   888: ifnull +8 -> 896
+    //   891: aload 6
+    //   893: invokevirtual 252	java/io/InputStream:close	()V
+    //   896: aload_1
+    //   897: invokeinterface 314 1 0
+    //   902: aload 11
+    //   904: astore 7
+    //   906: goto -624 -> 282
+    //   909: astore 7
+    //   911: aload 11
+    //   913: astore 7
+    //   915: goto -633 -> 282
+    //   918: aload_1
+    //   919: astore 8
+    //   921: aload_2
+    //   922: astore 9
+    //   924: aload 6
+    //   926: astore 10
+    //   928: aload 18
+    //   930: iconst_0
+    //   931: putfield 209	d/g/b/y$d:NiW	I
+    //   934: aload 11
+    //   936: astore 7
+    //   938: iconst_1
+    //   939: istore 4
+    //   941: aload_1
+    //   942: astore 12
+    //   944: aload_2
+    //   945: astore 13
+    //   947: aload 6
+    //   949: astore 14
+    //   951: aload 7
+    //   953: astore 15
+    //   955: aload_1
+    //   956: astore 8
+    //   958: aload_2
+    //   959: astore 9
+    //   961: aload 6
+    //   963: astore 10
+    //   965: sipush 1024
+    //   968: newarray byte
+    //   970: astore 11
+    //   972: iconst_0
+    //   973: istore_3
+    //   974: aload_1
+    //   975: astore 12
+    //   977: aload_2
+    //   978: astore 13
+    //   980: aload 6
+    //   982: astore 14
+    //   984: aload 7
+    //   986: astore 15
+    //   988: aload_1
+    //   989: astore 8
+    //   991: aload_2
+    //   992: astore 9
+    //   994: aload 6
+    //   996: astore 10
+    //   998: new 80	java/lang/StringBuilder
+    //   1001: dup
+    //   1002: invokespecial 81	java/lang/StringBuilder:<init>	()V
+    //   1005: aload 17
+    //   1007: invokevirtual 95	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1010: ldc_w 316
+    //   1013: invokevirtual 95	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1016: invokevirtual 106	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1019: invokestatic 320	com/tencent/mm/vfs/o:Db	(Ljava/lang/String;)Ljava/io/OutputStream;
+    //   1022: astore_2
+    //   1023: aload 6
+    //   1025: ifnull +40 -> 1065
+    //   1028: aload_1
+    //   1029: astore 12
+    //   1031: aload_2
+    //   1032: astore 13
+    //   1034: aload 6
+    //   1036: astore 14
+    //   1038: aload 7
+    //   1040: astore 15
+    //   1042: aload_1
+    //   1043: astore 8
+    //   1045: aload_2
+    //   1046: astore 9
+    //   1048: aload 6
+    //   1050: astore 10
+    //   1052: aload 6
+    //   1054: aload 11
+    //   1056: invokevirtual 324	java/io/InputStream:read	([B)I
+    //   1059: istore_3
+    //   1060: iload_3
+    //   1061: iconst_m1
+    //   1062: if_icmpeq +289 -> 1351
+    //   1065: aload_1
+    //   1066: astore 12
+    //   1068: aload_2
+    //   1069: astore 13
+    //   1071: aload 6
+    //   1073: astore 14
+    //   1075: aload 7
+    //   1077: astore 15
+    //   1079: aload_1
+    //   1080: astore 8
+    //   1082: aload_2
+    //   1083: astore 9
+    //   1085: aload 6
+    //   1087: astore 10
+    //   1089: aload_2
+    //   1090: aload 11
+    //   1092: iconst_0
+    //   1093: iload_3
+    //   1094: invokevirtual 328	java/io/OutputStream:write	([BII)V
+    //   1097: goto -74 -> 1023
+    //   1100: astore 11
+    //   1102: aload 15
+    //   1104: astore 7
+    //   1106: aload 14
+    //   1108: astore 6
+    //   1110: aload 13
+    //   1112: astore_2
+    //   1113: aload 12
+    //   1115: astore_1
+    //   1116: aload_1
+    //   1117: astore 8
+    //   1119: aload_2
+    //   1120: astore 9
+    //   1122: aload 6
+    //   1124: astore 10
+    //   1126: aload 18
+    //   1128: iconst_0
+    //   1129: putfield 209	d/g/b/y$d:NiW	I
+    //   1132: aload_1
+    //   1133: astore 8
+    //   1135: aload_2
+    //   1136: astore 9
+    //   1138: aload 6
+    //   1140: astore 10
+    //   1142: getstatic 168	d/g/b/ad:Njc	Ld/g/b/ad;
+    //   1145: astore 12
+    //   1147: aload_1
+    //   1148: astore 8
+    //   1150: aload_2
+    //   1151: astore 9
+    //   1153: aload 6
+    //   1155: astore 10
+    //   1157: invokestatic 174	com/tencent/mm/sdk/platformtools/ak:getContext	()Landroid/content/Context;
+    //   1160: ldc 175
+    //   1162: invokevirtual 181	android/content/Context:getString	(I)Ljava/lang/String;
+    //   1165: astore 12
+    //   1167: aload_1
+    //   1168: astore 8
+    //   1170: aload_2
+    //   1171: astore 9
+    //   1173: aload 6
+    //   1175: astore 10
+    //   1177: aload 12
+    //   1179: ldc 183
+    //   1181: invokestatic 186	d/g/b/p:g	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   1184: aload_1
+    //   1185: astore 8
+    //   1187: aload_2
+    //   1188: astore 9
+    //   1190: aload 6
+    //   1192: astore 10
+    //   1194: aload 12
+    //   1196: iconst_1
+    //   1197: anewarray 4	java/lang/Object
+    //   1200: dup
+    //   1201: iconst_0
+    //   1202: aload 11
+    //   1204: invokevirtual 187	java/lang/Exception:toString	()Ljava/lang/String;
+    //   1207: aastore
+    //   1208: iconst_1
+    //   1209: invokestatic 193	java/util/Arrays:copyOf	([Ljava/lang/Object;I)[Ljava/lang/Object;
+    //   1212: invokestatic 197	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   1215: astore 12
+    //   1217: aload_1
+    //   1218: astore 8
+    //   1220: aload_2
+    //   1221: astore 9
+    //   1223: aload 6
+    //   1225: astore 10
+    //   1227: aload 12
+    //   1229: ldc 199
+    //   1231: invokestatic 186	d/g/b/p:g	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   1234: aload_1
+    //   1235: astore 8
+    //   1237: aload_2
+    //   1238: astore 9
+    //   1240: aload 6
+    //   1242: astore 10
+    //   1244: aload 16
+    //   1246: aload 12
+    //   1248: putfield 203	com/github/henryye/nativeiv/b/b$a:errorMsg	Ljava/lang/String;
+    //   1251: aload_1
+    //   1252: astore 8
+    //   1254: aload_2
+    //   1255: astore 9
+    //   1257: aload 6
+    //   1259: astore 10
+    //   1261: ldc 114
+    //   1263: aload 11
+    //   1265: checkcast 157	java/lang/Throwable
+    //   1268: ldc 158
+    //   1270: iconst_0
+    //   1271: anewarray 4	java/lang/Object
+    //   1274: invokestatic 162	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   1277: aload_2
+    //   1278: ifnull +7 -> 1285
+    //   1281: aload_2
+    //   1282: invokevirtual 251	java/io/OutputStream:close	()V
+    //   1285: aload 6
+    //   1287: ifnull +8 -> 1295
+    //   1290: aload 6
+    //   1292: invokevirtual 252	java/io/InputStream:close	()V
+    //   1295: aload_1
+    //   1296: ifnull +229 -> 1525
+    //   1299: aload_1
+    //   1300: invokeinterface 314 1 0
+    //   1305: iconst_1
+    //   1306: istore_3
+    //   1307: goto -1025 -> 282
+    //   1310: aload_1
+    //   1311: astore 12
+    //   1313: aload_2
+    //   1314: astore 13
+    //   1316: aload 6
+    //   1318: astore 14
+    //   1320: aload 7
+    //   1322: astore 15
+    //   1324: aload_1
+    //   1325: astore 8
+    //   1327: aload_2
+    //   1328: astore 9
+    //   1330: aload 6
+    //   1332: astore 10
+    //   1334: aload_1
+    //   1335: invokeinterface 332 1 0
+    //   1340: astore 6
+    //   1342: aload 18
+    //   1344: iconst_0
+    //   1345: putfield 209	d/g/b/y$d:NiW	I
+    //   1348: goto -410 -> 938
+    //   1351: aload_1
+    //   1352: astore 12
+    //   1354: aload_2
+    //   1355: astore 13
+    //   1357: aload 6
+    //   1359: astore 14
+    //   1361: aload 7
+    //   1363: astore 15
+    //   1365: aload_1
+    //   1366: astore 8
+    //   1368: aload_2
+    //   1369: astore 9
+    //   1371: aload 6
+    //   1373: astore 10
+    //   1375: new 334	com/tencent/mm/vfs/k
+    //   1378: dup
+    //   1379: new 80	java/lang/StringBuilder
+    //   1382: dup
+    //   1383: invokespecial 81	java/lang/StringBuilder:<init>	()V
+    //   1386: aload 17
+    //   1388: invokevirtual 95	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1391: ldc_w 316
+    //   1394: invokevirtual 95	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1397: invokevirtual 106	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1400: invokespecial 335	com/tencent/mm/vfs/k:<init>	(Ljava/lang/String;)V
+    //   1403: new 334	com/tencent/mm/vfs/k
+    //   1406: dup
+    //   1407: aload 17
+    //   1409: invokespecial 335	com/tencent/mm/vfs/k:<init>	(Ljava/lang/String;)V
+    //   1412: invokevirtual 339	com/tencent/mm/vfs/k:ag	(Lcom/tencent/mm/vfs/k;)Z
+    //   1415: pop
+    //   1416: aload_1
+    //   1417: astore 12
+    //   1419: aload_2
+    //   1420: astore 13
+    //   1422: aload 6
+    //   1424: astore 14
+    //   1426: aload 7
+    //   1428: astore 15
+    //   1430: aload_1
+    //   1431: astore 8
+    //   1433: aload_2
+    //   1434: astore 9
+    //   1436: aload 6
+    //   1438: astore 10
+    //   1440: aload 16
+    //   1442: new 142	java/io/BufferedInputStream
+    //   1445: dup
+    //   1446: aload 17
+    //   1448: invokestatic 146	com/tencent/mm/vfs/o:openRead	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   1451: invokespecial 149	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   1454: checkcast 151	java/io/InputStream
+    //   1457: putfield 155	com/github/henryye/nativeiv/b/b$a:inputStream	Ljava/io/InputStream;
+    //   1460: aload_1
+    //   1461: astore 12
+    //   1463: aload_2
+    //   1464: astore 13
+    //   1466: aload 6
+    //   1468: astore 14
+    //   1470: aload 7
+    //   1472: astore 15
+    //   1474: aload_1
+    //   1475: astore 8
+    //   1477: aload_2
+    //   1478: astore 9
+    //   1480: aload 6
+    //   1482: astore 10
+    //   1484: ldc 114
+    //   1486: ldc_w 341
+    //   1489: invokestatic 140	com/tencent/mm/sdk/platformtools/ae:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1492: aload_2
+    //   1493: ifnull +7 -> 1500
+    //   1496: aload_2
+    //   1497: invokevirtual 251	java/io/OutputStream:close	()V
+    //   1500: aload 6
+    //   1502: invokevirtual 252	java/io/InputStream:close	()V
+    //   1505: aload_1
+    //   1506: invokeinterface 314 1 0
+    //   1511: iload 4
+    //   1513: istore_3
+    //   1514: goto -1232 -> 282
+    //   1517: astore 8
+    //   1519: iload 4
+    //   1521: istore_3
+    //   1522: goto -1240 -> 282
+    //   1525: iconst_1
+    //   1526: istore_3
+    //   1527: goto -1245 -> 282
+    //   1530: astore 8
+    //   1532: iconst_1
+    //   1533: istore_3
+    //   1534: goto -1252 -> 282
+    //   1537: astore 7
+    //   1539: aload 10
+    //   1541: astore 6
+    //   1543: aload 9
+    //   1545: astore_2
+    //   1546: aload 8
+    //   1548: astore_1
+    //   1549: aload_2
+    //   1550: ifnull +7 -> 1557
+    //   1553: aload_2
+    //   1554: invokevirtual 251	java/io/OutputStream:close	()V
+    //   1557: aload 6
+    //   1559: ifnull +8 -> 1567
+    //   1562: aload 6
+    //   1564: invokevirtual 252	java/io/InputStream:close	()V
+    //   1567: aload_1
+    //   1568: ifnull +9 -> 1577
+    //   1571: aload_1
+    //   1572: invokeinterface 314 1 0
+    //   1577: ldc 65
+    //   1579: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   1582: aload 7
+    //   1584: athrow
+    //   1585: ldc 65
+    //   1587: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   1590: aload 16
+    //   1592: areturn
+    //   1593: astore_1
+    //   1594: goto -17 -> 1577
+    //   1597: astore 7
+    //   1599: goto -50 -> 1549
+    //   1602: astore 7
+    //   1604: goto -55 -> 1549
+    //   1607: astore 11
+    //   1609: goto -493 -> 1116
+    //   1612: astore 8
+    //   1614: aload 11
+    //   1616: astore 7
+    //   1618: aload 8
+    //   1620: astore 11
+    //   1622: goto -506 -> 1116
+    //   1625: astore 11
+    //   1627: goto -511 -> 1116
+    //   1630: astore_1
+    //   1631: goto -1247 -> 384
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	462	0	this	b
-    //   0	462	1	paramContext	Context
-    //   0	462	2	paramString	String
-    //   233	132	3	i	int
-    //   29	417	4	localObject	Object
-    //   61	371	6	localMutableContextWrapper	MutableContextWrapper
-    //   84	10	7	locald	d
+    //   0	1634	0	this	b
+    //   0	1634	1	paramObject	Object
+    //   0	1634	2	paramImageDecodeConfig	com.github.henryye.nativeiv.ImageDecodeConfig
+    //   281	1253	3	i	int
+    //   939	581	4	j	int
+    //   75	212	5	bool	boolean
+    //   43	1520	6	localObject1	Object
+    //   21	884	7	localObject2	Object
+    //   909	1	7	localException1	java.lang.Exception
+    //   913	558	7	localObject3	Object
+    //   1537	46	7	localObject4	Object
+    //   1597	1	7	localObject5	Object
+    //   1602	1	7	localObject6	Object
+    //   1616	1	7	localObject7	Object
+    //   306	1170	8	localObject8	Object
+    //   1517	1	8	localException2	java.lang.Exception
+    //   1530	17	8	localException3	java.lang.Exception
+    //   1612	7	8	localException4	java.lang.Exception
+    //   309	1235	9	localImageDecodeConfig1	com.github.henryye.nativeiv.ImageDecodeConfig
+    //   313	1227	10	localObject9	Object
+    //   520	571	11	localObject10	Object
+    //   1100	164	11	localException5	java.lang.Exception
+    //   1607	8	11	localException6	java.lang.Exception
+    //   1620	1	11	localException7	java.lang.Exception
+    //   1625	1	11	localException8	java.lang.Exception
+    //   292	1170	12	localObject11	Object
+    //   295	1170	13	localImageDecodeConfig2	com.github.henryye.nativeiv.ImageDecodeConfig
+    //   299	1170	14	localObject12	Object
+    //   303	1170	15	localObject13	Object
+    //   30	1561	16	locala	com.github.henryye.nativeiv.b.b.a
+    //   68	1379	17	str	String
+    //   235	1108	18	locald	d.g.b.y.d
+    //   278	474	19	localb	b.b
     // Exception table:
     //   from	to	target	type
-    //   25	31	451	finally
-    //   36	42	451	finally
-    //   42	209	451	finally
-    //   212	312	451	finally
-    //   319	329	451	finally
-    //   334	337	451	finally
-    //   337	445	451	finally
-    //   2	25	457	finally
-    //   312	315	457	finally
-    //   452	457	457	finally
+    //   123	150	158	java/lang/Exception
+    //   882	886	909	java/lang/Exception
+    //   891	896	909	java/lang/Exception
+    //   896	902	909	java/lang/Exception
+    //   315	324	1100	java/lang/Exception
+    //   359	366	1100	java/lang/Exception
+    //   416	425	1100	java/lang/Exception
+    //   452	458	1100	java/lang/Exception
+    //   482	490	1100	java/lang/Exception
+    //   514	522	1100	java/lang/Exception
+    //   546	563	1100	java/lang/Exception
+    //   587	595	1100	java/lang/Exception
+    //   619	626	1100	java/lang/Exception
+    //   650	659	1100	java/lang/Exception
+    //   683	693	1100	java/lang/Exception
+    //   717	727	1100	java/lang/Exception
+    //   751	765	1100	java/lang/Exception
+    //   789	800	1100	java/lang/Exception
+    //   824	832	1100	java/lang/Exception
+    //   965	972	1100	java/lang/Exception
+    //   998	1023	1100	java/lang/Exception
+    //   1052	1060	1100	java/lang/Exception
+    //   1089	1097	1100	java/lang/Exception
+    //   1334	1342	1100	java/lang/Exception
+    //   1375	1416	1100	java/lang/Exception
+    //   1440	1460	1100	java/lang/Exception
+    //   1484	1492	1100	java/lang/Exception
+    //   1496	1500	1517	java/lang/Exception
+    //   1500	1511	1517	java/lang/Exception
+    //   1281	1285	1530	java/lang/Exception
+    //   1290	1295	1530	java/lang/Exception
+    //   1299	1305	1530	java/lang/Exception
+    //   315	324	1537	finally
+    //   359	366	1537	finally
+    //   416	425	1537	finally
+    //   452	458	1537	finally
+    //   482	490	1537	finally
+    //   514	522	1537	finally
+    //   546	563	1537	finally
+    //   587	595	1537	finally
+    //   619	626	1537	finally
+    //   650	659	1537	finally
+    //   683	693	1537	finally
+    //   717	727	1537	finally
+    //   751	765	1537	finally
+    //   789	800	1537	finally
+    //   824	832	1537	finally
+    //   842	854	1537	finally
+    //   864	870	1537	finally
+    //   928	934	1537	finally
+    //   965	972	1537	finally
+    //   998	1023	1537	finally
+    //   1052	1060	1537	finally
+    //   1089	1097	1537	finally
+    //   1126	1132	1537	finally
+    //   1142	1147	1537	finally
+    //   1157	1167	1537	finally
+    //   1177	1184	1537	finally
+    //   1194	1217	1537	finally
+    //   1227	1234	1537	finally
+    //   1244	1251	1537	finally
+    //   1261	1277	1537	finally
+    //   1334	1342	1537	finally
+    //   1375	1416	1537	finally
+    //   1440	1460	1537	finally
+    //   1484	1492	1537	finally
+    //   1553	1557	1593	java/lang/Exception
+    //   1562	1567	1593	java/lang/Exception
+    //   1571	1577	1593	java/lang/Exception
+    //   324	331	1597	finally
+    //   1342	1348	1602	finally
+    //   324	331	1607	java/lang/Exception
+    //   842	854	1612	java/lang/Exception
+    //   864	870	1612	java/lang/Exception
+    //   928	934	1612	java/lang/Exception
+    //   1342	1348	1625	java/lang/Exception
+    //   370	374	1630	java/lang/Exception
+    //   379	384	1630	java/lang/Exception
   }
   
-  protected Object eK(String paramString1, String paramString2)
+  public final boolean accept(Object paramObject)
   {
-    d.g.b.p.h(paramString1, "canvasId");
-    d.g.b.p.h(paramString2, "data");
-    return new l(paramString1, paramString2);
+    AppMethodBeat.i(213861);
+    p.h(paramObject, "obj");
+    if (((paramObject instanceof String)) && ((n.nF((String)paramObject, "http://")) || (n.nF((String)paramObject, "https://"))))
+    {
+      AppMethodBeat.o(213861);
+      return true;
+    }
+    AppMethodBeat.o(213861);
+    return false;
   }
   
-  public final m eKV()
+  public final String sP()
   {
-    return (m)this.Dyc.getValue();
-  }
-  
-  public final com.tencent.mm.plugin.ac.g eKW()
-  {
-    return this.Dyd;
-  }
-  
-  public final com.tencent.mm.plugin.appbrand.appcache.p eKX()
-  {
-    return (com.tencent.mm.plugin.appbrand.appcache.p)this.Dyj.getValue();
-  }
-  
-  public final void fs(String paramString, int paramInt)
-  {
-    d.g.b.p.h(paramString, "canvasId");
-    ad.i(this.TAG, "attach #" + paramString + ':' + paramInt);
-    a(this, "attach", paramString, 0, null, 12);
-  }
-  
-  public final void ft(String paramString, int paramInt)
-  {
-    d.g.b.p.h(paramString, "canvasId");
-    ad.i(this.TAG, "render #" + paramString + ':' + paramInt);
-    a(this, "render", paramString, paramInt, null, 8);
-  }
-  
-  public final void g(int paramInt, String paramString1, String paramString2, String paramString3)
-  {
-    d.g.b.p.h(paramString1, "name");
-    com.tencent.mm.ac.i locali = new com.tencent.mm.ac.i();
-    locali.R("id", paramInt);
-    locali.h("name", paramString1);
-    locali.h("message", paramString2);
-    locali.h("stackTrace", paramString3);
-    evaluateJavascript("WeixinCore.emit('error', '" + locali + "')", null);
-  }
-  
-  public abstract String getAppId();
-  
-  public final void resize(int paramInt1, int paramInt2, int paramInt3)
-  {
-    ad.i(this.TAG, "resize :".concat(String.valueOf(paramInt1)));
-    evaluateJavascript("WeixinCore.resize(" + paramInt1 + ", " + paramInt2 + ", " + paramInt3 + ')', null);
-  }
-  
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/webcanvas/WebCanvasJsEngine$magicBrush$1$2", "Lcom/tencent/magicbrush/handler/IJsThreadHandler;", "getExecutingTaskNameForDebug", "", "isJsThreadCurrent", "", "post", "", "p0", "Ljava/lang/Runnable;", "p1", "webview-sdk_release"})
-  public static final class b
-    implements com.tencent.magicbrush.handler.a
-  {
-    b(b paramb) {}
-    
-    public final boolean Ct()
-    {
-      AppMethodBeat.i(214032);
-      IJSRuntime localIJSRuntime = b.j(this.Dyt);
-      d.g.b.p.g(localIJSRuntime, "this@WebCanvasJsEngine.jsRuntime");
-      boolean bool = localIJSRuntime.Np();
-      AppMethodBeat.o(214032);
-      return bool;
-    }
-    
-    public final String Cu()
-    {
-      AppMethodBeat.i(214030);
-      String str = this.Dyt.Cu();
-      AppMethodBeat.o(214030);
-      return str;
-    }
-    
-    public final void a(Runnable paramRunnable, boolean paramBoolean)
-    {
-      AppMethodBeat.i(214031);
-      d.g.b.p.h(paramRunnable, "p0");
-      this.Dyt.a(paramRunnable, paramBoolean);
-      AppMethodBeat.o(214031);
-    }
-  }
-  
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "Lcom/tencent/magicbrush/MagicBrushConfig$ImageHandlerConfig;", "invoke", "com/tencent/mm/plugin/webcanvas/WebCanvasJsEngine$magicBrush$2$1"})
-  static final class c
-    extends d.g.b.q
-    implements d.g.a.b<f.b, z>
-  {
-    c(d paramd, b paramb)
-    {
-      super();
-    }
-  }
-  
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/webcanvas/WebCanvasJsEngine$Companion;", "", "()V", "DEBUG_BIZ", "", "DEBUG_PATH", "DEBUG_PKG", "appContext", "Landroid/content/Context;", "kotlin.jvm.PlatformType", "getAppContext", "()Landroid/content/Context;", "appContext$delegate", "Lkotlin/Lazy;", "canvasStorage", "Lcom/tencent/mm/sdk/platformtools/MMKVSlotManager;", "getCanvasStorage", "()Lcom/tencent/mm/sdk/platformtools/MMKVSlotManager;", "canvasStorage$delegate", "getViewportHeight", "", "getViewportWidth", "webview-sdk_release"})
-  public static final class g
-  {
-    public static ar eLh()
-    {
-      AppMethodBeat.i(214055);
-      Object localObject = b.eLd();
-      g localg = b.Dys;
-      localObject = (ar)((d.f)localObject).getValue();
-      AppMethodBeat.o(214055);
-      return localObject;
-    }
-    
-    static int eLi()
-    {
-      AppMethodBeat.i(214057);
-      Object localObject = getAppContext().getSystemService("window");
-      if (localObject == null)
-      {
-        localObject = new v("null cannot be cast to non-null type android.view.WindowManager");
-        AppMethodBeat.o(214057);
-        throw ((Throwable)localObject);
-      }
-      localObject = ((WindowManager)localObject).getDefaultDisplay();
-      d.g.b.p.g(localObject, "(appContext.getSystemSer…owManager).defaultDisplay");
-      int i = ((Display)localObject).getWidth();
-      AppMethodBeat.o(214057);
-      return i;
-    }
-    
-    static Context getAppContext()
-    {
-      AppMethodBeat.i(214056);
-      Object localObject = b.eLe();
-      g localg = b.Dys;
-      localObject = (Context)((d.f)localObject).getValue();
-      AppMethodBeat.o(214056);
-      return localObject;
-    }
-  }
-  
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "Lcom/eclipsesource/v8/V8Object;", "kotlin.jvm.PlatformType", "invoke"})
-  static final class j
-    extends d.g.b.q
-    implements d.g.a.a<V8Object>
-  {
-    j(b paramb)
-    {
-      super();
-    }
-  }
-  
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/webcanvas/WebCanvasJsEngine$WebCanvasJsApiInterface;", "", "canvasId", "", "dataStr", "(Lcom/tencent/mm/plugin/webcanvas/WebCanvasJsEngine;Ljava/lang/String;Ljava/lang/String;)V", "getCanvasId", "()Ljava/lang/String;", "getDataStr", "closePopup", "", "getData", "getFontSize", "", "getId", "getPhyHeight", "", "getPhyOffsetHeight", "getPhyOffsetTop", "getPhyWidth", "getVersion", "isDarkMode", "", "performance", "elementId", "key", "duration", "", "popup", "popupId", "width", "", "height", "left", "top", "mode", "colorRGBA", "onDismiss", "Lcom/eclipsesource/v8/V8Function;", "onOuterClick", "restore", "save", "layout", "updatePhyHeight", "webview-sdk_release"})
-  public class l
-  {
-    protected final String ktn;
-    private final String kwS;
-    
-    public l(String paramString)
-    {
-      AppMethodBeat.i(214088);
-      this.ktn = paramString;
-      this.kwS = localObject;
-      AppMethodBeat.o(214088);
-    }
-    
-    @JavascriptInterface
-    public final void closePopup()
-    {
-      AppMethodBeat.i(214085);
-      Iterator localIterator = ((Iterable)b.h(b.this)).iterator();
-      while (localIterator.hasNext()) {
-        ((d.g.a.b)localIterator.next()).invoke(this.ktn);
-      }
-      AppMethodBeat.o(214085);
-    }
-    
-    @JavascriptInterface
-    public final String getData()
-    {
-      return this.kwS;
-    }
-    
-    @JavascriptInterface
-    public final float getFontSize()
-    {
-      AppMethodBeat.i(214081);
-      float f = b.eKZ();
-      AppMethodBeat.o(214081);
-      return f;
-    }
-    
-    @JavascriptInterface
-    public final String getId()
-    {
-      return this.ktn;
-    }
-    
-    @JavascriptInterface
-    public final int getPhyHeight()
-    {
-      AppMethodBeat.i(214078);
-      Object localObject = (a)b.d(b.this).get(this.ktn);
-      if (localObject != null)
-      {
-        localObject = Integer.valueOf(((a)localObject).getHeight());
-        if (((Number)localObject).intValue() != 0)
-        {
-          i = 1;
-          if (i == 0) {
-            break label74;
-          }
-        }
-        for (;;)
-        {
-          if (localObject == null) {
-            break label79;
-          }
-          i = ((Integer)localObject).intValue();
-          AppMethodBeat.o(214078);
-          return i;
-          i = 0;
-          break;
-          label74:
-          localObject = null;
-        }
-      }
-      label79:
-      localObject = b.Dys;
-      localObject = b.g.getAppContext().getSystemService("window");
-      if (localObject == null)
-      {
-        localObject = new v("null cannot be cast to non-null type android.view.WindowManager");
-        AppMethodBeat.o(214078);
-        throw ((Throwable)localObject);
-      }
-      localObject = ((WindowManager)localObject).getDefaultDisplay();
-      d.g.b.p.g(localObject, "(appContext.getSystemSer…owManager).defaultDisplay");
-      int i = ((Display)localObject).getHeight();
-      AppMethodBeat.o(214078);
-      return i;
-    }
-    
-    @JavascriptInterface
-    public final int getPhyOffsetHeight()
-    {
-      AppMethodBeat.i(214080);
-      a locala = (a)b.d(b.this).get(this.ktn);
-      if (locala != null)
-      {
-        int i = locala.eKU();
-        AppMethodBeat.o(214080);
-        return i;
-      }
-      AppMethodBeat.o(214080);
-      return 0;
-    }
-    
-    @JavascriptInterface
-    public final int getPhyOffsetTop()
-    {
-      AppMethodBeat.i(214079);
-      a locala = (a)b.d(b.this).get(this.ktn);
-      if (locala != null)
-      {
-        int i = locala.eKT();
-        AppMethodBeat.o(214079);
-        return i;
-      }
-      AppMethodBeat.o(214079);
-      return 0;
-    }
-    
-    @JavascriptInterface
-    public final int getPhyWidth()
-    {
-      AppMethodBeat.i(214077);
-      Object localObject = (a)b.d(b.this).get(this.ktn);
-      if (localObject != null)
-      {
-        localObject = Integer.valueOf(((a)localObject).getWidth());
-        if (((Number)localObject).intValue() != 0)
-        {
-          i = 1;
-          if (i == 0) {
-            break label74;
-          }
-        }
-        for (;;)
-        {
-          if (localObject == null) {
-            break label79;
-          }
-          i = ((Integer)localObject).intValue();
-          AppMethodBeat.o(214077);
-          return i;
-          i = 0;
-          break;
-          label74:
-          localObject = null;
-        }
-      }
-      label79:
-      localObject = b.Dys;
-      int i = b.g.eLi();
-      AppMethodBeat.o(214077);
-      return i;
-    }
-    
-    @JavascriptInterface
-    public final int getVersion()
-    {
-      AppMethodBeat.i(214075);
-      try
-      {
-        i = b.a(b.a(b.this));
-        AppMethodBeat.o(214075);
-        return i;
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          ad.e(b.b(b.this), "getVersion ex " + localException.getMessage());
-          int i = 0;
-        }
-      }
-    }
-    
-    @JavascriptInterface
-    public final boolean isDarkMode()
-    {
-      AppMethodBeat.i(214082);
-      boolean bool = b.eLa();
-      AppMethodBeat.o(214082);
-      return bool;
-    }
-    
-    @JavascriptInterface
-    public final void performance(Object paramObject, String paramString, long paramLong)
-    {
-      AppMethodBeat.i(214076);
-      d.g.b.p.h(paramObject, "elementId");
-      d.g.b.p.h(paramString, "key");
-      Object localObject = (Long)((Map)b.c(b.this)).get(paramObject);
-      if (localObject != null)
-      {
-        long l = ((Number)localObject).longValue();
-        localObject = b.b(b.this);
-        paramString = new StringBuilder("performance:").append(paramObject).append(" [").append(paramString).append("]:").append(System.currentTimeMillis() - l).append("ms");
-        if (paramLong > 0L) {}
-        for (paramObject = " duration:" + paramLong + "ms";; paramObject = "")
-        {
-          ad.i((String)localObject, paramObject);
-          AppMethodBeat.o(214076);
-          return;
-        }
-      }
-      AppMethodBeat.o(214076);
-    }
-    
-    @JavascriptInterface
-    public final int popup(final String paramString1, final Number paramNumber1, final Number paramNumber2, final Number paramNumber3, final Number paramNumber4, final int paramInt, String paramString2, final V8Function paramV8Function1, final V8Function paramV8Function2)
-    {
-      AppMethodBeat.i(214084);
-      d.g.b.p.h(paramString1, "popupId");
-      d.g.b.p.h(paramNumber1, "width");
-      d.g.b.p.h(paramNumber2, "height");
-      d.g.b.p.h(paramNumber3, "left");
-      d.g.b.p.h(paramNumber4, "top");
-      d.g.b.p.h(paramString2, "colorRGBA");
-      d.g.b.p.h(paramV8Function1, "onDismiss");
-      d.g.b.p.h(paramV8Function2, "onOuterClick");
-      paramV8Function1 = paramV8Function1.twin();
-      paramV8Function2 = paramV8Function2.twin();
-      Object localObject = new char[1];
-      localObject[0] = 35;
-      d.g.b.p.h(paramString2, "$this$trimStart");
-      d.g.b.p.h(localObject, "chars");
-      paramString2 = (CharSequence)paramString2;
-      final int i = 0;
-      int j = paramString2.length();
-      if (i < j) {
-        if (d.a.e.contains((char[])localObject, paramString2.charAt(i))) {}
-      }
-      for (paramString2 = paramString2.subSequence(i, paramString2.length());; paramString2 = (CharSequence)"")
-      {
-        paramString2 = paramString2.toString();
-        if (paramString2 != null) {
-          break label220;
-        }
-        paramString1 = new v("null cannot be cast to non-null type java.lang.String");
-        AppMethodBeat.o(214084);
-        throw paramString1;
-        i += 1;
-        break;
-      }
-      label220:
-      paramString2 = paramString2.toUpperCase();
-      d.g.b.p.g(paramString2, "(this as java.lang.String).toUpperCase()");
-      localObject = (CharSequence)paramString2;
-      if (new k("[A-F0-9]{8}").aC((CharSequence)localObject))
-      {
-        if (paramString2 == null)
-        {
-          paramString1 = new v("null cannot be cast to non-null type java.lang.String");
-          AppMethodBeat.o(214084);
-          throw paramString1;
-        }
-        localObject = paramString2.substring(6, 8);
-        d.g.b.p.g(localObject, "(this as java.lang.Strin…ing(startIndex, endIndex)");
-        i = Integer.parseInt((String)localObject, d.n.a.aly(16));
-        if (paramString2 == null)
-        {
-          paramString1 = new v("null cannot be cast to non-null type java.lang.String");
-          AppMethodBeat.o(214084);
-          throw paramString1;
-        }
-        localObject = paramString2.substring(0, 2);
-        d.g.b.p.g(localObject, "(this as java.lang.Strin…ing(startIndex, endIndex)");
-        j = Integer.parseInt((String)localObject, d.n.a.aly(16));
-        if (paramString2 == null)
-        {
-          paramString1 = new v("null cannot be cast to non-null type java.lang.String");
-          AppMethodBeat.o(214084);
-          throw paramString1;
-        }
-        localObject = paramString2.substring(2, 4);
-        d.g.b.p.g(localObject, "(this as java.lang.Strin…ing(startIndex, endIndex)");
-        int k = Integer.parseInt((String)localObject, d.n.a.aly(16));
-        if (paramString2 == null)
-        {
-          paramString1 = new v("null cannot be cast to non-null type java.lang.String");
-          AppMethodBeat.o(214084);
-          throw paramString1;
-        }
-        paramString2 = paramString2.substring(4, 6);
-        d.g.b.p.g(paramString2, "(this as java.lang.Strin…ing(startIndex, endIndex)");
-        i = Color.argb(i, j, k, Integer.parseInt(paramString2, d.n.a.aly(16)));
-        localObject = ((Iterable)b.g(b.this)).iterator();
-        label501:
-        if (!((Iterator)localObject).hasNext()) {
-          break label688;
-        }
-        paramString2 = ((d.g.a.c)((Iterator)localObject).next()).a(paramString1, this.ktn, Integer.valueOf(paramNumber1.intValue()), Integer.valueOf(paramNumber2.intValue()), Integer.valueOf(paramNumber3.intValue()), Integer.valueOf(paramNumber4.intValue()), Integer.valueOf(paramInt), Integer.valueOf(i), new a(this, paramString1, paramNumber1, paramNumber2, paramNumber3, paramNumber4, paramInt, i, paramV8Function2, paramV8Function1), new b(this, paramString1, paramNumber1, paramNumber2, paramNumber3, paramNumber4, paramInt, i, paramV8Function2, paramV8Function1));
-        if (((Number)paramString2).intValue() == -1) {
-          break label676;
-        }
-        j = 1;
-        label634:
-        if (j == 0) {
-          break label682;
-        }
-      }
-      for (;;)
-      {
-        paramString2 = (Integer)paramString2;
-        if (paramString2 == null) {
-          break label501;
-        }
-        paramInt = ((Number)paramString2).intValue();
-        AppMethodBeat.o(214084);
-        return paramInt;
-        i = 0;
-        break;
-        label676:
-        j = 0;
-        break label634;
-        label682:
-        paramString2 = null;
-      }
-      label688:
-      AppMethodBeat.o(214084);
-      return -1;
-    }
-    
-    @JavascriptInterface
-    public final String restore(String paramString)
-    {
-      AppMethodBeat.i(214087);
-      d.g.b.p.h(paramString, "canvasId");
-      paramString = b.a(b.this, b.fu(paramString, getPhyWidth()));
-      if (paramString != null)
-      {
-        paramString = paramString.DyC;
-        AppMethodBeat.o(214087);
-        return paramString;
-      }
-      AppMethodBeat.o(214087);
-      return null;
-    }
-    
-    @JavascriptInterface
-    public final void save(String paramString1, Number paramNumber1, Number paramNumber2, Number paramNumber3, Number paramNumber4, String paramString2)
-    {
-      AppMethodBeat.i(214086);
-      d.g.b.p.h(paramString1, "canvasId");
-      d.g.b.p.h(paramNumber1, "left");
-      d.g.b.p.h(paramNumber2, "top");
-      d.g.b.p.h(paramNumber3, "width");
-      d.g.b.p.h(paramNumber4, "height");
-      d.g.b.p.h(paramString2, "layout");
-      b.a(b.this, b.fu(paramString1, getPhyWidth()), new b.k(paramString1, b.a(paramNumber4, -2), b.a(paramNumber3, -1), paramNumber1.intValue(), paramNumber2.intValue(), paramString2));
-      AppMethodBeat.o(214086);
-    }
-    
-    @JavascriptInterface
-    public final void updatePhyHeight(Number paramNumber)
-    {
-      AppMethodBeat.i(214083);
-      d.g.b.p.h(paramNumber, "height");
-      ad.i(b.b(b.this), "updatePhyHeight:".concat(String.valueOf(paramNumber)));
-      String str = b.fu(this.ktn, getPhyWidth());
-      b localb = b.this;
-      Object localObject = (b.k)b.e(b.this).get(str);
-      if (localObject != null)
-      {
-        ((b.k)localObject).height = paramNumber.intValue();
-        if (localObject != null) {}
-      }
-      else
-      {
-        localObject = new b.k(this.ktn, paramNumber.intValue());
-      }
-      for (;;)
-      {
-        b.a(localb, str, (b.k)localObject);
-        localObject = ((Iterable)b.f(b.this)).iterator();
-        while (((Iterator)localObject).hasNext()) {
-          ((d.g.a.q)((Iterator)localObject).next()).d(this.ktn, Integer.valueOf(-1), Integer.valueOf(paramNumber.intValue()));
-        }
-        AppMethodBeat.o(214083);
-        return;
-      }
-    }
-    
-    @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke", "com/tencent/mm/plugin/webcanvas/WebCanvasJsEngine$WebCanvasJsApiInterface$popup$1$1"})
-    static final class a
-      extends d.g.b.q
-      implements d.g.a.a<z>
-    {
-      a(b.l paraml, String paramString, Number paramNumber1, Number paramNumber2, Number paramNumber3, Number paramNumber4, int paramInt1, int paramInt2, V8Function paramV8Function1, V8Function paramV8Function2)
-      {
-        super();
-      }
-    }
-    
-    @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke", "com/tencent/mm/plugin/webcanvas/WebCanvasJsEngine$WebCanvasJsApiInterface$popup$1$2"})
-    static final class b
-      extends d.g.b.q
-      implements d.g.a.a<z>
-    {
-      b(b.l paraml, String paramString, Number paramNumber1, Number paramNumber2, Number paramNumber3, Number paramNumber4, int paramInt1, int paramInt2, V8Function paramV8Function1, V8Function paramV8Function2)
-      {
-        super();
-      }
-    }
-  }
-  
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "", "invoke", "com/tencent/mm/plugin/webcanvas/WebCanvasJsEngine$create$2$1"})
-  static final class n
-    extends d.g.b.q
-    implements d.g.a.b<String, z>
-  {
-    n(b paramb, String paramString1, String paramString2, String paramString3, int paramInt)
-    {
-      super();
-    }
-  }
-  
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "Lcom/tencent/mm/appbrand/v8/V8ContextEngine;", "invoke"})
-  static final class o
-    extends d.g.b.q
-    implements d.g.a.a<m>
-  {
-    o(b paramb)
-    {
-      super();
-    }
-  }
-  
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "<anonymous parameter 0>", "Landroid/view/View;", "kotlin.jvm.PlatformType", "left", "", "top", "right", "bottom", "<anonymous parameter 5>", "<anonymous parameter 6>", "<anonymous parameter 7>", "<anonymous parameter 8>", "onLayoutChange", "com/tencent/mm/plugin/webcanvas/WebCanvasJsEngine$getCanvasView$1$1$2", "com/tencent/mm/plugin/webcanvas/WebCanvasJsEngine$$special$$inlined$apply$lambda$1"})
-  static final class p
-    implements View.OnLayoutChangeListener
-  {
-    p(MagicBrushView paramMagicBrushView, MutableContextWrapper paramMutableContextWrapper, b paramb, Context paramContext, String paramString) {}
-    
-    public final void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
-    {
-      AppMethodBeat.i(214093);
-      ad.i(b.b(jdField_this), "OnLayoutChange [" + (paramInt3 - paramInt1) + ',' + (paramInt4 - paramInt2) + ']');
-      jdField_this.ft(paramString, this.DyV.getVirtualElementId());
-      jdField_this.resize(this.DyV.getVirtualElementId(), paramInt3 - paramInt1, paramInt4 - paramInt2);
-      AppMethodBeat.o(214093);
-    }
-  }
-  
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke", "com/tencent/mm/plugin/webcanvas/WebCanvasJsEngine$getCanvasView$1$2$1$1", "com/tencent/mm/plugin/webcanvas/WebCanvasJsEngine$$special$$inlined$apply$lambda$2", "com/tencent/mm/plugin/webcanvas/WebCanvasJsEngine$$special$$inlined$let$lambda$1"})
-  static final class q
-    extends d.g.b.q
-    implements d.g.a.a<z>
-  {
-    q(MagicBrushView paramMagicBrushView, MutableContextWrapper paramMutableContextWrapper, b paramb, Context paramContext, String paramString)
-    {
-      super();
-    }
+    return "http";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.webcanvas.b
  * JD-Core Version:    0.7.0.1
  */

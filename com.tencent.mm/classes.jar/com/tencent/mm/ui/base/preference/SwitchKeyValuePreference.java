@@ -11,7 +11,7 @@ public class SwitchKeyValuePreference
   extends Preference
 {
   private boolean enable;
-  private TextView wSo;
+  private TextView xif;
   
   public SwitchKeyValuePreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -30,18 +30,18 @@ public class SwitchKeyValuePreference
   private void updateView()
   {
     AppMethodBeat.i(142678);
-    if (this.wSo == null)
+    if (this.xif == null)
     {
       AppMethodBeat.o(142678);
       return;
     }
     if (this.enable)
     {
-      this.wSo.setTextColor(t.kC(this.mContext));
+      this.xif.setTextColor(t.kJ(this.mContext));
       AppMethodBeat.o(142678);
       return;
     }
-    this.wSo.setTextColor(t.kD(this.mContext));
+    this.xif.setTextColor(t.kK(this.mContext));
     AppMethodBeat.o(142678);
   }
   
@@ -49,12 +49,12 @@ public class SwitchKeyValuePreference
   {
     AppMethodBeat.i(142676);
     super.onBindView(paramView);
-    this.wSo = ((TextView)paramView.findViewById(16908304));
+    this.xif = ((TextView)paramView.findViewById(16908304));
     updateView();
     AppMethodBeat.o(142676);
   }
   
-  public final void xI(boolean paramBoolean)
+  public final void xP(boolean paramBoolean)
   {
     AppMethodBeat.i(142677);
     this.enable = paramBoolean;

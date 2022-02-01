@@ -5,36 +5,36 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class c
 {
-  g HTT;
-  public int HTW;
+  g Iob;
+  public int Ioe;
   
   c(int paramInt, g paramg)
   {
-    this.HTW = paramInt;
-    this.HTT = paramg;
+    this.Ioe = paramInt;
+    this.Iob = paramg;
   }
   
   private c(Context paramContext)
   {
-    AppMethodBeat.i(206981);
-    this.HTT = new g.a(paramContext, "recovery_crash_count").fhb();
-    this.HTW = Math.max(this.HTT.getInt("crash_count", 0), 0);
-    AppMethodBeat.o(206981);
+    AppMethodBeat.i(195289);
+    this.Iob = new g.a(paramContext, "recovery_crash_count").fkT();
+    this.Ioe = Math.max(this.Iob.getInt("crash_count", 0), 0);
+    AppMethodBeat.o(195289);
   }
   
-  public static c hL(Context paramContext)
+  public static c hR(Context paramContext)
   {
-    AppMethodBeat.i(206980);
+    AppMethodBeat.i(195288);
     paramContext = new c(paramContext);
-    AppMethodBeat.o(206980);
+    AppMethodBeat.o(195288);
     return paramContext;
   }
   
   public final void save()
   {
-    AppMethodBeat.i(206982);
-    this.HTT.ge("crash_count", this.HTW).fhc();
-    AppMethodBeat.o(206982);
+    AppMethodBeat.i(195290);
+    this.Iob.gn("crash_count", this.Ioe).fkU();
+    AppMethodBeat.o(195290);
   }
 }
 

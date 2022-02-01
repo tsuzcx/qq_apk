@@ -6,11 +6,11 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class TbsMediaPlayer
 {
-  private p a = null;
+  private r a = null;
   
-  public TbsMediaPlayer(p paramp)
+  public TbsMediaPlayer(r paramr)
   {
-    this.a = paramp;
+    this.a = paramr;
   }
   
   public void audio(int paramInt)

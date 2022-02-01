@@ -3,31 +3,32 @@ package com.tencent.mm.plugin.websearch.api;
 import com.tencent.e.h;
 import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
 import java.util.HashMap;
 
 public class ai
 {
-  private static volatile ai DCg;
-  public HashMap<Integer, aj> DCf;
+  private static volatile ai DUd;
+  public HashMap<Integer, aj> DUc;
   
   private ai()
   {
     AppMethodBeat.i(117734);
-    this.DCf = new HashMap();
+    this.DUc = new HashMap();
     AppMethodBeat.o(117734);
   }
   
-  public static ai eMn()
+  public static ai ePW()
   {
     AppMethodBeat.i(117735);
-    if (DCg == null) {}
+    if (DUd == null) {}
     try
     {
-      if (DCg == null) {
-        DCg = new ai();
+      if (DUd == null) {
+        DUd = new ai();
       }
-      ai localai = DCg;
+      ai localai = DUd;
       AppMethodBeat.o(117735);
       return localai;
     }
@@ -40,32 +41,32 @@ public class ai
   public final void t(final String paramString, final int paramInt, final boolean paramBoolean)
   {
     AppMethodBeat.i(184555);
-    ad.i("MicroMsg.WebSearch.WebSearchPreloadExport", "preloadWebView %s %s %s %s", new Object[] { com.tencent.mm.sdk.platformtools.aj.getProcessName(), paramString, Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean) });
-    if (com.tencent.mm.sdk.platformtools.aj.fkJ())
+    ae.i("MicroMsg.WebSearch.WebSearchPreloadExport", "preloadWebView %s %s %s %s", new Object[] { ak.getProcessName(), paramString, Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean) });
+    if (ak.foD())
     {
-      ad.i("MicroMsg.WebSearch.WebSearchPreloadExport", "current preload mgr size %s", new Object[] { Integer.valueOf(this.DCf.size()) });
+      ae.i("MicroMsg.WebSearch.WebSearchPreloadExport", "current preload mgr size %s", new Object[] { Integer.valueOf(this.DUc.size()) });
       if (paramBoolean) {
-        this.DCf.remove(Integer.valueOf(paramInt));
+        this.DUc.remove(Integer.valueOf(paramInt));
       }
-      if (!this.DCf.containsKey(Integer.valueOf(paramInt)))
+      if (!this.DUc.containsKey(Integer.valueOf(paramInt)))
       {
         aj localaj = new aj(paramInt);
-        localaj.aFT(paramString);
-        this.DCf.put(Integer.valueOf(paramInt), localaj);
+        localaj.aHn(paramString);
+        this.DUc.put(Integer.valueOf(paramInt), localaj);
         AppMethodBeat.o(184555);
         return;
       }
-      ((aj)this.DCf.get(Integer.valueOf(paramInt))).aFT(paramString);
+      ((aj)this.DUc.get(Integer.valueOf(paramInt))).aHn(paramString);
       AppMethodBeat.o(184555);
       return;
     }
-    if (com.tencent.mm.sdk.platformtools.aj.cmR()) {
-      h.LTJ.aR(new Runnable()
+    if (ak.coh()) {
+      h.MqF.aO(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(117733);
-          ad.i("MicroMsg.WebSearch.WebSearchPreloadExport", "sending broadcast");
+          ae.i("MicroMsg.WebSearch.WebSearchPreloadExport", "sending broadcast");
           ai.f("com.tencent.mm.intent.ACTION_PRELOAD_SEARCH", paramString, paramInt, paramBoolean);
           AppMethodBeat.o(117733);
         }

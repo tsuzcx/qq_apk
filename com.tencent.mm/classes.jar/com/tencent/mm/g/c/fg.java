@@ -8,25 +8,25 @@ public abstract class fg
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eFp = "username".hashCode();
-  private static final int foX = "originalArticleCount".hashCode();
-  private static final int foY = "friendSubscribeCount".hashCode();
-  private static final int foZ = "allArticleWording".hashCode();
-  private static final int fpa = "historyArticlesUrl".hashCode();
-  private static final int fpb = "userRole".hashCode();
-  private static final int fpc = "banReason".hashCode();
-  private static final int fpd = "showRecommendArticle".hashCode();
-  private static final int fpe = "showService".hashCode();
-  private static final int fpf = "messageListStr".hashCode();
-  private static final int fpg = "serviceInfoListStr".hashCode();
-  private static final int fph = "bizAccountListStr".hashCode();
-  private static final int fpi = "cacheTime".hashCode();
-  private static final int fpj = "decryptUserName".hashCode();
-  private static final int fpk = "hiddenAvatar".hashCode();
-  private static final int fpl = "hiddenButtonBeforeFocus".hashCode();
-  private static final int fpm = "newBanReason".hashCode();
+  private static final int eGY = "username".hashCode();
+  private static final int fqY = "originalArticleCount".hashCode();
+  private static final int fqZ = "friendSubscribeCount".hashCode();
+  private static final int fra = "allArticleWording".hashCode();
+  private static final int frb = "historyArticlesUrl".hashCode();
+  private static final int frc = "userRole".hashCode();
+  private static final int frd = "banReason".hashCode();
+  private static final int fre = "showRecommendArticle".hashCode();
+  private static final int frf = "showService".hashCode();
+  private static final int frg = "messageListStr".hashCode();
+  private static final int frh = "serviceInfoListStr".hashCode();
+  private static final int fri = "bizAccountListStr".hashCode();
+  private static final int frj = "cacheTime".hashCode();
+  private static final int frk = "decryptUserName".hashCode();
+  private static final int frl = "hiddenAvatar".hashCode();
+  private static final int frm = "hiddenButtonBeforeFocus".hashCode();
+  private static final int frn = "newBanReason".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eFm = true;
+  private boolean eGV = true;
   public String field_allArticleWording;
   public String field_banReason;
   public String field_bizAccountListStr;
@@ -44,22 +44,22 @@ public abstract class fg
   public int field_showService;
   public int field_userRole;
   public String field_username;
-  private boolean foH = true;
-  private boolean foI = true;
-  private boolean foJ = true;
-  private boolean foK = true;
-  private boolean foL = true;
-  private boolean foM = true;
-  private boolean foN = true;
-  private boolean foO = true;
-  private boolean foP = true;
-  private boolean foQ = true;
-  private boolean foR = true;
-  private boolean foS = true;
-  private boolean foT = true;
-  private boolean foU = true;
-  private boolean foV = true;
-  private boolean foW = true;
+  private boolean fqI = true;
+  private boolean fqJ = true;
+  private boolean fqK = true;
+  private boolean fqL = true;
+  private boolean fqM = true;
+  private boolean fqN = true;
+  private boolean fqO = true;
+  private boolean fqP = true;
+  private boolean fqQ = true;
+  private boolean fqR = true;
+  private boolean fqS = true;
+  private boolean fqT = true;
+  private boolean fqU = true;
+  private boolean fqV = true;
+  private boolean fqW = true;
+  private boolean fqX = true;
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -74,11 +74,11 @@ public abstract class fg
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eFp != k) {
+      if (eGY != k) {
         break label65;
       }
       this.field_username = paramCursor.getString(i);
-      this.eFm = true;
+      this.eGV = true;
     }
     for (;;)
     {
@@ -86,37 +86,37 @@ public abstract class fg
       break label20;
       break;
       label65:
-      if (foX == k) {
+      if (fqY == k) {
         this.field_originalArticleCount = paramCursor.getInt(i);
-      } else if (foY == k) {
+      } else if (fqZ == k) {
         this.field_friendSubscribeCount = paramCursor.getInt(i);
-      } else if (foZ == k) {
+      } else if (fra == k) {
         this.field_allArticleWording = paramCursor.getString(i);
-      } else if (fpa == k) {
+      } else if (frb == k) {
         this.field_historyArticlesUrl = paramCursor.getString(i);
-      } else if (fpb == k) {
+      } else if (frc == k) {
         this.field_userRole = paramCursor.getInt(i);
-      } else if (fpc == k) {
+      } else if (frd == k) {
         this.field_banReason = paramCursor.getString(i);
-      } else if (fpd == k) {
+      } else if (fre == k) {
         this.field_showRecommendArticle = paramCursor.getInt(i);
-      } else if (fpe == k) {
+      } else if (frf == k) {
         this.field_showService = paramCursor.getInt(i);
-      } else if (fpf == k) {
+      } else if (frg == k) {
         this.field_messageListStr = paramCursor.getString(i);
-      } else if (fpg == k) {
+      } else if (frh == k) {
         this.field_serviceInfoListStr = paramCursor.getString(i);
-      } else if (fph == k) {
+      } else if (fri == k) {
         this.field_bizAccountListStr = paramCursor.getString(i);
-      } else if (fpi == k) {
+      } else if (frj == k) {
         this.field_cacheTime = paramCursor.getLong(i);
-      } else if (fpj == k) {
+      } else if (frk == k) {
         this.field_decryptUserName = paramCursor.getString(i);
-      } else if (fpk == k) {
+      } else if (frl == k) {
         this.field_hiddenAvatar = paramCursor.getInt(i);
-      } else if (fpl == k) {
+      } else if (frm == k) {
         this.field_hiddenButtonBeforeFocus = paramCursor.getInt(i);
-      } else if (fpm == k) {
+      } else if (frn == k) {
         this.field_newBanReason = paramCursor.getString(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
@@ -127,58 +127,58 @@ public abstract class fg
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eFm) {
+    if (this.eGV) {
       localContentValues.put("username", this.field_username);
     }
-    if (this.foH) {
+    if (this.fqI) {
       localContentValues.put("originalArticleCount", Integer.valueOf(this.field_originalArticleCount));
     }
-    if (this.foI) {
+    if (this.fqJ) {
       localContentValues.put("friendSubscribeCount", Integer.valueOf(this.field_friendSubscribeCount));
     }
-    if (this.foJ) {
+    if (this.fqK) {
       localContentValues.put("allArticleWording", this.field_allArticleWording);
     }
-    if (this.foK) {
+    if (this.fqL) {
       localContentValues.put("historyArticlesUrl", this.field_historyArticlesUrl);
     }
-    if (this.foL) {
+    if (this.fqM) {
       localContentValues.put("userRole", Integer.valueOf(this.field_userRole));
     }
-    if (this.foM) {
+    if (this.fqN) {
       localContentValues.put("banReason", this.field_banReason);
     }
-    if (this.foN) {
+    if (this.fqO) {
       localContentValues.put("showRecommendArticle", Integer.valueOf(this.field_showRecommendArticle));
     }
-    if (this.foO) {
+    if (this.fqP) {
       localContentValues.put("showService", Integer.valueOf(this.field_showService));
     }
-    if (this.foP) {
+    if (this.fqQ) {
       localContentValues.put("messageListStr", this.field_messageListStr);
     }
-    if (this.foQ) {
+    if (this.fqR) {
       localContentValues.put("serviceInfoListStr", this.field_serviceInfoListStr);
     }
-    if (this.foR) {
+    if (this.fqS) {
       localContentValues.put("bizAccountListStr", this.field_bizAccountListStr);
     }
-    if (this.foS) {
+    if (this.fqT) {
       localContentValues.put("cacheTime", Long.valueOf(this.field_cacheTime));
     }
     if (this.field_decryptUserName == null) {
       this.field_decryptUserName = "";
     }
-    if (this.foT) {
+    if (this.fqU) {
       localContentValues.put("decryptUserName", this.field_decryptUserName);
     }
-    if (this.foU) {
+    if (this.fqV) {
       localContentValues.put("hiddenAvatar", Integer.valueOf(this.field_hiddenAvatar));
     }
-    if (this.foV) {
+    if (this.fqW) {
       localContentValues.put("hiddenButtonBeforeFocus", Integer.valueOf(this.field_hiddenButtonBeforeFocus));
     }
-    if (this.foW) {
+    if (this.fqX) {
       localContentValues.put("newBanReason", this.field_newBanReason);
     }
     if (this.systemRowid > 0L) {
@@ -189,7 +189,7 @@ public abstract class fg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.c.fg
  * JD-Core Version:    0.7.0.1
  */

@@ -16,12 +16,12 @@ public class ImageWordScanEngineImpl
   implements LifecycleObserver, a<String, Integer>
 {
   private MMActivity activity;
-  private MutableLiveData<Pair<String, Integer>> yBl;
+  private MutableLiveData<Pair<String, Integer>> yRl;
   
   public ImageWordScanEngineImpl(MMActivity paramMMActivity)
   {
     AppMethodBeat.i(91128);
-    this.yBl = new MutableLiveData();
+    this.yRl = new MutableLiveData();
     paramMMActivity.getLifecycle().addObserver(this);
     this.activity = paramMMActivity;
     AppMethodBeat.o(91128);
@@ -32,7 +32,7 @@ public class ImageWordScanEngineImpl
   {
     AppMethodBeat.i(91129);
     this.activity.getLifecycle().removeObserver(this);
-    h.LTJ.aZz("MicroMsg.ImageWordScanEngineImpl");
+    h.MqF.bbc("MicroMsg.ImageWordScanEngineImpl");
     this.activity = null;
     AppMethodBeat.o(91129);
   }

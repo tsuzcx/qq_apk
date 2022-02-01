@@ -3,8 +3,8 @@ package com.tencent.mm.plugin.recharge.ui;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.kernel.g;
 
 final class PhoneRechargeUI$2
@@ -15,7 +15,7 @@ final class PhoneRechargeUI$2
   public final void onCancel(DialogInterface paramDialogInterface)
   {
     AppMethodBeat.i(67162);
-    g.aiU().a(this.diy);
+    g.ajj().a(this.djA);
     AppMethodBeat.o(67162);
   }
 }

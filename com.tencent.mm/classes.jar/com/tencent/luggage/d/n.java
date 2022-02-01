@@ -6,7 +6,7 @@ import com.tencent.luggage.bridge.l;
 import com.tencent.luggage.bridge.o;
 import com.tencent.luggage.d.a.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
@@ -17,7 +17,7 @@ public abstract class n
   final ConcurrentHashMap<String, Class<? extends b>> chF = new ConcurrentHashMap();
   public a chG;
   
-  public final a Ci()
+  public final a Cl()
   {
     if (this.chG == null) {
       return a.cic;
@@ -31,23 +31,23 @@ public abstract class n
     {
       public final void a(com.tencent.luggage.d.a.b paramAnonymousb)
       {
-        AppMethodBeat.i(187583);
+        AppMethodBeat.i(201150);
         if (paramd == null)
         {
-          ad.e("Luggage.LuggageRuntime", "Null Event, Ignore");
-          AppMethodBeat.o(187583);
+          ae.e("Luggage.LuggageRuntime", "Null Event, Ignore");
+          AppMethodBeat.o(201150);
           return;
         }
         if (paramAnonymousb == com.tencent.luggage.d.a.b.cif)
         {
           paramAnonymousb = n.this.getBridge();
-          com.tencent.luggage.bridge.d locald = new com.tencent.luggage.bridge.d(paramd.name(), paramd.BO());
+          com.tencent.luggage.bridge.d locald = new com.tencent.luggage.bridge.d(paramd.name(), paramd.BP());
           paramAnonymousb.cgO.a(locald);
         }
-        AppMethodBeat.o(187583);
+        AppMethodBeat.o(201150);
       }
     };
-    a locala = Ci();
+    a locala = Cl();
     paramd.name();
     locala.a(local3);
   }
@@ -74,22 +74,22 @@ public abstract class n
           {
             public final void a(k paramAnonymousk)
             {
-              AppMethodBeat.i(187581);
+              AppMethodBeat.i(201148);
               n localn = n.this;
               b localb = this.chH;
               paramAnonymousk = new n.2(localn, localb, paramAnonymousk);
-              localn.Ci().a(localb.name(), paramAnonymousk);
-              AppMethodBeat.o(187581);
+              localn.Cl().a(localb.name(), paramAnonymousk);
+              AppMethodBeat.o(201148);
             }
           };
           ((o)localObject2).cgQ.put(str, localObject1);
         }
         catch (Exception localException2)
         {
-          ad.e("Luggage.LuggageRuntime", "registerJsApi: ".concat(String.valueOf(localException2)));
+          ae.e("Luggage.LuggageRuntime", "registerJsApi: ".concat(String.valueOf(localException2)));
         }
         localException1 = localException1;
-        ad.e("Luggage.LuggageRuntime", "JsApi Initialize failed, %s, %s", new Object[] { ((Class)localObject2).getName(), localException1 });
+        ae.e("Luggage.LuggageRuntime", "JsApi Initialize failed, %s, %s", new Object[] { ((Class)localObject2).getName(), localException1 });
       }
     }
   }

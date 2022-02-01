@@ -1,12 +1,21 @@
 package com.tencent.mm.plugin.appbrand.page.b;
 
-public abstract interface h
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import d.l;
+
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/page/navigation/SceneInfo;", "", "enable", "", "sceneType", "", "(ZLjava/lang/String;)V", "getEnable", "()Z", "getSceneType", "()Ljava/lang/String;", "luggage-wxa-app_release"})
+public final class h
 {
-  public abstract void DK();
+  final boolean enable;
+  final String mlv;
   
-  public abstract void DL();
-  
-  public abstract boolean DN();
+  public h(boolean paramBoolean, String paramString)
+  {
+    AppMethodBeat.i(208130);
+    this.enable = paramBoolean;
+    this.mlv = paramString;
+    AppMethodBeat.o(208130);
+  }
 }
 
 

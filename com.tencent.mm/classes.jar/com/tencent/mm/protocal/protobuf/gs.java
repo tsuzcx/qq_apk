@@ -5,9 +5,9 @@ import f.a.a.b;
 import java.util.LinkedList;
 
 public final class gs
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public byn FyK;
+  public bzh FRi;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -15,39 +15,39 @@ public final class gs
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.FyK == null)
+      if (this.FRi == null)
       {
         paramVarArgs = new b("Not all required fields were included: MediaObj");
         AppMethodBeat.o(125713);
         throw paramVarArgs;
       }
-      if (this.FyK != null)
+      if (this.FRi != null)
       {
-        paramVarArgs.lC(1, this.FyK.computeSize());
-        this.FyK.writeFields(paramVarArgs);
+        paramVarArgs.lJ(1, this.FRi.computeSize());
+        this.FRi.writeFields(paramVarArgs);
       }
       AppMethodBeat.o(125713);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.FyK == null) {
+      if (this.FRi == null) {
         break label358;
       }
     }
     label358:
-    for (paramInt = f.a.a.a.lB(1, this.FyK.computeSize()) + 0;; paramInt = 0)
+    for (paramInt = f.a.a.a.lI(1, this.FRi.computeSize()) + 0;; paramInt = 0)
     {
       AppMethodBeat.o(125713);
       return paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
-        if (this.FyK == null)
+        if (this.FRi == null)
         {
           paramVarArgs = new b("Not all required fields were included: MediaObj");
           AppMethodBeat.o(125713);
@@ -67,16 +67,16 @@ public final class gs
           AppMethodBeat.o(125713);
           return -1;
         }
-        paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
+        paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
         int i = paramVarArgs.size();
         paramInt = 0;
         while (paramInt < i)
         {
           Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-          localObject1 = new byn();
+          localObject1 = new bzh();
           localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-          for (boolean bool = true; bool; bool = ((byn)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, com.tencent.mm.bx.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-          localgs.FyK = ((byn)localObject1);
+          for (boolean bool = true; bool; bool = ((bzh)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+          localgs.FRi = ((bzh)localObject1);
           paramInt += 1;
         }
         AppMethodBeat.o(125713);

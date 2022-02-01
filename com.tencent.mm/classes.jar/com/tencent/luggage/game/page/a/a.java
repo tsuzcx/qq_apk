@@ -6,26 +6,26 @@ import android.view.Window;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
 import com.tencent.mm.plugin.appbrand.config.a.a;
-import com.tencent.mm.plugin.appbrand.page.aa;
-import com.tencent.mm.plugin.appbrand.page.d.c;
-import com.tencent.mm.plugin.appbrand.page.d.c.b;
-import com.tencent.mm.plugin.appbrand.ui.s;
+import com.tencent.mm.plugin.appbrand.page.c.c;
+import com.tencent.mm.plugin.appbrand.page.c.c.b;
+import com.tencent.mm.plugin.appbrand.page.z;
+import com.tencent.mm.plugin.appbrand.ui.t;
 
 final class a
   implements c
 {
-  private final aa clq;
-  private c.b clr = null;
+  private final z cls;
+  private c.b clt = null;
   
-  public a(aa paramaa)
+  public a(z paramz)
   {
-    this.clq = paramaa;
+    this.cls = paramz;
   }
   
   private void br(boolean paramBoolean)
   {
     AppMethodBeat.i(130679);
-    Object localObject = com.tencent.mm.sdk.f.a.jq(this.clq.getContext());
+    Object localObject = com.tencent.mm.sdk.f.a.jw(this.cls.getContext());
     if (localObject == null)
     {
       AppMethodBeat.o(130679);
@@ -34,22 +34,22 @@ final class a
     localObject = ((Activity)localObject).getWindow();
     if (paramBoolean)
     {
-      s.a((Window)localObject, true, true);
+      t.a((Window)localObject, true, true);
       AppMethodBeat.o(130679);
       return;
     }
-    s.a((Window)localObject, false, false);
+    t.a((Window)localObject, false, false);
     AppMethodBeat.o(130679);
   }
   
-  public final void DK()
+  public final void DN()
   {
     AppMethodBeat.i(130676);
-    this.clr = c.b.mgC;
+    this.clt = c.b.mlB;
     br(false);
-    if ((Build.VERSION.SDK_INT >= 21) && ((this.clq.getContext() instanceof Activity)))
+    if ((Build.VERSION.SDK_INT >= 21) && ((this.cls.getContext() instanceof Activity)))
     {
-      Window localWindow = ((Activity)this.clq.getContext()).getWindow();
+      Window localWindow = ((Activity)this.cls.getContext()).getWindow();
       if (localWindow != null)
       {
         localWindow.addFlags(-2147483648);
@@ -59,42 +59,42 @@ final class a
     AppMethodBeat.o(130676);
   }
   
-  public final void DL()
+  public final void DO()
   {
     AppMethodBeat.i(130677);
-    this.clr = c.b.mgD;
+    this.clt = c.b.mlC;
     br(true);
     AppMethodBeat.o(130677);
   }
   
-  public final c.b DM()
+  public final c.b DP()
   {
-    return this.clr;
+    return this.clt;
   }
   
-  public final void Dv()
+  public final void Dy()
   {
     AppMethodBeat.i(130678);
-    if (this.clr == null) {
-      if (!this.clq.getRuntime().getAppConfig().jVw.jVM) {
+    if (this.clt == null) {
+      if (!this.cls.getRuntime().getAppConfig().jYN.jZb) {
         break label78;
       }
     }
     label78:
-    for (c.b localb = c.b.mgC;; localb = c.b.mgD)
+    for (c.b localb = c.b.mlB;; localb = c.b.mlC)
     {
-      this.clr = localb;
-      switch (1.cls[this.clr.ordinal()])
+      this.clt = localb;
+      switch (1.clu[this.clt.ordinal()])
       {
       default: 
         AppMethodBeat.o(130678);
         return;
       }
     }
-    DK();
+    DN();
     AppMethodBeat.o(130678);
     return;
-    DL();
+    DO();
     AppMethodBeat.o(130678);
   }
 }

@@ -6,75 +6,85 @@ import com.tencent.mm.plugin.report.a;
 public final class fc
   extends a
 {
-  public long eca = 0L;
-  public long ekd = 0L;
-  public long eke = 0L;
-  public long ekf = 0L;
-  public long ekg = 0L;
-  public long ekh = 0L;
-  private long eki = 0L;
-  public String ekj = "";
+  private String dXU = "";
+  private String elg = "";
+  private String ell = "";
+  public int elm;
+  public long eln;
+  public long elo;
+  public int elp;
   
-  public final String RD()
+  public final String RC()
   {
-    AppMethodBeat.i(94843);
+    AppMethodBeat.i(218975);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.eca);
+    ((StringBuffer)localObject).append(this.elg);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ekd);
+    ((StringBuffer)localObject).append(this.ell);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eke);
+    ((StringBuffer)localObject).append(this.dXU);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ekf);
+    ((StringBuffer)localObject).append(this.elm);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ekg);
+    ((StringBuffer)localObject).append(this.eln);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ekh);
+    ((StringBuffer)localObject).append(this.elo);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eki);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ekj);
+    ((StringBuffer)localObject).append(this.elp);
     localObject = ((StringBuffer)localObject).toString();
-    awz((String)localObject);
-    AppMethodBeat.o(94843);
+    axO((String)localObject);
+    AppMethodBeat.o(218975);
     return localObject;
   }
   
-  public final String RE()
+  public final String RD()
   {
-    AppMethodBeat.i(94844);
+    AppMethodBeat.i(218976);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("Source:").append(this.eca);
+    ((StringBuffer)localObject).append("PublishId:").append(this.elg);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("UnreadLikeCount:").append(this.ekd);
+    ((StringBuffer)localObject).append("FriendUsername:").append(this.ell);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("UnreadCommentCount:").append(this.eke);
+    ((StringBuffer)localObject).append("CommentId:").append(this.dXU);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("StayTime:").append(this.ekf);
+    ((StringBuffer)localObject).append("CommentType:").append(this.elm);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ClickLikeCount:").append(this.ekg);
+    ((StringBuffer)localObject).append("CurrentLikeCount:").append(this.eln);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ClickCommentCount:").append(this.ekh);
+    ((StringBuffer)localObject).append("CurrentCommentCount:").append(this.elo);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("EnterStartTimeMs:").append(this.eki);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("BrowseJson:").append(this.ekj);
+    ((StringBuffer)localObject).append("OpResult:").append(this.elp);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(94844);
+    AppMethodBeat.o(218976);
     return localObject;
   }
   
   public final int getId()
   {
-    return 13677;
+    return 20565;
   }
   
-  public final fc ke(long paramLong)
+  public final fc oC(String paramString)
   {
-    AppMethodBeat.i(94842);
-    this.eki = paramLong;
-    super.bf("EnterStartTimeMs", this.eki);
-    AppMethodBeat.o(94842);
+    AppMethodBeat.i(218972);
+    this.elg = t("PublishId", paramString, true);
+    AppMethodBeat.o(218972);
+    return this;
+  }
+  
+  public final fc oD(String paramString)
+  {
+    AppMethodBeat.i(218973);
+    this.ell = t("FriendUsername", paramString, true);
+    AppMethodBeat.o(218973);
+    return this;
+  }
+  
+  public final fc oE(String paramString)
+  {
+    AppMethodBeat.i(218974);
+    this.dXU = t("CommentId", paramString, true);
+    AppMethodBeat.o(218974);
     return this;
   }
 }

@@ -1,23 +1,23 @@
 package com.tencent.mm.ui.chatting.d.b;
 
-import com.tencent.mm.storage.bu;
+import com.tencent.mm.storage.bv;
 import com.tencent.mm.ui.chatting.d.ad;
 import java.util.List;
 
 public abstract interface l
   extends ad
 {
-  public abstract void bG(bu parambu);
+  public abstract void bF(bv parambv);
   
-  public abstract void bH(bu parambu);
+  public abstract void bG(bv parambv);
   
-  public abstract List<bu> fDp();
+  public abstract List<bv> fHs();
   
-  public abstract void fDq();
+  public abstract void fHt();
   
-  public abstract boolean fDs();
+  public abstract boolean fHv();
   
-  public abstract void fDt();
+  public abstract void fHw();
 }
 
 

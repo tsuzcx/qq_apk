@@ -5,7 +5,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class TbsVideoUtils
 {
-  private static s a = null;
+  private static u a = null;
   
   private static void a(Context paramContext)
   {
@@ -15,14 +15,14 @@ public class TbsVideoUtils
     {
       if (a == null)
       {
-        e.a(true).a(paramContext, false, false, null);
-        TbsWizard localTbsWizard = e.a(true).a();
+        g.a(true).a(paramContext, false, false, null);
+        TbsWizard localTbsWizard = g.a(true).a();
         paramContext = localObject;
         if (localTbsWizard != null) {
           paramContext = localTbsWizard.dexLoader();
         }
         if (paramContext != null) {
-          a = new s(paramContext);
+          a = new u(paramContext);
         }
       }
       return;

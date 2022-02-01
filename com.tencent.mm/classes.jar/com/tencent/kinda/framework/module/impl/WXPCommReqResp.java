@@ -2,13 +2,13 @@ package com.tencent.kinda.framework.module.impl;
 
 import com.tencent.kinda.gen.KNetworkMockManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.l;
+import com.tencent.mm.ak.l;
 import com.tencent.mm.protocal.ac;
 import com.tencent.mm.protocal.l.b;
 import com.tencent.mm.protocal.l.c;
 import com.tencent.mm.protocal.l.d;
 import com.tencent.mm.protocal.l.e;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.lang.ref.WeakReference;
 
 public class WXPCommReqResp
@@ -225,7 +225,7 @@ public class WXPCommReqResp
       this.funcId = paramInt1;
       this.cmdId = paramInt2;
       this.needHeader = paramBoolean;
-      setRouteInfo(bt.getInt(paramString, 0));
+      setRouteInfo(bu.getInt(paramString, 0));
       AppMethodBeat.o(18682);
     }
     

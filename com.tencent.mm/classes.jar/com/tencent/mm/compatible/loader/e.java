@@ -2,28 +2,25 @@ package com.tencent.mm.compatible.loader;
 
 import android.app.Application;
 import android.content.Context;
-import android.os.Process;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
 
 public final class e
 {
-  public static d c(Application paramApplication, String paramString)
+  public static d b(Application paramApplication, String paramString)
   {
     AppMethodBeat.i(155843);
     try
     {
-      paramString = (d)aj.getContext().getClassLoader().loadClass(aj.fkB() + paramString).newInstance();
-      paramString.f(paramApplication);
+      paramString = (d)ak.getContext().getClassLoader().loadClass(ak.fov() + paramString).newInstance();
+      paramString.g(paramApplication);
       AppMethodBeat.o(155843);
       return paramString;
     }
     catch (Exception paramApplication)
     {
-      ad.printErrStackTrace("MicroMsg.ProfileFactoryImpl", paramApplication, "", new Object[0]);
+      ae.printErrStackTrace("MicroMsg.ProfileFactoryImpl", paramApplication, "", new Object[0]);
       AppMethodBeat.o(155843);
     }
     return null;

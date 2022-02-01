@@ -7,30 +7,30 @@ public final class d
   extends c
   implements b.a
 {
-  private a kIL;
+  private a kMa;
   
   public d()
   {
     AppMethodBeat.i(46236);
-    this.kIL = new a(this, "barcode|qrcode");
+    this.kMa = new a(this, "barcode|qrcode");
     AppMethodBeat.o(46236);
   }
   
   public final void a(int paramInt1, String paramString, int paramInt2, byte[] paramArrayOfByte, QbarNative.QBarPoint paramQBarPoint)
   {
-    AppMethodBeat.i(188303);
-    this.kIK.a(paramInt1, paramInt2, paramString, paramArrayOfByte, paramQBarPoint);
-    AppMethodBeat.o(188303);
+    AppMethodBeat.i(222429);
+    this.kLZ.a(paramInt1, paramInt2, paramString, paramArrayOfByte, paramQBarPoint);
+    AppMethodBeat.o(222429);
   }
   
-  protected final b bjW()
+  protected final b bkF()
   {
-    return this.kIL;
+    return this.kMa;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.camera.a.d
  * JD-Core Version:    0.7.0.1
  */

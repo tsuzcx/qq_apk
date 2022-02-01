@@ -6,8 +6,8 @@ import com.tencent.mm.sdk.b.b;
 public final class ph
   extends b
 {
-  public a dDr;
-  public b dDs;
+  public a dEs;
+  public b dEt;
   
   public ph()
   {
@@ -16,19 +16,22 @@ public final class ph
   
   private ph(byte paramByte)
   {
-    AppMethodBeat.i(149880);
-    this.dDr = new a();
-    this.dDs = new b();
-    this.IbR = false;
+    AppMethodBeat.i(149879);
+    this.dEs = new a();
+    this.dEt = new b();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(149880);
+    AppMethodBeat.o(149879);
   }
   
   public static final class a
   {
-    public int dDp = 0;
-    public String dDt;
-    public String scanResult;
+    public int dEu = 0;
+    public String dEv;
+    public int dzG = 10;
+    public String label;
+    public double lat = -1.0D;
+    public double lng = -1.0D;
   }
   
   public static final class b

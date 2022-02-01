@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.View.MeasureSpec;
 import android.widget.NumberPicker;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cc.a;
+import com.tencent.mm.cb.a;
 import com.tencent.mm.ui.widget.picker.f;
 
 public class AppBrandOptionsPicker
@@ -17,8 +17,8 @@ public class AppBrandOptionsPicker
 {
   private int mMaxWidth;
   private int mMinWidth;
-  private String[] nkL;
-  private int nkM;
+  private String[] npT;
+  private int npU;
   
   @Keep
   public AppBrandOptionsPicker(Context paramContext)
@@ -30,19 +30,19 @@ public class AppBrandOptionsPicker
     f.f(this);
     d.a(this);
     this.mMinWidth = a.fromDPToPix(paramContext, 100);
-    this.nkM = a.fromDPToPix(paramContext, 20);
+    this.npU = a.fromDPToPix(paramContext, 20);
     AppMethodBeat.o(138018);
   }
   
   public final String currentValue()
   {
     AppMethodBeat.i(138024);
-    if ((this.nkL == null) || (this.nkL.length <= 0))
+    if ((this.npT == null) || (this.npT.length <= 0))
     {
       AppMethodBeat.o(138024);
       return "";
     }
-    String str = this.nkL[getValue()];
+    String str = this.npT[getValue()];
     AppMethodBeat.o(138024);
     return str;
   }
@@ -79,7 +79,7 @@ public class AppBrandOptionsPicker
       AppMethodBeat.o(138022);
       return;
     }
-    paramInt2 = getMeasuredWidth() + this.nkM * 2;
+    paramInt2 = getMeasuredWidth() + this.npU * 2;
     paramInt1 = paramInt2;
     if (this.mMaxWidth > 0) {
       if (this.mMaxWidth <= paramInt2) {
@@ -108,7 +108,7 @@ public class AppBrandOptionsPicker
   public final void setExtraPadding(int paramInt)
   {
     AppMethodBeat.i(138020);
-    this.nkM = Math.max(paramInt, 0);
+    this.npU = Math.max(paramInt, 0);
     AppMethodBeat.o(138020);
   }
   
@@ -130,7 +130,7 @@ public class AppBrandOptionsPicker
       AppMethodBeat.o(138019);
       return;
     }
-    this.nkL = paramArrayOfString;
+    this.npT = paramArrayOfString;
     setDisplayedValues(null);
     setMinValue(0);
     setMaxValue(Math.max(paramArrayOfString.length - 1, 0));

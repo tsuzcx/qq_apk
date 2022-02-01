@@ -12,16 +12,16 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.tencent.mm.aw.a.a.c;
-import com.tencent.mm.aw.a.a.c.a;
+import com.tencent.mm.av.a.a.c;
+import com.tencent.mm.av.a.a.c.a;
 import com.tencent.mm.plugin.topstory.a.h;
 import com.tencent.mm.plugin.topstory.ui.PluginTopStoryUI;
 import com.tencent.mm.pluginsdk.ui.i.b;
 import com.tencent.mm.pluginsdk.ui.i.e;
-import com.tencent.mm.protocal.protobuf.dny;
-import com.tencent.mm.protocal.protobuf.dod;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.dov;
+import com.tencent.mm.protocal.protobuf.dpa;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.t;
 import java.util.HashMap;
@@ -30,67 +30,67 @@ import java.util.UUID;
 public abstract class f
   extends RelativeLayout
 {
-  public static c Btq;
-  public dod Brz;
-  public b BtO;
-  protected FrameLayout BtP;
-  public TextView BtQ;
-  protected View BtR;
-  protected TextView BtS;
-  protected ImageView BtT;
-  protected ImageView BtU;
-  protected Button BtV;
-  protected TextView BtW;
-  protected TextView BtX;
-  protected View BtY;
-  protected View BtZ;
-  protected View Bua;
-  protected View Bub;
-  protected View Buc;
-  public FrameLayout Bud;
-  public ImageView Bue;
-  public ImageView Buf;
-  public a Bug;
-  protected TextView Buh;
-  public f.a Bui = f.a.Buj;
-  protected ImageView oSB;
+  public static c BKO;
+  public dpa BIY;
+  protected View BLA;
+  public FrameLayout BLB;
+  public ImageView BLC;
+  public ImageView BLD;
+  public a BLE;
+  protected TextView BLF;
+  public f.a BLG = f.a.BLH;
+  public b BLm;
+  protected FrameLayout BLn;
+  public TextView BLo;
+  protected View BLp;
+  protected TextView BLq;
+  protected ImageView BLr;
+  protected ImageView BLs;
+  protected Button BLt;
+  protected TextView BLu;
+  protected TextView BLv;
+  protected View BLw;
+  protected View BLx;
+  protected View BLy;
+  protected View BLz;
+  protected ImageView oZd;
   public String sessionId = "";
   protected TextView titleTv;
   
   static
   {
     c.a locala = new c.a();
-    locala.idr = true;
-    locala.idq = true;
-    Btq = locala.aJc();
+    locala.igk = true;
+    locala.igj = true;
+    BKO = locala.aJu();
   }
   
   public f(Context paramContext, b paramb, a parama)
   {
     super(paramContext);
-    this.BtO = paramb;
-    this.Bug = parama;
+    this.BLm = paramb;
+    this.BLE = parama;
     init();
   }
   
-  public final void a(dod paramdod, int paramInt)
+  public final void a(dpa paramdpa, int paramInt)
   {
-    ad.i("MicroMsg.TopStory.TopStoryBaseVideoContainer", "updateView position:%s", new Object[] { Integer.valueOf(paramInt) });
-    this.Brz = paramdod;
+    ae.i("MicroMsg.TopStory.TopStoryBaseVideoContainer", "updateView position:%s", new Object[] { Integer.valueOf(paramInt) });
+    this.BIY = paramdpa;
     updateView();
   }
   
-  public boolean aq(boolean paramBoolean1, boolean paramBoolean2)
+  public boolean ap(boolean paramBoolean1, boolean paramBoolean2)
   {
-    Object localObject1 = this.BtO.epM();
-    Object localObject2 = h.eoO();
-    int i = this.BtO.epN();
-    if (!this.BtO.epw().isConnected())
+    Object localObject1 = this.BLm.ett();
+    Object localObject2 = h.esv();
+    int i = this.BLm.etu();
+    if (!this.BLm.etd().isConnected())
     {
-      this.Bui = f.a.Bul;
-      epX();
-      ki(getNoNetTip(), getContext().getString(2131764699));
-      this.BtO.epB().a(this, c(this.Brz));
+      this.BLG = f.a.BLJ;
+      etE();
+      ko(getNoNetTip(), getContext().getString(2131764699));
+      this.BLm.eti().a(this, c(this.BIY));
       return false;
     }
     if ((!((String)localObject2).equals("wifi")) && (!((String)localObject2).equals(localObject1)))
@@ -100,191 +100,191 @@ public abstract class f
       }
       if ((i != 1) && (i != 2))
       {
-        this.BtO.SZ(1);
-        if (this.Buh == null) {
+        this.BLm.TG(1);
+        if (this.BLF == null) {
           break label682;
         }
-        this.Buh.setVisibility(0);
-        this.Buh.setAlpha(1.0F);
-        this.Buh.animate().alpha(0.0F).setDuration(3000L).start();
+        this.BLF.setVisibility(0);
+        this.BLF.setAlpha(1.0F);
+        this.BLF.animate().alpha(0.0F).setDuration(3000L).start();
       }
     }
-    this.BtO.aCW((String)localObject2);
-    eqa();
-    this.Bui = f.a.Buj;
-    ad.i("MicroMsg.TopStory.TopStoryBaseVideoContainer", "setStartPlayContainerStatus");
-    this.BtZ.setVisibility(0);
-    this.Bub.setVisibility(8);
-    this.BtY.setVisibility(8);
-    this.Bud.setVisibility(8);
-    this.Bua.setVisibility(0);
-    this.Buc.setVisibility(8);
-    this.BtR.setVisibility(0);
-    this.BtR.setVisibility(0);
-    this.BtR.setAlpha(0.0F);
-    this.BtR.animate().setDuration(4000L).setInterpolator(new AccelerateInterpolator()).alpha(1.0F).start();
-    this.oSB.setVisibility(0);
-    this.BtQ.setVisibility(8);
-    this.BtP.setVisibility(0);
-    this.BtP.setAlpha(0.0F);
-    this.BtO.epB().a(this, c(this.Brz));
-    localObject1 = this.BtO.epB();
-    Object localObject3 = this.BtO;
-    localObject2 = this.Brz;
+    this.BLm.aEp((String)localObject2);
+    etH();
+    this.BLG = f.a.BLH;
+    ae.i("MicroMsg.TopStory.TopStoryBaseVideoContainer", "setStartPlayContainerStatus");
+    this.BLx.setVisibility(0);
+    this.BLz.setVisibility(8);
+    this.BLw.setVisibility(8);
+    this.BLB.setVisibility(8);
+    this.BLy.setVisibility(0);
+    this.BLA.setVisibility(8);
+    this.BLp.setVisibility(0);
+    this.BLp.setVisibility(0);
+    this.BLp.setAlpha(0.0F);
+    this.BLp.animate().setDuration(4000L).setInterpolator(new AccelerateInterpolator()).alpha(1.0F).start();
+    this.oZd.setVisibility(0);
+    this.BLo.setVisibility(8);
+    this.BLn.setVisibility(0);
+    this.BLn.setAlpha(0.0F);
+    this.BLm.eti().a(this, c(this.BIY));
+    localObject1 = this.BLm.eti();
+    Object localObject3 = this.BLm;
+    localObject2 = this.BIY;
     String str = this.sessionId;
-    int j = this.Bug.epv();
+    int j = this.BLE.etc();
     HashMap localHashMap = ((PluginTopStoryUI)com.tencent.mm.kernel.g.ad(PluginTopStoryUI.class)).getVideoPlayProgressMap();
-    if (localHashMap.containsKey(((dod)localObject2).tSk)) {}
-    for (i = ((Integer)localHashMap.get(((dod)localObject2).tSk)).intValue();; i = 0)
+    if (localHashMap.containsKey(((dpa)localObject2).udb)) {}
+    for (i = ((Integer)localHashMap.get(((dpa)localObject2).udb)).intValue();; i = 0)
     {
-      ad.i("MicroMsg.TopStory.TopStoryVideoViewMgr", "startPlay, pos:%s, vid:%s videoProgress: %d", new Object[] { Integer.valueOf(j), ((dod)localObject2).tSk, Integer.valueOf(i) });
-      if (((dod)localObject2).HCF != null) {
-        ad.i("MicroMsg.TopStory.TopStoryVideoViewMgr", "video %s secondVideoInfo %d %d", new Object[] { ((dod)localObject2).tSk, Integer.valueOf(((dod)localObject2).HCF.HBX), Integer.valueOf(((dod)localObject2).HCF.HBY) });
+      ae.i("MicroMsg.TopStory.TopStoryVideoViewMgr", "startPlay, pos:%s, vid:%s videoProgress: %d", new Object[] { Integer.valueOf(j), ((dpa)localObject2).udb, Integer.valueOf(i) });
+      if (((dpa)localObject2).HWs != null) {
+        ae.i("MicroMsg.TopStory.TopStoryVideoViewMgr", "video %s secondVideoInfo %d %d", new Object[] { ((dpa)localObject2).udb, Integer.valueOf(((dpa)localObject2).HWs.HVK), Integer.valueOf(((dpa)localObject2).HWs.HVL) });
       }
-      if (((dod)localObject2).HCO != null) {
-        ((dod)localObject2).HCO.dmo = false;
+      if (((dpa)localObject2).HWB != null) {
+        ((dpa)localObject2).HWB.dnq = false;
       }
-      if (((r)localObject1).BrC != null)
+      if (((r)localObject1).BJb != null)
       {
-        if ((!((r)localObject1).BrC.tul.equals(((dod)localObject2).tul)) || (paramBoolean2))
+        if ((!((r)localObject1).BJb.tFc.equals(((dpa)localObject2).tFc)) || (paramBoolean2))
         {
-          ((r)localObject1).BvS.stop();
-          ((b)localObject3).epx().b(((b)localObject3).epz());
-          ((b)localObject3).epx().eqy();
+          ((r)localObject1).BNq.stop();
+          ((b)localObject3).ete().b(((b)localObject3).etg());
+          ((b)localObject3).ete().euf();
         }
       }
       else
       {
-        if (!bt.isNullOrNil(((dod)localObject2).videoUrl)) {
+        if (!bu.isNullOrNil(((dpa)localObject2).videoUrl)) {
           break label756;
         }
-        ad.e("MicroMsg.TopStory.TopStoryVideoViewMgr", "start play video url is null %s %s %s", new Object[] { str, ((dod)localObject2).tSk, ((dod)localObject2).title });
+        ae.e("MicroMsg.TopStory.TopStoryVideoViewMgr", "start play video url is null %s %s %s", new Object[] { str, ((dpa)localObject2).udb, ((dpa)localObject2).title });
       }
       return true;
       label682:
-      t.makeText(this.BtO.dhO(), 2131764483, 0).show();
+      t.makeText(this.BLm.dkN(), 2131764483, 0).show();
       break;
       label704:
       if (i == 2) {
         break;
       }
-      epZ();
-      this.BtO.epB().a(this, c(this.Brz));
+      etG();
+      this.BLm.eti().a(this, c(this.BIY));
       return false;
-      localHashMap.put(((dod)localObject2).tSk, Integer.valueOf(0));
+      localHashMap.put(((dpa)localObject2).udb, Integer.valueOf(0));
     }
     label756:
-    ((b)localObject3).epx().a((dod)localObject2, j, str);
-    ((r)localObject1).BtO.epx().i((dod)localObject2);
-    ((r)localObject1).BvS.setLoop(false);
-    ((r)localObject1).BvS.setVideoInfo((dod)localObject2);
-    ((r)localObject1).BvS.setMute(((b)localObject3).Pf());
-    ((r)localObject1).BvS.setKeepScreenOn(true);
+    ((b)localObject3).ete().a((dpa)localObject2, j, str);
+    ((r)localObject1).BLm.ete().i((dpa)localObject2);
+    ((r)localObject1).BNq.setLoop(false);
+    ((r)localObject1).BNq.setVideoInfo((dpa)localObject2);
+    ((r)localObject1).BNq.setMute(((b)localObject3).Pd());
+    ((r)localObject1).BNq.setKeepScreenOn(true);
     if (i == 0) {
-      ((r)localObject1).BvS.aCX(str);
+      ((r)localObject1).BNq.aEq(str);
     }
     for (;;)
     {
-      ((r)localObject1).BvS.eqB();
-      ((r)localObject1).BrC = ((dod)localObject2);
-      ((r)localObject1).BvU = true;
-      ((r)localObject1).BvV = false;
+      ((r)localObject1).BNq.eui();
+      ((r)localObject1).BJb = ((dpa)localObject2);
+      ((r)localObject1).BNs = true;
+      ((r)localObject1).BNt = false;
       break;
-      localObject3 = ((r)localObject1).BvS;
+      localObject3 = ((r)localObject1).BNq;
       ((q)localObject3).sessionId = str;
       ((q)localObject3).C(i, true);
     }
   }
   
-  public void bSC() {}
+  public void bTP() {}
   
-  public i.e c(dod paramdod)
+  public i.e c(dpa paramdpa)
   {
-    return i.e.ESM;
+    return i.e.Flh;
   }
   
-  public abstract void epS();
+  public abstract void etA();
   
-  public abstract void epT();
-  
-  public void epU()
+  public void etB()
   {
-    ad.i("MicroMsg.TopStory.TopStoryBaseVideoContainer", "setPlayingContainerStatus, pos:%d", new Object[] { Integer.valueOf(this.Bug.epv()) });
-    this.BtZ.setVisibility(8);
-    this.oSB.setVisibility(8);
-    this.BtQ.setVisibility(8);
-    this.BtY.setVisibility(8);
-    this.BtP.setVisibility(0);
-    this.BtP.setAlpha(1.0F);
+    ae.i("MicroMsg.TopStory.TopStoryBaseVideoContainer", "setPlayingContainerStatus, pos:%d", new Object[] { Integer.valueOf(this.BLE.etc()) });
+    this.BLx.setVisibility(8);
+    this.oZd.setVisibility(8);
+    this.BLo.setVisibility(8);
+    this.BLw.setVisibility(8);
+    this.BLn.setVisibility(0);
+    this.BLn.setAlpha(1.0F);
   }
   
-  public final void epV()
+  public final void etC()
   {
-    ad.i("MicroMsg.TopStory.TopStoryBaseVideoContainer", "setStopContainerStatus, pos:%d", new Object[] { Integer.valueOf(this.Bug.epv()) });
-    this.oSB.setVisibility(0);
-    this.BtZ.setVisibility(0);
-    this.Bud.setVisibility(8);
-    this.Bua.setVisibility(8);
-    this.BtY.setVisibility(0);
-    this.Bub.setVisibility(0);
-    this.BtT.setVisibility(0);
-    this.BtU.setVisibility(8);
-    this.BtX.setVisibility(8);
-    this.BtS.setVisibility(8);
+    ae.i("MicroMsg.TopStory.TopStoryBaseVideoContainer", "setStopContainerStatus, pos:%d", new Object[] { Integer.valueOf(this.BLE.etc()) });
+    this.oZd.setVisibility(0);
+    this.BLx.setVisibility(0);
+    this.BLB.setVisibility(8);
+    this.BLy.setVisibility(8);
+    this.BLw.setVisibility(0);
+    this.BLz.setVisibility(0);
+    this.BLr.setVisibility(0);
+    this.BLs.setVisibility(8);
+    this.BLv.setVisibility(8);
+    this.BLq.setVisibility(8);
   }
   
-  public final void epW()
+  public final void etD()
   {
-    ki(getNoNetTip(), this.BtO.dhO().getString(2131764699));
-    getContext().getString(2131764481, new Object[] { bt.a(this.Brz.HCB, 100.0D) });
+    ko(getNoNetTip(), this.BLm.dkN().getString(2131764699));
+    getContext().getString(2131764481, new Object[] { bu.a(this.BIY.HWo, 100.0D) });
   }
   
-  public void epX() {}
+  public void etE() {}
   
-  public void epY() {}
+  public void etF() {}
   
-  public final void epZ()
+  public final void etG()
   {
-    this.Bui = f.a.Buk;
-    epX();
-    ki(getMobileNetTip(), getContext().getString(2131764459));
+    this.BLG = f.a.BLI;
+    etE();
+    ko(getMobileNetTip(), getContext().getString(2131764459));
   }
   
-  public final String eqa()
+  public final String etH()
   {
     this.sessionId = UUID.randomUUID().toString();
     return this.sessionId;
   }
   
-  public final void eqb()
+  public final void etI()
   {
-    this.Bud.setVisibility(0);
+    this.BLB.setVisibility(0);
   }
   
-  public void eqc() {}
+  public void etJ() {}
   
-  public void eqd() {}
+  public void etK() {}
   
-  public boolean eqe()
+  public boolean etL()
   {
     return false;
   }
+  
+  public abstract void etz();
   
   public abstract g getControlBar();
   
   public a getItemUIComponent()
   {
-    return this.Bug;
+    return this.BLE;
   }
   
   protected abstract int getLayoutId();
   
   protected String getMobileNetTip()
   {
-    if (this.Brz.HCB == 0L) {
+    if (this.BIY.HWo == 0L) {
       return getContext().getString(2131764482);
     }
-    return getContext().getString(2131764481, new Object[] { bt.a(this.Brz.HCB, 100.0D) });
+    return getContext().getString(2131764481, new Object[] { bu.a(this.BIY.HWo, 100.0D) });
   }
   
   public String getNoNetTip()
@@ -294,93 +294,93 @@ public abstract class f
   
   public f.a getPauseReason()
   {
-    return this.Bui;
+    return this.BLG;
   }
   
   public abstract i.b getVideoViewCallback();
   
   public FrameLayout getVideoViewParent()
   {
-    return this.BtP;
+    return this.BLn;
   }
   
   protected void init()
   {
     LayoutInflater.from(getContext()).inflate(getLayoutId(), this);
-    this.BtP = ((FrameLayout)findViewById(2131306412));
-    this.BtQ = ((TextView)findViewById(2131303532));
-    this.BtY = findViewById(2131305889);
-    this.BtZ = findViewById(2131306311);
-    this.Bua = findViewById(2131306402);
-    this.Bub = findViewById(2131306312);
-    this.Buc = findViewById(2131306349);
-    this.BtR = findViewById(2131306353);
-    this.oSB = ((ImageView)findViewById(2131298824));
-    this.BtS = ((TextView)findViewById(2131306394));
+    this.BLn = ((FrameLayout)findViewById(2131306412));
+    this.BLo = ((TextView)findViewById(2131303532));
+    this.BLw = findViewById(2131305889);
+    this.BLx = findViewById(2131306311);
+    this.BLy = findViewById(2131306402);
+    this.BLz = findViewById(2131306312);
+    this.BLA = findViewById(2131306349);
+    this.BLp = findViewById(2131306353);
+    this.oZd = ((ImageView)findViewById(2131298824));
+    this.BLq = ((TextView)findViewById(2131306394));
     this.titleTv = ((TextView)findViewById(2131305948));
-    this.BtT = ((ImageView)findViewById(2131298815));
-    this.BtU = ((ImageView)findViewById(2131298816));
-    this.BtX = ((TextView)findViewById(2131304079));
-    this.BtV = ((Button)findViewById(2131305869));
-    this.BtW = ((TextView)findViewById(2131305870));
-    this.Bue = ((ImageView)findViewById(2131303297));
-    this.Buf = ((ImageView)findViewById(2131303296));
-    this.Bud = ((FrameLayout)findViewById(2131303298));
-    this.Buh = ((TextView)findViewById(2131302710));
+    this.BLr = ((ImageView)findViewById(2131298815));
+    this.BLs = ((ImageView)findViewById(2131298816));
+    this.BLv = ((TextView)findViewById(2131304079));
+    this.BLt = ((Button)findViewById(2131305869));
+    this.BLu = ((TextView)findViewById(2131305870));
+    this.BLC = ((ImageView)findViewById(2131303297));
+    this.BLD = ((ImageView)findViewById(2131303296));
+    this.BLB = ((FrameLayout)findViewById(2131303298));
+    this.BLF = ((TextView)findViewById(2131302710));
   }
   
-  public final void ki(String paramString1, String paramString2)
+  public final void ko(String paramString1, String paramString2)
   {
-    ad.i("MicroMsg.TopStory.TopStoryBaseVideoContainer", "setWarningTipContainerStatus %s %s", new Object[] { paramString1, paramString2 });
-    this.oSB.setVisibility(0);
-    this.BtZ.setVisibility(0);
-    this.Bua.setVisibility(0);
-    this.BtY.setVisibility(0);
-    this.Bub.setVisibility(8);
-    this.Buc.setVisibility(0);
-    this.BtR.setVisibility(8);
+    ae.i("MicroMsg.TopStory.TopStoryBaseVideoContainer", "setWarningTipContainerStatus %s %s", new Object[] { paramString1, paramString2 });
+    this.oZd.setVisibility(0);
+    this.BLx.setVisibility(0);
+    this.BLy.setVisibility(0);
+    this.BLw.setVisibility(0);
+    this.BLz.setVisibility(8);
+    this.BLA.setVisibility(0);
+    this.BLp.setVisibility(8);
     if (!TextUtils.isEmpty(paramString1))
     {
-      this.BtW.setText(paramString1);
-      this.BtW.setVisibility(0);
+      this.BLu.setText(paramString1);
+      this.BLu.setVisibility(0);
     }
     while (!TextUtils.isEmpty(paramString2))
     {
-      this.BtV.setText(paramString2);
-      this.BtV.setVisibility(0);
+      this.BLt.setText(paramString2);
+      this.BLt.setVisibility(0);
       return;
-      this.BtW.setVisibility(8);
+      this.BLu.setVisibility(8);
     }
-    this.BtV.setVisibility(8);
+    this.BLt.setVisibility(8);
   }
   
   public final void seekTo(int paramInt)
   {
-    ad.i("MicroMsg.TopStory.TopStoryBaseVideoContainer", "seek to position=%d current=%d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.BtO.epB().getCurrPosSec()) });
-    Object localObject = this.BtO.epB();
-    if (((r)localObject).BvS != null) {
-      ((r)localObject).BvS.C(paramInt, true);
+    ae.i("MicroMsg.TopStory.TopStoryBaseVideoContainer", "seek to position=%d current=%d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.BLm.eti().getCurrPosSec()) });
+    Object localObject = this.BLm.eti();
+    if (((r)localObject).BNq != null) {
+      ((r)localObject).BNq.C(paramInt, true);
     }
-    localObject = this.BtO.epx().BvO;
+    localObject = this.BLm.ete().BNm;
     if (localObject != null) {
-      ((com.tencent.mm.plugin.topstory.a.b.b)localObject).Brj = 1L;
+      ((com.tencent.mm.plugin.topstory.a.b.b)localObject).BII = 1L;
     }
   }
   
   protected void updateView()
   {
-    this.oSB.setImageDrawable(null);
-    com.tencent.mm.aw.q.aIJ().a(this.Brz.HCt, this.oSB, Btq);
-    if (this.Buh != null)
+    this.oZd.setImageDrawable(null);
+    com.tencent.mm.av.q.aJb().a(this.BIY.HWg, this.oZd, BKO);
+    if (this.BLF != null)
     {
-      this.Buh.animate().cancel();
-      this.Buh.setVisibility(8);
+      this.BLF.animate().cancel();
+      this.BLF.setVisibility(8);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.ui.video.f
  * JD-Core Version:    0.7.0.1
  */

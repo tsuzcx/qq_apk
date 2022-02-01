@@ -18,29 +18,31 @@ import android.support.v7.widget.RecyclerView.h;
 import android.support.v7.widget.RecyclerView.t;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.z;
-import com.tencent.mm.ai.z.a;
-import com.tencent.mm.g.a.cv;
-import com.tencent.mm.g.a.cv.a;
-import com.tencent.mm.g.a.cv.b;
+import com.tencent.mm.ah.z;
+import com.tencent.mm.ah.z.a;
+import com.tencent.mm.g.a.cw;
+import com.tencent.mm.g.a.cw.a;
+import com.tencent.mm.g.a.cw.b;
 import com.tencent.mm.g.c.ei;
-import com.tencent.mm.model.ba;
-import com.tencent.mm.model.bj;
-import com.tencent.mm.model.u;
+import com.tencent.mm.model.bc;
+import com.tencent.mm.model.bl;
+import com.tencent.mm.model.v;
 import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.protocal.protobuf.akr;
+import com.tencent.mm.pluginsdk.model.i;
+import com.tencent.mm.protocal.protobuf.alb;
 import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.av;
-import com.tencent.mm.sdk.platformtools.av.a;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.bu;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.platformtools.aw;
+import com.tencent.mm.sdk.platformtools.aw.a;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.bv;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.chatting.a.c.b;
 import com.tencent.mm.ui.chatting.a.c.f;
 import com.tencent.mm.ui.chatting.f.b.b;
-import com.tencent.mm.ui.chatting.k;
+import com.tencent.mm.ui.chatting.j;
+import com.tencent.mm.ui.chatting.l;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Set;
@@ -49,15 +51,15 @@ import java.util.TreeSet;
 public abstract class b
   implements c.f, com.tencent.mm.ui.chatting.f.b.a
 {
-  private long JPg = 0L;
-  protected b.b JVH;
-  com.tencent.mm.ui.chatting.a.c JVI;
-  protected ArrayList<c.b> JVJ = null;
-  protected String fTa;
+  private long Kks = 0L;
+  protected b.b KrZ;
+  com.tencent.mm.ui.chatting.a.c Ksa;
+  protected ArrayList<c.b> Ksb = null;
+  protected String fVg;
   protected Context mContext;
   protected ArrayList<c.b> mDataList = null;
-  private LinearLayoutManager noH;
-  private boolean oSO = false;
+  private LinearLayoutManager ntR;
+  private boolean oZq = false;
   
   public b(Context paramContext)
   {
@@ -65,76 +67,81 @@ public abstract class b
     this.mDataList = new ArrayList();
   }
   
-  protected static String b(bu parambu, boolean paramBoolean)
+  protected static String b(bv parambv, boolean paramBoolean)
   {
     String str1 = null;
     String str2 = null;
-    if (parambu == null) {}
+    if (parambv == null) {}
     do
     {
       return str2;
-      if (parambu.field_isSend == 1) {
-        return u.aAm();
+      if (parambv.field_isSend == 1) {
+        return v.aAC();
       }
       if (paramBoolean) {
-        str1 = bj.Bk(parambu.field_content);
+        str1 = bl.BM(parambv.field_content);
       }
       str2 = str1;
-    } while (!bt.isNullOrNil(str1));
-    return parambu.field_talker;
+    } while (!bu.isNullOrNil(str1));
+    return parambv.field_talker;
   }
   
-  private void c(cv paramcv)
+  private void c(cw paramcw)
   {
-    paramcv.dnG.dnM = 45;
-    paramcv.dnG.activity = ((Activity)this.mContext);
-    a.IbL.l(paramcv);
-    if ((paramcv.dnH.ret == -2) || (paramcv.dnH.ret > 0)) {}
-    while (paramcv.dnH.ret > 0) {
+    paramcw.doL.doR = 45;
+    paramcw.doL.activity = ((Activity)this.mContext);
+    a.IvT.l(paramcw);
+    if ((paramcw.doM.ret == -2) || (paramcw.doM.ret > 0)) {}
+    while (paramcw.doM.ret > 0) {
       return;
     }
-    if (14 != paramcv.dnG.type)
+    if (14 != paramcw.doL.type)
     {
-      ad.d("MicroMsg.BaseHistoryListPresenter", "not record type, do not report");
+      ae.d("MicroMsg.BaseHistoryListPresenter", "not record type, do not report");
       return;
     }
-    if (paramcv.dnG.dnJ == null)
+    if (paramcw.doL.doO == null)
     {
-      ad.e("MicroMsg.BaseHistoryListPresenter", "want to report record fav, but type count is null");
+      ae.e("MicroMsg.BaseHistoryListPresenter", "want to report record fav, but type count is null");
       return;
     }
-    g.yhR.f(11142, new Object[] { Integer.valueOf(paramcv.dnG.dnJ.GjK), Integer.valueOf(paramcv.dnG.dnJ.GjL), Integer.valueOf(paramcv.dnG.dnJ.GjM), Integer.valueOf(paramcv.dnG.dnJ.tGM), Integer.valueOf(paramcv.dnG.dnJ.GjN), Integer.valueOf(paramcv.dnG.dnJ.GjO), Integer.valueOf(paramcv.dnG.dnJ.GjP), Integer.valueOf(paramcv.dnG.dnJ.fileCount), Integer.valueOf(paramcv.dnG.dnJ.GjQ), Integer.valueOf(paramcv.dnG.dnJ.GjR), Integer.valueOf(paramcv.dnG.dnJ.GjS), Integer.valueOf(paramcv.dnG.dnJ.GjT), Integer.valueOf(paramcv.dnG.dnJ.GjU), Integer.valueOf(paramcv.dnG.dnJ.GjV), Integer.valueOf(paramcv.dnG.dnJ.GjW) });
+    g.yxI.f(11142, new Object[] { Integer.valueOf(paramcw.doL.doO.GCt), Integer.valueOf(paramcw.doL.doO.GCu), Integer.valueOf(paramcw.doL.doO.GCv), Integer.valueOf(paramcw.doL.doO.tRD), Integer.valueOf(paramcw.doL.doO.GCw), Integer.valueOf(paramcw.doL.doO.GCx), Integer.valueOf(paramcw.doL.doO.GCy), Integer.valueOf(paramcw.doL.doO.fileCount), Integer.valueOf(paramcw.doL.doO.GCz), Integer.valueOf(paramcw.doL.doO.GCA), Integer.valueOf(paramcw.doL.doO.GCB), Integer.valueOf(paramcw.doL.doO.GCC), Integer.valueOf(paramcw.doL.doO.GCD), Integer.valueOf(paramcw.doL.doO.GCE), Integer.valueOf(paramcw.doL.doO.GCF) });
   }
   
-  private void ct(bu parambu)
+  private void cs(bv parambv)
   {
-    cv localcv = new cv();
+    cw localcw = new cw();
     ArrayList localArrayList = new ArrayList(1);
-    localArrayList.add(parambu);
-    if (com.tencent.mm.pluginsdk.model.i.a(this.mContext, localcv, this.fTa, localArrayList, false))
+    localArrayList.add(parambv);
+    if (i.a(this.mContext, localcw, this.fVg, localArrayList, false))
     {
-      c(localcv);
+      c(localcw);
       return;
     }
-    ad.e("MicroMsg.BaseHistoryListPresenter", "[handleFav] err!");
+    ae.e("MicroMsg.BaseHistoryListPresenter", "[handleFav] err!");
   }
   
-  private void cu(bu parambu)
+  private void ct(bv parambv)
   {
-    g.yhR.idkeyStat(219L, 19L, 1L, true);
-    boolean bool = this.fTa.toLowerCase().endsWith("@chatroom");
+    g.yxI.idkeyStat(219L, 19L, 1L, true);
+    boolean bool = this.fVg.toLowerCase().endsWith("@chatroom");
     ArrayList localArrayList = new ArrayList(1);
-    localArrayList.add(parambu);
-    k.a(this.mContext, localArrayList, bool, this.fTa, new z()
+    localArrayList.add(parambv);
+    l.a(this.mContext, localArrayList, bool, this.fVg, new z()
     {
       public final void a(z.a paramAnonymousa) {}
       
-      public final boolean azg()
+      public final boolean azv()
       {
         return true;
       }
       
-      public final boolean azh()
+      public final boolean azw()
+      {
+        return false;
+      }
+      
+      public final boolean azx()
       {
         return false;
       }
@@ -143,31 +150,36 @@ public abstract class b
       
       public final void c(z.a paramAnonymousa) {}
       
-      public final void u(Bundle paramAnonymousBundle) {}
+      public final void v(Bundle paramAnonymousBundle) {}
     });
   }
   
-  private void cv(final bu parambu)
+  private void cu(final bv parambv)
   {
-    g.yhR.f(11627, new Object[] { Integer.valueOf(5) });
+    g.yxI.f(11627, new Object[] { Integer.valueOf(5) });
     final TreeSet localTreeSet = new TreeSet();
-    localTreeSet.add(Long.valueOf(parambu.field_msgId));
+    localTreeSet.add(Long.valueOf(parambv.field_msgId));
     h.e(this.mContext, this.mContext.getString(2131757553), "", this.mContext.getString(2131758038), this.mContext.getString(2131755691), new DialogInterface.OnClickListener()
     {
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
         AppMethodBeat.i(36477);
-        ad.i("MicroMsg.BaseHistoryListPresenter", "delete message");
-        com.tencent.mm.ui.chatting.i.a(b.this.mContext, localTreeSet, new z()
+        ae.i("MicroMsg.BaseHistoryListPresenter", "delete message");
+        j.a(b.this.mContext, localTreeSet, new z()
         {
           public final void a(z.a paramAnonymous2a) {}
           
-          public final boolean azg()
+          public final boolean azv()
           {
             return true;
           }
           
-          public final boolean azh()
+          public final boolean azw()
+          {
+            return false;
+          }
+          
+          public final boolean azx()
           {
             return false;
           }
@@ -175,7 +187,7 @@ public abstract class b
           public final void b(z.a paramAnonymous2a)
           {
             AppMethodBeat.i(36475);
-            if (paramAnonymous2a == z.a.hDS)
+            if (paramAnonymous2a == z.a.hGK)
             {
               paramAnonymous2a = new c.b()
               {
@@ -184,9 +196,9 @@ public abstract class b
                   return -1;
                 }
               };
-              paramAnonymous2a.msgId = b.4.this.hEN.field_msgId;
+              paramAnonymous2a.msgId = b.4.this.hHF.field_msgId;
               b.this.mDataList.remove(paramAnonymous2a);
-              b.this.JVJ.remove(paramAnonymous2a);
+              b.this.Ksb.remove(paramAnonymous2a);
             }
             AppMethodBeat.o(36475);
           }
@@ -194,29 +206,29 @@ public abstract class b
           public final void c(z.a paramAnonymous2a)
           {
             AppMethodBeat.i(36476);
-            ad.i("MicroMsg.BaseHistoryListPresenter", "[requestExitSelectedMode] %s del ", new Object[] { Thread.currentThread(), paramAnonymous2a });
-            if (paramAnonymous2a == z.a.hDS) {
-              b.this.JVI.asY.notifyChanged();
+            ae.i("MicroMsg.BaseHistoryListPresenter", "[requestExitSelectedMode] %s del ", new Object[] { Thread.currentThread(), paramAnonymous2a });
+            if (paramAnonymous2a == z.a.hGK) {
+              b.this.Ksa.asY.notifyChanged();
             }
             AppMethodBeat.o(36476);
           }
           
-          public final void u(Bundle paramAnonymous2Bundle) {}
+          public final void v(Bundle paramAnonymous2Bundle) {}
         });
         AppMethodBeat.o(36477);
       }
     }, null);
   }
   
-  public final RecyclerView.a aWm(String paramString)
+  public final RecyclerView.a aXN(String paramString)
   {
-    this.fTa = paramString;
-    this.JVI = new com.tencent.mm.ui.chatting.a.c(this.mContext, this);
-    com.tencent.mm.ui.chatting.a.c.JFR = fFF();
-    return this.JVI;
+    this.fVg = paramString;
+    this.Ksa = new com.tencent.mm.ui.chatting.a.c(this.mContext, this);
+    com.tencent.mm.ui.chatting.a.c.KaI = fJM();
+    return this.Ksa;
   }
   
-  public final c.b adg(int paramInt)
+  public final c.b adN(int paramInt)
   {
     if ((this.mDataList == null) || (this.mDataList.size() <= paramInt)) {
       return null;
@@ -224,30 +236,30 @@ public abstract class b
     return (c.b)this.mDataList.get(paramInt);
   }
   
-  public final void d(int paramInt, bu parambu)
+  public final void d(int paramInt, bv parambv)
   {
-    ad.i("MicroMsg.BaseHistoryListPresenter", "[handleSelectedItem] index:%s", new Object[] { Integer.valueOf(paramInt) });
+    ae.i("MicroMsg.BaseHistoryListPresenter", "[handleSelectedItem] index:%s", new Object[] { Integer.valueOf(paramInt) });
     switch (paramInt)
     {
     default: 
       return;
     case 1: 
-      ct(parambu);
+      cs(parambv);
       return;
     case 0: 
-      cu(parambu);
+      ct(parambv);
       return;
     }
-    cv(parambu);
+    cu(parambv);
   }
   
-  public final RecyclerView.h fFD()
+  public final RecyclerView.h fJK()
   {
     new RecyclerView.h()
     {
-      int iKN;
+      int iNG;
       int mSize;
-      ColorDrawable oTa;
+      ColorDrawable oZC;
       
       public final void a(Canvas paramAnonymousCanvas, RecyclerView paramAnonymousRecyclerView, RecyclerView.t paramAnonymoust)
       {
@@ -262,15 +274,15 @@ public abstract class b
           paramAnonymoust = paramAnonymousRecyclerView.getChildAt(i);
           if (paramAnonymoust.getTag() != null)
           {
-            Object localObject = b.this.adg(((Integer)paramAnonymoust.getTag()).intValue() + 1);
+            Object localObject = b.this.adN(((Integer)paramAnonymoust.getTag()).intValue() + 1);
             if ((localObject == null) || (((c.b)localObject).getType() != 2147483647))
             {
               localObject = (RecyclerView.LayoutParams)paramAnonymoust.getLayoutParams();
               int i1 = paramAnonymoust.getBottom();
               i1 = ((RecyclerView.LayoutParams)localObject).bottomMargin + i1;
               int i2 = this.mSize;
-              this.oTa.setBounds(j, i1, k - m, i2 + i1);
-              this.oTa.draw(paramAnonymousCanvas);
+              this.oZC.setBounds(j, i1, k - m, i2 + i1);
+              this.oZC.draw(paramAnonymousCanvas);
             }
           }
           i += 1;
@@ -280,68 +292,68 @@ public abstract class b
     };
   }
   
-  public final com.tencent.mm.modelvoiceaddr.ui.b.a fFG()
+  public final com.tencent.mm.modelvoiceaddr.ui.b.a fJN()
   {
     new com.tencent.mm.modelvoiceaddr.ui.b.a()
     {
-      String JFT;
-      private av fTs;
+      String KaK;
+      private aw fVy;
       
-      public final boolean Jp(String paramAnonymousString)
+      public final boolean JO(String paramAnonymousString)
       {
         return false;
       }
       
-      public final void Jq(String paramAnonymousString)
+      public final void JP(String paramAnonymousString)
       {
         AppMethodBeat.i(36473);
-        if (!this.JFT.equals(paramAnonymousString))
+        if (!this.KaK.equals(paramAnonymousString))
         {
-          this.JFT = paramAnonymousString;
-          this.fTs.stopTimer();
-          this.fTs.az(500L, 500L);
+          this.KaK = paramAnonymousString;
+          this.fVy.stopTimer();
+          this.fVy.ay(500L, 500L);
         }
         AppMethodBeat.o(36473);
       }
       
       public final void a(boolean paramAnonymousBoolean, String[] paramAnonymousArrayOfString, long paramAnonymousLong, int paramAnonymousInt) {}
       
-      public final void aOh() {}
+      public final void aOF() {}
       
-      public final void aSm()
+      public final void aSL()
       {
         AppMethodBeat.i(36472);
-        ad.d("MicroMsg.BaseHistoryListPresenter", "onQuitSearch");
-        if (b.this.JVH != null) {
-          b.this.JVH.onFinish();
+        ae.d("MicroMsg.BaseHistoryListPresenter", "onQuitSearch");
+        if (b.this.KrZ != null) {
+          b.this.KrZ.onFinish();
         }
         AppMethodBeat.o(36472);
       }
       
-      public final void aSn() {}
+      public final void aSM() {}
       
-      public final void aSo() {}
+      public final void aSN() {}
       
-      public final void aSp()
+      public final void aSO()
       {
         AppMethodBeat.i(36474);
-        ad.i("MicroMsg.BaseHistoryListPresenter", "onSearchEditTextReady");
+        ae.i("MicroMsg.BaseHistoryListPresenter", "onSearchEditTextReady");
         AppMethodBeat.o(36474);
       }
     };
   }
   
-  protected final boolean fFP()
+  protected final boolean fJW()
   {
-    long l1 = this.JPg;
+    long l1 = this.Kks;
     long l2 = System.currentTimeMillis();
-    this.JPg = l2;
+    this.Kks = l2;
     if (l1 + 30000L < l2)
     {
-      ba.aBQ();
-      this.oSO = com.tencent.mm.model.c.isSDCardAvailable();
+      bc.aCg();
+      this.oZq = com.tencent.mm.model.c.isSDCardAvailable();
     }
-    return this.oSO;
+    return this.oZq;
   }
   
   public final int getCount()
@@ -354,12 +366,12 @@ public abstract class b
   
   public final void onDetach()
   {
-    this.JVH.a(null);
-    this.JVH = null;
-    if (this.JVI != null)
+    this.KrZ.a(null);
+    this.KrZ = null;
+    if (this.Ksa != null)
     {
-      com.tencent.mm.ui.chatting.a.c.JFR = null;
-      com.tencent.mm.ui.chatting.a.c.JFS = null;
+      com.tencent.mm.ui.chatting.a.c.KaI = null;
+      com.tencent.mm.ui.chatting.a.c.KaJ = null;
     }
   }
 }

@@ -1,14 +1,12 @@
 package com.tencent.mm.g.a;
 
-import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class tk
   extends b
 {
-  public a dHR;
-  public b dHS;
+  public a dIU;
   
   public tk()
   {
@@ -17,25 +15,23 @@ public final class tk
   
   private tk(byte paramByte)
   {
-    AppMethodBeat.i(155375);
-    this.dHR = new a();
-    this.dHS = new b();
-    this.IbR = false;
+    AppMethodBeat.i(195262);
+    this.dIU = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(155375);
+    AppMethodBeat.o(195262);
   }
   
   public static final class a
   {
-    public Intent intent;
-    public String username;
+    public Boolean dIM;
+    public long dIO;
+    public String dvT;
   }
-  
-  public static final class b {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.a.tk
  * JD-Core Version:    0.7.0.1
  */

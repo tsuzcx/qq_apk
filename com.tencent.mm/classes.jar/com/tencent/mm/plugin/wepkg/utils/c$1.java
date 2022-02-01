@@ -1,26 +1,26 @@
 package com.tencent.mm.plugin.wepkg.utils;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.app.n.a;
-import com.tencent.mm.g.a.zm;
+import com.tencent.mm.app.o.a;
+import com.tencent.mm.g.a.zs;
 import com.tencent.mm.kernel.g;
 
 final class c$1
-  extends n.a
+  extends o.a
 {
   c$1(c paramc) {}
   
   public final void onAppBackground(String paramString)
   {
     AppMethodBeat.i(110787);
-    if ((g.ajx()) && (g.ajA().gAD))
+    if ((g.ajM()) && (g.ajP().gDk))
     {
-      g.ajA();
-      if (!com.tencent.mm.kernel.a.aiE())
+      g.ajP();
+      if (!com.tencent.mm.kernel.a.aiT())
       {
-        paramString = new zm();
-        paramString.dOM.dkM = 3;
-        com.tencent.mm.sdk.b.a.IbL.l(paramString);
+        paramString = new zs();
+        paramString.dQc.dlO = 3;
+        com.tencent.mm.sdk.b.a.IvT.l(paramString);
       }
     }
     AppMethodBeat.o(110787);
@@ -29,14 +29,14 @@ final class c$1
   public final void onAppForeground(String paramString)
   {
     AppMethodBeat.i(110786);
-    if ((g.ajx()) && (g.ajA().gAD))
+    if ((g.ajM()) && (g.ajP().gDk))
     {
-      g.ajA();
-      if (!com.tencent.mm.kernel.a.aiE())
+      g.ajP();
+      if (!com.tencent.mm.kernel.a.aiT())
       {
-        paramString = new zm();
-        paramString.dOM.dkM = 5;
-        com.tencent.mm.sdk.b.a.IbL.l(paramString);
+        paramString = new zs();
+        paramString.dQc.dlO = 5;
+        com.tencent.mm.sdk.b.a.IvT.l(paramString);
       }
     }
     AppMethodBeat.o(110786);

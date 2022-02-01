@@ -1,20 +1,20 @@
 package com.tencent.mm.plugin.account.friend.ui;
 
 import android.content.Context;
-import com.tencent.mm.ak.e.a;
+import com.tencent.mm.aj.e.a;
+import com.tencent.mm.contact.c;
 import com.tencent.mm.g.c.aw;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.bz;
-import com.tencent.mm.model.w;
-import com.tencent.mm.o.b;
+import com.tencent.mm.model.cb;
+import com.tencent.mm.model.x;
 import com.tencent.mm.plugin.account.a.a.a;
 import com.tencent.mm.plugin.account.friend.a.as;
 import com.tencent.mm.plugin.account.friend.a.at;
 import com.tencent.mm.plugin.messenger.foundation.a.l;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.am;
-import com.tencent.mm.storage.bp;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.an;
+import com.tencent.mm.storage.bq;
 import com.tencent.mm.ui.r;
 
 public abstract class d
@@ -26,55 +26,55 @@ public abstract class d
     super(paramContext, paramas);
   }
   
-  public static void JN(String paramString)
+  public static void Km(String paramString)
   {
-    if (bt.isNullOrNil(paramString)) {
-      ad.w("MicroMsg.QQFriendAdapterBase", "deal add friend failed. username is null.");
+    if (bu.isNullOrNil(paramString)) {
+      ae.w("MicroMsg.QQFriendAdapterBase", "deal add friend failed. username is null.");
     }
     Object localObject;
     do
     {
       return;
-      localObject = ((at)((a)g.ad(a.class)).getQQListStg()).JJ(paramString);
+      localObject = ((at)((a)g.ad(a.class)).getQQListStg()).Ki(paramString);
       if (localObject != null)
       {
-        ((as)localObject).jeS = 2;
-        ((at)((a)g.ad(a.class)).getQQListStg()).a(((as)localObject).jeR, (as)localObject);
+        ((as)localObject).jhL = 2;
+        ((at)((a)g.ad(a.class)).getQQListStg()).a(((as)localObject).jhK, (as)localObject);
       }
-      localObject = ((l)g.ab(l.class)).azp().Bf(paramString);
+      localObject = ((l)g.ab(l.class)).azF().BH(paramString);
       if (localObject == null)
       {
-        ad.w("MicroMsg.QQFriendAdapterBase", "[cpan] dealAddFriend failed. contact is null.");
+        ae.w("MicroMsg.QQFriendAdapterBase", "[cpan] dealAddFriend failed. contact is null.");
         return;
       }
-      if (bt.isNullOrNil(((aw)localObject).field_username)) {
-        ((am)localObject).setUsername(paramString);
+      if (bu.isNullOrNil(((aw)localObject).field_username)) {
+        ((an)localObject).setUsername(paramString);
       }
-      if ((int)((b)localObject).gfj != 0) {
+      if ((int)((c)localObject).ght != 0) {
         break;
       }
-      ((l)g.ab(l.class)).azp().ah((am)localObject);
-    } while (bt.isNullOrNil(((aw)localObject).field_username));
-    for (paramString = ((l)g.ab(l.class)).azp().Bf(((aw)localObject).field_username);; paramString = (String)localObject)
+      ((l)g.ab(l.class)).azF().ao((an)localObject);
+    } while (bu.isNullOrNil(((aw)localObject).field_username));
+    for (paramString = ((l)g.ab(l.class)).azF().BH(((aw)localObject).field_username);; paramString = (String)localObject)
     {
-      if ((int)paramString.gfj <= 0)
+      if ((int)paramString.ght <= 0)
       {
-        ad.e("MicroMsg.QQFriendAdapterBase", "addContact : insert contact failed");
+        ae.e("MicroMsg.QQFriendAdapterBase", "addContact : insert contact failed");
         return;
       }
-      w.u(paramString);
-      bz.aCx().d(26, new Object[0]);
+      x.B(paramString);
+      cb.aCN().d(26, new Object[0]);
       return;
     }
   }
   
-  public void Jo(String paramString) {}
+  public void JN(String paramString) {}
   
   public void a(a parama) {}
   
   public static abstract interface a
   {
-    public abstract void rl(int paramInt);
+    public abstract void ro(int paramInt);
   }
 }
 

@@ -7,30 +7,30 @@ import com.tencent.mm.remoteservice.a;
 import com.tencent.mm.remoteservice.d;
 import com.tencent.mm.remoteservice.e;
 import com.tencent.mm.remoteservice.f;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/emojicapture/proxy/VoiceInputProxy;", "Lcom/tencent/mm/remoteservice/BaseClientRequest;", "uiCallback", "Lcom/tencent/mm/plugin/emojicapture/proxy/VoiceInputProxy$UICallback;", "serverProxy", "Lcom/tencent/mm/remoteservice/RemoteServiceProxy;", "(Lcom/tencent/mm/plugin/emojicapture/proxy/VoiceInputProxy$UICallback;Lcom/tencent/mm/remoteservice/RemoteServiceProxy;)V", "TAG", "", "getUiCallback", "()Lcom/tencent/mm/plugin/emojicapture/proxy/VoiceInputProxy$UICallback;", "setUiCallback", "(Lcom/tencent/mm/plugin/emojicapture/proxy/VoiceInputProxy$UICallback;)V", "getMaxAmplitudeRate", "", "getMaxAmplitudeRateRemote", "onRecongnizeFinish", "", "onRes", "voiceText", "start", "startRemote", "stop", "fromUI", "", "stopRemote", "Companion", "UICallback", "plugin-emojicapture_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/emojicapture/proxy/VoiceInputProxy;", "Lcom/tencent/mm/remoteservice/BaseClientRequest;", "uiCallback", "Lcom/tencent/mm/plugin/emojicapture/proxy/VoiceInputProxy$UICallback;", "serverProxy", "Lcom/tencent/mm/remoteservice/RemoteServiceProxy;", "(Lcom/tencent/mm/plugin/emojicapture/proxy/VoiceInputProxy$UICallback;Lcom/tencent/mm/remoteservice/RemoteServiceProxy;)V", "TAG", "", "getUiCallback", "()Lcom/tencent/mm/plugin/emojicapture/proxy/VoiceInputProxy$UICallback;", "setUiCallback", "(Lcom/tencent/mm/plugin/emojicapture/proxy/VoiceInputProxy$UICallback;)V", "getMaxAmplitudeRate", "", "getMaxAmplitudeRateRemote", "onRecongnizeFinish", "", "onRes", "voiceText", "start", "startRemote", "stop", "fromUI", "", "stopRemote", "Companion", "UICallback", "plugin-emojicapture_release"})
 public final class VoiceInputProxy
   extends a
 {
-  private static g pUi;
-  public static final VoiceInputProxy.a pUj;
+  private static g qaN;
+  public static final VoiceInputProxy.a qaO;
   private final String TAG;
-  private b pUh;
+  private b qaM;
   
   static
   {
     AppMethodBeat.i(433);
-    pUj = new VoiceInputProxy.a((byte)0);
+    qaO = new VoiceInputProxy.a((byte)0);
     AppMethodBeat.o(433);
   }
   
   public VoiceInputProxy(b paramb, d paramd)
   {
     super(paramd);
-    this.pUh = paramb;
+    this.qaM = paramb;
     this.TAG = "MicroMsg.VoiceInputProxy";
   }
   
@@ -53,12 +53,12 @@ public final class VoiceInputProxy
   public final int getMaxAmplitudeRateRemote()
   {
     AppMethodBeat.i(431);
-    ad.d(this.TAG, "getMaxAmplitudeRateRemote call " + pUi);
-    if (pUi != null)
+    ae.d(this.TAG, "getMaxAmplitudeRateRemote call " + qaN);
+    if (qaN != null)
     {
-      g localg = pUi;
+      g localg = qaN;
       if (localg == null) {
-        p.gfZ();
+        p.gkB();
       }
       int i = localg.getMaxAmplitudeRate();
       AppMethodBeat.o(431);
@@ -70,17 +70,17 @@ public final class VoiceInputProxy
   
   public final b getUiCallback()
   {
-    return this.pUh;
+    return this.qaM;
   }
   
   @e
   public final void onRecongnizeFinish()
   {
     AppMethodBeat.i(428);
-    b localb = this.pUh;
+    b localb = this.qaM;
     if (localb != null)
     {
-      localb.aNU();
+      localb.aOs();
       AppMethodBeat.o(428);
       return;
     }
@@ -91,7 +91,7 @@ public final class VoiceInputProxy
   public final void onRes(String paramString)
   {
     AppMethodBeat.i(427);
-    b localb = this.pUh;
+    b localb = this.qaM;
     if (localb != null)
     {
       localb.onRes(paramString);
@@ -103,7 +103,7 @@ public final class VoiceInputProxy
   
   public final void setUiCallback(b paramb)
   {
-    this.pUh = paramb;
+    this.qaM = paramb;
   }
   
   @e
@@ -119,8 +119,8 @@ public final class VoiceInputProxy
   {
     AppMethodBeat.i(430);
     Object localObject = new VoiceInputProxy.c(this);
-    localObject = new g(g.iyi, 9, (g.b)localObject);
-    pUi = (g)localObject;
+    localObject = new g(g.iBb, 9, (g.b)localObject);
+    qaN = (g)localObject;
     ((g)localObject).start();
     AppMethodBeat.o(430);
   }
@@ -137,25 +137,25 @@ public final class VoiceInputProxy
   public final void stopRemote(boolean paramBoolean)
   {
     AppMethodBeat.i(432);
-    g localg = pUi;
+    g localg = qaN;
     if (localg != null) {
       localg.stop(paramBoolean);
     }
-    pUi = null;
+    qaN = null;
     AppMethodBeat.o(432);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/emojicapture/proxy/VoiceInputProxy$UICallback;", "", "onRecognizeFinish", "", "onRes", "voiceText", "", "plugin-emojicapture_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/emojicapture/proxy/VoiceInputProxy$UICallback;", "", "onRecognizeFinish", "", "onRes", "voiceText", "", "plugin-emojicapture_release"})
   public static abstract interface b
   {
-    public abstract void aNU();
+    public abstract void aOs();
     
     public abstract void onRes(String paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.emojicapture.proxy.VoiceInputProxy
  * JD-Core Version:    0.7.0.1
  */

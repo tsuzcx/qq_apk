@@ -4,9 +4,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
 import com.tencent.mm.plugin.appbrand.jsapi.i.a.b.h;
 import com.tencent.mm.plugin.appbrand.jsapi.i.a.b.r;
-import com.tencent.mm.plugin.appbrand.z.m.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.plugin.appbrand.y.m.a;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -20,14 +20,14 @@ public final class af
 {
   public static final int CTRL_INDEX = 200;
   public static final String NAME = "translateMapMarker";
-  private List<Runnable> kPF;
-  private AtomicBoolean kPG;
+  private List<Runnable> kTn;
+  private AtomicBoolean kTo;
   
   public af()
   {
     AppMethodBeat.i(143695);
-    this.kPF = new ArrayList();
-    this.kPG = new AtomicBoolean(false);
+    this.kTn = new ArrayList();
+    this.kTo = new AtomicBoolean(false);
     AppMethodBeat.o(143695);
   }
   
@@ -35,34 +35,34 @@ public final class af
   {
     AppMethodBeat.i(143699);
     a(paramc, paramInt, e(paramString, null), paramString.equals("ok"), paramBoolean);
-    this.kPG.set(false);
-    bkK();
+    this.kTo.set(false);
+    blu();
     AppMethodBeat.o(143699);
   }
   
-  private void bkK()
+  private void blu()
   {
     for (;;)
     {
       try
       {
         AppMethodBeat.i(143697);
-        if (this.kPG.get())
+        if (this.kTo.get())
         {
           AppMethodBeat.o(143697);
           return;
         }
-        if (this.kPF.size() == 0)
+        if (this.kTn.size() == 0)
         {
           AppMethodBeat.o(143697);
           continue;
         }
-        localRunnable = (Runnable)this.kPF.remove(0);
+        localRunnable = (Runnable)this.kTn.remove(0);
       }
       finally {}
       Runnable localRunnable;
       if (localRunnable != null) {
-        com.tencent.mm.plugin.appbrand.z.m.bBp().postToWorker(localRunnable);
+        com.tencent.mm.plugin.appbrand.y.m.bCj().postToWorker(localRunnable);
       }
       AppMethodBeat.o(143697);
     }
@@ -81,27 +81,27 @@ public final class af
         AppMethodBeat.o(143693);
       }
     };
-    this.kPF.add(paramc);
-    bkK();
+    this.kTn.add(paramc);
+    blu();
     AppMethodBeat.o(143696);
   }
   
   protected final void e(final c paramc, JSONObject paramJSONObject, final int paramInt)
   {
     AppMethodBeat.i(143698);
-    this.kPG.set(true);
+    this.kTo.set(true);
     if (paramJSONObject == null)
     {
-      ad.e("MicroMsg.JsApiTranslateMapMarker", "data is invalid, err");
+      ae.e("MicroMsg.JsApiTranslateMapMarker", "data is invalid, err");
       a(paramc, paramInt, "fail:invalid data", false);
       AppMethodBeat.o(143698);
       return;
     }
-    ad.d("MicroMsg.JsApiTranslateMapMarker", "data:%s", new Object[] { paramJSONObject.toString() });
+    ae.d("MicroMsg.JsApiTranslateMapMarker", "data:%s", new Object[] { paramJSONObject.toString() });
     final com.tencent.mm.plugin.appbrand.jsapi.i.a.b localb = h(paramc, paramJSONObject);
     if (localb == null)
     {
-      ad.e("MicroMsg.JsApiTranslateMapMarker", "mapView is null, return");
+      ae.e("MicroMsg.JsApiTranslateMapMarker", "mapView is null, return");
       a(paramc, paramInt, String.format("fail:internal error %s", new Object[] { "mapview is null" }), false);
       AppMethodBeat.o(143698);
       return;
@@ -115,7 +115,7 @@ public final class af
       {
         paramJSONObject = new JSONArray(paramJSONObject.optString("keyFrames"));
         localLinkedList = new LinkedList();
-        ad.d("MicroMsg.JsApiTranslateMapMarker", "keyFramesArray size :%d", new Object[] { Integer.valueOf(paramJSONObject.length()) });
+        ae.d("MicroMsg.JsApiTranslateMapMarker", "keyFramesArray size :%d", new Object[] { Integer.valueOf(paramJSONObject.length()) });
         i = 0;
         if (i < paramJSONObject.length())
         {
@@ -124,18 +124,18 @@ public final class af
           localh.duration = ((JSONObject)localObject).optInt("duration", 0);
           if (localh.duration == 0)
           {
-            ad.e("MicroMsg.JsApiTranslateMapMarker", "keyFrame.duration is zero, err continue");
+            ae.e("MicroMsg.JsApiTranslateMapMarker", "keyFrame.duration is zero, err continue");
           }
           else
           {
-            localh.kRD = ((float)((JSONObject)localObject).optDouble("rotate", 0.0D));
+            localh.kVl = ((float)((JSONObject)localObject).optDouble("rotate", 0.0D));
             String str2 = ((JSONObject)localObject).optString("latitude");
-            if (!bt.isNullOrNil(str2)) {
-              localh.latitude = bt.getDouble(str2, 0.0D);
+            if (!bu.isNullOrNil(str2)) {
+              localh.latitude = bu.getDouble(str2, 0.0D);
             }
             localObject = ((JSONObject)localObject).optString("longitude");
-            if (!bt.isNullOrNil((String)localObject)) {
-              localh.longitude = bt.getDouble((String)localObject, 0.0D);
+            if (!bu.isNullOrNil((String)localObject)) {
+              localh.longitude = bu.getDouble((String)localObject, 0.0D);
             }
             localLinkedList.add(localh);
           }
@@ -143,26 +143,26 @@ public final class af
       }
       catch (JSONException paramJSONObject)
       {
-        ad.e("MicroMsg.JsApiTranslateMapMarker", "parse keyFrames error, exception : %s", new Object[] { paramJSONObject });
-        a(paramc, paramInt, String.format("fail:internal error %s", new Object[] { "parse json fail" }), localb.bkR());
+        ae.e("MicroMsg.JsApiTranslateMapMarker", "parse keyFrames error, exception : %s", new Object[] { paramJSONObject });
+        a(paramc, paramInt, String.format("fail:internal error %s", new Object[] { "parse json fail" }), localb.blB());
         AppMethodBeat.o(143698);
         return;
       }
       localb.a(str1, localLinkedList, new b.r()
       {
-        public final void bkJ() {}
+        public final void blt() {}
         
-        public final void gz(boolean paramAnonymousBoolean)
+        public final void gy(boolean paramAnonymousBoolean)
         {
           AppMethodBeat.i(143694);
-          ad.i("MicroMsg.JsApiTranslateMapMarker", "onMarkerTranslate result::%b", new Object[] { Boolean.valueOf(paramAnonymousBoolean) });
+          ae.i("MicroMsg.JsApiTranslateMapMarker", "onMarkerTranslate result::%b", new Object[] { Boolean.valueOf(paramAnonymousBoolean) });
           if (paramAnonymousBoolean)
           {
-            af.a(af.this, paramc, paramInt, "ok", localb.bkR());
+            af.a(af.this, paramc, paramInt, "ok", localb.blB());
             AppMethodBeat.o(143694);
             return;
           }
-          af.a(af.this, paramc, paramInt, "fail", localb.bkR());
+          af.a(af.this, paramc, paramInt, "fail", localb.blB());
           AppMethodBeat.o(143694);
         }
       });
@@ -174,7 +174,7 @@ public final class af
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.i.af
  * JD-Core Version:    0.7.0.1
  */

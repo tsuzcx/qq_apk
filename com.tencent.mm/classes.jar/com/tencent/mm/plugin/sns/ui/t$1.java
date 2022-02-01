@@ -13,13 +13,13 @@ final class t$1
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(198135);
+    AppMethodBeat.i(219652);
     b localb = new b();
     localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/sns/ui/FinderMediaWidget$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-    t.a(this.zQr);
+    a.b("com/tencent/mm/plugin/sns/ui/FinderMediaWidget$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+    t.a(this.Ahy);
     a.a(this, "com/tencent/mm/plugin/sns/ui/FinderMediaWidget$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-    AppMethodBeat.o(198135);
+    AppMethodBeat.o(219652);
   }
 }
 

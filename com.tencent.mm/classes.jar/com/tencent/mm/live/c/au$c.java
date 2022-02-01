@@ -7,7 +7,7 @@ import d.l;
 import d.z;
 import java.util.List;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "", "Lcom/tencent/mm/live/view/adapter/ShareRoomItem;", "invoke"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "", "Lcom/tencent/mm/live/view/adapter/ShareRoomItem;", "invoke"})
 final class au$c
   extends q
   implements b<List<? extends h>, z>

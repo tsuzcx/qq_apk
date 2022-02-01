@@ -6,47 +6,47 @@ import android.content.DialogInterface.OnCancelListener;
 import android.content.Intent;
 import android.net.Uri;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
-import com.tencent.mm.bs.d;
-import com.tencent.mm.model.ba;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.br.d;
+import com.tencent.mm.model.bc;
 import com.tencent.mm.plugin.profile.b.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.av;
-import com.tencent.mm.sdk.platformtools.av.a;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aw;
+import com.tencent.mm.sdk.platformtools.aw.a;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.base.p;
 
 public final class a
   implements f
 {
-  Activity dsa;
-  p tqG;
-  b wUY;
-  private av wUZ;
+  Activity dtg;
+  p tBx;
+  b xkP;
+  private aw xkQ;
   
   public a(Activity paramActivity)
   {
     AppMethodBeat.i(27423);
-    this.wUZ = new av(new av.a()
+    this.xkQ = new aw(new aw.a()
     {
       public final boolean onTimerExpired()
       {
         AppMethodBeat.i(27422);
-        if (!a.this.dsa.isFinishing())
+        if (!a.this.dtg.isFinishing())
         {
           a locala = a.this;
-          Activity localActivity = a.this.dsa;
-          a.this.dsa.getString(2131755906);
-          locala.tqG = h.b(localActivity, a.this.dsa.getString(2131755936), true, new DialogInterface.OnCancelListener()
+          Activity localActivity = a.this.dtg;
+          a.this.dtg.getString(2131755906);
+          locala.tBx = h.b(localActivity, a.this.dtg.getString(2131755936), true, new DialogInterface.OnCancelListener()
           {
             public final void onCancel(DialogInterface paramAnonymous2DialogInterface)
             {
               AppMethodBeat.i(27421);
-              ba.aiU().a(a.this.wUY);
-              a.this.tqG = null;
+              bc.ajj().a(a.this.xkP);
+              a.this.tBx = null;
               AppMethodBeat.o(27421);
             }
           });
@@ -55,45 +55,45 @@ public final class a
         return false;
       }
     }, false);
-    this.dsa = paramActivity;
+    this.dtg = paramActivity;
     AppMethodBeat.o(27423);
   }
   
   private void openWebView(String paramString)
   {
     AppMethodBeat.i(27426);
-    this.wUZ.stopTimer();
-    if (this.tqG != null) {
-      this.tqG.dismiss();
+    this.xkQ.stopTimer();
+    if (this.tBx != null) {
+      this.tBx.dismiss();
     }
     paramString = new Intent("android.intent.action.VIEW", Uri.parse(paramString));
-    paramString.putExtra("title", this.dsa.getString(2131757902));
+    paramString.putExtra("title", this.dtg.getString(2131757902));
     paramString.putExtra("zoom", true);
     paramString.putExtra("vertical_scroll", false);
-    d.b(this.dsa, "webview", ".ui.tools.WebViewUI", paramString);
+    d.b(this.dtg, "webview", ".ui.tools.WebViewUI", paramString);
     AppMethodBeat.o(27426);
   }
   
-  public final void iE(String paramString1, String paramString2)
+  public final void iK(String paramString1, String paramString2)
   {
     AppMethodBeat.i(27424);
     if (paramString1 == null)
     {
-      ad.e("MicroMsg.ViewTWeibo", "null weibo id");
+      ae.e("MicroMsg.ViewTWeibo", "null weibo id");
       AppMethodBeat.o(27424);
       return;
     }
-    ba.aiU().a(205, this);
-    this.wUY = new b(bt.nullAsNil(paramString1).replace("http://t.qq.com/", "").trim(), paramString2);
-    ba.aiU().a(this.wUY, 0);
-    this.wUZ.az(3000L, 3000L);
+    bc.ajj().a(205, this);
+    this.xkP = new b(bu.nullAsNil(paramString1).replace("http://t.qq.com/", "").trim(), paramString2);
+    bc.ajj().a(this.xkP, 0);
+    this.xkQ.ay(3000L, 3000L);
     AppMethodBeat.o(27424);
   }
   
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     AppMethodBeat.i(27425);
-    ba.aiU().b(205, this);
+    bc.ajj().b(205, this);
     paramString = (b)paramn;
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
@@ -102,9 +102,9 @@ public final class a
       return;
     }
     if (paramInt1 != 4) {
-      ad.e("MicroMsg.ViewTWeibo", "view weibo failed: " + paramInt1 + ", " + paramInt2);
+      ae.e("MicroMsg.ViewTWeibo", "view weibo failed: " + paramInt1 + ", " + paramInt2);
     }
-    openWebView("http://t.qq.com/" + paramString.wPy);
+    openWebView("http://t.qq.com/" + paramString.xfp);
     AppMethodBeat.o(27425);
   }
 }

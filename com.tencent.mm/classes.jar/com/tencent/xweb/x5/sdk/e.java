@@ -54,9 +54,9 @@ public final class e
   
   public final void disableAutoCreateX5Webview()
   {
-    AppMethodBeat.i(195535);
+    AppMethodBeat.i(207551);
     QbSdk.disableAutoCreateX5Webview();
-    AppMethodBeat.o(195535);
+    AppMethodBeat.o(207551);
   }
   
   public final void forceSysWebView()
@@ -105,9 +105,9 @@ public final class e
   
   public final void setWebContentsDebuggingEnabled(boolean paramBoolean)
   {
-    AppMethodBeat.i(195536);
+    AppMethodBeat.i(207552);
     WebView.setWebContentsDebuggingEnabled(paramBoolean);
-    AppMethodBeat.o(195536);
+    AppMethodBeat.o(207552);
   }
   
   public final int startMiniQBToLoadUrl(Context paramContext, String paramString, HashMap<String, String> paramHashMap, ValueCallback<String> paramValueCallback)
@@ -121,18 +121,18 @@ public final class e
   static final class a
     implements TbsListener
   {
-    h Mvy;
+    h MSC;
     
     public a(h paramh)
     {
-      this.Mvy = paramh;
+      this.MSC = paramh;
     }
     
     public final void onDownloadFinish(int paramInt)
     {
       AppMethodBeat.i(154121);
-      if (this.Mvy != null) {
-        this.Mvy.onDownloadFinish(paramInt);
+      if (this.MSC != null) {
+        this.MSC.onDownloadFinish(paramInt);
       }
       AppMethodBeat.o(154121);
     }
@@ -140,8 +140,8 @@ public final class e
     public final void onDownloadProgress(int paramInt)
     {
       AppMethodBeat.i(154123);
-      if (this.Mvy != null) {
-        this.Mvy.onDownloadProgress(paramInt);
+      if (this.MSC != null) {
+        this.MSC.onDownloadProgress(paramInt);
       }
       AppMethodBeat.o(154123);
     }
@@ -149,8 +149,8 @@ public final class e
     public final void onInstallFinish(int paramInt)
     {
       AppMethodBeat.i(154122);
-      if (this.Mvy != null) {
-        this.Mvy.onInstallFinish(paramInt);
+      if (this.MSC != null) {
+        this.MSC.onInstallFinish(paramInt);
       }
       AppMethodBeat.o(154122);
     }

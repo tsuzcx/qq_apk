@@ -9,31 +9,31 @@ import com.tencent.mm.plugin.walletlock.gesture.ui.widget.PatternLockView;
 
 final class a
 {
-  TextView Dvg;
-  FrameLayout Dvh;
-  PatternLockView Dvi;
-  TextView Dvj;
+  TextView DML;
+  FrameLayout DMM;
+  PatternLockView DMN;
+  TextView DMO;
   View mView;
   
   public a(Activity paramActivity)
   {
     AppMethodBeat.i(129853);
     this.mView = null;
-    this.Dvg = null;
-    this.Dvh = null;
-    this.Dvi = null;
-    this.Dvj = null;
+    this.DML = null;
+    this.DMM = null;
+    this.DMN = null;
+    this.DMO = null;
     this.mView = View.inflate(paramActivity, 2131494482, null);
-    this.Dvg = ((TextView)this.mView.findViewById(2131306135));
-    this.Dvh = ((FrameLayout)this.mView.findViewById(2131303148));
-    this.Dvi = ((PatternLockView)this.mView.findViewById(2131303147));
-    this.Dvj = ((TextView)this.mView.findViewById(2131306126));
+    this.DML = ((TextView)this.mView.findViewById(2131306135));
+    this.DMM = ((FrameLayout)this.mView.findViewById(2131303148));
+    this.DMN = ((PatternLockView)this.mView.findViewById(2131303147));
+    this.DMO = ((TextView)this.mView.findViewById(2131306126));
     AppMethodBeat.o(129853);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.walletlock.gesture.ui.a
  * JD-Core Version:    0.7.0.1
  */

@@ -12,7 +12,7 @@ final class MobileRemitHistoryRecodUI$1
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
     AppMethodBeat.i(67681);
-    this.xVL.finish();
+    this.ylE.finish();
     AppMethodBeat.o(67681);
     return true;
   }

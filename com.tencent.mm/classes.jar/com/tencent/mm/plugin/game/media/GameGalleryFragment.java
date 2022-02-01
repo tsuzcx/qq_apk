@@ -6,25 +6,25 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public class GameGalleryFragment
   extends Fragment
 {
   View mView;
-  private int tWx;
+  private int uhv;
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     AppMethodBeat.i(40905);
-    ad.i("MicroMsg.GameGalleryFragment", "onCreateView");
+    ae.i("MicroMsg.GameGalleryFragment", "onCreateView");
     if (this.mView != null)
     {
       paramLayoutInflater = this.mView;
       AppMethodBeat.o(40905);
       return paramLayoutInflater;
     }
-    paramLayoutInflater = paramLayoutInflater.inflate(this.tWx, paramViewGroup);
+    paramLayoutInflater = paramLayoutInflater.inflate(this.uhv, paramViewGroup);
     AppMethodBeat.o(40905);
     return paramLayoutInflater;
   }
@@ -32,7 +32,7 @@ public class GameGalleryFragment
   public void onViewCreated(View paramView, Bundle paramBundle)
   {
     AppMethodBeat.i(40906);
-    ad.i("MicroMsg.GameGalleryFragment", "onViewCreated");
+    ae.i("MicroMsg.GameGalleryFragment", "onViewCreated");
     AppMethodBeat.o(40906);
   }
 }

@@ -1,9 +1,9 @@
 package com.tencent.mm.plugin.appbrand.performance;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.vfs.i;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.vfs.o;
 import java.io.Closeable;
 import java.io.IOException;
 import java.io.RandomAccessFile;
@@ -12,22 +12,22 @@ public final class e
   implements Closeable
 {
   private final int Mg;
-  private volatile RandomAccessFile mht;
-  private volatile RandomAccessFile mhu;
-  private boolean mhv;
-  private long mhw;
-  private long mhx;
-  private long mhy;
+  private volatile RandomAccessFile mms;
+  private volatile RandomAccessFile mmt;
+  private boolean mmu;
+  private long mmv;
+  private long mmw;
+  private long mmx;
   
   public e(int paramInt)
   {
     this.Mg = paramInt;
   }
   
-  public final double bvU()
+  public final double bwL()
   {
     AppMethodBeat.i(147594);
-    if (this.mhv)
+    if (this.mmu)
     {
       AppMethodBeat.o(147594);
       return 0.0D;
@@ -38,17 +38,17 @@ public final class e
     {
       try
       {
-        if (this.mhu == null)
+        if (this.mmt == null)
         {
           d2 = d3;
-          this.mhu = i.dd("/proc/" + this.Mg + "/stat", false);
+          this.mmt = o.dg("/proc/" + this.Mg + "/stat", false);
         }
         d2 = d3;
-        this.mhu.seek(0L);
+        this.mmt.seek(0L);
         d2 = d3;
-        Object localObject1 = this.mhu.readLine();
+        Object localObject1 = this.mmt.readLine();
         d2 = d3;
-        boolean bool = bt.isNullOrNil((String)localObject1);
+        boolean bool = bu.isNullOrNil((String)localObject1);
         if (bool)
         {
           AppMethodBeat.o(147594);
@@ -64,43 +64,43 @@ public final class e
           return 0.0D;
         }
         d2 = d3;
-        if (this.mht == null)
+        if (this.mms == null)
         {
           d2 = d3;
-          this.mht = i.dd("/proc/stat", false);
+          this.mms = o.dg("/proc/stat", false);
         }
         d2 = d3;
-        this.mht.seek(0L);
+        this.mms.seek(0L);
         d2 = d3;
-        localObject2 = this.mht.readLine();
+        localObject2 = this.mms.readLine();
         d2 = d3;
-        if (!bt.isNullOrNil((String)localObject2)) {
+        if (!bu.isNullOrNil((String)localObject2)) {
           continue;
         }
         l1 = 0L;
         d2 = d3;
-        l2 = bt.aRf(localObject1[13]);
+        l2 = bu.aSC(localObject1[13]);
         d2 = d3;
-        l3 = bt.aRf(localObject1[14]);
+        l3 = bu.aSC(localObject1[14]);
         d1 = d3;
         d2 = d3;
-        if (this.mhw != 0L)
+        if (this.mmv != 0L)
         {
           d2 = d3;
-          double d4 = (l2 - this.mhx) * 100L / (l1 - this.mhw);
+          double d4 = (l2 - this.mmw) * 100L / (l1 - this.mmv);
           d2 = d3;
-          d1 = (l3 - this.mhy) * 100L / (l1 - this.mhw);
+          d1 = (l3 - this.mmx) * 100L / (l1 - this.mmv);
           d2 = d3;
           d4 = Math.max(0.0D, d4);
           d2 = d3;
           d1 = Math.max(0.0D, d1) + d4;
         }
         d2 = d1;
-        this.mhw = l1;
+        this.mmv = l1;
         d2 = d1;
-        this.mhx = l2;
+        this.mmw = l2;
         d2 = d1;
-        this.mhy = l3;
+        this.mmx = l3;
       }
       catch (Exception localException)
       {
@@ -113,8 +113,8 @@ public final class e
         long l6;
         long l7;
         long l8;
-        ad.e(" MicroMsg.CpuSampler", "read pid stat file error: ".concat(String.valueOf(localException)));
-        this.mhv = true;
+        ae.e(" MicroMsg.CpuSampler", "read pid stat file error: ".concat(String.valueOf(localException)));
+        this.mmu = true;
         double d1 = d2;
         continue;
       }
@@ -130,21 +130,21 @@ public final class e
       else
       {
         d2 = d3;
-        l1 = bt.aRf(localObject2[2]);
+        l1 = bu.aSC(localObject2[2]);
         d2 = d3;
-        l2 = bt.aRf(localObject2[3]);
+        l2 = bu.aSC(localObject2[3]);
         d2 = d3;
-        l3 = bt.aRf(localObject2[4]);
+        l3 = bu.aSC(localObject2[4]);
         d2 = d3;
-        l4 = bt.aRf(localObject2[5]);
+        l4 = bu.aSC(localObject2[5]);
         d2 = d3;
-        l5 = bt.aRf(localObject2[6]);
+        l5 = bu.aSC(localObject2[6]);
         d2 = d3;
-        l6 = bt.aRf(localObject2[7]);
+        l6 = bu.aSC(localObject2[7]);
         d2 = d3;
-        l7 = bt.aRf(localObject2[8]);
+        l7 = bu.aSC(localObject2[8]);
         d2 = d3;
-        l8 = bt.aRf(localObject2[9]);
+        l8 = bu.aSC(localObject2[9]);
         l1 = l8 + (l1 + l2 + l3 + l4 + l5 + l6 + l7);
       }
     }
@@ -155,14 +155,14 @@ public final class e
     AppMethodBeat.i(147595);
     try
     {
-      if (this.mhu != null) {
-        this.mhu.close();
+      if (this.mmt != null) {
+        this.mmt.close();
       }
       try
       {
         label19:
-        if (this.mht != null) {
-          this.mht.close();
+        if (this.mms != null) {
+          this.mms.close();
         }
         AppMethodBeat.o(147595);
         return;
@@ -181,7 +181,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.performance.e
  * JD-Core Version:    0.7.0.1
  */

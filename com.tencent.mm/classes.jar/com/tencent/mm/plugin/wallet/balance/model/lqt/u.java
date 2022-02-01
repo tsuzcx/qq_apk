@@ -1,10 +1,10 @@
 package com.tencent.mm.plugin.wallet.balance.model.lqt;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.cdu;
-import com.tencent.mm.protocal.protobuf.cdw;
-import com.tencent.mm.protocal.protobuf.cou;
-import com.tencent.mm.protocal.protobuf.zj;
+import com.tencent.mm.protocal.protobuf.ceo;
+import com.tencent.mm.protocal.protobuf.ceq;
+import com.tencent.mm.protocal.protobuf.cpo;
+import com.tencent.mm.protocal.protobuf.zm;
 import com.tencent.mm.vending.c.b;
 import com.tencent.mm.vending.g.g;
 import com.tencent.mm.vending.h.e;
@@ -12,11 +12,11 @@ import com.tencent.mm.vending.h.e;
 public class u
   implements b<t>
 {
-  public final d CxA;
-  public final c CxB;
-  protected t Cxx;
-  public final b Cxy;
-  public final a Cxz;
+  protected t CPc;
+  public final b CPd;
+  public final a CPe;
+  public final d CPf;
+  public final c CPg;
   
   public u()
   {
@@ -28,55 +28,55 @@ public class u
   private u(t paramt)
   {
     AppMethodBeat.i(68490);
-    this.Cxy = new b();
-    this.Cxz = new a();
-    this.CxA = new d();
-    this.CxB = new c();
-    this.Cxx = paramt;
+    this.CPd = new b();
+    this.CPe = new a();
+    this.CPf = new d();
+    this.CPg = new c();
+    this.CPc = paramt;
     AppMethodBeat.o(68490);
   }
   
   public final class a
-    implements e<zj, com.tencent.mm.vending.j.c<String, Integer>>
+    implements e<zm, com.tencent.mm.vending.j.c<String, Integer>>
   {
     public a() {}
     
-    public final String Wr()
+    public final String Wz()
     {
       return "Vending.LOGIC";
     }
   }
   
   public final class b
-    implements e<cou, Void>
+    implements e<cpo, Void>
   {
     public b() {}
     
-    public final String Wr()
+    public final String Wz()
     {
       return "Vending.LOGIC";
     }
     
-    public final com.tencent.mm.vending.g.c<cou> aRm()
+    public final com.tencent.mm.vending.g.c<cpo> aRL()
     {
       AppMethodBeat.i(68484);
-      com.tencent.mm.vending.g.c localc = g.fOf().c(this);
+      com.tencent.mm.vending.g.c localc = g.fSA().c(this);
       AppMethodBeat.o(68484);
       return localc;
     }
   }
   
   public final class c
-    implements e<cdu, com.tencent.mm.vending.j.c<Integer, Integer>>
+    implements e<ceo, com.tencent.mm.vending.j.c<Integer, Integer>>
   {
     public c() {}
     
-    public final String Wr()
+    public final String Wz()
     {
       return "Vending.UI";
     }
     
-    public final com.tencent.mm.vending.g.c<cdu> iF(int paramInt1, int paramInt2)
+    public final com.tencent.mm.vending.g.c<ceo> iJ(int paramInt1, int paramInt2)
     {
       AppMethodBeat.i(68486);
       com.tencent.mm.vending.g.c localc = g.L(Integer.valueOf(paramInt1), Integer.valueOf(paramInt2)).c(this);
@@ -86,11 +86,11 @@ public class u
   }
   
   public final class d
-    implements e<cdw, com.tencent.mm.vending.j.c<Integer, Integer>>
+    implements e<ceq, com.tencent.mm.vending.j.c<Integer, Integer>>
   {
     public d() {}
     
-    public final String Wr()
+    public final String Wz()
     {
       return "Vending.UI";
     }

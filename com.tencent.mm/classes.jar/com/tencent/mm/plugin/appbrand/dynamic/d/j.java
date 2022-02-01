@@ -1,9 +1,9 @@
 package com.tencent.mm.plugin.appbrand.dynamic.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ab.b.b.a;
+import com.tencent.mm.aa.b.b.a;
 import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -15,7 +15,7 @@ public final class j
     super("reportIDKey", paramInt);
   }
   
-  public final void a(com.tencent.mm.ab.c.a parama, JSONObject paramJSONObject, b.a<JSONObject> parama1)
+  public final void a(com.tencent.mm.aa.c.a parama, JSONObject paramJSONObject, b.a<JSONObject> parama1)
   {
     AppMethodBeat.i(121331);
     parama = paramJSONObject.optJSONArray("dataArray");
@@ -35,14 +35,14 @@ public final class j
           int j = paramJSONObject.optInt("id");
           int k = paramJSONObject.optInt("key");
           int m = paramJSONObject.optInt("value");
-          g.yhR.idkeyStat(j, k, m, false);
+          g.yxI.idkeyStat(j, k, m, false);
           i += 1;
         }
         catch (Exception paramJSONObject)
         {
           for (;;)
           {
-            ad.e("MicroMsg.JsApiFunc_ReportIDKey", "parse json failed : %s", new Object[] { paramJSONObject.getMessage() });
+            ae.e("MicroMsg.JsApiFunc_ReportIDKey", "parse json failed : %s", new Object[] { paramJSONObject.getMessage() });
           }
         }
       }

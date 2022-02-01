@@ -5,8 +5,8 @@ import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.g.c.aw;
-import com.tencent.mm.model.u;
-import com.tencent.mm.model.w;
+import com.tencent.mm.model.v;
+import com.tencent.mm.model.x;
 import com.tencent.mm.plugin.profile.b;
 import com.tencent.mm.plugin.profile.ui.newbizinfo.c.c;
 import com.tencent.mm.pluginsdk.m;
@@ -19,14 +19,14 @@ final class ContactInfoUI$6
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
     AppMethodBeat.i(26973);
-    if (((w.zT(ContactInfoUI.e(this.wQs).field_username)) && (!u.aAK())) || ((w.zL(ContactInfoUI.e(this.wQs).field_username)) && (!u.aAG())) || ((w.zN(ContactInfoUI.e(this.wQs).field_username)) && (!u.aAQ())) || ((w.zH(ContactInfoUI.e(this.wQs).field_username)) && (!u.aAU())))
+    if (((x.AD(ContactInfoUI.e(this.xgj).field_username)) && (!v.aBa())) || ((x.Av(ContactInfoUI.e(this.xgj).field_username)) && (!v.aAW())) || ((x.Ax(ContactInfoUI.e(this.xgj).field_username)) && (!v.aBg())) || ((x.Ar(ContactInfoUI.e(this.xgj).field_username)) && (!v.aBk())))
     {
       paramMenuItem = new Intent();
       paramMenuItem.addFlags(67108864);
-      b.iRG.p(paramMenuItem, this.wQs);
+      b.iUz.p(paramMenuItem, this.xgj);
     }
-    this.wQs.finish();
-    c.b(ContactInfoUI.e(this.wQs).field_username, 1501, ContactInfoUI.h(this.wQs), ContactInfoUI.i(this.wQs));
+    this.xgj.finish();
+    c.b(ContactInfoUI.e(this.xgj).field_username, 1501, ContactInfoUI.h(this.xgj), ContactInfoUI.i(this.xgj));
     AppMethodBeat.o(26973);
     return true;
   }

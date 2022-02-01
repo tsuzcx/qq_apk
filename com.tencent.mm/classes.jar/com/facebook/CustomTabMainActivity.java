@@ -42,7 +42,7 @@ public class CustomTabMainActivity
   private void sendResult(int paramInt, Intent paramIntent)
   {
     AppMethodBeat.i(7610);
-    d.U(this).unregisterReceiver(this.redirectReceiver);
+    d.V(this).unregisterReceiver(this.redirectReceiver);
     if (paramIntent != null) {
       setResult(paramInt, paramIntent);
     }
@@ -73,7 +73,7 @@ public class CustomTabMainActivity
       new CustomTab("oauth", paramBundle).openCustomTab(this, str);
       this.shouldCloseCustomTab = false;
       this.redirectReceiver = new CustomTabMainActivity.1(this);
-      d.U(this).a(this.redirectReceiver, new IntentFilter(CustomTabActivity.CUSTOM_TAB_REDIRECT_ACTION));
+      d.V(this).a(this.redirectReceiver, new IntentFilter(CustomTabActivity.CUSTOM_TAB_REDIRECT_ACTION));
     }
     AppMethodBeat.o(7607);
   }
@@ -85,7 +85,7 @@ public class CustomTabMainActivity
     if (REFRESH_ACTION.equals(paramIntent.getAction()))
     {
       Intent localIntent = new Intent(CustomTabActivity.DESTROY_ACTION);
-      d.U(this).b(localIntent);
+      d.V(this).b(localIntent);
       sendResult(-1, paramIntent);
       AppMethodBeat.o(7608);
       return;

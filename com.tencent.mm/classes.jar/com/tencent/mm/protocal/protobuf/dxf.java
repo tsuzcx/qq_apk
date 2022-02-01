@@ -4,51 +4,41 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 public final class dxf
-  extends cvc
+  extends cvw
 {
-  public long GeJ;
-  public long HfW;
-  public long HyS;
-  
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(125502);
+    AppMethodBeat.i(190848);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
       if (this.BaseRequest != null)
       {
-        paramVarArgs.lC(1, this.BaseRequest.computeSize());
+        paramVarArgs.lJ(1, this.BaseRequest.computeSize());
         this.BaseRequest.writeFields(paramVarArgs);
       }
-      paramVarArgs.aY(2, this.HyS);
-      paramVarArgs.aY(3, this.GeJ);
-      paramVarArgs.aY(4, this.HfW);
-      AppMethodBeat.o(125502);
+      AppMethodBeat.o(190848);
       return 0;
     }
     if (paramInt == 1) {
       if (this.BaseRequest == null) {
-        break label446;
+        break label310;
       }
     }
-    label446:
-    for (paramInt = f.a.a.a.lB(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
+    label310:
+    for (paramInt = f.a.a.a.lI(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
     {
-      int i = f.a.a.b.b.a.p(2, this.HyS);
-      int j = f.a.a.b.b.a.p(3, this.GeJ);
-      int k = f.a.a.b.b.a.p(4, this.HfW);
-      AppMethodBeat.o(125502);
-      return paramInt + i + j + k;
+      AppMethodBeat.o(190848);
+      return paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = cvc.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cvc.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = cvw.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cvw.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
-        AppMethodBeat.o(125502);
+        AppMethodBeat.o(190848);
         return 0;
       }
       if (paramInt == 3)
@@ -59,37 +49,25 @@ public final class dxf
         switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(125502);
+          AppMethodBeat.o(190848);
           return -1;
-        case 1: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new jc();
-            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((jc)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, cvc.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-            localdxf.BaseRequest = ((jc)localObject1);
-            paramInt += 1;
-          }
-          AppMethodBeat.o(125502);
-          return 0;
-        case 2: 
-          localdxf.HyS = ((f.a.a.a.a)localObject1).NPN.zd();
-          AppMethodBeat.o(125502);
-          return 0;
-        case 3: 
-          localdxf.GeJ = ((f.a.a.a.a)localObject1).NPN.zd();
-          AppMethodBeat.o(125502);
-          return 0;
         }
-        localdxf.HfW = ((f.a.a.a.a)localObject1).NPN.zd();
-        AppMethodBeat.o(125502);
+        paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
+        int i = paramVarArgs.size();
+        paramInt = 0;
+        while (paramInt < i)
+        {
+          Object localObject2 = (byte[])paramVarArgs.get(paramInt);
+          localObject1 = new jc();
+          localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
+          for (boolean bool = true; bool; bool = ((jc)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cvw.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+          localdxf.BaseRequest = ((jc)localObject1);
+          paramInt += 1;
+        }
+        AppMethodBeat.o(190848);
         return 0;
       }
-      AppMethodBeat.o(125502);
+      AppMethodBeat.o(190848);
       return -1;
     }
   }

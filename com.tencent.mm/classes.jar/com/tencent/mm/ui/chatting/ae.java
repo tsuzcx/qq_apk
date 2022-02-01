@@ -1,33 +1,64 @@
 package com.tencent.mm.ui.chatting;
 
-import android.os.Bundle;
-import com.tencent.mm.ui.chatting.view.MMChattingListView;
+import android.content.Context;
+import android.content.DialogInterface.OnCancelListener;
+import android.view.View;
+import android.widget.ListView;
+import com.tencent.mm.ui.chatting.h.d.a;
 
 public abstract interface ae
 {
-  public abstract void acV(int paramInt);
+  public abstract void a(d.a parama);
   
-  public abstract void be(Bundle paramBundle);
+  public abstract void adC(int paramInt);
   
-  public abstract void bf(Bundle paramBundle);
+  public abstract void adE(int paramInt);
   
-  public abstract void fBS();
+  public abstract void addHeaderView(View paramView);
   
-  public abstract void fBT();
+  public abstract void b(Context paramContext, String paramString, DialogInterface.OnCancelListener paramOnCancelListener);
   
-  public abstract void fBU();
+  public abstract int bGB();
   
-  public abstract MMChattingListView fBW();
+  public abstract void bPl();
   
-  public abstract int getBottomHeight();
+  public abstract void ca(int paramInt);
   
-  public abstract int getTopHeight();
+  public abstract void dismissDialog();
   
-  public abstract void setBottomViewVisible(boolean paramBoolean);
+  public abstract void fFS();
   
-  public abstract void setIsBottomShowAll(boolean paramBoolean);
+  public abstract void fFT();
   
-  public abstract void xB(boolean paramBoolean);
+  public abstract void fFX();
+  
+  public abstract void fFZ();
+  
+  public abstract View getChildAt(int paramInt);
+  
+  public abstract int getFirstVisiblePosition();
+  
+  public abstract int getHeaderViewsCount();
+  
+  public abstract int getLastVisiblePosition();
+  
+  public abstract ListView getListView();
+  
+  public abstract boolean hideVKB();
+  
+  public abstract void jV(int paramInt1, int paramInt2);
+  
+  public abstract boolean removeOptionMenu(int paramInt);
+  
+  public abstract void setKeepScreenOn(boolean paramBoolean);
+  
+  public abstract void showOptionMenu(int paramInt, boolean paramBoolean);
+  
+  public abstract void showOptionMenu(boolean paramBoolean);
+  
+  public abstract void updateOptionMenuIcon(int paramInt1, int paramInt2);
+  
+  public abstract void xY(boolean paramBoolean);
 }
 
 

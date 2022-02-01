@@ -7,9 +7,9 @@ public enum h
   static
   {
     AppMethodBeat.i(40545);
-    NWs = new h("Header", 0);
-    NWt = new h("QueryString", 1);
-    NWu = new h[] { NWs, NWt };
+    Otx = new h("Header", 0);
+    Oty = new h("QueryString", 1);
+    Otz = new h[] { Otx, Oty };
     AppMethodBeat.o(40545);
   }
 }

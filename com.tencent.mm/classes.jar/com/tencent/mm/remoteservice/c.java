@@ -22,7 +22,7 @@ public abstract interface c
       attachInterface(this, "com.tencent.mm.remoteservice.ICommRemoteServer");
     }
     
-    public static c K(IBinder paramIBinder)
+    public static c L(IBinder paramIBinder)
     {
       if (paramIBinder == null) {
         return null;

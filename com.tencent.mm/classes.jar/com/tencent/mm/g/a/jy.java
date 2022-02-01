@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class jy
   extends b
 {
-  public a dwU;
+  public a dxW;
   
   public jy()
   {
@@ -15,16 +15,17 @@ public final class jy
   
   private jy(byte paramByte)
   {
-    AppMethodBeat.i(130754);
-    this.dwU = new a();
-    this.IbR = false;
+    AppMethodBeat.i(149866);
+    this.dxW = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(130754);
+    AppMethodBeat.o(149866);
   }
   
   public static final class a
   {
-    public int keycode = -1;
+    public String dxX;
+    public String dxY;
   }
 }
 

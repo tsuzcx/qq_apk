@@ -24,29 +24,29 @@ public final class ah
   extends p
   implements ag
 {
-  public static final a MZA;
-  final j MQa;
-  private final d.l.b.a.b.l.g MZx;
-  private d MZy;
-  final ar MZz;
+  public static final a NwG;
+  final j Nnf;
+  private final d.l.b.a.b.l.g NwD;
+  private d NwE;
+  final ar NwF;
   
   static
   {
     AppMethodBeat.i(57298);
-    cwV = new k[] { (k)z.a(new x(z.bp(ah.class), "withDispatchReceiver", "getWithDispatchReceiver()Lorg/jetbrains/kotlin/descriptors/impl/TypeAliasConstructorDescriptor;")) };
-    MZA = new a((byte)0);
+    cxA = new k[] { (k)z.a(new x(z.bp(ah.class), "withDispatchReceiver", "getWithDispatchReceiver()Lorg/jetbrains/kotlin/descriptors/impl/TypeAliasConstructorDescriptor;")) };
+    NwG = new a((byte)0);
     AppMethodBeat.o(57298);
   }
   
   private ah(j paramj, ar paramar, final d paramd, ag paramag, d.l.b.a.b.b.a.g paramg, b.a parama, an paraman)
   {
-    super((l)paramar, (t)paramag, paramg, f.bcG("<init>"), parama, paraman);
+    super((l)paramar, (t)paramag, paramg, f.bek("<init>"), parama, paraman);
     AppMethodBeat.i(57316);
-    this.MQa = paramj;
-    this.MZz = paramar;
-    this.MYd = this.MZz.ghF();
-    this.MZx = this.MQa.T((a)new b(this, paramd));
-    this.MZy = paramd;
+    this.Nnf = paramj;
+    this.NwF = paramar;
+    this.Nvj = this.NwF.gmh();
+    this.NwD = this.Nnf.T((a)new b(this, paramd));
+    this.NwE = paramd;
     AppMethodBeat.o(57316);
   }
   
@@ -57,7 +57,7 @@ public final class ah
     d.g.b.p.h(paramw, "modality");
     d.g.b.p.h(paramba, "visibility");
     d.g.b.p.h(parama, "kind");
-    paraml = giW().h(paraml).a(paramw).a(paramba).a(parama).zX(paramBoolean).gjc();
+    paraml = gny().h(paraml).a(paramw).a(paramba).a(parama).Ak(paramBoolean).gnE();
     if (paraml == null)
     {
       paraml = new v("null cannot be cast to non-null type org.jetbrains.kotlin.descriptors.impl.TypeAliasConstructorDescriptor");
@@ -69,10 +69,10 @@ public final class ah
     return paraml;
   }
   
-  private ag gks()
+  private ag goU()
   {
     AppMethodBeat.i(57302);
-    Object localObject = super.giP();
+    Object localObject = super.gnr();
     if (localObject == null)
     {
       localObject = new v("null cannot be cast to non-null type org.jetbrains.kotlin.descriptors.impl.TypeAliasConstructorDescriptor");
@@ -96,49 +96,49 @@ public final class ah
       throw paramba;
     }
     paramba = (ah)paramba;
-    Object localObject = d.l.b.a.b.m.ba.aA(paramba.giq());
+    Object localObject = d.l.b.a.b.m.ba.aA(paramba.gmS());
     d.g.b.p.g(localObject, "TypeSubstitutor.create(s…asConstructor.returnType)");
-    localObject = this.MZy.giH().a((d.l.b.a.b.m.ba)localObject);
+    localObject = this.NwE.gnj().a((d.l.b.a.b.m.ba)localObject);
     if (localObject == null)
     {
       AppMethodBeat.o(57308);
       return null;
     }
-    paramba.MZy = ((d)localObject);
+    paramba.NwE = ((d)localObject);
     paramba = (ag)paramba;
     AppMethodBeat.o(57308);
     return paramba;
   }
   
-  public final e giO()
-  {
-    AppMethodBeat.i(57300);
-    e locale = this.MZy.giO();
-    d.g.b.p.g(locale, "underlyingConstructorDescriptor.constructedClass");
-    AppMethodBeat.o(57300);
-    return locale;
-  }
-  
-  public final ab giq()
+  public final ab gmS()
   {
     AppMethodBeat.i(57301);
-    ab localab = super.giq();
+    ab localab = super.gmS();
     if (localab == null) {
-      d.g.b.p.gfZ();
+      d.g.b.p.gkB();
     }
     AppMethodBeat.o(57301);
     return localab;
   }
   
-  public final d gkr()
+  public final e gnq()
   {
-    return this.MZy;
+    AppMethodBeat.i(57300);
+    e locale = this.NwE.gnq();
+    d.g.b.p.g(locale, "underlyingConstructorDescriptor.constructedClass");
+    AppMethodBeat.o(57300);
+    return locale;
+  }
+  
+  public final d goT()
+  {
+    return this.NwE;
   }
   
   public final boolean isPrimary()
   {
     AppMethodBeat.i(57299);
-    boolean bool = this.MZy.isPrimary();
+    boolean bool = this.NwE.isPrimary();
     AppMethodBeat.o(57299);
     return bool;
   }
@@ -148,12 +148,12 @@ public final class ah
     static d.l.b.a.b.m.ba a(ar paramar)
     {
       AppMethodBeat.i(57296);
-      if (paramar.gjt() == null)
+      if (paramar.gnV() == null)
       {
         AppMethodBeat.o(57296);
         return null;
       }
-      paramar = d.l.b.a.b.m.ba.aA((ab)paramar.gjs());
+      paramar = d.l.b.a.b.m.ba.aA((ab)paramar.gnU());
       AppMethodBeat.o(57296);
       return paramar;
     }
@@ -171,7 +171,7 @@ public final class ah
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.b.c.ah
  * JD-Core Version:    0.7.0.1
  */

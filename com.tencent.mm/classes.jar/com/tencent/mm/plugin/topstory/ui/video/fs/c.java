@@ -28,14 +28,14 @@ public final class c
         break label191;
       }
       i = ((g)localObject).lN();
-      if ((i != paramb.epE()) && (paramb.epB().BvU))
+      if ((i != paramb.etl()) && (paramb.eti().BNs))
       {
-        paramb.epB().stopPlay();
+        paramb.eti().stopPlay();
         if (localObject != null) {
-          paramb.epx().i(((g)localObject).Brz);
+          paramb.ete().i(((g)localObject).BIY);
         }
       }
-      paramb.epu();
+      paramb.etb();
       j = 0;
       label103:
       if (j >= localRecyclerView.getChildCount()) {
@@ -48,9 +48,9 @@ public final class c
         if (((g)localObject).lN() != i) {
           break label196;
         }
-        ((g)localObject).ept();
-        if (!paramb.epB().BvU) {
-          ((g)localObject).BwT.epS();
+        ((g)localObject).eta();
+        if (!paramb.eti().BNs) {
+          ((g)localObject).BOr.etz();
         }
       }
     }
@@ -64,7 +64,7 @@ public final class c
       i = -1;
       break;
       label196:
-      ((g)localObject).BwT.epT();
+      ((g)localObject).BOr.etA();
     }
     label207:
     AppMethodBeat.o(126245);
@@ -75,31 +75,31 @@ public final class c
     AppMethodBeat.i(126246);
     h localh = c(paramb);
     if ((localh != null) && ((localh instanceof g))) {
-      if (!paramb.epB().BvU)
+      if (!paramb.eti().BNs)
       {
-        if (!paramb.epw().isConnected()) {
+        if (!paramb.etd().isConnected()) {
           break label89;
         }
-        paramb.a(localh.Brz);
-        localh.sJ(true);
+        paramb.a(localh.BIY);
+        localh.sQ(true);
       }
     }
     for (;;)
     {
-      localh.ept();
-      paramb.SY(localh.epv());
-      paramb.epx().eqy();
+      localh.eta();
+      paramb.TF(localh.etc());
+      paramb.ete().euf();
       AppMethodBeat.o(126246);
       return;
       label89:
-      localh.eqh().epW();
-      paramb.epB().stopPlay();
+      localh.etO().etD();
+      paramb.eti().stopPlay();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.ui.video.fs.c
  * JD-Core Version:    0.7.0.1
  */

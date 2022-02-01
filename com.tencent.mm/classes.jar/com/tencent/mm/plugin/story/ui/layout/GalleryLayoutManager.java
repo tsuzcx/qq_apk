@@ -7,30 +7,30 @@ import android.support.v7.widget.RecyclerView.o;
 import android.support.v7.widget.RecyclerView.t;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import d.g.a.m;
 import d.g.b.p;
 import d.l;
 import d.z;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/story/ui/layout/GalleryLayoutManager;", "Landroid/support/v7/widget/LinearLayoutManager;", "context", "Landroid/content/Context;", "orientation", "", "(Landroid/content/Context;I)V", "(Landroid/content/Context;)V", "reverseLayout", "", "(Landroid/content/Context;IZ)V", "forceUpdateOnNextLayout", "isScrollEnabled", "()Z", "setScrollEnabled", "(Z)V", "onItemSelected", "Lkotlin/Function2;", "Lkotlin/ParameterName;", "name", "position", "Landroid/view/View;", "child", "", "getOnItemSelected", "()Lkotlin/jvm/functions/Function2;", "setOnItemSelected", "(Lkotlin/jvm/functions/Function2;)V", "scrollCallback", "", "offset", "getScrollCallback", "setScrollCallback", "scrollState", "<set-?>", "selectedPosition", "getSelectedPosition", "()I", "canScrollHorizontally", "canScrollVertically", "findSelectedChildIndex", "onItemsAdded", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "positionStart", "itemCount", "onItemsChanged", "onItemsRemoved", "onItemsUpdated", "onLayoutCompleted", "state", "Landroid/support/v7/widget/RecyclerView$State;", "onScrollStateChanged", "scrollHorizontallyBy", "dx", "recycler", "Landroid/support/v7/widget/RecyclerView$Recycler;", "scrollToPosition", "scrollVerticallyBy", "dy", "updateScroll", "updateSelectedChild", "force", "Companion", "plugin-story_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/story/ui/layout/GalleryLayoutManager;", "Landroid/support/v7/widget/LinearLayoutManager;", "context", "Landroid/content/Context;", "orientation", "", "(Landroid/content/Context;I)V", "(Landroid/content/Context;)V", "reverseLayout", "", "(Landroid/content/Context;IZ)V", "forceUpdateOnNextLayout", "isScrollEnabled", "()Z", "setScrollEnabled", "(Z)V", "onItemSelected", "Lkotlin/Function2;", "Lkotlin/ParameterName;", "name", "position", "Landroid/view/View;", "child", "", "getOnItemSelected", "()Lkotlin/jvm/functions/Function2;", "setOnItemSelected", "(Lkotlin/jvm/functions/Function2;)V", "scrollCallback", "", "offset", "getScrollCallback", "setScrollCallback", "scrollState", "<set-?>", "selectedPosition", "getSelectedPosition", "()I", "canScrollHorizontally", "canScrollVertically", "findSelectedChildIndex", "onItemsAdded", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "positionStart", "itemCount", "onItemsChanged", "onItemsRemoved", "onItemsUpdated", "onLayoutCompleted", "state", "Landroid/support/v7/widget/RecyclerView$State;", "onScrollStateChanged", "scrollHorizontallyBy", "dx", "recycler", "Landroid/support/v7/widget/RecyclerView$Recycler;", "scrollToPosition", "scrollVerticallyBy", "dy", "updateScroll", "updateSelectedChild", "force", "Companion", "plugin-story_release"})
 public final class GalleryLayoutManager
   extends LinearLayoutManager
 {
-  public static final a AXD;
+  public static final GalleryLayoutManager.a Bpb;
   private static final String TAG = "MicroMsg.GalleryLayoutManager";
-  private boolean AXA;
-  public m<? super Integer, ? super View, z> AXB;
-  public m<? super Integer, ? super Float, z> AXC;
-  public boolean gou;
+  private boolean BoY;
+  public m<? super Integer, ? super View, z> BoZ;
+  public m<? super Integer, ? super Float, z> Bpa;
+  public boolean gqP;
   public int uT;
   private int vi;
   
   static
   {
     AppMethodBeat.i(119935);
-    AXD = new a((byte)0);
+    Bpb = new GalleryLayoutManager.a((byte)0);
     TAG = "MicroMsg.GalleryLayoutManager";
     AppMethodBeat.o(119935);
   }
@@ -47,7 +47,7 @@ public final class GalleryLayoutManager
     super(paramInt);
     AppMethodBeat.i(119932);
     this.uT = -1;
-    this.gou = true;
+    this.gqP = true;
     AppMethodBeat.o(119932);
   }
   
@@ -58,7 +58,7 @@ public final class GalleryLayoutManager
     AppMethodBeat.o(119933);
   }
   
-  private final int elO()
+  private final int epx()
   {
     int j = 0;
     int i = 0;
@@ -84,13 +84,13 @@ public final class GalleryLayoutManager
           }
           localView = getChildAt(j);
           if (localView == null) {
-            p.gfZ();
+            p.gkB();
           }
           p.g(localView, "getChildAt(i)!!");
           n = localView.getLeft();
           localView = getChildAt(j);
           if (localView == null) {
-            p.gfZ();
+            p.gkB();
           }
           p.g(localView, "getChildAt(i)!!");
           i = j;
@@ -110,13 +110,13 @@ public final class GalleryLayoutManager
         }
         localView = getChildAt(j);
         if (localView == null) {
-          p.gfZ();
+          p.gkB();
         }
         p.g(localView, "getChildAt(i)!!");
         n = localView.getTop();
         localView = getChildAt(j);
         if (localView == null) {
-          p.gfZ();
+          p.gkB();
         }
         p.g(localView, "getChildAt(i)!!");
         i = j;
@@ -151,7 +151,7 @@ public final class GalleryLayoutManager
         paramt = null;
       }
       paramo = (RecyclerView)paramt;
-      ad.i(TAG, "horizontal Drag to end, " + paramInt + ' ' + i + ", " + paramo);
+      ae.i(TAG, "horizontal Drag to end, " + paramInt + ' ' + i + ", " + paramo);
       if (paramo == null) {
         break;
       }
@@ -163,10 +163,10 @@ public final class GalleryLayoutManager
   public final void a(RecyclerView.t paramt)
   {
     AppMethodBeat.i(119921);
-    ad.i(TAG, "LogStory: onLayoutCompleted");
+    ae.i(TAG, "LogStory: onLayoutCompleted");
     super.a(paramt);
-    sw(this.AXA);
-    this.AXA = false;
+    sD(this.BoY);
+    this.BoY = false;
     AppMethodBeat.o(119921);
   }
   
@@ -174,8 +174,8 @@ public final class GalleryLayoutManager
   {
     AppMethodBeat.i(119927);
     p.h(paramRecyclerView, "recyclerView");
-    ad.i(TAG, "LogStory: onItemsChanged");
-    this.AXA = true;
+    ae.i(TAG, "LogStory: onItemsChanged");
+    this.BoY = true;
     AppMethodBeat.o(119927);
   }
   
@@ -185,7 +185,7 @@ public final class GalleryLayoutManager
     p.h(paramo, "recycler");
     p.h(paramt, "state");
     int i = super.b(paramInt, paramo, paramt);
-    ad.i(TAG, "LogStory: vertical " + paramInt + ' ' + i);
+    ae.i(TAG, "LogStory: vertical " + paramInt + ' ' + i);
     float f;
     if (paramInt + 1 > i) {
       if (getChildCount() != 0)
@@ -195,7 +195,7 @@ public final class GalleryLayoutManager
         }
         paramo = getChildAt(0);
         if (paramo == null) {
-          p.gfZ();
+          p.gkB();
         }
         paramInt = bB(paramo);
         f = 0.0F;
@@ -203,7 +203,7 @@ public final class GalleryLayoutManager
     }
     for (;;)
     {
-      paramo = this.AXC;
+      paramo = this.Bpa;
       if (paramo != null) {
         paramo.p(Integer.valueOf(paramInt), Float.valueOf(f));
       }
@@ -221,7 +221,7 @@ public final class GalleryLayoutManager
           paramt = null;
         }
         paramo = (RecyclerView)paramt;
-        ad.i(TAG, "vertical Drag to end, " + paramInt + ' ' + i + ", " + paramo);
+        ae.i(TAG, "vertical Drag to end, " + paramInt + ' ' + i + ", " + paramo);
         if (paramo == null) {
           break;
         }
@@ -231,7 +231,7 @@ public final class GalleryLayoutManager
       label238:
       paramo = getChildAt(0);
       if (paramo == null) {
-        p.gfZ();
+        p.gkB();
       }
       p.g(paramo, "getChildAt(0)!!");
       paramInt = bB(paramo);
@@ -258,7 +258,7 @@ public final class GalleryLayoutManager
     p.h(paramRecyclerView, "recyclerView");
     super.c(paramRecyclerView, paramInt1, paramInt2);
     if ((this.uT >= paramInt1) && (this.uT < paramInt1 + paramInt2)) {
-      this.AXA = true;
+      this.BoY = true;
     }
     AppMethodBeat.o(119928);
   }
@@ -266,9 +266,9 @@ public final class GalleryLayoutManager
   public final void ca(int paramInt)
   {
     AppMethodBeat.i(119931);
-    ad.i(TAG, "LogStory: scrollToPosition " + paramInt + ' ' + bt.flS());
+    ae.i(TAG, "LogStory: scrollToPosition " + paramInt + ' ' + bu.fpN());
     super.ca(paramInt);
-    m localm = this.AXC;
+    m localm = this.Bpa;
     if (localm != null)
     {
       localm.p(Integer.valueOf(paramInt), Float.valueOf(0.0F));
@@ -281,11 +281,11 @@ public final class GalleryLayoutManager
   public final void cp(int paramInt)
   {
     AppMethodBeat.i(119922);
-    ad.i(TAG, "LogStory: onScrollStateChanged ".concat(String.valueOf(paramInt)));
+    ae.i(TAG, "LogStory: onScrollStateChanged ".concat(String.valueOf(paramInt)));
     super.cp(paramInt);
     this.vi = paramInt;
     if (this.vi == 0) {
-      sw(false);
+      sD(false);
     }
     AppMethodBeat.o(119922);
   }
@@ -294,10 +294,10 @@ public final class GalleryLayoutManager
   {
     AppMethodBeat.i(119929);
     p.h(paramRecyclerView, "recyclerView");
-    ad.i(TAG, "LogStory: onItemsRemoved " + paramInt1 + ", " + paramInt2);
+    ae.i(TAG, "LogStory: onItemsRemoved " + paramInt1 + ", " + paramInt2);
     super.d(paramRecyclerView, paramInt1, paramInt2);
     if ((this.uT >= paramInt1) && (this.uT < paramInt1 + paramInt2)) {
-      this.AXA = true;
+      this.BoY = true;
     }
     AppMethodBeat.o(119929);
   }
@@ -306,10 +306,10 @@ public final class GalleryLayoutManager
   {
     AppMethodBeat.i(119930);
     p.h(paramRecyclerView, "recyclerView");
-    ad.i(TAG, "LogStory: onItemsUpdated " + paramInt1 + ", " + paramInt2);
+    ae.i(TAG, "LogStory: onItemsUpdated " + paramInt1 + ", " + paramInt2);
     super.g(paramRecyclerView, paramInt1, paramInt2);
     if ((this.uT >= paramInt1) && (this.uT < paramInt1 + paramInt2)) {
-      this.AXA = true;
+      this.BoY = true;
     }
     AppMethodBeat.o(119930);
   }
@@ -317,7 +317,7 @@ public final class GalleryLayoutManager
   public final boolean kc()
   {
     AppMethodBeat.i(119919);
-    if ((this.gou) && (super.kc()))
+    if ((this.gqP) && (super.kc()))
     {
       AppMethodBeat.o(119919);
       return true;
@@ -329,7 +329,7 @@ public final class GalleryLayoutManager
   public final boolean kd()
   {
     AppMethodBeat.i(119920);
-    if ((this.gou) && (getItemCount() > 1) && (super.kd()))
+    if ((this.gqP) && (getItemCount() > 1) && (super.kd()))
     {
       AppMethodBeat.o(119920);
       return true;
@@ -338,22 +338,22 @@ public final class GalleryLayoutManager
     return false;
   }
   
-  public final void sw(boolean paramBoolean)
+  public final void sD(boolean paramBoolean)
   {
     AppMethodBeat.i(119925);
-    int i = elO();
+    int i = epx();
     if (i >= 0)
     {
       View localView = getChildAt(i);
       if (localView == null) {
-        p.gfZ();
+        p.gkB();
       }
       p.g(localView, "getChildAt(selectedChildIndex)!!");
       i = bB(localView);
       if ((i != this.uT) || (paramBoolean))
       {
         this.uT = i;
-        m localm = this.AXB;
+        m localm = this.BoZ;
         if (localm != null)
         {
           localm.p(Integer.valueOf(this.uT), localView);
@@ -364,13 +364,10 @@ public final class GalleryLayoutManager
     }
     AppMethodBeat.o(119925);
   }
-  
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/story/ui/layout/GalleryLayoutManager$Companion;", "", "()V", "TAG", "", "plugin-story_release"})
-  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.story.ui.layout.GalleryLayoutManager
  * JD-Core Version:    0.7.0.1
  */

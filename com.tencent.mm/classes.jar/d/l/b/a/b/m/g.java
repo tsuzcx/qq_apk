@@ -19,10 +19,10 @@ import java.util.Set;
 public abstract class g
   implements q
 {
-  int NBn;
-  private boolean NBo;
-  ArrayDeque<j> NBp;
-  Set<j> NBq;
+  int NYu;
+  private boolean NYv;
+  ArrayDeque<j> NYw;
+  Set<j> NYx;
   
   public static Boolean a(h paramh1, h paramh2)
   {
@@ -99,17 +99,17 @@ public abstract class g
   
   public final void clear()
   {
-    Object localObject = this.NBp;
+    Object localObject = this.NYw;
     if (localObject == null) {
-      p.gfZ();
+      p.gkB();
     }
     ((ArrayDeque)localObject).clear();
-    localObject = this.NBq;
+    localObject = this.NYx;
     if (localObject == null) {
-      p.gfZ();
+      p.gkB();
     }
     ((Set)localObject).clear();
-    this.NBo = false;
+    this.NYv = false;
   }
   
   public n d(h paramh)
@@ -136,9 +136,9 @@ public abstract class g
     return q.a.c(this, paramh);
   }
   
-  public abstract boolean gtQ();
+  public abstract boolean gys();
   
-  public abstract boolean gtR();
+  public abstract boolean gyt();
   
   public boolean h(h paramh)
   {
@@ -154,18 +154,18 @@ public abstract class g
   
   public final void initialize()
   {
-    if (!this.NBo) {}
-    for (int i = 1; (ac.MKp) && (i == 0); i = 0) {
+    if (!this.NYv) {}
+    for (int i = 1; (ac.Nhs) && (i == 0); i = 0) {
       throw ((Throwable)new AssertionError("Assertion failed"));
     }
-    this.NBo = true;
-    if (this.NBp == null) {
-      this.NBp = new ArrayDeque(4);
+    this.NYv = true;
+    if (this.NYw == null) {
+      this.NYw = new ArrayDeque(4);
     }
-    if (this.NBq == null)
+    if (this.NYx == null)
     {
-      i.b localb = i.NGf;
-      this.NBq = ((Set)i.b.guu());
+      i.b localb = i.Odl;
+      this.NYx = ((Set)i.b.gyW());
     }
   }
   
@@ -181,12 +181,12 @@ public abstract class g
     {
       AppMethodBeat.i(60590);
       a locala1 = new a("CHECK_ONLY_LOWER", 0);
-      NBr = locala1;
+      NYy = locala1;
       a locala2 = new a("CHECK_SUBTYPE_AND_LOWER", 1);
-      NBs = locala2;
+      NYz = locala2;
       a locala3 = new a("SKIP_LOWER", 2);
-      NBt = locala3;
-      NBu = new a[] { locala1, locala2, locala3 };
+      NYA = locala3;
+      NYB = new a[] { locala1, locala2, locala3 };
       AppMethodBeat.o(60590);
     }
     
@@ -209,12 +209,12 @@ public abstract class g
     public static final class b
       extends g.b
     {
-      public static final b NBv;
+      public static final b NYC;
       
       static
       {
         AppMethodBeat.i(60597);
-        NBv = new b();
+        NYC = new b();
         AppMethodBeat.o(60597);
       }
       
@@ -237,12 +237,12 @@ public abstract class g
     public static final class c
       extends g.b
     {
-      public static final c NBw;
+      public static final c NYD;
       
       static
       {
         AppMethodBeat.i(60599);
-        NBw = new c();
+        NYD = new c();
         AppMethodBeat.o(60599);
       }
       
@@ -255,12 +255,12 @@ public abstract class g
     public static final class d
       extends g.b
     {
-      public static final d NBx;
+      public static final d NYE;
       
       static
       {
         AppMethodBeat.i(60601);
-        NBx = new d();
+        NYE = new d();
         AppMethodBeat.o(60601);
       }
       
@@ -283,7 +283,7 @@ public abstract class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.m.g
  * JD-Core Version:    0.7.0.1
  */

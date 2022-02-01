@@ -1,6 +1,6 @@
 package com.tencent.mm.plugin.luckymoney.b;
 
-import com.tencent.mm.cn.c;
+import com.tencent.mm.cm.c;
 import com.tencent.mm.plugin.luckymoney.model.q;
 
 final class a$1

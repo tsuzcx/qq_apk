@@ -13,24 +13,25 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.rt;
+import com.tencent.mm.g.a.ru;
 import com.tencent.mm.g.c.ei;
 import com.tencent.mm.kernel.e;
-import com.tencent.mm.model.bj;
-import com.tencent.mm.model.bj.a;
-import com.tencent.mm.model.p;
+import com.tencent.mm.model.bl;
+import com.tencent.mm.model.bl.a;
+import com.tencent.mm.model.q;
 import com.tencent.mm.plugin.messenger.foundation.a.a.i;
-import com.tencent.mm.plugin.messenger.foundation.a.t;
-import com.tencent.mm.plugin.setting.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.bq;
-import com.tencent.mm.storage.bu;
+import com.tencent.mm.plugin.messenger.foundation.a.u;
+import com.tencent.mm.plugin.setting.c;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.storage.aj;
+import com.tencent.mm.storage.br;
+import com.tencent.mm.storage.bv;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.base.preference.CheckBoxPreference;
 import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.base.preference.f;
+import com.tencent.mm.ui.widget.a.f.a;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
@@ -43,7 +44,7 @@ public class SettingsChattingUI
 {
   private boolean isDeleteCancel = false;
   private f screen;
-  private ProgressDialog yFx = null;
+  private ProgressDialog yVG = null;
   
   public int getResourceId()
   {
@@ -55,8 +56,8 @@ public class SettingsChattingUI
     AppMethodBeat.i(74147);
     setMMTitle(2131763195);
     this.screen = getPreferenceScreen();
-    if (com.tencent.mm.kernel.g.ajC().ajl().getInt(89, 0) != 2) {
-      this.screen.aVE("settings_recovery");
+    if (com.tencent.mm.kernel.g.ajR().ajA().getInt(89, 0) != 2) {
+      this.screen.aXf("settings_recovery");
     }
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
@@ -76,7 +77,7 @@ public class SettingsChattingUI
   {
     AppMethodBeat.i(74146);
     super.onCreate(paramBundle);
-    if (!com.tencent.mm.kernel.g.ajA().aiK())
+    if (!com.tencent.mm.kernel.g.ajP().aiZ())
     {
       finish();
       AppMethodBeat.o(74146);
@@ -138,12 +139,12 @@ public class SettingsChattingUI
         break;
       }
     }
-    boolean bool3 = ((Boolean)com.tencent.mm.kernel.g.ajC().ajl().get(26, Boolean.FALSE)).booleanValue();
+    boolean bool3 = ((Boolean)com.tencent.mm.kernel.g.ajR().ajA().get(26, Boolean.FALSE)).booleanValue();
     if (!bool3) {}
     for (boolean bool1 = true;; bool1 = false)
     {
-      ad.d("MicroMsg.SettingsChattingUI", "set voice mode from %B to %B", new Object[] { Boolean.valueOf(bool3), Boolean.valueOf(bool1) });
-      paramf = com.tencent.mm.kernel.g.ajC().ajl();
+      ae.d("MicroMsg.SettingsChattingUI", "set voice mode from %B to %B", new Object[] { Boolean.valueOf(bool3), Boolean.valueOf(bool1) });
+      paramf = com.tencent.mm.kernel.g.ajR().ajA();
       bool1 = bool2;
       if (!bool3) {
         bool1 = true;
@@ -152,19 +153,29 @@ public class SettingsChattingUI
       AppMethodBeat.o(74149);
       return true;
     }
-    paramf = (CheckBoxPreference)this.screen.aVD("settings_enter_button_send");
+    paramf = (CheckBoxPreference)this.screen.aXe("settings_enter_button_send");
     if (paramf != null)
     {
       bool1 = paramf.isChecked();
-      ad.d("MicroMsg.SettingsChattingUI", "set enter button send : %s", new Object[] { Boolean.valueOf(bool1) });
-      com.tencent.mm.kernel.g.ajC().ajl().set(66832, Boolean.valueOf(bool1));
+      if (!bool1) {
+        break label415;
+      }
+      paramPreference = new f.a(getContext());
+      paramPreference.aZq(getResources().getString(2131767273));
+      paramPreference.c(new SettingsChattingUI.4(this, bool1, paramf)).show();
     }
-    AppMethodBeat.o(74149);
-    return true;
+    for (;;)
+    {
+      AppMethodBeat.o(74149);
+      return true;
+      label415:
+      ae.d("MicroMsg.SettingsChattingUI", "set enter button send : %s", new Object[] { Boolean.valueOf(bool1) });
+      com.tencent.mm.kernel.g.ajR().ajA().set(66832, Boolean.valueOf(bool1));
+    }
     paramf = new Intent().setClassName(getContext(), "com.tencent.mm.plugin.backup.backupui.BackupChooseBackupModeUI");
     paramf = new com.tencent.mm.hellhoundlib.b.a().bc(paramf);
-    com.tencent.mm.hellhoundlib.a.a.a(this, paramf.ahp(), "com/tencent/mm/plugin/setting/ui/setting/SettingsChattingUI", "goToBackup", "()Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    startActivity((Intent)paramf.mq(0));
+    com.tencent.mm.hellhoundlib.a.a.a(this, paramf.ahE(), "com/tencent/mm/plugin/setting/ui/setting/SettingsChattingUI", "goToBackup", "()Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    startActivity((Intent)paramf.mt(0));
     com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/setting/ui/setting/SettingsChattingUI", "goToBackup", "()Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     AppMethodBeat.o(74149);
     return true;
@@ -172,14 +183,14 @@ public class SettingsChattingUI
     paramPreference.setClass(this, SettingsChattingBackgroundUI.class);
     paramf = getContext();
     paramPreference = new com.tencent.mm.hellhoundlib.b.a().bc(paramPreference);
-    com.tencent.mm.hellhoundlib.a.a.a(paramf, paramPreference.ahp(), "com/tencent/mm/plugin/setting/ui/setting/SettingsChattingUI", "goTosetChattingBackground", "()Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    paramf.startActivity((Intent)paramPreference.mq(0));
+    com.tencent.mm.hellhoundlib.a.a.a(paramf, paramPreference.ahE(), "com/tencent/mm/plugin/setting/ui/setting/SettingsChattingUI", "goTosetChattingBackground", "()Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramf.startActivity((Intent)paramPreference.mt(0));
     com.tencent.mm.hellhoundlib.a.a.a(paramf, "com/tencent/mm/plugin/setting/ui/setting/SettingsChattingUI", "goTosetChattingBackground", "()Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     AppMethodBeat.o(74149);
     return true;
     paramf = new Intent();
     paramf.putExtra("10931", 2);
-    com.tencent.mm.bs.d.b(getContext(), "emoji", ".ui.EmojiMineUI", paramf);
+    com.tencent.mm.br.d.b(getContext(), "emoji", ".ui.EmojiMineUI", paramf);
     AppMethodBeat.o(74149);
     return true;
     h.e(getContext(), getResources().getString(2131763384), "", getString(2131755694), getString(2131755691), new DialogInterface.OnClickListener()
@@ -187,8 +198,8 @@ public class SettingsChattingUI
       public final void onClick(final DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
         AppMethodBeat.i(74143);
-        com.tencent.mm.plugin.report.service.g.yhR.f(14553, new Object[] { Integer.valueOf(5), Integer.valueOf(2), "" });
-        com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(324L, 0L, 1L, false);
+        com.tencent.mm.plugin.report.service.g.yxI.f(14553, new Object[] { Integer.valueOf(5), Integer.valueOf(2), "" });
+        com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(324L, 0L, 1L, false);
         SettingsChattingUI.a(SettingsChattingUI.this, false);
         paramAnonymousDialogInterface = SettingsChattingUI.this;
         Object localObject = SettingsChattingUI.this;
@@ -202,17 +213,17 @@ public class SettingsChattingUI
             AppMethodBeat.o(74140);
           }
         }));
-        paramAnonymousDialogInterface = ((com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).dlK().dmc();
+        paramAnonymousDialogInterface = ((com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).doJ().dpb();
         if (paramAnonymousDialogInterface != null)
         {
-          ad.i("MicroMsg.WalletConvDelCheckLogic", "checkGetUnProcessorWalletConversation, msgInfoList size: %s", new Object[] { Integer.valueOf(paramAnonymousDialogInterface.size()) });
+          ae.i("MicroMsg.WalletConvDelCheckLogic", "checkGetUnProcessorWalletConversation, msgInfoList size: %s", new Object[] { Integer.valueOf(paramAnonymousDialogInterface.size()) });
           localObject = new HashSet();
           paramAnonymousDialogInterface = paramAnonymousDialogInterface.iterator();
           while (paramAnonymousDialogInterface.hasNext())
           {
-            bu localbu = (bu)paramAnonymousDialogInterface.next();
-            if ((!((Set)localObject).contains(localbu.field_talker)) && (((com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azv().aTz(localbu.field_talker) != null) && (com.tencent.mm.pluginsdk.wallet.d.aI(localbu))) {
-              ((Set)localObject).add(localbu.field_talker);
+            bv localbv = (bv)paramAnonymousDialogInterface.next();
+            if ((!((Set)localObject).contains(localbv.field_talker)) && (((com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azL().aVa(localbv.field_talker) != null) && (com.tencent.mm.pluginsdk.wallet.d.aH(localbv))) {
+              ((Set)localObject).add(localbv.field_talker);
             }
           }
           paramAnonymousDialogInterface = new ArrayList();
@@ -226,20 +237,20 @@ public class SettingsChattingUI
             public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
             {
               AppMethodBeat.i(74141);
-              com.tencent.mm.plugin.report.service.g.yhR.f(14553, new Object[] { Integer.valueOf(5), Integer.valueOf(4), "" });
+              com.tencent.mm.plugin.report.service.g.yxI.f(14553, new Object[] { Integer.valueOf(5), Integer.valueOf(4), "" });
               SettingsChattingUI.a(SettingsChattingUI.this, true);
               if (paramAnonymousDialogInterface.size() <= 1)
               {
                 paramAnonymous2DialogInterface = new Intent();
                 paramAnonymous2DialogInterface.putExtra("Chat_User", (String)paramAnonymousDialogInterface.get(0));
                 paramAnonymous2DialogInterface.addFlags(67108864);
-                com.tencent.mm.bs.d.f(SettingsChattingUI.this, ".ui.chatting.ChattingUI", paramAnonymous2DialogInterface);
+                com.tencent.mm.br.d.f(SettingsChattingUI.this, ".ui.chatting.ChattingUI", paramAnonymous2DialogInterface);
                 AppMethodBeat.o(74141);
                 return;
               }
               paramAnonymous2DialogInterface = new Intent();
               paramAnonymous2DialogInterface.putStringArrayListExtra("key_conversation_list", paramAnonymousDialogInterface);
-              com.tencent.mm.bs.d.f(SettingsChattingUI.this, ".ui.conversation.SettingCheckUnProcessWalletConvUI", paramAnonymous2DialogInterface);
+              com.tencent.mm.br.d.f(SettingsChattingUI.this, ".ui.conversation.SettingCheckUnProcessWalletConvUI", paramAnonymous2DialogInterface);
               AppMethodBeat.o(74141);
             }
           }, new DialogInterface.OnClickListener()
@@ -247,7 +258,7 @@ public class SettingsChattingUI
             public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
             {
               AppMethodBeat.i(74142);
-              com.tencent.mm.plugin.report.service.g.yhR.f(14553, new Object[] { Integer.valueOf(5), Integer.valueOf(3), "" });
+              com.tencent.mm.plugin.report.service.g.yxI.f(14553, new Object[] { Integer.valueOf(5), Integer.valueOf(3), "" });
               SettingsChattingUI.a(SettingsChattingUI.this).show();
               SettingsChattingUI.a(SettingsChattingUI.this, false);
               SettingsChattingUI.b(SettingsChattingUI.this);
@@ -268,8 +279,8 @@ public class SettingsChattingUI
     paramPreference.putExtra("scene", 1);
     paramf = getContext();
     paramPreference = new com.tencent.mm.hellhoundlib.b.a().bc(paramPreference);
-    com.tencent.mm.hellhoundlib.a.a.a(paramf, paramPreference.ahp(), "com/tencent/mm/plugin/setting/ui/setting/SettingsChattingUI", "goToRecovery", "()Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    paramf.startActivity((Intent)paramPreference.mq(0));
+    com.tencent.mm.hellhoundlib.a.a.a(paramf, paramPreference.ahE(), "com/tencent/mm/plugin/setting/ui/setting/SettingsChattingUI", "goToRecovery", "()Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramf.startActivity((Intent)paramPreference.mt(0));
     com.tencent.mm.hellhoundlib.a.a.a(paramf, "com/tencent/mm/plugin/setting/ui/setting/SettingsChattingUI", "goToRecovery", "()Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     AppMethodBeat.o(74149);
     return true;
@@ -279,17 +290,17 @@ public class SettingsChattingUI
   {
     AppMethodBeat.i(74148);
     super.onResume();
-    CheckBoxPreference localCheckBoxPreference = (CheckBoxPreference)this.screen.aVD("settings_voice_play_mode");
+    CheckBoxPreference localCheckBoxPreference = (CheckBoxPreference)this.screen.aXe("settings_voice_play_mode");
     if (localCheckBoxPreference != null)
     {
-      localCheckBoxPreference.oB = ((Boolean)com.tencent.mm.kernel.g.ajC().ajl().get(26, Boolean.FALSE)).booleanValue();
-      localCheckBoxPreference.JtB = false;
+      localCheckBoxPreference.setChecked(((Boolean)com.tencent.mm.kernel.g.ajR().ajA().get(26, Boolean.FALSE)).booleanValue());
+      localCheckBoxPreference.JOq = false;
     }
-    localCheckBoxPreference = (CheckBoxPreference)this.screen.aVD("settings_enter_button_send");
+    localCheckBoxPreference = (CheckBoxPreference)this.screen.aXe("settings_enter_button_send");
     if (localCheckBoxPreference != null)
     {
-      localCheckBoxPreference.oB = ((Boolean)com.tencent.mm.kernel.g.ajC().ajl().get(66832, Boolean.FALSE)).booleanValue();
-      localCheckBoxPreference.JtB = false;
+      localCheckBoxPreference.setChecked(((Boolean)com.tencent.mm.kernel.g.ajR().ajA().get(66832, Boolean.FALSE)).booleanValue());
+      localCheckBoxPreference.JOq = false;
     }
     AppMethodBeat.o(74148);
   }

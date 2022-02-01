@@ -10,11 +10,12 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.b.a.js;
+import com.tencent.mm.contact.c;
+import com.tencent.mm.g.b.a.ju;
 import com.tencent.mm.g.c.aw;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.u;
-import com.tencent.mm.model.w;
+import com.tencent.mm.model.v;
+import com.tencent.mm.model.x;
 import com.tencent.mm.plugin.account.friend.a.au;
 import com.tencent.mm.plugin.account.friend.a.au.a;
 import com.tencent.mm.plugin.account.friend.a.r;
@@ -22,11 +23,11 @@ import com.tencent.mm.plugin.expt.b.b.a;
 import com.tencent.mm.plugin.messenger.foundation.a.l;
 import com.tencent.mm.pluginsdk.ui.applet.a.a;
 import com.tencent.mm.pluginsdk.ui.span.k;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.am;
-import com.tencent.mm.storage.bh;
-import com.tencent.mm.storage.bp;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.an;
+import com.tencent.mm.storage.bi;
+import com.tencent.mm.storage.bq;
 import com.tencent.mm.ui.base.VerticalScrollBar;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.base.sortview.BaseSortView;
@@ -37,7 +38,7 @@ import java.util.LinkedList;
 public class RecoverFriendSortView
   extends BaseSortView
 {
-  public String jff;
+  public String jhY;
   
   public RecoverFriendSortView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -63,34 +64,34 @@ public class RecoverFriendSortView
         {
           paramAnonymousView = View.inflate(RecoverFriendSortView.this.getContext(), 2131495227, null);
           locala = new RecoverFriendSortView.a(RecoverFriendSortView.this);
-          locala.fRd = ((ImageView)paramAnonymousView.findViewById(2131300290));
-          locala.jhg = ((TextView)paramAnonymousView.findViewById(2131300300));
-          locala.jcc = ((TextView)paramAnonymousView.findViewById(2131297925));
-          locala.jhh = ((TextView)paramAnonymousView.findViewById(2131300299));
-          locala.jdG = ((TextView)paramAnonymousView.findViewById(2131296465));
-          locala.jhi = ((Button)paramAnonymousView.findViewById(2131296456));
+          locala.fTj = ((ImageView)paramAnonymousView.findViewById(2131300290));
+          locala.jjZ = ((TextView)paramAnonymousView.findViewById(2131300300));
+          locala.jeV = ((TextView)paramAnonymousView.findViewById(2131297925));
+          locala.jka = ((TextView)paramAnonymousView.findViewById(2131300299));
+          locala.jgz = ((TextView)paramAnonymousView.findViewById(2131296465));
+          locala.jkb = ((Button)paramAnonymousView.findViewById(2131296456));
           locala1 = (au.a)paramAnonymousd.data;
-          locala.jhj = locala1;
-          com.tencent.mm.pluginsdk.ui.a.b.c(locala.fRd, locala1.jfc.field_encryptUsername);
-          locala.jhg.setText(k.c(paramAnonymousView.getContext(), locala1.jfc.field_nickname));
-          if ((locala1.jfd == null) || (bt.isNullOrNil(locala1.jfd.field_msgContent))) {
+          locala.jkc = locala1;
+          com.tencent.mm.pluginsdk.ui.a.b.c(locala.fTj, locala1.jhV.field_encryptUsername);
+          locala.jjZ.setText(k.c(paramAnonymousView.getContext(), locala1.jhV.field_nickname));
+          if ((locala1.jhW == null) || (bu.isNullOrNil(locala1.jhW.field_msgContent))) {
             break label375;
           }
-          locala.jhh.setVisibility(0);
-          locala.jhg.setText(k.c(paramAnonymousView.getContext(), locala1.jfd.field_msgContent));
+          locala.jka.setVisibility(0);
+          locala.jjZ.setText(k.c(paramAnonymousView.getContext(), locala1.jhW.field_msgContent));
           label229:
-          if ((!RecoverFriendSortView.this.Jub) || (!paramAnonymousBoolean1)) {
+          if ((!RecoverFriendSortView.this.JOQ) || (!paramAnonymousBoolean1)) {
             break label388;
           }
-          locala.jcc.setText(paramAnonymousd.Juj);
-          locala.jcc.setVisibility(0);
+          locala.jeV.setText(paramAnonymousd.JOY);
+          locala.jeV.setVisibility(0);
           label265:
-          if (((bt.isNullOrNil(locala1.jfc.field_encryptUsername)) || (!w.zD(locala1.jfc.field_encryptUsername))) && ((bt.isNullOrNil(locala1.jfc.field_username)) || (!w.zD(locala1.jfc.field_username)))) {
+          if (((bu.isNullOrNil(locala1.jhV.field_encryptUsername)) || (!x.An(locala1.jhV.field_encryptUsername))) && ((bu.isNullOrNil(locala1.jhV.field_username)) || (!x.An(locala1.jhV.field_username)))) {
             break label401;
           }
-          locala.jdG.setVisibility(0);
-          locala.jdG.setText(2131755275);
-          locala.jhi.setVisibility(8);
+          locala.jgz.setVisibility(0);
+          locala.jgz.setText(2131755275);
+          locala.jkb.setVisibility(8);
         }
         for (;;)
         {
@@ -100,74 +101,74 @@ public class RecoverFriendSortView
           locala = (RecoverFriendSortView.a)paramAnonymousView.getTag();
           break;
           label375:
-          locala.jhh.setVisibility(8);
+          locala.jka.setVisibility(8);
           break label229;
           label388:
-          locala.jcc.setVisibility(8);
+          locala.jeV.setVisibility(8);
           break label265;
           label401:
-          if (locala1.jfc.field_addState == 1)
+          if (locala1.jhV.field_addState == 1)
           {
-            locala.jdG.setVisibility(0);
-            locala.jdG.setText(2131759667);
-            locala.jhi.setVisibility(8);
+            locala.jgz.setVisibility(0);
+            locala.jgz.setText(2131759667);
+            locala.jkb.setVisibility(8);
           }
           else
           {
-            locala.jdG.setVisibility(8);
-            locala.jhi.setVisibility(0);
-            locala.jhi.setOnClickListener(new View.OnClickListener()
+            locala.jgz.setVisibility(8);
+            locala.jkb.setVisibility(0);
+            locala.jkb.setOnClickListener(new View.OnClickListener()
             {
               public final void onClick(View paramAnonymous2View)
               {
                 AppMethodBeat.i(184459);
                 Object localObject = new com.tencent.mm.hellhoundlib.b.b();
                 ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramAnonymous2View);
-                com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/account/friend/widget/RecoverFriendSortView$1$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahq());
-                paramAnonymous2View = new js();
-                paramAnonymous2View.dUD = 4;
-                paramAnonymous2View.sl(u.aAp());
-                paramAnonymous2View.sk(RecoverFriendSortView.this.jff);
-                paramAnonymous2View.sm(locala.jhj.jfc.field_encryptUsername);
-                paramAnonymous2View.aLk();
+                com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/account/friend/widget/RecoverFriendSortView$1$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahF());
+                paramAnonymous2View = new ju();
+                paramAnonymous2View.dVT = 4;
+                paramAnonymous2View.sG(v.aAF());
+                paramAnonymous2View.sF(RecoverFriendSortView.this.jhY);
+                paramAnonymous2View.sH(locala.jkc.jhV.field_encryptUsername);
+                paramAnonymous2View.aLH();
                 paramAnonymous2View = new com.tencent.mm.pluginsdk.ui.applet.a(RecoverFriendSortView.this.getContext(), new a.a()
                 {
                   public final void a(boolean paramAnonymous3Boolean1, boolean paramAnonymous3Boolean2, String paramAnonymous3String1, String paramAnonymous3String2)
                   {
                     AppMethodBeat.i(184457);
-                    ad.i("MicroMsg.RecoverFriendSortView", "canAddContact %s,%s", new Object[] { paramAnonymous3String1, Boolean.valueOf(paramAnonymous3Boolean1) });
+                    ae.i("MicroMsg.RecoverFriendSortView", "canAddContact %s,%s", new Object[] { paramAnonymous3String1, Boolean.valueOf(paramAnonymous3Boolean1) });
                     if (paramAnonymous3Boolean1)
                     {
-                      paramAnonymous3String2 = ((l)g.ab(l.class)).azp().Bf(RecoverFriendSortView.1.1.this.jhd.jhj.jfc.field_encryptUsername);
-                      if ((int)paramAnonymous3String2.gfj != 0) {
+                      paramAnonymous3String2 = ((l)g.ab(l.class)).azF().BH(RecoverFriendSortView.1.1.this.jjW.jkc.jhV.field_encryptUsername);
+                      if ((int)paramAnonymous3String2.ght != 0) {
                         break label300;
                       }
-                      if (!bt.isNullOrNil(paramAnonymous3String1))
+                      if (!bu.isNullOrNil(paramAnonymous3String1))
                       {
                         paramAnonymous3String2.setUsername(paramAnonymous3String1);
-                        ((l)g.ab(l.class)).azp().ag(paramAnonymous3String2);
+                        ((l)g.ab(l.class)).azF().an(paramAnonymous3String2);
                       }
                     }
                     label300:
-                    for (paramAnonymous3String1 = ((l)g.ab(l.class)).azp().Bf(paramAnonymous3String2.field_username);; paramAnonymous3String1 = paramAnonymous3String2)
+                    for (paramAnonymous3String1 = ((l)g.ab(l.class)).azF().BH(paramAnonymous3String2.field_username);; paramAnonymous3String1 = paramAnonymous3String2)
                     {
-                      if ((int)paramAnonymous3String1.gfj <= 0)
+                      if ((int)paramAnonymous3String1.ght <= 0)
                       {
-                        ad.e("MicroMsg.RecoverFriendSortView", "addContact : insert contact failed");
+                        ae.e("MicroMsg.RecoverFriendSortView", "addContact : insert contact failed");
                         AppMethodBeat.o(184457);
                         return;
-                        paramAnonymous3String2.setUsername(RecoverFriendSortView.1.1.this.jhd.jhj.jfc.field_encryptUsername);
+                        paramAnonymous3String2.setUsername(RecoverFriendSortView.1.1.this.jjW.jkc.jhV.field_encryptUsername);
                         break;
                       }
-                      w.u(paramAnonymous3String1);
-                      h.cl(RecoverFriendSortView.this.getContext(), RecoverFriendSortView.this.getContext().getString(2131755275));
-                      au.aD(RecoverFriendSortView.1.1.this.jhd.jhj.jfc.field_encryptUsername, 0);
+                      x.B(paramAnonymous3String1);
+                      h.cm(RecoverFriendSortView.this.getContext(), RecoverFriendSortView.this.getContext().getString(2131755275));
+                      au.aE(RecoverFriendSortView.1.1.this.jjW.jkc.jhV.field_encryptUsername, 0);
                       RecoverFriendSortView.this.refresh();
                       AppMethodBeat.o(184457);
                       return;
                       if (paramAnonymous3Boolean2)
                       {
-                        au.aD(RecoverFriendSortView.1.1.this.jhd.jhj.jfc.field_encryptUsername, 1);
+                        au.aE(RecoverFriendSortView.1.1.this.jjW.jkc.jhV.field_encryptUsername, 1);
                         RecoverFriendSortView.this.refresh();
                       }
                       AppMethodBeat.o(184457);
@@ -175,35 +176,35 @@ public class RecoverFriendSortView
                     }
                   }
                 });
-                paramAnonymous2View.aME(locala.jhj.jfc.field_ticket);
+                paramAnonymous2View.aOa(locala.jkc.jhV.field_ticket);
                 localObject = new LinkedList();
                 ((LinkedList)localObject).add(Integer.valueOf(17));
-                paramAnonymous2View.EUN = new com.tencent.mm.pluginsdk.ui.applet.a.b()
+                paramAnonymous2View.Fni = new com.tencent.mm.pluginsdk.ui.applet.a.b()
                 {
-                  public final boolean az(String paramAnonymous3String, int paramAnonymous3Int)
+                  public final boolean aA(String paramAnonymous3String, int paramAnonymous3Int)
                   {
                     AppMethodBeat.i(184458);
                     Intent localIntent = new Intent();
-                    localIntent.putExtra("Contact_User", RecoverFriendSortView.1.1.this.jhd.jhj.jfc.field_encryptUsername);
-                    localIntent.putExtra("Contact_Nick", RecoverFriendSortView.1.1.this.jhd.jhj.jfc.field_nickname);
+                    localIntent.putExtra("Contact_User", RecoverFriendSortView.1.1.this.jjW.jkc.jhV.field_encryptUsername);
+                    localIntent.putExtra("Contact_Nick", RecoverFriendSortView.1.1.this.jjW.jkc.jhV.field_nickname);
                     localIntent.putExtra("Contact_Scene", 17);
                     localIntent.putExtra("sayhi_with_sns_perm_send_verify", true);
                     localIntent.putExtra("sayhi_with_sns_perm_add_remark", true);
                     localIntent.putExtra("sayhi_with_sns_perm_set_label", false);
-                    localIntent.putExtra(e.c.IUp, RecoverFriendSortView.1.1.this.jhd.jhj.jfc.field_ticket);
+                    localIntent.putExtra(e.c.JoX, RecoverFriendSortView.1.1.this.jjW.jkc.jhV.field_ticket);
                     localIntent.putExtra("sayhi_verify_add_errcode", paramAnonymous3Int);
-                    paramAnonymous3Int = ((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qHe, 0);
+                    paramAnonymous3Int = ((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qOK, 0);
                     String str = ".ui.SayHiWithSnsPermissionUI";
-                    if ((!am.aSQ(RecoverFriendSortView.1.1.this.jhd.jhj.jfc.field_encryptUsername)) && (paramAnonymous3Int == 1)) {
+                    if ((!an.aUq(RecoverFriendSortView.1.1.this.jjW.jkc.jhV.field_encryptUsername)) && (paramAnonymous3Int == 1)) {
                       paramAnonymous3String = ".ui.SayHiWithSnsPermissionUI2";
                     }
                     for (;;)
                     {
-                      com.tencent.mm.bs.d.b(RecoverFriendSortView.this.getContext(), "profile", paramAnonymous3String, localIntent);
+                      com.tencent.mm.br.d.b(RecoverFriendSortView.this.getContext(), "profile", paramAnonymous3String, localIntent);
                       AppMethodBeat.o(184458);
                       return true;
                       paramAnonymous3String = str;
-                      if (!am.aSQ(RecoverFriendSortView.1.1.this.jhd.jhj.jfc.field_encryptUsername))
+                      if (!an.aUq(RecoverFriendSortView.1.1.this.jjW.jkc.jhV.field_encryptUsername))
                       {
                         paramAnonymous3String = str;
                         if (paramAnonymous3Int == 2) {
@@ -213,7 +214,7 @@ public class RecoverFriendSortView
                     }
                   }
                 };
-                paramAnonymous2View.h(locala.jhj.jfc.field_encryptUsername, (LinkedList)localObject);
+                paramAnonymous2View.h(locala.jkc.jhV.field_encryptUsername, (LinkedList)localObject);
                 com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/account/friend/widget/RecoverFriendSortView$1$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
                 AppMethodBeat.o(184459);
               }
@@ -260,13 +261,13 @@ public class RecoverFriendSortView
   
   final class a
   {
-    ImageView fRd;
-    TextView jcc;
-    TextView jdG;
-    TextView jhg;
-    TextView jhh;
-    Button jhi;
-    au.a jhj;
+    ImageView fTj;
+    TextView jeV;
+    TextView jgz;
+    TextView jjZ;
+    TextView jka;
+    Button jkb;
+    au.a jkc;
     
     a() {}
   }

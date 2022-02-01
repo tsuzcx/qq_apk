@@ -6,41 +6,41 @@ import oicq.wlogin_sdk.tools.util;
 public final class g
   extends a
 {
-  public int NRm = 0;
-  public int NRn = 0;
-  public int NRo = 0;
-  public int NRp = 0;
+  public int Oos = 0;
+  public int Oot = 0;
+  public int Oou = 0;
+  public int Oov = 0;
   
   public g()
   {
-    this.NQs = 261;
+    this.Ony = 261;
   }
   
-  public final Boolean gxW()
+  public final Boolean gCy()
   {
     AppMethodBeat.i(88108);
-    if (this.NRc < 2)
+    if (this.Ooi < 2)
     {
       localBoolean = Boolean.FALSE;
       AppMethodBeat.o(88108);
       return localBoolean;
     }
-    this.NRn = util.ai(this.NQm, this.NRb);
-    if (this.NRc < this.NRn + 2 + 2)
+    this.Oot = util.am(this.Ons, this.Ooh);
+    if (this.Ooi < this.Oot + 2 + 2)
     {
       localBoolean = Boolean.FALSE;
       AppMethodBeat.o(88108);
       return localBoolean;
     }
-    this.NRm = util.ai(this.NQm, this.NRb + 2 + this.NRn);
-    if (this.NRc < this.NRn + 2 + 2 + this.NRm)
+    this.Oos = util.am(this.Ons, this.Ooh + 2 + this.Oot);
+    if (this.Ooi < this.Oot + 2 + 2 + this.Oos)
     {
       localBoolean = Boolean.FALSE;
       AppMethodBeat.o(88108);
       return localBoolean;
     }
-    this.NRp = (this.NRb + 2);
-    this.NRo = (this.NRn + 2 + 2 + this.NRb);
+    this.Oov = (this.Ooh + 2);
+    this.Oou = (this.Oot + 2 + 2 + this.Ooh);
     Boolean localBoolean = Boolean.TRUE;
     AppMethodBeat.o(88108);
     return localBoolean;

@@ -9,13 +9,13 @@ import com.tencent.kinda.gen.ITransmitKvData;
 import com.tencent.kinda.gen.KProfessionEditView;
 import com.tencent.kinda.gen.KProfessionEditViewOnSelectProfessionCallback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.pf;
-import com.tencent.mm.g.a.pf.a;
+import com.tencent.mm.g.a.pg;
+import com.tencent.mm.g.a.pg.a;
 import com.tencent.mm.plugin.wallet_core.id_verify.model.Profession;
-import com.tencent.mm.protocal.protobuf.cmi;
-import com.tencent.mm.protocal.protobuf.cmj;
+import com.tencent.mm.protocal.protobuf.cnc;
+import com.tencent.mm.protocal.protobuf.cnd;
 import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -30,7 +30,7 @@ public class KindaProfessionEditViewImpl
   private Context mContext;
   private Profession mCurSelectedProfession;
   private EditText mEditText;
-  private c<pf> professionSelectedEventIListener;
+  private c<pg> professionSelectedEventIListener;
   private final List<Profession> professions;
   
   public KindaProfessionEditViewImpl()
@@ -39,21 +39,21 @@ public class KindaProfessionEditViewImpl
     this.professions = new ArrayList();
     this.professionSelectedEventIListener = new c()
     {
-      public boolean callback(pf paramAnonymouspf)
+      public boolean callback(pg paramAnonymouspg)
       {
         AppMethodBeat.i(18922);
-        if ("flag_activity_close_WalletSelectProfessionUI".equals(paramAnonymouspf.dDk.dDl)) {
+        if ("flag_activity_close_WalletSelectProfessionUI".equals(paramAnonymouspg.dEp.dEq)) {
           KindaProfessionEditViewImpl.this.professionSelectedEventIListener.dead();
         }
         for (;;)
         {
           AppMethodBeat.o(18922);
           return false;
-          ad.i("base_MMKView", "profession_name:" + paramAnonymouspf.dDk.dDl + " profession_type:" + paramAnonymouspf.dDk.dDm);
-          KindaProfessionEditViewImpl.access$102(KindaProfessionEditViewImpl.this, new Profession(paramAnonymouspf.dDk.dDl, paramAnonymouspf.dDk.dDm));
-          KindaProfessionEditViewImpl.this.mEditText.setText(KindaProfessionEditViewImpl.this.mCurSelectedProfession.CSY);
+          ae.i("base_MMKView", "profession_name:" + paramAnonymouspg.dEp.dEq + " profession_type:" + paramAnonymouspg.dEp.dEr);
+          KindaProfessionEditViewImpl.access$102(KindaProfessionEditViewImpl.this, new Profession(paramAnonymouspg.dEp.dEq, paramAnonymouspg.dEp.dEr));
+          KindaProfessionEditViewImpl.this.mEditText.setText(KindaProfessionEditViewImpl.this.mCurSelectedProfession.DkE);
           if (KindaProfessionEditViewImpl.this.callback != null) {
-            KindaProfessionEditViewImpl.this.callback.onSelectProfession(KindaProfessionEditViewImpl.this.mCurSelectedProfession.CSY, KindaProfessionEditViewImpl.this.mCurSelectedProfession.CSZ);
+            KindaProfessionEditViewImpl.this.callback.onSelectProfession(KindaProfessionEditViewImpl.this.mCurSelectedProfession.DkE, KindaProfessionEditViewImpl.this.mCurSelectedProfession.DkF);
           }
         }
       }
@@ -88,7 +88,7 @@ public class KindaProfessionEditViewImpl
   public String getProfessionName()
   {
     if (this.mCurSelectedProfession != null) {
-      return this.mCurSelectedProfession.CSY;
+      return this.mCurSelectedProfession.DkE;
     }
     return null;
   }
@@ -96,7 +96,7 @@ public class KindaProfessionEditViewImpl
   public int getProfessionType()
   {
     if (this.mCurSelectedProfession != null) {
-      return this.mCurSelectedProfession.CSZ;
+      return this.mCurSelectedProfession.DkF;
     }
     return 0;
   }
@@ -104,17 +104,17 @@ public class KindaProfessionEditViewImpl
   public void setData(ITransmitKvData paramITransmitKvData)
   {
     AppMethodBeat.i(18926);
-    Object localObject = new cmj();
+    Object localObject = new cnd();
     paramITransmitKvData = paramITransmitKvData.getBinary("profession_list");
     try
     {
-      ((cmj)localObject).parseFrom(paramITransmitKvData);
+      ((cnd)localObject).parseFrom(paramITransmitKvData);
       this.professions.clear();
-      paramITransmitKvData = ((cmj)localObject).HfL.iterator();
+      paramITransmitKvData = ((cnd)localObject).Hzl.iterator();
       while (paramITransmitKvData.hasNext())
       {
-        localObject = (cmi)paramITransmitKvData.next();
-        localObject = new Profession(((cmi)localObject).dDl, ((cmi)localObject).dDm);
+        localObject = (cnc)paramITransmitKvData.next();
+        localObject = new Profession(((cnc)localObject).dEq, ((cnc)localObject).dEr);
         this.professions.add(localObject);
       }
     }
@@ -122,7 +122,7 @@ public class KindaProfessionEditViewImpl
     {
       for (;;)
       {
-        ad.e("base_MMKView", "profession list parse failed");
+        ae.e("base_MMKView", "profession list parse failed");
       }
       AppMethodBeat.o(18926);
     }
@@ -132,7 +132,7 @@ public class KindaProfessionEditViewImpl
   {
     AppMethodBeat.i(18927);
     this.mCurSelectedProfession = new Profession(paramString, paramInt);
-    this.mEditText.setText(this.mCurSelectedProfession.CSY);
+    this.mEditText.setText(this.mCurSelectedProfession.DkE);
     AppMethodBeat.o(18927);
   }
   
@@ -149,8 +149,8 @@ public class KindaProfessionEditViewImpl
         ((Intent)localObject).putExtra("key_profession_list", (Parcelable[])this.professions.toArray(new Profession[this.professions.size()]));
         Context localContext = this.mContext;
         localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
-        com.tencent.mm.hellhoundlib.a.a.a(localContext, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahp(), "com/tencent/kinda/framework/widget/base/KindaProfessionEditViewImpl", "setFocus", "(Z)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        localContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mq(0));
+        com.tencent.mm.hellhoundlib.a.a.a(localContext, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahE(), "com/tencent/kinda/framework/widget/base/KindaProfessionEditViewImpl", "setFocus", "(Z)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        localContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mt(0));
         com.tencent.mm.hellhoundlib.a.a.a(localContext, "com/tencent/kinda/framework/widget/base/KindaProfessionEditViewImpl", "setFocus", "(Z)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       }
     }
@@ -164,7 +164,7 @@ public class KindaProfessionEditViewImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.kinda.framework.widget.base.KindaProfessionEditViewImpl
  * JD-Core Version:    0.7.0.1
  */

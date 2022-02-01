@@ -11,202 +11,221 @@ import com.tencent.mm.compatible.deviceinfo.n;
 import com.tencent.mm.compatible.deviceinfo.q;
 import com.tencent.mm.compatible.util.j;
 import com.tencent.mm.plugin.cloudvoip.cloudvoice.c.c;
-import com.tencent.mm.protocal.protobuf.aas;
-import com.tencent.mm.protocal.protobuf.dvt;
-import com.tencent.mm.protocal.protobuf.dvv;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.protocal.protobuf.aaw;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.wxmm.IConfCallBack;
 import com.tencent.wxmm.v2conference;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.LinkedList;
 
 class l
 {
-  private static final String[] oVV;
-  private static v2conference oWY;
+  private static final String[] pcy;
+  private static v2conference pdB;
   
   static
   {
     int i = 0;
     AppMethodBeat.i(90838);
-    oVV = new String[] { "ilink_network", "ilink_xlog", "confService" };
-    Context localContext = aj.getContext();
-    ad.i("MicroMsg.OpenVoice.OpenVoiceNativeEngine", "hy: load so");
-    String[] arrayOfString = oVV;
+    pcy = new String[] { "ilink_network", "ilink_xlog", "confService" };
+    Context localContext = ak.getContext();
+    ae.i("MicroMsg.OpenVoice.OpenVoiceNativeEngine", "hy: load so");
+    String[] arrayOfString = pcy;
     int j = arrayOfString.length;
     while (i < j)
     {
       String str = arrayOfString[i];
       l.class.getClassLoader();
-      j.vr(str);
+      j.vN(str);
       i += 1;
     }
-    h.LTJ.aQ(new l.1(localContext));
-    oWY = new v2conference();
+    h.MqF.aN(new l.1(localContext));
+    pdB = new v2conference();
     AppMethodBeat.o(90838);
   }
   
-  public static int Ba(int paramInt)
+  public static int Bm(int paramInt)
   {
     AppMethodBeat.i(90831);
-    paramInt = oWY.GetVoiceActivity(paramInt);
+    paramInt = pdB.GetVoiceActivity(paramInt);
     AppMethodBeat.o(90831);
     return paramInt;
   }
   
-  static int Bb(int paramInt)
+  static int Bn(int paramInt)
   {
     AppMethodBeat.i(90832);
-    paramInt = oWY.ExitRoom(paramInt);
-    ad.i("MicroMsg.OpenVoice.OpenVoiceNativeEngine", "exitRoom ret:".concat(String.valueOf(paramInt)));
+    paramInt = pdB.ExitRoom(paramInt);
+    ae.i("MicroMsg.OpenVoice.OpenVoiceNativeEngine", "exitRoom ret:".concat(String.valueOf(paramInt)));
     AppMethodBeat.o(90832);
     return paramInt;
   }
   
-  public static void Bc(int paramInt)
+  public static void Bo(int paramInt)
   {
     AppMethodBeat.i(90835);
-    oWY.OnNetworkChange(paramInt);
+    pdB.OnNetworkChange(paramInt);
     AppMethodBeat.o(90835);
   }
   
-  public static void J(boolean paramBoolean1, boolean paramBoolean2)
+  /* Error */
+  public static int K(java.util.ArrayList<com.tencent.mm.protocal.protobuf.dlw> paramArrayList)
   {
-    int j = 1;
-    AppMethodBeat.i(190910);
-    v2conference localv2conference = oWY;
-    int i;
-    if (paramBoolean1)
-    {
-      i = 1;
-      if (!paramBoolean2) {
-        break label41;
-      }
-    }
-    for (;;)
-    {
-      localv2conference.SwitchAV(i, j);
-      AppMethodBeat.o(190910);
-      return;
-      i = 0;
-      break;
-      label41:
-      j = 0;
-    }
-  }
-  
-  public static int K(ArrayList<dvt> paramArrayList)
-  {
-    AppMethodBeat.i(184468);
-    if (paramArrayList.size() == 0)
-    {
-      ad.e("MicroMsg.OpenVoice.OpenVoiceNativeEngine", "steve: memberIdArr is null");
-      AppMethodBeat.o(184468);
-      return -1;
-    }
-    dvv localdvv = new dvv();
-    localdvv.FZY = 320;
-    LinkedList localLinkedList = new LinkedList();
-    paramArrayList = paramArrayList.iterator();
-    while (paramArrayList.hasNext()) {
-      localLinkedList.add((dvt)paramArrayList.next());
-    }
-    localdvv.iid = localLinkedList;
-    label169:
-    for (;;)
-    {
-      try
-      {
-        ad.i("MicroMsg.OpenVoice.OpenVoiceNativeEngine", "videoResParam:" + new String(localdvv.toByteArray()) + ",length:" + localdvv.toByteArray().length);
-        int i = oWY.SetVideoResolution(localdvv.toByteArray(), localdvv.toByteArray().length);
-        ad.printErrStackTrace("MicroMsg.OpenVoice.OpenVoiceNativeEngine", paramArrayList, "SetVideoResolution exception", new Object[0]);
-      }
-      catch (IOException paramArrayList)
-      {
-        try
-        {
-          ad.i("MicroMsg.OpenVoice.OpenVoiceNativeEngine", "steve: subScribeVideoAndResList ret:".concat(String.valueOf(i)));
-          AppMethodBeat.o(184468);
-          return i;
-        }
-        catch (IOException paramArrayList)
-        {
-          break label169;
-        }
-        paramArrayList = paramArrayList;
-        i = -1;
-      }
-    }
+    // Byte code:
+    //   0: ldc 114
+    //   2: invokestatic 17	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: aload_0
+    //   6: invokevirtual 120	java/util/ArrayList:size	()I
+    //   9: ifne +17 -> 26
+    //   12: ldc 35
+    //   14: ldc 122
+    //   16: invokestatic 125	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   19: ldc 114
+    //   21: invokestatic 81	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   24: iconst_m1
+    //   25: ireturn
+    //   26: new 127	com/tencent/mm/protocal/protobuf/dlv
+    //   29: dup
+    //   30: invokespecial 128	com/tencent/mm/protocal/protobuf/dlv:<init>	()V
+    //   33: astore_2
+    //   34: new 130	java/util/LinkedList
+    //   37: dup
+    //   38: invokespecial 131	java/util/LinkedList:<init>	()V
+    //   41: astore_3
+    //   42: aload_0
+    //   43: invokevirtual 135	java/util/ArrayList:iterator	()Ljava/util/Iterator;
+    //   46: astore_0
+    //   47: aload_0
+    //   48: invokeinterface 141 1 0
+    //   53: ifeq +20 -> 73
+    //   56: aload_3
+    //   57: aload_0
+    //   58: invokeinterface 145 1 0
+    //   63: checkcast 147	com/tencent/mm/protocal/protobuf/dlw
+    //   66: invokevirtual 151	java/util/LinkedList:add	(Ljava/lang/Object;)Z
+    //   69: pop
+    //   70: goto -23 -> 47
+    //   73: aload_2
+    //   74: aload_3
+    //   75: putfield 155	com/tencent/mm/protocal/protobuf/dlv:udf	Ljava/util/LinkedList;
+    //   78: ldc 35
+    //   80: new 157	java/lang/StringBuilder
+    //   83: dup
+    //   84: ldc 159
+    //   86: invokespecial 161	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   89: new 19	java/lang/String
+    //   92: dup
+    //   93: aload_2
+    //   94: invokevirtual 165	com/tencent/mm/protocal/protobuf/dlv:toByteArray	()[B
+    //   97: invokespecial 168	java/lang/String:<init>	([B)V
+    //   100: invokevirtual 172	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   103: ldc 174
+    //   105: invokevirtual 172	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   108: aload_2
+    //   109: invokevirtual 165	com/tencent/mm/protocal/protobuf/dlv:toByteArray	()[B
+    //   112: arraylength
+    //   113: invokevirtual 177	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   116: invokevirtual 181	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   119: invokestatic 42	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   122: getstatic 78	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/l:pdB	Lcom/tencent/wxmm/v2conference;
+    //   125: aload_2
+    //   126: invokevirtual 165	com/tencent/mm/protocal/protobuf/dlv:toByteArray	()[B
+    //   129: aload_2
+    //   130: invokevirtual 165	com/tencent/mm/protocal/protobuf/dlv:toByteArray	()[B
+    //   133: arraylength
+    //   134: invokevirtual 185	com/tencent/wxmm/v2conference:SubscribeVideo	([BI)I
+    //   137: istore_1
+    //   138: ldc 35
+    //   140: ldc 187
+    //   142: iload_1
+    //   143: invokestatic 100	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   146: invokevirtual 104	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   149: invokestatic 42	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   152: ldc 114
+    //   154: invokestatic 81	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   157: iload_1
+    //   158: ireturn
+    //   159: astore_0
+    //   160: iconst_m1
+    //   161: istore_1
+    //   162: ldc 35
+    //   164: aload_0
+    //   165: ldc 189
+    //   167: iconst_0
+    //   168: anewarray 4	java/lang/Object
+    //   171: invokestatic 193	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   174: goto -22 -> 152
+    //   177: astore_0
+    //   178: goto -16 -> 162
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	181	0	paramArrayList	java.util.ArrayList<com.tencent.mm.protocal.protobuf.dlw>
+    //   137	25	1	i	int
+    //   33	97	2	localdlv	com.tencent.mm.protocal.protobuf.dlv
+    //   41	34	3	localLinkedList	java.util.LinkedList
+    // Exception table:
+    //   from	to	target	type
+    //   78	138	159	java/io/IOException
+    //   138	152	177	java/io/IOException
   }
   
   public static int P(byte[] paramArrayOfByte, int paramInt)
   {
     AppMethodBeat.i(90828);
-    paramInt = oWY.GetAudioData(paramArrayOfByte, paramInt);
+    paramInt = pdB.GetAudioData(paramArrayOfByte, paramInt);
     AppMethodBeat.o(90828);
     return paramInt;
-  }
-  
-  public static int ZI(String paramString)
-  {
-    AppMethodBeat.i(90825);
-    int i = oWY.UpdateAuthKey(paramString.getBytes(), paramString.getBytes().length);
-    AppMethodBeat.o(90825);
-    return i;
   }
   
   public static int a(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, int paramInt3, IConfCallBack paramIConfCallBack)
   {
     AppMethodBeat.i(90824);
-    ad.i("MicroMsg.OpenVoice.OpenVoiceNativeEngine", "hy: init voip");
+    ae.i("MicroMsg.OpenVoice.OpenVoiceNativeEngine", "hy: init voip");
     int j = -1;
     i = j;
     for (;;)
     {
       try
       {
-        aas localaas = new aas();
+        aaw localaaw = new aaw();
         i = j;
-        localaas.app_id = paramString1;
+        localaaw.app_id = paramString1;
         i = j;
-        localaas.FZN = paramString2;
+        localaaw.Gsn = paramString2;
         i = j;
-        localaas.FZO = paramString3;
+        localaaw.Gso = paramString3;
         i = j;
-        localaas.FZQ = (com.tencent.mm.loader.j.b.arL() + "/openvoice");
+        localaaw.Gsq = (com.tencent.mm.loader.j.b.asa() + "/openvoice");
         i = j;
-        localaas.FZR = 0;
+        localaaw.Gsr = 0;
         i = j;
-        localaas.FZT = 1;
+        localaaw.Gst = 1;
         i = j;
-        localaas.FZU = c.bZS();
+        localaaw.Gsu = c.cbh();
         i = j;
-        localaas.FZV = paramInt1;
+        localaaw.Gsv = paramInt1;
         i = j;
-        localaas.FZZ = paramInt2;
+        localaaw.Gsz = paramInt2;
         i = j;
-        localaas.Gaa = paramInt3;
+        localaaw.GsA = paramInt3;
         i = j;
-        localaas.Gad = n.getNumCores();
+        localaaw.GsD = n.getNumCores();
         i = j;
-        localaas.Gae = bt.getInt(m.aah(), 0);
+        localaaw.GsE = bu.getInt(m.aaq(), 0);
         i = j;
-        localaas.Gaf = m.aaf();
+        localaaw.GsF = m.aao();
         i = j;
-        localaas.Gag = Build.MANUFACTURER;
+        localaaw.GsG = Build.MANUFACTURER;
         i = j;
-        localaas.Gah = Build.MODEL;
+        localaaw.GsH = Build.MODEL;
         i = j;
-        localaas.Gai = Build.VERSION.RELEASE;
+        localaaw.GsI = Build.VERSION.RELEASE;
         i = j;
-        localaas.Gaj = Build.VERSION.INCREMENTAL;
+        localaaw.GsJ = Build.VERSION.INCREMENTAL;
         i = j;
-        localaas.Gak = Build.DISPLAY;
+        localaaw.GsK = Build.DISPLAY;
         i = j;
         paramString1 = q.cH(false);
         if (paramString1 == null) {
@@ -217,63 +236,96 @@ class l
           continue;
         }
         i = j;
-        localaas.Gal = com.tencent.mm.bx.b.cj(ai.ee(paramString1).getBytes());
+        localaaw.GsL = com.tencent.mm.bw.b.cm(aj.ej(paramString1).getBytes());
         i = j;
-        localaas.Gam = Build.VERSION.RELEASE;
+        localaaw.GsM = Build.VERSION.RELEASE;
         i = j;
-        ad.i("MicroMsg.OpenVoice.OpenVoiceNativeEngine", "envInfo:" + new String(localaas.toByteArray()) + ",length:" + localaas.toByteArray().length);
+        ae.i("MicroMsg.OpenVoice.OpenVoiceNativeEngine", "envInfo:" + new String(localaaw.toByteArray()) + ",length:" + localaaw.toByteArray().length);
         i = j;
-        paramInt1 = oWY.InitSDK(localaas.toByteArray(), localaas.toByteArray().length, paramIConfCallBack);
+        paramInt1 = pdB.InitSDK(localaaw.toByteArray(), localaaw.toByteArray().length, paramIConfCallBack);
         i = paramInt1;
-        ad.v("MicroMsg.OpenVoice.OpenVoiceNativeEngine", "init ret:".concat(String.valueOf(paramInt1)));
+        ae.v("MicroMsg.OpenVoice.OpenVoiceNativeEngine", "init ret:".concat(String.valueOf(paramInt1)));
       }
       catch (IOException paramString1)
       {
-        ad.printErrStackTrace("MicroMsg.OpenVoice.OpenVoiceNativeEngine", paramString1, "envInfo exception", new Object[0]);
+        ae.printErrStackTrace("MicroMsg.OpenVoice.OpenVoiceNativeEngine", paramString1, "envInfo exception", new Object[0]);
         paramInt1 = i;
         continue;
       }
       AppMethodBeat.o(90824);
       return paramInt1;
       i = j;
-      ad.e("MicroMsg.OpenVoice.OpenVoiceNativeEngine", "getDeviceId failed");
+      ae.e("MicroMsg.OpenVoice.OpenVoiceNativeEngine", "getDeviceId failed");
     }
   }
   
-  public static int aQ(byte[] paramArrayOfByte)
+  public static int aP(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(90830);
-    int i = oWY.GetDecodeVideoData(paramArrayOfByte);
-    AppMethodBeat.o(90830);
+    AppMethodBeat.i(211563);
+    int i = pdB.GetDecodeVideoData(paramArrayOfByte, 0);
+    AppMethodBeat.o(211563);
     return i;
   }
   
-  public static v2conference bZY()
+  public static int aaz(String paramString)
   {
-    return oWY;
-  }
-  
-  public static int bZZ()
-  {
-    AppMethodBeat.i(90833);
-    int i = oWY.UnInit();
-    ad.i("MicroMsg.OpenVoice.OpenVoiceNativeEngine", "unInit ret:".concat(String.valueOf(i)));
-    AppMethodBeat.o(90833);
+    AppMethodBeat.i(90825);
+    int i = pdB.UpdateAuthKey(paramString.getBytes(), paramString.getBytes().length);
+    AppMethodBeat.o(90825);
     return i;
   }
   
   public static int c(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(90829);
-    paramInt1 = oWY.SendVideoData(paramArrayOfByte, paramArrayOfByte.length, paramInt1, paramInt2, paramInt3);
+    paramInt1 = pdB.SendVideoData(paramArrayOfByte, paramArrayOfByte.length, paramInt1, paramInt2, paramInt3);
     AppMethodBeat.o(90829);
     return paramInt1;
+  }
+  
+  public static void c(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
+  {
+    int j = 1;
+    AppMethodBeat.i(211564);
+    v2conference localv2conference = pdB;
+    int i;
+    if (paramBoolean1)
+    {
+      i = 1;
+      if (!paramBoolean2) {
+        break label46;
+      }
+    }
+    for (;;)
+    {
+      localv2conference.SwitchAV(i, j, paramInt);
+      AppMethodBeat.o(211564);
+      return;
+      i = 0;
+      break;
+      label46:
+      j = 0;
+    }
+  }
+  
+  public static v2conference cbn()
+  {
+    return pdB;
+  }
+  
+  public static int cbo()
+  {
+    AppMethodBeat.i(90833);
+    int i = pdB.UnInit();
+    ae.i("MicroMsg.OpenVoice.OpenVoiceNativeEngine", "unInit ret:".concat(String.valueOf(i)));
+    AppMethodBeat.o(90833);
+    return i;
   }
   
   public static int e(int paramInt1, byte[] paramArrayOfByte, int paramInt2)
   {
     AppMethodBeat.i(90834);
-    paramInt1 = oWY.SetAppCmd(paramInt1, paramArrayOfByte, paramInt2);
+    paramInt1 = pdB.SetAppCmd(paramInt1, paramArrayOfByte, paramInt2);
     AppMethodBeat.o(90834);
     return paramInt1;
   }
@@ -281,8 +333,8 @@ class l
   public static int r(long paramLong, int paramInt)
   {
     AppMethodBeat.i(90826);
-    paramInt = oWY.JoinRoom(paramLong, paramInt, 4);
-    ad.i("MicroMsg.OpenVoice.OpenVoiceNativeEngine", "joinRoom ret:".concat(String.valueOf(paramInt)));
+    paramInt = pdB.JoinRoom(paramLong, paramInt, 4);
+    ae.i("MicroMsg.OpenVoice.OpenVoiceNativeEngine", "joinRoom ret:".concat(String.valueOf(paramInt)));
     AppMethodBeat.o(90826);
     return paramInt;
   }
@@ -290,22 +342,22 @@ class l
   public static int v(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(90827);
-    paramInt1 = oWY.SendAudioData(paramArrayOfByte, paramInt1, paramInt2);
+    paramInt1 = pdB.SendAudioData(paramArrayOfByte, paramInt1, paramInt2);
     AppMethodBeat.o(90827);
     return paramInt1;
   }
   
-  public static int videoHWProcess(byte[] paramArrayOfByte1, int paramInt1, int paramInt2, int paramInt3, int paramInt4, byte[] paramArrayOfByte2)
+  public static int videoHWProcess(byte[] paramArrayOfByte1, int paramInt1, int paramInt2, int paramInt3, int paramInt4, byte[] paramArrayOfByte2, int paramInt5, int paramInt6)
   {
-    AppMethodBeat.i(90837);
-    paramInt1 = oWY.videoHWProcess(paramArrayOfByte1, paramInt1, paramInt2, paramInt3, paramInt4, paramArrayOfByte2);
-    AppMethodBeat.o(90837);
+    AppMethodBeat.i(211565);
+    paramInt1 = pdB.videoHWProcess(paramArrayOfByte1, paramInt1, paramInt2, paramInt3, paramInt4, paramArrayOfByte2, paramInt5, paramInt6);
+    AppMethodBeat.o(211565);
     return paramInt1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.cloudvoip.cloudvoice.d.l
  * JD-Core Version:    0.7.0.1
  */

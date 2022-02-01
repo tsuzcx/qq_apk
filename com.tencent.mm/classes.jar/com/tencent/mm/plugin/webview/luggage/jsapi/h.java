@@ -5,7 +5,7 @@ import com.tencent.luggage.d.b;
 import com.tencent.luggage.d.b.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.webview.luggage.g;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public class h
   extends br<g>
@@ -15,12 +15,12 @@ public class h
   public final void b(b<g>.a paramb)
   {
     AppMethodBeat.i(78525);
-    ad.i("MicroMsg.JsApiCheckJsApi", "invoke");
+    ae.i("MicroMsg.JsApiCheckJsApi", "invoke");
     paramb.a("fail", null);
     AppMethodBeat.o(78525);
   }
   
-  public final int ccO()
+  public final int ced()
   {
     return 0;
   }

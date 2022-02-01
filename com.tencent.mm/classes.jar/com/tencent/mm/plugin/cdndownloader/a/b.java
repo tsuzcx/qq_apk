@@ -22,7 +22,7 @@ public abstract interface b
       attachInterface(this, "com.tencent.mm.plugin.cdndownloader.aidl.ICDNDownloadServiceCallback");
     }
     
-    public static b u(IBinder paramIBinder)
+    public static b v(IBinder paramIBinder)
     {
       if (paramIBinder == null) {
         return null;

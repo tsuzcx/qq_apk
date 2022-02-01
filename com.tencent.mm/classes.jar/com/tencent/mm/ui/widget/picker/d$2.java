@@ -16,8 +16,8 @@ final class d$2
     AppMethodBeat.i(159553);
     b localb = new b();
     localb.bd(paramView);
-    a.b("com/tencent/mm/ui/widget/picker/MMTimePicker$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-    d.a(this.LaX, false, null);
+    a.b("com/tencent/mm/ui/widget/picker/MMTimePicker$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+    d.a(this.Lxy, false, null);
     a.a(this, "com/tencent/mm/ui/widget/picker/MMTimePicker$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(159553);
   }

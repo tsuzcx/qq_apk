@@ -6,32 +6,32 @@ import java.lang.reflect.Array;
 
 public final class e<E>
 {
-  private final Class<? extends E> LEm;
-  public int LEn;
-  public E[] LEo;
-  public int[] LEp;
-  public int[] LEq;
-  public int[] LEr;
+  private final Class<? extends E> Mbq;
+  public int Mbr;
+  public E[] Mbs;
+  public int[] Mbt;
+  public int[] Mbu;
+  public int[] Mbv;
   
   e(Class<? extends E> paramClass)
   {
-    this.LEm = paramClass;
-    this.LEn = 0;
+    this.Mbq = paramClass;
+    this.Mbr = 0;
   }
   
   public final void a(Spanned paramSpanned, int paramInt)
   {
     AppMethodBeat.i(39760);
-    Object[] arrayOfObject = paramSpanned.getSpans(0, paramInt, this.LEm);
+    Object[] arrayOfObject = paramSpanned.getSpans(0, paramInt, this.Mbq);
     int i = arrayOfObject.length;
-    if ((i > 0) && ((this.LEo == null) || (this.LEo.length < i)))
+    if ((i > 0) && ((this.Mbs == null) || (this.Mbs.length < i)))
     {
-      this.LEo = ((Object[])Array.newInstance(this.LEm, i));
-      this.LEp = new int[i];
-      this.LEq = new int[i];
-      this.LEr = new int[i];
+      this.Mbs = ((Object[])Array.newInstance(this.Mbq, i));
+      this.Mbt = new int[i];
+      this.Mbu = new int[i];
+      this.Mbv = new int[i];
     }
-    this.LEn = 0;
+    this.Mbr = 0;
     paramInt = 0;
     while (paramInt < i)
     {
@@ -41,24 +41,24 @@ public final class e<E>
       if (j != k)
       {
         int m = paramSpanned.getSpanFlags(localObject);
-        this.LEo[this.LEn] = localObject;
-        this.LEp[this.LEn] = j;
-        this.LEq[this.LEn] = k;
-        this.LEr[this.LEn] = m;
-        this.LEn += 1;
+        this.Mbs[this.Mbr] = localObject;
+        this.Mbt[this.Mbr] = j;
+        this.Mbu[this.Mbr] = k;
+        this.Mbv[this.Mbr] = m;
+        this.Mbr += 1;
       }
       paramInt += 1;
     }
     AppMethodBeat.o(39760);
   }
   
-  public final E kJ(int paramInt1, int paramInt2)
+  public final E kQ(int paramInt1, int paramInt2)
   {
     int i = 0;
-    while (i < this.LEn)
+    while (i < this.Mbr)
     {
-      if ((this.LEp[i] < paramInt2) && (this.LEq[i] > paramInt1)) {
-        return this.LEo[i];
+      if ((this.Mbt[i] < paramInt2) && (this.Mbu[i] > paramInt1)) {
+        return this.Mbs[i];
       }
       i += 1;
     }

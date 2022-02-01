@@ -4,18 +4,18 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class q
 {
-  public final long iNl;
-  public final int iNm;
-  public long iNn;
-  public int iNo;
+  public final long iQf;
+  public final int iQg;
+  public long iQh;
+  public int iQi;
   
   public q()
   {
     AppMethodBeat.i(132969);
-    this.iNl = 180000L;
-    this.iNm = 3;
-    this.iNo = this.iNm;
-    this.iNn = 0L;
+    this.iQf = 180000L;
+    this.iQg = 3;
+    this.iQi = this.iQg;
+    this.iQh = 0L;
     AppMethodBeat.o(132969);
   }
 }

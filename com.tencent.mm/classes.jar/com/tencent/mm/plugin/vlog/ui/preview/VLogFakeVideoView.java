@@ -8,20 +8,20 @@ import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bx.b;
+import com.tencent.mm.bw.b;
 import com.tencent.mm.plugin.recordvideo.background.e;
 import com.tencent.mm.plugin.recordvideo.ui.FakeVideoViewLayer;
 import com.tencent.mm.plugin.vlog.model.aa;
 import com.tencent.mm.plugin.vlog.model.x;
 import com.tencent.mm.plugin.vlog.model.x.a;
 import com.tencent.mm.plugin.vlog.player.k;
-import com.tencent.mm.protocal.protobuf.afy;
-import com.tencent.mm.protocal.protobuf.cbu;
-import com.tencent.mm.protocal.protobuf.due;
-import com.tencent.mm.protocal.protobuf.dwg;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.protocal.protobuf.agh;
+import com.tencent.mm.protocal.protobuf.cco;
+import com.tencent.mm.protocal.protobuf.dvb;
+import com.tencent.mm.protocal.protobuf.dxb;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.aq;
 import d.g.b.p;
 import d.g.b.q;
 import d.l;
@@ -30,22 +30,22 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/vlog/ui/preview/VLogFakeVideoView;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "attr", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "fakeLayer", "Lcom/tencent/mm/plugin/recordvideo/ui/FakeVideoViewLayer;", "getFakeLayer", "()Lcom/tencent/mm/plugin/recordvideo/ui/FakeVideoViewLayer;", "setFakeLayer", "(Lcom/tencent/mm/plugin/recordvideo/ui/FakeVideoViewLayer;)V", "isMute", "", "loading", "Landroid/widget/ProgressBar;", "getLoading", "()Landroid/widget/ProgressBar;", "setLoading", "(Landroid/widget/ProgressBar;)V", "videoItem", "Lcom/tencent/mm/plugin/recordvideo/background/VideoEditData;", "vlogVideoView", "Lcom/tencent/mm/plugin/vlog/ui/preview/VLogPlayView;", "getVlogVideoView", "()Lcom/tencent/mm/plugin/vlog/ui/preview/VLogPlayView;", "setVlogVideoView", "(Lcom/tencent/mm/plugin/vlog/ui/preview/VLogPlayView;)V", "canResume", "getScriptModel", "Lcom/tencent/mm/plugin/vlog/model/VLogScriptModel;", "hideLoading", "", "initView", "isPlaying", "isShowLoading", "onUIResume", "pause", "play", "item", "sessionId", "", "release", "resume", "storyVideoItem", "setMute", "mute", "showLoading", "stop", "Companion", "plugin-vlog_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/vlog/ui/preview/VLogFakeVideoView;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "attr", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "fakeLayer", "Lcom/tencent/mm/plugin/recordvideo/ui/FakeVideoViewLayer;", "getFakeLayer", "()Lcom/tencent/mm/plugin/recordvideo/ui/FakeVideoViewLayer;", "setFakeLayer", "(Lcom/tencent/mm/plugin/recordvideo/ui/FakeVideoViewLayer;)V", "isMute", "", "loading", "Landroid/widget/ProgressBar;", "getLoading", "()Landroid/widget/ProgressBar;", "setLoading", "(Landroid/widget/ProgressBar;)V", "videoItem", "Lcom/tencent/mm/plugin/recordvideo/background/VideoEditData;", "vlogVideoView", "Lcom/tencent/mm/plugin/vlog/ui/preview/VLogPlayView;", "getVlogVideoView", "()Lcom/tencent/mm/plugin/vlog/ui/preview/VLogPlayView;", "setVlogVideoView", "(Lcom/tencent/mm/plugin/vlog/ui/preview/VLogPlayView;)V", "canResume", "getScriptModel", "Lcom/tencent/mm/plugin/vlog/model/VLogScriptModel;", "hideLoading", "", "initView", "isPlaying", "isShowLoading", "onUIResume", "pause", "play", "item", "sessionId", "", "release", "resume", "storyVideoItem", "setMute", "mute", "showLoading", "stop", "Companion", "plugin-vlog_release"})
 public final class VLogFakeVideoView
   extends RelativeLayout
 {
-  public static final VLogFakeVideoView.a BTF;
+  public static final VLogFakeVideoView.a Clg;
   private static final String TAG = "MicroMsg.Story.VLogFakeVideoView";
-  public VLogPlayView BTE;
-  private boolean fMP;
-  public ProgressBar ltc;
-  public FakeVideoViewLayer tZt;
-  private com.tencent.mm.plugin.recordvideo.background.c xMF;
+  public VLogPlayView Clf;
+  private boolean fOX;
+  public ProgressBar lxB;
+  public FakeVideoViewLayer ukv;
+  private com.tencent.mm.plugin.recordvideo.background.c ycz;
   
   static
   {
     AppMethodBeat.i(111182);
-    BTF = new VLogFakeVideoView.a((byte)0);
+    Clg = new VLogFakeVideoView.a((byte)0);
     TAG = "MicroMsg.Story.VLogFakeVideoView";
     AppMethodBeat.o(111182);
   }
@@ -54,20 +54,20 @@ public final class VLogFakeVideoView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(111181);
-    ad.i(TAG, "initView");
+    ae.i(TAG, "initView");
     LayoutInflater.from(getContext()).inflate(2131495854, (ViewGroup)this);
     paramContext = findViewById(2131306460);
     p.g(paramContext, "findViewById(R.id.vlog_play_view)");
-    this.BTE = ((VLogPlayView)paramContext);
+    this.Clf = ((VLogPlayView)paramContext);
     paramContext = findViewById(2131299758);
     p.g(paramContext, "findViewById(R.id.fakelayer)");
-    this.tZt = ((FakeVideoViewLayer)paramContext);
+    this.ukv = ((FakeVideoViewLayer)paramContext);
     paramContext = findViewById(2131306352);
     p.g(paramContext, "findViewById(R.id.video_loading)");
-    this.ltc = ((ProgressBar)paramContext);
-    paramContext = this.BTE;
+    this.lxB = ((ProgressBar)paramContext);
+    paramContext = this.Clf;
     if (paramContext == null) {
-      p.bcb("vlogVideoView");
+      p.bdF("vlogVideoView");
     }
     paramContext.setPrepareCallback((d.g.a.a)new b(this));
     AppMethodBeat.o(111181);
@@ -76,30 +76,30 @@ public final class VLogFakeVideoView
   private final aa getScriptModel()
   {
     AppMethodBeat.i(111176);
-    Object localObject4 = (com.tencent.mm.bx.a)new afy();
-    Object localObject1 = this.xMF;
+    Object localObject4 = (com.tencent.mm.bw.a)new agh();
+    Object localObject1 = this.ycz;
     if (localObject1 != null) {
       localObject1 = ((com.tencent.mm.plugin.recordvideo.background.c)localObject1).field_baseItemData;
     }
     try
     {
-      ((com.tencent.mm.bx.a)localObject4).parseFrom((byte[])localObject1);
+      ((com.tencent.mm.bw.a)localObject4).parseFrom((byte[])localObject1);
       localObject1 = localObject4;
-      localObject5 = (afy)localObject1;
+      localObject5 = (agh)localObject1;
       if (localObject5 != null)
       {
-        f1 = ((afy)localObject5).GdH;
-        f2 = ((afy)localObject5).GdJ;
-        f3 = ((afy)localObject5).GdI;
-        f4 = ((afy)localObject5).GdK;
-        localObject1 = e.xuo;
-        localObject1 = ((afy)localObject5).FZr;
+        f1 = ((agh)localObject5).Gwo;
+        f2 = ((agh)localObject5).Gwq;
+        f3 = ((agh)localObject5).Gwp;
+        f4 = ((agh)localObject5).Gwr;
+        localObject1 = e.xKl;
+        localObject1 = ((agh)localObject5).GrR;
         p.g(localObject1, "this.baseItemData");
-        localObject4 = aj.getContext();
+        localObject4 = ak.getContext();
         p.g(localObject4, "MMApplicationContext.getContext()");
         localObject4 = e.a((LinkedList)localObject1, (Context)localObject4);
-        localObject1 = (com.tencent.mm.bx.a)new due();
-        localObject5 = ((afy)localObject5).GdQ.toByteArray();
+        localObject1 = (com.tencent.mm.bw.a)new dvb();
+        localObject5 = ((agh)localObject5).Gwx.toByteArray();
       }
     }
     catch (Exception localException1)
@@ -112,34 +112,34 @@ public final class VLogFakeVideoView
           float f2;
           float f3;
           float f4;
-          ((com.tencent.mm.bx.a)localObject1).parseFrom((byte[])localObject5);
-          localObject1 = (due)localObject1;
+          ((com.tencent.mm.bw.a)localObject1).parseFrom((byte[])localObject5);
+          localObject1 = (dvb)localObject1;
           if (localObject1 == null) {
             break;
           }
-          localObject1 = ((due)localObject1).HGY;
-          long l = ((dwg)localObject1).FCY;
-          Object localObject5 = x.BGE;
+          localObject1 = ((dvb)localObject1).IaL;
+          long l = ((dxb)localObject1).FVt;
+          Object localObject5 = x.BYd;
           p.g(localObject1, "vlogResp");
-          localObject5 = x.a.a((dwg)localObject1);
-          String str = ((dwg)localObject1).HIK.GVH;
+          localObject5 = x.a.a((dxb)localObject1);
+          String str = ((dxb)localObject1).Icw.Hpi;
           p.g(str, "vlogResp.music.local_path");
-          localObject1 = new aa(l, (List)localObject5, str, (dwg)localObject1);
+          localObject1 = new aa(l, (List)localObject5, str, (dxb)localObject1);
           ((aa)localObject1).p(new float[] { f1, f2, f3, f4 });
-          ((aa)localObject1).aB((ArrayList)localObject4);
+          ((aa)localObject1).aC((ArrayList)localObject4);
           AppMethodBeat.o(111176);
           return localObject1;
           localObject1 = null;
         }
         localException1 = localException1;
-        ad.l("safeParser", "", new Object[] { localException1 });
+        ae.l("safeParser", "", new Object[] { localException1 });
         Object localObject2 = null;
       }
       catch (Exception localException2)
       {
         for (;;)
         {
-          ad.l("safeParser", "", new Object[] { localException2 });
+          ae.l("safeParser", "", new Object[] { localException2 });
           Object localObject3 = null;
         }
       }
@@ -153,74 +153,74 @@ public final class VLogFakeVideoView
     boolean bool = false;
     AppMethodBeat.i(111177);
     p.h(paramc, "item");
-    this.xMF = paramc;
+    this.ycz = paramc;
     Object localObject1 = TAG;
-    paramc = new StringBuilder("LogStory: play fake video  item ").append(paramc).append(", mute:").append(this.fMP).append(", isBackgroundSilent:");
-    Object localObject2 = this.tZt;
+    paramc = new StringBuilder("LogStory: play fake video  item ").append(paramc).append(", mute:").append(this.fOX).append(", isBackgroundSilent:");
+    Object localObject2 = this.ukv;
     if (localObject2 == null) {
-      p.bcb("fakeLayer");
+      p.bdF("fakeLayer");
     }
-    ad.i((String)localObject1, ((FakeVideoViewLayer)localObject2).xHG);
-    paramc = this.tZt;
+    ae.i((String)localObject1, ((FakeVideoViewLayer)localObject2).xXB);
+    paramc = this.ukv;
     if (paramc == null) {
-      p.bcb("fakeLayer");
+      p.bdF("fakeLayer");
     }
     paramc.setVisibility(0);
-    paramc = this.xMF;
+    paramc = this.ycz;
     if (paramc != null)
     {
-      localObject1 = this.tZt;
+      localObject1 = this.ukv;
       if (localObject1 == null) {
-        p.bcb("fakeLayer");
+        p.bdF("fakeLayer");
       }
       ((FakeVideoViewLayer)localObject1).setFakeVideoInfo(paramc);
     }
     paramc = getScriptModel();
     if (paramc != null)
     {
-      localObject1 = this.BTE;
+      localObject1 = this.Clf;
       if (localObject1 == null) {
-        p.bcb("vlogVideoView");
+        p.bdF("vlogVideoView");
       }
       p.h(paramc, "model");
-      ad.i("MicroMsg.VLogPlayView", "renderScript model:" + paramc + "  " + ((VLogPlayView)localObject1).hashCode());
-      if (((VLogPlayView)localObject1).BJC == null) {
-        ((VLogPlayView)localObject1).BTO = paramc;
+      ae.i("MicroMsg.VLogPlayView", "renderScript model:" + paramc + "  " + ((VLogPlayView)localObject1).hashCode());
+      if (((VLogPlayView)localObject1).Cbb == null) {
+        ((VLogPlayView)localObject1).Clp = paramc;
       }
       for (;;)
       {
-        paramc = this.BTE;
+        paramc = this.Clf;
         if (paramc == null) {
-          p.bcb("vlogVideoView");
+          p.bdF("vlogVideoView");
         }
-        if (!this.fMP)
+        if (!this.fOX)
         {
-          localObject1 = this.tZt;
+          localObject1 = this.ukv;
           if (localObject1 == null) {
-            p.bcb("fakeLayer");
+            p.bdF("fakeLayer");
           }
-          if (!((FakeVideoViewLayer)localObject1).xHG) {}
+          if (!((FakeVideoViewLayer)localObject1).xXB) {}
         }
         else
         {
           bool = true;
         }
         paramc.setMute(bool);
-        paramc = this.tZt;
+        paramc = this.ukv;
         if (paramc == null) {
-          p.bcb("fakeLayer");
+          p.bdF("fakeLayer");
         }
-        paramc.pW(this.fMP);
+        paramc.qe(this.fOX);
         AppMethodBeat.o(111177);
         return;
-        localObject2 = ((VLogPlayView)localObject1).BJC;
+        localObject2 = ((VLogPlayView)localObject1).Cbb;
         if (localObject2 != null)
         {
-          ad.i("MicroMsg.VLogPlayView", "play in renderScript   " + ((com.tencent.mm.plugin.vlog.player.c)localObject2).hashCode());
-          ((VLogPlayView)localObject1).BTN = true;
-          ((com.tencent.mm.plugin.vlog.player.c)localObject2).a(paramc, paramc.getVideoDurationMs(), paramc.BGN);
+          ae.i("MicroMsg.VLogPlayView", "play in renderScript   " + ((com.tencent.mm.plugin.vlog.player.c)localObject2).hashCode());
+          ((VLogPlayView)localObject1).Clo = true;
+          ((com.tencent.mm.plugin.vlog.player.c)localObject2).a(paramc, paramc.getVideoDurationMs(), paramc.BYm);
           com.tencent.mm.plugin.vlog.player.c.a((com.tencent.mm.plugin.vlog.player.c)localObject2, null, false, 7);
-          paramc = ((VLogPlayView)localObject1).BTP;
+          paramc = ((VLogPlayView)localObject1).Clq;
           if (paramc != null) {
             paramc.invoke();
           }
@@ -233,28 +233,28 @@ public final class VLogFakeVideoView
   public final void b(com.tencent.mm.plugin.recordvideo.background.c paramc)
   {
     AppMethodBeat.i(111178);
-    ad.i(TAG, "resume");
-    Object localObject = this.BTE;
+    ae.i(TAG, "resume");
+    Object localObject = this.Clf;
     if (localObject == null) {
-      p.bcb("vlogVideoView");
+      p.bdF("vlogVideoView");
     }
-    if (((VLogPlayView)localObject).xNq)
+    if (((VLogPlayView)localObject).ydj)
     {
-      localObject = this.BTE;
+      localObject = this.Clf;
       if (localObject == null) {
-        p.bcb("vlogVideoView");
+        p.bdF("vlogVideoView");
       }
-      ad.i("MicroMsg.VLogPlayView", "resume");
-      ((VLogPlayView)localObject).BTN = true;
-      localObject = ((VLogPlayView)localObject).BJC;
+      ae.i("MicroMsg.VLogPlayView", "resume");
+      ((VLogPlayView)localObject).Clo = true;
+      localObject = ((VLogPlayView)localObject).Cbb;
       if (localObject != null) {
         com.tencent.mm.plugin.vlog.player.c.a((com.tencent.mm.plugin.vlog.player.c)localObject, null, false, 7);
       }
-      localObject = this.tZt;
+      localObject = this.ukv;
       if (localObject == null) {
-        p.bcb("fakeLayer");
+        p.bdF("fakeLayer");
       }
-      ((FakeVideoViewLayer)localObject).pW(this.fMP);
+      ((FakeVideoViewLayer)localObject).qe(this.fOX);
     }
     if (paramc != null) {
       a(paramc);
@@ -265,9 +265,9 @@ public final class VLogFakeVideoView
   public final FakeVideoViewLayer getFakeLayer()
   {
     AppMethodBeat.i(111171);
-    FakeVideoViewLayer localFakeVideoViewLayer = this.tZt;
+    FakeVideoViewLayer localFakeVideoViewLayer = this.ukv;
     if (localFakeVideoViewLayer == null) {
-      p.bcb("fakeLayer");
+      p.bdF("fakeLayer");
     }
     AppMethodBeat.o(111171);
     return localFakeVideoViewLayer;
@@ -276,9 +276,9 @@ public final class VLogFakeVideoView
   public final ProgressBar getLoading()
   {
     AppMethodBeat.i(111173);
-    ProgressBar localProgressBar = this.ltc;
+    ProgressBar localProgressBar = this.lxB;
     if (localProgressBar == null) {
-      p.bcb("loading");
+      p.bdF("loading");
     }
     AppMethodBeat.o(111173);
     return localProgressBar;
@@ -287,9 +287,9 @@ public final class VLogFakeVideoView
   public final VLogPlayView getVlogVideoView()
   {
     AppMethodBeat.i(111169);
-    VLogPlayView localVLogPlayView = this.BTE;
+    VLogPlayView localVLogPlayView = this.Clf;
     if (localVLogPlayView == null) {
-      p.bcb("vlogVideoView");
+      p.bdF("vlogVideoView");
     }
     AppMethodBeat.o(111169);
     return localVLogPlayView;
@@ -298,11 +298,11 @@ public final class VLogFakeVideoView
   public final boolean isPlaying()
   {
     AppMethodBeat.i(111175);
-    VLogPlayView localVLogPlayView = this.BTE;
+    VLogPlayView localVLogPlayView = this.Clf;
     if (localVLogPlayView == null) {
-      p.bcb("vlogVideoView");
+      p.bdF("vlogVideoView");
     }
-    boolean bool = localVLogPlayView.BTN;
+    boolean bool = localVLogPlayView.Clo;
     AppMethodBeat.o(111175);
     return bool;
   }
@@ -310,8 +310,8 @@ public final class VLogFakeVideoView
   public final void onUIResume()
   {
     AppMethodBeat.i(111180);
-    ad.i(TAG, "onUIResume");
-    b(this.xMF);
+    ae.i(TAG, "onUIResume");
+    b(this.ycz);
     AppMethodBeat.o(111180);
   }
   
@@ -319,7 +319,7 @@ public final class VLogFakeVideoView
   {
     AppMethodBeat.i(111172);
     p.h(paramFakeVideoViewLayer, "<set-?>");
-    this.tZt = paramFakeVideoViewLayer;
+    this.ukv = paramFakeVideoViewLayer;
     AppMethodBeat.o(111172);
   }
   
@@ -327,64 +327,64 @@ public final class VLogFakeVideoView
   {
     AppMethodBeat.i(111174);
     p.h(paramProgressBar, "<set-?>");
-    this.ltc = paramProgressBar;
+    this.lxB = paramProgressBar;
     AppMethodBeat.o(111174);
   }
   
   public final void setMute(boolean paramBoolean)
   {
-    this.fMP = paramBoolean;
+    this.fOX = paramBoolean;
   }
   
   public final void setVlogVideoView(VLogPlayView paramVLogPlayView)
   {
     AppMethodBeat.i(111170);
     p.h(paramVLogPlayView, "<set-?>");
-    this.BTE = paramVLogPlayView;
+    this.Clf = paramVLogPlayView;
     AppMethodBeat.o(111170);
   }
   
   public final void stop()
   {
     AppMethodBeat.i(111179);
-    ad.i(TAG, "stop");
-    Object localObject1 = this.BTE;
+    ae.i(TAG, "stop");
+    Object localObject1 = this.Clf;
     if (localObject1 == null) {
-      p.bcb("vlogVideoView");
+      p.bdF("vlogVideoView");
     }
-    ad.i("MicroMsg.VLogPlayView", "stop");
-    Object localObject2 = ((VLogPlayView)localObject1).BJC;
+    ae.i("MicroMsg.VLogPlayView", "stop");
+    Object localObject2 = ((VLogPlayView)localObject1).Cbb;
     if (localObject2 != null) {
       ((com.tencent.mm.plugin.vlog.player.c)localObject2).release();
     }
-    localObject2 = ((VLogPlayView)localObject1).BId;
+    localObject2 = ((VLogPlayView)localObject1).BZC;
     if (localObject2 != null) {
       ((k)localObject2).release();
     }
-    localObject2 = ((VLogPlayView)localObject1).BTL;
+    localObject2 = ((VLogPlayView)localObject1).Clm;
     if (localObject2 != null) {
-      ((ap)localObject2).removeCallbacksAndMessages(null);
+      ((aq)localObject2).removeCallbacksAndMessages(null);
     }
-    localObject2 = ((VLogPlayView)localObject1).BTK;
+    localObject2 = ((VLogPlayView)localObject1).Cll;
     if (localObject2 != null) {
       ((HandlerThread)localObject2).quitSafely();
     }
-    ((VLogPlayView)localObject1).BJC = null;
-    ((VLogPlayView)localObject1).BTL = null;
-    ((VLogPlayView)localObject1).xNq = false;
-    ((VLogPlayView)localObject1).BTN = false;
-    ((VLogPlayView)localObject1).BTO = null;
+    ((VLogPlayView)localObject1).Cbb = null;
+    ((VLogPlayView)localObject1).Clm = null;
+    ((VLogPlayView)localObject1).ydj = false;
+    ((VLogPlayView)localObject1).Clo = false;
+    ((VLogPlayView)localObject1).Clp = null;
     ((VLogPlayView)localObject1).frameCount = 0;
-    ((VLogPlayView)localObject1).BTQ = false;
-    localObject1 = this.tZt;
+    ((VLogPlayView)localObject1).Clr = false;
+    localObject1 = this.ukv;
     if (localObject1 == null) {
-      p.bcb("fakeLayer");
+      p.bdF("fakeLayer");
     }
-    ((FakeVideoViewLayer)localObject1).dHl();
+    ((FakeVideoViewLayer)localObject1).dKC();
     AppMethodBeat.o(111179);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
   static final class b
     extends q
     implements d.g.a.a<z>
@@ -397,7 +397,7 @@ public final class VLogFakeVideoView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.vlog.ui.preview.VLogFakeVideoView
  * JD-Core Version:    0.7.0.1
  */

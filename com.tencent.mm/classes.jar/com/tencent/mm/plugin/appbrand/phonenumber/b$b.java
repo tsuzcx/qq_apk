@@ -1,12 +1,12 @@
 package com.tencent.mm.plugin.appbrand.phonenumber;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.vending.g.d.a;
 import d.g.a.b;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "", "kotlin.jvm.PlatformType", "onInterrupt"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "", "kotlin.jvm.PlatformType", "onInterrupt"})
 final class b$b<T>
   implements d.a<Object>
 {
@@ -16,9 +16,9 @@ final class b$b<T>
   {
     AppMethodBeat.i(148018);
     if ((paramObject instanceof Exception)) {
-      ad.e("Luggage.FULL.CgiPhoneNumber", "CgiCheckVerifyCode " + ((Exception)paramObject).getMessage());
+      ae.e("Luggage.FULL.CgiPhoneNumber", "CgiCheckVerifyCode " + ((Exception)paramObject).getMessage());
     }
-    paramObject = this.giT;
+    paramObject = this.gll;
     if (paramObject != null)
     {
       paramObject.invoke(null);

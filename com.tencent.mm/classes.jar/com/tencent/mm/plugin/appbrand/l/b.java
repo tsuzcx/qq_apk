@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.appbrand.l;
 
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.vfs.e;
+import com.tencent.mm.vfs.k;
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -16,7 +16,7 @@ public final class b
   public static void a(String paramString, double paramDouble1, double paramDouble2, long paramLong)
   {
     AppMethodBeat.i(179483);
-    if (!fv(paramString))
+    if (!fB(paramString))
     {
       AppMethodBeat.o(179483);
       return;
@@ -70,7 +70,7 @@ public final class b
   public static void b(InputStream paramInputStream, String paramString)
   {
     AppMethodBeat.i(138802);
-    if ((paramInputStream == null) || (!fv(paramString)))
+    if ((paramInputStream == null) || (!fB(paramString)))
     {
       AppMethodBeat.o(138802);
       return;
@@ -84,10 +84,10 @@ public final class b
     AppMethodBeat.o(138802);
   }
   
-  public static void cT(String paramString1, String paramString2)
+  public static void cV(String paramString1, String paramString2)
   {
     AppMethodBeat.i(138801);
-    if ((!fv(paramString1)) || (!fv(paramString2)))
+    if ((!fB(paramString1)) || (!fB(paramString2)))
     {
       AppMethodBeat.o(138801);
       return;
@@ -101,10 +101,10 @@ public final class b
     AppMethodBeat.o(138801);
   }
   
-  private static boolean fv(String paramString)
+  private static boolean fB(String paramString)
   {
     AppMethodBeat.i(138803);
-    if ((!TextUtils.isEmpty(paramString)) && (new e(paramString).exists()))
+    if ((!TextUtils.isEmpty(paramString)) && (new k(paramString).exists()))
     {
       AppMethodBeat.o(138803);
       return true;
@@ -141,7 +141,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.l.b
  * JD-Core Version:    0.7.0.1
  */

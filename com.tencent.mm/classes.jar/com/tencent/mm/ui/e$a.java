@@ -2,7 +2,7 @@ package com.tencent.mm.ui;
 
 public final class e$a
 {
-  public static int abw(int paramInt)
+  public static int ace(int paramInt)
   {
     switch (paramInt)
     {

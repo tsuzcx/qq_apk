@@ -5,7 +5,7 @@ import d.a;
 import d.l;
 import java.io.Closeable;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"closeFinally", "", "Ljava/io/Closeable;", "cause", "", "use", "R", "T", "block", "Lkotlin/Function1;", "Requires newer compiler version to be inlined correctly.", "(Ljava/io/Closeable;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;", "kotlin-stdlib"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"closeFinally", "", "Ljava/io/Closeable;", "cause", "", "use", "R", "T", "block", "Lkotlin/Function1;", "Requires newer compiler version to be inlined correctly.", "(Ljava/io/Closeable;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;", "kotlin-stdlib"})
 public final class b
 {
   public static final void a(Closeable paramCloseable, Throwable paramThrowable)

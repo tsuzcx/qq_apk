@@ -11,9 +11,9 @@ final class SnsUserUI$10
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    AppMethodBeat.i(198490);
-    this.ApE.finish();
-    AppMethodBeat.o(198490);
+    AppMethodBeat.i(220032);
+    this.AGR.finish();
+    AppMethodBeat.o(220032);
     return true;
   }
 }

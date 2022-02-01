@@ -4,7 +4,7 @@ import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.a;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.HashMap;
 import java.util.Map;
 import org.json.JSONObject;
@@ -18,37 +18,37 @@ public final class e
   public final void a(c paramc, JSONObject paramJSONObject, int paramInt)
   {
     AppMethodBeat.i(144693);
-    ad.i("MicroMsg.JsApiStopWifi", "invoke registerHotspotHelper");
+    ae.i("MicroMsg.JsApiStopWifi", "invoke registerHotspotHelper");
     paramJSONObject = paramc.getContext();
     if (paramJSONObject == null)
     {
-      ad.e("MicroMsg.JsApiStopWifi", "mContext is null, invoke fail!");
+      ae.e("MicroMsg.JsApiStopWifi", "mContext is null, invoke fail!");
       paramJSONObject = new HashMap();
       paramJSONObject.put("errCode", Integer.valueOf(12010));
-      paramc.h(paramInt, m("fail:context is null", paramJSONObject));
+      paramc.h(paramInt, n("fail:context is null", paramJSONObject));
       AppMethodBeat.o(144693);
       return;
     }
-    if (!d.lwi)
+    if (!d.lAG)
     {
-      ad.e("MicroMsg.JsApiStopWifi", "not invoke startWifi");
+      ae.e("MicroMsg.JsApiStopWifi", "not invoke startWifi");
       paramJSONObject = new HashMap();
       paramJSONObject.put("errCode", Integer.valueOf(12000));
-      paramc.h(paramInt, m("fail:not invoke startWifi", paramJSONObject));
+      paramc.h(paramInt, n("fail:not invoke startWifi", paramJSONObject));
       AppMethodBeat.o(144693);
       return;
     }
-    if (d.lwj != null) {
-      ad.i("MicroMsg.JsApiStopWifi", "unregisterReceiver");
+    if (d.lAH != null) {
+      ae.i("MicroMsg.JsApiStopWifi", "unregisterReceiver");
     }
     try
     {
-      paramJSONObject.unregisterReceiver(d.lwj);
-      d.lwi = false;
-      d.lwj = null;
+      paramJSONObject.unregisterReceiver(d.lAH);
+      d.lAG = false;
+      d.lAH = null;
       paramJSONObject = new HashMap();
       paramJSONObject.put("errCode", Integer.valueOf(0));
-      paramc.h(paramInt, m("ok", paramJSONObject));
+      paramc.h(paramInt, n("ok", paramJSONObject));
       AppMethodBeat.o(144693);
       return;
     }
@@ -56,7 +56,7 @@ public final class e
     {
       for (;;)
       {
-        ad.e("MicroMsg.JsApiStopWifi", "unregisterReceiver:%s fail", new Object[] { paramJSONObject });
+        ae.e("MicroMsg.JsApiStopWifi", "unregisterReceiver:%s fail", new Object[] { paramJSONObject });
       }
     }
   }

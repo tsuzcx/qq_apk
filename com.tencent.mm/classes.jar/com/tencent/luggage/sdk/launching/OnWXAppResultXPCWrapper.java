@@ -9,14 +9,14 @@ import android.os.Parcelable.Creator;
 import android.os.ResultReceiver;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class OnWXAppResultXPCWrapper<R extends Parcelable>
   implements Parcelable
 {
   public static final Parcelable.Creator<OnWXAppResultXPCWrapper> CREATOR;
   private final ResultReceiver MK;
-  private final a<R> cpc;
+  private final a<R> cpg;
   
   static
   {
@@ -29,7 +29,7 @@ public final class OnWXAppResultXPCWrapper<R extends Parcelable>
   {
     AppMethodBeat.i(146882);
     this.MK = ((ResultReceiver)ResultReceiver.CREATOR.createFromParcel(paramParcel));
-    this.cpc = new a()
+    this.cpg = new a()
     {
       public final void b(R paramAnonymousR)
       {
@@ -46,7 +46,7 @@ public final class OnWXAppResultXPCWrapper<R extends Parcelable>
   private OnWXAppResultXPCWrapper(final a<R> parama)
   {
     AppMethodBeat.i(146880);
-    this.cpc = parama;
+    this.cpg = parama;
     this.MK = new ResultReceiver(new Handler(Looper.getMainLooper()))
     {
       protected void onReceiveResult(int paramAnonymousInt, Bundle paramAnonymousBundle)
@@ -67,7 +67,7 @@ public final class OnWXAppResultXPCWrapper<R extends Parcelable>
         }
         catch (NullPointerException paramAnonymousBundle)
         {
-          ad.e("Luggage.WxaSDK.OnWXAppResultXPCWrapper", "onReceiveResult, e = %s", new Object[] { paramAnonymousBundle });
+          ae.e("Luggage.WxaSDK.OnWXAppResultXPCWrapper", "onReceiveResult, e = %s", new Object[] { paramAnonymousBundle });
           parama.b(null);
           AppMethodBeat.o(146871);
           return;
@@ -87,7 +87,7 @@ public final class OnWXAppResultXPCWrapper<R extends Parcelable>
     AppMethodBeat.i(146879);
     paramParcel = (OnWXAppResultXPCWrapper)paramParcel.readParcelable(OnWXAppResultXPCWrapper.class.getClassLoader());
     if (paramParcel != null) {}
-    for (paramParcel = paramParcel.cpc;; paramParcel = null)
+    for (paramParcel = paramParcel.cpg;; paramParcel = null)
     {
       AppMethodBeat.o(146879);
       return paramParcel;
@@ -123,7 +123,7 @@ public final class OnWXAppResultXPCWrapper<R extends Parcelable>
     implements Parcelable
   {
     public static final Parcelable.Creator<SafeParcelableWrapper> CREATOR;
-    private Parcelable cpf;
+    private Parcelable cpj;
     
     static
     {
@@ -138,26 +138,26 @@ public final class OnWXAppResultXPCWrapper<R extends Parcelable>
       String str = paramParcel.readString();
       if (TextUtils.isEmpty(str))
       {
-        this.cpf = null;
+        this.cpj = null;
         AppMethodBeat.o(146876);
         return;
       }
       try
       {
-        this.cpf = paramParcel.readParcelable(Class.forName(str).getClassLoader());
+        this.cpj = paramParcel.readParcelable(Class.forName(str).getClassLoader());
         AppMethodBeat.o(146876);
         return;
       }
       catch (ClassNotFoundException paramParcel)
       {
-        ad.e("Luggage.WxaSDK.OnWXAppResultXPCWrapper", "ClassNotFoundException with %s", new Object[] { str });
+        ae.e("Luggage.WxaSDK.OnWXAppResultXPCWrapper", "ClassNotFoundException with %s", new Object[] { str });
         AppMethodBeat.o(146876);
       }
     }
     
     SafeParcelableWrapper(Parcelable paramParcelable)
     {
-      this.cpf = paramParcelable;
+      this.cpj = paramParcelable;
     }
     
     public final int describeContents()
@@ -168,14 +168,14 @@ public final class OnWXAppResultXPCWrapper<R extends Parcelable>
     public final void writeToParcel(Parcel paramParcel, int paramInt)
     {
       AppMethodBeat.i(146875);
-      if (this.cpf == null)
+      if (this.cpj == null)
       {
         paramParcel.writeString(null);
         AppMethodBeat.o(146875);
         return;
       }
-      paramParcel.writeString(this.cpf.getClass().getName());
-      paramParcel.writeParcelable(this.cpf, paramInt);
+      paramParcel.writeString(this.cpj.getClass().getName());
+      paramParcel.writeParcelable(this.cpj, paramInt);
       AppMethodBeat.o(146875);
     }
   }

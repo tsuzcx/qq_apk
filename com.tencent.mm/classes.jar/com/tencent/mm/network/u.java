@@ -3,8 +3,9 @@ package com.tencent.mm.network;
 import com.tencent.mars.mm.MMLogic;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.e;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
@@ -16,29 +17,29 @@ public final class u
   {
     int k = 1;
     AppMethodBeat.i(132848);
-    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.MMDisasterInfoHandle", "compareDisasterHost");
+    ae.i("MicroMsg.MMDisasterInfoHandle", "compareDisasterHost");
     if (paramList.size() == 0)
     {
       AppMethodBeat.o(132848);
       return;
     }
-    Object localObject1 = ad.aPm();
+    Object localObject1 = ad.aPK();
     if (localObject1 == null)
     {
-      com.tencent.mm.sdk.platformtools.ad.w("MicroMsg.MMDisasterInfoHandle", "autoAuth is null");
+      ae.w("MicroMsg.MMDisasterInfoHandle", "autoAuth is null");
       AppMethodBeat.o(132848);
       return;
     }
-    localObject1 = ((t)localObject1).iEM;
+    localObject1 = ((t)localObject1).iHF;
     if (localObject1 == null)
     {
-      com.tencent.mm.sdk.platformtools.ad.w("MicroMsg.MMDisasterInfoHandle", "accinfo is null");
+      ae.w("MicroMsg.MMDisasterInfoHandle", "accinfo is null");
       AppMethodBeat.o(132848);
       return;
     }
     Object localObject2;
     int i;
-    if (!((a)localObject1).Io("main"))
+    if (!((a)localObject1).IQ("main"))
     {
       localObject2 = paramList.iterator();
       while (((Iterator)localObject2).hasNext()) {
@@ -53,20 +54,20 @@ public final class u
       int j;
       if (i != 0)
       {
-        ((a)localObject1).aOG();
+        ((a)localObject1).aPd();
         try
         {
-          ad.aPk().post(new Runnable()
+          ad.aPI().post(new Runnable()
           {
             public final void run()
             {
               AppMethodBeat.i(132847);
-              ad.aPo().j(3941, null);
+              ad.aPM().j(3941, null);
               AppMethodBeat.o(132847);
             }
           });
-          com.tencent.mm.sdk.platformtools.ad.w("MicroMsg.MMDisasterInfoHandle", "main disaster disasterOccur ");
-          e.ygI.idkeyStat(148L, 124L, 1L, false);
+          ae.w("MicroMsg.MMDisasterInfoHandle", "main disaster disasterOccur ");
+          e.ywz.idkeyStat(148L, 124L, 1L, false);
           AppMethodBeat.o(132848);
           return;
           i = 0;
@@ -103,17 +104,17 @@ public final class u
         {
           for (;;)
           {
-            com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.MMDisasterInfoHandle", "exception:%s", new Object[] { bt.n(paramList) });
+            ae.e("MicroMsg.MMDisasterInfoHandle", "exception:%s", new Object[] { bu.o(paramList) });
           }
         }
       }
       else
       {
-        if (!((a)localObject1).Io("axhost"))
+        if (!((a)localObject1).IQ("axhost"))
         {
           paramList = paramList.iterator();
           while (paramList.hasNext()) {
-            if (((a)localObject1).Dq((String)paramList.next())) {
+            if (((a)localObject1).DS((String)paramList.next())) {
               i = k;
             }
           }
@@ -122,10 +123,10 @@ public final class u
         {
           if (i != 0)
           {
-            ((a)localObject1).aOG();
-            ad.aPm().Iu("");
-            e.ygI.idkeyStat(148L, 125L, 1L, false);
-            com.tencent.mm.sdk.platformtools.ad.w("MicroMsg.MMDisasterInfoHandle", "ax disaster disasterOccur ");
+            ((a)localObject1).aPd();
+            ad.aPK().IW("");
+            e.ywz.idkeyStat(148L, 125L, 1L, false);
+            ae.w("MicroMsg.MMDisasterInfoHandle", "ax disaster disasterOccur ");
             AppMethodBeat.o(132848);
             return;
             continue;

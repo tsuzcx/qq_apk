@@ -12,12 +12,13 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
+import java.util.Map;
 
 public final class AssetsSchemeResolver
-  extends SchemeResolver.Base
+  extends SingletonSchemeResolver
 {
   public static final a CREATOR;
-  private final AssetsFileSystem Ljc;
+  private final AssetsFileSystem LFD;
   
   static
   {
@@ -29,42 +30,43 @@ public final class AssetsSchemeResolver
   private AssetsSchemeResolver()
   {
     AppMethodBeat.i(13036);
-    this.Ljc = new AssetsFileSystem(a.gzU().mContext);
+    this.LFD = new AssetsFileSystem(e.fSU().mContext);
     AppMethodBeat.o(13036);
   }
   
-  public static AssetsSchemeResolver fOo()
+  public static AssetsSchemeResolver fSJ()
   {
-    return a.Lje;
+    return a.LFF;
   }
   
-  public final Pair<FileSystem, String> a(SchemeResolver.b paramb, Uri paramUri)
+  public final Pair<FileSystem.b, String> a(g paramg, Uri paramUri)
   {
-    AppMethodBeat.i(13037);
-    paramb = paramUri.getPath();
-    if (paramb == null) {}
-    for (paramb = "";; paramb = q.o(paramb, true, true))
+    AppMethodBeat.i(193353);
+    paramg = paramUri.getPath();
+    if (paramg == null) {}
+    for (paramg = "";; paramg = w.o(paramg, true, true))
     {
-      paramb = new Pair(this.Ljc, paramb);
-      AppMethodBeat.o(13037);
-      return paramb;
+      paramg = Pair.create(this.LFD, paramg);
+      AppMethodBeat.o(193353);
+      return paramg;
     }
   }
   
   static final class AssetsFileSystem
-    extends AbstractFileSystem
+    extends a
+    implements FileSystem
   {
     public static final Parcelable.Creator<AssetsFileSystem> CREATOR = null;
-    private AssetManager Ljd;
+    private AssetManager LFE;
     
     AssetsFileSystem(Context paramContext)
     {
       AppMethodBeat.i(13024);
-      this.Ljd = paramContext.getAssets();
+      this.LFE = paramContext.getAssets();
       AppMethodBeat.o(13024);
     }
     
-    private void c(String paramString1, String paramString2, ArrayList<FileSystem.a> paramArrayList)
+    private void c(String paramString1, String paramString2, ArrayList<c> paramArrayList)
     {
       AppMethodBeat.i(13030);
       if ((paramString2 != null) && (!paramString2.isEmpty())) {
@@ -74,12 +76,12 @@ public final class AssetsSchemeResolver
       }
       for (;;)
       {
-        String[] arrayOfString = this.Ljd.list(paramString1);
+        String[] arrayOfString = this.LFE.list(paramString1);
         if ((arrayOfString == null) || (arrayOfString.length == 0))
         {
           if (paramString2 != null)
           {
-            paramArrayList.add(new FileSystem.a(this, paramString1, paramString2, 0L, 0L, 0L, false));
+            paramArrayList.add(new c(this, paramString1, paramString2, 0L, 0L, 0L, false));
             AppMethodBeat.o(13030);
             return;
             paramString1 = paramString1 + '/' + paramString2;
@@ -88,7 +90,7 @@ public final class AssetsSchemeResolver
         else
         {
           if (paramString2 != null) {
-            paramArrayList.add(new FileSystem.a(this, paramString1, paramString2, 0L, 0L, 0L, true));
+            paramArrayList.add(new c(this, paramString1, paramString2, 0L, 0L, 0L, true));
           }
           int j = arrayOfString.length;
           int i = 0;
@@ -106,20 +108,20 @@ public final class AssetsSchemeResolver
       }
     }
     
-    public final boolean CA(String paramString)
+    public final boolean Dc(String paramString)
     {
       return false;
     }
     
-    public final FileSystem.b aYd(String paramString)
+    public final FileSystem.a aZF(String paramString)
     {
       AppMethodBeat.i(13025);
-      paramString = new FileSystem.b();
+      paramString = new FileSystem.a();
       AppMethodBeat.o(13025);
       return paramString;
     }
     
-    public final boolean aYe(String paramString)
+    public final boolean aZG(String paramString)
     {
       AppMethodBeat.i(13028);
       try
@@ -135,9 +137,9 @@ public final class AssetsSchemeResolver
       return false;
     }
     
-    public final FileSystem.a aYf(String paramString)
+    public final c aZH(String paramString)
     {
-      AppMethodBeat.i(13029);
+      AppMethodBeat.i(193350);
       for (;;)
       {
         int j;
@@ -150,34 +152,52 @@ public final class AssetsSchemeResolver
           if (j < 0)
           {
             localObject = paramString;
-            paramString = new FileSystem.a(this, paramString, (String)localObject, i, 0L, 0L, false);
-            AppMethodBeat.o(13029);
+            paramString = new c(this, paramString, (String)localObject, i, 0L, 0L, false);
+            AppMethodBeat.o(193350);
             return paramString;
           }
         }
         catch (IOException paramString)
         {
-          AppMethodBeat.o(13029);
+          AppMethodBeat.o(193350);
           return null;
         }
         Object localObject = paramString.substring(j + 1);
       }
     }
     
-    public final boolean aYg(String paramString)
+    public final boolean aZI(String paramString)
     {
       return false;
     }
     
-    protected final boolean b(String paramString1, FileSystem paramFileSystem, String paramString2)
+    protected final boolean b(String paramString1, FileSystem.b paramb, String paramString2)
     {
-      AppMethodBeat.i(13032);
+      AppMethodBeat.i(193351);
       paramString1 = new IOException("Not implemented");
-      AppMethodBeat.o(13032);
+      AppMethodBeat.o(193351);
       throw paramString1;
     }
     
-    public final OutputStream cX(String paramString, boolean paramBoolean)
+    public final FileSystem.b cd(Map<String, String> paramMap)
+    {
+      return this;
+    }
+    
+    public final boolean cp(String paramString, long paramLong)
+    {
+      return false;
+    }
+    
+    protected final long d(String paramString1, FileSystem.b paramb, String paramString2)
+    {
+      AppMethodBeat.i(193352);
+      paramString1 = new IOException("Not implemented");
+      AppMethodBeat.o(193352);
+      throw paramString1;
+    }
+    
+    public final OutputStream db(String paramString, boolean paramBoolean)
     {
       AppMethodBeat.i(13027);
       paramString = new FileNotFoundException("Cannot open files for writing on read-only filesystems");
@@ -185,7 +205,7 @@ public final class AssetsSchemeResolver
       throw paramString;
     }
     
-    public final Iterable<FileSystem.a> cY(String paramString, boolean paramBoolean)
+    public final Iterable<c> dc(String paramString, boolean paramBoolean)
     {
       AppMethodBeat.i(13031);
       String str1 = paramString;
@@ -210,7 +230,7 @@ public final class AssetsSchemeResolver
         String[] arrayOfString;
         AppMethodBeat.o(13031);
       }
-      paramString = this.Ljd.list(str1);
+      paramString = this.LFE.list(str1);
       if (paramString == null)
       {
         AppMethodBeat.o(13031);
@@ -224,11 +244,11 @@ public final class AssetsSchemeResolver
       {
         str2 = paramString[i];
         str3 = str1 + str2;
-        arrayOfString = this.Ljd.list(str3);
+        arrayOfString = this.LFE.list(str3);
         if ((arrayOfString != null) && (arrayOfString.length > 0)) {}
         for (paramBoolean = true;; paramBoolean = false)
         {
-          localArrayList.add(new FileSystem.a(this, str3, str2, 0L, 0L, 0L, paramBoolean));
+          localArrayList.add(new c(this, str3, str2, 0L, 0L, 0L, paramBoolean));
           i += 1;
           break;
         }
@@ -238,30 +258,27 @@ public final class AssetsSchemeResolver
       return null;
     }
     
-    public final boolean cZ(String paramString, boolean paramBoolean)
+    public final boolean dd(String paramString, boolean paramBoolean)
     {
       return false;
     }
     
-    public final boolean cn(String paramString, long paramLong)
-    {
-      return false;
-    }
-    
-    protected final long d(String paramString1, FileSystem paramFileSystem, String paramString2)
-    {
-      AppMethodBeat.i(13033);
-      paramString1 = new IOException("Not implemented");
-      AppMethodBeat.o(13033);
-      throw paramString1;
-    }
-    
-    public final String da(String paramString, boolean paramBoolean)
+    public final String de(String paramString, boolean paramBoolean)
     {
       return null;
     }
     
-    public final int fOp()
+    public final int describeContents()
+    {
+      return 0;
+    }
+    
+    public final FileSystem fSK()
+    {
+      return this;
+    }
+    
+    public final int fSL()
     {
       return 12;
     }
@@ -271,7 +288,7 @@ public final class AssetsSchemeResolver
       AppMethodBeat.i(13026);
       try
       {
-        paramString = this.Ljd.open(paramString);
+        paramString = this.LFE.open(paramString);
         AppMethodBeat.o(13026);
         return paramString;
       }
@@ -306,12 +323,12 @@ public final class AssetsSchemeResolver
   static final class a
     implements Parcelable.Creator<AssetsSchemeResolver>
   {
-    static final AssetsSchemeResolver Lje;
+    static final AssetsSchemeResolver LFF;
     
     static
     {
       AppMethodBeat.i(13035);
-      Lje = new AssetsSchemeResolver((byte)0);
+      LFF = new AssetsSchemeResolver((byte)0);
       AppMethodBeat.o(13035);
     }
   }

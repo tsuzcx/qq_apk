@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.emoji;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.ax;
+import com.tencent.mm.model.az;
 import com.tencent.mm.plugin.emoji.model.k;
 import com.tencent.mm.pluginsdk.b.c;
 import com.tencent.mm.pluginsdk.b.d;
@@ -18,7 +18,7 @@ public class Plugin
     return localb;
   }
   
-  public ax createSubCore()
+  public az createSubCore()
   {
     AppMethodBeat.i(108289);
     k localk = new k();

@@ -5,14 +5,14 @@ import android.os.HandlerThread;
 import android.os.Message;
 import com.tencent.e.j.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.aq;
 import com.tencent.tmassistantsdk.util.ParamPair;
 import com.tencent.tmassistantsdk.util.TMLog;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 public class TMAssistantDownloadSDKMessageThread
-  extends ap
+  extends aq
 {
   private static TMAssistantDownloadSDKMessageThread mInstance = null;
   private static HandlerThread mMessagehandlerThread = null;
@@ -32,7 +32,7 @@ public class TMAssistantDownloadSDKMessageThread
     {
       AppMethodBeat.i(101903);
       if (mInstance == null) {
-        mInstance = new TMAssistantDownloadSDKMessageThread(a.aZF("TMAssistantDownloadSDKMessageThread"));
+        mInstance = new TMAssistantDownloadSDKMessageThread(a.bbi("TMAssistantDownloadSDKMessageThread"));
       }
       TMAssistantDownloadSDKMessageThread localTMAssistantDownloadSDKMessageThread = mInstance;
       AppMethodBeat.o(101903);

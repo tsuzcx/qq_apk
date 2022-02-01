@@ -3,8 +3,8 @@ package com.tencent.mm.plugin.appbrand.canvas.action.arg;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.z.g;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.plugin.appbrand.y.g;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.Objects;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -14,8 +14,8 @@ public class SetTransformActionArg
   extends BaseDrawActionArg
 {
   public static final Parcelable.Creator<SetTransformActionArg> CREATOR;
-  public float jTF;
-  public float jTG;
+  public float jWW;
+  public float jWX;
   public float scaleX;
   public float scaleY;
   public float translateX;
@@ -59,7 +59,7 @@ public class SetTransformActionArg
       return false;
     }
     paramObject = (SetTransformActionArg)paramObject;
-    if ((Float.compare(paramObject.scaleX, this.scaleX) == 0) && (Float.compare(paramObject.jTF, this.jTF) == 0) && (Float.compare(paramObject.jTG, this.jTG) == 0) && (Float.compare(paramObject.scaleY, this.scaleY) == 0) && (Float.compare(paramObject.translateX, this.translateX) == 0) && (Float.compare(paramObject.translateY, this.translateY) == 0))
+    if ((Float.compare(paramObject.scaleX, this.scaleX) == 0) && (Float.compare(paramObject.jWW, this.jWW) == 0) && (Float.compare(paramObject.jWX, this.jWX) == 0) && (Float.compare(paramObject.scaleY, this.scaleY) == 0) && (Float.compare(paramObject.translateX, this.translateX) == 0) && (Float.compare(paramObject.translateY, this.translateY) == 0))
     {
       AppMethodBeat.o(145258);
       return true;
@@ -73,8 +73,8 @@ public class SetTransformActionArg
     AppMethodBeat.i(145255);
     super.h(paramParcel);
     this.scaleX = paramParcel.readFloat();
-    this.jTF = paramParcel.readFloat();
-    this.jTG = paramParcel.readFloat();
+    this.jWW = paramParcel.readFloat();
+    this.jWX = paramParcel.readFloat();
     this.scaleY = paramParcel.readFloat();
     this.translateX = paramParcel.readFloat();
     this.translateY = paramParcel.readFloat();
@@ -84,7 +84,7 @@ public class SetTransformActionArg
   public int hashCode()
   {
     AppMethodBeat.i(145259);
-    int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), Float.valueOf(this.scaleX), Float.valueOf(this.jTF), Float.valueOf(this.jTG), Float.valueOf(this.scaleY), Float.valueOf(this.translateX), Float.valueOf(this.translateY) });
+    int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), Float.valueOf(this.scaleX), Float.valueOf(this.jWW), Float.valueOf(this.jWX), Float.valueOf(this.scaleY), Float.valueOf(this.translateX), Float.valueOf(this.translateY) });
     AppMethodBeat.o(145259);
     return i;
   }
@@ -97,8 +97,8 @@ public class SetTransformActionArg
     try
     {
       this.scaleX = ((float)paramJSONObject.getDouble(0));
-      this.jTF = ((float)paramJSONObject.getDouble(1));
-      this.jTG = ((float)paramJSONObject.getDouble(2));
+      this.jWW = ((float)paramJSONObject.getDouble(1));
+      this.jWX = ((float)paramJSONObject.getDouble(2));
       this.scaleY = ((float)paramJSONObject.getDouble(3));
       this.translateX = g.e(paramJSONObject, 4);
       this.translateY = g.e(paramJSONObject, 5);
@@ -107,7 +107,7 @@ public class SetTransformActionArg
     }
     catch (JSONException paramJSONObject)
     {
-      ad.printErrStackTrace("SetTransformActionArg", paramJSONObject, "", new Object[0]);
+      ae.printErrStackTrace("SetTransformActionArg", paramJSONObject, "", new Object[0]);
       AppMethodBeat.o(145256);
     }
   }
@@ -117,8 +117,8 @@ public class SetTransformActionArg
     AppMethodBeat.i(145257);
     super.writeToParcel(paramParcel, paramInt);
     paramParcel.writeFloat(this.scaleY);
-    paramParcel.writeFloat(this.jTF);
-    paramParcel.writeFloat(this.jTG);
+    paramParcel.writeFloat(this.jWW);
+    paramParcel.writeFloat(this.jWX);
     paramParcel.writeFloat(this.scaleY);
     paramParcel.writeFloat(this.translateX);
     paramParcel.writeFloat(this.translateY);

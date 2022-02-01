@@ -1,7 +1,7 @@
 package com.tencent.tmassistantsdk.logreport;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.tmassistantsdk.openSDK.opensdktomsdk.TMOpenSDKAuthorizedInfo;
 import com.tencent.tmassistantsdk.protocol.jce.TipsInfoLog;
 import com.tencent.tmassistantsdk.storage.table.BaseLogTable;
@@ -42,7 +42,7 @@ public class TipsInfoReportManager
     localTipsInfoLog.userId = paramTMOpenSDKAuthorizedInfo.userId;
     localTipsInfoLog.userIdType = paramTMOpenSDKAuthorizedInfo.userIdType;
     localTipsInfoLog.gamePackageName = paramTMOpenSDKAuthorizedInfo.gamePackageName;
-    localTipsInfoLog.gameVersionCode = bt.getInt(paramTMOpenSDKAuthorizedInfo.gameVersionCode, 0);
+    localTipsInfoLog.gameVersionCode = bu.getInt(paramTMOpenSDKAuthorizedInfo.gameVersionCode, 0);
     localTipsInfoLog.gameChannelId = paramTMOpenSDKAuthorizedInfo.gameChannelId;
     AppMethodBeat.o(102070);
     return localTipsInfoLog;

@@ -10,34 +10,34 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.mm.plugin.card.base.b;
 import com.tencent.mm.plugin.card.d.n;
-import com.tencent.mm.protocal.protobuf.ts;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.tu;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public abstract class a
   implements g
 {
   private final String TAG = "MicroMsg.CardWidgetCouponBase";
-  protected View.OnClickListener jtG;
+  protected View.OnClickListener jwB;
   protected Context mContext;
   protected LayoutInflater mInflater;
-  protected TextView mMD;
-  protected View oPV;
-  protected ImageView oPW;
-  protected b owK;
+  protected TextView mRG;
+  protected b oDm;
+  protected View oWx;
+  protected ImageView oWy;
   
   public a(Context paramContext)
   {
     this.mContext = paramContext;
   }
   
-  private void bYK()
+  private void bZZ()
   {
     int i;
-    if (!bt.isNullOrNil(this.owK.bTN().hzB))
+    if (!bu.isNullOrNil(this.oDm.bVc().hCp))
     {
       i = this.mContext.getResources().getDimensionPixelSize(2131165964);
-      if ((!this.owK.bTs()) || (!this.owK.bTv())) {
+      if ((!this.oDm.bUH()) || (!this.oDm.bUK())) {
         break label133;
       }
       i = this.mContext.getResources().getDimensionPixelSize(2131165962);
@@ -45,18 +45,18 @@ public abstract class a
     for (;;)
     {
       if (i > 0) {
-        n.a(this.oPW, this.owK.bTN().hzB, i, 2131233400, true);
+        n.a(this.oWy, this.oDm.bVc().hCp, i, 2131233400, true);
       }
-      if (!bt.isNullOrNil(this.owK.bTN().oze)) {
-        this.mMD.setText(this.owK.bTN().oze);
+      if (!bu.isNullOrNil(this.oDm.bVc().oFG)) {
+        this.mRG.setText(this.oDm.bVc().oFG);
       }
       return;
       label133:
-      if ((this.owK.bTs()) && (this.owK.bTu())) {
+      if ((this.oDm.bUH()) && (this.oDm.bUJ())) {
         i = this.mContext.getResources().getDimensionPixelSize(2131165988);
-      } else if ((this.owK.bTs()) && (this.owK.bTw())) {
+      } else if ((this.oDm.bUH()) && (this.oDm.bUL())) {
         i = this.mContext.getResources().getDimensionPixelSize(2131166000);
-      } else if (this.owK.bTy()) {
+      } else if (this.oDm.bUN()) {
         i = 0;
       }
     }
@@ -64,73 +64,73 @@ public abstract class a
   
   private void refreshView()
   {
-    if ((this.owK == null) || (this.owK.bTN() == null))
+    if ((this.oDm == null) || (this.oDm.bVc() == null))
     {
-      ad.e("MicroMsg.CardWidgetCouponBase", "mCardInfo == null or mCardInfo.getCardTpInfo() == null");
+      ae.e("MicroMsg.CardWidgetCouponBase", "mCardInfo == null or mCardInfo.getCardTpInfo() == null");
       return;
     }
-    bYK();
-    bYJ();
+    bZZ();
+    bZY();
   }
   
-  public void AQ(int paramInt) {}
+  public void Bc(int paramInt) {}
   
   public void I(boolean paramBoolean1, boolean paramBoolean2) {}
   
   public void a(ShapeDrawable paramShapeDrawable) {}
   
-  protected final View bYH()
+  protected final View bZW()
   {
-    return this.oPV;
+    return this.oWx;
   }
   
-  protected abstract void bYI();
+  protected abstract void bZX();
   
-  protected abstract void bYJ();
+  protected abstract void bZY();
   
   public final void d(b paramb)
   {
-    this.owK = paramb;
+    this.oDm = paramb;
     refreshView();
   }
   
   public final void i(b paramb)
   {
-    this.owK = paramb;
+    this.oDm = paramb;
   }
+  
+  public void jA(boolean paramBoolean) {}
   
   public void jB(boolean paramBoolean) {}
   
-  public void jC(boolean paramBoolean) {}
-  
   public final View jq()
   {
-    if ((this.owK == null) || (this.owK.bTN() == null))
+    if ((this.oDm == null) || (this.oDm.bVc() == null))
     {
-      ad.e("MicroMsg.CardWidgetCouponBase", "mCardInfo == null or mCardInfo.getCardTpInfo() == null");
+      ae.e("MicroMsg.CardWidgetCouponBase", "mCardInfo == null or mCardInfo.getCardTpInfo() == null");
       return null;
     }
     this.mInflater = ((LayoutInflater)this.mContext.getSystemService("layout_inflater"));
     LayoutInflater localLayoutInflater = this.mInflater;
     int i;
-    if (!this.owK.bTv()) {
-      if (this.owK.bTw()) {
+    if (!this.oDm.bUK()) {
+      if (this.oDm.bUL()) {
         i = 2131493359;
       }
     }
     for (;;)
     {
-      this.oPV = localLayoutInflater.inflate(i, null);
-      this.oPW = ((ImageView)this.oPV.findViewById(2131296859));
-      this.mMD = ((TextView)this.oPV.findViewById(2131296865));
-      bYI();
+      this.oWx = localLayoutInflater.inflate(i, null);
+      this.oWy = ((ImageView)this.oWx.findViewById(2131296859));
+      this.mRG = ((TextView)this.oWx.findViewById(2131296865));
+      bZX();
       refreshView();
-      return this.oPV;
-      if (this.owK.bTu()) {
+      return this.oWx;
+      if (this.oDm.bUJ()) {
         i = 2131493321;
-      } else if (this.owK.bTx()) {
+      } else if (this.oDm.bUM()) {
         i = 2131493273;
-      } else if (this.owK.bTy()) {
+      } else if (this.oDm.bUN()) {
         i = 2131493311;
       } else {
         i = 2131493266;
@@ -140,13 +140,13 @@ public abstract class a
   
   public final void release()
   {
-    this.jtG = null;
+    this.jwB = null;
     this.mContext = null;
   }
   
   public void setOnClickListener(View.OnClickListener paramOnClickListener)
   {
-    this.jtG = paramOnClickListener;
+    this.jwB = paramOnClickListener;
   }
 }
 

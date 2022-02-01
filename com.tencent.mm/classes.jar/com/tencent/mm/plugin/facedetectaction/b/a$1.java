@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.facedetectaction.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.youtu.ytposedetect.YTPoseDetectInterface.PoseDetectResult;
 
 public final class a$1
@@ -12,14 +12,14 @@ public final class a$1
   public final void onFailed(int paramInt, String paramString1, String paramString2)
   {
     AppMethodBeat.i(104202);
-    ad.i("MicroMsg.FaceActionLogic", "onFailed s:" + paramString1 + " s1:" + paramString2);
+    ae.i("MicroMsg.FaceActionLogic", "onFailed s:" + paramString1 + " s1:" + paramString2);
     AppMethodBeat.o(104202);
   }
   
   public final void onSuccess()
   {
     AppMethodBeat.i(104201);
-    ad.i("MicroMsg.FaceActionLogic", "onSuccess");
+    ae.i("MicroMsg.FaceActionLogic", "onSuccess");
     AppMethodBeat.o(104201);
   }
 }

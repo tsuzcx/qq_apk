@@ -8,7 +8,7 @@ import android.view.MenuItem.OnMenuItemClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.bp;
+import com.tencent.mm.model.br;
 import com.tencent.mm.plugin.readerapp.b.a;
 import com.tencent.mm.pluginsdk.m;
 import com.tencent.mm.ui.MMActivity;
@@ -16,7 +16,7 @@ import com.tencent.mm.ui.MMActivity;
 public class ReaderAppIntroUI
   extends MMActivity
 {
-  private int dEj = 0;
+  private int dFo = 0;
   
   public int getLayoutId()
   {
@@ -28,8 +28,8 @@ public class ReaderAppIntroUI
     AppMethodBeat.i(102705);
     ImageView localImageView = (ImageView)findViewById(2131303778);
     TextView localTextView = (TextView)findViewById(2131303779);
-    this.dEj = getIntent().getIntExtra("type", 0);
-    if (this.dEj == 20)
+    this.dFo = getIntent().getIntExtra("type", 0);
+    if (this.dFo == 20)
     {
       setMMTitle(2131760208);
       localImageView.setImageResource(2131233792);
@@ -50,7 +50,7 @@ public class ReaderAppIntroUI
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
         AppMethodBeat.i(102703);
-        a.iRG.c(new Intent().putExtra("Contact_User", bp.oz(ReaderAppIntroUI.a(ReaderAppIntroUI.this))), ReaderAppIntroUI.this);
+        a.iUz.c(new Intent().putExtra("Contact_User", br.oC(ReaderAppIntroUI.a(ReaderAppIntroUI.this))), ReaderAppIntroUI.this);
         ReaderAppIntroUI.this.finish();
         AppMethodBeat.o(102703);
         return true;

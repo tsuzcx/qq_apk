@@ -4,20 +4,18 @@ import android.graphics.Bitmap;
 import android.graphics.Rect;
 import android.util.Size;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ab.i;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.expt.b.b.a;
-import com.tencent.mm.plugin.recordvideo.ui.editor.item.b.d;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.videocomposition.h;
 import com.tencent.mm.xeffect.VLogEffectMgr;
+import com.tencent.mm.xeffect.e;
 import com.tencent.tav.coremedia.CMTimeRange;
-import d.a.ae;
 import d.a.j;
 import d.g.b.p;
 import d.l;
 import d.n.n;
-import d.o;
 import d.u;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -25,114 +23,114 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/vlog/model/VLogComposition;", "", "origin", "(Lcom/tencent/mm/plugin/vlog/model/VLogComposition;)V", "trackList", "", "Lcom/tencent/mm/plugin/vlog/model/VLogCompositionTrack;", "(Ljava/util/List;)V", "audioChannelCount", "", "audioSampleRate", "composition", "Lcom/tencent/mm/videocomposition/VideoComposition;", "cropRect", "Landroid/graphics/Rect;", "enableMusic", "", "enableOriginAudio", "enableVideoEnhancement", "fpsUpperLimit", "maxDuration", "", "maxFps", "musicPath", "", "playEnd", "getPlayEnd", "()J", "playStart", "getPlayStart", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "addMusic", "", "buildSource", "Lcom/tencent/tavkit/composition/TAVSource;", "enable", "enableVideoSound", "getComposition", "getCutPlayRange", "Lkotlin/Pair;", "getDurationMs", "getMusicPath", "getPlayRange", "Lcom/tencent/tav/coremedia/CMTimeRange;", "getSize", "Landroid/util/Size;", "getSourceDuration", "getThumbBitmap", "widthLimit", "callback", "Lkotlin/Function1;", "Landroid/graphics/Bitmap;", "getThumbTrackList", "getTrackList", "isEnableMusic", "isEnableOriginSound", "isEnableVideoEnhancement", "kvPlayRateInfo", "kvTransitionInfo", "selectMaxFpsFromTrackList", "setAudioConfig", "sampleRate", "channelCount", "setBlendBitmapProvider", "blendBitmapProvider", "setEffectMgr", "effectMgr", "Lcom/tencent/mm/xeffect/VLogEffectMgr;", "setFilter", "path", "weight", "", "setFpsUpperLimit", "limit", "setMaxDuration", "duration", "setPlayRange", "start", "end", "setRenderCrop", "rect", "setRenderSize", "width", "height", "updateComposition", "Companion", "plugin-vlog_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/vlog/model/VLogComposition;", "", "origin", "(Lcom/tencent/mm/plugin/vlog/model/VLogComposition;)V", "trackList", "", "Lcom/tencent/mm/plugin/vlog/model/VLogCompositionTrack;", "(Ljava/util/List;)V", "audioChannelCount", "", "audioSampleRate", "composition", "Lcom/tencent/mm/videocomposition/VideoComposition;", "cropRect", "Landroid/graphics/Rect;", "enableMusic", "", "enableOriginAudio", "enableVideoEnhancement", "fpsUpperLimit", "maxDuration", "", "maxFps", "musicPath", "", "playEnd", "getPlayEnd", "()J", "playStart", "getPlayStart", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "addMusic", "", "buildSource", "Lcom/tencent/tavkit/composition/TAVSource;", "enable", "enableVideoSound", "getComposition", "getCutPlayRange", "Lkotlin/Pair;", "getDurationMs", "getMusicPath", "getPlayRange", "Lcom/tencent/tav/coremedia/CMTimeRange;", "getSize", "Landroid/util/Size;", "getSourceDuration", "getThumbBitmap", "widthLimit", "callback", "Lkotlin/Function1;", "Landroid/graphics/Bitmap;", "getThumbTrackList", "getTrackList", "isEnableMusic", "isEnableOriginSound", "isEnableVideoEnhancement", "kvPlayRateInfo", "kvTransitionInfo", "selectMaxFpsFromTrackList", "setAudioConfig", "sampleRate", "channelCount", "setBlendBitmapProvider", "blendBitmapProvider", "setEffectMgr", "effectMgr", "Lcom/tencent/mm/xeffect/VLogEffectMgr;", "setFilter", "path", "weight", "", "setFpsUpperLimit", "limit", "setMaxDuration", "duration", "setPlayRange", "start", "end", "setRenderCrop", "rect", "setRenderSize", "width", "height", "updateComposition", "Companion", "plugin-vlog_release"})
 public final class v
 {
-  public static final v.a BGq;
-  private long BFC;
-  public h BGk;
-  public ArrayList<w> BGl;
-  boolean BGm;
-  public boolean BGn;
-  private int BGo;
-  private int BGp;
+  public static final v.a BXO;
+  public h BXI;
+  public ArrayList<w> BXJ;
+  boolean BXK;
+  public boolean BXL;
+  private int BXM;
+  private int BXN;
+  private long BXa;
   private int audioChannelCount;
   private int audioSampleRate;
-  String hml;
-  private final Rect hmm;
-  boolean xxP;
+  String hoZ;
+  private final Rect hpa;
+  public boolean xNM;
   
   static
   {
-    AppMethodBeat.i(195804);
-    BGq = new v.a((byte)0);
-    Object localObject = com.tencent.mm.xeffect.e.OfL;
-    com.tencent.mm.xeffect.e.N((d.g.a.b)v.b.OdH);
-    com.tencent.mm.plugin.xlabeffect.e.ftw();
-    localObject = t.BGf;
-    t.div();
-    localObject = TAVKitMuxer.BGg;
+    AppMethodBeat.i(191263);
+    BXO = new v.a((byte)0);
+    Object localObject = e.LYF;
+    e.I((d.g.a.b)v.b.BXP);
+    com.tencent.mm.plugin.xlabeffect.d.fcj();
+    localObject = t.BXD;
+    t.dlu();
+    localObject = TAVKitMuxer.BXE;
     TAVKitMuxer.setup();
-    AppMethodBeat.o(195804);
+    AppMethodBeat.o(191263);
   }
   
   public v(v paramv)
   {
-    this((List)paramv.BGl);
-    AppMethodBeat.i(195803);
-    Size localSize = paramv.getComposition().fPF();
-    io(localSize.getWidth(), localSize.getHeight());
-    ar(paramv.BGk.getPlayStart(), paramv.BGk.esa());
-    this.hmm.set(paramv.hmm);
-    AppMethodBeat.o(195803);
+    this((List)paramv.BXJ);
+    AppMethodBeat.i(191262);
+    Size localSize = paramv.getComposition().fUb();
+    ir(localSize.getWidth(), localSize.getHeight());
+    aq(paramv.BXI.getPlayStart(), paramv.BXI.evH());
+    this.hpa.set(paramv.hpa);
+    AppMethodBeat.o(191262);
   }
   
   public v(List<w> paramList)
   {
-    AppMethodBeat.i(195802);
-    this.BGk = new h();
-    this.BGl = new ArrayList();
-    this.hmm = new Rect();
-    this.hml = "";
-    this.BGo = 30;
-    this.BGp = -1;
+    AppMethodBeat.i(191261);
+    this.BXI = new h();
+    this.BXJ = new ArrayList();
+    this.hpa = new Rect();
+    this.hoZ = "";
+    this.BXM = 30;
+    this.BXN = -1;
     this.audioSampleRate = 44100;
     this.audioChannelCount = 1;
-    this.BGl.clear();
-    this.BGl.addAll((Collection)paramList);
-    paramList = this.BGk;
-    Object localObject2 = (Iterable)this.BGl;
+    this.BXJ.clear();
+    this.BXJ.addAll((Collection)paramList);
+    paramList = this.BXI;
+    Object localObject2 = (Iterable)this.BXJ;
     Object localObject1 = (Collection)new ArrayList(j.a((Iterable)localObject2, 10));
     localObject2 = ((Iterable)localObject2).iterator();
     while (((Iterator)localObject2).hasNext()) {
-      ((Collection)localObject1).add(((w)((Iterator)localObject2).next()).BGw);
+      ((Collection)localObject1).add(((w)((Iterator)localObject2).next()).BXV);
     }
     localObject1 = (List)localObject1;
     p.h(localObject1, "trackList");
-    paramList.BGl.clear();
-    paramList.BGl.addAll((Collection)localObject1);
-    if (((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qHG, 1) == 1) {
-      this.BGp = ese();
+    paramList.BXJ.clear();
+    paramList.BXJ.addAll((Collection)localObject1);
+    if (((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qPm, 1) == 1) {
+      this.BXN = evL();
     }
-    AppMethodBeat.o(195802);
+    AppMethodBeat.o(191261);
   }
   
-  public static void aDq(String paramString)
+  public static void aEJ(String paramString)
   {
-    AppMethodBeat.i(195799);
+    AppMethodBeat.i(191258);
     p.h(paramString, "path");
-    AppMethodBeat.o(195799);
+    AppMethodBeat.o(191258);
   }
   
-  private void esd()
+  private void evK()
   {
-    AppMethodBeat.i(195789);
-    Object localObject = ((Iterable)this.BGl).iterator();
+    AppMethodBeat.i(191248);
+    Object localObject = ((Iterable)this.BXJ).iterator();
     while (((Iterator)localObject).hasNext())
     {
       w localw = (w)((Iterator)localObject).next();
-      localw.xNA.af(localw.BGw.LmC, localw.BGw.LmD);
+      localw.ydt.ae(localw.BXV.LJm, localw.BXV.LJn);
     }
-    long l = this.BGk.getPlayStart();
-    if ((this.BFC > 0L) && (this.BGk.esa() - l > this.BFC)) {
-      this.BGk.ar(l, this.BFC + l);
+    long l = this.BXI.getPlayStart();
+    if ((this.BXa > 0L) && (this.BXI.evH() - l > this.BXa)) {
+      this.BXI.aq(l, this.BXa + l);
     }
-    if ((((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qHG, 1) == 1) && (this.BGo > 0) && (this.BGp > 0))
+    if ((((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qPm, 1) == 1) && (this.BXM > 0) && (this.BXN > 0))
     {
-      localObject = this.BGk;
-      float f = Math.min(this.BGo, this.BGp);
+      localObject = this.BXI;
+      float f = Math.min(this.BXM, this.BXN);
       if (f > 0.0F) {
-        ((h)localObject).LmO = f;
+        ((h)localObject).LJy = f;
       }
     }
-    AppMethodBeat.o(195789);
+    AppMethodBeat.o(191248);
   }
   
-  private final int ese()
+  private final int evL()
   {
     int j = 0;
-    AppMethodBeat.i(195795);
-    Object localObject2 = (Iterable)this.BGl;
+    AppMethodBeat.i(191254);
+    Object localObject2 = (Iterable)this.BXJ;
     Object localObject1 = (Collection)new ArrayList();
     localObject2 = ((Iterable)localObject2).iterator();
     Object localObject3;
@@ -156,9 +154,9 @@ public final class v
     if (((Iterator)localObject2).hasNext())
     {
       localObject3 = (w)((Iterator)localObject2).next();
-      localObject3 = MultiMediaVideoChecker.BFV.ce(((w)localObject3).path, true);
+      localObject3 = MultiMediaVideoChecker.BXt.ci(((w)localObject3).path, true);
       if (localObject3 != null) {}
-      for (i = (int)((MultiMediaVideoChecker.a)localObject3).cvL;; i = 0)
+      for (i = (int)((MultiMediaVideoChecker.a)localObject3).cwp;; i = 0)
       {
         ((Collection)localObject1).add(Integer.valueOf(i));
         break;
@@ -169,112 +167,112 @@ public final class v
     if (localObject1 != null) {
       i = ((Integer)localObject1).intValue();
     }
-    ad.i("MicroMsg.VLogComposition", "selectMaxFpsFromTrackList maxFps:".concat(String.valueOf(i)));
-    AppMethodBeat.o(195795);
+    com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.VLogComposition", "selectMaxFpsFromTrackList maxFps:".concat(String.valueOf(i)));
+    AppMethodBeat.o(191254);
     return i;
   }
   
-  public final void Bh(long paramLong)
+  public final void BF(long paramLong)
   {
-    AppMethodBeat.i(195786);
-    this.BFC = paramLong;
-    paramLong = this.BGk.getPlayStart();
-    if ((this.BFC > 0L) && (this.BGk.esa() - paramLong > this.BFC)) {
-      this.BGk.ar(paramLong, this.BFC + paramLong);
+    AppMethodBeat.i(191245);
+    this.BXa = paramLong;
+    paramLong = this.BXI.getPlayStart();
+    if ((this.BXa > 0L) && (this.BXI.evH() - paramLong > this.BXa)) {
+      this.BXI.aq(paramLong, this.BXa + paramLong);
     }
-    AppMethodBeat.o(195786);
+    AppMethodBeat.o(191245);
   }
   
-  public final void E(d.g.a.b<? super Long, Bitmap> paramb)
+  public final void F(d.g.a.b<? super Long, Bitmap> paramb)
   {
-    AppMethodBeat.i(195796);
+    AppMethodBeat.i(191255);
     p.h(paramb, "blendBitmapProvider");
-    this.BGk.E(paramb);
-    AppMethodBeat.o(195796);
+    this.BXI.F(paramb);
+    AppMethodBeat.o(191255);
   }
   
-  public final void TA(int paramInt)
+  public final void Uh(int paramInt)
   {
-    AppMethodBeat.i(195798);
-    ad.i("MicroMsg.VLogComposition", "setFpsUpperLimit:".concat(String.valueOf(paramInt)));
+    AppMethodBeat.i(191257);
+    com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.VLogComposition", "setFpsUpperLimit:".concat(String.valueOf(paramInt)));
     if (paramInt > 0) {
-      this.BGo = paramInt;
+      this.BXM = paramInt;
     }
-    AppMethodBeat.o(195798);
+    AppMethodBeat.o(191257);
   }
   
   public final void a(VLogEffectMgr paramVLogEffectMgr)
   {
-    this.BGk.BHr = paramVLogEffectMgr;
+    this.BXI.BYQ = paramVLogEffectMgr;
   }
   
-  public final void aDp(String paramString)
+  public final void aEI(String paramString)
   {
-    AppMethodBeat.i(195793);
+    AppMethodBeat.i(191252);
     p.h(paramString, "musicPath");
-    if (!bt.isNullOrNil(paramString)) {}
+    if (!bu.isNullOrNil(paramString)) {}
     for (boolean bool = true;; bool = false)
     {
-      this.xxP = bool;
-      this.hml = paramString;
-      String str = com.tencent.mm.vfs.i.k(paramString, false);
+      this.xNM = bool;
+      this.hoZ = paramString;
+      String str = com.tencent.mm.vfs.o.k(paramString, false);
       Object localObject = str;
       if (str == null) {
         localObject = "";
       }
       localObject = new com.tencent.mm.videocomposition.b((String)localObject, 3);
-      ((com.tencent.mm.videocomposition.b)localObject).Bi(this.BGk.getPlayStart());
-      ((com.tencent.mm.videocomposition.b)localObject).Bj(this.BGk.fPE());
-      ((com.tencent.mm.videocomposition.b)localObject).Bk(0L);
-      ((com.tencent.mm.videocomposition.b)localObject).Bl(((com.tencent.mm.videocomposition.b)localObject).hiy);
-      this.BGk.d((com.tencent.mm.videocomposition.b)localObject);
-      ad.i("MicroMsg.VLogComposition", "addCompositionMusic musicPath:".concat(String.valueOf(paramString)));
-      AppMethodBeat.o(195793);
+      ((com.tencent.mm.videocomposition.b)localObject).BG(this.BXI.getPlayStart());
+      ((com.tencent.mm.videocomposition.b)localObject).BH(this.BXI.fUa());
+      ((com.tencent.mm.videocomposition.b)localObject).BI(0L);
+      ((com.tencent.mm.videocomposition.b)localObject).BJ(((com.tencent.mm.videocomposition.b)localObject).hlm);
+      this.BXI.d((com.tencent.mm.videocomposition.b)localObject);
+      com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.VLogComposition", "addCompositionMusic musicPath:".concat(String.valueOf(paramString)));
+      AppMethodBeat.o(191252);
       return;
     }
   }
   
-  public final void ar(long paramLong1, long paramLong2)
+  public final void aq(long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(195785);
-    ad.i("MicroMsg.VLogComposition", "setPlayRange:[" + paramLong1 + ", " + paramLong2 + ']');
-    this.BGk.ar(paramLong1, paramLong2);
-    AppMethodBeat.o(195785);
+    AppMethodBeat.i(191244);
+    com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.VLogComposition", "setPlayRange:[" + paramLong1 + ", " + paramLong2 + ']');
+    this.BXI.aq(paramLong1, paramLong2);
+    AppMethodBeat.o(191244);
   }
   
-  public final long esa()
+  public final long evH()
   {
-    AppMethodBeat.i(221626);
-    long l = this.BGk.esa();
-    AppMethodBeat.o(221626);
+    AppMethodBeat.i(224097);
+    long l = this.BXI.evH();
+    AppMethodBeat.o(224097);
     return l;
   }
   
-  public final CMTimeRange esb()
+  public final CMTimeRange evI()
   {
-    AppMethodBeat.i(221627);
-    CMTimeRange localCMTimeRange = this.BGk.esb();
-    AppMethodBeat.o(221627);
+    AppMethodBeat.i(224098);
+    CMTimeRange localCMTimeRange = this.BXI.evI();
+    AppMethodBeat.o(224098);
     return localCMTimeRange;
   }
   
-  public final o<Long, Long> esc()
+  public final d.o<Long, Long> evJ()
   {
-    AppMethodBeat.i(195788);
-    o localo = new o(Long.valueOf(this.BGk.LmK), Long.valueOf(this.BGk.LmL));
-    AppMethodBeat.o(195788);
+    AppMethodBeat.i(191247);
+    d.o localo = new d.o(Long.valueOf(this.BXI.LJu), Long.valueOf(this.BXI.LJv));
+    AppMethodBeat.o(191247);
     return localo;
   }
   
-  public final List<w> esf()
+  public final List<w> evM()
   {
-    return (List)this.BGl;
+    return (List)this.BXJ;
   }
   
-  public final List<w> esg()
+  public final List<w> evN()
   {
-    AppMethodBeat.i(195797);
-    Object localObject2 = (Iterable)this.BGl;
+    AppMethodBeat.i(191256);
+    Object localObject2 = (Iterable)this.BXJ;
     Object localObject1 = (Collection)new ArrayList();
     localObject2 = ((Iterable)localObject2).iterator();
     label95:
@@ -293,23 +291,23 @@ public final class v
       }
     }
     localObject1 = (List)localObject1;
-    AppMethodBeat.o(195797);
+    AppMethodBeat.o(191256);
     return localObject1;
   }
   
-  public final String esh()
+  public final String evO()
   {
-    AppMethodBeat.i(195800);
-    if (this.BGl.isEmpty())
+    AppMethodBeat.i(191259);
+    if (this.BXJ.isEmpty())
     {
-      AppMethodBeat.o(195800);
+      AppMethodBeat.o(191259);
       return "";
     }
-    Object localObject2 = (Iterable)j.F((List)this.BGl, this.BGl.size() - 1);
+    Object localObject2 = (Iterable)j.G((List)this.BXJ, this.BXJ.size() - 1);
     Object localObject1 = (Collection)new ArrayList(j.a((Iterable)localObject2, 10));
     localObject2 = ((Iterable)localObject2).iterator();
     while (((Iterator)localObject2).hasNext()) {
-      ((Collection)localObject1).add(f.aDj(((w)((Iterator)localObject2).next()).esm()));
+      ((Collection)localObject1).add(f.aEC(((w)((Iterator)localObject2).next()).evT()));
     }
     localObject1 = (List)localObject1;
     localObject2 = (Iterable)localObject1;
@@ -334,15 +332,15 @@ public final class v
         break label373;
       }
       i = 1;
-      localObject2 = u.S("transCount", Integer.valueOf(j));
+      localObject2 = u.R("transCount", Integer.valueOf(j));
       if (i == 0) {
         break label378;
       }
       i = 1;
-      localObject1 = new com.tencent.mm.ac.i(ae.a(new o[] { localObject2, u.S("isApplyToAll", Integer.valueOf(i)), u.S("transStatus", j.a((Iterable)localObject1, (CharSequence)"|", null, null, 0, null, null, 62)) })).toString();
+      localObject1 = new i(d.a.ae.a(new d.o[] { localObject2, u.R("isApplyToAll", Integer.valueOf(i)), u.R("transStatus", j.a((Iterable)localObject1, (CharSequence)"|", null, null, 0, null, null, 62)) })).toString();
       p.g(localObject1, "JSONObject(info).toString()");
       localObject1 = n.h((String)localObject1, ",", ";", false);
-      AppMethodBeat.o(195800);
+      AppMethodBeat.o(191259);
       return localObject1;
       localObject2 = ((Iterable)localObject2).iterator();
       i = 0;
@@ -360,7 +358,7 @@ public final class v
       i = j;
       if (j < 0)
       {
-        j.gfC();
+        j.gke();
         i = j;
       }
     }
@@ -381,19 +379,19 @@ public final class v
     }
   }
   
-  public final String esi()
+  public final String evP()
   {
-    AppMethodBeat.i(195801);
-    if (this.BGl.isEmpty())
+    AppMethodBeat.i(191260);
+    if (this.BXJ.isEmpty())
     {
-      AppMethodBeat.o(195801);
+      AppMethodBeat.o(191260);
       return "";
     }
-    Object localObject2 = (Iterable)this.BGl;
+    Object localObject2 = (Iterable)this.BXJ;
     Object localObject1 = (Collection)new ArrayList(j.a((Iterable)localObject2, 10));
     localObject2 = ((Iterable)localObject2).iterator();
     while (((Iterator)localObject2).hasNext()) {
-      ((Collection)localObject1).add(Float.valueOf(((w)((Iterator)localObject2).next()).BGw.llC));
+      ((Collection)localObject1).add(Float.valueOf(((w)((Iterator)localObject2).next()).BXV.lqb));
     }
     localObject1 = (List)localObject1;
     localObject2 = (Iterable)localObject1;
@@ -404,10 +402,10 @@ public final class v
     int i;
     do
     {
-      localObject1 = new com.tencent.mm.ac.i(ae.a(new o[] { u.S("usePlayRateTrackCount", Integer.valueOf(j)), u.S("playRateStatus", j.a((Iterable)localObject1, (CharSequence)"|", null, null, 0, null, null, 62)) })).toString();
+      localObject1 = new i(d.a.ae.a(new d.o[] { u.R("usePlayRateTrackCount", Integer.valueOf(j)), u.R("playRateStatus", j.a((Iterable)localObject1, (CharSequence)"|", null, null, 0, null, null, 62)) })).toString();
       p.g(localObject1, "JSONObject(info).toString()");
       localObject1 = n.h((String)localObject1, ",", ";", false);
-      AppMethodBeat.o(195801);
+      AppMethodBeat.o(191260);
       return localObject1;
       localObject2 = ((Iterable)localObject2).iterator();
       i = 0;
@@ -424,7 +422,7 @@ public final class v
       i = j;
       if (j < 0)
       {
-        j.gfC();
+        j.gke();
         i = j;
       }
     }
@@ -439,38 +437,38 @@ public final class v
   
   public final h getComposition()
   {
-    AppMethodBeat.i(195790);
-    esd();
-    h localh = this.BGk;
-    AppMethodBeat.o(195790);
+    AppMethodBeat.i(191249);
+    evK();
+    h localh = this.BXI;
+    AppMethodBeat.o(191249);
     return localh;
   }
   
   public final long getDurationMs()
   {
-    AppMethodBeat.i(195784);
-    long l = this.BGk.getDurationMs();
-    AppMethodBeat.o(195784);
+    AppMethodBeat.i(191243);
+    long l = this.BXI.getDurationMs();
+    AppMethodBeat.o(191243);
     return l;
   }
   
   public final long getPlayStart()
   {
-    AppMethodBeat.i(221625);
-    long l = this.BGk.getPlayStart();
-    AppMethodBeat.o(221625);
+    AppMethodBeat.i(224096);
+    long l = this.BXI.getPlayStart();
+    AppMethodBeat.o(224096);
     return l;
   }
   
-  public final void io(int paramInt1, int paramInt2)
+  public final void ir(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(195792);
-    ad.i("MicroMsg.VLogComposition", "setRenderSize: " + paramInt1 + ", " + paramInt2);
-    this.BGk.ks(paramInt1, paramInt2);
-    AppMethodBeat.o(195792);
+    AppMethodBeat.i(191251);
+    com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.VLogComposition", "setRenderSize: " + paramInt1 + ", " + paramInt2);
+    this.BXI.kz(paramInt1, paramInt2);
+    AppMethodBeat.o(191251);
   }
   
-  public final void lF(int paramInt1, int paramInt2)
+  public final void is(int paramInt1, int paramInt2)
   {
     this.audioSampleRate = paramInt1;
     this.audioChannelCount = paramInt2;
@@ -478,20 +476,20 @@ public final class v
   
   public final void o(Rect paramRect)
   {
-    AppMethodBeat.i(195791);
+    AppMethodBeat.i(191250);
     p.h(paramRect, "rect");
-    this.hmm.set(paramRect);
-    this.BGk.p(this.hmm);
-    AppMethodBeat.o(195791);
+    this.hpa.set(paramRect);
+    this.BXI.p(this.hpa);
+    AppMethodBeat.o(191250);
   }
   
-  public final void sQ(boolean paramBoolean)
+  public final void sX(boolean paramBoolean)
   {
-    AppMethodBeat.i(195794);
-    ad.i("MicroMsg.VLogComposition", "enableVideoSound:".concat(String.valueOf(paramBoolean)));
-    this.BGm = paramBoolean;
-    this.BGk.sQ(this.BGm);
-    AppMethodBeat.o(195794);
+    AppMethodBeat.i(191253);
+    com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.VLogComposition", "enableVideoSound:".concat(String.valueOf(paramBoolean)));
+    this.BXK = paramBoolean;
+    this.BXI.sX(this.BXK);
+    AppMethodBeat.o(191253);
   }
 }
 

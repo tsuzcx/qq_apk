@@ -37,7 +37,7 @@ public class TextPreference
     AppMethodBeat.o(142684);
   }
   
-  public final void am(CharSequence paramCharSequence)
+  public final void al(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(142685);
     this.mText = paramCharSequence;

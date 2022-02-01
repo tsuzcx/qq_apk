@@ -5,18 +5,18 @@ import android.widget.TextView;
 import com.tencent.mm.plugin.newtips.a.a;
 import com.tencent.mm.plugin.newtips.a.g;
 import com.tencent.mm.plugin.newtips.a.k;
-import com.tencent.mm.protocal.protobuf.dnc;
+import com.tencent.mm.protocal.protobuf.dnz;
 
 abstract class WalletOfflineCoinPurseUI$a
   implements a
 {
-  protected ImageView wBe;
-  protected TextView wBf;
-  protected ImageView wBg;
+  protected ImageView wQP;
+  protected TextView wQQ;
+  protected ImageView wQR;
   
   public WalletOfflineCoinPurseUI$a(WalletOfflineCoinPurseUI paramWalletOfflineCoinPurseUI)
   {
-    dxe();
+    dAu();
   }
   
   public final void a(k paramk, boolean paramBoolean)
@@ -24,75 +24,75 @@ abstract class WalletOfflineCoinPurseUI$a
     g.a(this, paramk, paramBoolean);
   }
   
-  public final boolean a(boolean paramBoolean, dnc paramdnc)
+  public final boolean a(boolean paramBoolean, dnz paramdnz)
   {
     if (paramBoolean)
     {
-      this.wBg.setVisibility(0);
-      this.wBf.setVisibility(0);
-      this.wBf.setText(paramdnc.title);
+      this.wQR.setVisibility(0);
+      this.wQQ.setVisibility(0);
+      this.wQQ.setText(paramdnz.title);
     }
     for (;;)
     {
       return true;
-      this.wBg.setVisibility(8);
-      this.wBf.setVisibility(8);
+      this.wQR.setVisibility(8);
+      this.wQQ.setVisibility(8);
     }
   }
   
-  public final boolean b(boolean paramBoolean, dnc paramdnc)
+  public final boolean b(boolean paramBoolean, dnz paramdnz)
   {
     return false;
   }
   
-  public final boolean c(boolean paramBoolean, dnc paramdnc)
+  public final boolean c(boolean paramBoolean, dnz paramdnz)
   {
     return false;
   }
   
-  public final boolean d(boolean paramBoolean, dnc paramdnc)
+  public final boolean d(boolean paramBoolean, dnz paramdnz)
   {
     return false;
   }
   
-  public final boolean dkD()
+  public abstract void dAu();
+  
+  public final boolean dnD()
   {
     return false;
   }
   
-  public boolean dkE()
+  public boolean dnE()
   {
     return false;
   }
   
-  public abstract void dxe();
-  
-  public final boolean ol(boolean paramBoolean)
+  public final boolean oq(boolean paramBoolean)
   {
     return g.a(paramBoolean, this);
   }
   
-  public final boolean om(boolean paramBoolean)
+  public final boolean or(boolean paramBoolean)
   {
     if (paramBoolean) {
-      this.wBg.setVisibility(0);
+      this.wQR.setVisibility(0);
     }
     for (;;)
     {
       return true;
-      this.wBg.setVisibility(8);
+      this.wQR.setVisibility(8);
     }
   }
   
-  public final boolean on(boolean paramBoolean)
+  public final boolean os(boolean paramBoolean)
   {
     if (paramBoolean) {
-      this.wBe.setVisibility(0);
+      this.wQP.setVisibility(0);
     }
     for (;;)
     {
       return true;
-      this.wBe.setVisibility(8);
+      this.wQP.setVisibility(8);
     }
   }
 }

@@ -9,8 +9,8 @@ import android.net.nsd.NsdServiceInfo;
 import android.os.Build.VERSION;
 import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
 import java.net.InetAddress;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -22,27 +22,27 @@ import java.util.concurrent.TimeUnit;
 
 public enum p
 {
-  public final Map<b, NsdManager.DiscoveryListener> lWK;
+  public final Map<b, NsdManager.DiscoveryListener> mbq;
   
   static
   {
     AppMethodBeat.i(144459);
-    lWJ = new p("INSTANCE");
-    lWL = new p[] { lWJ };
+    mbp = new p("INSTANCE");
+    mbr = new p[] { mbp };
     AppMethodBeat.o(144459);
   }
   
   private p()
   {
     AppMethodBeat.i(144455);
-    this.lWK = new ConcurrentHashMap();
+    this.mbq = new ConcurrentHashMap();
     AppMethodBeat.o(144455);
   }
   
-  public static NsdManager bts()
+  public static NsdManager bud()
   {
     AppMethodBeat.i(144457);
-    NsdManager localNsdManager = (NsdManager)aj.getContext().getSystemService("servicediscovery");
+    NsdManager localNsdManager = (NsdManager)ak.getContext().getSystemService("servicediscovery");
     AppMethodBeat.o(144457);
     return localNsdManager;
   }
@@ -50,18 +50,18 @@ public enum p
   public final void a(b paramb)
   {
     AppMethodBeat.i(144456);
-    synchronized (this.lWK)
+    synchronized (this.mbq)
     {
-      if (!this.lWK.containsKey(paramb))
+      if (!this.mbq.containsKey(paramb))
       {
         AppMethodBeat.o(144456);
         return;
       }
-      NsdManager localNsdManager = bts();
+      NsdManager localNsdManager = bud();
       try
       {
-        localNsdManager.stopServiceDiscovery((NsdManager.DiscoveryListener)this.lWK.get(paramb));
-        this.lWK.remove(paramb);
+        localNsdManager.stopServiceDiscovery((NsdManager.DiscoveryListener)this.mbq.get(paramb));
+        this.mbq.remove(paramb);
         AppMethodBeat.o(144456);
         return;
       }
@@ -69,7 +69,7 @@ public enum p
       {
         for (;;)
         {
-          ad.printErrStackTrace("MicroMsg.LocalServiceMgr", localThrowable, "Throwable: stopScanServices", new Object[0]);
+          ae.printErrStackTrace("MicroMsg.LocalServiceMgr", localThrowable, "Throwable: stopScanServices", new Object[0]);
         }
       }
     }
@@ -88,27 +88,27 @@ public enum p
     
     public abstract void b(p.c paramc);
     
-    public abstract void blw();
+    public abstract void bmf();
     
-    public abstract void blx();
+    public abstract void bmg();
     
-    public abstract void bly();
+    public abstract void bmh();
     
-    public abstract void blz();
+    public abstract void bmi();
   }
   
   public static final class c
   {
-    public String hDZ;
+    public String hGR;
     public String ip;
-    public Map<String, String> lWS;
-    public String lWT;
+    public Map<String, String> mby;
+    public String mbz;
     public int port;
     
     public c()
     {
       AppMethodBeat.i(144452);
-      this.lWS = new HashMap();
+      this.mby = new HashMap();
       AppMethodBeat.o(144452);
     }
     
@@ -116,14 +116,14 @@ public enum p
     c(NsdServiceInfo paramNsdServiceInfo)
     {
       AppMethodBeat.i(144451);
-      this.lWS = new HashMap();
+      this.mby = new HashMap();
       Object localObject = paramNsdServiceInfo.getHost();
       if (localObject != null) {
         this.ip = ((InetAddress)localObject).getHostAddress();
       }
       this.port = paramNsdServiceInfo.getPort();
-      this.lWT = paramNsdServiceInfo.getServiceName();
-      this.hDZ = paramNsdServiceInfo.getServiceType();
+      this.mbz = paramNsdServiceInfo.getServiceName();
+      this.hGR = paramNsdServiceInfo.getServiceType();
       if (Build.VERSION.SDK_INT >= 21) {}
       for (paramNsdServiceInfo = paramNsdServiceInfo.getAttributes();; paramNsdServiceInfo = null)
       {
@@ -135,7 +135,7 @@ public enum p
             String str = (String)((Iterator)localObject).next();
             byte[] arrayOfByte = (byte[])paramNsdServiceInfo.get(str);
             if (arrayOfByte != null) {
-              this.lWS.put(str, new String(Base64.encode(arrayOfByte, 2)));
+              this.mby.put(str, new String(Base64.encode(arrayOfByte, 2)));
             }
           }
         }

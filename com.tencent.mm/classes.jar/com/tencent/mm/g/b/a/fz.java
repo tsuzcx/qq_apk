@@ -6,114 +6,56 @@ import com.tencent.mm.plugin.report.a;
 public final class fz
   extends a
 {
-  public long ely = 0L;
-  public long emJ = 0L;
-  public long emK = 0L;
-  public long emL = 0L;
-  private long emM = 0L;
-  private long emN = 0L;
-  private long emO = 0L;
+  public long eod = 0L;
+  private String eoe = "";
+  
+  public final String RC()
+  {
+    AppMethodBeat.i(118503);
+    Object localObject = new StringBuffer();
+    ((StringBuffer)localObject).append(this.eod);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.eoe);
+    localObject = ((StringBuffer)localObject).toString();
+    axO((String)localObject);
+    AppMethodBeat.o(118503);
+    return localObject;
+  }
   
   public final String RD()
   {
-    AppMethodBeat.i(118510);
+    AppMethodBeat.i(118504);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.emJ);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.emK);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.emL);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.emM);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.emN);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ely);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.emO);
+    ((StringBuffer)localObject).append("PageType:").append(this.eod);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("StoryId:").append(this.eoe);
     localObject = ((StringBuffer)localObject).toString();
-    awz((String)localObject);
-    AppMethodBeat.o(118510);
+    AppMethodBeat.o(118504);
     return localObject;
-  }
-  
-  public final String RE()
-  {
-    AppMethodBeat.i(118511);
-    Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("ClickMyProfileTime:").append(this.emJ);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ClickCameraTime:").append(this.emK);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ClickGuidePageTime:").append(this.emL);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("isProfileRedPoint:").append(this.emM);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("isCameraRedPoint:").append(this.emN);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("VideoObjectId:").append(this.ely);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("isStoryCommentRedDot:").append(this.emO);
-    localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(118511);
-    return localObject;
-  }
-  
-  public final fz TL()
-  {
-    this.emJ = 0L;
-    return this;
-  }
-  
-  public final fz TM()
-  {
-    this.emK = 0L;
-    return this;
-  }
-  
-  public final fz TN()
-  {
-    this.emL = 0L;
-    return this;
-  }
-  
-  public final fz TO()
-  {
-    this.ely = 0L;
-    return this;
-  }
-  
-  public final long TP()
-  {
-    return this.ely;
   }
   
   public final int getId()
   {
-    return 16844;
+    return 16657;
   }
   
-  public final fz ll(long paramLong)
+  public final fz lh(long paramLong)
   {
-    this.emM = paramLong;
+    this.eod = paramLong;
     return this;
   }
   
-  public final fz lm(long paramLong)
+  public final fz pi(String paramString)
   {
-    this.emN = paramLong;
-    return this;
-  }
-  
-  public final fz ln(long paramLong)
-  {
-    this.emO = paramLong;
+    AppMethodBeat.i(118502);
+    this.eoe = t("StoryId", paramString, true);
+    AppMethodBeat.o(118502);
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.g.b.a.fz
  * JD-Core Version:    0.7.0.1
  */

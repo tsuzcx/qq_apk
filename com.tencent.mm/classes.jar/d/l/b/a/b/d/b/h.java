@@ -14,12 +14,12 @@ import d.l.b.a.b.m.u;
 public final class h
   implements s
 {
-  public static final h NiP;
+  public static final h NFV;
   
   static
   {
     AppMethodBeat.i(58196);
-    NiP = new h();
+    NFV = new h();
     AppMethodBeat.o(58196);
   }
   
@@ -32,13 +32,13 @@ public final class h
     p.h(paramaj2, "upperBound");
     if ((p.i(paramString, "kotlin.jvm.PlatformType") ^ true))
     {
-      paramp = u.bcU("Error java flexible type with id: " + paramString + ". (" + paramaj1 + ".." + paramaj2 + ')');
+      paramp = u.bey("Error java flexible type with id: " + paramString + ". (" + paramaj1 + ".." + paramaj2 + ')');
       p.g(paramp, "ErrorUtils.createErrorTy…owerBound..$upperBound)\")");
       paramp = (ab)paramp;
       AppMethodBeat.o(58195);
       return paramp;
     }
-    if (paramp.c(a.Npg))
+    if (paramp.c(a.NMm))
     {
       paramp = (ab)new g(paramaj1, paramaj2);
       AppMethodBeat.o(58195);
@@ -51,7 +51,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.d.b.h
  * JD-Core Version:    0.7.0.1
  */

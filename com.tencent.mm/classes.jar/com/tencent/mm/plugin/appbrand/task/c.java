@@ -5,19 +5,18 @@ import android.os.SystemClock;
 import android.util.Log;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.appcache.WxaCommLibRuntimeReader;
-import com.tencent.mm.plugin.appbrand.jsruntime.ac;
-import com.tencent.mm.plugin.appbrand.page.ae;
-import com.tencent.mm.plugin.appbrand.q;
+import com.tencent.mm.plugin.appbrand.r;
 import com.tencent.mm.plugin.appbrand.report.n;
-import com.tencent.mm.plugin.appbrand.utils.j;
+import com.tencent.mm.plugin.appbrand.utils.k;
 import com.tencent.mm.plugin.appbrand.x;
 import com.tencent.mm.plugin.appbrand.x.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.ax;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.platformtools.ay;
 import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.bv;
+import com.tencent.mm.sdk.platformtools.j;
 import com.tencent.xweb.WebView;
 import d.z;
 import java.util.Collection;
@@ -29,30 +28,30 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class c
 {
-  private static final Queue<q> lQy;
-  private static c.b mxn;
-  private static final HashSet<a> mxo;
-  private static final Queue<ae> mxp;
-  private static volatile AppBrandPreloadProfiler mxq;
-  private static volatile e mxr;
-  private static volatile boolean mxs;
-  private static volatile boolean mxt;
-  private static volatile boolean mxu;
-  private static volatile int mxv;
+  private static final Queue<r> lUZ;
+  private static b mCk;
+  private static final HashSet<a> mCl;
+  private static final Queue<com.tencent.mm.plugin.appbrand.page.ad> mCm;
+  private static volatile AppBrandPreloadProfiler mCn;
+  private static volatile e mCo;
+  private static volatile boolean mCp;
+  private static volatile boolean mCq;
+  private static volatile boolean mCr;
+  private static volatile int mCs;
   
   static
   {
     AppMethodBeat.i(48405);
-    mxn = c.b.mxC;
-    mxo = new HashSet();
-    mxp = new ConcurrentLinkedQueue();
-    lQy = new ConcurrentLinkedQueue();
-    mxq = null;
-    mxr = e.myi;
-    mxs = false;
-    mxt = false;
-    mxu = false;
-    mxv = 2147483647;
+    mCk = b.mCz;
+    mCl = new HashSet();
+    mCm = new ConcurrentLinkedQueue();
+    lUZ = new ConcurrentLinkedQueue();
+    mCn = null;
+    mCo = e.mDg;
+    mCp = false;
+    mCq = false;
+    mCr = false;
+    mCs = 2147483647;
     AppMethodBeat.o(48405);
   }
   
@@ -75,7 +74,7 @@ public class c
     label100:
     for (String str2 = "?";; str2 = "ok")
     {
-      paramString1 = bt.x("Unknown(%s=%s,%s=%s)", new Object[] { paramString1, str1, paramString2, str2 });
+      paramString1 = bu.x("Unknown(%s=%s,%s=%s)", new Object[] { paramString1, str1, paramString2, str2 });
       AppMethodBeat.o(48397);
       return paramString1;
       str1 = "ok";
@@ -85,40 +84,40 @@ public class c
   
   private static void a(e parame, AppBrandPreloadProfiler paramAppBrandPreloadProfiler, final int paramInt)
   {
-    AppMethodBeat.i(188769);
-    if ((mxr != e.myi) && (mxn != c.b.mxE))
+    AppMethodBeat.i(222988);
+    if ((mCo != e.mDg) && (mCk != b.mCB))
     {
       parame = new IllegalStateException("AppBrandPreloader.preload preload sServiceType is not nil");
-      AppMethodBeat.o(188769);
+      AppMethodBeat.o(222988);
       throw parame;
     }
-    if ((parame != e.myi) && (mxn == c.b.mxE) && (mxr != parame))
+    if ((parame != e.mDg) && (mCk == b.mCB) && (mCo != parame))
     {
       parame = new IllegalStateException("downgraded, but try preload again with a different service");
-      AppMethodBeat.o(188769);
+      AppMethodBeat.o(222988);
       throw parame;
     }
-    mxr = parame;
+    mCo = parame;
     AppBrandPreloadProfiler localAppBrandPreloadProfiler = paramAppBrandPreloadProfiler;
     if (paramAppBrandPreloadProfiler == null) {
       localAppBrandPreloadProfiler = new AppBrandPreloadProfiler();
     }
     localAppBrandPreloadProfiler.level = paramInt;
-    mxq = localAppBrandPreloadProfiler;
-    paramAppBrandPreloadProfiler = com.tencent.mm.plugin.report.service.g.yhR;
-    if (parame == e.myh) {}
+    mCn = localAppBrandPreloadProfiler;
+    paramAppBrandPreloadProfiler = com.tencent.mm.plugin.report.service.g.yxI;
+    if (parame == e.mDf) {}
     for (int i = 5;; i = 0)
     {
       paramAppBrandPreloadProfiler.dD(915, i);
-      ad.i("MicroMsg.AppBrandProcessPreloader[applaunch][preload]", "TRACE_ORDER:AppBrandProcessPreloader.java");
+      ae.i("MicroMsg.AppBrandProcessPreloader[applaunch][preload]", "TRACE_ORDER:AppBrandProcessPreloader.java");
       if (paramInt != 0) {
         break;
       }
-      vq(paramInt);
-      AppMethodBeat.o(188769);
+      vv(paramInt);
+      AppMethodBeat.o(222988);
       return;
     }
-    com.tencent.e.h.LTJ.f(new Runnable()
+    com.tencent.e.h.MqF.f(new Runnable()
     {
       public final void run()
       {
@@ -127,35 +126,35 @@ public class c
         {
           try
           {
-            com.tencent.mm.plugin.expansions.a.cmN();
-            c.byA().startTime = SystemClock.elapsedRealtime();
-            ad.i("MicroMsg.AppBrandProcessPreloader[applaunch][preload]", "preInit start");
-            aq.aay(-2);
+            com.tencent.mm.plugin.expansions.a.cod();
+            c.bzu().startTime = SystemClock.elapsedRealtime();
+            ae.i("MicroMsg.AppBrandProcessPreloader[applaunch][preload]", "preInit start");
+            ar.abe(-2);
             try
             {
               WxaCommLibRuntimeReader.vw();
-              ac.bhw();
-              if (this.jDq == e.myh)
+              com.tencent.mm.plugin.appbrand.jsruntime.ad.bie();
+              if (this.jGo == e.mDf)
               {
                 c.access$200();
                 c.access$300();
-                ad.i("MicroMsg.AppBrandProcessPreloader[applaunch][preload]", "[wagame] misc preload done");
+                ae.i("MicroMsg.AppBrandProcessPreloader[applaunch][preload]", "[wagame] misc preload done");
                 return;
               }
             }
             catch (Throwable localThrowable1)
             {
-              ad.e("MicroMsg.AppBrandProcessPreloader[applaunch][preload]", "skip preload runtime, load CommLib get exception %s", new Object[] { Log.getStackTraceString(localThrowable1) });
+              ae.e("MicroMsg.AppBrandProcessPreloader[applaunch][preload]", "skip preload runtime, load CommLib get exception %s", new Object[] { Log.getStackTraceString(localThrowable1) });
               c.access$100();
               return;
             }
-            localObject = new j(new Runnable()
+            localObject = new k(new Runnable()
             {
               public final void run()
               {
-                AppMethodBeat.i(188761);
-                c.oJ(c.1.this.jDt);
-                AppMethodBeat.o(188761);
+                AppMethodBeat.i(222980);
+                c.oM(c.1.this.jGr);
+                AppMethodBeat.o(222980);
               }
             }, 2);
             local2 = new Runnable()
@@ -163,30 +162,30 @@ public class c
               public final void run()
               {
                 AppMethodBeat.i(48369);
-                aq.aay(-8);
-                c.LA();
-                this.mxx.countDown();
+                ar.abe(-8);
+                c.LI();
+                this.mCu.countDown();
                 AppMethodBeat.o(48369);
               }
             };
             if (paramInt < 2) {
               continue;
             }
-            if (!x.aXK()) {
+            if (!x.aYd()) {
               continue;
             }
-            ad.i("MicroMsg.AppBrandProcessPreloader[applaunch][preload]", "XWebPreloader preloaded, trigger preloadAppBrandRuntime");
-            aq.f(local2);
+            ae.i("MicroMsg.AppBrandProcessPreloader[applaunch][preload]", "XWebPreloader preloaded, trigger preloadAppBrandRuntime");
+            ar.f(local2);
           }
           catch (Throwable localThrowable2)
           {
             Object localObject;
             Runnable local2;
             c.access$100();
-            if (!bu.flY()) {
+            if (!bv.fpT()) {
               break label302;
             }
-            aq.f(new Runnable()
+            ar.f(new Runnable()
             {
               public final void run()
               {
@@ -194,59 +193,59 @@ public class c
               }
             });
             return;
-            ad.i("MicroMsg.AppBrandProcessPreloader[applaunch][preload]", "run: skip preload webView");
+            ae.i("MicroMsg.AppBrandProcessPreloader[applaunch][preload]", "run: skip preload webView");
             localThrowable2.countDown();
             continue;
           }
           finally
           {
-            ad.i("MicroMsg.AppBrandProcessPreloader[applaunch][preload]", "misc preload done");
-            aq.aay(10);
+            ae.i("MicroMsg.AppBrandProcessPreloader[applaunch][preload]", "misc preload done");
+            ar.abe(10);
             AppMethodBeat.o(48370);
           }
           localObject = new Runnable()
           {
             public final void run()
             {
-              AppMethodBeat.i(188764);
+              AppMethodBeat.i(222983);
               c.access$600();
-              this.mxx.countDown();
-              AppMethodBeat.o(188764);
+              this.mCu.countDown();
+              AppMethodBeat.o(222983);
             }
           };
-          com.tencent.e.h.LTJ.f((Runnable)localObject, "MicroMsg.AppBrandProcessPreloader[applaunch][preload]_AppBrandServicePreloadWorker");
-          ad.i("MicroMsg.AppBrandProcessPreloader[applaunch][preload]", "misc preload done");
-          aq.aay(10);
+          com.tencent.e.h.MqF.f((Runnable)localObject, "MicroMsg.AppBrandProcessPreloader[applaunch][preload]_AppBrandServicePreloadWorker");
+          ae.i("MicroMsg.AppBrandProcessPreloader[applaunch][preload]", "misc preload done");
+          ar.abe(10);
           AppMethodBeat.o(48370);
           return;
           x.a(new x.a()
           {
-            public final void aWv()
+            public final void aWX()
             {
-              AppMethodBeat.i(188762);
-              com.tencent.mm.plugin.appbrand.report.quality.a.bxN();
-              com.tencent.mm.plugin.appbrand.report.quality.b.a(true, null, this.mxy, n.bxn());
-              aq.f(this.mxz);
-              AppMethodBeat.o(188762);
+              AppMethodBeat.i(222981);
+              com.tencent.mm.plugin.appbrand.report.quality.a.byG();
+              com.tencent.mm.plugin.appbrand.report.quality.b.a(true, null, this.mCv, n.byg());
+              ar.f(this.mCw);
+              AppMethodBeat.o(222981);
             }
             
-            public final void aWw()
+            public final void aWY()
             {
-              AppMethodBeat.i(188763);
-              ad.i("MicroMsg.AppBrandProcessPreloader[applaunch][preload]", "XWebPreloader onPreloadFailed, trigger preloadAppBrandRuntime");
-              aq.f(this.mxz);
-              AppMethodBeat.o(188763);
+              AppMethodBeat.i(222982);
+              ae.i("MicroMsg.AppBrandProcessPreloader[applaunch][preload]", "XWebPreloader onPreloadFailed, trigger preloadAppBrandRuntime");
+              ar.f(this.mCw);
+              AppMethodBeat.o(222982);
             }
           });
         }
         for (;;)
         {
           label302:
-          ad.printErrStackTrace("MicroMsg.AppBrandProcessPreloader[applaunch][preload]", localThrowable3, "[NOT CRASH]", new Object[0]);
+          ae.printErrStackTrace("MicroMsg.AppBrandProcessPreloader[applaunch][preload]", localThrowable3, "[NOT CRASH]", new Object[0]);
         }
       }
     }, "MicroMsg.AppBrandProcessPreloader[applaunch][preload]_ComponentsPreloadWorker");
-    com.tencent.e.h.LTJ.f(new Runnable()
+    com.tencent.e.h.MqF.f(new Runnable()
     {
       public final void run()
       {
@@ -255,81 +254,81 @@ public class c
         {
           public final void run()
           {
-            AppMethodBeat.i(188765);
-            Iterator localIterator = f.byH().iterator();
+            AppMethodBeat.i(222984);
+            Iterator localIterator = f.bzC().iterator();
             while (localIterator.hasNext())
             {
               i locali = (i)localIterator.next();
-              if (bt.nullAsNil(locali.myy).equals(((com.tencent.mm.kernel.b.h)com.tencent.mm.kernel.g.ajz().ajb()).mProcessName)) {
+              if (bu.nullAsNil(locali.mDw).equals(((com.tencent.mm.kernel.b.h)com.tencent.mm.kernel.g.ajO().ajq()).mProcessName)) {
                 try
                 {
-                  locali.myx.newInstance();
+                  locali.mDv.newInstance();
                 }
                 catch (Throwable localThrowable) {}
               }
             }
-            AppMethodBeat.o(188765);
+            AppMethodBeat.o(222984);
           }
         });
         AppMethodBeat.o(48373);
       }
     }, "MicroMsg.AppBrandProcessPreloader[applaunch][preload]_ExtraPreloadWorker");
-    AppMethodBeat.o(188769);
+    AppMethodBeat.o(222988);
   }
   
   public static void a(e parame, a parama, boolean paramBoolean)
   {
-    AppMethodBeat.i(188767);
+    AppMethodBeat.i(222986);
     a(parame, parama, paramBoolean, null, 2);
-    AppMethodBeat.o(188767);
+    AppMethodBeat.o(222986);
   }
   
   public static void a(e parame, a parama, boolean paramBoolean, AppBrandPreloadProfiler paramAppBrandPreloadProfiler, int paramInt)
   {
-    AppMethodBeat.i(188768);
-    ad.i("MicroMsg.AppBrandProcessPreloader[applaunch][preload]", "AppBrandPreloader.preload serviceType = [%s]", new Object[] { parame.name() });
-    c.b localb;
+    AppMethodBeat.i(222987);
+    ae.i("MicroMsg.AppBrandProcessPreloader[applaunch][preload]", "AppBrandPreloader.preload serviceType = [%s]", new Object[] { parame.name() });
+    b localb;
     try
     {
-      if (((mxn == c.b.mxF) || (mxn == c.b.mxE)) && (paramBoolean)) {
+      if (((mCk == b.mCC) || (mCk == b.mCB)) && (paramBoolean)) {
         reset();
       }
-      localb = mxn;
-      if ((localb == c.b.mxC) || (localb == c.b.mxD) || ((localb == c.b.mxE) && (paramInt >= 2)))
+      localb = mCk;
+      if ((localb == b.mCz) || (localb == b.mCA) || ((localb == b.mCB) && (paramInt >= 2)))
       {
         if (parama != null) {
-          mxo.add(parama);
+          mCl.add(parama);
         }
-        mxn = c.b.mxD;
+        mCk = b.mCA;
       }
-      if (localb == c.b.mxD)
+      if (localb == b.mCA)
       {
-        AppMethodBeat.o(188768);
+        AppMethodBeat.o(222987);
         return;
       }
     }
     finally
     {
-      AppMethodBeat.o(188768);
+      AppMethodBeat.o(222987);
     }
-    if ((localb == c.b.mxF) || ((localb == c.b.mxE) && (paramInt < 2)))
+    if ((localb == b.mCC) || ((localb == b.mCB) && (paramInt < 2)))
     {
       if (parama != null) {
         parama.onReady();
       }
-      AppMethodBeat.o(188768);
+      AppMethodBeat.o(222987);
       return;
     }
     int i;
-    if ((!com.tencent.mm.sdk.platformtools.i.IS_FLAVOR_RED) && (!com.tencent.mm.sdk.platformtools.i.IS_FLAVOR_PURPLE) && (!com.tencent.mm.sdk.platformtools.i.DEBUG))
+    if ((!j.IS_FLAVOR_RED) && (!j.IS_FLAVOR_PURPLE) && (!j.DEBUG))
     {
       i = paramInt;
-      if (!bu.flY()) {}
+      if (!bv.fpT()) {}
     }
     else
     {
-      parama = com.tencent.mm.plugin.appbrand.app.d.jDy;
-      parama = com.tencent.mm.plugin.appbrand.app.d.Lv();
+      parama = com.tencent.mm.plugin.appbrand.app.d.jGw;
+      parama = com.tencent.mm.plugin.appbrand.app.d.LD();
       i = paramInt;
       if (parama != null)
       {
@@ -339,58 +338,58 @@ public class c
         }
       }
     }
-    ad.d("MicroMsg.AppBrandProcessPreloader[applaunch][preload]", "preload: level = %d", new Object[] { Integer.valueOf(i) });
+    ae.d("MicroMsg.AppBrandProcessPreloader[applaunch][preload]", "preload: level = %d", new Object[] { Integer.valueOf(i) });
     a(parame, paramAppBrandPreloadProfiler, i);
-    AppMethodBeat.o(188768);
+    AppMethodBeat.o(222987);
   }
   
   public static boolean a(e parame, a parama, String paramString)
   {
-    AppMethodBeat.i(188770);
+    AppMethodBeat.i(222989);
     for (;;)
     {
       try
       {
-        ad.i("MicroMsg.AppBrandProcessPreloader[applaunch][preload]", "Checking shouldWaitPreloading.. mCurrentPreloadState is [%s], sCacheServices.size[%d], sCachePageView.size[%d], message[%s]", new Object[] { mxn.name(), Integer.valueOf(lQy.size()), Integer.valueOf(mxp.size()), bt.nullAsNil(paramString) });
-        if ((mxn == c.b.mxD) && (parame == mxr))
+        ae.i("MicroMsg.AppBrandProcessPreloader[applaunch][preload]", "Checking shouldWaitPreloading.. mCurrentPreloadState is [%s], sCacheServices.size[%d], sCachePageView.size[%d], message[%s]", new Object[] { mCk.name(), Integer.valueOf(lUZ.size()), Integer.valueOf(mCm.size()), bu.nullAsNil(paramString) });
+        if ((mCk == b.mCA) && (parame == mCo))
         {
-          mxo.add(parama);
-          mxq.mxm = SystemClock.elapsedRealtime();
+          mCl.add(parama);
+          mCn.mCj = SystemClock.elapsedRealtime();
           return true;
         }
-        if (!a.bym()) {
+        if (!a.bzf()) {
           break label255;
         }
-        if (mxn == c.b.mxC)
+        if (mCk == b.mCz)
         {
-          ad.i("MicroMsg.AppBrandProcessPreloader[applaunch][preload]", "[ForcePreload] wait preload (not preload currently)");
-          mxo.add(parama);
-          mxn = c.b.mxD;
+          ae.i("MicroMsg.AppBrandProcessPreloader[applaunch][preload]", "[ForcePreload] wait preload (not preload currently)");
+          mCl.add(parama);
+          mCk = b.mCA;
           i = 1;
           if (i != 0)
           {
             a(parame, null, 2);
-            AppMethodBeat.o(188770);
+            AppMethodBeat.o(222989);
             return true;
           }
         }
         else
         {
-          if (((mxn != c.b.mxE) && (mxn != c.b.mxF)) || ((mxr == parame) && (lQy.peek() != null))) {
+          if (((mCk != b.mCB) && (mCk != b.mCC)) || ((mCo == parame) && (lUZ.peek() != null))) {
             break label255;
           }
-          ad.i("MicroMsg.AppBrandProcessPreloader[applaunch][preload]", "[ForcePreload] wait preload (preloaded)");
+          ae.i("MicroMsg.AppBrandProcessPreloader[applaunch][preload]", "[ForcePreload] wait preload (preloaded)");
           reset();
-          mxo.add(parama);
-          mxn = c.b.mxD;
+          mCl.add(parama);
+          mCk = b.mCA;
           i = 1;
           continue;
         }
-        AppMethodBeat.o(188770);
+        AppMethodBeat.o(222989);
       }
       finally
       {
-        AppMethodBeat.o(188770);
+        AppMethodBeat.o(222989);
       }
       return false;
       label255:
@@ -399,17 +398,17 @@ public class c
   }
   
   /* Error */
-  public static boolean aXK()
+  public static boolean aYd()
   {
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: getstatic 65	com/tencent/mm/plugin/appbrand/task/c:mxn	Lcom/tencent/mm/plugin/appbrand/task/c$b;
-    //   6: getstatic 325	com/tencent/mm/plugin/appbrand/task/c$b:mxF	Lcom/tencent/mm/plugin/appbrand/task/c$b;
+    //   3: getstatic 68	com/tencent/mm/plugin/appbrand/task/c:mCk	Lcom/tencent/mm/plugin/appbrand/task/c$b;
+    //   6: getstatic 328	com/tencent/mm/plugin/appbrand/task/c$b:mCC	Lcom/tencent/mm/plugin/appbrand/task/c$b;
     //   9: if_acmpeq +16 -> 25
-    //   12: getstatic 65	com/tencent/mm/plugin/appbrand/task/c:mxn	Lcom/tencent/mm/plugin/appbrand/task/c$b;
+    //   12: getstatic 68	com/tencent/mm/plugin/appbrand/task/c:mCk	Lcom/tencent/mm/plugin/appbrand/task/c$b;
     //   15: astore_1
-    //   16: getstatic 267	com/tencent/mm/plugin/appbrand/task/c$b:mxE	Lcom/tencent/mm/plugin/appbrand/task/c$b;
+    //   16: getstatic 270	com/tencent/mm/plugin/appbrand/task/c$b:mCB	Lcom/tencent/mm/plugin/appbrand/task/c$b;
     //   19: astore_2
     //   20: aload_1
     //   21: aload_2
@@ -431,19 +430,19 @@ public class c
     // Local variable table:
     //   start	length	slot	name	signature
     //   26	8	0	bool	boolean
-    //   15	6	1	localb1	c.b
+    //   15	6	1	localb1	b
     //   37	5	1	localObject	Object
-    //   19	3	2	localb2	c.b
+    //   19	3	2	localb2	b
     // Exception table:
     //   from	to	target	type
     //   3	20	37	finally
   }
   
-  public static e byr()
+  public static e bzk()
   {
     try
     {
-      e locale = mxr;
+      e locale = mCo;
       return locale;
     }
     finally
@@ -453,63 +452,71 @@ public class c
     }
   }
   
-  public static void bys()
+  public static void bzl()
   {
     try
     {
       AppMethodBeat.i(48384);
-      if ((!aXK()) || (lQy.size() <= 0)) {
+      if ((!aYd()) || (lUZ.size() <= 0)) {
         break label96;
       }
-      while (!lQy.isEmpty()) {
-        ((q)lQy.poll()).cleanup();
+      while (!lUZ.isEmpty()) {
+        ((r)lUZ.poll()).cleanup();
       }
-      if (mxp.isEmpty()) {
+      if (mCm.isEmpty()) {
         break label88;
       }
     }
     finally {}
     for (;;)
     {
-      ((ae)mxp.poll()).cleanup();
+      ((com.tencent.mm.plugin.appbrand.page.ad)mCm.poll()).cleanup();
     }
     label88:
-    a(mxr, null, true);
+    a(mCo, null, true);
     label96:
     AppMethodBeat.o(48384);
   }
   
-  private static void byt()
+  private static void bzm()
   {
     AppMethodBeat.i(48385);
-    if (lQy.size() > 0)
+    if (lUZ.size() > 0)
     {
       AppMethodBeat.o(48385);
       return;
     }
-    q localq = (q)org.a.a.bF(mxr.myk).gyr().object;
-    localq.a(WxaCommLibRuntimeReader.baj());
-    localq.OE();
-    lQy.add(localq);
-    ad.i("MicroMsg.AppBrandProcessPreloader[applaunch][preload]", "preloadService done in request[%s]", new Object[] { mxr });
+    r localr = (r)org.a.a.bF(mCo.mDi).gCT().object;
+    localr.a(WxaCommLibRuntimeReader.baI());
+    localr.OC();
+    lUZ.add(localr);
+    ae.i("MicroMsg.AppBrandProcessPreloader[applaunch][preload]", "preloadService done in request[%s]", new Object[] { mCo });
     AppMethodBeat.o(48385);
   }
   
-  public static com.tencent.mm.vending.g.c<Void> byu()
+  public static com.tencent.mm.vending.g.c<Void> bzn()
   {
     AppMethodBeat.i(48387);
     try
     {
-      if (mxn == c.b.mxD)
+      if (mCk == b.mCA)
       {
-        localf = com.tencent.mm.cn.g.fSm();
-        Object localObject2 = localf.fOa();
-        ((com.tencent.mm.vending.g.b)localObject2).fNZ();
-        localObject2 = new c.3((com.tencent.mm.vending.g.b)localObject2);
-        mxo.add(localObject2);
+        localf = com.tencent.mm.cm.g.fWL();
+        Object localObject2 = localf.fSv();
+        ((com.tencent.mm.vending.g.b)localObject2).fSu();
+        localObject2 = new a()
+        {
+          public final void onReady()
+          {
+            AppMethodBeat.i(48374);
+            this.cnt.resume();
+            AppMethodBeat.o(48374);
+          }
+        };
+        mCl.add(localObject2);
         return localf;
       }
-      com.tencent.mm.cn.f localf = com.tencent.mm.cn.g.fSm();
+      com.tencent.mm.cm.f localf = com.tencent.mm.cm.g.fWL();
       return localf;
     }
     finally
@@ -518,28 +525,28 @@ public class c
     }
   }
   
-  public static AppBrandPreloadProfiler byv()
+  public static AppBrandPreloadProfiler bzo()
   {
-    return mxq;
+    return mCn;
   }
   
-  public static ae byw()
+  public static com.tencent.mm.plugin.appbrand.page.ad bzp()
   {
-    AppMethodBeat.i(188773);
-    ae localae = (ae)mxp.poll();
-    AppMethodBeat.o(188773);
-    return localae;
+    AppMethodBeat.i(222992);
+    com.tencent.mm.plugin.appbrand.page.ad localad = (com.tencent.mm.plugin.appbrand.page.ad)mCm.poll();
+    AppMethodBeat.o(222992);
+    return localad;
   }
   
-  public static q byx()
+  public static r bzq()
   {
     AppMethodBeat.i(48390);
-    q localq = (q)lQy.peek();
+    r localr = (r)lUZ.peek();
     AppMethodBeat.o(48390);
-    return localq;
+    return localr;
   }
   
-  public static boolean byy()
+  public static boolean bzr()
   {
     boolean bool = true;
     for (;;)
@@ -547,12 +554,12 @@ public class c
       try
       {
         AppMethodBeat.i(48394);
-        if (c.b.mxC == mxn)
+        if (b.mCz == mCk)
         {
           AppMethodBeat.o(48394);
           return bool;
         }
-        if ((aXK()) && (mxp.size() <= 0) && (lQy.size() <= 0))
+        if ((aYd()) && (mCm.size() <= 0) && (lUZ.size() <= 0))
         {
           AppMethodBeat.o(48394);
           continue;
@@ -564,7 +571,7 @@ public class c
     }
   }
   
-  public static boolean byz()
+  public static boolean bzs()
   {
     AppMethodBeat.i(48395);
     if (WebView.isSys())
@@ -574,15 +581,15 @@ public class c
     }
     if (WebView.isX5())
     {
-      if (WebView.getUsingTbsCoreVersion(aj.getContext()) == 0)
+      if (WebView.getUsingTbsCoreVersion(ak.getContext()) == 0)
       {
-        ad.i("MicroMsg.AppBrandProcessPreloader[applaunch][preload]", "closeWAServiceClientPreload without x5");
+        ae.i("MicroMsg.AppBrandProcessPreloader[applaunch][preload]", "closeWAServiceClientPreload without x5");
         AppMethodBeat.o(48395);
         return true;
       }
-      if (!com.tencent.xweb.x5.sdk.d.canOpenWebPlus(aj.getContext()))
+      if (!com.tencent.xweb.x5.sdk.d.canOpenWebPlus(ak.getContext()))
       {
-        ad.i("MicroMsg.AppBrandProcessPreloader[applaunch][preload]", "closeWAServiceClientPreload can not OpenWebPlus");
+        ae.i("MicroMsg.AppBrandProcessPreloader[applaunch][preload]", "closeWAServiceClientPreload can not OpenWebPlus");
         AppMethodBeat.o(48395);
         return true;
       }
@@ -591,82 +598,97 @@ public class c
     return false;
   }
   
-  public static com.tencent.mm.plugin.appbrand.service.c c(e parame)
+  public static b bzt()
   {
-    AppMethodBeat.i(188771);
+    AppMethodBeat.i(222995);
     try
     {
-      c.b localb = mxn;
-      ad.w("MicroMsg.AppBrandProcessPreloader[applaunch][preload]", "getPreloadedServiceIfAvailable, preloadState:%s", new Object[] { localb.name() });
-      if ((localb == c.b.mxC) || (localb == c.b.mxD))
+      b localb = b.valueOf(mCk.name());
+      return localb;
+    }
+    finally
+    {
+      AppMethodBeat.o(222995);
+    }
+  }
+  
+  public static com.tencent.mm.plugin.appbrand.service.c c(e parame)
+  {
+    AppMethodBeat.i(222990);
+    try
+    {
+      b localb = mCk;
+      ae.w("MicroMsg.AppBrandProcessPreloader[applaunch][preload]", "getPreloadedServiceIfAvailable, preloadState:%s", new Object[] { localb.name() });
+      if ((localb == b.mCz) || (localb == b.mCA))
       {
-        AppMethodBeat.o(188771);
+        ae.w("MicroMsg.AppBrandProcessPreloader[applaunch][preload]", "getPreloadedServiceIfAvailable, preloadState:".concat(String.valueOf(localb)));
+        AppMethodBeat.o(222990);
         return null;
       }
     }
     finally
     {
-      AppMethodBeat.o(188771);
+      AppMethodBeat.o(222990);
     }
-    if (parame != mxr)
+    if (parame != mCo)
     {
-      ad.w("MicroMsg.AppBrandProcessPreloader[applaunch][preload]", "getPreloadedServiceIfAvailable, service type not match, serviceType:%s", new Object[] { parame });
-      AppMethodBeat.o(188771);
+      ae.w("MicroMsg.AppBrandProcessPreloader[applaunch][preload]", "getPreloadedServiceIfAvailable, service type not match, serviceType:%s", new Object[] { parame });
+      AppMethodBeat.o(222990);
       return null;
     }
-    parame = (com.tencent.mm.plugin.appbrand.service.c)lQy.peek();
-    ad.w("MicroMsg.AppBrandProcessPreloader[applaunch][preload]", "getPreloadedServiceIfAvailable, service:%s", new Object[] { parame });
-    AppMethodBeat.o(188771);
+    parame = (com.tencent.mm.plugin.appbrand.service.c)lUZ.peek();
+    ae.w("MicroMsg.AppBrandProcessPreloader[applaunch][preload]", "getPreloadedServiceIfAvailable, service:%s", new Object[] { parame });
+    AppMethodBeat.o(222990);
     return parame;
   }
   
   public static com.tencent.mm.plugin.appbrand.service.c d(e parame)
   {
-    AppMethodBeat.i(188772);
-    Object localObject = com.tencent.mm.plugin.report.service.g.yhR;
-    if (parame == e.myh) {}
+    AppMethodBeat.i(222991);
+    Object localObject = com.tencent.mm.plugin.report.service.g.yxI;
+    if (parame == e.mDf) {}
     for (int i = 12;; i = 10)
     {
       ((com.tencent.mm.plugin.report.service.g)localObject).dD(915, i);
       try
       {
-        localObject = mxn;
-        if (localObject != c.b.mxC) {
+        localObject = mCk;
+        if (localObject != b.mCz) {
           break;
         }
-        ad.i("MicroMsg.AppBrandProcessPreloader[applaunch][preload]", "AppBrandProcessPreloader not preload, just return null");
-        AppMethodBeat.o(188772);
+        ae.i("MicroMsg.AppBrandProcessPreloader[applaunch][preload]", "AppBrandProcessPreloader not preload, just return null");
+        AppMethodBeat.o(222991);
         return null;
       }
       finally
       {
-        AppMethodBeat.o(188772);
+        AppMethodBeat.o(222991);
       }
     }
-    if (localObject == c.b.mxD)
+    if (localObject == b.mCA)
     {
-      if ((com.tencent.mm.sdk.platformtools.i.IS_FLAVOR_RED) || (com.tencent.mm.sdk.platformtools.i.DEBUG))
+      if ((j.IS_FLAVOR_RED) || (j.DEBUG))
       {
         parame = new IllegalStateException("getServices when preloading");
-        AppMethodBeat.o(188772);
+        AppMethodBeat.o(222991);
         throw parame;
       }
-      ad.printErrStackTrace("MicroMsg.AppBrandProcessPreloader[applaunch][preload]", new IllegalStateException(), "AppBrandProcessPreloader is preloading when getServices, it need to wait! software fall in panic !", new Object[0]);
-      AppMethodBeat.o(188772);
+      ae.printErrStackTrace("MicroMsg.AppBrandProcessPreloader[applaunch][preload]", new IllegalStateException(), "AppBrandProcessPreloader is preloading when getServices, it need to wait! software fall in panic !", new Object[0]);
+      AppMethodBeat.o(222991);
       return null;
     }
-    if (parame != mxr)
+    if (parame != mCo)
     {
-      ad.e("MicroMsg.AppBrandProcessPreloader[applaunch][preload]", "AppBrandProcessPreloader's ServiceType mismatch when getServices, watch it! But it's ok, just return null.");
-      AppMethodBeat.o(188772);
+      ae.e("MicroMsg.AppBrandProcessPreloader[applaunch][preload]", "AppBrandProcessPreloader's ServiceType mismatch when getServices, watch it! But it's ok, just return null.");
+      AppMethodBeat.o(222991);
       return null;
     }
-    localObject = (com.tencent.mm.plugin.appbrand.service.c)lQy.poll();
+    localObject = (com.tencent.mm.plugin.appbrand.service.c)lUZ.poll();
     com.tencent.mm.plugin.report.service.g localg;
     if (localObject != null)
     {
-      localg = com.tencent.mm.plugin.report.service.g.yhR;
-      if (parame != e.myh) {
+      localg = com.tencent.mm.plugin.report.service.g.yxI;
+      if (parame != e.mDf) {
         break label213;
       }
     }
@@ -674,27 +696,27 @@ public class c
     for (i = 7;; i = 2)
     {
       localg.dD(915, i);
-      AppMethodBeat.o(188772);
+      AppMethodBeat.o(222991);
       return localObject;
     }
   }
   
-  public static q e(e parame)
+  public static r e(e parame)
   {
     AppMethodBeat.i(48391);
-    if (e.myi == parame)
+    if (e.mDg == parame)
     {
       AppMethodBeat.o(48391);
       return null;
     }
-    Iterator localIterator = lQy.iterator();
+    Iterator localIterator = lUZ.iterator();
     while (localIterator.hasNext())
     {
-      q localq = (q)localIterator.next();
-      if (localq.getClass() == parame.myk)
+      r localr = (r)localIterator.next();
+      if (localr.getClass() == parame.mDi)
       {
         AppMethodBeat.o(48391);
-        return localq;
+        return localr;
       }
     }
     AppMethodBeat.o(48391);
@@ -706,12 +728,12 @@ public class c
     try
     {
       AppMethodBeat.i(48381);
-      mxn = c.b.mxC;
-      mxo.clear();
-      mxp.clear();
-      lQy.clear();
-      mxq = null;
-      mxr = e.myi;
+      mCk = b.mCz;
+      mCl.clear();
+      mCm.clear();
+      lUZ.clear();
+      mCn = null;
+      mCo = e.mDg;
       AppMethodBeat.o(48381);
       return;
     }
@@ -722,36 +744,36 @@ public class c
     }
   }
   
-  private static void vp(int paramInt)
+  private static void vu(int paramInt)
   {
-    AppMethodBeat.i(188774);
-    if (aq.isMainThread())
+    AppMethodBeat.i(222993);
+    if (ar.isMainThread())
     {
-      vq(paramInt);
-      AppMethodBeat.o(188774);
+      vv(paramInt);
+      AppMethodBeat.o(222993);
       return;
     }
-    aq.f(new Runnable()
+    ar.f(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(48375);
-        c.vr(this.jDt);
+        c.vw(this.jGr);
         AppMethodBeat.o(48375);
       }
     });
-    AppMethodBeat.o(188774);
+    AppMethodBeat.o(222993);
   }
   
-  private static void vq(int paramInt)
+  private static void vv(int paramInt)
   {
-    AppMethodBeat.i(188775);
-    ad.i("MicroMsg.AppBrandProcessPreloader[applaunch][preload]", "preInit finished");
-    mxq.byq();
-    AppBrandPreloadProfiler.v(new d.g.a.a() {});
-    Object localObject1 = com.tencent.mm.plugin.report.service.g.yhR;
+    AppMethodBeat.i(222994);
+    ae.i("MicroMsg.AppBrandProcessPreloader[applaunch][preload]", "preInit finished");
+    mCn.bzj();
+    AppBrandPreloadProfiler.w(new d.g.a.a() {});
+    Object localObject1 = com.tencent.mm.plugin.report.service.g.yxI;
     int i;
-    if (mxr == e.myh)
+    if (mCo == e.mDf)
     {
       i = 6;
       ((com.tencent.mm.plugin.report.service.g)localObject1).dD(915, i);
@@ -763,9 +785,9 @@ public class c
     {
       try
       {
-        mxn = c.b.mxF;
-        localObject1 = new LinkedList(mxo);
-        mxo.clear();
+        mCk = b.mCC;
+        localObject1 = new LinkedList(mCl);
+        mCl.clear();
         localObject1 = ((Collection)localObject1).iterator();
         if (!((Iterator)localObject1).hasNext()) {
           break label154;
@@ -782,9 +804,9 @@ public class c
       finally
       {
         label133:
-        AppMethodBeat.o(188775);
+        AppMethodBeat.o(222994);
       }
-      mxn = c.b.mxE;
+      mCk = b.mCB;
     }
     label154:
     com.tencent.mm.sdk.f.c.a(new MessageQueue.IdleHandler()
@@ -792,22 +814,38 @@ public class c
       public final boolean queueIdle()
       {
         AppMethodBeat.i(48377);
-        com.tencent.mm.plugin.appbrand.page.d.a(c.byB());
+        com.tencent.mm.plugin.appbrand.page.c.a(c.bzv());
         AppMethodBeat.o(48377);
         return false;
       }
     });
-    AppMethodBeat.o(188775);
+    AppMethodBeat.o(222994);
   }
   
   public static abstract interface a
   {
     public abstract void onReady();
   }
+  
+  public static enum b
+  {
+    static
+    {
+      AppMethodBeat.i(48380);
+      mCz = new b("NOT_PRELOAD", 0);
+      mCA = new b("PRELOADING", 1);
+      mCB = new b("PRELOADED_DOWNGRADE", 2);
+      mCC = new b("PRELOADED_FULL", 3);
+      mCD = new b[] { mCz, mCA, mCB, mCC };
+      AppMethodBeat.o(48380);
+    }
+    
+    private b() {}
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.task.c
  * JD-Core Version:    0.7.0.1
  */

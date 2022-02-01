@@ -12,22 +12,22 @@ import org.xwalk.core.XWalkEnvironment;
 
 public final class c
 {
-  static HashMap<String, Long> Mtz;
+  static HashMap<String, Long> MQD;
   
   static
   {
-    AppMethodBeat.i(197098);
-    Mtz = new HashMap();
-    AppMethodBeat.o(197098);
+    AppMethodBeat.i(217416);
+    MQD = new HashMap();
+    AppMethodBeat.o(217416);
   }
   
-  public static void bbj(String paramString)
+  public static void bcM(String paramString)
   {
     try
     {
-      AppMethodBeat.i(197096);
+      AppMethodBeat.i(217414);
       XWalkEnvironment.getMMKVSharedPreferences("FREQUENT_LIMITER").edit().putLong(paramString, 0L).commit();
-      AppMethodBeat.o(197096);
+      AppMethodBeat.o(217414);
       return;
     }
     finally
@@ -37,7 +37,7 @@ public final class c
     }
   }
   
-  public static boolean bbk(String paramString)
+  public static boolean bcN(String paramString)
   {
     boolean bool = false;
     for (;;)
@@ -52,7 +52,7 @@ public final class c
           AppMethodBeat.o(175641);
           return bool;
         }
-        if ("true".equals(b.baB("dis_".concat(String.valueOf(paramString)))))
+        if ("true".equals(b.bce("dis_".concat(String.valueOf(paramString)))))
         {
           AppMethodBeat.o(175641);
           continue;
@@ -65,7 +65,7 @@ public final class c
     }
   }
   
-  public static boolean co(String paramString, long paramLong)
+  public static boolean cq(String paramString, long paramLong)
   {
     boolean bool = false;
     for (;;)
@@ -73,7 +73,7 @@ public final class c
       try
       {
         AppMethodBeat.i(156968);
-        if ("true".equals(a.baB("dis_".concat(String.valueOf(paramString)))))
+        if ("true".equals(a.bce("dis_".concat(String.valueOf(paramString)))))
         {
           AppMethodBeat.o(156968);
           return bool;
@@ -95,7 +95,7 @@ public final class c
   }
   
   /* Error */
-  public static boolean ne(String paramString1, String paramString2)
+  public static boolean nk(String paramString1, String paramString2)
   {
     // Byte code:
     //   0: ldc 2

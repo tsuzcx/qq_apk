@@ -6,20 +6,20 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class i
 {
-  private static i Mkf;
+  private static i MHc;
   private Context IR;
   private boolean mStarted;
   
-  private static i fYQ()
+  private static i gdp()
   {
     AppMethodBeat.i(62809);
-    if (Mkf == null) {}
+    if (MHc == null) {}
     try
     {
-      if (Mkf == null) {
-        Mkf = new i();
+      if (MHc == null) {
+        MHc = new i();
       }
-      i locali = Mkf;
+      i locali = MHc;
       AppMethodBeat.o(62809);
       return locali;
     }
@@ -29,10 +29,10 @@ public final class i
     }
   }
   
-  public static void lq(Context paramContext)
+  public static void lw(Context paramContext)
   {
     AppMethodBeat.i(62810);
-    i locali = fYQ();
+    i locali = gdp();
     if (!locali.mStarted)
     {
       locali.IR = paramContext;

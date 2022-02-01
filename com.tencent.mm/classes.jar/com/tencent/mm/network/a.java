@@ -3,14 +3,14 @@ package com.tencent.mm.network;
 import android.content.SharedPreferences;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.b.g;
-import com.tencent.mm.model.bc;
+import com.tencent.mm.model.be;
 import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.boq;
-import com.tencent.mm.protocal.protobuf.bor;
+import com.tencent.mm.protocal.protobuf.bpi;
+import com.tencent.mm.protocal.protobuf.bpj;
 import com.tencent.mm.protocal.protobuf.hr;
-import com.tencent.mm.sdk.platformtools.aa;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -25,49 +25,49 @@ public final class a
   extends d.a
   implements c
 {
-  byte[] dLl;
-  String dul;
+  byte[] dMA;
+  String dvq;
   private boolean foreground;
-  private byte[] iEm;
-  private byte[] iEn;
-  private byte[] iEo;
-  private b iEp;
-  byte[] iEq;
-  private Map<String, byte[]> iEr;
-  private Map<Integer, bor> iEs;
-  private Map<boq, a> iEt;
-  List<String> iEu;
+  private byte[] iHf;
+  private byte[] iHg;
+  private byte[] iHh;
+  private b iHi;
+  byte[] iHj;
+  private Map<String, byte[]> iHk;
+  private Map<Integer, bpj> iHl;
+  private Map<bpi, a> iHm;
+  List<String> iHn;
   private int uin;
   String username;
   
   public a(b paramb)
   {
     AppMethodBeat.i(132629);
-    this.iEp = null;
+    this.iHi = null;
     this.foreground = false;
-    this.iEr = new HashMap();
-    this.iEs = new HashMap();
-    this.iEt = new HashMap();
-    this.iEu = new ArrayList();
-    this.iEp = paramb;
-    aOE();
+    this.iHk = new HashMap();
+    this.iHl = new HashMap();
+    this.iHm = new HashMap();
+    this.iHn = new ArrayList();
+    this.iHi = paramb;
+    aPb();
     AppMethodBeat.o(132629);
   }
   
-  private void aOE()
+  private void aPb()
   {
     AppMethodBeat.i(132631);
-    this.dLl = bt.aRa(bc.aBV().getString("server_id", ""));
+    this.dMA = bu.aSx(be.aCl().getString("server_id", ""));
     AppMethodBeat.o(132631);
   }
   
-  private String aOF()
+  private String aPc()
   {
     AppMethodBeat.i(132637);
     try
     {
       Object localObject = ByteBuffer.allocate(4096);
-      ((ByteBuffer)localObject).put(this.iEm).put(this.iEn).put(this.iEo).put(this.iEq).put(this.dLl).putInt(this.uin).put(this.dul.getBytes()).put(this.username.getBytes());
+      ((ByteBuffer)localObject).put(this.iHf).put(this.iHg).put(this.iHh).put(this.iHj).put(this.dMA).putInt(this.uin).put(this.dvq.getBytes()).put(this.username.getBytes());
       localObject = g.getMessageDigest(((ByteBuffer)localObject).array());
       AppMethodBeat.o(132637);
       return localObject;
@@ -82,24 +82,24 @@ public final class a
   private void clear()
   {
     this.username = null;
-    this.iEm = null;
-    this.iEn = null;
-    this.iEo = null;
-    this.dLl = null;
+    this.iHf = null;
+    this.iHg = null;
+    this.iHh = null;
+    this.dMA = null;
     this.uin = 0;
-    this.iEq = null;
-    this.dul = null;
+    this.iHj = null;
+    this.dvq = null;
   }
   
-  public final byte[] Dm(String paramString)
+  public final byte[] DO(String paramString)
   {
     AppMethodBeat.i(132635);
-    paramString = (byte[])this.iEr.get(paramString);
+    paramString = (byte[])this.iHk.get(paramString);
     AppMethodBeat.o(132635);
     return paramString;
   }
   
-  public final byte[] Dn(String paramString)
+  public final byte[] DP(String paramString)
   {
     AppMethodBeat.i(132647);
     if ((paramString == null) || (paramString.length() == 0))
@@ -107,7 +107,7 @@ public final class a
       AppMethodBeat.o(132647);
       return null;
     }
-    Iterator localIterator = this.iEt.entrySet().iterator();
+    Iterator localIterator = this.iHm.entrySet().iterator();
     Map.Entry localEntry;
     do
     {
@@ -115,15 +115,15 @@ public final class a
         break;
       }
       localEntry = (Map.Entry)localIterator.next();
-    } while (!paramString.equals(((boq)localEntry.getKey()).GJu));
-    for (paramString = ((a)localEntry.getValue()).iEw;; paramString = null)
+    } while (!paramString.equals(((bpi)localEntry.getKey()).HcV));
+    for (paramString = ((a)localEntry.getValue()).iHp;; paramString = null)
     {
       AppMethodBeat.o(132647);
       return paramString;
     }
   }
   
-  public final byte[] Do(String paramString)
+  public final byte[] DQ(String paramString)
   {
     AppMethodBeat.i(132652);
     if ((paramString == null) || (paramString.length() == 0))
@@ -131,7 +131,7 @@ public final class a
       AppMethodBeat.o(132652);
       return null;
     }
-    Iterator localIterator = this.iEt.entrySet().iterator();
+    Iterator localIterator = this.iHm.entrySet().iterator();
     Map.Entry localEntry;
     do
     {
@@ -139,19 +139,19 @@ public final class a
         break;
       }
       localEntry = (Map.Entry)localIterator.next();
-    } while (!paramString.equals(((boq)localEntry.getKey()).GJu));
-    for (paramString = ((a)localEntry.getValue()).iEv;; paramString = null)
+    } while (!paramString.equals(((bpi)localEntry.getKey()).HcV));
+    for (paramString = ((a)localEntry.getValue()).iHo;; paramString = null)
     {
       if (paramString != null) {
         try
         {
-          paramString = paramString.Fzl.getBufferToBytes();
+          paramString = paramString.FRJ.getBufferToBytes();
           AppMethodBeat.o(132652);
           return paramString;
         }
         catch (Exception paramString)
         {
-          ad.e("MicroMsg.AccInfo", "AccInfoCacheInWorker parseBuf exception:%s", new Object[] { bt.n(paramString) });
+          ae.e("MicroMsg.AccInfo", "AccInfoCacheInWorker parseBuf exception:%s", new Object[] { bu.o(paramString) });
           AppMethodBeat.o(132652);
           return null;
         }
@@ -161,7 +161,7 @@ public final class a
     }
   }
   
-  public final byte[] Dp(String paramString)
+  public final byte[] DR(String paramString)
   {
     AppMethodBeat.i(132653);
     if ((paramString == null) || (paramString.length() == 0))
@@ -169,7 +169,7 @@ public final class a
       AppMethodBeat.o(132653);
       return null;
     }
-    Iterator localIterator = this.iEt.entrySet().iterator();
+    Iterator localIterator = this.iHm.entrySet().iterator();
     Map.Entry localEntry;
     do
     {
@@ -177,19 +177,19 @@ public final class a
         break;
       }
       localEntry = (Map.Entry)localIterator.next();
-    } while (!paramString.equals(((boq)localEntry.getKey()).GJu));
-    for (paramString = ((a)localEntry.getValue()).iEv;; paramString = null)
+    } while (!paramString.equals(((bpi)localEntry.getKey()).HcV));
+    for (paramString = ((a)localEntry.getValue()).iHo;; paramString = null)
     {
       if (paramString != null) {
         try
         {
-          paramString = paramString.Fzm.getBufferToBytes();
+          paramString = paramString.FRK.getBufferToBytes();
           AppMethodBeat.o(132653);
           return paramString;
         }
         catch (Exception paramString)
         {
-          ad.e("MicroMsg.AccInfo", "AccInfoCacheInWorker parseBuf exception:%s", new Object[] { bt.n(paramString) });
+          ae.e("MicroMsg.AccInfo", "AccInfoCacheInWorker parseBuf exception:%s", new Object[] { bu.o(paramString) });
           AppMethodBeat.o(132653);
           return null;
         }
@@ -199,7 +199,7 @@ public final class a
     }
   }
   
-  public final boolean Dq(String paramString)
+  public final boolean DS(String paramString)
   {
     AppMethodBeat.i(132646);
     if ((paramString == null) || (paramString.length() == 0))
@@ -207,10 +207,10 @@ public final class a
       AppMethodBeat.o(132646);
       return false;
     }
-    boq localboq;
+    bpi localbpi;
     do
     {
-      Iterator localIterator = this.iEs.entrySet().iterator();
+      Iterator localIterator = this.iHl.entrySet().iterator();
       Object localObject;
       while (!((Iterator)localObject).hasNext())
       {
@@ -219,47 +219,47 @@ public final class a
           if (!localIterator.hasNext()) {
             break;
           }
-          localObject = (bor)((Map.Entry)localIterator.next()).getValue();
-        } while ((localObject == null) || (((bor)localObject).nDj == null));
-        localObject = ((bor)localObject).nDj.iterator();
+          localObject = (bpj)((Map.Entry)localIterator.next()).getValue();
+        } while ((localObject == null) || (((bpj)localObject).nIE == null));
+        localObject = ((bpj)localObject).nIE.iterator();
       }
-      localboq = (boq)((Iterator)localObject).next();
-    } while ((localboq == null) || (!paramString.equals(localboq.GJu)));
+      localbpi = (bpi)((Iterator)localObject).next();
+    } while ((localbpi == null) || (!paramString.equals(localbpi.HcV)));
     AppMethodBeat.o(132646);
     return true;
     AppMethodBeat.o(132646);
     return false;
   }
   
-  public final void In(String paramString)
+  public final void IP(String paramString)
   {
-    this.dul = paramString;
+    this.dvq = paramString;
   }
   
-  public final boolean Io(String paramString)
+  public final boolean IQ(String paramString)
   {
     AppMethodBeat.i(132650);
     if ("axhost".equals(paramString))
     {
-      bool = this.iEs.isEmpty();
+      bool = this.iHl.isEmpty();
       AppMethodBeat.o(132650);
       return bool;
     }
-    boolean bool = this.iEu.isEmpty();
+    boolean bool = this.iHn.isEmpty();
     AppMethodBeat.o(132650);
     return bool;
   }
   
-  public final boolean Ip(String paramString)
+  public final boolean IR(String paramString)
   {
     AppMethodBeat.i(132651);
-    if (!Dq(paramString))
+    if (!DS(paramString))
     {
       AppMethodBeat.o(132651);
       return false;
     }
-    byte[] arrayOfByte = Do(paramString);
-    paramString = Dp(paramString);
+    byte[] arrayOfByte = DQ(paramString);
+    paramString = DR(paramString);
     if ((arrayOfByte != null) && (arrayOfByte.length > 0) && (paramString != null) && (paramString.length > 0))
     {
       AppMethodBeat.o(132651);
@@ -272,47 +272,47 @@ public final class a
   public final int X(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(132639);
-    long l = bt.flT();
-    if (aEW())
+    long l = bu.fpO();
+    if (aFm())
     {
-      ad.e("MicroMsg.AccInfo", "AccInfoCacheInWorker parseBuf Error : isLogin == true ");
+      ae.e("MicroMsg.AccInfo", "AccInfoCacheInWorker parseBuf Error : isLogin == true ");
       AppMethodBeat.o(132639);
       return -2;
     }
     try
     {
-      aa localaa = new aa();
-      int i = localaa.cy(paramArrayOfByte);
+      ab localab = new ab();
+      int i = localab.cB(paramArrayOfByte);
       if (i != 0)
       {
-        ad.e("MicroMsg.AccInfo", "AccInfoCacheInWorker parseBuf Error : initParse: %s", new Object[] { Integer.valueOf(i) });
+        ae.e("MicroMsg.AccInfo", "AccInfoCacheInWorker parseBuf Error : initParse: %s", new Object[] { Integer.valueOf(i) });
         AppMethodBeat.o(132639);
         return -3;
       }
-      this.username = localaa.getString();
-      this.dul = localaa.getString();
-      this.uin = localaa.getInt();
-      this.dLl = localaa.getBuffer();
-      this.iEq = localaa.getBuffer();
-      this.iEm = localaa.getBuffer();
-      this.iEn = localaa.getBuffer();
-      this.iEo = localaa.getBuffer();
-      paramArrayOfByte = localaa.getString();
-      if ((bt.isNullOrNil(paramArrayOfByte)) || (!paramArrayOfByte.equals(aOF())))
+      this.username = localab.getString();
+      this.dvq = localab.getString();
+      this.uin = localab.getInt();
+      this.dMA = localab.getBuffer();
+      this.iHj = localab.getBuffer();
+      this.iHf = localab.getBuffer();
+      this.iHg = localab.getBuffer();
+      this.iHh = localab.getBuffer();
+      paramArrayOfByte = localab.getString();
+      if ((bu.isNullOrNil(paramArrayOfByte)) || (!paramArrayOfByte.equals(aPc())))
       {
         clear();
-        ad.e("MicroMsg.AccInfo", "AccInfoCacheInWorker parseBuf Error : checksum failed");
+        ae.e("MicroMsg.AccInfo", "AccInfoCacheInWorker parseBuf Error : checksum failed");
         AppMethodBeat.o(132639);
         return -4;
       }
-      ad.i("MicroMsg.AccInfo", "AccInfoCacheInWorker parseBuf finish time:%s  md5:%s", new Object[] { Long.valueOf(bt.Df(l)), paramArrayOfByte });
+      ae.i("MicroMsg.AccInfo", "AccInfoCacheInWorker parseBuf finish time:%s  md5:%s", new Object[] { Long.valueOf(bu.DD(l)), paramArrayOfByte });
       AppMethodBeat.o(132639);
       return 0;
     }
     catch (Exception paramArrayOfByte)
     {
       clear();
-      ad.e("MicroMsg.AccInfo", "AccInfoCacheInWorker parseBuf exception:%s", new Object[] { bt.n(paramArrayOfByte) });
+      ae.e("MicroMsg.AccInfo", "AccInfoCacheInWorker parseBuf exception:%s", new Object[] { bu.o(paramArrayOfByte) });
       AppMethodBeat.o(132639);
     }
     return -5;
@@ -321,63 +321,63 @@ public final class a
   public final void a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, int paramInt)
   {
     AppMethodBeat.i(132632);
-    ad.i("MicroMsg.AccInfo", "summerauth update session info: session single[%s] cli[%s], svr[%s] uin:%d -> %d stack:[%s]", new Object[] { bt.aRp(bt.cB(paramArrayOfByte1)), bt.aRp(bt.cB(paramArrayOfByte2)), bt.aRp(bt.cB(paramArrayOfByte3)), Integer.valueOf(this.uin), Integer.valueOf(paramInt), bt.flS() });
-    this.iEm = paramArrayOfByte1;
-    this.iEn = paramArrayOfByte2;
-    this.iEo = paramArrayOfByte3;
+    ae.i("MicroMsg.AccInfo", "summerauth update session info: session single[%s] cli[%s], svr[%s] uin:%d -> %d stack:[%s]", new Object[] { bu.aSM(bu.cE(paramArrayOfByte1)), bu.aSM(bu.cE(paramArrayOfByte2)), bu.aSM(bu.cE(paramArrayOfByte3)), Integer.valueOf(this.uin), Integer.valueOf(paramInt), bu.fpN() });
+    this.iHf = paramArrayOfByte1;
+    this.iHg = paramArrayOfByte2;
+    this.iHh = paramArrayOfByte3;
     this.uin = paramInt;
-    if (this.iEp != null) {
-      aEW();
+    if (this.iHi != null) {
+      aFm();
     }
     AppMethodBeat.o(132632);
   }
   
-  public final byte[] aEV()
+  public final byte[] aFl()
   {
-    return this.dLl;
+    return this.dMA;
   }
   
-  public final boolean aEW()
+  public final boolean aFm()
   {
-    return (this.iEm != null) && (this.iEn != null) && (this.iEo != null) && (this.iEm.length > 0) && (this.iEn.length > 0) && (this.iEo.length > 0);
+    return (this.iHf != null) && (this.iHg != null) && (this.iHh != null) && (this.iHf.length > 0) && (this.iHg.length > 0) && (this.iHh.length > 0);
   }
   
-  public final byte[] aEX()
+  public final byte[] aFn()
   {
-    return this.iEq;
+    return this.iHj;
   }
   
-  public final String aEY()
+  public final String aFo()
   {
-    return this.dul;
+    return this.dvq;
   }
   
-  public final byte[] aEZ()
+  public final byte[] aFp()
   {
     AppMethodBeat.i(132638);
-    long l = bt.flT();
+    long l = bu.fpO();
     int i;
-    if (bt.isNullOrNil(this.username)) {
+    if (bu.isNullOrNil(this.username)) {
       i = 0;
     }
     while (i == 0)
     {
-      ad.e("MicroMsg.AccInfo", "AccInfoCacheInWorker getCacheBuffer Error : isCacheValid== false");
+      ae.e("MicroMsg.AccInfo", "AccInfoCacheInWorker getCacheBuffer Error : isCacheValid== false");
       AppMethodBeat.o(132638);
       return null;
-      if (bt.cC(this.iEm)) {
+      if (bu.cF(this.iHf)) {
         i = 0;
-      } else if (bt.cC(this.iEn)) {
+      } else if (bu.cF(this.iHg)) {
         i = 0;
-      } else if (bt.cC(this.iEo)) {
+      } else if (bu.cF(this.iHh)) {
         i = 0;
-      } else if (bt.cC(this.dLl)) {
+      } else if (bu.cF(this.dMA)) {
         i = 0;
       } else if ((this.uin == 0) || (this.uin == -1)) {
         i = 0;
-      } else if (bt.cC(this.iEq)) {
+      } else if (bu.cF(this.iHj)) {
         i = 0;
-      } else if (bt.isNullOrNil(this.dul)) {
+      } else if (bu.isNullOrNil(this.dvq)) {
         i = 0;
       } else {
         i = 1;
@@ -385,79 +385,79 @@ public final class a
     }
     try
     {
-      Object localObject = new aa();
-      ((aa)localObject).fkj();
-      ((aa)localObject).aQp(this.username);
-      ((aa)localObject).aQp(this.dul);
-      ((aa)localObject).aaw(this.uin);
-      ((aa)localObject).cz(this.dLl);
-      ((aa)localObject).cz(this.iEq);
-      ((aa)localObject).cz(this.iEm);
-      ((aa)localObject).cz(this.iEn);
-      ((aa)localObject).cz(this.iEo);
-      String str = aOF();
-      ((aa)localObject).aQp(str);
-      localObject = ((aa)localObject).fkk();
-      ad.i("MicroMsg.AccInfo", "AccInfoCacheInWorker getCacheBuffer finish time:%s buflen:%s md5:%s", new Object[] { Long.valueOf(bt.Df(l)), Integer.valueOf(localObject.length), str });
+      Object localObject = new ab();
+      ((ab)localObject).fod();
+      ((ab)localObject).aRM(this.username);
+      ((ab)localObject).aRM(this.dvq);
+      ((ab)localObject).abc(this.uin);
+      ((ab)localObject).cC(this.dMA);
+      ((ab)localObject).cC(this.iHj);
+      ((ab)localObject).cC(this.iHf);
+      ((ab)localObject).cC(this.iHg);
+      ((ab)localObject).cC(this.iHh);
+      String str = aPc();
+      ((ab)localObject).aRM(str);
+      localObject = ((ab)localObject).foe();
+      ae.i("MicroMsg.AccInfo", "AccInfoCacheInWorker getCacheBuffer finish time:%s buflen:%s md5:%s", new Object[] { Long.valueOf(bu.DD(l)), Integer.valueOf(localObject.length), str });
       AppMethodBeat.o(132638);
       return localObject;
     }
     catch (Exception localException)
     {
-      ad.e("MicroMsg.AccInfo", "AccInfoCacheInWorker getCacheBuffer exception:%s", new Object[] { bt.n(localException) });
+      ae.e("MicroMsg.AccInfo", "AccInfoCacheInWorker getCacheBuffer exception:%s", new Object[] { bu.o(localException) });
       AppMethodBeat.o(132638);
     }
     return null;
   }
   
-  public final void aFa()
+  public final void aFq()
   {
     AppMethodBeat.i(132644);
-    this.iEt.clear();
+    this.iHm.clear();
     AppMethodBeat.o(132644);
   }
   
-  public final void aFb()
+  public final void aFr()
   {
     AppMethodBeat.i(132645);
-    ad.i("MicroMsg.AccInfo", "clearAxHost");
-    this.iEs.clear();
+    ae.i("MicroMsg.AccInfo", "clearAxHost");
+    this.iHl.clear();
     AppMethodBeat.o(132645);
   }
   
-  public final void aOG()
+  public final void aPd()
   {
     AppMethodBeat.i(132643);
-    if ((this.iEn != null) || (this.iEo != null) || (!this.iEt.isEmpty()))
+    if ((this.iHg != null) || (this.iHh != null) || (!this.iHm.isEmpty()))
     {
-      this.iEn = null;
-      this.iEo = null;
-      this.iEt.clear();
+      this.iHg = null;
+      this.iHh = null;
+      this.iHm.clear();
     }
     AppMethodBeat.o(132643);
   }
   
   public final void ag(byte[] paramArrayOfByte)
   {
-    this.dLl = paramArrayOfByte;
+    this.dMA = paramArrayOfByte;
   }
   
   public final void ah(byte[] paramArrayOfByte)
   {
-    this.iEq = paramArrayOfByte;
+    this.iHj = paramArrayOfByte;
   }
   
   public final void ai(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(132648);
-    this.iEu.add(new String(paramArrayOfByte));
+    this.iHn.add(new String(paramArrayOfByte));
     AppMethodBeat.o(132648);
   }
   
   public final boolean aj(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(132649);
-    boolean bool = this.iEu.contains(new String(paramArrayOfByte));
+    boolean bool = this.iHn.contains(new String(paramArrayOfByte));
     AppMethodBeat.o(132649);
     return bool;
   }
@@ -465,11 +465,11 @@ public final class a
   public final void b(int paramInt, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
     AppMethodBeat.i(132642);
-    ad.i("MicroMsg.AccInfo", "setAxAuthSessionKey");
-    Object localObject = (bor)this.iEs.get(Integer.valueOf(paramInt));
-    if ((localObject == null) || (((bor)localObject).nDj.size() == 0))
+    ae.i("MicroMsg.AccInfo", "setAxAuthSessionKey");
+    Object localObject = (bpj)this.iHl.get(Integer.valueOf(paramInt));
+    if ((localObject == null) || (((bpj)localObject).nIE.size() == 0))
     {
-      ad.w("MicroMsg.AccInfo", "can not get host list , buss type ".concat(String.valueOf(paramInt)));
+      ae.w("MicroMsg.AccInfo", "can not get host list , buss type ".concat(String.valueOf(paramInt)));
       AppMethodBeat.o(132642);
       return;
     }
@@ -477,32 +477,32 @@ public final class a
     try
     {
       localhr.parseFrom(paramArrayOfByte1);
-      ad.i("MicroMsg.AccInfo", "axsession key length: server [%d], client [%d]", new Object[] { Integer.valueOf(localhr.Fzm.getILen()), Integer.valueOf(localhr.Fzl.getILen()) });
+      ae.i("MicroMsg.AccInfo", "axsession key length: server [%d], client [%d]", new Object[] { Integer.valueOf(localhr.FRK.getILen()), Integer.valueOf(localhr.FRJ.getILen()) });
       paramArrayOfByte1 = new a();
-      paramArrayOfByte1.iEv = localhr;
-      paramArrayOfByte1.iEw = paramArrayOfByte2;
-      paramArrayOfByte2 = ((bor)localObject).nDj.iterator();
+      paramArrayOfByte1.iHo = localhr;
+      paramArrayOfByte1.iHp = paramArrayOfByte2;
+      paramArrayOfByte2 = ((bpj)localObject).nIE.iterator();
       while (paramArrayOfByte2.hasNext())
       {
-        localObject = (boq)paramArrayOfByte2.next();
-        this.iEt.put(localObject, paramArrayOfByte1);
-        ad.i("MicroMsg.AccInfo", "receive axauth host " + ((boq)localObject).GJu);
+        localObject = (bpi)paramArrayOfByte2.next();
+        this.iHm.put(localObject, paramArrayOfByte1);
+        ae.i("MicroMsg.AccInfo", "receive axauth host " + ((bpi)localObject).HcV);
       }
       AppMethodBeat.o(132642);
     }
     catch (Exception paramArrayOfByte1)
     {
-      ad.e("MicroMsg.AccInfo", "AccInfoCacheInWorker parseBuf exception:%s", new Object[] { bt.n(paramArrayOfByte1) });
+      ae.e("MicroMsg.AccInfo", "AccInfoCacheInWorker parseBuf exception:%s", new Object[] { bu.o(paramArrayOfByte1) });
       AppMethodBeat.o(132642);
       return;
     }
   }
   
-  public final void eE(boolean paramBoolean)
+  public final void eG(boolean paramBoolean)
   {
     AppMethodBeat.i(132636);
     this.foreground = paramBoolean;
-    ad.i("MicroMsg.AccInfo", "somr accinfo setForeground :%b", new Object[] { Boolean.valueOf(this.foreground) });
+    ae.i("MicroMsg.AccInfo", "somr accinfo setForeground :%b", new Object[] { Boolean.valueOf(this.foreground) });
     AppMethodBeat.o(132636);
   }
   
@@ -519,19 +519,19 @@ public final class a
   public final void h(int paramInt, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(132641);
-    ad.i("MicroMsg.AccInfo", "addAxAuthHostList");
-    bor localbor = new bor();
+    ae.i("MicroMsg.AccInfo", "addAxAuthHostList");
+    bpj localbpj = new bpj();
     try
     {
-      localbor.parseFrom(paramArrayOfByte);
-      this.iEs.put(Integer.valueOf(paramInt), localbor);
-      ad.i("MicroMsg.AccInfo", "add host " + paramInt + " host " + ((boq)localbor.nDj.get(0)).GJt);
+      localbpj.parseFrom(paramArrayOfByte);
+      this.iHl.put(Integer.valueOf(paramInt), localbpj);
+      ae.i("MicroMsg.AccInfo", "add host " + paramInt + " host " + ((bpi)localbpj.nIE.get(0)).HcU);
       AppMethodBeat.o(132641);
       return;
     }
     catch (Exception paramArrayOfByte)
     {
-      ad.e("MicroMsg.AccInfo", "exception:%s", new Object[] { bt.n(paramArrayOfByte) });
+      ae.e("MicroMsg.AccInfo", "exception:%s", new Object[] { bu.o(paramArrayOfByte) });
       AppMethodBeat.o(132641);
     }
   }
@@ -539,7 +539,7 @@ public final class a
   public final void i(String paramString, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(132634);
-    this.iEr.put(paramString, paramArrayOfByte);
+    this.iHk.put(paramString, paramArrayOfByte);
     AppMethodBeat.o(132634);
   }
   
@@ -548,37 +548,37 @@ public final class a
     return this.foreground;
   }
   
-  public final byte[] mO(int paramInt)
+  public final byte[] mR(int paramInt)
   {
     switch (paramInt)
     {
     default: 
       return null;
     case 1: 
-      return this.iEm;
+      return this.iHf;
     case 2: 
-      return this.iEn;
+      return this.iHg;
     }
-    return this.iEo;
+    return this.iHh;
   }
   
   public final void reset()
   {
     AppMethodBeat.i(132630);
-    ad.i("MicroMsg.AccInfo", "reset accinfo");
+    ae.i("MicroMsg.AccInfo", "reset accinfo");
     this.username = "";
-    this.iEm = null;
-    aOE();
+    this.iHf = null;
+    aPb();
     this.uin = 0;
-    this.iEn = null;
-    this.iEo = null;
+    this.iHg = null;
+    this.iHh = null;
     AppMethodBeat.o(132630);
   }
   
   public final void setUin(int paramInt)
   {
     AppMethodBeat.i(132640);
-    ad.i("MicroMsg.AccInfo", "summerauth setuin [%d -> %d], stack[%s]", new Object[] { Integer.valueOf(this.uin), Integer.valueOf(paramInt), bt.flS() });
+    ae.i("MicroMsg.AccInfo", "summerauth setuin [%d -> %d], stack[%s]", new Object[] { Integer.valueOf(this.uin), Integer.valueOf(paramInt), bu.fpN() });
     this.uin = paramInt;
     AppMethodBeat.o(132640);
   }
@@ -593,21 +593,21 @@ public final class a
     AppMethodBeat.i(132633);
     String str = "AccInfo:\n" + "|-uin     =" + getUin() + "\n";
     str = str + "|-user    =" + getUsername() + "\n";
-    str = str + "|-wxuser  =" + aEY() + "\n";
-    str = str + "|-wxuser  =" + aEY() + "\n";
-    str = str + "|-singlesession =" + bt.cB(mO(1)) + "\n";
-    str = str + "|-clientsession =" + bt.cB(mO(2)) + "\n";
-    str = str + "|-serversession =" + bt.cB(mO(3)) + "\n";
-    str = str + "|-ecdhkey =" + bt.cB(aEX()) + "\n";
-    str = str + "`-cookie  =" + bt.cB(aEV());
+    str = str + "|-wxuser  =" + aFo() + "\n";
+    str = str + "|-wxuser  =" + aFo() + "\n";
+    str = str + "|-singlesession =" + bu.cE(mR(1)) + "\n";
+    str = str + "|-clientsession =" + bu.cE(mR(2)) + "\n";
+    str = str + "|-serversession =" + bu.cE(mR(3)) + "\n";
+    str = str + "|-ecdhkey =" + bu.cE(aFn()) + "\n";
+    str = str + "`-cookie  =" + bu.cE(aFl());
     AppMethodBeat.o(132633);
     return str;
   }
   
   final class a
   {
-    public hr iEv;
-    public byte[] iEw;
+    public hr iHo;
+    public byte[] iHp;
     
     a() {}
   }

@@ -5,42 +5,42 @@ import android.media.AudioManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.d;
 import com.tencent.mm.plugin.audio.c.a.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import d.g.b.p;
 import d.l;
 import java.util.Stack;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/audio/util/HeadSetPlugUtil;", "", "()V", "TAG", "", "mIsPlugged", "", "getMIsPlugged", "()Z", "setMIsPlugged", "(Z)V", "initResource", "", "isHeadsetPlugged", "audioManager", "Landroid/media/AudioManager;", "isWireHeadsetPluggedNew", "releaseHeadSetResource", "mDeviceQueue", "Ljava/util/Stack;", "", "requestHeadSetResource", "plugin-audio_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/audio/util/HeadSetPlugUtil;", "", "()V", "TAG", "", "mIsPlugged", "", "getMIsPlugged", "()Z", "setMIsPlugged", "(Z)V", "initResource", "", "isHeadsetPlugged", "audioManager", "Landroid/media/AudioManager;", "isWireHeadsetPluggedNew", "releaseHeadSetResource", "mDeviceQueue", "Ljava/util/Stack;", "", "requestHeadSetResource", "plugin-audio_release"})
 public final class c
 {
-  private static boolean nrW;
-  public static final c nsa;
+  private static boolean nxp;
+  public static final c nxt;
   
   static
   {
-    AppMethodBeat.i(199810);
-    nsa = new c();
-    AppMethodBeat.o(199810);
+    AppMethodBeat.i(201122);
+    nxt = new c();
+    AppMethodBeat.o(201122);
   }
   
-  public static boolean bGL()
+  public static boolean bHH()
   {
-    return nrW;
+    return nxp;
   }
   
-  public static final void bGM()
+  public static final void bHI()
   {
-    AppMethodBeat.i(199806);
-    a.a locala = com.tencent.mm.plugin.audio.c.a.nrV;
-    nrW = a.a.bGC().bGx();
-    AppMethodBeat.o(199806);
+    AppMethodBeat.i(201118);
+    a.a locala = com.tencent.mm.plugin.audio.c.a.nxo;
+    nxp = a.a.bHy().bHt();
+    AppMethodBeat.o(201118);
   }
   
   public static final boolean d(Stack<Integer> paramStack)
   {
-    AppMethodBeat.i(199807);
+    AppMethodBeat.i(201119);
     p.h(paramStack, "mDeviceQueue");
-    ad.i("MicroMsg.HeadSetPlugUtil", " request the headset resource");
+    ae.i("MicroMsg.HeadSetPlugUtil", " request the headset resource");
     Integer localInteger;
     if (!paramStack.isEmpty())
     {
@@ -56,31 +56,31 @@ public final class c
         paramStack.removeElement(Integer.valueOf(3));
       }
       paramStack.push(Integer.valueOf(3));
-      AppMethodBeat.o(199807);
+      AppMethodBeat.o(201119);
       return true;
     }
-    AppMethodBeat.o(199807);
+    AppMethodBeat.o(201119);
     return false;
   }
   
   public static final void e(Stack<Integer> paramStack)
   {
-    AppMethodBeat.i(199808);
+    AppMethodBeat.i(201120);
     p.h(paramStack, "mDeviceQueue");
-    ad.i("MicroMsg.HeadSetPlugUtil", " release the headset resource");
+    ae.i("MicroMsg.HeadSetPlugUtil", " release the headset resource");
     paramStack.removeElement(Integer.valueOf(3));
-    AppMethodBeat.o(199808);
+    AppMethodBeat.o(201120);
   }
   
   public static boolean f(AudioManager paramAudioManager)
   {
     boolean bool2 = true;
-    AppMethodBeat.i(199809);
+    AppMethodBeat.i(201121);
     p.h(paramAudioManager, "audioManager");
     boolean bool1 = paramAudioManager.isWiredHeadsetOn();
     int i;
-    if ((!bool1) && (d.ly(23))) {
-      if (d.ly(23))
+    if ((!bool1) && (d.lA(23))) {
+      if (d.lA(23))
       {
         paramAudioManager = paramAudioManager.getDevices(3);
         int j = paramAudioManager.length;
@@ -89,7 +89,7 @@ public final class c
         {
           Object localObject = paramAudioManager[i];
           p.g(localObject, "deviceInfo");
-          ad.i("MicroMsg.HeadSetPlugUtil", "isWireHeadsetPluggedNew, deviceInfo type: %s", new Object[] { Integer.valueOf(localObject.getType()) });
+          ae.i("MicroMsg.HeadSetPlugUtil", "isWireHeadsetPluggedNew, deviceInfo type: %s", new Object[] { Integer.valueOf(localObject.getType()) });
           bool1 = bool2;
           if (localObject.getType() != 4)
           {
@@ -107,7 +107,7 @@ public final class c
     }
     for (;;)
     {
-      AppMethodBeat.o(199809);
+      AppMethodBeat.o(201121);
       return bool1;
       label133:
       i += 1;
@@ -116,14 +116,14 @@ public final class c
     }
   }
   
-  public static void iy(boolean paramBoolean)
+  public static void iw(boolean paramBoolean)
   {
-    nrW = paramBoolean;
+    nxp = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.audio.d.c
  * JD-Core Version:    0.7.0.1
  */

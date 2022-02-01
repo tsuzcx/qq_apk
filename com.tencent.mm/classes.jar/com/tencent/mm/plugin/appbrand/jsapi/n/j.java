@@ -4,7 +4,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.a;
 import com.tencent.mm.plugin.appbrand.jsapi.co;
 import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.plugin.appbrand.page.aa;
+import com.tencent.mm.plugin.appbrand.page.z;
 import org.json.JSONObject;
 
 public abstract class j<CONTEXT extends com.tencent.mm.plugin.appbrand.d, Extension>
@@ -19,7 +19,7 @@ public abstract class j<CONTEXT extends com.tencent.mm.plugin.appbrand.d, Extens
   
   protected abstract void a(CONTEXT paramCONTEXT, JSONObject paramJSONObject, int paramInt, Extension paramExtension);
   
-  public final boolean bib()
+  public final boolean biK()
   {
     return true;
   }

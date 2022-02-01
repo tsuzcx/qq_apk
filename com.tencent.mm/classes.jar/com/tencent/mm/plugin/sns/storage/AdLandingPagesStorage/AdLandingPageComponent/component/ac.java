@@ -1,261 +1,117 @@
 package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component;
 
 import android.content.Context;
-import android.graphics.Bitmap;
+import android.content.res.Resources;
 import android.graphics.Color;
-import android.os.Bundle;
-import android.text.TextUtils;
+import android.graphics.Paint;
+import android.util.TypedValue;
 import android.view.View;
-import android.view.View.OnLongClickListener;
 import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.view.ViewGroup.MarginLayoutParams;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.hellhoundlib.a.a;
-import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.s;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ad;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.y;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.f.a;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.h;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.vfs.i;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public final class ac
-  extends l
+  extends m
 {
-  private ImageView dsD;
-  ProgressBar progressBar;
-  boolean zDq = true;
-  com.tencent.mm.plugin.sns.data.g zDx;
-  String zcO;
-  boolean zzK;
+  TextView vk;
+  private RelativeLayout zXs;
+  ImageView zXt;
   
-  public ac(Context paramContext, s params, ViewGroup paramViewGroup)
+  public ac(Context paramContext, ad paramad, ViewGroup paramViewGroup)
   {
-    super(paramContext, params, paramViewGroup);
+    super(paramContext, paramad, paramViewGroup);
+    this.zUP = paramad;
   }
   
-  public final boolean aQ(JSONObject paramJSONObject)
+  public final void dUI()
   {
-    AppMethodBeat.i(96698);
-    if (!super.aQ(paramJSONObject))
+    AppMethodBeat.i(96680);
+    View localView = this.contentView;
+    localView.setBackgroundColor(this.backgroundColor);
+    this.vk = ((TextView)localView.findViewById(2131304896));
+    this.zXs = ((RelativeLayout)localView.findViewById(2131304894));
+    this.zXt = ((ImageView)localView.findViewById(2131304895));
+    AppMethodBeat.o(96680);
+  }
+  
+  protected final void dUJ()
+  {
+    AppMethodBeat.i(96679);
+    this.vk.setText(((ad)this.zUP).label);
+    this.vk.setTextSize(0, ((ad)this.zUP).fontSize);
+    if ((((ad)this.zUP).jZm != null) && (((ad)this.zUP).jZm.length() > 0))
     {
-      AppMethodBeat.o(96698);
-      return false;
+      int i = Color.parseColor(((ad)this.zUP).jZm);
+      this.zXs.setBackgroundColor(i);
     }
-    try
+    com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.h.a(((ad)this.zUP).zRC, ((ad)this.zUP).zRh, new f.a()
     {
-      if (!this.zDq)
+      public final void ayY(String paramAnonymousString)
       {
-        String str = ai.ee(((s)this.zDK).zzL);
-        JSONObject localJSONObject = new JSONObject();
-        localJSONObject.put("urlMd5", str);
-        localJSONObject.put("needDownload", 1);
-        paramJSONObject.put("imgUrlInfo", localJSONObject);
-      }
-      AppMethodBeat.o(96698);
-      return true;
-    }
-    catch (JSONException paramJSONObject)
-    {
-      ad.printErrStackTrace("AdLandingPagePureImageComponet", paramJSONObject, "", new Object[0]);
-      AppMethodBeat.o(96698);
-    }
-    return false;
-  }
-  
-  public final boolean am(Bitmap paramBitmap)
-  {
-    AppMethodBeat.i(96697);
-    if (paramBitmap == null)
-    {
-      ad.e("AdLandingPagePureImageComponet", "when set image the bmp is null!");
-      AppMethodBeat.o(96697);
-      return false;
-    }
-    if (this.dsD == null)
-    {
-      ad.e("AdLandingPagePureImageComponet", "when set image the imageView is null!");
-      AppMethodBeat.o(96697);
-      return false;
-    }
-    if (paramBitmap.getWidth() == 0)
-    {
-      ad.e("AdLandingPagePureImageComponet", "when set image the bmp.getWidth is 0!");
-      AppMethodBeat.o(96697);
-      return false;
-    }
-    this.dsD.setImageBitmap(paramBitmap);
-    this.progressBar.setVisibility(8);
-    AppMethodBeat.o(96697);
-    return true;
-  }
-  
-  public final void dRk()
-  {
-    AppMethodBeat.i(96693);
-    this.dsD = ((ImageView)this.contentView.findViewById(2131304915));
-    this.progressBar = ((ProgressBar)this.contentView.findViewById(2131303535));
-    if (((s)this.zDK).zzM)
-    {
-      Bundle localBundle = new Bundle();
-      localBundle.putString("qrExtInfo", ((s)this.zDK).zzN);
-      this.zDx = new com.tencent.mm.plugin.sns.data.g(this.context, dWZ(), 1, localBundle);
-      this.dsD.setOnLongClickListener(new View.OnLongClickListener()
-      {
-        public final boolean onLongClick(View paramAnonymousView)
+        AppMethodBeat.i(96677);
+        try
         {
-          AppMethodBeat.i(176279);
-          b localb = new b();
-          localb.bd(paramAnonymousView);
-          a.b("com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/AdLandingPagePureImageComponet$2", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.ahq());
-          ad.i("AdLandingPagePureImageComponet", "onLongClick, filePath=" + ac.this.zcO);
-          boolean bool = ac.this.zDx.je(ac.this.zcO, ac.a(ac.this).zzL);
-          a.a(bool, this, "com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/AdLandingPagePureImageComponet$2", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
-          AppMethodBeat.o(176279);
-          return bool;
-        }
-      });
-    }
-    AppMethodBeat.o(96693);
-  }
-  
-  protected final void dRl()
-  {
-    AppMethodBeat.i(96695);
-    if ((this.contentView == null) || (this.dsD == null) || (this.progressBar == null))
-    {
-      AppMethodBeat.o(96695);
-      return;
-    }
-    if ((s)this.zDK == null)
-    {
-      AppMethodBeat.o(96695);
-      return;
-    }
-    String str = ((s)this.zDK).zzL;
-    Object localObject = ((s)this.zDK).zxx;
-    float f2 = ((s)this.zDK).height;
-    float f1 = ((s)this.zDK).width;
-    this.zzK = ((s)this.zDK).zzK;
-    int i;
-    if ((f2 != 0.0F) && (f1 != 0.0F) && (!this.zzK))
-    {
-      i = this.ltA - (int)((s)this.zDK).paddingLeft - (int)((s)this.zDK).paddingRight;
-      if (f1 >= i) {}
-    }
-    for (;;)
-    {
-      f2 = f1 * ((s)this.zDK).height / ((s)this.zDK).width;
-      this.dsD.setLayoutParams(new RelativeLayout.LayoutParams((int)f1, (int)f2));
-      label205:
-      if ((localObject != null) && (((String)localObject).length() > 0)) {}
-      try
-      {
-        this.dsD.setBackgroundColor(Color.parseColor((String)localObject));
-        label230:
-        if ((str == null) || (str.length() <= 0))
-        {
-          ad.i("AdLandingPagePureImageComponet", "Pure image component fillItem without imageurl.");
-          AppMethodBeat.o(96695);
-          return;
-          f1 = i;
-          continue;
-          if ((this.zzK) && (f2 != 0.0F) && (f1 != 0.0F))
-          {
-            this.dsD.setLayoutParams(new RelativeLayout.LayoutParams(this.ltA, this.ltB));
-            break label205;
-          }
-          this.dsD.setLayoutParams(new RelativeLayout.LayoutParams(this.ltA, this.ltB));
-          break label205;
-        }
-        localObject = h.jJ("adId", str);
-        if ((localObject != null) && (am((Bitmap)localObject)))
-        {
-          ad.i("AdLandingPagePureImageComponet", "loaded cached image with  ".concat(String.valueOf(str)));
-          str = h.jF("adId", str);
-          if ((!TextUtils.isEmpty(str)) && (i.fv(str))) {
-            this.zcO = str;
-          }
-          this.zDq = true;
-          AppMethodBeat.o(96695);
+          paramAnonymousString = com.tencent.mm.sdk.platformtools.h.decodeFile(paramAnonymousString);
+          ac.this.zXt.setImageBitmap(paramAnonymousString);
+          paramAnonymousString = ac.this.vk;
+          Paint localPaint = new Paint();
+          String str = paramAnonymousString.getText().toString();
+          localPaint.setTextSize(paramAnonymousString.getTextSize());
+          float f = localPaint.measureText(str, 0, str.length());
+          f = ac.this.zUP.zRi - f - TypedValue.applyDimension(1, 3.0F, ac.this.context.getResources().getDisplayMetrics());
+          int i = (int)(f - ac.a(ac.this).value * f);
+          paramAnonymousString = (RelativeLayout.LayoutParams)ac.this.zXt.getLayoutParams();
+          paramAnonymousString.setMargins(paramAnonymousString.leftMargin, paramAnonymousString.topMargin, i, paramAnonymousString.leftMargin);
+          ac.this.zXt.setLayoutParams(paramAnonymousString);
+          AppMethodBeat.o(96677);
           return;
         }
-        this.zDq = false;
-        startLoading();
-        h.a(str, ((s)this.zDK).zAh, new f.a()
+        catch (Exception paramAnonymousString)
         {
-          public final void axG(String paramAnonymousString)
-          {
-            AppMethodBeat.i(96685);
-            try
-            {
-              Bitmap localBitmap = com.tencent.mm.sdk.platformtools.g.decodeFile(paramAnonymousString);
-              ac.this.am(localBitmap);
-              ac.this.zcO = paramAnonymousString;
-              AppMethodBeat.o(96685);
-              return;
-            }
-            catch (Exception paramAnonymousString)
-            {
-              ad.e("AdLandingPagePureImageComponet", "%s" + bt.n(paramAnonymousString));
-              AppMethodBeat.o(96685);
-            }
-          }
-          
-          public final void dRW()
-          {
-            AppMethodBeat.i(96683);
-            ac.this.startLoading();
-            AppMethodBeat.o(96683);
-          }
-          
-          public final void dRX()
-          {
-            AppMethodBeat.i(96684);
-            ac.this.progressBar.setVisibility(8);
-            AppMethodBeat.o(96684);
-          }
-        });
-        AppMethodBeat.o(96695);
-        return;
+          ae.e("MicroMsg.Sns.AdLandingPageProcessBarComponent", "%s" + bu.o(paramAnonymousString));
+          AppMethodBeat.o(96677);
+        }
       }
-      catch (Exception localException)
-      {
-        break label230;
-      }
-    }
+      
+      public final void dVu() {}
+      
+      public final void dVv() {}
+    });
+    AppMethodBeat.o(96679);
   }
   
-  protected final void dWF()
+  public final void dUK()
   {
-    AppMethodBeat.i(96694);
-    Object localObject = this.contentView.getLayoutParams();
-    if ((localObject instanceof ViewGroup.MarginLayoutParams))
-    {
-      localObject = (ViewGroup.MarginLayoutParams)localObject;
-      ((ViewGroup.MarginLayoutParams)localObject).setMargins((int)((s)this.zDK).paddingLeft, (int)((s)this.zDK).paddingTop, (int)((s)this.zDK).paddingRight, (int)((s)this.zDK).paddingBottom);
-      this.contentView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-    }
-    AppMethodBeat.o(96694);
+    AppMethodBeat.i(96681);
+    super.dUK();
+    AppMethodBeat.o(96681);
+  }
+  
+  public final void dUL()
+  {
+    AppMethodBeat.i(96682);
+    super.dUL();
+    AppMethodBeat.o(96682);
+  }
+  
+  public final void dUM()
+  {
+    AppMethodBeat.i(96678);
+    super.dUM();
+    AppMethodBeat.o(96678);
   }
   
   protected final int getLayout()
   {
-    return 2131495507;
-  }
-  
-  public final void startLoading()
-  {
-    AppMethodBeat.i(96696);
-    this.progressBar.setVisibility(0);
-    AppMethodBeat.o(96696);
+    return 2131495506;
   }
 }
 

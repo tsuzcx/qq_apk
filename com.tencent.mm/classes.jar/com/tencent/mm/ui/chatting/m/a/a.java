@@ -1,72 +1,57 @@
 package com.tencent.mm.ui.chatting.m.a;
 
-import android.os.Build;
-import android.os.Build.VERSION;
 import android.text.Spannable;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.ei;
-import com.tencent.mm.model.b.b.b;
-import com.tencent.mm.model.ba;
-import com.tencent.mm.model.c;
-import com.tencent.mm.plugin.messenger.foundation.a.a.i;
-import com.tencent.mm.plugin.messenger.foundation.a.l;
-import com.tencent.mm.pluginsdk.ui.span.o;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.bu;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.storage.bv;
 import com.tencent.mm.ui.widget.MMTextView.a;
-import java.util.ArrayList;
-import java.util.Iterator;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class a
 {
-  private static volatile a JWx;
-  private static final ap JWy;
+  private static volatile a KsO;
+  private static final aq KsP;
   
   static
   {
     AppMethodBeat.i(36623);
-    JWx = null;
-    JWy = new ap("AAChattingHelper");
+    KsO = null;
+    KsP = new aq("AAChattingHelper");
     AppMethodBeat.o(36623);
   }
   
   private a()
   {
     AppMethodBeat.i(185017);
-    JWy.setLogging(false);
+    KsP.setLogging(false);
     AppMethodBeat.o(185017);
   }
   
-  public static void a(CharSequence paramCharSequence, bu parambu)
+  public static void a(CharSequence paramCharSequence, bv parambv)
   {
     AppMethodBeat.i(36621);
-    a(paramCharSequence, parambu, 1);
+    a(paramCharSequence, parambv, 1);
     AppMethodBeat.o(36621);
   }
   
-  private static void a(CharSequence paramCharSequence, bu parambu, int paramInt)
+  private static void a(CharSequence paramCharSequence, bv parambv, int paramInt)
   {
     AppMethodBeat.i(36620);
     if ((paramCharSequence instanceof Spannable)) {
-      JWy.postToWorker(new b(paramCharSequence, parambu, paramInt));
+      KsP.postToWorker(new a.b(paramCharSequence, parambv, paramInt));
     }
     AppMethodBeat.o(36620);
   }
   
-  public static a fGX()
+  public static a fLp()
   {
     AppMethodBeat.i(36619);
-    if (JWx == null) {
+    if (KsO == null) {
       try
       {
-        if (JWx == null) {
-          JWx = new a();
+        if (KsO == null) {
+          KsO = new a();
         }
-        a locala1 = JWx;
+        a locala1 = KsO;
         return locala1;
       }
       finally
@@ -74,171 +59,19 @@ public class a
         AppMethodBeat.o(36619);
       }
     }
-    a locala2 = JWx;
+    a locala2 = KsO;
     AppMethodBeat.o(36619);
     return locala2;
   }
   
-  public static MMTextView.a fGY()
+  public static MMTextView.a fLq()
   {
-    return a.JWz;
-  }
-  
-  static enum a
-    implements MMTextView.a
-  {
-    static
-    {
-      AppMethodBeat.i(36616);
-      JWz = new a("TEXT_CALLBACK");
-      JWA = new a[] { JWz };
-      AppMethodBeat.o(36616);
-    }
-    
-    private a() {}
-    
-    public final void a(CharSequence paramCharSequence, long paramLong)
-    {
-      AppMethodBeat.i(36615);
-      bu localbu = ((l)com.tencent.mm.kernel.g.ab(l.class)).dlK().xY(paramLong);
-      if (bt.isNullOrNil(localbu.field_talker))
-      {
-        ad.w("MicroMsg.AAChattingHelper", "hy: not retrieving correct msg from db. try use old one. msg id: %d", new Object[] { Long.valueOf(paramLong) });
-        AppMethodBeat.o(36615);
-        return;
-      }
-      if ((localbu.field_flag & 0x10) == 0)
-      {
-        a.b(paramCharSequence, localbu);
-        AppMethodBeat.o(36615);
-        return;
-      }
-      ad.v("MicroMsg.AAChattingHelper", "hy: show already checked. msg id is: %d", new Object[] { Long.valueOf(paramLong) });
-      AppMethodBeat.o(36615);
-    }
-  }
-  
-  static final class b
-    implements Runnable
-  {
-    private bu dku;
-    private int scene;
-    private CharSequence text;
-    
-    b(CharSequence paramCharSequence, bu parambu, int paramInt)
-    {
-      this.text = paramCharSequence;
-      this.dku = parambu;
-      this.scene = paramInt;
-    }
-    
-    public final void run()
-    {
-      int i = 0;
-      AppMethodBeat.i(36618);
-      if ((this.text instanceof Spannable)) {}
-      for (;;)
-      {
-        try
-        {
-          Spannable localSpannable = (Spannable)this.text;
-          System.nanoTime();
-          Object[] arrayOfObject = localSpannable.getSpans(0, localSpannable.length(), Object.class);
-          Object localObject3 = new ArrayList(1);
-          if ((arrayOfObject == null) || (arrayOfObject.length == 0)) {
-            break label398;
-          }
-          int j = arrayOfObject.length;
-          Object localObject1 = localObject3;
-          if (i < j)
-          {
-            localObject1 = arrayOfObject[i];
-            if ((localObject1 == null) || (!com.tencent.mm.plugin.normsg.a.b.wtJ.e(localObject1, o.class))) {
-              break label391;
-            }
-            ((ArrayList)localObject3).add(new a.a((byte)0).a(localObject1, localSpannable));
-            break label391;
-          }
-          if ((localObject1 == null) || (((ArrayList)localObject1).size() == 0)) {
-            break label385;
-          }
-          this.dku = ((l)com.tencent.mm.kernel.g.ab(l.class)).dlK().xY(this.dku.field_msgId);
-          if ((this.dku != null) && (!bt.isNullOrNil(this.dku.field_talker)))
-          {
-            this.dku.setFlag(this.dku.field_flag | 0x10);
-            ((l)com.tencent.mm.kernel.g.ab(l.class)).dlK().a(this.dku.field_msgId, this.dku);
-          }
-          ba.aBQ().azQ().aDd();
-          ba.aBQ().azQ().b(b.b.hIP);
-          localObject1 = ((ArrayList)localObject1).iterator();
-          if (!((Iterator)localObject1).hasNext()) {
-            break label385;
-          }
-          localObject3 = ((c)((Iterator)localObject1).next()).extInfo;
-          com.tencent.mm.plugin.report.service.g.yhR.f(14237, new Object[] { "msg", Long.valueOf(this.dku.field_msgId), Build.MANUFACTURER, Build.MODEL, Build.VERSION.RELEASE, Build.VERSION.INCREMENTAL, Build.DISPLAY, Integer.valueOf(this.scene), localObject3 });
-          com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(587L, 0L, 1L, false);
-          continue;
-          AppMethodBeat.o(36618);
-        }
-        catch (Exception localException) {}
-        return;
-        label385:
-        AppMethodBeat.o(36618);
-        return;
-        label391:
-        i += 1;
-        continue;
-        label398:
-        Object localObject2 = null;
-      }
-    }
-    
-    static final class a$a
-      implements a.b.b
-    {
-      public final a.b.c a(Object paramObject, Spannable paramSpannable)
-      {
-        AppMethodBeat.i(36617);
-        String str = paramSpannable.toString().substring(paramSpannable.getSpanStart(paramObject), paramSpannable.getSpanEnd(paramObject));
-        try
-        {
-          paramSpannable = bt.bI(new JSONObject(paramObject.toString()).optString("type"), paramObject.getClass().getName());
-          paramObject = paramSpannable;
-        }
-        catch (JSONException paramSpannable)
-        {
-          for (;;)
-          {
-            paramObject = paramObject.getClass().getName();
-          }
-        }
-        paramObject = new a.b.c(str, paramObject);
-        AppMethodBeat.o(36617);
-        return paramObject;
-      }
-    }
-    
-    static abstract interface b
-    {
-      public abstract a.b.c a(Object paramObject, Spannable paramSpannable);
-    }
-    
-    static final class c
-    {
-      String extInfo;
-      String text;
-      
-      c(String paramString1, String paramString2)
-      {
-        this.text = paramString1;
-        this.extInfo = paramString2;
-      }
-    }
+    return a.a.KsQ;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.m.a.a
  * JD-Core Version:    0.7.0.1
  */

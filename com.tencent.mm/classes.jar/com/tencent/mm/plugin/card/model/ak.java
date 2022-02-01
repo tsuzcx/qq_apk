@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.card.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.g.c.ex;
-import com.tencent.mm.protocal.protobuf.tu;
+import com.tencent.mm.protocal.protobuf.tw;
 import com.tencent.mm.sdk.e.c.a;
 import java.lang.reflect.Field;
 import java.util.Map;
@@ -16,16 +16,16 @@ public final class ak
   {
     AppMethodBeat.i(112869);
     c.a locala = new c.a();
-    locala.IhA = new Field[2];
+    locala.IBL = new Field[2];
     locala.columns = new String[3];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "cardUserId";
-    locala.IhC.put("cardUserId", "TEXT PRIMARY KEY ");
+    locala.IBN.put("cardUserId", "TEXT PRIMARY KEY ");
     localStringBuilder.append(" cardUserId TEXT PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.IhB = "cardUserId";
+    locala.IBM = "cardUserId";
     locala.columns[1] = "retryCount";
-    locala.IhC.put("retryCount", "INTEGER");
+    locala.IBN.put("retryCount", "INTEGER");
     localStringBuilder.append(" retryCount INTEGER");
     locala.columns[2] = "rowid";
     locala.sql = localStringBuilder.toString();
@@ -33,11 +33,11 @@ public final class ak
     AppMethodBeat.o(112869);
   }
   
-  public static ak b(tu paramtu)
+  public static ak b(tw paramtw)
   {
     AppMethodBeat.i(112868);
     ak localak = new ak();
-    localak.field_cardUserId = paramtu.FHU;
+    localak.field_cardUserId = paramtw.Gaq;
     AppMethodBeat.o(112868);
     return localak;
   }

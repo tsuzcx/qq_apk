@@ -11,7 +11,7 @@ import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.Iterator;
 import java.util.LinkedList;
 
@@ -37,7 +37,7 @@ public class i
     this.chx = null;
     this.chy = new j()
     {
-      public final p BZ()
+      public final p Ca()
       {
         AppMethodBeat.i(174614);
         p localp = i.a(i.this);
@@ -45,25 +45,25 @@ public class i
         return localp;
       }
       
-      final Class<? extends com.tencent.luggage.webview.a> Ca()
+      final Class<? extends com.tencent.luggage.webview.a> Cb()
       {
         AppMethodBeat.i(174612);
-        Class localClass = i.this.Ca();
+        Class localClass = i.this.Cb();
         AppMethodBeat.o(174612);
         return localClass;
       }
       
-      public final LinkedList<h> Cd()
+      public final LinkedList<h> Cg()
       {
         return i.this.chs;
       }
       
-      public final k Ce()
+      public final k Ch()
       {
         return i.this;
       }
       
-      public final LinkedList<Class<? extends b>> Cf()
+      public final LinkedList<Class<? extends b>> Ci()
       {
         AppMethodBeat.i(174613);
         LinkedList localLinkedList = (LinkedList)i.this.cht.chj.clone();
@@ -71,7 +71,7 @@ public class i
         return localLinkedList;
       }
       
-      public final com.tencent.luggage.h.e Cg()
+      public final com.tencent.luggage.h.e Cj()
       {
         return i.this.chu;
       }
@@ -88,17 +88,17 @@ public class i
     this.chr = localFrameLayout;
     this.cht = new e();
     a(null);
-    this.chu = com.tencent.luggage.h.e.aA(paramActivity);
+    this.chu = com.tencent.luggage.h.e.aB(paramActivity);
     AppMethodBeat.o(140390);
   }
   
-  private p BZ()
+  private p Ca()
   {
     AppMethodBeat.i(140402);
     Object localObject = this.chw;
     this.chw = null;
     localObject = r.a(this.mContext, (Integer)localObject);
-    if ((localObject != null) && (((p)localObject).chN.equals(Ca())))
+    if ((localObject != null) && (((p)localObject).chN.equals(Cb())))
     {
       AppMethodBeat.o(140402);
       return localObject;
@@ -130,7 +130,7 @@ public class i
     AppMethodBeat.o(140403);
   }
   
-  public final h BW()
+  public final h BX()
   {
     AppMethodBeat.i(140391);
     if (this.chs.size() > 0)
@@ -143,7 +143,7 @@ public class i
     return null;
   }
   
-  public final boolean BX()
+  public final boolean BY()
   {
     AppMethodBeat.i(140396);
     boolean bool = bp(true);
@@ -151,7 +151,7 @@ public class i
     return bool;
   }
   
-  public final void BY()
+  public final void BZ()
   {
     AppMethodBeat.i(140401);
     if (this.chw != null)
@@ -165,7 +165,7 @@ public class i
       {
         AppMethodBeat.i(174610);
         if (!((Activity)i.this.mContext).isFinishing()) {
-          i.this.chw = r.b(i.this.mContext.getApplicationContext(), i.this.Ca());
+          i.this.chw = r.b(i.this.mContext.getApplicationContext(), i.this.Cb());
         }
         AppMethodBeat.o(174610);
       }
@@ -173,7 +173,7 @@ public class i
     AppMethodBeat.o(140401);
   }
   
-  final Class<? extends com.tencent.luggage.webview.a> Ca()
+  final Class<? extends com.tencent.luggage.webview.a> Cb()
   {
     if (this.chx == null) {
       if (this.chq != null) {
@@ -188,9 +188,13 @@ public class i
     }
   }
   
-  protected void Cb() {}
-  
   protected void Cc() {}
+  
+  protected void Cd() {}
+  
+  protected void Ce() {}
+  
+  protected void Cf() {}
   
   public final void a(m paramm)
   {
@@ -218,7 +222,13 @@ public class i
     final h localh = this.chv.k(paramString, paramBundle);
     if (localh == null)
     {
-      ad.e("LuggagePageContainer", "No page specified for url %s", new Object[] { paramString });
+      ae.e("LuggagePageContainer", "No page specified for url %s", new Object[] { paramString });
+      AppMethodBeat.o(140395);
+      return false;
+    }
+    if (!aKK())
+    {
+      ae.i("LuggagePageContainer", "Pushing page is banned");
       AppMethodBeat.o(140395);
       return false;
     }
@@ -231,6 +241,7 @@ public class i
       public final void run()
       {
         AppMethodBeat.i(140375);
+        i.this.Cf();
         if (this.done)
         {
           AppMethodBeat.o(140375);
@@ -250,18 +261,18 @@ public class i
           localObject3 = new AnimatorSet();
           ((AnimatorSet)localObject3).playSequentially(new Animator[] { localObject2, localObjectAnimator });
           ((h)localObject1).a((Animator)localObject3, null);
-          ((h)i.this.chs.peek()).BT();
+          ((h)i.this.chs.peek()).BU();
         }
         localh.getContentView().bringToFront();
         localh.getContentView().setVisibility(0);
-        localh.BS();
+        localh.BT();
         Object localObject1 = new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(140374);
             i.this.chs.push(i.1.this.chA);
-            i.this.BY();
+            i.this.BZ();
             AppMethodBeat.o(140374);
           }
         };
@@ -291,12 +302,18 @@ public class i
         AppMethodBeat.o(140376);
       }
     });
+    Ce();
     localh.g(paramString, paramBundle);
     c(local1, 300L);
     if (!paramBoolean) {
       local1.run();
     }
     AppMethodBeat.o(140395);
+    return true;
+  }
+  
+  protected boolean aKK()
+  {
     return true;
   }
   
@@ -328,7 +345,7 @@ public class i
         public final void run()
         {
           AppMethodBeat.i(140378);
-          ((h)i.this.chs.peek()).BS();
+          ((h)i.this.chs.peek()).BT();
           AppMethodBeat.o(140378);
         }
       });
@@ -340,11 +357,11 @@ public class i
       a(localh);
       break;
       label94:
-      ((h)this.chs.peek()).BS();
+      ((h)this.chs.peek()).BT();
     }
   }
   
-  public final boolean cA(String paramString)
+  public final boolean cB(String paramString)
   {
     AppMethodBeat.i(140393);
     boolean bool = h(paramString, null);
@@ -359,11 +376,11 @@ public class i
     while (((Iterator)localObject).hasNext()) {
       ((h)((Iterator)localObject).next()).destroy();
     }
-    localObject = BZ();
+    localObject = Ca();
     if (localObject != null) {
       ((p)localObject).destroy();
     }
-    com.tencent.luggage.h.e.aB(this.mContext);
+    com.tencent.luggage.h.e.aC(this.mContext);
     AppMethodBeat.o(140392);
   }
   
@@ -400,7 +417,7 @@ public class i
     final h localh = this.chv.k(paramString, paramBundle);
     if (localh == null)
     {
-      ad.e("LuggagePageContainer", "No page specified for url %s", new Object[] { paramString });
+      ae.e("LuggagePageContainer", "No page specified for url %s", new Object[] { paramString });
       AppMethodBeat.o(174615);
       return false;
     }
@@ -423,7 +440,7 @@ public class i
           }
           i.this.chs.push(localh);
           i.this.chr.addView(localh.getContentView());
-          localh.BS();
+          localh.BT();
           AppMethodBeat.o(140379);
           return;
         }
@@ -443,13 +460,13 @@ public class i
   public final boolean onBackPressed()
   {
     AppMethodBeat.i(140407);
-    h localh = BW();
+    h localh = BX();
     if (localh == null)
     {
       AppMethodBeat.o(140407);
       return false;
     }
-    if (localh.BU())
+    if (localh.BV())
     {
       AppMethodBeat.o(140407);
       return true;
@@ -467,26 +484,26 @@ public class i
   public final void onPause()
   {
     AppMethodBeat.i(140406);
-    h localh = BW();
+    h localh = BX();
     if (localh == null)
     {
       AppMethodBeat.o(140406);
       return;
     }
-    localh.BT();
+    localh.BU();
     AppMethodBeat.o(140406);
   }
   
   public void onResume()
   {
     AppMethodBeat.i(140405);
-    h localh = BW();
+    h localh = BX();
     if (localh == null)
     {
       AppMethodBeat.o(140405);
       return;
     }
-    localh.BS();
+    localh.BT();
     AppMethodBeat.o(140405);
   }
   
@@ -523,7 +540,7 @@ public class i
     {
       AppMethodBeat.i(140389);
       super.add(paramInt, paramE);
-      i.this.Cb();
+      i.this.Cc();
       AppMethodBeat.o(140389);
     }
     
@@ -532,7 +549,7 @@ public class i
       AppMethodBeat.i(140388);
       boolean bool = super.add(paramE);
       if (bool) {
-        i.this.Cb();
+        i.this.Cc();
       }
       AppMethodBeat.o(140388);
       return bool;
@@ -542,7 +559,7 @@ public class i
     {
       AppMethodBeat.i(140386);
       Object localObject = super.pop();
-      i.this.Cc();
+      i.this.Cd();
       AppMethodBeat.o(140386);
       return localObject;
     }
@@ -551,7 +568,7 @@ public class i
     {
       AppMethodBeat.i(140387);
       super.push(paramE);
-      i.this.Cb();
+      i.this.Cc();
       AppMethodBeat.o(140387);
     }
     
@@ -559,7 +576,7 @@ public class i
     {
       AppMethodBeat.i(140385);
       Object localObject = super.remove(paramInt);
-      i.this.Cc();
+      i.this.Cd();
       AppMethodBeat.o(140385);
       return localObject;
     }

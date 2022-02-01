@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class vp
   extends b
 {
-  public a dKd;
+  public a dKS;
   
   public vp()
   {
@@ -15,16 +15,16 @@ public final class vp
   
   private vp(byte paramByte)
   {
-    AppMethodBeat.i(190906);
-    this.dKd = new a();
-    this.IbR = false;
+    AppMethodBeat.i(116809);
+    this.dKS = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(190906);
+    AppMethodBeat.o(116809);
   }
   
   public static final class a
   {
-    public String dKe;
+    public int action = 0;
   }
 }
 

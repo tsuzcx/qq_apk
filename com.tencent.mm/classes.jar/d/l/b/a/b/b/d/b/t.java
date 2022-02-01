@@ -45,14 +45,14 @@ public abstract interface t
       int i = paramt.getModifiers();
       if (Modifier.isPublic(i))
       {
-        paramt = az.MVh;
+        paramt = az.Nsm;
         p.g(paramt, "Visibilities.PUBLIC");
         AppMethodBeat.o(57495);
         return paramt;
       }
       if (Modifier.isPrivate(i))
       {
-        paramt = az.MVd;
+        paramt = az.Nsi;
         p.g(paramt, "Visibilities.PRIVATE");
         AppMethodBeat.o(57495);
         return paramt;
@@ -60,14 +60,14 @@ public abstract interface t
       if (Modifier.isProtected(i))
       {
         if (Modifier.isStatic(i)) {}
-        for (paramt = n.Ncs;; paramt = n.Nct)
+        for (paramt = n.Nzx;; paramt = n.Nzy)
         {
           p.g(paramt, "if (Modifier.isStatic(mo…ies.PROTECTED_AND_PACKAGE");
           AppMethodBeat.o(57495);
           return paramt;
         }
       }
-      paramt = n.Ncr;
+      paramt = n.Nzw;
       p.g(paramt, "JavaVisibilities.PACKAGE_VISIBILITY");
       AppMethodBeat.o(57495);
       return paramt;
@@ -76,7 +76,7 @@ public abstract interface t
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.b.d.b.t
  * JD-Core Version:    0.7.0.1
  */

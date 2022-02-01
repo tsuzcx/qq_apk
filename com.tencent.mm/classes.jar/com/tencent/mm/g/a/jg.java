@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class jg
   extends b
 {
-  public a dwd;
+  public a dxg;
   
   public jg()
   {
@@ -15,16 +15,16 @@ public final class jg
   
   private jg(byte paramByte)
   {
-    AppMethodBeat.i(149864);
-    this.dwd = new a();
-    this.IbR = false;
+    AppMethodBeat.i(130779);
+    this.dxg = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(149864);
+    AppMethodBeat.o(130779);
   }
   
   public static final class a
   {
-    public String url;
+    public int dxh;
   }
 }
 

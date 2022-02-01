@@ -1,55 +1,58 @@
 package com.tencent.mm.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import java.util.HashSet;
-import java.util.Set;
+import com.tencent.mm.ak.e;
+import com.tencent.mm.ak.e.a;
+import com.tencent.mm.ak.e.b;
+import com.tencent.mm.ak.e.c;
+import com.tencent.mm.protocal.protobuf.cv;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.bx;
+import com.tencent.mm.storage.aj;
+import java.util.Map;
 
 public final class cg
+  implements e
 {
-  public Set<a> hIv;
-  public boolean isRunning;
-  
-  public cg()
+  public final e.b b(e.a parama)
   {
-    AppMethodBeat.i(132286);
-    this.isRunning = false;
-    this.hIv = new HashSet();
-    AppMethodBeat.o(132286);
-  }
-  
-  public final boolean a(a parama)
-  {
-    AppMethodBeat.i(132287);
-    if (this.isRunning)
+    AppMethodBeat.i(20397);
+    parama = parama.gte;
+    if (parama == null)
     {
-      ad.e("MicroMsg.UninitForUEH", "add , is running , forbid add");
-      AppMethodBeat.o(132287);
-      return false;
+      ae.e("MicroMsg.SysNoticeMsgExtension", "onPreAddMessage cmdAM is null");
+      AppMethodBeat.o(20397);
+      return null;
     }
-    boolean bool = this.hIv.add(parama);
-    AppMethodBeat.o(132287);
-    return bool;
-  }
-  
-  public final boolean b(a parama)
-  {
-    AppMethodBeat.i(132288);
-    if (this.isRunning)
+    try
     {
-      ad.e("MicroMsg.UninitForUEH", "remove , is running , forbid remove");
-      AppMethodBeat.o(132288);
-      return false;
+      parama = bx.M("<root>" + parama.FNI + "</root>", "root");
+      int i = Integer.valueOf((String)parama.get(".root.newcount")).intValue();
+      int j = Integer.valueOf((String)parama.get(".root.version")).intValue();
+      bc.aCg();
+      parama = c.ajA();
+      if (j == bu.o((Integer)parama.get(12305, null)))
+      {
+        ae.i("MicroMsg.SysNoticeMsgExtension", "ignore new sys notice count, same version");
+        AppMethodBeat.o(20397);
+        return null;
+      }
+      parama.set(12304, Integer.valueOf(i));
+      parama.set(12305, Integer.valueOf(j));
     }
-    boolean bool = this.hIv.remove(parama);
-    AppMethodBeat.o(132288);
-    return bool;
+    catch (Exception parama)
+    {
+      for (;;)
+      {
+        ae.e("MicroMsg.SysNoticeMsgExtension", "exception:%s", new Object[] { bu.o(parama) });
+      }
+    }
+    AppMethodBeat.o(20397);
+    return null;
   }
   
-  public static abstract interface a
-  {
-    public abstract boolean aCO();
-  }
+  public final void b(e.c paramc) {}
 }
 
 

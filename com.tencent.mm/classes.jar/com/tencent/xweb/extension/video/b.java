@@ -7,17 +7,17 @@ import com.tencent.xweb.u;
 public abstract interface b
   extends u
 {
-  public abstract void bb(boolean paramBoolean1, boolean paramBoolean2);
+  public abstract void ba(boolean paramBoolean1, boolean paramBoolean2);
   
-  public abstract void eA(Object paramObject);
+  public abstract void eD(Object paramObject);
   
-  public abstract boolean eB(Object paramObject);
+  public abstract boolean eE(Object paramObject);
   
   public abstract void onHideCustomView();
   
   public abstract void onShowCustomView(View paramView, WebChromeClient.CustomViewCallback paramCustomViewCallback);
   
-  public abstract void zJ(boolean paramBoolean);
+  public abstract void zW(boolean paramBoolean);
 }
 
 

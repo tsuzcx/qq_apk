@@ -16,35 +16,35 @@ import android.view.View;
 import android.view.Window;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.c;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.f.c;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.ak.p;
-import com.tencent.mm.g.a.wn;
-import com.tencent.mm.model.az;
-import com.tencent.mm.model.u;
+import com.tencent.mm.aj.f;
+import com.tencent.mm.aj.f.c;
+import com.tencent.mm.aj.n;
+import com.tencent.mm.aj.p;
+import com.tencent.mm.g.a.wr;
+import com.tencent.mm.model.bb;
+import com.tencent.mm.model.v;
 import com.tencent.mm.plugin.image.d;
 import com.tencent.mm.pluginsdk.m;
 import com.tencent.mm.pluginsdk.ui.GetHdHeadImageGalleryView;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.h;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.n.d;
 import com.tencent.mm.ui.base.n.e;
 import com.tencent.mm.ui.base.t;
-import com.tencent.mm.vfs.i;
+import com.tencent.mm.vfs.o;
 
 public class PreviewHdHeadImg
   extends MMActivity
 {
-  private final int iUF = 2;
+  private final int iXy = 2;
   private String username;
-  private final int yEt = 1;
-  private final int yEu = 3;
-  private GetHdHeadImageGalleryView yEv;
-  private f yEw;
-  private String yEx;
+  private GetHdHeadImageGalleryView yUA;
+  private f yUB;
+  private String yUC;
+  private final int yUy = 1;
+  private final int yUz = 3;
   
   private void d(Bitmap paramBitmap, String paramString)
   {
@@ -64,17 +64,17 @@ public class PreviewHdHeadImg
           localObject = new Matrix();
           ((Matrix)localObject).postScale(f, f);
           localObject = Bitmap.createBitmap(paramBitmap, 0, 0, paramBitmap.getWidth(), paramBitmap.getHeight(), (Matrix)localObject, true);
-          ad.d("MicroMsg.PreviewHdHeadImg", "dkhdbm old[%d %d] new[%d %d]", new Object[] { Integer.valueOf(paramBitmap.getWidth()), Integer.valueOf(paramBitmap.getHeight()), Integer.valueOf(((Bitmap)localObject).getWidth()), Integer.valueOf(((Bitmap)localObject).getHeight()) });
-          this.yEv.setHdHeadImage((Bitmap)localObject);
-          this.yEv.setHdHeadImagePath(paramString);
-          this.yEx = paramString;
+          ae.d("MicroMsg.PreviewHdHeadImg", "dkhdbm old[%d %d] new[%d %d]", new Object[] { Integer.valueOf(paramBitmap.getWidth()), Integer.valueOf(paramBitmap.getHeight()), Integer.valueOf(((Bitmap)localObject).getWidth()), Integer.valueOf(((Bitmap)localObject).getHeight()) });
+          this.yUA.setHdHeadImage((Bitmap)localObject);
+          this.yUA.setHdHeadImagePath(paramString);
+          this.yUC = paramString;
           AppMethodBeat.o(73931);
           return;
         }
       }
       catch (Exception paramBitmap)
       {
-        ad.printErrStackTrace("MicroMsg.PreviewHdHeadImg", paramBitmap, "", new Object[0]);
+        ae.printErrStackTrace("MicroMsg.PreviewHdHeadImg", paramBitmap, "", new Object[0]);
         AppMethodBeat.o(73931);
         return;
       }
@@ -82,73 +82,73 @@ public class PreviewHdHeadImg
     }
   }
   
-  private void dNn()
+  private void dQJ()
   {
     AppMethodBeat.i(73929);
-    if (!com.tencent.mm.kernel.g.ajC().isSDCardAvailable())
+    if (!com.tencent.mm.kernel.g.ajR().isSDCardAvailable())
     {
       t.g(getContext(), null);
-      d(p.aEk().cy(getContext()), null);
+      d(p.aEA().cA(getContext()), null);
       AppMethodBeat.o(73929);
       return;
     }
-    final Bitmap localBitmap1 = dNo();
+    final Bitmap localBitmap1 = dQK();
     if ((localBitmap1 != null) && (!localBitmap1.isRecycled()))
     {
-      ad.i("MicroMsg.PreviewHdHeadImg", "The avatar of %s is in the cache", new Object[] { this.username });
-      this.yEv.setThumbImage(localBitmap1);
+      ae.i("MicroMsg.PreviewHdHeadImg", "The avatar of %s is in the cache", new Object[] { this.username });
+      this.yUA.setThumbImage(localBitmap1);
     }
     for (;;)
     {
-      p.aEk();
-      Bitmap localBitmap2 = com.tencent.mm.ak.e.Db(this.username);
+      p.aEA();
+      Bitmap localBitmap2 = com.tencent.mm.aj.e.DD(this.username);
       if ((localBitmap2 == null) || (localBitmap2.isRecycled())) {
         break;
       }
-      ad.i("MicroMsg.PreviewHdHeadImg", "The HDAvatar of %s is already exists", new Object[] { this.username });
-      p.aEk();
-      d(localBitmap2, com.tencent.mm.ak.e.J(this.username, true));
+      ae.i("MicroMsg.PreviewHdHeadImg", "The HDAvatar of %s is already exists", new Object[] { this.username });
+      p.aEA();
+      d(localBitmap2, com.tencent.mm.aj.e.J(this.username, true));
       AppMethodBeat.o(73929);
       return;
-      ad.i("MicroMsg.PreviewHdHeadImg", "The avatar of %s is not in the cache, use default avatar", new Object[] { this.username });
+      ae.i("MicroMsg.PreviewHdHeadImg", "The avatar of %s is not in the cache, use default avatar", new Object[] { this.username });
     }
-    this.yEw = new f();
-    this.yEw.a(this.username, new f.c()
+    this.yUB = new f();
+    this.yUB.a(this.username, new f.c()
     {
       public final int df(int paramAnonymousInt1, int paramAnonymousInt2)
       {
-        AppMethodBeat.i(220938);
+        AppMethodBeat.i(190300);
         PreviewHdHeadImg.d(PreviewHdHeadImg.this).sN();
-        ad.i("MicroMsg.PreviewHdHeadImg", "onSceneEnd: errType=%d, errCode=%d", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2) });
+        ae.i("MicroMsg.PreviewHdHeadImg", "onSceneEnd: errType=%d, errCode=%d", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2) });
         if ((paramAnonymousInt1 == 0) && (paramAnonymousInt2 == 0))
         {
-          p.aEk();
-          Bitmap localBitmap = com.tencent.mm.ak.e.Db(PreviewHdHeadImg.a(PreviewHdHeadImg.this));
+          p.aEA();
+          Bitmap localBitmap = com.tencent.mm.aj.e.DD(PreviewHdHeadImg.a(PreviewHdHeadImg.this));
           if (localBitmap != null)
           {
             PreviewHdHeadImg localPreviewHdHeadImg = PreviewHdHeadImg.this;
-            p.aEk();
-            PreviewHdHeadImg.a(localPreviewHdHeadImg, localBitmap, com.tencent.mm.ak.e.J(PreviewHdHeadImg.a(PreviewHdHeadImg.this), true));
+            p.aEA();
+            PreviewHdHeadImg.a(localPreviewHdHeadImg, localBitmap, com.tencent.mm.aj.e.J(PreviewHdHeadImg.a(PreviewHdHeadImg.this), true));
           }
           for (;;)
           {
-            AppMethodBeat.o(220938);
+            AppMethodBeat.o(190300);
             return 0;
             PreviewHdHeadImg.a(PreviewHdHeadImg.this, localBitmap1, null);
           }
         }
         PreviewHdHeadImg.a(PreviewHdHeadImg.this, localBitmap1, null);
-        AppMethodBeat.o(220938);
+        AppMethodBeat.o(190300);
         return 0;
       }
     });
     AppMethodBeat.o(73929);
   }
   
-  private Bitmap dNo()
+  private Bitmap dQK()
   {
     AppMethodBeat.i(73930);
-    Bitmap localBitmap2 = c.a(this.username, true, -1, null);
+    Bitmap localBitmap2 = com.tencent.mm.aj.c.a(this.username, true, -1, null);
     Bitmap localBitmap1 = localBitmap2;
     if (localBitmap2 == null) {
       localBitmap1 = BitmapFactory.decodeResource(getResources(), 2131231875);
@@ -163,14 +163,14 @@ public class PreviewHdHeadImg
     if ((paramString != null) && (!paramString.equals(""))) {
       try
       {
-        com.tencent.mm.sdk.platformtools.g.a(paramBitmap, 100, Bitmap.CompressFormat.PNG, paramString, true);
+        h.a(paramBitmap, 100, Bitmap.CompressFormat.PNG, paramString, true);
         AppMethodBeat.o(73933);
         return true;
       }
       catch (Exception paramBitmap)
       {
-        ad.printErrStackTrace("MicroMsg.PreviewHdHeadImg", paramBitmap, "", new Object[0]);
-        ad.e("MicroMsg.PreviewHdHeadImg", "saveBitmapToImage failed:" + paramBitmap.toString());
+        ae.printErrStackTrace("MicroMsg.PreviewHdHeadImg", paramBitmap, "", new Object[0]);
+        ae.e("MicroMsg.PreviewHdHeadImg", "saveBitmapToImage failed:" + paramBitmap.toString());
       }
     }
     AppMethodBeat.o(73933);
@@ -188,34 +188,34 @@ public class PreviewHdHeadImg
     setMMTitle(2131763182);
     setActionbarColor(getResources().getColor(2131101053));
     setNavigationbarColor(getResources().getColor(2131099654));
-    this.username = u.aAm();
-    this.yEv = ((GetHdHeadImageGalleryView)findViewById(2131300335));
-    this.yEv.setUsername(this.username);
-    dNn();
+    this.username = v.aAC();
+    this.yUA = ((GetHdHeadImageGalleryView)findViewById(2131300335));
+    this.yUA.setUsername(this.username);
+    dQJ();
     addIconOptionMenu(0, 2131690603, new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
         AppMethodBeat.i(73921);
         paramAnonymousMenuItem = new com.tencent.mm.ui.widget.a.e(PreviewHdHeadImg.this, 1, false);
-        paramAnonymousMenuItem.KJy = new n.d()
+        paramAnonymousMenuItem.LfS = new n.d()
         {
           public final void onCreateMMMenu(com.tencent.mm.ui.base.l paramAnonymous2l)
           {
             AppMethodBeat.i(73919);
-            paramAnonymous2l.jI(1, 2131763184);
-            Bitmap localBitmap = c.a(PreviewHdHeadImg.a(PreviewHdHeadImg.this), true, -1, null);
-            p.aEk();
-            if (i.fv(com.tencent.mm.ak.e.K(u.aAm() + ".last", true))) {
-              paramAnonymous2l.jI(3, 2131763395);
+            paramAnonymous2l.jM(1, 2131763184);
+            Bitmap localBitmap = com.tencent.mm.aj.c.a(PreviewHdHeadImg.a(PreviewHdHeadImg.this), true, -1, null);
+            p.aEA();
+            if (o.fB(com.tencent.mm.aj.e.K(v.aAC() + ".last", true))) {
+              paramAnonymous2l.jM(3, 2131763395);
             }
             if (localBitmap != null) {
-              paramAnonymous2l.jI(2, 2131760065);
+              paramAnonymous2l.jM(2, 2131760065);
             }
             AppMethodBeat.o(73919);
           }
         };
-        paramAnonymousMenuItem.KJz = new n.e()
+        paramAnonymousMenuItem.LfT = new n.e()
         {
           public final void onMMMenuItemSelected(MenuItem paramAnonymous2MenuItem, int paramAnonymous2Int)
           {
@@ -227,7 +227,7 @@ public class PreviewHdHeadImg
             {
               AppMethodBeat.o(73920);
               return;
-              com.tencent.mm.plugin.account.a.a.iRH.s(PreviewHdHeadImg.this);
+              com.tencent.mm.plugin.account.a.a.iUA.s(PreviewHdHeadImg.this);
               AppMethodBeat.o(73920);
               return;
               PreviewHdHeadImg.b(PreviewHdHeadImg.this);
@@ -235,15 +235,15 @@ public class PreviewHdHeadImg
               return;
               paramAnonymous2MenuItem = new Intent();
               paramAnonymous2MenuItem.setClass(PreviewHdHeadImg.this.getContext(), PreviewLastHdHeadImg.class);
-              p.aEk();
-              paramAnonymous2MenuItem.putExtra("CropImage_OutputPath", com.tencent.mm.ak.e.K(u.aAm() + ".crop", true));
-              p.aEk();
-              paramAnonymous2MenuItem.putExtra("last_avatar_path", com.tencent.mm.ak.e.K(u.aAm() + ".last", true));
+              p.aEA();
+              paramAnonymous2MenuItem.putExtra("CropImage_OutputPath", com.tencent.mm.aj.e.K(v.aAC() + ".crop", true));
+              p.aEA();
+              paramAnonymous2MenuItem.putExtra("last_avatar_path", com.tencent.mm.aj.e.K(v.aAC() + ".last", true));
               PreviewHdHeadImg.this.startActivityForResult(paramAnonymous2MenuItem, 4);
             }
           }
         };
-        paramAnonymousMenuItem.cMW();
+        paramAnonymousMenuItem.cPF();
         AppMethodBeat.o(73921);
         return true;
       }
@@ -264,21 +264,21 @@ public class PreviewHdHeadImg
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     AppMethodBeat.i(73932);
-    ad.i("MicroMsg.PreviewHdHeadImg", "onAcvityResult requestCode:%d, resultCode:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    ae.i("MicroMsg.PreviewHdHeadImg", "onAcvityResult requestCode:%d, resultCode:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     if (paramIntent == null) {
-      ad.e("MicroMsg.PreviewHdHeadImg", "wtf!!! data is null!!!");
+      ae.e("MicroMsg.PreviewHdHeadImg", "wtf!!! data is null!!!");
     }
     if (paramInt2 != -1)
     {
       if ((paramInt1 == 2) || (paramInt1 == 4)) {
-        new ap(Looper.getMainLooper()).post(new Runnable()
+        new aq(Looper.getMainLooper()).post(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(73926);
-            wn localwn = new wn();
-            localwn.dKS.dKU = true;
-            com.tencent.mm.sdk.b.a.IbL.l(localwn);
+            wr localwr = new wr();
+            localwr.dMh.dMj = true;
+            com.tencent.mm.sdk.b.a.IvT.l(localwr);
             AppMethodBeat.o(73926);
           }
         });
@@ -301,23 +301,23 @@ public class PreviewHdHeadImg
       localObject = new Intent();
       ((Intent)localObject).putExtra("CropImageMode", 1);
       ((Intent)localObject).putExtra("CropImage_Filter", true);
-      p.aEk();
-      ((Intent)localObject).putExtra("CropImage_OutputPath", com.tencent.mm.ak.e.J(u.aAm() + ".crop", true));
+      p.aEA();
+      ((Intent)localObject).putExtra("CropImage_OutputPath", com.tencent.mm.aj.e.J(v.aAC() + ".crop", true));
       ((Intent)localObject).putExtra("CropImage_ImgPath", null);
       ((Intent)localObject).putExtra("CropImage_from_scene", 3);
-      com.tencent.mm.plugin.setting.b.iRG.a(this, paramIntent, (Intent)localObject, d.azA(), 4, null);
+      com.tencent.mm.plugin.setting.c.iUz.a(this, paramIntent, (Intent)localObject, d.azQ(), 4, null);
       AppMethodBeat.o(73932);
       return;
     }
-    new ap(Looper.getMainLooper()).post(new Runnable()
+    new aq(Looper.getMainLooper()).post(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(220939);
-        wn localwn = new wn();
-        localwn.dKS.dKU = true;
-        com.tencent.mm.sdk.b.a.IbL.l(localwn);
-        AppMethodBeat.o(220939);
+        AppMethodBeat.i(190301);
+        wr localwr = new wr();
+        localwr.dMh.dMj = true;
+        com.tencent.mm.sdk.b.a.IvT.l(localwr);
+        AppMethodBeat.o(190301);
       }
     });
     if (paramIntent == null)
@@ -326,33 +326,33 @@ public class PreviewHdHeadImg
       return;
     }
     paramIntent = paramIntent.getStringExtra("CropImage_OutputPath");
-    Object localObject = com.tencent.mm.sdk.platformtools.g.aQf(this.yEx);
+    Object localObject = h.aRC(this.yUC);
     if (paramIntent == null)
     {
-      ad.e("MicroMsg.PreviewHdHeadImg", "crop picture failed");
+      ae.e("MicroMsg.PreviewHdHeadImg", "crop picture failed");
       AppMethodBeat.o(73932);
       return;
     }
-    d(com.tencent.mm.sdk.platformtools.g.aQf(paramIntent), null);
-    new n(getContext(), paramIntent).E(new Runnable()
+    d(h.aRC(paramIntent), null);
+    new n(getContext(), paramIntent).C(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(220940);
-        ad.d("MicroMsg.PreviewHdHeadImg", "updateHeadImg hasUin:%b user:%s", new Object[] { Boolean.valueOf(com.tencent.mm.kernel.g.ajx()), u.aAm() });
-        if (com.tencent.mm.kernel.g.ajx())
+        AppMethodBeat.i(190302);
+        ae.d("MicroMsg.PreviewHdHeadImg", "updateHeadImg hasUin:%b user:%s", new Object[] { Boolean.valueOf(com.tencent.mm.kernel.g.ajM()), v.aAC() });
+        if (com.tencent.mm.kernel.g.ajM())
         {
           if (this.val$bitmap != null)
           {
-            p.aEk();
-            str = com.tencent.mm.ak.e.K(u.aAm() + ".last", true);
+            p.aEA();
+            str = com.tencent.mm.aj.e.K(v.aAC() + ".last", true);
             PreviewHdHeadImg.e(this.val$bitmap, str);
           }
-          String str = c.CS(u.aAm());
-          az.hFS.Be(str);
+          String str = com.tencent.mm.aj.c.Du(v.aAC());
+          bb.hIK.BG(str);
         }
         PreviewHdHeadImg.e(PreviewHdHeadImg.this);
-        AppMethodBeat.o(220940);
+        AppMethodBeat.o(190302);
       }
     });
     AppMethodBeat.o(73932);

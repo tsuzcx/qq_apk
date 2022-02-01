@@ -11,14 +11,14 @@ import android.view.View.OnClickListener;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bs.d;
+import com.tencent.mm.br.d;
 import com.tencent.mm.modelappbrand.f;
 import com.tencent.mm.plugin.appbrand.utils.html.c;
 import com.tencent.mm.plugin.appbrand.utils.html.c.a;
 import com.tencent.mm.plugin.appbrand.widget.o;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.widget.MMSwitchBtn;
 import com.tencent.mm.ui.widget.MMSwitchBtn.a;
@@ -27,10 +27,10 @@ public class WxaWidgetDebugUI
   extends MMActivity
 {
   String appId;
-  int dtF;
+  int duK;
   String id;
-  MMSwitchBtn kiA;
-  com.tencent.mm.plugin.appbrand.widget.n kiB;
+  MMSwitchBtn klQ;
+  com.tencent.mm.plugin.appbrand.widget.n klR;
   int pkgVersion;
   
   public int getLayoutId()
@@ -52,33 +52,33 @@ public class WxaWidgetDebugUI
         return false;
       }
     });
-    if (((com.tencent.mm.modelappbrand.g)com.tencent.mm.kernel.g.ab(com.tencent.mm.modelappbrand.g.class)).aDF().aDM()) {}
-    for (paramBundle = String.format("(%s)", new Object[] { com.tencent.mm.plugin.appbrand.dynamic.widget.b.bgu() });; paramBundle = "")
+    if (((com.tencent.mm.modelappbrand.g)com.tencent.mm.kernel.g.ab(com.tencent.mm.modelappbrand.g.class)).aDV().aEc()) {}
+    for (paramBundle = String.format("(%s)", new Object[] { com.tencent.mm.plugin.appbrand.dynamic.widget.b.bhc() });; paramBundle = "")
     {
       setMMTitle(getString(2131766318, new Object[] { paramBundle }));
       paramBundle = getIntent();
       this.id = paramBundle.getStringExtra("id");
       this.appId = paramBundle.getStringExtra("app_id");
-      this.dtF = paramBundle.getIntExtra("pkg_type", 0);
+      this.duK = paramBundle.getIntExtra("pkg_type", 0);
       this.pkgVersion = paramBundle.getIntExtra("pkg_version", 0);
       setMMSubTitle(String.format("(%s)", new Object[] { this.id }));
-      this.kiA = ((MMSwitchBtn)findViewById(2131303023));
-      this.kiB = ((com.tencent.mm.plugin.appbrand.widget.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.appbrand.widget.a.b.class)).aYT().Vo(this.appId);
-      if (this.kiB == null)
+      this.klQ = ((MMSwitchBtn)findViewById(2131303023));
+      this.klR = ((com.tencent.mm.plugin.appbrand.widget.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.appbrand.widget.a.b.class)).aZq().VZ(this.appId);
+      if (this.klR == null)
       {
-        this.kiB = new com.tencent.mm.plugin.appbrand.widget.n();
-        this.kiB.field_appId = this.appId;
+        this.klR = new com.tencent.mm.plugin.appbrand.widget.n();
+        this.klR.field_appId = this.appId;
       }
-      this.kiA.setCheck(this.kiB.field_openDebug);
-      this.kiA.setSwitchListener(new MMSwitchBtn.a()
+      this.klQ.setCheck(this.klR.field_openDebug);
+      this.klQ.setSwitchListener(new MMSwitchBtn.a()
       {
         public final void onStatusChange(boolean paramAnonymousBoolean)
         {
           AppMethodBeat.i(121492);
-          WxaWidgetDebugUI.this.kiB.field_openDebug = paramAnonymousBoolean;
-          o localo = ((com.tencent.mm.plugin.appbrand.widget.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.appbrand.widget.a.b.class)).aYT();
-          com.tencent.mm.plugin.appbrand.widget.n localn = WxaWidgetDebugUI.this.kiB;
-          if ((localn != null) && (!bt.isNullOrNil(localn.field_appId)))
+          WxaWidgetDebugUI.this.klR.field_openDebug = paramAnonymousBoolean;
+          o localo = ((com.tencent.mm.plugin.appbrand.widget.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.appbrand.widget.a.b.class)).aZq();
+          com.tencent.mm.plugin.appbrand.widget.n localn = WxaWidgetDebugUI.this.klR;
+          if ((localn != null) && (!bu.isNullOrNil(localn.field_appId)))
           {
             localn.field_appIdHash = localn.field_appId.hashCode();
             localo.replace(localn);
@@ -89,13 +89,13 @@ public class WxaWidgetDebugUI
       paramBundle = (TextView)findViewById(2131301036);
       paramBundle.setText(c.a(getString(2131766324), true, new c.a()
       {
-        public final void OM(String paramAnonymousString)
+        public final void Pu(String paramAnonymousString)
         {
           AppMethodBeat.i(121493);
           Intent localIntent = new Intent();
           localIntent.putExtra("rawUrl", paramAnonymousString);
           d.b(WxaWidgetDebugUI.this.getContext(), "webview", ".ui.tools.WebViewUI", localIntent);
-          ad.d("WxaWidgetDebugUI", "on custom url(%s) span clicked.", new Object[] { paramAnonymousString });
+          ae.d("WxaWidgetDebugUI", "on custom url(%s) span clicked.", new Object[] { paramAnonymousString });
           AppMethodBeat.o(121493);
         }
       }));
@@ -107,9 +107,9 @@ public class WxaWidgetDebugUI
           AppMethodBeat.i(121495);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
           localb.bd(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/appbrand/dynamic/ui/WxaWidgetDebugUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-          ((com.tencent.mm.modelappbrand.g)com.tencent.mm.kernel.g.ab(com.tencent.mm.modelappbrand.g.class)).aDE().restart();
-          aq.o(new Runnable()
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/appbrand/dynamic/ui/WxaWidgetDebugUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+          ((com.tencent.mm.modelappbrand.g)com.tencent.mm.kernel.g.ab(com.tencent.mm.modelappbrand.g.class)).aDU().restart();
+          ar.o(new Runnable()
           {
             public final void run()
             {
@@ -123,7 +123,7 @@ public class WxaWidgetDebugUI
         }
       });
       paramBundle = findViewById(2131306997);
-      if (!((com.tencent.mm.modelappbrand.g)com.tencent.mm.kernel.g.ab(com.tencent.mm.modelappbrand.g.class)).aDF().aDM()) {
+      if (!((com.tencent.mm.modelappbrand.g)com.tencent.mm.kernel.g.ab(com.tencent.mm.modelappbrand.g.class)).aDV().aEc()) {
         break;
       }
       paramBundle.setVisibility(0);
@@ -134,15 +134,15 @@ public class WxaWidgetDebugUI
           AppMethodBeat.i(121496);
           Object localObject = new com.tencent.mm.hellhoundlib.b.b();
           ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/appbrand/dynamic/ui/WxaWidgetDebugUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahq());
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/appbrand/dynamic/ui/WxaWidgetDebugUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahF());
           localObject = new Intent(WxaWidgetDebugUI.this.getContext(), WxaWidgetSettingsUI.class);
           ((Intent)localObject).putExtra("app_id", WxaWidgetDebugUI.this.appId);
-          ((Intent)localObject).putExtra("pkg_type", WxaWidgetDebugUI.this.dtF);
+          ((Intent)localObject).putExtra("pkg_type", WxaWidgetDebugUI.this.duK);
           ((Intent)localObject).putExtra("pkg_version", WxaWidgetDebugUI.this.pkgVersion);
           paramAnonymousView = WxaWidgetDebugUI.this;
           localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
-          com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahp(), "com/tencent/mm/plugin/appbrand/dynamic/ui/WxaWidgetDebugUI$5", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mq(0));
+          com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahE(), "com/tencent/mm/plugin/appbrand/dynamic/ui/WxaWidgetDebugUI$5", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mt(0));
           com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, "com/tencent/mm/plugin/appbrand/dynamic/ui/WxaWidgetDebugUI$5", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/appbrand/dynamic/ui/WxaWidgetDebugUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(121496);

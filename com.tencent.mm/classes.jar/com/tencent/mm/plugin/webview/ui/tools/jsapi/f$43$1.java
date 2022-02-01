@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.webview.ui.tools.jsapi;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 
 final class f$43$1
   implements h.d
@@ -10,40 +10,40 @@ final class f$43$1
   
   private void cG(int paramInt, String paramString)
   {
-    AppMethodBeat.i(208294);
-    f.c localc = f.b(this.EmJ.Ema, paramInt);
-    if ((localc != null) && (localc.Ela != null) && (localc.DNO != null)) {
-      f.a(this.EmJ.Ema, f.k(this.EmJ.Ema), f.j(this.EmJ.Ema), "openMapNavigateMenu:" + bt.bI(paramString, "fail"));
+    AppMethodBeat.i(198476);
+    f.c localc = f.b(this.EEN.EEe, paramInt);
+    if ((localc != null) && (localc.EDe != null) && (localc.EfN != null)) {
+      f.a(this.EEN.EEe, f.k(this.EEN.EEe), f.j(this.EEN.EEe), "openMapNavigateMenu:" + bu.bI(paramString, "fail"));
     }
-    AppMethodBeat.o(208294);
+    AppMethodBeat.o(198476);
   }
   
-  public final void XL(int paramInt)
+  public final void Yr(int paramInt)
   {
-    AppMethodBeat.i(208291);
+    AppMethodBeat.i(198473);
     cG(paramInt, "cancel");
-    AppMethodBeat.o(208291);
+    AppMethodBeat.o(198473);
   }
   
-  public final void XM(int paramInt)
+  public final void Ys(int paramInt)
   {
-    AppMethodBeat.i(208295);
-    f.c(this.EmJ.Ema, paramInt);
-    AppMethodBeat.o(208295);
+    AppMethodBeat.i(198477);
+    f.c(this.EEN.EEe, paramInt);
+    AppMethodBeat.o(198477);
   }
   
   public final void onFail(int paramInt)
   {
-    AppMethodBeat.i(208292);
+    AppMethodBeat.i(198474);
     cG(paramInt, "fail");
-    AppMethodBeat.o(208292);
+    AppMethodBeat.o(198474);
   }
   
   public final void onSuccess(int paramInt)
   {
-    AppMethodBeat.i(208293);
+    AppMethodBeat.i(198475);
     cG(paramInt, "ok");
-    AppMethodBeat.o(208293);
+    AppMethodBeat.o(198475);
   }
 }
 

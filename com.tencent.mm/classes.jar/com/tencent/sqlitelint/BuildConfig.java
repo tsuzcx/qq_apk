@@ -7,7 +7,7 @@ public final class BuildConfig
   public static final boolean DEBUG = false;
   public static final String FLAVOR = "full";
   public static final int VERSION_CODE = 1;
-  public static final String VERSION_NAME = "0.7.8.20";
+  public static final String VERSION_NAME = "0.7.8.24";
 }
 
 

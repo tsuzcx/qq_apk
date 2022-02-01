@@ -235,7 +235,7 @@ public class AppCompatViewInflater
       }
       localObject = paramView;
       if (paramBoolean4) {
-        localObject = aw.ac(paramView);
+        localObject = aw.ad(paramView);
       }
       int i = -1;
       switch (paramString.hashCode())

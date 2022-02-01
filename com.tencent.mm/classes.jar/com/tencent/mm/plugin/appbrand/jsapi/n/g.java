@@ -3,27 +3,27 @@ package com.tencent.mm.plugin.appbrand.jsapi.n;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.m;
 import com.tencent.mm.plugin.appbrand.jsapi.y;
-import com.tencent.mm.plugin.appbrand.page.aa;
+import com.tencent.mm.plugin.appbrand.page.z;
 import org.json.JSONObject;
 
 public class g
-  extends y<aa>
+  extends y<z>
 {
   public static final int CTRL_INDEX = -2;
   public static final String NAME = "initReady";
   
-  public String a(aa paramaa, JSONObject paramJSONObject)
+  public String a(z paramz, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(134879);
-    paramaa.Tn("initReady");
-    paramaa = e("ok", null);
+    paramz.TY("initReady");
+    paramz = e("ok", null);
     AppMethodBeat.o(134879);
-    return paramaa;
+    return paramz;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.n.g
  * JD-Core Version:    0.7.0.1
  */

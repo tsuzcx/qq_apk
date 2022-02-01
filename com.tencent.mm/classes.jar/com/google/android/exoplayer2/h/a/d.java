@@ -16,7 +16,7 @@ public final class d
   private final com.google.android.exoplayer2.h.g bFI;
   private final com.google.android.exoplayer2.h.g bFJ;
   private final com.google.android.exoplayer2.h.g bFK;
-  private final a bFL;
+  private final d.a bFL;
   private final boolean bFM;
   private final boolean bFN;
   private final boolean bFO;
@@ -31,7 +31,7 @@ public final class d
   private String key;
   private Uri uri;
   
-  public d(a parama, com.google.android.exoplayer2.h.g paramg1, com.google.android.exoplayer2.h.g paramg2, f paramf, int paramInt, a parama1)
+  public d(a parama, com.google.android.exoplayer2.h.g paramg1, com.google.android.exoplayer2.h.g paramg2, f paramf, int paramInt, d.a parama1)
   {
     AppMethodBeat.i(92966);
     this.bFC = parama;
@@ -384,11 +384,6 @@ public final class d
       AppMethodBeat.o(92968);
       throw paramArrayOfByte;
     }
-  }
-  
-  public static abstract interface a
-  {
-    public abstract void k(long paramLong1, long paramLong2);
   }
 }
 

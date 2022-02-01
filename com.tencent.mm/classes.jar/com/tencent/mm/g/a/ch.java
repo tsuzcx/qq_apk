@@ -7,8 +7,8 @@ import com.tencent.mm.sdk.b.b;
 public final class ch
   extends b
 {
-  public a dnl;
-  public b dnm;
+  public a don;
+  public b doo;
   
   public ch()
   {
@@ -18,9 +18,9 @@ public final class ch
   private ch(byte paramByte)
   {
     AppMethodBeat.i(149859);
-    this.dnl = new a();
-    this.dnm = new b();
-    this.IbR = false;
+    this.don = new a();
+    this.doo = new b();
+    this.IvZ = false;
     this.callback = null;
     AppMethodBeat.o(149859);
   }
@@ -28,13 +28,13 @@ public final class ch
   public static final class a
   {
     public Context context;
-    public String dnn;
+    public String dop;
     public String username;
   }
   
   public static final class b
   {
-    public boolean dno = false;
+    public boolean doq = false;
   }
 }
 

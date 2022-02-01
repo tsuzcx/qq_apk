@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.expt.d.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.ThreadPoolExecutor;
@@ -9,140 +9,140 @@ import org.apache.commons.b.g;
 
 public final class a
 {
-  b qPZ;
-  public ThreadPoolExecutor qPs;
+  b qXT;
+  public ThreadPoolExecutor qXo;
   
   public a(b paramb)
   {
-    AppMethodBeat.i(210257);
-    this.qPs = com.tencent.mm.plugin.expt.d.b.cnh();
-    this.qPZ = paramb;
-    AppMethodBeat.o(210257);
+    AppMethodBeat.i(195911);
+    this.qXo = com.tencent.mm.plugin.expt.d.b.coy();
+    this.qXT = paramb;
+    AppMethodBeat.o(195911);
   }
   
-  public final void adk(String paramString)
+  public final void aee(String paramString)
   {
-    AppMethodBeat.i(210258);
-    if (!com.tencent.mm.plugin.expt.d.b.cni())
+    AppMethodBeat.i(195912);
+    if (!com.tencent.mm.plugin.expt.d.b.coz())
     {
-      AppMethodBeat.o(210258);
+      AppMethodBeat.o(195912);
       return;
     }
-    if (g.ea(paramString))
+    if (g.ef(paramString))
     {
-      ad.e("EdgeComputingDataSourceService", "[EdgeComputingDataSourceService] sendSessionPageSingle data or sessionPageID isEmpty!");
-      AppMethodBeat.o(210258);
+      ae.e("EdgeComputingDataSourceService", "[EdgeComputingDataSourceService] sendSessionPageSingle data or sessionPageID isEmpty!");
+      AppMethodBeat.o(195912);
       return;
     }
     final long l = System.currentTimeMillis();
-    this.qPs.execute(new Runnable()
+    this.qXo.execute(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(210253);
-        Object localObject = com.tencent.mm.plugin.expt.d.b.b.cnj().cnl();
+        AppMethodBeat.i(195907);
+        Object localObject = com.tencent.mm.plugin.expt.d.b.b.coG().coI();
         if (((List)localObject).size() <= 0)
         {
-          AppMethodBeat.o(210253);
+          AppMethodBeat.o(195907);
           return;
         }
         localObject = ((List)localObject).iterator();
         while (((Iterator)localObject).hasNext())
         {
           com.tencent.mm.plugin.expt.d.e.a.b localb = (com.tencent.mm.plugin.expt.d.e.a.b)((Iterator)localObject).next();
-          if ((localb.qQb == 5) && (a.this.qPZ != null)) {
-            a.this.qPZ.a(l, localb, this.val$data);
+          if ((localb.qXZ == 5) && (a.this.qXT != null)) {
+            a.this.qXT.a(l, localb, this.val$data);
           }
         }
-        AppMethodBeat.o(210253);
+        AppMethodBeat.o(195907);
       }
     });
-    AppMethodBeat.o(210258);
+    AppMethodBeat.o(195912);
   }
   
-  public final void adl(String paramString)
+  public final void aef(String paramString)
   {
-    AppMethodBeat.i(210259);
-    if (!com.tencent.mm.plugin.expt.d.b.cni())
+    AppMethodBeat.i(195913);
+    if (!com.tencent.mm.plugin.expt.d.b.coz())
     {
-      AppMethodBeat.o(210259);
+      AppMethodBeat.o(195913);
       return;
     }
-    if (g.ea(paramString))
+    if (g.ef(paramString))
     {
-      ad.e("EdgeComputingDataSourceService", "[EdgeComputingDataSourceService] sendSessionPageMerge data isEmpty!");
-      AppMethodBeat.o(210259);
+      ae.e("EdgeComputingDataSourceService", "[EdgeComputingDataSourceService] sendSessionPageMerge data isEmpty!");
+      AppMethodBeat.o(195913);
       return;
     }
     final long l = System.currentTimeMillis();
-    this.qPs.execute(new Runnable()
+    this.qXo.execute(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(210254);
-        Object localObject = com.tencent.mm.plugin.expt.d.b.b.cnj().cnl();
+        AppMethodBeat.i(195908);
+        Object localObject = com.tencent.mm.plugin.expt.d.b.b.coG().coI();
         if (((List)localObject).size() <= 0)
         {
-          AppMethodBeat.o(210254);
+          AppMethodBeat.o(195908);
           return;
         }
         localObject = ((List)localObject).iterator();
         while (((Iterator)localObject).hasNext())
         {
           com.tencent.mm.plugin.expt.d.e.a.b localb = (com.tencent.mm.plugin.expt.d.e.a.b)((Iterator)localObject).next();
-          if ((localb.qQb == 6) && (a.this.qPZ != null)) {
-            a.this.qPZ.a(l, localb, this.val$data);
+          if ((localb.qXZ == 6) && (a.this.qXT != null)) {
+            a.this.qXT.a(l, localb, this.val$data);
           }
         }
-        AppMethodBeat.o(210254);
+        AppMethodBeat.o(195908);
       }
     });
-    AppMethodBeat.o(210259);
+    AppMethodBeat.o(195913);
   }
   
-  public final void adm(String paramString)
+  public final void aeg(String paramString)
   {
-    AppMethodBeat.i(210260);
-    if (!com.tencent.mm.plugin.expt.d.b.cni())
+    AppMethodBeat.i(195914);
+    if (!com.tencent.mm.plugin.expt.d.b.coz())
     {
-      AppMethodBeat.o(210260);
+      AppMethodBeat.o(195914);
       return;
     }
-    if (g.ea(paramString))
+    if (g.ef(paramString))
     {
-      ad.e("EdgeComputingDataSourceService", "[EdgeComputingDataSourceService] sendSessionUBAAll data isEmpty!");
-      AppMethodBeat.o(210260);
+      ae.e("EdgeComputingDataSourceService", "[EdgeComputingDataSourceService] sendSessionUBAAll data isEmpty!");
+      AppMethodBeat.o(195914);
       return;
     }
     final long l = System.currentTimeMillis();
-    this.qPs.execute(new Runnable()
+    this.qXo.execute(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(210256);
-        Object localObject = com.tencent.mm.plugin.expt.d.b.b.cnj().cnl();
+        AppMethodBeat.i(195910);
+        Object localObject = com.tencent.mm.plugin.expt.d.b.b.coG().coI();
         if (((List)localObject).size() <= 0)
         {
-          AppMethodBeat.o(210256);
+          AppMethodBeat.o(195910);
           return;
         }
         localObject = ((List)localObject).iterator();
         while (((Iterator)localObject).hasNext())
         {
           com.tencent.mm.plugin.expt.d.e.a.b localb = (com.tencent.mm.plugin.expt.d.e.a.b)((Iterator)localObject).next();
-          if ((localb.qQb == 9) && (a.this.qPZ != null)) {
-            a.this.qPZ.a(l, localb, this.val$data);
+          if ((localb.qXZ == 9) && (a.this.qXT != null)) {
+            a.this.qXT.a(l, localb, this.val$data);
           }
         }
-        AppMethodBeat.o(210256);
+        AppMethodBeat.o(195910);
       }
     });
-    AppMethodBeat.o(210260);
+    AppMethodBeat.o(195914);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.d.d.a
  * JD-Core Version:    0.7.0.1
  */

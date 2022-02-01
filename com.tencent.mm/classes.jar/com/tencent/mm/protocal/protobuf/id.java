@@ -5,11 +5,11 @@ import f.a.a.b;
 import java.util.LinkedList;
 
 public final class id
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public SKBuiltinBuffer_t FAD;
-  public String FAE;
-  public int FAF;
+  public SKBuiltinBuffer_t FSZ;
+  public String FTa;
+  public int FTb;
   public String ID;
   public int Ret;
   
@@ -19,22 +19,22 @@ public final class id
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.FAD == null)
+      if (this.FSZ == null)
       {
         paramVarArgs = new b("Not all required fields were included: QRCodeBuffer");
         AppMethodBeat.o(32135);
         throw paramVarArgs;
       }
       paramVarArgs.aS(1, this.Ret);
-      if (this.FAD != null)
+      if (this.FSZ != null)
       {
-        paramVarArgs.lC(2, this.FAD.computeSize());
-        this.FAD.writeFields(paramVarArgs);
+        paramVarArgs.lJ(2, this.FSZ.computeSize());
+        this.FSZ.writeFields(paramVarArgs);
       }
-      if (this.FAE != null) {
-        paramVarArgs.d(3, this.FAE);
+      if (this.FTa != null) {
+        paramVarArgs.d(3, this.FTa);
       }
-      paramVarArgs.aS(4, this.FAF);
+      paramVarArgs.aS(4, this.FTb);
       if (this.ID != null) {
         paramVarArgs.d(5, this.ID);
       }
@@ -46,14 +46,14 @@ public final class id
     {
       i = f.a.a.b.b.a.bz(1, this.Ret) + 0;
       paramInt = i;
-      if (this.FAD != null) {
-        paramInt = i + f.a.a.a.lB(2, this.FAD.computeSize());
+      if (this.FSZ != null) {
+        paramInt = i + f.a.a.a.lI(2, this.FSZ.computeSize());
       }
       i = paramInt;
-      if (this.FAE != null) {
-        i = paramInt + f.a.a.b.b.a.e(3, this.FAE);
+      if (this.FTa != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.FTa);
       }
-      i += f.a.a.b.b.a.bz(4, this.FAF);
+      i += f.a.a.b.b.a.bz(4, this.FTb);
       paramInt = i;
       if (this.ID != null) {
         paramInt = i + f.a.a.b.b.a.e(5, this.ID);
@@ -64,12 +64,12 @@ public final class id
     if (paramInt == 2)
     {
       paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gxE();
+          paramVarArgs.gCg();
         }
       }
-      if (this.FAD == null)
+      if (this.FSZ == null)
       {
         paramVarArgs = new b("Not all required fields were included: QRCodeBuffer");
         AppMethodBeat.o(32135);
@@ -89,11 +89,11 @@ public final class id
         AppMethodBeat.o(32135);
         return -1;
       case 1: 
-        localid.Ret = ((f.a.a.a.a)localObject1).NPN.zc();
+        localid.Ret = ((f.a.a.a.a)localObject1).OmT.zc();
         AppMethodBeat.o(32135);
         return 0;
       case 2: 
-        paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
+        paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
         i = paramVarArgs.size();
         paramInt = 0;
         while (paramInt < i)
@@ -101,22 +101,22 @@ public final class id
           Object localObject2 = (byte[])paramVarArgs.get(paramInt);
           localObject1 = new SKBuiltinBuffer_t();
           localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-          for (boolean bool = true; bool; bool = ((SKBuiltinBuffer_t)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, com.tencent.mm.bx.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-          localid.FAD = ((SKBuiltinBuffer_t)localObject1);
+          for (boolean bool = true; bool; bool = ((SKBuiltinBuffer_t)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+          localid.FSZ = ((SKBuiltinBuffer_t)localObject1);
           paramInt += 1;
         }
         AppMethodBeat.o(32135);
         return 0;
       case 3: 
-        localid.FAE = ((f.a.a.a.a)localObject1).NPN.readString();
+        localid.FTa = ((f.a.a.a.a)localObject1).OmT.readString();
         AppMethodBeat.o(32135);
         return 0;
       case 4: 
-        localid.FAF = ((f.a.a.a.a)localObject1).NPN.zc();
+        localid.FTb = ((f.a.a.a.a)localObject1).OmT.zc();
         AppMethodBeat.o(32135);
         return 0;
       }
-      localid.ID = ((f.a.a.a.a)localObject1).NPN.readString();
+      localid.ID = ((f.a.a.a.a)localObject1).OmT.readString();
       AppMethodBeat.o(32135);
       return 0;
     }

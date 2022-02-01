@@ -2,7 +2,7 @@ package com.tencent.mm.pluginsdk.model;
 
 public final class v
 {
-  public static long EMr;
+  public static long FeP;
 }
 
 

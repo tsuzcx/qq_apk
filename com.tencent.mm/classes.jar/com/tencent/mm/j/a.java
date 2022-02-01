@@ -6,13 +6,13 @@ import com.tencent.mm.ui.MMActivity;
 
 public abstract interface a
 {
-  public abstract boolean ZA();
+  public abstract void ZG();
   
-  public abstract void Zx();
+  public abstract void ZH();
   
-  public abstract void Zy();
+  public abstract void ZI();
   
-  public abstract void Zz();
+  public abstract boolean ZJ();
   
   public abstract void a(a.b paramb);
   
@@ -36,19 +36,14 @@ public abstract interface a
   
   public abstract void onResume();
   
-  public static final class a
+  public static abstract interface a$a
   {
-    public static a fVe;
-    
-    public static abstract interface a
-    {
-      public abstract a a(MMActivity paramMMActivity);
-    }
+    public abstract a a(MMActivity paramMMActivity);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.j.a
  * JD-Core Version:    0.7.0.1
  */

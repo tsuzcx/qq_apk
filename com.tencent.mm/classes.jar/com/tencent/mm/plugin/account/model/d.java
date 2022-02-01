@@ -1,11 +1,11 @@
 package com.tencent.mm.plugin.account.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
@@ -16,8 +16,8 @@ public final class d
   extends n
   implements k
 {
-  public static int jhv = 1;
-  public static int jhw = 2;
+  public static int jko = 1;
+  public static int jkp = 2;
   private f callback;
   private b rr;
   
@@ -25,22 +25,22 @@ public final class d
   {
     AppMethodBeat.i(127829);
     Object localObject = new b.a();
-    ((b.a)localObject).hNM = new lg();
-    ((b.a)localObject).hNN = new lh();
+    ((b.a)localObject).hQF = new lg();
+    ((b.a)localObject).hQG = new lh();
     ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/bindemail";
     ((b.a)localObject).funcId = 256;
-    ((b.a)localObject).hNO = 0;
+    ((b.a)localObject).hQH = 0;
     ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).aDC();
-    localObject = (lg)this.rr.hNK.hNQ;
+    this.rr = ((b.a)localObject).aDS();
+    localObject = (lg)this.rr.hQD.hQJ;
     ((lg)localObject).OpCode = paramInt;
-    ((lg)localObject).FDt = paramString;
+    ((lg)localObject).FVO = paramString;
     AppMethodBeat.o(127829);
   }
   
-  public final int KR()
+  public final int KZ()
   {
-    return ((lg)this.rr.hNK.hNQ).OpCode;
+    return ((lg)this.rr.hQD.hQJ).OpCode;
   }
   
   public final int doScene(e parame, f paramf)

@@ -2,10 +2,10 @@ package kotlinx.a.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.b.p;
-import d.k.h;
+import d.k.j;
 import java.util.Arrays;
 
-@d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/serialization/internal/CharArrayBuilder;", "Lkotlinx/serialization/internal/PrimitiveArrayBuilder;", "", "bufferWithData", "([C)V", "buffer", "<set-?>", "", "position", "getPosition", "()I", "append", "", "c", "", "append$kotlinx_serialization_runtime", "build", "ensureCapacity", "requiredCapacity", "kotlinx-serialization-runtime"})
+@d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/serialization/internal/CharArrayBuilder;", "Lkotlinx/serialization/internal/PrimitiveArrayBuilder;", "", "bufferWithData", "([C)V", "buffer", "<set-?>", "", "position", "getPosition", "()I", "append", "", "c", "", "append$kotlinx_serialization_runtime", "build", "ensureCapacity", "requiredCapacity", "kotlinx-serialization-runtime"})
 public final class l
   extends av<char[]>
 {
@@ -14,23 +14,23 @@ public final class l
   
   public l(char[] paramArrayOfChar)
   {
-    AppMethodBeat.i(191241);
+    AppMethodBeat.i(199829);
     this.aZW = paramArrayOfChar;
     this.position = paramArrayOfChar.length;
     ensureCapacity(10);
-    AppMethodBeat.o(191241);
+    AppMethodBeat.o(199829);
   }
   
   public final void ensureCapacity(int paramInt)
   {
-    AppMethodBeat.i(191239);
+    AppMethodBeat.i(199827);
     if (this.aZW.length < paramInt)
     {
-      char[] arrayOfChar = Arrays.copyOf(this.aZW, h.lp(paramInt, this.aZW.length * 2));
+      char[] arrayOfChar = Arrays.copyOf(this.aZW, j.lw(paramInt, this.aZW.length * 2));
       p.g(arrayOfChar, "java.util.Arrays.copyOf(this, newSize)");
       this.aZW = arrayOfChar;
     }
-    AppMethodBeat.o(191239);
+    AppMethodBeat.o(199827);
   }
   
   public final int getPosition()

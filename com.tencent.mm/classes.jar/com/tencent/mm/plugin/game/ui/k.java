@@ -12,23 +12,23 @@ import com.tencent.mm.g.c.y;
 import com.tencent.mm.game.report.f;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.plugin.game.d.cc;
+import com.tencent.mm.plugin.game.d.cj;
 import com.tencent.mm.pluginsdk.model.app.h;
 import com.tencent.mm.pluginsdk.model.app.r;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public final class k
   implements View.OnClickListener, AdapterView.OnItemClickListener
 {
-  protected int udq = 0;
+  protected int uoy = 0;
   
   private void a(Context paramContext, com.tencent.mm.plugin.game.model.c paramc)
   {
     AppMethodBeat.i(42196);
     int i = 0;
     if (paramc.type == 1) {
-      i = com.tencent.mm.plugin.game.f.c.aB(paramContext, paramc.uaD);
+      i = com.tencent.mm.plugin.game.f.c.aD(paramContext, paramc.ulF);
     }
     for (;;)
     {
@@ -36,38 +36,38 @@ public final class k
       AppMethodBeat.o(42196);
       return;
       if (paramc.type == 0) {
-        if ((paramc.cYy()) && (!bt.isNullOrNil(paramc.uaU.ueY)) && (!h.a(paramContext, paramc)))
+        if ((paramc.dbi()) && (!bu.isNullOrNil(paramc.ulW.uqf)) && (!h.a(paramContext, paramc)))
         {
-          i = com.tencent.mm.plugin.game.f.c.aB(paramContext, paramc.uaU.ueY);
+          i = com.tencent.mm.plugin.game.f.c.aD(paramContext, paramc.ulW.uqf);
         }
         else
         {
-          if ((bt.isNullOrNil(paramc.eHz)) || (paramc.eHC != 4)) {
+          if ((bu.isNullOrNil(paramc.eJi)) || (paramc.eJl != 4)) {
             break;
           }
-          ad.i("MicroMsg.GameItemClickListener", "Download via Google Play");
-          r.bP(paramContext, paramc.eHz);
+          ae.i("MicroMsg.GameItemClickListener", "Download via Google Play");
+          r.bQ(paramContext, paramc.eJi);
           i = 25;
         }
       }
     }
     Bundle localBundle = new Bundle();
     localBundle.putCharSequence("game_app_id", paramc.field_appId);
-    if (paramc.dFG == 1601) {
-      localBundle.putInt("game_report_from_scene", this.udq);
+    if (paramc.dGL == 1601) {
+      localBundle.putInt("game_report_from_scene", this.uoy);
     }
     for (;;)
     {
-      i = com.tencent.mm.plugin.game.f.c.a(paramContext, paramc.field_appId, paramc.uaD, localBundle);
+      i = com.tencent.mm.plugin.game.f.c.a(paramContext, paramc.field_appId, paramc.ulF, localBundle);
       break;
-      localBundle.putInt("game_report_from_scene", paramc.dFG);
+      localBundle.putInt("game_report_from_scene", paramc.dGL);
     }
   }
   
   private void a(Context paramContext, com.tencent.mm.plugin.game.model.c paramc, int paramInt)
   {
     AppMethodBeat.i(42197);
-    f.a(paramContext, paramc.scene, paramc.dFG, paramc.position, paramInt, paramc.field_appId, this.udq, paramc.dls, paramc.uaR);
+    f.a(paramContext, paramc.scene, paramc.dGL, paramc.position, paramInt, paramc.field_appId, this.uoy, paramc.dmu, paramc.ulT);
     AppMethodBeat.o(42197);
   }
   
@@ -76,7 +76,7 @@ public final class k
     AppMethodBeat.i(42195);
     Object localObject = new b();
     ((b)localObject).bd(paramView);
-    a.b("com/tencent/mm/plugin/game/ui/GameItemClickListener", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahq());
+    a.b("com/tencent/mm/plugin/game/ui/GameItemClickListener", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahF());
     if ((paramView.getTag() == null) || (!(paramView.getTag() instanceof com.tencent.mm.plugin.game.model.c)))
     {
       a.a(this, "com/tencent/mm/plugin/game/ui/GameItemClickListener", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
@@ -95,9 +95,9 @@ public final class k
     b localb = new b();
     localb.bd(paramAdapterView);
     localb.bd(paramView);
-    localb.mr(paramInt);
-    localb.qY(paramLong);
-    a.b("com/tencent/mm/plugin/game/ui/GameItemClickListener", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.ahq());
+    localb.mu(paramInt);
+    localb.rl(paramLong);
+    a.b("com/tencent/mm/plugin/game/ui/GameItemClickListener", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.ahF());
     paramAdapterView = paramAdapterView.getAdapter().getItem(paramInt);
     if ((paramAdapterView == null) || (!(paramAdapterView instanceof com.tencent.mm.plugin.game.model.c)))
     {
@@ -106,7 +106,7 @@ public final class k
       return;
     }
     paramAdapterView = (com.tencent.mm.plugin.game.model.c)paramAdapterView;
-    if (bt.isNullOrNil(paramAdapterView.field_appId))
+    if (bu.isNullOrNil(paramAdapterView.field_appId))
     {
       a.a(this, "com/tencent/mm/plugin/game/ui/GameItemClickListener", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
       AppMethodBeat.o(42194);
@@ -119,7 +119,7 @@ public final class k
   
   public final void setSourceScene(int paramInt)
   {
-    this.udq = paramInt;
+    this.uoy = paramInt;
   }
 }
 

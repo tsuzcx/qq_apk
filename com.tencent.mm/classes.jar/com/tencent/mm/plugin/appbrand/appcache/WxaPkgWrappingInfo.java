@@ -8,10 +8,10 @@ import android.util.ArrayMap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.b.g;
 import com.tencent.mm.compatible.util.j;
-import com.tencent.mm.plugin.appbrand.appstorage.m;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.vfs.e;
+import com.tencent.mm.plugin.appbrand.appstorage.n;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.vfs.k;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -22,20 +22,20 @@ public final class WxaPkgWrappingInfo
   implements Parcelable, Iterable<ModulePkgInfo>
 {
   public static final Parcelable.Creator<WxaPkgWrappingInfo> CREATOR;
-  static a jIT;
-  public int jIU;
-  public long jIV;
+  static a jLU;
+  public int jLV;
+  public long jLW;
   @Deprecated
-  public boolean jIW;
-  public final LinkedList<ModulePkgInfo> jIX;
-  private volatile transient Map<String, String> jIY;
-  public WxaRuntimeModulePluginListMap jIZ;
+  public boolean jLX;
+  public final LinkedList<ModulePkgInfo> jLY;
+  private volatile transient Map<String, String> jLZ;
+  public WxaRuntimeModulePluginListMap jMa;
   
   static
   {
     AppMethodBeat.i(134298);
     WxaPkgWrappingInfo.class.getClassLoader();
-    j.vr("appbrandcommon");
+    j.vN("appbrandcommon");
     CREATOR = new Parcelable.Creator() {};
     AppMethodBeat.o(134298);
   }
@@ -43,8 +43,8 @@ public final class WxaPkgWrappingInfo
   public WxaPkgWrappingInfo()
   {
     AppMethodBeat.i(134293);
-    this.jIX = new LinkedList();
-    this.jIZ = null;
+    this.jLY = new LinkedList();
+    this.jMa = null;
     this.name = "__APP__";
     this.independent = true;
     AppMethodBeat.o(134293);
@@ -58,7 +58,7 @@ public final class WxaPkgWrappingInfo
     AppMethodBeat.o(134294);
   }
   
-  public static String LK(String paramString)
+  public static String Mn(String paramString)
   {
     AppMethodBeat.i(178557);
     if ("__APP__".equals(paramString))
@@ -66,46 +66,46 @@ public final class WxaPkgWrappingInfo
       AppMethodBeat.o(178557);
       return paramString;
     }
-    paramString = m.Mp(paramString);
+    paramString = n.MV(paramString);
     AppMethodBeat.o(178557);
     return paramString;
   }
   
-  public static WxaPkgWrappingInfo LL(String paramString)
+  public static WxaPkgWrappingInfo Mo(String paramString)
   {
     AppMethodBeat.i(134290);
-    if (bt.isNullOrNil(paramString))
+    if (bu.isNullOrNil(paramString))
     {
       AppMethodBeat.o(134290);
       return null;
     }
-    e locale = new e(paramString);
-    if ((!locale.exists()) || (locale.isDirectory()))
+    k localk = new k(paramString);
+    if ((!localk.exists()) || (localk.isDirectory()))
     {
-      ad.e("MicroMsg.WxaPkgWrappingInfo#obtain", "wxPkg invalid, path = %s ", new Object[] { paramString });
+      ae.e("MicroMsg.WxaPkgWrappingInfo#obtain", "wxPkg invalid, path = %s ", new Object[] { paramString });
       AppMethodBeat.o(134290);
       return null;
     }
     WxaPkgWrappingInfo localWxaPkgWrappingInfo = new WxaPkgWrappingInfo();
     localWxaPkgWrappingInfo.pkgPath = paramString;
-    localWxaPkgWrappingInfo.jIW = false;
-    localWxaPkgWrappingInfo.md5 = o(locale);
+    localWxaPkgWrappingInfo.jLX = false;
+    localWxaPkgWrappingInfo.md5 = o(localk);
     AppMethodBeat.o(134290);
     return localWxaPkgWrappingInfo;
   }
   
-  public static WxaPkgWrappingInfo LM(String paramString)
+  public static WxaPkgWrappingInfo Mp(String paramString)
   {
     AppMethodBeat.i(134292);
-    if (bt.isNullOrNil(paramString))
+    if (bu.isNullOrNil(paramString))
     {
-      ad.e("MicroMsg.WxaPkgWrappingInfo#obtainPluginCode", "pkgPath null!");
+      ae.e("MicroMsg.WxaPkgWrappingInfo#obtainPluginCode", "pkgPath null!");
       AppMethodBeat.o(134292);
       return null;
     }
     WxaPkgWrappingInfo localWxaPkgWrappingInfo = new WxaPkgWrappingInfo();
     localWxaPkgWrappingInfo.pkgPath = paramString;
-    localWxaPkgWrappingInfo.jIW = false;
+    localWxaPkgWrappingInfo.jLX = false;
     localWxaPkgWrappingInfo.md5 = g.getMD5(paramString);
     AppMethodBeat.o(134292);
     return localWxaPkgWrappingInfo;
@@ -113,18 +113,18 @@ public final class WxaPkgWrappingInfo
   
   public static void a(a parama)
   {
-    jIT = parama;
+    jLU = parama;
   }
   
   /* Error */
-  private static String o(e parame)
+  private static String o(k paramk)
   {
     // Byte code:
     //   0: ldc 173
     //   2: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: aload_0
-    //   6: invokevirtual 177	com/tencent/mm/vfs/e:fOK	()Landroid/net/Uri;
-    //   9: invokestatic 183	com/tencent/mm/vfs/q:B	(Landroid/net/Uri;)Ljava/lang/String;
+    //   6: invokevirtual 177	com/tencent/mm/vfs/k:fTh	()Landroid/net/Uri;
+    //   9: invokestatic 183	com/tencent/mm/vfs/w:B	(Landroid/net/Uri;)Ljava/lang/String;
     //   12: invokestatic 188	com/tencent/mm/plugin/appbrand/appstorage/MD5JNI:getMD5Wrap	(Ljava/lang/String;)Ljava/lang/String;
     //   15: astore_1
     //   16: aload_1
@@ -135,7 +135,7 @@ public final class WxaPkgWrappingInfo
     //   25: aload_1
     //   26: astore_2
     //   27: aload_0
-    //   28: invokestatic 200	com/tencent/mm/vfs/i:ai	(Lcom/tencent/mm/vfs/e;)Ljava/io/InputStream;
+    //   28: invokestatic 200	com/tencent/mm/vfs/o:ai	(Lcom/tencent/mm/vfs/k;)Ljava/io/InputStream;
     //   31: astore 4
     //   33: aload 4
     //   35: sipush 16384
@@ -161,7 +161,7 @@ public final class WxaPkgWrappingInfo
     //   69: ldc 213
     //   71: iconst_0
     //   72: anewarray 132	java/lang/Object
-    //   75: invokestatic 217	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   75: invokestatic 217	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   78: aconst_null
     //   79: astore_1
     //   80: goto -64 -> 16
@@ -193,7 +193,7 @@ public final class WxaPkgWrappingInfo
     //   123: ldc 219
     //   125: iconst_0
     //   126: anewarray 132	java/lang/Object
-    //   129: invokestatic 217	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   129: invokestatic 217	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   132: goto -74 -> 58
     //   135: astore 4
     //   137: aload_1
@@ -213,7 +213,7 @@ public final class WxaPkgWrappingInfo
     //   161: goto -69 -> 92
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	164	0	parame	e
+    //   0	164	0	paramk	k
     //   15	11	1	str	String
     //   65	4	1	localUnsatisfiedLinkError	java.lang.UnsatisfiedLinkError
     //   79	70	1	localObject1	Object
@@ -238,36 +238,36 @@ public final class WxaPkgWrappingInfo
     //   33	42	158	finally
   }
   
-  final void LJ(String paramString)
+  final void Mm(String paramString)
   {
     AppMethodBeat.i(178556);
-    synchronized (this.jIX)
+    synchronized (this.jLY)
     {
-      if ((this.jIX.isEmpty()) || (this.jIY != null))
+      if ((this.jLY.isEmpty()) || (this.jLZ != null))
       {
         AppMethodBeat.o(178556);
         return;
       }
-      this.jIY = new ArrayMap();
-      Iterator localIterator = this.jIX.iterator();
+      this.jLZ = new ArrayMap();
+      Iterator localIterator = this.jLY.iterator();
       while (localIterator.hasNext())
       {
         ModulePkgInfo localModulePkgInfo = (ModulePkgInfo)localIterator.next();
         localModulePkgInfo.pkgVersion = this.pkgVersion;
-        String str = LK(localModulePkgInfo.name);
-        ad.i("Luggage.WXA.WxaPkgWrappingInfo", "setupModuleEnv, appId:%s, module mapped %s -> %s", new Object[] { paramString, localModulePkgInfo.name, str });
+        String str = Mn(localModulePkgInfo.name);
+        ae.i("Luggage.WXA.WxaPkgWrappingInfo", "setupModuleEnv, appId:%s, module mapped %s -> %s", new Object[] { paramString, localModulePkgInfo.name, str });
         if (!str.equals(localModulePkgInfo.name))
         {
-          this.jIY.put(str, localModulePkgInfo.name);
+          this.jLZ.put(str, localModulePkgInfo.name);
           localModulePkgInfo.name = str;
         }
       }
     }
-    ad.i("Luggage.WXA.WxaPkgWrappingInfo", "setupModuleEnv, appId:%s, NameMap.size:%d", new Object[] { paramString, Integer.valueOf(this.jIY.size()) });
+    ae.i("Luggage.WXA.WxaPkgWrappingInfo", "setupModuleEnv, appId:%s, NameMap.size:%d", new Object[] { paramString, Integer.valueOf(this.jLZ.size()) });
     AppMethodBeat.o(178556);
   }
   
-  public final String cg(String paramString1, String paramString2)
+  public final String ch(String paramString1, String paramString2)
   {
     AppMethodBeat.i(178558);
     if ("__APP__".equals(paramString2))
@@ -275,17 +275,17 @@ public final class WxaPkgWrappingInfo
       AppMethodBeat.o(178558);
       return paramString2;
     }
-    synchronized (this.jIX)
+    synchronized (this.jLY)
     {
-      if (this.jIY == null) {
-        LJ(paramString1);
+      if (this.jLZ == null) {
+        Mm(paramString1);
       }
-      String str2 = (String)this.jIY.get(paramString2);
+      String str2 = (String)this.jLZ.get(paramString2);
       String str1 = str2;
       if (TextUtils.isEmpty(str2)) {
         str1 = paramString2;
       }
-      ad.i("Luggage.WXA.WxaPkgWrappingInfo", "getModuleNameForURLFetch appId:%s, retrace module %s -> %s", new Object[] { paramString1, paramString2, str1 });
+      ae.i("Luggage.WXA.WxaPkgWrappingInfo", "getModuleNameForURLFetch appId:%s, retrace module %s -> %s", new Object[] { paramString1, paramString2, str1 });
       AppMethodBeat.o(178558);
       return str1;
     }
@@ -319,21 +319,21 @@ public final class WxaPkgWrappingInfo
     AppMethodBeat.i(178559);
     Iterator local1 = new Iterator()
     {
-      private boolean jJa = false;
-      private Iterator<ModulePkgInfo> jJb = null;
+      private boolean jMb = false;
+      private Iterator<ModulePkgInfo> jMc = null;
       
       public final boolean hasNext()
       {
         AppMethodBeat.i(178553);
-        if (!this.jJa)
+        if (!this.jMb)
         {
           AppMethodBeat.o(178553);
           return true;
         }
-        if (this.jJb == null) {
-          this.jJb = WxaPkgWrappingInfo.this.jIX.iterator();
+        if (this.jMc == null) {
+          this.jMc = WxaPkgWrappingInfo.this.jLY.iterator();
         }
-        boolean bool = this.jJb.hasNext();
+        boolean bool = this.jMc.hasNext();
         AppMethodBeat.o(178553);
         return bool;
       }
@@ -346,15 +346,15 @@ public final class WxaPkgWrappingInfo
   {
     AppMethodBeat.i(134297);
     super.readFromParcel(paramParcel);
-    this.jIU = paramParcel.readInt();
+    this.jLV = paramParcel.readInt();
     this.pkgVersion = paramParcel.readInt();
-    this.jIV = paramParcel.readLong();
+    this.jLW = paramParcel.readLong();
     if (paramParcel.readByte() != 0) {}
     for (boolean bool = true;; bool = false)
     {
-      this.jIW = bool;
-      paramParcel.readTypedList(this.jIX, ModulePkgInfo.CREATOR);
-      this.jIZ = ((WxaRuntimeModulePluginListMap)paramParcel.readParcelable(WxaRuntimeModulePluginListMap.class.getClassLoader()));
+      this.jLX = bool;
+      paramParcel.readTypedList(this.jLY, ModulePkgInfo.CREATOR);
+      this.jMa = ((WxaRuntimeModulePluginListMap)paramParcel.readParcelable(WxaRuntimeModulePluginListMap.class.getClassLoader()));
       AppMethodBeat.o(134297);
       return;
     }
@@ -363,7 +363,7 @@ public final class WxaPkgWrappingInfo
   public final String toString()
   {
     AppMethodBeat.i(134295);
-    String str = "WxaPkgWrappingInfo{pkgDebugType=" + this.jIU + ", pkgVersion=" + this.pkgVersion + ", pkgCreateTime=" + this.jIV + ", localPkg=" + this.jIW + ", md5='" + this.md5 + '\'' + ", pkgPath='" + this.pkgPath + '\'' + '}';
+    String str = "WxaPkgWrappingInfo{pkgDebugType=" + this.jLV + ", pkgVersion=" + this.pkgVersion + ", pkgCreateTime=" + this.jLW + ", localPkg=" + this.jLX + ", md5='" + this.md5 + '\'' + ", pkgPath='" + this.pkgPath + '\'' + '}';
     AppMethodBeat.o(134295);
     return str;
   }
@@ -372,15 +372,15 @@ public final class WxaPkgWrappingInfo
   {
     AppMethodBeat.i(134296);
     super.writeToParcel(paramParcel, paramInt);
-    paramParcel.writeInt(this.jIU);
+    paramParcel.writeInt(this.jLV);
     paramParcel.writeInt(this.pkgVersion);
-    paramParcel.writeLong(this.jIV);
-    if (this.jIW) {}
+    paramParcel.writeLong(this.jLW);
+    if (this.jLX) {}
     for (byte b = 1;; b = 0)
     {
       paramParcel.writeByte(b);
-      paramParcel.writeTypedList(this.jIX);
-      paramParcel.writeParcelable(this.jIZ, 0);
+      paramParcel.writeTypedList(this.jLY);
+      paramParcel.writeParcelable(this.jMa, 0);
       AppMethodBeat.o(134296);
       return;
     }

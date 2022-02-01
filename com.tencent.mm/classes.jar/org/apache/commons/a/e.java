@@ -12,8 +12,8 @@ import java.net.URLConnection;
 
 public final class e
 {
-  public static final String NHr;
-  public static final char NSA;
+  public static final String Oex;
+  public static final char OpG;
   
   /* Error */
   static
@@ -24,7 +24,7 @@ public final class e
     //   2: sipush 10310
     //   5: invokestatic 18	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: getstatic 23	java/io/File:separatorChar	C
-    //   11: putstatic 25	org/apache/commons/a/e:NSA	C
+    //   11: putstatic 25	org/apache/commons/a/e:OpG	C
     //   14: new 27	org/apache/commons/a/a/b
     //   17: dup
     //   18: iconst_0
@@ -39,7 +39,7 @@ public final class e
     //   35: invokevirtual 39	java/io/PrintWriter:println	()V
     //   38: aload_3
     //   39: invokevirtual 43	org/apache/commons/a/a/b:toString	()Ljava/lang/String;
-    //   42: putstatic 45	org/apache/commons/a/e:NHr	Ljava/lang/String;
+    //   42: putstatic 45	org/apache/commons/a/e:Oex	Ljava/lang/String;
     //   45: aload 4
     //   47: invokevirtual 48	java/io/PrintWriter:close	()V
     //   50: aload_3
@@ -144,7 +144,7 @@ public final class e
   
   public static long a(InputStream paramInputStream, OutputStream paramOutputStream, int paramInt)
   {
-    AppMethodBeat.i(189790);
+    AppMethodBeat.i(186136);
     byte[] arrayOfByte = new byte[paramInt];
     for (long l = 0L;; l += paramInt)
     {
@@ -154,7 +154,7 @@ public final class e
       }
       paramOutputStream.write(arrayOfByte, 0, paramInt);
     }
-    AppMethodBeat.o(189790);
+    AppMethodBeat.o(186136);
     return l;
   }
   
@@ -250,25 +250,25 @@ public final class e
   @Deprecated
   public static void a(Reader paramReader)
   {
-    AppMethodBeat.i(189789);
+    AppMethodBeat.i(186135);
     closeQuietly(paramReader);
-    AppMethodBeat.o(189789);
+    AppMethodBeat.o(186135);
   }
   
   public static void a(URLConnection paramURLConnection)
   {
-    AppMethodBeat.i(189788);
+    AppMethodBeat.i(186134);
     if ((paramURLConnection instanceof HttpURLConnection)) {
       ((HttpURLConnection)paramURLConnection).disconnect();
     }
-    AppMethodBeat.o(189788);
+    AppMethodBeat.o(186134);
   }
   
   private static long c(InputStream paramInputStream, OutputStream paramOutputStream)
   {
-    AppMethodBeat.i(189791);
+    AppMethodBeat.i(186137);
     long l = a(paramInputStream, paramOutputStream, 4096);
-    AppMethodBeat.o(189791);
+    AppMethodBeat.o(186137);
     return l;
   }
   

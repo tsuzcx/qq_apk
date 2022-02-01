@@ -3,14 +3,14 @@
   xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:state_pressed="true">
         <shape android:shape="rectangle">
-            <corners android:bottomLeftRadius="8.0dip" android:bottomRightRadius="8.0dip" />
+            <corners android:bottomLeftRadius="@dimen/ci" android:bottomRightRadius="@dimen/ci" />
             <solid android:color="@color/a8" />
         </shape>
     </item>
     <item>
         <shape android:shape="rectangle">
-            <corners android:bottomLeftRadius="8.0dip" android:bottomRightRadius="8.0dip" />
-            <solid android:color="@color/aj" />
+            <corners android:bottomLeftRadius="@dimen/ci" android:bottomRightRadius="@dimen/ci" />
+            <solid android:color="@color/a7c" />
         </shape>
     </item>
 </selector>

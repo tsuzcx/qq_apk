@@ -16,17 +16,17 @@ final class y$3
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     AppMethodBeat.i(33439);
-    if (this.Jcr != null)
+    if (this.Jxb != null)
     {
-      this.iNQ.finish();
-      paramDialogInterface = this.iNQ;
-      Object localObject = this.Jcr;
+      this.iQK.finish();
+      paramDialogInterface = this.iQK;
+      Object localObject = this.Jxb;
       localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
-      com.tencent.mm.hellhoundlib.a.a.a(paramDialogInterface, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahp(), "com/tencent/mm/ui/MMErrorProcessor$4", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramDialogInterface.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mq(0));
+      com.tencent.mm.hellhoundlib.a.a.a(paramDialogInterface, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahE(), "com/tencent/mm/ui/MMErrorProcessor$4", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramDialogInterface.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mt(0));
       com.tencent.mm.hellhoundlib.a.a.a(paramDialogInterface, "com/tencent/mm/ui/MMErrorProcessor$4", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      b.am(this.iNQ, this.Jcr);
-      t.cV(this.iNQ);
+      b.am(this.iQK, this.Jxb);
+      t.cX(this.iQK);
     }
     AppMethodBeat.o(33439);
   }

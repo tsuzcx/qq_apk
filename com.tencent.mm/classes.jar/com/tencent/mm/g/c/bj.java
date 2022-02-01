@@ -8,21 +8,21 @@ public abstract class bj
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eRZ;
-  private static final int eSP;
-  private static final int eTF = "md5_lang".hashCode();
-  private static final int eTG;
-  private static final int eTH = "click_flag".hashCode();
-  private static final int eTI = "download_flag".hashCode();
-  private static final int eTa;
+  private static final int eTK;
+  private static final int eUA;
+  private static final int eUL = "groupId".hashCode();
+  private static final int eVq = "md5_lang".hashCode();
+  private static final int eVr;
+  private static final int eVs = "click_flag".hashCode();
+  private static final int eVt = "download_flag".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eRz = true;
-  private boolean eSd = true;
-  private boolean eSo = true;
-  private boolean eTB = true;
-  private boolean eTC = true;
-  private boolean eTD = true;
-  private boolean eTE = true;
+  private boolean eTO = true;
+  private boolean eTZ = true;
+  private boolean eTk = true;
+  private boolean eVm = true;
+  private boolean eVn = true;
+  private boolean eVo = true;
+  private boolean eVp = true;
   public int field_click_flag;
   public String field_desc;
   public int field_download_flag;
@@ -33,10 +33,9 @@ public abstract class bj
   
   static
   {
-    eSP = "md5".hashCode();
-    eRZ = "lang".hashCode();
-    eTG = "desc".hashCode();
-    eTa = "groupId".hashCode();
+    eUA = "md5".hashCode();
+    eTK = "lang".hashCode();
+    eVr = "desc".hashCode();
   }
   
   public void convertFrom(Cursor paramCursor)
@@ -52,11 +51,11 @@ public abstract class bj
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eTF != k) {
+      if (eVq != k) {
         break label65;
       }
       this.field_md5_lang = paramCursor.getString(i);
-      this.eTB = true;
+      this.eVm = true;
     }
     for (;;)
     {
@@ -64,17 +63,17 @@ public abstract class bj
       break label20;
       break;
       label65:
-      if (eSP == k) {
+      if (eUA == k) {
         this.field_md5 = paramCursor.getString(i);
-      } else if (eRZ == k) {
+      } else if (eTK == k) {
         this.field_lang = paramCursor.getString(i);
-      } else if (eTG == k) {
+      } else if (eVr == k) {
         this.field_desc = paramCursor.getString(i);
-      } else if (eTa == k) {
+      } else if (eUL == k) {
         this.field_groupId = paramCursor.getString(i);
-      } else if (eTH == k) {
+      } else if (eVs == k) {
         this.field_click_flag = paramCursor.getInt(i);
-      } else if (eTI == k) {
+      } else if (eVt == k) {
         this.field_download_flag = paramCursor.getInt(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
@@ -85,28 +84,28 @@ public abstract class bj
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eTB) {
+    if (this.eVm) {
       localContentValues.put("md5_lang", this.field_md5_lang);
     }
-    if (this.eSd) {
+    if (this.eTO) {
       localContentValues.put("md5", this.field_md5);
     }
-    if (this.eRz) {
+    if (this.eTk) {
       localContentValues.put("lang", this.field_lang);
     }
-    if (this.eTC) {
+    if (this.eVn) {
       localContentValues.put("desc", this.field_desc);
     }
     if (this.field_groupId == null) {
       this.field_groupId = "";
     }
-    if (this.eSo) {
+    if (this.eTZ) {
       localContentValues.put("groupId", this.field_groupId);
     }
-    if (this.eTD) {
+    if (this.eVo) {
       localContentValues.put("click_flag", Integer.valueOf(this.field_click_flag));
     }
-    if (this.eTE) {
+    if (this.eVp) {
       localContentValues.put("download_flag", Integer.valueOf(this.field_download_flag));
     }
     if (this.systemRowid > 0L) {

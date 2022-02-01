@@ -1,21 +1,34 @@
 package com.tencent.mm.plugin.account.ui;
 
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.DialogInterface.OnCancelListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.b.a;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.modelfriend.a;
 
 final class RegByMobileRegAIOUI$9
-  implements DialogInterface.OnClickListener
+  implements DialogInterface.OnCancelListener
 {
-  RegByMobileRegAIOUI$9(RegByMobileRegAIOUI paramRegByMobileRegAIOUI) {}
+  RegByMobileRegAIOUI$9(RegByMobileRegAIOUI paramRegByMobileRegAIOUI, a parama) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public final void onCancel(DialogInterface arg1)
   {
-    AppMethodBeat.i(128522);
-    RegByMobileRegAIOUI.v(this.jpj);
-    a.Ma("RE200_250");
-    AppMethodBeat.o(128522);
+    AppMethodBeat.i(224316);
+    try
+    {
+      synchronized (this.jnz)
+      {
+        g.ajj().a(this.jnz);
+        label22:
+        AppMethodBeat.o(224316);
+        return;
+      }
+    }
+    catch (Throwable localThrowable)
+    {
+      break label22;
+    }
   }
 }
 

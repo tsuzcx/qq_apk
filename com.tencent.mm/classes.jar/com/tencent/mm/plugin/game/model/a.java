@@ -3,8 +3,8 @@ package com.tencent.mm.plugin.game.model;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.q;
 import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.storage.c;
 import java.io.UnsupportedEncodingException;
 import java.util.Map;
@@ -20,7 +20,7 @@ public final class a
     AppMethodBeat.i(41350);
     if (paramc == null)
     {
-      ad.i(TAG, "ABTestItem is null");
+      ae.i(TAG, "ABTestItem is null");
       AppMethodBeat.o(41350);
       return;
     }
@@ -28,7 +28,7 @@ public final class a
     try
     {
       JSONObject localJSONObject = new JSONObject();
-      if (!bt.isNullOrNil(paramString)) {
+      if (!bu.isNullOrNil(paramString)) {
         localJSONObject.put("url", paramString);
       }
       localJSONObject.put("jumpType", paramInt2);
@@ -48,124 +48,124 @@ public final class a
         paramString = str;
       }
     }
-    ad.i(TAG, "reportABTest : " + paramc.field_layerId + " , " + paramc.field_business + " , " + paramc.field_expId + " , " + paramc.field_sequence + " , " + paramc.field_prioritylevel + " , " + paramc.field_startTime + " , " + paramc.field_endTime + " , " + paramInt1 + " , " + paramString);
-    g.yhR.f(14841, new Object[] { paramc.field_layerId, paramc.field_business, paramc.field_expId, Long.valueOf(paramc.field_sequence), Integer.valueOf(paramc.field_prioritylevel), Long.valueOf(paramc.field_startTime), Long.valueOf(paramc.field_endTime), Integer.valueOf(paramInt1), paramString });
+    ae.i(TAG, "reportABTest : " + paramc.field_layerId + " , " + paramc.field_business + " , " + paramc.field_expId + " , " + paramc.field_sequence + " , " + paramc.field_prioritylevel + " , " + paramc.field_startTime + " , " + paramc.field_endTime + " , " + paramInt1 + " , " + paramString);
+    g.yxI.f(14841, new Object[] { paramc.field_layerId, paramc.field_business, paramc.field_expId, Long.valueOf(paramc.field_sequence), Integer.valueOf(paramc.field_prioritylevel), Long.valueOf(paramc.field_startTime), Long.valueOf(paramc.field_endTime), Integer.valueOf(paramInt1), paramString });
     AppMethodBeat.o(41350);
   }
   
-  public static a cYu()
+  public static a dT(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(41347);
+    a locala = new a();
+    if (bu.isNullOrNil(paramString))
+    {
+      ae.e(TAG, "appid is null");
+      AppMethodBeat.o(41347);
+      return locala;
+    }
+    c localc = com.tencent.mm.model.c.d.aDI().xi("100002");
+    if (!localc.isValid())
+    {
+      ae.e(TAG, "getDetailABTestInfo is timeout,startTime: %d, endTime: %d", new Object[] { Long.valueOf(localc.field_startTime), Long.valueOf(localc.field_endTime) });
+      AppMethodBeat.o(41347);
+      return locala;
+    }
+    ae.i(TAG, "getDetailABTestInfo success, layerId = %s", new Object[] { localc.field_layerId });
+    Object localObject = localc.fsy();
+    locala.dEu = bu.getInt((String)((Map)localObject).get("game_detail_jump"), 0);
+    localObject = (String)((Map)localObject).get("game_detail_url");
+    if (localObject == null) {}
+    for (paramString = "";; paramString = (String)localObject + paramString)
+    {
+      locala.url = paramString;
+      a(localc, paramInt, locala.url, locala.dEu);
+      AppMethodBeat.o(41347);
+      return locala;
+    }
+  }
+  
+  public static a dbe()
   {
     AppMethodBeat.i(41346);
     a locala = new a();
-    c localc = com.tencent.mm.model.c.d.aDs().wz("100001");
+    c localc = com.tencent.mm.model.c.d.aDI().xi("100001");
     if (!localc.isValid())
     {
-      ad.e(TAG, "getIndexABTestInfo is timeout,startTime: %d, endTime: %d", new Object[] { Long.valueOf(localc.field_startTime), Long.valueOf(localc.field_endTime) });
+      ae.e(TAG, "getIndexABTestInfo is timeout,startTime: %d, endTime: %d", new Object[] { Long.valueOf(localc.field_startTime), Long.valueOf(localc.field_endTime) });
       AppMethodBeat.o(41346);
       return locala;
     }
-    Object localObject = localc.foF();
-    locala.dDp = bt.getInt((String)((Map)localObject).get("game_homepage_jump"), 0);
+    Object localObject = localc.fsy();
+    locala.dEu = bu.getInt((String)((Map)localObject).get("game_homepage_jump"), 0);
     String str = (String)((Map)localObject).get("game_homepage_url");
     localObject = str;
     if (str == null) {
       localObject = "";
     }
     locala.url = ((String)localObject);
-    a(localc, 901, locala.url, locala.dDp);
-    ad.i(TAG, "getIndexABTestInfo success, layerId = %s, expId = %s, flag = %d, url = %s", new Object[] { localc.field_layerId, localc.field_expId, Integer.valueOf(locala.dDp), locala.url });
+    a(localc, 901, locala.url, locala.dEu);
+    ae.i(TAG, "getIndexABTestInfo success, layerId = %s, expId = %s, flag = %d, url = %s", new Object[] { localc.field_layerId, localc.field_expId, Integer.valueOf(locala.dEu), locala.url });
     AppMethodBeat.o(41346);
     return locala;
   }
   
-  public static a cYv()
+  public static a dbf()
   {
     AppMethodBeat.i(41348);
     a locala = new a();
-    c localc = com.tencent.mm.model.c.d.aDs().wz("100003");
+    c localc = com.tencent.mm.model.c.d.aDI().xi("100003");
     if (!localc.isValid())
     {
-      ad.e(TAG, "getLibraryABTestInfo is timeout,startTime: %d, endTime: %d", new Object[] { Long.valueOf(localc.field_startTime), Long.valueOf(localc.field_endTime) });
+      ae.e(TAG, "getLibraryABTestInfo is timeout,startTime: %d, endTime: %d", new Object[] { Long.valueOf(localc.field_startTime), Long.valueOf(localc.field_endTime) });
       AppMethodBeat.o(41348);
       return locala;
     }
-    ad.i(TAG, "getLibraryABTestInfo success, layerId = %s", new Object[] { localc.field_layerId });
-    Object localObject = localc.foF();
-    locala.dDp = bt.getInt((String)((Map)localObject).get("game_library_jump"), 0);
+    ae.i(TAG, "getLibraryABTestInfo success, layerId = %s", new Object[] { localc.field_layerId });
+    Object localObject = localc.fsy();
+    locala.dEu = bu.getInt((String)((Map)localObject).get("game_library_jump"), 0);
     String str = (String)((Map)localObject).get("game_library_url");
     localObject = str;
     if (str == null) {
       localObject = "";
     }
     locala.url = ((String)localObject);
-    a(localc, 1005, locala.url, locala.dDp);
+    a(localc, 1005, locala.url, locala.dEu);
     AppMethodBeat.o(41348);
     return locala;
   }
   
-  public static a cYw()
+  public static a dbg()
   {
     AppMethodBeat.i(41349);
     a locala = new a();
-    c localc = com.tencent.mm.model.c.d.aDs().wz("100022");
+    c localc = com.tencent.mm.model.c.d.aDI().xi("100022");
     if (!localc.isValid())
     {
       AppMethodBeat.o(41349);
       return locala;
     }
-    Object localObject = localc.foF();
-    locala.dDp = bt.getInt((String)((Map)localObject).get("game_message_jump"), 0);
+    Object localObject = localc.fsy();
+    locala.dEu = bu.getInt((String)((Map)localObject).get("game_message_jump"), 0);
     String str = (String)((Map)localObject).get("game_message_url");
     localObject = str;
     if (str == null) {
       localObject = "";
     }
     locala.url = ((String)localObject);
-    a(localc, 1001, locala.url, locala.dDp);
+    a(localc, 1001, locala.url, locala.dEu);
     AppMethodBeat.o(41349);
     return locala;
   }
   
-  public static a dP(String paramString, int paramInt)
-  {
-    AppMethodBeat.i(41347);
-    a locala = new a();
-    if (bt.isNullOrNil(paramString))
-    {
-      ad.e(TAG, "appid is null");
-      AppMethodBeat.o(41347);
-      return locala;
-    }
-    c localc = com.tencent.mm.model.c.d.aDs().wz("100002");
-    if (!localc.isValid())
-    {
-      ad.e(TAG, "getDetailABTestInfo is timeout,startTime: %d, endTime: %d", new Object[] { Long.valueOf(localc.field_startTime), Long.valueOf(localc.field_endTime) });
-      AppMethodBeat.o(41347);
-      return locala;
-    }
-    ad.i(TAG, "getDetailABTestInfo success, layerId = %s", new Object[] { localc.field_layerId });
-    Object localObject = localc.foF();
-    locala.dDp = bt.getInt((String)((Map)localObject).get("game_detail_jump"), 0);
-    localObject = (String)((Map)localObject).get("game_detail_url");
-    if (localObject == null) {}
-    for (paramString = "";; paramString = (String)localObject + paramString)
-    {
-      locala.url = paramString;
-      a(localc, paramInt, locala.url, locala.dDp);
-      AppMethodBeat.o(41347);
-      return locala;
-    }
-  }
-  
   public static final class a
   {
-    public int dDp = 0;
+    public int dEu = 0;
     public String url = "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.game.model.a
  * JD-Core Version:    0.7.0.1
  */

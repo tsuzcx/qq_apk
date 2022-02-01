@@ -43,7 +43,7 @@ public final class bu
     AppMethodBeat.o(140769);
   }
   
-  public static Bitmap cJ(View paramView)
+  public static Bitmap cK(View paramView)
   {
     AppMethodBeat.i(140770);
     if ((paramView.getWidth() <= 0) || (paramView.getHeight() <= 0))
@@ -59,7 +59,7 @@ public final class bu
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.page.bu
  * JD-Core Version:    0.7.0.1
  */

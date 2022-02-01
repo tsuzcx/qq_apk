@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.emojicapture.model.a;
 
 import android.support.v7.widget.RecyclerView.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.bty;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.bus;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import d.g.b.p;
 import d.l;
 import java.util.Collection;
@@ -12,27 +12,27 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/emojicapture/model/capture/StickerRecommendData;", "Lcom/tencent/mm/plugin/emojicapture/model/capture/StickerListDiffCallback;", "callback", "Lcom/tencent/mm/plugin/emojicapture/model/capture/StickerRecommendCallback;", "adapter", "Landroid/support/v7/widget/RecyclerView$Adapter;", "(Lcom/tencent/mm/plugin/emojicapture/model/capture/StickerRecommendCallback;Landroid/support/v7/widget/RecyclerView$Adapter;)V", "TAG", "", "getCallback", "()Lcom/tencent/mm/plugin/emojicapture/model/capture/StickerRecommendCallback;", "preferIndex", "", "recommendList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/sticker/LensItem;", "selectedId", "updateSelection", "", "onInsert", "", "start", "count", "onMove", "fromPos", "toPos", "onRemove", "onUpdate", "setPreferIndex", "index", "setSelection", "updateData", "lensList", "", "plugin-emojicapture_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/emojicapture/model/capture/StickerRecommendData;", "Lcom/tencent/mm/plugin/emojicapture/model/capture/StickerListDiffCallback;", "callback", "Lcom/tencent/mm/plugin/emojicapture/model/capture/StickerRecommendCallback;", "adapter", "Landroid/support/v7/widget/RecyclerView$Adapter;", "(Lcom/tencent/mm/plugin/emojicapture/model/capture/StickerRecommendCallback;Landroid/support/v7/widget/RecyclerView$Adapter;)V", "TAG", "", "getCallback", "()Lcom/tencent/mm/plugin/emojicapture/model/capture/StickerRecommendCallback;", "preferIndex", "", "recommendList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/sticker/LensItem;", "selectedId", "updateSelection", "", "onInsert", "", "start", "count", "onMove", "fromPos", "toPos", "onRemove", "onUpdate", "setPreferIndex", "index", "setSelection", "updateData", "lensList", "", "plugin-emojicapture_release"})
 public final class i
   implements c
 {
   private final String TAG;
-  private final RecyclerView.a<?> gnR;
-  private String pRQ;
-  public int pRR;
-  private boolean pRS;
-  private final h pRT;
-  private final LinkedList<com.tencent.mm.sticker.c> pRo;
+  private final RecyclerView.a<?> gqn;
+  private final LinkedList<com.tencent.mm.sticker.c> pXT;
+  private String pYv;
+  public int pYw;
+  private boolean pYx;
+  private final h pYy;
   
   public i(h paramh, RecyclerView.a<?> parama)
   {
     AppMethodBeat.i(258);
-    this.pRT = paramh;
-    this.gnR = parama;
+    this.pYy = paramh;
+    this.gqn = parama;
     this.TAG = "MicroMsg.StickerRecommendData";
-    this.pRo = new LinkedList();
-    this.pRR = 1;
-    this.pRS = true;
+    this.pXT = new LinkedList();
+    this.pYw = 1;
+    this.pYx = true;
     AppMethodBeat.o(258);
   }
   
@@ -41,12 +41,12 @@ public final class i
     int j = 0;
     AppMethodBeat.i(253);
     p.h(paramList, "lensList");
-    ad.i(this.TAG, "updateData: " + paramList.size() + ", " + bt.flS());
-    this.pRo.clear();
-    this.pRo.addAll((Collection)paramList);
-    this.pRT.V((List)this.pRo);
+    ae.i(this.TAG, "updateData: " + paramList.size() + ", " + bu.fpN());
+    this.pXT.clear();
+    this.pXT.addAll((Collection)paramList);
+    this.pYy.V((List)this.pXT);
     int i;
-    if (this.pRS)
+    if (this.pYx)
     {
       if (((Collection)paramList).isEmpty()) {
         break label147;
@@ -54,11 +54,11 @@ public final class i
       i = 1;
       if (i != 0)
       {
-        if (this.pRQ != null) {
+        if (this.pYv != null) {
           break label152;
         }
-        j = this.pRR;
-        this.pRS = false;
+        j = this.pYw;
+        this.pYx = false;
       }
     }
     label147:
@@ -67,7 +67,7 @@ public final class i
     label219:
     for (;;)
     {
-      this.pRT.Cq(j);
+      this.pYy.CC(j);
       AppMethodBeat.o(253);
       return;
       i = 0;
@@ -75,14 +75,14 @@ public final class i
       paramList = paramList.iterator();
       i = 0;
       if (paramList.hasNext()) {
-        if (!p.i(((com.tencent.mm.sticker.c)paramList.next()).IlG.Geb, this.pRQ)) {}
+        if (!p.i(((com.tencent.mm.sticker.c)paramList.next()).IFR.GwI, this.pYv)) {}
       }
       for (;;)
       {
         if (i <= 0) {
           break label219;
         }
-        this.pRS = false;
+        this.pYx = false;
         j = i;
         break;
         i += 1;
@@ -92,43 +92,43 @@ public final class i
     }
   }
   
-  public final void fq(int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(254);
-    this.gnR.ar(paramInt1, paramInt2);
-    AppMethodBeat.o(254);
-  }
-  
   public final void fr(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(255);
-    this.gnR.as(paramInt1, paramInt2);
-    AppMethodBeat.o(255);
+    AppMethodBeat.i(254);
+    this.gqn.ar(paramInt1, paramInt2);
+    AppMethodBeat.o(254);
   }
   
   public final void fs(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(256);
-    this.gnR.aq(paramInt1, paramInt2);
-    AppMethodBeat.o(256);
+    AppMethodBeat.i(255);
+    this.gqn.as(paramInt1, paramInt2);
+    AppMethodBeat.o(255);
   }
   
   public final void ft(int paramInt1, int paramInt2)
   {
+    AppMethodBeat.i(256);
+    this.gqn.aq(paramInt1, paramInt2);
+    AppMethodBeat.o(256);
+  }
+  
+  public final void fu(int paramInt1, int paramInt2)
+  {
     AppMethodBeat.i(257);
-    this.gnR.ap(paramInt1, paramInt2);
+    this.gqn.ap(paramInt1, paramInt2);
     AppMethodBeat.o(257);
   }
   
   public final void setSelection(String paramString)
   {
-    this.pRQ = paramString;
-    this.pRS = true;
+    this.pYv = paramString;
+    this.pYx = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.emojicapture.model.a.i
  * JD-Core Version:    0.7.0.1
  */

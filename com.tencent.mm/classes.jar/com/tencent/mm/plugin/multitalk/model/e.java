@@ -8,33 +8,35 @@ public abstract interface e
   
   public abstract void a(i parami);
   
-  public abstract void ddn();
+  public abstract void dgf();
   
-  public abstract void ddo();
+  public abstract void dgg();
   
-  public abstract void dlr();
+  public abstract void dor();
   
-  public abstract boolean doW();
+  public abstract boolean dsg();
   
-  public abstract void dpb();
+  public abstract void dsl();
   
-  public abstract void dpc();
+  public abstract void dsm();
   
-  public abstract void dpd();
+  public abstract void dsn();
   
-  public abstract void gE(int paramInt1, int paramInt2);
+  public abstract void dso();
   
-  public abstract void oG(boolean paramBoolean);
+  public abstract void gF(int paramInt1, int paramInt2);
   
-  public abstract void oH(boolean paramBoolean);
+  public abstract void oN(boolean paramBoolean);
   
-  public abstract void oI(boolean paramBoolean);
+  public abstract void oO(boolean paramBoolean);
+  
+  public abstract void oP(boolean paramBoolean);
   
   public abstract void onError(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.multitalk.model.e
  * JD-Core Version:    0.7.0.1
  */

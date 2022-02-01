@@ -6,7 +6,7 @@ import junit.framework.Assert;
 
 public final class e<T>
 {
-  private volatile T gyb;
+  private volatile T gAI;
   private Class<T> targetClass;
   
   public e(Class<T> paramClass)
@@ -20,13 +20,13 @@ public final class e<T>
   public final T get()
   {
     AppMethodBeat.i(158800);
-    if (this.gyb == null) {}
+    if (this.gAI == null) {}
     try
     {
-      if (this.gyb == null) {
-        this.gyb = b.H(this.targetClass);
+      if (this.gAI == null) {
+        this.gAI = b.H(this.targetClass);
       }
-      Object localObject1 = this.gyb;
+      Object localObject1 = this.gAI;
       AppMethodBeat.o(158800);
       return localObject1;
     }

@@ -4,12 +4,12 @@ import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.vq;
-import com.tencent.mm.g.b.a.gx;
+import com.tencent.mm.g.a.vu;
+import com.tencent.mm.g.b.a.gz;
 import com.tencent.mm.plugin.appbrand.appusage.AppBrandRecentTaskInfo;
 import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.LinkedList;
@@ -18,12 +18,12 @@ import org.apache.commons.b.g;
 
 final class p
 {
-  boolean mMj = false;
-  private Intent mMk = null;
-  long mMl;
-  gx mMm = null;
-  LinkedHashSet<AppBrandRecentTaskInfo> mMn = null;
-  c<vq> mMo;
+  boolean mRm = false;
+  private Intent mRn = null;
+  long mRo;
+  gz mRp = null;
+  LinkedHashSet<AppBrandRecentTaskInfo> mRq = null;
+  c<vu> mRr;
   
   private static int U(Intent paramIntent)
   {
@@ -35,7 +35,7 @@ final class p
       if (paramIntent.getComponent() != null)
       {
         String str = paramIntent.getComponent().getShortClassName();
-        boolean bool = bt.isNullOrNil(str);
+        boolean bool = bu.isNullOrNil(str);
         if (bool)
         {
           AppMethodBeat.o(49282);
@@ -69,7 +69,7 @@ final class p
     }
     catch (Exception paramIntent)
     {
-      ad.e("MicroMsg.AppBrand.RecentsReporter", "makeFromMainFrameExitReportLeaveType e=%s", new Object[] { paramIntent });
+      ae.e("MicroMsg.AppBrand.RecentsReporter", "makeFromMainFrameExitReportLeaveType e=%s", new Object[] { paramIntent });
       AppMethodBeat.o(49282);
     }
     return 0;
@@ -77,34 +77,34 @@ final class p
   
   final void V(Intent paramIntent)
   {
-    this.mMk = paramIntent;
-    this.mMj = true;
+    this.mRn = paramIntent;
+    this.mRm = true;
   }
   
   final void a(String paramString, Activity paramActivity)
   {
     AppMethodBeat.i(49281);
-    ad.d("MicroMsg.AppBrand.RecentsReporter", "reportExitAction reason[%s]", new Object[] { paramString });
-    if (this.mMm != null)
+    ae.d("MicroMsg.AppBrand.RecentsReporter", "reportExitAction reason[%s]", new Object[] { paramString });
+    if (this.mRp != null)
     {
-      long l = paramActivity.getIntent().getLongExtra("extra_start_activity_click_timestamp_ms", this.mMl);
-      paramActivity = this.mMm;
-      paramActivity.eqI = l;
-      paramActivity.eqJ = bt.flT();
+      long l = paramActivity.getIntent().getLongExtra("extra_start_activity_click_timestamp_ms", this.mRo);
+      paramActivity = this.mRp;
+      paramActivity.esp = l;
+      paramActivity.esq = bu.fpO();
       LinkedList localLinkedList;
       ArrayList localArrayList;
       int i;
-      if (paramActivity.eqK <= 0L)
+      if (paramActivity.esr <= 0L)
       {
         if ("onDestroy".equals(paramString)) {
-          paramActivity.eqK = 1L;
+          paramActivity.esr = 1L;
         }
       }
       else
       {
         paramString = new String[4];
         localLinkedList = new LinkedList();
-        localArrayList = new ArrayList(this.mMn);
+        localArrayList = new ArrayList(this.mRq);
         i = 0;
       }
       for (;;)
@@ -121,7 +121,7 @@ final class p
             localLinkedList.addLast(((AppBrandRecentTaskInfo)localArrayList.get(j)).appId);
             j += 1;
             continue;
-            paramActivity.eqK = U(this.mMk);
+            paramActivity.esr = U(this.mRn);
             break;
           }
         }
@@ -129,24 +129,24 @@ final class p
         i += 1;
       }
       label204:
-      this.mMm.pP(paramString[0]);
-      this.mMm.pQ(paramString[1]);
-      this.mMm.pR(paramString[2]);
-      this.mMm.pS(paramString[3]);
-      paramActivity.aLk();
-      this.mMm = null;
+      this.mRp.qk(paramString[0]);
+      this.mRp.ql(paramString[1]);
+      this.mRp.qm(paramString[2]);
+      this.mRp.qn(paramString[3]);
+      paramActivity.aLH();
+      this.mRp = null;
     }
-    if (this.mMo != null)
+    if (this.mRr != null)
     {
-      this.mMo.dead();
-      this.mMo = null;
+      this.mRr.dead();
+      this.mRr = null;
     }
     AppMethodBeat.o(49281);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.recents.p
  * JD-Core Version:    0.7.0.1
  */

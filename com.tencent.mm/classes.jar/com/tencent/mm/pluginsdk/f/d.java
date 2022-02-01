@@ -2,16 +2,16 @@ package com.tencent.mm.pluginsdk.f;
 
 public final class d
 {
-  public a EKE;
-  public String EKF = "";
-  public String EKG = "";
-  public long EKH = 0L;
-  public long EKI = 0L;
+  public a Fdc;
+  public String Fdd = "";
+  public String Fde = "";
+  public long Fdf = 0L;
+  public long Fdg = 0L;
   public long endTime;
   public int fileType;
-  public long hZF = -1L;
-  public String hZx = "";
-  public String hdP = "";
+  public String hgD = "";
+  public String icp = "";
+  public long icx = -1L;
   public int scene;
   public long startTime;
   public String thumbPath = "";

@@ -8,11 +8,11 @@ import com.tencent.luggage.d.b.a;
 import com.tencent.luggage.d.h;
 import com.tencent.luggage.d.s;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bs.d;
+import com.tencent.mm.br.d;
 import com.tencent.mm.plugin.webview.luggage.jsapi.bq;
 import com.tencent.mm.plugin.webview.luggage.jsapi.bq.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.ArrayList;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -25,13 +25,13 @@ public class b
   public final void b(b.a parama)
   {
     AppMethodBeat.i(8824);
-    ad.i("MicroMsg.JsApiImagePreview", "invokeInOwn");
+    ae.i("MicroMsg.JsApiImagePreview", "invokeInOwn");
     Object localObject1 = parama.chh.cgn.optString("current");
     Object localObject2 = parama.chh.cgn.optJSONArray("urls");
     Object localObject3 = new ArrayList();
     if ((localObject2 == null) || (((JSONArray)localObject2).length() == 0))
     {
-      ad.e("MicroMsg.JsApiImagePreview", "fail, urls is null");
+      ae.e("MicroMsg.JsApiImagePreview", "fail, urls is null");
       parama.a("invalid_url", null);
       AppMethodBeat.o(8824);
       return;
@@ -40,8 +40,8 @@ public class b
     if (i < ((JSONArray)localObject2).length())
     {
       String str = ((JSONArray)localObject2).optString(i);
-      if ((bt.isNullOrNil(str)) || (str.equalsIgnoreCase("null"))) {
-        ad.e("MicroMsg.JsApiImagePreview", "null url, i = %d", new Object[] { Integer.valueOf(i) });
+      if ((bu.isNullOrNil(str)) || (str.equalsIgnoreCase("null"))) {
+        ae.e("MicroMsg.JsApiImagePreview", "null url, i = %d", new Object[] { Integer.valueOf(i) });
       }
       for (;;)
       {
@@ -51,7 +51,7 @@ public class b
       }
     }
     localObject2 = (String[])((ArrayList)localObject3).toArray(new String[((ArrayList)localObject3).size()]);
-    if (bt.isNullOrNil((String)localObject1)) {
+    if (bu.isNullOrNil((String)localObject1)) {
       localObject1 = localObject2[0];
     }
     for (;;)
@@ -70,7 +70,7 @@ public class b
     }
   }
   
-  public final int ccO()
+  public final int ced()
   {
     return 0;
   }

@@ -1,21 +1,21 @@
 package com.tencent.mm.plugin.facedetect.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.l;
+import com.tencent.mm.ak.l;
 import com.tencent.mm.protocal.l.d;
 import com.tencent.mm.protocal.l.e;
 
 final class h
   extends l
 {
-  i.a rfX;
-  i.b rfY;
+  i.a roa;
+  i.b rob;
   
   h()
   {
     AppMethodBeat.i(103590);
-    this.rfX = new i.a();
-    this.rfY = new i.b();
+    this.roa = new i.a();
+    this.rob = new i.b();
     AppMethodBeat.o(103590);
   }
   
@@ -26,12 +26,12 @@ final class h
   
   public final l.d getReqObjImp()
   {
-    return this.rfX;
+    return this.roa;
   }
   
   public final l.e getRespObj()
   {
-    return this.rfY;
+    return this.rob;
   }
   
   public final int getType()

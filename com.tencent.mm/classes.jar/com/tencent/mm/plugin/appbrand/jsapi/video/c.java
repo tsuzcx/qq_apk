@@ -2,41 +2,40 @@ package com.tencent.mm.plugin.appbrand.jsapi.video;
 
 import android.net.Uri;
 import com.google.android.exoplayer2.h.a.a.b;
-import com.google.android.exoplayer2.h.a.d.a;
+import com.google.android.exoplayer2.h.a.e;
 import com.google.android.exoplayer2.h.a.f;
 import com.google.android.exoplayer2.h.a.h;
 import com.google.android.exoplayer2.h.a.h.a;
-import com.google.android.exoplayer2.h.a.k;
 import com.google.android.exoplayer2.h.a.l;
 import com.google.android.exoplayer2.h.f.a;
 import com.google.android.exoplayer2.h.g.a;
 import com.google.android.exoplayer2.h.j;
 import com.google.android.exoplayer2.h.r;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.z.m;
-import com.tencent.mm.plugin.appbrand.z.m.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.vfs.i;
-import com.tencent.mm.vfs.q;
+import com.tencent.mm.plugin.appbrand.y.m;
+import com.tencent.mm.plugin.appbrand.y.m.a;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.vfs.o;
+import com.tencent.mm.vfs.w;
 import java.io.File;
 import java.io.IOException;
 
 public class c
   implements com.tencent.mm.kernel.c.b, g
 {
-  private static c llH;
+  private static c lqh;
   private com.google.android.exoplayer2.h.a.a bFC;
-  com.google.android.exoplayer2.h.a.e llG;
+  e lqg;
   
   private c()
   {
-    AppMethodBeat.i(205933);
-    String str3 = aj.getProcessName();
+    AppMethodBeat.i(210960);
+    String str3 = ak.getProcessName();
     String str2 = "main";
     String str1 = str2;
-    if (!bt.isNullOrNil(str3))
+    if (!bu.isNullOrNil(str3))
     {
       int i = str3.indexOf(":");
       str1 = str2;
@@ -48,7 +47,7 @@ public class c
         }
       }
     }
-    str3 = com.tencent.mm.loader.j.b.arU();
+    str3 = com.tencent.mm.loader.j.b.asj();
     str2 = str3;
     if (!str3.endsWith("/")) {
       str2 = str3 + "/";
@@ -56,8 +55,8 @@ public class c
     str2 = str2 + "wxavideocache/";
     try
     {
-      i.cZ(str2, true);
-      str3 = com.tencent.mm.loader.j.b.arU();
+      o.dd(str2, true);
+      str3 = com.tencent.mm.loader.j.b.asj();
       str2 = str3;
       if (!str3.endsWith("/")) {
         str2 = str3 + "/";
@@ -70,102 +69,94 @@ public class c
       {
         try
         {
-          if (i.aYg(str1)) {
+          if (o.aZI(str1)) {
             break;
           }
-          ad.w("MicroMsg.SameLayer.ExoVideoCacheHandler", "mkdirs fail 1, maybe file exist");
-          if (new com.tencent.mm.vfs.e(str1).isDirectory()) {
+          ae.w("MicroMsg.SameLayer.ExoVideoCacheHandler", "mkdirs fail 1, maybe file exist");
+          if (new com.tencent.mm.vfs.k(str1).isDirectory()) {
             break;
           }
-          ad.w("MicroMsg.SameLayer.ExoVideoCacheHandler", "mkdirs fail, not dir");
-          i.deleteFile(str1);
-          if (i.aYg(str1)) {
+          ae.w("MicroMsg.SameLayer.ExoVideoCacheHandler", "mkdirs fail, not dir");
+          o.deleteFile(str1);
+          if (o.aZI(str1)) {
             break;
           }
-          ad.w("MicroMsg.SameLayer.ExoVideoCacheHandler", "mkdirs fail 2, no space?");
-          AppMethodBeat.o(205933);
+          ae.w("MicroMsg.SameLayer.ExoVideoCacheHandler", "mkdirs fail 2, no space?");
+          AppMethodBeat.o(210960);
           return;
         }
         catch (Throwable localThrowable1)
         {
-          ad.e("MicroMsg.SameLayer.ExoVideoCacheHandler", "mkdirs exception:%s", new Object[] { localThrowable1 });
-          AppMethodBeat.o(205933);
+          ae.e("MicroMsg.SameLayer.ExoVideoCacheHandler", "mkdirs exception:%s", new Object[] { localThrowable1 });
+          AppMethodBeat.o(210960);
           return;
         }
         localThrowable2 = localThrowable2;
-        ad.e("MicroMsg.SameLayer.ExoVideoCacheHandler", "cleanOldVideoCacheFolder exception:%s", new Object[] { localThrowable2 });
+        ae.e("MicroMsg.SameLayer.ExoVideoCacheHandler", "cleanOldVideoCacheFolder exception:%s", new Object[] { localThrowable2 });
       }
     }
-    Object localObject1 = new com.tencent.mm.vfs.e(localThrowable1);
-    Object localObject2 = new k();
-    this.bFC = new l(new File(i.k(q.B(((com.tencent.mm.vfs.e)localObject1).fOK()), true)), (f)localObject2);
-    ad.i("MicroMsg.SameLayer.ExoVideoCacheHandler", "initVideoCacheDataSource, cacheFolder:%s", new Object[] { q.B(((com.tencent.mm.vfs.e)localObject1).fOK()) });
-    localObject1 = com.tencent.mm.plugin.appbrand.jsapi.video.e.b.d.dz(aj.getContext());
+    Object localObject1 = new com.tencent.mm.vfs.k(localThrowable1);
+    Object localObject2 = new com.google.android.exoplayer2.h.a.k();
+    this.bFC = new l(new File(o.k(w.B(((com.tencent.mm.vfs.k)localObject1).fTh()), true)), (f)localObject2);
+    ae.i("MicroMsg.SameLayer.ExoVideoCacheHandler", "initVideoCacheDataSource, cacheFolder:%s", new Object[] { w.B(((com.tencent.mm.vfs.k)localObject1).fTh()) });
+    localObject1 = com.tencent.mm.plugin.appbrand.jsapi.video.e.b.d.dD(ak.getContext());
     localObject2 = new com.google.android.exoplayer2.h.a.c(this.bFC);
-    this.llG = new com.google.android.exoplayer2.h.a.e(this.bFC, (g.a)localObject1, new r(), (f.a)localObject2, new d.a()
-    {
-      public final void k(long paramAnonymousLong1, long paramAnonymousLong2)
-      {
-        AppMethodBeat.i(205925);
-        ad.d("MicroMsg.SameLayer.ExoVideoCacheHandler", "onCachedBytesRead, cacheSpace:%s, totalCachedBytesRead:%s", new Object[] { Long.valueOf(paramAnonymousLong1), Long.valueOf(paramAnonymousLong2) });
-        AppMethodBeat.o(205925);
-      }
-    });
-    ad.i("MicroMsg.SameLayer.ExoVideoCacheHandler", "initVideoCacheDataSource, cache:%s", new Object[] { this.bFC });
-    AppMethodBeat.o(205933);
+    this.lqg = new e(this.bFC, (g.a)localObject1, new r(), (f.a)localObject2, new c.1(this));
+    ae.i("MicroMsg.SameLayer.ExoVideoCacheHandler", "initVideoCacheDataSource, cache:%s", new Object[] { this.bFC });
+    AppMethodBeat.o(210960);
   }
   
-  public static c bnd()
+  public static c bnN()
   {
-    AppMethodBeat.i(205932);
-    if (llH == null) {}
+    AppMethodBeat.i(210959);
+    if (lqh == null) {}
     try
     {
-      if (llH == null) {
-        llH = new c();
+      if (lqh == null) {
+        lqh = new c();
       }
-      c localc = llH;
-      AppMethodBeat.o(205932);
+      c localc = lqh;
+      AppMethodBeat.o(210959);
       return localc;
     }
     finally
     {
-      AppMethodBeat.o(205932);
+      AppMethodBeat.o(210959);
     }
   }
   
-  public final void akx()
+  public final void akM()
   {
-    AppMethodBeat.i(205930);
-    ad.i("MicroMsg.SameLayer.ExoVideoCacheHandler", "register VideoCacheService#ExoVideoCacheHandler");
-    AppMethodBeat.o(205930);
+    AppMethodBeat.i(210957);
+    ae.i("MicroMsg.SameLayer.ExoVideoCacheHandler", "register VideoCacheService#ExoVideoCacheHandler");
+    AppMethodBeat.o(210957);
   }
   
-  public final void aky()
+  public final void akN()
   {
-    AppMethodBeat.i(205931);
-    ad.i("MicroMsg.SameLayer.ExoVideoCacheHandler", "unregister VideoCacheService#ExoVideoCacheHandler");
-    AppMethodBeat.o(205931);
+    AppMethodBeat.i(210958);
+    ae.i("MicroMsg.SameLayer.ExoVideoCacheHandler", "unregister VideoCacheService#ExoVideoCacheHandler");
+    AppMethodBeat.o(210958);
   }
   
-  public final g.a bne()
+  public final g.a bnO()
   {
-    return this.llG;
+    return this.lqg;
   }
   
   public final long f(String paramString, long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(205935);
+    AppMethodBeat.i(210962);
     if (this.bFC == null)
     {
-      ad.w("MicroMsg.SameLayer.ExoVideoCacheHandler", "getCachedBytes, cache is null");
-      AppMethodBeat.o(205935);
+      ae.w("MicroMsg.SameLayer.ExoVideoCacheHandler", "getCachedBytes, cache is null");
+      AppMethodBeat.o(210962);
       return 0L;
     }
     String str = Uri.parse(paramString).toString();
     long l = this.bFC.f(str, paramLong1, paramLong2);
-    ad.i("MicroMsg.SameLayer.ExoVideoCacheHandler", "getCachedBytes, cachedSize:%s, position:%s, length:%s, url:%s", new Object[] { Long.valueOf(l), Long.valueOf(paramLong1), Long.valueOf(paramLong2), paramString });
-    AppMethodBeat.o(205935);
+    ae.i("MicroMsg.SameLayer.ExoVideoCacheHandler", "getCachedBytes, cachedSize:%s, position:%s, length:%s, url:%s", new Object[] { Long.valueOf(l), Long.valueOf(paramLong1), Long.valueOf(paramLong2), paramString });
+    AppMethodBeat.o(210962);
     return l;
   }
   
@@ -176,43 +167,43 @@ public class c
   
   public final void o(final String paramString, final long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(205934);
+    AppMethodBeat.i(210961);
     if (this.bFC == null)
     {
-      ad.w("MicroMsg.SameLayer.ExoVideoCacheHandler", "cache, cache is null");
-      AppMethodBeat.o(205934);
+      ae.w("MicroMsg.SameLayer.ExoVideoCacheHandler", "cache, cache is null");
+      AppMethodBeat.o(210961);
       return;
     }
-    m.bBp().postToWorker(new Runnable()
+    m.bCj().postToWorker(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(205929);
+        AppMethodBeat.i(210956);
         Object localObject2 = Uri.parse(paramString);
         Object localObject3 = ((Uri)localObject2).toString();
-        localObject2 = new j((Uri)localObject2, paramLong1, this.llK, (String)localObject3);
+        localObject2 = new j((Uri)localObject2, paramLong1, this.lqk, (String)localObject3);
         h.a locala = new h.a();
         c.a(c.this).a((String)localObject3, new a.b()
         {
           public final void a(com.google.android.exoplayer2.h.a.a paramAnonymous2a, com.google.android.exoplayer2.h.a.g paramAnonymous2g)
           {
-            AppMethodBeat.i(205926);
-            ad.d("MicroMsg.SameLayer.ExoVideoCacheHandler", "onSpanAdded, cacheSpan isCached:%s [%s, %s]", new Object[] { Boolean.valueOf(paramAnonymous2g.bFZ), Long.valueOf(paramAnonymous2g.position), Long.valueOf(paramAnonymous2g.length) });
-            AppMethodBeat.o(205926);
+            AppMethodBeat.i(210953);
+            ae.d("MicroMsg.SameLayer.ExoVideoCacheHandler", "onSpanAdded, cacheSpan isCached:%s [%s, %s]", new Object[] { Boolean.valueOf(paramAnonymous2g.bFZ), Long.valueOf(paramAnonymous2g.position), Long.valueOf(paramAnonymous2g.length) });
+            AppMethodBeat.o(210953);
           }
           
           public final void a(com.google.android.exoplayer2.h.a.a paramAnonymous2a, com.google.android.exoplayer2.h.a.g paramAnonymous2g1, com.google.android.exoplayer2.h.a.g paramAnonymous2g2)
           {
-            AppMethodBeat.i(205928);
-            ad.d("MicroMsg.SameLayer.ExoVideoCacheHandler", "onSpanTouched, cacheSpan isCached:%s [%s, %s]", new Object[] { Boolean.valueOf(paramAnonymous2g1.bFZ), Long.valueOf(paramAnonymous2g1.position), Long.valueOf(paramAnonymous2g1.length) });
-            AppMethodBeat.o(205928);
+            AppMethodBeat.i(210955);
+            ae.d("MicroMsg.SameLayer.ExoVideoCacheHandler", "onSpanTouched, cacheSpan isCached:%s [%s, %s]", new Object[] { Boolean.valueOf(paramAnonymous2g1.bFZ), Long.valueOf(paramAnonymous2g1.position), Long.valueOf(paramAnonymous2g1.length) });
+            AppMethodBeat.o(210955);
           }
           
           public final void c(com.google.android.exoplayer2.h.a.g paramAnonymous2g)
           {
-            AppMethodBeat.i(205927);
-            ad.d("MicroMsg.SameLayer.ExoVideoCacheHandler", "onSpanRemoved, cacheSpan isCached:%s [%s, %s]", new Object[] { Boolean.valueOf(paramAnonymous2g.bFZ), Long.valueOf(paramAnonymous2g.position), Long.valueOf(paramAnonymous2g.length) });
-            AppMethodBeat.o(205927);
+            AppMethodBeat.i(210954);
+            ae.d("MicroMsg.SameLayer.ExoVideoCacheHandler", "onSpanRemoved, cacheSpan isCached:%s [%s, %s]", new Object[] { Boolean.valueOf(paramAnonymous2g.bFZ), Long.valueOf(paramAnonymous2g.position), Long.valueOf(paramAnonymous2g.length) });
+            AppMethodBeat.o(210954);
           }
         });
         long l3;
@@ -222,7 +213,7 @@ public class c
         {
           try
           {
-            ad.i("MicroMsg.SameLayer.ExoVideoCacheHandler", "cache, position:%s, length:%s, url:%s", new Object[] { Long.valueOf(paramLong1), Long.valueOf(this.llK), paramString });
+            ae.i("MicroMsg.SameLayer.ExoVideoCacheHandler", "cache, position:%s, length:%s, url:%s", new Object[] { Long.valueOf(paramLong1), Long.valueOf(this.lqk), paramString });
             localObject3 = c.a(c.this);
             com.google.android.exoplayer2.h.a.d locald = c.b(c.this).wJ();
             byte[] arrayOfByte = new byte[131072];
@@ -278,32 +269,32 @@ public class c
                 break label552;
               }
               label362:
-              AppMethodBeat.o(205929);
+              AppMethodBeat.o(210956);
               return;
             }
           }
           catch (IOException localIOException)
           {
-            ad.printErrStackTrace("MicroMsg.SameLayer.ExoVideoCacheHandler", localIOException, "cache IOException", new Object[0]);
-            AppMethodBeat.o(205929);
+            ae.printErrStackTrace("MicroMsg.SameLayer.ExoVideoCacheHandler", localIOException, "cache IOException", new Object[0]);
+            AppMethodBeat.o(210956);
             return;
           }
           catch (IllegalArgumentException localIllegalArgumentException)
           {
-            ad.printErrStackTrace("MicroMsg.SameLayer.ExoVideoCacheHandler", localIllegalArgumentException, "cache IllegalArgumentException", new Object[0]);
-            AppMethodBeat.o(205929);
+            ae.printErrStackTrace("MicroMsg.SameLayer.ExoVideoCacheHandler", localIllegalArgumentException, "cache IllegalArgumentException", new Object[0]);
+            AppMethodBeat.o(210956);
             return;
           }
           catch (InterruptedException localInterruptedException)
           {
-            ad.printErrStackTrace("MicroMsg.SameLayer.ExoVideoCacheHandler", localInterruptedException, "cache InterruptedException", new Object[0]);
-            AppMethodBeat.o(205929);
+            ae.printErrStackTrace("MicroMsg.SameLayer.ExoVideoCacheHandler", localInterruptedException, "cache InterruptedException", new Object[0]);
+            AppMethodBeat.o(210956);
             return;
           }
           catch (Exception localException)
           {
-            ad.printErrStackTrace("MicroMsg.SameLayer.ExoVideoCacheHandler", localException, "cache Exception", new Object[0]);
-            AppMethodBeat.o(205929);
+            ae.printErrStackTrace("MicroMsg.SameLayer.ExoVideoCacheHandler", localException, "cache Exception", new Object[0]);
+            AppMethodBeat.o(210956);
             return;
           }
           label452:
@@ -359,7 +350,7 @@ public class c
         }
       }
     });
-    AppMethodBeat.o(205934);
+    AppMethodBeat.o(210961);
   }
 }
 

@@ -2,14 +2,14 @@ package com.tencent.mm.console.a;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bs.d;
+import com.tencent.mm.br.d;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.pluginsdk.cmd.b;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.al.a;
-import com.tencent.mm.z.c;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.aj;
+import com.tencent.mm.storage.am.a;
+import com.tencent.mm.y.c;
 
 public final class l
   implements com.tencent.mm.pluginsdk.cmd.a
@@ -77,24 +77,24 @@ public final class l
     d.Q(paramContext, "wallet", ".pwd.ui.WalletUniversalPayOrderUI");
     AppMethodBeat.o(20191);
     return true;
-    g.ajC().ajl().set(al.a.ICu, Integer.valueOf(1));
+    g.ajR().ajA().set(am.a.IWU, Integer.valueOf(1));
     AppMethodBeat.o(20191);
     return true;
-    c.aht().b(al.a.ICh, true);
+    c.ahI().b(am.a.IWG, true);
     AppMethodBeat.o(20191);
     return true;
     if (paramArrayOfString.length >= 3)
     {
-      i = bt.getInt(paramArrayOfString[2], 0);
-      g.ajC().ajl().set(al.a.ICA, Integer.valueOf(i));
+      i = bu.getInt(paramArrayOfString[2], 0);
+      g.ajR().ajA().set(am.a.IXa, Integer.valueOf(i));
     }
     AppMethodBeat.o(20191);
     return true;
     ((com.tencent.mm.plugin.wxpay.a.a)g.ad(com.tencent.mm.plugin.wxpay.a.a.class)).doRedPacketPreviewLoading(paramContext, "");
     AppMethodBeat.o(20191);
     return true;
-    g.ajC().ajl().set(al.a.ICJ, Integer.valueOf(0));
-    g.ajC().ajl().set(al.a.ICK, Integer.valueOf(0));
+    g.ajR().ajA().set(am.a.IXj, Integer.valueOf(0));
+    g.ajR().ajA().set(am.a.IXk, Integer.valueOf(0));
     AppMethodBeat.o(20191);
     return true;
   }

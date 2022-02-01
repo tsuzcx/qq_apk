@@ -1,11 +1,9 @@
 package com.tencent.mm.plugin.brandservice.ui.timeline.preload;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.dnj;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.i;
+import com.tencent.mm.protocal.protobuf.dog;
+import com.tencent.mm.sdk.platformtools.ae;
 import d.a.e;
-import d.a.j;
 import d.f;
 import d.g.a.b;
 import d.g.a.m;
@@ -23,92 +21,92 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/Kv15862;", "", "()V", "MAX_LIMIT", "", "MM_WEBIVEW_PRELOAD_LOAD_TIME", "", "TAG", "", "a8KeyFinishTime", "bindWebViewCostTime", "cacheItemShowType", "", "getCacheItemShowType", "()Z", "setCacheItemShowType", "(Z)V", "clientCachedTime", "getClientCachedTime", "()I", "setClientCachedTime", "(I)V", "clientFirstFinishTime", "contentId", "getContentId", "()Ljava/lang/String;", "contentId$delegate", "Lkotlin/Lazy;", "createWebViewCostTime", "ctWebCompile", "getCtWebCompile", "()J", "setCtWebCompile", "(J)V", "ctWebFirstScreen", "getCtWebFirstScreen", "setCtWebFirstScreen", "dataCachedTime", "getDataCachedTime", "dataCachedTime$delegate", "dataVersion", "getDataVersion", "dataVersion$delegate", "etWebFirstScreen", "getEtWebFirstScreen", "setEtWebFirstScreen", "evalCostTime", "getEvalCostTime", "setEvalCostTime", "evalPageDataCostTime", "getA8KeyCostTime", "getPageDataCostTime", "hasAuth", "getHasAuth", "setHasAuth", "hasInject", "getHasInject", "setHasInject", "injectCostTime", "isInjectSuccess", "setInjectSuccess", "isMounted", "setMounted", "isOnlineWebView", "setOnlineWebView", "isPrefixMP", "setPrefixMP", "isSyncGetPageData", "setSyncGetPageData", "isTimeoutRedirect", "setTimeoutRedirect", "isTmplReady", "setTmplReady", "isWebViewCreated", "setWebViewCreated", "isWebViewPreUpdated", "setWebViewPreUpdated", "isWebViewProcessCreated", "setWebViewProcessCreated", "isZip", "setZip", "key", "getKey", "setKey", "(Ljava/lang/String;)V", "openScene", "getOpenScene", "setOpenScene", "pageDataSize", "getPageDataSize", "pageDataSize$delegate", "pageFinishTime", "pageFinishTimeType", "pageFinishTimestamp", "relaunchState", "getRelaunchState", "setRelaunchState", "speedMatrix", "", "getSpeedMatrix", "()[Ljava/lang/Long;", "speedMatrix$delegate", "tmplParams", "Lcom/tencent/mm/protocal/protobuf/TmplParams;", "getTmplParams", "()Lcom/tencent/mm/protocal/protobuf/TmplParams;", "setTmplParams", "(Lcom/tencent/mm/protocal/protobuf/TmplParams;)V", "tsEndAcGetData", "getTsEndAcGetData", "setTsEndAcGetData", "tsEndGetA8Key", "getTsEndGetA8Key", "setTsEndGetA8Key", "tsEndGetData", "getTsEndGetData", "setTsEndGetData", "tsEndInject", "getTsEndInject", "setTsEndInject", "tsEndNotifyPage", "getTsEndNotifyPage", "setTsEndNotifyPage", "tsEndPostBind", "getTsEndPostBind", "setTsEndPostBind", "tsEndProcessInit", "getTsEndProcessInit", "setTsEndProcessInit", "tsEndTmplLoad", "getTsEndTmplLoad", "setTsEndTmplLoad", "tsEndUIInit", "getTsEndUIInit", "setTsEndUIInit", "tsEndWebGetData", "getTsEndWebGetData", "setTsEndWebGetData", "tsEndWebInject", "getTsEndWebInject", "setTsEndWebInject", "tsEndWebViewCreate", "getTsEndWebViewCreate", "setTsEndWebViewCreate", "tsStartAcGetData", "getTsStartAcGetData", "setTsStartAcGetData", "tsStartEndBind", "getTsStartEndBind", "setTsStartEndBind", "tsStartGetA8Key", "getTsStartGetA8Key", "setTsStartGetA8Key", "tsStartGetData", "getTsStartGetData", "setTsStartGetData", "tsStartInject", "getTsStartInject", "setTsStartInject", "tsStartPage", "getTsStartPage", "setTsStartPage", "tsStartPostBind", "getTsStartPostBind", "setTsStartPostBind", "tsStartProcessConfiguration", "getTsStartProcessConfiguration", "setTsStartProcessConfiguration", "tsStartProcessDependency", "getTsStartProcessDependency", "setTsStartProcessDependency", "tsStartProcessExecution", "getTsStartProcessExecution", "setTsStartProcessExecution", "tsStartProcessExtensions", "getTsStartProcessExtensions", "setTsStartProcessExtensions", "tsStartProcessHello", "getTsStartProcessHello", "setTsStartProcessHello", "tsStartProcessInit", "getTsStartProcessInit", "setTsStartProcessInit", "tsStartProcessInstall", "getTsStartProcessInstall", "setTsStartProcessInstall", "tsStartProcessTerminate", "getTsStartProcessTerminate", "setTsStartProcessTerminate", "tsStartTmplLoad", "getTsStartTmplLoad", "setTsStartTmplLoad", "tsStartTryBind", "getTsStartTryBind", "setTsStartTryBind", "tsStartUICreate", "getTsStartUICreate", "setTsStartUICreate", "tsStartUIInit", "getTsStartUIInit", "setTsStartUIInit", "tsStartWebViewCreate", "getTsStartWebViewCreate", "setTsStartWebViewCreate", "tsWebFirstScreen", "getTsWebFirstScreen", "setTsWebFirstScreen", "url", "getUrl", "setUrl", "useLocalJs", "getUseLocalJs", "setUseLocalJs", "webReceivePageDataTime", "webviewKind", "getWebviewKind", "setWebviewKind", "webviewProcess", "getWebviewProcess", "webviewProcess$delegate", "printDataState", "printDebugger", "prefix", "", "printProcessState", "printTmplState", "printWebViewState", "report", "", "data", "Lkotlin/Function3;", "", "Lkotlin/Pair;", "toString", "format", "kotlin.jvm.PlatformType", "", "digits", "limit", "toDate", "valid", "verify", "vals", "", "([Ljava/lang/Long;[J)[Ljava/lang/Long;", "Companion", "plugin-brandservice_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/Kv15862;", "", "()V", "MAX_LIMIT", "", "MM_WEBIVEW_PRELOAD_LOAD_TIME", "", "TAG", "", "a8KeyFinishTime", "bindWebViewCostTime", "cacheItemShowType", "", "getCacheItemShowType", "()Z", "setCacheItemShowType", "(Z)V", "clientCachedTime", "getClientCachedTime", "()I", "setClientCachedTime", "(I)V", "clientFirstFinishTime", "contentId", "getContentId", "()Ljava/lang/String;", "contentId$delegate", "Lkotlin/Lazy;", "createWebViewCostTime", "ctWebCompile", "getCtWebCompile", "()J", "setCtWebCompile", "(J)V", "ctWebFirstScreen", "getCtWebFirstScreen", "setCtWebFirstScreen", "dataCachedTime", "getDataCachedTime", "dataCachedTime$delegate", "dataVersion", "getDataVersion", "dataVersion$delegate", "etWebFirstScreen", "getEtWebFirstScreen", "setEtWebFirstScreen", "evalCostTime", "getEvalCostTime", "setEvalCostTime", "evalPageDataCostTime", "getA8KeyCostTime", "getPageDataCostTime", "hasAuth", "getHasAuth", "setHasAuth", "hasInject", "getHasInject", "setHasInject", "injectCostTime", "isInjectSuccess", "setInjectSuccess", "isMounted", "setMounted", "isOnlineWebView", "setOnlineWebView", "isPrefixMP", "setPrefixMP", "isSyncGetPageData", "setSyncGetPageData", "isTimeoutRedirect", "setTimeoutRedirect", "isTmplReady", "setTmplReady", "isWebViewCreated", "setWebViewCreated", "isWebViewPreUpdated", "setWebViewPreUpdated", "isWebViewProcessCreated", "setWebViewProcessCreated", "isZip", "setZip", "key", "getKey", "setKey", "(Ljava/lang/String;)V", "openScene", "getOpenScene", "setOpenScene", "pageDataSize", "getPageDataSize", "pageDataSize$delegate", "pageFinishTime", "pageFinishTimeType", "pageFinishTimestamp", "relaunchState", "getRelaunchState", "setRelaunchState", "speedMatrix", "", "getSpeedMatrix", "()[Ljava/lang/Long;", "speedMatrix$delegate", "tmplParams", "Lcom/tencent/mm/protocal/protobuf/TmplParams;", "getTmplParams", "()Lcom/tencent/mm/protocal/protobuf/TmplParams;", "setTmplParams", "(Lcom/tencent/mm/protocal/protobuf/TmplParams;)V", "tsEndAcGetData", "getTsEndAcGetData", "setTsEndAcGetData", "tsEndGetA8Key", "getTsEndGetA8Key", "setTsEndGetA8Key", "tsEndGetData", "getTsEndGetData", "setTsEndGetData", "tsEndInject", "getTsEndInject", "setTsEndInject", "tsEndNotifyPage", "getTsEndNotifyPage", "setTsEndNotifyPage", "tsEndPostBind", "getTsEndPostBind", "setTsEndPostBind", "tsEndProcessInit", "getTsEndProcessInit", "setTsEndProcessInit", "tsEndTmplLoad", "getTsEndTmplLoad", "setTsEndTmplLoad", "tsEndUIInit", "getTsEndUIInit", "setTsEndUIInit", "tsEndWebGetData", "getTsEndWebGetData", "setTsEndWebGetData", "tsEndWebInject", "getTsEndWebInject", "setTsEndWebInject", "tsEndWebViewCreate", "getTsEndWebViewCreate", "setTsEndWebViewCreate", "tsStartAcGetData", "getTsStartAcGetData", "setTsStartAcGetData", "tsStartEndBind", "getTsStartEndBind", "setTsStartEndBind", "tsStartGetA8Key", "getTsStartGetA8Key", "setTsStartGetA8Key", "tsStartGetData", "getTsStartGetData", "setTsStartGetData", "tsStartInject", "getTsStartInject", "setTsStartInject", "tsStartPage", "getTsStartPage", "setTsStartPage", "tsStartPostBind", "getTsStartPostBind", "setTsStartPostBind", "tsStartProcessConfiguration", "getTsStartProcessConfiguration", "setTsStartProcessConfiguration", "tsStartProcessDependency", "getTsStartProcessDependency", "setTsStartProcessDependency", "tsStartProcessExecution", "getTsStartProcessExecution", "setTsStartProcessExecution", "tsStartProcessExtensions", "getTsStartProcessExtensions", "setTsStartProcessExtensions", "tsStartProcessHello", "getTsStartProcessHello", "setTsStartProcessHello", "tsStartProcessInit", "getTsStartProcessInit", "setTsStartProcessInit", "tsStartProcessInstall", "getTsStartProcessInstall", "setTsStartProcessInstall", "tsStartProcessTerminate", "getTsStartProcessTerminate", "setTsStartProcessTerminate", "tsStartTmplLoad", "getTsStartTmplLoad", "setTsStartTmplLoad", "tsStartTryBind", "getTsStartTryBind", "setTsStartTryBind", "tsStartUICreate", "getTsStartUICreate", "setTsStartUICreate", "tsStartUIInit", "getTsStartUIInit", "setTsStartUIInit", "tsStartWebViewCreate", "getTsStartWebViewCreate", "setTsStartWebViewCreate", "tsWebFirstScreen", "getTsWebFirstScreen", "setTsWebFirstScreen", "url", "getUrl", "setUrl", "useLocalJs", "getUseLocalJs", "setUseLocalJs", "webReceivePageDataTime", "webviewKind", "getWebviewKind", "setWebviewKind", "webviewProcess", "getWebviewProcess", "webviewProcess$delegate", "printDataState", "printDebugger", "prefix", "", "printProcessState", "printTmplState", "printWebViewState", "report", "", "data", "Lkotlin/Function3;", "", "Lkotlin/Pair;", "toString", "format", "kotlin.jvm.PlatformType", "", "digits", "limit", "toDate", "valid", "verify", "vals", "", "([Ljava/lang/Long;[J)[Ljava/lang/Long;", "Companion", "plugin-brandservice_release"})
 public final class g
 {
-  public static final a ojd;
+  public static final a opd;
   private final String TAG;
   private String key;
-  public int nWh;
-  private final int ohI;
-  public dnj ohJ;
-  public int ohK;
-  private final f ohL;
-  private final f ohM;
-  private final f ohN;
-  private final f ohO;
-  private long ohP;
-  public long ohQ;
-  public long ohR;
-  long ohS;
-  public long ohT;
-  public long ohU;
-  public long ohV;
-  public long ohW;
-  public long ohX;
-  public long ohY;
-  public long ohZ;
-  public boolean oiA;
-  public boolean oiB;
-  public boolean oiC;
-  public boolean oiD;
-  public boolean oiE;
-  public boolean oiF;
-  public boolean oiG;
-  public boolean oiH;
-  public int oiI;
-  public boolean oiJ;
-  public boolean oiK;
-  private long oiL;
-  private int oiM;
-  private long oiN;
-  private long oiO;
-  private long oiP;
-  private long oiQ;
-  private long oiR;
-  private long oiS;
-  private long oiT;
-  private long oiU;
-  private long oiV;
-  private long oiW;
-  public String oiX;
-  private final f oiY;
-  public boolean oiZ;
-  long oia;
-  public long oib;
-  public long oic;
-  public long oid;
-  public long oie;
-  public long oif;
-  public long oig;
-  public long oih;
-  public long oii;
-  public long oij;
-  long oik;
-  long oil;
-  long oim;
-  long oin;
-  long oio;
-  public long oip;
-  public long oiq;
-  public long oir;
-  public long ois;
-  public long oit;
-  public long oiu;
-  public long oiv;
-  public long oiw;
-  public long oix;
-  public boolean oiy;
-  public boolean oiz;
-  public boolean oja;
-  private final f ojb;
-  private long ojc;
+  public int obQ;
+  private final int onI;
+  public dog onJ;
+  public int onK;
+  private final f onL;
+  private final f onM;
+  private final f onN;
+  private final f onO;
+  private long onP;
+  public long onQ;
+  public long onR;
+  long onS;
+  public long onT;
+  public long onU;
+  public long onV;
+  public long onW;
+  public long onX;
+  public long onY;
+  public long onZ;
+  public boolean ooA;
+  public boolean ooB;
+  public boolean ooC;
+  public boolean ooD;
+  public boolean ooE;
+  public boolean ooF;
+  public boolean ooG;
+  public boolean ooH;
+  public int ooI;
+  public boolean ooJ;
+  public boolean ooK;
+  private long ooL;
+  private int ooM;
+  private long ooN;
+  private long ooO;
+  private long ooP;
+  private long ooQ;
+  private long ooR;
+  private long ooS;
+  private long ooT;
+  private long ooU;
+  private long ooV;
+  private long ooW;
+  public String ooX;
+  private final f ooY;
+  public boolean ooZ;
+  long ooa;
+  public long oob;
+  public long ooc;
+  public long ood;
+  public long ooe;
+  public long oof;
+  public long oog;
+  public long ooh;
+  public long ooi;
+  public long ooj;
+  long ook;
+  long ool;
+  long oom;
+  long oon;
+  long ooo;
+  public long oop;
+  public long ooq;
+  public long oor;
+  public long oos;
+  public long oot;
+  public long oou;
+  public long oov;
+  public long oow;
+  public long oox;
+  public boolean ooy;
+  public boolean ooz;
+  public boolean opa;
+  private final f opb;
+  private long opc;
   public String url;
   
   static
   {
     AppMethodBeat.i(6601);
-    ojd = new a((byte)0);
+    opd = new a((byte)0);
     AppMethodBeat.o(6601);
   }
   
@@ -116,72 +114,72 @@ public final class g
   {
     AppMethodBeat.i(6618);
     this.TAG = "MicroMsg.Preload.Kv15862";
-    this.ohI = 15862;
+    this.onI = 15862;
     this.key = "";
     this.url = "";
-    this.ohL = d.g.O((d.g.a.a)new b(this));
-    this.ohM = d.g.O((d.g.a.a)new e(this));
-    this.ohN = d.g.O((d.g.a.a)new c(this));
-    this.ohO = d.g.O((d.g.a.a)new d(this));
-    this.ohP = -1L;
-    this.oic = -1L;
-    this.oid = -1L;
-    this.oie = -1L;
-    this.oif = -1L;
-    this.oig = -1L;
-    this.oih = -1L;
-    this.oii = -1L;
-    this.oij = -1L;
-    this.oiX = "";
-    this.oiY = d.g.O((d.g.a.a)h.ojg);
-    this.nWh = 10000;
-    this.ojb = d.g.O((d.g.a.a)new f(this));
-    this.ojc = 3600000L;
+    this.onL = d.g.O((d.g.a.a)new b(this));
+    this.onM = d.g.O((d.g.a.a)new e(this));
+    this.onN = d.g.O((d.g.a.a)new c(this));
+    this.onO = d.g.O((d.g.a.a)new d(this));
+    this.onP = -1L;
+    this.ooc = -1L;
+    this.ood = -1L;
+    this.ooe = -1L;
+    this.oof = -1L;
+    this.oog = -1L;
+    this.ooh = -1L;
+    this.ooi = -1L;
+    this.ooj = -1L;
+    this.ooX = "";
+    this.ooY = d.g.O((d.g.a.a)h.opg);
+    this.obQ = 10000;
+    this.opb = d.g.O((d.g.a.a)new f(this));
+    this.opc = 3600000L;
     AppMethodBeat.o(6618);
   }
   
-  private final String I(CharSequence paramCharSequence)
+  private final String H(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(6610);
     StringBuilder localStringBuilder = new StringBuilder();
-    h.a locala = h.ojh;
-    if (h.a.bPu()) {
+    h.a locala = h.oph;
+    if (h.a.bQs()) {
       localStringBuilder.append(paramCharSequence + "no re-direct;");
     }
-    locala = h.ojh;
-    if (!h.a.bPp()) {
+    locala = h.oph;
+    if (!h.a.bQn()) {
       localStringBuilder.append(paramCharSequence + "no preload data;");
     }
-    locala = h.ojh;
-    if (h.a.bPv()) {
+    locala = h.oph;
+    if (h.a.bQt()) {
       localStringBuilder.append(paramCharSequence + "no preload webview;");
     }
-    locala = h.ojh;
-    if (h.a.bPr()) {
+    locala = h.oph;
+    if (h.a.bQp()) {
       localStringBuilder.append(paramCharSequence + "data no expire;");
     }
-    locala = h.ojh;
-    if (h.a.bPw()) {
+    locala = h.oph;
+    if (h.a.bQu()) {
       localStringBuilder.append(paramCharSequence + "no red;");
     }
-    paramCharSequence = this.ohJ;
+    paramCharSequence = this.onJ;
     if (paramCharSequence == null) {
-      p.bcb("tmplParams");
+      p.bdF("tmplParams");
     }
-    paramCharSequence = paramCharSequence.HBv;
+    paramCharSequence = paramCharSequence.HVi;
     p.g(paramCharSequence, "tmplParams.headers");
-    if (!n.aE((CharSequence)paramCharSequence)) {}
+    if (!n.aD((CharSequence)paramCharSequence)) {}
     for (int i = 1;; i = 0)
     {
       if (i != 0)
       {
-        paramCharSequence = this.ohJ;
+        paramCharSequence = this.onJ;
         if (paramCharSequence == null) {
-          p.bcb("tmplParams");
+          p.bdF("tmplParams");
         }
-        localStringBuilder.append(paramCharSequence.HBv);
+        localStringBuilder.append(paramCharSequence.HVi);
       }
-      if (n.aE((CharSequence)localStringBuilder)) {
+      if (n.aD((CharSequence)localStringBuilder)) {
         localStringBuilder.append("none;");
       }
       paramCharSequence = localStringBuilder.toString();
@@ -199,65 +197,65 @@ public final class g
     return str;
   }
   
-  private final String bPe()
+  private final String bQc()
   {
     AppMethodBeat.i(6602);
-    String str = (String)this.ohL.getValue();
+    String str = (String)this.onL.getValue();
     AppMethodBeat.o(6602);
     return str;
   }
   
-  private final int bPf()
+  private final int bQd()
   {
     AppMethodBeat.i(6603);
-    int i = ((Number)this.ohM.getValue()).intValue();
+    int i = ((Number)this.onM.getValue()).intValue();
     AppMethodBeat.o(6603);
     return i;
   }
   
-  private final long bPg()
+  private final long bQe()
   {
     AppMethodBeat.i(6604);
-    long l = ((Number)this.ohN.getValue()).longValue();
+    long l = ((Number)this.onN.getValue()).longValue();
     AppMethodBeat.o(6604);
     return l;
   }
   
-  private final int bPh()
+  private final int bQf()
   {
     AppMethodBeat.i(6605);
-    int i = ((Number)this.ohO.getValue()).intValue();
+    int i = ((Number)this.onO.getValue()).intValue();
     AppMethodBeat.o(6605);
     return i;
   }
   
-  private final String bPi()
+  private final String bQg()
   {
     AppMethodBeat.i(6606);
-    String str = (String)this.oiY.getValue();
+    String str = (String)this.ooY.getValue();
     AppMethodBeat.o(6606);
     return str;
   }
   
-  private final Long[] bPj()
+  private final Long[] bQh()
   {
     AppMethodBeat.i(6607);
-    Long[] arrayOfLong = (Long[])this.ojb.getValue();
+    Long[] arrayOfLong = (Long[])this.opb.getValue();
     AppMethodBeat.o(6607);
     return arrayOfLong;
   }
   
-  private final String bPk()
+  private final String bQi()
   {
     AppMethodBeat.i(6611);
     Object localObject = new StringBuilder();
-    if (this.oiI == 1) {
+    if (this.ooI == 1) {
       ((StringBuilder)localObject).append("relanuch;");
     }
-    if (!this.oiH) {
+    if (!this.ooH) {
       ((StringBuilder)localObject).append("cold;");
     }
-    if (n.aE((CharSequence)localObject)) {
+    if (n.aD((CharSequence)localObject)) {
       ((StringBuilder)localObject).append("ok;");
     }
     localObject = ((StringBuilder)localObject).toString();
@@ -266,59 +264,59 @@ public final class g
     return localObject;
   }
   
-  private final String bPl()
+  private final String bQj()
   {
     AppMethodBeat.i(6612);
     Object localObject = new StringBuilder();
-    if (this.oiI == 2) {
+    if (this.ooI == 2) {
       ((StringBuilder)localObject).append("relanuch;");
     }
-    if (!this.oiz) {
+    if (!this.ooz) {
       ((StringBuilder)localObject).append("cold;");
     }
-    if (!this.oiB)
+    if (!this.ooB)
     {
       ((StringBuilder)localObject).append("tmpl fail;");
-      if (!this.oja) {
+      if (!this.opa) {
         break label146;
       }
       ((StringBuilder)localObject).append("timeout;");
     }
     for (;;)
     {
-      if (this.oiF) {
+      if (this.ooF) {
         ((StringBuilder)localObject).append("xweb_cc;");
       }
-      if (n.aE((CharSequence)localObject)) {
+      if (n.aD((CharSequence)localObject)) {
         ((StringBuilder)localObject).append("ok;");
       }
       localObject = ((StringBuilder)localObject).toString();
       p.g(localObject, "sb.toString()");
       AppMethodBeat.o(6612);
       return localObject;
-      if (this.oiA) {
+      if (this.ooA) {
         break;
       }
       ((StringBuilder)localObject).append("inject fail;");
       break;
       label146:
-      if (this.oiZ) {
+      if (this.ooZ) {
         ((StringBuilder)localObject).append("h5;");
       }
     }
   }
   
-  private final String bPm()
+  private final String bQk()
   {
     AppMethodBeat.i(6613);
     Object localObject = new StringBuilder();
-    if (this.oiD) {
+    if (this.ooD) {
       ((StringBuilder)localObject).append("zip;");
     }
-    if (this.oiE) {
+    if (this.ooE) {
       ((StringBuilder)localObject).append("prefixMP;");
     }
-    if (n.aE((CharSequence)localObject)) {
+    if (n.aD((CharSequence)localObject)) {
       ((StringBuilder)localObject).append("none;");
     }
     localObject = ((StringBuilder)localObject).toString();
@@ -327,20 +325,20 @@ public final class g
     return localObject;
   }
   
-  private final String bPn()
+  private final String bQl()
   {
     AppMethodBeat.i(6614);
     Object localObject = new StringBuilder();
-    if (!this.oiy) {
+    if (!this.ooy) {
       ((StringBuilder)localObject).append("async;");
     }
-    if (this.oiC) {
+    if (this.ooC) {
       ((StringBuilder)localObject).append("mounted;");
     }
-    if (this.oiG) {
+    if (this.ooG) {
       ((StringBuilder)localObject).append("cache_tmpl;");
     }
-    if (n.aE((CharSequence)localObject)) {
+    if (n.aD((CharSequence)localObject)) {
       ((StringBuilder)localObject).append("ok;");
     }
     localObject = ((StringBuilder)localObject).toString();
@@ -349,15 +347,15 @@ public final class g
     return localObject;
   }
   
-  private final long tp(long paramLong)
+  private final long tD(long paramLong)
   {
     AppMethodBeat.i(6609);
-    paramLong = Math.min(Math.max(-this.ojc, paramLong), this.ojc);
+    paramLong = Math.min(Math.max(-this.opc, paramLong), this.opc);
     AppMethodBeat.o(6609);
     return paramLong;
   }
   
-  private static String tq(long paramLong)
+  private static String tE(long paramLong)
   {
     AppMethodBeat.i(6616);
     String str = new SimpleDateFormat("MM/dd HH:mm:ss").format(new Date(paramLong));
@@ -366,88 +364,88 @@ public final class g
     return str;
   }
   
-  public final void a(dnj paramdnj)
+  public final void a(dog paramdog)
   {
-    AppMethodBeat.i(209824);
-    p.h(paramdnj, "<set-?>");
-    this.ohJ = paramdnj;
-    AppMethodBeat.o(209824);
+    AppMethodBeat.i(208819);
+    p.h(paramdog, "<set-?>");
+    this.onJ = paramdog;
+    AppMethodBeat.o(208819);
   }
   
   public final void b(d.g.a.q<? super String, ? super String, ? super List<o<String, String>>, z> paramq)
   {
     AppMethodBeat.i(6608);
     p.h(paramq, "data");
-    if ((!this.oiJ) || (!this.oiK))
+    if ((!this.ooJ) || (!this.ooK))
     {
       AppMethodBeat.o(6608);
       return;
     }
-    Object localObject1 = this.ohJ;
+    Object localObject1 = this.onJ;
     if (localObject1 == null) {
-      p.bcb("tmplParams");
+      p.bdF("tmplParams");
     }
-    com.tencent.mm.plugin.webview.g.a.gi(((dnj)localObject1).reportId, 132);
-    Object localObject3 = d.bPd();
-    this.oiL = Math.max(this.ohR, this.oib);
-    if (this.ohR < this.oib) {}
+    com.tencent.mm.plugin.webview.g.a.gi(((dog)localObject1).reportId, 132);
+    Object localObject3 = d.bQb();
+    this.ooL = Math.max(this.onR, this.oob);
+    if (this.onR < this.oob) {}
     int j;
     long l1;
     int k;
     for (int i = 1;; i = 2)
     {
-      this.oiM = i;
-      this.oiN = (this.oiL - this.ohQ);
-      this.oiT = (this.ohV - this.ohQ);
-      this.oiS = (this.oif - this.oig);
-      this.oiU = (this.oib - this.ohQ);
-      this.oiV = (this.oib - this.oia);
-      this.ohS = (this.ohR - this.ohQ);
-      this.oiO = (this.oic - this.ohQ);
-      this.oiP = (this.oid - this.oic);
-      this.oiR = (this.ohX - this.ohW);
-      this.oiQ = (this.oif - this.oie);
-      this.ohP = (this.oif - this.oig);
-      this.oiW = (this.oiO + this.oiP + this.oiR + this.oiQ + this.ohU + this.ohT);
+      this.ooM = i;
+      this.ooN = (this.ooL - this.onQ);
+      this.ooT = (this.onV - this.onQ);
+      this.ooS = (this.oof - this.oog);
+      this.ooU = (this.oob - this.onQ);
+      this.ooV = (this.oob - this.ooa);
+      this.onS = (this.onR - this.onQ);
+      this.ooO = (this.ooc - this.onQ);
+      this.ooP = (this.ood - this.ooc);
+      this.ooR = (this.onX - this.onW);
+      this.ooQ = (this.oof - this.ooe);
+      this.onP = (this.oof - this.oog);
+      this.ooW = (this.ooO + this.ooP + this.ooR + this.ooQ + this.onU + this.onT);
       localObject1 = this.TAG;
-      Object localObject4 = this.ohJ;
+      Object localObject4 = this.onJ;
       if (localObject4 == null) {
-        p.bcb("tmplParams");
+        p.bdF("tmplParams");
       }
-      i = ((dnj)localObject4).version;
+      i = ((dog)localObject4).version;
       localObject4 = this.url;
-      j = bPf();
-      l1 = this.oiN;
-      k = this.oiM;
-      long l2 = this.ohT;
-      long l3 = this.oiU;
-      boolean bool1 = this.oiz;
-      long l4 = this.oii;
-      long l5 = this.oih;
-      boolean bool2 = this.oiy;
-      long l6 = this.oiR;
-      long l7 = this.oiV;
-      long l8 = this.oiT;
-      long l9 = this.ohU;
-      long l10 = this.ohT;
-      Object localObject5 = this.ohJ;
+      j = bQd();
+      l1 = this.ooN;
+      k = this.ooM;
+      long l2 = this.onT;
+      long l3 = this.ooU;
+      boolean bool1 = this.ooz;
+      long l4 = this.ooi;
+      long l5 = this.ooh;
+      boolean bool2 = this.ooy;
+      long l6 = this.ooR;
+      long l7 = this.ooV;
+      long l8 = this.ooT;
+      long l9 = this.onU;
+      long l10 = this.onT;
+      Object localObject5 = this.onJ;
       if (localObject5 == null) {
-        p.bcb("tmplParams");
+        p.bdF("tmplParams");
       }
-      int m = ((dnj)localObject5).ojt;
-      localObject5 = this.ohJ;
+      int m = ((dog)localObject5).opt;
+      localObject5 = this.onJ;
       if (localObject5 == null) {
-        p.bcb("tmplParams");
+        p.bdF("tmplParams");
       }
-      ad.d((String)localObject1, "templateVersion:%d, url:%s, size:%d, networkType:%s, pageFinishTime:%d, pageFinishTimeType:%d, ctWebFirstScreen:%d, a8KeyFinishTime:%d, isWebViewCreated:%b, ctTmplLoad:%d, isSyncGetPageData:%b, getPageDataCostTime:%d, getA8KeyCostTime:%d, webReceivePageDataTime:%d, ctWebCompile:%d, ctWebFirstScreen:%d, tmplType:%d tmplUid:%s webviewKind:%s webviewProcess:%s scene:%d evalPageDataCostTime:%d isWebViewProcessCreated:%b", new Object[] { Integer.valueOf(i), localObject4, Integer.valueOf(j), localObject3, Long.valueOf(l1), Integer.valueOf(k), Long.valueOf(l2), Long.valueOf(l3), Boolean.valueOf(bool1), Long.valueOf(l4 - l5), Boolean.valueOf(bool2), Long.valueOf(l6), Long.valueOf(l7), Long.valueOf(l8), Long.valueOf(l9), Long.valueOf(l10), Integer.valueOf(m), ((dnj)localObject5).AFz, this.oiX, bPi(), Integer.valueOf(this.nWh), Long.valueOf(this.oiS), Boolean.valueOf(this.oiH) });
-      if (!i.IS_FLAVOR_RED) {
-        bool1 = i.DEBUG;
+      ae.d((String)localObject1, "templateVersion:%d, url:%s, size:%d, networkType:%s, pageFinishTime:%d, pageFinishTimeType:%d, ctWebFirstScreen:%d, a8KeyFinishTime:%d, isWebViewCreated:%b, ctTmplLoad:%d, isSyncGetPageData:%b, getPageDataCostTime:%d, getA8KeyCostTime:%d, webReceivePageDataTime:%d, ctWebCompile:%d, ctWebFirstScreen:%d, tmplType:%d tmplUid:%s webviewKind:%s webviewProcess:%s scene:%d evalPageDataCostTime:%d isWebViewProcessCreated:%b", new Object[] { Integer.valueOf(i), localObject4, Integer.valueOf(j), localObject3, Long.valueOf(l1), Integer.valueOf(k), Long.valueOf(l2), Long.valueOf(l3), Boolean.valueOf(bool1), Long.valueOf(l4 - l5), Boolean.valueOf(bool2), Long.valueOf(l6), Long.valueOf(l7), Long.valueOf(l8), Long.valueOf(l9), Long.valueOf(l10), Integer.valueOf(m), ((dog)localObject5).AXc, this.ooX, bQg(), Integer.valueOf(this.obQ), Long.valueOf(this.ooS), Boolean.valueOf(this.ooH) });
+      if (!com.tencent.mm.sdk.platformtools.j.IS_FLAVOR_RED) {
+        bool1 = com.tencent.mm.sdk.platformtools.j.DEBUG;
       }
       try
       {
         localObject1 = this.url;
         if (localObject1 == null) {
-          p.gfZ();
+          p.gkB();
         }
         localObject1 = com.tencent.mm.compatible.util.q.encode((String)localObject1, "UTF-8");
       }
@@ -472,8 +470,8 @@ public final class g
           Object localObject9;
           Object localObject10;
           Object localObject11;
-          dnj localdnj;
-          ad.printErrStackTrace(this.TAG, (Throwable)localUnsupportedEncodingException, "url:%d", new Object[] { this.url });
+          dog localdog;
+          ae.printErrStackTrace(this.TAG, (Throwable)localUnsupportedEncodingException, "url:%d", new Object[] { this.url });
           localObject2 = null;
           continue;
           i = 0;
@@ -500,84 +498,84 @@ public final class g
           continue;
           i = 0;
           continue;
-          com.tencent.mm.plugin.webview.g.a.aK(20, this.oiN);
-          com.tencent.mm.plugin.webview.g.a.aK(21, this.ohS);
+          com.tencent.mm.plugin.webview.g.a.aK(20, this.ooN);
+          com.tencent.mm.plugin.webview.g.a.aK(21, this.onS);
           com.tencent.mm.plugin.webview.g.a.aK(22, l1);
-          com.tencent.mm.plugin.webview.g.a.aK(23, this.oil - this.oik);
-          if (!this.oiy)
+          com.tencent.mm.plugin.webview.g.a.aK(23, this.ool - this.ook);
+          if (!this.ooy)
           {
-            com.tencent.mm.plugin.webview.g.a.aK(24, this.ohZ - this.ohY);
-            com.tencent.mm.plugin.webview.g.a.WU(107);
+            com.tencent.mm.plugin.webview.g.a.aK(24, this.onZ - this.onY);
+            com.tencent.mm.plugin.webview.g.a.XA(107);
           }
         }
         paramq.d("['FirstScreen', 'BindMP', 'WebView', 'WebViewUI', null, 'BindMM', 'JsAPI', 'GetA8Key', 'GetData', 'InjectData']", localObject2, localObject3);
-        ad.i(this.TAG, "terry performance report:" + this.ohQ + '\n' + e.a(bPj(), null, null, null, 0, null, null, 63));
+        ae.i(this.TAG, "terry performance report:" + this.onQ + '\n' + e.a(bQh(), null, null, null, 0, null, null, 63));
         AppMethodBeat.o(6608);
       }
-      localObject4 = com.tencent.mm.plugin.report.service.g.yhR;
-      m = this.ohI;
-      localObject5 = this.ohJ;
+      localObject4 = com.tencent.mm.plugin.report.service.g.yxI;
+      m = this.onI;
+      localObject5 = this.onJ;
       if (localObject5 == null) {
-        p.bcb("tmplParams");
+        p.bdF("tmplParams");
       }
-      n = ((dnj)localObject5).version;
-      i1 = bPf();
-      l1 = tp(this.oiN);
-      i2 = this.oiM;
-      l2 = tp(this.ohS);
-      l3 = tp(this.oiU);
-      if (!this.oiz) {
+      n = ((dog)localObject5).version;
+      i1 = bQd();
+      l1 = tD(this.ooN);
+      i2 = this.ooM;
+      l2 = tD(this.onS);
+      l3 = tD(this.ooU);
+      if (!this.ooz) {
         break;
       }
       i = 1;
-      l4 = tp(this.oii - this.oih);
-      if (!this.oiy) {
+      l4 = tD(this.ooi - this.ooh);
+      if (!this.ooy) {
         break label2308;
       }
       j = 1;
-      l5 = tp(this.oiR);
-      l6 = tp(this.oiV);
-      l7 = tp(this.oiT);
-      l8 = tp(this.ohU);
-      l9 = tp(this.ohT);
-      localObject5 = this.ohJ;
+      l5 = tD(this.ooR);
+      l6 = tD(this.ooV);
+      l7 = tD(this.ooT);
+      l8 = tD(this.onU);
+      l9 = tD(this.onT);
+      localObject5 = this.onJ;
       if (localObject5 == null) {
-        p.bcb("tmplParams");
+        p.bdF("tmplParams");
       }
-      i3 = ((dnj)localObject5).ojt;
-      localObject5 = this.ohJ;
+      i3 = ((dog)localObject5).opt;
+      localObject5 = this.onJ;
       if (localObject5 == null) {
-        p.bcb("tmplParams");
+        p.bdF("tmplParams");
       }
-      localObject5 = ((dnj)localObject5).AFz;
-      localObject6 = this.oiX;
-      localObject7 = bPi();
-      i4 = this.nWh;
-      l10 = tp(this.oiS);
-      if (!this.oiH) {
+      localObject5 = ((dog)localObject5).AXc;
+      localObject6 = this.ooX;
+      localObject7 = bQg();
+      i4 = this.obQ;
+      l10 = tD(this.ooS);
+      if (!this.ooH) {
         break label2313;
       }
       k = 1;
-      ((com.tencent.mm.plugin.report.service.g)localObject4).f(m, new Object[] { Integer.valueOf(n), localObject1, Integer.valueOf(i1), localObject3, Long.valueOf(l1), Integer.valueOf(i2), Long.valueOf(l2), Long.valueOf(l3), Integer.valueOf(i), Long.valueOf(l4), Integer.valueOf(j), Long.valueOf(l5), Long.valueOf(l6), Long.valueOf(l7), Long.valueOf(l8), Long.valueOf(l9), Integer.valueOf(i3), localObject5, localObject6, localObject7, Integer.valueOf(i4), Long.valueOf(l10), Integer.valueOf(k), Long.valueOf(tp(this.oiO)), Long.valueOf(tp(this.oiP)), Long.valueOf(tp(this.oiQ)) });
-      localObject4 = com.tencent.mm.plugin.report.service.g.yhR;
+      ((com.tencent.mm.plugin.report.service.g)localObject4).f(m, new Object[] { Integer.valueOf(n), localObject1, Integer.valueOf(i1), localObject3, Long.valueOf(l1), Integer.valueOf(i2), Long.valueOf(l2), Long.valueOf(l3), Integer.valueOf(i), Long.valueOf(l4), Integer.valueOf(j), Long.valueOf(l5), Long.valueOf(l6), Long.valueOf(l7), Long.valueOf(l8), Long.valueOf(l9), Integer.valueOf(i3), localObject5, localObject6, localObject7, Integer.valueOf(i4), Long.valueOf(l10), Integer.valueOf(k), Long.valueOf(tD(this.ooO)), Long.valueOf(tD(this.ooP)), Long.valueOf(tD(this.ooQ)) });
+      localObject4 = com.tencent.mm.plugin.report.service.g.yxI;
       localObject5 = new ac(19);
       ((ac)localObject5).add(localObject1);
-      ((ac)localObject5).add(Integer.valueOf(this.nWh));
+      ((ac)localObject5).add(Integer.valueOf(this.obQ));
       ((ac)localObject5).add(localObject3);
-      ((ac)localObject5).add(Integer.valueOf(bPf()));
-      localObject1 = this.ohJ;
+      ((ac)localObject5).add(Integer.valueOf(bQd()));
+      localObject1 = this.onJ;
       if (localObject1 == null) {
-        p.bcb("tmplParams");
+        p.bdF("tmplParams");
       }
-      ((ac)localObject5).add(((dnj)localObject1).AFz);
-      ((ac)localObject5).add(bPi());
-      ((ac)localObject5).add(this.oiX);
-      if (!this.oiy) {
+      ((ac)localObject5).add(((dog)localObject1).AXc);
+      ((ac)localObject5).add(bQg());
+      ((ac)localObject5).add(this.ooX);
+      if (!this.ooy) {
         break label2319;
       }
       i = 1;
       ((ac)localObject5).add(Integer.valueOf(i));
-      if (this.oiH) {
+      if (this.ooH) {
         break label2324;
       }
       i = 1;
@@ -586,7 +584,7 @@ public final class g
       }
       i = 1;
       ((ac)localObject5).add(Integer.valueOf(i));
-      if (this.oiz) {
+      if (this.ooz) {
         break label2334;
       }
       i = 1;
@@ -595,93 +593,93 @@ public final class g
       }
       i = 1;
       ((ac)localObject5).add(Integer.valueOf(i));
-      ((ac)localObject5).add(Integer.valueOf(this.oiI));
-      if (!this.oiC) {
+      ((ac)localObject5).add(Integer.valueOf(this.ooI));
+      if (!this.ooC) {
         break label2344;
       }
       i = 1;
       ((ac)localObject5).add(Integer.valueOf(i));
-      if (!this.oiA) {
+      if (!this.ooA) {
         break label2349;
       }
       i = 1;
       ((ac)localObject5).add(Integer.valueOf(i));
-      ((ac)localObject5).add(Long.valueOf(this.oiN));
-      ((ac)localObject5).eO(bPj());
+      ((ac)localObject5).add(Long.valueOf(this.ooN));
+      ((ac)localObject5).eR(bQh());
       ((ac)localObject5).add(this.key);
-      if (!this.oiD) {
+      if (!this.ooD) {
         break label2354;
       }
       i = 1;
       ((ac)localObject5).add(Integer.valueOf(i));
-      if (!this.oiF) {
+      if (!this.ooF) {
         break label2359;
       }
       i = 1;
       ((ac)localObject5).add(Integer.valueOf(i));
-      ((ac)localObject5).add(Long.valueOf(this.oij));
-      ((com.tencent.mm.plugin.report.service.g)localObject4).f(16874, ((ac)localObject5).toArray(new Object[((ac)localObject5).dbZ.size()]));
-      com.tencent.mm.plugin.webview.g.a.WU(0);
-      if (this.oiD)
+      ((ac)localObject5).add(Long.valueOf(this.ooj));
+      ((com.tencent.mm.plugin.report.service.g)localObject4).f(16874, ((ac)localObject5).toArray(new Object[((ac)localObject5).ddb.size()]));
+      com.tencent.mm.plugin.webview.g.a.XA(0);
+      if (this.ooD)
       {
-        com.tencent.mm.plugin.webview.g.a.WU(111);
-        localObject1 = this.ohJ;
+        com.tencent.mm.plugin.webview.g.a.XA(111);
+        localObject1 = this.onJ;
         if (localObject1 == null) {
-          p.bcb("tmplParams");
+          p.bdF("tmplParams");
         }
-        com.tencent.mm.plugin.webview.g.a.gi(((dnj)localObject1).reportId, 232);
+        com.tencent.mm.plugin.webview.g.a.gi(((dog)localObject1).reportId, 232);
       }
-      if (this.oiF) {
-        com.tencent.mm.plugin.webview.g.a.WU(113);
+      if (this.ooF) {
+        com.tencent.mm.plugin.webview.g.a.XA(113);
       }
-      com.tencent.mm.plugin.webview.g.a.aK(1, this.oiN);
-      com.tencent.mm.plugin.webview.g.a.aK(2, this.ohS);
-      l1 = this.oic - this.ohQ;
-      if (!this.oiH) {
+      com.tencent.mm.plugin.webview.g.a.aK(1, this.ooN);
+      com.tencent.mm.plugin.webview.g.a.aK(2, this.onS);
+      l1 = this.ooc - this.onQ;
+      if (!this.ooH) {
         break label2364;
       }
-      com.tencent.mm.plugin.webview.g.a.aK(10, this.oiN);
-      com.tencent.mm.plugin.webview.g.a.aK(11, this.ohS);
+      com.tencent.mm.plugin.webview.g.a.aK(10, this.ooN);
+      com.tencent.mm.plugin.webview.g.a.aK(11, this.onS);
       com.tencent.mm.plugin.webview.g.a.aK(12, l1);
-      com.tencent.mm.plugin.webview.g.a.aK(13, this.oil - this.oik);
-      com.tencent.mm.plugin.webview.g.a.aK(14, this.oii - this.oih);
-      com.tencent.mm.plugin.webview.g.a.aK(15, this.oif - this.oie);
-      localObject1 = "[" + j.a((Iterable)e.U(bPj()), null, null, null, 0, null, null, 63) + ']';
-      localObject3 = u.S("section", "[debug]");
-      localObject4 = u.S("info", bPe());
-      localObject5 = u.S("settings", I((CharSequence)""));
-      localObject6 = u.S("section", "[process]");
-      localObject7 = u.S("process", bPi());
-      localo1 = u.S("state", bPk());
-      localo2 = u.S("section", "[webview]");
-      localo3 = u.S("kind", this.oiX);
-      localo4 = u.S("state", bPl());
-      localo5 = u.S("section", "[tmpl]");
-      localObject8 = this.ohJ;
+      com.tencent.mm.plugin.webview.g.a.aK(13, this.ool - this.ook);
+      com.tencent.mm.plugin.webview.g.a.aK(14, this.ooi - this.ooh);
+      com.tencent.mm.plugin.webview.g.a.aK(15, this.oof - this.ooe);
+      localObject1 = "[" + d.a.j.a((Iterable)e.T(bQh()), null, null, null, 0, null, null, 63) + ']';
+      localObject3 = u.R("section", "[debug]");
+      localObject4 = u.R("info", bQc());
+      localObject5 = u.R("settings", H((CharSequence)""));
+      localObject6 = u.R("section", "[process]");
+      localObject7 = u.R("process", bQg());
+      localo1 = u.R("state", bQi());
+      localo2 = u.R("section", "[webview]");
+      localo3 = u.R("kind", this.ooX);
+      localo4 = u.R("state", bQj());
+      localo5 = u.R("section", "[tmpl]");
+      localObject8 = this.onJ;
       if (localObject8 == null) {
-        p.bcb("tmplParams");
+        p.bdF("tmplParams");
       }
-      localObject8 = u.S("uid", ((dnj)localObject8).AFz);
-      localObject9 = this.ohJ;
+      localObject8 = u.R("uid", ((dog)localObject8).AXc);
+      localObject9 = this.onJ;
       if (localObject9 == null) {
-        p.bcb("tmplParams");
+        p.bdF("tmplParams");
       }
-      localObject9 = u.S("tmplType", String.valueOf(((dnj)localObject9).ojt));
-      localObject10 = this.ohJ;
+      localObject9 = u.R("tmplType", String.valueOf(((dog)localObject9).opt));
+      localObject10 = this.onJ;
       if (localObject10 == null) {
-        p.bcb("tmplParams");
+        p.bdF("tmplParams");
       }
-      localObject10 = u.S("version", String.valueOf(((dnj)localObject10).version));
-      localObject11 = this.ohJ;
+      localObject10 = u.R("version", String.valueOf(((dog)localObject10).version));
+      localObject11 = this.onJ;
       if (localObject11 == null) {
-        p.bcb("tmplParams");
+        p.bdF("tmplParams");
       }
-      localObject11 = u.S("md5", ((dnj)localObject11).md5);
-      localdnj = this.ohJ;
-      if (localdnj == null) {
-        p.bcb("tmplParams");
+      localObject11 = u.R("md5", ((dog)localObject11).md5);
+      localdog = this.onJ;
+      if (localdog == null) {
+        p.bdF("tmplParams");
       }
-      localObject3 = j.listOf(new o[] { localObject3, localObject4, localObject5, localObject6, localObject7, localo1, localo2, localo3, localo4, localo5, localObject8, localObject9, localObject10, localObject11, u.S("time", tq(localdnj.zok)), u.S("state", bPm()), u.S("section", "[data]"), u.S("dataSize", aT(bPf() / 1024.0F) + "Kb"), u.S("dataTime", String.valueOf(this.oiR)), u.S("cached", tq(bPg())), u.S("version", String.valueOf(bPh())), u.S("expire in", this.ohK + 's'), u.S("scene", String.valueOf(this.nWh)), u.S("state", bPn()) });
+      localObject3 = d.a.j.listOf(new o[] { localObject3, localObject4, localObject5, localObject6, localObject7, localo1, localo2, localo3, localo4, localo5, localObject8, localObject9, localObject10, localObject11, u.R("time", tE(localdog.zFz)), u.R("state", bQk()), u.R("section", "[data]"), u.R("dataSize", aT(bQd() / 1024.0F) + "Kb"), u.R("dataTime", String.valueOf(this.ooR)), u.R("cached", tE(bQe())), u.R("version", String.valueOf(bQf())), u.R("expire in", this.onK + 's'), u.R("scene", String.valueOf(this.obQ)), u.R("state", bQl()) });
       if (localObject3 != null) {
         break label2432;
       }
@@ -706,57 +704,57 @@ public final class g
   
   public final void setKey(String paramString)
   {
-    AppMethodBeat.i(209825);
+    AppMethodBeat.i(208820);
     p.h(paramString, "<set-?>");
     this.key = paramString;
-    AppMethodBeat.o(209825);
+    AppMethodBeat.o(208820);
   }
   
   public final String toString()
   {
     AppMethodBeat.i(6617);
     g localg = new g(this);
-    ad.v(this.TAG, "terry performance log:\n" + this.oiO + ',' + this.oiP + ',' + (this.oil - this.oid) + ',' + (Math.max(this.oil, this.oii) - this.oil) + ',' + (this.oie - Math.max(this.oil, this.oii)) + ',' + this.oiQ);
-    ad.v(this.TAG, "terry performance timestamp:\n " + e.a(bPj(), null, null, null, 0, null, null, 63));
-    Object localObject1 = new StringBuilder("\n            [debug]\n            info: ").append(bPe()).append("\n            settings: ").append(I((CharSequence)"\n")).append("\n\n            [process]\n            process: ").append(bPi()).append("\n            state: ").append(bPk()).append("\n\n            [webview]\n            kind: ").append(this.oiX).append("\n            state: ").append(bPl()).append("\n\n            [tmpl]\n            uid: ");
-    Object localObject2 = this.ohJ;
+    ae.v(this.TAG, "terry performance log:\n" + this.ooO + ',' + this.ooP + ',' + (this.ool - this.ood) + ',' + (Math.max(this.ool, this.ooi) - this.ool) + ',' + (this.ooe - Math.max(this.ool, this.ooi)) + ',' + this.ooQ);
+    ae.v(this.TAG, "terry performance timestamp:\n " + e.a(bQh(), null, null, null, 0, null, null, 63));
+    Object localObject1 = new StringBuilder("\n            [debug]\n            info: ").append(bQc()).append("\n            settings: ").append(H((CharSequence)"\n")).append("\n\n            [process]\n            process: ").append(bQg()).append("\n            state: ").append(bQi()).append("\n\n            [webview]\n            kind: ").append(this.ooX).append("\n            state: ").append(bQj()).append("\n\n            [tmpl]\n            uid: ");
+    Object localObject2 = this.onJ;
     if (localObject2 == null) {
-      p.bcb("tmplParams");
+      p.bdF("tmplParams");
     }
-    localObject1 = ((StringBuilder)localObject1).append(((dnj)localObject2).AFz).append("\n            tmplType: ");
-    localObject2 = this.ohJ;
+    localObject1 = ((StringBuilder)localObject1).append(((dog)localObject2).AXc).append("\n            tmplType: ");
+    localObject2 = this.onJ;
     if (localObject2 == null) {
-      p.bcb("tmplParams");
+      p.bdF("tmplParams");
     }
-    localObject1 = ((StringBuilder)localObject1).append(((dnj)localObject2).ojt).append("\n            version: ");
-    localObject2 = this.ohJ;
+    localObject1 = ((StringBuilder)localObject1).append(((dog)localObject2).opt).append("\n            version: ");
+    localObject2 = this.onJ;
     if (localObject2 == null) {
-      p.bcb("tmplParams");
+      p.bdF("tmplParams");
     }
-    localObject1 = ((StringBuilder)localObject1).append(((dnj)localObject2).version).append("\n            md5: ");
-    localObject2 = this.ohJ;
+    localObject1 = ((StringBuilder)localObject1).append(((dog)localObject2).version).append("\n            md5: ");
+    localObject2 = this.onJ;
     if (localObject2 == null) {
-      p.bcb("tmplParams");
+      p.bdF("tmplParams");
     }
-    localObject1 = ((StringBuilder)localObject1).append(((dnj)localObject2).md5).append("\n            time: ");
-    localObject2 = this.ohJ;
+    localObject1 = ((StringBuilder)localObject1).append(((dog)localObject2).md5).append("\n            time: ");
+    localObject2 = this.onJ;
     if (localObject2 == null) {
-      p.bcb("tmplParams");
+      p.bdF("tmplParams");
     }
-    localObject2 = ((StringBuilder)localObject1).append(tq(((dnj)localObject2).zok)).append("\n            state: ").append(bPm()).append("\n\n            [data]\n            dataSize: ").append(aT(bPf() / 1024.0F)).append("Kb\n            dataTime: ").append(this.oiR).append("\n            cached: ").append(tq(bPg())).append("\n            version: ").append(bPh()).append("\n            expire in: ").append(this.ohK).append("s\n            scene: ").append(this.nWh).append("\n            state: ").append(bPn()).append("\n\n            [performance](ms)\n            finishType: ").append(this.oiM).append("\n            finishTime: ").append(this.oiN);
-    if (this.oiN != Math.max(this.oiU, this.oiW)) {}
-    for (localObject1 = "/" + localg.tr(this.oiW);; localObject1 = "")
+    localObject2 = ((StringBuilder)localObject1).append(tE(((dog)localObject2).zFz)).append("\n            state: ").append(bQk()).append("\n\n            [data]\n            dataSize: ").append(aT(bQd() / 1024.0F)).append("Kb\n            dataTime: ").append(this.ooR).append("\n            cached: ").append(tE(bQe())).append("\n            version: ").append(bQf()).append("\n            expire in: ").append(this.onK).append("s\n            scene: ").append(this.obQ).append("\n            state: ").append(bQl()).append("\n\n            [performance](ms)\n            finishType: ").append(this.ooM).append("\n            finishTime: ").append(this.ooN);
+    if (this.ooN != Math.max(this.ooU, this.ooW)) {}
+    for (localObject1 = "/" + localg.tF(this.ooW);; localObject1 = "")
     {
-      localObject1 = n.bdc((String)localObject1 + "\n            firstScreenFinish: " + localg.tr(this.ohS) + '/' + localg.tr(this.oiW) + "\n            a8keyFinish: " + this.oiU + "\n\n            client:\n            TmplCostTime: " + (this.oii - this.oih) + "\n            WebViewUICostTime: " + (this.oil - this.oik) + "\n            NotifyPageCostTime: " + (this.oij - this.oif) + "\n\n            1.bindWebViewCostTime: " + this.oiO + "\n            2.createWebViewCostTime: " + this.oiP + "\n            3.getPageDataCostTime: " + this.oiR + "\n            4.injectCostTime: " + localg.tr(this.oiQ) + "\n            eval cost: " + this.ohP + "\n\n            js:\n            4.1.onReceivePageData: " + (this.oig - this.ohV) + "\n            5.ctWebCompile: " + this.ohU + "\n            6.renderTime: " + this.ohT + "\n\n            [js]webReceivePageDataTime: " + this.oiT + "\n            a8KeyFinishTime: " + this.oiU + "\n            getA8KeyCostTime: " + this.oiV + "\n        ");
+      localObject1 = n.beG((String)localObject1 + "\n            firstScreenFinish: " + localg.tF(this.onS) + '/' + localg.tF(this.ooW) + "\n            a8keyFinish: " + this.ooU + "\n\n            client:\n            TmplCostTime: " + (this.ooi - this.ooh) + "\n            WebViewUICostTime: " + (this.ool - this.ook) + "\n            NotifyPageCostTime: " + (this.ooj - this.oof) + "\n\n            1.bindWebViewCostTime: " + this.ooO + "\n            2.createWebViewCostTime: " + this.ooP + "\n            3.getPageDataCostTime: " + this.ooR + "\n            4.injectCostTime: " + localg.tF(this.ooQ) + "\n            eval cost: " + this.onP + "\n\n            js:\n            4.1.onReceivePageData: " + (this.oog - this.onV) + "\n            5.ctWebCompile: " + this.onU + "\n            6.renderTime: " + this.onT + "\n\n            [js]webReceivePageDataTime: " + this.ooT + "\n            a8KeyFinishTime: " + this.ooU + "\n            getA8KeyCostTime: " + this.ooV + "\n        ");
       AppMethodBeat.o(6617);
       return localObject1;
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/Kv15862$Companion;", "", "()V", "RELAUNCH_STATE_DEFAULT", "", "RELAUNCH_STATE_PROCESS", "RELAUNCH_STATE_WEBVIEW", "plugin-brandservice_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/Kv15862$Companion;", "", "()V", "RELAUNCH_STATE_DEFAULT", "", "RELAUNCH_STATE_PROCESS", "RELAUNCH_STATE_WEBVIEW", "plugin-brandservice_release"})
   public static final class a {}
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
   static final class b
     extends d.g.b.q
     implements d.g.a.a<String>
@@ -767,7 +765,7 @@ public final class g
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
   static final class c
     extends d.g.b.q
     implements d.g.a.a<Long>
@@ -778,7 +776,7 @@ public final class g
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
   static final class d
     extends d.g.b.q
     implements d.g.a.a<Integer>
@@ -789,7 +787,7 @@ public final class g
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
   static final class e
     extends d.g.b.q
     implements d.g.a.a<Integer>
@@ -800,7 +798,7 @@ public final class g
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "", "invoke", "()[Ljava/lang/Long;"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "", "invoke", "()[Ljava/lang/Long;"})
   static final class f
     extends d.g.b.q
     implements d.g.a.a<Long[]>
@@ -811,7 +809,7 @@ public final class g
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"verify", "", "", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"verify", "", "", "invoke"})
   static final class g
     extends d.g.b.q
     implements b<Long, String>
@@ -821,10 +819,10 @@ public final class g
       super();
     }
     
-    public final String tr(long paramLong)
+    public final String tF(long paramLong)
     {
       AppMethodBeat.i(6598);
-      if (g.a(this.oje, paramLong))
+      if (g.a(this.ope, paramLong))
       {
         AppMethodBeat.o(6598);
         return String.valueOf(paramLong);
@@ -834,17 +832,17 @@ public final class g
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
   static final class h
     extends d.g.b.q
     implements d.g.a.a<String>
   {
-    public static final h ojg;
+    public static final h opg;
     
     static
     {
       AppMethodBeat.i(6600);
-      ojg = new h();
+      opg = new h();
       AppMethodBeat.o(6600);
     }
     

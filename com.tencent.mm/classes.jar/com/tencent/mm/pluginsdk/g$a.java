@@ -1,6 +1,6 @@
 package com.tencent.mm.pluginsdk;
 
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.n;
 
 public abstract interface g$a
 {

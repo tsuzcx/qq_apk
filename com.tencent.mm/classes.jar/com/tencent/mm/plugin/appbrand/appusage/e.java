@@ -2,26 +2,26 @@ package com.tencent.mm.plugin.appbrand.appusage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.am;
+import com.tencent.mm.model.ao;
 import com.tencent.mm.platformtools.r.a;
 import com.tencent.mm.plugin.appbrand.app.j;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.al.a;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.storage.aj;
+import com.tencent.mm.storage.am.a;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/appusage/AppBrandCollectionRecordTableUpgradeIssueDataTransfer;", "Lcom/tencent/mm/model/IDataTransfer;", "()V", "getTag", "", "needTransfer", "", "sVer", "", "transfer", "", "transferIfNeed", "Companion", "plugin-appbrand-integration_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/appusage/AppBrandCollectionRecordTableUpgradeIssueDataTransfer;", "Lcom/tencent/mm/model/IDataTransfer;", "()V", "getTag", "", "needTransfer", "", "sVer", "", "transfer", "", "transferIfNeed", "Companion", "plugin-appbrand-integration_release"})
 public final class e
-  extends am
+  extends ao
 {
   @Deprecated
-  public static final a jOi;
+  public static final a jRA;
   
   static
   {
     AppMethodBeat.i(50242);
-    jOi = new a((byte)0);
+    jRA = new a((byte)0);
     AppMethodBeat.o(50242);
   }
   
@@ -30,13 +30,13 @@ public final class e
     return "MicroMsg.AppBrandCollectionRecordTableUpgradeIssueDataTransfer";
   }
   
-  public final boolean op(int paramInt)
+  public final boolean os(int paramInt)
   {
     AppMethodBeat.i(50241);
-    com.tencent.mm.kernel.e locale = g.ajC();
+    com.tencent.mm.kernel.e locale = g.ajR();
     p.g(locale, "MMKernel.storage()");
-    boolean bool = locale.ajl().getBoolean(al.a.IvL, false);
-    ad.d("MicroMsg.AppBrandCollectionRecordTableUpgradeIssueDataTransfer", "needTransfer doneIssue ".concat(String.valueOf(bool)));
+    boolean bool = locale.ajA().getBoolean(am.a.IQj, false);
+    ae.d("MicroMsg.AppBrandCollectionRecordTableUpgradeIssueDataTransfer", "needTransfer doneIssue ".concat(String.valueOf(bool)));
     if (!bool)
     {
       AppMethodBeat.o(50241);
@@ -51,21 +51,21 @@ public final class e
     AppMethodBeat.i(50240);
     try
     {
-      j.aYM().aYN().execSQL("AppBrandStarApp", "update AppBrandStarApp set orderSequence = updateTime");
-      com.tencent.mm.kernel.e locale = g.ajC();
+      j.aZi().aZj().execSQL("AppBrandStarApp", "update AppBrandStarApp set orderSequence = updateTime");
+      com.tencent.mm.kernel.e locale = g.ajR();
       p.g(locale, "MMKernel.storage()");
-      locale.ajl().set(al.a.IvL, Boolean.TRUE);
+      locale.ajA().set(am.a.IQj, Boolean.TRUE);
       AppMethodBeat.o(50240);
       return;
     }
     catch (Throwable localThrowable)
     {
-      ad.printErrStackTrace("MicroMsg.AppBrandCollectionRecordTableUpgradeIssueDataTransfer", localThrowable, "transfer failed", new Object[0]);
+      ae.printErrStackTrace("MicroMsg.AppBrandCollectionRecordTableUpgradeIssueDataTransfer", localThrowable, "transfer failed", new Object[0]);
       AppMethodBeat.o(50240);
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/appusage/AppBrandCollectionRecordTableUpgradeIssueDataTransfer$Companion;", "", "()V", "TAG", "", "plugin-appbrand-integration_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/appusage/AppBrandCollectionRecordTableUpgradeIssueDataTransfer$Companion;", "", "()V", "TAG", "", "plugin-appbrand-integration_release"})
   static final class a {}
 }
 

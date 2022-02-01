@@ -1,8 +1,9 @@
 package com.tencent.mm.plugin.scanner.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.scanner.api.ScanImagePHashInfo;
 import com.tencent.mm.protocal.protobuf.GoodsObject;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public class ScanFastFocusEngineNative
 {
@@ -28,7 +29,7 @@ public class ScanFastFocusEngineNative
     }
     catch (Exception localException)
     {
-      ad.printErrStackTrace("MicroMsg.ScanFastFocusEngineNative", localException, "alvinluo FocusEngine init exception", new Object[0]);
+      ae.printErrStackTrace("MicroMsg.ScanFastFocusEngineNative", localException, "alvinluo FocusEngine init exception", new Object[0]);
       AppMethodBeat.o(51649);
     }
   }
@@ -42,7 +43,7 @@ public class ScanFastFocusEngineNative
     this.points = new ScanPoint[10];
     this.pointCount = 0;
     this.cropObject = new GoodsObject();
-    ad.i("MicroMsg.ScanFastFocusEngineNative", "alvinluo ScanFastFocusEngineNative constructor %s", new Object[] { Integer.valueOf(hashCode()) });
+    ae.i("MicroMsg.ScanFastFocusEngineNative", "alvinluo ScanFastFocusEngineNative constructor %s", new Object[] { Integer.valueOf(hashCode()) });
     init();
     AppMethodBeat.o(51647);
   }

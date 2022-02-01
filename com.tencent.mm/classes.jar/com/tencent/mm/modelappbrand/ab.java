@@ -4,11 +4,11 @@ import java.util.List;
 
 public abstract interface ab
 {
-  public abstract <T> T Cn(String paramString);
+  public abstract <T> T CP(String paramString);
   
-  public abstract h aDR();
+  public abstract h aEh();
   
-  public abstract List<o> aDS();
+  public abstract List<o> aEi();
 }
 
 

@@ -18,7 +18,7 @@ import com.tencent.e.h;
 import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.finder.event.base.f;
-import com.tencent.mm.plugin.finder.model.al;
+import com.tencent.mm.plugin.finder.model.am;
 import com.tencent.mm.plugin.finder.presenter.base.c;
 import com.tencent.mm.plugin.finder.presenter.base.c.a;
 import com.tencent.mm.plugin.finder.video.FinderVideoLayout;
@@ -43,136 +43,136 @@ import d.l;
 import d.v;
 import java.util.ArrayList;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/feed/FinderBaseFeedUIContract$ViewCallback;", "Lcom/tencent/mm/plugin/finder/presenter/base/IViewCallback;", "Lcom/tencent/mm/plugin/finder/feed/FinderBaseFeedUIContract$Presenter;", "context", "Lcom/tencent/mm/ui/MMActivity;", "presenter", "scene", "", "commentScene", "commentSafeMode", "", "(Lcom/tencent/mm/ui/MMActivity;Lcom/tencent/mm/plugin/finder/feed/FinderBaseFeedUIContract$Presenter;IIZ)V", "HEADER_COUNT", "getHEADER_COUNT", "()I", "setHEADER_COUNT", "(I)V", "adapter", "Lcom/tencent/mm/view/recyclerview/WxRecyclerAdapter;", "getCommentSafeMode", "()Z", "getCommentScene", "getContext", "()Lcom/tencent/mm/ui/MMActivity;", "drawer", "Lcom/tencent/mm/plugin/finder/view/FinderCommentComponent;", "friendLikeDrawer", "Lcom/tencent/mm/plugin/finder/view/FinderLikeDrawer;", "getFriendLikeDrawer", "()Lcom/tencent/mm/plugin/finder/view/FinderLikeDrawer;", "setFriendLikeDrawer", "(Lcom/tencent/mm/plugin/finder/view/FinderLikeDrawer;)V", "likeDrawer", "rlLayout", "Lcom/tencent/mm/view/RefreshLoadMoreLayout;", "getRlLayout", "()Lcom/tencent/mm/view/RefreshLoadMoreLayout;", "setRlLayout", "(Lcom/tencent/mm/view/RefreshLoadMoreLayout;)V", "getScene", "touchPhotoLayout", "Lcom/tencent/mm/ui/widget/TouchMediaPreviewLayout;", "getTouchPhotoLayout", "()Lcom/tencent/mm/ui/widget/TouchMediaPreviewLayout;", "setTouchPhotoLayout", "(Lcom/tencent/mm/ui/widget/TouchMediaPreviewLayout;)V", "getActivity", "getAdapter", "getDrawer", "getEmptyView", "Landroid/view/View;", "getItemDecoration", "Landroid/support/v7/widget/RecyclerView$ItemDecoration;", "getLikeDrawer", "getPresenter", "getRecyclerView", "Landroid/support/v7/widget/RecyclerView;", "initRecyclerView", "", "data", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "initView", "onItemChange", "changeItemCount", "onLoadInitDataError", "errCode", "errMsg", "", "onLoadMoreError", "onRefreshError", "onViewPrepared", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/feed/FinderBaseFeedUIContract$ViewCallback;", "Lcom/tencent/mm/plugin/finder/presenter/base/IViewCallback;", "Lcom/tencent/mm/plugin/finder/feed/FinderBaseFeedUIContract$Presenter;", "context", "Lcom/tencent/mm/ui/MMActivity;", "presenter", "scene", "", "commentScene", "commentSafeMode", "", "(Lcom/tencent/mm/ui/MMActivity;Lcom/tencent/mm/plugin/finder/feed/FinderBaseFeedUIContract$Presenter;IIZ)V", "HEADER_COUNT", "getHEADER_COUNT", "()I", "setHEADER_COUNT", "(I)V", "adapter", "Lcom/tencent/mm/view/recyclerview/WxRecyclerAdapter;", "getCommentSafeMode", "()Z", "getCommentScene", "getContext", "()Lcom/tencent/mm/ui/MMActivity;", "drawer", "Lcom/tencent/mm/plugin/finder/view/FinderCommentComponent;", "friendLikeDrawer", "Lcom/tencent/mm/plugin/finder/view/FinderLikeDrawer;", "getFriendLikeDrawer", "()Lcom/tencent/mm/plugin/finder/view/FinderLikeDrawer;", "setFriendLikeDrawer", "(Lcom/tencent/mm/plugin/finder/view/FinderLikeDrawer;)V", "likeDrawer", "rlLayout", "Lcom/tencent/mm/view/RefreshLoadMoreLayout;", "getRlLayout", "()Lcom/tencent/mm/view/RefreshLoadMoreLayout;", "setRlLayout", "(Lcom/tencent/mm/view/RefreshLoadMoreLayout;)V", "getScene", "touchPhotoLayout", "Lcom/tencent/mm/ui/widget/TouchMediaPreviewLayout;", "getTouchPhotoLayout", "()Lcom/tencent/mm/ui/widget/TouchMediaPreviewLayout;", "setTouchPhotoLayout", "(Lcom/tencent/mm/ui/widget/TouchMediaPreviewLayout;)V", "getActivity", "getAdapter", "getDrawer", "getEmptyView", "Landroid/view/View;", "getItemDecoration", "Landroid/support/v7/widget/RecyclerView$ItemDecoration;", "getLikeDrawer", "getPresenter", "getRecyclerView", "Landroid/support/v7/widget/RecyclerView;", "initRecyclerView", "", "data", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "initView", "onItemChange", "changeItemCount", "onLoadInitDataError", "errCode", "errMsg", "", "onLoadMoreError", "onRefreshError", "onViewPrepared", "plugin-finder_release"})
 public abstract class a$b
   implements c<a.a>
 {
-  final MMActivity fLP;
-  int qYl;
-  private WxRecyclerAdapter<?> rPu;
-  private final int rTD;
-  public RefreshLoadMoreLayout rTF;
-  private e rTG;
-  private FinderLikeDrawer rTH;
-  public FinderLikeDrawer rTI;
-  public TouchMediaPreviewLayout rTJ;
-  final a.a rTK;
-  private final boolean rTL;
+  protected final MMActivity fNT;
+  private WxRecyclerAdapter<?> rXV;
+  int rgr;
   private final int scene;
+  private final int sch;
+  public RefreshLoadMoreLayout scj;
+  private e sck;
+  private FinderLikeDrawer scl;
+  public FinderLikeDrawer scm;
+  public TouchMediaPreviewLayout scn;
+  final a.a sco;
+  private final boolean scp;
   
   public a$b(MMActivity paramMMActivity, a.a parama, int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    this.fLP = paramMMActivity;
-    this.rTK = parama;
+    this.fNT = paramMMActivity;
+    this.sco = parama;
     this.scene = paramInt1;
-    this.rTD = paramInt2;
-    this.rTL = paramBoolean;
-    paramMMActivity = this.fLP.findViewById(2131304203);
+    this.sch = paramInt2;
+    this.scp = paramBoolean;
+    paramMMActivity = this.fNT.findViewById(2131304203);
     p.g(paramMMActivity, "context.findViewById(R.id.rl_layout)");
-    this.rTF = ((RefreshLoadMoreLayout)paramMMActivity);
+    this.scj = ((RefreshLoadMoreLayout)paramMMActivity);
   }
   
-  public void Ex(int paramInt) {}
+  public void EK(int paramInt) {}
   
-  public void T(ArrayList<al> paramArrayList)
+  public void T(ArrayList<am> paramArrayList)
   {
     p.h(paramArrayList, "data");
-    final RecyclerView localRecyclerView = this.rTF.getRecyclerView();
+    final RecyclerView localRecyclerView = this.scj.getRecyclerView();
     localRecyclerView.setLayoutManager((RecyclerView.i)new FinderLayoutManager((byte)0));
-    this.rPu = new WxRecyclerAdapter(this.rTK.cAE(), paramArrayList);
-    paramArrayList = this.rPu;
+    this.rXV = new WxRecyclerAdapter(this.sco.cCq(), paramArrayList);
+    paramArrayList = this.rXV;
     if (paramArrayList == null) {
-      p.bcb("adapter");
+      p.bdF("adapter");
     }
     localRecyclerView.setAdapter((RecyclerView.a)paramArrayList);
     localRecyclerView.b(getItemDecoration());
-    this.rTF.setActionCallback((RefreshLoadMoreLayout.a)new a(this, localRecyclerView));
-    paramArrayList = com.tencent.mm.ui.component.a.KiD;
-    paramArrayList = FinderReporterUIC.d((FinderReporterUIC)com.tencent.mm.ui.component.a.s(this.fLP).get(FinderReporterUIC.class));
+    this.scj.setActionCallback((RefreshLoadMoreLayout.a)new a(this, localRecyclerView));
+    paramArrayList = com.tencent.mm.ui.component.a.KEX;
+    paramArrayList = FinderReporterUIC.d((FinderReporterUIC)com.tencent.mm.ui.component.a.s(this.fNT).get(FinderReporterUIC.class));
     if (paramArrayList != null) {
       paramArrayList.s(localRecyclerView);
     }
-    cAK();
+    cCw();
   }
   
-  public final void U(ArrayList<al> paramArrayList)
+  public final void U(ArrayList<am> paramArrayList)
   {
     p.h(paramArrayList, "data");
-    Object localObject1 = e.sSA;
-    localObject1 = this.fLP;
-    Object localObject2 = this.fLP.getWindow();
+    Object localObject1 = e.tdM;
+    localObject1 = this.fNT;
+    Object localObject2 = this.fNT.getWindow();
     p.g(localObject2, "getActivity().window");
     localObject2 = ((Window)localObject2).getDecorView();
     p.g(localObject2, "getActivity().window.decorView");
-    this.rTG = e.a.a((MMActivity)localObject1, (View)localObject2, this.scene, this.rTL);
-    localObject1 = FinderLikeDrawer.sUO;
-    localObject1 = (Context)this.fLP;
-    localObject2 = this.fLP.getWindow();
+    this.sck = e.a.a((MMActivity)localObject1, (View)localObject2, this.scene, this.scp);
+    localObject1 = FinderLikeDrawer.tgd;
+    localObject1 = (Context)this.fNT;
+    localObject2 = this.fNT.getWindow();
     p.g(localObject2, "getActivity().window");
-    FinderLikeDrawer.a locala = FinderLikeDrawer.sUO;
-    this.rTH = FinderLikeDrawer.a.a((Context)localObject1, (Window)localObject2, FinderLikeDrawer.cNu());
-    localObject1 = FinderLikeDrawer.sUO;
-    localObject1 = (Context)this.fLP;
-    localObject2 = this.fLP.getWindow();
+    FinderLikeDrawer.a locala = FinderLikeDrawer.tgd;
+    this.scl = FinderLikeDrawer.a.a((Context)localObject1, (Window)localObject2, FinderLikeDrawer.cQe());
+    localObject1 = FinderLikeDrawer.tgd;
+    localObject1 = (Context)this.fNT;
+    localObject2 = this.fNT.getWindow();
     p.g(localObject2, "getActivity().window");
-    locala = FinderLikeDrawer.sUO;
-    this.rTI = FinderLikeDrawer.a.a((Context)localObject1, (Window)localObject2, FinderLikeDrawer.cNt());
+    locala = FinderLikeDrawer.tgd;
+    this.scm = FinderLikeDrawer.a.a((Context)localObject1, (Window)localObject2, FinderLikeDrawer.cQd());
     T(paramArrayList);
-    this.rTJ = new TouchMediaPreviewLayout((Context)this.fLP);
-    paramArrayList = this.rTJ;
+    this.scn = new TouchMediaPreviewLayout((Context)this.fNT);
+    paramArrayList = this.scn;
     if (paramArrayList != null)
     {
-      localObject1 = this.fLP.getWindow();
+      localObject1 = this.fNT.getWindow();
       p.g(localObject1, "context.window");
       localObject1 = ((Window)localObject1).getDecorView();
       p.g(localObject1, "context.window.decorView");
-      paramArrayList.gX((View)localObject1);
+      paramArrayList.hc((View)localObject1);
     }
-    paramArrayList = this.rTJ;
+    paramArrayList = this.scn;
     if (paramArrayList != null) {
       paramArrayList.setScaleListener((TouchMediaPreviewLayout.b)new b(this));
     }
   }
   
-  public final FinderLikeDrawer cAJ()
+  public final FinderLikeDrawer cCv()
   {
-    FinderLikeDrawer localFinderLikeDrawer = this.rTI;
+    FinderLikeDrawer localFinderLikeDrawer = this.scm;
     if (localFinderLikeDrawer == null) {
-      p.bcb("friendLikeDrawer");
+      p.bdF("friendLikeDrawer");
     }
     return localFinderLikeDrawer;
   }
   
-  public abstract void cAK();
+  public abstract void cCw();
   
-  public final e cAL()
+  public final e cCx()
   {
-    e locale = this.rTG;
+    e locale = this.sck;
     if (locale == null) {
-      p.bcb("drawer");
+      p.bdF("drawer");
     }
     return locale;
   }
   
-  public final FinderLikeDrawer cAM()
+  public final FinderLikeDrawer cCy()
   {
-    FinderLikeDrawer localFinderLikeDrawer = this.rTH;
+    FinderLikeDrawer localFinderLikeDrawer = this.scl;
     if (localFinderLikeDrawer == null) {
-      p.bcb("likeDrawer");
+      p.bdF("likeDrawer");
     }
     return localFinderLikeDrawer;
   }
   
   public final MMActivity getActivity()
   {
-    return this.fLP;
+    return this.fNT;
   }
   
   public final WxRecyclerAdapter<?> getAdapter()
   {
-    WxRecyclerAdapter localWxRecyclerAdapter = this.rPu;
+    WxRecyclerAdapter localWxRecyclerAdapter = this.rXV;
     if (localWxRecyclerAdapter == null) {
-      p.bcb("adapter");
+      p.bdF("adapter");
     }
     return localWxRecyclerAdapter;
   }
@@ -182,52 +182,52 @@ public abstract class a$b
     return (RecyclerView.h)new com.tencent.mm.plugin.finder.view.decoration.b((Drawable)new ColorDrawable(c.a.a(this).getColor(2131099648)), (int)c.a.a(this).getDimension(2131166294));
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/finder/feed/FinderBaseFeedUIContract$ViewCallback$initRecyclerView$1", "Lcom/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback;", "firstChange", "", "getFirstChange", "()Z", "setFirstChange", "(Z)V", "onItemChange", "", "changeItemCount", "", "onLoadMoreBegin", "onLoadMoreEnd", "reason", "Lcom/tencent/mm/view/RefreshLoadMoreLayout$MoreReason;", "", "onRefreshBegin", "refreshType", "onRefreshEnd", "plugin-finder_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/finder/feed/FinderBaseFeedUIContract$ViewCallback$initRecyclerView$1", "Lcom/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback;", "firstChange", "", "getFirstChange", "()Z", "setFirstChange", "(Z)V", "onItemChange", "", "changeItemCount", "", "onLoadMoreBegin", "onLoadMoreEnd", "reason", "Lcom/tencent/mm/view/RefreshLoadMoreLayout$MoreReason;", "", "onRefreshBegin", "refreshType", "onRefreshEnd", "plugin-finder_release"})
   public static final class a
     extends RefreshLoadMoreLayout.a
   {
-    private boolean rTM = true;
+    private boolean scq = true;
     
     a(RecyclerView paramRecyclerView) {}
     
-    public final void AM(int paramInt)
+    public final void AY(int paramInt)
     {
-      AppMethodBeat.i(201683);
+      AppMethodBeat.i(202142);
       com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.mr(paramInt);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/feed/FinderBaseFeedUIContract$ViewCallback$initRecyclerView$1", "com/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback", "onRefreshBegin", "(I)V", this, localb.ahq());
-      super.AM(paramInt);
-      h.LTJ.aR((Runnable)new b(this));
+      localb.mu(paramInt);
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/feed/FinderBaseFeedUIContract$ViewCallback$initRecyclerView$1", "com/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback", "onRefreshBegin", "(I)V", this, localb.ahF());
+      super.AY(paramInt);
+      h.MqF.aO((Runnable)new b(this));
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/feed/FinderBaseFeedUIContract$ViewCallback$initRecyclerView$1", "com/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback", "onRefreshBegin", "(I)V");
-      AppMethodBeat.o(201683);
+      AppMethodBeat.o(202142);
     }
     
-    public final void Ex(int paramInt)
+    public final void EK(int paramInt)
     {
       AppMethodBeat.i(165623);
-      this.rTN.Ex(paramInt);
-      if ((this.rTM) && (paramInt > 0))
+      this.scr.EK(paramInt);
+      if ((this.scq) && (paramInt > 0))
       {
-        Object localObject = com.tencent.mm.ui.component.a.KiD;
-        localObject = FinderReporterUIC.d((FinderReporterUIC)com.tencent.mm.ui.component.a.s(this.rTN.fLP).get(FinderReporterUIC.class));
+        Object localObject = com.tencent.mm.ui.component.a.KEX;
+        localObject = FinderReporterUIC.d((FinderReporterUIC)com.tencent.mm.ui.component.a.s(this.scr.fNT).get(FinderReporterUIC.class));
         if (localObject != null) {
-          ((f)localObject).czz().b(localRecyclerView, 5);
+          ((f)localObject).cBd().b(localRecyclerView, 5);
         }
-        this.rTM = false;
+        this.scq = false;
       }
       AppMethodBeat.o(165623);
     }
     
     public final void a(RefreshLoadMoreLayout.c<Object> paramc)
     {
-      AppMethodBeat.i(201684);
+      AppMethodBeat.i(202143);
       com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
       localb.bd(paramc);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/feed/FinderBaseFeedUIContract$ViewCallback$initRecyclerView$1", "com/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback", "onLoadMoreEnd", "(Lcom/tencent/mm/view/RefreshLoadMoreLayout$MoreReason;)V", this, localb.ahq());
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/feed/FinderBaseFeedUIContract$ViewCallback$initRecyclerView$1", "com/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback", "onLoadMoreEnd", "(Lcom/tencent/mm/view/RefreshLoadMoreLayout$MoreReason;)V", this, localb.ahF());
       p.h(paramc, "reason");
-      this.rTN.rTK.cAD();
+      this.scr.sco.cCp();
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/feed/FinderBaseFeedUIContract$ViewCallback$initRecyclerView$1", "com/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback", "onLoadMoreEnd", "(Lcom/tencent/mm/view/RefreshLoadMoreLayout$MoreReason;)V");
-      AppMethodBeat.o(201684);
+      AppMethodBeat.o(202143);
     }
     
     public final void b(RefreshLoadMoreLayout.c<Object> paramc)
@@ -235,25 +235,25 @@ public abstract class a$b
       AppMethodBeat.i(165620);
       com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
       localb.bd(paramc);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/feed/FinderBaseFeedUIContract$ViewCallback$initRecyclerView$1", "com/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback", "onRefreshEnd", "(Lcom/tencent/mm/view/RefreshLoadMoreLayout$MoreReason;)V", this, localb.ahq());
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/feed/FinderBaseFeedUIContract$ViewCallback$initRecyclerView$1", "com/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback", "onRefreshEnd", "(Lcom/tencent/mm/view/RefreshLoadMoreLayout$MoreReason;)V", this, localb.ahF());
       p.h(paramc, "reason");
       super.b(paramc);
-      this.rTN.rTK.cAC();
+      this.scr.sco.cCo();
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/feed/FinderBaseFeedUIContract$ViewCallback$initRecyclerView$1", "com/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback", "onRefreshEnd", "(Lcom/tencent/mm/view/RefreshLoadMoreLayout$MoreReason;)V");
       AppMethodBeat.o(165620);
     }
     
-    public final void bYl()
+    public final void bZA()
     {
       AppMethodBeat.i(165622);
       com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/feed/FinderBaseFeedUIContract$ViewCallback$initRecyclerView$1", "com/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback", "onLoadMoreBegin", "()V", this);
-      super.bYl();
-      h.LTJ.aR((Runnable)new a(this));
+      super.bZA();
+      h.MqF.aO((Runnable)new a(this));
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/feed/FinderBaseFeedUIContract$ViewCallback$initRecyclerView$1", "com/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback", "onLoadMoreBegin", "()V");
       AppMethodBeat.o(165622);
     }
     
-    @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
+    @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
     static final class a
       implements Runnable
     {
@@ -262,12 +262,12 @@ public abstract class a$b
       public final void run()
       {
         AppMethodBeat.i(165618);
-        this.rTO.rTN.rTK.aTt();
+        this.scs.scr.sco.aTS();
         AppMethodBeat.o(165618);
       }
     }
     
-    @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
+    @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
     static final class b
       implements Runnable
     {
@@ -276,23 +276,23 @@ public abstract class a$b
       public final void run()
       {
         AppMethodBeat.i(165619);
-        this.rTO.rTN.rTK.requestRefresh();
+        this.scs.scr.sco.requestRefresh();
         AppMethodBeat.o(165619);
       }
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/finder/feed/FinderBaseFeedUIContract$ViewCallback$initView$1", "Lcom/tencent/mm/ui/widget/TouchMediaPreviewLayout$OnScaleListener;", "focusBanner", "Lcom/tencent/mm/plugin/finder/view/FinderMediaBanner;", "getFocusBanner", "()Lcom/tencent/mm/plugin/finder/view/FinderMediaBanner;", "setFocusBanner", "(Lcom/tencent/mm/plugin/finder/view/FinderMediaBanner;)V", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "getRecyclerView", "()Landroid/support/v7/widget/RecyclerView;", "onScale", "", "detector", "Landroid/view/ScaleGestureDetector;", "onScaleBegin", "onScaleEnd", "", "plugin-finder_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/finder/feed/FinderBaseFeedUIContract$ViewCallback$initView$1", "Lcom/tencent/mm/ui/widget/TouchMediaPreviewLayout$OnScaleListener;", "focusBanner", "Lcom/tencent/mm/plugin/finder/view/FinderMediaBanner;", "getFocusBanner", "()Lcom/tencent/mm/plugin/finder/view/FinderMediaBanner;", "setFocusBanner", "(Lcom/tencent/mm/plugin/finder/view/FinderMediaBanner;)V", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "getRecyclerView", "()Landroid/support/v7/widget/RecyclerView;", "onScale", "", "detector", "Landroid/view/ScaleGestureDetector;", "onScaleBegin", "onScaleEnd", "", "plugin-finder_release"})
   public static final class b
     implements TouchMediaPreviewLayout.b
   {
-    private final RecyclerView gmV;
-    private FinderMediaBanner rTP;
+    private final RecyclerView gpr;
+    private FinderMediaBanner sct;
     
     b()
     {
       AppMethodBeat.i(165627);
-      this.gmV = localObject.rTF.getRecyclerView();
+      this.gpr = localObject.scj.getRecyclerView();
       AppMethodBeat.o(165627);
     }
     
@@ -308,13 +308,13 @@ public abstract class a$b
     {
       AppMethodBeat.i(165624);
       p.h(paramScaleGestureDetector, "detector");
-      paramScaleGestureDetector = this.gmV.o(paramScaleGestureDetector.getFocusX(), paramScaleGestureDetector.getFocusY());
+      paramScaleGestureDetector = this.gpr.o(paramScaleGestureDetector.getFocusX(), paramScaleGestureDetector.getFocusY());
       if (paramScaleGestureDetector != null) {}
       Object localObject;
       for (paramScaleGestureDetector = (FinderMediaBanner)paramScaleGestureDetector.findViewById(2131302203);; paramScaleGestureDetector = null)
       {
-        this.rTP = paramScaleGestureDetector;
-        paramScaleGestureDetector = this.rTP;
+        this.sct = paramScaleGestureDetector;
+        paramScaleGestureDetector = this.sct;
         if (paramScaleGestureDetector == null) {
           break label280;
         }
@@ -322,25 +322,25 @@ public abstract class a$b
         if (paramScaleGestureDetector == null) {
           break label280;
         }
-        localObject = this.rTP;
+        localObject = this.sct;
         if (localObject == null) {
-          p.gfZ();
+          p.gkB();
         }
         paramScaleGestureDetector = paramScaleGestureDetector.ci(((FinderMediaBanner)localObject).getFocusPosition());
         if ((paramScaleGestureDetector == null) || (paramScaleGestureDetector.lQ() != 2)) {
           break label157;
         }
-        localObject = com.tencent.mm.plugin.finder.storage.b.sxa;
-        if (!com.tencent.mm.plugin.finder.storage.b.cFT()) {
+        localObject = com.tencent.mm.plugin.finder.storage.b.sHP;
+        if (!com.tencent.mm.plugin.finder.storage.b.cHQ()) {
           break;
         }
         paramScaleGestureDetector = paramScaleGestureDetector.auu.findViewById(2131299974);
         if (paramScaleGestureDetector == null) {
           break label280;
         }
-        localObject = this.rTN.rTJ;
+        localObject = this.scr.scn;
         if (localObject != null) {
-          ((TouchMediaPreviewLayout)localObject).gW(paramScaleGestureDetector);
+          ((TouchMediaPreviewLayout)localObject).hb(paramScaleGestureDetector);
         }
         AppMethodBeat.o(165624);
         return true;
@@ -350,8 +350,8 @@ public abstract class a$b
       label157:
       if ((paramScaleGestureDetector != null) && (paramScaleGestureDetector.lQ() == 4))
       {
-        localObject = com.tencent.mm.plugin.finder.storage.b.sxa;
-        if (com.tencent.mm.plugin.finder.storage.b.cFU())
+        localObject = com.tencent.mm.plugin.finder.storage.b.sHP;
+        if (com.tencent.mm.plugin.finder.storage.b.cHR())
         {
           paramScaleGestureDetector = (FinderVideoLayout)paramScaleGestureDetector.auu.findViewById(2131299975);
           if (paramScaleGestureDetector != null)
@@ -367,9 +367,9 @@ public abstract class a$b
             {
               paramScaleGestureDetector.setPreview(true);
               paramScaleGestureDetector.setInterceptDetach(true);
-              localObject = this.rTN.rTJ;
+              localObject = this.scr.scn;
               if (localObject != null) {
-                ((TouchMediaPreviewLayout)localObject).gW(paramScaleGestureDetector.getVideoView());
+                ((TouchMediaPreviewLayout)localObject).hb(paramScaleGestureDetector.getVideoView());
               }
               AppMethodBeat.o(165624);
               return true;
@@ -391,14 +391,14 @@ public abstract class a$b
     {
       AppMethodBeat.i(165625);
       p.h(paramScaleGestureDetector, "detector");
-      paramScaleGestureDetector = this.rTN.rTJ;
+      paramScaleGestureDetector = this.scr.scn;
       if (paramScaleGestureDetector != null)
       {
         paramScaleGestureDetector = paramScaleGestureDetector.getTouchView();
         if (!(paramScaleGestureDetector instanceof o)) {
           break label102;
         }
-        paramScaleGestureDetector = this.rTN.rTJ;
+        paramScaleGestureDetector = this.scr.scn;
         if (paramScaleGestureDetector == null) {
           break label78;
         }
@@ -426,7 +426,7 @@ public abstract class a$b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.feed.a.b
  * JD-Core Version:    0.7.0.1
  */

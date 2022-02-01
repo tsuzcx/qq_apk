@@ -5,7 +5,7 @@ import android.os.Build.VERSION;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.deviceinfo.ae;
 import com.tencent.mm.compatible.deviceinfo.k;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public final class o
 {
@@ -17,14 +17,14 @@ public final class o
       AppMethodBeat.o(155911);
       return false;
     }
-    if (ae.gcP.fZi == 1)
+    if (ae.geX.gbp == 1)
     {
       AppMethodBeat.o(155911);
       return true;
     }
     if (Build.VERSION.SDK_INT == 16)
     {
-      if (bt.bI(Build.MANUFACTURER, "").toLowerCase().indexOf("meizu".toLowerCase()) >= 0)
+      if (bu.bI(Build.MANUFACTURER, "").toLowerCase().indexOf("meizu".toLowerCase()) >= 0)
       {
         AppMethodBeat.o(155911);
         return false;
@@ -36,7 +36,7 @@ public final class o
     return false;
   }
   
-  public static String vv(String paramString)
+  public static String vR(String paramString)
   {
     AppMethodBeat.i(155912);
     if (paramString == null)
@@ -44,17 +44,17 @@ public final class o
       AppMethodBeat.o(155912);
       return paramString;
     }
-    if (ae.gcP.fZi == 2)
+    if (ae.geX.gbp == 2)
     {
       AppMethodBeat.o(155912);
       return paramString;
     }
-    if (ae.gcP.fZt == 1)
+    if (ae.geX.gbA == 1)
     {
       AppMethodBeat.o(155912);
       return paramString;
     }
-    if (ae.gcP.fZi == 1)
+    if (ae.geX.gbp == 1)
     {
       if (paramString.toString().contains("\n"))
       {
@@ -69,7 +69,7 @@ public final class o
     {
       if (paramString.toString().contains("\n"))
       {
-        if (bt.bI(Build.MANUFACTURER, "").toLowerCase().indexOf("meizu".toLowerCase()) >= 0)
+        if (bu.bI(Build.MANUFACTURER, "").toLowerCase().indexOf("meizu".toLowerCase()) >= 0)
         {
           AppMethodBeat.o(155912);
           return paramString;

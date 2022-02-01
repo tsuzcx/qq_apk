@@ -11,22 +11,22 @@ public class CGRect
   
   public CGRect()
   {
-    AppMethodBeat.i(219386);
+    AppMethodBeat.i(200179);
     this.origin = new PointF();
     this.size = new CGSize();
-    AppMethodBeat.o(219386);
+    AppMethodBeat.o(200179);
   }
   
   public CGRect(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
     this(new PointF(paramFloat1, paramFloat2), new CGSize(paramFloat3, paramFloat4));
-    AppMethodBeat.i(219384);
-    AppMethodBeat.o(219384);
+    AppMethodBeat.i(200177);
+    AppMethodBeat.o(200177);
   }
   
   public CGRect(PointF paramPointF, CGSize paramCGSize)
   {
-    AppMethodBeat.i(219385);
+    AppMethodBeat.i(200178);
     PointF localPointF = paramPointF;
     if (paramPointF == null) {
       localPointF = new PointF();
@@ -37,45 +37,45 @@ public class CGRect
     }
     this.origin = localPointF;
     this.size = paramPointF;
-    AppMethodBeat.o(219385);
+    AppMethodBeat.o(200178);
   }
   
   public CGRect clone()
   {
-    AppMethodBeat.i(219389);
+    AppMethodBeat.i(200182);
     CGRect localCGRect = new CGRect(this.origin.x, this.origin.y, this.size.width, this.size.height);
-    AppMethodBeat.o(219389);
+    AppMethodBeat.o(200182);
     return localCGRect;
   }
   
   public boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(219387);
+    AppMethodBeat.i(200180);
     if (this == paramObject)
     {
-      AppMethodBeat.o(219387);
+      AppMethodBeat.o(200180);
       return true;
     }
     if ((paramObject == null) || (getClass() != paramObject.getClass()))
     {
-      AppMethodBeat.o(219387);
+      AppMethodBeat.o(200180);
       return false;
     }
     paramObject = (CGRect)paramObject;
     if ((this.origin.equals(paramObject.origin)) && (this.size.equals(paramObject.size)))
     {
-      AppMethodBeat.o(219387);
+      AppMethodBeat.o(200180);
       return true;
     }
-    AppMethodBeat.o(219387);
+    AppMethodBeat.o(200180);
     return false;
   }
   
   public String toString()
   {
-    AppMethodBeat.i(219388);
+    AppMethodBeat.i(200181);
     String str = "[" + this.origin + "," + this.size + "]";
-    AppMethodBeat.o(219388);
+    AppMethodBeat.o(200181);
     return str;
   }
 }

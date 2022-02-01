@@ -3,7 +3,7 @@ package com.tencent.mm.sticker.loader;
 import android.os.Parcelable.Creator;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/sticker/loader/StickerLoadInfo$Companion$CREATOR$1", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/sticker/loader/StickerLoadInfo;", "createFromParcel", "parcel", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/mm/sticker/loader/StickerLoadInfo;", "plugin-sticker_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/sticker/loader/StickerLoadInfo$Companion$CREATOR$1", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/sticker/loader/StickerLoadInfo;", "createFromParcel", "parcel", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/mm/sticker/loader/StickerLoadInfo;", "plugin-sticker_release"})
 public final class StickerLoadInfo$b
   implements Parcelable.Creator<StickerLoadInfo>
 {}

@@ -5,9 +5,9 @@ import com.tencent.mm.plugin.appbrand.d;
 public abstract class a
   extends com.tencent.mm.plugin.appbrand.jsapi.a<d>
 {
-  protected c bkg()
+  protected c bkP()
   {
-    return i.kWd;
+    return i.kZL;
   }
 }
 

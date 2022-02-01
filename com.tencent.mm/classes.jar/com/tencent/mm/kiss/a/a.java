@@ -1,30 +1,30 @@
 package com.tencent.mm.kiss.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.aq;
 
 public final class a
 {
-  private static a gEn;
-  public ap mHandler;
+  private static a gGU;
+  public aq mHandler;
   
   static
   {
     AppMethodBeat.i(140995);
-    gEn = new a();
+    gGU = new a();
     AppMethodBeat.o(140995);
   }
   
   private a()
   {
     AppMethodBeat.i(140994);
-    this.mHandler = new ap("InflateThread");
+    this.mHandler = new aq("InflateThread");
     AppMethodBeat.o(140994);
   }
   
-  public static a akB()
+  public static a akQ()
   {
-    return gEn;
+    return gGU;
   }
 }
 

@@ -3,34 +3,34 @@ package com.tencent.mm.live.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/live/model/LiveConstants$MMKV;", "", "()V", "ANCHOR_VERIFY", "", "getANCHOR_VERIFY", "()Ljava/lang/String;", "KEY_ANCHOR_LIVE_ID", "getKEY_ANCHOR_LIVE_ID", "KEY_VISITOR_MIC_DIALOG", "getKEY_VISITOR_MIC_DIALOG", "TAG_LIVE_CORE", "getTAG_LIVE_CORE", "plugin-logic_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/live/model/LiveConstants$MMKV;", "", "()V", "ANCHOR_VERIFY", "", "getANCHOR_VERIFY", "()Ljava/lang/String;", "KEY_ANCHOR_LIVE_ID", "getKEY_ANCHOR_LIVE_ID", "KEY_VISITOR_MIC_DIALOG", "getKEY_VISITOR_MIC_DIALOG", "TAG_LIVE_CORE", "getTAG_LIVE_CORE", "plugin-logic_release"})
 public final class f$e
 {
-  private static final String gNh = "tag_live_core";
-  private static final String gNi = "key_anchor_live_id";
-  private static final String gNj = "anchor_verify";
-  private static final String gNk = "key_visitor_mic_dialog";
-  public static final e gNl;
+  private static final String gPQ = "tag_live_core";
+  private static final String gPR = "key_anchor_live_id";
+  private static final String gPS = "anchor_verify";
+  private static final String gPT = "key_visitor_mic_dialog";
+  public static final e gPU;
   
   static
   {
-    AppMethodBeat.i(212043);
-    gNl = new e();
-    gNh = "tag_live_core";
-    gNi = "key_anchor_live_id";
-    gNj = "anchor_verify";
-    gNk = "key_visitor_mic_dialog";
-    AppMethodBeat.o(212043);
+    AppMethodBeat.i(215662);
+    gPU = new e();
+    gPQ = "tag_live_core";
+    gPR = "key_anchor_live_id";
+    gPS = "anchor_verify";
+    gPT = "key_visitor_mic_dialog";
+    AppMethodBeat.o(215662);
   }
   
-  public static String anb()
+  public static String anq()
   {
-    return gNh;
+    return gPQ;
   }
   
-  public static String anc()
+  public static String ans()
   {
-    return gNj;
+    return gPS;
   }
 }
 

@@ -1,65 +1,88 @@
 package com.tencent.mm.plugin.normsg.c;
 
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
-import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.normsg.a.b;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.plugin.normsg.b.a;
+import com.tencent.mm.protocal.protobuf.aje;
+import com.tencent.mm.protocal.protobuf.ajg;
+import com.tencent.mm.protocal.r.c;
+import com.tencent.mm.protocal.s.c;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class j
+  implements f
 {
-  private static boolean gJk = false;
-  private static a wvi;
-  
-  public static boolean isConnected()
+  public final void dyJ()
   {
-    return gJk;
+    AppMethodBeat.i(149106);
+    g.ajj().a(3644, this);
+    g.ajj().a(3789, this);
+    g.ajj().a(836, this);
+    g.ajj().a(3944, this);
+    AppMethodBeat.o(149106);
   }
   
-  public static void start()
+  public final void dyK()
   {
-    AppMethodBeat.i(149110);
-    if (wvi == null) {
-      wvi = new a((byte)0);
-    }
-    IntentFilter localIntentFilter = new IntentFilter();
-    localIntentFilter.addAction(b.wtJ.atn(""));
-    aj.getContext().registerReceiver(wvi, localIntentFilter);
-    AppMethodBeat.o(149110);
+    AppMethodBeat.i(149107);
+    g.ajj().b(3644, this);
+    g.ajj().b(3789, this);
+    g.ajj().b(836, this);
+    g.ajj().b(3944, this);
+    AppMethodBeat.o(149107);
   }
   
-  public static void stop()
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
-    AppMethodBeat.i(149111);
-    if (wvi != null) {
-      aj.getContext().unregisterReceiver(wvi);
-    }
-    wvi = null;
-    AppMethodBeat.o(149111);
-  }
-  
-  static final class a
-    extends BroadcastReceiver
-  {
-    public final void onReceive(Context paramContext, Intent paramIntent)
+    AppMethodBeat.i(149108);
+    int i;
+    if (paramn == null)
     {
-      AppMethodBeat.i(149109);
-      if (paramIntent == null)
+      i = -1;
+      ae.i("TrustRequestManager", String.format("onSceneEnd: errType = %s errCode = %s errMsg =  %s reqType = %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString, Integer.valueOf(i) }));
+      if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        AppMethodBeat.o(149109);
-        return;
+        if ((paramn.getType() != 3644) && (paramn.getType() != 3789)) {
+          break label188;
+        }
+        paramString = ((s.c)((com.tencent.mm.plugin.normsg.b.b)paramn).getReqResp().getRespObj()).FGQ;
+        if ((paramString != null) && (paramString.GyI != null))
+        {
+          paramString = paramString.GyI.toByteArray();
+          ae.d("TrustRequestManager", "[debug] onScene end type:[init] dlen:[%d]", new Object[] { Integer.valueOf(paramString.length) });
+          com.tencent.mm.plugin.normsg.a.b.wJt.A(paramString, 1, paramInt2);
+        }
       }
-      j.access$002(paramIntent.getExtras().getBoolean(b.wtJ.atn("3<<;14\"<<")));
-      AppMethodBeat.o(149109);
+    }
+    for (;;)
+    {
+      if (paramInt2 != 0) {
+        com.tencent.mm.plugin.normsg.a.b.wJt.A(null, 0, paramInt2);
+      }
+      dyK();
+      AppMethodBeat.o(149108);
+      return;
+      i = paramn.getType();
+      break;
+      label188:
+      if ((paramn.getType() == 836) || (paramn.getType() == 3944))
+      {
+        paramString = ((r.c)((a)paramn).getReqResp().getRespObj()).FGM;
+        if ((paramString != null) && (paramString.GyI != null))
+        {
+          paramString = paramString.GyI.toByteArray();
+          ae.d("TrustRequestManager", "[debug] onScene end type:[refesh] dlen:[%d]", new Object[] { Integer.valueOf(paramString.length) });
+          com.tencent.mm.plugin.normsg.a.b.wJt.A(paramString, 2, paramInt2);
+        }
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.normsg.c.j
  * JD-Core Version:    0.7.0.1
  */

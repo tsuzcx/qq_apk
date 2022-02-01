@@ -10,10 +10,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.data.q;
-import com.tencent.mm.plugin.sns.model.ag;
+import com.tencent.mm.plugin.sns.data.r;
+import com.tencent.mm.plugin.sns.model.ah;
 import com.tencent.mm.plugin.sns.storage.u;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -22,34 +22,34 @@ import java.util.List;
 public final class c
   extends b
 {
-  private boolean AzA;
-  a AzB;
-  private int AzC;
-  private int Azy;
-  private boolean Azz;
-  private HashMap<String, Bitmap> zVd;
-  boolean zVg;
+  private int AQU;
+  private boolean AQV;
+  private boolean AQW;
+  a AQX;
+  private int AQY;
+  private HashMap<String, Bitmap> Aml;
+  boolean Amo;
   
   public c(Context paramContext, List<?> paramList, boolean paramBoolean, a parama)
   {
     super(paramContext);
     AppMethodBeat.i(100268);
-    this.zVd = new HashMap();
-    this.AzC = 0;
-    super.gf(gg(paramList));
-    this.Azy = 9;
-    this.Azz = paramBoolean;
-    this.AzB = parama;
-    eel();
-    eem();
+    this.Aml = new HashMap();
+    this.AQY = 0;
+    super.go(gp(paramList));
+    this.AQU = 9;
+    this.AQV = paramBoolean;
+    this.AQX = parama;
+    ehT();
+    ehU();
     AppMethodBeat.o(100268);
   }
   
-  private void eel()
+  private void ehT()
   {
     AppMethodBeat.i(100270);
     int i = 0;
-    while (i < this.Azx)
+    while (i < this.AQT)
     {
       d locald = new d((byte)0);
       locald.data = "";
@@ -61,7 +61,7 @@ public final class c
     AppMethodBeat.o(100270);
   }
   
-  private List<d> gg(List<?> paramList)
+  private List<d> gp(List<?> paramList)
   {
     AppMethodBeat.i(100269);
     ArrayList localArrayList = new ArrayList(paramList.size());
@@ -80,15 +80,15 @@ public final class c
     return localArrayList;
   }
   
-  public final boolean RC(int paramInt)
+  public final boolean Sj(int paramInt)
   {
     AppMethodBeat.i(100277);
-    if (paramInt < this.Azx)
+    if (paramInt < this.AQT)
     {
       AppMethodBeat.o(100277);
       return false;
     }
-    if (this.AzA)
+    if (this.AQW)
     {
       if (paramInt != getCount() - 1)
       {
@@ -98,20 +98,20 @@ public final class c
       AppMethodBeat.o(100277);
       return false;
     }
-    boolean bool = super.RC(paramInt);
+    boolean bool = super.Sj(paramInt);
     AppMethodBeat.o(100277);
     return bool;
   }
   
-  public final boolean RD(int paramInt)
+  public final boolean Sk(int paramInt)
   {
     AppMethodBeat.i(100278);
-    if (paramInt < this.Azx)
+    if (paramInt < this.AQT)
     {
       AppMethodBeat.o(100278);
       return false;
     }
-    if (this.AzA)
+    if (this.AQW)
     {
       if (paramInt != getCount() - 1)
       {
@@ -121,7 +121,7 @@ public final class c
       AppMethodBeat.o(100278);
       return false;
     }
-    boolean bool = super.RD(paramInt);
+    boolean bool = super.Sk(paramInt);
     AppMethodBeat.o(100278);
     return bool;
   }
@@ -130,35 +130,35 @@ public final class c
   {
     AppMethodBeat.i(100272);
     super.clear();
-    this.AzA = false;
+    this.AQW = false;
     AppMethodBeat.o(100272);
   }
   
-  public final void eem()
+  public final void ehU()
   {
     AppMethodBeat.i(100271);
-    ad.v("DynamicGridAdapter", "showAddImg %s, getCount %d, getHeaderCount %d, maxShowCount %d， showing %s", new Object[] { Boolean.valueOf(this.Azz), Integer.valueOf(getCount()), Integer.valueOf(this.Azx), Integer.valueOf(this.Azy), Boolean.valueOf(this.AzA) });
-    if ((this.Azz) && (een() < this.Azy))
+    ae.v("DynamicGridAdapter", "showAddImg %s, getCount %d, getHeaderCount %d, maxShowCount %d， showing %s", new Object[] { Boolean.valueOf(this.AQV), Integer.valueOf(getCount()), Integer.valueOf(this.AQT), Integer.valueOf(this.AQU), Boolean.valueOf(this.AQW) });
+    if ((this.AQV) && (ehV() < this.AQU))
     {
-      if (!this.AzA)
+      if (!this.AQW)
       {
-        this.AzA = true;
+        this.AQW = true;
         add("");
         AppMethodBeat.o(100271);
       }
     }
     else {
-      this.AzA = false;
+      this.AQW = false;
     }
     AppMethodBeat.o(100271);
   }
   
-  public final int een()
+  public final int ehV()
   {
     AppMethodBeat.i(100274);
     int j = getCount();
-    int k = this.Azx;
-    if (this.AzA) {}
+    int k = this.AQT;
+    if (this.AQW) {}
     for (int i = 1;; i = 0)
     {
       AppMethodBeat.o(100274);
@@ -189,45 +189,45 @@ public final class c
       localObject1 = LayoutInflater.from(getContext()).inflate(2131495581, paramViewGroup, false);
       localObject2 = new b((View)localObject1, (byte)0);
       ((View)localObject1).setTag(2131300987, localObject2);
-      localObject3 = ((b)localObject2).dsD;
-      if (this.AzC == 0)
+      localObject3 = ((b)localObject2).dtJ;
+      if (this.AQY == 0)
       {
-        ag.dTT();
+        ah.dXt();
         i = u.getScreenWidth();
         paramViewGroup = (ViewGroup)localObject2;
         paramView = (View)localObject1;
         if (i != 0) {
-          this.AzC = ((i - this.mContext.getResources().getDimensionPixelSize(2131166845) * 4 - this.mContext.getResources().getDimensionPixelSize(2131165483) * 2) / 3);
+          this.AQY = ((i - this.mContext.getResources().getDimensionPixelSize(2131166845) * 4 - this.mContext.getResources().getDimensionPixelSize(2131165483) * 2) / 3);
         }
       }
       else
       {
         paramView = (LinearLayout.LayoutParams)((ImageView)localObject3).getLayoutParams();
-        paramView.width = this.AzC;
-        paramView.height = this.AzC;
+        paramView.width = this.AQY;
+        paramView.height = this.AQY;
         ((ImageView)localObject3).setLayoutParams(paramView);
         paramView = (View)localObject1;
         paramViewGroup = (ViewGroup)localObject2;
       }
       localObject1 = getItem(paramInt).toString();
-      localObject2 = paramViewGroup.dsD;
+      localObject2 = paramViewGroup.dtJ;
       if (!TextUtils.isEmpty((CharSequence)localObject1)) {
         break label320;
       }
       ((ImageView)localObject2).setBackgroundResource(2131100938);
       ((ImageView)localObject2).setImageResource(2131689536);
-      ((ImageView)localObject2).setContentDescription(paramViewGroup.dsD.getContext().getString(2131763773));
-      int i = paramViewGroup.AzD.AzC * 35 / 100;
+      ((ImageView)localObject2).setContentDescription(paramViewGroup.dtJ.getContext().getString(2131763773));
+      int i = paramViewGroup.AQZ.AQY * 35 / 100;
       ((ImageView)localObject2).setPadding(i, i, i, i);
       if (paramInt <= 0) {
         break label293;
       }
       paramViewGroup.view.setTag(Integer.valueOf(-1));
       label257:
-      if (paramInt >= this.Azx) {
+      if (paramInt >= this.AQT) {
         break label445;
       }
-      paramViewGroup.dsD.setVisibility(4);
+      paramViewGroup.dtJ.setVisibility(4);
     }
     for (;;)
     {
@@ -236,27 +236,27 @@ public final class c
       paramViewGroup = (b)paramView.getTag(2131300987);
       break;
       label293:
-      if (paramInt >= paramViewGroup.AzD.Azx) {
+      if (paramInt >= paramViewGroup.AQZ.AQT) {
         break label257;
       }
       paramViewGroup.view.setTag(Integer.valueOf(2147483647));
       break label257;
       label320:
-      paramViewGroup.view.setTag(Integer.valueOf(paramInt - paramViewGroup.AzD.Azx));
+      paramViewGroup.view.setTag(Integer.valueOf(paramInt - paramViewGroup.AQZ.AQT));
       ((ImageView)localObject2).setBackgroundDrawable(null);
       ((ImageView)localObject2).setTag(localObject1);
-      ((ImageView)localObject2).setContentDescription(paramViewGroup.dsD.getContext().getString(2131763849));
+      ((ImageView)localObject2).setContentDescription(paramViewGroup.dtJ.getContext().getString(2131763849));
       ((ImageView)localObject2).setPadding(0, 0, 0, 0);
-      localObject3 = (Bitmap)paramViewGroup.AzD.zVd.get(localObject1);
-      if (!q.I((Bitmap)localObject3))
+      localObject3 = (Bitmap)paramViewGroup.AQZ.Aml.get(localObject1);
+      if (!r.J((Bitmap)localObject3))
       {
-        new c.c(paramViewGroup.AzD, (ImageView)localObject2, (String)localObject1).x(new String[] { "" });
+        new c.c(paramViewGroup.AQZ, (ImageView)localObject2, (String)localObject1).x(new String[] { "" });
         break label257;
       }
       ((ImageView)localObject2).setImageBitmap((Bitmap)localObject3);
       break label257;
       label445:
-      paramViewGroup.dsD.setVisibility(0);
+      paramViewGroup.dtJ.setVisibility(0);
       paramView.setVisibility(0);
     }
   }
@@ -266,42 +266,42 @@ public final class c
     return 2;
   }
   
-  public final void gf(List<?> paramList)
+  public final void go(List<?> paramList)
   {
     AppMethodBeat.i(100273);
-    super.gf(gg(paramList));
-    eel();
-    eem();
+    super.go(gp(paramList));
+    ehT();
+    ehU();
     AppMethodBeat.o(100273);
   }
   
-  public final void hV(int paramInt1, int paramInt2)
+  public final void hY(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(100279);
-    super.hV(paramInt1, paramInt2);
-    if (this.AzB != null) {
-      this.AzB.hN(paramInt1 - this.Azx, paramInt2 - this.Azx);
+    super.hY(paramInt1, paramInt2);
+    if (this.AQX != null) {
+      this.AQX.hQ(paramInt1 - this.AQT, paramInt2 - this.AQT);
     }
     AppMethodBeat.o(100279);
   }
   
   public static abstract interface a
   {
-    public abstract void hN(int paramInt1, int paramInt2);
+    public abstract void hQ(int paramInt1, int paramInt2);
     
     public abstract void removeItem(int paramInt);
   }
   
   final class b
   {
-    ImageView dsD;
+    ImageView dtJ;
     View view;
     
     private b(View paramView)
     {
       AppMethodBeat.i(100263);
       this.view = paramView;
-      this.dsD = ((ImageView)paramView.findViewById(2131301202));
+      this.dtJ = ((ImageView)paramView.findViewById(2131301202));
       AppMethodBeat.o(100263);
     }
   }

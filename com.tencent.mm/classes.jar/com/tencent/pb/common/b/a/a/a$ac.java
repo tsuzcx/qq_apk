@@ -6,8 +6,8 @@ import com.google.b.a.e;
 public final class a$ac
   extends e
 {
-  public int CcE = 0;
-  public long CcF = 0L;
+  public int Cuf = 0;
+  public long Cug = 0L;
   public String groupId = "";
   
   public a$ac()
@@ -20,11 +20,11 @@ public final class a$ac
     if (!this.groupId.equals("")) {
       paramb.d(1, this.groupId);
     }
-    if (this.CcE != 0) {
-      paramb.bx(2, this.CcE);
+    if (this.Cuf != 0) {
+      paramb.bx(2, this.Cuf);
     }
-    if (this.CcF != 0L) {
-      paramb.n(3, this.CcF);
+    if (this.Cug != 0L) {
+      paramb.n(3, this.Cug);
     }
     super.a(paramb);
   }
@@ -37,12 +37,12 @@ public final class a$ac
       i = j + b.e(1, this.groupId);
     }
     j = i;
-    if (this.CcE != 0) {
-      j = i + b.bz(2, this.CcE);
+    if (this.Cuf != 0) {
+      j = i + b.bz(2, this.Cuf);
     }
     i = j;
-    if (this.CcF != 0L) {
-      i = j + b.p(3, this.CcF);
+    if (this.Cug != 0L) {
+      i = j + b.p(3, this.Cug);
     }
     return i;
   }

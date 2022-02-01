@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.wxcredit.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.wallet_core.tenpay.model.m;
 import java.util.HashMap;
 import java.util.Map;
@@ -10,15 +10,15 @@ import org.json.JSONObject;
 public final class b
   extends m
 {
-  public boolean EGs;
-  public String hbO;
+  public boolean EYO;
+  public String heC;
   public String name;
   public String token;
   
   public b(String paramString1, int paramInt, String paramString2)
   {
     AppMethodBeat.i(72299);
-    this.EGs = true;
+    this.EYO = true;
     HashMap localHashMap = new HashMap();
     localHashMap.put("passwd", paramString1);
     localHashMap.put("bank_type", paramString2);
@@ -38,7 +38,7 @@ public final class b
   public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(72300);
-    ad.d("Micromsg.NetSceneTenpayCheckPwd", "errCode " + paramInt + " errMsg: " + paramString);
+    ae.d("Micromsg.NetSceneTenpayCheckPwd", "errCode " + paramInt + " errMsg: " + paramString);
     if (paramInt != 0)
     {
       AppMethodBeat.o(72300);
@@ -47,19 +47,19 @@ public final class b
     this.token = paramJSONObject.optString("session_key");
     if ("1".equals(paramJSONObject.optString("all_info")))
     {
-      this.EGs = false;
+      this.EYO = false;
       AppMethodBeat.o(72300);
       return;
     }
-    this.EGs = true;
+    this.EYO = true;
     this.name = paramJSONObject.optString("name");
-    this.hbO = paramJSONObject.optString("cre_id");
+    this.heC = paramJSONObject.optString("cre_id");
     AppMethodBeat.o(72300);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.wxcredit.a.b
  * JD-Core Version:    0.7.0.1
  */

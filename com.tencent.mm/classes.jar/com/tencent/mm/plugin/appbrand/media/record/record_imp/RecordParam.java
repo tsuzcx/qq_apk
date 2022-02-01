@@ -13,13 +13,13 @@ public class RecordParam
   public static final Parcelable.Creator<RecordParam> CREATOR;
   public String appId;
   public int duration;
-  public String gdn;
-  public String kwT;
-  public b lSq;
-  public f lSr;
-  public int lup;
-  public int luq;
-  public double lur;
+  public String gfv;
+  public String kAi;
+  public b lWR;
+  public f lWS;
+  public int lyO;
+  public int lyP;
+  public double lyQ;
   public String processName;
   public int sampleRate;
   public int scene;
@@ -35,13 +35,13 @@ public class RecordParam
   {
     this.duration = 0;
     this.sampleRate = 0;
-    this.lup = 0;
-    this.luq = 0;
+    this.lyO = 0;
+    this.lyP = 0;
     this.scene = 0;
-    this.lur = 0.0D;
+    this.lyQ = 0.0D;
     this.processName = "";
     this.appId = "";
-    this.lSq = b.lRf;
+    this.lWR = b.lVG;
   }
   
   public RecordParam(Parcel paramParcel)
@@ -49,24 +49,24 @@ public class RecordParam
     AppMethodBeat.i(146358);
     this.duration = 0;
     this.sampleRate = 0;
-    this.lup = 0;
-    this.luq = 0;
+    this.lyO = 0;
+    this.lyP = 0;
     this.scene = 0;
-    this.lur = 0.0D;
+    this.lyQ = 0.0D;
     this.processName = "";
     this.appId = "";
-    this.lSq = b.lRf;
+    this.lWR = b.lVG;
     this.duration = paramParcel.readInt();
     this.sampleRate = paramParcel.readInt();
-    this.lup = paramParcel.readInt();
-    this.luq = paramParcel.readInt();
-    this.kwT = paramParcel.readString();
-    this.gdn = paramParcel.readString();
+    this.lyO = paramParcel.readInt();
+    this.lyP = paramParcel.readInt();
+    this.kAi = paramParcel.readString();
+    this.gfv = paramParcel.readString();
     this.scene = paramParcel.readInt();
-    this.lur = paramParcel.readDouble();
+    this.lyQ = paramParcel.readDouble();
     this.processName = paramParcel.readString();
     this.appId = paramParcel.readString();
-    this.lSq = b.values()[paramParcel.readInt()];
+    this.lWR = b.values()[paramParcel.readInt()];
     AppMethodBeat.o(146358);
   }
   
@@ -80,15 +80,15 @@ public class RecordParam
     AppMethodBeat.i(146359);
     paramParcel.writeInt(this.duration);
     paramParcel.writeInt(this.sampleRate);
-    paramParcel.writeInt(this.lup);
-    paramParcel.writeInt(this.luq);
-    paramParcel.writeString(this.kwT);
-    paramParcel.writeString(this.gdn);
+    paramParcel.writeInt(this.lyO);
+    paramParcel.writeInt(this.lyP);
+    paramParcel.writeString(this.kAi);
+    paramParcel.writeString(this.gfv);
     paramParcel.writeInt(this.scene);
-    paramParcel.writeDouble(this.lur);
+    paramParcel.writeDouble(this.lyQ);
     paramParcel.writeString(this.processName);
     paramParcel.writeString(this.appId);
-    paramParcel.writeInt(this.lSq.ordinal());
+    paramParcel.writeInt(this.lWR.ordinal());
     AppMethodBeat.o(146359);
   }
 }

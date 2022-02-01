@@ -22,18 +22,18 @@ import com.tencent.mm.ui.widget.snackbar.a.c;
 public class VoipScoreDialog
   extends MMActivity
 {
-  private VoipScoreState CaW;
-  private ViewGroup CjN;
-  private ImageView[] CjO;
-  private d CjP;
-  private int CjQ;
+  private ViewGroup CBr;
+  private ImageView[] CBs;
+  private d CBt;
+  private int CBu;
+  private VoipScoreState Csx;
   
   public VoipScoreDialog()
   {
     AppMethodBeat.i(115385);
-    this.CjO = new ImageView[5];
-    this.CjP = null;
-    this.CjQ = 0;
+    this.CBs = new ImageView[5];
+    this.CBt = null;
+    this.CBu = 0;
     AppMethodBeat.o(115385);
   }
   
@@ -46,30 +46,30 @@ public class VoipScoreDialog
   {
     AppMethodBeat.i(115386);
     super.onCreate(paramBundle);
-    this.CaW = ((VoipScoreState)getIntent().getParcelableExtra("key_score_state"));
-    if (this.CaW == null)
+    this.Csx = ((VoipScoreState)getIntent().getParcelableExtra("key_score_state"));
+    if (this.Csx == null)
     {
       com.tencent.mm.ipcinvoker.h.b.e("MicroMsg.VoipScoreDialog", "onCreate error, scoreState is null", new Object[0]);
       finish();
       AppMethodBeat.o(115386);
       return;
     }
-    this.CjN = ((ViewGroup)View.inflate(this, 2131495880, null));
-    this.CjO[0] = ((ImageView)this.CjN.findViewById(2131304349));
-    this.CjO[1] = ((ImageView)this.CjN.findViewById(2131304350));
-    this.CjO[2] = ((ImageView)this.CjN.findViewById(2131304351));
-    this.CjO[3] = ((ImageView)this.CjN.findViewById(2131304352));
-    this.CjO[4] = ((ImageView)this.CjN.findViewById(2131304353));
+    this.CBr = ((ViewGroup)View.inflate(this, 2131495880, null));
+    this.CBs[0] = ((ImageView)this.CBr.findViewById(2131304349));
+    this.CBs[1] = ((ImageView)this.CBr.findViewById(2131304350));
+    this.CBs[2] = ((ImageView)this.CBr.findViewById(2131304351));
+    this.CBs[3] = ((ImageView)this.CBr.findViewById(2131304352));
+    this.CBs[4] = ((ImageView)this.CBr.findViewById(2131304353));
     int i = 0;
-    while (i < this.CjO.length)
+    while (i < this.CBs.length)
     {
-      this.CjO[i].setOnClickListener(new VoipScoreDialog.1(this, i));
+      this.CBs[i].setOnClickListener(new VoipScoreDialog.1(this, i));
       i += 1;
     }
     paramBundle = new f.a(this);
-    paramBundle.av(this.CaW.CdC);
-    paramBundle.hb(this.CjN);
-    paramBundle.aXS(getString(2131764912));
+    paramBundle.au(this.Csx.Cvd);
+    paramBundle.hg(this.CBr);
+    paramBundle.aZu(getString(2131764912));
     paramBundle.b(new f.c()
     {
       public final void d(boolean paramAnonymousBoolean, String paramAnonymousString)
@@ -80,7 +80,7 @@ public class VoipScoreDialog
         AppMethodBeat.o(115380);
       }
     });
-    paramBundle.yU(false);
+    paramBundle.zi(false);
     paramBundle.b(new DialogInterface.OnDismissListener()
     {
       public final void onDismiss(DialogInterface paramAnonymousDialogInterface)
@@ -90,10 +90,10 @@ public class VoipScoreDialog
         AppMethodBeat.o(115381);
       }
     });
-    this.CjP = paramBundle.jcs;
-    if (this.CjP != null)
+    this.CBt = paramBundle.jfl;
+    if (this.CBt != null)
     {
-      this.CjP.show();
+      this.CBt.show();
       AppMethodBeat.o(115386);
       return;
     }
@@ -109,7 +109,7 @@ public class VoipScoreDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.ui.VoipScoreDialog
  * JD-Core Version:    0.7.0.1
  */

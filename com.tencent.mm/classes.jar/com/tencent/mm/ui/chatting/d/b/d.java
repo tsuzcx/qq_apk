@@ -1,8 +1,8 @@
 package com.tencent.mm.ui.chatting.d.b;
 
-import com.tencent.mm.am.a.k;
+import com.tencent.mm.al.a.k;
 import com.tencent.mm.pluginsdk.ui.chat.ChatFooter.g;
-import com.tencent.mm.storage.bu;
+import com.tencent.mm.storage.bv;
 import com.tencent.mm.ui.chatting.d.ad;
 import com.tencent.mm.ui.chatting.d.c.a;
 import com.tencent.mm.ui.chatting.e.a;
@@ -13,53 +13,53 @@ import java.util.List;
 public abstract interface d
   extends ad
 {
-  public abstract String Es(String paramString);
+  public abstract String EU(String paramString);
   
-  public abstract long TD();
+  public abstract long TJ();
   
   public abstract boolean a(a parama, bk parambk);
   
-  public abstract String aVZ(String paramString);
+  public abstract String aXA(String paramString);
   
-  public abstract void bp(LinkedList<String> paramLinkedList);
+  public abstract void bq(LinkedList<String> paramLinkedList);
   
-  public abstract com.tencent.mm.api.c fCE();
+  public abstract com.tencent.mm.api.c fGG();
   
-  public abstract com.tencent.mm.am.a.c fCF();
+  public abstract com.tencent.mm.al.a.c fGH();
   
-  public abstract k fCG();
+  public abstract k fGI();
   
-  public abstract boolean fCH();
+  public abstract boolean fGJ();
   
-  public abstract boolean fCI();
+  public abstract boolean fGK();
   
-  public abstract boolean fCJ();
+  public abstract boolean fGL();
   
-  public abstract c.a fCK();
+  public abstract c.a fGM();
   
-  public abstract ChatFooter.g fCL();
+  public abstract ChatFooter.g fGN();
   
-  public abstract List<bu> fCM();
+  public abstract List<bv> fGO();
   
-  public abstract boolean fCN();
+  public abstract boolean fGP();
   
-  public abstract void fCO();
+  public abstract void fGQ();
   
-  public abstract void fCP();
+  public abstract void fGR();
   
-  public abstract int fCQ();
+  public abstract int fGS();
   
-  public abstract String fCR();
+  public abstract String fGT();
   
-  public abstract boolean fCS();
+  public abstract boolean fGU();
   
-  public abstract boolean fCT();
+  public abstract boolean fGV();
   
-  public abstract long fCU();
+  public abstract long fGW();
   
-  public abstract void fCV();
+  public abstract void fGX();
   
-  public abstract void gy(String paramString, int paramInt);
+  public abstract void gH(String paramString, int paramInt);
 }
 
 

@@ -3,9 +3,7 @@ package com.tencent.xweb.xwalk.a;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import com.tencent.xweb.util.BSpatch;
-import com.tencent.xweb.util.c;
 import com.tencent.xweb.util.g;
-import com.tencent.xweb.xwalk.updater.SchedulerConfig;
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -16,16 +14,16 @@ import org.xwalk.core.XWalkEnvironment;
 
 public abstract class f
 {
-  public int MxJ = -1;
+  public int MUN = -1;
   
   public f()
   {
-    gdk();
+    ghM();
   }
   
-  private String aiN(int paramInt)
+  private String ajx(int paramInt)
   {
-    Object localObject = aiK(paramInt);
+    Object localObject = aju(paramInt);
     if (((String)localObject).isEmpty())
     {
       Log.e(getPluginName(), "getPatchDir, versionDir is empty");
@@ -51,7 +49,7 @@ public abstract class f
       Log.e(getPluginName(), "getPatchFile, fileName is empty");
       return "";
     }
-    String str = aiN(paramInt);
+    String str = ajx(paramInt);
     if (str.isEmpty())
     {
       Log.e(getPluginName(), "getPatchFile, patchDir is null");
@@ -60,9 +58,9 @@ public abstract class f
     return str + File.separator + paramString;
   }
   
-  public abstract int a(SchedulerConfig paramSchedulerConfig);
+  public abstract int a(com.tencent.xweb.xwalk.updater.c paramc);
   
-  public final boolean aiJ(int paramInt)
+  public final boolean ajt(int paramInt)
   {
     if (XWalkEnvironment.getApplicationContext() == null)
     {
@@ -79,13 +77,13 @@ public abstract class f
     ((SharedPreferences.Editor)localObject).putInt("availableVersion", paramInt);
     boolean bool = ((SharedPreferences.Editor)localObject).commit();
     if (bool) {
-      this.MxJ = paramInt;
+      this.MUN = paramInt;
     }
     Log.i(getPluginName(), "setVer, version = " + paramInt + ", isNow = true, ret = " + bool);
     return bool;
   }
   
-  public final String aiK(int paramInt)
+  public final String aju(int paramInt)
   {
     Object localObject;
     if (XWalkEnvironment.getApplicationContext() == null)
@@ -112,9 +110,9 @@ public abstract class f
     return str;
   }
   
-  public final String aiL(int paramInt)
+  public final String ajv(int paramInt)
   {
-    Object localObject = aiK(paramInt);
+    Object localObject = aju(paramInt);
     if ((localObject == null) || (((String)localObject).isEmpty()))
     {
       Log.e(getPluginName(), "getPrivateCacheDir, versionDir is empty");
@@ -133,9 +131,9 @@ public abstract class f
     return str;
   }
   
-  public final String aiM(int paramInt)
+  public final String ajw(int paramInt)
   {
-    Object localObject = aiK(paramInt);
+    Object localObject = aju(paramInt);
     if (((String)localObject).isEmpty())
     {
       Log.e(getPluginName(), "getExtractDir, versionDir is empty");
@@ -154,9 +152,9 @@ public abstract class f
     return str;
   }
   
-  public final void aiO(int paramInt)
+  public final void ajy(int paramInt)
   {
-    int i = this.MxJ;
+    int i = this.MUN;
     if (i <= 0) {
       Log.e(getPluginName(), "reportUsingVersion, not installed");
     }
@@ -199,7 +197,7 @@ public abstract class f
   }
   
   /* Error */
-  protected final boolean b(SchedulerConfig paramSchedulerConfig)
+  protected final boolean b(com.tencent.xweb.xwalk.updater.c paramc)
   {
     // Byte code:
     //   0: aload_0
@@ -209,21 +207,21 @@ public abstract class f
     //   8: ldc 208
     //   10: invokespecial 114	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   13: aload_1
-    //   14: getfield 213	com/tencent/xweb/xwalk/updater/SchedulerConfig:version	I
+    //   14: getfield 213	com/tencent/xweb/xwalk/updater/c:version	I
     //   17: invokevirtual 117	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   20: invokevirtual 59	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   23: invokestatic 125	org/xwalk/core/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   26: new 50	java/io/File
     //   29: dup
     //   30: aload_1
-    //   31: getfield 216	com/tencent/xweb/xwalk/updater/SchedulerConfig:path	Ljava/lang/String;
+    //   31: getfield 216	com/tencent/xweb/xwalk/updater/c:path	Ljava/lang/String;
     //   34: invokespecial 62	java/io/File:<init>	(Ljava/lang/String;)V
     //   37: astore 5
     //   39: aload_1
-    //   40: getfield 216	com/tencent/xweb/xwalk/updater/SchedulerConfig:path	Ljava/lang/String;
+    //   40: getfield 216	com/tencent/xweb/xwalk/updater/c:path	Ljava/lang/String;
     //   43: aload_1
-    //   44: getfield 219	com/tencent/xweb/xwalk/updater/SchedulerConfig:Mys	Ljava/lang/String;
-    //   47: invokestatic 225	com/tencent/xweb/util/d:nh	(Ljava/lang/String;Ljava/lang/String;)Z
+    //   44: getfield 219	com/tencent/xweb/xwalk/updater/c:MVw	Ljava/lang/String;
+    //   47: invokestatic 225	com/tencent/xweb/util/d:nn	(Ljava/lang/String;Ljava/lang/String;)Z
     //   50: ifne +32 -> 82
     //   53: aload_0
     //   54: invokevirtual 31	com/tencent/xweb/xwalk/a/f:getPluginName	()Ljava/lang/String;
@@ -242,7 +240,7 @@ public abstract class f
     //   82: new 238	java/util/zip/ZipFile
     //   85: dup
     //   86: aload_1
-    //   87: getfield 216	com/tencent/xweb/xwalk/updater/SchedulerConfig:path	Ljava/lang/String;
+    //   87: getfield 216	com/tencent/xweb/xwalk/updater/c:path	Ljava/lang/String;
     //   90: invokespecial 239	java/util/zip/ZipFile:<init>	(Ljava/lang/String;)V
     //   93: astore_3
     //   94: aload_3
@@ -276,13 +274,13 @@ public abstract class f
     //   168: invokevirtual 279	java/util/zip/ZipFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
     //   171: astore 7
     //   173: aload_1
-    //   174: getfield 283	com/tencent/xweb/xwalk/updater/SchedulerConfig:MyT	Z
+    //   174: getfield 283	com/tencent/xweb/xwalk/updater/c:MVY	Z
     //   177: ifeq +62 -> 239
     //   180: new 50	java/io/File
     //   183: dup
     //   184: aload_0
     //   185: aload_1
-    //   186: getfield 213	com/tencent/xweb/xwalk/updater/SchedulerConfig:version	I
+    //   186: getfield 213	com/tencent/xweb/xwalk/updater/c:version	I
     //   189: aload 4
     //   191: invokespecial 285	com/tencent/xweb/xwalk/a/f:de	(ILjava/lang/String;)Ljava/lang/String;
     //   194: invokespecial 62	java/io/File:<init>	(Ljava/lang/String;)V
@@ -309,7 +307,7 @@ public abstract class f
     //   242: dup
     //   243: aload_0
     //   244: aload_1
-    //   245: getfield 213	com/tencent/xweb/xwalk/updater/SchedulerConfig:version	I
+    //   245: getfield 213	com/tencent/xweb/xwalk/updater/c:version	I
     //   248: aload 4
     //   250: invokevirtual 293	com/tencent/xweb/xwalk/a/f:dd	(ILjava/lang/String;)Ljava/lang/String;
     //   253: invokespecial 62	java/io/File:<init>	(Ljava/lang/String;)V
@@ -342,10 +340,10 @@ public abstract class f
     //   313: iconst_0
     //   314: ireturn
     //   315: aload_1
-    //   316: getfield 298	com/tencent/xweb/xwalk/updater/SchedulerConfig:Mzc	Z
+    //   316: getfield 298	com/tencent/xweb/xwalk/updater/c:MWh	Z
     //   319: ifne +12 -> 331
     //   322: aload_1
-    //   323: getfield 283	com/tencent/xweb/xwalk/updater/SchedulerConfig:MyT	Z
+    //   323: getfield 283	com/tencent/xweb/xwalk/updater/c:MVY	Z
     //   326: istore_2
     //   327: iload_2
     //   328: ifeq +23 -> 351
@@ -361,9 +359,9 @@ public abstract class f
     //   350: ireturn
     //   351: aload_0
     //   352: aload_1
-    //   353: getfield 213	com/tencent/xweb/xwalk/updater/SchedulerConfig:version	I
+    //   353: getfield 213	com/tencent/xweb/xwalk/updater/c:version	I
     //   356: iconst_0
-    //   357: invokevirtual 302	com/tencent/xweb/xwalk/a/f:br	(IZ)Z
+    //   357: invokevirtual 302	com/tencent/xweb/xwalk/a/f:bA	(IZ)Z
     //   360: ifne +33 -> 393
     //   363: aload_0
     //   364: invokevirtual 31	com/tencent/xweb/xwalk/a/f:getPluginName	()Ljava/lang/String;
@@ -417,7 +415,7 @@ public abstract class f
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	456	0	this	f
-    //   0	456	1	paramSchedulerConfig	SchedulerConfig
+    //   0	456	1	paramc	com.tencent.xweb.xwalk.updater.c
     //   326	2	2	bool	boolean
     //   93	351	3	localObject1	Object
     //   450	1	3	localException1	Exception
@@ -448,24 +446,22 @@ public abstract class f
     //   82	94	450	java/lang/Exception
   }
   
-  public abstract String bq(int paramInt, boolean paramBoolean);
-  
   /* Error */
-  public final boolean br(int paramInt, boolean paramBoolean)
+  public final boolean bA(int paramInt, boolean paramBoolean)
   {
     // Byte code:
     //   0: aload_0
     //   1: invokevirtual 31	com/tencent/xweb/xwalk/a/f:getPluginName	()Ljava/lang/String;
-    //   4: ldc_w 308
+    //   4: ldc_w 306
     //   7: iload_1
-    //   8: invokestatic 311	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   11: invokevirtual 315	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   8: invokestatic 309	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   11: invokevirtual 313	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
     //   14: invokestatic 125	org/xwalk/core/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   17: iload_1
     //   18: ifge +15 -> 33
     //   21: aload_0
     //   22: invokevirtual 31	com/tencent/xweb/xwalk/a/f:getPluginName	()Ljava/lang/String;
-    //   25: ldc_w 317
+    //   25: ldc_w 315
     //   28: invokestatic 125	org/xwalk/core/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   31: iconst_0
     //   32: ireturn
@@ -473,7 +469,7 @@ public abstract class f
     //   36: dup
     //   37: aload_0
     //   38: iload_1
-    //   39: ldc_w 319
+    //   39: ldc_w 317
     //   42: invokevirtual 293	com/tencent/xweb/xwalk/a/f:dd	(ILjava/lang/String;)Ljava/lang/String;
     //   45: invokespecial 62	java/io/File:<init>	(Ljava/lang/String;)V
     //   48: astore_3
@@ -484,28 +480,28 @@ public abstract class f
     //   57: ifeq +15 -> 72
     //   60: aload_0
     //   61: invokevirtual 31	com/tencent/xweb/xwalk/a/f:getPluginName	()Ljava/lang/String;
-    //   64: ldc_w 321
+    //   64: ldc_w 319
     //   67: invokestatic 125	org/xwalk/core/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   70: iconst_1
     //   71: ireturn
     //   72: aload_0
     //   73: invokevirtual 31	com/tencent/xweb/xwalk/a/f:getPluginName	()Ljava/lang/String;
-    //   76: ldc_w 323
+    //   76: ldc_w 321
     //   79: invokestatic 39	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   82: iconst_0
     //   83: ireturn
-    //   84: new 325	java/io/BufferedReader
+    //   84: new 323	java/io/BufferedReader
     //   87: dup
-    //   88: new 327	java/io/FileReader
+    //   88: new 325	java/io/FileReader
     //   91: dup
     //   92: aload_3
-    //   93: invokespecial 330	java/io/FileReader:<init>	(Ljava/io/File;)V
-    //   96: invokespecial 333	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   93: invokespecial 328	java/io/FileReader:<init>	(Ljava/io/File;)V
+    //   96: invokespecial 331	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
     //   99: astore 4
     //   101: aload 4
     //   103: astore_3
     //   104: aload 4
-    //   106: invokevirtual 336	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   106: invokevirtual 334	java/io/BufferedReader:readLine	()Ljava/lang/String;
     //   109: astore 5
     //   111: aload 5
     //   113: ifnull +135 -> 248
@@ -517,8 +513,8 @@ public abstract class f
     //   127: aload 4
     //   129: astore_3
     //   130: aload 5
-    //   132: ldc_w 338
-    //   135: invokevirtual 342	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
+    //   132: ldc_w 336
+    //   135: invokevirtual 340	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
     //   138: astore 6
     //   140: aload 4
     //   142: astore_3
@@ -563,16 +559,16 @@ public abstract class f
     //   207: aload 5
     //   209: invokevirtual 293	com/tencent/xweb/xwalk/a/f:dd	(ILjava/lang/String;)Ljava/lang/String;
     //   212: aload 6
-    //   214: invokestatic 225	com/tencent/xweb/util/d:nh	(Ljava/lang/String;Ljava/lang/String;)Z
+    //   214: invokestatic 225	com/tencent/xweb/util/d:nn	(Ljava/lang/String;Ljava/lang/String;)Z
     //   217: ifne -116 -> 101
     //   220: aload 4
     //   222: astore_3
     //   223: aload_0
     //   224: invokevirtual 31	com/tencent/xweb/xwalk/a/f:getPluginName	()Ljava/lang/String;
-    //   227: ldc_w 344
+    //   227: ldc_w 342
     //   230: aload 5
-    //   232: invokestatic 347	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   235: invokevirtual 315	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   232: invokestatic 345	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   235: invokevirtual 313	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
     //   238: invokestatic 39	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   241: aload 4
     //   243: invokestatic 233	com/tencent/xweb/util/c:tryClose	(Ljava/io/Closeable;)V
@@ -582,7 +578,7 @@ public abstract class f
     //   250: astore_3
     //   251: aload_0
     //   252: invokevirtual 31	com/tencent/xweb/xwalk/a/f:getPluginName	()Ljava/lang/String;
-    //   255: ldc_w 349
+    //   255: ldc_w 347
     //   258: invokestatic 125	org/xwalk/core/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   261: aload 4
     //   263: invokestatic 233	com/tencent/xweb/util/c:tryClose	(Ljava/io/Closeable;)V
@@ -597,7 +593,7 @@ public abstract class f
     //   277: invokevirtual 31	com/tencent/xweb/xwalk/a/f:getPluginName	()Ljava/lang/String;
     //   280: new 43	java/lang/StringBuilder
     //   283: dup
-    //   284: ldc_w 351
+    //   284: ldc_w 349
     //   287: invokespecial 114	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   290: aload 5
     //   292: invokevirtual 202	java/lang/Exception:getMessage	()Ljava/lang/String;
@@ -657,32 +653,34 @@ public abstract class f
     //   251	261	327	java/lang/Exception
   }
   
-  protected final boolean c(SchedulerConfig paramSchedulerConfig)
+  public abstract String bz(int paramInt, boolean paramBoolean);
+  
+  protected final boolean c(com.tencent.xweb.xwalk.updater.c paramc)
   {
-    Log.i(getPluginName(), "doPatch new version = " + paramSchedulerConfig.version);
-    if (this.MxJ < 0)
+    Log.i(getPluginName(), "doPatch new version = " + paramc.version);
+    if (this.MUN < 0)
     {
       Log.e(getPluginName(), "doPatch, current version invalid");
       return false;
     }
-    if (!paramSchedulerConfig.MyT)
+    if (!paramc.MVY)
     {
       Log.e(getPluginName(), "doPatch, current download config is not patch");
       return false;
     }
-    Object localObject = new File(de(paramSchedulerConfig.version, "patch.config"));
+    Object localObject = new File(de(paramc.version, "patch.config"));
     if (!((File)localObject).exists())
     {
       Log.e(getPluginName(), "doPatch, can not find patch config file");
       return false;
     }
-    localObject = h.al((File)localObject);
+    localObject = h.ak((File)localObject);
     if ((localObject == null) || (((List)localObject).size() == 0))
     {
       Log.e(getPluginName(), "doPatch, patchConfigList = null");
       return false;
     }
-    if (!c.ng(aiM(this.MxJ), aiM(paramSchedulerConfig.version)))
+    if (!com.tencent.xweb.util.c.nm(ajw(this.MUN), ajw(paramc.version)))
     {
       Log.e(getPluginName(), "doPatch, copy files failed");
       return false;
@@ -698,7 +696,7 @@ public abstract class f
       for (;;)
       {
         if (i != 0) {
-          if (!c.lL(de(paramSchedulerConfig.version, locala.originalFileName), dd(paramSchedulerConfig.version, locala.originalFileName)))
+          if (!com.tencent.xweb.util.c.lS(de(paramc.version, locala.originalFileName), dd(paramc.version, locala.originalFileName)))
           {
             Log.e(getPluginName(), "doPatch, add file error: ".concat(String.valueOf(locala)));
             return false;
@@ -718,7 +716,7 @@ public abstract class f
       {
         if (i != 0)
         {
-          if (!c.deleteFile(dd(paramSchedulerConfig.version, locala.originalFileName)))
+          if (!com.tencent.xweb.util.c.deleteFile(dd(paramc.version, locala.originalFileName)))
           {
             Log.e(getPluginName(), "doPatch, delete file error:".concat(String.valueOf(locala)));
             break;
@@ -735,7 +733,7 @@ public abstract class f
       for (;;)
       {
         if (i != 0) {
-          if (BSpatch.bm(dd(paramSchedulerConfig.version, locala.originalFileName), de(paramSchedulerConfig.version, locala.patchFileName), dd(paramSchedulerConfig.version, locala.originalFileName)) < 0)
+          if (BSpatch.bn(dd(paramc.version, locala.originalFileName), de(paramc.version, locala.patchFileName), dd(paramc.version, locala.originalFileName)) < 0)
           {
             Log.e(getPluginName(), "doPatch, patch file error:".concat(String.valueOf(locala)));
             return false;
@@ -751,20 +749,20 @@ public abstract class f
       Log.e(getPluginName(), "doPatch, unknown op".concat(String.valueOf(locala)));
       return false;
     }
-    c.deleteFile(dd(paramSchedulerConfig.version, "filelist.config"));
-    if (!c.lL(de(paramSchedulerConfig.version, "filelist.config"), dd(paramSchedulerConfig.version, "filelist.config")))
+    com.tencent.xweb.util.c.deleteFile(dd(paramc.version, "filelist.config"));
+    if (!com.tencent.xweb.util.c.lS(de(paramc.version, "filelist.config"), dd(paramc.version, "filelist.config")))
     {
       Log.e(getPluginName(), "doPatch, copy filelist.config error");
       return false;
     }
-    if (!br(paramSchedulerConfig.version, false))
+    if (!bA(paramc.version, false))
     {
       Log.e(getPluginName(), "doPatch, check md5 failed");
       return false;
     }
-    paramSchedulerConfig = aiN(paramSchedulerConfig.version);
-    if (!paramSchedulerConfig.isEmpty()) {
-      c.bbn(paramSchedulerConfig);
+    paramc = ajx(paramc.version);
+    if (!paramc.isEmpty()) {
+      com.tencent.xweb.util.c.bcQ(paramc);
     }
     return true;
   }
@@ -776,7 +774,7 @@ public abstract class f
       Log.e(getPluginName(), "getExtractFile, fileName is empty");
       return "";
     }
-    String str = aiM(paramInt);
+    String str = ajw(paramInt);
     if (str.isEmpty())
     {
       Log.e(getPluginName(), "getExtractFile, extractDir is empty");
@@ -785,11 +783,13 @@ public abstract class f
     return str + File.separator + paramString;
   }
   
-  public abstract boolean gdi();
+  public abstract String getPluginName();
   
-  public abstract void gdj();
+  public abstract boolean ghK();
   
-  public final void gdk()
+  public abstract void ghL();
+  
+  public final void ghM()
   {
     if (XWalkEnvironment.getApplicationContext() == null)
     {
@@ -802,11 +802,9 @@ public abstract class f
       Log.e(getPluginName(), "loadVer, sp is null");
       return;
     }
-    this.MxJ = localSharedPreferences.getInt("availableVersion", -1);
-    Log.i(getPluginName(), "loadVer, version = " + this.MxJ);
+    this.MUN = localSharedPreferences.getInt("availableVersion", -1);
+    Log.i(getPluginName(), "loadVer, version = " + this.MUN);
   }
-  
-  public abstract String getPluginName();
 }
 
 

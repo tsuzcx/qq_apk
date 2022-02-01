@@ -2,14 +2,14 @@ package com.tencent.mm.plugin.search.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.ax;
+import com.tencent.mm.model.az;
 import com.tencent.mm.plugin.fts.a.n;
 import com.tencent.mm.plugin.search.ui.a.a.a;
 import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
 
 public final class b
-  implements ax
+  implements az
 {
   public final void clearPluginData(int paramInt) {}
   

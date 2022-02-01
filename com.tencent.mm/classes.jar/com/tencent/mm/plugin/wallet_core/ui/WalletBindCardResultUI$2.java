@@ -16,8 +16,8 @@ final class WalletBindCardResultUI$2
     AppMethodBeat.i(70749);
     b localb = new b();
     localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/wallet_core/ui/WalletBindCardResultUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-    this.Ddk.done();
+    a.b("com/tencent/mm/plugin/wallet_core/ui/WalletBindCardResultUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+    this.DuO.done();
     a.a(this, "com/tencent/mm/plugin/wallet_core/ui/WalletBindCardResultUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(70749);
   }

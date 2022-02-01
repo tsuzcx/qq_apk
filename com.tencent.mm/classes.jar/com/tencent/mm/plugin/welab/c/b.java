@@ -4,31 +4,33 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bs.d;
+import com.tencent.mm.br.d;
+import com.tencent.mm.plugin.websearch.api.ad;
 import com.tencent.mm.plugin.websearch.api.af;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.Map;
 import org.json.JSONObject;
 
 public final class b
   implements com.tencent.mm.plugin.welab.a.a.b
 {
-  public final String eWu()
+  public final String fag()
   {
     AppMethodBeat.i(30253);
-    String str = af.aFP("discoverSearchEntry").optString("labIcon");
+    String str = af.aHj("discoverSearchEntry").optString("labIcon");
     AppMethodBeat.o(30253);
     return str;
   }
   
-  public final String eWv()
+  public final String fah()
   {
     AppMethodBeat.i(30254);
-    String str = af.aFP("discoverSearchEntry").optString("wording");
-    if (bt.isNullOrNil(str))
+    String str = af.aHj("discoverSearchEntry").optString("wording");
+    if (bu.isNullOrNil(str))
     {
-      str = aj.getContext().getString(2131759102);
+      str = ak.getContext().getString(2131759102);
       AppMethodBeat.o(30254);
       return str;
     }
@@ -39,17 +41,17 @@ public final class b
   public final void i(Activity paramActivity, String paramString)
   {
     AppMethodBeat.i(30252);
-    if (!com.tencent.mm.plugin.websearch.api.ad.Wd(0))
+    if (!ad.WK(0))
     {
-      com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.FTS.SearchOneSearchOpener", "fts h5 template not avail");
+      ae.e("MicroMsg.FTS.SearchOneSearchOpener", "fts h5 template not avail");
       AppMethodBeat.o(30252);
       return;
     }
-    paramString = com.tencent.mm.plugin.websearch.api.ad.eMd();
+    paramString = ad.ePM();
     paramString.putExtra("ftsbizscene", 20);
-    Map localMap = com.tencent.mm.plugin.websearch.api.ad.f(20, true, 0);
+    Map localMap = ad.f(20, true, 0);
     paramString.putExtra("ftsneedkeyboard", true);
-    paramString.putExtra("rawUrl", com.tencent.mm.plugin.websearch.api.ad.aY(localMap));
+    paramString.putExtra("rawUrl", ad.be(localMap));
     d.b(paramActivity, "webview", ".ui.tools.fts.FTSSearchOneSearchWebViewUI", paramString);
     AppMethodBeat.o(30252);
   }

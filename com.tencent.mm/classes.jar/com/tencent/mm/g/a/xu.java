@@ -6,7 +6,8 @@ import com.tencent.mm.sdk.b.b;
 public final class xu
   extends b
 {
-  public a dMd;
+  public a dNm;
+  public b dNn;
   
   public xu()
   {
@@ -15,17 +16,24 @@ public final class xu
   
   private xu(byte paramByte)
   {
-    AppMethodBeat.i(205871);
-    this.dMd = new a();
-    this.IbR = false;
+    AppMethodBeat.i(121052);
+    this.dNm = new a();
+    this.dNn = new b();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(205871);
+    AppMethodBeat.o(121052);
   }
   
   public static final class a
   {
-    public long msgId;
-    public boolean success;
+    public int action;
+    public String dkZ;
+    public int option;
+  }
+  
+  public static final class b
+  {
+    public boolean dNo;
   }
 }
 

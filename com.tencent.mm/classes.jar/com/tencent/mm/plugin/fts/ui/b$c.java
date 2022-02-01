@@ -2,35 +2,35 @@ package com.tencent.mm.plugin.fts.ui;
 
 import android.text.TextPaint;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cc.a;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.cb.a;
+import com.tencent.mm.sdk.platformtools.ak;
 
 public final class b$c
 {
-  public static final int tyd;
-  public static final TextPaint tye;
-  public static final int tyf;
-  public static final TextPaint tyg;
-  public static final int tyh;
-  public static final TextPaint tyi;
-  public static final int tyj;
-  public static final TextPaint tyk;
+  public static final int tIU;
+  public static final TextPaint tIV;
+  public static final int tIW;
+  public static final TextPaint tIX;
+  public static final int tIY;
+  public static final TextPaint tIZ;
+  public static final int tJa;
+  public static final TextPaint tJb;
   
   static
   {
     AppMethodBeat.i(111812);
-    tyd = a.ax(aj.getContext(), 2131165192);
-    tye = new TextPaint();
-    tyf = a.ax(aj.getContext(), 2131165517);
-    tyg = new TextPaint();
-    tyh = a.ax(aj.getContext(), 2131165466);
-    tyi = new TextPaint();
-    tyj = a.ax(aj.getContext(), 2131165574);
-    tyk = new TextPaint();
-    tye.setTextSize(tyd);
-    tyg.setTextSize(tyf);
-    tyi.setTextSize(tyh);
-    tyk.setTextSize(tyj);
+    tIU = a.ax(ak.getContext(), 2131165192);
+    tIV = new TextPaint();
+    tIW = a.ax(ak.getContext(), 2131165517);
+    tIX = new TextPaint();
+    tIY = a.ax(ak.getContext(), 2131165466);
+    tIZ = new TextPaint();
+    tJa = a.ax(ak.getContext(), 2131165574);
+    tJb = new TextPaint();
+    tIV.setTextSize(tIU);
+    tIX.setTextSize(tIW);
+    tIZ.setTextSize(tIY);
+    tJb.setTextSize(tJa);
     AppMethodBeat.o(111812);
   }
 }

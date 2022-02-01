@@ -3,12 +3,12 @@ package com.tencent.mm.plugin.recordvideo.plugin;
 import android.content.Intent;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/recordvideo/plugin/IBaseRecordPlugin;", "", "name", "", "onActivityResult", "", "requestCode", "", "resultCode", "data", "Landroid/content/Intent;", "onAttach", "onBackPress", "", "onDetach", "onPause", "onRequestPermissionsResult", "permissions", "", "grantResults", "", "(I[Ljava/lang/String;[I)V", "onResume", "release", "reset", "setVisibility", "visibility", "plugin-recordvideo_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/recordvideo/plugin/IBaseRecordPlugin;", "", "name", "", "onActivityResult", "", "requestCode", "", "resultCode", "data", "Landroid/content/Intent;", "onAttach", "onBackPress", "", "onDetach", "onPause", "onRequestPermissionsResult", "permissions", "", "grantResults", "", "(I[Ljava/lang/String;[I)V", "onResume", "release", "reset", "setVisibility", "visibility", "plugin-recordvideo_release"})
 public abstract interface t
 {
-  public abstract boolean aoB();
+  public abstract boolean aoQ();
   
-  public abstract void ayX();
+  public abstract void azm();
   
   public abstract String name();
   
@@ -30,7 +30,7 @@ public abstract interface t
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.plugin.t
  * JD-Core Version:    0.7.0.1
  */

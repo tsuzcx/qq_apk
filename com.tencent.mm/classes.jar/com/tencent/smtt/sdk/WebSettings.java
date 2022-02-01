@@ -43,7 +43,7 @@ public class WebSettings
   public static String getDefaultUserAgent(Context paramContext)
   {
     AppMethodBeat.i(54480);
-    if (v.a().b())
+    if (x.a().b())
     {
       paramContext = TbsOneGreyInfoHelper.getCoreEntry().getX5CoreMessy().getDefaultUserAgent(paramContext);
       AppMethodBeat.o(54480);

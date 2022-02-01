@@ -2,11 +2,11 @@ package com.tencent.mm.pluginsdk.model;
 
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public final class t
 {
-  private static volatile t EMk = null;
+  private static volatile t FeI = null;
   
   public static s A(int paramInt, Bundle paramBundle)
   {
@@ -27,7 +27,7 @@ public final class t
     return paramBundle;
   }
   
-  public static int Ym(int paramInt)
+  public static int YS(int paramInt)
   {
     AppMethodBeat.i(109475);
     switch (paramInt)
@@ -36,7 +36,7 @@ public final class t
       AppMethodBeat.o(109475);
       return 5;
     case 0: 
-      paramInt = bt.getInt(com.tencent.mm.n.g.acB().ah("QQBroswer", "RecommendCount"), 5);
+      paramInt = bu.getInt(com.tencent.mm.n.g.acM().ah("QQBroswer", "RecommendCount"), 5);
       AppMethodBeat.o(109475);
       return paramInt;
     }
@@ -44,7 +44,7 @@ public final class t
     return 2147483647;
   }
   
-  public static void Yn(int paramInt)
+  public static void YT(int paramInt)
   {
     AppMethodBeat.i(109476);
     switch (paramInt)
@@ -54,14 +54,14 @@ public final class t
     {
       AppMethodBeat.o(109476);
       return;
-      com.tencent.mm.plugin.report.service.g.yhR.f(10998, new Object[] { Integer.valueOf(0) });
+      com.tencent.mm.plugin.report.service.g.yxI.f(10998, new Object[] { Integer.valueOf(0) });
       AppMethodBeat.o(109476);
       return;
-      com.tencent.mm.plugin.report.service.g.yhR.f(11091, new Object[] { Integer.valueOf(0) });
+      com.tencent.mm.plugin.report.service.g.yxI.f(11091, new Object[] { Integer.valueOf(0) });
     }
   }
   
-  public static void Yo(int paramInt)
+  public static void YU(int paramInt)
   {
     AppMethodBeat.i(109477);
     switch (paramInt)
@@ -71,14 +71,14 @@ public final class t
     {
       AppMethodBeat.o(109477);
       return;
-      com.tencent.mm.plugin.report.service.g.yhR.f(10998, new Object[] { Integer.valueOf(1) });
+      com.tencent.mm.plugin.report.service.g.yxI.f(10998, new Object[] { Integer.valueOf(1) });
       AppMethodBeat.o(109477);
       return;
-      com.tencent.mm.plugin.report.service.g.yhR.f(11091, new Object[] { Integer.valueOf(1) });
+      com.tencent.mm.plugin.report.service.g.yxI.f(11091, new Object[] { Integer.valueOf(1) });
     }
   }
   
-  public static void Yp(int paramInt)
+  public static void YV(int paramInt)
   {
     AppMethodBeat.i(109478);
     switch (paramInt)
@@ -88,14 +88,14 @@ public final class t
     {
       AppMethodBeat.o(109478);
       return;
-      com.tencent.mm.plugin.report.service.g.yhR.f(10998, new Object[] { Integer.valueOf(3) });
+      com.tencent.mm.plugin.report.service.g.yxI.f(10998, new Object[] { Integer.valueOf(3) });
       AppMethodBeat.o(109478);
       return;
-      com.tencent.mm.plugin.report.service.g.yhR.f(11091, new Object[] { Integer.valueOf(3) });
+      com.tencent.mm.plugin.report.service.g.yxI.f(11091, new Object[] { Integer.valueOf(3) });
     }
   }
   
-  public static void Yq(int paramInt)
+  public static void YW(int paramInt)
   {
     AppMethodBeat.i(109479);
     switch (paramInt)
@@ -105,23 +105,23 @@ public final class t
     {
       AppMethodBeat.o(109479);
       return;
-      com.tencent.mm.plugin.report.service.g.yhR.f(10998, new Object[] { Integer.valueOf(2) });
+      com.tencent.mm.plugin.report.service.g.yxI.f(10998, new Object[] { Integer.valueOf(2) });
       AppMethodBeat.o(109479);
       return;
-      com.tencent.mm.plugin.report.service.g.yhR.f(11091, new Object[] { Integer.valueOf(2) });
+      com.tencent.mm.plugin.report.service.g.yxI.f(11091, new Object[] { Integer.valueOf(2) });
     }
   }
   
-  public static t eZH()
+  public static t fdv()
   {
     AppMethodBeat.i(109473);
-    if (EMk == null) {}
+    if (FeI == null) {}
     try
     {
-      if (EMk == null) {
-        EMk = new t();
+      if (FeI == null) {
+        FeI = new t();
       }
-      t localt = EMk;
+      t localt = FeI;
       AppMethodBeat.o(109473);
       return localt;
     }
@@ -133,11 +133,11 @@ public final class t
   
   public static final class a
   {
-    public int EMl;
-    public int EMm;
-    public String EMn;
-    public int EMo;
-    public String EMp;
+    public int FeJ;
+    public int FeK;
+    public String FeL;
+    public int FeM;
+    public String FeN;
   }
 }
 

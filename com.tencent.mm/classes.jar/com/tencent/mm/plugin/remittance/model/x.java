@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.remittance.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.wallet_core.tenpay.model.m;
 import java.net.URLEncoder;
 import java.util.HashMap;
@@ -12,39 +12,39 @@ public final class x
   extends m
 {
   public String desc;
-  public int dlw;
-  public int ozA;
-  public String ozD;
-  public double paV;
+  public int dmy;
+  public int oGc;
+  public String oGf;
+  public double phz;
   public int scene;
   public String username;
-  public String xYR;
-  public String xYS;
-  public String xYT;
-  public String xYU;
-  public String xYV;
-  public String xYW;
-  public int xYX;
-  public String xYY;
-  public String xYZ;
-  public String xYy;
-  public int xZa;
-  public String xZb;
-  public String xZc;
-  public int xZd;
-  public String xZe;
-  public int xZf;
-  public BusiRemittanceResp xZg;
+  public String yoJ;
+  public String yoK;
+  public String yoL;
+  public String yoM;
+  public String yoN;
+  public String yoO;
+  public int yoP;
+  public String yoQ;
+  public String yoR;
+  public int yoS;
+  public String yoT;
+  public String yoU;
+  public int yoV;
+  public String yoW;
+  public int yoX;
+  public BusiRemittanceResp yoY;
+  public String yoq;
   
   public x(String paramString, int paramInt)
   {
     AppMethodBeat.i(67887);
-    this.xYT = "";
-    this.xYU = "";
-    this.xYV = "";
-    this.xYW = "";
-    this.xYY = "";
-    this.xYZ = "";
+    this.yoL = "";
+    this.yoM = "";
+    this.yoN = "";
+    this.yoO = "";
+    this.yoQ = "";
+    this.yoR = "";
     HashMap localHashMap = new HashMap();
     localHashMap.put("transfer_url", URLEncoder.encode(paramString));
     setRequestData(localHashMap);
@@ -74,50 +74,50 @@ public final class x
     AppMethodBeat.i(67888);
     try
     {
-      ad.d("Micromsg.NetSceneTenpayRemittanceGetUsername", "errCode " + paramInt + " errMsg: " + paramString);
+      ae.d("Micromsg.NetSceneTenpayRemittanceGetUsername", "errCode " + paramInt + " errMsg: " + paramString);
       if (paramInt != 0)
       {
         AppMethodBeat.o(67888);
         return;
       }
-      ad.d("Micromsg.NetSceneTenpayRemittanceGetUsername", "json %s", new Object[] { paramJSONObject.toString() });
+      ae.d("Micromsg.NetSceneTenpayRemittanceGetUsername", "json %s", new Object[] { paramJSONObject.toString() });
       this.username = paramJSONObject.optString("user_name", "");
-      this.xYR = paramJSONObject.optString("true_name");
-      this.paV = (paramJSONObject.optDouble("fee") / 100.0D);
+      this.yoJ = paramJSONObject.optString("true_name");
+      this.phz = (paramJSONObject.optDouble("fee") / 100.0D);
       this.desc = paramJSONObject.optString("desc");
       this.scene = paramJSONObject.optInt("scene");
-      this.xYS = URLEncoder.encode(paramJSONObject.optString("transfer_qrcode_id"));
-      this.xYT = paramJSONObject.optString("f2f_pay_desc");
-      this.xYU = paramJSONObject.optString("rcvr_desc");
-      this.xYV = paramJSONObject.optString("payer_desc");
-      this.xYW = paramJSONObject.optString("rcvr_ticket");
-      this.xYX = paramJSONObject.optInt("busi_type", 0);
-      this.xYY = paramJSONObject.optString("mch_name");
-      this.xYZ = paramJSONObject.optString("mch_photo");
-      this.xZc = paramJSONObject.optString("mch_type", "");
-      this.xZa = paramJSONObject.optInt("mch_time", 0);
-      this.xZb = paramJSONObject.optString("receiver_openid");
-      this.xZd = paramJSONObject.optInt("get_pay_wifi");
-      this.xYy = paramJSONObject.optString("receiver_true_name");
-      this.xZe = paramJSONObject.optString("mch_info_string");
-      this.xZf = paramJSONObject.optInt("amount_remind_bit");
-      this.ozA = paramJSONObject.optInt("action_type");
-      this.dlw = paramJSONObject.optInt("retcode");
-      this.ozD = paramJSONObject.optString("jump_url");
-      this.xZg = new BusiRemittanceResp(paramJSONObject);
+      this.yoK = URLEncoder.encode(paramJSONObject.optString("transfer_qrcode_id"));
+      this.yoL = paramJSONObject.optString("f2f_pay_desc");
+      this.yoM = paramJSONObject.optString("rcvr_desc");
+      this.yoN = paramJSONObject.optString("payer_desc");
+      this.yoO = paramJSONObject.optString("rcvr_ticket");
+      this.yoP = paramJSONObject.optInt("busi_type", 0);
+      this.yoQ = paramJSONObject.optString("mch_name");
+      this.yoR = paramJSONObject.optString("mch_photo");
+      this.yoU = paramJSONObject.optString("mch_type", "");
+      this.yoS = paramJSONObject.optInt("mch_time", 0);
+      this.yoT = paramJSONObject.optString("receiver_openid");
+      this.yoV = paramJSONObject.optInt("get_pay_wifi");
+      this.yoq = paramJSONObject.optString("receiver_true_name");
+      this.yoW = paramJSONObject.optString("mch_info_string");
+      this.yoX = paramJSONObject.optInt("amount_remind_bit");
+      this.oGc = paramJSONObject.optInt("action_type");
+      this.dmy = paramJSONObject.optInt("retcode");
+      this.oGf = paramJSONObject.optString("jump_url");
+      this.yoY = new BusiRemittanceResp(paramJSONObject);
       AppMethodBeat.o(67888);
       return;
     }
     catch (Exception paramString)
     {
-      ad.printErrStackTrace("Micromsg.NetSceneTenpayRemittanceGetUsername", paramString, "", new Object[0]);
+      ae.printErrStackTrace("Micromsg.NetSceneTenpayRemittanceGetUsername", paramString, "", new Object[0]);
       AppMethodBeat.o(67888);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.remittance.model.x
  * JD-Core Version:    0.7.0.1
  */

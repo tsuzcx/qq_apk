@@ -4,13 +4,13 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.Resources.NotFoundException;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class n
 {
   public static int B(Context paramContext, int paramInt)
   {
-    AppMethodBeat.i(207444);
+    AppMethodBeat.i(211736);
     try
     {
       paramContext = paramContext.getResources();
@@ -18,16 +18,16 @@ public final class n
       if (i != 0)
       {
         i = paramContext.getDimensionPixelSize(i);
-        AppMethodBeat.o(207444);
+        AppMethodBeat.o(211736);
         return i;
       }
-      AppMethodBeat.o(207444);
+      AppMethodBeat.o(211736);
       return paramInt;
     }
     catch (Resources.NotFoundException paramContext)
     {
-      ad.printErrStackTrace("MicroMsg.ResourceCompat", paramContext, "get res of status_bar_height fail", new Object[0]);
-      AppMethodBeat.o(207444);
+      ae.printErrStackTrace("MicroMsg.ResourceCompat", paramContext, "get res of status_bar_height fail", new Object[0]);
+      AppMethodBeat.o(211736);
     }
     return paramInt;
   }

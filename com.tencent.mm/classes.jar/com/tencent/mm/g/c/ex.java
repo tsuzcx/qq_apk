@@ -8,13 +8,13 @@ public abstract class ex
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eYo = "retryCount".hashCode();
-  private static final int fnU = "cardUserId".hashCode();
+  private static final int faa = "retryCount".hashCode();
+  private static final int fpV = "cardUserId".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eYe = true;
+  private boolean eZP = true;
   public String field_cardUserId;
   public int field_retryCount;
-  private boolean fnT = true;
+  private boolean fpU = true;
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -29,11 +29,11 @@ public abstract class ex
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (fnU != k) {
+      if (fpV != k) {
         break label65;
       }
       this.field_cardUserId = paramCursor.getString(i);
-      this.fnT = true;
+      this.fpU = true;
     }
     for (;;)
     {
@@ -41,7 +41,7 @@ public abstract class ex
       break label20;
       break;
       label65:
-      if (eYo == k) {
+      if (faa == k) {
         this.field_retryCount = paramCursor.getInt(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
@@ -52,10 +52,10 @@ public abstract class ex
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.fnT) {
+    if (this.fpU) {
       localContentValues.put("cardUserId", this.field_cardUserId);
     }
-    if (this.eYe) {
+    if (this.eZP) {
       localContentValues.put("retryCount", Integer.valueOf(this.field_retryCount));
     }
     if (this.systemRowid > 0L) {

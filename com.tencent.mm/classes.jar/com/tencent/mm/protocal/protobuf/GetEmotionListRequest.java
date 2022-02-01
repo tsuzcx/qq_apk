@@ -5,7 +5,7 @@ import f.a.a.b;
 import java.util.LinkedList;
 
 public class GetEmotionListRequest
-  extends cvc
+  extends cvw
 {
   public int Category;
   public SKBuiltinBuffer_t ReqBuf;
@@ -26,12 +26,12 @@ public class GetEmotionListRequest
       }
       if (this.BaseRequest != null)
       {
-        paramVarArgs.lC(1, this.BaseRequest.computeSize());
+        paramVarArgs.lJ(1, this.BaseRequest.computeSize());
         this.BaseRequest.writeFields(paramVarArgs);
       }
       if (this.ReqBuf != null)
       {
-        paramVarArgs.lC(2, this.ReqBuf.computeSize());
+        paramVarArgs.lJ(2, this.ReqBuf.computeSize());
         this.ReqBuf.writeFields(paramVarArgs);
       }
       paramVarArgs.aS(3, this.ReqType);
@@ -46,11 +46,11 @@ public class GetEmotionListRequest
       }
     }
     label650:
-    for (paramInt = f.a.a.a.lB(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
+    for (paramInt = f.a.a.a.lI(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
     {
       int i = paramInt;
       if (this.ReqBuf != null) {
-        i = paramInt + f.a.a.a.lB(2, this.ReqBuf.computeSize());
+        i = paramInt + f.a.a.a.lI(2, this.ReqBuf.computeSize());
       }
       paramInt = f.a.a.b.b.a.bz(3, this.ReqType);
       int j = f.a.a.b.b.a.bz(4, this.Scene);
@@ -60,9 +60,9 @@ public class GetEmotionListRequest
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = cvc.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cvc.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = cvw.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cvw.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
         if (this.ReqBuf == null)
@@ -87,7 +87,7 @@ public class GetEmotionListRequest
           AppMethodBeat.o(104799);
           return -1;
         case 1: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
+          paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
@@ -95,14 +95,14 @@ public class GetEmotionListRequest
             localObject2 = (byte[])paramVarArgs.get(paramInt);
             localObject1 = new jc();
             localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (bool = true; bool; bool = ((jc)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, cvc.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            for (bool = true; bool; bool = ((jc)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cvw.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
             localGetEmotionListRequest.BaseRequest = ((jc)localObject1);
             paramInt += 1;
           }
           AppMethodBeat.o(104799);
           return 0;
         case 2: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
+          paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
@@ -110,22 +110,22 @@ public class GetEmotionListRequest
             localObject2 = (byte[])paramVarArgs.get(paramInt);
             localObject1 = new SKBuiltinBuffer_t();
             localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (bool = true; bool; bool = ((SKBuiltinBuffer_t)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, cvc.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            for (bool = true; bool; bool = ((SKBuiltinBuffer_t)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cvw.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
             localGetEmotionListRequest.ReqBuf = ((SKBuiltinBuffer_t)localObject1);
             paramInt += 1;
           }
           AppMethodBeat.o(104799);
           return 0;
         case 3: 
-          localGetEmotionListRequest.ReqType = ((f.a.a.a.a)localObject1).NPN.zc();
+          localGetEmotionListRequest.ReqType = ((f.a.a.a.a)localObject1).OmT.zc();
           AppMethodBeat.o(104799);
           return 0;
         case 4: 
-          localGetEmotionListRequest.Scene = ((f.a.a.a.a)localObject1).NPN.zc();
+          localGetEmotionListRequest.Scene = ((f.a.a.a.a)localObject1).OmT.zc();
           AppMethodBeat.o(104799);
           return 0;
         }
-        localGetEmotionListRequest.Category = ((f.a.a.a.a)localObject1).NPN.zc();
+        localGetEmotionListRequest.Category = ((f.a.a.a.a)localObject1).OmT.zc();
         AppMethodBeat.o(104799);
         return 0;
       }

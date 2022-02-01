@@ -25,7 +25,7 @@ public class CrashMonitorForJni
     Recovery.crash();
     new StringBuilder("OnCrash sig:").append(paramInt1).append("  stack:").append(paramString);
     b.d(paramInt1, paramString, "CrashMonitor");
-    ad.appenderClose();
+    ae.appenderClose();
     AppMethodBeat.o(145683);
   }
   
@@ -82,7 +82,7 @@ public class CrashMonitorForJni
     if (localObject2 != null)
     {
       localPrintWriter.append("\n");
-      localPrintWriter.append(((a)localObject2).Mj());
+      localPrintWriter.append(((a)localObject2).Mr());
       localPrintWriter.append("\n");
     }
     localObject2 = new Throwable("\n******* Java stack for JNI crash *******");
@@ -263,7 +263,7 @@ public class CrashMonitorForJni
   
   public static abstract interface a
   {
-    public abstract String Mj();
+    public abstract String Mr();
   }
 }
 

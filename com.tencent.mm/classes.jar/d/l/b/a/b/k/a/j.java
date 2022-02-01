@@ -14,24 +14,24 @@ import java.util.Set;
 
 public final class j
 {
-  private static final Set<a> NyB;
-  public static final b NyC;
-  private final l NiH;
-  private final b<a, e> NyA;
+  private static final Set<a> NVI;
+  public static final b NVJ;
+  private final l NFN;
+  private final b<a, e> NVH;
   
   static
   {
     AppMethodBeat.i(60299);
-    NyC = new b((byte)0);
-    NyB = ak.setOf(a.p(g.MQb.MQh.grk()));
+    NVJ = new b((byte)0);
+    NVI = ak.setOf(a.p(g.Nng.Nnm.gvM()));
     AppMethodBeat.o(60299);
   }
   
   public j(l paraml)
   {
     AppMethodBeat.i(60298);
-    this.NiH = paraml;
-    this.NyA = ((b)this.NiH.MQa.J((b)new c(this)));
+    this.NFN = paraml;
+    this.NVH = ((b)this.NFN.Nnf.M((b)new c(this)));
     AppMethodBeat.o(60298);
   }
   
@@ -39,28 +39,28 @@ public final class j
   {
     AppMethodBeat.i(60296);
     p.h(parama, "classId");
-    parama = (e)this.NyA.invoke(new a(parama, paramh));
+    parama = (e)this.NVH.invoke(new a(parama, paramh));
     AppMethodBeat.o(60296);
     return parama;
   }
   
   static final class a
   {
-    final a MSw;
-    final h NyD;
+    final h NVK;
+    final a NpB;
     
     public a(a parama, h paramh)
     {
       AppMethodBeat.i(60294);
-      this.MSw = parama;
-      this.NyD = paramh;
+      this.NpB = parama;
+      this.NVK = paramh;
       AppMethodBeat.o(60294);
     }
     
     public final boolean equals(Object paramObject)
     {
       AppMethodBeat.i(60292);
-      if (((paramObject instanceof a)) && (p.i(this.MSw, ((a)paramObject).MSw)))
+      if (((paramObject instanceof a)) && (p.i(this.NpB, ((a)paramObject).NpB)))
       {
         AppMethodBeat.o(60292);
         return true;
@@ -72,7 +72,7 @@ public final class j
     public final int hashCode()
     {
       AppMethodBeat.i(60293);
-      int i = this.MSw.hashCode();
+      int i = this.NpB.hashCode();
       AppMethodBeat.o(60293);
       return i;
     }
@@ -92,7 +92,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.k.a.j
  * JD-Core Version:    0.7.0.1
  */

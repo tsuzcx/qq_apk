@@ -6,7 +6,7 @@ import android.util.Log;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.collector.CollectSession;
 import com.tencent.mm.plugin.appbrand.collector.c;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.HashSet;
 import java.util.Set;
 import org.json.JSONException;
@@ -14,22 +14,22 @@ import org.json.JSONObject;
 
 public final class d
 {
-  private static Set<String> kif;
+  private static Set<String> klv;
   
   static
   {
     AppMethodBeat.i(121439);
-    kif = new HashSet();
+    klv = new HashSet();
     if (!TextUtils.isEmpty("drawCanvas")) {
-      kif.add("drawCanvas");
+      klv.add("drawCanvas");
     }
     AppMethodBeat.o(121439);
   }
   
-  public static boolean Na(String paramString)
+  public static boolean NH(String paramString)
   {
     AppMethodBeat.i(121436);
-    boolean bool = kif.contains(paramString);
+    boolean bool = klv.contains(paramString);
     AppMethodBeat.o(121436);
     return bool;
   }
@@ -41,16 +41,16 @@ public final class d
     {
       paramJSONObject.put("__session_id", paramString1);
       paramJSONObject.put("__invoke_jsapi_timestamp", System.nanoTime());
-      paramString1 = c.MU(paramString1);
+      paramString1 = c.NB(paramString1);
       if (paramString1 != null) {
-        paramString1.dvj.putInt("__invoke_jsapi_data_size", paramString2.length());
+        paramString1.dwo.putInt("__invoke_jsapi_data_size", paramString2.length());
       }
       AppMethodBeat.o(121437);
       return;
     }
     catch (JSONException paramString1)
     {
-      ad.e("MicroMsg.JsApiCostTimeStrategy", "%s", new Object[] { Log.getStackTraceString(paramString1) });
+      ae.e("MicroMsg.JsApiCostTimeStrategy", "%s", new Object[] { Log.getStackTraceString(paramString1) });
       AppMethodBeat.o(121437);
     }
   }

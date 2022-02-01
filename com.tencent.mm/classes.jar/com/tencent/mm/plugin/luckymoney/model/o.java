@@ -5,18 +5,18 @@ import com.tencent.mm.g.a.bn;
 import com.tencent.mm.g.a.bn.a;
 import com.tencent.mm.plugin.report.service.g;
 import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public final class o
   extends c<bn>
 {
-  public static final String vpe;
+  public static final String vBj;
   
   static
   {
     AppMethodBeat.i(65222);
-    vpe = com.tencent.mm.loader.j.b.arM() + "/luckymoney/";
+    vBj = com.tencent.mm.loader.j.b.asb() + "/luckymoney/";
     AppMethodBeat.o(65222);
   }
   
@@ -27,19 +27,19 @@ public final class o
     AppMethodBeat.o(160802);
   }
   
-  public static String Jj(int paramInt)
+  public static String JI(int paramInt)
   {
     AppMethodBeat.i(65218);
-    String str = vpe + paramInt + "/";
+    String str = vBj + paramInt + "/";
     AppMethodBeat.o(65218);
     return str;
   }
   
-  public static void dio()
+  public static void dln()
   {
     AppMethodBeat.i(65217);
-    com.tencent.mm.pluginsdk.j.a.a.b.faE();
-    com.tencent.mm.pluginsdk.j.a.a.b.Yx(58);
+    com.tencent.mm.pluginsdk.j.a.a.b.fes();
+    com.tencent.mm.pluginsdk.j.a.a.b.Zd(58);
     AppMethodBeat.o(65217);
   }
 }

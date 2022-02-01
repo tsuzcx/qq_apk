@@ -4,24 +4,24 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import kotlinx.a.h;
 import kotlinx.a.l.c;
 
-@d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/serialization/internal/CharSerializer;", "Lkotlinx/serialization/KSerializer;", "", "()V", "descriptor", "Lkotlinx/serialization/SerialDescriptor;", "getDescriptor", "()Lkotlinx/serialization/SerialDescriptor;", "deserialize", "decoder", "Lkotlinx/serialization/Decoder;", "(Lkotlinx/serialization/Decoder;)Ljava/lang/Character;", "serialize", "", "encoder", "Lkotlinx/serialization/Encoder;", "value", "kotlinx-serialization-runtime"})
+@d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/serialization/internal/CharSerializer;", "Lkotlinx/serialization/KSerializer;", "", "()V", "descriptor", "Lkotlinx/serialization/SerialDescriptor;", "getDescriptor", "()Lkotlinx/serialization/SerialDescriptor;", "deserialize", "decoder", "Lkotlinx/serialization/Decoder;", "(Lkotlinx/serialization/Decoder;)Ljava/lang/Character;", "serialize", "", "encoder", "Lkotlinx/serialization/Encoder;", "value", "kotlinx-serialization-runtime"})
 public final class n
   implements h<Character>
 {
-  private static final kotlinx.a.n NLm;
-  public static final n NMj;
+  private static final kotlinx.a.n Ois;
+  public static final n Ojp;
   
   static
   {
-    AppMethodBeat.i(191186);
-    NMj = new n();
-    NLm = (kotlinx.a.n)new ay("kotlin.Char", (kotlinx.a.l)l.c.NLr);
-    AppMethodBeat.o(191186);
+    AppMethodBeat.i(199774);
+    Ojp = new n();
+    Ois = (kotlinx.a.n)new ay("kotlin.Char", (kotlinx.a.l)l.c.Oix);
+    AppMethodBeat.o(199774);
   }
   
-  public final kotlinx.a.n eLj()
+  public final kotlinx.a.n eOR()
   {
-    return NLm;
+    return Ois;
   }
 }
 

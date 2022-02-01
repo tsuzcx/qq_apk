@@ -17,7 +17,7 @@ final class SnsUploadUI$5
     com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
     localb.bd(paramView);
     localb.bd(paramMotionEvent);
-    a.b("com/tencent/mm/plugin/sns/ui/SnsUploadUI$13", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahq());
+    a.b("com/tencent/mm/plugin/sns/ui/SnsUploadUI$13", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahF());
     switch (paramMotionEvent.getAction())
     {
     }
@@ -26,11 +26,11 @@ final class SnsUploadUI$5
       a.a(false, this, "com/tencent/mm/plugin/sns/ui/SnsUploadUI$13", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
       AppMethodBeat.o(99574);
       return false;
-      this.jlX[0] = true;
-      com.tencent.mm.plugin.normsg.a.b.wtJ.io("ce_sns_upload", "<SnsUpload>");
+      this.joR[0] = true;
+      com.tencent.mm.plugin.normsg.a.b.wJt.iu("ce_sns_upload", "<SnsUpload>");
       continue;
-      com.tencent.mm.plugin.normsg.a.b.wtJ.a("ce_sns_upload", paramMotionEvent);
-      com.tencent.mm.plugin.normsg.a.b.wtJ.atu("ce_sns_upload");
+      com.tencent.mm.plugin.normsg.a.b.wJt.a("ce_sns_upload", paramMotionEvent);
+      com.tencent.mm.plugin.normsg.a.b.wJt.auH("ce_sns_upload");
     }
   }
 }

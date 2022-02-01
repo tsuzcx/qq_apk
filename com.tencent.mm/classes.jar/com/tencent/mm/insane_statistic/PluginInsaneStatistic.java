@@ -11,10 +11,10 @@ public class PluginInsaneStatistic
   public void execute(g paramg)
   {
     AppMethodBeat.i(20226);
-    if (paramg.akw())
+    if (paramg.akL())
     {
-      com.tencent.mm.aw.u.icQ = new b();
-      com.tencent.mm.modelstat.r.irp = new a();
+      com.tencent.mm.av.u.ifJ = new b();
+      com.tencent.mm.modelstat.r.iuk = new a();
     }
     AppMethodBeat.o(20226);
   }

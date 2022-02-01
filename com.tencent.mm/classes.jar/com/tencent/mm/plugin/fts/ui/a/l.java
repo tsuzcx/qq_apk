@@ -19,37 +19,37 @@ import com.tencent.mm.plugin.fts.ui.n;
 public final class l
   extends a
 {
-  CharSequence tBB;
-  private a.b tBC;
-  a.a tBD;
+  CharSequence tMs;
+  private a.b tMt;
+  a.a tMu;
   
   public l(int paramInt)
   {
     super(11, paramInt);
     AppMethodBeat.i(112095);
-    this.tBC = new b();
-    this.tBD = new a();
+    this.tMt = new b();
+    this.tMu = new a();
     AppMethodBeat.o(112095);
   }
   
   public final void a(Context paramContext, a.a parama, Object... paramVarArgs)
   {
     AppMethodBeat.i(112096);
-    parama = TextUtils.ellipsize(this.tun.tuL, b.c.tyi, 400.0F, TextUtils.TruncateAt.MIDDLE).toString();
-    this.tBB = f.a(paramContext.getString(2131762920), paramContext.getString(2131762919), parama);
+    parama = TextUtils.ellipsize(this.tFe.tFC, b.c.tIZ, 400.0F, TextUtils.TruncateAt.MIDDLE).toString();
+    this.tMs = f.a(paramContext.getString(2131762920), paramContext.getString(2131762919), parama);
     AppMethodBeat.o(112096);
   }
   
-  public final a.b agC()
+  public final a.b agQ()
   {
-    return this.tBC;
+    return this.tMt;
   }
   
   public final class a
     extends a.a
   {
-    public View tAS;
-    public TextView tBf;
+    public View tLJ;
+    public TextView tLW;
     
     public a()
     {
@@ -69,9 +69,9 @@ public final class l
     {
       AppMethodBeat.i(112093);
       paramContext = LayoutInflater.from(paramContext).inflate(2131494204, paramViewGroup, false);
-      paramViewGroup = (l.a)l.this.tBD;
-      paramViewGroup.tBf = ((TextView)paramContext.findViewById(2131301013));
-      paramViewGroup.tAS = paramContext.findViewById(2131303131);
+      paramViewGroup = (l.a)l.this.tMu;
+      paramViewGroup.tLW = ((TextView)paramContext.findViewById(2131301013));
+      paramViewGroup.tLJ = paramContext.findViewById(2131303131);
       paramContext.setTag(paramViewGroup);
       AppMethodBeat.o(112093);
       return paramContext;
@@ -81,14 +81,14 @@ public final class l
     {
       AppMethodBeat.i(112094);
       paramContext = (l.a)parama;
-      n.a(l.this.tBB, paramContext.tBf);
+      n.a(l.this.tMs, paramContext.tLW);
       if (l.this.position == 0)
       {
-        paramContext.tAS.setVisibility(8);
+        paramContext.tLJ.setVisibility(8);
         AppMethodBeat.o(112094);
         return;
       }
-      paramContext.tAS.setVisibility(0);
+      paramContext.tLJ.setVisibility(0);
       AppMethodBeat.o(112094);
     }
     
@@ -100,7 +100,7 @@ public final class l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.ui.a.l
  * JD-Core Version:    0.7.0.1
  */

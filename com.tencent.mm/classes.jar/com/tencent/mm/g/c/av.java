@@ -8,21 +8,21 @@ public abstract class av
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eEf = "createTime".hashCode();
-  private static final int eFM = "size".hashCode();
-  private static final int eHb = "modifyTime".hashCode();
-  private static final int eOv = "deleteTime".hashCode();
-  private static final int eOw = "id".hashCode();
-  private static final int eOx = "saveTime".hashCode();
-  private static final int eOy = "flags".hashCode();
+  private static final int eFO = "createTime".hashCode();
+  private static final int eHv = "size".hashCode();
+  private static final int eIK = "modifyTime".hashCode();
+  private static final int eQg = "deleteTime".hashCode();
+  private static final int eQh = "id".hashCode();
+  private static final int eQi = "saveTime".hashCode();
+  private static final int eQj = "flags".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eDI = true;
-  private boolean eFK = true;
-  private boolean eGF = true;
-  private boolean eOr = true;
-  private boolean eOs = true;
-  private boolean eOt = true;
-  private boolean eOu = true;
+  private boolean eFr = true;
+  private boolean eHt = true;
+  private boolean eIo = true;
+  private boolean eQc = true;
+  private boolean eQd = true;
+  private boolean eQe = true;
+  private boolean eQf = true;
   public long field_createTime;
   public long field_deleteTime;
   public long field_flags;
@@ -44,7 +44,7 @@ public abstract class av
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eEf != k) {
+      if (eFO != k) {
         break label60;
       }
       this.field_createTime = paramCursor.getLong(i);
@@ -55,17 +55,17 @@ public abstract class av
       break label20;
       break;
       label60:
-      if (eHb == k) {
+      if (eIK == k) {
         this.field_modifyTime = paramCursor.getLong(i);
-      } else if (eOv == k) {
+      } else if (eQg == k) {
         this.field_deleteTime = paramCursor.getLong(i);
-      } else if (eOw == k) {
+      } else if (eQh == k) {
         this.field_id = paramCursor.getString(i);
-      } else if (eOx == k) {
+      } else if (eQi == k) {
         this.field_saveTime = paramCursor.getLong(i);
-      } else if (eFM == k) {
+      } else if (eHv == k) {
         this.field_size = paramCursor.getLong(i);
-      } else if (eOy == k) {
+      } else if (eQj == k) {
         this.field_flags = paramCursor.getLong(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
@@ -76,28 +76,28 @@ public abstract class av
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eDI) {
+    if (this.eFr) {
       localContentValues.put("createTime", Long.valueOf(this.field_createTime));
     }
-    if (this.eGF) {
+    if (this.eIo) {
       localContentValues.put("modifyTime", Long.valueOf(this.field_modifyTime));
     }
-    if (this.eOr) {
+    if (this.eQc) {
       localContentValues.put("deleteTime", Long.valueOf(this.field_deleteTime));
     }
     if (this.field_id == null) {
       this.field_id = "";
     }
-    if (this.eOs) {
+    if (this.eQd) {
       localContentValues.put("id", this.field_id);
     }
-    if (this.eOt) {
+    if (this.eQe) {
       localContentValues.put("saveTime", Long.valueOf(this.field_saveTime));
     }
-    if (this.eFK) {
+    if (this.eHt) {
       localContentValues.put("size", Long.valueOf(this.field_size));
     }
-    if (this.eOu) {
+    if (this.eQf) {
       localContentValues.put("flags", Long.valueOf(this.field_flags));
     }
     if (this.systemRowid > 0L) {

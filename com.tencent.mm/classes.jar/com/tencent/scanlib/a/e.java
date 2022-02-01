@@ -8,15 +8,15 @@ import com.tencent.scanlib.a;
 final class e
   implements g.a
 {
-  public static g.a.a fUq()
+  public static g.a.a fYP()
   {
     AppMethodBeat.i(3545);
     g.a.a locala = new g.a.a();
     try
     {
-      locala.gbc = Camera.open();
-      locala.dGc = 0;
-      if (locala.gbc == null)
+      locala.gdk = Camera.open();
+      locala.dHi = 0;
+      if (locala.gdk == null)
       {
         AppMethodBeat.o(3545);
         return null;
@@ -29,8 +29,8 @@ final class e
     }
     if (Build.DISPLAY.startsWith("Flyme"))
     {
-      localException.dGc = 90;
-      localException.gbc.setDisplayOrientation(90);
+      localException.dHi = 90;
+      localException.gdk.setDisplayOrientation(90);
     }
     label176:
     for (;;)
@@ -46,8 +46,8 @@ final class e
         if (i < 7093) {
           break label176;
         }
-        localException.dGc = 90;
-        localException.gbc.setDisplayOrientation(180);
+        localException.dHi = 90;
+        localException.gdk.setDisplayOrientation(180);
         break;
         Object localObject = Build.DISPLAY;
         if (((String)localObject).substring(0, 0).equals("1"))
@@ -60,7 +60,7 @@ final class e
           if ((localObject == null) || (localObject.length < 2)) {
             i = -1;
           } else {
-            i = a.eZ(localObject[1]);
+            i = a.fe(localObject[1]);
           }
         }
       }

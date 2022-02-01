@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.appbrand.jsapi.live;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.e;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.rtmp.TXLivePusher.ITXAudioVolumeEvaluationListener;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -15,14 +15,14 @@ final class b$13
   public final void onAudioVolumeEvaluationNotify(int paramInt)
   {
     AppMethodBeat.i(182553);
-    ad.i("MicroMsg.JsApiInsertLivePusher", "onAudioVolumeEvaluationNotify, volume:%s", new Object[] { Integer.valueOf(paramInt) });
+    ae.i("MicroMsg.JsApiInsertLivePusher", "onAudioVolumeEvaluationNotify, volume:%s", new Object[] { Integer.valueOf(paramInt) });
     b.a locala = new b.a((byte)0);
     JSONObject localJSONObject = new JSONObject();
     try
     {
       localJSONObject.put("volume", paramInt);
-      localJSONObject.put("livePusherId", this.kCh);
-      this.kCd.b(locala.Pi(localJSONObject.toString()));
+      localJSONObject.put("livePusherId", this.kFw);
+      this.kFs.b(locala.PQ(localJSONObject.toString()));
       AppMethodBeat.o(182553);
       return;
     }
@@ -30,7 +30,7 @@ final class b$13
     {
       for (;;)
       {
-        ad.e("MicroMsg.JsApiInsertLivePusher", "onAudioVolumeEvaluationNotify fail", new Object[] { localJSONException });
+        ae.e("MicroMsg.JsApiInsertLivePusher", "onAudioVolumeEvaluationNotify fail", new Object[] { localJSONException });
       }
     }
   }

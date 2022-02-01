@@ -5,17 +5,17 @@ import d.g.a.a;
 import d.g.b.q;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
 final class c$d
   extends q
   implements a<Integer>
 {
-  public static final d nrh;
+  public static final d nwA;
   
   static
   {
     AppMethodBeat.i(51465);
-    nrh = new d();
+    nwA = new d();
     AppMethodBeat.o(51465);
   }
   

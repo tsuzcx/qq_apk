@@ -12,12 +12,12 @@ public final class b
   extends d
   implements InvocationHandler
 {
-  private final Object cEb;
+  private final Object cEI;
   
   public b(d.a parama, Object paramObject)
   {
     super(parama);
-    this.cEb = paramObject;
+    this.cEI = paramObject;
   }
   
   public final Object invoke(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
@@ -36,7 +36,7 @@ public final class b
         return null;
       }
       paramObject = a.getThrowableStack((Throwable)paramArrayOfObject[1]);
-      if (dP(paramObject)) {
+      if (dS(paramObject)) {
         com.tencent.matrix.g.c.d("Matrix.CloseGuardInvocationHandler", "close leak issue already published; key:%s", new Object[] { paramObject });
       }
       for (;;)
@@ -48,10 +48,10 @@ public final class b
         try
         {
           paramArrayOfObject.put("stack", paramObject);
-          paramMethod.cEZ = paramArrayOfObject;
+          paramMethod.cFG = paramArrayOfObject;
           b(paramMethod);
           com.tencent.matrix.g.c.i("Matrix.CloseGuardInvocationHandler", "close leak issue publish, key:%s", new Object[] { paramObject });
-          dO(paramObject);
+          dR(paramObject);
         }
         catch (JSONException localJSONException)
         {
@@ -62,7 +62,7 @@ public final class b
         }
       }
     }
-    return paramMethod.invoke(this.cEb, paramArrayOfObject);
+    return paramMethod.invoke(this.cEI, paramArrayOfObject);
   }
 }
 

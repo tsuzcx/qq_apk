@@ -8,11 +8,11 @@ import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.yb;
-import com.tencent.mm.g.a.yb.b;
+import com.tencent.mm.g.a.yh;
+import com.tencent.mm.g.a.yh.b;
 import com.tencent.mm.g.c.ei;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.bu;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.bv;
 import com.tencent.mm.ui.ao;
 import com.tencent.mm.ui.chatting.BaseChattingUIFragment;
 import com.tencent.mm.ui.chatting.d.b.k;
@@ -20,10 +20,10 @@ import com.tencent.mm.ui.chatting.d.b.k;
 final class bd$i
   extends c.a
 {
-  TextView KeJ;
-  View Khc = null;
+  TextView KBc;
+  View KDx = null;
   
-  public static void a(i parami, bu parambu, boolean paramBoolean, int paramInt, com.tencent.mm.ui.chatting.e.a parama, bd.h paramh, View.OnLongClickListener paramOnLongClickListener)
+  public static void a(i parami, bv parambv, boolean paramBoolean, int paramInt, com.tencent.mm.ui.chatting.e.a parama, bd.h paramh, View.OnLongClickListener paramOnLongClickListener)
   {
     AppMethodBeat.i(37539);
     if (parami == null)
@@ -32,10 +32,10 @@ final class bd$i
       return;
     }
     int i;
-    if (parami.JYs != null)
+    if (parami.KuL != null)
     {
-      ImageView localImageView = parami.JYs;
-      if (parambu.field_status == 6)
+      ImageView localImageView = parami.KuL;
+      if (parambv.field_status == 6)
       {
         i = 8;
         localImageView.setVisibility(i);
@@ -43,19 +43,19 @@ final class bd$i
     }
     else
     {
-      parami.ofK.setTag(new bk(parambu, parama.fFv(), paramInt, null, '\000'));
-      parami.ofK.setOnClickListener(paramh);
-      parami.ofK.setOnLongClickListener(paramOnLongClickListener);
-      parami.ofK.setOnTouchListener(((k)parama.bh(k.class)).fCu());
-      paramh = parambu.eLs;
-      if (bt.isNullOrNil(paramh)) {
+      parami.olI.setTag(new bk(parambv, parama.fJC(), paramInt, null, '\000'));
+      parami.olI.setOnClickListener(paramh);
+      parami.olI.setOnLongClickListener(paramOnLongClickListener);
+      parami.olI.setOnTouchListener(((k)parama.bh(k.class)).fGw());
+      paramh = parambv.eNd;
+      if (bu.isNullOrNil(paramh)) {
         break label153;
       }
-      parami.KeJ.setText(paramh);
+      parami.KBc.setText(paramh);
     }
     for (;;)
     {
-      if (parami.Khc != null) {
+      if (parami.KDx != null) {
         break label181;
       }
       AppMethodBeat.o(37539);
@@ -64,45 +64,45 @@ final class bd$i
       break;
       label153:
       if (paramBoolean) {
-        parami.KeJ.setText(2131764797);
+        parami.KBc.setText(2131764797);
       } else {
-        parami.KeJ.setText(2131764798);
+        parami.KBc.setText(2131764798);
       }
     }
     label181:
-    if ((parambu.field_content.equals(bu.IMd)) || (vC(parambu.field_content)))
+    if ((parambv.field_content.equals(bv.JgK)) || (vY(parambv.field_content)))
     {
       if (paramBoolean)
       {
-        parami.Khc.setBackground(ao.e(parama.JOR.getContext().getDrawable(2131691395), parama.JOR.getContext().getResources().getColor(2131099732)));
+        parami.KDx.setBackground(ao.e(parama.Kkd.getContext().getDrawable(2131691395), parama.Kkd.getContext().getResources().getColor(2131099732)));
         AppMethodBeat.o(37539);
         return;
       }
-      parami.Khc.setBackgroundResource(2131691395);
+      parami.KDx.setBackgroundResource(2131691395);
       AppMethodBeat.o(37539);
       return;
     }
-    if ((parambu.field_content.equals(bu.IMe)) || (vB(parambu.field_content)))
+    if ((parambv.field_content.equals(bv.JgL)) || (vX(parambv.field_content)))
     {
       if (paramBoolean)
       {
-        parami.Khc.setBackground(ao.e(parama.JOR.getContext().getDrawable(2131691392), parama.JOR.getContext().getResources().getColor(2131099732)));
+        parami.KDx.setBackground(ao.e(parama.Kkd.getContext().getDrawable(2131691392), parama.Kkd.getContext().getResources().getColor(2131099732)));
         AppMethodBeat.o(37539);
         return;
       }
-      parami.Khc.setBackgroundResource(2131691393);
+      parami.KDx.setBackgroundResource(2131691393);
     }
     AppMethodBeat.o(37539);
   }
   
-  private static boolean vB(String paramString)
+  private static boolean vX(String paramString)
   {
     AppMethodBeat.i(37541);
-    yb localyb = new yb();
-    localyb.dMo.dsi = 1;
-    localyb.dMo.content = paramString;
-    com.tencent.mm.sdk.b.a.IbL.l(localyb);
-    if (localyb.dMp.type == 2)
+    yh localyh = new yh();
+    localyh.dNE.dto = 1;
+    localyh.dNE.content = paramString;
+    com.tencent.mm.sdk.b.a.IvT.l(localyh);
+    if (localyh.dNF.type == 2)
     {
       AppMethodBeat.o(37541);
       return true;
@@ -111,14 +111,14 @@ final class bd$i
     return false;
   }
   
-  private static boolean vC(String paramString)
+  private static boolean vY(String paramString)
   {
     AppMethodBeat.i(37540);
-    yb localyb = new yb();
-    localyb.dMo.dsi = 1;
-    localyb.dMo.content = paramString;
-    com.tencent.mm.sdk.b.a.IbL.l(localyb);
-    if (localyb.dMp.type == 3)
+    yh localyh = new yh();
+    localyh.dNE.dto = 1;
+    localyh.dNE.content = paramString;
+    com.tencent.mm.sdk.b.a.IvT.l(localyh);
+    if (localyh.dNF.type == 3)
     {
       AppMethodBeat.o(37540);
       return true;
@@ -127,17 +127,17 @@ final class bd$i
     return false;
   }
   
-  public final c.a gI(View paramView)
+  public final c.a gN(View paramView)
   {
     AppMethodBeat.i(37538);
-    super.gn(paramView);
-    this.fTP = ((TextView)paramView.findViewById(2131298178));
-    this.KeJ = ((TextView)paramView.findViewById(2131298211));
-    this.ofK = paramView.findViewById(2131298069);
-    this.Khc = paramView.findViewById(2131298210);
-    this.JYs = ((ImageView)paramView.findViewById(2131298174));
-    this.iCK = ((CheckBox)paramView.findViewById(2131298068));
-    this.gZU = paramView.findViewById(2131298147);
+    super.gs(paramView);
+    this.fVV = ((TextView)paramView.findViewById(2131298178));
+    this.KBc = ((TextView)paramView.findViewById(2131298211));
+    this.olI = paramView.findViewById(2131298069);
+    this.KDx = paramView.findViewById(2131298210);
+    this.KuL = ((ImageView)paramView.findViewById(2131298174));
+    this.iFD = ((CheckBox)paramView.findViewById(2131298068));
+    this.hcH = paramView.findViewById(2131298147);
     AppMethodBeat.o(37538);
     return this;
   }

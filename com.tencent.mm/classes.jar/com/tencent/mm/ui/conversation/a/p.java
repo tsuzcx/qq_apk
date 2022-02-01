@@ -6,39 +6,39 @@ import android.content.res.Resources;
 import android.view.View;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.q;
-import com.tencent.mm.model.ba;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.model.bc;
 import com.tencent.mm.model.c;
-import com.tencent.mm.model.u;
-import com.tencent.mm.modelsimple.n;
+import com.tencent.mm.model.v;
+import com.tencent.mm.modelsimple.o;
 import com.tencent.mm.pluginsdk.ui.b.b;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.sdk.platformtools.i;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.j;
 import com.tencent.mm.ui.widget.imageview.WeImageView;
 import java.lang.ref.WeakReference;
 
 public final class p
   extends b
 {
-  private boolean KyY;
-  private View nAt;
-  private View nAu;
-  private WeImageView nZY;
+  private boolean KVs;
+  private View nFO;
+  private View nFP;
+  private WeImageView ofI;
   private TextView titleTv;
   
   public p(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(38853);
-    this.KyY = false;
-    if ((!this.KyY) && (this.view != null))
+    this.KVs = false;
+    if ((!this.KVs) && (this.view != null))
     {
-      this.nAt = this.view.findViewById(2131297178);
-      this.nAu = this.view.findViewById(2131297183);
-      this.nZY = ((WeImageView)this.view.findViewById(2131297180));
-      this.nZY.setIconColor(((Context)this.EXg.get()).getResources().getColor(2131099676));
+      this.nFO = this.view.findViewById(2131297178);
+      this.nFP = this.view.findViewById(2131297183);
+      this.ofI = ((WeImageView)this.view.findViewById(2131297180));
+      this.ofI.setIconColor(((Context)this.FpA.get()).getResources().getColor(2131099676));
       this.titleTv = ((TextView)this.view.findViewById(2131297184));
-      this.KyY = true;
+      this.KVs = true;
     }
     AppMethodBeat.o(38853);
   }
@@ -60,27 +60,27 @@ public final class p
     return false;
   }
   
-  public final boolean bAa()
+  public final boolean bAV()
   {
     AppMethodBeat.i(38855);
     Object localObject;
     boolean bool;
-    if ((this.isFirst) && (this.hjE))
+    if ((this.isFirst) && (this.hms))
     {
-      this.nAu.setBackgroundResource(2131234377);
-      this.nAt.setBackground(null);
+      this.nFP.setBackgroundResource(2131234377);
+      this.nFO.setBackground(null);
       this.titleTv.setBackground(null);
-      ba.aBQ();
-      if (!c.aiI()) {
+      bc.aCg();
+      if (!c.aiX()) {
         break label211;
       }
-      ba.aBQ();
-      if (!n.pS(c.azm())) {
+      bc.aCg();
+      if (!o.pV(c.azC())) {
         break label211;
       }
-      localObject = ba.aiU();
-      ba.aBQ();
-      ((q)localObject).a(new n(c.azm()), 0);
+      localObject = bc.ajj();
+      bc.aCg();
+      ((q)localObject).a(new o(c.azC()), 0);
       bool = false;
     }
     for (;;)
@@ -95,114 +95,114 @@ public final class p
         return bool;
         if (this.isFirst)
         {
-          this.nAu.setBackgroundResource(2131232872);
-          this.nAt.setBackgroundResource(2131232870);
+          this.nFP.setBackgroundResource(2131232872);
+          this.nFO.setBackgroundResource(2131232870);
           this.titleTv.setBackgroundResource(2131232867);
           break;
         }
-        if (this.hjE)
+        if (this.hms)
         {
-          this.nAu.setBackgroundResource(2131232872);
-          this.nAt.setBackgroundResource(2131232867);
+          this.nFP.setBackgroundResource(2131232872);
+          this.nFO.setBackgroundResource(2131232867);
           this.titleTv.setBackground(null);
           break;
         }
-        this.nAu.setBackgroundResource(2131232872);
-        this.nAt.setBackground(null);
+        this.nFP.setBackgroundResource(2131232872);
+        this.nFO.setBackground(null);
         this.titleTv.setBackgroundResource(2131232867);
         break;
         label211:
-        ba.aBQ();
-        if ((c.aiI()) && (!bt.isNullOrNil(n.ilB)) && (!n.aKE()))
+        bc.aCg();
+        if ((c.aiX()) && (!bu.isNullOrNil(o.iou)) && (!o.aLb()))
         {
-          if (u.acv()) {
-            if ((!n.aKH()) && (n.aKF()))
+          if (v.acG()) {
+            if ((!o.aLe()) && (o.aLc()))
             {
-              this.titleTv.setText(n.ilH);
+              this.titleTv.setText(o.ioA);
               label264:
-              this.nZY.setIconColor(((Context)this.EXg.get()).getResources().getColor(2131099676));
-              if (n.aKD() != 1) {
+              this.ofI.setIconColor(((Context)this.FpA.get()).getResources().getColor(2131099676));
+              if (o.aLa() != 1) {
                 break label446;
               }
-              if (o(this.nZY.getTag(), 2131690555))
+              if (o(this.ofI.getTag(), 2131690555))
               {
-                this.nZY.setTag(Integer.valueOf(2131690555));
-                this.nZY.setImageResource(2131690555);
+                this.ofI.setTag(Integer.valueOf(2131690555));
+                this.ofI.setImageResource(2131690555);
               }
             }
           }
           for (;;)
           {
             localObject = new Intent();
-            ((Intent)localObject).putExtra("intent.key.online_version", n.aKG());
+            ((Intent)localObject).putExtra("intent.key.online_version", o.aLd());
             this.view.setOnClickListener(new p.1(this, (Intent)localObject));
             bool = true;
             break;
-            this.titleTv.setText(n.ilB + " " + n.ilC);
+            this.titleTv.setText(o.iou + " " + o.iov);
             break label264;
-            if ((!n.aKH()) && (n.aKF()))
+            if ((!o.aLe()) && (o.aLc()))
             {
-              this.titleTv.setText(n.ilI);
+              this.titleTv.setText(o.ioB);
               break label264;
             }
-            this.titleTv.setText(n.ilF);
+            this.titleTv.setText(o.ioy);
             break label264;
             label446:
-            if (n.aKD() == 2)
+            if (o.aLa() == 2)
             {
-              if (n.aKF())
+              if (o.aLc())
               {
-                if (o(this.nZY.getTag(), 2131690584))
+                if (o(this.ofI.getTag(), 2131690584))
                 {
-                  this.nZY.setTag(Integer.valueOf(2131690584));
-                  this.nZY.setImageResource(2131690584);
+                  this.ofI.setTag(Integer.valueOf(2131690584));
+                  this.ofI.setImageResource(2131690584);
                 }
               }
-              else if (o(this.nZY.getTag(), 2131690583))
+              else if (o(this.ofI.getTag(), 2131690583))
               {
-                this.nZY.setTag(Integer.valueOf(2131690583));
-                this.nZY.setImageResource(2131690583);
+                this.ofI.setTag(Integer.valueOf(2131690583));
+                this.ofI.setImageResource(2131690583);
               }
             }
-            else if (n.aKD() == 3)
+            else if (o.aLa() == 3)
             {
-              if (o(this.nZY.getTag(), 2131690615))
+              if (o(this.ofI.getTag(), 2131690615))
               {
-                this.nZY.setTag(Integer.valueOf(2131690615));
-                this.nZY.setImageResource(2131690615);
+                this.ofI.setTag(Integer.valueOf(2131690615));
+                this.ofI.setImageResource(2131690615);
               }
             }
-            else if (n.aKD() == 6)
+            else if (o.aLa() == 6)
             {
-              if (o(this.nZY.getTag(), 2131689964))
+              if (o(this.ofI.getTag(), 2131689964))
               {
-                this.nZY.setTag(Integer.valueOf(2131689964));
-                this.nZY.setImageResource(2131689964);
+                this.ofI.setTag(Integer.valueOf(2131689964));
+                this.ofI.setImageResource(2131689964);
               }
             }
-            else if (o(this.nZY.getTag(), 2131691293))
+            else if (o(this.ofI.getTag(), 2131691293))
             {
-              this.nZY.setTag(Integer.valueOf(2131691293));
-              this.nZY.setImageResource(2131691293);
+              this.ofI.setTag(Integer.valueOf(2131691293));
+              this.ofI.setImageResource(2131691293);
             }
           }
         }
-        if (!i.EX_DEVICE_LOGIN) {
+        if (!j.EX_DEVICE_LOGIN) {
           break label798;
         }
-        ba.aBQ();
-        if (!c.aiI()) {
+        bc.aCg();
+        if (!c.aiX()) {
           break label798;
         }
-        int i = n.getDeviceType();
-        if ((n.aKD() != 0) || ((i != 2) && (i != 1))) {
+        int i = o.getDeviceType();
+        if ((o.aLa() != 0) || ((i != 2) && (i != 1))) {
           break label798;
         }
         this.view.setOnClickListener(null);
-        if (o(this.nZY.getTag(), 2131691293))
+        if (o(this.ofI.getTag(), 2131691293))
         {
-          this.nZY.setTag(Integer.valueOf(2131691293));
-          this.nZY.setImageResource(2131691293);
+          this.ofI.setTag(Integer.valueOf(2131691293));
+          this.ofI.setImageResource(2131691293);
         }
         if (i == 2)
         {
@@ -237,8 +237,8 @@ public final class p
   public final void setVisibility(int paramInt)
   {
     AppMethodBeat.i(38854);
-    if (this.nAt != null) {
-      this.nAt.setVisibility(paramInt);
+    if (this.nFO != null) {
+      this.nFO.setVisibility(paramInt);
     }
     AppMethodBeat.o(38854);
   }

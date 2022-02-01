@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class xg
   extends b
 {
-  public a dLB;
+  public a dMK;
   
   public xg()
   {
@@ -15,22 +15,24 @@ public final class xg
   
   private xg(byte paramByte)
   {
-    AppMethodBeat.i(94801);
-    this.dLB = new a();
-    this.IbR = false;
+    AppMethodBeat.i(140992);
+    this.dMK = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(94801);
+    AppMethodBeat.o(140992);
   }
   
   public static final class a
   {
-    public long dLC = -1L;
-    public long dLD = -1L;
+    public int dML = 0;
+    public int dMM = 0;
+    public int dMN = 0;
+    public int type = 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.a.xg
  * JD-Core Version:    0.7.0.1
  */

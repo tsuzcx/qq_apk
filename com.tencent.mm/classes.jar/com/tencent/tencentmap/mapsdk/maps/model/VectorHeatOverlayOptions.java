@@ -70,9 +70,9 @@ public final class VectorHeatOverlayOptions
   
   public final VectorHeatOverlayOptions.VectorHeatOverlayType getType()
   {
-    AppMethodBeat.i(195101);
+    AppMethodBeat.i(209876);
     VectorHeatOverlayOptions.VectorHeatOverlayType localVectorHeatOverlayType = VectorHeatOverlayOptions.VectorHeatOverlayType.values()[this.mType];
-    AppMethodBeat.o(195101);
+    AppMethodBeat.o(209876);
     return localVectorHeatOverlayType;
   }
   
@@ -119,9 +119,9 @@ public final class VectorHeatOverlayOptions
   
   public final VectorHeatOverlayOptions type(VectorHeatOverlayOptions.VectorHeatOverlayType paramVectorHeatOverlayType)
   {
-    AppMethodBeat.i(195102);
+    AppMethodBeat.i(209877);
     this.mType = paramVectorHeatOverlayType.ordinal();
-    AppMethodBeat.o(195102);
+    AppMethodBeat.o(209877);
     return this;
   }
   

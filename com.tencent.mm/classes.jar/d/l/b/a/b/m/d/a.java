@@ -32,12 +32,12 @@ public final class a
     AppMethodBeat.i(61252);
     p.h(paramab, "$this$replaceAnnotations");
     p.h(paramg, "newAnnotations");
-    if ((paramab.ghH().isEmpty()) && (paramg.isEmpty()))
+    if ((paramab.gmj().isEmpty()) && (paramg.isEmpty()))
     {
       AppMethodBeat.o(61252);
       return paramab;
     }
-    paramab = (ab)paramab.gua().b(paramg);
+    paramab = (ab)paramab.gyC().b(paramg);
     AppMethodBeat.o(61252);
     return paramab;
   }
@@ -48,11 +48,11 @@ public final class a
     p.h(paramab, "type");
     p.h(parambh, "projectionKind");
     if (paramas != null) {}
-    for (paramas = paramas.giF();; paramas = null)
+    for (paramas = paramas.gnh();; paramas = null)
     {
       bh localbh = parambh;
       if (paramas == parambh) {
-        localbh = bh.NCP;
+        localbh = bh.NZW;
       }
       paramab = (av)new ax(localbh, paramab);
       AppMethodBeat.o(61253);
@@ -93,7 +93,7 @@ public final class a
   {
     AppMethodBeat.i(61247);
     p.h(paramab, "$this$builtIns");
-    paramab = paramab.gsZ().gjd();
+    paramab = paramab.gxB().gnF();
     p.g(paramab, "constructor.builtIns");
     AppMethodBeat.o(61247);
     return paramab;
@@ -112,23 +112,23 @@ public final class a
   {
     AppMethodBeat.i(61255);
     p.h(paramab, "$this$replaceArgumentsWithStarProjections");
-    bg localbg = paramab.gua();
+    bg localbg = paramab.gyC();
     aj localaj;
     Object localObject1;
     if ((localbg instanceof v))
     {
-      localaj = ((v)localbg).NBV;
+      localaj = ((v)localbg).NZc;
       paramab = localaj;
-      if (!localaj.gsZ().getParameters().isEmpty())
+      if (!localaj.gxB().getParameters().isEmpty())
       {
-        if (localaj.gsZ().ghO() == null) {
+        if (localaj.gxB().gmq() == null) {
           paramab = localaj;
         }
       }
       else
       {
-        localaj = ((v)localbg).NBW;
-        if ((!localaj.gsZ().getParameters().isEmpty()) && (localaj.gsZ().ghO() != null)) {
+        localaj = ((v)localbg).NZd;
+        if ((!localaj.gxB().getParameters().isEmpty()) && (localaj.gxB().gmq() != null)) {
           break label218;
         }
       }
@@ -138,7 +138,7 @@ public final class a
         paramab = (ab)be.a(paramab, (ab)localbg);
         AppMethodBeat.o(61255);
         return paramab;
-        paramab = localaj.gsZ().getParameters();
+        paramab = localaj.gxB().getParameters();
         p.g(paramab, "constructor.parameters");
         localObject1 = (Iterable)paramab;
         paramab = (Collection)new ArrayList(j.a((Iterable)localObject1, 10));
@@ -149,7 +149,7 @@ public final class a
         paramab = az.a(localaj, (List)paramab);
         break;
         label218:
-        localObject1 = localaj.gsZ().getParameters();
+        localObject1 = localaj.gxB().getParameters();
         p.g(localObject1, "constructor.parameters");
         Object localObject2 = (Iterable)localObject1;
         localObject1 = (Collection)new ArrayList(j.a((Iterable)localObject2, 10));
@@ -164,8 +164,8 @@ public final class a
     {
       localaj = (aj)localbg;
       paramab = localaj;
-      if (!localaj.gsZ().getParameters().isEmpty()) {
-        if (localaj.gsZ().ghO() != null) {
+      if (!localaj.gxB().getParameters().isEmpty()) {
+        if (localaj.gxB().gmq() != null) {
           break label369;
         }
       }
@@ -174,7 +174,7 @@ public final class a
         paramab = (bg)paramab;
         break;
         label369:
-        paramab = localaj.gsZ().getParameters();
+        paramab = localaj.gxB().getParameters();
         p.g(paramab, "constructor.parameters");
         localObject1 = (Iterable)paramab;
         paramab = (Collection)new ArrayList(j.a((Iterable)localObject1, 10));
@@ -194,7 +194,7 @@ public final class a
     AppMethodBeat.i(61251);
     p.h(paramab1, "$this$isSubtypeOf");
     p.h(paramab2, "superType");
-    boolean bool = d.l.b.a.b.m.a.g.NDb.c(paramab1, paramab2);
+    boolean bool = d.l.b.a.b.m.a.g.Oai.c(paramab1, paramab2);
     AppMethodBeat.o(61251);
     return bool;
   }
@@ -203,23 +203,23 @@ public final class a
   {
     AppMethodBeat.i(61256);
     p.h(paramas, "$this$representativeUpperBound");
-    Object localObject1 = paramas.ggj();
+    Object localObject1 = paramas.gkL();
     p.g(localObject1, "upperBounds");
     if (!((Collection)localObject1).isEmpty()) {}
-    for (int i = 1; (d.ac.MKp) && (i == 0); i = 0)
+    for (int i = 1; (d.ac.Nhs) && (i == 0); i = 0)
     {
       paramas = (Throwable)new AssertionError("Upper bounds should not be empty: ".concat(String.valueOf(paramas)));
       AppMethodBeat.o(61256);
       throw paramas;
     }
-    localObject1 = paramas.ggj();
+    localObject1 = paramas.gkL();
     p.g(localObject1, "upperBounds");
     Iterator localIterator = ((Iterable)localObject1).iterator();
     Object localObject2;
     if (localIterator.hasNext())
     {
       localObject2 = localIterator.next();
-      h localh = ((ab)localObject2).gsZ().ghO();
+      h localh = ((ab)localObject2).gxB().gmq();
       localObject1 = localh;
       if (!(localh instanceof e)) {
         localObject1 = null;
@@ -241,15 +241,15 @@ public final class a
       localObject1 = localObject2;
       if (localObject2 == null)
       {
-        paramas = paramas.ggj();
+        paramas = paramas.gkL();
         p.g(paramas, "upperBounds");
-        paramas = j.jc(paramas);
+        paramas = j.jl(paramas);
         p.g(paramas, "upperBounds.first()");
         localObject1 = (ab)paramas;
       }
       AppMethodBeat.o(61256);
       return localObject1;
-      if ((((e)localObject1).ghw() == f.MUs) || (((e)localObject1).ghw() == f.MUv)) {
+      if ((((e)localObject1).glY() == f.Nrx) || (((e)localObject1).glY() == f.NrA)) {
         break label158;
       }
       i = 1;
@@ -261,7 +261,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.m.d.a
  * JD-Core Version:    0.7.0.1
  */

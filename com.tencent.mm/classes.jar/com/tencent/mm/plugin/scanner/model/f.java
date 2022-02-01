@@ -1,70 +1,71 @@
 package com.tencent.mm.plugin.scanner.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.n;
-import com.tencent.mm.bx.a;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.bw.a;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
+import com.tencent.mm.plugin.scanner.api.ScanImagePHashInfo;
 import com.tencent.mm.protocal.protobuf.mc;
-import com.tencent.mm.protocal.protobuf.mh;
-import com.tencent.mm.protocal.protobuf.mi;
 import com.tencent.mm.protocal.protobuf.mj;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.mk;
+import com.tencent.mm.protocal.protobuf.ml;
+import com.tencent.mm.sdk.platformtools.ae;
 import d.g.b.p;
 import d.l;
 import d.v;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/scanner/model/NetSceneAiScanImageScene;", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Lcom/tencent/mm/network/IOnGYNetEnd;", "imageData", "", "sessionId", "", "mode", "", "seqNum", "searchInfo", "Lcom/tencent/mm/protocal/protobuf/BizAiScanImageSearchInfo;", "locationInfo", "Lcom/tencent/mm/protocal/protobuf/BizAiScanImageLocation;", "pHashInfo", "Lcom/tencent/mm/plugin/scanner/model/ScanImagePHashInfo;", "([BJIILcom/tencent/mm/protocal/protobuf/BizAiScanImageSearchInfo;Lcom/tencent/mm/protocal/protobuf/BizAiScanImageLocation;Lcom/tencent/mm/plugin/scanner/model/ScanImagePHashInfo;)V", "callback", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "rr", "Lcom/tencent/mm/modelbase/CommReqResp;", "session", "doScene", "dispatcher", "Lcom/tencent/mm/network/IDispatcher;", "getResp", "Lcom/tencent/mm/protocal/protobuf/BizAiScanImageSceneResponse;", "getSession", "getType", "onGYNetEnd", "", "netId", "errType", "errCode", "errMsg", "", "Lcom/tencent/mm/network/IReqResp;", "cookie", "Companion", "plugin-scan_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/scanner/model/NetSceneAiScanImageScene;", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Lcom/tencent/mm/network/IOnGYNetEnd;", "imageData", "", "sessionId", "", "mode", "", "seqNum", "searchInfo", "Lcom/tencent/mm/protocal/protobuf/BizAiScanImageSearchInfo;", "locationInfo", "Lcom/tencent/mm/protocal/protobuf/BizAiScanImageLocation;", "pHashInfo", "Lcom/tencent/mm/plugin/scanner/api/ScanImagePHashInfo;", "([BJIILcom/tencent/mm/protocal/protobuf/BizAiScanImageSearchInfo;Lcom/tencent/mm/protocal/protobuf/BizAiScanImageLocation;Lcom/tencent/mm/plugin/scanner/api/ScanImagePHashInfo;)V", "callback", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "rr", "Lcom/tencent/mm/modelbase/CommReqResp;", "session", "doScene", "dispatcher", "Lcom/tencent/mm/network/IDispatcher;", "getResp", "Lcom/tencent/mm/protocal/protobuf/BizAiScanImageSceneResponse;", "getSession", "getType", "onGYNetEnd", "", "netId", "errType", "errCode", "errMsg", "", "Lcom/tencent/mm/network/IReqResp;", "cookie", "Companion", "plugin-scan_release"})
 public final class f
   extends n
   implements k
 {
-  public static final f.a ymN;
-  private com.tencent.mm.al.f callback;
-  long dlI;
-  final com.tencent.mm.al.b rr;
+  public static final f.a yCL;
+  private com.tencent.mm.ak.f callback;
+  long dmK;
+  final com.tencent.mm.ak.b rr;
   
   static
   {
-    AppMethodBeat.i(186278);
-    ymN = new f.a((byte)0);
-    AppMethodBeat.o(186278);
+    AppMethodBeat.i(189563);
+    yCL = new f.a((byte)0);
+    AppMethodBeat.o(189563);
   }
   
-  public f(byte[] paramArrayOfByte, long paramLong, int paramInt, mj parammj, mc parammc, ScanImagePHashInfo paramScanImagePHashInfo)
+  public f(byte[] paramArrayOfByte, long paramLong, int paramInt, ml paramml, mc parammc, ScanImagePHashInfo paramScanImagePHashInfo)
   {
-    AppMethodBeat.i(186277);
-    this.dlI = paramLong;
+    AppMethodBeat.i(189562);
+    this.dmK = paramLong;
     Object localObject = new b.a();
-    ((b.a)localObject).c((a)new mh());
-    ((b.a)localObject).d((a)new mi());
-    ((b.a)localObject).Dl("/cgi-bin/mmbiz-bin/usrmsg/aiscan_image_scene");
-    ((b.a)localObject).oP(1100);
-    ((b.a)localObject).oR(0);
-    ((b.a)localObject).oS(0);
-    localObject = ((b.a)localObject).aDC();
+    ((b.a)localObject).c((a)new mj());
+    ((b.a)localObject).d((a)new mk());
+    ((b.a)localObject).DN("/cgi-bin/mmbiz-bin/usrmsg/aiscan_image_scene");
+    ((b.a)localObject).oS(1100);
+    ((b.a)localObject).oU(0);
+    ((b.a)localObject).oV(0);
+    localObject = ((b.a)localObject).aDS();
     p.g(localObject, "builder.buildInstance()");
-    this.rr = ((com.tencent.mm.al.b)localObject);
-    localObject = this.rr.aEE();
+    this.rr = ((com.tencent.mm.ak.b)localObject);
+    localObject = this.rr.aEU();
     if (localObject == null)
     {
       paramArrayOfByte = new v("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.BizAiScanImageSceneRequest");
-      AppMethodBeat.o(186277);
+      AppMethodBeat.o(189562);
       throw paramArrayOfByte;
     }
-    mh localmh = (mh)localObject;
-    localmh.mode = paramInt;
-    localmh.FBz = 0;
-    localmh.FEU = com.tencent.mm.bx.b.cj(paramArrayOfByte);
-    localmh.FFa = paramLong;
-    localmh.FFu = parammj;
-    localmh.FFg = parammc;
+    mj localmj = (mj)localObject;
+    localmj.mode = paramInt;
+    localmj.FTU = 0;
+    localmj.FXp = com.tencent.mm.bw.b.cm(paramArrayOfByte);
+    localmj.FXv = paramLong;
+    localmj.FXT = paramml;
+    localmj.FXB = parammc;
     String str;
     if (paramScanImagePHashInfo != null)
     {
-      str = paramScanImagePHashInfo.getPHash();
+      str = paramScanImagePHashInfo.pHash;
       localObject = str;
       if (str != null) {}
     }
@@ -72,10 +73,10 @@ public final class f
     {
       localObject = "";
     }
-    localmh.FFw = ((String)localObject);
+    localmj.FXQ = ((String)localObject);
     if (paramScanImagePHashInfo != null)
     {
-      str = paramScanImagePHashInfo.getPHashVersion();
+      str = paramScanImagePHashInfo.pHashVersion;
       localObject = str;
       if (str != null) {}
     }
@@ -83,30 +84,30 @@ public final class f
     {
       localObject = "";
     }
-    localmh.FFx = ((String)localObject);
-    ad.i("MicroMsg.NetSceneAiScanImageScene", "alvinluo NetSceneAiScanImageScene imageSize: %d, mode: %d, sessionId: %d, seqNum: %s", new Object[] { Integer.valueOf(paramArrayOfByte.length), Integer.valueOf(paramInt), Long.valueOf(paramLong), Integer.valueOf(0) });
-    if (parammj != null)
+    localmj.FXR = ((String)localObject);
+    ae.i("MicroMsg.NetSceneAiScanImageScene", "alvinluo NetSceneAiScanImageScene imageSize: %d, mode: %d, sessionId: %d, seqNum: %s", new Object[] { Integer.valueOf(paramArrayOfByte.length), Integer.valueOf(paramInt), Long.valueOf(paramLong), Integer.valueOf(0) });
+    if (paramml != null)
     {
-      paramArrayOfByte = Integer.valueOf(parammj.FFA);
+      paramArrayOfByte = Integer.valueOf(paramml.FXW);
       if (parammc == null) {
         break label426;
       }
-      parammj = Float.valueOf(parammc.dyz);
+      paramml = Float.valueOf(parammc.dzE);
       label320:
       if (parammc == null) {
         break label432;
       }
-      localObject = Float.valueOf(parammc.dAp);
+      localObject = Float.valueOf(parammc.dBu);
       label335:
       if (parammc == null) {
         break label438;
       }
-      parammc = Float.valueOf(parammc.FET);
+      parammc = Float.valueOf(parammc.FXo);
       label350:
       if (paramScanImagePHashInfo == null) {
         break label444;
       }
-      str = paramScanImagePHashInfo.getPHash();
+      str = paramScanImagePHashInfo.pHash;
       label362:
       if (paramScanImagePHashInfo == null) {
         break label450;
@@ -117,14 +118,14 @@ public final class f
     label438:
     label444:
     label450:
-    for (paramScanImagePHashInfo = paramScanImagePHashInfo.getPHashVersion();; paramScanImagePHashInfo = null)
+    for (paramScanImagePHashInfo = paramScanImagePHashInfo.pHashVersion;; paramScanImagePHashInfo = null)
     {
-      ad.v("MicroMsg.NetSceneAiScanImageScene", "alvinluo NetSceneAiScanImageScene %s, %s, %s, %s, pHash: %s, pHashVersion: %s", new Object[] { paramArrayOfByte, parammj, localObject, parammc, str, paramScanImagePHashInfo });
-      AppMethodBeat.o(186277);
+      ae.v("MicroMsg.NetSceneAiScanImageScene", "alvinluo NetSceneAiScanImageScene %s, %s, %s, %s, pHash: %s, pHashVersion: %s", new Object[] { paramArrayOfByte, paramml, localObject, parammc, str, paramScanImagePHashInfo });
+      AppMethodBeat.o(189562);
       return;
       paramArrayOfByte = null;
       break;
-      parammj = null;
+      paramml = null;
       break label320;
       localObject = null;
       break label335;
@@ -135,14 +136,14 @@ public final class f
     }
   }
   
-  public final int doScene(e parame, com.tencent.mm.al.f paramf)
+  public final int doScene(e parame, com.tencent.mm.ak.f paramf)
   {
-    AppMethodBeat.i(186276);
+    AppMethodBeat.i(189561);
     p.h(parame, "dispatcher");
     p.h(paramf, "callback");
     this.callback = paramf;
     int i = dispatch(parame, (q)this.rr, (k)this);
-    AppMethodBeat.o(186276);
+    AppMethodBeat.o(189561);
     return i;
   }
   
@@ -153,21 +154,21 @@ public final class f
   
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(186275);
-    ad.i("MicroMsg.NetSceneAiScanImageScene", "alvinluo onGYNetEnd errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    AppMethodBeat.i(189560);
+    ae.i("MicroMsg.NetSceneAiScanImageScene", "alvinluo onGYNetEnd errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
     paramq = this.callback;
     if (paramq != null)
     {
       paramq.onSceneEnd(paramInt2, paramInt3, paramString, (n)this);
-      AppMethodBeat.o(186275);
+      AppMethodBeat.o(189560);
       return;
     }
-    AppMethodBeat.o(186275);
+    AppMethodBeat.o(189560);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.model.f
  * JD-Core Version:    0.7.0.1
  */

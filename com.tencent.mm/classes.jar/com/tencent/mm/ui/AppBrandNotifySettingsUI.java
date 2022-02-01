@@ -18,19 +18,20 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.x;
-import com.tencent.mm.al.x.a;
-import com.tencent.mm.aw.q;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.x;
+import com.tencent.mm.ak.x.a;
+import com.tencent.mm.av.q;
 import com.tencent.mm.modelappbrand.d;
 import com.tencent.mm.modelappbrand.d.a;
 import com.tencent.mm.plugin.appbrand.config.WxaAttributes;
-import com.tencent.mm.protocal.protobuf.bly;
-import com.tencent.mm.protocal.protobuf.dcs;
-import com.tencent.mm.protocal.protobuf.eho;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.plugin.appbrand.service.o;
+import com.tencent.mm.protocal.protobuf.bmq;
+import com.tencent.mm.protocal.protobuf.ddm;
+import com.tencent.mm.protocal.protobuf.ejf;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.base.p;
 import com.tencent.mm.ui.base.t;
@@ -42,19 +43,19 @@ import java.util.LinkedList;
 public class AppBrandNotifySettingsUI
   extends MMActivity
 {
-  private p AVf;
-  private a ISO;
+  private p BmD;
+  private a Jnw;
   private DataSetObserver Tf;
-  private String jDl;
-  private com.tencent.mm.sdk.b.c<com.tencent.mm.g.a.n> mAa;
+  private String jGj;
+  private com.tencent.mm.sdk.b.c<com.tencent.mm.g.a.n> mFa;
   private ListView mListView;
-  private int qjh;
+  private int qpM;
   
   public AppBrandNotifySettingsUI()
   {
-    AppMethodBeat.i(193592);
-    this.mAa = new com.tencent.mm.sdk.b.c() {};
-    AppMethodBeat.o(193592);
+    AppMethodBeat.i(186878);
+    this.mFa = new com.tencent.mm.sdk.b.c() {};
+    AppMethodBeat.o(186878);
   }
   
   protected int getLayoutId()
@@ -64,10 +65,10 @@ public class AppBrandNotifySettingsUI
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(193593);
+    AppMethodBeat.i(186879);
     super.onCreate(paramBundle);
     paramBundle = getIntent();
-    this.jDl = paramBundle.getStringExtra("report_session_id");
+    this.jGj = paramBundle.getStringExtra("report_session_id");
     paramBundle = paramBundle.getStringExtra("title");
     if (TextUtils.isEmpty(paramBundle)) {
       setMMTitle(2131757130);
@@ -78,88 +79,88 @@ public class AppBrandNotifySettingsUI
       {
         public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
         {
-          AppMethodBeat.i(193578);
+          AppMethodBeat.i(186864);
           AppBrandNotifySettingsUI.this.finish();
-          AppMethodBeat.o(193578);
+          AppMethodBeat.o(186864);
           return false;
         }
       });
       this.mListView = ((ListView)findViewById(2131301457));
-      this.ISO = new a(getLayoutInflater());
-      this.mListView.setAdapter(this.ISO);
+      this.Jnw = new a(getLayoutInflater());
+      this.mListView.setAdapter(this.Jnw);
       getString(2131755906);
-      this.AVf = h.b(this, getString(2131755936), true, new DialogInterface.OnCancelListener()
+      this.BmD = h.b(this, getString(2131755936), true, new DialogInterface.OnCancelListener()
       {
         public final void onCancel(DialogInterface paramAnonymousDialogInterface)
         {
-          AppMethodBeat.i(193579);
+          AppMethodBeat.i(186865);
           AppBrandNotifySettingsUI.this.finish();
-          AppMethodBeat.o(193579);
+          AppMethodBeat.o(186865);
         }
       });
       this.Tf = new DataSetObserver()
       {
         public final void onChanged()
         {
-          AppMethodBeat.i(193580);
+          AppMethodBeat.i(186866);
           View localView = AppBrandNotifySettingsUI.this.findViewById(2131301445);
           if (AppBrandNotifySettingsUI.a(AppBrandNotifySettingsUI.this).isEmpty()) {}
           for (int i = 4;; i = 0)
           {
             localView.setVisibility(i);
-            AppMethodBeat.o(193580);
+            AppMethodBeat.o(186866);
             return;
           }
         }
       };
-      this.ISO.registerDataSetObserver(this.Tf);
-      com.tencent.mm.kernel.g.ajA();
-      this.qjh = com.tencent.mm.kernel.a.getUin();
-      paramBundle = com.tencent.mm.modelappbrand.c.hKp;
-      x.a(com.tencent.mm.modelappbrand.c.a.aDC(), new x.a()
+      this.Jnw.registerDataSetObserver(this.Tf);
+      com.tencent.mm.kernel.g.ajP();
+      this.qpM = com.tencent.mm.kernel.a.getUin();
+      paramBundle = com.tencent.mm.modelappbrand.c.hNi;
+      x.a(com.tencent.mm.modelappbrand.c.a.aDS(), new x.a()
       {
-        public final int a(int paramAnonymousInt1, int paramAnonymousInt2, final String paramAnonymousString, b paramAnonymousb, com.tencent.mm.al.n paramAnonymousn)
+        public final int a(int paramAnonymousInt1, int paramAnonymousInt2, final String paramAnonymousString, b paramAnonymousb, com.tencent.mm.ak.n paramAnonymousn)
         {
-          AppMethodBeat.i(193583);
-          ad.d("MicroMsg.AppBrandNotifySettingsUI", "getNotifyMsgInfo errType = %d, errCode = %d, errMsg = %s", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString });
+          AppMethodBeat.i(186869);
+          ae.d("MicroMsg.AppBrandNotifySettingsUI", "getNotifyMsgInfo errType = %d, errCode = %d, errMsg = %s", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString });
           if (AppBrandNotifySettingsUI.b(AppBrandNotifySettingsUI.this) != null) {
             AppBrandNotifySettingsUI.b(AppBrandNotifySettingsUI.this).dismiss();
           }
           if ((paramAnonymousInt1 != 0) || (paramAnonymousInt2 != 0))
           {
             t.makeText(AppBrandNotifySettingsUI.this, 2131761752, 0).show();
-            AppMethodBeat.o(193583);
+            AppMethodBeat.o(186869);
             return 0;
           }
-          paramAnonymousString = (bly)paramAnonymousb.hNL.hNQ;
-          if (paramAnonymousString.GGx == null)
+          paramAnonymousString = (bmq)paramAnonymousb.hQE.hQJ;
+          if (paramAnonymousString.GZZ == null)
           {
-            ad.e("MicroMsg.AppBrandNotifySettingsUI", "wxa_msg_config_list not exist");
-            AppMethodBeat.o(193583);
+            ae.e("MicroMsg.AppBrandNotifySettingsUI", "wxa_msg_config_list not exist");
+            AppMethodBeat.o(186869);
             return 0;
           }
           AppBrandNotifySettingsUI.this.runOnUiThread(new Runnable()
           {
             public final void run()
             {
-              AppMethodBeat.i(193582);
-              if (paramAnonymousString.GGx == null)
+              AppMethodBeat.i(186868);
+              if (paramAnonymousString.GZZ == null)
               {
-                ad.i("MicroMsg.AppBrandNotifySettingsUI", "getNotifyMsgInfo, configList is null");
-                AppMethodBeat.o(193582);
+                ae.i("MicroMsg.AppBrandNotifySettingsUI", "getNotifyMsgInfo, configList is null");
+                AppMethodBeat.o(186868);
                 return;
               }
-              AppBrandNotifySettingsUI.a(AppBrandNotifySettingsUI.this, paramAnonymousString.GGx);
-              AppBrandNotifySettingsUI.bo(paramAnonymousString.GGx);
-              AppMethodBeat.o(193582);
+              AppBrandNotifySettingsUI.a(AppBrandNotifySettingsUI.this, paramAnonymousString.GZZ);
+              AppBrandNotifySettingsUI.bp(paramAnonymousString.GZZ);
+              AppMethodBeat.o(186868);
             }
           });
-          AppMethodBeat.o(193583);
+          AppMethodBeat.o(186869);
           return 0;
         }
       }, true, this);
-      com.tencent.mm.sdk.b.a.IbL.c(this.mAa);
-      AppMethodBeat.o(193593);
+      com.tencent.mm.sdk.b.a.IvT.c(this.mFa);
+      AppMethodBeat.o(186879);
       return;
       setMMTitle(paramBundle);
     }
@@ -167,33 +168,33 @@ public class AppBrandNotifySettingsUI
   
   public void onDestroy()
   {
-    AppMethodBeat.i(193594);
-    Object localObject1 = (com.tencent.mm.plugin.appbrand.service.n)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.appbrand.service.n.class);
-    LinkedList localLinkedList = new LinkedList();
-    Object localObject2 = this.ISO.ISU;
+    AppMethodBeat.i(186880);
+    Object localObject1 = (o)com.tencent.mm.kernel.g.ab(o.class);
+    final LinkedList localLinkedList = new LinkedList();
+    Object localObject2 = this.Jnw.JnC;
     if ((localObject2 != null) && (!((LinkedList)localObject2).isEmpty()))
     {
       localObject2 = ((LinkedList)localObject2).iterator();
       while (((Iterator)localObject2).hasNext())
       {
         AppBrandNotifySettingsUI.a.a locala = (AppBrandNotifySettingsUI.a.a)((Iterator)localObject2).next();
-        eho localeho = new eho();
-        Object localObject3 = ((com.tencent.mm.plugin.appbrand.service.n)localObject1).Nt(locala.username);
+        ejf localejf = new ejf();
+        Object localObject3 = ((o)localObject1).Ob(locala.username);
         if (localObject3 == null)
         {
-          ad.i("MicroMsg.AppBrandNotifySettingsUI", "get attribute fail, username: %s", new Object[] { locala.username });
+          ae.i("MicroMsg.AppBrandNotifySettingsUI", "get attribute fail, username: %s", new Object[] { locala.username });
         }
         else
         {
           localObject3 = ((WxaAttributes)localObject3).field_appId;
-          if (locala.ISY) {}
+          if (locala.JnG) {}
           for (int i = 1;; i = 0)
           {
-            localeho.duW = ((String)localObject3);
-            localeho.status = i;
-            localLinkedList.add(localeho);
-            ad.d("MicroMsg.AppBrandNotifySettingsUI", "stev report(%s), eventId : %d, appId %s, status %d", new Object[] { Integer.valueOf(19724), Integer.valueOf(5), localObject3, Integer.valueOf(i) });
-            com.tencent.mm.plugin.report.service.g.yhR.f(19724, new Object[] { Integer.valueOf(1), Integer.valueOf(5), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), localObject3, null, null, null, Integer.valueOf(0), null, null, Integer.valueOf(0), null, null, this.jDl });
+            localejf.dwb = ((String)localObject3);
+            localejf.status = i;
+            localLinkedList.add(localejf);
+            ae.d("MicroMsg.AppBrandNotifySettingsUI", "stev report(%s), eventId : %d, appId %s, status %d", new Object[] { Integer.valueOf(19724), Integer.valueOf(5), localObject3, Integer.valueOf(i) });
+            com.tencent.mm.plugin.report.service.g.yxI.f(19724, new Object[] { Integer.valueOf(1), Integer.valueOf(5), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), localObject3, null, null, null, Integer.valueOf(0), null, null, Integer.valueOf(0), null, null, this.jGj });
             break;
           }
         }
@@ -201,16 +202,32 @@ public class AppBrandNotifySettingsUI
     }
     if (!localLinkedList.isEmpty())
     {
-      localObject1 = new dcs();
-      ((dcs)localObject1).GGx = localLinkedList;
-      ((dcs)localObject1).scene = 1;
-      localObject2 = d.hKq;
-      x.a(d.a.a((dcs)localObject1), new AppBrandNotifySettingsUI.5(this, localLinkedList), true);
+      localObject1 = new ddm();
+      ((ddm)localObject1).GZZ = localLinkedList;
+      ((ddm)localObject1).scene = 1;
+      localObject2 = d.hNj;
+      x.a(d.a.a((ddm)localObject1), new x.a()
+      {
+        public final int a(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, b paramAnonymousb, com.tencent.mm.ak.n paramAnonymousn)
+        {
+          AppMethodBeat.i(186867);
+          ae.d("MicroMsg.AppBrandNotifySettingsUI", "setReceiveOff errType = %d, errCode = %d, errMsg = %s", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString });
+          if ((paramAnonymousInt1 != 0) || (paramAnonymousInt2 != 0))
+          {
+            t.makeText(AppBrandNotifySettingsUI.this, 2131761765, 0).show();
+            AppMethodBeat.o(186867);
+            return 0;
+          }
+          AppBrandNotifySettingsUI.bp(localLinkedList);
+          AppMethodBeat.o(186867);
+          return 0;
+        }
+      }, true);
     }
-    this.ISO.unregisterDataSetObserver(this.Tf);
-    com.tencent.mm.sdk.b.a.IbL.d(this.mAa);
+    this.Jnw.unregisterDataSetObserver(this.Tf);
+    com.tencent.mm.sdk.b.a.IvT.d(this.mFa);
     super.onDestroy();
-    AppMethodBeat.o(193594);
+    AppMethodBeat.o(186880);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -222,68 +239,68 @@ public class AppBrandNotifySettingsUI
   static final class a
     extends BaseAdapter
   {
-    LinkedList<a> IST;
-    LinkedList<a> ISU;
-    private AppBrandNotifySettingsUI.a.b.a ISV;
-    private com.tencent.mm.aw.a.a.c ISW;
+    LinkedList<a> JnB;
+    LinkedList<a> JnC;
+    private AppBrandNotifySettingsUI.a.b.a JnD;
+    private com.tencent.mm.av.a.a.c JnE;
     private LayoutInflater mLayoutInflater;
     
     public a(LayoutInflater paramLayoutInflater)
     {
-      AppMethodBeat.i(193587);
+      AppMethodBeat.i(186873);
       this.mLayoutInflater = paramLayoutInflater;
-      this.IST = new LinkedList();
-      this.ISU = new LinkedList();
-      this.ISV = new AppBrandNotifySettingsUI.a.b.a()
+      this.JnB = new LinkedList();
+      this.JnC = new LinkedList();
+      this.JnD = new AppBrandNotifySettingsUI.a.b.a()
       {
         public final void a(AppBrandNotifySettingsUI.a.a paramAnonymousa, boolean paramAnonymousBoolean)
         {
-          AppMethodBeat.i(193584);
+          AppMethodBeat.i(186870);
           if (paramAnonymousa == null)
           {
-            AppMethodBeat.o(193584);
+            AppMethodBeat.o(186870);
             return;
           }
           Iterator localIterator = AppBrandNotifySettingsUI.a.a(AppBrandNotifySettingsUI.a.this).iterator();
           while (localIterator.hasNext())
           {
             AppBrandNotifySettingsUI.a.a locala = (AppBrandNotifySettingsUI.a.a)localIterator.next();
-            if ((locala != null) && (bt.nullAsNil(locala.username).equals(paramAnonymousa.username)))
+            if ((locala != null) && (bu.nullAsNil(locala.username).equals(paramAnonymousa.username)))
             {
-              if (paramAnonymousa.ISY != paramAnonymousBoolean)
+              if (paramAnonymousa.JnG != paramAnonymousBoolean)
               {
                 AppBrandNotifySettingsUI.a.b(AppBrandNotifySettingsUI.a.this).add(locala);
-                AppMethodBeat.o(193584);
+                AppMethodBeat.o(186870);
                 return;
               }
               AppBrandNotifySettingsUI.a.b(AppBrandNotifySettingsUI.a.this).remove(locala);
-              AppMethodBeat.o(193584);
+              AppMethodBeat.o(186870);
               return;
             }
           }
-          AppMethodBeat.o(193584);
+          AppMethodBeat.o(186870);
         }
       };
-      paramLayoutInflater = new com.tencent.mm.aw.a.a.c.a();
-      paramLayoutInflater.hfi = true;
-      paramLayoutInflater.idH = com.tencent.mm.modelappbrand.a.a.aDU();
-      this.ISW = paramLayoutInflater.aJc();
-      AppMethodBeat.o(193587);
+      paramLayoutInflater = new com.tencent.mm.av.a.a.c.a();
+      paramLayoutInflater.hhW = true;
+      paramLayoutInflater.igz = com.tencent.mm.modelappbrand.a.a.aEk();
+      this.JnE = paramLayoutInflater.aJu();
+      AppMethodBeat.o(186873);
     }
     
-    public final a abr(int paramInt)
+    public final a abZ(int paramInt)
     {
-      AppMethodBeat.i(193589);
-      a locala = (a)this.IST.get(paramInt);
-      AppMethodBeat.o(193589);
+      AppMethodBeat.i(186875);
+      a locala = (a)this.JnB.get(paramInt);
+      AppMethodBeat.o(186875);
       return locala;
     }
     
     public final int getCount()
     {
-      AppMethodBeat.i(193588);
-      int i = this.IST.size();
-      AppMethodBeat.o(193588);
+      AppMethodBeat.i(186874);
+      int i = this.JnB.size();
+      AppMethodBeat.o(186874);
       return i;
     }
     
@@ -294,51 +311,51 @@ public class AppBrandNotifySettingsUI
     
     public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
     {
-      AppMethodBeat.i(193590);
-      a locala = abr(paramInt);
+      AppMethodBeat.i(186876);
+      a locala = abZ(paramInt);
       if (paramView == null)
       {
         paramView = this.mLayoutInflater.inflate(2131493101, paramViewGroup, false);
         paramViewGroup = new c((byte)0);
-        paramViewGroup.fRd = ((ImageView)paramView.findViewById(2131296998));
+        paramViewGroup.fTj = ((ImageView)paramView.findViewById(2131296998));
         paramViewGroup.titleTv = ((TextView)paramView.findViewById(2131305906));
-        paramViewGroup.ITd = ((MMSwitchBtn)paramView.findViewById(2131296893));
-        paramViewGroup.iVT = paramView.findViewById(2131296895);
+        paramViewGroup.JnL = ((MMSwitchBtn)paramView.findViewById(2131296893));
+        paramViewGroup.iYM = paramView.findViewById(2131296895);
         paramView.setTag(paramViewGroup);
-        q.aIJ().a(locala.url, paramViewGroup.fRd, this.ISW);
+        q.aJb().a(locala.url, paramViewGroup.fTj, this.JnE);
         paramViewGroup.titleTv.setText(locala.title);
-        paramViewGroup.ITd.setCheck(locala.ISY);
-        if (paramViewGroup.ITd.getTag() != null) {
+        paramViewGroup.JnL.setCheck(locala.JnG);
+        if (paramViewGroup.JnL.getTag() != null) {
           break label231;
         }
         b localb = new b((byte)0);
-        localb.ISZ = locala;
-        localb.ITa = this.ISV;
-        paramViewGroup.ITd.setSwitchListener(localb.ITb);
-        paramViewGroup.ITd.setTag(localb);
+        localb.JnH = locala;
+        localb.JnI = this.JnD;
+        paramViewGroup.JnL.setSwitchListener(localb.JnJ);
+        paramViewGroup.JnL.setTag(localb);
         label191:
-        if (paramInt != this.IST.size() - 1) {
+        if (paramInt != this.JnB.size() - 1) {
           break label249;
         }
-        paramViewGroup.iVT.setVisibility(8);
+        paramViewGroup.iYM.setVisibility(8);
       }
       for (;;)
       {
-        AppMethodBeat.o(193590);
+        AppMethodBeat.o(186876);
         return paramView;
         paramViewGroup = (c)paramView.getTag();
         break;
         label231:
-        ((b)paramViewGroup.ITd.getTag()).ISZ = locala;
+        ((b)paramViewGroup.JnL.getTag()).JnH = locala;
         break label191;
         label249:
-        paramViewGroup.iVT.setVisibility(0);
+        paramViewGroup.iYM.setVisibility(0);
       }
     }
     
     static final class a
     {
-      boolean ISY;
+      boolean JnG;
       String title;
       String url;
       String username;
@@ -346,25 +363,25 @@ public class AppBrandNotifySettingsUI
     
     static final class b
     {
-      AppBrandNotifySettingsUI.a.a ISZ;
-      a ITa;
-      MMSwitchBtn.a ITb;
+      AppBrandNotifySettingsUI.a.a JnH;
+      a JnI;
+      MMSwitchBtn.a JnJ;
       
       private b()
       {
-        AppMethodBeat.i(193586);
-        this.ITb = new MMSwitchBtn.a()
+        AppMethodBeat.i(186872);
+        this.JnJ = new MMSwitchBtn.a()
         {
           public final void onStatusChange(boolean paramAnonymousBoolean)
           {
-            AppMethodBeat.i(193585);
-            if (AppBrandNotifySettingsUI.a.b.this.ITa != null) {
-              AppBrandNotifySettingsUI.a.b.this.ITa.a(AppBrandNotifySettingsUI.a.b.this.ISZ, paramAnonymousBoolean);
+            AppMethodBeat.i(186871);
+            if (AppBrandNotifySettingsUI.a.b.this.JnI != null) {
+              AppBrandNotifySettingsUI.a.b.this.JnI.a(AppBrandNotifySettingsUI.a.b.this.JnH, paramAnonymousBoolean);
             }
-            AppMethodBeat.o(193585);
+            AppMethodBeat.o(186871);
           }
         };
-        AppMethodBeat.o(193586);
+        AppMethodBeat.o(186872);
       }
       
       public static abstract interface a
@@ -375,16 +392,16 @@ public class AppBrandNotifySettingsUI
     
     static final class c
     {
-      MMSwitchBtn ITd;
-      ImageView fRd;
-      View iVT;
+      MMSwitchBtn JnL;
+      ImageView fTj;
+      View iYM;
       TextView titleTv;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.AppBrandNotifySettingsUI
  * JD-Core Version:    0.7.0.1
  */

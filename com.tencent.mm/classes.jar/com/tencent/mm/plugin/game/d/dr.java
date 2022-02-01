@@ -1,64 +1,81 @@
 package com.tencent.mm.plugin.game.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import f.a.a.b;
 
 public final class dr
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public String iht;
-  public String ujc;
+  public String uqi;
+  public String uqq;
+  public String uvh;
+  public String uvi;
+  public String uvj;
+  public boolean uvk;
+  public boolean uvl;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(199588);
+    AppMethodBeat.i(41833);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.iht == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: AppId");
-        AppMethodBeat.o(199588);
-        throw paramVarArgs;
+      if (this.uqq != null) {
+        paramVarArgs.d(1, this.uqq);
       }
-      if (this.iht != null) {
-        paramVarArgs.d(1, this.iht);
+      if (this.uvh != null) {
+        paramVarArgs.d(2, this.uvh);
       }
-      if (this.ujc != null) {
-        paramVarArgs.d(2, this.ujc);
+      if (this.uvi != null) {
+        paramVarArgs.d(3, this.uvi);
       }
-      AppMethodBeat.o(199588);
+      if (this.uvj != null) {
+        paramVarArgs.d(4, this.uvj);
+      }
+      if (this.uqi != null) {
+        paramVarArgs.d(5, this.uqi);
+      }
+      paramVarArgs.bC(6, this.uvk);
+      paramVarArgs.bC(7, this.uvl);
+      AppMethodBeat.o(41833);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.iht == null) {
-        break label322;
+      if (this.uqq == null) {
+        break label542;
       }
     }
-    label322:
-    for (paramInt = f.a.a.b.b.a.e(1, this.iht) + 0;; paramInt = 0)
+    label542:
+    for (int i = f.a.a.b.b.a.e(1, this.uqq) + 0;; i = 0)
     {
-      int i = paramInt;
-      if (this.ujc != null) {
-        i = paramInt + f.a.a.b.b.a.e(2, this.ujc);
+      paramInt = i;
+      if (this.uvh != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.uvh);
       }
-      AppMethodBeat.o(199588);
-      return i;
+      i = paramInt;
+      if (this.uvi != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.uvi);
+      }
+      paramInt = i;
+      if (this.uvj != null) {
+        paramInt = i + f.a.a.b.b.a.e(4, this.uvj);
+      }
+      i = paramInt;
+      if (this.uqi != null) {
+        i = paramInt + f.a.a.b.b.a.e(5, this.uqi);
+      }
+      paramInt = f.a.a.b.b.a.amF(6);
+      int j = f.a.a.b.b.a.amF(7);
+      AppMethodBeat.o(41833);
+      return i + paramInt + j;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
-        if (this.iht == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: AppId");
-          AppMethodBeat.o(199588);
-          throw paramVarArgs;
-        }
-        AppMethodBeat.o(199588);
+        AppMethodBeat.o(41833);
         return 0;
       }
       if (paramInt == 3)
@@ -68,18 +85,38 @@ public final class dr
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(199588);
+          AppMethodBeat.o(41833);
           return -1;
         case 1: 
-          localdr.iht = locala.NPN.readString();
-          AppMethodBeat.o(199588);
+          localdr.uqq = locala.OmT.readString();
+          AppMethodBeat.o(41833);
+          return 0;
+        case 2: 
+          localdr.uvh = locala.OmT.readString();
+          AppMethodBeat.o(41833);
+          return 0;
+        case 3: 
+          localdr.uvi = locala.OmT.readString();
+          AppMethodBeat.o(41833);
+          return 0;
+        case 4: 
+          localdr.uvj = locala.OmT.readString();
+          AppMethodBeat.o(41833);
+          return 0;
+        case 5: 
+          localdr.uqi = locala.OmT.readString();
+          AppMethodBeat.o(41833);
+          return 0;
+        case 6: 
+          localdr.uvk = locala.OmT.gvY();
+          AppMethodBeat.o(41833);
           return 0;
         }
-        localdr.ujc = locala.NPN.readString();
-        AppMethodBeat.o(199588);
+        localdr.uvl = locala.OmT.gvY();
+        AppMethodBeat.o(41833);
         return 0;
       }
-      AppMethodBeat.o(199588);
+      AppMethodBeat.o(41833);
       return -1;
     }
   }

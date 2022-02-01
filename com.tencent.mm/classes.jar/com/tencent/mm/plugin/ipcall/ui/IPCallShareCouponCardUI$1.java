@@ -12,7 +12,7 @@ final class IPCallShareCouponCardUI$1
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
     AppMethodBeat.i(25903);
-    this.uTO.finish();
+    this.vfB.finish();
     AppMethodBeat.o(25903);
     return true;
   }

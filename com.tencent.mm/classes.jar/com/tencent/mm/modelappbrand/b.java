@@ -7,45 +7,45 @@ import com.tencent.mm.kernel.a;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.report.e;
 import com.tencent.mm.sdk.platformtools.MultiProcessSharedPreferences;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public final class b
 {
-  public static String hKn;
-  public static String hKo;
+  public static String hNg;
+  public static String hNh;
   
-  public static void BZ(String paramString)
+  public static void CB(String paramString)
   {
     AppMethodBeat.i(153190);
     try
     {
-      Object localObject = MultiProcessSharedPreferences.getSharedPreferences(aj.getContext(), "pref_appbrand_process", 4);
+      Object localObject = MultiProcessSharedPreferences.getSharedPreferences(ak.getContext(), "pref_appbrand_process", 4);
       String str = paramString + ":start_time";
       localObject = ((SharedPreferences)localObject).edit();
       ((SharedPreferences.Editor)localObject).remove(str);
       ((SharedPreferences.Editor)localObject).commit();
-      e.ygI.idkeyStat(365L, 5L, 1L, false);
-      ad.v("MicroMsg.AppBrandReporter", "onProcessExit");
+      e.ywz.idkeyStat(365L, 5L, 1L, false);
+      ae.v("MicroMsg.AppBrandReporter", "onProcessExit");
       AppMethodBeat.o(153190);
       return;
     }
     catch (Throwable localThrowable)
     {
-      ad.printErrStackTrace("MicroMsg.AppBrandReporter", localThrowable, "onProcessExit(%s)", new Object[] { paramString });
+      ae.printErrStackTrace("MicroMsg.AppBrandReporter", localThrowable, "onProcessExit(%s)", new Object[] { paramString });
       AppMethodBeat.o(153190);
     }
   }
   
-  public static String aDB()
+  public static String aDR()
   {
     AppMethodBeat.i(153189);
     Object localObject = new StringBuilder("sid_");
-    g.ajA();
-    hKn = a.getUin() + "_" + bt.flT();
-    ad.v("MicroMsg.AppBrandReporter", "refreshWeAppSearchSessionId : %s", new Object[] { hKn });
-    localObject = hKn;
+    g.ajP();
+    hNg = a.getUin() + "_" + bu.fpO();
+    ae.v("MicroMsg.AppBrandReporter", "refreshWeAppSearchSessionId : %s", new Object[] { hNg });
+    localObject = hNg;
     AppMethodBeat.o(153189);
     return localObject;
   }

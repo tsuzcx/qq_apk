@@ -1,39 +1,39 @@
 package com.tencent.mm.plugin.webview.modeltools;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.HashMap;
 import java.util.HashSet;
 
 public final class l
 {
-  public HashMap<String, a> DWv;
-  public HashMap<String, a> DWw;
-  private HashSet<Integer> DWx;
-  public HashMap<String, b> DWy;
+  public HashMap<String, a> Eou;
+  public HashMap<String, a> Eov;
+  private HashSet<Integer> Eow;
+  public HashMap<String, b> Eox;
   
   public l()
   {
     AppMethodBeat.i(79218);
-    this.DWv = new HashMap();
-    this.DWw = new HashMap();
-    this.DWx = new HashSet();
-    this.DWy = new HashMap();
+    this.Eou = new HashMap();
+    this.Eov = new HashMap();
+    this.Eow = new HashSet();
+    this.Eox = new HashMap();
     AppMethodBeat.o(79218);
   }
   
-  public final boolean WO(int paramInt)
+  public final boolean Xv(int paramInt)
   {
     AppMethodBeat.i(79222);
-    boolean bool = this.DWx.remove(Integer.valueOf(paramInt));
+    boolean bool = this.Eow.remove(Integer.valueOf(paramInt));
     AppMethodBeat.o(79222);
     return bool;
   }
   
-  public final boolean aHZ(String paramString)
+  public final boolean aJs(String paramString)
   {
     AppMethodBeat.i(79219);
-    if ((this.DWy.containsKey(paramString)) && (this.DWy.get(paramString) != null))
+    if ((this.Eox.containsKey(paramString)) && (this.Eox.get(paramString) != null))
     {
       AppMethodBeat.o(79219);
       return true;
@@ -42,10 +42,10 @@ public final class l
     return false;
   }
   
-  public final b aIa(String paramString)
+  public final b aJt(String paramString)
   {
     AppMethodBeat.i(79220);
-    paramString = (b)this.DWy.get(paramString);
+    paramString = (b)this.Eox.get(paramString);
     AppMethodBeat.o(79220);
     return paramString;
   }
@@ -53,13 +53,13 @@ public final class l
   public final void cD(int paramInt, String paramString)
   {
     AppMethodBeat.i(79221);
-    if (bt.getBoolean(paramString, false))
+    if (bu.getBoolean(paramString, false))
     {
-      this.DWx.add(Integer.valueOf(paramInt));
+      this.Eow.add(Integer.valueOf(paramInt));
       AppMethodBeat.o(79221);
       return;
     }
-    this.DWx.remove(Integer.valueOf(paramInt));
+    this.Eow.remove(Integer.valueOf(paramInt));
     AppMethodBeat.o(79221);
   }
   
@@ -67,19 +67,19 @@ public final class l
   {
     public String desc;
     public String link;
-    public String rJX;
+    public String rSl;
     public String title;
   }
   
   public static final class b
   {
-    public boolean DWA;
-    public boolean DWz;
+    public boolean Eoy;
+    public boolean Eoz;
     public int duration;
-    public String fVj;
-    public int hzh;
-    public int hzk;
-    public String hzm;
+    public String fXp;
+    public int hBV;
+    public int hBY;
+    public String hCa;
     public String userName;
     public int videoHeight;
     public int videoWidth;

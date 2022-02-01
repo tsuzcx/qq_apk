@@ -1,12 +1,12 @@
 package com.tencent.mm.plugin.appbrand.jsapi.share;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.k.a;
+import com.tencent.mm.ah.k.a;
 import com.tencent.mm.plugin.appbrand.config.AppBrandSysConfigWC;
 import com.tencent.mm.plugin.appbrand.service.c;
-import com.tencent.mm.plugin.appbrand.u;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.plugin.appbrand.v;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.HashMap;
 import org.json.JSONObject;
 
@@ -20,25 +20,25 @@ public class f
   {
     AppMethodBeat.i(174910);
     a locala = (a)super.a(paramc, paramJSONObject);
-    locala.lif = paramJSONObject.optInt("bizType", k.a.hzJ.ordinal());
-    if (!k.a.isValid(locala.lif))
+    locala.llR = paramJSONObject.optInt("bizType", k.a.hCx.ordinal());
+    if (!k.a.isValid(locala.llR))
     {
-      ad.e("MicroMsg.JsApiShareAppMessageForFakeNative", "share app message fail, biz is invalid.");
+      ae.e("MicroMsg.JsApiShareAppMessageForFakeNative", "share app message fail, biz is invalid.");
       paramc = new JsApiShareAppMessageBase.c("biz is invalid");
       AppMethodBeat.o(174910);
       throw paramc;
     }
     String str2 = paramJSONObject.optString("defaultHintUrl");
     String str1 = str2;
-    if (bt.isNullOrNil(str2)) {
-      str1 = u.KJ(paramc.getAppId());
+    if (bu.isNullOrNil(str2)) {
+      str1 = v.Lj(paramc.getAppId());
     }
-    locala.kas = str1;
-    locala.lig = paramJSONObject.optString("tailLang", "");
-    locala.lhW.put("biz", Integer.valueOf(locala.lif));
-    locala.lhW.put("tail_lang", locala.lig);
-    locala.lhW.put("icon_url", locala.lhK.iAa);
-    locala.lhW.put("nickname", locala.lhK.doD);
+    locala.kdJ = str1;
+    locala.llS = paramJSONObject.optString("tailLang", "");
+    locala.llI.put("biz", Integer.valueOf(locala.llR));
+    locala.llI.put("tail_lang", locala.llS);
+    locala.llI.put("icon_url", locala.llw.iCT);
+    locala.llI.put("nickname", locala.llw.dpI);
     AppMethodBeat.o(174910);
     return locala;
   }
@@ -46,8 +46,8 @@ public class f
   static final class a
     extends JsApiShareAppMessageBase.d
   {
-    public int lif;
-    public String lig;
+    public int llR;
+    public String llS;
   }
 }
 

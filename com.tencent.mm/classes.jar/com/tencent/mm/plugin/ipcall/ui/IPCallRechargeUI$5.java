@@ -12,7 +12,7 @@ final class IPCallRechargeUI$5
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
     AppMethodBeat.i(25875);
-    this.uTj.finish();
+    this.veW.finish();
     AppMethodBeat.o(25875);
     return true;
   }

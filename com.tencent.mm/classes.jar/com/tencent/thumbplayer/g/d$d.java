@@ -2,10 +2,10 @@ package com.tencent.thumbplayer.g;
 
 final class d$d
 {
-  Object MbY;
-  Object MbZ;
-  Object Mca;
-  Object Mcb;
+  Object MyT;
+  Object MyU;
+  Object MyV;
+  Object MyW;
   int bcd;
 }
 

@@ -11,46 +11,46 @@ import com.tencent.mm.network.n.a;
 import com.tencent.mm.plugin.game.luggage.h.a.7;
 import com.tencent.mm.plugin.webview.ui.tools.game.BatteryManager;
 import com.tencent.mm.plugin.webview.ui.tools.game.BatteryManager.BatteryChangedReceiver;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.az;
 
 public class PluginLuggageGame
   extends com.tencent.mm.kernel.b.f
   implements c, com.tencent.mm.plugin.game.luggage.a.b
 {
-  private n tnk;
+  private n tyc;
   
   public PluginLuggageGame()
   {
-    AppMethodBeat.i(211596);
-    this.tnk = new n.a()
+    AppMethodBeat.i(192985);
+    this.tyc = new n.a()
     {
-      private final byte[] fEu;
+      private final byte[] fGy;
       
       public final void onNetworkChange(int paramAnonymousInt)
       {
-        AppMethodBeat.i(211595);
-        synchronized (this.fEu)
+        AppMethodBeat.i(192984);
+        synchronized (this.fGy)
         {
-          if (com.tencent.mm.plugin.game.luggage.h.a.cXE() != null)
+          if (com.tencent.mm.plugin.game.luggage.h.a.dao() != null)
           {
-            com.tencent.mm.plugin.game.luggage.h.a locala = com.tencent.mm.plugin.game.luggage.h.a.cXE();
-            String str = ay.iR(aj.getContext());
-            locala.tVU.b(new a.7(locala, str));
-            locala.tVV.evaluateJavascript(String.format("if (SystemInfo == 'undefined' || SystemInfo.networkType == 'undefined) {return;} SystemInfo.networkType=\"%s\"; console.log(SystemInfo.networkType);", new Object[] { str }), null);
+            com.tencent.mm.plugin.game.luggage.h.a locala = com.tencent.mm.plugin.game.luggage.h.a.dao();
+            String str = az.iW(ak.getContext());
+            locala.ugS.b(new a.7(locala, str));
+            locala.ugT.evaluateJavascript(String.format("if (SystemInfo == 'undefined' || SystemInfo.networkType == 'undefined) {return;} SystemInfo.networkType=\"%s\"; console.log(SystemInfo.networkType);", new Object[] { str }), null);
           }
-          AppMethodBeat.o(211595);
+          AppMethodBeat.o(192984);
           return;
         }
       }
     };
-    AppMethodBeat.o(211596);
+    AppMethodBeat.o(192985);
   }
   
   public void execute(com.tencent.mm.kernel.b.g paramg)
   {
     AppMethodBeat.i(83013);
-    if ((paramg.akw()) || (paramg.xf(":tools")) || (paramg.xf(":toolsmp")) || (paramg.xf(":lite"))) {
+    if ((paramg.akL()) || (paramg.xO(":tools")) || (paramg.xO(":toolsmp")) || (paramg.xO(":lite"))) {
       com.tencent.mm.kernel.g.a(com.tencent.mm.plugin.game.luggage.a.a.class, new e(new d()));
     }
     AppMethodBeat.o(83013);
@@ -59,25 +59,25 @@ public class PluginLuggageGame
   public void onAccountInitialized(e.c paramc)
   {
     AppMethodBeat.i(83014);
-    if (BatteryManager.Eii == null) {
-      BatteryManager.Eii = new BatteryManager.BatteryChangedReceiver((byte)0);
+    if (BatteryManager.EAm == null) {
+      BatteryManager.EAm = new BatteryManager.BatteryChangedReceiver((byte)0);
     }
     paramc = new IntentFilter();
     paramc.addAction("android.intent.action.BATTERY_OKAY");
     paramc.addAction("android.intent.action.BATTERY_LOW");
-    aj.getContext().registerReceiver(BatteryManager.Eii, paramc);
-    com.tencent.mm.kernel.g.ajB().a(this.tnk);
+    ak.getContext().registerReceiver(BatteryManager.EAm, paramc);
+    com.tencent.mm.kernel.g.ajQ().a(this.tyc);
     AppMethodBeat.o(83014);
   }
   
   public void onAccountRelease()
   {
     AppMethodBeat.i(83015);
-    if (BatteryManager.Eii != null) {
-      aj.getContext().unregisterReceiver(BatteryManager.Eii);
+    if (BatteryManager.EAm != null) {
+      ak.getContext().unregisterReceiver(BatteryManager.EAm);
     }
-    BatteryManager.Eii = null;
-    com.tencent.mm.kernel.g.ajB().b(this.tnk);
+    BatteryManager.EAm = null;
+    com.tencent.mm.kernel.g.ajQ().b(this.tyc);
     AppMethodBeat.o(83015);
   }
 }

@@ -6,45 +6,45 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public final class c
 {
-  private static AtomicInteger lVF;
-  public HashMap<String, b> lVG;
+  private static AtomicInteger maj;
+  public HashMap<String, b> mak;
   
   static
   {
     AppMethodBeat.i(144315);
-    lVF = new AtomicInteger(1);
+    maj = new AtomicInteger(1);
     AppMethodBeat.o(144315);
   }
   
   private c()
   {
     AppMethodBeat.i(144311);
-    this.lVG = new HashMap();
+    this.mak = new HashMap();
     AppMethodBeat.o(144311);
   }
   
-  public static int bte()
+  public static int btP()
   {
     AppMethodBeat.i(144312);
-    int i = lVF.incrementAndGet();
+    int i = maj.incrementAndGet();
     AppMethodBeat.o(144312);
     return i;
   }
   
-  public static c btf()
+  public static c btQ()
   {
     AppMethodBeat.i(144313);
-    c localc = a.btg();
+    c localc = a.btR();
     AppMethodBeat.o(144313);
     return localc;
   }
   
-  public final b SI(String paramString)
+  public final b Tr(String paramString)
   {
     AppMethodBeat.i(144314);
-    if (this.lVG.containsKey(paramString))
+    if (this.mak.containsKey(paramString))
     {
-      paramString = (b)this.lVG.get(paramString);
+      paramString = (b)this.mak.get(paramString);
       AppMethodBeat.o(144314);
       return paramString;
     }
@@ -54,12 +54,12 @@ public final class c
   
   static final class a
   {
-    private static c lVH;
+    private static c mal;
     
     static
     {
       AppMethodBeat.i(144310);
-      lVH = new c((byte)0);
+      mal = new c((byte)0);
       AppMethodBeat.o(144310);
     }
   }

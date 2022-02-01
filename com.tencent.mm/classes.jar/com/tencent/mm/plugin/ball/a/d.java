@@ -10,19 +10,19 @@ import java.util.Map;
 public final class d
   implements b
 {
-  public Map<Integer, b> nFK;
+  public Map<Integer, b> nLf;
   
   private d()
   {
     AppMethodBeat.i(176955);
-    this.nFK = new HashMap();
+    this.nLf = new HashMap();
     AppMethodBeat.o(176955);
   }
   
   public final boolean a(Context paramContext, BallInfo paramBallInfo)
   {
     AppMethodBeat.i(176956);
-    b localb = (b)this.nFK.get(Integer.valueOf(paramBallInfo.type));
+    b localb = (b)this.nLf.get(Integer.valueOf(paramBallInfo.type));
     if (localb == null)
     {
       AppMethodBeat.o(176956);
@@ -36,7 +36,7 @@ public final class d
   public final boolean a(TextView paramTextView, BallInfo paramBallInfo)
   {
     AppMethodBeat.i(176957);
-    b localb = (b)this.nFK.get(Integer.valueOf(paramBallInfo.type));
+    b localb = (b)this.nLf.get(Integer.valueOf(paramBallInfo.type));
     if (localb == null)
     {
       AppMethodBeat.o(176957);
@@ -49,12 +49,12 @@ public final class d
   
   public static final class a
   {
-    public static d nFL;
+    public static d nLg;
     
     static
     {
       AppMethodBeat.i(176954);
-      nFL = new d((byte)0);
+      nLg = new d((byte)0);
       AppMethodBeat.o(176954);
     }
   }

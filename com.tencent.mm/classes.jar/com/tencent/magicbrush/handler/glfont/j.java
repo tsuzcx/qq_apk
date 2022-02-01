@@ -5,72 +5,72 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class j
 {
-  public String cyI = "normal";
-  public boolean cyJ;
-  public a cyK;
+  public String czp = "normal";
+  public boolean czq;
+  public a czr;
   public float fontSize;
   public float strokeWidth;
   public Typeface sx = null;
   
   j(String paramString, a parama)
   {
-    this.cyI = paramString;
+    this.czp = paramString;
     this.fontSize = 20.0F;
-    this.cyJ = false;
+    this.czq = false;
     this.strokeWidth = 0.0F;
-    this.cyK = parama;
+    this.czr = parama;
   }
   
   public final String toString()
   {
     AppMethodBeat.i(140053);
-    String str = "MBFontStyle[" + this.cyI + "][" + this.fontSize + "][" + this.strokeWidth + "]";
+    String str = "MBFontStyle[" + this.czp + "][" + this.fontSize + "][" + this.strokeWidth + "]";
     AppMethodBeat.o(140053);
     return str;
   }
   
   public static enum a
   {
-    int cyP;
+    int czw;
     
     static
     {
       AppMethodBeat.i(140052);
-      cyL = new a("NORMAL", 0, 0);
-      cyM = new a("BOLD", 1, 1);
-      cyN = new a("ITALIC", 2, 2);
-      cyO = new a("BOLD_ITALIC", 3, 3);
-      cyQ = new a[] { cyL, cyM, cyN, cyO };
+      czs = new a("NORMAL", 0, 0);
+      czt = new a("BOLD", 1, 1);
+      czu = new a("ITALIC", 2, 2);
+      czv = new a("BOLD_ITALIC", 3, 3);
+      czx = new a[] { czs, czt, czu, czv };
       AppMethodBeat.o(140052);
     }
     
     private a(int paramInt)
     {
-      this.cyP = paramInt;
+      this.czw = paramInt;
     }
     
     public static a j(boolean paramBoolean1, boolean paramBoolean2)
     {
       if ((paramBoolean1) && (paramBoolean2)) {
-        return cyO;
+        return czv;
       }
       if (paramBoolean1) {
-        return cyN;
+        return czu;
       }
       if (paramBoolean2) {
-        return cyM;
+        return czt;
       }
-      return cyL;
+      return czs;
     }
     
     public final boolean isBold()
     {
-      return (this == cyM) || (this == cyO);
+      return (this == czt) || (this == czv);
     }
     
     public final boolean isItalic()
     {
-      return (this == cyN) || (this == cyO);
+      return (this == czu) || (this == czv);
     }
   }
 }

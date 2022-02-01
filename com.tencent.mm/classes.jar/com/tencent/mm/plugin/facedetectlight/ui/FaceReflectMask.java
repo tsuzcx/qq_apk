@@ -18,25 +18,25 @@ public class FaceReflectMask
 {
   private ColorMatrixColorFilter mColorMatrixColorFilter;
   private Rect rect;
-  private Paint rpS;
-  private Paint rpT;
-  private PorterDuffXfermode rpU;
-  public boolean rpV;
-  public boolean rrr;
+  private Paint rxW;
+  private Paint rxX;
+  private PorterDuffXfermode rxY;
+  public boolean rxZ;
+  public boolean rzG;
   
   public FaceReflectMask(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(104323);
     this.rect = new Rect();
-    this.rpV = false;
-    this.rpS = new Paint(1);
-    this.rpS.setStyle(Paint.Style.FILL);
-    this.rpT = new Paint(1);
+    this.rxZ = false;
+    this.rxW = new Paint(1);
+    this.rxW.setStyle(Paint.Style.FILL);
+    this.rxX = new Paint(1);
     this.mColorMatrixColorFilter = ReflectController.DEFAULT_MATRIX_COLOR_FILTER;
     setWillNotDraw(false);
-    this.rpU = new PorterDuffXfermode(PorterDuff.Mode.CLEAR);
-    this.rrr = true;
+    this.rxY = new PorterDuffXfermode(PorterDuff.Mode.CLEAR);
+    this.rzG = true;
     setLayerType(1, null);
     AppMethodBeat.o(104323);
   }
@@ -52,26 +52,26 @@ public class FaceReflectMask
     this.rect.right = getWidth();
     this.rect.top = 0;
     this.rect.bottom = getHeight();
-    if (this.rrr)
+    if (this.rzG)
     {
-      this.rpS.setColor(-16777216);
-      this.rrr = false;
+      this.rxW.setColor(-16777216);
+      this.rzG = false;
     }
     for (;;)
     {
       paramCanvas.drawARGB(255, 0, 0, 0);
-      paramCanvas.drawRect(this.rect, this.rpS);
-      if (!this.rpV)
+      paramCanvas.drawRect(this.rect, this.rxW);
+      if (!this.rxZ)
       {
-        this.rpT.setStyle(Paint.Style.FILL_AND_STROKE);
-        this.rpT.setXfermode(this.rpU);
-        paramCanvas.drawCircle(f2, f3, f1, this.rpT);
+        this.rxX.setStyle(Paint.Style.FILL_AND_STROKE);
+        this.rxX.setXfermode(this.rxY);
+        paramCanvas.drawCircle(f2, f3, f1, this.rxX);
       }
       paramCanvas.restore();
       AppMethodBeat.o(104325);
       return;
-      this.rpS.setColor(-16777216);
-      this.rpS.setColorFilter(this.mColorMatrixColorFilter);
+      this.rxW.setColor(-16777216);
+      this.rxW.setColorFilter(this.mColorMatrixColorFilter);
     }
   }
   

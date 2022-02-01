@@ -5,13 +5,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.q;
-import com.tencent.mm.bc.l;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.bb.l;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.modelvoiceaddr.ui.b.a;
 import com.tencent.mm.plugin.brandservice.ui.base.BrandServiceSortView;
 import com.tencent.mm.plugin.brandservice.ui.base.BrandServiceSortView.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.a;
 import com.tencent.mm.ui.tools.r;
@@ -21,10 +21,10 @@ public class BrandServiceLocalSearchUI
   extends MMActivity
   implements b.a, BrandServiceSortView.a
 {
-  private com.tencent.mm.modelvoiceaddr.ui.b nYf;
-  private BrandServiceSortView nYg;
+  private com.tencent.mm.modelvoiceaddr.ui.b odO;
+  private BrandServiceSortView odP;
   
-  public final boolean Jp(String paramString)
+  public final boolean JO(String paramString)
   {
     AppMethodBeat.i(5670);
     hideVKB();
@@ -32,37 +32,37 @@ public class BrandServiceLocalSearchUI
     return true;
   }
   
-  public final void Jq(String paramString)
+  public final void JP(String paramString)
   {
     AppMethodBeat.i(5669);
-    ad.i("MicroMsg.BrandServiceLocalSearchUI", "search biz, key word : %s", new Object[] { paramString });
-    this.nYg.aVH(paramString);
+    ae.i("MicroMsg.BrandServiceLocalSearchUI", "search biz, key word : %s", new Object[] { paramString });
+    this.odP.aXi(paramString);
     AppMethodBeat.o(5669);
   }
   
   public final void a(boolean paramBoolean, String[] paramArrayOfString, long paramLong, int paramInt) {}
   
-  public final void aOh()
+  public final void aOF()
   {
     AppMethodBeat.i(5671);
     hideVKB();
     AppMethodBeat.o(5671);
   }
   
-  public final void aSm()
+  public final void aSL()
   {
     AppMethodBeat.i(5668);
     finish();
     AppMethodBeat.o(5668);
   }
   
-  public final void aSn() {}
+  public final void aSM() {}
   
-  public final void aSo() {}
+  public final void aSN() {}
   
-  public final void aSp() {}
+  public final void aSO() {}
   
-  public final boolean bNV()
+  public final boolean bOS()
   {
     AppMethodBeat.i(5676);
     hideVKB();
@@ -78,17 +78,17 @@ public class BrandServiceLocalSearchUI
   public void initView()
   {
     AppMethodBeat.i(5667);
-    this.nYg = ((BrandServiceSortView)findViewById(2131305113));
-    this.nYg.setMode(1);
-    this.nYg.setReturnResult(getIntent().getBooleanExtra("is_return_result", false));
-    this.nYg.fzM();
-    this.nYg.xJ(false);
-    this.nYg.setShowFooterView(false);
-    this.nYg.setITransferToChildOnTouchListener(this);
-    this.nYf = new com.tencent.mm.modelvoiceaddr.ui.b();
-    this.nYf.yC(true);
-    this.nYf.a(this);
-    this.nYf.izx = false;
+    this.odP = ((BrandServiceSortView)findViewById(2131305113));
+    this.odP.setMode(1);
+    this.odP.setReturnResult(getIntent().getBooleanExtra("is_return_result", false));
+    this.odP.fDO();
+    this.odP.xQ(false);
+    this.odP.setShowFooterView(false);
+    this.odP.setITransferToChildOnTouchListener(this);
+    this.odO = new com.tencent.mm.modelvoiceaddr.ui.b();
+    this.odO.yP(true);
+    this.odO.a(this);
+    this.odO.iCq = false;
     AppMethodBeat.o(5667);
   }
   
@@ -99,14 +99,14 @@ public class BrandServiceLocalSearchUI
     setActionbarColor(android.support.v4.content.b.n(getContext(), 2131100705));
     initView();
     paramBundle = new l(18);
-    g.aiU().a(paramBundle, 0);
+    g.ajj().a(paramBundle, 0);
     AppMethodBeat.o(5666);
   }
   
   public boolean onCreateOptionsMenu(Menu paramMenu)
   {
     AppMethodBeat.i(5674);
-    this.nYf.a(this, paramMenu);
+    this.odO.a(this, paramMenu);
     AppMethodBeat.o(5674);
     return true;
   }
@@ -115,7 +115,7 @@ public class BrandServiceLocalSearchUI
   {
     AppMethodBeat.i(5673);
     super.onDestroy();
-    this.nYg.release();
+    this.odP.release();
     AppMethodBeat.o(5673);
   }
   
@@ -123,15 +123,15 @@ public class BrandServiceLocalSearchUI
   {
     AppMethodBeat.i(5672);
     super.onPause();
-    this.nYf.cancel();
-    this.nYf.clearFocus();
+    this.odO.cancel();
+    this.odO.clearFocus();
     AppMethodBeat.o(5672);
   }
   
   public boolean onPrepareOptionsMenu(Menu paramMenu)
   {
     AppMethodBeat.i(5675);
-    this.nYf.a(this, paramMenu);
+    this.odO.a(this, paramMenu);
     AppMethodBeat.o(5675);
     return true;
   }

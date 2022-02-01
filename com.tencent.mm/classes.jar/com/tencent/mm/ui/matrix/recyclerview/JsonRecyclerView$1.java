@@ -14,32 +14,32 @@ final class JsonRecyclerView$1
   
   public final boolean a(RecyclerView paramRecyclerView, MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(194802);
+    AppMethodBeat.i(188204);
     switch (paramMotionEvent.getAction() & paramMotionEvent.getActionMasked())
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(194802);
+      AppMethodBeat.o(188204);
       return false;
-      this.KBY.mode = 1;
+      this.KYs.mode = 1;
       continue;
-      this.KBY.mode = 0;
+      this.KYs.mode = 0;
       continue;
-      paramRecyclerView = this.KBY;
+      paramRecyclerView = this.KYs;
       paramRecyclerView.mode -= 1;
       continue;
-      this.KBY.KBW = JsonRecyclerView.af(paramMotionEvent);
-      paramRecyclerView = this.KBY;
+      this.KYs.KYq = JsonRecyclerView.ad(paramMotionEvent);
+      paramRecyclerView = this.KYs;
       paramRecyclerView.mode += 1;
       continue;
-      if (this.KBY.mode >= 2)
+      if (this.KYs.mode >= 2)
       {
-        float f = JsonRecyclerView.af(paramMotionEvent);
-        if (Math.abs(f - this.KBY.KBW) > 0.5F)
+        float f = JsonRecyclerView.ad(paramMotionEvent);
+        if (Math.abs(f - this.KYs.KYq) > 0.5F)
         {
-          JsonRecyclerView.a(this.KBY, f / this.KBY.KBW);
-          this.KBY.KBW = f;
+          JsonRecyclerView.a(this.KYs, f / this.KYs.KYq);
+          this.KYs.KYq = f;
         }
       }
     }
@@ -49,13 +49,13 @@ final class JsonRecyclerView$1
   
   public final void b(RecyclerView paramRecyclerView, MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(194803);
+    AppMethodBeat.i(188205);
     b localb = new b();
     localb.bd(paramRecyclerView);
     localb.bd(paramMotionEvent);
-    a.b("com/tencent/mm/ui/matrix/recyclerview/JsonRecyclerView$1", "android/support/v7/widget/RecyclerView$OnItemTouchListener", "onTouchEvent", "(Landroid/support/v7/widget/RecyclerView;Landroid/view/MotionEvent;)V", this, localb.ahq());
+    a.b("com/tencent/mm/ui/matrix/recyclerview/JsonRecyclerView$1", "android/support/v7/widget/RecyclerView$OnItemTouchListener", "onTouchEvent", "(Landroid/support/v7/widget/RecyclerView;Landroid/view/MotionEvent;)V", this, localb.ahF());
     a.a(this, "com/tencent/mm/ui/matrix/recyclerview/JsonRecyclerView$1", "android/support/v7/widget/RecyclerView$OnItemTouchListener", "onTouchEvent", "(Landroid/support/v7/widget/RecyclerView;Landroid/view/MotionEvent;)V");
-    AppMethodBeat.o(194803);
+    AppMethodBeat.o(188205);
   }
 }
 

@@ -6,17 +6,17 @@ import d.g.b.q;
 import d.l;
 import d.z;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
 final class BaseScrollTabView$b
   extends q
   implements a<z>
 {
-  public static final b yxh;
+  public static final b yNh;
   
   static
   {
     AppMethodBeat.i(52340);
-    yxh = new b();
+    yNh = new b();
     AppMethodBeat.o(52340);
   }
   

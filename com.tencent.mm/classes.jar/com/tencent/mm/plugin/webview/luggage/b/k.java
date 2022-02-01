@@ -16,13 +16,13 @@ public final class k
   public final void a(Context paramContext, com.tencent.mm.plugin.webview.luggage.g paramg)
   {
     AppMethodBeat.i(78704);
-    if (!paramg.DOy.isShown())
+    if (!paramg.Egy.isShown())
     {
-      paramg.DOy.reset();
-      paramg.DOy.eVK();
-      paramg.DOy.show();
+      paramg.Egy.reset();
+      paramg.Egy.eZx();
+      paramg.Egy.show();
     }
-    com.tencent.mm.plugin.report.service.g.yhR.dD(982, 8);
+    com.tencent.mm.plugin.report.service.g.yxI.dD(982, 8);
     AppMethodBeat.o(78704);
   }
   

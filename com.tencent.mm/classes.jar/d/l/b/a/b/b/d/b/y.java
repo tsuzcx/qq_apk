@@ -8,28 +8,28 @@ public final class y
   extends n
   implements d.l.b.a.b.d.a.e.y
 {
-  private final w NaI;
-  private final Annotation[] NaJ;
-  private final String NaK;
-  private final boolean NaL;
+  private final w NxO;
+  private final Annotation[] NxP;
+  private final String NxQ;
+  private final boolean NxR;
   
   public y(w paramw, Annotation[] paramArrayOfAnnotation, String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(57517);
-    this.NaI = paramw;
-    this.NaJ = paramArrayOfAnnotation;
-    this.NaK = paramString;
-    this.NaL = paramBoolean;
+    this.NxO = paramw;
+    this.NxP = paramArrayOfAnnotation;
+    this.NxQ = paramString;
+    this.NxR = paramBoolean;
     AppMethodBeat.o(57517);
   }
   
-  public final f giD()
+  public final f gnf()
   {
     AppMethodBeat.i(57515);
-    Object localObject = this.NaK;
+    Object localObject = this.NxQ;
     if (localObject != null)
     {
-      localObject = f.bcH((String)localObject);
+      localObject = f.bel((String)localObject);
       AppMethodBeat.o(57515);
       return localObject;
     }
@@ -37,19 +37,19 @@ public final class y
     return null;
   }
   
-  public final boolean glf()
+  public final boolean gpH()
   {
-    return this.NaL;
+    return this.NxR;
   }
   
   public final String toString()
   {
     AppMethodBeat.i(57516);
     StringBuilder localStringBuilder = new StringBuilder().append(getClass().getName()).append(": ");
-    if (this.NaL) {}
+    if (this.NxR) {}
     for (String str = "vararg ";; str = "")
     {
-      str = str + giD() + ": " + this.NaI;
+      str = str + gnf() + ": " + this.NxO;
       AppMethodBeat.o(57516);
       return str;
     }
@@ -57,7 +57,7 @@ public final class y
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.b.d.b.y
  * JD-Core Version:    0.7.0.1
  */

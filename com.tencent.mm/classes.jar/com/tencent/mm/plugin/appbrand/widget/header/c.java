@@ -4,7 +4,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
 import android.widget.AbsListView.OnScrollListener;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -12,34 +12,34 @@ import java.util.List;
 public abstract class c
   implements View.OnTouchListener, AbsListView.OnScrollListener
 {
-  protected List<a> ncF = new LinkedList();
-  private int ncG = 0;
+  protected List<a> nhO = new LinkedList();
+  private int nhP = 0;
   
-  public abstract void K(MotionEvent paramMotionEvent);
+  public abstract void I(MotionEvent paramMotionEvent);
   
   public final void a(a parama)
   {
-    if (!this.ncF.contains(parama)) {
-      this.ncF.add(parama);
+    if (!this.nhO.contains(parama)) {
+      this.nhO.add(parama);
     }
   }
   
   public final void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
   {
-    ad.i("MicroMsg.HeaderAnimController", "alvinluo notifyCallback isOpen: %b, isDrag: %b, reason: %d", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2), Integer.valueOf(paramInt) });
+    ae.i("MicroMsg.HeaderAnimController", "alvinluo notifyCallback isOpen: %b, isDrag: %b, reason: %d", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2), Integer.valueOf(paramInt) });
     if (paramBoolean1)
     {
-      hY(paramBoolean2);
-      if ((this.ncG & 0x2) == 0) {}
+      hW(paramBoolean2);
+      if ((this.nhP & 0x2) == 0) {}
     }
     label195:
     for (;;)
     {
       return;
-      this.ncG |= 0x2;
-      this.ncG &= 0xFFFFFFFB;
+      this.nhP |= 0x2;
+      this.nhP &= 0xFFFFFFFB;
       label72:
-      Iterator localIterator = this.ncF.iterator();
+      Iterator localIterator = this.nhO.iterator();
       for (;;)
       {
         if (!localIterator.hasNext()) {
@@ -50,23 +50,23 @@ public abstract class c
         {
           if (paramBoolean2)
           {
-            locala.bDa();
+            locala.bDS();
             continue;
-            hZ(paramBoolean2);
-            if ((this.ncG & 0x4) != 0) {
+            hX(paramBoolean2);
+            if ((this.nhP & 0x4) != 0) {
               break;
             }
-            this.ncG |= 0x4;
-            this.ncG &= 0xFFFFFFFD;
+            this.nhP |= 0x4;
+            this.nhP &= 0xFFFFFFFD;
             break label72;
           }
-          locala.bCZ();
+          locala.bDR();
           continue;
         }
         if (paramBoolean2) {
-          locala.wd(paramInt);
+          locala.wi(paramInt);
         } else {
-          locala.wc(paramInt);
+          locala.wh(paramInt);
         }
       }
     }
@@ -74,23 +74,23 @@ public abstract class c
   
   public void b(long paramLong, int paramInt, boolean paramBoolean) {}
   
-  public abstract boolean bCA();
+  public abstract void bDl();
   
-  public abstract void bCt();
+  public void bDp() {}
   
-  public void bCx() {}
+  public abstract boolean bDr();
   
-  public abstract boolean bCz();
+  public abstract boolean bDs();
   
   public abstract void g(View paramView1, View paramView2);
   
   public abstract int getAnimationScrollOffset();
   
-  protected void hY(boolean paramBoolean) {}
+  protected void hW(boolean paramBoolean) {}
   
-  protected void hZ(boolean paramBoolean) {}
+  protected void hX(boolean paramBoolean) {}
   
-  public abstract void ia(boolean paramBoolean);
+  public abstract void hY(boolean paramBoolean);
   
   public abstract void iv();
   
@@ -108,7 +108,7 @@ public abstract class c
   
   public abstract void setTabView(View paramView);
   
-  public abstract void vX(int paramInt);
+  public abstract void wc(int paramInt);
   
   public final void z(boolean paramBoolean1, boolean paramBoolean2)
   {
@@ -117,13 +117,13 @@ public abstract class c
   
   public static abstract interface a
   {
-    public abstract void bCZ();
+    public abstract void bDR();
     
-    public abstract void bDa();
+    public abstract void bDS();
     
-    public abstract void wc(int paramInt);
+    public abstract void wh(int paramInt);
     
-    public abstract void wd(int paramInt);
+    public abstract void wi(int paramInt);
   }
 }
 

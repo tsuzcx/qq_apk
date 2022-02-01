@@ -1,62 +1,59 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bx.b;
 import java.util.LinkedList;
 
 public final class ait
-  extends cvc
+  extends cvw
 {
-  public b GfY;
-  public b GfZ;
+  public double latitude;
+  public double longitude;
+  public String vwq;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(149124);
+    AppMethodBeat.i(91448);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
       if (this.BaseRequest != null)
       {
-        paramVarArgs.lC(1, this.BaseRequest.computeSize());
+        paramVarArgs.lJ(1, this.BaseRequest.computeSize());
         this.BaseRequest.writeFields(paramVarArgs);
       }
-      if (this.GfY != null) {
-        paramVarArgs.c(2, this.GfY);
+      if (this.vwq != null) {
+        paramVarArgs.d(2, this.vwq);
       }
-      if (this.GfZ != null) {
-        paramVarArgs.c(3, this.GfZ);
-      }
-      AppMethodBeat.o(149124);
+      paramVarArgs.e(3, this.latitude);
+      paramVarArgs.e(4, this.longitude);
+      AppMethodBeat.o(91448);
       return 0;
     }
     if (paramInt == 1) {
       if (this.BaseRequest == null) {
-        break label430;
+        break label460;
       }
     }
-    label430:
-    for (int i = f.a.a.a.lB(1, this.BaseRequest.computeSize()) + 0;; i = 0)
+    label460:
+    for (paramInt = f.a.a.a.lI(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
     {
-      paramInt = i;
-      if (this.GfY != null) {
-        paramInt = i + f.a.a.b.b.a.b(2, this.GfY);
+      int i = paramInt;
+      if (this.vwq != null) {
+        i = paramInt + f.a.a.b.b.a.e(2, this.vwq);
       }
-      i = paramInt;
-      if (this.GfZ != null) {
-        i = paramInt + f.a.a.b.b.a.b(3, this.GfZ);
-      }
-      AppMethodBeat.o(149124);
-      return i;
+      paramInt = f.a.a.b.b.a.amD(3);
+      int j = f.a.a.b.b.a.amD(4);
+      AppMethodBeat.o(91448);
+      return i + paramInt + j;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = cvc.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cvc.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = cvw.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cvw.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
-        AppMethodBeat.o(149124);
+        AppMethodBeat.o(91448);
         return 0;
       }
       if (paramInt == 3)
@@ -67,10 +64,10 @@ public final class ait
         switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(149124);
+          AppMethodBeat.o(91448);
           return -1;
         case 1: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
+          paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
@@ -78,22 +75,26 @@ public final class ait
             Object localObject2 = (byte[])paramVarArgs.get(paramInt);
             localObject1 = new jc();
             localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((jc)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, cvc.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            for (boolean bool = true; bool; bool = ((jc)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cvw.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
             localait.BaseRequest = ((jc)localObject1);
             paramInt += 1;
           }
-          AppMethodBeat.o(149124);
+          AppMethodBeat.o(91448);
           return 0;
         case 2: 
-          localait.GfY = ((f.a.a.a.a)localObject1).NPN.gxI();
-          AppMethodBeat.o(149124);
+          localait.vwq = ((f.a.a.a.a)localObject1).OmT.readString();
+          AppMethodBeat.o(91448);
+          return 0;
+        case 3: 
+          localait.latitude = Double.longBitsToDouble(((f.a.a.a.a)localObject1).OmT.gwc());
+          AppMethodBeat.o(91448);
           return 0;
         }
-        localait.GfZ = ((f.a.a.a.a)localObject1).NPN.gxI();
-        AppMethodBeat.o(149124);
+        localait.longitude = Double.longBitsToDouble(((f.a.a.a.a)localObject1).OmT.gwc());
+        AppMethodBeat.o(91448);
         return 0;
       }
-      AppMethodBeat.o(149124);
+      AppMethodBeat.o(91448);
       return -1;
     }
   }

@@ -6,67 +6,67 @@ import com.tencent.mm.plugin.report.a;
 public final class dc
   extends a
 {
-  private String dSb = "";
-  private long dVd = 0L;
-  private String ecs = "";
-  private String edW = "";
-  public long edX = 0L;
-  private String edY = "";
-  public String edZ = "";
-  public long eea = 0L;
+  private String dTr = "";
+  private long dWt = 0L;
+  private String edN = "";
+  public long efA = 0L;
+  private String efw = "";
+  public long efx = 0L;
+  private String efy = "";
+  public String efz = "";
   
-  public final String RD()
+  public final String RC()
   {
     AppMethodBeat.i(116481);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dVd);
+    ((StringBuffer)localObject).append(this.dWt);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.edW);
+    ((StringBuffer)localObject).append(this.efw);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dSb);
+    ((StringBuffer)localObject).append(this.dTr);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ecs);
+    ((StringBuffer)localObject).append(this.edN);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.edX);
+    ((StringBuffer)localObject).append(this.efx);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.edY);
+    ((StringBuffer)localObject).append(this.efy);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.edZ);
+    ((StringBuffer)localObject).append(this.efz);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eea);
+    ((StringBuffer)localObject).append(this.efA);
     localObject = ((StringBuffer)localObject).toString();
-    awz((String)localObject);
+    axO((String)localObject);
     AppMethodBeat.o(116481);
     return localObject;
   }
   
-  public final String RE()
+  public final String RD()
   {
     AppMethodBeat.i(116482);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("Scene:").append(this.dVd);
+    ((StringBuffer)localObject).append("Scene:").append(this.dWt);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("SearchId:").append(this.edW);
+    ((StringBuffer)localObject).append("SearchId:").append(this.efw);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("SessionId:").append(this.dSb);
+    ((StringBuffer)localObject).append("SessionId:").append(this.dTr);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("Query:").append(this.ecs);
+    ((StringBuffer)localObject).append("Query:").append(this.edN);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("JumpType:").append(this.edX);
+    ((StringBuffer)localObject).append("JumpType:").append(this.efx);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("Path:").append(this.edY);
+    ((StringBuffer)localObject).append("Path:").append(this.efy);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("WeappUsrname:").append(this.edZ);
+    ((StringBuffer)localObject).append("WeappUsrname:").append(this.efz);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ServiceType:").append(this.eea);
+    ((StringBuffer)localObject).append("ServiceType:").append(this.efA);
     localObject = ((StringBuffer)localObject).toString();
     AppMethodBeat.o(116482);
     return localObject;
   }
   
-  public final dc SU()
+  public final dc Ta()
   {
-    this.dVd = 47L;
+    this.dWt = 47L;
     return this;
   }
   
@@ -75,34 +75,34 @@ public final class dc
     return 16019;
   }
   
-  public final dc mn(String paramString)
+  public final dc mF(String paramString)
   {
     AppMethodBeat.i(116477);
-    this.edW = t("SearchId", paramString, true);
+    this.efw = t("SearchId", paramString, true);
     AppMethodBeat.o(116477);
     return this;
   }
   
-  public final dc mo(String paramString)
+  public final dc mG(String paramString)
   {
     AppMethodBeat.i(116478);
-    this.dSb = t("SessionId", paramString, true);
+    this.dTr = t("SessionId", paramString, true);
     AppMethodBeat.o(116478);
     return this;
   }
   
-  public final dc mp(String paramString)
+  public final dc mH(String paramString)
   {
     AppMethodBeat.i(116479);
-    this.ecs = t("Query", paramString, true);
+    this.edN = t("Query", paramString, true);
     AppMethodBeat.o(116479);
     return this;
   }
   
-  public final dc mq(String paramString)
+  public final dc mI(String paramString)
   {
     AppMethodBeat.i(116480);
-    this.edY = t("Path", paramString, true);
+    this.efy = t("Path", paramString, true);
     AppMethodBeat.o(116480);
     return this;
   }

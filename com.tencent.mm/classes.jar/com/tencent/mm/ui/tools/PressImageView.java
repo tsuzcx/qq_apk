@@ -10,18 +10,18 @@ import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.aq;
 import junit.framework.Assert;
 
 public class PressImageView
   extends ImageView
 {
+  private aq AfN;
+  private Runnable AfO;
   private int a;
   private int b;
   private int g;
   private int r;
-  private ap zOG;
-  private Runnable zOH;
   
   public PressImageView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -31,8 +31,8 @@ public class PressImageView
     this.r = 0;
     this.g = 0;
     this.b = 0;
-    this.zOG = new ap();
-    this.zOH = new Runnable()
+    this.AfN = new aq();
+    this.AfO = new Runnable()
     {
       public final void run()
       {
@@ -50,7 +50,7 @@ public class PressImageView
         b localb = new b();
         localb.bd(paramAnonymousView);
         localb.bd(paramAnonymousMotionEvent);
-        a.b("com/tencent/mm/ui/tools/PressImageView$2", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahq());
+        a.b("com/tencent/mm/ui/tools/PressImageView$2", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahF());
         switch (paramAnonymousMotionEvent.getAction())
         {
         case 2: 

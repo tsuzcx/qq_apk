@@ -5,16 +5,16 @@ import android.os.Bundle;
 import com.tencent.luggage.h.e.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.h;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public abstract class a
   extends com.tencent.mm.plugin.appbrand.jsapi.a<h>
 {
-  protected abstract boolean bjb();
+  protected abstract boolean bjK();
   
-  protected abstract String bjc();
+  protected abstract String bjL();
   
-  protected boolean bjd()
+  protected boolean bjM()
   {
     return true;
   }

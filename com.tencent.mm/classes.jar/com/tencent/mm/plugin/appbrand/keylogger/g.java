@@ -9,10 +9,10 @@ import com.tencent.mm.ipcinvoker.type.IPCString;
 import com.tencent.mm.ipcinvoker.type.IPCVoid;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.plugin.appbrand.keylogger.base.c;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.sdk.platformtools.m;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.n;
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -25,62 +25,62 @@ import java.util.Map;
 public final class g
   implements c
 {
-  private static final Map<Long, String> lDb;
-  private static String lDc;
+  private static final Map<Long, String> lHA;
+  private static String lHB;
   private static SimpleDateFormat sDateFormat;
   
   static
   {
-    AppMethodBeat.i(192238);
+    AppMethodBeat.i(220811);
     sDateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
-    lDb = new HashMap();
-    AppMethodBeat.o(192238);
+    lHA = new HashMap();
+    AppMethodBeat.o(220811);
   }
   
-  private static long RF(String paramString)
+  private static long So(String paramString)
   {
-    AppMethodBeat.i(192235);
+    AppMethodBeat.i(220808);
     if (paramString == null)
     {
-      AppMethodBeat.o(192235);
+      AppMethodBeat.o(220808);
       return 0L;
     }
     String[] arrayOfString = paramString.split("-", -1);
     if ((arrayOfString == null) || (arrayOfString.length != 3))
     {
-      ad.w("MicroMsg.DefaultKeyStepLogger", "getTimeFromDateFormatStr invalid date:%s", new Object[] { paramString });
-      AppMethodBeat.o(192235);
+      ae.w("MicroMsg.DefaultKeyStepLogger", "getTimeFromDateFormatStr invalid date:%s", new Object[] { paramString });
+      AppMethodBeat.o(220808);
       return 0L;
     }
     paramString = Calendar.getInstance();
     try
     {
-      paramString.set(bt.getInt(arrayOfString[0], 0), bt.getInt(arrayOfString[1], 0), bt.getInt(arrayOfString[2], 0));
+      paramString.set(bu.getInt(arrayOfString[0], 0), bu.getInt(arrayOfString[1], 0), bu.getInt(arrayOfString[2], 0));
       long l = paramString.getTimeInMillis();
-      AppMethodBeat.o(192235);
+      AppMethodBeat.o(220808);
       return l;
     }
     catch (Exception paramString)
     {
-      ad.w("MicroMsg.DefaultKeyStepLogger", "getTimeFromDateFormatStr exp:%s", new Object[] { paramString });
-      AppMethodBeat.o(192235);
+      ae.w("MicroMsg.DefaultKeyStepLogger", "getTimeFromDateFormatStr exp:%s", new Object[] { paramString });
+      AppMethodBeat.o(220808);
     }
     return 0L;
   }
   
-  private static String bqv()
+  private static String brf()
   {
-    AppMethodBeat.i(192232);
-    if (!bt.isNullOrNil(lDc))
+    AppMethodBeat.i(220805);
+    if (!bu.isNullOrNil(lHB))
     {
-      localObject = lDc;
-      AppMethodBeat.o(192232);
+      localObject = lHB;
+      AppMethodBeat.o(220805);
       return localObject;
     }
-    String str = bqw();
-    if (bt.isNullOrNil(str))
+    String str = brg();
+    if (bu.isNullOrNil(str))
     {
-      AppMethodBeat.o(192232);
+      AppMethodBeat.o(220805);
       return null;
     }
     Object localObject = str;
@@ -88,103 +88,103 @@ public final class g
       localObject = str + "/";
     }
     localObject = String.format("%skeystep/", new Object[] { localObject });
-    lDc = (String)localObject;
-    AppMethodBeat.o(192232);
+    lHB = (String)localObject;
+    AppMethodBeat.o(220805);
     return localObject;
   }
   
-  private static String bqw()
+  private static String brg()
   {
-    AppMethodBeat.i(192233);
-    if (aj.cnC())
+    AppMethodBeat.i(220806);
+    if (ak.cpe())
     {
-      if (!com.tencent.mm.kernel.g.ajx())
+      if (!com.tencent.mm.kernel.g.ajM())
       {
-        ad.w("MicroMsg.DefaultKeyStepLogger", "doGetAccPath not accHasReady");
-        AppMethodBeat.o(192233);
+        ae.w("MicroMsg.DefaultKeyStepLogger", "doGetAccPath not accHasReady");
+        AppMethodBeat.o(220806);
         return null;
       }
-      localObject = com.tencent.mm.kernel.g.ajC().cachePath;
-      AppMethodBeat.o(192233);
+      localObject = com.tencent.mm.kernel.g.ajR().cachePath;
+      AppMethodBeat.o(220806);
       return localObject;
     }
     Object localObject = (IPCString)XIPCInvoker.a("com.tencent.mm", new IPCVoid(), g.a.class);
     if (localObject == null)
     {
-      AppMethodBeat.o(192233);
+      AppMethodBeat.o(220806);
       return null;
     }
     localObject = ((IPCString)localObject).value;
-    AppMethodBeat.o(192233);
+    AppMethodBeat.o(220806);
     return localObject;
   }
   
-  public static void bqx()
+  public static void brh()
   {
-    AppMethodBeat.i(192234);
-    ad.d("MicroMsg.DefaultKeyStepLogger", "cleanOldLogs enter");
-    if (!aj.cnC())
+    AppMethodBeat.i(220807);
+    ae.d("MicroMsg.DefaultKeyStepLogger", "cleanOldLogs enter");
+    if (!ak.cpe())
     {
-      AppMethodBeat.o(192234);
+      AppMethodBeat.o(220807);
       return;
     }
     long l1 = System.currentTimeMillis();
-    long l2 = aj.fkD().getLong("MMTempKeyStepLogger-Last-Clean-Time", 0L);
-    ad.i("MicroMsg.DefaultKeyStepLogger", "cleanOldLogs now:%d lastCleanTime:%d", new Object[] { Long.valueOf(l1), Long.valueOf(l2) });
+    long l2 = ak.fox().getLong("MMTempKeyStepLogger-Last-Clean-Time", 0L);
+    ae.i("MicroMsg.DefaultKeyStepLogger", "cleanOldLogs now:%d lastCleanTime:%d", new Object[] { Long.valueOf(l1), Long.valueOf(l2) });
     if (l1 - l2 < 604800000L)
     {
-      AppMethodBeat.o(192234);
+      AppMethodBeat.o(220807);
       return;
     }
-    h.LTJ.f(new g.2(), "MMTempKeyStepLogger#cleanOldLogs");
-    AppMethodBeat.o(192234);
+    h.MqF.f(new g.2(), "MMTempKeyStepLogger#cleanOldLogs");
+    AppMethodBeat.o(220807);
   }
   
-  private static String sS(long paramLong)
+  private static String tf(long paramLong)
   {
-    AppMethodBeat.i(192231);
-    if (lDb.containsKey(Long.valueOf(paramLong)))
+    AppMethodBeat.i(220804);
+    if (lHA.containsKey(Long.valueOf(paramLong)))
     {
-      str = (String)lDb.get(Long.valueOf(paramLong));
-      AppMethodBeat.o(192231);
+      str = (String)lHA.get(Long.valueOf(paramLong));
+      AppMethodBeat.o(220804);
       return str;
     }
-    if (bt.isNullOrNil(bqv()))
+    if (bu.isNullOrNil(brf()))
     {
-      AppMethodBeat.o(192231);
+      AppMethodBeat.o(220804);
       return null;
     }
-    String str = String.format("%s%s/", new Object[] { bqv(), sDateFormat.format(Long.valueOf(paramLong)) });
-    m.aLc(str);
-    lDb.put(Long.valueOf(paramLong), str);
-    AppMethodBeat.o(192231);
+    String str = String.format("%s%s/", new Object[] { brf(), sDateFormat.format(Long.valueOf(paramLong)) });
+    n.aMy(str);
+    lHA.put(Long.valueOf(paramLong), str);
+    AppMethodBeat.o(220804);
     return str;
   }
   
   public final List<String> V(String paramString, long paramLong)
   {
     int i = 0;
-    AppMethodBeat.i(192230);
+    AppMethodBeat.i(220803);
     ArrayList localArrayList = new ArrayList();
-    Object localObject = sS(paramLong);
-    if (bt.isNullOrNil((String)localObject))
+    Object localObject = tf(paramLong);
+    if (bu.isNullOrNil((String)localObject))
     {
-      AppMethodBeat.o(192230);
+      AppMethodBeat.o(220803);
       return localArrayList;
     }
     localObject = new File((String)localObject);
     if (!((File)localObject).isDirectory())
     {
-      AppMethodBeat.o(192230);
+      AppMethodBeat.o(220803);
       return localArrayList;
     }
     localObject = ((File)localObject).listFiles();
     if (localObject == null)
     {
-      AppMethodBeat.o(192230);
+      AppMethodBeat.o(220803);
       return localArrayList;
     }
-    ad.i("MicroMsg.DefaultKeyStepLogger", "collectLogPathsByProcessAndDate : %s", new Object[] { paramString });
+    ae.i("MicroMsg.DefaultKeyStepLogger", "collectLogPathsByProcessAndDate : %s", new Object[] { paramString });
     while (i < localObject.length)
     {
       if (localObject[i].getName().startsWith(paramString)) {
@@ -192,24 +192,24 @@ public final class g
       }
       i += 1;
     }
-    AppMethodBeat.o(192230);
+    AppMethodBeat.o(220803);
     return localArrayList;
   }
   
   public final void c(final String paramString1, final String paramString2, final Object... paramVarArgs)
   {
-    AppMethodBeat.i(192229);
-    h.LTJ.f(new Runnable()
+    AppMethodBeat.i(220802);
+    h.MqF.f(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(192226);
+        AppMethodBeat.i(220799);
         String str = String.format(paramString2, paramVarArgs);
-        g.dJ(paramString1, str);
-        AppMethodBeat.o(192226);
+        g.dL(paramString1, str);
+        AppMethodBeat.o(220799);
       }
     }, "MMTempKeyStepLogger");
-    AppMethodBeat.o(192229);
+    AppMethodBeat.o(220802);
   }
 }
 

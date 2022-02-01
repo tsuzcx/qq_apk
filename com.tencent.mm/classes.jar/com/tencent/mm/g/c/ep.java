@@ -8,19 +8,19 @@ public abstract class ep
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eDc = "status".hashCode();
-  private static final int fni = "reqkey".hashCode();
-  private static final int fnj = "ack_key".hashCode();
-  private static final int fnk = "receive_time".hashCode();
+  private static final int eEL = "status".hashCode();
+  private static final int fpi = "reqkey".hashCode();
+  private static final int fpj = "ack_key".hashCode();
+  private static final int fpk = "receive_time".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eCZ = true;
+  private boolean eEI = true;
   public String field_ack_key;
   public long field_receive_time;
   public String field_reqkey;
   public int field_status;
-  private boolean fnf = true;
-  private boolean fng = true;
-  private boolean fnh = true;
+  private boolean fpf = true;
+  private boolean fpg = true;
+  private boolean fph = true;
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -35,11 +35,11 @@ public abstract class ep
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (fni != k) {
+      if (fpi != k) {
         break label65;
       }
       this.field_reqkey = paramCursor.getString(i);
-      this.fnf = true;
+      this.fpf = true;
     }
     for (;;)
     {
@@ -47,11 +47,11 @@ public abstract class ep
       break label20;
       break;
       label65:
-      if (fnj == k) {
+      if (fpj == k) {
         this.field_ack_key = paramCursor.getString(i);
-      } else if (eDc == k) {
+      } else if (eEL == k) {
         this.field_status = paramCursor.getInt(i);
-      } else if (fnk == k) {
+      } else if (fpk == k) {
         this.field_receive_time = paramCursor.getLong(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
@@ -62,16 +62,16 @@ public abstract class ep
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.fnf) {
+    if (this.fpf) {
       localContentValues.put("reqkey", this.field_reqkey);
     }
-    if (this.fng) {
+    if (this.fpg) {
       localContentValues.put("ack_key", this.field_ack_key);
     }
-    if (this.eCZ) {
+    if (this.eEI) {
       localContentValues.put("status", Integer.valueOf(this.field_status));
     }
-    if (this.fnh) {
+    if (this.fph) {
       localContentValues.put("receive_time", Long.valueOf(this.field_receive_time));
     }
     if (this.systemRowid > 0L) {

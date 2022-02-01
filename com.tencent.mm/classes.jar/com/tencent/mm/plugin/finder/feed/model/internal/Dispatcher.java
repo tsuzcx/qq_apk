@@ -1,14 +1,14 @@
 package com.tencent.mm.plugin.finder.feed.model.internal;
 
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import d.g.b.p;
 import d.l;
 import d.z;
 import java.util.Iterator;
 import java.util.LinkedList;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/feed/model/internal/Dispatcher;", "T", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/DataStore;", "()V", "dispatcher", "Lcom/tencent/mm/plugin/finder/feed/model/internal/DispatcherMachine;", "merger", "Lcom/tencent/mm/plugin/finder/feed/model/internal/DataMerger;", "getMerger", "()Lcom/tencent/mm/plugin/finder/feed/model/internal/DataMerger;", "viewCallbacks", "Ljava/util/LinkedList;", "Lcom/tencent/mm/view/IViewActionCallback;", "createDataMerger", "onAlive", "", "onDead", "register", "callback", "unregister", "STATUS", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/feed/model/internal/Dispatcher;", "T", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/DataStore;", "()V", "dispatcher", "Lcom/tencent/mm/plugin/finder/feed/model/internal/DispatcherMachine;", "merger", "Lcom/tencent/mm/plugin/finder/feed/model/internal/DataMerger;", "getMerger", "()Lcom/tencent/mm/plugin/finder/feed/model/internal/DataMerger;", "viewCallbacks", "Ljava/util/LinkedList;", "Lcom/tencent/mm/view/IViewActionCallback;", "createDataMerger", "onAlive", "", "onDead", "register", "callback", "unregister", "STATUS", "plugin-finder_release"})
 public abstract class Dispatcher<T extends i>
   extends DataStore<T>
 {
@@ -36,7 +36,7 @@ public abstract class Dispatcher<T extends i>
   {
     p.h(paramd, "callback");
     this.viewCallbacks.add(paramd);
-    ad.i(getTAG(), "register callback " + paramd + " size:" + this.viewCallbacks.size() + " from " + bt.flS() + '}');
+    ae.i(getTAG(), "register callback " + paramd + " size:" + this.viewCallbacks.size() + " from " + bu.fpN() + '}');
     if (this.viewCallbacks.size() == 1) {
       onAlive();
     }
@@ -56,8 +56,8 @@ public abstract class Dispatcher<T extends i>
         }
       }
     }
-    Object localObject = z.MKo;
-    ad.i(getTAG(), "unregister callback " + paramd + " size " + this.viewCallbacks.size() + " from " + bt.flS() + '}');
+    Object localObject = z.Nhr;
+    ae.i(getTAG(), "unregister callback " + paramd + " size " + this.viewCallbacks.size() + " from " + bu.fpN() + '}');
     if (this.viewCallbacks.size() == 0) {
       onDead();
     }

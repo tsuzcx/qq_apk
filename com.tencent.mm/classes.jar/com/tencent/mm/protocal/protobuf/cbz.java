@@ -3,71 +3,73 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class cbz
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public int FKN;
-  public String GVP;
-  public String GVQ;
-  public String path;
-  public int type;
-  public String username;
+  public String GXn;
+  public String GZq;
+  public String GZr;
+  public String dyl;
+  public String url;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(123630);
+    AppMethodBeat.i(123628);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.username != null) {
-        paramVarArgs.d(1, this.username);
+      if (this.GXn != null) {
+        paramVarArgs.d(1, this.GXn);
       }
-      if (this.GVP != null) {
-        paramVarArgs.d(2, this.GVP);
+      if (this.url != null) {
+        paramVarArgs.d(2, this.url);
       }
-      if (this.GVQ != null) {
-        paramVarArgs.d(3, this.GVQ);
+      if (this.dyl != null) {
+        paramVarArgs.d(3, this.dyl);
       }
-      if (this.path != null) {
-        paramVarArgs.d(4, this.path);
+      if (this.GZq != null) {
+        paramVarArgs.d(4, this.GZq);
       }
-      paramVarArgs.aS(5, this.FKN);
-      paramVarArgs.aS(6, this.type);
-      AppMethodBeat.o(123630);
+      if (this.GZr != null) {
+        paramVarArgs.d(5, this.GZr);
+      }
+      AppMethodBeat.o(123628);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.username == null) {
-        break label486;
+      if (this.GXn == null) {
+        break label454;
       }
     }
-    label486:
-    for (int i = f.a.a.b.b.a.e(1, this.username) + 0;; i = 0)
+    label454:
+    for (int i = f.a.a.b.b.a.e(1, this.GXn) + 0;; i = 0)
     {
       paramInt = i;
-      if (this.GVP != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.GVP);
+      if (this.url != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.url);
       }
       i = paramInt;
-      if (this.GVQ != null) {
-        i = paramInt + f.a.a.b.b.a.e(3, this.GVQ);
+      if (this.dyl != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.dyl);
       }
       paramInt = i;
-      if (this.path != null) {
-        paramInt = i + f.a.a.b.b.a.e(4, this.path);
+      if (this.GZq != null) {
+        paramInt = i + f.a.a.b.b.a.e(4, this.GZq);
       }
-      i = f.a.a.b.b.a.bz(5, this.FKN);
-      int j = f.a.a.b.b.a.bz(6, this.type);
-      AppMethodBeat.o(123630);
-      return paramInt + i + j;
+      i = paramInt;
+      if (this.GZr != null) {
+        i = paramInt + f.a.a.b.b.a.e(5, this.GZr);
+      }
+      AppMethodBeat.o(123628);
+      return i;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
-        AppMethodBeat.o(123630);
+        AppMethodBeat.o(123628);
         return 0;
       }
       if (paramInt == 3)
@@ -77,34 +79,30 @@ public final class cbz
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(123630);
+          AppMethodBeat.o(123628);
           return -1;
         case 1: 
-          localcbz.username = locala.NPN.readString();
-          AppMethodBeat.o(123630);
+          localcbz.GXn = locala.OmT.readString();
+          AppMethodBeat.o(123628);
           return 0;
         case 2: 
-          localcbz.GVP = locala.NPN.readString();
-          AppMethodBeat.o(123630);
+          localcbz.url = locala.OmT.readString();
+          AppMethodBeat.o(123628);
           return 0;
         case 3: 
-          localcbz.GVQ = locala.NPN.readString();
-          AppMethodBeat.o(123630);
+          localcbz.dyl = locala.OmT.readString();
+          AppMethodBeat.o(123628);
           return 0;
         case 4: 
-          localcbz.path = locala.NPN.readString();
-          AppMethodBeat.o(123630);
-          return 0;
-        case 5: 
-          localcbz.FKN = locala.NPN.zc();
-          AppMethodBeat.o(123630);
+          localcbz.GZq = locala.OmT.readString();
+          AppMethodBeat.o(123628);
           return 0;
         }
-        localcbz.type = locala.NPN.zc();
-        AppMethodBeat.o(123630);
+        localcbz.GZr = locala.OmT.readString();
+        AppMethodBeat.o(123628);
         return 0;
       }
-      AppMethodBeat.o(123630);
+      AppMethodBeat.o(123628);
       return -1;
     }
   }

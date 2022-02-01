@@ -9,55 +9,48 @@ import java.util.Set;
 
 public class HookManager
 {
-  public static final HookManager MoC;
-  public volatile boolean MoD;
-  private Set<a> MoE;
+  public static final HookManager MLy;
+  private Set<a> MLA;
+  public volatile boolean MLz;
   
   static
   {
-    AppMethodBeat.i(211533);
-    MoC = new HookManager();
-    AppMethodBeat.o(211533);
+    AppMethodBeat.i(195204);
+    MLy = new HookManager();
+    AppMethodBeat.o(195204);
   }
   
   private HookManager()
   {
-    AppMethodBeat.i(211527);
-    this.MoE = new HashSet();
-    AppMethodBeat.o(211527);
+    AppMethodBeat.i(195199);
+    this.MLA = new HashSet();
+    AppMethodBeat.o(195199);
   }
   
   @Keep
   public static String getStack()
   {
-    AppMethodBeat.i(211531);
-    String str = stackTraceToString(new Throwable().getStackTrace());
-    AppMethodBeat.o(211531);
-    return str;
-  }
-  
-  private static String stackTraceToString(StackTraceElement[] paramArrayOfStackTraceElement)
-  {
-    AppMethodBeat.i(211532);
-    if (paramArrayOfStackTraceElement == null)
+    AppMethodBeat.i(195203);
+    Object localObject1 = Thread.currentThread().getStackTrace();
+    if (localObject1 == null)
     {
-      AppMethodBeat.o(211532);
+      AppMethodBeat.o(195203);
       return "";
     }
     StringBuilder localStringBuilder = new StringBuilder();
-    int j = paramArrayOfStackTraceElement.length;
+    int j = localObject1.length;
     int i = 0;
     while (i < j)
     {
-      StackTraceElement localStackTraceElement = paramArrayOfStackTraceElement[i];
-      if (!localStackTraceElement.getClassName().contains("java.lang.Thread")) {
-        localStringBuilder.append("\t").append(localStackTraceElement).append('\n');
+      Object localObject2 = localObject1[i];
+      if (!localObject2.getClassName().contains("java.lang.Thread")) {
+        localStringBuilder.append("\t").append(localObject2).append('\n');
       }
       i += 1;
     }
-    paramArrayOfStackTraceElement = localStringBuilder.toString();
-    AppMethodBeat.o(211532);
-    return paramArrayOfStackTraceElement;
+    localObject1 = localStringBuilder.toString();
+    AppMethodBeat.o(195203);
+    return localObject1;
   }
   
   private native void xhookClearNative();
@@ -70,60 +63,60 @@ public class HookManager
   
   public final HookManager a(a parama)
   {
-    AppMethodBeat.i(211529);
+    AppMethodBeat.i(195201);
     if (parama != null) {
-      this.MoE.add(parama);
+      this.MLA.add(parama);
     }
-    AppMethodBeat.o(211529);
+    AppMethodBeat.o(195201);
     return this;
   }
   
-  public final void gah()
+  public final void geJ()
   {
-    AppMethodBeat.i(211528);
+    AppMethodBeat.i(195200);
     Object localObject;
-    if (this.MoD)
+    if (this.MLz)
     {
       localObject = new a("this process has already been hooked!");
-      AppMethodBeat.o(211528);
+      AppMethodBeat.o(195200);
       throw ((Throwable)localObject);
     }
-    if (this.MoE.isEmpty())
+    if (this.MLA.isEmpty())
     {
-      AppMethodBeat.o(211528);
+      AppMethodBeat.o(195200);
       return;
     }
     try
     {
       System.loadLibrary("wxperf-jni");
-      localObject = this.MoE.iterator();
+      localObject = this.MLA.iterator();
       while (((Iterator)localObject).hasNext()) {
-        ((a)((Iterator)localObject).next()).gaf();
+        ((a)((Iterator)localObject).next()).geH();
       }
+      localIterator = this.MLA.iterator();
     }
     catch (Throwable localThrowable)
     {
-      for (;;)
-      {
-        Log.printStack(6, "Wxperf.HookManager", localThrowable);
-      }
-      Iterator localIterator = this.MoE.iterator();
-      while (localIterator.hasNext()) {
-        ((a)localIterator.next()).gag();
-      }
-      xhookEnableDebugNative(false);
-      xhookEnableSigSegvProtectionNative(true);
-      xhookRefreshNative(false);
-      this.MoD = true;
-      AppMethodBeat.o(211528);
+      Log.printStack(6, "Wxperf.HookManager", localThrowable);
+      AppMethodBeat.o(195200);
+      return;
     }
+    Iterator localIterator;
+    while (localIterator.hasNext()) {
+      ((a)localIterator.next()).geI();
+    }
+    xhookEnableDebugNative(false);
+    xhookEnableSigSegvProtectionNative(true);
+    xhookRefreshNative(false);
+    this.MLz = true;
+    AppMethodBeat.o(195200);
   }
   
-  public final HookManager gai()
+  public final HookManager geK()
   {
-    AppMethodBeat.i(211530);
-    this.MoE.clear();
-    AppMethodBeat.o(211530);
+    AppMethodBeat.i(195202);
+    this.MLA.clear();
+    AppMethodBeat.o(195202);
     return this;
   }
   

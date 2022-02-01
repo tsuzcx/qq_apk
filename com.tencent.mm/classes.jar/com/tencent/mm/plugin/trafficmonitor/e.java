@@ -1,39 +1,39 @@
 package com.tencent.mm.plugin.trafficmonitor;
 
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public abstract class e
 {
-  f BAK;
-  a BAL;
+  f BSi;
+  a BSj;
   private final String TAG = "MicroMsg.TrafficInspector";
   int currentIndex;
   int id;
   long interval;
   int type;
   
-  static boolean Bg(long paramLong)
+  static boolean BE(long paramLong)
   {
-    if (TrafficClickFlowReceiver.Bd(paramLong))
+    if (TrafficClickFlowReceiver.BB(paramLong))
     {
-      boolean bool = TrafficClickFlowReceiver.Be(paramLong);
-      ad.i("MicroMsg.TrafficInspector", "hasDownload");
+      boolean bool = TrafficClickFlowReceiver.BC(paramLong);
+      ae.i("MicroMsg.TrafficInspector", "hasDownload");
       return bool;
     }
     return false;
   }
   
-  abstract void erh();
+  abstract void euO();
   
-  final void erj()
+  final void euQ()
   {
-    g.erk();
-    int i = g.ern();
+    g.euR();
+    int i = g.euU();
     if (this.id == i)
     {
-      TrafficClickFlowReceiver.eri();
-      g.erk();
-      g.erm();
+      TrafficClickFlowReceiver.euP();
+      g.euR();
+      g.euT();
     }
   }
   

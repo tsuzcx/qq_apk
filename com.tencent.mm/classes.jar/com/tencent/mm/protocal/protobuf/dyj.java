@@ -3,55 +3,45 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class dyj
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public int Cbm;
-  public int Cbn;
-  public String dxJ;
-  public int nHv;
-  public String userName;
+  public int HUj;
+  public String HUk;
+  public int Hzv;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(115904);
+    AppMethodBeat.i(115860);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aS(1, this.nHv);
-      paramVarArgs.aS(2, this.Cbn);
-      paramVarArgs.aS(3, this.Cbm);
-      if (this.userName != null) {
-        paramVarArgs.d(4, this.userName);
+      paramVarArgs.aS(1, this.HUj);
+      paramVarArgs.aS(2, this.Hzv);
+      if (this.HUk != null) {
+        paramVarArgs.d(3, this.HUk);
       }
-      if (this.dxJ != null) {
-        paramVarArgs.d(5, this.dxJ);
-      }
-      AppMethodBeat.o(115904);
+      AppMethodBeat.o(115860);
       return 0;
     }
     if (paramInt == 1)
     {
-      int i = f.a.a.b.b.a.bz(1, this.nHv) + 0 + f.a.a.b.b.a.bz(2, this.Cbn) + f.a.a.b.b.a.bz(3, this.Cbm);
+      int i = f.a.a.b.b.a.bz(1, this.HUj) + 0 + f.a.a.b.b.a.bz(2, this.Hzv);
       paramInt = i;
-      if (this.userName != null) {
-        paramInt = i + f.a.a.b.b.a.e(4, this.userName);
+      if (this.HUk != null) {
+        paramInt = i + f.a.a.b.b.a.e(3, this.HUk);
       }
-      i = paramInt;
-      if (this.dxJ != null) {
-        i = paramInt + f.a.a.b.b.a.e(5, this.dxJ);
-      }
-      AppMethodBeat.o(115904);
-      return i;
+      AppMethodBeat.o(115860);
+      return paramInt;
     }
     if (paramInt == 2)
     {
       paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gxE();
+          paramVarArgs.gCg();
         }
       }
-      AppMethodBeat.o(115904);
+      AppMethodBeat.o(115860);
       return 0;
     }
     if (paramInt == 3)
@@ -61,36 +51,28 @@ public final class dyj
       switch (((Integer)paramVarArgs[2]).intValue())
       {
       default: 
-        AppMethodBeat.o(115904);
+        AppMethodBeat.o(115860);
         return -1;
       case 1: 
-        localdyj.nHv = locala.NPN.zc();
-        AppMethodBeat.o(115904);
+        localdyj.HUj = locala.OmT.zc();
+        AppMethodBeat.o(115860);
         return 0;
       case 2: 
-        localdyj.Cbn = locala.NPN.zc();
-        AppMethodBeat.o(115904);
-        return 0;
-      case 3: 
-        localdyj.Cbm = locala.NPN.zc();
-        AppMethodBeat.o(115904);
-        return 0;
-      case 4: 
-        localdyj.userName = locala.NPN.readString();
-        AppMethodBeat.o(115904);
+        localdyj.Hzv = locala.OmT.zc();
+        AppMethodBeat.o(115860);
         return 0;
       }
-      localdyj.dxJ = locala.NPN.readString();
-      AppMethodBeat.o(115904);
+      localdyj.HUk = locala.OmT.readString();
+      AppMethodBeat.o(115860);
       return 0;
     }
-    AppMethodBeat.o(115904);
+    AppMethodBeat.o(115860);
     return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.dyj
  * JD-Core Version:    0.7.0.1
  */

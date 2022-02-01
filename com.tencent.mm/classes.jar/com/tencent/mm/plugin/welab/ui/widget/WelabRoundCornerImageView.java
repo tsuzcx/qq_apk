@@ -2,7 +2,6 @@ package com.tencent.mm.plugin.welab.ui.widget;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.graphics.Paint;
 import android.support.v4.graphics.drawable.b;
 import android.support.v4.graphics.drawable.d;
 import android.util.AttributeSet;
@@ -12,7 +11,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class WelabRoundCornerImageView
   extends ImageView
 {
-  private float Eyr;
+  private float EQN;
   
   public WelabRoundCornerImageView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -40,7 +39,7 @@ public class WelabRoundCornerImageView
   
   public void setCornerRadiusPercent(float paramFloat)
   {
-    this.Eyr = paramFloat;
+    this.EQN = paramFloat;
   }
   
   public void setImageBitmap(Bitmap paramBitmap)
@@ -52,37 +51,21 @@ public class WelabRoundCornerImageView
       AppMethodBeat.o(146296);
       return;
     }
-    if (this.Eyr <= 0.0F)
+    if (this.EQN <= 0.0F)
     {
       super.setImageBitmap(paramBitmap);
       AppMethodBeat.o(146296);
       return;
     }
     b localb = d.a(getResources(), paramBitmap);
-    float f = Math.min(paramBitmap.getWidth() * this.Eyr, paramBitmap.getHeight() * this.Eyr);
-    if (localb.Kn != f)
-    {
-      localb.Kr = false;
-      if (!b.x(f)) {
-        break label147;
-      }
-      localb.mPaint.setShader(localb.Kl);
-    }
-    for (;;)
-    {
-      localb.Kn = f;
-      localb.invalidateSelf();
-      super.setImageDrawable(localb);
-      AppMethodBeat.o(146296);
-      return;
-      label147:
-      localb.mPaint.setShader(null);
-    }
+    localb.setCornerRadius(Math.min(paramBitmap.getWidth() * this.EQN, paramBitmap.getHeight() * this.EQN));
+    super.setImageDrawable(localb);
+    AppMethodBeat.o(146296);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.welab.ui.widget.WelabRoundCornerImageView
  * JD-Core Version:    0.7.0.1
  */

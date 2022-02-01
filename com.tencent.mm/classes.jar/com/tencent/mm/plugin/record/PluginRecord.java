@@ -1,39 +1,38 @@
 package com.tencent.mm.plugin.record;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.q;
-import com.tencent.mm.g.a.pn;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.g.a.po;
 import com.tencent.mm.kernel.e.c;
 import com.tencent.mm.plugin.record.a.h;
 import com.tencent.mm.plugin.record.b.i;
 import com.tencent.mm.plugin.record.b.j;
-import com.tencent.mm.plugin.record.b.k;
 import com.tencent.mm.plugin.record.b.l;
 import com.tencent.mm.plugin.record.b.o;
 import com.tencent.mm.plugin.record.b.s;
 import com.tencent.mm.plugin.record.b.t;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public class PluginRecord
   extends com.tencent.mm.kernel.b.f
   implements com.tencent.mm.kernel.a.b.b, com.tencent.mm.kernel.api.bucket.c, com.tencent.mm.plugin.record.a.a
 {
-  private h xqm;
-  private com.tencent.mm.plugin.record.a.e xqn;
-  private s xqo;
-  private j xqp;
-  private l xqq;
-  private t xqr;
-  private com.tencent.mm.sdk.b.c xqs;
+  private h xGj;
+  private com.tencent.mm.plugin.record.a.e xGk;
+  private s xGl;
+  private j xGm;
+  private l xGn;
+  private t xGo;
+  private com.tencent.mm.sdk.b.c xGp;
   
   public PluginRecord()
   {
     AppMethodBeat.i(9429);
-    this.xqo = null;
-    this.xqp = null;
-    this.xqq = null;
-    this.xqr = new t();
-    this.xqs = new com.tencent.mm.sdk.b.c() {};
+    this.xGl = null;
+    this.xGm = null;
+    this.xGn = null;
+    this.xGo = new t();
+    this.xGp = new com.tencent.mm.sdk.b.c() {};
     AppMethodBeat.o(9429);
   }
   
@@ -41,58 +40,58 @@ public class PluginRecord
   {
     AppMethodBeat.i(9430);
     Object localObject = new StringBuilder();
-    com.tencent.mm.kernel.g.ajD();
-    localObject = new com.tencent.mm.vfs.e(com.tencent.mm.kernel.g.ajC().gBm + "record/");
-    if ((!((com.tencent.mm.vfs.e)localObject).exists()) || (!((com.tencent.mm.vfs.e)localObject).isDirectory()))
+    com.tencent.mm.kernel.g.ajS();
+    localObject = new com.tencent.mm.vfs.k(com.tencent.mm.kernel.g.ajR().gDT + "record/");
+    if ((!((com.tencent.mm.vfs.k)localObject).exists()) || (!((com.tencent.mm.vfs.k)localObject).isDirectory()))
     {
-      ad.d("MicroMsg.PluginRecord", "record stg dir[%s] not exsit, create it");
-      ((com.tencent.mm.vfs.e)localObject).mkdirs();
+      ae.d("MicroMsg.PluginRecord", "record stg dir[%s] not exsit, create it");
+      ((com.tencent.mm.vfs.k)localObject).mkdirs();
     }
     AppMethodBeat.o(9430);
   }
   
   public void execute(com.tencent.mm.kernel.b.g paramg)
   {
-    AppMethodBeat.i(213091);
-    if (!paramg.akw())
+    AppMethodBeat.i(221831);
+    if (!paramg.akL())
     {
-      AppMethodBeat.o(213091);
+      AppMethodBeat.o(221831);
       return;
     }
     com.tencent.mm.kernel.g.b(com.tencent.mm.plugin.record.a.f.class, new l());
-    AppMethodBeat.o(213091);
+    AppMethodBeat.o(221831);
   }
   
   public j getRecordMsgCDNService()
   {
     AppMethodBeat.i(9435);
-    com.tencent.mm.kernel.g.ajA().aiF();
-    if (this.xqp == null) {
-      this.xqp = new j();
+    com.tencent.mm.kernel.g.ajP().aiU();
+    if (this.xGm == null) {
+      this.xGm = new j();
     }
-    j localj = this.xqp;
+    j localj = this.xGm;
     AppMethodBeat.o(9435);
     return localj;
   }
   
   public com.tencent.mm.plugin.record.a.e getRecordMsgCDNStorage()
   {
-    return this.xqn;
+    return this.xGk;
   }
   
   public h getRecordMsgInfoStorage()
   {
-    return this.xqm;
+    return this.xGj;
   }
   
   public s getRecordMsgService()
   {
     AppMethodBeat.i(9434);
-    com.tencent.mm.kernel.g.ajA().aiF();
-    if (this.xqo == null) {
-      this.xqo = new s();
+    com.tencent.mm.kernel.g.ajP().aiU();
+    if (this.xGl == null) {
+      this.xGl = new s();
     }
-    s locals = this.xqo;
+    s locals = this.xGl;
     AppMethodBeat.o(9434);
     return locals;
   }
@@ -108,32 +107,32 @@ public class PluginRecord
   public void onAccountInitialized(e.c paramc)
   {
     AppMethodBeat.i(9431);
-    this.xqm = new o(com.tencent.mm.kernel.g.ajC().gBq);
-    this.xqn = new k(com.tencent.mm.kernel.g.ajC().gBq);
-    ad.i("MicroMsg.PluginRecord", "on account post reset");
-    com.tencent.mm.sdk.b.a.IbL.c(this.xqr);
-    com.tencent.mm.sdk.b.a.IbL.c(this.xqs);
+    this.xGj = new o(com.tencent.mm.kernel.g.ajR().gDX);
+    this.xGk = new com.tencent.mm.plugin.record.b.k(com.tencent.mm.kernel.g.ajR().gDX);
+    ae.i("MicroMsg.PluginRecord", "on account post reset");
+    com.tencent.mm.sdk.b.a.IvT.c(this.xGo);
+    com.tencent.mm.sdk.b.a.IvT.c(this.xGp);
     checkDir();
     getRecordMsgService().a(null, false);
-    ad.i("MicroMsg.PluginRecord", "onAccountInitialized start recordMsgSendService");
+    ae.i("MicroMsg.PluginRecord", "onAccountInitialized start recordMsgSendService");
     AppMethodBeat.o(9431);
   }
   
   public void onAccountRelease()
   {
     AppMethodBeat.i(9432);
-    ad.d("MicroMsg.PluginRecord", "on account post release");
-    com.tencent.mm.sdk.b.a.IbL.d(this.xqr);
-    com.tencent.mm.sdk.b.a.IbL.d(this.xqs);
-    if (this.xqo != null)
+    ae.d("MicroMsg.PluginRecord", "on account post release");
+    com.tencent.mm.sdk.b.a.IvT.d(this.xGo);
+    com.tencent.mm.sdk.b.a.IvT.d(this.xGp);
+    if (this.xGl != null)
     {
-      s locals = this.xqo;
+      s locals = this.xGl;
       locals.finish();
-      com.tencent.mm.kernel.g.ajB().gAO.b(632, locals);
+      com.tencent.mm.kernel.g.ajQ().gDv.b(632, locals);
       ((com.tencent.mm.plugin.record.a.a)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.record.a.a.class)).getRecordMsgCDNStorage().b(locals);
     }
-    if (this.xqp != null) {
-      this.xqp.finish();
+    if (this.xGm != null) {
+      this.xGm.finish();
     }
     AppMethodBeat.o(9432);
   }

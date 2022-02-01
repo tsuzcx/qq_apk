@@ -1,133 +1,93 @@
 package com.tencent.mm.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import java.util.Iterator;
-import java.util.concurrent.ConcurrentLinkedQueue;
+import com.tencent.mm.ak.e;
+import com.tencent.mm.ak.e.a;
+import com.tencent.mm.ak.e.b;
+import com.tencent.mm.ak.e.c;
+import com.tencent.mm.g.a.ct;
+import com.tencent.mm.platformtools.z;
+import com.tencent.mm.protocal.protobuf.cv;
+import com.tencent.mm.sdk.b.a;
+import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import java.io.ByteArrayInputStream;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.NamedNodeMap;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+import org.xml.sax.InputSource;
 
 public final class aa
-  implements as.b
+  implements e
 {
-  private as.b hFt;
-  
-  public aa(as.b paramb)
+  public final e.b b(e.a parama)
   {
-    this.hFt = paramb;
-  }
-  
-  public final void AJ(String paramString)
-  {
-    AppMethodBeat.i(197013);
-    Iterator localIterator = aa.a.aBt().iterator();
-    while (localIterator.hasNext())
+    AppMethodBeat.i(150155);
+    parama = parama.gte;
+    if ((parama == null) || (parama.FNI == null))
     {
-      b localb = (b)localIterator.next();
-      if (localb.af(paramString, 0))
-      {
-        localb.aBu().AJ(paramString);
-        ad.i("MicroMsg.GetContactServiceProxy", "[removeCallBack] has consume. interceptor=%s", new Object[] { localb });
-        AppMethodBeat.o(197013);
-        return;
-      }
+      ae.f("MicroMsg.DeletePackageMsgExtension", "[oneliang]DeletePackageMsgExtension failed, invalid cmdAM");
+      AppMethodBeat.o(150155);
+      return null;
     }
-    this.hFt.AJ(paramString);
-    AppMethodBeat.o(197013);
-  }
-  
-  public final void AK(String paramString)
-  {
-    AppMethodBeat.i(197014);
-    Iterator localIterator = aa.a.aBt().iterator();
-    while (localIterator.hasNext())
+    ae.i("MicroMsg.DeletePackageMsgExtension", "[oneliang]DeletePackageMsgExtension start");
+    parama = z.a(parama.FNI);
+    Object localObject = DocumentBuilderFactory.newInstance();
+    for (;;)
     {
-      b localb = (b)localIterator.next();
-      if (localb.af(paramString, 0))
+      int i;
+      try
       {
-        localb.aBu().AK(paramString);
-        ad.i("MicroMsg.GetContactServiceProxy", "[clearMapRecentDown] has consume. interceptor=%s", new Object[] { localb });
-        AppMethodBeat.o(197014);
-        return;
+        parama = ((DocumentBuilderFactory)localObject).newDocumentBuilder().parse(new InputSource(new ByteArrayInputStream(parama.getBytes("utf-8"))));
+        parama.normalize();
+        parama = parama.getDocumentElement().getElementsByTagName("deletepackage");
+        if ((parama != null) && (parama.getLength() == 1))
+        {
+          parama = parama.item(0).getChildNodes();
+          int j = parama.getLength();
+          i = 0;
+          if (i < j)
+          {
+            localObject = parama.item(i);
+            if ((localObject == null) || (((Node)localObject).getNodeName() == null) || (!((Node)localObject).getNodeName().equals("pack"))) {
+              break label298;
+            }
+            localObject = ((Node)localObject).getAttributes();
+            if (localObject == null) {
+              break label298;
+            }
+            localObject = ((NamedNodeMap)localObject).getNamedItem("type");
+            if (localObject == null) {
+              break label298;
+            }
+            int k = bu.getInt(((Node)localObject).getNodeValue(), 0);
+            localObject = new ct();
+            ((ct)localObject).doJ.doK = k;
+            a.IvT.l((b)localObject);
+            break label298;
+          }
+        }
+        ae.i("MicroMsg.DeletePackageMsgExtension", "[oneliang]DeletePackageMsgExtension end");
+        AppMethodBeat.o(150155);
+        return null;
       }
-    }
-    this.hFt.AK(paramString);
-    AppMethodBeat.o(197014);
-  }
-  
-  public final void a(String paramString1, String paramString2, as.b.a parama)
-  {
-    AppMethodBeat.i(197012);
-    Iterator localIterator = aa.a.aBt().iterator();
-    while (localIterator.hasNext())
-    {
-      b localb = (b)localIterator.next();
-      if (localb.af(paramString1, 0))
+      catch (Exception parama)
       {
-        localb.aBu().a(paramString1, paramString2, parama);
-        ad.i("MicroMsg.GetContactServiceProxy", "[getNow] has consume. interceptor=%s", new Object[] { localb });
-        AppMethodBeat.o(197012);
-        return;
+        ae.e("MicroMsg.DeletePackageMsgExtension", "exception:%s", new Object[] { bu.o(parama) });
+        AppMethodBeat.o(150155);
+        return null;
       }
+      label298:
+      i += 1;
     }
-    this.hFt.a(paramString1, paramString2, parama);
-    AppMethodBeat.o(197012);
   }
   
-  public final as.b aBr()
-  {
-    return this.hFt;
-  }
-  
-  public final void aBs()
-  {
-    AppMethodBeat.i(197015);
-    this.hFt.aBs();
-    AppMethodBeat.o(197015);
-  }
-  
-  public final void aI(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(197010);
-    Iterator localIterator = aa.a.aBt().iterator();
-    while (localIterator.hasNext())
-    {
-      b localb = (b)localIterator.next();
-      if (localb.af(paramString1, 0))
-      {
-        localb.aBu().aI(paramString1, paramString2);
-        ad.i("MicroMsg.GetContactServiceProxy", "[addContact] has consume. interceptor=%s", new Object[] { localb });
-        AppMethodBeat.o(197010);
-        return;
-      }
-    }
-    this.hFt.aI(paramString1, paramString2);
-    AppMethodBeat.o(197010);
-  }
-  
-  public final void g(String paramString1, int paramInt, String paramString2)
-  {
-    AppMethodBeat.i(197011);
-    Iterator localIterator = aa.a.aBt().iterator();
-    while (localIterator.hasNext())
-    {
-      b localb = (b)localIterator.next();
-      if (localb.af(paramString1, paramInt))
-      {
-        localb.aBu().g(paramString1, paramInt, paramString2);
-        ad.i("MicroMsg.GetContactServiceProxy", "[addContactExtra] has consume. interceptor=%s", new Object[] { localb });
-        AppMethodBeat.o(197011);
-        return;
-      }
-    }
-    this.hFt.g(paramString1, paramInt, paramString2);
-    AppMethodBeat.o(197011);
-  }
-  
-  public static abstract interface b
-  {
-    public abstract as.b aBu();
-    
-    public abstract boolean af(String paramString, int paramInt);
-  }
+  public final void b(e.c paramc) {}
 }
 
 

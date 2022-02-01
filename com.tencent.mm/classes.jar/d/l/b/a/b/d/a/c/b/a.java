@@ -7,18 +7,18 @@ import d.l.b.a.b.d.a.a.l;
 
 public final class a
 {
-  final l Ngp;
-  final b Ngq;
-  final boolean Ngr;
-  final as Ngs;
+  final l NDu;
+  final b NDv;
+  final boolean NDw;
+  final as NDx;
   
   private a(l paraml, b paramb, boolean paramBoolean, as paramas)
   {
     AppMethodBeat.i(57949);
-    this.Ngp = paraml;
-    this.Ngq = paramb;
-    this.Ngr = paramBoolean;
-    this.Ngs = paramas;
+    this.NDu = paraml;
+    this.NDv = paramb;
+    this.NDw = paramBoolean;
+    this.NDx = paramas;
     AppMethodBeat.o(57949);
   }
   
@@ -26,9 +26,9 @@ public final class a
   {
     AppMethodBeat.i(57948);
     p.h(paramb, "flexibility");
-    l locall = this.Ngp;
-    boolean bool = this.Ngr;
-    as localas = this.Ngs;
+    l locall = this.NDu;
+    boolean bool = this.NDw;
+    as localas = this.NDx;
     p.h(locall, "howThisTypeIsUsed");
     p.h(paramb, "flexibility");
     paramb = new a(locall, paramb, bool, localas);
@@ -44,7 +44,7 @@ public final class a
       if ((paramObject instanceof a))
       {
         paramObject = (a)paramObject;
-        if ((!p.i(this.Ngp, paramObject.Ngp)) || (!p.i(this.Ngq, paramObject.Ngq)) || (this.Ngr != paramObject.Ngr) || (!p.i(this.Ngs, paramObject.Ngs))) {}
+        if ((!p.i(this.NDu, paramObject.NDu)) || (!p.i(this.NDv, paramObject.NDv)) || (this.NDw != paramObject.NDw) || (!p.i(this.NDx, paramObject.NDx))) {}
       }
     }
     else
@@ -64,14 +64,14 @@ public final class a
   public final String toString()
   {
     AppMethodBeat.i(57951);
-    String str = "JavaTypeAttributes(howThisTypeIsUsed=" + this.Ngp + ", flexibility=" + this.Ngq + ", isForAnnotationParameter=" + this.Ngr + ", upperBoundOfTypeParameter=" + this.Ngs + ")";
+    String str = "JavaTypeAttributes(howThisTypeIsUsed=" + this.NDu + ", flexibility=" + this.NDv + ", isForAnnotationParameter=" + this.NDw + ", upperBoundOfTypeParameter=" + this.NDx + ")";
     AppMethodBeat.o(57951);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.d.a.c.b.a
  * JD-Core Version:    0.7.0.1
  */

@@ -18,7 +18,7 @@ public abstract interface b
   
   public abstract void f(int paramInt, long paramLong1, long paramLong2);
   
-  public abstract void gL(int paramInt);
+  public abstract void gM(int paramInt);
   
   public abstract void m(a parama);
 }

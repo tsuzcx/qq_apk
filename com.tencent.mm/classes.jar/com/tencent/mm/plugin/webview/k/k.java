@@ -4,8 +4,8 @@ import android.view.View;
 import android.view.View.OnLongClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.r;
-import com.tencent.mm.protocal.protobuf.bqx;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.brr;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.ui.base.h;
 import d.g.b.p;
 import d.g.b.q;
@@ -18,69 +18,69 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.concurrent.ConcurrentLinkedDeque;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/webview/webcompt/WebComptTagJsApiHandler;", "", "jsapi", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiHandler;", "(Lcom/tencent/mm/plugin/webview/jsapi/JsApiHandler;)V", "debugInfo", "", "getDebugInfo", "()Ljava/lang/String;", "debugListener", "Landroid/view/View$OnLongClickListener;", "getDebugListener", "()Landroid/view/View$OnLongClickListener;", "debugListener$delegate", "Lkotlin/Lazy;", "firstTimeConfig", "", "lastAppId", "webComponent", "Lcom/tencent/mm/plugin/webview/webcompt/WebComponent;", "webComptSettings", "Ljava/util/HashMap;", "Lcom/tencent/mm/protocal/protobuf/JSAPIWebCompt;", "clear", "", "config", "appId", "url", "webCompts", "Ljava/util/LinkedList;", "dispatchEvent", "webCompt", "event", "message", "getInterceptResponse", "Lcom/tencent/xweb/WebResourceResponse;", "request", "Lcom/tencent/xweb/WebResourceRequest;", "sendMessage", "webview-sdk_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/webview/webcompt/WebComptTagJsApiHandler;", "", "jsapi", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiHandler;", "(Lcom/tencent/mm/plugin/webview/jsapi/JsApiHandler;)V", "debugInfo", "", "getDebugInfo", "()Ljava/lang/String;", "debugListener", "Landroid/view/View$OnLongClickListener;", "getDebugListener", "()Landroid/view/View$OnLongClickListener;", "debugListener$delegate", "Lkotlin/Lazy;", "firstTimeConfig", "", "lastAppId", "webComponent", "Lcom/tencent/mm/plugin/webview/webcompt/WebComponent;", "webComptSettings", "Ljava/util/HashMap;", "Lcom/tencent/mm/protocal/protobuf/JSAPIWebCompt;", "clear", "", "config", "appId", "url", "webCompts", "Ljava/util/LinkedList;", "dispatchEvent", "webCompt", "event", "message", "getInterceptResponse", "Lcom/tencent/xweb/WebResourceResponse;", "request", "Lcom/tencent/xweb/WebResourceRequest;", "sendMessage", "webview-sdk_release"})
 public final class k
 {
-  private final com.tencent.mm.plugin.webview.c.f DzP;
-  private boolean EwF;
-  String EwG;
-  final HashMap<String, bqx> EwH;
-  private final d.f EwI;
-  final c Ewx;
+  private final com.tencent.mm.plugin.webview.c.f DRx;
+  final c EOT;
+  private boolean EPb;
+  String EPc;
+  final HashMap<String, brr> EPd;
+  private final d.f EPe;
   
   public k(com.tencent.mm.plugin.webview.c.f paramf)
   {
-    AppMethodBeat.i(214420);
-    this.DzP = paramf;
-    this.Ewx = new c(this.DzP);
-    this.EwF = true;
-    this.EwG = "";
-    this.EwH = new HashMap();
-    this.EwI = d.g.O((d.g.a.a)new c(this));
-    AppMethodBeat.o(214420);
+    AppMethodBeat.i(214261);
+    this.DRx = paramf;
+    this.EOT = new c(this.DRx);
+    this.EPb = true;
+    this.EPc = "";
+    this.EPd = new HashMap();
+    this.EPe = d.g.O((d.g.a.a)new c(this));
+    AppMethodBeat.o(214261);
   }
   
-  public final void aX(String paramString1, String paramString2, String paramString3)
+  public final void aY(String paramString1, String paramString2, String paramString3)
   {
-    AppMethodBeat.i(214418);
+    AppMethodBeat.i(214259);
     p.h(paramString1, "webCompt");
     p.h(paramString2, "event");
-    this.Ewx.aX(paramString1, paramString2, paramString3);
-    AppMethodBeat.o(214418);
+    this.EOT.aY(paramString1, paramString2, paramString3);
+    AppMethodBeat.o(214259);
   }
   
-  public final void c(final String paramString1, final String paramString2, final LinkedList<bqx> paramLinkedList)
+  public final void c(final String paramString1, final String paramString2, final LinkedList<brr> paramLinkedList)
   {
-    AppMethodBeat.i(214419);
+    AppMethodBeat.i(214260);
     p.h(paramString1, "appId");
     p.h(paramString2, "url");
     p.h(paramLinkedList, "webCompts");
     if (paramLinkedList.isEmpty())
     {
-      paramString1 = c.EuR;
-      ad.w(c.access$getTAG$cp(), "webCompt is null");
-      AppMethodBeat.o(214419);
+      paramString1 = c.ENl;
+      ae.w(c.access$getTAG$cp(), "webCompt is null");
+      AppMethodBeat.o(214260);
       return;
     }
     final r localr = new r();
-    if (this.EwH.isEmpty())
+    if (this.EPd.isEmpty())
     {
       if (((Collection)paramLinkedList).isEmpty()) {
         break label193;
       }
       i = 1;
       if (i != 0) {
-        this.Ewx.EuF.a(b.Eua);
+        this.EOT.EMZ.a(b.EMu);
       }
     }
     final y.a locala = new y.a();
-    locala.MLQ = false;
-    if (this.EwF)
+    locala.NiT = false;
+    if (this.EPb)
     {
-      locala.MLQ = true;
+      locala.NiT = true;
       label128:
-      this.EwG = paramString1;
-      this.EwF = false;
+      this.EPc = paramString1;
+      this.EPb = false;
       if (((Collection)paramLinkedList).isEmpty()) {
         break label255;
       }
@@ -91,21 +91,21 @@ public final class k
     {
       if (i != 0)
       {
-        c.b localb = c.EuR;
-        com.tencent.mm.ad.c.b(c.access$getTAG$cp(), (d.g.a.a)new a(this, paramLinkedList, localr, paramString1, paramString2, locala));
+        c.b localb = c.ENl;
+        com.tencent.mm.ac.c.b(c.access$getTAG$cp(), (d.g.a.a)new a(this, paramLinkedList, localr, paramString1, paramString2, locala));
       }
-      AppMethodBeat.o(214419);
+      AppMethodBeat.o(214260);
       return;
       i = 0;
       break;
-      if ((p.i(this.EwG, paramString1) ^ true))
+      if ((p.i(this.EPc, paramString1) ^ true))
       {
         clear();
-        this.Ewx.eVT();
-        this.Ewx.EuF.EwD.clear();
+        this.EOT.eZF();
+        this.EOT.EMZ.EOZ.clear();
         break label128;
       }
-      this.Ewx.EuF.a(b.Eub);
+      this.EOT.EMZ.a(b.EMv);
       break label128;
     }
   }
@@ -113,10 +113,10 @@ public final class k
   public final void clear()
   {
     AppMethodBeat.i(82969);
-    this.EwG = "";
-    this.EwF = true;
-    this.EwH.clear();
-    this.Ewx.clear();
+    this.EPc = "";
+    this.EPb = true;
+    this.EPd.clear();
+    this.EOT.clear();
     AppMethodBeat.o(82969);
   }
   
@@ -127,19 +127,19 @@ public final class k
     AppMethodBeat.i(82968);
     p.h(paramString1, "webCompt");
     p.h(paramString2, "message");
-    c localc = this.Ewx;
+    c localc = this.EOT;
     p.h(paramString1, "webCompt");
     p.h(paramString2, "message");
-    ad.v(c.TAG, "postToBack " + paramString1 + ' ' + paramString2);
-    paramString1 = localc.aJH(paramString1);
+    ae.v(c.TAG, "postToBack " + paramString1 + ' ' + paramString2);
+    paramString1 = localc.aLd(paramString1);
     if (paramString1 != null) {
       c.c(paramString1, "WeixinWebCompt.onMessage(" + paramString2 + ')');
     }
-    localc.EuF.a(b.Euu);
+    localc.EMZ.a(b.EMO);
     AppMethodBeat.o(82968);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
   static final class a
     extends q
     implements d.g.a.a<z>
@@ -150,17 +150,17 @@ public final class k
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Lcom/tencent/mm/protocal/protobuf/JSAPIWebCompt;", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Lcom/tencent/mm/protocal/protobuf/JSAPIWebCompt;", "invoke"})
   static final class b
     extends q
-    implements d.g.a.b<bqx, String>
+    implements d.g.a.b<brr, String>
   {
-    public static final b EwM;
+    public static final b EPi;
     
     static
     {
       AppMethodBeat.i(82964);
-      EwM = new b();
+      EPi = new b();
       AppMethodBeat.o(82964);
     }
     
@@ -170,7 +170,7 @@ public final class k
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "Landroid/view/View$OnLongClickListener;", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "Landroid/view/View$OnLongClickListener;", "invoke"})
   static final class c
     extends q
     implements d.g.a.a<View.OnLongClickListener>

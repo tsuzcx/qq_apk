@@ -15,7 +15,7 @@ final class LaunchAAByPersonAmountSelectUI$7
   {
     AppMethodBeat.i(63597);
     if (paramInt == 1) {
-      this.iWk.hideTenpayKB();
+      this.iZd.hideTenpayKB();
     }
     AppMethodBeat.o(63597);
   }

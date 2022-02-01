@@ -8,38 +8,39 @@ import android.util.Pair;
 import android.widget.Toast;
 import com.tencent.e.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.k.b;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
-import com.tencent.mm.g.a.om;
-import com.tencent.mm.g.b.a.ec;
-import com.tencent.mm.g.b.a.ek;
+import com.tencent.mm.ah.k.b;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.g.a.on;
+import com.tencent.mm.g.b.a.ee;
+import com.tencent.mm.g.b.a.em;
 import com.tencent.mm.g.c.ei;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.bj;
-import com.tencent.mm.model.cf;
-import com.tencent.mm.model.u;
+import com.tencent.mm.model.bl;
+import com.tencent.mm.model.ch;
+import com.tencent.mm.model.r;
 import com.tencent.mm.model.v;
 import com.tencent.mm.model.w;
+import com.tencent.mm.model.x;
 import com.tencent.mm.plugin.expt.b.b.a;
 import com.tencent.mm.plugin.messenger.foundation.a.l;
-import com.tencent.mm.protocal.protobuf.cif;
-import com.tencent.mm.protocal.protobuf.cig;
-import com.tencent.mm.protocal.protobuf.cih;
+import com.tencent.mm.protocal.protobuf.ciz;
+import com.tencent.mm.protocal.protobuf.cja;
+import com.tencent.mm.protocal.protobuf.cjb;
 import com.tencent.mm.protocal.protobuf.cv;
-import com.tencent.mm.protocal.protobuf.daa;
-import com.tencent.mm.protocal.protobuf.dab;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.ap.a;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.sdk.platformtools.bw;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.al.a;
-import com.tencent.mm.storage.bu;
+import com.tencent.mm.protocal.protobuf.dau;
+import com.tencent.mm.protocal.protobuf.dav;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.aq.a;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.bx;
+import com.tencent.mm.storage.aj;
+import com.tencent.mm.storage.am.a;
+import com.tencent.mm.storage.bv;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -52,118 +53,118 @@ import java.util.Set;
 public final class a
   implements f, com.tencent.mm.plugin.patmsg.a.b
 {
-  private static final int wFn;
-  private static Map<String, Long> wFo;
-  public static final int wFr;
-  private static final int wFs;
-  private Set<Long> wFp;
-  private com.tencent.mm.plugin.patmsg.b.c wFq;
-  public final com.tencent.mm.plugin.messenger.foundation.a.q wFt;
-  private ap wFu;
+  private static final int wUY;
+  private static Map<String, Long> wUZ;
+  public static final int wVc;
+  private static final int wVd;
+  private Set<Long> wVa;
+  private com.tencent.mm.plugin.patmsg.b.c wVb;
+  public final com.tencent.mm.plugin.messenger.foundation.a.q wVe;
+  private aq wVf;
   
   static
   {
-    AppMethodBeat.i(215680);
-    wFn = ((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qIf, 10000);
-    wFo = new HashMap();
-    wFr = ((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qIi, 5000);
-    wFs = ((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qIh, 10000);
-    AppMethodBeat.o(215680);
+    AppMethodBeat.i(220314);
+    wUY = ((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qPM, 10000);
+    wUZ = new HashMap();
+    wVc = ((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qPP, 5000);
+    wVd = ((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qPO, 10000);
+    AppMethodBeat.o(220314);
   }
   
   public a()
   {
-    AppMethodBeat.i(215660);
-    this.wFp = new HashSet();
-    this.wFt = new com.tencent.mm.plugin.messenger.foundation.a.q()
+    AppMethodBeat.i(220294);
+    this.wVa = new HashSet();
+    this.wVe = new com.tencent.mm.plugin.messenger.foundation.a.q()
     {
-      public final void onNewXmlReceived(String paramAnonymousString, final Map<String, String> paramAnonymousMap, final com.tencent.mm.al.e.a paramAnonymousa)
+      public final void onNewXmlReceived(String paramAnonymousString, final Map<String, String> paramAnonymousMap, final com.tencent.mm.ak.e.a paramAnonymousa)
       {
-        AppMethodBeat.i(215656);
+        AppMethodBeat.i(220290);
         if ("pat".equals(paramAnonymousString)) {
-          h.LTJ.f(new Runnable()
+          h.MqF.f(new Runnable()
           {
             public final void run()
             {
-              AppMethodBeat.i(215655);
+              AppMethodBeat.i(220289);
               String str1 = (String)paramAnonymousMap.get(".sysmsg.pat.fromusername");
               String str2 = (String)paramAnonymousMap.get(".sysmsg.pat.chatusername");
               String str3 = (String)paramAnonymousMap.get(".sysmsg.pat.pattedusername");
               String str4 = (String)paramAnonymousMap.get(".sysmsg.pat.template");
-              ad.i("MicroMsg.PatMsgExtension", "fromUser: %s, chatUser: %s, pattedUser: %s, template:%s", new Object[] { str1, str2, str3, str4 });
+              ae.i("MicroMsg.PatMsgExtension", "fromUser: %s, chatUser: %s, pattedUser: %s, template:%s", new Object[] { str1, str2, str3, str4 });
               if (!((PluginPatMsg)g.ad(PluginPatMsg.class)).isPatEnable())
               {
-                AppMethodBeat.o(215655);
+                AppMethodBeat.o(220289);
                 return;
               }
-              if (((l)g.ab(l.class)).dlK().ya(paramAnonymousa.gqE.xbt))
+              if (((l)g.ab(l.class)).doJ().yu(paramAnonymousa.gte.xrk))
               {
-                ad.w("MicroMsg.PatMsgExtension", "ignore insert, msg %d should be deleted!", new Object[] { Long.valueOf(paramAnonymousa.gqE.xbt) });
-                AppMethodBeat.o(215655);
+                ae.w("MicroMsg.PatMsgExtension", "ignore insert, msg %d should be deleted!", new Object[] { Long.valueOf(paramAnonymousa.gte.xrk) });
+                AppMethodBeat.o(220289);
                 return;
               }
-              a.b(str2, str1, str3, str4, paramAnonymousa.gqE.CreateTime, paramAnonymousa.gqE.xbt);
-              AppMethodBeat.o(215655);
+              a.b(str2, str1, str3, str4, paramAnonymousa.gte.CreateTime, paramAnonymousa.gte.xrk);
+              AppMethodBeat.o(220289);
             }
           }, "HandlePatMsg");
         }
-        AppMethodBeat.o(215656);
+        AppMethodBeat.o(220290);
       }
     };
-    this.wFu = new ap(Looper.getMainLooper(), new ap.a()
+    this.wVf = new aq(Looper.getMainLooper(), new aq.a()
     {
       public final boolean handleMessage(Message paramAnonymousMessage)
       {
-        AppMethodBeat.i(215657);
+        AppMethodBeat.i(220291);
         Pair localPair;
         boolean bool;
-        cif localcif;
-        cig localcig;
+        ciz localciz;
+        cja localcja;
         if (paramAnonymousMessage.what == 291)
         {
           localObject = (com.tencent.mm.plugin.patmsg.b.c)paramAnonymousMessage.obj;
-          ad.i("MicroMsg.PatMsgExtension", "send pat msg, msgId:%d, createTime:%d scene:%d, talker:%s, patUser:%s", new Object[] { ((com.tencent.mm.plugin.patmsg.b.c)localObject).wFK.first, ((com.tencent.mm.plugin.patmsg.b.c)localObject).wFK.second, Integer.valueOf(((com.tencent.mm.plugin.patmsg.b.c)localObject).scene), ((com.tencent.mm.plugin.patmsg.b.c)localObject).talker, ((com.tencent.mm.plugin.patmsg.b.c)localObject).wFM });
+          ae.i("MicroMsg.PatMsgExtension", "send pat msg, msgId:%d, createTime:%d scene:%d, talker:%s, patUser:%s", new Object[] { ((com.tencent.mm.plugin.patmsg.b.c)localObject).wVv.first, ((com.tencent.mm.plugin.patmsg.b.c)localObject).wVv.second, Integer.valueOf(((com.tencent.mm.plugin.patmsg.b.c)localObject).scene), ((com.tencent.mm.plugin.patmsg.b.c)localObject).talker, ((com.tencent.mm.plugin.patmsg.b.c)localObject).wVx });
           paramAnonymousMessage = a.this;
           i = ((com.tencent.mm.plugin.patmsg.b.c)localObject).scene;
-          localPair = ((com.tencent.mm.plugin.patmsg.b.c)localObject).wFK;
-          bool = ((com.tencent.mm.plugin.patmsg.b.c)localObject).OdD;
-          ad.i("MicroMsg.PatMsgExtension", "send pat, scene %d, msg (%d,%d)", new Object[] { Integer.valueOf(i), localPair.first, localPair.second });
+          localPair = ((com.tencent.mm.plugin.patmsg.b.c)localObject).wVv;
+          bool = ((com.tencent.mm.plugin.patmsg.b.c)localObject).wVy;
+          ae.i("MicroMsg.PatMsgExtension", "send pat, scene %d, msg (%d,%d)", new Object[] { Integer.valueOf(i), localPair.first, localPair.second });
           if (((PluginPatMsg)g.ad(PluginPatMsg.class)).isPatEnable())
           {
-            localObject = ((l)g.ab(l.class)).dlK().xY(((Long)localPair.first).longValue());
+            localObject = ((l)g.ab(l.class)).doJ().ys(((Long)localPair.first).longValue());
             if (((ei)localObject).field_msgId == ((Long)localPair.first).longValue())
             {
-              localcif = com.tencent.mm.util.e.aXV(((ei)localObject).field_content);
-              localcig = paramAnonymousMessage.a(localcif, ((Long)localPair.second).longValue());
-              if (localcig != null)
+              localciz = com.tencent.mm.util.e.aZx(((ei)localObject).field_content);
+              localcja = paramAnonymousMessage.a(localciz, ((Long)localPair.second).longValue());
+              if (localcja != null)
               {
-                if (paramAnonymousMessage.G(i, localcif.fFR, localcig.Hcd)) {
+                if (paramAnonymousMessage.G(i, localciz.fHV, localcja.HvD)) {
                   break label300;
                 }
-                ad.w("MicroMsg.PatMsgExtension", "cannot pat, scene %d, talker %s, patUser %s", new Object[] { Integer.valueOf(i), localcif.fFR, localcig.Hcd });
+                ae.w("MicroMsg.PatMsgExtension", "cannot pat, scene %d, talker %s, patUser %s", new Object[] { Integer.valueOf(i), localciz.fHV, localcja.HvD });
               }
             }
           }
         }
-        AppMethodBeat.o(215657);
+        AppMethodBeat.o(220291);
         return false;
         label300:
-        Object localObject = new ek();
-        ((ek)localObject).dSg = i;
-        if (w.zk(localcif.fFR)) {
-          ((ek)localObject).nK(localcif.fFR);
+        Object localObject = new em();
+        ((em)localObject).dTw = i;
+        if (x.zU(localciz.fHV)) {
+          ((em)localObject).of(localciz.fHV);
         }
-        ((ek)localObject).ehX = (((Long)localPair.second).longValue() - ((com.tencent.mm.plugin.patmsg.a.b)g.ab(com.tencent.mm.plugin.patmsg.a.b.class)).b(localcif.fFR, localPair));
-        if (a.a(localcif.fFR, localPair))
+        ((em)localObject).ejH = (((Long)localPair.second).longValue() - ((com.tencent.mm.plugin.patmsg.a.b)g.ab(com.tencent.mm.plugin.patmsg.a.b.class)).b(localciz.fHV, localPair));
+        if (a.a(localciz.fHV, localPair))
         {
           i = 1;
           label389:
-          ((ek)localObject).ehZ = i;
-          ((ek)localObject).eia = (paramAnonymousMessage.b(localcif, ((Long)localPair.second).longValue()) + 1);
-          ((ek)localObject).nI(localcig.dyU);
-          ((ek)localObject).nJ(localcig.Hcd);
-          ((ek)localObject).ehx = localcig.createTime;
-          ((ek)localObject).nL(c.auj(localcig.Hcd));
+          ((em)localObject).ejJ = i;
+          ((em)localObject).ejK = (paramAnonymousMessage.b(localciz, ((Long)localPair.second).longValue()) + 1);
+          ((em)localObject).od(localcja.dzZ);
+          ((em)localObject).oe(localcja.HvD);
+          ((em)localObject).ejh = localcja.createTime;
+          ((em)localObject).og(c.avy(localcja.HvD));
           if (!bool) {
             break label520;
           }
@@ -171,33 +172,33 @@ public final class a
         label520:
         for (int i = 1;; i = 0)
         {
-          ((ek)localObject).eib = i;
-          paramAnonymousMessage = new com.tencent.mm.plugin.patmsg.b.b(localPair, localcif.fFR, localcig.Hcd);
-          paramAnonymousMessage.wFL = ((ek)localObject);
-          g.aiU().a(paramAnonymousMessage, 0);
+          ((em)localObject).ejL = i;
+          paramAnonymousMessage = new com.tencent.mm.plugin.patmsg.b.b(localPair, localciz.fHV, localcja.HvD);
+          paramAnonymousMessage.wVw = ((em)localObject);
+          g.ajj().a(paramAnonymousMessage, 0);
           break;
           i = 0;
           break label389;
         }
       }
     });
-    AppMethodBeat.o(215660);
+    AppMethodBeat.o(220294);
   }
   
   private static Pair<Long, Long> a(String paramString1, String paramString2, String paramString3, String paramString4, int paramInt, long paramLong)
   {
-    AppMethodBeat.i(215661);
+    AppMethodBeat.i(220295);
     Object localObject;
     long l;
-    if (!bt.V(new String[] { paramString2, paramString1, paramString3 }))
+    if (!bu.V(new String[] { paramString2, paramString1, paramString3 }))
     {
       localObject = paramString1;
-      if (paramString1.equals(u.aAm())) {
+      if (paramString1.equals(v.aAC())) {
         localObject = paramString2;
       }
-      if ((w.zk((String)localObject)) && (!((l)g.ab(l.class)).dlF().apF((String)localObject)))
+      if ((x.zU((String)localObject)) && (!((l)g.ab(l.class)).doE().aqK((String)localObject)))
       {
-        paramString1 = ((l)g.ab(l.class)).dlK().apX((String)localObject);
+        paramString1 = ((l)g.ab(l.class)).doJ().arc((String)localObject);
         if ((paramString1 != null) && (paramString1.field_msgId > 0L) && (paramString1.getType() == 922746929))
         {
           l = paramInt * 1000L;
@@ -211,552 +212,557 @@ public final class a
     label665:
     for (;;)
     {
-      localObject = new cig();
-      ((cig)localObject).hEb = paramString4;
-      ((cig)localObject).createTime = l;
-      ((cig)localObject).dyU = paramString2;
-      ((cig)localObject).Hcd = paramString3;
-      ((cig)localObject).nxr = paramLong;
-      paramString2 = com.tencent.mm.util.e.aXV(paramString1.field_content);
-      paramString2.vox.add(localObject);
+      localObject = new cja();
+      ((cja)localObject).hGT = paramString4;
+      ((cja)localObject).createTime = l;
+      ((cja)localObject).dzZ = paramString2;
+      ((cja)localObject).HvD = paramString3;
+      ((cja)localObject).nCM = paramLong;
+      paramString2 = com.tencent.mm.util.e.aZx(paramString1.field_content);
+      paramString2.vAC.add(localObject);
       paramString3 = new k.b();
       paramString4 = new com.tencent.mm.plugin.patmsg.a.a();
-      paramString4.wFH = paramString2;
+      paramString4.wVs = paramString2;
       paramString3.a(paramString4);
       paramString3.type = 62;
-      paramString3.title = aj.getContext().getString(2131760809);
-      paramString3.url = aj.getContext().getString(2131760810);
+      paramString3.title = ak.getContext().getString(2131760809);
+      paramString3.url = ak.getContext().getString(2131760810);
       paramString1.setContent(k.b.a(paramString3, "", null));
       paramLong = paramString1.field_msgId;
       if (paramLong != 0L) {
-        ((l)g.ab(l.class)).dlK().a(paramLong, paramString1);
+        ((l)g.ab(l.class)).doJ().a(paramLong, paramString1);
       }
-      ((PluginPatMsg)g.ad(PluginPatMsg.class)).addRecvRecord(paramString1.field_msgSvrId, (cig)localObject);
-      ad.i("MicroMsg.PatMsgExtension", "update pat msg %d, index %d", new Object[] { Long.valueOf(paramLong), Integer.valueOf(paramString2.vox.size() - 1) });
+      ((PluginPatMsg)g.ad(PluginPatMsg.class)).addRecvRecord(paramString1.field_msgSvrId, (cja)localObject);
+      ae.i("MicroMsg.PatMsgExtension", "update pat msg %d, index %d", new Object[] { Long.valueOf(paramLong), Integer.valueOf(paramString2.vAC.size() - 1) });
       paramString1 = Pair.create(Long.valueOf(paramLong), Long.valueOf(l));
-      AppMethodBeat.o(215661);
+      AppMethodBeat.o(220295);
       return paramString1;
-      l = bj.B((String)localObject, paramInt);
-      paramString1 = new bu();
-      cif localcif = new cif();
-      localcif.fFR = ((String)localObject);
-      cig localcig = new cig();
-      localcig.hEb = paramString4;
-      localcig.createTime = l;
-      localcig.dyU = paramString2;
-      localcig.Hcd = paramString3;
-      localcig.nxr = paramLong;
-      localcif.vox.add(localcig);
+      l = bl.B((String)localObject, paramInt);
+      paramString1 = new bv();
+      ciz localciz = new ciz();
+      localciz.fHV = ((String)localObject);
+      cja localcja = new cja();
+      localcja.hGT = paramString4;
+      localcja.createTime = l;
+      localcja.dzZ = paramString2;
+      localcja.HvD = paramString3;
+      localcja.nCM = paramLong;
+      localciz.vAC.add(localcja);
       paramString2 = new k.b();
       paramString3 = new com.tencent.mm.plugin.patmsg.a.a();
-      paramString3.wFH = localcif;
+      paramString3.wVs = localciz;
       paramString2.a(paramString3);
       paramString2.type = 62;
-      paramString2.title = aj.getContext().getString(2131760809);
-      paramString2.url = aj.getContext().getString(2131760810);
+      paramString2.title = ak.getContext().getString(2131760809);
+      paramString2.url = ak.getContext().getString(2131760810);
       paramString1.setContent(k.b.a(paramString2, "", null));
-      paramString1.kr(0);
-      paramString1.tN((String)localObject);
-      paramString1.qz(paramLong);
-      paramString1.qA(l);
+      paramString1.kt(0);
+      paramString1.ui((String)localObject);
+      paramString1.qM(paramLong);
+      paramString1.qN(l);
       paramString1.setType(922746929);
-      ((PluginPatMsg)g.ad(PluginPatMsg.class)).addRecvRecord(paramString1.field_msgSvrId, localcig);
-      paramLong = bj.v(paramString1);
-      ad.i("MicroMsg.PatMsgExtension", "insert pat msg %d %s %s", new Object[] { Long.valueOf(paramLong), Integer.toHexString(paramString1.getType()), Integer.toHexString(922746929) });
+      ((PluginPatMsg)g.ad(PluginPatMsg.class)).addRecvRecord(paramString1.field_msgSvrId, localcja);
+      paramLong = bl.v(paramString1);
+      ae.i("MicroMsg.PatMsgExtension", "insert pat msg %d %s %s", new Object[] { Long.valueOf(paramLong), Integer.toHexString(paramString1.getType()), Integer.toHexString(922746929) });
       paramString1 = Pair.create(Long.valueOf(paramLong), Long.valueOf(l));
-      AppMethodBeat.o(215661);
+      AppMethodBeat.o(220295);
       return paramString1;
       paramString1 = Pair.create(Long.valueOf(0L), Long.valueOf(0L));
-      AppMethodBeat.o(215661);
+      AppMethodBeat.o(220295);
       return paramString1;
     }
   }
   
   static boolean a(String paramString, Pair<Long, Long> paramPair)
   {
-    AppMethodBeat.i(215669);
-    long l = ((l)g.ab(l.class)).dlK().aqp(paramString);
+    AppMethodBeat.i(220303);
+    long l = ((l)g.ab(l.class)).doJ().aru(paramString);
     if (((Long)paramPair.second).longValue() <= l)
     {
-      AppMethodBeat.o(215669);
+      AppMethodBeat.o(220303);
       return true;
     }
-    AppMethodBeat.o(215669);
+    AppMethodBeat.o(220303);
     return false;
   }
   
   public final boolean G(int paramInt, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(215665);
-    if (((paramInt == 3) || (paramInt == 4) || (paramInt == 5)) && (((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qHJ, 0) == 0))
+    AppMethodBeat.i(220299);
+    if (((paramInt == 3) || (paramInt == 4) || (paramInt == 5)) && (((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qPp, 0) == 0))
     {
-      AppMethodBeat.o(215665);
+      AppMethodBeat.o(220299);
       return false;
     }
-    if (((!w.zk(paramString1)) && (!w.zi(paramString1))) || (w.Ak(paramString1)) || (w.Aq(paramString1)) || (w.Ag(paramString1)) || (w.zE(paramString1)))
+    if (((!x.zU(paramString1)) && (!x.zS(paramString1))) || (x.AU(paramString1)) || (x.Ba(paramString1)) || (x.AQ(paramString1)) || (x.Ao(paramString1)))
     {
-      ad.i("MicroMsg.PatMsgExtension", "cannot pat, talker %s", new Object[] { paramString1 });
-      AppMethodBeat.o(215665);
+      ae.i("MicroMsg.PatMsgExtension", "cannot pat, talker %s", new Object[] { paramString1 });
+      AppMethodBeat.o(220299);
       return false;
     }
-    if ((!w.zi(paramString2)) || (w.Ak(paramString2)) || (w.Aq(paramString2)) || (w.Ag(paramString2)) || (w.zE(paramString2)))
+    if ((!x.zS(paramString2)) || (x.AU(paramString2)) || (x.Ba(paramString2)) || (x.AQ(paramString2)) || (x.Ao(paramString2)))
     {
-      ad.i("MicroMsg.PatMsgExtension", "cannot pat, user %s", new Object[] { paramString2 });
-      AppMethodBeat.o(215665);
+      ae.i("MicroMsg.PatMsgExtension", "cannot pat, user %s", new Object[] { paramString2 });
+      AppMethodBeat.o(220299);
       return false;
     }
-    if (w.zk(paramString1))
+    if (x.zU(paramString1))
     {
-      List localList = com.tencent.mm.model.q.yQ(paramString1);
+      List localList = r.zA(paramString1);
       if ((localList != null) && (!localList.contains(paramString2)))
       {
-        ad.w("MicroMsg.PatMsgExtension", "chatroom %s members %s, not contain %s", new Object[] { paramString1, localList, paramString2 });
-        AppMethodBeat.o(215665);
+        ae.w("MicroMsg.PatMsgExtension", "chatroom %s members %s, not contain %s", new Object[] { paramString1, localList, paramString2 });
+        AppMethodBeat.o(220299);
         return false;
       }
     }
-    AppMethodBeat.o(215665);
+    AppMethodBeat.o(220299);
     return true;
   }
   
   public final Pair<Long, Long> H(int paramInt, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(215666);
-    ad.i("MicroMsg.PatMsgExtension", "preSend pat, scene %d, talker %s, user %s", new Object[] { Integer.valueOf(paramInt), paramString1, paramString2 });
-    long l = cf.aCL();
+    AppMethodBeat.i(220300);
+    ae.i("MicroMsg.PatMsgExtension", "preSend pat, scene %d, talker %s, user %s", new Object[] { Integer.valueOf(paramInt), paramString1, paramString2 });
+    long l = ch.aDb();
     if (!((PluginPatMsg)g.ad(PluginPatMsg.class)).isPatEnable())
     {
-      AppMethodBeat.o(215666);
+      AppMethodBeat.o(220300);
       return null;
     }
     if (!G(paramInt, paramString1, paramString2))
     {
-      ad.w("MicroMsg.PatMsgExtension", "cannot pat, scene %d, talker %s, user %s", new Object[] { Integer.valueOf(paramInt), paramString1, paramString2 });
-      AppMethodBeat.o(215666);
+      ae.w("MicroMsg.PatMsgExtension", "cannot pat, scene %d, talker %s, user %s", new Object[] { Integer.valueOf(paramInt), paramString1, paramString2 });
+      AppMethodBeat.o(220300);
       return null;
     }
-    Object localObject2 = u.aAm();
-    Object localObject1 = new ek();
-    ((ek)localObject1).dSg = paramInt;
-    if (w.zk(paramString1)) {
-      ((ek)localObject1).nK(paramString1);
+    Object localObject2 = v.aAC();
+    Object localObject1 = new em();
+    ((em)localObject1).dTw = paramInt;
+    if (x.zU(paramString1)) {
+      ((em)localObject1).of(paramString1);
     }
-    ((ek)localObject1).nI((String)localObject2);
-    ((ek)localObject1).nJ(paramString2);
-    ((ek)localObject1).ehx = l;
-    ((ek)localObject1).nL(c.auj(paramString2));
-    Object localObject3 = ((l)g.ab(l.class)).dlK().apX(paramString1);
+    ((em)localObject1).od((String)localObject2);
+    ((em)localObject1).oe(paramString2);
+    ((em)localObject1).ejh = l;
+    ((em)localObject1).og(c.avy(paramString2));
+    Object localObject3 = ((l)g.ab(l.class)).doJ().arc(paramString1);
     if ((localObject3 != null) && (((ei)localObject3).field_msgId > 0L))
     {
-      if (((bu)localObject3).getType() != 922746929) {
+      if (((bv)localObject3).getType() != 922746929) {
         break label356;
       }
-      localObject3 = com.tencent.mm.util.e.aXV(((ei)localObject3).field_content);
-      if (((cif)localObject3).vox.size() <= 0) {}
+      localObject3 = com.tencent.mm.util.e.aZx(((ei)localObject3).field_content);
+      if (((ciz)localObject3).vAC.size() <= 0) {}
     }
     label356:
-    for (((ek)localObject1).ehX = (l - ((cig)((cif)localObject3).vox.getLast()).createTime); (wFo.containsKey(paramString2)) && (l - ((Long)wFo.get(paramString2)).longValue() < wFn); ((ek)localObject1).ehX = (l - ((ei)localObject3).field_createTime))
+    for (((em)localObject1).ejH = (l - ((cja)((ciz)localObject3).vAC.getLast()).createTime); (wUZ.containsKey(paramString2)) && (l - ((Long)wUZ.get(paramString2)).longValue() < wUY); ((em)localObject1).ejH = (l - ((ei)localObject3).field_createTime))
     {
-      ad.w("MicroMsg.PatMsgExtension", "pat (%s) last time from now < %d", new Object[] { paramString2, Integer.valueOf(wFn) });
-      ((ek)localObject1).ehY = 1;
-      ((ek)localObject1).aLk();
-      paramString1 = com.tencent.mm.util.b.Lgy;
+      ae.w("MicroMsg.PatMsgExtension", "pat (%s) last time from now < %d", new Object[] { paramString2, Integer.valueOf(wUY) });
+      ((em)localObject1).ejI = 1;
+      ((em)localObject1).aLH();
+      paramString1 = com.tencent.mm.util.b.LDa;
       com.tencent.mm.util.b.a((com.tencent.mm.plugin.report.a)localObject1);
-      AppMethodBeat.o(215666);
+      AppMethodBeat.o(220300);
       return null;
     }
-    this.wFq = null;
-    wFo.put(paramString2, Long.valueOf(l));
-    localObject1 = a(paramString1, (String)localObject2, paramString2, aui(paramString2), (int)(l / 1000L), 0L);
+    this.wVb = null;
+    wUZ.put(paramString2, Long.valueOf(l));
+    localObject1 = a(paramString1, (String)localObject2, paramString2, avx(paramString2), (int)(l / 1000L), 0L);
     if (((Long)((Pair)localObject1).first).longValue() > 0L)
     {
       localObject2 = new com.tencent.mm.plugin.patmsg.b.b((Pair)localObject1, paramString1, paramString2, 1);
-      g.aiU().a((n)localObject2, 0);
+      g.ajj().a((n)localObject2, 0);
       localObject2 = new com.tencent.mm.plugin.patmsg.b.c();
       ((com.tencent.mm.plugin.patmsg.b.c)localObject2).scene = paramInt;
       ((com.tencent.mm.plugin.patmsg.b.c)localObject2).talker = paramString1;
-      ((com.tencent.mm.plugin.patmsg.b.c)localObject2).wFM = paramString2;
-      ((com.tencent.mm.plugin.patmsg.b.c)localObject2).wFK = ((Pair)localObject1);
-      this.wFu.sendMessageDelayed(this.wFu.obtainMessage(291, localObject2), wFr);
-      this.wFq = ((com.tencent.mm.plugin.patmsg.b.c)localObject2);
+      ((com.tencent.mm.plugin.patmsg.b.c)localObject2).wVx = paramString2;
+      ((com.tencent.mm.plugin.patmsg.b.c)localObject2).wVv = ((Pair)localObject1);
+      this.wVf.sendMessageDelayed(this.wVf.obtainMessage(291, localObject2), wVc);
+      this.wVb = ((com.tencent.mm.plugin.patmsg.b.c)localObject2);
     }
-    AppMethodBeat.o(215666);
+    AppMethodBeat.o(220300);
     return localObject1;
   }
   
-  public final cig a(cif paramcif, long paramLong)
+  public final cja a(ciz paramciz, long paramLong)
   {
-    AppMethodBeat.i(215667);
-    paramcif = paramcif.vox.iterator();
-    while (paramcif.hasNext())
+    AppMethodBeat.i(220301);
+    paramciz = paramciz.vAC.iterator();
+    while (paramciz.hasNext())
     {
-      cig localcig = (cig)paramcif.next();
-      if (localcig.createTime == paramLong)
+      cja localcja = (cja)paramciz.next();
+      if (localcja.createTime == paramLong)
       {
-        AppMethodBeat.o(215667);
-        return localcig;
+        AppMethodBeat.o(220301);
+        return localcja;
       }
     }
-    AppMethodBeat.o(215667);
+    AppMethodBeat.o(220301);
     return null;
   }
   
-  public final String a(cif paramcif)
+  public final String a(ciz paramciz)
   {
-    AppMethodBeat.i(215662);
+    AppMethodBeat.i(220296);
     k.b localb = new k.b();
     com.tencent.mm.plugin.patmsg.a.a locala = new com.tencent.mm.plugin.patmsg.a.a();
-    locala.wFH = paramcif;
+    locala.wVs = paramciz;
     localb.a(locala);
     localb.type = 62;
-    localb.title = aj.getContext().getString(2131760809);
-    localb.url = aj.getContext().getString(2131760810);
-    paramcif = k.b.a(localb, null, null);
-    AppMethodBeat.o(215662);
-    return paramcif;
+    localb.title = ak.getContext().getString(2131760809);
+    localb.url = ak.getContext().getString(2131760810);
+    paramciz = k.b.a(localb, null, null);
+    AppMethodBeat.o(220296);
+    return paramciz;
   }
   
   public final void a(Pair<Long, Long> paramPair, int paramInt)
   {
-    AppMethodBeat.i(215674);
-    ad.i("MicroMsg.PatMsgExtension", "do revoke local pat msg (%d,%d)", new Object[] { paramPair.first, paramPair.second });
-    Object localObject1 = ((l)g.ab(l.class)).dlK().xY(((Long)paramPair.first).longValue());
+    AppMethodBeat.i(220308);
+    ae.i("MicroMsg.PatMsgExtension", "do revoke local pat msg (%d,%d)", new Object[] { paramPair.first, paramPair.second });
+    Object localObject1 = ((l)g.ab(l.class)).doJ().ys(((Long)paramPair.first).longValue());
     if (((ei)localObject1).field_msgId == ((Long)paramPair.first).longValue())
     {
-      localObject1 = com.tencent.mm.util.e.aXV(((ei)localObject1).field_content);
-      Object localObject2 = a((cif)localObject1, ((Long)paramPair.second).longValue());
+      localObject1 = com.tencent.mm.util.e.aZx(((ei)localObject1).field_content);
+      Object localObject2 = a((ciz)localObject1, ((Long)paramPair.second).longValue());
       if (localObject2 != null)
       {
         Object localObject3;
-        if (((cig)localObject2).nxr == 0L)
+        if (((cja)localObject2).nCM == 0L)
         {
-          if ((this.wFq != null) && (this.wFq.wFK.equals(paramPair)))
+          if ((this.wVb != null) && (this.wVb.wVv.equals(paramPair)))
           {
-            ad.i("MicroMsg.PatMsgExtension", "do revoke unsent pat msg (%d,%d)", new Object[] { paramPair.first, paramPair.second });
-            this.wFu.removeMessages(291, this.wFq);
-            localObject2 = new ek();
-            ((ek)localObject2).dSg = this.wFq.scene;
-            if (w.zk(this.wFq.talker)) {
-              ((ek)localObject2).nK(this.wFq.talker);
+            ae.i("MicroMsg.PatMsgExtension", "do revoke unsent pat msg (%d,%d)", new Object[] { paramPair.first, paramPair.second });
+            this.wVf.removeMessages(291, this.wVb);
+            localObject2 = new em();
+            ((em)localObject2).dTw = this.wVb.scene;
+            if (x.zU(this.wVb.talker)) {
+              ((em)localObject2).of(this.wVb.talker);
             }
-            ((ek)localObject2).ehX = (((Long)paramPair.second).longValue() - ((com.tencent.mm.plugin.patmsg.a.b)g.ab(com.tencent.mm.plugin.patmsg.a.b.class)).b(((cif)localObject1).fFR, paramPair));
+            ((em)localObject2).ejH = (((Long)paramPair.second).longValue() - ((com.tencent.mm.plugin.patmsg.a.b)g.ab(com.tencent.mm.plugin.patmsg.a.b.class)).b(((ciz)localObject1).fHV, paramPair));
             int i;
-            if (a(this.wFq.talker, paramPair))
+            if (a(this.wVb.talker, paramPair))
             {
               i = 1;
-              ((ek)localObject2).ehZ = i;
-              ((ek)localObject2).eia = (b((cif)localObject1, ((Long)paramPair.second).longValue()) + 1);
-              ((ek)localObject2).nI(u.aAm());
-              ((ek)localObject2).nJ(this.wFq.wFM);
-              ((ek)localObject2).ehx = this.wFq.createTime;
-              ((ek)localObject2).nL(c.auj(this.wFq.wFM));
-              ((ek)localObject2).ehE = 1;
-              ((ek)localObject2).ehC = paramInt;
-              if (!this.wFq.OdD) {
+              ((em)localObject2).ejJ = i;
+              ((em)localObject2).ejK = (b((ciz)localObject1, ((Long)paramPair.second).longValue()) + 1);
+              ((em)localObject2).od(v.aAC());
+              ((em)localObject2).oe(this.wVb.wVx);
+              ((em)localObject2).ejh = this.wVb.createTime;
+              ((em)localObject2).og(c.avy(this.wVb.wVx));
+              ((em)localObject2).ejo = 1;
+              ((em)localObject2).ejm = paramInt;
+              if (!this.wVb.wVy) {
                 break label609;
               }
             }
             label609:
             for (paramInt = 1;; paramInt = 0)
             {
-              ((ek)localObject2).eib = paramInt;
-              ((ek)localObject2).aLk();
-              localObject1 = com.tencent.mm.util.b.Lgy;
+              ((em)localObject2).ejL = paramInt;
+              ((em)localObject2).aLH();
+              localObject1 = com.tencent.mm.util.b.LDa;
               com.tencent.mm.util.b.a((com.tencent.mm.plugin.report.a)localObject2);
-              ad.i("MicroMsg.PatMsgExtension", "delete unsent pat msg (%d,%d)", new Object[] { paramPair.first, paramPair.second });
-              localObject1 = ((l)g.ab(l.class)).dlK().xY(((Long)paramPair.first).longValue());
+              ae.i("MicroMsg.PatMsgExtension", "delete unsent pat msg (%d,%d)", new Object[] { paramPair.first, paramPair.second });
+              localObject1 = ((l)g.ab(l.class)).doJ().ys(((Long)paramPair.first).longValue());
               if (((ei)localObject1).field_msgId != ((Long)paramPair.first).longValue()) {
                 break label662;
               }
-              localObject2 = com.tencent.mm.util.e.aXV(((ei)localObject1).field_content);
-              ad.i("MicroMsg.PatMsgExtension", "before delete, pat record list size %d", new Object[] { Integer.valueOf(((cif)localObject2).vox.size()) });
-              localObject3 = a((cif)localObject2, ((Long)paramPair.second).longValue());
+              localObject2 = com.tencent.mm.util.e.aZx(((ei)localObject1).field_content);
+              ae.i("MicroMsg.PatMsgExtension", "before delete, pat record list size %d", new Object[] { Integer.valueOf(((ciz)localObject2).vAC.size()) });
+              localObject3 = a((ciz)localObject2, ((Long)paramPair.second).longValue());
               if (localObject3 == null) {
                 break label662;
               }
-              ((cif)localObject2).vox.remove(localObject3);
-              if (!((cif)localObject2).vox.isEmpty()) {
+              ((ciz)localObject2).vAC.remove(localObject3);
+              if (!((ciz)localObject2).vAC.isEmpty()) {
                 break label614;
               }
-              ((l)g.ab(l.class)).dlK().xZ(((Long)paramPair.first).longValue());
-              AppMethodBeat.o(215674);
+              ((l)g.ab(l.class)).doJ().yt(((Long)paramPair.first).longValue());
+              AppMethodBeat.o(220308);
               return;
               i = 0;
               break;
             }
             label614:
-            ((bu)localObject1).setContent(a((cif)localObject2));
-            ((bu)localObject1).setType(922746929);
-            ((l)g.ab(l.class)).dlK().a(((Long)paramPair.first).longValue(), (bu)localObject1);
+            ((bv)localObject1).setContent(a((ciz)localObject2));
+            ((bv)localObject1).setType(922746929);
+            ((l)g.ab(l.class)).doJ().a(((Long)paramPair.first).longValue(), (bv)localObject1);
             label662:
-            AppMethodBeat.o(215674);
+            AppMethodBeat.o(220308);
           }
         }
         else
         {
-          ad.i("MicroMsg.PatMsgExtension", "do revoke sent pat msg %d, svrId %d", new Object[] { paramPair.first, Long.valueOf(((cig)localObject2).nxr) });
-          localObject3 = new com.tencent.mm.plugin.patmsg.b.a(d(paramPair), ((Long)paramPair.first).longValue(), ((cig)localObject2).nxr, ((cig)localObject2).createTime, ((cif)localObject1).fFR);
-          ec localec = new ec();
-          if ((this.wFq != null) && (this.wFq.wFK.equals(paramPair))) {
-            localec.dSg = this.wFq.scene;
+          ae.i("MicroMsg.PatMsgExtension", "do revoke sent pat msg %d, svrId %d", new Object[] { paramPair.first, Long.valueOf(((cja)localObject2).nCM) });
+          localObject3 = new com.tencent.mm.plugin.patmsg.b.a(d(paramPair), ((Long)paramPair.first).longValue(), ((cja)localObject2).nCM, ((cja)localObject2).createTime, ((ciz)localObject1).fHV);
+          ee localee = new ee();
+          if ((this.wVb != null) && (this.wVb.wVv.equals(paramPair))) {
+            localee.dTw = this.wVb.scene;
           }
-          localec.ehx = ((cig)localObject2).createTime;
-          localec.ehy = System.currentTimeMillis();
-          localec.nq(((cig)localObject2).dyU);
-          localec.nr(((cig)localObject2).Hcd);
-          localec.ns(c.auj(((cig)localObject2).Hcd));
-          if (w.zk(((cif)localObject1).fFR)) {
-            localec.nt(((cif)localObject1).fFR);
+          localee.ejh = ((cja)localObject2).createTime;
+          localee.eji = System.currentTimeMillis();
+          localee.nL(((cja)localObject2).dzZ);
+          localee.nM(((cja)localObject2).HvD);
+          localee.nN(c.avy(((cja)localObject2).HvD));
+          if (x.zU(((ciz)localObject1).fHV)) {
+            localee.nO(((ciz)localObject1).fHV);
           }
-          localec.ehC = paramInt;
-          localec.ehE = 1;
-          ((com.tencent.mm.plugin.patmsg.b.a)localObject3).wFJ = localec;
-          g.aiU().a((n)localObject3, 0);
-          if (g.ajC().ajl().getBoolean(al.a.IJR, true))
+          localee.ejm = paramInt;
+          localee.ejo = 1;
+          ((com.tencent.mm.plugin.patmsg.b.a)localObject3).wVu = localee;
+          g.ajj().a((n)localObject3, 0);
+          if (g.ajR().ajA().getBoolean(am.a.Jey, true))
           {
-            g.ajC().ajl().set(al.a.IJR, Boolean.FALSE);
-            h.LTJ.aR(new Runnable()
+            g.ajR().ajA().set(am.a.Jey, Boolean.FALSE);
+            h.MqF.aO(new Runnable()
             {
               public final void run()
               {
-                AppMethodBeat.i(215659);
-                bu localbu = new bu();
-                localbu.setContent(aj.getContext().getString(2131767133));
-                localbu.setType(10000);
-                localbu.kr(0);
-                localbu.tN(this.wFx.fFR);
-                localbu.qA(System.currentTimeMillis());
-                bj.v(localbu);
-                AppMethodBeat.o(215659);
+                AppMethodBeat.i(220293);
+                bv localbv = new bv();
+                localbv.setContent(ak.getContext().getString(2131767133));
+                localbv.setType(10000);
+                localbv.kt(0);
+                localbv.ui(this.wVi.fHV);
+                localbv.qN(System.currentTimeMillis());
+                bl.v(localbv);
+                AppMethodBeat.o(220293);
               }
             });
           }
         }
       }
     }
-    AppMethodBeat.o(215674);
+    AppMethodBeat.o(220308);
   }
   
-  public final boolean ab(long paramLong1, long paramLong2)
+  public final boolean aa(long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(215672);
-    ad.i("MicroMsg.PatMsgExtension", "delete svr pat msg (%d,%d)", new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2) });
-    bu localbu = ((l)g.ab(l.class)).dlK().xY(paramLong1);
-    cif localcif;
-    cig localcig;
-    if ((localbu.field_msgId == paramLong1) && (paramLong2 != 0L))
+    AppMethodBeat.i(220306);
+    ae.i("MicroMsg.PatMsgExtension", "delete svr pat msg (%d,%d)", new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2) });
+    bv localbv = ((l)g.ab(l.class)).doJ().ys(paramLong1);
+    ciz localciz;
+    cja localcja;
+    if ((localbv.field_msgId == paramLong1) && (paramLong2 != 0L))
     {
-      localcif = com.tencent.mm.util.e.aXV(localbu.field_content);
-      ad.i("MicroMsg.PatMsgExtension", "pat record list size %d", new Object[] { Integer.valueOf(localcif.vox.size()) });
-      Iterator localIterator = localcif.vox.iterator();
+      localciz = com.tencent.mm.util.e.aZx(localbv.field_content);
+      ae.i("MicroMsg.PatMsgExtension", "pat record list size %d", new Object[] { Integer.valueOf(localciz.vAC.size()) });
+      Iterator localIterator = localciz.vAC.iterator();
       do
       {
         if (!localIterator.hasNext()) {
           break;
         }
-        localcig = (cig)localIterator.next();
-      } while (localcig.nxr != paramLong2);
+        localcja = (cja)localIterator.next();
+      } while (localcja.nCM != paramLong2);
     }
     for (;;)
     {
-      if (localcig != null)
+      if (localcja != null)
       {
-        localcif.vox.remove(localcig);
-        if (localcif.vox.isEmpty()) {
-          ((l)g.ab(l.class)).dlK().xZ(paramLong1);
+        localciz.vAC.remove(localcja);
+        if (localciz.vAC.isEmpty()) {
+          ((l)g.ab(l.class)).doJ().yt(paramLong1);
         }
         for (;;)
         {
-          AppMethodBeat.o(215672);
+          AppMethodBeat.o(220306);
           return true;
-          localbu.setContent(a(localcif));
-          localbu.setType(922746929);
-          ((l)g.ab(l.class)).dlK().a(paramLong1, localbu);
+          localbv.setContent(a(localciz));
+          localbv.setType(922746929);
+          ((l)g.ab(l.class)).doJ().a(paramLong1, localbv);
         }
       }
-      AppMethodBeat.o(215672);
+      AppMethodBeat.o(220306);
       return false;
-      localcig = null;
+      localcja = null;
     }
   }
   
-  public final cif auh(String paramString)
+  public final ciz avw(String paramString)
   {
-    AppMethodBeat.i(215663);
-    paramString = com.tencent.mm.util.e.aXV(paramString);
-    AppMethodBeat.o(215663);
+    AppMethodBeat.i(220297);
+    paramString = com.tencent.mm.util.e.aZx(paramString);
+    AppMethodBeat.o(220297);
     return paramString;
   }
   
-  public final String aui(String paramString)
+  public final String avx(String paramString)
   {
-    AppMethodBeat.i(215673);
-    String str = u.aAm();
-    int i = c.auk(paramString);
-    ad.i("MicroMsg.PatMsgExtension", "pattedUser %s, version %d", new Object[] { paramString, Integer.valueOf(i) });
+    AppMethodBeat.i(220307);
+    String str = v.aAC();
+    int i = c.avz(paramString);
+    ae.i("MicroMsg.PatMsgExtension", "pattedUser %s, version %d", new Object[] { paramString, Integer.valueOf(i) });
     if (paramString.equals(str))
     {
-      paramString = (String)g.ajC().ajl().get(al.a.IJN, null);
-      if (bt.isNullOrNil(paramString)) {
-        paramString = aj.getContext().getString(2131766389);
+      paramString = (String)g.ajR().ajA().get(am.a.Jet, null);
+      if (bu.isNullOrNil(paramString)) {
+        paramString = ak.getContext().getString(2131766389);
       }
     }
     for (;;)
     {
-      AppMethodBeat.o(215673);
+      AppMethodBeat.o(220307);
       return paramString;
       if (i == 0)
       {
-        paramString = aj.getContext().getString(2131766969, new Object[] { paramString });
+        paramString = ak.getContext().getString(2131766969, new Object[] { paramString });
       }
       else
       {
-        paramString = aj.getContext().getString(2131767166, new Object[] { paramString });
+        paramString = ak.getContext().getString(2131767166, new Object[] { paramString });
         continue;
-        str = c.auj(paramString);
-        ad.i("MicroMsg.PatMsgExtension", "pattedUser %s, suffix %s", new Object[] { paramString, str });
-        if (bt.isNullOrNil(str)) {
-          paramString = aj.getContext().getString(2131766390) + "\"" + v.zf(paramString) + "\"";
+        str = c.avy(paramString);
+        ae.i("MicroMsg.PatMsgExtension", "pattedUser %s, suffix %s", new Object[] { paramString, str });
+        if (bu.isNullOrNil(str)) {
+          paramString = ak.getContext().getString(2131766390) + "\"" + w.zP(paramString) + "\"";
         } else if (i == 0) {
-          paramString = aj.getContext().getString(2131766970, new Object[] { "\"" + v.zf(paramString) + "\"", str });
+          paramString = ak.getContext().getString(2131766970, new Object[] { "\"" + w.zP(paramString) + "\"", str });
         } else {
-          paramString = aj.getContext().getString(2131767167, new Object[] { "\"" + v.zf(paramString) + "\"", str });
+          paramString = ak.getContext().getString(2131767167, new Object[] { "\"" + w.zP(paramString) + "\"", str });
         }
       }
     }
   }
   
-  public final int b(cif paramcif, long paramLong)
+  public final int b(ciz paramciz, long paramLong)
   {
-    AppMethodBeat.i(215668);
+    AppMethodBeat.i(220302);
     int j = -1;
     int i = 0;
-    while (i < paramcif.vox.size())
+    while (i < paramciz.vAC.size())
     {
-      if (((cig)paramcif.vox.get(i)).createTime == paramLong) {
+      if (((cja)paramciz.vAC.get(i)).createTime == paramLong) {
         j = i;
       }
       i += 1;
     }
-    AppMethodBeat.o(215668);
+    AppMethodBeat.o(220302);
     return j;
   }
   
   public final long b(String paramString, Pair<Long, Long> paramPair)
   {
-    AppMethodBeat.i(215670);
-    paramString = ((l)g.ab(l.class)).dlK().f(paramString, ((Long)paramPair.second).longValue(), 1);
-    if ((!paramString.isEmpty()) && (((bu)paramString.get(0)).field_msgId > 0L))
+    AppMethodBeat.i(220304);
+    paramString = ((l)g.ab(l.class)).doJ().f(paramString, ((Long)paramPair.second).longValue(), 1);
+    if ((!paramString.isEmpty()) && (((bv)paramString.get(0)).field_msgId > 0L))
     {
       long l;
-      if (((bu)paramString.get(0)).getType() == 922746929)
+      if (((bv)paramString.get(0)).getType() == 922746929)
       {
-        cif localcif = com.tencent.mm.util.e.aXV(((bu)paramString.get(0)).field_content);
-        if (((Long)paramPair.first).longValue() == ((bu)paramString.get(0)).field_msgId)
+        ciz localciz = com.tencent.mm.util.e.aZx(((bv)paramString.get(0)).field_content);
+        if (localciz.vAC.size() == 0)
         {
-          int i = b(localcif, ((Long)paramPair.second).longValue());
+          AppMethodBeat.o(220304);
+          return 0L;
+        }
+        if (((Long)paramPair.first).longValue() == ((bv)paramString.get(0)).field_msgId)
+        {
+          int i = b(localciz, ((Long)paramPair.second).longValue());
           if (i > 1)
           {
-            l = ((cig)localcif.vox.get(i - 1)).createTime;
-            AppMethodBeat.o(215670);
+            l = ((cja)localciz.vAC.get(i - 1)).createTime;
+            AppMethodBeat.o(220304);
             return l;
           }
         }
         else
         {
-          l = ((cig)localcif.vox.getLast()).createTime;
-          AppMethodBeat.o(215670);
+          l = ((cja)localciz.vAC.getLast()).createTime;
+          AppMethodBeat.o(220304);
           return l;
         }
       }
       else
       {
-        l = ((bu)paramString.get(0)).field_createTime;
-        AppMethodBeat.o(215670);
+        l = ((bv)paramString.get(0)).field_createTime;
+        AppMethodBeat.o(220304);
         return l;
       }
     }
-    AppMethodBeat.o(215670);
+    AppMethodBeat.o(220304);
     return 0L;
   }
   
-  public final void ba(String paramString, long paramLong)
+  public final void bb(String paramString, long paramLong)
   {
-    AppMethodBeat.i(215675);
-    ad.i("MicroMsg.PatMsgExtension", "do revoke svr pat msg %d from talker %s", new Object[] { Long.valueOf(paramLong), paramString });
-    cih localcih = ((PluginPatMsg)g.ad(PluginPatMsg.class)).getRecvRecord(paramLong);
-    if (localcih != null)
+    AppMethodBeat.i(220309);
+    ae.i("MicroMsg.PatMsgExtension", "do revoke svr pat msg %d from talker %s", new Object[] { Long.valueOf(paramLong), paramString });
+    cjb localcjb = ((PluginPatMsg)g.ad(PluginPatMsg.class)).getRecvRecord(paramLong);
+    if (localcjb != null)
     {
-      long l = localcih.Hcf;
-      paramString = ((l)g.ab(l.class)).dlK().aI(paramString, l);
+      long l = localcjb.HvF;
+      paramString = ((l)g.ab(l.class)).doJ().aJ(paramString, l);
       if (paramString.field_msgSvrId == l)
       {
-        ad.i("MicroMsg.PatMsgExtension", "revoke pat msg %d,%d", new Object[] { Long.valueOf(paramString.field_msgId), Long.valueOf(paramLong) });
-        ab(paramString.field_msgId, paramLong);
+        ae.i("MicroMsg.PatMsgExtension", "revoke pat msg %d,%d", new Object[] { Long.valueOf(paramString.field_msgId), Long.valueOf(paramLong) });
+        aa(paramString.field_msgId, paramLong);
       }
     }
-    AppMethodBeat.o(215675);
+    AppMethodBeat.o(220309);
   }
   
   public final String d(Pair<Long, Long> paramPair)
   {
-    AppMethodBeat.i(215676);
-    paramPair = u.aAm() + "_" + paramPair.first + "_" + paramPair.second;
-    AppMethodBeat.o(215676);
+    AppMethodBeat.i(220310);
+    paramPair = v.aAC() + "_" + paramPair.first + "_" + paramPair.second;
+    AppMethodBeat.o(220310);
     return paramPair;
   }
   
   public final boolean e(Pair<Long, Long> paramPair)
   {
-    AppMethodBeat.i(215677);
-    if ((((PluginPatMsg)g.ad(PluginPatMsg.class)).isRevokePatMsgEnable()) && (this.wFq != null) && (this.wFq.wFK != null) && (this.wFq.wFK.equals(paramPair)) && ((int)(System.currentTimeMillis() - this.wFq.createTime) < wFs))
+    AppMethodBeat.i(220311);
+    if ((((PluginPatMsg)g.ad(PluginPatMsg.class)).isRevokePatMsgEnable()) && (this.wVb != null) && (this.wVb.wVv != null) && (this.wVb.wVv.equals(paramPair)) && ((int)(System.currentTimeMillis() - this.wVb.createTime) < wVd))
     {
-      ad.i("MicroMsg.PatMsgExtension", "try revoke last pat, msgId:%d, createTime:%d, scene:%d, talker:%s, patUser:%s", new Object[] { this.wFq.wFK.first, this.wFq.wFK.second, Integer.valueOf(this.wFq.scene), this.wFq.talker, this.wFq.wFM });
-      paramPair = a(com.tencent.mm.util.e.aXV(((l)g.ab(l.class)).dlK().xY(((Long)this.wFq.wFK.first).longValue()).field_content), ((Long)paramPair.second).longValue());
+      ae.i("MicroMsg.PatMsgExtension", "try revoke last pat, msgId:%d, createTime:%d, scene:%d, talker:%s, patUser:%s", new Object[] { this.wVb.wVv.first, this.wVb.wVv.second, Integer.valueOf(this.wVb.scene), this.wVb.talker, this.wVb.wVx });
+      paramPair = a(com.tencent.mm.util.e.aZx(((l)g.ab(l.class)).doJ().ys(((Long)this.wVb.wVv.first).longValue()).field_content), ((Long)paramPair.second).longValue());
       if (paramPair != null)
       {
-        boolean bool = this.wFq.wFM.equalsIgnoreCase(paramPair.Hcd);
-        AppMethodBeat.o(215677);
+        boolean bool = this.wVb.wVx.equalsIgnoreCase(paramPair.HvD);
+        AppMethodBeat.o(220311);
         return bool;
       }
     }
-    AppMethodBeat.o(215677);
+    AppMethodBeat.o(220311);
     return false;
   }
   
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, final n paramn)
   {
-    AppMethodBeat.i(215671);
-    ad.i("MicroMsg.PatMsgExtension", "errType %d, errCode %d, errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-    paramString = ((com.tencent.mm.plugin.patmsg.b.b)paramn).wFL;
+    AppMethodBeat.i(220305);
+    ae.i("MicroMsg.PatMsgExtension", "errType %d, errCode %d, errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    paramString = ((com.tencent.mm.plugin.patmsg.b.b)paramn).wVw;
     if (paramString != null) {
-      paramString.ehW = paramInt2;
+      paramString.ejG = paramInt2;
     }
-    int i = ((daa)((com.tencent.mm.plugin.patmsg.b.b)paramn).hWL.hNK.hNQ).Scene;
-    ad.i("MicroMsg.PatMsgExtension", "onSceneEnd, pat scene %d", new Object[] { Integer.valueOf(i) });
+    int i = ((dau)((com.tencent.mm.plugin.patmsg.b.b)paramn).hZD.hQD.hQJ).Scene;
+    ae.i("MicroMsg.PatMsgExtension", "onSceneEnd, pat scene %d", new Object[] { Integer.valueOf(i) });
     if ((paramInt1 != 0) || (paramInt2 != 0))
     {
       if (i == 1)
       {
-        AppMethodBeat.o(215671);
+        AppMethodBeat.o(220305);
         return;
       }
-      Toast.makeText(aj.getContext(), aj.getContext().getString(2131755733) + "(" + paramInt1 + "," + paramInt2 + ")", 0).show();
-      paramn = ((daa)((com.tencent.mm.plugin.patmsg.b.b)paramn).hWL.hNK.hNQ).Hqt;
+      Toast.makeText(ak.getContext(), ak.getContext().getString(2131755733) + "(" + paramInt1 + "," + paramInt2 + ")", 0).show();
+      paramn = ((dau)((com.tencent.mm.plugin.patmsg.b.b)paramn).hZD.hQD.hQJ).HJV;
       if ((paramInt2 != -22) && (paramInt2 != -44)) {
-        h.LTJ.aR(new Runnable()
+        h.MqF.aO(new Runnable()
         {
           public final void run()
           {
-            AppMethodBeat.i(215658);
-            bu localbu = new bu();
-            localbu.setContent(aj.getContext().getString(2131766388));
-            localbu.setType(10000);
-            localbu.kr(0);
-            localbu.tN(paramn);
-            localbu.qA(System.currentTimeMillis());
-            ad.i("MicroMsg.PatMsgExtension", "insert pat failed msg %d", new Object[] { Long.valueOf(bj.v(localbu)) });
-            AppMethodBeat.o(215658);
+            AppMethodBeat.i(220292);
+            bv localbv = new bv();
+            localbv.setContent(ak.getContext().getString(2131766388));
+            localbv.setType(10000);
+            localbv.kt(0);
+            localbv.ui(paramn);
+            localbv.qN(System.currentTimeMillis());
+            ae.i("MicroMsg.PatMsgExtension", "insert pat failed msg %d", new Object[] { Long.valueOf(bl.v(localbv)) });
+            AppMethodBeat.o(220292);
           }
         });
       }
@@ -767,123 +773,123 @@ public final class a
     {
       if (paramString != null)
       {
-        paramString.aLk();
-        paramn = com.tencent.mm.util.b.Lgy;
+        paramString.aLH();
+        paramn = com.tencent.mm.util.b.LDa;
         com.tencent.mm.util.b.a(paramString);
       }
-      AppMethodBeat.o(215671);
+      AppMethodBeat.o(220305);
       return;
-      localObject1 = ((com.tencent.mm.plugin.patmsg.b.b)paramn).wFK;
-      str = ((daa)((com.tencent.mm.plugin.patmsg.b.b)paramn).hWL.hNK.hNQ).Hqu;
+      localObject1 = ((com.tencent.mm.plugin.patmsg.b.b)paramn).wVv;
+      str = ((dau)((com.tencent.mm.plugin.patmsg.b.b)paramn).hZD.hQD.hQJ).HJW;
       if (i != 1) {
         break;
       }
-      paramn = bt.nullAsNil(((dab)((com.tencent.mm.plugin.patmsg.b.b)paramn).hWL.hNL.hNQ).GUX);
-    } while (bt.isNullOrNil(str));
-    c.it(str, paramn);
+      paramn = bu.nullAsNil(((dav)((com.tencent.mm.plugin.patmsg.b.b)paramn).hZD.hQE.hQJ).Hoy);
+    } while (bu.isNullOrNil(str));
+    c.iz(str, paramn);
     Object localObject3;
-    cig localcig;
+    cja localcja;
     if (((Long)((Pair)localObject1).first).longValue() > 0L)
     {
-      localObject2 = ((l)g.ab(l.class)).dlK().xY(((Long)((Pair)localObject1).first).longValue());
+      localObject2 = ((l)g.ab(l.class)).doJ().ys(((Long)((Pair)localObject1).first).longValue());
       if (((ei)localObject2).field_msgId == ((Long)((Pair)localObject1).first).longValue())
       {
-        localObject3 = com.tencent.mm.util.e.aXV(((ei)localObject2).field_content);
-        localcig = a((cif)localObject3, ((Long)((Pair)localObject1).second).longValue());
-        if (localcig != null)
+        localObject3 = com.tencent.mm.util.e.aZx(((ei)localObject2).field_content);
+        localcja = a((ciz)localObject3, ((Long)((Pair)localObject1).second).longValue());
+        if (localcja != null)
         {
-          if (!str.equalsIgnoreCase(localcig.Hcd)) {
+          if (!str.equalsIgnoreCase(localcja.HvD)) {
             break label779;
           }
-          localcig.hEb = aui(str);
-          ((bu)localObject2).setContent(a((cif)localObject3));
-          ((bu)localObject2).setType(922746929);
-          ((l)g.ab(l.class)).dlK().a(((Long)((Pair)localObject1).first).longValue(), (bu)localObject2);
-          ad.i("MicroMsg.PatMsgExtension", "update pat msg suffix %d, createTime %d", new Object[] { ((Pair)localObject1).first, ((Pair)localObject1).second });
+          localcja.hGT = avx(str);
+          ((bv)localObject2).setContent(a((ciz)localObject3));
+          ((bv)localObject2).setType(922746929);
+          ((l)g.ab(l.class)).doJ().a(((Long)((Pair)localObject1).first).longValue(), (bv)localObject2);
+          ae.i("MicroMsg.PatMsgExtension", "update pat msg suffix %d, createTime %d", new Object[] { ((Pair)localObject1).first, ((Pair)localObject1).second });
         }
       }
     }
     for (;;)
     {
-      if ((!bt.isNullOrNil(paramn)) && (bt.isNullOrNil((String)g.ajC().ajl().get(al.a.IJN, null))) && (g.ajC().ajl().getBoolean(al.a.IJT, true)))
+      if ((!bu.isNullOrNil(paramn)) && (bu.isNullOrNil((String)g.ajR().ajA().get(am.a.Jet, null))) && (g.ajR().ajA().getBoolean(am.a.JeA, true)))
       {
-        g.ajC().ajl().set(al.a.IJT, Boolean.FALSE);
+        g.ajR().ajA().set(am.a.JeA, Boolean.FALSE);
         localObject1 = ((ei)localObject2).field_talker;
-        localObject2 = String.format(aj.getContext().getResources().getString(2131767111), new Object[] { "<_wc_custom_link_ href='weixin://jump/setpat/'>", "</_wc_custom_link_>" });
-        localObject3 = new bu();
-        ((bu)localObject3).kr(0);
-        ((bu)localObject3).tN((String)localObject1);
-        ((bu)localObject3).setStatus(3);
-        ((bu)localObject3).setContent((String)localObject2);
-        ((bu)localObject3).qA(bj.B((String)localObject1, System.currentTimeMillis() / 1000L));
-        ((bu)localObject3).setType(10000);
-        ((bu)localObject3).setFlag(((ei)localObject3).field_flag);
-        bj.v((bu)localObject3);
-        if (this.wFq != null) {
-          this.wFq.OdD = true;
+        localObject2 = String.format(ak.getContext().getResources().getString(2131767111), new Object[] { "<_wc_custom_link_ href='weixin://jump/setpat/'>", "</_wc_custom_link_>" });
+        localObject3 = new bv();
+        ((bv)localObject3).kt(0);
+        ((bv)localObject3).ui((String)localObject1);
+        ((bv)localObject3).setStatus(3);
+        ((bv)localObject3).setContent((String)localObject2);
+        ((bv)localObject3).qN(bl.B((String)localObject1, System.currentTimeMillis() / 1000L));
+        ((bv)localObject3).setType(10000);
+        ((bv)localObject3).setFlag(((ei)localObject3).field_flag);
+        bl.v((bv)localObject3);
+        if (this.wVb != null) {
+          this.wVb.wVy = true;
         }
       }
-      localObject1 = new om();
-      ((om)localObject1).dCq.dCr = str;
-      ((om)localObject1).dCq.dCs = paramn;
-      ((om)localObject1).dCq.dCt = i;
-      com.tencent.mm.sdk.b.a.IbL.l((com.tencent.mm.sdk.b.b)localObject1);
+      localObject1 = new on();
+      ((on)localObject1).dDv.dDw = str;
+      ((on)localObject1).dDv.dDx = paramn;
+      ((on)localObject1).dDv.dDy = i;
+      com.tencent.mm.sdk.b.a.IvT.l((com.tencent.mm.sdk.b.b)localObject1);
       break;
       label779:
-      ad.w("MicroMsg.PatMsgExtension", "update pat msg suffix %d, pattedUser (%s,%s) not match", new Object[] { ((Pair)localObject1).first, str, localcig.Hcd });
+      ae.w("MicroMsg.PatMsgExtension", "update pat msg suffix %d, pattedUser (%s,%s) not match", new Object[] { ((Pair)localObject1).first, str, localcja.HvD });
     }
-    Object localObject2 = bw.M(((dab)((com.tencent.mm.plugin.patmsg.b.b)paramn).hWL.hNL.hNQ).Hqv, "sysmsg");
+    Object localObject2 = bx.M(((dav)((com.tencent.mm.plugin.patmsg.b.b)paramn).hZD.hQE.hQJ).HJX, "sysmsg");
     if (localObject2 != null) {}
-    for (paramInt1 = bt.aRe((String)((Map)localObject2).get(".sysmsg.pat.patsuffixversion"));; paramInt1 = 0)
+    for (paramInt1 = bu.aSB((String)((Map)localObject2).get(".sysmsg.pat.patsuffixversion"));; paramInt1 = 0)
     {
-      c.eC(str, paramInt1);
-      long l = ((dab)((com.tencent.mm.plugin.patmsg.b.b)paramn).hWL.hNL.hNQ).FAf;
+      c.eK(str, paramInt1);
+      long l = ((dav)((com.tencent.mm.plugin.patmsg.b.b)paramn).hZD.hQE.hQJ).FSD;
       if ((l == 0L) || (((Long)((Pair)localObject1).first).longValue() <= 0L)) {
         break;
       }
-      paramn = ((l)g.ab(l.class)).dlK().xY(((Long)((Pair)localObject1).first).longValue());
-      ad.i("MicroMsg.PatMsgExtension", "update pat msg %d, svrId %d", new Object[] { ((Pair)localObject1).first, Long.valueOf(l) });
+      paramn = ((l)g.ab(l.class)).doJ().ys(((Long)((Pair)localObject1).first).longValue());
+      ae.i("MicroMsg.PatMsgExtension", "update pat msg %d, svrId %d", new Object[] { ((Pair)localObject1).first, Long.valueOf(l) });
       if (paramn.field_msgId != ((Long)((Pair)localObject1).first).longValue()) {
         break;
       }
-      localObject2 = com.tencent.mm.util.e.aXV(paramn.field_content);
-      localObject3 = a((cif)localObject2, ((Long)((Pair)localObject1).second).longValue());
+      localObject2 = com.tencent.mm.util.e.aZx(paramn.field_content);
+      localObject3 = a((ciz)localObject2, ((Long)((Pair)localObject1).second).longValue());
       if (localObject3 == null) {
         break;
       }
-      if (str.equalsIgnoreCase(((cig)localObject3).Hcd))
+      if (str.equalsIgnoreCase(((cja)localObject3).HvD))
       {
-        ((cig)localObject3).nxr = l;
+        ((cja)localObject3).nCM = l;
         if (paramn.field_msgSvrId == 0L) {
-          paramn.qz(l);
+          paramn.qM(l);
         }
-        paramn.setContent(a((cif)localObject2));
+        paramn.setContent(a((ciz)localObject2));
         paramn.setType(922746929);
-        ((l)g.ab(l.class)).dlK().a(((Long)((Pair)localObject1).first).longValue(), paramn);
-        ad.i("MicroMsg.PatMsgExtension", "update pat msg svrId %d, createTime %d", new Object[] { ((Pair)localObject1).first, ((Pair)localObject1).second });
+        ((l)g.ab(l.class)).doJ().a(((Long)((Pair)localObject1).first).longValue(), paramn);
+        ae.i("MicroMsg.PatMsgExtension", "update pat msg svrId %d, createTime %d", new Object[] { ((Pair)localObject1).first, ((Pair)localObject1).second });
         break;
       }
-      ad.w("MicroMsg.PatMsgExtension", "update pat msg svrId %d, pattedUser (%s,%s) not match", new Object[] { ((Pair)localObject1).first, str, ((cig)localObject3).Hcd });
+      ae.w("MicroMsg.PatMsgExtension", "update pat msg svrId %d, pattedUser (%s,%s) not match", new Object[] { ((Pair)localObject1).first, str, ((cja)localObject3).HvD });
       break;
     }
   }
   
-  public final boolean yr(long paramLong)
+  public final boolean yL(long paramLong)
   {
-    AppMethodBeat.i(215664);
-    if (this.wFp.contains(Long.valueOf(paramLong)))
+    AppMethodBeat.i(220298);
+    if (this.wVa.contains(Long.valueOf(paramLong)))
     {
-      AppMethodBeat.o(215664);
+      AppMethodBeat.o(220298);
       return true;
     }
-    Object localObject = ((l)g.ab(l.class)).dlK().xY(paramLong);
+    Object localObject = ((l)g.ab(l.class)).doJ().ys(paramLong);
     if (((ei)localObject).field_msgId > 0L)
     {
-      localObject = com.tencent.mm.util.e.aXV(((ei)localObject).field_content).vox.iterator();
+      localObject = com.tencent.mm.util.e.aZx(((ei)localObject).field_content).vAC.iterator();
       int i = 1;
       if (((Iterator)localObject).hasNext())
       {
-        if (((cig)((Iterator)localObject).next()).Hce == 1) {}
+        if (((cja)((Iterator)localObject).next()).HvE == 1) {}
         for (int j = 1;; j = 0)
         {
           i = j & i;
@@ -892,62 +898,62 @@ public final class a
       }
       if (i != 0)
       {
-        this.wFp.add(Long.valueOf(paramLong));
-        AppMethodBeat.o(215664);
+        this.wVa.add(Long.valueOf(paramLong));
+        AppMethodBeat.o(220298);
         return true;
       }
     }
-    AppMethodBeat.o(215664);
+    AppMethodBeat.o(220298);
     return false;
   }
   
-  public final List<bu> ys(long paramLong)
+  public final List<bv> yM(long paramLong)
   {
-    AppMethodBeat.i(215678);
-    Object localObject1 = ((l)g.ab(l.class)).dlK().xY(paramLong);
-    if (((bu)localObject1).getType() == 922746929)
+    AppMethodBeat.i(220312);
+    Object localObject1 = ((l)g.ab(l.class)).doJ().ys(paramLong);
+    if (((bv)localObject1).getType() == 922746929)
     {
       ArrayList localArrayList = new ArrayList();
-      localObject1 = com.tencent.mm.util.e.aXV(((ei)localObject1).field_content);
-      if (((cif)localObject1).vox == null) {}
-      for (int i = 0;; i = ((cif)localObject1).vox.size())
+      localObject1 = com.tencent.mm.util.e.aZx(((ei)localObject1).field_content);
+      if (((ciz)localObject1).vAC == null) {}
+      for (int i = 0;; i = ((ciz)localObject1).vAC.size())
       {
-        ad.i("MicroMsg.PatMsgExtension", "split pat msg [%d] to %d child msg", new Object[] { Long.valueOf(paramLong), Integer.valueOf(i) });
-        Iterator localIterator = ((cif)localObject1).vox.iterator();
+        ae.i("MicroMsg.PatMsgExtension", "split pat msg [%d] to %d child msg", new Object[] { Long.valueOf(paramLong), Integer.valueOf(i) });
+        Iterator localIterator = ((ciz)localObject1).vAC.iterator();
         while (localIterator.hasNext())
         {
-          cig localcig = (cig)localIterator.next();
-          bu localbu = new bu();
-          cif localcif = new cif();
-          localcif.fFR = ((cif)localObject1).fFR;
+          cja localcja = (cja)localIterator.next();
+          bv localbv = new bv();
+          ciz localciz = new ciz();
+          localciz.fHV = ((ciz)localObject1).fHV;
           Object localObject2 = new com.tencent.mm.util.e.a();
-          ((com.tencent.mm.util.e.a)localObject2).hEb = localcig.hEb;
-          ((com.tencent.mm.util.e.a)localObject2).LgL = localcig.hEb;
-          ((com.tencent.mm.util.e.a)localObject2).createTime = localcig.createTime;
-          ((com.tencent.mm.util.e.a)localObject2).dyU = localcig.dyU;
-          ((com.tencent.mm.util.e.a)localObject2).Hcd = localcig.Hcd;
-          ((com.tencent.mm.util.e.a)localObject2).nxr = localcig.nxr;
-          localcif.vox.add(localObject2);
+          ((com.tencent.mm.util.e.a)localObject2).hGT = localcja.hGT;
+          ((com.tencent.mm.util.e.a)localObject2).LDn = localcja.hGT;
+          ((com.tencent.mm.util.e.a)localObject2).createTime = localcja.createTime;
+          ((com.tencent.mm.util.e.a)localObject2).dzZ = localcja.dzZ;
+          ((com.tencent.mm.util.e.a)localObject2).HvD = localcja.HvD;
+          ((com.tencent.mm.util.e.a)localObject2).nCM = localcja.nCM;
+          localciz.vAC.add(localObject2);
           localObject2 = new k.b();
           com.tencent.mm.plugin.patmsg.a.a locala = new com.tencent.mm.plugin.patmsg.a.a();
-          locala.wFH = localcif;
+          locala.wVs = localciz;
           ((k.b)localObject2).a(locala);
           ((k.b)localObject2).type = 62;
-          ((k.b)localObject2).title = aj.getContext().getString(2131760809);
-          ((k.b)localObject2).url = aj.getContext().getString(2131760810);
-          localbu.setContent(k.b.a((k.b)localObject2, "", null));
-          localbu.setType(922746929);
-          localbu.kr(0);
-          localbu.tN(((cif)localObject1).fFR);
-          localbu.qz(localcig.nxr);
-          localbu.qA(localcig.createTime);
-          localArrayList.add(localbu);
+          ((k.b)localObject2).title = ak.getContext().getString(2131760809);
+          ((k.b)localObject2).url = ak.getContext().getString(2131760810);
+          localbv.setContent(k.b.a((k.b)localObject2, "", null));
+          localbv.setType(922746929);
+          localbv.kt(0);
+          localbv.ui(((ciz)localObject1).fHV);
+          localbv.qM(localcja.nCM);
+          localbv.qN(localcja.createTime);
+          localArrayList.add(localbv);
         }
       }
-      AppMethodBeat.o(215678);
+      AppMethodBeat.o(220312);
       return localArrayList;
     }
-    AppMethodBeat.o(215678);
+    AppMethodBeat.o(220312);
     return null;
   }
 }

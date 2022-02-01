@@ -12,8 +12,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class EnterpriseFullHeightListView
   extends ListView
 {
-  public boolean KvL = true;
-  private View KvM;
+  public boolean KSf = true;
+  private View KSg;
   private int kl = 0;
   
   public EnterpriseFullHeightListView(Context paramContext, AttributeSet paramAttributeSet)
@@ -31,14 +31,14 @@ public class EnterpriseFullHeightListView
     int i = 0;
     AppMethodBeat.i(38588);
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    if (this.KvL)
+    if (this.KSf)
     {
       AppMethodBeat.o(38588);
       return;
     }
     try
     {
-      if (this.KvL) {
+      if (this.KSf) {
         break label266;
       }
       int j = getHeaderViewsCount();
@@ -46,7 +46,7 @@ public class EnterpriseFullHeightListView
       paramInt4 = i;
       paramInt1 = k;
       paramInt3 = j;
-      if (this.KvM != null)
+      if (this.KSg != null)
       {
         paramInt1 = k - 1;
         paramInt3 = j;
@@ -74,10 +74,10 @@ public class EnterpriseFullHeightListView
         if (i <= paramInt2) {
           break label193;
         }
-        if (this.KvM != null)
+        if (this.KSg != null)
         {
-          removeFooterView(this.KvM);
-          this.KvM = null;
+          removeFooterView(this.KSg);
+          this.KSg = null;
         }
         AppMethodBeat.o(38588);
         return;
@@ -91,12 +91,12 @@ public class EnterpriseFullHeightListView
       return;
     }
     label193:
-    if (this.KvM == null) {
-      this.KvM = new View(getContext());
+    if (this.KSg == null) {
+      this.KSg = new View(getContext());
     }
-    removeFooterView(this.KvM);
-    this.KvM.setLayoutParams(new AbsListView.LayoutParams(-1, paramInt2 - paramInt4));
-    addFooterView(this.KvM, null, false);
+    removeFooterView(this.KSg);
+    this.KSg.setLayoutParams(new AbsListView.LayoutParams(-1, paramInt2 - paramInt4));
+    addFooterView(this.KSg, null, false);
     label266:
     AppMethodBeat.o(38588);
   }

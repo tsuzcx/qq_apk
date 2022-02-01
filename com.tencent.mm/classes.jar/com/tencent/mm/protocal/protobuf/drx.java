@@ -1,75 +1,97 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import f.a.a.b;
 import java.util.LinkedList;
 
 public final class drx
-  extends cvc
+  extends cvw
 {
-  public int FKM;
-  public int HEU;
-  public int HEV;
-  public int HEW;
-  public int reason;
-  public int scene;
-  public String session_id;
-  public String username;
+  public int HYz;
+  public String devicetype;
+  public String fhy;
+  public String wNY;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(123664);
+    AppMethodBeat.i(32477);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
+      if (this.devicetype == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: devicetype");
+        AppMethodBeat.o(32477);
+        throw paramVarArgs;
+      }
+      if (this.wNY == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: deviceid");
+        AppMethodBeat.o(32477);
+        throw paramVarArgs;
+      }
       if (this.BaseRequest != null)
       {
-        paramVarArgs.lC(1, this.BaseRequest.computeSize());
+        paramVarArgs.lJ(1, this.BaseRequest.computeSize());
         this.BaseRequest.writeFields(paramVarArgs);
       }
-      paramVarArgs.aS(2, this.scene);
-      paramVarArgs.aS(3, this.HEU);
-      paramVarArgs.aS(4, this.FKM);
-      paramVarArgs.aS(5, this.HEV);
-      paramVarArgs.aS(6, this.HEW);
-      if (this.username != null) {
-        paramVarArgs.d(7, this.username);
+      if (this.devicetype != null) {
+        paramVarArgs.d(2, this.devicetype);
       }
-      paramVarArgs.aS(8, this.reason);
-      if (this.session_id != null) {
-        paramVarArgs.d(9, this.session_id);
+      if (this.wNY != null) {
+        paramVarArgs.d(3, this.wNY);
       }
-      AppMethodBeat.o(123664);
+      if (this.fhy != null) {
+        paramVarArgs.d(4, this.fhy);
+      }
+      paramVarArgs.aS(5, this.HYz);
+      AppMethodBeat.o(32477);
       return 0;
     }
     if (paramInt == 1) {
       if (this.BaseRequest == null) {
-        break label694;
+        break label645;
       }
     }
-    label694:
-    for (paramInt = f.a.a.a.lB(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
+    label645:
+    for (int i = f.a.a.a.lI(1, this.BaseRequest.computeSize()) + 0;; i = 0)
     {
-      int i = paramInt + f.a.a.b.b.a.bz(2, this.scene) + f.a.a.b.b.a.bz(3, this.HEU) + f.a.a.b.b.a.bz(4, this.FKM) + f.a.a.b.b.a.bz(5, this.HEV) + f.a.a.b.b.a.bz(6, this.HEW);
       paramInt = i;
-      if (this.username != null) {
-        paramInt = i + f.a.a.b.b.a.e(7, this.username);
+      if (this.devicetype != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.devicetype);
       }
-      i = paramInt + f.a.a.b.b.a.bz(8, this.reason);
+      i = paramInt;
+      if (this.wNY != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.wNY);
+      }
       paramInt = i;
-      if (this.session_id != null) {
-        paramInt = i + f.a.a.b.b.a.e(9, this.session_id);
+      if (this.fhy != null) {
+        paramInt = i + f.a.a.b.b.a.e(4, this.fhy);
       }
-      AppMethodBeat.o(123664);
-      return paramInt;
+      i = f.a.a.b.b.a.bz(5, this.HYz);
+      AppMethodBeat.o(32477);
+      return paramInt + i;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = cvc.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cvc.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = cvw.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cvw.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
-        AppMethodBeat.o(123664);
+        if (this.devicetype == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: devicetype");
+          AppMethodBeat.o(32477);
+          throw paramVarArgs;
+        }
+        if (this.wNY == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: deviceid");
+          AppMethodBeat.o(32477);
+          throw paramVarArgs;
+        }
+        AppMethodBeat.o(32477);
         return 0;
       }
       if (paramInt == 3)
@@ -80,10 +102,10 @@ public final class drx
         switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(123664);
+          AppMethodBeat.o(32477);
           return -1;
         case 1: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
+          paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
@@ -91,46 +113,30 @@ public final class drx
             Object localObject2 = (byte[])paramVarArgs.get(paramInt);
             localObject1 = new jc();
             localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((jc)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, cvc.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            for (boolean bool = true; bool; bool = ((jc)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cvw.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
             localdrx.BaseRequest = ((jc)localObject1);
             paramInt += 1;
           }
-          AppMethodBeat.o(123664);
+          AppMethodBeat.o(32477);
           return 0;
         case 2: 
-          localdrx.scene = ((f.a.a.a.a)localObject1).NPN.zc();
-          AppMethodBeat.o(123664);
+          localdrx.devicetype = ((f.a.a.a.a)localObject1).OmT.readString();
+          AppMethodBeat.o(32477);
           return 0;
         case 3: 
-          localdrx.HEU = ((f.a.a.a.a)localObject1).NPN.zc();
-          AppMethodBeat.o(123664);
+          localdrx.wNY = ((f.a.a.a.a)localObject1).OmT.readString();
+          AppMethodBeat.o(32477);
           return 0;
         case 4: 
-          localdrx.FKM = ((f.a.a.a.a)localObject1).NPN.zc();
-          AppMethodBeat.o(123664);
-          return 0;
-        case 5: 
-          localdrx.HEV = ((f.a.a.a.a)localObject1).NPN.zc();
-          AppMethodBeat.o(123664);
-          return 0;
-        case 6: 
-          localdrx.HEW = ((f.a.a.a.a)localObject1).NPN.zc();
-          AppMethodBeat.o(123664);
-          return 0;
-        case 7: 
-          localdrx.username = ((f.a.a.a.a)localObject1).NPN.readString();
-          AppMethodBeat.o(123664);
-          return 0;
-        case 8: 
-          localdrx.reason = ((f.a.a.a.a)localObject1).NPN.zc();
-          AppMethodBeat.o(123664);
+          localdrx.fhy = ((f.a.a.a.a)localObject1).OmT.readString();
+          AppMethodBeat.o(32477);
           return 0;
         }
-        localdrx.session_id = ((f.a.a.a.a)localObject1).NPN.readString();
-        AppMethodBeat.o(123664);
+        localdrx.HYz = ((f.a.a.a.a)localObject1).OmT.zc();
+        AppMethodBeat.o(32477);
         return 0;
       }
-      AppMethodBeat.o(123664);
+      AppMethodBeat.o(32477);
       return -1;
     }
   }

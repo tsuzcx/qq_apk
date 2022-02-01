@@ -15,34 +15,34 @@ public class TimePrinter
   
   static
   {
-    AppMethodBeat.i(218735);
+    AppMethodBeat.i(215375);
     printerMap = new HashMap();
     constMap = new HashMap();
-    AppMethodBeat.o(218735);
+    AppMethodBeat.o(215375);
   }
   
   public TimePrinter(String paramString)
   {
-    AppMethodBeat.i(218731);
+    AppMethodBeat.i(215371);
     this.TAG = "TimeDebug";
     this.TAG = (this.TAG + "-" + paramString);
-    AppMethodBeat.o(218731);
+    AppMethodBeat.o(215371);
   }
   
   public TimePrinter(String paramString, long paramLong)
   {
-    AppMethodBeat.i(218732);
+    AppMethodBeat.i(215372);
     this.TAG = "TimeDebug";
     this.TAG = (this.TAG + "-" + paramString);
     this.currentTimeUs = paramLong;
-    AppMethodBeat.o(218732);
+    AppMethodBeat.o(215372);
   }
   
   public static void print(String paramString, CMTime paramCMTime)
   {
     try
     {
-      AppMethodBeat.i(218729);
+      AppMethodBeat.i(215369);
       TimePrinter localTimePrinter2 = (TimePrinter)printerMap.get(paramString);
       TimePrinter localTimePrinter1 = localTimePrinter2;
       if (localTimePrinter2 == null)
@@ -51,7 +51,7 @@ public class TimePrinter
         printerMap.put(paramString, localTimePrinter1);
       }
       localTimePrinter1.print(paramCMTime);
-      AppMethodBeat.o(218729);
+      AppMethodBeat.o(215369);
       return;
     }
     finally {}
@@ -115,24 +115,24 @@ public class TimePrinter
   
   public void print(CMTime paramCMTime)
   {
-    AppMethodBeat.i(218733);
+    AppMethodBeat.i(215373);
     if (this.currentSyncTime == null)
     {
       this.currentSyncTime = paramCMTime;
-      AppMethodBeat.o(218733);
+      AppMethodBeat.o(215373);
       return;
     }
     new StringBuilder("print: timeSub = ").append(paramCMTime.sub(this.currentSyncTime).getTimeUs());
     this.currentSyncTime = paramCMTime;
-    AppMethodBeat.o(218733);
+    AppMethodBeat.o(215373);
   }
   
   public void printCons()
   {
-    AppMethodBeat.i(218734);
+    AppMethodBeat.i(215374);
     long l = System.nanoTime() / 1000L;
     new StringBuilder("printConst: const = ").append(l - this.currentTimeUs);
-    AppMethodBeat.o(218734);
+    AppMethodBeat.o(215374);
   }
 }
 

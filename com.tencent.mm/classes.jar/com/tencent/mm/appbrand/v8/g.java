@@ -5,35 +5,36 @@ import android.os.Looper;
 import android.os.Message;
 import com.eclipsesource.v8.V8ScriptException;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.concurrent.BlockingDeque;
 
 public final class g
   implements c
 {
-  private c.a cXR;
-  private final a cXS;
-  k cXT;
+  private c.a cYP;
+  private final a cYQ;
+  k cYR;
   private final Looper mLooper;
   
   g(Looper paramLooper)
   {
     AppMethodBeat.i(144002);
-    this.cXR = null;
-    this.cXT = new k();
+    this.cYP = null;
+    this.cYR = new k();
     this.mLooper = paramLooper;
-    this.cXS = new a(paramLooper);
+    this.cYQ = new a(paramLooper);
     AppMethodBeat.o(144002);
   }
   
-  public final String Cu()
+  public final String Cx()
   {
     AppMethodBeat.i(185101);
-    String str = (String)this.cXT.cYj.peek();
+    String str = (String)this.cYR.cZh.peek();
     AppMethodBeat.o(185101);
     return str;
   }
   
-  public final boolean Np()
+  public final boolean Nk()
   {
     AppMethodBeat.i(144004);
     if (this.mLooper.getThread().getId() == Thread.currentThread().getId())
@@ -47,28 +48,66 @@ public final class g
   
   public final void a(c.a parama)
   {
-    this.cXR = parama;
+    this.cYP = parama;
   }
   
   public final void b(Runnable paramRunnable, long paramLong, boolean paramBoolean)
   {
-    AppMethodBeat.i(198679);
-    this.cXS.post(paramRunnable);
-    AppMethodBeat.o(198679);
+    AppMethodBeat.i(194156);
+    this.cYQ.post(paramRunnable);
+    AppMethodBeat.o(194156);
   }
   
   final void c(V8ScriptException paramV8ScriptException)
   {
     AppMethodBeat.i(144008);
-    if (this.cXR != null) {
-      this.cXR.b(paramV8ScriptException);
+    if (this.cYP != null) {
+      this.cYP.b(paramV8ScriptException);
     }
     AppMethodBeat.o(144008);
   }
   
+  public final void c(Runnable paramRunnable, boolean paramBoolean)
+  {
+    AppMethodBeat.i(194155);
+    if (paramRunnable == null)
+    {
+      AppMethodBeat.o(194155);
+      return;
+    }
+    if (Thread.currentThread().getId() == this.mLooper.getThread().getId()) {
+      try
+      {
+        paramRunnable.run();
+        if (this.cYR.enable) {
+          this.cYR.cZh.remove(null);
+        }
+        AppMethodBeat.o(194155);
+        return;
+      }
+      catch (V8ScriptException paramRunnable)
+      {
+        for (;;)
+        {
+          c(paramRunnable);
+        }
+      }
+    }
+    this.cYQ.post(paramRunnable);
+    AppMethodBeat.o(194155);
+  }
+  
   public final void cj(boolean paramBoolean)
   {
-    this.cXT.enable = paramBoolean;
+    this.cYR.enable = paramBoolean;
+  }
+  
+  public final boolean doInnerLoopTask()
+  {
+    AppMethodBeat.i(194158);
+    ae.e("doInnerLoopTask", "should not to be here");
+    AppMethodBeat.o(194158);
+    return true;
   }
   
   public final void loop()
@@ -89,34 +128,11 @@ public final class g
   
   public final void resume() {}
   
-  public final void u(Runnable paramRunnable)
+  public final void resumeLoopTasks()
   {
-    AppMethodBeat.i(198678);
-    if (paramRunnable == null)
-    {
-      AppMethodBeat.o(198678);
-      return;
-    }
-    if (Thread.currentThread().getId() == this.mLooper.getThread().getId()) {
-      try
-      {
-        paramRunnable.run();
-        if (this.cXT.enable) {
-          this.cXT.cYj.remove(null);
-        }
-        AppMethodBeat.o(198678);
-        return;
-      }
-      catch (V8ScriptException paramRunnable)
-      {
-        for (;;)
-        {
-          c(paramRunnable);
-        }
-      }
-    }
-    this.cXS.post(paramRunnable);
-    AppMethodBeat.o(198678);
+    AppMethodBeat.i(194157);
+    ae.e("resumeLoopTasks", "should not to be here");
+    AppMethodBeat.o(194157);
   }
   
   final class a
@@ -133,8 +149,8 @@ public final class g
       try
       {
         super.dispatchMessage(paramMessage);
-        if (g.this.cXT.enable) {
-          g.this.cXT.cYj.pollFirst();
+        if (g.this.cYR.enable) {
+          g.this.cYR.cZh.pollFirst();
         }
         AppMethodBeat.o(144001);
         return;
@@ -151,7 +167,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.appbrand.v8.g
  * JD-Core Version:    0.7.0.1
  */

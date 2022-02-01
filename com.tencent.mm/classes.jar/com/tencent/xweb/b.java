@@ -16,16 +16,16 @@ import org.xwalk.core.XWalkEnvironment;
 public final class b
   extends a
 {
-  static b Mpa;
+  static b MLW;
   
   public static void a(com.tencent.xweb.internal.a.a[] paramArrayOfa, String paramString)
   {
     AppMethodBeat.i(156711);
-    gar().b(paramArrayOfa, paramString, false);
+    geT().b(paramArrayOfa, paramString, false);
     AppMethodBeat.o(156711);
   }
   
-  public static String baB(String paramString)
+  public static String bce(String paramString)
   {
     AppMethodBeat.i(156713);
     String str2 = WebView.getCurStrModule();
@@ -33,18 +33,18 @@ public final class b
     if (TextUtils.isEmpty(str2)) {
       str1 = "tools";
     }
-    paramString = mV(paramString, str1);
+    paramString = nb(paramString, str1);
     AppMethodBeat.o(156713);
     return paramString;
   }
   
-  public static HashMap<String, String> baI(String paramString)
+  public static HashMap<String, String> bcl(String paramString)
   {
     int i = 0;
-    AppMethodBeat.i(197053);
+    AppMethodBeat.i(217362);
     try
     {
-      paramString = mV("param_".concat(String.valueOf(paramString)), "tools");
+      paramString = nb("param_".concat(String.valueOf(paramString)), "tools");
       if (paramString != null)
       {
         boolean bool = paramString.isEmpty();
@@ -52,13 +52,13 @@ public final class b
       }
       else
       {
-        AppMethodBeat.o(197053);
+        AppMethodBeat.o(217362);
         return null;
       }
       paramString = paramString.split(",");
       if (paramString == null)
       {
-        AppMethodBeat.o(197053);
+        AppMethodBeat.o(217362);
         return null;
       }
       HashMap localHashMap = new HashMap();
@@ -75,29 +75,29 @@ public final class b
         }
         i += 1;
       }
-      AppMethodBeat.o(197053);
+      AppMethodBeat.o(217362);
       return localHashMap;
     }
     catch (Exception paramString)
     {
       Log.e("CommandCfgPlugin", "getCmdPluginParam error: ", paramString);
-      AppMethodBeat.o(197053);
+      AppMethodBeat.o(217362);
     }
     return null;
   }
   
-  public static f.a baJ(String paramString)
+  public static f.a bcm(String paramString)
   {
     AppMethodBeat.i(156715);
-    paramString = baK(mV("fr_" + paramString.toLowerCase(), "tools"));
+    paramString = bcn(nb("fr_" + paramString.toLowerCase(), "tools"));
     AppMethodBeat.o(156715);
     return paramString;
   }
   
-  public static f.a baK(String paramString)
+  public static f.a bcn(String paramString)
   {
     AppMethodBeat.i(156716);
-    f.a locala = f.a.Mpi;
+    f.a locala = f.a.MMe;
     if ((paramString == null) || (paramString.isEmpty()))
     {
       AppMethodBeat.o(156716);
@@ -113,37 +113,37 @@ public final class b
     {
       for (;;)
       {
-        paramString = f.a.Mpi;
+        paramString = f.a.MMe;
       }
     }
   }
   
-  private static b gar()
+  private static b geT()
   {
     try
     {
       AppMethodBeat.i(156707);
-      if (Mpa == null)
+      if (MLW == null)
       {
         localb = new b();
-        Mpa = localb;
-        localb.gam();
+        MLW = localb;
+        localb.geO();
       }
-      b localb = Mpa;
+      b localb = MLW;
       AppMethodBeat.o(156707);
       return localb;
     }
     finally {}
   }
   
-  public static void gas()
+  public static void geU()
   {
     try
     {
       AppMethodBeat.i(161632);
       Log.i("CommandCfgPlugin", "resetCommandCfgPlugin ");
-      Mpa = null;
-      gar();
+      MLW = null;
+      geT();
       AppMethodBeat.o(161632);
       return;
     }
@@ -154,12 +154,12 @@ public final class b
     }
   }
   
-  public static int gat()
+  public static int geV()
   {
-    AppMethodBeat.i(197050);
+    AppMethodBeat.i(217359);
     try
     {
-      String str = mV("setPluginConfigPeriod", "tools");
+      String str = nb("setPluginConfigPeriod", "tools");
       if (str != null)
       {
         boolean bool = str.isEmpty();
@@ -167,32 +167,32 @@ public final class b
       }
       else
       {
-        AppMethodBeat.o(197050);
+        AppMethodBeat.o(217359);
         return -1;
       }
       int i = Integer.parseInt(str);
       if (i < 30)
       {
-        AppMethodBeat.o(197050);
+        AppMethodBeat.o(217359);
         return -1;
       }
-      AppMethodBeat.o(197050);
+      AppMethodBeat.o(217359);
       return i * 60 * 1000;
     }
     catch (Exception localException)
     {
       Log.e("CommandCfgPlugin", "getCmdPluginUpdatePeriod error: ", localException);
-      AppMethodBeat.o(197050);
+      AppMethodBeat.o(217359);
     }
     return -1;
   }
   
-  public static boolean gau()
+  public static boolean geW()
   {
-    AppMethodBeat.i(197051);
+    AppMethodBeat.i(217360);
     try
     {
-      String str = mV("download_when_not_install", "tools");
+      String str = nb("download_when_not_install", "tools");
       if (str != null)
       {
         bool = str.isEmpty();
@@ -200,27 +200,27 @@ public final class b
       }
       else
       {
-        AppMethodBeat.o(197051);
+        AppMethodBeat.o(217360);
         return false;
       }
       boolean bool = Boolean.parseBoolean(str);
-      AppMethodBeat.o(197051);
+      AppMethodBeat.o(217360);
       return bool;
     }
     catch (Exception localException)
     {
       Log.e("CommandCfgPlugin", "canDownloadWhenNotInstall error: ", localException);
-      AppMethodBeat.o(197051);
+      AppMethodBeat.o(217360);
     }
     return false;
   }
   
-  public static boolean gav()
+  public static boolean geX()
   {
-    AppMethodBeat.i(197052);
+    AppMethodBeat.i(217361);
     try
     {
-      String str = mV("download_when_x5_fail", "tools");
+      String str = nb("download_when_x5_fail", "tools");
       if (str != null)
       {
         bool = str.isEmpty();
@@ -228,17 +228,17 @@ public final class b
       }
       else
       {
-        AppMethodBeat.o(197052);
+        AppMethodBeat.o(217361);
         return false;
       }
       boolean bool = Boolean.parseBoolean(str);
-      AppMethodBeat.o(197052);
+      AppMethodBeat.o(217361);
       return bool;
     }
     catch (Exception localException)
     {
       Log.e("CommandCfgPlugin", "canDownloadWhenX5Fail error: ", localException);
-      AppMethodBeat.o(197052);
+      AppMethodBeat.o(217361);
     }
     return false;
   }
@@ -248,7 +248,7 @@ public final class b
     AppMethodBeat.i(156709);
     try
     {
-      String str = gar().gan();
+      String str = geT().geP();
       AppMethodBeat.o(156709);
       return str;
     }
@@ -260,12 +260,12 @@ public final class b
     return "";
   }
   
-  public static String mV(String paramString1, String paramString2)
+  public static String nb(String paramString1, String paramString2)
   {
     try
     {
       AppMethodBeat.i(156714);
-      paramString1 = a(paramString1, paramString2, gar());
+      paramString1 = a(paramString1, paramString2, geT());
       AppMethodBeat.o(156714);
       return paramString1;
     }
@@ -287,29 +287,29 @@ public final class b
     HashMap localHashMap = new HashMap();
     if ((paramArrayOfa == null) || (paramArrayOfa.length == 0))
     {
-      U(paramString, localHashMap);
+      V(paramString, localHashMap);
       AppMethodBeat.o(156712);
       return;
     }
     int i = 0;
     while (i < paramArrayOfa.length)
     {
-      if ((paramArrayOfa[i] != null) && ((!paramBoolean) || (!baC(paramArrayOfa[i].MsD))) && (paramArrayOfa[i].MsC.gbC()))
+      if ((paramArrayOfa[i] != null) && ((!paramBoolean) || (!bcf(paramArrayOfa[i].MPH))) && (paramArrayOfa[i].MPG.gge()))
       {
-        Object localObject = (a.a)j.g(WebView.c.Mqu).excute("STR_CMD_EXXCUTE_CMD_FROM_CONFIG", new Object[] { paramArrayOfa[i] });
-        if (((localObject == null) || (!((a.a)localObject).MoY)) && (paramArrayOfa[i].MsE != null) && (paramArrayOfa[i].MsF != null) && (!paramArrayOfa[i].MsF.isEmpty()))
+        Object localObject = (a.a)j.g(WebView.c.MNy).excute("STR_CMD_EXXCUTE_CMD_FROM_CONFIG", new Object[] { paramArrayOfa[i] });
+        if (((localObject == null) || (!((a.a)localObject).MLU)) && (paramArrayOfa[i].MPI != null) && (paramArrayOfa[i].MPJ != null) && (!paramArrayOfa[i].MPJ.isEmpty()))
         {
-          localObject = paramArrayOfa[i].MsF.split(",");
+          localObject = paramArrayOfa[i].MPJ.split(",");
           a(paramArrayOfa[i], localHashMap, (String[])localObject);
         }
       }
       i += 1;
     }
-    U(paramString, localHashMap);
+    V(paramString, localHashMap);
     AppMethodBeat.o(156712);
   }
   
-  public final SharedPreferences gal()
+  public final SharedPreferences geN()
   {
     AppMethodBeat.i(156708);
     SharedPreferences localSharedPreferences = XWalkEnvironment.getMMKVSharedPreferences("XWEB.CMDCFG.PLUGIN");
@@ -317,7 +317,7 @@ public final class b
     return localSharedPreferences;
   }
   
-  public final String gan()
+  public final String geP()
   {
     for (;;)
     {
@@ -325,7 +325,7 @@ public final class b
       {
         AppMethodBeat.i(156710);
         StringBuilder localStringBuilder = new StringBuilder(512);
-        Object localObject1 = this.MoW.keySet();
+        Object localObject1 = this.MLS.keySet();
         if (localObject1 == null)
         {
           localObject1 = "";
@@ -339,7 +339,7 @@ public final class b
           if (TextUtils.isEmpty(str3)) {
             continue;
           }
-          String str2 = cb(bav(str3));
+          String str2 = cg(bbY(str3));
           localObject1 = str2;
           if (str2 == null) {
             localObject1 = "";

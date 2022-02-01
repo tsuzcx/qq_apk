@@ -5,7 +5,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
 import com.tencent.mm.plugin.appbrand.a.c.a;
 import com.tencent.mm.plugin.appbrand.d;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import d.g.b.p;
 import d.g.b.q;
 import d.l;
@@ -15,40 +15,40 @@ import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.atomic.AtomicInteger;
 import org.json.JSONObject;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/auth/AppBrandAuthJSAPIConcurrentQueue;", "Lcom/tencent/mm/plugin/appbrand/jsapi/auth/AppBrandAuthJSAPIExecutorService;", "mConcurrentMaxCount", "", "(I)V", "mInFlightTasks", "Ljava/util/concurrent/atomic/AtomicInteger;", "mTaskQueue", "Ljava/util/concurrent/LinkedBlockingQueue;", "Lcom/tencent/threadpool/runnable/KeyRunnable;", "cleanup", "", "dispatch", "task", "dispatchNext", "execute", "api", "Lcom/tencent/mm/plugin/appbrand/jsapi/auth/BaseAuthJsApi;", "component", "Lcom/tencent/mm/plugin/appbrand/AppBrandComponentWxaShared;", "data", "Lorg/json/JSONObject;", "callbackId", "schedule", "Companion", "luggage-wechat-full-sdk_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsapi/auth/AppBrandAuthJSAPIConcurrentQueue;", "Lcom/tencent/mm/plugin/appbrand/jsapi/auth/AppBrandAuthJSAPIExecutorService;", "mConcurrentMaxCount", "", "(I)V", "mInFlightTasks", "Ljava/util/concurrent/atomic/AtomicInteger;", "mTaskQueue", "Ljava/util/concurrent/LinkedBlockingQueue;", "Lcom/tencent/threadpool/runnable/KeyRunnable;", "cleanup", "", "dispatch", "task", "dispatchNext", "execute", "api", "Lcom/tencent/mm/plugin/appbrand/jsapi/auth/BaseAuthJsApi;", "component", "Lcom/tencent/mm/plugin/appbrand/AppBrandComponentWxaShared;", "data", "Lorg/json/JSONObject;", "callbackId", "schedule", "Companion", "luggage-wechat-full-sdk_release"})
 public final class b
   implements c
 {
-  private static final c kxA;
+  private static final HashMap<String, b> kAO;
+  private static final c kAP;
   @Deprecated
-  public static final a kxB;
-  private static final HashMap<String, b> kxz;
-  private final LinkedBlockingQueue<h> kxw;
-  private final AtomicInteger kxx;
-  private final int kxy;
+  public static final a kAQ;
+  private final LinkedBlockingQueue<h> kAL;
+  private final AtomicInteger kAM;
+  private final int kAN;
   
   static
   {
     AppMethodBeat.i(50440);
-    kxB = new a((byte)0);
-    kxz = new HashMap();
-    kxA = (c)b.kxC;
+    kAQ = new a((byte)0);
+    kAO = new HashMap();
+    kAP = (c)b.kAR;
     AppMethodBeat.o(50440);
   }
   
   public b(int paramInt)
   {
     AppMethodBeat.i(50439);
-    this.kxy = paramInt;
-    this.kxw = new LinkedBlockingQueue();
-    this.kxx = new AtomicInteger(0);
+    this.kAN = paramInt;
+    this.kAL = new LinkedBlockingQueue();
+    this.kAM = new AtomicInteger(0);
     AppMethodBeat.o(50439);
   }
   
-  public static final c U(AppBrandRuntime paramAppBrandRuntime)
+  public static final c T(AppBrandRuntime paramAppBrandRuntime)
   {
     AppMethodBeat.i(50443);
-    paramAppBrandRuntime = a.U(paramAppBrandRuntime);
+    paramAppBrandRuntime = a.T(paramAppBrandRuntime);
     AppMethodBeat.o(50443);
     return paramAppBrandRuntime;
   }
@@ -58,20 +58,20 @@ public final class b
     AppMethodBeat.i(183053);
     for (;;)
     {
-      if (this.kxx.incrementAndGet() <= this.kxy)
+      if (this.kAM.incrementAndGet() <= this.kAN)
       {
-        ad.i("MicroMsg.AppBrandAuthJSAPIConcurrentQueue", "schedule " + paramh.getKey());
+        ae.i("MicroMsg.AppBrandAuthJSAPIConcurrentQueue", "schedule " + paramh.getKey());
         paramh.run();
         AppMethodBeat.o(183053);
         return;
       }
-      this.kxw.offer(paramh);
-      if (this.kxx.decrementAndGet() >= this.kxy)
+      this.kAL.offer(paramh);
+      if (this.kAM.decrementAndGet() >= this.kAN)
       {
         AppMethodBeat.o(183053);
         return;
       }
-      paramh = (h)this.kxw.poll();
+      paramh = (h)this.kAL.poll();
       if (paramh == null)
       {
         AppMethodBeat.o(183053);
@@ -82,33 +82,33 @@ public final class b
   
   public final void a(final i parami, final d paramd, final JSONObject paramJSONObject, final int paramInt)
   {
-    AppMethodBeat.i(192345);
+    AppMethodBeat.i(220946);
     p.h(parami, "api");
     p.h(paramd, "component");
     p.h(paramJSONObject, "data");
     final String str = "name[" + parami.getName() + "], callbackId[" + paramInt + "], appId[" + paramd.getAppId() + ']';
     parami = new c(this, paramd, parami, paramJSONObject, paramInt, str);
-    ad.i("MicroMsg.AppBrandAuthJSAPIConcurrentQueue", "dispatch ".concat(String.valueOf(str)));
+    ae.i("MicroMsg.AppBrandAuthJSAPIConcurrentQueue", "dispatch ".concat(String.valueOf(str)));
     a((h)parami);
-    AppMethodBeat.o(192345);
+    AppMethodBeat.o(220946);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/auth/AppBrandAuthJSAPIConcurrentQueue$Companion;", "", "()V", "DUMMY_IMPL", "Lcom/tencent/mm/plugin/appbrand/jsapi/auth/AppBrandAuthJSAPIExecutorService;", "TAG", "", "gAppIdToQueueMap", "Ljava/util/HashMap;", "Lcom/tencent/mm/plugin/appbrand/jsapi/auth/AppBrandAuthJSAPIConcurrentQueue;", "Lkotlin/collections/HashMap;", "obtainByRuntime", "runtime", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntime;", "luggage-wechat-full-sdk_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsapi/auth/AppBrandAuthJSAPIConcurrentQueue$Companion;", "", "()V", "DUMMY_IMPL", "Lcom/tencent/mm/plugin/appbrand/jsapi/auth/AppBrandAuthJSAPIExecutorService;", "TAG", "", "gAppIdToQueueMap", "Ljava/util/HashMap;", "Lcom/tencent/mm/plugin/appbrand/jsapi/auth/AppBrandAuthJSAPIConcurrentQueue;", "Lkotlin/collections/HashMap;", "obtainByRuntime", "runtime", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntime;", "luggage-wechat-full-sdk_release"})
   static final class a
   {
-    public static c U(AppBrandRuntime paramAppBrandRuntime)
+    public static c T(AppBrandRuntime paramAppBrandRuntime)
     {
       AppMethodBeat.i(50434);
       if (paramAppBrandRuntime == null)
       {
-        paramAppBrandRuntime = b.biI();
+        paramAppBrandRuntime = b.bjr();
         AppMethodBeat.o(50434);
         return paramAppBrandRuntime;
       }
-      synchronized (b.biJ())
+      synchronized (b.bjs())
       {
-        b.biK();
-        b localb = (b)b.biJ().get(paramAppBrandRuntime.getAppId());
+        b.bjt();
+        b localb = (b)b.bjs().get(paramAppBrandRuntime.getAppId());
         if (localb != null)
         {
           paramAppBrandRuntime = (c)localb;
@@ -119,7 +119,7 @@ public final class b
       }
     }
     
-    @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "Lcom/tencent/mm/plugin/appbrand/jsapi/auth/AppBrandAuthJSAPIConcurrentQueue;", "invoke", "com/tencent/mm/plugin/appbrand/jsapi/auth/AppBrandAuthJSAPIConcurrentQueue$Companion$obtainByRuntime$1$1"})
+    @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "Lcom/tencent/mm/plugin/appbrand/jsapi/auth/AppBrandAuthJSAPIConcurrentQueue;", "invoke", "com/tencent/mm/plugin/appbrand/jsapi/auth/AppBrandAuthJSAPIConcurrentQueue$Companion$obtainByRuntime$1$1"})
     static final class a
       extends q
       implements d.g.a.a<b>
@@ -131,32 +131,32 @@ public final class b
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "api", "Lcom/tencent/mm/plugin/appbrand/jsapi/auth/BaseAuthJsApi;", "component", "Lcom/tencent/mm/plugin/appbrand/AppBrandComponentWxaShared;", "data", "Lorg/json/JSONObject;", "callbackId", "", "execute"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "api", "Lcom/tencent/mm/plugin/appbrand/jsapi/auth/BaseAuthJsApi;", "component", "Lcom/tencent/mm/plugin/appbrand/AppBrandComponentWxaShared;", "data", "Lorg/json/JSONObject;", "callbackId", "", "execute"})
   static final class b
     implements c
   {
-    public static final b kxC;
+    public static final b kAR;
     
     static
     {
       AppMethodBeat.i(50431);
-      kxC = new b();
+      kAR = new b();
       AppMethodBeat.o(50431);
     }
     
     public final void a(i parami, d paramd, JSONObject paramJSONObject, int paramInt)
     {
-      AppMethodBeat.i(192344);
+      AppMethodBeat.i(220945);
       p.h(parami, "api");
       p.h(paramd, "component");
       p.h(paramJSONObject, "data");
-      b.biK();
-      ad.e("MicroMsg.AppBrandAuthJSAPIConcurrentQueue", "dummy execute name[" + parami.getName() + "], callbackId[" + paramInt + "], appId[" + paramd.getAppId() + ']');
-      AppMethodBeat.o(192344);
+      b.bjt();
+      ae.e("MicroMsg.AppBrandAuthJSAPIConcurrentQueue", "dummy execute name[" + parami.getName() + "], callbackId[" + paramInt + "], appId[" + paramd.getAppId() + ']');
+      AppMethodBeat.o(220945);
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/appbrand/jsapi/auth/AppBrandAuthJSAPIConcurrentQueue$execute$task$1", "Lcom/tencent/threadpool/runnable/KeyRunnable;", "getKey", "", "run", "", "luggage-wechat-full-sdk_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/appbrand/jsapi/auth/AppBrandAuthJSAPIConcurrentQueue$execute$task$1", "Lcom/tencent/threadpool/runnable/KeyRunnable;", "getKey", "", "run", "", "luggage-wechat-full-sdk_release"})
   public static final class c
     implements h
   {
@@ -176,22 +176,22 @@ public final class b
         AppMethodBeat.o(50436);
         return;
       }
-      b.a(this.kxF);
+      b.a(this.kAU);
       AppMethodBeat.o(50436);
     }
     
-    @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "onAuthResult"})
+    @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "onAuthResult"})
     static final class a
       implements e
     {
       a(b.c paramc) {}
       
-      public final void biH()
+      public final void bjq()
       {
         AppMethodBeat.i(50435);
-        b.biK();
-        ad.i("MicroMsg.AppBrandAuthJSAPIConcurrentQueue", "execute() done, " + this.kxK.kxJ);
-        b.a(this.kxK.kxF);
+        b.bjt();
+        ae.i("MicroMsg.AppBrandAuthJSAPIConcurrentQueue", "execute() done, " + this.kAZ.kAY);
+        b.a(this.kAZ.kAU);
         AppMethodBeat.o(50435);
       }
     }
@@ -199,7 +199,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.auth.b
  * JD-Core Version:    0.7.0.1
  */

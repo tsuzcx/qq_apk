@@ -25,7 +25,7 @@ abstract class d
     }
     for (;;)
     {
-      as(paramContext);
+      at(paramContext);
       return;
       this.bWN = new LinkedList();
       int j = paramVarArgs.length;
@@ -39,16 +39,16 @@ abstract class d
     }
   }
   
-  abstract void Ab();
+  abstract void Ac();
   
-  final void Ae()
+  final void Af()
   {
     try
     {
       if (this.bWM)
       {
         stop();
-        Ab();
+        Ac();
         this.bWM = false;
       }
       return;
@@ -71,7 +71,7 @@ abstract class d
       }
       finally {}
     }
-    Ae();
+    Af();
     b(paramContext.getApplicationContext(), paramVarArgs);
     this.bWM = true;
   }
@@ -94,9 +94,9 @@ abstract class d
     }
   }
   
-  abstract void as(Context paramContext);
-  
   abstract void at(Context paramContext);
+  
+  abstract void au(Context paramContext);
   
   final void c(p paramp)
   {
@@ -124,7 +124,7 @@ abstract class d
     {
       if (this.isRunning)
       {
-        at(this.IR);
+        au(this.IR);
         this.mHandler = null;
         this.bWO = null;
         this.isRunning = false;
@@ -152,7 +152,7 @@ abstract class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.d.a.a.d
  * JD-Core Version:    0.7.0.1
  */

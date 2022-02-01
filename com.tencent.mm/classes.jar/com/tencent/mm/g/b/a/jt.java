@@ -6,55 +6,72 @@ import com.tencent.mm.plugin.report.a;
 public final class jt
   extends a
 {
-  public long dPH = 0L;
-  public long eCo = 0L;
-  private String eif = "";
+  public long eDL = 0L;
+  public long eDM = 0L;
+  public long eDN = 0L;
+  public long eDO = 0L;
+  private long eDP = 0L;
+  private long eDQ = 0L;
+  public long eDR = 0L;
+  public long eDS = 0L;
   
-  public final String RD()
+  public final String RC()
   {
-    AppMethodBeat.i(111808);
+    AppMethodBeat.i(91041);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.eCo);
+    ((StringBuffer)localObject).append(this.eDL);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dPH);
+    ((StringBuffer)localObject).append(this.eDM);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eif);
+    ((StringBuffer)localObject).append(this.eDN);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.eDO);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.eDP);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.eDQ);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.eDR);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.eDS);
     localObject = ((StringBuffer)localObject).toString();
-    awz((String)localObject);
-    AppMethodBeat.o(111808);
+    axO((String)localObject);
+    AppMethodBeat.o(91041);
     return localObject;
   }
   
-  public final String RE()
+  public final String RD()
   {
-    AppMethodBeat.i(111809);
+    AppMethodBeat.i(91042);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("actionScene:").append(this.eCo);
+    ((StringBuffer)localObject).append("isSuccessful:").append(this.eDL);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("action:").append(this.dPH);
+    ((StringBuffer)localObject).append("scanTime:").append(this.eDM);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("query:").append(this.eif);
+    ((StringBuffer)localObject).append("focusMode:").append(this.eDN);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("totalFrames:").append(this.eDO);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("focusTime:").append(this.eDP);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("previewStartTime:").append(this.eDQ);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("hasCodeTime:").append(this.eDR);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("scanMode:").append(this.eDS);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(111809);
+    AppMethodBeat.o(91042);
     return localObject;
   }
   
   public final int getId()
   {
-    return 15776;
-  }
-  
-  public final jt sn(String paramString)
-  {
-    AppMethodBeat.i(111807);
-    this.eif = t("query", paramString, true);
-    AppMethodBeat.o(111807);
-    return this;
+    return 14176;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.g.b.a.jt
  * JD-Core Version:    0.7.0.1
  */

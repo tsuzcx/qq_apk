@@ -6,13 +6,13 @@ import android.content.res.Resources;
 import android.graphics.Point;
 import android.util.DisplayMetrics;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cc.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.cb.a;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.ui.al;
 
 public final class d
 {
-  private static boolean mWQ = false;
+  private static boolean nbW = false;
   
   private static int a(int paramInt, Context paramContext, float paramFloat)
   {
@@ -22,9 +22,9 @@ public final class d
       AppMethodBeat.o(49559);
       return 0;
     }
-    int k = dX(paramContext);
+    int k = eb(paramContext);
     int i;
-    if (b.bCH()) {
+    if (b.bDz()) {
       i = (int)((paramInt - k * paramFloat) / Math.ceil(paramFloat));
     }
     for (;;)
@@ -33,20 +33,20 @@ public final class d
       if (i < 0) {
         j = 0;
       }
-      ad.d("MicroMsg.AppBrandDesktopSizeHelper", "alvinluo itemWidth: %d, itemPadding: %d, viewWidth: %d, countPerPage: %f, leftRightPaddingZero: %b", new Object[] { Integer.valueOf(k), Integer.valueOf(j), Integer.valueOf(paramInt), Float.valueOf(paramFloat), Boolean.valueOf(mWQ) });
+      ae.d("MicroMsg.AppBrandDesktopSizeHelper", "alvinluo itemWidth: %d, itemPadding: %d, viewWidth: %d, countPerPage: %f, leftRightPaddingZero: %b", new Object[] { Integer.valueOf(k), Integer.valueOf(j), Integer.valueOf(paramInt), Float.valueOf(paramFloat), Boolean.valueOf(nbW) });
       AppMethodBeat.o(49559);
       return j;
-      mWQ = false;
-      j = dZ(paramContext);
+      nbW = false;
+      j = ed(paramContext);
       i = (paramInt - j * 2 - (int)paramFloat * k) / (((int)paramFloat - 1) * 2);
       if (i > j)
       {
         i = (paramInt - (int)paramFloat * k) / ((int)paramFloat * 2);
-        mWQ = true;
+        nbW = true;
       }
       else
       {
-        mWQ = false;
+        nbW = false;
       }
     }
   }
@@ -72,7 +72,7 @@ public final class d
     return i;
   }
   
-  public static int dX(Context paramContext)
+  public static int eb(Context paramContext)
   {
     AppMethodBeat.i(49555);
     if (paramContext == null)
@@ -80,12 +80,12 @@ public final class d
       AppMethodBeat.o(49555);
       return 0;
     }
-    int i = (int)(a.ay(paramContext, 2131165763) * eb(paramContext));
+    int i = (int)(a.ay(paramContext, 2131165763) * ef(paramContext));
     AppMethodBeat.o(49555);
     return i;
   }
   
-  public static int dY(Context paramContext)
+  public static int ec(Context paramContext)
   {
     AppMethodBeat.i(49556);
     int i = c(paramContext, b.getShowCountPerPage());
@@ -93,22 +93,22 @@ public final class d
     return i;
   }
   
-  public static int dZ(Context paramContext)
+  public static int ed(Context paramContext)
   {
     AppMethodBeat.i(49561);
-    if (mWQ)
+    if (nbW)
     {
       AppMethodBeat.o(49561);
       return 0;
     }
     int j = paramContext.getResources().getDimensionPixelOffset(2131165764);
-    float f = eb(paramContext);
+    float f = ef(paramContext);
     int i = j;
-    if (f != a.hZ(paramContext))
+    if (f != a.ie(paramContext))
     {
       i = j;
-      if (f != a.hY(paramContext)) {
-        if ((f != a.ia(paramContext)) && (f != a.ib(paramContext)) && (f != a.ic(paramContext))) {
+      if (f != a.id(paramContext)) {
+        if ((f != a.jdMethod_if(paramContext)) && (f != a.ig(paramContext)) && (f != a.ih(paramContext))) {
           break label117;
         }
       }
@@ -116,34 +116,34 @@ public final class d
     label117:
     for (i = paramContext.getResources().getDimensionPixelOffset(2131165480);; i = paramContext.getResources().getDimensionPixelOffset(2131165516))
     {
-      ad.d("MicroMsg.AppBrandDesktopSizeHelper", "alvinluo getLeftRightPadding: %d", new Object[] { Integer.valueOf(i) });
+      ae.d("MicroMsg.AppBrandDesktopSizeHelper", "alvinluo getLeftRightPadding: %d", new Object[] { Integer.valueOf(i) });
       AppMethodBeat.o(49561);
       return i;
     }
   }
   
-  public static float ea(Context paramContext)
+  public static float ee(Context paramContext)
   {
     AppMethodBeat.i(49562);
-    float f = a.ay(paramContext, 2131165760) * eb(paramContext);
-    ad.d("MicroMsg.AppBrandDesktopSizeHelper", "alvinluo iconSize: %f", new Object[] { Float.valueOf(f) });
+    float f = a.ay(paramContext, 2131165760) * ef(paramContext);
+    ae.d("MicroMsg.AppBrandDesktopSizeHelper", "alvinluo iconSize: %f", new Object[] { Float.valueOf(f) });
     AppMethodBeat.o(49562);
     return f;
   }
   
-  public static float eb(Context paramContext)
+  public static float ef(Context paramContext)
   {
     AppMethodBeat.i(49563);
-    float f2 = a.eb(paramContext);
+    float f2 = a.ef(paramContext);
     float f1;
-    if ((f2 != a.id(paramContext)) && (f2 != a.ie(paramContext)))
+    if ((f2 != a.ii(paramContext)) && (f2 != a.ij(paramContext)))
     {
       f1 = f2;
-      if (f2 != a.jdMethod_if(paramContext)) {}
+      if (f2 != a.ik(paramContext)) {}
     }
     else
     {
-      f1 = a.ic(paramContext);
+      f1 = a.ih(paramContext);
     }
     AppMethodBeat.o(49563);
     return f1;
@@ -154,9 +154,9 @@ public final class d
     AppMethodBeat.i(49558);
     try
     {
-      if ((paramContext.getResources().getConfiguration().orientation == 2) && (al.aG(paramContext)))
+      if ((paramContext.getResources().getConfiguration().orientation == 2) && (al.aH(paramContext)))
       {
-        i = al.ci(paramContext).x;
+        i = al.ck(paramContext).x;
         AppMethodBeat.o(49558);
         return i;
       }
@@ -166,7 +166,7 @@ public final class d
     }
     catch (Exception paramContext)
     {
-      ad.printErrStackTrace("MicroMsg.AppBrandDesktopSizeHelper", paramContext, "alvinluo getScreenWidth exception", new Object[0]);
+      ae.printErrStackTrace("MicroMsg.AppBrandDesktopSizeHelper", paramContext, "alvinluo getScreenWidth exception", new Object[0]);
       AppMethodBeat.o(49558);
     }
     return 0;

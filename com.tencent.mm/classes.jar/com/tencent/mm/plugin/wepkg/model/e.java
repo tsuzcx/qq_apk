@@ -4,8 +4,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wepkg.c;
 import com.tencent.mm.plugin.wepkg.utils.a;
 import com.tencent.mm.plugin.wepkg.utils.d;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.xweb.WebResourceResponse;
 import java.util.Collection;
 import java.util.HashMap;
@@ -14,63 +14,63 @@ import java.util.Map;
 
 public final class e
 {
-  private Map<String, g> EEJ;
-  private int oMS;
+  private Map<String, g> EXf;
+  private int oTu;
   
   public e()
   {
     AppMethodBeat.i(110678);
-    this.EEJ = new HashMap();
-    this.oMS = 1;
+    this.EXf = new HashMap();
+    this.oTu = 1;
     AppMethodBeat.o(110678);
   }
   
-  public final void aKL(String paramString)
+  public final void aMh(String paramString)
   {
     AppMethodBeat.i(110679);
-    if (this.oMS > 3)
+    if (this.oTu > 3)
     {
-      ad.i("MicroMsg.Wepkg.SupportIframe", "more than 3 wepkgs");
+      ae.i("MicroMsg.Wepkg.SupportIframe", "more than 3 wepkgs");
       AppMethodBeat.o(110679);
       return;
     }
-    String str = d.aKY(paramString);
-    if ((!bt.isNullOrNil(str)) && (this.EEJ.get(str) == null))
+    String str = d.aMu(paramString);
+    if ((!bu.isNullOrNil(str)) && (this.EXf.get(str) == null))
     {
-      this.oMS += 1;
-      g localg = c.aKp(str);
+      this.oTu += 1;
+      g localg = c.aLL(str);
       if (localg != null)
       {
-        this.EEJ.put(str, localg);
+        this.EXf.put(str, localg);
         AppMethodBeat.o(110679);
         return;
       }
-      localg = c.cv(paramString, true);
-      if ((localg != null) && (localg.EET != null))
+      localg = c.cz(paramString, true);
+      if ((localg != null) && (localg.EXp != null))
       {
-        this.EEJ.put(str, localg);
-        a.b("EnterWeb", paramString, localg.EET.gsn, localg.EET.version, 1L, 0L, null);
-        ad.i("MicroMsg.Wepkg.SupportIframe", "load wepkg: %s", new Object[] { str });
+        this.EXf.put(str, localg);
+        a.b("EnterWeb", paramString, localg.EXp.guO, localg.EXp.version, 1L, 0L, null);
+        ae.i("MicroMsg.Wepkg.SupportIframe", "load wepkg: %s", new Object[] { str });
       }
     }
     AppMethodBeat.o(110679);
   }
   
-  public final WebResourceResponse aKM(String paramString)
+  public final WebResourceResponse aMi(String paramString)
   {
     AppMethodBeat.i(110680);
-    if (bt.isNullOrNil(paramString))
+    if (bu.isNullOrNil(paramString))
     {
       AppMethodBeat.o(110680);
       return null;
     }
-    Iterator localIterator = this.EEJ.values().iterator();
+    Iterator localIterator = this.EXf.values().iterator();
     while (localIterator.hasNext())
     {
-      WebResourceResponse localWebResourceResponse = ((g)localIterator.next()).aKM(paramString);
+      WebResourceResponse localWebResourceResponse = ((g)localIterator.next()).aMi(paramString);
       if (localWebResourceResponse != null)
       {
-        ad.i("MicroMsg.Wepkg.SupportIframe", "hit rid: %s", new Object[] { paramString });
+        ae.i("MicroMsg.Wepkg.SupportIframe", "hit rid: %s", new Object[] { paramString });
         AppMethodBeat.o(110680);
         return localWebResourceResponse;
       }

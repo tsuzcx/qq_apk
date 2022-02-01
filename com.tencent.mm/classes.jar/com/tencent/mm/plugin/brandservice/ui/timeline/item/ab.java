@@ -1,184 +1,189 @@
 package com.tencent.mm.plugin.brandservice.ui.timeline.item;
 
-import android.app.Activity;
-import android.content.ClipboardManager;
-import android.content.Context;
-import android.content.Intent;
-import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.am.ag;
-import com.tencent.mm.am.f;
-import com.tencent.mm.api.c;
-import com.tencent.mm.bs.d;
-import com.tencent.mm.g.c.aw;
-import com.tencent.mm.g.c.ei;
-import com.tencent.mm.model.y;
-import com.tencent.mm.model.y.b;
-import com.tencent.mm.plugin.brandservice.ui.timeline.b;
-import com.tencent.mm.plugin.messenger.foundation.a.a.i;
-import com.tencent.mm.plugin.messenger.foundation.a.l;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.am;
-import com.tencent.mm.storage.bp;
-import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.base.n.e;
+import com.tencent.mm.ah.v;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.plugin.brandservice.ui.timeline.g;
+import com.tencent.mm.plugin.brandservice.ui.timeline.preload.c;
+import com.tencent.mm.pluginsdk.ui.applet.m.a;
+import com.tencent.mm.storage.w;
+import java.util.ArrayList;
+import java.util.List;
 
 public final class ab
-  implements n.e
+  extends aa
 {
-  private Context mContext;
-  private long ofG;
-  private boolean ofH = false;
-  b ofm;
+  public LinearLayout okA;
+  public LinearLayout okB;
+  public View.OnClickListener olA;
+  public LinearLayout olp;
+  public LinearLayout olq;
+  public TextView olr;
+  public List<x> ols;
+  public ah olt;
+  public aj olu;
+  public af olv;
+  public ag olw;
+  public ak olx;
+  public ae oly;
+  public ai olz;
   
-  public ab(b paramb, Context paramContext)
+  public ab()
   {
-    this.ofm = paramb;
-    this.mContext = paramContext;
+    AppMethodBeat.i(6030);
+    this.ols = new ArrayList();
+    this.olt = new ah();
+    this.olu = new aj();
+    this.olv = new af();
+    this.olw = new ag();
+    this.olx = new ak();
+    this.oly = new ae();
+    this.olz = new ai();
+    this.olA = new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(6028);
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bd(paramAnonymousView);
+        a.b("com/tencent/mm/plugin/brandservice/ui/timeline/item/BizTimeLineItemHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        paramAnonymousView = (w)paramAnonymousView.getTag();
+        paramAnonymousView.field_isExpand = true;
+        paramAnonymousView.field_status = 4;
+        paramAnonymousView.field_isRead = 1;
+        paramAnonymousView.field_hasShow = 1;
+        com.tencent.mm.al.ag.aGv().q(paramAnonymousView);
+        com.tencent.mm.plugin.brandservice.ui.timeline.b.cn(ab.this.oll.mMj);
+        ab.this.oll.ogr.d(paramAnonymousView, 0);
+        a.a(this, "com/tencent/mm/plugin/brandservice/ui/timeline/item/BizTimeLineItemHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        AppMethodBeat.o(6028);
+      }
+    };
+    AppMethodBeat.o(6030);
   }
   
-  public final void onMMMenuItemSelected(MenuItem paramMenuItem, int paramInt)
+  public static void Y(View paramView, int paramInt)
   {
-    AppMethodBeat.i(6036);
-    if (this.ofm.oap == null)
+    AppMethodBeat.i(6034);
+    LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)paramView.getLayoutParams();
+    localLayoutParams.rightMargin = paramInt;
+    paramView.setLayoutParams(localLayoutParams);
+    AppMethodBeat.o(6034);
+  }
+  
+  private void a(View paramView, y paramy, boolean paramBoolean)
+  {
+    AppMethodBeat.i(6031);
+    if (paramBoolean)
     {
-      ad.w("MicroMsg.BizTimeLineMMMenuItemListener", "onMMMenuItemSelected mInfo == null");
-      AppMethodBeat.o(6036);
-      return;
+      if (paramy.oiV == null) {
+        paramy.a(paramView, this.oll);
+      }
+      if (paramy.oiV != null)
+      {
+        paramy.oiV.setVisibility(0);
+        AppMethodBeat.o(6031);
+      }
     }
-    com.tencent.mm.storage.w localw = this.ofm.oap;
-    this.ofG = bt.aQJ();
-    switch (paramMenuItem.getItemId())
+    else if (paramy.oiV != null)
     {
+      paramy.oiV.setVisibility(8);
     }
-    for (;;)
+    AppMethodBeat.o(6031);
+  }
+  
+  public static void c(v paramv)
+  {
+    if (paramv.type == 6) {
+      paramv.type = 7;
+    }
+  }
+  
+  public static void s(View paramView, int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(6033);
+    paramView.setPadding(0, paramInt1 - com.tencent.mm.plugin.brandservice.ui.timeline.b.ogc, 0, paramInt2 - com.tencent.mm.plugin.brandservice.ui.timeline.b.ogc);
+    AppMethodBeat.o(6033);
+  }
+  
+  public final void a(ab paramab, int paramInt1, int paramInt2)
+  {
+    boolean bool2 = true;
+    AppMethodBeat.i(6032);
+    boolean bool1;
+    if (paramInt1 == 5)
     {
-      AppMethodBeat.o(6036);
-      return;
-      paramMenuItem = ((l)com.tencent.mm.kernel.g.ab(l.class)).azp().Bf(localw.field_talker);
-      if (paramMenuItem == null)
-      {
-        ad.e("MicroMsg.BizTimeLineMMMenuItemListener", "changed biz stick status failed, contact is null, talker = " + localw.field_talker);
-        AppMethodBeat.o(6036);
-        return;
+      bool1 = true;
+      a(paramab.olp, paramab.olu, bool1);
+      if (!bool1) {
+        break label247;
       }
-      if (paramMenuItem.adq())
+    }
+    label48:
+    label79:
+    label110:
+    label244:
+    label247:
+    for (int i = 1;; i = 0)
+    {
+      if (paramInt1 == 8)
       {
-        com.tencent.mm.plugin.report.service.g.yhR.f(13307, new Object[] { paramMenuItem.field_username, Integer.valueOf(1), Integer.valueOf(2), Integer.valueOf(3) });
-        com.tencent.mm.model.w.E(localw.field_talker, true);
-        h.cl(this.mContext, this.mContext.getString(2131756644));
-        this.ofm.oaB.a(localw, false);
-        AppMethodBeat.o(6036);
-        return;
+        bool1 = true;
+        a(paramab.olp, paramab.olw, bool1);
+        if (bool1) {
+          i = 1;
+        }
+        if (paramInt1 != 7) {
+          break label220;
+        }
+        bool1 = true;
+        a(paramab.olp, paramab.olx, bool1);
+        if (bool1) {
+          i = 1;
+        }
+        if (paramInt1 != 6) {
+          break label226;
+        }
+        bool1 = true;
+        a(paramab.olp, paramab.oly, bool1);
+        if (bool1) {
+          i = 1;
+        }
+        if (paramInt1 != 10) {
+          break label232;
+        }
+        bool1 = true;
+        a(paramab.olp, paramab.olz, bool1);
+        if (!bool1) {
+          break label244;
+        }
+        i = 1;
       }
-      com.tencent.mm.plugin.report.service.g.yhR.f(13307, new Object[] { paramMenuItem.field_username, Integer.valueOf(1), Integer.valueOf(1), Integer.valueOf(3) });
-      com.tencent.mm.model.w.D(localw.field_talker, true);
-      h.cl(this.mContext, this.mContext.getString(2131756637));
-      this.ofm.oaB.a(localw, true);
-      AppMethodBeat.o(6036);
-      return;
-      paramMenuItem = ((l)com.tencent.mm.kernel.g.ab(l.class)).azp().Bf(localw.field_talker);
-      Object localObject1 = ag.aFZ().DD(localw.field_talker);
-      ((com.tencent.mm.plugin.brandservice.a.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.brandservice.a.a.class)).b((c)localObject1, (Activity)this.mContext, paramMenuItem);
-      this.ofm.oaB.d(localw, 2);
-      AppMethodBeat.o(6036);
-      return;
-      if (localw.fpe()) {}
-      for (paramMenuItem = this.mContext.getString(2131762088);; paramMenuItem = this.mContext.getString(2131756643))
+      for (;;)
       {
-        h.a(this.mContext, paramMenuItem, "", this.mContext.getString(2131755835), this.mContext.getString(2131755691), true, new ab.1(this, localw), null, 2131100798);
-        AppMethodBeat.o(6036);
-        return;
-      }
-      AppMethodBeat.o(6036);
-      return;
-      paramMenuItem = new Intent();
-      paramMenuItem.putExtra("Contact_User", localw.field_talker);
-      paramMenuItem.putExtra("Contact_Scene", 90);
-      d.b(this.mContext, "profile", ".ui.ContactInfoUI", paramMenuItem);
-      this.ofm.oaB.d(localw, 1);
-      AppMethodBeat.o(6036);
-      return;
-      if (this.ofH)
-      {
-        ((com.tencent.mm.plugin.brandservice.a.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.brandservice.a.a.class)).a(this.ofm.oaq, this.mContext, localw.field_content, localw.field_talker, localw.field_msgId, localw.field_msgSvrId);
-        AppMethodBeat.o(6036);
-        return;
-      }
-      localObject1 = m.a(this.mContext, this.ofm.oaq, localw.field_content, localw.field_talker, localw.field_msgId);
-      if (bt.isNullOrNil((String)localObject1)) {
-        continue;
-      }
-      paramMenuItem = new Intent();
-      paramMenuItem.putExtra("Retr_Msg_content", (String)localObject1);
-      paramMenuItem.putExtra("Retr_Msg_Type", 2);
-      paramMenuItem.putExtra("Retr_Biz_Msg_Selected_Msg_Index", this.ofm.oaq);
-      paramMenuItem.putExtra("Retr_Msg_Id", localw.field_msgId);
-      paramMenuItem.putExtra("Retr_MsgFromScene", 1);
-      localObject1 = localw.field_talker;
-      Object localObject2 = y.AH(localw.field_msgSvrId);
-      paramMenuItem.putExtra("reportSessionId", (String)localObject2);
-      localObject2 = y.aBq().F((String)localObject2, true);
-      ((y.b)localObject2).k("prePublishId", "msg_" + localw.field_msgSvrId);
-      ((y.b)localObject2).k("preUsername", localObject1);
-      ((y.b)localObject2).k("preChatName", localObject1);
-      ((y.b)localObject2).k("preMsgIndex", Integer.valueOf(this.ofm.oaq));
-      ((y.b)localObject2).k("sendAppMsgScene", Integer.valueOf(1));
-      d.f(this.mContext, ".ui.transmit.MsgRetransmitUI", paramMenuItem);
-      AppMethodBeat.o(6036);
-      return;
-      paramMenuItem = ((l)com.tencent.mm.kernel.g.ab(l.class)).dlK().xY(localw.field_msgId);
-      if (paramMenuItem.field_msgId == 0L)
-      {
-        ad.w("MicroMsg.BizTimeLineMMMenuItemListener", "favAppBrandMsg msg is null");
-        AppMethodBeat.o(6036);
-        return;
-      }
-      ((com.tencent.mm.plugin.brandservice.a.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.brandservice.a.a.class)).a(this.ofG, this.ofm.oaq, this.mContext, (Activity)this.mContext, paramMenuItem);
-      AppMethodBeat.o(6036);
-      return;
-      paramMenuItem = ((l)com.tencent.mm.kernel.g.ab(l.class)).dlK().xY(localw.field_msgId);
-      if (paramMenuItem.field_msgId == 0L)
-      {
-        ad.w("MicroMsg.BizTimeLineMMMenuItemListener", "favAppBrandMsg msg is null");
-        AppMethodBeat.o(6036);
-        return;
-      }
-      ((com.tencent.mm.plugin.brandservice.a.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.brandservice.a.a.class)).a(paramMenuItem, (Activity)this.mContext);
-      AppMethodBeat.o(6036);
-      return;
-      paramMenuItem = ((l)com.tencent.mm.kernel.g.ab(l.class)).dlK().xY(localw.field_msgId);
-      if (paramMenuItem.field_msgId == 0L)
-      {
-        ad.w("MicroMsg.BizTimeLineMMMenuItemListener", "favAppBrandMsg msg is null");
-        AppMethodBeat.o(6036);
-        return;
-      }
-      ((com.tencent.mm.plugin.brandservice.a.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.brandservice.a.a.class)).a(paramMenuItem, this.mContext);
-      AppMethodBeat.o(6036);
-      return;
-      paramMenuItem = new Intent();
-      paramMenuItem.putExtra("Retr_Msg_content", localw.field_content);
-      paramMenuItem.putExtra("Retr_Msg_Type", 4);
-      d.f(this.mContext, ".ui.transmit.MsgRetransmitUI", paramMenuItem);
-      AppMethodBeat.o(6036);
-      return;
-      paramMenuItem = (ClipboardManager)aj.getContext().getSystemService("clipboard");
-      try
-      {
-        paramMenuItem.setText(localw.field_content);
-        h.cl(this.mContext, this.mContext.getString(2131755702));
-        paramMenuItem = com.tencent.mm.plugin.secinforeport.a.a.yBN;
-        com.tencent.mm.plugin.secinforeport.a.a.o(1, localw.field_msgSvrId, bt.aQW(localw.field_content));
-      }
-      catch (Exception paramMenuItem)
-      {
-        for (;;)
+        LinearLayout localLinearLayout = paramab.olp;
+        paramab = paramab.olt;
+        if ((i == 0) && (paramInt2 > 0) && (paramInt1 != -1)) {}
+        for (bool1 = bool2;; bool1 = false)
         {
-          ad.e("MicroMsg.BizTimeLineMMMenuItemListener", "clip.setText error ");
+          a(localLinearLayout, paramab, bool1);
+          AppMethodBeat.o(6032);
+          return;
+          bool1 = false;
+          break;
+          bool1 = false;
+          break label48;
+          bool1 = false;
+          break label79;
+          bool1 = false;
+          break label110;
+          bool1 = false;
+          break label141;
         }
       }
     }
@@ -186,7 +191,7 @@ public final class ab
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.ui.timeline.item.ab
  * JD-Core Version:    0.7.0.1
  */

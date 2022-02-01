@@ -3,9 +3,9 @@ package com.tencent.mm.plugin.exdevice.f;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class d
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public String qek;
+  public String qkP;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -13,28 +13,28 @@ public final class d
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.qek != null) {
-        paramVarArgs.d(1, this.qek);
+      if (this.qkP != null) {
+        paramVarArgs.d(1, this.qkP);
       }
       AppMethodBeat.o(23488);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.qek == null) {
+      if (this.qkP == null) {
         break label220;
       }
     }
     label220:
-    for (paramInt = f.a.a.b.b.a.e(1, this.qek) + 0;; paramInt = 0)
+    for (paramInt = f.a.a.b.b.a.e(1, this.qkP) + 0;; paramInt = 0)
     {
       AppMethodBeat.o(23488);
       return paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
         AppMethodBeat.o(23488);
@@ -50,7 +50,7 @@ public final class d
           AppMethodBeat.o(23488);
           return -1;
         }
-        locald.qek = locala.NPN.readString();
+        locald.qkP = locala.OmT.readString();
         AppMethodBeat.o(23488);
         return 0;
       }

@@ -339,7 +339,7 @@ public final class b
     for (paramInt3 = i;; paramInt3 = j)
     {
       paramInt2 = a(paramView, paramInt3, paramInt1);
-      if ((paramInt2 < hh(paramView).length() - 1) && (aK(paramView, paramInt2 + 1)))
+      if ((paramInt2 < hm(paramView).length() - 1) && (aK(paramView, paramInt2 + 1)))
       {
         i = (int)aN(paramView, paramInt2);
         paramInt3 = (int)aT(paramView, paramInt3);
@@ -361,12 +361,12 @@ public final class b
     return i;
   }
   
-  public static CharSequence hh(View paramView)
+  public static CharSequence hm(View paramView)
   {
     AppMethodBeat.i(159899);
     if ((paramView instanceof NeatTextView))
     {
-      paramView = ((NeatTextView)paramView).fSO();
+      paramView = ((NeatTextView)paramView).fXo();
       AppMethodBeat.o(159899);
       return paramView;
     }
@@ -380,7 +380,7 @@ public final class b
     return "";
   }
   
-  public static TextPaint hi(View paramView)
+  public static TextPaint hn(View paramView)
   {
     AppMethodBeat.i(159901);
     if ((paramView instanceof NeatTextView))

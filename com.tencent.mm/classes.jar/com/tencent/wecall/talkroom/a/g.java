@@ -9,9 +9,9 @@ import com.tencent.pb.common.c.b;
 public final class g
   extends d
 {
-  public String ukT;
+  public String uwq;
   
-  public final Object cI(byte[] paramArrayOfByte)
+  public final Object cL(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(62535);
     b.d("MicroMsg.Voip", new Object[] { this.TAG2, "data2Resp" });
@@ -34,7 +34,7 @@ public final class g
     }
   }
   
-  public final String fSQ()
+  public final String fXq()
   {
     return "CsCmd.Cmd_V_CSModifyVoiceGroupInfoReq";
   }

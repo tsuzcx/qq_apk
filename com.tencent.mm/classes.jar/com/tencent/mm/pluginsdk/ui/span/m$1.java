@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.DialogInterface.OnDismissListener;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bs.d;
+import com.tencent.mm.br.d;
 import com.tencent.mm.ui.base.h.c;
 
 final class m$1
@@ -12,13 +12,13 @@ final class m$1
 {
   m$1(DialogInterface.OnDismissListener paramOnDismissListener, String paramString, Context paramContext) {}
   
-  public final void lf(int paramInt)
+  public final void lh(int paramInt)
   {
     AppMethodBeat.i(31921);
-    if (this.FhF != null) {
-      this.FhF.onDismiss(null);
+    if (this.FAd != null) {
+      this.FAd.onDismiss(null);
     }
-    String str1 = this.FhG.replace(" ", "").replace("#", "@");
+    String str1 = this.FAe.replace(" ", "").replace("#", "@");
     switch (paramInt)
     {
     }
@@ -34,7 +34,7 @@ final class m$1
       d.b(localContext, "qqmail", ".ui.ComposeUI", localIntent);
       AppMethodBeat.o(31921);
       return;
-      m.bT(this.val$context, str1);
+      m.bU(this.val$context, str1);
     }
   }
 }

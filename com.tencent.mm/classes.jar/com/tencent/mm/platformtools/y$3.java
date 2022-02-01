@@ -19,14 +19,14 @@ final class y$3
   {
     AppMethodBeat.i(127742);
     paramDialogInterface = new Intent();
-    paramDialogInterface.putExtra("rawUrl", this.iNS);
+    paramDialogInterface.putExtra("rawUrl", this.iQM);
     paramDialogInterface.putExtra("showShare", false);
     paramDialogInterface.putExtra("show_bottom", false);
     paramDialogInterface.putExtra("needRedirect", false);
     paramDialogInterface.putExtra("neverGetA8Key", true);
-    paramDialogInterface.putExtra("hardcode_jspermission", JsapiPermissionWrapper.FnD);
-    paramDialogInterface.putExtra("hardcode_general_ctrl", GeneralControlWrapper.Fnz);
-    a.iRG.i(paramDialogInterface, this.val$context);
+    paramDialogInterface.putExtra("hardcode_jspermission", JsapiPermissionWrapper.FGb);
+    paramDialogInterface.putExtra("hardcode_general_ctrl", GeneralControlWrapper.FFX);
+    a.iUz.i(paramDialogInterface, this.val$context);
     AppMethodBeat.o(127742);
   }
 }

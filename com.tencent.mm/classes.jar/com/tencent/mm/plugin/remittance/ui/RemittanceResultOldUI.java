@@ -10,7 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.fingerprint.b.h;
 import com.tencent.mm.plugin.remittance.a.c;
@@ -20,11 +20,11 @@ import com.tencent.mm.plugin.wallet_core.model.Orders;
 import com.tencent.mm.plugin.wallet_core.model.Orders.Commodity;
 import com.tencent.mm.pluginsdk.ui.span.k;
 import com.tencent.mm.pluginsdk.wallet.PayInfo;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.base.a;
-import com.tencent.mm.wallet_core.ui.e;
+import com.tencent.mm.wallet_core.ui.f;
 import java.util.List;
 
 @a(19)
@@ -33,10 +33,10 @@ public class RemittanceResultOldUI
 {
   private int mPayScene;
   private String mReceiverName;
-  private Orders ygb;
-  private boolean ygc;
+  private Orders yvS;
+  private boolean yvT;
   
-  private void dJT()
+  private void dNl()
   {
     AppMethodBeat.i(68310);
     if (getInput().containsKey("key_realname_guide_helper"))
@@ -53,15 +53,15 @@ public class RemittanceResultOldUI
       AppMethodBeat.o(68310);
       return;
     }
-    dJU();
+    dNm();
     AppMethodBeat.o(68310);
   }
   
-  private void dJU()
+  private void dNm()
   {
     AppMethodBeat.i(68311);
     getProcess().b(this, getInput());
-    new ap().postDelayed(new Runnable()
+    new aq().postDelayed(new Runnable()
     {
       public final void run()
       {
@@ -72,12 +72,12 @@ public class RemittanceResultOldUI
           AppMethodBeat.o(68306);
           return;
         }
-        if ((!bt.isNullOrNil(RemittanceResultOldUI.d(RemittanceResultOldUI.this))) && (!RemittanceResultOldUI.e(RemittanceResultOldUI.this)))
+        if ((!bu.isNullOrNil(RemittanceResultOldUI.d(RemittanceResultOldUI.this))) && (!RemittanceResultOldUI.e(RemittanceResultOldUI.this)))
         {
           Intent localIntent = new Intent();
           localIntent.putExtra("Chat_User", RemittanceResultOldUI.d(RemittanceResultOldUI.this));
           localIntent.putExtra("finish_direct", false);
-          com.tencent.mm.bs.d.f(RemittanceResultOldUI.this, ".ui.chatting.ChattingUI", localIntent);
+          com.tencent.mm.br.d.f(RemittanceResultOldUI.this, ".ui.chatting.ChattingUI", localIntent);
           AppMethodBeat.o(68306);
           return;
         }
@@ -88,7 +88,7 @@ public class RemittanceResultOldUI
     AppMethodBeat.o(68311);
   }
   
-  protected final boolean dJV()
+  protected final boolean dNn()
   {
     return false;
   }
@@ -107,32 +107,32 @@ public class RemittanceResultOldUI
     showHomeBtn(false);
     enableBackMenu(false);
     Object localObject1 = (TextView)findViewById(2131304070);
-    if (this.ygb != null) {
-      ((TextView)localObject1).setText(e.d(this.ygb.dlx, this.ygb.wCF));
+    if (this.yvS != null) {
+      ((TextView)localObject1).setText(f.d(this.yvS.dmz, this.yvS.wSq));
     }
     Object localObject3 = (PayInfo)getInput().getParcelable("key_pay_info");
     if (localObject3 == null)
     {
-      ad.e("MicroMsg.RemittanceResultOldUI", "payInfo is null!!!");
+      ae.e("MicroMsg.RemittanceResultOldUI", "payInfo is null!!!");
       finish();
       AppMethodBeat.o(68309);
       return;
     }
     localObject1 = "";
-    if (((PayInfo)localObject3).htZ != null)
+    if (((PayInfo)localObject3).hwN != null)
     {
-      this.ygc = ((PayInfo)localObject3).htZ.getBoolean("extinfo_key_4");
-      localObject1 = ((PayInfo)localObject3).htZ.getString("extinfo_key_1");
+      this.yvT = ((PayInfo)localObject3).hwN.getBoolean("extinfo_key_4");
+      localObject1 = ((PayInfo)localObject3).hwN.getString("extinfo_key_1");
     }
-    int i = ((PayInfo)localObject3).dCC;
+    int i = ((PayInfo)localObject3).dDH;
     this.mPayScene = i;
     this.mReceiverName = ((String)localObject1);
-    Object localObject2 = e.zf((String)localObject1);
+    Object localObject2 = f.zP((String)localObject1);
     if (i == 31)
     {
       localObject1 = (TextView)findViewById(2131304072);
       localObject2 = getString(2131762525, new Object[] { localObject2 });
-      if (!bt.isNullOrNil((String)localObject2))
+      if (!bu.isNullOrNil((String)localObject2))
       {
         ((TextView)localObject1).setText(k.b(this, (CharSequence)localObject2, ((TextView)localObject1).getTextSize()));
         ((TextView)localObject1).setVisibility(0);
@@ -140,9 +140,9 @@ public class RemittanceResultOldUI
       for (;;)
       {
         findViewById(2131304063).setVisibility(8);
-        if (this.ygb.xYr > 0.0D)
+        if (this.yvS.yoj > 0.0D)
         {
-          localObject1 = getResources().getString(2131762523, new Object[] { e.d(this.ygb.xYr, this.ygb.wCF) });
+          localObject1 = getResources().getString(2131762523, new Object[] { f.d(this.yvS.yoj, this.yvS.wSq) });
           ((TextView)findViewById(2131297953)).setText((CharSequence)localObject1);
           findViewById(2131297954).setVisibility(0);
         }
@@ -154,13 +154,13 @@ public class RemittanceResultOldUI
       }
     }
     localObject1 = "";
-    if (((PayInfo)localObject3).htZ != null) {
-      localObject1 = ((PayInfo)localObject3).htZ.getString("extinfo_key_2");
+    if (((PayInfo)localObject3).hwN != null) {
+      localObject1 = ((PayInfo)localObject3).hwN.getString("extinfo_key_2");
     }
     if ((i != 32) && (i != 33)) {
-      if (!bt.isNullOrNil((String)localObject1))
+      if (!bu.isNullOrNil((String)localObject1))
       {
-        localObject1 = e.aYH((String)localObject1);
+        localObject1 = f.bak((String)localObject1);
         localObject1 = (String)localObject2 + "（" + (String)localObject1 + "）";
       }
     }
@@ -171,7 +171,7 @@ public class RemittanceResultOldUI
       label509:
       TextView localTextView;
       String str1;
-      if (!bt.isNullOrNil((String)localObject1))
+      if (!bu.isNullOrNil((String)localObject1))
       {
         ((TextView)localObject2).setText(k.b(this, getString(2131762524, new Object[] { localObject1 }), ((TextView)localObject2).getTextSize()));
         ((TextView)localObject2).setVisibility(0);
@@ -181,14 +181,14 @@ public class RemittanceResultOldUI
         localObject1 = findViewById(2131304068);
         localObject2 = (TextView)findViewById(2131304069);
         localTextView = (TextView)findViewById(2131304067);
-        str1 = ((PayInfo)localObject3).htZ.getString("extinfo_key_3");
-        String str2 = ((PayInfo)localObject3).htZ.getString("extinfo_key_8");
-        if (bt.isNullOrNil(str1)) {
+        str1 = ((PayInfo)localObject3).hwN.getString("extinfo_key_3");
+        String str2 = ((PayInfo)localObject3).hwN.getString("extinfo_key_8");
+        if (bu.isNullOrNil(str1)) {
           break label806;
         }
         localTextView.setText(k.b(this, str1, localTextView.getTextSize()));
         ((View)localObject1).setVisibility(0);
-        if (bt.isNullOrNil(str2)) {
+        if (bu.isNullOrNil(str2)) {
           break label913;
         }
         ((TextView)localObject2).setText(str2);
@@ -200,14 +200,14 @@ public class RemittanceResultOldUI
         localObject1 = findViewById(2131304065);
         localObject2 = (TextView)findViewById(2131304066);
         localTextView = (TextView)findViewById(2131304064);
-        str1 = ((PayInfo)localObject3).htZ.getString("extinfo_key_6");
-        localObject3 = ((PayInfo)localObject3).htZ.getString("extinfo_key_7");
-        if (!bt.isNullOrNil((String)localObject3))
+        str1 = ((PayInfo)localObject3).hwN.getString("extinfo_key_6");
+        localObject3 = ((PayInfo)localObject3).hwN.getString("extinfo_key_7");
+        if (!bu.isNullOrNil((String)localObject3))
         {
           localTextView.setText(k.b(this, (CharSequence)localObject3, localTextView.getTextSize()));
           localTextView.setVisibility(0);
           j = k;
-          if (!bt.isNullOrNil(str1)) {
+          if (!bu.isNullOrNil(str1)) {
             ((TextView)localObject2).setText(k.b(this, str1, ((TextView)localObject2).getTextSize()));
           }
         }
@@ -231,10 +231,10 @@ public class RemittanceResultOldUI
         label828:
         break;
         label830:
-        if ((i != 5) || (this.ygb.CYk == null) || (this.ygb.CYk.get(0) == null) || (TextUtils.isEmpty(((Orders.Commodity)this.ygb.CYk.get(0)).wCu))) {
+        if ((i != 5) || (this.yvS.DpP == null) || (this.yvS.DpP.get(0) == null) || (TextUtils.isEmpty(((Orders.Commodity)this.yvS.DpP.get(0)).wSf))) {
           break;
         }
-        ((TextView)localObject2).setText(((Orders.Commodity)this.ygb.CYk.get(0)).wCu);
+        ((TextView)localObject2).setText(((Orders.Commodity)this.yvS.DpP.get(0)).wSf);
         break;
         label913:
         i = 1;
@@ -247,16 +247,16 @@ public class RemittanceResultOldUI
   {
     AppMethodBeat.i(68307);
     super.onCreate(paramBundle);
-    this.ygb = ((Orders)getInput().getParcelable("key_orders"));
+    this.yvS = ((Orders)getInput().getParcelable("key_orders"));
     initView();
     if (this.mPayScene == 31)
     {
       paramBundle = "";
-      if (this.ygb.CYk.size() > 0) {
-        paramBundle = ((Orders.Commodity)this.ygb.CYk.get(0)).dlv;
+      if (this.yvS.DpP.size() > 0) {
+        paramBundle = ((Orders.Commodity)this.yvS.DpP.get(0)).dmx;
       }
-      ad.i("MicroMsg.RemittanceResultOldUI", "transId: %s", new Object[] { paramBundle });
-      c.dIB().dIE().iV(paramBundle, this.mReceiverName);
+      ae.i("MicroMsg.RemittanceResultOldUI", "transId: %s", new Object[] { paramBundle });
+      c.dLS().dLV().jb(paramBundle, this.mReceiverName);
     }
     AppMethodBeat.o(68307);
   }
@@ -265,7 +265,7 @@ public class RemittanceResultOldUI
   {
     AppMethodBeat.i(68308);
     if (paramInt == 4) {
-      dJT();
+      dNl();
     }
     boolean bool = super.onKeyUp(paramInt, paramKeyEvent);
     AppMethodBeat.o(68308);
@@ -285,7 +285,7 @@ public class RemittanceResultOldUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.remittance.ui.RemittanceResultOldUI
  * JD-Core Version:    0.7.0.1
  */

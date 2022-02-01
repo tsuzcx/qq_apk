@@ -4,7 +4,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"TAG", "", "component1", "Lcom/tencent/mm/plugin/appbrand/appusage/AppIdentity;", "component2", "", "plugin-appbrand-integration_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"TAG", "", "component1", "Lcom/tencent/mm/plugin/appbrand/appusage/AppIdentity;", "component2", "", "plugin-appbrand-integration_release"})
 public final class h
 {
   public static final String a(AppIdentity paramAppIdentity)
@@ -20,7 +20,7 @@ public final class h
   {
     AppMethodBeat.i(50274);
     p.h(paramAppIdentity, "$this$component2");
-    int i = paramAppIdentity.hQh;
+    int i = paramAppIdentity.hSZ;
     AppMethodBeat.o(50274);
     return i;
   }

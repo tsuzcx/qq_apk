@@ -7,10 +7,10 @@ import java.util.Date;
 
 public class a
 {
-  private static a KAw;
-  private long KAt;
-  private long KAu;
-  private long KAv;
+  private static a KWQ;
+  private long KWN;
+  private long KWO;
+  private long KWP;
   
   private a()
   {
@@ -21,19 +21,19 @@ public class a
     localCalendar.set(12, 0);
     localCalendar.set(13, 0);
     localCalendar.set(14, 0);
-    this.KAu = localCalendar.getTimeInMillis();
+    this.KWO = localCalendar.getTimeInMillis();
     localCalendar = Calendar.getInstance();
     localCalendar.set(5, 1);
     localCalendar.set(11, 0);
     localCalendar.set(12, 0);
     localCalendar.set(13, 0);
     localCalendar.set(14, 0);
-    this.KAv = localCalendar.getTimeInMillis();
-    this.KAt = Calendar.getInstance().getTimeInMillis();
+    this.KWP = localCalendar.getTimeInMillis();
+    this.KWN = Calendar.getInstance().getTimeInMillis();
     AppMethodBeat.o(142754);
   }
   
-  public static long Eq(long paramLong)
+  public static long ES(long paramLong)
   {
     AppMethodBeat.i(142756);
     Calendar localCalendar = Calendar.getInstance();
@@ -56,14 +56,14 @@ public class a
     return l;
   }
   
-  public static a fJG()
+  public static a fNX()
   {
     AppMethodBeat.i(142753);
-    if (KAw == null) {}
+    if (KWQ == null) {}
     try
     {
-      KAw = new a();
-      a locala = KAw;
+      KWQ = new a();
+      a locala = KWQ;
       AppMethodBeat.o(142753);
       return locala;
     }
@@ -76,13 +76,13 @@ public class a
   public final String a(Date paramDate, Context paramContext)
   {
     AppMethodBeat.i(142758);
-    if (paramDate.getTime() >= this.KAu)
+    if (paramDate.getTime() >= this.KWO)
     {
       paramDate = paramContext.getString(2131764412);
       AppMethodBeat.o(142758);
       return paramDate;
     }
-    if (paramDate.getTime() >= this.KAv)
+    if (paramDate.getTime() >= this.KWP)
     {
       paramDate = paramContext.getString(2131764411);
       AppMethodBeat.o(142758);
@@ -96,12 +96,12 @@ public class a
   public final long b(Date paramDate)
   {
     AppMethodBeat.i(142755);
-    if (paramDate.getTime() >= this.KAu)
+    if (paramDate.getTime() >= this.KWO)
     {
       AppMethodBeat.o(142755);
       return 9223372036854775807L;
     }
-    if (paramDate.getTime() >= this.KAv)
+    if (paramDate.getTime() >= this.KWP)
     {
       AppMethodBeat.o(142755);
       return 9223372036854775806L;

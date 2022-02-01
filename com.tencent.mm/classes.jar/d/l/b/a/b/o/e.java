@@ -10,36 +10,36 @@ import java.util.Map;
 
 public final class e
 {
-  public static final e NFO;
-  public static final e NFP;
-  public static final e NFQ;
-  public static final a NFR;
-  private final f NFJ;
-  public final g NFK;
-  public final g NFL;
-  public final Map<String, g> NFM;
-  public final boolean NFN;
+  public static final e OcU;
+  public static final e OcV;
+  public static final e OcW;
+  public static final a OcX;
+  private final f OcP;
+  public final g OcQ;
+  public final g OcR;
+  public final Map<String, g> OcS;
+  public final boolean OcT;
   
   static
   {
     AppMethodBeat.i(61364);
-    NFR = new a((byte)0);
-    NFO = new e(g.NFV, null, ae.emptyMap(), (byte)0);
-    g localg = g.NFU;
-    NFP = new e(localg, localg, ae.emptyMap(), (byte)0);
-    localg = g.NFW;
-    NFQ = new e(localg, localg, ae.emptyMap(), (byte)0);
+    OcX = new a((byte)0);
+    OcU = new e(g.Odb, null, ae.emptyMap(), (byte)0);
+    g localg = g.Oda;
+    OcV = new e(localg, localg, ae.emptyMap(), (byte)0);
+    localg = g.Odc;
+    OcW = new e(localg, localg, ae.emptyMap(), (byte)0);
     AppMethodBeat.o(61364);
   }
   
   private e(g paramg1, g paramg2, Map<String, ? extends g> paramMap)
   {
     AppMethodBeat.i(61365);
-    this.NFK = paramg1;
-    this.NFL = paramg2;
-    this.NFM = paramMap;
-    this.NFN = true;
-    this.NFJ = d.g.O((a)new b(this));
+    this.OcQ = paramg1;
+    this.OcR = paramg2;
+    this.OcS = paramMap;
+    this.OcT = true;
+    this.OcP = d.g.O((a)new b(this));
     AppMethodBeat.o(61365);
   }
   
@@ -51,7 +51,7 @@ public final class e
       if ((paramObject instanceof e))
       {
         paramObject = (e)paramObject;
-        if ((!p.i(this.NFK, paramObject.NFK)) || (!p.i(this.NFL, paramObject.NFL)) || (!p.i(this.NFM, paramObject.NFM)) || (this.NFN != paramObject.NFN)) {}
+        if ((!p.i(this.OcQ, paramObject.OcQ)) || (!p.i(this.OcR, paramObject.OcR)) || (!p.i(this.OcS, paramObject.OcS)) || (this.OcT != paramObject.OcT)) {}
       }
     }
     else
@@ -63,9 +63,9 @@ public final class e
     return false;
   }
   
-  public final boolean guo()
+  public final boolean gyQ()
   {
-    return (e)this == NFP;
+    return (e)this == OcV;
   }
   
   public final int hashCode()
@@ -76,7 +76,7 @@ public final class e
   public final String toString()
   {
     AppMethodBeat.i(61366);
-    String str = "Jsr305State(global=" + this.NFK + ", migration=" + this.NFL + ", user=" + this.NFM + ", enableCompatqualCheckerFrameworkAnnotations=" + this.NFN + ")";
+    String str = "Jsr305State(global=" + this.OcQ + ", migration=" + this.OcR + ", user=" + this.OcS + ", enableCompatqualCheckerFrameworkAnnotations=" + this.OcT + ")";
     AppMethodBeat.o(61366);
     return str;
   }

@@ -4,13 +4,13 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public class GroupToolItem
   implements Parcelable
 {
   public static final Parcelable.Creator<GroupToolItem> CREATOR;
-  public long fMf;
+  public long fOl;
   public String path;
   public String username;
   
@@ -25,7 +25,7 @@ public class GroupToolItem
   {
     this.username = "";
     this.path = "";
-    this.fMf = 0L;
+    this.fOl = 0L;
   }
   
   protected GroupToolItem(Parcel paramParcel)
@@ -33,10 +33,10 @@ public class GroupToolItem
     AppMethodBeat.i(182152);
     this.username = "";
     this.path = "";
-    this.fMf = 0L;
+    this.fOl = 0L;
     this.username = paramParcel.readString();
     this.path = paramParcel.readString();
-    this.fMf = paramParcel.readLong();
+    this.fOl = paramParcel.readLong();
     AppMethodBeat.o(182152);
   }
   
@@ -44,7 +44,7 @@ public class GroupToolItem
   {
     this.username = "";
     this.path = "";
-    this.fMf = 0L;
+    this.fOl = 0L;
     this.username = paramString1;
     this.path = paramString2;
   }
@@ -53,25 +53,25 @@ public class GroupToolItem
   {
     this.username = "";
     this.path = "";
-    this.fMf = 0L;
+    this.fOl = 0L;
     this.username = paramString1;
     this.path = paramString2;
-    this.fMf = paramLong;
+    this.fOl = paramLong;
   }
   
-  public final boolean Yq()
+  public final boolean YA()
   {
-    AppMethodBeat.i(182150);
-    boolean bool = bt.lQ(this.username, "roomaa@app.origin");
-    AppMethodBeat.o(182150);
+    AppMethodBeat.i(217145);
+    boolean bool = bu.lX(this.username, "roomlive@app.origin");
+    AppMethodBeat.o(217145);
     return bool;
   }
   
-  public final boolean Yr()
+  public final boolean Yz()
   {
-    AppMethodBeat.i(213429);
-    boolean bool = bt.lQ(this.username, "roomlive@app.origin");
-    AppMethodBeat.o(213429);
+    AppMethodBeat.i(182150);
+    boolean bool = bu.lX(this.username, "roomaa@app.origin");
+    AppMethodBeat.o(182150);
     return bool;
   }
   
@@ -88,7 +88,7 @@ public class GroupToolItem
       AppMethodBeat.o(182149);
       return false;
     }
-    if (bt.lQ(((GroupToolItem)paramObject).username, this.username))
+    if (bu.lX(((GroupToolItem)paramObject).username, this.username))
     {
       AppMethodBeat.o(182149);
       return true;
@@ -100,7 +100,7 @@ public class GroupToolItem
   public String toString()
   {
     AppMethodBeat.i(182148);
-    String str = "GroupToolItem{username='" + this.username + '\'' + ", path='" + this.path + '\'' + ", updateTime=" + this.fMf + '}';
+    String str = "GroupToolItem{username='" + this.username + '\'' + ", path='" + this.path + '\'' + ", updateTime=" + this.fOl + '}';
     AppMethodBeat.o(182148);
     return str;
   }
@@ -110,7 +110,7 @@ public class GroupToolItem
     AppMethodBeat.i(182151);
     paramParcel.writeString(this.username);
     paramParcel.writeString(this.path);
-    paramParcel.writeLong(this.fMf);
+    paramParcel.writeLong(this.fOl);
     AppMethodBeat.o(182151);
   }
 }

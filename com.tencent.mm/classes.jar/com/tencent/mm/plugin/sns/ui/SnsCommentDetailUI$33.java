@@ -17,13 +17,13 @@ final class SnsCommentDetailUI$33
     AppMethodBeat.i(98573);
     b localb = new b();
     localb.bd(paramView);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/sns/ui/SnsCommentDetailUI$39", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/sns/ui/SnsCommentDetailUI$39", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
     try
     {
       int i = ((Integer)paramView.getTag()).intValue();
       paramView = new Intent();
       paramView.putExtra("sns_label_sns_info", i);
-      com.tencent.mm.plugin.sns.c.a.iRG.u(paramView, this.AbL);
+      com.tencent.mm.plugin.sns.c.a.iUz.u(paramView, this.AsY);
       label74:
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/sns/ui/SnsCommentDetailUI$39", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(98573);

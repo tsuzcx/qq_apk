@@ -21,16 +21,16 @@ public class AppBrandDesktopHalfContainer
   implements View.OnTouchListener, c.a
 {
   private View GG;
-  private c mVS;
-  private Rect mVW;
-  private GyroView mVu;
-  private AppBrandDesktopHalfView mZn;
+  private GyroView naA;
+  private c naY;
+  private Rect nbc;
+  private AppBrandDesktopHalfView nev;
   
   public AppBrandDesktopHalfContainer(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(49724);
-    this.mVW = new Rect();
+    this.nbc = new Rect();
     init(paramContext);
     AppMethodBeat.o(49724);
   }
@@ -39,47 +39,47 @@ public class AppBrandDesktopHalfContainer
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(49725);
-    this.mVW = new Rect();
+    this.nbc = new Rect();
     init(paramContext);
     AppMethodBeat.o(49725);
   }
   
-  private void ec(Context paramContext)
+  private void eg(Context paramContext)
   {
     AppMethodBeat.i(49728);
-    this.mVu = new GyroView(paramContext);
+    this.naA = new GyroView(paramContext);
     paramContext = new FrameLayout.LayoutParams((int)getResources().getDimension(2131166414), (int)getResources().getDimension(2131166413));
     paramContext.gravity = 81;
-    this.mVu.setId(2131300673);
-    this.mVu.setVisibility(8);
-    addView(this.mVu, paramContext);
+    this.naA.setId(2131300673);
+    this.naA.setVisibility(8);
+    addView(this.naA, paramContext);
     AppMethodBeat.o(49728);
   }
   
   private void init(Context paramContext)
   {
     AppMethodBeat.i(49727);
-    this.mZn = new AppBrandDesktopHalfView(paramContext);
-    this.mZn.setId(2131296711);
+    this.nev = new AppBrandDesktopHalfView(paramContext);
+    this.nev.setId(2131296711);
     FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-1, -1);
     localLayoutParams.setMargins(localLayoutParams.leftMargin, localLayoutParams.topMargin, localLayoutParams.rightMargin, localLayoutParams.bottomMargin);
-    this.mZn.setLayoutParams(localLayoutParams);
-    this.GG = this.mZn.findViewById(2131296698);
-    addView(this.mZn);
-    ec(paramContext);
+    this.nev.setLayoutParams(localLayoutParams);
+    this.GG = this.nev.findViewById(2131296698);
+    addView(this.nev);
+    eg(paramContext);
     AppMethodBeat.o(49727);
   }
   
-  public final boolean bCA()
+  public final void bDF() {}
+  
+  public final void bDR() {}
+  
+  public final void bDS() {}
+  
+  public final boolean bDs()
   {
     return false;
   }
-  
-  public final void bCN() {}
-  
-  public final void bCZ() {}
-  
-  public final void bDa() {}
   
   public final void g(View paramView1, View paramView2) {}
   
@@ -90,7 +90,7 @@ public class AppBrandDesktopHalfContainer
   
   public Rect getBackUpFooterRect()
   {
-    return this.mVW;
+    return this.nbc;
   }
   
   public View getBackgroundGLSurfaceView()
@@ -115,12 +115,12 @@ public class AppBrandDesktopHalfContainer
   
   public GyroView getGyroView()
   {
-    return this.mVu;
+    return this.naA;
   }
   
   public com.tencent.mm.plugin.appbrand.widget.header.a.a getHeaderView()
   {
-    return this.mZn;
+    return this.nev;
   }
   
   public View getMaskView()
@@ -130,7 +130,7 @@ public class AppBrandDesktopHalfContainer
   
   public final boolean isFullScreen()
   {
-    if (this.mZn != null) {}
+    if (this.nev != null) {}
     return false;
   }
   
@@ -145,8 +145,8 @@ public class AppBrandDesktopHalfContainer
   {
     AppMethodBeat.i(49733);
     super.onPause();
-    if (this.mZn != null) {
-      this.mZn.dtm = true;
+    if (this.nev != null) {
+      this.nev.dus = true;
     }
     AppMethodBeat.o(49733);
   }
@@ -155,10 +155,10 @@ public class AppBrandDesktopHalfContainer
   {
     AppMethodBeat.i(49732);
     super.onResume();
-    if (this.mZn != null)
+    if (this.nev != null)
     {
-      AppBrandDesktopHalfView localAppBrandDesktopHalfView = this.mZn;
-      localAppBrandDesktopHalfView.dtm = false;
+      AppBrandDesktopHalfView localAppBrandDesktopHalfView = this.nev;
+      localAppBrandDesktopHalfView.dus = false;
       localAppBrandDesktopHalfView.setLayoutFrozen(false);
       localAppBrandDesktopHalfView.postDelayed(new AppBrandDesktopHalfView.14(localAppBrandDesktopHalfView), 10L);
     }
@@ -167,13 +167,13 @@ public class AppBrandDesktopHalfContainer
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(188949);
+    AppMethodBeat.i(223182);
     b localb = new b();
     localb.bd(paramView);
     localb.bd(paramMotionEvent);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/appbrand/widget/desktop/half/AppBrandDesktopHalfContainer", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahq());
+    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/appbrand/widget/desktop/half/AppBrandDesktopHalfContainer", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahF());
     com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/mm/plugin/appbrand/widget/desktop/half/AppBrandDesktopHalfContainer", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
-    AppMethodBeat.o(188949);
+    AppMethodBeat.o(223182);
     return false;
   }
   
@@ -182,9 +182,9 @@ public class AppBrandDesktopHalfContainer
   public void setAnimController(c paramc)
   {
     AppMethodBeat.i(49729);
-    this.mVS = paramc;
-    if (this.mVS != null) {
-      this.mVS.a(this);
+    this.naY = paramc;
+    if (this.naY != null) {
+      this.naY.a(this);
     }
     AppMethodBeat.o(49729);
   }
@@ -195,19 +195,19 @@ public class AppBrandDesktopHalfContainer
   
   public void setFixedHeight(boolean paramBoolean) {}
   
-  public final void wc(int paramInt)
+  public final void wh(int paramInt)
   {
     AppMethodBeat.i(49730);
-    if (this.mZn != null) {
-      this.mZn.wc(paramInt);
+    if (this.nev != null) {
+      this.nev.wh(paramInt);
     }
     AppMethodBeat.o(49730);
   }
   
-  public final void wd(int paramInt)
+  public final void wi(int paramInt)
   {
     AppMethodBeat.i(49731);
-    wc(paramInt);
+    wh(paramInt);
     AppMethodBeat.o(49731);
   }
 }

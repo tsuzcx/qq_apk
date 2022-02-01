@@ -2,25 +2,24 @@ package com.tencent.mm.plugin.downloader.d;
 
 import android.util.Pair;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.d.k;
 import com.tencent.mm.d.l;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.vfs.i;
-import com.tencent.mm.vfs.q;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.vfs.o;
+import com.tencent.mm.vfs.w;
 import java.io.RandomAccessFile;
 
 public final class g
 {
-  private static final k cSn;
+  private static final com.tencent.mm.d.k cSX;
   
   static
   {
     AppMethodBeat.i(88881);
-    cSn = new k(101010256L);
+    cSX = new com.tencent.mm.d.k(101010256L);
     AppMethodBeat.o(88881);
   }
   
-  public static byte[] aac(String paramString)
+  public static byte[] aaT(String paramString)
   {
     AppMethodBeat.i(88880);
     if ((paramString == null) || (paramString.length() <= 0))
@@ -28,11 +27,11 @@ public final class g
       AppMethodBeat.o(88880);
       return null;
     }
-    RandomAccessFile localRandomAccessFile1 = i.dd(paramString, false);
+    RandomAccessFile localRandomAccessFile1 = o.dg(paramString, false);
     if (localRandomAccessFile1.length() == 0L)
     {
       localRandomAccessFile1.close();
-      ad.i("MicroMsg.Channel.ZipEocdCommentTool", "apk file length is zero");
+      ae.i("MicroMsg.Channel.ZipEocdCommentTool", "apk file length is zero");
       AppMethodBeat.o(88880);
       return null;
     }
@@ -40,8 +39,8 @@ public final class g
     {
       try
       {
-        paramString = new com.tencent.mm.vfs.e(paramString);
-        localRandomAccessFile2 = i.dd(q.B(paramString.mUri), false);
+        paramString = new com.tencent.mm.vfs.k(paramString);
+        localRandomAccessFile2 = o.dg(w.B(paramString.mUri), false);
         localRandomAccessFile2.seek(((Long)e.H(paramString).second).longValue() + 22L - 2L);
         paramString = new byte[2];
         localRandomAccessFile2.readFully(paramString);
@@ -56,7 +55,7 @@ public final class g
       {
         RandomAccessFile localRandomAccessFile2;
         int i;
-        ad.e("MicroMsg.Channel.ZipEocdCommentTool", "readComment, error: %s", new Object[] { paramString.getMessage() });
+        ae.e("MicroMsg.Channel.ZipEocdCommentTool", "readComment, error: %s", new Object[] { paramString.getMessage() });
         paramString = null;
         continue;
       }

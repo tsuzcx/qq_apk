@@ -6,7 +6,7 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class NormsgInfoProvider
   extends ContentProvider
@@ -15,59 +15,59 @@ public final class NormsgInfoProvider
   
   static
   {
-    AppMethodBeat.i(219058);
+    AppMethodBeat.i(189706);
     CONTENT_URI = Uri.parse("content://com.tencent.mm.plugin.normsg.NMInfo");
-    AppMethodBeat.o(219058);
+    AppMethodBeat.o(189706);
   }
   
-  private boolean atm(String paramString)
+  private boolean auz(String paramString)
   {
-    AppMethodBeat.i(219055);
+    AppMethodBeat.i(189703);
     try
     {
       String str = getCallingPackage();
-      ad.i("MicroMsg.NormsgIP", "isReqFrom " + str + "; expectPkg " + paramString);
+      ae.i("MicroMsg.NormsgIP", "isReqFrom " + str + "; expectPkg " + paramString);
       if ((str != null) && (str.equals(paramString)))
       {
-        AppMethodBeat.o(219055);
+        AppMethodBeat.o(189703);
         return true;
       }
-      AppMethodBeat.o(219055);
+      AppMethodBeat.o(189703);
       return false;
     }
     catch (Exception paramString)
     {
-      ad.e("MicroMsg.NormsgIP", "isReqFrom error:" + paramString.toString());
-      AppMethodBeat.o(219055);
+      ae.e("MicroMsg.NormsgIP", "isReqFrom error:" + paramString.toString());
+      AppMethodBeat.o(189703);
     }
     return false;
   }
   
-  private Bundle duH()
+  private Bundle dxX()
   {
-    AppMethodBeat.i(219056);
-    if (!atm(b.wty.atn(".!\"f=/%' (3n,-!51;.)")))
+    AppMethodBeat.i(189704);
+    if (!auz(b.wJi.auA(".!\"f=/%' (3n,-!51;.)")))
     {
-      AppMethodBeat.o(219056);
+      AppMethodBeat.o(189704);
       return null;
     }
     for (;;)
     {
       try
       {
-        String str = com.tencent.mm.plugin.normsg.a.b.wtJ.duU();
+        String str = com.tencent.mm.plugin.normsg.a.b.wJt.dyk();
         if (str == null)
         {
           str = "";
           Bundle localBundle = new Bundle();
           localBundle.putString("STR_RESULT", str);
-          AppMethodBeat.o(219056);
+          AppMethodBeat.o(189704);
           return localBundle;
         }
       }
       catch (Throwable localThrowable)
       {
-        AppMethodBeat.o(219056);
+        AppMethodBeat.o(189704);
         return null;
       }
     }
@@ -75,16 +75,16 @@ public final class NormsgInfoProvider
   
   public final Bundle call(String paramString1, String paramString2, Bundle paramBundle)
   {
-    AppMethodBeat.i(219057);
-    ad.i("MicroMsg.NormsgIP", "invoke: %s, with arg: %s", new Object[] { paramString1, paramString2 });
+    AppMethodBeat.i(189705);
+    ae.i("MicroMsg.NormsgIP", "invoke: %s, with arg: %s", new Object[] { paramString1, paramString2 });
     if ("m0".equals(paramString1))
     {
-      paramString1 = duH();
-      AppMethodBeat.o(219057);
+      paramString1 = dxX();
+      AppMethodBeat.o(189705);
       return paramString1;
     }
-    ad.w("MicroMsg.NormsgIP", "unknown method: %s", new Object[] { paramString1 });
-    AppMethodBeat.o(219057);
+    ae.w("MicroMsg.NormsgIP", "unknown method: %s", new Object[] { paramString1 });
+    AppMethodBeat.o(189705);
     return null;
   }
   
@@ -105,9 +105,9 @@ public final class NormsgInfoProvider
   
   public final boolean onCreate()
   {
-    AppMethodBeat.i(219054);
-    com.tencent.mm.plugin.normsg.a.b.a(b.wty);
-    AppMethodBeat.o(219054);
+    AppMethodBeat.i(189702);
+    com.tencent.mm.plugin.normsg.a.b.a(b.wJi);
+    AppMethodBeat.o(189702);
     return true;
   }
   

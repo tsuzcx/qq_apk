@@ -13,9 +13,9 @@ public final class JsApiNavigateToDevMiniProgram
   private static final int CTRL_INDEX = 351;
   private static final String NAME = "navigateToDevMiniProgram";
   
-  protected final c bkg()
+  protected final c bkP()
   {
-    return l.kWp;
+    return l.kZX;
   }
   
   static final class DevPkgInfo
@@ -23,9 +23,9 @@ public final class JsApiNavigateToDevMiniProgram
   {
     public static final Parcelable.Creator<DevPkgInfo> CREATOR;
     String appId;
-    String dJJ;
-    String dJK;
-    String kWb;
+    String dKY;
+    String dKZ;
+    String kZJ;
     
     static
     {
@@ -40,9 +40,9 @@ public final class JsApiNavigateToDevMiniProgram
     {
       AppMethodBeat.i(46625);
       this.appId = paramParcel.readString();
-      this.dJJ = paramParcel.readString();
-      this.dJK = paramParcel.readString();
-      this.kWb = paramParcel.readString();
+      this.dKY = paramParcel.readString();
+      this.dKZ = paramParcel.readString();
+      this.kZJ = paramParcel.readString();
       AppMethodBeat.o(46625);
     }
     
@@ -55,9 +55,9 @@ public final class JsApiNavigateToDevMiniProgram
     {
       AppMethodBeat.i(46624);
       paramParcel.writeString(this.appId);
-      paramParcel.writeString(this.dJJ);
-      paramParcel.writeString(this.dJK);
-      paramParcel.writeString(this.kWb);
+      paramParcel.writeString(this.dKY);
+      paramParcel.writeString(this.dKZ);
+      paramParcel.writeString(this.kZJ);
       AppMethodBeat.o(46624);
     }
   }

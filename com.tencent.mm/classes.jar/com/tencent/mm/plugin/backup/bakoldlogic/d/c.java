@@ -1,51 +1,44 @@
 package com.tencent.mm.plugin.backup.bakoldlogic.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.deviceinfo.ae;
-import com.tencent.mm.model.ak;
+import com.tencent.mm.model.al;
 import com.tencent.mm.model.b;
 import com.tencent.mm.modelvideo.t;
 import com.tencent.mm.pluginsdk.model.app.d;
 import com.tencent.mm.pluginsdk.model.app.j;
 import com.tencent.mm.sdk.e.k.a;
 import com.tencent.mm.sdk.e.m;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.bp;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.aj;
 import com.tencent.mm.storage.bq;
-import com.tencent.mm.storage.cc;
+import com.tencent.mm.storage.br;
+import com.tencent.mm.storage.cd;
+import com.tencent.mm.storage.emotion.f;
 import com.tencent.mm.storagebase.g;
-import com.tencent.mm.storagebase.g.a;
 import com.tencent.mm.storagebase.h;
-import com.tencent.mm.storagebase.h.a;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Queue;
-import java.util.Set;
 
 public final class c
 {
-  String gBm;
-  public h gBq = null;
-  ai nAd;
-  bp nAe;
-  com.tencent.mm.plugin.messenger.foundation.a.a.i nAf;
-  bq nAg;
-  com.tencent.mm.aw.i nAh;
-  com.tencent.mm.storage.emotion.f nAi;
-  public com.tencent.mm.plugin.messenger.foundation.a.a.l nAj;
-  t nAk;
-  ak nAl;
-  public com.tencent.mm.pluginsdk.model.app.l nAm;
-  public j nAn;
-  d nAo;
-  cc nCQ;
-  g nCR = null;
-  Boolean nCS = null;
+  String gDT;
+  public h gDX = null;
+  com.tencent.mm.plugin.messenger.foundation.a.a.i nFA;
+  br nFB;
+  com.tencent.mm.av.i nFC;
+  f nFD;
+  public com.tencent.mm.plugin.messenger.foundation.a.a.l nFE;
+  t nFF;
+  al nFG;
+  public com.tencent.mm.pluginsdk.model.app.l nFH;
+  public j nFI;
+  d nFJ;
+  aj nFy;
+  bq nFz;
+  cd nIl;
+  g nIm = null;
+  Boolean nIn = null;
   public int uin = 0;
   
-  public final t aMJ()
+  public final t aNh()
   {
     AppMethodBeat.i(22089);
     if (this.uin == 0)
@@ -54,12 +47,12 @@ public final class c
       AppMethodBeat.o(22089);
       throw ((Throwable)localObject);
     }
-    Object localObject = this.nAk;
+    Object localObject = this.nFF;
     AppMethodBeat.o(22089);
     return localObject;
   }
   
-  public final String aNE()
+  public final String aOc()
   {
     AppMethodBeat.i(22090);
     if (this.uin == 0)
@@ -68,12 +61,12 @@ public final class c
       AppMethodBeat.o(22090);
       throw ((Throwable)localObject);
     }
-    Object localObject = this.gBm + "voice/";
+    Object localObject = this.gDT + "voice/";
     AppMethodBeat.o(22090);
     return localObject;
   }
   
-  public final ai ajl()
+  public final aj ajA()
   {
     AppMethodBeat.i(22082);
     if (this.uin == 0)
@@ -82,40 +75,12 @@ public final class c
       AppMethodBeat.o(22082);
       throw ((Throwable)localObject);
     }
-    Object localObject = this.nAd;
+    Object localObject = this.nFy;
     AppMethodBeat.o(22082);
     return localObject;
   }
   
-  public final String azC()
-  {
-    AppMethodBeat.i(22091);
-    if (this.uin == 0)
-    {
-      localObject = new b();
-      AppMethodBeat.o(22091);
-      throw ((Throwable)localObject);
-    }
-    Object localObject = this.gBm + "voice2/";
-    AppMethodBeat.o(22091);
-    return localObject;
-  }
-  
-  public final String azF()
-  {
-    AppMethodBeat.i(22092);
-    if (this.uin == 0)
-    {
-      localObject = new b();
-      AppMethodBeat.o(22092);
-      throw ((Throwable)localObject);
-    }
-    Object localObject = this.gBm + "emoji/";
-    AppMethodBeat.o(22092);
-    return localObject;
-  }
-  
-  public final bp azp()
+  public final bq azF()
   {
     AppMethodBeat.i(22083);
     if (this.uin == 0)
@@ -124,12 +89,12 @@ public final class c
       AppMethodBeat.o(22083);
       throw ((Throwable)localObject);
     }
-    Object localObject = this.nAe;
+    Object localObject = this.nFz;
     AppMethodBeat.o(22083);
     return localObject;
   }
   
-  public final com.tencent.mm.plugin.messenger.foundation.a.a.i azs()
+  public final com.tencent.mm.plugin.messenger.foundation.a.a.i azI()
   {
     AppMethodBeat.i(22084);
     if (this.uin == 0)
@@ -138,12 +103,12 @@ public final class c
       AppMethodBeat.o(22084);
       throw ((Throwable)localObject);
     }
-    Object localObject = this.nAf;
+    Object localObject = this.nFA;
     AppMethodBeat.o(22084);
     return localObject;
   }
   
-  public final bq azv()
+  public final br azL()
   {
     AppMethodBeat.i(22085);
     if (this.uin == 0)
@@ -152,12 +117,12 @@ public final class c
       AppMethodBeat.o(22085);
       throw ((Throwable)localObject);
     }
-    Object localObject = this.nAg;
+    Object localObject = this.nFB;
     AppMethodBeat.o(22085);
     return localObject;
   }
   
-  public final ak azz()
+  public final al azP()
   {
     AppMethodBeat.i(22088);
     if (this.uin == 0)
@@ -166,12 +131,40 @@ public final class c
       AppMethodBeat.o(22088);
       throw ((Throwable)localObject);
     }
-    Object localObject = this.nAl;
+    Object localObject = this.nFG;
     AppMethodBeat.o(22088);
     return localObject;
   }
   
-  public final com.tencent.mm.aw.i bIV()
+  public final String azS()
+  {
+    AppMethodBeat.i(22091);
+    if (this.uin == 0)
+    {
+      localObject = new b();
+      AppMethodBeat.o(22091);
+      throw ((Throwable)localObject);
+    }
+    Object localObject = this.gDT + "voice2/";
+    AppMethodBeat.o(22091);
+    return localObject;
+  }
+  
+  public final String azV()
+  {
+    AppMethodBeat.i(22092);
+    if (this.uin == 0)
+    {
+      localObject = new b();
+      AppMethodBeat.o(22092);
+      throw ((Throwable)localObject);
+    }
+    Object localObject = this.gDT + "emoji/";
+    AppMethodBeat.o(22092);
+    return localObject;
+  }
+  
+  public final com.tencent.mm.av.i bJT()
   {
     AppMethodBeat.i(22086);
     if (this.uin == 0)
@@ -180,12 +173,12 @@ public final class c
       AppMethodBeat.o(22086);
       throw ((Throwable)localObject);
     }
-    Object localObject = this.nAh;
+    Object localObject = this.nFC;
     AppMethodBeat.o(22086);
     return localObject;
   }
   
-  public final com.tencent.mm.storage.emotion.f bIW()
+  public final f bJU()
   {
     AppMethodBeat.i(22087);
     if (this.uin == 0)
@@ -194,12 +187,12 @@ public final class c
       AppMethodBeat.o(22087);
       throw ((Throwable)localObject);
     }
-    Object localObject = this.nAi;
+    Object localObject = this.nFD;
     AppMethodBeat.o(22087);
     return localObject;
   }
   
-  public final d bIX()
+  public final d bJV()
   {
     AppMethodBeat.i(22093);
     if (this.uin == 0)
@@ -208,39 +201,39 @@ public final class c
       AppMethodBeat.o(22093);
       throw ((Throwable)localObject);
     }
-    Object localObject = this.nAo;
+    Object localObject = this.nFJ;
     AppMethodBeat.o(22093);
     return localObject;
   }
   
-  public final void bJN()
+  public final void bKL()
   {
     AppMethodBeat.i(22094);
-    ad.i("MicroMsg.BakOldTempStorage", "closeDB isTempDb:%s datadb:%s memdb:%s %s", new Object[] { this.nCS, this.gBq, this.nCR, bt.flS() });
-    if ((this.nCS != null) && (!this.nCS.booleanValue()))
+    com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.BakOldTempStorage", "closeDB isTempDb:%s datadb:%s memdb:%s %s", new Object[] { this.nIn, this.gDX, this.nIm, bu.fpN() });
+    if ((this.nIn != null) && (!this.nIn.booleanValue()))
     {
-      this.nCS = null;
+      this.nIn = null;
       AppMethodBeat.o(22094);
       return;
     }
-    if (this.gBq != null)
+    if (this.gDX != null)
     {
-      ad.i("MicroMsg.BakOldTempStorage", "closeDB true DB[%s]!!! ", new Object[] { this.gBq });
-      this.gBq.closeDB();
-      this.gBq = null;
+      com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.BakOldTempStorage", "closeDB true DB[%s]!!! ", new Object[] { this.gDX });
+      this.gDX.closeDB();
+      this.gDX = null;
     }
-    if (this.nCR != null)
+    if (this.nIm != null)
     {
-      this.nCR.closeDB();
-      this.nCR = null;
+      this.nIm.closeDB();
+      this.nIm = null;
     }
-    this.nCS = null;
+    this.nIn = null;
     AppMethodBeat.o(22094);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.bakoldlogic.d.c
  * JD-Core Version:    0.7.0.1
  */

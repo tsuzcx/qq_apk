@@ -1,18 +1,18 @@
 package com.tencent.mm.plugin.location.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.azy;
-import com.tencent.mm.protocal.protobuf.azz;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.bao;
+import com.tencent.mm.protocal.protobuf.bap;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class g
   extends n
@@ -20,31 +20,31 @@ public final class g
 {
   private f callback;
   public String country;
-  public String ePu;
-  public String ePv;
+  public String eRf;
+  public String eRg;
   private b rr;
   
   public g(double paramDouble1, double paramDouble2)
   {
     AppMethodBeat.i(182046);
     Object localObject = new b.a();
-    ((b.a)localObject).hNM = new azy();
-    ((b.a)localObject).hNN = new azz();
+    ((b.a)localObject).hQF = new bao();
+    ((b.a)localObject).hQG = new bap();
     ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/getcurlocation";
     ((b.a)localObject).funcId = 665;
-    ((b.a)localObject).hNO = 0;
+    ((b.a)localObject).hQH = 0;
     ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).aDC();
-    localObject = (azy)this.rr.hNK.hNQ;
-    ((azy)localObject).FIc = paramDouble1;
-    ((azy)localObject).FIb = paramDouble2;
-    ad.d("MicroMsg.NetSceneGetCurLocation", "latitude:" + paramDouble1 + ", longitude:" + paramDouble2);
+    this.rr = ((b.a)localObject).aDS();
+    localObject = (bao)this.rr.hQD.hQJ;
+    ((bao)localObject).Gay = paramDouble1;
+    ((bao)localObject).Gax = paramDouble2;
+    ae.d("MicroMsg.NetSceneGetCurLocation", "latitude:" + paramDouble1 + ", longitude:" + paramDouble2);
     AppMethodBeat.o(182046);
   }
   
-  public final azz dga()
+  public final bap diZ()
   {
-    return (azz)this.rr.hNL.hNQ;
+    return (bap)this.rr.hQE.hQJ;
   }
   
   public final int doScene(e parame, f paramf)
@@ -64,13 +64,13 @@ public final class g
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(182048);
-    ad.d("MicroMsg.NetSceneGetCurLocation", "onGYNetEnd  errType:" + paramInt2 + " errCode:" + paramInt3);
+    ae.d("MicroMsg.NetSceneGetCurLocation", "onGYNetEnd  errType:" + paramInt2 + " errCode:" + paramInt3);
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      paramq = (azz)this.rr.hNL.hNQ;
-      this.ePv = paramq.jde;
-      this.country = paramq.jdl;
-      this.ePu = paramq.jdd;
+      paramq = (bap)this.rr.hQE.hQJ;
+      this.eRg = paramq.jfX;
+      this.country = paramq.jge;
+      this.eRf = paramq.jfW;
     }
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(182048);
@@ -78,7 +78,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.location.model.g
  * JD-Core Version:    0.7.0.1
  */

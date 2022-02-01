@@ -12,8 +12,8 @@ public final class e
   extends AbstractCursor
   implements d
 {
-  private d IPu;
-  public d[] IPv;
+  private d Jkc;
+  public d[] Jkd;
   private DataSetObserver mObserver;
   
   public e(d[] paramArrayOfd)
@@ -35,12 +35,12 @@ public final class e
         AppMethodBeat.o(133445);
       }
     };
-    this.IPv = paramArrayOfd;
-    this.IPu = paramArrayOfd[0];
-    while (i < this.IPv.length)
+    this.Jkd = paramArrayOfd;
+    this.Jkc = paramArrayOfd[0];
+    while (i < this.Jkd.length)
     {
-      if (this.IPv[i] != null) {
-        this.IPv[i].registerDataSetObserver(this.mObserver);
+      if (this.Jkd[i] != null) {
+        this.Jkd[i].registerDataSetObserver(this.mObserver);
       }
       i += 1;
     }
@@ -50,12 +50,12 @@ public final class e
   public final void a(f.a parama)
   {
     AppMethodBeat.i(133465);
-    int j = this.IPv.length;
+    int j = this.Jkd.length;
     int i = 0;
     while (i < j)
     {
-      if (this.IPv[i] != null) {
-        this.IPv[i].a(parama);
+      if (this.Jkd[i] != null) {
+        this.Jkd[i].a(parama);
       }
       i += 1;
     }
@@ -65,16 +65,16 @@ public final class e
   public final boolean a(Object paramObject, a parama)
   {
     AppMethodBeat.i(133469);
-    int j = this.IPv.length;
+    int j = this.Jkd.length;
     int i = 0;
     boolean bool2;
     for (boolean bool1 = false; i < j; bool1 = bool2)
     {
       bool2 = bool1;
-      if (this.IPv[i] != null)
+      if (this.Jkd[i] != null)
       {
         bool2 = bool1;
-        if (this.IPv[i].a(paramObject, parama)) {
+        if (this.Jkd[i].a(paramObject, parama)) {
           bool2 = true;
         }
       }
@@ -84,19 +84,19 @@ public final class e
     return bool1;
   }
   
-  public final boolean abi(int paramInt)
+  public final boolean abQ(int paramInt)
   {
     AppMethodBeat.i(133471);
-    int j = this.IPv.length;
+    int j = this.Jkd.length;
     boolean bool1 = true;
     int i = 0;
     while (i < j)
     {
       boolean bool2 = bool1;
-      if (this.IPv[i] != null)
+      if (this.Jkd[i] != null)
       {
         bool2 = bool1;
-        if (!this.IPv[i].abi(paramInt)) {
+        if (!this.Jkd[i].abQ(paramInt)) {
           bool2 = false;
         }
       }
@@ -107,19 +107,19 @@ public final class e
     return bool1;
   }
   
-  public final a abj(int paramInt)
+  public final a abR(int paramInt)
   {
     AppMethodBeat.i(133468);
-    int k = this.IPv.length;
+    int k = this.Jkd.length;
     int j = 0;
     int i = paramInt;
     paramInt = j;
     while (paramInt < k)
     {
-      j = this.IPv[paramInt].getCount();
+      j = this.Jkd[paramInt].getCount();
       if (i < j)
       {
-        a locala = this.IPv[paramInt].abj(i);
+        a locala = this.Jkd[paramInt].abR(i);
         AppMethodBeat.o(133468);
         return locala;
       }
@@ -130,15 +130,15 @@ public final class e
     return null;
   }
   
-  public final void abk(int paramInt)
+  public final void abS(int paramInt)
   {
     AppMethodBeat.i(133474);
-    int j = this.IPv.length;
+    int j = this.Jkd.length;
     int i = 0;
     while (i < j)
     {
-      if (this.IPv[i] != null) {
-        this.IPv[i].abk(paramInt);
+      if (this.Jkd[i] != null) {
+        this.Jkd[i].abS(paramInt);
       }
       i += 1;
     }
@@ -148,12 +148,12 @@ public final class e
   public final void close()
   {
     AppMethodBeat.i(133459);
-    int j = this.IPv.length;
+    int j = this.Jkd.length;
     int i = 0;
     while (i < j)
     {
-      if (this.IPv[i] != null) {
-        this.IPv[i].close();
+      if (this.Jkd[i] != null) {
+        this.Jkd[i].close();
       }
       i += 1;
     }
@@ -163,19 +163,19 @@ public final class e
   
   public final void copyStringToBuffer(int paramInt, CharArrayBuffer paramCharArrayBuffer) {}
   
-  public final boolean dX(Object paramObject)
+  public final boolean dY(Object paramObject)
   {
     AppMethodBeat.i(133472);
-    int j = this.IPv.length;
+    int j = this.Jkd.length;
     int i = 0;
     boolean bool2;
     for (boolean bool1 = false; i < j; bool1 = bool2)
     {
       bool2 = bool1;
-      if (this.IPv[i] != null)
+      if (this.Jkd[i] != null)
       {
         bool2 = bool1;
-        if (this.IPv[i].dX(paramObject)) {
+        if (this.Jkd[i].dY(paramObject)) {
           bool2 = true;
         }
       }
@@ -185,10 +185,10 @@ public final class e
     return bool1;
   }
   
-  public final a dY(Object paramObject)
+  public final a dZ(Object paramObject)
   {
     AppMethodBeat.i(133473);
-    paramObject = this.IPu.dY(paramObject);
+    paramObject = this.Jkc.dZ(paramObject);
     AppMethodBeat.o(133473);
     return paramObject;
   }
@@ -196,12 +196,12 @@ public final class e
   public final void deactivate()
   {
     AppMethodBeat.i(133458);
-    int j = this.IPv.length;
+    int j = this.Jkd.length;
     int i = 0;
     while (i < j)
     {
-      if (this.IPv[i] != null) {
-        this.IPv[i].deactivate();
+      if (this.Jkd[i] != null) {
+        this.Jkd[i].deactivate();
       }
       i += 1;
     }
@@ -209,15 +209,15 @@ public final class e
     AppMethodBeat.o(133458);
   }
   
-  public final SparseArray<Object>[] ftH()
+  public final SparseArray<Object>[] fxI()
   {
     AppMethodBeat.i(133470);
-    int j = this.IPv.length;
+    int j = this.Jkd.length;
     SparseArray[] arrayOfSparseArray = new SparseArray[j];
     int i = 0;
     if (i < j)
     {
-      Object localObject = this.IPv[i].ftH();
+      Object localObject = this.Jkd[i].fxI();
       if (localObject != null) {}
       for (localObject = localObject[0];; localObject = null)
       {
@@ -230,24 +230,24 @@ public final class e
     return arrayOfSparseArray;
   }
   
-  public final HashMap ftI()
+  public final HashMap fxJ()
   {
     return null;
   }
   
-  public final boolean ftJ()
+  public final boolean fxK()
   {
     AppMethodBeat.i(133467);
-    int j = this.IPv.length;
+    int j = this.Jkd.length;
     boolean bool1 = true;
     int i = 0;
     while (i < j)
     {
       boolean bool2 = bool1;
-      if (this.IPv[i] != null)
+      if (this.Jkd[i] != null)
       {
         bool2 = bool1;
-        if (!this.IPv[i].ftJ()) {
+        if (!this.Jkd[i].fxK()) {
           bool2 = false;
         }
       }
@@ -261,7 +261,7 @@ public final class e
   public final byte[] getBlob(int paramInt)
   {
     AppMethodBeat.i(133456);
-    byte[] arrayOfByte = this.IPu.getBlob(paramInt);
+    byte[] arrayOfByte = this.Jkc.getBlob(paramInt);
     AppMethodBeat.o(133456);
     return arrayOfByte;
   }
@@ -269,9 +269,9 @@ public final class e
   public final String[] getColumnNames()
   {
     AppMethodBeat.i(133457);
-    if (this.IPu != null)
+    if (this.Jkc != null)
     {
-      String[] arrayOfString = this.IPu.getColumnNames();
+      String[] arrayOfString = this.Jkc.getColumnNames();
       AppMethodBeat.o(133457);
       return arrayOfString;
     }
@@ -282,14 +282,14 @@ public final class e
   public final int getCount()
   {
     AppMethodBeat.i(133447);
-    int m = this.IPv.length;
+    int m = this.Jkd.length;
     int i = 0;
     int k;
     for (int j = 0; i < m; j = k)
     {
       k = j;
-      if (this.IPv[i] != null) {
-        k = j + this.IPv[i].getCount();
+      if (this.Jkd[i] != null) {
+        k = j + this.Jkd[i].getCount();
       }
       i += 1;
     }
@@ -300,7 +300,7 @@ public final class e
   public final double getDouble(int paramInt)
   {
     AppMethodBeat.i(133454);
-    double d = this.IPu.getDouble(paramInt);
+    double d = this.Jkc.getDouble(paramInt);
     AppMethodBeat.o(133454);
     return d;
   }
@@ -308,7 +308,7 @@ public final class e
   public final float getFloat(int paramInt)
   {
     AppMethodBeat.i(133453);
-    float f = this.IPu.getFloat(paramInt);
+    float f = this.Jkc.getFloat(paramInt);
     AppMethodBeat.o(133453);
     return f;
   }
@@ -316,7 +316,7 @@ public final class e
   public final int getInt(int paramInt)
   {
     AppMethodBeat.i(133451);
-    paramInt = this.IPu.getInt(paramInt);
+    paramInt = this.Jkc.getInt(paramInt);
     AppMethodBeat.o(133451);
     return paramInt;
   }
@@ -324,7 +324,7 @@ public final class e
   public final long getLong(int paramInt)
   {
     AppMethodBeat.i(133452);
-    long l = this.IPu.getLong(paramInt);
+    long l = this.Jkc.getLong(paramInt);
     AppMethodBeat.o(133452);
     return l;
   }
@@ -332,7 +332,7 @@ public final class e
   public final short getShort(int paramInt)
   {
     AppMethodBeat.i(133450);
-    short s = this.IPu.getShort(paramInt);
+    short s = this.Jkc.getShort(paramInt);
     AppMethodBeat.o(133450);
     return s;
   }
@@ -340,7 +340,7 @@ public final class e
   public final String getString(int paramInt)
   {
     AppMethodBeat.i(133449);
-    String str = this.IPu.getString(paramInt);
+    String str = this.Jkc.getString(paramInt);
     AppMethodBeat.o(133449);
     return str;
   }
@@ -348,7 +348,7 @@ public final class e
   public final boolean isNull(int paramInt)
   {
     AppMethodBeat.i(133455);
-    boolean bool = this.IPu.isNull(paramInt);
+    boolean bool = this.Jkc.isNull(paramInt);
     AppMethodBeat.o(133455);
     return bool;
   }
@@ -356,8 +356,8 @@ public final class e
   public final boolean onMove(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(133448);
-    this.IPu = null;
-    int k = this.IPv.length;
+    this.Jkc = null;
+    int k = this.Jkd.length;
     paramInt1 = 0;
     int j;
     for (int i = 0;; i = j)
@@ -365,23 +365,23 @@ public final class e
       if (paramInt1 < k)
       {
         j = i;
-        if (this.IPv[paramInt1] == null) {
+        if (this.Jkd[paramInt1] == null) {
           break label110;
         }
-        if (paramInt2 < this.IPv[paramInt1].getCount() + i) {
-          this.IPu = this.IPv[paramInt1];
+        if (paramInt2 < this.Jkd[paramInt1].getCount() + i) {
+          this.Jkc = this.Jkd[paramInt1];
         }
       }
       else
       {
-        if (this.IPu == null) {
+        if (this.Jkc == null) {
           break;
         }
-        boolean bool = this.IPu.moveToPosition(paramInt2 - i);
+        boolean bool = this.Jkc.moveToPosition(paramInt2 - i);
         AppMethodBeat.o(133448);
         return bool;
       }
-      j = i + this.IPv[paramInt1].getCount();
+      j = i + this.Jkd[paramInt1].getCount();
       label110:
       paramInt1 += 1;
     }
@@ -392,12 +392,12 @@ public final class e
   public final void registerContentObserver(ContentObserver paramContentObserver)
   {
     AppMethodBeat.i(133460);
-    int j = this.IPv.length;
+    int j = this.Jkd.length;
     int i = 0;
     while (i < j)
     {
-      if (this.IPv[i] != null) {
-        this.IPv[i].registerContentObserver(paramContentObserver);
+      if (this.Jkd[i] != null) {
+        this.Jkd[i].registerContentObserver(paramContentObserver);
       }
       i += 1;
     }
@@ -407,12 +407,12 @@ public final class e
   public final void registerDataSetObserver(DataSetObserver paramDataSetObserver)
   {
     AppMethodBeat.i(133462);
-    int j = this.IPv.length;
+    int j = this.Jkd.length;
     int i = 0;
     while (i < j)
     {
-      if (this.IPv[i] != null) {
-        this.IPv[i].registerDataSetObserver(paramDataSetObserver);
+      if (this.Jkd[i] != null) {
+        this.Jkd[i].registerDataSetObserver(paramDataSetObserver);
       }
       i += 1;
     }
@@ -422,11 +422,11 @@ public final class e
   public final boolean requery()
   {
     AppMethodBeat.i(133464);
-    int j = this.IPv.length;
+    int j = this.Jkd.length;
     int i = 0;
     while (i < j)
     {
-      if ((this.IPv[i] != null) && (!this.IPv[i].requery()))
+      if ((this.Jkd[i] != null) && (!this.Jkd[i].requery()))
       {
         AppMethodBeat.o(133464);
         return false;
@@ -440,12 +440,12 @@ public final class e
   public final void unregisterContentObserver(ContentObserver paramContentObserver)
   {
     AppMethodBeat.i(133461);
-    int j = this.IPv.length;
+    int j = this.Jkd.length;
     int i = 0;
     while (i < j)
     {
-      if (this.IPv[i] != null) {
-        this.IPv[i].unregisterContentObserver(paramContentObserver);
+      if (this.Jkd[i] != null) {
+        this.Jkd[i].unregisterContentObserver(paramContentObserver);
       }
       i += 1;
     }
@@ -455,27 +455,27 @@ public final class e
   public final void unregisterDataSetObserver(DataSetObserver paramDataSetObserver)
   {
     AppMethodBeat.i(133463);
-    int j = this.IPv.length;
+    int j = this.Jkd.length;
     int i = 0;
     while (i < j)
     {
-      if (this.IPv[i] != null) {
-        this.IPv[i].unregisterDataSetObserver(paramDataSetObserver);
+      if (this.Jkd[i] != null) {
+        this.Jkd[i].unregisterDataSetObserver(paramDataSetObserver);
       }
       i += 1;
     }
     AppMethodBeat.o(133463);
   }
   
-  public final void wS(boolean paramBoolean)
+  public final void xa(boolean paramBoolean)
   {
     AppMethodBeat.i(133466);
-    int j = this.IPv.length;
+    int j = this.Jkd.length;
     int i = 0;
     while (i < j)
     {
-      if (this.IPv[i] != null) {
-        this.IPv[i].wS(paramBoolean);
+      if (this.Jkd[i] != null) {
+        this.Jkd[i].xa(paramBoolean);
       }
       i += 1;
     }

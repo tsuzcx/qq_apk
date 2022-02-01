@@ -3,113 +3,97 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class bon
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public int FHr;
-  public String FpZ;
-  public long GJf;
-  public String GJh;
-  public int GJj;
-  public int GJk;
-  public String GJl;
-  public String GyY;
-  public int mrl;
-  public int oxC;
-  public String ozd;
-  public String pkr;
-  public int state;
-  public String vjr;
-  public String xSC;
+  public String HbQ;
+  public String HbR;
+  public String HbS;
+  public String HbT;
+  public String HbU;
+  public String HbV;
+  public String HbW;
+  public String hnD;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(72506);
+    AppMethodBeat.i(91521);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.GyY != null) {
-        paramVarArgs.d(1, this.GyY);
+      if (this.HbQ != null) {
+        paramVarArgs.d(1, this.HbQ);
       }
-      if (this.FpZ != null) {
-        paramVarArgs.d(2, this.FpZ);
+      if (this.HbR != null) {
+        paramVarArgs.d(2, this.HbR);
       }
-      paramVarArgs.aY(3, this.GJf);
-      paramVarArgs.aS(4, this.state);
-      paramVarArgs.aS(5, this.FHr);
-      paramVarArgs.aS(6, this.oxC);
-      paramVarArgs.aS(7, this.GJj);
-      paramVarArgs.aS(8, this.GJk);
-      if (this.GJl != null) {
-        paramVarArgs.d(9, this.GJl);
+      if (this.hnD != null) {
+        paramVarArgs.d(3, this.hnD);
       }
-      if (this.ozd != null) {
-        paramVarArgs.d(10, this.ozd);
+      if (this.HbS != null) {
+        paramVarArgs.d(4, this.HbS);
       }
-      if (this.vjr != null) {
-        paramVarArgs.d(11, this.vjr);
+      if (this.HbT != null) {
+        paramVarArgs.d(5, this.HbT);
       }
-      if (this.pkr != null) {
-        paramVarArgs.d(12, this.pkr);
+      if (this.HbU != null) {
+        paramVarArgs.d(6, this.HbU);
       }
-      if (this.xSC != null) {
-        paramVarArgs.d(13, this.xSC);
+      if (this.HbV != null) {
+        paramVarArgs.d(7, this.HbV);
       }
-      if (this.GJh != null) {
-        paramVarArgs.d(14, this.GJh);
+      if (this.HbW != null) {
+        paramVarArgs.d(8, this.HbW);
       }
-      paramVarArgs.aS(15, this.mrl);
-      AppMethodBeat.o(72506);
+      AppMethodBeat.o(91521);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.GyY == null) {
-        break label954;
+      if (this.HbQ == null) {
+        break label642;
       }
     }
-    label954:
-    for (paramInt = f.a.a.b.b.a.e(1, this.GyY) + 0;; paramInt = 0)
+    label642:
+    for (int i = f.a.a.b.b.a.e(1, this.HbQ) + 0;; i = 0)
     {
-      int i = paramInt;
-      if (this.FpZ != null) {
-        i = paramInt + f.a.a.b.b.a.e(2, this.FpZ);
-      }
-      i = i + f.a.a.b.b.a.p(3, this.GJf) + f.a.a.b.b.a.bz(4, this.state) + f.a.a.b.b.a.bz(5, this.FHr) + f.a.a.b.b.a.bz(6, this.oxC) + f.a.a.b.b.a.bz(7, this.GJj) + f.a.a.b.b.a.bz(8, this.GJk);
       paramInt = i;
-      if (this.GJl != null) {
-        paramInt = i + f.a.a.b.b.a.e(9, this.GJl);
+      if (this.HbR != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.HbR);
       }
       i = paramInt;
-      if (this.ozd != null) {
-        i = paramInt + f.a.a.b.b.a.e(10, this.ozd);
+      if (this.hnD != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.hnD);
       }
       paramInt = i;
-      if (this.vjr != null) {
-        paramInt = i + f.a.a.b.b.a.e(11, this.vjr);
+      if (this.HbS != null) {
+        paramInt = i + f.a.a.b.b.a.e(4, this.HbS);
       }
       i = paramInt;
-      if (this.pkr != null) {
-        i = paramInt + f.a.a.b.b.a.e(12, this.pkr);
+      if (this.HbT != null) {
+        i = paramInt + f.a.a.b.b.a.e(5, this.HbT);
       }
       paramInt = i;
-      if (this.xSC != null) {
-        paramInt = i + f.a.a.b.b.a.e(13, this.xSC);
+      if (this.HbU != null) {
+        paramInt = i + f.a.a.b.b.a.e(6, this.HbU);
       }
       i = paramInt;
-      if (this.GJh != null) {
-        i = paramInt + f.a.a.b.b.a.e(14, this.GJh);
+      if (this.HbV != null) {
+        i = paramInt + f.a.a.b.b.a.e(7, this.HbV);
       }
-      paramInt = f.a.a.b.b.a.bz(15, this.mrl);
-      AppMethodBeat.o(72506);
-      return i + paramInt;
+      paramInt = i;
+      if (this.HbW != null) {
+        paramInt = i + f.a.a.b.b.a.e(8, this.HbW);
+      }
+      AppMethodBeat.o(91521);
+      return paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
-        AppMethodBeat.o(72506);
+        AppMethodBeat.o(91521);
         return 0;
       }
       if (paramInt == 3)
@@ -119,77 +103,49 @@ public final class bon
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(72506);
+          AppMethodBeat.o(91521);
           return -1;
         case 1: 
-          localbon.GyY = locala.NPN.readString();
-          AppMethodBeat.o(72506);
+          localbon.HbQ = locala.OmT.readString();
+          AppMethodBeat.o(91521);
           return 0;
         case 2: 
-          localbon.FpZ = locala.NPN.readString();
-          AppMethodBeat.o(72506);
+          localbon.HbR = locala.OmT.readString();
+          AppMethodBeat.o(91521);
           return 0;
         case 3: 
-          localbon.GJf = locala.NPN.zd();
-          AppMethodBeat.o(72506);
+          localbon.hnD = locala.OmT.readString();
+          AppMethodBeat.o(91521);
           return 0;
         case 4: 
-          localbon.state = locala.NPN.zc();
-          AppMethodBeat.o(72506);
+          localbon.HbS = locala.OmT.readString();
+          AppMethodBeat.o(91521);
           return 0;
         case 5: 
-          localbon.FHr = locala.NPN.zc();
-          AppMethodBeat.o(72506);
+          localbon.HbT = locala.OmT.readString();
+          AppMethodBeat.o(91521);
           return 0;
         case 6: 
-          localbon.oxC = locala.NPN.zc();
-          AppMethodBeat.o(72506);
+          localbon.HbU = locala.OmT.readString();
+          AppMethodBeat.o(91521);
           return 0;
         case 7: 
-          localbon.GJj = locala.NPN.zc();
-          AppMethodBeat.o(72506);
-          return 0;
-        case 8: 
-          localbon.GJk = locala.NPN.zc();
-          AppMethodBeat.o(72506);
-          return 0;
-        case 9: 
-          localbon.GJl = locala.NPN.readString();
-          AppMethodBeat.o(72506);
-          return 0;
-        case 10: 
-          localbon.ozd = locala.NPN.readString();
-          AppMethodBeat.o(72506);
-          return 0;
-        case 11: 
-          localbon.vjr = locala.NPN.readString();
-          AppMethodBeat.o(72506);
-          return 0;
-        case 12: 
-          localbon.pkr = locala.NPN.readString();
-          AppMethodBeat.o(72506);
-          return 0;
-        case 13: 
-          localbon.xSC = locala.NPN.readString();
-          AppMethodBeat.o(72506);
-          return 0;
-        case 14: 
-          localbon.GJh = locala.NPN.readString();
-          AppMethodBeat.o(72506);
+          localbon.HbV = locala.OmT.readString();
+          AppMethodBeat.o(91521);
           return 0;
         }
-        localbon.mrl = locala.NPN.zc();
-        AppMethodBeat.o(72506);
+        localbon.HbW = locala.OmT.readString();
+        AppMethodBeat.o(91521);
         return 0;
       }
-      AppMethodBeat.o(72506);
+      AppMethodBeat.o(91521);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.bon
  * JD-Core Version:    0.7.0.1
  */

@@ -80,8 +80,8 @@ public final class a
           ((c)paramActivity).validateRequestPermissionsRequestCode(paramInt);
         }
         paramArrayOfString = c.a(paramInt, new com.tencent.mm.hellhoundlib.b.a()).bc(paramArrayOfString);
-        com.tencent.mm.hellhoundlib.a.a.a(paramActivity, paramArrayOfString.ahp(), "android/support/v4/app/ActivityCompat", "requestPermissions", "(Landroid/app/Activity;[Ljava/lang/String;I)V", "Undefined", "requestPermissions", "([Ljava/lang/String;I)V");
-        paramActivity.requestPermissions((String[])paramArrayOfString.mq(0), ((Integer)paramArrayOfString.mq(1)).intValue());
+        com.tencent.mm.hellhoundlib.a.a.a(paramActivity, paramArrayOfString.ahE(), "android/support/v4/app/ActivityCompat", "requestPermissions", "(Landroid/app/Activity;[Ljava/lang/String;I)V", "Undefined", "requestPermissions", "([Ljava/lang/String;I)V");
+        paramActivity.requestPermissions((String[])paramArrayOfString.mt(0), ((Integer)paramArrayOfString.mt(1)).intValue());
         com.tencent.mm.hellhoundlib.a.a.a(paramActivity, "android/support/v4/app/ActivityCompat", "requestPermissions", "(Landroid/app/Activity;[Ljava/lang/String;I)V", "Undefined", "requestPermissions", "([Ljava/lang/String;I)V");
         return;
       }

@@ -1,12 +1,12 @@
 package com.tencent.mm.plugin.hp.net;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.cgt;
+import com.tencent.mm.protocal.protobuf.chn;
 
 public final class e
 {
   /* Error */
-  public static java.util.LinkedList<cgt> dcs()
+  public static java.util.LinkedList<chn> dfk()
   {
     // Byte code:
     //   0: ldc 11
@@ -17,7 +17,7 @@ public final class e
     //   12: astore 6
     //   14: lconst_0
     //   15: lstore_1
-    //   16: invokestatic 29	com/tencent/mm/kernel/a:aiN	()I
+    //   16: invokestatic 29	com/tencent/mm/kernel/a:ajc	()I
     //   19: i2l
     //   20: ldc2_w 30
     //   23: land
@@ -32,46 +32,46 @@ public final class e
     //   36: iconst_0
     //   37: lload_3
     //   38: invokestatic 41	java/lang/String:valueOf	(J)Ljava/lang/String;
-    //   41: invokestatic 47	com/tencent/mm/sdk/platformtools/bt:aRp	(Ljava/lang/String;)Ljava/lang/String;
+    //   41: invokestatic 47	com/tencent/mm/sdk/platformtools/bu:aSM	(Ljava/lang/String;)Ljava/lang/String;
     //   44: aastore
-    //   45: invokestatic 52	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   45: invokestatic 52	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   48: lload_3
     //   49: lstore_1
     //   50: aload 6
     //   52: ldc 54
-    //   54: getstatic 60	com/tencent/mm/sdk/platformtools/i:hgG	Ljava/lang/String;
-    //   57: invokestatic 64	com/tencent/mm/plugin/hp/net/e:hs	(Ljava/lang/String;Ljava/lang/String;)Lcom/tencent/mm/protocal/protobuf/cgt;
+    //   54: getstatic 60	com/tencent/mm/sdk/platformtools/j:hju	Ljava/lang/String;
+    //   57: invokestatic 64	com/tencent/mm/plugin/hp/net/e:hz	(Ljava/lang/String;Ljava/lang/String;)Lcom/tencent/mm/protocal/protobuf/chn;
     //   60: invokevirtual 68	java/util/LinkedList:add	(Ljava/lang/Object;)Z
     //   63: pop
     //   64: aload 6
     //   66: ldc 70
-    //   68: getstatic 73	com/tencent/mm/sdk/platformtools/i:REV	Ljava/lang/String;
-    //   71: invokestatic 64	com/tencent/mm/plugin/hp/net/e:hs	(Ljava/lang/String;Ljava/lang/String;)Lcom/tencent/mm/protocal/protobuf/cgt;
+    //   68: getstatic 73	com/tencent/mm/sdk/platformtools/j:REV	Ljava/lang/String;
+    //   71: invokestatic 64	com/tencent/mm/plugin/hp/net/e:hz	(Ljava/lang/String;Ljava/lang/String;)Lcom/tencent/mm/protocal/protobuf/chn;
     //   74: invokevirtual 68	java/util/LinkedList:add	(Ljava/lang/Object;)Z
     //   77: pop
     //   78: aload 6
     //   80: ldc 75
     //   82: getstatic 81	android/os/Build$VERSION:SDK_INT	I
     //   85: invokestatic 84	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   88: invokestatic 64	com/tencent/mm/plugin/hp/net/e:hs	(Ljava/lang/String;Ljava/lang/String;)Lcom/tencent/mm/protocal/protobuf/cgt;
+    //   88: invokestatic 64	com/tencent/mm/plugin/hp/net/e:hz	(Ljava/lang/String;Ljava/lang/String;)Lcom/tencent/mm/protocal/protobuf/chn;
     //   91: invokevirtual 68	java/util/LinkedList:add	(Ljava/lang/Object;)Z
     //   94: pop
     //   95: aload 6
     //   97: ldc 86
-    //   99: getstatic 91	com/tencent/mm/protocal/d:Fng	Ljava/lang/String;
-    //   102: invokestatic 64	com/tencent/mm/plugin/hp/net/e:hs	(Ljava/lang/String;Ljava/lang/String;)Lcom/tencent/mm/protocal/protobuf/cgt;
+    //   99: getstatic 91	com/tencent/mm/protocal/d:FFE	Ljava/lang/String;
+    //   102: invokestatic 64	com/tencent/mm/plugin/hp/net/e:hz	(Ljava/lang/String;Ljava/lang/String;)Lcom/tencent/mm/protocal/protobuf/chn;
     //   105: invokevirtual 68	java/util/LinkedList:add	(Ljava/lang/Object;)Z
     //   108: pop
     //   109: aload 6
     //   111: ldc 93
-    //   113: getstatic 96	com/tencent/mm/protocal/d:Fnd	Ljava/lang/String;
-    //   116: invokestatic 64	com/tencent/mm/plugin/hp/net/e:hs	(Ljava/lang/String;Ljava/lang/String;)Lcom/tencent/mm/protocal/protobuf/cgt;
+    //   113: getstatic 96	com/tencent/mm/protocal/d:FFB	Ljava/lang/String;
+    //   116: invokestatic 64	com/tencent/mm/plugin/hp/net/e:hz	(Ljava/lang/String;Ljava/lang/String;)Lcom/tencent/mm/protocal/protobuf/chn;
     //   119: invokevirtual 68	java/util/LinkedList:add	(Ljava/lang/Object;)Z
     //   122: pop
     //   123: aload 6
     //   125: ldc 98
     //   127: getstatic 101	com/tencent/mm/protocal/d:DEVICE_NAME	Ljava/lang/String;
-    //   130: invokestatic 64	com/tencent/mm/plugin/hp/net/e:hs	(Ljava/lang/String;Ljava/lang/String;)Lcom/tencent/mm/protocal/protobuf/cgt;
+    //   130: invokestatic 64	com/tencent/mm/plugin/hp/net/e:hz	(Ljava/lang/String;Ljava/lang/String;)Lcom/tencent/mm/protocal/protobuf/chn;
     //   133: invokevirtual 68	java/util/LinkedList:add	(Ljava/lang/Object;)Z
     //   136: pop
     //   137: getstatic 107	android/os/Build:SUPPORTED_64_BIT_ABIS	[Ljava/lang/String;
@@ -82,7 +82,7 @@ public final class e
     //   148: aload 6
     //   150: ldc 111
     //   152: aload 5
-    //   154: invokestatic 64	com/tencent/mm/plugin/hp/net/e:hs	(Ljava/lang/String;Ljava/lang/String;)Lcom/tencent/mm/protocal/protobuf/cgt;
+    //   154: invokestatic 64	com/tencent/mm/plugin/hp/net/e:hz	(Ljava/lang/String;Ljava/lang/String;)Lcom/tencent/mm/protocal/protobuf/chn;
     //   157: invokevirtual 68	java/util/LinkedList:add	(Ljava/lang/Object;)Z
     //   160: pop
     //   161: invokestatic 117	com/tencent/mm/compatible/deviceinfo/q:is64BitRuntime	()Z
@@ -92,18 +92,18 @@ public final class e
     //   171: aload 6
     //   173: ldc 119
     //   175: aload 5
-    //   177: invokestatic 64	com/tencent/mm/plugin/hp/net/e:hs	(Ljava/lang/String;Ljava/lang/String;)Lcom/tencent/mm/protocal/protobuf/cgt;
+    //   177: invokestatic 64	com/tencent/mm/plugin/hp/net/e:hz	(Ljava/lang/String;Ljava/lang/String;)Lcom/tencent/mm/protocal/protobuf/chn;
     //   180: invokevirtual 68	java/util/LinkedList:add	(Ljava/lang/Object;)Z
     //   183: pop
     //   184: aload 6
     //   186: ldc 121
     //   188: lload_1
     //   189: invokestatic 41	java/lang/String:valueOf	(J)Ljava/lang/String;
-    //   192: invokestatic 64	com/tencent/mm/plugin/hp/net/e:hs	(Ljava/lang/String;Ljava/lang/String;)Lcom/tencent/mm/protocal/protobuf/cgt;
+    //   192: invokestatic 64	com/tencent/mm/plugin/hp/net/e:hz	(Ljava/lang/String;Ljava/lang/String;)Lcom/tencent/mm/protocal/protobuf/chn;
     //   195: invokevirtual 68	java/util/LinkedList:add	(Ljava/lang/Object;)Z
     //   198: pop
-    //   199: invokestatic 127	com/tencent/mm/sdk/platformtools/aj:getContext	()Landroid/content/Context;
-    //   202: invokestatic 133	com/tencent/mm/sdk/platformtools/ay:isWifi	(Landroid/content/Context;)Z
+    //   199: invokestatic 127	com/tencent/mm/sdk/platformtools/ak:getContext	()Landroid/content/Context;
+    //   202: invokestatic 133	com/tencent/mm/sdk/platformtools/az:isWifi	(Landroid/content/Context;)Z
     //   205: ifeq +163 -> 368
     //   208: iconst_3
     //   209: istore_0
@@ -111,7 +111,7 @@ public final class e
     //   212: ldc 135
     //   214: iload_0
     //   215: invokestatic 84	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   218: invokestatic 64	com/tencent/mm/plugin/hp/net/e:hs	(Ljava/lang/String;Ljava/lang/String;)Lcom/tencent/mm/protocal/protobuf/cgt;
+    //   218: invokestatic 64	com/tencent/mm/plugin/hp/net/e:hz	(Ljava/lang/String;Ljava/lang/String;)Lcom/tencent/mm/protocal/protobuf/chn;
     //   221: invokevirtual 68	java/util/LinkedList:add	(Ljava/lang/Object;)Z
     //   224: pop
     //   225: ldc 137
@@ -142,7 +142,7 @@ public final class e
     //   295: aload 7
     //   297: getfield 175	com/tencent/mm/plugin/boots/a/a:field_dau	I
     //   300: invokestatic 84	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   303: invokestatic 64	com/tencent/mm/plugin/hp/net/e:hs	(Ljava/lang/String;Ljava/lang/String;)Lcom/tencent/mm/protocal/protobuf/cgt;
+    //   303: invokestatic 64	com/tencent/mm/plugin/hp/net/e:hz	(Ljava/lang/String;Ljava/lang/String;)Lcom/tencent/mm/protocal/protobuf/chn;
     //   306: invokevirtual 68	java/util/LinkedList:add	(Ljava/lang/Object;)Z
     //   309: pop
     //   310: goto -47 -> 263
@@ -152,7 +152,7 @@ public final class e
     //   319: ldc 177
     //   321: iconst_0
     //   322: anewarray 4	java/lang/Object
-    //   325: invokestatic 181	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   325: invokestatic 181	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   328: ldc 11
     //   330: invokestatic 184	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   333: aload 6
@@ -163,7 +163,7 @@ public final class e
     //   342: ldc 186
     //   344: iconst_0
     //   345: anewarray 4	java/lang/Object
-    //   348: invokestatic 181	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   348: invokestatic 181	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   351: goto -301 -> 50
     //   354: ldc 188
     //   356: astore 5
@@ -195,14 +195,14 @@ public final class e
     //   27	48	336	java/lang/Exception
   }
   
-  private static cgt hs(String paramString1, String paramString2)
+  public static chn hz(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(218907);
-    cgt localcgt = new cgt();
-    localcgt.key = paramString1;
-    localcgt.value = paramString2;
-    AppMethodBeat.o(218907);
-    return localcgt;
+    AppMethodBeat.i(196774);
+    chn localchn = new chn();
+    localchn.key = paramString1;
+    localchn.value = paramString2;
+    AppMethodBeat.o(196774);
+    return localchn;
   }
 }
 

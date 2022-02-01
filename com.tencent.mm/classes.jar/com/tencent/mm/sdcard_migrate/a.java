@@ -6,24 +6,24 @@ import java.util.List;
 
 final class a
 {
-  int HYC;
-  final a HYD;
-  final List<b> qfY;
+  int IsJ;
+  final a IsK;
+  final List<b> qmD;
   
   a(b paramb)
   {
     AppMethodBeat.i(176025);
-    this.qfY = new ArrayList();
-    this.HYC = 0;
-    this.HYD = new a();
-    this.qfY.add(paramb);
+    this.qmD = new ArrayList();
+    this.IsJ = 0;
+    this.IsK = new a();
+    this.qmD.add(paramb);
     AppMethodBeat.o(176025);
   }
   
   public final a a(b paramb)
   {
     AppMethodBeat.i(176024);
-    this.qfY.add(paramb);
+    this.qmD.add(paramb);
     AppMethodBeat.o(176024);
     return this;
   }
@@ -32,14 +32,14 @@ final class a
   {
     public a() {}
     
-    public final void fiX()
+    public final void fmP()
     {
       AppMethodBeat.i(176023);
-      synchronized (a.this.qfY)
+      synchronized (a.this.qmD)
       {
-        a.b localb = (a.b)a.this.qfY.get(a.this.HYC);
+        a.b localb = (a.b)a.this.qmD.get(a.this.IsJ);
         a locala = a.this;
-        locala.HYC += 1;
+        locala.IsJ += 1;
         localb.a(this);
         AppMethodBeat.o(176023);
         return;

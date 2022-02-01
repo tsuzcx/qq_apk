@@ -9,23 +9,23 @@ public final class k
   extends z
   implements j
 {
-  public final void B(EmojiInfo paramEmojiInfo)
+  public final void A(EmojiInfo paramEmojiInfo)
   {
     AppMethodBeat.i(104687);
-    this.cRW.a(paramEmojiInfo);
+    this.cSG.a(paramEmojiInfo);
     AppMethodBeat.o(104687);
   }
   
-  public final void dlA()
+  public final void ddB()
   {
     AppMethodBeat.i(104689);
-    this.cRW.onHide();
+    this.cSG.onHide();
     AppMethodBeat.o(104689);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.chat.k
  * JD-Core Version:    0.7.0.1
  */

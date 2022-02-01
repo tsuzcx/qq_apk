@@ -2,7 +2,7 @@ package kotlinx.coroutines;
 
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/coroutines/DisposableHandle;", "", "dispose", "", "kotlinx-coroutines-core"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/coroutines/DisposableHandle;", "", "dispose", "", "kotlinx-coroutines-core"})
 public abstract interface ba
 {
   public abstract void dispose();

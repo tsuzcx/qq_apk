@@ -1,8 +1,18 @@
 package com.tencent.mm.plugin.scanner.api;
 
-public abstract interface d
+public final class d
 {
-  public abstract void a(long paramLong, c paramc);
+  public long dmK;
+  public String dmw;
+  public int errCode;
+  public String errMsg;
+  public int errType;
+  public String imagePath;
+  public int jumpType;
+  public boolean success;
+  public int yzN;
+  public String yzR;
+  public String yzS;
 }
 
 

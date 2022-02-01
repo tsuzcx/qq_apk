@@ -6,17 +6,17 @@ import d.g.b.q;
 import d.l;
 import java.util.concurrent.ConcurrentHashMap;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "Ljava/util/concurrent/ConcurrentHashMap;", "", "", "invoke"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "Ljava/util/concurrent/ConcurrentHashMap;", "", "", "invoke"})
 final class c$e
   extends q
   implements a<ConcurrentHashMap<Long, Integer>>
 {
-  public static final e EJi;
+  public static final e FbG;
   
   static
   {
     AppMethodBeat.i(124770);
-    EJi = new e();
+    FbG = new e();
     AppMethodBeat.o(124770);
   }
   

@@ -9,51 +9,51 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/media/widget/camera2/effect/request/WCCaptureRequest;", "", "mRequest", "Landroid/hardware/camera2/CaptureRequest$Builder;", "mCameraId", "", "mWCEffectRequestList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/media/widget/camera2/effect/request/WCCameraEffectRequestTag;", "Lkotlin/collections/ArrayList;", "(Landroid/hardware/camera2/CaptureRequest$Builder;Ljava/lang/String;Ljava/util/ArrayList;)V", "mCameraIDRef", "", "getMCameraIDRef", "()I", "setMCameraIDRef", "(I)V", "getMRequest", "()Landroid/hardware/camera2/CaptureRequest$Builder;", "setMRequest", "(Landroid/hardware/camera2/CaptureRequest$Builder;)V", "getMWCEffectRequestList", "()Ljava/util/ArrayList;", "setMWCEffectRequestList", "(Ljava/util/ArrayList;)V", "checkEffectSupported", "", "key", "stream", "getSupportedValue", "child", "index", "getSupportedVendorTag", "requestList", "", "set", "enable", "value", "setBase", "Companion", "plugin-mediaeditor_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/media/widget/camera2/effect/request/WCCaptureRequest;", "", "mRequest", "Landroid/hardware/camera2/CaptureRequest$Builder;", "mCameraId", "", "mWCEffectRequestList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/media/widget/camera2/effect/request/WCCameraEffectRequestTag;", "Lkotlin/collections/ArrayList;", "(Landroid/hardware/camera2/CaptureRequest$Builder;Ljava/lang/String;Ljava/util/ArrayList;)V", "mCameraIDRef", "", "getMCameraIDRef", "()I", "setMCameraIDRef", "(I)V", "getMRequest", "()Landroid/hardware/camera2/CaptureRequest$Builder;", "setMRequest", "(Landroid/hardware/camera2/CaptureRequest$Builder;)V", "getMWCEffectRequestList", "()Ljava/util/ArrayList;", "setMWCEffectRequestList", "(Ljava/util/ArrayList;)V", "checkEffectSupported", "", "key", "stream", "getSupportedValue", "child", "index", "getSupportedVendorTag", "requestList", "", "set", "enable", "value", "setBase", "Companion", "plugin-mediaeditor_release"})
 public final class b
 {
-  private static final String hsD = "cameraeffect.request.facebeauty";
-  private static final String hsE = "level";
-  private static final String hsF = "slim";
-  private static final String hsG = "skin";
-  private static final String hsH = "cameraeffect.request.denois";
-  private static final String hsI = "cameraeffect.request.hdr";
-  private static final String hsJ = "cameraeffect.request.stabilization";
-  private static final String hsK = "cameraeffect.request.hdrchecker";
-  public static final b.a hsL;
-  public int hsA;
-  private CaptureRequest.Builder hsB;
-  public ArrayList<a> hsC;
+  private static final String hvr = "cameraeffect.request.facebeauty";
+  private static final String hvs = "level";
+  private static final String hvt = "slim";
+  private static final String hvu = "skin";
+  private static final String hvv = "cameraeffect.request.denois";
+  private static final String hvw = "cameraeffect.request.hdr";
+  private static final String hvx = "cameraeffect.request.stabilization";
+  private static final String hvy = "cameraeffect.request.hdrchecker";
+  public static final b.a hvz;
+  public int hvo;
+  private CaptureRequest.Builder hvp;
+  public ArrayList<a> hvq;
   
   static
   {
     AppMethodBeat.i(94200);
-    hsL = new b.a((byte)0);
-    hsD = "cameraeffect.request.facebeauty";
-    hsE = "level";
-    hsF = "slim";
-    hsG = "skin";
-    hsH = "cameraeffect.request.denois";
-    hsI = "cameraeffect.request.hdr";
-    hsJ = "cameraeffect.request.stabilization";
-    hsK = "cameraeffect.request.hdrchecker";
+    hvz = new b.a((byte)0);
+    hvr = "cameraeffect.request.facebeauty";
+    hvs = "level";
+    hvt = "slim";
+    hvu = "skin";
+    hvv = "cameraeffect.request.denois";
+    hvw = "cameraeffect.request.hdr";
+    hvx = "cameraeffect.request.stabilization";
+    hvy = "cameraeffect.request.hdrchecker";
     AppMethodBeat.o(94200);
   }
   
   public b(CaptureRequest.Builder paramBuilder, String paramString, ArrayList<a> paramArrayList)
   {
     AppMethodBeat.i(94199);
-    this.hsB = paramBuilder;
-    this.hsC = paramArrayList;
+    this.hvp = paramBuilder;
+    this.hvq = paramArrayList;
     if (p.i(paramString, "0")) {
-      paramBuilder = com.tencent.mm.media.widget.b.a.b.hsa;
+      paramBuilder = com.tencent.mm.media.widget.b.a.b.huO;
     }
-    for (int i = com.tencent.mm.media.widget.b.a.b.axg();; i = com.tencent.mm.media.widget.b.a.b.axh())
+    for (int i = com.tencent.mm.media.widget.b.a.b.axv();; i = com.tencent.mm.media.widget.b.a.b.axw())
     {
-      this.hsA = i;
+      this.hvo = i;
       AppMethodBeat.o(94199);
       return;
-      paramBuilder = com.tencent.mm.media.widget.b.a.b.hsa;
+      paramBuilder = com.tencent.mm.media.widget.b.a.b.huO;
     }
   }
   
@@ -70,7 +70,7 @@ public final class b
   public final boolean a(String paramString1, String paramString2, boolean paramBoolean, Object paramObject, int paramInt)
   {
     AppMethodBeat.i(94196);
-    Object localObject1 = this.hsC;
+    Object localObject1 = this.hvq;
     if (localObject1 != null)
     {
       Object localObject2 = (Iterable)localObject1;
@@ -84,16 +84,16 @@ public final class b
         Object localObject3 = ((Iterator)localObject2).next();
         a locala = (a)localObject3;
         boolean bool;
-        if (p.i(locala.hsu, paramString1))
+        if (p.i(locala.hvi, paramString1))
         {
-          Integer localInteger = locala.hsv;
-          if ((localInteger == null) || ((localInteger.intValue() & this.hsA) != 0))
+          Integer localInteger = locala.hvj;
+          if ((localInteger == null) || ((localInteger.intValue() & this.hvo) != 0))
           {
-            localInteger = locala.hsz;
+            localInteger = locala.hvn;
             if ((localInteger == null) || ((localInteger.intValue() & paramInt) != 0)) {
               if (paramString2 != null)
               {
-                bool = p.i(locala.hsw, paramString2);
+                bool = p.i(locala.hvk, paramString2);
                 if (!bool) {
                   break label177;
                 }
@@ -119,7 +119,7 @@ public final class b
         while (paramString1.hasNext())
         {
           paramString2 = (a)paramString1.next();
-          com.tencent.mm.media.widget.b.a.b.a(this.hsB, paramString2, paramBoolean);
+          com.tencent.mm.media.widget.b.a.b.a(this.hvp, paramString2, paramBoolean);
         }
       }
     }
@@ -134,7 +134,7 @@ public final class b
     while (paramString1.hasNext())
     {
       paramString2 = (a)paramString1.next();
-      com.tencent.mm.media.widget.b.a.b.a(this.hsB, paramString2, paramBoolean, paramObject);
+      com.tencent.mm.media.widget.b.a.b.a(this.hvp, paramString2, paramBoolean, paramObject);
     }
     AppMethodBeat.o(94196);
     return true;
@@ -156,7 +156,7 @@ public final class b
       while (localIterator1.hasNext())
       {
         String str = (String)localIterator1.next();
-        paramList = this.hsC;
+        paramList = this.hvq;
         label70:
         int i;
         if (paramList != null)
@@ -166,10 +166,10 @@ public final class b
           {
             paramList = localIterator2.next();
             Object localObject = (a)paramList;
-            if (p.i(((a)localObject).hsu, str))
+            if (p.i(((a)localObject).hvi, str))
             {
-              localObject = ((a)localObject).hsv;
-              if ((localObject == null) || ((((Integer)localObject).intValue() & this.hsA) != 0))
+              localObject = ((a)localObject).hvj;
+              if ((localObject == null) || ((((Integer)localObject).intValue() & this.hvo) != 0))
               {
                 i = 1;
                 if (i == 0) {
@@ -183,14 +183,14 @@ public final class b
             }
           }
         }
-        for (str = paramList.hsy;; str = null)
+        for (str = paramList.hvm;; str = null)
         {
           if (str == null) {
             break label195;
           }
-          paramList = paramList.hsy;
+          paramList = paramList.hvm;
           if (paramList == null) {
-            p.gfZ();
+            p.gkB();
           }
           localArrayList.add(paramList);
           break;
@@ -208,11 +208,11 @@ public final class b
     return localArrayList;
   }
   
-  public final boolean ac(String paramString, int paramInt)
+  public final boolean ad(String paramString, int paramInt)
   {
     AppMethodBeat.i(94197);
     p.h(paramString, "key");
-    Object localObject1 = this.hsC;
+    Object localObject1 = this.hvq;
     int i;
     if (localObject1 != null)
     {
@@ -222,14 +222,14 @@ public final class b
       }
       localObject1 = localIterator.next();
       Object localObject2 = (a)localObject1;
-      if (!p.i(((a)localObject2).hsu, paramString)) {
+      if (!p.i(((a)localObject2).hvi, paramString)) {
         break label142;
       }
-      Integer localInteger = ((a)localObject2).hsv;
-      if ((localInteger != null) && ((localInteger.intValue() & this.hsA) == 0)) {
+      Integer localInteger = ((a)localObject2).hvj;
+      if ((localInteger != null) && ((localInteger.intValue() & this.hvo) == 0)) {
         break label142;
       }
-      localObject2 = ((a)localObject2).hsz;
+      localObject2 = ((a)localObject2).hvn;
       if ((localObject2 != null) && ((((Integer)localObject2).intValue() & paramInt) == 0)) {
         break label142;
       }

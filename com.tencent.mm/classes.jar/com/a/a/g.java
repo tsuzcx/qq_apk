@@ -14,26 +14,26 @@ public final class g
   
   public final g p(float paramFloat1, float paramFloat2)
   {
-    AppMethodBeat.i(214747);
+    AppMethodBeat.i(212978);
     this.aQk = new h.b(0.0F, 0.0F, paramFloat1, paramFloat2);
-    AppMethodBeat.o(214747);
+    AppMethodBeat.o(212978);
     return this;
   }
   
   public final boolean qD()
   {
-    AppMethodBeat.i(214746);
+    AppMethodBeat.i(212977);
     if (this.aQf != null)
     {
       b.q localq = this.aQf;
       if (localq.aPt != null) {}
       for (int i = localq.aPt.size(); i > 0; i = 0)
       {
-        AppMethodBeat.o(214746);
+        AppMethodBeat.o(212977);
         return true;
       }
     }
-    AppMethodBeat.o(214746);
+    AppMethodBeat.o(212977);
     return false;
   }
   
@@ -59,7 +59,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.a.a.g
  * JD-Core Version:    0.7.0.1
  */

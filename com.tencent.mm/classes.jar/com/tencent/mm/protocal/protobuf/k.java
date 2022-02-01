@@ -3,14 +3,14 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class k
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public String FpG;
-  public String FpH;
-  public String FpU;
-  public String FpV;
-  public String FpW;
-  public long dOa;
+  public String FIe;
+  public String FIf;
+  public String FIs;
+  public String FIt;
+  public String FIu;
+  public long dPq;
   public int role;
   public int state;
   public String title;
@@ -21,68 +21,68 @@ public final class k
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.FpG != null) {
-        paramVarArgs.d(1, this.FpG);
+      if (this.FIe != null) {
+        paramVarArgs.d(1, this.FIe);
       }
       if (this.title != null) {
         paramVarArgs.d(2, this.title);
       }
-      paramVarArgs.aY(3, this.dOa);
-      if (this.FpU != null) {
-        paramVarArgs.d(5, this.FpU);
+      paramVarArgs.aZ(3, this.dPq);
+      if (this.FIs != null) {
+        paramVarArgs.d(5, this.FIs);
       }
       paramVarArgs.aS(10, this.state);
       paramVarArgs.aS(11, this.role);
-      if (this.FpV != null) {
-        paramVarArgs.d(12, this.FpV);
+      if (this.FIt != null) {
+        paramVarArgs.d(12, this.FIt);
       }
-      if (this.FpH != null) {
-        paramVarArgs.d(13, this.FpH);
+      if (this.FIf != null) {
+        paramVarArgs.d(13, this.FIf);
       }
-      if (this.FpW != null) {
-        paramVarArgs.d(14, this.FpW);
+      if (this.FIu != null) {
+        paramVarArgs.d(14, this.FIu);
       }
       AppMethodBeat.o(91322);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.FpG == null) {
+      if (this.FIe == null) {
         break label674;
       }
     }
     label674:
-    for (paramInt = f.a.a.b.b.a.e(1, this.FpG) + 0;; paramInt = 0)
+    for (paramInt = f.a.a.b.b.a.e(1, this.FIe) + 0;; paramInt = 0)
     {
       int i = paramInt;
       if (this.title != null) {
         i = paramInt + f.a.a.b.b.a.e(2, this.title);
       }
-      i += f.a.a.b.b.a.p(3, this.dOa);
+      i += f.a.a.b.b.a.p(3, this.dPq);
       paramInt = i;
-      if (this.FpU != null) {
-        paramInt = i + f.a.a.b.b.a.e(5, this.FpU);
+      if (this.FIs != null) {
+        paramInt = i + f.a.a.b.b.a.e(5, this.FIs);
       }
       i = paramInt + f.a.a.b.b.a.bz(10, this.state) + f.a.a.b.b.a.bz(11, this.role);
       paramInt = i;
-      if (this.FpV != null) {
-        paramInt = i + f.a.a.b.b.a.e(12, this.FpV);
+      if (this.FIt != null) {
+        paramInt = i + f.a.a.b.b.a.e(12, this.FIt);
       }
       i = paramInt;
-      if (this.FpH != null) {
-        i = paramInt + f.a.a.b.b.a.e(13, this.FpH);
+      if (this.FIf != null) {
+        i = paramInt + f.a.a.b.b.a.e(13, this.FIf);
       }
       paramInt = i;
-      if (this.FpW != null) {
-        paramInt = i + f.a.a.b.b.a.e(14, this.FpW);
+      if (this.FIu != null) {
+        paramInt = i + f.a.a.b.b.a.e(14, this.FIu);
       }
       AppMethodBeat.o(91322);
       return paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
         AppMethodBeat.o(91322);
@@ -103,39 +103,39 @@ public final class k
           AppMethodBeat.o(91322);
           return -1;
         case 1: 
-          localk.FpG = locala.NPN.readString();
+          localk.FIe = locala.OmT.readString();
           AppMethodBeat.o(91322);
           return 0;
         case 2: 
-          localk.title = locala.NPN.readString();
+          localk.title = locala.OmT.readString();
           AppMethodBeat.o(91322);
           return 0;
         case 3: 
-          localk.dOa = locala.NPN.zd();
+          localk.dPq = locala.OmT.zd();
           AppMethodBeat.o(91322);
           return 0;
         case 5: 
-          localk.FpU = locala.NPN.readString();
+          localk.FIs = locala.OmT.readString();
           AppMethodBeat.o(91322);
           return 0;
         case 10: 
-          localk.state = locala.NPN.zc();
+          localk.state = locala.OmT.zc();
           AppMethodBeat.o(91322);
           return 0;
         case 11: 
-          localk.role = locala.NPN.zc();
+          localk.role = locala.OmT.zc();
           AppMethodBeat.o(91322);
           return 0;
         case 12: 
-          localk.FpV = locala.NPN.readString();
+          localk.FIt = locala.OmT.readString();
           AppMethodBeat.o(91322);
           return 0;
         case 13: 
-          localk.FpH = locala.NPN.readString();
+          localk.FIf = locala.OmT.readString();
           AppMethodBeat.o(91322);
           return 0;
         }
-        localk.FpW = locala.NPN.readString();
+        localk.FIu = locala.OmT.readString();
         AppMethodBeat.o(91322);
         return 0;
       }

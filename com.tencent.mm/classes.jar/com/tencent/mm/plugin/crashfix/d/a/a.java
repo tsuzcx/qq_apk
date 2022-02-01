@@ -13,113 +13,113 @@ import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.crashfix.jni.BinderProxyTransactNativeHook;
 import com.tencent.mm.plugin.expt.b.b;
 import com.tencent.mm.plugin.expt.b.b.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ax;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.ay;
 import java.lang.reflect.Method;
 
 public final class a
   implements com.tencent.mm.plugin.crashfix.d.a
 {
-  public final boolean Bn(int paramInt)
+  public final boolean Bz(int paramInt)
   {
-    AppMethodBeat.i(187007);
-    ad.i("MicroMsg.BadBinderMonitor", "api level ".concat(String.valueOf(paramInt)));
+    AppMethodBeat.i(190280);
+    ae.i("MicroMsg.BadBinderMonitor", "api level ".concat(String.valueOf(paramInt)));
     if (paramInt > 28)
     {
-      AppMethodBeat.o(187007);
+      AppMethodBeat.o(190280);
       return false;
     }
-    paramInt = ((b)g.ab(b.class)).a(b.a.qpB, 0);
-    ad.i("MicroMsg.BadBinderMonitor", "Expt : ".concat(String.valueOf(paramInt)));
+    paramInt = ((b)g.ab(b.class)).a(b.a.qwi, 0);
+    ae.i("MicroMsg.BadBinderMonitor", "Expt : ".concat(String.valueOf(paramInt)));
     if (paramInt == 1)
     {
-      AppMethodBeat.o(187007);
+      AppMethodBeat.o(190280);
       return true;
     }
-    AppMethodBeat.o(187007);
+    AppMethodBeat.o(190280);
     return false;
   }
   
-  public final void cbC()
+  public final void ccR()
   {
-    AppMethodBeat.i(187005);
-    ax.aQA("bad_binder_monitor_fix").putBoolean("BAD_BINDER_MONITOR_MMKV_END_BOOLEAN", true).commit();
-    AppMethodBeat.o(187005);
+    AppMethodBeat.i(190278);
+    ay.aRX("bad_binder_monitor_fix").putBoolean("BAD_BINDER_MONITOR_MMKV_END_BOOLEAN", true).commit();
+    AppMethodBeat.o(190278);
   }
   
-  public final boolean cbD()
+  public final boolean ccS()
   {
-    AppMethodBeat.i(187006);
-    boolean bool1 = ax.aQA("bad_binder_monitor_fix").getBoolean("BAD_BINDER_MONITOR_MMKV_START_BOOLEAN", false);
-    boolean bool2 = ax.aQA("bad_binder_monitor_fix").getBoolean("BAD_BINDER_MONITOR_MMKV_END_BOOLEAN", false);
-    ad.i("MicroMsg.BadBinderMonitor", "start ".concat(String.valueOf(bool1)));
-    ad.i("MicroMsg.BadBinderMonitor", "end ".concat(String.valueOf(bool2)));
+    AppMethodBeat.i(190279);
+    boolean bool1 = ay.aRX("bad_binder_monitor_fix").getBoolean("BAD_BINDER_MONITOR_MMKV_START_BOOLEAN", false);
+    boolean bool2 = ay.aRX("bad_binder_monitor_fix").getBoolean("BAD_BINDER_MONITOR_MMKV_END_BOOLEAN", false);
+    ae.i("MicroMsg.BadBinderMonitor", "start ".concat(String.valueOf(bool1)));
+    ae.i("MicroMsg.BadBinderMonitor", "end ".concat(String.valueOf(bool2)));
     if (bool1 == bool2)
     {
-      AppMethodBeat.o(187006);
+      AppMethodBeat.o(190279);
       return false;
     }
-    AppMethodBeat.o(187006);
+    AppMethodBeat.o(190279);
     return true;
   }
   
-  public final boolean cbE()
+  public final boolean ccT()
   {
-    AppMethodBeat.i(187008);
+    AppMethodBeat.i(190281);
     BinderProxyTransactNativeHook.init();
     BinderProxyTransactNativeHook.calculateOffset();
-    ad.i("MicroMsg.BadBinderMonitor", "init finish");
+    ae.i("MicroMsg.BadBinderMonitor", "init finish");
     try
     {
       Object localObject = BinderProxyTransactNativeHook.class.getMethod("calculateOffset", new Class[0]);
       BinderProxyTransactNativeHook.hook(Class.forName("android.os.BinderProxy").getMethod("transactNative", new Class[] { Integer.TYPE, Parcel.class, Parcel.class, Integer.TYPE }), (Method)localObject);
-      ad.i("MicroMsg.BadBinderMonitor", "test client hook !");
-      ((WifiManager)aj.getContext().getApplicationContext().getSystemService("wifi")).getConnectionInfo();
-      ad.i("MicroMsg.BadBinderMonitor", "test server hook !");
+      ae.i("MicroMsg.BadBinderMonitor", "test client hook !");
+      ((WifiManager)ak.getContext().getApplicationContext().getSystemService("wifi")).getConnectionInfo();
+      ae.i("MicroMsg.BadBinderMonitor", "test server hook !");
       localObject = new Intent();
-      ((Intent)localObject).setClassName(aj.getPackageName(), "com.tencent.mm.gpu.service.GpuHookServiceImpl");
-      aj.getContext().bindService((Intent)localObject, new ServiceConnection()
+      ((Intent)localObject).setClassName(ak.getPackageName(), "com.tencent.mm.gpu.service.GpuHookServiceImpl");
+      ak.getContext().bindService((Intent)localObject, new ServiceConnection()
       {
         public final void onServiceConnected(ComponentName paramAnonymousComponentName, IBinder paramAnonymousIBinder)
         {
-          AppMethodBeat.i(187002);
-          ad.i("MicroMsg.BadBinderMonitor", "onServiceConnected");
-          AppMethodBeat.o(187002);
+          AppMethodBeat.i(190275);
+          ae.i("MicroMsg.BadBinderMonitor", "onServiceConnected");
+          AppMethodBeat.o(190275);
         }
         
         public final void onServiceDisconnected(ComponentName paramAnonymousComponentName)
         {
-          AppMethodBeat.i(187003);
-          ad.i("MicroMsg.BadBinderMonitor", "onServiceDisconnected");
-          AppMethodBeat.o(187003);
+          AppMethodBeat.i(190276);
+          ae.i("MicroMsg.BadBinderMonitor", "onServiceDisconnected");
+          AppMethodBeat.o(190276);
         }
       }, 1);
-      ad.i("MicroMsg.BadBinderMonitor", "hook succ ?");
-      AppMethodBeat.o(187008);
+      ae.i("MicroMsg.BadBinderMonitor", "hook succ ?");
+      AppMethodBeat.o(190281);
       return true;
     }
     catch (Exception localException)
     {
-      ad.e("MicroMsg.BadBinderMonitor", "hook error:" + localException.getCause());
-      AppMethodBeat.o(187008);
+      ae.e("MicroMsg.BadBinderMonitor", "hook error:" + localException.getCause());
+      AppMethodBeat.o(190281);
     }
     return false;
   }
   
   public final void start()
   {
-    AppMethodBeat.i(187004);
-    ax localax = ax.aQA("bad_binder_monitor_fix");
-    localax.putBoolean("BAD_BINDER_MONITOR_MMKV_END_BOOLEAN", false);
-    localax.putBoolean("BAD_BINDER_MONITOR_MMKV_START_BOOLEAN", true);
-    localax.commit();
-    AppMethodBeat.o(187004);
+    AppMethodBeat.i(190277);
+    ay localay = ay.aRX("bad_binder_monitor_fix");
+    localay.putBoolean("BAD_BINDER_MONITOR_MMKV_END_BOOLEAN", false);
+    localay.putBoolean("BAD_BINDER_MONITOR_MMKV_START_BOOLEAN", true);
+    localay.commit();
+    AppMethodBeat.o(190277);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.crashfix.d.a.a
  * JD-Core Version:    0.7.0.1
  */

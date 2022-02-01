@@ -5,8 +5,8 @@ import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.appusage.LocalUsageInfo;
 import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -16,67 +16,67 @@ import java.util.Set;
 
 public final class b
 {
-  long nmW;
-  public int nmX;
-  public int nmY;
-  int nmZ;
-  int nnA;
-  public int nnB;
-  public boolean nnC;
-  public String nnD;
-  public String nnE;
-  int nna;
-  public int nnb;
-  public int nnc;
-  int nnd;
-  int nne;
-  public int nnf;
-  public int nng;
-  public int nnh;
-  StringBuilder nni;
-  StringBuilder nnj;
-  StringBuilder nnk;
-  StringBuilder nnl;
-  int nnm;
-  public int nnn;
-  public int nno;
-  int nnp;
-  public int nnq;
-  public int nnr;
-  public int nns;
-  StringBuilder nnt;
-  StringBuilder nnu;
-  public StringBuilder nnv;
-  StringBuilder nnw;
-  public StringBuilder nnx;
-  public StringBuilder nny;
-  public int nnz;
+  public int nsA;
+  public int nsB;
+  public int nsC;
+  StringBuilder nsD;
+  StringBuilder nsE;
+  public StringBuilder nsF;
+  StringBuilder nsG;
+  public StringBuilder nsH;
+  public StringBuilder nsI;
+  public int nsJ;
+  int nsK;
+  public int nsL;
+  public boolean nsM;
+  public String nsN;
+  public String nsO;
+  long nsg;
+  public int nsh;
+  public int nsi;
+  int nsj;
+  int nsk;
+  public int nsl;
+  public int nsm;
+  int nsn;
+  int nso;
+  public int nsp;
+  public int nsq;
+  public int nsr;
+  StringBuilder nss;
+  StringBuilder nst;
+  StringBuilder nsu;
+  StringBuilder nsv;
+  int nsw;
+  public int nsx;
+  public int nsy;
+  int nsz;
   
   public b()
   {
     AppMethodBeat.i(153245);
-    this.nmW = 0L;
-    this.nmX = 0;
-    this.nni = new StringBuilder();
-    this.nnj = new StringBuilder();
-    this.nnk = new StringBuilder();
-    this.nnl = new StringBuilder();
-    this.nnt = new StringBuilder();
-    this.nnu = new StringBuilder();
-    this.nnv = new StringBuilder();
-    this.nnw = new StringBuilder();
-    this.nnx = new StringBuilder();
-    this.nny = new StringBuilder();
-    this.nnD = "";
-    this.nnE = "";
+    this.nsg = 0L;
+    this.nsh = 0;
+    this.nss = new StringBuilder();
+    this.nst = new StringBuilder();
+    this.nsu = new StringBuilder();
+    this.nsv = new StringBuilder();
+    this.nsD = new StringBuilder();
+    this.nsE = new StringBuilder();
+    this.nsF = new StringBuilder();
+    this.nsG = new StringBuilder();
+    this.nsH = new StringBuilder();
+    this.nsI = new StringBuilder();
+    this.nsN = "";
+    this.nsO = "";
     AppMethodBeat.o(153245);
   }
   
   private static void a(a parama)
   {
     AppMethodBeat.i(153255);
-    ad.i("MicroMsg.AppBrandRecentViewReporter", "alvinluo reportDuplicatedName: %s", new Object[] { parama });
-    g.yhR.f(15796, new Object[] { parama.nnG, parama.nnH, parama.nnI.toString(), parama.nnJ.toString(), parama.nnK.toString(), parama.nnL.toString(), parama.nnM.toString() });
+    ae.i("MicroMsg.AppBrandRecentViewReporter", "alvinluo reportDuplicatedName: %s", new Object[] { parama });
+    g.yxI.f(15796, new Object[] { parama.nsQ, parama.nsR, parama.nsS.toString(), parama.nsT.toString(), parama.nsU.toString(), parama.nsV.toString(), parama.nsW.toString() });
     AppMethodBeat.o(153255);
   }
   
@@ -98,7 +98,7 @@ public final class b
       localObject2 = (a)((List)localObject1).get(i);
       int j;
       int k;
-      if ((localObject2 != null) && (((a)localObject2).mXW != null) && (!bt.isNullOrNil(((a)localObject2).mXW.appId)) && (!bt.isNullOrNil(((a)localObject2).mXW.nickname)))
+      if ((localObject2 != null) && (((a)localObject2).ndd != null) && (!bu.isNullOrNil(((a)localObject2).ndd.appId)) && (!bu.isNullOrNil(((a)localObject2).ndd.nickname)))
       {
         if (i >= paramList1.size()) {
           break label341;
@@ -108,21 +108,21 @@ public final class b
           break label346;
         }
         k = i - 1;
-        ad.d("MicroMsg.AppBrandRecentViewReporter", "alvinluo nickName: %s, type: %d, pos: %d", new Object[] { ((a)localObject2).mXW.nickname, Integer.valueOf(j), Integer.valueOf(k) });
-        localObject3 = ((a)localObject2).mXW.appId + "," + ((a)localObject2).mXW.hQh + "," + j + "," + k;
-        if (!paramList2.containsKey(((a)localObject2).mXW.nickname)) {
+        ae.d("MicroMsg.AppBrandRecentViewReporter", "alvinluo nickName: %s, type: %d, pos: %d", new Object[] { ((a)localObject2).ndd.nickname, Integer.valueOf(j), Integer.valueOf(k) });
+        localObject3 = ((a)localObject2).ndd.appId + "," + ((a)localObject2).ndd.hSZ + "," + j + "," + k;
+        if (!paramList2.containsKey(((a)localObject2).ndd.nickname)) {
           break label361;
         }
-        ad.d("MicroMsg.AppBrandRecentViewReporter", "alvinluo contains nickName: %s", new Object[] { ((a)localObject2).mXW.nickname });
-        localObject4 = (Map)paramList2.get(((a)localObject2).mXW.nickname);
+        ae.d("MicroMsg.AppBrandRecentViewReporter", "alvinluo contains nickName: %s", new Object[] { ((a)localObject2).ndd.nickname });
+        localObject4 = (Map)paramList2.get(((a)localObject2).ndd.nickname);
         if (!((Map)localObject4).containsKey(localObject3)) {
           ((Map)localObject4).put(localObject3, localObject2);
         }
         label312:
-        if (!bt.isNullOrNil(((a)localObject2).mXW.cmD)) {
+        if (!bu.isNullOrNil(((a)localObject2).ndd.cmF)) {
           break label425;
         }
-        ad.d("MicroMsg.AppBrandRecentViewReporter", "alvinluo not shortNickName");
+        ae.d("MicroMsg.AppBrandRecentViewReporter", "alvinluo not shortNickName");
       }
       for (;;)
       {
@@ -135,30 +135,30 @@ public final class b
         k = i - 1 - paramList1.size();
         break label134;
         label361:
-        ad.d("MicroMsg.AppBrandRecentViewReporter", "alvinluo not contains nickName: %s", new Object[] { ((a)localObject2).mXW.nickname });
+        ae.d("MicroMsg.AppBrandRecentViewReporter", "alvinluo not contains nickName: %s", new Object[] { ((a)localObject2).ndd.nickname });
         localObject4 = new HashMap();
         ((Map)localObject4).put(localObject3, localObject2);
-        paramList2.put(((a)localObject2).mXW.nickname, localObject4);
+        paramList2.put(((a)localObject2).ndd.nickname, localObject4);
         break label312;
         label425:
-        if (((a)localObject2).mXW.nickname.equals(((a)localObject2).mXW.cmD))
+        if (((a)localObject2).ndd.nickname.equals(((a)localObject2).ndd.cmF))
         {
-          ad.e("MicroMsg.AppBrandRecentViewReporter", "alvinluo nickname equals shortNickName %s, %s", new Object[] { ((a)localObject2).mXW.nickname, ((a)localObject2).mXW.cmD });
+          ae.e("MicroMsg.AppBrandRecentViewReporter", "alvinluo nickname equals shortNickName %s, %s", new Object[] { ((a)localObject2).ndd.nickname, ((a)localObject2).ndd.cmF });
         }
-        else if (paramList2.containsKey(((a)localObject2).mXW.cmD))
+        else if (paramList2.containsKey(((a)localObject2).ndd.cmF))
         {
-          ad.d("MicroMsg.AppBrandRecentViewReporter", "alvinluo contains shortNickname: %s", new Object[] { ((a)localObject2).mXW.cmD });
-          localObject4 = (Map)paramList2.get(((a)localObject2).mXW.cmD);
+          ae.d("MicroMsg.AppBrandRecentViewReporter", "alvinluo contains shortNickname: %s", new Object[] { ((a)localObject2).ndd.cmF });
+          localObject4 = (Map)paramList2.get(((a)localObject2).ndd.cmF);
           if (!((Map)localObject4).containsKey(localObject3)) {
             ((Map)localObject4).put(localObject3, localObject2);
           }
         }
         else
         {
-          ad.d("MicroMsg.AppBrandRecentViewReporter", "alvinluo not contains shortNickname: %s", new Object[] { ((a)localObject2).mXW.cmD });
+          ae.d("MicroMsg.AppBrandRecentViewReporter", "alvinluo not contains shortNickname: %s", new Object[] { ((a)localObject2).ndd.cmF });
           localObject4 = new HashMap();
           ((Map)localObject4).put(localObject3, localObject2);
-          paramList2.put(((a)localObject2).mXW.cmD, localObject4);
+          paramList2.put(((a)localObject2).ndd.cmF, localObject4);
         }
       }
     }
@@ -169,7 +169,7 @@ public final class b
       localObject2 = (Map)paramList2.get(localObject1);
       if ((localObject2 == null) || (((Map)localObject2).size() <= 1))
       {
-        ad.d("MicroMsg.AppBrandRecentViewReporter", "alvinluo name %s not duplicated", new Object[] { localObject1 });
+        ae.d("MicroMsg.AppBrandRecentViewReporter", "alvinluo name %s not duplicated", new Object[] { localObject1 });
       }
       else
       {
@@ -180,13 +180,13 @@ public final class b
         while (localIterator.hasNext())
         {
           localObject5 = (a)((Map)localObject2).get((String)localIterator.next());
-          if ((localObject5 != null) && (((a)localObject5).mXW != null) && (!bt.isNullOrNil(((a)localObject5).mXW.appId)) && (!((Map)localObject3).containsKey(((a)localObject5).mXW.appId))) {
-            ((Map)localObject3).put(((a)localObject5).mXW.appId, localObject5);
+          if ((localObject5 != null) && (((a)localObject5).ndd != null) && (!bu.isNullOrNil(((a)localObject5).ndd.appId)) && (!((Map)localObject3).containsKey(((a)localObject5).ndd.appId))) {
+            ((Map)localObject3).put(((a)localObject5).ndd.appId, localObject5);
           }
         }
         if (((Map)localObject3).size() <= 1)
         {
-          ad.d("MicroMsg.AppBrandRecentViewReporter", "alvinluo name %s not duplicated2", new Object[] { localObject1 });
+          ae.d("MicroMsg.AppBrandRecentViewReporter", "alvinluo name %s not duplicated2", new Object[] { localObject1 });
         }
         else
         {
@@ -197,28 +197,28 @@ public final class b
             localObject5 = (String)((Iterator)localObject4).next();
             String[] arrayOfString = ((String)localObject5).split(",");
             localIterator = arrayOfString[2];
-            i = bt.getInt(arrayOfString[3], 0);
+            i = bu.getInt(arrayOfString[3], 0);
             localObject5 = (a)((Map)localObject2).get(localObject5);
-            if ((localObject5 != null) && (((a)localObject5).mXW != null))
+            if ((localObject5 != null) && (((a)localObject5).ndd != null))
             {
-              ad.d("MicroMsg.AppBrandRecentViewReporter", "alvinluo duplicated appId: %s, name: %s, shortName: %s, type: %s, pos: %d", new Object[] { ((a)localObject5).mXW.appId, ((a)localObject5).mXW.nickname, ((a)localObject5).mXW.cmD, localIterator, Integer.valueOf(i) });
-              if (((String)localObject1).equals(((a)localObject5).mXW.cmD))
+              ae.d("MicroMsg.AppBrandRecentViewReporter", "alvinluo duplicated appId: %s, name: %s, shortName: %s, type: %s, pos: %d", new Object[] { ((a)localObject5).ndd.appId, ((a)localObject5).ndd.nickname, ((a)localObject5).ndd.cmF, localIterator, Integer.valueOf(i) });
+              if (((String)localObject1).equals(((a)localObject5).ndd.cmF))
               {
-                ((a)localObject3).nnH.append(((a)localObject5).mXW.appId).append("#");
-                ((a)localObject3).nnI.append("1#");
-                ((a)localObject3).nnJ.append(localIterator).append("#");
-                ((a)localObject3).nnK.append(i).append("#");
-                ((a)localObject3).nnL.append(((a)localObject5).mXW.aDD).append("#");
-                ((a)localObject3).nnM.append(((a)localObject5).mXW.hQh + 1).append("#");
+                ((a)localObject3).nsR.append(((a)localObject5).ndd.appId).append("#");
+                ((a)localObject3).nsS.append("1#");
+                ((a)localObject3).nsT.append(localIterator).append("#");
+                ((a)localObject3).nsU.append(i).append("#");
+                ((a)localObject3).nsV.append(((a)localObject5).ndd.aDD).append("#");
+                ((a)localObject3).nsW.append(((a)localObject5).ndd.hSZ + 1).append("#");
               }
-              if (((String)localObject1).equals(((a)localObject5).mXW.nickname))
+              if (((String)localObject1).equals(((a)localObject5).ndd.nickname))
               {
-                ((a)localObject3).nnH.append(((a)localObject5).mXW.appId).append("#");
-                ((a)localObject3).nnI.append("2#");
-                ((a)localObject3).nnJ.append(localIterator).append("#");
-                ((a)localObject3).nnK.append(i).append("#");
-                ((a)localObject3).nnL.append(((a)localObject5).mXW.aDD).append("#");
-                ((a)localObject3).nnM.append(((a)localObject5).mXW.hQh + 1).append("#");
+                ((a)localObject3).nsR.append(((a)localObject5).ndd.appId).append("#");
+                ((a)localObject3).nsS.append("2#");
+                ((a)localObject3).nsT.append(localIterator).append("#");
+                ((a)localObject3).nsU.append(i).append("#");
+                ((a)localObject3).nsV.append(((a)localObject5).ndd.aDD).append("#");
+                ((a)localObject3).nsW.append(((a)localObject5).ndd.hSZ + 1).append("#");
               }
             }
           }
@@ -232,22 +232,22 @@ public final class b
   public final void Q(int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(153247);
-    this.nnb = paramInt1;
-    this.nnn = paramInt2;
-    this.nmY = paramInt3;
-    h.LTJ.aR(new Runnable()
+    this.nsl = paramInt1;
+    this.nsx = paramInt2;
+    this.nsi = paramInt3;
+    h.MqF.aO(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(153241);
-        if (b.this.nmW <= 0L)
+        if (b.this.nsg <= 0L)
         {
-          ad.d("MicroMsg.AppBrandRecentViewReporter", "[report] mOpenTime <= 0");
+          ae.d("MicroMsg.AppBrandRecentViewReporter", "[report] mOpenTime <= 0");
           AppMethodBeat.o(153241);
           return;
         }
-        ad.i("MicroMsg.AppBrandRecentViewReporter", "[report] mOpenTime: %s, mRecentCountAtOpen: %s, mRecentCountAtClose: %s, mCloseType: %s, mScrollRecentCount: %s, mOpenRecentAppBrandList: %s, mDeleteRecentCount: %s, mDeleteRecentAppBrandList: %s, \ndragCountWhenClose: %d, mStarCountAtOpen: %d, mStarCountAtClose: %d, mScrollStarCount: %d, mOpenStarAppBrandList: %s, mDeleteStarCount: %d, mDeleteStarAppBrandList: %s, \nmMoveToFirstCount: %d, mClickRecentAppBrandList: %s, mClickStarAppBrandList: %s, mMoveStarAppBrandToFirstList: %s, mAddCollectionCount: %d, mAddCollectionAppBrandList: %s", new Object[] { Long.valueOf(b.this.nmW), Integer.valueOf(b.this.nna), Integer.valueOf(b.this.nnb), Integer.valueOf(b.this.nmY), Integer.valueOf(b.this.nnc), b.this.nni.toString(), Integer.valueOf(b.this.nnd), b.this.nnj.toString(), Integer.valueOf(b.this.nmZ), Integer.valueOf(b.this.nnm), Integer.valueOf(b.this.nnn), Integer.valueOf(b.this.nno), b.this.nnt.toString(), Integer.valueOf(b.this.nnp), b.this.nnu.toString(), Integer.valueOf(b.this.nnq), b.this.nnk.toString(), b.this.nnw.toString(), b.this.nnv.toString(), Integer.valueOf(b.this.nne), b.this.nnl.toString() });
-        g.yhR.f(15081, new Object[] { Long.valueOf(b.this.nmW), Integer.valueOf(b.this.nna), Integer.valueOf(b.this.nnb), Integer.valueOf(b.this.nmY), Integer.valueOf(b.this.nnc), b.this.nni.toString(), Integer.valueOf(b.this.nnd), b.this.nnj.toString(), Integer.valueOf(b.this.nmZ), Integer.valueOf(b.this.nnm), Integer.valueOf(b.this.nnn), Integer.valueOf(b.this.nno), b.this.nnt.toString(), Integer.valueOf(b.this.nnp), b.this.nnu.toString(), Integer.valueOf(b.this.nnq), b.this.nnk.toString(), b.this.nnw.toString(), b.this.nnv.toString(), Integer.valueOf(b.this.nne), b.this.nnl.toString() });
+        ae.i("MicroMsg.AppBrandRecentViewReporter", "[report] mOpenTime: %s, mRecentCountAtOpen: %s, mRecentCountAtClose: %s, mCloseType: %s, mScrollRecentCount: %s, mOpenRecentAppBrandList: %s, mDeleteRecentCount: %s, mDeleteRecentAppBrandList: %s, \ndragCountWhenClose: %d, mStarCountAtOpen: %d, mStarCountAtClose: %d, mScrollStarCount: %d, mOpenStarAppBrandList: %s, mDeleteStarCount: %d, mDeleteStarAppBrandList: %s, \nmMoveToFirstCount: %d, mClickRecentAppBrandList: %s, mClickStarAppBrandList: %s, mMoveStarAppBrandToFirstList: %s, mAddCollectionCount: %d, mAddCollectionAppBrandList: %s", new Object[] { Long.valueOf(b.this.nsg), Integer.valueOf(b.this.nsk), Integer.valueOf(b.this.nsl), Integer.valueOf(b.this.nsi), Integer.valueOf(b.this.nsm), b.this.nss.toString(), Integer.valueOf(b.this.nsn), b.this.nst.toString(), Integer.valueOf(b.this.nsj), Integer.valueOf(b.this.nsw), Integer.valueOf(b.this.nsx), Integer.valueOf(b.this.nsy), b.this.nsD.toString(), Integer.valueOf(b.this.nsz), b.this.nsE.toString(), Integer.valueOf(b.this.nsA), b.this.nsu.toString(), b.this.nsG.toString(), b.this.nsF.toString(), Integer.valueOf(b.this.nso), b.this.nsv.toString() });
+        g.yxI.f(15081, new Object[] { Long.valueOf(b.this.nsg), Integer.valueOf(b.this.nsk), Integer.valueOf(b.this.nsl), Integer.valueOf(b.this.nsi), Integer.valueOf(b.this.nsm), b.this.nss.toString(), Integer.valueOf(b.this.nsn), b.this.nst.toString(), Integer.valueOf(b.this.nsj), Integer.valueOf(b.this.nsw), Integer.valueOf(b.this.nsx), Integer.valueOf(b.this.nsy), b.this.nsD.toString(), Integer.valueOf(b.this.nsz), b.this.nsE.toString(), Integer.valueOf(b.this.nsA), b.this.nsu.toString(), b.this.nsG.toString(), b.this.nsF.toString(), Integer.valueOf(b.this.nso), b.this.nsv.toString() });
         b.a(b.this);
         AppMethodBeat.o(153241);
       }
@@ -255,101 +255,101 @@ public final class b
     AppMethodBeat.o(153247);
   }
   
-  public final void VB(String paramString)
+  public final void Wn(String paramString)
   {
     AppMethodBeat.i(153250);
-    ad.v("MicroMsg.AppBrandRecentViewReporter", "alvinluo deleteRecentAppBrand id: %s", new Object[] { paramString });
-    this.nnd += 1;
-    this.nnj.append(paramString + ":");
+    ae.v("MicroMsg.AppBrandRecentViewReporter", "alvinluo deleteRecentAppBrand id: %s", new Object[] { paramString });
+    this.nsn += 1;
+    this.nst.append(paramString + ":");
     AppMethodBeat.o(153250);
   }
   
-  public final void VC(String paramString)
+  public final void Wo(String paramString)
   {
     AppMethodBeat.i(153251);
-    ad.v("MicroMsg.AppBrandRecentViewReporter", "alvinluo deleteStarAppBrand id: %s", new Object[] { paramString });
-    this.nnp += 1;
-    this.nnu.append(paramString + ":");
+    ae.v("MicroMsg.AppBrandRecentViewReporter", "alvinluo deleteStarAppBrand id: %s", new Object[] { paramString });
+    this.nsz += 1;
+    this.nsE.append(paramString + ":");
     AppMethodBeat.o(153251);
   }
   
-  public final void VD(String paramString)
+  public final void Wp(String paramString)
   {
     AppMethodBeat.i(153252);
-    ad.v("MicroMsg.AppBrandRecentViewReporter", "alvinluo addRecentAppBrandToCollection id: %s", new Object[] { paramString });
-    this.nne += 1;
-    this.nnl.append(paramString + ":");
+    ae.v("MicroMsg.AppBrandRecentViewReporter", "alvinluo addRecentAppBrandToCollection id: %s", new Object[] { paramString });
+    this.nso += 1;
+    this.nsv.append(paramString + ":");
     AppMethodBeat.o(153252);
   }
   
-  public final void bFB()
+  public final void bGw()
   {
-    this.nmZ += 1;
+    this.nsj += 1;
   }
   
-  public final void bFC()
+  public final void bGx()
   {
     AppMethodBeat.i(153253);
-    this.nnA += 1;
-    ad.v("MicroMsg.AppBrandRecentViewReporter", "alvinluo showSearchView %d", new Object[] { Integer.valueOf(this.nnA) });
+    this.nsK += 1;
+    ae.v("MicroMsg.AppBrandRecentViewReporter", "alvinluo showSearchView %d", new Object[] { Integer.valueOf(this.nsK) });
     AppMethodBeat.o(153253);
   }
   
-  public final void ch(String paramString, int paramInt)
+  public final void cl(String paramString, int paramInt)
   {
     AppMethodBeat.i(153248);
-    ad.v("MicroMsg.AppBrandRecentViewReporter", "alvinluo openRecentAppBrand id: %s, pos: %d", new Object[] { paramString, Integer.valueOf(paramInt) });
-    this.nni.append(paramString + ":");
-    this.nnk.append(paramInt + ":");
+    ae.v("MicroMsg.AppBrandRecentViewReporter", "alvinluo openRecentAppBrand id: %s, pos: %d", new Object[] { paramString, Integer.valueOf(paramInt) });
+    this.nss.append(paramString + ":");
+    this.nsu.append(paramInt + ":");
     AppMethodBeat.o(153248);
   }
   
-  public final void ci(String paramString, int paramInt)
+  public final void cm(String paramString, int paramInt)
   {
     AppMethodBeat.i(153249);
-    ad.v("MicroMsg.AppBrandRecentViewReporter", "alvinluo openStarAppBrand id: %s, pos: %d", new Object[] { paramString, Integer.valueOf(paramInt) });
-    this.nnt.append(paramString + ":");
-    this.nnw.append(paramInt + ":");
+    ae.v("MicroMsg.AppBrandRecentViewReporter", "alvinluo openStarAppBrand id: %s, pos: %d", new Object[] { paramString, Integer.valueOf(paramInt) });
+    this.nsD.append(paramString + ":");
+    this.nsG.append(paramInt + ":");
     AppMethodBeat.o(153249);
   }
   
   public final void eB(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(153246);
-    this.nmW = (System.currentTimeMillis() / 1000L);
-    this.nmX = ((int)this.nmW);
-    this.nna = paramInt1;
-    this.nnm = paramInt2;
+    this.nsg = (System.currentTimeMillis() / 1000L);
+    this.nsh = ((int)this.nsg);
+    this.nsk = paramInt1;
+    this.nsw = paramInt2;
     AppMethodBeat.o(153246);
   }
   
   static final class a
   {
-    String nnG;
-    StringBuilder nnH;
-    StringBuilder nnI;
-    StringBuilder nnJ;
-    StringBuilder nnK;
-    StringBuilder nnL;
-    StringBuilder nnM;
+    String nsQ;
+    StringBuilder nsR;
+    StringBuilder nsS;
+    StringBuilder nsT;
+    StringBuilder nsU;
+    StringBuilder nsV;
+    StringBuilder nsW;
     
     public a(String paramString)
     {
       AppMethodBeat.i(153243);
-      this.nnG = paramString;
-      this.nnH = new StringBuilder();
-      this.nnI = new StringBuilder();
-      this.nnJ = new StringBuilder();
-      this.nnK = new StringBuilder();
-      this.nnL = new StringBuilder();
-      this.nnM = new StringBuilder();
+      this.nsQ = paramString;
+      this.nsR = new StringBuilder();
+      this.nsS = new StringBuilder();
+      this.nsT = new StringBuilder();
+      this.nsU = new StringBuilder();
+      this.nsV = new StringBuilder();
+      this.nsW = new StringBuilder();
       AppMethodBeat.o(153243);
     }
     
     public final String toString()
     {
       AppMethodBeat.i(153244);
-      String str = String.format("DuplicateNameInfo: {duplicatedName: %s, appId: %s, \nnameType: %s, \nlistType: %s, \nposition: %s, \nversion: %s, \nversionType: %s", new Object[] { this.nnG, this.nnH.toString(), this.nnI.toString(), this.nnJ.toString(), this.nnK.toString(), this.nnL.toString(), this.nnM.toString() });
+      String str = String.format("DuplicateNameInfo: {duplicatedName: %s, appId: %s, \nnameType: %s, \nlistType: %s, \nposition: %s, \nversion: %s, \nversionType: %s", new Object[] { this.nsQ, this.nsR.toString(), this.nsS.toString(), this.nsT.toString(), this.nsU.toString(), this.nsV.toString(), this.nsW.toString() });
       AppMethodBeat.o(153244);
       return str;
     }

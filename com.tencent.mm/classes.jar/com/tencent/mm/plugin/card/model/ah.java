@@ -1,18 +1,18 @@
 package com.tencent.mm.plugin.card.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.cgg;
-import com.tencent.mm.protocal.protobuf.ctt;
-import com.tencent.mm.protocal.protobuf.ctu;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.cha;
+import com.tencent.mm.protocal.protobuf.cun;
+import com.tencent.mm.protocal.protobuf.cuo;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.Iterator;
 import java.util.LinkedList;
 
@@ -23,25 +23,25 @@ public final class ah
   private f callback;
   private final b rr;
   
-  public ah(LinkedList<cgg> paramLinkedList)
+  public ah(LinkedList<cha> paramLinkedList)
   {
     AppMethodBeat.i(112858);
     Object localObject = new b.a();
-    ((b.a)localObject).hNM = new ctt();
-    ((b.a)localObject).hNN = new ctu();
+    ((b.a)localObject).hQF = new cun();
+    ((b.a)localObject).hQG = new cuo();
     ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/reportdynamiccardcodeaction";
     ((b.a)localObject).funcId = 1275;
-    ((b.a)localObject).hNO = 0;
+    ((b.a)localObject).hQH = 0;
     ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).aDC();
-    ((ctt)this.rr.hNK.hNQ).HlQ = paramLinkedList;
+    this.rr = ((b.a)localObject).aDS();
+    ((cun)this.rr.hQD.hQJ).HFq = paramLinkedList;
     if (paramLinkedList != null)
     {
       paramLinkedList = paramLinkedList.iterator();
       while (paramLinkedList.hasNext())
       {
-        localObject = (cgg)paramLinkedList.next();
-        ad.d("MicroMsg.NetSceneReportDynamicCardCodeAction", "ReportDynamicCardCodeActionReq operate card_id=%s,code_id=%s,operate_timestamp=%d,operate_type=%d", new Object[] { ((cgg)localObject).dHX, ((cgg)localObject).ozE, Integer.valueOf(((cgg)localObject).GZs), Integer.valueOf(((cgg)localObject).GZt) });
+        localObject = (cha)paramLinkedList.next();
+        ae.d("MicroMsg.NetSceneReportDynamicCardCodeAction", "ReportDynamicCardCodeActionReq operate card_id=%s,code_id=%s,operate_timestamp=%d,operate_type=%d", new Object[] { ((cha)localObject).dJb, ((cha)localObject).oGg, Integer.valueOf(((cha)localObject).HsT), Integer.valueOf(((cha)localObject).HsU) });
       }
     }
     AppMethodBeat.o(112858);
@@ -64,7 +64,7 @@ public final class ah
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(112859);
-    ad.i("MicroMsg.NetSceneReportDynamicCardCodeAction", "onGYNetEnd, errType = %d, errCode = %d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    ae.i("MicroMsg.NetSceneReportDynamicCardCodeAction", "onGYNetEnd, errType = %d, errCode = %d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(112859);
   }

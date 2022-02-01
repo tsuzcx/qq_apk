@@ -2,12 +2,12 @@ package com.tencent.mm.plugin.webcanvas;
 
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/webcanvas/WebCanvasDimension;", "", "height", "", "getHeight", "()I", "offsetHeight", "getOffsetHeight", "offsetTop", "getOffsetTop", "width", "getWidth", "webview-sdk_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/webcanvas/WebCanvasDimension;", "", "height", "", "getHeight", "()I", "offsetHeight", "getOffsetHeight", "offsetTop", "getOffsetTop", "width", "getWidth", "webview-sdk_release"})
 public abstract interface a
 {
-  public abstract int eKT();
+  public abstract int eOB();
   
-  public abstract int eKU();
+  public abstract int eOC();
   
   public abstract int getHeight();
   

@@ -10,115 +10,115 @@ import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.card.model.am;
 import com.tencent.mm.plugin.card.sharecard.a.b;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.ui.MMActivity;
 
 public final class e
 {
-  private ImageView dwy;
-  View oDb;
-  b oDc;
-  protected LinearLayout oDd;
-  protected LinearLayout oDe;
-  private TextView oDf;
-  private MMActivity owO;
+  private ImageView dxD;
+  private MMActivity oDq;
+  View oJD;
+  b oJE;
+  protected LinearLayout oJF;
+  protected LinearLayout oJG;
+  private TextView oJH;
   
   public e(MMActivity paramMMActivity)
   {
-    this.owO = paramMMActivity;
+    this.oDq = paramMMActivity;
   }
   
-  private void bVD()
+  private void bWS()
   {
     AppMethodBeat.i(113085);
-    this.oDd.setVisibility(8);
-    this.oDe.setVisibility(8);
+    this.oJF.setVisibility(8);
+    this.oJG.setVisibility(8);
     AppMethodBeat.o(113085);
   }
   
-  private void bVG()
+  private void bWV()
   {
     AppMethodBeat.i(113088);
-    this.oDd.setVisibility(8);
-    this.oDe.setVisibility(8);
+    this.oJF.setVisibility(8);
+    this.oJG.setVisibility(8);
     AppMethodBeat.o(113088);
   }
   
-  public final void bVC()
+  public final void bWR()
   {
     AppMethodBeat.i(113084);
-    if (this.oDb == null)
+    if (this.oJD == null)
     {
-      this.oDb = View.inflate(this.owO, 2131493327, null);
-      this.dwy = ((ImageView)this.oDb.findViewById(2131296594));
-      this.oDf = ((TextView)this.oDb.findViewById(2131304789));
-      this.oDd = ((LinearLayout)this.oDb.findViewById(2131301504));
-      this.oDe = ((LinearLayout)this.oDb.findViewById(2131301499));
-      this.oDd.setVisibility(8);
-      this.oDe.setVisibility(8);
+      this.oJD = View.inflate(this.oDq, 2131493327, null);
+      this.dxD = ((ImageView)this.oJD.findViewById(2131296594));
+      this.oJH = ((TextView)this.oJD.findViewById(2131304789));
+      this.oJF = ((LinearLayout)this.oJD.findViewById(2131301504));
+      this.oJG = ((LinearLayout)this.oJD.findViewById(2131301499));
+      this.oJF.setVisibility(8);
+      this.oJG.setVisibility(8);
       RotateAnimation localRotateAnimation = new RotateAnimation(0.0F, 359.0F, 1, 0.5F, 1, 0.5F);
       localRotateAnimation.setDuration(1000L);
       localRotateAnimation.setRepeatCount(-1);
       localRotateAnimation.setInterpolator(new LinearInterpolator());
-      this.dwy.startAnimation(localRotateAnimation);
+      this.dxD.startAnimation(localRotateAnimation);
     }
     updateView();
     AppMethodBeat.o(113084);
   }
   
-  public final void bVE()
+  public final void bWT()
   {
     AppMethodBeat.i(113086);
-    this.oDd.setVisibility(0);
-    this.oDe.setVisibility(8);
+    this.oJF.setVisibility(0);
+    this.oJG.setVisibility(8);
     AppMethodBeat.o(113086);
   }
   
-  public final void bVF()
+  public final void bWU()
   {
     AppMethodBeat.i(113087);
-    this.oDd.setVisibility(8);
+    this.oJF.setVisibility(8);
     AppMethodBeat.o(113087);
   }
   
-  public final void bVH()
+  public final void bWW()
   {
     AppMethodBeat.i(113089);
-    bVG();
-    this.oDf.setVisibility(8);
+    bWV();
+    this.oJH.setVisibility(8);
     AppMethodBeat.o(113089);
   }
   
   public final void updateView()
   {
     AppMethodBeat.i(113090);
-    Integer localInteger2 = (Integer)am.bUS().getValue("key_share_card_show_type");
+    Integer localInteger2 = (Integer)am.bWh().getValue("key_share_card_show_type");
     Integer localInteger1 = localInteger2;
     if (localInteger2 == null) {
       localInteger1 = Integer.valueOf(0);
     }
-    if ((this.oDc != null) && (b.bVv()) && ((localInteger1.intValue() == 1) || (localInteger1.intValue() == 4)) && (b.bVs()))
+    if ((this.oJE != null) && (b.bWK()) && ((localInteger1.intValue() == 1) || (localInteger1.intValue() == 4)) && (b.bWH()))
     {
-      this.oDf.setVisibility(0);
-      bVG();
+      this.oJH.setVisibility(0);
+      bWV();
     }
     do
     {
       AppMethodBeat.o(113090);
       return;
-      this.oDf.setVisibility(8);
-      if (this.oDc == null) {
+      this.oJH.setVisibility(8);
+      if (this.oJE == null) {
         break;
       }
-      ad.d("MicroMsg.ShareCardFooterController", "updateView isLocalEnd %s isOtherEnd %s ", new Object[] { Boolean.valueOf(b.bVv()), Boolean.valueOf(b.bVw()) });
-      if ((!b.bVv()) || (!b.bVw()))
+      ae.d("MicroMsg.ShareCardFooterController", "updateView isLocalEnd %s isOtherEnd %s ", new Object[] { Boolean.valueOf(b.bWK()), Boolean.valueOf(b.bWL()) });
+      if ((!b.bWK()) || (!b.bWL()))
       {
-        bVE();
+        bWT();
         AppMethodBeat.o(113090);
         return;
       }
-    } while ((!b.bVv()) || (!b.bVw()));
-    bVD();
+    } while ((!b.bWK()) || (!b.bWL()));
+    bWS();
     AppMethodBeat.o(113090);
   }
 }

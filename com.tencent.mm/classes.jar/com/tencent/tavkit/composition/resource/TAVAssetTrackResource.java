@@ -16,28 +16,28 @@ public class TAVAssetTrackResource
   
   public TAVAssetTrackResource(Asset paramAsset)
   {
-    AppMethodBeat.i(219880);
+    AppMethodBeat.i(200911);
     this.asset = paramAsset;
     this.duration = paramAsset.getDuration();
     this.sourceTimeRange = new CMTimeRange(CMTime.CMTimeZero, paramAsset.getDuration());
-    AppMethodBeat.o(219880);
+    AppMethodBeat.o(200911);
   }
   
   public TAVAssetTrackResource(String paramString)
   {
     this(new URLAsset(paramString));
-    AppMethodBeat.i(219879);
-    AppMethodBeat.o(219879);
+    AppMethodBeat.i(200910);
+    AppMethodBeat.o(200910);
   }
   
   public TAVResource clone()
   {
-    AppMethodBeat.i(219883);
+    AppMethodBeat.i(200914);
     TAVAssetTrackResource localTAVAssetTrackResource = new TAVAssetTrackResource(this.asset);
     localTAVAssetTrackResource.sourceTimeRange = this.sourceTimeRange.clone();
     localTAVAssetTrackResource.scaledDuration = this.scaledDuration.clone();
     localTAVAssetTrackResource.duration = this.duration.clone();
-    AppMethodBeat.o(219883);
+    AppMethodBeat.o(200914);
     return localTAVAssetTrackResource;
   }
   
@@ -48,27 +48,27 @@ public class TAVAssetTrackResource
   
   public TrackInfo trackInfoForType(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(219882);
+    AppMethodBeat.i(200913);
     AssetTrack localAssetTrack = (AssetTrack)tracksForType(paramInt1).get(paramInt2);
     TrackInfo localTrackInfo = new TrackInfo();
     localTrackInfo.setTrack(localAssetTrack);
     localTrackInfo.setSelectedTimeRange(getSourceTimeRange());
     localTrackInfo.setScaleToDuration(getScaledDuration());
-    AppMethodBeat.o(219882);
+    AppMethodBeat.o(200913);
     return localTrackInfo;
   }
   
   public List<AssetTrack> tracksForType(int paramInt)
   {
-    AppMethodBeat.i(219881);
+    AppMethodBeat.i(200912);
     if (this.asset != null)
     {
       localObject = this.asset.tracksWithMediaType(paramInt);
-      AppMethodBeat.o(219881);
+      AppMethodBeat.o(200912);
       return localObject;
     }
     Object localObject = new ArrayList();
-    AppMethodBeat.o(219881);
+    AppMethodBeat.o(200912);
     return localObject;
   }
 }

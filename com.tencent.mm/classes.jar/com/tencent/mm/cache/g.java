@@ -1,8 +1,8 @@
 package com.tencent.mm.cache;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -16,19 +16,19 @@ public abstract interface g
   
   public static final class a
   {
-    private static Map<String, g> fIn;
+    private static Map<String, g> fKr;
     
     static
     {
       AppMethodBeat.i(131947);
-      fIn = new HashMap();
+      fKr = new HashMap();
       AppMethodBeat.o(131947);
     }
     
     public static <T> T U(String paramString1, String paramString2)
     {
       AppMethodBeat.i(131942);
-      paramString1 = a(uG(paramString1), paramString2);
+      paramString1 = a(vb(paramString1), paramString2);
       AppMethodBeat.o(131942);
       return paramString1;
     }
@@ -36,7 +36,7 @@ public abstract interface g
     public static <T> void V(String paramString1, String paramString2)
     {
       AppMethodBeat.i(131944);
-      b(uG(paramString1), paramString2);
+      b(vb(paramString1), paramString2);
       AppMethodBeat.o(131944);
     }
     
@@ -45,7 +45,7 @@ public abstract interface g
       AppMethodBeat.i(131945);
       if (paramg == null)
       {
-        ad.e("MicroMsg.ICacheService.Factory", "null service");
+        ae.e("MicroMsg.ICacheService.Factory", "null service");
         AppMethodBeat.o(131945);
         return null;
       }
@@ -57,8 +57,8 @@ public abstract interface g
       }
       catch (Exception paramg)
       {
-        ad.e("MicroMsg.ICacheService.Factory", "cast failed, different type ?");
-        ad.e("MicroMsg.ICacheService.Factory", "exception:%s", new Object[] { bt.n(paramg) });
+        ae.e("MicroMsg.ICacheService.Factory", "cast failed, different type ?");
+        ae.e("MicroMsg.ICacheService.Factory", "exception:%s", new Object[] { bu.o(paramg) });
         AppMethodBeat.o(131945);
       }
       return null;
@@ -67,17 +67,17 @@ public abstract interface g
     public static void a(String paramString, g paramg)
     {
       AppMethodBeat.i(131940);
-      fIn.put(paramString, paramg);
+      fKr.put(paramString, paramg);
       AppMethodBeat.o(131940);
     }
     
     public static <T> void a(String paramString1, String paramString2, T paramT)
     {
       AppMethodBeat.i(131943);
-      paramString1 = uG(paramString1);
+      paramString1 = vb(paramString1);
       if (paramString1 == null)
       {
-        ad.e("MicroMsg.ICacheService.Factory", "null service");
+        ae.e("MicroMsg.ICacheService.Factory", "null service");
         AppMethodBeat.o(131943);
         return;
       }
@@ -90,7 +90,7 @@ public abstract interface g
       AppMethodBeat.i(131946);
       if (paramg == null)
       {
-        ad.e("MicroMsg.ICacheService.Factory", "null service");
+        ae.e("MicroMsg.ICacheService.Factory", "null service");
         AppMethodBeat.o(131946);
         return null;
       }
@@ -102,17 +102,17 @@ public abstract interface g
       }
       catch (Exception paramg)
       {
-        ad.e("MicroMsg.ICacheService.Factory", "cast failed, different type ?");
-        ad.e("MicroMsg.ICacheService.Factory", "exception:%s", new Object[] { bt.n(paramg) });
+        ae.e("MicroMsg.ICacheService.Factory", "cast failed, different type ?");
+        ae.e("MicroMsg.ICacheService.Factory", "exception:%s", new Object[] { bu.o(paramg) });
         AppMethodBeat.o(131946);
       }
       return null;
     }
     
-    private static g uG(String paramString)
+    private static g vb(String paramString)
     {
       AppMethodBeat.i(131941);
-      paramString = (g)fIn.get(paramString);
+      paramString = (g)fKr.get(paramString);
       AppMethodBeat.o(131941);
       return paramString;
     }

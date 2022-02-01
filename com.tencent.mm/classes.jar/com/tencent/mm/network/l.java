@@ -35,7 +35,7 @@ public abstract interface l
         return true;
       }
       paramParcel1.enforceInterface("com.tencent.mm.network.IOnGYNetEnd_AIDL");
-      a(paramParcel1.readInt(), paramParcel1.readInt(), paramParcel1.readInt(), paramParcel1.readString(), r.a.p(paramParcel1.readStrongBinder()), paramParcel1.createByteArray());
+      a(paramParcel1.readInt(), paramParcel1.readInt(), paramParcel1.readInt(), paramParcel1.readString(), r.a.q(paramParcel1.readStrongBinder()), paramParcel1.createByteArray());
       paramParcel2.writeNoException();
       return true;
     }

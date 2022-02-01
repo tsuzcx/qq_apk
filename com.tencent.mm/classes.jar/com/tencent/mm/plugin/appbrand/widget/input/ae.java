@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.appbrand.widget.input;
 
 public abstract interface ae
 {
-  public abstract void wo(int paramInt);
+  public abstract void wt(int paramInt);
 }
 
 

@@ -1,17 +1,27 @@
 package com.tencent.mm.plugin.appbrand.ui;
 
-import d.g.a.a;
-import d.l;
-import d.z;
+import com.tencent.mm.plugin.appbrand.ad.f;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/ui/IAppBrandLoadingSplashCloseable;", "", "onSplashClosed", "", "listener", "Lkotlin/Function0;", "luggage-wxa-app_release"})
 public abstract interface x
+  extends w
 {
-  public abstract void w(a<z> parama);
+  public abstract boolean aWP();
+  
+  public abstract void aYF();
+  
+  public abstract void aYI();
+  
+  public abstract void bzO();
+  
+  public abstract w getInternalLoadingSplash();
+  
+  public abstract f getRuntimeAdViewContainer();
+  
+  public abstract void l(boolean paramBoolean, String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.x
  * JD-Core Version:    0.7.0.1
  */

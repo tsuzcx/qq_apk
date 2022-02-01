@@ -9,7 +9,7 @@ import android.util.Log;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public class MMKViewUtil
 {
@@ -29,11 +29,11 @@ public class MMKViewUtil
     AppMethodBeat.i(19389);
     if (paramContext == null)
     {
-      ad.e("MMKViewUtil", "DpToPx method parameter is illegal! context is null! stack: \n" + Log.getStackTraceString(new Throwable()));
+      ae.e("MMKViewUtil", "DpToPx method parameter is illegal! context is null! stack: \n" + Log.getStackTraceString(new Throwable()));
       AppMethodBeat.o(19389);
       return 2.0F * paramFloat;
     }
-    paramFloat = BackwardSupportUtil.b.g(paramContext, paramFloat);
+    paramFloat = BackwardSupportUtil.b.h(paramContext, paramFloat);
     AppMethodBeat.o(19389);
     return paramFloat;
   }
@@ -43,7 +43,7 @@ public class MMKViewUtil
     AppMethodBeat.i(19390);
     if (paramContext == null)
     {
-      ad.e("MMKViewUtil", "dpToPx method parameter is illegal! context is null! stack: \n" + Log.getStackTraceString(new Throwable()));
+      ae.e("MMKViewUtil", "dpToPx method parameter is illegal! context is null! stack: \n" + Log.getStackTraceString(new Throwable()));
       paramFloat /= 2.0F;
       AppMethodBeat.o(19390);
       return paramFloat;
@@ -56,22 +56,22 @@ public class MMKViewUtil
   @SuppressLint({"ResourceType"})
   public static void setId4KindaImplView(Context paramContext, String paramString, View paramView)
   {
-    AppMethodBeat.i(199541);
+    AppMethodBeat.i(193258);
     int i = paramContext.getResources().getIdentifier(paramString, "id", paramContext.getPackageName());
     if (i > 0)
     {
       paramView.setId(i);
-      ad.d("MMKViewUtil", "setViewId has set rid: ".concat(String.valueOf(paramString)));
-      AppMethodBeat.o(199541);
+      ae.d("MMKViewUtil", "setViewId has set rid: ".concat(String.valueOf(paramString)));
+      AppMethodBeat.o(193258);
       return;
     }
-    ad.d("MMKViewUtil", "setViewId has not set rid: " + paramString + ", because no found res.");
-    AppMethodBeat.o(199541);
+    ae.d("MMKViewUtil", "setViewId has not set rid: " + paramString + ", because no found res.");
+    AppMethodBeat.o(193258);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.kinda.framework.widget.tools.MMKViewUtil
  * JD-Core Version:    0.7.0.1
  */

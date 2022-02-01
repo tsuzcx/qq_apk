@@ -1,54 +1,66 @@
 package com.tencent.luggage.game.a;
 
-import android.content.Context;
-import com.tencent.luggage.game.b.b;
-import com.tencent.magicbrush.MBRuntime;
-import com.tencent.magicbrush.e;
-import com.tencent.magicbrush.f;
-import com.tencent.magicbrush.f.a;
-import com.tencent.magicbrush.ui.a.b;
+import com.tencent.magicbrush.handler.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
-import com.tencent.mm.plugin.appbrand.jsruntime.i;
+import com.tencent.mm.plugin.appbrand.jsruntime.q;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/luggage/game/boot/MagicBrushForMiniProgram;", "Lcom/tencent/luggage/game/boot/MagicBrushSimple;", "context", "Landroid/content/Context;", "jsRuntime", "Lcom/tencent/mm/plugin/appbrand/jsruntime/AppBrandJsRuntime;", "(Landroid/content/Context;Lcom/tencent/mm/plugin/appbrand/jsruntime/AppBrandJsRuntime;)V", "onAppBrandRuntimeReady", "", "runtime", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntime;", "onConfig", "builder", "Lcom/tencent/magicbrush/MagicBrushBuilder;", "luggage-wxa-game-ext_release"})
-public class c
-  extends d
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/luggage/game/boot/JsThreadHandler;", "Lcom/tencent/magicbrush/handler/IJsThreadHandler;", "impl", "Lcom/tencent/mm/plugin/appbrand/jsruntime/AppBrandJsRuntimeAddonJsThread;", "(Lcom/tencent/mm/plugin/appbrand/jsruntime/AppBrandJsRuntimeAddonJsThread;)V", "getImpl", "()Lcom/tencent/mm/plugin/appbrand/jsruntime/AppBrandJsRuntimeAddonJsThread;", "doInnerLoopTask", "", "getExecutingTaskNameForDebug", "", "isJsThreadCurrent", "post", "", "r", "Ljava/lang/Runnable;", "ignorePause", "resumeLoopTasks", "luggage-wxa-game-ext_release"})
+final class c
+  implements a
 {
-  public c(Context paramContext, i parami)
+  private final q cik;
+  
+  public c(q paramq)
   {
-    super(paramContext, parami);
-    AppMethodBeat.i(130736);
-    AppMethodBeat.o(130736);
+    AppMethodBeat.i(130731);
+    this.cik = paramq;
+    AppMethodBeat.o(130731);
   }
   
-  protected void a(e parame)
+  public final boolean Cw()
   {
-    AppMethodBeat.i(130734);
-    p.h(parame, "builder");
-    super.a(parame);
-    parame.bQ(true);
-    parame.cxn.a(f.cwV[13], Boolean.FALSE);
-    parame.b(a.b.czM);
-    parame.cxp.a(f.cwV[15], Boolean.FALSE);
-    parame.bO(false);
-    parame.bP(false);
-    AppMethodBeat.o(130734);
+    AppMethodBeat.i(130730);
+    boolean bool = this.cik.Cw();
+    AppMethodBeat.o(130730);
+    return bool;
   }
   
-  protected final void a(AppBrandRuntime paramAppBrandRuntime)
+  public final String Cx()
   {
-    AppMethodBeat.i(130735);
-    p.h(paramAppBrandRuntime, "runtime");
-    b.ciB.a((MBRuntime)getMagicBrush(), paramAppBrandRuntime, false);
-    AppMethodBeat.o(130735);
+    AppMethodBeat.i(184694);
+    String str = this.cik.Cx();
+    AppMethodBeat.o(184694);
+    return str;
+  }
+  
+  public final void a(Runnable paramRunnable, boolean paramBoolean)
+  {
+    AppMethodBeat.i(220742);
+    p.h(paramRunnable, "r");
+    this.cik.a(paramRunnable, paramBoolean);
+    AppMethodBeat.o(220742);
+  }
+  
+  public final boolean doInnerLoopTask()
+  {
+    AppMethodBeat.i(220744);
+    boolean bool = this.cik.doInnerLoopTask();
+    AppMethodBeat.o(220744);
+    return bool;
+  }
+  
+  public final void resumeLoopTasks()
+  {
+    AppMethodBeat.i(220743);
+    this.cik.resumeLoopTasks();
+    AppMethodBeat.o(220743);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.luggage.game.a.c
  * JD-Core Version:    0.7.0.1
  */

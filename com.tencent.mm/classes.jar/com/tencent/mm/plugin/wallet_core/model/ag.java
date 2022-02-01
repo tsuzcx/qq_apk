@@ -1,13 +1,13 @@
 package com.tencent.mm.plugin.wallet_core.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.gx;
+import com.tencent.mm.g.c.gy;
 import com.tencent.mm.sdk.e.c.a;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class ag
-  extends gx
+  extends gy
 {
   public static c.a info;
   
@@ -15,44 +15,44 @@ public final class ag
   {
     AppMethodBeat.i(70435);
     c.a locala = new c.a();
-    locala.IhA = new Field[9];
+    locala.IBL = new Field[9];
     locala.columns = new String[10];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "pref_key";
-    locala.IhC.put("pref_key", "TEXT PRIMARY KEY ");
+    locala.IBN.put("pref_key", "TEXT PRIMARY KEY ");
     localStringBuilder.append(" pref_key TEXT PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.IhB = "pref_key";
+    locala.IBM = "pref_key";
     locala.columns[1] = "pref_title";
-    locala.IhC.put("pref_title", "TEXT");
+    locala.IBN.put("pref_title", "TEXT");
     localStringBuilder.append(" pref_title TEXT");
     localStringBuilder.append(", ");
     locala.columns[2] = "pref_url";
-    locala.IhC.put("pref_url", "TEXT");
+    locala.IBN.put("pref_url", "TEXT");
     localStringBuilder.append(" pref_url TEXT");
     localStringBuilder.append(", ");
     locala.columns[3] = "is_show";
-    locala.IhC.put("is_show", "INTEGER default '1' ");
+    locala.IBN.put("is_show", "INTEGER default '1' ");
     localStringBuilder.append(" is_show INTEGER default '1' ");
     localStringBuilder.append(", ");
     locala.columns[4] = "pref_desc";
-    locala.IhC.put("pref_desc", "TEXT");
+    locala.IBN.put("pref_desc", "TEXT");
     localStringBuilder.append(" pref_desc TEXT");
     localStringBuilder.append(", ");
     locala.columns[5] = "logo_url";
-    locala.IhC.put("logo_url", "TEXT");
+    locala.IBN.put("logo_url", "TEXT");
     localStringBuilder.append(" logo_url TEXT");
     localStringBuilder.append(", ");
     locala.columns[6] = "jump_type";
-    locala.IhC.put("jump_type", "INTEGER");
+    locala.IBN.put("jump_type", "INTEGER");
     localStringBuilder.append(" jump_type INTEGER");
     localStringBuilder.append(", ");
     locala.columns[7] = "tinyapp_username";
-    locala.IhC.put("tinyapp_username", "TEXT");
+    locala.IBN.put("tinyapp_username", "TEXT");
     localStringBuilder.append(" tinyapp_username TEXT");
     localStringBuilder.append(", ");
     locala.columns[8] = "tinyapp_path";
-    locala.IhC.put("tinyapp_path", "TEXT");
+    locala.IBN.put("tinyapp_path", "TEXT");
     localStringBuilder.append(" tinyapp_path TEXT");
     locala.columns[9] = "rowid";
     locala.sql = localStringBuilder.toString();

@@ -6,18 +6,25 @@ import com.tencent.mars.Mars;
 import com.tencent.mars.smc.IDKey;
 import com.tencent.mars.smc.SmcLogic;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.b.s;
-import com.tencent.mm.g.a.oz;
-import com.tencent.mm.model.u;
+import com.tencent.mm.g.a.pa;
+import com.tencent.mm.model.v;
 import com.tencent.mm.pointers.PByteArray;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.ai;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.ar;
 import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.al.a;
+import com.tencent.mm.sdk.platformtools.bv;
+import com.tencent.mm.sdk.platformtools.j;
+import com.tencent.mm.storage.aj;
+import com.tencent.mm.storage.am.a;
+import com.tencent.mm.vfs.k;
+import com.tencent.mm.vfs.o;
+import com.tencent.mm.vfs.w;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -40,29 +47,29 @@ public enum g
   implements com.tencent.mm.plugin.report.d
 {
   private int uin;
-  private long yhS;
-  private int yhT;
-  private HashMap<String, Long> yhU;
-  private int yhV;
-  private int yhW;
-  private long yhX;
-  private volatile boolean yhY;
+  private long yxJ;
+  private int yxK;
+  private HashMap<String, Long> yxL;
+  private int yxM;
+  private int yxN;
+  private long yxO;
+  private volatile boolean yxP;
   
   static
   {
     AppMethodBeat.i(143908);
-    yhR = new g("INSTANCE");
-    yhZ = new g[] { yhR };
+    yxI = new g("INSTANCE");
+    yxQ = new g[] { yxI };
     AppMethodBeat.o(143908);
   }
   
   private g()
   {
     AppMethodBeat.i(143875);
-    this.yhS = 0L;
-    if (aj.cnC())
+    this.yxJ = 0L;
+    if (ak.cpe())
     {
-      com.tencent.mm.kernel.g.ajF().ay(new Runnable()
+      com.tencent.mm.kernel.g.ajU().aw(new Runnable()
       {
         public final void run()
         {
@@ -80,8 +87,8 @@ public enum g
           AppMethodBeat.o(143865);
         }
       };
-      com.tencent.mm.sdk.b.a.IbL.b(new com.tencent.mm.sdk.b.c() {});
-      com.tencent.mm.kernel.g.aiU().a(701, new f()
+      com.tencent.mm.sdk.b.a.IvT.b(new com.tencent.mm.sdk.b.c() {});
+      com.tencent.mm.kernel.g.ajj().a(701, new f()
       {
         public final void onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, n paramAnonymousn)
         {
@@ -91,7 +98,7 @@ public enum g
             AppMethodBeat.o(143867);
             return;
           }
-          com.tencent.mm.kernel.g.ajF().n(this.yib, 5000L);
+          com.tencent.mm.kernel.g.ajU().n(this.yxS, 5000L);
           AppMethodBeat.o(143867);
         }
       });
@@ -111,12 +118,12 @@ public enum g
   {
     AppMethodBeat.i(143879);
     KVReportDataInfo localKVReportDataInfo = new KVReportDataInfo();
-    localKVReportDataInfo.dxZ = paramInt1;
+    localKVReportDataInfo.dze = paramInt1;
     localKVReportDataInfo.value = paramString;
-    localKVReportDataInfo.dle = paramInt2;
-    localKVReportDataInfo.yhl = false;
-    localKVReportDataInfo.yhD = paramBoolean1;
-    localKVReportDataInfo.yhE = paramBoolean2;
+    localKVReportDataInfo.dmg = paramInt2;
+    localKVReportDataInfo.yxc = false;
+    localKVReportDataInfo.yxu = paramBoolean1;
+    localKVReportDataInfo.yxv = paramBoolean2;
     KVCommCrossProcessReceiver.a(localKVReportDataInfo);
     AppMethodBeat.o(143879);
   }
@@ -125,7 +132,7 @@ public enum g
   {
     AppMethodBeat.i(143903);
     final long l = System.currentTimeMillis();
-    if (!bi(paramString, l))
+    if (!bj(paramString, l))
     {
       AppMethodBeat.o(143903);
       return;
@@ -140,11 +147,11 @@ public enum g
         AppMethodBeat.i(143870);
         int i;
         Object localObject1;
-        if ((aj.cnC()) && (com.tencent.mm.kernel.g.ajx()))
+        if ((ak.cpe()) && (com.tencent.mm.kernel.g.ajM()))
         {
-          com.tencent.mm.kernel.g.ajA();
+          com.tencent.mm.kernel.g.ajP();
           i = com.tencent.mm.kernel.a.getUin();
-          if (com.tencent.mm.kernel.g.ajC().ajl() == null) {
+          if (com.tencent.mm.kernel.g.ajR().ajA() == null) {
             localObject1 = null;
           }
         }
@@ -156,7 +163,7 @@ public enum g
           localObject1 = localObject7;
           try
           {
-            Object localObject9 = aj.getContext().getSharedPreferences("system_config_prefs", 0).getString("support.weixin.qq.com", "support.weixin.qq.com");
+            Object localObject9 = ak.getContext().getSharedPreferences("system_config_prefs", 0).getString("support.weixin.qq.com", "support.weixin.qq.com");
             localObject3 = localObject6;
             localObject1 = localObject7;
             Object localObject8 = (JSONArray)paramCallable.call();
@@ -178,7 +185,7 @@ public enum g
                 ((JSONObject)localObject10).put("uin", i);
                 j += 1;
                 continue;
-                localObject1 = u.aAm();
+                localObject1 = v.aAC();
                 break;
                 localObject5 = null;
                 i = 0;
@@ -187,13 +194,13 @@ public enum g
             }
             localObject3 = localObject6;
             localObject1 = localObject7;
-            localObject8 = new JSONObject().put("head", new JSONObject().put("protocol_ver", 1).put("phone", com.tencent.mm.protocal.d.DEVICE_NAME).put("os_ver", com.tencent.mm.protocal.d.hgH).put("report_time", l).put("revision", bt.nullAsNil(com.tencent.mm.sdk.platformtools.i.REV))).put("items", localObject8).toString().getBytes();
+            localObject8 = new JSONObject().put("head", new JSONObject().put("protocol_ver", 1).put("phone", com.tencent.mm.protocal.d.DEVICE_NAME).put("os_ver", com.tencent.mm.protocal.d.hjv).put("report_time", l).put("revision", bu.nullAsNil(j.REV))).put("items", localObject8).toString().getBytes();
             localObject3 = localObject6;
             localObject1 = localObject7;
             j = localObject8.length;
             localObject3 = localObject6;
             localObject1 = localObject7;
-            Object localObject10 = com.tencent.mm.b.g.getMessageDigest(String.format("weixin#$()%d%d", new Object[] { Integer.valueOf(com.tencent.mm.protocal.d.Fnj), Integer.valueOf(j) }).getBytes()).toLowerCase();
+            Object localObject10 = com.tencent.mm.b.g.getMessageDigest(String.format("weixin#$()%d%d", new Object[] { Integer.valueOf(com.tencent.mm.protocal.d.FFH), Integer.valueOf(j) }).getBytes()).toLowerCase();
             localObject3 = localObject6;
             localObject1 = localObject7;
             byte[] arrayOfByte = s.compress((byte[])localObject8);
@@ -205,7 +212,7 @@ public enum g
             com.tencent.mm.b.c.a((PByteArray)localObject8, arrayOfByte, ((String)localObject10).getBytes());
             localObject3 = localObject6;
             localObject1 = localObject7;
-            localObject9 = new StringBuilder(256).append("https://").append((String)localObject9).append("/cgi-bin/mmsupport-bin/stackreport?version=").append(Integer.toHexString(com.tencent.mm.protocal.d.Fnj)).append("&devicetype=").append(com.tencent.mm.protocal.d.hgH).append("&filelength=").append(j).append("&sum=").append((String)localObject10).append("&reporttype=1&NewReportType=110");
+            localObject9 = new StringBuilder(256).append("https://").append((String)localObject9).append("/cgi-bin/mmsupport-bin/stackreport?version=").append(Integer.toHexString(com.tencent.mm.protocal.d.FFH)).append("&devicetype=").append(com.tencent.mm.protocal.d.hjv).append("&filelength=").append(j).append("&sum=").append((String)localObject10).append("&reporttype=1&NewReportType=110");
             if (localObject5 != null)
             {
               localObject3 = localObject6;
@@ -246,7 +253,7 @@ public enum g
             localObject5 = ((HttpClient)localObject5).execute((HttpUriRequest)localObject9).getEntity().getContent();
             localObject3 = localObject5;
             localObject1 = localObject5;
-            ad.i("MicroMsg.cLog", "POST returned: ".concat(String.valueOf(bt.convertStreamToString((InputStream)localObject5))));
+            ae.i("MicroMsg.cLog", "POST returned: ".concat(String.valueOf(bu.convertStreamToString((InputStream)localObject5))));
             if (localObject5 != null) {
               try
               {
@@ -277,7 +284,7 @@ public enum g
           catch (Exception localException)
           {
             localObject2 = localObject3;
-            ad.printErrStackTrace("MicroMsg.ReportManagerKvCheck", localException, "Failed to upload cLog.", new Object[0]);
+            ae.printErrStackTrace("MicroMsg.ReportManagerKvCheck", localException, "Failed to upload cLog.", new Object[0]);
             if (localObject3 != null) {
               try
               {
@@ -306,12 +313,12 @@ public enum g
   {
     AppMethodBeat.i(143880);
     KVReportDataInfo localKVReportDataInfo = new KVReportDataInfo();
-    localKVReportDataInfo.dxZ = paramInt;
+    localKVReportDataInfo.dze = paramInt;
     localKVReportDataInfo.value = paramString;
-    localKVReportDataInfo.dle = 0L;
-    localKVReportDataInfo.yhl = false;
-    localKVReportDataInfo.yhD = paramBoolean1;
-    localKVReportDataInfo.yhE = paramBoolean2;
+    localKVReportDataInfo.dmg = 0L;
+    localKVReportDataInfo.yxc = false;
+    localKVReportDataInfo.yxu = paramBoolean1;
+    localKVReportDataInfo.yxv = paramBoolean2;
     KVCommCrossProcessReceiver.a(localKVReportDataInfo);
     AppMethodBeat.o(143880);
   }
@@ -319,8 +326,8 @@ public enum g
   private static void b(int paramInt, List<String> paramList, boolean paramBoolean)
   {
     AppMethodBeat.i(143890);
-    paramList = fs(paramList);
-    if (aj.cnC())
+    paramList = fA(paramList);
+    if (ak.cpe())
     {
       d.a(paramInt, paramList, paramBoolean, false, false);
       AppMethodBeat.o(143890);
@@ -330,20 +337,20 @@ public enum g
     AppMethodBeat.o(143890);
   }
   
-  private boolean bi(String paramString, long paramLong)
+  private boolean bj(String paramString, long paramLong)
   {
     AppMethodBeat.i(143905);
-    if (bu.flY())
+    if (bv.fpT())
     {
-      ad.d("MicroMsg.cLog", "[%s] Sampling hit: (debug)", new Object[] { paramString });
+      ae.d("MicroMsg.cLog", "[%s] Sampling hit: (debug)", new Object[] { paramString });
       AppMethodBeat.o(143905);
       return true;
     }
     Long localLong;
     boolean bool;
-    if (this.yhU != null)
+    if (this.yxL != null)
     {
-      localLong = (Long)this.yhU.get(paramString);
+      localLong = (Long)this.yxL.get(paramString);
       if (localLong == null) {
         break label333;
       }
@@ -371,7 +378,7 @@ public enum g
     label325:
     for (Object localObject = "hit";; localObject = "miss")
     {
-      ad.d("MicroMsg.cLog", "[%s] Sampling %s: 0x%08x / 0x%08x", new Object[] { paramString, localObject, Long.valueOf(paramLong), localLong });
+      ae.d("MicroMsg.cLog", "[%s] Sampling %s: 0x%08x / 0x%08x", new Object[] { paramString, localObject, Long.valueOf(paramLong), localLong });
       AppMethodBeat.o(143905);
       return bool;
       localLong = null;
@@ -380,7 +387,7 @@ public enum g
       break label261;
     }
     label333:
-    ad.d("MicroMsg.cLog", "[%s] Sampling hit: (default)", new Object[] { paramString });
+    ae.d("MicroMsg.cLog", "[%s] Sampling hit: (default)", new Object[] { paramString });
     AppMethodBeat.o(143905);
     return true;
   }
@@ -388,12 +395,12 @@ public enum g
   public static void c(int paramInt, String paramString, boolean paramBoolean1, boolean paramBoolean2)
   {
     AppMethodBeat.i(143884);
-    if (aj.cnC())
+    if (ak.cpe())
     {
-      if (com.tencent.mm.plugin.report.a.c.ygP)
+      if (com.tencent.mm.plugin.report.a.c.ywG)
       {
         long l = paramInt;
-        paramBoolean1 = com.tencent.mm.plugin.report.a.c.ygQ;
+        paramBoolean1 = com.tencent.mm.plugin.report.a.c.ywH;
         d.a(l, paramString, paramBoolean1, paramBoolean1, paramBoolean2);
         AppMethodBeat.o(143884);
         return;
@@ -406,20 +413,20 @@ public enum g
     AppMethodBeat.o(143884);
   }
   
-  public static void dKq()
+  public static void dNI()
   {
     AppMethodBeat.i(143899);
-    if (aj.cnC()) {
+    if (ak.cpe()) {
       Mars.onSingalCrash(0);
     }
     AppMethodBeat.o(143899);
   }
   
-  private static String fs(List<String> paramList)
+  private static String fA(List<String> paramList)
   {
     AppMethodBeat.i(143878);
     if ((paramList == null) || (paramList.isEmpty())) {
-      ad.w("MicroMsg.ReportManagerKvCheck", "vals is null, use '' as value");
+      ae.w("MicroMsg.ReportManagerKvCheck", "vals is null, use '' as value");
     }
     StringBuilder localStringBuilder;
     for (paramList = "";; paramList = localStringBuilder.toString())
@@ -438,12 +445,12 @@ public enum g
     }
   }
   
-  public static void l(int paramInt, List<String> paramList)
+  public static void m(int paramInt, List<String> paramList)
   {
     AppMethodBeat.i(143889);
-    if (com.tencent.mm.plugin.report.a.c.ygP)
+    if (com.tencent.mm.plugin.report.a.c.ywG)
     {
-      b(paramInt, paramList, com.tencent.mm.plugin.report.a.c.ygQ);
+      b(paramInt, paramList, com.tencent.mm.plugin.report.a.c.ywH);
       AppMethodBeat.o(143889);
       return;
     }
@@ -455,21 +462,21 @@ public enum g
   {
     AppMethodBeat.i(143881);
     StIDKeyDataInfo localStIDKeyDataInfo = new StIDKeyDataInfo();
-    localStIDKeyDataInfo.pQX = paramLong1;
+    localStIDKeyDataInfo.pXC = paramLong1;
     localStIDKeyDataInfo.key = paramLong2;
     localStIDKeyDataInfo.value = paramLong3;
-    localStIDKeyDataInfo.yhl = false;
+    localStIDKeyDataInfo.yxc = false;
     KVCommCrossProcessReceiver.a(localStIDKeyDataInfo);
     AppMethodBeat.o(143881);
   }
   
-  public static String v(Object... paramVarArgs)
+  public static String u(Object... paramVarArgs)
   {
     int i = 0;
     AppMethodBeat.i(143877);
     if ((paramVarArgs == null) || (paramVarArgs.length <= 0))
     {
-      ad.w("MicroMsg.ReportManagerKvCheck", "vals is null, use '' as value");
+      ae.w("MicroMsg.ReportManagerKvCheck", "vals is null, use '' as value");
       paramVarArgs = "";
     }
     for (;;)
@@ -497,9 +504,9 @@ public enum g
   
   public final void A(long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(221417);
+    AppMethodBeat.i(224445);
     n(paramLong1, paramLong2, 1L);
-    AppMethodBeat.o(221417);
+    AppMethodBeat.o(224445);
   }
   
   public final void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, boolean paramBoolean)
@@ -523,12 +530,12 @@ public enum g
   public final void a(int paramInt, String paramString, boolean paramBoolean1, boolean paramBoolean2)
   {
     AppMethodBeat.i(143883);
-    if (aj.cnC())
+    if (ak.cpe())
     {
-      if (com.tencent.mm.plugin.report.a.c.ygP)
+      if (com.tencent.mm.plugin.report.a.c.ywG)
       {
         long l = paramInt;
-        paramBoolean1 = com.tencent.mm.plugin.report.a.c.ygQ;
+        paramBoolean1 = com.tencent.mm.plugin.report.a.c.ywH;
         d.a(l, paramString, paramBoolean1, paramBoolean1, false);
         AppMethodBeat.o(143883);
         return;
@@ -543,19 +550,19 @@ public enum g
   
   public final void a(int paramInt, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, Object... paramVarArgs)
   {
-    AppMethodBeat.i(197140);
-    c(paramInt, v(paramVarArgs), paramBoolean1, paramBoolean3);
-    AppMethodBeat.o(197140);
+    AppMethodBeat.i(221078);
+    c(paramInt, u(paramVarArgs), paramBoolean1, paramBoolean3);
+    AppMethodBeat.o(221078);
   }
   
   public final void a(int paramInt, boolean paramBoolean1, boolean paramBoolean2, Object... paramVarArgs)
   {
     AppMethodBeat.i(143887);
-    paramVarArgs = v(paramVarArgs);
-    if (com.tencent.mm.sdk.a.b.fjN()) {
-      ad.v("MicroMsg.ReportManagerKvCheck", "kvTypedStat id:%d [%b,%b] val:%s", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean1), Boolean.FALSE, paramVarArgs });
+    paramVarArgs = u(paramVarArgs);
+    if (com.tencent.mm.sdk.a.b.fnF()) {
+      ae.v("MicroMsg.ReportManagerKvCheck", "kvTypedStat id:%d [%b,%b] val:%s", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean1), Boolean.FALSE, paramVarArgs });
     }
-    if (aj.cnC())
+    if (ak.cpe())
     {
       d.a(paramInt, paramVarArgs, paramBoolean1, false, false);
       AppMethodBeat.o(143887);
@@ -565,7 +572,7 @@ public enum g
     AppMethodBeat.o(143887);
   }
   
-  public final void aq(int paramInt1, int paramInt2, int paramInt3)
+  public final void ar(int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(143898);
     IDKey localIDKey1 = new IDKey();
@@ -588,7 +595,7 @@ public enum g
     AppMethodBeat.i(143895);
     if (paramArrayList == null)
     {
-      ad.e("MicroMsg.ReportManagerKvCheck", "report idkeyGroupStat lstIdKeyDataInfos == null return");
+      ae.e("MicroMsg.ReportManagerKvCheck", "report idkeyGroupStat lstIdKeyDataInfos == null return");
       AppMethodBeat.o(143895);
       return;
     }
@@ -598,24 +605,24 @@ public enum g
       IDKey localIDKey = (IDKey)localIterator.next();
       if (localIDKey == null)
       {
-        ad.e("MicroMsg.ReportManagerKvCheck", "report idkeyGroupStat info == null return");
+        ae.e("MicroMsg.ReportManagerKvCheck", "report idkeyGroupStat info == null return");
         AppMethodBeat.o(143895);
         return;
       }
       if ((localIDKey.GetID() < 0L) || (localIDKey.GetKey() < 0L) || (localIDKey.GetValue() <= 0L))
       {
-        ad.e("MicroMsg.ReportManagerKvCheck", "report idkeyGroupStat ID %d, key %d, value %d <0", new Object[] { Long.valueOf(localIDKey.GetID()), Long.valueOf(localIDKey.GetKey()), Long.valueOf(localIDKey.GetValue()) });
+        ae.e("MicroMsg.ReportManagerKvCheck", "report idkeyGroupStat ID %d, key %d, value %d <0", new Object[] { Long.valueOf(localIDKey.GetID()), Long.valueOf(localIDKey.GetKey()), Long.valueOf(localIDKey.GetValue()) });
         AppMethodBeat.o(143895);
         return;
       }
     }
-    if (aj.cnC())
+    if (ak.cpe())
     {
       d.d(paramArrayList, false);
       AppMethodBeat.o(143895);
       return;
     }
-    KVCommCrossProcessReceiver.au(paramArrayList);
+    KVCommCrossProcessReceiver.av(paramArrayList);
     AppMethodBeat.o(143895);
   }
   
@@ -638,7 +645,7 @@ public enum g
   }
   
   /* Error */
-  public final boolean c(int paramInt, com.tencent.mm.bx.a parama)
+  public final boolean c(int paramInt, com.tencent.mm.bw.a parama)
   {
     // Byte code:
     //   0: ldc_w 599
@@ -650,13 +657,13 @@ public enum g
     //   16: aload_2
     //   17: ldc_w 612
     //   20: invokevirtual 618	java/lang/reflect/Field:setInt	(Ljava/lang/Object;I)V
-    //   23: invokestatic 623	com/tencent/mm/sdk/platformtools/bt:flT	()J
+    //   23: invokestatic 623	com/tencent/mm/sdk/platformtools/bu:fpO	()J
     //   26: lstore_3
     //   27: lload_3
     //   28: ldc2_w 624
     //   31: ldiv
     //   32: aload_0
-    //   33: getfield 71	com/tencent/mm/plugin/report/service/g:yhS	J
+    //   33: getfield 71	com/tencent/mm/plugin/report/service/g:yxJ	J
     //   36: lcmp
     //   37: ifeq +35 -> 72
     //   40: new 627	java/text/SimpleDateFormat
@@ -671,15 +678,15 @@ public enum g
     //   59: invokespecial 633	java/util/Date:<init>	()V
     //   62: invokevirtual 637	java/text/SimpleDateFormat:format	(Ljava/util/Date;)Ljava/lang/String;
     //   65: iconst_0
-    //   66: invokestatic 641	com/tencent/mm/sdk/platformtools/bt:getInt	(Ljava/lang/String;I)I
-    //   69: putfield 643	com/tencent/mm/plugin/report/service/g:yhT	I
+    //   66: invokestatic 641	com/tencent/mm/sdk/platformtools/bu:getInt	(Ljava/lang/String;I)I
+    //   69: putfield 643	com/tencent/mm/plugin/report/service/g:yxK	I
     //   72: aload_2
     //   73: invokevirtual 603	java/lang/Object:getClass	()Ljava/lang/Class;
     //   76: ldc_w 645
     //   79: invokevirtual 611	java/lang/Class:getField	(Ljava/lang/String;)Ljava/lang/reflect/Field;
     //   82: aload_2
     //   83: aload_0
-    //   84: getfield 643	com/tencent/mm/plugin/report/service/g:yhT	I
+    //   84: getfield 643	com/tencent/mm/plugin/report/service/g:yxK	I
     //   87: invokevirtual 618	java/lang/reflect/Field:setInt	(Ljava/lang/Object;I)V
     //   90: aload_0
     //   91: getfield 378	com/tencent/mm/plugin/report/service/g:uin	I
@@ -706,7 +713,7 @@ public enum g
     //   136: ldc_w 655
     //   139: invokevirtual 611	java/lang/Class:getField	(Ljava/lang/String;)Ljava/lang/reflect/Field;
     //   142: aload_2
-    //   143: getstatic 660	com/tencent/mm/protocal/d:Fnj	I
+    //   143: getstatic 660	com/tencent/mm/protocal/d:FFH	I
     //   146: invokevirtual 618	java/lang/reflect/Field:setInt	(Ljava/lang/Object;I)V
     //   149: aload_2
     //   150: invokevirtual 603	java/lang/Object:getClass	()Ljava/lang/Class;
@@ -716,16 +723,16 @@ public enum g
     //   160: lload_3
     //   161: invokevirtual 651	java/lang/reflect/Field:setLong	(Ljava/lang/Object;J)V
     //   164: aload_2
-    //   165: invokevirtual 667	com/tencent/mm/bx/a:toByteArray	()[B
+    //   165: invokevirtual 667	com/tencent/mm/bw/a:toByteArray	()[B
     //   168: astore_2
-    //   169: invokestatic 77	com/tencent/mm/sdk/platformtools/aj:cnC	()Z
+    //   169: invokestatic 77	com/tencent/mm/sdk/platformtools/ak:cpe	()Z
     //   172: ifeq +119 -> 291
-    //   175: getstatic 420	com/tencent/mm/plugin/report/a/c:ygP	Z
+    //   175: getstatic 420	com/tencent/mm/plugin/report/a/c:ywG	Z
     //   178: ifeq +64 -> 242
     //   181: iload_1
     //   182: i2l
     //   183: lstore_3
-    //   184: getstatic 423	com/tencent/mm/plugin/report/a/c:ygQ	Z
+    //   184: getstatic 423	com/tencent/mm/plugin/report/a/c:ywH	Z
     //   187: istore 7
     //   189: lload_3
     //   190: aload_2
@@ -751,7 +758,7 @@ public enum g
     //   226: aload_2
     //   227: invokevirtual 673	java/lang/Exception:toString	()Ljava/lang/String;
     //   230: aastore
-    //   231: invokestatic 586	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   231: invokestatic 586	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   234: ldc_w 599
     //   237: invokestatic 64	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   240: iconst_0
@@ -780,14 +787,14 @@ public enum g
     //   275: aload_2
     //   276: invokevirtual 676	java/io/IOException:toString	()Ljava/lang/String;
     //   279: aastore
-    //   280: invokestatic 586	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   280: invokestatic 586	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   283: ldc_w 599
     //   286: invokestatic 64	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   289: iconst_0
     //   290: ireturn
     //   291: ldc_w 342
     //   294: ldc_w 678
-    //   297: invokestatic 680	com/tencent/mm/sdk/platformtools/ad:f	(Ljava/lang/String;Ljava/lang/String;)V
+    //   297: invokestatic 680	com/tencent/mm/sdk/platformtools/ae:f	(Ljava/lang/String;Ljava/lang/String;)V
     //   300: goto -102 -> 198
     //   303: astore 8
     //   305: goto -233 -> 72
@@ -795,7 +802,7 @@ public enum g
     //   start	length	slot	name	signature
     //   0	308	0	this	g
     //   0	308	1	paramInt	int
-    //   0	308	2	parama	com.tencent.mm.bx.a
+    //   0	308	2	parama	com.tencent.mm.bw.a
     //   26	220	3	l1	long
     //   95	14	5	l2	long
     //   187	7	7	bool	boolean
@@ -822,9 +829,9 @@ public enum g
   public final void f(int paramInt, Object... paramVarArgs)
   {
     AppMethodBeat.i(143886);
-    if (com.tencent.mm.plugin.report.a.c.ygP)
+    if (com.tencent.mm.plugin.report.a.c.ywG)
     {
-      boolean bool = com.tencent.mm.plugin.report.a.c.ygQ;
+      boolean bool = com.tencent.mm.plugin.report.a.c.ywH;
       a(paramInt, bool, bool, paramVarArgs);
       AppMethodBeat.o(143886);
       return;
@@ -840,23 +847,16 @@ public enum g
     AppMethodBeat.o(143901);
   }
   
-  public final void iX(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(221418);
-    g(paramString1, paramString2, null);
-    AppMethodBeat.o(221418);
-  }
-  
   public final void idkeyStat(long paramLong1, long paramLong2, long paramLong3, boolean paramBoolean)
   {
     AppMethodBeat.i(143894);
     if ((paramLong1 < 0L) || (paramLong2 < 0L) || (paramLong3 <= 0L))
     {
-      ad.e("MicroMsg.ReportManagerKvCheck", "ID %d, key %d, value %d <0", new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2), Long.valueOf(paramLong3) });
+      ae.e("MicroMsg.ReportManagerKvCheck", "ID %d, key %d, value %d <0", new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2), Long.valueOf(paramLong3) });
       AppMethodBeat.o(143894);
       return;
     }
-    if (aj.cnC())
+    if (ak.cpe())
     {
       d.b(paramLong1, paramLong2, paramLong3, false);
       AppMethodBeat.o(143894);
@@ -866,12 +866,19 @@ public enum g
     AppMethodBeat.o(143894);
   }
   
+  public final void jd(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(224446);
+    g(paramString1, paramString2, null);
+    AppMethodBeat.o(224446);
+  }
+  
   public final void kvStat(int paramInt, String paramString)
   {
     AppMethodBeat.i(143882);
-    if (com.tencent.mm.plugin.report.a.c.ygP)
+    if (com.tencent.mm.plugin.report.a.c.ywG)
     {
-      boolean bool = com.tencent.mm.plugin.report.a.c.ygQ;
+      boolean bool = com.tencent.mm.plugin.report.a.c.ywH;
       a(paramInt, paramString, bool, bool);
       AppMethodBeat.o(143882);
       return;
@@ -895,7 +902,7 @@ public enum g
     AppMethodBeat.o(143904);
   }
   
-  public final void w(String paramString, final List<String> paramList)
+  public final void x(String paramString, final List<String> paramList)
   {
     AppMethodBeat.i(143902);
     a(paramString, new Callable() {});

@@ -8,38 +8,38 @@ import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.e.a;
-import com.tencent.mm.by.a.a.a;
+import com.tencent.mm.aj.e.a;
+import com.tencent.mm.bx.a.a.a;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.g;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.h;
 import java.io.IOException;
 
 public final class c
   extends a
   implements e.a
 {
-  private float ERS;
-  private Paint ERT;
-  int[] ERU;
-  Bitmap nZT;
+  private float Fkn;
+  private Paint Fko;
+  int[] Fkp;
+  Bitmap ofD;
   
   private c(String paramString)
   {
-    super(a.b.fbx(), paramString);
+    super(a.b.ffl(), paramString);
     AppMethodBeat.i(152111);
-    this.ERS = 0.5F;
-    this.nZT = null;
-    this.ERT = new Paint();
-    this.ERU = new int[2];
+    this.Fkn = 0.5F;
+    this.ofD = null;
+    this.Fko = new Paint();
+    this.Fkp = new int[2];
     AppMethodBeat.o(152111);
   }
   
   public c(String paramString, float paramFloat)
   {
     this(paramString);
-    this.ERS = paramFloat;
+    this.Fkn = paramFloat;
   }
   
   private void a(Canvas paramCanvas, Bitmap paramBitmap)
@@ -47,27 +47,27 @@ public final class c
     AppMethodBeat.i(152114);
     Rect localRect2 = getBounds();
     Rect localRect1 = null;
-    if ((this.ESV > 1.0F) || (this.vRh))
+    if ((this.Flq > 1.0F) || (this.wdl))
     {
       int i = paramBitmap.getHeight() / 15 / 2;
       int j = paramBitmap.getWidth() / 15 / 2;
       localRect1 = new Rect(j, i, paramBitmap.getWidth() - j, paramBitmap.getHeight() - i);
     }
-    paramCanvas.drawBitmap(paramBitmap, localRect1, localRect2, this.hxL);
+    paramCanvas.drawBitmap(paramBitmap, localRect1, localRect2, this.hAz);
     AppMethodBeat.o(152114);
   }
   
-  public final void De(String paramString)
+  public final void DG(String paramString)
   {
     AppMethodBeat.i(152112);
-    super.De(paramString);
+    super.DG(paramString);
     AppMethodBeat.o(152112);
   }
   
-  public final void YJ(int paramInt)
+  public final void Zp(int paramInt)
   {
     AppMethodBeat.i(152115);
-    this.hxL.setAlpha(paramInt);
+    this.hAz.setAlpha(paramInt);
     AppMethodBeat.o(152115);
   }
   
@@ -75,42 +75,42 @@ public final class c
   {
     Object localObject1 = null;
     AppMethodBeat.i(152113);
-    String str = this.tag + "-" + this.ERS;
-    com.tencent.mm.by.a.a locala = a.a.HTy;
+    String str = this.tag + "-" + this.Fkn;
+    com.tencent.mm.bx.a.a locala = a.a.InF;
     if (locala != null) {
-      localObject1 = a.a.HTy.aoz(str);
+      localObject1 = a.a.InF.apE(str);
     }
     if ((localObject1 != null) && (!((Bitmap)localObject1).isRecycled()))
     {
       a(paramCanvas, (Bitmap)localObject1);
       if (this.pressed)
       {
-        this.ERT.setColor(-16777216);
-        this.ERT.setAlpha(76);
-        this.ERT.setAntiAlias(true);
+        this.Fko.setColor(-16777216);
+        this.Fko.setAlpha(76);
+        this.Fko.setAntiAlias(true);
         localObject1 = new RectF(getBounds());
-        paramCanvas.drawRoundRect((RectF)localObject1, this.ERS * ((RectF)localObject1).width(), this.ERS * ((RectF)localObject1).height(), this.ERT);
+        paramCanvas.drawRoundRect((RectF)localObject1, this.Fkn * ((RectF)localObject1).width(), this.Fkn * ((RectF)localObject1).height(), this.Fko);
       }
       AppMethodBeat.o(152113);
       return;
     }
-    if (this.ESR)
+    if (this.Flm)
     {
-      localObject1 = this.wYb.a(this.tag, paramCanvas.getWidth(), paramCanvas.getHeight(), 1);
+      localObject1 = this.xnS.a(this.tag, paramCanvas.getWidth(), paramCanvas.getHeight(), 1);
       label184:
-      if (!(this.wYb instanceof j.b)) {
+      if (!(this.xnS instanceof j.b)) {
         break label401;
       }
     }
     label401:
-    for (boolean bool = ((j.b)this.wYb).ahv(this.tag);; bool = true) {
+    for (boolean bool = ((j.b)this.xnS).ais(this.tag);; bool = true) {
       for (;;)
       {
         if (localObject1 != null)
         {
           Object localObject2 = localObject1;
           if (bool) {
-            localObject2 = g.a((Bitmap)localObject1, false, this.ERS * ((Bitmap)localObject1).getWidth());
+            localObject2 = h.a((Bitmap)localObject1, false, this.Fkn * ((Bitmap)localObject1).getWidth());
           }
           if (locala != null) {
             locala.p(str, (Bitmap)localObject2);
@@ -120,18 +120,18 @@ public final class c
           }
           a(paramCanvas, (Bitmap)localObject2);
           break;
-          localObject1 = this.wYb.fg(this.tag);
+          localObject1 = this.xnS.fl(this.tag);
           break label184;
         }
         if ((localObject1 != null) && (!((Bitmap)localObject1).isRecycled())) {
           break;
         }
-        if (this.nZT == null) {}
+        if (this.ofD == null) {}
         try
         {
-          this.nZT = BackwardSupportUtil.b.b(aj.getContext().getAssets().open("avatar/default_nor_avatar.png"), com.tencent.mm.cc.a.getDensity(null));
-          this.nZT = g.a(this.nZT, false, this.ERS * this.nZT.getWidth());
-          localObject1 = this.nZT;
+          this.ofD = BackwardSupportUtil.b.b(ak.getContext().getAssets().open("avatar/default_nor_avatar.png"), com.tencent.mm.cb.a.getDensity(null));
+          this.ofD = h.a(this.ofD, false, this.Fkn * this.ofD.getWidth());
+          localObject1 = this.ofD;
           if ((localObject1 == null) || (((Bitmap)localObject1).isRecycled())) {
             break;
           }
@@ -141,7 +141,7 @@ public final class c
         {
           for (;;)
           {
-            ad.printErrStackTrace("MicroMsg.AvatarRoundDrawable", localIOException, "", new Object[0]);
+            ae.printErrStackTrace("MicroMsg.AvatarRoundDrawable", localIOException, "", new Object[0]);
           }
         }
       }

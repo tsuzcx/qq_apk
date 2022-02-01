@@ -3,32 +3,32 @@ package com.tencent.mm.plugin.appbrand.appusage;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/appusage/WxaDesktopHeaderEntranceLogic$ShowCaseType;", "", "(Ljava/lang/String;I)V", "TYPE_NULL", "TYPE_WORDING", "TYPE_ICON_WORDING", "TYPE_ICON_WORDING_ICON2", "TYPE_WORDING_ICON", "Companion", "plugin-appbrand-integration_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/appusage/WxaDesktopHeaderEntranceLogic$ShowCaseType;", "", "(Ljava/lang/String;I)V", "TYPE_NULL", "TYPE_WORDING", "TYPE_ICON_WORDING", "TYPE_ICON_WORDING_ICON2", "TYPE_WORDING_ICON", "Companion", "plugin-appbrand-integration_release"})
 public enum ap$d
 {
-  public static final ap.d.a jQu;
+  public static final ap.d.a jTM;
   
   static
   {
     AppMethodBeat.i(180439);
     d locald1 = new d("TYPE_NULL", 0);
-    jQo = locald1;
+    jTG = locald1;
     d locald2 = new d("TYPE_WORDING", 1);
-    jQp = locald2;
+    jTH = locald2;
     d locald3 = new d("TYPE_ICON_WORDING", 2);
-    jQq = locald3;
+    jTI = locald3;
     d locald4 = new d("TYPE_ICON_WORDING_ICON2", 3);
-    jQr = locald4;
+    jTJ = locald4;
     d locald5 = new d("TYPE_WORDING_ICON", 4);
-    jQs = locald5;
-    jQt = new d[] { locald1, locald2, locald3, locald4, locald5 };
-    jQu = new ap.d.a((byte)0);
+    jTK = locald5;
+    jTL = new d[] { locald1, locald2, locald3, locald4, locald5 };
+    jTM = new ap.d.a((byte)0);
     AppMethodBeat.o(180439);
   }
   
   private ap$d() {}
   
-  public static final d sc(int paramInt)
+  public static final d sf(int paramInt)
   {
     AppMethodBeat.i(180442);
     d[] arrayOfd = values();

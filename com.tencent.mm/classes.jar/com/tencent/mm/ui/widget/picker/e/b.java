@@ -10,32 +10,32 @@ import com.tencent.mm.ui.widget.picker.WheelView.a;
 public final class b
   extends Handler
 {
-  private final WheelView Lcm;
+  private final WheelView LyN;
   
   public b(WheelView paramWheelView)
   {
-    this.Lcm = paramWheelView;
+    this.LyN = paramWheelView;
   }
   
   public final void handleMessage(Message paramMessage)
   {
-    AppMethodBeat.i(192792);
+    AppMethodBeat.i(200565);
     switch (paramMessage.what)
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(192792);
+      AppMethodBeat.o(200565);
       return;
-      this.Lcm.invalidate();
-      AppMethodBeat.o(192792);
+      this.LyN.invalidate();
+      AppMethodBeat.o(200565);
       return;
-      this.Lcm.a(WheelView.a.LbE);
-      AppMethodBeat.o(192792);
+      this.LyN.a(WheelView.a.Lyf);
+      AppMethodBeat.o(200565);
       return;
-      paramMessage = this.Lcm;
-      paramMessage.fMQ();
-      if (paramMessage.Lbz != null) {
+      paramMessage = this.LyN;
+      paramMessage.fRl();
+      if (paramMessage.Lya != null) {
         paramMessage.postDelayed(new WheelView.1(paramMessage), 200L);
       }
     }

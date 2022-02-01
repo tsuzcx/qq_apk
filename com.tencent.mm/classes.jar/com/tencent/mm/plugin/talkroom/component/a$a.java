@@ -15,7 +15,7 @@ public abstract class a$a
     attachInterface(this, "com.tencent.mm.plugin.talkroom.component.IEngine_AIDL");
   }
   
-  public static a C(IBinder paramIBinder)
+  public static a D(IBinder paramIBinder)
   {
     if (paramIBinder == null) {
       return null;
@@ -44,7 +44,7 @@ public abstract class a$a
       return true;
     case 1: 
       paramParcel1.enforceInterface("com.tencent.mm.plugin.talkroom.component.IEngine_AIDL");
-      paramInt1 = eny();
+      paramInt1 = erf();
       paramParcel2.writeNoException();
       paramParcel2.writeInt(paramInt1);
       return true;
@@ -125,7 +125,7 @@ public abstract class a$a
       }
     }
     paramParcel1.enforceInterface("com.tencent.mm.plugin.talkroom.component.IEngine_AIDL");
-    paramParcel1 = enz();
+    paramParcel1 = erg();
     paramParcel2.writeNoException();
     if (paramParcel1 != null) {}
     for (paramParcel1 = paramParcel1.asBinder();; paramParcel1 = null)
@@ -320,7 +320,7 @@ public abstract class a$a
       //   52: invokevirtual 48	android/os/Parcel:readException	()V
       //   55: aload_3
       //   56: invokevirtual 91	android/os/Parcel:readStrongBinder	()Landroid/os/IBinder;
-      //   59: invokestatic 97	com/tencent/mm/plugin/talkroom/component/e$a:E	(Landroid/os/IBinder;)Lcom/tencent/mm/plugin/talkroom/component/e;
+      //   59: invokestatic 97	com/tencent/mm/plugin/talkroom/component/e$a:F	(Landroid/os/IBinder;)Lcom/tencent/mm/plugin/talkroom/component/e;
       //   62: astore_1
       //   63: aload_3
       //   64: invokevirtual 54	android/os/Parcel:recycle	()V
@@ -434,7 +434,7 @@ public abstract class a$a
       //   85	91	94	finally
     }
     
-    public final int eny()
+    public final int erf()
     {
       AppMethodBeat.i(29373);
       Parcel localParcel1 = Parcel.obtain();
@@ -455,7 +455,7 @@ public abstract class a$a
       }
     }
     
-    public final d enz()
+    public final d erg()
     {
       AppMethodBeat.i(29380);
       Parcel localParcel1 = Parcel.obtain();
@@ -465,7 +465,7 @@ public abstract class a$a
         localParcel1.writeInterfaceToken("com.tencent.mm.plugin.talkroom.component.IEngine_AIDL");
         this.mRemote.transact(8, localParcel1, localParcel2, 0);
         localParcel2.readException();
-        d locald = d.a.D(localParcel2.readStrongBinder());
+        d locald = d.a.E(localParcel2.readStrongBinder());
         return locald;
       }
       finally

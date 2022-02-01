@@ -3,7 +3,7 @@ package com.tencent.mm.gpu.d;
 import android.os.Handler;
 import android.os.HandlerThread;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -14,40 +14,40 @@ import java.util.Set;
 
 public final class c
 {
-  private static c gtO;
-  private Map<Integer, Map<Long, List<d>>> gtK;
-  public Handler gtL;
+  private static c gwv;
+  private Map<Integer, Map<Long, List<d>>> gwr;
+  public Handler gws;
   private HandlerThread mHandlerThread;
   
   static
   {
-    AppMethodBeat.i(219538);
-    gtO = new c();
-    AppMethodBeat.o(219538);
+    AppMethodBeat.i(209660);
+    gwv = new c();
+    AppMethodBeat.o(209660);
   }
   
   private c()
   {
-    AppMethodBeat.i(219529);
-    this.gtK = new HashMap();
+    AppMethodBeat.i(209651);
+    this.gwr = new HashMap();
     this.mHandlerThread = new HandlerThread("OpenGLAllResRecorder");
     this.mHandlerThread.start();
-    this.gtL = new Handler(this.mHandlerThread.getLooper());
-    this.gtK.put(Integer.valueOf(1), new HashMap());
-    this.gtK.put(Integer.valueOf(2), new HashMap());
-    this.gtK.put(Integer.valueOf(3), new HashMap());
-    this.gtK.put(Integer.valueOf(4), new HashMap());
-    AppMethodBeat.o(219529);
+    this.gws = new Handler(this.mHandlerThread.getLooper());
+    this.gwr.put(Integer.valueOf(1), new HashMap());
+    this.gwr.put(Integer.valueOf(2), new HashMap());
+    this.gwr.put(Integer.valueOf(3), new HashMap());
+    this.gwr.put(Integer.valueOf(4), new HashMap());
+    AppMethodBeat.o(209651);
   }
   
-  private String agL()
+  private String aha()
   {
-    AppMethodBeat.i(219534);
+    AppMethodBeat.i(209656);
     Object localObject3;
-    synchronized (this.gtK)
+    synchronized (this.gwr)
     {
       localObject2 = new HashSet();
-      Iterator localIterator1 = this.gtK.values().iterator();
+      Iterator localIterator1 = this.gwr.values().iterator();
       while (localIterator1.hasNext())
       {
         localObject3 = ((Map)localIterator1.next()).keySet().iterator();
@@ -56,10 +56,10 @@ public final class c
         }
       }
     }
-    Map localMap2 = (Map)this.gtK.get(Integer.valueOf(1));
-    Map localMap3 = (Map)this.gtK.get(Integer.valueOf(2));
-    Map localMap4 = (Map)this.gtK.get(Integer.valueOf(3));
-    Map localMap5 = (Map)this.gtK.get(Integer.valueOf(4));
+    Map localMap2 = (Map)this.gwr.get(Integer.valueOf(1));
+    Map localMap3 = (Map)this.gwr.get(Integer.valueOf(2));
+    Map localMap4 = (Map)this.gwr.get(Integer.valueOf(3));
+    Map localMap5 = (Map)this.gwr.get(Integer.valueOf(4));
     String str1 = "";
     Iterator localIterator2 = ((Set)localObject2).iterator();
     String str2 = "";
@@ -133,24 +133,24 @@ public final class c
         i = ((List)localObject3).size();
         break label427;
         str1 = "EGL CONTEXT IDS:[" + str1 + "],details:" + str2;
-        AppMethodBeat.o(219534);
+        AppMethodBeat.o(209656);
         return str1;
       }
     }
   }
   
-  public static c agM()
+  public static c ahb()
   {
-    return gtO;
+    return gwv;
   }
   
-  private int agN()
+  private int ahc()
   {
-    AppMethodBeat.i(219533);
-    synchronized (this.gtK)
+    AppMethodBeat.i(209655);
+    synchronized (this.gwr)
     {
       HashSet localHashSet = new HashSet();
-      Iterator localIterator1 = this.gtK.values().iterator();
+      Iterator localIterator1 = this.gwr.values().iterator();
       while (localIterator1.hasNext())
       {
         Iterator localIterator2 = ((Map)localIterator1.next()).keySet().iterator();
@@ -160,21 +160,21 @@ public final class c
       }
     }
     int i = localObject.size();
-    AppMethodBeat.o(219533);
+    AppMethodBeat.o(209655);
     return i;
   }
   
   public final void W(final List<d> paramList)
   {
-    AppMethodBeat.i(219530);
-    this.gtL.post(new Runnable()
+    AppMethodBeat.i(209652);
+    this.gws.post(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(219525);
+        AppMethodBeat.i(209647);
         if ((paramList == null) || (paramList.size() == 0))
         {
-          AppMethodBeat.o(219525);
+          AppMethodBeat.o(209647);
           return;
         }
         int j = paramList.size();
@@ -184,23 +184,23 @@ public final class c
           c.a(c.this, (d)paramList.get(i));
           i += 1;
         }
-        AppMethodBeat.o(219525);
+        AppMethodBeat.o(209647);
       }
     });
-    AppMethodBeat.o(219530);
+    AppMethodBeat.o(209652);
   }
   
   public final void X(final List<d> paramList)
   {
-    AppMethodBeat.i(219531);
-    this.gtL.post(new Runnable()
+    AppMethodBeat.i(209653);
+    this.gws.post(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(219526);
+        AppMethodBeat.i(209648);
         if ((paramList == null) || (paramList.size() == 0))
         {
-          AppMethodBeat.o(219526);
+          AppMethodBeat.o(209648);
           return;
         }
         int j = paramList.size();
@@ -210,21 +210,21 @@ public final class c
           c.b(c.this, (d)paramList.get(i));
           i += 1;
         }
-        AppMethodBeat.o(219526);
+        AppMethodBeat.o(209648);
       }
     });
-    AppMethodBeat.o(219531);
+    AppMethodBeat.o(209653);
   }
   
-  public final int mj(int paramInt)
+  public final int mm(int paramInt)
   {
-    AppMethodBeat.i(219532);
-    synchronized (this.gtK)
+    AppMethodBeat.i(209654);
+    synchronized (this.gwr)
     {
-      Map localMap2 = (Map)this.gtK.get(Integer.valueOf(paramInt));
+      Map localMap2 = (Map)this.gwr.get(Integer.valueOf(paramInt));
       if (localMap2 == null)
       {
-        AppMethodBeat.o(219532);
+        AppMethodBeat.o(209654);
         return 0;
       }
       Iterator localIterator = localMap2.keySet().iterator();
@@ -236,21 +236,21 @@ public final class c
           paramInt += localList.size();
         }
       }
-      AppMethodBeat.o(219532);
+      AppMethodBeat.o(209654);
       return paramInt;
     }
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(219535);
+    AppMethodBeat.i(209657);
     Object localObject = new StringBuilder("(");
-    String str1 = "TYPE_TEXTURES_CNT:" + mj(1);
-    String str2 = "TYPE_TEXTURES_CNT:" + mj(2);
-    String str3 = "TYPE_FRAMEBUFFERS_CNT:" + mj(3);
-    String str4 = "TYPE_RENDERBUFFERS_CNT:" + mj(4);
-    localObject = new StringBuilder().append(str1).append(" | ").append(str2).append(" | ").append(str3).append(" | ").append(str4).append(" | EGL CONTEXT CNT:").append(agN()).toString() + ")    (" + agL() + ")";
-    AppMethodBeat.o(219535);
+    String str1 = "TYPE_TEXTURES_CNT:" + mm(1);
+    String str2 = "TYPE_TEXTURES_CNT:" + mm(2);
+    String str3 = "TYPE_FRAMEBUFFERS_CNT:" + mm(3);
+    String str4 = "TYPE_RENDERBUFFERS_CNT:" + mm(4);
+    localObject = new StringBuilder().append(str1).append(" | ").append(str2).append(" | ").append(str3).append(" | ").append(str4).append(" | EGL CONTEXT CNT:").append(ahc()).toString() + ")    (" + aha() + ")";
+    AppMethodBeat.o(209657);
     return localObject;
   }
 }

@@ -5,15 +5,15 @@ import android.content.DialogInterface.OnClickListener;
 import android.content.res.Resources;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.h;
 import java.lang.ref.WeakReference;
@@ -23,21 +23,21 @@ public abstract class r
   extends n
   implements k
 {
-  private static final String Lyt = aj.getResources().getString(2131765901);
-  protected int Lyu = 0;
-  protected String Lyv;
+  private static final String LVi = ak.getResources().getString(2131765901);
+  protected int LVj = 0;
+  protected String LVk;
   private WeakReference<MMActivity> aWN;
   protected f callback;
   protected int errCode = 0;
   protected String errMsg;
   protected int errType = 0;
-  protected boolean pbG = true;
-  protected boolean pbH = false;
+  protected boolean pil = true;
+  protected boolean pim = false;
   protected b rr;
   
   public final r a(a parama)
   {
-    if ((!this.pbG) && (!this.pbH)) {
+    if ((!this.pil) && (!this.pim)) {
       parama.d(this.errCode, this.errType, this.errMsg, this);
     }
     return this;
@@ -45,7 +45,7 @@ public abstract class r
   
   public final r b(a parama)
   {
-    if (this.pbH) {
+    if (this.pim) {
       parama.d(this.errCode, this.errType, this.errMsg, this);
     }
     return this;
@@ -55,23 +55,23 @@ public abstract class r
   
   public final r c(a parama)
   {
-    if (this.pbG) {
+    if (this.pil) {
       parama.d(this.errCode, this.errType, this.errMsg, this);
     }
     return this;
   }
   
-  public boolean caH()
+  public boolean cbW()
   {
     return false;
   }
   
-  public boolean dIG()
+  public boolean dLX()
   {
     return true;
   }
   
-  public boolean dIH()
+  public boolean dLY()
   {
     return true;
   }
@@ -88,35 +88,35 @@ public abstract class r
   public void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, final String paramString, q paramq, byte[] paramArrayOfByte)
   {
     if ((paramInt2 == 0) && (paramInt3 == 0)) {
-      this.pbG = false;
+      this.pil = false;
     }
-    if (!this.pbG)
+    if (!this.pil)
     {
       e(paramq);
-      if (this.Lyu != 0) {
-        this.pbH = true;
+      if (this.LVj != 0) {
+        this.pim = true;
       }
     }
     this.errCode = paramInt3;
     this.errType = paramInt2;
     this.errMsg = paramString;
-    ad.i("MicroMsg.NetSceneNewPayBase", "errType: %s, errCode: %s, errMsg: %s, retCode: %s, retMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString, Integer.valueOf(this.Lyu), this.Lyv });
+    ae.i("MicroMsg.NetSceneNewPayBase", "errType: %s, errCode: %s, errMsg: %s, retCode: %s, retMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString, Integer.valueOf(this.LVj), this.LVk });
     b(paramInt2, paramInt3, paramString, paramq);
     if (this.aWN != null)
     {
       paramString = (MMActivity)this.aWN.get();
       if (paramString != null)
       {
-        if (!this.pbG) {
+        if (!this.pil) {
           break label171;
         }
-        ad.w("MicroMsg.NetSceneNewPayBase", "show net error alert");
+        ae.w("MicroMsg.NetSceneNewPayBase", "show net error alert");
       }
     }
     label171:
     do
     {
-      h.a(paramString, Lyt, null, false, new DialogInterface.OnClickListener()
+      h.a(paramString, LVi, null, false, new DialogInterface.OnClickListener()
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
@@ -128,21 +128,21 @@ public abstract class r
       do
       {
         return;
-      } while ((!this.pbH) || (bt.isNullOrNil(this.Lyv)));
-      if (caH())
+      } while ((!this.pim) || (bu.isNullOrNil(this.LVk)));
+      if (cbW())
       {
-        ad.w("MicroMsg.NetSceneNewPayBase", "show resp error toast");
-        Toast.makeText(paramString, this.Lyv, 1).show();
+        ae.w("MicroMsg.NetSceneNewPayBase", "show resp error toast");
+        Toast.makeText(paramString, this.LVk, 1).show();
         return;
       }
-    } while (!dIH());
-    ad.w("MicroMsg.NetSceneNewPayBase", "show resp error alert");
-    h.a(paramString, this.Lyv, null, false, new DialogInterface.OnClickListener()
+    } while (!dLY());
+    ae.w("MicroMsg.NetSceneNewPayBase", "show resp error alert");
+    h.a(paramString, this.LVk, null, false, new DialogInterface.OnClickListener()
     {
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
         AppMethodBeat.i(72793);
-        if (r.this.dIG()) {
+        if (r.this.dLX()) {
           paramString.finish();
         }
         AppMethodBeat.o(72793);
@@ -162,7 +162,7 @@ public abstract class r
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.wallet_core.c.r
  * JD-Core Version:    0.7.0.1
  */

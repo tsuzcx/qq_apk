@@ -20,10 +20,10 @@ public class VideoCompositionRenderContext
   
   public VideoCompositionRenderContext(RenderContext paramRenderContext)
   {
-    AppMethodBeat.i(218049);
+    AppMethodBeat.i(214688);
     this.renderContext = paramRenderContext;
     this.size = new CGSize(paramRenderContext.width(), paramRenderContext.height());
-    AppMethodBeat.o(218049);
+    AppMethodBeat.o(214688);
   }
   
   public RectF getEdgeWidths()
@@ -58,14 +58,14 @@ public class VideoCompositionRenderContext
   
   public TextureInfo newTextureInfo()
   {
-    AppMethodBeat.i(218050);
+    AppMethodBeat.i(214689);
     if (this.videoTexture == null)
     {
       RenderContext.checkEglError("newSampleBuffer");
       this.videoTexture = new TextureInfo(RenderContext.createTexture(3553), 3553, (int)this.size.width, (int)this.size.height, 0);
     }
     TextureInfo localTextureInfo = this.videoTexture;
-    AppMethodBeat.o(218050);
+    AppMethodBeat.o(214689);
     return localTextureInfo;
   }
   
@@ -76,9 +76,9 @@ public class VideoCompositionRenderContext
   
   public String toString()
   {
-    AppMethodBeat.i(218051);
+    AppMethodBeat.i(214690);
     String str = "VideoCompositionRenderContext{size=" + this.size + ", renderContext=" + this.renderContext + '}';
-    AppMethodBeat.o(218051);
+    AppMethodBeat.o(214690);
     return str;
   }
 }

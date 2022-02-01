@@ -1,85 +1,110 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import f.a.a.b;
 
 public final class age
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public int Geg;
-  public String Geh;
+  public String dbPath;
+  public String qXW;
+  public int qYb;
+  public String qYh;
+  public String sql;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(104760);
+    AppMethodBeat.i(196254);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.Geh == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: TagDesc");
-        AppMethodBeat.o(104760);
-        throw paramVarArgs;
+      if (this.qXW != null) {
+        paramVarArgs.d(1, this.qXW);
       }
-      paramVarArgs.aS(1, this.Geg);
-      if (this.Geh != null) {
-        paramVarArgs.d(2, this.Geh);
+      paramVarArgs.aS(2, this.qYb);
+      if (this.sql != null) {
+        paramVarArgs.d(3, this.sql);
       }
-      AppMethodBeat.o(104760);
+      if (this.dbPath != null) {
+        paramVarArgs.d(4, this.dbPath);
+      }
+      if (this.qYh != null) {
+        paramVarArgs.d(5, this.qYh);
+      }
+      AppMethodBeat.o(196254);
       return 0;
     }
-    if (paramInt == 1)
+    if (paramInt == 1) {
+      if (this.qXW == null) {
+        break label438;
+      }
+    }
+    label438:
+    for (paramInt = f.a.a.b.b.a.e(1, this.qXW) + 0;; paramInt = 0)
     {
-      int i = f.a.a.b.b.a.bz(1, this.Geg) + 0;
+      int i = paramInt + f.a.a.b.b.a.bz(2, this.qYb);
       paramInt = i;
-      if (this.Geh != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.Geh);
+      if (this.sql != null) {
+        paramInt = i + f.a.a.b.b.a.e(3, this.sql);
       }
-      AppMethodBeat.o(104760);
+      i = paramInt;
+      if (this.dbPath != null) {
+        i = paramInt + f.a.a.b.b.a.e(4, this.dbPath);
+      }
+      paramInt = i;
+      if (this.qYh != null) {
+        paramInt = i + f.a.a.b.b.a.e(5, this.qYh);
+      }
+      AppMethodBeat.o(196254);
       return paramInt;
-    }
-    if (paramInt == 2)
-    {
-      paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gxE();
+      if (paramInt == 2)
+      {
+        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.gCg();
+          }
         }
-      }
-      if (this.Geh == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: TagDesc");
-        AppMethodBeat.o(104760);
-        throw paramVarArgs;
-      }
-      AppMethodBeat.o(104760);
-      return 0;
-    }
-    if (paramInt == 3)
-    {
-      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
-      age localage = (age)paramVarArgs[1];
-      switch (((Integer)paramVarArgs[2]).intValue())
-      {
-      default: 
-        AppMethodBeat.o(104760);
-        return -1;
-      case 1: 
-        localage.Geg = locala.NPN.zc();
-        AppMethodBeat.o(104760);
+        AppMethodBeat.o(196254);
         return 0;
       }
-      localage.Geh = locala.NPN.readString();
-      AppMethodBeat.o(104760);
-      return 0;
+      if (paramInt == 3)
+      {
+        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+        age localage = (age)paramVarArgs[1];
+        switch (((Integer)paramVarArgs[2]).intValue())
+        {
+        default: 
+          AppMethodBeat.o(196254);
+          return -1;
+        case 1: 
+          localage.qXW = locala.OmT.readString();
+          AppMethodBeat.o(196254);
+          return 0;
+        case 2: 
+          localage.qYb = locala.OmT.zc();
+          AppMethodBeat.o(196254);
+          return 0;
+        case 3: 
+          localage.sql = locala.OmT.readString();
+          AppMethodBeat.o(196254);
+          return 0;
+        case 4: 
+          localage.dbPath = locala.OmT.readString();
+          AppMethodBeat.o(196254);
+          return 0;
+        }
+        localage.qYh = locala.OmT.readString();
+        AppMethodBeat.o(196254);
+        return 0;
+      }
+      AppMethodBeat.o(196254);
+      return -1;
     }
-    AppMethodBeat.o(104760);
-    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.age
  * JD-Core Version:    0.7.0.1
  */

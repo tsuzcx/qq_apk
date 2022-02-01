@@ -13,11 +13,18 @@ public abstract interface b
   
   public abstract SpannableString a(Context paramContext, CharSequence paramCharSequence, float paramFloat);
   
-  public abstract b.a uv(int paramInt);
+  public abstract a uB(int paramInt);
+  
+  public static final class a
+  {
+    public int nna;
+    public int nnb;
+    public int nnc;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.a.b
  * JD-Core Version:    0.7.0.1
  */

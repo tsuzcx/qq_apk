@@ -24,17 +24,17 @@ import java.io.File;
 
 public final class a
 {
-  public static a MAh;
-  public final com.tencent.tinker.lib.e.a MAi;
-  public final com.tinkerboots.sdk.a.a MAj;
-  private final ApplicationLike cTo;
+  public static a MXo;
+  public final com.tencent.tinker.lib.e.a MXp;
+  public final com.tinkerboots.sdk.a.a MXq;
+  private final ApplicationLike cTZ;
   
   public a(Context paramContext, ApplicationLike paramApplicationLike, com.tencent.tinker.lib.d.c paramc, com.tencent.tinker.lib.d.d paramd, com.tencent.tinker.lib.b.b paramb, com.tencent.tinker.lib.c.a parama, Class<? extends AbstractResultService> paramClass, com.tinkerboots.sdk.a.a.b paramb1)
   {
     AppMethodBeat.i(3427);
     com.tinkerboots.sdk.b.c.context = paramContext;
-    this.cTo = paramApplicationLike;
-    this.MAj = com.tinkerboots.sdk.a.a.a(paramb1);
+    this.cTZ = paramApplicationLike;
+    this.MXq = com.tinkerboots.sdk.a.a.a(paramb1);
     paramContext = new com.tencent.tinker.lib.e.a.a(paramApplicationLike.getApplication());
     int i = paramApplicationLike.getTinkerFlags();
     if (paramContext.status != -1)
@@ -50,39 +50,39 @@ public final class a
       AppMethodBeat.o(3427);
       throw paramContext;
     }
-    if (paramContext.MgV != null)
+    if (paramContext.MDS != null)
     {
       paramContext = new TinkerRuntimeException("loadReporter is already set.");
       AppMethodBeat.o(3427);
       throw paramContext;
     }
-    paramContext.MgV = paramc;
+    paramContext.MDS = paramc;
     if (paramb == null)
     {
       paramContext = new TinkerRuntimeException("listener must not be null.");
       AppMethodBeat.o(3427);
       throw paramContext;
     }
-    if (paramContext.MgU != null)
+    if (paramContext.MDR != null)
     {
       paramContext = new TinkerRuntimeException("listener is already set.");
       AppMethodBeat.o(3427);
       throw paramContext;
     }
-    paramContext.MgU = paramb;
+    paramContext.MDR = paramb;
     if (paramd == null)
     {
       paramContext = new TinkerRuntimeException("patchReporter must not be null.");
       AppMethodBeat.o(3427);
       throw paramContext;
     }
-    if (paramContext.MgW != null)
+    if (paramContext.MDT != null)
     {
       paramContext = new TinkerRuntimeException("patchReporter is already set.");
       AppMethodBeat.o(3427);
       throw paramContext;
     }
-    paramContext.MgW = paramd;
+    paramContext.MDT = paramd;
     paramc = Boolean.valueOf(paramApplicationLike.getTinkerLoadVerifyFlag());
     if (paramc == null)
     {
@@ -90,23 +90,23 @@ public final class a
       AppMethodBeat.o(3427);
       throw paramContext;
     }
-    if (paramContext.Mhe != null)
+    if (paramContext.MEb != null)
     {
       paramContext = new TinkerRuntimeException("tinkerLoadVerifyFlag is already set.");
       AppMethodBeat.o(3427);
       throw paramContext;
     }
-    paramContext.Mhe = paramc;
-    paramContext = paramContext.fYB();
+    paramContext.MEb = paramc;
+    paramContext = paramContext.gda();
     com.tencent.tinker.lib.e.a.a(paramContext);
     paramc = paramApplicationLike.getTinkerResultIntent();
     com.tencent.tinker.lib.e.a.sInstalled = true;
     TinkerPatchService.a(parama, paramClass);
-    ShareTinkerLog.i("Tinker.Tinker", "try to install tinker, isEnable: %b, version: %s", new Object[] { Boolean.valueOf(ShareTinkerInternals.isTinkerEnabled(paramContext.tinkerFlags)), "1.9.14.7-fix7-INTERNALv4" });
+    ShareTinkerLog.i("Tinker.Tinker", "try to install tinker, isEnable: %b, version: %s", new Object[] { Boolean.valueOf(ShareTinkerInternals.isTinkerEnabled(paramContext.tinkerFlags)), "1.9.14.8" });
     if (!ShareTinkerInternals.isTinkerEnabled(paramContext.tinkerFlags))
     {
       ShareTinkerLog.e("Tinker.Tinker", "tinker is disabled", new Object[0]);
-      this.MAi = paramContext;
+      this.MXp = paramContext;
       AppMethodBeat.o(3427);
       return;
     }
@@ -116,21 +116,21 @@ public final class a
       AppMethodBeat.o(3427);
       throw paramContext;
     }
-    paramContext.Mha = new com.tencent.tinker.lib.e.d();
-    paramd = paramContext.Mha;
+    paramContext.MDX = new com.tencent.tinker.lib.e.d();
+    paramd = paramContext.MDX;
     paramb = paramContext.context;
-    paramApplicationLike = com.tencent.tinker.lib.e.a.lk(paramb);
-    paramd.Mhr = ShareIntentUtil.getIntentReturnCode(paramc);
-    paramd.msQ = ShareIntentUtil.getIntentPatchCostTime(paramc);
-    paramd.Mhh = ShareIntentUtil.getBooleanExtra(paramc, "intent_patch_system_ota", false);
+    paramApplicationLike = com.tencent.tinker.lib.e.a.lq(paramb);
+    paramd.MEo = ShareIntentUtil.getIntentReturnCode(paramc);
+    paramd.mxN = ShareIntentUtil.getIntentPatchCostTime(paramc);
+    paramd.MEe = ShareIntentUtil.getBooleanExtra(paramc, "intent_patch_system_ota", false);
     paramd.oatDir = ShareIntentUtil.getStringExtra(paramc, "intent_patch_oat_dir");
     paramd.useInterpretMode = "interpet".equals(paramd.oatDir);
-    boolean bool2 = paramApplicationLike.AEC;
-    ShareTinkerLog.i("Tinker.TinkerLoadResult", "parseTinkerResult loadCode:%d, process name:%s, main process:%b, systemOTA:%b, fingerPrint:%s, oatDir:%s, useInterpretMode:%b", new Object[] { Integer.valueOf(paramd.Mhr), ShareTinkerInternals.getProcessName(paramb), Boolean.valueOf(bool2), Boolean.valueOf(paramd.Mhh), Build.FINGERPRINT, paramd.oatDir, Boolean.valueOf(paramd.useInterpretMode) });
+    boolean bool2 = paramApplicationLike.AWf;
+    ShareTinkerLog.i("Tinker.TinkerLoadResult", "parseTinkerResult loadCode:%d, process name:%s, main process:%b, systemOTA:%b, fingerPrint:%s, oatDir:%s, useInterpretMode:%b", new Object[] { Integer.valueOf(paramd.MEo), ShareTinkerInternals.getProcessName(paramb), Boolean.valueOf(bool2), Boolean.valueOf(paramd.MEe), Build.FINGERPRINT, paramd.oatDir, Boolean.valueOf(paramd.useInterpretMode) });
     paramb = ShareIntentUtil.getStringExtra(paramc, "intent_patch_old_version");
     parama = ShareIntentUtil.getStringExtra(paramc, "intent_patch_new_version");
-    paramClass = paramApplicationLike.MgT;
-    paramb1 = paramApplicationLike.MgX;
+    paramClass = paramApplicationLike.MDQ;
+    paramb1 = paramApplicationLike.MDU;
     label624:
     Object localObject;
     boolean bool1;
@@ -138,25 +138,25 @@ public final class a
     {
       if (bool2)
       {
-        paramd.Mhf = parama;
-        ShareTinkerLog.i("Tinker.TinkerLoadResult", "parseTinkerResult oldVersion:%s, newVersion:%s, current:%s", new Object[] { paramb, parama, paramd.Mhf });
-        localObject = SharePatchFileUtil.getPatchVersionDirectory(paramd.Mhf);
+        paramd.MEc = parama;
+        ShareTinkerLog.i("Tinker.TinkerLoadResult", "parseTinkerResult oldVersion:%s, newVersion:%s, current:%s", new Object[] { paramb, parama, paramd.MEc });
+        localObject = SharePatchFileUtil.getPatchVersionDirectory(paramd.MEc);
         if (!ShareTinkerInternals.isNullOrNil((String)localObject))
         {
-          paramd.Mhi = new File(paramClass.getAbsolutePath() + "/" + (String)localObject);
-          paramd.Mhj = new File(paramd.Mhi.getAbsolutePath(), SharePatchFileUtil.getPatchVersionFile(paramd.Mhf));
-          paramd.Mhk = new File(paramd.Mhi, "dex");
-          paramd.Mhl = new File(paramd.Mhi, "lib");
-          paramd.Mhm = new File(paramd.Mhi, "res");
-          paramd.Mhn = new File(paramd.Mhm, "resources.apk");
+          paramd.MEf = new File(paramClass.getAbsolutePath() + "/" + (String)localObject);
+          paramd.MEg = new File(paramd.MEf.getAbsolutePath(), SharePatchFileUtil.getPatchVersionFile(paramd.MEc));
+          paramd.MEh = new File(paramd.MEf, "dex");
+          paramd.MEi = new File(paramd.MEf, "lib");
+          paramd.MEj = new File(paramd.MEf, "res");
+          paramd.MEk = new File(paramd.MEj, "resources.apk");
         }
-        paramd.patchInfo = new SharePatchInfo(paramb, parama, ShareIntentUtil.getBooleanExtra(paramc, "intent_is_protected_app", false), false, Build.FINGERPRINT, paramd.oatDir);
+        paramd.patchInfo = new SharePatchInfo(paramb, parama, ShareIntentUtil.getBooleanExtra(paramc, "intent_is_protected_app", false), false, Build.FINGERPRINT, paramd.oatDir, false);
         if (paramb.equals(parama)) {
           break label1032;
         }
         bool1 = true;
-        label867:
-        paramd.Mhg = bool1;
+        label868:
+        paramd.MEd = bool1;
       }
     }
     else
@@ -165,28 +165,28 @@ public final class a
       if (localObject == null) {
         break label1065;
       }
-      ShareTinkerLog.i("Tinker.TinkerLoadResult", "Tinker load have exception loadCode:%d", new Object[] { Integer.valueOf(paramd.Mhr) });
+      ShareTinkerLog.i("Tinker.TinkerLoadResult", "Tinker load have exception loadCode:%d", new Object[] { Integer.valueOf(paramd.MEo) });
       i = -1;
-      switch (paramd.Mhr)
+      switch (paramd.MEo)
       {
       default: 
         label960:
-        paramApplicationLike.MgV.a((Throwable)localObject, i);
+        paramApplicationLike.MDS.a((Throwable)localObject, i);
       }
     }
     for (;;)
     {
-      paramContext.MgV.a(paramContext.MgT, paramContext.Mha.Mhr, paramContext.Mha.msQ);
-      if (paramContext.Mhb) {
+      paramContext.MDS.a(paramContext.MDQ, paramContext.MDX.MEo, paramContext.MDX.mxN);
+      if (paramContext.MDY) {
         break;
       }
       ShareTinkerLog.w("Tinker.Tinker", "tinker load fail!", new Object[0]);
       break;
-      paramd.Mhf = paramb;
+      paramd.MEc = paramb;
       break label624;
       label1032:
       bool1 = false;
-      break label867;
+      break label868;
       i = -1;
       break label960;
       i = -2;
@@ -196,7 +196,7 @@ public final class a
       i = -4;
       break label960;
       label1065:
-      switch (paramd.Mhr)
+      switch (paramd.MEo)
       {
       default: 
         break;
@@ -214,41 +214,41 @@ public final class a
         break;
       case -4: 
         ShareTinkerLog.e("Tinker.TinkerLoadResult", "path info corrupted", new Object[0]);
-        paramApplicationLike.MgV.b(paramb, parama, paramb1);
+        paramApplicationLike.MDS.b(paramb, parama, paramb1);
         break;
       case -5: 
         ShareTinkerLog.e("Tinker.TinkerLoadResult", "path info blank, wait main process to restart", new Object[0]);
         break;
       case -6: 
-        ShareTinkerLog.e("Tinker.TinkerLoadResult", "patch version directory not found, current version:%s", new Object[] { paramd.Mhf });
-        paramApplicationLike.MgV.a(paramd.Mhi, 1, true);
+        ShareTinkerLog.e("Tinker.TinkerLoadResult", "patch version directory not found, current version:%s", new Object[] { paramd.MEc });
+        paramApplicationLike.MDS.a(paramd.MEf, 1, true);
         break;
       case -7: 
-        ShareTinkerLog.e("Tinker.TinkerLoadResult", "patch version file not found, current version:%s", new Object[] { paramd.Mhf });
-        if (paramd.Mhj == null)
+        ShareTinkerLog.e("Tinker.TinkerLoadResult", "patch version file not found, current version:%s", new Object[] { paramd.MEc });
+        if (paramd.MEg == null)
         {
           paramContext = new TinkerRuntimeException("error load patch version file not exist, but file is null");
           AppMethodBeat.o(3427);
           throw paramContext;
         }
-        paramApplicationLike.MgV.a(paramd.Mhj, 1, false);
+        paramApplicationLike.MDS.a(paramd.MEg, 1, false);
         break;
       case -8: 
         ShareTinkerLog.i("Tinker.TinkerLoadResult", "patch package check fail", new Object[0]);
-        if (paramd.Mhj == null)
+        if (paramd.MEg == null)
         {
           paramContext = new TinkerRuntimeException("error patch package check fail , but file is null");
           AppMethodBeat.o(3427);
           throw paramContext;
         }
         i = paramc.getIntExtra("intent_patch_package_patch_check", -10000);
-        paramApplicationLike.MgV.c(paramd.Mhj, i);
+        paramApplicationLike.MDS.c(paramd.MEg, i);
         break;
       case -9: 
-        if (paramd.Mhk != null)
+        if (paramd.MEh != null)
         {
-          ShareTinkerLog.e("Tinker.TinkerLoadResult", "patch dex file directory not found:%s", new Object[] { paramd.Mhk.getAbsolutePath() });
-          paramApplicationLike.MgV.a(paramd.Mhk, 3, true);
+          ShareTinkerLog.e("Tinker.TinkerLoadResult", "patch dex file directory not found:%s", new Object[] { paramd.MEh.getAbsolutePath() });
+          paramApplicationLike.MDS.a(paramd.MEh, 3, true);
         }
         else
         {
@@ -263,7 +263,7 @@ public final class a
         if (paramc != null)
         {
           ShareTinkerLog.e("Tinker.TinkerLoadResult", "patch dex file not found:%s", new Object[] { paramc });
-          paramApplicationLike.MgV.a(new File(paramc), 3, false);
+          paramApplicationLike.MDS.a(new File(paramc), 3, false);
         }
         else
         {
@@ -278,7 +278,7 @@ public final class a
         if (paramc != null)
         {
           ShareTinkerLog.e("Tinker.TinkerLoadResult", "patch dex opt file not found:%s", new Object[] { paramc });
-          paramApplicationLike.MgV.a(new File(paramc), 4, false);
+          paramApplicationLike.MDS.a(new File(paramc), 4, false);
         }
         else
         {
@@ -289,10 +289,10 @@ public final class a
         }
         break;
       case -17: 
-        if (paramd.Mhi != null)
+        if (paramd.MEf != null)
         {
-          ShareTinkerLog.e("Tinker.TinkerLoadResult", "patch lib file directory not found:%s", new Object[] { paramd.Mhl.getAbsolutePath() });
-          paramApplicationLike.MgV.a(paramd.Mhl, 5, true);
+          ShareTinkerLog.e("Tinker.TinkerLoadResult", "patch lib file directory not found:%s", new Object[] { paramd.MEi.getAbsolutePath() });
+          paramApplicationLike.MDS.a(paramd.MEi, 5, true);
         }
         else
         {
@@ -307,7 +307,7 @@ public final class a
         if (paramc != null)
         {
           ShareTinkerLog.e("Tinker.TinkerLoadResult", "patch lib file not found:%s", new Object[] { paramc });
-          paramApplicationLike.MgV.a(new File(paramc), 5, false);
+          paramApplicationLike.MDS.a(new File(paramc), 5, false);
         }
         else
         {
@@ -330,17 +330,17 @@ public final class a
           throw paramContext;
         }
         ShareTinkerLog.e("Tinker.TinkerLoadResult", "patch dex file md5 is mismatch: %s", new Object[] { paramc });
-        paramApplicationLike.MgV.b(new File(paramc), 3);
+        paramApplicationLike.MDS.b(new File(paramc), 3);
         break;
       case -19: 
         ShareTinkerLog.i("Tinker.TinkerLoadResult", "rewrite patch info file corrupted", new Object[0]);
-        paramApplicationLike.MgV.b(paramb, parama, paramb1);
+        paramApplicationLike.MDS.b(paramb, parama, paramb1);
         break;
       case -21: 
-        if (paramd.Mhi != null)
+        if (paramd.MEf != null)
         {
-          ShareTinkerLog.e("Tinker.TinkerLoadResult", "patch resource file directory not found:%s", new Object[] { paramd.Mhm.getAbsolutePath() });
-          paramApplicationLike.MgV.a(paramd.Mhm, 6, true);
+          ShareTinkerLog.e("Tinker.TinkerLoadResult", "patch resource file directory not found:%s", new Object[] { paramd.MEj.getAbsolutePath() });
+          paramApplicationLike.MDS.a(paramd.MEj, 6, true);
         }
         else
         {
@@ -351,10 +351,10 @@ public final class a
         }
         break;
       case -22: 
-        if (paramd.Mhi != null)
+        if (paramd.MEf != null)
         {
-          ShareTinkerLog.e("Tinker.TinkerLoadResult", "patch resource file not found:%s", new Object[] { paramd.Mhn.getAbsolutePath() });
-          paramApplicationLike.MgV.a(paramd.Mhn, 6, false);
+          ShareTinkerLog.e("Tinker.TinkerLoadResult", "patch resource file not found:%s", new Object[] { paramd.MEk.getAbsolutePath() });
+          paramApplicationLike.MDS.a(paramd.MEk, 6, false);
         }
         else
         {
@@ -365,33 +365,33 @@ public final class a
         }
         break;
       case -24: 
-        if (paramd.Mhn == null)
+        if (paramd.MEk == null)
         {
           ShareTinkerLog.e("Tinker.TinkerLoadResult", "resource file md5 mismatch, but patch resource file not found!", new Object[0]);
           paramContext = new TinkerRuntimeException("resource file md5 mismatch, but patch resource file not found!");
           AppMethodBeat.o(3427);
           throw paramContext;
         }
-        ShareTinkerLog.e("Tinker.TinkerLoadResult", "patch resource file md5 is mismatch: %s", new Object[] { paramd.Mhn.getAbsolutePath() });
-        paramApplicationLike.MgV.b(paramd.Mhn, 6);
+        ShareTinkerLog.e("Tinker.TinkerLoadResult", "patch resource file md5 is mismatch: %s", new Object[] { paramd.MEk.getAbsolutePath() });
+        paramApplicationLike.MDS.b(paramd.MEk, 6);
         break;
       case -15: 
-        paramApplicationLike.MgV.b(1, ShareIntentUtil.getIntentInterpretException(paramc));
+        paramApplicationLike.MDS.b(1, ShareIntentUtil.getIntentInterpretException(paramc));
         break;
       case -16: 
-        paramApplicationLike.MgV.b(2, ShareIntentUtil.getIntentInterpretException(paramc));
+        paramApplicationLike.MDS.b(2, ShareIntentUtil.getIntentInterpretException(paramc));
         break;
       case 0: 
         ShareTinkerLog.i("Tinker.TinkerLoadResult", "oh yeah, tinker load all success", new Object[0]);
-        paramApplicationLike.Mhb = true;
-        paramd.Mho = ShareIntentUtil.getIntentPatchDexPaths(paramc);
-        paramd.Mhp = ShareIntentUtil.getIntentPatchLibsPaths(paramc);
-        paramd.Mhq = ShareIntentUtil.getIntentPackageConfig(paramc);
+        paramApplicationLike.MDY = true;
+        paramd.MEl = ShareIntentUtil.getIntentPatchDexPaths(paramc);
+        paramd.MEm = ShareIntentUtil.getIntentPatchLibsPaths(paramc);
+        paramd.MEn = ShareIntentUtil.getIntentPackageConfig(paramc);
         if (paramd.useInterpretMode) {
-          paramApplicationLike.MgV.b(0, null);
+          paramApplicationLike.MDS.b(0, null);
         }
-        if ((bool2) && (paramd.Mhg)) {
-          paramApplicationLike.MgV.a(paramb, parama, paramClass, paramd.Mhi.getName());
+        if ((bool2) && (paramd.MEd)) {
+          paramApplicationLike.MDS.a(paramb, parama, paramClass, paramd.MEf.getName());
         }
         break;
       }
@@ -400,98 +400,64 @@ public final class a
   
   public static a a(a parama)
   {
-    AppMethodBeat.i(186135);
+    AppMethodBeat.i(188695);
     if (parama == null)
     {
       parama = new TinkerRuntimeException("TinkerClient init, tinkerClient should not be null.");
-      AppMethodBeat.o(186135);
+      AppMethodBeat.o(188695);
       throw parama;
     }
-    if (MAh != null)
+    if (MXo != null)
     {
       parama = new TinkerRuntimeException("TinkerClient instance is already set.");
-      AppMethodBeat.o(186135);
+      AppMethodBeat.o(188695);
       throw parama;
     }
-    MAh = parama;
-    AppMethodBeat.o(186135);
+    MXo = parama;
+    AppMethodBeat.o(188695);
     return parama;
   }
   
-  public static a gdU()
+  public static a gix()
   {
     AppMethodBeat.i(3428);
-    if (MAh == null)
+    if (MXo == null)
     {
       localObject = new TinkerRuntimeException("you must init TinkerClient sdk first");
       AppMethodBeat.o(3428);
       throw ((Throwable)localObject);
     }
-    Object localObject = MAh;
+    Object localObject = MXo;
     AppMethodBeat.o(3428);
     return localObject;
   }
   
-  public final a aiS(int paramInt)
-  {
-    AppMethodBeat.i(3431);
-    if (this.MAj == null)
-    {
-      ShareTinkerLog.v("Tinker.TinkerClient", "setFetchPatchIntervalByHours, tinkerServerClient == null, just return", new Object[0]);
-      locala = MAh;
-      AppMethodBeat.o(3431);
-      return locala;
-    }
-    ShareTinkerLog.v("Tinker.TinkerClient", "setFetchPatchIntervalByHours to %d hours", new Object[] { Integer.valueOf(paramInt) });
-    this.MAj.aiT(paramInt);
-    a locala = MAh;
-    AppMethodBeat.o(3431);
-    return locala;
-  }
-  
-  public final a nm(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(3430);
-    if (this.MAj == null)
-    {
-      ShareTinkerLog.v("Tinker.TinkerClient", "setPatchCondition, tinkerServerClient == null, just return", new Object[0]);
-      paramString1 = MAh;
-      AppMethodBeat.o(3430);
-      return paramString1;
-    }
-    ShareTinkerLog.v("Tinker.TinkerClient", "setPatchCondition %s with value %s", new Object[] { paramString1, paramString2 });
-    this.MAj.nn(paramString1, paramString2);
-    paramString1 = MAh;
-    AppMethodBeat.o(3430);
-    return paramString1;
-  }
-  
-  public final a zV(final boolean paramBoolean)
+  public final a Ai(final boolean paramBoolean)
   {
     AppMethodBeat.i(3429);
-    if ((this.MAj == null) || (this.MAi == null))
+    if ((this.MXq == null) || (this.MXp == null))
     {
       ShareTinkerLog.v("Tinker.TinkerClient", "fetchPatchUpdate, tinkerServerClient or tinkerClient is null, just return", new Object[0]);
-      localObject = MAh;
+      localObject = MXo;
       AppMethodBeat.o(3429);
       return localObject;
     }
     Object localObject = com.tinkerboots.sdk.b.c.getContext();
-    if (!com.tinkerboots.sdk.b.b.lG((Context)localObject))
+    if (!com.tinkerboots.sdk.b.b.lM((Context)localObject))
     {
       ShareTinkerLog.v("Tinker.TinkerClient", "fetchPatchUpdate, permission refuse, you must access INTERNET and ACCESS_NETWORK_STATE permission first", new Object[0]);
-      localObject = MAh;
+      localObject = MXo;
       AppMethodBeat.o(3429);
       return localObject;
     }
-    if ((!ShareTinkerInternals.isTinkerEnabled(this.MAi.tinkerFlags)) || (!ShareTinkerInternals.isTinkerEnableWithSharedPreferences((Context)localObject)))
+    if ((!ShareTinkerInternals.isTinkerEnabled(this.MXp.tinkerFlags)) || (!ShareTinkerInternals.isTinkerEnableWithSharedPreferences((Context)localObject)))
     {
       ShareTinkerLog.v("Tinker.TinkerClient", "fetchPatchUpdate, tinker is disable, just return", new Object[0]);
-      localObject = MAh;
+      localObject = MXo;
       AppMethodBeat.o(3429);
       return localObject;
     }
-    if (this.MAi.AEC)
+    if (this.MXp.AWf)
     {
       Looper.getMainLooper();
       Looper.myQueue().addIdleHandler(new MessageQueue.IdleHandler()
@@ -499,7 +465,7 @@ public final class a
         public final boolean queueIdle()
         {
           AppMethodBeat.i(3425);
-          Object localObject1 = a.this.MAj;
+          Object localObject1 = a.this.MXq;
           boolean bool = paramBoolean;
           Object localObject2 = com.tinkerboots.sdk.b.c.getContext().getSharedPreferences("patch_server_config", 0);
           long l = ((SharedPreferences)localObject2).getLong("fetch_patch_last_check", 0L);
@@ -511,45 +477,79 @@ public final class a
             AppMethodBeat.o(3425);
             return false;
             l = System.currentTimeMillis() - l;
-            if ((bool) || (((com.tinkerboots.sdk.a.a)localObject1).cFj) || (l >= ((com.tinkerboots.sdk.a.a)localObject1).jXi))
+            if ((bool) || (((com.tinkerboots.sdk.a.a)localObject1).cFS) || (l >= ((com.tinkerboots.sdk.a.a)localObject1).kax))
             {
               ((SharedPreferences)localObject2).edit().putLong("fetch_patch_last_check", System.currentTimeMillis()).commit();
-              localObject2 = ((com.tinkerboots.sdk.a.a)localObject1).MAq;
-              localObject1 = ((com.tinkerboots.sdk.a.a)localObject1).MAo;
+              localObject2 = ((com.tinkerboots.sdk.a.a)localObject1).MXx;
+              localObject1 = ((com.tinkerboots.sdk.a.a)localObject1).MXv;
               if (localObject1 == null)
               {
                 localObject1 = new RuntimeException("callback can't be null");
                 AppMethodBeat.o(3425);
                 throw ((Throwable)localObject1);
               }
-              if (((com.tinkerboots.sdk.a.a.b)localObject1).dcC())
+              if (((com.tinkerboots.sdk.a.a.b)localObject1).dfu())
               {
-                ((com.tinkerboots.sdk.a.a.b)localObject1).dcD();
-                ((com.tinkerboots.sdk.a.a.b)localObject1).ah(((com.tinkerboots.sdk.a.b.a)localObject2).MAr.MAs);
+                ((com.tinkerboots.sdk.a.a.b)localObject1).dfv();
+                ((com.tinkerboots.sdk.a.a.b)localObject1).an(((com.tinkerboots.sdk.a.b.a)localObject2).MXy.MXz);
               }
             }
             else
             {
-              ShareTinkerLog.v("Tinker.ServerClient", "tinker sync should wait interval %ss", new Object[] { Long.valueOf((((com.tinkerboots.sdk.a.a)localObject1).jXi - l) / 1000L) });
+              ShareTinkerLog.v("Tinker.ServerClient", "tinker sync should wait interval %ss", new Object[] { Long.valueOf((((com.tinkerboots.sdk.a.a)localObject1).kax - l) / 1000L) });
             }
           }
         }
       });
     }
-    localObject = MAh;
+    localObject = MXo;
     AppMethodBeat.o(3429);
     return localObject;
   }
   
+  public final a ajC(int paramInt)
+  {
+    AppMethodBeat.i(3431);
+    if (this.MXq == null)
+    {
+      ShareTinkerLog.v("Tinker.TinkerClient", "setFetchPatchIntervalByHours, tinkerServerClient == null, just return", new Object[0]);
+      locala = MXo;
+      AppMethodBeat.o(3431);
+      return locala;
+    }
+    ShareTinkerLog.v("Tinker.TinkerClient", "setFetchPatchIntervalByHours to %d hours", new Object[] { Integer.valueOf(paramInt) });
+    this.MXq.ajD(paramInt);
+    a locala = MXo;
+    AppMethodBeat.o(3431);
+    return locala;
+  }
+  
+  public final a ns(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(3430);
+    if (this.MXq == null)
+    {
+      ShareTinkerLog.v("Tinker.TinkerClient", "setPatchCondition, tinkerServerClient == null, just return", new Object[0]);
+      paramString1 = MXo;
+      AppMethodBeat.o(3430);
+      return paramString1;
+    }
+    ShareTinkerLog.v("Tinker.TinkerClient", "setPatchCondition %s with value %s", new Object[] { paramString1, paramString2 });
+    this.MXq.nt(paramString1, paramString2);
+    paramString1 = MXo;
+    AppMethodBeat.o(3430);
+    return paramString1;
+  }
+  
   public static final class a
   {
-    private com.tencent.tinker.lib.c.a MAm;
-    public Class<? extends AbstractResultService> MAn;
-    private com.tinkerboots.sdk.a.a.b MAo;
-    public com.tencent.tinker.lib.b.b MgU;
-    public com.tencent.tinker.lib.d.c MgV;
-    private com.tencent.tinker.lib.d.d MgW;
-    private final ApplicationLike cTo;
+    public com.tencent.tinker.lib.b.b MDR;
+    public com.tencent.tinker.lib.d.c MDS;
+    private com.tencent.tinker.lib.d.d MDT;
+    private com.tencent.tinker.lib.c.a MXt;
+    public Class<? extends AbstractResultService> MXu;
+    private com.tinkerboots.sdk.a.a.b MXv;
+    private final ApplicationLike cTZ;
     private final Context context;
     
     public a(ApplicationLike paramApplicationLike)
@@ -562,47 +562,47 @@ public final class a
         throw paramApplicationLike;
       }
       this.context = paramApplicationLike.getApplication();
-      this.cTo = paramApplicationLike;
+      this.cTZ = paramApplicationLike;
       AppMethodBeat.o(3426);
     }
     
     public final a a(com.tencent.tinker.lib.d.d paramd)
     {
-      AppMethodBeat.i(186133);
-      if (this.MgW != null)
+      AppMethodBeat.i(188693);
+      if (this.MDT != null)
       {
         paramd = new TinkerRuntimeException("patchReporter is already set.");
-        AppMethodBeat.o(186133);
+        AppMethodBeat.o(188693);
         throw paramd;
       }
-      this.MgW = paramd;
-      AppMethodBeat.o(186133);
+      this.MDT = paramd;
+      AppMethodBeat.o(188693);
       return this;
     }
     
-    public final a gdV()
+    public final a giy()
     {
-      AppMethodBeat.i(186134);
-      if (this.MgV == null) {
-        this.MgV = new com.tinkerboots.sdk.tinker.b.a(this.context);
+      AppMethodBeat.i(188694);
+      if (this.MDS == null) {
+        this.MDS = new com.tinkerboots.sdk.tinker.b.a(this.context);
       }
-      if (this.MgW == null) {
-        this.MgW = new com.tinkerboots.sdk.tinker.b.c(this.context);
+      if (this.MDT == null) {
+        this.MDT = new com.tinkerboots.sdk.tinker.b.c(this.context);
       }
-      if (this.MgU == null) {
-        this.MgU = new com.tinkerboots.sdk.tinker.b.b(this.context);
+      if (this.MDR == null) {
+        this.MDR = new com.tinkerboots.sdk.tinker.b.b(this.context);
       }
-      if (this.MAm == null) {
-        this.MAm = new g();
+      if (this.MXt == null) {
+        this.MXt = new g();
       }
-      if (this.MAn == null) {
-        this.MAn = TinkerServerResultService.class;
+      if (this.MXu == null) {
+        this.MXu = TinkerServerResultService.class;
       }
-      if (this.MAo == null) {
-        this.MAo = new com.tinkerboots.sdk.a.a.a();
+      if (this.MXv == null) {
+        this.MXv = new com.tinkerboots.sdk.a.a.a();
       }
-      a locala = new a(this.context, this.cTo, this.MgV, this.MgW, this.MgU, this.MAm, this.MAn, this.MAo);
-      AppMethodBeat.o(186134);
+      a locala = new a(this.context, this.cTZ, this.MDS, this.MDT, this.MDR, this.MXt, this.MXu, this.MXv);
+      AppMethodBeat.o(188694);
       return locala;
     }
   }

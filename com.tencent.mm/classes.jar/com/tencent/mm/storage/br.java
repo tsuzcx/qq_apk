@@ -1,88 +1,157 @@
 package com.tencent.mm.storage;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.dv;
-import com.tencent.mm.sdk.e.c.a;
-import java.lang.reflect.Field;
-import java.util.Map;
+import android.content.Context;
+import android.database.Cursor;
+import com.tencent.mm.plugin.messenger.foundation.a.a.i;
+import com.tencent.mm.plugin.messenger.foundation.a.a.i.c;
+import com.tencent.mm.plugin.messenger.foundation.a.f;
+import com.tencent.mm.plugin.messenger.foundation.a.g;
+import com.tencent.mm.pointers.PInt;
+import com.tencent.mm.pointers.PString;
+import com.tencent.mm.sdk.e.h;
+import com.tencent.mm.vending.b.b;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 
-public final class br
-  extends dv
+public abstract interface br
+  extends h
 {
-  public static c.a info;
+  public abstract int Bk(String paramString);
   
-  static
+  public abstract boolean Kh(String paramString);
+  
+  public abstract b MV();
+  
+  public abstract int a(au paramau, String paramString);
+  
+  public abstract int a(au paramau, String paramString, boolean paramBoolean);
+  
+  public abstract Cursor a(String paramString1, List<String> paramList, String paramString2, boolean paramBoolean);
+  
+  public abstract Cursor a(String paramString1, List<String> paramList, boolean paramBoolean, String paramString2);
+  
+  public abstract Cursor a(ArrayList<String> paramArrayList, String paramString1, List<String> paramList, String paramString2);
+  
+  public abstract b a(g paramg);
+  
+  public abstract void a(f paramf);
+  
+  public abstract void a(au paramau, int paramInt1, int paramInt2);
+  
+  public abstract void a(a parama);
+  
+  public abstract void a(b paramb);
+  
+  public abstract boolean a(String paramString, int paramInt1, boolean paramBoolean, int paramInt2);
+  
+  public abstract void aL(bv parambv);
+  
+  public abstract void aUY(String paramString);
+  
+  public abstract boolean aUZ(String paramString);
+  
+  public abstract au aVa(String paramString);
+  
+  public abstract void aVb(String paramString);
+  
+  public abstract boolean aVc(String paramString);
+  
+  public abstract boolean aVd(String paramString);
+  
+  public abstract boolean aVe(String paramString);
+  
+  public abstract boolean aVf(String paramString);
+  
+  public abstract boolean aVg(String paramString);
+  
+  public abstract boolean aVh(String paramString);
+  
+  public abstract boolean aVi(String paramString);
+  
+  public abstract Cursor aVj(String paramString);
+  
+  public abstract Cursor aVk(String paramString);
+  
+  public abstract Cursor aVl(String paramString);
+  
+  public abstract int aVm(String paramString);
+  
+  public abstract String aVn(String paramString);
+  
+  public abstract au aVo(String paramString);
+  
+  public abstract int aVp(String paramString);
+  
+  public abstract void aVq(String paramString);
+  
+  public abstract void aVr(String paramString);
+  
+  public abstract int aVs(String paramString);
+  
+  public abstract boolean alg(String paramString);
+  
+  public abstract void b(i parami, i.c paramc);
+  
+  public abstract void b(g paramg);
+  
+  public abstract void b(a parama);
+  
+  public abstract void bn(LinkedList<String> paramLinkedList);
+  
+  public abstract Cursor c(String paramString1, List<String> paramList, String paramString2);
+  
+  public abstract void c(a parama);
+  
+  public abstract void c(String[] paramArrayOfString, String paramString);
+  
+  public abstract String cP(int paramInt, String paramString);
+  
+  public abstract void d(a parama);
+  
+  public abstract long e(au paramau);
+  
+  public abstract Cursor f(List<String> paramList, int paramInt1, int paramInt2);
+  
+  public abstract boolean fuL();
+  
+  public abstract HashMap<String, Long> fuM();
+  
+  public abstract void fuN();
+  
+  public abstract List<String> fuO();
+  
+  public abstract List<String> fuP();
+  
+  public abstract Cursor fuQ();
+  
+  public abstract int fuR();
+  
+  public abstract String fuS();
+  
+  public abstract Cursor fuT();
+  
+  public abstract au fuU();
+  
+  public abstract Cursor fuV();
+  
+  public abstract boolean g(au paramau);
+  
+  public abstract boolean h(au paramau);
+  
+  public abstract Cursor mf(String paramString1, String paramString2);
+  
+  public static abstract interface a
   {
-    AppMethodBeat.i(43200);
-    c.a locala = new c.a();
-    locala.IhA = new Field[14];
-    locala.columns = new String[15];
-    StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "svrid";
-    locala.IhC.put("svrid", "LONG default '0'  PRIMARY KEY ");
-    localStringBuilder.append(" svrid LONG default '0'  PRIMARY KEY ");
-    localStringBuilder.append(", ");
-    locala.IhB = "svrid";
-    locala.columns[1] = "status";
-    locala.IhC.put("status", "INTEGER");
-    localStringBuilder.append(" status INTEGER");
-    localStringBuilder.append(", ");
-    locala.columns[2] = "type";
-    locala.IhC.put("type", "INTEGER");
-    localStringBuilder.append(" type INTEGER");
-    localStringBuilder.append(", ");
-    locala.columns[3] = "scene";
-    locala.IhC.put("scene", "INTEGER");
-    localStringBuilder.append(" scene INTEGER");
-    localStringBuilder.append(", ");
-    locala.columns[4] = "createtime";
-    locala.IhC.put("createtime", "LONG");
-    localStringBuilder.append(" createtime LONG");
-    localStringBuilder.append(", ");
-    locala.columns[5] = "talker";
-    locala.IhC.put("talker", "TEXT");
-    localStringBuilder.append(" talker TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[6] = "content";
-    locala.IhC.put("content", "TEXT");
-    localStringBuilder.append(" content TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[7] = "sayhiuser";
-    locala.IhC.put("sayhiuser", "TEXT");
-    localStringBuilder.append(" sayhiuser TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[8] = "sayhicontent";
-    locala.IhC.put("sayhicontent", "TEXT");
-    localStringBuilder.append(" sayhicontent TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[9] = "imgpath";
-    locala.IhC.put("imgpath", "TEXT");
-    localStringBuilder.append(" imgpath TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[10] = "isSend";
-    locala.IhC.put("isSend", "INTEGER");
-    localStringBuilder.append(" isSend INTEGER");
-    localStringBuilder.append(", ");
-    locala.columns[11] = "sayhiencryptuser";
-    locala.IhC.put("sayhiencryptuser", "TEXT");
-    localStringBuilder.append(" sayhiencryptuser TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[12] = "ticket";
-    locala.IhC.put("ticket", "TEXT");
-    localStringBuilder.append(" ticket TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[13] = "flag";
-    locala.IhC.put("flag", "INTEGER");
-    localStringBuilder.append(" flag INTEGER");
-    locala.columns[14] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    info = locala;
-    AppMethodBeat.o(43200);
+    public abstract void a(au paramau, br parambr);
   }
   
-  public final c.a getDBInfo()
+  public static abstract interface b
   {
-    return info;
+    public abstract String a(int paramInt1, String paramString1, String paramString2, int paramInt2, Context paramContext);
+    
+    public abstract void a(bv parambv, PString paramPString1, PString paramPString2, PInt paramPInt, boolean paramBoolean);
   }
 }
 

@@ -4,13 +4,13 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a$a
 {
-  int dnh;
+  int doj;
   int scene;
   
   public a$a(int paramInt)
   {
     AppMethodBeat.i(94384);
-    this.dnh = 2;
+    this.doj = 2;
     if (paramInt == 1)
     {
       this.scene = 1;
@@ -25,7 +25,7 @@ public final class a$a
     }
     if (paramInt == 512)
     {
-      this.dnh = 1;
+      this.doj = 1;
       this.scene = 2;
       AppMethodBeat.o(94384);
       return;
@@ -39,7 +39,7 @@ public final class a$a
   public final String toString()
   {
     AppMethodBeat.i(94385);
-    String str = "VideoEditCountData{scene=" + this.scene + ", source=" + this.dnh + '}';
+    String str = "VideoEditCountData{scene=" + this.scene + ", source=" + this.doj + '}';
     AppMethodBeat.o(94385);
     return str;
   }

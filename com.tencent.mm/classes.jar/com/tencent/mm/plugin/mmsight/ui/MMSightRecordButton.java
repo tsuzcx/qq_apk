@@ -18,11 +18,11 @@ import android.view.ViewConfiguration;
 import android.view.ViewPropertyAnimator;
 import android.widget.FrameLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.av;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.aw;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.z;
 import java.util.ArrayList;
 
@@ -30,47 +30,47 @@ public class MMSightRecordButton
   extends FrameLayout
 {
   private static final int Pk;
-  private static final float vUF;
+  private static final float wgJ;
   private float aTM;
   private boolean enable;
-  private ap gIf;
-  private Runnable gmO;
-  private boolean htg;
+  private aq gKO;
+  private Runnable gpk;
+  private boolean hvU;
   private boolean isAnimating;
   private View progressBar;
-  private boolean smb;
-  private boolean vUA;
-  private long vUG;
-  private View vUH;
-  private View vUI;
-  private MMSightCircularProgressBar vUJ;
-  private boolean vUK;
-  private boolean vUL;
-  private ViewPropertyAnimator vUM;
-  private ViewPropertyAnimator vUN;
-  private ValueAnimator vUO;
-  private ValueAnimator vUP;
-  private ViewPropertyAnimator vUQ;
-  private ViewPropertyAnimator vUR;
-  private int vUS;
-  private int vUT;
-  private int vUU;
-  private int vUV;
-  private d vUW;
-  private b vUX;
-  private c vUY;
-  private a vUZ;
-  private Drawable vVa;
-  private Drawable vVb;
-  private boolean vVc;
-  private boolean vVd;
-  private Runnable vVe;
+  private boolean svS;
+  private boolean wgE;
+  private long wgK;
+  private View wgL;
+  private View wgM;
+  private MMSightCircularProgressBar wgN;
+  private boolean wgO;
+  private boolean wgP;
+  private ViewPropertyAnimator wgQ;
+  private ViewPropertyAnimator wgR;
+  private ValueAnimator wgS;
+  private ValueAnimator wgT;
+  private ViewPropertyAnimator wgU;
+  private ViewPropertyAnimator wgV;
+  private int wgW;
+  private int wgX;
+  private int wgY;
+  private int wgZ;
+  private d wha;
+  private b whb;
+  private c whc;
+  private a whd;
+  private Drawable whe;
+  private Drawable whf;
+  private boolean whg;
+  private boolean whh;
+  private Runnable whi;
   
   static
   {
     AppMethodBeat.i(94555);
     Pk = ViewConfiguration.getTapTimeout();
-    vUF = aj.getContext().getResources().getDimensionPixelSize(2131166579) / aj.getContext().getResources().getDimensionPixelSize(2131166578);
+    wgJ = ak.getContext().getResources().getDimensionPixelSize(2131166579) / ak.getContext().getResources().getDimensionPixelSize(2131166578);
     AppMethodBeat.o(94555);
   }
   
@@ -78,26 +78,26 @@ public class MMSightRecordButton
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(94538);
-    this.vUG = -1L;
-    this.htg = false;
-    this.vUK = false;
-    this.vUL = false;
+    this.wgK = -1L;
+    this.hvU = false;
+    this.wgO = false;
+    this.wgP = false;
     this.isAnimating = false;
-    this.smb = false;
-    this.vUU = -1;
-    this.vUV = -2130706433;
+    this.svS = false;
+    this.wgY = -1;
+    this.wgZ = -2130706433;
     this.aTM = -1.0F;
     this.enable = true;
-    this.vVc = false;
-    this.vVd = false;
-    this.vUA = false;
-    this.gIf = new ap(Looper.getMainLooper());
-    this.gmO = new Runnable()
+    this.whg = false;
+    this.whh = false;
+    this.wgE = false;
+    this.gKO = new aq(Looper.getMainLooper());
+    this.gpk = new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(94535);
-        ad.i("MicroMsg.MMSightRecordButton", "on Long Press, isDispatchSimpleTap: %s, isDispatchLongPress: %s", new Object[] { Boolean.valueOf(MMSightRecordButton.b(MMSightRecordButton.this)), Boolean.valueOf(MMSightRecordButton.c(MMSightRecordButton.this)) });
+        ae.i("MicroMsg.MMSightRecordButton", "on Long Press, isDispatchSimpleTap: %s, isDispatchLongPress: %s", new Object[] { Boolean.valueOf(MMSightRecordButton.b(MMSightRecordButton.this)), Boolean.valueOf(MMSightRecordButton.c(MMSightRecordButton.this)) });
         if (!MMSightRecordButton.b(MMSightRecordButton.this))
         {
           MMSightRecordButton.d(MMSightRecordButton.this);
@@ -108,12 +108,12 @@ public class MMSightRecordButton
         AppMethodBeat.o(94535);
       }
     };
-    this.vVe = new Runnable()
+    this.whi = new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(94536);
-        ad.i("MicroMsg.MMSightRecordButton", "startTransition, isDown: %s", new Object[] { Boolean.valueOf(MMSightRecordButton.f(MMSightRecordButton.this)) });
+        ae.i("MicroMsg.MMSightRecordButton", "startTransition, isDown: %s", new Object[] { Boolean.valueOf(MMSightRecordButton.f(MMSightRecordButton.this)) });
         if (MMSightRecordButton.f(MMSightRecordButton.this)) {
           MMSightRecordButton.g(MMSightRecordButton.this);
         }
@@ -128,26 +128,26 @@ public class MMSightRecordButton
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(94539);
-    this.vUG = -1L;
-    this.htg = false;
-    this.vUK = false;
-    this.vUL = false;
+    this.wgK = -1L;
+    this.hvU = false;
+    this.wgO = false;
+    this.wgP = false;
     this.isAnimating = false;
-    this.smb = false;
-    this.vUU = -1;
-    this.vUV = -2130706433;
+    this.svS = false;
+    this.wgY = -1;
+    this.wgZ = -2130706433;
     this.aTM = -1.0F;
     this.enable = true;
-    this.vVc = false;
-    this.vVd = false;
-    this.vUA = false;
-    this.gIf = new ap(Looper.getMainLooper());
-    this.gmO = new Runnable()
+    this.whg = false;
+    this.whh = false;
+    this.wgE = false;
+    this.gKO = new aq(Looper.getMainLooper());
+    this.gpk = new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(94535);
-        ad.i("MicroMsg.MMSightRecordButton", "on Long Press, isDispatchSimpleTap: %s, isDispatchLongPress: %s", new Object[] { Boolean.valueOf(MMSightRecordButton.b(MMSightRecordButton.this)), Boolean.valueOf(MMSightRecordButton.c(MMSightRecordButton.this)) });
+        ae.i("MicroMsg.MMSightRecordButton", "on Long Press, isDispatchSimpleTap: %s, isDispatchLongPress: %s", new Object[] { Boolean.valueOf(MMSightRecordButton.b(MMSightRecordButton.this)), Boolean.valueOf(MMSightRecordButton.c(MMSightRecordButton.this)) });
         if (!MMSightRecordButton.b(MMSightRecordButton.this))
         {
           MMSightRecordButton.d(MMSightRecordButton.this);
@@ -158,12 +158,12 @@ public class MMSightRecordButton
         AppMethodBeat.o(94535);
       }
     };
-    this.vVe = new Runnable()
+    this.whi = new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(94536);
-        ad.i("MicroMsg.MMSightRecordButton", "startTransition, isDown: %s", new Object[] { Boolean.valueOf(MMSightRecordButton.f(MMSightRecordButton.this)) });
+        ae.i("MicroMsg.MMSightRecordButton", "startTransition, isDown: %s", new Object[] { Boolean.valueOf(MMSightRecordButton.f(MMSightRecordButton.this)) });
         if (MMSightRecordButton.f(MMSightRecordButton.this)) {
           MMSightRecordButton.g(MMSightRecordButton.this);
         }
@@ -174,25 +174,25 @@ public class MMSightRecordButton
     AppMethodBeat.o(94539);
   }
   
-  private void dnQ()
+  private void dqO()
   {
-    AppMethodBeat.i(214507);
-    ad.d("MicroMsg.MMSightRecordButton", "startTransition");
+    AppMethodBeat.i(189043);
+    ae.d("MicroMsg.MMSightRecordButton", "startTransition");
     this.isAnimating = true;
-    if (this.vUM != null)
+    if (this.wgQ != null)
     {
-      this.vUM.cancel();
-      this.vUM = null;
+      this.wgQ.cancel();
+      this.wgQ = null;
     }
-    this.vUM = this.vUH.animate().scaleX(0.5F).scaleY(0.5F);
-    this.vUM.setListener(new AnimatorListenerAdapter()
+    this.wgQ = this.wgL.animate().scaleX(0.5F).scaleY(0.5F);
+    this.wgQ.setListener(new AnimatorListenerAdapter()
     {
       public final void onAnimationEnd(Animator paramAnonymousAnimator)
       {
         AppMethodBeat.i(94531);
         MMSightRecordButton.a(MMSightRecordButton.this, false);
-        if (this.vVj != null) {
-          this.vVj.onAnimationEnd(paramAnonymousAnimator);
+        if (this.whn != null) {
+          this.whn.onAnimationEnd(paramAnonymousAnimator);
         }
         AppMethodBeat.o(94531);
       }
@@ -201,50 +201,50 @@ public class MMSightRecordButton
       {
         AppMethodBeat.i(94530);
         MMSightRecordButton.a(MMSightRecordButton.this, true);
-        if (this.vVj != null) {
-          this.vVj.onAnimationStart(paramAnonymousAnimator);
+        if (this.whn != null) {
+          this.whn.onAnimationStart(paramAnonymousAnimator);
         }
         AppMethodBeat.o(94530);
       }
     }).setDuration(150L).start();
-    if (this.vUN != null)
+    if (this.wgR != null)
     {
-      this.vUN.cancel();
-      this.vUN = null;
+      this.wgR.cancel();
+      this.wgR = null;
     }
-    this.vUN = this.vUI.animate().scaleX(vUF).scaleY(vUF);
-    this.vUN.setDuration(150L).start();
-    if (this.vUT != this.vUS)
+    this.wgR = this.wgM.animate().scaleX(wgJ).scaleY(wgJ);
+    this.wgR.setDuration(150L).start();
+    if (this.wgX != this.wgW)
     {
-      if (this.vUO != null) {
-        this.vUO.cancel();
+      if (this.wgS != null) {
+        this.wgS.cancel();
       }
-      this.vUO = ObjectAnimator.ofInt(this.vVb, "color", new int[] { this.vUT, this.vUS });
-      this.vUO.setDuration(150L);
-      this.vUO.setEvaluator(a.getInstance());
-      this.vUO.start();
+      this.wgS = ObjectAnimator.ofInt(this.whf, "color", new int[] { this.wgX, this.wgW });
+      this.wgS.setDuration(150L);
+      this.wgS.setEvaluator(a.getInstance());
+      this.wgS.start();
     }
-    if (this.vUP != null) {
-      this.vUP.cancel();
+    if (this.wgT != null) {
+      this.wgT.cancel();
     }
-    this.vUP = ObjectAnimator.ofInt(this.vVa, "color", new int[] { this.vUU, this.vUV });
-    this.vUP.setDuration(150L);
-    this.vUP.setEvaluator(a.getInstance());
-    this.vUP.start();
-    AppMethodBeat.o(214507);
+    this.wgT = ObjectAnimator.ofInt(this.whe, "color", new int[] { this.wgY, this.wgZ });
+    this.wgT.setDuration(150L);
+    this.wgT.setEvaluator(a.getInstance());
+    this.wgT.start();
+    AppMethodBeat.o(189043);
   }
   
   private void e(final AnimatorListenerAdapter paramAnimatorListenerAdapter)
   {
     AppMethodBeat.i(94548);
     this.isAnimating = true;
-    if (this.vUQ != null)
+    if (this.wgU != null)
     {
-      this.vUQ.cancel();
-      this.vUQ = null;
+      this.wgU.cancel();
+      this.wgU = null;
     }
-    this.vUQ = this.vUH.animate().scaleX(1.0F).scaleY(1.0F);
-    this.vUQ.setListener(new AnimatorListenerAdapter()
+    this.wgU = this.wgL.animate().scaleX(1.0F).scaleY(1.0F);
+    this.wgU.setListener(new AnimatorListenerAdapter()
     {
       public final void onAnimationEnd(Animator paramAnonymousAnimator)
       {
@@ -266,24 +266,24 @@ public class MMSightRecordButton
         AppMethodBeat.o(94532);
       }
     }).setDuration(150L).start();
-    this.vUR = this.vUI.animate().scaleX(1.0F).scaleY(1.0F);
-    this.vUR.setDuration(150L).start();
-    if (this.vUP != null) {
-      this.vUP.cancel();
+    this.wgV = this.wgM.animate().scaleX(1.0F).scaleY(1.0F);
+    this.wgV.setDuration(150L).start();
+    if (this.wgT != null) {
+      this.wgT.cancel();
     }
-    this.vUP = ObjectAnimator.ofInt(this.vVa, "color", new int[] { this.vUV, this.vUU });
-    this.vUP.setDuration(150L);
-    this.vUP.setEvaluator(a.getInstance());
-    this.vUP.start();
-    if (this.vUT != this.vUS)
+    this.wgT = ObjectAnimator.ofInt(this.whe, "color", new int[] { this.wgZ, this.wgY });
+    this.wgT.setDuration(150L);
+    this.wgT.setEvaluator(a.getInstance());
+    this.wgT.start();
+    if (this.wgX != this.wgW)
     {
-      if (this.vUO != null) {
-        this.vUO.cancel();
+      if (this.wgS != null) {
+        this.wgS.cancel();
       }
-      this.vUO = ObjectAnimator.ofInt(this.vVb, "color", new int[] { this.vUS, this.vUT });
-      this.vUO.setDuration(150L);
-      this.vUO.setEvaluator(a.getInstance());
-      this.vUO.start();
+      this.wgS = ObjectAnimator.ofInt(this.whf, "color", new int[] { this.wgW, this.wgX });
+      this.wgS.setDuration(150L);
+      this.wgS.setEvaluator(a.getInstance());
+      this.wgS.start();
     }
     AppMethodBeat.o(94548);
   }
@@ -291,41 +291,41 @@ public class MMSightRecordButton
   private void init()
   {
     AppMethodBeat.i(94540);
-    ad.i("MicroMsg.MMSightRecordButton", "init, longPressTimeout: %s, tapTimeout: %s", new Object[] { Integer.valueOf(500), Integer.valueOf(Pk) });
-    this.vVa = getContext().getResources().getDrawable(2131233311);
-    this.vVb = getContext().getResources().getDrawable(2131233312);
-    z.jO(getContext()).inflate(2131494919, this, true);
-    this.vUH = findViewById(2131301021);
-    this.vUI = findViewById(2131303113);
+    ae.i("MicroMsg.MMSightRecordButton", "init, longPressTimeout: %s, tapTimeout: %s", new Object[] { Integer.valueOf(500), Integer.valueOf(Pk) });
+    this.whe = getContext().getResources().getDrawable(2131233311);
+    this.whf = getContext().getResources().getDrawable(2131233312);
+    z.jV(getContext()).inflate(2131494919, this, true);
+    this.wgL = findViewById(2131301021);
+    this.wgM = findViewById(2131303113);
     this.progressBar = findViewById(2131303518);
-    this.vUJ = ((MMSightCircularProgressBar)findViewById(2131298337));
-    this.vUH.setBackgroundDrawable(this.vVa);
-    this.vUI.setBackgroundDrawable(this.vVb);
+    this.wgN = ((MMSightCircularProgressBar)findViewById(2131298337));
+    this.wgL.setBackgroundDrawable(this.whe);
+    this.wgM.setBackgroundDrawable(this.whf);
     this.enable = true;
     AppMethodBeat.o(94540);
   }
   
-  public final void Ks(int paramInt)
+  public final void KS(int paramInt)
   {
-    AppMethodBeat.i(214505);
-    int i = this.vUJ.getSubProgress().size();
+    AppMethodBeat.i(189041);
+    int i = this.wgN.getSubProgress().size();
     MMSightCircularProgressBar localMMSightCircularProgressBar;
     if ((i > 0) && (paramInt != i))
     {
-      localMMSightCircularProgressBar = this.vUJ;
-      if (localMMSightCircularProgressBar.vUy.size() > 0)
+      localMMSightCircularProgressBar = this.wgN;
+      if (localMMSightCircularProgressBar.wgC.size() > 0)
       {
-        localMMSightCircularProgressBar.vUy.remove(localMMSightCircularProgressBar.vUy.size() - 1);
-        if (localMMSightCircularProgressBar.vUy.size() <= 0) {
+        localMMSightCircularProgressBar.wgC.remove(localMMSightCircularProgressBar.wgC.size() - 1);
+        if (localMMSightCircularProgressBar.wgC.size() <= 0) {
           break label105;
         }
       }
     }
     label105:
-    for (localMMSightCircularProgressBar.vUt = ((Float)localMMSightCircularProgressBar.vUy.get(localMMSightCircularProgressBar.vUy.size() - 1)).floatValue();; localMMSightCircularProgressBar.vUt = 0.0F)
+    for (localMMSightCircularProgressBar.wgx = ((Float)localMMSightCircularProgressBar.wgC.get(localMMSightCircularProgressBar.wgC.size() - 1)).floatValue();; localMMSightCircularProgressBar.wgx = 0.0F)
     {
       localMMSightCircularProgressBar.invalidate();
-      AppMethodBeat.o(214505);
+      AppMethodBeat.o(189041);
       return;
     }
   }
@@ -333,73 +333,73 @@ public class MMSightRecordButton
   public final void a(int paramInt1, int paramInt2, final MMSightCircularProgressBar.a parama)
   {
     AppMethodBeat.i(94546);
-    ad.m("MicroMsg.MMSightRecordButton", "startProgress, initProgress: %s, maxProgress: %s, duration: %s, callback: %s", new Object[] { Integer.valueOf(0), Integer.valueOf(100), Integer.valueOf(paramInt1), parama });
-    this.htg = true;
-    this.vUJ.setInitProgress(0);
-    this.vUJ.setMaxProgress(100);
-    this.vUJ.setDuration(paramInt1);
-    if (!this.vUA) {
-      this.vUJ.setVisibility(0);
+    ae.m("MicroMsg.MMSightRecordButton", "startProgress, initProgress: %s, maxProgress: %s, duration: %s, callback: %s", new Object[] { Integer.valueOf(0), Integer.valueOf(100), Integer.valueOf(paramInt1), parama });
+    this.hvU = true;
+    this.wgN.setInitProgress(0);
+    this.wgN.setMaxProgress(100);
+    this.wgN.setDuration(paramInt1);
+    if (!this.wgE) {
+      this.wgN.setVisibility(0);
     }
-    this.vUJ.setCircularColor(paramInt2);
+    this.wgN.setCircularColor(paramInt2);
     parama = new MMSightCircularProgressBar.a()
     {
       public final void S(ArrayList<Float> paramAnonymousArrayList)
       {
-        AppMethodBeat.i(214502);
+        AppMethodBeat.i(189038);
         if (parama != null) {
           parama.S(paramAnonymousArrayList);
         }
-        AppMethodBeat.o(214502);
+        AppMethodBeat.o(189038);
       }
       
-      public final void kH(final boolean paramAnonymousBoolean)
+      public final void kI(final boolean paramAnonymousBoolean)
       {
-        AppMethodBeat.i(214501);
-        ad.m("MicroMsg.MMSightRecordButton", "outer, onProgressFinish", new Object[0]);
+        AppMethodBeat.i(189037);
+        ae.m("MicroMsg.MMSightRecordButton", "outer, onProgressFinish", new Object[0]);
         MMSightRecordButton.this.hideProgress();
         MMSightRecordButton.a(MMSightRecordButton.this, new AnimatorListenerAdapter()
         {
           public final void onAnimationEnd(Animator paramAnonymous2Animator)
           {
             AppMethodBeat.i(94528);
-            ad.m("MicroMsg.MMSightRecordButton", "call onProgressFinish", new Object[0]);
+            ae.m("MicroMsg.MMSightRecordButton", "call onProgressFinish", new Object[0]);
             MMSightRecordButton.a(MMSightRecordButton.this);
-            if (MMSightRecordButton.1.this.vVf != null) {
-              MMSightRecordButton.1.this.vVf.kH(paramAnonymousBoolean);
+            if (MMSightRecordButton.1.this.whj != null) {
+              MMSightRecordButton.1.this.whj.kI(paramAnonymousBoolean);
             }
             AppMethodBeat.o(94528);
           }
         });
-        AppMethodBeat.o(214501);
+        AppMethodBeat.o(189037);
       }
     };
-    this.vUJ.setProgressCallback(parama);
-    parama = this.vUJ;
-    ad.i("MicroMsg.MMSightCircularProgressBar", "start, initProgress: %s, maxProgress: %s, duration: %s currentProgress:%s", new Object[] { Integer.valueOf(parama.vUu), Integer.valueOf(parama.vUv), Integer.valueOf(parama.duration), Float.valueOf(parama.vUt) });
+    this.wgN.setProgressCallback(parama);
+    parama = this.wgN;
+    ae.i("MicroMsg.MMSightCircularProgressBar", "start, initProgress: %s, maxProgress: %s, duration: %s currentProgress:%s", new Object[] { Integer.valueOf(parama.wgy), Integer.valueOf(parama.wgz), Integer.valueOf(parama.duration), Float.valueOf(parama.wgx) });
     parama.isStart = true;
-    if (parama.vUw != null)
+    if (parama.wgA != null)
     {
-      parama.vUw.cancel();
-      parama.vUw = null;
+      parama.wgA.cancel();
+      parama.wgA = null;
     }
-    parama.vUw = new c(parama.vUt, parama.vUv, parama.duration);
-    c localc = parama.vUw;
+    parama.wgA = new c(parama.wgx, parama.wgz, parama.duration);
+    c localc = parama.wgA;
     MMSightCircularProgressBar.1 local1 = new MMSightCircularProgressBar.1(parama);
-    ad.i("MicroMsg.ProgressHandlerAnimator", "setAnimationCallback: %s", new Object[] { local1 });
-    localc.vWh = local1;
-    parama = parama.vUw;
-    ad.i("MicroMsg.ProgressHandlerAnimator", "Start");
+    ae.i("MicroMsg.ProgressHandlerAnimator", "setAnimationCallback: %s", new Object[] { local1 });
+    localc.wil = local1;
+    parama = parama.wgA;
+    ae.i("MicroMsg.ProgressHandlerAnimator", "Start");
     parama.isStart = true;
-    parama.gkt = bt.HI();
-    parama.igC.az(20L, 20L);
+    parama.gmN = bu.HQ();
+    parama.ijv.ay(20L, 20L);
     AppMethodBeat.o(94546);
   }
   
-  public final void dnP()
+  public final void dqN()
   {
     AppMethodBeat.i(94545);
-    ad.i("MicroMsg.MMSightRecordButton", "hideProgressBar");
+    ae.i("MicroMsg.MMSightRecordButton", "hideProgressBar");
     this.progressBar.setVisibility(8);
     AppMethodBeat.o(94545);
   }
@@ -407,24 +407,50 @@ public class MMSightRecordButton
   public final void hideProgress()
   {
     AppMethodBeat.i(94547);
-    if (this.vUA)
+    if (this.wgE)
     {
-      MMSightCircularProgressBar localMMSightCircularProgressBar = this.vUJ;
-      if (localMMSightCircularProgressBar.vUw != null)
+      MMSightCircularProgressBar localMMSightCircularProgressBar = this.wgN;
+      if (localMMSightCircularProgressBar.wgA != null)
       {
-        localMMSightCircularProgressBar.vUw.cancel();
-        localMMSightCircularProgressBar.vUw = null;
+        localMMSightCircularProgressBar.wgA.cancel();
+        localMMSightCircularProgressBar.wgA = null;
       }
-      if ((localMMSightCircularProgressBar.vUt > 0.0F) && (((localMMSightCircularProgressBar.vUy.size() > 0) && (localMMSightCircularProgressBar.vUt > ((Float)localMMSightCircularProgressBar.vUy.get(localMMSightCircularProgressBar.vUy.size() - 1)).floatValue())) || (localMMSightCircularProgressBar.vUy.size() == 0))) {
-        localMMSightCircularProgressBar.vUy.add(Float.valueOf(localMMSightCircularProgressBar.vUt));
+      if ((localMMSightCircularProgressBar.wgx > 0.0F) && (((localMMSightCircularProgressBar.wgC.size() > 0) && (localMMSightCircularProgressBar.wgx > ((Float)localMMSightCircularProgressBar.wgC.get(localMMSightCircularProgressBar.wgC.size() - 1)).floatValue())) || (localMMSightCircularProgressBar.wgC.size() == 0))) {
+        localMMSightCircularProgressBar.wgC.add(Float.valueOf(localMMSightCircularProgressBar.wgx));
       }
       localMMSightCircularProgressBar.invalidate();
       AppMethodBeat.o(94547);
       return;
     }
-    this.vUJ.reset();
-    this.vUJ.setVisibility(8);
+    this.wgN.reset();
+    this.wgN.setVisibility(8);
     AppMethodBeat.o(94547);
+  }
+  
+  public final void oC(boolean paramBoolean)
+  {
+    AppMethodBeat.i(189040);
+    this.wgE = paramBoolean;
+    this.wgN.setEnableSubProgress(paramBoolean);
+    this.wgN.setCircularColor(Color.parseColor("#00000000"));
+    if (paramBoolean)
+    {
+      this.wgN.setVisibility(4);
+      AppMethodBeat.o(189040);
+      return;
+    }
+    this.wgN.reset();
+    this.wgN.setVisibility(0);
+    AppMethodBeat.o(189040);
+  }
+  
+  public final void oD(boolean paramBoolean)
+  {
+    AppMethodBeat.i(189042);
+    MMSightCircularProgressBar localMMSightCircularProgressBar = this.wgN;
+    localMMSightCircularProgressBar.wgG = paramBoolean;
+    localMMSightCircularProgressBar.postInvalidate();
+    AppMethodBeat.o(189042);
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
@@ -432,7 +458,7 @@ public class MMSightRecordButton
     AppMethodBeat.i(94551);
     if (!this.enable)
     {
-      ad.i("MicroMsg.MMSightRecordButton", "onTouchEvent, not enable, ignore");
+      ae.i("MicroMsg.MMSightRecordButton", "onTouchEvent, not enable, ignore");
       AppMethodBeat.o(94551);
       return false;
     }
@@ -443,32 +469,32 @@ public class MMSightRecordButton
     {
       AppMethodBeat.o(94551);
       return true;
-      if ((this.htg) && (!this.vUA))
+      if ((this.hvU) && (!this.wgE))
       {
         AppMethodBeat.o(94551);
         return false;
       }
-      this.smb = true;
-      this.vUG = System.currentTimeMillis();
-      this.vUK = false;
-      this.vUL = false;
+      this.svS = true;
+      this.wgK = System.currentTimeMillis();
+      this.wgO = false;
+      this.wgP = false;
       this.aTM = paramMotionEvent.getRawY();
-      if ((this.vUX != null) && (!this.htg)) {
-        this.vUX.ckr();
+      if ((this.whb != null) && (!this.hvU)) {
+        this.whb.clH();
       }
-      this.gIf.removeCallbacksAndMessages(null);
-      if (!this.htg)
+      this.gKO.removeCallbacksAndMessages(null);
+      if (!this.hvU)
       {
-        this.gIf.postDelayed(this.gmO, 550L);
-        this.gIf.postDelayed(this.vVe, 250L);
+        this.gKO.postDelayed(this.gpk, 550L);
+        this.gKO.postDelayed(this.whi, 250L);
       }
-      this.vVd = true;
-      this.vVc = true;
+      this.whh = true;
+      this.whg = true;
       continue;
       float f1 = paramMotionEvent.getRawY();
       int[] arrayOfInt = new int[2];
       getLocationInWindow(arrayOfInt);
-      if ((f1 < arrayOfInt[1]) && ((this.vUL) || (!this.vUA))) {
+      if ((f1 < arrayOfInt[1]) && ((this.wgP) || (!this.wgE))) {
         if (this.aTM <= 0.0F)
         {
           this.aTM = paramMotionEvent.getRawY();
@@ -480,45 +506,45 @@ public class MMSightRecordButton
           if ((f1 < this.aTM) && (f2 >= 10.0F))
           {
             i = (int)(f2 / 10.0F);
-            ad.d("MicroMsg.MMSightRecordButton", "onScroll Up, factor: %s, isFirstScrollUp: %s", new Object[] { Integer.valueOf(i), Boolean.valueOf(this.vVc) });
+            ae.d("MicroMsg.MMSightRecordButton", "onScroll Up, factor: %s, isFirstScrollUp: %s", new Object[] { Integer.valueOf(i), Boolean.valueOf(this.whg) });
             i = Math.min(i, 3);
-            if (this.vUY != null)
+            if (this.whc != null)
             {
-              paramMotionEvent = this.vUY;
-              if (this.vVc) {
+              paramMotionEvent = this.whc;
+              if (this.whg) {
                 i = 1;
               }
-              paramMotionEvent.Cw(i);
+              paramMotionEvent.CI(i);
             }
             this.aTM = f1;
-            this.vVc = false;
+            this.whg = false;
           }
           else if ((f1 > this.aTM) && (f2 >= 10.0F))
           {
             i = (int)(f2 / 10.0F);
-            ad.d("MicroMsg.MMSightRecordButton", "onScroll Down, factor: %s, isFirstScrollDown: %s", new Object[] { Integer.valueOf(i), Boolean.valueOf(this.vVd) });
+            ae.d("MicroMsg.MMSightRecordButton", "onScroll Down, factor: %s, isFirstScrollDown: %s", new Object[] { Integer.valueOf(i), Boolean.valueOf(this.whh) });
             i = Math.min(i, 3);
-            if (this.vUY != null)
+            if (this.whc != null)
             {
-              paramMotionEvent = this.vUY;
-              if (this.vVd) {
+              paramMotionEvent = this.whc;
+              if (this.whh) {
                 i = 1;
               }
-              paramMotionEvent.Cx(i);
+              paramMotionEvent.CJ(i);
             }
-            this.vVd = false;
+            this.whh = false;
             this.aTM = f1;
             continue;
-            this.smb = false;
-            this.gIf.removeCallbacks(this.vVe, Integer.valueOf(Pk));
-            this.gIf.removeCallbacks(this.gmO);
-            if ((this.vUM != null) && (this.vUN != null))
+            this.svS = false;
+            this.gKO.removeCallbacks(this.whi, Integer.valueOf(Pk));
+            this.gKO.removeCallbacks(this.gpk);
+            if ((this.wgQ != null) && (this.wgR != null))
             {
-              this.vUM.cancel();
-              this.vUN.cancel();
+              this.wgQ.cancel();
+              this.wgR.cancel();
             }
-            final long l = System.currentTimeMillis() - this.vUG;
-            ad.i("MicroMsg.MMSightRecordButton", "onAction Up/Cancel, isDispatchLongPress: %s, isDispatchSimpleTap: %s, pressDownTime: %s, upTimeDiff: %s", new Object[] { Boolean.valueOf(this.vUL), Boolean.valueOf(this.vUK), Long.valueOf(this.vUG), Long.valueOf(l) });
+            final long l = System.currentTimeMillis() - this.wgK;
+            ae.i("MicroMsg.MMSightRecordButton", "onAction Up/Cancel, isDispatchLongPress: %s, isDispatchSimpleTap: %s, pressDownTime: %s, upTimeDiff: %s", new Object[] { Boolean.valueOf(this.wgP), Boolean.valueOf(this.wgO), Long.valueOf(this.wgK), Long.valueOf(l) });
             hideProgress();
             e(new AnimatorListenerAdapter()
             {
@@ -527,39 +553,39 @@ public class MMSightRecordButton
                 AppMethodBeat.i(94537);
                 if ((MMSightRecordButton.h(MMSightRecordButton.this) > 0L) && (l <= 500L) && (!MMSightRecordButton.c(MMSightRecordButton.this)))
                 {
-                  ad.i("MicroMsg.MMSightRecordButton", "on Simple Tap, isDispatchSimpleTap: %s, isDispatchLongPress: %s", new Object[] { Boolean.valueOf(MMSightRecordButton.b(MMSightRecordButton.this)), Boolean.valueOf(MMSightRecordButton.c(MMSightRecordButton.this)) });
+                  ae.i("MicroMsg.MMSightRecordButton", "on Simple Tap, isDispatchSimpleTap: %s, isDispatchLongPress: %s", new Object[] { Boolean.valueOf(MMSightRecordButton.b(MMSightRecordButton.this)), Boolean.valueOf(MMSightRecordButton.c(MMSightRecordButton.this)) });
                   MMSightRecordButton.i(MMSightRecordButton.this);
                   if (!MMSightRecordButton.c(MMSightRecordButton.this))
                   {
                     MMSightRecordButton.j(MMSightRecordButton.this);
                     if (MMSightRecordButton.k(MMSightRecordButton.this) != null)
                     {
-                      MMSightRecordButton.k(MMSightRecordButton.this).cks();
+                      MMSightRecordButton.k(MMSightRecordButton.this).clI();
                       AppMethodBeat.o(94537);
                     }
                   }
                 }
                 else if (MMSightRecordButton.c(MMSightRecordButton.this))
                 {
-                  ad.i("MicroMsg.MMSightRecordButton", "on Long Press finish ，isRecordIng:%b", new Object[] { Boolean.valueOf(MMSightRecordButton.l(MMSightRecordButton.this)) });
+                  ae.i("MicroMsg.MMSightRecordButton", "on Long Press finish ，isRecordIng:%b", new Object[] { Boolean.valueOf(MMSightRecordButton.l(MMSightRecordButton.this)) });
                   if (MMSightRecordButton.l(MMSightRecordButton.this))
                   {
                     MMSightRecordButton.a(MMSightRecordButton.this);
                     if (MMSightRecordButton.e(MMSightRecordButton.this) != null)
                     {
-                      MMSightRecordButton.e(MMSightRecordButton.this).ckq();
+                      MMSightRecordButton.e(MMSightRecordButton.this).clG();
                       AppMethodBeat.o(94537);
                     }
                   }
                 }
                 else
                 {
-                  ad.i("MicroMsg.MMSightRecordButton", "error action up");
+                  ae.i("MicroMsg.MMSightRecordButton", "error action up");
                   if (MMSightRecordButton.l(MMSightRecordButton.this)) {
                     MMSightRecordButton.j(MMSightRecordButton.this);
                   }
                   if (MMSightRecordButton.m(MMSightRecordButton.this) != null) {
-                    MMSightRecordButton.m(MMSightRecordButton.this).dnR();
+                    MMSightRecordButton.m(MMSightRecordButton.this).dqP();
                   }
                 }
                 AppMethodBeat.o(94537);
@@ -571,58 +597,32 @@ public class MMSightRecordButton
     }
   }
   
-  public final void ox(boolean paramBoolean)
-  {
-    AppMethodBeat.i(214504);
-    this.vUA = paramBoolean;
-    this.vUJ.setEnableSubProgress(paramBoolean);
-    this.vUJ.setCircularColor(Color.parseColor("#00000000"));
-    if (paramBoolean)
-    {
-      this.vUJ.setVisibility(4);
-      AppMethodBeat.o(214504);
-      return;
-    }
-    this.vUJ.reset();
-    this.vUJ.setVisibility(0);
-    AppMethodBeat.o(214504);
-  }
-  
-  public final void oy(boolean paramBoolean)
-  {
-    AppMethodBeat.i(214506);
-    MMSightCircularProgressBar localMMSightCircularProgressBar = this.vUJ;
-    localMMSightCircularProgressBar.vUC = paramBoolean;
-    localMMSightCircularProgressBar.postInvalidate();
-    AppMethodBeat.o(214506);
-  }
-  
   public final void reset()
   {
     AppMethodBeat.i(94550);
     setClipChildren(false);
     this.enable = true;
-    this.vUH.setScaleX(1.0F);
-    this.vUH.setScaleY(1.0F);
-    this.vUI.setScaleX(1.0F);
-    this.vUI.setScaleY(1.0F);
+    this.wgL.setScaleX(1.0F);
+    this.wgL.setScaleY(1.0F);
+    this.wgM.setScaleX(1.0F);
+    this.wgM.setScaleY(1.0F);
     this.progressBar.setVisibility(8);
     hideProgress();
-    this.vUJ.reset();
+    this.wgN.reset();
     AppMethodBeat.o(94550);
   }
   
   public void setErrorPressCallback(a parama)
   {
-    this.vUZ = parama;
+    this.whd = parama;
   }
   
   public void setHighLightOuter(int paramInt)
   {
     AppMethodBeat.i(94541);
-    this.vUT = paramInt;
-    if ((this.vVb instanceof GradientDrawable)) {
-      ((GradientDrawable)this.vVb).setColor(paramInt);
+    this.wgX = paramInt;
+    if ((this.whf instanceof GradientDrawable)) {
+      ((GradientDrawable)this.whf).setColor(paramInt);
     }
     AppMethodBeat.o(94541);
   }
@@ -630,31 +630,31 @@ public class MMSightRecordButton
   public void setInnerColor(int paramInt)
   {
     AppMethodBeat.i(94542);
-    if ((this.vVa instanceof GradientDrawable)) {
-      ((GradientDrawable)this.vVa).setColor(paramInt);
+    if ((this.whe instanceof GradientDrawable)) {
+      ((GradientDrawable)this.whe).setColor(paramInt);
     }
     AppMethodBeat.o(94542);
   }
   
   public void setLongPressCallback(b paramb)
   {
-    this.vUX = paramb;
+    this.whb = paramb;
   }
   
   public void setLongPressScrollCallback(c paramc)
   {
-    this.vUY = paramc;
+    this.whc = paramc;
   }
   
   public void setSimpleTapCallback(d paramd)
   {
-    this.vUW = paramd;
+    this.wha = paramd;
   }
   
   public void setTouchEnable(boolean paramBoolean)
   {
     AppMethodBeat.i(94543);
-    ad.i("MicroMsg.MMSightRecordButton", "setTouchEnable: %s", new Object[] { Boolean.valueOf(paramBoolean) });
+    ae.i("MicroMsg.MMSightRecordButton", "setTouchEnable: %s", new Object[] { Boolean.valueOf(paramBoolean) });
     this.enable = paramBoolean;
     AppMethodBeat.o(94543);
   }
@@ -662,7 +662,7 @@ public class MMSightRecordButton
   public void setVisibility(final int paramInt)
   {
     AppMethodBeat.i(94549);
-    ad.i("MicroMsg.MMSightRecordButton", "setVisibility, isAnimating: %s", new Object[] { Boolean.valueOf(this.isAnimating) });
+    ae.i("MicroMsg.MMSightRecordButton", "setVisibility, isAnimating: %s", new Object[] { Boolean.valueOf(this.isAnimating) });
     if (this.isAnimating)
     {
       postDelayed(new Runnable()
@@ -683,48 +683,48 @@ public class MMSightRecordButton
   
   public final void showLoading()
   {
-    AppMethodBeat.i(214503);
-    ad.i("MicroMsg.MMSightRecordButton", "showLoading");
+    AppMethodBeat.i(189039);
+    ae.i("MicroMsg.MMSightRecordButton", "showLoading");
     this.progressBar.setVisibility(0);
-    AppMethodBeat.o(214503);
+    AppMethodBeat.o(189039);
   }
   
   public final void stopRecord()
   {
-    AppMethodBeat.i(214508);
-    if ((this.htg) && (!this.smb))
+    AppMethodBeat.i(189044);
+    if ((this.hvU) && (!this.svS))
     {
       MotionEvent localMotionEvent = MotionEvent.obtain(0L, 0L, 0, 0.0F, 0.0F, 0);
       localMotionEvent.setAction(3);
       onTouchEvent(localMotionEvent);
     }
-    AppMethodBeat.o(214508);
+    AppMethodBeat.o(189044);
   }
   
   public static abstract interface a
   {
-    public abstract void dnR();
+    public abstract void dqP();
   }
   
   public static abstract interface b
   {
-    public abstract void ckq();
+    public abstract void clG();
     
-    public abstract void ckr();
+    public abstract void clH();
     
     public abstract void jB();
   }
   
   public static abstract interface c
   {
-    public abstract void Cw(int paramInt);
+    public abstract void CI(int paramInt);
     
-    public abstract void Cx(int paramInt);
+    public abstract void CJ(int paramInt);
   }
   
   public static abstract interface d
   {
-    public abstract void cks();
+    public abstract void clI();
   }
 }
 

@@ -2,8 +2,8 @@ package com.tencent.mm.plugin.wepkg.utils;
 
 public final class b
 {
-  public static boolean EFR = false;
-  public static boolean EFS = false;
+  public static boolean EYn = false;
+  public static boolean EYo = false;
 }
 
 

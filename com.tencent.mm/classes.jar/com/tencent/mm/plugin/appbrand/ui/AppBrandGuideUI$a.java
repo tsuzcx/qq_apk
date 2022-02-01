@@ -11,38 +11,38 @@ import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.appbrand.ui.banner.f;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public final class AppBrandGuideUI$a
   implements Application.ActivityLifecycleCallbacks, f
 {
-  public boolean mBB = false;
-  String mBC;
+  public boolean mGG = false;
+  String mGH;
   
-  public static Application bzf()
+  public static Application bAa()
   {
     AppMethodBeat.i(48614);
-    Application localApplication = (Application)aj.getContext().getApplicationContext();
+    Application localApplication = (Application)ak.getContext().getApplicationContext();
     AppMethodBeat.o(48614);
     return localApplication;
   }
   
-  public final void UL(String paramString)
+  public final void Vw(String paramString)
   {
-    this.mBB = true;
-    this.mBC = paramString;
+    this.mGG = true;
+    this.mGH = paramString;
   }
   
-  public final void bB(String paramString, int paramInt)
+  public final void bE(String paramString, int paramInt)
   {
-    this.mBB = false;
+    this.mGG = false;
   }
   
   public final void onActivityCreated(Activity paramActivity, Bundle paramBundle)
   {
     if ((paramActivity instanceof AppBrandGuideUI)) {
-      this.mBB = false;
+      this.mGG = false;
     }
   }
   
@@ -54,13 +54,13 @@ public final class AppBrandGuideUI$a
   {
     AppMethodBeat.i(48615);
     if (((paramActivity instanceof AppBrandGuideUI)) || ((paramActivity instanceof AppBrandLauncherUI))) {
-      this.mBB = false;
+      this.mGG = false;
     }
     Object localObject;
     int i;
-    if ((g.ajx()) && (this.mBB))
+    if ((g.ajM()) && (this.mGG))
     {
-      localObject = bt.aJ(paramActivity, paramActivity.getTaskId());
+      localObject = bu.aJ(paramActivity, paramActivity.getTaskId());
       if ((localObject != null) && (((ActivityManager.RunningTaskInfo)localObject).baseActivity != null)) {
         break label145;
       }
@@ -70,11 +70,11 @@ public final class AppBrandGuideUI$a
     {
       if (i != 0)
       {
-        this.mBB = false;
+        this.mGG = false;
         localObject = new Intent(paramActivity, AppBrandGuideUI.class);
         localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
-        com.tencent.mm.hellhoundlib.a.a.a(paramActivity, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahp(), "com/tencent/mm/plugin/appbrand/ui/AppBrandGuideUI$AppBrandGuideController", "onActivityResumed", "(Landroid/app/Activity;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        paramActivity.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mq(0));
+        com.tencent.mm.hellhoundlib.a.a.a(paramActivity, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahE(), "com/tencent/mm/plugin/appbrand/ui/AppBrandGuideUI$AppBrandGuideController", "onActivityResumed", "(Landroid/app/Activity;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramActivity.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mt(0));
         com.tencent.mm.hellhoundlib.a.a.a(paramActivity, "com/tencent/mm/plugin/appbrand/ui/AppBrandGuideUI$AppBrandGuideController", "onActivityResumed", "(Landroid/app/Activity;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       }
       AppMethodBeat.o(48615);

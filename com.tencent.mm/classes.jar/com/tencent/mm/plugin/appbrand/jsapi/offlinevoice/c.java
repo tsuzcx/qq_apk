@@ -4,13 +4,13 @@ import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ipcinvoker.d;
 import com.tencent.mm.ipcinvoker.h;
-import com.tencent.mm.plugin.appbrand.appstorage.p;
+import com.tencent.mm.plugin.appbrand.appstorage.q;
 import com.tencent.mm.plugin.appbrand.jsapi.a;
 import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.vfs.e;
-import com.tencent.mm.vfs.q;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.vfs.k;
+import com.tencent.mm.vfs.w;
 import org.json.JSONObject;
 
 public final class c
@@ -22,16 +22,16 @@ public final class c
   public final void a(final com.tencent.mm.plugin.appbrand.jsapi.c paramc, JSONObject paramJSONObject, final int paramInt)
   {
     AppMethodBeat.i(46660);
-    ad.i("MicroMsg.OfflineVoice.JsApiSetCurrentPaySpeech", "invoke JsApiSetCurrentPaySpeech!");
+    ae.i("MicroMsg.OfflineVoice.JsApiSetCurrentPaySpeech", "invoke JsApiSetCurrentPaySpeech!");
     if (paramc == null)
     {
-      ad.e("MicroMsg.OfflineVoice.JsApiSetCurrentPaySpeech", "fail:component is null");
+      ae.e("MicroMsg.OfflineVoice.JsApiSetCurrentPaySpeech", "fail:component is null");
       AppMethodBeat.o(46660);
       return;
     }
     if (paramc.getContext() == null)
     {
-      ad.e("MicroMsg.OfflineVoice.JsApiSetCurrentPaySpeech", "fail:context is null");
+      ae.e("MicroMsg.OfflineVoice.JsApiSetCurrentPaySpeech", "fail:context is null");
       paramc.h(paramInt, e("fail：service.getContext() is null ", null));
       AppMethodBeat.o(46660);
       return;
@@ -40,13 +40,13 @@ public final class c
     String str2 = paramJSONObject.optString("tempFilePath");
     String str3 = paramJSONObject.optString("md5Sum");
     boolean bool = paramJSONObject.optBoolean("isOnlyDownload");
-    ad.d("MicroMsg.OfflineVoice.JsApiSetCurrentPaySpeech", "tempFilePath:%s dialectPackId:%s md5Sum:%s isOnlyDownload:%s", new Object[] { str2, str1, str3, Boolean.valueOf(bool) });
+    ae.d("MicroMsg.OfflineVoice.JsApiSetCurrentPaySpeech", "tempFilePath:%s dialectPackId:%s md5Sum:%s isOnlyDownload:%s", new Object[] { str2, str1, str3, Boolean.valueOf(bool) });
     paramJSONObject = "";
-    if (!bt.isNullOrNil(str2))
+    if (!bu.isNullOrNil(str2))
     {
-      paramJSONObject = paramc.Fg().Mj(str2);
+      paramJSONObject = paramc.Fl().MP(str2);
       if ((paramJSONObject != null) && (paramJSONObject.exists())) {
-        paramJSONObject = q.B(paramJSONObject.fOK());
+        paramJSONObject = w.B(paramJSONObject.fTh());
       }
     }
     else
@@ -55,7 +55,7 @@ public final class c
       AppMethodBeat.o(46660);
       return;
     }
-    ad.i("MicroMsg.OfflineVoice.JsApiSetCurrentPaySpeech", "fail:tempFile no exist");
+    ae.i("MicroMsg.OfflineVoice.JsApiSetCurrentPaySpeech", "fail:tempFile no exist");
     paramc.h(paramInt, e("fail:tempFile no exist", null));
     AppMethodBeat.o(46660);
   }

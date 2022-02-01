@@ -2,43 +2,43 @@ package com.tencent.mm.plugin.recordvideo.ui.editor.item;
 
 import android.graphics.Matrix;
 import com.tencent.mm.plugin.recordvideo.ui.editor.item.b.c;
-import com.tencent.mm.protocal.protobuf.afx;
-import com.tencent.mm.protocal.protobuf.dwb;
+import com.tencent.mm.protocal.protobuf.agg;
+import com.tencent.mm.protocal.protobuf.dww;
 import d.g.b.p;
 import d.l;
 import java.util.Iterator;
 import java.util.LinkedList;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/BaseEditorData;", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/IEditorData;", "dataType", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/EditorDataType;", "(Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/EditorDataType;)V", "getDataType", "()Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/EditorDataType;", "setDataType", "enableTimeEdit", "", "getEnableTimeEdit", "()Z", "setEnableTimeEdit", "(Z)V", "<set-?>", "Landroid/graphics/Matrix;", "matrix", "getMatrix", "()Landroid/graphics/Matrix;", "setMatrix", "(Landroid/graphics/Matrix;)V", "modTimeRange", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/property/TimeRange;", "getModTimeRange", "()Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/property/TimeRange;", "setModTimeRange", "(Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/property/TimeRange;)V", "objectId", "", "getObjectId", "()Ljava/lang/String;", "setObjectId", "(Ljava/lang/String;)V", "timeRange", "getTimeRange", "getTimeRangeProto", "Lcom/tencent/mm/protocal/protobuf/EditTimeRange;", "matrixToProto", "Lcom/tencent/mm/protocal/protobuf/ViewMatrix;", "protoToMatrix", "", "viewMatrix", "setTimeRange", "", "range", "setTimeRangeProto", "showAtObjectId", "objID", "showAtTime", "currentMs", "", "plugin-recordvideo_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/BaseEditorData;", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/IEditorData;", "dataType", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/EditorDataType;", "(Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/EditorDataType;)V", "getDataType", "()Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/EditorDataType;", "setDataType", "enableTimeEdit", "", "getEnableTimeEdit", "()Z", "setEnableTimeEdit", "(Z)V", "<set-?>", "Landroid/graphics/Matrix;", "matrix", "getMatrix", "()Landroid/graphics/Matrix;", "setMatrix", "(Landroid/graphics/Matrix;)V", "modTimeRange", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/property/TimeRange;", "getModTimeRange", "()Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/property/TimeRange;", "setModTimeRange", "(Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/property/TimeRange;)V", "objectId", "", "getObjectId", "()Ljava/lang/String;", "setObjectId", "(Ljava/lang/String;)V", "timeRange", "getTimeRange", "getTimeRangeProto", "Lcom/tencent/mm/protocal/protobuf/EditTimeRange;", "matrixToProto", "Lcom/tencent/mm/protocal/protobuf/ViewMatrix;", "protoToMatrix", "", "viewMatrix", "setTimeRange", "", "range", "setTimeRangeProto", "showAtObjectId", "objID", "showAtTime", "currentMs", "", "plugin-recordvideo_release"})
 public abstract class a
   implements h
 {
   public Matrix gR;
   public String objectId;
-  public final com.tencent.mm.plugin.recordvideo.ui.editor.item.b.d xNA;
-  public boolean xNB;
-  public d xNC;
-  public com.tencent.mm.plugin.recordvideo.ui.editor.item.b.d xNz;
+  public com.tencent.mm.plugin.recordvideo.ui.editor.item.b.d yds;
+  public final com.tencent.mm.plugin.recordvideo.ui.editor.item.b.d ydt;
+  public boolean ydu;
+  public d ydv;
   
   public a(d paramd)
   {
-    this.xNC = paramd;
-    this.xNA = new com.tencent.mm.plugin.recordvideo.ui.editor.item.b.d(2147483647L, false, 2);
-    this.xNB = true;
+    this.ydv = paramd;
+    this.ydt = new com.tencent.mm.plugin.recordvideo.ui.editor.item.b.d(2147483647L, false, 2);
+    this.ydu = true;
     this.gR = new Matrix();
   }
   
-  protected static float[] a(dwb paramdwb)
+  protected static float[] a(dww paramdww)
   {
-    p.h(paramdwb, "viewMatrix");
+    p.h(paramdww, "viewMatrix");
     float[] arrayOfFloat = new float[9];
     int i = 0;
-    paramdwb = paramdwb.GqN;
-    p.g(paramdwb, "viewMatrix.value");
-    paramdwb = ((Iterable)paramdwb).iterator();
-    while (paramdwb.hasNext())
+    paramdww = paramdww.GKl;
+    p.g(paramdww, "viewMatrix.value");
+    paramdww = ((Iterable)paramdww).iterator();
+    while (paramdww.hasNext())
     {
-      Float localFloat = (Float)paramdwb.next();
+      Float localFloat = (Float)paramdww.next();
       p.g(localFloat, "data");
       arrayOfFloat[i] = localFloat.floatValue();
       i += 1;
@@ -46,30 +46,30 @@ public abstract class a
     return arrayOfFloat;
   }
   
-  protected static dwb f(Matrix paramMatrix)
+  protected static dww f(Matrix paramMatrix)
   {
     p.h(paramMatrix, "matrix");
     float[] arrayOfFloat = new float[9];
-    dwb localdwb = new dwb();
+    dww localdww = new dww();
     paramMatrix.getValues(arrayOfFloat);
     int i = 0;
     while (i < 9)
     {
       float f = arrayOfFloat[i];
-      localdwb.GqN.add(Float.valueOf(f));
+      localdww.GKl.add(Float.valueOf(f));
       i += 1;
     }
-    return localdwb;
+    return localdww;
   }
   
-  protected final void a(afx paramafx)
+  protected final void a(agg paramagg)
   {
-    if (paramafx != null) {
-      this.xNA.af(paramafx.start, paramafx.bpc);
+    if (paramagg != null) {
+      this.ydt.ae(paramagg.start, paramagg.bpc);
     }
   }
   
-  public final boolean avO(String paramString)
+  public final boolean axd(String paramString)
   {
     p.h(paramString, "objID");
     return p.i(paramString, this.objectId);
@@ -78,30 +78,25 @@ public abstract class a
   public final void b(d paramd)
   {
     p.h(paramd, "<set-?>");
-    this.xNC = paramd;
+    this.ydv = paramd;
   }
   
-  public final com.tencent.mm.plugin.recordvideo.ui.editor.item.b.d dHQ()
+  public final com.tencent.mm.plugin.recordvideo.ui.editor.item.b.d dLh()
   {
-    return this.xNA;
+    return this.ydt;
   }
   
-  protected final afx dHR()
+  protected final agg dLi()
   {
-    afx localafx = new afx();
-    localafx.start = this.xNA.xPF.getTime();
-    localafx.bpc = this.xNA.xPG.getTime();
-    return localafx;
+    agg localagg = new agg();
+    localagg.start = this.ydt.yfy.getTime();
+    localagg.bpc = this.ydt.yfz.getTime();
+    return localagg;
   }
   
-  public final void qb(boolean paramBoolean)
+  public final boolean zi(long paramLong)
   {
-    this.xNB = paramBoolean;
-  }
-  
-  public final boolean yJ(long paramLong)
-  {
-    return (paramLong >= this.xNA.xPF.getTime()) && (paramLong <= this.xNA.xPG.getTime());
+    return (paramLong >= this.ydt.yfy.getTime()) && (paramLong <= this.ydt.yfz.getTime());
   }
 }
 

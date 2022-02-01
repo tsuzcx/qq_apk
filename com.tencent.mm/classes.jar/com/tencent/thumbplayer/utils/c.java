@@ -10,16 +10,16 @@ public final class c<K, V>
   
   public c()
   {
-    AppMethodBeat.i(192155);
+    AppMethodBeat.i(194833);
     this.map = new HashMap();
-    AppMethodBeat.o(192155);
+    AppMethodBeat.o(194833);
   }
   
-  public final c<K, V> Q(K paramK, V paramV)
+  public final c<K, V> P(K paramK, V paramV)
   {
-    AppMethodBeat.i(192156);
+    AppMethodBeat.i(194834);
     this.map.put(paramK, paramV);
-    AppMethodBeat.o(192156);
+    AppMethodBeat.o(194834);
     return this;
   }
 }

@@ -76,7 +76,7 @@ public class TPSystemInfo
   
   private static String _getDeviceMacAddr(Context paramContext)
   {
-    AppMethodBeat.i(220491);
+    AppMethodBeat.i(197430);
     String str = "";
     if (hasMarshmallow()) {
       paramContext = getWlanName();
@@ -117,7 +117,7 @@ public class TPSystemInfo
         paramContext = str;
         continue;
       }
-      AppMethodBeat.o(220491);
+      AppMethodBeat.o(197430);
       return paramContext;
       paramContext = getLowerMarshmallowDeviceMacAddr(paramContext);
       continue;
@@ -270,15 +270,15 @@ public class TPSystemInfo
   private static boolean checkPermission(Context paramContext, String paramString)
   {
     boolean bool = true;
-    AppMethodBeat.i(220486);
+    AppMethodBeat.i(197425);
     if (!hasMarshmallow())
     {
-      AppMethodBeat.o(220486);
+      AppMethodBeat.o(197425);
       return true;
     }
     if ((paramContext == null) || (TextUtils.isEmpty(paramString)))
     {
-      AppMethodBeat.o(220486);
+      AppMethodBeat.o(197425);
       return false;
     }
     if ("android.permission.WRITE_SETTINGS".equals(paramString)) {
@@ -286,7 +286,7 @@ public class TPSystemInfo
     }
     for (;;)
     {
-      AppMethodBeat.o(220486);
+      AppMethodBeat.o(197425);
       return bool;
       try
       {
@@ -329,12 +329,12 @@ public class TPSystemInfo
   
   public static int getCpuArchitecture()
   {
-    AppMethodBeat.i(220485);
+    AppMethodBeat.i(197424);
     int i;
     if (-1 != cpuArch)
     {
       i = cpuArch;
-      AppMethodBeat.o(220485);
+      AppMethodBeat.o(197424);
       return i;
     }
     if ((Build.CPU_ABI != null) && ((Build.CPU_ABI.contains("x86")) || (Build.CPU_ABI.contains("X86")))) {
@@ -343,7 +343,7 @@ public class TPSystemInfo
     for (;;)
     {
       i = cpuArch;
-      AppMethodBeat.o(220485);
+      AppMethodBeat.o(197424);
       return i;
       if ((Build.CPU_ABI != null) && ((Build.CPU_ABI.contains("mips")) || (Build.CPU_ABI.contains("Mips"))))
       {
@@ -358,31 +358,31 @@ public class TPSystemInfo
         if ((!TextUtils.isEmpty(mCpuHardware)) && (mCpuHardware.contains("MSM8994")))
         {
           cpuArch = 7;
-          AppMethodBeat.o(220485);
+          AppMethodBeat.o(197424);
           return 7;
         }
         if (isARMV5Whitelist())
         {
           cpuArch = 3;
-          AppMethodBeat.o(220485);
+          AppMethodBeat.o(197424);
           return 3;
         }
         if ((!TextUtils.isEmpty(mProcessorName)) && (mProcessorName.contains("ARMv6")))
         {
           cpuArch = 4;
-          AppMethodBeat.o(220485);
+          AppMethodBeat.o(197424);
           return 4;
         }
         if ((!TextUtils.isEmpty(mProcessorName)) && (mProcessorName.contains("AArch64")))
         {
           cpuArch = 7;
-          AppMethodBeat.o(220485);
+          AppMethodBeat.o(197424);
           return 7;
         }
         if ((mCpuArchitecture == 7) && (!TextUtils.isEmpty(mFeature)) && (!mFeature.contains("neon")))
         {
           cpuArch = 4;
-          AppMethodBeat.o(220485);
+          AppMethodBeat.o(197424);
           return 4;
         }
         cpuArch = getCpuArchFromId(mCpuArchitecture);
@@ -392,39 +392,39 @@ public class TPSystemInfo
   
   private static int getCpuHWProducer(String paramString)
   {
-    AppMethodBeat.i(220477);
+    AppMethodBeat.i(197416);
     if (paramString.isEmpty())
     {
-      AppMethodBeat.o(220477);
+      AppMethodBeat.o(197416);
       return -1;
     }
     if ((paramString.contains("Exynos")) || (paramString.contains("SMDK")) || (paramString.contains("S5L8900")) || (paramString.contains("S5PC100")))
     {
-      AppMethodBeat.o(220477);
+      AppMethodBeat.o(197416);
       return 3;
     }
     if ((paramString.contains("Kirin")) || (paramString.contains("K3V")))
     {
-      AppMethodBeat.o(220477);
+      AppMethodBeat.o(197416);
       return 2;
     }
     if ((paramString.contains("MSM")) || (paramString.contains("APQ")) || (paramString.contains("QSD")) || (paramString.contains("SDM")))
     {
-      AppMethodBeat.o(220477);
+      AppMethodBeat.o(197416);
       return 0;
     }
     if (paramString.contains("MT6"))
     {
-      AppMethodBeat.o(220477);
+      AppMethodBeat.o(197416);
       return 1;
     }
-    AppMethodBeat.o(220477);
+    AppMethodBeat.o(197416);
     return -1;
   }
   
   public static int getCpuHWProductIndex(String paramString)
   {
-    AppMethodBeat.i(220479);
+    AppMethodBeat.i(197418);
     if (mCpuHWProducter < 0) {
       mCpuHWProducter = getCpuHWProducer(paramString);
     }
@@ -458,29 +458,29 @@ public class TPSystemInfo
       mCpuHWProductIdx = k;
     }
     int i = mCpuHWProductIdx;
-    AppMethodBeat.o(220479);
+    AppMethodBeat.o(197418);
     return i;
   }
   
   public static int getCpuHWProducter(String paramString)
   {
-    AppMethodBeat.i(220478);
+    AppMethodBeat.i(197417);
     if (mCpuHWProducter < 0) {
       mCpuHWProducter = getCpuHWProducer(paramString);
     }
     int i = mCpuHWProducter;
-    AppMethodBeat.o(220478);
+    AppMethodBeat.o(197417);
     return i;
   }
   
   public static String getCpuHarewareName()
   {
-    AppMethodBeat.i(220483);
+    AppMethodBeat.i(197422);
     if (TextUtils.isEmpty(mCpuHardware)) {
       getCpuInfo();
     }
     String str = mCpuHardware;
-    AppMethodBeat.o(220483);
+    AppMethodBeat.o(197422);
     return str;
   }
   
@@ -1136,16 +1136,16 @@ public class TPSystemInfo
   
   public static String getDeviceID(Context paramContext)
   {
-    AppMethodBeat.i(220489);
+    AppMethodBeat.i(197428);
     if (!TextUtils.isEmpty(deviceID))
     {
       paramContext = deviceID;
-      AppMethodBeat.o(220489);
+      AppMethodBeat.o(197428);
       return paramContext;
     }
     if (paramContext == null)
     {
-      AppMethodBeat.o(220489);
+      AppMethodBeat.o(197428);
       return "";
     }
     try
@@ -1156,7 +1156,7 @@ public class TPSystemInfo
         deviceID = "NONE";
       }
       paramContext = deviceID;
-      AppMethodBeat.o(220489);
+      AppMethodBeat.o(197428);
       return paramContext;
     }
     catch (Throwable paramContext)
@@ -1170,22 +1170,22 @@ public class TPSystemInfo
   
   public static String getDeviceIMEI(Context paramContext)
   {
-    AppMethodBeat.i(220487);
+    AppMethodBeat.i(197426);
     if (!TextUtils.isEmpty(deviceIMEI))
     {
       paramContext = deviceIMEI;
-      AppMethodBeat.o(220487);
+      AppMethodBeat.o(197426);
       return paramContext;
     }
     if (paramContext == null)
     {
-      AppMethodBeat.o(220487);
+      AppMethodBeat.o(197426);
       return "";
     }
     if (!checkPermission(paramContext, "android.permission.READ_PHONE_STATE"))
     {
       deviceIMEI = "NONE";
-      AppMethodBeat.o(220487);
+      AppMethodBeat.o(197426);
       return "NONE";
     }
     try
@@ -1199,36 +1199,36 @@ public class TPSystemInfo
           deviceIMEI = "NONE";
         }
         paramContext = deviceIMEI;
-        AppMethodBeat.o(220487);
+        AppMethodBeat.o(197426);
         return paramContext;
       }
     }
     catch (Throwable paramContext)
     {
       deviceIMEI = "NONE";
-      AppMethodBeat.o(220487);
+      AppMethodBeat.o(197426);
     }
     return "NONE";
   }
   
   public static String getDeviceIMSI(Context paramContext)
   {
-    AppMethodBeat.i(220488);
+    AppMethodBeat.i(197427);
     if (!TextUtils.isEmpty(deviceIMSI))
     {
       paramContext = deviceIMSI;
-      AppMethodBeat.o(220488);
+      AppMethodBeat.o(197427);
       return paramContext;
     }
     if (paramContext == null)
     {
-      AppMethodBeat.o(220488);
+      AppMethodBeat.o(197427);
       return "";
     }
     if (!checkPermission(paramContext, "android.permission.READ_PHONE_STATE"))
     {
       deviceIMSI = "NONE";
-      AppMethodBeat.o(220488);
+      AppMethodBeat.o(197427);
       return "NONE";
     }
     try
@@ -1242,31 +1242,31 @@ public class TPSystemInfo
           deviceIMSI = "";
         }
         paramContext = deviceIMSI;
-        AppMethodBeat.o(220488);
+        AppMethodBeat.o(197427);
         return paramContext;
       }
     }
     catch (Throwable paramContext)
     {
-      AppMethodBeat.o(220488);
+      AppMethodBeat.o(197427);
       return "";
     }
-    AppMethodBeat.o(220488);
+    AppMethodBeat.o(197427);
     return "";
   }
   
   public static String getDeviceMacAddr(Context paramContext)
   {
-    AppMethodBeat.i(220490);
+    AppMethodBeat.i(197429);
     if (!TextUtils.isEmpty(deviceMacAddr))
     {
       paramContext = deviceMacAddr;
-      AppMethodBeat.o(220490);
+      AppMethodBeat.o(197429);
       return paramContext;
     }
     if (paramContext == null)
     {
-      AppMethodBeat.o(220490);
+      AppMethodBeat.o(197429);
       return "";
     }
     paramContext = _getDeviceMacAddr(paramContext);
@@ -1275,7 +1275,7 @@ public class TPSystemInfo
       deviceMacAddr = "NONE";
     }
     paramContext = deviceMacAddr;
-    AppMethodBeat.o(220490);
+    AppMethodBeat.o(197429);
     return paramContext;
   }
   
@@ -1286,27 +1286,27 @@ public class TPSystemInfo
   
   private static String getLowerMarshmallowDeviceMacAddr(Context paramContext)
   {
-    AppMethodBeat.i(220492);
+    AppMethodBeat.i(197431);
     try
     {
       paramContext = (WifiManager)paramContext.getApplicationContext().getSystemService("wifi");
       if (paramContext == null)
       {
-        AppMethodBeat.o(220492);
+        AppMethodBeat.o(197431);
         return "";
       }
       paramContext = paramContext.getConnectionInfo();
       if (paramContext != null)
       {
         paramContext = paramContext.getMacAddress();
-        AppMethodBeat.o(220492);
+        AppMethodBeat.o(197431);
         return paramContext;
       }
     }
     catch (Throwable paramContext)
     {
       TPNativeLog.printLog(4, paramContext.getMessage());
-      AppMethodBeat.o(220492);
+      AppMethodBeat.o(197431);
     }
     return "";
   }
@@ -1553,12 +1553,12 @@ public class TPSystemInfo
   
   public static int getNumCores()
   {
-    AppMethodBeat.i(220482);
+    AppMethodBeat.i(197421);
     int i;
     if (-1 != numOfCores)
     {
       i = numOfCores;
-      AppMethodBeat.o(220482);
+      AppMethodBeat.o(197421);
       return i;
     }
     try
@@ -1567,36 +1567,36 @@ public class TPSystemInfo
       {
         public boolean accept(File paramAnonymousFile)
         {
-          AppMethodBeat.i(220474);
+          AppMethodBeat.i(197413);
           boolean bool = Pattern.matches("cpu[0-9]", paramAnonymousFile.getName());
-          AppMethodBeat.o(220474);
+          AppMethodBeat.o(197413);
           return bool;
         }
       });
       if (arrayOfFile == null)
       {
         numOfCores = 1;
-        AppMethodBeat.o(220482);
+        AppMethodBeat.o(197421);
         return 1;
       }
       numOfCores = arrayOfFile.length;
       TPNativeLog.printLog(2, "core num " + numOfCores);
       i = numOfCores;
-      AppMethodBeat.o(220482);
+      AppMethodBeat.o(197421);
       return i;
     }
     catch (Exception localException)
     {
       TPNativeLog.printLog(4, localException.getMessage());
       numOfCores = 1;
-      AppMethodBeat.o(220482);
+      AppMethodBeat.o(197421);
     }
     return 1;
   }
   
   public static int getOpenGLSupportVersion(Context paramContext)
   {
-    AppMethodBeat.i(220502);
+    AppMethodBeat.i(197441);
     if (mOpenGLVersion == 0) {}
     try
     {
@@ -1604,7 +1604,7 @@ public class TPSystemInfo
       if (paramContext == null)
       {
         i = mOpenGLVersion;
-        AppMethodBeat.o(220502);
+        AppMethodBeat.o(197441);
         return i;
       }
       mOpenGLVersion = paramContext.getDeviceConfigurationInfo().reqGlEsVersion;
@@ -1618,7 +1618,7 @@ public class TPSystemInfo
       }
     }
     i = mOpenGLVersion;
-    AppMethodBeat.o(220502);
+    AppMethodBeat.o(197441);
     return i;
   }
   
@@ -1629,24 +1629,24 @@ public class TPSystemInfo
   
   public static int getScreenHeight(Context paramContext)
   {
-    AppMethodBeat.i(220495);
+    AppMethodBeat.i(197434);
     if (paramContext == null)
     {
-      AppMethodBeat.o(220495);
+      AppMethodBeat.o(197434);
       return 0;
     }
     int i;
     if (mScreenHeight != 0)
     {
       i = mScreenHeight;
-      AppMethodBeat.o(220495);
+      AppMethodBeat.o(197434);
       return i;
     }
     try
     {
       mScreenHeight = paramContext.getResources().getDisplayMetrics().heightPixels;
       i = mScreenHeight;
-      AppMethodBeat.o(220495);
+      AppMethodBeat.o(197434);
       return i;
     }
     catch (Throwable paramContext)
@@ -1660,24 +1660,24 @@ public class TPSystemInfo
   
   public static int getScreenWidth(Context paramContext)
   {
-    AppMethodBeat.i(220494);
+    AppMethodBeat.i(197433);
     if (paramContext == null)
     {
-      AppMethodBeat.o(220494);
+      AppMethodBeat.o(197433);
       return 0;
     }
     int i;
     if (mScreenWidth != 0)
     {
       i = mScreenWidth;
-      AppMethodBeat.o(220494);
+      AppMethodBeat.o(197433);
       return i;
     }
     try
     {
       mScreenWidth = paramContext.getResources().getDisplayMetrics().widthPixels;
       i = mScreenWidth;
-      AppMethodBeat.o(220494);
+      AppMethodBeat.o(197433);
       return i;
     }
     catch (Throwable paramContext)
@@ -1691,10 +1691,10 @@ public class TPSystemInfo
   
   public static int getSystemCpuUsage(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(220499);
+    AppMethodBeat.i(197438);
     if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)))
     {
-      AppMethodBeat.o(220499);
+      AppMethodBeat.o(197438);
       return -1;
     }
     float f2 = -1.0F;
@@ -1741,29 +1741,29 @@ public class TPSystemInfo
       }
     }
     i = (int)f1;
-    AppMethodBeat.o(220499);
+    AppMethodBeat.o(197438);
     return i;
   }
   
   public static long getSystemIdleTime(String[] paramArrayOfString)
   {
-    AppMethodBeat.i(220501);
+    AppMethodBeat.i(197440);
     try
     {
       long l = Long.parseLong(paramArrayOfString[4]);
-      AppMethodBeat.o(220501);
+      AppMethodBeat.o(197440);
       return l;
     }
     catch (Throwable paramArrayOfString)
     {
-      AppMethodBeat.o(220501);
+      AppMethodBeat.o(197440);
     }
     return -1L;
   }
   
   public static long getSystemUptime(String[] paramArrayOfString)
   {
-    AppMethodBeat.i(220500);
+    AppMethodBeat.i(197439);
     long l1 = 0L;
     int i = 1;
     while (i < paramArrayOfString.length)
@@ -1779,17 +1779,17 @@ public class TPSystemInfo
       }
       catch (Throwable paramArrayOfString)
       {
-        AppMethodBeat.o(220500);
+        AppMethodBeat.o(197439);
         return -1L;
       }
     }
-    AppMethodBeat.o(220500);
+    AppMethodBeat.o(197439);
     return l1;
   }
   
   private static String getWlanName()
   {
-    AppMethodBeat.i(220493);
+    AppMethodBeat.i(197432);
     try
     {
       if (getWlanMethod == null) {
@@ -1806,7 +1806,7 @@ public class TPSystemInfo
         String str2 = "wlan0";
       }
     }
-    AppMethodBeat.o(220493);
+    AppMethodBeat.o(197432);
     return str1;
   }
   
@@ -1817,19 +1817,19 @@ public class TPSystemInfo
   
   public static boolean isARMV5Whitelist()
   {
-    AppMethodBeat.i(220484);
+    AppMethodBeat.i(197423);
     if ((getDeviceName().equals("XT882")) || (getDeviceName().equals("ME860")) || (getDeviceName().equals("MB860")) || (getDeviceName().equals("Lenovo P70")) || (getDeviceName().equals("Lenovo A60")) || (getDeviceName().equals("Lenovo A366t")))
     {
-      AppMethodBeat.o(220484);
+      AppMethodBeat.o(197423);
       return true;
     }
-    AppMethodBeat.o(220484);
+    AppMethodBeat.o(197423);
     return false;
   }
   
   private static void parseCpuInfoLine(String paramString)
   {
-    AppMethodBeat.i(220475);
+    AppMethodBeat.i(197414);
     if ((paramString.contains("aarch64")) || (paramString.contains("AArch64"))) {
       mCpuArchitecture = 64;
     }
@@ -1843,7 +1843,7 @@ public class TPSystemInfo
         mProcessorName = paramString;
         mProcessorName = paramString.trim();
       }
-      AppMethodBeat.o(220475);
+      AppMethodBeat.o(197414);
       return;
     }
     if (paramString.startsWith("CPU architecture"))
@@ -1857,14 +1857,14 @@ public class TPSystemInfo
           if ((paramString.length() > 0) && (paramString.length() < 2))
           {
             mCpuArchitecture = (int)Long.parseLong(paramString);
-            AppMethodBeat.o(220475);
+            AppMethodBeat.o(197414);
             return;
           }
           if (paramString.length() > 1) {
             mCpuArchitecture = (int)Long.parseLong(paramString.substring(0, 1));
           }
         }
-        AppMethodBeat.o(220475);
+        AppMethodBeat.o(197414);
       }
     }
     else
@@ -1875,7 +1875,7 @@ public class TPSystemInfo
         if (i > 1) {
           mFeature = paramString.substring(i + 1, paramString.length()).trim();
         }
-        AppMethodBeat.o(220475);
+        AppMethodBeat.o(197414);
         return;
       }
       if (paramString.startsWith("Hardware"))
@@ -1889,7 +1889,7 @@ public class TPSystemInfo
         }
       }
     }
-    AppMethodBeat.o(220475);
+    AppMethodBeat.o(197414);
   }
   
   /* Error */
@@ -1996,7 +1996,7 @@ public class TPSystemInfo
   
   public static boolean supportInDeviceDolbyAudioEffect()
   {
-    AppMethodBeat.i(220503);
+    AppMethodBeat.i(197442);
     try
     {
       arrayOfDescriptor = AudioEffect.queryEffects();
@@ -2033,13 +2033,13 @@ public class TPSystemInfo
       TPNativeLog.printLog(4, localException1.getMessage());
       bool2 = bool1;
     }
-    AppMethodBeat.o(220503);
+    AppMethodBeat.o(197442);
     return bool2;
   }
   
   private static void writeStringToFile(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(220496);
+    AppMethodBeat.i(197435);
     Object localObject = null;
     try
     {
@@ -2049,7 +2049,7 @@ public class TPSystemInfo
         boolean bool = paramString1.createNewFile();
         if (bool)
         {
-          AppMethodBeat.o(220496);
+          AppMethodBeat.o(197435);
           return;
         }
       }
@@ -2065,7 +2065,7 @@ public class TPSystemInfo
         paramString1.write(paramString2);
         paramString1.flush();
         paramString1.close();
-        AppMethodBeat.o(220496);
+        AppMethodBeat.o(197435);
         return;
       }
       catch (Throwable paramString2)
@@ -2079,12 +2079,12 @@ public class TPSystemInfo
     {
       label73:
       paramString1.close();
-      AppMethodBeat.o(220496);
+      AppMethodBeat.o(197435);
       return;
     }
     catch (IOException paramString1) {}
     label89:
-    AppMethodBeat.o(220496);
+    AppMethodBeat.o(197435);
   }
 }
 

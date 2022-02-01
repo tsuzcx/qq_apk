@@ -1,74 +1,49 @@
 package com.tencent.mm.sdk.platformtools;
 
+import android.content.Context;
+import android.hardware.SensorManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.List;
 
-public class bl<T>
+public final class bl
 {
-  public Object[] mPool;
-  public int mPoolSize;
+  private SensorManager FjT;
+  private bl.a IAv;
   
-  public bl(int paramInt)
+  public bl(Context paramContext)
   {
-    AppMethodBeat.i(157835);
-    if (paramInt <= 0)
-    {
-      ad.e("MicroMsg.SimpleObjectPool", "The max pool size must be > 0");
-      AppMethodBeat.o(157835);
-      return;
-    }
-    this.mPool = new Object[paramInt];
-    AppMethodBeat.o(157835);
+    AppMethodBeat.i(157832);
+    this.FjT = ((SensorManager)paramContext.getSystemService("sensor"));
+    AppMethodBeat.o(157832);
   }
   
-  public T acquire()
+  public final boolean aB(Runnable paramRunnable)
   {
-    if (this.mPool == null) {}
-    while (this.mPoolSize <= 0) {
-      return null;
-    }
-    int i = this.mPoolSize - 1;
-    Object localObject = this.mPool[i];
-    this.mPool[i] = null;
-    this.mPoolSize -= 1;
-    return localObject;
-  }
-  
-  public boolean release(T paramT)
-  {
-    AppMethodBeat.i(157836);
-    if (this.mPool == null)
+    AppMethodBeat.i(157833);
+    if (this.FjT == null)
     {
-      AppMethodBeat.o(157836);
+      AppMethodBeat.o(157833);
       return false;
     }
-    if (this.mPool != null)
+    List localList = this.FjT.getSensorList(1);
+    if ((localList != null) && (localList.size() > 0))
     {
-      i = 0;
-      if (i < this.mPoolSize) {
-        if (this.mPool[i] != paramT) {}
-      }
-    }
-    for (int i = 1;; i = 0)
-    {
-      if (i == 0) {
-        break label71;
-      }
-      AppMethodBeat.o(157836);
-      return false;
-      i += 1;
-      break;
-    }
-    label71:
-    if ((this.mPoolSize < this.mPool.length) && (this.mPoolSize >= 0))
-    {
-      this.mPool[this.mPoolSize] = paramT;
-      this.mPoolSize += 1;
-      AppMethodBeat.o(157836);
+      this.IAv = new bl.a(paramRunnable);
+      this.FjT.registerListener(this.IAv, 2, 3);
+      AppMethodBeat.o(157833);
       return true;
     }
-    ad.e("MicroMsg.SimpleObjectPool", "error index %d %d", new Object[] { Integer.valueOf(this.mPoolSize), Integer.valueOf(this.mPool.length) });
-    AppMethodBeat.o(157836);
+    AppMethodBeat.o(157833);
     return false;
+  }
+  
+  public final void fpy()
+  {
+    AppMethodBeat.i(157834);
+    if ((this.FjT != null) && (this.IAv != null)) {
+      this.FjT.unregisterListener(this.IAv, 2);
+    }
+    AppMethodBeat.o(157834);
   }
 }
 

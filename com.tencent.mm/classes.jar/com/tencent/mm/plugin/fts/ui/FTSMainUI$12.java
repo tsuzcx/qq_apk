@@ -3,37 +3,37 @@ package com.tencent.mm.plugin.fts.ui;
 import android.content.Intent;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.api.m;
-import com.tencent.mm.bs.d;
+import com.tencent.mm.br.d;
 import com.tencent.mm.h.a;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.platformtools.z;
-import com.tencent.mm.protocal.protobuf.cya;
-import com.tencent.mm.protocal.protobuf.cyc;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.cyu;
+import com.tencent.mm.protocal.protobuf.cyw;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.base.h;
 import java.util.LinkedList;
 
 final class FTSMainUI$12
-  implements com.tencent.mm.al.f
+  implements com.tencent.mm.ak.f
 {
   FTSMainUI$12(FTSMainUI paramFTSMainUI, String paramString) {}
   
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     AppMethodBeat.i(111975);
-    g.aiU().b(106, this);
+    g.ajj().b(106, this);
     if ((paramInt1 == 4) && (paramInt2 == -4))
     {
-      FTSMainUI.f(this.tAq);
-      h.a(this.tAq, 2131762921, 0, true, null);
+      FTSMainUI.f(this.tLh);
+      h.a(this.tLh, 2131762921, 0, true, null);
       AppMethodBeat.o(111975);
       return;
     }
-    FTSMainUI.f(this.tAq);
+    FTSMainUI.f(this.tLh);
     if ((paramInt1 != 0) || (paramInt2 != 0))
     {
       switch (paramInt2)
@@ -41,54 +41,54 @@ final class FTSMainUI$12
       }
       for (;;)
       {
-        ad.w("MicroMsg.FTS.FTSMainUI", String.format("Search contact failed: %d, %d.", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }));
+        ae.w("MicroMsg.FTS.FTSMainUI", String.format("Search contact failed: %d, %d.", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }));
         AppMethodBeat.o(111975);
         return;
-        Toast.makeText(this.tAq, this.tAq.getString(2131762916), 0).show();
+        Toast.makeText(this.tLh, this.tLh.getString(2131762916), 0).show();
         continue;
-        paramString = a.uz(paramString);
+        paramString = a.uU(paramString);
         if (paramString != null) {
-          h.a(this.tAq, paramString.desc, paramString.Title, true, null);
+          h.a(this.tLh, paramString.desc, paramString.Title, true, null);
         }
       }
     }
-    paramString = ((com.tencent.mm.plugin.messenger.a.f)paramn).dlC();
-    if (paramString.GwU > 0)
+    paramString = ((com.tencent.mm.plugin.messenger.a.f)paramn).doB();
+    if (paramString.GQu > 0)
     {
-      if (paramString.GwV.isEmpty())
+      if (paramString.GQv.isEmpty())
       {
-        h.a(this.tAq, 2131762921, 0, true, null);
+        h.a(this.tLh, 2131762921, 0, true, null);
         AppMethodBeat.o(111975);
         return;
       }
       paramn = new Intent();
-      ((m)g.ab(m.class)).a(paramn, (cya)paramString.GwV.getFirst(), this.tAq.tyJ);
-      d.b(this.tAq, "profile", ".ui.ContactInfoUI", paramn);
+      ((m)g.ab(m.class)).a(paramn, (cyu)paramString.GQv.getFirst(), this.tLh.tJA);
+      d.b(this.tLh, "profile", ".ui.ContactInfoUI", paramn);
       AppMethodBeat.o(111975);
       return;
     }
-    if (bt.nullAsNil(z.a(paramString.GbY)).length() > 0)
+    if (bu.nullAsNil(z.a(paramString.GuF)).length() > 0)
     {
-      if (2 != paramString.Hpn) {
+      if (2 != paramString.HIP) {
         break label419;
       }
-      this.tAq.tyJ = 15;
+      this.tLh.tJA = 15;
     }
     for (;;)
     {
       paramn = new Intent();
-      ((m)g.ab(m.class)).a(paramn, paramString, this.tAq.tyJ);
-      if (this.tAq.tyJ == 15) {
+      ((m)g.ab(m.class)).a(paramn, paramString, this.tLh.tJA);
+      if (this.tLh.tJA == 15) {
         paramn.putExtra("Contact_Search_Mobile", this.LP.trim());
       }
-      paramn.putExtra("Contact_Scene", this.tAq.tyJ);
+      paramn.putExtra("Contact_Scene", this.tLh.tJA);
       paramn.putExtra("add_more_friend_search_scene", 2);
-      d.b(this.tAq, "profile", ".ui.ContactInfoUI", paramn);
+      d.b(this.tLh, "profile", ".ui.ContactInfoUI", paramn);
       AppMethodBeat.o(111975);
       return;
       label419:
-      if (1 == paramString.Hpn) {
-        this.tAq.tyJ = 1;
+      if (1 == paramString.HIP) {
+        this.tLh.tJA = 1;
       }
     }
   }

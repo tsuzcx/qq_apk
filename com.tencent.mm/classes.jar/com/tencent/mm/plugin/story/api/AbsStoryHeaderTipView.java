@@ -17,11 +17,11 @@ public abstract class AbsStoryHeaderTipView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public abstract void edq();
+  public abstract void egX();
   
-  public abstract void egK();
+  public abstract void eks();
   
-  public abstract void egL();
+  public abstract void ekt();
   
   public abstract void onCreateView();
   

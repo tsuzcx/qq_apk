@@ -2,101 +2,101 @@ package com.tencent.mm.ui.chatting.l;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.e;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class b
 {
-  public static final b JWt;
-  public int DuR;
-  public int JWu;
-  public int JWv;
-  public int JWw;
+  public static final b KsK;
+  public int DMw;
+  public int KsL;
+  public int KsM;
+  public int KsN;
   public int mCount;
   public int mSuccessCount;
   
   static
   {
     AppMethodBeat.i(36612);
-    JWt = new b();
+    KsK = new b();
     AppMethodBeat.o(36612);
   }
   
-  public static void aW(String paramString, int paramInt1, int paramInt2)
+  public static void aZ(String paramString, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(36608);
-    ad.i("MicroMsg.GetChatroomReporter", "[report] chatroomId:%s cleanCount:%s count:%s ", new Object[] { paramString, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    ae.i("MicroMsg.GetChatroomReporter", "[report] chatroomId:%s cleanCount:%s count:%s ", new Object[] { paramString, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     if (paramInt1 > 0)
     {
-      e.ygI.idkeyStat(403L, 67L, 1L, true);
-      e.ygI.idkeyStat(403L, 68L, paramInt1, true);
+      e.ywz.idkeyStat(403L, 67L, 1L, true);
+      e.ywz.idkeyStat(403L, 68L, paramInt1, true);
     }
-    e.ygI.idkeyStat(403L, 70L, paramInt2, true);
+    e.ywz.idkeyStat(403L, 70L, paramInt2, true);
     if (paramInt2 <= 5)
     {
-      e.ygI.idkeyStat(403L, 71L, 1L, true);
+      e.ywz.idkeyStat(403L, 71L, 1L, true);
       AppMethodBeat.o(36608);
       return;
     }
     if (paramInt2 <= 10)
     {
-      e.ygI.idkeyStat(403L, 72L, 1L, true);
+      e.ywz.idkeyStat(403L, 72L, 1L, true);
       AppMethodBeat.o(36608);
       return;
     }
     if (paramInt2 <= 20)
     {
-      e.ygI.idkeyStat(403L, 73L, 1L, true);
+      e.ywz.idkeyStat(403L, 73L, 1L, true);
       AppMethodBeat.o(36608);
       return;
     }
     if (paramInt2 <= 30)
     {
-      e.ygI.idkeyStat(403L, 74L, 1L, true);
+      e.ywz.idkeyStat(403L, 74L, 1L, true);
       AppMethodBeat.o(36608);
       return;
     }
     if (paramInt2 <= 50)
     {
-      e.ygI.idkeyStat(403L, 75L, 1L, true);
+      e.ywz.idkeyStat(403L, 75L, 1L, true);
       AppMethodBeat.o(36608);
       return;
     }
-    e.ygI.idkeyStat(403L, 76L, 1L, true);
+    e.ywz.idkeyStat(403L, 76L, 1L, true);
     AppMethodBeat.o(36608);
   }
   
-  public static void fGU()
+  public static void fLm()
   {
     AppMethodBeat.i(36609);
-    e.ygI.idkeyStat(403L, 77L, 1L, true);
+    e.ywz.idkeyStat(403L, 77L, 1L, true);
     AppMethodBeat.o(36609);
   }
   
-  public static void fGV()
+  public static void fLn()
   {
     AppMethodBeat.i(36610);
-    e.ygI.idkeyStat(403L, 41L, 1L, false);
+    e.ywz.idkeyStat(403L, 41L, 1L, false);
     AppMethodBeat.o(36610);
   }
   
-  public static void fGW()
+  public static void fLo()
   {
     AppMethodBeat.i(36611);
-    e.ygI.idkeyStat(403L, 78L, 1L, false);
+    e.ywz.idkeyStat(403L, 78L, 1L, false);
     AppMethodBeat.o(36611);
   }
   
-  public final void aed(int paramInt)
+  public final void aeM(int paramInt)
   {
-    this.JWw += paramInt;
+    this.KsN += paramInt;
   }
   
-  public final void c(boolean paramBoolean1, boolean paramBoolean2, String paramString)
+  public final void d(boolean paramBoolean1, boolean paramBoolean2, String paramString)
   {
     AppMethodBeat.i(36607);
-    ad.i("MicroMsg.GetChatroomReporter", "[recordFetch] isDown:" + paramBoolean1 + " isSuccess:" + paramBoolean2 + " chatroomid:" + paramString);
+    ae.i("MicroMsg.GetChatroomReporter", "[recordFetch] isDown:" + paramBoolean1 + " isSuccess:" + paramBoolean2 + " chatroomid:" + paramString);
     if (paramBoolean1) {
-      this.JWu += 1;
+      this.KsL += 1;
     }
     for (;;)
     {
@@ -104,10 +104,10 @@ public final class b
       if (paramBoolean2) {
         break;
       }
-      this.DuR += 1;
+      this.DMw += 1;
       AppMethodBeat.o(36607);
       return;
-      this.JWv += 1;
+      this.KsM += 1;
     }
     this.mSuccessCount += 1;
     AppMethodBeat.o(36607);

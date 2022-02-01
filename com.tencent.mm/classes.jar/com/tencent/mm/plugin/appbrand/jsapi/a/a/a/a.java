@@ -5,24 +5,24 @@ import com.tencent.mm.plugin.appbrand.h.c;
 import d.l;
 import org.json.JSONObject;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/canvas/samelayer/jsapi/AppBrandWebGLPluginJsApi;", "Lcom/tencent/mm/plugin/appbrand/extendplugin/AppBrandPluginAsyncJsApi;", "()V", "getPluginType", "", "getViewId", "", "data", "Lorg/json/JSONObject;", "plugin-appbrand-integration_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsapi/canvas/samelayer/jsapi/AppBrandWebGLPluginJsApi;", "Lcom/tencent/mm/plugin/appbrand/extendplugin/AppBrandPluginAsyncJsApi;", "()V", "getPluginType", "", "getViewId", "", "data", "Lorg/json/JSONObject;", "plugin-appbrand-integration_release"})
 public class a
   extends c
 {
   public final int A(JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(189115);
+    AppMethodBeat.i(223374);
     if (paramJSONObject != null)
     {
       int i = paramJSONObject.optInt("canvasId", -1);
-      AppMethodBeat.o(189115);
+      AppMethodBeat.o(223374);
       return i;
     }
-    AppMethodBeat.o(189115);
+    AppMethodBeat.o(223374);
     return -1;
   }
   
-  public final String bgx()
+  public final String bhf()
   {
     return "webgl";
   }

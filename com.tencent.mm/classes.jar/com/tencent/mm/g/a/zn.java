@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class zn
   extends b
 {
-  public a dOT;
+  public a dPG;
   
   public zn()
   {
@@ -15,16 +15,16 @@ public final class zn
   
   private zn(byte paramByte)
   {
-    AppMethodBeat.i(117553);
-    this.dOT = new a();
-    this.IbR = false;
+    AppMethodBeat.i(77799);
+    this.dPG = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(117553);
+    AppMethodBeat.o(77799);
   }
   
   public static final class a
   {
-    public String duy;
+    public String dPH;
   }
 }
 

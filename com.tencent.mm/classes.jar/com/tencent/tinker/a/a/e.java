@@ -5,23 +5,23 @@ import com.tencent.tinker.a.a.b.c;
 public final class e
   extends s.a.a<e>
 {
-  public a[] McF;
-  public a[] McG;
-  public b[] McH;
-  public b[] McI;
+  public a[] MzA;
+  public a[] MzB;
+  public b[] MzC;
+  public b[] MzD;
   
   public e(int paramInt, a[] paramArrayOfa1, a[] paramArrayOfa2, b[] paramArrayOfb1, b[] paramArrayOfb2)
   {
     super(paramInt);
-    this.McF = paramArrayOfa1;
-    this.McG = paramArrayOfa2;
-    this.McH = paramArrayOfb1;
-    this.McI = paramArrayOfb2;
+    this.MzA = paramArrayOfa1;
+    this.MzB = paramArrayOfa2;
+    this.MzC = paramArrayOfb1;
+    this.MzD = paramArrayOfb2;
   }
   
   private int a(e parame)
   {
-    int i = c.a(this.McF, parame.McF);
+    int i = c.a(this.MzA, parame.MzA);
     if (i != 0) {}
     int j;
     do
@@ -29,13 +29,13 @@ public final class e
       do
       {
         return i;
-        j = c.a(this.McG, parame.McG);
+        j = c.a(this.MzB, parame.MzB);
         i = j;
       } while (j != 0);
-      j = c.a(this.McH, parame.McH);
+      j = c.a(this.MzC, parame.MzC);
       i = j;
     } while (j != 0);
-    return c.a(this.McI, parame.McI);
+    return c.a(this.MzD, parame.MzD);
   }
   
   public final boolean equals(Object paramObject)
@@ -49,28 +49,28 @@ public final class e
   
   public final int hashCode()
   {
-    return com.tencent.tinker.a.a.b.e.hash(new Object[] { this.McF, this.McG, this.McH, this.McI });
+    return com.tencent.tinker.a.a.b.e.hash(new Object[] { this.MzA, this.MzB, this.MzC, this.MzD });
   }
   
   public static final class a
     implements Comparable<a>
   {
-    public int McJ;
-    public int McK;
+    public int MzE;
+    public int MzF;
     
     public a(int paramInt1, int paramInt2)
     {
-      this.McJ = paramInt1;
-      this.McK = paramInt2;
+      this.MzE = paramInt1;
+      this.MzF = paramInt2;
     }
     
     private int a(a parama)
     {
-      int i = c.kY(this.McJ, parama.McJ);
+      int i = c.lf(this.MzE, parama.MzE);
       if (i != 0) {
         return i;
       }
-      return c.kZ(this.McK, parama.McK);
+      return c.lg(this.MzF, parama.MzF);
     }
     
     public final boolean equals(Object paramObject)
@@ -84,36 +84,36 @@ public final class e
     
     public final int hashCode()
     {
-      return com.tencent.tinker.a.a.b.e.hash(new Object[] { Integer.valueOf(this.McJ), Integer.valueOf(this.McK) });
+      return com.tencent.tinker.a.a.b.e.hash(new Object[] { Integer.valueOf(this.MzE), Integer.valueOf(this.MzF) });
     }
   }
   
   public static final class b
     implements Comparable<b>
   {
-    public int McK;
-    public int McL;
-    public int McM;
+    public int MzF;
+    public int MzG;
+    public int MzH;
     
     public b(int paramInt1, int paramInt2, int paramInt3)
     {
-      this.McL = paramInt1;
-      this.McK = paramInt2;
-      this.McM = paramInt3;
+      this.MzG = paramInt1;
+      this.MzF = paramInt2;
+      this.MzH = paramInt3;
     }
     
     private int a(b paramb)
     {
-      int i = c.kY(this.McL, paramb.McL);
+      int i = c.lf(this.MzG, paramb.MzG);
       if (i != 0) {}
       int j;
       do
       {
         return i;
-        j = c.kZ(this.McK, paramb.McK);
+        j = c.lg(this.MzF, paramb.MzF);
         i = j;
       } while (j != 0);
-      return c.kZ(this.McM, paramb.McM);
+      return c.lg(this.MzH, paramb.MzH);
     }
     
     public final boolean equals(Object paramObject)
@@ -127,7 +127,7 @@ public final class e
     
     public final int hashCode()
     {
-      return com.tencent.tinker.a.a.b.e.hash(new Object[] { Integer.valueOf(this.McL), Integer.valueOf(this.McK), Integer.valueOf(this.McM) });
+      return com.tencent.tinker.a.a.b.e.hash(new Object[] { Integer.valueOf(this.MzG), Integer.valueOf(this.MzF), Integer.valueOf(this.MzH) });
     }
   }
 }

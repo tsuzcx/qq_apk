@@ -32,12 +32,12 @@ public abstract class i
     this.cev = paramn;
   }
   
-  public c Bg()
+  public c Bh()
   {
     return this.cex.ceo.aF(this.cew);
   }
   
-  protected final long Bo()
+  protected final long Bp()
   {
     switch (this.cex.ceo.b(p.cfn))
     {
@@ -48,21 +48,21 @@ public abstract class i
     default: 
       return 0L;
     case 1: 
-      return Bs().readByte();
+      return Bt().readByte();
     case 2: 
-      return Bs().readShort();
+      return Bt().readShort();
     case 4: 
-      return Bs().readInt();
+      return Bt().readInt();
     }
-    return Bs().readLong();
+    return Bt().readLong();
   }
   
-  public final long Br()
+  public final long Bs()
   {
     return this.MI & this.cex.ceo.cfe;
   }
   
-  protected final a Bs()
+  protected final a Bt()
   {
     return this.cex.ceo.ceZ;
   }
@@ -74,27 +74,27 @@ public abstract class i
     default: 
       return null;
     case 1: 
-      long l = Bo();
+      long l = Bp();
       return this.cex.ceo.aE(l);
     case 2: 
-      if (Bs().readByte() != 0) {}
+      if (Bt().readByte() != 0) {}
       for (boolean bool = true;; bool = false) {
         return Boolean.valueOf(bool);
       }
     case 3: 
-      return Character.valueOf(Bs().readChar());
+      return Character.valueOf(Bt().readChar());
     case 4: 
-      return Float.valueOf(Bs().readFloat());
+      return Float.valueOf(Bt().readFloat());
     case 5: 
-      return Double.valueOf(Bs().readDouble());
+      return Double.valueOf(Bt().readDouble());
     case 6: 
-      return Byte.valueOf(Bs().readByte());
+      return Byte.valueOf(Bt().readByte());
     case 7: 
-      return Short.valueOf(Bs().readShort());
+      return Short.valueOf(Bt().readShort());
     case 8: 
-      return Integer.valueOf(Bs().readInt());
+      return Integer.valueOf(Bt().readInt());
     }
-    return Long.valueOf(Bs().readLong());
+    return Long.valueOf(Bt().readLong());
   }
   
   public final long getId()
@@ -109,12 +109,12 @@ public abstract class i
   
   protected final int readUnsignedByte()
   {
-    return Bs().readByte() & 0xFF;
+    return Bt().readByte() & 0xFF;
   }
   
   protected final int readUnsignedShort()
   {
-    return Bs().readShort() & 0xFFFF;
+    return Bt().readShort() & 0xFFFF;
   }
 }
 

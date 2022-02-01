@@ -13,27 +13,27 @@ import java.util.concurrent.TimeUnit;
 
 public final class a
 {
-  private static final int[] gvA = { 0, 1, 2, 3 };
-  private static final int[] gvz = { 0, 1, 2, 3 };
-  private b gvB;
-  private Thread gvC;
-  private HardCoderJNI.HCPerfManagerThread gvD;
-  LinkedBlockingQueue<Object> gvE;
+  private static final int[] gyg = { 0, 1, 2, 3 };
+  private static final int[] gyh = { 0, 1, 2, 3 };
+  private b gyi;
+  private Thread gyj;
+  private HardCoderJNI.HCPerfManagerThread gyk;
+  LinkedBlockingQueue<Object> gyl;
   
   public a(HardCoderJNI.HCPerfManagerThread paramHCPerfManagerThread)
   {
     AppMethodBeat.i(62445);
-    this.gvE = new LinkedBlockingQueue();
-    this.gvB = new b();
-    this.gvB.start();
-    this.gvD = paramHCPerfManagerThread;
-    this.gvC = this.gvD.newThread(new a((byte)0), "HCPerfManager", 10);
-    this.gvC.start();
-    d.i("Hardcoder.HCPerfManager", String.format("HCPerfManager new thread[%s]", new Object[] { this.gvC }));
+    this.gyl = new LinkedBlockingQueue();
+    this.gyi = new b();
+    this.gyi.start();
+    this.gyk = paramHCPerfManagerThread;
+    this.gyj = this.gyk.newThread(new a((byte)0), "HCPerfManager", 10);
+    this.gyj.start();
+    d.i("Hardcoder.HCPerfManager", String.format("HCPerfManager new thread[%s]", new Object[] { this.gyj }));
     AppMethodBeat.o(62445);
   }
   
-  private static void wm(String paramString)
+  private static void wV(String paramString)
   {
     AppMethodBeat.i(62447);
     if (paramString == null)
@@ -73,21 +73,21 @@ public final class a
     label162:
     b localb = new b();
     localb.delay = paramInt1;
-    localb.gvH = paramInt2;
-    localb.gvJ = paramInt3;
-    localb.gvK = ((int[])paramArrayOfInt.clone());
-    localb.gvI = paramInt4;
+    localb.gyo = paramInt2;
+    localb.gyq = paramInt3;
+    localb.gyr = ((int[])paramArrayOfInt.clone());
+    localb.gyp = paramInt4;
     localb.timeout = paramInt5;
     localb.scene = paramInt6;
-    localb.gvL = paramLong;
-    localb.gvO = paramInt7;
-    localb.gvM = System.currentTimeMillis();
-    localb.startTime = (localb.gvM + paramInt1);
-    localb.gvN = (localb.gvM + paramInt1 + paramInt5);
+    localb.gys = paramLong;
+    localb.gyv = paramInt7;
+    localb.gyt = System.currentTimeMillis();
+    localb.startTime = (localb.gyt + paramInt1);
+    localb.gyu = (localb.gyt + paramInt1 + paramInt5);
     localb.tag = paramString;
     localb.lastUpdateTime = localb.startTime;
-    boolean bool = this.gvE.offer(localb);
-    d.d("Hardcoder.HCPerfManager", String.format("start ret:%b ,task:%s", new Object[] { Boolean.valueOf(bool), localb.toString(localb.gvM) }));
+    boolean bool = this.gyl.offer(localb);
+    d.d("Hardcoder.HCPerfManager", String.format("start ret:%b ,task:%s", new Object[] { Boolean.valueOf(bool), localb.toString(localb.gyt) }));
     if (bool)
     {
       paramInt1 = localb.hashCode();
@@ -126,7 +126,7 @@ public final class a
         localObject10 = new HashSet();
         l1 = 30000L;
         localArrayList = new ArrayList();
-        localObject3 = f.ahn();
+        localObject3 = f.ahC();
         Object localObject1;
         if (localObject3 != null)
         {
@@ -199,7 +199,7 @@ public final class a
                 if (!HardCoderJNI.isCheckEnv()) {
                   break;
                 }
-                a.fe("taskQueue poll invalid object");
+                a.fj("taskQueue poll invalid object");
               }
             }
             this.running = false;
@@ -227,13 +227,13 @@ public final class a
         {
           if (localHashMap.containsKey(Integer.valueOf(localObject5.hashCode())))
           {
-            ((a.b)localObject5).gvN = l4;
-            ((a.b)localObject5).gvG = ((a.c)localHashMap.get(Integer.valueOf(localObject5.hashCode()))).gvG;
+            ((a.b)localObject5).gyu = l4;
+            ((a.b)localObject5).gyn = ((a.c)localHashMap.get(Integer.valueOf(localObject5.hashCode()))).gyn;
             localHashMap.remove(Integer.valueOf(localObject5.hashCode()));
             a.a(a.this, l4, tmp103_101, -2, -2, -2, null);
             a.a(a.this, (a.b)localObject5);
           }
-          l2 = ((a.b)localObject5).gvN - l4;
+          l2 = ((a.b)localObject5).gyu - l4;
           if (l2 > 0L) {
             break label769;
           }
@@ -270,14 +270,14 @@ public final class a
         label870:
         d.d("Hardcoder.HCPerfManager", "InLoop RUN:" + i + "/" + tmp103_101.size() + " task:" + ((a.b)localObject5).toString(l4));
         localObject6 = localObject4;
-        if (((a.b)localObject5).gvH > 0) {
-          if ((localObject4 != null) && (localObject4.gvH <= ((a.b)localObject5).gvH))
+        if (((a.b)localObject5).gyo > 0) {
+          if ((localObject4 != null) && (localObject4.gyo <= ((a.b)localObject5).gyo))
           {
             localObject6 = localObject4;
-            if (localObject4.gvH == ((a.b)localObject5).gvH)
+            if (localObject4.gyo == ((a.b)localObject5).gyo)
             {
               localObject6 = localObject4;
-              if (localObject4.gvN >= ((a.b)localObject5).gvN) {}
+              if (localObject4.gyu >= ((a.b)localObject5).gyu) {}
             }
           }
           else
@@ -286,14 +286,14 @@ public final class a
           }
         }
         localObject4 = localObject3;
-        if (((a.b)localObject5).gvI > 0) {
-          if ((localObject3 != null) && (((a.b)localObject3).gvI <= ((a.b)localObject5).gvI))
+        if (((a.b)localObject5).gyp > 0) {
+          if ((localObject3 != null) && (((a.b)localObject3).gyp <= ((a.b)localObject5).gyp))
           {
             localObject4 = localObject3;
-            if (((a.b)localObject3).gvI == ((a.b)localObject5).gvI)
+            if (((a.b)localObject3).gyp == ((a.b)localObject5).gyp)
             {
               localObject4 = localObject3;
-              if (((a.b)localObject3).gvN >= ((a.b)localObject5).gvN) {}
+              if (((a.b)localObject3).gyu >= ((a.b)localObject5).gyu) {}
             }
           }
           else
@@ -302,14 +302,14 @@ public final class a
           }
         }
         localObject3 = localObject2;
-        if (((a.b)localObject5).gvJ > 0) {
-          if ((localObject2 != null) && (((a.b)localObject2).gvJ <= ((a.b)localObject5).gvJ))
+        if (((a.b)localObject5).gyq > 0) {
+          if ((localObject2 != null) && (((a.b)localObject2).gyq <= ((a.b)localObject5).gyq))
           {
             localObject3 = localObject2;
-            if (((a.b)localObject2).gvJ == ((a.b)localObject5).gvJ)
+            if (((a.b)localObject2).gyq == ((a.b)localObject5).gyq)
             {
               localObject3 = localObject2;
-              if (((a.b)localObject2).gvN >= ((a.b)localObject5).gvN) {}
+              if (((a.b)localObject2).gyu >= ((a.b)localObject5).gyu) {}
             }
           }
           else
@@ -317,7 +317,7 @@ public final class a
             localObject3 = localObject5;
           }
         }
-        localObject2 = ((a.b)localObject5).gvK;
+        localObject2 = ((a.b)localObject5).gyr;
         m = localObject2.length;
         k = 0;
         for (;;)
@@ -415,8 +415,8 @@ public final class a
       while (((Iterator)localObject6).hasNext())
       {
         localObject10 = (a.b)((Iterator)localObject6).next();
-        if (((a.b)localObject10).gvK != null) {
-          i = ((a.b)localObject10).gvK.length + i;
+        if (((a.b)localObject10).gyr != null) {
+          i = ((a.b)localObject10).gyr.length + i;
         }
       }
       if (i > 0)
@@ -432,21 +432,21 @@ public final class a
           localObject10 = (a.b)((Iterator)localObject5).next();
           l2 = System.currentTimeMillis();
           d.i("Hardcoder.HCPerfManager", "!cancelBindCore task:" + ((a.b)localObject10).toString(l2));
-          if (((a.b)localObject10).gvN > l2)
+          if (((a.b)localObject10).gyu > l2)
           {
-            d.e("Hardcoder.HCPerfManager", "stopTime:" + (((a.b)localObject10).gvN - l2) + ". Error !");
+            d.e("Hardcoder.HCPerfManager", "stopTime:" + (((a.b)localObject10).gyu - l2) + ". Error !");
           }
           else
           {
-            if (!((a.b)localObject10).ahl())
+            if (!((a.b)localObject10).ahA())
             {
               if (HardCoderJNI.isCheckEnv()) {
-                a.fe("bindTids:" + ((a.b)localObject10).ahm());
+                a.fj("bindTids:" + ((a.b)localObject10).ahB());
               }
             }
             else
             {
-              localObject10 = ((a.b)localObject10).gvK;
+              localObject10 = ((a.b)localObject10).gyr;
               k = localObject10.length;
               j = 0;
               while (j < k)
@@ -470,8 +470,8 @@ public final class a
           while (((Iterator)localObject5).hasNext())
           {
             localObject6 = (a.b)((Iterator)localObject5).next();
-            if (((a.b)localObject6).gvK != null) {
-              i = ((a.b)localObject6).gvK.length + i;
+            if (((a.b)localObject6).gyr != null) {
+              i = ((a.b)localObject6).gyr.length + i;
             }
           }
         }
@@ -490,21 +490,21 @@ public final class a
         localObject6 = (a.b)((Iterator)localObject5).next();
         d.i("Hardcoder.HCPerfManager", "requestBindCore task:" + ((a.b)localObject6).toString(l3));
         l5 = System.currentTimeMillis();
-        if (((a.b)localObject6).gvN <= l5)
+        if (((a.b)localObject6).gyu <= l5)
         {
-          d.e("Hardcoder.HCPerfManager", "stopTime:" + (((a.b)localObject6).gvN - l5) + ". Error !");
+          d.e("Hardcoder.HCPerfManager", "stopTime:" + (((a.b)localObject6).gyu - l5) + ". Error !");
         }
         else
         {
-          if (!((a.b)localObject6).ahl())
+          if (!((a.b)localObject6).ahA())
           {
             if (HardCoderJNI.isCheckEnv()) {
-              a.fe("bindTids:" + ((a.b)localObject6).ahm());
+              a.fj("bindTids:" + ((a.b)localObject6).ahB());
             }
           }
           else
           {
-            localObject10 = ((a.b)localObject6).gvK;
+            localObject10 = ((a.b)localObject6).gyr;
             n = localObject10.length;
             j = 0;
             k = m;
@@ -524,7 +524,7 @@ public final class a
         {
           d.i("Hardcoder.HCPerfManager", "!cancelHighIOFreq task:" + ((a.b)localObject9).toString(l3));
           if (HardCoderJNI.isCheckEnv()) {
-            HardCoderJNI.cancelHighIOFreq(((a.b)localObject9).gvO, SystemClock.elapsedRealtimeNanos());
+            HardCoderJNI.cancelHighIOFreq(((a.b)localObject9).gyv, SystemClock.elapsedRealtimeNanos());
           }
           a.a(a.this, l3, tmp103_101, -2, -2, -1, null);
         }
@@ -532,11 +532,11 @@ public final class a
         if (localObject2 == null) {
           break label3487;
         }
-        m = ((a.b)localObject2).gvJ;
+        m = ((a.b)localObject2).gyq;
         k = ((a.b)localObject2).scene;
-        l2 = ((a.b)localObject2).gvL;
-        j = ((a.b)localObject2).gvO;
-        i = Math.min((int)(((a.b)localObject2).gvN - l3), i);
+        l2 = ((a.b)localObject2).gys;
+        j = ((a.b)localObject2).gyv;
+        i = Math.min((int)(((a.b)localObject2).gyu - l3), i);
       }
       for (;;)
       {
@@ -546,7 +546,7 @@ public final class a
           {
             d.i("Hardcoder.HCPerfManager", "!cancelGpuHighFreq task:" + ((a.b)localObject8).toString(l3));
             if (HardCoderJNI.isCheckEnv()) {
-              HardCoderJNI.cancelGpuHighFreq(((a.b)localObject8).gvO, SystemClock.elapsedRealtimeNanos());
+              HardCoderJNI.cancelGpuHighFreq(((a.b)localObject8).gyv, SystemClock.elapsedRealtimeNanos());
             }
             a.a(a.this, l3, tmp103_101, -2, -1, -2, null);
           }
@@ -554,11 +554,11 @@ public final class a
           if (localObject3 == null) {
             break label3481;
           }
-          n = ((a.b)localObject3).gvI;
+          n = ((a.b)localObject3).gyp;
           k = ((a.b)localObject3).scene;
-          l2 = ((a.b)localObject3).gvL;
-          j = ((a.b)localObject3).gvO;
-          i = Math.min((int)(((a.b)localObject3).gvN - l3), i);
+          l2 = ((a.b)localObject3).gys;
+          j = ((a.b)localObject3).gyv;
+          i = Math.min((int)(((a.b)localObject3).gyu - l3), i);
         }
         for (;;)
         {
@@ -570,18 +570,18 @@ public final class a
             {
               d.i("Hardcoder.HCPerfManager", "!cancelCpuHighFreq task:" + ((a.b)localObject7).toString(l3));
               if (HardCoderJNI.isCheckEnv()) {
-                HardCoderJNI.cancelCpuHighFreq(((a.b)localObject7).gvO, SystemClock.elapsedRealtimeNanos());
+                HardCoderJNI.cancelCpuHighFreq(((a.b)localObject7).gyv, SystemClock.elapsedRealtimeNanos());
               }
               a.a(a.this, l3, tmp103_101, -1, -2, -2, null);
             }
             if (localObject4 == null) {
               break label3467;
             }
-            k = localObject4.gvH;
+            k = localObject4.gyo;
             j = localObject4.scene;
-            l2 = localObject4.gvL;
-            i1 = localObject4.gvO;
-            i = Math.min((int)(localObject4.gvN - l3), i);
+            l2 = localObject4.gys;
+            i1 = localObject4.gyv;
+            i = Math.min((int)(localObject4.gyu - l3), i);
           }
           for (;;)
           {
@@ -624,25 +624,25 @@ public final class a
               }
               bool = true;
               label2773:
-              a.du(bool);
+              a.dv(bool);
               if ((j <= 0) && (l2 <= 0L)) {
                 break label3429;
               }
               bool = true;
               label2792:
-              a.du(bool);
+              a.dv(bool);
               if (i1 <= 0) {
                 break label3435;
               }
               bool = true;
               label2805:
-              a.du(bool);
+              a.dv(bool);
               if ((k <= 0) && (n <= 0) && (m <= 0) && (localObject11.length <= 0)) {
                 break label3441;
               }
               bool = true;
               label2833:
-              a.du(bool);
+              a.dv(bool);
               if (HardCoderJNI.isCheckEnv())
               {
                 l4 = HardCoderJNI.requestUnifyCpuIOThreadCoreGpu(j, l2, k, n, m, (int[])localObject11, i, i1, SystemClock.elapsedRealtimeNanos());
@@ -677,9 +677,9 @@ public final class a
               localObject7 = localObject4;
               break;
               j = ((a.b)localObject6).scene;
-              l2 = ((a.b)localObject6).gvL;
-              n = ((a.b)localObject6).gvO;
-              i = Math.min((int)(((a.b)localObject6).gvN - l3), i);
+              l2 = ((a.b)localObject6).gys;
+              n = ((a.b)localObject6).gyv;
+              i = Math.min((int)(((a.b)localObject6).gyu - l3), i);
               m = k;
               k = n;
               break label2036;
@@ -760,21 +760,21 @@ public final class a
   public static final class b
   {
     public int delay;
-    public long gvG;
-    public int gvH;
-    public int gvI;
-    public int gvJ;
-    public int[] gvK;
-    public long gvL;
-    public long gvM;
-    public long gvN;
-    public int gvO;
-    public int gvP;
-    public int gvQ;
-    public int[] gvR;
-    public int[] gvS;
-    public int[] gvT;
-    public long gvU;
+    public int[] gyA;
+    public long gyB;
+    public long gyn;
+    public int gyo;
+    public int gyp;
+    public int gyq;
+    public int[] gyr;
+    public long gys;
+    public long gyt;
+    public long gyu;
+    public int gyv;
+    public int gyw;
+    public int gyx;
+    public int[] gyy;
+    public int[] gyz;
     public long lastUpdateTime;
     public int scene;
     public long startTime;
@@ -784,40 +784,40 @@ public final class a
     public b()
     {
       AppMethodBeat.i(62442);
-      this.gvG = 0L;
+      this.gyn = 0L;
       this.delay = 0;
       this.timeout = 0;
-      this.gvH = 0;
-      this.gvI = 0;
-      this.gvJ = 0;
-      this.gvK = null;
+      this.gyo = 0;
+      this.gyp = 0;
+      this.gyq = 0;
+      this.gyr = null;
       this.scene = 0;
-      this.gvL = 0L;
+      this.gys = 0L;
       this.startTime = 0L;
-      this.gvM = 0L;
-      this.gvN = 0L;
-      this.gvO = 0;
-      this.gvP = 0;
-      this.gvQ = 0;
+      this.gyt = 0L;
+      this.gyu = 0L;
+      this.gyv = 0;
+      this.gyw = 0;
+      this.gyx = 0;
       this.lastUpdateTime = 0L;
-      this.gvR = new int[a.ahk().length];
-      this.gvS = new int[a.gvA.length];
-      this.gvT = null;
-      this.gvU = 0L;
+      this.gyy = new int[a.ahz().length];
+      this.gyz = new int[a.gyh.length];
+      this.gyA = null;
+      this.gyB = 0L;
       AppMethodBeat.o(62442);
     }
     
-    public final boolean ahl()
+    public final boolean ahA()
     {
       boolean bool2 = true;
       boolean bool1;
-      if ((this.gvK != null) && (this.gvK.length > 0))
+      if ((this.gyr != null) && (this.gyr.length > 0))
       {
         bool1 = bool2;
-        if (this.gvK.length == 1)
+        if (this.gyr.length == 1)
         {
           bool1 = bool2;
-          if (this.gvK[0] > 0) {}
+          if (this.gyr[0] > 0) {}
         }
       }
       else
@@ -827,13 +827,13 @@ public final class a
       return bool1;
     }
     
-    public final String ahm()
+    public final String ahB()
     {
       AppMethodBeat.i(62443);
-      if (ahl())
+      if (ahA())
       {
         Object localObject = new StringBuilder("[");
-        int[] arrayOfInt = this.gvK;
+        int[] arrayOfInt = this.gyr;
         int j = arrayOfInt.length;
         int i = 0;
         while (i < j)
@@ -854,7 +854,7 @@ public final class a
     public final String toString(long paramLong)
     {
       AppMethodBeat.i(62444);
-      String str = String.format("hashCode:%x time:[init:%d, start:%d, stop:%d][delay:%d, timeout:%d][scene:%d, action:%d, callerTid:%d][cpu:%d, io:%d, gpu:%d] bindTids:%s [TAG:%s]", new Object[] { Integer.valueOf(hashCode()), Long.valueOf(this.gvM - paramLong), Long.valueOf(this.startTime - paramLong), Long.valueOf(this.gvN - paramLong), Integer.valueOf(this.delay), Integer.valueOf(this.timeout), Integer.valueOf(this.scene), Long.valueOf(this.gvL), Integer.valueOf(this.gvO), Integer.valueOf(this.gvH), Integer.valueOf(this.gvJ), Integer.valueOf(this.gvI), ahm(), this.tag });
+      String str = String.format("hashCode:%x time:[init:%d, start:%d, stop:%d][delay:%d, timeout:%d][scene:%d, action:%d, callerTid:%d][cpu:%d, io:%d, gpu:%d] bindTids:%s [TAG:%s]", new Object[] { Integer.valueOf(hashCode()), Long.valueOf(this.gyt - paramLong), Long.valueOf(this.startTime - paramLong), Long.valueOf(this.gyu - paramLong), Integer.valueOf(this.delay), Integer.valueOf(this.timeout), Integer.valueOf(this.scene), Long.valueOf(this.gys), Integer.valueOf(this.gyv), Integer.valueOf(this.gyo), Integer.valueOf(this.gyq), Integer.valueOf(this.gyp), ahB(), this.tag });
       AppMethodBeat.o(62444);
       return str;
     }
@@ -863,7 +863,7 @@ public final class a
   public static final class c
   {
     public int aHQ = 0;
-    public long gvG = 0L;
+    public long gyn = 0L;
   }
 }
 

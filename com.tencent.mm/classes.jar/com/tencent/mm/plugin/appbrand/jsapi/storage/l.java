@@ -14,13 +14,13 @@ public final class l
   private static void b(com.tencent.mm.plugin.appbrand.jsapi.h paramh, String paramString, int paramInt)
   {
     AppMethodBeat.i(147271);
-    ((a)e.K(a.class)).dg(paramh.getAppId()).l(paramInt, paramh.getAppId(), paramString);
+    ((a)e.K(a.class)).dl(paramh.getAppId()).l(paramInt, paramh.getAppId(), paramString);
     AppMethodBeat.o(147271);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.storage.l
  * JD-Core Version:    0.7.0.1
  */

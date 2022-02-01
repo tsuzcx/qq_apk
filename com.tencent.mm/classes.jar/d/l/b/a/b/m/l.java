@@ -11,36 +11,36 @@ public final class l
   extends n
   implements e, k
 {
-  public static final a NBF;
-  final aj NBE;
+  public static final a NYM;
+  final aj NYL;
   
   static
   {
     AppMethodBeat.i(60631);
-    NBF = new a((byte)0);
+    NYM = new a((byte)0);
     AppMethodBeat.o(60631);
   }
   
   private l(aj paramaj)
   {
-    this.NBE = paramaj;
+    this.NYL = paramaj;
   }
   
   private l g(g paramg)
   {
     AppMethodBeat.i(60624);
     d.g.b.p.h(paramg, "newAnnotations");
-    paramg = new l(this.NBE.d(paramg));
+    paramg = new l(this.NYL.d(paramg));
     AppMethodBeat.o(60624);
     return paramg;
   }
   
-  public final aj Ac(boolean paramBoolean)
+  public final aj Ap(boolean paramBoolean)
   {
     AppMethodBeat.i(60627);
     if (paramBoolean)
     {
-      localaj = this.NBE.Ac(paramBoolean);
+      localaj = this.NYL.Ap(paramBoolean);
       AppMethodBeat.o(60627);
       return localaj;
     }
@@ -53,20 +53,20 @@ public final class l
   {
     AppMethodBeat.i(60623);
     d.g.b.p.h(paramab, "replacement");
-    paramab = (ab)am.b(paramab.gua());
+    paramab = (ab)am.b(paramab.gyC());
     AppMethodBeat.o(60623);
     return paramab;
   }
   
-  protected final aj glS()
+  protected final aj gqu()
   {
-    return this.NBE;
+    return this.NYL;
   }
   
-  public final boolean glV()
+  public final boolean gqx()
   {
     AppMethodBeat.i(60622);
-    if (((this.NBE.gsZ() instanceof d.l.b.a.b.m.a.p)) || ((this.NBE.gsZ().ghO() instanceof as)))
+    if (((this.NYL.gxB() instanceof d.l.b.a.b.m.a.p)) || ((this.NYL.gxB().gmq() instanceof as)))
     {
       AppMethodBeat.o(60622);
       return true;
@@ -75,7 +75,7 @@ public final class l
     return false;
   }
   
-  public final boolean glW()
+  public final boolean gqy()
   {
     return false;
   }
@@ -83,7 +83,7 @@ public final class l
   public final String toString()
   {
     AppMethodBeat.i(60629);
-    String str = this.NBE + "!!";
+    String str = this.NYL + "!!";
     AppMethodBeat.o(60629);
     return str;
   }
@@ -103,13 +103,13 @@ public final class l
       }
       d.g.b.p.h(parambg, "$this$canHaveUndefinedNullability");
       int i;
-      if (((parambg.gsZ() instanceof d.l.b.a.b.m.a.p)) || ((parambg.gsZ().ghO() instanceof as)) || ((parambg instanceof d.l.b.a.b.m.a.k)))
+      if (((parambg.gxB() instanceof d.l.b.a.b.m.a.p)) || ((parambg.gxB().gmq() instanceof as)) || ((parambg instanceof d.l.b.a.b.m.a.k)))
       {
         i = 1;
         if (i == 0) {
           break label179;
         }
-        q localq = q.NDt;
+        q localq = q.OaA;
         if (q.d(parambg)) {
           break label179;
         }
@@ -121,8 +121,8 @@ public final class l
         {
           if ((parambg instanceof v))
           {
-            boolean bool = d.g.b.p.i(((v)parambg).NBV.gsZ(), ((v)parambg).NBW.gsZ());
-            if ((ac.MKp) && (!bool))
+            boolean bool = d.g.b.p.i(((v)parambg).NZc.gxB(), ((v)parambg).NZd.gxB());
+            if ((ac.Nhs) && (!bool))
             {
               parambg = (Throwable)new AssertionError("DefinitelyNotNullType for flexible type (" + parambg + ") can be created only from type variable with the same constructor for bounds");
               AppMethodBeat.o(60621);
@@ -146,7 +146,7 @@ public final class l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.m.l
  * JD-Core Version:    0.7.0.1
  */

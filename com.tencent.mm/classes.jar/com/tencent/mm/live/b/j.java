@@ -2,26 +2,25 @@ package com.tencent.mm.live.b;
 
 import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.e.a;
-import com.tencent.mm.al.f;
+import com.tencent.mm.ak.e.a;
+import com.tencent.mm.ak.f;
 import com.tencent.mm.live.b.b.a.a;
 import com.tencent.mm.live.b.b.a.c;
 import com.tencent.mm.live.b.b.a.d;
 import com.tencent.mm.live.b.b.a.g;
 import com.tencent.mm.live.core.core.b.d;
 import com.tencent.mm.live.core.core.c.b.a;
-import com.tencent.mm.model.cf;
-import com.tencent.mm.protocal.protobuf.buq;
-import com.tencent.mm.protocal.protobuf.bur;
-import com.tencent.mm.protocal.protobuf.bux;
+import com.tencent.mm.model.ch;
+import com.tencent.mm.protocal.protobuf.bvk;
+import com.tencent.mm.protocal.protobuf.bvl;
+import com.tencent.mm.protocal.protobuf.bvr;
 import com.tencent.mm.protocal.protobuf.cv;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.trtc.TRTCCloudDef.TRTCParams;
 import d.g.b.p;
-import d.k.h;
 import d.l;
 import d.n.n;
 import d.v;
@@ -32,30 +31,30 @@ import java.util.LinkedList;
 import java.util.Map;
 import java.util.Map<Ljava.lang.String;Ljava.lang.String;>;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/live/model/LiveSysMsgReceiver;", "Lcom/tencent/mm/plugin/messenger/foundation/api/INewXmlReceived;", "()V", "onNewXmlReceived", "", "subType", "", "values", "", "addMsgInfo", "Lcom/tencent/mm/modelbase/IMessageExtension$AddMsgInfo;", "Companion", "plugin-logic_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/live/model/LiveSysMsgReceiver;", "Lcom/tencent/mm/plugin/messenger/foundation/api/INewXmlReceived;", "()V", "onNewXmlReceived", "", "subType", "", "values", "", "addMsgInfo", "Lcom/tencent/mm/modelbase/IMessageExtension$AddMsgInfo;", "Companion", "plugin-logic_release"})
 public final class j
   implements com.tencent.mm.plugin.messenger.foundation.a.q
 {
-  public static final a gPl;
+  public static final a gRT;
   
   static
   {
-    AppMethodBeat.i(212157);
-    gPl = new a((byte)0);
-    AppMethodBeat.o(212157);
+    AppMethodBeat.i(215777);
+    gRT = new a((byte)0);
+    AppMethodBeat.o(215777);
   }
   
   public final void onNewXmlReceived(String paramString, Map<String, String> paramMap, e.a parama)
   {
-    AppMethodBeat.i(212156);
+    AppMethodBeat.i(215776);
     long l1;
     if (p.i(paramString, "ApplyLiveMic"))
     {
-      ad.i("MicroMsg.LiveSysMsgReceiver", "receive apply live mic newxml");
+      ae.i("MicroMsg.LiveSysMsgReceiver", "receive apply live mic newxml");
       if (paramMap != null)
       {
         paramString = (String)paramMap.get(".sysmsg.mmlive.live_id");
-        l1 = bt.getLong(paramString, 0L);
+        l1 = bu.getLong(paramString, 0L);
         if (paramMap != null)
         {
           paramString = (String)paramMap.get(".sysmsg.mmlive.live_mic_id");
@@ -106,24 +105,24 @@ public final class j
           }
           for (;;)
           {
-            Object localObject2 = g.gOr;
-            localObject2 = g.aod();
+            Object localObject2 = g.gQZ;
+            localObject2 = g.aos();
             paramString = new a.a(l1, paramString, parama, (String)localObject1, paramMap);
             p.h(paramString, "liveMicUser");
-            paramMap = com.tencent.mm.live.core.debug.a.gKp;
-            com.tencent.mm.live.core.debug.a.ar("MicroMsg.LiveCoreMic", "[sysmsg]anchor receive mic ".concat(String.valueOf(paramString)));
-            paramMap = g.gOr;
-            if (g.ans().Fsa == paramString.gGy)
+            paramMap = com.tencent.mm.live.core.debug.a.gMY;
+            com.tencent.mm.live.core.debug.a.as("MicroMsg.LiveCoreMic", "[sysmsg]anchor receive mic ".concat(String.valueOf(paramString)));
+            paramMap = g.gQZ;
+            if (g.anH().FKy == paramString.gJh)
             {
-              parama = ((Iterable)((com.tencent.mm.live.b.b.a)localObject2).gQO).iterator();
+              parama = ((Iterable)((com.tencent.mm.live.b.b.a)localObject2).gTw).iterator();
               while (parama.hasNext())
               {
                 paramMap = (a.a)parama.next();
-                if (p.i(paramMap.gQU, paramString.gQU))
+                if (p.i(paramMap.gTC, paramString.gTC))
                 {
-                  parama = paramString.gQS;
+                  parama = paramString.gTA;
                   p.h(parama, "<set-?>");
-                  paramMap.gQS = parama;
+                  paramMap.gTA = parama;
                   paramString = paramString.roomId;
                   p.h(paramString, "<set-?>");
                   paramMap.roomId = paramString;
@@ -132,25 +131,25 @@ public final class j
             }
             for (;;)
             {
-              paramString = d.z.MKo;
-              AppMethodBeat.o(212156);
+              paramString = d.z.Nhr;
+              AppMethodBeat.o(215776);
               return;
               paramString = null;
               break;
-              ((com.tencent.mm.live.b.b.a)localObject2).gQO.add(0, paramString);
-              aq.f((Runnable)new a.g((com.tencent.mm.live.b.b.a)localObject2));
+              ((com.tencent.mm.live.b.b.a)localObject2).gTw.add(0, paramString);
+              ar.f((Runnable)new a.g((com.tencent.mm.live.b.b.a)localObject2));
               continue;
               paramString = new StringBuilder("anchor receive mic ,but error live_id for ");
-              paramMap = g.gOr;
-              ad.e("MicroMsg.LiveCoreMic", g.ans().Fsa);
+              paramMap = g.gQZ;
+              ae.e("MicroMsg.LiveCoreMic", g.anH().FKy);
             }
             if (p.i(paramString, "AcceptLiveMic"))
             {
-              ad.i("MicroMsg.LiveSysMsgReceiver", "receive accept live mic newxml");
+              ae.i("MicroMsg.LiveSysMsgReceiver", "receive accept live mic newxml");
               if (paramMap != null)
               {
                 paramString = (String)paramMap.get(".sysmsg.mmlive.live_id");
-                l1 = bt.getLong(paramString, 0L);
+                l1 = bu.getLong(paramString, 0L);
                 if (paramMap != null)
                 {
                   paramString = (String)paramMap.get(".sysmsg.mmlive.live_mic_id");
@@ -168,7 +167,7 @@ public final class j
               if (paramMap != null)
               {
                 parama = (String)paramMap.get(".sysmsg.mmlive.live_sdk_info.sdk_appid");
-                i = bt.getInt(parama, 0);
+                i = bu.getInt(parama, 0);
                 if (paramMap != null)
                 {
                   parama = (String)paramMap.get(".sysmsg.mmlive.live_sdk_info.sdk_user_id");
@@ -186,12 +185,12 @@ public final class j
                 if (paramMap != null)
                 {
                   localObject1 = (String)paramMap.get(".sysmsg.mmlive.live_sdk_info.sdk_live_id");
-                  j = bt.getInt((String)localObject1, 0);
+                  j = bu.getInt((String)localObject1, 0);
                   if (paramMap == null) {
                     break label910;
                   }
                   localObject1 = (String)paramMap.get(".sysmsg.mmlive.live_sdk_info.sdk_role_id");
-                  k = bt.getInt((String)localObject1, 0);
+                  k = bu.getInt((String)localObject1, 0);
                   if (paramMap != null)
                   {
                     localObject1 = (String)paramMap.get(".sysmsg.mmlive.live_sdk_info.sdk_user_sig");
@@ -220,19 +219,19 @@ public final class j
                     if (paramMap != null)
                     {
                       localObject3 = (String)paramMap.get(".sysmsg.mmlive.live_sdk_info.expire_for_pmk");
-                      l2 = bt.getLong((String)localObject3, 300L);
+                      l2 = bu.getLong((String)localObject3, 300L);
                       localObject2 = Base64.decode((String)localObject2, 0);
                       p.g(localObject2, "Base64.decode(privateMapKey, 0)");
                       localObject3 = Charset.forName("UTF-8");
                       p.g(localObject3, "Charset.forName(\"UTF-8\")");
                       localObject2 = new String((byte[])localObject2, (Charset)localObject3);
                       localObject1 = new TRTCCloudDef.TRTCParams(i, parama, (String)localObject1, j, (String)localObject2, "");
-                      localObject3 = f.i.gNx;
-                      if (k == f.i.ani()) {
+                      localObject3 = f.i.gQg;
+                      if (k == f.i.any()) {
                         break label922;
                       }
-                      localObject3 = f.i.gNx;
-                      if (k != f.i.anj()) {
+                      localObject3 = f.i.gQg;
+                      if (k != f.i.anz()) {
                         break label922;
                       }
                     }
@@ -249,35 +248,35 @@ public final class j
                       {
                         paramMap = "";
                       }
-                      localObject1 = new bux();
-                      if (!bt.isNullOrNil(paramMap)) {
-                        ((bux)localObject1).parseFrom(Base64.decode(paramMap, 0));
+                      localObject1 = new bvr();
+                      if (!bu.isNullOrNil(paramMap)) {
+                        ((bvr)localObject1).parseFrom(Base64.decode(paramMap, 0));
                       }
-                      paramMap = e.gMR;
-                      e.a((bux)localObject1, null);
-                      paramMap = com.tencent.mm.live.core.core.c.b.gKd;
-                      paramMap = aj.getContext();
+                      paramMap = e.gPA;
+                      e.a((bvr)localObject1, null);
+                      paramMap = com.tencent.mm.live.core.core.c.b.gMM;
+                      paramMap = ak.getContext();
                       p.g(paramMap, "MMApplicationContext.getContext()");
-                      b.a.cr(paramMap).xm((String)localObject2);
+                      b.a.ct(paramMap).xV((String)localObject2);
                       paramString = new a.a(l1, paramString, "", "", parama);
-                      paramMap = g.gOr;
-                      paramMap = g.anw();
+                      paramMap = g.gQZ;
+                      paramMap = g.anL();
                       if (paramMap != null)
                       {
-                        paramMap = paramMap.gHC;
+                        paramMap = paramMap.gKl;
                         if (paramMap != null) {
                           paramMap.privateMapKey = ((String)localObject2);
                         }
                       }
-                      paramMap = g.gOr;
-                      g.aod().a(paramString);
-                      paramString = g.gOr;
-                      g.rh(l2);
-                      paramString = i.gPh;
-                      paramMap = g.gOr;
-                      paramString.rl(h.aH((g.anx() - 60L) * 1000L, 60000L));
-                      paramString = d.z.MKo;
-                      AppMethodBeat.o(212156);
+                      paramMap = g.gQZ;
+                      g.aos().a(paramString);
+                      paramString = g.gQZ;
+                      g.ru(l2);
+                      paramString = i.gRP;
+                      paramMap = g.gQZ;
+                      paramString.ry(d.k.j.aG((g.anM() - 60L) * 1000L, 60000L));
+                      paramString = d.z.Nhr;
+                      AppMethodBeat.o(215776);
                       return;
                       paramString = null;
                       break;
@@ -295,20 +294,20 @@ public final class j
                       if (paramMap != null) {}
                       for (paramString = (String)paramMap.get(".sysmsg.mmlive.live_id");; paramString = null)
                       {
-                        l1 = bt.getLong(paramString, 0L);
-                        ad.i("MicroMsg.LiveSysMsgReceiver", "receive close live newxml liveId:".concat(String.valueOf(l1)));
-                        com.tencent.mm.live.b.c.c.getLiveTipsBarStorage().rn(l1);
-                        paramString = g.gOr;
-                        paramString = g.aod();
-                        paramMap = com.tencent.mm.live.core.debug.a.gKp;
-                        com.tencent.mm.live.core.debug.a.xx("[sysmsg]anchor close live ".concat(String.valueOf(l1)));
-                        aq.f((Runnable)new a.c(paramString, l1));
-                        paramString = g.gOr;
-                        g.rh(0L);
-                        paramString = com.tencent.mm.live.b.c.a.gRa;
-                        com.tencent.mm.live.b.c.a.rm(l1);
-                        paramString = d.z.MKo;
-                        AppMethodBeat.o(212156);
+                        l1 = bu.getLong(paramString, 0L);
+                        ae.i("MicroMsg.LiveSysMsgReceiver", "receive close live newxml liveId:".concat(String.valueOf(l1)));
+                        com.tencent.mm.live.b.c.c.getLiveTipsBarStorage().rA(l1);
+                        paramString = g.gQZ;
+                        paramString = g.aos();
+                        paramMap = com.tencent.mm.live.core.debug.a.gMY;
+                        com.tencent.mm.live.core.debug.a.yg("[sysmsg]anchor close live ".concat(String.valueOf(l1)));
+                        ar.f((Runnable)new a.c(paramString, l1));
+                        paramString = g.gQZ;
+                        g.ru(0L);
+                        paramString = com.tencent.mm.live.b.c.a.gTI;
+                        com.tencent.mm.live.b.c.a.rz(l1);
+                        paramString = d.z.Nhr;
+                        AppMethodBeat.o(215776);
                         return;
                       }
                     }
@@ -316,7 +315,7 @@ public final class j
                       if (paramMap != null)
                       {
                         paramString = (String)paramMap.get(".sysmsg.mmlive.live_id");
-                        l1 = bt.getLong(paramString, 0L);
+                        l1 = bu.getLong(paramString, 0L);
                         if (paramMap != null)
                         {
                           paramString = (String)paramMap.get(".sysmsg.mmlive.audience");
@@ -339,32 +338,32 @@ public final class j
                       {
                         paramMap = "";
                       }
-                      parama = g.gOr;
-                      g.aod().a(l1, paramString, paramMap);
-                      paramString = i.gPh;
-                      com.tencent.mm.ad.c.B(i.gPg);
-                      paramMap = com.tencent.mm.kernel.g.ajB();
+                      parama = g.gQZ;
+                      g.aos().a(l1, paramString, paramMap);
+                      paramString = i.gRP;
+                      com.tencent.mm.ac.c.z(i.gRO);
+                      paramMap = com.tencent.mm.kernel.g.ajQ();
                       p.g(paramMap, "MMKernel.network()");
-                      paramMap.aiU().b(760, (f)paramString);
-                      ad.i("MicroMsg.LiveSysMsgReceiver", "receive close mic newxml liveid:".concat(String.valueOf(l1)));
-                      paramString = d.z.MKo;
-                      AppMethodBeat.o(212156);
+                      paramMap.ajj().b(760, (f)paramString);
+                      ae.i("MicroMsg.LiveSysMsgReceiver", "receive close mic newxml liveid:".concat(String.valueOf(l1)));
+                      paramString = d.z.Nhr;
+                      AppMethodBeat.o(215776);
                       return;
                       paramString = null;
                       break;
                       boolean bool;
                       if (p.i(paramString, "CloseApplyLiveMic"))
                       {
-                        ad.i("MicroMsg.LiveSysMsgReceiver", "receive CloseApplyLiveMic newxml");
+                        ae.i("MicroMsg.LiveSysMsgReceiver", "receive CloseApplyLiveMic newxml");
                         if (paramMap != null)
                         {
                           paramString = (String)paramMap.get(".sysmsg.mmlive.live_id");
-                          l1 = bt.getLong(paramString, 0L);
+                          l1 = bu.getLong(paramString, 0L);
                           if (paramMap == null) {
                             break label1385;
                           }
                           paramString = (String)paramMap.get(".sysmsg.mmlive.enable_apply_live_mic");
-                          if (bt.getInt(paramString, 0) != 1) {
+                          if (bu.getInt(paramString, 0) != 1) {
                             break label1390;
                           }
                         }
@@ -372,16 +371,16 @@ public final class j
                         label1390:
                         for (bool = true;; bool = false)
                         {
-                          paramString = g.gOr;
-                          paramString = g.aod();
-                          paramMap = com.tencent.mm.live.core.debug.a.gKp;
-                          com.tencent.mm.live.core.debug.a.ar("MicroMsg.LiveCoreMic", "[sysmsg]anchor set mic permission:" + bool + " liveId:" + l1);
-                          paramMap = g.gOr;
-                          if (l1 == g.ans().Fsa) {
-                            aq.f((Runnable)new a.d(paramString, bool));
+                          paramString = g.gQZ;
+                          paramString = g.aos();
+                          paramMap = com.tencent.mm.live.core.debug.a.gMY;
+                          com.tencent.mm.live.core.debug.a.as("MicroMsg.LiveCoreMic", "[sysmsg]anchor set mic permission:" + bool + " liveId:" + l1);
+                          paramMap = g.gQZ;
+                          if (l1 == g.anH().FKy) {
+                            ar.f((Runnable)new a.d(paramString, bool));
                           }
-                          paramString = d.z.MKo;
-                          AppMethodBeat.o(212156);
+                          paramString = d.z.Nhr;
+                          AppMethodBeat.o(215776);
                           return;
                           paramString = null;
                           break;
@@ -394,33 +393,33 @@ public final class j
                         if (paramMap != null)
                         {
                           paramString = (String)paramMap.get(".sysmsg.mmlive.live_id");
-                          l1 = bt.getLong(paramString, 0L);
+                          l1 = bu.getLong(paramString, 0L);
                           if (paramMap == null) {
                             break label1602;
                           }
                           paramString = (String)paramMap.get(".sysmsg.mmlive.enable_comment");
                           label1446:
-                          j = bt.getInt(paramString, 0);
+                          j = bu.getInt(paramString, 0);
                           if (paramMap == null) {
                             break label1607;
                           }
                           paramString = (String)paramMap.get(".sysmsg.mmlive.wording");
                           label1470:
-                          paramString = bt.nullAsNil(paramString);
-                          paramMap = g.gOr;
-                          if (g.ans().Fsa == l1)
+                          paramString = bu.nullAsNil(paramString);
+                          paramMap = g.gQZ;
+                          if (g.anH().FKy == l1)
                           {
-                            paramMap = g.gOr;
-                            paramMap = g.ans();
+                            paramMap = g.gQZ;
+                            paramMap = g.anH();
                             if (j != 1) {
                               break label1612;
                             }
                             bool = true;
                             label1508:
-                            paramMap.FBr = bool;
-                            paramMap = g.gOr;
-                            paramMap = g.gOr;
-                            if (!g.ans().FBr) {
+                            paramMap.FTM = bool;
+                            paramMap = g.gQZ;
+                            paramMap = g.gQZ;
+                            if (!g.anH().FTM) {
                               break label1618;
                             }
                           }
@@ -429,15 +428,15 @@ public final class j
                         label1607:
                         label1612:
                         label1618:
-                        for (i = 0;; i = cf.aCN())
+                        for (i = 0;; i = ch.aDd())
                         {
-                          g.nt(i);
-                          paramMap = c.gMO;
+                          g.nw(i);
+                          paramMap = c.gPx;
                           p.g(paramString, "wording");
-                          c.xD(paramString);
-                          ad.i("MicroMsg.LiveSysMsgReceiver", "receive ban comment newxml enableComment:" + j + " wording:" + paramString);
-                          paramString = d.z.MKo;
-                          AppMethodBeat.o(212156);
+                          c.ym(paramString);
+                          ae.i("MicroMsg.LiveSysMsgReceiver", "receive ban comment newxml enableComment:" + j + " wording:" + paramString);
+                          paramString = d.z.Nhr;
+                          AppMethodBeat.o(215776);
                           return;
                           paramString = null;
                           break;
@@ -453,7 +452,7 @@ public final class j
                         if (paramMap != null)
                         {
                           paramString = (String)paramMap.get(".sysmsg.mmlive.live_id");
-                          l1 = bt.getLong(paramString, 0L);
+                          l1 = bu.getLong(paramString, 0L);
                           if (paramMap != null)
                           {
                             paramString = (String)paramMap.get(".sysmsg.mmlive.identity_id");
@@ -510,17 +509,17 @@ public final class j
                               }
                               for (;;)
                               {
-                                localObject3 = g.gOr;
-                                g.aod().a(l1, paramMap, paramString, parama, (String)localObject1, (String)localObject2);
-                                paramString = d.z.MKo;
-                                AppMethodBeat.o(212156);
+                                localObject3 = g.gQZ;
+                                g.aos().a(l1, paramMap, paramString, parama, (String)localObject1, (String)localObject2);
+                                paramString = d.z.Nhr;
+                                AppMethodBeat.o(215776);
                                 return;
                                 paramString = null;
                                 break;
                                 if (p.i(paramString, "OnlineLiveList"))
                                 {
-                                  ad.i("MicroMsg.LiveSysMsgReceiver", "receive online livelist mmlive.");
-                                  localObject1 = new bur();
+                                  ae.i("MicroMsg.LiveSysMsgReceiver", "receive online livelist mmlive.");
+                                  localObject1 = new bvl();
                                   if (paramMap != null)
                                   {
                                     paramMap = (String)paramMap.get(".sysmsg.mmlive.live_info_list");
@@ -531,21 +530,21 @@ public final class j
                                   {
                                     paramString = "";
                                   }
-                                  paramString = ((bur)localObject1).parseFrom(Base64.decode(paramString, 0));
+                                  paramString = ((bvl)localObject1).parseFrom(Base64.decode(paramString, 0));
                                   if (paramString == null)
                                   {
                                     paramString = new v("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.LiveInfoList");
-                                    AppMethodBeat.o(212156);
+                                    AppMethodBeat.o(215776);
                                     throw paramString;
                                   }
-                                  paramMap = (bur)paramString;
-                                  if ((paramMap != null) && (paramMap.fVg != null) && (paramMap.fVg.size() > 0)) {
+                                  paramMap = (bvl)paramString;
+                                  if ((paramMap != null) && (paramMap.fXm != null) && (paramMap.fXm.size() > 0)) {
                                     if (parama != null)
                                     {
-                                      paramString = parama.gqE;
+                                      paramString = parama.gte;
                                       if (paramString != null)
                                       {
-                                        paramString = paramString.Fvk;
+                                        paramString = paramString.FNI;
                                         paramString = com.tencent.mm.platformtools.z.a(paramString);
                                         p.g(paramString, "msgContent");
                                         i = n.a((CharSequence)paramString, ":", 0, false, 6);
@@ -561,7 +560,7 @@ public final class j
                                 for (;;)
                                 {
                                   localObject1 = new LinkedList();
-                                  localObject2 = paramMap.fVg.iterator();
+                                  localObject2 = paramMap.fXm.iterator();
                                   label2014:
                                   label2142:
                                   for (;;)
@@ -569,24 +568,24 @@ public final class j
                                     if (!((Iterator)localObject2).hasNext()) {
                                       break label2144;
                                     }
-                                    localObject3 = (buq)((Iterator)localObject2).next();
+                                    localObject3 = (bvk)((Iterator)localObject2).next();
                                     if (parama != null)
                                     {
-                                      paramMap = parama.gqE;
+                                      paramMap = parama.gte;
                                       if (paramMap == null) {}
                                     }
-                                    for (paramMap = paramMap.Fvj;; paramMap = null)
+                                    for (paramMap = paramMap.FNH;; paramMap = null)
                                     {
-                                      if (com.tencent.mm.platformtools.z.a(paramMap).equals(((buq)localObject3).GOK)) {
+                                      if (com.tencent.mm.platformtools.z.a(paramMap).equals(((bvk)localObject3).Hik)) {
                                         break label2142;
                                       }
                                       paramMap = new com.tencent.mm.live.b.c.b();
-                                      paramMap.field_liveId = ((buq)localObject3).Fsa;
+                                      paramMap.field_liveId = ((bvk)localObject3).FKy;
                                       paramMap.field_hostRoomId = paramString;
-                                      paramMap.field_liveName = ((buq)localObject3).GOL;
-                                      paramMap.field_anchorUsername = ((buq)localObject3).GOK;
+                                      paramMap.field_liveName = ((bvk)localObject3).Hil;
+                                      paramMap.field_anchorUsername = ((bvk)localObject3).Hik;
                                       paramMap.field_isSender = false;
-                                      paramMap.field_timeStamp = ((buq)localObject3).FHr;
+                                      paramMap.field_timeStamp = ((bvk)localObject3).FZN;
                                       ((LinkedList)localObject1).add(paramMap);
                                       break label2014;
                                       paramString = null;
@@ -595,8 +594,8 @@ public final class j
                                   }
                                   label2144:
                                   com.tencent.mm.live.b.c.c.getLiveTipsBarStorage().a((LinkedList)localObject1, paramString);
-                                  paramString = d.z.MKo;
-                                  AppMethodBeat.o(212156);
+                                  paramString = d.z.Nhr;
+                                  AppMethodBeat.o(215776);
                                   return;
                                   label2164:
                                   paramString = "";
@@ -617,7 +616,7 @@ public final class j
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/live/model/LiveSysMsgReceiver$Companion;", "", "()V", "TAG", "", "plugin-logic_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/live/model/LiveSysMsgReceiver$Companion;", "", "()V", "TAG", "", "plugin-logic_release"})
   public static final class a {}
 }
 

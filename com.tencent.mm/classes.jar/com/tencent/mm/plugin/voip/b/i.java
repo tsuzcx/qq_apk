@@ -1,312 +1,312 @@
 package com.tencent.mm.plugin.voip.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/voip/util/VoipRendererReport;", "", "()V", "addRendererViewInFullScreenWindowsTimes", "", "addRendererViewInFullScreenWindowsTimesInvite", "addRendererViewInMiniScreenWindowsTimes", "addRendererViewInMiniScreenWindowsTimesInvite", "changeToFullScreenCount", "", "changeToHWCount", "changeToMiniScreenCount", "changeToSWCount", "mCameraRenderFrameCount", "mServiceRenderFrameCount", "mYuvRenderFrameCount", "onDecModeChanged", "", "mode", "onFrameDrawCost", "cost", "type", "isFullScreen", "", "isFaceBeauty", "onRendererDrawPerFrameEndAfterAddView", "isInvite", "onRendererDrawPerFrameEndAfterAddViewAfterInit", "onRendererViewAdd", "times", "onWindowTypeChanged", "reportCameraRendererCostPerFrame", "reportRendererTypeChangeCount", "reportRendererWindowTypePercent", "reportServiceRendererCostPerFrame", "reportWhileFinish", "reportYUVRendererCostPerFrame", "Companion", "plugin-voip_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/voip/util/VoipRendererReport;", "", "()V", "addRendererViewInFullScreenWindowsTimes", "", "addRendererViewInFullScreenWindowsTimesInvite", "addRendererViewInMiniScreenWindowsTimes", "addRendererViewInMiniScreenWindowsTimesInvite", "changeToFullScreenCount", "", "changeToHWCount", "changeToMiniScreenCount", "changeToSWCount", "mCameraRenderFrameCount", "mServiceRenderFrameCount", "mYuvRenderFrameCount", "onDecModeChanged", "", "mode", "onFrameDrawCost", "cost", "type", "isFullScreen", "", "isFaceBeauty", "onRendererDrawPerFrameEndAfterAddView", "isInvite", "onRendererDrawPerFrameEndAfterAddViewAfterInit", "onRendererViewAdd", "times", "onWindowTypeChanged", "reportCameraRendererCostPerFrame", "reportRendererTypeChangeCount", "reportRendererWindowTypePercent", "reportServiceRendererCostPerFrame", "reportWhileFinish", "reportYUVRendererCostPerFrame", "Companion", "plugin-voip_release"})
 public final class i
 {
-  public static final a ClE;
-  public long ClA = -1L;
-  public int ClB = -1;
-  public int ClC = -1;
-  public int ClD = -1;
-  public long Clt = -1L;
-  public long Clu = -1L;
-  private int Clv = -1;
-  private int Clw = -1;
-  public long Clx = -1L;
-  public long Cly = -1L;
-  public long Clz = -1L;
+  public static final a CDi;
+  public long CCX = -1L;
+  public long CCY = -1L;
+  private int CCZ = -1;
+  private int CDa = -1;
+  public long CDb = -1L;
+  public long CDc = -1L;
+  public long CDd = -1L;
+  public long CDe = -1L;
+  public int CDf = -1;
+  public int CDg = -1;
+  public int CDh = -1;
   
   static
   {
-    AppMethodBeat.i(216008);
-    ClE = new a((byte)0);
-    AppMethodBeat.o(216008);
+    AppMethodBeat.i(210429);
+    CDi = new a((byte)0);
+    AppMethodBeat.o(210429);
   }
   
-  public static final void UH(int paramInt)
+  public static final void Vo(int paramInt)
   {
-    AppMethodBeat.i(216010);
+    AppMethodBeat.i(210431);
     switch (paramInt)
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(216010);
+      AppMethodBeat.o(210431);
       return;
-      k localk = k.ClI;
-      k.ezT();
-      AppMethodBeat.o(216010);
+      k localk = k.CDm;
+      k.eDB();
+      AppMethodBeat.o(210431);
       return;
-      localk = k.ClI;
-      k.ezU();
+      localk = k.CDm;
+      k.eDC();
     }
   }
   
-  private final void ezL()
+  private final void eDt()
   {
-    AppMethodBeat.i(216005);
-    this.Clt += 1L;
-    this.Clu += 1L;
+    AppMethodBeat.i(210426);
+    this.CCX += 1L;
+    this.CCY += 1L;
     k localk;
-    if (this.Clt > 0L)
+    if (this.CCX > 0L)
     {
-      localk = k.ClI;
-      k.BB(this.Clt);
+      localk = k.CDm;
+      k.BZ(this.CCX);
     }
-    if (this.Clu > 0L)
+    if (this.CCY > 0L)
     {
-      localk = k.ClI;
-      k.BC(this.Clu);
+      localk = k.CDm;
+      k.Ca(this.CCY);
     }
-    this.Clt = -1L;
-    this.Clu = -1L;
-    AppMethodBeat.o(216005);
+    this.CCX = -1L;
+    this.CCY = -1L;
+    AppMethodBeat.o(210426);
   }
   
-  private final void ezM()
+  private final void eDu()
   {
-    AppMethodBeat.i(216006);
-    this.Clv += 1;
-    this.Clw += 1;
-    int i = this.Clv + this.Clw;
+    AppMethodBeat.i(210427);
+    this.CCZ += 1;
+    this.CDa += 1;
+    int i = this.CCZ + this.CDa;
     if (i != 0)
     {
       k localk;
-      if (this.Clv > 0)
+      if (this.CCZ > 0)
       {
-        localk = k.ClI;
-        k.BV(this.Clv * 100 / i);
+        localk = k.CDm;
+        k.Ct(this.CCZ * 100 / i);
       }
-      if (this.Clw > 0)
+      if (this.CDa > 0)
       {
-        localk = k.ClI;
-        k.BW(this.Clw * 100 / i);
+        localk = k.CDm;
+        k.Cu(this.CDa * 100 / i);
       }
     }
-    this.Clv = -1;
-    this.Clw = -1;
-    AppMethodBeat.o(216006);
+    this.CCZ = -1;
+    this.CDa = -1;
+    AppMethodBeat.o(210427);
   }
   
-  public static final void ezO()
+  public static final void eDw()
   {
-    AppMethodBeat.i(216009);
-    k localk = k.ClI;
-    k.ezQ();
-    AppMethodBeat.o(216009);
+    AppMethodBeat.i(210430);
+    k localk = k.CDm;
+    k.eDy();
+    AppMethodBeat.o(210430);
   }
   
-  public static final void tB(boolean paramBoolean)
+  public static final void tI(boolean paramBoolean)
   {
-    AppMethodBeat.i(216011);
+    AppMethodBeat.i(210432);
     if (paramBoolean)
     {
-      localk = k.ClI;
-      k.ezW();
-      AppMethodBeat.o(216011);
+      localk = k.CDm;
+      k.eDE();
+      AppMethodBeat.o(210432);
       return;
     }
-    k localk = k.ClI;
-    k.ezV();
-    AppMethodBeat.o(216011);
+    k localk = k.CDm;
+    k.eDD();
+    AppMethodBeat.o(210432);
   }
   
-  public final void UG(int paramInt)
+  public final void Vn(int paramInt)
   {
     switch (paramInt)
     {
     default: 
       return;
     case 0: 
-      this.Clw += 1;
+      this.CDa += 1;
       return;
     }
-    this.Clv += 1;
+    this.CCZ += 1;
+  }
+  
+  public final void aC(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    AppMethodBeat.i(210424);
+    k localk;
+    if (paramBoolean1)
+    {
+      if (paramBoolean2)
+      {
+        if (this.CDd != -1L)
+        {
+          localk = k.CDm;
+          k.Cp(bu.aO(this.CDd));
+          this.CDd = -1L;
+          AppMethodBeat.o(210424);
+        }
+      }
+      else
+      {
+        if (this.CDb != -1L)
+        {
+          localk = k.CDm;
+          k.Cp(bu.aO(this.CDb));
+          this.CDb = -1L;
+        }
+        AppMethodBeat.o(210424);
+      }
+    }
+    else if (paramBoolean2)
+    {
+      if (this.CDe != -1L)
+      {
+        localk = k.CDm;
+        k.Cq(bu.aO(this.CDe));
+        this.CDe = -1L;
+        AppMethodBeat.o(210424);
+      }
+    }
+    else if (this.CDc != -1L)
+    {
+      localk = k.CDm;
+      k.Cq(bu.aO(this.CDc));
+      this.CDc = -1L;
+    }
+    AppMethodBeat.o(210424);
   }
   
   public final void aD(boolean paramBoolean1, boolean paramBoolean2)
   {
-    AppMethodBeat.i(216003);
+    AppMethodBeat.i(210425);
     k localk;
     if (paramBoolean1)
     {
       if (paramBoolean2)
       {
-        if (this.Clz != -1L)
+        if (this.CDd != -1L)
         {
-          localk = k.ClI;
-          k.BR(bt.aO(this.Clz));
-          this.Clz = -1L;
-          AppMethodBeat.o(216003);
+          localk = k.CDm;
+          k.Cn(bu.aO(this.CDd));
+          this.CDd = -1L;
+          AppMethodBeat.o(210425);
         }
       }
       else
       {
-        if (this.Clx != -1L)
+        if (this.CDb != -1L)
         {
-          localk = k.ClI;
-          k.BR(bt.aO(this.Clx));
-          this.Clx = -1L;
+          localk = k.CDm;
+          k.Cd(bu.aO(this.CDb));
+          this.CDb = -1L;
         }
-        AppMethodBeat.o(216003);
+        AppMethodBeat.o(210425);
       }
     }
     else if (paramBoolean2)
     {
-      if (this.ClA != -1L)
+      if (this.CDe != -1L)
       {
-        localk = k.ClI;
-        k.BS(bt.aO(this.ClA));
-        this.ClA = -1L;
-        AppMethodBeat.o(216003);
+        localk = k.CDm;
+        k.Co(bu.aO(this.CDe));
+        this.CDe = -1L;
+        AppMethodBeat.o(210425);
       }
     }
-    else if (this.Cly != -1L)
+    else if (this.CDc != -1L)
     {
-      localk = k.ClI;
-      k.BS(bt.aO(this.Cly));
-      this.Cly = -1L;
+      localk = k.CDm;
+      k.Ce(bu.aO(this.CDc));
+      this.CDc = -1L;
     }
-    AppMethodBeat.o(216003);
+    AppMethodBeat.o(210425);
   }
   
-  public final void aE(boolean paramBoolean1, boolean paramBoolean2)
+  public final void eDv()
   {
-    AppMethodBeat.i(216004);
-    k localk;
-    if (paramBoolean1)
-    {
-      if (paramBoolean2)
-      {
-        if (this.Clz != -1L)
-        {
-          localk = k.ClI;
-          k.BP(bt.aO(this.Clz));
-          this.Clz = -1L;
-          AppMethodBeat.o(216004);
-        }
-      }
-      else
-      {
-        if (this.Clx != -1L)
-        {
-          localk = k.ClI;
-          k.BF(bt.aO(this.Clx));
-          this.Clx = -1L;
-        }
-        AppMethodBeat.o(216004);
-      }
-    }
-    else if (paramBoolean2)
-    {
-      if (this.ClA != -1L)
-      {
-        localk = k.ClI;
-        k.BQ(bt.aO(this.ClA));
-        this.ClA = -1L;
-        AppMethodBeat.o(216004);
-      }
-    }
-    else if (this.Cly != -1L)
-    {
-      localk = k.ClI;
-      k.BG(bt.aO(this.Cly));
-      this.Cly = -1L;
-    }
-    AppMethodBeat.o(216004);
+    AppMethodBeat.i(210428);
+    k localk = k.CDm;
+    k.eDx();
+    eDt();
+    eDu();
+    AppMethodBeat.o(210428);
   }
   
-  public final void ezN()
-  {
-    AppMethodBeat.i(216007);
-    k localk = k.ClI;
-    k.ezP();
-    ezL();
-    ezM();
-    AppMethodBeat.o(216007);
-  }
-  
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/voip/util/VoipRendererReport$Companion;", "", "()V", "reportBatteryAverage", "", "data", "", "type", "", "reportCameraOnError", "reportFaceBeautyAlgoException", "reportFaceBeautyUse", "reportNewRendererInitSucc", "isCamera", "", "reportPboSizeInit", "width", "height", "reportRendererModeChanged", "isManual", "reportRendererUse", "plugin-voip_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/voip/util/VoipRendererReport$Companion;", "", "()V", "reportBatteryAverage", "", "data", "", "type", "", "reportCameraOnError", "reportFaceBeautyAlgoException", "reportFaceBeautyUse", "reportNewRendererInitSucc", "isCamera", "", "reportPboSizeInit", "width", "height", "reportRendererModeChanged", "isManual", "reportRendererUse", "plugin-voip_release"})
   public static final class a
   {
-    public static void UI(int paramInt)
+    public static void Vp(int paramInt)
     {
-      AppMethodBeat.i(216000);
+      AppMethodBeat.i(210421);
       switch (paramInt)
       {
       }
       for (;;)
       {
-        AppMethodBeat.o(216000);
+        AppMethodBeat.o(210421);
         return;
-        k localk = k.ClI;
-        k.ezX();
-        AppMethodBeat.o(216000);
+        k localk = k.CDm;
+        k.eDF();
+        AppMethodBeat.o(210421);
         return;
-        localk = k.ClI;
-        k.ezY();
-        AppMethodBeat.o(216000);
+        localk = k.CDm;
+        k.eDG();
+        AppMethodBeat.o(210421);
         return;
-        localk = k.ClI;
-        k.ezZ();
+        localk = k.CDm;
+        k.eDH();
       }
     }
     
-    public static void UJ(int paramInt)
+    public static void Vq(int paramInt)
     {
-      AppMethodBeat.i(216001);
+      AppMethodBeat.i(210422);
       switch (paramInt)
       {
       }
       for (;;)
       {
-        AppMethodBeat.o(216001);
+        AppMethodBeat.o(210422);
         return;
-        k localk = k.ClI;
-        k.eAa();
-        AppMethodBeat.o(216001);
+        k localk = k.CDm;
+        k.eDI();
+        AppMethodBeat.o(210422);
         return;
-        localk = k.ClI;
-        k.eAb();
+        localk = k.CDm;
+        k.eDJ();
       }
     }
     
     public static void ag(long paramLong, int paramInt)
     {
-      AppMethodBeat.i(216002);
+      AppMethodBeat.i(210423);
       switch (paramInt)
       {
       }
       for (;;)
       {
-        AppMethodBeat.o(216002);
+        AppMethodBeat.o(210423);
         return;
-        k localk = k.ClI;
-        k.BE(paramLong);
-        AppMethodBeat.o(216002);
+        k localk = k.CDm;
+        k.Cc(paramLong);
+        AppMethodBeat.o(210423);
         return;
-        localk = k.ClI;
-        k.BD(paramLong);
+        localk = k.CDm;
+        k.Cb(paramLong);
       }
     }
     
-    public static void tC(boolean paramBoolean)
+    public static void tJ(boolean paramBoolean)
     {
-      AppMethodBeat.i(215999);
+      AppMethodBeat.i(210420);
       if (paramBoolean)
       {
-        localk = k.ClI;
-        k.ezR();
-        AppMethodBeat.o(215999);
+        localk = k.CDm;
+        k.eDz();
+        AppMethodBeat.o(210420);
         return;
       }
-      k localk = k.ClI;
-      k.ezS();
-      AppMethodBeat.o(215999);
+      k localk = k.CDm;
+      k.eDA();
+      AppMethodBeat.o(210420);
     }
   }
 }

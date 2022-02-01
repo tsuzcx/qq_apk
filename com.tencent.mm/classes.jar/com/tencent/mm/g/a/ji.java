@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class ji
   extends b
 {
-  public a dwf;
+  public a dxj;
   
   public ji()
   {
@@ -15,16 +15,16 @@ public final class ji
   
   private ji(byte paramByte)
   {
-    AppMethodBeat.i(184504);
-    this.dwf = new a();
-    this.IbR = false;
+    AppMethodBeat.i(155369);
+    this.dxj = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(184504);
+    AppMethodBeat.o(155369);
   }
   
   public static final class a
   {
-    public int dwg;
+    public int scene = 1;
   }
 }
 

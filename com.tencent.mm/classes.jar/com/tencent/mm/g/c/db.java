@@ -8,33 +8,33 @@ public abstract class db
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eEf;
-  private static final int eEm;
-  private static final int eHX = "flag".hashCode();
-  private static final int eLI;
-  private static final int eSV = "reserved1".hashCode();
-  private static final int eSW = "reserved2".hashCode();
-  private static final int eSX = "reserved3".hashCode();
-  private static final int eSY = "reserved4".hashCode();
-  private static final int fdG = "originSvrId".hashCode();
-  private static final int fdH = "newMsgId".hashCode();
-  private static final int fdI = "fromUserName".hashCode();
-  private static final int fdJ = "toUserName".hashCode();
-  private static final int fdK;
+  private static final int eFO;
+  private static final int eFV;
+  private static final int eJG = "flag".hashCode();
+  private static final int eNt;
+  private static final int eUG = "reserved1".hashCode();
+  private static final int eUH = "reserved2".hashCode();
+  private static final int eUI = "reserved3".hashCode();
+  private static final int eUJ = "reserved4".hashCode();
+  private static final int ffA;
+  private static final int ffB;
+  private static final int ffC;
+  private static final int ffD;
+  private static final int ffz = "originSvrId".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eDI = true;
-  private boolean eDP = true;
-  private boolean eHV = true;
-  private boolean eLA = true;
-  private boolean eSj = true;
-  private boolean eSk = true;
-  private boolean eSl = true;
-  private boolean eSm = true;
-  private boolean fdB = true;
-  private boolean fdC = true;
-  private boolean fdD = true;
-  private boolean fdE = true;
-  private boolean fdF = true;
+  private boolean eFr = true;
+  private boolean eFy = true;
+  private boolean eJE = true;
+  private boolean eNl = true;
+  private boolean eTU = true;
+  private boolean eTV = true;
+  private boolean eTW = true;
+  private boolean eTX = true;
+  private boolean ffu = true;
+  private boolean ffv = true;
+  private boolean ffw = true;
+  private boolean ffx = true;
+  private boolean ffy = true;
   public String field_content;
   public long field_createTime;
   public int field_flag;
@@ -51,10 +51,13 @@ public abstract class db
   
   static
   {
-    eEf = "createTime".hashCode();
-    eEm = "content".hashCode();
-    fdK = "msgSource".hashCode();
-    eLI = "msgSeq".hashCode();
+    ffA = "newMsgId".hashCode();
+    ffB = "fromUserName".hashCode();
+    ffC = "toUserName".hashCode();
+    eFO = "createTime".hashCode();
+    eFV = "content".hashCode();
+    ffD = "msgSource".hashCode();
+    eNt = "msgSeq".hashCode();
   }
   
   public void convertFrom(Cursor paramCursor)
@@ -70,11 +73,11 @@ public abstract class db
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (fdG != k) {
+      if (ffz != k) {
         break label65;
       }
       this.field_originSvrId = paramCursor.getLong(i);
-      this.fdB = true;
+      this.ffu = true;
     }
     for (;;)
     {
@@ -82,29 +85,29 @@ public abstract class db
       break label20;
       break;
       label65:
-      if (fdH == k) {
+      if (ffA == k) {
         this.field_newMsgId = paramCursor.getLong(i);
-      } else if (fdI == k) {
+      } else if (ffB == k) {
         this.field_fromUserName = paramCursor.getString(i);
-      } else if (fdJ == k) {
+      } else if (ffC == k) {
         this.field_toUserName = paramCursor.getString(i);
-      } else if (eEf == k) {
+      } else if (eFO == k) {
         this.field_createTime = paramCursor.getLong(i);
-      } else if (eEm == k) {
+      } else if (eFV == k) {
         this.field_content = paramCursor.getString(i);
-      } else if (fdK == k) {
+      } else if (ffD == k) {
         this.field_msgSource = paramCursor.getString(i);
-      } else if (eLI == k) {
+      } else if (eNt == k) {
         this.field_msgSeq = paramCursor.getInt(i);
-      } else if (eHX == k) {
+      } else if (eJG == k) {
         this.field_flag = paramCursor.getInt(i);
-      } else if (eSV == k) {
+      } else if (eUG == k) {
         this.field_reserved1 = paramCursor.getInt(i);
-      } else if (eSW == k) {
+      } else if (eUH == k) {
         this.field_reserved2 = paramCursor.getLong(i);
-      } else if (eSX == k) {
+      } else if (eUI == k) {
         this.field_reserved3 = paramCursor.getString(i);
-      } else if (eSY == k) {
+      } else if (eUJ == k) {
         this.field_reserved4 = paramCursor.getString(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
@@ -115,61 +118,61 @@ public abstract class db
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.fdB) {
+    if (this.ffu) {
       localContentValues.put("originSvrId", Long.valueOf(this.field_originSvrId));
     }
-    if (this.fdC) {
+    if (this.ffv) {
       localContentValues.put("newMsgId", Long.valueOf(this.field_newMsgId));
     }
     if (this.field_fromUserName == null) {
       this.field_fromUserName = "";
     }
-    if (this.fdD) {
+    if (this.ffw) {
       localContentValues.put("fromUserName", this.field_fromUserName);
     }
     if (this.field_toUserName == null) {
       this.field_toUserName = "";
     }
-    if (this.fdE) {
+    if (this.ffx) {
       localContentValues.put("toUserName", this.field_toUserName);
     }
-    if (this.eDI) {
+    if (this.eFr) {
       localContentValues.put("createTime", Long.valueOf(this.field_createTime));
     }
     if (this.field_content == null) {
       this.field_content = "";
     }
-    if (this.eDP) {
+    if (this.eFy) {
       localContentValues.put("content", this.field_content);
     }
     if (this.field_msgSource == null) {
       this.field_msgSource = "";
     }
-    if (this.fdF) {
+    if (this.ffy) {
       localContentValues.put("msgSource", this.field_msgSource);
     }
-    if (this.eLA) {
+    if (this.eNl) {
       localContentValues.put("msgSeq", Integer.valueOf(this.field_msgSeq));
     }
-    if (this.eHV) {
+    if (this.eJE) {
       localContentValues.put("flag", Integer.valueOf(this.field_flag));
     }
-    if (this.eSj) {
+    if (this.eTU) {
       localContentValues.put("reserved1", Integer.valueOf(this.field_reserved1));
     }
-    if (this.eSk) {
+    if (this.eTV) {
       localContentValues.put("reserved2", Long.valueOf(this.field_reserved2));
     }
     if (this.field_reserved3 == null) {
       this.field_reserved3 = "";
     }
-    if (this.eSl) {
+    if (this.eTW) {
       localContentValues.put("reserved3", this.field_reserved3);
     }
     if (this.field_reserved4 == null) {
       this.field_reserved4 = "";
     }
-    if (this.eSm) {
+    if (this.eTX) {
       localContentValues.put("reserved4", this.field_reserved4);
     }
     if (this.systemRowid > 0L) {

@@ -12,27 +12,27 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.TextView.BufferType;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cc.a;
+import com.tencent.mm.cb.a;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.game.f.c;
 import com.tencent.mm.plugin.game.f.e;
 import com.tencent.mm.plugin.game.f.e.a.a;
 import com.tencent.mm.plugin.game.f.e.b;
-import com.tencent.mm.plugin.game.model.o.e;
-import com.tencent.mm.plugin.game.model.o.g;
+import com.tencent.mm.plugin.game.model.o.f;
 import com.tencent.mm.plugin.game.model.o.h;
 import com.tencent.mm.plugin.game.model.o.i;
 import com.tencent.mm.plugin.game.model.o.j;
+import com.tencent.mm.plugin.game.model.o.k;
 import com.tencent.mm.plugin.game.model.p.a;
 import com.tencent.mm.plugin.game.model.s;
 import com.tencent.mm.plugin.messenger.foundation.a.l;
 import com.tencent.mm.pluginsdk.ui.a.b;
 import com.tencent.mm.pluginsdk.ui.span.k;
 import com.tencent.mm.sdk.e.m;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.am;
-import com.tencent.mm.storage.bp;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.an;
+import com.tencent.mm.storage.bq;
 import com.tencent.mm.ui.r;
 import com.tencent.mm.ui.r.a;
 import java.util.LinkedList;
@@ -41,58 +41,58 @@ import java.util.Map;
 public final class n
   extends r<com.tencent.mm.plugin.game.model.o>
 {
-  private static w uqZ;
-  private int djY;
-  private int fTM;
+  private static w uCu;
+  private int dla;
+  private int fVS;
   private Context mContext;
-  private int oIZ;
-  private int udq;
-  private View.OnClickListener ura;
-  private View.OnClickListener urb;
-  private v urc;
-  private v urd;
-  private long ure;
-  private int urf;
-  int urg;
-  private long urh;
-  private com.tencent.mm.plugin.game.model.p urj;
-  private com.tencent.mm.b.f<String, Bitmap> urk;
+  private int oPB;
+  private int uCA;
+  int uCB;
+  private long uCC;
+  private com.tencent.mm.plugin.game.model.p uCD;
+  private com.tencent.mm.b.f<String, Bitmap> uCE;
+  private View.OnClickListener uCv;
+  private View.OnClickListener uCw;
+  private v uCx;
+  private v uCy;
+  private long uCz;
+  private int uoy;
   
   public n(Context paramContext, com.tencent.mm.plugin.game.model.o paramo, int paramInt, long paramLong)
   {
     super(paramContext, paramo);
     AppMethodBeat.i(42259);
-    this.oIZ = 15;
-    this.fTM = 0;
-    this.djY = 0;
-    this.ure = 0L;
-    this.udq = 0;
-    this.urf = 0;
-    this.urg = 0;
+    this.oPB = 15;
+    this.fVS = 0;
+    this.dla = 0;
+    this.uCz = 0L;
+    this.uoy = 0;
+    this.uCA = 0;
+    this.uCB = 0;
     this.mContext = paramContext;
-    this.udq = paramInt;
-    this.urh = paramLong;
-    paramo = ((com.tencent.mm.plugin.game.api.f)g.ab(com.tencent.mm.plugin.game.api.f.class)).cWH();
-    String str = s.A(new int[] { 2, 5, 6, 10, 11, 100 });
+    this.uoy = paramInt;
+    this.uCC = paramLong;
+    paramo = ((com.tencent.mm.plugin.game.api.f)g.ab(com.tencent.mm.plugin.game.api.f.class)).cZl();
+    String str = s.B(new int[] { 2, 5, 6, 10, 11, 100 });
     paramo = paramo.rawQuery("select count(*) from GameRawMessage where " + str + " and showInMsgList = 1 and isHidden = 0", new String[0]);
     if (paramo == null)
     {
-      this.fTM = i;
-      this.djY = ((com.tencent.mm.plugin.game.api.f)g.ab(com.tencent.mm.plugin.game.api.f.class)).cWH().cZi();
-      uqZ = new w();
-      this.ura = new o(paramContext, paramInt);
-      this.urb = new p(paramContext, paramInt);
-      this.urc = new v(paramContext);
-      this.urc.gm(paramInt, 1);
-      this.urd = new v(paramContext);
-      this.urd.gm(paramInt, 2);
-      this.urj = new com.tencent.mm.plugin.game.model.p(paramContext, this.udq);
+      this.fVS = i;
+      this.dla = ((com.tencent.mm.plugin.game.api.f)g.ab(com.tencent.mm.plugin.game.api.f.class)).cZl().dbS();
+      uCu = new w();
+      this.uCv = new o(paramContext, paramInt);
+      this.uCw = new p(paramContext, paramInt);
+      this.uCx = new v(paramContext);
+      this.uCx.gm(paramInt, 1);
+      this.uCy = new v(paramContext);
+      this.uCy.gm(paramInt, 2);
+      this.uCD = new com.tencent.mm.plugin.game.model.p(paramContext, this.uoy);
       paramInt = c.getScreenWidth(this.mContext);
       i = this.mContext.getResources().getDimensionPixelSize(2131165442);
       int j = this.mContext.getResources().getDimensionPixelSize(2131165198);
       int k = this.mContext.getResources().getDimensionPixelSize(2131165500);
-      this.urf = (a.aA(this.mContext, paramInt - j * 2 - i - k) / 34);
-      this.urk = new com.tencent.mm.memory.a.b(30, getClass());
+      this.uCA = (a.aA(this.mContext, paramInt - j * 2 - i - k) / 34);
+      this.uCE = new com.tencent.mm.memory.a.b(30, getClass());
       AppMethodBeat.o(42259);
       return;
     }
@@ -104,45 +104,45 @@ public final class n
     }
   }
   
-  private com.tencent.mm.plugin.game.model.o HZ(int paramInt)
+  private com.tencent.mm.plugin.game.model.o Ix(int paramInt)
   {
     AppMethodBeat.i(42272);
-    if (HY(paramInt))
+    if (Iw(paramInt))
     {
-      localo = (com.tencent.mm.plugin.game.model.o)this.JaC;
+      localo = (com.tencent.mm.plugin.game.model.o)this.Jvk;
       AppMethodBeat.o(42272);
       return localo;
     }
-    if (this.JaE != null)
+    if (this.Jvm != null)
     {
-      localo = (com.tencent.mm.plugin.game.model.o)this.JaE.get(Integer.valueOf(paramInt));
+      localo = (com.tencent.mm.plugin.game.model.o)this.Jvm.get(Integer.valueOf(paramInt));
       if (localo != null)
       {
         AppMethodBeat.o(42272);
         return localo;
       }
     }
-    if (Ia(paramInt)) {}
+    if (Iy(paramInt)) {}
     for (int i = paramInt - 1; (paramInt < 0) || (!getCursor().moveToPosition(i)); i = paramInt)
     {
       AppMethodBeat.o(42272);
       return null;
     }
-    if (this.JaE == null)
+    if (this.Jvm == null)
     {
-      localo = a((com.tencent.mm.plugin.game.model.o)this.JaC, getCursor());
+      localo = a((com.tencent.mm.plugin.game.model.o)this.Jvk, getCursor());
       AppMethodBeat.o(42272);
       return localo;
     }
     com.tencent.mm.plugin.game.model.o localo = a(null, getCursor());
-    this.JaE.put(Integer.valueOf(paramInt), localo);
+    this.Jvm.put(Integer.valueOf(paramInt), localo);
     AppMethodBeat.o(42272);
     return localo;
   }
   
-  private boolean Ia(int paramInt)
+  private boolean Iy(int paramInt)
   {
-    return (this.fTM > this.djY) && (this.djY > 0) && (paramInt > this.djY);
+    return (this.fVS > this.dla) && (this.dla > 0) && (paramInt > this.dla);
   }
   
   private static com.tencent.mm.plugin.game.model.o a(com.tencent.mm.plugin.game.model.o paramo, Cursor paramCursor)
@@ -160,9 +160,9 @@ public final class n
   private void a(ImageView paramImageView, String paramString, float paramFloat)
   {
     AppMethodBeat.i(42265);
-    if (this.urk.aM(paramString))
+    if (this.uCE.aM(paramString))
     {
-      Bitmap localBitmap = (Bitmap)this.urk.get(paramString);
+      Bitmap localBitmap = (Bitmap)this.uCE.get(paramString);
       if ((localBitmap == null) || (localBitmap.isRecycled()))
       {
         b(paramImageView, paramString, paramFloat);
@@ -182,12 +182,12 @@ public final class n
     AppMethodBeat.i(42261);
     LinkedList localLinkedList = new LinkedList();
     int i = 1;
-    while (i < paramo.ubK.size())
+    while (i < paramo.umM.size())
     {
-      localLinkedList.add(paramo.ubK.get(i));
+      localLinkedList.add(paramo.umM.get(i));
       i += 1;
     }
-    parama.urz.a(paramo, localLinkedList, this.urf, this.udq, this.urk);
+    parama.uCS.a(paramo, localLinkedList, this.uCA, this.uoy, this.uCE);
     AppMethodBeat.o(42261);
   }
   
@@ -195,9 +195,9 @@ public final class n
   {
     AppMethodBeat.i(42266);
     e.a.a locala = new e.a.a();
-    locala.idp = false;
-    locala.uvL = paramFloat;
-    e.dav().a(paramImageView, paramString, locala.daw(), new e.b()
+    locala.igi = false;
+    locala.uHk = paramFloat;
+    e.ddh().a(paramImageView, paramString, locala.ddi(), new e.b()
     {
       public final void a(View paramAnonymousView, Bitmap paramAnonymousBitmap)
       {
@@ -211,10 +211,10 @@ public final class n
     AppMethodBeat.o(42266);
   }
   
-  private void dad()
+  private void dcO()
   {
     AppMethodBeat.i(42274);
-    if (this.urh <= 0L)
+    if (this.uCC <= 0L)
     {
       AppMethodBeat.o(42274);
       return;
@@ -225,14 +225,14 @@ public final class n
     {
       if (i < j)
       {
-        com.tencent.mm.plugin.game.model.o localo = HZ(i);
-        if ((localo != null) && (localo.field_msgId == this.urh)) {
-          this.urg = i;
+        com.tencent.mm.plugin.game.model.o localo = Ix(i);
+        if ((localo != null) && (localo.field_msgId == this.uCC)) {
+          this.uCB = i;
         }
       }
       else
       {
-        this.urh = 0L;
+        this.uCC = 0L;
         AppMethodBeat.o(42274);
         return;
       }
@@ -243,19 +243,19 @@ public final class n
   private void h(ImageView paramImageView, String paramString)
   {
     AppMethodBeat.i(42262);
-    if (bt.isNullOrNil(paramString))
+    if (bu.isNullOrNil(paramString))
     {
       a.b.c(paramImageView, paramString);
       AppMethodBeat.o(42262);
       return;
     }
-    if (!this.urk.aM(paramString))
+    if (!this.uCE.aM(paramString))
     {
       i(paramImageView, paramString);
       AppMethodBeat.o(42262);
       return;
     }
-    Bitmap localBitmap = (Bitmap)this.urk.get(paramString);
+    Bitmap localBitmap = (Bitmap)this.uCE.get(paramString);
     if ((localBitmap == null) || (localBitmap.isRecycled()))
     {
       i(paramImageView, paramString);
@@ -269,9 +269,9 @@ public final class n
   private void i(ImageView paramImageView, String paramString)
   {
     AppMethodBeat.i(42263);
-    paramImageView = e.dav().n(paramImageView, paramString);
+    paramImageView = e.ddh().n(paramImageView, paramString);
     if (paramImageView != null) {
-      this.urk.put(paramString, paramImageView);
+      this.uCE.put(paramString, paramImageView);
     }
     AppMethodBeat.o(42263);
   }
@@ -279,9 +279,9 @@ public final class n
   private void j(ImageView paramImageView, String paramString)
   {
     AppMethodBeat.i(42264);
-    if (this.urk.aM(paramString))
+    if (this.uCE.aM(paramString))
     {
-      Bitmap localBitmap = (Bitmap)this.urk.get(paramString);
+      Bitmap localBitmap = (Bitmap)this.uCE.get(paramString);
       if ((localBitmap == null) || (localBitmap.isRecycled()))
       {
         b(paramImageView, paramString, 0.0F);
@@ -296,32 +296,32 @@ public final class n
     AppMethodBeat.o(42264);
   }
   
-  public final boolean HY(int paramInt)
+  public final boolean Iw(int paramInt)
   {
-    return (this.fTM > this.djY) && (this.djY > 0) && (paramInt == this.djY);
+    return (this.fVS > this.dla) && (this.dla > 0) && (paramInt == this.dla);
   }
   
-  public final void Zu()
+  public final void ZD()
   {
     AppMethodBeat.i(42267);
-    s locals = ((com.tencent.mm.plugin.game.api.f)g.ab(com.tencent.mm.plugin.game.api.f.class)).cWH();
-    int i = this.oIZ;
-    String str = s.A(new int[] { 2, 5, 6, 10, 11, 100 });
+    s locals = ((com.tencent.mm.plugin.game.api.f)g.ab(com.tencent.mm.plugin.game.api.f.class)).cZl();
+    int i = this.oPB;
+    String str = s.B(new int[] { 2, 5, 6, 10, 11, 100 });
     setCursor(locals.rawQuery("select * from GameRawMessage where " + str + " and showInMsgList = 1 and isHidden = 0 order by isRead, createTime desc limit " + i, new String[0]));
-    this.oIZ = getCount();
-    if (this.JaF != null) {
-      this.JaF.aSs();
+    this.oPB = getCount();
+    if (this.Jvn != null) {
+      this.Jvn.aSR();
     }
-    dad();
+    dcO();
     super.notifyDataSetChanged();
     AppMethodBeat.o(42267);
   }
   
-  public final void Zv()
+  public final void ZE()
   {
     AppMethodBeat.i(42268);
-    det();
-    Zu();
+    dhl();
+    ZD();
     AppMethodBeat.o(42268);
   }
   
@@ -329,36 +329,36 @@ public final class n
   {
     AppMethodBeat.i(42273);
     getCursor().close();
-    Zu();
+    ZD();
     AppMethodBeat.o(42273);
   }
   
-  public final boolean bXb()
+  public final boolean bYq()
   {
-    return this.oIZ >= this.fTM;
+    return this.oPB >= this.fVS;
   }
   
-  public final void dab()
+  public final void dcM()
   {
     AppMethodBeat.i(42270);
-    if (bXb())
+    if (bYq())
     {
-      if (this.JaF != null) {
-        this.JaF.aSs();
+      if (this.Jvn != null) {
+        this.Jvn.aSR();
       }
       AppMethodBeat.o(42270);
       return;
     }
-    this.oIZ += 15;
-    if (this.oIZ > this.fTM) {
-      this.oIZ = this.fTM;
+    this.oPB += 15;
+    if (this.oPB > this.fVS) {
+      this.oPB = this.fVS;
     }
     AppMethodBeat.o(42270);
   }
   
-  public final int dac()
+  public final int dcN()
   {
-    if ((this.fTM > this.djY) && (this.djY > 0)) {
+    if ((this.fVS > this.dla) && (this.dla > 0)) {
       return 1;
     }
     return 0;
@@ -376,7 +376,7 @@ public final class n
       return 0;
     }
     int i = this.count;
-    int j = dac();
+    int j = dcN();
     AppMethodBeat.o(42271);
     return i + j;
   }
@@ -391,28 +391,28 @@ public final class n
     {
       locala = new a();
       localView = View.inflate(this.context, 2131494355, null);
-      locala.uro = ((ImageView)localView.findViewById(2131300891));
-      locala.urn = ((LinearLayout)localView.findViewById(2131302519));
-      locala.urp = ((LinearLayout)localView.findViewById(2131302525));
-      locala.fOg = ((TextView)localView.findViewById(2131302867));
-      locala.urq = ((ImageView)localView.findViewById(2131297065));
-      locala.lZb = ((TextView)localView.findViewById(2131305896));
-      locala.urr = ((TextView)localView.findViewById(2131302528));
-      locala.urs = ((LinearLayout)localView.findViewById(2131302544));
-      locala.urt = ((TextView)localView.findViewById(2131302546));
-      locala.uru = ((ImageView)localView.findViewById(2131302545));
-      locala.urv = ((ImageView)localView.findViewById(2131302532));
-      locala.urw = ((TextView)localView.findViewById(2131302552));
-      locala.urx = ((TextView)localView.findViewById(2131302549));
-      locala.urz = ((GameMessageListContainerView)localView.findViewById(2131302556));
-      locala.ury = ((LinearLayout)localView.findViewById(2131302527));
+      locala.uCH = ((ImageView)localView.findViewById(2131300891));
+      locala.uCG = ((LinearLayout)localView.findViewById(2131302519));
+      locala.uCI = ((LinearLayout)localView.findViewById(2131302525));
+      locala.fQm = ((TextView)localView.findViewById(2131302867));
+      locala.uCJ = ((ImageView)localView.findViewById(2131297065));
+      locala.mdu = ((TextView)localView.findViewById(2131305896));
+      locala.uCK = ((TextView)localView.findViewById(2131302528));
+      locala.uCL = ((LinearLayout)localView.findViewById(2131302544));
+      locala.uCM = ((TextView)localView.findViewById(2131302546));
+      locala.uCN = ((ImageView)localView.findViewById(2131302545));
+      locala.uCO = ((ImageView)localView.findViewById(2131302532));
+      locala.uCP = ((TextView)localView.findViewById(2131302552));
+      locala.uCQ = ((TextView)localView.findViewById(2131302549));
+      locala.uCS = ((GameMessageListContainerView)localView.findViewById(2131302556));
+      locala.uCR = ((LinearLayout)localView.findViewById(2131302527));
       localView.setTag(locala);
-      localo = HZ(paramInt);
-      if ((localo == null) || (!localo.ucF)) {
+      localo = Ix(paramInt);
+      if ((localo == null) || (!localo.unJ)) {
         break label342;
       }
-      locala.urn.setVisibility(8);
-      locala.ury.setVisibility(0);
+      locala.uCG.setVisibility(8);
+      locala.uCR.setVisibility(0);
     }
     label318:
     label342:
@@ -424,26 +424,26 @@ public final class n
       localView = paramView;
       break;
     }
-    localo.cYU();
+    localo.dbE();
     int j;
     int i;
-    if (!localo.uaY)
+    if (!localo.uma)
     {
-      localo.uaY = true;
+      localo.uma = true;
       j = paramInt + 1001;
       i = j;
-      if (this.djY > 0)
+      if (this.dla > 0)
       {
         i = j;
-        if (paramInt > this.djY) {
+        if (paramInt > this.dla) {
           i = paramInt - 1;
         }
       }
-      com.tencent.mm.game.report.f.a(this.mContext, 13, 1300, i, 1, 0, null, this.udq, 0, null, null, com.tencent.mm.game.report.f.a(null, null, localo.ucB, null));
+      com.tencent.mm.game.report.f.a(this.mContext, 13, 1300, i, 1, 0, null, this.uoy, 0, null, null, com.tencent.mm.game.report.f.a(null, null, localo.unF, null));
     }
-    locala.urn.setVisibility(0);
-    locala.ury.setVisibility(8);
-    locala.urw.setText(com.tencent.mm.plugin.game.f.b.l(this.context, localo.field_createTime * 1000L));
+    locala.uCG.setVisibility(0);
+    locala.uCR.setVisibility(8);
+    locala.uCP.setText(com.tencent.mm.plugin.game.f.b.m(this.context, localo.field_createTime * 1000L));
     label580:
     label620:
     label1266:
@@ -451,98 +451,98 @@ public final class n
     if (localo.field_msgType == 100)
     {
       float f;
-      if (localo.ubM.ucN)
+      if (localo.umO.unS)
       {
         f = 0.08333334F;
-        if (localo.ucp == null) {
+        if (localo.unr == null) {
           break label1287;
         }
-        a(locala.uro, localo.ucp.ucR, f);
-        locala.uro.setVisibility(0);
-        if (bt.isNullOrNil(localo.ucp.ucQ)) {
+        a(locala.uCH, localo.unr.unW, f);
+        locala.uCH.setVisibility(0);
+        if (bu.isNullOrNil(localo.unr.unV)) {
           break label1240;
         }
-        locala.fOg.setText(localo.ucp.ucQ);
-        locala.fOg.setVisibility(0);
-        if (bt.isNullOrNil(localo.ucp.ucS)) {
+        locala.fQm.setText(localo.unr.unV);
+        locala.fQm.setVisibility(0);
+        if (bu.isNullOrNil(localo.unr.unX)) {
           break label1253;
         }
-        j(locala.urq, localo.ucp.ucS);
-        locala.urq.setVisibility(0);
-        if (bt.isNullOrNil(localo.ucp.ucL)) {
+        j(locala.uCJ, localo.unr.unX);
+        locala.uCJ.setVisibility(0);
+        if (bu.isNullOrNil(localo.unr.unQ)) {
           break label1266;
         }
-        locala.fOg.setEnabled(true);
-        locala.uro.setEnabled(true);
-        paramView = new p.a(localo, localo.ucp.ucL, 1);
-        paramViewGroup = new p.a(localo, localo.ucp.ucL, 2);
-        locala.fOg.setTag(paramView);
-        locala.fOg.setOnClickListener(this.urj);
-        locala.uro.setTag(paramViewGroup);
-        locala.uro.setOnClickListener(this.urj);
+        locala.fQm.setEnabled(true);
+        locala.uCH.setEnabled(true);
+        paramView = new p.a(localo, localo.unr.unQ, 1);
+        paramViewGroup = new p.a(localo, localo.unr.unQ, 2);
+        locala.fQm.setTag(paramView);
+        locala.fQm.setOnClickListener(this.uCD);
+        locala.uCH.setTag(paramViewGroup);
+        locala.uCH.setOnClickListener(this.uCD);
         label732:
-        if (bt.isNullOrNil(localo.ucl)) {
+        if (bu.isNullOrNil(localo.unn)) {
           break label1708;
         }
-        paramInt = localo.ubK.size();
+        paramInt = localo.umM.size();
         if (paramInt <= 1) {
           break label1692;
         }
-        locala.lZb.setText(this.context.getResources().getString(2131759951, new Object[] { Integer.valueOf(paramInt) }) + localo.ucl);
+        locala.mdu.setText(this.context.getResources().getString(2131759951, new Object[] { Integer.valueOf(paramInt) }) + localo.unn);
         label810:
-        locala.lZb.setVisibility(0);
+        locala.mdu.setVisibility(0);
         label819:
-        if (bt.isNullOrNil(localo.ucm)) {
+        if (bu.isNullOrNil(localo.uno)) {
           break label1721;
         }
-        locala.urr.setText(k.b(this.context, localo.ucm, locala.urr.getTextSize()));
-        locala.urr.setVisibility(0);
+        locala.uCK.setText(k.b(this.context, localo.uno, locala.uCK.getTextSize()));
+        locala.uCK.setVisibility(0);
         label867:
         a(localo, locala);
-        if (bt.isNullOrNil(localo.ucq.mContent)) {
+        if (bu.isNullOrNil(localo.uns.mContent)) {
           break label1759;
         }
-        locala.urs.setVisibility(0);
-        if (bt.isNullOrNil(localo.ucq.ucL)) {
+        locala.uCL.setVisibility(0);
+        if (bu.isNullOrNil(localo.uns.unQ)) {
           break label1734;
         }
-        paramView = new p.a(localo, localo.ucq.ucL, 3);
-        locala.urs.setTag(paramView);
-        locala.urs.setOnClickListener(this.urj);
-        locala.urs.setEnabled(true);
+        paramView = new p.a(localo, localo.uns.unQ, 3);
+        locala.uCL.setTag(paramView);
+        locala.uCL.setOnClickListener(this.uCD);
+        locala.uCL.setEnabled(true);
         label961:
-        locala.urt.setText(k.b(this.context, localo.ucq.mContent, locala.urt.getTextSize()));
-        if (bt.isNullOrNil(localo.ucq.ucK)) {
+        locala.uCM.setText(k.b(this.context, localo.uns.mContent, locala.uCM.getTextSize()));
+        if (bu.isNullOrNil(localo.uns.unP)) {
           break label1746;
         }
-        j(locala.uru, localo.ucq.ucK);
-        locala.uru.setVisibility(0);
+        j(locala.uCN, localo.uns.unP);
+        locala.uCN.setVisibility(0);
         label1032:
-        if (bt.isNullOrNil(localo.ucn)) {
+        if (bu.isNullOrNil(localo.unp)) {
           break label1784;
         }
-        j(locala.urv, localo.ucn);
-        locala.urv.setVisibility(0);
-        if (bt.isNullOrNil(localo.uco)) {
+        j(locala.uCO, localo.unp);
+        locala.uCO.setVisibility(0);
+        if (bu.isNullOrNil(localo.unq)) {
           break label1772;
         }
-        paramView = new p.a(localo, localo.uco, 3);
-        locala.urv.setTag(paramView);
-        locala.urv.setOnClickListener(this.urj);
-        locala.urv.setEnabled(true);
+        paramView = new p.a(localo, localo.unq, 3);
+        locala.uCO.setTag(paramView);
+        locala.uCO.setOnClickListener(this.uCD);
+        locala.uCO.setEnabled(true);
         label1123:
-        if (bt.isNullOrNil(localo.ucr.mName)) {
+        if (bu.isNullOrNil(localo.unt.mName)) {
           break label1809;
         }
-        locala.urx.setText(localo.ucr.mName);
-        locala.urx.setVisibility(0);
-        if (bt.isNullOrNil(localo.ucr.ucL)) {
+        locala.uCQ.setText(localo.unt.mName);
+        locala.uCQ.setVisibility(0);
+        if (bu.isNullOrNil(localo.unt.unQ)) {
           break label1797;
         }
-        paramView = new p.a(localo, localo.ucr.ucL, 5);
-        locala.urx.setTag(paramView);
-        locala.urx.setOnClickListener(this.urj);
-        locala.urx.setEnabled(true);
+        paramView = new p.a(localo, localo.unt.unQ, 5);
+        locala.uCQ.setTag(paramView);
+        locala.uCQ.setOnClickListener(this.uCD);
+        locala.uCQ.setEnabled(true);
       }
       for (;;)
       {
@@ -551,155 +551,155 @@ public final class n
         f = 0.0F;
         break;
         label1240:
-        locala.fOg.setVisibility(8);
+        locala.fQm.setVisibility(8);
         break label580;
         label1253:
-        locala.urq.setVisibility(8);
+        locala.uCJ.setVisibility(8);
         break label620;
-        locala.fOg.setEnabled(false);
-        locala.uro.setEnabled(false);
+        locala.fQm.setEnabled(false);
+        locala.uCH.setEnabled(false);
         break label732;
         label1287:
-        if (!bt.hj(localo.ubK))
+        if (!bu.ht(localo.umM))
         {
-          paramViewGroup = (o.j)localo.ubK.get(0);
-          if (!bt.isNullOrNil(paramViewGroup.bVF))
+          paramViewGroup = (o.k)localo.umM.get(0);
+          if (!bu.isNullOrNil(paramViewGroup.bVF))
           {
             paramView = paramViewGroup.bVF;
             label1326:
-            if (bt.isNullOrNil(paramViewGroup.ucW)) {
+            if (bu.isNullOrNil(paramViewGroup.uob)) {
               break label1596;
             }
-            locala.fOg.setEnabled(true);
-            locala.uro.setEnabled(true);
-            localObject = new p.a(localo, paramViewGroup.ucW, 1);
-            p.a locala1 = new p.a(localo, paramViewGroup.ucW, 2);
-            locala.fOg.setTag(localObject);
-            locala.fOg.setOnClickListener(this.urj);
-            locala.uro.setTag(locala1);
-            locala.uro.setOnClickListener(this.urj);
+            locala.fQm.setEnabled(true);
+            locala.uCH.setEnabled(true);
+            localObject = new p.a(localo, paramViewGroup.uob, 1);
+            p.a locala1 = new p.a(localo, paramViewGroup.uob, 2);
+            locala.fQm.setTag(localObject);
+            locala.fQm.setOnClickListener(this.uCD);
+            locala.uCH.setTag(locala1);
+            locala.uCH.setOnClickListener(this.uCD);
             label1430:
-            if (bt.isNullOrNil(paramView)) {
+            if (bu.isNullOrNil(paramView)) {
               break label1617;
             }
-            locala.fOg.setText(k.b(this.context, paramView, locala.fOg.getTextSize()), TextView.BufferType.SPANNABLE);
-            locala.fOg.setVisibility(0);
+            locala.fQm.setText(k.b(this.context, paramView, locala.fQm.getTextSize()), TextView.BufferType.SPANNABLE);
+            locala.fQm.setVisibility(0);
             label1473:
-            locala.uro.setVisibility(0);
-            if (bt.isNullOrNil(paramViewGroup.ucT)) {
+            locala.uCH.setVisibility(0);
+            if (bu.isNullOrNil(paramViewGroup.unY)) {
               break label1630;
             }
-            a(locala.uro, paramViewGroup.ucT, f);
+            a(locala.uCH, paramViewGroup.unY, f);
           }
           for (;;)
           {
-            if (bt.isNullOrNil(paramViewGroup.ucV)) {
+            if (bu.isNullOrNil(paramViewGroup.uoa)) {
               break label1646;
             }
-            j(locala.urq, paramViewGroup.ucV);
-            locala.urq.setVisibility(0);
+            j(locala.uCJ, paramViewGroup.uoa);
+            locala.uCJ.setVisibility(0);
             break;
-            paramView = ((l)g.ab(l.class)).azp().Bf(paramViewGroup.userName);
-            if ((paramView == null) || (bt.isNullOrNil(paramView.adv())))
+            paramView = ((l)g.ab(l.class)).azF().BH(paramViewGroup.userName);
+            if ((paramView == null) || (bu.isNullOrNil(paramView.adG())))
             {
               paramView = paramViewGroup.userName;
               break label1326;
             }
-            paramView = paramView.adv();
+            paramView = paramView.adG();
             break label1326;
             label1596:
-            locala.fOg.setEnabled(false);
-            locala.uro.setEnabled(false);
+            locala.fQm.setEnabled(false);
+            locala.uCH.setEnabled(false);
             break label1430;
             label1617:
-            locala.fOg.setVisibility(8);
+            locala.fQm.setVisibility(8);
             break label1473;
             label1630:
-            h(locala.uro, paramViewGroup.userName);
+            h(locala.uCH, paramViewGroup.userName);
           }
           label1646:
-          locala.urq.setVisibility(8);
+          locala.uCJ.setVisibility(8);
           break label732;
         }
-        locala.uro.setVisibility(8);
-        locala.fOg.setVisibility(8);
-        locala.urq.setVisibility(8);
+        locala.uCH.setVisibility(8);
+        locala.fQm.setVisibility(8);
+        locala.uCJ.setVisibility(8);
         break label732;
         label1692:
-        locala.lZb.setText(localo.ucl);
+        locala.mdu.setText(localo.unn);
         break label810;
         label1708:
-        locala.lZb.setVisibility(8);
+        locala.mdu.setVisibility(8);
         break label819;
         label1721:
-        locala.urr.setVisibility(8);
+        locala.uCK.setVisibility(8);
         break label867;
         label1734:
-        locala.urs.setEnabled(false);
+        locala.uCL.setEnabled(false);
         break label961;
         label1746:
-        locala.uru.setVisibility(8);
+        locala.uCN.setVisibility(8);
         break label1032;
         label1759:
-        locala.urs.setVisibility(8);
+        locala.uCL.setVisibility(8);
         break label1032;
         label1772:
-        locala.urv.setEnabled(false);
+        locala.uCO.setEnabled(false);
         break label1123;
         label1784:
-        locala.urv.setVisibility(8);
+        locala.uCO.setVisibility(8);
         break label1123;
         label1797:
-        locala.urx.setEnabled(false);
+        locala.uCQ.setEnabled(false);
         continue;
         label1809:
-        locala.urx.setVisibility(8);
+        locala.uCQ.setVisibility(8);
       }
     }
-    locala.lZb.setVisibility(8);
-    locala.urr.setVisibility(8);
-    locala.urs.setVisibility(8);
-    locala.uru.setVisibility(8);
-    locala.urv.setVisibility(8);
-    locala.urx.setVisibility(8);
-    locala.urx.setEnabled(false);
-    locala.urv.setEnabled(false);
-    locala.uro.setEnabled(false);
-    locala.fOg.setEnabled(false);
-    locala.urz.setVisibility(8);
-    locala.urq.setVisibility(8);
-    if (!bt.hj(localo.ubK))
+    locala.mdu.setVisibility(8);
+    locala.uCK.setVisibility(8);
+    locala.uCL.setVisibility(8);
+    locala.uCN.setVisibility(8);
+    locala.uCO.setVisibility(8);
+    locala.uCQ.setVisibility(8);
+    locala.uCQ.setEnabled(false);
+    locala.uCO.setEnabled(false);
+    locala.uCH.setEnabled(false);
+    locala.fQm.setEnabled(false);
+    locala.uCS.setVisibility(8);
+    locala.uCJ.setVisibility(8);
+    if (!bu.ht(localo.umM))
     {
-      localObject = (o.j)localo.ubK.get(0);
-      paramView = ((l)g.ab(l.class)).azp().Bf(((o.j)localObject).userName);
+      localObject = (o.k)localo.umM.get(0);
+      paramView = ((l)g.ab(l.class)).azF().BH(((o.k)localObject).userName);
       if (paramView != null)
       {
-        paramView = paramView.adv();
+        paramView = paramView.adG();
         label1997:
         paramViewGroup = paramView;
-        if (bt.isNullOrNil(paramView)) {
-          paramViewGroup = ((o.j)localObject).bVF;
+        if (bu.isNullOrNil(paramView)) {
+          paramViewGroup = ((o.k)localObject).bVF;
         }
-        if (!bt.isNullOrNil(((o.j)localObject).ucU)) {
+        if (!bu.isNullOrNil(((o.k)localObject).unZ)) {
           paramInt = 1;
         }
       }
     }
     for (;;)
     {
-      i = localo.ubK.size();
-      if ((!bt.isNullOrNil(localo.ubI)) && ((localo.ubZ & 1L) == 0L))
+      i = localo.umM.size();
+      if ((!bu.isNullOrNil(localo.umK)) && ((localo.unb & 1L) == 0L))
       {
-        locala.urx.setText(localo.ubI);
-        locala.urx.setVisibility(0);
-        if ((localo.ubZ & 0x2) > 0L)
+        locala.uCQ.setText(localo.umK);
+        locala.uCQ.setVisibility(0);
+        if ((localo.unb & 0x2) > 0L)
         {
           j = this.context.getResources().getColor(2131100440);
-          locala.urx.setTextColor(j);
-          locala.urx.setBackgroundResource(2131232492);
-          locala.urx.setOnClickListener(this.ura);
-          locala.urx.setTag(localo);
-          locala.urx.setEnabled(true);
+          locala.uCQ.setTextColor(j);
+          locala.uCQ.setBackgroundResource(2131232492);
+          locala.uCQ.setOnClickListener(this.uCv);
+          locala.uCQ.setTag(localo);
+          locala.uCQ.setEnabled(true);
         }
       }
       else
@@ -708,11 +708,11 @@ public final class n
         if ((localo.field_msgType != 10) && (localo.field_msgType != 11)) {
           break label2433;
         }
-        if (bt.isNullOrNil(localo.mAppName)) {
+        if (bu.isNullOrNil(localo.mAppName)) {
           break label2377;
         }
-        locala.fOg.setText(k.b(this.context, localo.mAppName, locala.fOg.getTextSize()), TextView.BufferType.SPANNABLE);
-        locala.fOg.setVisibility(0);
+        locala.fQm.setText(k.b(this.context, localo.mAppName, locala.fQm.getTextSize()), TextView.BufferType.SPANNABLE);
+        locala.fQm.setVisibility(0);
       }
       for (;;)
       {
@@ -724,194 +724,194 @@ public final class n
         case 8: 
         case 9: 
         default: 
-          ad.e("MicroMsg.GameMessageAdapter", "error msgtype: " + localo.field_msgType);
+          ae.e("MicroMsg.GameMessageAdapter", "error msgtype: " + localo.field_msgType);
           break label318;
           j = this.context.getResources().getColor(2131100420);
-          locala.urx.setTextColor(j);
-          locala.urx.setBackgroundResource(0);
-          locala.urx.setOnClickListener(null);
-          locala.urx.setEnabled(false);
+          locala.uCQ.setTextColor(j);
+          locala.uCQ.setBackgroundResource(0);
+          locala.uCQ.setOnClickListener(null);
+          locala.uCQ.setEnabled(false);
           break label2161;
           label2377:
-          if (!bt.isNullOrNil(paramViewGroup))
+          if (!bu.isNullOrNil(paramViewGroup))
           {
-            locala.fOg.setText(k.b(this.context, paramViewGroup, locala.fOg.getTextSize()));
-            locala.fOg.setVisibility(0);
+            locala.fQm.setText(k.b(this.context, paramViewGroup, locala.fQm.getTextSize()));
+            locala.fQm.setVisibility(0);
           }
           else
           {
-            locala.fOg.setVisibility(8);
+            locala.fQm.setVisibility(8);
             continue;
-            if (!bt.isNullOrNil(paramViewGroup))
+            if (!bu.isNullOrNil(paramViewGroup))
             {
-              locala.fOg.setText(k.b(this.context, paramViewGroup, locala.fOg.getTextSize()));
-              locala.fOg.setVisibility(0);
+              locala.fQm.setText(k.b(this.context, paramViewGroup, locala.fQm.getTextSize()));
+              locala.fQm.setVisibility(0);
               if (paramInt != 0)
               {
-                locala.fOg.setOnClickListener(this.urc);
-                locala.fOg.setTag(localo);
-                locala.fOg.setEnabled(true);
+                locala.fQm.setOnClickListener(this.uCx);
+                locala.fQm.setTag(localo);
+                locala.fQm.setEnabled(true);
               }
             }
             else
             {
-              locala.fOg.setVisibility(8);
+              locala.fQm.setVisibility(8);
             }
           }
           label2433:
           break;
         }
       }
-      if (!bt.isNullOrNil(localo.ubE))
+      if (!bu.isNullOrNil(localo.umG))
       {
-        j(locala.uro, localo.ubE);
-        locala.uro.setVisibility(0);
+        j(locala.uCH, localo.umG);
+        locala.uCH.setVisibility(0);
         label2558:
-        if (!bt.isNullOrNil(localo.pIa))
+        if (!bu.isNullOrNil(localo.pOE))
         {
-          if (bt.isNullOrNil(localo.ubQ)) {
+          if (bu.isNullOrNil(localo.umS)) {
             break label2709;
           }
-          locala.urr.setText(localo.pIa);
-          locala.urr.setVisibility(0);
+          locala.uCK.setText(localo.pOE);
+          locala.uCK.setVisibility(0);
         }
       }
-      while (!bt.isNullOrNil(localo.ubQ))
+      while (!bu.isNullOrNil(localo.umS))
       {
-        j(locala.urv, localo.ubQ);
-        locala.urv.setTag(Long.valueOf(localo.field_msgId));
-        locala.urv.setOnTouchListener(uqZ);
-        locala.urv.setOnClickListener(this.urb);
-        locala.urv.setVisibility(0);
-        locala.urv.setEnabled(true);
+        j(locala.uCO, localo.umS);
+        locala.uCO.setTag(Long.valueOf(localo.field_msgId));
+        locala.uCO.setOnTouchListener(uCu);
+        locala.uCO.setOnClickListener(this.uCw);
+        locala.uCO.setVisibility(0);
+        locala.uCO.setEnabled(true);
         break;
-        ad.e("MicroMsg.GameMessageAdapter", "mAppIcon is null");
-        locala.uro.setVisibility(8);
+        ae.e("MicroMsg.GameMessageAdapter", "mAppIcon is null");
+        locala.uCH.setVisibility(8);
         break label2558;
         label2709:
-        locala.urs.setVisibility(0);
-        locala.urt.setText(localo.pIa);
-        locala.urs.setOnClickListener(this.urb);
-        locala.urs.setTag(Long.valueOf(localo.field_msgId));
+        locala.uCL.setVisibility(0);
+        locala.uCM.setText(localo.pOE);
+        locala.uCL.setOnClickListener(this.uCw);
+        locala.uCL.setTag(Long.valueOf(localo.field_msgId));
       }
-      if (!bt.hj(localo.ubK))
+      if (!bu.ht(localo.umM))
       {
-        locala.uro.setVisibility(0);
-        if (!bt.isNullOrNil(((o.j)localo.ubK.get(0)).ucT))
+        locala.uCH.setVisibility(0);
+        if (!bu.isNullOrNil(((o.k)localo.umM.get(0)).unY))
         {
-          j(locala.uro, ((o.j)localo.ubK.get(0)).ucT);
+          j(locala.uCH, ((o.k)localo.umM.get(0)).unY);
           label2827:
-          if (!bt.isNullOrNil(((o.j)localo.ubK.get(0)).ucU))
+          if (!bu.isNullOrNil(((o.k)localo.umM.get(0)).unZ))
           {
-            locala.uro.setOnClickListener(this.urd);
-            locala.uro.setTag(localo);
-            locala.uro.setEnabled(true);
+            locala.uCH.setOnClickListener(this.uCy);
+            locala.uCH.setTag(localo);
+            locala.uCH.setEnabled(true);
           }
         }
       }
       for (;;)
       {
-        locala.urs.setVisibility(0);
-        locala.urs.setOnClickListener(this.urb);
-        locala.urs.setTag(Long.valueOf(localo.field_msgId));
-        if (localo.ucy != 1) {
+        locala.uCL.setVisibility(0);
+        locala.uCL.setOnClickListener(this.uCw);
+        locala.uCL.setTag(Long.valueOf(localo.field_msgId));
+        if (localo.unC != 1) {
           break label3018;
         }
-        locala.urr.setVisibility(0);
-        locala.urr.setText(k.b(this.context, localo.ucd, locala.urr.getTextSize()));
-        locala.urt.setText(localo.ucg);
+        locala.uCK.setVisibility(0);
+        locala.uCK.setText(k.b(this.context, localo.unf, locala.uCK.getTextSize()));
+        locala.uCM.setText(localo.uni);
         break;
-        h(locala.uro, ((o.j)localo.ubK.get(0)).userName);
+        h(locala.uCH, ((o.k)localo.umM.get(0)).userName);
         break label2827;
-        locala.uro.setVisibility(8);
+        locala.uCH.setVisibility(8);
       }
       label3018:
-      if (localo.ucy == 2)
+      if (localo.unC == 2)
       {
-        locala.urr.setVisibility(0);
-        locala.urr.setText(k.b(this.context, localo.ucd, locala.urr.getTextSize()));
-        locala.urt.setText(localo.uce);
+        locala.uCK.setVisibility(0);
+        locala.uCK.setText(k.b(this.context, localo.unf, locala.uCK.getTextSize()));
+        locala.uCM.setText(localo.ung);
         break;
       }
-      if (localo.ucy != 3) {
+      if (localo.unC != 3) {
         break;
       }
-      locala.lZb.setVisibility(0);
+      locala.mdu.setVisibility(0);
       if (i > 1)
       {
-        locala.lZb.setText(this.context.getResources().getString(2131759943, new Object[] { String.valueOf(i) }));
+        locala.mdu.setText(this.context.getResources().getString(2131759943, new Object[] { String.valueOf(i) }));
         a(localo, locala);
       }
       for (;;)
       {
-        locala.urt.setText(localo.ucg);
+        locala.uCM.setText(localo.uni);
         break;
-        locala.lZb.setText(this.context.getResources().getString(2131759944));
+        locala.mdu.setText(this.context.getResources().getString(2131759944));
       }
-      j(locala.uro, localo.ubE);
+      j(locala.uCH, localo.umG);
       paramView = "礼物";
-      if (localo.ubV.contains("爱心"))
+      if (localo.umX.contains("爱心"))
       {
         paramView = "爱心";
         label3221:
         if (i <= 1) {
           break label3305;
         }
-        locala.lZb.setText(this.context.getResources().getString(2131759949, new Object[] { String.valueOf(i), paramView }));
+        locala.mdu.setText(this.context.getResources().getString(2131759949, new Object[] { String.valueOf(i), paramView }));
       }
       for (;;)
       {
-        locala.lZb.setVisibility(0);
+        locala.mdu.setVisibility(0);
         a(localo, locala);
         break;
-        if (!localo.ubV.contains("体力")) {
+        if (!localo.umX.contains("体力")) {
           break label3221;
         }
         paramView = "体力";
         break label3221;
         label3305:
-        locala.lZb.setText(this.context.getResources().getString(2131759950, new Object[] { paramView }));
+        locala.mdu.setText(this.context.getResources().getString(2131759950, new Object[] { paramView }));
       }
-      if (!bt.hj(localo.ubK))
+      if (!bu.ht(localo.umM))
       {
-        locala.uro.setVisibility(0);
-        if (!bt.isNullOrNil(((o.j)localo.ubK.get(0)).ucT))
+        locala.uCH.setVisibility(0);
+        if (!bu.isNullOrNil(((o.k)localo.umM.get(0)).unY))
         {
-          j(locala.uro, ((o.j)localo.ubK.get(0)).ucT);
+          j(locala.uCH, ((o.k)localo.umM.get(0)).unY);
           label3402:
-          if (!bt.isNullOrNil(((o.j)localo.ubK.get(0)).ucU))
+          if (!bu.isNullOrNil(((o.k)localo.umM.get(0)).unZ))
           {
-            locala.uro.setOnClickListener(this.urd);
-            locala.uro.setTag(localo);
-            locala.uro.setEnabled(true);
+            locala.uCH.setOnClickListener(this.uCy);
+            locala.uCH.setTag(localo);
+            locala.uCH.setEnabled(true);
           }
           label3454:
           if (i <= 1) {
             break label3637;
           }
-          locala.lZb.setText(this.context.getResources().getString(2131759945, new Object[] { String.valueOf(i) }));
+          locala.mdu.setText(this.context.getResources().getString(2131759945, new Object[] { String.valueOf(i) }));
           a(localo, locala);
         }
       }
       for (;;)
       {
-        locala.urs.setVisibility(0);
-        locala.lZb.setVisibility(0);
-        locala.urt.setText(localo.uch);
-        locala.urs.setOnClickListener(this.urb);
-        locala.urs.setTag(Long.valueOf(localo.field_msgId));
-        if (bt.isNullOrNil(localo.ucj)) {
+        locala.uCL.setVisibility(0);
+        locala.mdu.setVisibility(0);
+        locala.uCM.setText(localo.unj);
+        locala.uCL.setOnClickListener(this.uCw);
+        locala.uCL.setTag(Long.valueOf(localo.field_msgId));
+        if (bu.isNullOrNil(localo.unl)) {
           break;
         }
-        locala.uru.setVisibility(0);
-        j(locala.uru, localo.ucj);
+        locala.uCN.setVisibility(0);
+        j(locala.uCN, localo.unl);
         break;
-        h(locala.uro, ((o.j)localo.ubK.get(0)).userName);
+        h(locala.uCH, ((o.k)localo.umM.get(0)).userName);
         break label3402;
-        locala.uro.setVisibility(8);
+        locala.uCH.setVisibility(8);
         break label3454;
         label3637:
-        locala.lZb.setText(this.context.getResources().getString(2131759946));
+        locala.mdu.setText(this.context.getResources().getString(2131759946));
       }
       paramInt = 0;
       continue;
@@ -924,26 +924,26 @@ public final class n
   
   static final class a
   {
-    public TextView fOg;
-    public TextView lZb;
-    public LinearLayout urn;
-    public ImageView uro;
-    public LinearLayout urp;
-    public ImageView urq;
-    public TextView urr;
-    public LinearLayout urs;
-    public TextView urt;
-    public ImageView uru;
-    public ImageView urv;
-    public TextView urw;
-    public TextView urx;
-    public LinearLayout ury;
-    public GameMessageListContainerView urz;
+    public TextView fQm;
+    public TextView mdu;
+    public LinearLayout uCG;
+    public ImageView uCH;
+    public LinearLayout uCI;
+    public ImageView uCJ;
+    public TextView uCK;
+    public LinearLayout uCL;
+    public TextView uCM;
+    public ImageView uCN;
+    public ImageView uCO;
+    public TextView uCP;
+    public TextView uCQ;
+    public LinearLayout uCR;
+    public GameMessageListContainerView uCS;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.n
  * JD-Core Version:    0.7.0.1
  */

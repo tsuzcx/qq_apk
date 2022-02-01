@@ -5,7 +5,7 @@ import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.remittance.a.a;
 import com.tencent.mm.plugin.wallet_payu.remittance.ui.PayURemittanceAdapterUI;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.wallet_core.d;
 
 public class g
@@ -14,7 +14,7 @@ public class g
   public final d a(Activity paramActivity, Bundle paramBundle)
   {
     AppMethodBeat.i(72178);
-    ad.d("MicroMsg.PayURemittanceProcess", "start Process : PayURemittanceProcess");
+    ae.d("MicroMsg.PayURemittanceProcess", "start Process : PayURemittanceProcess");
     b(paramActivity, PayURemittanceAdapterUI.class, paramBundle);
     AppMethodBeat.o(72178);
     return this;
@@ -22,7 +22,7 @@ public class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_payu.remittance.a.g
  * JD-Core Version:    0.7.0.1
  */

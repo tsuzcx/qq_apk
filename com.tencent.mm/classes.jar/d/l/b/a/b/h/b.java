@@ -6,14 +6,14 @@ import java.io.InputStream;
 public abstract class b<MessageType extends q>
   implements s<MessageType>
 {
-  private static final g NqE = ;
+  private static final g NNK = ;
   
   /* Error */
   private MessageType a(d paramd, g paramg)
   {
     // Byte code:
     //   0: aload_1
-    //   1: invokevirtual 33	d/l/b/a/b/h/d:grq	()Ld/l/b/a/b/h/e;
+    //   1: invokevirtual 33	d/l/b/a/b/h/d:gvS	()Ld/l/b/a/b/h/e;
     //   4: astore_1
     //   5: aload_0
     //   6: aload_1
@@ -29,7 +29,7 @@ public abstract class b<MessageType extends q>
     //   22: astore_1
     //   23: aload_1
     //   24: aload_2
-    //   25: putfield 48	d/l/b/a/b/h/k:Nrq	Ld/l/b/a/b/h/q;
+    //   25: putfield 48	d/l/b/a/b/h/k:NOw	Ld/l/b/a/b/h/q;
     //   28: aload_1
     //   29: athrow
     //   30: astore_1
@@ -55,7 +55,7 @@ public abstract class b<MessageType extends q>
       for (Object localObject = new w();; localObject = new w())
       {
         localObject = new k(((w)localObject).getMessage());
-        ((k)localObject).Nrq = paramMessageType;
+        ((k)localObject).NOw = paramMessageType;
         throw ((Throwable)localObject);
       }
     }
@@ -73,7 +73,7 @@ public abstract class b<MessageType extends q>
     }
     catch (k paramInputStream)
     {
-      paramInputStream.Nrq = paramg;
+      paramInputStream.NOw = paramg;
       throw paramInputStream;
     }
   }
@@ -101,7 +101,7 @@ public abstract class b<MessageType extends q>
         }
         m = paramInputStream.read();
         if (m == -1) {
-          throw k.grP();
+          throw k.gwr();
         }
       }
       catch (IOException paramInputStream)
@@ -123,12 +123,12 @@ public abstract class b<MessageType extends q>
           {
             j = paramInputStream.read();
             if (j == -1) {
-              throw k.grP();
+              throw k.gwr();
             }
           }
           else
           {
-            throw k.grR();
+            throw k.gwt();
           }
         } while ((j & 0x80) != 0);
       }
@@ -137,7 +137,7 @@ public abstract class b<MessageType extends q>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     d.l.b.a.b.h.b
  * JD-Core Version:    0.7.0.1
  */

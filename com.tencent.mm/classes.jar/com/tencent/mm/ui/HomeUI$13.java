@@ -15,18 +15,18 @@ final class HomeUI$13
   
   public final void onMMMenuItemSelected(MenuItem paramMenuItem, int paramInt)
   {
-    AppMethodBeat.i(193668);
+    AppMethodBeat.i(186954);
     switch (paramMenuItem.getItemId())
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(193668);
+      AppMethodBeat.o(186954);
       return;
-      HomeUI.n(this.IYs);
-      AppMethodBeat.o(193668);
+      HomeUI.n(this.Jta);
+      AppMethodBeat.o(186954);
       return;
-      HomeUI.m(this.IYs);
+      HomeUI.m(this.Jta);
     }
   }
 }

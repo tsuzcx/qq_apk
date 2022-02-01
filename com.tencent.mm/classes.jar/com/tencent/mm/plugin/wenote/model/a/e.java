@@ -5,21 +5,21 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class e
   extends o
 {
-  public long EzD;
+  public long ERZ;
   
   public e(long paramLong)
   {
-    this.EzD = paramLong;
-    this.dsU = "";
-    this.ptS = "";
-    this.dBx = "";
+    this.ERZ = paramLong;
+    this.dua = "";
+    this.pAw = "";
+    this.dCC = "";
     this.type = -3;
   }
   
-  public final String eWO()
+  public final String faA()
   {
     AppMethodBeat.i(30374);
-    String str = super.eWO();
+    String str = super.faA();
     AppMethodBeat.o(30374);
     return str;
   }

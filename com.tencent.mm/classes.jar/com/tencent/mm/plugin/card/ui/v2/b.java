@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.card.ui.v2;
 
-import com.tencent.mm.protocal.protobuf.byr;
-import com.tencent.mm.protocal.protobuf.cho;
-import com.tencent.mm.protocal.protobuf.chp;
+import com.tencent.mm.protocal.protobuf.bzl;
+import com.tencent.mm.protocal.protobuf.cii;
+import com.tencent.mm.protocal.protobuf.cij;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/card/ui/v2/CardTicketListModel;", "", "()V", "jumpElement", "Lcom/tencent/mm/protocal/protobuf/PageTicketJumpElement;", "getJumpElement", "()Lcom/tencent/mm/protocal/protobuf/PageTicketJumpElement;", "setJumpElement", "(Lcom/tencent/mm/protocal/protobuf/PageTicketJumpElement;)V", "ticketElement", "Lcom/tencent/mm/protocal/protobuf/PageTicketElement;", "getTicketElement", "()Lcom/tencent/mm/protocal/protobuf/PageTicketElement;", "setTicketElement", "(Lcom/tencent/mm/protocal/protobuf/PageTicketElement;)V", "title", "", "getTitle", "()Ljava/lang/String;", "setTitle", "(Ljava/lang/String;)V", "type", "", "getType", "()I", "setType", "(I)V", "underElement", "Lcom/tencent/mm/protocal/protobuf/MedicareAndSocialSecurityCardTips;", "getUnderElement", "()Lcom/tencent/mm/protocal/protobuf/MedicareAndSocialSecurityCardTips;", "setUnderElement", "(Lcom/tencent/mm/protocal/protobuf/MedicareAndSocialSecurityCardTips;)V", "plugin-card_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/card/ui/v2/CardTicketListModel;", "", "()V", "jumpElement", "Lcom/tencent/mm/protocal/protobuf/PageTicketJumpElement;", "getJumpElement", "()Lcom/tencent/mm/protocal/protobuf/PageTicketJumpElement;", "setJumpElement", "(Lcom/tencent/mm/protocal/protobuf/PageTicketJumpElement;)V", "ticketElement", "Lcom/tencent/mm/protocal/protobuf/PageTicketElement;", "getTicketElement", "()Lcom/tencent/mm/protocal/protobuf/PageTicketElement;", "setTicketElement", "(Lcom/tencent/mm/protocal/protobuf/PageTicketElement;)V", "title", "", "getTitle", "()Ljava/lang/String;", "setTitle", "(Ljava/lang/String;)V", "type", "", "getType", "()I", "setType", "(I)V", "underElement", "Lcom/tencent/mm/protocal/protobuf/MedicareAndSocialSecurityCardTips;", "getUnderElement", "()Lcom/tencent/mm/protocal/protobuf/MedicareAndSocialSecurityCardTips;", "setUnderElement", "(Lcom/tencent/mm/protocal/protobuf/MedicareAndSocialSecurityCardTips;)V", "plugin-card_release"})
 public final class b
 {
-  chp oMo;
-  cho oMp;
-  byr oMq;
+  cij oSQ;
+  cii oSR;
+  bzl oSS;
   String title;
   int type;
 }

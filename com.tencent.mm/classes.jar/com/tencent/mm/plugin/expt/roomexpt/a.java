@@ -3,47 +3,47 @@ package com.tencent.mm.plugin.expt.roomexpt;
 import android.content.Context;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.b.a.ed;
+import com.tencent.mm.g.b.a.ef;
 import com.tencent.mm.kernel.api.c;
 import com.tencent.mm.kernel.e.c;
 import com.tencent.mm.plugin.expt.b.b.a;
 import com.tencent.mm.plugin.messenger.foundation.a.k;
-import com.tencent.mm.plugin.messenger.foundation.a.y;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.al.a;
+import com.tencent.mm.plugin.messenger.foundation.a.z;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.aj;
+import com.tencent.mm.storage.am.a;
 import java.text.SimpleDateFormat;
 
 public final class a
   implements c, d
 {
-  private static final float[] raO = { 0.0F, 0.3F, 0.45F, 0.55F, 0.67F, 0.75F, 0.85F, 1.0F };
-  private static final float[] raP = { 0.0F, 0.0F, 0.0F, 0.0F, 0.1F, 0.2F, 0.3F, 0.4F };
-  private static final float[] raQ = { 0.0F, 0.1F, 0.2F, 0.3F, 0.4F, 0.5F, 0.6F, 0.7F, 0.8F, 0.9F, 1.0F };
-  private static final int[] raR = { 15, 35, 83, 140, 209, 297, 417, 599, 926, 1720 };
-  private static final float[] raS = { 0.0F, 0.3F, 0.5F, 0.6F, 0.7F, 0.7F, 0.8F, 0.8F, 0.9F, 0.9F, 0.9F, 0.9F, 0.9F, 0.9F, 1.0F };
-  private static final float[] raT = { 0.0F, 0.3F, 0.45F, 0.55F, 0.6F, 0.7F, 0.7F, 0.8F, 0.8F, 0.8F, 0.9F, 0.9F, 0.9F, 0.9F, 0.9F, 0.9F, 0.9F, 0.9F, 0.9F, 1.0F };
-  private static final float[] raU = { 0.1F, 0.2F, 0.3F, 0.4F, 0.5F, 0.6F, 0.7F, 0.8F, 0.9F, 1.0F };
-  private static final int[] raV = { 2400, 7500, 13000, 21500, 41000, 65000, 116000, 215000, 455000 };
-  private static final float[] raW = { 0.0F, 0.35F, 0.5F, 0.6F, 0.7F, 0.7F, 0.8F, 0.8F, 0.8F, 0.9F, 0.9F, 0.9F, 0.9F, 0.9F, 0.9F, 0.9F, 0.9F, 0.9F, 0.9F, 1.0F };
-  private static a raY;
-  private SimpleDateFormat raX;
-  public b raZ;
-  private ed rba;
-  private String[] rbb;
-  private boolean rbc;
-  int rbd;
-  private y rbe;
+  private static final float[] riU = { 0.0F, 0.3F, 0.45F, 0.55F, 0.67F, 0.75F, 0.85F, 1.0F };
+  private static final float[] riV = { 0.0F, 0.0F, 0.0F, 0.0F, 0.1F, 0.2F, 0.3F, 0.4F };
+  private static final float[] riW = { 0.0F, 0.1F, 0.2F, 0.3F, 0.4F, 0.5F, 0.6F, 0.7F, 0.8F, 0.9F, 1.0F };
+  private static final int[] riX = { 15, 35, 83, 140, 209, 297, 417, 599, 926, 1720 };
+  private static final float[] riY = { 0.0F, 0.3F, 0.5F, 0.6F, 0.7F, 0.7F, 0.8F, 0.8F, 0.9F, 0.9F, 0.9F, 0.9F, 0.9F, 0.9F, 1.0F };
+  private static final float[] riZ = { 0.0F, 0.3F, 0.45F, 0.55F, 0.6F, 0.7F, 0.7F, 0.8F, 0.8F, 0.8F, 0.9F, 0.9F, 0.9F, 0.9F, 0.9F, 0.9F, 0.9F, 0.9F, 0.9F, 1.0F };
+  private static final float[] rja = { 0.1F, 0.2F, 0.3F, 0.4F, 0.5F, 0.6F, 0.7F, 0.8F, 0.9F, 1.0F };
+  private static final int[] rjb = { 2400, 7500, 13000, 21500, 41000, 65000, 116000, 215000, 455000 };
+  private static final float[] rjc = { 0.0F, 0.35F, 0.5F, 0.6F, 0.7F, 0.7F, 0.8F, 0.8F, 0.8F, 0.9F, 0.9F, 0.9F, 0.9F, 0.9F, 0.9F, 0.9F, 0.9F, 0.9F, 0.9F, 1.0F };
+  private static a rje;
+  private SimpleDateFormat rjd;
+  public b rjf;
+  private ef rjg;
+  private String[] rjh;
+  private boolean rji;
+  int rjj;
+  private z rjk;
   
   public a()
   {
     AppMethodBeat.i(122400);
-    this.raX = null;
-    this.rbc = false;
-    this.rbd = 0;
-    this.rbe = new a.5(this);
+    this.rjd = null;
+    this.rji = false;
+    this.rjj = 0;
+    this.rjk = new a.5(this);
     AppMethodBeat.o(122400);
   }
   
@@ -91,28 +91,28 @@ public final class a
     return paramArrayOfFloat[paramInt];
   }
   
-  public static a crq()
+  public static a csS()
   {
     AppMethodBeat.i(122401);
-    if (raY == null) {
-      raY = new a();
+    if (rje == null) {
+      rje = new a();
     }
-    a locala = raY;
+    a locala = rje;
     AppMethodBeat.o(122401);
     return locala;
   }
   
-  private void crr()
+  private void csT()
   {
     AppMethodBeat.i(122402);
-    if (this.rba == null)
+    if (this.rjg == null)
     {
       AppMethodBeat.o(122402);
       return;
     }
-    String str = this.rba.RD();
-    com.tencent.mm.kernel.g.ajC().ajl().set(al.a.IDP, str);
-    ad.i("MicroMsg.ChatRoomExptService", "save expt info[%s]", new Object[] { this.rba.RE() });
+    String str = this.rjg.RC();
+    com.tencent.mm.kernel.g.ajR().ajA().set(am.a.IYp, str);
+    ae.i("MicroMsg.ChatRoomExptService", "save expt info[%s]", new Object[] { this.rjg.RD() });
     AppMethodBeat.o(122402);
   }
   
@@ -137,25 +137,25 @@ public final class a
     {
       try
       {
-        f2 = b(raP, paramInt1);
+        f2 = b(riV, paramInt1);
         f1 = f2;
         f2 = (paramFloat / paramInt1 + paramFloat / 7.0F) / 2.0F - f2;
         f1 = f2;
-        ad.d("MicroMsg.ChatRoomExptService", "calc finish score result[%f] day[%d] isMute[%d] score[%f]", new Object[] { Float.valueOf(f2), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Float.valueOf(paramFloat) });
+        ae.d("MicroMsg.ChatRoomExptService", "calc finish score result[%f] day[%d] isMute[%d] score[%f]", new Object[] { Float.valueOf(f2), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Float.valueOf(paramFloat) });
         f1 = f2;
       }
       catch (Exception localException)
       {
         float f2;
         label123:
-        ad.e("MicroMsg.ChatRoomExptService", "calc finish score error[%s]", new Object[] { localException.toString() });
+        ae.e("MicroMsg.ChatRoomExptService", "calc finish score error[%s]", new Object[] { localException.toString() });
         continue;
       }
       AppMethodBeat.o(122410);
       return f1;
       i = 0;
       break;
-      f2 = b(raO, paramInt1);
+      f2 = b(riU, paramInt1);
       f2 += (paramFloat / paramInt1 + paramFloat / 7.0F) / 2.0F;
     }
   }
@@ -164,12 +164,12 @@ public final class a
   {
     AppMethodBeat.i(122406);
     com.tencent.mm.plugin.expt.b.b localb = (com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class);
-    b.a locala = b.a.qpK;
+    b.a locala = b.a.qwr;
     boolean bool;
     int i;
-    if (this.rba != null)
+    if (this.rjg != null)
     {
-      bool = this.rba.ehI;
+      bool = this.rjg.ejs;
       if (localb.a(locala, bool)) {
         break label73;
       }
@@ -185,11 +185,11 @@ public final class a
       bool = false;
       break;
       label73:
-      com.tencent.mm.plugin.report.service.g.yhR.dD(869, 1);
-      long l = this.rba.ehF;
+      com.tencent.mm.plugin.report.service.g.yxI.dD(869, 1);
+      long l = this.rjg.ejp;
       if (l >= 3L)
       {
-        ad.d("MicroMsg.ChatRoomExptService", "room expt already finish");
+        ae.d("MicroMsg.ChatRoomExptService", "room expt already finish");
         i = 0;
       }
       else
@@ -205,13 +205,13 @@ public final class a
         label188:
         for (l = 1L | l;; l = 0x2 | l)
         {
-          this.rba.ehF = l;
+          this.rjg.ejp = l;
           if (l < 3L) {
             break label199;
           }
-          ad.d("MicroMsg.ChatRoomExptService", "user already enter mute room and unmute room, don't expt");
-          com.tencent.mm.plugin.report.service.g.yhR.dD(869, 2);
-          crr();
+          ae.d("MicroMsg.ChatRoomExptService", "user already enter mute room and unmute room, don't expt");
+          com.tencent.mm.plugin.report.service.g.yxI.dD(869, 2);
+          csT();
           i = 0;
           break;
           i = 0;
@@ -220,41 +220,41 @@ public final class a
         label199:
         if (i != 0)
         {
-          if (this.rba.ehG <= 0L) {
-            this.rba.Ti();
+          if (this.rjg.ejq <= 0L) {
+            this.rjg.To();
           }
-          crr();
+          csT();
         }
         i = 1;
       }
     }
     label234:
-    com.tencent.mm.kernel.g.ajF().ay(new Runnable()
+    com.tencent.mm.kernel.g.ajU().aw(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(122397);
-        long l1 = bt.HI();
-        long l2 = bt.aQJ();
+        long l1 = bu.HQ();
+        long l2 = bu.aRi();
         String str1;
         boolean bool1;
         e locale;
         Object localObject;
         label102:
         int i;
-        if (a.a(a.this).ehG <= 0L)
+        if (a.a(a.this).ejq <= 0L)
         {
-          a.a(a.this).Ti();
+          a.a(a.this).To();
           a.c(a.this);
           str1 = a.e(a.this);
           bool1 = a.x(paramLong, paramString1);
-          locale = a.f(a.this).ga(paramInt1, str1);
+          locale = a.f(a.this).gf(paramInt1, str1);
           String str2 = paramInt1;
           if (locale == null) {
             break label360;
           }
           localObject = locale;
-          ad.i("MicroMsg.ChatRoomExptService", "get db [%s %s] item [%s]", new Object[] { str2, str1, localObject });
+          ae.i("MicroMsg.ChatRoomExptService", "get db [%s %s] item [%s]", new Object[] { str2, str1, localObject });
           if (locale == null) {
             break label382;
           }
@@ -295,12 +295,12 @@ public final class a
         for (boolean bool2 = a.f(a.this).c(locale);; bool2 = a.f(a.this).b(locale))
         {
           if (!bool2) {
-            com.tencent.mm.plugin.report.service.g.yhR.dD(869, 32);
+            com.tencent.mm.plugin.report.service.g.yxI.dD(869, 32);
           }
-          ad.i("MicroMsg.ChatRoomExptService", "noteroominfo isUpdate[%b] dbOpRet[%b] cost[%d] item[%s]", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2), Long.valueOf(bt.aO(l1)), locale });
+          ae.i("MicroMsg.ChatRoomExptService", "noteroominfo isUpdate[%b] dbOpRet[%b] cost[%d] item[%s]", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2), Long.valueOf(bu.aO(l1)), locale });
           AppMethodBeat.o(122397);
           return;
-          if (l2 - a.a(a.this).ehG < 604800L) {
+          if (l2 - a.a(a.this).ejq < 604800L) {
             break;
           }
           a.d(a.this);
@@ -318,7 +318,7 @@ public final class a
           label382:
           locale = new e();
           locale.field_chatroom = paramInt1;
-          locale.field_nickname = this.rbk;
+          locale.field_nickname = this.rjq;
           locale.field_daySec = str1;
           locale.field_sendCount = paramString1;
           if (paramString2)
@@ -352,52 +352,52 @@ public final class a
     AppMethodBeat.o(122406);
   }
   
-  public final void aV(final String paramString, final boolean paramBoolean)
+  public final void aX(final String paramString, final boolean paramBoolean)
   {
     AppMethodBeat.i(122405);
-    ad.d("MicroMsg.ChatRoomExptService", "enter chat room [%s] isMute[%b]", new Object[] { paramString, Boolean.valueOf(paramBoolean) });
-    if (this.rbd > 0)
+    ae.d("MicroMsg.ChatRoomExptService", "enter chat room [%s] isMute[%b]", new Object[] { paramString, Boolean.valueOf(paramBoolean) });
+    if (this.rjj > 0)
     {
-      this.rbd -= 1;
-      com.tencent.mm.kernel.g.ajF().ay(new Runnable()
+      this.rjj -= 1;
+      com.tencent.mm.kernel.g.ajU().aw(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(122395);
-          a.aW(paramString, paramBoolean);
+          a.aY(paramString, paramBoolean);
           AppMethodBeat.o(122395);
         }
       });
       AppMethodBeat.o(122405);
       return;
     }
-    if ((this.rbb == null) || (this.rbb.length <= 0))
+    if ((this.rjh == null) || (this.rjh.length <= 0))
     {
-      ad.d("MicroMsg.ChatRoomExptService", "roomname list is null");
+      ae.d("MicroMsg.ChatRoomExptService", "roomname list is null");
       AppMethodBeat.o(122405);
       return;
     }
-    if (this.rba == null)
+    if (this.rjg == null)
     {
       AppMethodBeat.o(122405);
       return;
     }
-    if (this.rba.ehF >= 5L)
+    if (this.rjg.ejp >= 5L)
     {
-      ad.d("MicroMsg.ChatRoomExptService", "exptInfo is finish [%d]", new Object[] { Long.valueOf(this.rba.ehF) });
+      ae.d("MicroMsg.ChatRoomExptService", "exptInfo is finish [%d]", new Object[] { Long.valueOf(this.rjg.ejp) });
       AppMethodBeat.o(122405);
       return;
     }
-    com.tencent.mm.kernel.g.ajF().ay(new Runnable()
+    com.tencent.mm.kernel.g.ajU().aw(new Runnable()
     {
       public final void run()
       {
         int i = 0;
         AppMethodBeat.i(122396);
         com.tencent.mm.plugin.expt.b.b localb = (com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class);
-        b.a locala = b.a.qpK;
+        b.a locala = b.a.qwr;
         if (a.a(a.this) != null) {}
-        for (boolean bool = a.a(a.this).ehI; !localb.a(locala, bool); bool = false)
+        for (boolean bool = a.a(a.this).ejs; !localb.a(locala, bool); bool = false)
         {
           AppMethodBeat.o(122396);
           return;
@@ -407,9 +407,9 @@ public final class a
         {
           if (paramString.equals(a.b(a.this)[i]))
           {
-            a.aW(paramString, paramBoolean);
-            a.a(a.this).ehF = 6L;
-            a.a(a.this).nu("");
+            a.aY(paramString, paramBoolean);
+            a.a(a.this).ejp = 6L;
+            a.a(a.this).nP("");
             a.c(a.this);
             AppMethodBeat.o(122396);
             return;
@@ -423,7 +423,7 @@ public final class a
   }
   
   /* Error */
-  final java.util.List<c> crs()
+  final java.util.List<c> csU()
   {
     // Byte code:
     //   0: iconst_0
@@ -431,18 +431,18 @@ public final class a
     //   2: ldc_w 495
     //   5: invokestatic 96	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: aload_0
-    //   9: getfield 124	com/tencent/mm/plugin/expt/roomexpt/a:rba	Lcom/tencent/mm/g/b/a/ed;
+    //   9: getfield 124	com/tencent/mm/plugin/expt/roomexpt/a:rjg	Lcom/tencent/mm/g/b/a/ef;
     //   12: ifnonnull +19 -> 31
     //   15: ldc 216
     //   17: ldc_w 497
-    //   20: invokestatic 500	com/tencent/mm/sdk/platformtools/ad:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   20: invokestatic 500	com/tencent/mm/sdk/platformtools/ae:w	(Ljava/lang/String;Ljava/lang/String;)V
     //   23: ldc_w 495
     //   26: invokestatic 112	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   29: aconst_null
     //   30: areturn
     //   31: aload_0
-    //   32: getfield 124	com/tencent/mm/plugin/expt/roomexpt/a:rba	Lcom/tencent/mm/g/b/a/ed;
-    //   35: getfield 439	com/tencent/mm/g/b/a/ed:ehF	J
+    //   32: getfield 124	com/tencent/mm/plugin/expt/roomexpt/a:rjg	Lcom/tencent/mm/g/b/a/ef;
+    //   35: getfield 439	com/tencent/mm/g/b/a/ef:ejp	J
     //   38: ldc2_w 440
     //   41: lcmp
     //   42: iflt +36 -> 78
@@ -453,11 +453,11 @@ public final class a
     //   54: dup
     //   55: iconst_0
     //   56: aload_0
-    //   57: getfield 124	com/tencent/mm/plugin/expt/roomexpt/a:rba	Lcom/tencent/mm/g/b/a/ed;
-    //   60: getfield 439	com/tencent/mm/g/b/a/ed:ehF	J
+    //   57: getfield 124	com/tencent/mm/plugin/expt/roomexpt/a:rjg	Lcom/tencent/mm/g/b/a/ef;
+    //   60: getfield 439	com/tencent/mm/g/b/a/ef:ejp	J
     //   63: invokestatic 493	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   66: aastore
-    //   67: invokestatic 360	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   67: invokestatic 360	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   70: ldc_w 495
     //   73: invokestatic 112	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   76: aconst_null
@@ -466,14 +466,14 @@ public final class a
     //   81: invokestatic 424	com/tencent/mm/kernel/g:ab	(Ljava/lang/Class;)Lcom/tencent/mm/kernel/c/a;
     //   84: checkcast 420	com/tencent/mm/plugin/expt/b/b
     //   87: astore 9
-    //   89: getstatic 430	com/tencent/mm/plugin/expt/b/b$a:qpK	Lcom/tencent/mm/plugin/expt/b/b$a;
+    //   89: getstatic 430	com/tencent/mm/plugin/expt/b/b$a:qwr	Lcom/tencent/mm/plugin/expt/b/b$a;
     //   92: astore 10
     //   94: aload_0
-    //   95: getfield 124	com/tencent/mm/plugin/expt/roomexpt/a:rba	Lcom/tencent/mm/g/b/a/ed;
+    //   95: getfield 124	com/tencent/mm/plugin/expt/roomexpt/a:rjg	Lcom/tencent/mm/g/b/a/ef;
     //   98: ifnull +42 -> 140
     //   101: aload_0
-    //   102: getfield 124	com/tencent/mm/plugin/expt/roomexpt/a:rba	Lcom/tencent/mm/g/b/a/ed;
-    //   105: getfield 433	com/tencent/mm/g/b/a/ed:ehI	Z
+    //   102: getfield 124	com/tencent/mm/plugin/expt/roomexpt/a:rjg	Lcom/tencent/mm/g/b/a/ef;
+    //   105: getfield 433	com/tencent/mm/g/b/a/ef:ejs	Z
     //   108: istore 6
     //   110: aload 9
     //   112: aload 10
@@ -482,7 +482,7 @@ public final class a
     //   121: ifne +25 -> 146
     //   124: ldc 216
     //   126: ldc_w 504
-    //   129: invokestatic 506	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   129: invokestatic 506	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   132: ldc_w 495
     //   135: invokestatic 112	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   138: aconst_null
@@ -491,41 +491,41 @@ public final class a
     //   141: istore 6
     //   143: goto -33 -> 110
     //   146: aload_0
-    //   147: getfield 312	com/tencent/mm/plugin/expt/roomexpt/a:rbb	[Ljava/lang/String;
+    //   147: getfield 312	com/tencent/mm/plugin/expt/roomexpt/a:rjh	[Ljava/lang/String;
     //   150: ifnull +27 -> 177
     //   153: aload_0
-    //   154: getfield 312	com/tencent/mm/plugin/expt/roomexpt/a:rbb	[Ljava/lang/String;
+    //   154: getfield 312	com/tencent/mm/plugin/expt/roomexpt/a:rjh	[Ljava/lang/String;
     //   157: arraylength
     //   158: ifle +19 -> 177
     //   161: ldc 216
     //   163: ldc_w 508
-    //   166: invokestatic 506	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   166: invokestatic 506	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   169: ldc_w 495
     //   172: invokestatic 112	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   175: aconst_null
     //   176: areturn
     //   177: aload_0
-    //   178: getfield 100	com/tencent/mm/plugin/expt/roomexpt/a:rbc	Z
+    //   178: getfield 100	com/tencent/mm/plugin/expt/roomexpt/a:rji	Z
     //   181: ifeq +19 -> 200
     //   184: ldc 216
     //   186: ldc_w 510
-    //   189: invokestatic 446	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   189: invokestatic 446	com/tencent/mm/sdk/platformtools/ae:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   192: ldc_w 495
     //   195: invokestatic 112	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   198: aconst_null
     //   199: areturn
-    //   200: invokestatic 513	com/tencent/mm/sdk/platformtools/bt:HI	()J
+    //   200: invokestatic 513	com/tencent/mm/sdk/platformtools/bu:HQ	()J
     //   203: lstore 7
     //   205: aload_0
     //   206: iconst_1
-    //   207: putfield 100	com/tencent/mm/plugin/expt/roomexpt/a:rbc	Z
-    //   210: getstatic 303	com/tencent/mm/plugin/report/service/g:yhR	Lcom/tencent/mm/plugin/report/service/g;
+    //   207: putfield 100	com/tencent/mm/plugin/expt/roomexpt/a:rji	Z
+    //   210: getstatic 303	com/tencent/mm/plugin/report/service/g:yxI	Lcom/tencent/mm/plugin/report/service/g;
     //   213: sipush 869
     //   216: bipush 21
     //   218: invokevirtual 307	com/tencent/mm/plugin/report/service/g:dD	(II)V
     //   221: aload_0
-    //   222: getfield 412	com/tencent/mm/plugin/expt/roomexpt/a:raZ	Lcom/tencent/mm/plugin/expt/roomexpt/b;
-    //   225: invokevirtual 519	com/tencent/mm/plugin/expt/roomexpt/b:crw	()Landroid/database/Cursor;
+    //   222: getfield 412	com/tencent/mm/plugin/expt/roomexpt/a:rjf	Lcom/tencent/mm/plugin/expt/roomexpt/b;
+    //   225: invokevirtual 519	com/tencent/mm/plugin/expt/roomexpt/b:csY	()Landroid/database/Cursor;
     //   228: astore 10
     //   230: new 521	java/util/ArrayList
     //   233: dup
@@ -546,7 +546,7 @@ public final class a
     //   266: if_icmpge +201 -> 467
     //   269: ldc 216
     //   271: ldc_w 533
-    //   274: invokestatic 500	com/tencent/mm/sdk/platformtools/ad:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   274: invokestatic 500	com/tencent/mm/sdk/platformtools/ae:w	(Ljava/lang/String;Ljava/lang/String;)V
     //   277: fload_1
     //   278: fstore_2
     //   279: aload 12
@@ -596,17 +596,17 @@ public final class a
     //   376: ldc_w 562
     //   379: invokevirtual 250	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
     //   382: aload 14
-    //   384: getfield 565	com/tencent/mm/plugin/expt/roomexpt/c:dmU	Ljava/lang/String;
+    //   384: getfield 565	com/tencent/mm/plugin/expt/roomexpt/c:dnW	Ljava/lang/String;
     //   387: invokevirtual 250	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
     //   390: pop
     //   391: aload 13
     //   393: aload 13
     //   395: ldc 161
     //   397: aload 14
-    //   399: getfield 565	com/tencent/mm/plugin/expt/roomexpt/c:dmU	Ljava/lang/String;
+    //   399: getfield 565	com/tencent/mm/plugin/expt/roomexpt/c:dnW	Ljava/lang/String;
     //   402: iconst_1
     //   403: invokevirtual 566	com/tencent/mm/g/b/a/n:t	(Ljava/lang/String;Ljava/lang/String;Z)Ljava/lang/String;
-    //   406: putfield 567	com/tencent/mm/g/b/a/n:dSm	Ljava/lang/String;
+    //   406: putfield 567	com/tencent/mm/g/b/a/n:dTC	Ljava/lang/String;
     //   409: aload 13
     //   411: aload 13
     //   413: ldc_w 569
@@ -619,15 +619,15 @@ public final class a
     //   431: invokevirtual 207	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   434: iconst_1
     //   435: invokevirtual 566	com/tencent/mm/g/b/a/n:t	(Ljava/lang/String;Ljava/lang/String;Z)Ljava/lang/String;
-    //   438: putfield 572	com/tencent/mm/g/b/a/n:dSn	Ljava/lang/String;
+    //   438: putfield 572	com/tencent/mm/g/b/a/n:dTD	Ljava/lang/String;
     //   441: aload 13
     //   443: aload_0
-    //   444: getfield 124	com/tencent/mm/plugin/expt/roomexpt/a:rba	Lcom/tencent/mm/g/b/a/ed;
-    //   447: getfield 439	com/tencent/mm/g/b/a/ed:ehF	J
+    //   444: getfield 124	com/tencent/mm/plugin/expt/roomexpt/a:rjg	Lcom/tencent/mm/g/b/a/ef;
+    //   447: getfield 439	com/tencent/mm/g/b/a/ef:ejp	J
     //   450: l2i
-    //   451: putfield 575	com/tencent/mm/g/b/a/n:dSo	I
+    //   451: putfield 575	com/tencent/mm/g/b/a/n:dTE	I
     //   454: aload 13
-    //   456: invokevirtual 576	com/tencent/mm/g/b/a/n:aLk	()Z
+    //   456: invokevirtual 576	com/tencent/mm/g/b/a/n:aLH	()Z
     //   459: pop
     //   460: aload 9
     //   462: astore 11
@@ -661,7 +661,7 @@ public final class a
     //   530: astore 13
     //   532: aload 13
     //   534: aload 9
-    //   536: putfield 565	com/tencent/mm/plugin/expt/roomexpt/c:dmU	Ljava/lang/String;
+    //   536: putfield 565	com/tencent/mm/plugin/expt/roomexpt/c:dnW	Ljava/lang/String;
     //   539: aload 13
     //   541: aload 11
     //   543: putfield 591	com/tencent/mm/plugin/expt/roomexpt/c:nickname	Ljava/lang/String;
@@ -683,7 +683,7 @@ public final class a
     //   576: astore 9
     //   578: aload 9
     //   580: aload 14
-    //   582: getfield 565	com/tencent/mm/plugin/expt/roomexpt/c:dmU	Ljava/lang/String;
+    //   582: getfield 565	com/tencent/mm/plugin/expt/roomexpt/c:dnW	Ljava/lang/String;
     //   585: invokevirtual 250	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
     //   588: pop
     //   589: goto -198 -> 391
@@ -697,14 +697,14 @@ public final class a
     //   606: ldc_w 597
     //   609: iconst_0
     //   610: anewarray 4	java/lang/Object
-    //   613: invokestatic 601	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   613: invokestatic 601	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   616: aload 9
     //   618: ifnull +10 -> 628
     //   621: aload 9
     //   623: invokeinterface 604 1 0
     //   628: ldc 216
     //   630: ldc_w 606
-    //   633: invokestatic 500	com/tencent/mm/sdk/platformtools/ad:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   633: invokestatic 500	com/tencent/mm/sdk/platformtools/ae:w	(Ljava/lang/String;Ljava/lang/String;)V
     //   636: ldc_w 495
     //   639: invokestatic 112	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   642: aconst_null
@@ -712,40 +712,40 @@ public final class a
     //   644: aload 9
     //   646: ifnull +142 -> 788
     //   649: aload_0
-    //   650: getfield 124	com/tencent/mm/plugin/expt/roomexpt/a:rba	Lcom/tencent/mm/g/b/a/ed;
+    //   650: getfield 124	com/tencent/mm/plugin/expt/roomexpt/a:rjg	Lcom/tencent/mm/g/b/a/ef;
     //   653: aload 9
     //   655: invokevirtual 290	java/lang/StringBuffer:toString	()Ljava/lang/String;
-    //   658: invokevirtual 610	com/tencent/mm/g/b/a/ed:nu	(Ljava/lang/String;)Lcom/tencent/mm/g/b/a/ed;
+    //   658: invokevirtual 610	com/tencent/mm/g/b/a/ef:nP	(Ljava/lang/String;)Lcom/tencent/mm/g/b/a/ef;
     //   661: pop
     //   662: aload_0
-    //   663: getfield 124	com/tencent/mm/plugin/expt/roomexpt/a:rba	Lcom/tencent/mm/g/b/a/ed;
+    //   663: getfield 124	com/tencent/mm/plugin/expt/roomexpt/a:rjg	Lcom/tencent/mm/g/b/a/ef;
     //   666: ldc2_w 611
-    //   669: putfield 439	com/tencent/mm/g/b/a/ed:ehF	J
+    //   669: putfield 439	com/tencent/mm/g/b/a/ef:ejp	J
     //   672: aload_0
     //   673: aload_0
-    //   674: getfield 124	com/tencent/mm/plugin/expt/roomexpt/a:rba	Lcom/tencent/mm/g/b/a/ed;
-    //   677: getfield 615	com/tencent/mm/g/b/a/ed:ehH	Ljava/lang/String;
+    //   674: getfield 124	com/tencent/mm/plugin/expt/roomexpt/a:rjg	Lcom/tencent/mm/g/b/a/ef;
+    //   677: getfield 615	com/tencent/mm/g/b/a/ef:ejr	Ljava/lang/String;
     //   680: ldc_w 562
     //   683: invokevirtual 621	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
-    //   686: putfield 312	com/tencent/mm/plugin/expt/roomexpt/a:rbb	[Ljava/lang/String;
-    //   689: getstatic 303	com/tencent/mm/plugin/report/service/g:yhR	Lcom/tencent/mm/plugin/report/service/g;
+    //   686: putfield 312	com/tencent/mm/plugin/expt/roomexpt/a:rjh	[Ljava/lang/String;
+    //   689: getstatic 303	com/tencent/mm/plugin/report/service/g:yxI	Lcom/tencent/mm/plugin/report/service/g;
     //   692: sipush 869
     //   695: bipush 22
     //   697: invokevirtual 307	com/tencent/mm/plugin/report/service/g:dD	(II)V
     //   700: aload_0
-    //   701: invokespecial 317	com/tencent/mm/plugin/expt/roomexpt/a:crr	()V
+    //   701: invokespecial 317	com/tencent/mm/plugin/expt/roomexpt/a:csT	()V
     //   704: aload_0
     //   705: iconst_0
-    //   706: putfield 100	com/tencent/mm/plugin/expt/roomexpt/a:rbc	Z
+    //   706: putfield 100	com/tencent/mm/plugin/expt/roomexpt/a:rji	Z
     //   709: aload_0
-    //   710: getfield 124	com/tencent/mm/plugin/expt/roomexpt/a:rba	Lcom/tencent/mm/g/b/a/ed;
-    //   713: invokevirtual 358	com/tencent/mm/g/b/a/ed:RE	()Ljava/lang/String;
+    //   710: getfield 124	com/tencent/mm/plugin/expt/roomexpt/a:rjg	Lcom/tencent/mm/g/b/a/ef;
+    //   713: invokevirtual 358	com/tencent/mm/g/b/a/ef:RD	()Ljava/lang/String;
     //   716: astore 11
     //   718: aload_0
-    //   719: getfield 312	com/tencent/mm/plugin/expt/roomexpt/a:rbb	[Ljava/lang/String;
+    //   719: getfield 312	com/tencent/mm/plugin/expt/roomexpt/a:rjh	[Ljava/lang/String;
     //   722: ifnull +129 -> 851
     //   725: aload_0
-    //   726: getfield 312	com/tencent/mm/plugin/expt/roomexpt/a:rbb	[Ljava/lang/String;
+    //   726: getfield 312	com/tencent/mm/plugin/expt/roomexpt/a:rjh	[Ljava/lang/String;
     //   729: invokestatic 626	java/util/Arrays:toString	([Ljava/lang/Object;)Ljava/lang/String;
     //   732: astore 9
     //   734: ldc 216
@@ -763,10 +763,10 @@ public final class a
     //   753: dup
     //   754: iconst_2
     //   755: lload 7
-    //   757: invokestatic 632	com/tencent/mm/sdk/platformtools/bt:aO	(J)J
+    //   757: invokestatic 632	com/tencent/mm/sdk/platformtools/bu:aO	(J)J
     //   760: invokestatic 493	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   763: aastore
-    //   764: invokestatic 360	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   764: invokestatic 360	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   767: aload 10
     //   769: ifnull +10 -> 779
     //   772: aload 10
@@ -776,18 +776,18 @@ public final class a
     //   785: aload 12
     //   787: areturn
     //   788: aload_0
-    //   789: getfield 124	com/tencent/mm/plugin/expt/roomexpt/a:rba	Lcom/tencent/mm/g/b/a/ed;
+    //   789: getfield 124	com/tencent/mm/plugin/expt/roomexpt/a:rjg	Lcom/tencent/mm/g/b/a/ef;
     //   792: ldc2_w 485
-    //   795: putfield 439	com/tencent/mm/g/b/a/ed:ehF	J
+    //   795: putfield 439	com/tencent/mm/g/b/a/ef:ejp	J
     //   798: aload_0
-    //   799: getfield 124	com/tencent/mm/plugin/expt/roomexpt/a:rba	Lcom/tencent/mm/g/b/a/ed;
+    //   799: getfield 124	com/tencent/mm/plugin/expt/roomexpt/a:rjg	Lcom/tencent/mm/g/b/a/ef;
     //   802: ldc_w 634
-    //   805: invokevirtual 610	com/tencent/mm/g/b/a/ed:nu	(Ljava/lang/String;)Lcom/tencent/mm/g/b/a/ed;
+    //   805: invokevirtual 610	com/tencent/mm/g/b/a/ef:nP	(Ljava/lang/String;)Lcom/tencent/mm/g/b/a/ef;
     //   808: pop
     //   809: aload_0
     //   810: aconst_null
-    //   811: putfield 312	com/tencent/mm/plugin/expt/roomexpt/a:rbb	[Ljava/lang/String;
-    //   814: getstatic 303	com/tencent/mm/plugin/report/service/g:yhR	Lcom/tencent/mm/plugin/report/service/g;
+    //   811: putfield 312	com/tencent/mm/plugin/expt/roomexpt/a:rjh	[Ljava/lang/String;
+    //   814: getstatic 303	com/tencent/mm/plugin/report/service/g:yxI	Lcom/tencent/mm/plugin/report/service/g;
     //   817: sipush 869
     //   820: bipush 23
     //   822: invokevirtual 307	com/tencent/mm/plugin/report/service/g:dD	(II)V
@@ -890,14 +890,14 @@ public final class a
     //   210	230	880	java/lang/Exception
   }
   
-  protected final void crt()
+  protected final void csV()
   {
     AppMethodBeat.i(122412);
-    b localb = this.raZ;
+    b localb = this.rjf;
     try
     {
       localb.db.delete("RoomMuteExpt", null, null);
-      cru();
+      csW();
       AppMethodBeat.o(122412);
       return;
     }
@@ -905,30 +905,30 @@ public final class a
     {
       for (;;)
       {
-        ad.printErrStackTrace("MicroMsg.ChatRoomExptStorage", localException, "deleteAll", new Object[0]);
+        ae.printErrStackTrace("MicroMsg.ChatRoomExptStorage", localException, "deleteAll", new Object[0]);
       }
     }
   }
   
-  protected final void cru()
+  protected final void csW()
   {
     AppMethodBeat.i(122413);
-    if (this.rba != null)
+    if (this.rjg != null)
     {
-      this.rba = new ed();
-      this.rba.ehI = true;
-      crr();
+      this.rjg = new ef();
+      this.rjg.ejs = true;
+      csT();
     }
-    this.rbb = null;
+    this.rjh = null;
     AppMethodBeat.o(122413);
   }
   
-  protected final String crv()
+  protected final String csX()
   {
     AppMethodBeat.i(122414);
-    if (this.rba != null)
+    if (this.rjg != null)
     {
-      String str = this.rba.RE();
+      String str = this.rjg.RD();
       AppMethodBeat.o(122414);
       return str;
     }
@@ -944,7 +944,7 @@ public final class a
       public final void run()
       {
         AppMethodBeat.i(122394);
-        com.tencent.mm.plugin.report.service.g localg = com.tencent.mm.plugin.report.service.g.yhR;
+        com.tencent.mm.plugin.report.service.g localg = com.tencent.mm.plugin.report.service.g.yxI;
         if (paramBoolean) {}
         for (int i = 13;; i = 12)
         {
@@ -960,28 +960,28 @@ public final class a
   public final void onAccountInitialized(e.c paramc)
   {
     AppMethodBeat.i(122407);
-    if (this.rba == null)
+    if (this.rjg == null)
     {
-      paramc = (String)com.tencent.mm.kernel.g.ajC().ajl().get(al.a.IDP, "");
-      if (!bt.isNullOrNil(paramc)) {
+      paramc = (String)com.tencent.mm.kernel.g.ajR().ajA().get(am.a.IYp, "");
+      if (!bu.isNullOrNil(paramc)) {
         break label118;
       }
-      this.rba = new ed();
-      this.rba.ehI = false;
+      this.rjg = new ef();
+      this.rjg.ejs = false;
     }
     for (;;)
     {
-      ad.i("MicroMsg.ChatRoomExptService", "load expt roomnameList[%s] info[%s]", new Object[] { this.rbb, this.rba.RE() });
+      ae.i("MicroMsg.ChatRoomExptService", "load expt roomnameList[%s] info[%s]", new Object[] { this.rjh, this.rjg.RD() });
       paramc = (k)com.tencent.mm.kernel.g.ab(k.class);
       if (paramc != null) {
-        paramc.addSyncDoCmdCallback(this.rbe);
+        paramc.addSyncDoCmdCallback(this.rjk);
       }
       AppMethodBeat.o(122407);
       return;
       label118:
-      this.rba = new ed(paramc);
-      if (!bt.isNullOrNil(this.rba.ehH)) {
-        this.rbb = this.rba.ehH.split(";");
+      this.rjg = new ef(paramc);
+      if (!bu.isNullOrNil(this.rjg.ejr)) {
+        this.rjh = this.rjg.ejr.split(";");
       }
     }
   }
@@ -989,11 +989,11 @@ public final class a
   public final void onAccountRelease()
   {
     AppMethodBeat.i(122408);
-    this.rba = null;
-    this.raZ = null;
+    this.rjg = null;
+    this.rjf = null;
     k localk = (k)com.tencent.mm.kernel.g.ab(k.class);
     if (localk != null) {
-      localk.removeSyncDoCmdCallback(this.rbe);
+      localk.removeSyncDoCmdCallback(this.rjk);
     }
     AppMethodBeat.o(122408);
   }
@@ -1003,15 +1003,15 @@ public final class a
     AppMethodBeat.i(122403);
     paramIntent.setClass(paramContext, RoomExptDebugUI.class);
     paramIntent = new com.tencent.mm.hellhoundlib.b.a().bc(paramIntent);
-    com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramIntent.ahp(), "com/tencent/mm/plugin/expt/roomexpt/ChatRoomExptService", "showDebugUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    paramContext.startActivity((Intent)paramIntent.mq(0));
+    com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramIntent.ahE(), "com/tencent/mm/plugin/expt/roomexpt/ChatRoomExptService", "showDebugUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramContext.startActivity((Intent)paramIntent.mt(0));
     com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/plugin/expt/roomexpt/ChatRoomExptService", "showDebugUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     AppMethodBeat.o(122403);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.roomexpt.a
  * JD-Core Version:    0.7.0.1
  */

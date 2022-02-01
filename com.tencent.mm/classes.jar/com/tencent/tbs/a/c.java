@@ -9,14 +9,14 @@ public enum c
   static
   {
     AppMethodBeat.i(174266);
-    LSN = new c("VERBOSE", 0, 2);
-    LSM = new c("DEBUG", 1, 3);
-    LSO = new c("INFO", 2, 4);
-    LSP = new c("WARN", 3, 5);
-    LSQ = new c("ERROR", 4, 6);
-    LSR = new c("ALL", 5, -2147483648);
-    LSS = new c("NONE", 6, 2147483647);
-    LST = new c[] { LSN, LSM, LSO, LSP, LSQ, LSR, LSS };
+    MpK = new c("VERBOSE", 0, 2);
+    MpJ = new c("DEBUG", 1, 3);
+    MpL = new c("INFO", 2, 4);
+    MpM = new c("WARN", 3, 5);
+    MpN = new c("ERROR", 4, 6);
+    MpO = new c("ALL", 5, -2147483648);
+    MpP = new c("NONE", 6, 2147483647);
+    MpQ = new c[] { MpK, MpJ, MpL, MpM, MpN, MpO, MpP };
     AppMethodBeat.o(174266);
   }
   
@@ -31,8 +31,8 @@ public enum c
     switch (1.a[paramc.ordinal()])
     {
     default: 
-      if (paramc.h < LSN.h) {
-        paramc = "V-" + (LSN.h - paramc.h);
+      if (paramc.h < MpK.h) {
+        paramc = "V-" + (MpK.h - paramc.h);
       }
       break;
     }
@@ -50,26 +50,26 @@ public enum c
       continue;
       paramc = "E";
       continue;
-      paramc = "E+" + (paramc.h - LSQ.h);
+      paramc = "E+" + (paramc.h - MpN.h);
     }
   }
   
-  public static c agR(int paramInt)
+  public static c ahA(int paramInt)
   {
     switch (paramInt)
     {
     default: 
-      return LSS;
+      return MpP;
     case 2: 
-      return LSN;
+      return MpK;
     case 3: 
-      return LSM;
+      return MpJ;
     case 4: 
-      return LSO;
+      return MpL;
     case 5: 
-      return LSP;
+      return MpM;
     }
-    return LSQ;
+    return MpN;
   }
 }
 

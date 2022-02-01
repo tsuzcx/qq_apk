@@ -1,68 +1,68 @@
 package com.tencent.mm.plugin.appbrand.task;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ax;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.sdk.platformtools.bu;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/task/AppBrandForcePreloadConfig;", "", "()V", "FORCE_PRELOAD_TAG", "", "TAG", "sShouldForcePreload", "", "disableForcePreload", "", "enableForcePreload", "shouldForcePreload", "plugin-appbrand-integration_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/task/AppBrandForcePreloadConfig;", "", "()V", "FORCE_PRELOAD_TAG", "", "TAG", "sShouldForcePreload", "", "disableForcePreload", "", "enableForcePreload", "shouldForcePreload", "plugin-appbrand-integration_release"})
 public final class a
 {
-  private static boolean mxh;
-  public static final a mxi;
+  private static boolean mCe;
+  public static final a mCf;
   
   static
   {
     AppMethodBeat.i(51065);
-    mxi = new a();
-    long l = bt.HI();
-    int i = ax.aQz("appbrand_process_force_preload").decodeInt("appbrand_process_force_preload", 0);
+    mCf = new a();
+    long l = bu.HQ();
+    int i = ay.aRW("appbrand_process_force_preload").decodeInt("appbrand_process_force_preload", 0);
     if (i == 1)
     {
-      ad.i("MicroMsg.AppBrandForcePreloadConfig", "[ForcePreload] storage config = [%d] == 1, accepted (mmkv cost [%d]ms)", new Object[] { Integer.valueOf(i), Long.valueOf(bt.aO(l)) });
-      mxh = true;
+      ae.i("MicroMsg.AppBrandForcePreloadConfig", "[ForcePreload] storage config = [%d] == 1, accepted (mmkv cost [%d]ms)", new Object[] { Integer.valueOf(i), Long.valueOf(bu.aO(l)) });
+      mCe = true;
       AppMethodBeat.o(51065);
       return;
     }
-    ad.i("MicroMsg.AppBrandForcePreloadConfig", "[ForcePreload] storage config = [%d] != 1, buildConfig = [%b] reject (mmkv cost [%d]ms)", new Object[] { Integer.valueOf(i), Boolean.FALSE, Long.valueOf(bt.aO(l)) });
+    ae.i("MicroMsg.AppBrandForcePreloadConfig", "[ForcePreload] storage config = [%d] != 1, buildConfig = [%b] reject (mmkv cost [%d]ms)", new Object[] { Integer.valueOf(i), Boolean.FALSE, Long.valueOf(bu.aO(l)) });
     AppMethodBeat.o(51065);
   }
   
-  public static final boolean bym()
+  public static final boolean bzf()
   {
     AppMethodBeat.i(51062);
-    ad.i("MicroMsg.AppBrandForcePreloadConfig", "[ForcePreload] forcePreload = [%b]", new Object[] { Boolean.valueOf(mxh) });
-    boolean bool = mxh;
+    ae.i("MicroMsg.AppBrandForcePreloadConfig", "[ForcePreload] forcePreload = [%b]", new Object[] { Boolean.valueOf(mCe) });
+    boolean bool = mCe;
     AppMethodBeat.o(51062);
     return bool;
   }
   
-  public static final void byn()
+  public static final void bzg()
   {
     AppMethodBeat.i(51063);
-    ad.i("MicroMsg.AppBrandForcePreloadConfig", "[ForcePreload] enableForcePreload");
-    mxh = true;
-    ax localax = ax.aQz("appbrand_process_force_preload");
-    localax.encode("appbrand_process_force_preload", 1);
-    localax.apply();
+    ae.i("MicroMsg.AppBrandForcePreloadConfig", "[ForcePreload] enableForcePreload");
+    mCe = true;
+    ay localay = ay.aRW("appbrand_process_force_preload");
+    localay.encode("appbrand_process_force_preload", 1);
+    localay.apply();
     AppMethodBeat.o(51063);
   }
   
-  public static final void byo()
+  public static final void bzh()
   {
     AppMethodBeat.i(51064);
-    ad.i("MicroMsg.AppBrandForcePreloadConfig", "[ForcePreload] disableForcePreload");
-    mxh = false;
-    ax localax = ax.aQz("appbrand_process_force_preload");
-    localax.encode("appbrand_process_force_preload", -1);
-    localax.apply();
+    ae.i("MicroMsg.AppBrandForcePreloadConfig", "[ForcePreload] disableForcePreload");
+    mCe = false;
+    ay localay = ay.aRW("appbrand_process_force_preload");
+    localay.encode("appbrand_process_force_preload", -1);
+    localay.apply();
     AppMethodBeat.o(51064);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.task.a
  * JD-Core Version:    0.7.0.1
  */

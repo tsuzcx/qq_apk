@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.sns.ui;
 
 public abstract interface x
 {
-  public abstract void aAE(String paramString);
+  public abstract void aBV(String paramString);
 }
 
 

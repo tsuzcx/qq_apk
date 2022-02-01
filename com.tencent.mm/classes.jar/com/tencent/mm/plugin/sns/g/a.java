@@ -1,47 +1,45 @@
 package com.tencent.mm.plugin.sns.g;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.up;
-import com.tencent.mm.plugin.sns.data.q;
-import com.tencent.mm.plugin.sns.model.ag;
-import com.tencent.mm.plugin.sns.model.ao;
-import com.tencent.mm.plugin.sns.model.b;
-import com.tencent.mm.plugin.sns.model.b.b;
-import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.g.a.ut;
+import com.tencent.mm.plugin.sns.data.r;
+import com.tencent.mm.plugin.sns.model.ah;
+import com.tencent.mm.plugin.sns.model.ap;
+import com.tencent.mm.plugin.sns.model.c.b;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class a
-  implements b.b
+  implements c.b
 {
-  public c zek;
+  public com.tencent.mm.sdk.b.c zuZ;
   
   public a()
   {
     AppMethodBeat.i(95172);
-    this.zek = new c() {};
-    com.tencent.mm.sdk.b.a.IbL.c(this.zek);
-    ag.dTZ().a(this);
+    this.zuZ = new com.tencent.mm.sdk.b.c() {};
+    com.tencent.mm.sdk.b.a.IvT.c(this.zuZ);
+    ah.dXz().a(this);
     AppMethodBeat.o(95172);
   }
   
-  public final void ays(String paramString)
+  public final void azJ(String paramString)
   {
     AppMethodBeat.i(95173);
-    ad.i("MicroMsg.FTS.FTSSnsImageDownloadLogic", "onThumbFinish mediaId=%s", new Object[] { paramString });
-    up localup = new up();
-    localup.dIP.dkM = 2;
-    localup.dIP.mediaId = paramString;
-    String str = ao.jo(ag.getAccSnsPath(), paramString);
-    localup.dIP.path = (str + q.axR(paramString));
-    com.tencent.mm.sdk.b.a.IbL.l(localup);
+    ae.i("MicroMsg.FTS.FTSSnsImageDownloadLogic", "onThumbFinish mediaId=%s", new Object[] { paramString });
+    ut localut = new ut();
+    localut.dKd.dlO = 2;
+    localut.dKd.mediaId = paramString;
+    String str = ap.jv(ah.getAccSnsPath(), paramString);
+    localut.dKd.path = (str + r.azi(paramString));
+    com.tencent.mm.sdk.b.a.IvT.l(localut);
     AppMethodBeat.o(95173);
   }
   
-  public final void bM(String paramString, boolean paramBoolean) {}
+  public final void bQ(String paramString, boolean paramBoolean) {}
   
-  public final void bN(String paramString, boolean paramBoolean) {}
+  public final void bR(String paramString, boolean paramBoolean) {}
   
-  public final void dTb() {}
+  public final void dWB() {}
 }
 
 

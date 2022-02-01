@@ -1,21 +1,21 @@
 package com.tencent.mm.plugin.talkroom.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.dme;
+import com.tencent.mm.protocal.protobuf.dnb;
 import f.a.a.b;
 import java.util.LinkedList;
 
 public final class a
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public LinkedList<dme> dAk;
+  public LinkedList<dnb> dBp;
   public int sceneType;
   public String username;
   
   public a()
   {
     AppMethodBeat.i(29432);
-    this.dAk = new LinkedList();
+    this.dBp = new LinkedList();
     AppMethodBeat.o(29432);
   }
   
@@ -34,7 +34,7 @@ public final class a
       if (this.username != null) {
         paramVarArgs.d(1, this.username);
       }
-      paramVarArgs.e(2, 8, this.dAk);
+      paramVarArgs.e(2, 8, this.dBp);
       paramVarArgs.aS(3, this.sceneType);
       AppMethodBeat.o(29433);
       return 0;
@@ -47,18 +47,18 @@ public final class a
     label463:
     for (paramInt = f.a.a.b.b.a.e(1, this.username) + 0;; paramInt = 0)
     {
-      int i = f.a.a.a.c(2, 8, this.dAk);
+      int i = f.a.a.a.c(2, 8, this.dBp);
       int j = f.a.a.b.b.a.bz(3, this.sceneType);
       AppMethodBeat.o(29433);
       return paramInt + i + j;
       if (paramInt == 2)
       {
         paramVarArgs = (byte[])paramVarArgs[0];
-        this.dAk.clear();
+        this.dBp.clear();
         paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
         if (this.username == null)
@@ -81,26 +81,26 @@ public final class a
           AppMethodBeat.o(29433);
           return -1;
         case 1: 
-          locala.username = ((f.a.a.a.a)localObject1).NPN.readString();
+          locala.username = ((f.a.a.a.a)localObject1).OmT.readString();
           AppMethodBeat.o(29433);
           return 0;
         case 2: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
+          paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
             Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new dme();
+            localObject1 = new dnb();
             localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((dme)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, com.tencent.mm.bx.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-            locala.dAk.add(localObject1);
+            for (boolean bool = true; bool; bool = ((dnb)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            locala.dBp.add(localObject1);
             paramInt += 1;
           }
           AppMethodBeat.o(29433);
           return 0;
         }
-        locala.sceneType = ((f.a.a.a.a)localObject1).NPN.zc();
+        locala.sceneType = ((f.a.a.a.a)localObject1).OmT.zc();
         AppMethodBeat.o(29433);
         return 0;
       }

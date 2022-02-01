@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class kt
   extends b
 {
-  public a dxQ;
+  public a dyK;
   
   public kt()
   {
@@ -15,23 +15,30 @@ public final class kt
   
   private kt(byte paramByte)
   {
-    AppMethodBeat.i(128845);
-    this.dxQ = new a();
-    this.IbR = false;
+    AppMethodBeat.i(128844);
+    this.dyK = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(128845);
+    AppMethodBeat.o(128844);
   }
   
   public static final class a
   {
-    public int dqI;
-    public String duW;
-    public String returnKey;
+    public boolean dyL = false;
+    public boolean dyM = false;
+    public String dyN;
+    public String dyO;
+    public String dyP;
+    public String dyQ;
+    public String dyR;
+    public String dyS;
+    public String dyT;
+    public String dyU;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.a.kt
  * JD-Core Version:    0.7.0.1
  */

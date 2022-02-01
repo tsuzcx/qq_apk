@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.wear;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.ax;
+import com.tencent.mm.model.az;
 import com.tencent.mm.plugin.wear.model.a;
 import com.tencent.mm.pluginsdk.b.c;
 import com.tencent.mm.pluginsdk.b.d;
@@ -15,7 +15,7 @@ public final class Plugin
     return null;
   }
   
-  public final ax createSubCore()
+  public final az createSubCore()
   {
     AppMethodBeat.i(29949);
     a locala = new a();

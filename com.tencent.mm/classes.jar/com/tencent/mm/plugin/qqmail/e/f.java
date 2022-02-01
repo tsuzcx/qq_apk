@@ -1,9 +1,9 @@
 package com.tencent.mm.plugin.qqmail.e;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.kernel.a;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.network.e;
@@ -17,34 +17,34 @@ public final class f
   extends n
   implements k
 {
-  private com.tencent.mm.al.f callback;
-  private b hWL;
-  public String xbf;
+  private com.tencent.mm.ak.f callback;
+  private b hZD;
+  public String xqW;
   
   public f(String paramString, int paramInt)
   {
-    AppMethodBeat.i(215263);
+    AppMethodBeat.i(218009);
     b.a locala = new b.a();
     locala.funcId = getType();
     locala.uri = "/cgi-bin/xmmailbroker/mb_updatemailstatus";
     bb localbb = new bb();
-    localbb.xdA.add(paramString);
-    g.ajA();
+    localbb.xtr.add(paramString);
+    g.ajP();
     localbb.uin = a.getUin();
-    localbb.xdB = paramInt;
-    locala.hNM = localbb;
-    locala.hNN = new bc();
-    this.hWL = locala.aDC();
-    this.xbf = paramString;
-    AppMethodBeat.o(215263);
+    localbb.xts = paramInt;
+    locala.hQF = localbb;
+    locala.hQG = new bc();
+    this.hZD = locala.aDS();
+    this.xqW = paramString;
+    AppMethodBeat.o(218009);
   }
   
-  public final int doScene(e parame, com.tencent.mm.al.f paramf)
+  public final int doScene(e parame, com.tencent.mm.ak.f paramf)
   {
-    AppMethodBeat.i(215264);
+    AppMethodBeat.i(218010);
     this.callback = paramf;
-    int i = dispatch(parame, this.hWL, this);
-    AppMethodBeat.o(215264);
+    int i = dispatch(parame, this.hZD, this);
+    AppMethodBeat.o(218010);
     return i;
   }
   
@@ -55,9 +55,9 @@ public final class f
   
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(215265);
+    AppMethodBeat.i(218011);
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(215265);
+    AppMethodBeat.o(218011);
   }
 }
 

@@ -8,59 +8,59 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aw.a.a;
-import com.tencent.mm.aw.q;
+import com.tencent.mm.av.a.a;
+import com.tencent.mm.av.q;
 import com.tencent.mm.plugin.topstory.ui.d;
 import com.tencent.mm.plugin.topstory.ui.video.g;
-import com.tencent.mm.protocal.protobuf.dei;
-import com.tencent.mm.protocal.protobuf.dod;
-import com.tencent.mm.sdk.platformtools.av;
-import com.tencent.mm.sdk.platformtools.av.a;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.dfc;
+import com.tencent.mm.protocal.protobuf.dpa;
+import com.tencent.mm.sdk.platformtools.aw;
+import com.tencent.mm.sdk.platformtools.aw.a;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.LinkedList;
 
 public class f
   extends g
 {
-  private dod BrC;
-  public ImageView Buw;
-  public View BwA;
-  public ImageView BwB;
-  public TextView BwC;
-  public View BwD;
-  public View BwE;
-  public View BwF;
-  public View BwG;
-  public View BwH;
-  public View BwI;
-  public View BwJ;
-  public TextView BwK;
-  public TextView BwL;
-  public ImageView BwM;
-  public ImageView BwN;
-  public View BwO;
-  av BwP;
-  private a BwQ;
-  private boolean BwR;
-  public View Bwz;
+  private dpa BJb;
+  public ImageView BLU;
+  public View BNX;
+  public View BNY;
+  public ImageView BNZ;
+  public TextView BOa;
+  public View BOb;
+  public View BOc;
+  public View BOd;
+  public View BOe;
+  public View BOf;
+  public View BOg;
+  public View BOh;
+  public TextView BOi;
+  public TextView BOj;
+  public ImageView BOk;
+  public ImageView BOl;
+  public View BOm;
+  aw BOn;
+  private a BOo;
+  private boolean BOp;
   public TextView titleTv;
-  public TextView uuM;
+  public TextView uGl;
   
   public f(Context paramContext)
   {
     super(paramContext);
   }
   
-  public final void bSH()
+  public final void bTU()
   {
     AppMethodBeat.i(126311);
-    if (this.BwP != null) {
-      this.BwP.stopTimer();
+    if (this.BOn != null) {
+      this.BOn.stopTimer();
     }
     AppMethodBeat.o(126311);
   }
   
-  public final boolean bni()
+  public final boolean bnS()
   {
     AppMethodBeat.i(126309);
     if (getVisibility() == 0)
@@ -72,45 +72,45 @@ public class f
     return false;
   }
   
-  public final void bno()
+  public final void bnY()
   {
     AppMethodBeat.i(126312);
-    if (this.BwP != null)
+    if (this.BOn != null)
     {
-      this.BwP.stopTimer();
-      this.BwP.az(2000L, 2000L);
+      this.BOn.stopTimer();
+      this.BOn.ay(2000L, 2000L);
     }
     AppMethodBeat.o(126312);
   }
   
-  public final void boy()
+  public final void bpi()
   {
     AppMethodBeat.i(126321);
-    super.boy();
-    if ((this.BwQ != null) && (this.BrC != null)) {
-      this.BwQ.b(this.BrC, this.mPosition, getVideoTotalTime());
+    super.bpi();
+    if ((this.BOo != null) && (this.BJb != null)) {
+      this.BOo.b(this.BJb, this.mPosition, getVideoTotalTime());
     }
     AppMethodBeat.o(126321);
   }
   
-  public final void eqK()
+  public final void eur()
   {
     AppMethodBeat.i(126319);
-    this.lru.setVisibility(8);
+    this.lvU.setVisibility(8);
     AppMethodBeat.o(126319);
   }
   
-  public final void eqL()
+  public final void eus()
   {
     AppMethodBeat.i(126320);
-    this.lru.setVisibility(0);
+    this.lvU.setVisibility(0);
     AppMethodBeat.o(126320);
   }
   
   public int getBarPointWidth()
   {
     AppMethodBeat.i(126313);
-    int i = this.lrt.getWidth();
+    int i = this.lvT.getWidth();
     AppMethodBeat.o(126313);
     return i;
   }
@@ -122,180 +122,180 @@ public class f
   
   public View getWowView()
   {
-    return this.BwA;
+    return this.BNY;
   }
   
   public final void hide()
   {
-    AppMethodBeat.i(221364);
+    AppMethodBeat.i(224388);
     setVisibility(8);
-    AppMethodBeat.o(221364);
+    AppMethodBeat.o(224388);
   }
   
   public void init()
   {
     AppMethodBeat.i(126305);
     super.init();
-    this.BwD = this.contentView.findViewById(2131298748);
-    this.Bwz = this.contentView.findViewById(2131304744);
-    this.BwA = this.contentView.findViewById(2131307019);
-    this.BwB = ((ImageView)this.contentView.findViewById(2131307018));
-    this.BwC = ((TextView)this.contentView.findViewById(2131307017));
-    this.BwE = this.contentView.findViewById(2131303530);
-    this.BwF = this.contentView.findViewById(2131303529);
-    this.BwG = this.contentView.findViewById(2131305623);
-    this.BwH = this.contentView.findViewById(2131297472);
-    this.BwI = this.contentView.findViewById(2131305612);
-    this.BwJ = this.contentView.findViewById(2131305616);
-    this.BwK = ((TextView)this.contentView.findViewById(2131305613));
-    this.BwL = ((TextView)this.contentView.findViewById(2131305617));
-    this.BwM = ((ImageView)this.contentView.findViewById(2131305611));
-    this.BwN = ((ImageView)this.contentView.findViewById(2131305615));
-    this.Buw = ((ImageView)this.contentView.findViewById(2131305130));
-    this.uuM = ((TextView)this.contentView.findViewById(2131305134));
-    this.BwO = this.contentView.findViewById(2131305129);
+    this.BOb = this.contentView.findViewById(2131298748);
+    this.BNX = this.contentView.findViewById(2131304744);
+    this.BNY = this.contentView.findViewById(2131307019);
+    this.BNZ = ((ImageView)this.contentView.findViewById(2131307018));
+    this.BOa = ((TextView)this.contentView.findViewById(2131307017));
+    this.BOc = this.contentView.findViewById(2131303530);
+    this.BOd = this.contentView.findViewById(2131303529);
+    this.BOe = this.contentView.findViewById(2131305623);
+    this.BOf = this.contentView.findViewById(2131297472);
+    this.BOg = this.contentView.findViewById(2131305612);
+    this.BOh = this.contentView.findViewById(2131305616);
+    this.BOi = ((TextView)this.contentView.findViewById(2131305613));
+    this.BOj = ((TextView)this.contentView.findViewById(2131305617));
+    this.BOk = ((ImageView)this.contentView.findViewById(2131305611));
+    this.BOl = ((ImageView)this.contentView.findViewById(2131305615));
+    this.BLU = ((ImageView)this.contentView.findViewById(2131305130));
+    this.uGl = ((TextView)this.contentView.findViewById(2131305134));
+    this.BOm = this.contentView.findViewById(2131305129);
     this.titleTv = ((TextView)this.contentView.findViewById(2131305948));
     AppMethodBeat.o(126305);
   }
   
-  public final void l(dod paramdod)
+  public final void l(dpa paramdpa)
   {
     AppMethodBeat.i(126306);
-    if ((paramdod.HCD & 0x80) > 0)
+    if ((paramdpa.HWq & 0x80) > 0)
     {
-      this.BwA.setVisibility(0);
-      if (paramdod.HCI)
+      this.BNY.setVisibility(0);
+      if (paramdpa.HWv)
       {
-        this.BwB.setImageResource(2131691329);
-        this.BwC.setTextColor(getResources().getColor(2131101051));
+        this.BNZ.setImageResource(2131691329);
+        this.BOa.setTextColor(getResources().getColor(2131101051));
       }
       for (;;)
       {
-        this.BwC.setText(d.SU(paramdod.HCN));
+        this.BOa.setText(d.TB(paramdpa.HWA));
         AppMethodBeat.o(126306);
         return;
-        this.BwB.setImageResource(2131691330);
-        this.BwC.setTextColor(getResources().getColor(2131101182));
+        this.BNZ.setImageResource(2131691330);
+        this.BOa.setTextColor(getResources().getColor(2131101182));
       }
     }
-    this.BwA.setVisibility(8);
+    this.BNY.setVisibility(8);
     AppMethodBeat.o(126306);
   }
   
-  public void m(dod paramdod)
+  public void m(dpa paramdpa)
   {
     AppMethodBeat.i(126307);
-    this.BrC = paramdod;
-    this.Bwz.setVisibility(0);
+    this.BJb = paramdpa;
+    this.BNX.setVisibility(0);
     float f = getResources().getDimensionPixelSize(2131166392);
-    this.lrv.setTextSize(0, f);
-    this.lrw.setTextSize(0, f);
-    Object localObject = this.BwF.getLayoutParams();
+    this.lvV.setTextSize(0, f);
+    this.lvW.setTextSize(0, f);
+    Object localObject = this.BOd.getLayoutParams();
     ((ViewGroup.LayoutParams)localObject).height = getResources().getDimensionPixelSize(2131166391);
-    this.BwF.setLayoutParams((ViewGroup.LayoutParams)localObject);
-    if (paramdod.tSj.size() > 0)
+    this.BOd.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    if (paramdpa.uda.size() > 0)
     {
-      if (this.BwG != null) {
-        this.BwG.setVisibility(0);
+      if (this.BOe != null) {
+        this.BOe.setVisibility(0);
       }
-      this.BwH.setVisibility(0);
-      localObject = (dei)paramdod.tSj.get(0);
-      this.BwI.setTag(localObject);
-      this.BwK.setText(((dei)localObject).dxD);
-      this.BwK.setVisibility(0);
-      this.BwI.setVisibility(0);
-      this.BwM.setVisibility(8);
-      if (!bt.isNullOrNil(((dei)localObject).dDH))
+      this.BOf.setVisibility(0);
+      localObject = (dfc)paramdpa.uda.get(0);
+      this.BOg.setTag(localObject);
+      this.BOi.setText(((dfc)localObject).dyI);
+      this.BOi.setVisibility(0);
+      this.BOg.setVisibility(0);
+      this.BOk.setVisibility(8);
+      if (!bu.isNullOrNil(((dfc)localObject).dEM))
       {
-        q.aIJ().a(((dei)localObject).dDH, this.BwM, d.BrR);
-        this.BwM.setVisibility(0);
+        q.aJb().a(((dfc)localObject).dEM, this.BOk, d.BJq);
+        this.BOk.setVisibility(0);
       }
-      if (paramdod.tSj.size() > 1)
+      if (paramdpa.uda.size() > 1)
       {
-        localObject = (dei)paramdod.tSj.get(1);
-        this.BwJ.setTag(localObject);
-        this.BwL.setText(((dei)localObject).dxD);
-        this.BwL.setVisibility(0);
-        this.BwJ.setVisibility(0);
-        this.BwN.setVisibility(8);
-        if (!bt.isNullOrNil(((dei)localObject).dDH))
+        localObject = (dfc)paramdpa.uda.get(1);
+        this.BOh.setTag(localObject);
+        this.BOj.setText(((dfc)localObject).dyI);
+        this.BOj.setVisibility(0);
+        this.BOh.setVisibility(0);
+        this.BOl.setVisibility(8);
+        if (!bu.isNullOrNil(((dfc)localObject).dEM))
         {
-          q.aIJ().a(((dei)localObject).dDH, this.BwN, d.BrR);
-          this.BwN.setVisibility(0);
+          q.aJb().a(((dfc)localObject).dEM, this.BOl, d.BJq);
+          this.BOl.setVisibility(0);
         }
-        l(paramdod);
-        if (this.BwR) {
-          this.BwH.setVisibility(8);
+        l(paramdpa);
+        if (this.BOp) {
+          this.BOf.setVisibility(8);
         }
-        if ((this.BwO != null) && (this.uuM != null) && (this.Buw != null))
+        if ((this.BOm != null) && (this.uGl != null) && (this.BLU != null))
         {
-          this.BwO.setVisibility(8);
-          this.uuM.setVisibility(8);
-          this.Buw.setVisibility(8);
-          if (!bt.isNullOrNil(paramdod.source))
+          this.BOm.setVisibility(8);
+          this.uGl.setVisibility(8);
+          this.BLU.setVisibility(8);
+          if (!bu.isNullOrNil(paramdpa.source))
           {
-            this.uuM.setText(paramdod.source);
-            this.uuM.setVisibility(0);
-            if (!bt.isNullOrNil(paramdod.lox)) {
-              this.BwO.setVisibility(0);
+            this.uGl.setText(paramdpa.source);
+            this.uGl.setVisibility(0);
+            if (!bu.isNullOrNil(paramdpa.dJL)) {
+              this.BOm.setVisibility(0);
             }
-            if (bt.isNullOrNil(paramdod.HCz)) {
+            if (bu.isNullOrNil(paramdpa.HWm)) {
               break label527;
             }
-            q.aIJ().a(paramdod.HCz, this.Buw, d.BrQ);
+            q.aJb().a(paramdpa.HWm, this.BLU, d.BJp);
           }
         }
       }
     }
     for (;;)
     {
-      this.Buw.setVisibility(0);
+      this.BLU.setVisibility(0);
       if (this.titleTv != null) {
-        this.titleTv.setText(paramdod.title);
+        this.titleTv.setText(paramdpa.title);
       }
       AppMethodBeat.o(126307);
       return;
-      this.BwJ.setVisibility(8);
-      this.BwL.setVisibility(8);
+      this.BOh.setVisibility(8);
+      this.BOj.setVisibility(8);
       break;
-      if (this.BwG != null) {
-        this.BwG.setVisibility(8);
+      if (this.BOe != null) {
+        this.BOe.setVisibility(8);
       }
-      this.BwH.setVisibility(8);
+      this.BOf.setVisibility(8);
       break;
       label527:
-      this.Buw.setImageResource(2131231875);
+      this.BLU.setImageResource(2131231875);
     }
   }
   
   public void setOnUpdateProgressLenListener(a parama)
   {
-    this.BwQ = parama;
+    this.BOo = parama;
   }
   
   public void setOnlyFS(boolean paramBoolean)
   {
-    this.BwR = paramBoolean;
+    this.BOp = paramBoolean;
   }
   
   public void setShareBtnClickListener(View.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(126314);
-    this.Bwz.setOnClickListener(paramOnClickListener);
+    this.BNX.setOnClickListener(paramOnClickListener);
     AppMethodBeat.o(126314);
   }
   
   public void setSourceItemClickListener(View.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(126317);
-    if (this.uuM != null) {
-      this.uuM.setOnClickListener(paramOnClickListener);
+    if (this.uGl != null) {
+      this.uGl.setOnClickListener(paramOnClickListener);
     }
-    if (this.Buw != null) {
-      this.Buw.setOnClickListener(paramOnClickListener);
+    if (this.BLU != null) {
+      this.BLU.setOnClickListener(paramOnClickListener);
     }
-    if (this.BwO != null) {
-      this.BwO.setOnClickListener(paramOnClickListener);
+    if (this.BOm != null) {
+      this.BOm.setOnClickListener(paramOnClickListener);
     }
     AppMethodBeat.o(126317);
   }
@@ -303,8 +303,8 @@ public class f
   public void setTagBtnClickListener(View.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(126315);
-    this.BwI.setOnClickListener(paramOnClickListener);
-    this.BwJ.setOnClickListener(paramOnClickListener);
+    this.BOg.setOnClickListener(paramOnClickListener);
+    this.BOh.setOnClickListener(paramOnClickListener);
     AppMethodBeat.o(126315);
   }
   
@@ -321,14 +321,14 @@ public class f
     super.setVisibility(paramInt);
     if ((paramInt == 8) || (paramInt == 4))
     {
-      if (this.BwQ != null)
+      if (this.BOo != null)
       {
-        this.BwQ.eqJ();
+        this.BOo.euq();
         AppMethodBeat.o(126322);
       }
     }
-    else if ((paramInt == 0) && (this.BwQ != null)) {
-      this.BwQ.eqI();
+    else if ((paramInt == 0) && (this.BOo != null)) {
+      this.BOo.eup();
     }
     AppMethodBeat.o(126322);
   }
@@ -336,8 +336,8 @@ public class f
   public void setWowBtnClickListener(View.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(126316);
-    this.BwA.setVisibility(0);
-    this.BwA.setOnClickListener(paramOnClickListener);
+    this.BNY.setVisibility(0);
+    this.BNY.setOnClickListener(paramOnClickListener);
     AppMethodBeat.o(126316);
   }
   
@@ -345,9 +345,9 @@ public class f
   {
     AppMethodBeat.i(126310);
     setVisibility(0);
-    eqL();
-    if (this.BwP == null) {
-      this.BwP = new av(new av.a()
+    eus();
+    if (this.BOn == null) {
+      this.BOn = new aw(new aw.a()
       {
         public final boolean onTimerExpired()
         {
@@ -359,23 +359,23 @@ public class f
         }
       }, false);
     }
-    this.BwP.stopTimer();
-    this.BwP.az(2000L, 2000L);
+    this.BOn.stopTimer();
+    this.BOn.ay(2000L, 2000L);
     AppMethodBeat.o(126310);
   }
   
   public static abstract interface a
   {
-    public abstract void b(dod paramdod, int paramInt1, int paramInt2);
+    public abstract void b(dpa paramdpa, int paramInt1, int paramInt2);
     
-    public abstract void eqI();
+    public abstract void eup();
     
-    public abstract void eqJ();
+    public abstract void euq();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.ui.video.fs.f
  * JD-Core Version:    0.7.0.1
  */

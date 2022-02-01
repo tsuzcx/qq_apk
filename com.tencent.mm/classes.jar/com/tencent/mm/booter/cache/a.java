@@ -8,30 +8,30 @@ import com.tencent.mm.b.f;
 import com.tencent.mm.cache.MCacheItem;
 import com.tencent.mm.cache.h.a;
 import com.tencent.mm.memory.a.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.sdk.platformtools.w;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.x;
 import java.util.Map;
 
 public final class a
   extends h.a
 {
-  public static a fGe;
-  private final f<String, Bitmap> fGf;
+  public static a fIi;
+  private final f<String, Bitmap> fIj;
   
   private a()
   {
     AppMethodBeat.i(19918);
-    Context localContext = aj.getContext();
+    Context localContext = ak.getContext();
     if (com.tencent.mm.platformtools.a.a.values == null) {}
     try
     {
-      com.tencent.mm.platformtools.a.a.values = w.aQo(bt.convertStreamToString(localContext.getAssets().open("profile.ini")));
+      com.tencent.mm.platformtools.a.a.values = x.aRL(bu.convertStreamToString(localContext.getAssets().open("profile.ini")));
       if (com.tencent.mm.platformtools.a.a.values == null)
       {
         localContext = null;
-        this.fGf = new b(bt.getInt(localContext, 2000), getClass());
+        this.fIj = new b(bu.getInt(localContext, 2000), getClass());
         AppMethodBeat.o(19918);
         return;
       }
@@ -40,7 +40,7 @@ public final class a
     {
       for (;;)
       {
-        ad.e("MicroMsg.ProfileUtil", "exception:%s", new Object[] { bt.n(localException) });
+        ae.e("MicroMsg.ProfileUtil", "exception:%s", new Object[] { bu.o(localException) });
         continue;
         String str = (String)com.tencent.mm.platformtools.a.a.values.get("BACKGROUND_BITMAP_CACHE_LIMIT");
       }
@@ -50,20 +50,20 @@ public final class a
   public static void destroy()
   {
     AppMethodBeat.i(19920);
-    if (fGe == null)
+    if (fIi == null)
     {
       AppMethodBeat.o(19920);
       return;
     }
-    fGe.fGf.clear();
+    fIi.fIj.clear();
     AppMethodBeat.o(19920);
   }
   
   public static void prepare()
   {
     AppMethodBeat.i(19919);
-    if (fGe == null) {
-      fGe = new a();
+    if (fIi == null) {
+      fIi = new a();
     }
     AppMethodBeat.o(19919);
   }
@@ -71,38 +71,38 @@ public final class a
   public final void b(String paramString, Bitmap paramBitmap)
   {
     AppMethodBeat.i(19923);
-    ad.v("MicroMsg.MMCacheImpl", "setting bitmap: %s", new Object[] { paramString });
-    this.fGf.q(paramString, paramBitmap);
+    ae.v("MicroMsg.MMCacheImpl", "setting bitmap: %s", new Object[] { paramString });
+    this.fIj.q(paramString, paramBitmap);
     AppMethodBeat.o(19923);
   }
   
   public final Bitmap getBitmap(String paramString)
   {
     AppMethodBeat.i(19921);
-    ad.v("MicroMsg.MMCacheImpl", "getting bitmap: %s", new Object[] { paramString });
-    paramString = (Bitmap)this.fGf.get(paramString);
+    ae.v("MicroMsg.MMCacheImpl", "getting bitmap: %s", new Object[] { paramString });
+    paramString = (Bitmap)this.fIj.get(paramString);
     AppMethodBeat.o(19921);
     return paramString;
   }
   
-  public final MCacheItem uk(String paramString)
+  public final MCacheItem uF(String paramString)
   {
     AppMethodBeat.i(19922);
-    ad.v("MicroMsg.MMCacheImpl", "getting cache item: %s", new Object[] { paramString });
+    ae.v("MicroMsg.MMCacheImpl", "getting cache item: %s", new Object[] { paramString });
     AppMethodBeat.o(19922);
     return null;
   }
   
-  public final void ul(String paramString)
+  public final void uG(String paramString)
   {
     AppMethodBeat.i(19924);
-    ad.v("MicroMsg.MMCacheImpl", "setting cache item: %s", new Object[] { paramString });
+    ae.v("MicroMsg.MMCacheImpl", "setting cache item: %s", new Object[] { paramString });
     AppMethodBeat.o(19924);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.booter.cache.a
  * JD-Core Version:    0.7.0.1
  */

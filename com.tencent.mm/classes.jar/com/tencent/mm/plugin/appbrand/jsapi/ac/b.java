@@ -1,71 +1,65 @@
 package com.tencent.mm.plugin.appbrand.jsapi.ac;
 
-import com.tencent.luggage.xweb_ext.extendplugin.a;
+import android.util.SparseArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
-import com.tencent.mm.plugin.appbrand.g;
-import com.tencent.mm.plugin.appbrand.g.d;
-import com.tencent.mm.plugin.appbrand.page.aa;
-import com.tencent.mm.plugin.appbrand.q;
+import d.g.b.p;
+import d.l;
+import d.z;
 
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsapi/webview/AppBrandHTMLWebViewStore;", "", "()V", "map", "Landroid/util/SparseArray;", "Lcom/tencent/mm/plugin/appbrand/jsapi/webview/AppBrandHTMLWebView;", "add", "", "webview", "get", "binderID", "", "remove", "plugin-appbrand-integration_release"})
 public final class b
 {
-  public static int Rx(String paramString)
+  private static final SparseArray<a> lzM;
+  public static final b lzN;
+  
+  static
   {
-    AppMethodBeat.i(186889);
-    paramString = g.Kv(paramString);
-    int i = 1;
-    if (paramString == g.d.jwr) {
-      i = 2;
-    }
-    for (;;)
+    AppMethodBeat.i(175192);
+    lzN = new b();
+    lzM = new SparseArray();
+    AppMethodBeat.o(175192);
+  }
+  
+  public static void j(a parama)
+  {
+    AppMethodBeat.i(175189);
+    p.h(parama, "webview");
+    synchronized (lzM)
     {
-      AppMethodBeat.o(186889);
-      return i;
-      if (paramString == g.d.jwm) {
-        i = 3;
-      } else if (paramString == g.d.jwl) {
-        i = 4;
-      } else if (paramString == g.d.jws) {
-        i = 5;
-      } else if (paramString == g.d.jwp) {
-        i = 6;
-      } else if (paramString == g.d.jwq) {
-        i = 7;
-      } else if (paramString == g.d.jwo) {
-        i = 8;
-      }
+      lzM.put(parama.getBinderID(), parama);
+      parama = z.Nhr;
+      AppMethodBeat.o(175189);
+      return;
     }
   }
   
-  public static AppBrandRuntime y(a parama)
+  public static void k(a parama)
   {
-    AppMethodBeat.i(186890);
-    if ((parama instanceof com.tencent.mm.plugin.appbrand.h.b))
+    AppMethodBeat.i(175190);
+    p.h(parama, "webview");
+    synchronized (lzM)
     {
-      parama = parama.El();
-      if ((parama instanceof aa))
-      {
-        parama = ((aa)parama).getRuntime();
-        AppMethodBeat.o(186890);
-        return parama;
-      }
-      if ((parama instanceof q))
-      {
-        parama = ((q)parama).getRuntime();
-        AppMethodBeat.o(186890);
-        return parama;
-      }
-      AppMethodBeat.o(186890);
-      return null;
+      lzM.remove(parama.getBinderID());
+      parama = z.Nhr;
+      AppMethodBeat.o(175190);
+      return;
     }
-    AppMethodBeat.o(186890);
-    return null;
+  }
+  
+  public static a tN(int paramInt)
+  {
+    AppMethodBeat.i(175191);
+    synchronized (lzM)
+    {
+      a locala = (a)lzM.get(paramInt);
+      AppMethodBeat.o(175191);
+      return locala;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.ac.b
  * JD-Core Version:    0.7.0.1
  */

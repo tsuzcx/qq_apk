@@ -4,29 +4,29 @@ import d.g.a.b;
 import d.l;
 import d.z;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/loader/loader/SingleTask;", "Lcom/tencent/mm/loader/loader/IWorkTask;", "task", "Lkotlin/Function1;", "", "id", "", "(Lkotlin/jvm/functions/Function1;Ljava/lang/String;)V", "getId", "()Ljava/lang/String;", "getTask", "()Lkotlin/jvm/functions/Function1;", "token", "", "getToken", "()I", "setToken", "(I)V", "call", "toString", "uniqueId", "libimageloader_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/loader/loader/SingleTask;", "Lcom/tencent/mm/loader/loader/IWorkTask;", "task", "Lkotlin/Function1;", "", "id", "", "(Lkotlin/jvm/functions/Function1;Ljava/lang/String;)V", "getId", "()Ljava/lang/String;", "getTask", "()Lkotlin/jvm/functions/Function1;", "token", "", "getToken", "()I", "setToken", "(I)V", "call", "toString", "uniqueId", "libimageloader_release"})
 public final class h
   extends c
 {
-  private final b<h, z> hfA;
+  private final b<h, z> hio;
   private final String id;
   public int token;
   
   private h(b<? super h, z> paramb, String paramString)
   {
-    this.hfA = paramb;
+    this.hio = paramb;
     this.id = paramString;
     this.token = -1;
   }
   
-  public final String aeK()
+  public final String aeW()
   {
     return this.id;
   }
   
   public final void call()
   {
-    this.hfA.invoke(this);
+    this.hio.invoke(this);
   }
   
   public final String toString()

@@ -6,8 +6,8 @@ import com.tencent.mm.sdk.b.b;
 public final class gn
   extends b
 {
-  public a dsr;
-  public b dss;
+  public a dtv;
+  public b dtw;
   
   public gn()
   {
@@ -16,34 +16,28 @@ public final class gn
   
   private gn(byte paramByte)
   {
-    AppMethodBeat.i(104417);
-    this.dsr = new a();
-    this.dss = new b();
-    this.IbR = false;
+    AppMethodBeat.i(155367);
+    this.dtv = new a();
+    this.dtw = new b();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(104417);
+    AppMethodBeat.o(155367);
   }
   
   public static final class a
   {
-    public String aeskey;
-    public int dkM;
-    public String dok;
-    public String dsu;
-    public String dsv;
-    public String md5;
-    public String name;
-    public String thumbUrl;
+    public String dtr;
+    public String dtt;
   }
   
   public static final class b
   {
-    public String path;
+    public String dtx;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.a.gn
  * JD-Core Version:    0.7.0.1
  */

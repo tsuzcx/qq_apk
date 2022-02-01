@@ -6,12 +6,12 @@ import d.l.b.a.b.m.a.i;
 public final class ax
   extends aw
 {
-  private final ab MOF;
-  private final bh NCC;
+  private final bh NZJ;
+  private final ab NlK;
   
   public ax(ab paramab)
   {
-    this(bh.NCP, paramab);
+    this(bh.NZW, paramab);
     AppMethodBeat.i(60837);
     AppMethodBeat.o(60837);
   }
@@ -19,33 +19,33 @@ public final class ax
   public ax(bh parambh, ab paramab)
   {
     AppMethodBeat.i(60836);
-    this.NCC = parambh;
-    this.MOF = paramab;
+    this.NZJ = parambh;
+    this.NlK = paramab;
     AppMethodBeat.o(60836);
   }
   
-  public final ab gju()
+  public final ab gnW()
   {
     AppMethodBeat.i(60839);
-    ab localab = this.MOF;
+    ab localab = this.NlK;
     if (localab == null) {
-      ajm(4);
+      ajW(4);
     }
     AppMethodBeat.o(60839);
     return localab;
   }
   
-  public final boolean guc()
+  public final boolean gyE()
   {
     return false;
   }
   
-  public final bh gud()
+  public final bh gyF()
   {
     AppMethodBeat.i(60838);
-    bh localbh = this.NCC;
+    bh localbh = this.NZJ;
     if (localbh == null) {
-      ajm(3);
+      ajW(3);
     }
     AppMethodBeat.o(60838);
     return localbh;
@@ -55,16 +55,16 @@ public final class ax
   {
     AppMethodBeat.i(60840);
     if (parami == null) {
-      ajm(5);
+      ajW(5);
     }
-    parami = new ax(this.NCC, parami.aL(this.MOF));
+    parami = new ax(this.NZJ, parami.aL(this.NlK));
     AppMethodBeat.o(60840);
     return parami;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.m.ax
  * JD-Core Version:    0.7.0.1
  */

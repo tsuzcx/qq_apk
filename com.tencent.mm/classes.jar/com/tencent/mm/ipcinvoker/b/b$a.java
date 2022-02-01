@@ -34,7 +34,7 @@ public abstract class b$a
     if (paramParcel1.readInt() != 0) {}
     for (paramParcel1 = (Bundle)Bundle.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
     {
-      q(paramParcel1);
+      r(paramParcel1);
       paramParcel2.writeNoException();
       return true;
     }
@@ -56,7 +56,7 @@ public abstract class b$a
     }
     
     /* Error */
-    public final void q(Bundle paramBundle)
+    public final void r(Bundle paramBundle)
     {
       // Byte code:
       //   0: ldc 24

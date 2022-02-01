@@ -10,41 +10,41 @@ public class TPDLProxyLog
   
   public static void d(String paramString1, int paramInt, String paramString2, String paramString3)
   {
-    AppMethodBeat.i(190297);
+    AppMethodBeat.i(207510);
     if (mLogListener != null)
     {
       mLogListener.d(paramString1, paramInt, paramString2, paramString3);
-      AppMethodBeat.o(190297);
+      AppMethodBeat.o(207510);
       return;
     }
     new StringBuilder("[").append(paramString2).append("][").append(paramString1).append(":").append(paramInt).append("]");
-    AppMethodBeat.o(190297);
+    AppMethodBeat.o(207510);
   }
   
   public static void e(String paramString1, int paramInt, String paramString2, String paramString3)
   {
-    AppMethodBeat.i(190300);
+    AppMethodBeat.i(207513);
     if (mLogListener != null)
     {
       mLogListener.e(paramString1, paramInt, paramString2, paramString3);
-      AppMethodBeat.o(190300);
+      AppMethodBeat.o(207513);
       return;
     }
     new StringBuilder("[").append(paramString2).append("][").append(paramString1).append(":").append(paramInt).append("]");
-    AppMethodBeat.o(190300);
+    AppMethodBeat.o(207513);
   }
   
   public static void i(String paramString1, int paramInt, String paramString2, String paramString3)
   {
-    AppMethodBeat.i(190298);
+    AppMethodBeat.i(207511);
     if (mLogListener != null)
     {
       mLogListener.i(paramString1, paramInt, paramString2, paramString3);
-      AppMethodBeat.o(190298);
+      AppMethodBeat.o(207511);
       return;
     }
     new StringBuilder("[").append(paramString2).append("][").append(paramString1).append(":").append(paramInt).append("]");
-    AppMethodBeat.o(190298);
+    AppMethodBeat.o(207511);
   }
   
   public static void setLogListener(int paramInt, ITPDLProxyLogListener paramITPDLProxyLogListener)
@@ -55,15 +55,15 @@ public class TPDLProxyLog
   
   public static void w(String paramString1, int paramInt, String paramString2, String paramString3)
   {
-    AppMethodBeat.i(190299);
+    AppMethodBeat.i(207512);
     if (mLogListener != null)
     {
       mLogListener.w(paramString1, paramInt, paramString2, paramString3);
-      AppMethodBeat.o(190299);
+      AppMethodBeat.o(207512);
       return;
     }
     new StringBuilder("[").append(paramString2).append("][").append(paramString1).append(":").append(paramInt).append("]");
-    AppMethodBeat.o(190299);
+    AppMethodBeat.o(207512);
   }
 }
 

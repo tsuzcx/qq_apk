@@ -9,31 +9,31 @@ import java.util.Map;
 public abstract interface l
   extends t
 {
-  public abstract i<String> bnE();
+  public abstract i<String> boo();
   
   public abstract Map<String, List<String>> getResponseHeaders();
   
   public static class a
     extends IOException
   {
-    public final g lmn;
+    public final g lqN;
     
     public a(IOException paramIOException, g paramg)
     {
       super();
-      this.lmn = paramg;
+      this.lqN = paramg;
     }
     
     public a(String paramString, g paramg)
     {
       super();
-      this.lmn = paramg;
+      this.lqN = paramg;
     }
     
     public a(String paramString, IOException paramIOException, g paramg)
     {
       super(paramIOException);
-      this.lmn = paramg;
+      this.lqN = paramg;
     }
   }
   
@@ -78,10 +78,10 @@ public abstract interface l
     public e(String paramString, Map<String, List<String>> paramMap, g paramg)
     {
       super(paramg);
-      AppMethodBeat.i(206061);
+      AppMethodBeat.i(211088);
       this.contentType = paramString;
       this.headerFields = paramMap;
-      AppMethodBeat.o(206061);
+      AppMethodBeat.o(211088);
     }
   }
   
@@ -94,10 +94,10 @@ public abstract interface l
     public f(int paramInt, Map<String, List<String>> paramMap, g paramg)
     {
       super(paramg);
-      AppMethodBeat.i(206062);
+      AppMethodBeat.i(211089);
       this.responseCode = paramInt;
       this.headerFields = paramMap;
-      AppMethodBeat.o(206062);
+      AppMethodBeat.o(211089);
     }
   }
   

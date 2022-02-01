@@ -29,7 +29,7 @@ public class NetUtil
   public static final int TYPE_WIFI = 5;
   private static final String UNIWAP = "uniwap";
   private static final String WAP_3G = "3gwap";
-  private static final String WIFI = "wifi";
+  public static final String WIFI = "wifi";
   
   public static int getNetType(Context paramContext)
   {
@@ -252,17 +252,17 @@ public class NetUtil
   
   public static final void safeClose(Closeable paramCloseable)
   {
-    AppMethodBeat.i(195080);
+    AppMethodBeat.i(209853);
     if (paramCloseable != null) {
       try
       {
         paramCloseable.close();
-        AppMethodBeat.o(195080);
+        AppMethodBeat.o(209853);
         return;
       }
       catch (IOException paramCloseable) {}
     }
-    AppMethodBeat.o(195080);
+    AppMethodBeat.o(209853);
   }
   
   /* Error */
@@ -354,21 +354,21 @@ public class NetUtil
   
   public static void writeBytesWithoutClose(byte[] paramArrayOfByte, OutputStream paramOutputStream)
   {
-    AppMethodBeat.i(195082);
+    AppMethodBeat.i(209855);
     if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0) || (paramOutputStream == null))
     {
-      AppMethodBeat.o(195082);
+      AppMethodBeat.o(209855);
       return;
     }
     try
     {
       paramOutputStream.write(paramArrayOfByte);
-      AppMethodBeat.o(195082);
+      AppMethodBeat.o(209855);
       return;
     }
     catch (IOException paramArrayOfByte)
     {
-      AppMethodBeat.o(195082);
+      AppMethodBeat.o(209855);
     }
   }
 }

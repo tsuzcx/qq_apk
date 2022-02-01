@@ -4,38 +4,38 @@ import android.app.Activity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wallet.pwd.ui.WalletPasswordSettingUI;
 import com.tencent.mm.plugin.wallet_payu.pwd.a.g;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.wallet_core.a;
 
 public class WalletPayUPasswordSettingUI
   extends WalletPasswordSettingUI
 {
-  public final int eEr()
+  public final int eHY()
   {
     return 2131951762;
   }
   
-  public final void eEs()
+  public final void eHZ()
   {
     AppMethodBeat.i(72162);
-    ad.d("MicroMsg.WalletPayUPasswordSettingUI", "hy: start payu reset pwd");
+    ae.d("MicroMsg.WalletPayUPasswordSettingUI", "hy: start payu reset pwd");
     a.a(this, g.class, null);
     AppMethodBeat.o(72162);
   }
   
-  public final void eEt()
+  public final void eIa()
   {
     AppMethodBeat.i(72161);
-    ad.d("MicroMsg.WalletPayUPasswordSettingUI", "hy: start payu do forgot pwd");
+    ae.d("MicroMsg.WalletPayUPasswordSettingUI", "hy: start payu do forgot pwd");
     a.a(this, com.tencent.mm.plugin.wallet_payu.pwd.a.f.class, null);
     AppMethodBeat.o(72161);
   }
   
-  public final void eEu()
+  public final void eIb()
   {
     AppMethodBeat.i(72163);
-    getPreferenceScreen().cP("wallet_modify_gesture_password", true);
-    getPreferenceScreen().cP("wallet_open_gesture_password", true);
+    getPreferenceScreen().cT("wallet_modify_gesture_password", true);
+    getPreferenceScreen().cT("wallet_open_gesture_password", true);
     AppMethodBeat.o(72163);
   }
   
@@ -47,7 +47,7 @@ public class WalletPayUPasswordSettingUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_payu.pwd.ui.WalletPayUPasswordSettingUI
  * JD-Core Version:    0.7.0.1
  */

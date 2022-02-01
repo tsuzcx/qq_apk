@@ -9,9 +9,9 @@ public class GameSettingParams
   implements Parcelable
 {
   public static final Parcelable.Creator<GameSettingParams> CREATOR;
-  public String EiI;
-  public String EiJ;
-  public String EiK;
+  public String EAM;
+  public String EAN;
+  public String EAO;
   
   static
   {
@@ -25,9 +25,9 @@ public class GameSettingParams
   private GameSettingParams(Parcel paramParcel)
   {
     AppMethodBeat.i(80863);
-    this.EiI = paramParcel.readString();
-    this.EiJ = paramParcel.readString();
-    this.EiK = paramParcel.readString();
+    this.EAM = paramParcel.readString();
+    this.EAN = paramParcel.readString();
+    this.EAO = paramParcel.readString();
     AppMethodBeat.o(80863);
   }
   
@@ -39,9 +39,9 @@ public class GameSettingParams
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(80862);
-    paramParcel.writeString(this.EiI);
-    paramParcel.writeString(this.EiJ);
-    paramParcel.writeString(this.EiK);
+    paramParcel.writeString(this.EAM);
+    paramParcel.writeString(this.EAN);
+    paramParcel.writeString(this.EAO);
     AppMethodBeat.o(80862);
   }
 }

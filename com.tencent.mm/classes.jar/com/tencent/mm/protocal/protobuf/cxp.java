@@ -3,58 +3,60 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class cxp
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public String path;
-  public int scene;
-  public int type;
-  public String username;
-  public int version;
+  public int CreateTime;
+  public String FSh;
+  public String Gps;
+  public String Name;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(190981);
+    AppMethodBeat.i(134254);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.username != null) {
-        paramVarArgs.d(1, this.username);
+      if (this.Name != null) {
+        paramVarArgs.d(1, this.Name);
       }
-      if (this.path != null) {
-        paramVarArgs.d(2, this.path);
+      if (this.Gps != null) {
+        paramVarArgs.d(2, this.Gps);
       }
-      paramVarArgs.aS(3, this.version);
-      paramVarArgs.aS(4, this.scene);
-      paramVarArgs.aS(5, this.type);
-      AppMethodBeat.o(190981);
+      if (this.FSh != null) {
+        paramVarArgs.d(3, this.FSh);
+      }
+      paramVarArgs.aS(4, this.CreateTime);
+      AppMethodBeat.o(134254);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.username == null) {
-        break label410;
+      if (this.Name == null) {
+        break label378;
       }
     }
-    label410:
-    for (paramInt = f.a.a.b.b.a.e(1, this.username) + 0;; paramInt = 0)
+    label378:
+    for (int i = f.a.a.b.b.a.e(1, this.Name) + 0;; i = 0)
     {
-      int i = paramInt;
-      if (this.path != null) {
-        i = paramInt + f.a.a.b.b.a.e(2, this.path);
+      paramInt = i;
+      if (this.Gps != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.Gps);
       }
-      paramInt = f.a.a.b.b.a.bz(3, this.version);
-      int j = f.a.a.b.b.a.bz(4, this.scene);
-      int k = f.a.a.b.b.a.bz(5, this.type);
-      AppMethodBeat.o(190981);
-      return i + paramInt + j + k;
+      i = paramInt;
+      if (this.FSh != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.FSh);
+      }
+      paramInt = f.a.a.b.b.a.bz(4, this.CreateTime);
+      AppMethodBeat.o(134254);
+      return i + paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
-        AppMethodBeat.o(190981);
+        AppMethodBeat.o(134254);
         return 0;
       }
       if (paramInt == 3)
@@ -64,30 +66,26 @@ public final class cxp
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(190981);
+          AppMethodBeat.o(134254);
           return -1;
         case 1: 
-          localcxp.username = locala.NPN.readString();
-          AppMethodBeat.o(190981);
+          localcxp.Name = locala.OmT.readString();
+          AppMethodBeat.o(134254);
           return 0;
         case 2: 
-          localcxp.path = locala.NPN.readString();
-          AppMethodBeat.o(190981);
+          localcxp.Gps = locala.OmT.readString();
+          AppMethodBeat.o(134254);
           return 0;
         case 3: 
-          localcxp.version = locala.NPN.zc();
-          AppMethodBeat.o(190981);
-          return 0;
-        case 4: 
-          localcxp.scene = locala.NPN.zc();
-          AppMethodBeat.o(190981);
+          localcxp.FSh = locala.OmT.readString();
+          AppMethodBeat.o(134254);
           return 0;
         }
-        localcxp.type = locala.NPN.zc();
-        AppMethodBeat.o(190981);
+        localcxp.CreateTime = locala.OmT.zc();
+        AppMethodBeat.o(134254);
         return 0;
       }
-      AppMethodBeat.o(190981);
+      AppMethodBeat.o(134254);
       return -1;
     }
   }

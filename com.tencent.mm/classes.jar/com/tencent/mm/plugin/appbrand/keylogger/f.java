@@ -7,9 +7,9 @@ import com.tencent.mm.plugin.appbrand.keylogger.base.h;
 import com.tencent.mm.plugin.appbrand.keylogger.base.h.a;
 import com.tencent.mm.plugin.appbrand.keylogger.base.h.b;
 import com.tencent.mm.plugin.appbrand.keylogger.base.j;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ax;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -22,23 +22,23 @@ import org.json.JSONObject;
 
 public final class f
 {
-  private static Map<String, String> lCX;
-  private static Map<String, List<j>> lCY;
-  private static Map<String, h> lCZ;
+  private static Map<String, String> lHw;
+  private static Map<String, List<j>> lHx;
+  private static Map<String, h> lHy;
   
   static
   {
-    AppMethodBeat.i(187708);
-    lCX = new HashMap();
-    lCY = new HashMap();
-    lCZ = new HashMap();
-    AppMethodBeat.o(187708);
+    AppMethodBeat.i(201275);
+    lHw = new HashMap();
+    lHx = new HashMap();
+    lHy = new HashMap();
+    AppMethodBeat.o(201275);
   }
   
-  public static boolean RE(String paramString)
+  public static boolean Sn(String paramString)
   {
-    AppMethodBeat.i(187703);
-    paramString = ax.gh("Luggage.KeyStepUtils", 2).getString(String.format("KeyStepLoggerSwitch_%s", new Object[] { paramString }), "");
+    AppMethodBeat.i(201270);
+    paramString = ay.gq("Luggage.KeyStepUtils", 2).getString(String.format("KeyStepLoggerSwitch_%s", new Object[] { paramString }), "");
     try
     {
       paramString = new JSONObject(paramString);
@@ -47,34 +47,34 @@ public final class f
       long l3 = System.currentTimeMillis();
       if ((l2 > 0L) && (l3 - l2 < l1))
       {
-        AppMethodBeat.o(187703);
+        AppMethodBeat.o(201270);
         return true;
       }
-      AppMethodBeat.o(187703);
+      AppMethodBeat.o(201270);
       return false;
     }
     catch (JSONException paramString)
     {
-      AppMethodBeat.o(187703);
+      AppMethodBeat.o(201270);
     }
     return false;
   }
   
   static void a(Class paramClass, h.b paramb)
   {
-    AppMethodBeat.i(187707);
+    AppMethodBeat.i(201274);
     h.a(aA(paramClass), paramb);
-    AppMethodBeat.o(187707);
+    AppMethodBeat.o(201274);
   }
   
   public static h aA(Class paramClass)
   {
-    AppMethodBeat.i(187706);
+    AppMethodBeat.i(201273);
     String str = paramClass.getName();
-    if (lCZ.containsKey(str))
+    if (lHy.containsKey(str))
     {
-      paramClass = (h)lCZ.get(str);
-      AppMethodBeat.o(187706);
+      paramClass = (h)lHy.get(str);
+      AppMethodBeat.o(201273);
       return paramClass;
     }
     List localList;
@@ -87,7 +87,7 @@ public final class f
       localList = (List)org.a.a.bF(paramClass).get("sStepNodes");
       if (localList == null)
       {
-        AppMethodBeat.o(187706);
+        AppMethodBeat.o(201273);
         return null;
       }
       localh1 = new h(new h.a(), "");
@@ -98,10 +98,10 @@ public final class f
         break label446;
       }
       locald = (d)localList.get(i);
-      int j = locald.bqE();
+      int j = locald.bro();
       if (j <= 0)
       {
-        j = locald.bqD();
+        j = locald.brn();
         paramClass = new h(locald, "");
         localh1.b(paramClass);
         localHashMap.put(Integer.valueOf(j), paramClass);
@@ -111,50 +111,50 @@ public final class f
         localh2 = (h)localHashMap.get(Integer.valueOf(j));
         if (localh2 == null)
         {
-          ad.e("StepNode", "buildStepTree unexpected branch: myGroup not found yet");
+          ae.e("StepNode", "buildStepTree unexpected branch: myGroup not found yet");
           paramClass = null;
           label232:
           if (paramClass == null)
           {
-            AppMethodBeat.o(187706);
+            AppMethodBeat.o(201273);
             return null;
           }
         }
-        else if (!h.a(localh2.lDp))
+        else if (!h.a(localh2.lHO))
         {
-          ad.e("StepNode", "addChild but not a node group");
+          ae.e("StepNode", "addChild but not a node group");
           paramClass = null;
           if (!h.a(locald)) {
             break label502;
           }
-          localHashMap.put(Integer.valueOf(locald.bqD()), paramClass);
+          localHashMap.put(Integer.valueOf(locald.brn()), paramClass);
         }
       }
     }
     catch (b paramClass)
     {
-      AppMethodBeat.o(187706);
+      AppMethodBeat.o(201273);
       return null;
     }
-    if (localh2.lDq == null) {
-      localh2.lDq = new ArrayList();
+    if (localh2.lHP == null) {
+      localh2.lHP = new ArrayList();
     }
-    if (localh2.lDp.getType() == 3) {}
+    if (localh2.lHO.getType() == 3) {}
     for (paramClass = "-";; paramClass = ".")
     {
-      if (!bt.isNullOrNil(localh2.lDr)) {}
-      for (paramClass = String.format("%s%s%d", new Object[] { localh2.lDr, paramClass, Integer.valueOf(localh2.lDq.size() + 1) });; paramClass = String.format("%d", new Object[] { Integer.valueOf(localh2.lDq.size() + 1) }))
+      if (!bu.isNullOrNil(localh2.lHQ)) {}
+      for (paramClass = String.format("%s%s%d", new Object[] { localh2.lHQ, paramClass, Integer.valueOf(localh2.lHP.size() + 1) });; paramClass = String.format("%d", new Object[] { Integer.valueOf(localh2.lHP.size() + 1) }))
       {
         paramClass = new h(locald, paramClass);
-        localh2.lDq.add(paramClass);
+        localh2.lHP.add(paramClass);
         break;
       }
       label446:
       localh1.b(new h((d)localList.get(localList.size() - 1), ""));
       paramClass = localh1;
       break label232;
-      lCZ.put(str, paramClass);
-      AppMethodBeat.o(187706);
+      lHy.put(str, paramClass);
+      AppMethodBeat.o(201273);
       return paramClass;
       label502:
       i += 1;
@@ -164,41 +164,41 @@ public final class f
   
   static String ay(Class paramClass)
   {
-    AppMethodBeat.i(187704);
+    AppMethodBeat.i(201271);
     String str = paramClass.getName();
-    if (lCX.containsKey(str))
+    if (lHw.containsKey(str))
     {
-      paramClass = (String)lCX.get(str);
-      AppMethodBeat.o(187704);
+      paramClass = (String)lHw.get(str);
+      AppMethodBeat.o(201271);
       return paramClass;
     }
     try
     {
       paramClass = (String)paramClass.getDeclaredField("NAME").get(null);
-      lCX.put(str, paramClass);
-      AppMethodBeat.o(187704);
+      lHw.put(str, paramClass);
+      AppMethodBeat.o(201271);
       return paramClass;
     }
     catch (NoSuchFieldException paramClass)
     {
-      AppMethodBeat.o(187704);
+      AppMethodBeat.o(201271);
       return null;
     }
     catch (IllegalAccessException paramClass)
     {
-      AppMethodBeat.o(187704);
+      AppMethodBeat.o(201271);
     }
     return null;
   }
   
   static List<j> az(Class paramClass)
   {
-    AppMethodBeat.i(187705);
+    AppMethodBeat.i(201272);
     String str = paramClass.getName();
-    if (lCY.containsKey(str))
+    if (lHx.containsKey(str))
     {
-      paramClass = (List)lCY.get(str);
-      AppMethodBeat.o(187705);
+      paramClass = (List)lHx.get(str);
+      AppMethodBeat.o(201272);
       return paramClass;
     }
     ArrayList localArrayList = new ArrayList();
@@ -206,25 +206,25 @@ public final class f
     {
       public final void a(h paramAnonymoush)
       {
-        AppMethodBeat.i(187701);
-        com.tencent.mm.plugin.appbrand.keylogger.base.a locala = paramAnonymoush.bqG();
+        AppMethodBeat.i(201268);
+        com.tencent.mm.plugin.appbrand.keylogger.base.a locala = paramAnonymoush.brq();
         if (locala == null)
         {
-          AppMethodBeat.o(187701);
+          AppMethodBeat.o(201268);
           return;
         }
-        this.lDa.add(new j(locala, paramAnonymoush.lDr));
-        AppMethodBeat.o(187701);
+        this.lHz.add(new j(locala, paramAnonymoush.lHQ));
+        AppMethodBeat.o(201268);
       }
     });
-    lCY.put(str, localArrayList);
-    AppMethodBeat.o(187705);
+    lHx.put(str, localArrayList);
+    AppMethodBeat.o(201272);
     return localArrayList;
   }
   
   public static Pattern q(String... paramVarArgs)
   {
-    AppMethodBeat.i(187702);
+    AppMethodBeat.i(201269);
     StringBuilder localStringBuilder = new StringBuilder();
     int i = 0;
     while (i < 2)
@@ -237,7 +237,7 @@ public final class f
     }
     localStringBuilder.append(".*");
     paramVarArgs = Pattern.compile(localStringBuilder.toString());
-    AppMethodBeat.o(187702);
+    AppMethodBeat.o(201269);
     return paramVarArgs;
   }
 }

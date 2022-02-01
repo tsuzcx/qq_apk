@@ -2,48 +2,22 @@ package com.tencent.mm.plugin.sns.j;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 public final class c
 {
-  private static Map<String, a> ztm;
-  private static volatile long ztn;
+  private static Map<String, a> zKB;
+  private static volatile long zKC;
   
   static
   {
     AppMethodBeat.i(96202);
-    ztm = new ConcurrentHashMap();
-    ztn = 0L;
+    zKB = new ConcurrentHashMap();
+    zKC = 0L;
     AppMethodBeat.o(96202);
-  }
-  
-  public static void a(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, long paramLong)
-  {
-    AppMethodBeat.i(96199);
-    try
-    {
-      b localb = new b((byte)0);
-      localb.zto = azE(paramString1);
-      localb.mMimeType = paramString2;
-      localb.mWidth = paramInt1;
-      localb.mHeight = paramInt2;
-      localb.ztq = paramInt3;
-      localb.baQ = paramLong;
-      paramString1 = new StringBuilder(1024);
-      paramString1.append(localb.zto).append(',').append(localb.mMimeType).append(',').append(localb.mWidth).append(',').append(localb.mHeight).append(',').append(localb.ztq).append(',').append(localb.baQ);
-      paramString1 = paramString1.toString();
-      ad.i("MicroMsg.SnsImgStats", "report up: ".concat(String.valueOf(paramString1)));
-      g.yhR.kvStat(13512, paramString1);
-      AppMethodBeat.o(96199);
-      return;
-    }
-    catch (Exception paramString1)
-    {
-      AppMethodBeat.o(96199);
-    }
   }
   
   public static void a(String paramString1, String paramString2, int paramInt1, String paramString3, int paramInt2, int paramInt3, int paramInt4, long paramLong1, long paramLong2)
@@ -52,15 +26,15 @@ public final class c
     try
     {
       a locala = new a((byte)0);
-      locala.zto = azE(paramString2);
-      locala.ztp = paramInt1;
+      locala.zKD = aAV(paramString2);
+      locala.zKE = paramInt1;
       locala.mMimeType = paramString3;
       locala.mWidth = paramInt2;
       locala.mHeight = paramInt3;
-      locala.ztq = paramInt4;
+      locala.zKF = paramInt4;
       locala.baQ = paramLong1;
-      locala.ztr = paramLong2;
-      ztm.put(paramString1, locala);
+      locala.zKG = paramLong2;
+      zKB.put(paramString1, locala);
       AppMethodBeat.o(96200);
       return;
     }
@@ -70,7 +44,7 @@ public final class c
     }
   }
   
-  private static String azE(String paramString)
+  private static String aAV(String paramString)
   {
     AppMethodBeat.i(96198);
     int i = paramString.indexOf('?');
@@ -94,42 +68,68 @@ public final class c
     return paramString;
   }
   
-  public static void bk(String paramString, long paramLong)
+  public static void bl(String paramString, long paramLong)
   {
     AppMethodBeat.i(96201);
     try
     {
-      paramString = (a)ztm.remove(paramString);
+      paramString = (a)zKB.remove(paramString);
       if (paramString == null) {
         return;
       }
-      paramString.zts = paramLong;
+      paramString.zKH = paramLong;
       StringBuilder localStringBuilder = new StringBuilder(1024);
-      localStringBuilder.append(paramString.zto).append(',').append(paramString.ztp).append(',').append(paramString.mMimeType).append(',').append(paramString.mWidth).append(',').append(paramString.mHeight).append(',').append(paramString.ztq).append(',').append(paramString.baQ).append(',').append(paramString.ztr).append(',').append(paramString.zts);
+      localStringBuilder.append(paramString.zKD).append(',').append(paramString.zKE).append(',').append(paramString.mMimeType).append(',').append(paramString.mWidth).append(',').append(paramString.mHeight).append(',').append(paramString.zKF).append(',').append(paramString.baQ).append(',').append(paramString.zKG).append(',').append(paramString.zKH);
       paramString = localStringBuilder.toString();
-      ad.i("MicroMsg.SnsImgStats", "report dl: ".concat(String.valueOf(paramString)));
-      g.yhR.kvStat(13513, paramString);
+      ae.i("MicroMsg.SnsImgStats", "report dl: ".concat(String.valueOf(paramString)));
+      g.yxI.kvStat(13513, paramString);
       return;
     }
     catch (Exception paramString) {}finally
     {
-      dVC();
+      dZd();
       AppMethodBeat.o(96201);
     }
   }
   
-  private static void dVC()
+  public static void c(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, long paramLong)
+  {
+    AppMethodBeat.i(96199);
+    try
+    {
+      b localb = new b((byte)0);
+      localb.zKD = aAV(paramString1);
+      localb.mMimeType = paramString2;
+      localb.mWidth = paramInt1;
+      localb.mHeight = paramInt2;
+      localb.zKF = paramInt3;
+      localb.baQ = paramLong;
+      paramString1 = new StringBuilder(1024);
+      paramString1.append(localb.zKD).append(',').append(localb.mMimeType).append(',').append(localb.mWidth).append(',').append(localb.mHeight).append(',').append(localb.zKF).append(',').append(localb.baQ);
+      paramString1 = paramString1.toString();
+      ae.i("MicroMsg.SnsImgStats", "report up: ".concat(String.valueOf(paramString1)));
+      g.yxI.kvStat(13512, paramString1);
+      AppMethodBeat.o(96199);
+      return;
+    }
+    catch (Exception paramString1)
+    {
+      AppMethodBeat.o(96199);
+    }
+  }
+  
+  private static void dZd()
   {
     AppMethodBeat.i(96197);
-    synchronized (ztm)
+    synchronized (zKB)
     {
-      if (bt.aO(ztn) <= 120000L)
+      if (bu.aO(zKC) <= 120000L)
       {
         AppMethodBeat.o(96197);
         return;
       }
-      ztn = bt.HI();
-      ztm.clear();
+      zKC = bu.HQ();
+      zKB.clear();
       AppMethodBeat.o(96197);
       return;
     }
@@ -141,11 +141,11 @@ public final class c
     int mHeight = -1;
     String mMimeType = "";
     int mWidth = -1;
-    String zto = "";
-    int ztp = 0;
-    int ztq = -1;
-    long ztr = -1L;
-    long zts = -1L;
+    String zKD = "";
+    int zKE = 0;
+    int zKF = -1;
+    long zKG = -1L;
+    long zKH = -1L;
   }
   
   static final class b
@@ -154,8 +154,8 @@ public final class c
     int mHeight = -1;
     String mMimeType = "";
     int mWidth = -1;
-    String zto = "";
-    int ztq = -1;
+    String zKD = "";
+    int zKF = -1;
   }
 }
 

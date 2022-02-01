@@ -3,9 +3,9 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class du
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public String pkf;
+  public String pqK;
   public String signature;
   
   public final int op(int paramInt, Object... paramVarArgs)
@@ -17,8 +17,8 @@ public final class du
       if (this.signature != null) {
         paramVarArgs.d(1, this.signature);
       }
-      if (this.pkf != null) {
-        paramVarArgs.d(2, this.pkf);
+      if (this.pqK != null) {
+        paramVarArgs.d(2, this.pqK);
       }
       AppMethodBeat.o(152489);
       return 0;
@@ -32,17 +32,17 @@ public final class du
     for (paramInt = f.a.a.b.b.a.e(1, this.signature) + 0;; paramInt = 0)
     {
       int i = paramInt;
-      if (this.pkf != null) {
-        i = paramInt + f.a.a.b.b.a.e(2, this.pkf);
+      if (this.pqK != null) {
+        i = paramInt + f.a.a.b.b.a.e(2, this.pqK);
       }
       AppMethodBeat.o(152489);
       return i;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
         AppMethodBeat.o(152489);
@@ -58,11 +58,11 @@ public final class du
           AppMethodBeat.o(152489);
           return -1;
         case 1: 
-          localdu.signature = locala.NPN.readString();
+          localdu.signature = locala.OmT.readString();
           AppMethodBeat.o(152489);
           return 0;
         }
-        localdu.pkf = locala.NPN.readString();
+        localdu.pqK = locala.OmT.readString();
         AppMethodBeat.o(152489);
         return 0;
       }

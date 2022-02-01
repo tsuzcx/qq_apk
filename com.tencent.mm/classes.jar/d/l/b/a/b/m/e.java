@@ -18,13 +18,13 @@ import java.util.Set;
 
 public final class e
 {
-  public static boolean NBk;
-  public static final e NBl;
+  public static boolean NYr;
+  public static final e NYs;
   
   static
   {
     AppMethodBeat.i(60589);
-    NBl = new e();
+    NYs = new e();
     AppMethodBeat.o(60589);
   }
   
@@ -91,7 +91,7 @@ public final class e
     d.l.b.a.b.m.c.j localj = paramg.e(localh);
     Object localObject1 = paramg.f(paramh2);
     if ((paramg.n((d.l.b.a.b.m.c.h)localj)) || (paramg.n((d.l.b.a.b.m.c.h)localObject1))) {
-      if (paramg.gtQ()) {
+      if (paramg.gys()) {
         paramh1 = Boolean.TRUE;
       }
     }
@@ -107,11 +107,11 @@ public final class e
       }
       else
       {
-        paramh1 = Boolean.valueOf(d.NBj.a((d.l.b.a.b.m.c.q)paramg, (d.l.b.a.b.m.c.h)paramg.a(localj, false), (d.l.b.a.b.m.c.h)paramg.a((d.l.b.a.b.m.c.j)localObject1, false)));
+        paramh1 = Boolean.valueOf(d.NYq.a((d.l.b.a.b.m.c.q)paramg, (d.l.b.a.b.m.c.h)paramg.a(localj, false), (d.l.b.a.b.m.c.h)paramg.a((d.l.b.a.b.m.c.j)localObject1, false)));
         continue;
         if ((paramg.e(localj)) || (paramg.e((d.l.b.a.b.m.c.j)localObject1)))
         {
-          paramh1 = Boolean.valueOf(paramg.gtR());
+          paramh1 = Boolean.valueOf(paramg.gyt());
         }
         else
         {
@@ -124,9 +124,9 @@ public final class e
             {
               p.h(localj, "subType");
               p.h(localObject2, "superType");
-              localObject2 = g.a.NBs;
+              localObject2 = g.a.NYz;
             }
-            switch (f.gnp[localObject2.ordinal()])
+            switch (f.gpL[localObject2.ordinal()])
             {
             default: 
               label304:
@@ -141,7 +141,7 @@ public final class e
           }
           for (int i = 1;; i = 0)
           {
-            if ((!ac.MKp) || (i != 0)) {
+            if ((!ac.Nhs) || (i != 0)) {
               break label415;
             }
             paramg = (Throwable)new AssertionError("Intersection type should not be marked nullable!: ".concat(String.valueOf(localObject1)));
@@ -203,13 +203,13 @@ public final class e
       return true;
     }
     paramg.initialize();
-    ArrayDeque localArrayDeque = paramg.NBp;
+    ArrayDeque localArrayDeque = paramg.NYw;
     if (localArrayDeque == null) {
-      p.gfZ();
+      p.gkB();
     }
-    Set localSet = paramg.NBq;
+    Set localSet = paramg.NYx;
     if (localSet == null) {
-      p.gfZ();
+      p.gkB();
     }
     localArrayDeque.push(paramj);
     label336:
@@ -236,9 +236,9 @@ public final class e
       {
         if (paramg.b((d.l.b.a.b.m.c.j)localObject2))
         {
-          localObject1 = (g.b)g.b.c.NBw;
+          localObject1 = (g.b)g.b.c.NYD;
           label238:
-          if (!(p.i(localObject1, g.b.c.NBw) ^ true)) {
+          if (!(p.i(localObject1, g.b.c.NYD) ^ true)) {
             break label336;
           }
           label251:
@@ -258,7 +258,7 @@ public final class e
             paramg.clear();
             AppMethodBeat.o(60582);
             return true;
-            localObject1 = (g.b)g.b.b.NBv;
+            localObject1 = (g.b)g.b.b.NYC;
             break label238;
             localObject1 = null;
             break label251;
@@ -290,8 +290,8 @@ public final class e
       {
         d.l.b.a.b.m.c.h localh1 = paramg.c((d.l.b.a.b.m.c.m)localObject2);
         Object localObject1 = paramg.a(paraml, i);
-        if (paramg.b((d.l.b.a.b.m.c.m)localObject1) == t.NDU) {}
-        for (int j = 1; (ac.MKp) && (j == 0); j = 0)
+        if (paramg.b((d.l.b.a.b.m.c.m)localObject1) == t.Obb) {}
+        for (int j = 1; (ac.Nhs) && (j == 0); j = 0)
         {
           paramg = (Throwable)new AssertionError("Incorrect sub argument: ".concat(String.valueOf(localObject1)));
           AppMethodBeat.o(60584);
@@ -302,26 +302,26 @@ public final class e
         localObject2 = paramg.b((d.l.b.a.b.m.c.m)localObject2);
         p.h(localObject1, "declared");
         p.h(localObject2, "useSite");
-        if (localObject1 == t.NDU) {}
+        if (localObject1 == t.Obb) {}
         label204:
         boolean bool;
         for (localObject1 = localObject2; localObject1 == null; localObject1 = null)
         {
-          bool = paramg.gtQ();
+          bool = paramg.gys();
           AppMethodBeat.o(60584);
           return bool;
-          if ((localObject2 == t.NDU) || (localObject1 == localObject2)) {
+          if ((localObject2 == t.Obb) || (localObject1 == localObject2)) {
             break label204;
           }
         }
-        if (paramg.NBn > 100)
+        if (paramg.NYu > 100)
         {
           paramg = (Throwable)new IllegalStateException("Arguments depth is too high. Some related argument: ".concat(String.valueOf(localh2)).toString());
           AppMethodBeat.o(60584);
           throw paramg;
         }
-        paramg.NBn += 1;
-        switch (f.cpQ[localObject1.ordinal()])
+        paramg.NYu += 1;
+        switch (f.cqt[localObject1.ordinal()])
         {
         default: 
           paramg = new d.m();
@@ -332,7 +332,7 @@ public final class e
         }
         for (;;)
         {
-          paramg.NBn -= 1;
+          paramg.NYu -= 1;
           if (bool) {
             break;
           }
@@ -399,38 +399,38 @@ public final class e
   {
     AppMethodBeat.i(60583);
     int i;
-    if (NBk)
+    if (NYr)
     {
       if ((paramg.k(paramj1)) || (paramg.i(paramg.i(paramj1))) || (paramg.c((d.l.b.a.b.m.c.h)paramj1))) {}
-      for (i = 1; (ac.MKp) && (i == 0); i = 0)
+      for (i = 1; (ac.Nhs) && (i == 0); i = 0)
       {
         paramg = (Throwable)new AssertionError("Not singleClassifierType and not intersection subType: ".concat(String.valueOf(paramj1)));
         AppMethodBeat.o(60583);
         throw paramg;
       }
       if ((paramg.k(paramj2)) || (paramg.c((d.l.b.a.b.m.c.h)paramj2))) {}
-      for (i = 1; (ac.MKp) && (i == 0); i = 0)
+      for (i = 1; (ac.Nhs) && (i == 0); i = 0)
       {
         paramg = (Throwable)new AssertionError("Not singleClassifierType superType: ".concat(String.valueOf(paramj2)));
         AppMethodBeat.o(60583);
         throw paramg;
       }
     }
-    Object localObject = c.NBi;
+    Object localObject = c.NYp;
     p.h(paramg, "context");
     p.h(paramj1, "subType");
     p.h(paramj2, "superType");
-    if (NBk)
+    if (NYr)
     {
       if ((paramg.k(paramj1)) || (paramg.i(paramg.i(paramj1))) || (paramg.c((d.l.b.a.b.m.c.h)paramj1))) {}
-      for (i = 1; (ac.MKp) && (i == 0); i = 0)
+      for (i = 1; (ac.Nhs) && (i == 0); i = 0)
       {
         paramg = (Throwable)new AssertionError("Not singleClassifierType and not intersection subType: ".concat(String.valueOf(paramj1)));
         AppMethodBeat.o(60583);
         throw paramg;
       }
       if ((paramg.k(paramj2)) || (paramg.c((d.l.b.a.b.m.c.h)paramj2))) {}
-      for (i = 1; (ac.MKp) && (i == 0); i = 0)
+      for (i = 1; (ac.Nhs) && (i == 0); i = 0)
       {
         paramg = (Throwable)new AssertionError("Not singleClassifierType superType: ".concat(String.valueOf(paramj2)));
         AppMethodBeat.o(60583);
@@ -447,11 +447,11 @@ public final class e
       return false;
       if (paramg.h((d.l.b.a.b.m.c.h)paramj1)) {
         bool = true;
-      } else if (c.a(paramg, paramj1, (g.b)g.b.b.NBv)) {
+      } else if (c.a(paramg, paramj1, (g.b)g.b.b.NYC)) {
         bool = true;
       } else if (paramg.h((d.l.b.a.b.m.c.h)paramj2)) {
         bool = false;
-      } else if (c.a(paramg, paramj2, (g.b)g.b.d.NBx)) {
+      } else if (c.a(paramg, paramj2, (g.b)g.b.d.NYE)) {
         bool = false;
       } else if (paramg.b(paramj1)) {
         bool = false;
@@ -494,7 +494,7 @@ public final class e
     {
       Collection localCollection;
       Iterator localIterator;
-      if ((i != 0) || (paramg.b(paramg.a(localn, j)) != t.NDT))
+      if ((i != 0) || (paramg.b(paramg.a(localn, j)) != t.Oba))
       {
         i = 1;
         if (i == 0)
@@ -516,7 +516,7 @@ public final class e
           int k;
           if (localObject != null)
           {
-            if (paramg.b((d.l.b.a.b.m.c.m)localObject) != t.NDU) {
+            if (paramg.b((d.l.b.a.b.m.c.m)localObject) != t.Obb) {
               break label886;
             }
             k = 1;
@@ -540,7 +540,7 @@ public final class e
             bool = a(paramg, paramj1);
             AppMethodBeat.o(60583);
             return bool;
-            bool = a(paramg, paramg.j((d.l.b.a.b.m.c.j)d.a.j.jc(localList)), paramj2);
+            bool = a(paramg, paramg.j((d.l.b.a.b.m.c.j)d.a.j.jl(localList)), paramj2);
             AppMethodBeat.o(60583);
             return bool;
             i = 0;
@@ -555,7 +555,7 @@ public final class e
           localCollection.add(localObject);
         }
         label911:
-        locala.add(paramg.r(paramg.ju((List)localCollection)));
+        locala.add(paramg.r(paramg.jD((List)localCollection)));
       }
       j += 1;
     }
@@ -591,14 +591,14 @@ public final class e
     }
     if ((!paramg.l(paramn)) && (paramg.b(paramj)))
     {
-      paramg = (List)v.MKE;
+      paramg = (List)v.NhH;
       AppMethodBeat.o(60586);
       return paramg;
     }
     if (paramg.m(paramn)) {
       if (paramg.a(paramg.i(paramj), paramn))
       {
-        paramg = paramg.a(paramj, b.NDO);
+        paramg = paramg.a(paramj, b.OaV);
         if (paramg != null) {
           break label480;
         }
@@ -609,18 +609,18 @@ public final class e
       paramg = d.a.j.listOf(paramj);
       AppMethodBeat.o(60586);
       return paramg;
-      paramg = (List)v.MKE;
+      paramg = (List)v.NhH;
       AppMethodBeat.o(60586);
       return paramg;
       List localList = (List)new d.l.b.a.b.o.h();
       paramg.initialize();
-      ArrayDeque localArrayDeque = paramg.NBp;
+      ArrayDeque localArrayDeque = paramg.NYw;
       if (localArrayDeque == null) {
-        p.gfZ();
+        p.gkB();
       }
-      Set localSet = paramg.NBq;
+      Set localSet = paramg.NYx;
       if (localSet == null) {
-        p.gfZ();
+        p.gkB();
       }
       localArrayDeque.push(paramj);
       label461:
@@ -644,7 +644,7 @@ public final class e
         p.g(localObject2, "current");
         if (localSet.add(localObject2))
         {
-          d.l.b.a.b.m.c.j localj = paramg.a((d.l.b.a.b.m.c.j)localObject2, b.NDO);
+          d.l.b.a.b.m.c.j localj = paramg.a((d.l.b.a.b.m.c.j)localObject2, b.OaV);
           localObject1 = localj;
           if (localj == null) {
             localObject1 = localObject2;
@@ -652,9 +652,9 @@ public final class e
           if (paramg.a(paramg.i((d.l.b.a.b.m.c.j)localObject1), paramn))
           {
             localList.add(localObject1);
-            localObject1 = (g.b)g.b.c.NBw;
+            localObject1 = (g.b)g.b.c.NYD;
             label357:
-            if (!(p.i(localObject1, g.b.c.NBw) ^ true)) {
+            if (!(p.i(localObject1, g.b.c.NYD) ^ true)) {
               break label461;
             }
           }
@@ -670,7 +670,7 @@ public final class e
             break;
             if (paramg.q((d.l.b.a.b.m.c.h)localObject1) == 0)
             {
-              localObject1 = (g.b)g.b.b.NBv;
+              localObject1 = (g.b)g.b.b.NYC;
               break label357;
             }
             localObject1 = paramg.a((d.l.b.a.b.m.c.j)localObject1);
@@ -763,13 +763,13 @@ public final class e
     }
     Object localObject2 = new d.l.b.a.b.o.h();
     paramg.initialize();
-    ArrayDeque localArrayDeque = paramg.NBp;
+    ArrayDeque localArrayDeque = paramg.NYw;
     if (localArrayDeque == null) {
-      p.gfZ();
+      p.gkB();
     }
-    Set localSet = paramg.NBq;
+    Set localSet = paramg.NYx;
     if (localSet == null) {
-      p.gfZ();
+      p.gkB();
     }
     localArrayDeque.push(paramj);
     label282:
@@ -797,8 +797,8 @@ public final class e
         if (paramg.b((d.l.b.a.b.m.c.j)localObject3))
         {
           ((d.l.b.a.b.o.h)localObject2).add(localObject3);
-          localObject1 = (g.b)g.b.c.NBw;
-          if (!(p.i(localObject1, g.b.c.NBw) ^ true)) {
+          localObject1 = (g.b)g.b.c.NYD;
+          if (!(p.i(localObject1, g.b.c.NYD) ^ true)) {
             break label363;
           }
         }
@@ -812,7 +812,7 @@ public final class e
             localArrayDeque.add(((g.b)localObject1).b(paramg, (d.l.b.a.b.m.c.h)((Iterator)localObject3).next()));
           }
           break;
-          localObject1 = (g.b)g.b.b.NBv;
+          localObject1 = (g.b)g.b.b.NYC;
           break label282;
           localObject1 = null;
         }
@@ -845,42 +845,42 @@ public final class e
     
     public final boolean a(d.l.b.a.b.m.c.j paramj1, d.l.b.a.b.m.c.j paramj2, boolean paramBoolean)
     {
-      AppMethodBeat.i(187791);
+      AppMethodBeat.i(193315);
       p.h(paramj1, "integerLiteralType");
       p.h(paramj2, "type");
-      paramj1 = (Iterable)this.NBm.d(paramj1);
+      paramj1 = (Iterable)this.NYt.d(paramj1);
       if ((!(paramj1 instanceof Collection)) || (!((Collection)paramj1).isEmpty()))
       {
         paramj1 = paramj1.iterator();
         while (paramj1.hasNext())
         {
           d.l.b.a.b.m.c.h localh = (d.l.b.a.b.m.c.h)paramj1.next();
-          if (!p.i(this.NBm.d(localh), this.NBm.i(paramj2)))
+          if (!p.i(this.NYt.d(localh), this.NYt.i(paramj2)))
           {
             if (!paramBoolean) {
               break label138;
             }
-            e locale = e.NBl;
-            if (!e.a(this.NBm, (d.l.b.a.b.m.c.h)paramj2, localh)) {
+            e locale = e.NYs;
+            if (!e.a(this.NYt, (d.l.b.a.b.m.c.h)paramj2, localh)) {
               break label138;
             }
           }
           label138:
           for (int i = 1; i != 0; i = 0)
           {
-            AppMethodBeat.o(187791);
+            AppMethodBeat.o(193315);
             return true;
           }
         }
       }
-      AppMethodBeat.o(187791);
+      AppMethodBeat.o(193315);
       return false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.m.e
  * JD-Core Version:    0.7.0.1
  */

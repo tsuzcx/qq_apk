@@ -10,25 +10,25 @@ public final class g
 {
   public g(i parami)
   {
-    this.NQs = 2064;
-    this.NQt = 2;
-    this.NQv = parami;
+    this.Ony = 2064;
+    this.Onz = 2;
+    this.OnB = parami;
   }
   
-  public final byte[] di(byte[] paramArrayOfByte)
+  public final byte[] dl(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(88065);
-    int k = this.NQv.NQF;
-    byte[] arrayOfByte1 = this.NQv.NQA.gxU();
-    Object localObject = this.NQv.NQB;
-    byte[] arrayOfByte2 = new byte[((oicq.wlogin_sdk.a.g)localObject).NRn];
+    int k = this.OnB.OnL;
+    byte[] arrayOfByte1 = this.OnB.OnG.gCw();
+    Object localObject = this.OnB.OnH;
+    byte[] arrayOfByte2 = new byte[((oicq.wlogin_sdk.a.g)localObject).Oot];
     int i;
-    if (((oicq.wlogin_sdk.a.g)localObject).NRn <= 0)
+    if (((oicq.wlogin_sdk.a.g)localObject).Oot <= 0)
     {
       localObject = new f();
       ao localao = new ao();
-      localObject = ((f)localObject).dj(arrayOfByte1);
-      paramArrayOfByte = localao.r(paramArrayOfByte, arrayOfByte2);
+      localObject = ((f)localObject).dm(arrayOfByte1);
+      paramArrayOfByte = localao.s(paramArrayOfByte, arrayOfByte2);
       arrayOfByte2 = new byte[localObject.length + paramArrayOfByte.length];
       if (arrayOfByte1.length <= 0) {
         break label218;
@@ -39,12 +39,12 @@ public final class g
     for (int j = 1;; j = 0)
     {
       System.arraycopy(paramArrayOfByte, 0, arrayOfByte2, i, paramArrayOfByte.length);
-      paramArrayOfByte = super.P(arrayOfByte2, this.NQt, j + 1);
-      a(this.NQn, this.NQs, this.NQv._uin, this.NQp, this.NQq, k, this.NQr, paramArrayOfByte);
-      paramArrayOfByte = super.gxR();
+      paramArrayOfByte = super.Q(arrayOfByte2, this.Onz, j + 1);
+      a(this.Ont, this.Ony, this.OnB._uin, this.Onv, this.Onw, k, this.Onx, paramArrayOfByte);
+      paramArrayOfByte = super.gCt();
       AppMethodBeat.o(88065);
       return paramArrayOfByte;
-      System.arraycopy(((oicq.wlogin_sdk.a.g)localObject).NQm, ((oicq.wlogin_sdk.a.g)localObject).NRp, arrayOfByte2, 0, ((oicq.wlogin_sdk.a.g)localObject).NRn);
+      System.arraycopy(((oicq.wlogin_sdk.a.g)localObject).Ons, ((oicq.wlogin_sdk.a.g)localObject).Oov, arrayOfByte2, 0, ((oicq.wlogin_sdk.a.g)localObject).Oot);
       break;
       label218:
       i = 0;

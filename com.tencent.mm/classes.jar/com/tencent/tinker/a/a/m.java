@@ -4,14 +4,14 @@ import com.tencent.tinker.a.a.b.a;
 
 public final class m
 {
-  protected final a Mdw;
-  public int Mdx;
-  private int Mdy;
+  protected final a MAr;
+  public int MAs;
+  private int MAt;
   private int type = -1;
   
   public m(a parama, int paramInt)
   {
-    this.Mdw = parama;
+    this.MAr = parama;
     this.type = paramInt;
   }
   
@@ -20,101 +20,101 @@ public final class m
     this(new k.1(paramk), paramInt);
   }
   
-  private void ahA(int paramInt)
+  private void aij(int paramInt)
   {
     if (yW() != paramInt) {
       throw new IllegalStateException(String.format("Expected %x but was %x", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(yW()) }));
     }
   }
   
-  public final int fYb()
+  public final int gcA()
   {
-    ahA(28);
+    aij(28);
     this.type = -1;
-    return o.b(this.Mdw);
+    return o.b(this.MAr);
   }
   
-  public final int fYc()
+  public final int gcB()
   {
-    ahA(29);
+    aij(29);
     this.type = -1;
-    this.Mdx = o.b(this.Mdw);
-    return o.b(this.Mdw);
+    this.MAs = o.b(this.MAr);
+    return o.b(this.MAr);
   }
   
-  public final int fYd()
+  public final int gcC()
   {
-    return o.b(this.Mdw);
+    return o.b(this.MAr);
   }
   
-  public final int fYe()
+  public final int gcD()
   {
-    ahA(23);
+    aij(23);
     this.type = -1;
-    return l.a(this.Mdw, this.Mdy, false);
+    return l.a(this.MAr, this.MAt, false);
   }
   
-  public final int fYf()
+  public final int gcE()
   {
-    ahA(24);
+    aij(24);
     this.type = -1;
-    return l.a(this.Mdw, this.Mdy, false);
+    return l.a(this.MAr, this.MAt, false);
   }
   
-  public final int fYg()
+  public final int gcF()
   {
-    ahA(25);
+    aij(25);
     this.type = -1;
-    return l.a(this.Mdw, this.Mdy, false);
+    return l.a(this.MAr, this.MAt, false);
   }
   
-  public final int fYh()
+  public final int gcG()
   {
-    ahA(27);
+    aij(27);
     this.type = -1;
-    return l.a(this.Mdw, this.Mdy, false);
+    return l.a(this.MAr, this.MAt, false);
   }
   
-  public final int fYi()
+  public final int gcH()
   {
-    ahA(26);
+    aij(26);
     this.type = -1;
-    return l.a(this.Mdw, this.Mdy, false);
+    return l.a(this.MAr, this.MAt, false);
   }
   
-  public final void fYj()
+  public final void gcI()
   {
-    ahA(30);
+    aij(30);
     this.type = -1;
   }
   
   public final boolean readBoolean()
   {
-    ahA(31);
+    aij(31);
     this.type = -1;
-    return this.Mdy != 0;
+    return this.MAt != 0;
   }
   
   public final byte readByte()
   {
-    ahA(0);
+    aij(0);
     this.type = -1;
-    return (byte)l.a(this.Mdw, this.Mdy);
+    return (byte)l.a(this.MAr, this.MAt);
   }
   
   public final char readChar()
   {
-    ahA(3);
+    aij(3);
     this.type = -1;
-    return (char)l.a(this.Mdw, this.Mdy, false);
+    return (char)l.a(this.MAr, this.MAt, false);
   }
   
   public final double readDouble()
   {
-    ahA(17);
+    aij(17);
     this.type = -1;
-    a locala = this.Mdw;
-    int i = this.Mdy;
+    a locala = this.MAr;
+    int i = this.MAt;
     long l = 0L;
     while (i >= 0)
     {
@@ -126,24 +126,24 @@ public final class m
   
   public final float readFloat()
   {
-    ahA(16);
+    aij(16);
     this.type = -1;
-    return Float.intBitsToFloat(l.a(this.Mdw, this.Mdy, true));
+    return Float.intBitsToFloat(l.a(this.MAr, this.MAt, true));
   }
   
   public final int readInt()
   {
-    ahA(4);
+    aij(4);
     this.type = -1;
-    return l.a(this.Mdw, this.Mdy);
+    return l.a(this.MAr, this.MAt);
   }
   
   public final long readLong()
   {
-    ahA(6);
+    aij(6);
     this.type = -1;
-    a locala = this.Mdw;
-    int j = this.Mdy;
+    a locala = this.MAr;
+    int j = this.MAt;
     long l = 0L;
     int i = j;
     while (i >= 0)
@@ -156,9 +156,9 @@ public final class m
   
   public final short readShort()
   {
-    ahA(2);
+    aij(2);
     this.type = -1;
-    return (short)l.a(this.Mdw, this.Mdy);
+    return (short)l.a(this.MAr, this.MAt);
   }
   
   public final void skipValue()
@@ -207,38 +207,38 @@ public final class m
       readDouble();
       return;
     case 23: 
-      fYe();
+      gcD();
       return;
     case 24: 
-      fYf();
+      gcE();
       return;
     case 25: 
-      fYg();
+      gcF();
       return;
     case 27: 
-      fYh();
+      gcG();
       return;
     case 26: 
-      fYi();
+      gcH();
       return;
     case 28: 
-      j = fYb();
+      j = gcA();
       while (i < j)
       {
         skipValue();
         i += 1;
       }
     case 29: 
-      int k = fYc();
+      int k = gcB();
       i = j;
       while (i < k)
       {
-        o.b(this.Mdw);
+        o.b(this.MAr);
         skipValue();
         i += 1;
       }
     case 30: 
-      fYj();
+      gcI();
       return;
     }
     readBoolean();
@@ -248,9 +248,9 @@ public final class m
   {
     if (this.type == -1)
     {
-      int i = this.Mdw.readByte() & 0xFF;
+      int i = this.MAr.readByte() & 0xFF;
       this.type = (i & 0x1F);
-      this.Mdy = ((i & 0xE0) >> 5);
+      this.MAt = ((i & 0xE0) >> 5);
     }
     return this.type;
   }

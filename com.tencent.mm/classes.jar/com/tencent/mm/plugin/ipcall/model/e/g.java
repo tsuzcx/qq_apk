@@ -1,23 +1,23 @@
 package com.tencent.mm.plugin.ipcall.model.e;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
-import com.tencent.mm.model.ba;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.model.bc;
 import com.tencent.mm.model.c;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.blb;
-import com.tencent.mm.protocal.protobuf.blc;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.al.a;
+import com.tencent.mm.protocal.protobuf.blt;
+import com.tencent.mm.protocal.protobuf.blu;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.aj;
+import com.tencent.mm.storage.am.a;
 import java.io.IOException;
 
 public final class g
@@ -26,32 +26,32 @@ public final class g
 {
   private f callback;
   private b rr;
-  private blb uNn;
-  public blc uNo;
+  private blt uZa;
+  public blu uZb;
   
   public g(int paramInt)
   {
     AppMethodBeat.i(25469);
     this.rr = null;
-    this.uNn = null;
-    this.uNo = null;
+    this.uZa = null;
+    this.uZb = null;
     Object localObject = new b.a();
-    ((b.a)localObject).hNM = new blb();
-    ((b.a)localObject).hNN = new blc();
+    ((b.a)localObject).hQF = new blt();
+    ((b.a)localObject).hQG = new blu();
     ((b.a)localObject).funcId = 257;
     ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/getwechatoutcoupons";
-    ((b.a)localObject).hNO = 0;
+    ((b.a)localObject).hQH = 0;
     ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).aDC();
-    this.uNn = ((blb)this.rr.hNK.hNQ);
-    this.uNn.Scene = paramInt;
-    localObject = this.uNn;
-    ba.aBQ();
-    ((blb)localObject).GFk = ((Integer)c.ajl().get(al.a.IsZ, Integer.valueOf(0))).intValue();
-    localObject = this.uNn;
-    ba.aBQ();
-    ((blb)localObject).GFl = ((Integer)c.ajl().get(al.a.IsN, Integer.valueOf(0))).intValue();
-    ad.i("MicroMsg.NetSceneIPCallGetWeChatOutCoupons", "NetSceneIPCallGetWeChatOutCoupons Scene:%d, RechargeWordingVersion:%d,AccountActivityWordingVersion:%d", new Object[] { Integer.valueOf(this.uNn.Scene), Integer.valueOf(this.uNn.GFk), Integer.valueOf(this.uNn.GFl) });
+    this.rr = ((b.a)localObject).aDS();
+    this.uZa = ((blt)this.rr.hQD.hQJ);
+    this.uZa.Scene = paramInt;
+    localObject = this.uZa;
+    bc.aCg();
+    ((blt)localObject).GYM = ((Integer)c.ajA().get(am.a.INv, Integer.valueOf(0))).intValue();
+    localObject = this.uZa;
+    bc.aCg();
+    ((blt)localObject).GYN = ((Integer)c.ajA().get(am.a.INj, Integer.valueOf(0))).intValue();
+    ae.i("MicroMsg.NetSceneIPCallGetWeChatOutCoupons", "NetSceneIPCallGetWeChatOutCoupons Scene:%d, RechargeWordingVersion:%d,AccountActivityWordingVersion:%d", new Object[] { Integer.valueOf(this.uZa.Scene), Integer.valueOf(this.uZa.GYM), Integer.valueOf(this.uZa.GYN) });
     AppMethodBeat.o(25469);
   }
   
@@ -72,19 +72,19 @@ public final class g
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(25471);
-    ad.i("MicroMsg.NetSceneIPCallGetWeChatOutCoupons", "onGYNetEnd, errType: %d, errCode: %d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
-    this.uNo = ((blc)((b)paramq).hNL.hNQ);
+    ae.i("MicroMsg.NetSceneIPCallGetWeChatOutCoupons", "onGYNetEnd, errType: %d, errCode: %d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    this.uZb = ((blu)((b)paramq).hQE.hQJ);
     if (((paramInt2 == 0) || (paramInt3 == 0)) && (paramInt2 == 0) && (paramInt3 == 0))
     {
-      paramq = this.uNo;
+      paramq = this.uZb;
       if (paramq != null) {
-        ad.i("MicroMsg.IPCallUtil", "[royle]begin save response,Balance:%s,PVWording:%s,Coupons:%s,Wording:%s,Title:%s,Desc:%s,ImgPath:%s,UrlPath:%s,SmsDesc:%s,PackageMsg:%s", new Object[] { paramq.GFp, paramq.GFq, paramq.GFm, paramq.uOt, paramq.Title, paramq.Desc, paramq.GFn, paramq.GFo, paramq.GFr, paramq.GFx });
+        ae.i("MicroMsg.IPCallUtil", "[royle]begin save response,Balance:%s,PVWording:%s,Coupons:%s,Wording:%s,Title:%s,Desc:%s,ImgPath:%s,UrlPath:%s,SmsDesc:%s,PackageMsg:%s", new Object[] { paramq.GYR, paramq.GYS, paramq.GYO, paramq.urq, paramq.Title, paramq.Desc, paramq.GYP, paramq.GYQ, paramq.GYT, paramq.GYZ });
       }
     }
     try
     {
-      ba.aBQ();
-      c.ajl().set(al.a.ItU, bt.cE(paramq.toByteArray()));
+      bc.aCg();
+      c.ajA().set(am.a.IOr, bu.cH(paramq.toByteArray()));
       if (this.callback != null) {
         this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
       }
@@ -95,7 +95,7 @@ public final class g
     {
       for (;;)
       {
-        ad.i("MicroMsg.IPCallUtil", "[royle]save exception:%s", new Object[] { paramq.getMessage() });
+        ae.i("MicroMsg.IPCallUtil", "[royle]save exception:%s", new Object[] { paramq.getMessage() });
       }
     }
   }

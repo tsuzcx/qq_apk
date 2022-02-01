@@ -8,7 +8,7 @@ import android.graphics.Paint;
 import android.media.MediaMetadataRetriever;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.f;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.Locale;
 
 public final class k
@@ -18,9 +18,9 @@ public final class k
   private Matrix gR;
   private Paint paint;
   private Bitmap reuse;
-  private MediaMetadataRetriever vRR;
-  private int vRS;
-  private int vRT;
+  private MediaMetadataRetriever wdV;
+  private int wdW;
+  private int wdX;
   
   public k()
   {
@@ -44,7 +44,7 @@ public final class k
     {
       for (;;)
       {
-        ad.e("MediaCodecThumbFetcher", "%s OutOfMemory %s", new Object[] { f.abi(), localOutOfMemoryError.getMessage() });
+        ae.e("MediaCodecThumbFetcher", "%s OutOfMemory %s", new Object[] { f.abr(), localOutOfMemoryError.getMessage() });
         System.gc();
         try
         {
@@ -52,7 +52,7 @@ public final class k
         }
         catch (Exception localException)
         {
-          ad.e("MediaCodecThumbFetcher", "%s try again Exception %s", new Object[] { f.abi(), localException.getMessage() });
+          ae.e("MediaCodecThumbFetcher", "%s try again Exception %s", new Object[] { f.abr(), localException.getMessage() });
           Object localObject = null;
         }
       }
@@ -62,7 +62,7 @@ public final class k
   private int getDuration()
   {
     AppMethodBeat.i(107684);
-    String str = this.vRR.extractMetadata(9);
+    String str = this.wdV.extractMetadata(9);
     if (str == null)
     {
       AppMethodBeat.o(107684);
@@ -76,7 +76,7 @@ public final class k
     }
     catch (Exception localException)
     {
-      ad.e("MediaCodecThumbFetcher", "getDuration error %s", new Object[] { localException.getMessage() });
+      ae.e("MediaCodecThumbFetcher", "getDuration error %s", new Object[] { localException.getMessage() });
       AppMethodBeat.o(107684);
     }
     return 0;
@@ -94,23 +94,23 @@ public final class k
   {
     AppMethodBeat.i(107682);
     long l = System.currentTimeMillis();
-    Bitmap localBitmap2 = this.vRR.getFrameAtTime(1000L * paramLong);
+    Bitmap localBitmap2 = this.wdV.getFrameAtTime(1000L * paramLong);
     if (localBitmap2 == null)
     {
-      ad.w("MediaCodecThumbFetcher", "get frame fail at time:%s, rawBitmap is null", new Object[] { Long.valueOf(1000L * paramLong) });
+      ae.w("MediaCodecThumbFetcher", "get frame fail at time:%s, rawBitmap is null", new Object[] { Long.valueOf(1000L * paramLong) });
       AppMethodBeat.o(107682);
       return null;
     }
-    int i = this.vRS;
-    int j = this.vRT;
+    int i = this.wdW;
+    int j = this.wdX;
     if ((localBitmap2 == null) || (localBitmap2.isRecycled()) || (i <= 0) || (j <= 0)) {}
     for (Bitmap localBitmap1 = null;; localBitmap1 = null)
     {
       localBitmap2.recycle();
-      ad.d("MediaCodecThumbFetcher", "time flee : get video thumb bitmap cost time %dms", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
+      ae.d("MediaCodecThumbFetcher", "time flee : get video thumb bitmap cost time %dms", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
       AppMethodBeat.o(107682);
       return localBitmap1;
-      ad.d("MediaCodecThumbFetcher", "scaleBitmap(60) largeBitmap(width : %d, height : %d)", new Object[] { Integer.valueOf(localBitmap2.getWidth()), Integer.valueOf(localBitmap2.getHeight()) });
+      ae.d("MediaCodecThumbFetcher", "scaleBitmap(60) largeBitmap(width : %d, height : %d)", new Object[] { Integer.valueOf(localBitmap2.getWidth()), Integer.valueOf(localBitmap2.getHeight()) });
       localBitmap1 = gA(i, j);
       if (localBitmap1 != null) {
         break;
@@ -143,12 +143,12 @@ public final class k
   
   public final int getScaledHeight()
   {
-    return this.vRT;
+    return this.wdX;
   }
   
   public final int getScaledWidth()
   {
-    return this.vRS;
+    return this.wdW;
   }
   
   public final void init(String paramString, int paramInt1, int paramInt2, int paramInt3)
@@ -162,10 +162,10 @@ public final class k
     }
     try
     {
-      this.vRR = new com.tencent.mm.compatible.h.d();
-      this.vRR.setDataSource(paramString);
-      this.vRS = paramInt2;
-      this.vRT = paramInt3;
+      this.wdV = new com.tencent.mm.compatible.h.d();
+      this.wdV.setDataSource(paramString);
+      this.wdW = paramInt2;
+      this.wdX = paramInt3;
       AppMethodBeat.o(107681);
       return;
     }
@@ -173,7 +173,7 @@ public final class k
     {
       for (;;)
       {
-        ad.printErrStackTrace("MediaCodecThumbFetcher", paramString, "init error:%s", new Object[] { paramString.getMessage() });
+        ae.printErrStackTrace("MediaCodecThumbFetcher", paramString, "init error:%s", new Object[] { paramString.getMessage() });
       }
     }
   }
@@ -181,8 +181,8 @@ public final class k
   public final void release()
   {
     AppMethodBeat.i(107685);
-    if (this.vRR != null) {
-      this.vRR.release();
+    if (this.wdV != null) {
+      this.wdV.release();
     }
     this.gR = null;
     this.paint = null;

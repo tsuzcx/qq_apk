@@ -7,23 +7,23 @@ import d.l;
 import java.util.Iterator;
 import java.util.concurrent.ConcurrentLinkedDeque;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/webview/webcompt/WebComptReporter;", "", "()V", "bizReportIds", "Ljava/util/concurrent/ConcurrentLinkedDeque;", "", "getBizReportIds", "()Ljava/util/concurrent/ConcurrentLinkedDeque;", "report", "", "key", "Lcom/tencent/mm/plugin/webview/webcompt/Key;", "Companion", "webview-sdk_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/webview/webcompt/WebComptReporter;", "", "()V", "bizReportIds", "Ljava/util/concurrent/ConcurrentLinkedDeque;", "", "getBizReportIds", "()Ljava/util/concurrent/ConcurrentLinkedDeque;", "report", "", "key", "Lcom/tencent/mm/plugin/webview/webcompt/Key;", "Companion", "webview-sdk_release"})
 public final class j
 {
-  public static final a EwE;
-  final ConcurrentLinkedDeque<Long> EwD;
+  public static final a EPa;
+  final ConcurrentLinkedDeque<Long> EOZ;
   
   static
   {
     AppMethodBeat.i(82961);
-    EwE = new a((byte)0);
+    EPa = new a((byte)0);
     AppMethodBeat.o(82961);
   }
   
   public j()
   {
     AppMethodBeat.i(82960);
-    this.EwD = new ConcurrentLinkedDeque();
+    this.EOZ = new ConcurrentLinkedDeque();
     AppMethodBeat.o(82960);
   }
   
@@ -31,19 +31,19 @@ public final class j
   {
     AppMethodBeat.i(82959);
     p.h(paramb, "key");
-    g.yhR.idkeyStat(1147L, paramb.value, 1L, false);
-    Iterator localIterator = ((Iterable)this.EwD).iterator();
+    g.yxI.idkeyStat(1147L, paramb.value, 1L, false);
+    Iterator localIterator = ((Iterable)this.EOZ).iterator();
     while (localIterator.hasNext())
     {
       Long localLong = (Long)localIterator.next();
-      g localg = g.yhR;
+      g localg = g.yxI;
       p.g(localLong, "it");
       localg.idkeyStat(localLong.longValue(), paramb.value, 1L, false);
     }
     AppMethodBeat.o(82959);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/webview/webcompt/WebComptReporter$Companion;", "", "()V", "ID", "", "webview-sdk_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/webview/webcompt/WebComptReporter$Companion;", "", "()V", "ID", "", "webview-sdk_release"})
   public static final class a {}
 }
 

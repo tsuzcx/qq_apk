@@ -9,19 +9,19 @@ import junit.framework.Assert;
 
 public final class a
 {
-  private static ThreadLocal<Stack<b>> gDj;
+  private static ThreadLocal<Stack<b>> gFQ;
   
   static
   {
     AppMethodBeat.i(158358);
-    gDj = new ThreadLocal();
+    gFQ = new ThreadLocal();
     AppMethodBeat.o(158358);
   }
   
   public static a a(Object paramObject, Class paramClass)
   {
     AppMethodBeat.i(158355);
-    b localb = (b)((Stack)gDj.get()).peek();
+    b localb = (b)((Stack)gFQ.get()).peek();
     Assert.assertNotNull(localb);
     if (localb.dz == null) {
       localb.dz = new HashMap();
@@ -31,16 +31,16 @@ public final class a
     if (locala2 == null)
     {
       locala1 = new a(paramObject, paramClass);
-      localb.dz.put(locala1.gDk, locala1);
+      localb.dz.put(locala1.gFR, locala1);
     }
     AppMethodBeat.o(158355);
     return locala1;
   }
   
-  static b akd()
+  static b aks()
   {
     AppMethodBeat.i(158357);
-    b localb = (b)((Stack)gDj.get()).pop();
+    b localb = (b)((Stack)gFQ.get()).pop();
     AppMethodBeat.o(158357);
     return localb;
   }
@@ -49,12 +49,12 @@ public final class a
   {
     AppMethodBeat.i(158356);
     b localb = new b();
-    Stack localStack2 = (Stack)gDj.get();
+    Stack localStack2 = (Stack)gFQ.get();
     Stack localStack1 = localStack2;
     if (localStack2 == null)
     {
       localStack1 = new Stack();
-      gDj.set(localStack1);
+      gFQ.set(localStack1);
     }
     localStack1.push(localb);
     AppMethodBeat.o(158356);
@@ -62,19 +62,19 @@ public final class a
   
   public static final class a
   {
-    Object gDg;
-    Class gDk;
-    Set gDl;
+    Object gFN;
+    Class gFR;
+    Set gFS;
     
     a(Object paramObject, Class paramClass)
     {
       AppMethodBeat.i(158352);
-      this.gDl = new HashSet();
-      this.gDg = paramObject;
+      this.gFS = new HashSet();
+      this.gFN = paramObject;
       if (paramClass != null) {
-        this.gDk = paramClass;
+        this.gFR = paramClass;
       }
-      bz(this.gDg);
+      bz(this.gFN);
       AppMethodBeat.o(158352);
     }
     
@@ -82,10 +82,10 @@ public final class a
     {
       AppMethodBeat.i(158353);
       Assert.assertNotNull(paramObject);
-      Assert.assertNotNull(this.gDk);
-      if (!this.gDk.isInstance(paramObject))
+      Assert.assertNotNull(this.gFR);
+      if (!this.gFR.isInstance(paramObject))
       {
-        paramObject = new IllegalArgumentException("Your depend object " + paramObject + " must implement your type " + this.gDk);
+        paramObject = new IllegalArgumentException("Your depend object " + paramObject + " must implement your type " + this.gFR);
         AppMethodBeat.o(158353);
         throw paramObject;
       }
@@ -95,7 +95,7 @@ public final class a
     public final a bA(Object paramObject)
     {
       AppMethodBeat.i(158354);
-      this.gDl.add(paramObject);
+      this.gFS.add(paramObject);
       bz(paramObject);
       AppMethodBeat.o(158354);
       return this;

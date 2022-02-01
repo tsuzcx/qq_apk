@@ -1,12 +1,12 @@
 package com.tencent.mm.plugin.appbrand.debugger;
 
-import com.tencent.mm.protocal.protobuf.dzi;
+import com.tencent.mm.protocal.protobuf.eaz;
 
 public final class p
 {
-  public long kaJ = 0L;
-  public dzi kbB;
-  public int kbC;
+  public long kdZ = 0L;
+  public eaz keS;
+  public int keT;
 }
 
 

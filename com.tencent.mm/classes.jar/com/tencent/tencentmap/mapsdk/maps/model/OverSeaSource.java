@@ -6,11 +6,11 @@ public enum OverSeaSource
 {
   static
   {
-    AppMethodBeat.i(195096);
+    AppMethodBeat.i(209869);
     DEFAULT = new OverSeaSource("DEFAULT", 0);
     SPARE = new OverSeaSource("SPARE", 1);
     $VALUES = new OverSeaSource[] { DEFAULT, SPARE };
-    AppMethodBeat.o(195096);
+    AppMethodBeat.o(209869);
   }
   
   private OverSeaSource() {}

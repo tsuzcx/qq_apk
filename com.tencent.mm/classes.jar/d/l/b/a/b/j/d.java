@@ -8,18 +8,33 @@ public abstract interface d
 {
   public abstract b a(a parama1, a parama2, e parame);
   
-  public abstract d.a glq();
+  public abstract a gpS();
+  
+  public static enum a
+  {
+    static
+    {
+      AppMethodBeat.i(59936);
+      NSG = new a("CONFLICTS_ONLY", 0);
+      NSH = new a("SUCCESS_ONLY", 1);
+      NSI = new a("BOTH", 2);
+      NSJ = new a[] { NSG, NSH, NSI };
+      AppMethodBeat.o(59936);
+    }
+    
+    private a() {}
+  }
   
   public static enum b
   {
     static
     {
       AppMethodBeat.i(59939);
-      NvE = new b("OVERRIDABLE", 0);
-      NvF = new b("CONFLICT", 1);
-      NvG = new b("INCOMPATIBLE", 2);
-      NvH = new b("UNKNOWN", 3);
-      NvI = new b[] { NvE, NvF, NvG, NvH };
+      NSK = new b("OVERRIDABLE", 0);
+      NSL = new b("CONFLICT", 1);
+      NSM = new b("INCOMPATIBLE", 2);
+      NSN = new b("UNKNOWN", 3);
+      NSO = new b[] { NSK, NSL, NSM, NSN };
       AppMethodBeat.o(59939);
     }
     
@@ -28,7 +43,7 @@ public abstract interface d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.j.d
  * JD-Core Version:    0.7.0.1
  */

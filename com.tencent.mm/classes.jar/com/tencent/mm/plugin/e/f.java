@@ -5,7 +5,7 @@ import com.tencent.mm.compatible.deviceinfo.m;
 import com.tencent.mm.compatible.util.j;
 import com.tencent.mm.kernel.a.c.a;
 import com.tencent.mm.kernel.b.g;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public class f
   extends a
@@ -13,21 +13,21 @@ public class f
   public void execute(g paramg)
   {
     AppMethodBeat.i(133571);
-    int i = m.aaf();
-    ad.i("MicroMsg.SightInitTask", "load wechatsight_v7a, core number[%d]", new Object[] { Integer.valueOf(i >> 12) });
+    int i = m.aao();
+    ae.i("MicroMsg.SightInitTask", "load wechatsight_v7a, core number[%d]", new Object[] { Integer.valueOf(i >> 12) });
     getClass().getClassLoader();
-    j.vr("wechatsight_v7a");
+    j.vN("wechatsight_v7a");
     if (i >> 12 >= 4)
     {
-      com.tencent.mm.plugin.sight.base.c.yQZ = 3;
-      com.tencent.mm.plugin.sight.base.c.yRb = 3;
-      com.tencent.mm.plugin.sight.base.c.yRc = 544000;
+      com.tencent.mm.plugin.sight.base.c.zhj = 3;
+      com.tencent.mm.plugin.sight.base.c.zhl = 3;
+      com.tencent.mm.plugin.sight.base.c.zhm = 544000;
       AppMethodBeat.o(133571);
       return;
     }
-    com.tencent.mm.plugin.sight.base.c.yQZ = 1;
-    com.tencent.mm.plugin.sight.base.c.yRb = 1;
-    com.tencent.mm.plugin.sight.base.c.yRc = 640000;
+    com.tencent.mm.plugin.sight.base.c.zhj = 1;
+    com.tencent.mm.plugin.sight.base.c.zhl = 1;
+    com.tencent.mm.plugin.sight.base.c.zhm = 640000;
     AppMethodBeat.o(133571);
   }
   

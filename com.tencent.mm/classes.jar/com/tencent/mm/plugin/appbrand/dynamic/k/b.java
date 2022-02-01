@@ -28,7 +28,7 @@ public final class b
     return 10100;
   }
   
-  public static int sr(int paramInt)
+  public static int su(int paramInt)
   {
     switch (paramInt)
     {

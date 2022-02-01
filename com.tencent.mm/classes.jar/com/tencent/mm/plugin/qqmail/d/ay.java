@@ -3,51 +3,51 @@ package com.tencent.mm.plugin.qqmail.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class ay
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public long xdr;
-  public String xds;
-  public String xdt;
+  public long xti;
+  public String xtj;
+  public String xtk;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(215241);
+    AppMethodBeat.i(217987);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aY(1, this.xdr);
-      if (this.xds != null) {
-        paramVarArgs.d(2, this.xds);
+      paramVarArgs.aZ(1, this.xti);
+      if (this.xtj != null) {
+        paramVarArgs.d(2, this.xtj);
       }
-      if (this.xdt != null) {
-        paramVarArgs.d(3, this.xdt);
+      if (this.xtk != null) {
+        paramVarArgs.d(3, this.xtk);
       }
-      AppMethodBeat.o(215241);
+      AppMethodBeat.o(217987);
       return 0;
     }
     if (paramInt == 1)
     {
-      int i = f.a.a.b.b.a.p(1, this.xdr) + 0;
+      int i = f.a.a.b.b.a.p(1, this.xti) + 0;
       paramInt = i;
-      if (this.xds != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.xds);
+      if (this.xtj != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.xtj);
       }
       i = paramInt;
-      if (this.xdt != null) {
-        i = paramInt + f.a.a.b.b.a.e(3, this.xdt);
+      if (this.xtk != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.xtk);
       }
-      AppMethodBeat.o(215241);
+      AppMethodBeat.o(217987);
       return i;
     }
     if (paramInt == 2)
     {
       paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gxE();
+          paramVarArgs.gCg();
         }
       }
-      AppMethodBeat.o(215241);
+      AppMethodBeat.o(217987);
       return 0;
     }
     if (paramInt == 3)
@@ -57,22 +57,22 @@ public final class ay
       switch (((Integer)paramVarArgs[2]).intValue())
       {
       default: 
-        AppMethodBeat.o(215241);
+        AppMethodBeat.o(217987);
         return -1;
       case 1: 
-        localay.xdr = locala.NPN.zd();
-        AppMethodBeat.o(215241);
+        localay.xti = locala.OmT.zd();
+        AppMethodBeat.o(217987);
         return 0;
       case 2: 
-        localay.xds = locala.NPN.readString();
-        AppMethodBeat.o(215241);
+        localay.xtj = locala.OmT.readString();
+        AppMethodBeat.o(217987);
         return 0;
       }
-      localay.xdt = locala.NPN.readString();
-      AppMethodBeat.o(215241);
+      localay.xtk = locala.OmT.readString();
+      AppMethodBeat.o(217987);
       return 0;
     }
-    AppMethodBeat.o(215241);
+    AppMethodBeat.o(217987);
     return -1;
   }
 }

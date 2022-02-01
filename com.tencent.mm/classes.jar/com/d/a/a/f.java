@@ -66,7 +66,7 @@ public final class f
     }
   }
   
-  private boolean Ag()
+  private boolean Ah()
   {
     AppMethodBeat.i(87883);
     boolean bool1 = false;
@@ -85,7 +85,7 @@ public final class f
   }
   
   @SuppressLint({"NewApi"})
-  private boolean Ah()
+  private boolean Ai()
   {
     AppMethodBeat.i(87884);
     boolean bool1 = false;
@@ -122,7 +122,7 @@ public final class f
     }
   }
   
-  private static String ck(String paramString)
+  private static String cl(String paramString)
   {
     String str = paramString;
     if (paramString == null) {
@@ -137,11 +137,11 @@ public final class f
     AppMethodBeat.i(87882);
     HashMap localHashMap = new HashMap();
     localHashMap.put("version", this.version);
-    localHashMap.put("app_name", ck(this.versionName));
+    localHashMap.put("app_name", cl(this.versionName));
     if (this.bWY != null)
     {
-      localHashMap.put("app_label", ck(Base64.encodeToString(this.bWY.getBytes(), 0)));
-      if (!Ag()) {
+      localHashMap.put("app_label", cl(Base64.encodeToString(this.bWY.getBytes(), 0)));
+      if (!Ah()) {
         break label311;
       }
       i = 1;
@@ -152,7 +152,7 @@ public final class f
       }
       i = 1;
       label105:
-      if ((i | Ah()) == 0) {
+      if ((i | Ai()) == 0) {
         break label321;
       }
     }
@@ -169,9 +169,9 @@ public final class f
       {
         paramArrayOfByte = new JSONObject(localHashMap);
         localHashMap = new HashMap();
-        localHashMap.put("model", ck(Base64.encodeToString(this.bWZ.getBytes(), 0)));
-        localHashMap.put("version", ck(this.bXa));
-        localHashMap.put("imei", ck(this.imei));
+        localHashMap.put("model", cl(Base64.encodeToString(this.bWZ.getBytes(), 0)));
+        localHashMap.put("version", cl(this.bXa));
+        localHashMap.put("imei", cl(this.imei));
         paramArrayOfByte = paramArrayOfByte.put("attribute", new JSONObject(localHashMap)).toString();
         AppMethodBeat.o(87882);
         return paramArrayOfByte;

@@ -4,7 +4,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import f.a.a.b;
 
 public class EmotionPrice
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
   public String IapProductId;
   public String Label;
@@ -75,9 +75,9 @@ public class EmotionPrice
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
         if (this.Label == null)
@@ -111,19 +111,19 @@ public class EmotionPrice
           AppMethodBeat.o(104779);
           return -1;
         case 1: 
-          localEmotionPrice.Label = locala.NPN.readString();
+          localEmotionPrice.Label = locala.OmT.readString();
           AppMethodBeat.o(104779);
           return 0;
         case 2: 
-          localEmotionPrice.Number = locala.NPN.readString();
+          localEmotionPrice.Number = locala.OmT.readString();
           AppMethodBeat.o(104779);
           return 0;
         case 3: 
-          localEmotionPrice.Type = locala.NPN.readString();
+          localEmotionPrice.Type = locala.OmT.readString();
           AppMethodBeat.o(104779);
           return 0;
         }
-        localEmotionPrice.IapProductId = locala.NPN.readString();
+        localEmotionPrice.IapProductId = locala.OmT.readString();
         AppMethodBeat.o(104779);
         return 0;
       }

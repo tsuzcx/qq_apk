@@ -2,20 +2,19 @@ package d.n;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.b.p;
-import d.k.d;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlin/text/MatchGroup;", "", "value", "", "range", "Lkotlin/ranges/IntRange;", "(Ljava/lang/String;Lkotlin/ranges/IntRange;)V", "getRange", "()Lkotlin/ranges/IntRange;", "getValue", "()Ljava/lang/String;", "component1", "component2", "copy", "equals", "", "other", "hashCode", "", "toString", "kotlin-stdlib"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlin/text/MatchGroup;", "", "value", "", "range", "Lkotlin/ranges/IntRange;", "(Ljava/lang/String;Lkotlin/ranges/IntRange;)V", "getRange", "()Lkotlin/ranges/IntRange;", "getValue", "()Ljava/lang/String;", "component1", "component2", "copy", "equals", "", "other", "hashCode", "", "toString", "kotlin-stdlib"})
 public final class f
 {
-  public final d NGZ;
+  public final d.k.f Oef;
   public final String value;
   
-  public f(String paramString, d paramd)
+  public f(String paramString, d.k.f paramf)
   {
     AppMethodBeat.i(129350);
     this.value = paramString;
-    this.NGZ = paramd;
+    this.Oef = paramf;
     AppMethodBeat.o(129350);
   }
   
@@ -27,7 +26,7 @@ public final class f
       if ((paramObject instanceof f))
       {
         paramObject = (f)paramObject;
-        if ((!p.i(this.value, paramObject.value)) || (!p.i(this.NGZ, paramObject.NGZ))) {}
+        if ((!p.i(this.value, paramObject.value)) || (!p.i(this.Oef, paramObject.Oef))) {}
       }
     }
     else
@@ -47,7 +46,7 @@ public final class f
     if (localObject != null) {}
     for (int i = localObject.hashCode();; i = 0)
     {
-      localObject = this.NGZ;
+      localObject = this.Oef;
       if (localObject != null) {
         j = localObject.hashCode();
       }
@@ -59,7 +58,7 @@ public final class f
   public final String toString()
   {
     AppMethodBeat.i(129351);
-    String str = "MatchGroup(value=" + this.value + ", range=" + this.NGZ + ")";
+    String str = "MatchGroup(value=" + this.value + ", range=" + this.Oef + ")";
     AppMethodBeat.o(129351);
     return str;
   }

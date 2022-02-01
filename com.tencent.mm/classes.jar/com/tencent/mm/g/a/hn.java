@@ -1,13 +1,12 @@
 package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.opensdk.modelmsg.WXMediaMessage;
 import com.tencent.mm.sdk.b.b;
 
 public final class hn
   extends b
 {
-  public a dtY;
+  public a dvc;
   
   public hn()
   {
@@ -16,19 +15,16 @@ public final class hn
   
   private hn(byte paramByte)
   {
-    AppMethodBeat.i(209025);
-    this.dtY = new a();
-    this.IbR = false;
+    AppMethodBeat.i(189052);
+    this.dvc = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(209025);
+    AppMethodBeat.o(189052);
   }
   
   public static final class a
   {
-    public WXMediaMessage dtZ;
-    public int dua;
-    public String dub;
-    public String username;
+    public long id;
   }
 }
 

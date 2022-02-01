@@ -13,22 +13,22 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/radar/ui/RadarSpecialSmoothScrollView;", "Landroid/widget/ScrollView;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "isLayoutChanged", "", "()Z", "isOverScroll", "mLastMotionY", "", "mRect", "Landroid/graphics/Rect;", "mRootChildView", "Lcom/tencent/mm/plugin/radar/ui/RadarSpecialTableLayout;", "mScrollInterpolator", "Lcom/tencent/mm/plugin/radar/ui/RadarSpecialSmoothScrollView$WorkspaceOvershootInterpolator;", "mTranslateAnimation", "Landroid/view/animation/TranslateAnimation;", "onFinishInflate", "", "onTouchEvent", "ev", "Landroid/view/MotionEvent;", "scaleOverScroll", "", "offset", "startAnimation", "WorkspaceOvershootInterpolator", "plugin-radar_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/radar/ui/RadarSpecialSmoothScrollView;", "Landroid/widget/ScrollView;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "isLayoutChanged", "", "()Z", "isOverScroll", "mLastMotionY", "", "mRect", "Landroid/graphics/Rect;", "mRootChildView", "Lcom/tencent/mm/plugin/radar/ui/RadarSpecialTableLayout;", "mScrollInterpolator", "Lcom/tencent/mm/plugin/radar/ui/RadarSpecialSmoothScrollView$WorkspaceOvershootInterpolator;", "mTranslateAnimation", "Landroid/view/animation/TranslateAnimation;", "onFinishInflate", "", "onTouchEvent", "ev", "Landroid/view/MotionEvent;", "scaleOverScroll", "", "offset", "startAnimation", "WorkspaceOvershootInterpolator", "plugin-radar_release"})
 public class RadarSpecialSmoothScrollView
   extends ScrollView
 {
   private float mLastMotionY;
   private final Rect mRect;
-  private RadarSpecialTableLayout xkd;
-  private TranslateAnimation xke;
-  private final RadarSpecialSmoothScrollView.a xkf;
+  private RadarSpecialTableLayout xAa;
+  private TranslateAnimation xAb;
+  private final RadarSpecialSmoothScrollView.a xAc;
   
   public RadarSpecialSmoothScrollView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(138657);
     this.mRect = new Rect();
-    this.xkf = new RadarSpecialSmoothScrollView.a();
+    this.xAc = new RadarSpecialSmoothScrollView.a();
     AppMethodBeat.o(138657);
   }
   
@@ -42,7 +42,7 @@ public class RadarSpecialSmoothScrollView
       if (!(localView2 instanceof RadarSpecialTableLayout)) {
         localView1 = null;
       }
-      this.xkd = ((RadarSpecialTableLayout)localView1);
+      this.xAa = ((RadarSpecialTableLayout)localView1);
     }
     AppMethodBeat.o(138655);
   }
@@ -54,7 +54,7 @@ public class RadarSpecialSmoothScrollView
     AppMethodBeat.i(138656);
     p.h(paramMotionEvent, "ev");
     boolean bool;
-    if (this.xkd == null)
+    if (this.xAa == null)
     {
       bool = super.onTouchEvent(paramMotionEvent);
       AppMethodBeat.o(138656);
@@ -75,9 +75,9 @@ public class RadarSpecialSmoothScrollView
       if (this.mLastMotionY == 0.0F) {
         this.mLastMotionY = f;
       }
-      Object localObject = this.xkd;
+      Object localObject = this.xAa;
       if (localObject == null) {
-        p.gfZ();
+        p.gkB();
       }
       int k = ((RadarSpecialTableLayout)localObject).getMeasuredHeight();
       int m = getHeight();
@@ -101,50 +101,50 @@ public class RadarSpecialSmoothScrollView
         if (this.mRect.isEmpty())
         {
           localObject = this.mRect;
-          localRadarSpecialTableLayout = this.xkd;
+          localRadarSpecialTableLayout = this.xAa;
           if (localRadarSpecialTableLayout == null) {
-            p.gfZ();
+            p.gkB();
           }
           j = localRadarSpecialTableLayout.getLeft();
-          localRadarSpecialTableLayout = this.xkd;
+          localRadarSpecialTableLayout = this.xAa;
           if (localRadarSpecialTableLayout == null) {
-            p.gfZ();
+            p.gkB();
           }
           k = localRadarSpecialTableLayout.getTop();
-          localRadarSpecialTableLayout = this.xkd;
+          localRadarSpecialTableLayout = this.xAa;
           if (localRadarSpecialTableLayout == null) {
-            p.gfZ();
+            p.gkB();
           }
           m = localRadarSpecialTableLayout.getRight();
-          localRadarSpecialTableLayout = this.xkd;
+          localRadarSpecialTableLayout = this.xAa;
           if (localRadarSpecialTableLayout == null) {
-            p.gfZ();
+            p.gkB();
           }
           ((Rect)localObject).set(j, k, m, localRadarSpecialTableLayout.getBottom());
         }
-        localObject = this.xkd;
+        localObject = this.xAa;
         if (localObject == null) {
-          p.gfZ();
+          p.gkB();
         }
-        localRadarSpecialTableLayout = this.xkd;
+        localRadarSpecialTableLayout = this.xAa;
         if (localRadarSpecialTableLayout == null) {
-          p.gfZ();
+          p.gkB();
         }
         j = localRadarSpecialTableLayout.getLeft();
-        localRadarSpecialTableLayout = this.xkd;
+        localRadarSpecialTableLayout = this.xAa;
         if (localRadarSpecialTableLayout == null) {
-          p.gfZ();
+          p.gkB();
         }
         k = localRadarSpecialTableLayout.getTop();
         m = i / 2;
-        localRadarSpecialTableLayout = this.xkd;
+        localRadarSpecialTableLayout = this.xAa;
         if (localRadarSpecialTableLayout == null) {
-          p.gfZ();
+          p.gkB();
         }
         n = localRadarSpecialTableLayout.getRight();
-        localRadarSpecialTableLayout = this.xkd;
+        localRadarSpecialTableLayout = this.xAa;
         if (localRadarSpecialTableLayout == null) {
-          p.gfZ();
+          p.gkB();
         }
         ((RadarSpecialTableLayout)localObject).H(j, k - m, n, localRadarSpecialTableLayout.getBottom() - i / 2);
       }
@@ -164,33 +164,33 @@ public class RadarSpecialSmoothScrollView
         if (i == 0) {
           break label666;
         }
-        localObject = this.xkd;
+        localObject = this.xAa;
         if (localObject == null) {
-          p.gfZ();
+          p.gkB();
         }
-        this.xke = new TranslateAnimation(0.0F, 0.0F, ((RadarSpecialTableLayout)localObject).getTop() - this.mRect.top, 0.0F);
-        localObject = this.xke;
+        this.xAb = new TranslateAnimation(0.0F, 0.0F, ((RadarSpecialTableLayout)localObject).getTop() - this.mRect.top, 0.0F);
+        localObject = this.xAb;
         if (localObject == null) {
-          p.gfZ();
+          p.gkB();
         }
-        ((TranslateAnimation)localObject).setInterpolator((Interpolator)this.xkf);
-        localObject = this.xke;
+        ((TranslateAnimation)localObject).setInterpolator((Interpolator)this.xAc);
+        localObject = this.xAb;
         if (localObject == null) {
-          p.gfZ();
+          p.gkB();
         }
-        localRadarSpecialTableLayout = this.xkd;
+        localRadarSpecialTableLayout = this.xAa;
         if (localRadarSpecialTableLayout == null) {
-          p.gfZ();
+          p.gkB();
         }
         ((TranslateAnimation)localObject).setDuration(Math.abs(localRadarSpecialTableLayout.getTop() - this.mRect.top));
-        localObject = this.xkd;
+        localObject = this.xAa;
         if (localObject == null) {
-          p.gfZ();
+          p.gkB();
         }
-        ((RadarSpecialTableLayout)localObject).startAnimation((Animation)this.xke);
-        localObject = this.xkd;
+        ((RadarSpecialTableLayout)localObject).startAnimation((Animation)this.xAb);
+        localObject = this.xAa;
         if (localObject == null) {
-          p.gfZ();
+          p.gkB();
         }
         ((RadarSpecialTableLayout)localObject).H(this.mRect.left, this.mRect.top, this.mRect.right, this.mRect.bottom);
         this.mRect.setEmpty();

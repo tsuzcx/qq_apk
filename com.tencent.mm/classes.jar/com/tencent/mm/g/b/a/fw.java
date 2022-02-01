@@ -6,87 +6,72 @@ import com.tencent.mm.plugin.report.a;
 public final class fw
   extends a
 {
-  private long emq = 0L;
-  private long emr = 0L;
-  private long ems = 0L;
-  private long emt = 0L;
-  private int emu = 0;
+  private long enJ;
+  private long enK = 0L;
+  private long enL = 0L;
+  private String enM = "";
+  
+  public final String RC()
+  {
+    AppMethodBeat.i(118496);
+    Object localObject = new StringBuffer();
+    ((StringBuffer)localObject).append(this.enJ);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.enK);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.enL);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.enM);
+    localObject = ((StringBuffer)localObject).toString();
+    axO((String)localObject);
+    AppMethodBeat.o(118496);
+    return localObject;
+  }
   
   public final String RD()
   {
-    AppMethodBeat.i(118500);
+    AppMethodBeat.i(118497);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.emq);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.emr);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ems);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.emt);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.emu);
+    ((StringBuffer)localObject).append("Storyid:").append(this.enJ);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("BrowseFriendsCount:").append(this.enK);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("CommentFriendsCount:").append(this.enL);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("StoryidStr:").append(this.enM);
     localObject = ((StringBuffer)localObject).toString();
-    awz((String)localObject);
-    AppMethodBeat.o(118500);
+    AppMethodBeat.o(118497);
     return localObject;
-  }
-  
-  public final String RE()
-  {
-    AppMethodBeat.i(118501);
-    Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("StartZipTime:").append(this.emq);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("Enable:").append(this.emr);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("Exceed:").append(this.ems);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("Cost:").append(this.emt);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("Result:").append(this.emu);
-    localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(118501);
-    return localObject;
-  }
-  
-  public final fw Tz()
-  {
-    this.ems = 1L;
-    return this;
   }
   
   public final int getId()
   {
-    return 17654;
+    return 18744;
   }
   
-  public final fw iK(int paramInt)
+  public final fw lc(long paramLong)
   {
-    this.emu = paramInt;
+    this.enK = paramLong;
     return this;
   }
   
-  public final fw kT(long paramLong)
+  public final fw ld(long paramLong)
   {
-    this.emq = paramLong;
+    this.enL = paramLong;
     return this;
   }
   
-  public final fw kU(long paramLong)
+  public final fw ph(String paramString)
   {
-    this.emr = paramLong;
-    return this;
-  }
-  
-  public final fw kV(long paramLong)
-  {
-    this.emt = paramLong;
+    AppMethodBeat.i(118495);
+    this.enM = t("StoryidStr", paramString, true);
+    AppMethodBeat.o(118495);
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.g.b.a.fw
  * JD-Core Version:    0.7.0.1
  */

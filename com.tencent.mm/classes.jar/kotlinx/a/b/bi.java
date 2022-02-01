@@ -6,29 +6,29 @@ import d.z;
 import kotlinx.a.h;
 import kotlinx.a.n;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/serialization/internal/UnitSerializer;", "Lkotlinx/serialization/KSerializer;", "", "()V", "descriptor", "Lkotlinx/serialization/SerialDescriptor;", "getDescriptor", "()Lkotlinx/serialization/SerialDescriptor;", "deserialize", "decoder", "Lkotlinx/serialization/Decoder;", "patch", "old", "(Lkotlinx/serialization/Decoder;Lkotlin/Unit;)V", "serialize", "encoder", "Lkotlinx/serialization/Encoder;", "value", "(Lkotlinx/serialization/Encoder;Lkotlin/Unit;)V", "kotlinx-serialization-runtime"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/serialization/internal/UnitSerializer;", "Lkotlinx/serialization/KSerializer;", "", "()V", "descriptor", "Lkotlinx/serialization/SerialDescriptor;", "getDescriptor", "()Lkotlinx/serialization/SerialDescriptor;", "deserialize", "decoder", "Lkotlinx/serialization/Decoder;", "patch", "old", "(Lkotlinx/serialization/Decoder;Lkotlin/Unit;)V", "serialize", "encoder", "Lkotlinx/serialization/Encoder;", "value", "(Lkotlinx/serialization/Encoder;Lkotlin/Unit;)V", "kotlinx-serialization-runtime"})
 public final class bi
   implements h<z>
 {
-  public static final bi NMZ;
+  public static final bi Okf;
   
   static
   {
-    AppMethodBeat.i(191180);
-    NMZ = new bi();
-    AppMethodBeat.o(191180);
+    AppMethodBeat.i(199768);
+    Okf = new bi();
+    AppMethodBeat.o(199768);
   }
   
   private bi()
   {
-    AppMethodBeat.i(191179);
-    this.NNa = new at("kotlin.Unit", z.MKo);
-    AppMethodBeat.o(191179);
+    AppMethodBeat.i(199767);
+    this.Okg = new at("kotlin.Unit", z.Nhr);
+    AppMethodBeat.o(199767);
   }
   
-  public final n eLj()
+  public final n eOR()
   {
-    return this.NNa.NLm;
+    return this.Okg.Ois;
   }
 }
 

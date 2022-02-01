@@ -7,7 +7,7 @@ import com.tencent.mm.sdk.b.b;
 public final class se
   extends b
 {
-  public a dGG;
+  public a dHL;
   
   public se()
   {
@@ -16,24 +16,23 @@ public final class se
   
   private se(byte paramByte)
   {
-    AppMethodBeat.i(19832);
-    this.dGG = new a();
-    this.IbR = false;
+    AppMethodBeat.i(19831);
+    this.dHL = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(19832);
+    AppMethodBeat.o(19831);
   }
   
   public static final class a
   {
     public Context context;
-    public boolean dGH = false;
-    public String[] djJ;
+    public String[] dkL;
     public String[] selectionArgs;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.g.a.se
  * JD-Core Version:    0.7.0.1
  */

@@ -10,12 +10,12 @@ import java.util.List;
 public final class i
   implements r
 {
-  public static final i MZZ;
+  public static final i Nxf;
   
   static
   {
     AppMethodBeat.i(57381);
-    MZZ = new i();
+    Nxf = new i();
     AppMethodBeat.o(57381);
   }
   
@@ -24,7 +24,7 @@ public final class i
     AppMethodBeat.i(57379);
     p.h(parame, "descriptor");
     p.h(paramList, "unresolvedSuperClasses");
-    parame = (Throwable)new IllegalStateException("Incomplete hierarchy for class " + parame.giD() + ", unresolved classes " + paramList);
+    parame = (Throwable)new IllegalStateException("Incomplete hierarchy for class " + parame.gnf() + ", unresolved classes " + paramList);
     AppMethodBeat.o(57379);
     throw parame;
   }
@@ -40,7 +40,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.b.d.a.i
  * JD-Core Version:    0.7.0.1
  */

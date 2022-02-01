@@ -12,8 +12,8 @@ final class InviteFacebookFriendsUI$8
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
     AppMethodBeat.i(128029);
-    this.jkg.hideVKB();
-    this.jkg.finish();
+    this.jmZ.hideVKB();
+    this.jmZ.finish();
     AppMethodBeat.o(128029);
     return true;
   }

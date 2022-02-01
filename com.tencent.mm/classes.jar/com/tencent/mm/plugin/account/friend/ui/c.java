@@ -12,12 +12,12 @@ public final class c
   implements View.OnClickListener
 {
   private Context context;
-  private a jfN;
+  private a jiG;
   
   public c(Context paramContext, a parama)
   {
     this.context = paramContext;
-    this.jfN = parama;
+    this.jiG = parama;
   }
   
   public final void onClick(View paramView)
@@ -25,17 +25,17 @@ public final class c
     AppMethodBeat.i(131231);
     Object localObject = new b();
     ((b)localObject).bd(paramView);
-    a.b("com/tencent/mm/plugin/account/friend/ui/InviteContactListener", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahq());
+    a.b("com/tencent/mm/plugin/account/friend/ui/InviteContactListener", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahF());
     paramView = (b)paramView.getTag();
-    localObject = paramView.jfP;
+    localObject = paramView.jiI;
     final int i = paramView.position;
-    int j = p.er((String)localObject);
+    int j = p.ew((String)localObject);
     new g(this.context, new g.a()
     {
       public final void h(boolean paramAnonymousBoolean, String paramAnonymousString)
       {
         AppMethodBeat.i(131230);
-        c.a(c.this).fs(paramAnonymousBoolean);
+        c.a(c.this).ft(paramAnonymousBoolean);
         AppMethodBeat.o(131230);
       }
     }).r(new int[] { j });
@@ -45,12 +45,12 @@ public final class c
   
   public static abstract interface a
   {
-    public abstract void fs(boolean paramBoolean);
+    public abstract void ft(boolean paramBoolean);
   }
   
   public static final class b
   {
-    public String jfP;
+    public String jiI;
     public int position;
   }
 }

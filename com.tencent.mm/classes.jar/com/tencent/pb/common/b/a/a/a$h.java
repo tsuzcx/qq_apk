@@ -6,11 +6,11 @@ import com.google.b.a.e;
 public final class a$h
   extends e
 {
-  public String fSO = "";
+  public String fUU = "";
   public String groupId = "";
   public int roomId = 0;
   public long timestamp = 0L;
-  public long uLt = 0L;
+  public long uXg = 0L;
   
   public a$h()
   {
@@ -20,8 +20,8 @@ public final class a$h
   public final void a(b paramb)
   {
     paramb.bx(1, this.roomId);
-    paramb.n(2, this.uLt);
-    paramb.d(3, this.fSO);
+    paramb.n(2, this.uXg);
+    paramb.d(3, this.fUU);
     if (!this.groupId.equals("")) {
       paramb.d(4, this.groupId);
     }
@@ -33,7 +33,7 @@ public final class a$h
   
   public final int zq()
   {
-    int j = super.zq() + b.bz(1, this.roomId) + b.p(2, this.uLt) + b.e(3, this.fSO);
+    int j = super.zq() + b.bz(1, this.roomId) + b.p(2, this.uXg) + b.e(3, this.fUU);
     int i = j;
     if (!this.groupId.equals("")) {
       i = j + b.e(4, this.groupId);

@@ -8,7 +8,7 @@ public final class JsApiScanCode
 {
   public static final int CTRL_INDEX = 148;
   public static final String NAME = "scanCode";
-  private static volatile boolean lgm = false;
+  private static volatile boolean ljY = false;
 }
 
 

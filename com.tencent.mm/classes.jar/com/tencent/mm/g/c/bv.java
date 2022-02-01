@@ -11,27 +11,27 @@ public abstract class bv
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eVg = "configId".hashCode();
+  private static final int eWR = "configId".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
   private static final int value_HASHCODE = "value".hashCode();
   private boolean __hadSetvalue = true;
-  private boolean eVf = true;
+  private boolean eWQ = true;
   public int field_configId;
   public String field_value;
   
-  public static c.a Vv()
+  public static c.a VD()
   {
     c.a locala = new c.a();
-    locala.IhA = new Field[2];
+    locala.IBL = new Field[2];
     locala.columns = new String[3];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "configId";
-    locala.IhC.put("configId", "INTEGER PRIMARY KEY ");
+    locala.IBN.put("configId", "INTEGER PRIMARY KEY ");
     localStringBuilder.append(" configId INTEGER PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.IhB = "configId";
+    locala.IBM = "configId";
     locala.columns[1] = "value";
-    locala.IhC.put("value", "TEXT");
+    locala.IBN.put("value", "TEXT");
     localStringBuilder.append(" value TEXT");
     locala.columns[2] = "rowid";
     locala.sql = localStringBuilder.toString();
@@ -51,11 +51,11 @@ public abstract class bv
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eVg != k) {
+      if (eWR != k) {
         break label65;
       }
       this.field_configId = paramCursor.getInt(i);
-      this.eVf = true;
+      this.eWQ = true;
     }
     for (;;)
     {
@@ -74,7 +74,7 @@ public abstract class bv
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eVf) {
+    if (this.eWQ) {
       localContentValues.put("configId", Integer.valueOf(this.field_configId));
     }
     if (this.__hadSetvalue) {

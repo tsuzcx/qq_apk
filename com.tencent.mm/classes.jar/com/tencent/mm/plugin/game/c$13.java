@@ -1,44 +1,44 @@
 package com.tencent.mm.plugin.game;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.app.n.a;
+import com.tencent.mm.app.o.a;
 import com.tencent.mm.kernel.a;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.game.commlib.b;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.al.a;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.aj;
+import com.tencent.mm.storage.am.a;
 
 final class c$13
-  extends n.a
+  extends o.a
 {
   public final void onAppBackground(String paramString)
   {
-    AppMethodBeat.i(206791);
-    if ((g.ajx()) && (g.ajA().gAD))
+    AppMethodBeat.i(195600);
+    if ((g.ajM()) && (g.ajP().gDk))
     {
-      g.ajA();
-      a.aiE();
+      g.ajP();
+      a.aiT();
     }
-    AppMethodBeat.o(206791);
+    AppMethodBeat.o(195600);
   }
   
   public final void onAppForeground(String paramString)
   {
-    AppMethodBeat.i(206790);
-    if ((g.ajx()) && (g.ajA().gAD))
+    AppMethodBeat.i(195599);
+    if ((g.ajM()) && (g.ajP().gDk))
     {
-      g.ajA();
-      if (!a.aiE())
+      g.ajP();
+      if (!a.aiT())
       {
-        paramString = Long.valueOf(bt.g((Long)g.ajC().ajl().get(al.a.IAm, Long.valueOf(0L))));
-        if ((paramString.longValue() != 0L) && (bt.aQJ() > paramString.longValue())) {
-          b.cWV().mW(true);
+        paramString = Long.valueOf(bu.i((Long)g.ajR().ajA().get(am.a.IUL, Long.valueOf(0L))));
+        if ((paramString.longValue() != 0L) && (bu.aRi() > paramString.longValue())) {
+          b.cZC().na(true);
         }
       }
     }
-    AppMethodBeat.o(206790);
+    AppMethodBeat.o(195599);
   }
 }
 

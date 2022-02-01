@@ -1,36 +1,36 @@
 package com.tencent.mm.plugin.webview.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.HashMap;
 import java.util.Map;
 
 public final class az
 {
-  private static Map<String, String> DVm;
+  private static Map<String, String> Enl;
   
   static
   {
     AppMethodBeat.i(79101);
-    DVm = new HashMap();
+    Enl = new HashMap();
     AppMethodBeat.o(79101);
   }
   
-  public static String aHL(String paramString)
+  public static String aJe(String paramString)
   {
     AppMethodBeat.i(79099);
-    ad.i("MicroMsg.WebviewSharedUrlCache", "rawUrl:[%s]", new Object[] { paramString });
-    if (bt.isNullOrNil(paramString))
+    ae.i("MicroMsg.WebviewSharedUrlCache", "rawUrl:[%s]", new Object[] { paramString });
+    if (bu.isNullOrNil(paramString))
     {
-      ad.e("MicroMsg.WebviewSharedUrlCache", "rawUrl is null");
+      ae.e("MicroMsg.WebviewSharedUrlCache", "rawUrl is null");
       AppMethodBeat.o(79099);
       return null;
     }
-    Object localObject2 = (String)DVm.get(paramString);
+    Object localObject2 = (String)Enl.get(paramString);
     Object localObject1 = localObject2;
     int i;
-    if (bt.isNullOrNil((String)localObject2))
+    if (bu.isNullOrNil((String)localObject2))
     {
       i = paramString.indexOf("#");
       if (i >= 0) {
@@ -40,18 +40,18 @@ public final class az
     label145:
     for (localObject1 = paramString;; localObject1 = paramString.substring(0, i))
     {
-      localObject1 = (String)DVm.get(localObject1);
+      localObject1 = (String)Enl.get(localObject1);
       localObject2 = localObject1;
-      if (bt.isNullOrNil((String)localObject1))
+      if (bu.isNullOrNil((String)localObject1))
       {
         localObject2 = localObject1;
         if (paramString.startsWith("https://mp.weixin.qq.com/"))
         {
           localObject1 = paramString.replaceFirst("https://", "http://");
-          localObject2 = (String)DVm.get(localObject1);
+          localObject2 = (String)Enl.get(localObject1);
         }
       }
-      if (!bt.isNullOrNil((String)localObject2)) {
+      if (!bu.isNullOrNil((String)localObject2)) {
         break;
       }
       AppMethodBeat.o(79099);
@@ -64,27 +64,27 @@ public final class az
   public static void clear()
   {
     AppMethodBeat.i(79100);
-    DVm.clear();
+    Enl.clear();
     AppMethodBeat.o(79100);
   }
   
-  public static void kV(String paramString1, String paramString2)
+  public static void lc(String paramString1, String paramString2)
   {
     AppMethodBeat.i(79098);
-    ad.i("MicroMsg.WebviewSharedUrlCache", "rawurl:[%s], shareUrl:[%s]", new Object[] { paramString1, paramString2 });
-    if ((bt.isNullOrNil(paramString1)) || (bt.isNullOrNil(paramString2)))
+    ae.i("MicroMsg.WebviewSharedUrlCache", "rawurl:[%s], shareUrl:[%s]", new Object[] { paramString1, paramString2 });
+    if ((bu.isNullOrNil(paramString1)) || (bu.isNullOrNil(paramString2)))
     {
-      ad.e("MicroMsg.WebviewSharedUrlCache", "rawurl is null or share url is null");
+      ae.e("MicroMsg.WebviewSharedUrlCache", "rawurl is null or share url is null");
       AppMethodBeat.o(79098);
       return;
     }
-    if (DVm.containsKey(paramString1))
+    if (Enl.containsKey(paramString1))
     {
-      ad.i("MicroMsg.WebviewSharedUrlCache", "has add this rawurl");
+      ae.i("MicroMsg.WebviewSharedUrlCache", "has add this rawurl");
       AppMethodBeat.o(79098);
       return;
     }
-    DVm.put(paramString1, paramString2);
+    Enl.put(paramString1, paramString2);
     AppMethodBeat.o(79098);
   }
 }

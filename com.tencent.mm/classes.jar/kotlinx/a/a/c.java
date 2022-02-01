@@ -7,20 +7,20 @@ import kotlinx.a.b.as;
 import kotlinx.a.h;
 import kotlinx.a.n;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"nullable", "Lkotlinx/serialization/KSerializer;", "T", "", "getNullable", "(Lkotlinx/serialization/KSerializer;)Lkotlinx/serialization/KSerializer;", "MapEntrySerializer", "", "K", "V", "keySerializer", "valueSerializer", "PairSerializer", "Lkotlin/Pair;", "TripleSerializer", "Lkotlin/Triple;", "A", "B", "C", "aSerializer", "bSerializer", "cSerializer", "kotlinx-serialization-runtime"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"nullable", "Lkotlinx/serialization/KSerializer;", "T", "", "getNullable", "(Lkotlinx/serialization/KSerializer;)Lkotlinx/serialization/KSerializer;", "MapEntrySerializer", "", "K", "V", "keySerializer", "valueSerializer", "PairSerializer", "Lkotlin/Pair;", "TripleSerializer", "Lkotlin/Triple;", "A", "B", "C", "aSerializer", "bSerializer", "cSerializer", "kotlinx-serialization-runtime"})
 public final class c
 {
   public static final <T> h<T> a(h<T> paramh)
   {
-    AppMethodBeat.i(191257);
+    AppMethodBeat.i(199845);
     p.h(paramh, "$this$nullable");
-    if (paramh.eLj().gwS())
+    if (paramh.eOR().gBu())
     {
-      AppMethodBeat.o(191257);
+      AppMethodBeat.o(199845);
       return paramh;
     }
     paramh = (h)new as(paramh);
-    AppMethodBeat.o(191257);
+    AppMethodBeat.o(199845);
     return paramh;
   }
 }

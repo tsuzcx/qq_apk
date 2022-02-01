@@ -3,20 +3,20 @@ package com.tencent.mm.plugin.story.ui.view.gallery;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/story/ui/view/gallery/StoryVideoPreloadMgr$MoovReadyInfo;", "", "isMoovReady", "", "offset", "", "length", "preloadFinish", "(ZJJZ)V", "()Z", "getLength", "()J", "getOffset", "getPreloadFinish", "component1", "component2", "component3", "component4", "copy", "equals", "other", "hashCode", "", "toString", "", "plugin-story_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/story/ui/view/gallery/StoryVideoPreloadMgr$MoovReadyInfo;", "", "isMoovReady", "", "offset", "", "length", "preloadFinish", "(ZJJZ)V", "()Z", "getLength", "()J", "getOffset", "getPreloadFinish", "component1", "component2", "component3", "component4", "copy", "equals", "other", "hashCode", "", "toString", "", "plugin-story_release"})
 public final class m$b
 {
-  final boolean BfF;
+  final boolean Bxd;
   final long length;
   final long offset;
-  final boolean skP;
+  final boolean stM;
   
   public m$b(boolean paramBoolean1, long paramLong1, long paramLong2, boolean paramBoolean2)
   {
-    this.skP = paramBoolean1;
+    this.stM = paramBoolean1;
     this.offset = paramLong1;
     this.length = paramLong2;
-    this.BfF = paramBoolean2;
+    this.Bxd = paramBoolean2;
   }
   
   public final boolean equals(Object paramObject)
@@ -26,7 +26,7 @@ public final class m$b
       if ((paramObject instanceof b))
       {
         paramObject = (b)paramObject;
-        if ((this.skP != paramObject.skP) || (this.offset != paramObject.offset) || (this.length != paramObject.length) || (this.BfF != paramObject.BfF)) {}
+        if ((this.stM != paramObject.stM) || (this.offset != paramObject.offset) || (this.length != paramObject.length) || (this.Bxd != paramObject.Bxd)) {}
       }
     }
     else {
@@ -43,7 +43,7 @@ public final class m$b
   public final String toString()
   {
     AppMethodBeat.i(120545);
-    String str = "MoovReadyInfo(isMoovReady=" + this.skP + ", offset=" + this.offset + ", length=" + this.length + ", preloadFinish=" + this.BfF + ")";
+    String str = "MoovReadyInfo(isMoovReady=" + this.stM + ", offset=" + this.offset + ", length=" + this.length + ", preloadFinish=" + this.Bxd + ")";
     AppMethodBeat.o(120545);
     return str;
   }

@@ -9,32 +9,32 @@ public abstract class a
   extends BaseAdapter
   implements d
 {
-  private int Azv = 0;
-  HashMap<Object, Integer> Azw = new HashMap();
+  private int AQR = 0;
+  HashMap<Object, Integer> AQS = new HashMap();
   
-  protected final void dJ(Object paramObject)
+  protected final void dK(Object paramObject)
   {
-    HashMap localHashMap = this.Azw;
-    int i = this.Azv;
-    this.Azv = (i + 1);
+    HashMap localHashMap = this.AQS;
+    int i = this.AQR;
+    this.AQR = (i + 1);
     localHashMap.put(paramObject, Integer.valueOf(i));
-  }
-  
-  protected final void ge(List<?> paramList)
-  {
-    paramList = paramList.iterator();
-    while (paramList.hasNext()) {
-      dJ(paramList.next());
-    }
   }
   
   public final long getItemId(int paramInt)
   {
-    if ((paramInt < 0) || (paramInt >= this.Azw.size())) {
+    if ((paramInt < 0) || (paramInt >= this.AQS.size())) {
       return -1L;
     }
     Object localObject = getItem(paramInt);
-    return ((Integer)this.Azw.get(localObject)).intValue();
+    return ((Integer)this.AQS.get(localObject)).intValue();
+  }
+  
+  protected final void gn(List<?> paramList)
+  {
+    paramList = paramList.iterator();
+    while (paramList.hasNext()) {
+      dK(paramList.next());
+    }
   }
   
   public final boolean hasStableIds()

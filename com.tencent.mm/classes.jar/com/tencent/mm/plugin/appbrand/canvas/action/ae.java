@@ -6,7 +6,7 @@ import com.tencent.mm.plugin.appbrand.canvas.a.a;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.BaseDrawActionArg;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.DrawActionArg;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.SetShadowActionArg;
-import com.tencent.mm.plugin.appbrand.z.g;
+import com.tencent.mm.plugin.appbrand.y.g;
 import org.json.JSONArray;
 
 public final class ae
@@ -15,8 +15,8 @@ public final class ae
   private static boolean a(com.tencent.mm.plugin.appbrand.canvas.d paramd, float paramFloat1, float paramFloat2, float paramFloat3, int paramInt)
   {
     AppMethodBeat.i(144968);
-    paramd.jSZ.setShadowLayer(paramFloat3, paramFloat1, paramFloat2, paramInt);
-    paramd.jSY.setShadowLayer(paramFloat3, paramFloat1, paramFloat2, paramInt);
+    paramd.jWq.setShadowLayer(paramFloat3, paramFloat1, paramFloat2, paramInt);
+    paramd.jWp.setShadowLayer(paramFloat3, paramFloat1, paramFloat2, paramInt);
     AppMethodBeat.o(144968);
     return true;
   }
@@ -30,7 +30,7 @@ public final class ae
       AppMethodBeat.o(144969);
       return false;
     }
-    boolean bool = a(paramd, paramCanvas.x, paramCanvas.y, paramCanvas.jTC, paramCanvas.color);
+    boolean bool = a(paramd, paramCanvas.x, paramCanvas.y, paramCanvas.jWT, paramCanvas.color);
     AppMethodBeat.o(144969);
     return bool;
   }
@@ -52,12 +52,12 @@ public final class ae
       AppMethodBeat.o(144967);
       return false;
     }
-    boolean bool = a(paramd, f1, f2, f3, g.q(paramCanvas));
+    boolean bool = a(paramd, f1, f2, f3, g.r(paramCanvas));
     AppMethodBeat.o(144967);
     return bool;
   }
   
-  public final BaseDrawActionArg bdn()
+  public final BaseDrawActionArg bdS()
   {
     AppMethodBeat.i(144966);
     SetShadowActionArg localSetShadowActionArg = new SetShadowActionArg();

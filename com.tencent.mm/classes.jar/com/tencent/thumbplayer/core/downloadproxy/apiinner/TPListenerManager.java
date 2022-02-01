@@ -52,17 +52,17 @@ public class TPListenerManager
   
   static
   {
-    AppMethodBeat.i(190098);
+    AppMethodBeat.i(207311);
     PLAY_LISTENER_MAP_MUTEX = new Object();
     PROXY_PLAY_LISTENER_MAP_MUTEX = new Object();
     PRELOAD_LISTENER_MAP_MUTEX = new Object();
     OFFLINE_LISTENER_MAP_MUTEX = new Object();
-    AppMethodBeat.o(190098);
+    AppMethodBeat.o(207311);
   }
   
   private TPListenerManager()
   {
-    AppMethodBeat.i(190075);
+    AppMethodBeat.i(207288);
     this.mPlayListenerMap = new HashMap();
     this.mProxyPlayListenerMap = new HashMap();
     this.mPreLoadListenerMap = new HashMap();
@@ -71,7 +71,7 @@ public class TPListenerManager
     {
       public void run()
       {
-        AppMethodBeat.i(190071);
+        AppMethodBeat.i(207284);
         Object localObject1 = TPListenerManager.this.mPlayListenerMap;
         try
         {
@@ -91,17 +91,17 @@ public class TPListenerManager
         catch (Throwable localThrowable)
         {
           TPDLProxyLog.e("TPListenerManager", 0, "tpdlnative", "updatePlayerInfo failed, error:" + localThrowable.toString());
-          AppMethodBeat.o(190071);
+          AppMethodBeat.o(207284);
           return;
         }
-        AppMethodBeat.o(190071);
+        AppMethodBeat.o(207284);
       }
     };
     this.updateProxyPlayerInfo = new Runnable()
     {
       public void run()
       {
-        AppMethodBeat.i(190072);
+        AppMethodBeat.i(207285);
         Object localObject = TPListenerManager.this.mProxyPlayListenerMap;
         try
         {
@@ -118,52 +118,52 @@ public class TPListenerManager
         catch (Throwable localThrowable)
         {
           TPDLProxyLog.e("TPListenerManager", 0, "tpdlnative", "updateProxyPlayerInfo failed, error:" + localThrowable.toString());
-          AppMethodBeat.o(190072);
+          AppMethodBeat.o(207285);
           return;
         }
-        AppMethodBeat.o(190072);
+        AppMethodBeat.o(207285);
       }
     };
-    AppMethodBeat.o(190075);
+    AppMethodBeat.o(207288);
   }
   
   private void dispatchCallbackMessage(int paramInt1, int paramInt2, Object paramObject1, Object paramObject2, Object paramObject3, Object paramObject4, Object paramObject5)
   {
-    AppMethodBeat.i(190093);
+    AppMethodBeat.i(207306);
     Object localObject = getPlaylistener(paramInt2);
     if (localObject != null)
     {
       dispatchPlayMessage((ITPPlayListener)localObject, paramInt1, paramInt2, paramObject1, paramObject2, paramObject3, paramObject4, paramObject5);
-      AppMethodBeat.o(190093);
+      AppMethodBeat.o(207306);
       return;
     }
     localObject = getProxyPlayListener(paramInt2);
     if (localObject != null)
     {
       dispatchPlayMessage((ITPPlayListener)localObject, paramInt1, paramInt2, paramObject1, paramObject2, paramObject3, paramObject4, paramObject5);
-      AppMethodBeat.o(190093);
+      AppMethodBeat.o(207306);
       return;
     }
     localObject = getPreLoadListener(paramInt2);
     if (localObject != null)
     {
       dispatchPreLoadMessage((ITPPreLoadListener)localObject, paramInt1, paramInt2, paramObject1, paramObject2, paramObject3, paramObject4, paramObject5);
-      AppMethodBeat.o(190093);
+      AppMethodBeat.o(207306);
       return;
     }
     localObject = getOfflineDownloadListener(paramInt2);
     if (localObject != null) {
       dispatchOfflineDownloadMessage((ITPOfflineDownloadListener)localObject, paramInt1, paramInt2, paramObject1, paramObject2, paramObject3, paramObject4, paramObject5);
     }
-    AppMethodBeat.o(190093);
+    AppMethodBeat.o(207306);
   }
   
   private void dispatchOfflineDownloadMessage(ITPOfflineDownloadListener paramITPOfflineDownloadListener, int paramInt1, int paramInt2, Object paramObject1, Object paramObject2, Object paramObject3, Object paramObject4, Object paramObject5)
   {
-    AppMethodBeat.i(190096);
+    AppMethodBeat.i(207309);
     if (paramITPOfflineDownloadListener == null)
     {
-      AppMethodBeat.o(190096);
+      AppMethodBeat.o(207309);
       return;
     }
     switch (paramInt1)
@@ -171,22 +171,22 @@ public class TPListenerManager
     }
     for (;;)
     {
-      AppMethodBeat.o(190096);
+      AppMethodBeat.o(207309);
       return;
       paramITPOfflineDownloadListener.onDownloadProgressUpdate(TPDLProxyUtils.objectToInt(paramObject1, 0), TPDLProxyUtils.objectToInt(paramObject2, 0), TPDLProxyUtils.objectToLong(paramObject3, 0L), TPDLProxyUtils.objectToLong(paramObject4, 0L));
-      AppMethodBeat.o(190096);
+      AppMethodBeat.o(207309);
       return;
       paramITPOfflineDownloadListener.onDownloadFinish();
-      AppMethodBeat.o(190096);
+      AppMethodBeat.o(207309);
       return;
       paramITPOfflineDownloadListener.onDownloadError(((Integer)paramObject1).intValue(), ((Integer)paramObject2).intValue(), TPDLProxyUtils.byteArrayToString((byte[])paramObject3));
-      AppMethodBeat.o(190096);
+      AppMethodBeat.o(207309);
       return;
       paramITPOfflineDownloadListener.onDownloadCdnUrlUpdate(TPDLProxyUtils.byteArrayToString((byte[])paramObject1));
-      AppMethodBeat.o(190096);
+      AppMethodBeat.o(207309);
       return;
       paramITPOfflineDownloadListener.onDownloadCdnUrlInfoUpdate(TPDLProxyUtils.byteArrayToString((byte[])paramObject1), TPDLProxyUtils.byteArrayToString((byte[])paramObject2), TPDLProxyUtils.byteArrayToString((byte[])paramObject3), TPDLProxyUtils.byteArrayToString((byte[])paramObject4));
-      AppMethodBeat.o(190096);
+      AppMethodBeat.o(207309);
       return;
       paramObject1 = TPDLProxyUtils.byteArrayToString((byte[])paramObject1);
       long l = TPDLProxyUtils.objectToLong(paramObject2, 0L);
@@ -197,10 +197,10 @@ public class TPListenerManager
         paramObject2.put("randnum", String.valueOf(l));
       }
       paramITPOfflineDownloadListener.onDownloadCdnUrlExpired(paramObject2);
-      AppMethodBeat.o(190096);
+      AppMethodBeat.o(207309);
       return;
       paramITPOfflineDownloadListener.onDownloadStatusUpdate(TPDLProxyUtils.objectToInt(paramObject1, 0));
-      AppMethodBeat.o(190096);
+      AppMethodBeat.o(207309);
       return;
       paramITPOfflineDownloadListener.onDownloadProtocolUpdate(TPDLProxyUtils.byteArrayToString((byte[])paramObject1), TPDLProxyUtils.byteArrayToString((byte[])paramObject2));
     }
@@ -208,10 +208,10 @@ public class TPListenerManager
   
   private void dispatchPlayMessage(ITPPlayListener paramITPPlayListener, int paramInt1, int paramInt2, Object paramObject1, Object paramObject2, Object paramObject3, Object paramObject4, Object paramObject5)
   {
-    AppMethodBeat.i(190094);
+    AppMethodBeat.i(207307);
     if (paramITPPlayListener == null)
     {
-      AppMethodBeat.o(190094);
+      AppMethodBeat.o(207307);
       return;
     }
     switch (paramInt1)
@@ -219,21 +219,21 @@ public class TPListenerManager
     }
     for (;;)
     {
-      AppMethodBeat.o(190094);
+      AppMethodBeat.o(207307);
       return;
       paramITPPlayListener.onDownloadProgressUpdate(TPDLProxyUtils.objectToInt(paramObject1, 0), TPDLProxyUtils.objectToInt(paramObject2, 0), TPDLProxyUtils.objectToLong(paramObject3, 0L), TPDLProxyUtils.objectToLong(paramObject4, 0L));
-      AppMethodBeat.o(190094);
+      AppMethodBeat.o(207307);
       return;
       paramITPPlayListener.onDownloadFinish();
-      AppMethodBeat.o(190094);
+      AppMethodBeat.o(207307);
       return;
-      AppMethodBeat.o(190094);
+      AppMethodBeat.o(207307);
       return;
       paramITPPlayListener.onDownloadCdnUrlUpdate(TPDLProxyUtils.byteArrayToString((byte[])paramObject1));
-      AppMethodBeat.o(190094);
+      AppMethodBeat.o(207307);
       return;
       paramITPPlayListener.onDownloadCdnUrlInfoUpdate(TPDLProxyUtils.byteArrayToString((byte[])paramObject1), TPDLProxyUtils.byteArrayToString((byte[])paramObject2), TPDLProxyUtils.byteArrayToString((byte[])paramObject3), TPDLProxyUtils.byteArrayToString((byte[])paramObject4));
-      AppMethodBeat.o(190094);
+      AppMethodBeat.o(207307);
       return;
       paramObject1 = TPDLProxyUtils.byteArrayToString((byte[])paramObject1);
       long l = TPDLProxyUtils.objectToLong(paramObject2, 0L);
@@ -244,13 +244,13 @@ public class TPListenerManager
         paramObject2.put("randnum", String.valueOf(l));
       }
       paramITPPlayListener.onDownloadCdnUrlExpired(paramObject2);
-      AppMethodBeat.o(190094);
+      AppMethodBeat.o(207307);
       return;
       paramITPPlayListener.onDownloadStatusUpdate(TPDLProxyUtils.objectToInt(paramObject1, 0));
-      AppMethodBeat.o(190094);
+      AppMethodBeat.o(207307);
       return;
       paramITPPlayListener.onDownloadProtocolUpdate(TPDLProxyUtils.byteArrayToString((byte[])paramObject1), TPDLProxyUtils.byteArrayToString((byte[])paramObject2));
-      AppMethodBeat.o(190094);
+      AppMethodBeat.o(207307);
       return;
       paramObject1 = TPDLProxyUtils.byteArrayToString((byte[])paramObject1);
       l = TPDLProxyUtils.objectToLong(paramObject2, 0L);
@@ -261,7 +261,7 @@ public class TPListenerManager
         paramObject2.put("randnum", String.valueOf(l));
       }
       paramITPPlayListener.onPlayCallback(1, paramObject2, null, null, null);
-      AppMethodBeat.o(190094);
+      AppMethodBeat.o(207307);
       return;
       paramITPPlayListener.onPlayCallback(2, TPDLProxyUtils.byteArrayToString((byte[])paramObject1), TPDLProxyUtils.byteArrayToString((byte[])paramObject2), Integer.valueOf(TPDLProxyUtils.objectToInt(paramObject3, 0)), null);
     }
@@ -269,10 +269,10 @@ public class TPListenerManager
   
   private void dispatchPreLoadMessage(ITPPreLoadListener paramITPPreLoadListener, int paramInt1, int paramInt2, Object paramObject1, Object paramObject2, Object paramObject3, Object paramObject4, Object paramObject5)
   {
-    AppMethodBeat.i(190095);
+    AppMethodBeat.i(207308);
     if (paramITPPreLoadListener == null)
     {
-      AppMethodBeat.o(190095);
+      AppMethodBeat.o(207308);
       return;
     }
     switch (paramInt1)
@@ -280,13 +280,13 @@ public class TPListenerManager
     }
     for (;;)
     {
-      AppMethodBeat.o(190095);
+      AppMethodBeat.o(207308);
       return;
       paramITPPreLoadListener.onPrepareDownloadProgressUpdate(TPDLProxyUtils.objectToInt(paramObject1, 0), TPDLProxyUtils.objectToInt(paramObject2, 0), TPDLProxyUtils.objectToLong(paramObject3, 0L), TPDLProxyUtils.objectToLong(paramObject4, 0L));
-      AppMethodBeat.o(190095);
+      AppMethodBeat.o(207308);
       return;
       paramITPPreLoadListener.onPrepareOK();
-      AppMethodBeat.o(190095);
+      AppMethodBeat.o(207308);
       return;
       paramITPPreLoadListener.onPrepareError();
     }
@@ -294,52 +294,52 @@ public class TPListenerManager
   
   public static TPListenerManager getInstance()
   {
-    AppMethodBeat.i(190076);
+    AppMethodBeat.i(207289);
     TPListenerManager localTPListenerManager = SingletonHolder.INSTANCE;
-    AppMethodBeat.o(190076);
+    AppMethodBeat.o(207289);
     return localTPListenerManager;
   }
   
   public ITPOfflineDownloadListener getOfflineDownloadListener(int paramInt)
   {
-    AppMethodBeat.i(190089);
+    AppMethodBeat.i(207302);
     synchronized (OFFLINE_LISTENER_MAP_MUTEX)
     {
       ITPOfflineDownloadListener localITPOfflineDownloadListener = (ITPOfflineDownloadListener)this.mOfflineDownloadListenerMap.get(Integer.valueOf(paramInt));
-      AppMethodBeat.o(190089);
+      AppMethodBeat.o(207302);
       return localITPOfflineDownloadListener;
     }
   }
   
   public ITPPlayListener getPlaylistener(int paramInt)
   {
-    AppMethodBeat.i(190080);
+    AppMethodBeat.i(207293);
     synchronized (PLAY_LISTENER_MAP_MUTEX)
     {
       ITPPlayListener localITPPlayListener = (ITPPlayListener)this.mPlayListenerMap.get(Integer.valueOf(paramInt));
-      AppMethodBeat.o(190080);
+      AppMethodBeat.o(207293);
       return localITPPlayListener;
     }
   }
   
   public ITPPreLoadListener getPreLoadListener(int paramInt)
   {
-    AppMethodBeat.i(190086);
+    AppMethodBeat.i(207299);
     synchronized (PRELOAD_LISTENER_MAP_MUTEX)
     {
       ITPPreLoadListener localITPPreLoadListener = (ITPPreLoadListener)this.mPreLoadListenerMap.get(Integer.valueOf(paramInt));
-      AppMethodBeat.o(190086);
+      AppMethodBeat.o(207299);
       return localITPPreLoadListener;
     }
   }
   
   public ITPPlayListener getProxyPlayListener(int paramInt)
   {
-    AppMethodBeat.i(190083);
+    AppMethodBeat.i(207296);
     synchronized (PROXY_PLAY_LISTENER_MAP_MUTEX)
     {
       ITPPlayListener localITPPlayListener = (ITPPlayListener)this.mProxyPlayListenerMap.get(Integer.valueOf(paramInt));
-      AppMethodBeat.o(190083);
+      AppMethodBeat.o(207296);
       return localITPPlayListener;
     }
   }
@@ -348,17 +348,17 @@ public class TPListenerManager
   {
     try
     {
-      AppMethodBeat.i(190090);
+      AppMethodBeat.i(207303);
       this.mMsgHandler.post(new Runnable()
       {
         public void run()
         {
-          AppMethodBeat.i(190073);
+          AppMethodBeat.i(207286);
           TPListenerManager.access$700(TPListenerManager.this, paramInt1, paramInt2, paramObject1, paramObject2, paramObject3, paramObject4, paramObject5);
-          AppMethodBeat.o(190073);
+          AppMethodBeat.o(207286);
         }
       });
-      AppMethodBeat.o(190090);
+      AppMethodBeat.o(207303);
       return;
     }
     finally
@@ -370,7 +370,7 @@ public class TPListenerManager
   
   public int handleIntCallbackMessage(int paramInt1, int paramInt2, Object paramObject1, Object paramObject2, Object paramObject3, Object paramObject4, Object paramObject5)
   {
-    AppMethodBeat.i(190091);
+    AppMethodBeat.i(207304);
     paramObject4 = getPlaylistener(paramInt2);
     long l1;
     if (paramObject4 != null) {
@@ -384,7 +384,7 @@ public class TPListenerManager
     }
     for (;;)
     {
-      AppMethodBeat.o(190091);
+      AppMethodBeat.o(207304);
       return paramInt1;
       if (paramInt1 == 12)
       {
@@ -407,7 +407,7 @@ public class TPListenerManager
   
   public String handleStringCallbackMessage(int paramInt1, int paramInt2, Object paramObject1, Object paramObject2, Object paramObject3, Object paramObject4, Object paramObject5)
   {
-    AppMethodBeat.i(190092);
+    AppMethodBeat.i(207305);
     paramObject3 = "";
     paramObject4 = getPlaylistener(paramInt2);
     paramObject2 = paramObject3;
@@ -421,7 +421,7 @@ public class TPListenerManager
     }
     for (;;)
     {
-      AppMethodBeat.o(190092);
+      AppMethodBeat.o(207305);
       return paramObject2;
       label65:
       if (paramInt1 == 13)
@@ -443,7 +443,7 @@ public class TPListenerManager
   
   public void initHandler()
   {
-    AppMethodBeat.i(190077);
+    AppMethodBeat.i(207290);
     if (this.mMsgHandlerThread == null)
     {
       this.mMsgHandlerThread = new HandlerThread("TVKDL-Listener");
@@ -452,119 +452,119 @@ public class TPListenerManager
       this.mMsgHandler.postDelayed(this.updatePlayerInfo, 1000L);
       this.mMsgHandler.postDelayed(this.updateProxyPlayerInfo, 1000L);
     }
-    AppMethodBeat.o(190077);
+    AppMethodBeat.o(207290);
   }
   
   public void removeOfflineDownloadListener(int paramInt)
   {
-    AppMethodBeat.i(190088);
+    AppMethodBeat.i(207301);
     if (paramInt > 0) {
       synchronized (OFFLINE_LISTENER_MAP_MUTEX)
       {
         this.mOfflineDownloadListenerMap.remove(Integer.valueOf(paramInt));
-        AppMethodBeat.o(190088);
+        AppMethodBeat.o(207301);
         return;
       }
     }
-    AppMethodBeat.o(190088);
+    AppMethodBeat.o(207301);
   }
   
   public void removePlayListener(int paramInt)
   {
-    AppMethodBeat.i(190079);
+    AppMethodBeat.i(207292);
     if (paramInt > 0) {
       synchronized (PLAY_LISTENER_MAP_MUTEX)
       {
         this.mPlayListenerMap.remove(Integer.valueOf(paramInt));
-        AppMethodBeat.o(190079);
+        AppMethodBeat.o(207292);
         return;
       }
     }
-    AppMethodBeat.o(190079);
+    AppMethodBeat.o(207292);
   }
   
   public void removePreLoadListener(int paramInt)
   {
-    AppMethodBeat.i(190085);
+    AppMethodBeat.i(207298);
     if (paramInt > 0) {
       synchronized (PRELOAD_LISTENER_MAP_MUTEX)
       {
         this.mPreLoadListenerMap.remove(Integer.valueOf(paramInt));
-        AppMethodBeat.o(190085);
+        AppMethodBeat.o(207298);
         return;
       }
     }
-    AppMethodBeat.o(190085);
+    AppMethodBeat.o(207298);
   }
   
   public void removeProxyPlayListener(int paramInt)
   {
-    AppMethodBeat.i(190082);
+    AppMethodBeat.i(207295);
     if (paramInt > 0) {
       synchronized (PROXY_PLAY_LISTENER_MAP_MUTEX)
       {
         this.mProxyPlayListenerMap.remove(Integer.valueOf(paramInt));
-        AppMethodBeat.o(190082);
+        AppMethodBeat.o(207295);
         return;
       }
     }
-    AppMethodBeat.o(190082);
+    AppMethodBeat.o(207295);
   }
   
   public void setOfflineDownloadListener(int paramInt, ITPOfflineDownloadListener paramITPOfflineDownloadListener)
   {
-    AppMethodBeat.i(190087);
+    AppMethodBeat.i(207300);
     if ((paramInt > 0) && (paramITPOfflineDownloadListener != null)) {
       synchronized (OFFLINE_LISTENER_MAP_MUTEX)
       {
         this.mOfflineDownloadListenerMap.put(Integer.valueOf(paramInt), paramITPOfflineDownloadListener);
-        AppMethodBeat.o(190087);
+        AppMethodBeat.o(207300);
         return;
       }
     }
-    AppMethodBeat.o(190087);
+    AppMethodBeat.o(207300);
   }
   
   public void setPlayListener(int paramInt, ITPPlayListener paramITPPlayListener)
   {
-    AppMethodBeat.i(190078);
+    AppMethodBeat.i(207291);
     if ((paramInt > 0) && (paramITPPlayListener != null)) {
       synchronized (PLAY_LISTENER_MAP_MUTEX)
       {
         this.mPlayListenerMap.put(Integer.valueOf(paramInt), paramITPPlayListener);
-        AppMethodBeat.o(190078);
+        AppMethodBeat.o(207291);
         return;
       }
     }
-    AppMethodBeat.o(190078);
+    AppMethodBeat.o(207291);
   }
   
   public void setPreLoadListener(int paramInt, ITPPreLoadListener paramITPPreLoadListener)
   {
-    AppMethodBeat.i(190084);
+    AppMethodBeat.i(207297);
     if ((paramInt > 0) && (paramITPPreLoadListener != null)) {
       synchronized (PRELOAD_LISTENER_MAP_MUTEX)
       {
         this.mPreLoadListenerMap.put(Integer.valueOf(paramInt), paramITPPreLoadListener);
-        AppMethodBeat.o(190084);
+        AppMethodBeat.o(207297);
         return;
       }
     }
-    AppMethodBeat.o(190084);
+    AppMethodBeat.o(207297);
   }
   
   public void setProxyPlayListener(int paramInt, ITPPlayListener paramITPPlayListener)
   {
-    AppMethodBeat.i(190081);
+    AppMethodBeat.i(207294);
     if ((paramInt > 0) && (paramITPPlayListener != null)) {
       synchronized (PROXY_PLAY_LISTENER_MAP_MUTEX)
       {
         this.mProxyPlayListenerMap.put(Integer.valueOf(paramInt), paramITPPlayListener);
-        AppMethodBeat.o(190081);
+        AppMethodBeat.o(207294);
         return;
       }
     }
-    AppMethodBeat.o(190081);
+    AppMethodBeat.o(207294);
   }
   
   static class SingletonHolder
@@ -573,9 +573,9 @@ public class TPListenerManager
     
     static
     {
-      AppMethodBeat.i(190074);
+      AppMethodBeat.i(207287);
       INSTANCE = new TPListenerManager(null);
-      AppMethodBeat.o(190074);
+      AppMethodBeat.o(207287);
     }
   }
 }

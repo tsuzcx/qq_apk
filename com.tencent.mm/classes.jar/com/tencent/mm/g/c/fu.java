@@ -7,32 +7,29 @@ import com.tencent.mm.sdk.e.c;
 public abstract class fu
   extends c
 {
-  public static final String[] INDEX_CREATE = { "CREATE INDEX IF NOT EXISTS file_name_hash_index ON SightDraftInfo(fileNameHash)" };
-  private static final int eEf = "createTime".hashCode();
-  private static final int eVj = "localId".hashCode();
-  private static final int eXb = "fileName".hashCode();
-  private static final int fsl = "fileNameHash".hashCode();
-  private static final int fsm = "fileMd5".hashCode();
-  private static final int fsn = "fileLength".hashCode();
-  private static final int fso = "fileStatus".hashCode();
-  private static final int fsp = "fileDuration".hashCode();
+  public static final String[] INDEX_CREATE = new String[0];
+  private static final int eNW = "card_id".hashCode();
+  private static final int faa = "retryCount".hashCode();
+  private static final int flC;
+  private static final int fpt;
+  private static final int fuf = "state_flag".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eDI = true;
-  private boolean eVh = true;
-  private boolean eWy = true;
-  public long field_createTime;
-  public int field_fileDuration;
-  public long field_fileLength;
-  public String field_fileMd5;
-  public String field_fileName;
-  public int field_fileNameHash;
-  public int field_fileStatus;
-  public int field_localId;
-  private boolean fsg = true;
-  private boolean fsh = true;
-  private boolean fsi = true;
-  private boolean fsj = true;
-  private boolean fsk = true;
+  private boolean eND = true;
+  private boolean eZP = true;
+  public String field_card_id;
+  public int field_retryCount;
+  public long field_seq;
+  public int field_state_flag;
+  public long field_update_time;
+  private boolean flu = true;
+  private boolean fpo = true;
+  private boolean fue = true;
+  
+  static
+  {
+    flC = "update_time".hashCode();
+    fpt = "seq".hashCode();
+  }
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -47,11 +44,11 @@ public abstract class fu
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eVj != k) {
+      if (eNW != k) {
         break label65;
       }
-      this.field_localId = paramCursor.getInt(i);
-      this.eVh = true;
+      this.field_card_id = paramCursor.getString(i);
+      this.eND = true;
     }
     for (;;)
     {
@@ -59,20 +56,14 @@ public abstract class fu
       break label20;
       break;
       label65:
-      if (eXb == k) {
-        this.field_fileName = paramCursor.getString(i);
-      } else if (fsl == k) {
-        this.field_fileNameHash = paramCursor.getInt(i);
-      } else if (fsm == k) {
-        this.field_fileMd5 = paramCursor.getString(i);
-      } else if (fsn == k) {
-        this.field_fileLength = paramCursor.getLong(i);
-      } else if (fso == k) {
-        this.field_fileStatus = paramCursor.getInt(i);
-      } else if (fsp == k) {
-        this.field_fileDuration = paramCursor.getInt(i);
-      } else if (eEf == k) {
-        this.field_createTime = paramCursor.getLong(i);
+      if (fuf == k) {
+        this.field_state_flag = paramCursor.getInt(i);
+      } else if (flC == k) {
+        this.field_update_time = paramCursor.getLong(i);
+      } else if (fpt == k) {
+        this.field_seq = paramCursor.getLong(i);
+      } else if (faa == k) {
+        this.field_retryCount = paramCursor.getInt(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -82,32 +73,20 @@ public abstract class fu
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eVh) {
-      localContentValues.put("localId", Integer.valueOf(this.field_localId));
+    if (this.eND) {
+      localContentValues.put("card_id", this.field_card_id);
     }
-    if (this.eWy) {
-      localContentValues.put("fileName", this.field_fileName);
+    if (this.fue) {
+      localContentValues.put("state_flag", Integer.valueOf(this.field_state_flag));
     }
-    if (this.fsg) {
-      localContentValues.put("fileNameHash", Integer.valueOf(this.field_fileNameHash));
+    if (this.flu) {
+      localContentValues.put("update_time", Long.valueOf(this.field_update_time));
     }
-    if (this.field_fileMd5 == null) {
-      this.field_fileMd5 = "";
+    if (this.fpo) {
+      localContentValues.put("seq", Long.valueOf(this.field_seq));
     }
-    if (this.fsh) {
-      localContentValues.put("fileMd5", this.field_fileMd5);
-    }
-    if (this.fsi) {
-      localContentValues.put("fileLength", Long.valueOf(this.field_fileLength));
-    }
-    if (this.fsj) {
-      localContentValues.put("fileStatus", Integer.valueOf(this.field_fileStatus));
-    }
-    if (this.fsk) {
-      localContentValues.put("fileDuration", Integer.valueOf(this.field_fileDuration));
-    }
-    if (this.eDI) {
-      localContentValues.put("createTime", Long.valueOf(this.field_createTime));
+    if (this.eZP) {
+      localContentValues.put("retryCount", Integer.valueOf(this.field_retryCount));
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));

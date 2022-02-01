@@ -15,13 +15,13 @@ import com.tencent.mm.ui.widget.MMSwitchBtn.a;
 public class CheckBoxPreference
   extends Preference
 {
-  private TextView COs;
-  private int COt;
-  private String COu;
-  private int COv;
+  private int DcV;
+  private String DcW;
+  private int DcX;
+  private TextView Dga;
   private View mView;
   boolean oB;
-  private MMSwitchBtn rck;
+  private MMSwitchBtn rkq;
   
   public CheckBoxPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -33,17 +33,17 @@ public class CheckBoxPreference
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(159986);
     this.oB = false;
-    this.COt = -1;
-    this.COu = "";
-    this.COv = 8;
+    this.DcV = -1;
+    this.DcW = "";
+    this.DcX = 8;
     setLayoutResource(2131494804);
     AppMethodBeat.o(159986);
   }
   
   public final boolean isChecked()
   {
-    if (this.rck != null) {
-      return this.rck.KRP;
+    if (this.rkq != null) {
+      return this.rkq.Lon;
     }
     return this.oB;
   }
@@ -52,8 +52,8 @@ public class CheckBoxPreference
   {
     AppMethodBeat.i(159988);
     super.onBindView(paramView);
-    this.rck = ((MMSwitchBtn)paramView.findViewById(2131298255));
-    this.rck.setSwitchListener(new MMSwitchBtn.a()
+    this.rkq = ((MMSwitchBtn)paramView.findViewById(2131298255));
+    this.rkq.setSwitchListener(new MMSwitchBtn.a()
     {
       public final void onStatusChange(boolean paramAnonymousBoolean)
       {
@@ -62,29 +62,29 @@ public class CheckBoxPreference
         AppMethodBeat.o(159985);
       }
     });
-    this.rck.setCheck(this.oB);
+    this.rkq.setCheck(this.oB);
     if (!isEnabled())
     {
-      this.rck.setEnabled(false);
+      this.rkq.setEnabled(false);
       ((TextView)paramView.findViewById(16908310)).setTextColor(paramView.getResources().getColor(2131100022));
     }
-    this.COs = ((TextView)paramView.findViewById(2131305883));
-    paramView = this.COu;
-    int i = this.COt;
-    this.COt = i;
-    this.COu = paramView;
-    if (this.COs != null)
+    this.Dga = ((TextView)paramView.findViewById(2131305883));
+    paramView = this.DcW;
+    int i = this.DcV;
+    this.DcV = i;
+    this.DcW = paramView;
+    if (this.Dga != null)
     {
       if (i > 0) {
-        this.COs.setBackgroundResource(this.COt);
+        this.Dga.setBackgroundResource(this.DcV);
       }
-      if (!TextUtils.isEmpty(this.COu)) {
-        this.COs.setText(this.COu);
+      if (!TextUtils.isEmpty(this.DcW)) {
+        this.Dga.setText(this.DcW);
       }
     }
-    this.COv = this.COv;
-    if (this.COs != null) {
-      this.COs.setVisibility(this.COv);
+    this.DcX = this.DcX;
+    if (this.Dga != null) {
+      this.Dga.setVisibility(this.DcX);
     }
     AppMethodBeat.o(159988);
   }

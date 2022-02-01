@@ -14,16 +14,16 @@ import java.util.concurrent.TimeUnit;
 
 public final class e
 {
-  public final b LVi;
-  public final c LVj;
-  public final f LVk;
+  public final b Msd;
+  public final c Mse;
+  public final f Msf;
   
   public e(com.tencent.e.a parama)
   {
     AppMethodBeat.i(183363);
-    this.LVi = new b(parama.LSX, parama.LSW);
-    this.LVj = new c(parama.LSY);
-    this.LVk = new f();
+    this.Msd = new b(parama.MpU, parama.MpT);
+    this.Mse = new c(parama.MpV);
+    this.Msf = new f();
     AppMethodBeat.o(183363);
   }
   
@@ -35,7 +35,7 @@ public final class e
     if ((paramk instanceof com.tencent.e.j.e))
     {
       paramd = (com.tencent.e.j.e)paramk;
-      com.tencent.e.j.d locald = paramd.IhL.LVC;
+      com.tencent.e.j.d locald = paramd.IBW.Msx;
       if (paramBoolean)
       {
         l = -2147483648L;
@@ -48,32 +48,32 @@ public final class e
       return paramk;
       l = paramk.getDelay(TimeUnit.MILLISECONDS);
       break;
-      paramk.LVv.h(paramk);
+      paramk.Msq.h(paramk);
     }
   }
   
   private d l(k<?> paramk)
   {
     AppMethodBeat.i(183367);
-    if (com.tencent.e.c.b.LUm != null)
+    if (com.tencent.e.c.b.Mrh != null)
     {
-      if (com.tencent.e.c.b.LUm.aZB(paramk.getKey()))
+      if (com.tencent.e.c.b.Mrh.bbe(paramk.getKey()))
       {
-        paramk = this.LVi;
+        paramk = this.Msd;
         AppMethodBeat.o(183367);
         return paramk;
       }
-      paramk = this.LVj;
+      paramk = this.Mse;
       AppMethodBeat.o(183367);
       return paramk;
     }
-    if (this.LVj.isBusy())
+    if (this.Mse.isBusy())
     {
-      paramk = this.LVi;
+      paramk = this.Msd;
       AppMethodBeat.o(183367);
       return paramk;
     }
-    paramk = this.LVj;
+    paramk = this.Mse;
     AppMethodBeat.o(183367);
     return paramk;
   }
@@ -86,23 +86,23 @@ public final class e
     return paramk;
   }
   
-  public final Map<String, List<String>> fVu()
+  public final Map<String, List<String>> fZT()
   {
     AppMethodBeat.i(183366);
     localLinkedHashMap = new LinkedHashMap();
     try
     {
-      Object localObject1 = this.LVk.LVl;
+      Object localObject1 = this.Msf.Msg;
       Object localObject2 = new LinkedList();
       ((f.a)localObject1).aCF.dump(new f.a.2((f.a)localObject1, (List)localObject2), "");
       localLinkedHashMap.put("UIPool", localObject2);
-      localLinkedHashMap.put("HotPool", this.LVj.fVN());
-      localLinkedHashMap.put("ColdPool", this.LVi.fVN());
-      localObject1 = com.tencent.e.j.a.fVX().iterator();
+      localLinkedHashMap.put("HotPool", this.Mse.gam());
+      localLinkedHashMap.put("ColdPool", this.Msd.gam());
+      localObject1 = com.tencent.e.j.a.gaw().iterator();
       while (((Iterator)localObject1).hasNext())
       {
         localObject2 = (com.tencent.e.j.a)((Iterator)localObject1).next();
-        List localList = ((com.tencent.e.j.a)localObject2).LVC.fVY();
+        List localList = ((com.tencent.e.j.a)localObject2).Msx.gax();
         if (localList.size() > 0) {
           localLinkedHashMap.put(((com.tencent.e.j.a)localObject2).tag, localList);
         }
@@ -111,16 +111,16 @@ public final class e
     }
     catch (NullPointerException localNullPointerException)
     {
-      com.tencent.e.d.LTy.e("PoolAdapter", "[dumpWaitingTask] e=%s", new Object[] { localNullPointerException });
+      com.tencent.e.d.Mqv.e("PoolAdapter", "[dumpWaitingTask] e=%s", new Object[] { localNullPointerException });
       AppMethodBeat.o(183366);
     }
   }
   
   public final <V> com.tencent.e.i.d<V> k(k<V> paramk)
   {
-    AppMethodBeat.i(219283);
-    paramk = a(paramk, false, this.LVj);
-    AppMethodBeat.o(219283);
+    AppMethodBeat.i(216745);
+    paramk = a(paramk, false, this.Mse);
+    AppMethodBeat.o(216745);
     return paramk;
   }
 }

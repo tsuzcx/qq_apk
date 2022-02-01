@@ -6,14 +6,14 @@ import java.util.concurrent.atomic.AtomicReference;
 
 public final class a<T>
 {
-  public final AtomicReference<T> cIv = new AtomicReference();
-  public final CountDownLatch cIw = new CountDownLatch(1);
+  public final AtomicReference<T> cJe = new AtomicReference();
+  public final CountDownLatch cJf = new CountDownLatch(1);
   
   public final boolean a(TimeUnit paramTimeUnit)
   {
     try
     {
-      boolean bool = this.cIw.await(5L, paramTimeUnit);
+      boolean bool = this.cJf.await(5L, paramTimeUnit);
       return bool;
     }
     catch (InterruptedException paramTimeUnit)

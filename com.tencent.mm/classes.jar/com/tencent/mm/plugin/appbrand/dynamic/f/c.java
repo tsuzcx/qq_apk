@@ -1,12 +1,12 @@
 package com.tencent.mm.plugin.appbrand.dynamic.f;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public final class c
-  extends com.tencent.mm.ab.b.c
+  extends com.tencent.mm.aa.b.c
 {
   public String data;
   
@@ -26,7 +26,7 @@ public final class c
     JSONObject localJSONObject = new JSONObject();
     try
     {
-      localJSONObject.put("data", bt.nullAsNil(this.data));
+      localJSONObject.put("data", bu.nullAsNil(this.data));
       label27:
       AppMethodBeat.o(121393);
       return localJSONObject;

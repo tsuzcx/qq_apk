@@ -11,7 +11,7 @@ import android.util.TypedValue;
 import android.view.View;
 import android.view.Window;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.MMFragmentActivity;
 import java.lang.ref.WeakReference;
@@ -32,9 +32,9 @@ public final class h
         public final void run()
         {
           AppMethodBeat.i(141145);
-          this.EJz.getWindow().getDecorView().setSystemUiVisibility(this.EJz.getWindow().getDecorView().getSystemUiVisibility() | 0x100);
-          int i = com.tencent.mm.compatible.util.a.cb(this.EJz);
-          ad.i("MicroMsg.FullScreenHelper", "setFullScreenAfterSetContentView to contentView, height: %s", new Object[] { Integer.valueOf(i) });
+          this.FbX.getWindow().getDecorView().setSystemUiVisibility(this.FbX.getWindow().getDecorView().getSystemUiVisibility() | 0x100);
+          int i = com.tencent.mm.compatible.util.a.cd(this.FbX);
+          ae.i("MicroMsg.FullScreenHelper", "setFullScreenAfterSetContentView to contentView, height: %s", new Object[] { Integer.valueOf(i) });
           if (paramView != null) {
             paramView.setPadding(0, i, 0, 0);
           }
@@ -45,7 +45,7 @@ public final class h
     AppMethodBeat.o(141151);
   }
   
-  public static void aN(Activity paramActivity)
+  public static void aO(Activity paramActivity)
   {
     AppMethodBeat.i(141148);
     if (Build.VERSION.SDK_INT >= 16)
@@ -75,8 +75,8 @@ public final class h
         public final void run()
         {
           AppMethodBeat.i(141146);
-          this.EJz.getWindow().getDecorView().setSystemUiVisibility(this.EJz.getWindow().getDecorView().getSystemUiVisibility() | 0x100);
-          ad.i("MicroMsg.FullScreenHelper", "setFullScreenAfterSetContentView to contentView, height: %s", new Object[] { Integer.valueOf(this.val$height) });
+          this.FbX.getWindow().getDecorView().setSystemUiVisibility(this.FbX.getWindow().getDecorView().getSystemUiVisibility() | 0x100);
+          ae.i("MicroMsg.FullScreenHelper", "setFullScreenAfterSetContentView to contentView, height: %s", new Object[] { Integer.valueOf(this.val$height) });
           if (paramView != null) {
             paramView.setPadding(0, this.val$height, 0, 0);
           }
@@ -87,7 +87,7 @@ public final class h
     AppMethodBeat.o(141152);
   }
   
-  public static int dT(Context paramContext)
+  public static int dX(Context paramContext)
   {
     AppMethodBeat.i(141153);
     int i = 0;
@@ -110,7 +110,7 @@ public final class h
     }
   }
   
-  public static int hm(Context paramContext)
+  public static int hs(Context paramContext)
   {
     AppMethodBeat.i(141147);
     int i = 0;
@@ -144,16 +144,16 @@ public final class h
         public final void run()
         {
           AppMethodBeat.i(141144);
-          MMActivity localMMActivity = (MMActivity)this.EJy.get();
+          MMActivity localMMActivity = (MMActivity)this.FbW.get();
           if ((localMMActivity == null) || (localMMActivity.isFinishing()) || (localMMActivity.isDestroyed()))
           {
             AppMethodBeat.o(141144);
             return;
           }
           localMMActivity.getWindow().getDecorView().setSystemUiVisibility(localMMActivity.getWindow().getDecorView().getSystemUiVisibility() | 0x100);
-          int i = com.tencent.mm.compatible.util.a.cb(localMMActivity);
-          ad.i("MicroMsg.FullScreenHelper", "setFullScreenAfterSetContentView to bodyView, height: %d, %d", new Object[] { Integer.valueOf(i), Integer.valueOf(com.tencent.mm.cc.a.fromDPToPix(localMMActivity, 2)) });
-          localMMActivity.getBodyView().setPadding(0, i - com.tencent.mm.cc.a.fromDPToPix(localMMActivity, 2), 0, 0);
+          int i = com.tencent.mm.compatible.util.a.cd(localMMActivity);
+          ae.i("MicroMsg.FullScreenHelper", "setFullScreenAfterSetContentView to bodyView, height: %d, %d", new Object[] { Integer.valueOf(i), Integer.valueOf(com.tencent.mm.cb.a.fromDPToPix(localMMActivity, 2)) });
+          localMMActivity.getBodyView().setPadding(0, i - com.tencent.mm.cb.a.fromDPToPix(localMMActivity, 2), 0, 0);
           AppMethodBeat.o(141144);
         }
       });

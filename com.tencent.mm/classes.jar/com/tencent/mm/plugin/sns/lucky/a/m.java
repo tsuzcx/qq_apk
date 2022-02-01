@@ -2,19 +2,19 @@ package com.tencent.mm.plugin.sns.lucky.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.b.g;
-import com.tencent.mm.model.u;
+import com.tencent.mm.model.v;
 import com.tencent.mm.platformtools.z;
-import com.tencent.mm.plugin.sns.model.ag;
-import com.tencent.mm.plugin.sns.model.ak;
+import com.tencent.mm.plugin.sns.model.ah;
+import com.tencent.mm.plugin.sns.model.al;
 import com.tencent.mm.plugin.sns.storage.p;
 import com.tencent.mm.plugin.sns.storage.q;
 import com.tencent.mm.protocal.protobuf.SnsObject;
-import com.tencent.mm.protocal.protobuf.bnt;
-import com.tencent.mm.protocal.protobuf.byo;
-import com.tencent.mm.protocal.protobuf.dfw;
-import com.tencent.mm.protocal.protobuf.dgo;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.bol;
+import com.tencent.mm.protocal.protobuf.bzi;
+import com.tencent.mm.protocal.protobuf.dgq;
+import com.tencent.mm.protocal.protobuf.dhi;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -22,12 +22,12 @@ import java.util.List;
 
 public final class m
 {
-  private static final ThreadLocal<HashMap<String, Long>> zfa;
+  private static final ThreadLocal<HashMap<String, Long>> zvP;
   
   static
   {
     AppMethodBeat.i(95195);
-    zfa = new ThreadLocal();
+    zvP = new ThreadLocal();
     AppMethodBeat.o(95195);
   }
   
@@ -39,34 +39,34 @@ public final class m
       AppMethodBeat.o(95191);
       return true;
     }
-    byo localbyo = paramp.dYD();
+    bzi localbzi = paramp.ech();
     if (paramp.field_type != 21)
     {
       AppMethodBeat.o(95191);
       return true;
     }
-    if (localbyo.dNN == 1)
+    if (localbzi.dPd == 1)
     {
       AppMethodBeat.o(95191);
       return true;
     }
-    if (u.aAm().equals(paramp.field_userName))
+    if (v.aAC().equals(paramp.field_userName))
     {
       AppMethodBeat.o(95191);
       return true;
     }
     if (paramSnsObject.SnsRedEnvelops != null)
     {
-      paramSnsObject = paramSnsObject.SnsRedEnvelops.HuR;
+      paramSnsObject = paramSnsObject.SnsRedEnvelops.HOu;
       if ((paramSnsObject == null) || (paramSnsObject.size() == 0))
       {
         AppMethodBeat.o(95191);
         return false;
       }
-      paramp = u.aAm();
+      paramp = v.aAC();
       paramSnsObject = paramSnsObject.iterator();
       while (paramSnsObject.hasNext()) {
-        if (paramp.equals(((dfw)paramSnsObject.next()).Username))
+        if (paramp.equals(((dgq)paramSnsObject.next()).Username))
         {
           AppMethodBeat.o(95191);
           return true;
@@ -77,11 +77,11 @@ public final class m
     return false;
   }
   
-  public static boolean ayt(String paramString)
+  public static boolean azK(String paramString)
   {
     AppMethodBeat.i(95189);
-    paramString = ag.dUe().aAa(paramString);
-    boolean bool = a(paramString, ak.v(paramString));
+    paramString = ah.dXE().aBr(paramString);
+    boolean bool = a(paramString, al.v(paramString));
     AppMethodBeat.o(95189);
     return bool;
   }
@@ -97,7 +97,7 @@ public final class m
     }
     Object localObject1 = paramSnsObject;
     if (paramSnsObject == null) {
-      localObject1 = ak.v(paramp);
+      localObject1 = al.v(paramp);
     }
     if (localObject1 == null)
     {
@@ -110,17 +110,17 @@ public final class m
       AppMethodBeat.o(95194);
       return 0L;
     }
-    Object localObject2 = paramSnsObject.HuR;
+    Object localObject2 = paramSnsObject.HOu;
     if (localObject2 == null)
     {
       AppMethodBeat.o(95194);
       return 0L;
     }
-    paramSnsObject = paramp.zMB;
-    if (bt.isNullOrNil(paramSnsObject)) {}
+    paramSnsObject = paramp.AdI;
+    if (bu.isNullOrNil(paramSnsObject)) {}
     for (paramp = g.getMessageDigest(paramp.field_content) + g.getMessageDigest(paramp.field_attrBuf);; paramp = paramSnsObject)
     {
-      localObject1 = (HashMap)zfa.get();
+      localObject1 = (HashMap)zvP.get();
       if ((localObject1 != null) && (((HashMap)localObject1).containsKey(paramp)))
       {
         l = ((Long)((HashMap)localObject1).get(paramp)).longValue();
@@ -132,18 +132,18 @@ public final class m
       {
         if (paramSnsObject.hasNext())
         {
-          dfw localdfw = (dfw)paramSnsObject.next();
-          localObject2 = new bnt();
+          dgq localdgq = (dgq)paramSnsObject.next();
+          localObject2 = new bol();
           try
           {
-            ((bnt)localObject2).parseFrom(z.a(localdfw.HtK));
-            l += ((bnt)localObject2).dOa;
+            ((bol)localObject2).parseFrom(z.a(localdgq.HNn));
+            l += ((bol)localObject2).dPq;
           }
           catch (Exception localException)
           {
             for (;;)
             {
-              ad.e("MicrMsg.SnsLuckyUtil", localException.getMessage() + "hbBuffer is error");
+              ae.e("MicrMsg.SnsLuckyUtil", localException.getMessage() + "hbBuffer is error");
             }
           }
         }
@@ -153,7 +153,7 @@ public final class m
         paramSnsObject = new HashMap();
       }
       paramSnsObject.put(paramp, Long.valueOf(l));
-      zfa.set(paramSnsObject);
+      zvP.set(paramSnsObject);
       AppMethodBeat.o(95194);
       return l;
     }
@@ -162,7 +162,7 @@ public final class m
   public static boolean p(p paramp)
   {
     AppMethodBeat.i(95190);
-    boolean bool = a(paramp, ak.v(paramp));
+    boolean bool = a(paramp, al.v(paramp));
     AppMethodBeat.o(95190);
     return bool;
   }
@@ -175,19 +175,19 @@ public final class m
       AppMethodBeat.o(95192);
       return 0;
     }
-    paramp = ak.v(paramp);
+    paramp = al.v(paramp);
     if (paramp == null)
     {
       AppMethodBeat.o(95192);
       return 0;
     }
     paramp = paramp.SnsRedEnvelops;
-    if ((paramp == null) || (paramp.HuR.size() == 0))
+    if ((paramp == null) || (paramp.HOu.size() == 0))
     {
       AppMethodBeat.o(95192);
       return 0;
     }
-    int i = paramp.HuR.size();
+    int i = paramp.HOu.size();
     AppMethodBeat.o(95192);
     return i;
   }

@@ -4,13 +4,13 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.fw;
+import com.tencent.mm.g.c.fx;
 import com.tencent.mm.sdk.e.c.a;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public class SmileyPanelConfigInfo
-  extends fw
+  extends fx
   implements Parcelable
 {
   public static final Parcelable.Creator<SmileyPanelConfigInfo> CREATOR;
@@ -20,16 +20,16 @@ public class SmileyPanelConfigInfo
   {
     AppMethodBeat.i(105150);
     c.a locala = new c.a();
-    locala.IhA = new Field[2];
+    locala.IBL = new Field[2];
     locala.columns = new String[3];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "key";
-    locala.IhC.put("key", "TEXT PRIMARY KEY ");
+    locala.IBN.put("key", "TEXT PRIMARY KEY ");
     localStringBuilder.append(" key TEXT PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.IhB = "key";
+    locala.IBM = "key";
     locala.columns[1] = "position";
-    locala.IhC.put("position", "INTEGER");
+    locala.IBN.put("position", "INTEGER");
     localStringBuilder.append(" position INTEGER");
     locala.columns[2] = "rowid";
     locala.sql = localStringBuilder.toString();
@@ -85,7 +85,7 @@ public class SmileyPanelConfigInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.storage.emotion.SmileyPanelConfigInfo
  * JD-Core Version:    0.7.0.1
  */

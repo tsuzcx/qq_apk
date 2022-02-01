@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.voip_cs.c.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.dwy;
-import com.tencent.mm.protocal.protobuf.dwz;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.dyp;
+import com.tencent.mm.protocal.protobuf.dyq;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class a
   extends n
@@ -24,20 +24,20 @@ public final class a
   {
     AppMethodBeat.i(125422);
     Object localObject = new b.a();
-    ((b.a)localObject).hNM = new dwy();
-    ((b.a)localObject).hNN = new dwz();
+    ((b.a)localObject).hQF = new dyp();
+    ((b.a)localObject).hQG = new dyq();
     ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/csvoiphangup";
     ((b.a)localObject).funcId = 880;
-    ((b.a)localObject).hNO = 0;
+    ((b.a)localObject).hQH = 0;
     ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).aDC();
-    localObject = (dwy)this.rr.hNK.hNQ;
-    ((dwy)localObject).HfX = paramInt1;
-    ((dwy)localObject).HyS = paramLong1;
-    ((dwy)localObject).GeJ = paramLong2;
-    ((dwy)localObject).HJO = paramString;
-    ((dwy)localObject).FzW = paramInt2;
-    ((dwy)localObject).HfW = System.currentTimeMillis();
+    this.rr = ((b.a)localObject).aDS();
+    localObject = (dyp)this.rr.hQD.hQJ;
+    ((dyp)localObject).Hzx = paramInt1;
+    ((dyp)localObject).HSD = paramLong1;
+    ((dyp)localObject).Gxr = paramLong2;
+    ((dyp)localObject).IdW = paramString;
+    ((dyp)localObject).FSu = paramInt2;
+    ((dyp)localObject).Hzw = System.currentTimeMillis();
     AppMethodBeat.o(125422);
   }
   
@@ -58,7 +58,7 @@ public final class a
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(125424);
-    ad.i("MicroMsg.NetSceneVoipCSHangUp", "onGYNetEnd, errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    ae.i("MicroMsg.NetSceneVoipCSHangUp", "onGYNetEnd, errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(125424);
   }

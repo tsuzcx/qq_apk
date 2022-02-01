@@ -8,34 +8,34 @@ import java.util.List;
 import java.util.ServiceLoader;
 import kotlinx.coroutines.bz;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/coroutines/internal/MainDispatcherLoader;", "", "()V", "FAST_SERVICE_LOADER_ENABLED", "", "dispatcher", "Lkotlinx/coroutines/MainCoroutineDispatcher;", "loadMainDispatcher", "kotlinx-coroutines-core"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/coroutines/internal/MainDispatcherLoader;", "", "()V", "FAST_SERVICE_LOADER_ENABLED", "", "dispatcher", "Lkotlinx/coroutines/MainCoroutineDispatcher;", "loadMainDispatcher", "kotlinx-coroutines-core"})
 public final class m
 {
-  private static final boolean NJV;
-  public static final bz NJW;
-  public static final m NJX;
+  private static final boolean Ohb;
+  public static final bz Ohc;
+  public static final m Ohd;
   
   static
   {
-    AppMethodBeat.i(190835);
-    NJX = new m();
-    NJV = w.bdk("kotlinx.coroutines.fast.service.loader");
-    NJW = gwf();
-    AppMethodBeat.o(190835);
+    AppMethodBeat.i(209326);
+    Ohd = new m();
+    Ohb = w.beO("kotlinx.coroutines.fast.service.loader");
+    Ohc = gAH();
+    AppMethodBeat.o(209326);
   }
   
-  private static bz gwf()
+  private static bz gAH()
   {
-    AppMethodBeat.i(190834);
+    AppMethodBeat.i(209325);
     for (;;)
     {
       try
       {
-        if (!NJV) {
+        if (!Ohb) {
           continue;
         }
-        localObject1 = f.NJG;
-        localList = f.gvW();
+        localObject1 = f.OgM;
+        localList = f.gAy();
         localIterator = ((Iterable)localList).iterator();
         if (localIterator.hasNext()) {
           continue;
@@ -64,7 +64,7 @@ public final class m
         continue;
         continue;
       }
-      AppMethodBeat.o(190834);
+      AppMethodBeat.o(209325);
       return localObject1;
       localList = i.c(i.d(ServiceLoader.load(MainDispatcherFactory.class, MainDispatcherFactory.class.getClassLoader()).iterator()));
       continue;

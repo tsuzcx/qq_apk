@@ -33,7 +33,7 @@ public class AppCompatEditText
   
   public AppCompatEditText(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
-    super(aw.ac(paramContext), paramAttributeSet, paramInt);
+    super(aw.ad(paramContext), paramAttributeSet, paramInt);
     this.ajP.a(paramAttributeSet, paramInt);
     this.ajQ = new l(this);
     this.ajQ.a(paramAttributeSet, paramInt);

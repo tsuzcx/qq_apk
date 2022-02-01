@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class sq
   extends b
 {
-  public a dHg;
+  public a dIl;
   
   public sq()
   {
@@ -15,21 +15,18 @@ public final class sq
   
   private sq(byte paramByte)
   {
-    AppMethodBeat.i(120832);
-    this.dHg = new a();
-    this.IbR = false;
+    AppMethodBeat.i(120831);
+    this.dIl = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(120832);
+    AppMethodBeat.o(120831);
   }
   
   public static final class a
   {
-    public String dHh;
-    public String dHi;
-    public String dHj;
-    public int dlK;
-    public boolean dlh;
-    public int dnh = 0;
+    public int dmM;
+    public String filePath;
+    public int scene = 0;
   }
 }
 

@@ -10,19 +10,19 @@ import com.tencent.mm.plugin.wenote.model.a.c;
 public final class k
   extends j
 {
-  private ImageView ECL;
-  private TextView ECM;
+  private ImageView EVh;
+  private TextView EVi;
   
   public k(View paramView, com.tencent.mm.plugin.wenote.model.nativenote.manager.k paramk)
   {
     super(paramView, paramk);
     AppMethodBeat.i(30870);
-    this.psv.setVisibility(8);
-    this.dsD.setVisibility(8);
-    this.jld.setVisibility(8);
-    this.psv.setOnClickListener(null);
-    this.ECL = ((ImageView)paramView.findViewById(2131302935));
-    this.ECM = ((TextView)paramView.findViewById(2131302937));
+    this.pzb.setVisibility(8);
+    this.dtJ.setVisibility(8);
+    this.jnX.setVisibility(8);
+    this.pzb.setOnClickListener(null);
+    this.EVh = ((ImageView)paramView.findViewById(2131302935));
+    this.EVi = ((TextView)paramView.findViewById(2131302937));
     AppMethodBeat.o(30870);
   }
   
@@ -35,11 +35,11 @@ public final class k
       AppMethodBeat.o(30871);
       return;
     }
-    this.psC.setVisibility(0);
+    this.pzi.setVisibility(0);
     AppMethodBeat.o(30871);
   }
   
-  public final int cdT()
+  public final int cfi()
   {
     return -4;
   }

@@ -5,19 +5,19 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.media.k.c;
 import com.tencent.mm.media.k.c.a;
 import com.tencent.mm.plugin.vlog.model.j;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
-@d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/vlog/player/VLogImagePlayer;", "Lcom/tencent/mm/plugin/vlog/player/MaterialPlayer;", "texture", "", "drawWidth", "drawHeight", "material", "Lcom/tencent/mm/plugin/vlog/model/ImageMaterial;", "(IIILcom/tencent/mm/plugin/vlog/model/ImageMaterial;)V", "cacheBitmap", "Landroid/graphics/Bitmap;", "enableMute", "", "mute", "", "isMirror", "isOES", "pause", "playing", "pts", "", "updateTex", "prepare", "readyAt", "seekTime", "release", "resizeBitmap", "bitmap", "resume", "stop", "Companion", "plugin-vlog_release"})
+@d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/vlog/player/VLogImagePlayer;", "Lcom/tencent/mm/plugin/vlog/player/MaterialPlayer;", "texture", "", "drawWidth", "drawHeight", "material", "Lcom/tencent/mm/plugin/vlog/model/ImageMaterial;", "(IIILcom/tencent/mm/plugin/vlog/model/ImageMaterial;)V", "cacheBitmap", "Landroid/graphics/Bitmap;", "enableMute", "", "mute", "", "isMirror", "isOES", "pause", "playing", "pts", "", "updateTex", "prepare", "readyAt", "seekTime", "release", "resizeBitmap", "bitmap", "resume", "stop", "Companion", "plugin-vlog_release"})
 public final class d
   extends b
 {
-  public static final a BIu;
-  private Bitmap BIt;
+  public static final a BZT;
+  private Bitmap BZS;
   
   static
   {
     AppMethodBeat.i(110972);
-    BIu = new a((byte)0);
+    BZT = new a((byte)0);
     AppMethodBeat.o(110972);
   }
   
@@ -29,7 +29,7 @@ public final class d
   }
   
   /* Error */
-  public final void Bm(long paramLong)
+  public final void BK(long paramLong)
   {
     // Byte code:
     //   0: aconst_null
@@ -39,26 +39,26 @@ public final class d
     //   6: ldc 84
     //   8: invokestatic 55	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   11: aload_0
-    //   12: getfield 88	com/tencent/mm/plugin/vlog/player/b:BHY	Z
+    //   12: getfield 88	com/tencent/mm/plugin/vlog/player/b:BZx	Z
     //   15: ifeq +9 -> 24
     //   18: ldc 84
     //   20: invokestatic 64	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   23: return
     //   24: aload_0
     //   25: iconst_1
-    //   26: putfield 88	com/tencent/mm/plugin/vlog/player/b:BHY	Z
-    //   29: getstatic 94	com/tencent/mm/plugin/vlog/player/e:BIv	Lcom/tencent/mm/plugin/vlog/player/e;
+    //   26: putfield 88	com/tencent/mm/plugin/vlog/player/b:BZx	Z
+    //   29: getstatic 94	com/tencent/mm/plugin/vlog/player/e:BZU	Lcom/tencent/mm/plugin/vlog/player/e;
     //   32: astore 5
     //   34: aload_0
-    //   35: getfield 98	com/tencent/mm/plugin/vlog/player/b:BIa	Lcom/tencent/mm/plugin/vlog/model/l;
+    //   35: getfield 98	com/tencent/mm/plugin/vlog/player/b:BZz	Lcom/tencent/mm/plugin/vlog/model/l;
     //   38: getfield 102	com/tencent/mm/plugin/vlog/model/l:path	Ljava/lang/String;
-    //   41: invokestatic 106	com/tencent/mm/plugin/vlog/player/e:aDs	(Ljava/lang/String;)Lcom/tencent/mm/plugin/vlog/player/a;
+    //   41: invokestatic 106	com/tencent/mm/plugin/vlog/player/e:aEL	(Ljava/lang/String;)Lcom/tencent/mm/plugin/vlog/player/a;
     //   44: astore 5
     //   46: aload 5
     //   48: ifnull +123 -> 171
     //   51: ldc 108
     //   53: ldc 110
-    //   55: invokestatic 115	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   55: invokestatic 115	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   58: aload_0
     //   59: aload 5
     //   61: getfield 121	com/tencent/mm/plugin/vlog/player/a:width	I
@@ -69,30 +69,30 @@ public final class d
     //   73: putfield 126	com/tencent/mm/plugin/vlog/player/b:height	I
     //   76: aload_0
     //   77: aload 5
-    //   79: getfield 129	com/tencent/mm/plugin/vlog/player/a:dGc	I
-    //   82: putfield 130	com/tencent/mm/plugin/vlog/player/b:dGc	I
+    //   79: getfield 129	com/tencent/mm/plugin/vlog/player/a:dHi	I
+    //   82: putfield 130	com/tencent/mm/plugin/vlog/player/b:dHi	I
     //   85: iconst_1
     //   86: istore_3
     //   87: iload_3
     //   88: ifeq +88 -> 176
     //   91: aload_0
-    //   92: getfield 132	com/tencent/mm/plugin/vlog/player/d:BIt	Landroid/graphics/Bitmap;
+    //   92: getfield 132	com/tencent/mm/plugin/vlog/player/d:BZS	Landroid/graphics/Bitmap;
     //   95: ifnull +81 -> 176
     //   98: ldc 108
     //   100: ldc 134
-    //   102: invokestatic 115	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   102: invokestatic 115	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   105: ldc 108
     //   107: new 136	java/lang/StringBuilder
     //   110: dup
     //   111: ldc 138
     //   113: invokespecial 141	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   116: aload_0
-    //   117: getfield 144	com/tencent/mm/plugin/vlog/player/b:gLD	I
+    //   117: getfield 144	com/tencent/mm/plugin/vlog/player/b:gOm	I
     //   120: invokevirtual 148	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   123: ldc 150
     //   125: invokevirtual 153	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   128: aload_0
-    //   129: getfield 156	com/tencent/mm/plugin/vlog/player/b:gLE	I
+    //   129: getfield 156	com/tencent/mm/plugin/vlog/player/b:gOn	I
     //   132: invokevirtual 148	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   135: ldc 158
     //   137: invokevirtual 153	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -105,7 +105,7 @@ public final class d
     //   153: getfield 126	com/tencent/mm/plugin/vlog/player/b:height	I
     //   156: invokevirtual 148	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   159: invokevirtual 164	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   162: invokestatic 115	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   162: invokestatic 115	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   165: ldc 84
     //   167: invokestatic 64	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   170: return
@@ -122,7 +122,7 @@ public final class d
     //   191: iconst_1
     //   192: putfield 177	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
     //   195: aload_0
-    //   196: getfield 98	com/tencent/mm/plugin/vlog/player/b:BIa	Lcom/tencent/mm/plugin/vlog/model/l;
+    //   196: getfield 98	com/tencent/mm/plugin/vlog/player/b:BZz	Lcom/tencent/mm/plugin/vlog/model/l;
     //   199: getfield 102	com/tencent/mm/plugin/vlog/model/l:path	Ljava/lang/String;
     //   202: aload 5
     //   204: invokestatic 183	android/graphics/BitmapFactory:decodeFile	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
@@ -137,16 +137,16 @@ public final class d
     //   223: iload_3
     //   224: iload 4
     //   226: aload_0
-    //   227: getfield 144	com/tencent/mm/plugin/vlog/player/b:gLD	I
+    //   227: getfield 144	com/tencent/mm/plugin/vlog/player/b:gOm	I
     //   230: aload_0
-    //   231: getfield 156	com/tencent/mm/plugin/vlog/player/b:gLE	I
-    //   234: invokestatic 195	com/tencent/mm/sdk/platformtools/g:O	(IIII)I
+    //   231: getfield 156	com/tencent/mm/plugin/vlog/player/b:gOn	I
+    //   234: invokestatic 195	com/tencent/mm/sdk/platformtools/h:O	(IIII)I
     //   237: putfield 198	android/graphics/BitmapFactory$Options:inSampleSize	I
     //   240: aload 5
     //   242: iconst_0
     //   243: putfield 177	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
     //   246: aload_0
-    //   247: getfield 98	com/tencent/mm/plugin/vlog/player/b:BIa	Lcom/tencent/mm/plugin/vlog/model/l;
+    //   247: getfield 98	com/tencent/mm/plugin/vlog/player/b:BZz	Lcom/tencent/mm/plugin/vlog/model/l;
     //   250: getfield 102	com/tencent/mm/plugin/vlog/model/l:path	Ljava/lang/String;
     //   253: aload 5
     //   255: invokestatic 201	com/tencent/mm/graphics/MMBitmapFactory:decodeFile	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
@@ -173,7 +173,7 @@ public final class d
     //   302: astore 8
     //   304: aload 8
     //   306: ifnonnull +6 -> 312
-    //   309: invokestatic 227	d/g/b/p:gfZ	()V
+    //   309: invokestatic 227	d/g/b/p:gkB	()V
     //   312: new 229	android/graphics/Canvas
     //   315: dup
     //   316: aload 8
@@ -195,7 +195,7 @@ public final class d
     //   344: astore 5
     //   346: aload 5
     //   348: ifnonnull +6 -> 354
-    //   351: invokestatic 227	d/g/b/p:gfZ	()V
+    //   351: invokestatic 227	d/g/b/p:gkB	()V
     //   354: aload_0
     //   355: aload 5
     //   357: invokevirtual 211	android/graphics/Bitmap:getWidth	()I
@@ -218,12 +218,12 @@ public final class d
     //   397: ldc 246
     //   399: invokevirtual 153	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   402: aload_0
-    //   403: getfield 144	com/tencent/mm/plugin/vlog/player/b:gLD	I
+    //   403: getfield 144	com/tencent/mm/plugin/vlog/player/b:gOm	I
     //   406: invokevirtual 148	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   409: ldc 150
     //   411: invokevirtual 153	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   414: aload_0
-    //   415: getfield 156	com/tencent/mm/plugin/vlog/player/b:gLE	I
+    //   415: getfield 156	com/tencent/mm/plugin/vlog/player/b:gOn	I
     //   418: invokevirtual 148	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   421: ldc 158
     //   423: invokevirtual 153	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -236,11 +236,11 @@ public final class d
     //   439: getfield 126	com/tencent/mm/plugin/vlog/player/b:height	I
     //   442: invokevirtual 148	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   445: invokevirtual 164	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   448: invokestatic 115	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   448: invokestatic 115	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   451: aload_0
-    //   452: getfield 98	com/tencent/mm/plugin/vlog/player/b:BIa	Lcom/tencent/mm/plugin/vlog/model/l;
+    //   452: getfield 98	com/tencent/mm/plugin/vlog/player/b:BZz	Lcom/tencent/mm/plugin/vlog/model/l;
     //   455: getfield 102	com/tencent/mm/plugin/vlog/model/l:path	Ljava/lang/String;
-    //   458: invokestatic 252	com/tencent/mm/vfs/i:openRead	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   458: invokestatic 252	com/tencent/mm/vfs/o:openRead	(Ljava/lang/String;)Ljava/io/InputStream;
     //   461: astore 8
     //   463: aload 8
     //   465: ifnull +166 -> 631
@@ -253,7 +253,7 @@ public final class d
     //   481: checkcast 258	java/io/InputStream
     //   484: invokespecial 261	android/support/e/a:<init>	(Ljava/io/InputStream;)V
     //   487: astore 8
-    //   489: getstatic 267	d/z:MKo	Ld/z;
+    //   489: getstatic 267	d/z:Nhr	Ld/z;
     //   492: astore 10
     //   494: aload 9
     //   496: aconst_null
@@ -275,18 +275,18 @@ public final class d
     //   534: ifnonnull +154 -> 688
     //   537: aload_0
     //   538: aload 5
-    //   540: putfield 132	com/tencent/mm/plugin/vlog/player/d:BIt	Landroid/graphics/Bitmap;
-    //   543: getstatic 94	com/tencent/mm/plugin/vlog/player/e:BIv	Lcom/tencent/mm/plugin/vlog/player/e;
+    //   540: putfield 132	com/tencent/mm/plugin/vlog/player/d:BZS	Landroid/graphics/Bitmap;
+    //   543: getstatic 94	com/tencent/mm/plugin/vlog/player/e:BZU	Lcom/tencent/mm/plugin/vlog/player/e;
     //   546: astore 5
     //   548: aload_0
-    //   549: getfield 98	com/tencent/mm/plugin/vlog/player/b:BIa	Lcom/tencent/mm/plugin/vlog/model/l;
+    //   549: getfield 98	com/tencent/mm/plugin/vlog/player/b:BZz	Lcom/tencent/mm/plugin/vlog/model/l;
     //   552: getfield 102	com/tencent/mm/plugin/vlog/model/l:path	Ljava/lang/String;
     //   555: aload_0
     //   556: getfield 122	com/tencent/mm/plugin/vlog/player/b:width	I
     //   559: aload_0
     //   560: getfield 126	com/tencent/mm/plugin/vlog/player/b:height	I
     //   563: aload_0
-    //   564: getfield 130	com/tencent/mm/plugin/vlog/player/b:dGc	I
+    //   564: getfield 130	com/tencent/mm/plugin/vlog/player/b:dHi	I
     //   567: invokestatic 287	com/tencent/mm/plugin/vlog/player/e:o	(Ljava/lang/String;III)V
     //   570: ldc 108
     //   572: ldc_w 289
@@ -295,7 +295,7 @@ public final class d
     //   579: lsub
     //   580: invokestatic 294	java/lang/String:valueOf	(J)Ljava/lang/String;
     //   583: invokevirtual 298	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   586: invokestatic 115	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   586: invokestatic 115	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   589: ldc 84
     //   591: invokestatic 64	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   594: return
@@ -325,10 +325,10 @@ public final class d
     //   644: if_icmpne -117 -> 527
     //   647: aload_0
     //   648: iconst_3
-    //   649: putfield 130	com/tencent/mm/plugin/vlog/player/b:dGc	I
+    //   649: putfield 130	com/tencent/mm/plugin/vlog/player/b:dHi	I
     //   652: ldc 108
     //   654: ldc_w 303
-    //   657: invokestatic 115	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   657: invokestatic 115	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   660: goto -123 -> 537
     //   663: aload 7
     //   665: invokevirtual 301	java/lang/Integer:intValue	()I
@@ -336,10 +336,10 @@ public final class d
     //   669: if_icmpne -137 -> 532
     //   672: aload_0
     //   673: iconst_2
-    //   674: putfield 130	com/tencent/mm/plugin/vlog/player/b:dGc	I
+    //   674: putfield 130	com/tencent/mm/plugin/vlog/player/b:dHi	I
     //   677: ldc 108
     //   679: ldc_w 305
-    //   682: invokestatic 115	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   682: invokestatic 115	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   685: goto -148 -> 537
     //   688: aload 7
     //   690: invokevirtual 301	java/lang/Integer:intValue	()I
@@ -347,10 +347,10 @@ public final class d
     //   695: if_icmpne -158 -> 537
     //   698: aload_0
     //   699: iconst_1
-    //   700: putfield 130	com/tencent/mm/plugin/vlog/player/b:dGc	I
+    //   700: putfield 130	com/tencent/mm/plugin/vlog/player/b:dHi	I
     //   703: ldc 108
     //   705: ldc_w 307
-    //   708: invokestatic 115	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   708: invokestatic 115	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   711: goto -174 -> 537
     //   714: astore 5
     //   716: goto -100 -> 616
@@ -377,19 +377,19 @@ public final class d
     //   475	494	714	finally
   }
   
-  public final void H(long paramLong, boolean paramBoolean)
+  public final void J(long paramLong, boolean paramBoolean)
   {
     AppMethodBeat.i(110968);
     if (paramBoolean)
     {
-      Bitmap localBitmap = this.BIt;
+      Bitmap localBitmap = this.BZS;
       if (localBitmap != null)
       {
-        ad.i("MicroMsg.VLogImagePlayer", "VLogImagePlayer playing, uploadBitmapTexture, bitmap:" + localBitmap + ", width:" + localBitmap.getWidth() + ", height:" + localBitmap.getHeight());
-        c.a locala = c.hoP;
-        c.a.b(localBitmap, this.BHZ);
+        ae.i("MicroMsg.VLogImagePlayer", "VLogImagePlayer playing, uploadBitmapTexture, bitmap:" + localBitmap + ", width:" + localBitmap.getWidth() + ", height:" + localBitmap.getHeight());
+        c.a locala = c.hrD;
+        c.a.b(localBitmap, this.BZy);
         localBitmap.recycle();
-        this.BIt = null;
+        this.BZS = null;
         AppMethodBeat.o(110968);
         return;
       }
@@ -407,26 +407,26 @@ public final class d
   public final void release()
   {
     AppMethodBeat.i(110970);
-    this.BHY = false;
-    Bitmap localBitmap = this.BIt;
+    this.BZx = false;
+    Bitmap localBitmap = this.BZS;
     if (localBitmap != null) {
       localBitmap.recycle();
     }
-    this.BIt = null;
+    this.BZS = null;
     this.bdb = false;
     AppMethodBeat.o(110970);
   }
   
   public final void resume() {}
   
-  public final void sR(boolean paramBoolean) {}
+  public final void sY(boolean paramBoolean) {}
   
   public final void stop()
   {
-    this.BHY = false;
+    this.BZx = false;
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/vlog/player/VLogImagePlayer$Companion;", "", "()V", "TAG", "", "plugin-vlog_release"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/vlog/player/VLogImagePlayer$Companion;", "", "()V", "TAG", "", "plugin-vlog_release"})
   public static final class a {}
 }
 

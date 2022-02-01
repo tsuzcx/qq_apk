@@ -18,15 +18,15 @@ import d.l;
 import d.v;
 import d.z;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/widget/dialog/RequestDialogRotationHelper;", "", "()V", "applyStyleByRotation", "", "context", "Landroid/content/Context;", "rootView", "Landroid/view/View;", "buttonGroup", "rotation", "", "shouldInLargeScreenCompatMode", "", "getAppropriateLargeScreenRequestDialogWidth", "dialogMeasuredWidth", "dp2Px", "dp", "isLargeScreenEnv", "onPreDrawOnce", "block", "Lkotlin/Function0;", "postRequestLayout", "wrapScreenAdaptiveContextForRequestDialogIfNeed", "luggage-wechat-full-sdk_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/widget/dialog/RequestDialogRotationHelper;", "", "()V", "applyStyleByRotation", "", "context", "Landroid/content/Context;", "rootView", "Landroid/view/View;", "buttonGroup", "rotation", "", "shouldInLargeScreenCompatMode", "", "getAppropriateLargeScreenRequestDialogWidth", "dialogMeasuredWidth", "dp2Px", "dp", "isLargeScreenEnv", "onPreDrawOnce", "block", "Lkotlin/Function0;", "postRequestLayout", "wrapScreenAdaptiveContextForRequestDialogIfNeed", "luggage-wechat-full-sdk_release"})
 public final class n
 {
-  public static final n swJ;
+  public static final n nic;
   
   static
   {
     AppMethodBeat.i(148269);
-    swJ = new n();
+    nic = new n();
     AppMethodBeat.o(148269);
   }
   
@@ -114,13 +114,13 @@ public final class n
           ((RelativeLayout.LayoutParams)localLayoutParams).bottomMargin = paramContext.getResources().getDimensionPixelSize(2131165883);
         }
       }
-      if ((!paramBoolean) && (cN(paramContext)))
+      if ((!paramBoolean) && (cP(paramContext)))
       {
         localObject1 = (d.g.a.a)new a(paramView1, paramContext);
         ViewTreeObserver localViewTreeObserver = paramView1.getViewTreeObserver();
         p.g(localViewTreeObserver, "this.viewTreeObserver");
         if (localViewTreeObserver.isAlive()) {
-          paramView1.getViewTreeObserver().addOnPreDrawListener((ViewTreeObserver.OnPreDrawListener)new b(paramView1, (d.g.a.a)localObject1));
+          paramView1.getViewTreeObserver().addOnPreDrawListener((ViewTreeObserver.OnPreDrawListener)new n.b(paramView1, (d.g.a.a)localObject1));
         }
         paramView1 = localObject2;
         if (paramView2 != null) {
@@ -148,21 +148,7 @@ public final class n
     AppMethodBeat.o(183080);
   }
   
-  public static final Context bq(Context paramContext)
-  {
-    AppMethodBeat.i(169667);
-    p.h(paramContext, "$this$wrapScreenAdaptiveContextForRequestDialogIfNeed");
-    if (!cN(paramContext))
-    {
-      AppMethodBeat.o(169667);
-      return paramContext;
-    }
-    paramContext = (Context)new com.tencent.luggage.g.a(paramContext, (a.b)d.ncf);
-    AppMethodBeat.o(169667);
-    return paramContext;
-  }
-  
-  private static boolean cN(Context paramContext)
+  private static boolean cP(Context paramContext)
   {
     AppMethodBeat.i(183081);
     paramContext = paramContext.getResources();
@@ -176,7 +162,21 @@ public final class n
     return false;
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
+  public static final Context dv(Context paramContext)
+  {
+    AppMethodBeat.i(169667);
+    p.h(paramContext, "$this$wrapScreenAdaptiveContextForRequestDialogIfNeed");
+    if (!cP(paramContext))
+    {
+      AppMethodBeat.o(169667);
+      return paramContext;
+    }
+    paramContext = (Context)new com.tencent.luggage.g.a(paramContext, (a.b)d.nho);
+    AppMethodBeat.o(169667);
+    return paramContext;
+  }
+  
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
   static final class a
     extends q
     implements d.g.a.a<z>
@@ -187,50 +187,16 @@ public final class n
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/appbrand/widget/dialog/RequestDialogRotationHelper$onPreDrawOnce$1", "Landroid/view/ViewTreeObserver$OnPreDrawListener;", "onPreDraw", "", "luggage-wechat-full-sdk_release"})
-  public static final class b
-    implements ViewTreeObserver.OnPreDrawListener
-  {
-    b(View paramView, d.g.a.a parama) {}
-    
-    public final boolean onPreDraw()
-    {
-      AppMethodBeat.i(169661);
-      ViewTreeObserver localViewTreeObserver = this.iDM.getViewTreeObserver();
-      p.g(localViewTreeObserver, "this@onPreDrawOnce.viewTreeObserver");
-      if (localViewTreeObserver.isAlive()) {
-        this.iDM.getViewTreeObserver().removeOnPreDrawListener((ViewTreeObserver.OnPreDrawListener)this);
-      }
-      this.gFS.invoke();
-      AppMethodBeat.o(169661);
-      return false;
-    }
-  }
-  
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
-  static final class c
-    implements Runnable
-  {
-    c(View paramView) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(169662);
-      this.iDN.requestLayout();
-      AppMethodBeat.o(169662);
-    }
-  }
-  
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "Landroid/util/DisplayMetrics;", "originalMetrics", "<anonymous parameter 1>", "Landroid/content/res/Configuration;", "applyScreenAdaptiveDensity"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "Landroid/util/DisplayMetrics;", "originalMetrics", "<anonymous parameter 1>", "Landroid/content/res/Configuration;", "applyScreenAdaptiveDensity"})
   static final class d
     implements a.b
   {
-    public static final d ncf;
+    public static final d nho;
     
     static
     {
       AppMethodBeat.i(169664);
-      ncf = new d();
+      nho = new d();
       AppMethodBeat.o(169664);
     }
     
@@ -267,7 +233,7 @@ public final class n
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.dialog.n
  * JD-Core Version:    0.7.0.1
  */

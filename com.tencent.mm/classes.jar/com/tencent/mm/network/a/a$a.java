@@ -7,21 +7,21 @@ public final class a$a
   public long beginTime = 0L;
   public String clientIp = "";
   public long count = 0L;
-  public long cpz = 0L;
+  public long cqc = 0L;
   public long endTime = 0L;
   public int errCode = 0;
   public int errType = 0;
   public long expand1 = 0L;
   public long expand2 = 0L;
-  public c iGO;
-  public boolean iGP = false;
-  public long iGQ = 0L;
-  public long iGR = 0L;
-  public int iGS = 0;
-  public int iGT = 0;
-  public long iGU = 0L;
-  public long iGV = 0L;
-  public long iGW = 0L;
+  public c iJH;
+  public boolean iJI = false;
+  public long iJJ = 0L;
+  public long iJK = 0L;
+  public int iJL = 0;
+  public int iJM = 0;
+  public long iJN = 0L;
+  public long iJO = 0L;
+  public long iJP = 0L;
   public long netSignal = 0L;
   public int netType = 0;
   public int retryCount = 0;
@@ -35,12 +35,12 @@ public final class a$a
     long l3 = this.endTime;
     long l4 = this.endTime;
     long l5 = this.beginTime;
-    long l6 = this.cpz;
+    long l6 = this.cqc;
     long l7 = this.count;
-    if (this.iGO == null) {}
-    for (String str = "null";; str = this.iGO.toString())
+    if (this.iJH == null) {}
+    for (String str = "null";; str = this.iJH.toString())
     {
-      str = String.format("rtType:%d begin:%d, end:%d time:%d cost:%d count:%d ipInfo:%s socket:%b netType:%d err:(%d,%d) tx:%d rx:%d", new Object[] { Long.valueOf(l1), Long.valueOf(l2), Long.valueOf(l3), Long.valueOf(l4 - l5), Long.valueOf(l6), Long.valueOf(l7), str, Boolean.valueOf(this.iGP), Integer.valueOf(this.netType), Integer.valueOf(this.errType), Integer.valueOf(this.errCode), Long.valueOf(this.iGQ), Long.valueOf(this.iGR) });
+      str = String.format("rtType:%d begin:%d, end:%d time:%d cost:%d count:%d ipInfo:%s socket:%b netType:%d err:(%d,%d) tx:%d rx:%d", new Object[] { Long.valueOf(l1), Long.valueOf(l2), Long.valueOf(l3), Long.valueOf(l4 - l5), Long.valueOf(l6), Long.valueOf(l7), str, Boolean.valueOf(this.iJI), Integer.valueOf(this.netType), Integer.valueOf(this.errType), Integer.valueOf(this.errCode), Long.valueOf(this.iJJ), Long.valueOf(this.iJK) });
       AppMethodBeat.o(132962);
       return str;
     }

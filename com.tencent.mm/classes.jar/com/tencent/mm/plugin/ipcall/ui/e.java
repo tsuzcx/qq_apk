@@ -9,106 +9,106 @@ import android.widget.ListView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.model.ba;
+import com.tencent.mm.model.bc;
 import com.tencent.mm.plugin.ipcall.model.f.i;
 import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.protocal.protobuf.blc;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.al.a;
+import com.tencent.mm.protocal.protobuf.blu;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.aj;
+import com.tencent.mm.storage.am.a;
 
 public final class e
 {
-  ListView uPM;
-  h uPN;
-  View uPO;
-  IPCallAddressUI uPP;
-  boolean uPQ = false;
-  TextView uPR = null;
-  TextView uPS = null;
-  LinearLayout uPT = null;
-  TextView uPU = null;
-  ImageView uPV = null;
+  View vbA;
+  IPCallAddressUI vbB;
+  boolean vbC = false;
+  TextView vbD = null;
+  TextView vbE = null;
+  LinearLayout vbF = null;
+  TextView vbG = null;
+  ImageView vbH = null;
+  ListView vby;
+  h vbz;
   
   public e(IPCallAddressUI paramIPCallAddressUI, ListView paramListView, View paramView)
   {
-    this.uPM = paramListView;
-    this.uPP = paramIPCallAddressUI;
-    this.uPO = paramView;
+    this.vby = paramListView;
+    this.vbB = paramIPCallAddressUI;
+    this.vbA = paramView;
   }
   
-  public final void dev()
+  public final void dhn()
   {
     AppMethodBeat.i(25658);
-    aq.f(new Runnable()
+    ar.f(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(25654);
-        ba.aBQ();
-        if (((Boolean)com.tencent.mm.model.c.ajl().get(al.a.IsI, Boolean.FALSE)).booleanValue()) {
-          e.this.uPV.setVisibility(0);
+        bc.aCg();
+        if (((Boolean)com.tencent.mm.model.c.ajA().get(am.a.INe, Boolean.FALSE)).booleanValue()) {
+          e.this.vbH.setVisibility(0);
         }
         String str2;
         for (;;)
         {
-          ba.aBQ();
-          String str1 = (String)com.tencent.mm.model.c.ajl().get(al.a.IsK, "");
-          ba.aBQ();
-          str2 = (String)com.tencent.mm.model.c.ajl().get(al.a.IsL, "");
-          if (bt.isNullOrNil(str1)) {
+          bc.aCg();
+          String str1 = (String)com.tencent.mm.model.c.ajA().get(am.a.INg, "");
+          bc.aCg();
+          str2 = (String)com.tencent.mm.model.c.ajA().get(am.a.INh, "");
+          if (bu.isNullOrNil(str1)) {
             break;
           }
-          e.this.uPU.setText(str1);
-          e.this.uPT.setVisibility(0);
+          e.this.vbG.setText(str1);
+          e.this.vbF.setVisibility(0);
           AppMethodBeat.o(25654);
           return;
-          e.this.uPV.setVisibility(8);
+          e.this.vbH.setVisibility(8);
         }
-        if (!bt.isNullOrNil(str2))
+        if (!bu.isNullOrNil(str2))
         {
-          e.this.uPU.setText(str2);
-          e.this.uPT.setVisibility(0);
+          e.this.vbG.setText(str2);
+          e.this.vbF.setVisibility(0);
           AppMethodBeat.o(25654);
           return;
         }
-        e.this.uPU.setText("");
-        e.this.uPT.setVisibility(8);
+        e.this.vbG.setText("");
+        e.this.vbF.setVisibility(8);
         AppMethodBeat.o(25654);
       }
     });
     AppMethodBeat.o(25658);
   }
   
-  public final void dew()
+  public final void dho()
   {
     AppMethodBeat.i(25659);
-    aq.f(new Runnable()
+    ar.f(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(25655);
-        blc localblc = com.tencent.mm.plugin.ipcall.a.c.dfi();
-        if (localblc != null)
+        blu localblu = com.tencent.mm.plugin.ipcall.a.c.dia();
+        if (localblu != null)
         {
-          e.this.uPR.setText(localblc.GFp);
-          if (!bt.isNullOrNil(localblc.GFx))
+          e.this.vbD.setText(localblu.GYR);
+          if (!bu.isNullOrNil(localblu.GYZ))
           {
-            e.this.uPS.setText(localblc.GFx);
-            e.this.uPS.setVisibility(0);
+            e.this.vbE.setText(localblu.GYZ);
+            e.this.vbE.setVisibility(0);
             AppMethodBeat.o(25655);
             return;
           }
-          e.this.uPS.setText("");
-          e.this.uPS.setVisibility(8);
+          e.this.vbE.setText("");
+          e.this.vbE.setVisibility(8);
           AppMethodBeat.o(25655);
           return;
         }
-        e.this.uPR.setText("");
-        e.this.uPS.setText("");
-        e.this.uPS.setVisibility(8);
+        e.this.vbD.setText("");
+        e.this.vbE.setText("");
+        e.this.vbE.setVisibility(8);
         AppMethodBeat.o(25655);
       }
     });

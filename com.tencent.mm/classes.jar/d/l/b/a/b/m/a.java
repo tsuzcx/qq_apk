@@ -9,21 +9,21 @@ import d.v;
 public final class a
   extends n
 {
-  public final aj NBh;
-  public final aj Nhg;
+  public final aj NEl;
+  public final aj NYo;
   
   public a(aj paramaj1, aj paramaj2)
   {
     AppMethodBeat.i(60568);
-    this.Nhg = paramaj1;
-    this.NBh = paramaj2;
+    this.NEl = paramaj1;
+    this.NYo = paramaj2;
     AppMethodBeat.o(60568);
   }
   
-  private a Aq(boolean paramBoolean)
+  private a AD(boolean paramBoolean)
   {
     AppMethodBeat.i(60560);
-    a locala = new a(this.Nhg.Ac(paramBoolean), this.NBh.Ac(paramBoolean));
+    a locala = new a(this.NEl.Ap(paramBoolean), this.NYo.Ap(paramBoolean));
     AppMethodBeat.o(60560);
     return locala;
   }
@@ -32,7 +32,7 @@ public final class a
   {
     AppMethodBeat.i(60557);
     p.h(paramg, "newAnnotations");
-    paramg = new a(this.Nhg.d(paramg), this.NBh);
+    paramg = new a(this.NEl.d(paramg), this.NYo);
     AppMethodBeat.o(60557);
     return paramg;
   }
@@ -41,7 +41,7 @@ public final class a
   {
     AppMethodBeat.i(60564);
     p.h(parami, "kotlinTypeRefiner");
-    Object localObject = parami.aL((ab)this.Nhg);
+    Object localObject = parami.aL((ab)this.NEl);
     if (localObject == null)
     {
       parami = new v("null cannot be cast to non-null type org.jetbrains.kotlin.types.SimpleType");
@@ -49,7 +49,7 @@ public final class a
       throw parami;
     }
     localObject = (aj)localObject;
-    parami = parami.aL((ab)this.NBh);
+    parami = parami.aL((ab)this.NYo);
     if (parami == null)
     {
       parami = new v("null cannot be cast to non-null type org.jetbrains.kotlin.types.SimpleType");
@@ -61,14 +61,14 @@ public final class a
     return parami;
   }
   
-  protected final aj glS()
+  protected final aj gqu()
   {
-    return this.Nhg;
+    return this.NEl;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.m.a
  * JD-Core Version:    0.7.0.1
  */

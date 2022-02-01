@@ -1,9 +1,7 @@
 package com.tencent.mm.plugin.auto;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.ax;
-import com.tencent.mm.plugin.auto.a.b;
-import com.tencent.mm.pluginsdk.b.c;
+import com.tencent.mm.model.az;
 import com.tencent.mm.pluginsdk.b.d;
 import com.tencent.mm.pluginsdk.n;
 
@@ -18,15 +16,15 @@ public class Plugin
     return locala;
   }
   
-  public ax createSubCore()
+  public az createSubCore()
   {
     AppMethodBeat.i(21153);
-    b localb = new b();
+    com.tencent.mm.plugin.auto.a.c localc = new com.tencent.mm.plugin.auto.a.c();
     AppMethodBeat.o(21153);
-    return localb;
+    return localc;
   }
   
-  public c getContactWidgetFactory()
+  public com.tencent.mm.pluginsdk.b.c getContactWidgetFactory()
   {
     return null;
   }

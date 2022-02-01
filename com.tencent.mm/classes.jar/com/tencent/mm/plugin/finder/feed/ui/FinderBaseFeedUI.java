@@ -15,7 +15,7 @@ import com.tencent.mm.plugin.finder.view.e;
 import d.l;
 import java.util.HashMap;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderBaseFeedUI;", "V", "Lcom/tencent/mm/plugin/finder/feed/FinderBaseFeedUIContract$ViewCallback;", "P", "Lcom/tencent/mm/plugin/finder/feed/FinderBaseFeedUIContract$Presenter;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "()V", "getPresenter", "()Lcom/tencent/mm/plugin/finder/feed/FinderBaseFeedUIContract$Presenter;", "getViewCallback", "()Lcom/tencent/mm/plugin/finder/feed/FinderBaseFeedUIContract$ViewCallback;", "initAfterAttach", "", "initOnCreate", "onActivityResult", "requestCode", "", "resultCode", "data", "Landroid/content/Intent;", "onBackPressed", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onPause", "onResume", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderBaseFeedUI;", "V", "Lcom/tencent/mm/plugin/finder/feed/FinderBaseFeedUIContract$ViewCallback;", "P", "Lcom/tencent/mm/plugin/finder/feed/FinderBaseFeedUIContract$Presenter;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "()V", "getPresenter", "()Lcom/tencent/mm/plugin/finder/feed/FinderBaseFeedUIContract$Presenter;", "getViewCallback", "()Lcom/tencent/mm/plugin/finder/feed/FinderBaseFeedUIContract$ViewCallback;", "initAfterAttach", "", "initOnCreate", "onActivityResult", "requestCode", "", "resultCode", "data", "Landroid/content/Intent;", "onBackPressed", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onPause", "onResume", "plugin-finder_release"})
 public abstract class FinderBaseFeedUI<V extends a.b, P extends a.a>
   extends MMFinderUI
 {
@@ -36,23 +36,23 @@ public abstract class FinderBaseFeedUI<V extends a.b, P extends a.a>
     return localView1;
   }
   
-  public void cCb() {}
+  public void cDN() {}
   
-  public abstract P cCc();
+  public abstract P cDO();
   
-  public abstract V cCd();
+  public abstract V cDP();
   
   public abstract void initOnCreate();
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    cCc().cAG().d(paramInt1, paramIntent);
+    cDO().cCs().d(paramInt1, paramIntent);
   }
   
   public void onBackPressed()
   {
-    cCc().onBackPressed();
+    cDO().onBackPressed();
   }
   
   public void onCreate(Bundle paramBundle)
@@ -60,26 +60,26 @@ public abstract class FinderBaseFeedUI<V extends a.b, P extends a.a>
     super.onCreate(paramBundle);
     initOnCreate();
     setBackBtn((MenuItem.OnMenuItemClickListener)new a(this));
-    cCc().a(cCd());
-    cCb();
+    cDO().a(cDP());
+    cDN();
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    cCc().onDetach();
+    cDO().onDetach();
   }
   
   public void onPause()
   {
     super.onPause();
-    cCc().onUIPause();
+    cDO().onUIPause();
   }
   
   public void onResume()
   {
     super.onResume();
-    cCc().onUIResume();
+    cDO().onUIResume();
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -88,7 +88,7 @@ public abstract class FinderBaseFeedUI<V extends a.b, P extends a.a>
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "V", "Lcom/tencent/mm/plugin/finder/feed/FinderBaseFeedUIContract$ViewCallback;", "P", "Lcom/tencent/mm/plugin/finder/feed/FinderBaseFeedUIContract$Presenter;", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "V", "Lcom/tencent/mm/plugin/finder/feed/FinderBaseFeedUIContract$ViewCallback;", "P", "Lcom/tencent/mm/plugin/finder/feed/FinderBaseFeedUIContract$Presenter;", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
   static final class a
     implements MenuItem.OnMenuItemClickListener
   {
@@ -97,7 +97,7 @@ public abstract class FinderBaseFeedUI<V extends a.b, P extends a.a>
     public final boolean onMenuItemClick(MenuItem paramMenuItem)
     {
       AppMethodBeat.i(166127);
-      this.sdr.onBackPressed();
+      this.smi.onBackPressed();
       AppMethodBeat.o(166127);
       return true;
     }
@@ -105,7 +105,7 @@ public abstract class FinderBaseFeedUI<V extends a.b, P extends a.a>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.feed.ui.FinderBaseFeedUI
  * JD-Core Version:    0.7.0.1
  */

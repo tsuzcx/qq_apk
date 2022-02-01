@@ -1,82 +1,76 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import f.a.a.b;
+import java.util.LinkedList;
 
 public final class edg
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public long HfW;
-  public String Username;
+  public LinkedList<cev> Iim;
+  
+  public edg()
+  {
+    AppMethodBeat.i(121107);
+    this.Iim = new LinkedList();
+    AppMethodBeat.o(121107);
+  }
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(32547);
+    AppMethodBeat.i(121108);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.Username == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: Username");
-        AppMethodBeat.o(32547);
-        throw paramVarArgs;
-      }
-      if (this.Username != null) {
-        paramVarArgs.d(1, this.Username);
-      }
-      paramVarArgs.aY(2, this.HfW);
-      AppMethodBeat.o(32547);
+      ((f.a.a.c.a)paramVarArgs[0]).e(1, 8, this.Iim);
+      AppMethodBeat.o(121108);
       return 0;
     }
-    if (paramInt == 1) {
-      if (this.Username == null) {
-        break label318;
-      }
-    }
-    label318:
-    for (paramInt = f.a.a.b.b.a.e(1, this.Username) + 0;; paramInt = 0)
+    if (paramInt == 1)
     {
-      int i = f.a.a.b.b.a.p(2, this.HfW);
-      AppMethodBeat.o(32547);
-      return paramInt + i;
-      if (paramInt == 2)
-      {
-        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
-          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
-          }
-        }
-        if (this.Username == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: Username");
-          AppMethodBeat.o(32547);
-          throw paramVarArgs;
-        }
-        AppMethodBeat.o(32547);
-        return 0;
-      }
-      if (paramInt == 3)
-      {
-        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
-        edg localedg = (edg)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
-        {
-        default: 
-          AppMethodBeat.o(32547);
-          return -1;
-        case 1: 
-          localedg.Username = locala.NPN.readString();
-          AppMethodBeat.o(32547);
-          return 0;
-        }
-        localedg.HfW = locala.NPN.zd();
-        AppMethodBeat.o(32547);
-        return 0;
-      }
-      AppMethodBeat.o(32547);
-      return -1;
+      paramInt = f.a.a.a.c(1, 8, this.Iim);
+      AppMethodBeat.o(121108);
+      return paramInt + 0;
     }
+    if (paramInt == 2)
+    {
+      paramVarArgs = (byte[])paramVarArgs[0];
+      this.Iim.clear();
+      paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.gCg();
+        }
+      }
+      AppMethodBeat.o(121108);
+      return 0;
+    }
+    if (paramInt == 3)
+    {
+      Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
+      edg localedg = (edg)paramVarArgs[1];
+      paramInt = ((Integer)paramVarArgs[2]).intValue();
+      switch (paramInt)
+      {
+      default: 
+        AppMethodBeat.o(121108);
+        return -1;
+      }
+      paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
+      int i = paramVarArgs.size();
+      paramInt = 0;
+      while (paramInt < i)
+      {
+        Object localObject2 = (byte[])paramVarArgs.get(paramInt);
+        localObject1 = new cev();
+        localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
+        for (boolean bool = true; bool; bool = ((cev)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+        localedg.Iim.add(localObject1);
+        paramInt += 1;
+      }
+      AppMethodBeat.o(121108);
+      return 0;
+    }
+    AppMethodBeat.o(121108);
+    return -1;
   }
 }
 

@@ -3,7 +3,7 @@ package com.tencent.mm.storage.emotion;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.e.e;
 import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.storage.ba;
+import com.tencent.mm.storage.bb;
 import java.util.Iterator;
 import java.util.LinkedList;
 
@@ -26,33 +26,33 @@ public final class b
     this.db = parame;
   }
   
-  public final void a(ba paramba)
+  public final void a(bb parambb)
   {
     AppMethodBeat.i(183927);
-    Object localObject = paramba.gjN;
+    Object localObject = parambb.gmg;
     this.db.delete("EmojiDesignerProduct", "designerUin=? ", new String[] { localObject });
-    paramba = paramba.IKR.iterator();
-    while (paramba.hasNext())
+    parambb = parambb.Jfy.iterator();
+    while (parambb.hasNext())
     {
-      localObject = (a)paramba.next();
+      localObject = (a)parambb.next();
       this.db.insert("EmojiDesignerProduct", "", ((a)localObject).convertTo());
     }
     AppMethodBeat.o(183927);
   }
   
   /* Error */
-  public final ba aaX(int paramInt)
+  public final bb abF(int paramInt)
   {
     // Byte code:
     //   0: ldc 111
     //   2: invokestatic 18	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: new 54	com/tencent/mm/storage/ba
+    //   5: new 54	com/tencent/mm/storage/bb
     //   8: dup
-    //   9: invokespecial 112	com/tencent/mm/storage/ba:<init>	()V
+    //   9: invokespecial 112	com/tencent/mm/storage/bb:<init>	()V
     //   12: astore 4
     //   14: aload 4
     //   16: iload_1
-    //   17: putfield 58	com/tencent/mm/storage/ba:gjN	I
+    //   17: putfield 58	com/tencent/mm/storage/bb:gmg	I
     //   20: aload_0
     //   21: getfield 45	com/tencent/mm/storage/emotion/b:db	Lcom/tencent/mm/sdk/e/e;
     //   24: ldc 28
@@ -84,7 +84,7 @@ public final class b
     //   79: aload 5
     //   81: invokevirtual 135	com/tencent/mm/storage/emotion/a:convertFrom	(Landroid/database/Cursor;)V
     //   84: aload 4
-    //   86: getfield 78	com/tencent/mm/storage/ba:IKR	Ljava/util/LinkedList;
+    //   86: getfield 78	com/tencent/mm/storage/bb:Jfy	Ljava/util/LinkedList;
     //   89: aload_2
     //   90: invokevirtual 139	java/util/LinkedList:add	(Ljava/lang/Object;)Z
     //   93: pop
@@ -111,7 +111,7 @@ public final class b
     //   133: ldc 96
     //   135: iconst_0
     //   136: anewarray 146	java/lang/Object
-    //   139: invokestatic 152	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   139: invokestatic 152	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   142: ldc 111
     //   144: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   147: aload 4
@@ -143,7 +143,7 @@ public final class b
     //   186	1	2	localObject2	Object
     //   97	71	3	localThrowable1	java.lang.Throwable
     //   188	1	3	localObject3	Object
-    //   12	136	4	localba	ba
+    //   12	136	4	localbb	bb
     //   53	103	5	localCursor	android.database.Cursor
     //   165	12	5	localThrowable2	java.lang.Throwable
     // Exception table:
@@ -162,7 +162,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.storage.emotion.b
  * JD-Core Version:    0.7.0.1
  */

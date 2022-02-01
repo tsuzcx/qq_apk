@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class nx
   extends b
 {
-  public a dBK;
+  public a dCN;
   
   public nx()
   {
@@ -15,27 +15,22 @@ public final class nx
   
   private nx(byte paramByte)
   {
-    AppMethodBeat.i(126680);
-    this.dBK = new a();
-    this.IbR = false;
+    AppMethodBeat.i(121051);
+    this.dCN = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(126680);
+    AppMethodBeat.o(121051);
   }
   
   public static final class a
   {
-    public long dBL;
-    public boolean dBM = false;
-    public int dsi;
-    public int length;
-    public String mediaId;
-    public int offset;
-    public int retCode;
+    public int dCO;
+    public String dkZ;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.a.nx
  * JD-Core Version:    0.7.0.1
  */

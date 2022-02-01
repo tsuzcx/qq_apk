@@ -7,15 +7,13 @@ import com.tencent.luggage.xweb_ext.extendplugin.a;
 
 public abstract interface c
 {
-  public abstract com.tencent.luggage.xweb_ext.extendplugin.c GL();
+  public abstract com.tencent.luggage.xweb_ext.extendplugin.c GR();
   
   public abstract String a(String paramString, int paramInt, a parama);
   
   public abstract void a(com.tencent.luggage.xweb_ext.extendplugin.a.c paramc);
   
   public abstract void a(com.tencent.luggage.xweb_ext.extendplugin.c paramc);
-  
-  public abstract void o(String paramString, int paramInt);
   
   public abstract void onPluginDestroy(String paramString, int paramInt);
   
@@ -24,6 +22,8 @@ public abstract interface c
   public abstract void onPluginScreenshotTaken(String paramString, int paramInt, Bitmap paramBitmap);
   
   public abstract void onPluginTouch(String paramString, int paramInt, MotionEvent paramMotionEvent);
+  
+  public abstract void p(String paramString, int paramInt);
 }
 
 

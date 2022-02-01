@@ -1,38 +1,38 @@
 package com.tencent.mm.plugin.sns.ui;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.model.ar;
-import com.tencent.mm.plugin.sns.model.ar.b;
+import com.tencent.mm.plugin.sns.model.as;
+import com.tencent.mm.plugin.sns.model.as.b;
 import com.tencent.mm.pluginsdk.ui.c.a;
 
 public final class bd
   implements a
 {
-  public boolean Ahc = false;
-  public boolean Ahd = false;
-  public String drH;
-  public String dzb;
+  public boolean Ayo = false;
+  public boolean Ayp = false;
+  public String dAg;
+  public String dsN;
   public int scene;
   public String userName;
   
   public bd(String paramString1, String paramString2, boolean paramBoolean1, boolean paramBoolean2, int paramInt)
   {
-    this.dzb = paramString1;
-    this.Ahc = paramBoolean1;
-    this.Ahd = paramBoolean2;
+    this.dAg = paramString1;
+    this.Ayo = paramBoolean1;
+    this.Ayp = paramBoolean2;
     this.scene = paramInt;
-    this.drH = paramString2;
+    this.dsN = paramString2;
   }
   
-  public final boolean ect()
+  public final boolean ega()
   {
     int i = 2;
     AppMethodBeat.i(98984);
     if (this.scene == 1) {}
     for (;;)
     {
-      ar.b localb = ar.azc(this.dzb);
-      if ((localb != null) && (localb.hII) && (!localb.aGQ) && ((i & localb.ePo) != 0))
+      as.b localb = as.aAt(this.dAg);
+      if ((localb != null) && (localb.hLB) && (!localb.aGQ) && ((i & localb.eQZ) != 0))
       {
         AppMethodBeat.o(98984);
         return true;

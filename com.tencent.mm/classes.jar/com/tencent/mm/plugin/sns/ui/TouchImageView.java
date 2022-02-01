@@ -12,28 +12,28 @@ import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aq;
 
 public class TouchImageView
   extends ImageView
 {
-  private RectF AqG;
-  private Paint AqH;
+  private RectF AHU;
+  private Paint AHV;
+  aq AfN;
+  Runnable AfO;
   private int a;
   private int b;
   private boolean enable;
   private int g;
   private int r;
-  ap zOG;
-  Runnable zOH;
   
   public TouchImageView(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(99770);
-    this.AqG = new RectF();
-    this.AqH = new Paint();
+    this.AHU = new RectF();
+    this.AHV = new Paint();
     this.a = 90;
     this.r = 0;
     this.g = 0;
@@ -47,8 +47,8 @@ public class TouchImageView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(99771);
-    this.AqG = new RectF();
-    this.AqH = new Paint();
+    this.AHU = new RectF();
+    this.AHV = new Paint();
     this.a = 90;
     this.r = 0;
     this.g = 0;
@@ -61,8 +61,8 @@ public class TouchImageView
   private void init()
   {
     AppMethodBeat.i(99772);
-    this.zOG = new ap();
-    this.zOH = new Runnable()
+    this.AfN = new aq();
+    this.AfO = new Runnable()
     {
       public final void run()
       {
@@ -80,7 +80,7 @@ public class TouchImageView
         Object localObject = new b();
         ((b)localObject).bd(paramAnonymousView);
         ((b)localObject).bd(paramAnonymousMotionEvent);
-        a.b("com/tencent/mm/plugin/sns/ui/TouchImageView$2", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, ((b)localObject).ahq());
+        a.b("com/tencent/mm/plugin/sns/ui/TouchImageView$2", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, ((b)localObject).ahF());
         if (!TouchImageView.a(TouchImageView.this))
         {
           a.a(false, this, "com/tencent/mm/plugin/sns/ui/TouchImageView$2", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
@@ -103,9 +103,9 @@ public class TouchImageView
           return bool;
           paramAnonymousView.setPressed(true);
           paramAnonymousView.invalidate();
-          ((TouchImageView)localObject).zOG.removeCallbacks(((TouchImageView)localObject).zOH);
+          ((TouchImageView)localObject).AfN.removeCallbacks(((TouchImageView)localObject).AfO);
           break;
-          ((TouchImageView)localObject).zOG.post(((TouchImageView)localObject).zOH);
+          ((TouchImageView)localObject).AfN.post(((TouchImageView)localObject).AfO);
           break;
         }
       }
@@ -117,7 +117,7 @@ public class TouchImageView
   {
     AppMethodBeat.i(99775);
     super.onAttachedToWindow();
-    ad.d("MicroMsg.MaskImageView", "onAttachedToWindow");
+    ae.d("MicroMsg.MaskImageView", "onAttachedToWindow");
     AppMethodBeat.o(99775);
   }
   
@@ -125,7 +125,7 @@ public class TouchImageView
   {
     AppMethodBeat.i(99776);
     super.onDetachedFromWindow();
-    ad.d("MicroMsg.MaskImageView", "onDetachedFromWindow");
+    ae.d("MicroMsg.MaskImageView", "onDetachedFromWindow");
     AppMethodBeat.o(99776);
   }
   
@@ -135,12 +135,12 @@ public class TouchImageView
     super.onDraw(paramCanvas);
     if (isPressed())
     {
-      this.AqG.left = getPaddingLeft();
-      this.AqG.top = getPaddingTop();
-      this.AqG.right = (getWidth() - getPaddingRight());
-      this.AqG.bottom = (getHeight() - getPaddingBottom());
-      this.AqH.setARGB(this.a, this.r, this.g, this.b);
-      paramCanvas.drawRoundRect(this.AqG, getWidth() / 10, getHeight() / 10, this.AqH);
+      this.AHU.left = getPaddingLeft();
+      this.AHU.top = getPaddingTop();
+      this.AHU.right = (getWidth() - getPaddingRight());
+      this.AHU.bottom = (getHeight() - getPaddingBottom());
+      this.AHV.setARGB(this.a, this.r, this.g, this.b);
+      paramCanvas.drawRoundRect(this.AHU, getWidth() / 10, getHeight() / 10, this.AHV);
     }
     AppMethodBeat.o(99773);
   }

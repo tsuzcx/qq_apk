@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/js" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="56.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.plugin.card.ui.v2.CardCdnImageView android:id="@id/at0" android:background="@color/a7c" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginLeft="@dimen/c5" />
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginLeft="@dimen/c5" android:src="@raw/icons_filled_add" app:iconColor="@color/FG_1" />
     <TextView android:textSize="17.0dip" android:textColor="@color/y4" android:id="@id/at1" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ci" android:text="{invo}" android:layout_weight="1.0" />
     <TextView android:textSize="14.0dip" android:textColor="@color/FG_2" android:id="@id/asz" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="{invo}" />
     <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="12.0dip" android:layout_height="24.0dip" android:layout_marginLeft="10.0dip" android:layout_marginRight="16.0dip" android:src="@raw/icons_outlined_arrow" app:iconColor="@color/FG_2" />

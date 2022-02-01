@@ -12,38 +12,38 @@ import java.util.Map;
 public abstract class e
   implements a, Serializable
 {
-  public static final Object MLB = ;
-  protected final Object MLA;
-  private transient a MLz;
+  public static final Object NiE = ;
+  private transient a NiC;
+  protected final Object NiD;
   
   public e()
   {
-    this(MLB);
+    this(NiE);
   }
   
   protected e(Object paramObject)
   {
-    this.MLA = paramObject;
+    this.NiD = paramObject;
   }
   
-  public String Hu()
+  public String HC()
   {
     throw new AbstractMethodError();
   }
   
-  public d Hv()
+  public d HD()
   {
     throw new AbstractMethodError();
   }
   
-  public final Object af(Object... paramVarArgs)
+  public final Object ae(Object... paramVarArgs)
   {
-    return gfR().af(paramVarArgs);
+    return gkt().ae(paramVarArgs);
   }
   
-  public final Object cf(Map paramMap)
+  public final Object ck(Map paramMap)
   {
-    return gfR().cf(paramMap);
+    return gkt().ck(paramMap);
   }
   
   public String getName()
@@ -53,31 +53,31 @@ public abstract class e
   
   public final List<j> getParameters()
   {
-    return gfR().getParameters();
+    return gkt().getParameters();
   }
   
-  protected abstract a gfO();
+  protected abstract a gkq();
   
-  public final Object gfP()
+  public final Object gkr()
   {
-    return this.MLA;
+    return this.NiD;
   }
   
-  public final a gfQ()
+  public final a gks()
   {
-    a locala2 = this.MLz;
+    a locala2 = this.NiC;
     a locala1 = locala2;
     if (locala2 == null)
     {
-      locala1 = gfO();
-      this.MLz = locala1;
+      locala1 = gkq();
+      this.NiC = locala1;
     }
     return locala1;
   }
   
-  protected a gfR()
+  protected a gkt()
   {
-    a locala = gfQ();
+    a locala = gks();
     if (locala == this) {
       throw new b();
     }
@@ -87,18 +87,18 @@ public abstract class e
   static final class a
     implements Serializable
   {
-    private static final a MLC;
+    private static final a NiF;
     
     static
     {
       AppMethodBeat.i(128955);
-      MLC = new a();
+      NiF = new a();
       AppMethodBeat.o(128955);
     }
     
     private Object readResolve()
     {
-      return MLC;
+      return NiF;
     }
   }
 }

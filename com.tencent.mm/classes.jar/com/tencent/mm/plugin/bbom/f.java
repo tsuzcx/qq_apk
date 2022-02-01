@@ -5,16 +5,16 @@ import com.tencent.mm.kernel.a.b.a;
 import com.tencent.mm.kernel.a.b.a.a;
 import com.tencent.mm.kernel.a.b.b;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.t;
+import com.tencent.mm.model.u;
 import com.tencent.mm.plugin.fts.a.n;
 
 public final class f
-  extends t
+  extends u
   implements b
 {
   public f()
   {
-    super(com.tencent.mm.bs.c.aNR("search"));
+    super(com.tencent.mm.br.c.aPo("search"));
     AppMethodBeat.i(22355);
     AppMethodBeat.o(22355);
   }

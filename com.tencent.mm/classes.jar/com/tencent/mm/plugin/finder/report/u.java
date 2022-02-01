@@ -1,195 +1,146 @@
 package com.tencent.mm.plugin.finder.report;
 
+import com.tencent.e.h;
+import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.x;
-import com.tencent.mm.g.a.fl;
-import com.tencent.mm.g.a.hp;
-import com.tencent.mm.g.a.td;
-import com.tencent.mm.g.a.td.a;
-import com.tencent.mm.g.b.a.cq;
-import com.tencent.mm.g.b.a.ei;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.finder.PluginFinder;
-import com.tencent.mm.plugin.finder.extension.reddot.i;
-import com.tencent.mm.plugin.report.a.1;
-import com.tencent.mm.pointers.PBool;
-import com.tencent.mm.pointers.PString;
-import com.tencent.mm.protocal.d;
-import com.tencent.mm.protocal.protobuf.aqu;
-import com.tencent.mm.protocal.protobuf.ase;
-import com.tencent.mm.protocal.protobuf.crf;
-import com.tencent.mm.protocal.protobuf.crg;
-import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
-import java.util.HashSet;
+import com.tencent.mm.plugin.gallery.a.c;
+import com.tencent.mm.plugin.report.service.g;
+import com.tencent.mm.plugin.sight.base.a;
+import d.g.b.p;
+import d.l;
+import java.util.ArrayList;
+import java.util.Iterator;
 
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/report/IDKey1371;", "", "()V", "CAPTURE_PHOTO", "", "CAPTURE_PHOTO_BACK", "CAPTURE_PHOTO_FRONT", "CAPTURE_PHOTO_WITH_BEAUTY", "ID", "SINGLE_VIDEO_BACK", "SINGLE_VIDEO_BEAUTY", "SINGLE_VIDEO_FRONT", "SINGLE_VIDEO_LENGTH_0_5", "SINGLE_VIDEO_LENGTH_10_15", "SINGLE_VIDEO_LENGTH_15_20", "SINGLE_VIDEO_LENGTH_20_30", "SINGLE_VIDEO_LENGTH_30_40", "SINGLE_VIDEO_LENGTH_40_50", "SINGLE_VIDEO_LENGTH_50_60", "SINGLE_VIDEO_LENGTH_5_10", "SINGLE_VIDEO_LENGTH_TOTAL", "SINGLE_VIDEO_NOT_ENOUGH", "SINGLE_VIDEO_SUCCESS", "SINGLE_VIDEO_TIME", "SUBVIDEO_AUTO_FINISH", "SUBVIDEO_CLICK_FINISH", "SUBVIDEO_NUM_0_3", "SUBVIDEO_NUM_10_15", "SUBVIDEO_NUM_15_20", "SUBVIDEO_NUM_3_6", "SUBVIDEO_NUM_6_10", "SUBVIDEO_PREPARE_DELETE", "SUBVIDEO_PRERARE_EXIT", "SUBVIDEO_SINGLE_LENGTH_0_5", "SUBVIDEO_SINGLE_LENGTH_10_15", "SUBVIDEO_SINGLE_LENGTH_15_20", "SUBVIDEO_SINGLE_LENGTH_20_30", "SUBVIDEO_SINGLE_LENGTH_30_40", "SUBVIDEO_SINGLE_LENGTH_40_50", "SUBVIDEO_SINGLE_LENGTH_50_60", "SUBVIDEO_SINGLE_LENGTH_5_10", "SUBVIDEO_SURE_DELETE", "SUBVIDEO_SURE_EXIT", "SUBVIDEO_TIME", "SUBVIDEO_TIME_NOT_ENOUGH", "SUBVIDEO_TIME_SUCCESS", "SUBVIDEO_TIME_TOTAL_DURATION", "SUBVIDEO_TOTAL_LENGTH_0_5", "SUBVIDEO_TOTAL_LENGTH_10_15", "SUBVIDEO_TOTAL_LENGTH_15_20", "SUBVIDEO_TOTAL_LENGTH_20_30", "SUBVIDEO_TOTAL_LENGTH_30_40", "SUBVIDEO_TOTAL_LENGTH_40_50", "SUBVIDEO_TOTAL_LENGTH_50_60", "SUBVIDEO_TOTAL_LENGTH_5_10", "SUBVIDEO_TOTAL_NUM", "capturePhoto", "", "capturePhotoBack", "capturePhotoCamera", "isBack", "", "capturePhotoFront", "capturePhotoWithBeauty", "captureSingleVideo", "captureSingleVideoBack", "captureSingleVideoBeauty", "captureSingleVideoCamera", "captureSingleVideoDuration", "durationMs", "captureSingleVideoFront", "captureSingleVideoNotEnough", "captureSingleVideoSuccess", "captureSingleVideoTotal", "report", "key", "value", "subVideoAutoFinish", "subVideoClickFinish", "subVideoDuration", "fileList", "Ljava/util/ArrayList;", "", "Lkotlin/collections/ArrayList;", "subVideoNotEnough", "subVideoNum", "num", "subVideoPrepareDelete", "subVideoPrepareExit", "subVideoSingleTime", "subVideoSuccess", "subVideoSureDelete", "subVideoSureExit", "subVideoTime", "subVideoTotalTime", "plugin-finder_release"})
 public final class u
 {
-  private static u ssp;
-  private c<td> kwW;
-  boolean ssd;
-  boolean sse;
-  boolean ssf;
-  HashSet<String> ssg;
-  HashSet<String> ssh;
-  HashSet<String> ssi;
-  boolean ssj;
-  String ssk;
-  String ssl;
-  String ssm;
-  String ssn;
-  String sso;
-  private c<fl> ssq;
+  public static final u sCl;
   
-  private u()
+  static
   {
-    AppMethodBeat.i(200916);
-    this.ssd = false;
-    this.sse = false;
-    this.ssf = false;
-    this.ssg = null;
-    this.ssh = null;
-    this.ssi = null;
-    this.ssj = false;
-    this.kwW = new c() {};
-    this.ssq = new c() {};
-    this.sso = "";
-    this.ssn = "";
-    this.ssg = new HashSet();
-    this.ssh = new HashSet();
-    this.ssi = new HashSet();
-    AppMethodBeat.o(200916);
+    AppMethodBeat.i(203945);
+    sCl = new u();
+    AppMethodBeat.o(203945);
   }
   
-  private static HashSet<String> a(com.tencent.mm.plugin.expt.b.b.a parama, PBool paramPBool, PString paramPString)
+  public static void L(long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(200923);
-    String str = ((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(parama, "");
-    ad.i("MicroMsg.MMSessionReporter", "reset control key[%s] [%s]", new Object[] { parama.name(), str });
-    paramPString.value = str;
-    if (bt.isNullOrNil(str))
+    AppMethodBeat.i(203943);
+    g.yxI.idkeyStat(1371L, paramLong1, paramLong2, false);
+    AppMethodBeat.o(203943);
+  }
+  
+  public static void V(ArrayList<String> paramArrayList)
+  {
+    AppMethodBeat.i(203942);
+    p.h(paramArrayList, "fileList");
+    h.MqF.aO((Runnable)new a(paramArrayList));
+    AppMethodBeat.o(203942);
+  }
+  
+  public static void lZ(boolean paramBoolean)
+  {
+    AppMethodBeat.i(203939);
+    if (paramBoolean)
     {
-      paramPBool.value = false;
-      AppMethodBeat.o(200923);
-      return null;
+      L(202L, 1L);
+      AppMethodBeat.o(203939);
+      return;
     }
-    if ("-1".equalsIgnoreCase(str))
+    L(201L, 1L);
+    AppMethodBeat.o(203939);
+  }
+  
+  public static void ma(boolean paramBoolean)
+  {
+    AppMethodBeat.i(203940);
+    if (paramBoolean)
     {
-      paramPBool.value = true;
-      AppMethodBeat.o(200923);
-      return null;
+      L(214L, 1L);
+      AppMethodBeat.o(203940);
+      return;
     }
-    parama = new HashSet();
-    paramPString = str.split(",");
-    if ((paramPString != null) && (paramPString.length > 0))
+    L(213L, 1L);
+    AppMethodBeat.o(203940);
+  }
+  
+  public static void wX(long paramLong)
+  {
+    AppMethodBeat.i(203941);
+    L(218L, paramLong);
+    if (paramLong < 5000L)
     {
-      int j = paramPString.length;
-      int i = 0;
-      while (i < j)
+      L(220L, 1L);
+      AppMethodBeat.o(203941);
+      return;
+    }
+    if (paramLong < 10000L)
+    {
+      L(221L, 1L);
+      AppMethodBeat.o(203941);
+      return;
+    }
+    if (paramLong < 15000L)
+    {
+      L(222L, 1L);
+      AppMethodBeat.o(203941);
+      return;
+    }
+    if (paramLong < 20000L)
+    {
+      L(223L, 1L);
+      AppMethodBeat.o(203941);
+      return;
+    }
+    if (paramLong < 30000L)
+    {
+      L(224L, 1L);
+      AppMethodBeat.o(203941);
+      return;
+    }
+    if (paramLong < 40000L)
+    {
+      L(225L, 1L);
+      AppMethodBeat.o(203941);
+      return;
+    }
+    if (paramLong < 50000L)
+    {
+      L(226L, 1L);
+      AppMethodBeat.o(203941);
+      return;
+    }
+    L(227L, 1L);
+    AppMethodBeat.o(203941);
+  }
+  
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
+  static final class a
+    implements Runnable
+  {
+    a(ArrayList paramArrayList) {}
+    
+    public final void run()
+    {
+      AppMethodBeat.i(203938);
+      long l1 = 0L;
+      Object localObject1 = ((Iterable)this.sCm).iterator();
+      while (((Iterator)localObject1).hasNext())
       {
-        parama.add(paramPString[i]);
-        i += 1;
+        Object localObject2 = (String)((Iterator)localObject1).next();
+        Object localObject3 = c.ubl;
+        localObject2 = c.ajS((String)localObject2);
+        long l2 = ((a)localObject2).videoDuration;
+        localObject3 = u.sCl;
+        u.wZ(((a)localObject2).videoDuration);
+        l1 = l2 + l1;
       }
+      localObject1 = u.sCl;
+      u.xa(l1);
+      localObject1 = u.sCl;
+      u.xb(this.sCm.size());
+      AppMethodBeat.o(203938);
     }
-    paramPBool.value = false;
-    AppMethodBeat.o(200923);
-    return parama;
-  }
-  
-  public static u cEv()
-  {
-    AppMethodBeat.i(200915);
-    if (ssp == null) {
-      ssp = new u();
-    }
-    u localu = ssp;
-    AppMethodBeat.o(200915);
-    return localu;
-  }
-  
-  private void cEx()
-  {
-    AppMethodBeat.i(200920);
-    this.ssd = false;
-    this.ssg.clear();
-    PBool localPBool = new PBool();
-    PString localPString = new PString();
-    HashSet localHashSet = a(com.tencent.mm.plugin.expt.b.b.a.qHX, localPBool, localPString);
-    this.ssd = localPBool.value;
-    this.ssk = localPString.value;
-    if (localHashSet != null) {
-      this.ssg.addAll(localHashSet);
-    }
-    AppMethodBeat.o(200920);
-  }
-  
-  private void cEy()
-  {
-    AppMethodBeat.i(200921);
-    this.sse = false;
-    this.ssh.clear();
-    PBool localPBool = new PBool();
-    PString localPString = new PString();
-    HashSet localHashSet = a(com.tencent.mm.plugin.expt.b.b.a.qHY, localPBool, localPString);
-    this.sse = localPBool.value;
-    this.ssl = localPString.value;
-    if (localHashSet != null) {
-      this.ssh.addAll(localHashSet);
-    }
-    AppMethodBeat.o(200921);
-  }
-  
-  private void cEz()
-  {
-    AppMethodBeat.i(200922);
-    this.ssf = false;
-    this.ssi.clear();
-    PBool localPBool = new PBool();
-    PString localPString = new PString();
-    HashSet localHashSet = a(com.tencent.mm.plugin.expt.b.b.a.qIa, localPBool, localPString);
-    this.ssf = localPBool.value;
-    this.ssm = localPString.value;
-    if (localHashSet != null) {
-      this.ssi.addAll(localHashSet);
-    }
-    AppMethodBeat.o(200922);
-  }
-  
-  public final void Cx()
-  {
-    AppMethodBeat.i(200917);
-    if (aj.cmR())
-    {
-      cEw();
-      com.tencent.mm.sdk.b.a.IbL.b(this.kwW);
-      com.tencent.mm.sdk.b.a.IbL.b(this.ssq);
-    }
-    AppMethodBeat.o(200917);
-  }
-  
-  final void cEw()
-  {
-    AppMethodBeat.i(200919);
-    cEx();
-    cEy();
-    cEz();
-    this.ssj = ((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(com.tencent.mm.plugin.expt.b.b.a.qHZ, false);
-    AppMethodBeat.o(200919);
-  }
-  
-  public final void unregister()
-  {
-    AppMethodBeat.i(200918);
-    if (aj.cmR())
-    {
-      com.tencent.mm.sdk.b.a.IbL.d(this.kwW);
-      com.tencent.mm.sdk.b.a.IbL.d(this.ssq);
-    }
-    AppMethodBeat.o(200918);
   }
 }
 

@@ -7,19 +7,19 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public final class h
 {
-  private static ConcurrentHashMap<String, g> cpF;
+  private static ConcurrentHashMap<String, g> cqi;
   
   static
   {
     AppMethodBeat.i(183313);
-    cpF = new ConcurrentHashMap();
+    cqi = new ConcurrentHashMap();
     AppMethodBeat.o(183313);
   }
   
   public static void release()
   {
     AppMethodBeat.i(183312);
-    Iterator localIterator = cpF.values().iterator();
+    Iterator localIterator = cqi.values().iterator();
     while (localIterator.hasNext()) {
       ((g)localIterator.next()).onShutdown();
     }

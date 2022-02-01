@@ -17,25 +17,25 @@ public final class v
 {
   private static final int VIEW_ID = 2131296761;
   EditText mEditText;
-  private boolean nfc;
-  private a nfd;
-  private AppBrandNumberKeyboardView nfe;
+  private boolean nkk;
+  private a nkl;
+  private AppBrandNumberKeyboardView nkm;
   
   private v(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(136479);
-    this.nfc = false;
+    this.nkk = false;
     super.setId(VIEW_ID);
     setOrientation(1);
     setBackgroundColor(-1);
-    paramContext = new ViewGroup.LayoutParams(-1, com.tencent.mm.cc.a.fromDPToPix(getContext(), 30));
+    paramContext = new ViewGroup.LayoutParams(-1, com.tencent.mm.cb.a.fromDPToPix(getContext(), 30));
     Object localObject = LayoutInflater.from(getContext()).inflate(2131493095, null);
     ((View)localObject).setOnClickListener(new v.1(this));
     addView((View)localObject, paramContext);
-    paramContext = new ViewGroup.LayoutParams(-1, com.tencent.mm.cc.a.fromDPToPix(getContext(), 240));
+    paramContext = new ViewGroup.LayoutParams(-1, com.tencent.mm.cb.a.fromDPToPix(getContext(), 240));
     localObject = new AppBrandNumberKeyboardView(getContext());
-    this.nfe = ((AppBrandNumberKeyboardView)localObject);
+    this.nkm = ((AppBrandNumberKeyboardView)localObject);
     addView((View)localObject, paramContext);
     AppMethodBeat.o(136479);
   }
@@ -71,16 +71,16 @@ public final class v
   private void onDone()
   {
     AppMethodBeat.i(136481);
-    if ((!this.nfc) && (this.nfd != null))
+    if ((!this.nkk) && (this.nkl != null))
     {
-      this.nfc = true;
-      this.nfd.onDone();
-      this.nfc = false;
+      this.nkk = true;
+      this.nkl.onDone();
+      this.nkk = false;
     }
     AppMethodBeat.o(136481);
   }
   
-  public final boolean bEw()
+  public final boolean bFo()
   {
     AppMethodBeat.i(136480);
     boolean bool = t.ay(this);
@@ -88,15 +88,15 @@ public final class v
     return bool;
   }
   
-  final void bEx()
+  final void bFp()
   {
     AppMethodBeat.i(136486);
     if (this.mEditText != null)
     {
       this.mEditText.clearFocus();
       this.mEditText = null;
-      this.nfd = null;
-      this.nfc = false;
+      this.nkl = null;
+      this.nkk = false;
     }
     AppMethodBeat.o(136486);
   }
@@ -109,7 +109,7 @@ public final class v
   public final int getPanelHeight()
   {
     AppMethodBeat.i(136483);
-    int i = com.tencent.mm.cc.a.fromDPToPix(getContext(), 270);
+    int i = com.tencent.mm.cb.a.fromDPToPix(getContext(), 270);
     AppMethodBeat.o(136483);
     return i;
   }
@@ -138,13 +138,13 @@ public final class v
   {
     AppMethodBeat.i(136484);
     this.mEditText = param_Input;
-    AppBrandNumberKeyboardView localAppBrandNumberKeyboardView = this.nfe;
+    AppBrandNumberKeyboardView localAppBrandNumberKeyboardView = this.nkm;
     com.tencent.mm.plugin.appbrand.widget.input.numberpad.a locala = (com.tencent.mm.plugin.appbrand.widget.input.numberpad.a)param_Input;
-    if (localAppBrandNumberKeyboardView.nfj != locala)
+    if (localAppBrandNumberKeyboardView.nkr != locala)
     {
       if (locala == null)
       {
-        localAppBrandNumberKeyboardView.nfi = null;
+        localAppBrandNumberKeyboardView.nkq = null;
         AppMethodBeat.o(136484);
         return;
       }
@@ -174,7 +174,7 @@ public final class v
       if ((locala instanceof View)) {
         ((View)locala).requestFocus();
       }
-      localAppBrandNumberKeyboardView.nfi = locala.bEv();
+      localAppBrandNumberKeyboardView.nkq = locala.bFn();
       AppMethodBeat.o(136484);
       return;
       if ((param_Input instanceof ContextWrapper))
@@ -191,7 +191,7 @@ public final class v
   
   public final void setOnDoneListener(a parama)
   {
-    this.nfd = parama;
+    this.nkl = parama;
   }
   
   public final void setVisibility(int paramInt)
@@ -216,7 +216,7 @@ public final class v
   public final void setXMode(int paramInt)
   {
     AppMethodBeat.i(136485);
-    this.nfe.setXMode(paramInt);
+    this.nkm.setXMode(paramInt);
     AppMethodBeat.o(136485);
   }
   

@@ -12,17 +12,17 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class l
   extends RecyclerView.w
 {
-  public TextView iUW;
-  public LinearLayout oSy;
-  public ProgressBar oSz;
+  public TextView iXP;
+  public LinearLayout oZa;
+  public ProgressBar oZb;
   
   private l(View paramView)
   {
     super(paramView);
     AppMethodBeat.i(123297);
-    this.oSy = ((LinearLayout)paramView.findViewById(2131298738));
-    this.iUW = ((TextView)paramView.findViewById(2131298933));
-    this.oSz = ((ProgressBar)paramView.findViewById(2131303528));
+    this.oZa = ((LinearLayout)paramView.findViewById(2131298738));
+    this.iXP = ((TextView)paramView.findViewById(2131298933));
+    this.oZb = ((ProgressBar)paramView.findViewById(2131303528));
     AppMethodBeat.o(123297);
   }
   

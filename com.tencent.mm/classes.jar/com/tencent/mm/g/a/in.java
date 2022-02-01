@@ -6,8 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class in
   extends b
 {
-  public a dva;
-  public b dvb;
+  public a dwd;
   
   public in()
   {
@@ -16,31 +15,25 @@ public final class in
   
   private in(byte paramByte)
   {
-    AppMethodBeat.i(91206);
-    this.dva = new a();
-    this.dvb = new b();
-    this.IbR = false;
+    AppMethodBeat.i(149861);
+    this.dwd = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(91206);
+    AppMethodBeat.o(149861);
   }
   
   public static final class a
   {
-    public boolean dvc = false;
-    public int dvd = 0;
-    public String dve;
-  }
-  
-  public static final class b
-  {
-    public boolean dpX = false;
-    public String dvf;
-    public String dvg;
+    public String appId;
+    public String dox;
+    public int dwe;
+    public int opType;
+    public String openId;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.a.in
  * JD-Core Version:    0.7.0.1
  */

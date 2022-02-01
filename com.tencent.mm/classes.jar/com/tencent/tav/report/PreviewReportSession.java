@@ -23,29 +23,29 @@ public final class PreviewReportSession
   
   public final void flush()
   {
-    AppMethodBeat.i(218727);
+    AppMethodBeat.i(215367);
     if (this.beginTimeMs == 0L)
     {
-      AppMethodBeat.o(218727);
+      AppMethodBeat.o(215367);
       return;
     }
     if (this.frameCount >= 10) {
       commit();
     }
     reset();
-    AppMethodBeat.o(218727);
+    AppMethodBeat.o(215367);
   }
   
   public final void tickPreview(long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(218728);
+    AppMethodBeat.i(215368);
     if (this.beginTimeMs == 0L) {
       this.beginTimeMs = (System.currentTimeMillis() - paramLong1 / 1000L / 1000L);
     }
     this.frameCount += 1;
     this.totalReadCostUs += paramLong1 / 1000L;
     this.totalRenderCount += paramLong2 / 1000L;
-    AppMethodBeat.o(218728);
+    AppMethodBeat.o(215368);
   }
 }
 

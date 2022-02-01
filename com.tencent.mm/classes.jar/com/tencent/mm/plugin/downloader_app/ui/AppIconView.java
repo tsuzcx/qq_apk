@@ -19,16 +19,16 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class AppIconView
   extends AppCompatImageView
 {
-  private static final PorterDuffXfermode ppV;
+  private static final PorterDuffXfermode pwB;
   private Bitmap bitmap;
   private RectF hM;
-  private Bitmap ppU;
+  private Bitmap pwA;
   private Rect rect;
   
   static
   {
     AppMethodBeat.i(8969);
-    ppV = new PorterDuffXfermode(PorterDuff.Mode.SRC_IN);
+    pwB = new PorterDuffXfermode(PorterDuff.Mode.SRC_IN);
     AppMethodBeat.o(8969);
   }
   
@@ -49,7 +49,7 @@ public class AppIconView
     if (this.hM == null) {
       this.hM = new RectF(this.rect);
     }
-    if ((this.bitmap != null) && (this.ppU != null)) {
+    if ((this.bitmap != null) && (this.pwA != null)) {
       if (Build.VERSION.SDK_INT < 21) {
         break label209;
       }
@@ -57,8 +57,8 @@ public class AppIconView
     label209:
     for (int i = paramCanvas.saveLayer(0.0F, 0.0F, getWidth(), getHeight(), null);; i = paramCanvas.saveLayer(0.0F, 0.0F, getWidth(), getHeight(), null, 31))
     {
-      paramCanvas.drawBitmap(this.ppU, this.rect, this.rect, localPaint);
-      localPaint.setXfermode(ppV);
+      paramCanvas.drawBitmap(this.pwA, this.rect, this.rect, localPaint);
+      localPaint.setXfermode(pwB);
       paramCanvas.drawBitmap(this.bitmap, null, this.rect, localPaint);
       paramCanvas.restoreToCount(i);
       localPaint.setXfermode(null);
@@ -81,7 +81,7 @@ public class AppIconView
     Paint localPaint = new Paint(1);
     localPaint.setColor(getResources().getColor(2131099974));
     localCanvas.drawRoundRect(this.hM, 32.0F, 32.0F, localPaint);
-    this.ppU = localBitmap;
+    this.pwA = localBitmap;
     AppMethodBeat.o(8967);
   }
   

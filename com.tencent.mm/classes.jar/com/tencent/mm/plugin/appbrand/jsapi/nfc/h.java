@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.appbrand.jsapi.nfc;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.HashMap;
 import java.util.Map;
 import org.json.JSONObject;
@@ -16,7 +16,7 @@ public final class h
   static void a(c paramc, int paramInt, String paramString)
   {
     AppMethodBeat.i(136120);
-    ad.i("MicroMsg.JsApiNFCStartHCE", "alvinluo stopHCE callback result: %s", new Object[] { paramString });
+    ae.i("MicroMsg.JsApiNFCStartHCE", "alvinluo stopHCE callback result: %s", new Object[] { paramString });
     if (paramc != null) {
       paramc.h(paramInt, paramString);
     }
@@ -38,15 +38,15 @@ public final class h
           paramAnonymousString = h.this;
           localObject = paramc;
           paramAnonymousInt = paramInt;
-          HCEEventLogic.Ql(((c)localObject).getAppId());
+          HCEEventLogic.QU(((c)localObject).getAppId());
           HCEEventLogic.a(((c)localObject).getAppId(), 13, null);
           HashMap localHashMap = new HashMap(2);
           localHashMap.put("errCode", Integer.valueOf(0));
-          h.a((c)localObject, paramAnonymousInt, paramAnonymousString.m("ok", localHashMap));
+          h.a((c)localObject, paramAnonymousInt, paramAnonymousString.n("ok", localHashMap));
           AppMethodBeat.o(136118);
           return;
         }
-        h.a(paramc, paramInt, h.this.m("fail: ".concat(String.valueOf(paramAnonymousString)), (Map)localObject));
+        h.a(paramc, paramInt, h.this.n("fail: ".concat(String.valueOf(paramAnonymousString)), (Map)localObject));
         AppMethodBeat.o(136118);
       }
     });
@@ -55,7 +55,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.nfc.h
  * JD-Core Version:    0.7.0.1
  */

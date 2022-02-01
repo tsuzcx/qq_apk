@@ -1,8 +1,8 @@
 package com.tencent.mm.plugin.appbrand.dynamic.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ab.b.b.a;
-import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.aa.b.b.a;
+import com.tencent.mm.sdk.platformtools.az;
 import java.util.HashMap;
 import java.util.Map;
 import org.json.JSONObject;
@@ -15,12 +15,12 @@ public final class c
     super("getNetworkType", paramInt);
   }
   
-  public final void a(com.tencent.mm.ab.c.a parama, JSONObject paramJSONObject, b.a<JSONObject> parama1)
+  public final void a(com.tencent.mm.aa.c.a parama, JSONObject paramJSONObject, b.a<JSONObject> parama1)
   {
     AppMethodBeat.i(121309);
     parama = parama.getContext();
     paramJSONObject = new HashMap();
-    if (!ay.isConnected(parama)) {
+    if (!az.isConnected(parama)) {
       paramJSONObject.put("networkType", "none");
     }
     for (;;)
@@ -28,13 +28,13 @@ public final class c
       parama1.bk(a(true, "", paramJSONObject));
       AppMethodBeat.o(121309);
       return;
-      if (ay.is2G(parama)) {
+      if (az.is2G(parama)) {
         paramJSONObject.put("networkType", "2g");
-      } else if (ay.is3G(parama)) {
+      } else if (az.is3G(parama)) {
         paramJSONObject.put("networkType", "3g");
-      } else if (ay.is4G(parama)) {
+      } else if (az.is4G(parama)) {
         paramJSONObject.put("networkType", "4g");
-      } else if (ay.isWifi(parama)) {
+      } else if (az.isWifi(parama)) {
         paramJSONObject.put("networkType", "wifi");
       } else {
         paramJSONObject.put("networkType", "unknown");

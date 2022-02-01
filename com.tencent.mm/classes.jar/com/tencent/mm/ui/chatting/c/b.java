@@ -9,18 +9,18 @@ public final class b
 {
   public b()
   {
-    AppMethodBeat.i(193927);
-    com.tencent.mm.j.a.a.fVe = new a.a.a()
+    AppMethodBeat.i(187234);
+    com.tencent.mm.j.a.a.fXk = new a.a.a()
     {
       public final com.tencent.mm.j.a a(MMActivity paramAnonymousMMActivity)
       {
-        AppMethodBeat.i(193926);
+        AppMethodBeat.i(187233);
         paramAnonymousMMActivity = new a(paramAnonymousMMActivity);
-        AppMethodBeat.o(193926);
+        AppMethodBeat.o(187233);
         return paramAnonymousMMActivity;
       }
     };
-    AppMethodBeat.o(193927);
+    AppMethodBeat.o(187234);
   }
 }
 

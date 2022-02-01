@@ -1,129 +1,169 @@
 package com.tencent.mm.plugin.finder.cgi;
 
+import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
-import com.tencent.mm.g.a.hm;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.bw.a;
+import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.plugin.finder.storage.logic.d;
-import com.tencent.mm.plugin.finder.storage.logic.d.a;
+import com.tencent.mm.plugin.finder.api.c;
+import com.tencent.mm.plugin.finder.api.c.a;
+import com.tencent.mm.plugin.finder.api.g;
+import com.tencent.mm.plugin.finder.report.i;
 import com.tencent.mm.protocal.protobuf.BaseResponse;
-import com.tencent.mm.protocal.protobuf.ana;
-import com.tencent.mm.protocal.protobuf.anb;
-import com.tencent.mm.protocal.protobuf.aqy;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.FinderContact;
+import com.tencent.mm.protocal.protobuf.alw;
+import com.tencent.mm.protocal.protobuf.anm;
+import com.tencent.mm.protocal.protobuf.ann;
+import com.tencent.mm.protocal.protobuf.arn;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.j;
+import com.tencent.mm.ui.base.t;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/cgi/NetSceneFinderFollowVerify;", "Lcom/tencent/mm/plugin/finder/cgi/NetSceneFinderBase;", "mention", "Lcom/tencent/mm/plugin/finder/storage/LocalFinderMention;", "opType", "", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "scene", "(Lcom/tencent/mm/plugin/finder/storage/LocalFinderMention;ILcom/tencent/mm/protocal/protobuf/FinderReportContextObj;I)V", "callback", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "getMention", "()Lcom/tencent/mm/plugin/finder/storage/LocalFinderMention;", "getOpType", "()I", "rr", "Lcom/tencent/mm/modelbase/CommReqResp;", "getScene", "doScene", "dispatcher", "Lcom/tencent/mm/network/IDispatcher;", "getType", "onGYNetEnd", "", "netId", "errType", "errCode", "errMsg", "", "Lcom/tencent/mm/network/IReqResp;", "cookie", "", "Companion", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/cgi/NetSceneFinderFollow;", "Lcom/tencent/mm/plugin/finder/cgi/NetSceneFinderBase;", "finderUser", "", "opType", "", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "feedId", "", "(Ljava/lang/String;ILcom/tencent/mm/protocal/protobuf/FinderReportContextObj;J)V", "callback", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "getFeedId", "()J", "getFinderUser", "()Ljava/lang/String;", "getOpType", "()I", "rr", "Lcom/tencent/mm/modelbase/CommReqResp;", "doScene", "dispatcher", "Lcom/tencent/mm/network/IDispatcher;", "getType", "onGYNetEnd", "", "netId", "errType", "errCode", "errMsg", "Lcom/tencent/mm/network/IReqResp;", "cookie", "", "Companion", "plugin-finder_release"})
 public final class af
-  extends ac
+  extends ad
 {
-  private static final String TAG = "Finder.NetSceneFinderFollowVerify";
-  public static final a rJj;
+  private static final String TAG = "Finder.NetSceneFinderFollow";
+  private static final int rRs = 1;
+  private static final int rRt = 2;
+  private static final int rRu = 3;
+  public static final a rRv;
   private f callback;
-  private final int opType;
-  private final com.tencent.mm.plugin.finder.storage.ac rJi;
-  private com.tencent.mm.al.b rr;
-  private final int scene;
+  private final long duw;
+  public final int opType;
+  public final String rRr;
+  private b rr;
   
   static
   {
-    AppMethodBeat.i(201111);
-    rJj = new a((byte)0);
-    TAG = "Finder.NetSceneFinderFollowVerify";
-    AppMethodBeat.o(201111);
+    AppMethodBeat.i(165213);
+    rRv = new a((byte)0);
+    TAG = "Finder.NetSceneFinderFollow";
+    rRs = 1;
+    rRt = 2;
+    rRu = 3;
+    AppMethodBeat.o(165213);
   }
   
-  public af(com.tencent.mm.plugin.finder.storage.ac paramac, aqy paramaqy, int paramInt)
+  public af(String paramString, int paramInt, arn paramarn, long paramLong)
   {
-    super(paramaqy);
-    AppMethodBeat.i(201110);
-    this.rJi = paramac;
-    this.opType = 1;
-    this.scene = paramInt;
-    b.a locala = new b.a();
-    locala.oP(getType());
-    paramac = new anb();
-    paramac.Gmn = this.rJi.field_followId;
-    paramac.dFJ = this.opType;
-    v localv = v.rIR;
-    paramac.Gle = v.a(paramaqy);
-    locala.c((com.tencent.mm.bx.a)paramac);
-    paramaqy = new ana();
-    paramaqy.setBaseResponse(new BaseResponse());
-    locala.d((com.tencent.mm.bx.a)paramaqy);
-    locala.Dl("/cgi-bin/micromsg-bin/finderfollowverify");
-    paramaqy = locala.aDC();
-    p.g(paramaqy, "builder.buildInstance()");
-    this.rr = paramaqy;
-    ad.i(TAG, "init id:" + this.rJi.field_id + ", " + paramac.Gmn + " opType " + this.opType);
-    AppMethodBeat.o(201110);
+    super(paramarn);
+    AppMethodBeat.i(201529);
+    this.rRr = paramString;
+    this.opType = paramInt;
+    this.duw = paramLong;
+    paramString = new b.a();
+    paramString.oS(getType());
+    Object localObject1 = new anm();
+    ((anm)localObject1).GEX = this.rRr;
+    ((anm)localObject1).opType = this.opType;
+    ((anm)localObject1).refObjectId = this.duw;
+    Object localObject2 = v.rRb;
+    ((anm)localObject1).GDR = v.a(paramarn);
+    localObject2 = ((anm)localObject1).GDR;
+    if (localObject2 != null) {
+      ((alw)localObject2).scene = paramarn.tnf;
+    }
+    localObject2 = i.syT;
+    paramLong = this.duw;
+    localObject2 = ((anm)localObject1).GDR;
+    if (localObject2 != null) {}
+    for (paramInt = ((alw)localObject2).scene;; paramInt = 0)
+    {
+      ((anm)localObject1).sessionBuffer = i.I(paramLong, paramInt);
+      ((anm)localObject1).vGk = paramarn.tng;
+      paramString.c((a)localObject1);
+      localObject1 = new ann();
+      ((ann)localObject1).setBaseResponse(new BaseResponse());
+      paramString.d((a)localObject1);
+      paramString.DN("/cgi-bin/micromsg-bin/finderfollow");
+      paramString = paramString.aDS();
+      p.g(paramString, "builder.buildInstance()");
+      this.rr = paramString;
+      ae.i(TAG, "NetSceneFinderFollow init " + this.rRr + " opType " + this.opType + " scene " + paramarn.tnf + " feedId " + this.duw + " enterType" + paramarn.tng);
+      AppMethodBeat.o(201529);
+      return;
+    }
   }
   
-  public final int doScene(com.tencent.mm.network.e parame, f paramf)
+  public final int doScene(e parame, f paramf)
   {
-    AppMethodBeat.i(201108);
+    AppMethodBeat.i(165210);
     this.callback = paramf;
     int i = dispatch(parame, (q)this.rr, (k)this);
-    AppMethodBeat.o(201108);
+    AppMethodBeat.o(165210);
     return i;
   }
   
   public final int getType()
   {
-    return 6618;
+    return 3867;
   }
   
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(201109);
+    AppMethodBeat.i(165211);
     super.onGYNetEnd(paramInt1, paramInt2, paramInt3, paramString, paramq, paramArrayOfByte);
-    ad.i(TAG, "id:" + this.rJi.field_id + ", errType " + paramInt2 + ", errCode " + paramInt3 + ", errMsg " + paramString);
-    boolean bool;
-    if ((paramInt2 != 0) || (paramInt3 != 0)) {
-      if (paramInt3 == -4042)
-      {
-        this.rJi.field_followExpireTime = 0L;
-        paramq = d.sAw;
-        bool = d.a.a(this.rJi, this.scene);
-        ad.i(TAG, "failed expire, id:" + this.rJi.field_id + ", modify extFlag:" + this.rJi.field_extFlag + ", updateDb ret:" + bool);
-        paramq = com.tencent.mm.plugin.finder.storage.logic.e.sAy;
-        com.tencent.mm.plugin.finder.storage.logic.e.xi(this.rJi.field_id);
-        paramq = new hm();
-        paramq.dtX.id = this.rJi.field_id;
-        com.tencent.mm.sdk.b.a.IbL.l((com.tencent.mm.sdk.b.b)paramq);
+    ae.i(TAG, "errType " + paramInt2 + ", errCode " + paramInt3 + ", errMsg " + paramString);
+    if ((paramInt2 != 0) || (paramInt3 != 0))
+    {
+      if ((j.IS_FLAVOR_PURPLE) || (j.IS_FLAVOR_RED)) {
+        t.makeText(ak.getContext(), (CharSequence)("is debug info finderfollow: " + paramInt2 + ' ' + paramInt3), 1).show();
       }
+      if (this.callback != null)
+      {
+        paramq = this.callback;
+        if (paramq == null) {
+          p.gkB();
+        }
+        paramq.onSceneEnd(paramInt2, paramInt3, paramString, (n)this);
+      }
+      AppMethodBeat.o(165211);
+      return;
+    }
+    paramq = this.rr.aEV();
+    if (paramq == null)
+    {
+      paramString = new d.v("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.FinderFollowResponse");
+      AppMethodBeat.o(165211);
+      throw paramString;
+    }
+    paramArrayOfByte = ((ann)paramq).contact;
+    if (paramArrayOfByte != null)
+    {
+      ae.i(TAG, "newContact.followFlag: " + paramArrayOfByte.followFlag);
+      paramq = c.rPy;
+      paramq = this.rRr;
+      paramInt1 = paramArrayOfByte.followFlag;
     }
     for (;;)
     {
-      paramq = this.callback;
-      if (paramq == null) {
-        break label441;
-      }
-      paramq.onSceneEnd(paramInt2, paramInt3, paramString, (n)this);
-      AppMethodBeat.o(201109);
-      return;
-      if (paramInt3 != -4043) {
-        break;
-      }
-      this.rJi.field_extFlag |= 0x8;
-      paramq = d.sAw;
-      bool = d.a.a(this.rJi, this.scene);
-      ad.i(TAG, "failed revoke, id:" + this.rJi.field_id + ", modify extFlag:" + this.rJi.field_extFlag + ", updateDb ret:" + bool);
+      c.a.dn(paramq, paramInt1);
       break;
-      this.rJi.field_extFlag |= 0x4;
-      paramq = d.sAw;
-      bool = d.a.a(this.rJi, this.scene);
-      ad.i(TAG, "succ, id:" + this.rJi.field_id + ", modify extFlag:" + this.rJi.field_extFlag + ", updateDb ret:" + bool);
+      paramq = c.rPy;
+      paramq = this.rRr;
+      if (this.opType == rRs)
+      {
+        paramArrayOfByte = g.rPM;
+        paramInt1 = g.czt();
+      }
+      else
+      {
+        paramArrayOfByte = g.rPM;
+        paramInt1 = g.czu();
+      }
     }
-    label441:
-    AppMethodBeat.o(201109);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/cgi/NetSceneFinderFollowVerify$Companion;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "plugin-finder_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/cgi/NetSceneFinderFollow$Companion;", "", "()V", "OP_TYPE_FOLLOW", "", "getOP_TYPE_FOLLOW", "()I", "OP_TYPE_UNAPPLY", "getOP_TYPE_UNAPPLY", "OP_TYPE_UNFOLLOW", "getOP_TYPE_UNFOLLOW", "TAG", "", "getTAG", "()Ljava/lang/String;", "plugin-finder_release"})
   public static final class a {}
 }
 

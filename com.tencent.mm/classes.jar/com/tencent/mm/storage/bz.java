@@ -1,69 +1,61 @@
 package com.tencent.mm.storage;
 
-import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.g.c.eu;
+import com.tencent.mm.sdk.e.c.a;
+import java.lang.reflect.Field;
+import java.util.Map;
 
 public final class bz
-  extends j<by>
+  extends eu
 {
-  public static final String[] SQL_CREATE;
-  public e db;
+  protected static c.a info;
   
   static
   {
-    AppMethodBeat.i(32885);
-    SQL_CREATE = new String[] { j.getCreateSQLs(by.info, "OpenMsgListener") };
-    AppMethodBeat.o(32885);
+    AppMethodBeat.i(32880);
+    c.a locala = new c.a();
+    locala.IBL = new Field[6];
+    locala.columns = new String[7];
+    StringBuilder localStringBuilder = new StringBuilder();
+    locala.columns[0] = "appId";
+    locala.IBN.put("appId", "TEXT PRIMARY KEY ");
+    localStringBuilder.append(" appId TEXT PRIMARY KEY ");
+    localStringBuilder.append(", ");
+    locala.IBM = "appId";
+    locala.columns[1] = "packageName";
+    locala.IBN.put("packageName", "TEXT");
+    localStringBuilder.append(" packageName TEXT");
+    localStringBuilder.append(", ");
+    locala.columns[2] = "status";
+    locala.IBN.put("status", "INTEGER default '0' ");
+    localStringBuilder.append(" status INTEGER default '0' ");
+    localStringBuilder.append(", ");
+    locala.columns[3] = "sceneFlag";
+    locala.IBN.put("sceneFlag", "INTEGER default '0' ");
+    localStringBuilder.append(" sceneFlag INTEGER default '0' ");
+    localStringBuilder.append(", ");
+    locala.columns[4] = "msgTypeFlag";
+    locala.IBN.put("msgTypeFlag", "INTEGER default '0' ");
+    localStringBuilder.append(" msgTypeFlag INTEGER default '0' ");
+    localStringBuilder.append(", ");
+    locala.columns[5] = "msgState";
+    locala.IBN.put("msgState", "INTEGER default '0' ");
+    localStringBuilder.append(" msgState INTEGER default '0' ");
+    locala.columns[6] = "rowid";
+    locala.sql = localStringBuilder.toString();
+    info = locala;
+    AppMethodBeat.o(32880);
   }
   
-  public bz(e parame)
+  public final c.a getDBInfo()
   {
-    super(parame, by.info, "OpenMsgListener", null);
-    AppMethodBeat.i(32881);
-    this.db = parame;
-    parame.execSQL("OpenMsgListener", "CREATE INDEX IF NOT EXISTS openMsgListenerAppIdIndex ON OpenMsgListener ( appId )");
-    parame.execSQL("OpenMsgListener", "CREATE INDEX IF NOT EXISTS openMsgListenerStatusIndex ON OpenMsgListener ( status )");
-    AppMethodBeat.o(32881);
-  }
-  
-  public final by aUm(String paramString)
-  {
-    AppMethodBeat.i(32882);
-    if ((paramString == null) || (paramString.length() <= 0))
-    {
-      AppMethodBeat.o(32882);
-      return null;
-    }
-    Cursor localCursor = this.db.a("OpenMsgListener", null, "appId=?", new String[] { bt.aQN(paramString) }, null, null, null, 2);
-    if (!localCursor.moveToFirst())
-    {
-      ad.w("MicroMsg.OpenMsgListenerStorage", "get null with appId:".concat(String.valueOf(paramString)));
-      localCursor.close();
-      AppMethodBeat.o(32882);
-      return null;
-    }
-    paramString = new by();
-    paramString.convertFrom(localCursor);
-    localCursor.close();
-    AppMethodBeat.o(32882);
-    return paramString;
-  }
-  
-  public final Cursor fsy()
-  {
-    AppMethodBeat.i(32883);
-    Cursor localCursor = rawQuery("select * from OpenMsgListener where (status = ?) ", new String[] { "1" });
-    AppMethodBeat.o(32883);
-    return localCursor;
+    return info;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.storage.bz
  * JD-Core Version:    0.7.0.1
  */

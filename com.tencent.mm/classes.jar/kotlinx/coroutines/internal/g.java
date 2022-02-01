@@ -6,35 +6,35 @@ import d.p;
 import d.p.a;
 import d.q;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"ANDROID_DETECTED", "", "getANDROID_DETECTED", "()Z", "kotlinx-coroutines-core"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"ANDROID_DETECTED", "", "getANDROID_DETECTED", "()Z", "kotlinx-coroutines-core"})
 public final class g
 {
-  private static final boolean NJH;
+  private static final boolean OgN;
   
   static
   {
-    AppMethodBeat.i(190814);
+    AppMethodBeat.i(209305);
     try
     {
-      Object localObject1 = p.MKe;
-      localObject1 = p.eL(Class.forName("android.os.Build"));
-      NJH = p.eI(localObject1);
-      AppMethodBeat.o(190814);
+      Object localObject1 = p.Nhh;
+      localObject1 = p.eO(Class.forName("android.os.Build"));
+      OgN = p.eL(localObject1);
+      AppMethodBeat.o(209305);
       return;
     }
     catch (Throwable localThrowable)
     {
       for (;;)
       {
-        p.a locala = p.MKe;
-        Object localObject2 = p.eL(q.o(localThrowable));
+        p.a locala = p.Nhh;
+        Object localObject2 = p.eO(q.p(localThrowable));
       }
     }
   }
   
-  public static final boolean gvX()
+  public static final boolean gAz()
   {
-    return NJH;
+    return OgN;
   }
 }
 

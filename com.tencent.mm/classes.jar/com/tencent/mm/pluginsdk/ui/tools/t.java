@@ -2,32 +2,30 @@ package com.tencent.mm.pluginsdk.ui.tools;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.deviceinfo.ae;
 import com.tencent.mm.compatible.deviceinfo.k;
 import com.tencent.mm.compatible.util.l;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public final class t
 {
-  public static h hE(Context paramContext)
+  public static h hK(Context paramContext)
   {
     AppMethodBeat.i(116317);
-    if (bt.bI(ae.gcP.fZX, "").equals("surface"))
+    if (bu.bI(com.tencent.mm.compatible.deviceinfo.ae.geX.gcg, "").equals("surface"))
     {
-      ad.i("MicroMsg.VideoViewFactory", "match full type surface");
+      com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.VideoViewFactory", "match full type surface");
       paramContext = new VideoSurfaceView(paramContext);
       AppMethodBeat.o(116317);
       return paramContext;
     }
-    if (l.abs())
+    if (l.abB())
     {
-      ad.i("MicroMsg.VideoViewFactory", "IS MTK platform");
+      com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.VideoViewFactory", "IS MTK platform");
       paramContext = new VideoSightView(paramContext);
       AppMethodBeat.o(116317);
       return paramContext;
     }
-    ad.i("MicroMsg.VideoViewFactory", "default settings, use sightview");
+    com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.VideoViewFactory", "default settings, use sightview");
     paramContext = new VideoSightView(paramContext);
     AppMethodBeat.o(116317);
     return paramContext;

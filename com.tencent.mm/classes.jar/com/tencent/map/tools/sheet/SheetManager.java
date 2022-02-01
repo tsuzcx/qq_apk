@@ -62,15 +62,15 @@ public class SheetManager
   
   public Object callSheetStaMth(Class paramClass, String paramString, Class[] paramArrayOfClass, Object[] paramArrayOfObject)
   {
-    AppMethodBeat.i(195083);
+    AppMethodBeat.i(209856);
     if (this.mPluginExists)
     {
       paramClass = this.mSheetProxy.callSheetStaMth(paramClass, paramString, paramArrayOfClass, paramArrayOfObject);
-      AppMethodBeat.o(195083);
+      AppMethodBeat.o(209856);
       return paramClass;
     }
     paramClass = Util.invokeStaticMethod(paramClass, paramString, paramArrayOfClass, paramArrayOfObject);
-    AppMethodBeat.o(195083);
+    AppMethodBeat.o(209856);
     return paramClass;
   }
   
@@ -132,7 +132,7 @@ public class SheetManager
   public void init(Context paramContext, Options paramOptions)
   {
     AppMethodBeat.i(180954);
-    switch (SheetManager.2.a[paramOptions.mAdapterType.ordinal()])
+    switch (2.a[paramOptions.mAdapterType.ordinal()])
     {
     default: 
       if (this.mSheetAdapter.a())
@@ -224,7 +224,7 @@ public class SheetManager
   
   public static class Options
   {
-    private SheetManager.Options.AdapterType mAdapterType = SheetManager.Options.AdapterType.LOC_SHEET;
+    private AdapterType mAdapterType = AdapterType.LOC_SHEET;
     private File mCoreLogDir;
     private String mCoreLogReportUrl;
     private String mCoreLogToken;
@@ -234,12 +234,13 @@ public class SheetManager
     private String mPluginUpdateUrl;
     private String mSdkFlavor;
     private String mSdkMapKey;
+    private String mSdkRepo;
     private String mSdkVersion;
     private String mSdkVersionCode;
     private String mSoLibName;
     private SheetManager.UncaughtListener mUncaughtListener;
     
-    public SheetManager.Options.AdapterType getAdapterType()
+    public AdapterType getAdapterType()
     {
       return this.mAdapterType;
     }
@@ -279,6 +280,11 @@ public class SheetManager
       return this.mSdkMapKey;
     }
     
+    public String getSdkRepo()
+    {
+      return this.mSdkRepo;
+    }
+    
     public String getSdkVersion()
     {
       return this.mSdkVersion;
@@ -309,7 +315,7 @@ public class SheetManager
       return this.mIsSheetEnable;
     }
     
-    public Options setAdapterType(SheetManager.Options.AdapterType paramAdapterType)
+    public Options setAdapterType(AdapterType paramAdapterType)
     {
       this.mAdapterType = paramAdapterType;
       return this;
@@ -356,6 +362,12 @@ public class SheetManager
       return this;
     }
     
+    public Options setSdkRepo(String paramString)
+    {
+      this.mSdkRepo = paramString;
+      return this;
+    }
+    
     public Options setSheetEnable(boolean paramBoolean)
     {
       this.mIsSheetEnable = paramBoolean;
@@ -390,6 +402,19 @@ public class SheetManager
     {
       this.mSdkVersionCode = paramString;
       return this;
+    }
+    
+    public static enum AdapterType
+    {
+      static
+      {
+        AppMethodBeat.i(180952);
+        LOC_SHEET = new AdapterType("LOC_SHEET", 0);
+        $VALUES = new AdapterType[] { LOC_SHEET };
+        AppMethodBeat.o(180952);
+      }
+      
+      private AdapterType() {}
     }
   }
   

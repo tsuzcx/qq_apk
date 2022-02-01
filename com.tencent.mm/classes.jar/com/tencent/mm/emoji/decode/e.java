@@ -3,15 +3,15 @@ package com.tencent.mm.emoji.decode;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.g;
+import com.tencent.mm.sdk.platformtools.h;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/emoji/decode/MMBitmapDecoder;", "Lcom/tencent/mm/emoji/decode/IGIFDecoder;", "bytes", "", "([B)V", "bitmap", "Landroid/graphics/Bitmap;", "(Landroid/graphics/Bitmap;)V", "lastValidFrame", "decodeNextFrame", "", "destroy", "drawFrameBitmap", "", "frameCount", "", "frameHeight", "frameTime", "frameWidth", "getFrame", "seekTo", "timeMs", "", "plugin-emojisdk_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/emoji/decode/MMBitmapDecoder;", "Lcom/tencent/mm/emoji/decode/IGIFDecoder;", "bytes", "", "([B)V", "bitmap", "Landroid/graphics/Bitmap;", "(Landroid/graphics/Bitmap;)V", "lastValidFrame", "decodeNextFrame", "", "destroy", "drawFrameBitmap", "", "frameCount", "", "frameHeight", "frameTime", "frameWidth", "getFrame", "seekTo", "timeMs", "", "plugin-emojisdk_release"})
 public final class e
   implements d
 {
-  private Bitmap gif;
+  private Bitmap gkx;
   
   public e(Bitmap paramBitmap)
   {
@@ -22,47 +22,47 @@ public final class e
       localBitmap = Bitmap.createBitmap(1, 1, Bitmap.Config.ARGB_8888);
       p.g(localBitmap, "Bitmap.createBitmap(1, 1, Bitmap.Config.ARGB_8888)");
     }
-    this.gif = localBitmap;
-    this.gif.setDensity(320);
+    this.gkx = localBitmap;
+    this.gkx.setDensity(320);
     AppMethodBeat.o(105368);
   }
   
   public e(byte[] paramArrayOfByte)
   {
-    this(g.cr(paramArrayOfByte));
+    this(h.cu(paramArrayOfByte));
     AppMethodBeat.i(105369);
     AppMethodBeat.o(105369);
   }
   
-  public final void aeu() {}
+  public final void aeG() {}
   
-  public final Bitmap aev()
+  public final Bitmap aeH()
   {
-    return this.gif;
+    return this.gkx;
   }
   
-  public final int aew()
+  public final int aeI()
   {
     return 1;
   }
   
-  public final int aex()
+  public final int aeJ()
   {
     return 2147483647;
   }
   
-  public final int aey()
+  public final int aeK()
   {
     AppMethodBeat.i(105366);
-    int i = this.gif.getWidth();
+    int i = this.gkx.getWidth();
     AppMethodBeat.o(105366);
     return i;
   }
   
-  public final int aez()
+  public final int aeL()
   {
     AppMethodBeat.i(105367);
-    int i = this.gif.getHeight();
+    int i = this.gkx.getHeight();
     AppMethodBeat.o(105367);
     return i;
   }

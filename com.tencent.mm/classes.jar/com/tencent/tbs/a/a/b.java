@@ -20,11 +20,11 @@ import java.util.concurrent.LinkedBlockingQueue;
 public final class b
   implements d
 {
-  private b LSC;
-  private volatile a LSD;
-  private com.tencent.tbs.a.a.c.b LSE;
-  private com.tencent.tbs.a.a.b.a LSF;
-  private com.tencent.tbs.a.a.a.a LSG;
+  private volatile a MpA;
+  private com.tencent.tbs.a.a.c.b MpB;
+  private com.tencent.tbs.a.a.b.a MpC;
+  private com.tencent.tbs.a.a.a.a MpD;
+  private b Mpz;
   private boolean a;
   boolean b;
   private Context h;
@@ -32,13 +32,13 @@ public final class b
   public b(Context paramContext, com.tencent.tbs.a.a.c.b paramb, com.tencent.tbs.a.a.b.a parama, com.tencent.tbs.a.a.a.a parama1)
   {
     AppMethodBeat.i(53067);
-    this.LSC = new b((byte)0);
-    this.LSD = new a((byte)0);
+    this.Mpz = new b((byte)0);
+    this.MpA = new a((byte)0);
     this.a = true;
     this.b = true;
-    this.LSE = paramb;
-    this.LSF = parama;
-    this.LSG = parama1;
+    this.MpB = paramb;
+    this.MpC = parama;
+    this.MpD = parama1;
     this.h = paramContext;
     AppMethodBeat.o(53067);
   }
@@ -73,8 +73,8 @@ public final class b
     Object localObject;
     try
     {
-      localObject = this.LSC.d;
-      paramb = this.LSE.d(paramb);
+      localObject = this.Mpz.d;
+      paramb = this.MpB.d(paramb);
       if ((paramb == null) || (paramb.trim().length() == 0))
       {
         paramb = new IllegalArgumentException("File name should not be empty.");
@@ -88,7 +88,7 @@ public final class b
       return false;
     }
     if (!paramb.equals(localObject)) {
-      if (this.LSC.LSJ == null) {
+      if (this.Mpz.MpG == null) {
         break label312;
       }
     }
@@ -96,7 +96,7 @@ public final class b
     for (int i = 1;; i = 0)
     {
       if (i != 0) {
-        this.LSC.d();
+        this.Mpz.d();
       }
       localObject = new File(a()).listFiles();
       int j;
@@ -111,28 +111,28 @@ public final class b
         if (i < j)
         {
           localFile = localObject[i];
-          if (this.LSF.a(localFile)) {
+          if (this.MpC.a(localFile)) {
             localFile.delete();
           }
         }
         else
         {
-          boolean bool = this.LSC.a(paramb);
+          boolean bool = this.Mpz.a(paramb);
           if (!bool)
           {
             AppMethodBeat.o(174286);
             return false;
           }
-          localObject = this.LSC.b;
-          if ((localObject != null) && (this.LSG.a((File)localObject)))
+          localObject = this.Mpz.b;
+          if ((localObject != null) && (this.MpD.a((File)localObject)))
           {
-            this.LSC.d();
+            this.Mpz.d();
             localFile = new File(a(), paramb + "-" + System.currentTimeMillis() % 86400000L);
             if (localFile.exists()) {
               localFile.delete();
             }
             ((File)localObject).renameTo(localFile);
-            bool = this.LSC.a(paramb);
+            bool = this.Mpz.a(paramb);
             AppMethodBeat.o(174286);
             return bool;
           }
@@ -147,19 +147,19 @@ public final class b
   public final void a(com.tencent.tbs.a.b paramb)
   {
     AppMethodBeat.i(174284);
-    if ((!this.a) || (!this.LSD.a())) {}
+    if ((!this.a) || (!this.MpA.a())) {}
     try
     {
-      synchronized (this.LSD)
+      synchronized (this.MpA)
       {
         new Thread(???).start();
         ???.c = true;
         label45:
-        ??? = this.LSD;
+        ??? = this.MpA;
       }
       try
       {
-        ???.LSH.put(paramb);
+        ???.MpE.put(paramb);
         AppMethodBeat.o(174284);
         return;
       }
@@ -190,20 +190,20 @@ public final class b
       AppMethodBeat.o(174285);
       return;
     }
-    this.LSC.b(com.tencent.tbs.a.a.d(paramb));
+    this.Mpz.b(com.tencent.tbs.a.a.d(paramb));
     AppMethodBeat.o(174285);
   }
   
   final class a
     implements Runnable
   {
-    BlockingQueue<com.tencent.tbs.a.b> LSH;
+    BlockingQueue<com.tencent.tbs.a.b> MpE;
     volatile boolean c;
     
     private a()
     {
       AppMethodBeat.i(53062);
-      this.LSH = new LinkedBlockingQueue();
+      this.MpE = new LinkedBlockingQueue();
       AppMethodBeat.o(53062);
     }
     
@@ -224,14 +224,14 @@ public final class b
       //   0: ldc 49
       //   2: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
       //   5: aload_0
-      //   6: getfield 35	com/tencent/tbs/a/a/b$a:LSH	Ljava/util/concurrent/BlockingQueue;
+      //   6: getfield 35	com/tencent/tbs/a/a/b$a:MpE	Ljava/util/concurrent/BlockingQueue;
       //   9: invokeinterface 55 1 0
       //   14: checkcast 57	com/tencent/tbs/a/b
       //   17: astore_1
       //   18: aload_1
       //   19: ifnull +30 -> 49
       //   22: aload_0
-      //   23: getfield 20	com/tencent/tbs/a/a/b$a:LSI	Lcom/tencent/tbs/a/a/b;
+      //   23: getfield 20	com/tencent/tbs/a/a/b$a:MpF	Lcom/tencent/tbs/a/a/b;
       //   26: aload_1
       //   27: invokevirtual 61	com/tencent/tbs/a/a/b:b	(Lcom/tencent/tbs/a/b;)V
       //   30: goto -25 -> 5
@@ -273,7 +273,7 @@ public final class b
   
   final class b
   {
-    OutputStream LSJ;
+    OutputStream MpG;
     File b;
     String d;
     
@@ -298,7 +298,7 @@ public final class b
       {
         try
         {
-          this.LSJ = new BufferedOutputStream(new FileOutputStream(this.b, true));
+          this.MpG = new BufferedOutputStream(new FileOutputStream(this.b, true));
           AppMethodBeat.o(53064);
           return true;
         }
@@ -321,10 +321,10 @@ public final class b
       //   0: ldc 81
       //   2: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
       //   5: aload_0
-      //   6: getfield 76	com/tencent/tbs/a/a/b$b:LSJ	Ljava/io/OutputStream;
+      //   6: getfield 76	com/tencent/tbs/a/a/b$b:MpG	Ljava/io/OutputStream;
       //   9: ifnull +148 -> 157
       //   12: aload_0
-      //   13: getfield 18	com/tencent/tbs/a/a/b$b:LSI	Lcom/tencent/tbs/a/a/b;
+      //   13: getfield 18	com/tencent/tbs/a/a/b$b:MpF	Lcom/tencent/tbs/a/a/b;
       //   16: getfield 84	com/tencent/tbs/a/a/b:b	Z
       //   19: ifeq +60 -> 79
       //   22: invokestatic 90	java/lang/System:currentTimeMillis	()J
@@ -332,7 +332,7 @@ public final class b
       //   28: astore_2
       //   29: ldc 98
       //   31: aload_2
-      //   32: invokestatic 104	com/tencent/tbs/a/a/a:mO	(Ljava/lang/String;Ljava/lang/String;)[B
+      //   32: invokestatic 104	com/tencent/tbs/a/a/a:mU	(Ljava/lang/String;Ljava/lang/String;)[B
       //   35: astore_3
       //   36: aload_3
       //   37: ifnull +22 -> 59
@@ -344,14 +344,14 @@ public final class b
       //   47: aload_1
       //   48: ifnull +11 -> 59
       //   51: aload_0
-      //   52: getfield 76	com/tencent/tbs/a/a/b$b:LSJ	Ljava/io/OutputStream;
+      //   52: getfield 76	com/tencent/tbs/a/a/b$b:MpG	Ljava/io/OutputStream;
       //   55: aload_1
       //   56: invokevirtual 114	java/io/OutputStream:write	([B)V
       //   59: aload_0
-      //   60: getfield 76	com/tencent/tbs/a/a/b$b:LSJ	Ljava/io/OutputStream;
+      //   60: getfield 76	com/tencent/tbs/a/a/b$b:MpG	Ljava/io/OutputStream;
       //   63: ifnull +94 -> 157
       //   66: aload_0
-      //   67: getfield 76	com/tencent/tbs/a/a/b$b:LSJ	Ljava/io/OutputStream;
+      //   67: getfield 76	com/tencent/tbs/a/a/b$b:MpG	Ljava/io/OutputStream;
       //   70: invokevirtual 117	java/io/OutputStream:flush	()V
       //   73: ldc 81
       //   75: invokestatic 79	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -360,17 +360,17 @@ public final class b
       //   80: invokestatic 123	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
       //   83: ifne -24 -> 59
       //   86: aload_0
-      //   87: getfield 76	com/tencent/tbs/a/a/b$b:LSJ	Ljava/io/OutputStream;
+      //   87: getfield 76	com/tencent/tbs/a/a/b$b:MpG	Ljava/io/OutputStream;
       //   90: aload_1
       //   91: invokevirtual 127	java/lang/String:getBytes	()[B
       //   94: invokevirtual 114	java/io/OutputStream:write	([B)V
       //   97: goto -38 -> 59
       //   100: astore_1
       //   101: aload_0
-      //   102: getfield 76	com/tencent/tbs/a/a/b$b:LSJ	Ljava/io/OutputStream;
+      //   102: getfield 76	com/tencent/tbs/a/a/b$b:MpG	Ljava/io/OutputStream;
       //   105: ifnull +52 -> 157
       //   108: aload_0
-      //   109: getfield 76	com/tencent/tbs/a/a/b$b:LSJ	Ljava/io/OutputStream;
+      //   109: getfield 76	com/tencent/tbs/a/a/b$b:MpG	Ljava/io/OutputStream;
       //   112: invokevirtual 117	java/io/OutputStream:flush	()V
       //   115: ldc 81
       //   117: invokestatic 79	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -385,10 +385,10 @@ public final class b
       //   134: return
       //   135: astore_1
       //   136: aload_0
-      //   137: getfield 76	com/tencent/tbs/a/a/b$b:LSJ	Ljava/io/OutputStream;
+      //   137: getfield 76	com/tencent/tbs/a/a/b$b:MpG	Ljava/io/OutputStream;
       //   140: ifnull +10 -> 150
       //   143: aload_0
-      //   144: getfield 76	com/tencent/tbs/a/a/b$b:LSJ	Ljava/io/OutputStream;
+      //   144: getfield 76	com/tencent/tbs/a/a/b$b:MpG	Ljava/io/OutputStream;
       //   147: invokevirtual 117	java/io/OutputStream:flush	()V
       //   150: ldc 81
       //   152: invokestatic 79	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -428,14 +428,14 @@ public final class b
       //   0: ldc 128
       //   2: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
       //   5: aload_0
-      //   6: getfield 76	com/tencent/tbs/a/a/b$b:LSJ	Ljava/io/OutputStream;
+      //   6: getfield 76	com/tencent/tbs/a/a/b$b:MpG	Ljava/io/OutputStream;
       //   9: ifnull +20 -> 29
       //   12: aload_0
-      //   13: getfield 76	com/tencent/tbs/a/a/b$b:LSJ	Ljava/io/OutputStream;
+      //   13: getfield 76	com/tencent/tbs/a/a/b$b:MpG	Ljava/io/OutputStream;
       //   16: invokevirtual 131	java/io/OutputStream:close	()V
       //   19: aload_0
       //   20: aconst_null
-      //   21: putfield 76	com/tencent/tbs/a/a/b$b:LSJ	Ljava/io/OutputStream;
+      //   21: putfield 76	com/tencent/tbs/a/a/b$b:MpG	Ljava/io/OutputStream;
       //   24: aload_0
       //   25: aconst_null
       //   26: putfield 50	com/tencent/tbs/a/a/b$b:b	Ljava/io/File;
@@ -446,7 +446,7 @@ public final class b
       //   36: astore_1
       //   37: aload_0
       //   38: aconst_null
-      //   39: putfield 76	com/tencent/tbs/a/a/b$b:LSJ	Ljava/io/OutputStream;
+      //   39: putfield 76	com/tencent/tbs/a/a/b$b:MpG	Ljava/io/OutputStream;
       //   42: aload_0
       //   43: aconst_null
       //   44: putfield 50	com/tencent/tbs/a/a/b$b:b	Ljava/io/File;
@@ -457,7 +457,7 @@ public final class b
       //   54: astore_1
       //   55: aload_0
       //   56: aconst_null
-      //   57: putfield 76	com/tencent/tbs/a/a/b$b:LSJ	Ljava/io/OutputStream;
+      //   57: putfield 76	com/tencent/tbs/a/a/b$b:MpG	Ljava/io/OutputStream;
       //   60: aload_0
       //   61: aconst_null
       //   62: putfield 50	com/tencent/tbs/a/a/b$b:b	Ljava/io/File;

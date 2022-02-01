@@ -20,10 +20,10 @@ import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ListView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.q;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.model.ba;
+import com.tencent.mm.model.bc;
 import com.tencent.mm.plugin.report.service.g;
 import com.tencent.mm.plugin.shake.b.m;
 import com.tencent.mm.plugin.shake.d.a.c;
@@ -31,8 +31,8 @@ import com.tencent.mm.plugin.shake.d.a.k;
 import com.tencent.mm.plugin.shake.d.a.n;
 import com.tencent.mm.plugin.shake.d.a.o;
 import com.tencent.mm.pluginsdk.i.i;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.MMImageView;
 import com.tencent.mm.ui.base.h;
@@ -47,15 +47,15 @@ import java.util.List;
 public class ShakeTvHistoryListUI
   extends MMActivity
 {
-  private n.e nUI;
+  private n.e oao;
   private String username;
-  private a yQu;
-  private ListView yQv;
+  private a zgE;
+  private ListView zgF;
   
   public ShakeTvHistoryListUI()
   {
     AppMethodBeat.i(28572);
-    this.nUI = new n.e()
+    this.oao = new n.e()
     {
       public final void onMMMenuItemSelected(MenuItem paramAnonymousMenuItem, int paramAnonymousInt)
       {
@@ -66,17 +66,17 @@ public class ShakeTvHistoryListUI
           AppMethodBeat.o(28566);
           return;
         }
-        g.yhR.f(12662, new Object[] { Integer.valueOf(1), bt.nullAsNil(ShakeTvHistoryListUI.d(ShakeTvHistoryListUI.this)) });
-        paramAnonymousMenuItem = m.dOQ();
+        g.yxI.f(12662, new Object[] { Integer.valueOf(1), bu.nullAsNil(ShakeTvHistoryListUI.d(ShakeTvHistoryListUI.this)) });
+        paramAnonymousMenuItem = m.dSn();
         String str = ShakeTvHistoryListUI.d(ShakeTvHistoryListUI.this);
-        if (bt.isNullOrNil(str))
+        if (bu.isNullOrNil(str))
         {
           paramAnonymousInt = -1;
           label93:
           if (paramAnonymousInt >= 0) {
             break label185;
           }
-          ad.i("MicroMsg.ShakeTvHistoryListUI", "delete tv history fail, ret[%d]", new Object[] { Integer.valueOf(paramAnonymousInt) });
+          ae.i("MicroMsg.ShakeTvHistoryListUI", "delete tv history fail, ret[%d]", new Object[] { Integer.valueOf(paramAnonymousInt) });
         }
         for (;;)
         {
@@ -84,11 +84,11 @@ public class ShakeTvHistoryListUI
           break;
           str = "username = '" + str + "'";
           paramAnonymousInt = paramAnonymousMenuItem.db.delete(paramAnonymousMenuItem.getTableName(), str, null);
-          ad.d("MicroMsg.ShakeTvHistoryStorage", "delMsgByUserName = ".concat(String.valueOf(paramAnonymousInt)));
+          ae.d("MicroMsg.ShakeTvHistoryStorage", "delMsgByUserName = ".concat(String.valueOf(paramAnonymousInt)));
           break label93;
           label185:
           paramAnonymousMenuItem = new c(1, ShakeTvHistoryListUI.d(ShakeTvHistoryListUI.this));
-          ba.aiU().a(paramAnonymousMenuItem, 0);
+          bc.ajj().a(paramAnonymousMenuItem, 0);
         }
       }
     };
@@ -125,10 +125,10 @@ public class ShakeTvHistoryListUI
           public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
           {
             AppMethodBeat.i(28562);
-            paramAnonymous2DialogInterface = g.yhR;
-            Object localObject2 = m.dOQ();
+            paramAnonymous2DialogInterface = g.yxI;
+            Object localObject2 = m.dSn();
             Object localObject1 = new ArrayList();
-            localObject2 = ((o)localObject2).dPt();
+            localObject2 = ((o)localObject2).dSQ();
             if (localObject2 != null)
             {
               while (((Cursor)localObject2).moveToNext())
@@ -147,10 +147,10 @@ public class ShakeTvHistoryListUI
               ((StringBuilder)localObject2).append("|");
             }
             paramAnonymous2DialogInterface.f(12662, new Object[] { Integer.valueOf(2), ((StringBuilder)localObject2).toString() });
-            m.dOQ().db.delete("shaketvhistory", null, null);
+            m.dSn().db.delete("shaketvhistory", null, null);
             paramAnonymous2DialogInterface = new c(2, null);
-            ba.aiU().a(paramAnonymous2DialogInterface, 0);
-            ShakeTvHistoryListUI.a(ShakeTvHistoryListUI.this).Zu();
+            bc.ajj().a(paramAnonymous2DialogInterface, 0);
+            ShakeTvHistoryListUI.a(ShakeTvHistoryListUI.this).ZD();
             ShakeTvHistoryListUI.this.enableOptionMenu(false);
             AppMethodBeat.o(28562);
           }
@@ -162,10 +162,10 @@ public class ShakeTvHistoryListUI
         return true;
       }
     });
-    this.yQv = ((ListView)findViewById(2131304733));
-    this.yQu = new a(this);
-    this.yQv.setAdapter(this.yQu);
-    this.yQv.setOnItemClickListener(new AdapterView.OnItemClickListener()
+    this.zgF = ((ListView)findViewById(2131304733));
+    this.zgE = new a(this);
+    this.zgF.setAdapter(this.zgE);
+    this.zgF.setOnItemClickListener(new AdapterView.OnItemClickListener()
     {
       public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
       {
@@ -173,17 +173,17 @@ public class ShakeTvHistoryListUI
         b localb = new b();
         localb.bd(paramAnonymousAdapterView);
         localb.bd(paramAnonymousView);
-        localb.mr(paramAnonymousInt);
-        localb.qY(paramAnonymousLong);
-        a.b("com/tencent/mm/plugin/shake/ui/ShakeTvHistoryListUI$3", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.ahq());
+        localb.mu(paramAnonymousInt);
+        localb.rl(paramAnonymousLong);
+        a.b("com/tencent/mm/plugin/shake/ui/ShakeTvHistoryListUI$3", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.ahF());
         paramAnonymousAdapterView = (n)ShakeTvHistoryListUI.a(ShakeTvHistoryListUI.this).getItem(paramAnonymousInt);
         paramAnonymousView = ShakeTvHistoryListUI.this.getContext();
         if (paramAnonymousAdapterView != null)
         {
-          if ((!bt.isNullOrNil(paramAnonymousAdapterView.field_username)) || (!bt.isNullOrNil(paramAnonymousAdapterView.field_deeplink))) {
+          if ((!bu.isNullOrNil(paramAnonymousAdapterView.field_username)) || (!bu.isNullOrNil(paramAnonymousAdapterView.field_deeplink))) {
             break label160;
           }
-          g.yhR.f(12108, new Object[] { bt.nullAsNil(paramAnonymousAdapterView.field_username), Integer.valueOf(2), Integer.valueOf(0) });
+          g.yxI.f(12108, new Object[] { bu.nullAsNil(paramAnonymousAdapterView.field_username), Integer.valueOf(2), Integer.valueOf(0) });
         }
         for (;;)
         {
@@ -192,12 +192,12 @@ public class ShakeTvHistoryListUI
           return;
           label160:
           k.a(paramAnonymousAdapterView.field_username, paramAnonymousAdapterView.field_deeplink, 2, paramAnonymousView);
-          ad.i("Micromsg.ShakeTVLogic", "doShakeTvHistoryItemClick start do nth");
+          ae.i("Micromsg.ShakeTVLogic", "doShakeTvHistoryItemClick start do nth");
         }
       }
     });
     final l locall = new l(this);
-    this.yQv.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener()
+    this.zgF.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener()
     {
       public final boolean onItemLongClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
       {
@@ -227,7 +227,7 @@ public class ShakeTvHistoryListUI
   {
     AppMethodBeat.i(28576);
     paramView = (AdapterView.AdapterContextMenuInfo)paramContextMenuInfo;
-    this.username = ((n)this.yQu.getItem(paramView.position)).field_username;
+    this.username = ((n)this.zgE.getItem(paramView.position)).field_username;
     paramContextMenu.add(paramView.position, 0, 0, 2131755707);
     AppMethodBeat.o(28576);
   }
@@ -235,7 +235,7 @@ public class ShakeTvHistoryListUI
   public void onDestroy()
   {
     AppMethodBeat.i(28574);
-    this.yQu.det();
+    this.zgE.dhl();
     super.onDestroy();
     AppMethodBeat.o(28574);
   }
@@ -259,18 +259,18 @@ public class ShakeTvHistoryListUI
       AppMethodBeat.o(28567);
     }
     
-    public final void Zu()
+    public final void ZD()
     {
       AppMethodBeat.i(28569);
-      setCursor(m.dOQ().dPt());
+      setCursor(m.dSn().dSQ());
       super.notifyDataSetChanged();
       AppMethodBeat.o(28569);
     }
     
-    public final void Zv()
+    public final void ZE()
     {
       AppMethodBeat.i(28570);
-      Zu();
+      ZD();
       AppMethodBeat.o(28570);
     }
     
@@ -284,14 +284,14 @@ public class ShakeTvHistoryListUI
       {
         paramViewGroup = this.mInflater.inflate(2131495422, paramViewGroup, false);
         localObject1 = new a();
-        ((a)localObject1).yQy = ((MMImageView)paramViewGroup.findViewById(2131304730));
-        ((a)localObject1).lCL = ((TextView)paramViewGroup.findViewById(2131304732));
-        ((a)localObject1).vjQ = ((TextView)paramViewGroup.findViewById(2131304731));
+        ((a)localObject1).zgI = ((MMImageView)paramViewGroup.findViewById(2131304730));
+        ((a)localObject1).lHk = ((TextView)paramViewGroup.findViewById(2131304732));
+        ((a)localObject1).vvV = ((TextView)paramViewGroup.findViewById(2131304731));
         paramViewGroup.setTag(localObject1);
         localObject2 = (n)getItem(paramInt);
-        e.a(((a)localObject1).yQy, ((n)localObject2).field_iconurl, 0, true);
-        ((a)localObject1).lCL.setText(((n)localObject2).field_title);
-        localObject1 = ((a)localObject1).vjQ;
+        e.a(((a)localObject1).zgI, ((n)localObject2).field_iconurl, 0, true);
+        ((a)localObject1).lHk.setText(((n)localObject2).field_title);
+        localObject1 = ((a)localObject1).vvV;
         paramView = ShakeTvHistoryListUI.this.getContext();
         l1 = ((n)localObject2).field_createtime * 1000L;
         localObject2 = new GregorianCalendar();
@@ -329,9 +329,9 @@ public class ShakeTvHistoryListUI
     
     final class a
     {
-      TextView lCL;
-      TextView vjQ;
-      MMImageView yQy;
+      TextView lHk;
+      TextView vvV;
+      MMImageView zgI;
       
       a() {}
     }
@@ -339,7 +339,7 @@ public class ShakeTvHistoryListUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.shake.ui.ShakeTvHistoryListUI
  * JD-Core Version:    0.7.0.1
  */

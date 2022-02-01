@@ -5,7 +5,7 @@ import android.content.res.Resources;
 import android.graphics.Point;
 import android.util.DisplayMetrics;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.ui.al;
 import io.flutter.plugin.a.j;
 import io.flutter.plugin.a.k.c;
@@ -29,8 +29,8 @@ public final class c
     AppMethodBeat.i(148873);
     if (paramj.method.equals("getDisplayParams"))
     {
-      DisplayMetrics localDisplayMetrics = this.bbB.JR().getResources().getDisplayMetrics();
-      Point localPoint = al.ci(this.bbB.JR());
+      DisplayMetrics localDisplayMetrics = this.bbB.JZ().getResources().getDisplayMetrics();
+      Point localPoint = al.ck(this.bbB.JZ());
       paramj = new JSONObject();
       try
       {
@@ -38,7 +38,7 @@ public final class c
         paramj.put("screenHeight", localPoint.y);
         paramj.put("densityDpi", localDisplayMetrics.densityDpi);
         paramj.put("density", localDisplayMetrics.density);
-        paramd.de(paramj.toString());
+        paramd.df(paramj.toString());
         AppMethodBeat.o(148873);
         return;
       }
@@ -46,11 +46,11 @@ public final class c
       {
         for (;;)
         {
-          ad.printErrStackTrace("MicroMsg.Flutter.FlutterLvCppHandler", localJSONException, "", new Object[0]);
+          ae.printErrStackTrace("MicroMsg.Flutter.FlutterLvCppHandler", localJSONException, "", new Object[0]);
         }
       }
     }
-    paramd.djR();
+    paramd.dmQ();
     AppMethodBeat.o(148873);
   }
 }

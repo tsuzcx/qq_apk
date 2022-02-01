@@ -8,18 +8,18 @@ public abstract class a
 {
   protected ViewGroup DV;
   public String TAG = "FaceReflectBaseUI";
-  protected com.tencent.mm.plugin.facedetectlight.ui.container.a rqH;
+  protected com.tencent.mm.plugin.facedetectlight.ui.container.a ryW;
   
   public a(ViewGroup paramViewGroup, com.tencent.mm.plugin.facedetectlight.ui.container.a parama)
   {
     this.DV = paramViewGroup;
-    this.rqH = parama;
+    this.ryW = parama;
     this.TAG = getClass().getSimpleName();
-    LayoutInflater.from(this.DV.getContext()).inflate(cus(), this.DV, true);
+    LayoutInflater.from(this.DV.getContext()).inflate(cvT(), this.DV, true);
     initView();
   }
   
-  public abstract int cus();
+  public abstract int cvT();
   
   public final View findViewById(int paramInt)
   {

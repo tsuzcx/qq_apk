@@ -9,7 +9,7 @@ public final class Java2CExDevice
   {
     AppMethodBeat.i(23194);
     Java2CExDevice.class.getClassLoader();
-    j.vr("wechataccessory");
+    j.vN("wechataccessory");
     onCreate();
     initBluetoothAccessoryLib();
     AppMethodBeat.o(23194);
@@ -79,7 +79,7 @@ public final class Java2CExDevice
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.jni.Java2CExDevice
  * JD-Core Version:    0.7.0.1
  */

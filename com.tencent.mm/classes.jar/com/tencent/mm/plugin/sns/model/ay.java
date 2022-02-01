@@ -1,68 +1,27 @@
 package com.tencent.mm.plugin.sns.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.ui.bn;
-import com.tencent.mm.protocal.protobuf.TimeLineObject;
-import java.lang.ref.WeakReference;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
+import com.tencent.mm.plugin.sns.data.p;
+import com.tencent.mm.pluginsdk.model.m;
+import java.io.OutputStream;
+import java.util.concurrent.ExecutorService;
 
 public final class ay
-  implements d
+  extends m<p, String, Boolean>
 {
-  public List<WeakReference<d>> znc;
+  private String fileName;
+  private String hPX;
+  private String mediaId;
+  private OutputStream output = null;
+  private String zyc;
+  private String zyg = "";
   
-  public ay()
+  public final ExecutorService dFv()
   {
-    AppMethodBeat.i(95990);
-    this.znc = new LinkedList();
-    AppMethodBeat.o(95990);
-  }
-  
-  public final void a(int paramInt, String paramString, long paramLong, TimeLineObject paramTimeLineObject, boolean paramBoolean)
-  {
-    AppMethodBeat.i(95993);
-    Iterator localIterator = this.znc.iterator();
-    while (localIterator.hasNext())
-    {
-      WeakReference localWeakReference = (WeakReference)localIterator.next();
-      if ((localWeakReference != null) && (localWeakReference.get() != null)) {
-        ((d)localWeakReference.get()).a(paramInt, paramString, paramLong, paramTimeLineObject, paramBoolean);
-      }
-    }
-    AppMethodBeat.o(95993);
-  }
-  
-  public final void a(int paramInt, String paramString, long paramLong, TimeLineObject paramTimeLineObject, boolean paramBoolean, bn parambn)
-  {
-    AppMethodBeat.i(95992);
-    Iterator localIterator = this.znc.iterator();
-    while (localIterator.hasNext())
-    {
-      WeakReference localWeakReference = (WeakReference)localIterator.next();
-      if ((localWeakReference != null) && (localWeakReference.get() != null)) {
-        ((d)localWeakReference.get()).a(paramInt, paramString, paramLong, paramTimeLineObject, paramBoolean, parambn);
-      }
-    }
-    AppMethodBeat.o(95992);
-  }
-  
-  public final void a(d paramd)
-  {
-    AppMethodBeat.i(95991);
-    Iterator localIterator = this.znc.iterator();
-    while (localIterator.hasNext())
-    {
-      WeakReference localWeakReference = (WeakReference)localIterator.next();
-      if ((localWeakReference != null) && (localWeakReference.get() != null) && (((d)localWeakReference.get()).equals(paramd)))
-      {
-        AppMethodBeat.o(95991);
-        return;
-      }
-    }
-    this.znc.add(new WeakReference(paramd));
-    AppMethodBeat.o(95991);
+    AppMethodBeat.i(179117);
+    ExecutorService localExecutorService = ah.dXq();
+    AppMethodBeat.o(179117);
+    return localExecutorService;
   }
 }
 

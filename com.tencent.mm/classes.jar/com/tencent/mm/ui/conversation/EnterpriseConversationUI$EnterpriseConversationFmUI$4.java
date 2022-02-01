@@ -15,18 +15,18 @@ final class EnterpriseConversationUI$EnterpriseConversationFmUI$4
   
   public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(194669);
+    AppMethodBeat.i(188071);
     b localb = new b();
     localb.bd(paramView);
     localb.bd(paramMotionEvent);
-    a.b("com/tencent/mm/ui/conversation/EnterpriseConversationUI$EnterpriseConversationFmUI$12", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahq());
+    a.b("com/tencent/mm/ui/conversation/EnterpriseConversationUI$EnterpriseConversationFmUI$12", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahF());
     if (paramMotionEvent.getAction() == 0)
     {
-      this.KvK.x = ((int)paramMotionEvent.getRawX());
-      this.KvK.y = ((int)paramMotionEvent.getRawY());
+      this.KSe.x = ((int)paramMotionEvent.getRawX());
+      this.KSe.y = ((int)paramMotionEvent.getRawY());
     }
     a.a(false, this, "com/tencent/mm/ui/conversation/EnterpriseConversationUI$EnterpriseConversationFmUI$12", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
-    AppMethodBeat.o(194669);
+    AppMethodBeat.o(188071);
     return false;
   }
 }

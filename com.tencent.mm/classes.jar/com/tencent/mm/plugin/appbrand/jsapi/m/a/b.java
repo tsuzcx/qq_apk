@@ -10,19 +10,19 @@ public class b
 {
   public static final int CTRL_INDEX = 269;
   public static final String NAME = "createDownloadTask";
-  private final a kXG;
+  private final a lbp;
   
   public b(b.b paramb)
   {
     AppMethodBeat.i(179512);
-    this.kXG = a(paramb);
+    this.lbp = a(paramb);
     AppMethodBeat.o(179512);
   }
   
   protected a a(b.b paramb)
   {
     AppMethodBeat.i(179513);
-    paramb = new a(paramb, this.kXd);
+    paramb = new a(paramb, this.laM);
     AppMethodBeat.o(179513);
     return paramb;
   }
@@ -30,26 +30,26 @@ public class b
   public final void a(c paramc, JSONObject paramJSONObject, String paramString)
   {
     AppMethodBeat.i(179515);
-    this.kXG.a(paramc, paramJSONObject, paramString);
+    this.lbp.a(paramc, paramJSONObject, paramString);
     AppMethodBeat.o(179515);
   }
   
-  public final String aOC()
+  public final String aOZ()
   {
     AppMethodBeat.i(179514);
-    String str = this.kXG.aOC();
+    String str = this.lbp.aOZ();
     AppMethodBeat.o(179514);
     return str;
   }
   
-  public final String aeJ()
+  public final String aeV()
   {
     return "downloadTaskId";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.m.a.b
  * JD-Core Version:    0.7.0.1
  */

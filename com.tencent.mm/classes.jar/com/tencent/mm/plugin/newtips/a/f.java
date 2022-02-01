@@ -1,45 +1,45 @@
 package com.tencent.mm.plugin.newtips.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.HashMap;
 import java.util.Map;
 
 public final class f
 {
-  private static Map<Integer, h> wsA;
-  static Map<Integer, j> wsB;
-  private static f wsC;
+  private static Map<Integer, h> wIj;
+  static Map<Integer, j> wIk;
+  private static f wIl;
   
   private f()
   {
     AppMethodBeat.i(127219);
-    wsA = new HashMap();
-    wsB = new HashMap();
+    wIj = new HashMap();
+    wIk = new HashMap();
     AppMethodBeat.o(127219);
   }
   
-  public static h LN(int paramInt)
+  public static h Ms(int paramInt)
   {
     AppMethodBeat.i(127220);
-    h localh2 = (h)wsA.get(Integer.valueOf(paramInt));
+    h localh2 = (h)wIj.get(Integer.valueOf(paramInt));
     h localh1 = localh2;
     if (localh2 == null)
     {
       localh1 = null;
-      ad.i("MicroMsg.NewTips.NewTipsFilterPool", "Invalid tipsId:%s", new Object[] { Integer.valueOf(paramInt) });
+      ae.i("MicroMsg.NewTips.NewTipsFilterPool", "Invalid tipsId:%s", new Object[] { Integer.valueOf(paramInt) });
     }
     AppMethodBeat.o(127220);
     return localh1;
   }
   
-  public static f dus()
+  public static f dxI()
   {
     AppMethodBeat.i(127218);
-    if (wsC == null) {
-      wsC = new f();
+    if (wIl == null) {
+      wIl = new f();
     }
-    f localf = wsC;
+    f localf = wIl;
     AppMethodBeat.o(127218);
     return localf;
   }

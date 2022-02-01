@@ -4,20 +4,20 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.q;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.booter.NotifyReceiver;
 import com.tencent.mm.hellhoundlib.activities.HellActivity;
-import com.tencent.mm.model.ba;
-import com.tencent.mm.model.bo;
-import com.tencent.mm.model.bo.a;
+import com.tencent.mm.model.bc;
+import com.tencent.mm.model.bq;
+import com.tencent.mm.model.bq.a;
 import com.tencent.mm.network.e;
 import com.tencent.mm.opensdk.modelmsg.SendMessageToWX.Req;
 import com.tencent.mm.opensdk.modelmsg.WXMediaMessage;
 import com.tencent.mm.pluginsdk.model.app.ReportUtil;
 import com.tencent.mm.pluginsdk.model.app.ReportUtil.ReportArgs;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.chatting.ChattingUI;
 import com.tencent.mm.ui.transmit.SendAppMessageWrapperUI;
 
@@ -26,16 +26,16 @@ public class UIEntryStub
   extends HellActivity
 {
   private String Lw;
-  private Intent dyk;
-  private int nNb;
-  private boolean nNc;
+  private Intent dzp;
+  private int nSG;
+  private boolean nSH;
   
   public void onCreate(Bundle paramBundle)
   {
     AppMethodBeat.i(22185);
     super.onCreate(paramBundle);
-    NotifyReceiver.WJ();
-    this.nNc = false;
+    NotifyReceiver.WR();
+    this.nSH = false;
     AppMethodBeat.o(22185);
   }
   
@@ -43,9 +43,9 @@ public class UIEntryStub
   {
     AppMethodBeat.i(22186);
     super.onNewIntent(paramIntent);
-    this.dyk = paramIntent;
-    ad.i("MicroMsg.UIEntryStub", "onNewIntent mHasHandled: %b", new Object[] { Boolean.valueOf(this.nNc) });
-    this.nNc = false;
+    this.dzp = paramIntent;
+    ae.i("MicroMsg.UIEntryStub", "onNewIntent mHasHandled: %b", new Object[] { Boolean.valueOf(this.nSH) });
+    this.nSH = false;
     AppMethodBeat.o(22186);
   }
   
@@ -53,10 +53,10 @@ public class UIEntryStub
   {
     AppMethodBeat.i(22187);
     super.onResume();
-    if (this.dyk == null) {
-      this.dyk = getIntent();
+    if (this.dzp == null) {
+      this.dzp = getIntent();
     }
-    ba.aiU().a(new bo(new bo.a()
+    bc.ajj().a(new bq(new bq.a()
     {
       public final void a(e paramAnonymouse)
       {
@@ -67,7 +67,7 @@ public class UIEntryStub
           AppMethodBeat.o(22180);
           return;
         }
-        ad.i("MicroMsg.UIEntryStub", "onResume mHasHandled: %b", new Object[] { Boolean.valueOf(UIEntryStub.a(UIEntryStub.this)) });
+        ae.i("MicroMsg.UIEntryStub", "onResume mHasHandled: %b", new Object[] { Boolean.valueOf(UIEntryStub.a(UIEntryStub.this)) });
         if (!UIEntryStub.a(UIEntryStub.this))
         {
           UIEntryStub.b(UIEntryStub.this);

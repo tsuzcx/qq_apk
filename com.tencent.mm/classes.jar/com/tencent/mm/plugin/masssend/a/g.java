@@ -1,43 +1,43 @@
 package com.tencent.mm.plugin.masssend.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.oz;
-import com.tencent.mm.model.ba;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ai;
+import com.tencent.mm.g.a.pa;
+import com.tencent.mm.model.bc;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.aj;
 
 public final class g
-  extends com.tencent.mm.sdk.b.c<oz>
+  extends com.tencent.mm.sdk.b.c<pa>
 {
   public g()
   {
     AppMethodBeat.i(161392);
-    this.__eventId = oz.class.getName().hashCode();
+    this.__eventId = pa.class.getName().hashCode();
     AppMethodBeat.o(161392);
   }
   
-  private static boolean aJX()
+  private static boolean aKq()
   {
     AppMethodBeat.i(26363);
-    if (!ba.ajx())
+    if (!bc.ajM())
     {
-      ad.e("MicroMsg.PostTaskMassSendListener", "has not set uin");
+      ae.e("MicroMsg.PostTaskMassSendListener", "has not set uin");
       AppMethodBeat.o(26363);
       return false;
     }
-    h.dkU();
-    ba.aBQ();
-    if (bt.Df(bt.a((Long)com.tencent.mm.model.c.ajl().get(102409, null), 0L)) > 900000L) {}
+    h.dnU();
+    bc.aCg();
+    if (bu.DD(bu.a((Long)com.tencent.mm.model.c.ajA().get(102409, null), 0L)) > 900000L) {}
     for (int i = 1; i == 0; i = 0)
     {
-      ad.d("MicroMsg.PostTaskMassSendListener", "time limit");
+      ae.d("MicroMsg.PostTaskMassSendListener", "time limit");
       AppMethodBeat.o(26363);
       return false;
     }
-    h.dkU().dkP();
-    h.dkU();
-    c.xX(bt.flT());
+    h.dnU().dnP();
+    h.dnU();
+    c.yr(bu.fpO());
     AppMethodBeat.o(26363);
     return false;
   }

@@ -13,13 +13,13 @@ public final class h
   public final void b(e parame, JSONObject paramJSONObject, int paramInt)
   {
     AppMethodBeat.i(137593);
-    new j().a(this, parame, paramJSONObject, paramInt, this.ldw);
+    new j().a(this, parame, paramJSONObject, paramInt, this.lhh);
     AppMethodBeat.o(137593);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.p.h
  * JD-Core Version:    0.7.0.1
  */

@@ -7,34 +7,32 @@ import android.hardware.Camera;
 import android.hardware.Camera.CameraInfo;
 import android.os.Build.VERSION;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.deviceinfo.ae;
 import com.tencent.mm.compatible.deviceinfo.c;
 import com.tencent.mm.compatible.deviceinfo.c.a;
-import com.tencent.mm.sdk.platformtools.ad;
 
 public final class j
 {
-  public static int CoA = 0;
-  public static int CoB = 0;
-  public static boolean CoC = true;
-  public static g Cow;
-  public static int Cox = -1;
-  public static int Coy = -1;
-  public static int Coz = 0;
+  public static g CGa;
+  public static int CGb = -1;
+  public static int CGc = -1;
+  public static int CGd = 0;
+  public static int CGe = 0;
+  public static int CGf = 0;
+  public static boolean CGg = true;
   
-  public static boolean eAI()
+  public static boolean eEq()
   {
-    return (!ae.gcE.fYd) || (ae.gcE.fYc != 8);
+    return (!com.tencent.mm.compatible.deviceinfo.ae.geM.gaj) || (com.tencent.mm.compatible.deviceinfo.ae.geM.gai != 8);
   }
   
-  private static boolean eAJ()
+  private static boolean eEr()
   {
     boolean bool = false;
     AppMethodBeat.i(115697);
     try
     {
       if (Class.forName("android.hardware.Camera").getDeclaredMethod("getNumberOfCameras", null) == null) {
-        ad.d("GetfcMethod", "GetfcMethod is null");
+        com.tencent.mm.sdk.platformtools.ae.d("GetfcMethod", "GetfcMethod is null");
       }
       for (;;)
       {
@@ -47,29 +45,29 @@ public final class j
     {
       for (;;)
       {
-        ad.e("MicroMsg.CameraUtil", "find getNumberOfCameras failed: " + localException.getMessage());
+        com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.CameraUtil", "find getNumberOfCameras failed: " + localException.getMessage());
       }
     }
   }
   
-  private static void eAK()
+  private static void eEs()
   {
     AppMethodBeat.i(115699);
-    Cow.fYa = Camera.getNumberOfCameras();
+    CGa.gag = Camera.getNumberOfCameras();
     Object localObject = new Camera.CameraInfo();
     int i = 0;
     for (;;)
     {
       try
       {
-        if (i < Cow.fYa)
+        if (i < CGa.gag)
         {
           Camera.getCameraInfo(i, (Camera.CameraInfo)localObject);
           if (((Camera.CameraInfo)localObject).facing != 1) {
             continue;
           }
-          if (Cox != -1) {
-            ad.d("MicroMsg.CameraUtil", "device has other camera id %s in front", new Object[] { Integer.valueOf(i) });
+          if (CGb != -1) {
+            com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.CameraUtil", "device has other camera id %s in front", new Object[] { Integer.valueOf(i) });
           }
         }
         else
@@ -79,42 +77,42 @@ public final class j
             continue;
           }
           bool = false;
-          if ((Cow.CmW != 270) && ((!bool) || (Cow.CmW != 0))) {
+          if ((CGa.CEA != 270) && ((!bool) || (CGa.CEA != 0))) {
             continue;
           }
-          Coz = 1;
-          if ((Cow.CmX != 270) && ((!bool) || (Cow.CmX != 0))) {
+          CGd = 1;
+          if ((CGa.CEB != 270) && ((!bool) || (CGa.CEB != 0))) {
             continue;
           }
-          CoA = 1;
+          CGe = 1;
           AppMethodBeat.o(115699);
           return;
         }
-        Cox = i;
-        Cow.CmW = ((Camera.CameraInfo)localObject).orientation;
-        Cow.CmU = true;
+        CGb = i;
+        CGa.CEA = ((Camera.CameraInfo)localObject).orientation;
+        CGa.CEy = true;
         continue;
         if (((Camera.CameraInfo)localObject).facing == 0) {
-          if (Coy != -1)
+          if (CGc != -1)
           {
-            ad.d("MicroMsg.CameraUtil", "device has other camera id %s in back", new Object[] { Integer.valueOf(i) });
+            com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.CameraUtil", "device has other camera id %s in back", new Object[] { Integer.valueOf(i) });
             continue;
           }
         }
       }
       catch (Exception localException)
       {
-        ad.e("MicroMsg.CameraUtil", "get camera info error: %s", new Object[] { localException.getMessage() });
+        com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.CameraUtil", "get camera info error: %s", new Object[] { localException.getMessage() });
         continue;
-        Coy = i;
-        Cow.CmX = localException.orientation;
-        Cow.CmV = true;
+        CGc = i;
+        CGa.CEB = localException.orientation;
+        CGa.CEz = true;
         continue;
         boolean bool = localException.equalsIgnoreCase("Mediatek");
         continue;
-        Coz = 0;
+        CGd = 0;
         continue;
-        CoA = 0;
+        CGe = 0;
         AppMethodBeat.o(115699);
         return;
         i += 1;
@@ -122,89 +120,89 @@ public final class j
     }
   }
   
-  public static void gH(Context paramContext)
+  public static void gM(Context paramContext)
   {
     AppMethodBeat.i(115698);
-    if (Cow != null)
+    if (CGa != null)
     {
       AppMethodBeat.o(115698);
       return;
     }
-    Cow = new g("*");
-    boolean bool = eAJ();
-    CoC = bool;
-    if ((bool) && (!ae.gcE.fYb))
+    CGa = new g("*");
+    boolean bool = eEr();
+    CGg = bool;
+    if ((bool) && (!com.tencent.mm.compatible.deviceinfo.ae.geM.gah))
     {
-      eAK();
-      if (ae.gcE.bin) {
-        CoB = ae.gcE.fYg;
+      eEs();
+      if (com.tencent.mm.compatible.deviceinfo.ae.geM.bin) {
+        CGf = com.tencent.mm.compatible.deviceinfo.ae.geM.gam;
       }
-      ad.i("MicroMsg.CameraUtil", "gCameraNum:" + Cow.fYa + "\ngIsHasFrontCamera:" + Cow.CmU + "\ngIsHasBackCamera:" + Cow.CmV + "\ngFrontCameraId:" + Cox + "\ngBackCameraId:" + Coy + "\ngBackOrientation:" + Cow.CmX + "\ngFrontOrientation:" + Cow.CmW + "\ngBestFps:" + Cow.CmT + "\ngFacePreviewSize:" + Cow.CmY + "\ngNonFacePreviewSize:" + Cow.CmZ + "\ngFaceCameraIsRotate180:" + Coz + "\ngMainCameraIsRotate180:" + CoA + "\ngCameraFormat:" + CoB + "\ngFaceNotRotate:SDK:" + Build.VERSION.SDK_INT + "\n");
+      com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.CameraUtil", "gCameraNum:" + CGa.gag + "\ngIsHasFrontCamera:" + CGa.CEy + "\ngIsHasBackCamera:" + CGa.CEz + "\ngFrontCameraId:" + CGb + "\ngBackCameraId:" + CGc + "\ngBackOrientation:" + CGa.CEB + "\ngFrontOrientation:" + CGa.CEA + "\ngBestFps:" + CGa.CEx + "\ngFacePreviewSize:" + CGa.CEC + "\ngNonFacePreviewSize:" + CGa.CED + "\ngFaceCameraIsRotate180:" + CGd + "\ngMainCameraIsRotate180:" + CGe + "\ngCameraFormat:" + CGf + "\ngFaceNotRotate:SDK:" + Build.VERSION.SDK_INT + "\n");
       AppMethodBeat.o(115698);
       return;
     }
-    if ((CoC) && (ae.gcE.fYb)) {
-      eAK();
+    if ((CGg) && (com.tencent.mm.compatible.deviceinfo.ae.geM.gah)) {
+      eEs();
     }
-    if (ae.gcE.fYb) {
-      Cow.fYa = ae.gcE.fYa;
+    if (com.tencent.mm.compatible.deviceinfo.ae.geM.gah) {
+      CGa.gag = com.tencent.mm.compatible.deviceinfo.ae.geM.gag;
     }
-    if (ae.gcE.fYk)
+    if (com.tencent.mm.compatible.deviceinfo.ae.geM.gar)
     {
-      if (ae.gcE.fYj.fYO != 0) {
-        Cow.CmV = true;
+      if (com.tencent.mm.compatible.deviceinfo.ae.geM.gaq.gaV != 0) {
+        CGa.CEz = true;
       }
     }
     else {
       label339:
-      if (ae.gcE.fYi) {
-        if (ae.gcE.fYh.fYO == 0) {
+      if (com.tencent.mm.compatible.deviceinfo.ae.geM.gao) {
+        if (com.tencent.mm.compatible.deviceinfo.ae.geM.gan.gaV == 0) {
           break label715;
         }
       }
     }
     label715:
-    for (Cow.CmU = true;; Cow.CmU = false)
+    for (CGa.CEy = true;; CGa.CEy = false)
     {
-      if ((ae.gcE.fYi) && (ae.gcE.fYh.fYP >= 0))
+      if ((com.tencent.mm.compatible.deviceinfo.ae.geM.gao) && (com.tencent.mm.compatible.deviceinfo.ae.geM.gan.gaW >= 0))
       {
-        Cow.CmW = ae.gcE.fYh.fYP;
-        Coz = Cow.CmW;
+        CGa.CEA = com.tencent.mm.compatible.deviceinfo.ae.geM.gan.gaW;
+        CGd = CGa.CEA;
       }
-      if ((ae.gcE.fYk) && (ae.gcE.fYj.fYP >= 0))
+      if ((com.tencent.mm.compatible.deviceinfo.ae.geM.gar) && (com.tencent.mm.compatible.deviceinfo.ae.geM.gaq.gaW >= 0))
       {
-        Cow.CmX = ae.gcE.fYj.fYP;
-        CoA = Cow.CmX;
+        CGa.CEB = com.tencent.mm.compatible.deviceinfo.ae.geM.gaq.gaW;
+        CGe = CGa.CEB;
       }
-      if (ae.gcE.fYi)
+      if (com.tencent.mm.compatible.deviceinfo.ae.geM.gao)
       {
-        if (Cow.CmY == null) {
-          Cow.CmY = new Point(0, 0);
+        if (CGa.CEC == null) {
+          CGa.CEC = new Point(0, 0);
         }
-        Cow.CmY = new Point(ae.gcE.fYh.width, ae.gcE.fYh.height);
+        CGa.CEC = new Point(com.tencent.mm.compatible.deviceinfo.ae.geM.gan.width, com.tencent.mm.compatible.deviceinfo.ae.geM.gan.height);
       }
-      if (ae.gcE.fYk)
+      if (com.tencent.mm.compatible.deviceinfo.ae.geM.gar)
       {
-        if (Cow.CmZ == null) {
-          Cow.CmZ = new Point(0, 0);
+        if (CGa.CED == null) {
+          CGa.CED = new Point(0, 0);
         }
-        Cow.CmZ = new Point(ae.gcE.fYj.width, ae.gcE.fYj.height);
+        CGa.CED = new Point(com.tencent.mm.compatible.deviceinfo.ae.geM.gaq.width, com.tencent.mm.compatible.deviceinfo.ae.geM.gaq.height);
       }
-      if ((ae.gcE.fYk) && (ae.gcE.fYj.fps != 0)) {
-        Cow.CmT = ae.gcE.fYj.fps;
+      if ((com.tencent.mm.compatible.deviceinfo.ae.geM.gar) && (com.tencent.mm.compatible.deviceinfo.ae.geM.gaq.fps != 0)) {
+        CGa.CEx = com.tencent.mm.compatible.deviceinfo.ae.geM.gaq.fps;
       }
-      if ((ae.gcE.fYi) && (ae.gcE.fYh.fps != 0)) {
-        Cow.CmT = ae.gcE.fYh.fps;
+      if ((com.tencent.mm.compatible.deviceinfo.ae.geM.gao) && (com.tencent.mm.compatible.deviceinfo.ae.geM.gan.fps != 0)) {
+        CGa.CEx = com.tencent.mm.compatible.deviceinfo.ae.geM.gan.fps;
       }
       paramContext = paramContext.getPackageManager();
-      if ((ae.gcE.fYb) || (paramContext.hasSystemFeature("android.hardware.camera"))) {
+      if ((com.tencent.mm.compatible.deviceinfo.ae.geM.gah) || (paramContext.hasSystemFeature("android.hardware.camera"))) {
         break;
       }
-      Cow.fYa = 0;
-      Cow.CmU = false;
-      Cow.CmV = false;
+      CGa.gag = 0;
+      CGa.CEy = false;
+      CGa.CEz = false;
       break;
-      Cow.CmV = false;
+      CGa.CEz = false;
       break label339;
     }
   }

@@ -8,13 +8,13 @@ import com.tencent.mm.protocal.protobuf.TimeLineObject;
 
 public abstract class a
 {
-  public View AaE;
-  public aq Atv;
+  public aq AKJ;
+  public View ArR;
   public View contentView;
-  public View kBS;
+  public View kFh;
   protected TimeLineObject timeLineObject;
-  public p yXF;
-  protected c zaU;
+  public p znm;
+  protected c zrv;
   
   public abstract void m(View paramView1, View paramView2);
   

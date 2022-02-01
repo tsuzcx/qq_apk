@@ -14,14 +14,14 @@ public class ScaleRelativeLayout
 {
   public float aXE = 3.0F;
   private float aXF = 0.5F;
-  private float pPR = 1.0F;
-  private float pPS = 1.0F;
-  private float pPT = 0.0F;
-  private float pPU = 0.0F;
-  public float pPV = 6.0F;
-  private float pPW = 0.3F;
-  private boolean pPX = false;
-  private ValueAnimator pPY;
+  public float pWA = 6.0F;
+  private float pWB = 0.3F;
+  private boolean pWC = false;
+  private ValueAnimator pWD;
+  private float pWw = 1.0F;
+  private float pWx = 1.0F;
+  private float pWy = 0.0F;
+  private float pWz = 0.0F;
   
   public ScaleRelativeLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -49,11 +49,11 @@ public class ScaleRelativeLayout
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(109436);
-    if ((!this.pPX) && (paramMotionEvent.getPointerCount() == 2))
+    if ((!this.pWC) && (paramMotionEvent.getPointerCount() == 2))
     {
-      this.pPX = true;
-      this.pPT = ((float)Math.hypot(paramMotionEvent.getX(0) - paramMotionEvent.getX(1), paramMotionEvent.getY(0) - paramMotionEvent.getY(1)));
-      this.pPS = this.pPR;
+      this.pWC = true;
+      this.pWy = ((float)Math.hypot(paramMotionEvent.getX(0) - paramMotionEvent.getX(1), paramMotionEvent.getY(0) - paramMotionEvent.getY(1)));
+      this.pWx = this.pWw;
     }
     switch (paramMotionEvent.getActionMasked())
     {
@@ -65,65 +65,65 @@ public class ScaleRelativeLayout
     case 6: 
       for (;;)
       {
-        if (this.pPT <= 0.0F) {
-          this.pPT = 0.1F;
+        if (this.pWy <= 0.0F) {
+          this.pWy = 0.1F;
         }
         int i = 0;
         while (i < getChildCount())
         {
           paramMotionEvent = getChildAt(i);
-          paramMotionEvent.setScaleX(this.pPR);
-          paramMotionEvent.setScaleY(this.pPR);
+          paramMotionEvent.setScaleX(this.pWw);
+          paramMotionEvent.setScaleY(this.pWw);
           i += 1;
         }
         if (paramMotionEvent.getPointerCount() == 2)
         {
           f2 = (float)Math.hypot(paramMotionEvent.getX(0) - paramMotionEvent.getX(1), paramMotionEvent.getY(0) - paramMotionEvent.getY(1));
-          f1 = this.pPS * f2 / this.pPT;
-          if (f1 > this.pPV)
+          f1 = this.pWx * f2 / this.pWy;
+          if (f1 > this.pWA)
           {
-            f1 = this.pPV;
-            this.pPU = (this.pPT * f1);
+            f1 = this.pWA;
+            this.pWz = (this.pWy * f1);
           }
           for (;;)
           {
-            this.pPR = f1;
-            if (this.pPY == null) {
+            this.pWw = f1;
+            if (this.pWD == null) {
               break;
             }
-            this.pPY.cancel();
+            this.pWD.cancel();
             break;
-            if (f1 < this.pPW)
+            if (f1 < this.pWB)
             {
-              f1 = this.pPW;
-              this.pPU = (this.pPT * f1);
+              f1 = this.pWB;
+              this.pWz = (this.pWy * f1);
             }
             else
             {
-              this.pPU = f2;
+              this.pWz = f2;
             }
           }
           if (paramMotionEvent.getPointerCount() == 2)
           {
-            this.pPT = this.pPU;
-            this.pPS = this.pPR;
-            this.pPX = false;
+            this.pWy = this.pWz;
+            this.pWx = this.pWw;
+            this.pWC = false;
           }
         }
       }
     }
-    float f2 = this.pPR;
-    float f1 = this.pPR;
-    if (this.pPR < this.aXF) {
+    float f2 = this.pWw;
+    float f1 = this.pWw;
+    if (this.pWw < this.aXF) {
       f1 = this.aXF;
     }
     for (;;)
     {
-      if (this.pPY != null) {
-        this.pPY.cancel();
+      if (this.pWD != null) {
+        this.pWD.cancel();
       }
-      this.pPY = ValueAnimator.ofFloat(new float[] { f2, f1 });
-      this.pPY.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
+      this.pWD = ValueAnimator.ofFloat(new float[] { f2, f1 });
+      this.pWD.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
       {
         public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
         {
@@ -140,9 +140,9 @@ public class ScaleRelativeLayout
           AppMethodBeat.o(109434);
         }
       });
-      this.pPY.start();
+      this.pWD.start();
       break;
-      if (this.pPR > this.aXE) {
+      if (this.pWw > this.aXE) {
         f1 = this.aXE;
       }
     }
@@ -152,7 +152,7 @@ public class ScaleRelativeLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.ui.widget.ScaleRelativeLayout
  * JD-Core Version:    0.7.0.1
  */

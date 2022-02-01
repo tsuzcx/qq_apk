@@ -3,7 +3,7 @@ package com.tencent.mm.ui.chatting.gallery;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.o.f;
 import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 
 final class j$9
   implements Runnable
@@ -13,14 +13,14 @@ final class j$9
   public final void run()
   {
     AppMethodBeat.i(36252);
-    String str = f.dmq();
-    if (!bt.isNullOrNil(str))
+    String str = f.dpo();
+    if (!bu.isNullOrNil(str))
     {
-      g.yhR.kvStat(14092, str);
+      g.yxI.kvStat(14092, str);
       AppMethodBeat.o(36252);
       return;
     }
-    g.yhR.kvStat(14092, "0");
+    g.yxI.kvStat(14092, "0");
     AppMethodBeat.o(36252);
   }
 }

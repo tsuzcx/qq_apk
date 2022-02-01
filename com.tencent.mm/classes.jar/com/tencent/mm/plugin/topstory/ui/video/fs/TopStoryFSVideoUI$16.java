@@ -16,8 +16,8 @@ final class TopStoryFSVideoUI$16
     AppMethodBeat.i(126351);
     b localb = new b();
     localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/topstory/ui/video/fs/TopStoryFSVideoUI$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-    TopStoryFSVideoUI.c(this.Bxi);
+    a.b("com/tencent/mm/plugin/topstory/ui/video/fs/TopStoryFSVideoUI$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+    TopStoryFSVideoUI.c(this.BOG);
     a.a(this, "com/tencent/mm/plugin/topstory/ui/video/fs/TopStoryFSVideoUI$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(126351);
   }

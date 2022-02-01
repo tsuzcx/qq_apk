@@ -2,37 +2,37 @@ package com.tencent.mm.network;
 
 public abstract interface c
 {
-  public abstract byte[] Dm(String paramString);
+  public abstract byte[] DO(String paramString);
   
-  public abstract byte[] Dn(String paramString);
+  public abstract byte[] DP(String paramString);
   
-  public abstract byte[] Do(String paramString);
+  public abstract byte[] DQ(String paramString);
   
-  public abstract byte[] Dp(String paramString);
+  public abstract byte[] DR(String paramString);
   
-  public abstract boolean Dq(String paramString);
+  public abstract boolean DS(String paramString);
   
   public abstract int X(byte[] paramArrayOfByte);
   
   public abstract void a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, int paramInt);
   
-  public abstract byte[] aEV();
+  public abstract byte[] aFl();
   
-  public abstract boolean aEW();
+  public abstract boolean aFm();
   
-  public abstract byte[] aEX();
+  public abstract byte[] aFn();
   
-  public abstract String aEY();
+  public abstract String aFo();
   
-  public abstract byte[] aEZ();
+  public abstract byte[] aFp();
   
-  public abstract void aFa();
+  public abstract void aFq();
   
-  public abstract void aFb();
+  public abstract void aFr();
   
   public abstract void b(int paramInt, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2);
   
-  public abstract void eE(boolean paramBoolean);
+  public abstract void eG(boolean paramBoolean);
   
   public abstract int getUin();
   
@@ -44,7 +44,7 @@ public abstract interface c
   
   public abstract boolean isForeground();
   
-  public abstract byte[] mO(int paramInt);
+  public abstract byte[] mR(int paramInt);
   
   public abstract void reset();
   

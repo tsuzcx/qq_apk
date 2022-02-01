@@ -6,7 +6,7 @@ import com.tencent.mm.kernel.c.a;
 public abstract interface b
   extends a
 {
-  public abstract void a(Context paramContext, String paramString, long paramLong);
+  public abstract void b(Context paramContext, String paramString, long paramLong);
 }
 
 

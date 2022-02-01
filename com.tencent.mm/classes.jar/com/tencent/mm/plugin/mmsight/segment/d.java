@@ -2,8 +2,8 @@ package com.tencent.mm.plugin.mmsight.segment;
 
 import android.graphics.Bitmap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.concurrent.Callable;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.TimeUnit;
@@ -30,42 +30,42 @@ public abstract interface d
   {
     private Lock aIY;
     private volatile int size;
-    private LinkedBlockingQueue<d> vRo;
-    private final int vRp;
-    private Callable<d> vRq;
+    private LinkedBlockingQueue<d> wds;
+    private final int wdt;
+    private Callable<d> wdu;
     
     public a(int paramInt, Callable<d> paramCallable)
     {
       AppMethodBeat.i(107638);
       this.size = 0;
       this.aIY = new ReentrantLock();
-      this.vRp = paramInt;
-      this.vRo = new LinkedBlockingQueue(paramInt);
-      this.vRq = paramCallable;
+      this.wdt = paramInt;
+      this.wds = new LinkedBlockingQueue(paramInt);
+      this.wdu = paramCallable;
       AppMethodBeat.o(107638);
     }
     
-    private d dnC()
+    private d dqA()
     {
       AppMethodBeat.i(107640);
       Object localObject;
-      if (this.vRq == null)
+      if (this.wdu == null)
       {
         localObject = new IllegalStateException("fetcher generator can not be null.");
         AppMethodBeat.o(107640);
         throw ((Throwable)localObject);
       }
-      long l = bt.HI();
+      long l = bu.HQ();
       try
       {
-        localObject = (d)this.vRq.call();
-        ad.d("FetcherPool", "time flee, construct fetcher instance cost %d", new Object[] { Long.valueOf(bt.aO(l)) });
+        localObject = (d)this.wdu.call();
+        ae.d("FetcherPool", "time flee, construct fetcher instance cost %d", new Object[] { Long.valueOf(bu.aO(l)) });
         AppMethodBeat.o(107640);
         return localObject;
       }
       catch (Exception localException)
       {
-        ad.printErrStackTrace("FetcherPool", localException, " fetcher generater call error %s", new Object[] { localException.getMessage() });
+        ae.printErrStackTrace("FetcherPool", localException, " fetcher generater call error %s", new Object[] { localException.getMessage() });
         AppMethodBeat.o(107640);
         throw localException;
       }
@@ -74,26 +74,26 @@ public abstract interface d
     public final void a(d paramd)
     {
       AppMethodBeat.i(107641);
-      ad.d("FetcherPool", "reuseFetcher");
+      ae.d("FetcherPool", "reuseFetcher");
       if (paramd == null)
       {
-        ad.e("FetcherPool", "Null object can not be reused.");
+        ae.e("FetcherPool", "Null object can not be reused.");
         AppMethodBeat.o(107641);
         return;
       }
-      if (this.vRo == null)
+      if (this.wds == null)
       {
         paramd.release();
         AppMethodBeat.o(107641);
         return;
       }
-      if (this.vRo.contains(paramd))
+      if (this.wds.contains(paramd))
       {
         paramd = new IllegalStateException("fetcher already in pool");
         AppMethodBeat.o(107641);
         throw paramd;
       }
-      this.vRo.offer(paramd);
+      this.wds.offer(paramd);
       AppMethodBeat.o(107641);
     }
     
@@ -104,7 +104,7 @@ public abstract interface d
       //   0: ldc 133
       //   2: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
       //   5: aload_0
-      //   6: getfield 45	com/tencent/mm/plugin/mmsight/segment/d$a:vRo	Ljava/util/concurrent/LinkedBlockingQueue;
+      //   6: getfield 45	com/tencent/mm/plugin/mmsight/segment/d$a:wds	Ljava/util/concurrent/LinkedBlockingQueue;
       //   9: ifnonnull +9 -> 18
       //   12: ldc 133
       //   14: invokestatic 50	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -113,7 +113,7 @@ public abstract interface d
       //   19: getfield 37	com/tencent/mm/plugin/mmsight/segment/d$a:aIY	Ljava/util/concurrent/locks/Lock;
       //   22: invokeinterface 138 1 0
       //   27: aload_0
-      //   28: getfield 45	com/tencent/mm/plugin/mmsight/segment/d$a:vRo	Ljava/util/concurrent/LinkedBlockingQueue;
+      //   28: getfield 45	com/tencent/mm/plugin/mmsight/segment/d$a:wds	Ljava/util/concurrent/LinkedBlockingQueue;
       //   31: ifnonnull +18 -> 49
       //   34: aload_0
       //   35: getfield 37	com/tencent/mm/plugin/mmsight/segment/d$a:aIY	Ljava/util/concurrent/locks/Lock;
@@ -122,7 +122,7 @@ public abstract interface d
       //   45: invokestatic 50	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   48: return
       //   49: aload_0
-      //   50: getfield 45	com/tencent/mm/plugin/mmsight/segment/d$a:vRo	Ljava/util/concurrent/LinkedBlockingQueue;
+      //   50: getfield 45	com/tencent/mm/plugin/mmsight/segment/d$a:wds	Ljava/util/concurrent/LinkedBlockingQueue;
       //   53: invokevirtual 145	java/util/concurrent/LinkedBlockingQueue:iterator	()Ljava/util/Iterator;
       //   56: astore_1
       //   57: aload_1
@@ -144,10 +144,10 @@ public abstract interface d
       //   95: aload_1
       //   96: invokevirtual 103	java/lang/Exception:getMessage	()Ljava/lang/String;
       //   99: aastore
-      //   100: invokestatic 107	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+      //   100: invokestatic 107	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
       //   103: aload_0
       //   104: aconst_null
-      //   105: putfield 45	com/tencent/mm/plugin/mmsight/segment/d$a:vRo	Ljava/util/concurrent/LinkedBlockingQueue;
+      //   105: putfield 45	com/tencent/mm/plugin/mmsight/segment/d$a:wds	Ljava/util/concurrent/LinkedBlockingQueue;
       //   108: aload_0
       //   109: getfield 37	com/tencent/mm/plugin/mmsight/segment/d$a:aIY	Ljava/util/concurrent/locks/Lock;
       //   112: invokeinterface 141 1 0
@@ -156,7 +156,7 @@ public abstract interface d
       //   122: return
       //   123: aload_0
       //   124: aconst_null
-      //   125: putfield 45	com/tencent/mm/plugin/mmsight/segment/d$a:vRo	Ljava/util/concurrent/LinkedBlockingQueue;
+      //   125: putfield 45	com/tencent/mm/plugin/mmsight/segment/d$a:wds	Ljava/util/concurrent/LinkedBlockingQueue;
       //   128: aload_0
       //   129: getfield 37	com/tencent/mm/plugin/mmsight/segment/d$a:aIY	Ljava/util/concurrent/locks/Lock;
       //   132: invokeinterface 141 1 0
@@ -166,7 +166,7 @@ public abstract interface d
       //   143: astore_1
       //   144: aload_0
       //   145: aconst_null
-      //   146: putfield 45	com/tencent/mm/plugin/mmsight/segment/d$a:vRo	Ljava/util/concurrent/LinkedBlockingQueue;
+      //   146: putfield 45	com/tencent/mm/plugin/mmsight/segment/d$a:wds	Ljava/util/concurrent/LinkedBlockingQueue;
       //   149: aload_0
       //   150: getfield 37	com/tencent/mm/plugin/mmsight/segment/d$a:aIY	Ljava/util/concurrent/locks/Lock;
       //   153: invokeinterface 141 1 0
@@ -189,37 +189,37 @@ public abstract interface d
       //   84	103	143	finally
     }
     
-    public final d dnB()
+    public final d dqz()
     {
       AppMethodBeat.i(107639);
-      long l = bt.HI();
-      ad.d("FetcherPool", "acquireFetcher");
-      if (this.vRo == null)
+      long l = bu.HQ();
+      ae.d("FetcherPool", "acquireFetcher");
+      if (this.wds == null)
       {
-        ad.d("FetcherPool", "acquireFetcher no pool directly return null");
+        ae.d("FetcherPool", "acquireFetcher no pool directly return null");
         AppMethodBeat.o(107639);
         return null;
       }
       this.aIY.lock();
-      ad.d("FetcherPool", "pool.size() %d, size %d, maxFetcherSize %d", new Object[] { Integer.valueOf(this.vRo.size()), Integer.valueOf(this.size), Integer.valueOf(this.vRp) });
-      if (this.vRo == null)
+      ae.d("FetcherPool", "pool.size() %d, size %d, maxFetcherSize %d", new Object[] { Integer.valueOf(this.wds.size()), Integer.valueOf(this.size), Integer.valueOf(this.wdt) });
+      if (this.wds == null)
       {
         this.aIY.unlock();
         AppMethodBeat.o(107639);
         return null;
       }
-      if ((this.vRo.isEmpty()) && (this.size < this.vRp))
+      if ((this.wds.isEmpty()) && (this.size < this.wdt))
       {
-        ad.d("FetcherPool", "new fetcher");
+        ae.d("FetcherPool", "new fetcher");
         this.size += 1;
         this.aIY.unlock();
       }
-      for (d locald = dnC();; locald = (d)this.vRo.poll(5L, TimeUnit.SECONDS))
+      for (d locald = dqA();; locald = (d)this.wds.poll(5L, TimeUnit.SECONDS))
       {
-        ad.d("FetcherPool", "time flee, acquireFetcher cost time %d", new Object[] { Long.valueOf(bt.aO(l)) });
+        ae.d("FetcherPool", "time flee, acquireFetcher cost time %d", new Object[] { Long.valueOf(bu.aO(l)) });
         AppMethodBeat.o(107639);
         return locald;
-        ad.d("FetcherPool", "waiting fetcher");
+        ae.d("FetcherPool", "waiting fetcher");
         this.aIY.unlock();
       }
     }

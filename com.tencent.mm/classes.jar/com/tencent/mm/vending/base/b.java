@@ -8,11 +8,11 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public abstract class b<_Struct, _Change>
   extends Vending<_Struct, Integer, _Change>
 {
-  public int Lhl = 5;
-  private a Lhm = new a((byte)0);
+  public int LDN = 5;
+  private a LDO = new a((byte)0);
   public int mCount = 0;
   
-  private void kr(int paramInt1, int paramInt2)
+  private void ky(int paramInt1, int paramInt2)
   {
     int i;
     int j;
@@ -25,9 +25,9 @@ public abstract class b<_Struct, _Change>
     for (;;)
     {
       int k;
-      synchronized (this.Lhm)
+      synchronized (this.LDO)
       {
-        Object localObject1 = this.Lhm;
+        Object localObject1 = this.LDO;
         if (!((a)localObject1).initialized)
         {
           ((a)localObject1).set(j, paramInt1);
@@ -96,12 +96,12 @@ public abstract class b<_Struct, _Change>
           j = m - paramInt2;
           localf = getLoader();
           localInteger = Integer.valueOf(j);
-          if (localf.jLd.get()) {}
+          if (localf.jOp.get()) {}
         }
-        synchronized (localf.Lhs)
+        synchronized (localf.LDU)
         {
-          Vending.f.b localb = (Vending.f.b)localf.Lhq.get(localInteger);
-          if ((localb != null) && (localb != Vending.f.b.Lhu))
+          Vending.f.b localb = (Vending.f.b)localf.LDS.get(localInteger);
+          if ((localb != null) && (localb != Vending.f.b.LDW))
           {
             paramInt2 += 1;
             break label295;
@@ -115,7 +115,7 @@ public abstract class b<_Struct, _Change>
             j = k + paramInt2;
             break label311;
           }
-          localf.Lhq.put(localInteger, Vending.f.b.Lhv);
+          localf.LDS.put(localInteger, Vending.f.b.LDX);
           localf.mVendingHandler.sendMessage(localf.mVendingHandler.obtainMessage(0, localInteger));
         }
         label455:
@@ -140,9 +140,9 @@ public abstract class b<_Struct, _Change>
     }
   }
   
-  protected abstract _Struct Rz(int paramInt);
+  protected abstract _Struct Sg(int paramInt);
   
-  protected abstract int fNO();
+  protected abstract int fSj();
   
   public final <T> T get(int paramInt)
   {
@@ -156,9 +156,9 @@ public abstract class b<_Struct, _Change>
   
   protected void loaderClear()
   {
-    synchronized (this.Lhm)
+    synchronized (this.LDO)
     {
-      a locala2 = this.Lhm;
+      a locala2 = this.LDO;
       locala2.Af = -1;
       locala2.Ah = -1;
       locala2.initialized = false;
@@ -168,7 +168,7 @@ public abstract class b<_Struct, _Change>
   
   protected void synchronizing(int paramInt, Object paramObject)
   {
-    this.mCount = fNO();
+    this.mCount = fSj();
     a.i("Vending.ForwardVending", "the count %s", new Object[] { Integer.valueOf(this.mCount) });
   }
   

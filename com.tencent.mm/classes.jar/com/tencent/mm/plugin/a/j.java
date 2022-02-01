@@ -4,9 +4,8 @@ import android.annotation.TargetApi;
 import android.util.Pair;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pointers.PInt;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.vfs.e;
-import com.tencent.mm.vfs.i;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.vfs.k;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.util.List;
@@ -15,19 +14,19 @@ public final class j
   implements f
 {
   private long duration;
-  private long fJL;
+  private long fLO;
   private String filePath;
-  private long iQF;
-  private long[] iQI;
-  public int iQJ;
-  private List<n> iQK;
-  private List<Pair> iQL;
-  public int iQO = 0;
+  private long[] iTB;
+  public int iTC;
+  private List<n> iTD;
+  private List<Pair> iTE;
+  public int iTH = 0;
+  private long iTy;
   
   private static p a(RandomAccessFile paramRandomAccessFile, byte[] paramArrayOfByte, long paramLong)
   {
     AppMethodBeat.i(133872);
-    ad.d("MicroMsg.Mp4Parser", "start to find trak atom.");
+    ae.d("MicroMsg.Mp4Parser", "start to find trak atom.");
     if (!c.a(paramRandomAccessFile, paramLong))
     {
       AppMethodBeat.o(133872);
@@ -40,21 +39,21 @@ public final class j
   
   private void reset()
   {
-    AppMethodBeat.i(197019);
+    AppMethodBeat.i(220253);
     this.filePath = null;
-    this.iQI = null;
-    this.iQJ = 0;
+    this.iTB = null;
+    this.iTC = 0;
     this.duration = 0L;
-    this.iQF = 0L;
-    this.fJL = 0L;
-    if (this.iQK != null) {
-      this.iQK.clear();
+    this.iTy = 0L;
+    this.fLO = 0L;
+    if (this.iTD != null) {
+      this.iTD.clear();
     }
-    if (this.iQL != null) {
-      this.iQL.clear();
+    if (this.iTE != null) {
+      this.iTE.clear();
     }
-    this.iQO = 0;
-    AppMethodBeat.o(197019);
+    this.iTH = 0;
+    AppMethodBeat.o(220253);
   }
   
   public final boolean L(String paramString, long paramLong)
@@ -62,8 +61,8 @@ public final class j
     AppMethodBeat.i(133871);
     reset();
     this.filePath = paramString;
-    this.fJL = paramLong;
-    if (!new e(this.filePath).exists())
+    this.fLO = paramLong;
+    if (!new k(this.filePath).exists())
     {
       AppMethodBeat.o(133871);
       return false;
@@ -79,16 +78,16 @@ public final class j
         arrayOfByte = new byte[8];
         localObject1 = localObject3;
         paramString = localRandomAccessFile;
-        localRandomAccessFile = i.dd(this.filePath, false);
+        localRandomAccessFile = com.tencent.mm.vfs.o.dg(this.filePath, false);
         localObject1 = localRandomAccessFile;
         paramString = localRandomAccessFile;
-        localObject3 = a(localRandomAccessFile, arrayOfByte, this.fJL);
+        localObject3 = a(localRandomAccessFile, arrayOfByte, this.fLO);
         if (localObject3 == null) {
           continue;
         }
         localObject1 = localRandomAccessFile;
         paramString = localRandomAccessFile;
-        ad.d("MicroMsg.Mp4Parser", "last trak atom file pos : " + ((a)localObject3).iQi);
+        ae.d("MicroMsg.Mp4Parser", "last trak atom file pos : " + ((a)localObject3).iTb);
         localObject1 = localRandomAccessFile;
         paramString = localRandomAccessFile;
         localg = p.b(localRandomAccessFile, arrayOfByte);
@@ -102,7 +101,7 @@ public final class j
         }
         localObject1 = localRandomAccessFile;
         paramString = localRandomAccessFile;
-        if (localg.iQG != g.iQC) {
+        if (localg.iTz != g.iTv) {
           continue;
         }
         i = 1;
@@ -112,9 +111,9 @@ public final class j
         byte[] arrayOfByte;
         g localg;
         paramString = (String)localObject1;
-        ad.printErrStackTrace("MicroMsg.Mp4Parser", localException, "", new Object[0]);
+        ae.printErrStackTrace("MicroMsg.Mp4Parser", localException, "", new Object[0]);
         paramString = (String)localObject1;
-        ad.e("MicroMsg.Mp4Parser", "parser mp4 error. e: " + localException.toString());
+        ae.e("MicroMsg.Mp4Parser", "parser mp4 error. e: " + localException.toString());
         if (localObject1 == null) {
           continue;
         }
@@ -126,7 +125,7 @@ public final class j
         }
         catch (IOException paramString)
         {
-          ad.printErrStackTrace("MicroMsg.Mp4Parser", paramString, "", new Object[0]);
+          ae.printErrStackTrace("MicroMsg.Mp4Parser", paramString, "", new Object[0]);
           continue;
         }
       }
@@ -143,7 +142,7 @@ public final class j
         }
         catch (IOException paramString)
         {
-          ad.printErrStackTrace("MicroMsg.Mp4Parser", paramString, "", new Object[0]);
+          ae.printErrStackTrace("MicroMsg.Mp4Parser", paramString, "", new Object[0]);
           continue;
         }
         int i = 0;
@@ -156,7 +155,7 @@ public final class j
         paramLong = ((p)localObject3).getEndPos() - localRandomAccessFile.getFilePointer();
         localObject1 = localRandomAccessFile;
         paramString = localRandomAccessFile;
-        ad.d("MicroMsg.Mp4Parser", "this trak atom is not video trak skip: ".concat(String.valueOf(paramLong)));
+        ae.d("MicroMsg.Mp4Parser", "this trak atom is not video trak skip: ".concat(String.valueOf(paramLong)));
         localObject1 = localRandomAccessFile;
         paramString = localRandomAccessFile;
         localObject3 = a(localRandomAccessFile, arrayOfByte, paramLong);
@@ -164,16 +163,16 @@ public final class j
       }
       localObject1 = localRandomAccessFile;
       paramString = localRandomAccessFile;
-      this.iQF = localg.iQF;
+      this.iTy = localg.iTy;
       localObject1 = localRandomAccessFile;
       paramString = localRandomAccessFile;
       this.duration = localg.duration;
       localObject1 = localRandomAccessFile;
       paramString = localRandomAccessFile;
-      ad.d("MicroMsg.Mp4Parser", "this trak atom is video trak. timeScale: " + this.iQF + " duration: " + this.duration);
+      ae.d("MicroMsg.Mp4Parser", "this trak atom is video trak. timeScale: " + this.iTy + " duration: " + this.duration);
       localObject1 = localRandomAccessFile;
       paramString = localRandomAccessFile;
-      localRandomAccessFile.seek(localg.iQH);
+      localRandomAccessFile.seek(localg.iTA);
       localObject1 = localRandomAccessFile;
       paramString = localRandomAccessFile;
       localObject3 = (o)c.a(localRandomAccessFile, arrayOfByte, a.blu);
@@ -184,22 +183,22 @@ public final class j
         ((o)localObject3).duration = this.duration;
         localObject1 = localRandomAccessFile;
         paramString = localRandomAccessFile;
-        ((o)localObject3).iQF = this.iQF;
+        ((o)localObject3).iTy = this.iTy;
         localObject1 = localRandomAccessFile;
         paramString = localRandomAccessFile;
         ((o)localObject3).f(localRandomAccessFile);
         localObject1 = localRandomAccessFile;
         paramString = localRandomAccessFile;
-        this.iQI = ((o)localObject3).iQI;
+        this.iTB = ((o)localObject3).iTB;
         localObject1 = localRandomAccessFile;
         paramString = localRandomAccessFile;
-        this.iQJ = (this.iQI.length - 2);
+        this.iTC = (this.iTB.length - 2);
         localObject1 = localRandomAccessFile;
         paramString = localRandomAccessFile;
-        this.iQK = ((o)localObject3).iQK;
+        this.iTD = ((o)localObject3).iTD;
         localObject1 = localRandomAccessFile;
         paramString = localRandomAccessFile;
-        this.iQL = ((o)localObject3).iQL;
+        this.iTE = ((o)localObject3).iTE;
       }
       if (localRandomAccessFile != null) {}
       try
@@ -209,26 +208,26 @@ public final class j
         return true;
         localObject1 = localRandomAccessFile;
         paramString = localRandomAccessFile;
-        ad.w("MicroMsg.Mp4Parser", "mdia atom parser fail.");
+        ae.w("MicroMsg.Mp4Parser", "mdia atom parser fail.");
         localObject3 = null;
       }
       catch (IOException paramString)
       {
-        ad.printErrStackTrace("MicroMsg.Mp4Parser", paramString, "", new Object[0]);
+        ae.printErrStackTrace("MicroMsg.Mp4Parser", paramString, "", new Object[0]);
       }
     }
   }
   
   public final boolean a(int paramInt1, int paramInt2, PInt paramPInt1, PInt paramPInt2)
   {
-    if (this.iQI == null) {
+    if (this.iTB == null) {
       return false;
     }
     int i = paramInt1;
     if (paramInt1 < 0) {
       i = 0;
     }
-    int j = this.iQI.length;
+    int j = this.iTB.length;
     if (i < j)
     {
       paramInt1 = paramInt2;
@@ -239,8 +238,8 @@ public final class j
       i = j - 2;
       paramInt1 = j - 1;
     }
-    long l1 = this.iQI[i];
-    long l2 = this.iQI[paramInt1];
+    long l1 = this.iTB[i];
+    long l2 = this.iTB[paramInt1];
     if (i == 0) {
       paramPInt1.value = 0;
     }
@@ -251,50 +250,50 @@ public final class j
     }
   }
   
-  public final int aQO()
+  public final int aRn()
   {
-    AppMethodBeat.i(197020);
+    AppMethodBeat.i(220254);
     for (;;)
     {
       try
       {
-        if (this.iQL == null) {
+        if (this.iTE == null) {
           continue;
         }
-        if (this.iQO == 0) {
-          this.iQO = ((int)(((Long)((Pair)this.iQL.get(this.iQL.size() - 1)).second).longValue() / 1000L / 1000L));
+        if (this.iTH == 0) {
+          this.iTH = ((int)(((Long)((Pair)this.iTE.get(this.iTE.size() - 1)).second).longValue() / 1000L / 1000L));
         }
-        i = this.iQO;
+        i = this.iTH;
       }
       catch (Exception localException)
       {
-        ad.printErrStackTrace("MicroMsg.Mp4Parser", localException, "get last key frame error.", new Object[0]);
+        ae.printErrStackTrace("MicroMsg.Mp4Parser", localException, "get last key frame error.", new Object[0]);
         int i = 0;
         continue;
       }
-      AppMethodBeat.o(197020);
+      AppMethodBeat.o(220254);
       return i;
       i = 0;
     }
   }
   
-  public final int aQP()
+  public final int aRo()
   {
-    return this.iQJ;
+    return this.iTC;
   }
   
   @TargetApi(5)
   public final boolean b(int paramInt, PInt paramPInt1, PInt paramPInt2)
   {
-    AppMethodBeat.i(197021);
+    AppMethodBeat.i(220255);
     for (;;)
     {
       try
       {
-        if (this.iQL == null) {
+        if (this.iTE == null) {
           continue;
         }
-        j = this.iQL.size();
+        j = this.iTE.size();
         long l = paramInt;
         paramPInt2.value = 0;
         paramPInt1.value = 0;
@@ -302,7 +301,7 @@ public final class j
         if (i >= j) {
           continue;
         }
-        localPair = (Pair)this.iQL.get(i);
+        localPair = (Pair)this.iTE.get(i);
         if (((Long)localPair.second).longValue() <= 1000L * (l * 1000L)) {
           continue;
         }
@@ -315,7 +314,7 @@ public final class j
         int i;
         Pair localPair;
         boolean bool = false;
-        ad.printErrStackTrace("MicroMsg.Mp4Parser", localException1, "seekVFrame seekTime[%d]", new Object[] { Integer.valueOf(paramInt) });
+        ae.printErrStackTrace("MicroMsg.Mp4Parser", localException1, "seekVFrame seekTime[%d]", new Object[] { Integer.valueOf(paramInt) });
         continue;
         continue;
         bool = false;
@@ -326,11 +325,11 @@ public final class j
       }
       try
       {
-        paramPInt1.value = ((int)(((Long)((Pair)this.iQL.get(j - 1)).second).longValue() / 1000L / 1000L));
+        paramPInt1.value = ((int)(((Long)((Pair)this.iTE.get(j - 1)).second).longValue() / 1000L / 1000L));
         paramPInt2.value = paramInt;
         bool = true;
-        ad.i("MicroMsg.Mp4Parser", "seek key Frame seekTime[%d] pre[%d] next[%d]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramPInt1.value), Integer.valueOf(paramPInt2.value) });
-        AppMethodBeat.o(197021);
+        ae.i("MicroMsg.Mp4Parser", "seek key Frame seekTime[%d] pre[%d] next[%d]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramPInt1.value), Integer.valueOf(paramPInt2.value) });
+        AppMethodBeat.o(220255);
         return bool;
       }
       catch (Exception localException2)
@@ -340,22 +339,22 @@ public final class j
       paramPInt1.value = ((int)(((Long)localPair.second).longValue() / 1000L / 1000L));
       i += 1;
     }
-    AppMethodBeat.o(197021);
+    AppMethodBeat.o(220255);
     return false;
   }
   
   public final int dy(int paramInt1, int paramInt2)
   {
-    if (this.iQI == null) {
+    if (this.iTB == null) {
       return 0;
     }
     long l = paramInt1 + paramInt2;
     paramInt1 = 0;
     paramInt2 = 0;
     int i = paramInt2;
-    if (paramInt1 < this.iQI.length)
+    if (paramInt1 < this.iTB.length)
     {
-      if (this.iQI[paramInt1] == l) {
+      if (this.iTB[paramInt1] == l) {
         i = paramInt1;
       }
     }
@@ -363,7 +362,7 @@ public final class j
       label44:
       return i;
     }
-    if (this.iQI[paramInt1] < l) {
+    if (this.iTB[paramInt1] < l) {
       paramInt2 = paramInt1;
     }
     for (;;)
@@ -371,7 +370,7 @@ public final class j
       paramInt1 += 1;
       break;
       i = paramInt2;
-      if (this.iQI[paramInt1] > l) {
+      if (this.iTB[paramInt1] > l) {
         break label44;
       }
     }
@@ -379,14 +378,14 @@ public final class j
   
   public final void release()
   {
-    AppMethodBeat.i(197022);
+    AppMethodBeat.i(220256);
     reset();
-    AppMethodBeat.o(197022);
+    AppMethodBeat.o(220256);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.a.j
  * JD-Core Version:    0.7.0.1
  */

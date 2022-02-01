@@ -2,52 +2,52 @@ package com.tencent.mm.plugin.brandservice.ui.timeline.offenread;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.api.d;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import d.g.b.p;
 import d.l;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/offenread/BizVideoChannelNativeExtraData;", "Lcom/tencent/mm/plugin/appbrand/api/IWeAppOpenNativeExtraData;", "()V", "bizSessionId", "", "getBizSessionId", "()I", "setBizSessionId", "(I)V", "dataBuffer", "", "getDataBuffer", "()Ljava/lang/String;", "setDataBuffer", "(Ljava/lang/String;)V", "toJsonString", "Companion", "plugin-brandservice_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/offenread/BizVideoChannelNativeExtraData;", "Lcom/tencent/mm/plugin/appbrand/api/IWeAppOpenNativeExtraData;", "()V", "bizSessionId", "", "getBizSessionId", "()I", "setBizSessionId", "(I)V", "dataBuffer", "", "getDataBuffer", "()Ljava/lang/String;", "setDataBuffer", "(Ljava/lang/String;)V", "toJsonString", "Companion", "plugin-brandservice_release"})
 public final class h
   implements d
 {
-  public static final a ohm;
-  String oha = "";
-  int ohl;
+  public static final a onl;
+  String omZ = "";
+  int onk;
   
   static
   {
-    AppMethodBeat.i(209810);
-    ohm = new a((byte)0);
-    AppMethodBeat.o(209810);
+    AppMethodBeat.i(208802);
+    onl = new a((byte)0);
+    AppMethodBeat.o(208802);
   }
   
-  public final String aYt()
+  public final String aYO()
   {
-    AppMethodBeat.i(209809);
+    AppMethodBeat.i(208801);
     try
     {
       Object localObject = new JSONObject();
-      ((JSONObject)localObject).put("sessionId", this.ohl);
-      ((JSONObject)localObject).put("dataBuffer", bt.nullAsNil(this.oha));
+      ((JSONObject)localObject).put("sessionId", this.onk);
+      ((JSONObject)localObject).put("dataBuffer", bu.nullAsNil(this.omZ));
       localObject = new JSONObject().put("bizVideoChannelInfo", localObject).toString();
       p.g(localObject, "JSONObject().put(\"bizVid…nelInfo\", obj).toString()");
-      AppMethodBeat.o(209809);
+      AppMethodBeat.o(208801);
       return localObject;
     }
     catch (JSONException localJSONException)
     {
       for (;;)
       {
-        ad.printErrStackTrace("MicroMsg.BizVideoChannelNativeExtraData", (Throwable)localJSONException, "", new Object[0]);
+        ae.printErrStackTrace("MicroMsg.BizVideoChannelNativeExtraData", (Throwable)localJSONException, "", new Object[0]);
         String str = "{}";
       }
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/offenread/BizVideoChannelNativeExtraData$Companion;", "", "()V", "TAG", "", "plugin-brandservice_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/offenread/BizVideoChannelNativeExtraData$Companion;", "", "()V", "TAG", "", "plugin-brandservice_release"})
   public static final class a {}
 }
 

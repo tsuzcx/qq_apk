@@ -40,7 +40,7 @@ public class s
     //   51: iload 5
     //   53: invokestatic 46	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   56: aastore
-    //   57: invokestatic 51	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   57: invokestatic 51	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   60: aload 6
     //   62: ldc 53
     //   64: invokevirtual 57	org/json/JSONObject:has	(Ljava/lang/String;)Z
@@ -66,30 +66,30 @@ public class s
     //   106: invokevirtual 32	org/json/JSONObject:optInt	(Ljava/lang/String;)I
     //   109: invokevirtual 72	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
     //   112: pop
-    //   113: new 74	com/tencent/mm/g/a/oe
+    //   113: new 74	com/tencent/mm/g/a/of
     //   116: dup
-    //   117: invokespecial 75	com/tencent/mm/g/a/oe:<init>	()V
+    //   117: invokespecial 75	com/tencent/mm/g/a/of:<init>	()V
     //   120: astore 6
     //   122: aload 6
-    //   124: getfield 79	com/tencent/mm/g/a/oe:dCd	Lcom/tencent/mm/g/a/oe$a;
+    //   124: getfield 79	com/tencent/mm/g/a/of:dDi	Lcom/tencent/mm/g/a/of$a;
     //   127: iload 4
-    //   129: putfield 85	com/tencent/mm/g/a/oe$a:dCe	I
+    //   129: putfield 85	com/tencent/mm/g/a/of$a:dDj	I
     //   132: aload 6
-    //   134: getfield 79	com/tencent/mm/g/a/oe:dCd	Lcom/tencent/mm/g/a/oe$a;
+    //   134: getfield 79	com/tencent/mm/g/a/of:dDi	Lcom/tencent/mm/g/a/of$a;
     //   137: iload 5
-    //   139: putfield 87	com/tencent/mm/g/a/oe$a:jumpType	I
+    //   139: putfield 87	com/tencent/mm/g/a/of$a:jumpType	I
     //   142: aload_2
     //   143: ifnull +15 -> 158
     //   146: aload 6
-    //   148: getfield 79	com/tencent/mm/g/a/oe:dCd	Lcom/tencent/mm/g/a/oe$a;
+    //   148: getfield 79	com/tencent/mm/g/a/of:dDi	Lcom/tencent/mm/g/a/of$a;
     //   151: aload_2
     //   152: invokevirtual 91	org/json/JSONObject:toString	()Ljava/lang/String;
-    //   155: putfield 95	com/tencent/mm/g/a/oe$a:extraInfo	Ljava/lang/String;
+    //   155: putfield 95	com/tencent/mm/g/a/of$a:extraInfo	Ljava/lang/String;
     //   158: aload 6
-    //   160: getfield 79	com/tencent/mm/g/a/oe:dCd	Lcom/tencent/mm/g/a/oe$a;
+    //   160: getfield 79	com/tencent/mm/g/a/of:dDi	Lcom/tencent/mm/g/a/of$a;
     //   163: aload_1
-    //   164: putfield 99	com/tencent/mm/g/a/oe$a:context	Landroid/content/Context;
-    //   167: getstatic 105	com/tencent/mm/sdk/b/a:IbL	Lcom/tencent/mm/sdk/b/a;
+    //   164: putfield 99	com/tencent/mm/g/a/of$a:context	Landroid/content/Context;
+    //   167: getstatic 105	com/tencent/mm/sdk/b/a:IvT	Lcom/tencent/mm/sdk/b/a;
     //   170: aload 6
     //   172: invokevirtual 109	com/tencent/mm/sdk/b/a:l	(Lcom/tencent/mm/sdk/b/b;)Z
     //   175: pop
@@ -103,7 +103,7 @@ public class s
     //   188: astore_1
     //   189: ldc 36
     //   191: ldc 120
-    //   193: invokestatic 124	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   193: invokestatic 124	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   196: aload_3
     //   197: ldc 126
     //   199: aconst_null
@@ -142,7 +142,7 @@ public class s
   
   public final void b(b<g>.a paramb) {}
   
-  public final int ccO()
+  public final int ced()
   {
     return 2;
   }

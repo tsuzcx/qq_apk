@@ -1,18 +1,17 @@
 package com.tencent.mm.plugin.ball.d;
 
-import com.tencent.mm.plugin.ball.model.BallInfo;
-
 public abstract interface c
+  extends b
 {
-  public abstract void a(BallInfo paramBallInfo, int paramInt);
+  public abstract void bLi();
   
-  public abstract void e(BallInfo paramBallInfo);
+  public abstract void bLj();
   
-  public abstract void u(BallInfo paramBallInfo);
+  public abstract void nO(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.ball.d.c
  * JD-Core Version:    0.7.0.1
  */

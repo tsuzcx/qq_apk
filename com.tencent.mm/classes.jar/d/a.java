@@ -1,6 +1,6 @@
 package d;
 
-@l(gfA=1, gfx={1, 1, 16}, gfy={"kotlin/ExceptionsKt__ExceptionsKt"})
+@l(gjZ={1, 1, 16}, gka={"kotlin/ExceptionsKt__ExceptionsKt"}, gkc=1)
 public final class a
   extends b
 {}

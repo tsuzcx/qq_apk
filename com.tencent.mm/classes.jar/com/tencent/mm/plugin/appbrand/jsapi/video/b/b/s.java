@@ -6,7 +6,7 @@ public abstract interface s
   
   public abstract void onTransferStart();
   
-  public abstract void tv(int paramInt);
+  public abstract void tz(int paramInt);
 }
 
 

@@ -7,23 +7,23 @@ import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bb.l;
+import com.tencent.mm.ba.l;
 import com.tencent.mm.g.c.aw;
-import com.tencent.mm.model.ba;
-import com.tencent.mm.model.bj;
-import com.tencent.mm.model.bz;
+import com.tencent.mm.model.bc;
+import com.tencent.mm.model.bl;
 import com.tencent.mm.model.c;
-import com.tencent.mm.model.u;
+import com.tencent.mm.model.cb;
+import com.tencent.mm.model.v;
 import com.tencent.mm.plugin.messenger.foundation.a.a.j;
 import com.tencent.mm.pluginsdk.model.app.q;
 import com.tencent.mm.pluginsdk.ui.preference.HelperHeaderPreference;
 import com.tencent.mm.sdk.e.n;
 import com.tencent.mm.sdk.e.n.b;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.am;
-import com.tencent.mm.storage.bq;
+import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.aj;
+import com.tencent.mm.storage.an;
+import com.tencent.mm.storage.br;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.base.preference.CheckBoxPreference;
 import com.tencent.mm.ui.base.preference.f;
@@ -31,7 +31,7 @@ import com.tencent.mm.ui.base.preference.f;
 public final class m
   implements com.tencent.mm.pluginsdk.b.a, n.b
 {
-  private am contact;
+  private an contact;
   Context context;
   private boolean enable;
   private f screen;
@@ -41,13 +41,13 @@ public final class m
     this.context = paramContext;
   }
   
-  private void cdo()
+  private void ceD()
   {
     boolean bool2 = true;
     AppMethodBeat.i(27215);
-    this.enable = u.aAL();
-    Object localObject = (HelperHeaderPreference)this.screen.aVD("contact_info_header_helper");
-    ((HelperHeaderPreference)localObject).aZ(this.contact.field_username, this.contact.adv(), this.context.getString(2131757777));
+    this.enable = v.aBb();
+    Object localObject = (HelperHeaderPreference)this.screen.aXe("contact_info_header_helper");
+    ((HelperHeaderPreference)localObject).ba(this.contact.field_username, this.contact.adG(), this.context.getString(2131757777));
     int i;
     if (this.enable)
     {
@@ -59,15 +59,15 @@ public final class m
       }
       bool1 = true;
       label89:
-      ((f)localObject).cP("contact_info_go_to_sync", bool1);
+      ((f)localObject).cT("contact_info_go_to_sync", bool1);
       localObject = this.screen;
       if (this.enable) {
         break label185;
       }
       bool1 = true;
       label115:
-      ((f)localObject).cP("contact_info_remind_me_syncing_tip", bool1);
-      this.screen.cP("contact_info_qqsync_install", this.enable);
+      ((f)localObject).cT("contact_info_remind_me_syncing_tip", bool1);
+      this.screen.cT("contact_info_qqsync_install", this.enable);
       localObject = this.screen;
       if (this.enable) {
         break label190;
@@ -78,7 +78,7 @@ public final class m
     label190:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      ((f)localObject).cP("contact_info_qqsync_uninstall", bool1);
+      ((f)localObject).cT("contact_info_qqsync_uninstall", bool1);
       AppMethodBeat.o(27215);
       return;
       i = 0;
@@ -93,29 +93,29 @@ public final class m
   public final void a(int paramInt, n paramn, Object paramObject)
   {
     AppMethodBeat.i(27214);
-    if (this.enable != u.aAL()) {
-      cdo();
+    if (this.enable != v.aBb()) {
+      ceD();
     }
     AppMethodBeat.o(27214);
   }
   
-  public final boolean a(f paramf, am paramam, boolean paramBoolean, int paramInt)
+  public final boolean a(f paramf, an paraman, boolean paramBoolean, int paramInt)
   {
     AppMethodBeat.i(27212);
-    ba.aBQ();
-    c.ajl().a(this);
+    bc.aCg();
+    c.ajA().a(this);
     this.screen = paramf;
-    this.contact = paramam;
+    this.contact = paraman;
     paramf.addPreferencesFromResource(2131951653);
-    cdo();
+    ceD();
     AppMethodBeat.o(27212);
     return true;
   }
   
-  public final boolean aaG(String paramString)
+  public final boolean abx(String paramString)
   {
     AppMethodBeat.i(27210);
-    if (bt.nullAsNil(paramString).length() <= 0)
+    if (bu.nullAsNil(paramString).length() <= 0)
     {
       AppMethodBeat.o(27210);
       return false;
@@ -128,8 +128,8 @@ public final class m
         ((Intent)localObject).addFlags(268435456);
         paramString = this.context;
         localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
-        com.tencent.mm.hellhoundlib.a.a.a(paramString, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahp(), "com/tencent/mm/plugin/profile/ui/ContactWidgetQQSync", "goToSync", "()Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        paramString.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mq(0));
+        com.tencent.mm.hellhoundlib.a.a.a(paramString, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahE(), "com/tencent/mm/plugin/profile/ui/ContactWidgetQQSync", "goToSync", "()Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramString.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mt(0));
         com.tencent.mm.hellhoundlib.a.a.a(paramString, "com/tencent/mm/plugin/profile/ui/ContactWidgetQQSync", "goToSync", "()Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       }
       for (;;)
@@ -141,13 +141,13 @@ public final class m
     }
     if ("contact_info_remind_me_syncing".equals(paramString))
     {
-      paramString = (CheckBoxPreference)this.screen.aVD("contact_info_remind_me_syncing");
-      ba.aBQ();
-      c.ajl().set(65792, Boolean.valueOf(paramString.isChecked()));
+      paramString = (CheckBoxPreference)this.screen.aXe("contact_info_remind_me_syncing");
+      bc.aCg();
+      c.ajA().set(65792, Boolean.valueOf(paramString.isChecked()));
       if (paramString.isChecked()) {}
       for (paramString = "1";; paramString = "2")
       {
-        bz.F(6, paramString);
+        cb.F(6, paramString);
         AppMethodBeat.o(27210);
         return true;
       }
@@ -176,11 +176,11 @@ public final class m
     return false;
   }
   
-  public final boolean cdn()
+  public final boolean ceC()
   {
     AppMethodBeat.i(27213);
-    ba.aBQ();
-    c.ajl().b(this);
+    bc.aCg();
+    c.ajA().b(this);
     AppMethodBeat.o(27213);
     return true;
   }
@@ -195,7 +195,7 @@ public final class m
     {
       paramContext.getString(2131755906);
       paramContext = h.b(paramContext, str, true, null);
-      ba.ajF().ay(new Runnable()
+      bc.ajU().aw(new Runnable()
       {
         public final void run()
         {
@@ -206,8 +206,8 @@ public final class m
           if (bool)
           {
             str = "3";
-            bz.F(6, str);
-            i = u.aAy();
+            cb.F(6, str);
+            i = v.aAO();
             if (!bool) {
               break label145;
             }
@@ -215,22 +215,22 @@ public final class m
           }
           for (;;)
           {
-            ba.aBQ();
-            c.ajl().set(34, Integer.valueOf(i));
-            ba.aBQ();
-            c.azo().c(new l("", "", "", "", "", "", "", "", i, "", ""));
+            bc.aCg();
+            c.ajA().set(34, Integer.valueOf(i));
+            bc.aCg();
+            c.azE().d(new l("", "", "", "", "", "", "", "", i, "", ""));
             if (!paramBoolean)
             {
-              bj.Bp("qqsync");
-              ba.aBQ();
-              c.azv().aTx("qqsync");
+              bl.BR("qqsync");
+              bc.aCg();
+              c.azL().aUY("qqsync");
             }
-            aq.f(new Runnable()
+            ar.f(new Runnable()
             {
               public final void run()
               {
                 AppMethodBeat.i(27208);
-                m.3.this.pgO.dismiss();
+                m.3.this.pnu.dismiss();
                 AppMethodBeat.o(27208);
               }
             });

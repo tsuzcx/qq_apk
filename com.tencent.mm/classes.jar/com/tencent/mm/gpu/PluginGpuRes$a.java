@@ -1,7 +1,7 @@
 package com.tencent.mm.gpu;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.wxperf.jni.egl.EglHook.a;
 
 final class PluginGpuRes$a
@@ -9,9 +9,9 @@ final class PluginGpuRes$a
 {
   public final void e(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(219482);
-    ad.e(paramString1, paramString2);
-    AppMethodBeat.o(219482);
+    AppMethodBeat.i(209604);
+    ae.e(paramString1, paramString2);
+    AppMethodBeat.o(209604);
   }
 }
 

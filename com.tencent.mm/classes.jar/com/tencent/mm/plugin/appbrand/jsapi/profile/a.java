@@ -2,28 +2,28 @@ package com.tencent.mm.plugin.appbrand.jsapi.profile;
 
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bs.d;
+import com.tencent.mm.br.d;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask.ProcessRequest;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask.ProcessResult;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask.b;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 import d.g.b.p;
 import d.l;
 import org.json.JSONObject;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/profile/JsApiOpenBizProfile;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandAsyncJsApi;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "()V", "invoke", "", "env", "data", "Lorg/json/JSONObject;", "callbackId", "", "Companion", "plugin-appbrand-integration_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsapi/profile/JsApiOpenBizProfile;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandAsyncJsApi;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "()V", "invoke", "", "env", "data", "Lorg/json/JSONObject;", "callbackId", "", "Companion", "plugin-appbrand-integration_release"})
 public final class a
   extends com.tencent.mm.plugin.appbrand.jsapi.a<c>
 {
   private static final int CTRL_INDEX = 560;
   private static final String NAME = "openBizProfile";
-  public static final a lep;
+  public static final a lia;
   
   static
   {
     AppMethodBeat.i(50637);
-    lep = new a((byte)0);
+    lia = new a((byte)0);
     NAME = "openBizProfile";
     CTRL_INDEX = 560;
     AppMethodBeat.o(50637);
@@ -37,9 +37,9 @@ public final class a
     Object localObject = paramJSONObject.optString("username");
     final int i = paramJSONObject.optInt("scene", 122);
     final String str = paramJSONObject.optString("profileReportInfo");
-    if (bt.isNullOrNil((String)localObject))
+    if (bu.isNullOrNil((String)localObject))
     {
-      paramc.h(paramInt, Pg("fail:invalid data"));
+      paramc.h(paramInt, PO("fail:invalid data"));
       AppMethodBeat.o(50636);
       return;
     }
@@ -51,10 +51,10 @@ public final class a
     AppMethodBeat.o(50636);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/profile/JsApiOpenBizProfile$Companion;", "", "()V", "CTRL_INDEX", "", "CTRL_INDEX$annotations", "getCTRL_INDEX", "()I", "NAME", "", "NAME$annotations", "getNAME", "()Ljava/lang/String;", "TAG", "plugin-appbrand-integration_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsapi/profile/JsApiOpenBizProfile$Companion;", "", "()V", "CTRL_INDEX", "", "CTRL_INDEX$annotations", "getCTRL_INDEX", "()I", "NAME", "", "NAME$annotations", "getNAME", "()Ljava/lang/String;", "TAG", "plugin-appbrand-integration_release"})
   public static final class a {}
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "result", "Lcom/tencent/mm/plugin/appbrand/jsapi/profile/ProfileResult;", "kotlin.jvm.PlatformType", "onReceiveResult"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "result", "Lcom/tencent/mm/plugin/appbrand/jsapi/profile/ProfileResult;", "kotlin.jvm.PlatformType", "onReceiveResult"})
   static final class b<R extends AppBrandProxyUIProcessTask.ProcessResult>
     implements AppBrandProxyUIProcessTask.b<ProfileResult>
   {

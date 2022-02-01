@@ -2,120 +2,95 @@ package com.tencent.mm.plugin.ball.service;
 
 import android.os.Looper;
 import android.os.ResultReceiver;
+import com.tencent.e.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.ball.c.b;
 import com.tencent.mm.plugin.ball.c.c;
-import com.tencent.mm.plugin.ball.c.h;
 import com.tencent.mm.plugin.ball.model.BallInfo;
 import com.tencent.mm.plugin.ball.model.BallReportInfo;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.ax;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.plugin.ball.ui.FloatBallProxyUI.a;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.sdk.platformtools.bu;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class a
   implements com.tencent.mm.plugin.ball.c.a
 {
-  private ResultReceiver coZ;
-  public BallInfo nGj;
-  protected int nGk;
-  protected c nGl;
-  public ResultReceiver nGm;
+  private ResultReceiver cpd;
+  public BallInfo nLK;
+  protected int nLL;
+  protected c nLM;
+  protected FloatBallProxyUI.a nLN;
+  protected ResultReceiver nLO;
   
   public a()
   {
     AppMethodBeat.i(106062);
-    this.nGm = new FloatBallHelper.1(this, ap.createFreeHandler(Looper.getMainLooper()));
-    this.coZ = new FloatBallHelper.2(this, ap.createFreeHandler(Looper.getMainLooper()));
-    this.nGl = ((c)g.ab(c.class));
+    this.nLO = new FloatBallHelper.1(this, aq.createFreeHandler(Looper.getMainLooper()));
+    this.cpd = new FloatBallHelper.6(this, aq.createFreeHandler(Looper.getMainLooper()));
+    this.nLM = ((c)g.ab(c.class));
+    this.nLN = new FloatBallProxyUI.a()
+    {
+      public final void eH(int paramAnonymousInt1, int paramAnonymousInt2)
+      {
+        AppMethodBeat.i(209432);
+        ae.i("MicroMsg.FloatBallHelper", "floatBallProxyUIResultCallback, reach count limit, callback: %d", new Object[] { Integer.valueOf(paramAnonymousInt2) });
+        if (paramAnonymousInt2 == 1)
+        {
+          ae.i("MicroMsg.FloatBallHelper", "floatBallProxyUIResultCallback, show float menu view");
+          a.this.a(a.this.nLO);
+          AppMethodBeat.o(209432);
+          return;
+        }
+        if ((paramAnonymousInt2 == 2) && (paramAnonymousInt1 == 1) && (a.this.nLK != null))
+        {
+          a.this.nLK.nLw.nLE = 2;
+          ((c)g.ab(c.class)).s(a.this.nLK);
+        }
+        AppMethodBeat.o(209432);
+      }
+    };
     AppMethodBeat.o(106062);
   }
   
-  private BallInfo Wk(String paramString)
+  private BallInfo WW(String paramString)
   {
-    AppMethodBeat.i(217252);
+    AppMethodBeat.i(209438);
     try
     {
       paramString = BallInfo.ad(new JSONObject(paramString));
-      AppMethodBeat.o(217252);
+      AppMethodBeat.o(209438);
       return paramString;
     }
     catch (JSONException paramString)
     {
-      ad.printErrStackTrace("MicroMsg.FloatBallHelper", paramString, "getCurrentBallFromMMKV:%s", new Object[] { this.nGj });
-      AppMethodBeat.o(217252);
+      ae.printErrStackTrace("MicroMsg.FloatBallHelper", paramString, "getCurrentBallFromMMKV:%s", new Object[] { this.nLK });
+      AppMethodBeat.o(209438);
     }
     return null;
   }
   
-  private void bKK()
-  {
-    AppMethodBeat.i(217255);
-    if (bgI())
-    {
-      BallInfo localBallInfo = bKw();
-      if (localBallInfo != null)
-      {
-        BallReportInfo localBallReportInfo = this.nGj.nFZ;
-        this.nGj = localBallInfo;
-        this.nGj.b(localBallReportInfo);
-        ad.i("MicroMsg.FloatBallHelper", "replaceMessageBallIfNeed, replace current message ball reportInfo: %s", new Object[] { this.nGj.nFZ });
-      }
-    }
-    AppMethodBeat.o(217255);
-  }
-  
-  private void bKL()
-  {
-    AppMethodBeat.i(217256);
-    ad.i("MicroMsg.FloatBallHelper", "alvinluo removeMessageBallIfNeed enable: %b, isFromMessageFloatBall: %b, ballInfo.contentType: %d, originFloatBallType: %d", new Object[] { Boolean.valueOf(bKI()), Boolean.valueOf(bKJ()), Integer.valueOf(this.nGj.beN), Integer.valueOf(this.nGk) });
-    if ((bgI()) && (bKI()) && (bKJ()) && (this.nGl != null)) {
-      this.nGl.xU(this.nGk);
-    }
-    AppMethodBeat.o(217256);
-  }
-  
-  static String bKu()
+  static String bLr()
   {
     AppMethodBeat.i(106068);
-    int i = com.tencent.mm.kernel.a.aiN();
+    int i = com.tencent.mm.kernel.a.ajc();
     if (i != 0)
     {
       long l = i;
       String str = (l & 0xFFFFFFFF) + "#" + "float_ball_storage";
-      ad.i("MicroMsg.FloatBallHelper", "accountDataKey:%s", new Object[] { str });
+      ae.i("MicroMsg.FloatBallHelper", "accountDataKey:%s", new Object[] { str });
       AppMethodBeat.o(106068);
       return str;
     }
-    ad.i("MicroMsg.FloatBallHelper", "accountDataKey:%s", new Object[] { "float_ball_storage" });
+    ae.i("MicroMsg.FloatBallHelper", "accountDataKey:%s", new Object[] { "float_ball_storage" });
     AppMethodBeat.o(106068);
     return "float_ball_storage";
   }
   
-  private BallInfo bKw()
-  {
-    AppMethodBeat.i(217251);
-    ad.d("MicroMsg.FloatBallHelper", "getCurrentMessageBallInner enableMessageFloatBall: %b", new Object[] { Boolean.valueOf(bgI()) });
-    if ((bgI()) && (this.nGj != null))
-    {
-      Object localObject = String.format("%s#%s", new Object[] { Integer.valueOf(20), this.nGj.key });
-      localObject = ax.aQz(bKu()).decodeString((String)localObject);
-      ad.d("MicroMsg.FloatBallHelper", "getCurrentMessageBallInner enableMessageFloatBall data: %s", new Object[] { localObject });
-      if (!bt.isNullOrNil((String)localObject))
-      {
-        localObject = Wk((String)localObject);
-        AppMethodBeat.o(217251);
-        return localObject;
-      }
-    }
-    AppMethodBeat.o(217251);
-    return null;
-  }
-  
-  private static boolean eB(String paramString1, String paramString2)
+  private static boolean eE(String paramString1, String paramString2)
   {
     AppMethodBeat.i(106089);
     if ((paramString1 == null) && (paramString2 == null))
@@ -128,7 +103,7 @@ public class a
       AppMethodBeat.o(106089);
       return true;
     }
-    if ((!bt.isNullOrNil(paramString1)) && (!bt.isNullOrNil(paramString2)) && (paramString1.equals(paramString2)))
+    if ((!bu.isNullOrNil(paramString1)) && (!bu.isNullOrNil(paramString2)) && (paramString1.equals(paramString2)))
     {
       AppMethodBeat.o(106089);
       return true;
@@ -137,101 +112,108 @@ public class a
     return false;
   }
   
+  private static void t(Runnable paramRunnable)
+  {
+    AppMethodBeat.i(224568);
+    h.MqF.i(paramRunnable, "FloatBallLoopTag");
+    AppMethodBeat.o(224568);
+  }
+  
   public final void V(boolean paramBoolean)
   {
     AppMethodBeat.i(106082);
-    if ((this.nGj != null) && (this.nGl != null)) {
-      this.nGl.a(this.nGj, paramBoolean);
+    if ((this.nLK != null) && (this.nLM != null)) {
+      this.nLM.a(this.nLK, paramBoolean);
     }
     AppMethodBeat.o(106082);
   }
   
-  public final void Wl(String paramString)
+  public final void WX(String paramString)
   {
     AppMethodBeat.i(106081);
-    if ((this.nGj != null) && (!bt.isNullOrNil(paramString)) && (!eB(this.nGj.dDH, paramString)))
+    if ((this.nLK != null) && (!bu.isNullOrNil(paramString)) && (!eE(this.nLK.dEM, paramString)))
     {
-      ad.i("MicroMsg.FloatBallHelper", "updateIcon, icon:%s", new Object[] { paramString });
-      this.nGj.dDH = paramString;
-      bKC();
+      ae.i("MicroMsg.FloatBallHelper", "updateIcon, icon:%s", new Object[] { paramString });
+      this.nLK.dEM = paramString;
+      bLz();
     }
     AppMethodBeat.o(106081);
   }
   
-  public void Wm(String paramString)
+  public void WY(String paramString)
   {
     AppMethodBeat.i(106083);
-    if ((this.nGj != null) && (!bt.isNullOrNil(paramString)))
+    if ((this.nLK != null) && (!bu.isNullOrNil(paramString)))
     {
       String str = paramString;
       if (paramString.length() > 50) {
         str = paramString.substring(0, 50);
       }
-      if (!eB(this.nGj.name, str))
+      if (!eE(this.nLK.name, str))
       {
-        ad.i("MicroMsg.FloatBallHelper", "updateName, name:%s", new Object[] { str });
-        this.nGj.name = str;
-        bKC();
+        ae.i("MicroMsg.FloatBallHelper", "updateName, name:%s", new Object[] { str });
+        this.nLK.name = str;
+        bLz();
       }
     }
     AppMethodBeat.o(106083);
   }
   
-  public final void Wn(String paramString)
+  public final void WZ(String paramString)
   {
     AppMethodBeat.i(106084);
-    if ((this.nGj != null) && (!bt.isNullOrNil(paramString)) && (!eB(this.nGj.desc, paramString)))
+    if ((this.nLK != null) && (!bu.isNullOrNil(paramString)) && (!eE(this.nLK.desc, paramString)))
     {
-      ad.i("MicroMsg.FloatBallHelper", "updateDesc, desc:%s", new Object[] { paramString });
-      this.nGj.desc = paramString;
-      bKC();
+      ae.i("MicroMsg.FloatBallHelper", "updateDesc, desc:%s", new Object[] { paramString });
+      this.nLK.desc = paramString;
+      bLz();
     }
     AppMethodBeat.o(106084);
   }
   
   public final void a(ResultReceiver paramResultReceiver)
   {
-    AppMethodBeat.i(217250);
-    if (this.nGl != null) {
-      this.nGl.a(paramResultReceiver);
+    AppMethodBeat.i(209436);
+    if (this.nLM != null) {
+      this.nLM.a(paramResultReceiver);
     }
-    AppMethodBeat.o(217250);
+    AppMethodBeat.o(209436);
   }
   
   public void ac(int paramInt, String paramString)
   {
     AppMethodBeat.i(106063);
-    this.nGj = new BallInfo(paramInt, paramString);
-    this.nGk = paramInt;
-    paramString = bKv();
+    this.nLK = new BallInfo(paramInt, paramString);
+    this.nLL = paramInt;
+    paramString = bLs();
     if (paramString != null)
     {
-      ad.i("MicroMsg.FloatBallHelper", "replaceCurrentBallIfNeed, replace current ball");
-      this.nGj = paramString;
+      ae.i("MicroMsg.FloatBallHelper", "replaceCurrentBallIfNeed, replace current ball");
+      this.nLK = paramString;
     }
-    if (this.nGl != null) {
-      this.nGl.a(this.nGj, this.coZ);
+    if (this.nLM != null) {
+      this.nLM.a(this.nLK, this.cpd);
     }
     AppMethodBeat.o(106063);
   }
   
   protected void ad(int paramInt, String paramString) {}
   
-  public final void b(h paramh)
+  public final void b(com.tencent.mm.plugin.ball.c.i parami)
   {
     AppMethodBeat.i(176958);
-    if ((this.nGl != null) && (paramh != null)) {
-      this.nGl.a(paramh);
+    if ((this.nLM != null) && (parami != null)) {
+      this.nLM.a(parami);
     }
     AppMethodBeat.o(176958);
   }
   
-  public final BallInfo bJU()
+  public final BallInfo bKS()
   {
     AppMethodBeat.i(106071);
-    if (this.nGl != null)
+    if (this.nLM != null)
     {
-      BallInfo localBallInfo = this.nGl.i(this.nGj);
+      BallInfo localBallInfo = this.nLM.i(this.nLK);
       AppMethodBeat.o(106071);
       return localBallInfo;
     }
@@ -239,162 +221,137 @@ public class a
     return null;
   }
   
-  public void bKA()
+  public final void bKY()
   {
-    AppMethodBeat.i(106076);
-    if (this.nGl != null) {
-      this.nGl.m(this.nGj);
+    AppMethodBeat.i(106069);
+    if (this.nLM != null) {
+      this.nLM.bKY();
     }
-    AppMethodBeat.o(106076);
+    AppMethodBeat.o(106069);
   }
   
-  public void bKB()
-  {
-    AppMethodBeat.i(106077);
-    if (this.nGl != null) {
-      this.nGl.k(this.nGj);
-    }
-    AppMethodBeat.o(106077);
-  }
-  
-  public void bKC()
-  {
-    AppMethodBeat.i(106078);
-    if (this.nGl != null) {
-      this.nGl.l(this.nGj);
-    }
-    AppMethodBeat.o(106078);
-  }
-  
-  public final void bKD()
+  public final void bLA()
   {
     AppMethodBeat.i(106079);
-    if (this.nGl != null) {
-      this.nGl.iO(true);
+    if (this.nLM != null) {
+      this.nLM.iN(true);
     }
     AppMethodBeat.o(106079);
   }
   
-  public final void bKE()
+  public final void bLB()
   {
     AppMethodBeat.i(106080);
-    if (this.nGl != null) {
-      this.nGl.iN(true);
+    if (this.nLM != null) {
+      this.nLM.iM(true);
     }
     AppMethodBeat.o(106080);
   }
   
-  public final void bKF()
+  public final void bLC()
   {
-    AppMethodBeat.i(217253);
-    if (this.nGl != null) {
-      this.nGl.a(System.currentTimeMillis(), null);
+    AppMethodBeat.i(209439);
+    if (this.nLM != null) {
+      this.nLM.a(System.currentTimeMillis(), null);
     }
-    AppMethodBeat.o(217253);
+    AppMethodBeat.o(209439);
   }
   
-  public final BallReportInfo bKG()
+  public final BallReportInfo bLD()
   {
     AppMethodBeat.i(106088);
-    if (this.nGj == null)
+    if (this.nLK == null)
     {
       localObject = new IllegalStateException("call FloatBallHelper#onCreate first");
       AppMethodBeat.o(106088);
       throw ((Throwable)localObject);
     }
-    Object localObject = this.nGj.nFZ;
+    Object localObject = this.nLK.nLw;
     AppMethodBeat.o(106088);
     return localObject;
   }
   
-  public final BallInfo bKH()
+  public final BallInfo bLE()
   {
-    return this.nGj;
+    return this.nLK;
   }
   
-  protected boolean bKI()
+  protected boolean bLF()
   {
-    AppMethodBeat.i(217254);
-    boolean bool = bgI();
-    AppMethodBeat.o(217254);
+    AppMethodBeat.i(209440);
+    boolean bool = bhq();
+    AppMethodBeat.o(209440);
     return bool;
   }
   
-  final boolean bKJ()
+  final boolean bLG()
   {
-    return this.nGj.type == 20;
+    return this.nLK.type == 20;
   }
   
-  public final void bKa()
+  public final void bLH()
   {
-    AppMethodBeat.i(106069);
-    if (this.nGl != null) {
-      this.nGl.bKa();
+    AppMethodBeat.i(224567);
+    if (this.nLM != null) {
+      this.nLM.u(this.nLK);
     }
-    AppMethodBeat.o(106069);
+    AppMethodBeat.o(224567);
   }
   
-  public void bKs()
+  public void bLp()
   {
     AppMethodBeat.i(106066);
-    if (this.nGl != null) {
-      this.nGl.q(this.nGj);
-    }
-    if (this.nGj != null)
-    {
-      bKK();
-      bKL();
-    }
+    t(new a.2(this));
     AppMethodBeat.o(106066);
   }
   
-  protected final boolean bKt()
+  protected final boolean bLq()
   {
-    AppMethodBeat.i(217249);
-    if ((!bKz()) && (bgI()))
+    AppMethodBeat.i(209435);
+    if ((!bLw()) && (bhq()))
     {
-      AppMethodBeat.o(217249);
+      AppMethodBeat.o(209435);
       return true;
     }
-    AppMethodBeat.o(217249);
+    AppMethodBeat.o(209435);
     return false;
   }
   
-  public BallInfo bKv()
+  public BallInfo bLs()
   {
     AppMethodBeat.i(106072);
-    BallInfo localBallInfo = bKx();
+    BallInfo localBallInfo = bLu();
     AppMethodBeat.o(106072);
     return localBallInfo;
   }
   
-  public final BallInfo bKx()
+  public final BallInfo bLu()
   {
     AppMethodBeat.i(106073);
-    if (this.nGj != null)
+    if (this.nLK != null)
     {
-      String str = this.nGj.bKo();
-      ad.v("MicroMsg.FloatBallHelper", "getCurrentBallFromMMKV ballInfoKey: %s", new Object[] { str });
-      str = ax.aQz(bKu()).decodeString(str);
-      if (!bt.isNullOrNil(str))
+      String str = this.nLK.bLl();
+      ae.v("MicroMsg.FloatBallHelper", "getCurrentBallFromMMKV ballInfoKey: %s", new Object[] { str });
+      str = ay.aRW(bLr()).decodeString(str);
+      if (!bu.isNullOrNil(str))
       {
-        BallInfo localBallInfo = Wk(str);
-        ad.i("MicroMsg.FloatBallHelper", "getCurrentBallFromMMKV, data:%s, ballInfo:%s", new Object[] { str, localBallInfo });
+        BallInfo localBallInfo = WW(str);
+        ae.i("MicroMsg.FloatBallHelper", "getCurrentBallFromMMKV, data:%s, ballInfo:%s", new Object[] { str, localBallInfo });
         AppMethodBeat.o(106073);
         return localBallInfo;
       }
-      ad.w("MicroMsg.FloatBallHelper", "getCurrentBallFromMMKV, no saved data");
+      ae.w("MicroMsg.FloatBallHelper", "getCurrentBallFromMMKV, no saved data");
     }
     AppMethodBeat.o(106073);
     return null;
   }
   
-  public final boolean bKy()
+  public final boolean bLv()
   {
     AppMethodBeat.i(106074);
-    if (this.nGl != null)
+    if (this.nLM != null)
     {
-      boolean bool = this.nGl.j(this.nGj);
+      boolean bool = this.nLM.j(this.nLK);
       AppMethodBeat.o(106074);
       return bool;
     }
@@ -402,12 +359,12 @@ public class a
     return false;
   }
   
-  public final boolean bKz()
+  public final boolean bLw()
   {
     AppMethodBeat.i(106075);
-    if (this.nGl != null)
+    if (this.nLM != null)
     {
-      if (this.nGl.i(this.nGj) != null)
+      if (this.nLM.i(this.nLK) != null)
       {
         AppMethodBeat.o(106075);
         return true;
@@ -419,136 +376,154 @@ public class a
     return false;
   }
   
-  public boolean bgA()
+  public void bLx()
+  {
+    AppMethodBeat.i(106076);
+    if (this.nLM != null) {
+      this.nLM.m(this.nLK);
+    }
+    AppMethodBeat.o(106076);
+  }
+  
+  public void bLy()
+  {
+    AppMethodBeat.i(106077);
+    if (this.nLM != null) {
+      this.nLM.k(this.nLK);
+    }
+    AppMethodBeat.o(106077);
+  }
+  
+  public void bLz()
+  {
+    AppMethodBeat.i(106078);
+    if (this.nLM != null) {
+      this.nLM.l(this.nLK);
+    }
+    AppMethodBeat.o(106078);
+  }
+  
+  public boolean bhh()
   {
     return false;
   }
   
-  public void bgB()
+  public boolean bhi()
+  {
+    return false;
+  }
+  
+  public void bhj()
   {
     AppMethodBeat.i(106065);
-    if (this.nGl != null) {
-      this.nGl.p(this.nGj);
-    }
-    if (this.nGj != null)
-    {
-      bKK();
-      bKL();
-    }
+    t(new FloatBallHelper.3(this));
     AppMethodBeat.o(106065);
   }
   
-  public void bgC()
+  public void bhk()
   {
     AppMethodBeat.i(106067);
-    if (this.nGl != null) {
-      this.nGl.r(this.nGj);
-    }
-    if (this.nGj != null)
-    {
-      if ((bKt()) && (this.nGl != null)) {
-        this.nGl.t(this.nGj);
-      }
-      ((b)g.ab(b.class)).c(this.nGj.nFZ.nGc, bKz(), bgI());
-    }
+    t(new a.3(this));
     AppMethodBeat.o(106067);
   }
   
-  protected void bgD() {}
+  protected void bhl() {}
   
-  protected void bgE() {}
+  protected void bhm() {}
   
-  public boolean bgI()
+  public boolean bhq()
   {
     return false;
   }
   
-  public boolean bgz()
-  {
-    return false;
-  }
-  
-  public final void eA(String paramString1, String paramString2)
+  public final void eD(String paramString1, String paramString2)
   {
     AppMethodBeat.i(106087);
-    if ((this.nGj != null) && ((!this.nGj.hasExtra(paramString1)) || (!eB(this.nGj.ez(paramString1, paramString2), paramString2))))
+    if ((this.nLK != null) && ((!this.nLK.hasExtra(paramString1)) || (!eE(this.nLK.eC(paramString1, paramString2), paramString2))))
     {
-      ad.m("MicroMsg.FloatBallHelper", "updateStringExtra, %s:%s", new Object[] { paramString1, paramString2 });
-      this.nGj.ey(paramString1, paramString2);
-      bKC();
+      ae.m("MicroMsg.FloatBallHelper", "updateStringExtra, %s:%s", new Object[] { paramString1, paramString2 });
+      this.nLK.eB(paramString1, paramString2);
+      bLz();
     }
     AppMethodBeat.o(106087);
   }
   
-  public void gf(boolean paramBoolean) {}
+  public final void iK(boolean paramBoolean)
+  {
+    AppMethodBeat.i(224566);
+    o(paramBoolean, 2);
+    AppMethodBeat.o(224566);
+  }
   
-  public final void iW(boolean paramBoolean)
+  public final void iV(boolean paramBoolean)
   {
     AppMethodBeat.i(106086);
-    if ((this.nGj != null) && (this.nGj.nFX != paramBoolean))
+    if ((this.nLK != null) && (this.nLK.nLu != paramBoolean))
     {
-      ad.i("MicroMsg.FloatBallHelper", "updatePassive, passive:%s", new Object[] { Boolean.valueOf(paramBoolean) });
-      this.nGj.nFX = paramBoolean;
-      bKC();
+      ae.i("MicroMsg.FloatBallHelper", "updatePassive, passive:%s", new Object[] { Boolean.valueOf(paramBoolean) });
+      this.nLK.nLu = paramBoolean;
+      bLz();
     }
     AppMethodBeat.o(106086);
   }
   
-  public final void iX(boolean paramBoolean)
+  public final void iW(boolean paramBoolean)
   {
     AppMethodBeat.i(176959);
-    if ((this.nGj != null) && (this.nGj.nFY != paramBoolean))
+    if ((this.nLK != null) && (this.nLK.nLv != paramBoolean))
     {
-      ad.i("MicroMsg.FloatBallHelper", "updateHidden, hidden:%s", new Object[] { Boolean.valueOf(paramBoolean) });
-      this.nGj.nFY = paramBoolean;
-      bKC();
+      ae.i("MicroMsg.FloatBallHelper", "updateHidden, hidden:%s", new Object[] { Boolean.valueOf(paramBoolean) });
+      this.nLK.nLv = paramBoolean;
+      bLz();
     }
     AppMethodBeat.o(176959);
   }
   
+  public void o(boolean paramBoolean, int paramInt) {}
+  
   public void onDestroy()
   {
     AppMethodBeat.i(106064);
-    if (this.nGl != null) {
-      this.nGl.s(this.nGj);
+    if (this.nLM != null) {
+      this.nLM.t(this.nLK);
     }
     AppMethodBeat.o(106064);
   }
   
-  public boolean sv(int paramInt)
+  public boolean sy(int paramInt)
   {
     return false;
   }
   
-  public final void tf(long paramLong)
+  public final void tt(long paramLong)
   {
     AppMethodBeat.i(184560);
-    if ((this.nGj != null) && (this.nGj.progress != paramLong))
+    if ((this.nLK != null) && (this.nLK.progress != paramLong))
     {
-      ad.v("MicroMsg.FloatBallHelper", "updateProgress, progress:%d", new Object[] { Long.valueOf(paramLong) });
-      this.nGj.progress = paramLong;
-      bKC();
+      ae.v("MicroMsg.FloatBallHelper", "updateProgress, progress:%d", new Object[] { Long.valueOf(paramLong) });
+      this.nLK.progress = paramLong;
+      bLz();
     }
     AppMethodBeat.o(184560);
   }
   
-  protected void xX(int paramInt) {}
+  protected void yb(int paramInt) {}
   
-  public final void xY(int paramInt)
+  public final void yc(int paramInt)
   {
     AppMethodBeat.i(106085);
-    if ((this.nGj != null) && (this.nGj.state != paramInt))
+    if ((this.nLK != null) && (this.nLK.state != paramInt))
     {
-      ad.i("MicroMsg.FloatBallHelper", "updateState, state:%s", new Object[] { Integer.valueOf(paramInt) });
-      this.nGj.state = paramInt;
-      bKC();
+      ae.i("MicroMsg.FloatBallHelper", "updateState, state:%s", new Object[] { Integer.valueOf(paramInt) });
+      this.nLK.state = paramInt;
+      bLz();
     }
     AppMethodBeat.o(106085);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.ball.service.a
  * JD-Core Version:    0.7.0.1
  */

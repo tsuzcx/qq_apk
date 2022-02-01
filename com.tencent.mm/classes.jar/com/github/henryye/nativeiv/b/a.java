@@ -15,7 +15,7 @@ public final class a
   
   public final b.a a(Object paramObject, ImageDecodeConfig paramImageDecodeConfig)
   {
-    AppMethodBeat.i(194934);
+    AppMethodBeat.i(209419);
     paramImageDecodeConfig = new b.a();
     try
     {
@@ -23,7 +23,7 @@ public final class a
       localURLConnection.setReadTimeout(this.bby);
       localURLConnection.setConnectTimeout(this.bbx);
       paramImageDecodeConfig.inputStream = new BufferedInputStream(localURLConnection.getInputStream());
-      AppMethodBeat.o(194934);
+      AppMethodBeat.o(209419);
       return paramImageDecodeConfig;
     }
     catch (SocketTimeoutException localSocketTimeoutException)
@@ -68,7 +68,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.github.henryye.nativeiv.b.a
  * JD-Core Version:    0.7.0.1
  */

@@ -6,134 +6,57 @@ import com.tencent.mm.plugin.report.a;
 public final class ew
   extends a
 {
-  public String dUR;
-  public long dUX;
-  public long eca;
-  private String ejk;
-  public long ejl;
-  public long ejm;
-  public long ejn;
-  public long ejo;
-  public long ejp;
-  public long ejq;
-  public long ejr;
-  public long ejs;
-  public long ejt;
-  public long eju;
-  public long ejv;
-  public long ejw;
+  public int ekH;
+  public int ekI;
+  public int ekJ;
+  public int ekK;
+  public int ekL;
+  
+  public final String RC()
+  {
+    AppMethodBeat.i(94824);
+    Object localObject = new StringBuffer();
+    ((StringBuffer)localObject).append(this.ekH);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.ekI);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.ekJ);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.ekK);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.ekL);
+    localObject = ((StringBuffer)localObject).toString();
+    axO((String)localObject);
+    AppMethodBeat.o(94824);
+    return localObject;
+  }
   
   public final String RD()
   {
-    AppMethodBeat.i(94828);
+    AppMethodBeat.i(94825);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.ejk);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eca);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dUR);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dUX);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ejl);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ejm);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ejn);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ejo);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ejp);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ejq);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ejr);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ejs);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ejt);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eju);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ejv);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ejw);
+    ((StringBuffer)localObject).append("ReportScene:").append(this.ekH);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("ResourceAutoDownload:").append(this.ekI);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("ImageSaveLocal:").append(this.ekJ);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("SightSaveLocal:").append(this.ekK);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("SightAutoPlay:").append(this.ekL);
     localObject = ((StringBuffer)localObject).toString();
-    awz((String)localObject);
-    AppMethodBeat.o(94828);
+    AppMethodBeat.o(94825);
     return localObject;
-  }
-  
-  public final String RE()
-  {
-    AppMethodBeat.i(94829);
-    Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("ToUsername:").append(this.ejk);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("Source:").append(this.eca);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("FeedId:").append(this.dUR);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("FeedType:").append(this.dUX);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("IfAddText:").append(this.ejl);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("FeedMediaCount:").append(this.ejm);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("IsClickedFromAlbum:").append(this.ejn);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("IsClickIntoDetail:").append(this.ejo);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("BrowsedPicCountAtDetail:").append(this.ejp);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("BrowsedPicCountAtGallery:").append(this.ejq);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("BrowseTimeAtDetail:").append(this.ejr);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("BrowseTimeAtGallery:").append(this.ejs);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("CanViewCommentCount:").append(this.ejt);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("CanViewLikeCount:").append(this.eju);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("CommentFlag:").append(this.ejv);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("LikeFlag:").append(this.ejw);
-    localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(94829);
-    return localObject;
-  }
-  
-  public final ew Tl()
-  {
-    this.ejl = 1L;
-    return this;
   }
   
   public final int getId()
   {
-    return 18849;
-  }
-  
-  public final ew od(String paramString)
-  {
-    AppMethodBeat.i(94826);
-    this.ejk = t("ToUsername", paramString, true);
-    AppMethodBeat.o(94826);
-    return this;
-  }
-  
-  public final ew oe(String paramString)
-  {
-    AppMethodBeat.i(94827);
-    this.dUR = t("FeedId", paramString, true);
-    AppMethodBeat.o(94827);
-    return this;
+    return 17504;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.b.a.ew
  * JD-Core Version:    0.7.0.1
  */

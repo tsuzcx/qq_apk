@@ -16,7 +16,7 @@ final class d$2$2
     AppMethodBeat.i(138271);
     paramCharSequence = super.newSpannable(paramCharSequence);
     if (!TextUtils.isEmpty(paramCharSequence)) {
-      paramCharSequence.setSpan(new a(this.lfa), 0, paramCharSequence.length(), 18);
+      paramCharSequence.setSpan(new a(this.liM), 0, paramCharSequence.length(), 18);
     }
     AppMethodBeat.o(138271);
     return paramCharSequence;

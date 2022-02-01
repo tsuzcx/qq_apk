@@ -10,50 +10,50 @@ import com.tencent.mm.plugin.recordvideo.activity.MMRecordUI;
 import com.tencent.mm.plugin.recordvideo.d.c;
 import com.tencent.mm.plugin.recordvideo.jumper.RecordConfigProvider;
 import com.tencent.mm.plugin.recordvideo.plugin.parent.d;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.ui.widget.imageview.WeImageView;
 import d.g.b.p;
 import d.l;
 import d.v;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/recordvideo/plugin/RecordClosePlugin;", "Landroid/view/View$OnClickListener;", "Lcom/tencent/mm/plugin/recordvideo/plugin/IBaseRecordPlugin;", "view", "Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "(Lcom/tencent/mm/ui/widget/imageview/WeImageView;Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "scene", "", "getScene", "()I", "setScene", "(I)V", "getView", "()Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "setView", "(Lcom/tencent/mm/ui/widget/imageview/WeImageView;)V", "initConfig", "", "config", "Lcom/tencent/mm/plugin/recordvideo/jumper/RecordConfigProvider;", "onClick", "v", "Landroid/view/View;", "setVisibility", "visibility", "Companion", "plugin-recordvideo_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/recordvideo/plugin/RecordClosePlugin;", "Landroid/view/View$OnClickListener;", "Lcom/tencent/mm/plugin/recordvideo/plugin/IBaseRecordPlugin;", "view", "Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "(Lcom/tencent/mm/ui/widget/imageview/WeImageView;Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "scene", "", "getScene", "()I", "setScene", "(I)V", "getView", "()Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "setView", "(Lcom/tencent/mm/ui/widget/imageview/WeImageView;)V", "initConfig", "", "config", "Lcom/tencent/mm/plugin/recordvideo/jumper/RecordConfigProvider;", "onClick", "v", "Landroid/view/View;", "setVisibility", "visibility", "Companion", "plugin-recordvideo_release"})
 public class x
   implements View.OnClickListener, t
 {
-  public static final x.a xBK;
-  private WeImageView sQK;
+  public static final x.a xRF;
   protected int scene;
+  private WeImageView tbV;
   
   static
   {
     AppMethodBeat.i(75634);
-    xBK = new x.a((byte)0);
+    xRF = new x.a((byte)0);
     AppMethodBeat.o(75634);
   }
   
   public x(WeImageView paramWeImageView, d paramd)
   {
-    AppMethodBeat.i(200354);
-    this.sQK = paramWeImageView;
-    this.sQK.setOnClickListener((View.OnClickListener)this);
-    this.sQK.setIconColor(-1);
-    AppMethodBeat.o(200354);
+    AppMethodBeat.i(206615);
+    this.tbV = paramWeImageView;
+    this.tbV.setOnClickListener((View.OnClickListener)this);
+    this.tbV.setIconColor(-1);
+    AppMethodBeat.o(206615);
   }
   
   public final void a(RecordConfigProvider paramRecordConfigProvider)
   {
-    AppMethodBeat.i(200353);
+    AppMethodBeat.i(206614);
     p.h(paramRecordConfigProvider, "config");
     this.scene = paramRecordConfigProvider.scene;
-    AppMethodBeat.o(200353);
+    AppMethodBeat.o(206614);
   }
   
-  public final boolean aoB()
+  public final boolean aoQ()
   {
     return false;
   }
   
-  public final void ayX() {}
+  public final void azm() {}
   
   public final String name()
   {
@@ -67,22 +67,22 @@ public class x
     AppMethodBeat.i(75631);
     b localb = new b();
     localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/recordvideo/plugin/RecordClosePlugin", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-    ad.i("MicroMsg.RecordClosePlugin", "RecordClosePlugin close");
-    paramView = this.sQK.getContext();
+    a.b("com/tencent/mm/plugin/recordvideo/plugin/RecordClosePlugin", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+    ae.i("MicroMsg.RecordClosePlugin", "RecordClosePlugin close");
+    paramView = this.tbV.getContext();
     if (paramView == null)
     {
       paramView = new v("null cannot be cast to non-null type com.tencent.mm.plugin.recordvideo.activity.MMRecordUI");
       AppMethodBeat.o(75631);
       throw paramView;
     }
-    ((MMRecordUI)paramView).dEB();
-    paramView = c.xHa;
-    c.NN(3);
-    paramView = c.xHa;
-    c.NM(3);
-    paramView = c.xHa;
-    c.NP(this.scene);
+    ((MMRecordUI)paramView).dHS();
+    paramView = c.xWV;
+    c.Ot(3);
+    paramView = c.xWV;
+    c.Os(3);
+    paramView = c.xWV;
+    c.Ov(this.scene);
     a.a(this, "com/tencent/mm/plugin/recordvideo/plugin/RecordClosePlugin", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(75631);
   }
@@ -93,11 +93,11 @@ public class x
   
   public final void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    AppMethodBeat.i(200355);
+    AppMethodBeat.i(206616);
     p.h(paramArrayOfString, "permissions");
     p.h(paramArrayOfInt, "grantResults");
     t.a.a(paramArrayOfString, paramArrayOfInt);
-    AppMethodBeat.o(200355);
+    AppMethodBeat.o(206616);
   }
   
   public final void onResume() {}
@@ -109,13 +109,13 @@ public class x
   public void setVisibility(int paramInt)
   {
     AppMethodBeat.i(75632);
-    this.sQK.setVisibility(paramInt);
+    this.tbV.setVisibility(paramInt);
     AppMethodBeat.o(75632);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.plugin.x
  * JD-Core Version:    0.7.0.1
  */

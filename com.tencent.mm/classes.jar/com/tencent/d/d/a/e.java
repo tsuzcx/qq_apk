@@ -7,7 +7,7 @@ import java.io.File;
 
 public final class e
 {
-  public static boolean fTL()
+  public static boolean fYl()
   {
     AppMethodBeat.i(138350);
     try
@@ -24,7 +24,7 @@ public final class e
           if (localFile.exists())
           {
             new StringBuilder("SuFile found : ").append(localFile.toString());
-            h.fUg();
+            h.fYF();
             AppMethodBeat.o(138350);
             return true;
           }
@@ -33,13 +33,13 @@ public final class e
       }
       if (new File("/system/bin/su").exists())
       {
-        h.fUg();
+        h.fYF();
         AppMethodBeat.o(138350);
         return true;
       }
       if (new File("/system/xbin/su").exists())
       {
-        h.fUg();
+        h.fYF();
         AppMethodBeat.o(138350);
         return true;
       }
@@ -47,7 +47,7 @@ public final class e
     catch (Throwable localThrowable)
     {
       h.w(localThrowable);
-      h.fUg();
+      h.fYF();
       AppMethodBeat.o(138350);
     }
     return false;

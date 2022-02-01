@@ -6,19 +6,19 @@ import java.util.Map;
 
 public final class a
 {
-  public final Map<String, String> MAs;
+  public final Map<String, String> MXz;
   
   public a()
   {
     AppMethodBeat.i(3440);
-    this.MAs = new HashMap();
+    this.MXz = new HashMap();
     AppMethodBeat.o(3440);
   }
   
-  public final a np(String paramString1, String paramString2)
+  public final a nv(String paramString1, String paramString2)
   {
     AppMethodBeat.i(3441);
-    this.MAs.put(paramString1, paramString2);
+    this.MXz.put(paramString1, paramString2);
     AppMethodBeat.o(3441);
     return this;
   }

@@ -11,11 +11,11 @@ import java.nio.ByteOrder;
 
 public final class b
 {
-  private final a MBc;
+  private final a MYh;
   
   public b(a parama)
   {
-    this.MBc = parama;
+    this.MYh = parama;
   }
   
   private static void a(MotionEvent paramMotionEvent, int paramInt1, int paramInt2, int paramInt3, ByteBuffer paramByteBuffer)
@@ -26,7 +26,7 @@ public final class b
       AppMethodBeat.o(9981);
       return;
     }
-    int j = aiW(paramMotionEvent.getToolType(paramInt1));
+    int j = ajG(paramMotionEvent.getToolType(paramInt1));
     int i;
     long l1;
     if (paramMotionEvent.getActionMasked() == 8)
@@ -134,7 +134,7 @@ public final class b
     AppMethodBeat.o(9981);
   }
   
-  private static int aiV(int paramInt)
+  private static int ajF(int paramInt)
   {
     if (paramInt == 0) {}
     do
@@ -162,7 +162,7 @@ public final class b
     return -1;
   }
   
-  private static int aiW(int paramInt)
+  private static int ajG(int paramInt)
   {
     switch (paramInt)
     {
@@ -200,7 +200,7 @@ public final class b
       break;
     }
     label70:
-    int i = aiV(paramMotionEvent.getActionMasked());
+    int i = ajF(paramMotionEvent.getActionMasked());
     ByteBuffer localByteBuffer = ByteBuffer.allocateDirect(paramMotionEvent.getPointerCount() * 28 * 8);
     localByteBuffer.order(ByteOrder.LITTLE_ENDIAN);
     a(paramMotionEvent, paramMotionEvent.getActionIndex(), i, 0, localByteBuffer);
@@ -210,7 +210,7 @@ public final class b
       AppMethodBeat.o(9980);
       throw paramMotionEvent;
     }
-    this.MBc.dispatchPointerDataPacket(localByteBuffer, localByteBuffer.position());
+    this.MYh.dispatchPointerDataPacket(localByteBuffer, localByteBuffer.position());
     AppMethodBeat.o(9980);
     return true;
   }
@@ -222,7 +222,7 @@ public final class b
     ByteBuffer localByteBuffer = ByteBuffer.allocateDirect(k * 28 * 8);
     localByteBuffer.order(ByteOrder.LITTLE_ENDIAN);
     int j = paramMotionEvent.getActionMasked();
-    int m = aiV(paramMotionEvent.getActionMasked());
+    int m = ajF(paramMotionEvent.getActionMasked());
     int i;
     if ((j == 0) || (j == 5))
     {
@@ -274,14 +274,14 @@ public final class b
       }
     }
     label219:
-    this.MBc.dispatchPointerDataPacket(localByteBuffer, localByteBuffer.position());
+    this.MYh.dispatchPointerDataPacket(localByteBuffer, localByteBuffer.position());
     AppMethodBeat.o(9979);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     io.flutter.embedding.android.b
  * JD-Core Version:    0.7.0.1
  */

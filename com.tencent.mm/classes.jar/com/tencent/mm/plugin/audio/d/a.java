@@ -4,12 +4,10 @@ import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.media.AudioManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.deviceinfo.ae;
 import com.tencent.mm.compatible.deviceinfo.k;
 import com.tencent.mm.plugin.audio.c.a.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bc;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bd;
+import com.tencent.mm.sdk.platformtools.bu;
 import d.g.b.p;
 import d.l;
 import java.lang.reflect.Field;
@@ -17,35 +15,35 @@ import java.util.Iterator;
 import java.util.Set;
 import java.util.Stack;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/audio/util/BluetoothUtil;", "", "()V", "STREAM_BLUETOOTH_SCO", "", "TAG", "", "bluetoothSCOStreamType", "mIsPlugged", "", "getMIsPlugged", "()Z", "setMIsPlugged", "(Z)V", "doStartBluetooth", "am", "Landroid/media/AudioManager;", "doStopBluetooth", "getBluetoothScoStreamType", "audioManager", "initResource", "", "isBluetoothCanUse", "isBluetoothOn", "isBluetoothScoAvailable", "isBluetoothScoOn", "isConnectBluetoothHeadset", "releaseBluetoothResource", "mDeviceQueue", "Ljava/util/Stack;", "requestBluetoothResource", "startBluetooth", "stopBluetooth", "plugin-audio_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/audio/util/BluetoothUtil;", "", "()V", "STREAM_BLUETOOTH_SCO", "", "TAG", "", "bluetoothSCOStreamType", "mIsPlugged", "", "getMIsPlugged", "()Z", "setMIsPlugged", "(Z)V", "doStartBluetooth", "am", "Landroid/media/AudioManager;", "doStopBluetooth", "getBluetoothScoStreamType", "audioManager", "initResource", "", "isBluetoothCanUse", "isBluetoothOn", "isBluetoothScoAvailable", "isBluetoothScoOn", "isConnectBluetoothHeadset", "releaseBluetoothResource", "mDeviceQueue", "Ljava/util/Stack;", "requestBluetoothResource", "startBluetooth", "stopBluetooth", "plugin-audio_release"})
 public final class a
 {
-  private static boolean nrW;
-  private static int nrX;
-  public static final a nrY;
+  private static boolean nxp;
+  private static int nxq;
+  public static final a nxr;
   
   static
   {
-    AppMethodBeat.i(199803);
-    nrY = new a();
-    nrX = -1;
-    AppMethodBeat.o(199803);
+    AppMethodBeat.i(201115);
+    nxr = new a();
+    nxq = -1;
+    AppMethodBeat.o(201115);
   }
   
   public static final boolean a(AudioManager paramAudioManager)
   {
-    AppMethodBeat.i(199794);
+    AppMethodBeat.i(201106);
     p.h(paramAudioManager, "audioManager");
     boolean bool = paramAudioManager.isBluetoothScoAvailableOffCall();
-    AppMethodBeat.o(199794);
+    AppMethodBeat.o(201106);
     return bool;
   }
   
   public static final boolean a(Stack<Integer> paramStack)
   {
-    AppMethodBeat.i(199797);
+    AppMethodBeat.i(201109);
     p.h(paramStack, "mDeviceQueue");
-    ad.i("MicroMsg.BluetoothUtil", "request the bluetooth resource");
+    com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.BluetoothUtil", "request the bluetooth resource");
     Integer localInteger;
     boolean bool;
     if (!paramStack.isEmpty())
@@ -55,7 +53,7 @@ public final class a
     }
     else
     {
-      if (!bGG()) {
+      if (!bHC()) {
         break label94;
       }
       if (paramStack.contains(Integer.valueOf(4))) {
@@ -66,7 +64,7 @@ public final class a
     }
     for (;;)
     {
-      AppMethodBeat.o(199797);
+      AppMethodBeat.o(201109);
       return bool;
       if (localInteger.intValue() != 4) {
         break;
@@ -75,36 +73,36 @@ public final class a
       continue;
       label94:
       bool = false;
-      ad.i("MicroMsg.BluetoothUtil", "current bluetooth can not use ");
+      com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.BluetoothUtil", "current bluetooth can not use ");
     }
   }
   
   public static final int b(AudioManager paramAudioManager)
   {
-    AppMethodBeat.i(199795);
+    AppMethodBeat.i(201107);
     p.h(paramAudioManager, "audioManager");
-    if (!bGG())
+    if (!bHC())
     {
-      AppMethodBeat.o(199795);
+      AppMethodBeat.o(201107);
       return -1;
     }
-    Object localObject = com.tencent.mm.plugin.audio.c.a.nrV;
-    ad.m("MicroMsg.BluetoothUtil", "dkbt begin tryStartBluetooth %s", new Object[] { a.a.bGC().bGB() });
+    Object localObject = com.tencent.mm.plugin.audio.c.a.nxo;
+    com.tencent.mm.sdk.platformtools.ae.m("MicroMsg.BluetoothUtil", "dkbt begin tryStartBluetooth %s", new Object[] { a.a.bHy().bHx() });
     if (!paramAudioManager.isBluetoothScoAvailableOffCall())
     {
-      ad.i("MicroMsg.BluetoothUtil", "start bluetooth failed by isBluetoothScoAvailableOffCall false");
+      com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.BluetoothUtil", "start bluetooth failed by isBluetoothScoAvailableOffCall false");
       bool = false;
     }
     for (;;)
     {
-      localObject = com.tencent.mm.plugin.audio.c.a.nrV;
-      ad.i("MicroMsg.BluetoothUtil", "dkbt end tryStartBluetooth %s ret:%s", new Object[] { a.a.bGC().bGB(), Boolean.valueOf(bool) });
+      localObject = com.tencent.mm.plugin.audio.c.a.nxo;
+      com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.BluetoothUtil", "dkbt end tryStartBluetooth %s ret:%s", new Object[] { a.a.bHy().bHx(), Boolean.valueOf(bool) });
       if (bool) {
         break;
       }
-      AppMethodBeat.o(199795);
+      AppMethodBeat.o(201107);
       return -1;
-      if (bc.PD())
+      if (bd.PC())
       {
         bool = false;
       }
@@ -112,85 +110,68 @@ public final class a
       {
         if (!paramAudioManager.isBluetoothScoOn())
         {
-          ad.i("MicroMsg.BluetoothUtil", "BluetoothUtil am.isBluetoothScoOn is false and startBluetoothSco, stack: %s", new Object[] { bt.flS() });
+          com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.BluetoothUtil", "BluetoothUtil am.isBluetoothScoOn is false and startBluetoothSco, stack: %s", new Object[] { bu.fpN() });
           paramAudioManager.startBluetoothSco();
         }
         bool = true;
       }
     }
     localObject = new StringBuilder("dkbt  tryStartBluetooth ");
-    a.a locala = com.tencent.mm.plugin.audio.c.a.nrV;
-    ad.d("MicroMsg.BluetoothUtil", a.a.bGC().bGB() + " ret:true");
-    boolean bool = bGD();
+    a.a locala = com.tencent.mm.plugin.audio.c.a.nxo;
+    com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.BluetoothUtil", a.a.bHy().bHx() + " ret:true");
+    boolean bool = bHz();
     if (bool)
     {
       paramAudioManager.setBluetoothScoOn(true);
-      nrW = true;
+      nxp = true;
     }
-    ad.i("MicroMsg.BluetoothUtil", "isBluetoothOn: %b", new Object[] { Boolean.valueOf(bool) });
+    com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.BluetoothUtil", "isBluetoothOn: %b", new Object[] { Boolean.valueOf(bool) });
     if (bool)
     {
-      AppMethodBeat.o(199795);
+      AppMethodBeat.o(201107);
       return 1;
     }
-    AppMethodBeat.o(199795);
+    AppMethodBeat.o(201107);
     return 0;
   }
   
   public static final void b(Stack<Integer> paramStack)
   {
-    AppMethodBeat.i(199798);
+    AppMethodBeat.i(201110);
     p.h(paramStack, "mDeviceQueue");
-    ad.i("MicroMsg.BluetoothUtil", " release the bluetooth resource");
+    com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.BluetoothUtil", " release the bluetooth resource");
     paramStack.removeElement(Integer.valueOf(4));
-    AppMethodBeat.o(199798);
+    AppMethodBeat.o(201110);
   }
   
-  public static boolean bGD()
+  public static boolean bHC()
   {
-    AppMethodBeat.i(199793);
-    a.a locala = com.tencent.mm.plugin.audio.c.a.nrV;
-    boolean bool1 = a.a.bGC().audioManager.isBluetoothScoOn();
-    locala = com.tencent.mm.plugin.audio.c.a.nrV;
-    boolean bool2 = a.a.bGC().audioManager.isBluetoothA2dpOn();
-    ad.i("MicroMsg.BluetoothUtil", "isBluetoothScoOn: %s isBluetoothA2dpOn: %s, isBluetoothCanUse: %s", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2), Boolean.valueOf(bGG()) });
-    if ((bool1) || (bool2))
-    {
-      AppMethodBeat.o(199793);
-      return true;
-    }
-    AppMethodBeat.o(199793);
-    return false;
-  }
-  
-  public static boolean bGG()
-  {
-    AppMethodBeat.i(199800);
-    boolean bool = bGN();
+    AppMethodBeat.i(201112);
+    boolean bool = bHJ();
     if (!bool)
     {
-      ad.i("MicroMsg.BluetoothUtil", "dkbt isConnectHeadset() = ".concat(String.valueOf(bool)));
-      AppMethodBeat.o(199800);
+      com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.BluetoothUtil", "dkbt isConnectHeadset() = ".concat(String.valueOf(bool)));
+      AppMethodBeat.o(201112);
       return false;
     }
     Object localObject = BluetoothAdapter.getDefaultAdapter();
     if (localObject == null)
     {
-      ad.d("MicroMsg.BluetoothUtil", "dkbt BluetoothAdapter.getDefaultAdapter() == null");
-      AppMethodBeat.o(199800);
+      com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.BluetoothUtil", "dkbt BluetoothAdapter.getDefaultAdapter() == null");
+      AppMethodBeat.o(201112);
       return false;
     }
     if (!((BluetoothAdapter)localObject).isEnabled())
     {
-      ad.i("MicroMsg.BluetoothUtil", "dkbt !adp.isEnabled()");
-      AppMethodBeat.o(199800);
+      com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.BluetoothUtil", "dkbt !adp.isEnabled()");
+      AppMethodBeat.o(201112);
       return false;
     }
     localObject = ((BluetoothAdapter)localObject).getBondedDevices();
     if ((localObject == null) || (((Set)localObject).size() == 0))
     {
-      ad.e("MicroMsg.BluetoothUtil", "dkbt setDev == null || setDev.size() == 0");
-      AppMethodBeat.o(199800);
+      com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.BluetoothUtil", "dkbt setDev == null || setDev.size() == 0");
+      AppMethodBeat.o(201112);
       return false;
     }
     localObject = ((Set)localObject).iterator();
@@ -207,91 +188,108 @@ public final class a
     {
       if (i == 0)
       {
-        ad.i("MicroMsg.BluetoothUtil", "dkbt hasBond == false");
-        AppMethodBeat.o(199800);
+        com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.BluetoothUtil", "dkbt hasBond == false");
+        AppMethodBeat.o(201112);
         return false;
       }
-      ad.i("MicroMsg.BluetoothUtil", "alvinluo isBluetoothCanUse: %b", new Object[] { Boolean.TRUE });
-      AppMethodBeat.o(199800);
+      com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.BluetoothUtil", "alvinluo isBluetoothCanUse: %b", new Object[] { Boolean.TRUE });
+      AppMethodBeat.o(201112);
       return true;
     }
   }
   
-  public static boolean bGL()
+  public static boolean bHH()
   {
-    return nrW;
+    return nxp;
   }
   
-  public static final void bGM()
+  public static final void bHI()
   {
-    AppMethodBeat.i(199792);
-    nrW = bGD();
-    AppMethodBeat.o(199792);
+    AppMethodBeat.i(201104);
+    nxp = bHz();
+    AppMethodBeat.o(201104);
   }
   
-  private static boolean bGN()
+  private static boolean bHJ()
   {
-    AppMethodBeat.i(199802);
+    AppMethodBeat.i(201114);
     try
     {
       int i = BluetoothAdapter.getDefaultAdapter().getProfileConnectionState(1);
-      ad.i("MicroMsg.BluetoothUtil", "isConnectHeadset getProfileConnectionState: %s", new Object[] { Integer.valueOf(i) });
+      com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.BluetoothUtil", "isConnectHeadset getProfileConnectionState: %s", new Object[] { Integer.valueOf(i) });
       if (i == 2)
       {
-        AppMethodBeat.o(199802);
+        AppMethodBeat.o(201114);
         return true;
       }
-      AppMethodBeat.o(199802);
+      AppMethodBeat.o(201114);
       return false;
     }
     catch (Exception localException)
     {
-      ad.e("MicroMsg.BluetoothUtil", "dkbt exception in isConnectDevice()");
-      AppMethodBeat.o(199802);
+      com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.BluetoothUtil", "dkbt exception in isConnectDevice()");
+      AppMethodBeat.o(201114);
     }
+    return false;
+  }
+  
+  public static boolean bHz()
+  {
+    AppMethodBeat.i(201105);
+    a.a locala = com.tencent.mm.plugin.audio.c.a.nxo;
+    boolean bool1 = a.a.bHy().audioManager.isBluetoothScoOn();
+    locala = com.tencent.mm.plugin.audio.c.a.nxo;
+    boolean bool2 = a.a.bHy().audioManager.isBluetoothA2dpOn();
+    com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.BluetoothUtil", "isBluetoothScoOn: %s isBluetoothA2dpOn: %s, isBluetoothCanUse: %s", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2), Boolean.valueOf(bHC()) });
+    if ((bool1) || (bool2))
+    {
+      AppMethodBeat.o(201105);
+      return true;
+    }
+    AppMethodBeat.o(201105);
     return false;
   }
   
   public static final void c(AudioManager paramAudioManager)
   {
-    AppMethodBeat.i(199796);
+    AppMethodBeat.i(201108);
     p.h(paramAudioManager, "audioManager");
-    a.a locala = com.tencent.mm.plugin.audio.c.a.nrV;
-    ad.m("MicroMsg.BluetoothUtil", "dkbt begin stopBluetooth %s", new Object[] { a.a.bGC().bGB() });
+    a.a locala = com.tencent.mm.plugin.audio.c.a.nxo;
+    com.tencent.mm.sdk.platformtools.ae.m("MicroMsg.BluetoothUtil", "dkbt begin stopBluetooth %s", new Object[] { a.a.bHy().bHx() });
     paramAudioManager.setBluetoothScoOn(false);
-    nrW = false;
-    if (!bc.PD())
+    nxp = false;
+    if (!bd.PC())
     {
-      ad.i("MicroMsg.BluetoothUtil", "stop SrvDeviceInfo mCommonInfo getStartBluetoothSco:%s,getStopBluetoothInBU:%s ", new Object[] { Integer.valueOf(ae.gcP.aac()), Integer.valueOf(ae.gcP.aab()) });
-      if ((ae.gcP.aab() == 1) || (ae.gcP.aac() == -1))
+      com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.BluetoothUtil", "stop SrvDeviceInfo mCommonInfo getStartBluetoothSco:%s,getStopBluetoothInBU:%s ", new Object[] { Integer.valueOf(com.tencent.mm.compatible.deviceinfo.ae.geX.aal()), Integer.valueOf(com.tencent.mm.compatible.deviceinfo.ae.geX.aak()) });
+      if ((com.tencent.mm.compatible.deviceinfo.ae.geX.aak() == 1) || (com.tencent.mm.compatible.deviceinfo.ae.geX.aal() == -1))
       {
-        ad.i("MicroMsg.BluetoothUtil", "BluetoothUtil stopBluetoothSco stack: %s", new Object[] { bt.flS() });
+        com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.BluetoothUtil", "BluetoothUtil stopBluetoothSco stack: %s", new Object[] { bu.fpN() });
         paramAudioManager.stopBluetoothSco();
       }
     }
-    paramAudioManager = com.tencent.mm.plugin.audio.c.a.nrV;
-    ad.i("MicroMsg.BluetoothUtil", "dkbt end stopBluetooth %s", new Object[] { a.a.bGC().bGB() });
-    AppMethodBeat.o(199796);
+    paramAudioManager = com.tencent.mm.plugin.audio.c.a.nxo;
+    com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.BluetoothUtil", "dkbt end stopBluetooth %s", new Object[] { a.a.bHy().bHx() });
+    AppMethodBeat.o(201108);
   }
   
   public static int d(AudioManager paramAudioManager)
   {
-    AppMethodBeat.i(199799);
+    AppMethodBeat.i(201111);
     p.h(paramAudioManager, "audioManager");
-    if (nrX == -1) {}
+    if (nxq == -1) {}
     try
     {
       i = Class.forName("android.media.AudioManager").getField("STREAM_BLUETOOTH_SCO").getInt(paramAudioManager);
-      nrX = i;
-      i = nrX;
-      AppMethodBeat.o(199799);
+      nxq = i;
+      i = nxq;
+      AppMethodBeat.o(201111);
       return i;
     }
     catch (Exception paramAudioManager)
     {
       for (;;)
       {
-        ad.e("MicroMsg.BluetoothUtil", "ClassNotFoundException  android.media.AudioManager,exception:" + paramAudioManager.getMessage());
+        com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.BluetoothUtil", "ClassNotFoundException  android.media.AudioManager,exception:" + paramAudioManager.getMessage());
         int i = 6;
       }
     }
@@ -299,21 +297,21 @@ public final class a
   
   public static boolean e(AudioManager paramAudioManager)
   {
-    AppMethodBeat.i(199801);
+    AppMethodBeat.i(201113);
     p.h(paramAudioManager, "audioManager");
     boolean bool = paramAudioManager.isBluetoothScoOn();
-    AppMethodBeat.o(199801);
+    AppMethodBeat.o(201113);
     return bool;
   }
   
-  public static void iy(boolean paramBoolean)
+  public static void iw(boolean paramBoolean)
   {
-    nrW = paramBoolean;
+    nxp = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.audio.d.a
  * JD-Core Version:    0.7.0.1
  */

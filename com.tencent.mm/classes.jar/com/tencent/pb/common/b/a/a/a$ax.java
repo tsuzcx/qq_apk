@@ -7,12 +7,12 @@ import com.google.b.a.e;
 public final class a$ax
   extends e
 {
-  private static volatile ax[] LIF;
-  public int CcE = 0;
-  public long CcF = 0L;
-  public int LGa = 0;
-  public a.ay[] LHp = a.ay.fTf();
-  public String LIG = "";
+  private static volatile ax[] MfJ;
+  public int Cuf = 0;
+  public long Cug = 0L;
+  public int Mde = 0;
+  public a.ay[] Met = a.ay.fXF();
+  public String MfK = "";
   public String groupId = "";
   
   public a$ax()
@@ -20,15 +20,15 @@ public final class a$ax
     this.bQO = -1;
   }
   
-  public static ax[] fTe()
+  public static ax[] fXE()
   {
-    if (LIF == null) {}
+    if (MfJ == null) {}
     synchronized (c.bQN)
     {
-      if (LIF == null) {
-        LIF = new ax[0];
+      if (MfJ == null) {
+        MfJ = new ax[0];
       }
-      return LIF;
+      return MfJ;
     }
   }
   
@@ -37,29 +37,29 @@ public final class a$ax
     if (!this.groupId.equals("")) {
       paramb.d(1, this.groupId);
     }
-    if (this.CcE != 0) {
-      paramb.bx(2, this.CcE);
+    if (this.Cuf != 0) {
+      paramb.bx(2, this.Cuf);
     }
-    if (this.CcF != 0L) {
-      paramb.n(3, this.CcF);
+    if (this.Cug != 0L) {
+      paramb.n(3, this.Cug);
     }
-    if ((this.LHp != null) && (this.LHp.length > 0))
+    if ((this.Met != null) && (this.Met.length > 0))
     {
       int i = 0;
-      while (i < this.LHp.length)
+      while (i < this.Met.length)
       {
-        a.ay localay = this.LHp[i];
+        a.ay localay = this.Met[i];
         if (localay != null) {
           paramb.a(4, localay);
         }
         i += 1;
       }
     }
-    if (this.LGa != 0) {
-      paramb.by(5, this.LGa);
+    if (this.Mde != 0) {
+      paramb.by(5, this.Mde);
     }
-    if (!this.LIG.equals("")) {
-      paramb.d(6, this.LIG);
+    if (!this.MfK.equals("")) {
+      paramb.d(6, this.MfK);
     }
     super.a(paramb);
   }
@@ -72,23 +72,23 @@ public final class a$ax
       i = j + b.e(1, this.groupId);
     }
     j = i;
-    if (this.CcE != 0) {
-      j = i + b.bz(2, this.CcE);
+    if (this.Cuf != 0) {
+      j = i + b.bz(2, this.Cuf);
     }
     i = j;
-    if (this.CcF != 0L) {
-      i = j + b.p(3, this.CcF);
+    if (this.Cug != 0L) {
+      i = j + b.p(3, this.Cug);
     }
     j = i;
-    if (this.LHp != null)
+    if (this.Met != null)
     {
       j = i;
-      if (this.LHp.length > 0)
+      if (this.Met.length > 0)
       {
         j = 0;
-        while (j < this.LHp.length)
+        while (j < this.Met.length)
         {
-          a.ay localay = this.LHp[j];
+          a.ay localay = this.Met[j];
           int k = i;
           if (localay != null) {
             k = i + b.b(4, localay);
@@ -100,12 +100,12 @@ public final class a$ax
       }
     }
     i = j;
-    if (this.LGa != 0) {
-      i = j + b.bA(5, this.LGa);
+    if (this.Mde != 0) {
+      i = j + b.bA(5, this.Mde);
     }
     j = i;
-    if (!this.LIG.equals("")) {
-      j = i + b.e(6, this.LIG);
+    if (!this.MfK.equals("")) {
+      j = i + b.e(6, this.MfK);
     }
     return j;
   }

@@ -7,17 +7,17 @@ import d.g.b.q;
 import d.l;
 import kotlinx.coroutines.ch;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"<no name provided>", "Lkotlinx/coroutines/ThreadContextElement;", "found", "element", "Lkotlin/coroutines/CoroutineContext$Element;", "invoke"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"<no name provided>", "Lkotlinx/coroutines/ThreadContextElement;", "found", "element", "Lkotlin/coroutines/CoroutineContext$Element;", "invoke"})
 final class x$b
   extends q
   implements m<ch<?>, f.b, ch<?>>
 {
-  public static final b NKm;
+  public static final b Ohs;
   
   static
   {
     AppMethodBeat.i(118106);
-    NKm = new b();
+    Ohs = new b();
     AppMethodBeat.o(118106);
   }
   

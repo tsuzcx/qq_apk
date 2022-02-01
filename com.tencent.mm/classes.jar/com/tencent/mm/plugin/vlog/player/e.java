@@ -1,26 +1,26 @@
 package com.tencent.mm.plugin.vlog.player;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import d.g.b.p;
 import d.l;
 import java.util.concurrent.ConcurrentHashMap;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/vlog/player/VLogMaterialsInfoCache;", "", "()V", "TAG", "", "cacheMap", "Ljava/util/concurrent/ConcurrentHashMap;", "Lcom/tencent/mm/plugin/vlog/player/MaterialCacheInfo;", "checkCache", "path", "clearCache", "", "putCache", "width", "", "height", "rotate", "cropLeft", "cropTop", "cropRight", "cropBottom", "updateCache", "plugin-vlog_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/vlog/player/VLogMaterialsInfoCache;", "", "()V", "TAG", "", "cacheMap", "Ljava/util/concurrent/ConcurrentHashMap;", "Lcom/tencent/mm/plugin/vlog/player/MaterialCacheInfo;", "checkCache", "path", "clearCache", "", "putCache", "width", "", "height", "rotate", "cropLeft", "cropTop", "cropRight", "cropBottom", "updateCache", "plugin-vlog_release"})
 public final class e
 {
-  public static final e BIv;
-  private static final ConcurrentHashMap<String, a> scx;
+  public static final e BZU;
+  private static final ConcurrentHashMap<String, a> slo;
   
   static
   {
     AppMethodBeat.i(110977);
-    BIv = new e();
-    scx = new ConcurrentHashMap();
+    BZU = new e();
+    slo = new ConcurrentHashMap();
     AppMethodBeat.o(110977);
   }
   
-  public static a aDs(String paramString)
+  public static a aEL(String paramString)
   {
     AppMethodBeat.i(110975);
     p.h(paramString, "path");
@@ -30,7 +30,7 @@ public final class e
       AppMethodBeat.o(110975);
       return null;
     }
-    paramString = (a)scx.get(paramString);
+    paramString = (a)slo.get(paramString);
     AppMethodBeat.o(110975);
     return paramString;
   }
@@ -38,8 +38,8 @@ public final class e
   public static void clearCache()
   {
     AppMethodBeat.i(110976);
-    ad.i("MicroMsg.VLogMaterialsInfoCache", "clearCache");
-    scx.clear();
+    ae.i("MicroMsg.VLogMaterialsInfoCache", "clearCache");
+    slo.clear();
     AppMethodBeat.o(110976);
   }
 }

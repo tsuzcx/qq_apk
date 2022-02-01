@@ -4,18 +4,18 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.az.i;
+import com.tencent.mm.ay.i;
 
 public class IPCAudioParamResponse
   implements Parcelable
 {
   public static final Parcelable.Creator<IPCAudioParamResponse> CREATOR;
-  public String dzL;
+  public String dAQ;
   public String fileName;
-  public byte[] ihI;
-  public int ihJ;
-  public String ihK;
-  public int ihL;
+  public byte[] ikB;
+  public int ikC;
+  public String ikD;
+  public int ikE;
   public String musicUrl;
   
   static
@@ -30,30 +30,30 @@ public class IPCAudioParamResponse
   public IPCAudioParamResponse(Parcel paramParcel)
   {
     AppMethodBeat.i(137212);
-    this.dzL = paramParcel.readString();
+    this.dAQ = paramParcel.readString();
     this.musicUrl = paramParcel.readString();
     this.fileName = paramParcel.readString();
-    this.ihK = paramParcel.readString();
-    this.ihJ = paramParcel.readInt();
-    this.ihL = paramParcel.readInt();
+    this.ikD = paramParcel.readString();
+    this.ikC = paramParcel.readInt();
+    this.ikE = paramParcel.readInt();
     int i = paramParcel.readInt();
     if (i > 0)
     {
-      this.ihI = new byte[i];
-      paramParcel.readByteArray(this.ihI);
+      this.ikB = new byte[i];
+      paramParcel.readByteArray(this.ikB);
     }
     AppMethodBeat.o(137212);
   }
   
   public IPCAudioParamResponse(i parami)
   {
-    this.dzL = parami.dzL;
+    this.dAQ = parami.dAQ;
     this.musicUrl = parami.musicUrl;
     this.fileName = parami.fileName;
-    this.ihJ = parami.ihJ;
-    this.ihK = parami.ihK;
-    this.ihI = parami.ihI;
-    this.ihL = parami.ihL;
+    this.ikC = parami.ikC;
+    this.ikD = parami.ikD;
+    this.ikB = parami.ikB;
+    this.ikE = parami.ikE;
   }
   
   public int describeContents()
@@ -64,16 +64,16 @@ public class IPCAudioParamResponse
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(137213);
-    paramParcel.writeString(this.dzL);
+    paramParcel.writeString(this.dAQ);
     paramParcel.writeString(this.musicUrl);
     paramParcel.writeString(this.fileName);
-    paramParcel.writeString(this.ihK);
-    paramParcel.writeInt(this.ihJ);
-    paramParcel.writeInt(this.ihL);
-    if (this.ihI != null)
+    paramParcel.writeString(this.ikD);
+    paramParcel.writeInt(this.ikC);
+    paramParcel.writeInt(this.ikE);
+    if (this.ikB != null)
     {
-      paramParcel.writeInt(this.ihI.length);
-      paramParcel.writeByteArray(this.ihI);
+      paramParcel.writeInt(this.ikB.length);
+      paramParcel.writeByteArray(this.ikB);
       AppMethodBeat.o(137213);
       return;
     }

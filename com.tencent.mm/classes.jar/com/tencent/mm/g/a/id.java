@@ -7,8 +7,7 @@ import com.tencent.mm.sdk.b.b;
 public final class id
   extends b
 {
-  public a duG;
-  public b duH;
+  public a dvK;
   
   public id()
   {
@@ -17,24 +16,22 @@ public final class id
   
   private id(byte paramByte)
   {
-    AppMethodBeat.i(89640);
-    this.duG = new a();
-    this.duH = new b();
-    this.IbR = false;
+    AppMethodBeat.i(116030);
+    this.dvK = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(89640);
+    AppMethodBeat.o(116030);
   }
   
   public static final class a
   {
-    public int EN = 0;
+    public int actionCode;
+    public String appId;
     public Context context;
-    public String param;
-  }
-  
-  public static final class b
-  {
-    public String result;
+    public String extMsg;
+    public String messageAction;
+    public String messageExt;
+    public int scene;
   }
 }
 

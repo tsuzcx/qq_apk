@@ -6,9 +6,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.expt.b.b;
 import com.tencent.mm.plugin.expt.b.b.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.sdk.platformtools.i;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.j;
 import com.tencent.mm.ui.al;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -92,7 +92,7 @@ public class ColorUtil
       AppMethodBeat.o(19326);
       return paramDynamicColor;
     }
-    int i = ((b)g.ab(b.class)).a(b.a.qyc, 1);
+    int i = ((b)g.ab(b.class)).a(b.a.qFi, 1);
     if (i == 1) {
       switch (1.$SwitchMap$com$tencent$kinda$framework$widget$tools$ColorUtil$MMViewType[paramMMViewType.ordinal()])
       {
@@ -106,8 +106,8 @@ public class ColorUtil
     }
     for (;;)
     {
-      if (i.DEBUG) {
-        ad.i("base_MMKView", "compatKindaDarkMode() swt:%s. (mNormalColor:%s mDarkmodeColor:%s)", new Object[] { Integer.valueOf(i), Long.toHexString(absColor(paramDynamicColor.mNormalColor)), Long.toHexString(absColor(paramDynamicColor.mDarkmodeColor)) });
+      if (j.DEBUG) {
+        ae.i("base_MMKView", "compatKindaDarkMode() swt:%s. (mNormalColor:%s mDarkmodeColor:%s)", new Object[] { Integer.valueOf(i), Long.toHexString(absColor(paramDynamicColor.mNormalColor)), Long.toHexString(absColor(paramDynamicColor.mDarkmodeColor)) });
       }
       AppMethodBeat.o(19326);
       return paramDynamicColor;
@@ -128,7 +128,7 @@ public class ColorUtil
   private static boolean compatKindaDarkModeDefaultColorSw()
   {
     AppMethodBeat.i(19327);
-    if (((b)g.ab(b.class)).a(b.a.qye, 1) == 1)
+    if (((b)g.ab(b.class)).a(b.a.qFk, 1) == 1)
     {
       AppMethodBeat.o(19327);
       return true;
@@ -160,14 +160,14 @@ public class ColorUtil
     AppMethodBeat.i(19325);
     if (paramDynamicColor == null)
     {
-      if (i.DEBUG) {
-        ad.d("base_MMKView", "getColorByMode() dynamicColor == null");
+      if (j.DEBUG) {
+        ae.d("base_MMKView", "getColorByMode() dynamicColor == null");
       }
       AppMethodBeat.o(19325);
       return 0L;
     }
-    if (i.DEBUG) {
-      ad.d("base_MMKView", "getColorByMode(mNormalColor:%s mDarkmodeColor:%s) %s", new Object[] { Long.toHexString(absColor(paramDynamicColor.mNormalColor)), Long.toHexString(absColor(paramDynamicColor.mDarkmodeColor)), bt.flS() });
+    if (j.DEBUG) {
+      ae.d("base_MMKView", "getColorByMode(mNormalColor:%s mDarkmodeColor:%s) %s", new Object[] { Long.toHexString(absColor(paramDynamicColor.mNormalColor)), Long.toHexString(absColor(paramDynamicColor.mDarkmodeColor)), bu.fpN() });
     }
     if (al.isDarkMode())
     {
@@ -186,7 +186,7 @@ public class ColorUtil
     long l = getColorByMode(paramDynamicColor, MMViewType.NONE);
     if ((paramBoolean) && (l == -1L) && (al.isDarkMode()))
     {
-      l = al.gD((int)paramDynamicColor.mNormalColor);
+      l = al.gE((int)paramDynamicColor.mNormalColor);
       AppMethodBeat.o(162116);
       return l;
     }
@@ -210,8 +210,8 @@ public class ColorUtil
     AppMethodBeat.i(19322);
     if (paramDynamicColor == null)
     {
-      if (i.DEBUG) {
-        ad.d("base_MMKView", "getColorByModeNoCompat() dynamicColor == null");
+      if (j.DEBUG) {
+        ae.d("base_MMKView", "getColorByModeNoCompat() dynamicColor == null");
       }
       AppMethodBeat.o(19322);
       return 0L;
@@ -269,7 +269,7 @@ public class ColorUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.kinda.framework.widget.tools.ColorUtil
  * JD-Core Version:    0.7.0.1
  */

@@ -4,40 +4,40 @@ public abstract interface c
 {
   public static abstract class a
   {
-    public long NVE;
-    public long NVF;
+    public long OsJ;
+    public long OsK;
   }
   
   public static abstract class b
   {
-    public boolean NVG;
-    public long NVH;
-    public long NVI;
-    public int NVJ;
-    public int NVK;
-    public int NVL;
-    public int NVM;
-    public int NVN;
+    public boolean OsL;
+    public long OsM;
+    public long OsN;
+    public int OsO;
+    public int OsP;
+    public int OsQ;
+    public int OsR;
+    public int OsS;
     public int type;
     
-    public abstract c.c FN(long paramLong);
+    public abstract c.c Gp(long paramLong);
     
-    public abstract c.a as(long paramLong, int paramInt);
+    public abstract c.a at(long paramLong, int paramInt);
     
-    public abstract c.d gym();
+    public abstract c.d gCO();
   }
   
   public static abstract class c
   {
-    public long NVO;
-    public long NVP;
-    public long dle;
+    public long OsT;
+    public long OsU;
+    public long dmg;
     public long offset;
   }
   
   public static abstract class d
   {
-    public long NVQ;
+    public long OsV;
   }
 }
 

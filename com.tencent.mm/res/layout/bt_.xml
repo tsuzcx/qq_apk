@@ -7,7 +7,7 @@
     <View android:id="@id/hop" android:background="@color/FG_3" android:layout_width="1.0dip" android:layout_height="@dimen/c5" android:layout_toLeftOf="@id/hoo" android:layout_centerVertical="true" />
     <LinearLayout android:orientation="horizontal" android:id="@id/hon" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_toLeftOf="@id/hop">
         <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center_vertical" android:id="@id/hom" android:layout_width="@dimen/cb" android:layout_height="@dimen/cb" android:layout_marginLeft="@dimen/c0" />
-        <LinearLayout android:layout_gravity="center_vertical" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ci">
+        <LinearLayout android:layout_gravity="center_vertical" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ci" android:layout_marginRight="@dimen/c8">
             <TextView android:textSize="@dimen/gu" android:textColor="@color/FG_0" android:ellipsize="end" android:id="@id/hou" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" />
             <TextView android:textSize="@dimen/gx" android:textColor="@color/FG_1" android:ellipsize="end" android:id="@id/hol" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/bq" android:singleLine="true" />
         </LinearLayout>

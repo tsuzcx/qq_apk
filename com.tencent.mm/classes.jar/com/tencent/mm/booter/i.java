@@ -1,22 +1,22 @@
 package com.tencent.mm.booter;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.ba;
+import com.tencent.mm.model.bc;
 import com.tencent.mm.model.c;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ai;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.aj;
 
 public final class i
 {
-  public static boolean WR()
+  public static boolean WZ()
   {
     AppMethodBeat.i(19886);
     try
     {
-      ba.aBQ();
-      bt.a((Long)c.ajl().get(66817, null), 0L);
-      if (bt.rM(0L) * 1000L > 1800000L)
+      bc.aCg();
+      bu.a((Long)c.ajA().get(66817, null), 0L);
+      if (bu.rZ(0L) * 1000L > 1800000L)
       {
         AppMethodBeat.o(19886);
         return true;
@@ -26,7 +26,7 @@ public final class i
     {
       for (;;)
       {
-        ad.printErrStackTrace("MicroMsg.PostTaskMediaNoteStat", localException, "", new Object[0]);
+        ae.printErrStackTrace("MicroMsg.PostTaskMediaNoteStat", localException, "", new Object[0]);
       }
       AppMethodBeat.o(19886);
     }

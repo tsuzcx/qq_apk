@@ -14,33 +14,33 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.plugin.report.service.g;
 import com.tencent.mm.plugin.wallet_core.model.Bankcard;
 import com.tencent.mm.plugin.wallet_core.model.an;
 import com.tencent.mm.plugin.wallet_core.model.t;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.base.MaxListView;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
-import com.tencent.mm.wallet_core.ui.e;
+import com.tencent.mm.wallet_core.ui.f;
 import java.util.List;
 
 @com.tencent.mm.ui.base.a(19)
 public class WalletSelectBankcardUI
   extends WalletBaseUI
 {
-  private TextView Djd;
-  private MaxListView Dje;
-  private a Djf = null;
-  private String Djg = null;
-  private boolean Djh = true;
-  private String Dji = null;
-  private List<Bankcard> Djj = null;
+  private TextView DAH;
+  private MaxListView DAI;
+  private a DAJ = null;
+  private String DAK = null;
+  private boolean DAL = true;
+  private String DAM = null;
+  private List<Bankcard> DAN = null;
   private int mScene = 0;
-  private TextView pcH;
+  private TextView pjn;
   
   public int getLayoutId()
   {
@@ -58,51 +58,51 @@ public class WalletSelectBankcardUI
     super.onCreate(paramBundle);
     setMMTitle(2131765035);
     this.mScene = getInput().getInt("key_scene", 0);
-    this.Djg = getInput().getString("key_top_tips");
-    this.Djh = getInput().getBoolean("key_is_show_new_bankcard", true);
-    this.Dji = getInput().getString("bottom_tips");
-    this.Djj = getInput().getParcelableArrayList("key_showing_bankcards");
-    if (this.Djj == null) {
-      this.Djj = t.eFy().eGu();
+    this.DAK = getInput().getString("key_top_tips");
+    this.DAL = getInput().getBoolean("key_is_show_new_bankcard", true);
+    this.DAM = getInput().getString("bottom_tips");
+    this.DAN = getInput().getParcelableArrayList("key_showing_bankcards");
+    if (this.DAN == null) {
+      this.DAN = t.eJf().eKb();
     }
-    this.Djd = ((TextView)findViewById(2131305947));
-    this.Dje = ((MaxListView)findViewById(2131297167));
-    this.pcH = ((TextView)findViewById(2131297475));
-    if (!bt.isNullOrNil(this.Djg))
+    this.DAH = ((TextView)findViewById(2131305947));
+    this.DAI = ((MaxListView)findViewById(2131297167));
+    this.pjn = ((TextView)findViewById(2131297475));
+    if (!bu.isNullOrNil(this.DAK))
     {
-      this.Djd.setVisibility(0);
-      this.Djd.setText(this.Djg);
-      if (bt.isNullOrNil(this.Dji)) {
+      this.DAH.setVisibility(0);
+      this.DAH.setText(this.DAK);
+      if (bu.isNullOrNil(this.DAM)) {
         break label342;
       }
-      this.pcH.setVisibility(0);
-      this.pcH.setText(this.Dji);
+      this.pjn.setVisibility(0);
+      this.pjn.setText(this.DAM);
     }
     for (;;)
     {
       if (this.mScene == 0)
       {
-        this.pcH.setVisibility(0);
+        this.pjn.setVisibility(0);
         paramBundle = new l(this);
-        paramBundle.DfS = new l.a()
+        paramBundle.Dxw = new l.a()
         {
           public final void onClick(View paramAnonymousView)
           {
             AppMethodBeat.i(71220);
-            ad.i("MicroMsg.WalletSelectBankcardUI", "hy: user clicked the phone.go to dial");
-            e.cs(WalletSelectBankcardUI.this, WalletSelectBankcardUI.this.getString(2131765040));
+            ae.i("MicroMsg.WalletSelectBankcardUI", "hy: user clicked the phone.go to dial");
+            f.ct(WalletSelectBankcardUI.this, WalletSelectBankcardUI.this.getString(2131765040));
             AppMethodBeat.o(71220);
           }
         };
         String str = getString(2131765843);
         SpannableString localSpannableString = new SpannableString(str);
         localSpannableString.setSpan(paramBundle, str.length() - 14, str.length(), 33);
-        this.pcH.setText(localSpannableString);
-        this.pcH.setMovementMethod(LinkMovementMethod.getInstance());
+        this.pjn.setText(localSpannableString);
+        this.pjn.setMovementMethod(LinkMovementMethod.getInstance());
       }
-      this.Djf = new a((byte)0);
-      this.Dje.setAdapter(this.Djf);
-      this.Dje.setOnItemClickListener(new AdapterView.OnItemClickListener()
+      this.DAJ = new a((byte)0);
+      this.DAI.setAdapter(this.DAJ);
+      this.DAI.setOnItemClickListener(new AdapterView.OnItemClickListener()
       {
         public final void onItemClick(final AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
         {
@@ -110,9 +110,9 @@ public class WalletSelectBankcardUI
           b localb = new b();
           localb.bd(paramAnonymousAdapterView);
           localb.bd(paramAnonymousView);
-          localb.mr(paramAnonymousInt);
-          localb.qY(paramAnonymousLong);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/wallet_core/ui/WalletSelectBankcardUI$2", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.ahq());
+          localb.mu(paramAnonymousInt);
+          localb.rl(paramAnonymousLong);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/wallet_core/ui/WalletSelectBankcardUI$2", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.ahF());
           paramAnonymousAdapterView = (Bankcard)paramAnonymousAdapterView.getItemAtPosition(paramAnonymousInt);
           if (paramAnonymousAdapterView != null) {
             h.a(WalletSelectBankcardUI.this, true, WalletSelectBankcardUI.this.getString(2131765845, new Object[] { paramAnonymousAdapterView.field_desc, paramAnonymousAdapterView.field_mobile }), WalletSelectBankcardUI.this.getString(2131765847), WalletSelectBankcardUI.this.getString(2131765844), WalletSelectBankcardUI.this.getString(2131765846), new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
@@ -122,7 +122,7 @@ public class WalletSelectBankcardUI
                 AppMethodBeat.i(71221);
                 WalletSelectBankcardUI.this.getInput().putBoolean("key_balance_change_phone_need_confirm_phone", false);
                 WalletSelectBankcardUI.a(WalletSelectBankcardUI.this, paramAnonymousAdapterView);
-                g.yhR.f(11977, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(0) });
+                g.yxI.f(11977, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(0) });
                 AppMethodBeat.o(71221);
               }
             }, new DialogInterface.OnClickListener()
@@ -148,10 +148,10 @@ public class WalletSelectBankcardUI
       });
       AppMethodBeat.o(71227);
       return;
-      this.Djd.setVisibility(8);
+      this.DAH.setVisibility(8);
       break;
       label342:
-      this.pcH.setVisibility(8);
+      this.pjn.setVisibility(8);
     }
   }
   
@@ -222,13 +222,13 @@ public class WalletSelectBankcardUI
       {
         localView = LayoutInflater.from(WalletSelectBankcardUI.this).inflate(2131496026, paramViewGroup, false);
         paramView = new a();
-        paramView.Djn = ((TextView)localView.findViewById(2131297154));
+        paramView.DAR = ((TextView)localView.findViewById(2131297154));
         localView.setTag(paramView);
         paramViewGroup = paramView;
         if (localBankcard == null) {
           break label105;
         }
-        paramViewGroup.Djn.setText(localBankcard.field_desc);
+        paramViewGroup.DAR.setText(localBankcard.field_desc);
       }
       for (;;)
       {
@@ -238,13 +238,13 @@ public class WalletSelectBankcardUI
         localView = paramView;
         break;
         label105:
-        paramViewGroup.Djn.setText(2131765849);
+        paramViewGroup.DAR.setText(2131765849);
       }
     }
     
     final class a
     {
-      TextView Djn;
+      TextView DAR;
       
       a() {}
     }
@@ -252,7 +252,7 @@ public class WalletSelectBankcardUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.ui.WalletSelectBankcardUI
  * JD-Core Version:    0.7.0.1
  */

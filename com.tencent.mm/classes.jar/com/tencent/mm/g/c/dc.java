@@ -8,39 +8,39 @@ public abstract class dc
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eDc = "status".hashCode();
-  private static final int eFp;
-  private static final int eKP;
-  private static final int fdY = "googleid".hashCode();
-  private static final int fdZ = "googlename".hashCode();
-  private static final int fea = "googlephotourl".hashCode();
-  private static final int feb = "googlegmail".hashCode();
-  private static final int fec;
-  private static final int fed;
-  private static final int fee;
-  private static final int fef;
-  private static final int feg;
-  private static final int feh = "googleitemid".hashCode();
-  private static final int fei = "googlecgistatus".hashCode();
-  private static final int fej = "contecttype".hashCode();
-  private static final int fek = "googlenamepy".hashCode();
+  private static final int eEL = "status".hashCode();
+  private static final int eGY;
+  private static final int eMy;
+  private static final int ffR = "googleid".hashCode();
+  private static final int ffS = "googlename".hashCode();
+  private static final int ffT = "googlephotourl".hashCode();
+  private static final int ffU = "googlegmail".hashCode();
+  private static final int ffV;
+  private static final int ffW;
+  private static final int ffX;
+  private static final int ffY;
+  private static final int ffZ;
+  private static final int fga = "googleitemid".hashCode();
+  private static final int fgb = "googlecgistatus".hashCode();
+  private static final int fgc = "contecttype".hashCode();
+  private static final int fgd = "googlenamepy".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eCZ = true;
-  private boolean eFm = true;
-  private boolean eKL = true;
-  private boolean fdL = true;
-  private boolean fdM = true;
-  private boolean fdN = true;
-  private boolean fdO = true;
-  private boolean fdP = true;
-  private boolean fdQ = true;
-  private boolean fdR = true;
-  private boolean fdS = true;
-  private boolean fdT = true;
-  private boolean fdU = true;
-  private boolean fdV = true;
-  private boolean fdW = true;
-  private boolean fdX = true;
+  private boolean eEI = true;
+  private boolean eGV = true;
+  private boolean eMu = true;
+  private boolean ffE = true;
+  private boolean ffF = true;
+  private boolean ffG = true;
+  private boolean ffH = true;
+  private boolean ffI = true;
+  private boolean ffJ = true;
+  private boolean ffK = true;
+  private boolean ffL = true;
+  private boolean ffM = true;
+  private boolean ffN = true;
+  private boolean ffO = true;
+  private boolean ffP = true;
+  private boolean ffQ = true;
   public String field_big_url;
   public String field_contecttype;
   public int field_googlecgistatus;
@@ -60,13 +60,13 @@ public abstract class dc
   
   static
   {
-    eFp = "username".hashCode();
-    eKP = "nickname".hashCode();
-    fec = "nicknameqp".hashCode();
-    fed = "usernamepy".hashCode();
-    fee = "small_url".hashCode();
-    fef = "big_url".hashCode();
-    feg = "ret".hashCode();
+    eGY = "username".hashCode();
+    eMy = "nickname".hashCode();
+    ffV = "nicknameqp".hashCode();
+    ffW = "usernamepy".hashCode();
+    ffX = "small_url".hashCode();
+    ffY = "big_url".hashCode();
+    ffZ = "ret".hashCode();
   }
   
   public void convertFrom(Cursor paramCursor)
@@ -82,7 +82,7 @@ public abstract class dc
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (fdY != k) {
+      if (ffR != k) {
         break label60;
       }
       this.field_googleid = paramCursor.getString(i);
@@ -93,64 +93,64 @@ public abstract class dc
       break label20;
       break;
       label60:
-      if (fdZ == k)
+      if (ffS == k)
       {
         this.field_googlename = paramCursor.getString(i);
       }
-      else if (fea == k)
+      else if (ffT == k)
       {
         this.field_googlephotourl = paramCursor.getString(i);
       }
-      else if (feb == k)
+      else if (ffU == k)
       {
         this.field_googlegmail = paramCursor.getString(i);
       }
-      else if (eFp == k)
+      else if (eGY == k)
       {
         this.field_username = paramCursor.getString(i);
       }
-      else if (eKP == k)
+      else if (eMy == k)
       {
         this.field_nickname = paramCursor.getString(i);
       }
-      else if (fec == k)
+      else if (ffV == k)
       {
         this.field_nicknameqp = paramCursor.getString(i);
       }
-      else if (fed == k)
+      else if (ffW == k)
       {
         this.field_usernamepy = paramCursor.getString(i);
       }
-      else if (fee == k)
+      else if (ffX == k)
       {
         this.field_small_url = paramCursor.getString(i);
       }
-      else if (fef == k)
+      else if (ffY == k)
       {
         this.field_big_url = paramCursor.getString(i);
       }
-      else if (feg == k)
+      else if (ffZ == k)
       {
         this.field_ret = paramCursor.getInt(i);
       }
-      else if (eDc == k)
+      else if (eEL == k)
       {
         this.field_status = paramCursor.getInt(i);
       }
-      else if (feh == k)
+      else if (fga == k)
       {
         this.field_googleitemid = paramCursor.getString(i);
-        this.fdU = true;
+        this.ffN = true;
       }
-      else if (fei == k)
+      else if (fgb == k)
       {
         this.field_googlecgistatus = paramCursor.getInt(i);
       }
-      else if (fej == k)
+      else if (fgc == k)
       {
         this.field_contecttype = paramCursor.getString(i);
       }
-      else if (fek == k)
+      else if (fgd == k)
       {
         this.field_googlenamepy = paramCursor.getString(i);
       }
@@ -164,52 +164,52 @@ public abstract class dc
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.fdL) {
+    if (this.ffE) {
       localContentValues.put("googleid", this.field_googleid);
     }
-    if (this.fdM) {
+    if (this.ffF) {
       localContentValues.put("googlename", this.field_googlename);
     }
-    if (this.fdN) {
+    if (this.ffG) {
       localContentValues.put("googlephotourl", this.field_googlephotourl);
     }
-    if (this.fdO) {
+    if (this.ffH) {
       localContentValues.put("googlegmail", this.field_googlegmail);
     }
-    if (this.eFm) {
+    if (this.eGV) {
       localContentValues.put("username", this.field_username);
     }
-    if (this.eKL) {
+    if (this.eMu) {
       localContentValues.put("nickname", this.field_nickname);
     }
-    if (this.fdP) {
+    if (this.ffI) {
       localContentValues.put("nicknameqp", this.field_nicknameqp);
     }
-    if (this.fdQ) {
+    if (this.ffJ) {
       localContentValues.put("usernamepy", this.field_usernamepy);
     }
-    if (this.fdR) {
+    if (this.ffK) {
       localContentValues.put("small_url", this.field_small_url);
     }
-    if (this.fdS) {
+    if (this.ffL) {
       localContentValues.put("big_url", this.field_big_url);
     }
-    if (this.fdT) {
+    if (this.ffM) {
       localContentValues.put("ret", Integer.valueOf(this.field_ret));
     }
-    if (this.eCZ) {
+    if (this.eEI) {
       localContentValues.put("status", Integer.valueOf(this.field_status));
     }
-    if (this.fdU) {
+    if (this.ffN) {
       localContentValues.put("googleitemid", this.field_googleitemid);
     }
-    if (this.fdV) {
+    if (this.ffO) {
       localContentValues.put("googlecgistatus", Integer.valueOf(this.field_googlecgistatus));
     }
-    if (this.fdW) {
+    if (this.ffP) {
       localContentValues.put("contecttype", this.field_contecttype);
     }
-    if (this.fdX) {
+    if (this.ffQ) {
       localContentValues.put("googlenamepy", this.field_googlenamepy);
     }
     if (this.systemRowid > 0L) {
@@ -220,7 +220,7 @@ public abstract class dc
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.c.dc
  * JD-Core Version:    0.7.0.1
  */

@@ -15,16 +15,16 @@ public final class a
   {
     AppMethodBeat.i(44664);
     c.a locala = new c.a();
-    locala.IhA = new Field[2];
+    locala.IBL = new Field[2];
     locala.columns = new String[3];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "appId";
-    locala.IhC.put("appId", "TEXT PRIMARY KEY ");
+    locala.IBN.put("appId", "TEXT PRIMARY KEY ");
     localStringBuilder.append(" appId TEXT PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.IhB = "appId";
+    locala.IBM = "appId";
     locala.columns[1] = "recommendCard";
-    locala.IhC.put("recommendCard", "BLOB");
+    locala.IBN.put("recommendCard", "BLOB");
     localStringBuilder.append(" recommendCard BLOB");
     locala.columns[2] = "rowid";
     locala.sql = localStringBuilder.toString();

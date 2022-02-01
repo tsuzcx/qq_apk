@@ -4,32 +4,32 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 15}, gfy={""}, gfz={"Lcom/tencent/mm/xeffect/XEffectFileUtils;", "", "()V", "TAG", "", "alignmentName", "coreModelName", "coreParamName", "detectName", "gestureClsName", "gestureDetName", "segName", "trackName", "checkAssetsMatch", "", "localMd5", "copyAssets", "", "assets", "Landroid/content/res/AssetManager;", "assetsPath", "localPath", "copyModelFiles", "context", "Landroid/content/Context;", "output", "getAssetsMD5", "renderlib_release"})
+@l(gjZ={1, 1, 15}, gka={""}, gkb={"Lcom/tencent/mm/xeffect/XEffectFileUtils;", "", "()V", "TAG", "", "alignmentName", "coreModelName", "coreParamName", "detectName", "gestureClsName", "gestureDetName", "imageLabelName", "segName", "trackName", "checkAssetsMatch", "", "localMd5", "copyAssets", "", "assets", "Landroid/content/res/AssetManager;", "assetsPath", "localPath", "copyModelFiles", "context", "Landroid/content/Context;", "output", "getAssetsMD5", "renderlib_release"})
 public final class d
 {
-  public static final d LBD;
+  public static final d LYD;
   private static final String TAG = "XEffectFileUtils";
   
   static
   {
-    AppMethodBeat.i(220324);
-    LBD = new d();
+    AppMethodBeat.i(217077);
+    LYD = new d();
     TAG = "XEffectFileUtils";
-    AppMethodBeat.o(220324);
+    AppMethodBeat.o(217077);
   }
   
-  public static boolean aYS(String paramString)
+  public static boolean bav(String paramString)
   {
-    AppMethodBeat.i(220323);
+    AppMethodBeat.i(217076);
     p.h(paramString, "localMd5");
-    boolean bool = p.i("b200b9bf03c2c07db385ce2b1554f89b", paramString);
-    AppMethodBeat.o(220323);
+    boolean bool = p.i("b5e3b65978452dee9add4e235e240a35", paramString);
+    AppMethodBeat.o(217076);
     return bool;
   }
   
-  public static String fSt()
+  public static String fWS()
   {
-    return "b200b9bf03c2c07db385ce2b1554f89b";
+    return "b5e3b65978452dee9add4e235e240a35";
   }
 }
 

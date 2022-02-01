@@ -1,17 +1,17 @@
 package com.tencent.mm.loader.b.a;
 
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.vfs.e;
-import com.tencent.mm.vfs.i;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.vfs.k;
+import com.tencent.mm.vfs.o;
 import d.g.b.p;
 import d.l;
 import java.io.OutputStream;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/loader/cache/disk/DiskFunction;", "", "()V", "TAG", "", "compress", "", "bm", "Landroid/graphics/Bitmap;", "format", "Landroid/graphics/Bitmap$CompressFormat;", "quality", "", "stream", "Ljava/io/OutputStream;", "obtainOutputStream", "filePath", "save", "data", "", "libimageloader_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/loader/cache/disk/DiskFunction;", "", "()V", "TAG", "", "compress", "", "bm", "Landroid/graphics/Bitmap;", "format", "Landroid/graphics/Bitmap$CompressFormat;", "quality", "", "stream", "Ljava/io/OutputStream;", "obtainOutputStream", "filePath", "save", "data", "", "libimageloader_release"})
 public final class c
 {
   private static final String TAG = "MicroMsg.Loader.DiskFunction";
-  public static final c hda = new c();
+  public static final c hfO = new c();
   
   /* Error */
   public static boolean a(String paramString, OutputStream paramOutputStream)
@@ -26,10 +26,10 @@ public final class c
     //   9: ldc 59
     //   11: invokestatic 57	d/g/b/p:h	(Ljava/lang/Object;Ljava/lang/String;)V
     //   14: aload_0
-    //   15: invokestatic 103	com/tencent/mm/vfs/i:fv	(Ljava/lang/String;)Z
+    //   15: invokestatic 103	com/tencent/mm/vfs/o:fB	(Ljava/lang/String;)Z
     //   18: ifeq +106 -> 124
     //   21: aload_0
-    //   22: invokestatic 107	com/tencent/mm/vfs/i:openRead	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   22: invokestatic 107	com/tencent/mm/vfs/o:openRead	(Ljava/lang/String;)Ljava/io/InputStream;
     //   25: astore 4
     //   27: aload 4
     //   29: ifnull +95 -> 124
@@ -65,7 +65,7 @@ public final class c
     //   87: aload_1
     //   88: athrow
     //   89: astore_1
-    //   90: getstatic 132	com/tencent/mm/plugin/report/e:ygI	Lcom/tencent/mm/plugin/report/e;
+    //   90: getstatic 132	com/tencent/mm/plugin/report/e:ywz	Lcom/tencent/mm/plugin/report/e;
     //   93: ldc2_w 133
     //   96: ldc2_w 135
     //   99: lconst_1
@@ -79,7 +79,7 @@ public final class c
     //   114: invokevirtual 152	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
     //   117: iconst_0
     //   118: anewarray 4	java/lang/Object
-    //   121: invokestatic 156	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   121: invokestatic 156	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   124: iconst_0
     //   125: ireturn
     //   126: aload 4
@@ -122,7 +122,7 @@ public final class c
     return true;
   }
   
-  public static OutputStream xX(String paramString)
+  public static OutputStream yH(String paramString)
   {
     p.h(paramString, "filePath");
     if (((CharSequence)paramString).length() == 0) {}
@@ -131,17 +131,17 @@ public final class c
     }
     try
     {
-      e locale = new e(paramString).fOJ();
-      if (locale != null) {
-        locale.mkdirs();
+      k localk = new k(paramString).fTg();
+      if (localk != null) {
+        localk.mkdirs();
       }
-      paramString = i.Cz(paramString);
+      paramString = o.Db(paramString);
     }
     catch (Exception paramString)
     {
       for (;;)
       {
-        ad.e(TAG, "obtainOutputStream:%s", new Object[] { paramString });
+        ae.e(TAG, "obtainOutputStream:%s", new Object[] { paramString });
         paramString = null;
       }
     }
@@ -150,7 +150,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.loader.b.a.c
  * JD-Core Version:    0.7.0.1
  */

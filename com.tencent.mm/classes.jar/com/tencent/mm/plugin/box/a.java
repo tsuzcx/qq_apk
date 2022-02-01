@@ -1,69 +1,71 @@
 package com.tencent.mm.plugin.box;
 
 import com.tencent.e.h;
+import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.d;
-import com.tencent.mm.al.d.b;
-import com.tencent.mm.al.e.a;
-import com.tencent.mm.al.e.b;
-import com.tencent.mm.al.e.c;
-import com.tencent.mm.bx.b;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.e.a;
+import com.tencent.mm.ak.e.b;
+import com.tencent.mm.ak.e.c;
+import com.tencent.mm.bw.b;
 import com.tencent.mm.plugin.messenger.foundation.a.q;
-import com.tencent.mm.protocal.protobuf.qu;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.qw;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.vfs.o;
 import java.util.Map;
 
 public final class a
   implements d
 {
-  public final q nUM;
+  public final q oas;
   
   public a()
   {
-    AppMethodBeat.i(219084);
-    this.nUM = new q()
+    AppMethodBeat.i(208276);
+    this.oas = new q()
     {
       public final void onNewXmlReceived(final String paramAnonymousString, Map<String, String> paramAnonymousMap, e.a paramAnonymousa)
       {
-        AppMethodBeat.i(219083);
+        AppMethodBeat.i(208275);
         if (paramAnonymousString.equals("functionmsg"))
         {
           paramAnonymousString = (String)paramAnonymousMap.get(".sysmsg.functionmsg.businessid");
-          if ((paramAnonymousString != null) && (paramAnonymousString.equals("20002")) && (paramAnonymousa.hNZ != null))
+          if ((paramAnonymousString != null) && (paramAnonymousString.equals("20002")) && (paramAnonymousa.hQS != null))
           {
-            paramAnonymousString = ((d.b)paramAnonymousa.hNZ).hNS.FMy.toByteArray();
-            paramAnonymousMap = c.bEc();
-            if (com.tencent.mm.vfs.i.fv(paramAnonymousMap)) {
-              com.tencent.mm.vfs.i.deleteFile(paramAnonymousMap);
+            paramAnonymousString = ((d.b)paramAnonymousa.hQS).hQL.GeX.toByteArray();
+            paramAnonymousMap = c.bNW();
+            if (o.fB(paramAnonymousMap)) {
+              o.deleteFile(paramAnonymousMap);
             }
-            com.tencent.mm.vfs.i.aYs(paramAnonymousMap);
-            com.tencent.mm.vfs.i.f(paramAnonymousMap, paramAnonymousString, paramAnonymousString.length);
-            ad.i("MicroMsg.WebSearch.BlackWhiteWordsMsgExtension", "[onNewXmlReceived] bytesLen: %s", new Object[] { Integer.valueOf(paramAnonymousString.length) });
-            h.LTJ.f(new Runnable()
+            o.aZV(paramAnonymousMap);
+            o.f(paramAnonymousMap, paramAnonymousString, paramAnonymousString.length);
+            ae.i("MicroMsg.WebSearch.BlackWhiteWordsMsgExtension", "[onNewXmlReceived] bytesLen: %s", new Object[] { Integer.valueOf(paramAnonymousString.length) });
+            h.MqF.f(new Runnable()
             {
               public final void run()
               {
-                AppMethodBeat.i(219082);
+                AppMethodBeat.i(208274);
                 c.aJ(paramAnonymousString);
-                c.mv(false);
-                c.WG(c.jk(false));
-                AppMethodBeat.o(219082);
+                c.ji(false);
+                c.Xs(c.jj(false));
+                AppMethodBeat.o(208274);
               }
             }, "box.HotWordSearchModel");
           }
         }
-        AppMethodBeat.o(219083);
+        AppMethodBeat.o(208275);
       }
     };
-    AppMethodBeat.o(219084);
+    AppMethodBeat.o(208276);
   }
   
-  public final int adG()
+  public final int adS()
   {
     return -1;
   }
   
-  public final int adH()
+  public final int adT()
   {
     return 20002;
   }
@@ -77,7 +79,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.box.a
  * JD-Core Version:    0.7.0.1
  */

@@ -10,28 +10,28 @@ import rx.schedulers.Schedulers;
 public class a
   implements Executor
 {
-  private static a ker;
-  private final g kes;
+  private static a khI;
+  private final g khJ;
   private final Handler mHandler;
   
   private a()
   {
     AppMethodBeat.i(159030);
     this.mHandler = new Handler(Looper.getMainLooper());
-    this.kes = Schedulers.from(this);
+    this.khJ = Schedulers.from(this);
     AppMethodBeat.o(159030);
   }
   
-  public static g bfE()
+  public static g bgm()
   {
     AppMethodBeat.i(159031);
-    if (ker == null) {}
+    if (khI == null) {}
     try
     {
-      if (ker == null) {
-        ker = new a();
+      if (khI == null) {
+        khI = new a();
       }
-      g localg = ker.kes;
+      g localg = khI.khJ;
       AppMethodBeat.o(159031);
       return localg;
     }
@@ -50,7 +50,7 @@ public class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.g.d.a
  * JD-Core Version:    0.7.0.1
  */

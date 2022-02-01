@@ -2,7 +2,7 @@ package com.tencent.mm.chatroom.g;
 
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/chatroom/process/ChatRoomAddContactProcess$Companion;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "ui-chatroom_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/chatroom/process/ChatRoomAddContactProcess$Companion;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "ui-chatroom_release"})
 public final class a$a {}
 
 

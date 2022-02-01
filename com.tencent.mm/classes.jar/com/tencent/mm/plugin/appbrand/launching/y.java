@@ -1,10 +1,10 @@
 package com.tencent.mm.plugin.appbrand.launching;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ad.c;
+import com.tencent.mm.ac.c;
 import com.tencent.mm.plugin.appbrand.appcache.IPkgInfo;
 import com.tencent.mm.plugin.appbrand.appcache.WxaPkgLoadProgress;
-import com.tencent.mm.plugin.appbrand.appcache.ac;
+import com.tencent.mm.plugin.appbrand.appcache.ad;
 import d.f;
 import d.g;
 import d.g.a.a;
@@ -14,12 +14,12 @@ import d.g.b.p;
 import d.g.b.q;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/launching/ICommonPkgFetcher;", "", "ERROR", "Factory", "IReporter", "Request", "Response", "SOURCE", "VERSION", "plugin-appbrand-integration_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/launching/ICommonPkgFetcher;", "", "ERROR", "Factory", "IReporter", "Request", "Response", "SOURCE", "VERSION", "plugin-appbrand-integration_release"})
 public abstract interface y
 {
-  public static final b lHJ = b.lHV;
+  public static final b lMj = b.lMv;
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/launching/ICommonPkgFetcher$ERROR;", "", "code", "", "(Ljava/lang/String;II)V", "getCode", "()I", "OK", "FAILED", "LOCAL_FILE_NOT_FOUND", "PKG_INTEGRITY_FAILED", "PKG_INVALID", "SEVER_FILE_NOT_FOUND", "DISK_FULL", "PKG_RECORD_NULL", "PKG_RECORD_INVALID", "ENV_ERR", "plugin-appbrand-integration_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/launching/ICommonPkgFetcher$ERROR;", "", "code", "", "(Ljava/lang/String;II)V", "getCode", "()I", "OK", "FAILED", "LOCAL_FILE_NOT_FOUND", "PKG_INTEGRITY_FAILED", "PKG_INVALID", "SEVER_FILE_NOT_FOUND", "DISK_FULL", "PKG_RECORD_NULL", "PKG_RECORD_INVALID", "ENV_ERR", "plugin-appbrand-integration_release"})
   public static enum a
   {
     final int code;
@@ -28,26 +28,26 @@ public abstract interface y
     {
       AppMethodBeat.i(180556);
       a locala1 = new a("OK", 0, 0);
-      lHK = locala1;
+      lMk = locala1;
       a locala2 = new a("FAILED", 1, 101);
-      lHL = locala2;
+      lMl = locala2;
       a locala3 = new a("LOCAL_FILE_NOT_FOUND", 2, 102);
-      lHM = locala3;
+      lMm = locala3;
       a locala4 = new a("PKG_INTEGRITY_FAILED", 3, 104);
-      lHN = locala4;
+      lMn = locala4;
       a locala5 = new a("PKG_INVALID", 4, 105);
-      lHO = locala5;
+      lMo = locala5;
       a locala6 = new a("SEVER_FILE_NOT_FOUND", 5, 106);
-      lHP = locala6;
+      lMp = locala6;
       a locala7 = new a("DISK_FULL", 6, 110);
-      lHQ = locala7;
+      lMq = locala7;
       a locala8 = new a("PKG_RECORD_NULL", 7, 111);
-      lHR = locala8;
+      lMr = locala8;
       a locala9 = new a("PKG_RECORD_INVALID", 8, 112);
-      lHS = locala9;
+      lMs = locala9;
       a locala10 = new a("ENV_ERR", 9, 200);
-      lHT = locala10;
-      lHU = new a[] { locala1, locala2, locala3, locala4, locala5, locala6, locala7, locala8, locala9, locala10 };
+      lMt = locala10;
+      lMu = new a[] { locala1, locala2, locala3, locala4, locala5, locala6, locala7, locala8, locala9, locala10 };
       AppMethodBeat.o(180556);
     }
     
@@ -57,13 +57,13 @@ public abstract interface y
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/launching/ICommonPkgFetcher$Factory;", "", "()V", "waitForPkg", "", "request", "Lcom/tencent/mm/plugin/appbrand/launching/ICommonPkgFetcher$Request;", "onSuccess", "Lkotlin/Function1;", "Lcom/tencent/mm/plugin/appbrand/launching/ICommonPkgFetcher$Response;", "onError", "Lkotlin/Function2;", "Lcom/tencent/mm/plugin/appbrand/launching/ICommonPkgFetcher$ERROR;", "", "onProgress", "Lcom/tencent/mm/plugin/appbrand/appcache/WxaPkgLoadProgress;", "cgiExecutor", "Lcom/tencent/mm/plugin/appbrand/launching/IGetDownloadUrlCgiExecutor;", "reporter", "Lcom/tencent/mm/plugin/appbrand/launching/ICommonPkgFetcher$IReporter;", "plugin-appbrand-integration_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/launching/ICommonPkgFetcher$Factory;", "", "()V", "waitForPkg", "", "request", "Lcom/tencent/mm/plugin/appbrand/launching/ICommonPkgFetcher$Request;", "onSuccess", "Lkotlin/Function1;", "Lcom/tencent/mm/plugin/appbrand/launching/ICommonPkgFetcher$Response;", "onError", "Lkotlin/Function2;", "Lcom/tencent/mm/plugin/appbrand/launching/ICommonPkgFetcher$ERROR;", "", "onProgress", "Lcom/tencent/mm/plugin/appbrand/appcache/WxaPkgLoadProgress;", "cgiExecutor", "Lcom/tencent/mm/plugin/appbrand/launching/IGetDownloadUrlCgiExecutor;", "reporter", "Lcom/tencent/mm/plugin/appbrand/launching/ICommonPkgFetcher$IReporter;", "plugin-appbrand-integration_release"})
   public static final class b
   {
     static
     {
       AppMethodBeat.i(180564);
-      lHV = new b();
+      lMv = new b();
       AppMethodBeat.o(180564);
     }
     
@@ -79,17 +79,17 @@ public abstract interface y
       AppMethodBeat.o(180562);
     }
     
-    @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "<anonymous parameter 0>", "Lcom/tencent/mm/plugin/appbrand/appcache/WxaPkgLoadProgress;", "invoke"})
+    @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "<anonymous parameter 0>", "Lcom/tencent/mm/plugin/appbrand/appcache/WxaPkgLoadProgress;", "invoke"})
     static final class a
       extends q
       implements b<WxaPkgLoadProgress, d.z>
     {
-      public static final a lHW;
+      public static final a lMw;
       
       static
       {
         AppMethodBeat.i(180560);
-        lHW = new a();
+        lMw = new a();
         AppMethodBeat.o(180560);
       }
       
@@ -99,7 +99,7 @@ public abstract interface y
       }
     }
     
-    @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
+    @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
     static final class b
       extends q
       implements a<d.z>
@@ -111,7 +111,7 @@ public abstract interface y
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/launching/ICommonPkgFetcher$IReporter;", "", "onPkgCached", "", "request", "Lcom/tencent/mm/plugin/appbrand/launching/ICommonPkgFetcher$Request;", "response", "Lcom/tencent/mm/plugin/appbrand/launching/ICommonPkgFetcher$Response;", "onPkgMissed", "onPkgUpdated", "plugin-appbrand-integration_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/launching/ICommonPkgFetcher$IReporter;", "", "onPkgCached", "", "request", "Lcom/tencent/mm/plugin/appbrand/launching/ICommonPkgFetcher$Request;", "response", "Lcom/tencent/mm/plugin/appbrand/launching/ICommonPkgFetcher$Response;", "onPkgMissed", "onPkgUpdated", "plugin-appbrand-integration_release"})
   public static abstract interface c
   {
     public abstract void b(y.d paramd);
@@ -121,36 +121,36 @@ public abstract interface y
     public abstract void c(y.d paramd, y.e parame);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/launching/ICommonPkgFetcher$Request;", "", "appId", "", "moduleName", "packageType", "", "versionType", "version", "Lcom/tencent/mm/plugin/appbrand/launching/ICommonPkgFetcher$VERSION;", "forceNoEncrypt", "", "(Ljava/lang/String;Ljava/lang/String;IILcom/tencent/mm/plugin/appbrand/launching/ICommonPkgFetcher$VERSION;Z)V", "getAppId", "()Ljava/lang/String;", "getForceNoEncrypt", "()Z", "localQueryKey", "Lcom/tencent/mm/plugin/appbrand/appcache/PkgQueryKey;", "getLocalQueryKey", "()Lcom/tencent/mm/plugin/appbrand/appcache/PkgQueryKey;", "localQueryKey$delegate", "Lkotlin/Lazy;", "getModuleName", "getPackageType", "()I", "getVersion", "()Lcom/tencent/mm/plugin/appbrand/launching/ICommonPkgFetcher$VERSION;", "getVersionType", "component1", "component2", "component3", "component4", "component5", "component6", "copy", "equals", "other", "hashCode", "toString", "plugin-appbrand-integration_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/launching/ICommonPkgFetcher$Request;", "", "appId", "", "moduleName", "packageType", "", "versionType", "version", "Lcom/tencent/mm/plugin/appbrand/launching/ICommonPkgFetcher$VERSION;", "forceNoEncrypt", "", "(Ljava/lang/String;Ljava/lang/String;IILcom/tencent/mm/plugin/appbrand/launching/ICommonPkgFetcher$VERSION;Z)V", "getAppId", "()Ljava/lang/String;", "getForceNoEncrypt", "()Z", "localQueryKey", "Lcom/tencent/mm/plugin/appbrand/appcache/PkgQueryKey;", "getLocalQueryKey", "()Lcom/tencent/mm/plugin/appbrand/appcache/PkgQueryKey;", "localQueryKey$delegate", "Lkotlin/Lazy;", "getModuleName", "getPackageType", "()I", "getVersion", "()Lcom/tencent/mm/plugin/appbrand/launching/ICommonPkgFetcher$VERSION;", "getVersionType", "component1", "component2", "component3", "component4", "component5", "component6", "copy", "equals", "other", "hashCode", "toString", "plugin-appbrand-integration_release"})
   public static final class d
   {
     final String appId;
-    final String coW;
-    final int dnF;
-    final int hQh;
-    private final f lIa;
-    final y.g lIb;
-    final boolean lIc;
+    final String coY;
+    final int doK;
+    final int hSZ;
+    private final f lMA;
+    final y.g lMB;
+    final boolean lMC;
     
     public d(String paramString1, String paramString2, int paramInt1, int paramInt2, y.g paramg, boolean paramBoolean)
     {
       AppMethodBeat.i(180569);
       this.appId = paramString1;
-      this.coW = paramString2;
-      this.dnF = paramInt1;
-      this.hQh = paramInt2;
-      this.lIb = paramg;
-      this.lIc = paramBoolean;
-      this.lIa = g.O((a)new a(this));
+      this.coY = paramString2;
+      this.doK = paramInt1;
+      this.hSZ = paramInt2;
+      this.lMB = paramg;
+      this.lMC = paramBoolean;
+      this.lMA = g.O((a)new a(this));
       AppMethodBeat.o(180569);
     }
     
-    public final ac brh()
+    public final ad brR()
     {
       AppMethodBeat.i(180568);
-      ac localac = (ac)this.lIa.getValue();
+      ad localad = (ad)this.lMA.getValue();
       AppMethodBeat.o(180568);
-      return localac;
+      return localad;
     }
     
     public final boolean equals(Object paramObject)
@@ -161,7 +161,7 @@ public abstract interface y
         if ((paramObject instanceof d))
         {
           paramObject = (d)paramObject;
-          if ((!p.i(this.appId, paramObject.appId)) || (!p.i(this.coW, paramObject.coW)) || (this.dnF != paramObject.dnF) || (this.hQh != paramObject.hQh) || (!p.i(this.lIb, paramObject.lIb)) || (this.lIc != paramObject.lIc)) {}
+          if ((!p.i(this.appId, paramObject.appId)) || (!p.i(this.coY, paramObject.coY)) || (this.doK != paramObject.doK) || (this.hSZ != paramObject.hSZ) || (!p.i(this.lMB, paramObject.lMB)) || (this.lMC != paramObject.lMC)) {}
         }
       }
       else
@@ -181,15 +181,15 @@ public abstract interface y
     public final String toString()
     {
       AppMethodBeat.i(180567);
-      String str = "Request{ appId=" + this.appId + ',' + " module_name=" + this.coW + ',' + " package_type=" + this.dnF + ',' + " version_type=" + this.hQh + " app_version=" + this.lIb + " forceNoEncrypt=" + this.lIc + "}";
+      String str = "Request{ appId=" + this.appId + ',' + " module_name=" + this.coY + ',' + " package_type=" + this.doK + ',' + " version_type=" + this.hSZ + " app_version=" + this.lMB + " forceNoEncrypt=" + this.lMC + "}";
       AppMethodBeat.o(180567);
       return str;
     }
     
-    @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "Lcom/tencent/mm/plugin/appbrand/appcache/PkgQueryKey;", "invoke"})
+    @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "Lcom/tencent/mm/plugin/appbrand/appcache/PkgQueryKey;", "invoke"})
     static final class a
       extends q
-      implements a<ac>
+      implements a<ad>
     {
       a(y.d paramd)
       {
@@ -198,17 +198,17 @@ public abstract interface y
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/launching/ICommonPkgFetcher$Response;", "", "pkgInfo", "Lcom/tencent/mm/plugin/appbrand/appcache/IPkgInfo;", "source", "Lcom/tencent/mm/plugin/appbrand/launching/ICommonPkgFetcher$SOURCE;", "(Lcom/tencent/mm/plugin/appbrand/appcache/IPkgInfo;Lcom/tencent/mm/plugin/appbrand/launching/ICommonPkgFetcher$SOURCE;)V", "getPkgInfo", "()Lcom/tencent/mm/plugin/appbrand/appcache/IPkgInfo;", "getSource", "()Lcom/tencent/mm/plugin/appbrand/launching/ICommonPkgFetcher$SOURCE;", "component1", "component2", "copy", "equals", "", "other", "hashCode", "", "toString", "", "plugin-appbrand-integration_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/launching/ICommonPkgFetcher$Response;", "", "pkgInfo", "Lcom/tencent/mm/plugin/appbrand/appcache/IPkgInfo;", "source", "Lcom/tencent/mm/plugin/appbrand/launching/ICommonPkgFetcher$SOURCE;", "(Lcom/tencent/mm/plugin/appbrand/appcache/IPkgInfo;Lcom/tencent/mm/plugin/appbrand/launching/ICommonPkgFetcher$SOURCE;)V", "getPkgInfo", "()Lcom/tencent/mm/plugin/appbrand/appcache/IPkgInfo;", "getSource", "()Lcom/tencent/mm/plugin/appbrand/launching/ICommonPkgFetcher$SOURCE;", "component1", "component2", "copy", "equals", "", "other", "hashCode", "", "toString", "", "plugin-appbrand-integration_release"})
   public static final class e
   {
-    final IPkgInfo lIe;
-    final y.f lIf;
+    final IPkgInfo lME;
+    final y.f lMF;
     
     public e(IPkgInfo paramIPkgInfo, y.f paramf)
     {
       AppMethodBeat.i(180572);
-      this.lIe = paramIPkgInfo;
-      this.lIf = paramf;
+      this.lME = paramIPkgInfo;
+      this.lMF = paramf;
       AppMethodBeat.o(180572);
     }
     
@@ -220,7 +220,7 @@ public abstract interface y
         if ((paramObject instanceof e))
         {
           paramObject = (e)paramObject;
-          if ((!p.i(this.lIe, paramObject.lIe)) || (!p.i(this.lIf, paramObject.lIf))) {}
+          if ((!p.i(this.lME, paramObject.lME)) || (!p.i(this.lMF, paramObject.lMF))) {}
         }
       }
       else
@@ -236,11 +236,11 @@ public abstract interface y
     {
       int j = 0;
       AppMethodBeat.i(180574);
-      Object localObject = this.lIe;
+      Object localObject = this.lME;
       if (localObject != null) {}
       for (int i = localObject.hashCode();; i = 0)
       {
-        localObject = this.lIf;
+        localObject = this.lMF;
         if (localObject != null) {
           j = localObject.hashCode();
         }
@@ -252,37 +252,37 @@ public abstract interface y
     public final String toString()
     {
       AppMethodBeat.i(180573);
-      String str = "Response(pkgInfo=" + this.lIe + ", source=" + this.lIf + ")";
+      String str = "Response(pkgInfo=" + this.lME + ", source=" + this.lMF + ")";
       AppMethodBeat.o(180573);
       return str;
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/launching/ICommonPkgFetcher$SOURCE;", "", "(Ljava/lang/String;I)V", "CACHED", "REMOTE", "plugin-appbrand-integration_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/launching/ICommonPkgFetcher$SOURCE;", "", "(Ljava/lang/String;I)V", "CACHED", "REMOTE", "plugin-appbrand-integration_release"})
   public static enum f
   {
     static
     {
       AppMethodBeat.i(180576);
       f localf1 = new f("CACHED", 0);
-      lIg = localf1;
+      lMG = localf1;
       f localf2 = new f("REMOTE", 1);
-      lIh = localf2;
-      lIi = new f[] { localf1, localf2 };
+      lMH = localf2;
+      lMI = new f[] { localf1, localf2 };
       AppMethodBeat.o(180576);
     }
     
     private f() {}
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/launching/ICommonPkgFetcher$VERSION;", "", "()V", "LATEST", "SPECIFIED", "Lcom/tencent/mm/plugin/appbrand/launching/ICommonPkgFetcher$VERSION$SPECIFIED;", "Lcom/tencent/mm/plugin/appbrand/launching/ICommonPkgFetcher$VERSION$LATEST;", "plugin-appbrand-integration_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/launching/ICommonPkgFetcher$VERSION;", "", "()V", "LATEST", "SPECIFIED", "Lcom/tencent/mm/plugin/appbrand/launching/ICommonPkgFetcher$VERSION$SPECIFIED;", "Lcom/tencent/mm/plugin/appbrand/launching/ICommonPkgFetcher$VERSION$LATEST;", "plugin-appbrand-integration_release"})
   public static abstract class g
   {
-    @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/launching/ICommonPkgFetcher$VERSION$LATEST;", "Lcom/tencent/mm/plugin/appbrand/launching/ICommonPkgFetcher$VERSION;", "version", "", "forceUpdate", "", "(IZ)V", "getForceUpdate", "()Z", "getVersion", "()I", "component1", "component2", "copy", "equals", "other", "", "hashCode", "toString", "", "plugin-appbrand-integration_release"})
+    @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/launching/ICommonPkgFetcher$VERSION$LATEST;", "Lcom/tencent/mm/plugin/appbrand/launching/ICommonPkgFetcher$VERSION;", "version", "", "forceUpdate", "", "(IZ)V", "getForceUpdate", "()Z", "getVersion", "()I", "component1", "component2", "copy", "equals", "other", "", "hashCode", "toForceUpdate", "toString", "", "plugin-appbrand-integration_release"})
     public static final class a
       extends y.g
     {
-      final boolean lIj;
+      final boolean lMJ;
       final int version;
       
       public a()
@@ -290,11 +290,19 @@ public abstract interface y
         this(0, 3);
       }
       
-      private a(int paramInt)
+      private a(int paramInt, boolean paramBoolean)
       {
         super();
         this.version = paramInt;
-        this.lIj = false;
+        this.lMJ = paramBoolean;
+      }
+      
+      public final a brS()
+      {
+        AppMethodBeat.i(223520);
+        a locala = new a(this.version, true);
+        AppMethodBeat.o(223520);
+        return locala;
       }
       
       public final boolean equals(Object paramObject)
@@ -304,7 +312,7 @@ public abstract interface y
           if ((paramObject instanceof a))
           {
             paramObject = (a)paramObject;
-            if ((this.version != paramObject.version) || (this.lIj != paramObject.lIj)) {}
+            if ((this.version != paramObject.version) || (this.lMJ != paramObject.lMJ)) {}
           }
         }
         else {
@@ -321,13 +329,13 @@ public abstract interface y
       public final String toString()
       {
         AppMethodBeat.i(180579);
-        String str = "LATEST(" + this.version + "|forceUpdate:" + this.lIj + ')';
+        String str = "LATEST(" + this.version + "|forceUpdate:" + this.lMJ + ')';
         AppMethodBeat.o(180579);
         return str;
       }
     }
     
-    @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/launching/ICommonPkgFetcher$VERSION$SPECIFIED;", "Lcom/tencent/mm/plugin/appbrand/launching/ICommonPkgFetcher$VERSION;", "version", "", "(I)V", "getVersion", "()I", "component1", "copy", "equals", "", "other", "", "hashCode", "toInt", "toLong", "", "toString", "", "plugin-appbrand-integration_release"})
+    @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/launching/ICommonPkgFetcher$VERSION$SPECIFIED;", "Lcom/tencent/mm/plugin/appbrand/launching/ICommonPkgFetcher$VERSION;", "version", "", "(I)V", "getVersion", "()I", "component1", "copy", "equals", "", "other", "", "hashCode", "toInt", "toLong", "", "toString", "", "plugin-appbrand-integration_release"})
     public static final class b
       extends y.g
     {

@@ -3,14 +3,14 @@ package com.tencent.mm.plugin.card.d;
 import android.content.Context;
 import android.text.ClipboardManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ak;
 
 final class p
 {
-  public static void Kh(String paramString)
+  public static void KG(String paramString)
   {
     AppMethodBeat.i(113869);
-    ((ClipboardManager)aj.getContext().getSystemService("clipboard")).setText(paramString);
+    ((ClipboardManager)ak.getContext().getSystemService("clipboard")).setText(paramString);
     AppMethodBeat.o(113869);
   }
 }

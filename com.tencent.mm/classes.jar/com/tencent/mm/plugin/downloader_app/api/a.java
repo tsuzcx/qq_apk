@@ -9,11 +9,11 @@ public abstract interface a
     static
     {
       AppMethodBeat.i(153082);
-      pnV = new a("OK", 0);
-      pnW = new a("FAIL", 1);
-      pnX = new a("WAIT_FOR_WIFI", 2);
-      pnY = new a("CANCEL", 3);
-      pnZ = new a[] { pnV, pnW, pnX, pnY };
+      puC = new a("OK", 0);
+      puD = new a("FAIL", 1);
+      puE = new a("WAIT_FOR_WIFI", 2);
+      puF = new a("CANCEL", 3);
+      puG = new a[] { puC, puD, puE, puF };
       AppMethodBeat.o(153082);
     }
     
@@ -27,7 +27,7 @@ public abstract interface a
   
   public static abstract interface c
   {
-    public abstract void biA();
+    public abstract void bjj();
   }
 }
 

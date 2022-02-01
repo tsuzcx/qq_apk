@@ -4,34 +4,34 @@ import android.view.View;
 import android.view.ViewConfiguration;
 import android.widget.ListView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class q
   implements Runnable
 {
   public ListView GF;
-  public long KKE;
-  public int KKF;
-  public int KKG;
-  public int KKH;
-  private final int KKI;
-  public int KKJ;
+  public long LgY;
+  public int LgZ;
+  public int Lha;
+  public int Lhb;
+  private final int Lhc;
+  public int Lhd;
   public int mMode;
   
   public q(ListView paramListView)
   {
     AppMethodBeat.i(143221);
-    this.KKE = System.currentTimeMillis();
+    this.LgY = System.currentTimeMillis();
     this.GF = paramListView;
-    this.KKI = ViewConfiguration.get(this.GF.getContext()).getScaledFadingEdgeLength();
-    ad.d("ScrollerRunnable", "mExtraScroll: %d", new Object[] { Integer.valueOf(this.KKI) });
+    this.Lhc = ViewConfiguration.get(this.GF.getContext()).getScaledFadingEdgeLength();
+    ae.d("ScrollerRunnable", "mExtraScroll: %d", new Object[] { Integer.valueOf(this.Lhc) });
     AppMethodBeat.o(143221);
   }
   
   public final void run()
   {
     AppMethodBeat.i(143222);
-    if (System.currentTimeMillis() - this.KKE > 10000L)
+    if (System.currentTimeMillis() - this.LgY > 10000L)
     {
       AppMethodBeat.o(143222);
       return;
@@ -54,17 +54,17 @@ public final class q
       }
       int m;
       int n;
-      if (k == this.KKG)
+      if (k == this.Lha)
       {
-        if (this.KKJ > 20)
+        if (this.Lhd > 20)
         {
-          this.GF.setSelection(this.KKF);
-          ad.d("ScrollerRunnable", "dz:try scroll at same item more than 10, direct seletion");
+          this.GF.setSelection(this.LgZ);
+          ae.d("ScrollerRunnable", "dz:try scroll at same item more than 10, direct seletion");
         }
       }
       else
       {
-        this.KKJ = 0;
+        this.Lhd = 0;
         localView = this.GF.getChildAt(i);
         m = localView.getHeight();
         n = localView.getTop();
@@ -73,34 +73,34 @@ public final class q
         }
       }
       label271:
-      for (i = this.KKI;; i = this.GF.getPaddingBottom())
+      for (i = this.Lhc;; i = this.GF.getPaddingBottom())
       {
-        this.GF.smoothScrollBy(i + (m - (j - n)), this.KKH);
-        this.KKG = k;
-        if (k >= this.KKF) {
+        this.GF.smoothScrollBy(i + (m - (j - n)), this.Lhb);
+        this.Lha = k;
+        if (k >= this.LgZ) {
           break;
         }
         this.GF.post(this);
         AppMethodBeat.o(143222);
         return;
         this.GF.post(this);
-        this.KKJ += 1;
-        ad.d("ScrollerRunnable", "dz:try scroll lastpos = %d", new Object[] { Integer.valueOf(k) });
+        this.Lhd += 1;
+        ae.d("ScrollerRunnable", "dz:try scroll lastpos = %d", new Object[] { Integer.valueOf(k) });
         AppMethodBeat.o(143222);
         return;
       }
     }
-    if (k == this.KKG)
+    if (k == this.Lha)
     {
-      if (this.KKJ > 20)
+      if (this.Lhd > 20)
       {
-        this.GF.setSelection(this.KKF);
-        ad.d("ScrollerRunnable", "dz:try scroll at same item more than 10, direct seletion");
+        this.GF.setSelection(this.LgZ);
+        ae.d("ScrollerRunnable", "dz:try scroll at same item more than 10, direct seletion");
       }
     }
     else
     {
-      this.KKJ = 0;
+      this.Lhd = 0;
       localView = this.GF.getChildAt(0);
       if (localView != null) {
         break label386;
@@ -109,18 +109,18 @@ public final class q
       return;
     }
     this.GF.post(this);
-    this.KKJ += 1;
-    ad.d("ScrollerRunnable", "dz:try scroll firstPos = %d", new Object[] { Integer.valueOf(k) });
+    this.Lhd += 1;
+    ae.d("ScrollerRunnable", "dz:try scroll firstPos = %d", new Object[] { Integer.valueOf(k) });
     AppMethodBeat.o(143222);
     return;
     label386:
     j = localView.getTop();
     if (k > 0) {}
-    for (int i = this.KKI;; i = this.GF.getPaddingTop())
+    for (int i = this.Lhc;; i = this.GF.getPaddingTop())
     {
-      this.GF.smoothScrollBy(j - i, this.KKH);
-      this.KKG = k;
-      if (k <= this.KKF) {
+      this.GF.smoothScrollBy(j - i, this.Lhb);
+      this.Lha = k;
+      if (k <= this.LgZ) {
         break;
       }
       this.GF.post(this);

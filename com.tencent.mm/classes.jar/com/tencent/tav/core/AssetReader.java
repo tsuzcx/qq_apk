@@ -21,18 +21,18 @@ public class AssetReader
   
   public AssetReader(Asset paramAsset)
   {
-    AppMethodBeat.i(217800);
+    AppMethodBeat.i(214438);
     this.status = AVAssetReaderStatus.AssetReaderStatusUnknown;
     this.errMsg = "";
     this.outputs = new ArrayList();
     this.outputStatusHashMap = new HashMap();
     this.asset = paramAsset;
-    AppMethodBeat.o(217800);
+    AppMethodBeat.o(214438);
   }
   
   private void updateAssetStatus()
   {
-    AppMethodBeat.i(217804);
+    AppMethodBeat.i(214442);
     Iterator localIterator = this.outputs.iterator();
     int i = 1;
     AssetReaderOutput localAssetReaderOutput;
@@ -50,7 +50,7 @@ public class AssetReader
     if (i != 0)
     {
       this.status = AVAssetReaderStatus.AssetReaderStatusCompleted;
-      AppMethodBeat.o(217804);
+      AppMethodBeat.o(214442);
       return;
     }
     localIterator = this.outputs.iterator();
@@ -68,7 +68,7 @@ public class AssetReader
     if (i != 0)
     {
       this.status = AVAssetReaderStatus.AssetReaderStatusReading;
-      AppMethodBeat.o(217804);
+      AppMethodBeat.o(214442);
       return;
     }
     localIterator = this.outputs.iterator();
@@ -78,7 +78,7 @@ public class AssetReader
       if (this.outputStatusHashMap.get(localAssetReaderOutput) == AVAssetReaderStatus.AssetReaderStatusFailed)
       {
         this.status = AVAssetReaderStatus.AssetReaderStatusFailed;
-        AppMethodBeat.o(217804);
+        AppMethodBeat.o(214442);
         return;
       }
     }
@@ -89,37 +89,37 @@ public class AssetReader
       if (this.outputStatusHashMap.get(localAssetReaderOutput) == AVAssetReaderStatus.AssetReaderStatusCancelled)
       {
         this.status = AVAssetReaderStatus.AssetReaderStatusCancelled;
-        AppMethodBeat.o(217804);
+        AppMethodBeat.o(214442);
         return;
       }
     }
-    AppMethodBeat.o(217804);
+    AppMethodBeat.o(214442);
   }
   
   public void addOutput(AssetReaderOutput paramAssetReaderOutput)
   {
-    AppMethodBeat.i(217802);
+    AppMethodBeat.i(214440);
     if (canAddOutput(paramAssetReaderOutput)) {
       this.outputs.add(paramAssetReaderOutput);
     }
-    AppMethodBeat.o(217802);
+    AppMethodBeat.o(214440);
   }
   
   public boolean canAddOutput(AssetReaderOutput paramAssetReaderOutput)
   {
-    AppMethodBeat.i(217801);
+    AppMethodBeat.i(214439);
     if ((paramAssetReaderOutput != null) && (!this.outputs.contains(paramAssetReaderOutput)))
     {
-      AppMethodBeat.o(217801);
+      AppMethodBeat.o(214439);
       return true;
     }
-    AppMethodBeat.o(217801);
+    AppMethodBeat.o(214439);
     return false;
   }
   
   public void cancelReading()
   {
-    AppMethodBeat.i(217805);
+    AppMethodBeat.i(214443);
     Iterator localIterator = this.outputs.iterator();
     while (localIterator.hasNext())
     {
@@ -128,7 +128,7 @@ public class AssetReader
       localAssetReaderOutput.release();
     }
     updateAssetStatus();
-    AppMethodBeat.o(217805);
+    AppMethodBeat.o(214443);
   }
   
   public Asset getAsset()
@@ -163,7 +163,7 @@ public class AssetReader
   
   public boolean startReading(IContextCreate paramIContextCreate)
   {
-    AppMethodBeat.i(217803);
+    AppMethodBeat.i(214441);
     this.contextCreate = paramIContextCreate;
     Iterator localIterator = this.outputs.iterator();
     if (localIterator.hasNext())
@@ -183,33 +183,33 @@ public class AssetReader
     updateAssetStatus();
     if (this.outputs.size() > 0)
     {
-      AppMethodBeat.o(217803);
+      AppMethodBeat.o(214441);
       return true;
     }
-    AppMethodBeat.o(217803);
+    AppMethodBeat.o(214441);
     return false;
   }
   
   public void statusChanged(AssetReaderOutput paramAssetReaderOutput, AVAssetReaderStatus paramAVAssetReaderStatus)
   {
-    AppMethodBeat.i(217806);
+    AppMethodBeat.i(214444);
     this.outputStatusHashMap.put(paramAssetReaderOutput, paramAVAssetReaderStatus);
     updateAssetStatus();
-    AppMethodBeat.o(217806);
+    AppMethodBeat.o(214444);
   }
   
   public static enum AVAssetReaderStatus
   {
     static
     {
-      AppMethodBeat.i(217799);
+      AppMethodBeat.i(214437);
       AssetReaderStatusUnknown = new AVAssetReaderStatus("AssetReaderStatusUnknown", 0);
       AssetReaderStatusReading = new AVAssetReaderStatus("AssetReaderStatusReading", 1);
       AssetReaderStatusCompleted = new AVAssetReaderStatus("AssetReaderStatusCompleted", 2);
       AssetReaderStatusFailed = new AVAssetReaderStatus("AssetReaderStatusFailed", 3);
       AssetReaderStatusCancelled = new AVAssetReaderStatus("AssetReaderStatusCancelled", 4);
       $VALUES = new AVAssetReaderStatus[] { AssetReaderStatusUnknown, AssetReaderStatusReading, AssetReaderStatusCompleted, AssetReaderStatusFailed, AssetReaderStatusCancelled };
-      AppMethodBeat.o(217799);
+      AppMethodBeat.o(214437);
     }
     
     private AVAssetReaderStatus() {}

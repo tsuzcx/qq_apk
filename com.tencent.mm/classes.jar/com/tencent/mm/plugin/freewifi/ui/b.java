@@ -3,21 +3,21 @@ package com.tencent.mm.plugin.freewifi.ui;
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.modelgeo.d;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aq;
 
 public final class b
 {
   private static String TAG = "MicroMsg.FreeWifi.FreeWifiGetLocation";
   private boolean isRunning = false;
-  private com.tencent.mm.modelgeo.b tpZ = null;
-  private com.tencent.mm.modelgeo.b.a tqa = null;
-  private ap tqb = null;
+  private com.tencent.mm.modelgeo.b tAQ = null;
+  private com.tencent.mm.modelgeo.b.a tAR = null;
+  private aq tAS = null;
   
-  public static b cSn()
+  public static b cUS()
   {
     AppMethodBeat.i(25055);
-    b localb = b.cSo();
+    b localb = b.cUT();
     AppMethodBeat.o(25055);
     return localb;
   }
@@ -31,15 +31,15 @@ public final class b
       return;
     }
     this.isRunning = true;
-    this.tpZ = d.aHQ();
-    if (this.tpZ == null)
+    this.tAQ = d.aIh();
+    if (this.tAQ == null)
     {
-      ad.e(TAG, "doGeoLocation fail, iGetLocation is null");
+      ae.e(TAG, "doGeoLocation fail, iGetLocation is null");
       AppMethodBeat.o(25056);
       return;
     }
-    if (this.tqa == null) {
-      this.tqa = new com.tencent.mm.modelgeo.b.a()
+    if (this.tAR == null) {
+      this.tAR = new com.tencent.mm.modelgeo.b.a()
       {
         public final boolean a(boolean paramAnonymousBoolean, float paramAnonymousFloat1, float paramAnonymousFloat2, int paramAnonymousInt, double paramAnonymousDouble1, double paramAnonymousDouble2)
         {
@@ -49,13 +49,13 @@ public final class b
             AppMethodBeat.o(25052);
             return true;
           }
-          ad.v(b.TAG, "doGeoLocation.onGetLocation, fLongitude:%f, fLatitude:%f, locType:%d, speed:%f, accuracy:%f", new Object[] { Float.valueOf(paramAnonymousFloat1), Float.valueOf(paramAnonymousFloat2), Integer.valueOf(paramAnonymousInt), Double.valueOf(paramAnonymousDouble1), Double.valueOf(paramAnonymousDouble2) });
+          ae.v(b.TAG, "doGeoLocation.onGetLocation, fLongitude:%f, fLatitude:%f, locType:%d, speed:%f, accuracy:%f", new Object[] { Float.valueOf(paramAnonymousFloat1), Float.valueOf(paramAnonymousFloat2), Integer.valueOf(paramAnonymousInt), Double.valueOf(paramAnonymousDouble1), Double.valueOf(paramAnonymousDouble2) });
           if (b.a(b.this) != null) {
             b.a(b.this).c(b.b(b.this));
           }
           if (b.b(b.this) == null)
           {
-            ad.w(b.TAG, "already callback");
+            ae.w(b.TAG, "already callback");
             AppMethodBeat.o(25052);
             return false;
           }
@@ -66,10 +66,10 @@ public final class b
         }
       };
     }
-    if (this.tqb == null) {
-      this.tqb = new ap(Looper.myLooper());
+    if (this.tAS == null) {
+      this.tAS = new aq(Looper.myLooper());
     }
-    this.tqb.postDelayed(new Runnable()
+    this.tAS.postDelayed(new Runnable()
     {
       public final void run()
       {
@@ -80,7 +80,7 @@ public final class b
         }
         if (b.b(b.this) == null)
         {
-          ad.w(b.TAG, "already callback");
+          ae.w(b.TAG, "already callback");
           AppMethodBeat.o(25053);
           return;
         }
@@ -88,7 +88,7 @@ public final class b
         AppMethodBeat.o(25053);
       }
     }, 20000L);
-    this.tpZ.a(this.tqa);
+    this.tAQ.a(this.tAR);
     AppMethodBeat.o(25056);
   }
   
@@ -99,19 +99,19 @@ public final class b
   
   static final class b
   {
-    private static b tqe;
+    private static b tAV;
     
     static
     {
       AppMethodBeat.i(25054);
-      tqe = new b((byte)0);
+      tAV = new b((byte)0);
       AppMethodBeat.o(25054);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.freewifi.ui.b
  * JD-Core Version:    0.7.0.1
  */

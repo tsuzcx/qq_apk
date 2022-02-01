@@ -1,157 +1,171 @@
 package com.tencent.mm.storage;
 
-import android.content.Context;
 import android.database.Cursor;
-import com.tencent.mm.plugin.messenger.foundation.a.a.i;
-import com.tencent.mm.plugin.messenger.foundation.a.a.i.c;
-import com.tencent.mm.plugin.messenger.foundation.a.f;
-import com.tencent.mm.plugin.messenger.foundation.a.g;
-import com.tencent.mm.pointers.PInt;
-import com.tencent.mm.pointers.PString;
 import com.tencent.mm.sdk.e.h;
-import com.tencent.mm.vending.b.b;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.List;
 
 public abstract interface bq
   extends h
 {
-  public abstract int AA(String paramString);
+  public abstract int B(String paramString, byte[] paramArrayOfByte);
   
-  public abstract boolean JI(String paramString);
+  public abstract an BH(String paramString);
   
-  public abstract b Na();
+  public abstract an Ed(long paramLong);
   
-  public abstract int a(at paramat, String paramString);
+  public abstract Cursor a(String paramString1, String paramString2, List<String> paramList1, List<String> paramList2, boolean paramBoolean1, boolean paramBoolean2);
   
-  public abstract int a(at paramat, String paramString, boolean paramBoolean);
+  public abstract Cursor a(List<String> paramList1, String paramString, List<String> paramList2);
   
-  public abstract Cursor a(String paramString1, List<String> paramList, String paramString2, boolean paramBoolean);
+  public abstract Cursor a(String[] paramArrayOfString, String paramString1, String paramString2, List<String> paramList1, List<String> paramList2);
   
-  public abstract Cursor a(String paramString1, List<String> paramList, boolean paramBoolean, String paramString2);
-  
-  public abstract Cursor a(ArrayList<String> paramArrayList, String paramString1, List<String> paramList, String paramString2);
-  
-  public abstract b a(g paramg);
-  
-  public abstract void a(f paramf);
-  
-  public abstract void a(at paramat, int paramInt1, int paramInt2);
+  public abstract Cursor a(String[] paramArrayOfString, String paramString, List<String> paramList);
   
   public abstract void a(a parama);
   
-  public abstract void a(b paramb);
+  public abstract String aFL();
   
-  public abstract boolean a(String paramString, int paramInt1, boolean paramBoolean, int paramInt2);
+  public abstract an aUG(String paramString);
   
-  public abstract void aM(bu parambu);
+  public abstract boolean aUH(String paramString);
   
-  public abstract void aTA(String paramString);
+  public abstract an aUI(String paramString);
   
-  public abstract boolean aTB(String paramString);
+  public abstract Cursor aUJ(String paramString);
   
-  public abstract boolean aTC(String paramString);
+  public abstract an aUK(String paramString);
   
-  public abstract boolean aTD(String paramString);
+  public abstract an aUL(String paramString);
   
-  public abstract boolean aTE(String paramString);
+  public abstract an aUM(String paramString);
   
-  public abstract boolean aTF(String paramString);
+  public abstract long aUN(String paramString);
   
-  public abstract boolean aTG(String paramString);
+  public abstract boolean aUO(String paramString);
   
-  public abstract boolean aTH(String paramString);
+  public abstract boolean aUP(String paramString);
   
-  public abstract Cursor aTI(String paramString);
+  public abstract byte[] aUQ(String paramString);
   
-  public abstract Cursor aTJ(String paramString);
+  public abstract int aUR(String paramString);
   
-  public abstract Cursor aTK(String paramString);
+  public abstract int aUS(String paramString);
   
-  public abstract int aTL(String paramString);
+  public abstract String aUT(String paramString);
   
-  public abstract String aTM(String paramString);
+  public abstract int aUU(String paramString);
   
-  public abstract at aTN(String paramString);
+  public abstract String aUV(String paramString);
   
-  public abstract int aTO(String paramString);
+  public abstract void ak(an paraman);
   
-  public abstract void aTP(String paramString);
+  public abstract boolean al(an paraman);
   
-  public abstract void aTQ(String paramString);
+  public abstract void alb(String paramString);
   
-  public abstract int aTR(String paramString);
+  public abstract boolean am(an paraman);
   
-  public abstract void aTx(String paramString);
+  public abstract boolean an(an paraman);
   
-  public abstract boolean aTy(String paramString);
+  public abstract int ao(an paraman);
   
-  public abstract at aTz(String paramString);
+  public abstract Cursor b(String paramString1, String paramString2, List<String> paramList1, List<String> paramList2, boolean paramBoolean1, boolean paramBoolean2);
   
-  public abstract boolean aki(String paramString);
-  
-  public abstract void b(i parami, i.c paramc);
-  
-  public abstract void b(g paramg);
+  public abstract Cursor b(List<String> paramList1, String paramString, List<String> paramList2);
   
   public abstract void b(a parama);
   
-  public abstract void bm(LinkedList<String> paramLinkedList);
+  public abstract int[] b(String paramString1, String paramString2, String[] paramArrayOfString, List<String> paramList);
   
-  public abstract Cursor c(String paramString1, List<String> paramList, String paramString2);
+  public abstract int[] b(String[] paramArrayOfString, String paramString1, String paramString2, String paramString3, List<String> paramList);
   
-  public abstract void c(a parama);
+  public abstract int c(String paramString, an paraman);
   
-  public abstract void c(String[] paramArrayOfString, String paramString);
+  public abstract int c(String[] paramArrayOfString1, String... paramVarArgs);
   
-  public abstract String cP(int paramInt, String paramString);
+  public abstract Cursor c(String paramString1, String paramString2, List<String> paramList);
   
-  public abstract void d(a parama);
+  public abstract Cursor c(List<String> paramList1, String paramString, List<String> paramList2);
   
-  public abstract long e(at paramat);
+  public abstract int[] c(String paramString1, String paramString2, String[] paramArrayOfString, List<String> paramList);
   
-  public abstract Cursor f(List<String> paramList, int paramInt1, int paramInt2);
+  public abstract int[] c(String[] paramArrayOfString, String paramString1, String paramString2, String paramString3, List<String> paramList);
   
-  public abstract boolean fqL();
+  public abstract int cj(String paramString, long paramLong);
   
-  public abstract HashMap<String, Long> fqM();
+  public abstract int d(String paramString, an paraman);
   
-  public abstract void fqN();
+  public abstract int d(String[] paramArrayOfString1, String... paramVarArgs);
   
-  public abstract List<String> fqO();
+  public abstract Cursor d(String paramString1, String paramString2, List<String> paramList);
   
-  public abstract List<String> fqP();
+  public abstract Cursor d(String[] paramArrayOfString, String paramString1, String paramString2, String paramString3, List<String> paramList);
   
-  public abstract Cursor fqQ();
+  public abstract void d(an paraman, boolean paramBoolean);
   
-  public abstract int fqR();
+  public abstract Cursor e(String paramString1, String paramString2, List<String> paramList);
   
-  public abstract String fqS();
+  public abstract void e(String paramString, an paraman);
   
-  public abstract Cursor fqT();
+  public abstract String f(String paramString1, String paramString2, List<String> paramList);
   
-  public abstract at fqU();
+  public abstract Cursor fuH();
   
-  public abstract Cursor fqV();
+  public abstract Cursor fuI();
   
-  public abstract boolean g(at paramat);
+  public abstract Cursor fuJ();
   
-  public abstract boolean h(at paramat);
+  public abstract List<String> fus();
   
-  public abstract Cursor lY(String paramString1, String paramString2);
+  public abstract List<String> fut();
+  
+  public abstract Cursor fuu();
+  
+  public abstract Cursor fuv();
+  
+  public abstract Cursor fuw();
+  
+  public abstract Cursor fux();
+  
+  public abstract int fuy();
+  
+  public abstract Cursor hF(List<String> paramList);
+  
+  public abstract Cursor hG(List<String> paramList);
+  
+  public abstract Cursor hH(List<String> paramList);
+  
+  public abstract Cursor hI(List<String> paramList);
+  
+  public abstract Cursor hL(List<String> paramList);
+  
+  public abstract Cursor hM(List<String> paramList);
+  
+  public abstract Cursor hN(List<String> paramList);
+  
+  public abstract Cursor hO(List<String> paramList);
+  
+  public abstract Cursor hP(List<String> paramList);
+  
+  public abstract List<String> hQ(List<String> paramList);
+  
+  public abstract int[] hR(List<String> paramList);
+  
+  public abstract int[] hS(List<String> paramList);
+  
+  public abstract Cursor md(String paramString1, String paramString2);
+  
+  public abstract int me(String paramString1, String paramString2);
+  
+  public abstract Cursor r(List<String> paramList, boolean paramBoolean);
   
   public static abstract interface a
   {
-    public abstract void a(at paramat, bq parambq);
-  }
-  
-  public static abstract interface b
-  {
-    public abstract String a(int paramInt1, String paramString1, String paramString2, int paramInt2, Context paramContext);
+    public abstract an BH(String paramString);
     
-    public abstract void a(bu parambu, PString paramPString1, PString paramPString2, PInt paramPInt, boolean paramBoolean);
+    public abstract void a(bq parambq, an paraman);
+    
+    public abstract int b(an paraman, boolean paramBoolean);
   }
 }
 

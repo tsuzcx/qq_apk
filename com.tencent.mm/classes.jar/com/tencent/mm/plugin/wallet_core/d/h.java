@@ -12,14 +12,14 @@ public final class h
   extends j<ae>
 {
   public static final String[] SQL_CREATE;
-  public static Map<String, ae> iTT;
+  public static Map<String, ae> iWM;
   private e db;
   
   static
   {
     AppMethodBeat.i(70620);
     SQL_CREATE = new String[] { j.getCreateSQLs(ae.info, "WalletLuckyMoney") };
-    iTT = new HashMap();
+    iWM = new HashMap();
     AppMethodBeat.o(70620);
   }
   
@@ -32,15 +32,15 @@ public final class h
   public final boolean a(ae paramae)
   {
     AppMethodBeat.i(70618);
-    if ((paramae != null) && (iTT.containsKey(paramae.field_mNativeUrl))) {
-      iTT.put(paramae.field_mNativeUrl, paramae);
+    if ((paramae != null) && (iWM.containsKey(paramae.field_mNativeUrl))) {
+      iWM.put(paramae.field_mNativeUrl, paramae);
     }
     boolean bool = super.replace(paramae);
     AppMethodBeat.o(70618);
     return bool;
   }
   
-  public final ae aEH(String paramString)
+  public final ae aGb(String paramString)
   {
     AppMethodBeat.i(70617);
     paramString = this.db.rawQuery("select * from WalletLuckyMoney where mNativeUrl=?", new String[] { paramString });
@@ -65,7 +65,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.d.h
  * JD-Core Version:    0.7.0.1
  */

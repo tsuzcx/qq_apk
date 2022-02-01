@@ -31,8 +31,6 @@ public class ShareConstants
   public static final int ERROR_LOAD_EXCEPTION_UNCAUGHT = -4;
   public static final int ERROR_LOAD_EXCEPTION_UNKNOWN = -1;
   public static final int ERROR_LOAD_GET_INTENT_FAIL = -10000;
-  public static final int ERROR_LOAD_INIT_CLASSLOADER_FAIL = -27;
-  public static final int ERROR_LOAD_INJECT_CLASSLOADER_FAIL = -26;
   public static final int ERROR_LOAD_OK = 0;
   public static final int ERROR_LOAD_PATCH_BAIL_HACK_FAILURE = -28;
   public static final int ERROR_LOAD_PATCH_DIRECTORY_NOT_EXIST = -2;
@@ -118,9 +116,6 @@ public class ShareConstants
   public static final int TINKER_DISABLE = 0;
   public static final int TINKER_ENABLE_ALL = 15;
   public static final String TINKER_ENABLE_CONFIG_PREFIX = "tinker_enable_";
-  public static final int TINKER_GPMODE_CALL_INITIALIZER_ONLY = 2;
-  public static final int TINKER_GPMODE_DISABLE = 0;
-  public static final int TINKER_GPMODE_REPLACE_CLASSLOADER_AND_CALL_INITIALIZER = 1;
   public static final String TINKER_ID = "TINKER_ID";
   public static final int TINKER_NATIVE_LIBRARY_MASK = 2;
   public static final String TINKER_OWN_PREFERENCE_CONFIG_PREFIX = "tinker_own_config_";
@@ -129,7 +124,7 @@ public class ShareConstants
   public static final String TINKER_SAFE_MODE_COUNT_PREFIX = "safe_mode_count_";
   public static final int TINKER_SAFE_MODE_MAX_COUNT = 3;
   public static final String TINKER_SHARE_PREFERENCE_CONFIG = "tinker_share_config";
-  public static final String TINKER_VERSION = "1.9.14.7-fix7-INTERNALv4";
+  public static final String TINKER_VERSION = "1.9.14.8";
   public static final int TYPE_ARKHOT_SO = 8;
   public static final int TYPE_CLASS_N_DEX = 7;
   public static final int TYPE_DEX = 3;

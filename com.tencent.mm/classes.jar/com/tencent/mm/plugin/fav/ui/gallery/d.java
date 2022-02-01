@@ -1,33 +1,33 @@
 package com.tencent.mm.plugin.fav.ui.gallery;
 
 import com.tencent.mm.plugin.fav.a.g;
-import com.tencent.mm.protocal.protobuf.ajn;
-import com.tencent.mm.protocal.protobuf.ajo;
+import com.tencent.mm.protocal.protobuf.ajx;
+import com.tencent.mm.protocal.protobuf.ajy;
 
 public final class d
 {
-  public ajn dsX;
-  public g prW;
+  public ajx dud;
+  public g pyC;
   
-  public d(g paramg, ajn paramajn)
+  public d(g paramg, ajx paramajx)
   {
-    this.prW = paramg;
-    this.dsX = paramajn;
+    this.pyC = paramg;
+    this.dud = paramajx;
   }
   
-  public final boolean cxf()
+  public final boolean cyG()
   {
-    return this.dsX.dataType == 4;
+    return this.dud.dataType == 4;
   }
   
-  public final boolean cxg()
+  public final boolean cyH()
   {
-    return (this.dsX.dataType == 4) && (this.dsX.GhL != null) && (this.dsX.GhL.GiM != null);
+    return (this.dud.dataType == 4) && (this.dud.GAu != null) && (this.dud.GAu.GBv != null);
   }
   
-  public final boolean cxh()
+  public final boolean cyI()
   {
-    return this.dsX.dataType == 15;
+    return this.dud.dataType == 15;
   }
 }
 

@@ -2,13 +2,13 @@ package com.tencent.mm.plugin.recordvideo.ui.editor.item;
 
 import android.graphics.Matrix;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bx.b;
+import com.tencent.mm.bw.b;
 import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.bvz;
-import com.tencent.mm.protocal.protobuf.bwa;
-import com.tencent.mm.protocal.protobuf.dwb;
+import com.tencent.mm.protocal.protobuf.bwt;
+import com.tencent.mm.protocal.protobuf.bwu;
+import com.tencent.mm.protocal.protobuf.dww;
 import com.tencent.mm.protocal.protobuf.ja;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import d.g.b.p;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -17,122 +17,122 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-@d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/LyricsItem;", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/BaseEditorData;", "lyricsInfo", "", "Lcom/tencent/mm/protocal/protobuf/LyricsItemInfo;", "matrix", "Landroid/graphics/Matrix;", "(Ljava/util/List;Landroid/graphics/Matrix;)V", "proto", "Lcom/tencent/mm/protocal/protobuf/BaseItemData;", "(Lcom/tencent/mm/protocal/protobuf/BaseItemData;)V", "<set-?>", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "getLyricsInfo", "()Ljava/util/ArrayList;", "isValid", "", "limitLyrics", "", "duration", "", "toProtoBuf", "Lcom/tencent/mm/protobuf/BaseProtoBuf;", "toString", "", "Companion", "plugin-recordvideo_release"})
+@d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/LyricsItem;", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/BaseEditorData;", "lyricsInfo", "", "Lcom/tencent/mm/protocal/protobuf/LyricsItemInfo;", "matrix", "Landroid/graphics/Matrix;", "(Ljava/util/List;Landroid/graphics/Matrix;)V", "proto", "Lcom/tencent/mm/protocal/protobuf/BaseItemData;", "(Lcom/tencent/mm/protocal/protobuf/BaseItemData;)V", "<set-?>", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "getLyricsInfo", "()Ljava/util/ArrayList;", "isValid", "", "limitLyrics", "", "duration", "", "toProtoBuf", "Lcom/tencent/mm/protobuf/BaseProtoBuf;", "toString", "", "Companion", "plugin-recordvideo_release"})
 public final class l
   extends a
 {
-  public static final l.a xOG;
-  ArrayList<bwa> xOF;
+  public static final l.a yez;
+  ArrayList<bwu> yey;
   
   static
   {
-    AppMethodBeat.i(200690);
-    xOG = new l.a((byte)0);
-    AppMethodBeat.o(200690);
+    AppMethodBeat.i(206948);
+    yez = new l.a((byte)0);
+    AppMethodBeat.o(206948);
   }
   
   public l(ja paramja)
   {
-    super(d.xNT);
-    AppMethodBeat.i(200689);
-    this.xOF = new ArrayList();
+    super(d.ydM);
+    AppMethodBeat.i(206947);
+    this.yey = new ArrayList();
     try
     {
-      Object localObject = (com.tencent.mm.bx.a)new bvz();
-      paramja = paramja.FCa;
+      Object localObject = (com.tencent.mm.bw.a)new bwt();
+      paramja = paramja.FUv;
       p.g(paramja, "proto.itemData");
       paramja = paramja.getBuffer();
       p.g(paramja, "proto.itemData.buffer");
       paramja = paramja.getBytes();
       try
       {
-        ((com.tencent.mm.bx.a)localObject).parseFrom(paramja);
+        ((com.tencent.mm.bw.a)localObject).parseFrom(paramja);
         paramja = (ja)localObject;
       }
       catch (Exception paramja)
       {
         for (;;)
         {
-          ad.l("safeParser", "", new Object[] { paramja });
+          ae.l("safeParser", "", new Object[] { paramja });
           paramja = null;
         }
-        AppMethodBeat.o(200689);
+        AppMethodBeat.o(206947);
         return;
       }
-      localObject = (bvz)paramja;
+      localObject = (bwt)paramja;
       if (localObject != null)
       {
-        this.xOF.clear();
-        this.xOF.addAll((Collection)((bvz)localObject).GQi);
+        this.yey.clear();
+        this.yey.addAll((Collection)((bwt)localObject).HjJ);
         paramja = this.gR;
-        localObject = ((bvz)localObject).FPc;
+        localObject = ((bwt)localObject).GhB;
         p.g(localObject, "it.matrix");
-        paramja.setValues(a((dwb)localObject));
-        ad.i("MicroMsg.LyricsItem", toString());
-        AppMethodBeat.o(200689);
+        paramja.setValues(a((dww)localObject));
+        ae.i("MicroMsg.LyricsItem", toString());
+        AppMethodBeat.o(206947);
         return;
       }
       return;
     }
     catch (IOException paramja)
     {
-      ad.printErrStackTrace("MicroMsg.LyricsItem", (Throwable)paramja, "LocationItem parse error", new Object[0]);
-      AppMethodBeat.o(200689);
+      ae.printErrStackTrace("MicroMsg.LyricsItem", (Throwable)paramja, "LocationItem parse error", new Object[0]);
+      AppMethodBeat.o(206947);
     }
   }
   
-  public l(List<? extends bwa> paramList, Matrix paramMatrix)
+  public l(List<? extends bwu> paramList, Matrix paramMatrix)
   {
-    super(d.xNT);
-    AppMethodBeat.i(200688);
-    this.xOF = new ArrayList();
-    this.xOF.clear();
-    this.xOF.addAll((Collection)paramList);
+    super(d.ydM);
+    AppMethodBeat.i(206946);
+    this.yey = new ArrayList();
+    this.yey.clear();
+    this.yey.addAll((Collection)paramList);
     this.gR.set(paramMatrix);
-    AppMethodBeat.o(200688);
+    AppMethodBeat.o(206946);
   }
   
-  public final com.tencent.mm.bx.a dHT()
+  public final com.tencent.mm.bw.a dLk()
   {
-    AppMethodBeat.i(200685);
-    Object localObject = new bvz();
+    AppMethodBeat.i(206943);
+    Object localObject = new bwt();
     float[] arrayOfFloat = new float[9];
-    dwb localdwb = new dwb();
+    dww localdww = new dww();
     this.gR.getValues(arrayOfFloat);
     int i = 0;
     while (i < 9)
     {
       float f = arrayOfFloat[i];
-      localdwb.GqN.add(Float.valueOf(f));
+      localdww.GKl.add(Float.valueOf(f));
       i += 1;
     }
-    ((bvz)localObject).GQi.addAll((Collection)this.xOF);
-    ((bvz)localObject).FPc = localdwb;
-    localObject = (com.tencent.mm.bx.a)localObject;
-    AppMethodBeat.o(200685);
+    ((bwt)localObject).HjJ.addAll((Collection)this.yey);
+    ((bwt)localObject).GhB = localdww;
+    localObject = (com.tencent.mm.bw.a)localObject;
+    AppMethodBeat.o(206943);
     return localObject;
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(200687);
-    String str = "[" + hashCode() + "]lyrics size:" + this.xOF.size();
-    AppMethodBeat.o(200687);
+    AppMethodBeat.i(206945);
+    String str = "[" + hashCode() + "]lyrics size:" + this.yey.size();
+    AppMethodBeat.o(206945);
     return str;
   }
   
-  public final void yN(long paramLong)
+  public final void zl(long paramLong)
   {
-    AppMethodBeat.i(200686);
+    AppMethodBeat.i(206944);
     ArrayList localArrayList = new ArrayList();
-    Object localObject1 = (Iterable)this.xOF;
+    Object localObject1 = (Iterable)this.yey;
     Collection localCollection = (Collection)new ArrayList();
     localObject1 = ((Iterable)localObject1).iterator();
     label98:
     while (((Iterator)localObject1).hasNext())
     {
       Object localObject2 = ((Iterator)localObject1).next();
-      if (((bwa)localObject2).startTime < paramLong) {}
+      if (((bwu)localObject2).startTime < paramLong) {}
       for (int i = 1;; i = 0)
       {
         if (i == 0) {
@@ -143,9 +143,9 @@ public final class l
       }
     }
     localArrayList.addAll((Collection)localCollection);
-    this.xOF.clear();
-    this.xOF.addAll((Collection)localArrayList);
-    AppMethodBeat.o(200686);
+    this.yey.clear();
+    this.yey.addAll((Collection)localArrayList);
+    AppMethodBeat.o(206944);
   }
 }
 

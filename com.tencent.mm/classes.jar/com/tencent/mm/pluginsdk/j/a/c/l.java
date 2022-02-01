@@ -7,15 +7,15 @@ import java.util.Map;
 public abstract class l
   implements f.b
 {
-  public final String EPe;
-  final int EPm;
-  protected final Map<String, String> EQK = new HashMap();
-  protected volatile int EQL = 20000;
-  protected volatile int EQM = 15000;
-  private final String EQv;
+  final int FhH;
+  public final String Fhz;
+  private final String FiQ;
+  protected final Map<String, String> Fjf = new HashMap();
+  protected volatile int Fjg = 20000;
+  protected volatile int Fjh = 15000;
   private final String filePath;
   private final String groupId;
-  protected volatile int mQE = 15000;
+  protected volatile int mVO = 15000;
   private final String method;
   final int networkType;
   final int priority;
@@ -23,40 +23,40 @@ public abstract class l
   
   public l(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.EPe = paramString1;
+    this.Fhz = paramString1;
     this.filePath = paramString2;
-    this.EQv = paramString3;
+    this.FiQ = paramString3;
     this.groupId = paramString4;
     this.url = paramString5;
     this.method = paramString6;
-    this.EPm = paramInt1;
+    this.FhH = paramInt1;
     this.networkType = paramInt2;
     this.priority = Math.max(paramInt3, 0);
   }
   
-  public String afw()
+  public String afK()
   {
     return this.groupId;
   }
   
-  public final String faC()
+  public final int feM()
   {
-    return this.EPe;
+    return this.Fjh;
   }
   
-  public boolean faK()
+  public final String feq()
+  {
+    return this.Fhz;
+  }
+  
+  public boolean fey()
   {
     return false;
   }
   
-  public final int faY()
-  {
-    return this.EQM;
-  }
-  
   public final int getConnectTimeout()
   {
-    return this.mQE;
+    return this.mVO;
   }
   
   public String getFilePath()
@@ -66,15 +66,15 @@ public abstract class l
   
   public final int getReadTimeout()
   {
-    return this.EQL;
+    return this.Fjg;
   }
   
   public final Map<String, String> getRequestHeaders()
   {
-    if (this.EQK.size() == 0) {
+    if (this.Fjf.size() == 0) {
       return null;
     }
-    return Collections.unmodifiableMap(this.EQK);
+    return Collections.unmodifiableMap(this.Fjf);
   }
   
   public final String getURL()
@@ -84,17 +84,17 @@ public abstract class l
   
   public final void setConnectTimeout(int paramInt)
   {
-    this.mQE = paramInt;
+    this.mVO = paramInt;
   }
   
   public final void setReadTimeout(int paramInt)
   {
-    this.EQL = paramInt;
+    this.Fjg = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.j.a.c.l
  * JD-Core Version:    0.7.0.1
  */

@@ -15,15 +15,15 @@ public class TAVGLUtils
   
   public static String convertStreamToString(InputStream paramInputStream)
   {
-    AppMethodBeat.i(218708);
+    AppMethodBeat.i(215348);
     paramInputStream = new Scanner(paramInputStream, "UTF-8").useDelimiter("\\A");
     if (paramInputStream.hasNext())
     {
       paramInputStream = paramInputStream.next();
-      AppMethodBeat.o(218708);
+      AppMethodBeat.o(215348);
       return paramInputStream;
     }
-    AppMethodBeat.o(218708);
+    AppMethodBeat.o(215348);
     return "";
   }
   
@@ -112,7 +112,7 @@ public class TAVGLUtils
   
   public static Bitmap saveBitmap(int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(218709);
+    AppMethodBeat.i(215349);
     int[] arrayOfInt = new int[1];
     GLES20.glBindTexture(3553, paramInt1);
     GLES20.glGenFramebuffers(1, arrayOfInt, 0);
@@ -128,7 +128,7 @@ public class TAVGLUtils
     GLES20.glBindFramebuffer(36160, 0);
     GLES20.glDeleteFramebuffers(1, arrayOfInt, 0);
     GLES20.glBindTexture(3553, 0);
-    AppMethodBeat.o(218709);
+    AppMethodBeat.o(215349);
     return localBitmap;
   }
 }

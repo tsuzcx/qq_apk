@@ -4,18 +4,18 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 import kotlinx.a.n;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/serialization/internal/HashSetClassDesc;", "Lkotlinx/serialization/internal/ListLikeDescriptor;", "elementDesc", "Lkotlinx/serialization/SerialDescriptor;", "(Lkotlinx/serialization/SerialDescriptor;)V", "serialName", "", "getSerialName", "()Ljava/lang/String;", "kotlinx-serialization-runtime"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/serialization/internal/HashSetClassDesc;", "Lkotlinx/serialization/internal/ListLikeDescriptor;", "elementDesc", "Lkotlinx/serialization/SerialDescriptor;", "(Lkotlinx/serialization/SerialDescriptor;)V", "serialName", "", "getSerialName", "()Ljava/lang/String;", "kotlinx-serialization-runtime"})
 public final class x
   extends ah
 {
   public x(n paramn)
   {
     super(paramn, (byte)0);
-    AppMethodBeat.i(191063);
-    AppMethodBeat.o(191063);
+    AppMethodBeat.i(199651);
+    AppMethodBeat.o(199651);
   }
   
-  public final String gwQ()
+  public final String gBs()
   {
     return "kotlin.collections.HashSet";
   }

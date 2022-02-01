@@ -2,126 +2,126 @@ package com.tencent.mm.plugin.patmsg;
 
 import android.content.SharedPreferences.Editor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ax;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.sdk.platformtools.bu;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public final class c
 {
-  private static ax wFy;
+  private static ay wVj;
   
   static
   {
-    AppMethodBeat.i(215688);
-    wFy = ax.aQz("pat_user_mmkv");
-    AppMethodBeat.o(215688);
+    AppMethodBeat.i(220322);
+    wVj = ay.aRW("pat_user_mmkv");
+    AppMethodBeat.o(220322);
   }
   
-  public static String auj(String paramString)
+  public static String avy(String paramString)
   {
-    AppMethodBeat.i(215683);
+    AppMethodBeat.i(220317);
     try
     {
-      paramString = (String)iu(paramString, "pat_user_suffix_content");
-      AppMethodBeat.o(215683);
+      paramString = (String)iA(paramString, "pat_user_suffix_content");
+      AppMethodBeat.o(220317);
       return paramString;
     }
     catch (Exception paramString)
     {
       for (;;)
       {
-        ad.printErrStackTrace("MicroMsg.PatUserMMKV", paramString, "", new Object[0]);
+        ae.printErrStackTrace("MicroMsg.PatUserMMKV", paramString, "", new Object[0]);
         paramString = "";
       }
     }
   }
   
-  public static int auk(String paramString)
+  public static int avz(String paramString)
   {
-    AppMethodBeat.i(215685);
+    AppMethodBeat.i(220319);
     try
     {
-      i = ((Integer)iu(paramString, "pat_user_suffix_version")).intValue();
-      AppMethodBeat.o(215685);
+      i = ((Integer)iA(paramString, "pat_user_suffix_version")).intValue();
+      AppMethodBeat.o(220319);
       return i;
     }
     catch (Exception paramString)
     {
       for (;;)
       {
-        ad.printErrStackTrace("MicroMsg.PatUserMMKV", paramString, "", new Object[0]);
+        ae.printErrStackTrace("MicroMsg.PatUserMMKV", paramString, "", new Object[0]);
         int i = 0;
       }
     }
   }
   
-  public static void eC(String paramString, int paramInt)
+  public static void eK(String paramString, int paramInt)
   {
-    AppMethodBeat.i(215684);
+    AppMethodBeat.i(220318);
     try
     {
       i(paramString, "pat_user_suffix_version", Integer.valueOf(paramInt));
-      AppMethodBeat.o(215684);
+      AppMethodBeat.o(220318);
       return;
     }
     catch (JSONException paramString)
     {
-      ad.printErrStackTrace("MicroMsg.PatUserMMKV", paramString, "", new Object[0]);
-      AppMethodBeat.o(215684);
+      ae.printErrStackTrace("MicroMsg.PatUserMMKV", paramString, "", new Object[0]);
+      AppMethodBeat.o(220318);
     }
   }
   
   private static void i(String paramString1, String paramString2, Object paramObject)
   {
-    AppMethodBeat.i(215686);
-    if (!bt.isNullOrNil(paramString1)) {
-      if (!wFy.containsKey(paramString1)) {
+    AppMethodBeat.i(220320);
+    if (!bu.isNullOrNil(paramString1)) {
+      if (!wVj.containsKey(paramString1)) {
         break label69;
       }
     }
     label69:
-    for (JSONObject localJSONObject = new JSONObject(wFy.getString(paramString1, ""));; localJSONObject = new JSONObject())
+    for (JSONObject localJSONObject = new JSONObject(wVj.getString(paramString1, ""));; localJSONObject = new JSONObject())
     {
       localJSONObject.put(paramString2, paramObject);
-      wFy.putString(paramString1, localJSONObject.toString()).commit();
-      AppMethodBeat.o(215686);
+      wVj.putString(paramString1, localJSONObject.toString()).commit();
+      AppMethodBeat.o(220320);
       return;
     }
   }
   
-  public static void it(String paramString1, String paramString2)
+  private static Object iA(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(215682);
+    AppMethodBeat.i(220321);
+    if ((!bu.isNullOrNil(paramString1)) && (wVj.containsKey(paramString1)))
+    {
+      paramString1 = new JSONObject(wVj.getString(paramString1, ""));
+      if (paramString1.has(paramString2))
+      {
+        paramString1 = paramString1.get(paramString2);
+        AppMethodBeat.o(220321);
+        return paramString1;
+      }
+    }
+    AppMethodBeat.o(220321);
+    return null;
+  }
+  
+  public static void iz(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(220316);
     try
     {
       i(paramString1, "pat_user_suffix_content", paramString2);
-      AppMethodBeat.o(215682);
+      AppMethodBeat.o(220316);
       return;
     }
     catch (Exception paramString1)
     {
-      ad.printErrStackTrace("MicroMsg.PatUserMMKV", paramString1, "", new Object[0]);
-      AppMethodBeat.o(215682);
+      ae.printErrStackTrace("MicroMsg.PatUserMMKV", paramString1, "", new Object[0]);
+      AppMethodBeat.o(220316);
     }
-  }
-  
-  private static Object iu(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(215687);
-    if ((!bt.isNullOrNil(paramString1)) && (wFy.containsKey(paramString1)))
-    {
-      paramString1 = new JSONObject(wFy.getString(paramString1, ""));
-      if (paramString1.has(paramString2))
-      {
-        paramString1 = paramString1.get(paramString2);
-        AppMethodBeat.o(215687);
-        return paramString1;
-      }
-    }
-    AppMethodBeat.o(215687);
-    return null;
   }
 }
 

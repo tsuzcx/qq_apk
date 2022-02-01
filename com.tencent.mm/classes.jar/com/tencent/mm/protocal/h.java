@@ -13,9 +13,9 @@ public abstract interface h
   
   public abstract boolean a(int paramInt1, byte[] paramArrayOfByte1, int paramInt2, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, int paramInt3, boolean paramBoolean);
   
-  public abstract byte[] aFg();
+  public abstract byte[] aFw();
   
-  public abstract String aFh();
+  public abstract String aFx();
   
   public abstract int getClientVersion();
   
@@ -43,7 +43,7 @@ public abstract interface h
   
   public abstract boolean isAxAuth();
   
-  public abstract void oU(int paramInt);
+  public abstract void oX(int paramInt);
   
   public abstract void setClientVersion(int paramInt);
   
@@ -72,7 +72,7 @@ public abstract interface h
       attachInterface(this, "com.tencent.mm.protocal.IMMBaseReq_AIDL");
     }
     
-    public static h I(IBinder paramIBinder)
+    public static h J(IBinder paramIBinder)
     {
       if (paramIBinder == null) {
         return null;
@@ -125,7 +125,7 @@ public abstract interface h
         }
       case 2: 
         paramParcel1.enforceInterface("com.tencent.mm.protocal.IMMBaseReq_AIDL");
-        paramParcel1 = aFg();
+        paramParcel1 = aFw();
         paramParcel2.writeNoException();
         paramParcel2.writeByteArray(paramParcel1);
         return true;
@@ -220,7 +220,7 @@ public abstract interface h
         return true;
       case 19: 
         paramParcel1.enforceInterface("com.tencent.mm.protocal.IMMBaseReq_AIDL");
-        paramParcel1 = aFh();
+        paramParcel1 = aFx();
         paramParcel2.writeNoException();
         paramParcel2.writeString(paramParcel1);
         return true;
@@ -276,7 +276,7 @@ public abstract interface h
         return true;
       case 26: 
         paramParcel1.enforceInterface("com.tencent.mm.protocal.IMMBaseReq_AIDL");
-        oU(paramParcel1.readInt());
+        oX(paramParcel1.readInt());
         paramParcel2.writeNoException();
         return true;
       }
@@ -298,7 +298,7 @@ public abstract interface h
       
       public final void Y(byte[] paramArrayOfByte)
       {
-        AppMethodBeat.i(189866);
+        AppMethodBeat.i(193584);
         Parcel localParcel1 = Parcel.obtain();
         Parcel localParcel2 = Parcel.obtain();
         try
@@ -313,7 +313,7 @@ public abstract interface h
         {
           localParcel2.recycle();
           localParcel1.recycle();
-          AppMethodBeat.o(189866);
+          AppMethodBeat.o(193584);
         }
       }
       
@@ -416,7 +416,7 @@ public abstract interface h
         //   71	104	141	finally
       }
       
-      public final byte[] aFg()
+      public final byte[] aFw()
       {
         AppMethodBeat.i(133046);
         Parcel localParcel1 = Parcel.obtain();
@@ -437,7 +437,7 @@ public abstract interface h
         }
       }
       
-      public final String aFh()
+      public final String aFx()
       {
         AppMethodBeat.i(133063);
         Parcel localParcel1 = Parcel.obtain();
@@ -744,9 +744,9 @@ public abstract interface h
         }
       }
       
-      public final void oU(int paramInt)
+      public final void oX(int paramInt)
       {
-        AppMethodBeat.i(189865);
+        AppMethodBeat.i(193583);
         Parcel localParcel1 = Parcel.obtain();
         Parcel localParcel2 = Parcel.obtain();
         try
@@ -761,7 +761,7 @@ public abstract interface h
         {
           localParcel2.recycle();
           localParcel1.recycle();
-          AppMethodBeat.o(189865);
+          AppMethodBeat.o(193583);
         }
       }
       

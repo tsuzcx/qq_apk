@@ -1,24 +1,24 @@
 package com.tencent.mm.insane_statistic;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.l;
+import com.tencent.mm.ah.l;
 import com.tencent.mm.modelstat.b;
 import com.tencent.mm.modelstat.r.a;
-import com.tencent.mm.storage.bu;
+import com.tencent.mm.storage.bv;
 
 public final class a
   implements r.a
 {
-  public final void q(bu parambu)
+  public final void q(bv parambv)
   {
     AppMethodBeat.i(20219);
-    if (parambu.cTc())
+    if (parambv.cVH())
     {
-      b.inZ.b(parambu, l.r(parambu));
+      b.iqT.b(parambv, l.r(parambv));
       AppMethodBeat.o(20219);
       return;
     }
-    b.inZ.q(parambu);
+    b.iqT.q(parambv);
     AppMethodBeat.o(20219);
   }
 }

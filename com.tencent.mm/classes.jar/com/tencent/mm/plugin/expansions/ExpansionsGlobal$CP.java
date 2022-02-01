@@ -13,7 +13,7 @@ import android.os.Message;
 import android.os.Messenger;
 import android.os.RemoteException;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.concurrent.Callable;
 
 public class ExpansionsGlobal$CP
@@ -24,7 +24,7 @@ public class ExpansionsGlobal$CP
     AppMethodBeat.i(152971);
     if ("expansionsWait".equals(paramString1))
     {
-      ad.i("MicroMsg.exp.ExpansionsGlobal", "cp receive remote expansions call, request");
+      ae.i("MicroMsg.exp.ExpansionsGlobal", "cp receive remote expansions call, request");
       paramString1 = new a() {};
       h.a(new Callable() {}).a(new f() {}, h.aBP);
     }

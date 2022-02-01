@@ -13,28 +13,28 @@ import org.xwalk.core.XWalkEnvironment;
 
 public final class h
 {
-  static h MtH = null;
-  int MtA;
-  int MtB;
-  long MtC;
-  ArrayList<Long> MtD;
-  WebView.c MtE;
-  long MtF;
-  boolean MtG;
+  static h MQL = null;
+  int MQE;
+  int MQF;
+  long MQG;
+  ArrayList<Long> MQH;
+  WebView.c MQI;
+  long MQJ;
+  boolean MQK;
   
   private h(WebView.c paramc)
   {
     AppMethodBeat.i(156971);
-    this.MtA = 0;
-    this.MtB = 0;
-    this.MtC = 0L;
-    this.MtD = new ArrayList();
-    this.MtF = 0L;
-    this.MtG = false;
-    this.MtE = paramc;
-    if ((this.MtE != WebView.c.Mqw) && (("tools".equals(WebView.getCurStrModule())) || ("toolsmp".equals(WebView.getCurStrModule()))))
+    this.MQE = 0;
+    this.MQF = 0;
+    this.MQG = 0L;
+    this.MQH = new ArrayList();
+    this.MQJ = 0L;
+    this.MQK = false;
+    this.MQI = paramc;
+    if ((this.MQI != WebView.c.MNA) && (("tools".equals(WebView.getCurStrModule())) || ("toolsmp".equals(WebView.getCurStrModule()))))
     {
-      paramc = a.mV("enable_err_watchdog", "tools");
+      paramc = a.nb("enable_err_watchdog", "tools");
       boolean bool1 = bool2;
       if (paramc != null)
       {
@@ -43,17 +43,17 @@ public final class h
           bool1 = true;
         }
       }
-      this.MtG = bool1;
-      this.MtF = e(this.MtE).getLong("SP_KEY_NEED_SWITCH_TIME", 0L);
-      if (Math.abs(System.currentTimeMillis() - this.MtF) < 43200000L)
+      this.MQK = bool1;
+      this.MQJ = e(this.MQI).getLong("SP_KEY_NEED_SWITCH_TIME", 0L);
+      if (Math.abs(System.currentTimeMillis() - this.MQJ) < 43200000L)
       {
-        this.MtA = 3;
+        this.MQE = 3;
         AppMethodBeat.o(156971);
       }
     }
     else
     {
-      this.MtG = false;
+      this.MQK = false;
     }
     AppMethodBeat.o(156971);
   }
@@ -63,7 +63,7 @@ public final class h
     try
     {
       AppMethodBeat.i(156970);
-      MtH = new h(paramc);
+      MQL = new h(paramc);
       AppMethodBeat.o(156970);
       return;
     }
@@ -90,29 +90,29 @@ public final class h
     }
   }
   
-  public static h gbL()
+  public static h ggn()
   {
     try
     {
       AppMethodBeat.i(156969);
-      if (MtH == null)
+      if (MQL == null)
       {
         localObject1 = WebView.getCurWebType();
         WebView.getCurStrModule();
-        MtH = new h((WebView.c)localObject1);
+        MQL = new h((WebView.c)localObject1);
       }
-      Object localObject1 = MtH;
+      Object localObject1 = MQL;
       AppMethodBeat.o(156969);
       return localObject1;
     }
     finally {}
   }
   
-  private int gbN()
+  private int ggp()
   {
     try
     {
-      int i = this.MtA;
+      int i = this.MQE;
       return i;
     }
     finally
@@ -122,12 +122,12 @@ public final class h
     }
   }
   
-  public final void gbG()
+  public final void ggi()
   {
     try
     {
       AppMethodBeat.i(156972);
-      this.MtC = System.currentTimeMillis();
+      this.MQG = System.currentTimeMillis();
       AppMethodBeat.o(156972);
       return;
     }
@@ -139,7 +139,7 @@ public final class h
   }
   
   /* Error */
-  public final void gbH()
+  public final void ggj()
   {
     // Byte code:
     //   0: aload_0
@@ -147,7 +147,7 @@ public final class h
     //   2: ldc 160
     //   4: invokestatic 35	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   7: aload_0
-    //   8: getfield 50	com/tencent/xweb/internal/h:MtG	Z
+    //   8: getfield 50	com/tencent/xweb/internal/h:MQK	Z
     //   11: ifne +11 -> 22
     //   14: ldc 160
     //   16: invokestatic 118	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -156,16 +156,16 @@ public final class h
     //   21: return
     //   22: aload_0
     //   23: lconst_0
-    //   24: putfield 41	com/tencent/xweb/internal/h:MtC	J
+    //   24: putfield 41	com/tencent/xweb/internal/h:MQG	J
     //   27: aload_0
-    //   28: getfield 46	com/tencent/xweb/internal/h:MtD	Ljava/util/ArrayList;
+    //   28: getfield 46	com/tencent/xweb/internal/h:MQH	Ljava/util/ArrayList;
     //   31: invokevirtual 163	java/util/ArrayList:clear	()V
     //   34: aload_0
     //   35: lconst_0
-    //   36: putfield 48	com/tencent/xweb/internal/h:MtF	J
+    //   36: putfield 48	com/tencent/xweb/internal/h:MQJ	J
     //   39: aload_0
     //   40: iconst_0
-    //   41: putfield 37	com/tencent/xweb/internal/h:MtA	I
+    //   41: putfield 37	com/tencent/xweb/internal/h:MQE	I
     //   44: ldc 160
     //   46: invokestatic 118	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   49: goto -30 -> 19
@@ -184,47 +184,47 @@ public final class h
     //   22	49	52	finally
   }
   
-  public final void gbM()
+  public final void ggo()
   {
     for (;;)
     {
       try
       {
         AppMethodBeat.i(156973);
-        if (!this.MtG)
+        if (!this.MQK)
         {
           AppMethodBeat.o(156973);
           return;
         }
         if (NetworkUtil.isNetworkAvailable()) {
-          this.MtD.add(Long.valueOf(System.currentTimeMillis()));
+          this.MQH.add(Long.valueOf(System.currentTimeMillis()));
         }
-        if (this.MtD.size() < 3) {
+        if (this.MQH.size() < 3) {
           break label141;
         }
-        long l = ((Long)this.MtD.get(this.MtD.size() - 3)).longValue();
+        long l = ((Long)this.MQH.get(this.MQH.size() - 3)).longValue();
         if (Math.abs(System.currentTimeMillis() - l) >= 120000L) {
           break label141;
         }
-        this.MtA = 1;
-        if (this.MtE == WebView.c.Mqu)
+        this.MQE = 1;
+        if (this.MQI == WebView.c.MNy)
         {
-          g.Fh(220L);
+          g.FJ(220L);
           AppMethodBeat.o(156973);
           continue;
         }
-        if (this.MtE != WebView.c.Mqv) {
+        if (this.MQI != WebView.c.MNz) {
           break label141;
         }
       }
       finally {}
-      g.Fh(226L);
+      g.FJ(226L);
       label141:
       AppMethodBeat.o(156973);
     }
   }
   
-  public final boolean gbO()
+  public final boolean ggq()
   {
     boolean bool = true;
     for (;;)
@@ -232,24 +232,24 @@ public final class h
       try
       {
         AppMethodBeat.i(156974);
-        if ((gbN() == 3) || (gbN() == 2))
+        if ((ggp() == 3) || (ggp() == 2))
         {
-          if (this.MtE == WebView.c.Mqu) {
-            g.Fh(222L);
+          if (this.MQI == WebView.c.MNy) {
+            g.FJ(222L);
           }
         }
         else
         {
-          if ((gbN() != 1) && (gbN() != 3) && (gbN() != 2)) {
+          if ((ggp() != 1) && (ggp() != 3) && (ggp() != 2)) {
             break label98;
           }
           AppMethodBeat.o(156974);
           return bool;
         }
-        if (this.MtE != WebView.c.Mqv) {
+        if (this.MQI != WebView.c.MNz) {
           continue;
         }
-        g.Fh(228L);
+        g.FJ(228L);
         continue;
         bool = false;
       }
@@ -260,7 +260,7 @@ public final class h
   }
   
   /* Error */
-  public final boolean gbP()
+  public final boolean ggr()
   {
     // Byte code:
     //   0: aload_0
@@ -268,7 +268,7 @@ public final class h
     //   2: ldc 218
     //   4: invokestatic 35	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   7: aload_0
-    //   8: invokespecial 212	com/tencent/xweb/internal/h:gbN	()I
+    //   8: invokespecial 212	com/tencent/xweb/internal/h:ggp	()I
     //   11: iconst_2
     //   12: if_icmpne +14 -> 26
     //   15: iconst_1
@@ -302,7 +302,7 @@ public final class h
   }
   
   /* Error */
-  public final boolean gbQ()
+  public final boolean ggs()
   {
     // Byte code:
     //   0: aload_0
@@ -310,7 +310,7 @@ public final class h
     //   2: ldc 220
     //   4: invokestatic 35	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   7: aload_0
-    //   8: invokespecial 212	com/tencent/xweb/internal/h:gbN	()I
+    //   8: invokespecial 212	com/tencent/xweb/internal/h:ggp	()I
     //   11: iconst_3
     //   12: if_icmpne +14 -> 26
     //   15: iconst_1
@@ -343,76 +343,76 @@ public final class h
     //   28	33	36	finally
   }
   
-  public final void gbR()
+  public final void ggt()
   {
     for (;;)
     {
       try
       {
         AppMethodBeat.i(156978);
-        if (!this.MtG)
+        if (!this.MQK)
         {
           AppMethodBeat.o(156978);
           return;
         }
-        if (1 != this.MtA)
+        if (1 != this.MQE)
         {
           AppMethodBeat.o(156978);
           continue;
         }
-        if (this.MtD.size() <= 0) {
+        if (this.MQH.size() <= 0) {
           break label187;
         }
       }
       finally {}
-      long l = ((Long)this.MtD.get(this.MtD.size() - 1)).longValue();
+      long l = ((Long)this.MQH.get(this.MQH.size() - 1)).longValue();
       if (Math.abs(System.currentTimeMillis() - l) < 60000L)
       {
-        if (this.MtE == WebView.c.Mqu) {
-          g.Fh(221L);
+        if (this.MQI == WebView.c.MNy) {
+          g.FJ(221L);
         }
         for (;;)
         {
-          this.MtC = 0L;
-          this.MtD.clear();
-          this.MtA = 2;
-          this.MtF = System.currentTimeMillis();
-          e(this.MtE).edit().putLong("SP_KEY_NEED_SWITCH_TIME", this.MtF).commit();
+          this.MQG = 0L;
+          this.MQH.clear();
+          this.MQE = 2;
+          this.MQJ = System.currentTimeMillis();
+          e(this.MQI).edit().putLong("SP_KEY_NEED_SWITCH_TIME", this.MQJ).commit();
           AppMethodBeat.o(156978);
           break;
-          if (this.MtE == WebView.c.Mqv) {
-            g.Fh(227L);
+          if (this.MQI == WebView.c.MNz) {
+            g.FJ(227L);
           }
         }
       }
       label187:
-      this.MtA = 0;
+      this.MQE = 0;
       AppMethodBeat.o(156978);
     }
   }
   
-  public final void gbS()
+  public final void ggu()
   {
     for (;;)
     {
       try
       {
         AppMethodBeat.i(156979);
-        if (!this.MtG)
+        if (!this.MQK)
         {
           AppMethodBeat.o(156979);
           return;
         }
-        if (1 != this.MtA)
+        if (1 != this.MQE)
         {
           AppMethodBeat.o(156979);
           continue;
         }
-        this.MtC = 0L;
+        this.MQG = 0L;
       }
       finally {}
-      this.MtD.clear();
-      this.MtA = 0;
+      this.MQH.clear();
+      this.MQE = 0;
       AppMethodBeat.o(156979);
     }
   }

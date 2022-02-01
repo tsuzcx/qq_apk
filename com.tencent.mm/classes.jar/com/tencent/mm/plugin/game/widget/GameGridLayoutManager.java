@@ -4,7 +4,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView.o;
 import android.support.v7.widget.RecyclerView.t;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public class GameGridLayoutManager
   extends GridLayoutManager
@@ -30,14 +30,14 @@ public class GameGridLayoutManager
     }
     catch (IndexOutOfBoundsException paramo)
     {
-      ad.e("MicroMsg.GameGridLayoutManager", "meet a IOOBE in RecyclerView");
+      ae.e("MicroMsg.GameGridLayoutManager", "meet a IOOBE in RecyclerView");
       AppMethodBeat.o(42619);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.game.widget.GameGridLayoutManager
  * JD-Core Version:    0.7.0.1
  */

@@ -5,42 +5,42 @@ import d.g.b.p;
 import d.l;
 import kotlinx.a.h;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/serialization/modules/EmptyModule;", "Lkotlinx/serialization/modules/SerialModule;", "()V", "dumpTo", "", "collector", "Lkotlinx/serialization/modules/SerialModuleCollector;", "getContextual", "Lkotlinx/serialization/KSerializer;", "T", "", "kclass", "Lkotlin/reflect/KClass;", "getPolymorphic", "baseClass", "value", "(Lkotlin/reflect/KClass;Ljava/lang/Object;)Lkotlinx/serialization/KSerializer;", "serializedClassName", "", "kotlinx-serialization-runtime"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/serialization/modules/EmptyModule;", "Lkotlinx/serialization/modules/SerialModule;", "()V", "dumpTo", "", "collector", "Lkotlinx/serialization/modules/SerialModuleCollector;", "getContextual", "Lkotlinx/serialization/KSerializer;", "T", "", "kclass", "Lkotlin/reflect/KClass;", "getPolymorphic", "baseClass", "value", "(Lkotlin/reflect/KClass;Ljava/lang/Object;)Lkotlinx/serialization/KSerializer;", "serializedClassName", "", "kotlinx-serialization-runtime"})
 public final class a
   implements b
 {
-  public static final a NOF;
+  public static final a OlL;
   
   static
   {
-    AppMethodBeat.i(191499);
-    NOF = new a();
-    AppMethodBeat.o(191499);
+    AppMethodBeat.i(200087);
+    OlL = new a();
+    AppMethodBeat.o(200087);
   }
   
   public final <T> h<? extends T> a(d.l.b<T> paramb, T paramT)
   {
-    AppMethodBeat.i(191496);
+    AppMethodBeat.i(200084);
     p.h(paramb, "baseClass");
     p.h(paramT, "value");
-    AppMethodBeat.o(191496);
+    AppMethodBeat.o(200084);
     return null;
   }
   
   public final <T> h<? extends T> a(d.l.b<T> paramb, String paramString)
   {
-    AppMethodBeat.i(191497);
+    AppMethodBeat.i(200085);
     p.h(paramb, "baseClass");
     p.h(paramString, "serializedClassName");
-    AppMethodBeat.o(191497);
+    AppMethodBeat.o(200085);
     return null;
   }
   
   public final void a(d paramd)
   {
-    AppMethodBeat.i(191498);
+    AppMethodBeat.i(200086);
     p.h(paramd, "collector");
-    AppMethodBeat.o(191498);
+    AppMethodBeat.o(200086);
   }
 }
 

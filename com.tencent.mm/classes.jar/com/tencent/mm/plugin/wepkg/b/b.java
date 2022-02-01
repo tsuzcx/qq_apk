@@ -4,54 +4,54 @@ import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public final class b
   extends j<a>
 {
-  private static b EDF;
+  private static b EWb;
   public static final String[] SQL_CREATE;
   private static final Object lock;
-  private com.tencent.mm.sdk.e.e jHa;
+  private com.tencent.mm.sdk.e.e jKa;
   
   static
   {
     AppMethodBeat.i(110561);
-    SQL_CREATE = new String[] { j.getCreateSQLs(a.hEe, "WePkgDiffPackage") };
+    SQL_CREATE = new String[] { j.getCreateSQLs(a.hGW, "WePkgDiffPackage") };
     lock = new Object();
     AppMethodBeat.o(110561);
   }
   
   private b(com.tencent.mm.sdk.e.e parame)
   {
-    super(parame, a.hEe, "WePkgDiffPackage", a.INDEX_CREATE);
-    this.jHa = parame;
+    super(parame, a.hGW, "WePkgDiffPackage", a.INDEX_CREATE);
+    this.jKa = parame;
   }
   
-  private boolean beh()
+  private boolean beO()
   {
-    return this.jHa != null;
+    return this.jKa != null;
   }
   
-  public static b eXL()
+  public static b fbx()
   {
     AppMethodBeat.i(110558);
-    if (EDF == null) {}
+    if (EWb == null) {}
     synchronized (lock)
     {
-      if ((EDF == null) || (!EDF.beh())) {
-        EDF = new b(g.ajC().gBq);
+      if ((EWb == null) || (!EWb.beO())) {
+        EWb = new b(g.ajR().gDX);
       }
-      ??? = EDF;
+      ??? = EWb;
       AppMethodBeat.o(110558);
       return ???;
     }
   }
   
-  public final boolean CA(String paramString)
+  public final boolean Dc(String paramString)
   {
     AppMethodBeat.i(110560);
-    if ((!beh()) || (bt.isNullOrNil(paramString)))
+    if ((!beO()) || (bu.isNullOrNil(paramString)))
     {
       AppMethodBeat.o(110560);
       return false;
@@ -61,10 +61,10 @@ public final class b
     return bool;
   }
   
-  public final a aKv(String paramString)
+  public final a aLR(String paramString)
   {
     AppMethodBeat.i(110559);
-    if ((!beh()) || (bt.isNullOrNil(paramString)))
+    if ((!beO()) || (bu.isNullOrNil(paramString)))
     {
       AppMethodBeat.o(110559);
       return null;

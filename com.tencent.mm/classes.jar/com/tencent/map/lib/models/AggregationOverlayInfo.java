@@ -20,7 +20,7 @@ public class AggregationOverlayInfo
   
   public AggregationOverlayInfo()
   {
-    AppMethodBeat.i(195055);
+    AppMethodBeat.i(209759);
     this.mType = 0;
     this.mSize = 2000.0F;
     this.mGap = 0.0F;
@@ -30,7 +30,7 @@ public class AggregationOverlayInfo
     this.mMaxZoom = 22;
     this.mColors = new int[] { 1174031124, -1711650028, -637908204 };
     this.mStartPoints = new double[] { 0.0D, 0.6D, 0.8D };
-    AppMethodBeat.o(195055);
+    AppMethodBeat.o(209759);
   }
   
   public void setColors(int[] paramArrayOfInt)

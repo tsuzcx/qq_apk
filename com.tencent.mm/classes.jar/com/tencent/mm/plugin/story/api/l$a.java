@@ -7,13 +7,13 @@ public abstract interface l$a
 {
   public abstract void a(List<String> paramList, ArrayList<String> paramArrayList);
   
-  public abstract void al(boolean paramBoolean1, boolean paramBoolean2);
+  public abstract void ak(boolean paramBoolean1, boolean paramBoolean2);
   
-  public abstract void bW(String paramString, boolean paramBoolean);
+  public abstract void ca(String paramString, boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.story.api.l.a
  * JD-Core Version:    0.7.0.1
  */

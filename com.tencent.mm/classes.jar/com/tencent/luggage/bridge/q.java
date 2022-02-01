@@ -23,7 +23,7 @@ final class q
     this.cgI = paramo;
   }
   
-  public final String cw(String paramString)
+  public final String cx(String paramString)
   {
     AppMethodBeat.i(140344);
     if (TextUtils.isEmpty(paramString))
@@ -48,7 +48,7 @@ final class q
   public final void onReady()
   {
     AppMethodBeat.i(140343);
-    this.cgI.BL();
+    this.cgI.BM();
     AppMethodBeat.o(140343);
   }
 }

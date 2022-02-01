@@ -1,13 +1,12 @@
 package d.l.b.a.b.h;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.io.IOException;
 import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
 
 public final class f
 {
-  private int NqQ;
+  private int NNW;
   private final byte[] buffer;
   private final int limit;
   private final OutputStream output;
@@ -16,7 +15,7 @@ public final class f
   private f(OutputStream paramOutputStream, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(59400);
-    this.NqQ = 0;
+    this.NNW = 0;
     this.output = paramOutputStream;
     this.buffer = paramArrayOfByte;
     this.position = 0;
@@ -24,18 +23,18 @@ public final class f
     AppMethodBeat.o(59400);
   }
   
-  public static long FB(long paramLong)
-  {
-    return paramLong << 1 ^ paramLong >> 63;
-  }
-  
-  public static int Fz(long paramLong)
+  public static int Gb(long paramLong)
   {
     AppMethodBeat.i(59422);
     int i = fN(2);
-    int j = ax(FB(paramLong));
+    int j = ax(Gd(paramLong));
     AppMethodBeat.o(59422);
     return i + j;
+  }
+  
+  public static long Gd(long paramLong)
+  {
+    return paramLong << 1 ^ paramLong >> 63;
   }
   
   public static int a(m paramm)
@@ -52,24 +51,24 @@ public final class f
     AppMethodBeat.i(59434);
     if (this.limit - this.position >= paramInt)
     {
-      paramd.i(this.buffer, 0, this.position, paramInt);
+      paramd.j(this.buffer, 0, this.position, paramInt);
       this.position += paramInt;
     }
     for (;;)
     {
-      this.NqQ += paramInt;
+      this.NNW += paramInt;
       AppMethodBeat.o(59434);
       return;
       int i = this.limit - this.position;
-      paramd.i(this.buffer, 0, this.position, i);
+      paramd.j(this.buffer, 0, this.position, i);
       int j = i + 0;
       paramInt -= i;
       this.position = this.limit;
-      this.NqQ = (i + this.NqQ);
-      grC();
+      this.NNW = (i + this.NNW);
+      gwe();
       if (paramInt <= this.limit)
       {
-        paramd.i(this.buffer, j, 0, paramInt);
+        paramd.j(this.buffer, j, 0, paramInt);
         this.position = paramInt;
       }
       else
@@ -79,7 +78,7 @@ public final class f
     }
   }
   
-  public static int alf(int paramInt)
+  public static int alP(int paramInt)
   {
     return paramInt << 1 ^ paramInt >> 31;
   }
@@ -184,17 +183,17 @@ public final class f
   {
     AppMethodBeat.i(59431);
     if (this.position == this.limit) {
-      grC();
+      gwe();
     }
     byte[] arrayOfByte = this.buffer;
     int i = this.position;
     this.position = (i + 1);
     arrayOfByte[i] = paramByte;
-    this.NqQ += 1;
+    this.NNW += 1;
     AppMethodBeat.o(59431);
   }
   
-  public static int db(byte[] paramArrayOfByte)
+  public static int de(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(59428);
     int i = fP(paramArrayOfByte.length);
@@ -249,12 +248,12 @@ public final class f
     return 5;
   }
   
-  private void grC()
+  private void gwe()
   {
     AppMethodBeat.i(59429);
     if (this.output == null)
     {
-      a locala = new a();
+      f.a locala = new f.a();
       AppMethodBeat.o(59429);
       throw locala;
     }
@@ -263,7 +262,7 @@ public final class f
     AppMethodBeat.o(59429);
   }
   
-  public static int ls(int paramInt1, int paramInt2)
+  public static int lz(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(59421);
     paramInt1 = fN(paramInt1);
@@ -282,7 +281,7 @@ public final class f
     }
     for (;;)
     {
-      this.NqQ += paramInt;
+      this.NNW += paramInt;
       AppMethodBeat.o(59433);
       return;
       int i = this.limit - this.position;
@@ -290,8 +289,8 @@ public final class f
       int j = i + 0;
       paramInt -= i;
       this.position = this.limit;
-      this.NqQ = (i + this.NqQ);
-      grC();
+      this.NNW = (i + this.NNW);
+      gwe();
       if (paramInt <= this.limit)
       {
         System.arraycopy(paramArrayOfByte, j, this.buffer, 0, paramInt);
@@ -304,15 +303,15 @@ public final class f
     }
   }
   
-  public final void Af(boolean paramBoolean)
+  public final void As(boolean paramBoolean)
   {
     AppMethodBeat.i(59403);
     bB(3, 0);
-    Ag(paramBoolean);
+    At(paramBoolean);
     AppMethodBeat.o(59403);
   }
   
-  public final void Ag(boolean paramBoolean)
+  public final void At(boolean paramBoolean)
   {
     AppMethodBeat.i(59411);
     if (paramBoolean) {}
@@ -324,7 +323,14 @@ public final class f
     }
   }
   
-  public final void FA(long paramLong)
+  public final void Ga(long paramLong)
+  {
+    AppMethodBeat.i(59417);
+    aw(Gd(paramLong));
+    AppMethodBeat.o(59417);
+  }
+  
+  public final void Gc(long paramLong)
   {
     AppMethodBeat.i(59440);
     d((byte)((int)paramLong & 0xFF));
@@ -338,17 +344,10 @@ public final class f
     AppMethodBeat.o(59440);
   }
   
-  public final void Fy(long paramLong)
-  {
-    AppMethodBeat.i(59417);
-    aw(FB(paramLong));
-    AppMethodBeat.o(59417);
-  }
-  
-  public final void M(double paramDouble)
+  public final void N(double paramDouble)
   {
     AppMethodBeat.i(59408);
-    FA(Double.doubleToRawLongBits(paramDouble));
+    Gc(Double.doubleToRawLongBits(paramDouble));
     AppMethodBeat.o(59408);
   }
   
@@ -368,7 +367,7 @@ public final class f
     AppMethodBeat.o(59404);
   }
   
-  public final void alc(int paramInt)
+  public final void alM(int paramInt)
   {
     AppMethodBeat.i(59410);
     if (paramInt >= 0)
@@ -381,14 +380,14 @@ public final class f
     AppMethodBeat.o(59410);
   }
   
-  public final void ald(int paramInt)
+  public final void alN(int paramInt)
   {
     AppMethodBeat.i(59416);
-    fO(alf(paramInt));
+    fO(alP(paramInt));
     AppMethodBeat.o(59416);
   }
   
-  public final void ale(int paramInt)
+  public final void alO(int paramInt)
   {
     AppMethodBeat.i(59439);
     d((byte)(paramInt & 0xFF));
@@ -448,7 +447,7 @@ public final class f
     AppMethodBeat.o(59435);
   }
   
-  public final void bcK(String paramString)
+  public final void beo(String paramString)
   {
     AppMethodBeat.i(59412);
     paramString = paramString.getBytes("UTF-8");
@@ -461,18 +460,18 @@ public final class f
   {
     AppMethodBeat.i(59402);
     bB(paramInt1, 0);
-    alc(paramInt2);
+    alM(paramInt2);
     AppMethodBeat.o(59402);
   }
   
-  public final void cr(float paramFloat)
+  public final void cp(float paramFloat)
   {
     AppMethodBeat.i(59409);
-    ale(Float.floatToRawIntBits(paramFloat));
+    alO(Float.floatToRawIntBits(paramFloat));
     AppMethodBeat.o(59409);
   }
   
-  public final void da(byte[] paramArrayOfByte)
+  public final void dd(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(59415);
     fO(paramArrayOfByte.length);
@@ -507,31 +506,22 @@ public final class f
   {
     AppMethodBeat.i(59430);
     if (this.output != null) {
-      grC();
+      gwe();
     }
     AppMethodBeat.o(59430);
   }
   
-  public final void lr(int paramInt1, int paramInt2)
+  public final void ly(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(59406);
     bB(paramInt1, 0);
-    alc(paramInt2);
+    alM(paramInt2);
     AppMethodBeat.o(59406);
-  }
-  
-  public static final class a
-    extends IOException
-  {
-    a()
-    {
-      super();
-    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     d.l.b.a.b.h.f
  * JD-Core Version:    0.7.0.1
  */

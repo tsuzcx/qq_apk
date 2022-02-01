@@ -6,25 +6,25 @@ import d.l;
 import kotlinx.a.a.e;
 import kotlinx.a.h;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/serialization/internal/IntArraySerializer;", "Lkotlinx/serialization/KSerializer;", "", "Lkotlinx/serialization/internal/PrimitiveArraySerializer;", "", "Lkotlinx/serialization/internal/IntArrayBuilder;", "()V", "empty", "readElement", "", "decoder", "Lkotlinx/serialization/CompositeDecoder;", "index", "builder", "checkIndex", "", "writeContent", "encoder", "Lkotlinx/serialization/CompositeEncoder;", "content", "size", "collectionSize", "toBuilder", "kotlinx-serialization-runtime"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/serialization/internal/IntArraySerializer;", "Lkotlinx/serialization/KSerializer;", "", "Lkotlinx/serialization/internal/PrimitiveArraySerializer;", "", "Lkotlinx/serialization/internal/IntArrayBuilder;", "()V", "empty", "readElement", "", "decoder", "Lkotlinx/serialization/CompositeDecoder;", "index", "builder", "checkIndex", "", "writeContent", "encoder", "Lkotlinx/serialization/CompositeEncoder;", "content", "size", "collectionSize", "toBuilder", "kotlinx-serialization-runtime"})
 public final class aa
   extends ax<Integer, int[], z>
   implements h<int[]>
 {
-  public static final aa NMr;
+  public static final aa Ojx;
   
   static
   {
-    AppMethodBeat.i(191105);
-    NMr = new aa();
-    AppMethodBeat.o(191105);
+    AppMethodBeat.i(199693);
+    Ojx = new aa();
+    AppMethodBeat.o(199693);
   }
   
   private aa()
   {
-    super(e.a(o.MLN));
-    AppMethodBeat.i(191104);
-    AppMethodBeat.o(191104);
+    super(e.a(o.NiQ));
+    AppMethodBeat.i(199692);
+    AppMethodBeat.o(199692);
   }
 }
 

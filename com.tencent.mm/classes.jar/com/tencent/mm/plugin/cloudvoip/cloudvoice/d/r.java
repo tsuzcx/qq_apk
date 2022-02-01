@@ -1,27 +1,27 @@
 package com.tencent.mm.plugin.cloudvoip.cloudvoice.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
 import com.tencent.mm.ipcinvoker.wx_extension.IPCRunCgi;
 import com.tencent.mm.ipcinvoker.wx_extension.IPCRunCgi.a;
-import com.tencent.mm.protocal.protobuf.azk;
-import com.tencent.mm.protocal.protobuf.azl;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.baa;
+import com.tencent.mm.protocal.protobuf.bab;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 final class r
 {
-  final Map<String, q> oZs;
+  final Map<String, q> pfW;
   
   r()
   {
     AppMethodBeat.i(90935);
-    this.oZs = new ConcurrentHashMap(1);
+    this.pfW = new ConcurrentHashMap(1);
     AppMethodBeat.o(90935);
   }
   
@@ -29,35 +29,35 @@ final class r
   {
     AppMethodBeat.i(184491);
     Object localObject = new b.a();
-    ((b.a)localObject).hNM = new azk();
-    ((b.a)localObject).hNN = new azl();
+    ((b.a)localObject).hQF = new baa();
+    ((b.a)localObject).hQG = new bab();
     ((b.a)localObject).funcId = 2985;
     ((b.a)localObject).uri = "/cgi-bin/mmbiz-bin/wxabusiness/getcloudimsession";
-    ((b.a)localObject).hNO = 0;
+    ((b.a)localObject).hQH = 0;
     ((b.a)localObject).respCmdId = 0;
-    localObject = ((b.a)localObject).aDC();
-    azk localazk = (azk)((b)localObject).hNK.hNQ;
-    localazk.duW = paramString1;
-    localazk.GwJ = paramString2;
+    localObject = ((b.a)localObject).aDS();
+    baa localbaa = (baa)((b)localObject).hQD.hQJ;
+    localbaa.dwb = paramString1;
+    localbaa.GQj = paramString2;
     IPCRunCgi.a((b)localObject, new IPCRunCgi.a()
     {
       public final void a(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, b paramAnonymousb)
       {
         AppMethodBeat.i(90934);
-        if ((paramAnonymousInt1 != 0) || (paramAnonymousInt2 != 0) || (paramAnonymousb.hNL.hNQ == null))
+        if ((paramAnonymousInt1 != 0) || (paramAnonymousInt2 != 0) || (paramAnonymousb.hQE.hQJ == null))
         {
-          ad.e("MicroMsg.OpenVoice.OpenVoiceSessionMgr", "hy: get sessionkey fail,errType:" + paramAnonymousInt1 + ",errCode:" + paramAnonymousInt2);
+          ae.e("MicroMsg.OpenVoice.OpenVoiceSessionMgr", "hy: get sessionkey fail,errType:" + paramAnonymousInt1 + ",errCode:" + paramAnonymousInt2);
           r.a(r.this, paramAnonymousInt1, paramAnonymousInt2, paramAnonymousString, null, false, parama);
           AppMethodBeat.o(90934);
           return;
         }
-        paramAnonymousString = (azl)paramAnonymousb.hNL.hNQ;
+        paramAnonymousString = (bab)paramAnonymousb.hQE.hQJ;
         paramAnonymousb = new q();
-        paramAnonymousb.oZp = paramAnonymousString.FEX;
-        paramAnonymousb.oZr = bt.HI();
-        paramAnonymousb.oZq = paramAnonymousString.GwK;
-        ad.i("MicroMsg.OpenVoice.OpenVoiceSessionMgr", "hy: getSession sessionKey: %s", new Object[] { paramAnonymousb });
-        r.this.oZs.put(paramString1, paramAnonymousb);
+        paramAnonymousb.pfT = paramAnonymousString.FXs;
+        paramAnonymousb.pfV = bu.HQ();
+        paramAnonymousb.pfU = paramAnonymousString.GQk;
+        ae.i("MicroMsg.OpenVoice.OpenVoiceSessionMgr", "hy: getSession sessionKey: %s", new Object[] { paramAnonymousb });
+        r.this.pfW.put(paramString1, paramAnonymousb);
         r.a(r.this, 0, 0, "", paramAnonymousb, true, parama);
         AppMethodBeat.o(90934);
       }
@@ -65,23 +65,10 @@ final class r
     AppMethodBeat.o(184491);
   }
   
-  public final void ZK(String paramString)
-  {
-    AppMethodBeat.i(90939);
-    ad.i("MicroMsg.OpenVoice.OpenVoiceSessionMgr", "hy: on exit");
-    if (bt.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(90939);
-      return;
-    }
-    this.oZs.remove(paramString);
-    AppMethodBeat.o(90939);
-  }
-  
   final void a(final int paramInt1, final int paramInt2, final String paramString, final q paramq, final boolean paramBoolean, final a parama)
   {
     AppMethodBeat.i(90937);
-    p.oXv.af(new Runnable()
+    p.pdY.ad(new Runnable()
     {
       public final void run()
       {
@@ -96,17 +83,30 @@ final class r
   public final void a(String paramString1, String paramString2, a parama)
   {
     AppMethodBeat.i(184490);
-    q localq = (q)this.oZs.get(paramString1);
+    q localq = (q)this.pfW.get(paramString1);
     if ((localq != null) && (localq.isValid()))
     {
-      ad.d("MicroMsg.OpenVoice.OpenVoiceSessionMgr", "hy: has valid sessionKey");
+      ae.d("MicroMsg.OpenVoice.OpenVoiceSessionMgr", "hy: has valid sessionKey");
       a(0, 0, "", localq, false, parama);
       AppMethodBeat.o(184490);
       return;
     }
-    this.oZs.remove(paramString1);
+    this.pfW.remove(paramString1);
     b(paramString1, paramString2, parama);
     AppMethodBeat.o(184490);
+  }
+  
+  public final void aaB(String paramString)
+  {
+    AppMethodBeat.i(90939);
+    ae.i("MicroMsg.OpenVoice.OpenVoiceSessionMgr", "hy: on exit");
+    if (bu.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(90939);
+      return;
+    }
+    this.pfW.remove(paramString);
+    AppMethodBeat.o(90939);
   }
   
   public static abstract interface a
@@ -116,7 +116,7 @@ final class r
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.cloudvoip.cloudvoice.d.r
  * JD-Core Version:    0.7.0.1
  */

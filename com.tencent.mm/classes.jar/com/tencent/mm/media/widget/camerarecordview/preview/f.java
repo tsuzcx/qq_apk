@@ -4,10 +4,10 @@ import d.g.a.a;
 import d.l;
 import d.z;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/media/widget/camerarecordview/preview/IRenderVIew;", "", "queueEvent", "", "r", "Lkotlin/Function0;", "requestRender", "plugin-mediaeditor_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/media/widget/camerarecordview/preview/IRenderVIew;", "", "queueEvent", "", "r", "Lkotlin/Function0;", "requestRender", "plugin-mediaeditor_release"})
 public abstract interface f
 {
-  public abstract void h(a<z> parama);
+  public abstract void i(a<z> parama);
   
   public abstract void requestRender();
 }

@@ -10,8 +10,8 @@ import com.tencent.mm.media.i.i;
 import com.tencent.mm.plugin.sight.base.SightVideoJNI;
 import com.tencent.mm.plugin.vlog.model.aa;
 import com.tencent.mm.plugin.vlog.model.y;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import d.a.j;
 import d.g.a.m;
 import d.g.a.r;
@@ -20,80 +20,80 @@ import d.z;
 import java.nio.ByteBuffer;
 import java.nio.IntBuffer;
 
-@d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/vlog/remux/VLogRemuxer;", "Lcom/tencent/mm/plugin/recordvideo/background/mixer/IVideoRemuxer;", "scriptModel", "Lcom/tencent/mm/plugin/vlog/model/VLogScriptModel;", "remuxModel", "Lcom/tencent/mm/plugin/vlog/model/VLogGenerateModel;", "(Lcom/tencent/mm/plugin/vlog/model/VLogScriptModel;Lcom/tencent/mm/plugin/vlog/model/VLogGenerateModel;)V", "audioCodec", "Lcom/tencent/mm/media/codec/MediaCodecAACCodec;", "audioMixHandlerThread", "Landroid/os/HandlerThread;", "beforeCropSize", "Landroid/graphics/Point;", "bufId", "", "cropRect", "Landroid/graphics/Rect;", "decoder", "Lcom/tencent/mm/plugin/vlog/remux/VLogDecoder;", "encodeConfig", "Lcom/tencent/mm/media/config/VideoCodecConfig;", "encoder", "Lcom/tencent/mm/media/encoder/IMediaCodecTransEncoder;", "finishCallback", "Lkotlin/Function4;", "", "Lkotlin/ParameterName;", "name", "mixVideo", "mixThumb", "", "ret", "errorCode", "", "frameCount", "heightScale", "", "mixMuxerController", "Lcom/tencent/mm/media/remuxer/MixMuxerController;", "musicExtractorWrapper", "Lcom/tencent/mm/media/extractor/MediaExtractorWrapper;", "musicPath", "mute", "remuxForThumb", "remuxMusicFinish", "remuxVideoFinish", "startTick", "", "thumbPath", "videoMixHandlerThread", "widthScale", "cancel", "getThumbBitmap", "width", "height", "onFinish", "release", "remuxFinish", "remuxMusic", "remuxVideo", "setCropInfo", "rect", "setMusicPath", "path", "setPreviewSurfaceSize", "start", "Companion", "plugin-vlog_release"})
+@d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/vlog/remux/VLogRemuxer;", "Lcom/tencent/mm/plugin/recordvideo/background/mixer/IVideoRemuxer;", "scriptModel", "Lcom/tencent/mm/plugin/vlog/model/VLogScriptModel;", "remuxModel", "Lcom/tencent/mm/plugin/vlog/model/VLogGenerateModel;", "(Lcom/tencent/mm/plugin/vlog/model/VLogScriptModel;Lcom/tencent/mm/plugin/vlog/model/VLogGenerateModel;)V", "audioCodec", "Lcom/tencent/mm/media/codec/MediaCodecAACCodec;", "audioMixHandlerThread", "Landroid/os/HandlerThread;", "beforeCropSize", "Landroid/graphics/Point;", "bufId", "", "cropRect", "Landroid/graphics/Rect;", "decoder", "Lcom/tencent/mm/plugin/vlog/remux/VLogDecoder;", "encodeConfig", "Lcom/tencent/mm/media/config/VideoCodecConfig;", "encoder", "Lcom/tencent/mm/media/encoder/IMediaCodecTransEncoder;", "finishCallback", "Lkotlin/Function4;", "", "Lkotlin/ParameterName;", "name", "mixVideo", "mixThumb", "", "ret", "errorCode", "", "frameCount", "heightScale", "", "mixMuxerController", "Lcom/tencent/mm/media/remuxer/MixMuxerController;", "musicExtractorWrapper", "Lcom/tencent/mm/media/extractor/MediaExtractorWrapper;", "musicPath", "mute", "remuxForThumb", "remuxMusicFinish", "remuxVideoFinish", "startTick", "", "thumbPath", "videoMixHandlerThread", "widthScale", "cancel", "getThumbBitmap", "width", "height", "onFinish", "release", "remuxFinish", "remuxMusic", "remuxVideo", "setCropInfo", "rect", "setMusicPath", "path", "setPreviewSurfaceSize", "start", "Companion", "plugin-vlog_release"})
 public final class d
   implements com.tencent.mm.plugin.recordvideo.background.c.c
 {
-  public static final a BJS;
-  private final aa BIE;
-  private b BJK;
-  private final com.tencent.mm.media.b.d BJL;
-  private volatile boolean BJM;
-  private volatile boolean BJN;
-  private r<? super String, ? super String, ? super Boolean, ? super Integer, z> BJO;
-  private boolean BJP;
-  private Point BJQ;
-  private y BJR;
+  public static final a Cbr;
+  private final aa Cad;
+  private b Cbj;
+  private final com.tencent.mm.media.b.d Cbk;
+  private volatile boolean Cbl;
+  private volatile boolean Cbm;
+  private r<? super String, ? super String, ? super Boolean, ? super Integer, z> Cbn;
+  private boolean Cbo;
+  private Point Cbp;
+  private y Cbq;
   private final int bufId;
   private int frameCount;
-  private long gkt;
-  private com.tencent.mm.media.e.b hlL;
-  private com.tencent.mm.media.a.a hlN;
-  private i hlP;
-  private com.tencent.mm.media.f.a hlQ;
-  private HandlerThread hlS;
-  private HandlerThread hlT;
-  private String hml;
-  private Rect hmm;
-  private boolean hvp;
-  private float lzb;
-  private float lzc;
+  private long gmN;
+  private com.tencent.mm.media.a.a hoB;
+  private i hoD;
+  private com.tencent.mm.media.f.a hoE;
+  private HandlerThread hoG;
+  private HandlerThread hoH;
+  private String hoZ;
+  private com.tencent.mm.media.e.b hoz;
+  private Rect hpa;
+  private boolean hyd;
+  private float lDA;
+  private float lDz;
   private String thumbPath;
   
   static
   {
     AppMethodBeat.i(111088);
-    BJS = new a((byte)0);
+    Cbr = new a((byte)0);
     AppMethodBeat.o(111088);
   }
   
   public d(aa paramaa, y paramy)
   {
     AppMethodBeat.i(111087);
-    this.BIE = paramaa;
-    this.BJR = paramy;
+    this.Cad = paramaa;
+    this.Cbq = paramy;
     this.bufId = SightVideoJNI.initDataBufferForRemux(false);
-    this.BJL = new com.tencent.mm.media.b.d();
-    this.lzb = 1.0F;
-    this.lzc = 1.0F;
-    paramaa = com.tencent.mm.plugin.recordvideo.e.b.xRl;
-    this.thumbPath = com.tencent.mm.plugin.recordvideo.e.b.avV(this.BJR.pSc);
-    this.BJL.bitrate = this.BJR.videoBitrate;
-    this.BJL.frameRate = this.BJR.frameRate;
-    this.BJL.targetHeight = this.BJR.targetHeight;
-    this.BJL.targetWidth = this.BJR.targetWidth;
-    this.hlP = new i(0L, ((com.tencent.mm.plugin.vlog.model.l)j.je(this.BIE.BGM)).endTime, this.BJR.videoBitrate, false);
-    ad.i("MicroMsg.VLogRemuxer", "encodeConfig: " + this.BJL + ' ');
-    ad.i("MicroMsg.VLogRemuxer", "remuxModel: " + this.BJR + ' ');
+    this.Cbk = new com.tencent.mm.media.b.d();
+    this.lDz = 1.0F;
+    this.lDA = 1.0F;
+    paramaa = com.tencent.mm.plugin.recordvideo.e.b.yhe;
+    this.thumbPath = com.tencent.mm.plugin.recordvideo.e.b.axk(this.Cbq.pYH);
+    this.Cbk.bitrate = this.Cbq.videoBitrate;
+    this.Cbk.frameRate = this.Cbq.frameRate;
+    this.Cbk.targetHeight = this.Cbq.targetHeight;
+    this.Cbk.targetWidth = this.Cbq.targetWidth;
+    this.hoD = new i(0L, ((com.tencent.mm.plugin.vlog.model.l)j.jn(this.Cad.BYl)).endTime, this.Cbq.videoBitrate, false);
+    ae.i("MicroMsg.VLogRemuxer", "encodeConfig: " + this.Cbk + ' ');
+    ae.i("MicroMsg.VLogRemuxer", "remuxModel: " + this.Cbq + ' ');
     AppMethodBeat.o(111087);
   }
   
   private final void cancel()
   {
     AppMethodBeat.i(111086);
-    Object localObject = this.BJK;
+    Object localObject = this.Cbj;
     if (localObject != null) {
       ((b)localObject).release();
     }
-    localObject = this.hlL;
+    localObject = this.hoz;
     if (localObject != null) {
-      ((com.tencent.mm.media.e.b)localObject).att();
+      ((com.tencent.mm.media.e.b)localObject).atI();
     }
-    localObject = this.hlT;
+    localObject = this.hoH;
     if (localObject != null) {
       ((HandlerThread)localObject).quitSafely();
     }
-    localObject = this.hlS;
+    localObject = this.hoG;
     if (localObject != null)
     {
       ((HandlerThread)localObject).quitSafely();
@@ -103,28 +103,28 @@ public final class d
     AppMethodBeat.o(111086);
   }
   
-  private final void esM()
+  private final void ewt()
   {
     boolean bool = false;
     AppMethodBeat.i(111084);
-    if ((this.BJM) && (this.BJN))
+    if ((this.Cbl) && (this.Cbm))
     {
-      int i = this.hlP.a(null, this.BJR.pSc, this.BJR.audioSampleRate, this.BJR.audioChannelCount, false);
+      int i = this.hoD.a(null, this.Cbq.pYH, this.Cbq.audioSampleRate, this.Cbq.audioChannelCount, false);
       if (i >= 0) {
         bool = true;
       }
-      ad.i("MicroMsg.VLogRemuxer", "mux finish, cost:" + bt.aO(this.gkt) + ",succ:" + bool + "  result:" + i + ", path:" + this.BJR + ".outputPath");
+      ae.i("MicroMsg.VLogRemuxer", "mux finish, cost:" + bu.aO(this.gmN) + ",succ:" + bool + "  result:" + i + ", path:" + this.Cbq + ".outputPath");
       release();
       if (bool)
       {
-        SightVideoJNI.optimizeMP4VFS(this.BJR.pSc);
-        localObject = com.tencent.mm.plugin.recordvideo.e.b.xRl;
-        com.tencent.mm.plugin.recordvideo.e.b.iP(this.BJR.pSc, this.thumbPath);
+        SightVideoJNI.optimizeMP4VFS(this.Cbq.pYH);
+        localObject = com.tencent.mm.plugin.recordvideo.e.b.yhe;
+        com.tencent.mm.plugin.recordvideo.e.b.iV(this.Cbq.pYH, this.thumbPath);
       }
-      Object localObject = this.BJO;
+      Object localObject = this.Cbn;
       if (localObject != null)
       {
-        ((r)localObject).a(this.BJR.pSc, this.thumbPath, Boolean.valueOf(bool), Integer.valueOf(-1));
+        ((r)localObject).a(this.Cbq.pYH, this.thumbPath, Boolean.valueOf(bool), Integer.valueOf(-1));
         AppMethodBeat.o(111084);
         return;
       }
@@ -132,88 +132,88 @@ public final class d
     AppMethodBeat.o(111084);
   }
   
-  public final void aDt(String paramString)
+  public final void aEM(String paramString)
   {
     AppMethodBeat.i(111080);
-    ad.i("MicroMsg.VLogRemuxer", "setMusicPath path");
-    this.hml = paramString;
+    ae.i("MicroMsg.VLogRemuxer", "setMusicPath path");
+    this.hoZ = paramString;
     AppMethodBeat.o(111080);
   }
   
   public final void c(r<? super String, ? super String, ? super Boolean, ? super Integer, z> paramr)
   {
     AppMethodBeat.i(111081);
-    ad.i("MicroMsg.VLogRemuxer", "start");
-    this.BJO = paramr;
-    this.gkt = bt.HI();
-    paramr = this.hlT;
+    ae.i("MicroMsg.VLogRemuxer", "start");
+    this.Cbn = paramr;
+    this.gmN = bu.HQ();
+    paramr = this.hoH;
     if (paramr != null) {
       paramr.quit();
     }
-    this.hlT = com.tencent.mm.ad.c.a("VLogRemuxer_remuxVideo", false, (d.g.a.a)new i(this));
-    paramr = this.hlS;
+    this.hoH = com.tencent.mm.ac.c.a("VLogRemuxer_remuxVideo", false, (d.g.a.a)new i(this));
+    paramr = this.hoG;
     if (paramr != null) {
       paramr.quit();
     }
-    this.hlS = com.tencent.mm.ad.c.a("VLogRemuxer_remuxMusic", false, (d.g.a.a)new j(this));
+    this.hoG = com.tencent.mm.ac.c.a("VLogRemuxer_remuxMusic", false, (d.g.a.a)new j(this));
     AppMethodBeat.o(111081);
   }
   
-  public final void iq(int paramInt1, int paramInt2)
+  public final void iu(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(111083);
     Point localPoint;
     float f;
-    if (this.BJQ != null)
+    if (this.Cbp != null)
     {
-      localPoint = this.BJQ;
+      localPoint = this.Cbp;
       if (localPoint == null) {
-        p.gfZ();
+        p.gkB();
       }
       if (localPoint.x > 0)
       {
-        localPoint = this.BJQ;
+        localPoint = this.Cbp;
         if (localPoint == null) {
-          p.gfZ();
+          p.gkB();
         }
         if (localPoint.y > 0)
         {
           f = paramInt1;
-          localPoint = this.BJQ;
+          localPoint = this.Cbp;
           if (localPoint == null) {
-            p.gfZ();
+            p.gkB();
           }
-          this.lzb = (f / localPoint.x);
+          this.lDz = (f / localPoint.x);
           f = paramInt2;
-          localPoint = this.BJQ;
+          localPoint = this.Cbp;
           if (localPoint == null) {
-            p.gfZ();
+            p.gkB();
           }
         }
       }
     }
-    for (this.lzc = (f / localPoint.y);; this.lzc = (paramInt2 / this.BJR.targetHeight))
+    for (this.lDA = (f / localPoint.y);; this.lDA = (paramInt2 / this.Cbq.targetHeight))
     {
-      ad.i("MicroMsg.VLogRemuxer", "setPreviewSurfaceSize: [" + paramInt1 + ", " + paramInt2 + "], scale:[" + this.lzb + ", " + this.lzc + ']');
+      ae.i("MicroMsg.VLogRemuxer", "setPreviewSurfaceSize: [" + paramInt1 + ", " + paramInt2 + "], scale:[" + this.lDz + ", " + this.lDA + ']');
       AppMethodBeat.o(111083);
       return;
-      this.lzb = (paramInt1 / this.BJR.targetWidth);
+      this.lDz = (paramInt1 / this.Cbq.targetWidth);
     }
   }
   
   public final void release()
   {
     AppMethodBeat.i(111085);
-    ad.i("MicroMsg.VLogRemuxer", "release");
+    ae.i("MicroMsg.VLogRemuxer", "release");
     cancel();
-    this.hlP.release();
+    this.hoD.release();
     AppMethodBeat.o(111085);
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/vlog/remux/VLogRemuxer$Companion;", "", "()V", "TAG", "", "plugin-vlog_release"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/vlog/remux/VLogRemuxer$Companion;", "", "()V", "TAG", "", "plugin-vlog_release"})
   public static final class a {}
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
   static final class b
     extends d.g.b.q
     implements d.g.a.a<z>
@@ -224,7 +224,7 @@ public final class d
     }
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "buffer", "Ljava/nio/ByteBuffer;", "bufferInfo", "Landroid/media/MediaCodec$BufferInfo;", "format", "Landroid/media/MediaFormat;", "invoke"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "buffer", "Ljava/nio/ByteBuffer;", "bufferInfo", "Landroid/media/MediaCodec$BufferInfo;", "format", "Landroid/media/MediaFormat;", "invoke"})
   static final class c
     extends d.g.b.q
     implements d.g.a.q<ByteBuffer, MediaCodec.BufferInfo, MediaFormat, z>
@@ -235,7 +235,7 @@ public final class d
     }
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
   static final class d
     extends d.g.b.q
     implements d.g.a.a<z>
@@ -246,7 +246,7 @@ public final class d
     }
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "pts", "", "frameCount", "", "invoke", "com/tencent/mm/plugin/vlog/remux/VLogRemuxer$remuxVideo$1$1"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "pts", "", "frameCount", "", "invoke", "com/tencent/mm/plugin/vlog/remux/VLogRemuxer$remuxVideo$1$1"})
   static final class e
     extends d.g.b.q
     implements m<Long, Integer, z>
@@ -257,7 +257,7 @@ public final class d
     }
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "buffer", "Ljava/nio/IntBuffer;", "frameCount", "", "invoke", "com/tencent/mm/plugin/vlog/remux/VLogRemuxer$remuxVideo$1$3"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "buffer", "Ljava/nio/IntBuffer;", "frameCount", "", "invoke", "com/tencent/mm/plugin/vlog/remux/VLogRemuxer$remuxVideo$1$3"})
   static final class f
     extends d.g.b.q
     implements m<IntBuffer, Integer, z>
@@ -268,7 +268,7 @@ public final class d
     }
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "", "invoke"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "", "invoke"})
   static final class g
     extends d.g.b.q
     implements d.g.a.b<Long, z>
@@ -279,7 +279,7 @@ public final class d
     }
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<no name provided>", "", "iMediaCodecTransEncoder", "Lcom/tencent/mm/media/encoder/IMediaCodecTransEncoder;", "invoke"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<no name provided>", "", "iMediaCodecTransEncoder", "Lcom/tencent/mm/media/encoder/IMediaCodecTransEncoder;", "invoke"})
   static final class h
     extends d.g.b.q
     implements d.g.a.b<com.tencent.mm.media.e.b, z>
@@ -290,7 +290,7 @@ public final class d
     }
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
   static final class i
     extends d.g.b.q
     implements d.g.a.a<z>
@@ -301,7 +301,7 @@ public final class d
     }
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
   static final class j
     extends d.g.b.q
     implements d.g.a.a<z>

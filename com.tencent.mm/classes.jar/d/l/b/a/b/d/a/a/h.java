@@ -13,12 +13,12 @@ import java.util.Map;
 public final class h
   extends b
 {
-  private final d.l.b.a.b.l.f Ndw;
+  private final d.l.b.a.b.l.f NAB;
   
   static
   {
     AppMethodBeat.i(57680);
-    cwV = new k[] { (k)z.a(new x(z.bp(h.class), "allValueArguments", "getAllValueArguments()Ljava/util/Map;")) };
+    cxA = new k[] { (k)z.a(new x(z.bp(h.class), "allValueArguments", "getAllValueArguments()Ljava/util/Map;")) };
     AppMethodBeat.o(57680);
   }
   
@@ -26,14 +26,14 @@ public final class h
   {
     super(paramh, parama, localb);
     AppMethodBeat.i(57682);
-    this.Ndw = paramh.NeI.MQa.S((d.g.a.a)new a(this));
+    this.NAB = paramh.NBN.Nnf.S((d.g.a.a)new a(this));
     AppMethodBeat.o(57682);
   }
   
-  public final Map<d.l.b.a.b.f.f, g<?>> gjK()
+  public final Map<d.l.b.a.b.f.f, g<?>> gom()
   {
     AppMethodBeat.i(57681);
-    Map localMap = (Map)i.a(this.Ndw, cwV[0]);
+    Map localMap = (Map)i.a(this.NAB, cxA[0]);
     AppMethodBeat.o(57681);
     return localMap;
   }
@@ -50,7 +50,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.d.a.a.h
  * JD-Core Version:    0.7.0.1
  */

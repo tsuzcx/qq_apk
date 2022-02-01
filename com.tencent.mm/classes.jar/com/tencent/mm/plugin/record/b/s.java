@@ -4,28 +4,27 @@ import android.os.Looper;
 import android.os.SystemClock;
 import android.util.SparseArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.k.b;
-import com.tencent.mm.al.n;
-import com.tencent.mm.aw.e.a;
-import com.tencent.mm.g.a.gw;
-import com.tencent.mm.g.a.gw.b;
+import com.tencent.mm.ah.k.b;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.av.e.a;
+import com.tencent.mm.g.a.gx;
+import com.tencent.mm.g.a.gx.b;
 import com.tencent.mm.g.c.ei;
 import com.tencent.mm.i.g.a;
-import com.tencent.mm.model.cf;
-import com.tencent.mm.modelvideo.o;
+import com.tencent.mm.model.ch;
 import com.tencent.mm.modelvideo.t;
 import com.tencent.mm.modelvideo.t.a;
 import com.tencent.mm.modelvideo.t.a.a;
 import com.tencent.mm.modelvideo.u;
 import com.tencent.mm.plugin.expt.b.b.a;
 import com.tencent.mm.plugin.record.a.j;
-import com.tencent.mm.protocal.protobuf.ajn;
-import com.tencent.mm.protocal.protobuf.akd;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.sdk.platformtools.bw;
-import com.tencent.mm.storage.bu;
+import com.tencent.mm.protocal.protobuf.ajx;
+import com.tencent.mm.protocal.protobuf.akn;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.bx;
+import com.tencent.mm.storage.bv;
 import java.io.ByteArrayOutputStream;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -36,60 +35,60 @@ import java.util.Map.Entry;
 import java.util.Set;
 
 public final class s
-  implements com.tencent.mm.al.f, com.tencent.mm.plugin.record.a.d, com.tencent.mm.plugin.record.a.i
+  implements com.tencent.mm.ak.f, com.tencent.mm.plugin.record.a.d, com.tencent.mm.plugin.record.a.i
 {
-  boolean xqM;
-  SparseArray<e> xqP;
-  LinkedList<com.tencent.mm.plugin.record.a.k> xqQ;
-  private int xrl;
+  boolean xGJ;
+  SparseArray<e> xGM;
+  LinkedList<com.tencent.mm.plugin.record.a.k> xGN;
+  private int xHi;
   
   public s()
   {
     AppMethodBeat.i(9572);
-    this.xqM = false;
-    this.xqP = new SparseArray();
-    this.xqQ = new LinkedList();
-    this.xrl = 7;
-    com.tencent.mm.kernel.g.ajB().gAO.a(632, this);
+    this.xGJ = false;
+    this.xGM = new SparseArray();
+    this.xGN = new LinkedList();
+    this.xHi = 7;
+    com.tencent.mm.kernel.g.ajQ().gDv.a(632, this);
     ((com.tencent.mm.plugin.record.a.a)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.record.a.a.class)).getRecordMsgCDNStorage().a(this);
     try
     {
-      this.xrl = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qvY, 7);
+      this.xHi = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qCX, 7);
       AppMethodBeat.o(9572);
       return;
     }
     catch (Exception localException)
     {
-      ad.printErrStackTrace("MicroMsg.RecordMsgSendService", localException, "RecordMsgSendService init error.", new Object[0]);
+      ae.printErrStackTrace("MicroMsg.RecordMsgSendService", localException, "RecordMsgSendService init error.", new Object[0]);
       AppMethodBeat.o(9572);
     }
   }
   
-  private boolean a(j paramj, ajn paramajn, int paramInt)
+  private boolean a(j paramj, ajx paramajx, int paramInt)
   {
     AppMethodBeat.i(9581);
-    com.tencent.mm.protocal.b.a.c localc = p.avr(paramajn.Gib);
+    com.tencent.mm.protocal.b.a.c localc = p.awG(paramajx.GAK);
     if (localc == null)
     {
-      ad.i("MicroMsg.RecordMsgSendService", "replaceThumbCdnInfomEbeddedRecord() msgData == null");
+      ae.i("MicroMsg.RecordMsgSendService", "replaceThumbCdnInfomEbeddedRecord() msgData == null");
       AppMethodBeat.o(9581);
       return false;
     }
-    boolean bool = a(paramj, localc.hDb, paramInt + 1);
-    ad.d("MicroMsg.RecordMsgSendService", "replaceThumbCdnInfomEbeddedRecord() ifReplace:%s", new Object[] { Boolean.valueOf(bool) });
+    boolean bool = a(paramj, localc.hFT, paramInt + 1);
+    ae.d("MicroMsg.RecordMsgSendService", "replaceThumbCdnInfomEbeddedRecord() ifReplace:%s", new Object[] { Boolean.valueOf(bool) });
     if (bool) {
-      paramajn.aOF(p.a(localc, paramajn.Gib));
+      paramajx.aQc(p.a(localc, paramajx.GAK));
     }
     AppMethodBeat.o(9581);
     return bool;
   }
   
-  private boolean a(j paramj, List<ajn> paramList, int paramInt)
+  private boolean a(j paramj, List<ajx> paramList, int paramInt)
   {
     AppMethodBeat.i(9580);
     paramList = paramList.iterator();
     boolean bool1 = false;
-    ajn localajn;
+    ajx localajx;
     do
     {
       for (;;)
@@ -98,20 +97,20 @@ public final class s
         if (!paramList.hasNext()) {
           break label229;
         }
-        localajn = (ajn)paramList.next();
-        int i = localajn.dataType;
-        ad.d("MicroMsg.RecordMsgSendService", "replaceThumbCdnInfo() dataItem.getDataId:%s msgType:%s", new Object[] { localajn.dsU, Integer.valueOf(i) });
+        localajx = (ajx)paramList.next();
+        int i = localajx.dataType;
+        ae.d("MicroMsg.RecordMsgSendService", "replaceThumbCdnInfo() dataItem.getDataId:%s msgType:%s", new Object[] { localajx.dua, Integer.valueOf(i) });
         if (i != 17) {
           break;
         }
-        bool1 = a(paramj, localajn, paramInt);
+        bool1 = a(paramj, localajx, paramInt);
       }
-    } while (!paramj.field_dataId.equals(p.eJ(p.agd(localajn.dsU), paramInt)));
-    ad.d("MicroMsg.RecordMsgSendService", "match thumb, old key[%s] new key[%s], old url[%s] new url[%s], old size[%d] new size[%d]", new Object[] { localajn.GgN, paramj.field_cdnKey, localajn.hAe, paramj.field_cdnUrl, Long.valueOf(localajn.Ghx), Integer.valueOf(paramj.field_totalLen) });
-    localajn.aOi(paramj.field_cdnKey);
-    localajn.aOh(paramj.field_cdnUrl);
-    if (!bt.jx(paramInt, 1)) {
-      localajn.aOs(p.di(localajn.toString(), localajn.dataType));
+    } while (!paramj.field_dataId.equals(p.eR(p.aha(localajx.dua), paramInt)));
+    ae.d("MicroMsg.RecordMsgSendService", "match thumb, old key[%s] new key[%s], old url[%s] new url[%s], old size[%d] new size[%d]", new Object[] { localajx.Gzw, paramj.field_cdnKey, localajx.hCS, paramj.field_cdnUrl, Long.valueOf(localajx.GAg), Integer.valueOf(paramj.field_totalLen) });
+    localajx.aPF(paramj.field_cdnKey);
+    localajx.aPE(paramj.field_cdnUrl);
+    if (!bu.jB(paramInt, 1)) {
+      localajx.aPP(p.dm(localajx.toString(), localajx.dataType));
     }
     boolean bool2 = true;
     label229:
@@ -119,31 +118,31 @@ public final class s
     return bool2;
   }
   
-  private boolean b(j paramj, ajn paramajn, int paramInt)
+  private boolean b(j paramj, ajx paramajx, int paramInt)
   {
     AppMethodBeat.i(9583);
-    com.tencent.mm.protocal.b.a.c localc = p.avr(paramajn.Gib);
+    com.tencent.mm.protocal.b.a.c localc = p.awG(paramajx.GAK);
     if (localc == null)
     {
-      ad.i("MicroMsg.RecordMsgSendService", "replaceOtherCdnInfoEmbeddedRecord() msgData == null");
+      ae.i("MicroMsg.RecordMsgSendService", "replaceOtherCdnInfoEmbeddedRecord() msgData == null");
       AppMethodBeat.o(9583);
       return false;
     }
-    boolean bool = b(paramj, localc.hDb, paramInt + 1);
-    ad.d("MicroMsg.RecordMsgSendService", "replaceOtherCdnInfoEmbeddedRecord() ifReplace:%s", new Object[] { Boolean.valueOf(bool) });
+    boolean bool = b(paramj, localc.hFT, paramInt + 1);
+    ae.d("MicroMsg.RecordMsgSendService", "replaceOtherCdnInfoEmbeddedRecord() ifReplace:%s", new Object[] { Boolean.valueOf(bool) });
     if (bool) {
-      paramajn.aOF(p.a(localc, paramajn.Gib));
+      paramajx.aQc(p.a(localc, paramajx.GAK));
     }
     AppMethodBeat.o(9583);
     return bool;
   }
   
-  private boolean b(j paramj, List<ajn> paramList, int paramInt)
+  private boolean b(j paramj, List<ajx> paramList, int paramInt)
   {
     AppMethodBeat.i(9582);
     paramList = paramList.iterator();
     boolean bool1 = false;
-    ajn localajn;
+    ajx localajx;
     do
     {
       for (;;)
@@ -152,20 +151,20 @@ public final class s
         if (!paramList.hasNext()) {
           break label228;
         }
-        localajn = (ajn)paramList.next();
-        int i = localajn.dataType;
-        ad.d("MicroMsg.RecordMsgSendService", "replaceOtherCdnInfo() dataItem.getDataId:%s msgType:%s", new Object[] { localajn.dsU, Integer.valueOf(i) });
+        localajx = (ajx)paramList.next();
+        int i = localajx.dataType;
+        ae.d("MicroMsg.RecordMsgSendService", "replaceOtherCdnInfo() dataItem.getDataId:%s msgType:%s", new Object[] { localajx.dua, Integer.valueOf(i) });
         if (i != 17) {
           break;
         }
-        bool1 = b(paramj, localajn, paramInt);
+        bool1 = b(paramj, localajx, paramInt);
       }
-    } while (!paramj.field_dataId.equals(p.eJ(localajn.dsU, paramInt)));
-    ad.d("MicroMsg.RecordMsgSendService", "match data, old key[%s] new key[%s], old url[%s] new url[%s], old size[%d] new size[%d]", new Object[] { localajn.GgT, paramj.field_cdnKey, localajn.GgR, paramj.field_cdnUrl, Long.valueOf(localajn.Ghm), Integer.valueOf(paramj.field_totalLen) });
-    localajn.aOk(paramj.field_cdnKey);
-    localajn.aOj(paramj.field_cdnUrl);
-    if (!bt.jx(paramInt, 1)) {
-      localajn.aOs(p.di(localajn.toString(), localajn.dataType));
+    } while (!paramj.field_dataId.equals(p.eR(localajx.dua, paramInt)));
+    ae.d("MicroMsg.RecordMsgSendService", "match data, old key[%s] new key[%s], old url[%s] new url[%s], old size[%d] new size[%d]", new Object[] { localajx.GzC, paramj.field_cdnKey, localajx.GzA, paramj.field_cdnUrl, Long.valueOf(localajx.GzV), Integer.valueOf(paramj.field_totalLen) });
+    localajx.aPH(paramj.field_cdnKey);
+    localajx.aPG(paramj.field_cdnUrl);
+    if (!bu.jB(paramInt, 1)) {
+      localajx.aPP(p.dm(localajx.toString(), localajx.dataType));
     }
     boolean bool2 = true;
     label228:
@@ -178,56 +177,56 @@ public final class s
     AppMethodBeat.i(9579);
     if (1 != paramInt)
     {
-      ad.w("MicroMsg.RecordMsgSendService", "on cdn storage changed, but not care type %d", new Object[] { Integer.valueOf(paramInt) });
+      ae.w("MicroMsg.RecordMsgSendService", "on cdn storage changed, but not care type %d", new Object[] { Integer.valueOf(paramInt) });
       AppMethodBeat.o(9579);
       return;
     }
     if (paramj == null)
     {
-      ad.w("MicroMsg.RecordMsgSendService", "on cdn storage changed, but cdninfo is null");
+      ae.w("MicroMsg.RecordMsgSendService", "on cdn storage changed, but cdninfo is null");
       AppMethodBeat.o(9579);
       return;
     }
     if (2 != paramj.field_type)
     {
-      ad.w("MicroMsg.RecordMsgSendService", "on cdn storage changed, but cdninfo type is not upload , mediaid:%s, recordLocalId:%d, status:%d", new Object[] { paramj.field_mediaId, Integer.valueOf(paramj.field_recordLocalId), Integer.valueOf(paramj.field_status) });
+      ae.w("MicroMsg.RecordMsgSendService", "on cdn storage changed, but cdninfo type is not upload , mediaid:%s, recordLocalId:%d, status:%d", new Object[] { paramj.field_mediaId, Integer.valueOf(paramj.field_recordLocalId), Integer.valueOf(paramj.field_status) });
       AppMethodBeat.o(9579);
       return;
     }
     if ((paramj.field_status == 0) || (1 == paramj.field_status) || (-1 == paramj.field_status))
     {
-      ad.w("MicroMsg.RecordMsgSendService", "on cdn storage changed, but not care status");
+      ae.w("MicroMsg.RecordMsgSendService", "on cdn storage changed, but not care status");
       AppMethodBeat.o(9579);
       return;
     }
-    Object localObject1 = ((com.tencent.mm.plugin.record.a.a)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.record.a.a.class)).getRecordMsgCDNStorage().Ny(paramj.field_recordLocalId);
+    Object localObject1 = ((com.tencent.mm.plugin.record.a.a)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.record.a.a.class)).getRecordMsgCDNStorage().Oe(paramj.field_recordLocalId);
     Object localObject2 = ((List)localObject1).iterator();
     Object localObject3;
     while (((Iterator)localObject2).hasNext())
     {
       localObject3 = (j)((Iterator)localObject2).next();
       if ((((j)localObject3).field_status == 0) || (1 == ((j)localObject3).field_status) || (-1 == ((j)localObject3).field_status)) {
-        ad.w("MicroMsg.RecordMsgSendService", "on cdn storage changed, but %s not finish", new Object[] { ((j)localObject3).field_mediaId });
+        ae.w("MicroMsg.RecordMsgSendService", "on cdn storage changed, but %s not finish", new Object[] { ((j)localObject3).field_mediaId });
       }
     }
     for (paramInt = 0;; paramInt = 1)
     {
-      ad.i("MicroMsg.RecordMsgSendService", "on cdn storage changed cdnInfoList.size:%d,", new Object[] { Integer.valueOf(((List)localObject1).size()) });
+      ae.i("MicroMsg.RecordMsgSendService", "on cdn storage changed cdnInfoList.size:%d,", new Object[] { Integer.valueOf(((List)localObject1).size()) });
       if (paramInt == 0)
       {
         AppMethodBeat.o(9579);
         return;
       }
-      localObject2 = ((com.tencent.mm.plugin.record.a.a)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.record.a.a.class)).getRecordMsgStorage().NA(paramj.field_recordLocalId);
+      localObject2 = ((com.tencent.mm.plugin.record.a.a)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.record.a.a.class)).getRecordMsgStorage().Og(paramj.field_recordLocalId);
       paramInt = paramj.field_recordLocalId;
       boolean bool;
       if (localObject2 != null)
       {
         bool = true;
-        ad.i("MicroMsg.RecordMsgSendService", "finish get record info, id %d result %B", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(bool) });
+        ae.i("MicroMsg.RecordMsgSendService", "finish get record info, id %d result %B", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(bool) });
         if (localObject2 != null)
         {
-          paramj = ((com.tencent.mm.plugin.record.a.k)localObject2).field_dataProto.nZa;
+          paramj = ((com.tencent.mm.plugin.record.a.k)localObject2).field_dataProto.oeJ;
           localObject3 = ((List)localObject1).iterator();
         }
       }
@@ -239,7 +238,7 @@ public final class s
             break label462;
           }
           j localj = (j)((Iterator)localObject3).next();
-          ad.v("MicroMsg.RecordMsgSendService", "check dataid[%s] isThumb[%B]", new Object[] { localj.field_dataId, Boolean.valueOf(localj.field_isThumb) });
+          ae.v("MicroMsg.RecordMsgSendService", "check dataid[%s] isThumb[%B]", new Object[] { localj.field_dataId, Boolean.valueOf(localj.field_isThumb) });
           if (localj.field_isThumb)
           {
             a(localj, paramj, 1);
@@ -258,7 +257,7 @@ public final class s
         localObject1 = (j)paramj.next();
         ((com.tencent.mm.plugin.record.a.a)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.record.a.a.class)).getRecordMsgCDNStorage().a((j)localObject1, new String[] { "localId" });
       }
-      this.xqM = false;
+      this.xGJ = false;
       a(null, false);
       AppMethodBeat.o(9579);
       return;
@@ -267,106 +266,106 @@ public final class s
   
   public final void a(com.tencent.mm.plugin.record.a.k paramk)
   {
-    AppMethodBeat.i(221619);
+    AppMethodBeat.i(224264);
     a(paramk, false);
-    AppMethodBeat.o(221619);
+    AppMethodBeat.o(224264);
   }
   
   public final void a(final com.tencent.mm.plugin.record.a.k paramk, final boolean paramBoolean)
   {
     AppMethodBeat.i(9574);
-    com.tencent.mm.kernel.g.ajD();
-    com.tencent.mm.kernel.g.ajF().ay(new Runnable()
+    com.tencent.mm.kernel.g.ajS();
+    com.tencent.mm.kernel.g.ajU().aw(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(9551);
         if (paramk != null)
         {
-          if ((s.e)s.this.xqP.get(paramk.field_localId) == null)
+          if ((s.e)s.this.xGM.get(paramk.field_localId) == null)
           {
-            ad.d("MicroMsg.RecordMsgSendService", "summerrecord do add job, localid %d, msgid %d", new Object[] { Integer.valueOf(paramk.field_localId), Long.valueOf(paramk.field_msgId) });
+            ae.d("MicroMsg.RecordMsgSendService", "summerrecord do add job, localid %d, msgid %d", new Object[] { Integer.valueOf(paramk.field_localId), Long.valueOf(paramk.field_msgId) });
             localObject1 = new s.e((byte)0);
-            s.this.xqP.put(paramk.field_localId, localObject1);
+            s.this.xGM.put(paramk.field_localId, localObject1);
           }
           s.this.b(paramk);
         }
         s locals = s.this;
         boolean bool = paramBoolean;
-        if (locals.xqM)
+        if (locals.xGJ)
         {
-          ad.i("MicroMsg.RecordMsgSendService", "summerrecord is working, return");
+          ae.i("MicroMsg.RecordMsgSendService", "summerrecord is working, return");
           AppMethodBeat.o(9551);
           return;
         }
-        if (locals.xqQ.isEmpty())
+        if (locals.xGN.isEmpty())
         {
-          ad.w("MicroMsg.RecordMsgSendService", "summerrecord jobs list size is 0");
-          localObject1 = ((com.tencent.mm.plugin.record.a.a)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.record.a.a.class)).getRecordMsgStorage().dEh().iterator();
+          ae.w("MicroMsg.RecordMsgSendService", "summerrecord jobs list size is 0");
+          localObject1 = ((com.tencent.mm.plugin.record.a.a)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.record.a.a.class)).getRecordMsgStorage().dHy().iterator();
           while (((Iterator)localObject1).hasNext())
           {
             localObject2 = (com.tencent.mm.plugin.record.a.k)((Iterator)localObject1).next();
-            if (((com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).dlK().xY(((com.tencent.mm.plugin.record.a.k)localObject2).field_msgId).getType() != 49)
+            if (((com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).doJ().ys(((com.tencent.mm.plugin.record.a.k)localObject2).field_msgId).getType() != 49)
             {
-              ad.w("MicroMsg.RecordMsgSendService", "summerrecord record msg not exist, delete record info, localid[%d], msgid[%d]", new Object[] { Integer.valueOf(((com.tencent.mm.plugin.record.a.k)localObject2).field_localId), Long.valueOf(((com.tencent.mm.plugin.record.a.k)localObject2).field_msgId) });
-              ((com.tencent.mm.plugin.record.a.a)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.record.a.a.class)).getRecordMsgStorage().Nz(((com.tencent.mm.plugin.record.a.k)localObject2).field_localId);
+              ae.w("MicroMsg.RecordMsgSendService", "summerrecord record msg not exist, delete record info, localid[%d], msgid[%d]", new Object[] { Integer.valueOf(((com.tencent.mm.plugin.record.a.k)localObject2).field_localId), Long.valueOf(((com.tencent.mm.plugin.record.a.k)localObject2).field_msgId) });
+              ((com.tencent.mm.plugin.record.a.a)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.record.a.a.class)).getRecordMsgStorage().Of(((com.tencent.mm.plugin.record.a.k)localObject2).field_localId);
             }
             else
             {
-              localObject3 = (s.e)locals.xqP.get(((com.tencent.mm.plugin.record.a.k)localObject2).field_localId);
+              localObject3 = (s.e)locals.xGM.get(((com.tencent.mm.plugin.record.a.k)localObject2).field_localId);
               if (localObject3 != null)
               {
-                if ((((s.e)localObject3).iNG < 0) && (SystemClock.elapsedRealtime() - ((s.e)localObject3).xqT < 300000L)) {
+                if ((((s.e)localObject3).iQA < 0) && (SystemClock.elapsedRealtime() - ((s.e)localObject3).xGQ < 300000L)) {
                   continue;
                 }
-                if (((s.e)localObject3).iNG < 0) {
-                  ((s.e)localObject3).iNG = 3;
+                if (((s.e)localObject3).iQA < 0) {
+                  ((s.e)localObject3).iQA = 3;
                 }
               }
               for (;;)
               {
-                ad.d("MicroMsg.RecordMsgSendService", "summerrecord do add job from db, localid %d, msgid %d", new Object[] { Integer.valueOf(((com.tencent.mm.plugin.record.a.k)localObject2).field_localId), Long.valueOf(((com.tencent.mm.plugin.record.a.k)localObject2).field_msgId) });
+                ae.d("MicroMsg.RecordMsgSendService", "summerrecord do add job from db, localid %d, msgid %d", new Object[] { Integer.valueOf(((com.tencent.mm.plugin.record.a.k)localObject2).field_localId), Long.valueOf(((com.tencent.mm.plugin.record.a.k)localObject2).field_msgId) });
                 locals.b((com.tencent.mm.plugin.record.a.k)localObject2);
                 break;
                 localObject3 = new s.e((byte)0);
-                locals.xqP.put(((com.tencent.mm.plugin.record.a.k)localObject2).field_localId, localObject3);
+                locals.xGM.put(((com.tencent.mm.plugin.record.a.k)localObject2).field_localId, localObject3);
               }
             }
           }
         }
-        if (locals.xqQ.isEmpty())
+        if (locals.xGN.isEmpty())
         {
-          ad.w("MicroMsg.RecordMsgSendService", "try to do job, but job list size is empty, return");
+          ae.w("MicroMsg.RecordMsgSendService", "try to do job, but job list size is empty, return");
           locals.finish();
           AppMethodBeat.o(9551);
           return;
         }
-        Object localObject3 = (com.tencent.mm.plugin.record.a.k)locals.xqQ.removeFirst();
-        Object localObject2 = (s.e)locals.xqP.get(((com.tencent.mm.plugin.record.a.k)localObject3).field_localId);
+        Object localObject3 = (com.tencent.mm.plugin.record.a.k)locals.xGN.removeFirst();
+        Object localObject2 = (s.e)locals.xGM.get(((com.tencent.mm.plugin.record.a.k)localObject3).field_localId);
         Object localObject1 = localObject2;
         if (localObject2 == null)
         {
           localObject1 = new s.e((byte)0);
-          locals.xqP.put(((com.tencent.mm.plugin.record.a.k)localObject3).field_localId, localObject1);
+          locals.xGM.put(((com.tencent.mm.plugin.record.a.k)localObject3).field_localId, localObject1);
         }
-        ((s.e)localObject1).iNG -= 1;
+        ((s.e)localObject1).iQA -= 1;
         int i;
-        if (((s.e)localObject1).iNG < 0) {
-          if (300000L > SystemClock.elapsedRealtime() - ((s.e)localObject1).xqT) {
+        if (((s.e)localObject1).iQA < 0) {
+          if (300000L > SystemClock.elapsedRealtime() - ((s.e)localObject1).xGQ) {
             i = 0;
           }
         }
         while (i != 0)
         {
-          locals.xqM = true;
+          locals.xGJ = true;
           switch (((com.tencent.mm.plugin.record.a.k)localObject3).field_type)
           {
           default: 
-            locals.xqM = false;
+            locals.xGJ = false;
             AppMethodBeat.o(9551);
             return;
-            ((s.e)localObject1).iNG = 2;
-            ((s.e)localObject1).xqT = SystemClock.elapsedRealtime();
+            ((s.e)localObject1).iQA = 2;
+            ((s.e)localObject1).xGQ = SystemClock.elapsedRealtime();
             i = 1;
             break;
           case 1: 
@@ -405,8 +404,8 @@ public final class s
   final void b(com.tencent.mm.plugin.record.a.k paramk)
   {
     AppMethodBeat.i(9575);
-    if (!this.xqQ.contains(paramk)) {
-      this.xqQ.add(paramk);
+    if (!this.xGN.contains(paramk)) {
+      this.xGN.add(paramk);
     }
     AppMethodBeat.o(9575);
   }
@@ -414,32 +413,32 @@ public final class s
   final void b(com.tencent.mm.plugin.record.a.k paramk, boolean paramBoolean)
   {
     AppMethodBeat.i(9584);
-    bu localbu = ((com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).dlK().xY(paramk.field_msgId);
-    ad.i("MicroMsg.RecordMsgSendService", "[record] update msg content, msg null ? %B, msgId %d recordInfoId %d, recordInfo.localId:%d, afterCdnUpload %s, toUser:%s", new Object[] { Boolean.FALSE, Long.valueOf(localbu.field_msgId), Long.valueOf(paramk.field_msgId), Integer.valueOf(paramk.field_localId), Boolean.valueOf(paramBoolean), paramk.field_toUser });
-    if (localbu.field_msgId == paramk.field_msgId)
+    bv localbv = ((com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).doJ().ys(paramk.field_msgId);
+    ae.i("MicroMsg.RecordMsgSendService", "[record] update msg content, msg null ? %B, msgId %d recordInfoId %d, recordInfo.localId:%d, afterCdnUpload %s, toUser:%s", new Object[] { Boolean.FALSE, Long.valueOf(localbv.field_msgId), Long.valueOf(paramk.field_msgId), Integer.valueOf(paramk.field_localId), Boolean.valueOf(paramBoolean), paramk.field_toUser });
+    if (localbv.field_msgId == paramk.field_msgId)
     {
-      localbu.setContent(p.a(paramk.field_title, paramk.field_desc, paramk.field_dataProto, paramk.field_favFrom, paramk.field_msgId));
-      localbu.setStatus(1);
-      ((com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).dlK().a(paramk.field_msgId, localbu);
+      localbv.setContent(p.a(paramk.field_title, paramk.field_desc, paramk.field_dataProto, paramk.field_favFrom, paramk.field_msgId));
+      localbv.setStatus(1);
+      ((com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).doJ().a(paramk.field_msgId, localbv);
     }
-    com.tencent.mm.ai.k localk = com.tencent.mm.plugin.s.a.dxR().xH(paramk.field_msgId);
+    com.tencent.mm.ah.k localk = com.tencent.mm.plugin.s.a.dBh().yb(paramk.field_msgId);
     if (localk != null)
     {
-      localk.field_xml = localbu.field_content;
-      com.tencent.mm.plugin.s.a.dxR().update(localk, new String[] { "msgId" });
+      localk.field_xml = localbv.field_content;
+      com.tencent.mm.plugin.s.a.dBh().update(localk, new String[] { "msgId" });
     }
-    ((com.tencent.mm.plugin.record.a.a)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.record.a.a.class)).getRecordMsgStorage().Nz(paramk.field_localId);
-    this.xqP.remove(paramk.field_localId);
-    if (localbu.field_createTime + this.xrl * 24 * 3600 * 1000 < cf.aCL())
+    ((com.tencent.mm.plugin.record.a.a)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.record.a.a.class)).getRecordMsgStorage().Of(paramk.field_localId);
+    this.xGM.remove(paramk.field_localId);
+    if (localbv.field_createTime + this.xHi * 24 * 3600 * 1000 < ch.aDb())
     {
-      ad.i("MicroMsg.RecordMsgSendService", "doSendContinue, out of wait time, " + localbu.field_createTime);
-      localbu.setStatus(5);
-      ((com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).dlK().a(paramk.field_msgId, localbu);
+      ae.i("MicroMsg.RecordMsgSendService", "doSendContinue, out of wait time, " + localbv.field_createTime);
+      localbv.setStatus(5);
+      ((com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).doJ().a(paramk.field_msgId, localbv);
       AppMethodBeat.o(9584);
       return;
     }
     if (!p.a(paramk.field_toUser, paramk.field_msgId, true, "")) {
-      ((com.tencent.mm.plugin.record.a.g)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.record.a.g.class)).yC(paramk.field_msgId);
+      ((com.tencent.mm.plugin.record.a.g)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.record.a.g.class)).zb(paramk.field_msgId);
     }
     AppMethodBeat.o(9584);
   }
@@ -447,68 +446,68 @@ public final class s
   final void e(long paramLong, int paramInt, String paramString)
   {
     AppMethodBeat.i(9578);
-    bu localbu = ((com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).dlK().xY(paramLong);
-    if (localbu.field_msgId == paramLong)
+    bv localbv = ((com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).doJ().ys(paramLong);
+    if (localbv.field_msgId == paramLong)
     {
-      localbu.setContent(paramString);
-      localbu.setStatus(1);
-      ((com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).dlK().a(paramLong, localbu);
+      localbv.setContent(paramString);
+      localbv.setStatus(1);
+      ((com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).doJ().a(paramLong, localbv);
     }
-    paramString = com.tencent.mm.plugin.s.a.dxR().xH(paramLong);
+    paramString = com.tencent.mm.plugin.s.a.dBh().yb(paramLong);
     if (paramString != null)
     {
-      paramString.field_xml = localbu.field_content;
-      com.tencent.mm.plugin.s.a.dxR().update(paramString, new String[] { "msgId" });
+      paramString.field_xml = localbv.field_content;
+      com.tencent.mm.plugin.s.a.dBh().update(paramString, new String[] { "msgId" });
     }
-    ((com.tencent.mm.plugin.record.a.a)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.record.a.a.class)).getRecordMsgStorage().Nz(paramInt);
-    this.xqP.remove(paramInt);
-    ((com.tencent.mm.plugin.record.a.g)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.record.a.g.class)).yC(paramLong);
-    ad.i("MicroMsg.RecordMsgSendService", "batch tran cdn ok, msgId[%d], recordLocalId[%d], begin send appmsg", new Object[] { Long.valueOf(paramLong), Integer.valueOf(paramInt) });
+    ((com.tencent.mm.plugin.record.a.a)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.record.a.a.class)).getRecordMsgStorage().Of(paramInt);
+    this.xGM.remove(paramInt);
+    ((com.tencent.mm.plugin.record.a.g)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.record.a.g.class)).zb(paramLong);
+    ae.i("MicroMsg.RecordMsgSendService", "batch tran cdn ok, msgId[%d], recordLocalId[%d], begin send appmsg", new Object[] { Long.valueOf(paramLong), Integer.valueOf(paramInt) });
     AppMethodBeat.o(9578);
   }
   
   public final void finish()
   {
     AppMethodBeat.i(9576);
-    this.xqQ.clear();
-    this.xqP.clear();
-    this.xqM = false;
+    this.xGN.clear();
+    this.xGM.clear();
+    this.xGJ = false;
     AppMethodBeat.o(9576);
   }
   
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     AppMethodBeat.i(9577);
-    ad.i("MicroMsg.RecordMsgSendService", "on scene end, errType %d errCode %d errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    ae.i("MicroMsg.RecordMsgSendService", "on scene end, errType %d errCode %d errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
     if (paramn == null)
     {
-      ad.w("MicroMsg.RecordMsgSendService", "on scene end, scene is null");
+      ae.w("MicroMsg.RecordMsgSendService", "on scene end, scene is null");
       AppMethodBeat.o(9577);
       return;
     }
     switch (paramn.getType())
     {
     default: 
-      this.xqM = false;
+      this.xGJ = false;
       a(null, false);
       AppMethodBeat.o(9577);
       return;
     }
-    ad.i("MicroMsg.RecordMsgSendService", "batch tran cdn callback, errType %d, errCode %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    ae.i("MicroMsg.RecordMsgSendService", "batch tran cdn callback, errType %d, errCode %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     paramString = (g)paramn;
     int k = paramInt1;
     int i = paramInt2;
-    ajn localajn;
+    ajx localajx;
     if (paramInt1 == 3)
     {
-      paramn = paramString.xqJ.field_dataProto.nZa.iterator();
+      paramn = paramString.xGG.field_dataProto.oeJ.iterator();
       do
       {
         if (!paramn.hasNext()) {
           break;
         }
-        localajn = (ajn)paramn.next();
-      } while ((bt.isNullOrNil(localajn.GgR)) && (bt.isNullOrNil(localajn.hAe)));
+        localajx = (ajx)paramn.next();
+      } while ((bu.isNullOrNil(localajx.GzA)) && (bu.isNullOrNil(localajx.hCS)));
     }
     for (int j = 1;; j = 0)
     {
@@ -521,61 +520,61 @@ public final class s
       }
       if ((k == 0) && (i == 0))
       {
-        e(paramString.xqJ.field_msgId, paramString.xqJ.field_localId, paramString.xqI);
+        e(paramString.xGG.field_msgId, paramString.xGG.field_localId, paramString.xGF);
         break;
       }
-      ad.w("MicroMsg.RecordMsgSendService", "batch tran cdn fail, msgId[%d], recordLocalId[%d]", new Object[] { Long.valueOf(paramString.xqJ.field_msgId), Integer.valueOf(paramString.xqJ.field_localId) });
-      ad.w("MicroMsg.RecordMsgSendService", "try upload from local");
-      paramn = paramString.xqJ.field_dataProto.nZa.iterator();
+      ae.w("MicroMsg.RecordMsgSendService", "batch tran cdn fail, msgId[%d], recordLocalId[%d]", new Object[] { Long.valueOf(paramString.xGG.field_msgId), Integer.valueOf(paramString.xGG.field_localId) });
+      ae.w("MicroMsg.RecordMsgSendService", "try upload from local");
+      paramn = paramString.xGG.field_dataProto.oeJ.iterator();
       while (paramn.hasNext())
       {
-        localajn = (ajn)paramn.next();
+        localajx = (ajx)paramn.next();
         String str;
         Object localObject;
         boolean bool;
-        if (localajn.Ghm > 0L)
+        if (localajx.GzV > 0L)
         {
-          str = p.g(localajn.dsU, paramString.xqJ.field_msgId, false);
-          if (((com.tencent.mm.plugin.record.a.a)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.record.a.a.class)).getRecordMsgCDNStorage().avq(str) == null)
+          str = p.g(localajx.dua, paramString.xGG.field_msgId, false);
+          if (((com.tencent.mm.plugin.record.a.a)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.record.a.a.class)).getRecordMsgCDNStorage().awF(str) == null)
           {
             localObject = new j();
-            ((j)localObject).field_cdnKey = localajn.GgT;
-            ((j)localObject).field_cdnUrl = localajn.GgR;
-            ((j)localObject).field_dataId = localajn.dsU;
+            ((j)localObject).field_cdnKey = localajx.GzC;
+            ((j)localObject).field_cdnUrl = localajx.GzA;
+            ((j)localObject).field_dataId = localajx.dua;
             ((j)localObject).field_mediaId = str;
-            ((j)localObject).field_totalLen = ((int)localajn.Ghm);
+            ((j)localObject).field_totalLen = ((int)localajx.GzV);
             ((j)localObject).field_localId = ((j)localObject).field_mediaId.hashCode();
-            ((j)localObject).field_path = p.c(localajn, paramString.xqJ.field_msgId);
+            ((j)localObject).field_path = p.c(localajx, paramString.xGG.field_msgId);
             ((j)localObject).field_type = 2;
-            ((j)localObject).field_fileType = p.hf(localajn.dataType, (int)localajn.Ghm);
-            ((j)localObject).field_recordLocalId = paramString.xqJ.field_localId;
-            ((j)localObject).field_toUser = paramString.xqJ.field_toUser;
+            ((j)localObject).field_fileType = p.hh(localajx.dataType, (int)localajx.GzV);
+            ((j)localObject).field_recordLocalId = paramString.xGG.field_localId;
+            ((j)localObject).field_toUser = paramString.xGG.field_toUser;
             ((j)localObject).field_isThumb = false;
             bool = ((com.tencent.mm.plugin.record.a.a)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.record.a.a.class)).getRecordMsgCDNStorage().b((j)localObject);
-            ad.d("MicroMsg.RecordMsgSendService", "insert localId[%d] result[%B]", new Object[] { Integer.valueOf(((j)localObject).field_localId), Boolean.valueOf(bool) });
+            ae.d("MicroMsg.RecordMsgSendService", "insert localId[%d] result[%B]", new Object[] { Integer.valueOf(((j)localObject).field_localId), Boolean.valueOf(bool) });
           }
         }
-        if (localajn.Ghx > 0L)
+        if (localajx.GAg > 0L)
         {
-          str = p.agd(localajn.dsU);
-          localObject = p.g(str, paramString.xqJ.field_msgId, false);
-          if (((com.tencent.mm.plugin.record.a.a)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.record.a.a.class)).getRecordMsgCDNStorage().avq((String)localObject) == null)
+          str = p.aha(localajx.dua);
+          localObject = p.g(str, paramString.xGG.field_msgId, false);
+          if (((com.tencent.mm.plugin.record.a.a)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.record.a.a.class)).getRecordMsgCDNStorage().awF((String)localObject) == null)
           {
             j localj = new j();
-            localj.field_cdnKey = localajn.GgN;
-            localj.field_cdnUrl = localajn.hAe;
+            localj.field_cdnKey = localajx.Gzw;
+            localj.field_cdnUrl = localajx.hCS;
             localj.field_dataId = str;
             localj.field_mediaId = ((String)localObject);
-            localj.field_totalLen = ((int)localajn.Ghx);
+            localj.field_totalLen = ((int)localajx.GAg);
             localj.field_localId = localj.field_mediaId.hashCode();
-            localj.field_path = p.f(localajn, paramString.xqJ.field_msgId);
+            localj.field_path = p.f(localajx, paramString.xGG.field_msgId);
             localj.field_type = 2;
             localj.field_fileType = com.tencent.mm.i.a.MediaType_FULLSIZEIMAGE;
-            localj.field_recordLocalId = paramString.xqJ.field_localId;
-            localj.field_toUser = paramString.xqJ.field_toUser;
+            localj.field_recordLocalId = paramString.xGG.field_localId;
+            localj.field_toUser = paramString.xGG.field_toUser;
             localj.field_isThumb = true;
             bool = ((com.tencent.mm.plugin.record.a.a)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.record.a.a.class)).getRecordMsgCDNStorage().b(localj);
-            ad.d("MicroMsg.RecordMsgSendService", "insert localId[%d] result[%B]", new Object[] { Integer.valueOf(localj.field_localId), Boolean.valueOf(bool) });
+            ae.d("MicroMsg.RecordMsgSendService", "insert localId[%d] result[%B]", new Object[] { Integer.valueOf(localj.field_localId), Boolean.valueOf(bool) });
           }
         }
       }
@@ -588,11 +587,11 @@ public final class s
   final class a
     implements Runnable
   {
-    private com.tencent.mm.plugin.record.a.k xqJ;
+    private com.tencent.mm.plugin.record.a.k xGG;
     
     public a(com.tencent.mm.plugin.record.a.k paramk)
     {
-      this.xqJ = paramk;
+      this.xGG = paramk;
     }
     
     public final void run()
@@ -600,140 +599,140 @@ public final class s
       AppMethodBeat.i(9553);
       int m = 0;
       int i = 0;
-      ad.i("MicroMsg.RecordMsgSendService", "dojob ChatDataCopyRunnable, info id:%s", new Object[] { Long.valueOf(this.xqJ.field_msgId) });
+      ae.i("MicroMsg.RecordMsgSendService", "dojob ChatDataCopyRunnable, info id:%s", new Object[] { Long.valueOf(this.xGG.field_msgId) });
       int j;
       int k;
-      ajn localajn;
+      ajx localajx;
       Object localObject1;
       Object localObject2;
       boolean bool;
-      if ((this.xqJ != null) && (this.xqJ.field_dataProto != null) && (this.xqJ.field_dataProto.nZa != null))
+      if ((this.xGG != null) && (this.xGG.field_dataProto != null) && (this.xGG.field_dataProto.oeJ != null))
       {
-        Iterator localIterator = this.xqJ.field_dataProto.nZa.iterator();
+        Iterator localIterator = this.xGG.field_dataProto.oeJ.iterator();
         j = 0;
         m = i;
         k = j;
         if (!localIterator.hasNext()) {
           break label1167;
         }
-        localajn = (ajn)localIterator.next();
-        if ((bt.isNullOrNil(localajn.GgR)) && (!com.tencent.mm.vfs.i.fv(localajn.Ghp))) {
+        localajx = (ajx)localIterator.next();
+        if ((bu.isNullOrNil(localajx.GzA)) && (!com.tencent.mm.vfs.o.fB(localajx.GzY))) {
           break label1335;
         }
-        localObject1 = localajn.Ghp;
-        localObject2 = p.c(localajn, this.xqJ.field_msgId);
-        if (com.tencent.mm.vfs.i.mz((String)localObject1, (String)localObject2) > 0L)
+        localObject1 = localajx.GzY;
+        localObject2 = p.c(localajx, this.xGG.field_msgId);
+        if (com.tencent.mm.vfs.o.mF((String)localObject1, (String)localObject2) > 0L)
         {
           bool = true;
           label167:
-          ad.d("MicroMsg.RecordMsgSendService", "summerrecord CdnDataUrl[%s] copy[%s] to [%s] result[%B]", new Object[] { localajn.GgR, localObject1, localObject2, Boolean.valueOf(bool) });
+          ae.d("MicroMsg.RecordMsgSendService", "summerrecord CdnDataUrl[%s] copy[%s] to [%s] result[%B]", new Object[] { localajx.GzA, localObject1, localObject2, Boolean.valueOf(bool) });
           k = i;
           if (!bool) {
             break label1330;
           }
-          if (bt.isNullOrNil(localajn.Ghi))
+          if (bu.isNullOrNil(localajx.GzR))
           {
-            ad.i("MicroMsg.RecordMsgSendService", "summerrecord not find full md5, try to calculate");
-            localajn.aOq(com.tencent.mm.vfs.i.aPK((String)localObject2));
+            ae.i("MicroMsg.RecordMsgSendService", "summerrecord not find full md5, try to calculate");
+            localajx.aPN(com.tencent.mm.vfs.o.aRh((String)localObject2));
             i = 1;
           }
           k = i;
-          if (!bt.isNullOrNil(localajn.Ghk)) {
+          if (!bu.isNullOrNil(localajx.GzT)) {
             break label1330;
           }
-          ad.i("MicroMsg.RecordMsgSendService", "summerrecord not find head 256 md5, try to calculate");
-          localObject1 = com.tencent.mm.vfs.i.aY((String)localObject2, 0, 256);
+          ae.i("MicroMsg.RecordMsgSendService", "summerrecord not find head 256 md5, try to calculate");
+          localObject1 = com.tencent.mm.vfs.o.bb((String)localObject2, 0, 256);
           if (localObject1 != null) {
             break label990;
           }
           localObject1 = null;
           label281:
-          localajn.aOr((String)localObject1);
+          localajx.aPO((String)localObject1);
           i = 1;
           label291:
-          if (com.tencent.mm.vfs.i.aYo((String)localObject2) != 0L) {
-            localajn.CG(com.tencent.mm.vfs.i.aYo((String)localObject2));
+          if (com.tencent.mm.vfs.o.aZR((String)localObject2) != 0L) {
+            localajx.De(com.tencent.mm.vfs.o.aZR((String)localObject2));
           }
-          localObject1 = p.g(localajn.dsU, this.xqJ.field_msgId, false);
-          localObject2 = ((com.tencent.mm.plugin.record.a.a)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.record.a.a.class)).getRecordMsgCDNStorage().avq((String)localObject1);
+          localObject1 = p.g(localajx.dua, this.xGG.field_msgId, false);
+          localObject2 = ((com.tencent.mm.plugin.record.a.a)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.record.a.a.class)).getRecordMsgCDNStorage().awF((String)localObject1);
           if (localObject2 != null) {
             break label1000;
           }
           localObject2 = new j();
-          ((j)localObject2).field_cdnKey = localajn.GgT;
-          ((j)localObject2).field_cdnUrl = localajn.GgR;
-          ((j)localObject2).field_dataId = localajn.dsU;
+          ((j)localObject2).field_cdnKey = localajx.GzC;
+          ((j)localObject2).field_cdnUrl = localajx.GzA;
+          ((j)localObject2).field_dataId = localajx.dua;
           ((j)localObject2).field_mediaId = ((String)localObject1);
-          ((j)localObject2).field_totalLen = ((int)localajn.Ghm);
+          ((j)localObject2).field_totalLen = ((int)localajx.GzV);
           ((j)localObject2).field_localId = ((j)localObject2).field_mediaId.hashCode();
-          ((j)localObject2).field_path = p.c(localajn, this.xqJ.field_msgId);
+          ((j)localObject2).field_path = p.c(localajx, this.xGG.field_msgId);
           ((j)localObject2).field_type = 2;
-          ((j)localObject2).field_fileType = p.hf(localajn.dataType, (int)localajn.Ghm);
-          ((j)localObject2).field_recordLocalId = this.xqJ.field_localId;
-          ((j)localObject2).field_toUser = this.xqJ.field_toUser;
+          ((j)localObject2).field_fileType = p.hh(localajx.dataType, (int)localajx.GzV);
+          ((j)localObject2).field_recordLocalId = this.xGG.field_localId;
+          ((j)localObject2).field_toUser = this.xGG.field_toUser;
           ((j)localObject2).field_isThumb = false;
           bool = ((com.tencent.mm.plugin.record.a.a)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.record.a.a.class)).getRecordMsgCDNStorage().b((j)localObject2);
           m = 1;
-          ad.i("MicroMsg.RecordMsgSendService", "summerrecord insert localId[%d] result[%B] fileType[%d], mediaId[%s]", new Object[] { Integer.valueOf(((j)localObject2).field_localId), Boolean.valueOf(bool), Integer.valueOf(((j)localObject2).field_fileType), localObject1 });
+          ae.i("MicroMsg.RecordMsgSendService", "summerrecord insert localId[%d] result[%B] fileType[%d], mediaId[%s]", new Object[] { Integer.valueOf(((j)localObject2).field_localId), Boolean.valueOf(bool), Integer.valueOf(((j)localObject2).field_fileType), localObject1 });
           k = i;
         }
       }
       for (;;)
       {
         label572:
-        if (bt.isNullOrNil(localajn.hAe))
+        if (bu.isNullOrNil(localajx.hCS))
         {
           j = k;
-          if (!com.tencent.mm.vfs.i.fv(localajn.Ghr)) {}
+          if (!com.tencent.mm.vfs.o.fB(localajx.GAa)) {}
         }
         else
         {
-          localObject1 = localajn.Ghr;
-          localObject2 = p.f(localajn, this.xqJ.field_msgId);
-          if (com.tencent.mm.vfs.i.mz((String)localObject1, (String)localObject2) > 0L) {}
+          localObject1 = localajx.GAa;
+          localObject2 = p.f(localajx, this.xGG.field_msgId);
+          if (com.tencent.mm.vfs.o.mF((String)localObject1, (String)localObject2) > 0L) {}
           j localj;
           for (bool = true;; bool = false)
           {
-            ad.d("MicroMsg.RecordMsgSendService", "copy thumb[%s] to [%s] result[%B]", new Object[] { localObject1, localObject2, Boolean.valueOf(bool) });
-            localajn.CH(com.tencent.mm.vfs.i.aYo((String)localObject2));
+            ae.d("MicroMsg.RecordMsgSendService", "copy thumb[%s] to [%s] result[%B]", new Object[] { localObject1, localObject2, Boolean.valueOf(bool) });
+            localajx.Df(com.tencent.mm.vfs.o.aZR((String)localObject2));
             i = k;
             if (bool)
             {
               i = k;
-              if (bt.isNullOrNil(localajn.Ght))
+              if (bu.isNullOrNil(localajx.GAc))
               {
-                ad.i("MicroMsg.RecordMsgSendService", "not find ThumbMd5 md5, try to calculate");
-                localajn.aOv(com.tencent.mm.vfs.i.aPK((String)localObject2));
+                ae.i("MicroMsg.RecordMsgSendService", "not find ThumbMd5 md5, try to calculate");
+                localajx.aPS(com.tencent.mm.vfs.o.aRh((String)localObject2));
                 i = 1;
               }
-              if (bt.isNullOrNil(localajn.Ghv))
+              if (bu.isNullOrNil(localajx.GAe))
               {
-                ad.i("MicroMsg.RecordMsgSendService", "not find Thumb Head 256 Md5, try to calculate");
-                localajn.aOw(com.tencent.mm.b.g.ep((String)localObject2));
+                ae.i("MicroMsg.RecordMsgSendService", "not find Thumb Head 256 Md5, try to calculate");
+                localajx.aPT(com.tencent.mm.b.g.eu((String)localObject2));
                 i = 1;
               }
             }
-            localObject1 = p.agd(localajn.dsU);
-            localObject2 = p.g((String)localObject1, this.xqJ.field_msgId, false);
-            localj = ((com.tencent.mm.plugin.record.a.a)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.record.a.a.class)).getRecordMsgCDNStorage().avq((String)localObject2);
+            localObject1 = p.aha(localajx.dua);
+            localObject2 = p.g((String)localObject1, this.xGG.field_msgId, false);
+            localj = ((com.tencent.mm.plugin.record.a.a)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.record.a.a.class)).getRecordMsgCDNStorage().awF((String)localObject2);
             if (localj != null) {
               break label1093;
             }
             localj = new j();
-            localj.field_cdnKey = localajn.GgN;
-            localj.field_cdnUrl = localajn.hAe;
+            localj.field_cdnKey = localajx.Gzw;
+            localj.field_cdnUrl = localajx.hCS;
             localj.field_dataId = ((String)localObject1);
             localj.field_mediaId = ((String)localObject2);
-            localj.field_totalLen = ((int)localajn.Ghx);
+            localj.field_totalLen = ((int)localajx.GAg);
             localj.field_localId = localj.field_mediaId.hashCode();
-            localj.field_path = p.f(localajn, this.xqJ.field_msgId);
+            localj.field_path = p.f(localajx, this.xGG.field_msgId);
             localj.field_type = 2;
             localj.field_fileType = com.tencent.mm.i.a.MediaType_FULLSIZEIMAGE;
-            localj.field_recordLocalId = this.xqJ.field_localId;
-            localj.field_toUser = this.xqJ.field_toUser;
+            localj.field_recordLocalId = this.xGG.field_localId;
+            localj.field_toUser = this.xGG.field_toUser;
             localj.field_isThumb = true;
             bool = ((com.tencent.mm.plugin.record.a.a)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.record.a.a.class)).getRecordMsgCDNStorage().b(localj);
-            ad.i("MicroMsg.RecordMsgSendService", "insert localId[%d] result[%B]", new Object[] { Integer.valueOf(localj.field_localId), Boolean.valueOf(bool) });
+            ae.i("MicroMsg.RecordMsgSendService", "insert localId[%d] result[%B]", new Object[] { Integer.valueOf(localj.field_localId), Boolean.valueOf(bool) });
             j = 1;
             break;
             bool = false;
@@ -762,7 +761,7 @@ public final class s
             if (((j)localObject2).field_status == -1) {
               break label572;
             }
-            ad.i("MicroMsg.RecordMsgSendService", "hasInsertCdn, cdnInfo status:%s", new Object[] { Integer.valueOf(((j)localObject2).field_status) });
+            ae.i("MicroMsg.RecordMsgSendService", "hasInsertCdn, cdnInfo status:%s", new Object[] { Integer.valueOf(((j)localObject2).field_status) });
             m = 1;
             k = i;
             break label572;
@@ -779,7 +778,7 @@ public final class s
               {
                 j = i;
                 if (localj.field_status != -1) {
-                  ad.i("MicroMsg.RecordMsgSendService", "hasInsertCdn, thumb cdnInfo status:%s", new Object[] { Integer.valueOf(localj.field_status) });
+                  ae.i("MicroMsg.RecordMsgSendService", "hasInsertCdn, thumb cdnInfo status:%s", new Object[] { Integer.valueOf(localj.field_status) });
                 }
               }
             }
@@ -792,14 +791,14 @@ public final class s
           label1167:
           if (m != 0)
           {
-            ad.i("MicroMsg.RecordMsgSendService", "update record info, something changed, localid %d msgid %d, type %d", new Object[] { Integer.valueOf(this.xqJ.field_localId), Long.valueOf(this.xqJ.field_msgId), Integer.valueOf(this.xqJ.field_type) });
-            ((com.tencent.mm.plugin.record.a.a)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.record.a.a.class)).getRecordMsgStorage().update(this.xqJ, new String[] { "localId" });
+            ae.i("MicroMsg.RecordMsgSendService", "update record info, something changed, localid %d msgid %d, type %d", new Object[] { Integer.valueOf(this.xGG.field_localId), Long.valueOf(this.xGG.field_msgId), Integer.valueOf(this.xGG.field_type) });
+            ((com.tencent.mm.plugin.record.a.a)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.record.a.a.class)).getRecordMsgStorage().update(this.xGG, new String[] { "localId" });
           }
           if (k == 0)
           {
-            ad.i("MicroMsg.RecordMsgSendService", "doSendContinue without cdn task");
-            s.this.b(this.xqJ, false);
-            s.this.xqM = false;
+            ae.i("MicroMsg.RecordMsgSendService", "doSendContinue without cdn task");
+            s.this.b(this.xGG, false);
+            s.this.xGJ = false;
             s.this.a(null, false);
           }
           ((com.tencent.mm.plugin.record.a.a)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.record.a.a.class)).getRecordMsgCDNService().run();
@@ -818,33 +817,33 @@ public final class s
   }
   
   final class b
-    implements com.tencent.mm.al.f, t.a, Runnable
+    implements com.tencent.mm.ak.f, t.a, Runnable
   {
-    private boolean cPV;
+    private boolean cQF;
     private int i;
-    private com.tencent.mm.plugin.record.a.k xqJ;
-    HashMap<Long, Boolean> xrf;
-    HashMap<Long, String> xrp;
+    private com.tencent.mm.plugin.record.a.k xGG;
+    HashMap<Long, Boolean> xHc;
+    HashMap<Long, String> xHm;
     
     public b(com.tencent.mm.plugin.record.a.k paramk)
     {
       AppMethodBeat.i(9556);
       this.i = 0;
-      this.xrf = new HashMap();
-      this.xrp = new HashMap();
-      this.cPV = false;
-      this.xqJ = paramk;
-      o.aMJ().a(this, Looper.getMainLooper());
-      com.tencent.mm.kernel.g.ajB().gAO.a(221, this);
+      this.xHc = new HashMap();
+      this.xHm = new HashMap();
+      this.cQF = false;
+      this.xGG = paramk;
+      com.tencent.mm.modelvideo.o.aNh().a(this, Looper.getMainLooper());
+      com.tencent.mm.kernel.g.ajQ().gDv.a(221, this);
       AppMethodBeat.o(9556);
     }
     
     private void a(HashMap<Long, Boolean> paramHashMap, boolean paramBoolean, com.tencent.mm.plugin.record.a.k paramk)
     {
       AppMethodBeat.i(9561);
-      if ((k(paramHashMap)) && (paramBoolean))
+      if ((l(paramHashMap)) && (paramBoolean))
       {
-        o.aMJ().a(this);
+        com.tencent.mm.modelvideo.o.aNh().a(this);
         paramk.field_type = 2;
         ((com.tencent.mm.plugin.record.a.a)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.record.a.a.class)).getRecordMsgStorage().update(paramk, new String[] { "localId" });
         ((com.tencent.mm.plugin.record.a.a)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.record.a.a.class)).getRecordMsgService().a(paramk);
@@ -852,32 +851,32 @@ public final class s
       AppMethodBeat.o(9561);
     }
     
-    private void aA(bu parambu)
+    private void az(bv parambv)
     {
       AppMethodBeat.i(9560);
-      Object localObject = k.b.yr(parambu.field_content);
+      Object localObject = k.b.zb(parambv.field_content);
       if (localObject == null)
       {
-        ad.e("MicroMsg.RecordMsgSendService", "parse msgContent error, %s", new Object[] { parambu.field_content });
+        ae.e("MicroMsg.RecordMsgSendService", "parse msgContent error, %s", new Object[] { parambv.field_content });
         AppMethodBeat.o(9560);
         return;
       }
-      if ((bt.isNullOrNil(((k.b)localObject).dks)) && (!bt.isNullOrNil(((k.b)localObject).hAd)))
+      if ((bu.isNullOrNil(((k.b)localObject).dlu)) && (!bu.isNullOrNil(((k.b)localObject).hCR)))
       {
-        ad.e("MicroMsg.RecordMsgSendService", "msgContent format error, %s", new Object[] { parambu.field_content });
-        ((k.b)localObject).dks = ((k.b)localObject).hAd.hashCode();
+        ae.e("MicroMsg.RecordMsgSendService", "msgContent format error, %s", new Object[] { parambv.field_content });
+        ((k.b)localObject).dlu = ((k.b)localObject).hCR.hashCode();
       }
-      localObject = ((k.b)localObject).dks;
-      if (!a.a(parambu, a.r((String)localObject, parambu.field_msgId)))
+      localObject = ((k.b)localObject).dlu;
+      if (!a.a(parambv, a.r((String)localObject, parambv.field_msgId)))
       {
-        this.xrf.put(Long.valueOf(parambu.field_msgId), Boolean.FALSE);
-        this.xrp.put(Long.valueOf(parambu.field_msgId), localObject);
-        a.aA(parambu);
+        this.xHc.put(Long.valueOf(parambv.field_msgId), Boolean.FALSE);
+        this.xHm.put(Long.valueOf(parambv.field_msgId), localObject);
+        a.az(parambv);
       }
       AppMethodBeat.o(9560);
     }
     
-    private static boolean k(HashMap<Long, Boolean> paramHashMap)
+    private static boolean l(HashMap<Long, Boolean> paramHashMap)
     {
       AppMethodBeat.i(9562);
       if (paramHashMap == null)
@@ -900,19 +899,19 @@ public final class s
     public final void a(t.a.a parama)
     {
       AppMethodBeat.i(9558);
-      parama = u.Hy(parama.fileName);
+      parama = u.Ia(parama.fileName);
       if (parama != null)
       {
-        bu localbu = ((com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).dlK().xY(parama.iuf);
-        if (parama.aMY())
+        bv localbv = ((com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).doJ().ys(parama.iwZ);
+        if (parama.aNw())
         {
-          this.xrf.put(Long.valueOf(localbu.field_msgId), Boolean.TRUE);
-          a(this.xrf, this.cPV, this.xqJ);
+          this.xHc.put(Long.valueOf(localbv.field_msgId), Boolean.TRUE);
+          a(this.xHc, this.cQF, this.xGG);
         }
         AppMethodBeat.o(9558);
         return;
       }
-      a(null, this.cPV, this.xqJ);
+      a(null, this.cQF, this.xGG);
       AppMethodBeat.o(9558);
     }
     
@@ -921,9 +920,9 @@ public final class s
       AppMethodBeat.i(9559);
       if ((paramn instanceof f))
       {
-        com.tencent.mm.kernel.g.ajB().gAO.b(221, this);
-        if (this.xrp != null) {
-          paramn = this.xrp.entrySet().iterator();
+        com.tencent.mm.kernel.g.ajQ().gDv.b(221, this);
+        if (this.xHm != null) {
+          paramn = this.xHm.entrySet().iterator();
         }
       }
       label291:
@@ -937,10 +936,10 @@ public final class s
           paramString = (Map.Entry)paramn.next();
           l = ((Long)paramString.getKey()).longValue();
           paramString = (String)paramString.getValue();
-          if ((l <= 0L) || (((Boolean)this.xrf.get(Long.valueOf(l))).booleanValue())) {
+          if ((l <= 0L) || (((Boolean)this.xHc.get(Long.valueOf(l))).booleanValue())) {
             continue;
           }
-          ((com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).dlK().xY(l);
+          ((com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).doJ().ys(l);
           localc = a.r(paramString, l);
           if (localc == null) {
             break label291;
@@ -951,20 +950,20 @@ public final class s
           if ((paramString == null) || (paramString.length() <= 0)) {
             break label294;
           }
-          this.xrf.put(Long.valueOf(l), Boolean.TRUE);
-          paramString = this.xqJ.field_dataProto.nZa.iterator();
+          this.xHc.put(Long.valueOf(l), Boolean.TRUE);
+          paramString = this.xGG.field_dataProto.oeJ.iterator();
           while (paramString.hasNext())
           {
-            ajn localajn = (ajn)paramString.next();
-            if (localajn.GhX == l) {
-              localajn.aOt(localc.field_fileFullPath);
+            ajx localajx = (ajx)paramString.next();
+            if (localajx.GAG == l) {
+              localajx.aPQ(localc.field_fileFullPath);
             }
           }
           break;
-          a(this.xrf, this.cPV, this.xqJ);
+          a(this.xHc, this.cQF, this.xGG);
           AppMethodBeat.o(9559);
           return;
-          a(null, this.cPV, this.xqJ);
+          a(null, this.cQF, this.xGG);
           AppMethodBeat.o(9559);
           return;
         }
@@ -975,61 +974,61 @@ public final class s
     {
       AppMethodBeat.i(9557);
       this.i = 0;
-      this.cPV = false;
-      ad.i("MicroMsg.RecordMsgSendService", "dojob ChatDataDownloadRunnable, info id:%s", new Object[] { Long.valueOf(this.xqJ.field_msgId) });
-      if (this.xqJ.field_dataProto == null)
+      this.cQF = false;
+      ae.i("MicroMsg.RecordMsgSendService", "dojob ChatDataDownloadRunnable, info id:%s", new Object[] { Long.valueOf(this.xGG.field_msgId) });
+      if (this.xGG.field_dataProto == null)
       {
-        ad.w("MicroMsg.RecordMsgSendService", "ChatDataDownloadRunnable info.field_dataProto null");
-        this.cPV = true;
-        s.this.xqM = false;
-        a(null, this.cPV, this.xqJ);
+        ae.w("MicroMsg.RecordMsgSendService", "ChatDataDownloadRunnable info.field_dataProto null");
+        this.cQF = true;
+        s.this.xGJ = false;
+        a(null, this.cQF, this.xGG);
         AppMethodBeat.o(9557);
         return;
       }
-      Iterator localIterator = this.xqJ.field_dataProto.nZa.iterator();
+      Iterator localIterator = this.xGG.field_dataProto.oeJ.iterator();
       while (localIterator.hasNext())
       {
-        Object localObject1 = (ajn)localIterator.next();
-        final long l = ((ajn)localObject1).GhX;
+        Object localObject1 = (ajx)localIterator.next();
+        final long l = ((ajx)localObject1).GAG;
         label443:
         if (l > 0L)
         {
-          final bu localbu = ((com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).dlK().xY(l);
-          Object localObject2 = ((ajn)localObject1).Ghp;
-          if ((System.currentTimeMillis() - localbu.field_createTime > 259200000L) && ((bt.isNullOrNil((String)localObject2)) || (!com.tencent.mm.vfs.i.fv((String)localObject2)))) {}
+          final bv localbv = ((com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).doJ().ys(l);
+          Object localObject2 = ((ajx)localObject1).GzY;
+          if ((System.currentTimeMillis() - localbv.field_createTime > 259200000L) && ((bu.isNullOrNil((String)localObject2)) || (!com.tencent.mm.vfs.o.fB((String)localObject2)))) {}
           for (int j = 1;; j = 0)
           {
             if (j == 0) {
               break label239;
             }
-            ad.i("MicroMsg.RecordMsgSendService", "dataItem is expired!! msgType:%s", new Object[] { Integer.valueOf(localbu.getType()) });
+            ae.i("MicroMsg.RecordMsgSendService", "dataItem is expired!! msgType:%s", new Object[] { Integer.valueOf(localbv.getType()) });
             break;
           }
           label239:
-          if (((ajn)localObject1).dataType == 2)
+          if (((ajx)localObject1).dataType == 2)
           {
-            if (localbu.fpi())
+            if (localbv.ftg())
             {
-              localObject2 = com.tencent.mm.aw.q.aIF().F(localbu.field_talker, localbu.field_msgSvrId);
-              if (localbu.field_isSend == 1) {
-                if (((com.tencent.mm.aw.g)localObject2).aIj()) {
+              localObject2 = com.tencent.mm.av.q.aIX().F(localbv.field_talker, localbv.field_msgSvrId);
+              if (localbv.field_isSend == 1) {
+                if (((com.tencent.mm.av.g)localObject2).aIB()) {
                   j = 1;
                 }
               }
               for (;;)
               {
-                if ((((com.tencent.mm.aw.g)localObject2).offset >= ((com.tencent.mm.aw.g)localObject2).hMP) && (((com.tencent.mm.aw.g)localObject2).hMP != 0)) {
+                if ((((com.tencent.mm.av.g)localObject2).offset >= ((com.tencent.mm.av.g)localObject2).hPI) && (((com.tencent.mm.av.g)localObject2).hPI != 0)) {
                   break label443;
                 }
-                this.xrf.put(Long.valueOf(l), Boolean.FALSE);
-                this.i = this.xqJ.field_dataProto.nZa.indexOf(localObject1);
-                com.tencent.mm.aw.q.aIG().a(((com.tencent.mm.aw.g)localObject2).dnz, localbu.field_msgId, j, localObject1, 2131231564, new e.a()
+                this.xHc.put(Long.valueOf(l), Boolean.FALSE);
+                this.i = this.xGG.field_dataProto.oeJ.indexOf(localObject1);
+                com.tencent.mm.av.q.aIY().a(((com.tencent.mm.av.g)localObject2).doE, localbv.field_msgId, j, localObject1, 2131231564, new e.a()
                 {
                   public final void a(long paramAnonymousLong1, long paramAnonymousLong2, int paramAnonymousInt1, int paramAnonymousInt2, Object paramAnonymousObject)
                   {
                     AppMethodBeat.i(9555);
-                    s.b.this.xrf.put(Long.valueOf(l), Boolean.TRUE);
-                    s.b.a(s.b.this, s.b.this.xrf, s.b.c(s.b.this), s.b.b(s.b.this));
+                    s.b.this.xHc.put(Long.valueOf(l), Boolean.TRUE);
+                    s.b.a(s.b.this, s.b.this.xHc, s.b.c(s.b.this), s.b.b(s.b.this));
                     AppMethodBeat.o(9555);
                   }
                   
@@ -1042,50 +1041,50 @@ public final class s
                     if ((paramAnonymousInt3 == 0) && (paramAnonymousInt4 == 0))
                     {
                       bool = true;
-                      ad.i("MicroMsg.RecordMsgSendService", "download image succed: %s, errType: %s, errCode:%s", new Object[] { Boolean.valueOf(bool), Integer.valueOf(paramAnonymousInt3), Integer.valueOf(paramAnonymousInt4) });
-                      if (!(paramAnonymousObject instanceof ajn)) {
+                      ae.i("MicroMsg.RecordMsgSendService", "download image succed: %s, errType: %s, errCode:%s", new Object[] { Boolean.valueOf(bool), Integer.valueOf(paramAnonymousInt3), Integer.valueOf(paramAnonymousInt4) });
+                      if (!(paramAnonymousObject instanceof ajx)) {
                         break label303;
                       }
-                      paramAnonymousObject = (ajn)paramAnonymousObject;
-                      paramAnonymousObject.aOt(com.tencent.mm.aw.q.aIF().o(com.tencent.mm.aw.h.c(this.ibs), "", ""));
-                      paramAnonymousObject.aOu(com.tencent.mm.aw.q.aIF().R(localbu.field_imgPath, true));
-                      paramAnonymousString = bw.M(this.ibs.hZI, "msg");
+                      paramAnonymousObject = (ajx)paramAnonymousObject;
+                      paramAnonymousObject.aPQ(com.tencent.mm.av.q.aIX().o(com.tencent.mm.av.h.c(this.iel), "", ""));
+                      paramAnonymousObject.aPR(com.tencent.mm.av.q.aIX().R(localbv.field_imgPath, true));
+                      paramAnonymousString = bx.M(this.iel.icA, "msg");
                       if (paramAnonymousString == null) {
                         break label279;
                       }
-                      paramAnonymousObject.aOj((String)paramAnonymousString.get(".msg.img.$cdnbigimgurl"));
-                      paramAnonymousObject.CG(bt.getInt((String)paramAnonymousString.get(".msg.img.$length"), 0));
-                      paramAnonymousObject.aOk((String)paramAnonymousString.get(".msg.img.$aeskey"));
-                      s.b.b(s.b.this).field_dataProto.nZa.set(s.b.a(s.b.this), paramAnonymousObject);
+                      paramAnonymousObject.aPG((String)paramAnonymousString.get(".msg.img.$cdnbigimgurl"));
+                      paramAnonymousObject.De(bu.getInt((String)paramAnonymousString.get(".msg.img.$length"), 0));
+                      paramAnonymousObject.aPH((String)paramAnonymousString.get(".msg.img.$aeskey"));
+                      s.b.b(s.b.this).field_dataProto.oeJ.set(s.b.a(s.b.this), paramAnonymousObject);
                       label216:
-                      s.b.this.xrf.put(Long.valueOf(paramAnonymousObject.GhX), Boolean.TRUE);
+                      s.b.this.xHc.put(Long.valueOf(paramAnonymousObject.GAG), Boolean.TRUE);
                     }
                     for (;;)
                     {
-                      s.b.a(s.b.this, s.b.this.xrf, s.b.c(s.b.this), s.b.b(s.b.this));
+                      s.b.a(s.b.this, s.b.this.xHc, s.b.c(s.b.this), s.b.b(s.b.this));
                       AppMethodBeat.o(9554);
                       return;
                       bool = false;
                       break;
                       label279:
-                      ad.i("MicroMsg.RecordMsgSendService", "parse cdnInfo failed. [%s]", new Object[] { this.ibs.hZI });
+                      ae.i("MicroMsg.RecordMsgSendService", "parse cdnInfo failed. [%s]", new Object[] { this.iel.icA });
                       break label216;
                       label303:
-                      s.b.this.xrf.put(Long.valueOf(l), Boolean.TRUE);
+                      s.b.this.xHc.put(Long.valueOf(l), Boolean.TRUE);
                     }
                   }
                 });
                 break;
                 j = 0;
                 continue;
-                if (!((com.tencent.mm.aw.g)localObject2).aIj())
+                if (!((com.tencent.mm.av.g)localObject2).aIB())
                 {
                   j = 0;
                 }
                 else
                 {
-                  com.tencent.mm.aw.g localg = com.tencent.mm.aw.h.a((com.tencent.mm.aw.g)localObject2);
-                  if (!com.tencent.mm.vfs.i.fv(com.tencent.mm.aw.q.aIF().o(localg.hZw, "", ""))) {
+                  com.tencent.mm.av.g localg = com.tencent.mm.av.h.a((com.tencent.mm.av.g)localObject2);
+                  if (!com.tencent.mm.vfs.o.fB(com.tencent.mm.av.q.aIX().o(localg.ico, "", ""))) {
                     j = 0;
                   } else {
                     j = 1;
@@ -1093,38 +1092,38 @@ public final class s
                 }
               }
             }
-            else if (localbu.frK())
+            else if (localbv.fvK())
             {
-              aA(localbu);
+              az(localbv);
             }
           }
-          else if ((((ajn)localObject1).dataType == 4) || (((ajn)localObject1).dataType == 15))
+          else if ((((ajx)localObject1).dataType == 4) || (((ajx)localObject1).dataType == 15))
           {
-            localObject1 = u.Hy(localbu.field_imgPath);
+            localObject1 = u.Ia(localbv.field_imgPath);
             if ((localObject1 != null) && (((com.tencent.mm.modelvideo.s)localObject1).status != 199))
             {
-              this.xrf.put(Long.valueOf(l), Boolean.FALSE);
-              if (((com.tencent.mm.modelvideo.s)localObject1).aMX())
+              this.xHc.put(Long.valueOf(l), Boolean.FALSE);
+              if (((com.tencent.mm.modelvideo.s)localObject1).aNv())
               {
-                ad.i("MicroMsg.RecordMsgSendService", "start complete online video");
-                u.HF(localbu.field_imgPath);
+                ae.i("MicroMsg.RecordMsgSendService", "start complete online video");
+                u.Ih(localbv.field_imgPath);
               }
               else
               {
-                ad.i("MicroMsg.RecordMsgSendService", "start complete offline video");
-                u.Ht(localbu.field_imgPath);
+                ae.i("MicroMsg.RecordMsgSendService", "start complete offline video");
+                u.HV(localbv.field_imgPath);
               }
             }
           }
-          else if ((((ajn)localObject1).dataType == 8) && (!bt.isNullOrNil(((ajn)localObject1).Gij)))
+          else if ((((ajx)localObject1).dataType == 8) && (!bu.isNullOrNil(((ajx)localObject1).GAS)))
           {
-            aA(localbu);
+            az(localbv);
           }
         }
       }
-      this.cPV = true;
-      s.this.xqM = false;
-      a(this.xrf, this.cPV, this.xqJ);
+      this.cQF = true;
+      s.this.xGJ = false;
+      a(this.xHc, this.cQF, this.xGG);
       AppMethodBeat.o(9557);
     }
   }
@@ -1132,65 +1131,65 @@ public final class s
   final class c
     implements Runnable
   {
-    private com.tencent.mm.plugin.record.a.k xqJ;
+    private com.tencent.mm.plugin.record.a.k xGG;
     
     public c(com.tencent.mm.plugin.record.a.k paramk)
     {
-      this.xqJ = paramk;
+      this.xGG = paramk;
     }
     
     public final void run()
     {
       AppMethodBeat.i(9564);
-      ad.i("MicroMsg.RecordMsgSendService", "dojob FavDataCopyRunnable, info id:%s", new Object[] { Long.valueOf(this.xqJ.field_msgId) });
-      Object localObject = this.xqJ.field_dataProto.nZa.iterator();
+      ae.i("MicroMsg.RecordMsgSendService", "dojob FavDataCopyRunnable, info id:%s", new Object[] { Long.valueOf(this.xGG.field_msgId) });
+      Object localObject = this.xGG.field_dataProto.oeJ.iterator();
       for (int i = 0; ((Iterator)localObject).hasNext(); i = 1)
       {
         label46:
-        ajn localajn = (ajn)((Iterator)localObject).next();
-        gw localgw = new gw();
-        localgw.dsV.type = 2;
-        localgw.dsV.dsX = localajn;
-        com.tencent.mm.sdk.b.a.IbL.l(localgw);
-        ad.d("MicroMsg.RecordMsgSendService", "check dataid[%s] type[%d]", new Object[] { localajn.dsU, Integer.valueOf(localajn.dataType) });
+        ajx localajx = (ajx)((Iterator)localObject).next();
+        gx localgx = new gx();
+        localgx.dub.type = 2;
+        localgx.dub.dud = localajx;
+        com.tencent.mm.sdk.b.a.IvT.l(localgx);
+        ae.d("MicroMsg.RecordMsgSendService", "check dataid[%s] type[%d]", new Object[] { localajx.dua, Integer.valueOf(localajx.dataType) });
         String str;
-        if (!bt.isNullOrNil(localgw.dsW.path))
+        if (!bu.isNullOrNil(localgx.duc.path))
         {
-          str = p.c(localajn, this.xqJ.field_msgId);
-          ad.d("MicroMsg.RecordMsgSendService", "check data ok, try copy[%s] to[%s]", new Object[] { localgw.dsW.path, str });
-          if (!localgw.dsW.path.equals(str)) {
-            com.tencent.mm.vfs.i.mz(localgw.dsW.path, str);
+          str = p.c(localajx, this.xGG.field_msgId);
+          ae.d("MicroMsg.RecordMsgSendService", "check data ok, try copy[%s] to[%s]", new Object[] { localgx.duc.path, str });
+          if (!localgx.duc.path.equals(str)) {
+            com.tencent.mm.vfs.o.mF(localgx.duc.path, str);
           }
         }
-        if (!bt.isNullOrNil(localgw.dsW.thumbPath))
+        if (!bu.isNullOrNil(localgx.duc.thumbPath))
         {
-          str = p.f(localajn, this.xqJ.field_msgId);
-          ad.d("MicroMsg.RecordMsgSendService", "check thumb ok, try copy[%s] to[%s]", new Object[] { localgw.dsW.thumbPath, str });
-          if (!localgw.dsW.thumbPath.equals(str)) {
-            com.tencent.mm.vfs.i.mz(localgw.dsW.thumbPath, str);
+          str = p.f(localajx, this.xGG.field_msgId);
+          ae.d("MicroMsg.RecordMsgSendService", "check thumb ok, try copy[%s] to[%s]", new Object[] { localgx.duc.thumbPath, str });
+          if (!localgx.duc.thumbPath.equals(str)) {
+            com.tencent.mm.vfs.o.mF(localgx.duc.thumbPath, str);
           }
         }
-        if (localajn.dataType == 3)
+        if (localajx.dataType == 3)
         {
-          ad.w("MicroMsg.RecordMsgSendService", "match voice type, clear cdn info");
-          localajn.aOk("");
-          localajn.aOj("");
-          localajn.aOi("");
-          localajn.aOh("");
+          ae.w("MicroMsg.RecordMsgSendService", "match voice type, clear cdn info");
+          localajx.aPH("");
+          localajx.aPG("");
+          localajx.aPF("");
+          localajx.aPE("");
         }
-        if ((bt.isNullOrNil(localajn.GgR)) && (bt.isNullOrNil(localajn.hAe))) {
+        if ((bu.isNullOrNil(localajx.GzA)) && (bu.isNullOrNil(localajx.hCS))) {
           break label46;
         }
       }
       if (i != 0)
       {
-        com.tencent.mm.kernel.g.ajB().gAO.a(new g(this.xqJ), 0);
+        com.tencent.mm.kernel.g.ajQ().gDv.a(new g(this.xGG), 0);
         AppMethodBeat.o(9564);
         return;
       }
-      localObject = k.b.a(p.a(this.xqJ.field_title, this.xqJ.field_desc, this.xqJ.field_dataProto), null, null);
-      s.this.e(this.xqJ.field_msgId, this.xqJ.field_localId, (String)localObject);
-      s.this.xqM = false;
+      localObject = k.b.a(p.a(this.xGG.field_title, this.xGG.field_desc, this.xGG.field_dataProto), null, null);
+      s.this.e(this.xGG.field_msgId, this.xGG.field_localId, (String)localObject);
+      s.this.xGJ = false;
       s.this.a(null, false);
       AppMethodBeat.o(9564);
     }
@@ -1199,59 +1198,59 @@ public final class s
   final class d
     implements Runnable
   {
-    private com.tencent.mm.plugin.record.a.k xqJ;
-    private boolean xrs;
+    private com.tencent.mm.plugin.record.a.k xGG;
+    private boolean xHp;
     
     public d(com.tencent.mm.plugin.record.a.k paramk, boolean paramBoolean)
     {
-      this.xqJ = paramk;
-      this.xrs = paramBoolean;
+      this.xGG = paramk;
+      this.xHp = paramBoolean;
     }
     
-    private byte a(ajn paramajn, int paramInt, boolean paramBoolean)
+    private byte a(ajx paramajx, int paramInt, boolean paramBoolean)
     {
       AppMethodBeat.i(9568);
       int k = 0;
       int j = 0;
       int i = 0;
-      int m = paramajn.dataType;
+      int m = paramajx.dataType;
       byte b1;
       if ((paramBoolean) && (m == 17))
       {
-        ad.i("MicroMsg.RecordMsgSendService", "NormalDataCopyRunnable run() inner record");
-        paramajn = p.avr(paramajn.Gib);
-        if (paramajn == null)
+        ae.i("MicroMsg.RecordMsgSendService", "NormalDataCopyRunnable run() inner record");
+        paramajx = p.awG(paramajx.GAK);
+        if (paramajx == null)
         {
           AppMethodBeat.o(9568);
           return 0;
         }
-        paramajn = paramajn.hDb.iterator();
-        for (b1 = 0; paramajn.hasNext(); b1 = (byte)(i | b1))
+        paramajx = paramajx.hFT.iterator();
+        for (b1 = 0; paramajx.hasNext(); b1 = (byte)(i | b1))
         {
-          i = a((ajn)paramajn.next(), paramInt + 1, paramBoolean);
-          ad.d("MicroMsg.RecordMsgSendService", "NormalDataCopyRunnable circleTraverseFavDataItem() %s result:%s ", new Object[] { Long.toBinaryString(i), Long.toBinaryString((byte)(i | b1)) });
+          i = a((ajx)paramajx.next(), paramInt + 1, paramBoolean);
+          ae.d("MicroMsg.RecordMsgSendService", "NormalDataCopyRunnable circleTraverseFavDataItem() %s result:%s ", new Object[] { Long.toBinaryString(i), Long.toBinaryString((byte)(i | b1)) });
         }
         AppMethodBeat.o(9568);
         return b1;
       }
       String str1;
       String str2;
-      if ((!bt.isNullOrNil(paramajn.GgR)) || (!bt.isNullOrNil(paramajn.Gij)))
+      if ((!bu.isNullOrNil(paramajx.GzA)) || (!bu.isNullOrNil(paramajx.GAS)))
       {
-        str1 = p.a(paramajn, this.xqJ.field_oriMsgId, paramInt);
-        str2 = p.a(paramajn, this.xqJ.field_msgId, paramInt);
-        if (com.tencent.mm.vfs.i.mz(str1, str2) <= 0L) {
+        str1 = p.a(paramajx, this.xGG.field_oriMsgId, paramInt);
+        str2 = p.a(paramajx, this.xGG.field_msgId, paramInt);
+        if (com.tencent.mm.vfs.o.mF(str1, str2) <= 0L) {
           break label1059;
         }
         paramBoolean = true;
-        ad.d("MicroMsg.RecordMsgSendService", "copy[%s] to [%s] result[%B]", new Object[] { str1, str2, Boolean.valueOf(paramBoolean) });
+        ae.d("MicroMsg.RecordMsgSendService", "copy[%s] to [%s] result[%B]", new Object[] { str1, str2, Boolean.valueOf(paramBoolean) });
         if (paramBoolean)
         {
-          if (!bt.isNullOrNil(paramajn.Ghi)) {
+          if (!bu.isNullOrNil(paramajx.GzR)) {
             break label1232;
           }
-          ad.i("MicroMsg.RecordMsgSendService", "not find full md5, try to calculate");
-          paramajn.aOq(com.tencent.mm.vfs.i.aPK(str2));
+          ae.i("MicroMsg.RecordMsgSendService", "not find full md5, try to calculate");
+          paramajx.aPN(com.tencent.mm.vfs.o.aRh(str2));
         }
       }
       label689:
@@ -1259,84 +1258,84 @@ public final class s
       label1232:
       for (i = 1;; i = 0)
       {
-        if (bt.isNullOrNil(paramajn.Ghk))
+        if (bu.isNullOrNil(paramajx.GzT))
         {
-          ad.i("MicroMsg.RecordMsgSendService", "not find head 256 md5, try to calculate");
-          paramajn.aOr(com.tencent.mm.b.g.ep(str2));
+          ae.i("MicroMsg.RecordMsgSendService", "not find head 256 md5, try to calculate");
+          paramajx.aPO(com.tencent.mm.b.g.eu(str2));
         }
         for (j = 1;; j = i)
         {
-          str2 = p.eJ(paramajn.dsU, paramInt);
-          str1 = p.g(str2, this.xqJ.field_msgId, false);
-          Object localObject = ((com.tencent.mm.plugin.record.a.a)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.record.a.a.class)).getRecordMsgCDNStorage().avq(str1);
+          str2 = p.eR(paramajx.dua, paramInt);
+          str1 = p.g(str2, this.xGG.field_msgId, false);
+          Object localObject = ((com.tencent.mm.plugin.record.a.a)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.record.a.a.class)).getRecordMsgCDNStorage().awF(str1);
           j localj;
           if (localObject == null)
           {
             localObject = new j();
-            ((j)localObject).field_cdnKey = paramajn.GgT;
-            ((j)localObject).field_cdnUrl = paramajn.GgR;
+            ((j)localObject).field_cdnKey = paramajx.GzC;
+            ((j)localObject).field_cdnUrl = paramajx.GzA;
             ((j)localObject).field_dataId = str2;
             ((j)localObject).field_mediaId = str1;
-            ((j)localObject).field_totalLen = ((int)paramajn.Ghm);
+            ((j)localObject).field_totalLen = ((int)paramajx.GzV);
             ((j)localObject).field_localId = ((j)localObject).field_mediaId.hashCode();
-            ((j)localObject).field_path = p.a(paramajn, this.xqJ.field_msgId, paramInt);
+            ((j)localObject).field_path = p.a(paramajx, this.xGG.field_msgId, paramInt);
             ((j)localObject).field_type = 2;
-            ((j)localObject).field_fileType = p.hf(paramajn.dataType, (int)paramajn.Ghm);
-            ((j)localObject).field_recordLocalId = this.xqJ.field_localId;
-            ((j)localObject).field_toUser = this.xqJ.field_toUser;
+            ((j)localObject).field_fileType = p.hh(paramajx.dataType, (int)paramajx.GzV);
+            ((j)localObject).field_recordLocalId = this.xGG.field_localId;
+            ((j)localObject).field_toUser = this.xGG.field_toUser;
             ((j)localObject).field_isThumb = false;
-            str2 = p.a(paramajn, this.xqJ.field_msgId, paramInt);
-            if ((!bt.isNullOrNil(paramajn.Gij)) && (!com.tencent.mm.vfs.i.fv(str2)))
+            str2 = p.a(paramajx, this.xGG.field_msgId, paramInt);
+            if ((!bu.isNullOrNil(paramajx.GAS)) && (!com.tencent.mm.vfs.o.fB(str2)))
             {
               ((j)localObject).field_status = -1;
-              a(paramajn, str2, str1);
+              a(paramajx, str2, str1);
             }
             i = 1;
             paramBoolean = ((com.tencent.mm.plugin.record.a.a)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.record.a.a.class)).getRecordMsgCDNStorage().b((j)localObject);
-            ad.i("MicroMsg.RecordMsgSendService", "[record] insert localId[%d] result[%B], recordLocalId:%d, dataId:%s, mediaId:%s", new Object[] { Integer.valueOf(((j)localObject).field_localId), Boolean.valueOf(paramBoolean), Integer.valueOf(((j)localObject).field_recordLocalId), ((j)localObject).field_dataId, ((j)localObject).field_mediaId });
+            ae.i("MicroMsg.RecordMsgSendService", "[record] insert localId[%d] result[%B], recordLocalId:%d, dataId:%s, mediaId:%s", new Object[] { Integer.valueOf(((j)localObject).field_localId), Boolean.valueOf(paramBoolean), Integer.valueOf(((j)localObject).field_recordLocalId), ((j)localObject).field_dataId, ((j)localObject).field_mediaId });
             k = j;
-            if (bt.isNullOrNil(paramajn.hAe))
+            if (bu.isNullOrNil(paramajx.hCS))
             {
               j = i;
-              if (bt.isNullOrNil(paramajn.hzV)) {}
+              if (bu.isNullOrNil(paramajx.hCJ)) {}
             }
             else
             {
-              str1 = p.b(paramajn, this.xqJ.field_oriMsgId, paramInt);
-              str2 = p.b(paramajn, this.xqJ.field_msgId, paramInt);
-              if (com.tencent.mm.vfs.i.mz(str1, str2) <= 0L) {
+              str1 = p.b(paramajx, this.xGG.field_oriMsgId, paramInt);
+              str2 = p.b(paramajx, this.xGG.field_msgId, paramInt);
+              if (com.tencent.mm.vfs.o.mF(str1, str2) <= 0L) {
                 break label1136;
               }
               paramBoolean = true;
-              ad.d("MicroMsg.RecordMsgSendService", "copy thumb[%s] to [%s] result[%B]", new Object[] { str1, str2, Boolean.valueOf(paramBoolean) });
-              str1 = p.eJ(p.agd(paramajn.dsU), paramInt);
-              str2 = p.g(str1, this.xqJ.field_msgId, false);
-              localj = ((com.tencent.mm.plugin.record.a.a)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.record.a.a.class)).getRecordMsgCDNStorage().avq(str2);
-              localObject = p.b(paramajn, this.xqJ.field_msgId, paramInt);
+              ae.d("MicroMsg.RecordMsgSendService", "copy thumb[%s] to [%s] result[%B]", new Object[] { str1, str2, Boolean.valueOf(paramBoolean) });
+              str1 = p.eR(p.aha(paramajx.dua), paramInt);
+              str2 = p.g(str1, this.xGG.field_msgId, false);
+              localj = ((com.tencent.mm.plugin.record.a.a)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.record.a.a.class)).getRecordMsgCDNStorage().awF(str2);
+              localObject = p.b(paramajx, this.xGG.field_msgId, paramInt);
               if (localj != null) {
                 break label1141;
               }
               localj = new j();
-              localj.field_cdnKey = paramajn.GgN;
-              localj.field_cdnUrl = paramajn.hAe;
+              localj.field_cdnKey = paramajx.Gzw;
+              localj.field_cdnUrl = paramajx.hCS;
               localj.field_dataId = str1;
               localj.field_mediaId = str2;
-              localj.field_totalLen = ((int)paramajn.Ghx);
+              localj.field_totalLen = ((int)paramajx.GAg);
               localj.field_localId = localj.field_mediaId.hashCode();
-              localj.field_path = p.b(paramajn, this.xqJ.field_msgId, paramInt);
+              localj.field_path = p.b(paramajx, this.xGG.field_msgId, paramInt);
               localj.field_type = 2;
               localj.field_fileType = com.tencent.mm.i.a.MediaType_FULLSIZEIMAGE;
-              localj.field_recordLocalId = this.xqJ.field_localId;
-              localj.field_toUser = this.xqJ.field_toUser;
+              localj.field_recordLocalId = this.xGG.field_localId;
+              localj.field_toUser = this.xGG.field_toUser;
               localj.field_isThumb = true;
-              if ((!bt.isNullOrNil(paramajn.hzV)) && (!com.tencent.mm.vfs.i.fv((String)localObject)))
+              if ((!bu.isNullOrNil(paramajx.hCJ)) && (!com.tencent.mm.vfs.o.fB((String)localObject)))
               {
                 localj.field_status = -1;
-                b(paramajn, (String)localObject, str2);
+                b(paramajx, (String)localObject, str2);
               }
               j = 1;
               paramBoolean = ((com.tencent.mm.plugin.record.a.a)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.record.a.a.class)).getRecordMsgCDNStorage().b(localj);
-              ad.i("MicroMsg.RecordMsgSendService", "[record] insert localId[%d] result[%B], recordLocalId:%d, dataId:%s, mediaId:%s", new Object[] { Integer.valueOf(localj.field_localId), Boolean.valueOf(paramBoolean), Integer.valueOf(localj.field_recordLocalId), localj.field_dataId, localj.field_mediaId });
+              ae.i("MicroMsg.RecordMsgSendService", "[record] insert localId[%d] result[%B], recordLocalId:%d, dataId:%s, mediaId:%s", new Object[] { Integer.valueOf(localj.field_localId), Boolean.valueOf(paramBoolean), Integer.valueOf(localj.field_recordLocalId), localj.field_dataId, localj.field_mediaId });
             }
             if (k == 0) {
               break label1213;
@@ -1352,14 +1351,14 @@ public final class s
             break;
           }
           if (((j)localObject).field_status == -1) {
-            a(paramajn, p.a(paramajn, this.xqJ.field_msgId, paramInt), str1);
+            a(paramajx, p.a(paramajx, this.xGG.field_msgId, paramInt), str1);
           }
           for (i = 1;; i = 0)
           {
             if (((j)localObject).field_status == 0) {
               i = 1;
             }
-            ad.i("MicroMsg.RecordMsgSendService", "NormalDataCopyRunnable cdnInfo.field_status:%s", new Object[] { Integer.valueOf(((j)localObject).field_status) });
+            ae.i("MicroMsg.RecordMsgSendService", "NormalDataCopyRunnable cdnInfo.field_status:%s", new Object[] { Integer.valueOf(((j)localObject).field_status) });
             k = j;
             break;
             label1136:
@@ -1368,13 +1367,13 @@ public final class s
             label1141:
             if (localj.field_status == -1)
             {
-              b(paramajn, p.b(paramajn, this.xqJ.field_msgId, paramInt), str2);
+              b(paramajx, p.b(paramajx, this.xGG.field_msgId, paramInt), str2);
               i = 1;
             }
             if (localj.field_status == 0) {
               i = 1;
             }
-            ad.i("MicroMsg.RecordMsgSendService", "NormalDataCopyRunnable cdnInfo.field_status:%s", new Object[] { Integer.valueOf(localj.field_status) });
+            ae.i("MicroMsg.RecordMsgSendService", "NormalDataCopyRunnable cdnInfo.field_status:%s", new Object[] { Integer.valueOf(localj.field_status) });
             j = i;
             break label1026;
             b1 = 0;
@@ -1384,28 +1383,28 @@ public final class s
       }
     }
     
-    private void a(final ajn paramajn, final String paramString1, String paramString2)
+    private void a(final ajx paramajx, final String paramString1, String paramString2)
     {
       AppMethodBeat.i(9569);
-      ad.i("MicroMsg.RecordMsgSendService", "[record] downloadTpUrl id:%s, mediaId:%s, path:%s", new Object[] { paramajn.dsU, paramString2, paramString1 });
+      ae.i("MicroMsg.RecordMsgSendService", "[record] downloadTpUrl id:%s, mediaId:%s, path:%s", new Object[] { paramajx.dua, paramString2, paramString1 });
       com.tencent.mm.i.g localg = new com.tencent.mm.i.g();
-      localg.fJi = "task_RecordMsgSendService_1";
+      localg.fLl = "task_RecordMsgSendService_1";
       localg.field_fileType = 19;
-      localg.field_authKey = paramajn.hAa;
-      localg.field_aesKey = paramajn.Gig;
-      localg.fJm = paramajn.Gij;
+      localg.field_authKey = paramajx.hCO;
+      localg.field_aesKey = paramajx.GAP;
+      localg.fLp = paramajx.GAS;
       localg.field_fullpath = paramString1;
       if (paramString2 == null) {}
       for (;;)
       {
         localg.field_mediaId = paramString2;
-        localg.fJj = new g.a()
+        localg.fLm = new g.a()
         {
           public final int a(String paramAnonymousString, int paramAnonymousInt, com.tencent.mm.i.c paramAnonymousc, com.tencent.mm.i.d paramAnonymousd, boolean paramAnonymousBoolean)
           {
             AppMethodBeat.i(9565);
             if ((paramAnonymousInt == 0) && (paramAnonymousd != null) && (paramAnonymousd.field_retCode == 0)) {
-              ad.i("MicroMsg.RecordMsgSendService", "[record] downloadTpUrl done id:%s, mediaId:%s, path:%s", new Object[] { paramajn.dsU, paramAnonymousString, paramString1 });
+              ae.i("MicroMsg.RecordMsgSendService", "[record] downloadTpUrl done id:%s, mediaId:%s, path:%s", new Object[] { paramajx.dua, paramAnonymousString, paramString1 });
             }
             for (int i = 1;; i = 0)
             {
@@ -1422,13 +1421,13 @@ public final class s
               }
               else
               {
-                paramAnonymousc = paramajn.dsU;
+                paramAnonymousc = paramajx.dua;
                 localObject = paramString1;
                 if (paramAnonymousd != null) {
                   break label279;
                 }
                 i = 0;
-                ad.e("MicroMsg.RecordMsgSendService", "[record] downloadTpUrl error id:%s, mediaId:%s, path:%s, err:(%d,%d)", new Object[] { paramAnonymousc, paramAnonymousString, localObject, Integer.valueOf(paramAnonymousInt), Integer.valueOf(i) });
+                ae.e("MicroMsg.RecordMsgSendService", "[record] downloadTpUrl error id:%s, mediaId:%s, path:%s, err:(%d,%d)", new Object[] { paramAnonymousc, paramAnonymousString, localObject, Integer.valueOf(paramAnonymousInt), Integer.valueOf(i) });
                 j = 1;
               }
               if (j != 0) {
@@ -1440,15 +1439,15 @@ public final class s
               label352:
               for (paramAnonymousc = paramAnonymousString.substring(0, paramAnonymousString.length() - 3);; paramAnonymousc = paramAnonymousString)
               {
-                localObject = ((com.tencent.mm.plugin.record.a.a)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.record.a.a.class)).getRecordMsgCDNStorage().avq(paramAnonymousc);
+                localObject = ((com.tencent.mm.plugin.record.a.a)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.record.a.a.class)).getRecordMsgCDNStorage().awF(paramAnonymousc);
                 if (localObject == null)
                 {
-                  localObject = paramajn.dsU;
+                  localObject = paramajx.dua;
                   String str = paramString1;
                   if (paramAnonymousd == null) {}
                   for (i = 0;; i = paramAnonymousd.field_retCode)
                   {
-                    ad.e("MicroMsg.RecordMsgSendService", "[record] downloadTpUrl error id:%s, mediaId:%s, tempMediaId:%s, path:%s, err:(%d,%d), cdnInfo==null", new Object[] { localObject, paramAnonymousString, paramAnonymousc, str, Integer.valueOf(paramAnonymousInt), Integer.valueOf(i) });
+                    ae.e("MicroMsg.RecordMsgSendService", "[record] downloadTpUrl error id:%s, mediaId:%s, tempMediaId:%s, path:%s, err:(%d,%d), cdnInfo==null", new Object[] { localObject, paramAnonymousString, paramAnonymousc, str, Integer.valueOf(paramAnonymousInt), Integer.valueOf(i) });
                     AppMethodBeat.o(9565);
                     return 0;
                     i = paramAnonymousd.field_retCode;
@@ -1471,8 +1470,8 @@ public final class s
             return new byte[0];
           }
         };
-        if (!com.tencent.mm.ao.f.aGI().b(localg, -1)) {
-          ad.e("MicroMsg.RecordMsgSendService", "recv openim record, add task failed");
+        if (!com.tencent.mm.an.f.aGZ().b(localg, -1)) {
+          ae.e("MicroMsg.RecordMsgSendService", "recv openim record, add task failed");
         }
         AppMethodBeat.o(9569);
         return;
@@ -1480,28 +1479,28 @@ public final class s
       }
     }
     
-    private void b(final ajn paramajn, final String paramString1, String paramString2)
+    private void b(final ajx paramajx, final String paramString1, String paramString2)
     {
       AppMethodBeat.i(9570);
-      ad.i("MicroMsg.RecordMsgSendService", "[record] downloadTpThumbUrl id:%s, mediaId:%s, thumbPath:%s", new Object[] { paramajn.dsU, paramString2, paramString1 });
+      ae.i("MicroMsg.RecordMsgSendService", "[record] downloadTpThumbUrl id:%s, mediaId:%s, thumbPath:%s", new Object[] { paramajx.dua, paramString2, paramString1 });
       com.tencent.mm.i.g localg = new com.tencent.mm.i.g();
-      localg.fJi = "task_RecordMsgSendService_2";
+      localg.fLl = "task_RecordMsgSendService_2";
       localg.field_fileType = 19;
-      localg.field_authKey = paramajn.hAa;
-      localg.field_aesKey = paramajn.hAb;
-      localg.fJm = paramajn.hzV;
+      localg.field_authKey = paramajx.hCO;
+      localg.field_aesKey = paramajx.hCP;
+      localg.fLp = paramajx.hCJ;
       localg.field_fullpath = paramString1;
       if (paramString2 == null) {}
       for (;;)
       {
         localg.field_mediaId = paramString2;
-        localg.fJj = new g.a()
+        localg.fLm = new g.a()
         {
           public final int a(String paramAnonymousString, int paramAnonymousInt, com.tencent.mm.i.c paramAnonymousc, com.tencent.mm.i.d paramAnonymousd, boolean paramAnonymousBoolean)
           {
             AppMethodBeat.i(9566);
             if ((paramAnonymousInt == 0) && (paramAnonymousd != null) && (paramAnonymousd.field_retCode == 0)) {
-              ad.i("MicroMsg.RecordMsgSendService", "[record] downloadTpThumbUrl done id:%s, mediaId:%s, thumbPath:%s", new Object[] { paramajn.dsU, paramAnonymousString, paramString1 });
+              ae.i("MicroMsg.RecordMsgSendService", "[record] downloadTpThumbUrl done id:%s, mediaId:%s, thumbPath:%s", new Object[] { paramajx.dua, paramAnonymousString, paramString1 });
             }
             for (int i = 1;; i = 0)
             {
@@ -1518,13 +1517,13 @@ public final class s
               }
               else
               {
-                paramAnonymousc = paramajn.dsU;
+                paramAnonymousc = paramajx.dua;
                 localObject = paramString1;
                 if (paramAnonymousd != null) {
                   break label279;
                 }
                 i = 0;
-                ad.e("MicroMsg.RecordMsgSendService", "[record] downloadTpThumbUrl error id:%s, mediaId:%s, thumbPath:%s err:(%d,%d)", new Object[] { paramAnonymousc, paramAnonymousString, localObject, Integer.valueOf(paramAnonymousInt), Integer.valueOf(i) });
+                ae.e("MicroMsg.RecordMsgSendService", "[record] downloadTpThumbUrl error id:%s, mediaId:%s, thumbPath:%s err:(%d,%d)", new Object[] { paramAnonymousc, paramAnonymousString, localObject, Integer.valueOf(paramAnonymousInt), Integer.valueOf(i) });
                 j = 1;
               }
               if (j != 0) {
@@ -1536,15 +1535,15 @@ public final class s
               label352:
               for (paramAnonymousc = paramAnonymousString.substring(0, paramAnonymousString.length() - 3);; paramAnonymousc = paramAnonymousString)
               {
-                localObject = ((com.tencent.mm.plugin.record.a.a)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.record.a.a.class)).getRecordMsgCDNStorage().avq(paramAnonymousc);
+                localObject = ((com.tencent.mm.plugin.record.a.a)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.record.a.a.class)).getRecordMsgCDNStorage().awF(paramAnonymousc);
                 if (localObject == null)
                 {
-                  localObject = paramajn.dsU;
+                  localObject = paramajx.dua;
                   String str = paramString1;
                   if (paramAnonymousd == null) {}
                   for (i = 0;; i = paramAnonymousd.field_retCode)
                   {
-                    ad.e("MicroMsg.RecordMsgSendService", "[record] downloadTpThumbUrl error id:%s, mediaId:%s, tempMediaId:%s, thumbPath:%s err:(%d,%d)", new Object[] { localObject, paramAnonymousString, paramAnonymousc, str, Integer.valueOf(paramAnonymousInt), Integer.valueOf(i) });
+                    ae.e("MicroMsg.RecordMsgSendService", "[record] downloadTpThumbUrl error id:%s, mediaId:%s, tempMediaId:%s, thumbPath:%s err:(%d,%d)", new Object[] { localObject, paramAnonymousString, paramAnonymousc, str, Integer.valueOf(paramAnonymousInt), Integer.valueOf(i) });
                     AppMethodBeat.o(9566);
                     return 0;
                     i = paramAnonymousd.field_retCode;
@@ -1567,8 +1566,8 @@ public final class s
             return new byte[0];
           }
         };
-        if (!com.tencent.mm.ao.f.aGI().b(localg, -1)) {
-          ad.e("MicroMsg.RecordMsgSendService", "recv openim record, add task failed");
+        if (!com.tencent.mm.an.f.aGZ().b(localg, -1)) {
+          ae.e("MicroMsg.RecordMsgSendService", "recv openim record, add task failed");
         }
         AppMethodBeat.o(9570);
         return;
@@ -1579,20 +1578,20 @@ public final class s
     public final void run()
     {
       AppMethodBeat.i(9567);
-      if (this.xqJ.field_dataProto == null)
+      if (this.xGG.field_dataProto == null)
       {
-        ad.w("MicroMsg.RecordMsgSendService", "NormalDataCopyRunnable info.field_dataProto null");
-        s.this.xqM = false;
+        ae.w("MicroMsg.RecordMsgSendService", "NormalDataCopyRunnable info.field_dataProto null");
+        s.this.xGJ = false;
         AppMethodBeat.o(9567);
         return;
       }
-      Iterator localIterator = this.xqJ.field_dataProto.nZa.iterator();
+      Iterator localIterator = this.xGG.field_dataProto.oeJ.iterator();
       boolean bool1 = false;
       boolean bool2 = false;
       if (localIterator.hasNext())
       {
-        int i = a((ajn)localIterator.next(), 1, this.xrs);
-        ad.d("MicroMsg.RecordMsgSendService", "NormalDataCopyRunnable run() state: %s ", new Object[] { Long.toBinaryString(i) });
+        int i = a((ajx)localIterator.next(), 1, this.xHp);
+        ae.d("MicroMsg.RecordMsgSendService", "NormalDataCopyRunnable run() state: %s ", new Object[] { Long.toBinaryString(i) });
         if ((i & 0x1) == 1) {
           bool2 = true;
         }
@@ -1605,17 +1604,17 @@ public final class s
       for (;;)
       {
         break;
-        ad.i("MicroMsg.RecordMsgSendService", "NormalDataCopyRunnable startEmbedded:%s infochanged:%s, needRun:%s", new Object[] { Boolean.valueOf(this.xrs), Boolean.valueOf(bool2), Boolean.valueOf(bool1) });
+        ae.i("MicroMsg.RecordMsgSendService", "NormalDataCopyRunnable startEmbedded:%s infochanged:%s, needRun:%s", new Object[] { Boolean.valueOf(this.xHp), Boolean.valueOf(bool2), Boolean.valueOf(bool1) });
         if (bool2)
         {
-          ad.i("MicroMsg.RecordMsgSendService", "update record info, something changed, localid %d msgid %d, type %d", new Object[] { Integer.valueOf(this.xqJ.field_localId), Long.valueOf(this.xqJ.field_msgId), Integer.valueOf(this.xqJ.field_type) });
-          ((com.tencent.mm.plugin.record.a.a)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.record.a.a.class)).getRecordMsgStorage().update(this.xqJ, new String[] { "localId" });
+          ae.i("MicroMsg.RecordMsgSendService", "update record info, something changed, localid %d msgid %d, type %d", new Object[] { Integer.valueOf(this.xGG.field_localId), Long.valueOf(this.xGG.field_msgId), Integer.valueOf(this.xGG.field_type) });
+          ((com.tencent.mm.plugin.record.a.a)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.record.a.a.class)).getRecordMsgStorage().update(this.xGG, new String[] { "localId" });
         }
         if (!bool1)
         {
-          ad.i("MicroMsg.RecordMsgSendService", "NormalDataCopyRunnable doSendContinue");
-          s.this.b(this.xqJ, false);
-          s.this.xqM = false;
+          ae.i("MicroMsg.RecordMsgSendService", "NormalDataCopyRunnable doSendContinue");
+          s.this.b(this.xGG, false);
+          s.this.xGJ = false;
           s.this.a(null, false);
         }
         ((com.tencent.mm.plugin.record.a.a)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.record.a.a.class)).getRecordMsgCDNService().run();
@@ -1627,14 +1626,14 @@ public final class s
   
   static final class e
   {
-    int iNG;
-    long xqT;
+    int iQA;
+    long xGQ;
     
     private e()
     {
       AppMethodBeat.i(9571);
-      this.xqT = SystemClock.elapsedRealtime();
-      this.iNG = 3;
+      this.xGQ = SystemClock.elapsedRealtime();
+      this.iQA = 3;
       AppMethodBeat.o(9571);
     }
   }

@@ -1,40 +1,40 @@
 package com.tencent.mm.plugin.story.i;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.ge;
+import com.tencent.mm.g.c.gf;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/story/storage/StoryCommentSync;", "Lcom/tencent/mm/autogen/table/BaseStoryCommentSync;", "()V", "fromUser", "", "getFromUser", "()Ljava/lang/String;", "setFromUser", "(Ljava/lang/String;)V", "storyOwner", "getStoryOwner", "setStoryOwner", "getDBInfo", "Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "Companion", "plugin-story_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/story/storage/StoryCommentSync;", "Lcom/tencent/mm/autogen/table/BaseStoryCommentSync;", "()V", "fromUser", "", "getFromUser", "()Ljava/lang/String;", "setFromUser", "(Ljava/lang/String;)V", "storyOwner", "getStoryOwner", "setStoryOwner", "getDBInfo", "Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "Companion", "plugin-story_release"})
 public final class c
-  extends ge
+  extends gf
 {
-  public static final a ATL;
+  public static final a Blj;
   private static final com.tencent.mm.sdk.e.c.a info;
-  public String ALG = "";
-  public String dyU = "";
+  public String Bdj = "";
+  public String dzZ = "";
   
   static
   {
     AppMethodBeat.i(119482);
-    ATL = new a((byte)0);
-    info = ge.Vv();
+    Blj = new a((byte)0);
+    info = gf.VD();
     AppMethodBeat.o(119482);
   }
   
-  public final void aBP(String paramString)
+  public final void aDi(String paramString)
   {
     AppMethodBeat.i(119480);
     p.h(paramString, "<set-?>");
-    this.ALG = paramString;
+    this.Bdj = paramString;
     AppMethodBeat.o(119480);
   }
   
-  public final void aCd(String paramString)
+  public final void aDw(String paramString)
   {
     AppMethodBeat.i(119479);
     p.h(paramString, "<set-?>");
-    this.dyU = paramString;
+    this.dzZ = paramString;
     AppMethodBeat.o(119479);
   }
   
@@ -47,7 +47,7 @@ public final class c
     return locala;
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/story/storage/StoryCommentSync$Companion;", "", "()V", "info", "Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "kotlin.jvm.PlatformType", "getInfo", "()Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "plugin-story_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/story/storage/StoryCommentSync$Companion;", "", "()V", "info", "Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "kotlin.jvm.PlatformType", "getInfo", "()Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "plugin-story_release"})
   public static final class a {}
 }
 

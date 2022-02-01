@@ -15,10 +15,10 @@ final class HomeUI$11
   
   public final void onCreateMMMenu(l paraml)
   {
-    AppMethodBeat.i(193667);
-    paraml.c(1, "拍摄状态");
-    paraml.c(2, "属性配置");
-    AppMethodBeat.o(193667);
+    AppMethodBeat.i(186953);
+    paraml.d(1, "拍摄状态");
+    paraml.d(2, "属性配置");
+    AppMethodBeat.o(186953);
   }
 }
 

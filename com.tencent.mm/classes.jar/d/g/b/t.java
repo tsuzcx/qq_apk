@@ -9,19 +9,19 @@ public abstract class t
   extends s
   implements h
 {
-  protected final a gfO()
+  public final m.a gkC()
+  {
+    return ((h)gkE()).gkC();
+  }
+  
+  public final h.a gkD()
+  {
+    return ((h)gkE()).gkD();
+  }
+  
+  protected final a gkq()
   {
     return z.a(this);
-  }
-  
-  public final m.a gga()
-  {
-    return ((h)ggc()).gga();
-  }
-  
-  public final h.a ggb()
-  {
-    return ((h)ggc()).ggb();
   }
   
   public Object invoke(Object paramObject)

@@ -12,7 +12,7 @@ final class RemittanceResultOldUI$2
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     AppMethodBeat.i(68305);
-    RemittanceResultOldUI.b(this.ygs);
+    RemittanceResultOldUI.b(this.ywj);
     AppMethodBeat.o(68305);
   }
 }

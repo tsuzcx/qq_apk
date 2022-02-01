@@ -8,12 +8,12 @@ public enum ic$a
   
   static
   {
-    AppMethodBeat.i(43537);
-    euH = new a("release", 0, 1);
-    euI = new a("debug", 1, 2);
-    euJ = new a("demo", 2, 3);
-    euK = new a[] { euH, euI, euJ };
-    AppMethodBeat.o(43537);
+    AppMethodBeat.i(43521);
+    ewc = new a("release", 0, 1);
+    ewd = new a("debug", 1, 2);
+    ewe = new a("demo", 2, 3);
+    ewf = new a[] { ewc, ewd, ewe };
+    AppMethodBeat.o(43521);
   }
   
   private ic$a(int paramInt)
@@ -28,11 +28,11 @@ public enum ic$a
     default: 
       return null;
     case 1: 
-      return euH;
+      return ewc;
     case 2: 
-      return euI;
+      return ewd;
     }
-    return euJ;
+    return ewe;
   }
 }
 

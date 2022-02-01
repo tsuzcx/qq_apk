@@ -5,10 +5,10 @@ import f.a.a.b;
 import java.util.LinkedList;
 
 public final class eg
-  extends cvc
+  extends cvw
 {
   public SKBuiltinBuffer_t ReqBuf;
-  public int nEf;
+  public int nJA;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -24,13 +24,13 @@ public final class eg
       }
       if (this.BaseRequest != null)
       {
-        paramVarArgs.lC(1, this.BaseRequest.computeSize());
+        paramVarArgs.lJ(1, this.BaseRequest.computeSize());
         this.BaseRequest.writeFields(paramVarArgs);
       }
-      paramVarArgs.aS(2, this.nEf);
+      paramVarArgs.aS(2, this.nJA);
       if (this.ReqBuf != null)
       {
-        paramVarArgs.lC(3, this.ReqBuf.computeSize());
+        paramVarArgs.lJ(3, this.ReqBuf.computeSize());
         this.ReqBuf.writeFields(paramVarArgs);
       }
       AppMethodBeat.o(152490);
@@ -42,21 +42,21 @@ public final class eg
       }
     }
     label558:
-    for (paramInt = f.a.a.a.lB(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
+    for (paramInt = f.a.a.a.lI(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
     {
-      int i = paramInt + f.a.a.b.b.a.bz(2, this.nEf);
+      int i = paramInt + f.a.a.b.b.a.bz(2, this.nJA);
       paramInt = i;
       if (this.ReqBuf != null) {
-        paramInt = i + f.a.a.a.lB(3, this.ReqBuf.computeSize());
+        paramInt = i + f.a.a.a.lI(3, this.ReqBuf.computeSize());
       }
       AppMethodBeat.o(152490);
       return paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = cvc.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cvc.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = cvw.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cvw.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
         if (this.ReqBuf == null)
@@ -81,7 +81,7 @@ public final class eg
           AppMethodBeat.o(152490);
           return -1;
         case 1: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
+          paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
@@ -89,18 +89,18 @@ public final class eg
             localObject2 = (byte[])paramVarArgs.get(paramInt);
             localObject1 = new jc();
             localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (bool = true; bool; bool = ((jc)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, cvc.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            for (bool = true; bool; bool = ((jc)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cvw.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
             localeg.BaseRequest = ((jc)localObject1);
             paramInt += 1;
           }
           AppMethodBeat.o(152490);
           return 0;
         case 2: 
-          localeg.nEf = ((f.a.a.a.a)localObject1).NPN.zc();
+          localeg.nJA = ((f.a.a.a.a)localObject1).OmT.zc();
           AppMethodBeat.o(152490);
           return 0;
         }
-        paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
+        paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
         i = paramVarArgs.size();
         paramInt = 0;
         while (paramInt < i)
@@ -108,7 +108,7 @@ public final class eg
           localObject2 = (byte[])paramVarArgs.get(paramInt);
           localObject1 = new SKBuiltinBuffer_t();
           localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-          for (bool = true; bool; bool = ((SKBuiltinBuffer_t)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, cvc.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+          for (bool = true; bool; bool = ((SKBuiltinBuffer_t)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cvw.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
           localeg.ReqBuf = ((SKBuiltinBuffer_t)localObject1);
           paramInt += 1;
         }

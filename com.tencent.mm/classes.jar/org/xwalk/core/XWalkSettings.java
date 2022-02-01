@@ -2,6 +2,7 @@ package org.xwalk.core;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.ArrayList;
+import java.util.Map;
 
 public class XWalkSettings
 {
@@ -26,6 +27,7 @@ public class XWalkSettings
   private ReflectMethod getAllowFileAccessFromFileURLsMethod;
   private ReflectMethod getAllowFileAccessMethod;
   private ReflectMethod getAllowUniversalAccessFromFileURLsMethod;
+  private ReflectMethod getAppBrandInfoMethod;
   private ReflectMethod getAudioPlaybackRequiresUserGestureMethod;
   private ReflectMethod getBlockNetworkImageMethod;
   private ReflectMethod getBlockNetworkLoadsMethod;
@@ -65,6 +67,7 @@ public class XWalkSettings
   private ReflectMethod setAllowFileAccessFromFileURLsbooleanMethod;
   private ReflectMethod setAllowFileAccessbooleanMethod;
   private ReflectMethod setAllowUniversalAccessFromFileURLsbooleanMethod;
+  private ReflectMethod setAppBrandInfoMethod;
   private ReflectMethod setAppCacheEnabledbooleanMethod;
   private ReflectMethod setAppCachePathStringMethod;
   private ReflectMethod setAudioPlaybackRequiresUserGesturebooleanMethod;
@@ -199,6 +202,8 @@ public class XWalkSettings
     this.getLoadWithOverviewModeMethod = new ReflectMethod(null, "getLoadWithOverviewMode", new Class[0]);
     this.SetLogCallBackXWalkLogMessageListenerInternalMethod = new ReflectMethod(null, "SetLogCallBack", new Class[0]);
     this.SetJSExceptionCallBackXWalkJSExceptionListenerInternalMethod = new ReflectMethod(null, "SetJSExceptionCallBack", new Class[0]);
+    this.setAppBrandInfoMethod = new ReflectMethod(null, "setAppBrandInfo", new Class[0]);
+    this.getAppBrandInfoMethod = new ReflectMethod(null, "getAppBrandInfoSuper", new Class[0]);
     this.InvokeChannelInternalMethod = new ReflectMethod(null, "InvokeChannel", new Class[0]);
     this.bridge = paramObject;
     reflectionInit();
@@ -290,11 +295,11 @@ public class XWalkSettings
   
   public void disableCustomizedLongPressTimeout()
   {
-    AppMethodBeat.i(195617);
+    AppMethodBeat.i(207645);
     try
     {
       this.disableCustomizedLongPressTimeoutVoidMethod.invoke(new Object[0]);
-      AppMethodBeat.o(195617);
+      AppMethodBeat.o(207645);
       return;
     }
     catch (UnsupportedOperationException localUnsupportedOperationException)
@@ -303,21 +308,21 @@ public class XWalkSettings
       if (this.coreWrapper == null)
       {
         localRuntimeException = new RuntimeException("Crosswalk's APIs are not ready yet");
-        AppMethodBeat.o(195617);
+        AppMethodBeat.o(207645);
         throw localRuntimeException;
       }
       XWalkCoreWrapper.handleRuntimeError(localRuntimeException);
-      AppMethodBeat.o(195617);
+      AppMethodBeat.o(207645);
     }
   }
   
   public void enableCustomizedLongPressTimeout(int paramInt)
   {
-    AppMethodBeat.i(195616);
+    AppMethodBeat.i(207644);
     try
     {
       this.enableCustomizedLongPressTimeoutIntMethod.invoke(new Object[] { Integer.valueOf(paramInt) });
-      AppMethodBeat.o(195616);
+      AppMethodBeat.o(207644);
       return;
     }
     catch (UnsupportedOperationException localUnsupportedOperationException)
@@ -326,11 +331,11 @@ public class XWalkSettings
       if (this.coreWrapper == null)
       {
         localRuntimeException = new RuntimeException("Crosswalk's APIs are not ready yet");
-        AppMethodBeat.o(195616);
+        AppMethodBeat.o(207644);
         throw localRuntimeException;
       }
       XWalkCoreWrapper.handleRuntimeError(localRuntimeException);
-      AppMethodBeat.o(195616);
+      AppMethodBeat.o(207644);
     }
   }
   
@@ -452,6 +457,30 @@ public class XWalkSettings
       AppMethodBeat.o(154900);
     }
     return false;
+  }
+  
+  public Map<String, String> getAppBrandInfo()
+  {
+    AppMethodBeat.i(207647);
+    try
+    {
+      Map localMap = (Map)this.getAppBrandInfoMethod.invoke(new Object[0]);
+      AppMethodBeat.o(207647);
+      return localMap;
+    }
+    catch (UnsupportedOperationException localUnsupportedOperationException)
+    {
+      RuntimeException localRuntimeException;
+      if (this.coreWrapper == null)
+      {
+        localRuntimeException = new RuntimeException("Crosswalk's APIs are not ready yet");
+        AppMethodBeat.o(207647);
+        throw localRuntimeException;
+      }
+      XWalkCoreWrapper.handleRuntimeError(localRuntimeException);
+      AppMethodBeat.o(207647);
+    }
+    return null;
   }
   
   public boolean getAudioPlaybackRequiresUserGesture()
@@ -1350,6 +1379,8 @@ public class XWalkSettings
     this.getFantasyFontFamilyMethod.init(this.bridge, null, "getFantasyFontFamilySuper", new Class[0]);
     this.getMinimumFontSizeMethod.init(this.bridge, null, "getMinimumFontSizeSuper", new Class[0]);
     this.getMinimumLogicalFontSizeMethod.init(this.bridge, null, "getMinimumLogicalFontSizeSuper", new Class[0]);
+    this.getAppBrandInfoMethod.init(this.bridge, null, "getAppBrandInfoSuper", new Class[0]);
+    this.setAppBrandInfoMethod.init(this.bridge, null, "setAppBrandInfoSuper", new Class[] { Map.class });
     this.SetJSExceptionCallBackXWalkJSExceptionListenerInternalMethod.init(this.bridge, null, "SetJSExceptionCallBackSuper", new Class[] { this.coreWrapper.getBridgeClass("XWalkJSExceptionListenerBridge") });
     this.InvokeChannelInternalMethod.init(this.bridge, null, "InvokeChannel", new Class[] { Integer.TYPE, [Ljava.lang.Object.class });
     AppMethodBeat.o(154948);
@@ -1466,6 +1497,28 @@ public class XWalkSettings
       }
       XWalkCoreWrapper.handleRuntimeError(localRuntimeException);
       AppMethodBeat.o(154885);
+    }
+  }
+  
+  public void setAppBrandInfo(Map<String, String> paramMap)
+  {
+    AppMethodBeat.i(207646);
+    try
+    {
+      this.setAppBrandInfoMethod.invoke(new Object[] { paramMap });
+      AppMethodBeat.o(207646);
+      return;
+    }
+    catch (UnsupportedOperationException paramMap)
+    {
+      if (this.coreWrapper == null)
+      {
+        paramMap = new RuntimeException("Crosswalk's APIs are not ready yet");
+        AppMethodBeat.o(207646);
+        throw paramMap;
+      }
+      XWalkCoreWrapper.handleRuntimeError(paramMap);
+      AppMethodBeat.o(207646);
     }
   }
   

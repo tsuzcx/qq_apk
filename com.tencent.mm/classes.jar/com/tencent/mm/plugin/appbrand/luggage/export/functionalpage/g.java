@@ -7,23 +7,23 @@ import android.os.Parcelable;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntimeContainerWC;
 import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
-import com.tencent.mm.plugin.appbrand.o;
+import com.tencent.mm.plugin.appbrand.q;
 import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
 import com.tencent.mm.plugin.appbrand.task.f;
 import com.tencent.mm.plugin.appbrand.ui.AppBrandPluginUI;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.i;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.j;
 
-@d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/FunctionalLaunchInterceptor;", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntimeWCFactory;", "()V", "matchLaunchScene", "", "config", "Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfigWC;", "stat", "Lcom/tencent/mm/plugin/appbrand/report/AppBrandStatObject;", "scene", "", "shouldInterceptLaunch", "_context", "Landroid/content/Context;", "shouldOverrideRuntimeInitialization", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntimeWC;", "container", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntimeContainerWC;", "plugin-appbrand-integration_release"})
+@d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/FunctionalLaunchInterceptor;", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntimeWCFactory;", "()V", "matchLaunchScene", "", "config", "Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfigWC;", "stat", "Lcom/tencent/mm/plugin/appbrand/report/AppBrandStatObject;", "scene", "", "shouldInterceptLaunch", "_context", "Landroid/content/Context;", "shouldOverrideRuntimeInitialization", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntimeWC;", "container", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntimeContainerWC;", "plugin-appbrand-integration_release"})
 public final class g
-  implements com.tencent.mm.plugin.appbrand.p
+  implements q
 {
-  public static final g lOt;
+  public static final g lSU;
   
   static
   {
     AppMethodBeat.i(50870);
-    lOt = new g();
+    lSU = new g();
     AppMethodBeat.o(50870);
   }
   
@@ -34,11 +34,11 @@ public final class g
     d.g.b.p.h(paramAppBrandStatObject, "stat");
     if (e(paramAppBrandInitConfigWC, paramAppBrandStatObject))
     {
-      f.UA(paramAppBrandInitConfigWC.appId);
+      f.Vl(paramAppBrandInitConfigWC.appId);
       if (paramContext != null) {
         break label202;
       }
-      paramContext = aj.getContext();
+      paramContext = ak.getContext();
     }
     label202:
     for (;;)
@@ -48,12 +48,12 @@ public final class g
       if (!(paramContext instanceof Activity)) {
         localIntent.addFlags(268435456);
       }
-      localIntent.putExtra("key_launch_app_client_version", i.Ics);
+      localIntent.putExtra("key_launch_app_client_version", j.IwD);
       localIntent.putExtra("key_appbrand_init_config", (Parcelable)paramAppBrandInitConfigWC);
       localIntent.putExtra("key_appbrand_stat_object", (Parcelable)paramAppBrandStatObject);
       paramAppBrandInitConfigWC = new com.tencent.mm.hellhoundlib.b.a().bc(localIntent);
-      com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramAppBrandInitConfigWC.ahp(), "com/tencent/mm/plugin/appbrand/luggage/export/functionalpage/FunctionalLaunchInterceptor", "shouldInterceptLaunch", "(Landroid/content/Context;Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfigWC;Lcom/tencent/mm/plugin/appbrand/report/AppBrandStatObject;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramContext.startActivity((Intent)paramAppBrandInitConfigWC.mq(0));
+      com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramAppBrandInitConfigWC.ahE(), "com/tencent/mm/plugin/appbrand/luggage/export/functionalpage/FunctionalLaunchInterceptor", "shouldInterceptLaunch", "(Landroid/content/Context;Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfigWC;Lcom/tencent/mm/plugin/appbrand/report/AppBrandStatObject;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramContext.startActivity((Intent)paramAppBrandInitConfigWC.mt(0));
       com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/plugin/appbrand/luggage/export/functionalpage/FunctionalLaunchInterceptor", "shouldInterceptLaunch", "(Landroid/content/Context;Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfigWC;Lcom/tencent/mm/plugin/appbrand/report/AppBrandStatObject;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       paramAppBrandInitConfigWC = paramContext;
       if (!(paramContext instanceof Activity)) {
@@ -75,26 +75,26 @@ public final class g
     AppMethodBeat.i(50869);
     d.g.b.p.h(paramAppBrandInitConfigWC, "config");
     d.g.b.p.h(paramAppBrandStatObject, "stat");
-    boolean bool = uw(paramAppBrandStatObject.scene);
+    boolean bool = uC(paramAppBrandStatObject.scene);
     AppMethodBeat.o(50869);
     return bool;
   }
   
-  public static final boolean uw(int paramInt)
+  public static final boolean uC(int paramInt)
   {
     return 1111 == paramInt;
   }
   
-  public final o c(AppBrandInitConfigWC paramAppBrandInitConfigWC, AppBrandRuntimeContainerWC paramAppBrandRuntimeContainerWC)
+  public final com.tencent.mm.plugin.appbrand.p c(AppBrandInitConfigWC paramAppBrandInitConfigWC, AppBrandRuntimeContainerWC paramAppBrandRuntimeContainerWC)
   {
     AppMethodBeat.i(50868);
     d.g.b.p.h(paramAppBrandInitConfigWC, "config");
     d.g.b.p.h(paramAppBrandRuntimeContainerWC, "container");
-    AppBrandStatObject localAppBrandStatObject = paramAppBrandInitConfigWC.Ea();
+    AppBrandStatObject localAppBrandStatObject = paramAppBrandInitConfigWC.Ed();
     d.g.b.p.g(localAppBrandStatObject, "config.statObject");
     if (e(paramAppBrandInitConfigWC, localAppBrandStatObject))
     {
-      paramAppBrandInitConfigWC = (o)new l(paramAppBrandRuntimeContainerWC);
+      paramAppBrandInitConfigWC = (com.tencent.mm.plugin.appbrand.p)new l(paramAppBrandRuntimeContainerWC);
       AppMethodBeat.o(50868);
       return paramAppBrandInitConfigWC;
     }

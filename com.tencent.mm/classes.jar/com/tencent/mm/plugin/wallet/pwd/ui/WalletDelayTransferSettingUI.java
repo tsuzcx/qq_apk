@@ -5,53 +5,52 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.kernel.b;
+import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.messenger.foundation.a.a.j;
 import com.tencent.mm.plugin.messenger.foundation.a.a.k.a;
 import com.tencent.mm.plugin.messenger.foundation.a.l;
-import com.tencent.mm.plugin.wallet_core.c.aj;
-import com.tencent.mm.protocal.protobuf.cah;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.al.a;
+import com.tencent.mm.protocal.protobuf.cbb;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.am.a;
 import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.ui.base.preference.Preference;
 
 public class WalletDelayTransferSettingUI
   extends MMPreference
-  implements com.tencent.mm.al.f
+  implements com.tencent.mm.ak.f
 {
-  private Preference CLG;
-  private Preference CLH;
-  private Preference CLI;
-  private Preference CLJ;
-  private String CLK;
-  private int CLL = 0;
+  private Preference Ddp;
+  private Preference Ddq;
+  private Preference Ddr;
+  private Preference Dds;
+  private String Ddt;
+  private int Ddu = 0;
   private String mTitle;
-  private long pek;
+  private long pkQ;
   private com.tencent.mm.ui.base.preference.f screen;
-  private String yaH;
+  private String yqy;
   
-  private boolean MT(int paramInt)
+  private boolean Nz(int paramInt)
   {
-    return (this.pek & paramInt) != 0L;
+    return (this.pkQ & paramInt) != 0L;
   }
   
-  private void eEf()
+  private void eHM()
   {
     AppMethodBeat.i(69621);
-    if ((this.CLL == 1) && (!bt.isNullOrNil(this.yaH)))
+    if ((this.Ddu == 1) && (!bu.isNullOrNil(this.yqy)))
     {
       addIconOptionMenu(0, 2131234701, new MenuItem.OnMenuItemClickListener()
       {
         public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
         {
           AppMethodBeat.i(69618);
-          com.tencent.mm.wallet_core.ui.e.o(WalletDelayTransferSettingUI.this.getContext(), WalletDelayTransferSettingUI.a(WalletDelayTransferSettingUI.this), false);
+          com.tencent.mm.wallet_core.ui.f.p(WalletDelayTransferSettingUI.this.getContext(), WalletDelayTransferSettingUI.a(WalletDelayTransferSettingUI.this), false);
           AppMethodBeat.o(69618);
           return false;
         }
@@ -63,49 +62,49 @@ public class WalletDelayTransferSettingUI
     AppMethodBeat.o(69621);
   }
   
-  private void eEg()
+  private void eHN()
   {
     AppMethodBeat.i(69626);
-    if (MT(16))
+    if (Nz(16))
     {
-      eEi();
+      eHP();
       AppMethodBeat.o(69626);
       return;
     }
-    if (MT(32))
+    if (Nz(32))
     {
-      eEj();
+      eHQ();
       AppMethodBeat.o(69626);
       return;
     }
-    eEh();
+    eHO();
     AppMethodBeat.o(69626);
   }
   
-  private void eEh()
+  private void eHO()
   {
     AppMethodBeat.i(69627);
-    this.CLG.setWidgetLayoutResource(2131494878);
-    this.CLH.setWidgetLayoutResource(2131494879);
-    this.CLI.setWidgetLayoutResource(2131494879);
+    this.Ddp.setWidgetLayoutResource(2131494878);
+    this.Ddq.setWidgetLayoutResource(2131494879);
+    this.Ddr.setWidgetLayoutResource(2131494879);
     AppMethodBeat.o(69627);
   }
   
-  private void eEi()
+  private void eHP()
   {
     AppMethodBeat.i(69628);
-    this.CLG.setWidgetLayoutResource(2131494879);
-    this.CLH.setWidgetLayoutResource(2131494878);
-    this.CLI.setWidgetLayoutResource(2131494879);
+    this.Ddp.setWidgetLayoutResource(2131494879);
+    this.Ddq.setWidgetLayoutResource(2131494878);
+    this.Ddr.setWidgetLayoutResource(2131494879);
     AppMethodBeat.o(69628);
   }
   
-  private void eEj()
+  private void eHQ()
   {
     AppMethodBeat.i(69629);
-    this.CLG.setWidgetLayoutResource(2131494879);
-    this.CLH.setWidgetLayoutResource(2131494879);
-    this.CLI.setWidgetLayoutResource(2131494878);
+    this.Ddp.setWidgetLayoutResource(2131494879);
+    this.Ddq.setWidgetLayoutResource(2131494879);
+    this.Ddr.setWidgetLayoutResource(2131494878);
     AppMethodBeat.o(69629);
   }
   
@@ -117,14 +116,14 @@ public class WalletDelayTransferSettingUI
   public void initView()
   {
     AppMethodBeat.i(69622);
-    this.CLG = this.screen.aVD("wallet_transfer_realtime");
-    this.CLH = this.screen.aVD("wallet_transfer_2h");
-    this.CLI = this.screen.aVD("wallet_transfer_24h");
-    this.CLJ = this.screen.aVD("wallet_transfer_title_tips");
-    this.CLG.acw(8);
-    this.CLH.acw(8);
-    this.CLI.acw(8);
-    eEg();
+    this.Ddp = this.screen.aXe("wallet_transfer_realtime");
+    this.Ddq = this.screen.aXe("wallet_transfer_2h");
+    this.Ddr = this.screen.aXe("wallet_transfer_24h");
+    this.Dds = this.screen.aXe("wallet_transfer_title_tips");
+    this.Ddp.ade(8);
+    this.Ddq.ade(8);
+    this.Ddr.ade(8);
+    eHN();
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -146,34 +145,34 @@ public class WalletDelayTransferSettingUI
     setActionbarColor(getActionbarColor());
     this.screen = getPreferenceScreen();
     this.screen.addPreferencesFromResource(2131951757);
-    g.ajD();
-    this.pek = ((Long)g.ajC().ajl().get(147457, Long.valueOf(0L))).longValue();
+    g.ajS();
+    this.pkQ = ((Long)g.ajR().ajA().get(147457, Long.valueOf(0L))).longValue();
     initView();
-    g.ajD();
-    g.ajB().gAO.a(385, this);
-    g.ajD();
-    this.CLK = ((String)g.ajC().ajl().get(al.a.Ixo, ""));
-    g.ajD();
-    this.mTitle = ((String)g.ajC().ajl().get(al.a.Ixn, ""));
-    g.ajD();
-    this.yaH = ((String)g.ajC().ajl().get(al.a.Ixq, ""));
-    g.ajD();
-    this.CLL = ((Integer)g.ajC().ajl().get(al.a.Ixr, Integer.valueOf(0))).intValue();
-    if ((bt.isNullOrNil(this.CLK)) || (bt.isNullOrNil(this.mTitle)) || (bt.isNullOrNil(this.yaH))) {}
-    for (boolean bool = aj.a(true, null);; bool = aj.a(false, null))
+    g.ajS();
+    g.ajQ().gDv.a(385, this);
+    g.ajS();
+    this.Ddt = ((String)g.ajR().ajA().get(am.a.IRM, ""));
+    g.ajS();
+    this.mTitle = ((String)g.ajR().ajA().get(am.a.IRL, ""));
+    g.ajS();
+    this.yqy = ((String)g.ajR().ajA().get(am.a.IRO, ""));
+    g.ajS();
+    this.Ddu = ((Integer)g.ajR().ajA().get(am.a.IRP, Integer.valueOf(0))).intValue();
+    if ((bu.isNullOrNil(this.Ddt)) || (bu.isNullOrNil(this.mTitle)) || (bu.isNullOrNil(this.yqy))) {}
+    for (boolean bool = com.tencent.mm.plugin.wallet_core.c.aj.a(true, null);; bool = com.tencent.mm.plugin.wallet_core.c.aj.a(false, null))
     {
-      com.tencent.mm.wallet_core.ui.e.fRZ();
+      com.tencent.mm.wallet_core.ui.f.fWv();
       if (!bool)
       {
-        ad.i("MicroMsg.WalletDelayTransferSettingUI", "no need do scene, remove listener");
-        g.ajD();
-        g.ajB().gAO.b(385, this);
+        ae.i("MicroMsg.WalletDelayTransferSettingUI", "no need do scene, remove listener");
+        g.ajS();
+        g.ajQ().gDv.b(385, this);
       }
       AppMethodBeat.o(69620);
       return;
-      this.CLJ.setTitle(this.CLK);
+      this.Dds.setTitle(this.Ddt);
       setMMTitle(this.mTitle);
-      eEf();
+      eHM();
     }
   }
   
@@ -182,18 +181,18 @@ public class WalletDelayTransferSettingUI
     int i = 1;
     AppMethodBeat.i(69623);
     super.onDestroy();
-    ad.i("MicroMsg.WalletDelayTransferSettingUI", "do oplog, %s", new Object[] { Long.valueOf(this.pek) });
-    if (MT(16)) {}
+    ae.i("MicroMsg.WalletDelayTransferSettingUI", "do oplog, %s", new Object[] { Long.valueOf(this.pkQ) });
+    if (Nz(16)) {}
     for (;;)
     {
-      cah localcah = new cah();
-      localcah.yho = i;
-      ((l)g.ab(l.class)).azo().c(new k.a(205, localcah));
-      g.ajD();
-      g.ajB().gAO.b(385, this);
+      cbb localcbb = new cbb();
+      localcbb.yxf = i;
+      ((l)g.ab(l.class)).azE().d(new k.a(205, localcbb));
+      g.ajS();
+      g.ajQ().gDv.b(385, this);
       AppMethodBeat.o(69623);
       return;
-      if (MT(32)) {
+      if (Nz(32)) {
         i = 2;
       } else {
         i = 0;
@@ -207,26 +206,26 @@ public class WalletDelayTransferSettingUI
     paramf = paramPreference.mKey;
     if ("wallet_transfer_realtime".equals(paramf))
     {
-      this.pek &= 0xFFFFFFEF;
-      this.pek &= 0xFFFFFFDF;
+      this.pkQ &= 0xFFFFFFEF;
+      this.pkQ &= 0xFFFFFFDF;
     }
     for (;;)
     {
-      eEg();
-      g.ajD();
-      g.ajC().ajl().set(147457, Long.valueOf(this.pek));
+      eHN();
+      g.ajS();
+      g.ajR().ajA().set(147457, Long.valueOf(this.pkQ));
       finish();
       AppMethodBeat.o(69624);
       return true;
       if ("wallet_transfer_2h".equals(paramf))
       {
-        this.pek &= 0xFFFFFFDF;
-        this.pek |= 0x10;
+        this.pkQ &= 0xFFFFFFDF;
+        this.pkQ |= 0x10;
       }
       else if ("wallet_transfer_24h".equals(paramf))
       {
-        this.pek &= 0xFFFFFFEF;
-        this.pek |= 0x20;
+        this.pkQ &= 0xFFFFFFEF;
+        this.pkQ |= 0x20;
       }
     }
   }
@@ -234,23 +233,23 @@ public class WalletDelayTransferSettingUI
   public void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     AppMethodBeat.i(69625);
-    if ((paramn instanceof aj))
+    if ((paramn instanceof com.tencent.mm.plugin.wallet_core.c.aj))
     {
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        this.CLK = ((aj)paramn).CPz;
-        this.mTitle = ((aj)paramn).CPy;
-        this.yaH = ((aj)paramn).CPB;
-        this.CLL = ((aj)paramn).CPC;
-        if (!bt.isNullOrNil(this.CLK))
+        this.Ddt = ((com.tencent.mm.plugin.wallet_core.c.aj)paramn).Dhd;
+        this.mTitle = ((com.tencent.mm.plugin.wallet_core.c.aj)paramn).Dhc;
+        this.yqy = ((com.tencent.mm.plugin.wallet_core.c.aj)paramn).Dhf;
+        this.Ddu = ((com.tencent.mm.plugin.wallet_core.c.aj)paramn).Dhg;
+        if (!bu.isNullOrNil(this.Ddt))
         {
-          this.CLJ.setTitle(this.CLK);
-          if (bt.isNullOrNil(this.mTitle)) {
+          this.Dds.setTitle(this.Ddt);
+          if (bu.isNullOrNil(this.mTitle)) {
             break label150;
           }
           setMMTitle(this.mTitle);
           label109:
-          eEf();
+          eHM();
         }
       }
       for (;;)
@@ -258,19 +257,19 @@ public class WalletDelayTransferSettingUI
         this.screen.notifyDataSetChanged();
         AppMethodBeat.o(69625);
         return;
-        ad.i("MicroMsg.WalletDelayTransferSettingUI", "use hardcode wording");
-        this.CLJ.setTitle(2131765235);
+        ae.i("MicroMsg.WalletDelayTransferSettingUI", "use hardcode wording");
+        this.Dds.setTitle(2131765235);
         break;
         label150:
-        ad.i("MicroMsg.WalletDelayTransferSettingUI", "use hardcode title wording");
+        ae.i("MicroMsg.WalletDelayTransferSettingUI", "use hardcode title wording");
         setMMTitle(2131765603);
         break label109;
-        ad.i("MicroMsg.WalletDelayTransferSettingUI", "net error, use hardcode wording");
-        this.CLJ.setTitle(2131765235);
+        ae.i("MicroMsg.WalletDelayTransferSettingUI", "net error, use hardcode wording");
+        this.Dds.setTitle(2131765235);
         setMMTitle(2131765603);
       }
     }
-    ad.i("MicroMsg.WalletDelayTransferSettingUI", "other scene");
+    ae.i("MicroMsg.WalletDelayTransferSettingUI", "other scene");
     AppMethodBeat.o(69625);
   }
   
@@ -282,7 +281,7 @@ public class WalletDelayTransferSettingUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.pwd.ui.WalletDelayTransferSettingUI
  * JD-Core Version:    0.7.0.1
  */

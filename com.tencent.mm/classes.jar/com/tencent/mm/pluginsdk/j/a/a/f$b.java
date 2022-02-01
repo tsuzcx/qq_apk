@@ -4,9 +4,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.j.a.c.q;
 import com.tencent.mm.pluginsdk.j.a.c.q.a;
 import com.tencent.mm.pluginsdk.j.a.c.s;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.vfs.i;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.vfs.o;
 
 final class f$b
 {
@@ -15,7 +15,7 @@ final class f$b
     AppMethodBeat.i(151957);
     if (params == null)
     {
-      ad.i("MicroMsg.ResDownloader.CheckResUpdate.DoDecryptLogic", "get null record, skip");
+      ae.i("MicroMsg.ResDownloader.CheckResUpdate.DoDecryptLogic", "get null record, skip");
       AppMethodBeat.o(151957);
       return;
     }
@@ -25,12 +25,12 @@ final class f$b
     boolean bool1 = params.field_fileCompress;
     boolean bool2 = params.field_fileEncrypt;
     byte[] arrayOfByte = params.field_eccSignature;
-    int i = bt.getInt(params.field_fileVersion, 0);
+    int i = bu.getInt(params.field_fileVersion, 0);
     int j = params.field_keyVersion;
     String str4 = params.field_encryptKey;
     boolean bool3 = params.field_deleted;
-    ad.i("MicroMsg.ResDownloader.CheckResUpdate.DoDecryptLogic", "queried info: deleted = " + bool3 + ", filePath = " + str2 + ", md5 = " + str3 + ", originalMd5 = " + params.field_originalMd5 + ", fileCompress = " + bool1 + ", fileEncrypt = " + bool2 + ", eccSignature = " + arrayOfByte + ", fileVersion = " + i + ", (encrypt key == empty) = " + bt.isNullOrNil(str4));
-    ad.d("MicroMsg.ResDownloader.CheckResUpdate.DoDecryptLogic", "queried encryptKey = %s", new Object[] { str4 });
+    ae.i("MicroMsg.ResDownloader.CheckResUpdate.DoDecryptLogic", "queried info: deleted = " + bool3 + ", filePath = " + str2 + ", md5 = " + str3 + ", originalMd5 = " + params.field_originalMd5 + ", fileCompress = " + bool1 + ", fileEncrypt = " + bool2 + ", eccSignature = " + arrayOfByte + ", fileVersion = " + i + ", (encrypt key == empty) = " + bu.isNullOrNil(str4));
+    ae.d("MicroMsg.ResDownloader.CheckResUpdate.DoDecryptLogic", "queried encryptKey = %s", new Object[] { str4 });
     if (!bool2)
     {
       if (paramBoolean1)
@@ -40,14 +40,14 @@ final class f$b
       }
       if (!bool1)
       {
-        ad.e("MicroMsg.ResDownloader.CheckResUpdate.DoDecryptLogic", "file is not encrypted nor compressed, just return");
+        ae.e("MicroMsg.ResDownloader.CheckResUpdate.DoDecryptLogic", "file is not encrypted nor compressed, just return");
         AppMethodBeat.o(151957);
         return;
       }
     }
     if ((j != i) && (bool2))
     {
-      ad.i("MicroMsg.ResDownloader.CheckResUpdate.DoDecryptLogic", "file version(%d) != key version(%d), skip", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
+      ae.i("MicroMsg.ResDownloader.CheckResUpdate.DoDecryptLogic", "file version(%d) != key version(%d), skip", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
       if (j >= 0)
       {
         j.A(params.field_reportId, 52L);
@@ -58,63 +58,63 @@ final class f$b
     }
     if (bool3)
     {
-      ad.i("MicroMsg.ResDownloader.CheckResUpdate.DoDecryptLogic", "this file should have been deleted, skip this decrypt-op");
+      ae.i("MicroMsg.ResDownloader.CheckResUpdate.DoDecryptLogic", "this file should have been deleted, skip this decrypt-op");
       j.A(params.field_reportId, 51L);
       j.A(params.field_reportId, 45L);
       AppMethodBeat.o(151957);
       return;
     }
-    if ((bt.isNullOrNil(str4)) && (bool2))
+    if ((bu.isNullOrNil(str4)) && (bool2))
     {
-      ad.i("MicroMsg.ResDownloader.CheckResUpdate.DoDecryptLogic", "encryptKey invalid, skip");
+      ae.i("MicroMsg.ResDownloader.CheckResUpdate.DoDecryptLogic", "encryptKey invalid, skip");
       j.A(params.field_reportId, 54L);
       j.A(params.field_reportId, 45L);
       AppMethodBeat.o(151957);
       return;
     }
-    if ((!bt.isNullOrNil(str3)) && (!bt.isNullOrNil(str2)))
+    if ((!bu.isNullOrNil(str3)) && (!bu.isNullOrNil(str2)))
     {
-      if (q.a.fbc().aMj(str1))
+      if (q.a.feQ().aNF(str1))
       {
-        ad.i("MicroMsg.ResDownloader.CheckResUpdate.DoDecryptLogic", "request(%s) is downloading or queueing, hold this decrypt-op", new Object[] { str1 });
+        ae.i("MicroMsg.ResDownloader.CheckResUpdate.DoDecryptLogic", "request(%s) is downloading or queueing, hold this decrypt-op", new Object[] { str1 });
         AppMethodBeat.o(151957);
         return;
       }
-      if (!bt.nullAsNil(i.aPK(str2)).equals(str3))
+      if (!bu.nullAsNil(o.aRh(str2)).equals(str3))
       {
-        ad.i("MicroMsg.ResDownloader.CheckResUpdate.DoDecryptLogic", "md5 not match, file spoiled, skip this decrypt-op");
+        ae.i("MicroMsg.ResDownloader.CheckResUpdate.DoDecryptLogic", "md5 not match, file spoiled, skip this decrypt-op");
         params.field_status = 3;
-        q.a.fbc().h(params);
+        q.a.feQ().h(params);
         j.A(params.field_reportId, 56L);
         j.A(params.field_reportId, 45L);
         AppMethodBeat.o(151957);
         return;
       }
-      if (!q.a.fbc().aMj(str1))
+      if (!q.a.feQ().aNF(str1))
       {
-        ad.i("MicroMsg.ResDownloader.CheckResUpdate.DoDecryptLogic", "request supposed to complete, send decrypt request %s", new Object[] { params.field_urlKey });
-        b.faE().g(params.field_resType, params.field_subType, 1, bt.nullAsNil(params.field_groupId2).equals("NewXml"));
+        ae.i("MicroMsg.ResDownloader.CheckResUpdate.DoDecryptLogic", "request supposed to complete, send decrypt request %s", new Object[] { params.field_urlKey });
+        b.fes().g(params.field_resType, params.field_subType, 1, bu.nullAsNil(params.field_groupId2).equals("NewXml"));
         if (paramBoolean2)
         {
-          b.faE();
+          b.fes();
           b.c(params);
           AppMethodBeat.o(151957);
           return;
         }
-        b.faE().b(params);
+        b.fes().b(params);
         AppMethodBeat.o(151957);
       }
     }
     else
     {
-      ad.i("MicroMsg.ResDownloader.CheckResUpdate.DoDecryptLogic", "this decrypt-op is invalid, record.md5 = %s, record.filePath = %s", new Object[] { str3, str2 });
+      ae.i("MicroMsg.ResDownloader.CheckResUpdate.DoDecryptLogic", "this decrypt-op is invalid, record.md5 = %s, record.filePath = %s", new Object[] { str3, str2 });
     }
     AppMethodBeat.o(151957);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.j.a.a.f.b
  * JD-Core Version:    0.7.0.1
  */

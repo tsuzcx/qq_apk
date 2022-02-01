@@ -3,36 +3,36 @@ package com.tencent.mm.plugin.subapp.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.b.f;
 import com.tencent.mm.memory.a.c;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.sdk.platformtools.bw;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.bx;
 import java.util.Map;
 
 public final class e
 {
-  private static final f<Integer, e> fTI;
-  public int BhO;
-  public int BhP;
-  public String BhQ;
-  public int BhR;
-  public int BhS;
-  public int BhT;
-  public int BhU;
-  public String dks;
-  public int hzO;
-  public String hzP;
+  private static final f<Integer, e> fVO;
+  public int Bzm;
+  public int Bzn;
+  public String Bzo;
+  public int Bzp;
+  public int Bzq;
+  public int Bzr;
+  public int Bzs;
+  public String dlu;
+  public int hCC;
+  public String hCD;
   
   static
   {
     AppMethodBeat.i(28961);
-    fTI = new c(100);
+    fVO = new c(100);
     AppMethodBeat.o(28961);
   }
   
-  public static e aCw(String paramString)
+  public static e aDP(String paramString)
   {
     AppMethodBeat.i(28960);
-    if (bt.isNullOrNil(paramString))
+    if (bu.isNullOrNil(paramString))
     {
       AppMethodBeat.o(28960);
       return null;
@@ -43,40 +43,40 @@ public final class e
       localObject = paramString.substring(i);
     }
     i = ((String)localObject).hashCode();
-    paramString = (e)fTI.get(Integer.valueOf(i));
+    paramString = (e)fVO.get(Integer.valueOf(i));
     if (paramString != null)
     {
       AppMethodBeat.o(28960);
       return paramString;
     }
-    paramString = bw.M((String)localObject, "msg");
+    paramString = bx.M((String)localObject, "msg");
     if (paramString == null)
     {
-      ad.e("MicroMsg.VoiceRemindAppMsgExInfo", "parse msg failed");
+      ae.e("MicroMsg.VoiceRemindAppMsgExInfo", "parse msg failed");
       AppMethodBeat.o(28960);
       return null;
     }
     try
     {
       localObject = new e();
-      ((e)localObject).hzO = bt.getInt((String)paramString.get(".msg.appmsg.appattach.totallen"), 0);
-      ((e)localObject).dks = ((String)paramString.get(".msg.appmsg.appattach.attachid"));
-      ((e)localObject).hzP = ((String)paramString.get(".msg.appmsg.appattach.fileext"));
-      ((e)localObject).BhO = bt.getInt((String)paramString.get(".msg.appmsg.voicecmd.reminder.$remindtime"), 0);
-      ((e)localObject).BhP = bt.getInt((String)paramString.get(".msg.appmsg.voicecmd.reminder.$remindid"), 0);
-      ((e)localObject).BhQ = ((String)paramString.get(".msg.appmsg.voicecmd.reminder.$remindattachid"));
-      ((e)localObject).BhR = bt.getInt((String)paramString.get(".msg.appmsg.voicecmd.reminder.$remindattachtotallen"), 0);
-      ((e)localObject).BhS = bt.getInt((String)paramString.get(".msg.appmsg.voicecmd.reminder.$remindformat"), 0);
-      ((e)localObject).BhT = bt.getInt((String)paramString.get(".msg.appmsg.voicecmd.reminder.$originformat"), 0);
-      ((e)localObject).BhU = bt.getInt((String)paramString.get(".msg.appmsg.voicecmd.reminder.$msgsvrid"), 0);
-      fTI.q(Integer.valueOf(i), localObject);
+      ((e)localObject).hCC = bu.getInt((String)paramString.get(".msg.appmsg.appattach.totallen"), 0);
+      ((e)localObject).dlu = ((String)paramString.get(".msg.appmsg.appattach.attachid"));
+      ((e)localObject).hCD = ((String)paramString.get(".msg.appmsg.appattach.fileext"));
+      ((e)localObject).Bzm = bu.getInt((String)paramString.get(".msg.appmsg.voicecmd.reminder.$remindtime"), 0);
+      ((e)localObject).Bzn = bu.getInt((String)paramString.get(".msg.appmsg.voicecmd.reminder.$remindid"), 0);
+      ((e)localObject).Bzo = ((String)paramString.get(".msg.appmsg.voicecmd.reminder.$remindattachid"));
+      ((e)localObject).Bzp = bu.getInt((String)paramString.get(".msg.appmsg.voicecmd.reminder.$remindattachtotallen"), 0);
+      ((e)localObject).Bzq = bu.getInt((String)paramString.get(".msg.appmsg.voicecmd.reminder.$remindformat"), 0);
+      ((e)localObject).Bzr = bu.getInt((String)paramString.get(".msg.appmsg.voicecmd.reminder.$originformat"), 0);
+      ((e)localObject).Bzs = bu.getInt((String)paramString.get(".msg.appmsg.voicecmd.reminder.$msgsvrid"), 0);
+      fVO.q(Integer.valueOf(i), localObject);
       AppMethodBeat.o(28960);
       return localObject;
     }
     catch (Exception paramString)
     {
-      ad.e("MicroMsg.VoiceRemindAppMsgExInfo", "parse amessage xml failed");
-      ad.printErrStackTrace("MicroMsg.VoiceRemindAppMsgExInfo", paramString, "", new Object[0]);
+      ae.e("MicroMsg.VoiceRemindAppMsgExInfo", "parse amessage xml failed");
+      ae.printErrStackTrace("MicroMsg.VoiceRemindAppMsgExInfo", paramString, "", new Object[0]);
       AppMethodBeat.o(28960);
     }
     return null;

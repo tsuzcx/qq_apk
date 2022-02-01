@@ -1,12 +1,12 @@
 package com.tencent.mm.plugin.freewifi.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.protocal.protobuf.bgg;
-import com.tencent.mm.protocal.protobuf.bgh;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.protocal.protobuf.bgw;
+import com.tencent.mm.protocal.protobuf.bgx;
 
 public final class i
   extends c
@@ -14,39 +14,39 @@ public final class i
   public i(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6)
   {
     AppMethodBeat.i(24862);
-    cRG();
-    bgg localbgg = (bgg)this.rr.hNK.hNQ;
-    localbgg.dmM = paramString1;
-    localbgg.tmO = paramString2;
-    localbgg.tmP = paramString3;
-    localbgg.tmQ = paramString4;
-    localbgg.dpf = paramString5;
-    localbgg.FqI = paramString6;
+    cUl();
+    bgw localbgw = (bgw)this.rr.hQD.hQJ;
+    localbgw.dnO = paramString1;
+    localbgw.txG = paramString2;
+    localbgw.txH = paramString3;
+    localbgw.txI = paramString4;
+    localbgw.dqk = paramString5;
+    localbgw.FJg = paramString6;
     AppMethodBeat.o(24862);
   }
   
-  protected final void cRG()
+  protected final void cUl()
   {
     AppMethodBeat.i(24861);
     b.a locala = new b.a();
-    locala.hNM = new bgg();
-    locala.hNN = new bgh();
+    locala.hQF = new bgw();
+    locala.hQG = new bgx();
     locala.uri = "/cgi-bin/mmo2o-bin/getportalapinfo";
     locala.funcId = 1709;
-    locala.hNO = 0;
+    locala.hQH = 0;
     locala.respCmdId = 0;
-    this.rr = locala.aDC();
+    this.rr = locala.aDS();
     AppMethodBeat.o(24861);
   }
   
-  public final String cRP()
+  public final String cUu()
   {
-    return ((bgh)this.rr.hNL.hNQ).tnT;
+    return ((bgx)this.rr.hQE.hQJ).tyL;
   }
   
-  public final String cRQ()
+  public final String cUv()
   {
-    return ((bgh)this.rr.hNL.hNQ).tnU;
+    return ((bgx)this.rr.hQE.hQJ).tyM;
   }
   
   public final int getType()
@@ -56,7 +56,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.freewifi.d.i
  * JD-Core Version:    0.7.0.1
  */

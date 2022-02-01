@@ -6,22 +6,22 @@ import d.l;
 import d.o;
 import java.util.ArrayList;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/msgsubscription/ui/SubscribeMsgRequestDialog$Item;", "", "check", "", "title", "", "sampleWordings", "Ljava/util/ArrayList;", "Lkotlin/Pair;", "templateId", "(ZLjava/lang/String;Ljava/util/ArrayList;Ljava/lang/String;)V", "alwaysKeep", "getAlwaysKeep", "()Z", "setAlwaysKeep", "(Z)V", "getCheck", "setCheck", "getSampleWordings", "()Ljava/util/ArrayList;", "getTemplateId", "()Ljava/lang/String;", "getTitle", "component1", "component2", "component3", "component4", "copy", "equals", "other", "hashCode", "", "toString", "wxbiz-msgsubscription-sdk_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/msgsubscription/ui/SubscribeMsgRequestDialog$Item;", "", "check", "", "title", "", "sampleWordings", "Ljava/util/ArrayList;", "Lkotlin/Pair;", "templateId", "(ZLjava/lang/String;Ljava/util/ArrayList;Ljava/lang/String;)V", "alwaysKeep", "getAlwaysKeep", "()Z", "setAlwaysKeep", "(Z)V", "getCheck", "setCheck", "getSampleWordings", "()Ljava/util/ArrayList;", "getTemplateId", "()Ljava/lang/String;", "getTitle", "component1", "component2", "component3", "component4", "copy", "equals", "other", "hashCode", "", "toString", "wxbiz-msgsubscription-sdk_release"})
 public final class b$b
 {
-  public final String hAT;
-  boolean iDB;
-  public boolean iDC;
-  final ArrayList<o<String, String>> iDD;
+  public final String hDH;
+  boolean iGu;
+  public boolean iGv;
+  final ArrayList<o<String, String>> iGw;
   final String title;
   
   public b$b(boolean paramBoolean, String paramString1, ArrayList<o<String, String>> paramArrayList, String paramString2)
   {
     AppMethodBeat.i(149742);
-    this.iDC = paramBoolean;
+    this.iGv = paramBoolean;
     this.title = paramString1;
-    this.iDD = paramArrayList;
-    this.hAT = paramString2;
+    this.iGw = paramArrayList;
+    this.hDH = paramString2;
     AppMethodBeat.o(149742);
   }
   
@@ -33,7 +33,7 @@ public final class b$b
       if ((paramObject instanceof b))
       {
         paramObject = (b)paramObject;
-        if ((this.iDC != paramObject.iDC) || (!p.i(this.title, paramObject.title)) || (!p.i(this.iDD, paramObject.iDD)) || (!p.i(this.hAT, paramObject.hAT))) {}
+        if ((this.iGv != paramObject.iGv) || (!p.i(this.title, paramObject.title)) || (!p.i(this.iGw, paramObject.iGw)) || (!p.i(this.hDH, paramObject.hDH))) {}
       }
     }
     else
@@ -53,7 +53,7 @@ public final class b$b
   public final String toString()
   {
     AppMethodBeat.i(149743);
-    String str = "Item(check=" + this.iDC + ", title=" + this.title + ", sampleWordings=" + this.iDD + ", templateId=" + this.hAT + ")";
+    String str = "Item(check=" + this.iGv + ", title=" + this.title + ", sampleWordings=" + this.iGw + ", templateId=" + this.hDH + ")";
     AppMethodBeat.o(149743);
     return str;
   }

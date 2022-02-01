@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.facedetect.views;
 
 public abstract interface a
 {
-  public abstract void DS(int paramInt);
+  public abstract void Ef(int paramInt);
   
   public abstract void y(int paramInt, String paramString);
 }

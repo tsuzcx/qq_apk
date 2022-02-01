@@ -8,31 +8,29 @@ public abstract class dr
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eDc;
-  private static final int eZm;
-  private static final int fgA = "phoneType".hashCode();
-  private static final int fgx = "phonenumber".hashCode();
-  private static final int fgy = "calltime".hashCode();
-  private static final int fgz;
+  private static final int eEL = "status".hashCode();
+  private static final int faZ;
+  private static final int fiv = "phonenumber".hashCode();
+  private static final int fiw = "calltime".hashCode();
+  private static final int fix = "addressId".hashCode();
+  private static final int fiy = "phoneType".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eCZ = true;
-  private boolean eZa = true;
-  private boolean fgt = true;
-  private boolean fgu = true;
-  private boolean fgv = true;
-  private boolean fgw = true;
+  private boolean eEI = true;
+  private boolean faN = true;
   public long field_addressId;
   public long field_calltime;
   public long field_duration;
   public int field_phoneType;
   public String field_phonenumber;
   public int field_status;
+  private boolean fiq = true;
+  private boolean fir = true;
+  private boolean fit = true;
+  private boolean fiu = true;
   
   static
   {
-    eZm = "duration".hashCode();
-    eDc = "status".hashCode();
-    fgz = "addressId".hashCode();
+    faZ = "duration".hashCode();
   }
   
   public void convertFrom(Cursor paramCursor)
@@ -48,7 +46,7 @@ public abstract class dr
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (fgx != k) {
+      if (fiv != k) {
         break label60;
       }
       this.field_phonenumber = paramCursor.getString(i);
@@ -59,15 +57,15 @@ public abstract class dr
       break label20;
       break;
       label60:
-      if (fgy == k) {
+      if (fiw == k) {
         this.field_calltime = paramCursor.getLong(i);
-      } else if (eZm == k) {
+      } else if (faZ == k) {
         this.field_duration = paramCursor.getLong(i);
-      } else if (eDc == k) {
+      } else if (eEL == k) {
         this.field_status = paramCursor.getInt(i);
-      } else if (fgz == k) {
+      } else if (fix == k) {
         this.field_addressId = paramCursor.getLong(i);
-      } else if (fgA == k) {
+      } else if (fiy == k) {
         this.field_phoneType = paramCursor.getInt(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
@@ -78,22 +76,22 @@ public abstract class dr
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.fgt) {
+    if (this.fiq) {
       localContentValues.put("phonenumber", this.field_phonenumber);
     }
-    if (this.fgu) {
+    if (this.fir) {
       localContentValues.put("calltime", Long.valueOf(this.field_calltime));
     }
-    if (this.eZa) {
+    if (this.faN) {
       localContentValues.put("duration", Long.valueOf(this.field_duration));
     }
-    if (this.eCZ) {
+    if (this.eEI) {
       localContentValues.put("status", Integer.valueOf(this.field_status));
     }
-    if (this.fgv) {
+    if (this.fit) {
       localContentValues.put("addressId", Long.valueOf(this.field_addressId));
     }
-    if (this.fgw) {
+    if (this.fiu) {
       localContentValues.put("phoneType", Integer.valueOf(this.field_phoneType));
     }
     if (this.systemRowid > 0L) {
@@ -104,7 +102,7 @@ public abstract class dr
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.c.dr
  * JD-Core Version:    0.7.0.1
  */

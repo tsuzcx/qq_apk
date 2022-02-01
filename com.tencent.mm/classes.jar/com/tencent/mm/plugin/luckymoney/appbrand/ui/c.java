@@ -13,10 +13,10 @@ public final class c
     super(paramMMActivity);
   }
   
-  public final void z(Drawable paramDrawable)
+  public final void A(Drawable paramDrawable)
   {
     AppMethodBeat.i(64905);
-    super.z(paramDrawable);
+    super.A(paramDrawable);
     AppMethodBeat.o(64905);
   }
 }

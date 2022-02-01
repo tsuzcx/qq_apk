@@ -28,28 +28,28 @@ import java.nio.ByteOrder;
 public class a
   implements com.tencent.tinker.a.a.b.a, com.tencent.tinker.a.a.b.b
 {
-  private static final short[] Mdk = new short[0];
-  private static final g.b[] Mef = new g.b[0];
-  private static final g.a[] Meg = new g.a[0];
-  private int Meh;
-  private boolean Mei;
+  private static final short[] MAf = new short[0];
+  private static final g.b[] MBc = new g.b[0];
+  private static final g.a[] MBd = new g.a[0];
+  private int MBe;
+  private boolean MBf;
   public ByteBuffer aKX;
   
   public a()
   {
     this.aKX = ByteBuffer.allocate(512);
     this.aKX.order(ByteOrder.LITTLE_ENDIAN);
-    this.Meh = this.aKX.position();
+    this.MBe = this.aKX.position();
     this.aKX.limit(this.aKX.capacity());
-    this.Mei = true;
+    this.MBf = true;
   }
   
   public a(ByteBuffer paramByteBuffer)
   {
     this.aKX = paramByteBuffer;
     this.aKX.order(ByteOrder.LITTLE_ENDIAN);
-    this.Meh = paramByteBuffer.limit();
-    this.Mei = false;
+    this.MBe = paramByteBuffer.limit();
+    this.MBf = false;
   }
   
   private void a(e.a[] paramArrayOfa)
@@ -60,9 +60,9 @@ public class a
     while (i < k)
     {
       e.a locala = paramArrayOfa[i];
-      o.a(this, locala.McJ - j);
-      j = locala.McJ;
-      o.a(this, locala.McK);
+      o.a(this, locala.MzE - j);
+      j = locala.MzE;
+      o.a(this, locala.MzF);
       i += 1;
     }
   }
@@ -75,17 +75,17 @@ public class a
     while (i < k)
     {
       e.b localb = paramArrayOfb[i];
-      o.a(this, localb.McL - j);
-      j = localb.McL;
-      o.a(this, localb.McK);
-      o.a(this, localb.McM);
+      o.a(this, localb.MzG - j);
+      j = localb.MzG;
+      o.a(this, localb.MzF);
+      o.a(this, localb.MzH);
       i += 1;
     }
   }
   
-  private void ahC(int paramInt)
+  private void ail(int paramInt)
   {
-    if ((this.aKX.position() + paramInt > this.aKX.limit()) && (this.Mei))
+    if ((this.aKX.position() + paramInt > this.aKX.limit()) && (this.MBf))
     {
       byte[] arrayOfByte1 = this.aKX.array();
       byte[] arrayOfByte2 = new byte[arrayOfByte1.length + paramInt + (arrayOfByte1.length >> 1)];
@@ -98,12 +98,12 @@ public class a
     }
   }
   
-  private short[] ahE(int paramInt)
+  private short[] ain(int paramInt)
   {
     Object localObject;
     if (paramInt == 0)
     {
-      localObject = Mdk;
+      localObject = MAf;
       return localObject;
     }
     short[] arrayOfShort = new short[paramInt];
@@ -119,7 +119,7 @@ public class a
     }
   }
   
-  private e.a[] ahF(int paramInt)
+  private e.a[] aio(int paramInt)
   {
     e.a[] arrayOfa = new e.a[paramInt];
     int i = 0;
@@ -133,7 +133,7 @@ public class a
     return arrayOfa;
   }
   
-  private e.b[] ahG(int paramInt)
+  private e.b[] aip(int paramInt)
   {
     e.b[] arrayOfb = new e.b[paramInt];
     int i = 0;
@@ -147,7 +147,7 @@ public class a
     return arrayOfb;
   }
   
-  private byte[] ahH(int paramInt)
+  private byte[] aiq(int paramInt)
   {
     byte[] arrayOfByte = new byte[this.aKX.position() - paramInt];
     this.aKX.position(paramInt);
@@ -155,7 +155,7 @@ public class a
     return arrayOfByte;
   }
   
-  private void ahI(int paramInt)
+  private void air(int paramInt)
   {
     int i = (short)paramInt;
     if (paramInt != (0xFFFF & i)) {
@@ -164,17 +164,17 @@ public class a
     writeShort(i);
   }
   
-  private int fYl()
+  private int gcK()
   {
     return o.b(this);
   }
   
-  private int fYm()
+  private int gcL()
   {
     return o.b(this) - 1;
   }
   
-  private int fYn()
+  private int gcM()
   {
     return o.a(this);
   }
@@ -202,27 +202,27 @@ public class a
   public int a(n paramn)
   {
     int i = this.aKX.position();
-    ahI(paramn.Mdz);
-    ahI(paramn.McN);
-    writeInt(paramn.MdA);
+    air(paramn.MAu);
+    air(paramn.MzI);
+    writeInt(paramn.MAv);
     return i;
   }
   
   public int a(p paramp)
   {
     int i = this.aKX.position();
-    ahI(paramp.Mdz);
-    ahI(paramp.MdB);
-    writeInt(paramp.MdA);
+    air(paramp.MAu);
+    air(paramp.MAw);
+    writeInt(paramp.MAv);
     return i;
   }
   
   public int a(q paramq)
   {
     int i = this.aKX.position();
-    writeInt(paramq.MdC);
-    writeInt(paramq.MdD);
-    writeInt(paramq.MdE);
+    writeInt(paramq.MAx);
+    writeInt(paramq.MAy);
+    writeInt(paramq.MAz);
     return i;
   }
   
@@ -309,7 +309,7 @@ public class a
   public int a(t paramt)
   {
     int j = this.aKX.position();
-    paramt = paramt.Mee;
+    paramt = paramt.MBb;
     writeInt(paramt.length);
     int k = paramt.length;
     int i = 0;
@@ -321,7 +321,7 @@ public class a
     return j;
   }
   
-  public final byte[] ahD(int paramInt)
+  public final byte[] aim(int paramInt)
   {
     byte[] arrayOfByte = new byte[paramInt];
     this.aKX.get(arrayOfByte);
@@ -331,16 +331,16 @@ public class a
   public int b(com.tencent.tinker.a.a.a parama)
   {
     int i = this.aKX.position();
-    writeByte(parama.Mcx);
-    a(parama.Mcy);
+    writeByte(parama.Mzs);
+    a(parama.Mzt);
     return i;
   }
   
   public int b(com.tencent.tinker.a.a.b paramb)
   {
     int j = this.aKX.position();
-    writeInt(paramb.Mcz.length);
-    paramb = paramb.Mcz;
+    writeInt(paramb.Mzu.length);
+    paramb = paramb.Mzu;
     int k = paramb.length;
     int i = 0;
     while (i < k)
@@ -354,8 +354,8 @@ public class a
   public int b(c paramc)
   {
     int j = this.aKX.position();
-    writeInt(paramc.McA.length);
-    paramc = paramc.McA;
+    writeInt(paramc.Mzv.length);
+    paramc = paramc.Mzv;
     int k = paramc.length;
     int i = 0;
     while (i < k)
@@ -369,11 +369,11 @@ public class a
   public int b(d paramd)
   {
     int j = this.aKX.position();
-    writeInt(paramd.McB);
-    writeInt(paramd.McC.length);
-    writeInt(paramd.McD.length);
-    writeInt(paramd.McE.length);
-    int[][] arrayOfInt = paramd.McC;
+    writeInt(paramd.Mzw);
+    writeInt(paramd.Mzx.length);
+    writeInt(paramd.Mzy.length);
+    writeInt(paramd.Mzz.length);
+    int[][] arrayOfInt = paramd.Mzx;
     int k = arrayOfInt.length;
     int i = 0;
     int[] arrayOfInt1;
@@ -384,7 +384,7 @@ public class a
       writeInt(arrayOfInt1[1]);
       i += 1;
     }
-    arrayOfInt = paramd.McD;
+    arrayOfInt = paramd.Mzy;
     k = arrayOfInt.length;
     i = 0;
     while (i < k)
@@ -394,7 +394,7 @@ public class a
       writeInt(arrayOfInt1[1]);
       i += 1;
     }
-    paramd = paramd.McE;
+    paramd = paramd.Mzz;
     k = paramd.length;
     i = 0;
     while (i < k)
@@ -410,28 +410,28 @@ public class a
   public int b(e parame)
   {
     int i = this.aKX.position();
-    o.a(this, parame.McF.length);
-    o.a(this, parame.McG.length);
-    o.a(this, parame.McH.length);
-    o.a(this, parame.McI.length);
-    a(parame.McF);
-    a(parame.McG);
-    a(parame.McH);
-    a(parame.McI);
+    o.a(this, parame.MzA.length);
+    o.a(this, parame.MzB.length);
+    o.a(this, parame.MzC.length);
+    o.a(this, parame.MzD.length);
+    a(parame.MzA);
+    a(parame.MzB);
+    a(parame.MzC);
+    a(parame.MzD);
     return i;
   }
   
   public int b(f paramf)
   {
     int i = this.aKX.position();
-    writeInt(paramf.McN);
-    writeInt(paramf.McK);
-    writeInt(paramf.McO);
-    writeInt(paramf.McP);
-    writeInt(paramf.McQ);
-    writeInt(paramf.McR);
-    writeInt(paramf.McS);
-    writeInt(paramf.McT);
+    writeInt(paramf.MzI);
+    writeInt(paramf.MzF);
+    writeInt(paramf.MzJ);
+    writeInt(paramf.MzK);
+    writeInt(paramf.MzL);
+    writeInt(paramf.MzM);
+    writeInt(paramf.MzN);
+    writeInt(paramf.MzO);
     return i;
   }
   
@@ -439,14 +439,14 @@ public class a
   {
     int k = 0;
     int m = this.aKX.position();
-    ahI(paramg.McU);
-    ahI(paramg.McV);
-    ahI(paramg.McW);
-    ahI(paramg.McZ.length);
-    writeInt(paramg.McX);
-    writeInt(paramg.McY.length);
-    Object localObject1 = paramg.McY;
-    ahC(localObject1.length * 2);
+    air(paramg.MzP);
+    air(paramg.MzQ);
+    air(paramg.MzR);
+    air(paramg.MzU.length);
+    writeInt(paramg.MzS);
+    writeInt(paramg.MzT.length);
+    Object localObject1 = paramg.MzT;
+    ail(localObject1.length * 2);
     int j = localObject1.length;
     int i = 0;
     while (i < j)
@@ -454,19 +454,19 @@ public class a
       writeShort(localObject1[i]);
       i += 1;
     }
-    if (this.aKX.position() > this.Meh) {
-      this.Meh = this.aKX.position();
+    if (this.aKX.position() > this.MBe) {
+      this.MBe = this.aKX.position();
     }
-    if (paramg.McZ.length > 0)
+    if (paramg.MzU.length > 0)
     {
-      if ((paramg.McY.length & 0x1) == 1) {
+      if ((paramg.MzT.length & 0x1) == 1) {
         writeShort((short)0);
       }
       int n = this.aKX.position();
-      i = paramg.McZ.length * 8;
-      ahC(i * 1);
+      i = paramg.MzU.length * 8;
+      ail(i * 1);
       skip(i);
-      g.a[] arrayOfa = paramg.Mda;
+      g.a[] arrayOfa = paramg.MzV;
       int i1 = this.aKX.position();
       o.a(this, arrayOfa.length);
       localObject1 = new int[arrayOfa.length];
@@ -475,9 +475,9 @@ public class a
       {
         localObject1[i] = (this.aKX.position() - i1);
         Object localObject2 = arrayOfa[i];
-        int i2 = ((g.a)localObject2).Mdd;
-        int[] arrayOfInt = ((g.a)localObject2).Mdb;
-        localObject2 = ((g.a)localObject2).Mdc;
+        int i2 = ((g.a)localObject2).MzY;
+        int[] arrayOfInt = ((g.a)localObject2).MzW;
+        localObject2 = ((g.a)localObject2).MzX;
         if (i2 != -1) {
           o.c(this, -arrayOfInt.length);
         }
@@ -499,15 +499,15 @@ public class a
       }
       j = this.aKX.position();
       this.aKX.position(n);
-      paramg = paramg.McZ;
+      paramg = paramg.MzU;
       n = paramg.length;
       i = k;
       while (i < n)
       {
         arrayOfa = paramg[i];
-        writeInt(arrayOfa.Mde);
-        ahI(arrayOfa.Mdf);
-        ahI(localObject1[arrayOfa.Mdg]);
+        writeInt(arrayOfa.MzZ);
+        air(arrayOfa.MAa);
+        air(localObject1[arrayOfa.MAb]);
         i += 1;
       }
       this.aKX.position(j);
@@ -518,20 +518,36 @@ public class a
   public int b(h paramh)
   {
     int j = this.aKX.position();
-    o.a(this, paramh.Mdh);
-    int k = paramh.Mdi.length;
+    o.a(this, paramh.MAc);
+    int k = paramh.MAd.length;
     o.a(this, k);
     int i = 0;
     while (i < k)
     {
-      o.a(this, paramh.Mdi[i] + 1);
+      o.a(this, paramh.MAd[i] + 1);
       i += 1;
     }
-    write(paramh.Mdj);
+    write(paramh.MAe);
     return j;
   }
   
-  public r fXN()
+  public final void gcN()
+  {
+    this.aKX.position(this.aKX.position() + 3 & 0xFFFFFFFC);
+  }
+  
+  public final void gcO()
+  {
+    ail(((this.aKX.position() + 3 & 0xFFFFFFFC) - this.aKX.position()) * 1);
+    while ((this.aKX.position() & 0x3) != 0) {
+      this.aKX.put((byte)0);
+    }
+    if (this.aKX.position() > this.MBe) {
+      this.MBe = this.aKX.position();
+    }
+  }
+  
+  public r gcm()
   {
     int j = 0;
     int k = this.aKX.position();
@@ -599,32 +615,32 @@ public class a
     }
   }
   
-  public t fXO()
+  public t gcn()
   {
-    return new t(this.aKX.position(), ahE(this.aKX.getInt()));
+    return new t(this.aKX.position(), ain(this.aKX.getInt()));
   }
   
-  public n fXP()
+  public n gco()
   {
     return new n(this.aKX.position(), readUnsignedShort(), readUnsignedShort(), this.aKX.getInt());
   }
   
-  public p fXQ()
+  public p gcp()
   {
     return new p(this.aKX.position(), readUnsignedShort(), readUnsignedShort(), this.aKX.getInt());
   }
   
-  public q fXR()
+  public q gcq()
   {
     return new q(this.aKX.position(), this.aKX.getInt(), this.aKX.getInt(), this.aKX.getInt());
   }
   
-  public f fXS()
+  public f gcr()
   {
     return new f(this.aKX.position(), this.aKX.getInt(), this.aKX.getInt(), this.aKX.getInt(), this.aKX.getInt(), this.aKX.getInt(), this.aKX.getInt(), this.aKX.getInt(), this.aKX.getInt());
   }
   
-  public g fXT()
+  public g gcs()
   {
     int k = this.aKX.position();
     int m = readUnsignedShort();
@@ -632,7 +648,7 @@ public class a
     int i1 = readUnsignedShort();
     int i2 = readUnsignedShort();
     int i3 = this.aKX.getInt();
-    short[] arrayOfShort = ahE(this.aKX.getInt());
+    short[] arrayOfShort = ain(this.aKX.getInt());
     g.a[] arrayOfa;
     Object localObject;
     if (i2 > 0)
@@ -701,13 +717,13 @@ public class a
     for (;;)
     {
       return new g(k, m, n, i1, i3, arrayOfShort, (g.b[])localObject, arrayOfa);
-      localObject = Mef;
-      arrayOfa = Meg;
+      localObject = MBc;
+      arrayOfa = MBd;
     }
   }
   
   /* Error */
-  public h fXU()
+  public h gct()
   {
     // Byte code:
     //   0: aload_0
@@ -740,24 +756,24 @@ public class a
     //   45: iadd
     //   46: istore_1
     //   47: goto -20 -> 27
-    //   50: new 498	java/io/ByteArrayOutputStream
+    //   50: new 504	java/io/ByteArrayOutputStream
     //   53: dup
     //   54: bipush 64
-    //   56: invokespecial 500	java/io/ByteArrayOutputStream:<init>	(I)V
+    //   56: invokespecial 506	java/io/ByteArrayOutputStream:<init>	(I)V
     //   59: astore 6
     //   61: new 10	com/tencent/tinker/a/a/a/a$1
     //   64: dup
     //   65: aload_0
     //   66: aload 6
-    //   68: invokespecial 503	com/tencent/tinker/a/a/a/a$1:<init>	(Lcom/tencent/tinker/a/a/a/a;Ljava/io/ByteArrayOutputStream;)V
+    //   68: invokespecial 509	com/tencent/tinker/a/a/a/a$1:<init>	(Lcom/tencent/tinker/a/a/a/a;Ljava/io/ByteArrayOutputStream;)V
     //   71: astore 7
     //   73: aload_0
     //   74: getfield 46	com/tencent/tinker/a/a/a/a:aKX	Ljava/nio/ByteBuffer;
-    //   77: invokevirtual 505	java/nio/ByteBuffer:get	()B
+    //   77: invokevirtual 511	java/nio/ByteBuffer:get	()B
     //   80: istore_1
     //   81: aload 6
     //   83: iload_1
-    //   84: invokevirtual 507	java/io/ByteArrayOutputStream:write	(I)V
+    //   84: invokevirtual 513	java/io/ByteArrayOutputStream:write	(I)V
     //   87: iload_1
     //   88: tableswitch	default:+215 -> 303, 0:+56->144, 1:+82->170, 2:+110->198, 3:+123->211, 4:+123->211, 5:+171->259, 6:+171->259, 7:+215->303, 8:+215->303, 9:+184->272
     //   145: aconst_null
@@ -767,16 +783,16 @@ public class a
     //   149: iload_3
     //   150: aload 5
     //   152: aload 6
-    //   154: invokevirtual 510	java/io/ByteArrayOutputStream:toByteArray	()[B
-    //   157: invokespecial 513	com/tencent/tinker/a/a/h:<init>	(II[I[B)V
+    //   154: invokevirtual 516	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   157: invokespecial 519	com/tencent/tinker/a/a/h:<init>	(II[I[B)V
     //   160: astore 5
     //   162: aload 6
-    //   164: invokevirtual 516	java/io/ByteArrayOutputStream:close	()V
+    //   164: invokevirtual 522	java/io/ByteArrayOutputStream:close	()V
     //   167: aload 5
     //   169: areturn
     //   170: aload 7
     //   172: aload_0
-    //   173: invokespecial 518	com/tencent/tinker/a/a/a/a:fYl	()I
+    //   173: invokespecial 524	com/tencent/tinker/a/a/a/a:gcK	()I
     //   176: invokestatic 86	com/tencent/tinker/a/a/o:a	(Lcom/tencent/tinker/a/a/b/b;I)I
     //   179: pop
     //   180: goto -107 -> 73
@@ -784,49 +800,49 @@ public class a
     //   185: aload 6
     //   187: ifnull +8 -> 195
     //   190: aload 6
-    //   192: invokevirtual 516	java/io/ByteArrayOutputStream:close	()V
+    //   192: invokevirtual 522	java/io/ByteArrayOutputStream:close	()V
     //   195: aload 5
     //   197: athrow
     //   198: aload 7
     //   200: aload_0
-    //   201: invokespecial 520	com/tencent/tinker/a/a/a/a:fYn	()I
+    //   201: invokespecial 526	com/tencent/tinker/a/a/a/a:gcM	()I
     //   204: invokestatic 382	com/tencent/tinker/a/a/o:c	(Lcom/tencent/tinker/a/a/b/b;I)I
     //   207: pop
     //   208: goto -135 -> 73
     //   211: aload 7
     //   213: aload_0
-    //   214: invokespecial 518	com/tencent/tinker/a/a/a/a:fYl	()I
+    //   214: invokespecial 524	com/tencent/tinker/a/a/a/a:gcK	()I
     //   217: invokestatic 86	com/tencent/tinker/a/a/o:a	(Lcom/tencent/tinker/a/a/b/b;I)I
     //   220: pop
     //   221: aload 7
     //   223: aload_0
-    //   224: invokespecial 522	com/tencent/tinker/a/a/a/a:fYm	()I
-    //   227: invokestatic 524	com/tencent/tinker/a/a/o:b	(Lcom/tencent/tinker/a/a/b/b;I)I
+    //   224: invokespecial 528	com/tencent/tinker/a/a/a/a:gcL	()I
+    //   227: invokestatic 530	com/tencent/tinker/a/a/o:b	(Lcom/tencent/tinker/a/a/b/b;I)I
     //   230: pop
     //   231: aload 7
     //   233: aload_0
-    //   234: invokespecial 522	com/tencent/tinker/a/a/a/a:fYm	()I
-    //   237: invokestatic 524	com/tencent/tinker/a/a/o:b	(Lcom/tencent/tinker/a/a/b/b;I)I
+    //   234: invokespecial 528	com/tencent/tinker/a/a/a/a:gcL	()I
+    //   237: invokestatic 530	com/tencent/tinker/a/a/o:b	(Lcom/tencent/tinker/a/a/b/b;I)I
     //   240: pop
     //   241: iload_1
     //   242: iconst_4
     //   243: if_icmpne -170 -> 73
     //   246: aload 7
     //   248: aload_0
-    //   249: invokespecial 522	com/tencent/tinker/a/a/a/a:fYm	()I
-    //   252: invokestatic 524	com/tencent/tinker/a/a/o:b	(Lcom/tencent/tinker/a/a/b/b;I)I
+    //   249: invokespecial 528	com/tencent/tinker/a/a/a/a:gcL	()I
+    //   252: invokestatic 530	com/tencent/tinker/a/a/o:b	(Lcom/tencent/tinker/a/a/b/b;I)I
     //   255: pop
     //   256: goto -183 -> 73
     //   259: aload 7
     //   261: aload_0
-    //   262: invokespecial 518	com/tencent/tinker/a/a/a/a:fYl	()I
+    //   262: invokespecial 524	com/tencent/tinker/a/a/a/a:gcK	()I
     //   265: invokestatic 86	com/tencent/tinker/a/a/o:a	(Lcom/tencent/tinker/a/a/b/b;I)I
     //   268: pop
     //   269: goto -196 -> 73
     //   272: aload 7
     //   274: aload_0
-    //   275: invokespecial 522	com/tencent/tinker/a/a/a/a:fYm	()I
-    //   278: invokestatic 524	com/tencent/tinker/a/a/o:b	(Lcom/tencent/tinker/a/a/b/b;I)I
+    //   275: invokespecial 528	com/tencent/tinker/a/a/a/a:gcL	()I
+    //   278: invokestatic 530	com/tencent/tinker/a/a/o:b	(Lcom/tencent/tinker/a/a/b/b;I)I
     //   281: pop
     //   282: goto -209 -> 73
     //   285: astore 6
@@ -870,26 +886,26 @@ public class a
     //   50	61	295	finally
   }
   
-  public e fXV()
+  public e gcu()
   {
     int i = this.aKX.position();
     int j = o.b(this);
     int k = o.b(this);
     int m = o.b(this);
     int n = o.b(this);
-    return new e(i, ahF(j), ahF(k), ahG(m), ahG(n));
+    return new e(i, aio(j), aio(k), aip(m), aip(n));
   }
   
-  public com.tencent.tinker.a.a.a fXW()
+  public com.tencent.tinker.a.a.a gcv()
   {
     int i = this.aKX.position();
     byte b = this.aKX.get();
     int j = this.aKX.position();
     new m(this, 29).skipValue();
-    return new com.tencent.tinker.a.a.a(i, b, new k(j, ahH(j)));
+    return new com.tencent.tinker.a.a.a(i, b, new k(j, aiq(j)));
   }
   
-  public com.tencent.tinker.a.a.b fXX()
+  public com.tencent.tinker.a.a.b gcw()
   {
     int j = this.aKX.position();
     int k = this.aKX.getInt();
@@ -903,7 +919,7 @@ public class a
     return new com.tencent.tinker.a.a.b(j, arrayOfInt);
   }
   
-  public c fXY()
+  public c gcx()
   {
     int j = this.aKX.position();
     int k = this.aKX.getInt();
@@ -917,7 +933,7 @@ public class a
     return new c(j, arrayOfInt);
   }
   
-  public d fXZ()
+  public d gcy()
   {
     int j = this.aKX.position();
     int k = this.aKX.getInt();
@@ -951,27 +967,11 @@ public class a
     return new d(j, k, arrayOfInt1, arrayOfInt2, arrayOfInt3);
   }
   
-  public k fYa()
+  public k gcz()
   {
     int i = this.aKX.position();
     new m(this, 28).skipValue();
-    return new k(i, ahH(i));
-  }
-  
-  public final void fYo()
-  {
-    this.aKX.position(this.aKX.position() + 3 & 0xFFFFFFFC);
-  }
-  
-  public final void fYp()
-  {
-    ahC(((this.aKX.position() + 3 & 0xFFFFFFFC) - this.aKX.position()) * 1);
-    while ((this.aKX.position() & 0x3) != 0) {
-      this.aKX.put((byte)0);
-    }
-    if (this.aKX.position() > this.Meh) {
-      this.Meh = this.aKX.position();
-    }
+    return new k(i, aiq(i));
   }
   
   public final byte readByte()
@@ -981,37 +981,37 @@ public class a
   
   public final void write(byte[] paramArrayOfByte)
   {
-    ahC(paramArrayOfByte.length * 1);
+    ail(paramArrayOfByte.length * 1);
     this.aKX.put(paramArrayOfByte);
-    if (this.aKX.position() > this.Meh) {
-      this.Meh = this.aKX.position();
+    if (this.aKX.position() > this.MBe) {
+      this.MBe = this.aKX.position();
     }
   }
   
   public final void writeByte(int paramInt)
   {
-    ahC(1);
+    ail(1);
     this.aKX.put((byte)paramInt);
-    if (this.aKX.position() > this.Meh) {
-      this.Meh = this.aKX.position();
+    if (this.aKX.position() > this.MBe) {
+      this.MBe = this.aKX.position();
     }
   }
   
   public final void writeInt(int paramInt)
   {
-    ahC(4);
+    ail(4);
     this.aKX.putInt(paramInt);
-    if (this.aKX.position() > this.Meh) {
-      this.Meh = this.aKX.position();
+    if (this.aKX.position() > this.MBe) {
+      this.MBe = this.aKX.position();
     }
   }
   
   public final void writeShort(short paramShort)
   {
-    ahC(2);
+    ail(2);
     this.aKX.putShort(paramShort);
-    if (this.aKX.position() > this.Meh) {
-      this.Meh = this.aKX.position();
+    if (this.aKX.position() > this.MBe) {
+      this.MBe = this.aKX.position();
     }
   }
 }

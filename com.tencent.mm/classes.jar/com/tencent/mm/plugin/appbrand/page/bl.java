@@ -1,190 +1,180 @@
 package com.tencent.mm.plugin.appbrand.page;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.res.Configuration;
-import android.content.res.Resources;
+import android.support.v4.view.t;
+import android.text.TextUtils;
 import android.view.View;
+import android.widget.FrameLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.page.b.h;
-import com.tencent.mm.plugin.appbrand.page.d.a;
-import com.tencent.mm.plugin.appbrand.page.d.c.b;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
+import com.tencent.mm.plugin.appbrand.config.a.d;
+import com.tencent.mm.plugin.appbrand.page.capsulebar.AppBrandCapsuleBarPlaceHolderView;
+import com.tencent.mm.plugin.appbrand.page.capsulebar.e;
+import com.tencent.mm.plugin.appbrand.widget.actionbar.b;
+import com.tencent.mm.plugin.appbrand.widget.actionbar.b.c;
+import com.tencent.mm.plugin.appbrand.y.g;
+import com.tencent.mm.ui.ao;
 import d.g.b.p;
-import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/page/MPPageViewStatusBarExtensionImpl;", "Lcom/tencent/mm/plugin/appbrand/page/extensions/AppBrandPageViewStatusBarExtension;", "Lcom/tencent/mm/plugin/appbrand/page/extensions/AppBrandPageViewExtensionLifecycle;", "page", "Lcom/tencent/mm/plugin/appbrand/page/AppBrandPageView;", "(Lcom/tencent/mm/plugin/appbrand/page/AppBrandPageView;)V", "H", "Lcom/tencent/mm/plugin/appbrand/page/statusbar/IPageStatusBarHelper;", "(Lcom/tencent/mm/plugin/appbrand/page/AppBrandPageView;Lcom/tencent/mm/plugin/appbrand/page/statusbar/IPageStatusBarHelper;)V", "hideStatusBar", "", "isStatusBarHidden", "", "onActionbarInstalled", "actionBar", "Lcom/tencent/mm/plugin/appbrand/widget/actionbar/AppBrandActionBar;", "onBackground", "onConfigurationChanged", "newConfig", "Landroid/content/res/Configuration;", "onDestroy", "onForeground", "showStatusBar", "luggage-wechat-full-sdk_release"})
-public class bl
-  implements com.tencent.mm.plugin.appbrand.page.b.b, h
+@SuppressLint({"ViewConstructor"})
+public final class bl
+  extends FrameLayout
+  implements b.c
 {
-  private final aa clu;
-  private final com.tencent.mm.plugin.appbrand.page.d.c mfu;
+  private z ckP;
+  com.tencent.mm.plugin.appbrand.widget.actionbar.d mgn;
+  private b mgo;
+  boolean mjT;
   
-  public bl(aa paramaa)
+  public bl(Context paramContext, z paramz)
   {
-    this(paramaa, localc);
-    AppMethodBeat.i(148006);
-    AppMethodBeat.o(148006);
-  }
-  
-  public bl(aa paramaa, com.tencent.mm.plugin.appbrand.page.d.c paramc)
-  {
-    AppMethodBeat.i(148005);
-    this.clu = paramaa;
-    this.mfu = paramc;
-    AppMethodBeat.o(148005);
-  }
-  
-  public final void DK()
-  {
-    AppMethodBeat.i(148000);
-    Object localObject = (c)this.clu;
-    if (aq.isMainThread())
+    super(paramContext);
+    AppMethodBeat.i(147502);
+    this.mjT = false;
+    this.ckP = paramz;
+    paramContext = this.ckP.getPageConfig();
+    if (paramContext == null)
     {
-      this.mfu.DK();
-      AppMethodBeat.o(148000);
+      AppMethodBeat.o(147502);
       return;
     }
-    localObject = ((c)localObject).getContentView();
-    if (localObject != null)
+    if (paramContext.beu())
     {
-      ((View)localObject).post((Runnable)new c(this));
-      AppMethodBeat.o(148000);
+      this.mgn = new com.tencent.mm.plugin.appbrand.widget.actionbar.d(getContext());
+      this.mgn.setActuallyVisible(false);
+      this.mgo = ((b)this.ckP.lUV.c(getContext(), b.class));
+      this.mgo.setFullscreenMode(false);
+      this.mgo.fE(true);
+    }
+    try
+    {
+      Object localObject = this.ckP.getRuntime().jzJ;
+      paramz = this.mgo.getCapsuleView();
+      if (paramz != null)
+      {
+        localObject = ((e)localObject).mkL;
+        if (localObject == null) {
+          p.bdF("capsuleBarView");
+        }
+        localObject = ((com.tencent.mm.plugin.appbrand.page.capsulebar.d)localObject).getCapsuleContentAreaView();
+        p.g(localObject, "this.capsuleBarView.capsuleContentAreaView");
+        paramz.setFixedWidth(((View)localObject).getMeasuredWidth());
+      }
+    }
+    catch (NullPointerException paramz)
+    {
+      label165:
+      break label165;
+    }
+    bwi();
+    this.mgn.addView(this.mgo);
+    addView(this.mgn, -1, -2);
+    setBackgroundColor(g.ck(paramContext.jZm, -1));
+    AppMethodBeat.o(147502);
+  }
+  
+  private void bwj()
+  {
+    AppMethodBeat.i(147505);
+    if (this.mgo != null)
+    {
+      if ((getVisibility() == 0) && (t.aC(this)))
+      {
+        this.mgo.setLoadingIconVisibility(true);
+        this.mgn.setActuallyVisible(true);
+        AppMethodBeat.o(147505);
+        return;
+      }
+      this.mgo.setLoadingIconVisibility(false);
+      this.mgn.setActuallyVisible(false);
+    }
+    AppMethodBeat.o(147505);
+  }
+  
+  final void bwi()
+  {
+    AppMethodBeat.i(147503);
+    if (this.mgo == null)
+    {
+      AppMethodBeat.o(147503);
       return;
     }
-    AppMethodBeat.o(148000);
+    if (!TextUtils.isEmpty(this.ckP.bvi().getMainTitle())) {
+      this.mgo.setMainTitle(this.ckP.bvi().getMainTitle());
+    }
+    for (;;)
+    {
+      this.mgo.setNavHidden(this.ckP.bvi().bDe());
+      AppMethodBeat.o(147503);
+      return;
+      this.mgo.setMainTitle(getContext().getString(2131755293));
+    }
   }
   
-  public final void DL()
+  public final void hn(boolean paramBoolean)
   {
-    AppMethodBeat.i(148001);
-    Object localObject = (c)this.clu;
-    if (aq.isMainThread())
+    this.mjT = paramBoolean;
+  }
+  
+  protected final void onAttachedToWindow()
+  {
+    AppMethodBeat.i(147507);
+    super.onAttachedToWindow();
+    bwj();
+    AppMethodBeat.o(147507);
+  }
+  
+  protected final void onDetachedFromWindow()
+  {
+    AppMethodBeat.i(147508);
+    super.onDetachedFromWindow();
+    bwj();
+    AppMethodBeat.o(147508);
+  }
+  
+  public final void setBackgroundColor(int paramInt)
+  {
+    boolean bool = true;
+    AppMethodBeat.i(147504);
+    if (paramInt == 0)
     {
-      this.mfu.DL();
-      AppMethodBeat.o(148001);
+      setWillNotDraw(true);
+      AppMethodBeat.o(147504);
       return;
     }
-    localObject = ((c)localObject).getContentView();
-    if (localObject != null)
+    paramInt = 0xFF000000 | paramInt;
+    setWillNotDraw(false);
+    super.setBackgroundColor(paramInt);
+    if (this.mgo != null)
     {
-      ((View)localObject).post((Runnable)new a(this));
-      AppMethodBeat.o(148001);
+      this.mgo.setBackgroundAlpha(1.0D);
+      this.mgo.setBackgroundColor(paramInt);
+      if (ao.acF(paramInt)) {
+        break label81;
+      }
+    }
+    for (;;)
+    {
+      this.mgo.setForegroundStyle(bool);
+      AppMethodBeat.o(147504);
       return;
-    }
-    AppMethodBeat.o(148001);
-  }
-  
-  public final boolean DN()
-  {
-    AppMethodBeat.i(148004);
-    if (this.mfu.DM() == c.b.mgD)
-    {
-      AppMethodBeat.o(148004);
-      return true;
-    }
-    AppMethodBeat.o(148004);
-    return false;
-  }
-  
-  public final void a(com.tencent.mm.plugin.appbrand.widget.actionbar.b paramb)
-  {
-    AppMethodBeat.i(192371);
-    p.h(paramb, "actionBar");
-    AppMethodBeat.o(192371);
-  }
-  
-  public final void onBackground() {}
-  
-  public final void onConfigurationChanged(final Configuration paramConfiguration)
-  {
-    AppMethodBeat.i(148003);
-    p.h(paramConfiguration, "newConfig");
-    com.tencent.mm.plugin.appbrand.page.d.c localc = this.mfu;
-    Object localObject = localc;
-    if (!(localc instanceof a)) {
-      localObject = null;
-    }
-    localObject = (a)localObject;
-    if (localObject != null)
-    {
-      this.clu.post((Runnable)new b((a)localObject, this, paramConfiguration));
-      AppMethodBeat.o(148003);
-      return;
-    }
-    AppMethodBeat.o(148003);
-  }
-  
-  public final void onDestroy() {}
-  
-  public final void onForeground()
-  {
-    AppMethodBeat.i(148002);
-    this.mfu.Dv();
-    Object localObject2 = this.mfu;
-    Object localObject1 = localObject2;
-    if (!(localObject2 instanceof a)) {
-      localObject1 = null;
-    }
-    localObject1 = (a)localObject1;
-    if (localObject1 != null)
-    {
-      boolean bool = this.clu.getWindowAndroid().aWN();
-      localObject2 = this.clu.getContext();
-      p.g(localObject2, "page.context");
-      localObject2 = ((Context)localObject2).getResources();
-      p.g(localObject2, "page.context.resources");
-      ((a)localObject1).t(bool, ((Resources)localObject2).getConfiguration().orientation);
-      AppMethodBeat.o(148002);
-      return;
-    }
-    AppMethodBeat.o(148002);
-  }
-  
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run", "com/tencent/mm/plugin/appbrand/page/AppBrandComponentViewWxa$runOnUiThread$1"})
-  public static final class a
-    implements Runnable
-  {
-    public a(bl parambl) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(147997);
-      bl.a(this.mfv).DL();
-      AppMethodBeat.o(147997);
+      label81:
+      bool = false;
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run", "com/tencent/mm/plugin/appbrand/page/MPPageViewStatusBarExtensionImpl$onConfigurationChanged$1$1"})
-  static final class b
-    implements Runnable
+  public final void setVisibility(int paramInt)
   {
-    b(a parama, bl parambl, Configuration paramConfiguration) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(147998);
-      this.mfw.t(bl.b(jdField_this).getWindowAndroid().aWN(), paramConfiguration.orientation);
-      AppMethodBeat.o(147998);
-    }
-  }
-  
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run", "com/tencent/mm/plugin/appbrand/page/AppBrandComponentViewWxa$runOnUiThread$1"})
-  public static final class c
-    implements Runnable
-  {
-    public c(bl parambl) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(147999);
-      bl.a(this.mfv).DK();
-      AppMethodBeat.o(147999);
-    }
+    AppMethodBeat.i(147506);
+    super.setVisibility(paramInt);
+    bwj();
+    AppMethodBeat.o(147506);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.page.bl
  * JD-Core Version:    0.7.0.1
  */

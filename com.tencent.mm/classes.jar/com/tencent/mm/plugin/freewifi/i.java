@@ -6,12 +6,12 @@ import com.tencent.mm.plugin.freewifi.model.j;
 
 public final class i
 {
-  private b tkR;
+  private b tvJ;
   
   private i()
   {
     AppMethodBeat.i(24677);
-    this.tkR = j.cRA();
+    this.tvJ = j.cUf();
     AppMethodBeat.o(24677);
   }
   
@@ -20,7 +20,7 @@ public final class i
     try
     {
       AppMethodBeat.i(24680);
-      this.tkR.gK(paramString, String.valueOf(paramLong));
+      this.tvJ.gP(paramString, String.valueOf(paramLong));
       AppMethodBeat.o(24680);
       return;
     }
@@ -31,12 +31,12 @@ public final class i
     }
   }
   
-  public final void dB(String paramString, int paramInt)
+  public final void dF(String paramString, int paramInt)
   {
     try
     {
       AppMethodBeat.i(24681);
-      this.tkR.gK(paramString, String.valueOf(paramInt));
+      this.tvJ.gP(paramString, String.valueOf(paramInt));
       AppMethodBeat.o(24681);
       return;
     }
@@ -56,7 +56,7 @@ public final class i
     //   2: sipush 24679
     //   5: invokestatic 19	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: aload_1
-    //   9: invokestatic 62	com/tencent/mm/plugin/freewifi/m:ea	(Ljava/lang/String;)Z
+    //   9: invokestatic 62	com/tencent/mm/plugin/freewifi/m:ef	(Ljava/lang/String;)Z
     //   12: ifeq +13 -> 25
     //   15: sipush 24679
     //   18: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -65,12 +65,12 @@ public final class i
     //   23: iload_2
     //   24: ireturn
     //   25: aload_0
-    //   26: getfield 27	com/tencent/mm/plugin/freewifi/i:tkR	Lcom/tencent/mm/plugin/freewifi/g/b;
+    //   26: getfield 27	com/tencent/mm/plugin/freewifi/i:tvJ	Lcom/tencent/mm/plugin/freewifi/g/b;
     //   29: aload_1
-    //   30: invokevirtual 66	com/tencent/mm/plugin/freewifi/g/b:ajW	(Ljava/lang/String;)Ljava/lang/String;
+    //   30: invokevirtual 66	com/tencent/mm/plugin/freewifi/g/b:akU	(Ljava/lang/String;)Ljava/lang/String;
     //   33: astore_1
     //   34: aload_1
-    //   35: invokestatic 62	com/tencent/mm/plugin/freewifi/m:ea	(Ljava/lang/String;)Z
+    //   35: invokestatic 62	com/tencent/mm/plugin/freewifi/m:ef	(Ljava/lang/String;)Z
     //   38: istore 4
     //   40: iload 4
     //   42: ifeq +17 -> 59
@@ -115,7 +115,7 @@ public final class i
   }
   
   /* Error */
-  public final long wn(String paramString)
+  public final long wW(String paramString)
   {
     // Byte code:
     //   0: lconst_0
@@ -125,7 +125,7 @@ public final class i
     //   4: sipush 24678
     //   7: invokestatic 19	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   10: aload_1
-    //   11: invokestatic 62	com/tencent/mm/plugin/freewifi/m:ea	(Ljava/lang/String;)Z
+    //   11: invokestatic 62	com/tencent/mm/plugin/freewifi/m:ef	(Ljava/lang/String;)Z
     //   14: ifeq +13 -> 27
     //   17: sipush 24678
     //   20: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -134,12 +134,12 @@ public final class i
     //   25: lload_2
     //   26: lreturn
     //   27: aload_0
-    //   28: getfield 27	com/tencent/mm/plugin/freewifi/i:tkR	Lcom/tencent/mm/plugin/freewifi/g/b;
+    //   28: getfield 27	com/tencent/mm/plugin/freewifi/i:tvJ	Lcom/tencent/mm/plugin/freewifi/g/b;
     //   31: aload_1
-    //   32: invokevirtual 66	com/tencent/mm/plugin/freewifi/g/b:ajW	(Ljava/lang/String;)Ljava/lang/String;
+    //   32: invokevirtual 66	com/tencent/mm/plugin/freewifi/g/b:akU	(Ljava/lang/String;)Ljava/lang/String;
     //   35: astore_1
     //   36: aload_1
-    //   37: invokestatic 62	com/tencent/mm/plugin/freewifi/m:ea	(Ljava/lang/String;)Z
+    //   37: invokestatic 62	com/tencent/mm/plugin/freewifi/m:ef	(Ljava/lang/String;)Z
     //   40: istore 6
     //   42: iload 6
     //   44: ifeq +17 -> 61
@@ -185,19 +185,19 @@ public final class i
   
   public static final class a
   {
-    private static i tlb;
+    private static i tvT;
     
     static
     {
       AppMethodBeat.i(24676);
-      tlb = new i((byte)0);
+      tvT = new i((byte)0);
       AppMethodBeat.o(24676);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.freewifi.i
  * JD-Core Version:    0.7.0.1
  */

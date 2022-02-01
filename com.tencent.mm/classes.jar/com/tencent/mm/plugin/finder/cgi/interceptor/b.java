@@ -4,59 +4,59 @@ import android.content.Context;
 import android.content.res.Resources;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.finder.cgi.m.f;
-import com.tencent.mm.plugin.finder.model.al;
-import com.tencent.mm.plugin.finder.model.v;
-import com.tencent.mm.protocal.protobuf.arp;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.plugin.finder.model.am;
+import com.tencent.mm.plugin.finder.model.w;
+import com.tencent.mm.protocal.protobuf.ase;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
 import d.g.b.p;
 import d.l;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/cgi/interceptor/HandleHistoryTipsInterceptor;", "Lcom/tencent/mm/plugin/finder/cgi/interceptor/IFinderStreamInterceptor;", "()V", "handle", "", "loadedInfo", "Lcom/tencent/mm/plugin/finder/feed/model/CgiFinderStreamResult;", "onIntercept", "", "resp", "Lcom/tencent/mm/plugin/finder/cgi/CgiFinderStream$FinderStreamResponseEx;", "onInterceptAfterStore", "onInterceptBeforeStore", "Companion", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/cgi/interceptor/HandleHistoryTipsInterceptor;", "Lcom/tencent/mm/plugin/finder/cgi/interceptor/IFinderStreamInterceptor;", "()V", "handle", "", "loadedInfo", "Lcom/tencent/mm/plugin/finder/feed/model/CgiFinderStreamResult;", "onIntercept", "", "resp", "Lcom/tencent/mm/plugin/finder/cgi/CgiFinderStream$FinderStreamResponseEx;", "onInterceptAfterStore", "onInterceptBeforeStore", "Companion", "plugin-finder_release"})
 public final class b
-  implements e
+  implements f
 {
-  public static final a rKZ;
+  public static final a rTm;
   
   static
   {
-    AppMethodBeat.i(201224);
-    rKZ = new a((byte)0);
-    AppMethodBeat.o(201224);
+    AppMethodBeat.i(201649);
+    rTm = new a((byte)0);
+    AppMethodBeat.o(201649);
   }
   
   public final boolean a(m.f paramf)
   {
-    AppMethodBeat.i(201221);
+    AppMethodBeat.i(201646);
     p.h(paramf, "resp");
-    AppMethodBeat.o(201221);
+    AppMethodBeat.o(201646);
     return false;
   }
   
   public final boolean a(com.tencent.mm.plugin.finder.feed.model.b paramb)
   {
-    AppMethodBeat.i(201222);
+    AppMethodBeat.i(201647);
     p.h(paramb, "loadedInfo");
-    int k = paramb.duh;
+    int k = paramb.dvm;
     int i = paramb.pullType;
-    boolean bool1 = paramb.rKw;
-    boolean bool2 = paramb.saV;
-    long l = paramb.rIt;
-    int m = paramb.rIs;
-    int j = paramb.rIu;
-    ad.i("Finder.HandleHistoryTipsInterceptor", "[handle] tabType=" + k + " pullType=" + i + " isGetHistory=" + bool1 + " isFetchHistory=" + bool2 + " afterFeedIdHistory=" + l + " streamSize=" + m + " historySize=" + j);
+    boolean bool1 = paramb.rSI;
+    boolean bool2 = paramb.sjL;
+    long l = paramb.rQE;
+    int m = paramb.rQD;
+    int j = paramb.rQF;
+    ae.i("Finder.HandleHistoryTipsInterceptor", "[handle] tabType=" + k + " pullType=" + i + " isGetHistory=" + bool1 + " isFetchHistory=" + bool2 + " afterFeedIdHistory=" + l + " streamSize=" + m + " historySize=" + j);
     Object localObject1;
     if ((!bool1) && (bool2) && (j > 0) && ((k == 3) || (k == 1)) && ((i == 2) || (((i == 1) || (i == 0)) && (m > 0))))
     {
-      Object localObject2 = ((Iterable)paramb.saR).iterator();
+      Object localObject2 = ((Iterable)paramb.sjH).iterator();
       if (!((Iterator)localObject2).hasNext()) {
         break label429;
       }
       localObject1 = ((Iterator)localObject2).next();
-      if (((al)localObject1).bYk() != 2011) {
+      if (((am)localObject1).bZz() != 2011) {
         break label424;
       }
       i = 1;
@@ -68,21 +68,21 @@ public final class b
       if (localObject1 != null) {
         break label452;
       }
-      localObject1 = new arp();
-      ((arp)localObject1).Gpr = 2;
-      ((arp)localObject1).Gpl = System.currentTimeMillis();
-      localObject2 = aj.getContext();
+      localObject1 = new ase();
+      ((ase)localObject1).GIL = 2;
+      ((ase)localObject1).GIB = System.currentTimeMillis();
+      localObject2 = ak.getContext();
       p.g(localObject2, "MMApplicationContext.getContext()");
-      ((arp)localObject1).dxD = ((Context)localObject2).getResources().getString(2131766854);
-      localObject1 = new v((arp)localObject1);
-      localObject2 = (List)paramb.saR;
+      ((ase)localObject1).dyI = ((Context)localObject2).getResources().getString(2131766854);
+      localObject1 = new w((ase)localObject1);
+      localObject2 = (List)paramb.sjH;
       i = 0;
       localObject2 = ((List)localObject2).iterator();
       label317:
       if (!((Iterator)localObject2).hasNext()) {
         break label447;
       }
-      if (((al)((Iterator)localObject2).next()).lP() != l) {
+      if (((am)((Iterator)localObject2).next()).lP() != l) {
         break label435;
       }
       j = 1;
@@ -91,12 +91,12 @@ public final class b
         break label440;
       }
       label354:
-      paramb.saR.add(i + 1, localObject1);
-      ad.i("Finder.HandleHistoryTipsInterceptor", "tabType=" + k + ", index=" + i + ", streamSize=" + m + " afterFeedIdHistory=" + l);
+      paramb.sjH.add(i + 1, localObject1);
+      ae.i("Finder.HandleHistoryTipsInterceptor", "tabType=" + k + ", index=" + i + ", streamSize=" + m + " afterFeedIdHistory=" + l);
     }
     for (;;)
     {
-      AppMethodBeat.o(201222);
+      AppMethodBeat.o(201647);
       return false;
       label424:
       i = 0;
@@ -116,19 +116,19 @@ public final class b
       i = -1;
       break label354;
       label452:
-      ad.i("Finder.HandleHistoryTipsInterceptor", "tabType=" + k + ", has insert history divider from server");
+      ae.i("Finder.HandleHistoryTipsInterceptor", "tabType=" + k + ", has insert history divider from server");
     }
   }
   
   public final boolean b(com.tencent.mm.plugin.finder.feed.model.b paramb)
   {
-    AppMethodBeat.i(201223);
+    AppMethodBeat.i(201648);
     p.h(paramb, "loadedInfo");
-    AppMethodBeat.o(201223);
+    AppMethodBeat.o(201648);
     return false;
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/cgi/interceptor/HandleHistoryTipsInterceptor$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/cgi/interceptor/HandleHistoryTipsInterceptor$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
   public static final class a {}
 }
 

@@ -2,8 +2,8 @@ package com.tencent.mm.plugin.card.d;
 
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.tl;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.tn;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.ArrayList;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -11,7 +11,7 @@ import org.json.JSONObject;
 
 public final class u
 {
-  public static ArrayList<tl> Zt(String paramString)
+  public static ArrayList<tn> aak(String paramString)
   {
     AppMethodBeat.i(113878);
     if (TextUtils.isEmpty(paramString))
@@ -50,27 +50,27 @@ public final class u
             localArrayList.add(paramString);
             break label282;
           }
-          paramString = new tl();
+          paramString = new tn();
           paramString.name = localJSONObject.optString("name");
           paramString.descriptor = localJSONObject.optString("descriptor");
-          paramString.oyb = localJSONObject.optString("phone");
+          paramString.oED = localJSONObject.optString("phone");
           paramString.country = localJSONObject.optString("country");
-          paramString.ePu = localJSONObject.optString("province");
-          paramString.ePv = localJSONObject.optString("city");
-          paramString.hWY = localJSONObject.optString("address");
-          paramString.zxp = ((float)localJSONObject.optDouble("distance"));
-          paramString.dAp = ((float)localJSONObject.optDouble("longitude"));
-          paramString.dyz = ((float)localJSONObject.optDouble("latitude"));
-          paramString.ozD = localJSONObject.optString("jump_url");
-          paramString.FRk = localJSONObject.optString("app_brand_user_name");
-          paramString.FRl = localJSONObject.optString("app_brand_pass");
+          paramString.eRf = localJSONObject.optString("province");
+          paramString.eRg = localJSONObject.optString("city");
+          paramString.hZQ = localJSONObject.optString("address");
+          paramString.zOO = ((float)localJSONObject.optDouble("distance"));
+          paramString.dBu = ((float)localJSONObject.optDouble("longitude"));
+          paramString.dzE = ((float)localJSONObject.optDouble("latitude"));
+          paramString.oGf = localJSONObject.optString("jump_url");
+          paramString.GjJ = localJSONObject.optString("app_brand_user_name");
+          paramString.GjK = localJSONObject.optString("app_brand_pass");
           continue;
         }
         AppMethodBeat.o(113878);
       }
       catch (JSONException paramString)
       {
-        ad.printErrStackTrace("MicroMsg.ShopInfoItemParser", paramString, "", new Object[0]);
+        ae.printErrStackTrace("MicroMsg.ShopInfoItemParser", paramString, "", new Object[0]);
         AppMethodBeat.o(113878);
         return null;
       }

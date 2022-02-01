@@ -6,38 +6,38 @@ import com.tencent.luggage.d.r;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.webview.e.c;
 import com.tencent.mm.plugin.webview.e.e;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.ar;
 import java.util.HashMap;
 
 public final class n
 {
-  private static HashMap<String, Integer> DPT;
+  private static HashMap<String, Integer> EhT;
   
   static
   {
     AppMethodBeat.i(78406);
-    DPT = new HashMap();
+    EhT = new HashMap();
     AppMethodBeat.o(78406);
   }
   
   public static int a(p paramp, c paramc)
   {
-    AppMethodBeat.i(207897);
-    int i = r.a(aj.getContext(), paramp).intValue();
+    AppMethodBeat.i(198077);
+    int i = r.a(ak.getContext(), paramp).intValue();
     e.a(paramp.hashCode(), paramc);
-    AppMethodBeat.o(207897);
+    AppMethodBeat.o(198077);
     return i;
   }
   
   public static void remove(int paramInt)
   {
     AppMethodBeat.i(78405);
-    p localp = r.b(Integer.valueOf(paramInt));
+    p localp = r.c(Integer.valueOf(paramInt));
     if (localp != null)
     {
-      e.WR(localp.hashCode());
+      e.Xx(localp.hashCode());
       if (Thread.currentThread().getId() == Looper.getMainLooper().getThread().getId()) {
         try
         {
@@ -47,25 +47,25 @@ public final class n
         }
         catch (Exception localException)
         {
-          ad.printErrStackTrace("MicroMsg.LuggageWebCoreStash", localException, "", new Object[0]);
+          ae.printErrStackTrace("MicroMsg.LuggageWebCoreStash", localException, "", new Object[0]);
           AppMethodBeat.o(78405);
           return;
         }
       }
-      aq.f(new Runnable()
+      ar.f(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(78403);
           try
           {
-            this.tTv.destroy();
+            this.uen.destroy();
             AppMethodBeat.o(78403);
             return;
           }
           catch (Exception localException)
           {
-            ad.printErrStackTrace("MicroMsg.LuggageWebCoreStash", localException, "", new Object[0]);
+            ae.printErrStackTrace("MicroMsg.LuggageWebCoreStash", localException, "", new Object[0]);
             AppMethodBeat.o(78403);
           }
         }

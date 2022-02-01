@@ -5,35 +5,35 @@ import com.tencent.mm.plugin.vlog.model.local.a.a;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/vlog/ui/plugin/transition/TransitionItem;", "", "effect", "Lcom/tencent/mm/plugin/vlog/model/local/LocalEffectManager$TransEffectInfo;", "selected", "", "(Lcom/tencent/mm/plugin/vlog/model/local/LocalEffectManager$TransEffectInfo;Z)V", "getEffect", "()Lcom/tencent/mm/plugin/vlog/model/local/LocalEffectManager$TransEffectInfo;", "setEffect", "(Lcom/tencent/mm/plugin/vlog/model/local/LocalEffectManager$TransEffectInfo;)V", "getSelected", "()Z", "setSelected", "(Z)V", "component1", "component2", "copy", "equals", "other", "hashCode", "", "toString", "", "plugin-vlog_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/vlog/ui/plugin/transition/TransitionItem;", "", "effect", "Lcom/tencent/mm/plugin/vlog/model/local/LocalEffectManager$TransEffectInfo;", "selected", "", "(Lcom/tencent/mm/plugin/vlog/model/local/LocalEffectManager$TransEffectInfo;Z)V", "getEffect", "()Lcom/tencent/mm/plugin/vlog/model/local/LocalEffectManager$TransEffectInfo;", "setEffect", "(Lcom/tencent/mm/plugin/vlog/model/local/LocalEffectManager$TransEffectInfo;)V", "getSelected", "()Z", "setSelected", "(Z)V", "component1", "component2", "copy", "equals", "other", "hashCode", "", "toString", "", "plugin-vlog_release"})
 public final class d
 {
-  a.a BTw;
-  boolean tfH;
+  a.a CkX;
+  boolean tqA;
   
   public d(a.a parama)
   {
-    this.BTw = parama;
-    this.tfH = false;
+    this.CkX = parama;
+    this.tqA = false;
   }
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(196812);
+    AppMethodBeat.i(192275);
     if (this != paramObject)
     {
       if ((paramObject instanceof d))
       {
         paramObject = (d)paramObject;
-        if ((!p.i(this.BTw, paramObject.BTw)) || (this.tfH != paramObject.tfH)) {}
+        if ((!p.i(this.CkX, paramObject.CkX)) || (this.tqA != paramObject.tqA)) {}
       }
     }
     else
     {
-      AppMethodBeat.o(196812);
+      AppMethodBeat.o(192275);
       return true;
     }
-    AppMethodBeat.o(196812);
+    AppMethodBeat.o(192275);
     return false;
   }
   
@@ -44,9 +44,9 @@ public final class d
   
   public final String toString()
   {
-    AppMethodBeat.i(196810);
-    String str = "TransitionItem(effect=" + this.BTw + ", selected=" + this.tfH + ")";
-    AppMethodBeat.o(196810);
+    AppMethodBeat.i(192273);
+    String str = "TransitionItem(effect=" + this.CkX + ", selected=" + this.tqA + ")";
+    AppMethodBeat.o(192273);
     return str;
   }
 }

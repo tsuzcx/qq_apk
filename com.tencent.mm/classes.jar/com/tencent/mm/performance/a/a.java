@@ -3,7 +3,7 @@ package com.tencent.mm.performance.a;
 @Deprecated
 public final class a
 {
-  public static a.a iJX;
+  public static a.a iMQ;
 }
 
 

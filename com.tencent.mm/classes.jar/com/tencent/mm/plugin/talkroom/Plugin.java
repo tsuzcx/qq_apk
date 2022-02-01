@@ -1,11 +1,11 @@
 package com.tencent.mm.plugin.talkroom;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.lj;
-import com.tencent.mm.g.a.wl;
-import com.tencent.mm.g.a.wm;
-import com.tencent.mm.g.a.wo;
-import com.tencent.mm.model.ax;
+import com.tencent.mm.g.a.lk;
+import com.tencent.mm.g.a.wp;
+import com.tencent.mm.g.a.wq;
+import com.tencent.mm.g.a.ws;
+import com.tencent.mm.model.az;
 import com.tencent.mm.plugin.talkroom.model.b;
 import com.tencent.mm.pluginsdk.b.d;
 import com.tencent.mm.pluginsdk.n;
@@ -16,10 +16,10 @@ public class Plugin
   public Plugin()
   {
     AppMethodBeat.i(29370);
-    com.tencent.mm.sdk.b.a.IbL.c(new com.tencent.mm.sdk.b.c() {});
-    com.tencent.mm.sdk.b.a.IbL.c(new b((byte)0));
-    com.tencent.mm.sdk.b.a.IbL.c(new a((byte)0));
-    com.tencent.mm.sdk.b.a.IbL.c(new c((byte)0));
+    com.tencent.mm.sdk.b.a.IvT.c(new com.tencent.mm.sdk.b.c() {});
+    com.tencent.mm.sdk.b.a.IvT.c(new b((byte)0));
+    com.tencent.mm.sdk.b.a.IvT.c(new a((byte)0));
+    com.tencent.mm.sdk.b.a.IvT.c(new c((byte)0));
     AppMethodBeat.o(29370);
   }
   
@@ -31,7 +31,7 @@ public class Plugin
     return locala;
   }
   
-  public ax createSubCore()
+  public az createSubCore()
   {
     AppMethodBeat.i(29372);
     b localb = new b();
@@ -45,34 +45,34 @@ public class Plugin
   }
   
   final class a
-    extends com.tencent.mm.sdk.b.c<wl>
+    extends com.tencent.mm.sdk.b.c<wp>
   {
     private a()
     {
       AppMethodBeat.i(161452);
-      this.__eventId = wl.class.getName().hashCode();
+      this.__eventId = wp.class.getName().hashCode();
       AppMethodBeat.o(161452);
     }
   }
   
   static final class b
-    extends com.tencent.mm.sdk.b.c<wm>
+    extends com.tencent.mm.sdk.b.c<wq>
   {
     private b()
     {
       AppMethodBeat.i(161454);
-      this.__eventId = wm.class.getName().hashCode();
+      this.__eventId = wq.class.getName().hashCode();
       AppMethodBeat.o(161454);
     }
   }
   
   final class c
-    extends com.tencent.mm.sdk.b.c<wo>
+    extends com.tencent.mm.sdk.b.c<ws>
   {
     private c()
     {
       AppMethodBeat.i(161456);
-      this.__eventId = wo.class.getName().hashCode();
+      this.__eventId = ws.class.getName().hashCode();
       AppMethodBeat.o(161456);
     }
   }

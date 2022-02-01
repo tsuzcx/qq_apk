@@ -14,19 +14,19 @@ public final class e<K, V>
     super(new HashMap());
   }
   
-  public static <K, V> e<K, V> Bb()
+  public static <K, V> e<K, V> Bc()
   {
     return new e();
   }
   
-  final List<V> AK()
+  final List<V> AL()
   {
     return new ArrayList(this.cdI);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.e.a.a.b.e
  * JD-Core Version:    0.7.0.1
  */

@@ -15,7 +15,7 @@ import com.tencent.mm.ui.widget.a.d;
 @Deprecated
 public abstract interface m
 {
-  public abstract void MU();
+  public abstract void MP();
   
   public abstract void a(Activity paramActivity, Intent paramIntent, int paramInt);
   
@@ -53,15 +53,15 @@ public abstract interface m
   
   public abstract boolean b(Context paramContext, String paramString, Bundle paramBundle);
   
-  public abstract void bA(Context paramContext);
+  public abstract void bC(Context paramContext);
   
-  public abstract d bB(Context paramContext);
+  public abstract d bD(Context paramContext);
   
-  public abstract Intent bC(Context paramContext);
+  public abstract Intent bE(Context paramContext);
   
-  public abstract void bD(Context paramContext);
+  public abstract void bF(Context paramContext);
   
-  public abstract void bE(Context paramContext);
+  public abstract void bG(Context paramContext);
   
   public abstract void c(Intent paramIntent, Context paramContext);
   

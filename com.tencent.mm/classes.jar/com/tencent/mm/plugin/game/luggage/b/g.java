@@ -13,8 +13,8 @@ import com.tencent.mm.ipcinvoker.h;
 import com.tencent.mm.plugin.webview.luggage.jsapi.bq;
 import com.tencent.mm.plugin.webview.luggage.jsapi.bq.a;
 import com.tencent.mm.plugin.webview.luggage.u;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -29,22 +29,22 @@ public class g
   
   public final void b(final com.tencent.luggage.d.b<a>.a paramb)
   {
-    AppMethodBeat.i(211604);
-    ad.i("MicroMsg.JsApiClearGameData", "invokeInOwn");
+    AppMethodBeat.i(192993);
+    ae.i("MicroMsg.JsApiClearGameData", "invokeInOwn");
     Object localObject2 = paramb.chh.cgn;
     Object localObject3 = (a)paramb.chg;
     if ((localObject3 instanceof com.tencent.mm.plugin.game.luggage.f.g))
     {
-      localObject1 = ((com.tencent.mm.plugin.game.luggage.f.g)localObject3).DOL.getAppId();
-      if (!bt.isNullOrNil((String)localObject1)) {
+      localObject1 = ((com.tencent.mm.plugin.game.luggage.f.g)localObject3).EgL.getAppId();
+      if (!bu.isNullOrNil((String)localObject1)) {
         break label234;
       }
-      localObject1 = Uri.parse(bt.nullAsNil(((com.tencent.mm.plugin.game.luggage.f.g)localObject3).bQm()));
+      localObject1 = Uri.parse(bu.nullAsNil(((com.tencent.mm.plugin.game.luggage.f.g)localObject3).bRn()));
       if ((((Uri)localObject1).getHost() == null) || (!((Uri)localObject1).getHost().equals("game.weixin.qq.com")))
       {
-        ad.i("MicroMsg.JsApiClearGameData", "appId is null");
+        ae.i("MicroMsg.JsApiClearGameData", "appId is null");
         paramb.a("appid_null", null);
-        AppMethodBeat.o(211604);
+        AppMethodBeat.o(192993);
         return;
       }
     }
@@ -62,21 +62,21 @@ public class g
       for (;;)
       {
         h.a("com.tencent.mm", (Parcelable)localObject2, a.class, new d() {});
-        AppMethodBeat.o(211604);
+        AppMethodBeat.o(192993);
         return;
         if (!bool) {
           break;
         }
         ((Bundle)localObject2).putBoolean("clearAll", bool);
       }
-      ad.i("MicroMsg.JsApiClearGameData", "keys is null");
+      ae.i("MicroMsg.JsApiClearGameData", "keys is null");
       paramb.a("fail", null);
-      AppMethodBeat.o(211604);
+      AppMethodBeat.o(192993);
       return;
     }
   }
   
-  public final int ccO()
+  public final int ced()
   {
     return 0;
   }

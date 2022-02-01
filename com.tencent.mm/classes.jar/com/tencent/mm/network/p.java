@@ -5,30 +5,31 @@ import com.tencent.mars.mm.MMLogic;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.loader.j.b;
 import com.tencent.mm.protocal.d;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.vfs.i;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.vfs.o;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public final class p
   implements IPxxLogic.ICallBack
 {
-  private static long iEE = 0L;
-  private static int iEF = 0;
+  private static long iHx = 0L;
+  private static int iHy = 0;
   private final String TAG = "IPxxCallback";
   
-  private static void qA(int paramInt)
+  private static void qD(int paramInt)
   {
     AppMethodBeat.i(132756);
     try
     {
-      ad.aPm().qB(paramInt);
+      ad.aPK().qE(paramInt);
       AppMethodBeat.o(132756);
       return;
     }
     catch (Exception localException)
     {
-      com.tencent.mm.sdk.platformtools.ad.e("IPxxCallback", "exception:%s", new Object[] { bt.n(localException) });
+      ae.e("IPxxCallback", "exception:%s", new Object[] { bu.o(localException) });
       AppMethodBeat.o(132756);
     }
   }
@@ -38,8 +39,8 @@ public final class p
     AppMethodBeat.i(132751);
     Object localObject = new Date(System.currentTimeMillis() - paramInt * 86400000L);
     SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("yyyyMMdd");
-    localObject = b.arW() + "crash_" + localSimpleDateFormat.format((Date)localObject) + ".txt";
-    if (i.fv((String)localObject))
+    localObject = b.asl() + "crash_" + localSimpleDateFormat.format((Date)localObject) + ".txt";
+    if (o.fB((String)localObject))
     {
       AppMethodBeat.o(132751);
       return localObject;
@@ -54,7 +55,7 @@ public final class p
     try
     {
       paramString = new StringBuffer();
-      paramString.append("Device:").append(d.Fne).append(" ").append(d.Fnf).append("\n");
+      paramString.append("Device:").append(d.FFC).append(" ").append(d.FFD).append("\n");
       paramString = paramString.toString();
       AppMethodBeat.o(132749);
       return paramString;
@@ -83,22 +84,22 @@ public final class p
   public final void uploadLogFail()
   {
     AppMethodBeat.i(132754);
-    iEF = 0;
-    qA(-1);
+    iHy = 0;
+    qD(-1);
     AppMethodBeat.o(132754);
   }
   
   public final void uploadLogResponse(long paramLong1, long paramLong2)
   {
     AppMethodBeat.i(132753);
-    com.tencent.mm.sdk.platformtools.ad.i("IPxxCallback", "ipxx progress totalSize:%d uploadSize:%d lastPercent:%d ", new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2), Integer.valueOf(iEF) });
-    long l = bt.aQJ();
-    if (l - 1L < iEE)
+    ae.i("IPxxCallback", "ipxx progress totalSize:%d uploadSize:%d lastPercent:%d ", new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2), Integer.valueOf(iHy) });
+    long l = bu.aRi();
+    if (l - 1L < iHx)
     {
       AppMethodBeat.o(132753);
       return;
     }
-    iEE = l;
+    iHx = l;
     int j = 0;
     int i = j;
     if (paramLong2 >= 0L)
@@ -117,19 +118,19 @@ public final class p
       j = 100;
     }
     i = j;
-    if (iEF > j) {
-      i = iEF;
+    if (iHy > j) {
+      i = iHy;
     }
-    iEF = i;
-    qA(i);
+    iHy = i;
+    qD(i);
     AppMethodBeat.o(132753);
   }
   
   public final void uploadLogSuccess()
   {
     AppMethodBeat.i(132755);
-    iEF = 0;
-    qA(100);
+    iHy = 0;
+    qD(100);
     AppMethodBeat.o(132755);
   }
 }

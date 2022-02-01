@@ -11,16 +11,16 @@ import org.xwalk.core.XWalkView;
 public final class h
   implements e
 {
-  m MwM;
-  o MwN;
-  XWalkView MwO;
+  m MTQ;
+  o MTR;
+  XWalkView MTS;
   
   public h(XWalkView paramXWalkView)
   {
     AppMethodBeat.i(154285);
-    this.MwO = paramXWalkView;
-    this.MwM = new m(paramXWalkView);
-    this.MwN = new o(paramXWalkView);
+    this.MTS = paramXWalkView;
+    this.MTQ = new m(paramXWalkView);
+    this.MTR = new o(paramXWalkView);
     AppMethodBeat.o(154285);
   }
   
@@ -29,7 +29,7 @@ public final class h
     AppMethodBeat.i(154289);
     if ((paramJsResult instanceof g.c))
     {
-      boolean bool = this.MwM.b(this.MwO, paramString1, paramString2, ((g.c)paramJsResult).MwI);
+      boolean bool = this.MTQ.b(this.MTS, paramString1, paramString2, ((g.c)paramJsResult).MTM);
       AppMethodBeat.o(154289);
       return bool;
     }
@@ -42,7 +42,7 @@ public final class h
     AppMethodBeat.i(154291);
     if ((paramo instanceof g.e))
     {
-      boolean bool = this.MwM.a(this.MwO, paramString1, paramString2, paramString3, ((g.e)paramo).MwI);
+      boolean bool = this.MTQ.a(this.MTS, paramString1, paramString2, paramString3, ((g.e)paramo).MTM);
       AppMethodBeat.o(154291);
       return bool;
     }
@@ -55,7 +55,7 @@ public final class h
     AppMethodBeat.i(154290);
     if ((paramJsResult instanceof g.c))
     {
-      boolean bool = this.MwM.a(this.MwO, paramString1, paramString2, ((g.c)paramJsResult).MwI);
+      boolean bool = this.MTQ.a(this.MTS, paramString1, paramString2, ((g.c)paramJsResult).MTM);
       AppMethodBeat.o(154290);
       return bool;
     }
@@ -66,7 +66,7 @@ public final class h
   public final void onHideCustomView()
   {
     AppMethodBeat.i(154288);
-    this.MwM.gcM();
+    this.MTQ.gho();
     AppMethodBeat.o(154288);
   }
   
@@ -74,7 +74,7 @@ public final class h
   {
     AppMethodBeat.i(154287);
     if ((paramCustomViewCallback instanceof g.a)) {
-      this.MwM.a(paramView, ((g.a)paramCustomViewCallback).MwG);
+      this.MTQ.a(paramView, ((g.a)paramCustomViewCallback).MTK);
     }
     AppMethodBeat.o(154287);
   }
@@ -82,7 +82,7 @@ public final class h
   public final void y(String paramString, Bitmap paramBitmap)
   {
     AppMethodBeat.i(154286);
-    this.MwM.a(this.MwO, paramString);
+    this.MTQ.a(this.MTS, paramString);
     AppMethodBeat.o(154286);
   }
 }

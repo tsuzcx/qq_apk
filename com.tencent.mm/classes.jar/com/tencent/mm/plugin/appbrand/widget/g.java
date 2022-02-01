@@ -7,20 +7,20 @@ import com.tencent.mm.sdk.e.j;
 public final class g
   extends j<f>
 {
-  public static final String[] hEf;
-  public static final String[] hEg;
+  public static final String[] hGX;
+  public static final String[] hGY;
   
   static
   {
     AppMethodBeat.i(76399);
-    hEf = new String[] { j.getCreateSQLs(f.hEe, "DynamicMsgCacheData") };
-    hEg = new String[0];
+    hGX = new String[] { j.getCreateSQLs(f.hGW, "DynamicMsgCacheData") };
+    hGY = new String[0];
     AppMethodBeat.o(76399);
   }
   
   public g(e parame)
   {
-    super(parame, f.hEe, "DynamicMsgCacheData", hEg);
+    super(parame, f.hGW, "DynamicMsgCacheData", hGY);
   }
 }
 

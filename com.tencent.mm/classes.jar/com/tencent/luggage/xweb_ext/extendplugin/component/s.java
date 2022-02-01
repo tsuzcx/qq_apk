@@ -2,11 +2,11 @@ package com.tencent.luggage.xweb_ext.extendplugin.component;
 
 public abstract interface s
 {
-  public abstract void FW();
+  public abstract void Gc();
   
-  public abstract void FX();
+  public abstract void Gd();
   
-  public abstract void FY();
+  public abstract void Ge();
   
   public abstract void bA(boolean paramBoolean);
   

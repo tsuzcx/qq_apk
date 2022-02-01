@@ -2,13 +2,13 @@ package com.tencent.mm.plugin.appbrand.keylogger.base;
 
 public abstract interface a
 {
-  public abstract boolean bqA();
+  public abstract String bri();
   
-  public abstract String bqB();
+  public abstract boolean brj();
   
-  public abstract String bqy();
+  public abstract boolean brk();
   
-  public abstract boolean bqz();
+  public abstract String brl();
   
   public abstract String name();
 }

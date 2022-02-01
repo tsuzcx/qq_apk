@@ -4,11 +4,11 @@ import android.graphics.Bitmap;
 import android.graphics.Rect;
 import android.net.Uri;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.vfs.e;
+import com.tencent.mm.vfs.k;
 
 public final class a
 {
-  private final e aXd;
+  private final k aXd;
   final Integer aXe;
   public boolean aXf;
   public int aXg;
@@ -27,23 +27,23 @@ public final class a
     AppMethodBeat.o(157373);
   }
   
-  private a(Bitmap paramBitmap)
+  private a(Bitmap paramBitmap, boolean paramBoolean)
   {
-    AppMethodBeat.i(157371);
+    AppMethodBeat.i(213535);
     this.bitmap = paramBitmap;
     this.aXd = null;
     this.aXe = null;
     this.aXf = false;
     this.aXg = paramBitmap.getWidth();
     this.aXh = paramBitmap.getHeight();
-    this.aXj = true;
-    AppMethodBeat.o(157371);
+    this.aXj = paramBoolean;
+    AppMethodBeat.o(213535);
   }
   
-  private a(e parame)
+  private a(k paramk)
   {
     this.bitmap = null;
-    this.aXd = parame;
+    this.aXd = paramk;
     this.aXe = null;
     this.aXf = true;
   }
@@ -57,12 +57,26 @@ public final class a
       AppMethodBeat.o(157374);
       throw paramString;
     }
-    paramString = new a(new e(paramString));
+    paramString = new a(new k(paramString));
     AppMethodBeat.o(157374);
     return paramString;
   }
   
   public static a l(Bitmap paramBitmap)
+  {
+    AppMethodBeat.i(213536);
+    if (paramBitmap == null)
+    {
+      paramBitmap = new NullPointerException("Bitmap must not be null");
+      AppMethodBeat.o(213536);
+      throw paramBitmap;
+    }
+    paramBitmap = new a(paramBitmap, false);
+    AppMethodBeat.o(213536);
+    return paramBitmap;
+  }
+  
+  public static a m(Bitmap paramBitmap)
   {
     AppMethodBeat.i(182604);
     if (paramBitmap == null)
@@ -71,7 +85,7 @@ public final class a
       AppMethodBeat.o(182604);
       throw paramBitmap;
     }
-    paramBitmap = new a(paramBitmap);
+    paramBitmap = new a(paramBitmap, true);
     AppMethodBeat.o(182604);
     return paramBitmap;
   }

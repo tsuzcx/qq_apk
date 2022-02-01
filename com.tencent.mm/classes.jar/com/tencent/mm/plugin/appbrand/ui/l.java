@@ -1,127 +1,95 @@
 package com.tencent.mm.plugin.appbrand.ui;
 
-import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewPropertyAnimator;
-import android.widget.TextView;
+import android.content.MutableContextWrapper;
+import android.content.ServiceConnection;
+import android.view.ContextThemeWrapper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.statusbar.b;
-import d.g.a.a;
-import d.z;
+import com.tencent.mm.sdk.platformtools.ae;
 
-@SuppressLint({"ViewConstructor"})
-public class l
-  extends b
-  implements v
+public final class l
+  extends MutableContextWrapper
 {
-  private View arb;
-  private final Bitmap mEp;
-  private TextView mEq;
+  private ContextThemeWrapper mJt;
   
-  public l(Context paramContext, Bitmap paramBitmap)
+  private l(Context paramContext, int paramInt)
   {
     super(paramContext);
-    AppMethodBeat.i(48782);
-    this.mEp = paramBitmap;
-    yy(true);
-    setBackground(new BitmapDrawable(getResources(), paramBitmap));
-    paramContext = LayoutInflater.from(paramContext).inflate(2131493061, this, false);
-    this.arb = paramContext;
-    addView(paramContext);
-    paramBitmap = (TextView)paramContext.findViewById(2131305902);
-    this.mEq = paramBitmap;
-    paramBitmap.setText(2131755490);
-    paramContext.findViewById(2131301215).setVisibility(8);
-    AppMethodBeat.o(48782);
-  }
-  
-  public final void dV(String paramString1, String paramString2) {}
-  
-  public View getView()
-  {
-    return this;
-  }
-  
-  protected void onDetachedFromWindow()
-  {
-    AppMethodBeat.i(48784);
-    super.onDetachedFromWindow();
-    this.mEp.recycle();
-    AppMethodBeat.o(48784);
-  }
-  
-  public void setProgress(int paramInt) {}
-  
-  public void setPromptText(String paramString)
-  {
-    AppMethodBeat.i(188900);
-    this.mEq.setText(paramString);
-    AppMethodBeat.o(188900);
-  }
-  
-  public void setPromptVisible(boolean paramBoolean)
-  {
-    AppMethodBeat.i(188899);
-    View localView = this.arb;
-    if (paramBoolean) {}
-    for (int i = 0;; i = 8)
+    AppMethodBeat.i(177763);
+    this.mJt = new l.a(paramContext.getApplicationContext(), paramInt);
+    if (!(paramContext instanceof ContextThemeWrapper))
     {
-      localView.setVisibility(i);
-      AppMethodBeat.o(188899);
+      super.setBaseContext(this.mJt);
+      AppMethodBeat.o(177763);
       return;
+    }
+    paramContext.setTheme(paramInt);
+    AppMethodBeat.o(177763);
+  }
+  
+  public static l dR(Context paramContext)
+  {
+    AppMethodBeat.i(48774);
+    paramContext = new l(paramContext, s.bAB());
+    AppMethodBeat.o(48774);
+    return paramContext;
+  }
+  
+  public final void setBaseContext(Context paramContext)
+  {
+    AppMethodBeat.i(48776);
+    if (paramContext == getBaseContext())
+    {
+      AppMethodBeat.o(48776);
+      return;
+    }
+    if ((paramContext instanceof Activity))
+    {
+      super.setBaseContext(paramContext);
+      AppMethodBeat.o(48776);
+      return;
+    }
+    super.setBaseContext(this.mJt);
+    AppMethodBeat.o(48776);
+  }
+  
+  public final void unbindService(ServiceConnection paramServiceConnection)
+  {
+    AppMethodBeat.i(48778);
+    try
+    {
+      super.unbindService(paramServiceConnection);
+      AppMethodBeat.o(48778);
+      return;
+    }
+    catch (IllegalArgumentException paramServiceConnection)
+    {
+      ae.printErrStackTrace("MicroMsg.AppBrandRuntimePersistentContextWrapper", paramServiceConnection, "[CAPTURED CRASH]", new Object[0]);
+      AppMethodBeat.o(48778);
     }
   }
   
-  public void u(final a<z> parama)
+  public final void unregisterReceiver(BroadcastReceiver paramBroadcastReceiver)
   {
-    AppMethodBeat.i(188901);
-    post(new Runnable()
+    AppMethodBeat.i(223131);
+    try
     {
-      public final void run()
-      {
-        AppMethodBeat.i(48781);
-        final l locall = l.this;
-        if ((locall.getParent() instanceof ViewGroup))
-        {
-          final ViewGroup localViewGroup = (ViewGroup)locall.getParent();
-          locall.animate().alpha(0.0F).withEndAction(new Runnable()
-          {
-            public final void run()
-            {
-              AppMethodBeat.i(48780);
-              locall.setVisibility(8);
-              localViewGroup.removeView(locall);
-              if (l.1.this.mBu != null) {
-                l.1.this.mBu.invoke();
-              }
-              AppMethodBeat.o(48780);
-            }
-          }).withStartAction(new Runnable()
-          {
-            public final void run()
-            {
-              AppMethodBeat.i(48779);
-              l.a(l.this);
-              AppMethodBeat.o(48779);
-            }
-          }).start();
-        }
-        AppMethodBeat.o(48781);
-      }
-    });
-    AppMethodBeat.o(188901);
+      super.unregisterReceiver(paramBroadcastReceiver);
+      AppMethodBeat.o(223131);
+      return;
+    }
+    catch (IllegalArgumentException paramBroadcastReceiver)
+    {
+      ae.e("MicroMsg.AppBrandRuntimePersistentContextWrapper", "unregisterReceiver IllegalArgumentException %s", new Object[] { paramBroadcastReceiver });
+      AppMethodBeat.o(223131);
+    }
   }
-  
-  public final void ux(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.l
  * JD-Core Version:    0.7.0.1
  */

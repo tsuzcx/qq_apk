@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.websearch.api;
 
 public abstract interface e
 {
-  public abstract boolean eLR();
+  public abstract boolean ePA();
 }
 
 

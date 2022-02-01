@@ -1,23 +1,23 @@
 package com.tencent.mm.plugin.music.e;
 
-import com.tencent.mm.az.f;
+import com.tencent.mm.ay.f;
 import java.net.URL;
 import java.util.List;
 
 public abstract interface a
   extends com.tencent.mm.plugin.music.f.c.a
 {
-  public abstract boolean Lk(int paramInt);
+  public abstract boolean LP(int paramInt);
+  
+  public abstract String YI(String paramString);
   
   public abstract void a(f paramf, int paramInt);
   
   public abstract void a(c paramc);
   
-  public abstract String asA(String paramString);
+  public abstract URL atO(String paramString);
   
-  public abstract URL asB(String paramString);
-  
-  public abstract f dsL();
+  public abstract f dwa();
   
   public abstract void e(List<f> paramList, boolean paramBoolean);
   
@@ -45,7 +45,7 @@ public abstract interface a
   
   public abstract void release();
   
-  public abstract f t(List<f> paramList, int paramInt);
+  public abstract f u(List<f> paramList, int paramInt);
 }
 
 

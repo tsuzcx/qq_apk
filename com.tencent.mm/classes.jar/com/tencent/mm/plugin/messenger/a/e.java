@@ -10,39 +10,37 @@ import java.util.Map;
 public abstract interface e
   extends a
 {
-  public abstract void a(String paramString, e.a parama);
+  public abstract void a(String paramString, a parama);
   
   public abstract void a(String paramString, b paramb);
   
-  public abstract void a(String paramString, c paramc);
+  public abstract void a(String paramString, e.c paramc);
   
   public abstract void a(String paramString, Map<String, String> paramMap, Bundle paramBundle);
   
-  public abstract void apu(String paramString);
+  public abstract void aqA(String paramString);
   
-  public abstract void apv(String paramString);
+  public abstract CharSequence aqB(String paramString);
   
-  public abstract CharSequence apw(String paramString);
+  public abstract void aqz(String paramString);
   
   public abstract CharSequence b(String paramString, Bundle paramBundle, WeakReference<Context> paramWeakReference, WeakReference<NeatTextView> paramWeakReference1);
   
-  public abstract void b(String paramString, c paramc);
+  public abstract void b(String paramString, e.c paramc);
+  
+  public static abstract interface a
+  {
+    public abstract String e(Map<String, String> paramMap, String paramString);
+  }
   
   public static abstract interface b
   {
     public abstract CharSequence a(Map<String, String> paramMap, String paramString, Bundle paramBundle, WeakReference<Context> paramWeakReference, WeakReference<NeatTextView> paramWeakReference1);
   }
-  
-  public static abstract interface c
-  {
-    public abstract void a(Map<String, String> paramMap, com.tencent.mm.al.e.a parama);
-    
-    public abstract void b(String paramString, Map<String, String> paramMap, Bundle paramBundle);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.messenger.a.e
  * JD-Core Version:    0.7.0.1
  */

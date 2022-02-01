@@ -2,189 +2,127 @@ package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import f.a.a.b;
-import java.util.LinkedList;
 
 public final class efe
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public String HOx;
-  public efd HQA;
-  public int HQs;
-  public int HQt;
-  public String HQy;
-  public eew HQz;
-  public String Md5;
-  public String tRU;
+  public String Gfd;
+  public String HGP;
+  public String MD5;
+  public int Scene;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(110863);
+    AppMethodBeat.i(32556);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.HQy == null)
+      if (this.HGP == null)
       {
-        paramVarArgs = new b("Not all required fields were included: EntranceDomain");
-        AppMethodBeat.o(110863);
+        paramVarArgs = new b("Not all required fields were included: Talker");
+        AppMethodBeat.o(32556);
         throw paramVarArgs;
       }
-      if (this.HOx == null)
+      if (this.MD5 == null)
       {
-        paramVarArgs = new b("Not all required fields were included: Charset");
-        AppMethodBeat.o(110863);
+        paramVarArgs = new b("Not all required fields were included: MD5");
+        AppMethodBeat.o(32556);
         throw paramVarArgs;
       }
-      if (this.HQy != null) {
-        paramVarArgs.d(4, this.HQy);
-      }
-      if (this.HOx != null) {
-        paramVarArgs.d(12, this.HOx);
-      }
-      if (this.HQz != null)
+      if (this.Gfd == null)
       {
-        paramVarArgs.lC(9, this.HQz.computeSize());
-        this.HQz.writeFields(paramVarArgs);
+        paramVarArgs = new b("Not all required fields were included: ProductId");
+        AppMethodBeat.o(32556);
+        throw paramVarArgs;
       }
-      if (this.HQA != null)
-      {
-        paramVarArgs.lC(10, this.HQA.computeSize());
-        this.HQA.writeFields(paramVarArgs);
+      if (this.HGP != null) {
+        paramVarArgs.d(1, this.HGP);
       }
-      if (this.Md5 != null) {
-        paramVarArgs.d(5, this.Md5);
+      if (this.MD5 != null) {
+        paramVarArgs.d(2, this.MD5);
       }
-      if (this.tRU != null) {
-        paramVarArgs.d(6, this.tRU);
+      if (this.Gfd != null) {
+        paramVarArgs.d(3, this.Gfd);
       }
-      paramVarArgs.aS(7, this.HQs);
-      paramVarArgs.aS(8, this.HQt);
-      AppMethodBeat.o(110863);
+      paramVarArgs.aS(4, this.Scene);
+      AppMethodBeat.o(32556);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.HQy == null) {
-        break label906;
+      if (this.HGP == null) {
+        break label540;
       }
     }
-    label906:
-    for (int i = f.a.a.b.b.a.e(4, this.HQy) + 0;; i = 0)
+    label540:
+    for (int i = f.a.a.b.b.a.e(1, this.HGP) + 0;; i = 0)
     {
       paramInt = i;
-      if (this.HOx != null) {
-        paramInt = i + f.a.a.b.b.a.e(12, this.HOx);
+      if (this.MD5 != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.MD5);
       }
       i = paramInt;
-      if (this.HQz != null) {
-        i = paramInt + f.a.a.a.lB(9, this.HQz.computeSize());
+      if (this.Gfd != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.Gfd);
       }
-      paramInt = i;
-      if (this.HQA != null) {
-        paramInt = i + f.a.a.a.lB(10, this.HQA.computeSize());
-      }
-      i = paramInt;
-      if (this.Md5 != null) {
-        i = paramInt + f.a.a.b.b.a.e(5, this.Md5);
-      }
-      paramInt = i;
-      if (this.tRU != null) {
-        paramInt = i + f.a.a.b.b.a.e(6, this.tRU);
-      }
-      i = f.a.a.b.b.a.bz(7, this.HQs);
-      int j = f.a.a.b.b.a.bz(8, this.HQt);
-      AppMethodBeat.o(110863);
-      return paramInt + i + j;
+      paramInt = f.a.a.b.b.a.bz(4, this.Scene);
+      AppMethodBeat.o(32556);
+      return i + paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
-        if (this.HQy == null)
+        if (this.HGP == null)
         {
-          paramVarArgs = new b("Not all required fields were included: EntranceDomain");
-          AppMethodBeat.o(110863);
+          paramVarArgs = new b("Not all required fields were included: Talker");
+          AppMethodBeat.o(32556);
           throw paramVarArgs;
         }
-        if (this.HOx == null)
+        if (this.MD5 == null)
         {
-          paramVarArgs = new b("Not all required fields were included: Charset");
-          AppMethodBeat.o(110863);
+          paramVarArgs = new b("Not all required fields were included: MD5");
+          AppMethodBeat.o(32556);
           throw paramVarArgs;
         }
-        AppMethodBeat.o(110863);
+        if (this.Gfd == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: ProductId");
+          AppMethodBeat.o(32556);
+          throw paramVarArgs;
+        }
+        AppMethodBeat.o(32556);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
+        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
         efe localefe = (efe)paramVarArgs[1];
-        paramInt = ((Integer)paramVarArgs[2]).intValue();
-        Object localObject2;
-        boolean bool;
-        switch (paramInt)
+        switch (((Integer)paramVarArgs[2]).intValue())
         {
-        case 11: 
         default: 
-          AppMethodBeat.o(110863);
+          AppMethodBeat.o(32556);
           return -1;
-        case 4: 
-          localefe.HQy = ((f.a.a.a.a)localObject1).NPN.readString();
-          AppMethodBeat.o(110863);
+        case 1: 
+          localefe.HGP = locala.OmT.readString();
+          AppMethodBeat.o(32556);
           return 0;
-        case 12: 
-          localefe.HOx = ((f.a.a.a.a)localObject1).NPN.readString();
-          AppMethodBeat.o(110863);
+        case 2: 
+          localefe.MD5 = locala.OmT.readString();
+          AppMethodBeat.o(32556);
           return 0;
-        case 9: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new eew();
-            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (bool = true; bool; bool = ((eew)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, com.tencent.mm.bx.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-            localefe.HQz = ((eew)localObject1);
-            paramInt += 1;
-          }
-          AppMethodBeat.o(110863);
-          return 0;
-        case 10: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new efd();
-            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (bool = true; bool; bool = ((efd)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, com.tencent.mm.bx.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-            localefe.HQA = ((efd)localObject1);
-            paramInt += 1;
-          }
-          AppMethodBeat.o(110863);
-          return 0;
-        case 5: 
-          localefe.Md5 = ((f.a.a.a.a)localObject1).NPN.readString();
-          AppMethodBeat.o(110863);
-          return 0;
-        case 6: 
-          localefe.tRU = ((f.a.a.a.a)localObject1).NPN.readString();
-          AppMethodBeat.o(110863);
-          return 0;
-        case 7: 
-          localefe.HQs = ((f.a.a.a.a)localObject1).NPN.zc();
-          AppMethodBeat.o(110863);
+        case 3: 
+          localefe.Gfd = locala.OmT.readString();
+          AppMethodBeat.o(32556);
           return 0;
         }
-        localefe.HQt = ((f.a.a.a.a)localObject1).NPN.zc();
-        AppMethodBeat.o(110863);
+        localefe.Scene = locala.OmT.zc();
+        AppMethodBeat.o(32556);
         return 0;
       }
-      AppMethodBeat.o(110863);
+      AppMethodBeat.o(32556);
       return -1;
     }
   }

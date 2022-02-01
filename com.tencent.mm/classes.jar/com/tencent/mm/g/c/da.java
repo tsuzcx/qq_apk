@@ -8,11 +8,11 @@ public abstract class da
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int fdA = "cache".hashCode();
-  private static final int fdz = "reqType".hashCode();
+  private static final int ffs = "reqType".hashCode();
+  private static final int fft = "cache".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean fdx = true;
-  private boolean fdy = true;
+  private boolean ffq = true;
+  private boolean ffr = true;
   public byte[] field_cache;
   public String field_reqType;
   
@@ -29,11 +29,11 @@ public abstract class da
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (fdz != k) {
+      if (ffs != k) {
         break label65;
       }
       this.field_reqType = paramCursor.getString(i);
-      this.fdx = true;
+      this.ffq = true;
     }
     for (;;)
     {
@@ -41,7 +41,7 @@ public abstract class da
       break label20;
       break;
       label65:
-      if (fdA == k) {
+      if (fft == k) {
         this.field_cache = paramCursor.getBlob(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
@@ -52,10 +52,10 @@ public abstract class da
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.fdx) {
+    if (this.ffq) {
       localContentValues.put("reqType", this.field_reqType);
     }
-    if (this.fdy) {
+    if (this.ffr) {
       localContentValues.put("cache", this.field_cache);
     }
     if (this.systemRowid > 0L) {

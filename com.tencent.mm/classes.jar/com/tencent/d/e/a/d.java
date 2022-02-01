@@ -6,9 +6,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class d
 {
-  long BFC;
-  int LNa;
-  long Lgo;
+  long BXa;
+  long LCQ;
+  int MjZ;
   int action;
   Context context;
   int requestType;
@@ -16,18 +16,18 @@ public final class d
   private d(a parama)
   {
     this.requestType = parama.requestType;
-    this.LNa = parama.LNa;
+    this.MjZ = parama.MjZ;
     this.action = parama.action;
-    this.BFC = parama.BFC;
-    this.Lgo = parama.Lgo;
+    this.BXa = parama.BXa;
+    this.LCQ = parama.LCQ;
     this.context = parama.context;
   }
   
   public static final class a
   {
-    public long BFC;
-    int LNa;
-    long Lgo;
+    public long BXa;
+    long LCQ;
+    int MjZ;
     int action;
     Context context;
     int requestType;
@@ -36,10 +36,10 @@ public final class d
     {
       AppMethodBeat.i(138375);
       this.requestType = 0;
-      this.LNa = 0;
+      this.MjZ = 0;
       this.action = 0;
-      this.BFC = (f.LNs * 12L);
-      this.Lgo = 0L;
+      this.BXa = (f.Mkr * 12L);
+      this.LCQ = 0L;
       if (paramInt1 < 0)
       {
         paramContext = new IllegalArgumentException("scenes invalid: ".concat(String.valueOf(paramInt1)));
@@ -47,7 +47,7 @@ public final class d
         throw paramContext;
       }
       this.context = paramContext.getApplicationContext();
-      this.LNa = paramInt1;
+      this.MjZ = paramInt1;
       this.action = paramInt2;
       AppMethodBeat.o(138375);
     }

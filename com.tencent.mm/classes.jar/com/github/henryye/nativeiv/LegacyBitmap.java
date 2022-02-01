@@ -22,7 +22,7 @@ public class LegacyBitmap
   
   protected Bitmap a(InputStream paramInputStream, ImageDecodeConfig paramImageDecodeConfig, c paramc)
   {
-    AppMethodBeat.i(194933);
+    AppMethodBeat.i(209418);
     paramc = new BitmapFactory.Options();
     paramc.inPreferredConfig = paramImageDecodeConfig.mConfig;
     paramc.inPremultiplied = paramImageDecodeConfig.mPremultiplyAlpha;
@@ -37,7 +37,7 @@ public class LegacyBitmap
     }
     for (;;)
     {
-      AppMethodBeat.o(194933);
+      AppMethodBeat.o(209418);
       return paramInputStream;
     }
   }

@@ -2,20 +2,19 @@ package com.tencent.mm.plugin.appbrand.launching;
 
 import android.util.ArrayMap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ad.c;
-import com.tencent.mm.cn.f;
-import com.tencent.mm.g.b.a.it;
-import com.tencent.mm.g.b.a.it.a;
+import com.tencent.mm.ac.c;
+import com.tencent.mm.cm.f;
+import com.tencent.mm.g.b.a.iv;
+import com.tencent.mm.g.b.a.iv.a;
 import com.tencent.mm.plugin.appbrand.app.j;
 import com.tencent.mm.plugin.appbrand.appcache.IPkgInfo;
-import com.tencent.mm.plugin.appbrand.appcache.ac;
-import com.tencent.mm.plugin.appbrand.appcache.bg;
+import com.tencent.mm.plugin.appbrand.appcache.ad;
+import com.tencent.mm.plugin.appbrand.appcache.bh;
 import com.tencent.mm.plugin.appbrand.appcache.j.a;
 import com.tencent.mm.plugin.appbrand.appstorage.ICommLibReader;
 import com.tencent.mm.plugin.appbrand.config.WxaAttributes.WxaWidgetInfo;
 import com.tencent.mm.plugin.appbrand.report.quality.QualitySession;
-import com.tencent.mm.protocal.protobuf.bah;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.bax;
 import d.a.e;
 import d.g.b.p;
 import d.l;
@@ -28,17 +27,17 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.concurrent.CopyOnWriteArrayList;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/launching/LaunchCheckPkgBatchGetCodeUtils;", "", "()V", "TAG", "", "WAGAME_TYPE", "", "getWAGAME_TYPE", "()I", "applyLaunchAheadParallelCgiResponse", "", "instanceId", "canUseSeparatedPlugins", "", "appId", "versionType", "appVersion", "isGame", "acceptedLibReader", "Lcom/tencent/mm/plugin/appbrand/appstorage/ICommLibReader;", "createBatchReporter", "Lcom/tencent/mm/plugin/appbrand/launching/BatchGetCodePkgExecutor$IReporter;", "reportQualitySession", "Lcom/tencent/mm/plugin/appbrand/report/quality/QualitySession;", "isLaunch", "onPkgMissed", "Lkotlin/Function1;", "Lcom/tencent/mm/plugin/appbrand/launching/ICommonPkgFetcher$Request;", "singleMapOf", "", "K", "V", "key", "value", "(Ljava/lang/Object;Ljava/lang/Object;)Ljava/util/Map;", "pickAppropriateWidgetInfoList", "Lcom/tencent/mm/plugin/appbrand/config/WxaAttributes$WxaWidgetInfo;", "Lcom/tencent/mm/plugin/appbrand/config/WxaAttributes$WxaVersionInfo;", "plugin-appbrand-integration_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/launching/LaunchCheckPkgBatchGetCodeUtils;", "", "()V", "TAG", "", "WAGAME_TYPE", "", "getWAGAME_TYPE", "()I", "applyLaunchAheadParallelCgiResponse", "", "instanceId", "canUseSeparatedPlugins", "", "appId", "versionType", "appVersion", "isGame", "acceptedLibReader", "Lcom/tencent/mm/plugin/appbrand/appstorage/ICommLibReader;", "createBatchReporter", "Lcom/tencent/mm/plugin/appbrand/launching/BatchGetCodePkgExecutor$IReporter;", "reportQualitySession", "Lcom/tencent/mm/plugin/appbrand/report/quality/QualitySession;", "isLaunch", "onPkgMissed", "Lkotlin/Function1;", "Lcom/tencent/mm/plugin/appbrand/launching/ICommonPkgFetcher$Request;", "singleMapOf", "", "K", "V", "key", "value", "(Ljava/lang/Object;Ljava/lang/Object;)Ljava/util/Map;", "pickAppropriateWidgetInfoList", "Lcom/tencent/mm/plugin/appbrand/config/WxaAttributes$WxaWidgetInfo;", "Lcom/tencent/mm/plugin/appbrand/config/WxaAttributes$WxaVersionInfo;", "plugin-appbrand-integration_release"})
 public final class ae
 {
-  private static final int lIK = 1004;
-  public static final ae lIL;
+  private static final int lNk = 1004;
+  public static final ae lNl;
   
   static
   {
     AppMethodBeat.i(180606);
-    lIL = new ae();
-    lIK = 1004;
+    lNl = new ae();
+    lNk = 1004;
     AppMethodBeat.o(180606);
   }
   
@@ -60,7 +59,7 @@ public final class ae
       AppMethodBeat.o(180602);
       return true;
     }
-    paramICommLibReader = paramICommLibReader.Le("injectAppSeparatedPlugin");
+    paramICommLibReader = paramICommLibReader.LE("injectAppSeparatedPlugin");
     if ((paramICommLibReader != null) && (Boolean.parseBoolean(paramICommLibReader) == true))
     {
       AppMethodBeat.o(180602);
@@ -74,7 +73,7 @@ public final class ae
   {
     AppMethodBeat.i(180603);
     p.h(paramString, "appId");
-    if (j.a.oN(paramInt1))
+    if (j.a.oQ(paramInt1))
     {
       if ((paramICommLibReader != null) && (a(paramICommLibReader, paramBoolean) == true))
       {
@@ -84,8 +83,8 @@ public final class ae
       AppMethodBeat.o(180603);
       return false;
     }
-    paramString = ((com.tencent.mm.plugin.appbrand.appcache.b)j.T(com.tencent.mm.plugin.appbrand.appcache.b.class)).aG(paramString, paramInt2);
-    switch (af.cpQ[paramString.ordinal()])
+    paramString = ((com.tencent.mm.plugin.appbrand.appcache.b)j.T(com.tencent.mm.plugin.appbrand.appcache.b.class)).aH(paramString, paramInt2);
+    switch (af.cqt[paramString.ordinal()])
     {
     default: 
       AppMethodBeat.o(180603);
@@ -100,10 +99,10 @@ public final class ae
     return false;
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "Lcom/tencent/mm/protocal/protobuf/GetDownloadUrlRespItem;", "invoke", "()[Lcom/tencent/mm/protocal/protobuf/GetDownloadUrlRespItem;", "com/tencent/mm/plugin/appbrand/launching/LaunchCheckPkgBatchGetCodeUtils$applyLaunchAheadParallelCgiResponse$1$1$interceptResp$1"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "Lcom/tencent/mm/protocal/protobuf/GetDownloadUrlRespItem;", "invoke", "()[Lcom/tencent/mm/protocal/protobuf/GetDownloadUrlRespItem;", "com/tencent/mm/plugin/appbrand/launching/LaunchCheckPkgBatchGetCodeUtils$applyLaunchAheadParallelCgiResponse$1$1$interceptResp$1"})
   static final class a
     extends d.g.b.q
-    implements d.g.a.a<bah[]>
+    implements d.g.a.a<bax[]>
   {
     a(z.b paramb, HashMap paramHashMap)
     {
@@ -111,20 +110,20 @@ public final class ae
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "T", "a", "kotlin.jvm.PlatformType", "b", "compare", "(Ljava/lang/Object;Ljava/lang/Object;)I", "kotlin/comparisons/ComparisonsKt__ComparisonsKt$compareByDescending$1"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "T", "a", "kotlin.jvm.PlatformType", "b", "compare", "(Ljava/lang/Object;Ljava/lang/Object;)I", "kotlin/comparisons/ComparisonsKt__ComparisonsKt$compareByDescending$1"})
   public static final class b<T>
     implements Comparator<T>
   {
     public final int compare(T paramT1, T paramT2)
     {
       AppMethodBeat.i(180589);
-      int i = d.b.a.a((Comparable)Integer.valueOf(((WxaAttributes.WxaWidgetInfo)paramT2).dnF), (Comparable)Integer.valueOf(((WxaAttributes.WxaWidgetInfo)paramT1).dnF));
+      int i = d.b.a.a((Comparable)Integer.valueOf(((WxaAttributes.WxaWidgetInfo)paramT2).doK), (Comparable)Integer.valueOf(((WxaAttributes.WxaWidgetInfo)paramT1).doK));
       AppMethodBeat.o(180589);
       return i;
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
   static final class c
     extends d.g.b.q
     implements d.g.a.a<z>
@@ -135,18 +134,18 @@ public final class ae
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "<anonymous parameter 0>", "Lcom/tencent/mm/plugin/appbrand/launching/ICommonPkgFetcher$Request;", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "<anonymous parameter 0>", "Lcom/tencent/mm/plugin/appbrand/launching/ICommonPkgFetcher$Request;", "invoke"})
   static final class d
     extends d.g.b.q
     implements d.g.a.b<y.d, z>
   {
-    public static final d lIP;
+    public static final d lNp;
     
     static
     {
-      AppMethodBeat.i(189265);
-      lIP = new d();
-      AppMethodBeat.o(189265);
+      AppMethodBeat.i(223523);
+      lNp = new d();
+      AppMethodBeat.o(223523);
     }
     
     d()
@@ -155,143 +154,143 @@ public final class ae
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/appbrand/launching/LaunchCheckPkgBatchGetCodeUtils$createBatchReporter$2", "Lcom/tencent/mm/plugin/appbrand/launching/BatchGetCodePkgExecutor$IReporter;", "TAG", "", "mIsColdStartUp", "", "mStageList", "Ljava/util/concurrent/CopyOnWriteArrayList;", "com/tencent/mm/plugin/appbrand/launching/LaunchCheckPkgBatchGetCodeUtils$createBatchReporter$2.PluginInfo", "addPluginStage", "", "stage", "", "provider", "version", "markColdStartUp", "onAllPkgDownloaded", "onPkgCached", "request", "Lcom/tencent/mm/plugin/appbrand/launching/ICommonPkgFetcher$Request;", "response", "Lcom/tencent/mm/plugin/appbrand/launching/ICommonPkgFetcher$Response;", "onPkgDownloadError", "onPkgDownloadSuccess", "packageType", "onPkgMissed", "reportPkgDownloadStatus", "key", "reportPluginHitRate", "assignFromQualitySession", "Lcom/tencent/mm/autogen/mmdata/rpt/WeAppQualitySplitCodeLibStatisStruct;", "session", "Lcom/tencent/mm/plugin/appbrand/report/quality/QualitySession;", "PluginInfo", "plugin-appbrand-integration_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/appbrand/launching/LaunchCheckPkgBatchGetCodeUtils$createBatchReporter$2", "Lcom/tencent/mm/plugin/appbrand/launching/BatchGetCodePkgExecutor$IReporter;", "TAG", "", "mIsColdStartUp", "", "mStageList", "Ljava/util/concurrent/CopyOnWriteArrayList;", "com/tencent/mm/plugin/appbrand/launching/LaunchCheckPkgBatchGetCodeUtils$createBatchReporter$2.PluginInfo", "addPluginStage", "", "stage", "", "provider", "version", "markColdStartUp", "onAllPkgDownloaded", "onPkgCached", "request", "Lcom/tencent/mm/plugin/appbrand/launching/ICommonPkgFetcher$Request;", "response", "Lcom/tencent/mm/plugin/appbrand/launching/ICommonPkgFetcher$Response;", "onPkgDownloadError", "onPkgDownloadSuccess", "packageType", "onPkgMissed", "reportPkgDownloadStatus", "key", "reportPluginHitRate", "assignFromQualitySession", "Lcom/tencent/mm/autogen/mmdata/rpt/WeAppQualitySplitCodeLibStatisStruct;", "session", "Lcom/tencent/mm/plugin/appbrand/report/quality/QualitySession;", "PluginInfo", "plugin-appbrand-integration_release"})
   public static final class e
     implements l.a
   {
     final String TAG;
-    private CopyOnWriteArrayList<a> lIQ;
-    private volatile boolean lIR;
+    private CopyOnWriteArrayList<a> lNq;
+    private volatile boolean lNr;
     
     e(boolean paramBoolean, QualitySession paramQualitySession, d.g.a.b paramb)
     {
-      AppMethodBeat.i(189280);
+      AppMethodBeat.i(223538);
       this.TAG = "MicroMsg.AppBrand.LaunchCheckPkgBatchGetCodeUtils.gameBatchReporter";
-      this.lIQ = new CopyOnWriteArrayList();
-      AppMethodBeat.o(189280);
+      this.lNq = new CopyOnWriteArrayList();
+      AppMethodBeat.o(223538);
     }
     
-    private final void bro()
+    private final void brZ()
     {
-      AppMethodBeat.i(189272);
-      if (this.lIR)
+      AppMethodBeat.i(223530);
+      if (this.lNr)
       {
-        AppMethodBeat.o(189272);
+        AppMethodBeat.o(223530);
         return;
       }
-      this.lIR = true;
+      this.lNr = true;
       k(1, "", 0);
-      AppMethodBeat.o(189272);
+      AppMethodBeat.o(223530);
     }
     
     private final void k(int paramInt1, String paramString, int paramInt2)
     {
-      AppMethodBeat.i(189273);
-      ad.i(this.TAG, "addPluginStage stage:%d,provider:%s,version:%d", new Object[] { Integer.valueOf(paramInt1), paramString, Integer.valueOf(paramInt2) });
+      AppMethodBeat.i(223531);
+      com.tencent.mm.sdk.platformtools.ae.i(this.TAG, "addPluginStage stage:%d,provider:%s,version:%d", new Object[] { Integer.valueOf(paramInt1), paramString, Integer.valueOf(paramInt2) });
       a locala = new a();
       locala.setProvider(paramString);
-      locala.dAF = paramInt1;
+      locala.dBK = paramInt1;
       locala.version = paramInt2;
-      this.lIQ.add(locala);
-      AppMethodBeat.o(189273);
+      this.lNq.add(locala);
+      AppMethodBeat.o(223531);
     }
     
-    private static void ug(int paramInt)
+    private static void um(int paramInt)
     {
-      AppMethodBeat.i(189274);
+      AppMethodBeat.i(223532);
       switch (paramInt)
       {
       }
       for (;;)
       {
-        AppMethodBeat.o(189274);
+        AppMethodBeat.o(223532);
         return;
-        uh(0);
-        AppMethodBeat.o(189274);
+        un(0);
+        AppMethodBeat.o(223532);
         return;
-        uh(9);
-        AppMethodBeat.o(189274);
+        un(9);
+        AppMethodBeat.o(223532);
         return;
-        uh(4);
-        AppMethodBeat.o(189274);
+        un(4);
+        AppMethodBeat.o(223532);
         return;
-        uh(2);
-        AppMethodBeat.o(189274);
+        un(2);
+        AppMethodBeat.o(223532);
         return;
-        uh(7);
-        AppMethodBeat.o(189274);
+        un(7);
+        AppMethodBeat.o(223532);
         return;
-        uh(11);
-        AppMethodBeat.o(189274);
+        un(11);
+        AppMethodBeat.o(223532);
         return;
-        uh(13);
+        un(13);
       }
     }
     
-    private static void uh(int paramInt)
+    private static void un(int paramInt)
     {
-      AppMethodBeat.i(189275);
-      com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(1027L, paramInt, 1L, false);
-      AppMethodBeat.o(189275);
+      AppMethodBeat.i(223533);
+      com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(1027L, paramInt, 1L, false);
+      AppMethodBeat.o(223533);
     }
     
     public final void a(y.d paramd)
     {
-      AppMethodBeat.i(189277);
+      AppMethodBeat.i(223535);
       p.h(paramd, "request");
-      switch (paramd.dnF)
+      switch (paramd.doK)
       {
       }
       for (;;)
       {
-        AppMethodBeat.o(189277);
+        AppMethodBeat.o(223535);
         return;
-        uh(1);
-        AppMethodBeat.o(189277);
+        un(1);
+        AppMethodBeat.o(223535);
         return;
-        uh(10);
-        AppMethodBeat.o(189277);
+        un(10);
+        AppMethodBeat.o(223535);
         return;
-        uh(5);
-        AppMethodBeat.o(189277);
+        un(5);
+        AppMethodBeat.o(223535);
         return;
-        uh(3);
-        AppMethodBeat.o(189277);
+        un(3);
+        AppMethodBeat.o(223535);
         return;
-        uh(8);
-        AppMethodBeat.o(189277);
+        un(8);
+        AppMethodBeat.o(223535);
         return;
-        uh(12);
-        AppMethodBeat.o(189277);
+        un(12);
+        AppMethodBeat.o(223535);
         return;
-        uh(14);
+        un(14);
       }
     }
     
     public final void b(y.d paramd)
     {
-      AppMethodBeat.i(189279);
+      AppMethodBeat.i(223537);
       p.h(paramd, "request");
-      this.lIT.invoke(paramd);
-      int[] arrayOfInt = com.tencent.mm.co.a.LBa;
+      this.lNt.invoke(paramd);
+      int[] arrayOfInt = com.tencent.mm.cn.a.LYa;
       p.g(arrayOfInt, "ConstantsWxaPackageProto….PLUGINCODE_PACKAGE_TYPES");
-      if (e.contains(arrayOfInt, paramd.dnF))
+      if (e.contains(arrayOfInt, paramd.doK))
       {
-        if ((paramd.lIb instanceof y.g.b))
+        if ((paramd.lMB instanceof y.g.b))
         {
-          final int k = ((y.g.b)paramd.lIb).version;
-          arrayOfInt = j.aYX().LG(paramd.brh().toString());
+          final int k = ((y.g.b)paramd.lMB).version;
+          arrayOfInt = j.aZu().Mj(paramd.brR().toString());
           if (arrayOfInt == null)
           {
-            bro();
+            brZ();
             k(2, paramd.appId, k);
-            ug(paramd.dnF);
+            um(paramd.doK);
           }
           label266:
           for (;;)
           {
-            com.tencent.mm.cn.g.fSm().i((com.tencent.mm.vending.c.a)new d(paramd, k)).fOb();
-            AppMethodBeat.o(189279);
+            com.tencent.mm.cm.g.fWL().i((com.tencent.mm.vending.c.a)new d(paramd, k)).fSw();
+            AppMethodBeat.o(223537);
             return;
             Collection localCollection = (Collection)new ArrayList();
             int m = arrayOfInt.length;
@@ -299,7 +298,7 @@ public final class ae
             if (i < m)
             {
               int n = arrayOfInt[i];
-              if (n == ((y.g.b)paramd.lIb).version) {}
+              if (n == ((y.g.b)paramd.lMB).version) {}
               for (int j = 1;; j = 0)
               {
                 if (j == 0) {
@@ -315,116 +314,116 @@ public final class ae
               if (i == 0) {
                 break label266;
               }
-              bro();
+              brZ();
               k(4, paramd.appId, k);
-              ug(paramd.dnF);
+              um(paramd.doK);
               break;
             }
           }
         }
-        bro();
+        brZ();
         k(2, paramd.appId, 0);
-        ug(paramd.dnF);
-        AppMethodBeat.o(189279);
+        um(paramd.doK);
+        AppMethodBeat.o(223537);
         return;
       }
-      arrayOfInt = com.tencent.mm.co.a.LAY;
+      arrayOfInt = com.tencent.mm.cn.a.LXY;
       p.g(arrayOfInt, "ConstantsWxaPackageProto…KAGE_TYPES_IN_WIDGET_INFO");
-      if (e.contains(arrayOfInt, paramd.dnF))
+      if (e.contains(arrayOfInt, paramd.doK))
       {
-        bro();
-        ug(paramd.dnF);
+        brZ();
+        um(paramd.doK);
       }
-      AppMethodBeat.o(189279);
+      AppMethodBeat.o(223537);
     }
     
     public final void b(y.d paramd, final y.e parame)
     {
-      AppMethodBeat.i(189278);
+      AppMethodBeat.i(223536);
       p.h(paramd, "request");
       p.h(parame, "response");
-      if (((paramd.lIb instanceof y.g.a)) && (!((y.g.a)paramd.lIb).lIj))
+      if (((paramd.lMB instanceof y.g.a)) && (!((y.g.a)paramd.lMB).lMJ))
       {
-        arrayOfInt = com.tencent.mm.co.a.LBa;
+        arrayOfInt = com.tencent.mm.cn.a.LYa;
         p.g(arrayOfInt, "ConstantsWxaPackageProto….PLUGINCODE_PACKAGE_TYPES");
-        if (e.contains(arrayOfInt, paramd.dnF))
+        if (e.contains(arrayOfInt, paramd.doK))
         {
-          ad.i(this.TAG, "onPkgCached, will update plugin(" + paramd.appId + ") to latest in background...");
+          com.tencent.mm.sdk.platformtools.ae.i(this.TAG, "onPkgCached, will update plugin(" + paramd.appId + ") to latest in background...");
           c.b(null, (d.g.a.a)new ae.e.b(this, paramd, parame));
         }
       }
-      int[] arrayOfInt = com.tencent.mm.co.a.LBa;
+      int[] arrayOfInt = com.tencent.mm.cn.a.LYa;
       p.g(arrayOfInt, "ConstantsWxaPackageProto….PLUGINCODE_PACKAGE_TYPES");
-      if (e.contains(arrayOfInt, paramd.dnF))
+      if (e.contains(arrayOfInt, paramd.doK))
       {
-        k(3, paramd.appId, parame.lIe.pkgVersion());
-        com.tencent.mm.cn.g.fSm().i((com.tencent.mm.vending.c.a)new c(paramd, parame)).fOb();
+        k(3, paramd.appId, parame.lME.pkgVersion());
+        com.tencent.mm.cm.g.fWL().i((com.tencent.mm.vending.c.a)new c(paramd, parame)).fSw();
       }
-      AppMethodBeat.o(189278);
+      AppMethodBeat.o(223536);
     }
     
-    public final void bqY()
+    public final void brI()
     {
-      AppMethodBeat.i(189276);
-      ad.i(this.TAG, "onAllPkgDownloaded isLaunch:%b", new Object[] { Boolean.valueOf(this.lIS) });
-      if ((this.lIR) && (this.lIS) && (this.lIQ != null) && (this.lIQ.size() > 0))
+      AppMethodBeat.i(223534);
+      com.tencent.mm.sdk.platformtools.ae.i(this.TAG, "onAllPkgDownloaded isLaunch:%b", new Object[] { Boolean.valueOf(this.lNs) });
+      if ((this.lNr) && (this.lNs) && (this.lNq != null) && (this.lNq.size() > 0))
       {
-        ad.i(this.TAG, "mStageList size:%d", new Object[] { Integer.valueOf(this.lIQ.size()) });
-        Iterator localIterator = this.lIQ.iterator();
+        com.tencent.mm.sdk.platformtools.ae.i(this.TAG, "mStageList size:%d", new Object[] { Integer.valueOf(this.lNq.size()) });
+        Iterator localIterator = this.lNq.iterator();
         while (localIterator.hasNext())
         {
           a locala = (a)localIterator.next();
-          it localit = new it();
-          QualitySession localQualitySession = this.lGG;
-          localit.rp(localQualitySession.appId);
-          localit.oE(localQualitySession.mvi);
-          localit.a(it.a.jy(localQualitySession.mtG));
-          localit.oF(localQualitySession.apptype);
-          localit.rs(localQualitySession.lEv);
-          localit.oI(localQualitySession.scene);
-          localit.rr(com.tencent.mm.plugin.appbrand.report.q.bxo());
-          localit.rq(locala.provider);
-          localit.oG(locala.version);
-          localit.oH(locala.dAF);
-          localit.aLk();
+          iv localiv = new iv();
+          QualitySession localQualitySession = this.lLg;
+          localiv.rK(localQualitySession.appId);
+          localiv.oR(localQualitySession.mAf);
+          localiv.a(iv.a.jA(localQualitySession.myD));
+          localiv.oS(localQualitySession.apptype);
+          localiv.rN(localQualitySession.lIU);
+          localiv.oV(localQualitySession.scene);
+          localiv.rM(com.tencent.mm.plugin.appbrand.report.q.byh());
+          localiv.rL(locala.provider);
+          localiv.oT(locala.version);
+          localiv.oU(locala.dBK);
+          localiv.aLH();
         }
       }
-      AppMethodBeat.o(189276);
+      AppMethodBeat.o(223534);
     }
     
     public final void c(y.d paramd, y.e parame)
     {
-      AppMethodBeat.i(189281);
+      AppMethodBeat.i(223539);
       p.h(paramd, "request");
       p.h(parame, "response");
       l.a.a.a(paramd, parame);
-      AppMethodBeat.o(189281);
+      AppMethodBeat.o(223539);
     }
     
-    @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/appbrand/launching/LaunchCheckPkgBatchGetCodeUtils$createBatchReporter$2.PluginInfo", "", "(Lcom/tencent/mm/plugin/appbrand/launching/LaunchCheckPkgBatchGetCodeUtils$createBatchReporter$2;)V", "provider", "", "getProvider", "()Ljava/lang/String;", "setProvider", "(Ljava/lang/String;)V", "stage", "", "getStage", "()I", "setStage", "(I)V", "version", "getVersion", "setVersion", "plugin-appbrand-integration_release"})
+    @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/appbrand/launching/LaunchCheckPkgBatchGetCodeUtils$createBatchReporter$2.PluginInfo", "", "(Lcom/tencent/mm/plugin/appbrand/launching/LaunchCheckPkgBatchGetCodeUtils$createBatchReporter$2;)V", "provider", "", "getProvider", "()Ljava/lang/String;", "setProvider", "(Ljava/lang/String;)V", "stage", "", "getStage", "()I", "setStage", "(I)V", "version", "getVersion", "setVersion", "plugin-appbrand-integration_release"})
     public final class a
     {
-      int dAF;
+      int dBK;
       String provider = "";
       int version;
       
       public final void setProvider(String paramString)
       {
-        AppMethodBeat.i(189266);
+        AppMethodBeat.i(223524);
         p.h(paramString, "<set-?>");
         this.provider = paramString;
-        AppMethodBeat.o(189266);
+        AppMethodBeat.o(223524);
       }
     }
     
-    @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Ljava/lang/Void;", "kotlin.jvm.PlatformType", "call"})
+    @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Ljava/lang/Void;", "kotlin.jvm.PlatformType", "call"})
     static final class c<_Ret, _Var>
       implements com.tencent.mm.vending.c.a<_Ret, _Var>
     {
       c(y.d paramd, y.e parame) {}
     }
     
-    @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Ljava/lang/Void;", "kotlin.jvm.PlatformType", "call"})
+    @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Ljava/lang/Void;", "kotlin.jvm.PlatformType", "call"})
     static final class d<_Ret, _Var>
       implements com.tencent.mm.vending.c.a<_Ret, _Var>
     {
@@ -432,7 +431,7 @@ public final class ae
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/appbrand/launching/LaunchCheckPkgBatchGetCodeUtils$createBatchReporter$3", "Lcom/tencent/mm/plugin/appbrand/launching/BatchGetCodePkgExecutor$IReporter;", "TAG", "", "onPkgCached", "", "request", "Lcom/tencent/mm/plugin/appbrand/launching/ICommonPkgFetcher$Request;", "response", "Lcom/tencent/mm/plugin/appbrand/launching/ICommonPkgFetcher$Response;", "onPkgMissed", "assignFromQualitySession", "Lcom/tencent/mm/autogen/mmdata/rpt/WeAppQualitySplitCodeLibStatisStruct;", "session", "Lcom/tencent/mm/plugin/appbrand/report/quality/QualitySession;", "plugin-appbrand-integration_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/appbrand/launching/LaunchCheckPkgBatchGetCodeUtils$createBatchReporter$3", "Lcom/tencent/mm/plugin/appbrand/launching/BatchGetCodePkgExecutor$IReporter;", "TAG", "", "onPkgCached", "", "request", "Lcom/tencent/mm/plugin/appbrand/launching/ICommonPkgFetcher$Request;", "response", "Lcom/tencent/mm/plugin/appbrand/launching/ICommonPkgFetcher$Response;", "onPkgMissed", "assignFromQualitySession", "Lcom/tencent/mm/autogen/mmdata/rpt/WeAppQualitySplitCodeLibStatisStruct;", "session", "Lcom/tencent/mm/plugin/appbrand/report/quality/QualitySession;", "plugin-appbrand-integration_release"})
   public static final class f
     implements l.a
   {
@@ -440,54 +439,54 @@ public final class ae
     
     f(QualitySession paramQualitySession, d.g.a.b paramb) {}
     
-    private static void a(it paramit, QualitySession paramQualitySession)
+    private static void a(iv paramiv, QualitySession paramQualitySession)
     {
-      AppMethodBeat.i(189287);
-      paramit.rp(paramQualitySession.appId);
-      paramit.oE(paramQualitySession.mvi);
-      paramit.a(it.a.jy(paramQualitySession.mtG));
-      paramit.oF(paramQualitySession.apptype);
-      paramit.rs(paramQualitySession.lEv);
-      paramit.oI(paramQualitySession.scene);
-      AppMethodBeat.o(189287);
+      AppMethodBeat.i(223545);
+      paramiv.rK(paramQualitySession.appId);
+      paramiv.oR(paramQualitySession.mAf);
+      paramiv.a(iv.a.jA(paramQualitySession.myD));
+      paramiv.oS(paramQualitySession.apptype);
+      paramiv.rN(paramQualitySession.lIU);
+      paramiv.oV(paramQualitySession.scene);
+      AppMethodBeat.o(223545);
     }
     
     public final void a(y.d paramd)
     {
-      AppMethodBeat.i(189288);
+      AppMethodBeat.i(223546);
       p.h(paramd, "request");
       p.h(paramd, "request");
-      AppMethodBeat.o(189288);
+      AppMethodBeat.o(223546);
     }
     
     public final void b(y.d paramd)
     {
-      AppMethodBeat.i(189286);
+      AppMethodBeat.i(223544);
       p.h(paramd, "request");
-      this.lIT.invoke(paramd);
-      Object localObject = com.tencent.mm.co.a.LBa;
+      this.lNt.invoke(paramd);
+      Object localObject = com.tencent.mm.cn.a.LYa;
       p.g(localObject, "ConstantsWxaPackageProto….PLUGINCODE_PACKAGE_TYPES");
       int[] arrayOfInt;
-      if (e.contains((int[])localObject, paramd.dnF))
+      if (e.contains((int[])localObject, paramd.doK))
       {
-        localObject = new it();
-        a((it)localObject, this.lGG);
-        ((it)localObject).rr(com.tencent.mm.plugin.appbrand.report.q.bxo());
-        ((it)localObject).rq(paramd.appId);
-        if (!(paramd.lIb instanceof y.g.b)) {
+        localObject = new iv();
+        a((iv)localObject, this.lLg);
+        ((iv)localObject).rM(com.tencent.mm.plugin.appbrand.report.q.byh());
+        ((iv)localObject).rL(paramd.appId);
+        if (!(paramd.lMB instanceof y.g.b)) {
           break label267;
         }
-        ((it)localObject).oG(((y.g.b)paramd.lIb).version);
-        arrayOfInt = j.aYX().LG(paramd.brh().toString());
+        ((iv)localObject).oT(((y.g.b)paramd.lMB).version);
+        arrayOfInt = j.aZu().Mj(paramd.brR().toString());
         if (arrayOfInt != null) {
           break label151;
         }
-        ((it)localObject).oH(2L);
+        ((iv)localObject).oU(2L);
       }
       for (;;)
       {
-        ((it)localObject).aLk();
-        AppMethodBeat.o(189286);
+        ((iv)localObject).aLH();
+        AppMethodBeat.o(223544);
         return;
         label151:
         Collection localCollection = (Collection)new ArrayList();
@@ -496,7 +495,7 @@ public final class ae
         if (i < k)
         {
           int m = arrayOfInt[i];
-          if (m == ((y.g.b)paramd.lIb).version) {}
+          if (m == ((y.g.b)paramd.lMB).version) {}
           for (int j = 1;; j = 0)
           {
             if (j == 0) {
@@ -512,67 +511,67 @@ public final class ae
           if (i == 0) {
             break label265;
           }
-          ((it)localObject).oH(4L);
+          ((iv)localObject).oU(4L);
           break;
         }
         label265:
         continue;
         label267:
-        ((it)localObject).oG(0L);
-        ((it)localObject).oH(2L);
+        ((iv)localObject).oT(0L);
+        ((iv)localObject).oU(2L);
       }
     }
     
     public final void b(y.d paramd, y.e parame)
     {
-      AppMethodBeat.i(189285);
+      AppMethodBeat.i(223543);
       p.h(paramd, "request");
       p.h(parame, "response");
-      if (((paramd.lIb instanceof y.g.a)) && (!((y.g.a)paramd.lIb).lIj))
+      if (((paramd.lMB instanceof y.g.a)) && (!((y.g.a)paramd.lMB).lMJ))
       {
-        localObject = com.tencent.mm.co.a.LBa;
+        localObject = com.tencent.mm.cn.a.LYa;
         p.g(localObject, "ConstantsWxaPackageProto….PLUGINCODE_PACKAGE_TYPES");
-        if (e.contains((int[])localObject, paramd.dnF))
+        if (e.contains((int[])localObject, paramd.doK))
         {
-          ad.i(this.TAG, "onPkgCached, will update plugin(" + paramd.appId + ") to latest in background...");
+          com.tencent.mm.sdk.platformtools.ae.i(this.TAG, "onPkgCached, will update plugin(" + paramd.appId + ") to latest in background...");
           c.b(null, (d.g.a.a)new ae.f.a(this, paramd, parame));
         }
       }
-      Object localObject = com.tencent.mm.co.a.LBa;
+      Object localObject = com.tencent.mm.cn.a.LYa;
       p.g(localObject, "ConstantsWxaPackageProto….PLUGINCODE_PACKAGE_TYPES");
-      if (e.contains((int[])localObject, paramd.dnF))
+      if (e.contains((int[])localObject, paramd.doK))
       {
-        localObject = new it();
-        a((it)localObject, this.lGG);
-        ((it)localObject).rr(com.tencent.mm.plugin.appbrand.report.q.bxo());
-        ((it)localObject).rq(paramd.appId);
-        ((it)localObject).oG(parame.lIe.pkgVersion());
-        ((it)localObject).oH(3L);
-        ((it)localObject).aLk();
+        localObject = new iv();
+        a((iv)localObject, this.lLg);
+        ((iv)localObject).rM(com.tencent.mm.plugin.appbrand.report.q.byh());
+        ((iv)localObject).rL(paramd.appId);
+        ((iv)localObject).oT(parame.lME.pkgVersion());
+        ((iv)localObject).oU(3L);
+        ((iv)localObject).aLH();
       }
-      AppMethodBeat.o(189285);
+      AppMethodBeat.o(223543);
     }
     
-    public final void bqY() {}
+    public final void brI() {}
     
     public final void c(y.d paramd, y.e parame)
     {
-      AppMethodBeat.i(189289);
+      AppMethodBeat.i(223547);
       p.h(paramd, "request");
       p.h(parame, "response");
       l.a.a.a(paramd, parame);
-      AppMethodBeat.o(189289);
+      AppMethodBeat.o(223547);
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "T", "a", "kotlin.jvm.PlatformType", "b", "compare", "(Ljava/lang/Object;Ljava/lang/Object;)I", "kotlin/comparisons/ComparisonsKt__ComparisonsKt$compareByDescending$1"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "T", "a", "kotlin.jvm.PlatformType", "b", "compare", "(Ljava/lang/Object;Ljava/lang/Object;)I", "kotlin/comparisons/ComparisonsKt__ComparisonsKt$compareByDescending$1"})
   public static final class g<T>
     implements Comparator<T>
   {
     public final int compare(T paramT1, T paramT2)
     {
       AppMethodBeat.i(180599);
-      int i = d.b.a.a((Comparable)Integer.valueOf(((WxaAttributes.WxaWidgetInfo)paramT2).dnF), (Comparable)Integer.valueOf(((WxaAttributes.WxaWidgetInfo)paramT1).dnF));
+      int i = d.b.a.a((Comparable)Integer.valueOf(((WxaAttributes.WxaWidgetInfo)paramT2).doK), (Comparable)Integer.valueOf(((WxaAttributes.WxaWidgetInfo)paramT1).doK));
       AppMethodBeat.o(180599);
       return i;
     }

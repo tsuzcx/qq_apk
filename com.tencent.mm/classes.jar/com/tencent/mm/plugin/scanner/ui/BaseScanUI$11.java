@@ -12,23 +12,23 @@ final class BaseScanUI$11
   
   public final void onAnimationCancel(Animator paramAnimator)
   {
-    AppMethodBeat.i(186174);
-    if (this.yqm != null) {
-      this.yqm.onAnimationCancel(paramAnimator);
+    AppMethodBeat.i(189456);
+    if (this.yGm != null) {
+      this.yGm.onAnimationCancel(paramAnimator);
     }
-    AppMethodBeat.o(186174);
+    AppMethodBeat.o(189456);
   }
   
   public final void onAnimationEnd(Animator paramAnimator)
   {
     AppMethodBeat.i(51692);
     View localView = this.val$view;
-    if (this.tVb) {}
+    if (this.ufX) {}
     for (int i = 0;; i = 8)
     {
       localView.setVisibility(i);
-      if (this.yqm != null) {
-        this.yqm.onAnimationEnd(paramAnimator);
+      if (this.yGm != null) {
+        this.yGm.onAnimationEnd(paramAnimator);
       }
       AppMethodBeat.o(51692);
       return;
@@ -37,25 +37,25 @@ final class BaseScanUI$11
   
   public final void onAnimationRepeat(Animator paramAnimator)
   {
-    AppMethodBeat.i(186175);
-    if (this.yqm != null) {
-      this.yqm.onAnimationRepeat(paramAnimator);
+    AppMethodBeat.i(189457);
+    if (this.yGm != null) {
+      this.yGm.onAnimationRepeat(paramAnimator);
     }
-    AppMethodBeat.o(186175);
+    AppMethodBeat.o(189457);
   }
   
   public final void onAnimationStart(Animator paramAnimator)
   {
-    AppMethodBeat.i(186173);
-    if (this.yqm != null) {
-      this.yqm.onAnimationStart(paramAnimator);
+    AppMethodBeat.i(189455);
+    if (this.yGm != null) {
+      this.yGm.onAnimationStart(paramAnimator);
     }
-    AppMethodBeat.o(186173);
+    AppMethodBeat.o(189455);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.ui.BaseScanUI.11
  * JD-Core Version:    0.7.0.1
  */

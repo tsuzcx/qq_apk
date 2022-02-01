@@ -8,37 +8,37 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.BaseActivity.c;
 import com.tencent.mm.ui.base.BaseLuggageActivity;
 import d.g.b.p;
 import d.l;
 import junit.framework.Assert;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/phonenumber/PhoneNumberManagerUI;", "Lcom/tencent/mm/ui/base/BaseLuggageActivity;", "()V", "mPhoneNumberManagerLogic", "Lcom/tencent/mm/plugin/appbrand/phonenumber/IPhoneNumberManageLogic;", "showDelete", "", "enableEditPhoneNumber", "", "enable", "getLayoutId", "", "onBackPressed", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onResume", "updateView", "Companion", "luggage-wechat-full-sdk_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/phonenumber/PhoneNumberManagerUI;", "Lcom/tencent/mm/ui/base/BaseLuggageActivity;", "()V", "mPhoneNumberManagerLogic", "Lcom/tencent/mm/plugin/appbrand/phonenumber/IPhoneNumberManageLogic;", "showDelete", "", "enableEditPhoneNumber", "", "enable", "getLayoutId", "", "onBackPressed", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onResume", "updateView", "Companion", "luggage-wechat-full-sdk_release"})
 public final class PhoneNumberManagerUI
   extends BaseLuggageActivity
 {
-  public static final PhoneNumberManagerUI.a mkL;
-  private boolean mjv;
-  private o mkK;
+  public static final PhoneNumberManagerUI.a mpI;
+  private boolean mos;
+  private o mpH;
   
   static
   {
     AppMethodBeat.i(148158);
-    mkL = new PhoneNumberManagerUI.a((byte)0);
+    mpI = new PhoneNumberManagerUI.a((byte)0);
     AppMethodBeat.o(148158);
   }
   
-  private final void hs(boolean paramBoolean)
+  private final void ht(boolean paramBoolean)
   {
     AppMethodBeat.i(148156);
-    this.mjv = paramBoolean;
-    o localo = this.mkK;
+    this.mos = paramBoolean;
+    o localo = this.mpH;
     if (localo != null)
     {
-      localo.hr(paramBoolean);
+      localo.hs(paramBoolean);
       AppMethodBeat.o(148156);
       return;
     }
@@ -49,18 +49,18 @@ public final class PhoneNumberManagerUI
   {
     AppMethodBeat.i(148154);
     removeAllOptionMenu();
-    o localo = this.mkK;
+    o localo = this.mpH;
     if (localo != null) {
-      localo.hq(this.mjv);
+      localo.hr(this.mos);
     }
-    if (this.mjv)
+    if (this.mos)
     {
-      a(getString(2131756019), BaseActivity.c.ITJ, (MenuItem.OnMenuItemClickListener)new b(this));
+      a(getString(2131756019), BaseActivity.c.Jor, (MenuItem.OnMenuItemClickListener)new b(this));
       a((MenuItem.OnMenuItemClickListener)new c(this));
       AppMethodBeat.o(148154);
       return;
     }
-    a(getString(2131756026), BaseActivity.c.ITJ, (MenuItem.OnMenuItemClickListener)new d(this));
+    a(getString(2131756026), BaseActivity.c.Jor, (MenuItem.OnMenuItemClickListener)new d(this));
     setBackBtn((MenuItem.OnMenuItemClickListener)new e(this));
     AppMethodBeat.o(148154);
   }
@@ -73,9 +73,9 @@ public final class PhoneNumberManagerUI
   public final void onBackPressed()
   {
     AppMethodBeat.i(148155);
-    if (this.mjv)
+    if (this.mos)
     {
-      hs(false);
+      ht(false);
       updateView();
       AppMethodBeat.o(148155);
       return;
@@ -94,21 +94,21 @@ public final class PhoneNumberManagerUI
     hideActionbarLine();
     setTitle(2131756027);
     paramBundle = getIntent().getStringExtra("APPID");
-    bt.isNullOrNil(paramBundle);
+    bu.isNullOrNil(paramBundle);
     Assert.assertFalse(false);
-    ad.i("MicroMsg.PhoneNumberManagerUI", "onCreate() appId:".concat(String.valueOf(paramBundle)));
+    ae.i("MicroMsg.PhoneNumberManagerUI", "onCreate() appId:".concat(String.valueOf(paramBundle)));
     String str = getIntent().getStringExtra("PAGEPATH");
-    Object localObject = u.mkv;
-    localObject = u.bwy();
+    Object localObject = u.mps;
+    localObject = u.bxp();
     Context localContext = (Context)this;
     p.g(paramBundle, "appId");
     p.g(str, "pagePath");
-    this.mkK = ((n)localObject).t(localContext, paramBundle, str);
-    paramBundle = this.mkK;
+    this.mpH = ((n)localObject).t(localContext, paramBundle, str);
+    paramBundle = this.mpH;
     if (paramBundle != null) {
       paramBundle.init();
     }
-    paramBundle = this.mkK;
+    paramBundle = this.mpH;
     if (paramBundle != null) {}
     for (paramBundle = paramBundle.getView();; paramBundle = null)
     {
@@ -122,7 +122,7 @@ public final class PhoneNumberManagerUI
   {
     AppMethodBeat.i(148157);
     super.onDestroy();
-    o localo = this.mkK;
+    o localo = this.mpH;
     if (localo != null)
     {
       localo.uninit();
@@ -146,7 +146,7 @@ public final class PhoneNumberManagerUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
   static final class b
     implements MenuItem.OnMenuItemClickListener
   {
@@ -155,18 +155,18 @@ public final class PhoneNumberManagerUI
     public final boolean onMenuItemClick(MenuItem paramMenuItem)
     {
       AppMethodBeat.i(148148);
-      paramMenuItem = PhoneNumberManagerUI.a(this.mkM);
+      paramMenuItem = PhoneNumberManagerUI.a(this.mpJ);
       if (paramMenuItem != null) {
-        paramMenuItem.bww();
+        paramMenuItem.bxn();
       }
-      PhoneNumberManagerUI.a(this.mkM, false);
-      PhoneNumberManagerUI.b(this.mkM);
+      PhoneNumberManagerUI.a(this.mpJ, false);
+      PhoneNumberManagerUI.b(this.mpJ);
       AppMethodBeat.o(148148);
       return true;
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
   static final class c
     implements MenuItem.OnMenuItemClickListener
   {
@@ -175,14 +175,14 @@ public final class PhoneNumberManagerUI
     public final boolean onMenuItemClick(MenuItem paramMenuItem)
     {
       AppMethodBeat.i(148149);
-      PhoneNumberManagerUI.a(this.mkM, false);
-      PhoneNumberManagerUI.b(this.mkM);
+      PhoneNumberManagerUI.a(this.mpJ, false);
+      PhoneNumberManagerUI.b(this.mpJ);
       AppMethodBeat.o(148149);
       return true;
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
   static final class d
     implements MenuItem.OnMenuItemClickListener
   {
@@ -191,14 +191,14 @@ public final class PhoneNumberManagerUI
     public final boolean onMenuItemClick(MenuItem paramMenuItem)
     {
       AppMethodBeat.i(148150);
-      PhoneNumberManagerUI.a(this.mkM, true);
-      PhoneNumberManagerUI.b(this.mkM);
+      PhoneNumberManagerUI.a(this.mpJ, true);
+      PhoneNumberManagerUI.b(this.mpJ);
       AppMethodBeat.o(148150);
       return true;
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
   static final class e
     implements MenuItem.OnMenuItemClickListener
   {
@@ -207,7 +207,7 @@ public final class PhoneNumberManagerUI
     public final boolean onMenuItemClick(MenuItem paramMenuItem)
     {
       AppMethodBeat.i(148151);
-      this.mkM.finish();
+      this.mpJ.finish();
       AppMethodBeat.o(148151);
       return true;
     }
@@ -215,7 +215,7 @@ public final class PhoneNumberManagerUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.phonenumber.PhoneNumberManagerUI
  * JD-Core Version:    0.7.0.1
  */

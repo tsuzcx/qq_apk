@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.brandservice.ui.timeline.video.util;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.protocal.protobuf.fu;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ax;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.sdk.platformtools.bu;
 import d.g.b.p;
 import d.l;
 import java.util.Iterator;
@@ -12,31 +12,31 @@ import java.util.LinkedList;
 import java.util.LinkedList<Lcom.tencent.mm.protocal.protobuf.fu;>;
 import java.util.List;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/util/BizVideoResolutionHelper;", "", "()V", "TAG", "", "getInitResolution", "Lcom/tencent/mm/protocal/protobuf/AppMsgVideoUrlInfo;", "urlInfoList", "Ljava/util/LinkedList;", "setLastResolution", "", "type", "", "plugin-brandservice_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/util/BizVideoResolutionHelper;", "", "()V", "TAG", "", "getInitResolution", "Lcom/tencent/mm/protocal/protobuf/AppMsgVideoUrlInfo;", "urlInfoList", "Ljava/util/LinkedList;", "setLastResolution", "", "type", "", "plugin-brandservice_release"})
 public final class k
 {
   private static final String TAG = "MicroMsg.BizVideoResolutionHelper";
-  public static final k orx;
+  public static final k oxT;
   
   static
   {
     AppMethodBeat.i(7310);
-    orx = new k();
+    oxT = new k();
     TAG = "MicroMsg.BizVideoResolutionHelper";
     AppMethodBeat.o(7310);
   }
   
-  public static final void Aa(int paramInt)
+  public static final void Ak(int paramInt)
   {
     AppMethodBeat.i(7309);
-    ax localax = ax.aQz(TAG);
-    if (localax != null) {
-      localax.encode("LastResolutionType", paramInt);
+    ay localay = ay.aRW(TAG);
+    if (localay != null) {
+      localay.encode("LastResolutionType", paramInt);
     }
-    if (localax != null) {
-      localax.encode("LastResolutionTime", System.currentTimeMillis());
+    if (localay != null) {
+      localay.encode("LastResolutionTime", System.currentTimeMillis());
     }
-    ad.i(TAG, "LastResolutionType ".concat(String.valueOf(paramInt)));
+    ae.i(TAG, "LastResolutionType ".concat(String.valueOf(paramInt)));
     AppMethodBeat.o(7309);
   }
   
@@ -44,16 +44,16 @@ public final class k
   {
     AppMethodBeat.i(7308);
     p.h(paramLinkedList, "urlInfoList");
-    if (bt.hj((List)paramLinkedList))
+    if (bu.ht((List)paramLinkedList))
     {
       AppMethodBeat.o(7308);
       return null;
     }
-    Object localObject = ax.aQz(TAG);
+    Object localObject = ay.aRW(TAG);
     if (localObject != null) {}
-    for (int i = ((ax)localObject).decodeInt("LastResolutionType", -1);; i = -1)
+    for (int i = ((ay)localObject).decodeInt("LastResolutionType", -1);; i = -1)
     {
-      ad.i(TAG, "getInitResolution ".concat(String.valueOf(i)));
+      ae.i(TAG, "getInitResolution ".concat(String.valueOf(i)));
       localObject = paramLinkedList.get(0);
       p.g(localObject, "urlInfoList[0]");
       localObject = (fu)localObject;
@@ -68,12 +68,12 @@ public final class k
     if (localIterator.hasNext())
     {
       localObject = (fu)localIterator.next();
-      if ((((fu)localObject).Fyb > i) || ((paramLinkedList.Fyb < i) && (paramLinkedList.Fyb >= ((fu)localObject).Fyb))) {
+      if ((((fu)localObject).FQz > i) || ((paramLinkedList.FQz < i) && (paramLinkedList.FQz >= ((fu)localObject).FQz))) {
         break label181;
       }
       p.g(localObject, "info");
       paramLinkedList = (LinkedList<fu>)localObject;
-      if (((fu)localObject).Fyb != i) {
+      if (((fu)localObject).FQz != i) {
         paramLinkedList = (LinkedList<fu>)localObject;
       }
     }
@@ -88,7 +88,7 @@ public final class k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.ui.timeline.video.util.k
  * JD-Core Version:    0.7.0.1
  */

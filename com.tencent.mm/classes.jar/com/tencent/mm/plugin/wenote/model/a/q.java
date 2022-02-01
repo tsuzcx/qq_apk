@@ -6,20 +6,20 @@ import java.io.Serializable;
 public final class q
   implements Serializable
 {
-  public boolean EzI = false;
-  public long EzJ = -1L;
-  public long EzK = -1L;
-  public String EzL = "";
-  public String EzM = "";
-  public int EzN = 0;
-  public int EzO = 0;
-  public boolean ruk = false;
+  public boolean ESe = false;
+  public long ESf = -1L;
+  public long ESg = -1L;
+  public String ESh = "";
+  public String ESi = "";
+  public int ESj = 0;
+  public int ESk = 0;
+  public boolean rCw = false;
   
-  public final String eWP()
+  public final String faB()
   {
     AppMethodBeat.i(30377);
     Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("topIsOpenFromSession=").append(this.EzI).append(" topLocalId=").append(this.EzJ).append(" topMsgId=").append(this.EzK).append(" topTitle=").append(this.EzL).append(" topNoteXml=").append(this.EzM).append(" topLastPosition=").append(this.EzN).append(" topLastOffset=").append(this.EzO);
+    ((StringBuilder)localObject).append("topIsOpenFromSession=").append(this.ESe).append(" topLocalId=").append(this.ESf).append(" topMsgId=").append(this.ESg).append(" topTitle=").append(this.ESh).append(" topNoteXml=").append(this.ESi).append(" topLastPosition=").append(this.ESj).append(" topLastOffset=").append(this.ESk);
     localObject = ((StringBuilder)localObject).toString();
     AppMethodBeat.o(30377);
     return localObject;

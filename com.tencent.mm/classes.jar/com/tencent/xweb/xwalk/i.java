@@ -9,34 +9,34 @@ import org.xwalk.core.XWalkV8;
 public final class i
   implements IJsRuntime
 {
-  XWalkV8 MwP;
-  private HandlerThread MwQ;
-  private Handler MwR;
+  XWalkV8 MTT;
+  private HandlerThread MTU;
+  private Handler MTV;
   
   public i()
   {
     AppMethodBeat.i(154293);
-    this.MwQ = new HandlerThread("j2v8");
-    this.MwQ.start();
-    this.MwR = new Handler(this.MwQ.getLooper());
+    this.MTU = new HandlerThread("j2v8");
+    this.MTU.start();
+    this.MTV = new Handler(this.MTU.getLooper());
     AppMethodBeat.o(154293);
   }
   
   public final void init(final int paramInt)
   {
     AppMethodBeat.i(154294);
-    this.MwR.post(new Runnable()
+    this.MTV.post(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(154292);
-        if (i.this.MwP != null)
+        if (i.this.MTT != null)
         {
           AppMethodBeat.o(154292);
           return;
         }
-        i.this.MwP = new XWalkV8();
-        i.this.MwP.init(paramInt);
+        i.this.MTT = new XWalkV8();
+        i.this.MTT.init(paramInt);
         AppMethodBeat.o(154292);
       }
     });

@@ -1,53 +1,49 @@
 package com.tencent.mm.plugin.appbrand.utils;
 
-import android.app.ProgressDialog;
-import android.content.Context;
-import android.content.DialogInterface.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.widget.a.d;
-import com.tencent.mm.ui.widget.a.d.a;
-import com.tencent.mm.ui.widget.a.j;
+import d.l;
+import java.util.concurrent.atomic.AtomicInteger;
 
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/utils/CountDownLock;", "", "countDownCallback", "Ljava/lang/Runnable;", "count", "", "(Ljava/lang/Runnable;I)V", "counter", "Ljava/util/concurrent/atomic/AtomicInteger;", "countDown", "", "plugin-appbrand-integration_release"})
 public final class k
 {
-  public static d a(Context paramContext, String paramString1, String paramString2, DialogInterface.OnClickListener paramOnClickListener)
+  private final AtomicInteger counter;
+  private final Runnable mTQ;
+  
+  public k(Runnable paramRunnable, int paramInt)
   {
-    AppMethodBeat.i(147715);
-    paramContext = new d.a(paramContext).aXF(paramString1).aXM(paramString2).c(paramOnClickListener).fMb();
-    paramContext.show();
-    AppMethodBeat.o(147715);
-    return paramContext;
+    AppMethodBeat.i(51402);
+    this.mTQ = paramRunnable;
+    if (paramInt > 0) {}
+    for (int i = 1; i == 0; i = 0)
+    {
+      paramRunnable = (Throwable)new IllegalArgumentException("count <= 0".toString());
+      AppMethodBeat.o(51402);
+      throw paramRunnable;
+    }
+    this.counter = new AtomicInteger(paramInt);
+    AppMethodBeat.o(51402);
   }
   
-  public static d a(Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2)
+  public final void countDown()
   {
-    AppMethodBeat.i(147716);
-    paramContext = new d.a(paramContext).aXF(paramString2).aXG(paramString1).aXM(paramString3).c(paramOnClickListener1).aXN(paramString4).d(paramOnClickListener2).fMb();
-    paramContext.show();
-    AppMethodBeat.o(147716);
-    return paramContext;
-  }
-  
-  public static ProgressDialog b(Context paramContext, CharSequence paramCharSequence)
-  {
-    AppMethodBeat.i(147713);
-    paramContext = j.c(paramContext, paramCharSequence, true);
-    AppMethodBeat.o(147713);
-    return paramContext;
-  }
-  
-  public static d b(Context paramContext, String paramString1, String paramString2, DialogInterface.OnClickListener paramOnClickListener)
-  {
-    AppMethodBeat.i(147717);
-    paramContext = new d.a(paramContext).aXF(paramString2).aXG(paramString1).afl(2131761022).c(paramOnClickListener).yR(false).fMb();
-    paramContext.show();
-    AppMethodBeat.o(147717);
-    return paramContext;
+    AppMethodBeat.i(51401);
+    if (this.counter.decrementAndGet() == 0)
+    {
+      Runnable localRunnable = this.mTQ;
+      if (localRunnable != null)
+      {
+        localRunnable.run();
+        AppMethodBeat.o(51401);
+        return;
+      }
+    }
+    AppMethodBeat.o(51401);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.utils.k
  * JD-Core Version:    0.7.0.1
  */

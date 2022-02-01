@@ -14,15 +14,15 @@ import java.util.concurrent.ScheduledExecutorService;
 
 public final class a
 {
-  private static int[] LYk = new int[0];
+  private static int[] Mvf = new int[0];
   
   public static void init(Context paramContext)
   {
-    AppMethodBeat.i(191773);
+    AppMethodBeat.i(194451);
     d.i("TPDrmCapability", "TPDrmCapability, init");
     if (!TPNativeLibraryLoader.isLibLoaded())
     {
-      AppMethodBeat.o(191773);
+      AppMethodBeat.o(194451);
       return;
     }
     d.i("TPDrmCapability", "TPDrmCapability, read sp.");
@@ -32,12 +32,12 @@ public final class a
     {
       public final void run()
       {
-        AppMethodBeat.i(191771);
+        AppMethodBeat.i(194449);
         Object localObject = TPThumbplayerCapabilityHelper.getDRMCapabilities();
         d.i("TPDrmCapability", "TPThumbplayerCapabilityHelper, drm cap:" + Arrays.toString((int[])localObject));
         if (localObject.length == 0)
         {
-          AppMethodBeat.o(191771);
+          AppMethodBeat.o(194449);
           return;
         }
         HashSet localHashSet = new HashSet();
@@ -73,13 +73,13 @@ public final class a
           }
         }
         a.k(localHashSet);
-        localObject = this.Jcl.edit();
+        localObject = this.JwV.edit();
         ((SharedPreferences.Editor)localObject).putStringSet("DRM_CAP_LIST", localHashSet);
         ((SharedPreferences.Editor)localObject).apply();
-        AppMethodBeat.o(191771);
+        AppMethodBeat.o(194449);
       }
     });
-    AppMethodBeat.o(191773);
+    AppMethodBeat.o(194451);
   }
   
   private static void j(HashSet<String> paramHashSet)
@@ -89,24 +89,24 @@ public final class a
       int i;
       try
       {
-        AppMethodBeat.i(191772);
+        AppMethodBeat.i(194450);
         if ((paramHashSet != null) && (paramHashSet.size() > 0))
         {
           paramHashSet = paramHashSet.toArray();
-          LYk = new int[paramHashSet.length];
+          Mvf = new int[paramHashSet.length];
           i = 0;
           if (i < paramHashSet.length) {
             if ((paramHashSet[i] instanceof String)) {
-              LYk[i] = Integer.parseInt((String)paramHashSet[i]);
+              Mvf[i] = Integer.parseInt((String)paramHashSet[i]);
             } else {
-              LYk[i] = -1;
+              Mvf[i] = -1;
             }
           }
         }
       }
       finally {}
-      d.i("TPDrmCapability", "TPDrmCapability, read sp ret:" + Arrays.toString(LYk));
-      AppMethodBeat.o(191772);
+      d.i("TPDrmCapability", "TPDrmCapability, read sp ret:" + Arrays.toString(Mvf));
+      AppMethodBeat.o(194450);
       return;
       i += 1;
     }

@@ -5,18 +5,18 @@ import com.tencent.mm.ui.widget.MMWebView;
 
 public final class ak
 {
-  public g DCr;
-  private String dCW;
-  public MMWebView gZN;
+  public g DUo;
+  private String dEb;
+  public MMWebView hcA;
   int scene;
   private String sessionId;
   
   public ak(MMWebView paramMMWebView, String paramString1, String paramString2, g paramg, int paramInt)
   {
-    this.gZN = paramMMWebView;
+    this.hcA = paramMMWebView;
     this.sessionId = paramString1;
-    this.dCW = paramString2;
-    this.DCr = paramg;
+    this.dEb = paramString2;
+    this.DUo = paramg;
     this.scene = paramInt;
   }
 }

@@ -9,15 +9,15 @@ import d.l.b.a.b.j.e.b;
 public final class l
   implements j
 {
-  public b NeR;
+  public b NBW;
   
   public final e c(g paramg)
   {
     AppMethodBeat.i(57769);
     p.h(paramg, "javaClass");
-    b localb = this.NeR;
+    b localb = this.NBW;
     if (localb == null) {
-      p.bcb("resolver");
+      p.bdF("resolver");
     }
     paramg = localb.c(paramg);
     AppMethodBeat.o(57769);
@@ -26,7 +26,7 @@ public final class l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.d.a.c.l
  * JD-Core Version:    0.7.0.1
  */

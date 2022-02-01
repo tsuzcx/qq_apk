@@ -2,26 +2,26 @@ package com.tencent.mm.pluginsdk.wallet;
 
 public final class e
 {
-  private static String Fmb = null;
+  private static String FEz = null;
   
-  public static void aNP(String paramString)
+  public static void aPm(String paramString)
   {
-    Fmb = paramString;
+    FEz = paramString;
   }
   
-  public static boolean ffA()
+  public static boolean fjq()
   {
-    return Fmb == null;
+    return FEz == null;
   }
   
-  public static String ffB()
+  public static String fjr()
   {
-    return Fmb;
+    return FEz;
   }
   
-  public static void ffC()
+  public static void fjs()
   {
-    Fmb = null;
+    FEz = null;
   }
 }
 

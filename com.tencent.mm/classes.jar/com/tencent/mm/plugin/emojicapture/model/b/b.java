@@ -2,10 +2,10 @@ package com.tencent.mm.plugin.emojicapture.model.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.recordvideo.ui.editor.g;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/emojicapture/model/mix/EmojiMixFrameSyncMgr;", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/MixFrameSyncMgr;", "videoPath", "", "emojiFrameRetriever", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/retriever/FrameRetriever;", "videoPlayRate", "", "(Ljava/lang/String;Lcom/tencent/mm/plugin/recordvideo/ui/editor/retriever/FrameRetriever;I)V", "TAG", "plugin-emojicapture_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/emojicapture/model/mix/EmojiMixFrameSyncMgr;", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/MixFrameSyncMgr;", "videoPath", "", "emojiFrameRetriever", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/retriever/FrameRetriever;", "videoPlayRate", "", "(Ljava/lang/String;Lcom/tencent/mm/plugin/recordvideo/ui/editor/retriever/FrameRetriever;I)V", "TAG", "plugin-emojicapture_release"})
 public final class b
   extends g
 {
@@ -14,26 +14,26 @@ public final class b
   public b(String paramString, com.tencent.mm.plugin.recordvideo.ui.editor.b.b paramb, int paramInt)
   {
     super(paramString, paramb);
-    AppMethodBeat.i(195131);
+    AppMethodBeat.i(221763);
     this.TAG = "MicroMsg.EmojiMixFrameSyncMgr";
-    this.xMZ = (paramInt * 20);
-    if (this.xMZ > 30) {
-      this.xMZ = 30;
+    this.ycT = (paramInt * 20);
+    if (this.ycT > 30) {
+      this.ycT = 30;
     }
-    this.xNa /= paramInt;
-    this.xNc = (1000.0F / this.xMZ);
-    if (this.xNc < this.xNa) {
-      this.xNc = this.xNa;
+    this.ycU /= paramInt;
+    this.ycW = (1000.0F / this.ycT);
+    if (this.ycW < this.ycU) {
+      this.ycW = this.ycU;
     }
-    this.xMX = ((int)(this.videoDuration / paramInt / this.xNc));
-    this.xMY = 0;
-    ad.i(this.TAG, "init MixFrameSyncMgr,videoPath:" + paramString + ", videoPlayRate:" + paramInt + ", fps:" + this.xMS + ", duration:" + this.videoDuration + ", frameCount:" + this.videoFrameCount + ", frameDuration:" + this.xNa + ", targetFrameRate:" + this.xMZ + ", targetFrameCount:" + this.xMX + ", targetFrameDuration:" + this.xNc);
-    AppMethodBeat.o(195131);
+    this.ycR = ((int)(this.videoDuration / paramInt / this.ycW));
+    this.ycS = 0;
+    ae.i(this.TAG, "init MixFrameSyncMgr,videoPath:" + paramString + ", videoPlayRate:" + paramInt + ", fps:" + this.ycM + ", duration:" + this.videoDuration + ", frameCount:" + this.videoFrameCount + ", frameDuration:" + this.ycU + ", targetFrameRate:" + this.ycT + ", targetFrameCount:" + this.ycR + ", targetFrameDuration:" + this.ycW);
+    AppMethodBeat.o(221763);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.emojicapture.model.b.b
  * JD-Core Version:    0.7.0.1
  */

@@ -16,18 +16,18 @@ public final class h
   public final void a(Context paramContext, com.tencent.mm.plugin.webview.luggage.g paramg)
   {
     AppMethodBeat.i(78697);
-    paramContext = paramg.ePl();
+    paramContext = paramg.eSX();
     if (paramContext != null)
     {
-      if (!paramContext.bKz())
+      if (!paramContext.bLw())
       {
-        paramContext.gf(true);
-        com.tencent.mm.plugin.report.service.g.yhR.dD(982, 4);
+        paramContext.o(true, 2);
+        com.tencent.mm.plugin.report.service.g.yxI.dD(982, 4);
         AppMethodBeat.o(78697);
         return;
       }
-      paramContext.gf(false);
-      com.tencent.mm.plugin.report.service.g.yhR.dD(982, 5);
+      paramContext.o(false, 2);
+      com.tencent.mm.plugin.report.service.g.yxI.dD(982, 5);
     }
     AppMethodBeat.o(78697);
   }
@@ -35,10 +35,10 @@ public final class h
   public final void a(Context paramContext, com.tencent.mm.plugin.webview.luggage.g paramg, l paraml)
   {
     AppMethodBeat.i(78696);
-    q localq = paramg.ePl();
-    if ((paramg.ePk()) && (localq != null))
+    q localq = paramg.eSX();
+    if ((paramg.eSW()) && (localq != null))
     {
-      if (!localq.bKz())
+      if (!localq.bLw())
       {
         paraml.a(35, paramContext.getString(2131762178), 2131690574);
         AppMethodBeat.o(78696);

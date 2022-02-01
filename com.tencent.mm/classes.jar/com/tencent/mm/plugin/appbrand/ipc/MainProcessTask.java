@@ -5,55 +5,55 @@ import android.os.Messenger;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Process;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.HashSet;
 import java.util.Set;
 
 public abstract class MainProcessTask
   implements Parcelable
 {
-  private static final Set<Object> kpY = new HashSet();
-  protected String iFB = Process.myPid() + hashCode();
-  Messenger kpZ;
+  private static final Set<Object> ktn = new HashSet();
+  protected String iIu = Process.myPid() + hashCode();
+  Messenger kto;
   
-  public abstract void aOA();
+  public abstract void aOX();
   
-  public void aOB() {}
+  public void aOY() {}
   
-  public final void aOD()
+  public final void aPa()
   {
     AppBrandMainProcessService.a(this);
   }
   
-  public final void bhN()
+  public final boolean biG()
   {
-    kpY.add(this);
-  }
-  
-  public final void bhO()
-  {
-    kpY.remove(this);
-  }
-  
-  public final boolean bhX()
-  {
-    if (this.kpZ == null) {
+    if (this.kto == null) {
       return false;
     }
     Message localMessage = Message.obtain();
     localMessage.setData(AppBrandMainProcessService.a(this, false));
     try
     {
-      this.kpZ.send(localMessage);
-      gl(true);
+      this.kto.send(localMessage);
+      gj(true);
       return true;
     }
     catch (Exception localException)
     {
-      ad.e("MicroMsg.MainProcessTask", "callback failed, class[%s], e=%s", new Object[] { getClass().getName(), localException });
-      gl(false);
+      ae.e("MicroMsg.MainProcessTask", "callback failed, class[%s], e=%s", new Object[] { getClass().getName(), localException });
+      gj(false);
     }
     return false;
+  }
+  
+  public final void biw()
+  {
+    ktn.add(this);
+  }
+  
+  public final void bix()
+  {
+    ktn.remove(this);
   }
   
   public int describeContents()
@@ -63,7 +63,7 @@ public abstract class MainProcessTask
   
   public void e(Parcel paramParcel) {}
   
-  protected void gl(boolean paramBoolean) {}
+  protected void gj(boolean paramBoolean) {}
   
   public void writeToParcel(Parcel paramParcel, int paramInt) {}
 }

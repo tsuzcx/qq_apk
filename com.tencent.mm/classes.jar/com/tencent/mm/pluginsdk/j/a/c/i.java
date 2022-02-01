@@ -2,35 +2,35 @@ package com.tencent.mm.pluginsdk.j.a.c;
 
 import android.util.SparseArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.Iterator;
 import java.util.List;
 
 public final class i
   implements c
 {
-  private final ap EQB;
-  public final SparseArray<List<d>> EQC;
-  public final Object EQD;
+  private final aq FiW;
+  public final SparseArray<List<d>> FiX;
+  public final Object FiY;
   
-  i(ap paramap)
+  i(aq paramaq)
   {
     AppMethodBeat.i(152018);
-    this.EQB = paramap;
-    this.EQC = new SparseArray();
-    this.EQD = new Object();
+    this.FiW = paramaq;
+    this.FiX = new SparseArray();
+    this.FiY = new Object();
     AppMethodBeat.o(152018);
   }
   
-  private List<d> aMg(String arg1)
+  private List<d> aNC(String arg1)
   {
     AppMethodBeat.i(152022);
     int i = ???.hashCode();
-    synchronized (this.EQD)
+    synchronized (this.FiY)
     {
-      List localList = (List)this.EQC.get(i);
+      List localList = (List)this.FiX.get(i);
       AppMethodBeat.o(152022);
       return localList;
     }
@@ -39,13 +39,13 @@ public final class i
   public final void C(String paramString, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(152020);
-    ad.i("MicroMsg.ResDownloader.NetworkEventDispatcher", "dispatchRetry, urlKey = %s, max = %d, count = %d", new Object[] { paramString, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    paramString = q.a.fbc().aMi(paramString);
+    ae.i("MicroMsg.ResDownloader.NetworkEventDispatcher", "dispatchRetry, urlKey = %s, max = %d, count = %d", new Object[] { paramString, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    paramString = q.a.feQ().aNE(paramString);
     if (paramString != null)
     {
       paramString.field_maxRetryTimes = paramInt1;
       paramString.field_retryTimes = paramInt2;
-      q.a.fbc().h(paramString);
+      q.a.feQ().h(paramString);
     }
     AppMethodBeat.o(152020);
   }
@@ -53,11 +53,11 @@ public final class i
   public final void O(String paramString, long paramLong)
   {
     AppMethodBeat.i(152021);
-    paramString = q.a.fbc().aMi(paramString);
+    paramString = q.a.feQ().aNE(paramString);
     if (paramString != null)
     {
       paramString.field_contentLength = paramLong;
-      q.a.fbc().h(paramString);
+      q.a.feQ().h(paramString);
     }
     AppMethodBeat.o(152021);
   }
@@ -65,7 +65,7 @@ public final class i
   public final void a(final e parame, final m paramm)
   {
     AppMethodBeat.i(152019);
-    ad.i("MicroMsg.ResDownloader.NetworkEventDispatcher", "dispatchResponse, response = ".concat(String.valueOf(paramm)));
+    ae.i("MicroMsg.ResDownloader.NetworkEventDispatcher", "dispatchResponse, response = ".concat(String.valueOf(paramm)));
     switch (paramm.status)
     {
     }
@@ -73,27 +73,27 @@ public final class i
     {
       AppMethodBeat.o(152019);
       return;
-      Object localObject = q.a.fbc().aMi(paramm.EPe);
+      Object localObject = q.a.feQ().aNE(paramm.Fhz);
       if (localObject != null)
       {
         ((s)localObject).field_status = 4;
-        q.a.fbc().h((s)localObject);
+        q.a.feQ().h((s)localObject);
       }
-      localObject = aMg(parame.afw());
-      if (!bt.hj((List)localObject))
+      localObject = aNC(parame.afK());
+      if (!bu.ht((List)localObject))
       {
-        parame = parame.faC();
-        this.EQB.post(new Runnable()
+        parame = parame.feq();
+        this.FiW.post(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(152017);
-            Iterator localIterator = this.EQE.iterator();
+            Iterator localIterator = this.FiZ.iterator();
             while (localIterator.hasNext())
             {
               d locald = (d)localIterator.next();
-              if (bt.nullAsNil(locald.afw()).equals(paramm.groupId)) {
-                locald.aLY(parame);
+              if (bu.nullAsNil(locald.afK()).equals(paramm.groupId)) {
+                locald.aNu(parame);
               }
             }
             AppMethodBeat.o(152017);
@@ -102,33 +102,33 @@ public final class i
       }
       AppMethodBeat.o(152019);
       return;
-      localObject = q.a.fbc().aMi(paramm.EPe);
+      localObject = q.a.feQ().aNE(paramm.Fhz);
       if (localObject != null)
       {
         ((s)localObject).field_status = 2;
-        q.a.fbc().h((s)localObject);
+        q.a.feQ().h((s)localObject);
       }
-      ad.d("MicroMsg.ResDownloader.NetworkEventDispatcher", "dispatchComplete, groupId = " + parame.afw());
-      localObject = aMg(parame.afw());
-      if (bt.hj((List)localObject))
+      ae.d("MicroMsg.ResDownloader.NetworkEventDispatcher", "dispatchComplete, groupId = " + parame.afK());
+      localObject = aNC(parame.afK());
+      if (bu.ht((List)localObject))
       {
-        ad.d("MicroMsg.ResDownloader.NetworkEventDispatcher", "dispatchComplete, listeners.size = null");
+        ae.d("MicroMsg.ResDownloader.NetworkEventDispatcher", "dispatchComplete, listeners.size = null");
         AppMethodBeat.o(152019);
         return;
       }
-      ad.d("MicroMsg.ResDownloader.NetworkEventDispatcher", "dispatchComplete, listeners.size = " + ((List)localObject).size());
-      parame = parame.faC();
-      this.EQB.post(new Runnable()
+      ae.d("MicroMsg.ResDownloader.NetworkEventDispatcher", "dispatchComplete, listeners.size = " + ((List)localObject).size());
+      parame = parame.feq();
+      this.FiW.post(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(152016);
-          Iterator localIterator = this.EQE.iterator();
+          Iterator localIterator = this.FiZ.iterator();
           while (localIterator.hasNext())
           {
             d locald = (d)localIterator.next();
-            if (bt.nullAsNil(locald.afw()).equals(paramm.groupId)) {
-              locald.aLX(parame);
+            if (bu.nullAsNil(locald.afK()).equals(paramm.groupId)) {
+              locald.aNt(parame);
             }
           }
           AppMethodBeat.o(152016);
@@ -136,26 +136,26 @@ public final class i
       });
       AppMethodBeat.o(152019);
       return;
-      localObject = q.a.fbc().aMi(paramm.EPe);
+      localObject = q.a.feQ().aNE(paramm.Fhz);
       if (localObject != null)
       {
         ((s)localObject).field_status = 3;
-        q.a.fbc().h((s)localObject);
+        q.a.feQ().h((s)localObject);
       }
-      localObject = aMg(parame.afw());
-      if (!bt.hj((List)localObject))
+      localObject = aNC(parame.afK());
+      if (!bu.ht((List)localObject))
       {
-        parame = parame.faC();
-        this.EQB.post(new Runnable()
+        parame = parame.feq();
+        this.FiW.post(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(152015);
-            Iterator localIterator = this.EQE.iterator();
+            Iterator localIterator = this.FiZ.iterator();
             while (localIterator.hasNext())
             {
               d locald = (d)localIterator.next();
-              if (bt.nullAsNil(locald.afw()).equals(paramm.groupId)) {
+              if (bu.nullAsNil(locald.afK()).equals(paramm.groupId)) {
                 locald.a(parame, paramm);
               }
             }
@@ -170,7 +170,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.j.a.c.i
  * JD-Core Version:    0.7.0.1
  */

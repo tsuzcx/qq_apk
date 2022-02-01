@@ -22,7 +22,7 @@ public class i
   
   public i(Context paramContext, List<a> paramList, boolean paramBoolean)
   {
-    AppMethodBeat.i(190464);
+    AppMethodBeat.i(210729);
     this.b = null;
     this.c = false;
     this.d = null;
@@ -33,12 +33,12 @@ public class i
     this.b = new ArrayList();
     this.b.addAll(paramList);
     this.e = new c(this.a);
-    AppMethodBeat.o(190464);
+    AppMethodBeat.o(210729);
   }
   
   public final String a()
   {
-    AppMethodBeat.i(190469);
+    AppMethodBeat.i(210734);
     JSONObject localJSONObject1 = new JSONObject();
     Object localObject1 = this.a.getFilesDir().getAbsolutePath() + File.separator + q.b;
     try
@@ -75,7 +75,7 @@ public class i
     catch (Exception localException)
     {
       e.a(this.a).a("DRG", "reqDerror:" + localException.toString());
-      AppMethodBeat.o(190469);
+      AppMethodBeat.o(210734);
       return null;
     }
     String str = localException.toString();
@@ -83,17 +83,17 @@ public class i
     Object localObject2 = new StringBuilder();
     ((e)localObject1).a("DRG", "req:" + str);
     str = m.b(str, "sE0zy%DVqLnXA$hmNZ8NBwcg7FDrvi!q");
-    AppMethodBeat.o(190469);
+    AppMethodBeat.o(210734);
     return str;
   }
   
   public final boolean a(String paramString)
   {
-    AppMethodBeat.i(190466);
+    AppMethodBeat.i(210731);
     paramString = q.d(m.a(paramString, "sE0zy%DVqLnXA$hmNZ8NBwcg7FDrvi!q"));
     if (paramString == null)
     {
-      AppMethodBeat.o(190466);
+      AppMethodBeat.o(210731);
       return false;
     }
     this.d = q.e(paramString);
@@ -111,10 +111,10 @@ public class i
         {
           e.a(this.a).a("DRG", "to download:".concat(String.valueOf(paramString)));
           this.e.b(this.d);
-          AppMethodBeat.o(190466);
+          AppMethodBeat.o(210731);
           return true;
         }
-        AppMethodBeat.o(190466);
+        AppMethodBeat.o(210731);
         return false;
       }
     }
@@ -122,7 +122,7 @@ public class i
   
   public final boolean a(List<a> paramList1, List<a> paramList2)
   {
-    AppMethodBeat.i(190467);
+    AppMethodBeat.i(210732);
     paramList1 = paramList1.iterator();
     boolean bool = true;
     label178:
@@ -151,7 +151,7 @@ public class i
         }
         bool = false;
         break;
-        AppMethodBeat.o(190467);
+        AppMethodBeat.o(210732);
         return bool;
       }
     }
@@ -159,24 +159,24 @@ public class i
   
   public final boolean b()
   {
-    AppMethodBeat.i(190470);
+    AppMethodBeat.i(210735);
     long l = q.a(this.a, "__last_check_update_time___sapp", Long.valueOf(0L)).longValue();
     if (System.currentTimeMillis() - l > 3600000L)
     {
-      AppMethodBeat.o(190470);
+      AppMethodBeat.o(210735);
       return true;
     }
-    AppMethodBeat.o(190470);
+    AppMethodBeat.o(210735);
     return false;
   }
   
   public final boolean c()
   {
-    AppMethodBeat.i(190468);
+    AppMethodBeat.i(210733);
     Object localObject = a();
     if (localObject == null)
     {
-      AppMethodBeat.o(190468);
+      AppMethodBeat.o(210733);
       return false;
     }
     localObject = ((String)localObject).getBytes();
@@ -196,25 +196,25 @@ public class i
           localObject = new String(arrayOfByte);
           e.a(this.a).a("DRG", "response suc,try:".concat(String.valueOf(j)));
           boolean bool = a((String)localObject);
-          AppMethodBeat.o(190468);
+          AppMethodBeat.o(210733);
           return bool;
         }
         q.a(10000L);
       }
     }
-    AppMethodBeat.o(190468);
+    AppMethodBeat.o(210733);
     return false;
   }
   
   public void run()
   {
-    AppMethodBeat.i(190465);
+    AppMethodBeat.i(210730);
     boolean bool = b();
     e.a(this.a).a("DRG", "t:" + bool + ",i:" + this.f);
     c();
     q.b(this.a, "__last_check_update_time___sapp", Long.valueOf(System.currentTimeMillis()));
     e.a(this.a).d();
-    AppMethodBeat.o(190465);
+    AppMethodBeat.o(210730);
   }
 }
 

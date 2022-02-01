@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.appbrand.jsapi.i.a;
 
 public abstract interface b$n
 {
-  public abstract void PH(String paramString);
+  public abstract void Qp(String paramString);
 }
 
 

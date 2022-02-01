@@ -4,11 +4,11 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
 import com.tencent.mm.plugin.appbrand.jsapi.m;
 import com.tencent.mm.plugin.appbrand.jsapi.y;
-import com.tencent.mm.plugin.appbrand.utils.aa;
-import com.tencent.mm.plugin.appbrand.utils.aa.a;
-import com.tencent.mm.plugin.appbrand.utils.aa.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.plugin.appbrand.utils.ad;
+import com.tencent.mm.plugin.appbrand.utils.ad.a;
+import com.tencent.mm.plugin.appbrand.utils.ad.b;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ar;
 import org.json.JSONObject;
 
 public final class e
@@ -16,21 +16,21 @@ public final class e
 {
   public static final int CTRL_INDEX = 472;
   public static final String NAME = "enableDeviceOrientationChangeListening";
-  private boolean lhc;
-  protected aa lhd;
-  private aa.b lhe;
+  private boolean lkO;
+  protected ad lkP;
+  private ad.b lkQ;
   
   public e()
   {
     AppMethodBeat.i(137634);
-    this.lhc = false;
-    this.lhe = new aa.b()
+    this.lkO = false;
+    this.lkQ = new ad.b()
     {
-      public final void a(aa.a paramAnonymousa1, final aa.a paramAnonymousa2)
+      public final void a(ad.a paramAnonymousa1, final ad.a paramAnonymousa2)
       {
         AppMethodBeat.i(137633);
-        ad.i("MicroMsg.JsApiEnableDeviceOrientation", "OrientationListener lastOrientation:" + paramAnonymousa1.name() + "; newOrientation:" + paramAnonymousa2.name());
-        aq.o(new Runnable()
+        ae.i("MicroMsg.JsApiEnableDeviceOrientation", "OrientationListener lastOrientation:" + paramAnonymousa1.name() + "; newOrientation:" + paramAnonymousa2.name());
+        ar.o(new Runnable()
         {
           public final void run()
           {
@@ -51,11 +51,11 @@ public final class e
     if (paramJSONObject.optBoolean("enable", false))
     {
       h.z(paramc);
-      if (!this.lhc)
+      if (!this.lkO)
       {
-        this.lhd = new aa(paramc.getContext(), this.lhe);
-        this.lhd.enable();
-        this.lhc = true;
+        this.lkP = new ad(paramc.getContext(), this.lkQ);
+        this.lkP.enable();
+        this.lkO = true;
       }
     }
     for (;;)
@@ -64,11 +64,11 @@ public final class e
       AppMethodBeat.o(137635);
       return paramc;
       h.A(paramc);
-      if (this.lhc)
+      if (this.lkO)
       {
-        this.lhd.disable();
-        this.lhd = null;
-        this.lhc = false;
+        this.lkP.disable();
+        this.lkP = null;
+        this.lkO = false;
       }
     }
   }

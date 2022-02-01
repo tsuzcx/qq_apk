@@ -4,9 +4,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.a.b;
 import com.tencent.mm.plugin.a.c;
 import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.vfs.i;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public final class a
 {
@@ -15,43 +14,43 @@ public final class a
     AppMethodBeat.i(126778);
     if (params == null)
     {
-      ad.w("MicroMsg.AtomStatUtil", "report moov location, but video info is null.");
+      ae.w("MicroMsg.AtomStatUtil", "report moov location, but video info is null.");
       AppMethodBeat.o(126778);
       return;
     }
-    long l3 = bt.HI();
-    o.aMJ();
-    String str = t.Hh(params.getFileName());
+    long l3 = bu.HQ();
+    o.aNh();
+    String str = t.HJ(params.getFileName());
     long l2 = 0L;
     long l1 = 0L;
     int i;
-    if (c.Ja(str))
+    if (c.Jz(str))
     {
       i = 1;
       b localb = new b();
-      l2 = localb.IZ(str);
-      if (localb.iQm != null) {
-        l1 = localb.iQm.iQi;
+      l2 = localb.Jy(str);
+      if (localb.iTf != null) {
+        l1 = localb.iTf.iTb;
       }
     }
     for (;;)
     {
-      long l4 = params.dAY;
-      str = s.GY(params.aMV());
-      long l5 = params.hMP;
+      long l4 = params.dCd;
+      str = s.HA(params.aNt());
+      long l5 = params.hPI;
       params = new StringBuilder();
       params.append(l4).append(";").append(str).append(";");
       params.append(l5).append(";");
       params.append(i).append(";").append(l2).append(";");
       params.append(l1).append(";").append(paramInt);
       params = params.toString();
-      ad.d("MicroMsg.AtomStatUtil", "report moov content : " + params + " cost time: " + bt.aO(l3));
-      g.yhR.f(11098, new Object[] { Integer.valueOf(8000), params });
+      ae.d("MicroMsg.AtomStatUtil", "report moov content : " + params + " cost time: " + bu.aO(l3));
+      g.yxI.f(11098, new Object[] { Integer.valueOf(8000), params });
       AppMethodBeat.o(126778);
       return;
       l1 = 0L;
       continue;
-      ad.i("MicroMsg.AtomStatUtil", "download video finish, but it is not mp4 file.");
+      ae.i("MicroMsg.AtomStatUtil", "download video finish, but it is not mp4 file.");
       i = 0;
     }
   }
@@ -59,30 +58,30 @@ public final class a
   public static void j(int paramInt, String paramString1, String paramString2)
   {
     AppMethodBeat.i(126779);
-    if ((bt.isNullOrNil(paramString1)) || (bt.isNullOrNil(paramString2)))
+    if ((bu.isNullOrNil(paramString1)) || (bu.isNullOrNil(paramString2)))
     {
-      ad.w("MicroMsg.AtomStatUtil", "report video remuxing but path is null.");
+      ae.w("MicroMsg.AtomStatUtil", "report video remuxing but path is null.");
       AppMethodBeat.o(126779);
       return;
     }
     try
     {
-      long l1 = i.aYo(paramString1);
-      long l2 = i.aYo(paramString2);
+      long l1 = com.tencent.mm.vfs.o.aZR(paramString1);
+      long l2 = com.tencent.mm.vfs.o.aZR(paramString2);
       int i = (int)(100L * l2 / l1);
       paramString1 = new StringBuilder();
       paramString1.append(paramInt).append(";").append(l1).append(";");
       paramString1.append(l2).append(";").append(i);
       paramString1 = paramString1.toString();
-      ad.d("MicroMsg.AtomStatUtil", "report video remuxing : ".concat(String.valueOf(paramString1)));
-      g.yhR.f(11098, new Object[] { Integer.valueOf(8001), paramString1 });
+      ae.d("MicroMsg.AtomStatUtil", "report video remuxing : ".concat(String.valueOf(paramString1)));
+      g.yxI.f(11098, new Object[] { Integer.valueOf(8001), paramString1 });
       AppMethodBeat.o(126779);
       return;
     }
     catch (Exception paramString1)
     {
-      ad.printErrStackTrace("MicroMsg.AtomStatUtil", paramString1, "", new Object[0]);
-      ad.e("MicroMsg.AtomStatUtil", "reportVideoRemuxing error : " + paramString1.toString());
+      ae.printErrStackTrace("MicroMsg.AtomStatUtil", paramString1, "", new Object[0]);
+      ae.e("MicroMsg.AtomStatUtil", "reportVideoRemuxing error : " + paramString1.toString());
       AppMethodBeat.o(126779);
     }
   }

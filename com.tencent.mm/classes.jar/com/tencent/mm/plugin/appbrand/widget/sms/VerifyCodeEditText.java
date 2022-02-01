@@ -22,7 +22,7 @@ public class VerifyCodeEditText
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public final InputConnection bEv()
+  public final InputConnection bFn()
   {
     AppMethodBeat.i(169541);
     InputConnection localInputConnection = super.onCreateInputConnection(new EditorInfo());

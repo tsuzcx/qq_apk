@@ -345,7 +345,7 @@ public class TRTCCustomTextureUtil
         {
           public void run()
           {
-            AppMethodBeat.i(187401);
+            AppMethodBeat.i(221530);
             if (localh != null) {
               localh.d();
             }
@@ -357,7 +357,7 @@ public class TRTCCustomTextureUtil
               TRTCCustomTextureUtil.access$300(TRTCCustomTextureUtil.this, "CustomCapture release");
               TRTCCustomTextureUtil.this.mCaptureAndEnc.r();
             }
-            AppMethodBeat.o(187401);
+            AppMethodBeat.o(221530);
           }
         });
         g.a(this.mGLThreadHandler, this.mEGLThread);

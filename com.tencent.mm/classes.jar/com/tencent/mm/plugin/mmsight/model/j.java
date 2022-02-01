@@ -1,30 +1,30 @@
 package com.tencent.mm.plugin.mmsight.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.aq;
 
 public final class j
 {
-  private static ap vOm;
+  private static aq wap;
   
   static
   {
     AppMethodBeat.i(89420);
-    vOm = new ap("MMSightHandler");
+    wap = new aq("MMSightHandler");
     AppMethodBeat.o(89420);
   }
   
-  public static void af(Runnable paramRunnable)
+  public static void ad(Runnable paramRunnable)
   {
     AppMethodBeat.i(89418);
-    vOm.postToWorker(paramRunnable);
+    wap.postToWorker(paramRunnable);
     AppMethodBeat.o(89418);
   }
   
-  public static void ag(Runnable paramRunnable)
+  public static void ae(Runnable paramRunnable)
   {
     AppMethodBeat.i(89419);
-    vOm.postDelayed(paramRunnable, 2000L);
+    wap.postDelayed(paramRunnable, 2000L);
     AppMethodBeat.o(89419);
   }
 }

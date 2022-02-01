@@ -9,7 +9,7 @@ import com.tencent.kinda.gen.VoidCallback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wallet_core.b.b;
 import com.tencent.mm.plugin.wallet_core.b.b.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.wallet_core.a;
 
@@ -22,7 +22,7 @@ public class KindaPayCardManagerImpl
     Object localObject = KindaContext.get();
     if (!(localObject instanceof MMActivity))
     {
-      ad.e("KindaPayCardManagerImpl", "Fail to start addPayCardImpl due to incompatible context(%s)", new Object[] { localObject.getClass().getName() });
+      ae.e("KindaPayCardManagerImpl", "Fail to start addPayCardImpl due to incompatible context(%s)", new Object[] { localObject.getClass().getName() });
       AppMethodBeat.o(18461);
       return;
     }
@@ -33,14 +33,14 @@ public class KindaPayCardManagerImpl
     localBundle.putBoolean("is_from_new_cashier", true);
     localBundle.putString("start_activity_class", localObject.getClass().getName());
     a.a((Activity)localObject, b.class, localBundle);
-    localObject = a.br((Activity)localObject);
+    localObject = a.bs((Activity)localObject);
     if (!(localObject instanceof b))
     {
-      ad.e("KindaPayCardManagerImpl", "Fail to get correct wallet process in addPayCardImpl, expect BindCardProcess got %s", new Object[] { localObject.getClass().getName() });
+      ae.e("KindaPayCardManagerImpl", "Fail to get correct wallet process in addPayCardImpl, expect BindCardProcess got %s", new Object[] { localObject.getClass().getName() });
       AppMethodBeat.o(18461);
       return;
     }
-    ((b)localObject).COy = new b.a()
+    ((b)localObject).Dgd = new b.a()
     {
       public void run(int paramAnonymousInt)
       {
@@ -60,7 +60,7 @@ public class KindaPayCardManagerImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.kinda.framework.app.KindaPayCardManagerImpl
  * JD-Core Version:    0.7.0.1
  */

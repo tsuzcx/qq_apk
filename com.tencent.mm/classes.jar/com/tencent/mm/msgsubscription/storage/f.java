@@ -6,25 +6,25 @@ import d.l;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/msgsubscription/storage/SubscribeMsgServiceFactory;", "", "()V", "NAME_BIZ", "", "NAME_WXA", "imps", "", "Lcom/tencent/mm/msgsubscription/storage/BaseSubscribeMsgService;", "getInstance", "name", "register", "", "implement", "unregister", "plugin-comm_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/msgsubscription/storage/SubscribeMsgServiceFactory;", "", "()V", "NAME_BIZ", "", "NAME_WXA", "imps", "", "Lcom/tencent/mm/msgsubscription/storage/BaseSubscribeMsgService;", "getInstance", "name", "register", "", "implement", "unregister", "plugin-comm_release"})
 public final class f
 {
-  private static final Map<String, a> iBQ;
-  public static final f iBR;
+  private static final Map<String, a> iEJ;
+  public static final f iEK;
   
   static
   {
     AppMethodBeat.i(149653);
-    iBR = new f();
-    iBQ = (Map)new LinkedHashMap();
+    iEK = new f();
+    iEJ = (Map)new LinkedHashMap();
     AppMethodBeat.o(149653);
   }
   
-  public static a Ig(String paramString)
+  public static a II(String paramString)
   {
     AppMethodBeat.i(149651);
     p.h(paramString, "name");
-    paramString = (a)iBQ.get(paramString);
+    paramString = (a)iEJ.get(paramString);
     AppMethodBeat.o(149651);
     return paramString;
   }
@@ -34,7 +34,7 @@ public final class f
     AppMethodBeat.i(149652);
     p.h(paramString, "name");
     p.h(parama, "implement");
-    iBQ.put(paramString, parama);
+    iEJ.put(paramString, parama);
     AppMethodBeat.o(149652);
   }
 }

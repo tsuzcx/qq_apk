@@ -1,125 +1,113 @@
 package com.tencent.mm.plugin.lite.c;
 
+import android.content.ContentResolver;
+import android.content.Context;
 import android.os.Bundle;
 import com.tencent.e.h;
 import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.lite.LiteAppCenter;
+import com.tencent.mm.plugin.lite.d.e;
 import com.tencent.mm.plugin.lite.jsapi.a;
 import com.tencent.mm.plugin.lite.jsapi.a.a;
 import com.tencent.mm.plugin.lite.logic.b.a;
 import com.tencent.mm.plugin.lite.logic.b.b;
-import com.tencent.mm.plugin.lite.logic.c;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.xwalk.core.Log;
 
 public class b
   extends a
 {
   public final void j(final String paramString, JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(217173);
-    c.dfF();
-    com.tencent.mm.plugin.lite.d.b localb = c.aoy(paramString);
-    if (localb == null)
+    AppMethodBeat.i(217783);
+    com.tencent.mm.plugin.lite.logic.c.diz();
+    e locale = com.tencent.mm.plugin.lite.logic.c.apC(paramString);
+    if (locale == null)
     {
-      Log.w("LiteAppJsApiLogin", "get LiteAppInfo fail");
-      this.uYz.YL("can not find liteApp from local storage");
-      AppMethodBeat.o(217173);
+      ae.w("LiteAppJsApiLogin", "get LiteAppInfo fail");
+      this.vko.ZC("can not find liteApp from local storage");
+      AppMethodBeat.o(217783);
       return;
     }
     final boolean[] arrayOfBoolean = new boolean[1];
     arrayOfBoolean[0] = false;
-    Object localObject2 = null;
-    String str = null;
-    Object localObject1 = localObject2;
+    final String[] arrayOfString = new String[1];
+    arrayOfString[0] = null;
     try
     {
-      if (paramJSONObject.has("url"))
-      {
-        localObject1 = localObject2;
-        str = paramJSONObject.getString("url");
+      if (paramJSONObject.has("url")) {
+        arrayOfString[0] = paramJSONObject.getString("url");
       }
-      localObject2 = str;
-      if (str == null)
-      {
-        localObject1 = str;
-        localObject2 = LiteAppCenter.getAuthUrl(localb.field_pkgPath, localb.field_appId, localb.field_signatureKey);
+      if (arrayOfString[0] == null) {
+        arrayOfString[0] = LiteAppCenter.getAuthUrl(locale.field_pkgPath, locale.field_appId, locale.field_signatureKey);
       }
-      if (localObject2 != null)
+      if ((arrayOfString[0] == null) || (arrayOfString[0].isEmpty()))
       {
-        localObject1 = localObject2;
-        if (!((String)localObject2).isEmpty()) {}
-      }
-      else
-      {
-        localObject1 = localObject2;
-        Log.w("LiteAppJsApiLogin", "get authurl fail");
-        localObject1 = localObject2;
-        this.uYz.YL("get authUrl fail, please make sure config authUrl in config file");
-        AppMethodBeat.o(217173);
+        ae.w("LiteAppJsApiLogin", "get authurl fail");
+        this.vko.ZC("get authUrl fail, please make sure config authUrl in config file");
+        AppMethodBeat.o(217783);
         return;
       }
       long l = 60000L;
-      localObject1 = localObject2;
-      if (paramJSONObject.has("timeout"))
-      {
-        localObject1 = localObject2;
+      if (paramJSONObject.has("timeout")) {
         l = paramJSONObject.getLong("timeout");
       }
-      localObject1 = localObject2;
-      h.LTJ.r(new Runnable()
+      h.MqF.r(new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(217170);
+          AppMethodBeat.i(217780);
           synchronized (arrayOfBoolean)
           {
             if (arrayOfBoolean[0] == 0)
             {
-              Log.w("LiteAppJsApiLogin", "geta8key timeout");
+              ae.w("LiteAppJsApiLogin", "geta8key timeout");
               arrayOfBoolean[0] = true;
-              b.a(b.this).YL("getA8Key timeout");
+              b.a(b.this).ZC("getA8Key timeout");
             }
-            AppMethodBeat.o(217170);
+            AppMethodBeat.o(217780);
             return;
           }
         }
       }, l);
-      localObject1 = localObject2;
     }
     catch (JSONException paramJSONObject)
     {
       for (;;)
       {
-        this.uYz.YL("json exception");
+        this.vko.ZC("json exception");
       }
     }
-    com.tencent.mm.plugin.lite.logic.b.uYI.a((String)localObject1, new b.b()
+    com.tencent.mm.plugin.lite.logic.b.vky.a(arrayOfString[0], new b.b()
     {
       public final void a(b.a paramAnonymousa)
       {
-        AppMethodBeat.i(217172);
+        AppMethodBeat.i(217782);
         synchronized (arrayOfBoolean)
         {
+          com.tencent.mm.plugin.lite.d.c localc;
+          JSONObject localJSONObject;
           if (arrayOfBoolean[0] == 0)
           {
-            Log.i("LiteAppJsApiLogin", "geta8key:" + paramString);
+            ae.i("LiteAppJsApiLogin", "geta8key:" + paramString);
             arrayOfBoolean[0] = true;
-            LiteAppCenter.setAuthInfo(paramString, paramAnonymousa.uYN, paramAnonymousa.mHeaders, paramAnonymousa.uYO);
-            new Bundle();
-            JSONObject localJSONObject = new JSONObject();
-            if (paramAnonymousa.uYO != null)
+            LiteAppCenter.setAuthInfo(paramString, paramAnonymousa.vkD, paramAnonymousa.mHeaders, paramAnonymousa.vkE);
+            localc = new com.tencent.mm.plugin.lite.d.c();
+            localc.field_host = arrayOfString[0];
+            localJSONObject = new JSONObject();
+            if (paramAnonymousa.vkE != null)
             {
-              paramAnonymousa = paramAnonymousa.uYO.entrySet().iterator();
-              while (paramAnonymousa.hasNext())
+              Iterator localIterator = paramAnonymousa.vkE.entrySet().iterator();
+              while (localIterator.hasNext())
               {
-                Map.Entry localEntry = (Map.Entry)paramAnonymousa.next();
+                Map.Entry localEntry = (Map.Entry)localIterator.next();
                 try
                 {
                   localJSONObject.put((String)localEntry.getKey(), localEntry.getValue());
@@ -127,35 +115,57 @@ public class b
                 catch (JSONException localJSONException) {}
               }
             }
-            b.c(b.this).aA(localJSONObject);
+            localc.field_param = paramAnonymousa.vkD;
+            localc.field_paramMap = localJSONObject.toString();
+            localc.field_updateTime = (System.currentTimeMillis() / 1000L);
+            localc.field_headerMap = new JSONObject(paramAnonymousa.mHeaders).toString();
+            com.tencent.mm.plugin.lite.logic.c.diz();
+            paramAnonymousa = new Bundle();
+            paramAnonymousa.putString("host", localc.field_host);
+            paramAnonymousa.putString("param", localc.field_param);
+            paramAnonymousa.putString("paramMap", localc.field_paramMap);
+            paramAnonymousa.putString("headerMap", localc.field_headerMap);
+            paramAnonymousa.putLong("updateTime", localc.field_updateTime);
           }
-          AppMethodBeat.o(217172);
-          return;
+          try
+          {
+            ak.getContext().getContentResolver().call(com.tencent.mm.plugin.lite.logic.c.getUri(), "insertLiteAppAuthInfo", localc.field_host, paramAnonymousa);
+            b.c(b.this).aA(localJSONObject);
+            AppMethodBeat.o(217782);
+            return;
+          }
+          catch (Exception paramAnonymousa)
+          {
+            for (;;)
+            {
+              ae.printErrStackTrace("MicroMsg.LiteApp.LiteAppService", paramAnonymousa, "", new Object[0]);
+            }
+          }
         }
       }
       
       public final void onError()
       {
-        AppMethodBeat.i(217171);
+        AppMethodBeat.i(217781);
         synchronized (arrayOfBoolean)
         {
           if (arrayOfBoolean[0] == 0)
           {
-            Log.w("LiteAppJsApiLogin", "geta8key fail");
+            ae.w("LiteAppJsApiLogin", "geta8key fail");
             arrayOfBoolean[0] = true;
-            b.b(b.this).YL("getA8Key fail");
+            b.b(b.this).ZC("getA8Key fail");
           }
-          AppMethodBeat.o(217171);
+          AppMethodBeat.o(217781);
           return;
         }
       }
     });
-    AppMethodBeat.o(217173);
+    AppMethodBeat.o(217783);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.lite.c.b
  * JD-Core Version:    0.7.0.1
  */

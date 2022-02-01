@@ -3,48 +3,48 @@ package com.tencent.mm.plugin.finder.storage;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.g.c.ck;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.cf;
-import com.tencent.mm.model.u;
+import com.tencent.mm.model.ch;
+import com.tencent.mm.model.v;
 import com.tencent.mm.plugin.finder.PluginFinder;
 import com.tencent.mm.plugin.finder.conv.j.a;
 import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.storage.am;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.storage.an;
 import d.g.b.p;
 import d.l;
 import java.util.concurrent.ConcurrentHashMap;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/storage/FinderSessionInfoStorage;", "Lcom/tencent/mm/sdk/storage/MAutoStorage;", "Lcom/tencent/mm/plugin/finder/conv/FinderSessionInfo;", "db", "Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "(Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;)V", "getDb", "()Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "sessionIdToSessionInfoCache", "Ljava/util/concurrent/ConcurrentHashMap;", "", "talkerToSessionInfoCache", "deleteSession", "", "sessionId", "isNotify", "getSessionId", "talker", "getSessionInfoBySessionId", "getSessionInfoByTalker", "getTalker", "isSessionRejectMsg", "replaceSessionInfo", "", "type", "", "enable_action", "source", "Lcom/tencent/mm/plugin/finder/storage/FinderSessionInfoStorage$ReplaceSource;", "rejectMsg", "canSendMsg", "updateOpType", "updateOpTypeAndAction", "actionPermission", "Companion", "ReplaceSource", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/storage/FinderSessionInfoStorage;", "Lcom/tencent/mm/sdk/storage/MAutoStorage;", "Lcom/tencent/mm/plugin/finder/conv/FinderSessionInfo;", "db", "Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "(Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;)V", "getDb", "()Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "sessionIdToSessionInfoCache", "Ljava/util/concurrent/ConcurrentHashMap;", "", "talkerToSessionInfoCache", "deleteSession", "", "sessionId", "isNotify", "getSessionId", "talker", "getSessionInfoBySessionId", "getSessionInfoByTalker", "getTalker", "isSessionRejectMsg", "replaceSessionInfo", "", "type", "", "enable_action", "source", "Lcom/tencent/mm/plugin/finder/storage/FinderSessionInfoStorage$ReplaceSource;", "rejectMsg", "canSendMsg", "updateOpType", "updateOpTypeAndAction", "actionPermission", "Companion", "ReplaceSource", "plugin-finder_release"})
 public final class w
   extends com.tencent.mm.sdk.e.j<com.tencent.mm.plugin.finder.conv.j>
 {
   private static final String[] SQL_CREATE;
-  public static final a szg;
+  public static final a sJX;
   private final e db;
-  public final ConcurrentHashMap<String, com.tencent.mm.plugin.finder.conv.j> sze;
-  public final ConcurrentHashMap<String, com.tencent.mm.plugin.finder.conv.j> szf;
+  public final ConcurrentHashMap<String, com.tencent.mm.plugin.finder.conv.j> sJV;
+  public final ConcurrentHashMap<String, com.tencent.mm.plugin.finder.conv.j> sJW;
   
   static
   {
-    AppMethodBeat.i(203740);
-    szg = new a((byte)0);
-    j.a locala = com.tencent.mm.plugin.finder.conv.j.rLP;
+    AppMethodBeat.i(204307);
+    sJX = new a((byte)0);
+    j.a locala = com.tencent.mm.plugin.finder.conv.j.rUc;
     SQL_CREATE = new String[] { com.tencent.mm.sdk.e.j.getCreateSQLs(com.tencent.mm.plugin.finder.conv.j.access$getInfo$cp(), "FinderSessionInfo") };
-    AppMethodBeat.o(203740);
+    AppMethodBeat.o(204307);
   }
   
   public w(e parame)
   {
     super(parame, com.tencent.mm.plugin.finder.conv.j.access$getInfo$cp(), "FinderSessionInfo", ck.INDEX_CREATE);
-    AppMethodBeat.i(203739);
+    AppMethodBeat.i(204306);
     this.db = parame;
-    this.sze = new ConcurrentHashMap();
-    this.szf = new ConcurrentHashMap();
-    AppMethodBeat.o(203739);
+    this.sJV = new ConcurrentHashMap();
+    this.sJW = new ConcurrentHashMap();
+    AppMethodBeat.o(204306);
   }
   
   /* Error */
-  private final com.tencent.mm.plugin.finder.conv.j aiv(String paramString)
+  private final com.tencent.mm.plugin.finder.conv.j ajs(String paramString)
   {
     // Byte code:
     //   0: aconst_null
@@ -75,7 +75,7 @@ public final class w
     //   50: istore_2
     //   51: goto -21 -> 30
     //   54: aload_0
-    //   55: getfield 124	com/tencent/mm/plugin/finder/storage/w:sze	Ljava/util/concurrent/ConcurrentHashMap;
+    //   55: getfield 124	com/tencent/mm/plugin/finder/storage/w:sJV	Ljava/util/concurrent/ConcurrentHashMap;
     //   58: aload_1
     //   59: invokevirtual 142	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
     //   62: checkcast 77	com/tencent/mm/plugin/finder/conv/j
@@ -116,7 +116,7 @@ public final class w
     //   147: aload 7
     //   149: invokevirtual 177	com/tencent/mm/plugin/finder/conv/j:convertFrom	(Landroid/database/Cursor;)V
     //   152: aload 5
-    //   154: getfield 126	com/tencent/mm/plugin/finder/storage/w:szf	Ljava/util/concurrent/ConcurrentHashMap;
+    //   154: getfield 126	com/tencent/mm/plugin/finder/storage/w:sJW	Ljava/util/concurrent/ConcurrentHashMap;
     //   157: checkcast 179	java/util/Map
     //   160: astore 7
     //   162: aload 6
@@ -131,7 +131,7 @@ public final class w
     //   182: invokeinterface 192 3 0
     //   187: pop
     //   188: aload 5
-    //   190: getfield 124	com/tencent/mm/plugin/finder/storage/w:sze	Ljava/util/concurrent/ConcurrentHashMap;
+    //   190: getfield 124	com/tencent/mm/plugin/finder/storage/w:sJV	Ljava/util/concurrent/ConcurrentHashMap;
     //   193: checkcast 179	java/util/Map
     //   196: aload_1
     //   197: aload 6
@@ -144,7 +144,7 @@ public final class w
     //   213: invokestatic 98	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   216: aload 6
     //   218: areturn
-    //   219: getstatic 203	d/z:MKo	Ld/z;
+    //   219: getstatic 203	d/z:Nhr	Ld/z;
     //   222: astore_1
     //   223: aload 4
     //   225: aconst_null
@@ -195,7 +195,7 @@ public final class w
   
   public final void a(String paramString1, String paramString2, int paramInt1, int paramInt2, b paramb, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(203737);
+    AppMethodBeat.i(204304);
     p.h(paramString1, "sessionId");
     p.h(paramString2, "talker");
     p.h(paramb, "source");
@@ -203,41 +203,41 @@ public final class w
     ((com.tencent.mm.plugin.finder.conv.j)localObject).field_sessionId = paramString1;
     ((com.tencent.mm.plugin.finder.conv.j)localObject).field_talker = paramString2;
     ((com.tencent.mm.plugin.finder.conv.j)localObject).field_type = paramInt1;
-    ((com.tencent.mm.plugin.finder.conv.j)localObject).field_updateTime = cf.aCM();
-    ((com.tencent.mm.plugin.finder.conv.j)localObject).field_selfUsername = u.aAu();
+    ((com.tencent.mm.plugin.finder.conv.j)localObject).field_updateTime = ch.aDc();
+    ((com.tencent.mm.plugin.finder.conv.j)localObject).field_selfUsername = v.aAK();
     ((com.tencent.mm.plugin.finder.conv.j)localObject).field_actionPermission = paramInt2;
     ((com.tencent.mm.plugin.finder.conv.j)localObject).field_rejectMsg = paramInt3;
     ((com.tencent.mm.plugin.finder.conv.j)localObject).field_disableSendMsg = paramInt4;
-    if (am.ail(paramString2))
+    if (an.aji(paramString2))
     {
       paramString1 = (Throwable)new RuntimeException(paramString2 + " is invalid");
-      AppMethodBeat.o(203737);
+      AppMethodBeat.o(204304);
       throw paramString1;
     }
     boolean bool = replace((com.tencent.mm.sdk.e.c)localObject, false);
     if (bool)
     {
-      this.sze.remove(paramString2);
-      this.szf.remove(paramString1);
+      this.sJV.remove(paramString2);
+      this.sJW.remove(paramString1);
       doNotify(((com.tencent.mm.plugin.finder.conv.j)localObject).field_sessionId);
     }
-    if (paramb == b.szk)
+    if (paramb == b.sKb)
     {
       localObject = ((PluginFinder)g.ad(PluginFinder.class)).getConversationStorage();
-      com.tencent.mm.plugin.finder.conv.c localc = ((d)localObject).aiq(paramString1);
+      com.tencent.mm.plugin.finder.conv.c localc = ((d)localObject).ajn(paramString1);
       localc.field_talker = paramString2;
       localc.field_actionPermission = paramInt2;
       localc.field_type = paramInt1;
       if (!((d)localObject).a(localc, false)) {
-        ad.e("Finder.SessionStorage", "[replaceSessionInfo] fail! sessionId=".concat(String.valueOf(paramString1)));
+        ae.e("Finder.SessionStorage", "[replaceSessionInfo] fail! sessionId=".concat(String.valueOf(paramString1)));
       }
     }
-    ad.i("Finder.SessionStorage", "[replaceSessionInfo] source=" + paramb + ", ret=" + bool + ", sessionId=" + paramString1 + ", talker=" + paramString2 + ", actionPermission=" + paramInt2 + ", type=" + paramInt1);
-    AppMethodBeat.o(203737);
+    ae.i("Finder.SessionStorage", "[replaceSessionInfo] source=" + paramb + ", ret=" + bool + ", sessionId=" + paramString1 + ", talker=" + paramString2 + ", actionPermission=" + paramInt2 + ", type=" + paramInt1);
+    AppMethodBeat.o(204304);
   }
   
   /* Error */
-  public final com.tencent.mm.plugin.finder.conv.j aiw(String paramString)
+  public final com.tencent.mm.plugin.finder.conv.j ajt(String paramString)
   {
     // Byte code:
     //   0: aconst_null
@@ -268,7 +268,7 @@ public final class w
     //   50: istore_2
     //   51: goto -22 -> 29
     //   54: aload_0
-    //   55: getfield 126	com/tencent/mm/plugin/finder/storage/w:szf	Ljava/util/concurrent/ConcurrentHashMap;
+    //   55: getfield 126	com/tencent/mm/plugin/finder/storage/w:sJW	Ljava/util/concurrent/ConcurrentHashMap;
     //   58: aload_1
     //   59: invokevirtual 142	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
     //   62: checkcast 77	com/tencent/mm/plugin/finder/conv/j
@@ -310,7 +310,7 @@ public final class w
     //   148: aload_3
     //   149: aload 7
     //   151: invokevirtual 177	com/tencent/mm/plugin/finder/conv/j:convertFrom	(Landroid/database/Cursor;)V
-    //   154: getstatic 203	d/z:MKo	Ld/z;
+    //   154: getstatic 203	d/z:Nhr	Ld/z;
     //   157: astore 7
     //   159: aload 5
     //   161: aconst_null
@@ -321,14 +321,14 @@ public final class w
     //   170: lcmp
     //   171: ifle +52 -> 223
     //   174: aload 6
-    //   176: getfield 126	com/tencent/mm/plugin/finder/storage/w:szf	Ljava/util/concurrent/ConcurrentHashMap;
+    //   176: getfield 126	com/tencent/mm/plugin/finder/storage/w:sJW	Ljava/util/concurrent/ConcurrentHashMap;
     //   179: checkcast 179	java/util/Map
     //   182: aload_1
     //   183: aload_3
     //   184: invokeinterface 192 3 0
     //   189: pop
     //   190: aload 6
-    //   192: getfield 124	com/tencent/mm/plugin/finder/storage/w:sze	Ljava/util/concurrent/ConcurrentHashMap;
+    //   192: getfield 124	com/tencent/mm/plugin/finder/storage/w:sJV	Ljava/util/concurrent/ConcurrentHashMap;
     //   195: checkcast 179	java/util/Map
     //   198: astore_1
     //   199: aload_3
@@ -384,10 +384,10 @@ public final class w
     //   154	159	255	finally
   }
   
-  public final String aix(String paramString)
+  public final String aju(String paramString)
   {
-    AppMethodBeat.i(203735);
-    paramString = aiv(paramString);
+    AppMethodBeat.i(204302);
+    paramString = ajs(paramString);
     if (paramString != null)
     {
       String str = paramString.field_sessionId;
@@ -398,56 +398,56 @@ public final class w
     {
       paramString = "";
     }
-    AppMethodBeat.o(203735);
+    AppMethodBeat.o(204302);
     return paramString;
   }
   
-  public final String aiy(String paramString)
+  public final String ajv(String paramString)
   {
-    AppMethodBeat.i(203736);
-    String str = aiw(paramString).field_talker;
+    AppMethodBeat.i(204303);
+    String str = ajt(paramString).field_talker;
     paramString = str;
     if (str == null) {
       paramString = "";
     }
-    AppMethodBeat.o(203736);
+    AppMethodBeat.o(204303);
     return paramString;
   }
   
-  public final void dp(String paramString, int paramInt)
+  public final void du(String paramString, int paramInt)
   {
-    AppMethodBeat.i(203738);
+    AppMethodBeat.i(204305);
     p.h(paramString, "sessionId");
-    paramString = aiw(paramString);
+    paramString = ajt(paramString);
     paramString.field_rejectMsg = paramInt;
     if (updateNotify((com.tencent.mm.sdk.e.c)paramString, false, new String[] { null }))
     {
-      this.sze.remove(paramString.field_talker);
-      this.szf.remove(paramString.field_sessionId);
+      this.sJV.remove(paramString.field_talker);
+      this.sJW.remove(paramString.field_sessionId);
       doNotify(paramString.field_sessionId);
     }
-    AppMethodBeat.o(203738);
+    AppMethodBeat.o(204305);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/storage/FinderSessionInfoStorage$Companion;", "", "()V", "SQL_CREATE", "", "", "kotlin.jvm.PlatformType", "getSQL_CREATE", "()[Ljava/lang/String;", "[Ljava/lang/String;", "TABLE", "TAG", "plugin-finder_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/storage/FinderSessionInfoStorage$Companion;", "", "()V", "SQL_CREATE", "", "", "kotlin.jvm.PlatformType", "getSQL_CREATE", "()[Ljava/lang/String;", "[Ljava/lang/String;", "TABLE", "TAG", "plugin-finder_release"})
   public static final class a {}
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/storage/FinderSessionInfoStorage$ReplaceSource;", "", "(Ljava/lang/String;I)V", "RECEIVE", "GET_SESSION_ID", "SELF_REPLY", "FOR_TEST", "plugin-finder_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/storage/FinderSessionInfoStorage$ReplaceSource;", "", "(Ljava/lang/String;I)V", "RECEIVE", "GET_SESSION_ID", "SELF_REPLY", "FOR_TEST", "plugin-finder_release"})
   public static enum b
   {
     static
     {
-      AppMethodBeat.i(203730);
+      AppMethodBeat.i(204297);
       b localb1 = new b("RECEIVE", 0);
-      szh = localb1;
+      sJY = localb1;
       b localb2 = new b("GET_SESSION_ID", 1);
-      szi = localb2;
+      sJZ = localb2;
       b localb3 = new b("SELF_REPLY", 2);
-      szj = localb3;
+      sKa = localb3;
       b localb4 = new b("FOR_TEST", 3);
-      szk = localb4;
-      szl = new b[] { localb1, localb2, localb3, localb4 };
-      AppMethodBeat.o(203730);
+      sKb = localb4;
+      sKc = new b[] { localb1, localb2, localb3, localb4 };
+      AppMethodBeat.o(204297);
     }
     
     private b() {}

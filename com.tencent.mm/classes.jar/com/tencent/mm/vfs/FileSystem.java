@@ -3,7 +3,6 @@ package com.tencent.mm.vfs;
 import android.os.CancellationSignal;
 import android.os.ParcelFileDescriptor;
 import android.os.Parcelable;
-import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.nio.channels.ByteChannel;
@@ -14,103 +13,58 @@ import java.util.Map;
 public abstract interface FileSystem
   extends Parcelable
 {
-  public abstract boolean CA(String paramString);
-  
-  public abstract void a(CancellationSignal paramCancellationSignal);
-  
-  public abstract boolean a(String paramString1, FileSystem paramFileSystem, String paramString2);
-  
-  public abstract ReadableByteChannel aYb(String paramString);
-  
-  public abstract ByteChannel aYc(String paramString);
-  
-  public abstract b aYd(String paramString);
-  
-  public abstract boolean aYe(String paramString);
-  
-  public abstract a aYf(String paramString);
-  
-  public abstract boolean aYg(String paramString);
-  
-  public abstract void bY(Map<String, String> paramMap);
-  
-  public abstract long c(String paramString1, FileSystem paramFileSystem, String paramString2);
-  
-  public abstract WritableByteChannel cW(String paramString, boolean paramBoolean);
-  
-  public abstract OutputStream cX(String paramString, boolean paramBoolean);
-  
-  public abstract Iterable<a> cY(String paramString, boolean paramBoolean);
-  
-  public abstract boolean cZ(String paramString, boolean paramBoolean);
-  
-  public abstract boolean cn(String paramString, long paramLong);
-  
-  public abstract String da(String paramString, boolean paramBoolean);
-  
-  public abstract int fOp();
-  
-  public abstract ParcelFileDescriptor mt(String paramString1, String paramString2);
-  
-  public abstract InputStream openRead(String paramString);
+  public abstract b cd(Map<String, String> paramMap);
   
   public static final class a
   {
-    public final String HZk;
-    public final long LjJ;
-    public final long LjK;
-    public final boolean LjL;
-    final FileSystem LjM;
-    public final String name;
-    public final long size;
-    
-    public a(FileSystem paramFileSystem, String paramString1, String paramString2, long paramLong1, long paramLong2, long paramLong3, boolean paramBoolean)
-    {
-      this.LjM = paramFileSystem;
-      this.HZk = paramString1;
-      this.name = paramString2;
-      this.size = paramLong1;
-      this.LjJ = paramLong2;
-      this.LjK = paramLong3;
-      this.LjL = paramBoolean;
-    }
-    
-    public final boolean delete()
-    {
-      AppMethodBeat.i(13102);
-      if (this.LjL)
-      {
-        bool = this.LjM.cZ(this.HZk, false);
-        AppMethodBeat.o(13102);
-        return bool;
-      }
-      boolean bool = this.LjM.CA(this.HZk);
-      AppMethodBeat.o(13102);
-      return bool;
-    }
-    
-    public final String toString()
-    {
-      AppMethodBeat.i(13103);
-      String str = this.HZk + " -> " + this.LjM.toString();
-      if (this.LjL)
-      {
-        str = "[DIR] ".concat(String.valueOf(str));
-        AppMethodBeat.o(13103);
-        return str;
-      }
-      AppMethodBeat.o(13103);
-      return str;
-    }
+    public long IAg;
+    public long IAi;
+    public long IAj;
+    public long LGf;
+    public long bGr;
   }
   
-  public static final class b
+  public static abstract interface b
   {
-    public long IfV;
-    public long IfX;
-    public long IfY;
-    public long LjN;
-    public long bGr;
+    public abstract boolean Dc(String paramString);
+    
+    public abstract void a(CancellationSignal paramCancellationSignal);
+    
+    public abstract boolean a(String paramString1, b paramb, String paramString2);
+    
+    public abstract ReadableByteChannel aZD(String paramString);
+    
+    public abstract ByteChannel aZE(String paramString);
+    
+    public abstract FileSystem.a aZF(String paramString);
+    
+    public abstract boolean aZG(String paramString);
+    
+    public abstract c aZH(String paramString);
+    
+    public abstract boolean aZI(String paramString);
+    
+    public abstract long c(String paramString1, b paramb, String paramString2);
+    
+    public abstract boolean cp(String paramString, long paramLong);
+    
+    public abstract WritableByteChannel da(String paramString, boolean paramBoolean);
+    
+    public abstract OutputStream db(String paramString, boolean paramBoolean);
+    
+    public abstract Iterable<c> dc(String paramString, boolean paramBoolean);
+    
+    public abstract boolean dd(String paramString, boolean paramBoolean);
+    
+    public abstract String de(String paramString, boolean paramBoolean);
+    
+    public abstract FileSystem fSK();
+    
+    public abstract int fSL();
+    
+    public abstract ParcelFileDescriptor mA(String paramString1, String paramString2);
+    
+    public abstract InputStream openRead(String paramString);
   }
 }
 

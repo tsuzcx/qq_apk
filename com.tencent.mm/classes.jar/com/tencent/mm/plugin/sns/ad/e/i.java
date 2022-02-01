@@ -1,49 +1,112 @@
 package com.tencent.mm.plugin.sns.ad.e;
 
-import android.text.TextUtils;
+import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.modelsns.g;
+import com.tencent.mm.plugin.sns.model.ah;
+import com.tencent.mm.plugin.sns.storage.e;
+import com.tencent.mm.plugin.sns.storage.f;
+import com.tencent.mm.plugin.sns.storage.q;
+import com.tencent.mm.protocal.protobuf.TimeLineObject;
+import com.tencent.mm.protocal.protobuf.djc;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import java.io.IOException;
 
 public final class i
 {
-  public static h.b PE(int paramInt)
+  public static String a(long paramLong, Object... paramVarArgs)
   {
-    AppMethodBeat.i(197711);
-    Object localObject = "1";
-    if (paramInt == 0) {
-      localObject = "0";
-    }
-    localObject = new a((String)localObject, (byte)0);
-    AppMethodBeat.o(197711);
-    return localObject;
+    AppMethodBeat.i(94986);
+    ah.dXy();
+    paramVarArgs = new StringBuilder(l.u(paramVarArgs));
+    a(paramLong, paramVarArgs);
+    paramVarArgs = paramVarArgs.toString();
+    AppMethodBeat.o(94986);
+    return paramVarArgs;
   }
   
-  static final class a
-    extends h.a
+  public static void a(long paramLong, StringBuilder paramStringBuilder)
   {
-    private String mValue;
-    
-    private a(String paramString)
+    AppMethodBeat.i(94987);
+    Object localObject = ah.dXH().Ax(paramLong);
+    if (localObject != null)
     {
-      this.mValue = paramString;
-    }
-    
-    public final String dSj()
-    {
-      return "ONLINE_FILE_COPY_AT_LANDING";
-    }
-    
-    public final String dSk()
-    {
-      AppMethodBeat.i(197710);
-      if (TextUtils.isEmpty(this.mValue))
+      localObject = ((e)localObject).ebP();
+      if (localObject != null)
       {
-        AppMethodBeat.o(197710);
-        return "";
+        com.tencent.mm.modelstat.p.a(((TimeLineObject)localObject).AiG, paramStringBuilder);
+        AppMethodBeat.o(94987);
+        return;
       }
-      String str = this.mValue;
-      AppMethodBeat.o(197710);
-      return str;
+      ae.v("SnsAdExtUtil", "l timeLineObject null, snsId %d", new Object[] { Long.valueOf(paramLong) });
+      paramStringBuilder.append(",,");
+      AppMethodBeat.o(94987);
+      return;
     }
+    ae.v("SnsAdExtUtil", "l snsInfo null, snsId %d", new Object[] { Long.valueOf(paramLong) });
+    paramStringBuilder.append(",,");
+    AppMethodBeat.o(94987);
+  }
+  
+  public static void a(String paramString, g paramg)
+  {
+    AppMethodBeat.i(94985);
+    Object localObject = ah.dXE().aBq(paramString);
+    if (localObject != null)
+    {
+      localObject = ((com.tencent.mm.plugin.sns.storage.p)localObject).ebP();
+      if (localObject != null)
+      {
+        com.tencent.mm.modelstat.p.a(((TimeLineObject)localObject).AiG, paramg);
+        AppMethodBeat.o(94985);
+        return;
+      }
+      ae.v("SnsAdExtUtil", "timeLineObject null, snsId %s", new Object[] { paramString });
+      AppMethodBeat.o(94985);
+      return;
+    }
+    ae.v("SnsAdExtUtil", "snsInfo null, snsId %s", new Object[] { paramString });
+    AppMethodBeat.o(94985);
+  }
+  
+  private static String ayV(String paramString)
+  {
+    AppMethodBeat.i(94989);
+    if (bu.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(94989);
+      return "";
+    }
+    paramString = Base64.decode(paramString, 0);
+    djc localdjc = new djc();
+    try
+    {
+      localdjc.parseFrom(paramString);
+      paramString = com.tencent.mm.modelstat.p.a(localdjc.HQJ);
+      AppMethodBeat.o(94989);
+      return paramString;
+    }
+    catch (IOException paramString)
+    {
+      ae.e("SnsAdExtUtil", "", new Object[] { paramString });
+      AppMethodBeat.o(94989);
+    }
+    return "";
+  }
+  
+  public static String b(TimeLineObject paramTimeLineObject)
+  {
+    AppMethodBeat.i(94988);
+    if (paramTimeLineObject != null)
+    {
+      paramTimeLineObject = ayV(paramTimeLineObject.AiG);
+      AppMethodBeat.o(94988);
+      return paramTimeLineObject;
+    }
+    ae.v("SnsAdExtUtil", "getSnsStatExt timeLineObject null");
+    AppMethodBeat.o(94988);
+    return null;
   }
 }
 

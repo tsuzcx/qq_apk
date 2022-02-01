@@ -19,10 +19,10 @@ public final class g
   public final void a(Context paramContext, com.tencent.mm.plugin.webview.luggage.g paramg)
   {
     AppMethodBeat.i(78695);
-    if ((!paramg.ePd()) && (!paramg.chm.Ce().BX())) {
+    if ((!paramg.eSP()) && (!paramg.chm.Ch().BY())) {
       ((Activity)paramg.mContext).finish();
     }
-    com.tencent.mm.plugin.report.service.g.yhR.dD(982, 11);
+    com.tencent.mm.plugin.report.service.g.yxI.dD(982, 11);
     AppMethodBeat.o(78695);
   }
   

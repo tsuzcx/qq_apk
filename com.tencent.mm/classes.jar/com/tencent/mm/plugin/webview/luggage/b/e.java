@@ -23,7 +23,7 @@ public final class e
     localIntent.putExtra("key_fav_scene", 2);
     localIntent.putExtra("key_fav_item_id", paramg.mParams.getLong("fav_local_id", -1L));
     b.b(paramContext, ".ui.FavTagEditUI", localIntent);
-    com.tencent.mm.plugin.report.service.g.yhR.dD(982, 1);
+    com.tencent.mm.plugin.report.service.g.yxI.dD(982, 1);
     AppMethodBeat.o(78689);
   }
   

@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.readerapp.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.pt;
+import com.tencent.mm.g.a.pu;
 import com.tencent.mm.sdk.b.c;
 
 public final class d
-  extends c<pt>
+  extends c<pu>
 {
   public d()
   {
     AppMethodBeat.i(161675);
-    this.__eventId = pt.class.getName().hashCode();
+    this.__eventId = pu.class.getName().hashCode();
     AppMethodBeat.o(161675);
   }
 }

@@ -12,8 +12,8 @@ import com.tencent.xweb.z;
 public class MMWebViewWithJsApi
   extends MMWebView
 {
-  private k EqT;
-  private boolean EqU;
+  private k EJj;
+  private boolean EJk;
   
   public MMWebViewWithJsApi(Context paramContext)
   {
@@ -29,16 +29,16 @@ public class MMWebViewWithJsApi
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(82238);
-    this.EqU = true;
-    fLy();
+    this.EJk = true;
+    fPS();
     getSettings().setJavaScriptEnabled(true);
-    getSettings().gbd();
+    getSettings().gfF();
     setWebChromeClient(new i(this));
     setWebViewClient(new k(this));
     paramContext = getSettings().getUserAgentString();
-    if (!x.aNE(paramContext))
+    if (!x.aPb(paramContext))
     {
-      paramContext = x.bW(getContext(), paramContext);
+      paramContext = x.bX(getContext(), paramContext);
       getSettings().setUserAgentString(paramContext);
     }
     AppMethodBeat.o(82238);
@@ -46,8 +46,8 @@ public class MMWebViewWithJsApi
   
   public f getJsapi()
   {
-    if (this.EqT != null) {
-      return this.EqT.Eiv;
+    if (this.EJj != null) {
+      return this.EJj.EAz;
     }
     return null;
   }
@@ -55,10 +55,10 @@ public class MMWebViewWithJsApi
   public void loadData(String paramString1, String paramString2, String paramString3)
   {
     AppMethodBeat.i(82241);
-    if (this.EqT != null)
+    if (this.EJj != null)
     {
-      this.EqT.vq(true);
-      this.EqT.aIZ("");
+      this.EJj.vz(true);
+      this.EJj.aKs("");
     }
     super.loadData(paramString1, paramString2, paramString3);
     AppMethodBeat.o(82241);
@@ -67,10 +67,10 @@ public class MMWebViewWithJsApi
   public void loadDataWithBaseURL(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
   {
     AppMethodBeat.i(82242);
-    if (this.EqT != null)
+    if (this.EJj != null)
     {
-      this.EqT.vq(true);
-      this.EqT.aIZ("");
+      this.EJj.vz(true);
+      this.EJj.aKs("");
     }
     super.loadDataWithBaseURL(paramString1, paramString2, paramString3, paramString4, paramString5);
     AppMethodBeat.o(82242);
@@ -79,10 +79,10 @@ public class MMWebViewWithJsApi
   public void loadUrl(String paramString)
   {
     AppMethodBeat.i(82243);
-    if (this.EqT != null)
+    if (this.EJj != null)
     {
-      this.EqT.vq(false);
-      if (this.EqT.aIZ(paramString)) {}
+      this.EJj.vz(false);
+      if (this.EJj.aKs(paramString)) {}
     }
     else
     {
@@ -95,15 +95,15 @@ public class MMWebViewWithJsApi
   {
     AppMethodBeat.i(82240);
     super.onDetachedFromWindow();
-    if ((this.EqT != null) && (this.EqU)) {
-      this.EqT.cleanup();
+    if ((this.EJj != null) && (this.EJk)) {
+      this.EJj.cleanup();
     }
     AppMethodBeat.o(82240);
   }
   
   public void setCleanOnDetached(boolean paramBoolean)
   {
-    this.EqU = paramBoolean;
+    this.EJk = paramBoolean;
   }
   
   public void setWebViewClient(ac paramac)
@@ -112,28 +112,28 @@ public class MMWebViewWithJsApi
     super.setWebViewClient(paramac);
     if ((paramac instanceof k))
     {
-      this.EqT = ((k)paramac);
+      this.EJj = ((k)paramac);
       AppMethodBeat.o(82239);
       return;
     }
-    this.EqT = null;
+    this.EJj = null;
     AppMethodBeat.o(82239);
   }
   
   public static final class a
   {
-    public static MMWebViewWithJsApi gY(Context paramContext)
+    public static MMWebViewWithJsApi he(Context paramContext)
     {
-      AppMethodBeat.i(221664);
-      paramContext = gZ(paramContext);
-      AppMethodBeat.o(221664);
+      AppMethodBeat.i(224335);
+      paramContext = hf(paramContext);
+      AppMethodBeat.o(224335);
       return paramContext;
     }
     
-    public static MMWebViewWithJsApi gZ(Context paramContext)
+    public static MMWebViewWithJsApi hf(Context paramContext)
     {
       AppMethodBeat.i(82237);
-      MMWebViewWithJsApi.gX(paramContext);
+      MMWebViewWithJsApi.hd(paramContext);
       paramContext = new MMWebViewWithJsApi(paramContext);
       MMWebViewWithJsApi.b(paramContext);
       AppMethodBeat.o(82237);

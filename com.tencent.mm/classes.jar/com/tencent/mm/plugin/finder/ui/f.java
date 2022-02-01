@@ -3,19 +3,19 @@ package com.tencent.mm.plugin.finder.ui;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/ui/SettingHelper;", "", "()V", "ChoiceItem", "Companion", "DebugBoxPref", "DebugChoicePref", "DebugClickPref", "IPreferenceEvent", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/ui/SettingHelper;", "", "()V", "ChoiceItem", "Companion", "DebugBoxPref", "DebugChoicePref", "DebugClickPref", "IPreferenceEvent", "plugin-finder_release"})
 public final class f
 {
-  public static final b sIm;
+  public static final b sTy;
   
   static
   {
-    AppMethodBeat.i(204272);
-    sIm = new b((byte)0);
-    AppMethodBeat.o(204272);
+    AppMethodBeat.i(204890);
+    sTy = new b((byte)0);
+    AppMethodBeat.o(204890);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/ui/SettingHelper$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/ui/SettingHelper$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
   public static final class b {}
 }
 

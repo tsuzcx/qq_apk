@@ -2,13 +2,13 @@ package com.tencent.mm.plugin.expt.hellhound.a.f.c;
 
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.boc;
-import com.tencent.mm.protocal.protobuf.dbi;
-import com.tencent.mm.protocal.protobuf.dbk;
-import com.tencent.mm.protocal.protobuf.dbl;
-import com.tencent.mm.protocal.protobuf.dbm;
-import com.tencent.mm.protocal.protobuf.dwc;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.bou;
+import com.tencent.mm.protocal.protobuf.dcc;
+import com.tencent.mm.protocal.protobuf.dce;
+import com.tencent.mm.protocal.protobuf.dcf;
+import com.tencent.mm.protocal.protobuf.dcg;
+import com.tencent.mm.protocal.protobuf.dwx;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -18,50 +18,50 @@ import java.util.Set;
 
 public final class k
 {
-  public static void a(boc paramboc)
+  public static void a(bou parambou)
   {
     AppMethodBeat.i(177391);
-    if (TextUtils.isEmpty(paramboc.dyV))
+    if (TextUtils.isEmpty(parambou.dAa))
     {
       AppMethodBeat.o(177391);
       return;
     }
-    Object localObject1 = paramboc.dyV;
-    dbl localdbl;
+    Object localObject1 = parambou.dAa;
+    dcf localdcf;
     if (!TextUtils.isEmpty((CharSequence)localObject1))
     {
-      localdbl = afi("mmkv_key_hellSPMatchinghe_");
-      if ((localdbl == null) || (localdbl.Hrf.isEmpty())) {
-        localdbl = null;
+      localdcf = age("mmkv_key_hellSPMatchinghe_");
+      if ((localdcf == null) || (localdcf.HKH.isEmpty())) {
+        localdcf = null;
       }
     }
-    while (localdbl == null)
+    while (localdcf == null)
     {
-      cqr();
+      crT();
       AppMethodBeat.o(177391);
       return;
-      if (!((String)localObject1).equals(((dbk)localdbl.Hrf.get(0)).dyV)) {
-        localdbl = null;
+      if (!((String)localObject1).equals(((dce)localdcf.HKH.get(0)).dAa)) {
+        localdcf = null;
       }
     }
-    ad.i("HABBYGE-MALI.SessionPageMatchingCache", "SessionPageMatchingCache, addPage: %s", new Object[] { paramboc.dyV });
-    localObject1 = com.tencent.mm.plugin.expt.hellhound.a.f.b.b.aeG(paramboc.dyV);
+    ae.i("HABBYGE-MALI.SessionPageMatchingCache", "SessionPageMatchingCache, addPage: %s", new Object[] { parambou.dAa });
+    localObject1 = com.tencent.mm.plugin.expt.hellhound.a.f.b.b.afC(parambou.dAa);
     if (localObject1 == null)
     {
       AppMethodBeat.o(177391);
       return;
     }
-    List localList = com.tencent.mm.plugin.expt.hellhound.a.f.b.b.aeP((String)localObject1);
+    List localList = com.tencent.mm.plugin.expt.hellhound.a.f.b.b.afL((String)localObject1);
     if ((localList == null) || (localList.isEmpty()))
     {
-      cqr();
+      crT();
       AppMethodBeat.o(177391);
       return;
     }
-    int i = localdbl.Hrf.size() - 1;
+    int i = localdcf.HKH.size() - 1;
     if (i >= 0)
     {
-      dbk localdbk = (dbk)localdbl.Hrf.get(i);
+      dce localdce = (dce)localdcf.HKH.get(i);
       Object localObject2 = null;
       Object localObject3 = localList.iterator();
       do
@@ -70,89 +70,89 @@ public final class k
         if (!((Iterator)localObject3).hasNext()) {
           break;
         }
-        localObject1 = (dbm)((Iterator)localObject3).next();
-      } while (((dbm)localObject1).Gsl != localdbk.Gsl);
+        localObject1 = (dcg)((Iterator)localObject3).next();
+      } while (((dcg)localObject1).GLJ != localdce.GLJ);
       if (localObject1 != null) {
-        if ((localdbk.index <= 0) || (localdbk.index >= ((dbm)localObject1).Hrg.size() - 1)) {
-          localdbl.Hrf.remove(i);
+        if ((localdce.index <= 0) || (localdce.index >= ((dcg)localObject1).HKI.size() - 1)) {
+          localdcf.HKH.remove(i);
         }
       }
       for (;;)
       {
         i -= 1;
         break;
-        localObject3 = com.tencent.mm.plugin.expt.hellhound.core.b.adx(((boc)localdbk.Hre.getLast()).dtL);
+        localObject3 = com.tencent.mm.plugin.expt.hellhound.core.b.aer(((bou)localdce.HKG.getLast()).duQ);
         if (localObject3 == null)
         {
-          localdbl.Hrf.remove(i);
+          localdcf.HKH.remove(i);
         }
         else
         {
-          localObject2 = com.tencent.mm.plugin.expt.hellhound.core.b.adx(paramboc.dtL);
+          localObject2 = com.tencent.mm.plugin.expt.hellhound.core.b.aer(parambou.duQ);
           if (((String)localObject3).equals(localObject2))
           {
-            ad.i("HABBYGE-MALI.SessionPageMatchingCache", "SessionPageMatchingCache, addPage, 7Event: %s", new Object[] { localObject2 });
+            ae.i("HABBYGE-MALI.SessionPageMatchingCache", "SessionPageMatchingCache, addPage, 7Event: %s", new Object[] { localObject2 });
           }
           else
           {
-            localObject3 = (dbi)((dbm)localObject1).Hrg.get(localdbk.index + 1);
+            localObject3 = (dcc)((dcg)localObject1).HKI.get(localdce.index + 1);
             if (localObject3 == null)
             {
-              localdbl.Hrf.remove(i);
+              localdcf.HKH.remove(i);
             }
             else
             {
-              localObject3 = com.tencent.mm.plugin.expt.hellhound.core.b.adx(((dbi)localObject3).dtL);
+              localObject3 = com.tencent.mm.plugin.expt.hellhound.core.b.aer(((dcc)localObject3).duQ);
               if (localObject3 == null)
               {
-                localdbl.Hrf.remove(i);
+                localdcf.HKH.remove(i);
               }
               else if (((String)localObject3).equals(localObject2))
               {
-                ad.i("HABBYGE-MALI.SessionPageMatchingCache", "SessionPageMatchingCache, addPage, real: %s", new Object[] { localObject2 });
-                localdbk.Hre.addLast(paramboc);
-                localdbk.index += 1;
-                if (localdbk.index == ((dbm)localObject1).Hrg.size() - 1)
+                ae.i("HABBYGE-MALI.SessionPageMatchingCache", "SessionPageMatchingCache, addPage, real: %s", new Object[] { localObject2 });
+                localdce.HKG.addLast(parambou);
+                localdce.index += 1;
+                if (localdce.index == ((dcg)localObject1).HKI.size() - 1)
                 {
-                  localdbk.index = -1;
-                  localdbk.Hrd = true;
-                  ad.i("HABBYGE-MALI.SessionPageMatchingCache", "move2SuccessCache: %s, %s, %s", new Object[] { localdbk.Gsk, localdbk.dyV, Long.valueOf(localdbk.Gsl) });
-                  localObject2 = afi("mmkv_key_hellSPMatchSuche_");
+                  localdce.index = -1;
+                  localdce.HKF = true;
+                  ae.i("HABBYGE-MALI.SessionPageMatchingCache", "move2SuccessCache: %s, %s, %s", new Object[] { localdce.GLI, localdce.dAa, Long.valueOf(localdce.GLJ) });
+                  localObject2 = age("mmkv_key_hellSPMatchSuche_");
                   localObject1 = localObject2;
                   if (localObject2 == null) {
-                    localObject1 = new dbl();
+                    localObject1 = new dcf();
                   }
-                  ((dbl)localObject1).Hrf.addLast(localdbk);
-                  a((dbl)localObject1, "mmkv_key_hellSPMatchSuche_");
-                  localdbl.Hrf.remove(i);
+                  ((dcf)localObject1).HKH.addLast(localdce);
+                  a((dcf)localObject1, "mmkv_key_hellSPMatchSuche_");
+                  localdcf.HKH.remove(i);
                 }
               }
               else
               {
-                ad.i("HABBYGE-MALI.SessionPageMatchingCache", "SessionPageMatchingCache, addPage, misMatch: %s, %s", new Object[] { localObject2, localObject3 });
-                localdbl.Hrf.remove(i);
+                ae.i("HABBYGE-MALI.SessionPageMatchingCache", "SessionPageMatchingCache, addPage, misMatch: %s, %s", new Object[] { localObject2, localObject3 });
+                localdcf.HKH.remove(i);
                 continue;
-                localdbl.Hrf.remove(i);
+                localdcf.HKH.remove(i);
               }
             }
           }
         }
       }
     }
-    if (localdbl.Hrf.isEmpty())
+    if (localdcf.HKH.isEmpty())
     {
-      cqr();
+      crT();
       AppMethodBeat.o(177391);
       return;
     }
-    a(localdbl, "mmkv_key_hellSPMatchinghe_");
+    a(localdcf, "mmkv_key_hellSPMatchinghe_");
     AppMethodBeat.o(177391);
   }
   
-  private static void a(dbl paramdbl, String paramString)
+  private static void a(dcf paramdcf, String paramString)
   {
     AppMethodBeat.i(177394);
-    if (paramdbl == null)
+    if (paramdcf == null)
     {
       AppMethodBeat.o(177394);
       return;
@@ -165,53 +165,53 @@ public final class k
     }
     try
     {
-      com.tencent.mm.plugin.expt.hellhound.core.a.b.p(paramString + i, paramdbl.toByteArray());
+      com.tencent.mm.plugin.expt.hellhound.core.a.b.p(paramString + i, paramdcf.toByteArray());
       AppMethodBeat.o(177394);
       return;
     }
-    catch (Exception paramdbl)
+    catch (Exception paramdcf)
     {
-      ad.printErrStackTrace("HABBYGE-MALI.SessionPageMatchingCache", paramdbl, "SessionPageMatchingCache.write: %s", new Object[] { paramdbl.getMessage() });
+      ae.printErrStackTrace("HABBYGE-MALI.SessionPageMatchingCache", paramdcf, "SessionPageMatchingCache.write: %s", new Object[] { paramdcf.getMessage() });
       AppMethodBeat.o(177394);
     }
   }
   
-  public static void a(dwc paramdwc, String paramString)
+  public static void a(dwx paramdwx, String paramString)
   {
-    AppMethodBeat.i(210466);
-    if ((paramdwc == null) || (paramString == null))
+    AppMethodBeat.i(196133);
+    if ((paramdwx == null) || (paramString == null))
     {
-      AppMethodBeat.o(210466);
+      AppMethodBeat.o(196133);
       return;
     }
-    a(paramdwc, paramString, afi("mmkv_key_hellSPMatchSuche_"), false);
-    a(paramdwc, paramString, afi("mmkv_key_hellSPMatchinghe_"), true);
-    AppMethodBeat.o(210466);
+    a(paramdwx, paramString, age("mmkv_key_hellSPMatchSuche_"), false);
+    a(paramdwx, paramString, age("mmkv_key_hellSPMatchinghe_"), true);
+    AppMethodBeat.o(196133);
   }
   
-  private static void a(dwc paramdwc, String paramString, dbl paramdbl, boolean paramBoolean)
+  private static void a(dwx paramdwx, String paramString, dcf paramdcf, boolean paramBoolean)
   {
-    AppMethodBeat.i(210467);
-    if ((paramdbl == null) || (paramdbl.Hrf.isEmpty()))
+    AppMethodBeat.i(196134);
+    if ((paramdcf == null) || (paramdcf.HKH.isEmpty()))
     {
-      AppMethodBeat.o(210467);
+      AppMethodBeat.o(196134);
       return;
     }
-    paramString = com.tencent.mm.plugin.expt.hellhound.core.b.adx(paramString);
-    Iterator localIterator = paramdbl.Hrf.iterator();
+    paramString = com.tencent.mm.plugin.expt.hellhound.core.b.aer(paramString);
+    Iterator localIterator = paramdcf.HKH.iterator();
     int i = 0;
     while (localIterator.hasNext())
     {
-      Object localObject = (dbk)localIterator.next();
-      if ((localObject != null) && (!((dbk)localObject).Hre.isEmpty()))
+      Object localObject = (dce)localIterator.next();
+      if ((localObject != null) && (!((dce)localObject).HKG.isEmpty()))
       {
-        localObject = (boc)((dbk)localObject).Hre.getLast();
+        localObject = (bou)((dce)localObject).HKG.getLast();
         if (localObject != null)
         {
-          String str = com.tencent.mm.plugin.expt.hellhound.core.b.adx(((boc)localObject).dtL);
+          String str = com.tencent.mm.plugin.expt.hellhound.core.b.aer(((bou)localObject).duQ);
           if ((str != null) && (str.equals(paramString)))
           {
-            ((boc)localObject).Gsf.add(paramdwc);
+            ((bou)localObject).GLD.add(paramdwx);
             i = 1;
           }
         }
@@ -221,16 +221,16 @@ public final class k
     {
       if (paramBoolean)
       {
-        a(paramdbl, "mmkv_key_hellSPMatchinghe_");
-        AppMethodBeat.o(210467);
+        a(paramdcf, "mmkv_key_hellSPMatchinghe_");
+        AppMethodBeat.o(196134);
         return;
       }
-      a(paramdbl, "mmkv_key_hellSPMatchSuche_");
+      a(paramdcf, "mmkv_key_hellSPMatchSuche_");
     }
-    AppMethodBeat.o(210467);
+    AppMethodBeat.o(196134);
   }
   
-  public static dbl afi(String paramString)
+  public static dcf age(String paramString)
   {
     AppMethodBeat.i(177395);
     int i = com.tencent.mm.plugin.expt.hellhound.core.b.getUin();
@@ -245,22 +245,22 @@ public final class k
       AppMethodBeat.o(177395);
       return null;
     }
-    dbl localdbl = new dbl();
+    dcf localdcf = new dcf();
     try
     {
-      localdbl.parseFrom(paramString);
+      localdcf.parseFrom(paramString);
       AppMethodBeat.o(177395);
-      return localdbl;
+      return localdcf;
     }
     catch (Exception paramString)
     {
-      ad.printErrStackTrace("HABBYGE-MALI.SessionPageMatchingCache", paramString, "SessionPageMatchingCache.read: %s", new Object[] { paramString.getMessage() });
+      ae.printErrStackTrace("HABBYGE-MALI.SessionPageMatchingCache", paramString, "SessionPageMatchingCache.read: %s", new Object[] { paramString.getMessage() });
       AppMethodBeat.o(177395);
     }
     return null;
   }
   
-  public static void cqr()
+  public static void crT()
   {
     AppMethodBeat.i(177392);
     int i = com.tencent.mm.plugin.expt.hellhound.core.b.getUin();
@@ -277,12 +277,12 @@ public final class k
     }
     catch (Exception localException)
     {
-      ad.printErrStackTrace("HABBYGE-MALI.SessionPageMatchingCache", localException, "SessionPageMatchingCache.reset: %s", new Object[] { localException.getMessage() });
+      ae.printErrStackTrace("HABBYGE-MALI.SessionPageMatchingCache", localException, "SessionPageMatchingCache.reset: %s", new Object[] { localException.getMessage() });
       AppMethodBeat.o(177392);
     }
   }
   
-  public static void cqs()
+  public static void crU()
   {
     AppMethodBeat.i(177393);
     int i = com.tencent.mm.plugin.expt.hellhound.core.b.getUin();
@@ -299,12 +299,12 @@ public final class k
     }
     catch (Exception localException)
     {
-      ad.printErrStackTrace("HABBYGE-MALI.SessionPageMatchingCache", localException, "SessionPageMatchingCache.reset: %s", new Object[] { localException.getMessage() });
+      ae.printErrStackTrace("HABBYGE-MALI.SessionPageMatchingCache", localException, "SessionPageMatchingCache.reset: %s", new Object[] { localException.getMessage() });
       AppMethodBeat.o(177393);
     }
   }
   
-  public static void j(Map<Long, dbk> paramMap, String paramString)
+  public static void j(Map<Long, dce> paramMap, String paramString)
   {
     AppMethodBeat.i(177390);
     if ((TextUtils.isEmpty(paramString)) || (paramMap.isEmpty()))
@@ -312,27 +312,27 @@ public final class k
       AppMethodBeat.o(177390);
       return;
     }
-    dbl localdbl = new dbl();
+    dcf localdcf = new dcf();
     paramMap = paramMap.entrySet().iterator();
     while (paramMap.hasNext())
     {
-      dbk localdbk = (dbk)((Map.Entry)paramMap.next()).getValue();
-      if ((localdbk.dyV.equals(paramString)) && (localdbk.index > 0)) {
-        localdbl.Hrf.addLast(localdbk);
+      dce localdce = (dce)((Map.Entry)paramMap.next()).getValue();
+      if ((localdce.dAa.equals(paramString)) && (localdce.index > 0)) {
+        localdcf.HKH.addLast(localdce);
       }
     }
-    if (localdbl.Hrf.isEmpty())
+    if (localdcf.HKH.isEmpty())
     {
       AppMethodBeat.o(177390);
       return;
     }
-    a(localdbl, "mmkv_key_hellSPMatchinghe_");
+    a(localdcf, "mmkv_key_hellSPMatchinghe_");
     AppMethodBeat.o(177390);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.hellhound.a.f.c.k
  * JD-Core Version:    0.7.0.1
  */

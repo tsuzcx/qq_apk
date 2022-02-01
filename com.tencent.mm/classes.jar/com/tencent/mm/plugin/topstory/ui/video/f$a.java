@@ -7,10 +7,10 @@ public enum f$a
   static
   {
     AppMethodBeat.i(126071);
-    Buj = new a("UNKNOWN", 0);
-    Buk = new a("MOBILE_NET", 1);
-    Bul = new a("NO_NET", 2);
-    Bum = new a[] { Buj, Buk, Bul };
+    BLH = new a("UNKNOWN", 0);
+    BLI = new a("MOBILE_NET", 1);
+    BLJ = new a("NO_NET", 2);
+    BLK = new a[] { BLH, BLI, BLJ };
     AppMethodBeat.o(126071);
   }
   
@@ -18,7 +18,7 @@ public enum f$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.ui.video.f.a
  * JD-Core Version:    0.7.0.1
  */

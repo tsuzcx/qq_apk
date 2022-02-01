@@ -14,7 +14,7 @@ public class TbsVideo
   public static boolean canUseTbsPlayer(Context paramContext)
   {
     AppMethodBeat.i(54558);
-    boolean bool = r.a(paramContext).a();
+    boolean bool = t.a(paramContext).a();
     AppMethodBeat.o(54558);
     return bool;
   }
@@ -22,7 +22,7 @@ public class TbsVideo
   public static boolean canUseYunbo(Context paramContext)
   {
     AppMethodBeat.i(54559);
-    if ((r.a(paramContext).a()) && (QbSdk.canUseVideoFeatrue(paramContext, 1)))
+    if ((t.a(paramContext).a()) && (QbSdk.canUseVideoFeatrue(paramContext, 1)))
     {
       AppMethodBeat.o(54559);
       return true;
@@ -56,8 +56,8 @@ public class TbsVideo
     paramString.setPackage(paramContext.getPackageName());
     paramString.putExtra("extraData", localBundle);
     paramString = new com.tencent.mm.hellhoundlib.b.a().bc(paramString);
-    com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramString.ahp(), "com/tencent/smtt/sdk/TbsVideo", "openVideo", "(Landroid/content/Context;Ljava/lang/String;Landroid/os/Bundle;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    paramContext.startActivity((Intent)paramString.mq(0));
+    com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramString.ahE(), "com/tencent/smtt/sdk/TbsVideo", "openVideo", "(Landroid/content/Context;Ljava/lang/String;Landroid/os/Bundle;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramContext.startActivity((Intent)paramString.mt(0));
     com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/smtt/sdk/TbsVideo", "openVideo", "(Landroid/content/Context;Ljava/lang/String;Landroid/os/Bundle;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     AppMethodBeat.o(54556);
   }
@@ -67,7 +67,7 @@ public class TbsVideo
     AppMethodBeat.i(54557);
     if (canUseYunbo(paramContext))
     {
-      boolean bool = r.a(paramContext).a(paramString, paramBundle, paramb);
+      boolean bool = t.a(paramContext).a(paramString, paramBundle, paramb);
       AppMethodBeat.o(54557);
       return bool;
     }

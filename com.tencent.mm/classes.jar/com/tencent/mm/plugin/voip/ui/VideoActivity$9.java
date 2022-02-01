@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.voip.ui;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.jy;
+import com.tencent.mm.g.a.jz;
 import com.tencent.mm.sdk.b.c;
 
 final class VideoActivity$9
-  extends c<jy>
+  extends c<jz>
 {
   VideoActivity$9(VideoActivity paramVideoActivity)
   {
     AppMethodBeat.i(161659);
-    this.__eventId = jy.class.getName().hashCode();
+    this.__eventId = jz.class.getName().hashCode();
     AppMethodBeat.o(161659);
   }
 }

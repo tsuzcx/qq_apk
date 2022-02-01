@@ -9,11 +9,11 @@ public abstract interface c
 {
   public abstract void af(Context paramContext, Intent paramIntent);
   
-  public abstract boolean eWr();
+  public abstract boolean fad();
   
-  public abstract boolean eWs();
+  public abstract boolean fae();
   
-  public abstract boolean eWt();
+  public abstract boolean faf();
 }
 
 

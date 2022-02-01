@@ -4,11 +4,11 @@ import android.os.Parcel;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ipcinvoker.k;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/appusage/QueryCall;", "Lcom/tencent/mm/ipcinvoker/IPCSyncInvokeTask;", "Lcom/tencent/mm/plugin/appbrand/appusage/QueryParams;", "Landroid/os/Parcel;", "()V", "invoke", "data", "plugin-appbrand-integration_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/appusage/QueryCall;", "Lcom/tencent/mm/ipcinvoker/IPCSyncInvokeTask;", "Lcom/tencent/mm/plugin/appbrand/appusage/QueryParams;", "Landroid/os/Parcel;", "()V", "invoke", "data", "plugin-appbrand-integration_release"})
 final class al
   implements k<QueryParams, Parcel>
 {
@@ -16,10 +16,10 @@ final class al
   {
     AppMethodBeat.i(50298);
     Parcel localParcel = Parcel.obtain();
-    if ((g.ajx()) && (paramQueryParams != null)) {}
+    if ((g.ajM()) && (paramQueryParams != null)) {}
     try
     {
-      localParcel.writeTypedList(((ah)g.ab(ah.class)).a(paramQueryParams.count, paramQueryParams.jQe, paramQueryParams.hQh));
+      localParcel.writeTypedList(((ah)g.ab(ah.class)).a(paramQueryParams.count, paramQueryParams.jTw, paramQueryParams.hSZ));
       p.g(localParcel, "Parcel.obtain().apply {\n…}\n            }\n        }");
       AppMethodBeat.o(50298);
       return localParcel;
@@ -28,7 +28,7 @@ final class al
     {
       for (;;)
       {
-        ad.e("MicroMsg.AppBrandCollectionStorageIPC", "QueryCall, writeTypedList e = ".concat(String.valueOf(paramQueryParams)));
+        ae.e("MicroMsg.AppBrandCollectionStorageIPC", "QueryCall, writeTypedList e = ".concat(String.valueOf(paramQueryParams)));
       }
     }
   }

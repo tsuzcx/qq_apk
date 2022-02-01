@@ -78,16 +78,16 @@ public class a
   
   private void o()
   {
-    AppMethodBeat.i(187393);
+    AppMethodBeat.i(221522);
     this.x = new c(true);
     this.C = new TXCYuvTextureRender();
     this.A = new c(false);
-    AppMethodBeat.o(187393);
+    AppMethodBeat.o(221522);
   }
   
   private boolean p()
   {
-    AppMethodBeat.i(187395);
+    AppMethodBeat.i(221524);
     for (;;)
     {
       Object localObject;
@@ -140,7 +140,7 @@ public class a
             if ((this.l == 1) && (this.x != null)) {
               a(localObject, this.x.a(), this.z, true);
             }
-            AppMethodBeat.o(187395);
+            AppMethodBeat.o(221524);
             return true;
           }
         }
@@ -158,7 +158,7 @@ public class a
       }
       finally
       {
-        AppMethodBeat.o(187395);
+        AppMethodBeat.o(221524);
       }
       label600:
       if (this.x != null)
@@ -382,13 +382,13 @@ public class a
   
   public Object b()
   {
-    AppMethodBeat.i(187392);
+    AppMethodBeat.i(221521);
     synchronized (this.u)
     {
       if (this.v != null)
       {
         localObject1 = this.v.a();
-        AppMethodBeat.o(187392);
+        AppMethodBeat.o(221521);
         return localObject1;
       }
       Object localObject1 = null;
@@ -474,7 +474,7 @@ public class a
   
   public void c(Object paramObject)
   {
-    AppMethodBeat.i(187394);
+    AppMethodBeat.i(221523);
     synchronized (this.u)
     {
       if (this.v == null)
@@ -484,7 +484,7 @@ public class a
         this.v.start();
         this.v.c();
         TXCLog.w("TXCVideoRender", "play:vrender: start render thread id " + getID() + ", glContext " + paramObject + ", " + this);
-        AppMethodBeat.o(187394);
+        AppMethodBeat.o(221523);
         return;
       }
       TXCLog.w("TXCVideoRender", "play:vrender: start render thread when running " + getID() + ", " + this);

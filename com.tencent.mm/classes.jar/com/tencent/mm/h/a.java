@@ -4,28 +4,28 @@ import android.content.Context;
 import android.content.DialogInterface.OnClickListener;
 import android.content.DialogInterface.OnDismissListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.base.h;
 
 public final class a
 {
   public String Title;
   public String desc;
-  public int dlp;
-  public c fHI;
+  public int dmr;
+  public c fJM;
   public String url;
   
-  public static a uz(String paramString)
+  public static a uU(String paramString)
   {
     AppMethodBeat.i(149961);
-    paramString = c.uB(paramString);
+    paramString = c.uW(paramString);
     if (paramString != null)
     {
       a locala = new a();
-      locala.fHI = paramString;
+      locala.fJM = paramString;
       locala.url = paramString.url;
       locala.desc = paramString.desc;
-      locala.dlp = paramString.dlp;
+      locala.dmr = paramString.dmr;
       locala.Title = paramString.Title;
       AppMethodBeat.o(149961);
       return locala;
@@ -38,37 +38,37 @@ public final class a
   {
     int i = 2131755835;
     AppMethodBeat.i(149962);
-    if ((this.dlp == 3) || (this.dlp == 4))
+    if ((this.dmr == 3) || (this.dmr == 4))
     {
-      String str3 = this.fHI.fHU;
-      String str4 = this.fHI.fHV;
+      String str3 = this.fJM.fJY;
+      String str4 = this.fJM.fJZ;
       String str1 = str3;
       String str2 = str4;
-      if (bt.isNullOrNil(str3))
+      if (bu.isNullOrNil(str3))
       {
         str1 = str3;
         str2 = str4;
-        if (bt.isNullOrNil(str4))
+        if (bu.isNullOrNil(str4))
         {
-          if (this.dlp == 3) {
+          if (this.dmr == 3) {
             i = 2131755939;
           }
           str1 = paramContext.getString(i);
-          if (this.dlp != 3) {
+          if (this.dmr != 3) {
             break label178;
           }
           i = 2131755831;
           str2 = paramContext.getString(i);
         }
       }
-      if ((bt.isNullOrNil(str1)) || (bt.isNullOrNil(str2)))
+      if ((bu.isNullOrNil(str1)) || (bu.isNullOrNil(str2)))
       {
         str3 = this.desc;
         str4 = this.Title;
-        if (bt.isNullOrNil(str1))
+        if (bu.isNullOrNil(str1))
         {
           label151:
-          if (!bt.isNullOrNil(str1)) {
+          if (!bu.isNullOrNil(str1)) {
             break label192;
           }
           label159:
@@ -90,13 +90,13 @@ public final class a
         h.e(paramContext, this.desc, this.Title, str1, str2, paramOnClickListener1, paramOnClickListener2);
       }
     }
-    if (this.dlp == 1)
+    if (this.dmr == 1)
     {
       h.a(paramContext, this.desc, this.Title, paramContext.getString(2131755835), true, paramOnClickListener1);
       AppMethodBeat.o(149962);
       return true;
     }
-    if (this.dlp == 5)
+    if (this.dmr == 5)
     {
       h.c(paramContext, this.desc, this.Title, true);
       AppMethodBeat.o(149962);

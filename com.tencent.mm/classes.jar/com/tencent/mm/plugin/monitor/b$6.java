@@ -2,10 +2,10 @@ package com.tencent.mm.plugin.monitor;
 
 import android.os.StatFs;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bi;
-import com.tencent.mm.storage.al;
-import com.tencent.mm.vfs.e;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bj;
+import com.tencent.mm.storage.am;
+import com.tencent.mm.vfs.k;
 import java.io.File;
 
 final class b$6
@@ -27,13 +27,13 @@ final class b$6
       long l6;
       try
       {
-        Object localObject1 = new e(al.IpN + "SdcardInfo.cfg");
-        Object localObject2 = com.tencent.mm.plugin.report.service.g.yhR;
-        if (((e)localObject1).exists())
+        Object localObject1 = new k(am.IKh + "SdcardInfo.cfg");
+        Object localObject2 = com.tencent.mm.plugin.report.service.g.yxI;
+        if (((k)localObject1).exists())
         {
           l1 = 10L;
           ((com.tencent.mm.plugin.report.service.g)localObject2).idkeyStat(340L, l1, 1L, true);
-          boolean bool1 = bi.flB();
+          boolean bool1 = bj.fpw();
           localObject2 = com.tencent.mm.compatible.util.g.getDataDirectory().getPath();
           String str1 = com.tencent.mm.compatible.util.g.getExternalStorageDirectory().getPath();
           Object localObject3 = new StatFs((String)localObject2);
@@ -56,11 +56,11 @@ final class b$6
           if (l8 > 0L) {
             i = Math.round((float)l9 * 100.0F / (float)l8);
           }
-          boolean bool2 = com.tencent.mm.loader.j.b.arP().equals(str1);
+          boolean bool2 = com.tencent.mm.loader.j.b.ase().equals(str1);
           if (bool2) {
             break label1230;
           }
-          localObject3 = new StatFs(com.tencent.mm.loader.j.b.arP());
+          localObject3 = new StatFs(com.tencent.mm.loader.j.b.ase());
           l5 = ((StatFs)localObject3).getBlockSize();
           l4 = ((StatFs)localObject3).getBlockCount();
           l2 = ((StatFs)localObject3).getAvailableBlocks();
@@ -72,28 +72,28 @@ final class b$6
           j = Math.round((float)l2 * 100.0F / (float)l4);
           l3 = l2;
           l2 = l6;
-          localObject3 = bi.aQL(com.tencent.mm.loader.j.b.arP());
-          String str2 = bi.aQL((String)localObject2);
-          Object localObject4 = com.tencent.mm.loader.j.b.arP();
-          if (((e)localObject1).exists())
+          localObject3 = bj.aSi(com.tencent.mm.loader.j.b.ase());
+          String str2 = bj.aSi((String)localObject2);
+          Object localObject4 = com.tencent.mm.loader.j.b.ase();
+          if (((k)localObject1).exists())
           {
             m = 1;
-            ad.i("MicroMsg.SubCoreBaseMonitor", "summerStorage [%s, %s, %s] [%s] [%b] [%d,%d,%d,%d,%d,%d] [%d,%d,%d,%d,%d,%d] [%b] [%d,%d,%d,%d,%d,%d], [%d][%s]", new Object[] { localObject2, str1, localObject4, localObject3, Boolean.valueOf(bool1), Long.valueOf(l12), Long.valueOf(l13), Long.valueOf(l14), Long.valueOf(l15), Long.valueOf(l16), Integer.valueOf(k), Long.valueOf(l7), Long.valueOf(l8), Long.valueOf(l9), Long.valueOf(l10), Long.valueOf(l11), Integer.valueOf(i), Boolean.valueOf(bool2), Long.valueOf(l5), Long.valueOf(l4), Long.valueOf(l3), Long.valueOf(l2), Long.valueOf(l1), Integer.valueOf(j), Integer.valueOf(m), str2 });
-            com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(340L, 0L, 1L, true);
-            localObject4 = com.tencent.mm.plugin.report.service.g.yhR;
+            ae.i("MicroMsg.SubCoreBaseMonitor", "summerStorage [%s, %s, %s] [%s] [%b] [%d,%d,%d,%d,%d,%d] [%d,%d,%d,%d,%d,%d] [%b] [%d,%d,%d,%d,%d,%d], [%d][%s]", new Object[] { localObject2, str1, localObject4, localObject3, Boolean.valueOf(bool1), Long.valueOf(l12), Long.valueOf(l13), Long.valueOf(l14), Long.valueOf(l15), Long.valueOf(l16), Integer.valueOf(k), Long.valueOf(l7), Long.valueOf(l8), Long.valueOf(l9), Long.valueOf(l10), Long.valueOf(l11), Integer.valueOf(i), Boolean.valueOf(bool2), Long.valueOf(l5), Long.valueOf(l4), Long.valueOf(l3), Long.valueOf(l2), Long.valueOf(l1), Integer.valueOf(j), Integer.valueOf(m), str2 });
+            com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(340L, 0L, 1L, true);
+            localObject4 = com.tencent.mm.plugin.report.service.g.yxI;
             if (!bool1) {
               continue;
             }
             l6 = 1L;
             ((com.tencent.mm.plugin.report.service.g)localObject4).idkeyStat(340L, l6, 1L, true);
-            localObject4 = com.tencent.mm.plugin.report.service.g.yhR;
+            localObject4 = com.tencent.mm.plugin.report.service.g.yxI;
             if (!bool2) {
               continue;
             }
             l6 = 3L;
             ((com.tencent.mm.plugin.report.service.g)localObject4).idkeyStat(340L, l6, 1L, true);
-            localObject4 = com.tencent.mm.plugin.report.service.g.yhR;
-            String str3 = com.tencent.mm.loader.j.b.arP();
+            localObject4 = com.tencent.mm.plugin.report.service.g.yxI;
+            String str3 = com.tencent.mm.loader.j.b.ase();
             if (!bool1) {
               continue;
             }
@@ -102,26 +102,26 @@ final class b$6
               continue;
             }
             n = 1;
-            if (!((e)localObject1).exists()) {
+            if (!((k)localObject1).exists()) {
               continue;
             }
             i1 = 1;
             ((com.tencent.mm.plugin.report.service.g)localObject4).f(11098, new Object[] { Integer.valueOf(5000), String.format("%s;%s;%s;%s;%d;%d;%d;%d;%d;%d;%d;%d;%d;%d;%d;%d;%d;%d;%d;%d;%d;%d;%d;%d;%d;%s", new Object[] { localObject2, str1, str3, localObject3, Integer.valueOf(m), Long.valueOf(l12), Long.valueOf(l13), Long.valueOf(l14), Long.valueOf(l15), Long.valueOf(l16), Integer.valueOf(k), Long.valueOf(l7), Long.valueOf(l8), Long.valueOf(l9), Long.valueOf(l10), Long.valueOf(l11), Integer.valueOf(i), Integer.valueOf(n), Long.valueOf(l5), Long.valueOf(l4), Long.valueOf(l3), Long.valueOf(l2), Long.valueOf(l1), Integer.valueOf(j), Integer.valueOf(i1), str2 }) });
-            com.tencent.mm.plugin.report.service.g.yhR.f(11098, new Object[] { Integer.valueOf(5001), (String)localObject2 + ";" + str2 });
-            com.tencent.mm.plugin.report.service.g.yhR.f(11098, new Object[] { Integer.valueOf(5002), com.tencent.mm.loader.j.b.arP() + ";" + (String)localObject3 });
-            localObject2 = com.tencent.mm.plugin.report.service.g.yhR;
-            if (!((e)localObject1).exists()) {
+            com.tencent.mm.plugin.report.service.g.yxI.f(11098, new Object[] { Integer.valueOf(5001), (String)localObject2 + ";" + str2 });
+            com.tencent.mm.plugin.report.service.g.yxI.f(11098, new Object[] { Integer.valueOf(5002), com.tencent.mm.loader.j.b.ase() + ";" + (String)localObject3 });
+            localObject2 = com.tencent.mm.plugin.report.service.g.yxI;
+            if (!((k)localObject1).exists()) {
               continue;
             }
             i = 1;
             ((com.tencent.mm.plugin.report.service.g)localObject2).f(11098, new Object[] { Integer.valueOf(5003), Integer.valueOf(i) });
-            localObject1 = com.tencent.mm.plugin.report.service.g.yhR;
+            localObject1 = com.tencent.mm.plugin.report.service.g.yxI;
             if (!bool1) {
               continue;
             }
             i = 1;
             ((com.tencent.mm.plugin.report.service.g)localObject1).f(11098, new Object[] { Integer.valueOf(5004), Integer.valueOf(i) });
-            com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(340L, 7L, 1L, true);
+            com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(340L, 7L, 1L, true);
             AppMethodBeat.o(51505);
           }
         }
@@ -150,8 +150,8 @@ final class b$6
       }
       catch (Exception localException)
       {
-        ad.printErrStackTrace("MicroMsg.SubCoreBaseMonitor", localException, "reportSDStatus err!", new Object[0]);
-        com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(340L, 8L, 1L, true);
+        ae.printErrStackTrace("MicroMsg.SubCoreBaseMonitor", localException, "reportSDStatus err!", new Object[0]);
+        com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(340L, 8L, 1L, true);
         AppMethodBeat.o(51505);
         return;
       }

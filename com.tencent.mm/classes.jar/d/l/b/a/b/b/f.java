@@ -7,26 +7,26 @@ public enum f
   static
   {
     AppMethodBeat.i(56847);
-    MUr = new f("CLASS", 0);
-    MUs = new f("INTERFACE", 1);
-    MUt = new f("ENUM_CLASS", 2);
-    MUu = new f("ENUM_ENTRY", 3);
-    MUv = new f("ANNOTATION_CLASS", 4);
-    MUw = new f("OBJECT", 5);
-    MUx = new f[] { MUr, MUs, MUt, MUu, MUv, MUw };
+    Nrw = new f("CLASS", 0);
+    Nrx = new f("INTERFACE", 1);
+    Nry = new f("ENUM_CLASS", 2);
+    Nrz = new f("ENUM_ENTRY", 3);
+    NrA = new f("ANNOTATION_CLASS", 4);
+    NrB = new f("OBJECT", 5);
+    NrC = new f[] { Nrw, Nrx, Nry, Nrz, NrA, NrB };
     AppMethodBeat.o(56847);
   }
   
   private f() {}
   
-  public final boolean giM()
+  public final boolean gno()
   {
-    return (this == MUw) || (this == MUu);
+    return (this == NrB) || (this == Nrz);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.b.f
  * JD-Core Version:    0.7.0.1
  */

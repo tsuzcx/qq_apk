@@ -3,49 +3,45 @@ package com.tencent.mm.modelstat;
 import android.app.Activity;
 import android.app.Application;
 import android.app.Application.ActivityLifecycleCallbacks;
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
-import android.os.SystemClock;
+import com.tencent.e.h;
+import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.e;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.sdk.platformtools.h;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.ui.MMActivity;
 import java.util.HashSet;
 
 public final class d
 {
-  private static d ioZ;
-  private a ioX;
-  private HashSet<String> ioY;
+  private static d irU;
+  private a irS;
+  private HashSet<String> irT;
   
   private d()
   {
     AppMethodBeat.i(151055);
-    this.ioX = new a();
-    this.ioY = new HashSet();
-    this.ioY.add("com.tencent.mm.ui.LauncherUI");
-    this.ioY.add("com.tencent.mm.plugin.profile.ui.ContactInfoUI");
-    this.ioY.add("com.tencent.mm.plugin.webview.ui.tools.WebViewUI");
-    this.ioY.add("com.tencent.mm.ui.conversation.BizConversationUI");
-    this.ioY.add("com.tencent.mm.ui.chatting.ChattingUI");
-    this.ioY.add("com.tencent.mm.plugin.label.ui.ContactLabelEditUI");
-    this.ioY.add("com.tencent.mm.plugin.appbrand.ui.AppBrandUI");
-    this.ioY.add("com.tencent.mm.plugin.appbrand.ui.AppBrandUI1");
-    this.ioY.add("com.tencent.mm.plugin.appbrand.ui.AppBrandUI2");
-    this.ioY.add("com.tencent.mm.plugin.appbrand.ui.AppBrandUI3");
-    this.ioY.add("com.tencent.mm.plugin.appbrand.ui.AppBrandUI4");
+    this.irS = new a();
+    this.irT = new HashSet();
+    this.irT.add("com.tencent.mm.ui.LauncherUI");
+    this.irT.add("com.tencent.mm.plugin.profile.ui.ContactInfoUI");
+    this.irT.add("com.tencent.mm.plugin.webview.ui.tools.WebViewUI");
+    this.irT.add("com.tencent.mm.ui.conversation.BizConversationUI");
+    this.irT.add("com.tencent.mm.ui.chatting.ChattingUI");
+    this.irT.add("com.tencent.mm.plugin.label.ui.ContactLabelEditUI");
+    this.irT.add("com.tencent.mm.plugin.appbrand.ui.AppBrandUI");
+    this.irT.add("com.tencent.mm.plugin.appbrand.ui.AppBrandUI1");
+    this.irT.add("com.tencent.mm.plugin.appbrand.ui.AppBrandUI2");
+    this.irT.add("com.tencent.mm.plugin.appbrand.ui.AppBrandUI3");
+    this.irT.add("com.tencent.mm.plugin.appbrand.ui.AppBrandUI4");
     AppMethodBeat.o(151055);
   }
   
-  public static boolean aLC()
+  public static boolean aLZ()
   {
     AppMethodBeat.i(151053);
-    a locala = aLD().ioX;
-    if (locala.ipc > locala.ipd)
+    a locala = aMa().irS;
+    if (locala.irX > locala.irY)
     {
       AppMethodBeat.o(151053);
       return true;
@@ -54,16 +50,16 @@ public final class d
     return false;
   }
   
-  public static d aLD()
+  public static d aMa()
   {
     AppMethodBeat.i(151056);
-    if (ioZ == null) {}
+    if (irU == null) {}
     try
     {
-      if (ioZ == null) {
-        ioZ = new d();
+      if (irU == null) {
+        irU = new d();
       }
-      d locald = ioZ;
+      d locald = irU;
       AppMethodBeat.o(151056);
       return locald;
     }
@@ -76,47 +72,24 @@ public final class d
   public static void d(int paramInt1, String paramString, int paramInt2)
   {
     AppMethodBeat.i(151054);
-    Intent localIntent = new Intent("com.tencent.mm.Intent.ACTION_CLICK_FLOW_REPORT");
-    localIntent.putExtra("opCode", paramInt1);
-    localIntent.putExtra("ui", paramString);
-    localIntent.putExtra("uiHashCode", paramInt2);
-    localIntent.putExtra("nowMilliSecond", bt.flT());
-    localIntent.putExtra("elapsedRealtime", SystemClock.elapsedRealtime());
-    h.bj(localIntent);
-    paramString = aj.getContext();
-    if (paramString != null)
-    {
-      if (!aj.cnC()) {
-        break label102;
-      }
-      c.aLB().j(localIntent);
-    }
-    for (;;)
-    {
-      localIntent.setAction("com.tencent.mm.Intent.ACTION_NET_STATS");
-      paramString.sendBroadcast(localIntent);
-      AppMethodBeat.o(151054);
-      return;
-      label102:
-      ad.d("MicroMsg.ClickFlowStatSender", "sendBroadcast, Intent: %s, Extra: %s", new Object[] { localIntent, localIntent.getExtras() });
-      paramString.sendBroadcast(localIntent);
-    }
+    h.MqF.aO(new d.1(paramInt1, paramString, paramInt2));
+    AppMethodBeat.o(151054);
   }
   
-  public static void h(Application paramApplication)
+  public static void i(Application paramApplication)
   {
     AppMethodBeat.i(151052);
-    paramApplication.registerActivityLifecycleCallbacks(aLD().ioX);
+    paramApplication.registerActivityLifecycleCallbacks(aMa().irS);
     AppMethodBeat.o(151052);
   }
   
   public static void m(String paramString, long paramLong1, long paramLong2)
   {
     AppMethodBeat.i(151057);
-    if ((com.tencent.mm.protocal.d.Fnm) || (com.tencent.mm.protocal.d.Fnl))
+    if ((com.tencent.mm.protocal.d.FFK) || (com.tencent.mm.protocal.d.FFJ))
     {
-      ad.i("MicroMsg.ClickFlowStatSender", "kvCheck :%s [%s,%s,%s]", new Object[] { paramString, Long.valueOf(paramLong1), Long.valueOf(paramLong2), Long.valueOf(paramLong2 - paramLong1) });
-      e.ygI.kvStat(13393, "99999,0,0," + paramLong1 + "," + paramLong2 + "," + paramString);
+      ae.i("MicroMsg.ClickFlowStatSender", "kvCheck :%s [%s,%s,%s]", new Object[] { paramString, Long.valueOf(paramLong1), Long.valueOf(paramLong2), Long.valueOf(paramLong2 - paramLong1) });
+      e.ywz.kvStat(13393, "99999,0,0," + paramLong1 + "," + paramLong2 + "," + paramString);
     }
     AppMethodBeat.o(151057);
   }
@@ -124,38 +97,38 @@ public final class d
   static final class a
     implements Application.ActivityLifecycleCallbacks
   {
-    private int ipa;
-    private int ipb;
-    int ipc;
-    int ipd;
+    private int irV;
+    private int irW;
+    int irX;
+    int irY;
     
     public final void onActivityCreated(Activity paramActivity, Bundle paramBundle)
     {
       AppMethodBeat.i(151046);
-      d.a(d.aLD(), 1, paramActivity);
+      d.a(d.aMa(), 1, paramActivity);
       AppMethodBeat.o(151046);
     }
     
     public final void onActivityDestroyed(Activity paramActivity)
     {
       AppMethodBeat.i(151051);
-      d.a(d.aLD(), 6, paramActivity);
+      d.a(d.aMa(), 6, paramActivity);
       AppMethodBeat.o(151051);
     }
     
     public final void onActivityPaused(Activity paramActivity)
     {
       AppMethodBeat.i(151049);
-      this.ipb += 1;
-      ad.i("MicroMsg.ClickFlowStatSender", "paused[%d]", new Object[] { Integer.valueOf(this.ipb) });
-      d.a(d.aLD(), 4, paramActivity);
-      f localf = f.aLG();
+      this.irW += 1;
+      ae.i("MicroMsg.ClickFlowStatSender", "paused[%d]", new Object[] { Integer.valueOf(this.irW) });
+      d.a(d.aMa(), 4, paramActivity);
+      f localf = f.aMd();
       if ((paramActivity != null) && ((paramActivity instanceof MMActivity)))
       {
         String str = paramActivity.getClass().getName();
         long l = ((MMActivity)paramActivity).getActivityBrowseTimeMs();
         localf.I(str, l);
-        ad.v("MicroMsg.MMActivityBrowseMgr", "onPause activity[%s] time[%d] map[%d]", new Object[] { str, Long.valueOf(l), Integer.valueOf(localf.ipQ.size()) });
+        ae.v("MicroMsg.MMActivityBrowseMgr", "onPause activity[%s] time[%d] map[%d]", new Object[] { str, Long.valueOf(l), Integer.valueOf(localf.isL.size()) });
       }
       AppMethodBeat.o(151049);
     }
@@ -163,9 +136,9 @@ public final class d
     public final void onActivityResumed(Activity paramActivity)
     {
       AppMethodBeat.i(151048);
-      this.ipa += 1;
-      ad.i("MicroMsg.ClickFlowStatSender", "resumed[%d]", new Object[] { Integer.valueOf(this.ipa) });
-      d.a(d.aLD(), 3, paramActivity);
+      this.irV += 1;
+      ae.i("MicroMsg.ClickFlowStatSender", "resumed[%d]", new Object[] { Integer.valueOf(this.irV) });
+      d.a(d.aMa(), 3, paramActivity);
       AppMethodBeat.o(151048);
     }
     
@@ -174,18 +147,18 @@ public final class d
     public final void onActivityStarted(Activity paramActivity)
     {
       AppMethodBeat.i(151047);
-      this.ipc += 1;
-      ad.i("MicroMsg.ClickFlowStatSender", "started[%d]", new Object[] { Integer.valueOf(this.ipc) });
-      d.a(d.aLD(), 2, paramActivity);
+      this.irX += 1;
+      ae.i("MicroMsg.ClickFlowStatSender", "started[%d]", new Object[] { Integer.valueOf(this.irX) });
+      d.a(d.aMa(), 2, paramActivity);
       AppMethodBeat.o(151047);
     }
     
     public final void onActivityStopped(Activity paramActivity)
     {
       AppMethodBeat.i(151050);
-      this.ipd += 1;
-      ad.i("MicroMsg.ClickFlowStatSender", "stopped[%d]", new Object[] { Integer.valueOf(this.ipd) });
-      d.a(d.aLD(), 5, paramActivity);
+      this.irY += 1;
+      ae.i("MicroMsg.ClickFlowStatSender", "stopped[%d]", new Object[] { Integer.valueOf(this.irY) });
+      d.a(d.aMa(), 5, paramActivity);
       AppMethodBeat.o(151050);
     }
   }

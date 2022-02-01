@@ -1,26 +1,26 @@
 package com.tencent.mm.plugin.wallet.balance.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.protocal.protobuf.awt;
-import com.tencent.mm.protocal.protobuf.awu;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.protocal.protobuf.axj;
+import com.tencent.mm.protocal.protobuf.axk;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class a
-  extends com.tencent.mm.al.a<awu>
+  extends com.tencent.mm.ak.a<axk>
 {
   public a()
   {
     AppMethodBeat.i(68391);
     b.a locala = new b.a();
-    locala.hNM = new awt();
-    locala.hNN = new awu();
+    locala.hQF = new axj();
+    locala.hQG = new axk();
     locala.uri = "/cgi-bin/mmpay-bin/tenpay/getbalancemenu";
     locala.funcId = 2567;
-    locala.hNO = 0;
+    locala.hQH = 0;
     locala.respCmdId = 0;
-    c(locala.aDC());
-    ad.i("MicroMsg.CgiGetBalanceMenu", "get balance menu");
+    c(locala.aDS());
+    ae.i("MicroMsg.CgiGetBalanceMenu", "get balance menu");
     AppMethodBeat.o(68391);
   }
 }

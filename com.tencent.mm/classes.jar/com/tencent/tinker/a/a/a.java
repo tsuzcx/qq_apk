@@ -1,23 +1,28 @@
 package com.tencent.tinker.a.a;
 
+import com.tencent.tinker.a.a.b.c;
 import com.tencent.tinker.a.a.b.e;
 
 public final class a
   extends s.a.a<a>
 {
-  public byte Mcx;
-  public k Mcy;
+  public byte Mzs;
+  public k Mzt;
   
   public a(int paramInt, byte paramByte, k paramk)
   {
     super(paramInt);
-    this.Mcx = paramByte;
-    this.Mcy = paramk;
+    this.Mzs = paramByte;
+    this.Mzt = paramk;
   }
   
   private int a(a parama)
   {
-    return this.Mcy.b(parama.Mcy);
+    int i = this.Mzt.b(parama.Mzt);
+    if (i != 0) {
+      return i;
+    }
+    return c.a(this.Mzs, parama.Mzs);
   }
   
   public final boolean equals(Object paramObject)
@@ -31,7 +36,7 @@ public final class a
   
   public final int hashCode()
   {
-    return e.hash(new Object[] { Byte.valueOf(this.Mcx), this.Mcy });
+    return e.hash(new Object[] { Byte.valueOf(this.Mzs), this.Mzt });
   }
 }
 

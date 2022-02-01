@@ -16,15 +16,15 @@ import d.o;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/msgsubscription/util/SubscribeMsgTemplateViewHelper;", "", "()V", "createTemplateItemView", "Landroid/view/View;", "context", "Landroid/content/Context;", "index", "", "size", "key", "", "value", "topMargin", "createTemplateView", "keyWordList", "Ljava/util/ArrayList;", "Lkotlin/Pair;", "Lkotlin/collections/ArrayList;", "wxbiz-msgsubscription-sdk_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/msgsubscription/util/SubscribeMsgTemplateViewHelper;", "", "()V", "createTemplateItemView", "Landroid/view/View;", "context", "Landroid/content/Context;", "index", "", "size", "key", "", "value", "topMargin", "createTemplateView", "keyWordList", "Ljava/util/ArrayList;", "Lkotlin/Pair;", "Lkotlin/collections/ArrayList;", "wxbiz-msgsubscription-sdk_release"})
 public final class b
 {
-  public static final b iEe;
+  public static final b iGX;
   
   static
   {
     AppMethodBeat.i(149818);
-    iEe = new b();
+    iGX = new b();
     AppMethodBeat.o(149818);
   }
   
@@ -42,7 +42,7 @@ public final class b
     {
       Object localObject1 = localIterator.next();
       if (i < 0) {
-        j.gfB();
+        j.gkd();
       }
       localObject1 = (o)localObject1;
       Object localObject2 = (String)((o)localObject1).first;

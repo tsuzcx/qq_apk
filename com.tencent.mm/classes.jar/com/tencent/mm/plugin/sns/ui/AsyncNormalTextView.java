@@ -13,17 +13,17 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.sns.ui.item.BaseTimeLineItem.BaseViewHolder;
 import com.tencent.mm.plugin.sns.ui.widget.SnsPostDescPreloadTextView;
 import com.tencent.mm.pluginsdk.ui.span.k;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.List;
 
 public class AsyncNormalTextView
   extends CollapsibleTextView
 {
+  private BaseTimeLineItem.BaseViewHolder AfQ;
+  private int AfR = 0;
   private String content;
   private Context context;
-  private BaseTimeLineItem.BaseViewHolder zOJ;
-  private int zOK = 0;
-  private bh zpI;
+  private bh zGX;
   
   public AsyncNormalTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -34,25 +34,25 @@ public class AsyncNormalTextView
   public final void a(String paramString, bh parambh, int paramInt, bi parambi)
   {
     AppMethodBeat.i(97761);
-    this.zOK = paramInt;
+    this.AfR = paramInt;
     this.content = paramString;
-    this.zpI = parambh;
-    this.zPN = parambi;
-    if (bt.isNullOrNil(paramString)) {
+    this.zGX = parambh;
+    this.AgU = parambi;
+    if (bu.isNullOrNil(paramString)) {
       setVisibility(8);
     }
     AppMethodBeat.o(97761);
   }
   
-  public final void dZt()
+  public final void ecY()
   {
     AppMethodBeat.i(97763);
     Object localObject1;
-    if (!bt.isNullOrNil(this.content))
+    if (!bu.isNullOrNil(this.content))
     {
       System.currentTimeMillis();
       setVisibility(0);
-      if (this.zOK != 1) {
+      if (this.AfR != 1) {
         break label244;
       }
       if (this.content.length() <= 100) {
@@ -60,19 +60,19 @@ public class AsyncNormalTextView
       }
       localObject1 = this.content.substring(0, 100) + "...";
       this.content = ((String)localObject1);
-      localObject1 = new SpannableStringBuilder(k.b(this.context, this.content, this.zPH.getTextSize()));
-      a(this.zOK, (CharSequence)localObject1, TextView.BufferType.NORMAL, this.zpI.zPM, this.zPN.zQD, this.zPN.AmA, this.zpI, this.content, this.zPN.zOM);
+      localObject1 = new SpannableStringBuilder(k.b(this.context, this.content, this.AgO.getTextSize()));
+      a(this.AfR, (CharSequence)localObject1, TextView.BufferType.NORMAL, this.zGX.AgT, this.AgU.AhK, this.AgU.ADO, this.zGX, this.content, this.AgU.AfT);
     }
     for (;;)
     {
-      localObject1 = new bd(this.zPN.AmA, this.zPN.zQD, false, false, 1);
-      ((bd)localObject1).userName = this.zPN.lEN;
-      this.zPH.setTag(localObject1);
-      if (this.zPI != null) {
-        this.zPI.setTag(localObject1);
+      localObject1 = new bd(this.AgU.ADO, this.AgU.AhK, false, false, 1);
+      ((bd)localObject1).userName = this.AgU.lJm;
+      this.AgO.setTag(localObject1);
+      if (this.AgP != null) {
+        this.AgP.setTag(localObject1);
       }
-      this.zPJ.setTag(this.zOJ);
-      setTag(this.zOJ);
+      this.AgQ.setTag(this.AfQ);
+      setTag(this.AfQ);
       AppMethodBeat.o(97763);
       return;
       label236:
@@ -80,15 +80,15 @@ public class AsyncNormalTextView
       break;
       label244:
       localObject1 = null;
-      if (this.zPN != null) {
-        localObject1 = this.zPN.Amy;
+      if (this.AgU != null) {
+        localObject1 = this.AgU.ADM;
       }
       Object localObject2 = localObject1;
       if (localObject1 == null) {
-        localObject2 = new SpannableStringBuilder(k.b(this.context, this.content, this.zPH.getTextSize()));
+        localObject2 = new SpannableStringBuilder(k.b(this.context, this.content, this.AgO.getTextSize()));
       }
-      if (this.zPN != null) {
-        a(this.zOK, (CharSequence)localObject2, TextView.BufferType.SPANNABLE, this.zpI.zPM, this.zPN.zQD, this.zPN.AmA, this.zpI, this.content, this.zPN.zOM);
+      if (this.AgU != null) {
+        a(this.AfR, (CharSequence)localObject2, TextView.BufferType.SPANNABLE, this.zGX.AgT, this.AgU.AhK, this.AgU.ADO, this.zGX, this.content, this.AgU.AfT);
       }
     }
   }
@@ -132,13 +132,13 @@ public class AsyncNormalTextView
   public void setContentWidth(int paramInt)
   {
     AppMethodBeat.i(97768);
-    if (this.zPI != null)
+    if (this.AgP != null)
     {
-      this.zPH.setSpecialWidth(paramInt);
+      this.AgO.setSpecialWidth(paramInt);
       LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(paramInt, -2);
-      this.zPI.setLayoutParams(localLayoutParams);
-      this.zPH.setLayoutParams(localLayoutParams);
-      this.zPJ.setLayoutParams(localLayoutParams);
+      this.AgP.setLayoutParams(localLayoutParams);
+      this.AgO.setLayoutParams(localLayoutParams);
+      this.AgQ.setLayoutParams(localLayoutParams);
     }
     AppMethodBeat.o(97768);
   }
@@ -146,8 +146,8 @@ public class AsyncNormalTextView
   public void setShow(BaseTimeLineItem.BaseViewHolder paramBaseViewHolder)
   {
     AppMethodBeat.i(97762);
-    this.zOJ = paramBaseViewHolder;
-    dZt();
+    this.AfQ = paramBaseViewHolder;
+    ecY();
     AppMethodBeat.o(97762);
   }
 }

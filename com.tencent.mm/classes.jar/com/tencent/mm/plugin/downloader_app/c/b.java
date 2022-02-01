@@ -2,14 +2,14 @@ package com.tencent.mm.plugin.downloader_app.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class b
 {
-  public static boolean cO(String paramString, int paramInt)
+  public static boolean cS(String paramString, int paramInt)
   {
     AppMethodBeat.i(8963);
-    if (cdd() == null)
+    if (ces() == null)
     {
       AppMethodBeat.o(8963);
       return false;
@@ -18,32 +18,32 @@ public final class b
     locala.field_appId = paramString;
     locala.field_status = paramInt;
     locala.field_modifyTime = System.currentTimeMillis();
-    boolean bool = cdd().a(locala);
+    boolean bool = ces().a(locala);
     AppMethodBeat.o(8963);
     return bool;
   }
   
-  public static c cdd()
+  public static c ces()
   {
     AppMethodBeat.i(8962);
-    if (g.ajA().aiK())
+    if (g.ajP().aiZ())
     {
-      g.ajA();
-      if (!com.tencent.mm.kernel.a.aiE()) {}
+      g.ajP();
+      if (!com.tencent.mm.kernel.a.aiT()) {}
     }
     else
     {
-      ad.e("MicroMsg.DownloadTaskItemDbHelp", "no user login");
+      ae.e("MicroMsg.DownloadTaskItemDbHelp", "no user login");
       AppMethodBeat.o(8962);
       return null;
     }
     if (g.ab(com.tencent.mm.plugin.downloader.a.d.class) == null)
     {
-      ad.e("MicroMsg.DownloadTaskItemDbHelp", "service not ready");
+      ae.e("MicroMsg.DownloadTaskItemDbHelp", "service not ready");
       AppMethodBeat.o(8962);
       return null;
     }
-    c localc = ((com.tencent.mm.plugin.downloader_app.api.d)g.ab(com.tencent.mm.plugin.downloader_app.api.d.class)).ccJ();
+    c localc = ((com.tencent.mm.plugin.downloader_app.api.d)g.ab(com.tencent.mm.plugin.downloader_app.api.d.class)).cdY();
     AppMethodBeat.o(8962);
     return localc;
   }

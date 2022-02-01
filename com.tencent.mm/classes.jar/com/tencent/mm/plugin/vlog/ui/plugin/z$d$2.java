@@ -14,14 +14,14 @@ import d.l;
 import d.z;
 import kotlinx.coroutines.ah;
 
-@f(c="com.tencent.mm.plugin.vlog.ui.plugin.ThumbLoadingPlugin$showThumbLoading$1$2", f="ThumbLoadingPlugin.kt", gfL={}, m="invokeSuspend")
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "Landroid/graphics/Bitmap;", "kotlin.jvm.PlatformType", "Lkotlinx/coroutines/CoroutineScope;", "invoke", "(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;"})
+@f(c="com.tencent.mm.plugin.vlog.ui.plugin.ThumbLoadingPlugin$showThumbLoading$1$2", f="ThumbLoadingPlugin.kt", gkn={}, m="invokeSuspend")
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "Landroid/graphics/Bitmap;", "kotlin.jvm.PlatformType", "Lkotlinx/coroutines/CoroutineScope;", "invoke", "(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;"})
 final class z$d$2
   extends j
   implements m<ah, d<? super Bitmap>, Object>
 {
   int label;
-  private ah nWQ;
+  private ah ocz;
   
   z$d$2(y.f paramf, int paramInt1, int paramInt2, Matrix paramMatrix, d paramd)
   {
@@ -30,41 +30,41 @@ final class z$d$2
   
   public final d<z> a(Object paramObject, d<?> paramd)
   {
-    AppMethodBeat.i(196358);
+    AppMethodBeat.i(191817);
     p.h(paramd, "completion");
-    paramd = new 2(this.tfy, this.BOp, this.BOq, this.BOr, paramd);
-    paramd.nWQ = ((ah)paramObject);
-    AppMethodBeat.o(196358);
+    paramd = new 2(this.tqr, this.CfO, this.CfP, this.CfQ, paramd);
+    paramd.ocz = ((ah)paramObject);
+    AppMethodBeat.o(191817);
     return paramd;
   }
   
-  public final Object cQ(Object paramObject)
+  public final Object cR(Object paramObject)
   {
-    AppMethodBeat.i(196357);
-    paramObject = a.MLc;
+    AppMethodBeat.i(191816);
+    paramObject = a.Nif;
     switch (this.label)
     {
     default: 
       paramObject = new IllegalStateException("call to 'resume' before 'invoke' with coroutine");
-      AppMethodBeat.o(196357);
+      AppMethodBeat.o(191816);
       throw paramObject;
     }
-    paramObject = (Bitmap)this.tfy.MLV;
-    Bitmap localBitmap = (Bitmap)this.tfy.MLV;
+    paramObject = (Bitmap)this.tqr.NiY;
+    Bitmap localBitmap = (Bitmap)this.tqr.NiY;
     p.g(localBitmap, "thumb");
-    int i = (localBitmap.getWidth() - this.BOp) / 2;
-    localBitmap = (Bitmap)this.tfy.MLV;
+    int i = (localBitmap.getWidth() - this.CfO) / 2;
+    localBitmap = (Bitmap)this.tqr.NiY;
     p.g(localBitmap, "thumb");
-    paramObject = Bitmap.createBitmap(paramObject, i, (localBitmap.getHeight() - this.BOq) / 2, this.BOp, this.BOq, this.BOr, true);
-    AppMethodBeat.o(196357);
+    paramObject = Bitmap.createBitmap(paramObject, i, (localBitmap.getHeight() - this.CfP) / 2, this.CfO, this.CfP, this.CfQ, true);
+    AppMethodBeat.o(191816);
     return paramObject;
   }
   
   public final Object p(Object paramObject1, Object paramObject2)
   {
-    AppMethodBeat.i(196359);
-    paramObject1 = ((2)a(paramObject1, (d)paramObject2)).cQ(z.MKo);
-    AppMethodBeat.o(196359);
+    AppMethodBeat.i(191818);
+    paramObject1 = ((2)a(paramObject1, (d)paramObject2)).cR(z.Nhr);
+    AppMethodBeat.o(191818);
     return paramObject1;
   }
 }

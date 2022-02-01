@@ -7,14 +7,14 @@ import d.l.b.a.b.l.j;
 public final class d
   extends g
 {
-  private static final d MPN;
-  public static final a MPO;
+  private static final d NmS;
+  public static final a NmT;
   
   static
   {
     AppMethodBeat.i(56655);
-    MPO = new a((byte)0);
-    MPN = new d((byte)0);
+    NmT = new a((byte)0);
+    NmS = new d((byte)0);
     AppMethodBeat.o(56655);
   }
   
@@ -22,20 +22,20 @@ public final class d
   {
     super((j)new b("DefaultBuiltIns"));
     AppMethodBeat.i(56654);
-    ggX();
+    glz();
     AppMethodBeat.o(56654);
   }
   
-  public static final d ggW()
+  public static final d gly()
   {
-    return MPN;
+    return NmS;
   }
   
   public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.a.d
  * JD-Core Version:    0.7.0.1
  */

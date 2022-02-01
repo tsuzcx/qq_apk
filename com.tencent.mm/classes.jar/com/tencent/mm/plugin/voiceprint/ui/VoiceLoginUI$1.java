@@ -12,7 +12,7 @@ final class VoiceLoginUI$1
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
     AppMethodBeat.i(29872);
-    VoiceLoginUI.a(this.BWB);
+    VoiceLoginUI.a(this.Coc);
     AppMethodBeat.o(29872);
     return true;
   }

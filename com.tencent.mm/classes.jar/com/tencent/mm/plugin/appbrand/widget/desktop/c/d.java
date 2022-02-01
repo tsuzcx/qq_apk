@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.appbrand.widget.desktop.c;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.lang.ref.WeakReference;
 import java.util.Collection;
 import java.util.HashMap;
@@ -12,35 +12,35 @@ import java.util.TimerTask;
 
 public enum d
 {
-  private WeakReference<Context> guS;
-  public HashMap<Integer, b> guT;
-  public final Object guV;
+  public HashMap<Integer, b> gxA;
+  public final Object gxC;
+  private WeakReference<Context> gxz;
   public boolean isRunning;
   public Timer mTimer;
   
   static
   {
     AppMethodBeat.i(49862);
-    naR = new d("INSTANCE");
-    naS = new d[] { naR };
+    nfZ = new d("INSTANCE");
+    nga = new d[] { nfZ };
     AppMethodBeat.o(49862);
   }
   
   private d()
   {
     AppMethodBeat.i(49859);
-    this.guS = null;
-    this.guT = new HashMap();
+    this.gxz = null;
+    this.gxA = new HashMap();
     this.isRunning = false;
     this.mTimer = null;
-    this.guV = new Object();
+    this.gxC = new Object();
     AppMethodBeat.o(49859);
   }
   
-  public final void ahg()
+  public final void ahv()
   {
     AppMethodBeat.i(49860);
-    synchronized (this.guV)
+    synchronized (this.gxC)
     {
       if (!this.isRunning)
       {
@@ -59,9 +59,9 @@ public enum d
   public final void release()
   {
     AppMethodBeat.i(49861);
-    ad.i("MicroMsg.PerformanceMonitor", "alvinluo PerformanceMonitor release");
-    if (this.guT != null) {
-      this.guT.clear();
+    ae.i("MicroMsg.PerformanceMonitor", "alvinluo PerformanceMonitor release");
+    if (this.gxA != null) {
+      this.gxA.clear();
     }
     AppMethodBeat.o(49861);
   }

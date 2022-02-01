@@ -1,30 +1,30 @@
 package com.tencent.mm.plugin.appbrand.jsapi.v;
 
-import com.tencent.mm.plugin.appbrand.appstorage.x;
+import com.tencent.mm.plugin.appbrand.appstorage.z;
 import com.tencent.mm.plugin.appbrand.jsapi.a;
-import com.tencent.mm.plugin.appbrand.jsapi.file.ar;
+import com.tencent.mm.plugin.appbrand.jsapi.file.at;
 import com.tencent.mm.plugin.appbrand.service.c;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.vfs.e;
-import com.tencent.mm.vfs.i;
-import com.tencent.mm.vfs.q;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.vfs.k;
+import com.tencent.mm.vfs.o;
+import com.tencent.mm.vfs.w;
 import java.io.IOException;
 import org.json.JSONObject;
 
 public abstract class b
   extends a<c>
 {
-  private static String OT(String paramString)
+  private static String PB(String paramString)
   {
     return "wxfile://clientdata/".concat(String.valueOf(paramString));
   }
   
-  private static void OU(String paramString)
+  private static void PC(String paramString)
   {
-    paramString = new e(paramString + ".nomedia");
+    paramString = new k(paramString + ".nomedia");
     if (!paramString.exists()) {
-      ad.i("MicroMsg.GameRecord.JsApiScreenRecorderBase", "hy: no nomedia file. trigger new");
+      ae.i("MicroMsg.GameRecord.JsApiScreenRecorderBase", "hy: no nomedia file. trigger new");
     }
     try
     {
@@ -33,62 +33,62 @@ public abstract class b
     }
     catch (IOException paramString)
     {
-      ad.printErrStackTrace("MicroMsg.GameRecord.JsApiScreenRecorderBase", paramString, "hy: create no media file failed!", new Object[0]);
+      ae.printErrStackTrace("MicroMsg.GameRecord.JsApiScreenRecorderBase", paramString, "hy: create no media file failed!", new Object[0]);
     }
   }
   
   private static String b(c paramc, String paramString)
   {
-    if ((paramc == null) || (bt.isNullOrNil(paramString)))
+    if ((paramc == null) || (bu.isNullOrNil(paramString)))
     {
       if (paramc == null) {}
       for (boolean bool = true;; bool = false)
       {
-        ad.w("MicroMsg.GameRecord.JsApiScreenRecorderBase", "hy: param error %b, %s", new Object[] { Boolean.valueOf(bool), paramString });
+        ae.w("MicroMsg.GameRecord.JsApiScreenRecorderBase", "hy: param error %b, %s", new Object[] { Boolean.valueOf(bool), paramString });
         return null;
       }
     }
-    paramc = (ar)paramc.Fg();
+    paramc = (at)paramc.Fl();
     if (paramc == null)
     {
-      ad.w("MicroMsg.GameRecord.JsApiScreenRecorderBase", "hy: fs is null");
+      ae.w("MicroMsg.GameRecord.JsApiScreenRecorderBase", "hy: fs is null");
       return null;
     }
-    String str = ((x)paramc.Mt("wxfile://clientdata")).jMN;
+    String str = ((z)paramc.Na("wxfile://clientdata")).jPJ;
     paramc = str;
     if (!str.endsWith("/")) {
       paramc = str + "/";
     }
-    OU(paramc);
+    PC(paramc);
     return paramc + paramString;
   }
   
   protected final a a(c paramc, String paramString1, String paramString2)
   {
-    ad.i("MicroMsg.GameRecord.JsApiScreenRecorderBase", "hy: request saveFileToClientData: %s, %b, %b", new Object[] { paramString1, Boolean.TRUE, Boolean.TRUE });
-    if (!i.fv(paramString1))
+    ae.i("MicroMsg.GameRecord.JsApiScreenRecorderBase", "hy: request saveFileToClientData: %s, %b, %b", new Object[] { paramString1, Boolean.TRUE, Boolean.TRUE });
+    if (!o.fB(paramString1))
     {
-      ad.w("MicroMsg.GameRecord.JsApiScreenRecorderBase", "hy: src file not exists!");
+      ae.w("MicroMsg.GameRecord.JsApiScreenRecorderBase", "hy: src file not exists!");
       return null;
     }
     paramc = b(paramc, paramString2);
     if (paramc == null)
     {
-      ad.w("MicroMsg.GameRecord.JsApiScreenRecorderBase", "hy: can not generate dest file!");
+      ae.w("MicroMsg.GameRecord.JsApiScreenRecorderBase", "hy: can not generate dest file!");
       return null;
     }
-    if (i.fv(paramc))
+    if (o.fB(paramc))
     {
-      ad.w("MicroMsg.GameRecord.JsApiScreenRecorderBase", "hy: file already exists, auto delete: %b", new Object[] { Boolean.TRUE });
-      i.deleteFile(paramc);
+      ae.w("MicroMsg.GameRecord.JsApiScreenRecorderBase", "hy: file already exists, auto delete: %b", new Object[] { Boolean.TRUE });
+      o.deleteFile(paramc);
     }
-    e locale = new e(paramc);
-    if (!i.cv(q.B(new e(paramString1).mUri), q.B(locale.mUri)))
+    k localk = new k(paramc);
+    if (!o.cx(w.B(new k(paramString1).mUri), w.B(localk.mUri)))
     {
-      ad.w("MicroMsg.GameRecord.JsApiScreenRecorderBase", "hy: rename failed!");
+      ae.w("MicroMsg.GameRecord.JsApiScreenRecorderBase", "hy: rename failed!");
       return null;
     }
-    return new a(paramc, OT(paramString2), (byte)0);
+    return new a(paramc, PB(paramString2), (byte)0);
   }
   
   abstract void a(c paramc, JSONObject paramJSONObject, int paramInt);
@@ -98,42 +98,42 @@ public abstract class b
     paramc = b(paramc, paramString);
     if (paramc == null)
     {
-      ad.e("MicroMsg.GameRecord.JsApiScreenRecorderBase", "hy: can not generate!");
+      ae.e("MicroMsg.GameRecord.JsApiScreenRecorderBase", "hy: can not generate!");
       return null;
     }
-    ad.i("MicroMsg.GameRecord.JsApiScreenRecorderBase", "hy: creating file: %s", new Object[] { paramc });
-    if (i.fv(paramc))
+    ae.i("MicroMsg.GameRecord.JsApiScreenRecorderBase", "hy: creating file: %s", new Object[] { paramc });
+    if (o.fB(paramc))
     {
-      ad.w("MicroMsg.GameRecord.JsApiScreenRecorderBase", "hy: file already exists, auto delete: %b", new Object[] { Boolean.TRUE });
-      i.deleteFile(paramc);
+      ae.w("MicroMsg.GameRecord.JsApiScreenRecorderBase", "hy: file already exists, auto delete: %b", new Object[] { Boolean.TRUE });
+      o.deleteFile(paramc);
     }
-    e locale = new e(paramc);
-    i.aYg(i.aYr(paramc));
+    k localk = new k(paramc);
+    o.aZI(o.aZU(paramc));
     try
     {
-      if (!locale.createNewFile())
+      if (!localk.createNewFile())
       {
-        ad.w("MicroMsg.GameRecord.JsApiScreenRecorderBase", "hy: create file failed!");
+        ae.w("MicroMsg.GameRecord.JsApiScreenRecorderBase", "hy: create file failed!");
         return null;
       }
     }
     catch (IOException paramc)
     {
-      ad.printErrStackTrace("MicroMsg.GameRecord.JsApiScreenRecorderBase", paramc, "hy: create file failed!", new Object[0]);
+      ae.printErrStackTrace("MicroMsg.GameRecord.JsApiScreenRecorderBase", paramc, "hy: create file failed!", new Object[0]);
       return null;
     }
-    return new a(q.B(locale.fOK()), OT(paramString), (byte)0);
+    return new a(w.B(localk.fTh()), PB(paramString), (byte)0);
   }
   
   protected final class a
   {
-    String klC;
-    String klD;
+    String koS;
+    String koT;
     
     private a(String paramString1, String paramString2)
     {
-      this.klC = paramString1;
-      this.klD = paramString2;
+      this.koS = paramString1;
+      this.koT = paramString2;
     }
   }
 }

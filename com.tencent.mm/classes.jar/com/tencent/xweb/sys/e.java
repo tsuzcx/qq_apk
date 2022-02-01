@@ -55,34 +55,34 @@ import org.xwalk.core.XWalkEnvironment;
 public final class e
   implements IWebView
 {
-  private boolean MrX;
-  com.tencent.xweb.WebView Mud;
-  a Mue;
-  ac Muf;
-  x Mug;
-  d Muh;
-  g Mui;
-  long Muj;
-  private b Muk;
-  b Mul;
-  final String Mum;
+  private boolean MPb;
+  com.tencent.xweb.WebView MRh;
+  a MRi;
+  ac MRj;
+  x MRk;
+  d MRl;
+  g MRm;
+  long MRn;
+  private b MRo;
+  b MRp;
+  final String MRq;
   private WebViewClient cgX;
   private WebChromeClient cgY;
   
   public e(com.tencent.xweb.WebView paramWebView)
   {
     AppMethodBeat.i(153725);
-    this.Muj = 0L;
-    this.MrX = false;
+    this.MRn = 0L;
+    this.MPb = false;
     this.cgY = new SysWebView.2(this);
     this.cgX = new WebViewClient()
     {
       public final void doUpdateVisitedHistory(android.webkit.WebView paramAnonymousWebView, String paramAnonymousString, boolean paramAnonymousBoolean)
       {
         AppMethodBeat.i(153715);
-        if (e.this.Muf != null)
+        if (e.this.MRj != null)
         {
-          e.this.Muf.b(e.this.Mud, paramAnonymousString, paramAnonymousBoolean);
+          e.this.MRj.b(e.this.MRh, paramAnonymousString, paramAnonymousBoolean);
           AppMethodBeat.o(153715);
           return;
         }
@@ -93,9 +93,9 @@ public final class e
       public final void onLoadResource(android.webkit.WebView paramAnonymousWebView, String paramAnonymousString)
       {
         AppMethodBeat.i(153711);
-        if (e.this.Muf != null)
+        if (e.this.MRj != null)
         {
-          e.this.Muf.h(e.this.Mud, paramAnonymousString);
+          e.this.MRj.h(e.this.MRh, paramAnonymousString);
           AppMethodBeat.o(153711);
           return;
         }
@@ -108,8 +108,8 @@ public final class e
       {
         AppMethodBeat.i(153707);
         Log.i("SysWebView", "onPageCommitVisible s = ".concat(String.valueOf(paramAnonymousString)));
-        if (e.this.Muf != null) {
-          e.this.Muf.e(e.this.Mud, paramAnonymousString);
+        if (e.this.MRj != null) {
+          e.this.MRj.e(e.this.MRh, paramAnonymousString);
         }
         AppMethodBeat.o(153707);
       }
@@ -122,25 +122,25 @@ public final class e
         if (e.a(e.this) != null)
         {
           b localb = e.a(e.this);
-          if (e.this.Mud.getFullscreenVideoKind() == WebView.a.Mqr)
+          if (e.this.MRh.getFullscreenVideoKind() == WebView.a.MNv)
           {
             bool = true;
-            localb.bb(false, bool);
+            localb.ba(false, bool);
           }
         }
         else
         {
-          if (e.this.Muf == null) {
+          if (e.this.MRj == null) {
             break label148;
           }
-          e.this.Muf.b(e.this.Mud, paramAnonymousString);
+          e.this.MRj.b(e.this.MRh, paramAnonymousString);
         }
         for (;;)
         {
-          com.tencent.xweb.util.g.Fi(System.currentTimeMillis() - e.this.Muj);
-          com.tencent.xweb.xwalk.d.a(e.this.Mud);
-          com.tencent.xweb.util.g.Fj(System.currentTimeMillis() - e.this.Muj);
-          h.gbL().gbR();
+          com.tencent.xweb.util.g.FK(System.currentTimeMillis() - e.this.MRn);
+          com.tencent.xweb.xwalk.d.a(e.this.MRh);
+          com.tencent.xweb.util.g.FL(System.currentTimeMillis() - e.this.MRn);
+          h.ggn().ggt();
           AppMethodBeat.o(153710);
           return;
           bool = false;
@@ -154,16 +154,16 @@ public final class e
       {
         AppMethodBeat.i(153709);
         Log.i("SysWebView", "onPageStarted ".concat(String.valueOf(paramAnonymousString)));
-        if (e.this.Muf != null)
+        if (e.this.MRj != null)
         {
-          e.this.Muf.b(e.this.Mud, paramAnonymousString, paramAnonymousBitmap);
-          e.this.Muj = System.currentTimeMillis();
-          com.tencent.xweb.util.g.bbs(paramAnonymousString);
-          com.tencent.xweb.util.g.gce();
+          e.this.MRj.b(e.this.MRh, paramAnonymousString, paramAnonymousBitmap);
+          e.this.MRn = System.currentTimeMillis();
+          com.tencent.xweb.util.g.bcV(paramAnonymousString);
+          com.tencent.xweb.util.g.ggG();
           if (e.a(e.this) != null)
           {
             paramAnonymousWebView = e.a(e.this);
-            if (e.this.Mud.getFullscreenVideoKind() != WebView.a.Mqr) {
+            if (e.this.MRh.getFullscreenVideoKind() != WebView.a.MNv) {
               break label127;
             }
           }
@@ -171,7 +171,7 @@ public final class e
         label127:
         for (boolean bool = true;; bool = false)
         {
-          paramAnonymousWebView.bb(true, bool);
+          paramAnonymousWebView.ba(true, bool);
           AppMethodBeat.o(153709);
           return;
           super.onPageStarted(paramAnonymousWebView, paramAnonymousString, paramAnonymousBitmap);
@@ -182,14 +182,14 @@ public final class e
       public final void onReceivedError(android.webkit.WebView paramAnonymousWebView, int paramAnonymousInt, String paramAnonymousString1, String paramAnonymousString2)
       {
         AppMethodBeat.i(153716);
-        if (e.this.Muf != null) {
-          e.this.Muf.a(e.this.Mud, paramAnonymousInt, paramAnonymousString1, paramAnonymousString2);
+        if (e.this.MRj != null) {
+          e.this.MRj.a(e.this.MRh, paramAnonymousInt, paramAnonymousString1, paramAnonymousString2);
         }
         for (;;)
         {
-          com.tencent.xweb.util.g.gcd();
-          com.tencent.xweb.util.g.gcf();
-          h.gbL().gbS();
+          com.tencent.xweb.util.g.ggF();
+          com.tencent.xweb.util.g.ggH();
+          h.ggn().ggu();
           AppMethodBeat.o(153716);
           return;
           super.onReceivedError(paramAnonymousWebView, paramAnonymousInt, paramAnonymousString1, paramAnonymousString2);
@@ -198,16 +198,16 @@ public final class e
       
       public final void onReceivedHttpAuthRequest(android.webkit.WebView paramAnonymousWebView, HttpAuthHandler paramAnonymousHttpAuthHandler, String paramAnonymousString1, String paramAnonymousString2)
       {
-        AppMethodBeat.i(195509);
+        AppMethodBeat.i(207525);
         Log.i("SysWebView", "onReceivedHttpAuthRequest host:" + paramAnonymousString1 + ", realm:" + paramAnonymousString2);
-        if (e.this.Muf != null)
+        if (e.this.MRj != null)
         {
-          e.this.Muf.a(e.this.Mud, new c.b(paramAnonymousHttpAuthHandler), paramAnonymousString1, paramAnonymousString2);
-          AppMethodBeat.o(195509);
+          e.this.MRj.a(e.this.MRh, new c.b(paramAnonymousHttpAuthHandler), paramAnonymousString1, paramAnonymousString2);
+          AppMethodBeat.o(207525);
           return;
         }
         super.onReceivedHttpAuthRequest(paramAnonymousWebView, paramAnonymousHttpAuthHandler, paramAnonymousString1, paramAnonymousString2);
-        AppMethodBeat.o(195509);
+        AppMethodBeat.o(207525);
       }
       
       public final void onReceivedHttpError(android.webkit.WebView paramAnonymousWebView, WebResourceRequest paramAnonymousWebResourceRequest, android.webkit.WebResourceResponse paramAnonymousWebResourceResponse)
@@ -219,11 +219,11 @@ public final class e
         {
           localObject = String.valueOf(paramAnonymousWebResourceResponse.getStatusCode());
           Log.i("SysWebView", "onReceivedHttpError code:".concat(String.valueOf(localObject)));
-          if (e.this.Muf == null) {
+          if (e.this.MRj == null) {
             break label168;
           }
-          localObject = e.this.Muf;
-          localWebView = e.this.Mud;
+          localObject = e.this.MRj;
+          localWebView = e.this.MRh;
           paramAnonymousWebResourceRequest = new c.f(paramAnonymousWebResourceRequest);
           if (paramAnonymousWebResourceResponse != null) {
             break label102;
@@ -253,9 +253,9 @@ public final class e
       {
         AppMethodBeat.i(153717);
         Log.i("SysWebView", "onReceivedSslError " + paramAnonymousSslError.getPrimaryError());
-        if (e.this.Muf != null)
+        if (e.this.MRj != null)
         {
-          e.this.Muf.a(e.this.Mud, new c.a(paramAnonymousSslErrorHandler), paramAnonymousSslError);
+          e.this.MRj.a(e.this.MRh, new c.a(paramAnonymousSslErrorHandler), paramAnonymousSslError);
           AppMethodBeat.o(153717);
           return;
         }
@@ -266,9 +266,9 @@ public final class e
       public final void onScaleChanged(android.webkit.WebView paramAnonymousWebView, float paramAnonymousFloat1, float paramAnonymousFloat2)
       {
         AppMethodBeat.i(153714);
-        if (e.this.Muf != null)
+        if (e.this.MRj != null)
         {
-          e.this.Muf.a(e.this.Mud, paramAnonymousFloat1, paramAnonymousFloat2);
+          e.this.MRj.a(e.this.MRh, paramAnonymousFloat1, paramAnonymousFloat2);
           AppMethodBeat.o(153714);
           return;
         }
@@ -280,19 +280,19 @@ public final class e
       {
         Object localObject = null;
         AppMethodBeat.i(153713);
-        if (e.this.Muf != null)
+        if (e.this.MRj != null)
         {
           c.f localf = new c.f(paramAnonymousWebResourceRequest);
-          if (localf.MtV == null) {}
-          for (paramAnonymousWebResourceRequest = null;; paramAnonymousWebResourceRequest = localf.MtV.getBundle())
+          if (localf.MQZ == null) {}
+          for (paramAnonymousWebResourceRequest = null;; paramAnonymousWebResourceRequest = localf.MQZ.getBundle())
           {
             paramAnonymousWebView = localObject;
             if (paramAnonymousWebResourceRequest != null) {
-              paramAnonymousWebView = e.this.Muf.a(e.this.Mud, localf, paramAnonymousWebResourceRequest);
+              paramAnonymousWebView = e.this.MRj.a(e.this.MRh, localf, paramAnonymousWebResourceRequest);
             }
             paramAnonymousWebResourceRequest = paramAnonymousWebView;
             if (paramAnonymousWebView == null) {
-              paramAnonymousWebResourceRequest = e.this.Muf.a(e.this.Mud, localf);
+              paramAnonymousWebResourceRequest = e.this.MRj.a(e.this.MRh, localf);
             }
             paramAnonymousWebView = c.a(paramAnonymousWebResourceRequest);
             AppMethodBeat.o(153713);
@@ -307,9 +307,9 @@ public final class e
       public final android.webkit.WebResourceResponse shouldInterceptRequest(android.webkit.WebView paramAnonymousWebView, String paramAnonymousString)
       {
         AppMethodBeat.i(153712);
-        if (e.this.Muf != null)
+        if (e.this.MRj != null)
         {
-          paramAnonymousWebView = c.a(e.this.Muf.c(e.this.Mud, paramAnonymousString));
+          paramAnonymousWebView = c.a(e.this.MRj.c(e.this.MRh, paramAnonymousString));
           AppMethodBeat.o(153712);
           return paramAnonymousWebView;
         }
@@ -323,10 +323,10 @@ public final class e
       {
         AppMethodBeat.i(153706);
         Log.i("SysWebView", "shouldOverrideUrlLoading " + paramAnonymousWebResourceRequest.getUrl().toString());
-        if (e.this.Muf != null)
+        if (e.this.MRj != null)
         {
           paramAnonymousWebView = new c.f(paramAnonymousWebResourceRequest);
-          bool = e.this.Muf.d(e.this.Mud, paramAnonymousWebView);
+          bool = e.this.MRj.d(e.this.MRh, paramAnonymousWebView);
           AppMethodBeat.o(153706);
           return bool;
         }
@@ -338,15 +338,15 @@ public final class e
       public final boolean shouldOverrideUrlLoading(android.webkit.WebView paramAnonymousWebView, String paramAnonymousString)
       {
         AppMethodBeat.i(153708);
-        if (com.tencent.xweb.xwalk.d.bby(paramAnonymousString))
+        if (com.tencent.xweb.xwalk.d.bdb(paramAnonymousString))
         {
           AppMethodBeat.o(153708);
           return true;
         }
         Log.i("SysWebView", "shouldOverrideUrlLoading ".concat(String.valueOf(paramAnonymousString)));
-        if (e.this.Muf != null)
+        if (e.this.MRj != null)
         {
-          bool = e.this.Muf.a(e.this.Mud, paramAnonymousString);
+          bool = e.this.MRj.a(e.this.MRh, paramAnonymousString);
           AppMethodBeat.o(153708);
           return bool;
         }
@@ -355,41 +355,41 @@ public final class e
         return bool;
       }
     };
-    this.Mum = "xwalkTempCallBack";
-    this.Mud = paramWebView;
-    this.Mue = new a(paramWebView.getContext());
-    this.Mue.setBackgroundColor(0);
+    this.MRq = "xwalkTempCallBack";
+    this.MRh = paramWebView;
+    this.MRi = new a(paramWebView.getContext());
+    this.MRi.setBackgroundColor(0);
     getSettings();
-    this.Muh = new d(this.Mue);
-    this.Mue.setWebChromeClient(this.cgY);
-    this.Mue.setWebViewClient(this.cgX);
+    this.MRl = new d(this.MRi);
+    this.MRi.setWebChromeClient(this.cgY);
+    this.MRi.setWebViewClient(this.cgX);
     if (Build.VERSION.SDK_INT < 19)
     {
-      this.Mul = new b();
-      this.Mue.addJavascriptInterface(this.Mul, "xwalkTempCallBack");
+      this.MRp = new b();
+      this.MRi.addJavascriptInterface(this.MRp, "xwalkTempCallBack");
     }
     if ((paramWebView.getContext() instanceof Activity))
     {
-      bu((Activity)paramWebView.getContext());
+      bv((Activity)paramWebView.getContext());
       AppMethodBeat.o(153725);
       return;
     }
-    bu(null);
+    bv(null);
     AppMethodBeat.o(153725);
   }
   
-  private void bu(Activity paramActivity)
+  private void bv(Activity paramActivity)
   {
     AppMethodBeat.i(153726);
     Log.i("SysWebView", "initFullscreenVideo:" + getFullscreenVideoKind() + ",activity:" + paramActivity);
-    if (getFullscreenVideoKind() == WebView.a.Mqp)
+    if (getFullscreenVideoKind() == WebView.a.MNt)
     {
       AppMethodBeat.o(153726);
       return;
     }
-    this.Muk = com.tencent.xweb.extension.video.e.a(paramActivity, this.Mud, this.Mue, com.tencent.xweb.extension.video.d.gbr());
-    if (getFullscreenVideoKind() == WebView.a.Mqr) {
-      this.Muk.eA(this.Mue);
+    this.MRo = com.tencent.xweb.extension.video.e.a(paramActivity, this.MRh, this.MRi, com.tencent.xweb.extension.video.d.gfT());
+    if (getFullscreenVideoKind() == WebView.a.MNv) {
+      this.MRo.eD(this.MRi);
     }
     AppMethodBeat.o(153726);
   }
@@ -398,14 +398,14 @@ public final class e
   public final void addJavascriptInterface(Object paramObject, String paramString)
   {
     AppMethodBeat.i(153750);
-    this.Mue.addJavascriptInterface(paramObject, paramString);
+    this.MRi.addJavascriptInterface(paramObject, paramString);
     AppMethodBeat.o(153750);
   }
   
   public final boolean canGoBack()
   {
     AppMethodBeat.i(153731);
-    boolean bool = this.Mue.canGoBack();
+    boolean bool = this.MRi.canGoBack();
     AppMethodBeat.o(153731);
     return bool;
   }
@@ -413,7 +413,7 @@ public final class e
   public final boolean canGoForward()
   {
     AppMethodBeat.i(153768);
-    boolean bool = this.Mue.canGoForward();
+    boolean bool = this.MRi.canGoForward();
     AppMethodBeat.o(153768);
     return bool;
   }
@@ -426,9 +426,9 @@ public final class e
       public final void run()
       {
         AppMethodBeat.i(153719);
-        int i = e.this.Mue.getHeight();
-        Canvas localCanvas = new Canvas(Bitmap.createBitmap(e.this.Mue.getWidth(), i, Bitmap.Config.ARGB_8888));
-        e.this.Mue.draw(localCanvas);
+        int i = e.this.MRi.getHeight();
+        Canvas localCanvas = new Canvas(Bitmap.createBitmap(e.this.MRi.getWidth(), i, Bitmap.Config.ARGB_8888));
+        e.this.MRi.draw(localCanvas);
         Log.d("SysWebView", "bitmapCaptureFinished");
         AppMethodBeat.o(153719);
       }
@@ -439,51 +439,51 @@ public final class e
   public final void clearHistory()
   {
     AppMethodBeat.i(153767);
-    this.Mue.clearHistory();
+    this.MRi.clearHistory();
     AppMethodBeat.o(153767);
   }
   
   public final void clearMatches()
   {
     AppMethodBeat.i(153756);
-    this.Mue.clearMatches();
+    this.MRi.clearMatches();
     AppMethodBeat.o(153756);
   }
   
   public final void clearSslPreferences()
   {
     AppMethodBeat.i(153740);
-    this.Mue.clearSslPreferences();
+    this.MRi.clearSslPreferences();
     AppMethodBeat.o(153740);
   }
   
   public final void clearView()
   {
     AppMethodBeat.i(153734);
-    this.Mue.clearView();
+    this.MRi.clearView();
     AppMethodBeat.o(153734);
   }
   
   public final WebBackForwardList copyBackForwardList()
   {
-    AppMethodBeat.i(195510);
-    WebBackForwardList localWebBackForwardList = this.Mue.copyBackForwardList();
-    AppMethodBeat.o(195510);
+    AppMethodBeat.i(207526);
+    WebBackForwardList localWebBackForwardList = this.MRi.copyBackForwardList();
+    AppMethodBeat.o(207526);
     return localWebBackForwardList;
   }
   
   public final void destroy()
   {
     AppMethodBeat.i(153735);
-    this.Mue.destroy();
+    this.MRi.destroy();
     AppMethodBeat.o(153735);
   }
   
   public final void disableVideoJsCallback(boolean paramBoolean)
   {
     AppMethodBeat.i(153736);
-    if (this.Muk != null) {
-      this.Muk.zJ(paramBoolean);
+    if (this.MRo != null) {
+      this.MRo.zW(paramBoolean);
     }
     AppMethodBeat.o(153736);
   }
@@ -498,13 +498,13 @@ public final class e
     }
     if (Build.VERSION.SDK_INT >= 19)
     {
-      this.Mue.evaluateJavascript(paramString, paramValueCallback);
+      this.MRi.evaluateJavascript(paramString, paramValueCallback);
       AppMethodBeat.o(153738);
       return;
     }
     if (paramValueCallback == null)
     {
-      this.Mue.loadUrl(paramString);
+      this.MRi.loadUrl(paramString);
       AppMethodBeat.o(153738);
       return;
     }
@@ -512,24 +512,24 @@ public final class e
     if (paramString.trim().startsWith("javascript:")) {
       str = paramString.replaceFirst("javascript:", "");
     }
-    if (this.Mul == null)
+    if (this.MRp == null)
     {
-      this.Mul = new b();
-      this.Mue.addJavascriptInterface(this.Mul, "xwalkTempCallBack");
+      this.MRp = new b();
+      this.MRi.addJavascriptInterface(this.MRp, "xwalkTempCallBack");
     }
-    b localb = this.Mul;
+    b localb = this.MRp;
     if (paramValueCallback != null)
     {
       paramString = new StringBuilder();
-      int i = localb.Muq;
-      localb.Muq = (i + 1);
+      int i = localb.MRu;
+      localb.MRu = (i + 1);
       paramString = i;
-      localb.Mup.put(paramString, paramValueCallback);
+      localb.MRt.put(paramString, paramValueCallback);
     }
     for (;;)
     {
       paramString = "javascript:xwalkTempCallBack.notifyJava(" + paramString + ", " + str + ")";
-      this.Mue.loadUrl(paramString);
+      this.MRi.loadUrl(paramString);
       AppMethodBeat.o(153738);
       return;
       paramString = "";
@@ -539,14 +539,14 @@ public final class e
   public final void findAllAsync(String paramString)
   {
     AppMethodBeat.i(153758);
-    this.Mue.findAllAsync(paramString);
+    this.MRi.findAllAsync(paramString);
     AppMethodBeat.o(153758);
   }
   
   public final void findNext(boolean paramBoolean)
   {
     AppMethodBeat.i(153757);
-    this.Mue.findNext(paramBoolean);
+    this.MRi.findNext(paramBoolean);
     AppMethodBeat.o(153757);
   }
   
@@ -561,30 +561,30 @@ public final class e
   public final int getContentHeight()
   {
     AppMethodBeat.i(153742);
-    int i = this.Mue.getContentHeight();
+    int i = this.MRi.getContentHeight();
     AppMethodBeat.o(153742);
     return i;
   }
   
   public final x getCurWebChromeClient()
   {
-    return this.Mug;
+    return this.MRk;
   }
   
   public final ac getCurWebviewClient()
   {
-    return this.Muf;
+    return this.MRj;
   }
   
   public final com.tencent.xweb.internal.e getDefalutOpProvider()
   {
-    return this.Muh;
+    return this.MRl;
   }
   
   public final WebView.a getFullscreenVideoKind()
   {
     AppMethodBeat.i(153766);
-    WebView.a locala = com.tencent.xweb.a.bay(com.tencent.xweb.WebView.getCurStrModule());
+    WebView.a locala = com.tencent.xweb.a.bcb(com.tencent.xweb.WebView.getCurStrModule());
     AppMethodBeat.o(153766);
     return locala;
   }
@@ -592,7 +592,7 @@ public final class e
   public final WebView.b getHitTestResult()
   {
     AppMethodBeat.i(153754);
-    WebView.HitTestResult localHitTestResult = this.Mue.getHitTestResult();
+    WebView.HitTestResult localHitTestResult = this.MRi.getHitTestResult();
     WebView.b localb = new WebView.b();
     localb.mType = localHitTestResult.getType();
     localb.mExtra = localHitTestResult.getExtra();
@@ -602,9 +602,9 @@ public final class e
   
   public final String[] getHttpAuthUsernamePassword(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(195512);
-    paramString1 = ad.gbg().getHttpAuthUsernamePassword(paramString1, paramString2);
-    AppMethodBeat.o(195512);
+    AppMethodBeat.i(207528);
+    paramString1 = ad.gfI().getHttpAuthUsernamePassword(paramString1, paramString2);
+    AppMethodBeat.o(207528);
     return paramString1;
   }
   
@@ -616,7 +616,7 @@ public final class e
   public final float getScale()
   {
     AppMethodBeat.i(153743);
-    float f = this.Mue.getScale();
+    float f = this.MRi.getScale();
     AppMethodBeat.o(153743);
     return f;
   }
@@ -624,7 +624,7 @@ public final class e
   public final int getScrollHeight()
   {
     AppMethodBeat.i(153777);
-    int i = this.Mue.getScrollHeight();
+    int i = this.MRi.getScrollHeight();
     AppMethodBeat.o(153777);
     return i;
   }
@@ -632,19 +632,19 @@ public final class e
   public final z getSettings()
   {
     AppMethodBeat.i(153727);
-    if (this.Mui != null)
+    if (this.MRm != null)
     {
-      localg = this.Mui;
+      localg = this.MRm;
       AppMethodBeat.o(153727);
       return localg;
     }
-    if (this.Mue == null)
+    if (this.MRi == null)
     {
       AppMethodBeat.o(153727);
       return null;
     }
-    this.Mui = new g(this.Mue);
-    g localg = this.Mui;
+    this.MRm = new g(this.MRi);
+    g localg = this.MRm;
     AppMethodBeat.o(153727);
     return localg;
   }
@@ -652,20 +652,20 @@ public final class e
   public final String getTitle()
   {
     AppMethodBeat.i(153755);
-    String str = this.Mue.getTitle();
+    String str = this.MRi.getTitle();
     AppMethodBeat.o(153755);
     return str;
   }
   
   public final ViewGroup getTopView()
   {
-    return this.Mue;
+    return this.MRi;
   }
   
   public final String getUrl()
   {
     AppMethodBeat.i(153751);
-    String str = this.Mue.getUrl();
+    String str = this.MRi.getUrl();
     AppMethodBeat.o(153751);
     return str;
   }
@@ -673,20 +673,20 @@ public final class e
   public final String getVersionInfo()
   {
     AppMethodBeat.i(153759);
-    String str = "webviewtype = WV_KIND_SYS, version = " + XWalkEnvironment.getChromiunVersion() + ", V8 type=" + JsRuntime.gaC();
+    String str = "webviewtype = WV_KIND_SYS, version = " + XWalkEnvironment.getChromiunVersion() + ", V8 type=" + JsRuntime.gfe();
     AppMethodBeat.o(153759);
     return str;
   }
   
   public final View getView()
   {
-    return this.Mue;
+    return this.MRi;
   }
   
   public final int getVisibleTitleHeight()
   {
     AppMethodBeat.i(153744);
-    Object localObject = f.f(this.Mue, "getVisibleTitleHeight");
+    Object localObject = f.f(this.MRi, "getVisibleTitleHeight");
     if (localObject == null)
     {
       AppMethodBeat.o(153744);
@@ -708,14 +708,14 @@ public final class e
   public final int getWebScrollY()
   {
     AppMethodBeat.i(153761);
-    int i = this.Mue.getScrollY();
+    int i = this.MRi.getScrollY();
     AppMethodBeat.o(153761);
     return i;
   }
   
   public final View getWebViewUI()
   {
-    return this.Mue;
+    return this.MRi;
   }
   
   public final Object getX5WebViewExtension()
@@ -726,20 +726,20 @@ public final class e
   public final void goBack()
   {
     AppMethodBeat.i(153732);
-    this.Mue.goBack();
+    this.MRi.goBack();
     AppMethodBeat.o(153732);
   }
   
   public final void goForward()
   {
     AppMethodBeat.i(153769);
-    this.Mue.goForward();
+    this.MRi.goForward();
     AppMethodBeat.o(153769);
   }
   
   public final boolean hasEnteredFullscreen()
   {
-    return this.MrX;
+    return this.MPb;
   }
   
   public final Bundle invokeMiscMethod(String paramString, Bundle paramBundle)
@@ -792,63 +792,63 @@ public final class e
   public final void loadData(String paramString1, String paramString2, String paramString3)
   {
     AppMethodBeat.i(153741);
-    this.Mue.loadData(paramString1, paramString2, paramString3);
+    this.MRi.loadData(paramString1, paramString2, paramString3);
     AppMethodBeat.o(153741);
   }
   
   public final void loadDataWithBaseURL(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
   {
     AppMethodBeat.i(153746);
-    this.Mue.loadDataWithBaseURL(paramString1, paramString2, paramString3, paramString4, paramString5);
+    this.MRi.loadDataWithBaseURL(paramString1, paramString2, paramString3, paramString4, paramString5);
     AppMethodBeat.o(153746);
   }
   
   public final void loadUrl(String paramString)
   {
     AppMethodBeat.i(153730);
-    this.Mue.loadUrl(paramString);
+    this.MRi.loadUrl(paramString);
     AppMethodBeat.o(153730);
   }
   
   public final void loadUrl(String paramString, Map<String, String> paramMap)
   {
     AppMethodBeat.i(153749);
-    this.Mue.loadUrl(paramString, paramMap);
+    this.MRi.loadUrl(paramString, paramMap);
     AppMethodBeat.o(153749);
   }
   
   public final void onHide()
   {
     AppMethodBeat.i(153776);
-    this.Mue.onPause();
+    this.MRi.onPause();
     AppMethodBeat.o(153776);
   }
   
   public final void onPause()
   {
     AppMethodBeat.i(153765);
-    this.Mue.onPause();
+    this.MRi.onPause();
     AppMethodBeat.o(153765);
   }
   
   public final void onResume()
   {
     AppMethodBeat.i(153764);
-    this.Mue.onResume();
+    this.MRi.onResume();
     AppMethodBeat.o(153764);
   }
   
   public final void onShow()
   {
     AppMethodBeat.i(153775);
-    this.Mue.onPause();
+    this.MRi.onPause();
     AppMethodBeat.o(153775);
   }
   
   public final boolean overlayHorizontalScrollbar()
   {
     AppMethodBeat.i(153745);
-    boolean bool = this.Mue.overlayHorizontalScrollbar();
+    boolean bool = this.MRi.overlayHorizontalScrollbar();
     AppMethodBeat.o(153745);
     return bool;
   }
@@ -856,14 +856,14 @@ public final class e
   public final void reload()
   {
     AppMethodBeat.i(153739);
-    this.Mue.reload();
+    this.MRi.reload();
     AppMethodBeat.o(153739);
   }
   
   public final void removeJavascriptInterface(String paramString)
   {
     AppMethodBeat.i(153752);
-    this.Mue.removeJavascriptInterface(paramString);
+    this.MRi.removeJavascriptInterface(paramString);
     AppMethodBeat.o(153752);
   }
   
@@ -882,29 +882,29 @@ public final class e
   public final void setDownloadListener(DownloadListener paramDownloadListener)
   {
     AppMethodBeat.i(153728);
-    this.Mue.setDownloadListener(paramDownloadListener);
+    this.MRi.setDownloadListener(paramDownloadListener);
     AppMethodBeat.o(153728);
   }
   
   public final void setFindListener(WebView.FindListener paramFindListener)
   {
     AppMethodBeat.i(153729);
-    this.Mue.setFindListener(paramFindListener);
+    this.MRi.setFindListener(paramFindListener);
     AppMethodBeat.o(153729);
   }
   
   public final void setHorizontalScrollBarEnabled(boolean paramBoolean)
   {
     AppMethodBeat.i(153771);
-    this.Mue.setHorizontalScrollBarEnabled(paramBoolean);
+    this.MRi.setHorizontalScrollBarEnabled(paramBoolean);
     AppMethodBeat.o(153771);
   }
   
   public final void setHttpAuthUsernamePassword(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    AppMethodBeat.i(195511);
-    ad.gbg().setHttpAuthUsernamePassword(paramString1, paramString2, paramString3, paramString4);
-    AppMethodBeat.o(195511);
+    AppMethodBeat.i(207527);
+    ad.gfI().setHttpAuthUsernamePassword(paramString1, paramString2, paramString3, paramString4);
+    AppMethodBeat.o(207527);
   }
   
   public final void setJSExceptionListener(ae paramae) {}
@@ -912,14 +912,14 @@ public final class e
   public final void setVerticalScrollBarEnabled(boolean paramBoolean)
   {
     AppMethodBeat.i(153770);
-    this.Mue.setVerticalScrollBarEnabled(paramBoolean);
+    this.MRi.setVerticalScrollBarEnabled(paramBoolean);
     AppMethodBeat.o(153770);
   }
   
   public final u setVideoJsCallback(v paramv)
   {
     AppMethodBeat.i(153737);
-    if (this.Muk.eB(paramv))
+    if (this.MRo.eE(paramv))
     {
       paramv = new u()
       {
@@ -932,34 +932,34 @@ public final class e
           AppMethodBeat.o(153690);
         }
         
-        public final void etk()
+        public final void ewR()
         {
           AppMethodBeat.i(153689);
           if (e.a(e.this) != null) {
-            e.a(e.this).etk();
+            e.a(e.this).ewR();
           }
           AppMethodBeat.o(153689);
         }
         
-        public final void gaG()
+        public final void gfi()
         {
           AppMethodBeat.i(153688);
           if (e.a(e.this) != null) {
-            e.a(e.this).gaG();
+            e.a(e.this).gfi();
           }
           AppMethodBeat.o(153688);
         }
         
-        public final boolean gaH()
+        public final boolean gfj()
         {
-          AppMethodBeat.i(195508);
+          AppMethodBeat.i(207524);
           if (e.a(e.this) != null)
           {
-            boolean bool = e.a(e.this).gaH();
-            AppMethodBeat.o(195508);
+            boolean bool = e.a(e.this).gfj();
+            AppMethodBeat.o(207524);
             return bool;
           }
-          AppMethodBeat.o(195508);
+          AppMethodBeat.o(207524);
           return false;
         }
       };
@@ -973,19 +973,19 @@ public final class e
   
   public final void setWebChromeClient(x paramx)
   {
-    this.Mug = paramx;
+    this.MRk = paramx;
   }
   
   public final void setWebViewCallbackClient(ab paramab)
   {
-    if (this.Mue != null) {
-      this.Mue.lvl = paramab;
+    if (this.MRi != null) {
+      this.MRi.lzJ = paramab;
     }
   }
   
   public final void setWebViewClient(ac paramac)
   {
-    this.Muf = paramac;
+    this.MRj = paramac;
   }
   
   public final void setWebViewClientExtension(com.tencent.xweb.x5.export.external.extension.proxy.a parama) {}
@@ -995,7 +995,7 @@ public final class e
   public final void stopLoading()
   {
     AppMethodBeat.i(153753);
-    this.Mue.stopLoading();
+    this.MRi.stopLoading();
     AppMethodBeat.o(153753);
   }
   
@@ -1042,7 +1042,7 @@ public final class e
   public final boolean zoomIn()
   {
     AppMethodBeat.i(153748);
-    boolean bool = this.Mue.zoomIn();
+    boolean bool = this.MRi.zoomIn();
     AppMethodBeat.o(153748);
     return bool;
   }
@@ -1050,7 +1050,7 @@ public final class e
   public final boolean zoomOut()
   {
     AppMethodBeat.i(153747);
-    boolean bool = this.Mue.zoomOut();
+    boolean bool = this.MRi.zoomOut();
     AppMethodBeat.o(153747);
     return bool;
   }
@@ -1058,7 +1058,7 @@ public final class e
   final class a
     extends android.webkit.WebView
   {
-    public ab lvl;
+    public ab lzJ;
     
     public a(Context paramContext)
     {
@@ -1090,11 +1090,11 @@ public final class e
     {
       AppMethodBeat.i(153720);
       super.onScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-      if (e.this.Mud != null) {
-        e.this.Mud.onWebViewScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4);
+      if (e.this.MRh != null) {
+        e.this.MRh.onWebViewScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4);
       }
-      if (this.lvl != null) {
-        this.lvl.onScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4, this);
+      if (this.lzJ != null) {
+        this.lzJ.onScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4, this);
       }
       AppMethodBeat.o(153720);
     }
@@ -1102,14 +1102,14 @@ public final class e
   
   public static final class b
   {
-    HashMap<String, ValueCallback<String>> Mup;
-    int Muq;
+    HashMap<String, ValueCallback<String>> MRt;
+    int MRu;
     
     public b()
     {
       AppMethodBeat.i(153723);
-      this.Mup = new HashMap();
-      this.Muq = 0;
+      this.MRt = new HashMap();
+      this.MRu = 0;
       AppMethodBeat.o(153723);
     }
     
@@ -1117,11 +1117,11 @@ public final class e
     public final void notifyJava(String paramString1, String paramString2)
     {
       AppMethodBeat.i(153724);
-      ValueCallback localValueCallback = (ValueCallback)this.Mup.get(paramString1);
+      ValueCallback localValueCallback = (ValueCallback)this.MRt.get(paramString1);
       if (localValueCallback != null)
       {
         localValueCallback.onReceiveValue(paramString2);
-        this.Mup.remove(paramString1);
+        this.MRt.remove(paramString1);
       }
       AppMethodBeat.o(153724);
     }

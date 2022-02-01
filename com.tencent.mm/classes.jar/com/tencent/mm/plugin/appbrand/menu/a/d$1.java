@@ -12,16 +12,16 @@ public final class d$1
   public final void M(View paramView, int paramInt)
   {
     AppMethodBeat.i(134921);
-    if (this.fPn.isShowing()) {
-      this.fPn.bpT();
+    if (this.fRt.isShowing()) {
+      this.fRt.bqD();
     }
-    this.lTC.M(paramView, paramInt);
+    this.lYe.M(paramView, paramInt);
     AppMethodBeat.o(134921);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.menu.a.d.1
  * JD-Core Version:    0.7.0.1
  */

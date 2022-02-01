@@ -9,15 +9,15 @@ import com.tencent.mm.plugin.appbrand.config.AppBrandSysConfigWC;
 import com.tencent.mm.plugin.appbrand.config.a;
 import d.g.b.p;
 
-@d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/FunctionalConfigAssembler;", "", "()V", "assembleAppConfig", "Lcom/tencent/mm/plugin/appbrand/config/AppBrandAppConfig;", "runtime", "Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/FunctionalRuntime;", "assembleSysConfig", "Lcom/tencent/mm/plugin/appbrand/config/AppBrandSysConfigWC;", "plugin-appbrand-integration_release"})
+@d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/FunctionalConfigAssembler;", "", "()V", "assembleAppConfig", "Lcom/tencent/mm/plugin/appbrand/config/AppBrandAppConfig;", "runtime", "Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/FunctionalRuntime;", "assembleSysConfig", "Lcom/tencent/mm/plugin/appbrand/config/AppBrandSysConfigWC;", "plugin-appbrand-integration_release"})
 public final class f
 {
-  public static final f lOs;
+  public static final f lST;
   
   static
   {
     AppMethodBeat.i(50866);
-    lOs = new f();
+    lST = new f();
     AppMethodBeat.o(50866);
   }
   
@@ -28,10 +28,10 @@ public final class f
     AppBrandSysConfigWC localAppBrandSysConfigWC = (AppBrandSysConfigWC)XIPCInvoker.a("com.tencent.mm", new IPCString(paraml.getAppId()), n.class);
     if (localAppBrandSysConfigWC != null)
     {
-      localAppBrandSysConfigWC.jYh = new WxaPkgWrappingInfo();
-      localAppBrandSysConfigWC.jYh.jIU = paraml.aXc().dPf;
-      localAppBrandSysConfigWC.jYh.pkgVersion = paraml.aXc().aDD;
-      localAppBrandSysConfigWC.jYh.jIW = true;
+      localAppBrandSysConfigWC.kbw = new WxaPkgWrappingInfo();
+      localAppBrandSysConfigWC.kbw.jLV = paraml.aXx().dQv;
+      localAppBrandSysConfigWC.kbw.pkgVersion = paraml.aXx().aDD;
+      localAppBrandSysConfigWC.kbw.jLX = true;
       AppMethodBeat.o(50864);
       return localAppBrandSysConfigWC;
     }
@@ -43,8 +43,8 @@ public final class f
   {
     AppMethodBeat.i(50865);
     p.h(paraml, "runtime");
-    a locala = a.cC(paraml.getAppId(), "{}");
-    locala.jVK = paraml.aXc().jCN;
+    a locala = a.cE(paraml.getAppId(), "{}");
+    locala.jZa = paraml.aXx().jFL;
     p.g(locala, "AppBrandAppConfig.parse(…onfig.enterPath\n        }");
     AppMethodBeat.o(50865);
     return locala;

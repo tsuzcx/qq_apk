@@ -9,24 +9,24 @@ import com.tencent.mm.modelvideo.s;
 import com.tencent.mm.modelvideo.t;
 import com.tencent.mm.modelvideo.u;
 import com.tencent.mm.plugin.choosemsgfile.b.c.g;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.bu;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.bv;
 
 public final class h
   extends d
 {
-  private String oSg;
-  private String oSr;
+  private String oYI;
+  private String oYT;
   
-  public h(g paramg, bu parambu)
+  public h(g paramg, bv parambv)
   {
-    super(paramg, parambu);
+    super(paramg, parambv);
   }
   
   public final void a(View paramView, a parama)
   {
     AppMethodBeat.i(123278);
-    com.tencent.mm.plugin.choosemsgfile.b.d.c.a(this.oSd.bZx().getContext(), paramView, parama);
+    com.tencent.mm.plugin.choosemsgfile.b.d.c.a(this.oYF.caM().getContext(), paramView, parama);
     AppMethodBeat.o(123278);
   }
   
@@ -34,25 +34,25 @@ public final class h
   {
     AppMethodBeat.i(162329);
     super.a(paramm, paramInt, parama);
-    paramm.oSF.setVisibility(0);
-    paramm.oSG.setVisibility(0);
-    paramm = paramm.oSG;
-    if (this.oSr == null) {
-      this.oSr = bt.qY(u.Hy(this.oRU.field_imgPath).hHQ);
+    paramm.oZh.setVisibility(0);
+    paramm.oZi.setVisibility(0);
+    paramm = paramm.oZi;
+    if (this.oYT == null) {
+      this.oYT = bu.rb(u.Ia(this.oYw.field_imgPath).hKI);
     }
-    paramm.setText(bt.bI(this.oSr, ""));
+    paramm.setText(bu.bI(this.oYT, ""));
     AppMethodBeat.o(162329);
   }
   
-  protected final String aCp()
+  protected final String aCF()
   {
     AppMethodBeat.i(123276);
-    if (this.oSg == null)
+    if (this.oYI == null)
     {
-      o.aMJ();
-      this.oSg = t.Hi(this.oRU.field_imgPath);
+      o.aNh();
+      this.oYI = t.HK(this.oYw.field_imgPath);
     }
-    String str = this.oSg;
+    String str = this.oYI;
     AppMethodBeat.o(123276);
     return str;
   }

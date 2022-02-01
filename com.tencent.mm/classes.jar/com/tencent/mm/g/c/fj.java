@@ -2,34 +2,34 @@ package com.tencent.mm.g.c;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import com.tencent.mm.protocal.protobuf.akd;
+import com.tencent.mm.protocal.protobuf.akn;
 import com.tencent.mm.sdk.e.c;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.io.IOException;
 
 public abstract class fj
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eCW;
-  private static final int eDc = "status".hashCode();
-  private static final int eHT;
-  private static final int eTG;
-  private static final int eVF;
-  private static final int eVj = "localId".hashCode();
-  private static final int fpB;
-  private static final int fpC;
-  private static final int fpD = "favFrom".hashCode();
+  private static final int eEF;
+  private static final int eEL = "status".hashCode();
+  private static final int eJC;
+  private static final int eVr;
+  private static final int eWU = "localId".hashCode();
+  private static final int eXq;
+  private static final int frB;
+  private static final int frC;
+  private static final int frD = "favFrom".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
   private static final int type_HASHCODE;
   private boolean __hadSettype = true;
-  private boolean eCS = true;
-  private boolean eCZ = true;
-  private boolean eHQ = true;
-  private boolean eTC = true;
-  private boolean eVh = true;
-  private boolean eVr = true;
-  public akd field_dataProto;
+  private boolean eEB = true;
+  private boolean eEI = true;
+  private boolean eJz = true;
+  private boolean eVn = true;
+  private boolean eWS = true;
+  private boolean eXc = true;
+  public akn field_dataProto;
   public String field_desc;
   public String field_favFrom;
   public int field_localId;
@@ -39,18 +39,18 @@ public abstract class fj
   public String field_title;
   public String field_toUser;
   public int field_type;
-  private boolean fpA = true;
-  private boolean fpy = true;
-  private boolean fpz = true;
+  private boolean frA = true;
+  private boolean fry = true;
+  private boolean frz = true;
   
   static
   {
-    eCW = "msgId".hashCode();
-    fpB = "oriMsgId".hashCode();
-    eVF = "toUser".hashCode();
-    eHT = "title".hashCode();
-    eTG = "desc".hashCode();
-    fpC = "dataProto".hashCode();
+    eEF = "msgId".hashCode();
+    frB = "oriMsgId".hashCode();
+    eXq = "toUser".hashCode();
+    eJC = "title".hashCode();
+    eVr = "desc".hashCode();
+    frC = "dataProto".hashCode();
     type_HASHCODE = "type".hashCode();
   }
   
@@ -67,11 +67,11 @@ public abstract class fj
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eVj != k) {
+      if (eWU != k) {
         break label65;
       }
       this.field_localId = paramCursor.getInt(i);
-      this.eVh = true;
+      this.eWS = true;
     }
     for (;;)
     {
@@ -79,34 +79,34 @@ public abstract class fj
       break label20;
       break;
       label65:
-      if (eCW == k) {
+      if (eEF == k) {
         this.field_msgId = paramCursor.getLong(i);
-      } else if (fpB == k) {
+      } else if (frB == k) {
         this.field_oriMsgId = paramCursor.getLong(i);
-      } else if (eVF == k) {
+      } else if (eXq == k) {
         this.field_toUser = paramCursor.getString(i);
-      } else if (eHT == k) {
+      } else if (eJC == k) {
         this.field_title = paramCursor.getString(i);
-      } else if (eTG == k) {
+      } else if (eVr == k) {
         this.field_desc = paramCursor.getString(i);
-      } else if (fpC == k) {
+      } else if (frC == k) {
         try
         {
           byte[] arrayOfByte = paramCursor.getBlob(i);
           if ((arrayOfByte == null) || (arrayOfByte.length <= 0)) {
             continue;
           }
-          this.field_dataProto = ((akd)new akd().parseFrom(arrayOfByte));
+          this.field_dataProto = ((akn)new akn().parseFrom(arrayOfByte));
         }
         catch (IOException localIOException)
         {
-          ad.e("MicroMsg.SDK.BaseRecordMessageInfo", localIOException.getMessage());
+          ae.e("MicroMsg.SDK.BaseRecordMessageInfo", localIOException.getMessage());
         }
       } else if (type_HASHCODE == k) {
         this.field_type = paramCursor.getInt(i);
-      } else if (eDc == k) {
+      } else if (eEL == k) {
         this.field_status = paramCursor.getInt(i);
-      } else if (fpD == k) {
+      } else if (frD == k) {
         this.field_favFrom = paramCursor.getString(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
@@ -117,38 +117,38 @@ public abstract class fj
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eVh) {
+    if (this.eWS) {
       localContentValues.put("localId", Integer.valueOf(this.field_localId));
     }
-    if (this.eCS) {
+    if (this.eEB) {
       localContentValues.put("msgId", Long.valueOf(this.field_msgId));
     }
-    if (this.fpy) {
+    if (this.fry) {
       localContentValues.put("oriMsgId", Long.valueOf(this.field_oriMsgId));
     }
     if (this.field_toUser == null) {
       this.field_toUser = "";
     }
-    if (this.eVr) {
+    if (this.eXc) {
       localContentValues.put("toUser", this.field_toUser);
     }
-    if (this.eHQ) {
+    if (this.eJz) {
       localContentValues.put("title", this.field_title);
     }
-    if (this.eTC) {
+    if (this.eVn) {
       localContentValues.put("desc", this.field_desc);
     }
-    if ((this.fpz) && (this.field_dataProto != null)) {}
+    if ((this.frz) && (this.field_dataProto != null)) {}
     try
     {
       localContentValues.put("dataProto", this.field_dataProto.toByteArray());
       if (this.__hadSettype) {
         localContentValues.put("type", Integer.valueOf(this.field_type));
       }
-      if (this.eCZ) {
+      if (this.eEI) {
         localContentValues.put("status", Integer.valueOf(this.field_status));
       }
-      if (this.fpA) {
+      if (this.frA) {
         localContentValues.put("favFrom", this.field_favFrom);
       }
       if (this.systemRowid > 0L) {
@@ -160,14 +160,14 @@ public abstract class fj
     {
       for (;;)
       {
-        ad.e("MicroMsg.SDK.BaseRecordMessageInfo", localIOException.getMessage());
+        ae.e("MicroMsg.SDK.BaseRecordMessageInfo", localIOException.getMessage());
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.c.fj
  * JD-Core Version:    0.7.0.1
  */

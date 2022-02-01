@@ -17,9 +17,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.b.o;
 import com.tencent.mm.plugin.appbrand.a.b;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.lang.reflect.Field;
@@ -52,10 +52,10 @@ import org.json.JSONObject;
 
 public enum j
 {
-  public static boolean F(c paramc)
+  public static boolean G(c paramc)
   {
     AppMethodBeat.i(144388);
-    switch (2.jLm[paramc.aVD().ordinal()])
+    switch (j.2.jOy[paramc.aWc().ordinal()])
     {
     default: 
       AppMethodBeat.o(144388);
@@ -65,39 +65,95 @@ public enum j
     return true;
   }
   
-  public static Map<String, List<String>> N(Map<String, String> paramMap)
+  public static int TA(String paramString)
   {
-    AppMethodBeat.i(144391);
-    localHashMap = new HashMap();
-    try
+    AppMethodBeat.i(144375);
+    if (!Tz(paramString))
     {
-      Iterator localIterator = paramMap.entrySet().iterator();
-      while (localIterator.hasNext())
+      ae.e("MicroMsg.AppBrandNetworkUtil", "matchUrl fail, url is null");
+      AppMethodBeat.o(144375);
+      return 0;
+    }
+    Object localObject = paramString.split("\\.");
+    int k = o.E(new byte[] { (byte)(bu.getInt(localObject[0], 0) & 0xFF), (byte)(bu.getInt(localObject[1], 0) & 0xFF), (byte)(bu.getInt(localObject[2], 0) & 0xFF), (byte)(bu.getInt(localObject[3], 0) & 0xFF) });
+    WifiManager localWifiManager = (WifiManager)ak.getContext().getApplicationContext().getSystemService("wifi");
+    int i;
+    int j;
+    if (localWifiManager.getWifiState() == 3)
+    {
+      int m = localWifiManager.getConnectionInfo().getIpAddress();
+      localObject = (m & 0xFF) + "." + (m >> 8 & 0xFF) + "." + (m >> 16 & 0xFF) + "." + (m >> 24 & 0xFF);
+      try
       {
-        paramMap = (Map.Entry)localIterator.next();
-        String str1 = (String)paramMap.getKey();
-        if ((str1 != null) && (!str1.isEmpty()))
+        i = localWifiManager.getDhcpInfo().netmask;
+        j = i;
+        if (i <= 0)
         {
-          String str2 = (String)paramMap.getValue();
-          List localList = (List)localHashMap.get(str1);
-          paramMap = localList;
-          if (localList == null) {
-            paramMap = new ArrayList();
+          if (Build.VERSION.SDK_INT >= 21) {
+            j = btX();
           }
-          paramMap.add(str2);
-          localHashMap.put(str1, paramMap);
+        }
+        else
+        {
+          ae.i("MicroMsg.AppBrandNetworkUtil", "matchIp oldIpStr:%s, localIp:%s,oldIpInt:%d, localIpInt:%d, netmask:%d", new Object[] { paramString, localObject, Integer.valueOf(k), Integer.valueOf(m), Integer.valueOf(j) });
+          i = e(j, k, m);
+          AppMethodBeat.o(144375);
+          return i;
         }
       }
-      return localHashMap;
+      catch (NullPointerException localNullPointerException)
+      {
+        for (;;)
+        {
+          ae.printErrStackTrace("MicroMsg.AppBrandNetworkUtil", localNullPointerException, "NullPointerException: getDhcpInfo error", new Object[0]);
+          i = 0;
+          continue;
+          ae.e("MicroMsg.AppBrandNetworkUtil", "invalid netmask");
+          j = i;
+        }
+      }
     }
-    catch (Exception paramMap)
+    for (;;)
     {
-      ad.printErrStackTrace("MicroMsg.AppBrandNetworkUtil", paramMap, "JSONException: put header error", new Object[0]);
-      AppMethodBeat.o(144391);
+      try
+      {
+        i = ((Integer)localNullPointerException.getClass().getField("WIFI_AP_STATE_ENABLED").get(localNullPointerException)).intValue();
+        ae.printErrStackTrace("MicroMsg.AppBrandNetworkUtil", paramString, "Exception: getWifiApState error", new Object[0]);
+      }
+      catch (Exception paramString)
+      {
+        try
+        {
+          j = ((Integer)localNullPointerException.getClass().getMethod("getWifiApState", new Class[0]).invoke(localNullPointerException, new Object[0])).intValue();
+          if (j != i) {
+            break;
+          }
+          ae.i("MicroMsg.AppBrandNetworkUtil", "matchip in apmode");
+          i = uL(k);
+          AppMethodBeat.o(144375);
+          return i;
+        }
+        catch (Exception paramString)
+        {
+          break label409;
+        }
+        paramString = paramString;
+        i = 13;
+      }
+      label409:
+      j = 0;
     }
+    ae.i("MicroMsg.AppBrandNetworkUtil", "apState:%d", new Object[] { Integer.valueOf(j) });
+    AppMethodBeat.o(144375);
+    return 0;
   }
   
-  public static HashMap<String, String> SP(String paramString)
+  public static String TB(String paramString)
+  {
+    return paramString;
+  }
+  
+  public static HashMap<String, String> Ty(String paramString)
   {
     AppMethodBeat.i(144368);
     String str3 = "";
@@ -126,7 +182,7 @@ public enum j
     {
       for (;;)
       {
-        ad.printErrStackTrace("MicroMsg.AppBrandNetworkUtil", paramString, "Exception: parseUrl error", new Object[0]);
+        ae.printErrStackTrace("MicroMsg.AppBrandNetworkUtil", paramString, "Exception: parseUrl error", new Object[0]);
         paramString = str2;
       }
     }
@@ -138,19 +194,19 @@ public enum j
     return localObject2;
   }
   
-  private static boolean SQ(String paramString)
+  private static boolean Tz(String paramString)
   {
     AppMethodBeat.i(144374);
-    if (bt.isNullOrNil(paramString))
+    if (bu.isNullOrNil(paramString))
     {
-      ad.e("MicroMsg.AppBrandNetworkUtil", "matchUrl fail, url is null");
+      ae.e("MicroMsg.AppBrandNetworkUtil", "matchUrl fail, url is null");
       AppMethodBeat.o(144374);
       return false;
     }
     paramString = paramString.split("\\.");
     if (paramString.length != 4)
     {
-      ad.e("MicroMsg.AppBrandNetworkUtil", "matchUrl fail, invalid ip format");
+      ae.e("MicroMsg.AppBrandNetworkUtil", "matchUrl fail, invalid ip format");
       AppMethodBeat.o(144374);
       return false;
     }
@@ -158,10 +214,10 @@ public enum j
     int i = 0;
     while (i < j)
     {
-      int k = bt.getInt(paramString[i], -1);
+      int k = bu.getInt(paramString[i], -1);
       if ((k < 0) || (k > 255))
       {
-        ad.e("MicroMsg.AppBrandNetworkUtil", "matchUrl fail, invalid ip format");
+        ae.e("MicroMsg.AppBrandNetworkUtil", "matchUrl fail, invalid ip format");
         AppMethodBeat.o(144374);
         return false;
       }
@@ -171,92 +227,36 @@ public enum j
     return true;
   }
   
-  public static int SR(String paramString)
+  public static Map<String, List<String>> U(Map<String, String> paramMap)
   {
-    AppMethodBeat.i(144375);
-    if (!SQ(paramString))
+    AppMethodBeat.i(144391);
+    localHashMap = new HashMap();
+    try
     {
-      ad.e("MicroMsg.AppBrandNetworkUtil", "matchUrl fail, url is null");
-      AppMethodBeat.o(144375);
-      return 0;
-    }
-    Object localObject = paramString.split("\\.");
-    int k = o.E(new byte[] { (byte)(bt.getInt(localObject[0], 0) & 0xFF), (byte)(bt.getInt(localObject[1], 0) & 0xFF), (byte)(bt.getInt(localObject[2], 0) & 0xFF), (byte)(bt.getInt(localObject[3], 0) & 0xFF) });
-    WifiManager localWifiManager = (WifiManager)aj.getContext().getApplicationContext().getSystemService("wifi");
-    int i;
-    int j;
-    if (localWifiManager.getWifiState() == 3)
-    {
-      int m = localWifiManager.getConnectionInfo().getIpAddress();
-      localObject = (m & 0xFF) + "." + (m >> 8 & 0xFF) + "." + (m >> 16 & 0xFF) + "." + (m >> 24 & 0xFF);
-      try
+      Iterator localIterator = paramMap.entrySet().iterator();
+      while (localIterator.hasNext())
       {
-        i = localWifiManager.getDhcpInfo().netmask;
-        j = i;
-        if (i <= 0)
+        paramMap = (Map.Entry)localIterator.next();
+        String str1 = (String)paramMap.getKey();
+        if ((str1 != null) && (!str1.isEmpty()))
         {
-          if (Build.VERSION.SDK_INT >= 21) {
-            j = btm();
+          String str2 = (String)paramMap.getValue();
+          List localList = (List)localHashMap.get(str1);
+          paramMap = localList;
+          if (localList == null) {
+            paramMap = new ArrayList();
           }
-        }
-        else
-        {
-          ad.i("MicroMsg.AppBrandNetworkUtil", "matchIp oldIpStr:%s, localIp:%s,oldIpInt:%d, localIpInt:%d, netmask:%d", new Object[] { paramString, localObject, Integer.valueOf(k), Integer.valueOf(m), Integer.valueOf(j) });
-          i = e(j, k, m);
-          AppMethodBeat.o(144375);
-          return i;
+          paramMap.add(str2);
+          localHashMap.put(str1, paramMap);
         }
       }
-      catch (NullPointerException localNullPointerException)
-      {
-        for (;;)
-        {
-          ad.printErrStackTrace("MicroMsg.AppBrandNetworkUtil", localNullPointerException, "NullPointerException: getDhcpInfo error", new Object[0]);
-          i = 0;
-          continue;
-          ad.e("MicroMsg.AppBrandNetworkUtil", "invalid netmask");
-          j = i;
-        }
-      }
+      return localHashMap;
     }
-    for (;;)
+    catch (Exception paramMap)
     {
-      try
-      {
-        i = ((Integer)localNullPointerException.getClass().getField("WIFI_AP_STATE_ENABLED").get(localNullPointerException)).intValue();
-        ad.printErrStackTrace("MicroMsg.AppBrandNetworkUtil", paramString, "Exception: getWifiApState error", new Object[0]);
-      }
-      catch (Exception paramString)
-      {
-        try
-        {
-          j = ((Integer)localNullPointerException.getClass().getMethod("getWifiApState", new Class[0]).invoke(localNullPointerException, new Object[0])).intValue();
-          if (j != i) {
-            break;
-          }
-          ad.i("MicroMsg.AppBrandNetworkUtil", "matchip in apmode");
-          i = uF(k);
-          AppMethodBeat.o(144375);
-          return i;
-        }
-        catch (Exception paramString)
-        {
-          break label415;
-        }
-        paramString = paramString;
-        i = 13;
-      }
-      label415:
-      j = 0;
+      ae.printErrStackTrace("MicroMsg.AppBrandNetworkUtil", paramMap, "JSONException: put header error", new Object[0]);
+      AppMethodBeat.o(144391);
     }
-    ad.i("MicroMsg.AppBrandNetworkUtil", "apState:%d", new Object[] { Integer.valueOf(j) });
-    AppMethodBeat.o(144375);
-    return 0;
-  }
-  
-  public static String SS(String paramString)
-  {
-    return paramString;
   }
   
   public static int a(a parama, int paramInt)
@@ -266,13 +266,13 @@ public enum j
     default: 
       return 0;
     case 0: 
-      return parama.lVm;
+      return parama.lZP;
     case 1: 
-      return parama.lVn;
+      return parama.lZQ;
     case 3: 
-      return parama.lVp;
+      return parama.lZS;
     }
-    return parama.lVo;
+    return parama.lZR;
   }
   
   public static String a(HttpURLConnection paramHttpURLConnection)
@@ -307,7 +307,7 @@ public enum j
     }
     catch (URISyntaxException paramHttpURLConnection)
     {
-      ad.printErrStackTrace("MicroMsg.AppBrandNetworkUtil", paramHttpURLConnection, "URISyntaxException: resolve url error", new Object[0]);
+      ae.printErrStackTrace("MicroMsg.AppBrandNetworkUtil", paramHttpURLConnection, "URISyntaxException: resolve url error", new Object[0]);
       AppMethodBeat.o(144381);
     }
     return str1;
@@ -317,7 +317,7 @@ public enum j
   {
     AppMethodBeat.i(144394);
     Object localObject2 = paramURI.getScheme();
-    if (bt.isNullOrNil((String)localObject2))
+    if (bu.isNullOrNil((String)localObject2))
     {
       AppMethodBeat.o(144394);
       return null;
@@ -400,7 +400,7 @@ public enum j
     paramJSONObject = aa(paramJSONObject);
     if (parama == null)
     {
-      ad.e("MicroMsg.AppBrandNetworkUtil", "hy: no network config!");
+      ae.e("MicroMsg.AppBrandNetworkUtil", "hy: no network config!");
       AppMethodBeat.o(144380);
       return paramJSONObject;
     }
@@ -408,13 +408,13 @@ public enum j
     if (parama.mode == 1)
     {
       localObject1 = paramJSONObject;
-      if (parama.lVr != null)
+      if (parama.lZU != null)
       {
-        localObject1 = parama.lVr;
+        localObject1 = parama.lZU;
         if ((localObject1 != null) && (!((ArrayList)localObject1).isEmpty())) {
           break label115;
         }
-        ad.e("MicroMsg.AppBrandNetworkUtil", "filterHttpHeaderBlackList fail, headerMap is null or blacklist is null or nil.");
+        ae.e("MicroMsg.AppBrandNetworkUtil", "filterHttpHeaderBlackList fail, headerMap is null or blacklist is null or nil.");
       }
     }
     for (;;)
@@ -444,7 +444,7 @@ public enum j
               localObject2 = ((String)localObject2).toLowerCase();
               str1 = (String)paramJSONObject.remove(localObject2);
               if (str1 != null) {
-                ad.v("MicroMsg.AppBrandNetworkUtil", "remove key %s value %s", new Object[] { localObject2, str1 });
+                ae.v("MicroMsg.AppBrandNetworkUtil", "remove key %s value %s", new Object[] { localObject2, str1 });
               }
             }
           }
@@ -452,11 +452,11 @@ public enum j
           localObject1 = paramJSONObject;
         } while (parama.mode != 2);
         localObject1 = paramJSONObject;
-      } while (parama.lVs == null);
-      Object localObject2 = parama.lVs;
+      } while (parama.lZV == null);
+      Object localObject2 = parama.lZV;
       if (localObject2 == null)
       {
-        ad.e("MicroMsg.AppBrandNetworkUtil", "filterHttpHeaderWhiteList fail");
+        ae.e("MicroMsg.AppBrandNetworkUtil", "filterHttpHeaderWhiteList fail");
       }
       else
       {
@@ -471,7 +471,7 @@ public enum j
             String str2 = (String)paramJSONObject.get(str1);
             if (str2 != null)
             {
-              ad.v("MicroMsg.AppBrandNetworkUtil", "add item, key(%s), value(%s)", new Object[] { str1, str2 });
+              ae.v("MicroMsg.AppBrandNetworkUtil", "add item, key(%s), value(%s)", new Object[] { str1, str2 });
               ((Map)localObject1).put(str1, str2);
             }
           }
@@ -499,7 +499,7 @@ public enum j
     }
     catch (Exception parama)
     {
-      ad.printErrStackTrace("MicroMsg.AppBrandNetworkUtil", parama, "Exception: SSLContext init error", new Object[0]);
+      ae.printErrStackTrace("MicroMsg.AppBrandNetworkUtil", parama, "Exception: SSLContext init error", new Object[0]);
       AppMethodBeat.o(144383);
     }
     return null;
@@ -519,7 +519,7 @@ public enum j
       public final boolean verify(String paramAnonymousString, SSLSession paramAnonymousSSLSession)
       {
         AppMethodBeat.i(144364);
-        if ((this.lWu.verify(paramAnonymousString, paramAnonymousSSLSession)) || (j.d(paramArrayList, paramAnonymousString)))
+        if ((this.mba.verify(paramAnonymousString, paramAnonymousSSLSession)) || (j.d(paramArrayList, paramAnonymousString)))
         {
           AppMethodBeat.o(144364);
           return true;
@@ -539,9 +539,9 @@ public enum j
       AppMethodBeat.o(144372);
       return true;
     }
-    if (SR((String)SP(paramString).get("host")) == 2)
+    if (TA((String)Ty(paramString).get("host")) == 2)
     {
-      ad.e("MicroMsg.AppBrandNetworkUtil", "matchUrl, url in the same net %s", new Object[] { paramString });
+      ae.e("MicroMsg.AppBrandNetworkUtil", "matchUrl, url in the same net %s", new Object[] { paramString });
       AppMethodBeat.o(144372);
       return true;
     }
@@ -571,7 +571,7 @@ public enum j
     }
     catch (Exception paramJSONObject)
     {
-      ad.printErrStackTrace("MicroMsg.AppBrandNetworkUtil", paramJSONObject, "Exception: get header error", new Object[0]);
+      ae.printErrStackTrace("MicroMsg.AppBrandNetworkUtil", paramJSONObject, "Exception: get header error", new Object[0]);
       AppMethodBeat.o(144369);
     }
   }
@@ -596,7 +596,7 @@ public enum j
     }
     catch (Exception paramJSONObject)
     {
-      ad.printErrStackTrace("MicroMsg.AppBrandNetworkUtil", paramJSONObject, "Exception: get form error", new Object[0]);
+      ae.printErrStackTrace("MicroMsg.AppBrandNetworkUtil", paramJSONObject, "Exception: get form error", new Object[0]);
       AppMethodBeat.o(144370);
     }
   }
@@ -620,7 +620,7 @@ public enum j
         i += 1;
       }
     }
-    if (!bt.hj(localLinkedList))
+    if (!bu.ht(localLinkedList))
     {
       paramJSONObject = TextUtils.join(", ", localLinkedList);
       AppMethodBeat.o(144393);
@@ -634,7 +634,7 @@ public enum j
   {
     AppMethodBeat.i(144384);
     Object localObject = new LinkedList();
-    Iterator localIterator = parama.lVt.iterator();
+    Iterator localIterator = parama.lZW.iterator();
     while (localIterator.hasNext())
     {
       byte[] arrayOfByte = (byte[])localIterator.next();
@@ -644,9 +644,9 @@ public enum j
     }
     if (((LinkedList)localObject).isEmpty())
     {
-      if (parama.lVw)
+      if (parama.lZZ)
       {
-        ad.i("MicroMsg.AppBrandNetworkUtil", "getTrustManagerWithSelfSignedCertificates debug type");
+        ae.i("MicroMsg.AppBrandNetworkUtil", "getTrustManagerWithSelfSignedCertificates debug type");
         parama = new n(true);
         parama.init();
         AppMethodBeat.o(144384);
@@ -655,7 +655,7 @@ public enum j
       AppMethodBeat.o(144384);
       return null;
     }
-    parama = new n(parama.lVw);
+    parama = new n(parama.lZZ);
     localObject = ((LinkedList)localObject).iterator();
     while (((Iterator)localObject).hasNext()) {
       parama.H((InputStream)((Iterator)localObject).next());
@@ -682,7 +682,7 @@ public enum j
   public static boolean b(b paramb)
   {
     AppMethodBeat.i(144385);
-    switch (2.jLm[paramb.ordinal()])
+    switch (j.2.jOy[paramb.ordinal()])
     {
     default: 
       AppMethodBeat.o(144385);
@@ -695,43 +695,43 @@ public enum j
   public static boolean b(ArrayList<String> paramArrayList, String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(144373);
-    if (bt.isNullOrNil(paramString))
+    if (bu.isNullOrNil(paramString))
     {
-      ad.e("MicroMsg.AppBrandNetworkUtil", "matchUrl fail, url is null");
+      ae.e("MicroMsg.AppBrandNetworkUtil", "matchUrl fail, url is null");
       AppMethodBeat.o(144373);
       return false;
     }
     if ((paramArrayList == null) || (paramArrayList.size() == 0))
     {
-      ad.e("MicroMsg.AppBrandNetworkUtil", "matchUrl fail, configUrls is empty");
+      ae.e("MicroMsg.AppBrandNetworkUtil", "matchUrl fail, configUrls is empty");
       AppMethodBeat.o(144373);
       return false;
     }
-    ad.i("MicroMsg.AppBrandNetworkUtil", "url ".concat(String.valueOf(paramString)));
-    ad.i("MicroMsg.AppBrandNetworkUtil", "configUrl size " + paramArrayList.size());
-    Object localObject1 = SP(paramString);
+    ae.i("MicroMsg.AppBrandNetworkUtil", "url ".concat(String.valueOf(paramString)));
+    ae.i("MicroMsg.AppBrandNetworkUtil", "configUrl size " + paramArrayList.size());
+    Object localObject1 = Ty(paramString);
     paramString = (String)((HashMap)localObject1).get("host");
     String str1 = (String)((HashMap)localObject1).get("scheme");
     localObject1 = (String)((HashMap)localObject1).get("port");
-    if ((bt.isNullOrNil(paramString)) || (bt.isNullOrNil(str1)))
+    if ((bu.isNullOrNil(paramString)) || (bu.isNullOrNil(str1)))
     {
       AppMethodBeat.o(144373);
       return false;
     }
-    ad.i("MicroMsg.AppBrandNetworkUtil", "host %s  scheme %s port %s skipPortCheck %s", new Object[] { paramString, str1, localObject1, Boolean.valueOf(paramBoolean) });
+    ae.i("MicroMsg.AppBrandNetworkUtil", "host %s  scheme %s port %s skipPortCheck %s", new Object[] { paramString, str1, localObject1, Boolean.valueOf(paramBoolean) });
     paramArrayList = paramArrayList.iterator();
     while (paramArrayList.hasNext())
     {
       String str2 = (String)paramArrayList.next();
-      ad.i("MicroMsg.AppBrandNetworkUtil", "configUrl ".concat(String.valueOf(str2)));
-      Object localObject2 = SP(str2);
+      ae.i("MicroMsg.AppBrandNetworkUtil", "configUrl ".concat(String.valueOf(str2)));
+      Object localObject2 = Ty(str2);
       str2 = (String)((HashMap)localObject2).get("host");
       String str3 = (String)((HashMap)localObject2).get("scheme");
       localObject2 = (String)((HashMap)localObject2).get("port");
-      ad.i("MicroMsg.AppBrandNetworkUtil", "confighost %s  configscheme %s configport %s", new Object[] { str2, str3, localObject2 });
+      ae.i("MicroMsg.AppBrandNetworkUtil", "confighost %s  configscheme %s configport %s", new Object[] { str2, str3, localObject2 });
       if ((paramString.equalsIgnoreCase(str2)) && (str1.equalsIgnoreCase(str3)) && ((paramBoolean) || (((String)localObject1).equalsIgnoreCase((String)localObject2))))
       {
-        ad.i("MicroMsg.AppBrandNetworkUtil", "match!!");
+        ae.i("MicroMsg.AppBrandNetworkUtil", "match!!");
         AppMethodBeat.o(144373);
         return true;
       }
@@ -740,12 +740,12 @@ public enum j
     return false;
   }
   
-  private static int btm()
+  private static int btX()
   {
     AppMethodBeat.i(144376);
     try
     {
-      ConnectivityManager localConnectivityManager = (ConnectivityManager)aj.getContext().getSystemService("connectivity");
+      ConnectivityManager localConnectivityManager = (ConnectivityManager)ak.getContext().getSystemService("connectivity");
       Network[] arrayOfNetwork = localConnectivityManager.getAllNetworks();
       int j = arrayOfNetwork.length;
       int i = 0;
@@ -759,8 +759,8 @@ public enum j
           if (InetAddressUtils.isIPv4Address(str))
           {
             i = localRouteInfo.getDestination().getPrefixLength();
-            j = uG(i);
-            ad.i("MicroMsg.AppBrandNetworkUtil", "findNetworkMask sAddr:%s,getPrefixLength:%d,netmask:%d", new Object[] { str, Integer.valueOf(i), Integer.valueOf(j) });
+            j = uM(i);
+            ae.i("MicroMsg.AppBrandNetworkUtil", "findNetworkMask sAddr:%s,getPrefixLength:%d,netmask:%d", new Object[] { str, Integer.valueOf(i), Integer.valueOf(j) });
             AppMethodBeat.o(144376);
             return j;
           }
@@ -772,7 +772,7 @@ public enum j
     }
     catch (Exception localException)
     {
-      ad.printErrStackTrace("MicroMsg.AppBrandNetworkUtil", localException, "Exception: findNetworkMask error ", new Object[0]);
+      ae.printErrStackTrace("MicroMsg.AppBrandNetworkUtil", localException, "Exception: findNetworkMask error ", new Object[0]);
       AppMethodBeat.o(144376);
     }
     return 0;
@@ -810,7 +810,7 @@ public enum j
     {
       for (;;)
       {
-        ad.printErrStackTrace("MicroMsg.AppBrandNetworkUtil", localJSONException1, "JSONException: getHeaderJsonObject put REQUEST_HEADER header error", new Object[0]);
+        ae.printErrStackTrace("MicroMsg.AppBrandNetworkUtil", localJSONException1, "JSONException: getHeaderJsonObject put REQUEST_HEADER header error", new Object[0]);
       }
       paramMap = paramMap.entrySet().iterator();
       while (paramMap.hasNext())
@@ -818,7 +818,7 @@ public enum j
         Object localObject = (Map.Entry)paramMap.next();
         String str = (String)((Map.Entry)localObject).getKey();
         localObject = (List)((Map.Entry)localObject).getValue();
-        if ((!bt.isNullOrNil(str)) && (localObject != null) && (!((List)localObject).isEmpty()))
+        if ((!bu.isNullOrNil(str)) && (localObject != null) && (!((List)localObject).isEmpty()))
         {
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append((String)((List)localObject).get(0));
@@ -835,7 +835,7 @@ public enum j
           }
           catch (JSONException localJSONException2)
           {
-            ad.printErrStackTrace("MicroMsg.AppBrandNetworkUtil", localJSONException2, "JSONException: getHeaderJsonObject put header error", new Object[0]);
+            ae.printErrStackTrace("MicroMsg.AppBrandNetworkUtil", localJSONException2, "JSONException: getHeaderJsonObject put header error", new Object[0]);
           }
         }
       }
@@ -856,7 +856,7 @@ public enum j
   {
     AppMethodBeat.i(144379);
     int m = o.E(new byte[] { -1, -1, -1, 0 });
-    long[] arrayOfLong = sU(paramLong);
+    long[] arrayOfLong = th(paramLong);
     int i = 0;
     int j = 0;
     for (;;)
@@ -874,7 +874,7 @@ public enum j
         if (k <= 0) {
           paramLong = m;
         }
-        ad.i("MicroMsg.AppBrandNetworkUtil", "matchNetMask oldIpInt:%d, localIpInt:%d, netmask:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Long.valueOf(paramLong) });
+        ae.i("MicroMsg.AppBrandNetworkUtil", "matchNetMask oldIpInt:%d, localIpInt:%d, netmask:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Long.valueOf(paramLong) });
         if ((paramInt1 & paramLong) != (paramInt2 & paramLong)) {
           break label181;
         }
@@ -918,12 +918,12 @@ public enum j
     return 524288;
   }
   
-  public static boolean oo(int paramInt)
+  public static boolean or(int paramInt)
   {
-    return (paramInt == 301) || (paramInt == 302);
+    return (paramInt == 301) || (paramInt == 302) || (paramInt == 307);
   }
   
-  private static long[] sU(long paramLong)
+  private static long[] th(long paramLong)
   {
     long[] arrayOfLong = new long[4];
     if (paramLong > 0L)
@@ -936,7 +936,7 @@ public enum j
     return arrayOfLong;
   }
   
-  public static int sV(long paramLong)
+  public static int ti(long paramLong)
   {
     AppMethodBeat.i(144392);
     int i = i(paramLong, -1);
@@ -944,7 +944,7 @@ public enum j
     return i;
   }
   
-  private static int uF(int paramInt)
+  private static int uL(int paramInt)
   {
     AppMethodBeat.i(144377);
     try
@@ -969,13 +969,13 @@ public enum j
         } while (localInterfaceAddress.getAddress().isLoopbackAddress());
         str = localInterfaceAddress.getAddress().getHostAddress().toUpperCase();
         bool = InetAddressUtils.isIPv4Address(str);
-        ad.i("MicroMsg.AppBrandNetworkUtil", "check ip:%s, isIPv4:%b", new Object[] { str, Boolean.valueOf(bool) });
+        ae.i("MicroMsg.AppBrandNetworkUtil", "check ip:%s, isIPv4:%b", new Object[] { str, Boolean.valueOf(bool) });
       } while (!bool);
-      if (!SQ(str)) {}
-      for (int i = 0;; i = o.E(new byte[] { (byte)(bt.getInt(localObject[0], 0) & 0xFF), (byte)(bt.getInt(localObject[1], 0) & 0xFF), (byte)(bt.getInt(localObject[2], 0) & 0xFF), (byte)(bt.getInt(localObject[3], 0) & 0xFF) }))
+      if (!Tz(str)) {}
+      for (int i = 0;; i = o.E(new byte[] { (byte)(bu.getInt(localObject[0], 0) & 0xFF), (byte)(bu.getInt(localObject[1], 0) & 0xFF), (byte)(bu.getInt(localObject[2], 0) & 0xFF), (byte)(bu.getInt(localObject[3], 0) & 0xFF) }))
       {
-        long l = uG(localInterfaceAddress.getNetworkPrefixLength());
-        ad.i("MicroMsg.AppBrandNetworkUtil", "matchAddress oldIpInt:%d, localIpInt:%d, netmask:%d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i), Long.valueOf(l) });
+        long l = uM(localInterfaceAddress.getNetworkPrefixLength());
+        ae.i("MicroMsg.AppBrandNetworkUtil", "matchAddress oldIpInt:%d, localIpInt:%d, netmask:%d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i), Long.valueOf(l) });
         paramInt = e(l, paramInt, i);
         AppMethodBeat.o(144377);
         return paramInt;
@@ -985,12 +985,12 @@ public enum j
     }
     catch (Exception localException)
     {
-      ad.printErrStackTrace("MicroMsg.AppBrandNetworkUtil", localException, "Exception: matchAddress error", new Object[0]);
+      ae.printErrStackTrace("MicroMsg.AppBrandNetworkUtil", localException, "Exception: matchAddress error", new Object[0]);
       AppMethodBeat.o(144377);
     }
   }
   
-  private static int uG(int paramInt)
+  private static int uM(int paramInt)
   {
     AppMethodBeat.i(144378);
     int[] arrayOfInt = new int[4];
@@ -1007,9 +1007,9 @@ public enum j
       localObject = (String)localObject + "." + arrayOfInt[paramInt];
       paramInt += 1;
     }
-    ad.i("MicroMsg.AppBrandNetworkUtil", "calcMaskByPrefixLength result:%s", new Object[] { localObject });
+    ae.i("MicroMsg.AppBrandNetworkUtil", "calcMaskByPrefixLength result:%s", new Object[] { localObject });
     localObject = ((String)localObject).split("\\.");
-    paramInt = o.E(new byte[] { (byte)(bt.getInt(localObject[0], 0) & 0xFF), (byte)(bt.getInt(localObject[1], 0) & 0xFF), (byte)(bt.getInt(localObject[2], 0) & 0xFF), (byte)(bt.getInt(localObject[3], 0) & 0xFF) });
+    paramInt = o.E(new byte[] { (byte)(bu.getInt(localObject[0], 0) & 0xFF), (byte)(bu.getInt(localObject[1], 0) & 0xFF), (byte)(bu.getInt(localObject[2], 0) & 0xFF), (byte)(bu.getInt(localObject[3], 0) & 0xFF) });
     AppMethodBeat.o(144378);
     return paramInt;
   }

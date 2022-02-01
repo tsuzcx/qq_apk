@@ -11,13 +11,13 @@ import android.text.TextUtils;
 import android.util.Pair;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.boc;
-import com.tencent.mm.protocal.protobuf.chg;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.al.a;
+import com.tencent.mm.protocal.protobuf.bou;
+import com.tencent.mm.protocal.protobuf.cia;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.aj;
+import com.tencent.mm.storage.am.a;
 import java.lang.reflect.Method;
 import java.math.BigInteger;
 import java.util.Iterator;
@@ -26,23 +26,23 @@ import java.util.regex.Pattern;
 
 public final class b
 {
-  public static String qQH = "com.tencent.mm.ui.conversation.MainUI";
-  public static String qQI = "com.tencent.mm.ui.contact.AddressUI.AddressUIFragment";
-  public static String qQJ = "com.tencent.mm.ui.FindMoreFriendsUI";
-  public static String qQK = "com.tencent.mm.ui.MoreTabUI";
-  public static String qQL = "com.tencent.mm.ui.chatting.ChattingUIFragment";
-  public static String qQM = "MainUI";
-  public static String qQN = "AddressUIFragment";
-  public static String qQO = "FindMoreFriendsUI";
-  public static String qQP = "MoreTabUI";
-  public static String qQQ = "ChattingUIFragment";
+  public static String qYF = "com.tencent.mm.ui.conversation.MainUI";
+  public static String qYG = "com.tencent.mm.ui.contact.AddressUI.AddressUIFragment";
+  public static String qYH = "com.tencent.mm.ui.FindMoreFriendsUI";
+  public static String qYI = "com.tencent.mm.ui.MoreTabUI";
+  public static String qYJ = "com.tencent.mm.ui.chatting.ChattingUIFragment";
+  public static String qYK = "MainUI";
+  public static String qYL = "AddressUIFragment";
+  public static String qYM = "FindMoreFriendsUI";
+  public static String qYN = "MoreTabUI";
+  public static String qYO = "ChattingUIFragment";
   
-  public static float P(Activity paramActivity)
+  public static float Q(Activity paramActivity)
   {
-    AppMethodBeat.i(210318);
+    AppMethodBeat.i(195978);
     if (paramActivity == null)
     {
-      AppMethodBeat.o(210318);
+      AppMethodBeat.o(195978);
       return 0.0F;
     }
     paramActivity = paramActivity.getResources();
@@ -51,64 +51,11 @@ public final class b
     if (f2 <= 0.0F) {
       f1 = paramActivity.getDimensionPixelSize(2131166269);
     }
-    AppMethodBeat.o(210318);
+    AppMethodBeat.o(195978);
     return f1;
   }
   
-  public static boolean adA(String paramString)
-  {
-    AppMethodBeat.i(169265);
-    boolean bool = "com.tencent.mm.plugin.account.ui.LoginPasswordUI".equals(paramString);
-    AppMethodBeat.o(169265);
-    return bool;
-  }
-  
-  public static boolean adB(String paramString)
-  {
-    AppMethodBeat.i(121850);
-    boolean bool = Pattern.matches("^(" + "com.tencent.mm.plugin.appbrand.ui.AppBrandUI" + ")[0-9]*$", paramString);
-    AppMethodBeat.o(121850);
-    return bool;
-  }
-  
-  public static boolean adC(String paramString)
-  {
-    AppMethodBeat.i(121851);
-    if (TextUtils.isEmpty(paramString))
-    {
-      AppMethodBeat.o(121851);
-      return false;
-    }
-    boolean bool = Pattern.matches("^(" + "AppBrandUI" + ")[0-9]*$", paramString);
-    AppMethodBeat.o(121851);
-    return bool;
-  }
-  
-  public static boolean adD(String paramString)
-  {
-    AppMethodBeat.i(121852);
-    boolean bool = "AppBrandLauncherUI".equals(adx(paramString));
-    AppMethodBeat.o(121852);
-    return bool;
-  }
-  
-  public static boolean adE(String paramString)
-  {
-    AppMethodBeat.i(169266);
-    boolean bool = "com.tencent.mm.plugin.base.stub.WXShortcutEntryActivity".equals(paramString);
-    AppMethodBeat.o(169266);
-    return bool;
-  }
-  
-  public static boolean adF(String paramString)
-  {
-    AppMethodBeat.i(169267);
-    boolean bool = "com.tencent.mm.plugin.base.stub.WXEntryActivity".equals(paramString);
-    AppMethodBeat.o(169267);
-    return bool;
-  }
-  
-  public static boolean adG(String paramString)
+  public static boolean aeA(String paramString)
   {
     AppMethodBeat.i(169268);
     boolean bool = "com.tencent.mm.plugin.setting.ui.setting.FakeSwitchAccountUI".equals(paramString);
@@ -116,7 +63,7 @@ public final class b
     return bool;
   }
   
-  public static boolean adH(String paramString)
+  public static boolean aeB(String paramString)
   {
     AppMethodBeat.i(169269);
     boolean bool = "com.tencent.mm.plugin.voip.ui.VideoActivity".equals(paramString);
@@ -124,7 +71,7 @@ public final class b
     return bool;
   }
   
-  public static boolean adI(String paramString)
+  public static boolean aeC(String paramString)
   {
     AppMethodBeat.i(169270);
     boolean bool = "com.tencent.mm.plugin.sns.ui.SnsOnlineVideoActivity".equals(paramString);
@@ -132,10 +79,10 @@ public final class b
     return bool;
   }
   
-  public static Fragment adJ(String paramString)
+  public static Fragment aeD(String paramString)
   {
     AppMethodBeat.i(121854);
-    Object localObject = com.tencent.mm.plugin.expt.hellhound.core.b.b.h.c(cnF());
+    Object localObject = com.tencent.mm.plugin.expt.hellhound.core.b.b.h.c(cph());
     if (localObject != null)
     {
       localObject = ((List)localObject).iterator();
@@ -153,7 +100,7 @@ public final class b
     return null;
   }
   
-  public static boolean adK(String paramString)
+  public static boolean aeE(String paramString)
   {
     AppMethodBeat.i(169271);
     boolean bool = "com.tencent.mm.plugin.scanner.ui.BaseScanUI".equals(paramString);
@@ -161,34 +108,34 @@ public final class b
     return bool;
   }
   
-  public static boolean adL(String paramString)
+  public static boolean aeF(String paramString)
   {
-    AppMethodBeat.i(210315);
+    AppMethodBeat.i(195975);
     if (paramString == null)
     {
-      AppMethodBeat.o(210315);
+      AppMethodBeat.o(195975);
       return false;
     }
     if (paramString.contains("."))
     {
-      if ((qQH.equals(paramString)) || (qQI.equals(paramString)) || (qQJ.equals(paramString)) || (qQK.equals(paramString)) || (qQL.equals(paramString)))
+      if ((qYF.equals(paramString)) || (qYG.equals(paramString)) || (qYH.equals(paramString)) || (qYI.equals(paramString)) || (qYJ.equals(paramString)))
       {
-        AppMethodBeat.o(210315);
+        AppMethodBeat.o(195975);
         return true;
       }
-      AppMethodBeat.o(210315);
+      AppMethodBeat.o(195975);
       return false;
     }
-    if ((qQM.equals(paramString)) || (qQN.equals(paramString)) || (qQO.equals(paramString)) || (qQP.equals(paramString)) || (qQQ.equals(paramString)))
+    if ((qYK.equals(paramString)) || (qYL.equals(paramString)) || (qYM.equals(paramString)) || (qYN.equals(paramString)) || (qYO.equals(paramString)))
     {
-      AppMethodBeat.o(210315);
+      AppMethodBeat.o(195975);
       return true;
     }
-    AppMethodBeat.o(210315);
+    AppMethodBeat.o(195975);
     return false;
   }
   
-  public static boolean adM(String paramString)
+  public static boolean aeG(String paramString)
   {
     AppMethodBeat.i(177356);
     if (paramString == null)
@@ -198,7 +145,7 @@ public final class b
     }
     if (paramString.contains("."))
     {
-      if ((qQH.equals(paramString)) || (qQI.equals(paramString)) || (qQJ.equals(paramString)) || (qQK.equals(paramString)))
+      if ((qYF.equals(paramString)) || (qYG.equals(paramString)) || (qYH.equals(paramString)) || (qYI.equals(paramString)))
       {
         AppMethodBeat.o(177356);
         return true;
@@ -206,7 +153,7 @@ public final class b
       AppMethodBeat.o(177356);
       return false;
     }
-    if ((qQM.equals(paramString)) || (qQN.equals(paramString)) || (qQO.equals(paramString)) || (qQP.equals(paramString)))
+    if ((qYK.equals(paramString)) || (qYL.equals(paramString)) || (qYM.equals(paramString)) || (qYN.equals(paramString)))
     {
       AppMethodBeat.o(177356);
       return true;
@@ -215,25 +162,25 @@ public final class b
     return false;
   }
   
-  public static String adN(String paramString)
+  public static String aeH(String paramString)
   {
-    AppMethodBeat.i(210319);
+    AppMethodBeat.i(195979);
     if (paramString == null)
     {
-      AppMethodBeat.o(210319);
+      AppMethodBeat.o(195979);
       return null;
     }
     paramString = paramString.replace(",", ".");
-    AppMethodBeat.o(210319);
+    AppMethodBeat.o(195979);
     return paramString;
   }
   
-  public static String adO(String paramString)
+  public static String aeI(String paramString)
   {
-    AppMethodBeat.i(210325);
-    if (bt.isNullOrNil(paramString))
+    AppMethodBeat.i(195985);
+    if (bu.isNullOrNil(paramString))
     {
-      AppMethodBeat.o(210325);
+      AppMethodBeat.o(195985);
       return "";
     }
     int i = -1;
@@ -245,7 +192,7 @@ public final class b
       switch (i)
       {
       default: 
-        AppMethodBeat.o(210325);
+        AppMethodBeat.o(195985);
         return paramString;
         if (paramString.equals("FinderFollowTabFragment"))
         {
@@ -288,30 +235,30 @@ public final class b
         break;
       }
     }
-    AppMethodBeat.o(210325);
+    AppMethodBeat.o(195985);
     return "0";
-    AppMethodBeat.o(210325);
+    AppMethodBeat.o(195985);
     return "1";
-    AppMethodBeat.o(210325);
+    AppMethodBeat.o(195985);
     return "2";
-    AppMethodBeat.o(210325);
+    AppMethodBeat.o(195985);
     return "3";
   }
   
-  public static String adP(String paramString)
+  public static String aeJ(String paramString)
   {
-    AppMethodBeat.i(210326);
+    AppMethodBeat.i(195986);
     if (paramString == null)
     {
-      AppMethodBeat.o(210326);
+      AppMethodBeat.o(195986);
       return null;
     }
     paramString = paramString.replace(",", ".");
-    AppMethodBeat.o(210326);
+    AppMethodBeat.o(195986);
     return paramString;
   }
   
-  public static boolean adr(String paramString)
+  public static boolean ael(String paramString)
   {
     AppMethodBeat.i(169258);
     boolean bool = "com.tencent.mm.ui.chatting.ChattingUI".equals(paramString);
@@ -319,7 +266,7 @@ public final class b
     return bool;
   }
   
-  public static boolean ads(String paramString)
+  public static boolean aem(String paramString)
   {
     AppMethodBeat.i(169259);
     boolean bool = "com.tencent.mm.ui.LauncherUI".equals(paramString);
@@ -327,7 +274,7 @@ public final class b
     return bool;
   }
   
-  public static boolean adt(String paramString)
+  public static boolean aen(String paramString)
   {
     AppMethodBeat.i(169260);
     boolean bool = "com.tencent.mm.ui.contact.GroupCardSelectUI".equals(paramString);
@@ -335,7 +282,7 @@ public final class b
     return bool;
   }
   
-  public static boolean adu(String paramString)
+  public static boolean aeo(String paramString)
   {
     AppMethodBeat.i(169261);
     boolean bool = "com.tencent.mm.ui.contact.SelectContactUI".equals(paramString);
@@ -343,7 +290,7 @@ public final class b
     return bool;
   }
   
-  public static boolean adv(String paramString)
+  public static boolean aep(String paramString)
   {
     AppMethodBeat.i(169262);
     boolean bool = "com.tencent.mm.app.WeChatSplashActivity".equals(paramString);
@@ -351,7 +298,7 @@ public final class b
     return bool;
   }
   
-  public static boolean adw(String paramString)
+  public static boolean aeq(String paramString)
   {
     AppMethodBeat.i(169263);
     if ((paramString != null) && (paramString.startsWith("com.tencent.mm.splash.")))
@@ -363,7 +310,7 @@ public final class b
     return false;
   }
   
-  public static String adx(String paramString)
+  public static String aer(String paramString)
   {
     AppMethodBeat.i(121846);
     if (TextUtils.isEmpty(paramString))
@@ -383,21 +330,21 @@ public final class b
     return paramString;
   }
   
-  public static boc ady(String paramString)
+  public static bou aes(String paramString)
   {
-    AppMethodBeat.i(210314);
-    paramString = com.tencent.mm.plugin.expt.hellhound.a.f.d.b.afj(paramString);
+    AppMethodBeat.i(195974);
+    paramString = com.tencent.mm.plugin.expt.hellhound.a.f.d.b.agf(paramString);
     if ((paramString == null) || (paramString.isEmpty()))
     {
-      AppMethodBeat.o(210314);
+      AppMethodBeat.o(195974);
       return null;
     }
-    paramString = (boc)paramString.get(paramString.size() - 1);
-    AppMethodBeat.o(210314);
+    paramString = (bou)paramString.get(paramString.size() - 1);
+    AppMethodBeat.o(195974);
     return paramString;
   }
   
-  public static boolean adz(String paramString)
+  public static boolean aet(String paramString)
   {
     AppMethodBeat.i(169264);
     boolean bool = "com.tencent.mm.plugin.appbrand.launching.AppBrandLaunchProxyUI".equals(paramString);
@@ -405,11 +352,64 @@ public final class b
     return bool;
   }
   
-  public static boolean cnC()
+  public static boolean aeu(String paramString)
+  {
+    AppMethodBeat.i(169265);
+    boolean bool = "com.tencent.mm.plugin.account.ui.LoginPasswordUI".equals(paramString);
+    AppMethodBeat.o(169265);
+    return bool;
+  }
+  
+  public static boolean aev(String paramString)
+  {
+    AppMethodBeat.i(121850);
+    boolean bool = Pattern.matches("^(" + "com.tencent.mm.plugin.appbrand.ui.AppBrandUI" + ")[0-9]*$", paramString);
+    AppMethodBeat.o(121850);
+    return bool;
+  }
+  
+  public static boolean aew(String paramString)
+  {
+    AppMethodBeat.i(121851);
+    if (TextUtils.isEmpty(paramString))
+    {
+      AppMethodBeat.o(121851);
+      return false;
+    }
+    boolean bool = Pattern.matches("^(" + "AppBrandUI" + ")[0-9]*$", paramString);
+    AppMethodBeat.o(121851);
+    return bool;
+  }
+  
+  public static boolean aex(String paramString)
+  {
+    AppMethodBeat.i(121852);
+    boolean bool = "AppBrandLauncherUI".equals(aer(paramString));
+    AppMethodBeat.o(121852);
+    return bool;
+  }
+  
+  public static boolean aey(String paramString)
+  {
+    AppMethodBeat.i(169266);
+    boolean bool = "com.tencent.mm.plugin.base.stub.WXShortcutEntryActivity".equals(paramString);
+    AppMethodBeat.o(169266);
+    return bool;
+  }
+  
+  public static boolean aez(String paramString)
+  {
+    AppMethodBeat.i(169267);
+    boolean bool = "com.tencent.mm.plugin.base.stub.WXEntryActivity".equals(paramString);
+    AppMethodBeat.o(169267);
+    return bool;
+  }
+  
+  public static boolean cpe()
   {
     AppMethodBeat.i(121845);
-    Context localContext = aj.getContext();
-    String str = ((com.tencent.mm.kernel.b.h)com.tencent.mm.kernel.g.ajz().ajb()).mProcessName;
+    Context localContext = ak.getContext();
+    String str = ((com.tencent.mm.kernel.b.h)com.tencent.mm.kernel.g.ajO().ajq()).mProcessName;
     if (str == null)
     {
       AppMethodBeat.o(121845);
@@ -420,24 +420,24 @@ public final class b
     return bool;
   }
   
-  public static String cnD()
+  public static String cpf()
   {
     AppMethodBeat.i(121847);
-    Object localObject = com.tencent.mm.plugin.expt.hellhound.core.b.a.a.e.CU(106);
+    Object localObject = com.tencent.mm.plugin.expt.hellhound.core.b.a.a.e.Dh(106);
     if (localObject == null)
     {
-      localObject = com.tencent.mm.plugin.expt.hellhound.core.b.a.a.c.cod().qRB.cob();
-      ad.i("HABBYGE-MALI.HellhoundUtil", "FuzzyMatch._getPrePage by activityJumpSrc: %s", new Object[] { localObject });
+      localObject = com.tencent.mm.plugin.expt.hellhound.core.b.a.a.c.cpF().qZz.cpD();
+      ae.i("HABBYGE-MALI.HellhoundUtil", "FuzzyMatch._getPrePage by activityJumpSrc: %s", new Object[] { localObject });
       if (localObject != null)
       {
         AppMethodBeat.o(121847);
         return localObject;
       }
-      localObject = com.tencent.mm.plugin.expt.hellhound.core.b.b.d.con();
+      localObject = com.tencent.mm.plugin.expt.hellhound.core.b.b.d.cpP();
       AppMethodBeat.o(121847);
       return localObject;
     }
-    ad.i("HABBYGE-MALI.HellhoundUtil", "FuzzyMatch._getPrePage by key_pause: %s, %b, %s", new Object[] { ((com.tencent.mm.vending.j.b)localObject).get(0), ((com.tencent.mm.vending.j.c)localObject).get(1), ((com.tencent.mm.vending.j.d)localObject).get(2) });
+    ae.i("HABBYGE-MALI.HellhoundUtil", "FuzzyMatch._getPrePage by key_pause: %s, %b, %s", new Object[] { ((com.tencent.mm.vending.j.b)localObject).get(0), ((com.tencent.mm.vending.j.c)localObject).get(1), ((com.tencent.mm.vending.j.d)localObject).get(2) });
     if (((Boolean)((com.tencent.mm.vending.j.c)localObject).get(1)).booleanValue())
     {
       localObject = (String)((com.tencent.mm.vending.j.d)localObject).get(2);
@@ -446,7 +446,7 @@ public final class b
         AppMethodBeat.o(121847);
         return localObject;
       }
-      localObject = com.tencent.mm.plugin.expt.hellhound.core.b.b.d.con();
+      localObject = com.tencent.mm.plugin.expt.hellhound.core.b.b.d.cpP();
       AppMethodBeat.o(121847);
       return localObject;
     }
@@ -456,39 +456,39 @@ public final class b
       AppMethodBeat.o(121847);
       return localObject;
     }
-    localObject = com.tencent.mm.plugin.expt.hellhound.core.b.b.d.con();
+    localObject = com.tencent.mm.plugin.expt.hellhound.core.b.b.d.cpP();
     AppMethodBeat.o(121847);
     return localObject;
   }
   
-  public static Pair<String, Integer> cnE()
+  public static Pair<String, Integer> cpg()
   {
-    AppMethodBeat.i(210313);
-    Object localObject = com.tencent.mm.plugin.expt.hellhound.a.f.c.c.cqh();
+    AppMethodBeat.i(195973);
+    Object localObject = com.tencent.mm.plugin.expt.hellhound.a.f.c.c.crJ();
     if (localObject == null)
     {
-      localObject = com.tencent.mm.plugin.expt.hellhound.core.b.a.a.e.CU(105);
+      localObject = com.tencent.mm.plugin.expt.hellhound.core.b.a.a.e.Dh(105);
       if (localObject == null)
       {
-        AppMethodBeat.o(210313);
+        AppMethodBeat.o(195973);
         return null;
       }
       if (((Boolean)((com.tencent.mm.vending.j.c)localObject).get(1)).booleanValue())
       {
         localObject = Pair.create(((com.tencent.mm.vending.j.d)localObject).get(2), Integer.valueOf(0));
-        AppMethodBeat.o(210313);
+        AppMethodBeat.o(195973);
         return localObject;
       }
       localObject = Pair.create(((com.tencent.mm.vending.j.b)localObject).get(0), Integer.valueOf(0));
-      AppMethodBeat.o(210313);
+      AppMethodBeat.o(195973);
       return localObject;
     }
-    localObject = Pair.create(((chg)localObject).dtL, Integer.valueOf(((chg)localObject).aHQ));
-    AppMethodBeat.o(210313);
+    localObject = Pair.create(((cia)localObject).duQ, Integer.valueOf(((cia)localObject).aHQ));
+    AppMethodBeat.o(195973);
     return localObject;
   }
   
-  public static FragmentActivity cnF()
+  public static FragmentActivity cph()
   {
     AppMethodBeat.i(121853);
     try
@@ -506,105 +506,105 @@ public final class b
     return null;
   }
   
-  public static String cnG()
+  public static String cpi()
   {
-    AppMethodBeat.i(210322);
+    AppMethodBeat.i(195982);
     try
     {
-      if (!com.tencent.mm.kernel.g.ajx())
+      if (!com.tencent.mm.kernel.g.ajM())
       {
-        AppMethodBeat.o(210322);
+        AppMethodBeat.o(195982);
         return "";
       }
-      String str = (String)com.tencent.mm.kernel.g.ajC().ajl().get(al.a.IIT, "");
-      AppMethodBeat.o(210322);
+      String str = (String)com.tencent.mm.kernel.g.ajR().ajA().get(am.a.Jdz, "");
+      AppMethodBeat.o(195982);
       return str;
     }
     catch (Exception localException)
     {
-      ad.printErrStackTrace("HABBYGE-MALI.HellhoundUtil", localException, "getFinderCurTabContextId crash: %s", new Object[] { localException.getMessage() });
-      AppMethodBeat.o(210322);
+      ae.printErrStackTrace("HABBYGE-MALI.HellhoundUtil", localException, "getFinderCurTabContextId crash: %s", new Object[] { localException.getMessage() });
+      AppMethodBeat.o(195982);
     }
     return "";
   }
   
-  public static String cnH()
+  public static String cpj()
   {
-    AppMethodBeat.i(210323);
+    AppMethodBeat.i(195983);
     try
     {
-      if (!com.tencent.mm.kernel.g.ajx())
+      if (!com.tencent.mm.kernel.g.ajM())
       {
-        AppMethodBeat.o(210323);
+        AppMethodBeat.o(195983);
         return "";
       }
-      String str = (String)com.tencent.mm.kernel.g.ajC().ajl().get(al.a.IIU, "");
-      AppMethodBeat.o(210323);
+      String str = (String)com.tencent.mm.kernel.g.ajR().ajA().get(am.a.JdA, "");
+      AppMethodBeat.o(195983);
       return str;
     }
     catch (Exception localException)
     {
-      ad.printErrStackTrace("HABBYGE-MALI.HellhoundUtil", localException, "getFinderReportTabContextId crash: %s", new Object[] { localException.getMessage() });
-      AppMethodBeat.o(210323);
+      ae.printErrStackTrace("HABBYGE-MALI.HellhoundUtil", localException, "getFinderReportTabContextId crash: %s", new Object[] { localException.getMessage() });
+      AppMethodBeat.o(195983);
     }
     return "";
   }
   
-  public static String cnI()
+  public static String cpk()
   {
-    AppMethodBeat.i(210324);
+    AppMethodBeat.i(195984);
     try
     {
-      if (!com.tencent.mm.kernel.g.ajx())
+      if (!com.tencent.mm.kernel.g.ajM())
       {
-        AppMethodBeat.o(210324);
+        AppMethodBeat.o(195984);
         return "";
       }
-      String str = (String)com.tencent.mm.kernel.g.ajC().ajl().get(al.a.IIV, "");
-      AppMethodBeat.o(210324);
+      String str = (String)com.tencent.mm.kernel.g.ajR().ajA().get(am.a.JdB, "");
+      AppMethodBeat.o(195984);
       return str;
     }
     catch (Exception localException)
     {
-      AppMethodBeat.o(210324);
+      AppMethodBeat.o(195984);
     }
     return "";
   }
   
-  public static String cnJ()
+  public static String cpl()
   {
-    if (com.tencent.mm.loader.j.a.hgI == null) {
+    if (com.tencent.mm.loader.j.a.hjw == null) {
       return com.tencent.mm.loader.j.a.REV;
     }
-    return com.tencent.mm.loader.j.a.hgI;
+    return com.tencent.mm.loader.j.a.hjw;
   }
   
   public static Pair<Integer, Integer> dR(View paramView)
   {
-    AppMethodBeat.i(210320);
+    AppMethodBeat.i(195980);
     int[] arrayOfInt = new int[2];
     paramView.getLocationOnScreen(arrayOfInt);
     paramView = Pair.create(Integer.valueOf(arrayOfInt[0]), Integer.valueOf(arrayOfInt[1]));
-    AppMethodBeat.o(210320);
+    AppMethodBeat.o(195980);
     return paramView;
   }
   
   public static Pair<Float, Float> dS(View paramView)
   {
-    AppMethodBeat.i(210321);
+    AppMethodBeat.i(195981);
     int i = paramView.getMeasuredWidth();
     float f1 = paramView.getWidth();
     int j = paramView.getMeasuredHeight();
     float f2 = paramView.getHeight();
     paramView = Pair.create(Float.valueOf(Math.max(i, f1)), Float.valueOf(Math.max(j, f2)));
-    AppMethodBeat.o(210321);
+    AppMethodBeat.o(195981);
     return paramView;
   }
   
   public static int getUin()
   {
     AppMethodBeat.i(121855);
-    com.tencent.mm.plugin.expt.h.d.crP();
+    com.tencent.mm.plugin.expt.h.d.ctr();
     int i = com.tencent.mm.plugin.expt.h.d.getUin();
     if (i == 0)
     {
@@ -627,7 +627,7 @@ public final class b
     return false;
   }
   
-  public static String rc(long paramLong)
+  public static String rp(long paramLong)
   {
     AppMethodBeat.i(169272);
     String str = new BigInteger(Long.toBinaryString(paramLong), 2).toString();
@@ -637,23 +637,23 @@ public final class b
   
   public static String toHexString(int paramInt)
   {
-    AppMethodBeat.i(210316);
+    AppMethodBeat.i(195976);
     if (paramInt == -1)
     {
-      AppMethodBeat.o(210316);
+      AppMethodBeat.o(195976);
       return "-1";
     }
     String str = "0x" + Integer.toHexString(paramInt);
-    AppMethodBeat.o(210316);
+    AppMethodBeat.o(195976);
     return str;
   }
   
   public static int u(Activity paramActivity)
   {
-    AppMethodBeat.i(210317);
+    AppMethodBeat.i(195977);
     if (paramActivity == null)
     {
-      AppMethodBeat.o(210317);
+      AppMethodBeat.o(195977);
       return 0;
     }
     try
@@ -664,22 +664,22 @@ public final class b
         if (paramActivity != null)
         {
           int i = paramActivity.getCustomView().getHeight();
-          AppMethodBeat.o(210317);
+          AppMethodBeat.o(195977);
           return i;
         }
       }
     }
     catch (Exception paramActivity)
     {
-      ad.printErrStackTrace("HABBYGE-MALI.HellhoundUtil", paramActivity, "initBarHeight", new Object[0]);
-      AppMethodBeat.o(210317);
+      ae.printErrStackTrace("HABBYGE-MALI.HellhoundUtil", paramActivity, "initBarHeight", new Object[0]);
+      AppMethodBeat.o(195977);
     }
     return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.hellhound.core.b
  * JD-Core Version:    0.7.0.1
  */

@@ -5,23 +5,23 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class j
 {
-  int dDp;
-  public int ePk;
-  public int ePt;
-  public String ePu;
-  public String ePv;
+  int dEu;
+  public int eQV;
+  public int eRe;
+  public String eRf;
+  public String eRg;
   public String signature;
   public String username;
   
   public j()
   {
     AppMethodBeat.i(131017);
-    this.dDp = -1;
+    this.dEu = -1;
     this.username = "";
-    this.ePk = 0;
-    this.ePt = 0;
-    this.ePu = "";
-    this.ePv = "";
+    this.eQV = 0;
+    this.eRe = 0;
+    this.eRf = "";
+    this.eRg = "";
     this.signature = "";
     AppMethodBeat.o(131017);
   }
@@ -30,18 +30,18 @@ public final class j
   {
     AppMethodBeat.i(131018);
     ContentValues localContentValues = new ContentValues();
-    if ((this.dDp & 0x1) != 0) {
+    if ((this.dEu & 0x1) != 0) {
       localContentValues.put("username", getUsername());
     }
-    if ((this.dDp & 0x2) != 0) {
-      localContentValues.put("sex", Integer.valueOf(this.ePk));
+    if ((this.dEu & 0x2) != 0) {
+      localContentValues.put("sex", Integer.valueOf(this.eQV));
     }
-    if ((this.dDp & 0x4) != 0) {
-      localContentValues.put("personalcard", Integer.valueOf(this.ePt));
+    if ((this.dEu & 0x4) != 0) {
+      localContentValues.put("personalcard", Integer.valueOf(this.eRe));
     }
-    if ((this.dDp & 0x8) != 0)
+    if ((this.dEu & 0x8) != 0)
     {
-      if (this.ePu == null)
+      if (this.eRf == null)
       {
         str = "";
         localContentValues.put("province", str);
@@ -49,16 +49,16 @@ public final class j
     }
     else
     {
-      if ((this.dDp & 0x10) != 0)
+      if ((this.dEu & 0x10) != 0)
       {
-        if (this.ePv != null) {
+        if (this.eRg != null) {
           break label172;
         }
         str = "";
         label123:
         localContentValues.put("city", str);
       }
-      if ((this.dDp & 0x20) != 0) {
+      if ((this.dEu & 0x20) != 0) {
         if (this.signature != null) {
           break label180;
         }
@@ -71,9 +71,9 @@ public final class j
       localContentValues.put("signature", str);
       AppMethodBeat.o(131018);
       return localContentValues;
-      str = this.ePu;
+      str = this.eRf;
       break;
-      str = this.ePv;
+      str = this.eRg;
       break label123;
     }
   }

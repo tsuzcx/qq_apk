@@ -13,44 +13,44 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.modelgeo.Addr;
 import com.tencent.mm.modelgeo.c;
 import com.tencent.mm.modelgeo.c.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public class PickPoi
   extends FrameLayout
 {
   private Animation FD;
   private Context context;
-  protected c vfb;
-  public c.a vfi;
-  private View vgH;
-  private f vgI;
-  boolean vgJ;
-  private e vgK;
-  c.b vgL;
+  protected c vri;
+  public c.a vrp;
+  private View vsO;
+  private f vsP;
+  boolean vsQ;
+  private e vsR;
+  c.b vsS;
   
   public PickPoi(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(56082);
-    this.vgI = new f();
-    this.vgJ = true;
-    this.vgK = null;
-    this.vfi = new c.a()
+    this.vsP = new f();
+    this.vsQ = true;
+    this.vsR = null;
+    this.vrp = new c.a()
     {
       public final void b(Addr paramAnonymousAddr)
       {
         AppMethodBeat.i(56081);
-        ad.d("MicroMsg.PickPoi", "onLocationAddr %s", new Object[] { paramAnonymousAddr.toString() });
+        ae.d("MicroMsg.PickPoi", "onLocationAddr %s", new Object[] { paramAnonymousAddr.toString() });
         if (PickPoi.b(PickPoi.this) == null)
         {
-          ad.i("MicroMsg.PickPoi", "error, empty poi!");
+          ae.i("MicroMsg.PickPoi", "error, empty poi!");
           AppMethodBeat.o(56081);
           return;
         }
         if ((PickPoi.b(PickPoi.this).c(paramAnonymousAddr)) && (PickPoi.c(PickPoi.this) != null))
         {
-          if (PickPoi.this.vgL != null) {
-            PickPoi.this.vgL.a(PickPoi.b(PickPoi.this));
+          if (PickPoi.this.vsS != null) {
+            PickPoi.this.vsS.a(PickPoi.b(PickPoi.this));
           }
           PickPoi.c(PickPoi.this).notifyDataSetChanged();
         }
@@ -65,25 +65,25 @@ public class PickPoi
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(56083);
-    this.vgI = new f();
-    this.vgJ = true;
-    this.vgK = null;
-    this.vfi = new c.a()
+    this.vsP = new f();
+    this.vsQ = true;
+    this.vsR = null;
+    this.vrp = new c.a()
     {
       public final void b(Addr paramAnonymousAddr)
       {
         AppMethodBeat.i(56081);
-        ad.d("MicroMsg.PickPoi", "onLocationAddr %s", new Object[] { paramAnonymousAddr.toString() });
+        ae.d("MicroMsg.PickPoi", "onLocationAddr %s", new Object[] { paramAnonymousAddr.toString() });
         if (PickPoi.b(PickPoi.this) == null)
         {
-          ad.i("MicroMsg.PickPoi", "error, empty poi!");
+          ae.i("MicroMsg.PickPoi", "error, empty poi!");
           AppMethodBeat.o(56081);
           return;
         }
         if ((PickPoi.b(PickPoi.this).c(paramAnonymousAddr)) && (PickPoi.c(PickPoi.this) != null))
         {
-          if (PickPoi.this.vgL != null) {
-            PickPoi.this.vgL.a(PickPoi.b(PickPoi.this));
+          if (PickPoi.this.vsS != null) {
+            PickPoi.this.vsS.a(PickPoi.b(PickPoi.this));
           }
           PickPoi.c(PickPoi.this).notifyDataSetChanged();
         }
@@ -98,25 +98,25 @@ public class PickPoi
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(56084);
-    this.vgI = new f();
-    this.vgJ = true;
-    this.vgK = null;
-    this.vfi = new c.a()
+    this.vsP = new f();
+    this.vsQ = true;
+    this.vsR = null;
+    this.vrp = new c.a()
     {
       public final void b(Addr paramAnonymousAddr)
       {
         AppMethodBeat.i(56081);
-        ad.d("MicroMsg.PickPoi", "onLocationAddr %s", new Object[] { paramAnonymousAddr.toString() });
+        ae.d("MicroMsg.PickPoi", "onLocationAddr %s", new Object[] { paramAnonymousAddr.toString() });
         if (PickPoi.b(PickPoi.this) == null)
         {
-          ad.i("MicroMsg.PickPoi", "error, empty poi!");
+          ae.i("MicroMsg.PickPoi", "error, empty poi!");
           AppMethodBeat.o(56081);
           return;
         }
         if ((PickPoi.b(PickPoi.this).c(paramAnonymousAddr)) && (PickPoi.c(PickPoi.this) != null))
         {
-          if (PickPoi.this.vgL != null) {
-            PickPoi.this.vgL.a(PickPoi.b(PickPoi.this));
+          if (PickPoi.this.vsS != null) {
+            PickPoi.this.vsS.a(PickPoi.b(PickPoi.this));
           }
           PickPoi.c(PickPoi.this).notifyDataSetChanged();
         }
@@ -131,57 +131,57 @@ public class PickPoi
   {
     AppMethodBeat.i(56085);
     this.context = paramContext;
-    this.vfb = c.aHN();
+    this.vri = c.aIe();
     this.FD = AnimationUtils.loadAnimation(paramContext, 2130772163);
     View localView = LayoutInflater.from(paramContext).inflate(2131494598, this, true);
-    this.vgH = localView.findViewById(2131301523);
+    this.vsO = localView.findViewById(2131301523);
     post(new PickPoi.1(this, localView, paramContext));
     AppMethodBeat.o(56085);
   }
   
   public f getPoi()
   {
-    return this.vgI;
+    return this.vsP;
   }
   
   public final void l(double paramDouble1, double paramDouble2)
   {
     AppMethodBeat.i(56086);
-    this.vgI = new f();
-    this.vgI.type = 3;
-    this.vgI.mName = this.context.getResources().getString(2131760711);
-    this.vgI.bXD = paramDouble1;
-    this.vgI.bXE = paramDouble2;
-    this.vgI.vgT = "";
-    this.vfb.a(this.vfi);
-    this.vfb.a(paramDouble1, paramDouble2, this.vfi);
-    this.vgJ = true;
+    this.vsP = new f();
+    this.vsP.type = 3;
+    this.vsP.mName = this.context.getResources().getString(2131760711);
+    this.vsP.bXD = paramDouble1;
+    this.vsP.bXE = paramDouble2;
+    this.vsP.vta = "";
+    this.vri.a(this.vrp);
+    this.vri.a(paramDouble1, paramDouble2, this.vrp);
+    this.vsQ = true;
     AppMethodBeat.o(56086);
   }
   
   public final void play()
   {
     AppMethodBeat.i(182075);
-    this.vgH.clearAnimation();
-    this.vgH.startAnimation(this.FD);
+    this.vsO.clearAnimation();
+    this.vsO.startAnimation(this.FD);
     AppMethodBeat.o(182075);
   }
   
   public void setAdapter(e parame)
   {
-    this.vgK = parame;
+    this.vsR = parame;
   }
   
   public void setLocationArrow(int paramInt)
   {
     AppMethodBeat.i(56087);
-    ((ImageView)this.vgH).setImageResource(paramInt);
+    ((ImageView)this.vsO).setImageResource(paramInt);
     AppMethodBeat.o(56087);
   }
   
   public void setOnCurPoiGet(c.b paramb)
   {
-    this.vgL = paramb;
+    this.vsS = paramb;
   }
 }
 

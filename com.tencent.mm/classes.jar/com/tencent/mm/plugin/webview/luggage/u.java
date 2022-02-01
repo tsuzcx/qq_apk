@@ -2,30 +2,30 @@ package com.tencent.mm.plugin.webview.luggage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.webview.ui.tools.jsapi.a.d;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.HashMap;
 
 public final class u
 {
-  public g DOl;
-  public final HashMap<String, String> DQo;
-  public final HashMap<String, a.d> DQp;
-  public final HashMap<String, String> DQq;
+  public g Egl;
+  public final HashMap<String, String> Eio;
+  public final HashMap<String, a.d> Eip;
+  public final HashMap<String, String> Eiq;
   
   public u(g paramg)
   {
     AppMethodBeat.i(78474);
-    this.DQo = new HashMap();
-    this.DQp = new HashMap();
-    this.DQq = new HashMap();
-    this.DOl = paramg;
+    this.Eio = new HashMap();
+    this.Eip = new HashMap();
+    this.Eiq = new HashMap();
+    this.Egl = paramg;
     AppMethodBeat.o(78474);
   }
   
-  public static String aHc(String paramString)
+  public static String aIw(String paramString)
   {
     AppMethodBeat.i(78476);
-    if (bt.isNullOrNil(paramString))
+    if (bu.isNullOrNil(paramString))
     {
       AppMethodBeat.o(78476);
       return paramString;
@@ -41,16 +41,16 @@ public final class u
     return paramString;
   }
   
-  public final String ePJ()
+  public final String eTv()
   {
     AppMethodBeat.i(78477);
     String str = getAppId();
-    if (bt.isNullOrNil(str))
+    if (bu.isNullOrNil(str))
     {
       AppMethodBeat.o(78477);
       return null;
     }
-    str = (String)this.DQq.get(str);
+    str = (String)this.Eiq.get(str);
     AppMethodBeat.o(78477);
     return str;
   }
@@ -58,14 +58,14 @@ public final class u
   public final String getAppId()
   {
     AppMethodBeat.i(78475);
-    String str = this.DOl.getUrl();
-    if (bt.isNullOrNil(str))
+    String str = this.Egl.getUrl();
+    if (bu.isNullOrNil(str))
     {
       AppMethodBeat.o(78475);
       return null;
     }
-    str = aHc(str);
-    str = (String)this.DQo.get(str);
+    str = aIw(str);
+    str = (String)this.Eio.get(str);
     AppMethodBeat.o(78475);
     return str;
   }

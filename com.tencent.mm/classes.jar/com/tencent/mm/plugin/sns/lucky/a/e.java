@@ -4,16 +4,16 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class e
 {
-  private static e zen = null;
-  private static String zeo = "";
+  private static e zvc = null;
+  private static String zvd = "";
   public int level;
-  StringBuffer nxl;
+  StringBuffer nCG;
   
   public e()
   {
     AppMethodBeat.i(95178);
     this.level = 0;
-    this.nxl = new StringBuffer();
+    this.nCG = new StringBuffer();
     AppMethodBeat.o(95178);
   }
 }

@@ -5,12 +5,12 @@ import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
 import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.plugin.appbrand.q;
+import com.tencent.mm.plugin.appbrand.r;
 import com.tencent.mm.plugin.appbrand.service.c;
 import com.tencent.mm.plugin.downloader.model.d;
 import com.tencent.mm.plugin.downloader.model.f;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import org.json.JSONObject;
 
 public final class JsApiPauseDownloadTask
@@ -24,11 +24,11 @@ public final class JsApiPauseDownloadTask
   {
     public static final Parcelable.Creator<PauseDownloadTask> CREATOR;
     private int cgA;
-    private q jwH;
-    private m ksO;
-    private boolean ksW;
-    private String ksX;
-    private long ksY;
+    private r jzD;
+    private m kwe;
+    private boolean kwm;
+    private String kwn;
+    private long kwo;
     
     static
     {
@@ -44,30 +44,30 @@ public final class JsApiPauseDownloadTask
       AppMethodBeat.o(45852);
     }
     
-    public PauseDownloadTask(m paramm, q paramq, int paramInt, JSONObject paramJSONObject)
+    public PauseDownloadTask(m paramm, r paramr, int paramInt, JSONObject paramJSONObject)
     {
       AppMethodBeat.i(45851);
-      this.ksO = paramm;
-      this.jwH = paramq;
+      this.kwe = paramm;
+      this.jzD = paramr;
       this.cgA = paramInt;
-      this.ksY = paramJSONObject.optLong("downloadId");
-      this.ksW = true;
+      this.kwo = paramJSONObject.optLong("downloadId");
+      this.kwm = true;
       AppMethodBeat.o(45851);
     }
     
-    public final void aOA()
+    public final void aOX()
     {
       boolean bool = true;
       AppMethodBeat.i(45853);
-      ad.i("MicroMsg.JsApiPauseDownloadTask", "doPauseDownloadTask, downloadId = %d", new Object[] { Long.valueOf(this.ksY) });
-      if (this.ksY <= 0L) {}
+      ae.i("MicroMsg.JsApiPauseDownloadTask", "doPauseDownloadTask, downloadId = %d", new Object[] { Long.valueOf(this.kwo) });
+      if (this.kwo <= 0L) {}
       com.tencent.mm.plugin.downloader.g.a locala;
-      for (this.ksX = "downloadId invalid";; this.ksX = "downloadId invalid")
+      for (this.kwn = "downloadId invalid";; this.kwn = "downloadId invalid")
       {
-        bhX();
+        biG();
         AppMethodBeat.o(45853);
         return;
-        locala = d.ua(this.ksY);
+        locala = d.ur(this.kwo);
         if (locala != null) {
           break;
         }
@@ -77,29 +77,29 @@ public final class JsApiPauseDownloadTask
         locala.field_downloadInWifi = false;
         d.e(locala);
       }
-      if (!f.ccl().tT(this.ksY)) {}
+      if (!f.cdA().uk(this.kwo)) {}
       for (;;)
       {
-        this.ksW = bool;
+        this.kwm = bool;
         break;
         bool = false;
       }
     }
     
-    public final void aOB()
+    public final void aOY()
     {
       AppMethodBeat.i(45854);
-      if (this.ksW)
+      if (this.kwm)
       {
-        if (bt.isNullOrNil(this.ksX)) {}
-        for (String str = "fail";; str = String.format("fail:%s", new Object[] { this.ksX }))
+        if (bu.isNullOrNil(this.kwn)) {}
+        for (String str = "fail";; str = String.format("fail:%s", new Object[] { this.kwn }))
         {
-          this.jwH.h(this.cgA, this.ksO.e(str, null));
+          this.jzD.h(this.cgA, this.kwe.e(str, null));
           AppMethodBeat.o(45854);
           return;
         }
       }
-      this.jwH.h(this.cgA, this.ksO.e("ok", null));
+      this.jzD.h(this.cgA, this.kwe.e("ok", null));
       AppMethodBeat.o(45854);
     }
     
@@ -107,12 +107,12 @@ public final class JsApiPauseDownloadTask
     {
       boolean bool = true;
       AppMethodBeat.i(45855);
-      this.ksY = paramParcel.readLong();
+      this.kwo = paramParcel.readLong();
       if (paramParcel.readInt() == 1) {}
       for (;;)
       {
-        this.ksW = bool;
-        this.ksX = paramParcel.readString();
+        this.kwm = bool;
+        this.kwn = paramParcel.readString();
         AppMethodBeat.o(45855);
         return;
         bool = false;
@@ -122,12 +122,12 @@ public final class JsApiPauseDownloadTask
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
       AppMethodBeat.i(45856);
-      paramParcel.writeLong(this.ksY);
-      if (this.ksW) {}
+      paramParcel.writeLong(this.kwo);
+      if (this.kwm) {}
       for (paramInt = 1;; paramInt = 0)
       {
         paramParcel.writeInt(paramInt);
-        paramParcel.writeString(this.ksX);
+        paramParcel.writeString(this.kwn);
         AppMethodBeat.o(45856);
         return;
       }

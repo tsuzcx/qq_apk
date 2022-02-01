@@ -3,31 +3,31 @@ package kotlinx.coroutines;
 import d.l;
 import java.util.concurrent.locks.LockSupport;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/coroutines/EventLoopImplPlatform;", "Lkotlinx/coroutines/EventLoop;", "()V", "thread", "Ljava/lang/Thread;", "getThread", "()Ljava/lang/Thread;", "reschedule", "", "now", "", "delayedTask", "Lkotlinx/coroutines/EventLoopImplBase$DelayedTask;", "unpark", "kotlinx-coroutines-core"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/coroutines/EventLoopImplPlatform;", "Lkotlinx/coroutines/EventLoop;", "()V", "thread", "Ljava/lang/Thread;", "getThread", "()Ljava/lang/Thread;", "reschedule", "", "now", "", "delayedTask", "Lkotlinx/coroutines/EventLoopImplBase$DelayedTask;", "unpark", "kotlinx-coroutines-core"})
 public abstract class bf
   extends bd
 {
   protected final void c(long paramLong, be.b paramb)
   {
-    if (am.gvd())
+    if (am.gzF())
     {
-      if ((bf)this != ao.NIf) {}
+      if ((bf)this != ao.Ofl) {}
       for (int i = 1; i == 0; i = 0) {
         throw ((Throwable)new AssertionError());
       }
     }
-    ao.NIf.a(paramLong, paramb);
+    ao.Ofl.a(paramLong, paramb);
   }
   
-  protected abstract Thread getThread();
-  
-  protected final void gvz()
+  protected final void gAb()
   {
     Thread localThread = getThread();
-    if ((Thread.currentThread() != localThread) && (ck.NJi == null)) {
+    if ((Thread.currentThread() != localThread) && (ck.Ogo == null)) {
       LockSupport.unpark(localThread);
     }
   }
+  
+  protected abstract Thread getThread();
 }
 
 

@@ -7,12 +7,18 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.animation.TimeInterpolator;
 import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Canvas;
+import android.graphics.Paint;
 import android.graphics.Paint.Style;
+import android.graphics.Rect;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.LayoutParams;
 import android.support.v7.widget.RecyclerView.a;
 import android.support.v7.widget.RecyclerView.h;
 import android.support.v7.widget.RecyclerView.i;
+import android.support.v7.widget.RecyclerView.t;
 import android.support.v7.widget.RecyclerView.w;
 import android.text.TextPaint;
 import android.view.Display;
@@ -35,68 +41,71 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.modelappbrand.a.e;
 import com.tencent.mm.plugin.appbrand.widget.dialog.k;
 import com.tencent.mm.plugin.appbrand.widget.dialog.m;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
 import d.g.b.p;
+import d.g.b.q;
 import d.l;
 import d.v;
+import d.z;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/msgsubscription/ui/SubscribeMsgRequestDialog;", "Lcom/tencent/mm/plugin/appbrand/widget/dialog/IAppBrandDialog;", "context", "Landroid/content/Context;", "items", "", "Lcom/tencent/mm/msgsubscription/ui/SubscribeMsgRequestDialog$Item;", "listener", "Lcom/tencent/mm/msgsubscription/ui/SubscribeMsgRequestDialog$Listener;", "isSingleMode", "", "(Landroid/content/Context;Ljava/util/List;Lcom/tencent/mm/msgsubscription/ui/SubscribeMsgRequestDialog$Listener;Z)V", "_position", "", "value", "", "actionDesc", "getActionDesc", "()Ljava/lang/String;", "setActionDesc", "(Ljava/lang/String;)V", "actionTv", "Landroid/widget/TextView;", "adapter", "Lcom/tencent/mm/msgsubscription/ui/SubscribeMsgRequestDialog$ItemAdapter;", "alwaysKeepCb", "Landroid/widget/CheckBox;", "alwaysKeepText", "getAlwaysKeepText", "setAlwaysKeepText", "alwaysKeepTv", "alwaysKeepView", "Landroid/view/View;", "alwaysRejectText", "getAlwaysRejectText", "setAlwaysRejectText", "alwaysRejectTv", "appName", "getAppName", "setAppName", "appNameTv", "cancelBtn", "Landroid/widget/Button;", "cancelBtnText", "getCancelBtnText", "setCancelBtnText", "container", "Lcom/tencent/mm/plugin/appbrand/widget/dialog/IRuntimeDialogContainer;", "defaultIconRes", "getDefaultIconRes", "()I", "setDefaultIconRes", "(I)V", "desc", "getDesc", "setDesc", "descTV", "Lcom/tencent/mm/msgsubscription/ui/SubscribeMsgRequestDialog$SubscribeRequestDialogListener;", "dialogListener", "getDialogListener", "()Lcom/tencent/mm/msgsubscription/ui/SubscribeMsgRequestDialog$SubscribeRequestDialogListener;", "setDialogListener", "(Lcom/tencent/mm/msgsubscription/ui/SubscribeMsgRequestDialog$SubscribeRequestDialogListener;)V", "dialogView", "dialogViewContainer", "Landroid/widget/FrameLayout;", "iconIv", "Landroid/widget/ImageView;", "iconUrl", "getIconUrl", "setIconUrl", "", "mRootView", "okBtn", "okBtnText", "getOkBtnText", "setOkBtnText", "recyclerViewContainer", "sampleBack", "sampleRoot", "sampleShowing", "sampleTitle", "getSampleTitle", "setSampleTitle", "sampleViewId", "Ljava/lang/Integer;", "sampleViewTitle", "scrollView", "Landroid/widget/ScrollView;", "showAlwaysKeepView", "getShowAlwaysKeepView", "()Z", "setShowAlwaysKeepView", "(Z)V", "showAlwaysRejectView", "getShowAlwaysRejectView", "setShowAlwaysRejectView", "templateShowSampleListener", "Lcom/tencent/mm/msgsubscription/ui/SubscribeMsgRequestDialog$Companion$TemplateShowSampleListener;", "getTemplateShowSampleListener", "()Lcom/tencent/mm/msgsubscription/ui/SubscribeMsgRequestDialog$Companion$TemplateShowSampleListener;", "setTemplateShowSampleListener", "(Lcom/tencent/mm/msgsubscription/ui/SubscribeMsgRequestDialog$Companion$TemplateShowSampleListener;)V", "tip", "getTip", "setTip", "tipTv", "topSampleBtn", "addRecyclerView", "", "alwaysKeepSelected", "applyRotation", "rotation", "cancel", "closeSampleView", "dismiss", "dispatchCancelEvent", "dispatchEvent", "event", "getContentView", "getPosition", "getRotation", "isCancelable", "isCanceledOnTouchOutside", "onBackPressedEvent", "onCancel", "onCheckedCountChanged", "size", "onDismiss", "onScreenOrientationChanged", "onShow", "dialogHelper", "setPosition", "position", "showSample", "item", "startSampleAnimation", "show", "Landroid/animation/Animator$AnimatorListener;", "setBoldStyle", "Companion", "Item", "ItemAdapter", "Listener", "SubscribeRequestDialogListener", "wxbiz-msgsubscription-sdk_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/msgsubscription/ui/SubscribeMsgRequestDialog;", "Lcom/tencent/mm/plugin/appbrand/widget/dialog/IAppBrandDialog;", "context", "Landroid/content/Context;", "items", "", "Lcom/tencent/mm/msgsubscription/ui/SubscribeMsgRequestDialog$Item;", "listener", "Lcom/tencent/mm/msgsubscription/ui/SubscribeMsgRequestDialog$Listener;", "isSingleMode", "", "(Landroid/content/Context;Ljava/util/List;Lcom/tencent/mm/msgsubscription/ui/SubscribeMsgRequestDialog$Listener;Z)V", "_position", "", "value", "", "actionDesc", "getActionDesc", "()Ljava/lang/String;", "setActionDesc", "(Ljava/lang/String;)V", "actionTv", "Landroid/widget/TextView;", "adapter", "Lcom/tencent/mm/msgsubscription/ui/SubscribeMsgRequestDialog$ItemAdapter;", "alwaysKeepCb", "Landroid/widget/CheckBox;", "alwaysKeepText", "getAlwaysKeepText", "setAlwaysKeepText", "alwaysKeepTv", "alwaysKeepView", "Landroid/view/View;", "alwaysRejectText", "getAlwaysRejectText", "setAlwaysRejectText", "alwaysRejectTv", "appName", "getAppName", "setAppName", "appNameTv", "cancelBtn", "Landroid/widget/Button;", "cancelBtnText", "getCancelBtnText", "setCancelBtnText", "container", "Lcom/tencent/mm/plugin/appbrand/widget/dialog/IRuntimeDialogContainer;", "defaultIconRes", "getDefaultIconRes", "()I", "setDefaultIconRes", "(I)V", "desc", "getDesc", "setDesc", "descTV", "Lcom/tencent/mm/msgsubscription/ui/SubscribeMsgRequestDialog$SubscribeRequestDialogListener;", "dialogListener", "getDialogListener", "()Lcom/tencent/mm/msgsubscription/ui/SubscribeMsgRequestDialog$SubscribeRequestDialogListener;", "setDialogListener", "(Lcom/tencent/mm/msgsubscription/ui/SubscribeMsgRequestDialog$SubscribeRequestDialogListener;)V", "dialogView", "dialogViewContainer", "Landroid/widget/FrameLayout;", "iconIv", "Landroid/widget/ImageView;", "iconUrl", "getIconUrl", "setIconUrl", "", "mRootView", "okBtn", "okBtnText", "getOkBtnText", "setOkBtnText", "recyclerViewContainer", "sampleBack", "sampleRoot", "sampleShowing", "sampleTitle", "getSampleTitle", "setSampleTitle", "sampleViewId", "Ljava/lang/Integer;", "sampleViewTitle", "scrollView", "Landroid/widget/ScrollView;", "showAlwaysKeepView", "getShowAlwaysKeepView", "()Z", "setShowAlwaysKeepView", "(Z)V", "showAlwaysRejectView", "getShowAlwaysRejectView", "setShowAlwaysRejectView", "templateShowSampleListener", "Lcom/tencent/mm/msgsubscription/ui/SubscribeMsgRequestDialog$Companion$TemplateShowSampleListener;", "getTemplateShowSampleListener", "()Lcom/tencent/mm/msgsubscription/ui/SubscribeMsgRequestDialog$Companion$TemplateShowSampleListener;", "setTemplateShowSampleListener", "(Lcom/tencent/mm/msgsubscription/ui/SubscribeMsgRequestDialog$Companion$TemplateShowSampleListener;)V", "tip", "getTip", "setTip", "tipTv", "topSampleBtn", "addRecyclerView", "", "alwaysKeepSelected", "applyRotation", "rotation", "cancel", "closeSampleView", "dismiss", "dispatchCancelEvent", "dispatchEvent", "event", "getContentView", "getPosition", "getRotation", "isCancelable", "isCanceledOnTouchOutside", "onBackPressedEvent", "onCancel", "onCheckedCountChanged", "size", "onDismiss", "onScreenOrientationChanged", "onShow", "dialogHelper", "setPosition", "position", "showSample", "item", "startSampleAnimation", "show", "Landroid/animation/Animator$AnimatorListener;", "setBoldStyle", "Companion", "Item", "ItemAdapter", "Listener", "SubscribeRequestDialogListener", "wxbiz-msgsubscription-sdk_release"})
 public final class b
   implements k
 {
-  public static final b.a iDy;
+  public static final b.a iGr;
   private String appName;
   public final Context context;
   private String desc;
-  private ScrollView fQj;
-  private ImageView fUN;
-  private Button gUt;
-  private Button gWI;
-  private TextView gZP;
-  private List<b.b> hJj;
-  public View iCR;
-  private FrameLayout iCS;
-  private c iCT;
-  private TextView iCU;
-  private TextView iCV;
-  private TextView iCW;
-  private View iCX;
-  private FrameLayout iCY;
-  private View iCZ;
-  private View iDa;
-  public TextView iDb;
-  public TextView iDc;
-  public View iDd;
-  public CheckBox iDe;
-  private TextView iDf;
-  private View iDg;
-  private boolean iDh;
-  private Integer iDi;
-  private m iDj;
-  public b.a.a iDk;
-  public String iDl;
-  public String iDm;
-  public boolean iDn;
-  public String iDo;
-  public boolean iDp;
-  private String iDq;
-  private String iDr;
-  private String iDs;
-  private String iDt;
-  public int iDu;
-  public e iDv;
-  public int iDw;
-  private b.d iDx;
+  private ScrollView fSp;
+  private ImageView fWT;
+  private Button gXc;
+  private Button gZv;
+  private List<b.b> hMc;
+  private TextView hcC;
+  public View iFK;
+  private FrameLayout iFL;
+  private c iFM;
+  private TextView iFN;
+  private TextView iFO;
+  private TextView iFP;
+  private View iFQ;
+  private FrameLayout iFR;
+  private View iFS;
+  private View iFT;
+  public TextView iFU;
+  public TextView iFV;
+  public View iFW;
+  public CheckBox iFX;
+  private TextView iFY;
+  private View iFZ;
+  private boolean iGa;
+  private Integer iGb;
+  private m iGc;
+  public b.a.a iGd;
+  public String iGe;
+  public String iGf;
+  public boolean iGg;
+  public String iGh;
+  public boolean iGi;
+  private String iGj;
+  private String iGk;
+  private String iGl;
+  private String iGm;
+  public int iGn;
+  public e iGo;
+  public int iGp;
+  private b.d iGq;
   private String iconUrl;
   
   static
   {
     AppMethodBeat.i(149783);
-    iDy = new b.a((byte)0);
+    iGr = new b.a((byte)0);
     AppMethodBeat.o(149783);
   }
   
@@ -104,131 +113,170 @@ public final class b
   {
     AppMethodBeat.i(149782);
     this.context = paramContext;
-    this.iDx = paramd;
+    this.iGq = paramd;
     paramContext = LayoutInflater.from(this.context).inflate(2131495728, null);
     p.g(paramContext, "LayoutInflater.from(cont…msg_request_dialog, null)");
-    this.iCR = paramContext;
-    this.hJj = ((List)new ArrayList());
+    this.iFK = paramContext;
+    this.hMc = ((List)new ArrayList());
     this.iconUrl = "";
     this.appName = "";
-    this.iDl = "";
-    this.iDm = "";
-    this.iDn = true;
-    this.iDo = "";
-    this.iDp = true;
-    this.iDq = "";
+    this.iGe = "";
+    this.iGf = "";
+    this.iGg = true;
+    this.iGh = "";
+    this.iGi = true;
+    this.iGj = "";
     this.desc = "";
-    this.iDr = "";
-    this.iDs = "";
-    this.iDt = "";
-    paramContext = this.iCR.findViewById(2131301165);
+    this.iGk = "";
+    this.iGl = "";
+    this.iGm = "";
+    paramContext = this.iFK.findViewById(2131301165);
     p.g(paramContext, "mRootView.findViewById(R.id.item_list_container)");
-    this.iCS = ((FrameLayout)paramContext);
-    paramContext = this.iCR.findViewById(2131304376);
+    this.iFL = ((FrameLayout)paramContext);
+    paramContext = this.iFK.findViewById(2131304376);
     p.g(paramContext, "mRootView.findViewById(R.id.scroll_view)");
-    this.fQj = ((ScrollView)paramContext);
-    paramContext = this.iCR.findViewById(2131300891);
+    this.fSp = ((ScrollView)paramContext);
+    paramContext = this.iFK.findViewById(2131300891);
     p.g(paramContext, "mRootView.findViewById(R.id.icon_iv)");
-    this.fUN = ((ImageView)paramContext);
-    paramContext = this.iCR.findViewById(2131296340);
+    this.fWT = ((ImageView)paramContext);
+    paramContext = this.iFK.findViewById(2131296340);
     p.g(paramContext, "mRootView.findViewById(R.id.action)");
-    this.gZP = ((TextView)paramContext);
-    paramContext = this.iCR.findViewById(2131298996);
+    this.hcC = ((TextView)paramContext);
+    paramContext = this.iFK.findViewById(2131298996);
     p.g(paramContext, "mRootView.findViewById(R.id.desc)");
-    this.iCV = ((TextView)paramContext);
-    paramContext = this.iCR.findViewById(2131305860);
+    this.iFO = ((TextView)paramContext);
+    paramContext = this.iFK.findViewById(2131305860);
     p.g(paramContext, "mRootView.findViewById(R.id.tip)");
-    this.iCW = ((TextView)paramContext);
-    paramContext = this.iCR.findViewById(2131296866);
+    this.iFP = ((TextView)paramContext);
+    paramContext = this.iFK.findViewById(2131296866);
     p.g(paramContext, "mRootView.findViewById(R.id.app_name_tv)");
-    this.iCU = ((TextView)paramContext);
-    paramContext = this.iCR.findViewById(2131299118);
+    this.iFN = ((TextView)paramContext);
+    paramContext = this.iFK.findViewById(2131299118);
     p.g(paramContext, "mRootView.findViewById(R.id.dialog_cancel)");
-    this.gWI = ((Button)paramContext);
-    paramContext = this.iCR.findViewById(2131299130);
+    this.gZv = ((Button)paramContext);
+    paramContext = this.iFK.findViewById(2131299130);
     p.g(paramContext, "mRootView.findViewById(R.id.dialog_ok)");
-    this.gUt = ((Button)paramContext);
-    paramContext = this.iCR.findViewById(2131304279);
+    this.gXc = ((Button)paramContext);
+    paramContext = this.iFK.findViewById(2131304279);
     p.g(paramContext, "mRootView.findViewById(R.id.sample_root)");
-    this.iCX = paramContext;
-    paramContext = this.iCR.findViewById(2131304280);
+    this.iFQ = paramContext;
+    paramContext = this.iFK.findViewById(2131304280);
     p.g(paramContext, "mRootView.findViewById(R.id.sample_view_title)");
-    this.iDf = ((TextView)paramContext);
-    paramContext = this.iCR.findViewById(2131299133);
+    this.iFY = ((TextView)paramContext);
+    paramContext = this.iFK.findViewById(2131299133);
     p.g(paramContext, "mRootView.findViewById(R.id.dialog_view_container)");
-    this.iCY = ((FrameLayout)paramContext);
-    paramContext = this.iCR.findViewById(2131299132);
+    this.iFR = ((FrameLayout)paramContext);
+    paramContext = this.iFK.findViewById(2131299132);
     p.g(paramContext, "mRootView.findViewById(R.id.dialog_view)");
-    this.iCZ = paramContext;
-    paramContext = this.iCR.findViewById(2131304278);
+    this.iFS = paramContext;
+    paramContext = this.iFK.findViewById(2131304278);
     p.g(paramContext, "mRootView.findViewById(R.id.sample_back)");
-    this.iDa = paramContext;
-    paramContext = this.iCR.findViewById(2131296653);
+    this.iFT = paramContext;
+    paramContext = this.iFK.findViewById(2131296653);
     p.g(paramContext, "mRootView.findViewById(R.id.always_keep_tv)");
-    this.iDb = ((TextView)paramContext);
-    paramContext = this.iCR.findViewById(2131303012);
+    this.iFU = ((TextView)paramContext);
+    paramContext = this.iFK.findViewById(2131303012);
     p.g(paramContext, "mRootView.findViewById(R…_type_always_keep_layout)");
-    this.iDd = paramContext;
-    paramContext = this.iCR.findViewById(2131296652);
+    this.iFW = paramContext;
+    paramContext = this.iFK.findViewById(2131296652);
     p.g(paramContext, "mRootView.findViewById(R.id.always_keep_checkbox)");
-    this.iDe = ((CheckBox)paramContext);
-    paramContext = this.iCR.findViewById(2131296654);
+    this.iFX = ((CheckBox)paramContext);
+    paramContext = this.iFK.findViewById(2131296654);
     p.g(paramContext, "mRootView.findViewById(R.id.always_reject_tv)");
-    this.iDc = ((TextView)paramContext);
-    paramContext = this.iCR.findViewById(2131306015);
+    this.iFV = ((TextView)paramContext);
+    paramContext = this.iFK.findViewById(2131306015);
     p.g(paramContext, "mRootView.findViewById(R.id.top_sample)");
-    this.iDg = paramContext;
-    this.iCR.getViewTreeObserver().addOnGlobalLayoutListener((ViewTreeObserver.OnGlobalLayoutListener)new b.1(this));
-    this.iCY.getViewTreeObserver().addOnGlobalLayoutListener((ViewTreeObserver.OnGlobalLayoutListener)new ViewTreeObserver.OnGlobalLayoutListener()
+    this.iFZ = paramContext;
+    this.iFK.getViewTreeObserver().addOnGlobalLayoutListener((ViewTreeObserver.OnGlobalLayoutListener)new ViewTreeObserver.OnGlobalLayoutListener()
+    {
+      public final void onGlobalLayout()
+      {
+        AppMethodBeat.i(149735);
+        Object localObject = b.f(this.iGs).getParent();
+        if (localObject != null)
+        {
+          if (localObject == null)
+          {
+            localObject = new v("null cannot be cast to non-null type android.view.ViewGroup");
+            AppMethodBeat.o(149735);
+            throw ((Throwable)localObject);
+          }
+          localObject = (ViewGroup)localObject;
+          int i = b.h(this.iGs);
+          if ((i == 1) || (i == 3))
+          {
+            if (b.f(this.iGs).getLayoutParams().height != -2)
+            {
+              b.f(this.iGs).getLayoutParams().height = -2;
+              b.f(this.iGs).requestLayout();
+              AppMethodBeat.o(149735);
+            }
+          }
+          else
+          {
+            i = ((ViewGroup)localObject).getHeight() - com.tencent.mm.cb.a.fromDPToPix(ak.getContext(), 60);
+            if (b.f(this.iGs).getHeight() > i)
+            {
+              b.f(this.iGs).getLayoutParams().height = Math.min(i, b.f(this.iGs).getHeight());
+              b.f(this.iGs).requestLayout();
+            }
+          }
+          AppMethodBeat.o(149735);
+          return;
+        }
+        AppMethodBeat.o(149735);
+      }
+    });
+    this.iFR.getViewTreeObserver().addOnGlobalLayoutListener((ViewTreeObserver.OnGlobalLayoutListener)new ViewTreeObserver.OnGlobalLayoutListener()
     {
       public final void onGlobalLayout()
       {
         AppMethodBeat.i(149736);
-        if (b.i(this.iDz).getHeight() > 0) {
-          b.d(this.iDz).getLayoutParams().height = b.i(this.iDz).getHeight();
+        if (b.i(this.iGs).getHeight() > 0) {
+          b.d(this.iGs).getLayoutParams().height = b.i(this.iGs).getHeight();
         }
         AppMethodBeat.o(149736);
       }
     });
-    this.hJj.addAll((Collection)paramList);
+    this.hMc.addAll((Collection)paramList);
     if (paramBoolean)
     {
-      this.iCS.setVisibility(8);
-      this.iDg.setVisibility(0);
-      this.iDg.setOnClickListener((View.OnClickListener)new b.3(this, paramList));
+      this.iFL.setVisibility(8);
+      this.iFZ.setVisibility(0);
+      this.iFZ.setOnClickListener((View.OnClickListener)new b.3(this, paramList));
     }
     aC(paramList);
-    this.gUt.setOnClickListener((View.OnClickListener)new View.OnClickListener()
+    this.gXc.setOnClickListener((View.OnClickListener)new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(149738);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
         localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/msgsubscription/ui/SubscribeMsgRequestDialog$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-        b.b(this.iDz, 1);
-        this.iDz.dismiss();
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/msgsubscription/ui/SubscribeMsgRequestDialog$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        b.b(this.iGs, 1);
+        this.iGs.dismiss();
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/msgsubscription/ui/SubscribeMsgRequestDialog$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(149738);
       }
     });
-    this.gWI.setOnClickListener((View.OnClickListener)new b.5(this));
-    this.iDd.setOnClickListener((View.OnClickListener)new b.6(this, paramList));
-    this.iDc.setOnClickListener((View.OnClickListener)new View.OnClickListener()
+    this.gZv.setOnClickListener((View.OnClickListener)new b.5(this));
+    this.iFW.setOnClickListener((View.OnClickListener)new b.6(this, paramList));
+    this.iFV.setOnClickListener((View.OnClickListener)new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(149741);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
         localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/msgsubscription/ui/SubscribeMsgRequestDialog$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-        b.b(this.iDz, 3);
-        this.iDz.dismiss();
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/msgsubscription/ui/SubscribeMsgRequestDialog$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        b.b(this.iGs, 3);
+        this.iGs.dismiss();
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/msgsubscription/ui/SubscribeMsgRequestDialog$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(149741);
       }
     });
-    this.iDw = 2;
+    this.iGp = 2;
     AppMethodBeat.o(149782);
   }
   
@@ -240,11 +288,11 @@ public final class b
     ObjectAnimator localObjectAnimator;
     if (paramBoolean)
     {
-      localObject = ObjectAnimator.ofFloat(this.iCY, View.TRANSLATION_X, new float[] { 0.0F, -this.iCY.getWidth() }).setDuration(200L);
+      localObject = ObjectAnimator.ofFloat(this.iFR, View.TRANSLATION_X, new float[] { 0.0F, -this.iFR.getWidth() }).setDuration(200L);
       p.g(localObject, "it");
       ((ObjectAnimator)localObject).setInterpolator((TimeInterpolator)new com.tencent.mm.msgsubscription.ui.a.a());
       localObject = (Animator)localObject;
-      localObjectAnimator = ObjectAnimator.ofFloat(this.iCX, View.TRANSLATION_X, new float[] { this.iCX.getWidth(), 0.0F }).setDuration(200L);
+      localObjectAnimator = ObjectAnimator.ofFloat(this.iFQ, View.TRANSLATION_X, new float[] { this.iFQ.getWidth(), 0.0F }).setDuration(200L);
       p.g(localObjectAnimator, "it");
       localObjectAnimator.setInterpolator((TimeInterpolator)new com.tencent.mm.msgsubscription.ui.a.a());
       localAnimatorSet.playTogether(new Animator[] { localObject, (Animator)localObjectAnimator });
@@ -257,11 +305,11 @@ public final class b
       localAnimatorSet.start();
       AppMethodBeat.o(149771);
       return;
-      localObject = ObjectAnimator.ofFloat(this.iCY, View.TRANSLATION_X, new float[] { -this.iCY.getWidth(), 0.0F }).setDuration(200L);
+      localObject = ObjectAnimator.ofFloat(this.iFR, View.TRANSLATION_X, new float[] { -this.iFR.getWidth(), 0.0F }).setDuration(200L);
       p.g(localObject, "it");
       ((ObjectAnimator)localObject).setInterpolator((TimeInterpolator)new com.tencent.mm.msgsubscription.ui.a.a());
       localObject = (Animator)localObject;
-      localObjectAnimator = ObjectAnimator.ofFloat(this.iCX, View.TRANSLATION_X, new float[] { 0.0F, this.iCX.getWidth() }).setDuration(200L);
+      localObjectAnimator = ObjectAnimator.ofFloat(this.iFQ, View.TRANSLATION_X, new float[] { 0.0F, this.iFQ.getWidth() }).setDuration(200L);
       p.g(localObjectAnimator, "it");
       localObjectAnimator.setInterpolator((TimeInterpolator)new com.tencent.mm.msgsubscription.ui.a.a());
       localAnimatorSet.playTogether(new Animator[] { localObject, (Animator)localObjectAnimator });
@@ -272,26 +320,26 @@ public final class b
   {
     AppMethodBeat.i(149769);
     RecyclerView localRecyclerView = new RecyclerView(this.context);
-    this.iCS.removeAllViews();
-    this.iCS.addView((View)localRecyclerView, new ViewGroup.LayoutParams(-1, -2));
-    this.iCT = new c(paramList, this);
-    paramList = this.iCT;
+    this.iFL.removeAllViews();
+    this.iFL.addView((View)localRecyclerView, new ViewGroup.LayoutParams(-1, -2));
+    this.iFM = new c(paramList, this);
+    paramList = this.iFM;
     if (paramList == null) {
-      p.bcb("adapter");
+      p.bdF("adapter");
     }
     localRecyclerView.setAdapter((RecyclerView.a)paramList);
     localRecyclerView.setLayoutManager((RecyclerView.i)new LinearLayoutManager());
-    localRecyclerView.b((RecyclerView.h)new b.f(this));
+    localRecyclerView.b((RecyclerView.h)new f(this));
     AppMethodBeat.o(149769);
   }
   
-  private final boolean aOu()
+  private final boolean aOR()
   {
     AppMethodBeat.i(149773);
-    if (this.iDh)
+    if (this.iGa)
     {
       a(false, (Animator.AnimatorListener)new i(this));
-      this.iDh = false;
+      this.iGa = false;
       AppMethodBeat.o(149773);
       return true;
     }
@@ -328,15 +376,15 @@ public final class b
     return i;
   }
   
-  private final void qx(int paramInt)
+  private final void qA(int paramInt)
   {
     AppMethodBeat.i(149778);
-    ad.i("SubscribeMsgRequestDialog", "dispatchEvent ".concat(String.valueOf(paramInt)));
-    b.d locald = this.iDx;
+    ae.i("SubscribeMsgRequestDialog", "dispatchEvent ".concat(String.valueOf(paramInt)));
+    b.d locald = this.iGq;
     if (locald != null)
     {
       List localList = (List)new ArrayList();
-      localList.addAll((Collection)this.hJj);
+      localList.addAll((Collection)this.hMc);
       locald.c(paramInt, localList);
       AppMethodBeat.o(149778);
       return;
@@ -344,20 +392,20 @@ public final class b
     AppMethodBeat.o(149778);
   }
   
-  private final void qz(int paramInt)
+  private final void qC(int paramInt)
   {
     AppMethodBeat.i(149781);
     Object localObject;
     ViewGroup.LayoutParams localLayoutParams;
     if ((paramInt == 1) || (paramInt == 3))
     {
-      localObject = this.iCR;
-      localLayoutParams = this.iCR.getLayoutParams();
-      localLayoutParams.width = c.cM(this.context);
+      localObject = this.iFK;
+      localLayoutParams = this.iFK.getLayoutParams();
+      localLayoutParams.width = c.cO(this.context);
       ((View)localObject).setLayoutParams(localLayoutParams);
-      if (this.fQj.indexOfChild(this.iCZ) == -1)
+      if (this.fSp.indexOfChild(this.iFS) == -1)
       {
-        localObject = this.iCZ.getParent();
+        localObject = this.iFS.getParent();
         if (localObject != null)
         {
           if (localObject == null)
@@ -366,23 +414,23 @@ public final class b
             AppMethodBeat.o(149781);
             throw ((Throwable)localObject);
           }
-          ((ViewGroup)localObject).removeView(this.iCZ);
+          ((ViewGroup)localObject).removeView(this.iFS);
         }
-        this.fQj.addView(this.iCZ);
-        this.fQj.setVisibility(0);
+        this.fSp.addView(this.iFS);
+        this.fSp.setVisibility(0);
       }
     }
     for (;;)
     {
-      this.iCR.getViewTreeObserver().addOnGlobalLayoutListener((ViewTreeObserver.OnGlobalLayoutListener)new b.h(this));
+      this.iFK.getViewTreeObserver().addOnGlobalLayoutListener((ViewTreeObserver.OnGlobalLayoutListener)new h(this));
       AppMethodBeat.o(149781);
       return;
-      if (c.cN(this.context)) {
-        c.a(this.iCR, (d.g.a.a)new b.g(this));
+      if (c.cP(this.context)) {
+        c.a(this.iFK, (d.g.a.a)new g(this));
       }
-      while (this.iCY.indexOfChild(this.iCZ) == -1)
+      while (this.iFR.indexOfChild(this.iFS) == -1)
       {
-        localObject = this.iCZ.getParent();
+        localObject = this.iFS.getParent();
         if (localObject == null) {
           break label268;
         }
@@ -392,66 +440,66 @@ public final class b
         localObject = new v("null cannot be cast to non-null type android.view.ViewGroup");
         AppMethodBeat.o(149781);
         throw ((Throwable)localObject);
-        localObject = this.iCR;
-        localLayoutParams = this.iCR.getLayoutParams();
+        localObject = this.iFK;
+        localLayoutParams = this.iFK.getLayoutParams();
         localLayoutParams.width = -1;
         ((View)localObject).setLayoutParams(localLayoutParams);
       }
       continue;
       label257:
-      ((ViewGroup)localObject).removeView(this.iCZ);
+      ((ViewGroup)localObject).removeView(this.iFS);
       label268:
-      this.iCY.addView(this.iCZ);
-      this.fQj.setVisibility(8);
+      this.iFR.addView(this.iFS);
+      this.fSp.setVisibility(8);
     }
   }
   
-  public final void Ii(String paramString)
+  public final void IK(String paramString)
   {
     AppMethodBeat.i(149762);
     p.h(paramString, "value");
     this.appName = paramString;
-    this.iCU.setText((CharSequence)this.appName);
-    f(this.iCU);
+    this.iFN.setText((CharSequence)this.appName);
+    f(this.iFN);
     AppMethodBeat.o(149762);
   }
   
-  public final void Ij(String paramString)
+  public final void IL(String paramString)
   {
     AppMethodBeat.i(149763);
     p.h(paramString, "value");
-    this.iDq = paramString;
-    this.gZP.setText((CharSequence)this.iDq);
-    f(this.gZP);
+    this.iGj = paramString;
+    this.hcC.setText((CharSequence)this.iGj);
+    f(this.hcC);
     AppMethodBeat.o(149763);
   }
   
-  public final void Ik(String paramString)
+  public final void IM(String paramString)
   {
     AppMethodBeat.i(149765);
     p.h(paramString, "value");
-    this.iDr = paramString;
-    this.gUt.setText((CharSequence)this.iDr);
+    this.iGk = paramString;
+    this.gXc.setText((CharSequence)this.iGk);
     AppMethodBeat.o(149765);
   }
   
-  public final void Il(String paramString)
+  public final void IN(String paramString)
   {
     AppMethodBeat.i(149766);
     p.h(paramString, "value");
-    this.iDs = paramString;
-    this.gWI.setText((CharSequence)this.iDs);
+    this.iGl = paramString;
+    this.gZv.setText((CharSequence)this.iGl);
     AppMethodBeat.o(149766);
   }
   
-  public final void Im(String paramString)
+  public final void IO(String paramString)
   {
     AppMethodBeat.i(149767);
     p.h(paramString, "value");
-    this.iDt = paramString;
-    this.iCW.setText((CharSequence)this.iDt);
-    paramString = this.iCW;
-    if (((CharSequence)this.iDt).length() == 0)
+    this.iGm = paramString;
+    this.iFP.setText((CharSequence)this.iGm);
+    paramString = this.iFP;
+    if (((CharSequence)this.iGm).length() == 0)
     {
       i = 1;
       if (i == 0) {
@@ -472,10 +520,10 @@ public final class b
   public final void a(m paramm)
   {
     AppMethodBeat.i(149776);
-    com.tencent.mm.modelappbrand.a.b.aDV().a(this.fUN, this.iconUrl, this.iDu, (com.tencent.mm.modelappbrand.a.b.h)new e());
-    this.iDj = paramm;
-    qz(getRotation());
-    paramm = this.iDv;
+    com.tencent.mm.modelappbrand.a.b.aEl().a(this.fWT, this.iconUrl, this.iGn, (com.tencent.mm.modelappbrand.a.b.h)new e());
+    this.iGc = paramm;
+    qC(getRotation());
+    paramm = this.iGo;
     if (paramm != null)
     {
       paramm.onShow();
@@ -485,15 +533,15 @@ public final class b
     AppMethodBeat.o(149776);
   }
   
-  public final boolean aOv()
+  public final boolean aOS()
   {
     AppMethodBeat.i(149774);
-    boolean bool = aOu();
+    boolean bool = aOR();
     AppMethodBeat.o(149774);
     return bool;
   }
   
-  public final boolean aOw()
+  public final boolean aOT()
   {
     return false;
   }
@@ -501,7 +549,7 @@ public final class b
   public final void cancel()
   {
     AppMethodBeat.i(149779);
-    qx(2);
+    qA(2);
     dismiss();
     AppMethodBeat.o(149779);
   }
@@ -509,11 +557,11 @@ public final class b
   public final void dismiss()
   {
     AppMethodBeat.i(149775);
-    Object localObject = this.iDj;
+    Object localObject = this.iGc;
     if (localObject != null) {
       ((m)localObject).c((k)this);
     }
-    localObject = this.iDv;
+    localObject = this.iGo;
     if (localObject != null)
     {
       ((e)localObject).onDismiss();
@@ -525,12 +573,12 @@ public final class b
   
   public final View getContentView()
   {
-    return this.iCR;
+    return this.iFK;
   }
   
   public final int getPosition()
   {
-    return this.iDw;
+    return this.iGp;
   }
   
   public final boolean isCancelable()
@@ -541,14 +589,14 @@ public final class b
   public final void onCancel()
   {
     AppMethodBeat.i(149777);
-    qx(2);
+    qA(2);
     AppMethodBeat.o(149777);
   }
   
-  public final void qy(int paramInt)
+  public final void qB(int paramInt)
   {
     AppMethodBeat.i(149780);
-    qz(paramInt);
+    qC(paramInt);
     AppMethodBeat.o(149780);
   }
   
@@ -557,7 +605,7 @@ public final class b
     AppMethodBeat.i(149764);
     p.h(paramString, "value");
     this.desc = paramString;
-    this.iCV.setText((CharSequence)this.desc);
+    this.iFO.setText((CharSequence)this.desc);
     AppMethodBeat.o(149764);
   }
   
@@ -569,51 +617,51 @@ public final class b
     AppMethodBeat.o(149761);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/msgsubscription/ui/SubscribeMsgRequestDialog$ItemAdapter;", "Landroid/support/v7/widget/RecyclerView$Adapter;", "Lcom/tencent/mm/msgsubscription/ui/SubscribeMsgRequestDialog$ItemAdapter$Holder;", "items", "", "Lcom/tencent/mm/msgsubscription/ui/SubscribeMsgRequestDialog$Item;", "dialog", "Lcom/tencent/mm/msgsubscription/ui/SubscribeMsgRequestDialog;", "(Ljava/util/List;Lcom/tencent/mm/msgsubscription/ui/SubscribeMsgRequestDialog;)V", "getItems", "()Ljava/util/List;", "setItems", "(Ljava/util/List;)V", "itemsChecked", "", "getItemCount", "", "onBindViewHolder", "", "holder", "position", "onCreateViewHolder", "parent", "Landroid/view/ViewGroup;", "viewType", "Holder", "wxbiz-msgsubscription-sdk_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/msgsubscription/ui/SubscribeMsgRequestDialog$ItemAdapter;", "Landroid/support/v7/widget/RecyclerView$Adapter;", "Lcom/tencent/mm/msgsubscription/ui/SubscribeMsgRequestDialog$ItemAdapter$Holder;", "items", "", "Lcom/tencent/mm/msgsubscription/ui/SubscribeMsgRequestDialog$Item;", "dialog", "Lcom/tencent/mm/msgsubscription/ui/SubscribeMsgRequestDialog;", "(Ljava/util/List;Lcom/tencent/mm/msgsubscription/ui/SubscribeMsgRequestDialog;)V", "getItems", "()Ljava/util/List;", "setItems", "(Ljava/util/List;)V", "itemsChecked", "", "getItemCount", "", "onBindViewHolder", "", "holder", "position", "onCreateViewHolder", "parent", "Landroid/view/ViewGroup;", "viewType", "Holder", "wxbiz-msgsubscription-sdk_release"})
   public static final class c
     extends RecyclerView.a<a>
   {
-    List<b.b> hJj;
-    private final List<b.b> iDE;
-    private final b iDF;
+    List<b.b> hMc;
+    private final List<b.b> iGx;
+    private final b iGy;
     
     public c(List<b.b> paramList, b paramb)
     {
       AppMethodBeat.i(149752);
-      this.hJj = paramList;
-      this.iDF = paramb;
-      this.iDE = ((List)new ArrayList());
-      paramList = this.iDE;
-      Object localObject1 = (Iterable)this.hJj;
+      this.hMc = paramList;
+      this.iGy = paramb;
+      this.iGx = ((List)new ArrayList());
+      paramList = this.iGx;
+      Object localObject1 = (Iterable)this.hMc;
       paramb = (Collection)new ArrayList();
       localObject1 = ((Iterable)localObject1).iterator();
       while (((Iterator)localObject1).hasNext())
       {
         Object localObject2 = ((Iterator)localObject1).next();
-        if (((b.b)localObject2).iDC) {
+        if (((b.b)localObject2).iGv) {
           paramb.add(localObject2);
         }
       }
       paramList.addAll((Collection)paramb);
-      b.a(this.iDF, this.iDE.size());
+      b.a(this.iGy, this.iGx.size());
       AppMethodBeat.o(149752);
     }
     
     public final int getItemCount()
     {
       AppMethodBeat.i(149750);
-      int i = this.hJj.size();
+      int i = this.hMc.size();
       AppMethodBeat.o(149750);
       return i;
     }
     
-    @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/msgsubscription/ui/SubscribeMsgRequestDialog$ItemAdapter$Holder;", "Landroid/support/v7/widget/RecyclerView$ViewHolder;", "item", "Landroid/view/View;", "(Landroid/view/View;)V", "checkBox", "Landroid/widget/CheckBox;", "getCheckBox", "()Landroid/widget/CheckBox;", "setCheckBox", "(Landroid/widget/CheckBox;)V", "desc", "Landroid/widget/TextView;", "getDesc", "()Landroid/widget/TextView;", "setDesc", "(Landroid/widget/TextView;)V", "sample", "getSample", "()Landroid/view/View;", "setSample", "wxbiz-msgsubscription-sdk_release"})
+    @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/msgsubscription/ui/SubscribeMsgRequestDialog$ItemAdapter$Holder;", "Landroid/support/v7/widget/RecyclerView$ViewHolder;", "item", "Landroid/view/View;", "(Landroid/view/View;)V", "checkBox", "Landroid/widget/CheckBox;", "getCheckBox", "()Landroid/widget/CheckBox;", "setCheckBox", "(Landroid/widget/CheckBox;)V", "desc", "Landroid/widget/TextView;", "getDesc", "()Landroid/widget/TextView;", "setDesc", "(Landroid/widget/TextView;)V", "sample", "getSample", "()Landroid/view/View;", "setSample", "wxbiz-msgsubscription-sdk_release"})
     public static final class a
       extends RecyclerView.w
     {
-      CheckBox iCK;
-      TextView iDG;
-      View iDH;
+      CheckBox iFD;
+      View iGA;
+      TextView iGz;
       
       public a(View paramView)
       {
@@ -621,18 +669,18 @@ public final class b
         AppMethodBeat.i(149746);
         paramView = this.auu.findViewById(2131298255);
         p.g(paramView, "itemView.findViewById(R.id.checkbox)");
-        this.iCK = ((CheckBox)paramView);
+        this.iFD = ((CheckBox)paramView);
         paramView = this.auu.findViewById(2131298996);
         p.g(paramView, "itemView.findViewById(R.id.desc)");
-        this.iDG = ((TextView)paramView);
+        this.iGz = ((TextView)paramView);
         paramView = this.auu.findViewById(2131304277);
         p.g(paramView, "itemView.findViewById(R.id.sample)");
-        this.iDH = paramView;
+        this.iGA = paramView;
         AppMethodBeat.o(149746);
       }
     }
     
-    @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+    @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
     static final class b
       implements View.OnClickListener
     {
@@ -643,14 +691,14 @@ public final class b
         AppMethodBeat.i(149747);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
         localb.bd(paramView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/msgsubscription/ui/SubscribeMsgRequestDialog$ItemAdapter$onBindViewHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-        b.a(b.c.a(this.iDI), (b.b)this.iDI.hJj.get(this.ghM));
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/msgsubscription/ui/SubscribeMsgRequestDialog$ItemAdapter$onBindViewHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        b.a(b.c.a(this.iGB), (b.b)this.iGB.hMc.get(this.gke));
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/msgsubscription/ui/SubscribeMsgRequestDialog$ItemAdapter$onBindViewHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(149747);
       }
     }
     
-    @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+    @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
     static final class c
       implements View.OnClickListener
     {
@@ -661,35 +709,35 @@ public final class b
         AppMethodBeat.i(149748);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
         localb.bd(paramView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/msgsubscription/ui/SubscribeMsgRequestDialog$ItemAdapter$onBindViewHolder$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-        paramView = this.iDJ.iCK;
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/msgsubscription/ui/SubscribeMsgRequestDialog$ItemAdapter$onBindViewHolder$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        paramView = this.iGC.iFD;
         boolean bool;
-        if (!this.iDJ.iCK.isChecked())
+        if (!this.iGC.iFD.isChecked())
         {
           bool = true;
           paramView.setChecked(bool);
-          ((b.b)this.iDI.hJj.get(this.ghM)).iDC = this.iDJ.iCK.isChecked();
-          if (!((b.b)this.iDI.hJj.get(this.ghM)).iDC) {
+          ((b.b)this.iGB.hMc.get(this.gke)).iGv = this.iGC.iFD.isChecked();
+          if (!((b.b)this.iGB.hMc.get(this.gke)).iGv) {
             break label193;
           }
-          b.c.b(this.iDI).add(this.iDI.hJj.get(this.ghM));
+          b.c.b(this.iGB).add(this.iGB.hMc.get(this.gke));
         }
         for (;;)
         {
-          b.a(b.c.a(this.iDI), b.c.b(this.iDI).size());
+          b.a(b.c.a(this.iGB), b.c.b(this.iGB).size());
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/msgsubscription/ui/SubscribeMsgRequestDialog$ItemAdapter$onBindViewHolder$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(149748);
           return;
           bool = false;
           break;
           label193:
-          b.c.b(this.iDI).remove(this.iDI.hJj.get(this.ghM));
+          b.c.b(this.iGB).remove(this.iGB.hMc.get(this.gke));
         }
       }
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/msgsubscription/ui/SubscribeMsgRequestDialog$SubscribeRequestDialogListener;", "", "onDismiss", "", "onShow", "wxbiz-msgsubscription-sdk_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/msgsubscription/ui/SubscribeMsgRequestDialog$SubscribeRequestDialogListener;", "", "onDismiss", "", "onShow", "wxbiz-msgsubscription-sdk_release"})
   public static abstract interface e
   {
     public abstract void onDismiss();
@@ -697,21 +745,133 @@ public final class b
     public abstract void onShow();
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/msgsubscription/ui/SubscribeMsgRequestDialog$closeSampleView$1", "Landroid/animation/AnimatorListenerAdapter;", "onAnimationEnd", "", "animation", "Landroid/animation/Animator;", "wxbiz-msgsubscription-sdk_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/msgsubscription/ui/SubscribeMsgRequestDialog$addRecyclerView$divider$1", "Landroid/support/v7/widget/RecyclerView$ItemDecoration;", "paddingLeft", "", "getPaddingLeft", "()I", "paint", "Landroid/graphics/Paint;", "getPaint", "()Landroid/graphics/Paint;", "strokeWidth", "getStrokeWidth", "getItemOffsets", "", "outRect", "Landroid/graphics/Rect;", "view", "Landroid/view/View;", "parent", "Landroid/support/v7/widget/RecyclerView;", "state", "Landroid/support/v7/widget/RecyclerView$State;", "onDraw", "c", "Landroid/graphics/Canvas;", "wxbiz-msgsubscription-sdk_release"})
+  public static final class f
+    extends RecyclerView.h
+  {
+    private final int paddingLeft;
+    private final Paint paint;
+    private final int strokeWidth;
+    
+    f()
+    {
+      AppMethodBeat.i(149756);
+      this.strokeWidth = com.tencent.mm.cb.a.h(ak.getContext(), 0.5F);
+      this.paddingLeft = com.tencent.mm.cb.a.fromDPToPix(ak.getContext(), 40);
+      this.paint = new Paint();
+      this.paint.setColor(b.b(localb).getResources().getColor(2131100241));
+      this.paint.setStyle(Paint.Style.FILL);
+      this.paint.setFlags(1);
+      this.paint.setStrokeWidth(this.strokeWidth);
+      AppMethodBeat.o(149756);
+    }
+    
+    public final void a(Canvas paramCanvas, RecyclerView paramRecyclerView, RecyclerView.t paramt)
+    {
+      AppMethodBeat.i(149754);
+      p.h(paramCanvas, "c");
+      p.h(paramRecyclerView, "parent");
+      p.h(paramt, "state");
+      super.a(paramCanvas, paramRecyclerView, paramt);
+      float f1 = paramRecyclerView.getPaddingLeft();
+      float f2 = paramRecyclerView.getWidth() - paramRecyclerView.getPaddingRight();
+      int j = paramRecyclerView.getChildCount();
+      int i = 0;
+      if (i < j)
+      {
+        paramt = paramRecyclerView.getChildAt(i);
+        p.g(paramt, "child");
+        Object localObject = paramt.getLayoutParams();
+        if (localObject == null)
+        {
+          paramCanvas = new v("null cannot be cast to non-null type android.support.v7.widget.RecyclerView.LayoutParams");
+          AppMethodBeat.o(149754);
+          throw paramCanvas;
+        }
+        localObject = (RecyclerView.LayoutParams)localObject;
+        float f3 = paramt.getBottom() + ((RecyclerView.LayoutParams)localObject).bottomMargin + this.strokeWidth;
+        if (i == 0)
+        {
+          float f4 = paramt.getTop();
+          f4 = ((RecyclerView.LayoutParams)localObject).topMargin + f4 - this.strokeWidth;
+          if (paramCanvas != null) {
+            paramCanvas.drawLine(f1, f4, f2, f4, this.paint);
+          }
+        }
+        if (i == paramRecyclerView.getChildCount() - 1) {
+          if (paramCanvas != null) {
+            paramCanvas.drawLine(f1, f3, f2, f3, this.paint);
+          }
+        }
+        for (;;)
+        {
+          i += 1;
+          break;
+          if (paramCanvas != null) {
+            paramCanvas.drawLine(f1 + this.paddingLeft, f3, f2, f3, this.paint);
+          }
+        }
+      }
+      AppMethodBeat.o(149754);
+    }
+    
+    public final void a(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.t paramt)
+    {
+      AppMethodBeat.i(149755);
+      p.h(paramRect, "outRect");
+      p.h(paramView, "view");
+      p.h(paramRecyclerView, "parent");
+      p.h(paramt, "state");
+      if (RecyclerView.bw(paramView) == 0)
+      {
+        paramRect.set(0, this.strokeWidth, 0, this.strokeWidth);
+        AppMethodBeat.o(149755);
+        return;
+      }
+      paramRect.set(0, 0, 0, this.strokeWidth);
+      AppMethodBeat.o(149755);
+    }
+  }
+  
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
+  static final class g
+    extends q
+    implements d.g.a.a<z>
+  {
+    g(b paramb)
+    {
+      super();
+    }
+  }
+  
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/msgsubscription/ui/SubscribeMsgRequestDialog$applyRotation$6", "Landroid/view/ViewTreeObserver$OnGlobalLayoutListener;", "onGlobalLayout", "", "wxbiz-msgsubscription-sdk_release"})
+  public static final class h
+    implements ViewTreeObserver.OnGlobalLayoutListener
+  {
+    public final void onGlobalLayout()
+    {
+      AppMethodBeat.i(174567);
+      b.f(this.iGs).getViewTreeObserver().removeOnGlobalLayoutListener((ViewTreeObserver.OnGlobalLayoutListener)this);
+      b.a(this.iGs, b.g(this.iGs));
+      AppMethodBeat.o(174567);
+    }
+  }
+  
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/msgsubscription/ui/SubscribeMsgRequestDialog$closeSampleView$1", "Landroid/animation/AnimatorListenerAdapter;", "onAnimationEnd", "", "animation", "Landroid/animation/Animator;", "wxbiz-msgsubscription-sdk_release"})
   public static final class i
     extends AnimatorListenerAdapter
   {
     public final void onAnimationEnd(Animator paramAnimator)
     {
       AppMethodBeat.i(149758);
-      paramAnimator = b.e(this.iDz);
+      paramAnimator = b.e(this.iGs);
       if (paramAnimator != null)
       {
         int i = ((Number)paramAnimator).intValue();
-        paramAnimator = b.d(this.iDz).findViewById(i);
+        paramAnimator = b.d(this.iGs).findViewById(i);
         if (paramAnimator != null)
         {
-          ((LinearLayout)b.d(this.iDz).findViewById(2131298736)).removeView(paramAnimator);
+          ((LinearLayout)b.d(this.iGs).findViewById(2131298736)).removeView(paramAnimator);
           AppMethodBeat.o(149758);
           return;
         }
@@ -722,7 +882,7 @@ public final class b
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/msgsubscription/ui/SubscribeMsgRequestDialog$showSample$1$2", "Landroid/view/ViewTreeObserver$OnGlobalLayoutListener;", "onGlobalLayout", "", "wxbiz-msgsubscription-sdk_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/msgsubscription/ui/SubscribeMsgRequestDialog$showSample$1$2", "Landroid/view/ViewTreeObserver$OnGlobalLayoutListener;", "onGlobalLayout", "", "wxbiz-msgsubscription-sdk_release"})
   public static final class k
     implements ViewTreeObserver.OnGlobalLayoutListener
   {
@@ -731,15 +891,15 @@ public final class b
     public final void onGlobalLayout()
     {
       AppMethodBeat.i(149760);
-      b.d(this.iDz).getViewTreeObserver().removeOnGlobalLayoutListener((ViewTreeObserver.OnGlobalLayoutListener)this);
-      b.a(this.iDz);
+      b.d(this.iGs).getViewTreeObserver().removeOnGlobalLayoutListener((ViewTreeObserver.OnGlobalLayoutListener)this);
+      b.a(this.iGs);
       AppMethodBeat.o(149760);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.msgsubscription.ui.b
  * JD-Core Version:    0.7.0.1
  */

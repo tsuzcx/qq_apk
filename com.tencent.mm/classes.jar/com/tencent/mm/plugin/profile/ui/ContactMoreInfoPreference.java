@@ -9,47 +9,47 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cc.a;
+import com.tencent.mm.cb.a;
 import com.tencent.mm.ui.base.preference.Preference;
 
 public class ContactMoreInfoPreference
   extends Preference
 {
-  private TextView oHF;
-  private ImageView wQA;
-  private ImageView wQB;
-  private ImageView wQC;
-  private ImageView wQD;
-  private int wQE;
-  private int wQF;
-  private int wQG;
-  private int wQH;
-  private int wQI;
-  private int wQJ;
-  private ImageView wQy;
-  private ImageView wQz;
+  private TextView oOh;
+  private int xgA;
+  private ImageView xgp;
+  private ImageView xgq;
+  private ImageView xgr;
+  private ImageView xgs;
+  private ImageView xgt;
+  private ImageView xgu;
+  private int xgv;
+  private int xgw;
+  private int xgx;
+  private int xgy;
+  private int xgz;
   
   public ContactMoreInfoPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.wQE = 8;
-    this.wQF = 8;
-    this.wQG = 8;
-    this.wQH = 8;
-    this.wQI = 8;
-    this.wQJ = 8;
+    this.xgv = 8;
+    this.xgw = 8;
+    this.xgx = 8;
+    this.xgy = 8;
+    this.xgz = 8;
+    this.xgA = 8;
   }
   
   public ContactMoreInfoPreference(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(27018);
-    this.wQE = 8;
-    this.wQF = 8;
-    this.wQG = 8;
-    this.wQH = 8;
-    this.wQI = 8;
-    this.wQJ = 8;
+    this.xgv = 8;
+    this.xgw = 8;
+    this.xgx = 8;
+    this.xgy = 8;
+    this.xgz = 8;
+    this.xgA = 8;
     setLayoutResource(2131494804);
     AppMethodBeat.o(27018);
   }
@@ -57,61 +57,61 @@ public class ContactMoreInfoPreference
   private void updateView()
   {
     AppMethodBeat.i(27025);
-    if (this.wQy != null) {
-      this.wQy.setVisibility(this.wQE);
+    if (this.xgp != null) {
+      this.xgp.setVisibility(this.xgv);
     }
-    if (this.wQz != null) {
-      this.wQz.setVisibility(this.wQF);
+    if (this.xgq != null) {
+      this.xgq.setVisibility(this.xgw);
     }
-    if (this.wQA != null) {
-      this.wQA.setVisibility(this.wQG);
+    if (this.xgr != null) {
+      this.xgr.setVisibility(this.xgx);
     }
-    if (this.wQB != null) {
-      this.wQB.setVisibility(this.wQH);
+    if (this.xgs != null) {
+      this.xgs.setVisibility(this.xgy);
     }
-    if (this.wQC != null) {
-      this.wQC.setVisibility(this.wQI);
+    if (this.xgt != null) {
+      this.xgt.setVisibility(this.xgz);
     }
-    if (this.oHF != null)
+    if (this.oOh != null)
     {
-      ViewGroup.LayoutParams localLayoutParams = this.oHF.getLayoutParams();
+      ViewGroup.LayoutParams localLayoutParams = this.oOh.getLayoutParams();
       localLayoutParams.width = a.ax(this.mContext, 2131165370);
-      this.oHF.setLayoutParams(localLayoutParams);
+      this.oOh.setLayoutParams(localLayoutParams);
     }
-    if (this.wQD != null) {
-      this.wQD.setVisibility(this.wQJ);
+    if (this.xgu != null) {
+      this.xgu.setVisibility(this.xgA);
     }
     AppMethodBeat.o(27025);
   }
   
-  public final void MM(int paramInt)
+  public final void Ns(int paramInt)
   {
     AppMethodBeat.i(27021);
-    this.wQF = paramInt;
+    this.xgw = paramInt;
     updateView();
     AppMethodBeat.o(27021);
   }
   
-  public final void MN(int paramInt)
+  public final void Nt(int paramInt)
   {
     AppMethodBeat.i(27022);
-    this.wQG = paramInt;
+    this.xgx = paramInt;
     updateView();
     AppMethodBeat.o(27022);
   }
   
-  public final void MO(int paramInt)
+  public final void Nu(int paramInt)
   {
     AppMethodBeat.i(27023);
-    this.wQI = paramInt;
+    this.xgz = paramInt;
     updateView();
     AppMethodBeat.o(27023);
   }
   
-  public final void MP(int paramInt)
+  public final void Nv(int paramInt)
   {
     AppMethodBeat.i(27024);
-    this.wQJ = paramInt;
+    this.xgA = paramInt;
     updateView();
     AppMethodBeat.o(27024);
   }
@@ -119,13 +119,13 @@ public class ContactMoreInfoPreference
   public final void onBindView(View paramView)
   {
     AppMethodBeat.i(27020);
-    this.wQy = ((ImageView)paramView.findViewById(2131300953));
-    this.wQz = ((ImageView)paramView.findViewById(2131300958));
-    this.wQA = ((ImageView)paramView.findViewById(2131300949));
-    this.wQB = ((ImageView)paramView.findViewById(2131300927));
-    this.wQC = ((ImageView)paramView.findViewById(2131300937));
-    this.wQD = ((ImageView)paramView.findViewById(2131300967));
-    this.oHF = ((TextView)paramView.findViewById(2131305902));
+    this.xgp = ((ImageView)paramView.findViewById(2131300953));
+    this.xgq = ((ImageView)paramView.findViewById(2131300958));
+    this.xgr = ((ImageView)paramView.findViewById(2131300949));
+    this.xgs = ((ImageView)paramView.findViewById(2131300927));
+    this.xgt = ((ImageView)paramView.findViewById(2131300937));
+    this.xgu = ((ImageView)paramView.findViewById(2131300967));
+    this.oOh = ((TextView)paramView.findViewById(2131305902));
     updateView();
     super.onBindView(paramView);
     AppMethodBeat.o(27020);

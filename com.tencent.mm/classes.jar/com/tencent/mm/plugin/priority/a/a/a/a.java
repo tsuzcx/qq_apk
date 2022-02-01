@@ -3,25 +3,25 @@ package com.tencent.mm.plugin.priority.a.a.a;
 import android.text.format.DateFormat;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.w;
+import com.tencent.mm.model.x;
 import com.tencent.mm.modelcontrol.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ay;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.al.a;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.az;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.aj;
+import com.tencent.mm.storage.am.a;
 
 public final class a
 {
-  public static final boolean auu(String paramString)
+  public static final boolean avJ(String paramString)
   {
     AppMethodBeat.i(40497);
     int i;
-    if ((w.zD(paramString)) && (w.Au(paramString)))
+    if ((x.An(paramString)) && (x.Be(paramString)))
     {
       i = 1;
-      if ((!w.vF(paramString)) || (w.At(paramString))) {
+      if ((!x.wb(paramString)) || (x.Bd(paramString))) {
         break label57;
       }
     }
@@ -41,27 +41,10 @@ public final class a
     return false;
   }
   
-  public static final boolean dzi()
-  {
-    AppMethodBeat.i(40498);
-    if (!dzj())
-    {
-      AppMethodBeat.o(40498);
-      return false;
-    }
-    if (!dzk())
-    {
-      AppMethodBeat.o(40498);
-      return false;
-    }
-    AppMethodBeat.o(40498);
-    return true;
-  }
-  
-  public static final boolean dzj()
+  public static final boolean dCA()
   {
     AppMethodBeat.i(40499);
-    if (!b.aGK())
+    if (!b.aHb())
     {
       AppMethodBeat.o(40499);
       return true;
@@ -70,26 +53,26 @@ public final class a
     return false;
   }
   
-  public static final boolean dzk()
+  public static final boolean dCB()
   {
     AppMethodBeat.i(40500);
-    int i = bt.getInt(((com.tencent.mm.plugin.zero.b.a)g.ab(com.tencent.mm.plugin.zero.b.a.class)).acA().getValue("ChatImgAutoDownload"), 1);
+    int i = bu.getInt(((com.tencent.mm.plugin.zero.b.a)g.ab(com.tencent.mm.plugin.zero.b.a.class)).acL().getValue("ChatImgAutoDownload"), 1);
     if (i == 3)
     {
-      ad.i("MicroMsg.Priority.C2CMsgImgAutoDownloadControlLogic", "settings is not auto download C2C image. ChatImgAutoDownload : ".concat(String.valueOf(i)));
+      ae.i("MicroMsg.Priority.C2CMsgImgAutoDownloadControlLogic", "settings is not auto download C2C image. ChatImgAutoDownload : ".concat(String.valueOf(i)));
       AppMethodBeat.o(40500);
       return false;
     }
-    if ((i == 2) && (!ay.isWifi(aj.getContext())))
+    if ((i == 2) && (!az.isWifi(ak.getContext())))
     {
       AppMethodBeat.o(40500);
       return false;
     }
     if (i == 1)
     {
-      if (!ay.isWifi(aj.getContext()))
+      if (!az.isWifi(ak.getContext()))
       {
-        boolean bool = dzl();
+        boolean bool = dCC();
         AppMethodBeat.o(40500);
         return bool;
       }
@@ -100,28 +83,45 @@ public final class a
     return false;
   }
   
-  private static boolean dzl()
+  private static boolean dCC()
   {
     AppMethodBeat.i(40501);
-    long l2 = bt.getInt(((com.tencent.mm.plugin.zero.b.a)g.ab(com.tencent.mm.plugin.zero.b.a.class)).acA().getValue("ChatImgAutoDownloadMax"), 0);
-    long l1 = bt.a((Long)g.ajC().ajl().get(al.a.Irk, null), 0L);
-    long l3 = bt.aRf((String)DateFormat.format("M", System.currentTimeMillis()));
-    long l4 = bt.a((Long)g.ajC().ajl().get(al.a.Irl, null), 0L);
-    ad.d("MicroMsg.Priority.C2CMsgImgAutoDownloadControlLogic", "currentmonth " + l3 + " month " + l4 + " maxcount " + l2 + " current " + l1);
+    long l2 = bu.getInt(((com.tencent.mm.plugin.zero.b.a)g.ab(com.tencent.mm.plugin.zero.b.a.class)).acL().getValue("ChatImgAutoDownloadMax"), 0);
+    long l1 = bu.a((Long)g.ajR().ajA().get(am.a.ILG, null), 0L);
+    long l3 = bu.aSC((String)DateFormat.format("M", System.currentTimeMillis()));
+    long l4 = bu.a((Long)g.ajR().ajA().get(am.a.ILH, null), 0L);
+    ae.d("MicroMsg.Priority.C2CMsgImgAutoDownloadControlLogic", "currentmonth " + l3 + " month " + l4 + " maxcount " + l2 + " current " + l1);
     if (l3 != l4)
     {
-      ad.i("MicroMsg.Priority.C2CMsgImgAutoDownloadControlLogic", "update month %d ", new Object[] { Long.valueOf(l3) });
-      g.ajC().ajl().set(al.a.Irk, Long.valueOf(0L));
-      g.ajC().ajl().set(al.a.Irl, Long.valueOf(l3));
+      ae.i("MicroMsg.Priority.C2CMsgImgAutoDownloadControlLogic", "update month %d ", new Object[] { Long.valueOf(l3) });
+      g.ajR().ajA().set(am.a.ILG, Long.valueOf(0L));
+      g.ajR().ajA().set(am.a.ILH, Long.valueOf(l3));
       l1 = 0L;
     }
     if ((l1 > l2) && (l2 > 0L))
     {
-      ad.i("MicroMsg.Priority.C2CMsgImgAutoDownloadControlLogic", "this month had auto download " + l1 + " C2C image, can not auto download.");
+      ae.i("MicroMsg.Priority.C2CMsgImgAutoDownloadControlLogic", "this month had auto download " + l1 + " C2C image, can not auto download.");
       AppMethodBeat.o(40501);
       return false;
     }
     AppMethodBeat.o(40501);
+    return true;
+  }
+  
+  public static final boolean dCz()
+  {
+    AppMethodBeat.i(40498);
+    if (!dCA())
+    {
+      AppMethodBeat.o(40498);
+      return false;
+    }
+    if (!dCB())
+    {
+      AppMethodBeat.o(40498);
+      return false;
+    }
+    AppMethodBeat.o(40498);
     return true;
   }
 }

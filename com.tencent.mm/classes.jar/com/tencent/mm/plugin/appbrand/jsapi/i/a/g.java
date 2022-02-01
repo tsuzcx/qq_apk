@@ -7,8 +7,8 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -20,20 +20,20 @@ import java.util.concurrent.CopyOnWriteArraySet;
 @TargetApi(3)
 public final class g
 {
-  private static Map<String, HashMap<String, b>> kSF;
-  private static Set<b> kSG;
-  private static Set<b> kSH;
-  public static a kSI;
-  private static Runnable kSJ;
+  private static Map<String, HashMap<String, b>> kWo;
+  private static Set<b> kWp;
+  private static Set<b> kWq;
+  public static a kWr;
+  private static Runnable kWs;
   public static SensorManager sensorManager;
   
   static
   {
     AppMethodBeat.i(143728);
-    kSF = new HashMap();
-    kSH = new HashSet();
-    kSG = new CopyOnWriteArraySet();
-    kSJ = new Runnable()
+    kWo = new HashMap();
+    kWq = new HashSet();
+    kWp = new CopyOnWriteArraySet();
+    kWs = new Runnable()
     {
       public final void run()
       {
@@ -50,9 +50,9 @@ public final class g
     try
     {
       AppMethodBeat.i(143721);
-      ad.i("MicroMsg.AppBrandMapManager", "registerListener map:%s", new Object[] { paramb });
-      kSH.add(paramb);
-      if (kSH.size() == 1) {
+      ae.i("MicroMsg.AppBrandMapManager", "registerListener map:%s", new Object[] { paramb });
+      kWq.add(paramb);
+      if (kWq.size() == 1) {
         init();
       }
       AppMethodBeat.o(143721);
@@ -75,7 +75,7 @@ public final class g
     //   14: ifeq +22 -> 36
     //   17: ldc 62
     //   19: ldc 93
-    //   21: invokestatic 97	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   21: invokestatic 97	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   24: ldc 84
     //   26: invokestatic 57	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   29: iconst_0
@@ -84,7 +84,7 @@ public final class g
     //   33: monitorexit
     //   34: iload_3
     //   35: ireturn
-    //   36: getstatic 41	com/tencent/mm/plugin/appbrand/jsapi/i/a/g:kSF	Ljava/util/Map;
+    //   36: getstatic 41	com/tencent/mm/plugin/appbrand/jsapi/i/a/g:kWo	Ljava/util/Map;
     //   39: aload_0
     //   40: invokeinterface 103 2 0
     //   45: checkcast 36	java/util/HashMap
@@ -97,7 +97,7 @@ public final class g
     //   62: dup
     //   63: invokespecial 39	java/util/HashMap:<init>	()V
     //   66: astore 4
-    //   68: getstatic 41	com/tencent/mm/plugin/appbrand/jsapi/i/a/g:kSF	Ljava/util/Map;
+    //   68: getstatic 41	com/tencent/mm/plugin/appbrand/jsapi/i/a/g:kWo	Ljava/util/Map;
     //   71: aload_0
     //   72: aload 4
     //   74: invokeinterface 107 3 0
@@ -108,7 +108,7 @@ public final class g
     //   86: ifeq +20 -> 106
     //   89: ldc 62
     //   91: ldc 112
-    //   93: invokestatic 115	com/tencent/mm/sdk/platformtools/ad:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   93: invokestatic 115	com/tencent/mm/sdk/platformtools/ae:w	(Ljava/lang/String;Ljava/lang/String;)V
     //   96: ldc 84
     //   98: invokestatic 57	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   101: iconst_0
@@ -131,7 +131,7 @@ public final class g
     //   127: iconst_1
     //   128: aload_1
     //   129: aastore
-    //   130: invokestatic 69	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   130: invokestatic 69	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   133: ldc 84
     //   135: invokestatic 57	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   138: iconst_1
@@ -164,9 +164,9 @@ public final class g
     try
     {
       AppMethodBeat.i(143723);
-      ad.i("MicroMsg.AppBrandMapManager", "unregisterListener map:%s", new Object[] { paramb });
-      kSH.remove(paramb);
-      if (kSH.size() == 0) {
+      ae.i("MicroMsg.AppBrandMapManager", "unregisterListener map:%s", new Object[] { paramb });
+      kWq.remove(paramb);
+      if (kWq.size() == 0) {
         uninit();
       }
       AppMethodBeat.o(143723);
@@ -176,7 +176,7 @@ public final class g
   }
   
   /* Error */
-  public static b di(String paramString1, String paramString2)
+  public static b dk(String paramString1, String paramString2)
   {
     // Byte code:
     //   0: ldc 2
@@ -189,7 +189,7 @@ public final class g
     //   14: ifeq +22 -> 36
     //   17: ldc 62
     //   19: ldc 162
-    //   21: invokestatic 97	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   21: invokestatic 97	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   24: ldc 160
     //   26: invokestatic 57	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   29: aconst_null
@@ -198,7 +198,7 @@ public final class g
     //   33: monitorexit
     //   34: aload_0
     //   35: areturn
-    //   36: getstatic 41	com/tencent/mm/plugin/appbrand/jsapi/i/a/g:kSF	Ljava/util/Map;
+    //   36: getstatic 41	com/tencent/mm/plugin/appbrand/jsapi/i/a/g:kWo	Ljava/util/Map;
     //   39: aload_0
     //   40: invokeinterface 103 2 0
     //   45: checkcast 36	java/util/HashMap
@@ -236,14 +236,14 @@ public final class g
   }
   
   /* Error */
-  public static boolean dj(String paramString1, String paramString2)
+  public static boolean dl(String paramString1, String paramString2)
   {
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
     //   3: ldc 166
     //   5: invokestatic 34	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   8: getstatic 41	com/tencent/mm/plugin/appbrand/jsapi/i/a/g:kSF	Ljava/util/Map;
+    //   8: getstatic 41	com/tencent/mm/plugin/appbrand/jsapi/i/a/g:kWo	Ljava/util/Map;
     //   11: aload_0
     //   12: invokeinterface 103 2 0
     //   17: checkcast 36	java/util/HashMap
@@ -267,7 +267,7 @@ public final class g
     //   49: ifnonnull +20 -> 69
     //   52: ldc 62
     //   54: ldc 168
-    //   56: invokestatic 97	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   56: invokestatic 97	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   59: ldc 166
     //   61: invokestatic 57	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   64: iconst_0
@@ -281,7 +281,7 @@ public final class g
     //   78: iconst_0
     //   79: aload 4
     //   81: aastore
-    //   82: invokestatic 69	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   82: invokestatic 69	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   85: aload_3
     //   86: aload_1
     //   87: invokevirtual 172	java/util/HashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
@@ -291,19 +291,19 @@ public final class g
     //   96: aload_3
     //   97: invokevirtual 175	java/util/HashMap:size	()I
     //   100: ifgt +13 -> 113
-    //   103: getstatic 41	com/tencent/mm/plugin/appbrand/jsapi/i/a/g:kSF	Ljava/util/Map;
+    //   103: getstatic 41	com/tencent/mm/plugin/appbrand/jsapi/i/a/g:kWo	Ljava/util/Map;
     //   106: aload_0
     //   107: invokeinterface 176 2 0
     //   112: pop
-    //   113: getstatic 51	com/tencent/mm/plugin/appbrand/jsapi/i/a/g:kSG	Ljava/util/Set;
+    //   113: getstatic 51	com/tencent/mm/plugin/appbrand/jsapi/i/a/g:kWp	Ljava/util/Set;
     //   116: aload 4
     //   118: invokeinterface 75 2 0
     //   123: pop
-    //   124: getstatic 54	com/tencent/mm/plugin/appbrand/jsapi/i/a/g:kSJ	Ljava/lang/Runnable;
-    //   127: invokestatic 182	com/tencent/mm/sdk/platformtools/aq:aA	(Ljava/lang/Runnable;)V
-    //   130: getstatic 54	com/tencent/mm/plugin/appbrand/jsapi/i/a/g:kSJ	Ljava/lang/Runnable;
+    //   124: getstatic 54	com/tencent/mm/plugin/appbrand/jsapi/i/a/g:kWs	Ljava/lang/Runnable;
+    //   127: invokestatic 182	com/tencent/mm/sdk/platformtools/ar:ay	(Ljava/lang/Runnable;)V
+    //   130: getstatic 54	com/tencent/mm/plugin/appbrand/jsapi/i/a/g:kWs	Ljava/lang/Runnable;
     //   133: ldc2_w 183
-    //   136: invokestatic 187	com/tencent/mm/sdk/platformtools/aq:o	(Ljava/lang/Runnable;J)V
+    //   136: invokestatic 187	com/tencent/mm/sdk/platformtools/ar:o	(Ljava/lang/Runnable;J)V
     //   139: ldc 62
     //   141: ldc 189
     //   143: iconst_2
@@ -318,7 +318,7 @@ public final class g
     //   154: invokevirtual 175	java/util/HashMap:size	()I
     //   157: invokestatic 195	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   160: aastore
-    //   161: invokestatic 69	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   161: invokestatic 69	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   164: ldc 166
     //   166: invokestatic 57	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   169: iconst_1
@@ -351,14 +351,14 @@ public final class g
     try
     {
       AppMethodBeat.i(143720);
-      ad.i("MicroMsg.AppBrandMapManager", "init");
-      if (kSI == null)
+      ae.i("MicroMsg.AppBrandMapManager", "init");
+      if (kWr == null)
       {
-        kSI = new a();
-        Object localObject1 = (SensorManager)aj.getContext().getSystemService("sensor");
+        kWr = new a();
+        Object localObject1 = (SensorManager)ak.getContext().getSystemService("sensor");
         sensorManager = (SensorManager)localObject1;
         localObject1 = ((SensorManager)localObject1).getDefaultSensor(3);
-        sensorManager.registerListener(kSI, (Sensor)localObject1, 1);
+        sensorManager.registerListener(kWr, (Sensor)localObject1, 1);
       }
       AppMethodBeat.o(143720);
       return;
@@ -371,13 +371,13 @@ public final class g
     try
     {
       AppMethodBeat.i(143722);
-      ad.i("MicroMsg.AppBrandMapManager", "uninit");
-      if ((kSI != null) && (sensorManager != null))
+      ae.i("MicroMsg.AppBrandMapManager", "uninit");
+      if ((kWr != null) && (sensorManager != null))
       {
-        ad.i("MicroMsg.AppBrandMapManager", "sensorListener uninit");
-        sensorManager.unregisterListener(kSI);
+        ae.i("MicroMsg.AppBrandMapManager", "sensorListener uninit");
+        sensorManager.unregisterListener(kWr);
         sensorManager = null;
-        kSI = null;
+        kWr = null;
       }
       AppMethodBeat.o(143722);
       return;
@@ -388,7 +388,7 @@ public final class g
   static final class a
     implements SensorEventListener
   {
-    private float kSK = 0.0F;
+    private float kWt = 0.0F;
     private long timestamp = 200L;
     
     public final void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
@@ -401,11 +401,11 @@ public final class g
         long l1 = System.currentTimeMillis();
         long l2 = this.timestamp;
         float f = f.aB(???.values[0]);
-        if ((l1 - l2 > 200L) && (Math.abs(f - this.kSK) > 3.0F))
+        if ((l1 - l2 > 200L) && (Math.abs(f - this.kWt) > 3.0F))
         {
-          synchronized (g.aaT())
+          synchronized (g.abc())
           {
-            Iterator localIterator1 = g.aaT().values().iterator();
+            Iterator localIterator1 = g.abc().values().iterator();
             b localb;
             do
             {
@@ -419,9 +419,9 @@ public final class g
               }
               localb = (b)localIterator2.next();
             } while (localb == null);
-            localb.H(this.kSK, f);
+            localb.H(this.kWt, f);
           }
-          this.kSK = f;
+          this.kWt = f;
           this.timestamp = System.currentTimeMillis();
         }
       }
@@ -431,7 +431,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.i.a.g
  * JD-Core Version:    0.7.0.1
  */

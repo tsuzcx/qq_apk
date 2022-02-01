@@ -2,123 +2,123 @@ package com.tencent.mm.live.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/live/report/LiveReplayIDKeyStat;", "", "()V", "ID", "", "TAG", "", "markAnchorChangeReplayEveryOne", "", "markAnchorChangeReplayOnlySelf", "markAnchorClickToPlay", "markAnchorDragTimeLineWhilePlaying", "markAnchorEnterReplayAfterLive", "markAnchorEnterReplayFromAppMsg", "markAnchorEnterReplayFromMsgCard", "markAnchorSetReplayEveryOne", "markAnchorSetReplayOnlySelf", "markVisitorClickToPlay", "markVisitorDragTimeLineWhilePlaying", "markVisitorEnterReplayFromAppMsg", "markVisitorEnterReplayFromMsgCard", "plugin-logic_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/live/report/LiveReplayIDKeyStat;", "", "()V", "ID", "", "TAG", "", "markAnchorChangeReplayEveryOne", "", "markAnchorChangeReplayOnlySelf", "markAnchorClickToPlay", "markAnchorDragTimeLineWhilePlaying", "markAnchorEnterReplayAfterLive", "markAnchorEnterReplayFromAppMsg", "markAnchorEnterReplayFromMsgCard", "markAnchorSetReplayEveryOne", "markAnchorSetReplayOnlySelf", "markVisitorClickToPlay", "markVisitorDragTimeLineWhilePlaying", "markVisitorEnterReplayFromAppMsg", "markVisitorEnterReplayFromMsgCard", "plugin-logic_release"})
 public final class d
 {
-  public static final d gYh;
+  public static final d haT;
   
   static
   {
-    AppMethodBeat.i(212747);
-    gYh = new d();
-    AppMethodBeat.o(212747);
+    AppMethodBeat.i(216375);
+    haT = new d();
+    AppMethodBeat.o(216375);
   }
   
-  public static final void apK()
+  public static final void apY()
   {
-    AppMethodBeat.i(212734);
-    ad.i("MicroMsg.LiveReplayIDKeyStat", "markAnchorSetReplayOnlySelf");
-    g.yhR.n(1385L, 0L, 1L);
-    AppMethodBeat.o(212734);
+    AppMethodBeat.i(216362);
+    ae.i("MicroMsg.LiveReplayIDKeyStat", "markAnchorSetReplayOnlySelf");
+    g.yxI.n(1385L, 0L, 1L);
+    AppMethodBeat.o(216362);
   }
   
-  public static final void apL()
+  public static final void apZ()
   {
-    AppMethodBeat.i(212735);
-    ad.i("MicroMsg.LiveReplayIDKeyStat", "markAnchorSetReplayEveryOne");
-    g.yhR.n(1385L, 1L, 1L);
-    AppMethodBeat.o(212735);
+    AppMethodBeat.i(216363);
+    ae.i("MicroMsg.LiveReplayIDKeyStat", "markAnchorSetReplayEveryOne");
+    g.yxI.n(1385L, 1L, 1L);
+    AppMethodBeat.o(216363);
   }
   
-  public static final void apM()
+  public static final void aqa()
   {
-    AppMethodBeat.i(212736);
-    ad.i("MicroMsg.LiveReplayIDKeyStat", "markAnchorClickToPlay");
-    g.yhR.n(1385L, 2L, 1L);
-    AppMethodBeat.o(212736);
+    AppMethodBeat.i(216364);
+    ae.i("MicroMsg.LiveReplayIDKeyStat", "markAnchorClickToPlay");
+    g.yxI.n(1385L, 2L, 1L);
+    AppMethodBeat.o(216364);
   }
   
-  public static final void apN()
+  public static final void aqb()
   {
-    AppMethodBeat.i(212737);
-    ad.i("MicroMsg.LiveReplayIDKeyStat", "markAnchorDragTimeLineWhilePlaying");
-    g.yhR.n(1385L, 3L, 1L);
-    AppMethodBeat.o(212737);
+    AppMethodBeat.i(216365);
+    ae.i("MicroMsg.LiveReplayIDKeyStat", "markAnchorDragTimeLineWhilePlaying");
+    g.yxI.n(1385L, 3L, 1L);
+    AppMethodBeat.o(216365);
   }
   
-  public static final void apO()
+  public static final void aqc()
   {
-    AppMethodBeat.i(212738);
-    ad.i("MicroMsg.LiveReplayIDKeyStat", "markAnchorChangeReplayOnlySelf");
-    g.yhR.n(1385L, 4L, 1L);
-    AppMethodBeat.o(212738);
+    AppMethodBeat.i(216366);
+    ae.i("MicroMsg.LiveReplayIDKeyStat", "markAnchorChangeReplayOnlySelf");
+    g.yxI.n(1385L, 4L, 1L);
+    AppMethodBeat.o(216366);
   }
   
-  public static final void apP()
+  public static final void aqd()
   {
-    AppMethodBeat.i(212739);
-    ad.i("MicroMsg.LiveReplayIDKeyStat", "markAnchorChangeReplayEveryOne");
-    g.yhR.n(1385L, 5L, 1L);
-    AppMethodBeat.o(212739);
+    AppMethodBeat.i(216367);
+    ae.i("MicroMsg.LiveReplayIDKeyStat", "markAnchorChangeReplayEveryOne");
+    g.yxI.n(1385L, 5L, 1L);
+    AppMethodBeat.o(216367);
   }
   
-  public static final void apQ()
+  public static final void aqe()
   {
-    AppMethodBeat.i(212740);
-    ad.i("MicroMsg.LiveReplayIDKeyStat", "markAnchorEnterReplayAfterLive");
-    g.yhR.n(1385L, 6L, 1L);
-    AppMethodBeat.o(212740);
+    AppMethodBeat.i(216368);
+    ae.i("MicroMsg.LiveReplayIDKeyStat", "markAnchorEnterReplayAfterLive");
+    g.yxI.n(1385L, 6L, 1L);
+    AppMethodBeat.o(216368);
   }
   
-  public static final void apR()
+  public static final void aqf()
   {
-    AppMethodBeat.i(212741);
-    ad.i("MicroMsg.LiveReplayIDKeyStat", "markAnchorEnterReplayFromAppMsg");
-    g.yhR.n(1385L, 7L, 1L);
-    AppMethodBeat.o(212741);
+    AppMethodBeat.i(216369);
+    ae.i("MicroMsg.LiveReplayIDKeyStat", "markAnchorEnterReplayFromAppMsg");
+    g.yxI.n(1385L, 7L, 1L);
+    AppMethodBeat.o(216369);
   }
   
-  public static final void apS()
+  public static final void aqg()
   {
-    AppMethodBeat.i(212742);
-    ad.i("MicroMsg.LiveReplayIDKeyStat", "markAnchorEnterReplayFromTipBar");
-    g.yhR.n(1385L, 8L, 1L);
-    AppMethodBeat.o(212742);
+    AppMethodBeat.i(216370);
+    ae.i("MicroMsg.LiveReplayIDKeyStat", "markAnchorEnterReplayFromTipBar");
+    g.yxI.n(1385L, 8L, 1L);
+    AppMethodBeat.o(216370);
   }
   
-  public static final void apT()
+  public static final void aqh()
   {
-    AppMethodBeat.i(212743);
-    ad.i("MicroMsg.LiveReplayIDKeyStat", "markVisitorEnterReplayFromSysMsg");
-    g.yhR.n(1385L, 9L, 1L);
-    AppMethodBeat.o(212743);
+    AppMethodBeat.i(216371);
+    ae.i("MicroMsg.LiveReplayIDKeyStat", "markVisitorEnterReplayFromSysMsg");
+    g.yxI.n(1385L, 9L, 1L);
+    AppMethodBeat.o(216371);
   }
   
-  public static final void apU()
+  public static final void aqi()
   {
-    AppMethodBeat.i(212744);
-    ad.i("MicroMsg.LiveReplayIDKeyStat", "markVisitorEnterReplayFromTipBar");
-    g.yhR.n(1385L, 10L, 1L);
-    AppMethodBeat.o(212744);
+    AppMethodBeat.i(216372);
+    ae.i("MicroMsg.LiveReplayIDKeyStat", "markVisitorEnterReplayFromTipBar");
+    g.yxI.n(1385L, 10L, 1L);
+    AppMethodBeat.o(216372);
   }
   
-  public static final void apV()
+  public static final void aqj()
   {
-    AppMethodBeat.i(212745);
-    ad.i("MicroMsg.LiveReplayIDKeyStat", "markVisitorClickToPlay");
-    g.yhR.n(1385L, 11L, 1L);
-    AppMethodBeat.o(212745);
+    AppMethodBeat.i(216373);
+    ae.i("MicroMsg.LiveReplayIDKeyStat", "markVisitorClickToPlay");
+    g.yxI.n(1385L, 11L, 1L);
+    AppMethodBeat.o(216373);
   }
   
-  public static final void apW()
+  public static final void aqk()
   {
-    AppMethodBeat.i(212746);
-    ad.i("MicroMsg.LiveReplayIDKeyStat", "markVisitorDragTimeLineWhilePlaying");
-    g.yhR.n(1385L, 12L, 1L);
-    AppMethodBeat.o(212746);
+    AppMethodBeat.i(216374);
+    ae.i("MicroMsg.LiveReplayIDKeyStat", "markVisitorDragTimeLineWhilePlaying");
+    g.yxI.n(1385L, 12L, 1L);
+    AppMethodBeat.o(216374);
   }
 }
 

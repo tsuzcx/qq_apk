@@ -16,29 +16,29 @@ import java.lang.reflect.Method;
 public final class f
   implements d.l.b.a.b.d.b.p
 {
-  public static final a MZX;
-  public final Class<?> MZV;
-  public final d.l.b.a.b.d.b.a.a MZW;
+  public static final a Nxd;
+  public final Class<?> Nxb;
+  public final d.l.b.a.b.d.b.a.a Nxc;
   
   static
   {
     AppMethodBeat.i(57372);
-    MZX = new a((byte)0);
+    Nxd = new a((byte)0);
     AppMethodBeat.o(57372);
   }
   
   private f(Class<?> paramClass, d.l.b.a.b.d.b.a.a parama)
   {
-    this.MZV = paramClass;
-    this.MZW = parama;
+    this.Nxb = paramClass;
+    this.Nxc = parama;
   }
   
   public final void a(p.c paramc)
   {
     AppMethodBeat.i(57367);
     d.g.b.p.h(paramc, "visitor");
-    c localc = c.MZT;
-    c.a(this.MZV, paramc);
+    c localc = c.NwZ;
+    c.a(this.Nxb, paramc);
     AppMethodBeat.o(57367);
   }
   
@@ -46,8 +46,8 @@ public final class f
   {
     AppMethodBeat.i(57368);
     d.g.b.p.h(paramd, "visitor");
-    Object localObject1 = c.MZT;
-    localObject1 = this.MZV;
+    Object localObject1 = c.NwZ;
+    localObject1 = this.Nxb;
     d.g.b.p.h(localObject1, "klass");
     d.g.b.p.h(paramd, "memberVisitor");
     Object localObject2 = ((Class)localObject1).getDeclaredMethods();
@@ -66,9 +66,9 @@ public final class f
     {
       localObject4 = localObject2[i];
       d.g.b.p.g(localObject4, "method");
-      localObject3 = d.l.b.a.b.f.f.bcE(((Method)localObject4).getName());
+      localObject3 = d.l.b.a.b.f.f.bei(((Method)localObject4).getName());
       d.g.b.p.g(localObject3, "Name.identifier(method.name)");
-      localObject5 = l.Naf;
+      localObject5 = l.Nxl;
       localObject3 = paramd.a((d.l.b.a.b.f.f)localObject3, l.d((Method)localObject4));
       localObject5 = ((Method)localObject4).getDeclaredAnnotations();
       k = localObject5.length;
@@ -98,13 +98,13 @@ public final class f
           d.g.b.p.g(localObject6, "annotation");
           localObject8 = ((p.e)localObject3).a(j, (d.l.b.a.b.f.a)localObject8, (an)new b(localObject6));
           if (localObject8 != null) {
-            c.MZT.a((p.a)localObject8, localObject6, (Class)localObject7);
+            c.NwZ.a((p.a)localObject8, localObject6, (Class)localObject7);
           }
           k += 1;
         }
         j += 1;
       }
-      ((p.e)localObject3).IH();
+      ((p.e)localObject3).IP();
       i += 1;
     }
     localObject2 = ((Class)localObject1).getDeclaredConstructors();
@@ -113,9 +113,9 @@ public final class f
     while (i < m)
     {
       localObject4 = localObject2[i];
-      localObject3 = d.l.b.a.b.f.f.bcG("<init>");
+      localObject3 = d.l.b.a.b.f.f.bek("<init>");
       d.g.b.p.g(localObject3, "Name.special(\"<init>\")");
-      localObject5 = l.Naf;
+      localObject5 = l.Nxl;
       d.g.b.p.g(localObject4, "constructor");
       localObject3 = paramd.a((d.l.b.a.b.f.f)localObject3, l.a((Constructor)localObject4));
       localObject5 = ((Constructor)localObject4).getDeclaredAnnotations();
@@ -166,7 +166,7 @@ public final class f
             d.g.b.p.g(localObject6, "annotation");
             localObject8 = ((p.e)localObject3).a(j + (n - i1), (d.l.b.a.b.f.a)localObject8, (an)new b(localObject6));
             if (localObject8 != null) {
-              c.MZT.a((p.a)localObject8, localObject6, (Class)localObject7);
+              c.NwZ.a((p.a)localObject8, localObject6, (Class)localObject7);
             }
             k += 1;
             continue;
@@ -180,7 +180,7 @@ public final class f
         j += 1;
       }
       label619:
-      ((p.e)localObject3).IH();
+      ((p.e)localObject3).IP();
       i += 1;
     }
     localObject1 = ((Class)localObject1).getDeclaredFields();
@@ -190,9 +190,9 @@ public final class f
     {
       localObject2 = localObject1[i];
       d.g.b.p.g(localObject2, "field");
-      localObject3 = d.l.b.a.b.f.f.bcE(((Field)localObject2).getName());
+      localObject3 = d.l.b.a.b.f.f.bei(((Field)localObject2).getName());
       d.g.b.p.g(localObject3, "Name.identifier(field.name)");
-      localObject4 = l.Naf;
+      localObject4 = l.Nxl;
       localObject3 = paramd.b((d.l.b.a.b.f.f)localObject3, l.f((Field)localObject2));
       localObject2 = ((Field)localObject2).getDeclaredAnnotations();
       m = localObject2.length;
@@ -204,7 +204,7 @@ public final class f
         c.a((p.c)localObject3, (Annotation)localObject4);
         j += 1;
       }
-      ((p.c)localObject3).IH();
+      ((p.c)localObject3).IP();
       i += 1;
     }
     AppMethodBeat.o(57368);
@@ -213,7 +213,7 @@ public final class f
   public final boolean equals(Object paramObject)
   {
     AppMethodBeat.i(57369);
-    if (((paramObject instanceof f)) && (d.g.b.p.i(this.MZV, ((f)paramObject).MZV)))
+    if (((paramObject instanceof f)) && (d.g.b.p.i(this.Nxb, ((f)paramObject).Nxb)))
     {
       AppMethodBeat.o(57369);
       return true;
@@ -226,30 +226,30 @@ public final class f
   {
     AppMethodBeat.i(57365);
     Object localObject = new StringBuilder();
-    String str = this.MZV.getName();
+    String str = this.Nxb.getName();
     d.g.b.p.g(str, "klass.name");
     localObject = n.a(str, '.', '/') + ".class";
     AppMethodBeat.o(57365);
     return localObject;
   }
   
-  public final d.l.b.a.b.f.a ggt()
+  public final d.l.b.a.b.f.a gkV()
   {
     AppMethodBeat.i(185981);
-    d.l.b.a.b.f.a locala = d.l.b.a.b.b.d.b.b.bB(this.MZV);
+    d.l.b.a.b.f.a locala = d.l.b.a.b.b.d.b.b.bB(this.Nxb);
     AppMethodBeat.o(185981);
     return locala;
   }
   
-  public final d.l.b.a.b.d.b.a.a gkw()
+  public final d.l.b.a.b.d.b.a.a goY()
   {
-    return this.MZW;
+    return this.Nxc;
   }
   
   public final int hashCode()
   {
     AppMethodBeat.i(57370);
-    int i = this.MZV.hashCode();
+    int i = this.Nxb.hashCode();
     AppMethodBeat.o(57370);
     return i;
   }
@@ -257,7 +257,7 @@ public final class f
   public final String toString()
   {
     AppMethodBeat.i(57371);
-    String str = getClass().getName() + ": " + this.MZV;
+    String str = getClass().getName() + ": " + this.Nxb;
     AppMethodBeat.o(57371);
     return str;
   }
@@ -270,9 +270,9 @@ public final class f
       AppMethodBeat.i(57364);
       d.g.b.p.h(paramClass, "klass");
       d.l.b.a.b.d.b.a.b localb = new d.l.b.a.b.d.b.a.b();
-      Object localObject = c.MZT;
+      Object localObject = c.NwZ;
       c.a(paramClass, (p.c)localb);
-      if ((localb.NjS == null) || (localb.NjR == null))
+      if ((localb.NGY == null) || (localb.NGX == null))
       {
         localObject = null;
         if (localObject == null)
@@ -283,41 +283,41 @@ public final class f
       }
       else
       {
-        localObject = localb.NjR;
+        localObject = localb.NGX;
         boolean bool;
         label87:
         d.l.b.a.b.e.c.a.f localf;
         label123:
         a.a locala;
-        if ((localb.NjF & 0x8) != 0)
+        if ((localb.NGL & 0x8) != 0)
         {
           bool = true;
           localf = new d.l.b.a.b.e.c.a.f((int[])localObject, bool);
-          if (localf.gqj()) {
+          if (localf.guL()) {
             break label198;
           }
-          localb.NjD = localb.NjC;
-          localb.NjC = null;
-          locala = localb.NjS;
-          if (localb.NjB == null) {
+          localb.NGJ = localb.NGI;
+          localb.NGI = null;
+          locala = localb.NGY;
+          if (localb.NGH == null) {
             break label260;
           }
         }
         label258:
         label260:
-        for (localObject = localb.NjB;; localObject = d.l.b.a.b.e.c.a.c.NpP)
+        for (localObject = localb.NGH;; localObject = d.l.b.a.b.e.c.a.c.NMV)
         {
-          localObject = new d.l.b.a.b.d.b.a.a(locala, localf, (d.l.b.a.b.e.c.a.c)localObject, localb.NjC, localb.NjD, localb.strings, localb.NjE, localb.NjF, localb.packageName);
+          localObject = new d.l.b.a.b.d.b.a.a(locala, localf, (d.l.b.a.b.e.c.a.c)localObject, localb.NGI, localb.NGJ, localb.strings, localb.NGK, localb.NGL, localb.packageName);
           break;
           bool = false;
           break label87;
           label198:
           int i = j;
-          if (localb.NjS != a.a.NjH)
+          if (localb.NGY != a.a.NGN)
           {
             i = j;
-            if (localb.NjS != a.a.NjI) {
-              if (localb.NjS != a.a.NjL) {
+            if (localb.NGY != a.a.NGO) {
+              if (localb.NGY != a.a.NGR) {
                 break label255;
               }
             }
@@ -325,7 +325,7 @@ public final class f
           label255:
           for (i = j;; i = 0)
           {
-            if ((i == 0) || (localb.NjC != null)) {
+            if ((i == 0) || (localb.NGI != null)) {
               break label258;
             }
             localObject = null;
@@ -342,7 +342,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.b.d.a.f
  * JD-Core Version:    0.7.0.1
  */

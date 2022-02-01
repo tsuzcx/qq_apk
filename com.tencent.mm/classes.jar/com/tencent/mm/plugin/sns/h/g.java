@@ -1,38 +1,38 @@
 package com.tencent.mm.plugin.sns.h;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
 import java.util.List;
 
 public final class g
   implements f
 {
-  h zqq;
+  h zHF;
   
-  public final h dVA()
-  {
-    AppMethodBeat.i(96139);
-    if ((this.zqq == null) || (this.zqq.zqf.size() == 0))
-    {
-      AppMethodBeat.o(96139);
-      return null;
-    }
-    h localh = this.zqq;
-    AppMethodBeat.o(96139);
-    return localh;
-  }
-  
-  public final boolean dVz()
+  public final boolean dZa()
   {
     AppMethodBeat.i(96138);
-    if ((this.zqq == null) || (this.zqq.zqf.size() == 0))
+    if ((this.zHF == null) || (this.zHF.zHu.size() == 0))
     {
       AppMethodBeat.o(96138);
       return false;
     }
     AppMethodBeat.o(96138);
     return true;
+  }
+  
+  public final h dZb()
+  {
+    AppMethodBeat.i(96139);
+    if ((this.zHF == null) || (this.zHF.zHu.size() == 0))
+    {
+      AppMethodBeat.o(96139);
+      return null;
+    }
+    h localh = this.zHF;
+    AppMethodBeat.o(96139);
+    return localh;
   }
   
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn) {}

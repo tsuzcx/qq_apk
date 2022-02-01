@@ -4,60 +4,60 @@ import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.recordvideo.plugin.t;
 import com.tencent.mm.plugin.recordvideo.plugin.t.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import d.g.b.p;
 import d.l;
 import java.util.HashMap;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/recordvideo/util/RecordTimeCalculatePlugin;", "Lcom/tencent/mm/plugin/recordvideo/plugin/IBaseRecordPlugin;", "()V", "timeStartMap", "Ljava/util/HashMap;", "", "", "Lkotlin/collections/HashMap;", "calculate", "tag", "extra", "mark", "release", "", "Companion", "plugin-recordvideo_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/recordvideo/util/RecordTimeCalculatePlugin;", "Lcom/tencent/mm/plugin/recordvideo/plugin/IBaseRecordPlugin;", "()V", "timeStartMap", "Ljava/util/HashMap;", "", "", "Lkotlin/collections/HashMap;", "calculate", "tag", "extra", "mark", "release", "", "Companion", "plugin-recordvideo_release"})
 public final class e
   implements t
 {
-  public static final e.a xRD;
-  public final HashMap<String, Long> xRC;
+  public static final e.a yhw;
+  public final HashMap<String, Long> yhv;
   
   static
   {
-    AppMethodBeat.i(200889);
-    xRD = new e.a((byte)0);
-    AppMethodBeat.o(200889);
+    AppMethodBeat.i(207147);
+    yhw = new e.a((byte)0);
+    AppMethodBeat.o(207147);
   }
   
   public e()
   {
-    AppMethodBeat.i(200888);
-    this.xRC = new HashMap();
-    AppMethodBeat.o(200888);
+    AppMethodBeat.i(207146);
+    this.yhv = new HashMap();
+    AppMethodBeat.o(207146);
   }
   
-  public final boolean aoB()
+  public final boolean aoQ()
   {
     return false;
   }
   
-  public final void ayX() {}
+  public final void azm() {}
   
-  public final long iQ(String paramString1, String paramString2)
+  public final long iW(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(200886);
+    AppMethodBeat.i(207144);
     p.h(paramString1, "tag");
-    if (this.xRC.get(paramString1) == null)
+    if (this.yhv.get(paramString1) == null)
     {
-      ad.e("MicroMsg.RecordTimeCalculatePlugin", paramString1 + " miss start mark!!!");
-      AppMethodBeat.o(200886);
+      ae.e("MicroMsg.RecordTimeCalculatePlugin", paramString1 + " miss start mark!!!");
+      AppMethodBeat.o(207144);
       return -1L;
     }
-    paramString1 = (Long)this.xRC.get(paramString1);
+    paramString1 = (Long)this.yhv.get(paramString1);
     if (paramString1 != null)
     {
       long l = System.currentTimeMillis();
       p.g(paramString1, "this");
       l -= paramString1.longValue();
-      ad.i("MicroMsg.RecordTimeCalculatePlugin", paramString2 + " cost time:" + l);
-      AppMethodBeat.o(200886);
+      ae.i("MicroMsg.RecordTimeCalculatePlugin", paramString2 + " cost time:" + l);
+      AppMethodBeat.o(207144);
       return l;
     }
-    AppMethodBeat.o(200886);
+    AppMethodBeat.o(207144);
     return -1L;
   }
   
@@ -74,20 +74,20 @@ public final class e
   
   public final void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    AppMethodBeat.i(200890);
+    AppMethodBeat.i(207148);
     p.h(paramArrayOfString, "permissions");
     p.h(paramArrayOfInt, "grantResults");
     t.a.a(paramArrayOfString, paramArrayOfInt);
-    AppMethodBeat.o(200890);
+    AppMethodBeat.o(207148);
   }
   
   public final void onResume() {}
   
   public final void release()
   {
-    AppMethodBeat.i(200887);
-    this.xRC.clear();
-    AppMethodBeat.o(200887);
+    AppMethodBeat.i(207145);
+    this.yhv.clear();
+    AppMethodBeat.o(207145);
   }
   
   public final void reset() {}
@@ -96,7 +96,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.e.e
  * JD-Core Version:    0.7.0.1
  */

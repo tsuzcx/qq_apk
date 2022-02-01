@@ -4,17 +4,17 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.widget.a.f.c;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "<anonymous parameter 0>", "", "<anonymous parameter 1>", "", "kotlin.jvm.PlatformType", "onDialogClick"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "<anonymous parameter 0>", "", "<anonymous parameter 1>", "", "kotlin.jvm.PlatformType", "onDialogClick"})
 final class LiveVisitorPluginLayout$h
   implements f.c
 {
-  public static final h hbK;
+  public static final h hey;
   
   static
   {
-    AppMethodBeat.i(213008);
-    hbK = new h();
-    AppMethodBeat.o(213008);
+    AppMethodBeat.i(216638);
+    hey = new h();
+    AppMethodBeat.o(216638);
   }
   
   public final void d(boolean paramBoolean, String paramString) {}

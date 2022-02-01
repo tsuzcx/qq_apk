@@ -1,22 +1,34 @@
 package com.tencent.mm.plugin.finder.view;
 
-import android.content.Context;
-import com.tencent.mm.plugin.finder.model.BaseFinderFeed;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.protocal.protobuf.aml;
+import d.g.b.p;
 import d.l;
-import java.util.List;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/view/FoldedScrollPresenter;", "", "getLayoutType", "", "getList", "", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "getParentFeed", "hasMore", "", "onItemClick", "", "context", "Landroid/content/Context;", "pos", "plugin-finder_release"})
-public abstract interface m
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"safeParseFrom", "Lcom/tencent/mm/protocal/protobuf/FinderContactMsgInfo;", "byteArray", "", "plugin-finder_release"})
+public final class m
 {
-  public abstract void Z(Context paramContext, int paramInt);
-  
-  public abstract BaseFinderFeed cNl();
-  
-  public abstract List<BaseFinderFeed> cNm();
-  
-  public abstract int cNn();
-  
-  public abstract boolean cNo();
+  public static final aml a(aml paramaml, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(205904);
+    p.h(paramaml, "$this$safeParseFrom");
+    if (paramArrayOfByte == null)
+    {
+      AppMethodBeat.o(205904);
+      return paramaml;
+    }
+    try
+    {
+      paramaml.parseFrom(paramArrayOfByte);
+      label28:
+      AppMethodBeat.o(205904);
+      return paramaml;
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      break label28;
+    }
+  }
 }
 
 

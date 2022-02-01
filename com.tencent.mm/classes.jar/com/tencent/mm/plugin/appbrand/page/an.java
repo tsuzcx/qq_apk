@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.appbrand.page;
 
 public abstract interface an
 {
-  public abstract void c(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
+  public abstract boolean bvV();
 }
 
 

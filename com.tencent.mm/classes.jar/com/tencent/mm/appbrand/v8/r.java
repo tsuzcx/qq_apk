@@ -4,17 +4,17 @@ import com.eclipsesource.v8.JavaCallback;
 import com.eclipsesource.v8.V8Array;
 import com.eclipsesource.v8.V8Object;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class r
   extends o
 {
-  final d cYo;
+  final d cZm;
   
   public r(d paramd)
   {
     super("WeixinArrayBuffer");
-    this.cYo = paramd;
+    this.cZm = paramd;
   }
   
   protected final void a(m paramm, V8Object paramV8Object)
@@ -27,13 +27,13 @@ public final class r
         AppMethodBeat.i(144084);
         if ((paramAnonymousV8Array.length() <= 0) || (paramAnonymousV8Array.getType(0) != 1))
         {
-          ad.w("MicroMsg.V8DirectApiSharedBuffer", "get invalid parameters");
+          ae.w("MicroMsg.V8DirectApiSharedBuffer", "get invalid parameters");
           AppMethodBeat.o(144084);
           return null;
         }
         int i = paramAnonymousV8Array.getInteger(0);
-        ad.i("MicroMsg.V8DirectApiSharedBuffer", "get, id:%d", new Object[] { Integer.valueOf(i) });
-        paramAnonymousV8Object = r.this.cYo.hx(i);
+        ae.i("MicroMsg.V8DirectApiSharedBuffer", "get, id:%d", new Object[] { Integer.valueOf(i) });
+        paramAnonymousV8Object = r.this.cZm.hx(i);
         AppMethodBeat.o(144084);
         return paramAnonymousV8Object;
       }
@@ -45,7 +45,7 @@ public final class r
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.appbrand.v8.r
  * JD-Core Version:    0.7.0.1
  */

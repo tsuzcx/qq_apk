@@ -16,10 +16,10 @@ public class WalletWXCreditDetailFooterPreference
   extends Preference
   implements View.OnClickListener
 {
-  private TextView EHq;
-  private TextView EHr;
+  private TextView EZM;
+  private TextView EZN;
   private LayoutInflater mInflater;
-  View.OnClickListener waa;
+  View.OnClickListener wme;
   
   public WalletWXCreditDetailFooterPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -39,10 +39,10 @@ public class WalletWXCreditDetailFooterPreference
   {
     AppMethodBeat.i(72359);
     super.onBindView(paramView);
-    this.EHq = ((TextView)paramView.findViewById(2131306854));
-    this.EHr = ((TextView)paramView.findViewById(2131306852));
-    this.EHq.setOnClickListener(this);
-    this.EHr.setOnClickListener(this);
+    this.EZM = ((TextView)paramView.findViewById(2131306854));
+    this.EZN = ((TextView)paramView.findViewById(2131306852));
+    this.EZM.setOnClickListener(this);
+    this.EZN.setOnClickListener(this);
     AppMethodBeat.o(72359);
   }
   
@@ -51,9 +51,9 @@ public class WalletWXCreditDetailFooterPreference
     AppMethodBeat.i(72360);
     b localb = new b();
     localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/wxcredit/ui/WalletWXCreditDetailFooterPreference", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-    if (this.waa != null) {
-      this.waa.onClick(paramView);
+    a.b("com/tencent/mm/plugin/wxcredit/ui/WalletWXCreditDetailFooterPreference", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+    if (this.wme != null) {
+      this.wme.onClick(paramView);
     }
     a.a(this, "com/tencent/mm/plugin/wxcredit/ui/WalletWXCreditDetailFooterPreference", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(72360);

@@ -5,7 +5,7 @@ import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 final class MobileInputUI$17
   implements View.OnClickListener
@@ -17,9 +17,9 @@ final class MobileInputUI$17
     AppMethodBeat.i(128349);
     b localb = new b();
     localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/account/ui/MobileInputUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-    paramView = this.jmP.getString(2131760769) + ac.fks();
-    MobileInputUI.R(this.jmP, paramView);
+    a.b("com/tencent/mm/plugin/account/ui/MobileInputUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+    paramView = this.jpJ.getString(2131760769) + ad.fom();
+    MobileInputUI.S(this.jpJ, paramView);
     a.a(this, "com/tencent/mm/plugin/account/ui/MobileInputUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(128349);
   }

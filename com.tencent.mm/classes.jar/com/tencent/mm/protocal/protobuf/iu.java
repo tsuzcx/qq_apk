@@ -3,7 +3,7 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class iu
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
   public String title;
   public String url;
@@ -40,9 +40,9 @@ public final class iu
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
         AppMethodBeat.o(91359);
@@ -58,11 +58,11 @@ public final class iu
           AppMethodBeat.o(91359);
           return -1;
         case 1: 
-          localiu.title = locala.NPN.readString();
+          localiu.title = locala.OmT.readString();
           AppMethodBeat.o(91359);
           return 0;
         }
-        localiu.url = locala.NPN.readString();
+        localiu.url = locala.OmT.readString();
         AppMethodBeat.o(91359);
         return 0;
       }

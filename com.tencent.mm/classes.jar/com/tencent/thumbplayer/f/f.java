@@ -20,47 +20,47 @@ import java.util.Iterator;
 public final class f
   implements TPNetworkChangeMonitor.b, b.b
 {
-  private int Mbb;
-  private String Mbc;
-  private int Mbd;
-  private HashMap<Integer, b> Mbe;
+  private int MxW;
+  private String MxX;
+  private int MxY;
+  private HashMap<Integer, b> MxZ;
   
   private f()
   {
-    AppMethodBeat.i(191960);
-    this.Mbb = 0;
-    this.Mbc = "";
-    this.Mbd = 0;
-    if (this.Mbe == null) {
-      this.Mbe = new HashMap();
+    AppMethodBeat.i(194638);
+    this.MxW = 0;
+    this.MxX = "";
+    this.MxY = 0;
+    if (this.MxZ == null) {
+      this.MxZ = new HashMap();
     }
-    b.a.fXG().a(this);
-    TPNetworkChangeMonitor.fXH().a(this);
-    AppMethodBeat.o(191960);
+    b.a.gcf().a(this);
+    TPNetworkChangeMonitor.gcg().a(this);
+    AppMethodBeat.o(194638);
   }
   
-  private void ahs(int paramInt)
+  private void aib(int paramInt)
   {
-    AppMethodBeat.i(191963);
-    Iterator localIterator = this.Mbe.values().iterator();
+    AppMethodBeat.i(194641);
+    Iterator localIterator = this.MxZ.values().iterator();
     while (localIterator.hasNext()) {
       ((b)localIterator.next()).pushEvent(paramInt);
     }
-    AppMethodBeat.o(191963);
+    AppMethodBeat.o(194641);
   }
   
-  public final b ahr(int paramInt)
+  public final b aia(int paramInt)
   {
-    AppMethodBeat.i(191961);
+    AppMethodBeat.i(194639);
     if (paramInt < 0)
     {
-      AppMethodBeat.o(191961);
+      AppMethodBeat.o(194639);
       return null;
     }
-    if (this.Mbe.containsKey(Integer.valueOf(paramInt)))
+    if (this.MxZ.containsKey(Integer.valueOf(paramInt)))
     {
-      localObject = (b)this.Mbe.get(Integer.valueOf(paramInt));
-      AppMethodBeat.o(191961);
+      localObject = (b)this.MxZ.get(Integer.valueOf(paramInt));
+      AppMethodBeat.o(194639);
       return localObject;
     }
     Object localObject = TPDownloadProxyFactory.getTPDownloadProxy(paramInt);
@@ -74,54 +74,54 @@ public final class f
         {
           public final int d(String paramAnonymousString1, int paramAnonymousInt, String paramAnonymousString2, String paramAnonymousString3)
           {
-            AppMethodBeat.i(191955);
+            AppMethodBeat.i(194633);
             d.d(paramAnonymousString2, "[" + paramAnonymousString1 + ":" + paramAnonymousInt + "] " + paramAnonymousString3);
-            AppMethodBeat.o(191955);
+            AppMethodBeat.o(194633);
             return 0;
           }
           
           public final int e(String paramAnonymousString1, int paramAnonymousInt, String paramAnonymousString2, String paramAnonymousString3)
           {
-            AppMethodBeat.i(191958);
+            AppMethodBeat.i(194636);
             d.e(paramAnonymousString2, "[" + paramAnonymousString1 + ":" + paramAnonymousInt + "] " + paramAnonymousString3);
-            AppMethodBeat.o(191958);
+            AppMethodBeat.o(194636);
             return 0;
           }
           
           public final int i(String paramAnonymousString1, int paramAnonymousInt, String paramAnonymousString2, String paramAnonymousString3)
           {
-            AppMethodBeat.i(191956);
+            AppMethodBeat.i(194634);
             d.i(paramAnonymousString2, "[" + paramAnonymousString1 + ":" + paramAnonymousInt + "] " + paramAnonymousString3);
-            AppMethodBeat.o(191956);
+            AppMethodBeat.o(194634);
             return 0;
           }
           
           public final int w(String paramAnonymousString1, int paramAnonymousInt, String paramAnonymousString2, String paramAnonymousString3)
           {
-            AppMethodBeat.i(191957);
+            AppMethodBeat.i(194635);
             d.w(paramAnonymousString2, "[" + paramAnonymousString1 + ":" + paramAnonymousInt + "] " + paramAnonymousString3);
-            AppMethodBeat.o(191957);
+            AppMethodBeat.o(194635);
             return 0;
           }
         });
         Context localContext = h.IR;
-        if (((ITPDownloadProxy)localObject).init(localContext, new TPDLProxyInitParam(a.getPlatform(), a.getAppVersionName(localContext), a.getGuid(), a.fWO(), a.fWP(), a.fWQ())) < 0)
+        if (((ITPDownloadProxy)localObject).init(localContext, new TPDLProxyInitParam(a.getPlatform(), a.getAppVersionName(localContext), a.getGuid(), a.gbn(), a.gbo(), a.gbp())) < 0)
         {
           d.i("TPProxyGlobalManager", "downloadProxy init failed with status:".concat(String.valueOf(localObject)));
-          AppMethodBeat.o(191961);
+          AppMethodBeat.o(194639);
           return null;
         }
-        i = TPNetworkChangeMonitor.aEN();
+        i = TPNetworkChangeMonitor.aFd();
         if (i == 1)
         {
           ((ITPDownloadProxy)localObject).pushEvent(1);
           ((ITPDownloadProxy)localObject).pushEvent(10);
-          ((ITPDownloadProxy)localObject).pushEvent(this.Mbb);
-          ((ITPDownloadProxy)localObject).setUserData("carrier_pesudo_code", this.Mbc);
-          ((ITPDownloadProxy)localObject).setUserData("carrier_pesudo_state", Integer.valueOf(this.Mbd));
+          ((ITPDownloadProxy)localObject).pushEvent(this.MxW);
+          ((ITPDownloadProxy)localObject).setUserData("carrier_pesudo_code", this.MxX);
+          ((ITPDownloadProxy)localObject).setUserData("carrier_pesudo_state", Integer.valueOf(this.MxY));
           localObject = new g((ITPDownloadProxy)localObject);
-          this.Mbe.put(Integer.valueOf(paramInt), localObject);
-          AppMethodBeat.o(191961);
+          this.MxZ.put(Integer.valueOf(paramInt), localObject);
+          AppMethodBeat.o(194639);
           return localObject;
         }
         if (i != 2) {
@@ -130,7 +130,7 @@ public final class f
         ((ITPDownloadProxy)localObject).pushEvent(2);
         ((ITPDownloadProxy)localObject).pushEvent(9);
         continue;
-        AppMethodBeat.o(191961);
+        AppMethodBeat.o(194639);
       }
       catch (Throwable localThrowable)
       {
@@ -146,40 +146,40 @@ public final class f
     }
   }
   
-  public final void kT(int paramInt1, int paramInt2)
+  public final void la(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(191962);
+    AppMethodBeat.i(194640);
     if (paramInt2 == 1)
     {
-      ahs(1);
-      ahs(10);
-      AppMethodBeat.o(191962);
+      aib(1);
+      aib(10);
+      AppMethodBeat.o(194640);
       return;
     }
     if (paramInt2 == 2)
     {
-      ahs(2);
-      ahs(9);
-      AppMethodBeat.o(191962);
+      aib(2);
+      aib(9);
+      AppMethodBeat.o(194640);
       return;
     }
     if (paramInt2 == 3)
     {
-      ahs(2);
-      ahs(10);
+      aib(2);
+      aib(10);
     }
-    AppMethodBeat.o(191962);
+    AppMethodBeat.o(194640);
   }
   
   static final class a
   {
-    private static f Mbg;
+    private static f Myb;
     
     static
     {
-      AppMethodBeat.i(191959);
-      Mbg = new f((byte)0);
-      AppMethodBeat.o(191959);
+      AppMethodBeat.i(194637);
+      Myb = new f((byte)0);
+      AppMethodBeat.o(194637);
     }
   }
 }

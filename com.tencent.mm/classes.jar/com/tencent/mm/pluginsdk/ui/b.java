@@ -10,127 +10,127 @@ import java.util.Set;
 public final class b
   implements j.a, j.b
 {
-  private final j.a ERR;
-  private final HashMap<String, j.a> gdc;
+  private final j.a Fkm;
+  private final HashMap<String, j.a> gfk;
   
   public b(j.a parama)
   {
-    AppMethodBeat.i(195430);
-    this.gdc = new HashMap();
-    this.ERR = parama;
-    AppMethodBeat.o(195430);
+    AppMethodBeat.i(218883);
+    this.gfk = new HashMap();
+    this.Fkm = parama;
+    AppMethodBeat.o(218883);
   }
   
-  private j.a aMt(String paramString)
+  private j.a aNP(String paramString)
   {
-    AppMethodBeat.i(195438);
+    AppMethodBeat.i(218891);
     if (paramString == null)
     {
-      paramString = this.ERR;
-      AppMethodBeat.o(195438);
+      paramString = this.Fkm;
+      AppMethodBeat.o(218891);
       return paramString;
     }
-    synchronized (this.gdc)
+    synchronized (this.gfk)
     {
-      Iterator localIterator = this.gdc.entrySet().iterator();
+      Iterator localIterator = this.gfk.entrySet().iterator();
       while (localIterator.hasNext())
       {
         Map.Entry localEntry = (Map.Entry)localIterator.next();
         if (paramString.endsWith((String)localEntry.getKey()))
         {
           paramString = (j.a)localEntry.getValue();
-          AppMethodBeat.o(195438);
+          AppMethodBeat.o(218891);
           return paramString;
         }
       }
-      paramString = this.ERR;
-      AppMethodBeat.o(195438);
+      paramString = this.Fkm;
+      AppMethodBeat.o(218891);
       return paramString;
     }
   }
   
-  public final Bitmap LL()
+  public final Bitmap LT()
   {
-    AppMethodBeat.i(195436);
-    Bitmap localBitmap = this.ERR.LL();
-    AppMethodBeat.o(195436);
+    AppMethodBeat.i(218889);
+    Bitmap localBitmap = this.Fkm.LT();
+    AppMethodBeat.o(218889);
     return localBitmap;
   }
   
   public final Bitmap a(String paramString, int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(195433);
-    paramString = aMt(paramString).a(paramString, paramInt1, paramInt2, paramInt3);
-    AppMethodBeat.o(195433);
+    AppMethodBeat.i(218886);
+    paramString = aNP(paramString).a(paramString, paramInt1, paramInt2, paramInt3);
+    AppMethodBeat.o(218886);
     return paramString;
   }
   
   public final void a(j paramj)
   {
-    AppMethodBeat.i(195437);
-    aMt(paramj.getTag()).a(paramj);
-    this.ERR.a(paramj);
-    AppMethodBeat.o(195437);
+    AppMethodBeat.i(218890);
+    aNP(paramj.getTag()).a(paramj);
+    this.Fkm.a(paramj);
+    AppMethodBeat.o(218890);
   }
   
   public final boolean a(String paramString, j.a parama)
   {
-    AppMethodBeat.i(195431);
-    synchronized (this.gdc)
+    AppMethodBeat.i(218884);
+    synchronized (this.gfk)
     {
-      if (this.gdc.put(paramString, parama) == null)
+      if (this.gfk.put(paramString, parama) == null)
       {
         bool = true;
-        AppMethodBeat.o(195431);
+        AppMethodBeat.o(218884);
         return bool;
       }
       boolean bool = false;
     }
   }
   
-  public final void aMs(String paramString)
+  public final void aNO(String paramString)
   {
-    AppMethodBeat.i(195432);
-    synchronized (this.gdc)
+    AppMethodBeat.i(218885);
+    synchronized (this.gfk)
     {
-      this.gdc.remove(paramString);
-      AppMethodBeat.o(195432);
+      this.gfk.remove(paramString);
+      AppMethodBeat.o(218885);
       return;
     }
   }
   
-  public final boolean ahv(String paramString)
+  public final boolean ais(String paramString)
   {
-    AppMethodBeat.i(195439);
-    j.a locala = aMt(paramString);
+    AppMethodBeat.i(218892);
+    j.a locala = aNP(paramString);
     if ((locala instanceof j.b))
     {
-      boolean bool = ((j.b)locala).ahv(paramString);
-      AppMethodBeat.o(195439);
+      boolean bool = ((j.b)locala).ais(paramString);
+      AppMethodBeat.o(218892);
       return bool;
     }
-    AppMethodBeat.o(195439);
+    AppMethodBeat.o(218892);
     return true;
   }
   
-  public final j.a fby()
+  public final j.a ffm()
   {
-    return this.ERR;
+    return this.Fkm;
   }
   
-  public final Bitmap fg(String paramString)
+  public final Bitmap fl(String paramString)
   {
-    AppMethodBeat.i(195434);
-    paramString = aMt(paramString).fg(paramString);
-    AppMethodBeat.o(195434);
+    AppMethodBeat.i(218887);
+    paramString = aNP(paramString).fl(paramString);
+    AppMethodBeat.o(218887);
     return paramString;
   }
   
-  public final Bitmap fh(String paramString)
+  public final Bitmap fm(String paramString)
   {
-    AppMethodBeat.i(195435);
-    paramString = aMt(paramString).fh(paramString);
-    AppMethodBeat.o(195435);
+    AppMethodBeat.i(218888);
+    paramString = aNP(paramString).fm(paramString);
+    AppMethodBeat.o(218888);
     return paramString;
   }
 }

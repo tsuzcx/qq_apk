@@ -5,7 +5,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.base.c;
 import com.tencent.mm.plugin.appbrand.jsapi.coverview.CoverViewContainer;
 import com.tencent.mm.plugin.appbrand.jsapi.e;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import org.json.JSONObject;
 
 public final class f
@@ -26,17 +26,17 @@ public final class f
   {
     AppMethodBeat.i(145894);
     super.b(parame, paramInt, paramView, paramJSONObject);
-    ad.i("MicroMsg.JsApiRemoveLivePusher", "onRemoveView livePusherId=%d", new Object[] { Integer.valueOf(paramInt) });
+    ae.i("MicroMsg.JsApiRemoveLivePusher", "onRemoveView livePusherId=%d", new Object[] { Integer.valueOf(paramInt) });
     if (!(paramView instanceof CoverViewContainer))
     {
-      ad.w("MicroMsg.JsApiRemoveLivePusher", "the view(%s) is not a instance of CoverViewContainer", new Object[] { Integer.valueOf(paramInt) });
+      ae.w("MicroMsg.JsApiRemoveLivePusher", "the view(%s) is not a instance of CoverViewContainer", new Object[] { Integer.valueOf(paramInt) });
       AppMethodBeat.o(145894);
       return false;
     }
     parame = (View)((CoverViewContainer)paramView).ax(View.class);
     if (!(parame instanceof AppBrandLivePusherView))
     {
-      ad.e("MicroMsg.JsApiRemoveLivePusher", "targetView not AppBrandLivePusherView");
+      ae.e("MicroMsg.JsApiRemoveLivePusher", "targetView not AppBrandLivePusherView");
       AppMethodBeat.o(145894);
       return false;
     }
@@ -47,7 +47,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.live.f
  * JD-Core Version:    0.7.0.1
  */

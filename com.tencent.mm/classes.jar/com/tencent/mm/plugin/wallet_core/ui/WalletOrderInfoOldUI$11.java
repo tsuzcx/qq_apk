@@ -5,7 +5,7 @@ import android.view.View.OnLongClickListener;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 final class WalletOrderInfoOldUI$11
   implements View.OnLongClickListener
@@ -17,13 +17,13 @@ final class WalletOrderInfoOldUI$11
     AppMethodBeat.i(71053);
     b localb = new b();
     localb.bd(paramView);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/wallet_core/ui/WalletOrderInfoOldUI$9", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.ahq());
+    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/wallet_core/ui/WalletOrderInfoOldUI$9", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.ahF());
     if ((paramView.getId() == 2131306777) || (paramView.getId() == 2131306805)) {}
     try
     {
       paramView = (String)paramView.getTag();
-      Toast.makeText(this.DhC, 2131765540, 0).show();
-      this.DhC.getContext();
+      Toast.makeText(this.Dzg, 2131765540, 0).show();
+      this.Dzg.getContext();
       com.tencent.mm.pluginsdk.i.a.b(paramView, paramView);
       com.tencent.mm.hellhoundlib.a.a.a(true, this, "com/tencent/mm/plugin/wallet_core/ui/WalletOrderInfoOldUI$9", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
       AppMethodBeat.o(71053);
@@ -33,7 +33,7 @@ final class WalletOrderInfoOldUI$11
     {
       for (;;)
       {
-        ad.printErrStackTrace("MicroMsg.WalletOrderInfoOldUI", paramView, "", new Object[0]);
+        ae.printErrStackTrace("MicroMsg.WalletOrderInfoOldUI", paramView, "", new Object[0]);
       }
     }
   }

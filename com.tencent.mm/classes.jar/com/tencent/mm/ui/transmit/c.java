@@ -7,17 +7,17 @@ import com.tencent.mm.ui.widget.a.d;
 
 public final class c
 {
-  a KOu;
-  d jcs;
+  a LkS;
+  d jfl;
   
   c(a parama)
   {
-    this.KOu = parama;
+    this.LkS = parama;
   }
   
   public static abstract interface a
   {
-    public abstract void fKV();
+    public abstract void fPo();
   }
 }
 

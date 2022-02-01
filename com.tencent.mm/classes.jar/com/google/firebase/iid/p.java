@@ -34,7 +34,7 @@ final class p
     this.bLf = paramContext;
     this.bLA = paramContext.getSharedPreferences("com.google.android.gms.appid", 0);
     this.bLB = paramaf;
-    paramContext = new File(b.S(this.bLf), "com.google.android.gms.appid-no-backup");
+    paramContext = new File(b.T(this.bLf), "com.google.android.gms.appid-no-backup");
     if (!paramContext.exists()) {
       try
       {
@@ -342,7 +342,7 @@ final class p
       {
         AppMethodBeat.i(4192);
         this.bLC.clear();
-        File[] arrayOfFile = af.ap(this.bLf).listFiles();
+        File[] arrayOfFile = af.aq(this.bLf).listFiles();
         int j = arrayOfFile.length;
         i = 0;
         if (i < j)

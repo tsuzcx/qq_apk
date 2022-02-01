@@ -1,73 +1,32 @@
 package com.tencent.mm.sdk.platformtools;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.b.d;
+import java.util.HashMap;
 
 public final class bq
 {
-  private final d Ign;
-  private ag<String, String> Igo;
+  private static final HashMap<String, String> IAx;
   
-  public bq(String paramString)
+  static
   {
-    AppMethodBeat.i(157841);
-    this.Igo = new ag(256);
-    this.Ign = new d(paramString);
-    AppMethodBeat.o(157841);
+    AppMethodBeat.i(157840);
+    IAx = new HashMap();
+    AppMethodBeat.o(157840);
   }
   
-  public final String decryptTag(String paramString)
+  public static String getProperty(String paramString)
   {
-    AppMethodBeat.i(157842);
-    String str1 = paramString;
-    try
-    {
-      if (!paramString.startsWith("!")) {
-        break label192;
-      }
-      if (this.Igo.aM(paramString))
-      {
-        str1 = (String)this.Igo.get(paramString);
-        AppMethodBeat.o(157842);
-        return str1;
-      }
-      str1 = paramString.substring(1);
-      Object localObject2;
-      String str2;
-      int i;
-      ad.printErrStackTrace("MicroMsg.TagDecrypter", localException1, "", new Object[0]);
-    }
-    catch (Exception localException1)
-    {
-      try
-      {
-        localObject2 = str1.split("@");
-        if (localObject2.length <= 1) {
-          break label209;
-        }
-        str2 = localObject2[0];
-        i = Integer.valueOf(localObject2[0]).intValue();
-        localObject2 = str1.substring(str2.length() + 1, str2.length() + 1 + i);
-        str2 = str1.substring(i + (str2.length() + 1));
-        str2 = this.Ign.eo((String)localObject2) + str2;
-        this.Igo.put(paramString, str2);
-        AppMethodBeat.o(157842);
-        return str2;
-      }
-      catch (Exception localException2)
-      {
-        for (;;)
-        {
-          paramString = (String)localObject1;
-          Object localObject1 = localException2;
-        }
-      }
-      localException1 = localException1;
-    }
-    localObject1 = "[td]".concat(String.valueOf(paramString));
-    label192:
-    AppMethodBeat.o(157842);
-    return localObject1;
+    AppMethodBeat.i(157838);
+    paramString = (String)IAx.get(paramString);
+    AppMethodBeat.o(157838);
+    return paramString;
+  }
+  
+  public static void setProperty(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(157839);
+    IAx.put(paramString1, paramString2);
+    AppMethodBeat.o(157839);
   }
 }
 

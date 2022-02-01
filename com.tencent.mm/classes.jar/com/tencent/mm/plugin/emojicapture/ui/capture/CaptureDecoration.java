@@ -19,7 +19,7 @@ import com.tencent.mm.plugin.emojicapture.ui.editor.EmojiEditorItemView;
 import com.tencent.mm.plugin.emojicapture.ui.editor.a;
 import com.tencent.mm.plugin.emojicapture.ui.editor.text.FontAnimTextView;
 import com.tencent.mm.pluginsdk.a.e;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.sticker.f;
 import com.tencent.mm.sticker.ui.view.CaptureStickerHint;
 import com.tencent.mm.storage.emotion.EmojiInfo;
@@ -28,16 +28,16 @@ import d.l;
 import d.n.n;
 import java.util.Iterator;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/emojicapture/ui/capture/CaptureDecoration;", "Landroid/support/constraint/ConstraintLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "actionHint", "Lcom/tencent/mm/sticker/ui/view/CaptureStickerHint;", "editorRoot", "Lcom/tencent/mm/plugin/emojicapture/ui/editor/EditorItemContainer;", "emojiItemView", "Lcom/tencent/mm/plugin/emojicapture/ui/editor/EmojiEditorItemView;", "imitateEmoji", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "stickerInfo", "Lcom/tencent/mm/sticker/StickerPack;", "textHint", "Lcom/tencent/mm/plugin/emojicapture/ui/editor/text/FontAnimTextView;", "getAttachEmoji", "getAttachEmojiMatrix", "Landroid/graphics/Matrix;", "getText", "", "getTextColor", "onRecordStart", "", "onRecordStop", "pause", "resume", "setImitateEmoji", "emojiInfo", "setStickerInfo", "showImitateEmoji", "showTextHint", "text", "colorString", "plugin-emojicapture_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/emojicapture/ui/capture/CaptureDecoration;", "Landroid/support/constraint/ConstraintLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "actionHint", "Lcom/tencent/mm/sticker/ui/view/CaptureStickerHint;", "editorRoot", "Lcom/tencent/mm/plugin/emojicapture/ui/editor/EditorItemContainer;", "emojiItemView", "Lcom/tencent/mm/plugin/emojicapture/ui/editor/EmojiEditorItemView;", "imitateEmoji", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "stickerInfo", "Lcom/tencent/mm/sticker/StickerPack;", "textHint", "Lcom/tencent/mm/plugin/emojicapture/ui/editor/text/FontAnimTextView;", "getAttachEmoji", "getAttachEmojiMatrix", "Landroid/graphics/Matrix;", "getText", "", "getTextColor", "onRecordStart", "", "onRecordStop", "pause", "resume", "setImitateEmoji", "emojiInfo", "setStickerInfo", "showImitateEmoji", "showTextHint", "text", "colorString", "plugin-emojicapture_release"})
 public final class CaptureDecoration
   extends ConstraintLayout
 {
-  private f pRi;
-  public final EditorItemContainer pVH;
-  public final FontAnimTextView pVI;
-  private final CaptureStickerHint pVJ;
-  private EmojiEditorItemView pVK;
-  private EmojiInfo pVL;
+  private f pXN;
+  public final EditorItemContainer qcm;
+  public final FontAnimTextView qcn;
+  private final CaptureStickerHint qco;
+  private EmojiEditorItemView qcp;
+  private EmojiInfo qcq;
   
   public CaptureDecoration(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -53,26 +53,26 @@ public final class CaptureDecoration
     View.inflate(paramContext, 2131493755, (ViewGroup)this);
     paramContext = findViewById(2131299335);
     p.g(paramContext, "findViewById(R.id.emoji_…re_editor_item_container)");
-    this.pVH = ((EditorItemContainer)paramContext);
+    this.qcm = ((EditorItemContainer)paramContext);
     paramContext = findViewById(2131299358);
     p.g(paramContext, "findViewById(R.id.emoji_capture_text_hint)");
-    this.pVI = ((FontAnimTextView)paramContext);
+    this.qcn = ((FontAnimTextView)paramContext);
     paramContext = findViewById(2131299349);
     p.g(paramContext, "findViewById(R.id.emoji_capture_sticker_hint)");
-    this.pVJ = ((CaptureStickerHint)paramContext);
-    this.pVH.setDeleteEnalbe(false);
+    this.qco = ((CaptureStickerHint)paramContext);
+    this.qcm.setDeleteEnalbe(false);
     AppMethodBeat.o(619);
   }
   
   public final EmojiInfo getAttachEmoji()
   {
-    return this.pVL;
+    return this.qcq;
   }
   
   public final Matrix getAttachEmojiMatrix()
   {
     AppMethodBeat.i(617);
-    Object localObject2 = ((Iterable)this.pVH.getAllItemViews()).iterator();
+    Object localObject2 = ((Iterable)this.qcm.getAllItemViews()).iterator();
     Object localObject1;
     while (((Iterator)localObject2).hasNext())
     {
@@ -109,7 +109,7 @@ public final class CaptureDecoration
   public final String getText()
   {
     AppMethodBeat.i(615);
-    Object localObject = this.pVI.getText();
+    Object localObject = this.qcn.getText();
     if (localObject != null)
     {
       localObject = localObject.toString();
@@ -123,9 +123,9 @@ public final class CaptureDecoration
   public final int getTextColor()
   {
     AppMethodBeat.i(616);
-    int i = this.pVI.getTextColor();
+    int i = this.qcn.getTextColor();
     if (i != 0) {}
-    for (i = c.Cr(i);; i = -1)
+    for (i = c.CD(i);; i = -1)
     {
       AppMethodBeat.o(616);
       return i;
@@ -135,14 +135,14 @@ public final class CaptureDecoration
   public final void resume()
   {
     AppMethodBeat.i(618);
-    this.pVH.resume();
-    this.pVI.refresh();
+    this.qcm.resume();
+    this.qcn.refresh();
     AppMethodBeat.o(618);
   }
   
   public final void setImitateEmoji(EmojiInfo paramEmojiInfo)
   {
-    this.pVL = paramEmojiInfo;
+    this.qcq = paramEmojiInfo;
   }
   
   public final void setStickerInfo(f paramf)
@@ -153,26 +153,26 @@ public final class CaptureDecoration
     Object localObject2;
     label44:
     int i;
-    if (this.pRi != null)
+    if (this.pXN != null)
     {
-      localObject1 = this.pRi;
+      localObject1 = this.pXN;
       if (localObject1 == null) {
         break label357;
       }
-      localObject1 = ((f)localObject1).pQo;
+      localObject1 = ((f)localObject1).pWT;
       if (paramf == null) {
         break label363;
       }
-      localObject2 = paramf.pQo;
+      localObject2 = paramf.pWT;
       if (!(p.i(localObject1, localObject2) ^ true)) {}
     }
     else
     {
-      this.pRi = paramf;
-      this.pVJ.setVisibility(8);
-      this.pVH.setVisibility(8);
-      this.pVI.setVisibility(8);
-      this.pVI.pause();
+      this.pXN = paramf;
+      this.qco.setVisibility(8);
+      this.qcm.setVisibility(8);
+      this.qcn.setVisibility(8);
+      this.qcn.pause();
       if (paramf != null)
       {
         if (((CharSequence)paramf.title).length() != 0) {
@@ -183,58 +183,58 @@ public final class CaptureDecoration
         if (i == 0) {
           break label374;
         }
-        this.pVI.e(null, -16777216, c.Cs(-16777216));
-        this.pVJ.setStickerPack(paramf);
+        this.qcn.e(null, -16777216, c.CE(-16777216));
+        this.qco.setStickerPack(paramf);
       }
     }
-    if (this.pVL != null)
+    if (this.qcq != null)
     {
-      paramf = this.pVL;
+      paramf = this.qcq;
       if (paramf != null)
       {
-        this.pVH.setVisibility(0);
-        if (this.pVK == null) {
-          this.pVH.ah((Runnable)new a(paramf, this));
+        this.qcm.setVisibility(0);
+        if (this.qcp == null) {
+          this.qcm.af((Runnable)new a(paramf, this));
         }
       }
     }
-    if (this.pRi == null)
+    if (this.pXN == null)
     {
       label269:
       label408:
       label462:
-      if (this.pVL != null)
+      if (this.qcq != null)
       {
-        if (b.w(this.pVL))
+        if (b.w(this.qcq))
         {
           paramf = g.ad(com.tencent.mm.plugin.emoji.b.d.class);
           p.g(paramf, "plugin(IPluginEmoji::class.java)");
           localObject1 = ((com.tencent.mm.plugin.emoji.b.d)paramf).getProvider();
-          localObject2 = this.pVL;
+          localObject2 = this.qcq;
           paramf = localObject3;
           if (localObject2 != null) {
-            paramf = ((EmojiInfo)localObject2).Lb();
+            paramf = ((EmojiInfo)localObject2).Lj();
           }
-          paramf = ((e)localObject1).abv(paramf);
-          localObject1 = this.pVL;
+          paramf = ((e)localObject1).acm(paramf);
+          localObject1 = this.qcq;
           if (localObject1 == null) {
-            p.gfZ();
+            p.gkB();
           }
           localObject1 = ((EmojiInfo)localObject1).field_attachTextColor;
-          if ((localObject1 == null) || (n.aE((CharSequence)localObject1))) {
+          if ((localObject1 == null) || (n.aD((CharSequence)localObject1))) {
             break label492;
           }
-          localObject2 = com.tencent.mm.plugin.emojicapture.model.d.pQW;
+          localObject2 = com.tencent.mm.plugin.emojicapture.model.d.pXB;
         }
         label357:
         label363:
         label492:
-        for (i = d.a.acl((String)localObject1);; i = -1)
+        for (i = d.a.adc((String)localObject1);; i = -1)
         {
-          int j = c.Cs(i);
-          this.pVI.e((CharSequence)paramf, i, j);
-          if (!bt.isNullOrNil(paramf)) {
-            this.pVI.setVisibility(0);
+          int j = c.CE(i);
+          this.qcn.e((CharSequence)paramf, i, j);
+          if (!bu.isNullOrNil(paramf)) {
+            this.qcn.setVisibility(0);
           }
           AppMethodBeat.o(614);
           return;
@@ -247,25 +247,25 @@ public final class CaptureDecoration
           break label116;
           label374:
           localObject2 = paramf.titleColor;
-          localObject1 = paramf.Imq;
-          if (!n.aE((CharSequence)localObject2))
+          localObject1 = paramf.IGB;
+          if (!n.aD((CharSequence)localObject2))
           {
-            d.a locala = com.tencent.mm.plugin.emojicapture.model.d.pQW;
-            i = d.a.acl((String)localObject2);
-            if (n.aE((CharSequence)localObject1)) {
+            d.a locala = com.tencent.mm.plugin.emojicapture.model.d.pXB;
+            i = d.a.adc((String)localObject2);
+            if (n.aD((CharSequence)localObject1)) {
               break label462;
             }
-            localObject2 = com.tencent.mm.plugin.emojicapture.model.d.pQW;
+            localObject2 = com.tencent.mm.plugin.emojicapture.model.d.pXB;
           }
-          for (j = d.a.acl((String)localObject1);; j = c.Cs(i))
+          for (j = d.a.adc((String)localObject1);; j = c.CE(i))
           {
-            this.pVI.setVisibility(0);
-            this.pVI.e((CharSequence)paramf.title, i, j);
+            this.qcn.setVisibility(0);
+            this.qcn.e((CharSequence)paramf.title, i, j);
             break;
             i = -1;
             break label408;
           }
-          paramf = this.pVL;
+          paramf = this.qcq;
           if (paramf != null)
           {
             paramf = paramf.field_attachedText;
@@ -275,13 +275,13 @@ public final class CaptureDecoration
           break label269;
         }
       }
-      this.pVI.e(null, -16777216, c.Cs(-16777216));
-      this.pVH.setVisibility(8);
+      this.qcn.e(null, -16777216, c.CE(-16777216));
+      this.qcm.setVisibility(8);
     }
     AppMethodBeat.o(614);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run", "com/tencent/mm/plugin/emojicapture/ui/capture/CaptureDecoration$showImitateEmoji$1$1"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run", "com/tencent/mm/plugin/emojicapture/ui/capture/CaptureDecoration$showImitateEmoji$1$1"})
   static final class a
     implements Runnable
   {
@@ -297,7 +297,7 @@ public final class CaptureDecoration
       }
       Object localObject1 = CaptureDecoration.b(jdField_this).getValidRect();
       EmojiEditorItemView localEmojiEditorItemView = new EmojiEditorItemView(jdField_this.getContext());
-      localEmojiEditorItemView.setEmojiInfo(this.pVM);
+      localEmojiEditorItemView.setEmojiInfo(this.qcr);
       localEmojiEditorItemView.resume();
       CaptureDecoration.a(jdField_this, localEmojiEditorItemView);
       EditorItemContainer.a(CaptureDecoration.b(jdField_this), (a)localEmojiEditorItemView);
@@ -339,7 +339,7 @@ public final class CaptureDecoration
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.emojicapture.ui.capture.CaptureDecoration
  * JD-Core Version:    0.7.0.1
  */

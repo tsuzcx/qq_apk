@@ -4,8 +4,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.e.c.a;
 import com.tencent.mm.sdk.e.e;
 import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.storagebase.g;
 import com.tencent.mm.storagebase.g.a;
 import java.util.ArrayList;
@@ -42,12 +42,12 @@ public final class i
     return 0;
   }
   
-  public final boolean aT(ArrayList<ArrayList<String>> paramArrayList)
+  public final boolean aU(ArrayList<ArrayList<String>> paramArrayList)
   {
     AppMethodBeat.i(105106);
     if (paramArrayList.isEmpty())
     {
-      ad.i("MicroMsg.emoji.EmojiDescMapStorage", "group list is null.");
+      ae.i("MicroMsg.emoji.EmojiDescMapStorage", "group list is null.");
       AppMethodBeat.o(105106);
       return false;
     }
@@ -56,7 +56,7 @@ public final class i
     if ((this.db instanceof com.tencent.mm.storagebase.h))
     {
       localh = (com.tencent.mm.storagebase.h)this.db;
-      l = localh.xO(Thread.currentThread().getId());
+      l = localh.yi(Thread.currentThread().getId());
     }
     for (;;)
     {
@@ -73,9 +73,9 @@ public final class i
         while (((Iterator)localObject).hasNext())
         {
           String str = (String)((Iterator)localObject).next();
-          if (!bt.isNullOrNil(str))
+          if (!bu.isNullOrNil(str))
           {
-            ad.d("MicroMsg.emoji.EmojiDescMapStorage", "insert groupID%s, word:%s", new Object[] { String.valueOf(i), str });
+            ae.d("MicroMsg.emoji.EmojiDescMapStorage", "insert groupID%s, word:%s", new Object[] { String.valueOf(i), str });
             insert(new h(String.valueOf(i), str));
           }
         }
@@ -86,7 +86,7 @@ public final class i
       {
         break;
         if (localh != null) {
-          localh.sJ(l);
+          localh.sW(l);
         }
         AppMethodBeat.o(105106);
         return false;

@@ -4,46 +4,46 @@ import android.app.ActivityManager;
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.memory.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public final class c
   extends a<byte[]>
 {
-  private static int iuX;
-  public static final c rgZ;
+  private static int ixR;
+  public static final c rpd;
   
   static
   {
     AppMethodBeat.i(103696);
-    rgZ = new c();
-    iuX = 0;
+    rpd = new c();
+    ixR = 0;
     AppMethodBeat.o(103696);
   }
   
   public static void da(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(103686);
-    ad.i("MicroMsg.FaceByteArrayPool", "preloadCameraData, width: %s, height: %s, count: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(5) });
-    long l = bt.HI();
+    ae.i("MicroMsg.FaceByteArrayPool", "preloadCameraData, width: %s, height: %s, count: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(5) });
+    long l = bu.HQ();
     int i = 0;
     while (i < 5)
     {
-      rgZ.k(new byte[paramInt1 * paramInt2 * 3 / 2]);
+      rpd.k(new byte[paramInt1 * paramInt2 * 3 / 2]);
       i += 1;
     }
-    ad.i("MicroMsg.FaceByteArrayPool", "preloadCameraData used %sms", new Object[] { Long.valueOf(bt.aO(l)) });
+    ae.i("MicroMsg.FaceByteArrayPool", "preloadCameraData used %sms", new Object[] { Long.valueOf(bu.aO(l)) });
     AppMethodBeat.o(103686);
   }
   
-  public final long ayu()
+  public final long ayJ()
   {
     AppMethodBeat.i(103689);
-    if (iuX <= 0) {
-      iuX = ((ActivityManager)aj.getContext().getSystemService("activity")).getLargeMemoryClass();
+    if (ixR <= 0) {
+      ixR = ((ActivityManager)ak.getContext().getSystemService("activity")).getLargeMemoryClass();
     }
-    if (iuX >= 512)
+    if (ixR >= 512)
     {
       AppMethodBeat.o(103689);
       return 20971520L;
@@ -52,49 +52,49 @@ public final class c
     return 10485760L;
   }
   
-  public final long ayv()
+  public final long ayK()
   {
     return 20971520L;
   }
   
-  public final void ayw()
+  public final void ayL()
   {
     AppMethodBeat.i(103690);
-    super.ayw();
+    super.ayL();
     AppMethodBeat.o(103690);
   }
   
   /* Error */
-  public final byte[] g(Integer paramInteger)
+  public final byte[] h(Integer paramInteger)
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc 134
+    //   2: ldc 135
     //   4: invokestatic 18	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   7: aload_0
     //   8: aload_1
-    //   9: invokespecial 136	com/tencent/mm/memory/a:d	(Ljava/lang/Integer;)Ljava/lang/Object;
+    //   9: invokespecial 137	com/tencent/mm/memory/a:e	(Ljava/lang/Integer;)Ljava/lang/Object;
     //   12: checkcast 109	[B
     //   15: astore_2
     //   16: aload_2
     //   17: ifnonnull +26 -> 43
     //   20: ldc 35
-    //   22: ldc 138
-    //   24: invokestatic 142	com/tencent/mm/sdk/platformtools/ad:v	(Ljava/lang/String;Ljava/lang/String;)V
+    //   22: ldc 139
+    //   24: invokestatic 143	com/tencent/mm/sdk/platformtools/ae:v	(Ljava/lang/String;Ljava/lang/String;)V
     //   27: aload_1
     //   28: invokevirtual 122	java/lang/Integer:intValue	()I
     //   31: newarray byte
     //   33: astore_1
-    //   34: ldc 134
+    //   34: ldc 135
     //   36: invokestatic 28	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   39: aload_0
     //   40: monitorexit
     //   41: aload_1
     //   42: areturn
     //   43: ldc 35
-    //   45: ldc 144
-    //   47: invokestatic 142	com/tencent/mm/sdk/platformtools/ad:v	(Ljava/lang/String;Ljava/lang/String;)V
+    //   45: ldc 145
+    //   47: invokestatic 143	com/tencent/mm/sdk/platformtools/ae:v	(Ljava/lang/String;Ljava/lang/String;)V
     //   50: aload_2
     //   51: astore_1
     //   52: goto -18 -> 34

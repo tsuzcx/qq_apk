@@ -68,7 +68,7 @@ public class h
   
   public com.tencent.tbs.one.impl.a.a<e<d>> a(Bundle paramBundle, l<e<d>> paraml)
   {
-    AppMethodBeat.i(190653);
+    AppMethodBeat.i(192423);
     String str = this.b;
     com.tencent.tbs.one.impl.a.f.a("[%s] Installing DEPS", new Object[] { str });
     if (this.f != null)
@@ -85,20 +85,20 @@ public class h
       if (!((File)localObject).exists())
       {
         paraml.a(105, "Failed to find DEPS file " + ((File)localObject).getAbsolutePath(), null);
-        AppMethodBeat.o(190653);
+        AppMethodBeat.o(192423);
         return null;
       }
       try
       {
         paramBundle = d.a((File)localObject);
         paraml.a(e.a(e.a.b, paramBundle));
-        AppMethodBeat.o(190653);
+        AppMethodBeat.o(192423);
         return null;
       }
       catch (TBSOneException paramBundle)
       {
         paraml.a(paramBundle.getErrorCode(), paramBundle.getMessage(), paramBundle.getCause());
-        AppMethodBeat.o(190653);
+        AppMethodBeat.o(192423);
         return null;
       }
     }
@@ -106,12 +106,12 @@ public class h
   
   public com.tencent.tbs.one.impl.a.a<e<File>> a(Bundle paramBundle, d.a parama, l<e<File>> paraml)
   {
-    AppMethodBeat.i(190654);
+    AppMethodBeat.i(192424);
     com.tencent.tbs.one.impl.a.f.a("[%s] Installing component %s, version: %d", new Object[] { this.b, parama.a, Integer.valueOf(parama.c) });
     paramBundle = a(parama.a, parama.c);
     com.tencent.tbs.one.impl.a.c.d(paramBundle);
     paraml.a(e.a(e.a.b, paramBundle));
-    AppMethodBeat.o(190654);
+    AppMethodBeat.o(192424);
     return null;
   }
   
@@ -133,9 +133,9 @@ public class h
   
   public void a(Bundle paramBundle, String paramString, TBSOneCallback<File> paramTBSOneCallback)
   {
-    AppMethodBeat.i(190652);
+    AppMethodBeat.i(192422);
     f(paramString).a(paramBundle, paramTBSOneCallback);
-    AppMethodBeat.o(190652);
+    AppMethodBeat.o(192422);
   }
   
   protected void a(e<d> parame)
@@ -148,7 +148,7 @@ public class h
   
   public void a(String paramString, Bundle paramBundle, TBSOneCallback<TBSOneComponent> paramTBSOneCallback)
   {
-    AppMethodBeat.i(190650);
+    AppMethodBeat.i(192420);
     paramString = f(paramString);
     if (paramString.l != null)
     {
@@ -158,7 +158,7 @@ public class h
         paramTBSOneCallback.onProgressChanged(0, 100);
         paramTBSOneCallback.onCompleted(paramString.l);
       }
-      AppMethodBeat.o(190650);
+      AppMethodBeat.o(192420);
       return;
     }
     if (paramTBSOneCallback != null)
@@ -169,11 +169,11 @@ public class h
     if (paramString.k != null)
     {
       paramString.b();
-      AppMethodBeat.o(190650);
+      AppMethodBeat.o(192420);
       return;
     }
     paramString.a(paramBundle);
-    AppMethodBeat.o(190650);
+    AppMethodBeat.o(192420);
   }
   
   public void a(String paramString, Object paramObject)
@@ -195,9 +195,9 @@ public class h
   
   public void b(String paramString, Bundle paramBundle, TBSOneCallback<File> paramTBSOneCallback)
   {
-    AppMethodBeat.i(190651);
+    AppMethodBeat.i(192421);
     f(paramString).a(paramBundle, paramTBSOneCallback);
-    AppMethodBeat.o(190651);
+    AppMethodBeat.o(192421);
   }
   
   public final boolean b()

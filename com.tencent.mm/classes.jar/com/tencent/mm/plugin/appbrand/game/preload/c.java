@@ -6,15 +6,15 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
 import com.tencent.mm.plugin.appbrand.a.d;
 import com.tencent.mm.plugin.appbrand.appstorage.ICommLibReader;
-import com.tencent.mm.plugin.appbrand.appstorage.p;
+import com.tencent.mm.plugin.appbrand.appstorage.q;
 import com.tencent.mm.plugin.appbrand.jsapi.at;
 import com.tencent.mm.plugin.appbrand.jsapi.h;
 import com.tencent.mm.plugin.appbrand.jsapi.j;
 import com.tencent.mm.plugin.appbrand.jsapi.k;
 import com.tencent.mm.plugin.appbrand.jsruntime.i;
 import com.tencent.mm.plugin.appbrand.jsruntime.o;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ar;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.Map;
@@ -23,28 +23,28 @@ import junit.framework.Assert;
 public final class c
   implements h
 {
-  private AppBrandRuntime jzY;
-  public final LinkedHashSet<j> kmR;
+  private AppBrandRuntime jDb;
+  public final LinkedHashSet<j> kqh;
   
   public c(AppBrandRuntime paramAppBrandRuntime)
   {
     AppMethodBeat.i(45278);
-    this.jzY = paramAppBrandRuntime;
-    this.kmR = new LinkedHashSet();
+    this.jDb = paramAppBrandRuntime;
+    this.kqh = new LinkedHashSet();
     AppMethodBeat.o(45278);
   }
   
-  public final i EK()
+  public final i EM()
   {
     return null;
   }
   
-  public final Map<String, com.tencent.mm.plugin.appbrand.jsapi.m> EL()
+  public final Map<String, com.tencent.mm.plugin.appbrand.jsapi.m> EN()
   {
     return null;
   }
   
-  public final p Fg()
+  public final q Fl()
   {
     return null;
   }
@@ -54,7 +54,7 @@ public final class c
     return null;
   }
   
-  public final void M(Runnable paramRunnable)
+  public final void K(Runnable paramRunnable)
   {
     AppMethodBeat.i(45281);
     if (paramRunnable == null)
@@ -62,7 +62,7 @@ public final class c
       AppMethodBeat.o(45281);
       return;
     }
-    aq.f(paramRunnable);
+    ar.f(paramRunnable);
     AppMethodBeat.o(45281);
   }
   
@@ -75,46 +75,46 @@ public final class c
     return false;
   }
   
-  public final com.tencent.mm.plugin.appbrand.a.b aVD()
+  public final com.tencent.mm.plugin.appbrand.a.b aWc()
   {
     AppMethodBeat.i(45279);
-    if (this.jzY == null)
+    if (this.jDb == null)
     {
-      localb = com.tencent.mm.plugin.appbrand.a.b.jKR;
+      localb = com.tencent.mm.plugin.appbrand.a.b.jOd;
       AppMethodBeat.o(45279);
       return localb;
     }
-    com.tencent.mm.plugin.appbrand.a.b localb = this.jzY.jwS.jKT.bbg();
+    com.tencent.mm.plugin.appbrand.a.b localb = this.jDb.jzQ.jOf.bbI();
     AppMethodBeat.o(45279);
     return localb;
   }
   
-  public final com.tencent.mm.plugin.appbrand.widget.dialog.m aVE()
+  public final com.tencent.mm.plugin.appbrand.widget.dialog.m aWd()
   {
     return null;
   }
   
-  public final ICommLibReader aVF()
+  public final ICommLibReader aWe()
   {
     return null;
   }
   
-  public final int aXC()
-  {
-    return 0;
-  }
-  
-  public final boolean aXt()
+  public final boolean aXO()
   {
     return false;
   }
   
-  public final Handler aYg()
+  public final int aXX()
+  {
+    return 0;
+  }
+  
+  public final Handler aYA()
   {
     return null;
   }
   
-  public final i aYh()
+  public final i aYB()
   {
     return null;
   }
@@ -123,7 +123,7 @@ public final class c
   {
     AppMethodBeat.i(45280);
     Object localObject2 = null;
-    Iterator localIterator = this.kmR.iterator();
+    Iterator localIterator = this.kqh.iterator();
     Object localObject1;
     do
     {
@@ -150,7 +150,7 @@ public final class c
     {
       for (;;)
       {
-        ad.e("MicroMsg.WAGamePreloadComponent", "Make sure %s has default constructor", new Object[] { paramClass.getName() });
+        ae.e("MicroMsg.WAGamePreloadComponent", "Make sure %s has default constructor", new Object[] { paramClass.getName() });
         Object localObject3 = localObject1;
         continue;
         boolean bool = false;
@@ -171,7 +171,7 @@ public final class c
   
   public final String getAppId()
   {
-    return this.jzY.mAppId;
+    return this.jDb.mAppId;
   }
   
   public final Context getContext()
@@ -181,7 +181,7 @@ public final class c
   
   public final AppBrandRuntime getRuntime()
   {
-    return this.jzY;
+    return this.jDb;
   }
   
   public final void h(int paramInt, String paramString) {}
@@ -193,23 +193,23 @@ public final class c
   
   public final void j(Runnable paramRunnable, long paramLong)
   {
-    AppMethodBeat.i(188234);
+    AppMethodBeat.i(222360);
     if (paramRunnable == null)
     {
-      AppMethodBeat.o(188234);
+      AppMethodBeat.o(222360);
       return;
     }
     long l = paramLong;
     if (paramLong < 0L) {
       l = 0L;
     }
-    aq.o(paramRunnable, l);
-    AppMethodBeat.o(188234);
+    ar.o(paramRunnable, l);
+    AppMethodBeat.o(222360);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.game.preload.c
  * JD-Core Version:    0.7.0.1
  */

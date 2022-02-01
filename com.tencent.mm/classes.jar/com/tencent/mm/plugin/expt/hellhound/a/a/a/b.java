@@ -6,7 +6,7 @@ import com.tencent.mm.pointers.PInt;
 
 public abstract interface b
 {
-  public abstract String Da(int paramInt);
+  public abstract String Dn(int paramInt);
   
   public abstract void a(View paramView, PInt paramPInt1, PInt paramPInt2, int paramInt);
   
@@ -22,7 +22,7 @@ public abstract interface b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.hellhound.a.a.a.b
  * JD-Core Version:    0.7.0.1
  */

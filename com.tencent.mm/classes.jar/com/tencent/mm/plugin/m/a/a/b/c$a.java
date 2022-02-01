@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.m.a.a.b;
 
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/luggage/natives/flutter/renderview/WxaFlutterRenderView$Companion;", "", "()V", "TAG", "", "luggage-native-view_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/luggage/natives/flutter/renderview/WxaFlutterRenderView$Companion;", "", "()V", "TAG", "", "luggage-native-view_release"})
 public final class c$a {}
 
 

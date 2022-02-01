@@ -37,7 +37,7 @@ public abstract class l
     {
       AppMethodBeat.i(61329);
       p.h(paramt, "functionDescriptor");
-      if (paramt.gis().size() >= this.n)
+      if (paramt.gmU().size() >= this.n)
       {
         AppMethodBeat.o(61329);
         return true;
@@ -61,7 +61,7 @@ public abstract class l
     {
       AppMethodBeat.i(61331);
       p.h(paramt, "functionDescriptor");
-      if (paramt.gis().size() == this.n)
+      if (paramt.gmU().size() == this.n)
       {
         AppMethodBeat.o(61331);
         return true;
@@ -74,12 +74,12 @@ public abstract class l
   public static final class c
     extends l
   {
-    public static final c NFt;
+    public static final c Ocz;
     
     static
     {
       AppMethodBeat.i(61333);
-      NFt = new c();
+      Ocz = new c();
       AppMethodBeat.o(61333);
     }
     
@@ -92,7 +92,7 @@ public abstract class l
     {
       AppMethodBeat.i(61332);
       p.h(paramt, "functionDescriptor");
-      boolean bool = paramt.gis().isEmpty();
+      boolean bool = paramt.gmU().isEmpty();
       AppMethodBeat.o(61332);
       return bool;
     }
@@ -101,12 +101,12 @@ public abstract class l
   public static final class d
     extends l
   {
-    public static final d NFu;
+    public static final d OcA;
     
     static
     {
       AppMethodBeat.i(61335);
-      NFu = new d();
+      OcA = new d();
       AppMethodBeat.o(61335);
     }
     
@@ -119,7 +119,7 @@ public abstract class l
     {
       AppMethodBeat.i(61334);
       p.h(paramt, "functionDescriptor");
-      if (paramt.gis().size() == 1)
+      if (paramt.gmU().size() == 1)
       {
         AppMethodBeat.o(61334);
         return true;
@@ -131,7 +131,7 @@ public abstract class l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.n.l
  * JD-Core Version:    0.7.0.1
  */

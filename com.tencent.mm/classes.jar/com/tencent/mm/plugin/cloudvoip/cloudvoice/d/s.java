@@ -5,8 +5,8 @@ import android.os.HandlerThread;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.cloudvoip.cloudvoice.c.a;
 import com.tencent.mm.plugin.cloudvoip.cloudvoice.c.b;
-import com.tencent.mm.protocal.protobuf.dvt;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.dlw;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.wxmm.v2conference;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -24,37 +24,37 @@ public final class s
   boolean mStarted;
   private HandlerThread mThread;
   Timer mTimer;
-  private j oWh;
-  int oZw;
-  int oZx;
-  public final Map<String, c> oZy;
-  private boolean oZz;
+  private j pcK;
+  int pga;
+  int pgb;
+  public final Map<String, c> pgc;
+  private boolean pgd;
   
   public s(j paramj)
   {
     AppMethodBeat.i(90942);
-    this.oWh = null;
+    this.pcK = null;
     this.mThread = null;
-    this.oZw = 0;
-    this.oZx = 0;
+    this.pga = 0;
+    this.pgb = 0;
     this.mTimer = null;
-    this.frameData = new byte[l.bZY().defaultHeight * l.bZY().defaultWidth * 4];
-    this.oZy = new HashMap();
+    this.frameData = new byte[l.cbn().defaultHeight * l.cbn().defaultWidth * 4];
+    this.pgc = new HashMap();
     this.mStarted = false;
-    this.oZz = true;
-    this.oWh = paramj;
+    this.pgd = true;
+    this.pcK = paramj;
     AppMethodBeat.o(90942);
   }
   
-  private b ZM(String paramString)
+  private b aaD(String paramString)
   {
     AppMethodBeat.i(90945);
-    if (this.oWh == null)
+    if (this.pcK == null)
     {
       AppMethodBeat.o(90945);
       return null;
     }
-    Object localObject = this.oWh.oWO;
+    Object localObject = this.pcK.pdr;
     if (localObject == null)
     {
       AppMethodBeat.o(90945);
@@ -74,82 +74,46 @@ public final class s
     return null;
   }
   
-  final dvt ZL(String paramString)
-  {
-    AppMethodBeat.i(184492);
-    ad.d("MicroMsg.OpenVoice.OpenVoiceVideoMgr", "getVideoSize");
-    c localc;
-    synchronized (this.oZy)
-    {
-      localc = (c)this.oZy.get(paramString);
-      if (localc == null)
-      {
-        AppMethodBeat.o(184492);
-        return null;
-      }
-    }
-    paramString = new dvt();
-    paramString.Gan = localc.getMemberId();
-    if (localc.bZT())
-    {
-      ??? = (i)localc;
-      if (((i)???).getHeight() > ((i)???).getWidth()) {}
-      for (i = ((i)???).getHeight();; i = ((i)???).getWidth())
-      {
-        paramString.HIe = i;
-        AppMethodBeat.o(184492);
-        return paramString;
-      }
-    }
-    ??? = (t)localc;
-    if (((t)???).getHeight() > ((t)???).getWidth()) {}
-    for (int i = ((t)???).getHeight();; i = ((t)???).getWidth())
-    {
-      paramString.HIe = i;
-      break;
-    }
-  }
-  
   public final c a(Context paramContext, JSONObject arg2)
   {
     AppMethodBeat.i(90944);
-    if (p.oXv.oXB != p.d.oZn)
+    if (p.pdY.pee != p.d.pfR)
     {
-      ad.w("MicroMsg.OpenVoice.OpenVoiceVideoMgr", "newView failed, not in room, data:" + ???.toString());
+      ae.w("MicroMsg.OpenVoice.OpenVoiceVideoMgr", "newView failed, not in room, data:" + ???.toString());
       AppMethodBeat.o(90944);
       return null;
     }
     String str = ???.optString("openId", "");
-    Object localObject = ZM(str);
+    Object localObject = aaD(str);
     if (localObject == null)
     {
-      ad.w("MicroMsg.OpenVoice.OpenVoiceVideoMgr", "newView failed, not found member, data:" + ???.toString());
+      ae.w("MicroMsg.OpenVoice.OpenVoiceVideoMgr", "newView failed, not found member, data:" + ???.toString());
       AppMethodBeat.o(90944);
       return null;
     }
-    ad.i("MicroMsg.OpenVoice.OpenVoiceVideoMgr", "new View, mid:" + ((b)localObject).oWb + " data:" + ???.toString());
+    ae.i("MicroMsg.OpenVoice.OpenVoiceVideoMgr", "new View, mid:" + ((b)localObject).pcE + " data:" + ???.toString());
     if (???.optString("type", "camera").equals("camera")) {
-      if (this.oZz) {
+      if (this.pgd) {
         paramContext = new n(paramContext, (b)localObject);
       }
     }
     for (;;)
     {
-      if (paramContext.bZT())
+      if (paramContext.cbi())
       {
-        ??? = p.oXv;
-        ad.i("MicroMsg.OpenVoice.OpenVoiceService", "onCameraStart");
-        ???.af(new p.16(???));
+        ??? = p.pdY;
+        ae.i("MicroMsg.OpenVoice.OpenVoiceService", "onCameraStart");
+        ???.ad(new p.16(???));
       }
-      synchronized (this.oZy)
+      synchronized (this.pgc)
       {
-        localObject = (c)this.oZy.get(str);
+        localObject = (c)this.pgc.get(str);
         if (localObject != null)
         {
           ((c)localObject).uint();
-          this.oZy.remove(str);
+          this.pgc.remove(str);
         }
-        this.oZy.put(str, paramContext);
+        this.pgc.put(str, paramContext);
         AppMethodBeat.o(90944);
         return paramContext;
         paramContext = new i(paramContext, (b)localObject);
@@ -159,10 +123,34 @@ public final class s
     }
   }
   
-  public final boolean caf()
+  final dlw aaC(String paramString)
+  {
+    AppMethodBeat.i(211616);
+    ae.d("MicroMsg.OpenVoice.OpenVoiceVideoMgr", "getVideoSize");
+    synchronized (this.pgc)
+    {
+      paramString = (c)this.pgc.get(paramString);
+      if (paramString == null)
+      {
+        AppMethodBeat.o(211616);
+        return null;
+      }
+    }
+    ??? = new dlw();
+    ((dlw)???).Gsd = paramString.getMemberId();
+    if (paramString.getHeight() > paramString.getWidth()) {}
+    for (int i = paramString.getHeight();; i = paramString.getWidth())
+    {
+      ((dlw)???).HTz = i;
+      AppMethodBeat.o(211616);
+      return ???;
+    }
+  }
+  
+  public final boolean cbu()
   {
     AppMethodBeat.i(90943);
-    ad.e("MicroMsg.OpenVoice.OpenVoiceVideoMgr", "startPlay");
+    ae.e("MicroMsg.OpenVoice.OpenVoiceVideoMgr", "startPlay");
     try
     {
       try
@@ -197,43 +185,43 @@ public final class s
                   if (j < 2)
                   {
                     s.this.frameData[0] = i;
-                    ??? = p.oXv;
-                    j = p.aR(s.this.frameData);
-                    int n = l.bZY().field_remoteImgLength;
-                    int i1 = l.bZY().field_remoteImgHeight;
-                    int i2 = l.bZY().field_remoteImgWidth;
-                    int i3 = l.bZY().field_remoteImgMember;
+                    ??? = p.pdY;
+                    j = p.aQ(s.this.frameData);
+                    int n = l.cbn().field_remoteImgLength;
+                    int i1 = l.cbn().field_remoteImgHeight;
+                    int i2 = l.cbn().field_remoteImgWidth;
+                    int i3 = l.cbn().field_remoteImgMember;
                     ??? = s.this;
-                    int i4 = ((s)???).oZw + 1;
-                    ((s)???).oZw = i4;
+                    int i4 = ((s)???).pga + 1;
+                    ((s)???).pga = i4;
                     if (i4 % 100 == 0) {
-                      ad.i("MicroMsg.OpenVoice.OpenVoiceVideoMgr", "GetVideo, mark:" + (i - 1) + " ret:" + j + ", len:" + s.this.frameData.length + ", rLen:" + n + ", rHeight:" + i1 + ", rWidth:" + i2 + ", rMid:" + i3 + ", drawCnt:" + s.this.oZx);
+                      ae.i("MicroMsg.OpenVoice.OpenVoiceVideoMgr", "GetVideo, mark:" + (i - 1) + " ret:" + j + ", len:" + s.this.frameData.length + ", rLen:" + n + ", rHeight:" + i1 + ", rWidth:" + i2 + ", rMid:" + i3 + ", drawCnt:" + s.this.pgb);
                     }
                     if ((j <= 0) || (n <= 0) || (i1 <= 0) || (i2 <= 0)) {
                       break label518;
                     }
                     a locala = new a();
-                    locala.oVZ = s.this.frameData;
-                    locala.cSb = n;
+                    locala.pcC = s.this.frameData;
+                    locala.cSL = n;
                     locala.width = i2;
                     locala.height = i1;
-                    locala.oWa = i3;
-                    synchronized (s.this.oZy)
+                    locala.pcD = i3;
+                    synchronized (s.this.pgc)
                     {
-                      Object localObject3 = s.this.oZy.entrySet().iterator();
+                      Object localObject3 = s.this.pgc.entrySet().iterator();
                       if (!((Iterator)localObject3).hasNext()) {
                         break label513;
                       }
                       c localc = (c)((Map.Entry)((Iterator)localObject3).next()).getValue();
-                      if ((localc == null) || (localc.bZT()) || (localc.getMemberId() != locala.oWa)) {
+                      if ((localc == null) || (localc.cbi()) || (localc.getMemberId() != locala.pcD)) {
                         continue;
                       }
                       localc.a(locala);
                       localObject3 = s.this;
-                      ((s)localObject3).oZx += 1;
+                      ((s)localObject3).pgb += 1;
                       j = 1;
                       if (j == 0) {
-                        ad.w("MicroMsg.OpenVoice.OpenVoiceVideoMgr", "thread handler, mid:" + locala.oWa + " not found");
+                        ae.w("MicroMsg.OpenVoice.OpenVoiceVideoMgr", "thread handler, mid:" + locala.pcD + " not found");
                       }
                       j = i;
                       m = 1;
@@ -246,7 +234,7 @@ public final class s
               }
               catch (Exception localException)
               {
-                ad.printErrStackTrace("MicroMsg.OpenVoice.OpenVoiceVideoMgr", localException, "timer task crash", new Object[0]);
+                ae.printErrStackTrace("MicroMsg.OpenVoice.OpenVoiceVideoMgr", localException, "timer task crash", new Object[0]);
                 AppMethodBeat.o(90941);
                 return;
               }
@@ -274,7 +262,7 @@ public final class s
     }
     catch (Exception localException)
     {
-      ad.e("MicroMsg.OpenVoice.OpenVoiceVideoMgr", "startPlay error:" + localException.toString());
+      ae.e("MicroMsg.OpenVoice.OpenVoiceVideoMgr", "startPlay error:" + localException.toString());
       AppMethodBeat.o(90943);
     }
   }

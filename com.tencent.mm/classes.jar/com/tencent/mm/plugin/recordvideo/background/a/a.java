@@ -7,63 +7,63 @@ import d.l;
 import java.util.Arrays;
 import java.util.List;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/recordvideo/background/data/VideoMixData;", "", "captureInfo", "Lcom/tencent/mm/plugin/recordvideo/config/CaptureInfo;", "editorItems", "", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/draw/BaseEditorItem;", "drawingRect", "", "validRect", "mixVideoPath", "", "mixThumbPath", "retryTime", "", "useSoftEncode", "", "enableHevc", "thumbShortSide", "blurBgPath", "(Lcom/tencent/mm/plugin/recordvideo/config/CaptureInfo;Ljava/util/List;[F[FLjava/lang/String;Ljava/lang/String;IZZILjava/lang/String;)V", "getBlurBgPath", "()Ljava/lang/String;", "setBlurBgPath", "(Ljava/lang/String;)V", "getCaptureInfo", "()Lcom/tencent/mm/plugin/recordvideo/config/CaptureInfo;", "setCaptureInfo", "(Lcom/tencent/mm/plugin/recordvideo/config/CaptureInfo;)V", "getDrawingRect", "()[F", "setDrawingRect", "([F)V", "getEditorItems", "()Ljava/util/List;", "setEditorItems", "(Ljava/util/List;)V", "getEnableHevc", "()Z", "setEnableHevc", "(Z)V", "getMixThumbPath", "setMixThumbPath", "getMixVideoPath", "setMixVideoPath", "getRetryTime", "()I", "setRetryTime", "(I)V", "getThumbShortSide", "setThumbShortSide", "getUseSoftEncode", "setUseSoftEncode", "getValidRect", "setValidRect", "component1", "component10", "component11", "component2", "component3", "component4", "component5", "component6", "component7", "component8", "component9", "copy", "equals", "other", "getEndTimeMs", "", "getStartTimeMs", "hashCode", "toString", "plugin-recordvideo_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/recordvideo/background/data/VideoMixData;", "", "captureInfo", "Lcom/tencent/mm/plugin/recordvideo/config/CaptureInfo;", "editorItems", "", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/draw/BaseEditorItem;", "drawingRect", "", "validRect", "mixVideoPath", "", "mixThumbPath", "retryTime", "", "useSoftEncode", "", "enableHevc", "thumbShortSide", "blurBgPath", "(Lcom/tencent/mm/plugin/recordvideo/config/CaptureInfo;Ljava/util/List;[F[FLjava/lang/String;Ljava/lang/String;IZZILjava/lang/String;)V", "getBlurBgPath", "()Ljava/lang/String;", "setBlurBgPath", "(Ljava/lang/String;)V", "getCaptureInfo", "()Lcom/tencent/mm/plugin/recordvideo/config/CaptureInfo;", "setCaptureInfo", "(Lcom/tencent/mm/plugin/recordvideo/config/CaptureInfo;)V", "getDrawingRect", "()[F", "setDrawingRect", "([F)V", "getEditorItems", "()Ljava/util/List;", "setEditorItems", "(Ljava/util/List;)V", "getEnableHevc", "()Z", "setEnableHevc", "(Z)V", "getMixThumbPath", "setMixThumbPath", "getMixVideoPath", "setMixVideoPath", "getRetryTime", "()I", "setRetryTime", "(I)V", "getThumbShortSide", "setThumbShortSide", "getUseSoftEncode", "setUseSoftEncode", "getValidRect", "setValidRect", "component1", "component10", "component11", "component2", "component3", "component4", "component5", "component6", "component7", "component8", "component9", "copy", "equals", "other", "getEndTimeMs", "", "getStartTimeMs", "hashCode", "toString", "plugin-recordvideo_release"})
 public final class a
 {
-  private int hfT;
-  public boolean hms;
-  public boolean hmt;
-  public List<com.tencent.mm.plugin.recordvideo.ui.editor.item.a.a> pRU;
-  public c xuH;
-  public float[] xuU;
-  public float[] xuV;
-  public String xuW;
-  public String xuX;
-  public int xuY;
-  public String xuZ;
+  private int hiH;
+  public boolean hpg;
+  public boolean hph;
+  public List<com.tencent.mm.plugin.recordvideo.ui.editor.item.a.a> pYz;
+  public c xKE;
+  public float[] xKR;
+  public float[] xKS;
+  public String xKT;
+  public String xKU;
+  public int xKV;
+  public String xKW;
   
   private a(c paramc, List<com.tencent.mm.plugin.recordvideo.ui.editor.item.a.a> paramList, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2, String paramString1, String paramString2, int paramInt1, boolean paramBoolean1, boolean paramBoolean2, int paramInt2, String paramString3)
   {
-    AppMethodBeat.i(200284);
-    this.xuH = paramc;
-    this.pRU = paramList;
-    this.xuU = paramArrayOfFloat1;
-    this.xuV = paramArrayOfFloat2;
-    this.xuW = paramString1;
-    this.xuX = paramString2;
-    this.hfT = paramInt1;
-    this.hms = paramBoolean1;
-    this.hmt = paramBoolean2;
-    this.xuY = paramInt2;
-    this.xuZ = paramString3;
-    AppMethodBeat.o(200284);
+    AppMethodBeat.i(206545);
+    this.xKE = paramc;
+    this.pYz = paramList;
+    this.xKR = paramArrayOfFloat1;
+    this.xKS = paramArrayOfFloat2;
+    this.xKT = paramString1;
+    this.xKU = paramString2;
+    this.hiH = paramInt1;
+    this.hpg = paramBoolean1;
+    this.hph = paramBoolean2;
+    this.xKV = paramInt2;
+    this.xKW = paramString3;
+    AppMethodBeat.o(206545);
   }
   
-  public final void avG(String paramString)
+  public final void awV(String paramString)
   {
-    AppMethodBeat.i(200283);
+    AppMethodBeat.i(206544);
     p.h(paramString, "<set-?>");
-    this.xuW = paramString;
-    AppMethodBeat.o(200283);
+    this.xKT = paramString;
+    AppMethodBeat.o(206544);
   }
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(200287);
+    AppMethodBeat.i(206548);
     if (this != paramObject)
     {
       if ((paramObject instanceof a))
       {
         paramObject = (a)paramObject;
-        if ((!p.i(this.xuH, paramObject.xuH)) || (!p.i(this.pRU, paramObject.pRU)) || (!p.i(this.xuU, paramObject.xuU)) || (!p.i(this.xuV, paramObject.xuV)) || (!p.i(this.xuW, paramObject.xuW)) || (!p.i(this.xuX, paramObject.xuX)) || (this.hfT != paramObject.hfT) || (this.hms != paramObject.hms) || (this.hmt != paramObject.hmt) || (this.xuY != paramObject.xuY) || (!p.i(this.xuZ, paramObject.xuZ))) {}
+        if ((!p.i(this.xKE, paramObject.xKE)) || (!p.i(this.pYz, paramObject.pYz)) || (!p.i(this.xKR, paramObject.xKR)) || (!p.i(this.xKS, paramObject.xKS)) || (!p.i(this.xKT, paramObject.xKT)) || (!p.i(this.xKU, paramObject.xKU)) || (this.hiH != paramObject.hiH) || (this.hpg != paramObject.hpg) || (this.hph != paramObject.hph) || (this.xKV != paramObject.xKV) || (!p.i(this.xKW, paramObject.xKW))) {}
       }
     }
     else
     {
-      AppMethodBeat.o(200287);
+      AppMethodBeat.o(206548);
       return true;
     }
-    AppMethodBeat.o(200287);
+    AppMethodBeat.o(206548);
     return false;
   }
   
@@ -74,18 +74,18 @@ public final class a
   
   public final String toString()
   {
-    AppMethodBeat.i(200282);
-    Object localObject = new StringBuilder("VideoMixData(captureInfo=").append(this.xuH).append(", editorItems=").append(this.pRU).append(", drawingRect=");
-    String str = Arrays.toString(this.xuU);
+    AppMethodBeat.i(206543);
+    Object localObject = new StringBuilder("VideoMixData(captureInfo=").append(this.xKE).append(", editorItems=").append(this.pYz).append(", drawingRect=");
+    String str = Arrays.toString(this.xKR);
     p.g(str, "java.util.Arrays.toString(this)");
-    localObject = str + ", mixVideoPath='" + this.xuW + "', mixThumbPath='" + this.xuX + "', retryTime=" + this.hfT + ", useSoftEncode=" + this.hms + ", enableHevc=" + this.hmt + ", thumbShortSide=" + this.xuY + ", blurBgPath='" + this.xuZ + "')";
-    AppMethodBeat.o(200282);
+    localObject = str + ", mixVideoPath='" + this.xKT + "', mixThumbPath='" + this.xKU + "', retryTime=" + this.hiH + ", useSoftEncode=" + this.hpg + ", enableHevc=" + this.hph + ", thumbShortSide=" + this.xKV + ", blurBgPath='" + this.xKW + "')";
+    AppMethodBeat.o(206543);
     return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.background.a.a
  * JD-Core Version:    0.7.0.1
  */

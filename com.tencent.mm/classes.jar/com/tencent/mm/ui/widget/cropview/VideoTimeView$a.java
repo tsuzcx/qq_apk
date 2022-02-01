@@ -2,7 +2,7 @@ package com.tencent.mm.ui.widget.cropview;
 
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/ui/widget/cropview/VideoTimeView$Companion;", "", "()V", "TAG", "", "libmmui_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/ui/widget/cropview/VideoTimeView$Companion;", "", "()V", "TAG", "", "libmmui_release"})
 public final class VideoTimeView$a {}
 
 

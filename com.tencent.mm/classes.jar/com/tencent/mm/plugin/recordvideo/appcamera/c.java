@@ -5,11 +5,11 @@ import com.tencent.mm.plugin.mmsight.api.MMSightRecordView.b;
 import com.tencent.mm.plugin.mmsight.api.MMSightRecordView.e;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/recordvideo/appcamera/AppBrandRecordVieDelegateFactory;", "Lcom/tencent/mm/plugin/mmsight/api/MMSightRecordView$ImplFactory;", "()V", "createImpl", "Lcom/tencent/mm/plugin/mmsight/api/MMSightRecordView$MMSightRecordViewDelegate;", "plugin-recordvideo_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/recordvideo/appcamera/AppBrandRecordVieDelegateFactory;", "Lcom/tencent/mm/plugin/mmsight/api/MMSightRecordView$ImplFactory;", "()V", "createImpl", "Lcom/tencent/mm/plugin/mmsight/api/MMSightRecordView$MMSightRecordViewDelegate;", "plugin-recordvideo_release"})
 public final class c
   implements MMSightRecordView.b
 {
-  public final MMSightRecordView.e aVl()
+  public final MMSightRecordView.e aVK()
   {
     AppMethodBeat.i(75112);
     MMSightRecordView.e locale = (MMSightRecordView.e)new d();

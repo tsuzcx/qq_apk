@@ -2,23 +2,23 @@ package com.tencent.mm.compatible.deviceinfo;
 
 public final class ad
 {
-  public boolean dKx = false;
-  public int gcB = 0;
-  boolean gcC = false;
+  public boolean dLM = false;
+  public int geJ = 0;
+  boolean geK = false;
   
-  public final void aaX()
+  public final void abg()
   {
-    this.gcC = true;
+    this.geK = true;
   }
   
   public final void cJ(boolean paramBoolean)
   {
-    this.dKx = paramBoolean;
+    this.dLM = paramBoolean;
   }
   
-  public final void lw(int paramInt)
+  public final void ly(int paramInt)
   {
-    this.gcB = paramInt;
+    this.geJ = paramInt;
   }
 }
 

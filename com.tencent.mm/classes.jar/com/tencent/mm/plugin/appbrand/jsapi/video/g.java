@@ -6,7 +6,7 @@ import com.tencent.luggage.a.b;
 public abstract interface g
   extends b
 {
-  public abstract g.a bne();
+  public abstract g.a bnO();
   
   public abstract long f(String paramString, long paramLong1, long paramLong2);
   

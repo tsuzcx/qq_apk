@@ -20,7 +20,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import com.jg.JgClassChecked;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.ui.base.i;
 import com.tencent.xweb.WebView;
 import com.tencent.xweb.ac;
@@ -30,22 +30,22 @@ import com.tencent.xweb.z;
 public final class g
   extends i
 {
-  static final float[] KAj;
-  static final float[] KAk;
-  static final FrameLayout.LayoutParams KAl;
-  private WebView DFI;
-  private c.a KAm;
-  private ProgressDialog KAn;
-  private ImageView KAo;
-  private FrameLayout KAp;
+  static final float[] KWD;
+  static final float[] KWE;
+  static final FrameLayout.LayoutParams KWF;
+  private WebView DXF;
+  private c.a KWG;
+  private ProgressDialog KWH;
+  private ImageView KWI;
+  private FrameLayout KWJ;
   private String mUrl;
   
   static
   {
     AppMethodBeat.i(152851);
-    KAj = new float[] { 20.0F, 60.0F };
-    KAk = new float[] { 40.0F, 60.0F };
-    KAl = new FrameLayout.LayoutParams(-1, -1);
+    KWD = new float[] { 20.0F, 60.0F };
+    KWE = new float[] { 40.0F, 60.0F };
+    KWF = new FrameLayout.LayoutParams(-1, -1);
     AppMethodBeat.o(152851);
   }
   
@@ -53,27 +53,27 @@ public final class g
   {
     super(paramContext, 16973840);
     this.mUrl = paramString;
-    this.KAm = parama;
+    this.KWG = parama;
   }
   
   protected final void onCreate(Bundle paramBundle)
   {
     AppMethodBeat.i(152849);
     super.onCreate(paramBundle);
-    this.KAn = new ProgressDialog(getContext());
-    this.KAn.requestWindowFeature(1);
-    this.KAn.setMessage(getContext().getString(2131758799));
+    this.KWH = new ProgressDialog(getContext());
+    this.KWH.requestWindowFeature(1);
+    this.KWH.setMessage(getContext().getString(2131758799));
     requestWindowFeature(1);
-    this.KAp = new FrameLayout(getContext());
-    this.KAo = new ImageView(getContext());
-    this.KAo.setOnClickListener(new View.OnClickListener()
+    this.KWJ = new FrameLayout(getContext());
+    this.KWI = new ImageView(getContext());
+    this.KWI.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(152843);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
         localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/facebook/sdk/FbDialog$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/facebook/sdk/FbDialog$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
         g.a(g.this).onCancel();
         g.this.dismiss();
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/facebook/sdk/FbDialog$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
@@ -81,23 +81,23 @@ public final class g
       }
     });
     paramBundle = getContext().getResources().getDrawable(2131231769);
-    this.KAo.setImageDrawable(paramBundle);
-    this.KAo.setVisibility(4);
-    int i = this.KAo.getDrawable().getIntrinsicWidth() / 2;
+    this.KWI.setImageDrawable(paramBundle);
+    this.KWI.setVisibility(4);
+    int i = this.KWI.getDrawable().getIntrinsicWidth() / 2;
     paramBundle = new LinearLayout(getContext());
-    this.DFI = new WebView(getContext());
-    this.DFI.setVerticalScrollBarEnabled(false);
-    this.DFI.setHorizontalScrollBarEnabled(false);
-    this.DFI.setWebViewClient(new a((byte)0));
-    this.DFI.getSettings().setJavaScriptEnabled(true);
-    this.DFI.loadUrl(this.mUrl);
-    this.DFI.setLayoutParams(KAl);
-    this.DFI.setVisibility(4);
+    this.DXF = new WebView(getContext());
+    this.DXF.setVerticalScrollBarEnabled(false);
+    this.DXF.setHorizontalScrollBarEnabled(false);
+    this.DXF.setWebViewClient(new a((byte)0));
+    this.DXF.getSettings().setJavaScriptEnabled(true);
+    this.DXF.loadUrl(this.mUrl);
+    this.DXF.setLayoutParams(KWF);
+    this.DXF.setVisibility(4);
     paramBundle.setPadding(i, i, i, i);
-    paramBundle.addView(this.DFI);
-    this.KAp.addView(paramBundle);
-    this.KAp.addView(this.KAo, new ViewGroup.LayoutParams(-2, -2));
-    addContentView(this.KAp, new ViewGroup.LayoutParams(-1, -1));
+    paramBundle.addView(this.DXF);
+    this.KWJ.addView(paramBundle);
+    this.KWJ.addView(this.KWI, new ViewGroup.LayoutParams(-2, -2));
+    addContentView(this.KWJ, new ViewGroup.LayoutParams(-1, -1));
     AppMethodBeat.o(152849);
   }
   
@@ -106,7 +106,7 @@ public final class g
     AppMethodBeat.i(152850);
     if (paramInt == 4)
     {
-      this.KAm.onCancel();
+      this.KWG.onCancel();
       dismiss();
       AppMethodBeat.o(152850);
       return true;
@@ -119,7 +119,7 @@ public final class g
   final class a
     extends ac
   {
-    boolean KAr = true;
+    boolean KWL = true;
     
     private a() {}
     
@@ -127,7 +127,7 @@ public final class g
     {
       AppMethodBeat.i(152846);
       super.a(paramWebView, paramInt, paramString1, paramString2);
-      this.KAr = false;
+      this.KWL = false;
       g.a(g.this).a(new b(paramString1, paramInt, paramString2));
       try
       {
@@ -138,7 +138,7 @@ public final class g
       }
       catch (Exception paramWebView)
       {
-        ad.printErrStackTrace("MicroMsg.FbDialog", paramWebView, "", new Object[0]);
+        ae.printErrStackTrace("MicroMsg.FbDialog", paramWebView, "", new Object[0]);
         AppMethodBeat.o(152846);
       }
     }
@@ -146,17 +146,17 @@ public final class g
     public final boolean a(WebView paramWebView, String paramString)
     {
       AppMethodBeat.i(152845);
-      ad.d("Facebook-WebView", "Redirect URL: ".concat(String.valueOf(paramString)));
+      ae.d("Facebook-WebView", "Redirect URL: ".concat(String.valueOf(paramString)));
       if (paramString.startsWith("fbconnect://success"))
       {
-        Bundle localBundle = f.aXd(paramString);
+        Bundle localBundle = f.aYE(paramString);
         paramString = localBundle.getString("error");
         paramWebView = paramString;
         if (paramString == null) {
           paramWebView = localBundle.getString("error_type");
         }
         if (paramWebView == null) {
-          g.a(g.this).x(localBundle);
+          g.a(g.this).y(localBundle);
         }
         for (;;)
         {
@@ -183,7 +183,7 @@ public final class g
         {
           for (;;)
           {
-            ad.printErrStackTrace("MicroMsg.FbDialog", paramWebView, "", new Object[0]);
+            ae.printErrStackTrace("MicroMsg.FbDialog", paramWebView, "", new Object[0]);
           }
         }
       }
@@ -195,8 +195,8 @@ public final class g
       paramWebView = g.this.getContext();
       paramString = new Intent("android.intent.action.VIEW", Uri.parse(paramString));
       paramString = new com.tencent.mm.hellhoundlib.b.a().bc(paramString);
-      com.tencent.mm.hellhoundlib.a.a.a(paramWebView, paramString.ahp(), "com/tencent/mm/ui/facebook/sdk/FbDialog$FbWebViewClient", "shouldOverrideUrlLoading", "(Lcom/tencent/xweb/WebView;Ljava/lang/String;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramWebView.startActivity((Intent)paramString.mq(0));
+      com.tencent.mm.hellhoundlib.a.a.a(paramWebView, paramString.ahE(), "com/tencent/mm/ui/facebook/sdk/FbDialog$FbWebViewClient", "shouldOverrideUrlLoading", "(Lcom/tencent/xweb/WebView;Ljava/lang/String;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramWebView.startActivity((Intent)paramString.mt(0));
       com.tencent.mm.hellhoundlib.a.a.a(paramWebView, "com/tencent/mm/ui/facebook/sdk/FbDialog$FbWebViewClient", "shouldOverrideUrlLoading", "(Lcom/tencent/xweb/WebView;Ljava/lang/String;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       AppMethodBeat.o(152845);
       return true;
@@ -206,7 +206,7 @@ public final class g
     {
       AppMethodBeat.i(152848);
       super.b(paramWebView, paramString);
-      this.KAr = false;
+      this.KWL = false;
       try
       {
         g.b(g.this).dismiss();
@@ -220,7 +220,7 @@ public final class g
       {
         for (;;)
         {
-          ad.printErrStackTrace("MicroMsg.FbDialog", paramWebView, "", new Object[0]);
+          ae.printErrStackTrace("MicroMsg.FbDialog", paramWebView, "", new Object[0]);
         }
       }
     }
@@ -228,7 +228,7 @@ public final class g
     public final void b(WebView paramWebView, String paramString, Bitmap paramBitmap)
     {
       AppMethodBeat.i(152847);
-      ad.d("Facebook-WebView", "Webview loading URL: ".concat(String.valueOf(paramString)));
+      ae.d("Facebook-WebView", "Webview loading URL: ".concat(String.valueOf(paramString)));
       super.b(paramWebView, paramString, paramBitmap);
       try
       {
@@ -238,7 +238,7 @@ public final class g
           public final void onDismiss(DialogInterface paramAnonymousDialogInterface)
           {
             AppMethodBeat.i(152844);
-            if ((g.a.this.KAr) && (g.this != null))
+            if ((g.a.this.KWL) && (g.this != null))
             {
               g.a(g.this).onCancel();
               g.this.dismiss();
@@ -251,7 +251,7 @@ public final class g
       }
       catch (Exception paramWebView)
       {
-        ad.printErrStackTrace("MicroMsg.FbDialog", paramWebView, "", new Object[0]);
+        ae.printErrStackTrace("MicroMsg.FbDialog", paramWebView, "", new Object[0]);
         AppMethodBeat.o(152847);
       }
     }

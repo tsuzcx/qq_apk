@@ -49,7 +49,7 @@ final class g
   
   g(com.bumptech.glide.c paramc, a parama, int paramInt1, int paramInt2, m<Bitmap> paramm, Bitmap paramBitmap)
   {
-    this(paramc.aCk, com.bumptech.glide.c.ae(paramc.aCn.getBaseContext()), parama, com.bumptech.glide.c.ae(paramc.aCn.getBaseContext()).nO().a(com.bumptech.glide.f.e.a(com.bumptech.glide.c.b.i.aHi).pV().pW().aX(paramInt1, paramInt2)), paramm, paramBitmap);
+    this(paramc.aCk, com.bumptech.glide.c.af(paramc.aCn.getBaseContext()), parama, com.bumptech.glide.c.af(paramc.aCn.getBaseContext()).nO().a(com.bumptech.glide.f.e.a(com.bumptech.glide.c.b.i.aHi).pV().pW().aX(paramInt1, paramInt2)), paramm, paramBitmap);
     AppMethodBeat.i(77513);
     AppMethodBeat.o(77513);
   }

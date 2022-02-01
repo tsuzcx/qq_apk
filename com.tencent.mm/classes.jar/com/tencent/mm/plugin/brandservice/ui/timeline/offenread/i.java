@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.brandservice.ui.timeline.offenread;
 
 public abstract interface i
 {
-  public abstract void bOO();
+  public abstract void bPM();
   
   public abstract void setOftenReadTitlePaddingLeft(float paramFloat);
   

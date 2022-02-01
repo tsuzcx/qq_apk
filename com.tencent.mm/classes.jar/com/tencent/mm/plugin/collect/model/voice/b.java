@@ -5,45 +5,45 @@ import android.os.Bundle;
 import android.os.Message;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.expansions.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.vfs.i;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.vfs.o;
 
 public final class b
 {
   float MU;
   @SuppressLint({"HandlerLeak"})
-  ap mHandler;
+  aq mHandler;
   private boolean mIsInit;
   String mText;
   float mVolume;
-  boolean pbA;
-  int pbB;
-  byte[] pbC;
-  c pbw;
-  private a pbx;
-  private Thread pby;
-  SynthesizerNative pbz;
+  c pia;
+  private a pib;
+  private Thread pic;
+  SynthesizerNative pie;
+  boolean pif;
+  int pig;
+  byte[] pih;
   
   public b()
   {
     AppMethodBeat.i(63887);
-    this.pbx = new a((byte)0);
-    this.pby = null;
-    this.pbz = new SynthesizerNative();
+    this.pib = new a((byte)0);
+    this.pic = null;
+    this.pie = new SynthesizerNative();
     this.mIsInit = false;
-    this.pbA = false;
-    this.pbB = 256000;
-    this.pbC = new byte[this.pbB];
+    this.pif = false;
+    this.pig = 256000;
+    this.pih = new byte[this.pig];
     this.mVolume = 1.0F;
     this.MU = 1.0F;
-    this.mHandler = new ap("InnerSynthesizer")
+    this.mHandler = new aq("InnerSynthesizer")
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
         AppMethodBeat.i(63885);
-        if (b.this.pbw != null) {
+        if (b.this.pia != null) {
           switch (paramAnonymousMessage.what)
           {
           }
@@ -53,10 +53,10 @@ public final class b
           AppMethodBeat.o(63885);
           return;
           paramAnonymousMessage = paramAnonymousMessage.getData().getByteArray("data");
-          b.this.pbw.o(0, paramAnonymousMessage);
+          b.this.pia.o(0, paramAnonymousMessage);
           AppMethodBeat.o(63885);
           return;
-          b.this.pbw.o(-203, null);
+          b.this.pia.o(-203, null);
         }
       }
     };
@@ -66,11 +66,11 @@ public final class b
   public final void destroy()
   {
     AppMethodBeat.i(63890);
-    this.pbA = true;
-    if (this.pby != null) {}
+    this.pif = true;
+    if (this.pic != null) {}
     try
     {
-      this.pby.join();
+      this.pic.join();
     }
     catch (InterruptedException localInterruptedException)
     {
@@ -78,25 +78,25 @@ public final class b
       {
         for (;;)
         {
-          this.pbz.release();
+          this.pie.release();
           this.mIsInit = false;
           AppMethodBeat.o(63890);
           return;
           localInterruptedException = localInterruptedException;
-          ad.i("MicroMsg.OfflineVoice.InnerSynthesizer", "stop() Exception:%s %s", new Object[] { localInterruptedException.getClass().getSimpleName(), localInterruptedException.getMessage() });
+          ae.i("MicroMsg.OfflineVoice.InnerSynthesizer", "stop() Exception:%s %s", new Object[] { localInterruptedException.getClass().getSimpleName(), localInterruptedException.getMessage() });
         }
       }
       catch (Exception localException)
       {
         for (;;)
         {
-          ad.i("MicroMsg.OfflineVoice.InnerSynthesizer", "destroy() Exception:%s %s", new Object[] { localException.getClass().getSimpleName(), localException.getMessage() });
+          ae.i("MicroMsg.OfflineVoice.InnerSynthesizer", "destroy() Exception:%s %s", new Object[] { localException.getClass().getSimpleName(), localException.getMessage() });
         }
       }
     }
   }
   
-  public final int fj(String paramString1, String paramString2)
+  public final int fn(String paramString1, String paramString2)
   {
     AppMethodBeat.i(63888);
     if (this.mIsInit)
@@ -105,23 +105,23 @@ public final class b
       return 0;
     }
     paramString1 = paramString1 + paramString2 + ".pos";
-    ad.d("MicroMsg.OfflineVoice.InnerSynthesizer", "resFilePath:%s soFilePath:%s", new Object[] { paramString1, null });
-    if (!i.fv(paramString1))
+    ae.d("MicroMsg.OfflineVoice.InnerSynthesizer", "resFilePath:%s soFilePath:%s", new Object[] { paramString1, null });
+    if (!o.fB(paramString1))
     {
-      ad.i("MicroMsg.OfflineVoice.InnerSynthesizer", "init failed:ErrorCode.TTS_RESOURCE_ERROR ");
+      ae.i("MicroMsg.OfflineVoice.InnerSynthesizer", "init failed:ErrorCode.TTS_RESOURCE_ERROR ");
       AppMethodBeat.o(63888);
       return -101;
     }
-    a.cmP();
+    a.cof();
     for (;;)
     {
       try
       {
-        if (!bt.isNullOrNil(null))
+        if (!bu.isNullOrNil(null))
         {
-          if (!i.fv(null))
+          if (!o.fB(null))
           {
-            ad.i("MicroMsg.OfflineVoice.InnerSynthesizer", "init failed: file not exist - ErrorCode.TTS_SO_ERROR ");
+            ae.i("MicroMsg.OfflineVoice.InnerSynthesizer", "init failed: file not exist - ErrorCode.TTS_SO_ERROR ");
             AppMethodBeat.o(63888);
             return -103;
           }
@@ -131,15 +131,15 @@ public final class b
       catch (Throwable paramString1)
       {
         int i;
-        ad.i("MicroMsg.OfflineVoice.InnerSynthesizer", "init() Throwable:%s %s", new Object[] { paramString1.getClass().getSimpleName(), paramString1.getMessage() });
+        ae.i("MicroMsg.OfflineVoice.InnerSynthesizer", "init() Throwable:%s %s", new Object[] { paramString1.getClass().getSimpleName(), paramString1.getMessage() });
         AppMethodBeat.o(63888);
         return -207;
       }
       try
       {
-        bt.isNullOrNil(paramString2);
-        i = this.pbz.init(paramString1.getBytes());
-        ad.i("MicroMsg.OfflineVoice.InnerSynthesizer", "init ret：%s", new Object[] { Integer.valueOf(i) });
+        bu.isNullOrNil(paramString2);
+        i = this.pie.init(paramString1.getBytes());
+        ae.i("MicroMsg.OfflineVoice.InnerSynthesizer", "init ret：%s", new Object[] { Integer.valueOf(i) });
         if (i >= 0) {
           break label231;
         }
@@ -148,11 +148,11 @@ public final class b
       }
       catch (Exception paramString1)
       {
-        ad.i("MicroMsg.OfflineVoice.InnerSynthesizer", "init failed:ErrorCode.TTS_INIT_ERROR ");
+        ae.i("MicroMsg.OfflineVoice.InnerSynthesizer", "init failed:ErrorCode.TTS_INIT_ERROR ");
         AppMethodBeat.o(63888);
         return -201;
       }
-      a.ada("readMoney");
+      a.adR("readMoney");
     }
     label231:
     this.mIsInit = true;
@@ -165,26 +165,26 @@ public final class b
     AppMethodBeat.i(63889);
     if (!this.mIsInit)
     {
-      ad.i("MicroMsg.OfflineVoice.InnerSynthesizer", "start failed:ErrorCode.TTS_START_ERROR ");
+      ae.i("MicroMsg.OfflineVoice.InnerSynthesizer", "start failed:ErrorCode.TTS_START_ERROR ");
       AppMethodBeat.o(63889);
       return -202;
     }
-    if ((this.pby != null) && (this.pby.isAlive()))
+    if ((this.pic != null) && (this.pic.isAlive()))
     {
-      ad.i("MicroMsg.OfflineVoice.InnerSynthesizer", "start failed:ErrorCode.TTS_START_ERROR ");
+      ae.i("MicroMsg.OfflineVoice.InnerSynthesizer", "start failed:ErrorCode.TTS_START_ERROR ");
       AppMethodBeat.o(63889);
       return -202;
     }
     if ((paramString == null) || (paramString.length() > 1024))
     {
-      ad.i("MicroMsg.OfflineVoice.InnerSynthesizer", "start failed:TTS_TEXT_ERROR");
+      ae.i("MicroMsg.OfflineVoice.InnerSynthesizer", "start failed:TTS_TEXT_ERROR");
       AppMethodBeat.o(63889);
       return -102;
     }
     this.mText = paramString;
-    this.pbA = false;
-    this.pby = new Thread(this.pbx);
-    this.pby.start();
+    this.pif = false;
+    this.pic = new Thread(this.pib);
+    this.pic.start();
     AppMethodBeat.o(63889);
     return 0;
   }
@@ -200,32 +200,32 @@ public final class b
       try
       {
         b.this.mText = b.this.mText.replaceAll("[^0-9a-zA-Z一-龥.?!,;:。？！，、；：@%&/]+", "");
-        ad.d("MicroMsg.OfflineVoice.InnerSynthesizer", "mText = %s  mVolume = %s mSpeed = %s", new Object[] { b.this.mText, Float.valueOf(b.this.mVolume), Float.valueOf(b.this.MU) });
-        int i = b.this.pbz.readmoney(b.this.mText.getBytes("UTF-8"), b.this.pbC, b.this.pbB, b.this.mVolume, b.this.MU);
+        ae.d("MicroMsg.OfflineVoice.InnerSynthesizer", "mText = %s  mVolume = %s mSpeed = %s", new Object[] { b.this.mText, Float.valueOf(b.this.mVolume), Float.valueOf(b.this.MU) });
+        int i = b.this.pie.readmoney(b.this.mText.getBytes("UTF-8"), b.this.pih, b.this.pig, b.this.mVolume, b.this.MU);
         if (i != -1)
         {
           byte[] arrayOfByte = new byte[i];
-          System.arraycopy(b.this.pbC, 0, arrayOfByte, 0, i);
-          if (!b.this.pbA)
+          System.arraycopy(b.this.pih, 0, arrayOfByte, 0, i);
+          if (!b.this.pif)
           {
             Message localMessage = b.this.mHandler.obtainMessage(0);
             Bundle localBundle = new Bundle();
             localBundle.putByteArray("data", arrayOfByte);
             localMessage.setData(localBundle);
             b.this.mHandler.sendMessage(localMessage);
-            ad.i("MicroMsg.OfflineVoice.InnerSynthesizer", "Synthesizer run success");
+            ae.i("MicroMsg.OfflineVoice.InnerSynthesizer", "Synthesizer run success");
           }
           AppMethodBeat.o(63886);
           return;
         }
-        ad.i("MicroMsg.OfflineVoice.InnerSynthesizer", "Synthesizer run fail");
+        ae.i("MicroMsg.OfflineVoice.InnerSynthesizer", "Synthesizer run fail");
         b.this.mHandler.sendMessage(b.this.mHandler.obtainMessage(-1));
         AppMethodBeat.o(63886);
         return;
       }
       catch (Exception localException)
       {
-        ad.i("MicroMsg.OfflineVoice.InnerSynthesizer", "SynthesizerRunnable Exception:%s %s", new Object[] { localException.getClass().getSimpleName(), localException.getMessage() });
+        ae.i("MicroMsg.OfflineVoice.InnerSynthesizer", "SynthesizerRunnable Exception:%s %s", new Object[] { localException.getClass().getSimpleName(), localException.getMessage() });
         b.this.mHandler.sendMessage(b.this.mHandler.obtainMessage(-1));
         AppMethodBeat.o(63886);
       }

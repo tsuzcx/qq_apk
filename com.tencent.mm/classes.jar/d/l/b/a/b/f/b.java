@@ -4,36 +4,36 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class b
 {
-  public static final b Nqf;
-  public final c Nqg;
-  private transient b Nqh;
+  public static final b NNl;
+  public final c NNm;
+  private transient b NNn;
   
   static
   {
     AppMethodBeat.i(59295);
-    Nqf = new b("");
+    NNl = new b("");
     AppMethodBeat.o(59295);
   }
   
   public b(c paramc)
   {
     AppMethodBeat.i(59281);
-    this.Nqg = paramc;
+    this.NNm = paramc;
     AppMethodBeat.o(59281);
   }
   
   private b(c paramc, b paramb)
   {
     AppMethodBeat.i(59282);
-    this.Nqg = paramc;
-    this.Nqh = paramb;
+    this.NNm = paramc;
+    this.NNn = paramb;
     AppMethodBeat.o(59282);
   }
   
   public b(String paramString)
   {
     AppMethodBeat.i(59280);
-    this.Nqg = new c(paramString, this);
+    this.NNm = new c(paramString, this);
     AppMethodBeat.o(59280);
   }
   
@@ -41,7 +41,7 @@ public final class b
   {
     AppMethodBeat.i(59291);
     if (paramf == null) {
-      ajm(13);
+      ajW(13);
     }
     paramf = new b(c.t(paramf));
     AppMethodBeat.o(59291);
@@ -62,7 +62,7 @@ public final class b
       return false;
     }
     paramObject = (b)paramObject;
-    if (!this.Nqg.equals(paramObject.Nqg))
+    if (!this.NNm.equals(paramObject.NNm))
     {
       AppMethodBeat.o(59293);
       return false;
@@ -71,25 +71,25 @@ public final class b
     return true;
   }
   
-  public final c grf()
+  public final c gvH()
   {
     AppMethodBeat.i(59284);
-    c localc = this.Nqg;
+    c localc = this.NNm;
     if (localc == null) {
-      ajm(5);
+      ajW(5);
     }
     AppMethodBeat.o(59284);
     return localc;
   }
   
-  public final b grg()
+  public final b gvI()
   {
     AppMethodBeat.i(59286);
-    if (this.Nqh != null)
+    if (this.NNn != null)
     {
-      localObject = this.Nqh;
+      localObject = this.NNn;
       if (localObject == null) {
-        ajm(6);
+        ajW(6);
       }
       AppMethodBeat.o(59286);
       return localObject;
@@ -100,32 +100,32 @@ public final class b
       AppMethodBeat.o(59286);
       throw ((Throwable)localObject);
     }
-    this.Nqh = new b(this.Nqg.grl());
-    Object localObject = this.Nqh;
+    this.NNn = new b(this.NNm.gvN());
+    Object localObject = this.NNn;
     if (localObject == null) {
-      ajm(7);
+      ajW(7);
     }
     AppMethodBeat.o(59286);
     return localObject;
   }
   
-  public final f grh()
+  public final f gvJ()
   {
     AppMethodBeat.i(59288);
-    f localf = this.Nqg.grh();
+    f localf = this.NNm.gvJ();
     if (localf == null) {
-      ajm(9);
+      ajW(9);
     }
     AppMethodBeat.o(59288);
     return localf;
   }
   
-  public final f gri()
+  public final f gvK()
   {
     AppMethodBeat.i(59289);
-    f localf = this.Nqg.gri();
+    f localf = this.NNm.gvK();
     if (localf == null) {
-      ajm(10);
+      ajW(10);
     }
     AppMethodBeat.o(59289);
     return localf;
@@ -134,16 +134,16 @@ public final class b
   public final int hashCode()
   {
     AppMethodBeat.i(59294);
-    int i = this.Nqg.hashCode();
+    int i = this.NNm.hashCode();
     AppMethodBeat.o(59294);
     return i;
   }
   
   public final boolean isRoot()
   {
-    AppMethodBeat.i(221693);
-    boolean bool = this.Nqg.Nql.isEmpty();
-    AppMethodBeat.o(221693);
+    AppMethodBeat.i(224206);
+    boolean bool = this.NNm.NNr.isEmpty();
+    AppMethodBeat.o(224206);
     return bool;
   }
   
@@ -151,9 +151,9 @@ public final class b
   {
     AppMethodBeat.i(59287);
     if (paramf == null) {
-      ajm(8);
+      ajW(8);
     }
-    paramf = new b(this.Nqg.s(paramf), this);
+    paramf = new b(this.NNm.s(paramf), this);
     AppMethodBeat.o(59287);
     return paramf;
   }
@@ -162,9 +162,9 @@ public final class b
   {
     AppMethodBeat.i(59290);
     if (paramf == null) {
-      ajm(12);
+      ajW(12);
     }
-    boolean bool = this.Nqg.q(paramf);
+    boolean bool = this.NNm.q(paramf);
     AppMethodBeat.o(59290);
     return bool;
   }
@@ -172,9 +172,9 @@ public final class b
   public final String sD()
   {
     AppMethodBeat.i(59283);
-    String str = this.Nqg.sD();
+    String str = this.NNm.sD();
     if (str == null) {
-      ajm(4);
+      ajW(4);
     }
     AppMethodBeat.o(59283);
     return str;
@@ -183,14 +183,14 @@ public final class b
   public final String toString()
   {
     AppMethodBeat.i(59292);
-    String str = this.Nqg.toString();
+    String str = this.NNm.toString();
     AppMethodBeat.o(59292);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.f.b
  * JD-Core Version:    0.7.0.1
  */

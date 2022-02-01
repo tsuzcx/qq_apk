@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.appbrand.g.a;
 
 public abstract interface d
 {
-  public abstract String bfg();
+  public abstract String bfO();
 }
 
 

@@ -3,16 +3,16 @@ package kotlinx.coroutines.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/coroutines/scheduling/NanoTimeSource;", "Lkotlinx/coroutines/scheduling/TimeSource;", "()V", "nanoTime", "", "kotlinx-coroutines-core"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/coroutines/scheduling/NanoTimeSource;", "Lkotlinx/coroutines/scheduling/TimeSource;", "()V", "nanoTime", "", "kotlinx-coroutines-core"})
 public final class g
   extends m
 {
-  public static final g NKU;
+  public static final g Oia;
   
   static
   {
     AppMethodBeat.i(118030);
-    NKU = new g();
+    Oia = new g();
     AppMethodBeat.o(118030);
   }
   

@@ -4,11 +4,11 @@ import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bs.d;
+import com.tencent.mm.br.d;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 final class EmojiStoreDetailUI$15
   implements View.OnClickListener
@@ -20,15 +20,15 @@ final class EmojiStoreDetailUI$15
     AppMethodBeat.i(108993);
     Object localObject = new b();
     ((b)localObject).bd(paramView);
-    a.b("com/tencent/mm/plugin/emoji/ui/EmojiStoreDetailUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahq());
-    ad.d("MicroMsg.emoji.EmojiStoreDetailUI", "ApplicationLanguage" + ac.fks());
-    paramView = this.pKS.getString(2131758243) + ac.fks();
+    a.b("com/tencent/mm/plugin/emoji/ui/EmojiStoreDetailUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahF());
+    ae.d("MicroMsg.emoji.EmojiStoreDetailUI", "ApplicationLanguage" + ad.fom());
+    paramView = this.pRx.getString(2131758243) + ad.fom();
     localObject = new Intent();
-    ((Intent)localObject).putExtra("title", this.pKS.getString(2131758313));
+    ((Intent)localObject).putExtra("title", this.pRx.getString(2131758313));
     ((Intent)localObject).putExtra("rawUrl", paramView);
     ((Intent)localObject).putExtra("showShare", false);
     ((Intent)localObject).putExtra("neverGetA8Key", true);
-    d.b(this.pKS, "webview", "com.tencent.mm.plugin.webview.ui.tools.WebViewUI", (Intent)localObject);
+    d.b(this.pRx, "webview", "com.tencent.mm.plugin.webview.ui.tools.WebViewUI", (Intent)localObject);
     a.a(this, "com/tencent/mm/plugin/emoji/ui/EmojiStoreDetailUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(108993);
   }

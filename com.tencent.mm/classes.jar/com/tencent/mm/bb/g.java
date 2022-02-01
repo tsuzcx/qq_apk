@@ -1,29 +1,74 @@
 package com.tencent.mm.bb;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.messenger.foundation.a.a.k.b;
-import com.tencent.mm.protocal.protobuf.adv;
 
-@Deprecated
 public final class g
-  extends k.b
+  extends com.tencent.mm.bw.a
 {
-  private adv iis;
+  public int dGC;
+  public int ilR;
+  public int ilS;
   
-  public g(String paramString)
+  public final int op(int paramInt, Object... paramVarArgs)
   {
-    super(32);
-    AppMethodBeat.i(20566);
-    this.iis = new adv();
-    this.iis.Gcj = paramString;
-    this.iis.Gck = 0;
-    this.vKm = this.iis;
-    AppMethodBeat.o(20566);
+    AppMethodBeat.i(150799);
+    if (paramInt == 0)
+    {
+      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.aS(1, this.dGC);
+      paramVarArgs.aS(2, this.ilR);
+      paramVarArgs.aS(3, this.ilS);
+      AppMethodBeat.o(150799);
+      return 0;
+    }
+    if (paramInt == 1)
+    {
+      paramInt = f.a.a.b.b.a.bz(1, this.dGC);
+      int i = f.a.a.b.b.a.bz(2, this.ilR);
+      int j = f.a.a.b.b.a.bz(3, this.ilS);
+      AppMethodBeat.o(150799);
+      return paramInt + 0 + i + j;
+    }
+    if (paramInt == 2)
+    {
+      paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.gCg();
+        }
+      }
+      AppMethodBeat.o(150799);
+      return 0;
+    }
+    if (paramInt == 3)
+    {
+      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+      g localg = (g)paramVarArgs[1];
+      switch (((Integer)paramVarArgs[2]).intValue())
+      {
+      default: 
+        AppMethodBeat.o(150799);
+        return -1;
+      case 1: 
+        localg.dGC = locala.OmT.zc();
+        AppMethodBeat.o(150799);
+        return 0;
+      case 2: 
+        localg.ilR = locala.OmT.zc();
+        AppMethodBeat.o(150799);
+        return 0;
+      }
+      localg.ilS = locala.OmT.zc();
+      AppMethodBeat.o(150799);
+      return 0;
+    }
+    AppMethodBeat.o(150799);
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.bb.g
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.collect.ui;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.ui.base.MMPullDownView.g;
 
 final class CollectBillListUI$11
@@ -9,10 +9,10 @@ final class CollectBillListUI$11
 {
   CollectBillListUI$11(CollectBillListUI paramCollectBillListUI) {}
   
-  public final boolean cbd()
+  public final boolean ccs()
   {
     AppMethodBeat.i(64056);
-    ad.d("MicroMsg.CollectBillListUI", "top load");
+    ae.d("MicroMsg.CollectBillListUI", "top load");
     AppMethodBeat.o(64056);
     return true;
   }

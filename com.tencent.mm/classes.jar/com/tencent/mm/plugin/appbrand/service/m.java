@@ -1,13 +1,16 @@
 package com.tencent.mm.plugin.appbrand.service;
 
-import com.tencent.mm.kernel.b.e;
 import com.tencent.mm.kernel.c.a;
-import com.tencent.mm.plugin.appbrand.api.c;
 
-@e(c.class)
 public abstract interface m
   extends a
-{}
+{
+  public abstract int aKJ();
+  
+  public abstract int aKL();
+  
+  public abstract boolean aKM();
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar

@@ -11,7 +11,7 @@ public class SetFontWeightArg
   extends BaseDrawActionArg
 {
   public static final Parcelable.Creator<SetFontWeightArg> CREATOR;
-  public String cyI;
+  public String czp;
   
   static
   {
@@ -51,7 +51,7 @@ public class SetFontWeightArg
       return false;
     }
     paramObject = (SetFontWeightArg)paramObject;
-    boolean bool = Objects.equals(this.cyI, paramObject.cyI);
+    boolean bool = Objects.equals(this.czp, paramObject.czp);
     AppMethodBeat.o(145172);
     return bool;
   }
@@ -60,14 +60,14 @@ public class SetFontWeightArg
   {
     AppMethodBeat.i(145169);
     super.h(paramParcel);
-    this.cyI = paramParcel.readString();
+    this.czp = paramParcel.readString();
     AppMethodBeat.o(145169);
   }
   
   public int hashCode()
   {
     AppMethodBeat.i(145173);
-    int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), this.cyI });
+    int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), this.czp });
     AppMethodBeat.o(145173);
     return i;
   }
@@ -76,7 +76,7 @@ public class SetFontWeightArg
   {
     AppMethodBeat.i(145170);
     super.parse(paramJSONObject);
-    this.cyI = paramJSONObject.optJSONArray("data").optString(0);
+    this.czp = paramJSONObject.optJSONArray("data").optString(0);
     AppMethodBeat.o(145170);
   }
   
@@ -84,7 +84,7 @@ public class SetFontWeightArg
   {
     AppMethodBeat.i(145171);
     super.writeToParcel(paramParcel, paramInt);
-    paramParcel.writeString(this.cyI);
+    paramParcel.writeString(this.czp);
     AppMethodBeat.o(145171);
   }
 }

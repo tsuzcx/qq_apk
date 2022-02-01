@@ -1,75 +1,60 @@
 package com.tencent.mm.plugin.topstory.a;
 
-import com.tencent.mm.protocal.protobuf.dnx;
+import com.tencent.mm.protocal.protobuf.dou;
 
 public abstract interface e
 {
-  public abstract void Bc(long paramLong);
+  public abstract void BA(long paramLong);
   
-  public abstract void SS(int paramInt);
+  public abstract void Tz(int paramInt);
   
-  public abstract void a(a parama);
+  public abstract void a(e.a parama);
   
-  public abstract void b(a parama);
+  public abstract void b(e.a parama);
   
-  public abstract void eoA();
+  public abstract boolean erP();
   
-  public abstract String eoB();
+  public abstract boolean erQ();
   
-  public abstract long eoC();
+  public abstract dou erR();
   
-  public abstract String eoD();
+  public abstract void erS();
   
-  public abstract void eoE();
+  public abstract dou erV();
   
-  public abstract boolean eoF();
+  public abstract boolean erX();
   
-  public abstract boolean eoG();
+  public abstract int erY();
   
-  public abstract boolean eoi();
+  public abstract dou esa();
   
-  public abstract boolean eoj();
+  public abstract dou esb();
   
-  public abstract dnx eok();
+  public abstract boolean esc();
   
-  public abstract void eol();
+  public abstract boolean esf();
   
-  public abstract dnx eoo();
+  public abstract String esg();
   
-  public abstract boolean eoq();
+  public abstract void esh();
   
-  public abstract int eor();
+  public abstract String esi();
   
-  public abstract dnx eot();
+  public abstract long esj();
   
-  public abstract dnx eou();
+  public abstract String esk();
   
-  public abstract boolean eov();
+  public abstract void esl();
   
-  public abstract boolean eoy();
+  public abstract boolean esm();
   
-  public abstract String eoz();
+  public abstract boolean esn();
   
   public abstract void h(long paramLong, int paramInt, boolean paramBoolean);
-  
-  public static abstract interface a
-  {
-    public abstract void a(int paramInt1, String paramString1, String paramString2, int paramInt2, int paramInt3, String paramString3);
-    
-    public abstract void a(int paramInt1, String paramString1, String paramString2, int paramInt2, int paramInt3, String paramString3, boolean paramBoolean);
-    
-    public abstract void aCL(String paramString);
-    
-    public abstract void bq(String paramString, long paramLong);
-    
-    public abstract void br(String paramString, long paramLong);
-    
-    public abstract void eoH();
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.a.e
  * JD-Core Version:    0.7.0.1
  */

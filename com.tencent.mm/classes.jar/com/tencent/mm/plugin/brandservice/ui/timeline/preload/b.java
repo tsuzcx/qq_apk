@@ -7,83 +7,96 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ipcinvoker.type.IPCString;
 import com.tencent.mm.ipcinvoker.type.IPCVoid;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.protocal.protobuf.cxk;
-import com.tencent.mm.protocal.protobuf.cxl;
+import com.tencent.mm.protocal.protobuf.cye;
+import com.tencent.mm.protocal.protobuf.cyf;
 import com.tencent.mm.protocal.protobuf.fa;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ao;
-import com.tencent.mm.sdk.platformtools.ax;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.vfs.e;
-import d.a.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.vfs.k;
 import d.g.b.p;
 import d.g.b.q;
 import d.l;
-import d.n.n;
+import d.z;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentLinkedDeque;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"domainHashMap", "Ljava/util/concurrent/ConcurrentHashMap;", "", "Ljava/util/LinkedList;", "getDomainHashMap", "()Ljava/util/concurrent/ConcurrentHashMap;", "setDomainHashMap", "(Ljava/util/concurrent/ConcurrentHashMap;)V", "urlHashCache", "getUrlHashCache", "setUrlHashCache", "host", "getHost", "(Ljava/lang/String;)Ljava/lang/String;", "clearDomain", "", "domain", "clearDomainCache", "getContentId", "url", "getDomainId", "fetch", "", "getInfoId", "getInvalidId", "getManifestId", "getShortUrlId", "getStrip", "", "openScene", "getUrlId", "getWebId", "prefetch", "getWebResId", "resUrl", "hashUrl", "mpDataMmkv", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "setShortUrlId", "shortUrl", "longUrl", "contains", "Lcom/tencent/mm/sdk/platformtools/MMFileSlotManager;", "contentId", "create", "Lcom/tencent/mm/vfs/VFSFile;", "findContentFile", "getContentFile", "Lcom/tencent/mm/protocal/protobuf/AppMsgContext;", "getContentPath", "plugin-brandservice_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"domainHashMap", "Ljava/util/concurrent/ConcurrentHashMap;", "", "Ljava/util/concurrent/ConcurrentLinkedDeque;", "getDomainHashMap", "()Ljava/util/concurrent/ConcurrentHashMap;", "setDomainHashMap", "(Ljava/util/concurrent/ConcurrentHashMap;)V", "fullUrlHashCache", "getFullUrlHashCache", "setFullUrlHashCache", "urlHashCache", "getUrlHashCache", "setUrlHashCache", "host", "getHost", "(Ljava/lang/String;)Ljava/lang/String;", "clearDomain", "", "domain", "clearDomainCache", "getContentId", "url", "getDomainId", "fetch", "", "getFullWebId", "prefetch", "getInfoId", "getInvalidId", "getManifestId", "getShortUrlId", "getStrip", "", "openScene", "getUrlId", "getWebId", "getWebResId", "resUrl", "hashFullUrl", "hashUrl", "mpDataMmkv", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "setShortUrlId", "shortUrl", "longUrl", "contains", "Lcom/tencent/mm/sdk/platformtools/MMFileSlotManager;", "contentId", "create", "Lcom/tencent/mm/vfs/VFSFile;", "findContentFile", "getContentFile", "Lcom/tencent/mm/protocal/protobuf/AppMsgContext;", "getContentPath", "plugin-brandservice_release"})
 public final class b
 {
-  private static ConcurrentHashMap<String, String> oho;
-  private static ConcurrentHashMap<String, LinkedList<String>> ohp;
+  private static ConcurrentHashMap<String, String> onn;
+  private static ConcurrentHashMap<String, String> ono;
+  private static ConcurrentHashMap<String, ConcurrentLinkedDeque<String>> onp;
   
   static
   {
     AppMethodBeat.i(6575);
-    oho = new ConcurrentHashMap();
-    ohp = new ConcurrentHashMap();
+    onn = new ConcurrentHashMap();
+    ono = new ConcurrentHashMap();
+    onp = new ConcurrentHashMap();
     AppMethodBeat.o(6575);
   }
   
-  public static final e D(e parame)
+  public static final k D(k paramk)
   {
     AppMethodBeat.i(175480);
-    p.h(parame, "$this$create");
-    if (!parame.exists())
+    p.h(paramk, "$this$create");
+    if (!paramk.exists())
     {
-      new e(parame.getParent()).mkdirs();
-      parame.createNewFile();
+      new k(paramk.getParent()).mkdirs();
+      paramk.createNewFile();
     }
     AppMethodBeat.o(175480);
-    return parame;
+    return paramk;
   }
   
-  public static final void Xi(String paramString)
+  public static final void XU(String paramString)
   {
-    AppMethodBeat.i(209817);
+    AppMethodBeat.i(208811);
     p.h(paramString, "domain");
-    String str1 = Xo(paramString);
+    String str1 = Ya(paramString);
     LinkedList localLinkedList = new LinkedList();
-    Object localObject = (LinkedList)ohp.get(str1);
-    if (localObject != null)
+    try
     {
-      localObject = ((Iterable)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
+      Object localObject = (ConcurrentLinkedDeque)onp.get(str1);
+      if (localObject != null)
       {
-        String str2 = (String)((Iterator)localObject).next();
-        str2 = (String)oho.remove(str2);
-        if (str2 != null) {
-          localLinkedList.add(str2);
+        localObject = ((Iterable)localObject).iterator();
+        while (((Iterator)localObject).hasNext())
+        {
+          String str2 = (String)((Iterator)localObject).next();
+          String str3 = (String)onn.remove(str2);
+          if (str3 != null) {
+            localLinkedList.add(str3);
+          }
+          str2 = (String)ono.remove(str2);
+          if (str2 != null) {
+            localLinkedList.add(str2);
+          }
         }
+        localObject = z.Nhr;
       }
     }
-    ad.i("AppMsgContextEx", "clearDomain:" + paramString + '#' + str1 + ", [" + d.a.j.a((Iterable)localLinkedList, (CharSequence)",", null, null, 0, null, null, 62) + ']');
-    AppMethodBeat.o(209817);
+    finally
+    {
+      AppMethodBeat.o(208811);
+    }
+    com.tencent.mm.sdk.platformtools.ae.i("AppMsgContextEx", "clearDomain:" + paramString + '#' + str1 + ", [" + d.a.j.a((Iterable)localLinkedList, (CharSequence)",", null, null, 0, null, null, 62) + ']');
+    AppMethodBeat.o(208811);
   }
   
-  public static final void Xj(String paramString)
+  public static final void XV(String paramString)
   {
     try
     {
       AppMethodBeat.i(6557);
       p.h(paramString, "domain");
-      com.tencent.mm.ipcinvoker.a.a("com.tencent.mm", (Parcelable)new IPCString(paramString), (com.tencent.mm.ipcinvoker.b)a.ohq, null);
-      com.tencent.mm.ipcinvoker.a.a("com.tencent.mm:tools", (Parcelable)new IPCString(paramString), (com.tencent.mm.ipcinvoker.b)b.ohr, null);
+      com.tencent.mm.ipcinvoker.a.a("com.tencent.mm", (Parcelable)new IPCString(paramString), (com.tencent.mm.ipcinvoker.b)a.onq, null);
+      com.tencent.mm.ipcinvoker.a.a("com.tencent.mm:tools", (Parcelable)new IPCString(paramString), (com.tencent.mm.ipcinvoker.b)b.onr, null);
       AppMethodBeat.o(6557);
       return;
     }
@@ -94,16 +107,16 @@ public final class b
     }
   }
   
-  public static final String Xl(String paramString)
+  public static final String XX(String paramString)
   {
     AppMethodBeat.i(6560);
     p.h(paramString, "url");
-    paramString = "_info_" + Xk(paramString);
+    paramString = "_info_" + XW(paramString);
     AppMethodBeat.o(6560);
     return paramString;
   }
   
-  public static final String Xm(String paramString)
+  public static final String XY(String paramString)
   {
     AppMethodBeat.i(6561);
     p.h(paramString, "$this$host");
@@ -128,59 +141,69 @@ public final class b
     return paramString;
   }
   
-  private static String Xo(String paramString)
+  private static String Ya(String paramString)
   {
-    AppMethodBeat.i(209822);
+    AppMethodBeat.i(208816);
     p.h(paramString, "domain");
     paramString = "_domain_" + paramString.hashCode();
-    AppMethodBeat.o(209822);
+    AppMethodBeat.o(208816);
     return paramString;
   }
   
-  public static final String Xq(String paramString)
+  public static final String Yc(String paramString)
   {
-    AppMethodBeat.i(209823);
+    AppMethodBeat.i(208817);
     p.h(paramString, "host");
     paramString = "_manifest_" + paramString.hashCode();
-    AppMethodBeat.o(209823);
+    AppMethodBeat.o(208817);
     return paramString;
   }
   
-  public static final String Xr(String paramString)
+  public static final String Yd(String paramString)
   {
     AppMethodBeat.i(6568);
     p.h(paramString, "url");
-    paramString = "_content_" + Xk(paramString);
+    paramString = "_content_" + XW(paramString);
     AppMethodBeat.o(6568);
     return paramString;
   }
   
-  public static final String Xs(String paramString)
+  public static final String Ye(String paramString)
   {
     AppMethodBeat.i(6569);
     p.h(paramString, "url");
-    paramString = "_invalid_" + Xk(paramString);
+    paramString = "_invalid_" + XW(paramString);
     AppMethodBeat.o(6569);
     return paramString;
   }
   
-  public static final String Xt(String paramString)
+  private static String Yf(String paramString)
+  {
+    AppMethodBeat.i(208818);
+    p.h(paramString, "url");
+    paramString = bPU().decodeString("short_url_".concat(String.valueOf(paramString)), "");
+    p.g(paramString, "mpDataMmkv().decodeString(\"short_url_$url\", \"\")");
+    AppMethodBeat.o(208818);
+    return paramString;
+  }
+  
+  public static final String Yg(String paramString)
   {
     AppMethodBeat.i(6573);
     p.h(paramString, "url");
-    paramString = aE(paramString, false);
+    paramString = XW(paramString);
     AppMethodBeat.o(6573);
     return paramString;
   }
   
-  public static final e a(ao paramao, String paramString)
+  public static final k a(ap paramap, String paramString)
   {
     AppMethodBeat.i(175483);
-    p.h(paramao, "$this$getContentFile");
+    p.h(paramap, "$this$getContentFile");
     p.h(paramString, "contentId");
-    paramao = d((e)paramao.fjV(), paramString);
+    paramap = d((k)paramap.fnP(), paramString);
     AppMethodBeat.o(175483);
-    return paramao;
+    return paramap;
   }
   
   public static final String a(fa paramfa)
@@ -189,136 +212,133 @@ public final class b
     p.h(paramfa, "$this$getContentId");
     paramfa = paramfa.Url;
     p.g(paramfa, "this.Url");
-    paramfa = Xr(paramfa);
+    paramfa = Yd(paramfa);
     AppMethodBeat.o(6570);
     return paramfa;
   }
   
-  private static final String aE(String paramString, boolean paramBoolean)
+  private static final String aG(final String paramString, boolean paramBoolean)
   {
     int i = 0;
-    AppMethodBeat.i(209818);
-    final String str1 = UrlExKt.clearUrlParams(n.nB(paramString, "#"), new String[] { "from", "isappinstalled", "pass_ticket", "exportKey" });
-    paramString = str1 + '-' + paramBoolean;
-    if (oho.containsKey(paramString))
+    AppMethodBeat.i(208812);
+    String str1 = paramString + '-' + paramBoolean;
+    if (ono.containsKey(str1))
     {
-      paramString = (String)ae.e((Map)oho, paramString);
-      AppMethodBeat.o(209818);
+      paramString = (String)d.a.ae.e((Map)ono, str1);
+      AppMethodBeat.o(208812);
       return paramString;
     }
-    Object localObject1 = Xo(Xm(str1));
-    Object localObject2 = new c(paramBoolean, str1);
+    Object localObject1 = Ya(XY(paramString));
+    Object localObject2 = new c(paramBoolean, paramString);
     Object localObject3 = new StringBuilder("matched_");
     while (i < 3)
     {
       String str2 = new String[] { "__biz", "mid", "idx" }[i];
-      String str3 = UrlExKt.getUrlParam(str1, str2);
+      String str3 = UrlExKt.getUrlParam(paramString, str2);
       if (str3 == null)
       {
-        localObject3 = UrlExKt.clearShortUrl(str1);
-        p.h(localObject3, "url");
-        str2 = bOW().decodeString("short_url_".concat(String.valueOf(localObject3)), "");
-        p.g(str2, "mpDataMmkv().decodeString(\"short_url_$url\", \"\")");
-        if (!bt.isNullOrNil(str2))
+        localObject3 = UrlExKt.clearShortUrl(paramString);
+        str2 = Yf((String)localObject3);
+        if (!bu.isNullOrNil(str2))
         {
-          ((Map)oho).put(str1, str2);
-          AppMethodBeat.o(209818);
+          ((Map)ono).put(paramString, str2);
+          AppMethodBeat.o(208812);
           return str2;
         }
-        localObject2 = Integer.toString("not_matched_".concat(String.valueOf(((c)localObject2).Xu((String)localObject3))).hashCode(), d.n.a.aly(16));
+        localObject2 = Integer.toString("not_matched_".concat(String.valueOf(((c)localObject2).Yh((String)localObject3))).hashCode(), d.n.a.ami(16));
         p.g(localObject2, "java.lang.Integer.toStri…(this, checkRadix(radix))");
         if (paramBoolean)
         {
-          if (!ohp.containsKey(localObject1)) {
-            ((Map)ohp).put(localObject1, new LinkedList());
+          if (!onp.containsKey(localObject1)) {
+            ((Map)onp).put(localObject1, new ConcurrentLinkedDeque());
           }
-          localObject1 = ohp.get(localObject1);
+          localObject1 = onp.get(localObject1);
           if (localObject1 == null) {
-            p.gfZ();
+            p.gkB();
           }
-          ((LinkedList)localObject1).add(paramString);
-          ((Map)oho).put(paramString, localObject2);
-          ad.d("AppMsgContextEx", "#" + (String)localObject2 + " hash from:" + str1);
+          ((ConcurrentLinkedDeque)localObject1).add(str1);
+          ((Map)ono).put(str1, localObject2);
+          com.tencent.mm.sdk.platformtools.ae.d("AppMsgContextEx", "#" + (String)localObject2 + " hash from:" + paramString);
         }
-        AppMethodBeat.o(209818);
+        AppMethodBeat.o(208812);
         return localObject2;
       }
       ((StringBuilder)localObject3).append(str2 + ':' + str3 + '-');
       i += 1;
     }
-    str1 = ((StringBuilder)localObject3).toString();
-    if (!ohp.containsKey(localObject1)) {
-      ((Map)ohp).put(localObject1, new LinkedList());
+    paramString = ((StringBuilder)localObject3).toString();
+    if (!onp.containsKey(localObject1)) {
+      ((Map)onp).put(localObject1, new ConcurrentLinkedDeque());
     }
-    localObject1 = ohp.get(localObject1);
+    localObject1 = onp.get(localObject1);
     if (localObject1 == null) {
-      p.gfZ();
+      p.gkB();
     }
-    ((LinkedList)localObject1).add(paramString);
-    localObject1 = (Map)oho;
-    p.g(str1, "this");
-    ((Map)localObject1).put(paramString, str1);
-    p.g(str1, "key.toString()\n        .…acheKey] = this\n        }");
-    AppMethodBeat.o(209818);
-    return str1;
-  }
-  
-  public static final String aF(String paramString, boolean paramBoolean)
-  {
-    AppMethodBeat.i(209820);
-    p.h(paramString, "url");
-    paramString = "_web_" + aE(n.nB(paramString, "#"), paramBoolean);
-    AppMethodBeat.o(209820);
+    ((ConcurrentLinkedDeque)localObject1).add(str1);
+    localObject1 = (Map)ono;
+    p.g(paramString, "this");
+    ((Map)localObject1).put(str1, paramString);
+    p.g(paramString, "key.toString()\n        .…acheKey] = this\n        }");
+    AppMethodBeat.o(208812);
     return paramString;
   }
   
-  public static final e b(ao paramao, String paramString)
+  public static final String aH(String paramString, boolean paramBoolean)
+  {
+    AppMethodBeat.i(208814);
+    p.h(paramString, "url");
+    paramString = "_web_" + aG(paramString, paramBoolean);
+    AppMethodBeat.o(208814);
+    return paramString;
+  }
+  
+  public static final k b(ap paramap, String paramString)
   {
     AppMethodBeat.i(175484);
-    p.h(paramao, "$this$findContentFile");
+    p.h(paramap, "$this$findContentFile");
     p.h(paramString, "contentId");
-    paramao = (e)paramao.aQb(paramString);
-    if (paramao != null)
+    paramap = (k)paramap.aRy(paramString);
+    if (paramap != null)
     {
-      paramao = d(paramao, paramString);
+      paramap = d(paramap, paramString);
       AppMethodBeat.o(175484);
-      return paramao;
+      return paramap;
     }
     AppMethodBeat.o(175484);
     return null;
   }
   
-  public static final ConcurrentHashMap<String, String> bOU()
+  public static final ConcurrentHashMap<String, String> bPS()
   {
-    return oho;
+    return onn;
   }
   
-  public static final ConcurrentHashMap<String, LinkedList<String>> bOV()
+  public static final ConcurrentHashMap<String, ConcurrentLinkedDeque<String>> bPT()
   {
-    return ohp;
+    return onp;
   }
   
-  private static ax bOW()
+  private static ay bPU()
   {
     AppMethodBeat.i(6572);
-    if (aj.cmR()) {
-      p.g(g.ajA(), "MMKernel.account()");
+    if (ak.coh()) {
+      p.g(g.ajP(), "MMKernel.account()");
     }
-    for (int i = com.tencent.mm.kernel.a.getUin();; i = com.tencent.mm.kernel.a.aiN())
+    for (int i = com.tencent.mm.kernel.a.getUin();; i = com.tencent.mm.kernel.a.ajc())
     {
-      ax localax = ax.gh("mpRelateData_".concat(String.valueOf(i)), 2);
-      p.g(localax, "MultiProcessMMKV.getMMKV…sMMKV.MULTI_PROCESS_MODE)");
+      ay localay = ay.gq("mpRelateData_".concat(String.valueOf(i)), 2);
+      p.g(localay, "MultiProcessMMKV.getMMKV…sMMKV.MULTI_PROCESS_MODE)");
       AppMethodBeat.o(6572);
-      return localax;
+      return localay;
     }
   }
   
-  public static final boolean c(ao paramao, String paramString)
+  public static final boolean c(ap paramap, String paramString)
   {
     AppMethodBeat.i(6556);
-    p.h(paramao, "$this$contains");
+    p.h(paramap, "$this$contains");
     p.h(paramString, "contentId");
-    if (paramao.aQb(paramString) != null)
+    if (paramap.aRy(paramString) != null)
     {
       AppMethodBeat.o(6556);
       return true;
@@ -327,42 +347,42 @@ public final class b
     return false;
   }
   
-  private static final e d(e parame, String paramString)
+  private static final k d(k paramk, String paramString)
   {
     AppMethodBeat.i(175482);
-    parame = new e(parame.getPath() + '/' + paramString);
+    paramk = new k(paramk.getPath() + '/' + paramString);
     AppMethodBeat.o(175482);
-    return parame;
+    return paramk;
   }
   
-  public static final String eL(String paramString1, String paramString2)
+  public static final String eO(String paramString1, String paramString2)
   {
     AppMethodBeat.i(6564);
     p.h(paramString1, "host");
     p.h(paramString2, "resUrl");
-    paramString1 = paramString1 + "/_web_res_" + Xk(paramString2);
+    paramString1 = paramString1 + "/_web_res_" + XW(paramString2);
     AppMethodBeat.o(6564);
     return paramString1;
   }
   
-  public static final void eM(String paramString1, String paramString2)
+  public static final void eP(String paramString1, String paramString2)
   {
     AppMethodBeat.i(6574);
     p.h(paramString1, "shortUrl");
     p.h(paramString2, "longUrl");
     paramString1 = UrlExKt.clearShortUrl(paramString1);
-    paramString2 = Xt(paramString2);
+    paramString2 = Yg(paramString2);
     String str = "short_url_".concat(String.valueOf(paramString1));
-    bOW().encode(str, paramString2);
-    oho.put(paramString1, paramString2);
+    bPU().encode(str, paramString2);
+    onn.put(paramString1, paramString2);
     AppMethodBeat.o(6574);
   }
   
-  public static final int zx(int paramInt)
+  public static final int zG(int paramInt)
   {
     int j = 0;
     AppMethodBeat.i(6571);
-    Object localObject1 = s.bPI().decodeBytes("_msg_scene_strip");
+    Object localObject1 = s.bQG().decodeBytes("_msg_scene_strip");
     if (localObject1 != null)
     {
       if (localObject1.length == 0) {}
@@ -375,9 +395,9 @@ public final class b
         if (j != 1) {
           break label210;
         }
-        localObject2 = new cxl();
-        ((cxl)localObject2).parseFrom((byte[])localObject1);
-        localObject1 = ((cxl)localObject2).FCy;
+        localObject2 = new cyf();
+        ((cyf)localObject2).parseFrom((byte[])localObject1);
+        localObject1 = ((cyf)localObject2).FUT;
         p.g(localObject1, "SceneControlSets().apply…(buff) }.SceneControlList");
         localObject1 = ((Iterable)localObject1).iterator();
         for (;;)
@@ -385,18 +405,18 @@ public final class b
           if (!((Iterator)localObject1).hasNext()) {
             break label210;
           }
-          localObject2 = (cxk)((Iterator)localObject1).next();
-          if (((cxk)localObject2).Scene == paramInt)
+          localObject2 = (cye)((Iterator)localObject1).next();
+          if (((cye)localObject2).Scene == paramInt)
           {
-            if (((cxk)localObject2).HoU > 0) {
+            if (((cye)localObject2).HIw > 0) {
               break;
             }
-            ad.e("MicroMsg.AppMsgContextEx", "strip error " + paramInt + ':' + ((cxk)localObject2).HoU);
+            com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.AppMsgContextEx", "strip error " + paramInt + ':' + ((cye)localObject2).HIw);
           }
         }
       }
-      ad.i("MicroMsg.AppMsgContextEx", "strip " + paramInt + ':' + ((cxk)localObject2).HoU);
-      paramInt = ((cxk)localObject2).HoU;
+      com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.AppMsgContextEx", "strip " + paramInt + ':' + ((cye)localObject2).HIw);
+      paramInt = ((cye)localObject2).HIw;
       AppMethodBeat.o(6571);
       return paramInt;
     }
@@ -405,35 +425,35 @@ public final class b
     return 10;
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "ipcDomain", "Lcom/tencent/mm/ipcinvoker/type/IPCString;", "kotlin.jvm.PlatformType", "<anonymous parameter 1>", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "ipcDomain", "Lcom/tencent/mm/ipcinvoker/type/IPCString;", "kotlin.jvm.PlatformType", "<anonymous parameter 1>", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "invoke"})
   static final class a<InputType, ResultType>
     implements com.tencent.mm.ipcinvoker.b<IPCString, IPCVoid>
   {
-    public static final a ohq;
+    public static final a onq;
     
     static
     {
-      AppMethodBeat.i(209812);
-      ohq = new a();
-      AppMethodBeat.o(209812);
+      AppMethodBeat.i(208804);
+      onq = new a();
+      AppMethodBeat.o(208804);
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "ipcDomain", "Lcom/tencent/mm/ipcinvoker/type/IPCString;", "kotlin.jvm.PlatformType", "<anonymous parameter 1>", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "ipcDomain", "Lcom/tencent/mm/ipcinvoker/type/IPCString;", "kotlin.jvm.PlatformType", "<anonymous parameter 1>", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "invoke"})
   static final class b<InputType, ResultType>
     implements com.tencent.mm.ipcinvoker.b<IPCString, IPCVoid>
   {
-    public static final b ohr;
+    public static final b onr;
     
     static
     {
-      AppMethodBeat.i(209814);
-      ohr = new b();
-      AppMethodBeat.o(209814);
+      AppMethodBeat.i(208806);
+      onr = new b();
+      AppMethodBeat.o(208806);
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"toHash", "", "", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"toHash", "", "", "invoke"})
   static final class c
     extends q
     implements d.g.a.b<String, Integer>
@@ -443,44 +463,99 @@ public final class b
       super();
     }
     
-    public final int Xu(String paramString)
+    public final int Yh(String paramString)
     {
-      AppMethodBeat.i(209816);
+      AppMethodBeat.i(208808);
       p.h(paramString, "$this$toHash");
       for (;;)
       {
         try
         {
           localObject = Uri.parse(paramString);
-          if (!this.ohs) {
+          if (!this.ons) {
             continue;
           }
           String str = ((Uri)localObject).getScheme();
           if ((str == null) || (c.a(str, "http", true) != true)) {
             continue;
           }
-          localObject = w.olE;
-          localObject = w.XI(str1);
+          localObject = x.orv;
+          localObject = x.Yv(paramString);
           if (localObject != null)
           {
-            str = w.olE.a(str1, (j)localObject);
+            str = x.orv.a(paramString, (j)localObject);
             localObject = str;
             if (str != null) {}
           }
           else
           {
-            localObject = str1;
+            localObject = paramString;
           }
           i = ((String)localObject).hashCode();
         }
         catch (Exception localException)
         {
           Object localObject;
-          ad.printErrStackTrace("hashUrl", (Throwable)localException, "hash url".concat(String.valueOf(paramString)), new Object[0]);
+          com.tencent.mm.sdk.platformtools.ae.printErrStackTrace("hashUrl", (Throwable)localException, "hash url".concat(String.valueOf(paramString)), new Object[0]);
           int i = 0;
           continue;
         }
-        AppMethodBeat.o(209816);
+        AppMethodBeat.o(208808);
+        return i;
+        localObject = ((Uri)localObject).toString();
+        p.g(localObject, "toString()");
+      }
+    }
+  }
+  
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"toHash", "", "", "invoke"})
+  static final class d
+    extends q
+    implements d.g.a.b<String, Integer>
+  {
+    d(String paramString)
+    {
+      super();
+    }
+    
+    public final int Yh(String paramString)
+    {
+      AppMethodBeat.i(208810);
+      p.h(paramString, "$this$toHash");
+      for (;;)
+      {
+        try
+        {
+          localObject = Uri.parse(paramString);
+          if (!this.ons) {
+            continue;
+          }
+          String str = ((Uri)localObject).getScheme();
+          if ((str == null) || (c.a(str, "http", true) != true)) {
+            continue;
+          }
+          localObject = x.orv;
+          localObject = x.Yv(this.lfj);
+          if (localObject != null)
+          {
+            str = x.orv.a(this.lfj, (j)localObject);
+            localObject = str;
+            if (str != null) {}
+          }
+          else
+          {
+            localObject = this.lfj;
+          }
+          i = ((String)localObject).hashCode();
+        }
+        catch (Exception localException)
+        {
+          Object localObject;
+          com.tencent.mm.sdk.platformtools.ae.printErrStackTrace("hashUrl", (Throwable)localException, "hash url".concat(String.valueOf(paramString)), new Object[0]);
+          int i = 0;
+          continue;
+        }
+        AppMethodBeat.o(208810);
         return i;
         localObject = ((Uri)localObject).toString();
         p.g(localObject, "toString()");

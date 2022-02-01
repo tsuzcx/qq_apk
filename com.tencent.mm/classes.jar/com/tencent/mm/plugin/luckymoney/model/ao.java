@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.luckymoney.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
@@ -10,24 +10,24 @@ import org.json.JSONObject;
 public final class ao
   extends am
 {
-  public String vjr;
-  public String vol;
+  public String vAq;
+  public String vvw;
   
   public ao(String paramString1, String paramString2, String paramString3, String paramString4)
   {
     AppMethodBeat.i(65300);
-    this.vol = paramString3;
-    this.vjr = paramString2;
+    this.vAq = paramString3;
+    this.vvw = paramString2;
     HashMap localHashMap = new HashMap();
     localHashMap.put("sendId", paramString1);
     localHashMap.put("receiveId", paramString3);
-    localHashMap.put("wishing", URLEncoder.encode(bt.nullAsNil(paramString2)));
+    localHashMap.put("wishing", URLEncoder.encode(bu.nullAsNil(paramString2)));
     localHashMap.put("ver", paramString4);
     setRequestData(localHashMap);
     AppMethodBeat.o(65300);
   }
   
-  public final String cau()
+  public final String cbJ()
   {
     return "/cgi-bin/mmpay-bin/wishwxhb";
   }
@@ -41,7 +41,7 @@ public final class ao
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.model.ao
  * JD-Core Version:    0.7.0.1
  */

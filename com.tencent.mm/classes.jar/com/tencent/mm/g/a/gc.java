@@ -6,8 +6,8 @@ import com.tencent.mm.sdk.b.b;
 public final class gc
   extends b
 {
-  public a drK;
-  public b drL;
+  public a dsL;
+  public b dsM;
   
   public gc()
   {
@@ -16,27 +16,34 @@ public final class gc
   
   private gc(byte paramByte)
   {
-    AppMethodBeat.i(116024);
-    this.drK = new a();
-    this.drL = new b();
-    this.IbR = false;
+    AppMethodBeat.i(116023);
+    this.dsL = new a();
+    this.dsM = new b();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(116024);
+    AppMethodBeat.o(116023);
   }
   
   public static final class a
   {
+    public String dsN;
+    public int dsO = 0;
+    public Runnable dsP;
     public String fileName;
+    public int from = 0;
+    public int scene;
   }
   
   public static final class b
   {
-    public long msgId = 0L;
+    public boolean bsb;
+    public String content;
+    public int state = 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.a.gc
  * JD-Core Version:    0.7.0.1
  */

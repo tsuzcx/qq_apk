@@ -6,8 +6,8 @@ import java.util.Calendar;
 public final class a
 {
   private Calendar calendar;
-  public int fKG;
-  public long fKH;
+  public int fMJ;
+  public long fMK;
   public int month;
   public long msgId;
   public int year;
@@ -24,14 +24,14 @@ public final class a
     AppMethodBeat.i(12448);
     this.year = paramInt1;
     this.month = paramInt2;
-    this.fKG = paramInt3;
+    this.fMJ = paramInt3;
     AppMethodBeat.o(12448);
   }
   
   public a(long paramLong)
   {
     AppMethodBeat.i(12449);
-    this.fKH = paramLong;
+    this.fMK = paramLong;
     setTime(paramLong);
     AppMethodBeat.o(12449);
   }
@@ -39,14 +39,14 @@ public final class a
   private void setTime(long paramLong)
   {
     AppMethodBeat.i(12450);
-    this.fKH = paramLong;
+    this.fMK = paramLong;
     if (this.calendar == null) {
       this.calendar = Calendar.getInstance();
     }
     this.calendar.setTimeInMillis(paramLong);
     this.month = this.calendar.get(2);
     this.year = this.calendar.get(1);
-    this.fKG = this.calendar.get(5);
+    this.fMJ = this.calendar.get(5);
     AppMethodBeat.o(12450);
   }
   
@@ -58,7 +58,7 @@ public final class a
     {
       paramObject = (a)paramObject;
       bool1 = bool2;
-      if (paramObject.fKG == this.fKG)
+      if (paramObject.fMJ == this.fMJ)
       {
         bool1 = bool2;
         if (paramObject.month == this.month)
@@ -82,7 +82,7 @@ public final class a
     ((StringBuilder)localObject).append(", month: ");
     ((StringBuilder)localObject).append(this.month);
     ((StringBuilder)localObject).append(", day: ");
-    ((StringBuilder)localObject).append(this.fKG);
+    ((StringBuilder)localObject).append(this.fMJ);
     ((StringBuilder)localObject).append(" }");
     localObject = ((StringBuilder)localObject).toString();
     AppMethodBeat.o(12451);

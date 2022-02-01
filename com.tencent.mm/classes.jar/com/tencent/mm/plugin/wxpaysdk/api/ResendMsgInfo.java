@@ -9,10 +9,10 @@ public class ResendMsgInfo
   implements Parcelable
 {
   public static final Parcelable.Creator<ResendMsgInfo> CREATOR;
-  public String EHI;
+  public String Fae;
   public String description;
-  public String kzK;
-  public String kzL;
+  public String kCZ;
+  public String kDa;
   public String title;
   
   static
@@ -28,10 +28,10 @@ public class ResendMsgInfo
   {
     AppMethodBeat.i(117565);
     this.title = paramParcel.readString();
-    this.EHI = paramParcel.readString();
+    this.Fae = paramParcel.readString();
     this.description = paramParcel.readString();
-    this.kzK = paramParcel.readString();
-    this.kzL = paramParcel.readString();
+    this.kCZ = paramParcel.readString();
+    this.kDa = paramParcel.readString();
     AppMethodBeat.o(117565);
   }
   
@@ -43,7 +43,7 @@ public class ResendMsgInfo
   public String toString()
   {
     AppMethodBeat.i(117563);
-    String str = "ResendMsgInfo{title='" + this.title + '\'' + ", pic='" + this.EHI + '\'' + ", description='" + this.description + '\'' + ", left_button_wording='" + this.kzK + '\'' + ", right_button_wording='" + this.kzL + '\'' + '}';
+    String str = "ResendMsgInfo{title='" + this.title + '\'' + ", pic='" + this.Fae + '\'' + ", description='" + this.description + '\'' + ", left_button_wording='" + this.kCZ + '\'' + ", right_button_wording='" + this.kDa + '\'' + '}';
     AppMethodBeat.o(117563);
     return str;
   }
@@ -52,16 +52,16 @@ public class ResendMsgInfo
   {
     AppMethodBeat.i(117564);
     paramParcel.writeString(this.title);
-    paramParcel.writeString(this.EHI);
+    paramParcel.writeString(this.Fae);
     paramParcel.writeString(this.description);
-    paramParcel.writeString(this.kzK);
-    paramParcel.writeString(this.kzL);
+    paramParcel.writeString(this.kCZ);
+    paramParcel.writeString(this.kDa);
     AppMethodBeat.o(117564);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wxpaysdk.api.ResendMsgInfo
  * JD-Core Version:    0.7.0.1
  */

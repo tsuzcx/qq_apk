@@ -57,7 +57,7 @@ public final class k
     try
     {
       pO();
-      this.aME = c.ad(paramActivity).aCq.a(paramActivity.getFragmentManager(), l.l(paramActivity));
+      this.aME = c.ae(paramActivity).aCq.a(paramActivity.getFragmentManager(), l.l(paramActivity));
       if (!equals(this.aME)) {
         this.aME.aMD.add(this);
       }

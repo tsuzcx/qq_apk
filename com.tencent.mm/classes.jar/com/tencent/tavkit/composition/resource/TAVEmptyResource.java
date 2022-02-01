@@ -16,20 +16,20 @@ public class TAVEmptyResource
   
   public TAVEmptyResource(CMTime paramCMTime, boolean paramBoolean)
   {
-    AppMethodBeat.i(219885);
+    AppMethodBeat.i(200916);
     this.insertTimeRange = paramBoolean;
     this.duration = paramCMTime;
     this.sourceTimeRange = new CMTimeRange(CMTime.CMTimeZero, paramCMTime);
-    AppMethodBeat.o(219885);
+    AppMethodBeat.o(200916);
   }
   
   public TAVResource clone()
   {
-    AppMethodBeat.i(219887);
+    AppMethodBeat.i(200918);
     TAVEmptyResource localTAVEmptyResource = new TAVEmptyResource(this.duration.clone());
     localTAVEmptyResource.sourceTimeRange = this.sourceTimeRange.clone();
     localTAVEmptyResource.scaledDuration = this.scaledDuration.clone();
-    AppMethodBeat.o(219887);
+    AppMethodBeat.o(200918);
     return localTAVEmptyResource;
   }
   
@@ -40,14 +40,14 @@ public class TAVEmptyResource
   
   public TrackInfo trackInfoForType(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(219886);
+    AppMethodBeat.i(200917);
     if (this.insertTimeRange)
     {
       TrackInfo localTrackInfo = super.trackInfoForType(paramInt1, paramInt2);
-      AppMethodBeat.o(219886);
+      AppMethodBeat.o(200917);
       return localTrackInfo;
     }
-    AppMethodBeat.o(219886);
+    AppMethodBeat.o(200917);
     return null;
   }
 }

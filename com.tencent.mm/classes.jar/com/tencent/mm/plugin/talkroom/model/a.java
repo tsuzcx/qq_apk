@@ -5,18 +5,18 @@ import com.tencent.mm.compatible.deviceinfo.m;
 
 public final class a
 {
-  public static final int BmX;
+  public static final int BEw;
   private static int cpuFlag0;
   
   static
   {
     AppMethodBeat.i(29436);
-    int i = m.aaf();
+    int i = m.aao();
     cpuFlag0 = i;
     if ((i & 0x400) != 0) {}
     for (i = 16000;; i = 8000)
     {
-      BmX = i;
+      BEw = i;
       AppMethodBeat.o(29436);
       return;
     }

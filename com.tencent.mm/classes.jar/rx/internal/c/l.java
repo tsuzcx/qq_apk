@@ -7,31 +7,31 @@ import rx.g.a;
 final class l
   implements a
 {
-  private final a NZU;
-  private final g.a NZV;
-  private final long ttZ;
+  private final a OwZ;
+  private final g.a Oxa;
+  private final long tEQ;
   
   public l(a parama, g.a parama1, long paramLong)
   {
-    this.NZU = parama;
-    this.NZV = parama1;
-    this.ttZ = paramLong;
+    this.OwZ = parama;
+    this.Oxa = parama1;
+    this.tEQ = paramLong;
   }
   
   public final void call()
   {
     AppMethodBeat.i(90400);
-    if (this.NZV.gyR())
+    if (this.Oxa.gDt())
     {
       AppMethodBeat.o(90400);
       return;
     }
-    long l = this.ttZ - this.NZV.now();
+    long l = this.tEQ - this.Oxa.now();
     if (l > 0L) {}
     try
     {
       Thread.sleep(l);
-      if (this.NZV.gyR())
+      if (this.Oxa.gDt())
       {
         AppMethodBeat.o(90400);
         return;
@@ -44,13 +44,13 @@ final class l
       AppMethodBeat.o(90400);
       throw localRuntimeException;
     }
-    this.NZU.call();
+    this.OwZ.call();
     AppMethodBeat.o(90400);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     rx.internal.c.l
  * JD-Core Version:    0.7.0.1
  */

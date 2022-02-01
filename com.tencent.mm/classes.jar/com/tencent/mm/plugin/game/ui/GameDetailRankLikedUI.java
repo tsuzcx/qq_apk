@@ -16,23 +16,25 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.x;
-import com.tencent.mm.al.x.a;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.x;
+import com.tencent.mm.ak.x.a;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.game.d.bs;
-import com.tencent.mm.plugin.game.d.ea;
+import com.tencent.mm.plugin.game.d.bz;
+import com.tencent.mm.plugin.game.d.ca;
+import com.tencent.mm.plugin.game.d.ej;
 import com.tencent.mm.plugin.game.f.c;
 import com.tencent.mm.plugin.messenger.foundation.a.l;
 import com.tencent.mm.pluginsdk.ui.a.b;
 import com.tencent.mm.pluginsdk.ui.span.k;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.storage.am;
-import com.tencent.mm.storage.bp;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.an;
+import com.tencent.mm.storage.bq;
 import com.tencent.mm.ui.MMActivity;
 import java.util.LinkedList;
 import java.util.List;
@@ -41,9 +43,9 @@ public class GameDetailRankLikedUI
   extends MMActivity
 {
   private static final String TAG;
-  private Dialog mKz;
-  private ListView umW;
-  private a umX;
+  private Dialog mPB;
+  private ListView uyt;
+  private a uyu;
   
   static
   {
@@ -71,11 +73,11 @@ public class GameDetailRankLikedUI
         return true;
       }
     });
-    this.umW = ((ListView)findViewById(2131300419));
-    this.umX = new a(this);
-    this.umW.setAdapter(this.umX);
-    this.mKz = c.fA(getContext());
-    this.mKz.show();
+    this.uyt = ((ListView)findViewById(2131300419));
+    this.uyu = new a(this);
+    this.uyt.setAdapter(this.uyu);
+    this.mPB = c.fF(getContext());
+    this.mPB.show();
     AppMethodBeat.o(42001);
   }
   
@@ -85,19 +87,19 @@ public class GameDetailRankLikedUI
     super.onCreate(paramBundle);
     initView();
     paramBundle = getIntent().getStringExtra("extra_appdi");
-    if (com.tencent.mm.sdk.platformtools.bt.isNullOrNil(paramBundle))
+    if (bu.isNullOrNil(paramBundle))
     {
       finish();
       AppMethodBeat.o(42000);
       return;
     }
     Object localObject = new b.a();
-    ((b.a)localObject).hNM = new bs();
-    ((b.a)localObject).hNN = new com.tencent.mm.plugin.game.d.bt();
+    ((b.a)localObject).hQF = new bz();
+    ((b.a)localObject).hQG = new ca();
     ((b.a)localObject).uri = "/cgi-bin/mmgame-bin/getuplist";
     ((b.a)localObject).funcId = 1331;
-    localObject = ((b.a)localObject).aDC();
-    ((bs)((b)localObject).hNK.hNQ).gsT = paramBundle;
+    localObject = ((b.a)localObject).aDS();
+    ((bz)((b)localObject).hQD.hQJ).gvv = paramBundle;
     x.a((b)localObject, new x.a()
     {
       public final int a(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, b paramAnonymousb, n paramAnonymousn)
@@ -105,18 +107,18 @@ public class GameDetailRankLikedUI
         AppMethodBeat.i(41994);
         if ((paramAnonymousInt1 != 0) || (paramAnonymousInt2 != 0))
         {
-          ad.e(GameDetailRankLikedUI.TAG, "CGI return is not OK. (%d, %d)(%s)", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString });
+          ae.e(GameDetailRankLikedUI.TAG, "CGI return is not OK. (%d, %d)(%s)", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString });
           GameDetailRankLikedUI.this.finish();
           AppMethodBeat.o(41994);
           return 0;
         }
-        paramAnonymousb = (com.tencent.mm.plugin.game.d.bt)paramAnonymousb.hNL.hNQ;
+        paramAnonymousb = (ca)paramAnonymousb.hQE.hQJ;
         paramAnonymousString = GameDetailRankLikedUI.a(GameDetailRankLikedUI.this);
-        paramAnonymousb = paramAnonymousb.uiG;
+        paramAnonymousb = paramAnonymousb.uue;
         if (paramAnonymousb != null)
         {
-          paramAnonymousString.cje.clear();
-          paramAnonymousString.cje.addAll(paramAnonymousb);
+          paramAnonymousString.cjg.clear();
+          paramAnonymousString.cjg.addAll(paramAnonymousb);
           paramAnonymousString.notifyDataSetChanged();
         }
         GameDetailRankLikedUI.b(GameDetailRankLikedUI.this).dismiss();
@@ -136,29 +138,29 @@ public class GameDetailRankLikedUI
   static final class a
     extends BaseAdapter
   {
-    List<ea> cje;
+    List<ej> cjg;
     private Context mContext;
     
     public a(Context paramContext)
     {
       AppMethodBeat.i(41995);
-      this.cje = new LinkedList();
+      this.cjg = new LinkedList();
       this.mContext = paramContext;
       AppMethodBeat.o(41995);
     }
     
-    private ea HV(int paramInt)
+    private ej It(int paramInt)
     {
       AppMethodBeat.i(41997);
-      ea localea = (ea)this.cje.get(paramInt);
+      ej localej = (ej)this.cjg.get(paramInt);
       AppMethodBeat.o(41997);
-      return localea;
+      return localej;
     }
     
     public final int getCount()
     {
       AppMethodBeat.i(41996);
-      int i = this.cje.size();
+      int i = this.cjg.size();
       AppMethodBeat.o(41996);
       return i;
     }
@@ -171,41 +173,41 @@ public class GameDetailRankLikedUI
     public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
     {
       AppMethodBeat.i(41998);
-      ea localea;
+      ej localej;
       if (paramView == null)
       {
         paramView = LayoutInflater.from(this.mContext).inflate(2131494289, paramViewGroup, false);
         paramViewGroup = new a((byte)0);
-        paramViewGroup.jdF = ((ImageView)paramView.findViewById(2131300416));
-        paramViewGroup.umK = ((TextView)paramView.findViewById(2131300417));
-        paramViewGroup.umZ = ((TextView)paramView.findViewById(2131300418));
+        paramViewGroup.jgy = ((ImageView)paramView.findViewById(2131300416));
+        paramViewGroup.uyh = ((TextView)paramView.findViewById(2131300417));
+        paramViewGroup.okL = ((TextView)paramView.findViewById(2131300418));
         paramView.setTag(paramViewGroup);
-        localea = HV(paramInt);
-        a.b.a(paramViewGroup.jdF, localea.ukj, 0.5F, false);
-        Object localObject = ((l)g.ab(l.class)).azp().Bf(localea.ukj);
+        localej = It(paramInt);
+        a.b.a(paramViewGroup.jgy, localej.uvG, 0.5F, false);
+        Object localObject = ((l)g.ab(l.class)).azF().BH(localej.uvG);
         if (localObject == null) {
           break label196;
         }
-        localObject = new SpannableString(k.b(this.mContext, ((am)localObject).adv(), paramViewGroup.umK.getTextSize()));
-        paramViewGroup.umK.setText((CharSequence)localObject);
+        localObject = new SpannableString(k.b(this.mContext, ((an)localObject).adG(), paramViewGroup.uyh.getTextSize()));
+        paramViewGroup.uyh.setText((CharSequence)localObject);
       }
       for (;;)
       {
-        paramViewGroup.umZ.setText(localea.ukk);
+        paramViewGroup.okL.setText(localej.uvH);
         AppMethodBeat.o(41998);
         return paramView;
         paramViewGroup = (a)paramView.getTag();
         break;
         label196:
-        paramViewGroup.umK.setText("");
+        paramViewGroup.uyh.setText("");
       }
     }
     
     static final class a
     {
-      public ImageView jdF;
-      public TextView umK;
-      public TextView umZ;
+      public ImageView jgy;
+      public TextView okL;
+      public TextView uyh;
     }
   }
 }

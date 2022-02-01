@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/f40" android:background="@color/b" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/h1z" android:background="@color/b" android:paddingLeft="@dimen/c0" android:paddingTop="@dimen/ci" android:paddingRight="@dimen/c0" android:paddingBottom="@dimen/ci" style="@style/m4">
+        <com.tencent.mm.ui.widget.MMEditText android:textSize="@dimen/ji" android:textColor="@color/y4" android:textColorHighlight="@color/FG_2" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/h20" android:background="@drawable/cai" android:paddingTop="@dimen/jn" android:paddingBottom="@dimen/jn" android:layout_width="0.0dip" android:layout_height="wrap_content" android:maxHeight="@dimen/bt" android:minHeight="@dimen/ad" android:singleLine="false" android:layout_weight="1.0" android:inputType="textCapSentences|textMultiLine" android:textCursorDrawable="@drawable/x5" android:paddingStart="@dimen/c0" android:paddingEnd="@dimen/c0" />
+        <com.tencent.mm.ui.widget.imageview.WeImageButton android:layout_gravity="bottom" android:id="@id/h25" android:background="@null" android:layout_width="@dimen/c_" android:layout_height="@dimen/c_" android:layout_marginBottom="@dimen/bq" android:src="@drawable/mo" android:contentDescription="@string/apz" android:layout_marginStart="10.0dip" />
+        <FrameLayout android:gravity="center_vertical" android:layout_gravity="bottom" android:orientation="vertical" android:id="@id/h24" android:layout_width="wrap_content" android:layout_height="@dimen/c_" android:layout_marginBottom="@dimen/bq" android:layout_marginStart="10.0dip">
+            <Button android:enabled="false" android:id="@id/h23" android:paddingLeft="@dimen/jn" android:paddingRight="@dimen/jn" android:layout_width="wrap_content" android:layout_height="@dimen/ag" android:minWidth="@dimen/ai" android:text="@string/wc" style="@style/o8" />
+            <Button android:id="@id/h22" android:paddingLeft="@dimen/jn" android:paddingRight="@dimen/jn" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="@dimen/ag" android:minWidth="@dimen/ai" android:text="@string/wc" style="@style/o8" />
+        </FrameLayout>
+    </LinearLayout>
+    <TextView android:textSize="@dimen/b_" android:textColor="@color/km" android:id="@id/i8l" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/ci" android:layout_marginStart="@dimen/c0" />
+</LinearLayout>

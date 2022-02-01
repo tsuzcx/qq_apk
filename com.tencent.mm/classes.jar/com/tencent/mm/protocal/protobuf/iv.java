@@ -3,15 +3,15 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class iv
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public String FBN;
-  public String FBO;
-  public String FBP;
-  public String FBQ;
-  public String FBR;
-  public String ozD;
-  public String pkr;
+  public String FUi;
+  public String FUj;
+  public String FUk;
+  public String FUl;
+  public String FUm;
+  public String oGf;
+  public String pqW;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -19,70 +19,70 @@ public final class iv
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.FBN != null) {
-        paramVarArgs.d(1, this.FBN);
+      if (this.FUi != null) {
+        paramVarArgs.d(1, this.FUi);
       }
-      if (this.FBO != null) {
-        paramVarArgs.d(2, this.FBO);
+      if (this.FUj != null) {
+        paramVarArgs.d(2, this.FUj);
       }
-      if (this.FBP != null) {
-        paramVarArgs.d(3, this.FBP);
+      if (this.FUk != null) {
+        paramVarArgs.d(3, this.FUk);
       }
-      if (this.pkr != null) {
-        paramVarArgs.d(4, this.pkr);
+      if (this.pqW != null) {
+        paramVarArgs.d(4, this.pqW);
       }
-      if (this.ozD != null) {
-        paramVarArgs.d(5, this.ozD);
+      if (this.oGf != null) {
+        paramVarArgs.d(5, this.oGf);
       }
-      if (this.FBQ != null) {
-        paramVarArgs.d(6, this.FBQ);
+      if (this.FUl != null) {
+        paramVarArgs.d(6, this.FUl);
       }
-      if (this.FBR != null) {
-        paramVarArgs.d(7, this.FBR);
+      if (this.FUm != null) {
+        paramVarArgs.d(7, this.FUm);
       }
       AppMethodBeat.o(124392);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.FBN == null) {
+      if (this.FUi == null) {
         break label578;
       }
     }
     label578:
-    for (int i = f.a.a.b.b.a.e(1, this.FBN) + 0;; i = 0)
+    for (int i = f.a.a.b.b.a.e(1, this.FUi) + 0;; i = 0)
     {
       paramInt = i;
-      if (this.FBO != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.FBO);
+      if (this.FUj != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.FUj);
       }
       i = paramInt;
-      if (this.FBP != null) {
-        i = paramInt + f.a.a.b.b.a.e(3, this.FBP);
+      if (this.FUk != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.FUk);
       }
       paramInt = i;
-      if (this.pkr != null) {
-        paramInt = i + f.a.a.b.b.a.e(4, this.pkr);
+      if (this.pqW != null) {
+        paramInt = i + f.a.a.b.b.a.e(4, this.pqW);
       }
       i = paramInt;
-      if (this.ozD != null) {
-        i = paramInt + f.a.a.b.b.a.e(5, this.ozD);
+      if (this.oGf != null) {
+        i = paramInt + f.a.a.b.b.a.e(5, this.oGf);
       }
       paramInt = i;
-      if (this.FBQ != null) {
-        paramInt = i + f.a.a.b.b.a.e(6, this.FBQ);
+      if (this.FUl != null) {
+        paramInt = i + f.a.a.b.b.a.e(6, this.FUl);
       }
       i = paramInt;
-      if (this.FBR != null) {
-        i = paramInt + f.a.a.b.b.a.e(7, this.FBR);
+      if (this.FUm != null) {
+        i = paramInt + f.a.a.b.b.a.e(7, this.FUm);
       }
       AppMethodBeat.o(124392);
       return i;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
         AppMethodBeat.o(124392);
@@ -98,31 +98,31 @@ public final class iv
           AppMethodBeat.o(124392);
           return -1;
         case 1: 
-          localiv.FBN = locala.NPN.readString();
+          localiv.FUi = locala.OmT.readString();
           AppMethodBeat.o(124392);
           return 0;
         case 2: 
-          localiv.FBO = locala.NPN.readString();
+          localiv.FUj = locala.OmT.readString();
           AppMethodBeat.o(124392);
           return 0;
         case 3: 
-          localiv.FBP = locala.NPN.readString();
+          localiv.FUk = locala.OmT.readString();
           AppMethodBeat.o(124392);
           return 0;
         case 4: 
-          localiv.pkr = locala.NPN.readString();
+          localiv.pqW = locala.OmT.readString();
           AppMethodBeat.o(124392);
           return 0;
         case 5: 
-          localiv.ozD = locala.NPN.readString();
+          localiv.oGf = locala.OmT.readString();
           AppMethodBeat.o(124392);
           return 0;
         case 6: 
-          localiv.FBQ = locala.NPN.readString();
+          localiv.FUl = locala.OmT.readString();
           AppMethodBeat.o(124392);
           return 0;
         }
-        localiv.FBR = locala.NPN.readString();
+        localiv.FUm = locala.OmT.readString();
         AppMethodBeat.o(124392);
         return 0;
       }

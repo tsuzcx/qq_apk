@@ -5,12 +5,12 @@ import d.l;
 import d.v;
 import java.util.concurrent.atomic.AtomicReferenceFieldUpdater;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/coroutines/internal/LockFreeLinkedListNode;", "<init>", "()V", "Lkotlinx/coroutines/internal/Node;", "node", "", "addLast", "(Lkotlinx/coroutines/internal/LockFreeLinkedListNode;)V", "Lkotlin/Function0;", "", "condition", "addLastIf", "(Lkotlinx/coroutines/internal/LockFreeLinkedListNode;Lkotlin/jvm/functions/Function0;)Z", "Lkotlin/Function1;", "predicate", "addLastIfPrev", "(Lkotlinx/coroutines/internal/LockFreeLinkedListNode;Lkotlin/jvm/functions/Function1;)Z", "addLastIfPrevAndIf", "(Lkotlinx/coroutines/internal/LockFreeLinkedListNode;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function0;)Z", "next", "addNext", "(Lkotlinx/coroutines/internal/LockFreeLinkedListNode;Lkotlinx/coroutines/internal/LockFreeLinkedListNode;)Z", "addOneIfEmpty", "(Lkotlinx/coroutines/internal/LockFreeLinkedListNode;)Z", "Lkotlinx/coroutines/internal/OpDescriptor;", "op", "correctPrev", "(Lkotlinx/coroutines/internal/OpDescriptor;)Lkotlinx/coroutines/internal/LockFreeLinkedListNode;", "T", "Lkotlinx/coroutines/internal/LockFreeLinkedListNode$AddLastDesc;", "describeAddLast", "(Lkotlinx/coroutines/internal/LockFreeLinkedListNode;)Lkotlinx/coroutines/internal/LockFreeLinkedListNode$AddLastDesc;", "Lkotlinx/coroutines/internal/LockFreeLinkedListNode$RemoveFirstDesc;", "describeRemoveFirst", "()Lkotlinx/coroutines/internal/LockFreeLinkedListNode$RemoveFirstDesc;", "current", "findPrevNonRemoved", "(Lkotlinx/coroutines/internal/LockFreeLinkedListNode;)Lkotlinx/coroutines/internal/LockFreeLinkedListNode;", "finishAdd", "helpRemove", "helpRemovePrev", "Lkotlinx/coroutines/internal/LockFreeLinkedListNode$CondAddOp;", "makeCondAddOp", "(Lkotlinx/coroutines/internal/LockFreeLinkedListNode;Lkotlin/jvm/functions/Function0;)Lkotlinx/coroutines/internal/LockFreeLinkedListNode$CondAddOp;", "nextIfRemoved", "()Lkotlinx/coroutines/internal/LockFreeLinkedListNode;", "remove", "()Z", "removeFirstIfIsInstanceOfOrPeekIf", "(Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;", "removeFirstOrNull", "removeOrNext", "Lkotlinx/coroutines/internal/Removed;", "removed", "()Lkotlinx/coroutines/internal/Removed;", "", "toString", "()Ljava/lang/String;", "condAdd", "", "tryCondAddNext", "(Lkotlinx/coroutines/internal/LockFreeLinkedListNode;Lkotlinx/coroutines/internal/LockFreeLinkedListNode;Lkotlinx/coroutines/internal/LockFreeLinkedListNode$CondAddOp;)I", "prev", "validateNode$kotlinx_coroutines_core", "(Lkotlinx/coroutines/internal/LockFreeLinkedListNode;Lkotlinx/coroutines/internal/LockFreeLinkedListNode;)V", "validateNode", "isRemoved", "", "getNext", "()Ljava/lang/Object;", "getNextNode", "nextNode", "getPrevNode", "prevNode", "AbstractAtomicDesc", "AddLastDesc", "CondAddOp", "PrepareOp", "RemoveFirstDesc", "kotlinx-coroutines-core"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/coroutines/internal/LockFreeLinkedListNode;", "<init>", "()V", "Lkotlinx/coroutines/internal/Node;", "node", "", "addLast", "(Lkotlinx/coroutines/internal/LockFreeLinkedListNode;)V", "Lkotlin/Function0;", "", "condition", "addLastIf", "(Lkotlinx/coroutines/internal/LockFreeLinkedListNode;Lkotlin/jvm/functions/Function0;)Z", "Lkotlin/Function1;", "predicate", "addLastIfPrev", "(Lkotlinx/coroutines/internal/LockFreeLinkedListNode;Lkotlin/jvm/functions/Function1;)Z", "addLastIfPrevAndIf", "(Lkotlinx/coroutines/internal/LockFreeLinkedListNode;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function0;)Z", "next", "addNext", "(Lkotlinx/coroutines/internal/LockFreeLinkedListNode;Lkotlinx/coroutines/internal/LockFreeLinkedListNode;)Z", "addOneIfEmpty", "(Lkotlinx/coroutines/internal/LockFreeLinkedListNode;)Z", "Lkotlinx/coroutines/internal/OpDescriptor;", "op", "correctPrev", "(Lkotlinx/coroutines/internal/OpDescriptor;)Lkotlinx/coroutines/internal/LockFreeLinkedListNode;", "T", "Lkotlinx/coroutines/internal/LockFreeLinkedListNode$AddLastDesc;", "describeAddLast", "(Lkotlinx/coroutines/internal/LockFreeLinkedListNode;)Lkotlinx/coroutines/internal/LockFreeLinkedListNode$AddLastDesc;", "Lkotlinx/coroutines/internal/LockFreeLinkedListNode$RemoveFirstDesc;", "describeRemoveFirst", "()Lkotlinx/coroutines/internal/LockFreeLinkedListNode$RemoveFirstDesc;", "current", "findPrevNonRemoved", "(Lkotlinx/coroutines/internal/LockFreeLinkedListNode;)Lkotlinx/coroutines/internal/LockFreeLinkedListNode;", "finishAdd", "helpRemove", "helpRemovePrev", "Lkotlinx/coroutines/internal/LockFreeLinkedListNode$CondAddOp;", "makeCondAddOp", "(Lkotlinx/coroutines/internal/LockFreeLinkedListNode;Lkotlin/jvm/functions/Function0;)Lkotlinx/coroutines/internal/LockFreeLinkedListNode$CondAddOp;", "nextIfRemoved", "()Lkotlinx/coroutines/internal/LockFreeLinkedListNode;", "remove", "()Z", "removeFirstIfIsInstanceOfOrPeekIf", "(Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;", "removeFirstOrNull", "removeOrNext", "Lkotlinx/coroutines/internal/Removed;", "removed", "()Lkotlinx/coroutines/internal/Removed;", "", "toString", "()Ljava/lang/String;", "condAdd", "", "tryCondAddNext", "(Lkotlinx/coroutines/internal/LockFreeLinkedListNode;Lkotlinx/coroutines/internal/LockFreeLinkedListNode;Lkotlinx/coroutines/internal/LockFreeLinkedListNode$CondAddOp;)I", "prev", "validateNode$kotlinx_coroutines_core", "(Lkotlinx/coroutines/internal/LockFreeLinkedListNode;Lkotlinx/coroutines/internal/LockFreeLinkedListNode;)V", "validateNode", "isRemoved", "", "getNext", "()Ljava/lang/Object;", "getNextNode", "nextNode", "getPrevNode", "prevNode", "AbstractAtomicDesc", "AddLastDesc", "CondAddOp", "PrepareOp", "RemoveFirstDesc", "kotlinx-coroutines-core"})
 public class j
 {
-  static final AtomicReferenceFieldUpdater NJK;
-  static final AtomicReferenceFieldUpdater NJL;
-  private static final AtomicReferenceFieldUpdater NJM;
+  static final AtomicReferenceFieldUpdater OgQ;
+  static final AtomicReferenceFieldUpdater OgR;
+  private static final AtomicReferenceFieldUpdater OgS;
   volatile Object _next;
   volatile Object _prev;
   private volatile Object _removedRef;
@@ -18,9 +18,9 @@ public class j
   static
   {
     AppMethodBeat.i(118104);
-    NJK = AtomicReferenceFieldUpdater.newUpdater(j.class, Object.class, "_next");
-    NJL = AtomicReferenceFieldUpdater.newUpdater(j.class, Object.class, "_prev");
-    NJM = AtomicReferenceFieldUpdater.newUpdater(j.class, Object.class, "_removedRef");
+    OgQ = AtomicReferenceFieldUpdater.newUpdater(j.class, Object.class, "_next");
+    OgR = AtomicReferenceFieldUpdater.newUpdater(j.class, Object.class, "_prev");
+    OgS = AtomicReferenceFieldUpdater.newUpdater(j.class, Object.class, "_removedRef");
     AppMethodBeat.o(118104);
   }
   
@@ -35,12 +35,12 @@ public class j
   
   private static j b(j paramj)
   {
-    AppMethodBeat.i(190830);
+    AppMethodBeat.i(209321);
     for (;;)
     {
       if (!paramj.isRemoved())
       {
-        AppMethodBeat.o(190830);
+        AppMethodBeat.o(209321);
         return paramj;
       }
       paramj = (j)paramj._prev;
@@ -54,21 +54,21 @@ public class j
     do
     {
       localj = (j)paramj._prev;
-      if (gvZ() != paramj)
+      if (gAB() != paramj)
       {
         AppMethodBeat.o(118097);
         return;
       }
-    } while (!NJL.compareAndSet(paramj, localj, this));
+    } while (!OgR.compareAndSet(paramj, localj, this));
     if (isRemoved()) {
-      paramj.gwc();
+      paramj.gAE();
     }
     AppMethodBeat.o(118097);
   }
   
-  private final j gwc()
+  private final j gAE()
   {
-    AppMethodBeat.i(190831);
+    AppMethodBeat.i(209322);
     j localj = (j)this._prev;
     Object localObject1 = null;
     Object localObject2 = localj;
@@ -80,28 +80,28 @@ public class j
       {
         if (localj == localObject2)
         {
-          AppMethodBeat.o(190831);
+          AppMethodBeat.o(209322);
           return localObject2;
         }
-        if (!NJL.compareAndSet(this, localj, localObject2)) {
+        if (!OgR.compareAndSet(this, localj, localObject2)) {
           break;
         }
-        AppMethodBeat.o(190831);
+        AppMethodBeat.o(209322);
         return localObject2;
       }
       if (isRemoved())
       {
-        AppMethodBeat.o(190831);
+        AppMethodBeat.o(209322);
         return null;
       }
       if (localObject3 == null)
       {
-        AppMethodBeat.o(190831);
+        AppMethodBeat.o(209322);
         return localObject2;
       }
       if ((localObject3 instanceof p))
       {
-        ((p)localObject3).fW(localObject2);
+        ((p)localObject3).fZ(localObject2);
         break;
       }
       if (!(localObject3 instanceof q)) {
@@ -110,7 +110,7 @@ public class j
       if (localObject1 == null) {
         break label145;
       }
-      if (!NJK.compareAndSet(localObject1, localObject2, ((q)localObject3).NKa)) {
+      if (!OgQ.compareAndSet(localObject1, localObject2, ((q)localObject3).Ohg)) {
         break;
       }
       localObject2 = localObject1;
@@ -126,7 +126,7 @@ public class j
       if (localObject3 == null)
       {
         localObject1 = new v("null cannot be cast to non-null type kotlinx.coroutines.internal.Node /* = kotlinx.coroutines.internal.LockFreeLinkedListNode */");
-        AppMethodBeat.o(190831);
+        AppMethodBeat.o(209322);
         throw ((Throwable)localObject1);
       }
       localObject1 = localObject3;
@@ -139,15 +139,15 @@ public class j
   public final int a(j paramj1, j paramj2, a parama)
   {
     AppMethodBeat.i(118095);
-    NJL.lazySet(paramj1, this);
-    NJK.lazySet(paramj1, paramj2);
-    parama.NJN = paramj2;
-    if (!NJK.compareAndSet(this, paramj2, parama))
+    OgR.lazySet(paramj1, this);
+    OgQ.lazySet(paramj1, paramj2);
+    parama.OgT = paramj2;
+    if (!OgQ.compareAndSet(this, paramj2, parama))
     {
       AppMethodBeat.o(118095);
       return 0;
     }
-    if (parama.fW(this) == null)
+    if (parama.fZ(this) == null)
     {
       AppMethodBeat.o(118095);
       return 1;
@@ -159,22 +159,22 @@ public class j
   public final boolean c(j paramj)
   {
     AppMethodBeat.i(118094);
-    NJL.lazySet(paramj, this);
-    NJK.lazySet(paramj, this);
+    OgR.lazySet(paramj, this);
+    OgQ.lazySet(paramj, this);
     do
     {
-      if (gvZ() != (j)this)
+      if (gAB() != (j)this)
       {
         AppMethodBeat.o(118094);
         return false;
       }
-    } while (!NJK.compareAndSet(this, this, paramj));
+    } while (!OgQ.compareAndSet(this, this, paramj));
     paramj.d(this);
     AppMethodBeat.o(118094);
     return true;
   }
   
-  public final Object gvZ()
+  public final Object gAB()
   {
     AppMethodBeat.i(118091);
     for (;;)
@@ -185,45 +185,45 @@ public class j
         AppMethodBeat.o(118091);
         return localObject;
       }
-      ((p)localObject).fW(this);
+      ((p)localObject).fZ(this);
     }
   }
   
-  public final j gwa()
+  public final j gAC()
   {
-    AppMethodBeat.i(221176);
-    j localj = i.fX(gvZ());
-    AppMethodBeat.o(221176);
+    AppMethodBeat.i(224251);
+    j localj = i.ga(gAB());
+    AppMethodBeat.o(224251);
     return localj;
   }
   
-  public final j gwb()
+  public final j gAD()
   {
-    AppMethodBeat.i(190829);
-    j localj2 = gwc();
+    AppMethodBeat.i(209320);
+    j localj2 = gAE();
     j localj1 = localj2;
     if (localj2 == null) {
       localj1 = b((j)this._prev);
     }
-    AppMethodBeat.o(190829);
+    AppMethodBeat.o(209320);
     return localj1;
   }
   
   public boolean isRemoved()
   {
-    AppMethodBeat.i(190827);
-    boolean bool = gvZ() instanceof q;
-    AppMethodBeat.o(190827);
+    AppMethodBeat.i(209318);
+    boolean bool = gAB() instanceof q;
+    AppMethodBeat.o(209318);
     return bool;
   }
   
   public boolean remove()
   {
     AppMethodBeat.i(118096);
-    Object localObject2 = gvZ();
+    Object localObject2 = gAB();
     Object localObject1;
     if ((localObject2 instanceof q)) {
-      localObject1 = ((q)localObject2).NKa;
+      localObject1 = ((q)localObject2).Ohg;
     }
     for (;;)
     {
@@ -250,12 +250,12 @@ public class j
         if (localq == null)
         {
           localObject1 = new q(localj);
-          NJM.lazySet(localj, localObject1);
+          OgS.lazySet(localj, localObject1);
         }
-        if (!NJK.compareAndSet(this, localObject2, localObject1)) {
+        if (!OgQ.compareAndSet(this, localObject2, localObject1)) {
           break;
         }
-        ((j)localObject2).gwc();
+        ((j)localObject2).gAE();
         localObject1 = null;
       }
     }
@@ -272,16 +272,16 @@ public class j
     return str;
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/coroutines/internal/LockFreeLinkedListNode$CondAddOp;", "Lkotlinx/coroutines/internal/AtomicOp;", "Lkotlinx/coroutines/internal/LockFreeLinkedListNode;", "Lkotlinx/coroutines/internal/Node;", "newNode", "(Lkotlinx/coroutines/internal/LockFreeLinkedListNode;)V", "oldNext", "complete", "", "affected", "failure", "", "kotlinx-coroutines-core"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/coroutines/internal/LockFreeLinkedListNode$CondAddOp;", "Lkotlinx/coroutines/internal/AtomicOp;", "Lkotlinx/coroutines/internal/LockFreeLinkedListNode;", "Lkotlinx/coroutines/internal/Node;", "newNode", "(Lkotlinx/coroutines/internal/LockFreeLinkedListNode;)V", "oldNext", "complete", "", "affected", "failure", "", "kotlinx-coroutines-core"})
   public static abstract class a
     extends c<j>
   {
-    public j NJN;
-    public final j NJO;
+    public j OgT;
+    public final j OgU;
     
     public a(j paramj)
     {
-      this.NJO = paramj;
+      this.OgU = paramj;
     }
   }
 }

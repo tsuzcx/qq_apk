@@ -3,8 +3,8 @@ package com.tencent.mm.plugin.wear.model.f;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wear.model.a;
 import com.tencent.mm.plugin.wear.model.e.r;
-import com.tencent.mm.protocal.protobuf.edd;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.eeu;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -12,7 +12,7 @@ import java.util.LinkedList;
 public final class i
   extends c
 {
-  private ArrayList<Integer> DxN;
+  private ArrayList<Integer> DPs;
   private boolean Io;
   
   public i()
@@ -22,7 +22,7 @@ public final class i
   
   public i(ArrayList<Integer> paramArrayList)
   {
-    this.DxN = paramArrayList;
+    this.DPs = paramArrayList;
     this.Io = false;
   }
   
@@ -34,16 +34,16 @@ public final class i
   protected final void send()
   {
     AppMethodBeat.i(30129);
-    ad.i("MicroMsg.WearCancelNotificationTask", "Id List=%s", new Object[] { this.DxN });
-    edd localedd = new edd();
-    if (this.DxN != null) {
-      localedd.HOS.addAll(this.DxN);
+    ae.i("MicroMsg.WearCancelNotificationTask", "Id List=%s", new Object[] { this.DPs });
+    eeu localeeu = new eeu();
+    if (this.DPs != null) {
+      localeeu.IiZ.addAll(this.DPs);
     }
-    localedd.HOT = this.Io;
+    localeeu.Ija = this.Io;
     try
     {
-      a.eKz();
-      r.a(20004, localedd.toByteArray(), false);
+      a.eOh();
+      r.a(20004, localeeu.toByteArray(), false);
       AppMethodBeat.o(30129);
       return;
     }

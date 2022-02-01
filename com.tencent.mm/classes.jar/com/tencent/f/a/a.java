@@ -8,15 +8,15 @@ import java.util.List;
 
 public final class a
 {
-  private Object IlA;
-  private HashMap<String, Object> Mkg;
-  c Mkh;
+  private Object IFL;
+  private HashMap<String, Object> MHd;
+  c MHe;
   
   public a()
   {
     AppMethodBeat.i(62812);
-    this.Mkg = new HashMap();
-    this.IlA = new Object();
+    this.MHd = new HashMap();
+    this.IFL = new Object();
     AppMethodBeat.o(62812);
   }
   
@@ -24,16 +24,16 @@ public final class a
   {
     AppMethodBeat.i(62815);
     String str;
-    if ((parame != null) && (parame.dzZ != null))
+    if ((parame != null) && (parame.dBe != null))
     {
       System.currentTimeMillis();
-      str = parame.dzZ;
+      str = parame.dBe;
     }
     for (;;)
     {
-      synchronized (this.IlA)
+      synchronized (this.IFL)
       {
-        localObject1 = this.Mkg.get(str);
+        localObject1 = this.MHd.get(str);
         if (localObject1 == null) {
           break label171;
         }
@@ -42,14 +42,14 @@ public final class a
           locald = (d)localObject1;
           localObject1 = null;
           if (locald != null) {
-            locald.hd(str, parame.Mkj);
+            locald.hm(str, parame.MHg);
           }
           if (localObject1 != null)
           {
             localObject1 = ((LinkedList)localObject1).iterator();
             if (((Iterator)localObject1).hasNext())
             {
-              ((d)((Iterator)localObject1).next()).hd(str, parame.Mkj);
+              ((d)((Iterator)localObject1).next()).hm(str, parame.MHg);
               continue;
             }
           }
@@ -63,7 +63,7 @@ public final class a
           locald = null;
         }
       }
-      this.Mkh.a(parame);
+      this.MHe.a(parame);
       AppMethodBeat.o(62815);
       return;
       label171:
@@ -85,7 +85,7 @@ public final class a
       int i;
       Object localObject2;
       Object localObject3;
-      synchronized (this.IlA)
+      synchronized (this.IFL)
       {
         int j = paramArrayOfString.length;
         i = 0;
@@ -96,10 +96,10 @@ public final class a
         if (localObject2 == null) {
           break label208;
         }
-        localObject3 = this.Mkg.get(localObject2);
+        localObject3 = this.MHd.get(localObject2);
         if (localObject3 == null)
         {
-          this.Mkg.put(localObject2, paramd);
+          this.MHd.put(localObject2, paramd);
         }
         else if ((localObject3 instanceof d))
         {
@@ -112,7 +112,7 @@ public final class a
           LinkedList localLinkedList = new LinkedList();
           localLinkedList.add(localObject3);
           localLinkedList.add(paramd);
-          this.Mkg.put(localObject2, localLinkedList);
+          this.MHd.put(localObject2, localLinkedList);
         }
       }
       if ((localObject3 instanceof List))
@@ -137,9 +137,9 @@ public final class a
   public final void b(String paramString, int paramInt, Object paramObject)
   {
     AppMethodBeat.i(62814);
-    e locale = (e)this.Mkh.fYN();
-    locale.dzZ = paramString;
-    locale.Mkj = paramInt;
+    e locale = (e)this.MHe.gdm();
+    locale.dBe = paramString;
+    locale.MHg = paramInt;
     locale.arg1 = 0;
     locale.arg2 = 0;
     locale.obj = paramObject;

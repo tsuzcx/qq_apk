@@ -9,28 +9,28 @@ import java.util.LinkedList;
 import java.util.List;
 
 public final class d
-  extends com.tencent.mm.plugin.appbrand.y.c<c>
+  extends com.tencent.mm.plugin.appbrand.x.c<c>
 {
-  public static final String[] hEf;
-  private final e jHa;
+  public static final String[] hGX;
+  private final e jKa;
   
   static
   {
     AppMethodBeat.i(44439);
-    hEf = new String[] { j.getCreateSQLs(c.hEe, "PredownloadCmdGetCodePersistentInfo2"), "DROP TABLE IF EXISTS PredownloadCmdGetCodePersistentInfo" };
+    hGX = new String[] { j.getCreateSQLs(c.hGW, "PredownloadCmdGetCodePersistentInfo2"), "DROP TABLE IF EXISTS PredownloadCmdGetCodePersistentInfo" };
     AppMethodBeat.o(44439);
   }
   
   public d(e parame)
   {
-    super(parame, c.hEe, "PredownloadCmdGetCodePersistentInfo2", c.INDEX_CREATE);
-    this.jHa = parame;
+    super(parame, c.hGW, "PredownloadCmdGetCodePersistentInfo2", c.INDEX_CREATE);
+    this.jKa = parame;
   }
   
   public final List<c> c(String paramString, String... paramVarArgs)
   {
     AppMethodBeat.i(44438);
-    paramString = this.jHa.query("PredownloadCmdGetCodePersistentInfo2", null, paramString, paramVarArgs, null, null, null);
+    paramString = this.jKa.query("PredownloadCmdGetCodePersistentInfo2", null, paramString, paramVarArgs, null, null, null);
     if ((paramString == null) || (paramString.isClosed()))
     {
       paramString = Collections.emptyList();

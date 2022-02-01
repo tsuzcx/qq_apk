@@ -3,26 +3,26 @@ package com.tencent.mm.plugin.appbrand.dynamic.a;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.modelappbrand.e;
-import com.tencent.mm.plugin.appbrand.z.h;
+import com.tencent.mm.plugin.appbrand.y.h;
 import java.util.Map;
 import java.util.Set;
 
 final class a
   implements e
 {
-  private final h<Object, View> kfB;
+  private final h<Object, View> kiR;
   
   a()
   {
     AppMethodBeat.i(121207);
-    this.kfB = new h();
+    this.kiR = new h();
     AppMethodBeat.o(121207);
   }
   
-  public final Map<Object, Set<View>> aDD()
+  public final Map<Object, Set<View>> aDT()
   {
     AppMethodBeat.i(121212);
-    Map localMap = this.kfB.bBn();
+    Map localMap = this.kiR.bCh();
     AppMethodBeat.o(121212);
     return localMap;
   }
@@ -30,7 +30,7 @@ final class a
   public final Set<View> bX(Object paramObject)
   {
     AppMethodBeat.i(121210);
-    paramObject = this.kfB.cE(paramObject);
+    paramObject = this.kiR.cF(paramObject);
     AppMethodBeat.o(121210);
     return paramObject;
   }
@@ -38,7 +38,7 @@ final class a
   public final Set<View> bY(Object paramObject)
   {
     AppMethodBeat.i(121211);
-    paramObject = this.kfB.cF(paramObject);
+    paramObject = this.kiR.cG(paramObject);
     AppMethodBeat.o(121211);
     return paramObject;
   }
@@ -46,7 +46,7 @@ final class a
   public final boolean d(Object paramObject, View paramView)
   {
     AppMethodBeat.i(121208);
-    boolean bool = this.kfB.j(paramObject, paramView);
+    boolean bool = this.kiR.j(paramObject, paramView);
     AppMethodBeat.o(121208);
     return bool;
   }
@@ -54,7 +54,7 @@ final class a
   public final boolean e(Object paramObject, View paramView)
   {
     AppMethodBeat.i(121209);
-    boolean bool = this.kfB.D(paramObject, paramView);
+    boolean bool = this.kiR.D(paramObject, paramView);
     AppMethodBeat.o(121209);
     return bool;
   }

@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.expt.hellhound.core.stack;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.expt.hellhound.core.a.b;
 import com.tencent.mm.protocal.protobuf.bk;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class c
 {
@@ -27,16 +27,16 @@ public final class c
     {
       for (;;)
       {
-        ad.printErrStackTrace("HABBYGE-MALI.ActivityStackDao", parambk, "ActivityStackDao write", new Object[0]);
+        ae.printErrStackTrace("HABBYGE-MALI.ActivityStackDao", parambk, "ActivityStackDao write", new Object[0]);
         parambk = localObject;
       }
     }
   }
   
-  public static bk cnP()
+  public static bk cpr()
   {
     AppMethodBeat.i(121879);
-    bk localbk2 = cnQ();
+    bk localbk2 = cps();
     bk localbk1 = localbk2;
     if (localbk2 == null)
     {
@@ -47,7 +47,7 @@ public final class c
     return localbk1;
   }
   
-  private static bk cnQ()
+  private static bk cps()
   {
     AppMethodBeat.i(121881);
     byte[] arrayOfByte = b.getBytes("hell_astackd_mmkv_key");
@@ -65,7 +65,7 @@ public final class c
     }
     catch (Exception localException)
     {
-      ad.printErrStackTrace("HABBYGE-MALI.ActivityStackDao", localException, "ActivityStackDao read", new Object[0]);
+      ae.printErrStackTrace("HABBYGE-MALI.ActivityStackDao", localException, "ActivityStackDao read", new Object[0]);
       AppMethodBeat.o(121881);
     }
     return null;
@@ -73,7 +73,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.hellhound.core.stack.c
  * JD-Core Version:    0.7.0.1
  */

@@ -1,62 +1,62 @@
 package com.tencent.mm.emoji.panel.a;
 
 import android.content.Context;
-import com.tencent.mm.cc.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.cb.a;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/emoji/panel/adapter/PanelSizeResolver;", "", "()V", "TAG", "", "contentPadding", "", "getContentPadding", "()I", "setContentPadding", "(I)V", "edgeSize", "", "getEdgeSize", "()F", "itemPadding", "getItemPadding", "itemSize", "getItemSize", "itemSpace", "getItemSpace", "setItemSpace", "minSpaceSize", "getMinSpaceSize", "parentWidth", "spanCount", "getSpanCount", "setSpanCount", "titlePadding", "getTitlePadding", "setTitlePadding", "setParentWidth", "", "width", "updateSize", "plugin-emojisdk_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/emoji/panel/adapter/PanelSizeResolver;", "", "()V", "TAG", "", "contentPadding", "", "getContentPadding", "()I", "setContentPadding", "(I)V", "edgeSize", "", "getEdgeSize", "()F", "itemPadding", "getItemPadding", "itemSize", "getItemSize", "itemSpace", "getItemSpace", "setItemSpace", "minSpaceSize", "getMinSpaceSize", "parentWidth", "spanCount", "getSpanCount", "setSpanCount", "titlePadding", "getTitlePadding", "setTitlePadding", "setParentWidth", "", "width", "updateSize", "plugin-emojisdk_release"})
 public abstract class o
 {
   private final String TAG = "MicroMsg.PanelSizeResolver";
   public int atv;
-  private int gnN;
-  private int gnO;
-  public int gnP;
-  int gnQ;
+  private int gqj;
+  private int gqk;
+  public int gql;
+  int gqm;
   
   public o()
   {
-    Context localContext = aj.getContext();
+    Context localContext = ak.getContext();
     p.g(localContext, "context");
     localContext.getResources();
-    this.gnN = a.fromDPToPix(localContext, 400);
+    this.gqj = a.fromDPToPix(localContext, 400);
   }
   
-  public abstract float afQ();
+  public abstract float age();
   
-  public abstract float afR();
+  public abstract float agf();
   
-  public abstract float afS();
+  public abstract float agg();
   
-  public final void mc(int paramInt)
+  public final void mf(int paramInt)
   {
-    ad.i(this.TAG, "setParentWidth: ".concat(String.valueOf(paramInt)));
-    this.gnN = paramInt;
+    ae.i(this.TAG, "setParentWidth: ".concat(String.valueOf(paramInt)));
+    this.gqj = paramInt;
     updateSize();
   }
   
   protected final void updateSize()
   {
-    float f = this.gnN - afR() * 2.0F;
-    if (f < afQ() * 2.0F)
+    float f = this.gqj - agf() * 2.0F;
+    if (f < age() * 2.0F)
     {
       this.atv = 1;
       return;
     }
-    int i = (int)((f - afQ()) / (afQ() + afS())) + 1;
-    this.gnO = ((int)((f - afQ() * i) / (i - 1)));
-    this.gnP = ((int)((this.gnN - afQ() * i - this.gnO * i) / 2.0F));
-    this.gnQ = (this.gnO / 2);
-    ad.i(this.TAG, "updateSize: " + afQ() + ", " + afR() + ", " + afS() + ", " + this.atv + ", " + this.gnO + ", " + this.gnP + ", " + this.gnQ);
+    int i = (int)((f - age()) / (age() + agg())) + 1;
+    this.gqk = ((int)((f - age() * i) / (i - 1)));
+    this.gql = ((int)((this.gqj - age() * i - this.gqk * i) / 2.0F));
+    this.gqm = (this.gqk / 2);
+    ae.i(this.TAG, "updateSize: " + age() + ", " + agf() + ", " + agg() + ", " + this.atv + ", " + this.gqk + ", " + this.gql + ", " + this.gqm);
     this.atv = i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.emoji.panel.a.o
  * JD-Core Version:    0.7.0.1
  */

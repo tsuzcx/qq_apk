@@ -15,26 +15,26 @@ import com.tencent.mm.ui.al;
 public final class AppBrandNearbyWebViewUI
   extends WebViewUI
 {
-  private static Boolean gdz = null;
+  private static Boolean gfH = null;
   
   /* Error */
-  public static boolean abl()
+  public static boolean abu()
   {
     // Byte code:
     //   0: sipush 21123
     //   3: invokestatic 24	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   6: getstatic 10	com/tencent/mm/plugin/appbrand/ui/AppBrandNearbyWebViewUI:gdz	Ljava/lang/Boolean;
+    //   6: getstatic 10	com/tencent/mm/plugin/appbrand/ui/AppBrandNearbyWebViewUI:gfH	Ljava/lang/Boolean;
     //   9: ifnonnull +78 -> 87
     //   12: aconst_null
     //   13: astore_2
     //   14: aconst_null
     //   15: astore_1
-    //   16: new 26	com/tencent/mm/vfs/e
+    //   16: new 26	com/tencent/mm/vfs/k
     //   19: dup
     //   20: invokestatic 32	android/os/Environment:getRootDirectory	()Ljava/io/File;
     //   23: ldc 34
-    //   25: invokespecial 37	com/tencent/mm/vfs/e:<init>	(Ljava/io/File;Ljava/lang/String;)V
-    //   28: invokestatic 43	com/tencent/mm/vfs/i:ai	(Lcom/tencent/mm/vfs/e;)Ljava/io/InputStream;
+    //   25: invokespecial 37	com/tencent/mm/vfs/k:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   28: invokestatic 43	com/tencent/mm/vfs/o:ai	(Lcom/tencent/mm/vfs/k;)Ljava/io/InputStream;
     //   31: astore_3
     //   32: aload_3
     //   33: astore_1
@@ -62,12 +62,12 @@ public final class AppBrandNearbyWebViewUI
     //   68: ldc 60
     //   70: invokevirtual 66	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
     //   73: invokestatic 72	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   76: putstatic 10	com/tencent/mm/plugin/appbrand/ui/AppBrandNearbyWebViewUI:gdz	Ljava/lang/Boolean;
+    //   76: putstatic 10	com/tencent/mm/plugin/appbrand/ui/AppBrandNearbyWebViewUI:gfH	Ljava/lang/Boolean;
     //   79: aload_3
     //   80: ifnull +7 -> 87
     //   83: aload_3
     //   84: invokevirtual 77	java/io/InputStream:close	()V
-    //   87: getstatic 10	com/tencent/mm/plugin/appbrand/ui/AppBrandNearbyWebViewUI:gdz	Ljava/lang/Boolean;
+    //   87: getstatic 10	com/tencent/mm/plugin/appbrand/ui/AppBrandNearbyWebViewUI:gfH	Ljava/lang/Boolean;
     //   90: invokevirtual 80	java/lang/Boolean:booleanValue	()Z
     //   93: istore_0
     //   94: sipush 21123
@@ -78,7 +78,7 @@ public final class AppBrandNearbyWebViewUI
     //   103: aload_1
     //   104: astore_2
     //   105: getstatic 86	java/lang/Boolean:FALSE	Ljava/lang/Boolean;
-    //   108: putstatic 10	com/tencent/mm/plugin/appbrand/ui/AppBrandNearbyWebViewUI:gdz	Ljava/lang/Boolean;
+    //   108: putstatic 10	com/tencent/mm/plugin/appbrand/ui/AppBrandNearbyWebViewUI:gfH	Ljava/lang/Boolean;
     //   111: aload_1
     //   112: ifnull -25 -> 87
     //   115: aload_1
@@ -128,18 +128,18 @@ public final class AppBrandNearbyWebViewUI
     //   131	135	147	java/lang/Exception
   }
   
-  public final void bzn()
+  public final void bAi()
   {
     AppMethodBeat.i(21121);
-    super.bzn();
+    super.bAi();
     setActionbarColor(-855310);
     AppMethodBeat.o(21121);
   }
   
-  public final int bzo()
+  public final int bAj()
   {
     AppMethodBeat.i(21122);
-    if ((Build.VERSION.SDK_INT >= 23) && ((!g.abk()) || (!abl())))
+    if ((Build.VERSION.SDK_INT >= 23) && ((!g.abt()) || (!abu())))
     {
       al.d(getWindow());
       AppMethodBeat.o(21122);
@@ -147,16 +147,16 @@ public final class AppBrandNearbyWebViewUI
     }
     if (Build.VERSION.SDK_INT >= 21)
     {
-      i = ab.jAT;
+      i = ab.jDE;
       AppMethodBeat.o(21122);
       return i;
     }
-    int i = super.bzo();
+    int i = super.bAj();
     AppMethodBeat.o(21122);
     return i;
   }
   
-  public final boolean bzp()
+  public final boolean bAk()
   {
     return true;
   }

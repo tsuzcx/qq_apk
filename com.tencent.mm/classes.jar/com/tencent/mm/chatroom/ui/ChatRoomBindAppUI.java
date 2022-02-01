@@ -18,33 +18,33 @@ import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.v;
+import com.tencent.mm.model.w;
 import com.tencent.mm.plugin.messenger.foundation.a.c;
 import com.tencent.mm.plugin.messenger.foundation.a.c.a;
 import com.tencent.mm.plugin.messenger.foundation.a.c.b;
 import com.tencent.mm.pluginsdk.ui.a.b;
 import com.tencent.mm.pluginsdk.ui.span.k;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.storage.am;
-import com.tencent.mm.storage.bp;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.storage.an;
+import com.tencent.mm.storage.bq;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.t;
 import d.g.b.p;
 
-@d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/chatroom/ui/ChatRoomBindAppUI;", "Lcom/tencent/mm/ui/MMActivity;", "()V", "bindButton", "Landroid/widget/Button;", "openParam", "Lcom/tencent/mm/plugin/messenger/foundation/api/IChatRoomOpenService$ChatRoomOpenParam;", "getLayoutId", "", "initViews", "", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "Companion", "ui-chatroom_release"})
+@d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/chatroom/ui/ChatRoomBindAppUI;", "Lcom/tencent/mm/ui/MMActivity;", "()V", "bindButton", "Landroid/widget/Button;", "openParam", "Lcom/tencent/mm/plugin/messenger/foundation/api/IChatRoomOpenService$ChatRoomOpenParam;", "getLayoutId", "", "initViews", "", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "Companion", "ui-chatroom_release"})
 public final class ChatRoomBindAppUI
   extends MMActivity
 {
-  public static final a fMl;
-  private Button fMj;
-  private c.b fMk;
+  public static final a fOt;
+  private Button fOr;
+  private c.b fOs;
   
   static
   {
-    AppMethodBeat.i(213625);
-    fMl = new a((byte)0);
-    AppMethodBeat.o(213625);
+    AppMethodBeat.i(217343);
+    fOt = new a((byte)0);
+    AppMethodBeat.o(217343);
   }
   
   public final int getLayoutId()
@@ -55,7 +55,7 @@ public final class ChatRoomBindAppUI
   public final void onCreate(Bundle paramBundle)
   {
     TextView localTextView = null;
-    AppMethodBeat.i(213624);
+    AppMethodBeat.i(217342);
     super.onCreate(paramBundle);
     setActionbarColor(getResources().getColor(2131101179));
     paramBundle = getIntent();
@@ -66,30 +66,30 @@ public final class ChatRoomBindAppUI
       if (!(paramBundle instanceof c.b)) {
         localObject1 = null;
       }
-      this.fMk = ((c.b)localObject1);
-      if (this.fMk != null) {
+      this.fOs = ((c.b)localObject1);
+      if (this.fOs != null) {
         break;
       }
-      ad.e("MicroMsg.ChatRoomBindAppUI", "openParam is null");
+      ae.e("MicroMsg.ChatRoomBindAppUI", "openParam is null");
       finish();
-      AppMethodBeat.o(213624);
+      AppMethodBeat.o(217342);
       return;
     }
     setMMTitle("");
     setBackBtn((MenuItem.OnMenuItemClickListener)new b(this), 2131689492);
     paramBundle = findViewById(2131308233);
     p.g(paramBundle, "findViewById(R.id.btn_bind)");
-    this.fMj = ((Button)paramBundle);
-    paramBundle = this.fMj;
+    this.fOr = ((Button)paramBundle);
+    paramBundle = this.fOr;
     if (paramBundle == null) {
-      p.bcb("bindButton");
+      p.bdF("bindButton");
     }
     paramBundle.setOnClickListener((View.OnClickListener)new c(this));
     paramBundle = findViewById(2131308456);
     p.g(paramBundle, "findViewById(R.id.tv_bind_app_title)");
     Object localObject2 = (TextView)paramBundle;
-    Object localObject3 = aj.getContext();
-    paramBundle = this.fMk;
+    Object localObject3 = ak.getContext();
+    paramBundle = this.fOs;
     if (paramBundle != null)
     {
       localObject1 = paramBundle.appName;
@@ -103,37 +103,37 @@ public final class ChatRoomBindAppUI
     ((TextView)localObject2).setText((CharSequence)((Context)localObject3).getString(2131764274, new Object[] { paramBundle }));
     paramBundle = g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class);
     p.g(paramBundle, "MMKernel.service(IMessengerStorage::class.java)");
-    Object localObject1 = ((com.tencent.mm.plugin.messenger.foundation.a.l)paramBundle).azp();
-    paramBundle = this.fMk;
+    Object localObject1 = ((com.tencent.mm.plugin.messenger.foundation.a.l)paramBundle).azF();
+    paramBundle = this.fOs;
     if (paramBundle != null) {}
-    for (paramBundle = paramBundle.vJR;; paramBundle = null)
+    for (paramBundle = paramBundle.vVV;; paramBundle = null)
     {
-      localObject1 = ((bp)localObject1).Bf(paramBundle);
+      localObject1 = ((bq)localObject1).BH(paramBundle);
       if (localObject1 != null) {
         break;
       }
-      ad.e("MicroMsg.ChatRoomBindAppUI", "contact is null");
+      ae.e("MicroMsg.ChatRoomBindAppUI", "contact is null");
       finish();
-      AppMethodBeat.o(213624);
+      AppMethodBeat.o(217342);
       return;
     }
     paramBundle = findViewById(2131301204);
     p.g(paramBundle, "findViewById(R.id.iv_avatar)");
     localObject2 = (ImageView)paramBundle;
-    localObject3 = this.fMk;
+    localObject3 = this.fOs;
     paramBundle = localTextView;
     if (localObject3 != null) {
-      paramBundle = ((c.b)localObject3).vJR;
+      paramBundle = ((c.b)localObject3).vVV;
     }
     a.b.c((ImageView)localObject2, paramBundle);
     paramBundle = findViewById(2131308460);
     p.g(paramBundle, "findViewById(R.id.tv_group_nickname)");
-    ((TextView)paramBundle).setText((CharSequence)k.b((Context)getContext(), (CharSequence)v.zf(((am)localObject1).getUsername()), com.tencent.mm.cc.a.ax((Context)getContext(), 2131165517)));
+    ((TextView)paramBundle).setText((CharSequence)k.b((Context)getContext(), (CharSequence)w.zP(((an)localObject1).getUsername()), com.tencent.mm.cb.a.ax((Context)getContext(), 2131165517)));
     paramBundle = findViewById(2131308457);
     p.g(paramBundle, "findViewById(R.id.tv_bind_desc)");
     localTextView = (TextView)paramBundle;
-    localObject2 = aj.getContext();
-    paramBundle = this.fMk;
+    localObject2 = ak.getContext();
+    paramBundle = this.fOs;
     if (paramBundle != null)
     {
       localObject1 = paramBundle.appName;
@@ -145,7 +145,7 @@ public final class ChatRoomBindAppUI
       paramBundle = "";
     }
     localTextView.setText((CharSequence)((Context)localObject2).getString(2131766515, new Object[] { paramBundle }));
-    AppMethodBeat.o(213624);
+    AppMethodBeat.o(217342);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -154,10 +154,10 @@ public final class ChatRoomBindAppUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/chatroom/ui/ChatRoomBindAppUI$Companion;", "", "()V", "KEY_BIND_PARAM", "", "TAG", "ui-chatroom_release"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/chatroom/ui/ChatRoomBindAppUI$Companion;", "", "()V", "KEY_BIND_PARAM", "", "TAG", "ui-chatroom_release"})
   public static final class a {}
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
   static final class b
     implements MenuItem.OnMenuItemClickListener
   {
@@ -165,14 +165,14 @@ public final class ChatRoomBindAppUI
     
     public final boolean onMenuItemClick(MenuItem paramMenuItem)
     {
-      AppMethodBeat.i(213620);
-      this.fMm.finish();
-      AppMethodBeat.o(213620);
+      AppMethodBeat.i(217338);
+      this.fOu.finish();
+      AppMethodBeat.o(217338);
       return true;
     }
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class c
     implements View.OnClickListener
   {
@@ -180,48 +180,48 @@ public final class ChatRoomBindAppUI
     
     public final void onClick(View paramView)
     {
-      AppMethodBeat.i(213623);
+      AppMethodBeat.i(217341);
       Object localObject = new b();
       ((b)localObject).bd(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/chatroom/ui/ChatRoomBindAppUI$initViews$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahq());
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/chatroom/ui/ChatRoomBindAppUI$initViews$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahF());
       paramView = (c)g.ab(c.class);
-      localObject = (Context)this.fMm;
-      c.b localb = ChatRoomBindAppUI.a(this.fMm);
+      localObject = (Context)this.fOu;
+      c.b localb = ChatRoomBindAppUI.a(this.fOu);
       if (localb == null) {
-        p.gfZ();
+        p.gkB();
       }
       paramView.b((Context)localObject, localb, (c.a)new c.a()
       {
         public final void a(boolean paramAnonymousBoolean, final String paramAnonymousString1, String paramAnonymousString2)
         {
-          AppMethodBeat.i(213622);
+          AppMethodBeat.i(217340);
           if (paramAnonymousBoolean)
           {
-            t.cm((Context)this.fMn.fMm.getContext(), this.fMn.fMm.getContext().getString(2131766518));
+            t.cn((Context)this.fOv.fOu.getContext(), this.fOv.fOu.getContext().getString(2131766518));
             paramAnonymousString1 = new Intent();
             paramAnonymousString1.putExtra("key_chat_room_open_id", paramAnonymousString2);
-            h.LTJ.q((Runnable)new Runnable()
+            h.MqF.q((Runnable)new Runnable()
             {
               public final void run()
               {
-                AppMethodBeat.i(213621);
-                this.fMo.fMn.fMm.setResult(-1, paramAnonymousString1);
-                this.fMo.fMn.fMm.finish();
-                AppMethodBeat.o(213621);
+                AppMethodBeat.i(217339);
+                this.fOw.fOv.fOu.setResult(-1, paramAnonymousString1);
+                this.fOw.fOv.fOu.finish();
+                AppMethodBeat.o(217339);
               }
             }, 500L);
           }
-          AppMethodBeat.o(213622);
+          AppMethodBeat.o(217340);
         }
       });
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/chatroom/ui/ChatRoomBindAppUI$initViews$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(213623);
+      AppMethodBeat.o(217341);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.chatroom.ui.ChatRoomBindAppUI
  * JD-Core Version:    0.7.0.1
  */

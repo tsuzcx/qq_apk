@@ -9,18 +9,18 @@ import d.o;
 import d.u;
 import org.json.JSONObject;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/bluetooth/central/JsApiGetBLEDeviceRSSI;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandAsyncJsApi;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "()V", "invoke", "", "env", "data", "Lorg/json/JSONObject;", "callbackId", "", "Companion", "luggage-commons-jsapi-connectivity-ext_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsapi/bluetooth/central/JsApiGetBLEDeviceRSSI;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandAsyncJsApi;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "()V", "invoke", "", "env", "data", "Lorg/json/JSONObject;", "callbackId", "", "Companion", "luggage-commons-jsapi-connectivity-ext_release"})
 public final class e
   extends com.tencent.mm.plugin.appbrand.jsapi.a<com.tencent.mm.plugin.appbrand.jsapi.c>
 {
   public static final int CTRL_INDEX = 777;
   public static final String NAME = "getBLEDeviceRSSI";
-  public static final a kDa;
+  public static final a kGp;
   
   static
   {
     AppMethodBeat.i(175635);
-    kDa = new a((byte)0);
+    kGp = new a((byte)0);
     AppMethodBeat.o(175635);
   }
   
@@ -36,17 +36,17 @@ public final class e
     if ((paramJSONObject == null) || (!paramJSONObject.has("deviceId")))
     {
       com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.a.w("MicroMsg.AppBrand.JsApiGetBLEDeviceRSSI", "data is null or do not have key: deviceId", new Object[0]);
-      paramc.h(paramInt, m("fail:invalid data", ae.b(new o[] { u.S("errCode", Integer.valueOf(10013)) })));
+      paramc.h(paramInt, n("fail:invalid data", ae.b(new o[] { u.R("errCode", Integer.valueOf(10013)) })));
       AppMethodBeat.o(175634);
       return;
     }
     final String str = paramc.getAppId();
     com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.a.i("MicroMsg.AppBrand.JsApiGetBLEDeviceRSSI", "appId: " + str + ", data: " + paramJSONObject, new Object[0]);
-    com.tencent.mm.plugin.appbrand.jsapi.bluetooth.b localb = com.tencent.mm.plugin.appbrand.jsapi.bluetooth.a.Pt(str);
+    com.tencent.mm.plugin.appbrand.jsapi.bluetooth.b localb = com.tencent.mm.plugin.appbrand.jsapi.bluetooth.a.Qb(str);
     if (localb == null)
     {
       com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.a.w("MicroMsg.AppBrand.JsApiGetBLEDeviceRSSI", "bleWorker is null", new Object[0]);
-      paramc.h(paramInt, m("fail:not init", ae.b(new o[] { u.S("errCode", Integer.valueOf(10000)) })));
+      paramc.h(paramInt, n("fail:not init", ae.b(new o[] { u.R("errCode", Integer.valueOf(10000)) })));
       AppMethodBeat.o(175634);
       return;
     }
@@ -54,7 +54,7 @@ public final class e
     if (paramJSONObject == null)
     {
       com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.a.w("MicroMsg.AppBrand.JsApiGetBLEDeviceRSSI", "deviceId is null", new Object[0]);
-      paramc.h(paramInt, m("fail:invalid data", ae.b(new o[] { u.S("errCode", Integer.valueOf(10013)) })));
+      paramc.h(paramInt, n("fail:invalid data", ae.b(new o[] { u.R("errCode", Integer.valueOf(10013)) })));
       AppMethodBeat.o(175634);
       return;
     }
@@ -62,10 +62,10 @@ public final class e
     AppMethodBeat.o(175634);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/bluetooth/central/JsApiGetBLEDeviceRSSI$Companion;", "", "()V", "CTRL_INDEX", "", "NAME", "", "PARAM_DEVICE_ID", "RESULT_ERROR_CODE", "RESULT_RSSI", "TAG", "luggage-commons-jsapi-connectivity-ext_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsapi/bluetooth/central/JsApiGetBLEDeviceRSSI$Companion;", "", "()V", "CTRL_INDEX", "", "NAME", "", "PARAM_DEVICE_ID", "RESULT_ERROR_CODE", "RESULT_RSSI", "TAG", "luggage-commons-jsapi-connectivity-ext_release"})
   public static final class a {}
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "result", "Lcom/tencent/mm/plugin/appbrand/jsapi/bluetooth/sdk/model/Result;", "kotlin.jvm.PlatformType", "onResult"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "result", "Lcom/tencent/mm/plugin/appbrand/jsapi/bluetooth/sdk/model/Result;", "kotlin.jvm.PlatformType", "onResult"})
   static final class b
     implements com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.c.b
   {
@@ -81,7 +81,7 @@ public final class e
       switch (paramj.errCode)
       {
       default: 
-        localObject1 = this.kDb;
+        localObject1 = this.kGq;
         i = paramInt;
         localObject2 = paramc;
         j = paramj.errCode;
@@ -91,7 +91,7 @@ public final class e
         AppMethodBeat.o(175633);
         return;
       }
-      Object localObject1 = paramj.kFU;
+      Object localObject1 = paramj.kJj;
       paramj = (j)localObject1;
       if (!(localObject1 instanceof Integer)) {
         paramj = null;
@@ -99,17 +99,17 @@ public final class e
       paramj = (Integer)paramj;
       if (paramj == null)
       {
-        paramj = this.kDb;
+        paramj = this.kGq;
         i = paramInt;
         localObject1 = paramc;
-        j = j.kFB.errCode;
-        localObject2 = j.kFB.errMsg;
+        j = j.kIQ.errCode;
+        localObject2 = j.kIQ.errMsg;
         p.g(localObject2, "Result.FAIL.errMsg");
         com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.b.a(paramj, i, (com.tencent.mm.plugin.appbrand.jsapi.c)localObject1, j, (String)localObject2);
         AppMethodBeat.o(175633);
         return;
       }
-      com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.b.a(this.kDb, paramInt, paramc, ae.c(new o[] { u.S("RSSI", paramj) }));
+      com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.b.a(this.kGq, paramInt, paramc, ae.c(new o[] { u.R("RSSI", paramj) }));
       AppMethodBeat.o(175633);
     }
   }

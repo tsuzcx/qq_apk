@@ -19,68 +19,82 @@ import org.xwalk.core.XWalkUpdater.ErrorInfo;
 public final class f
   extends AsyncTask<String, Integer, Integer>
 {
-  static XWalkUpdater Mxy;
-  private static String Mzh = "0";
-  private HashMap<String, String> Mzg;
+  static XWalkUpdater MUC;
+  private static String MWm = "0";
+  private HashMap<String, String> MWl;
   
   public f(XWalkUpdater paramXWalkUpdater, HashMap<String, String> paramHashMap)
   {
     AppMethodBeat.i(154573);
-    Mxy = paramXWalkUpdater;
-    this.Mzg = paramHashMap;
+    MUC = paramXWalkUpdater;
+    this.MWl = paramHashMap;
     if (paramHashMap != null)
     {
       paramXWalkUpdater = (String)paramHashMap.get("UpdaterCheckType");
-      Mzh = paramXWalkUpdater;
-      if ((paramXWalkUpdater == null) || (!Mzh.equals("1"))) {
-        break label84;
+      MWm = paramXWalkUpdater;
+      if ((paramXWalkUpdater == null) || (!MWm.equals("1"))) {
+        break label81;
       }
-      c.gdu().gdC();
+      Scheduler.gie();
     }
     for (;;)
     {
-      XWalkInitializer.addXWalkInitializeLog("XWalkUpdateChecker notify received !! mNotifyType = " + Mzh);
+      XWalkInitializer.addXWalkInitializeLog("XWalkUpdateChecker notify received !! mNotifyType = " + MWm);
       AppMethodBeat.o(154573);
       return;
-      label84:
-      if ((Mzh != null) && (Mzh.equals("2")))
+      label81:
+      if ((MWm != null) && (MWm.equals("2")))
       {
-        c.gdu().gdC();
-        com.tencent.xweb.util.g.Fh(93L);
+        Scheduler.gie();
+        com.tencent.xweb.util.g.FJ(93L);
       }
-      else if ((Mzh != null) && (Mzh.equals("3")))
+      else if ((MWm != null) && (MWm.equals("3")))
       {
-        c.gdu().gdH().Myt = true;
-        com.tencent.xweb.util.g.Fh(94L);
+        XWebCoreScheduler.giw().gij().MVx = true;
+        com.tencent.xweb.util.g.FJ(94L);
       }
       else
       {
-        Mzh = "0";
+        MWm = "0";
       }
     }
   }
   
-  public static void aiR(int paramInt)
+  public static void a(int paramInt, Scheduler paramScheduler)
   {
-    AppMethodBeat.i(186029);
-    gdR();
-    c.gdu().aiR(paramInt);
-    AppMethodBeat.o(186029);
+    AppMethodBeat.i(207629);
+    git();
+    if (paramScheduler != null) {
+      paramScheduler.ajB(paramInt);
+    }
+    AppMethodBeat.o(207629);
   }
   
-  private static boolean f(SchedulerConfig paramSchedulerConfig)
+  public static void a(Scheduler paramScheduler)
   {
-    AppMethodBeat.i(195603);
-    if (gdP())
+    AppMethodBeat.i(207628);
+    XWalkEnvironment.getSharedPreferencesForUpdateConfig().edit();
+    git();
+    if (paramScheduler != null) {
+      paramScheduler.e(null);
+    }
+    AppMethodBeat.o(207628);
+  }
+  
+  private static boolean a(XWebCoreScheduler paramXWebCoreScheduler)
+  {
+    AppMethodBeat.i(207626);
+    c localc = paramXWebCoreScheduler.gij();
+    if (gir())
     {
-      AppMethodBeat.o(195603);
+      AppMethodBeat.o(207626);
       return false;
     }
     XWalkUpdater.ErrorInfo localErrorInfo;
     if (!XWalkEnvironment.isSelfProvider())
     {
-      gdQ();
-      localErrorInfo = Mxy.updateRuntimeFromProvider(paramSchedulerConfig);
+      gis();
+      localErrorInfo = MUC.updateRuntimeFromProvider(paramXWebCoreScheduler);
       try
       {
         Object localObject = XWalkEnvironment.getPackageName();
@@ -101,61 +115,79 @@ public final class f
           XWalkInitializer.addXWalkInitializeLog("_doStartUpdate report error");
         }
         if (localErrorInfo.errorCode != -10) {
-          break label261;
+          break label271;
         }
-        aiR(localErrorInfo.errorCode);
-        AppMethodBeat.o(195603);
+        a(localErrorInfo.errorCode, paramXWebCoreScheduler);
+        AppMethodBeat.o(207626);
         return false;
-        gdR();
+        git();
       }
       if (localErrorInfo.errorCode == 0)
       {
-        gdS();
-        AppMethodBeat.o(195603);
+        a(paramXWebCoreScheduler);
+        AppMethodBeat.o(207626);
         return true;
       }
     }
-    label261:
+    label271:
     XWalkInitializer.addXWalkInitializeLog("_doStartUpdate go on");
     if (!NetworkUtil.isNetworkAvailable())
     {
-      paramSchedulerConfig = ah.gbk();
-      if (paramSchedulerConfig != null) {
-        paramSchedulerConfig.bzK();
+      paramXWebCoreScheduler = ah.gfM();
+      if (paramXWebCoreScheduler != null) {
+        paramXWebCoreScheduler.bAF();
       }
-      AppMethodBeat.o(195603);
+      AppMethodBeat.o(207626);
       return false;
     }
-    if ((!paramSchedulerConfig.Myt) && (!NetworkUtil.isWifiAvailable()))
+    if ((!localc.MVx) && (!NetworkUtil.isWifiAvailable()))
     {
       XWalkInitializer.addXWalkInitializeLog("current network is not wifi , this scheduler not support mobile data");
-      paramSchedulerConfig = ah.gbk();
-      if (paramSchedulerConfig != null) {
-        paramSchedulerConfig.bzK();
+      paramXWebCoreScheduler = ah.gfM();
+      if (paramXWebCoreScheduler != null) {
+        paramXWebCoreScheduler.bAF();
       }
-      AppMethodBeat.o(195603);
+      AppMethodBeat.o(207626);
       return false;
     }
-    if (gdQ())
+    if (gis())
     {
-      if (Mxy.updateXWalkRuntime(h.g(paramSchedulerConfig)))
+      if (MUC.updateXWalkRuntime(paramXWebCoreScheduler.f(localc)))
       {
-        AppMethodBeat.o(195603);
+        AppMethodBeat.o(207626);
         return true;
       }
       XWalkInitializer.addXWalkInitializeLog("start update failed");
-      gdR();
+      git();
     }
-    AppMethodBeat.o(195603);
+    AppMethodBeat.o(207626);
     return false;
   }
   
-  public static boolean gdP()
+  private static void b(XWebCoreScheduler paramXWebCoreScheduler)
+  {
+    AppMethodBeat.i(207631);
+    XWalkEnvironment.addXWalkInitializeLog("try update after config " + paramXWebCoreScheduler.toString());
+    if (gir())
+    {
+      AppMethodBeat.o(207631);
+      return;
+    }
+    com.tencent.xweb.util.g.aD(903L, 160L);
+    com.tencent.xweb.xwalk.c localc = ah.gfM();
+    if (localc != null) {
+      localc.bAE();
+    }
+    a(paramXWebCoreScheduler);
+    AppMethodBeat.o(207631);
+  }
+  
+  public static boolean gir()
   {
     try
     {
       AppMethodBeat.i(154575);
-      boolean bool = g.gdP();
+      boolean bool = g.gir();
       AppMethodBeat.o(154575);
       return bool;
     }
@@ -166,13 +198,13 @@ public final class f
     }
   }
   
-  public static boolean gdQ()
+  public static boolean gis()
   {
     try
     {
-      AppMethodBeat.i(195604);
-      boolean bool = g.gdQ();
-      AppMethodBeat.o(195604);
+      AppMethodBeat.i(207627);
+      boolean bool = g.gis();
+      AppMethodBeat.o(207627);
       return bool;
     }
     finally
@@ -182,12 +214,12 @@ public final class f
     }
   }
   
-  public static void gdR()
+  public static void git()
   {
     try
     {
       AppMethodBeat.i(154577);
-      g.gdR();
+      g.git();
       AppMethodBeat.o(154577);
       return;
     }
@@ -198,50 +230,23 @@ public final class f
     }
   }
   
-  public static void gdS()
+  static void giu()
   {
-    AppMethodBeat.i(154578);
-    XWalkEnvironment.getSharedPreferencesForUpdateConfig().edit();
-    gdR();
-    c.gdu().e(null);
-    AppMethodBeat.o(154578);
-  }
-  
-  static void gdT()
-  {
-    AppMethodBeat.i(195606);
-    if (zU(true))
+    AppMethodBeat.i(207630);
+    if (XWebCoreScheduler.giw().Ag(true))
     {
-      XWalkEnvironment.addXWalkInitializeLog("try update after config ");
-      if (gdP())
-      {
-        AppMethodBeat.o(195606);
-        return;
-      }
-      com.tencent.xweb.util.g.aE(903L, 160L);
-      com.tencent.xweb.xwalk.c localc = ah.gbk();
-      if (localc != null) {
-        localc.bzJ();
-      }
-      f(c.gdu().gdH());
-      AppMethodBeat.o(195606);
+      b(XWebCoreScheduler.giw());
+      AppMethodBeat.o(207630);
       return;
     }
-    p.hl("finished", -5);
-    AppMethodBeat.o(195606);
-  }
-  
-  private static boolean zU(boolean paramBoolean)
-  {
-    AppMethodBeat.i(195605);
-    if (c.gdu().zS(paramBoolean))
+    if (h.giv().Ag(true))
     {
-      XWalkInitializer.addXWalkInitializeLog("time to update");
-      AppMethodBeat.o(195605);
-      return true;
+      b(h.giv());
+      AppMethodBeat.o(207630);
+      return;
     }
-    AppMethodBeat.o(195605);
-    return false;
+    p.hu("finished", -5);
+    AppMethodBeat.o(207630);
   }
 }
 

@@ -8,7 +8,7 @@ import android.os.Process;
 import com.tencent.luggage.h.e;
 import com.tencent.luggage.h.e.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.ui.MMActivity.a;
 import java.lang.ref.WeakReference;
 import java.util.HashSet;
@@ -19,11 +19,11 @@ import java.util.concurrent.ConcurrentHashMap;
 public abstract class AppBrandProxyTransparentUIProcessTask
   implements Parcelable
 {
-  private static Map<String, WeakReference<AppBrandProxyTransparentUIProcessTask>> koM = new ConcurrentHashMap();
-  private static final Set<Object> kpv = new HashSet();
-  private String iFB = Process.myPid() + hashCode();
-  private int kpw = -1;
-  private MMActivity.a kpx = new MMActivity.a()
+  private static final Set<Object> ksL = new HashSet();
+  private static Map<String, WeakReference<AppBrandProxyTransparentUIProcessTask>> ksc = new ConcurrentHashMap();
+  private String iIu = Process.myPid() + hashCode();
+  private int ksM = -1;
+  private MMActivity.a ksN = new MMActivity.a()
   {
     public final void c(int paramAnonymousInt1, int paramAnonymousInt2, Intent paramAnonymousIntent)
     {
@@ -36,16 +36,16 @@ public abstract class AppBrandProxyTransparentUIProcessTask
           return;
         }
         AppBrandProxyTransparentUIProcessTask localAppBrandProxyTransparentUIProcessTask = (AppBrandProxyTransparentUIProcessTask)paramAnonymousIntent.getParcelableExtra("task_object");
-        paramAnonymousIntent = AppBrandProxyTransparentUIProcessTask.OZ(paramAnonymousIntent.getStringExtra("task_id"));
+        paramAnonymousIntent = AppBrandProxyTransparentUIProcessTask.PH(paramAnonymousIntent.getStringExtra("task_id"));
         if (paramAnonymousIntent == null)
         {
-          ad.e("MicroMsg.AppBrandProxyTransparentUIProcessTask", "task is null");
+          ae.e("MicroMsg.AppBrandProxyTransparentUIProcessTask", "task is null");
           AppMethodBeat.o(45411);
           return;
         }
         AppBrandProxyTransparentUIProcessTask.a(localAppBrandProxyTransparentUIProcessTask, paramAnonymousIntent);
-        paramAnonymousIntent.bhO();
-        paramAnonymousIntent.aOB();
+        paramAnonymousIntent.bix();
+        paramAnonymousIntent.aOY();
         AppBrandProxyTransparentUIProcessTask.this.mContext = null;
       }
       AppMethodBeat.o(45411);
@@ -62,21 +62,21 @@ public abstract class AppBrandProxyTransparentUIProcessTask
   
   public abstract void a(Context paramContext, AppBrandProxyTransparentUIProcessTask.a parama);
   
-  public void aOB() {}
+  public void aOY() {}
   
-  public final void bhM()
+  public final void biv()
   {
     if (this.mContext == null) {
       return;
     }
-    koM.put(this.iFB, new WeakReference(this));
+    ksc.put(this.iIu, new WeakReference(this));
     Intent localIntent = new Intent();
     localIntent.setClass(this.mContext, AppBrandProxyTransparentUI.class);
     localIntent.putExtra("task_object", this);
     localIntent.putExtra("task_class_name", getClass().getName());
-    localIntent.putExtra("task_id", this.iFB);
-    localIntent.putExtra("orientation", this.kpw);
-    e.aA(this.mContext).a(localIntent, new e.b()
+    localIntent.putExtra("task_id", this.iIu);
+    localIntent.putExtra("orientation", this.ksM);
+    e.aB(this.mContext).a(localIntent, new e.b()
     {
       public final void a(int paramAnonymousInt, Intent paramAnonymousIntent)
       {
@@ -87,14 +87,14 @@ public abstract class AppBrandProxyTransparentUIProcessTask
     });
   }
   
-  public final void bhN()
+  public final void biw()
   {
-    kpv.add(this);
+    ksL.add(this);
   }
   
-  public final void bhO()
+  public final void bix()
   {
-    kpv.remove(this);
+    ksL.remove(this);
   }
   
   public int describeContents()
@@ -108,7 +108,7 @@ public abstract class AppBrandProxyTransparentUIProcessTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyTransparentUIProcessTask
  * JD-Core Version:    0.7.0.1
  */

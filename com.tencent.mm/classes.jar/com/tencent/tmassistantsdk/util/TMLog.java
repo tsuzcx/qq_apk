@@ -2,7 +2,7 @@ package com.tencent.tmassistantsdk.util;
 
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -34,7 +34,7 @@ public class TMLog
       if (paramString2 == null) {
         str = "............";
       }
-      ad.d(paramString1, str);
+      ae.d(paramString1, str);
     }
     AppMethodBeat.o(102535);
   }
@@ -43,7 +43,7 @@ public class TMLog
   {
     AppMethodBeat.i(102532);
     if ((mDebugFlagForSDK) && (!TextUtils.isEmpty(mDebugFlagForSDKTag))) {
-      ad.e(mDebugFlagForSDKTag, paramString);
+      ae.e(mDebugFlagForSDKTag, paramString);
     }
     AppMethodBeat.o(102532);
   }
@@ -52,7 +52,7 @@ public class TMLog
   {
     AppMethodBeat.i(102531);
     if ((mDebugFlagForSDK) && (!TextUtils.isEmpty(mDebugFlagForSDKTag))) {
-      ad.v(mDebugFlagForSDKTag, paramString);
+      ae.v(mDebugFlagForSDKTag, paramString);
     }
     AppMethodBeat.o(102531);
   }
@@ -66,7 +66,7 @@ public class TMLog
       if (paramString2 == null) {
         str = "............";
       }
-      ad.e(paramString1, str);
+      ae.e(paramString1, str);
     }
     AppMethodBeat.o(102537);
   }
@@ -80,7 +80,7 @@ public class TMLog
       if (paramString2 == null) {
         str = "............";
       }
-      ad.i(paramString1, str);
+      ae.i(paramString1, str);
     }
     AppMethodBeat.o(102534);
   }
@@ -153,7 +153,7 @@ public class TMLog
             localStringBuffer.append(" ");
             i += 1;
           }
-          ad.v(paramString1, localStringBuffer.toString());
+          ae.v(paramString1, localStringBuffer.toString());
           localArrayList.clear();
           paramString2.clear();
         }
@@ -179,7 +179,7 @@ public class TMLog
       if (paramString2 == null) {
         str = "............";
       }
-      ad.v(paramString1, str);
+      ae.v(paramString1, str);
     }
     AppMethodBeat.o(102533);
   }
@@ -193,7 +193,7 @@ public class TMLog
       if (paramString2 == null) {
         str = "............";
       }
-      ad.w(paramString1, str);
+      ae.w(paramString1, str);
     }
     AppMethodBeat.o(102536);
   }

@@ -1,8 +1,8 @@
 package com.tencent.mm.plugin.offline.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.az;
 import java.util.HashMap;
 import java.util.Map;
 import org.json.JSONObject;
@@ -16,7 +16,7 @@ public final class g
     HashMap localHashMap = new HashMap();
     localHashMap.put("buss_type", paramString1);
     localHashMap.put("method", paramString2);
-    if (ay.isWifi(aj.getContext())) {
+    if (az.isWifi(ak.getContext())) {
       paramString1 = "wifi";
     }
     for (;;)
@@ -26,13 +26,13 @@ public final class g
       setRequestData(localHashMap);
       AppMethodBeat.o(66295);
       return;
-      if (ay.is3G(aj.getContext())) {
+      if (az.is3G(ak.getContext())) {
         paramString1 = "3g";
-      } else if (ay.is2G(aj.getContext())) {
+      } else if (az.is2G(ak.getContext())) {
         paramString1 = "2g";
-      } else if (ay.isWap(aj.getContext())) {
+      } else if (az.isWap(ak.getContext())) {
         paramString1 = "wap";
-      } else if (ay.is4G(aj.getContext())) {
+      } else if (az.is4G(ak.getContext())) {
         paramString1 = "4g";
       } else {
         paramString1 = "unknown";

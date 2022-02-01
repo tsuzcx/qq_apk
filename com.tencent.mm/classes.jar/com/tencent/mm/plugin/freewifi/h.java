@@ -5,31 +5,31 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.freewifi.g.b;
 import com.tencent.mm.plugin.freewifi.model.j;
 import com.tencent.mm.pluginsdk.ui.tools.x;
-import com.tencent.mm.protocal.protobuf.aav;
+import com.tencent.mm.protocal.protobuf.abe;
 import com.tencent.mm.protocal.protobuf.af;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public final class h
 {
-  private b tkR;
+  private b tvJ;
   private String userAgent;
   
   private h()
   {
     AppMethodBeat.i(24660);
-    this.tkR = j.cRA();
+    this.tvJ = j.cUf();
     AppMethodBeat.o(24660);
   }
   
-  private void GD(int paramInt)
+  private void Ha(int paramInt)
   {
     try
     {
       AppMethodBeat.i(24664);
-      if (paramInt > bt.getInt(a.tkS.tkY, 0)) {
-        j.cRA().gK(a.tkS.key, String.valueOf(paramInt));
+      if (paramInt > bu.getInt(a.tvK.tvQ, 0)) {
+        j.cUf().gP(a.tvK.key, String.valueOf(paramInt));
       }
       AppMethodBeat.o(24664);
       return;
@@ -37,31 +37,31 @@ public final class h
     finally {}
   }
   
-  private static void GE(int paramInt)
+  private static void Hb(int paramInt)
   {
     AppMethodBeat.i(24666);
     if (paramInt > 0) {
-      j.cRA().gK(a.tkT.key, String.valueOf(paramInt));
+      j.cUf().gP(a.tvL.key, String.valueOf(paramInt));
     }
     AppMethodBeat.o(24666);
   }
   
-  private void GF(int paramInt)
+  private void Hc(int paramInt)
   {
     AppMethodBeat.i(24668);
     if (paramInt > 0) {
-      this.tkR.gK(a.tkU.key, String.valueOf(paramInt));
+      this.tvJ.gP(a.tvM.key, String.valueOf(paramInt));
     }
     AppMethodBeat.o(24668);
   }
   
-  private void ajE(String paramString)
+  private void akC(String paramString)
   {
     AppMethodBeat.i(24670);
     if (("0".equals(paramString)) || ("1".equals(paramString))) {
       try
       {
-        this.tkR.gK(a.tkV.key, paramString);
+        this.tvJ.gP(a.tvN.key, paramString);
         AppMethodBeat.o(24670);
         return;
       }
@@ -70,14 +70,14 @@ public final class h
     AppMethodBeat.o(24670);
   }
   
-  private void ajF(String paramString)
+  private void akD(String paramString)
   {
     AppMethodBeat.i(24672);
-    if (!m.ea(paramString)) {
+    if (!m.ef(paramString)) {
       try
       {
         Uri.parse(paramString);
-        this.tkR.gK(a.tkW.key, paramString);
+        this.tvJ.gP(a.tvO.key, paramString);
         AppMethodBeat.o(24672);
         return;
       }
@@ -86,14 +86,14 @@ public final class h
     AppMethodBeat.o(24672);
   }
   
-  private void ajG(String paramString)
+  private void akE(String paramString)
   {
     AppMethodBeat.i(24674);
-    if (!m.ea(paramString)) {
+    if (!m.ef(paramString)) {
       try
       {
         Uri.parse(paramString);
-        this.tkR.gK(a.tkX.key, paramString);
+        this.tvJ.gP(a.tvP.key, paramString);
         AppMethodBeat.o(24674);
         return;
       }
@@ -102,22 +102,22 @@ public final class h
     AppMethodBeat.o(24674);
   }
   
-  private void cQJ()
+  private void cTo()
   {
     try
     {
       AppMethodBeat.i(24662);
       try
       {
-        String str = this.tkR.ajW(a.tkS.key);
-        if ((!m.ea(str)) && (Integer.valueOf(str).intValue() < Integer.valueOf(a.tkS.tkY).intValue()))
+        String str = this.tvJ.akU(a.tvK.key);
+        if ((!m.ef(str)) && (Integer.valueOf(str).intValue() < Integer.valueOf(a.tvK.tvQ).intValue()))
         {
-          GE(Integer.valueOf(a.tkT.tkY).intValue());
-          GF(Integer.valueOf(a.tkU.tkY).intValue());
-          ajF(a.tkW.tkY);
-          ajE(a.tkV.tkY);
-          ajG(a.tkX.tkY);
-          GD(Integer.valueOf(a.tkS.tkY).intValue());
+          Hb(Integer.valueOf(a.tvL.tvQ).intValue());
+          Hc(Integer.valueOf(a.tvM.tvQ).intValue());
+          akD(a.tvO.tvQ);
+          akC(a.tvN.tvQ);
+          akE(a.tvP.tvQ);
+          Ha(Integer.valueOf(a.tvK.tvQ).intValue());
         }
         AppMethodBeat.o(24662);
       }
@@ -125,7 +125,7 @@ public final class h
       {
         for (;;)
         {
-          ad.i("MicroMsg.FreeWifi.FreeWifiConfigHelper", "updateDiskDbCacheIfLowerThanDefault exception. " + m.m(localException));
+          ae.i("MicroMsg.FreeWifi.FreeWifiConfigHelper", "updateDiskDbCacheIfLowerThanDefault exception. " + m.m(localException));
           AppMethodBeat.o(24662);
         }
       }
@@ -141,48 +141,48 @@ public final class h
       try
       {
         AppMethodBeat.i(24661);
-        cQJ();
-        if ((paramaf == null) || (paramaf.Frb == null))
+        cTo();
+        if ((paramaf == null) || (paramaf.FJz == null))
         {
-          ad.i("MicroMsg.FreeWifi.FreeWifiConfigHelper", "resp.config is null.");
+          ae.i("MicroMsg.FreeWifi.FreeWifiConfigHelper", "resp.config is null.");
           AppMethodBeat.o(24661);
           return;
         }
-        this.tkR.cRY();
-        if (paramaf.Frb.version == -1)
+        this.tvJ.cUD();
+        if (paramaf.FJz.version == -1)
         {
-          this.tkR.bcD();
-          ad.i("MicroMsg.FreeWifi.FreeWifiConfigHelper", "all local config data deleted.");
-          this.tkR.cRY();
+          this.tvJ.bdi();
+          ae.i("MicroMsg.FreeWifi.FreeWifiConfigHelper", "all local config data deleted.");
+          this.tvJ.cUD();
           AppMethodBeat.o(24661);
           continue;
         }
-        if (paramaf.Frb.version <= cQK()) {
+        if (paramaf.FJz.version <= cTp()) {
           break label384;
         }
       }
       finally {}
-      ad.i("MicroMsg.FreeWifi.FreeWifiConfigHelper", "resp.config.version is %d, local version is %d.", new Object[] { Integer.valueOf(paramaf.Frb.version), Integer.valueOf(cQK()) });
-      ad.i("MicroMsg.FreeWifi.FreeWifiConfigHelper", "resp.config.version = %d " + paramaf.Frb.version);
-      ad.i("MicroMsg.FreeWifi.FreeWifiConfigHelper", "resp.config.httpConnectTimeoutMillis = %d " + paramaf.Frb.Gaq);
-      ad.i("MicroMsg.FreeWifi.FreeWifiConfigHelper", "resp.config.httpReadTimeoutMillis = %d " + paramaf.Frb.Gar);
-      ad.i("MicroMsg.FreeWifi.FreeWifiConfigHelper", "resp.config.pingUrl = %s " + paramaf.Frb.dmL);
-      ad.i("MicroMsg.FreeWifi.FreeWifiConfigHelper", "resp.config.pingEnabled = %s " + paramaf.Frb.dmK);
-      ad.i("MicroMsg.FreeWifi.FreeWifiConfigHelper", "resp.config.ThreeTwoBlackUrl = %s " + paramaf.Frb.Gas);
-      GE(paramaf.Frb.Gaq);
-      GF(paramaf.Frb.Gar);
-      ajF(paramaf.Frb.dmL);
-      ajE(paramaf.Frb.dmK);
-      ajG(paramaf.Frb.Gas);
-      GD(paramaf.Frb.version);
-      ad.i("MicroMsg.FreeWifi.FreeWifiConfigHelper", "local config data changed.");
-      this.tkR.cRY();
+      ae.i("MicroMsg.FreeWifi.FreeWifiConfigHelper", "resp.config.version is %d, local version is %d.", new Object[] { Integer.valueOf(paramaf.FJz.version), Integer.valueOf(cTp()) });
+      ae.i("MicroMsg.FreeWifi.FreeWifiConfigHelper", "resp.config.version = %d " + paramaf.FJz.version);
+      ae.i("MicroMsg.FreeWifi.FreeWifiConfigHelper", "resp.config.httpConnectTimeoutMillis = %d " + paramaf.FJz.GsX);
+      ae.i("MicroMsg.FreeWifi.FreeWifiConfigHelper", "resp.config.httpReadTimeoutMillis = %d " + paramaf.FJz.GsY);
+      ae.i("MicroMsg.FreeWifi.FreeWifiConfigHelper", "resp.config.pingUrl = %s " + paramaf.FJz.dnN);
+      ae.i("MicroMsg.FreeWifi.FreeWifiConfigHelper", "resp.config.pingEnabled = %s " + paramaf.FJz.dnM);
+      ae.i("MicroMsg.FreeWifi.FreeWifiConfigHelper", "resp.config.ThreeTwoBlackUrl = %s " + paramaf.FJz.GsZ);
+      Hb(paramaf.FJz.GsX);
+      Hc(paramaf.FJz.GsY);
+      akD(paramaf.FJz.dnN);
+      akC(paramaf.FJz.dnM);
+      akE(paramaf.FJz.GsZ);
+      Ha(paramaf.FJz.version);
+      ae.i("MicroMsg.FreeWifi.FreeWifiConfigHelper", "local config data changed.");
+      this.tvJ.cUD();
       label384:
       AppMethodBeat.o(24661);
     }
   }
   
-  public final int cQK()
+  public final int cTp()
   {
     for (;;)
     {
@@ -190,21 +190,21 @@ public final class h
       try
       {
         AppMethodBeat.i(24663);
-        cQJ();
+        cTo();
       }
       finally {}
       try
       {
-        str = this.tkR.ajW(a.tkS.key);
-        if (!m.ea(str)) {
+        str = this.tvJ.akU(a.tvK.key);
+        if (!m.ef(str)) {
           continue;
         }
-        i = Integer.valueOf(a.tkS.tkY).intValue();
+        i = Integer.valueOf(a.tvK.tvQ).intValue();
         AppMethodBeat.o(24663);
       }
       catch (Exception localException)
       {
-        i = bt.getInt(a.tkS.tkY, 0);
+        i = bu.getInt(a.tvK.tvQ, 0);
         AppMethodBeat.o(24663);
         continue;
       }
@@ -214,17 +214,17 @@ public final class h
     }
   }
   
-  public final int cQL()
+  public final int cTq()
   {
     AppMethodBeat.i(24665);
-    cQJ();
+    cTo();
     int i;
     try
     {
-      String str = this.tkR.ajW(a.tkT.key);
-      if (m.ea(str))
+      String str = this.tvJ.akU(a.tvL.key);
+      if (m.ef(str))
       {
-        i = Integer.valueOf(a.tkT.tkY).intValue();
+        i = Integer.valueOf(a.tvL.tvQ).intValue();
         AppMethodBeat.o(24665);
         return i;
       }
@@ -234,23 +234,23 @@ public final class h
     }
     catch (Exception localException)
     {
-      i = bt.getInt(a.tkT.tkY, 0);
+      i = bu.getInt(a.tvL.tvQ, 0);
       AppMethodBeat.o(24665);
     }
     return i;
   }
   
-  public final int cQM()
+  public final int cTr()
   {
     AppMethodBeat.i(24667);
-    cQJ();
+    cTo();
     int i;
     try
     {
-      String str = this.tkR.ajW(a.tkU.key);
-      if (m.ea(str))
+      String str = this.tvJ.akU(a.tvM.key);
+      if (m.ef(str))
       {
-        i = Integer.valueOf(a.tkU.tkY).intValue();
+        i = Integer.valueOf(a.tvM.tvQ).intValue();
         AppMethodBeat.o(24667);
         return i;
       }
@@ -260,19 +260,19 @@ public final class h
     }
     catch (Exception localException)
     {
-      i = bt.getInt(a.tkU.tkY, 0);
+      i = bu.getInt(a.tvM.tvQ, 0);
       AppMethodBeat.o(24667);
     }
     return i;
   }
   
-  public final String cQN()
+  public final String cTs()
   {
     AppMethodBeat.i(24669);
-    cQJ();
+    cTo();
     try
     {
-      if ("0".equals(this.tkR.ajW(a.tkV.key)))
+      if ("0".equals(this.tvJ.akU(a.tvN.key)))
       {
         AppMethodBeat.o(24669);
         return "0";
@@ -282,22 +282,22 @@ public final class h
     }
     catch (Exception localException)
     {
-      String str = a.tkV.tkY;
+      String str = a.tvN.tvQ;
       AppMethodBeat.o(24669);
       return str;
     }
   }
   
-  public final String cQO()
+  public final String cTt()
   {
     AppMethodBeat.i(24673);
-    cQJ();
+    cTo();
     try
     {
-      String str1 = this.tkR.ajW(a.tkX.key);
-      if (m.ea(str1))
+      String str1 = this.tvJ.akU(a.tvP.key);
+      if (m.ef(str1))
       {
-        str1 = a.tkX.tkY;
+        str1 = a.tvP.tvQ;
         AppMethodBeat.o(24673);
         return str1;
       }
@@ -307,7 +307,7 @@ public final class h
     }
     catch (Exception localException)
     {
-      String str2 = a.tkX.tkY;
+      String str2 = a.tvP.tvQ;
       AppMethodBeat.o(24673);
       return str2;
     }
@@ -316,13 +316,13 @@ public final class h
   public final String getPingUrl()
   {
     AppMethodBeat.i(24671);
-    cQJ();
+    cTo();
     try
     {
-      String str1 = this.tkR.ajW(a.tkW.key);
-      if (m.ea(str1))
+      String str1 = this.tvJ.akU(a.tvO.key);
+      if (m.ef(str1))
       {
-        str1 = a.tkW.tkY;
+        str1 = a.tvO.tvQ;
         AppMethodBeat.o(24671);
         return str1;
       }
@@ -332,7 +332,7 @@ public final class h
     }
     catch (Exception localException)
     {
-      String str2 = a.tkW.tkY;
+      String str2 = a.tvO.tvQ;
       AppMethodBeat.o(24671);
       return str2;
     }
@@ -341,8 +341,8 @@ public final class h
   public final String getUserAgent()
   {
     AppMethodBeat.i(24675);
-    if (m.ea(this.userAgent)) {
-      this.userAgent = x.bW(aj.getContext(), null).toLowerCase();
+    if (m.ef(this.userAgent)) {
+      this.userAgent = x.bX(ak.getContext(), null).toLowerCase();
     }
     String str = this.userAgent;
     AppMethodBeat.o(24675);
@@ -352,31 +352,31 @@ public final class h
   static enum a
   {
     String key;
-    String tkY;
+    String tvQ;
     
     static
     {
       AppMethodBeat.i(24658);
-      tkS = new a("version", 0, "version", "2");
-      tkT = new a("httpConnectTimeoutMillis", 1, "httpConnectTimeoutMillis", "5000");
-      tkU = new a("httpReadTimeoutMillis", 2, "httpReadTimeoutMillis", "5000");
-      tkV = new a("pingEnabled", 3, "pingEnabled", "1");
-      tkW = new a("pingUrl", 4, "pingUrl", "http://o2o.gtimg.com/wifi/echo");
-      tkX = new a("threeTwoBlackUrl", 5, "threeTwoBlackUrl", "http://o2o.gtimg.com/wifi/echo.html");
-      tkZ = new a[] { tkS, tkT, tkU, tkV, tkW, tkX };
+      tvK = new a("version", 0, "version", "2");
+      tvL = new a("httpConnectTimeoutMillis", 1, "httpConnectTimeoutMillis", "5000");
+      tvM = new a("httpReadTimeoutMillis", 2, "httpReadTimeoutMillis", "5000");
+      tvN = new a("pingEnabled", 3, "pingEnabled", "1");
+      tvO = new a("pingUrl", 4, "pingUrl", "http://o2o.gtimg.com/wifi/echo");
+      tvP = new a("threeTwoBlackUrl", 5, "threeTwoBlackUrl", "http://o2o.gtimg.com/wifi/echo.html");
+      tvR = new a[] { tvK, tvL, tvM, tvN, tvO, tvP };
       AppMethodBeat.o(24658);
     }
     
     private a(String paramString1, String paramString2)
     {
       this.key = paramString1;
-      this.tkY = paramString2;
+      this.tvQ = paramString2;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.freewifi.h
  * JD-Core Version:    0.7.0.1
  */

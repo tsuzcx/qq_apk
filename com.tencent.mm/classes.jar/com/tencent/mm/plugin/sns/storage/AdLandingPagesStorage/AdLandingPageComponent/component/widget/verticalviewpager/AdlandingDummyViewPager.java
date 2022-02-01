@@ -11,16 +11,16 @@ import java.util.Set;
 public class AdlandingDummyViewPager
   extends DummyViewPager
 {
-  private a zIB;
-  public Set<ViewPager.OnPageChangeListener> zIC;
+  private a zZI;
+  public Set<ViewPager.OnPageChangeListener> zZJ;
   
   public AdlandingDummyViewPager(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(97055);
-    this.zIB = new a((byte)0);
-    this.zIC = new HashSet();
-    setOnPageChangeListener(this.zIB);
+    this.zZI = new a((byte)0);
+    this.zZJ = new HashSet();
+    setOnPageChangeListener(this.zZI);
     AppMethodBeat.o(97055);
   }
   
@@ -33,7 +33,7 @@ public class AdlandingDummyViewPager
     {
       AppMethodBeat.i(97054);
       if (paramInt == 0) {
-        AdlandingDummyViewPager.this.zIE = AdlandingDummyViewPager.this.getScrollX();
+        AdlandingDummyViewPager.this.zZL = AdlandingDummyViewPager.this.getScrollX();
       }
       Iterator localIterator = AdlandingDummyViewPager.a(AdlandingDummyViewPager.this).iterator();
       while (localIterator.hasNext()) {
@@ -65,7 +65,7 @@ public class AdlandingDummyViewPager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.widget.verticalviewpager.AdlandingDummyViewPager
  * JD-Core Version:    0.7.0.1
  */

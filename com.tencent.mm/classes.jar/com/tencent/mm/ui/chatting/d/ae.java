@@ -6,7 +6,7 @@ public abstract interface ae
 {
   public abstract void a(a parama);
   
-  public abstract void fCC();
+  public abstract void fGE();
 }
 
 

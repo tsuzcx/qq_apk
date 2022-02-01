@@ -1,18 +1,18 @@
 package com.tencent.mm.plugin.card.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.clj;
-import com.tencent.mm.protocal.protobuf.clk;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.cmd;
+import com.tencent.mm.protocal.protobuf.cme;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class ag
   extends n
@@ -20,15 +20,15 @@ public final class ag
 {
   private f callback;
   public String content;
-  public String dFE;
-  public String jVX;
-  public String oAk;
-  public String oAl;
-  public boolean oAm;
-  public String oAn;
-  public String oAo;
-  public String oAp;
-  public String oAq;
+  public String dGJ;
+  public String jZm;
+  public String oGM;
+  public String oGN;
+  public boolean oGO;
+  public String oGP;
+  public String oGQ;
+  public String oGR;
+  public String oGS;
   private final b rr;
   public int status;
   
@@ -36,17 +36,17 @@ public final class ag
   {
     AppMethodBeat.i(112855);
     Object localObject = new b.a();
-    ((b.a)localObject).hNM = new clj();
-    ((b.a)localObject).hNN = new clk();
+    ((b.a)localObject).hQF = new cmd();
+    ((b.a)localObject).hQG = new cme();
     ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/preacceptgiftcard";
     ((b.a)localObject).funcId = 1171;
-    ((b.a)localObject).hNO = 0;
+    ((b.a)localObject).hQH = 0;
     ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).aDC();
-    localObject = (clj)this.rr.hNK.hNQ;
-    ((clj)localObject).Frv = paramInt;
-    ((clj)localObject).Frw = paramString1;
-    ((clj)localObject).Frx = paramString2;
+    this.rr = ((b.a)localObject).aDS();
+    localObject = (cmd)this.rr.hQD.hQJ;
+    ((cmd)localObject).FJT = paramInt;
+    ((cmd)localObject).FJU = paramString1;
+    ((cmd)localObject).FJV = paramString2;
     AppMethodBeat.o(112855);
   }
   
@@ -67,22 +67,22 @@ public final class ag
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(112856);
-    ad.i("MicroMsg.NetScenePreAcceptGiftCard", "onGYNetEnd, errType = %d, errCode = %d ,errMsg:%s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    ae.i("MicroMsg.NetScenePreAcceptGiftCard", "onGYNetEnd, errType = %d, errCode = %d ,errMsg:%s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      paramq = (clk)this.rr.hNL.hNQ;
-      this.dFE = paramq.FrA;
-      this.oAk = paramq.FrB;
+      paramq = (cme)this.rr.hQE.hQJ;
+      this.dGJ = paramq.FJY;
+      this.oGM = paramq.FJZ;
       this.status = paramq.status;
       this.content = paramq.content;
-      this.oAl = paramq.ozC;
-      this.jVX = paramq.GXz;
-      this.oAm = paramq.oAm;
-      this.oAn = paramq.Hey;
-      this.oAo = paramq.Hez;
-      this.oAp = paramq.HeA;
-      this.oAq = paramq.HeB;
-      ad.d("MicroMsg.NetScenePreAcceptGiftCard", "fromUserName:%s, fromUserHeadImgUrl:%s, status:%d, content:%s,buttonWording:%s, backgroundColor:%s, ignore:%b", new Object[] { this.dFE, this.oAk, Integer.valueOf(this.status), this.content, this.oAl, this.jVX, Boolean.valueOf(this.oAm) });
+      this.oGN = paramq.oGe;
+      this.jZm = paramq.HqZ;
+      this.oGO = paramq.oGO;
+      this.oGP = paramq.HxY;
+      this.oGQ = paramq.HxZ;
+      this.oGR = paramq.Hya;
+      this.oGS = paramq.Hyb;
+      ae.d("MicroMsg.NetScenePreAcceptGiftCard", "fromUserName:%s, fromUserHeadImgUrl:%s, status:%d, content:%s,buttonWording:%s, backgroundColor:%s, ignore:%b", new Object[] { this.dGJ, this.oGM, Integer.valueOf(this.status), this.content, this.oGN, this.jZm, Boolean.valueOf(this.oGO) });
     }
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(112856);

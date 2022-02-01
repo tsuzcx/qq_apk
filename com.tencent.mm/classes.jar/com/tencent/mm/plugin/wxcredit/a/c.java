@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.wxcredit.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.wallet_core.tenpay.model.m;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -12,12 +12,12 @@ import org.json.JSONObject;
 public final class c
   extends m
 {
-  public double EGt;
+  public double EYP;
   
   public c(List<l> paramList, String paramString)
   {
     AppMethodBeat.i(72301);
-    this.EGt = 0.0D;
+    this.EYP = 0.0D;
     HashMap localHashMap = new HashMap();
     localHashMap.put("session_key", paramString);
     paramList = paramList.iterator();
@@ -26,17 +26,17 @@ public final class c
     {
       paramString = (l)paramList.next();
       localHashMap.put("qt_id_".concat(String.valueOf(i)), paramString.id);
-      localHashMap.put("ans_cont_".concat(String.valueOf(i)), paramString.vpC);
+      localHashMap.put("ans_cont_".concat(String.valueOf(i)), paramString.vBH);
       localHashMap.put("level_".concat(String.valueOf(i)), paramString.level);
-      localHashMap.put("parent_id_".concat(String.valueOf(i)), paramString.EGO);
+      localHashMap.put("parent_id_".concat(String.valueOf(i)), paramString.EZk);
       i += 1;
-      if ((paramString.EGQ == null) || (!"Y".equals(paramString.vpC))) {
+      if ((paramString.EZm == null) || (!"Y".equals(paramString.vBH))) {
         break label324;
       }
-      localHashMap.put("qt_id_".concat(String.valueOf(i)), paramString.EGQ.id);
-      localHashMap.put("ans_cont_".concat(String.valueOf(i)), paramString.EGQ.vpC);
-      localHashMap.put("level_".concat(String.valueOf(i)), paramString.EGQ.level);
-      localHashMap.put("parent_id_".concat(String.valueOf(i)), paramString.EGQ.EGO);
+      localHashMap.put("qt_id_".concat(String.valueOf(i)), paramString.EZm.id);
+      localHashMap.put("ans_cont_".concat(String.valueOf(i)), paramString.EZm.vBH);
+      localHashMap.put("level_".concat(String.valueOf(i)), paramString.EZm.level);
+      localHashMap.put("parent_id_".concat(String.valueOf(i)), paramString.EZm.EZk);
       i += 1;
     }
     label324:
@@ -58,7 +58,7 @@ public final class c
   public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(72302);
-    ad.d("Micromsg.NetSceneTenpayCheckPwd", "errCode " + paramInt + " errMsg: " + paramString);
+    ae.d("Micromsg.NetSceneTenpayCheckPwd", "errCode " + paramInt + " errMsg: " + paramString);
     if (paramInt != 0)
     {
       AppMethodBeat.o(72302);
@@ -66,20 +66,20 @@ public final class c
     }
     try
     {
-      this.EGt = (paramJSONObject.getInt("credit_amount") / 100.0D);
+      this.EYP = (paramJSONObject.getInt("credit_amount") / 100.0D);
       AppMethodBeat.o(72302);
       return;
     }
     catch (Exception paramString)
     {
-      ad.printErrStackTrace("Micromsg.NetSceneTenpayCheckPwd", paramString, "", new Object[0]);
+      ae.printErrStackTrace("Micromsg.NetSceneTenpayCheckPwd", paramString, "", new Object[0]);
       AppMethodBeat.o(72302);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.wxcredit.a.c
  * JD-Core Version:    0.7.0.1
  */

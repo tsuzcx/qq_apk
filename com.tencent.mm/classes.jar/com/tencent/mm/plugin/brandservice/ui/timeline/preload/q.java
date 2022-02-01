@@ -4,7 +4,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.a.a;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"resettableLazy", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/ResettableLazy;", "PROPTYPE", "manager", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/ResettableLazyManager;", "init", "Lkotlin/Function0;", "resettableManager", "plugin-brandservice_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"resettableLazy", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/ResettableLazy;", "PROPTYPE", "manager", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/ResettableLazyManager;", "init", "Lkotlin/Function0;", "resettableManager", "plugin-brandservice_release"})
 public final class q
 {
   public static final <PROPTYPE> o<PROPTYPE> a(p paramp, a<? extends PROPTYPE> parama)

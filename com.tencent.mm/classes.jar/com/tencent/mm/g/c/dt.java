@@ -32,20 +32,20 @@ public abstract class dt
   public static c.a initAutoDBInfo(Class<?> paramClass)
   {
     paramClass = new c.a();
-    paramClass.IhA = new Field[3];
+    paramClass.IBL = new Field[3];
     paramClass.columns = new String[4];
     StringBuilder localStringBuilder = new StringBuilder();
     paramClass.columns[0] = "key";
-    paramClass.IhC.put("key", "TEXT PRIMARY KEY ");
+    paramClass.IBN.put("key", "TEXT PRIMARY KEY ");
     localStringBuilder.append(" key TEXT PRIMARY KEY ");
     localStringBuilder.append(", ");
-    paramClass.IhB = "key";
+    paramClass.IBM = "key";
     paramClass.columns[1] = "value";
-    paramClass.IhC.put("value", "BLOB");
+    paramClass.IBN.put("value", "BLOB");
     localStringBuilder.append(" value BLOB");
     localStringBuilder.append(", ");
     paramClass.columns[2] = "expire_at";
-    paramClass.IhC.put("expire_at", "LONG");
+    paramClass.IBN.put("expire_at", "LONG");
     localStringBuilder.append(" expire_at LONG");
     paramClass.columns[3] = "rowid";
     paramClass.sql = localStringBuilder.toString();
@@ -112,7 +112,7 @@ public abstract class dt
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.c.dt
  * JD-Core Version:    0.7.0.1
  */

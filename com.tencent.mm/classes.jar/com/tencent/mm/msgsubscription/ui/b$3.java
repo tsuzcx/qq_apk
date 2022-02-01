@@ -7,7 +7,7 @@ import com.tencent.mm.hellhoundlib.a.a;
 import d.l;
 import java.util.List;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
 final class b$3
   implements View.OnClickListener
 {
@@ -18,8 +18,8 @@ final class b$3
     AppMethodBeat.i(149737);
     com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
     localb.bd(paramView);
-    a.b("com/tencent/mm/msgsubscription/ui/SubscribeMsgRequestDialog$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-    b.a(this.iDz, (b.b)this.iDA.get(0));
+    a.b("com/tencent/mm/msgsubscription/ui/SubscribeMsgRequestDialog$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+    b.a(this.iGs, (b.b)this.iGt.get(0));
     a.a(this, "com/tencent/mm/msgsubscription/ui/SubscribeMsgRequestDialog$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(149737);
   }

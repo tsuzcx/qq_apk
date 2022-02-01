@@ -9,9 +9,9 @@ import android.util.Size;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.graphics.MMBitmapFactory;
 import com.tencent.mm.plugin.recordvideo.jumper.MediaEditReportInfo.EditItem;
-import com.tencent.mm.protocal.protobuf.ava;
-import com.tencent.mm.protocal.protobuf.bxd;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.avq;
+import com.tencent.mm.protocal.protobuf.bxx;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.videocomposition.a.a;
 import com.tencent.mm.videocomposition.b.a;
 import com.tencent.mm.videocomposition.h;
@@ -27,281 +27,281 @@ import java.util.List;
 import kotlinx.coroutines.ah;
 import kotlinx.coroutines.az;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/vlog/model/MultiMediaModel;", "Lcom/tencent/mm/vending/lifecycle/ILifeCycle;", "()V", "TAG", "", "callback", "Lkotlin/Function0;", "", "composition", "Lcom/tencent/mm/plugin/vlog/model/VLogComposition;", "editIndex", "", "editTrack", "Lcom/tencent/mm/plugin/vlog/model/VLogCompositionTrack;", "editTrackEnd", "", "editTrackPlayRate", "", "editTrackStart", "isAllImage", "", "()Z", "setAllImage", "(Z)V", "isAllVideo", "setAllVideo", "isLoading", "lastPlayRange", "Lcom/tencent/mm/plugin/vlog/model/PlayRange;", "legendData", "Lcom/tencent/mm/plugin/vlog/model/VLogDataManager;", "legendDataCallback", "Lkotlin/Function1;", "Lcom/tencent/mm/protocal/protobuf/GenerateVlogRespBody;", "Lkotlin/ParameterName;", "name", "result", "maxDuration", "maxVisibleRect", "Landroid/graphics/RectF;", "normalCropRatio", "normalHeight", "normalWidth", "pathList", "Ljava/util/LinkedList;", "getPathList", "()Ljava/util/LinkedList;", "playingList", "scriptIndex", "sourceList", "Lcom/tencent/mm/plugin/vlog/model/SourceMaterial;", "sourceTrackList", "typeList", "getTypeList", "vLogLoaded", "visibleRect", "vlogHeight", "vlogWidth", "createCompositionFromScript", "index", "maxDurationMs", "createCompositionFromSource", "createCompositionFromTemplate", "template", "Lcom/tencent/mm/plugin/vlog/model/local/LocalEffectManager$VideoTemplateInfo;", "createCompositionFromTrack", "track", "createCompositionFromTrackList", "trackList", "", "recordResult", "Lkotlin/Triple;", "ttsResult", "currentComposition", "currentEditTrack", "currentScript", "Lcom/tencent/mm/plugin/vlog/model/VLogScriptModel;", "dead", "endEditTrack", "confirm", "start", "end", "cutCnt", "scrollCnt", "clearEdit", "endMoveTrack", "getIndexScript", "getMusicList", "Lcom/tencent/mm/protocal/protobuf/MMSPRRecommendedMusicInfo;", "getNormalCropRatio", "getNormalSize", "Landroid/util/Size;", "getSourceTrack", "getVLogSize", "getVisibleRect", "isVLog", "loadVLogScript", "sid", "fid", "moveTrack", "fromPosition", "toPosition", "scaleEdit", "playRate", "selectTrack", "setMaxDuration", "duration", "setMaxVisibleRect", "setNormalMaxSize", "width", "height", "setVLogSize", "setup", "paths", "types", "sourceFrom", "(Ljava/util/List;Ljava/util/List;Ljava/util/List;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "setupSourceTrackCrop", "setupSourceTrackCropByVideoTemplate", "updateEdit", "plugin-vlog_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/vlog/model/MultiMediaModel;", "Lcom/tencent/mm/vending/lifecycle/ILifeCycle;", "()V", "TAG", "", "callback", "Lkotlin/Function0;", "", "composition", "Lcom/tencent/mm/plugin/vlog/model/VLogComposition;", "editIndex", "", "editTrack", "Lcom/tencent/mm/plugin/vlog/model/VLogCompositionTrack;", "editTrackEnd", "", "editTrackPlayRate", "", "editTrackStart", "isAllImage", "", "()Z", "setAllImage", "(Z)V", "isAllVideo", "setAllVideo", "isLoading", "lastPlayRange", "Lcom/tencent/mm/plugin/vlog/model/PlayRange;", "legendData", "Lcom/tencent/mm/plugin/vlog/model/VLogDataManager;", "legendDataCallback", "Lkotlin/Function1;", "Lcom/tencent/mm/protocal/protobuf/GenerateVlogRespBody;", "Lkotlin/ParameterName;", "name", "result", "maxDuration", "maxVisibleRect", "Landroid/graphics/RectF;", "normalCropRatio", "normalHeight", "normalWidth", "pathList", "Ljava/util/LinkedList;", "getPathList", "()Ljava/util/LinkedList;", "playingList", "scriptIndex", "sourceList", "Lcom/tencent/mm/plugin/vlog/model/SourceMaterial;", "sourceTrackList", "typeList", "getTypeList", "vLogLoaded", "visibleRect", "vlogHeight", "vlogWidth", "createCompositionFromScript", "index", "maxDurationMs", "createCompositionFromSource", "createCompositionFromTemplate", "template", "Lcom/tencent/mm/plugin/vlog/model/local/LocalEffectManager$VideoTemplateInfo;", "createCompositionFromTrack", "track", "createCompositionFromTrackList", "trackList", "", "recordResult", "Lkotlin/Triple;", "ttsResult", "currentComposition", "currentEditTrack", "currentScript", "Lcom/tencent/mm/plugin/vlog/model/VLogScriptModel;", "dead", "endEditTrack", "confirm", "start", "end", "cutCnt", "scrollCnt", "clearEdit", "endMoveTrack", "getIndexScript", "getMusicList", "Lcom/tencent/mm/protocal/protobuf/MMSPRRecommendedMusicInfo;", "getNormalCropRatio", "getNormalSize", "Landroid/util/Size;", "getSourceTrack", "getVLogSize", "getVisibleRect", "isVLog", "loadVLogScript", "sid", "fid", "moveTrack", "fromPosition", "toPosition", "scaleEdit", "playRate", "selectTrack", "setMaxDuration", "duration", "setMaxVisibleRect", "setNormalMaxSize", "width", "height", "setVLogSize", "setup", "paths", "types", "sourceFrom", "(Ljava/util/List;Ljava/util/List;Ljava/util/List;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "setupSourceTrackCrop", "setupSourceTrackCropByVideoTemplate", "updateEdit", "plugin-vlog_release"})
 public final class o
   implements com.tencent.mm.vending.e.a
 {
-  public final RectF BFA;
-  public final RectF BFB;
-  public long BFC;
-  d.g.a.a<z> BFD;
-  public final x BFE;
-  private final d.g.a.b<ava, z> BFF;
-  boolean BFG;
-  public final LinkedList<w> BFH;
-  public int BFI;
-  private int BFJ;
-  public w BFK;
-  private long BFL;
-  private long BFM;
-  private float BFN;
-  private final q BFO;
-  public v BFd;
-  public final LinkedList<String> BFq;
-  final LinkedList<s> BFr;
-  public final LinkedList<w> BFs;
-  public boolean BFt;
-  public boolean BFu;
-  public int BFv;
-  public int BFw;
-  public int BFx;
-  public int BFy;
-  public float BFz;
+  public v BWB;
+  public final LinkedList<String> BWO;
+  final LinkedList<s> BWP;
+  public final LinkedList<w> BWQ;
+  public boolean BWR;
+  public boolean BWS;
+  public int BWT;
+  public int BWU;
+  public int BWV;
+  public int BWW;
+  public float BWX;
+  public final RectF BWY;
+  public final RectF BWZ;
+  public long BXa;
+  d.g.a.a<z> BXb;
+  public final x BXc;
+  private final d.g.a.b<avq, z> BXd;
+  boolean BXe;
+  public final LinkedList<w> BXf;
+  public int BXg;
+  private int BXh;
+  public w BXi;
+  private long BXj;
+  private long BXk;
+  private float BXl;
+  private final q BXm;
   public final String TAG;
   boolean isLoading;
-  final LinkedList<Integer> rET;
+  final LinkedList<Integer> rNe;
   
   public o()
   {
-    AppMethodBeat.i(195736);
+    AppMethodBeat.i(191193);
     this.TAG = "MicroMsg.MultiMediaModel";
-    this.BFq = new LinkedList();
-    this.rET = new LinkedList();
-    this.BFr = new LinkedList();
-    this.BFs = new LinkedList();
-    com.tencent.mm.plugin.vlog.util.a locala = com.tencent.mm.plugin.vlog.util.a.BVa;
-    this.BFz = com.tencent.mm.plugin.vlog.util.a.euh();
-    this.BFA = new RectF();
-    this.BFB = new RectF();
-    this.BFE = new x();
-    this.BFF = ((d.g.a.b)new a(this));
-    this.BFd = new v((List)d.a.v.MKE);
-    this.BFH = new LinkedList();
-    this.BFI = -1;
-    this.BFJ = -1;
-    this.BFN = 1.0F;
-    this.BFO = new q();
-    AppMethodBeat.o(195736);
+    this.BWO = new LinkedList();
+    this.rNe = new LinkedList();
+    this.BWP = new LinkedList();
+    this.BWQ = new LinkedList();
+    com.tencent.mm.plugin.vlog.util.a locala = com.tencent.mm.plugin.vlog.util.a.CmB;
+    this.BWX = com.tencent.mm.plugin.vlog.util.a.exN();
+    this.BWY = new RectF();
+    this.BWZ = new RectF();
+    this.BXc = new x();
+    this.BXd = ((d.g.a.b)new a(this));
+    this.BWB = new v((List)d.a.v.NhH);
+    this.BXf = new LinkedList();
+    this.BXg = -1;
+    this.BXh = -1;
+    this.BXl = 1.0F;
+    this.BXm = new q();
+    AppMethodBeat.o(191193);
   }
   
-  public final void Tz(int paramInt)
+  public final void Ug(int paramInt)
   {
-    AppMethodBeat.i(195730);
-    ad.i(this.TAG, "editTrack index:".concat(String.valueOf(paramInt)));
-    this.BFJ = paramInt;
-    this.BFO.start = this.BFd.BGk.getPlayStart();
-    this.BFO.bpc = this.BFd.BGk.esa();
-    if ((this.BFJ >= 0) && (this.BFJ < this.BFH.size()))
+    AppMethodBeat.i(191187);
+    ae.i(this.TAG, "editTrack index:".concat(String.valueOf(paramInt)));
+    this.BXh = paramInt;
+    this.BXm.start = this.BWB.BXI.getPlayStart();
+    this.BXm.bpc = this.BWB.BXI.evH();
+    if ((this.BXh >= 0) && (this.BXh < this.BXf.size()))
     {
-      Object localObject1 = this.BFH.get(this.BFJ);
+      Object localObject1 = this.BXf.get(this.BXh);
       p.g(localObject1, "playingList[editIndex]");
       localObject1 = (w)localObject1;
-      this.BFK = ((w)localObject1);
-      this.BFL = ((w)localObject1).BGw.HCU;
-      this.BFM = ((w)localObject1).BGw.HCV;
-      this.BFN = ((w)localObject1).BGw.llC;
+      this.BXi = ((w)localObject1);
+      this.BXj = ((w)localObject1).BXV.HWH;
+      this.BXk = ((w)localObject1).BXV.HWI;
+      this.BXl = ((w)localObject1).BXV.lqb;
       Object localObject2 = new w(((w)localObject1).path, ((w)localObject1).type);
-      ((w)localObject2).Bl(((w)localObject1).BGw.BMD);
-      ((w)localObject2).Bj(((float)((w)localObject1).BGw.BMD / ((w)localObject1).BGw.llC));
-      ((w)localObject2).setPlayRate(((w)localObject1).BGw.llC);
-      ((w)localObject2).BGr = ((w)localObject1).BGr;
-      ((w)localObject2).BGs = ((w)localObject1).BGs;
-      ((w)localObject2).BGu.hmm.set(((w)localObject1).BGu.hmm);
-      ((w)localObject2).BGu.pZj.set(((w)localObject1).BGu.pZj);
-      ((w)localObject2).BGu.viewRect.set(((w)localObject1).BGu.viewRect);
-      ((w)localObject2).BGu.gR.set(((w)localObject1).BGu.gR);
-      ((w)localObject2).BGw.hmm.set(((w)localObject1).BGw.hmm);
-      ((w)localObject2).BGw.fyp();
+      ((w)localObject2).BJ(((w)localObject1).BXV.Cec);
+      ((w)localObject2).BH(((float)((w)localObject1).BXV.Cec / ((w)localObject1).BXV.lqb));
+      ((w)localObject2).setPlayRate(((w)localObject1).BXV.lqb);
+      ((w)localObject2).BXQ = ((w)localObject1).BXQ;
+      ((w)localObject2).BXR = ((w)localObject1).BXR;
+      ((w)localObject2).BXT.hpa.set(((w)localObject1).BXT.hpa);
+      ((w)localObject2).BXT.qfO.set(((w)localObject1).BXT.qfO);
+      ((w)localObject2).BXT.viewRect.set(((w)localObject1).BXT.viewRect);
+      ((w)localObject2).BXT.gR.set(((w)localObject1).BXT.gR);
+      ((w)localObject2).BXV.hpa.set(((w)localObject1).BXV.hpa);
+      ((w)localObject2).BXV.fCr();
       p.h(localObject2, "track");
-      this.BFd = new v(d.a.j.listOf(localObject2));
-      this.BFd.io(this.BFx, this.BFy);
-      localObject1 = this.BFd;
-      localObject2 = com.tencent.mm.plugin.vlog.model.local.a.BHu;
-      ((v)localObject1).a(com.tencent.mm.plugin.vlog.model.local.a.esu());
-      this.BFd.ar(((float)this.BFL / this.BFN), ((float)this.BFM / this.BFN));
+      this.BWB = new v(d.a.j.listOf(localObject2));
+      this.BWB.ir(this.BWV, this.BWW);
+      localObject1 = this.BWB;
+      localObject2 = com.tencent.mm.plugin.vlog.model.local.a.BYT;
+      ((v)localObject1).a(com.tencent.mm.plugin.vlog.model.local.a.ewb());
+      this.BWB.aq(((float)this.BXj / this.BXl), ((float)this.BXk / this.BXl));
     }
-    AppMethodBeat.o(195730);
+    AppMethodBeat.o(191187);
   }
   
   public final void a(w paramw)
   {
-    this.BFK = paramw;
+    this.BXi = paramw;
   }
   
   public final void a(boolean paramBoolean1, long paramLong1, long paramLong2, int paramInt1, int paramInt2, boolean paramBoolean2)
   {
-    AppMethodBeat.i(195733);
-    ad.i(this.TAG, "endEditTrack editIndex:" + this.BFJ + ", confirm:" + paramBoolean1 + ", start:" + paramLong1 + ", end:" + paramLong2);
-    if ((this.BFJ >= 0) && (this.BFJ < this.BFH.size()))
+    AppMethodBeat.i(191190);
+    ae.i(this.TAG, "endEditTrack editIndex:" + this.BXh + ", confirm:" + paramBoolean1 + ", start:" + paramLong1 + ", end:" + paramLong2);
+    if ((this.BXh >= 0) && (this.BXh < this.BXf.size()))
     {
-      localObject1 = this.BFH.get(this.BFJ);
+      localObject1 = this.BXf.get(this.BXh);
       p.g(localObject1, "playingList[editIndex]");
       localObject1 = (w)localObject1;
-      localObject2 = ((w)localObject1).BGv;
+      localObject2 = ((w)localObject1).BXU;
       ((MediaEditReportInfo.EditItem)localObject2).clickEditCount += 1;
-      localObject2 = ((w)localObject1).BGv;
+      localObject2 = ((w)localObject1).BXU;
       ((MediaEditReportInfo.EditItem)localObject2).durationCutCount += paramInt1;
-      localObject2 = ((w)localObject1).BGv;
+      localObject2 = ((w)localObject1).BXU;
       ((MediaEditReportInfo.EditItem)localObject2).durationScrollCount += paramInt2;
       if ((paramBoolean1) && (paramLong1 >= 0L) && (paramLong2 >= 0L))
       {
-        ((w)localObject1).Bk(((float)paramLong1 * ((w)localObject1).BGw.llC));
-        ((w)localObject1).Bl(((float)paramLong2 * ((w)localObject1).BGw.llC));
+        ((w)localObject1).BI(((float)paramLong1 * ((w)localObject1).BXV.lqb));
+        ((w)localObject1).BJ(((float)paramLong2 * ((w)localObject1).BXV.lqb));
       }
       for (;;)
       {
-        paramLong1 = ((float)(((w)localObject1).BGw.HCV - ((w)localObject1).BGw.HCU) / ((w)localObject1).BGw.llC);
-        ((w)localObject1).BGv.targetDuration = paramLong1;
+        paramLong1 = ((float)(((w)localObject1).BXV.HWI - ((w)localObject1).BXV.HWH) / ((w)localObject1).BXV.lqb);
+        ((w)localObject1).BXU.targetDuration = paramLong1;
         if (paramBoolean2)
         {
-          this.BFK = null;
-          this.BFJ = -1;
+          this.BXi = null;
+          this.BXh = -1;
         }
-        localObject1 = com.tencent.mm.videocomposition.b.LmE;
-        localObject2 = (Iterable)this.BFH;
+        localObject1 = com.tencent.mm.videocomposition.b.LJo;
+        localObject2 = (Iterable)this.BXf;
         localObject1 = (Collection)new ArrayList(d.a.j.a((Iterable)localObject2, 10));
         localObject2 = ((Iterable)localObject2).iterator();
         while (((Iterator)localObject2).hasNext()) {
-          ((Collection)localObject1).add(((w)((Iterator)localObject2).next()).BGw);
+          ((Collection)localObject1).add(((w)((Iterator)localObject2).next()).BXV);
         }
-        ((w)localObject1).Bk(this.BFL);
-        ((w)localObject1).Bl(this.BFM);
+        ((w)localObject1).BI(this.BXj);
+        ((w)localObject1).BJ(this.BXk);
       }
-      b.a.iM((List)localObject1);
+      b.a.iW((List)localObject1);
     }
-    this.BFd = new v((List)this.BFH);
-    this.BFd.Bh(this.BFC);
-    Object localObject1 = this.BFd;
-    Object localObject2 = com.tencent.mm.plugin.vlog.model.local.a.BHu;
-    ((v)localObject1).a(com.tencent.mm.plugin.vlog.model.local.a.esu());
-    this.BFd.io(this.BFx, this.BFy);
-    AppMethodBeat.o(195733);
+    this.BWB = new v((List)this.BXf);
+    this.BWB.BF(this.BXa);
+    Object localObject1 = this.BWB;
+    Object localObject2 = com.tencent.mm.plugin.vlog.model.local.a.BYT;
+    ((v)localObject1).a(com.tencent.mm.plugin.vlog.model.local.a.ewb());
+    this.BWB.ir(this.BWV, this.BWW);
+    AppMethodBeat.o(191190);
   }
   
-  public final void aq(long paramLong1, long paramLong2)
+  public final void ap(long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(195732);
-    this.BFd.ar(paramLong1, paramLong2);
-    AppMethodBeat.o(195732);
+    AppMethodBeat.i(191189);
+    this.BWB.aq(paramLong1, paramLong2);
+    AppMethodBeat.o(191189);
   }
   
-  public final void bK(float paramFloat)
+  public final void bI(float paramFloat)
   {
-    AppMethodBeat.i(195731);
-    w localw = this.BFK;
+    AppMethodBeat.i(191188);
+    w localw = this.BXi;
     if (localw != null)
     {
       localw.setPlayRate(paramFloat);
-      localw.BGw.fyp();
+      localw.BXV.fCr();
     }
-    localw = (w)d.a.j.jd((List)this.BFd.BGl);
+    localw = (w)d.a.j.jm((List)this.BWB.BXJ);
     if (localw != null)
     {
       localw.setPlayRate(paramFloat);
-      localw.BGw.fyp();
-      this.BFd.ar(localw.BGw.startTimeMs, localw.BGw.hiy);
-      AppMethodBeat.o(195731);
+      localw.BXV.fCr();
+      this.BWB.aq(localw.BXV.startTimeMs, localw.BXV.hlm);
+      AppMethodBeat.o(191188);
       return;
     }
-    AppMethodBeat.o(195731);
+    AppMethodBeat.o(191188);
   }
   
   public final void dead()
   {
-    AppMethodBeat.i(195735);
-    x localx = this.BFE;
-    localx.BGB = null;
-    com.tencent.mm.kernel.g.aiU().b(1469, (com.tencent.mm.al.f)localx);
-    com.tencent.mm.kernel.g.aiU().b(2972, (com.tencent.mm.al.f)localx);
-    AppMethodBeat.o(195735);
+    AppMethodBeat.i(191192);
+    x localx = this.BXc;
+    localx.BYa = null;
+    com.tencent.mm.kernel.g.ajj().b(1469, (com.tencent.mm.ak.f)localx);
+    com.tencent.mm.kernel.g.ajj().b(2972, (com.tencent.mm.ak.f)localx);
+    AppMethodBeat.o(191192);
   }
   
-  public final List<bxd> dsR()
+  public final List<bxx> dwg()
   {
-    AppMethodBeat.i(195729);
-    List localList = this.BFE.dsR();
-    AppMethodBeat.o(195729);
+    AppMethodBeat.i(191186);
+    List localList = this.BXc.dwg();
+    AppMethodBeat.o(191186);
     return localList;
   }
   
-  public final boolean erQ()
+  public final v evA()
   {
-    return this.BFt;
+    return this.BWB;
   }
   
-  public final void erR()
+  public final boolean evB()
   {
-    AppMethodBeat.i(195727);
-    Iterator localIterator = ((Iterable)this.BFs).iterator();
+    return this.BXg >= 0;
+  }
+  
+  public final w evC()
+  {
+    return this.BXi;
+  }
+  
+  public final boolean evx()
+  {
+    return this.BWR;
+  }
+  
+  public final void evy()
+  {
+    AppMethodBeat.i(191184);
+    Iterator localIterator = ((Iterable)this.BWQ).iterator();
     if (localIterator.hasNext())
     {
       w localw = (w)localIterator.next();
-      g localg = localw.BGu;
+      g localg = localw.BXT;
       float f;
       if (localg.gR.isIdentity())
       {
-        f = localw.BGs * 1.0F / localw.BGr;
-        this.BFA.round(localg.pZj);
-        if (f <= this.BFA.height() / this.BFA.width()) {
+        f = localw.BXR * 1.0F / localw.BXQ;
+        this.BWY.round(localg.qfO);
+        if (f <= this.BWY.height() / this.BWY.width()) {
           break label305;
         }
-        f = (this.BFA.width() * 1.0F / localw.BGr * localw.BGs - this.BFA.height()) / 2.0F;
-        localg.pZj.top = ((int)(this.BFA.top - f));
-        localg.pZj.bottom = ((int)(f + this.BFA.bottom));
+        f = (this.BWY.width() * 1.0F / localw.BXQ * localw.BXR - this.BWY.height()) / 2.0F;
+        localg.qfO.top = ((int)(this.BWY.top - f));
+        localg.qfO.bottom = ((int)(f + this.BWY.bottom));
       }
       for (;;)
       {
-        this.BFA.round(localg.hmm);
-        m.a(localg.gR, new RectF(0.0F, 0.0F, localw.BGr, localw.BGs), new RectF(localg.pZj));
-        localg.pZj.offset(0, -(int)this.BFB.top);
-        localw.BGw.hmm.set(localg.pZj);
-        localg.tLe = m.e(localg.gR);
-        localg.aXE = (localg.tLe * 5.0F);
-        localg.aXF = (localg.tLe * 0.25F);
-        localw.BGw.LmA = true;
+        this.BWY.round(localg.hpa);
+        m.a(localg.gR, new RectF(0.0F, 0.0F, localw.BXQ, localw.BXR), new RectF(localg.qfO));
+        localg.qfO.offset(0, -(int)this.BWZ.top);
+        localw.BXV.hpa.set(localg.qfO);
+        localg.tVV = m.e(localg.gR);
+        localg.aXE = (localg.tVV * 5.0F);
+        localg.aXF = (localg.tVV * 0.25F);
+        localw.BXV.LJk = true;
         break;
         label305:
-        f = (this.BFA.height() * 1.0F / localw.BGs * localw.BGr - this.BFA.width()) / 2.0F;
-        localg.pZj.left = ((int)(this.BFA.left - f));
-        localg.pZj.right = ((int)(f + this.BFA.right));
+        f = (this.BWY.height() * 1.0F / localw.BXR * localw.BXQ - this.BWY.width()) / 2.0F;
+        localg.qfO.left = ((int)(this.BWY.left - f));
+        localg.qfO.right = ((int)(f + this.BWY.right));
       }
     }
-    AppMethodBeat.o(195727);
+    AppMethodBeat.o(191184);
   }
   
-  public final Size erS()
+  public final Size evz()
   {
-    AppMethodBeat.i(195728);
-    Size localSize = new Size(this.BFx, this.BFy);
-    AppMethodBeat.o(195728);
+    AppMethodBeat.i(191185);
+    Size localSize = new Size(this.BWV, this.BWW);
+    AppMethodBeat.o(191185);
     return localSize;
   }
   
-  public final v erT()
+  public final void iq(int paramInt1, int paramInt2)
   {
-    return this.BFd;
+    this.BWV = paramInt1;
+    this.BWW = paramInt2;
   }
   
-  public final boolean erU()
-  {
-    return this.BFI >= 0;
-  }
-  
-  public final w erV()
-  {
-    return this.BFK;
-  }
-  
-  public final void in(int paramInt1, int paramInt2)
-  {
-    this.BFx = paramInt1;
-    this.BFy = paramInt2;
-  }
-  
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Lcom/tencent/mm/protocal/protobuf/GenerateVlogRespBody;", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Lcom/tencent/mm/protocal/protobuf/GenerateVlogRespBody;", "invoke"})
   static final class a
     extends d.g.b.q
-    implements d.g.a.b<ava, z>
+    implements d.g.a.b<avq, z>
   {
     a(o paramo)
     {
@@ -309,16 +309,16 @@ public final class o
     }
   }
   
-  @d.d.b.a.f(c="com.tencent.mm.plugin.vlog.model.MultiMediaModel$setup$2", f="MultiMediaModel.kt", gfL={79}, m="invokeSuspend")
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "Lkotlinx/coroutines/CoroutineScope;", "invoke", "(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;"})
+  @d.d.b.a.f(c="com.tencent.mm.plugin.vlog.model.MultiMediaModel$setup$2", f="MultiMediaModel.kt", gkn={79}, m="invokeSuspend")
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "Lkotlinx/coroutines/CoroutineScope;", "invoke", "(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;"})
   public static final class b
     extends d.d.b.a.j
     implements d.g.a.m<ah, d<? super z>, Object>
   {
     int label;
-    private ah nWQ;
-    Object nWR;
-    Object olg;
+    Object ocA;
+    private ah ocz;
+    Object oqW;
     
     public b(o paramo, List paramList1, List paramList2, List paramList3, d paramd)
     {
@@ -327,37 +327,37 @@ public final class o
     
     public final d<z> a(Object paramObject, d<?> paramd)
     {
-      AppMethodBeat.i(195725);
+      AppMethodBeat.i(191182);
       p.h(paramd, "completion");
-      paramd = new b(this.BFP, this.BFQ, this.BFR, this.BFS, paramd);
-      paramd.nWQ = ((ah)paramObject);
-      AppMethodBeat.o(195725);
+      paramd = new b(this.BXn, this.BXo, this.BXp, this.BXq, paramd);
+      paramd.ocz = ((ah)paramObject);
+      AppMethodBeat.o(191182);
       return paramd;
     }
     
-    public final Object cQ(Object paramObject)
+    public final Object cR(Object paramObject)
     {
-      AppMethodBeat.i(195724);
-      d.d.a.a locala = d.d.a.a.MLc;
+      AppMethodBeat.i(191181);
+      d.d.a.a locala = d.d.a.a.Nif;
       switch (this.label)
       {
       default: 
         paramObject = new IllegalStateException("call to 'resume' before 'invoke' with coroutine");
-        AppMethodBeat.o(195724);
+        AppMethodBeat.o(191181);
         throw paramObject;
       case 0: 
-        paramObject = this.nWQ;
-        this.BFP.BFq.clear();
-        this.BFP.rET.clear();
-        this.BFP.BFr.clear();
-        this.BFP.BFs.clear();
-        this.BFP.BFq.addAll((Collection)this.BFQ);
-        this.BFP.rET.addAll((Collection)this.BFR);
-        localObject1 = this.BFP.BFr;
-        Object localObject2 = s.BGc;
-        Object localObject3 = this.BFQ;
-        localObject2 = this.BFR;
-        List localList = this.BFS;
+        paramObject = this.ocz;
+        this.BXn.BWO.clear();
+        this.BXn.rNe.clear();
+        this.BXn.BWP.clear();
+        this.BXn.BWQ.clear();
+        this.BXn.BWO.addAll((Collection)this.BXo);
+        this.BXn.rNe.addAll((Collection)this.BXp);
+        localObject1 = this.BXn.BWP;
+        Object localObject2 = s.BXA;
+        Object localObject3 = this.BXo;
+        localObject2 = this.BXp;
+        List localList = this.BXq;
         p.h(localObject3, "paths");
         p.h(localObject2, "types");
         p.h(localList, "sourceFrom");
@@ -369,19 +369,19 @@ public final class o
           Object localObject4 = ((Iterator)localObject3).next();
           int j = i + 1;
           if (i < 0) {
-            d.a.j.gfB();
+            d.a.j.gkd();
           }
           localObject4 = (String)localObject4;
-          Object localObject5 = (Integer)d.a.j.E((List)localObject2, i);
+          Object localObject5 = (Integer)d.a.j.F((List)localObject2, i);
           if (localObject5 == null) {}
           while (((Integer)localObject5).intValue() != 2)
           {
-            localObject5 = s.BGc;
+            localObject5 = s.BXA;
             p.h(localObject4, "path");
             localObject5 = new BitmapFactory.Options();
             ((BitmapFactory.Options)localObject5).inJustDecodeBounds = true;
             MMBitmapFactory.decodeFile((String)localObject4, (BitmapFactory.Options)localObject5);
-            int n = s.a.aDm((String)localObject4);
+            int n = s.a.aEF((String)localObject4);
             int m = ((BitmapFactory.Options)localObject5).outWidth;
             int k = ((BitmapFactory.Options)localObject5).outHeight;
             if ((n == 90) || (n == 270))
@@ -390,16 +390,16 @@ public final class o
               k = ((BitmapFactory.Options)localObject5).outWidth;
             }
             localObject4 = new k(m, k, (String)localObject4);
-            ((s)localObject4).BGb = ((Number)localList.get(i)).intValue();
+            ((s)localObject4).BXz = ((Number)localList.get(i)).intValue();
             localLinkedList.add(localObject4);
             i = j;
             break;
           }
-          localObject5 = s.BGc;
-          localObject4 = s.a.aDn((String)localObject4);
+          localObject5 = s.BXA;
+          localObject4 = s.a.aEG((String)localObject4);
           if (localObject4 != null)
           {
-            ((s)localObject4).BGb = ((Number)localList.get(i)).intValue();
+            ((s)localObject4).BXz = ((Number)localList.get(i)).intValue();
             localLinkedList.add(localObject4);
             i = j;
           }
@@ -409,8 +409,8 @@ public final class o
           }
         }
         ((LinkedList)localObject1).addAll((Collection)localLinkedList);
-        localObject1 = this.BFP;
-        localObject2 = (Iterable)this.BFP.BFr;
+        localObject1 = this.BXn;
+        localObject2 = (Iterable)this.BXn.BWP;
         boolean bool;
         label646:
         float f2;
@@ -422,9 +422,9 @@ public final class o
             if (!((s)((Iterator)localObject2).next() instanceof k))
             {
               bool = false;
-              ((o)localObject1).BFt = bool;
-              localObject1 = this.BFP;
-              localObject2 = (Iterable)this.BFP.BFr;
+              ((o)localObject1).BWR = bool;
+              localObject1 = this.BXn;
+              localObject2 = (Iterable)this.BXn.BWP;
               if (((localObject2 instanceof Collection)) && (((Collection)localObject2).isEmpty())) {
                 break label812;
               }
@@ -433,15 +433,15 @@ public final class o
                 if (!((s)((Iterator)localObject2).next() instanceof ac))
                 {
                   bool = false;
-                  ((o)localObject1).BFu = bool;
-                  localObject1 = this.BFP;
-                  localObject2 = com.tencent.mm.plugin.vlog.util.a.BVa;
-                  i = ((s)this.BFP.BFr.get(0)).width;
-                  f2 = ((s)this.BFP.BFr.get(0)).height * 1.0F / i;
-                  if (f2 <= com.tencent.mm.plugin.vlog.util.a.euh()) {
+                  ((o)localObject1).BWS = bool;
+                  localObject1 = this.BXn;
+                  localObject2 = com.tencent.mm.plugin.vlog.util.a.CmB;
+                  i = ((s)this.BXn.BWP.get(0)).width;
+                  f2 = ((s)this.BXn.BWP.get(0)).height * 1.0F / i;
+                  if (f2 <= com.tencent.mm.plugin.vlog.util.a.exN()) {
                     break label818;
                   }
-                  f1 = com.tencent.mm.plugin.vlog.util.a.euh();
+                  f1 = com.tencent.mm.plugin.vlog.util.a.exN();
                 }
               }
             }
@@ -449,18 +449,18 @@ public final class o
         }
         for (;;)
         {
-          ((o)localObject1).BFz = f1;
-          localObject1 = this.BFP.BFs;
-          localObject2 = s.BGc;
-          localObject2 = (List)this.BFP.BFr;
-          this.nWR = paramObject;
-          this.olg = localObject1;
+          ((o)localObject1).BWX = f1;
+          localObject1 = this.BXn.BWQ;
+          localObject2 = s.BXA;
+          localObject2 = (List)this.BXn.BWP;
+          this.ocA = paramObject;
+          this.oqW = localObject1;
           this.label = 1;
-          paramObject = kotlinx.coroutines.g.a((d.d.f)az.gvp(), (d.g.a.m)new s.a.a((List)localObject2, null), this);
+          paramObject = kotlinx.coroutines.g.a((d.d.f)az.gzR(), (d.g.a.m)new s.a.a((List)localObject2, null), this);
           if (paramObject != locala) {
             break label937;
           }
-          AppMethodBeat.o(195724);
+          AppMethodBeat.o(191181);
           return locala;
           bool = true;
           break;
@@ -474,36 +474,36 @@ public final class o
           }
         }
       }
-      Object localObject1 = (LinkedList)this.olg;
+      Object localObject1 = (LinkedList)this.oqW;
       label937:
       for (;;)
       {
         ((LinkedList)localObject1).addAll((Collection)paramObject);
-        paramObject = (w)d.a.j.E((List)this.BFP.BFs, 0);
+        paramObject = (w)d.a.j.F((List)this.BXn.BWQ, 0);
         if (paramObject != null)
         {
-          localObject1 = com.tencent.mm.videocomposition.a.Lmq;
-          paramObject = a.a.a(paramObject.BGw);
+          localObject1 = com.tencent.mm.videocomposition.a.LJa;
+          paramObject = a.a.a(paramObject.BXV);
           paramObject.setSize(63, 112);
-          paramObject.b(d.a.j.listOf(d.d.b.a.b.Fu(0L)), (d.g.a.m)new a(this));
-          paramObject = z.MKo;
-          AppMethodBeat.o(195724);
+          paramObject.b(d.a.j.listOf(d.d.b.a.b.FW(0L)), (d.g.a.m)new a(this));
+          paramObject = z.Nhr;
+          AppMethodBeat.o(191181);
           return paramObject;
         }
-        AppMethodBeat.o(195724);
+        AppMethodBeat.o(191181);
         return null;
       }
     }
     
     public final Object p(Object paramObject1, Object paramObject2)
     {
-      AppMethodBeat.i(195726);
-      paramObject1 = ((b)a(paramObject1, (d)paramObject2)).cQ(z.MKo);
-      AppMethodBeat.o(195726);
+      AppMethodBeat.i(191183);
+      paramObject1 = ((b)a(paramObject1, (d)paramObject2)).cR(z.Nhr);
+      AppMethodBeat.o(191183);
       return paramObject1;
     }
     
-    @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "<anonymous parameter 0>", "", "<anonymous parameter 1>", "Landroid/graphics/Bitmap;", "invoke", "com/tencent/mm/plugin/vlog/model/MultiMediaModel$setup$2$3$1"})
+    @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "<anonymous parameter 0>", "", "<anonymous parameter 1>", "Landroid/graphics/Bitmap;", "invoke", "com/tencent/mm/plugin/vlog/model/MultiMediaModel$setup$2$3$1"})
     static final class a
       extends d.g.b.q
       implements d.g.a.m<Long, Bitmap, z>

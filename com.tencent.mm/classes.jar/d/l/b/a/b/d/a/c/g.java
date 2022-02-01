@@ -12,22 +12,22 @@ import java.util.List;
 public final class g
   implements ac
 {
-  final h NeA;
-  private final d.l.b.a.b.l.a<d.l.b.a.b.f.b, d.l.b.a.b.d.a.c.a.h> NeD;
+  final h NBF;
+  private final d.l.b.a.b.l.a<d.l.b.a.b.f.b, d.l.b.a.b.d.a.c.a.h> NBI;
   
   public g(b paramb)
   {
     AppMethodBeat.i(57758);
-    this.NeA = new h(paramb, (m)m.a.NeS, (f)new d(null));
-    this.NeD = this.NeA.NeI.MQa.gtN();
+    this.NBF = new h(paramb, (m)m.a.NBX, (f)new d(null));
+    this.NBI = this.NBF.NBN.Nnf.gyp();
     AppMethodBeat.o(57758);
   }
   
   private final d.l.b.a.b.d.a.c.a.h o(d.l.b.a.b.f.b paramb)
   {
     AppMethodBeat.i(57755);
-    final t localt = this.NeA.NeI.Ned.i(paramb);
-    paramb = (d.l.b.a.b.d.a.c.a.h)this.NeD.b(paramb, (d.g.a.a)new a(this, localt));
+    final t localt = this.NBF.NBN.NBi.i(paramb);
+    paramb = (d.l.b.a.b.d.a.c.a.h)this.NBI.b(paramb, (d.g.a.a)new a(this, localt));
     AppMethodBeat.o(57755);
     return paramb;
   }
@@ -36,7 +36,7 @@ public final class g
   {
     AppMethodBeat.i(57756);
     p.h(paramb, "fqName");
-    paramb = d.a.j.eM(o(paramb));
+    paramb = d.a.j.eP(o(paramb));
     AppMethodBeat.o(57756);
     return paramb;
   }
@@ -53,7 +53,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.d.a.c.g
  * JD-Core Version:    0.7.0.1
  */

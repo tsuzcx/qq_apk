@@ -1,13 +1,13 @@
 package com.tencent.mm.plugin.messenger.foundation.a;
 
-import com.tencent.mm.protocal.protobuf.bzp;
-import com.tencent.mm.storage.am;
+import com.tencent.mm.protocal.protobuf.caj;
+import com.tencent.mm.storage.an;
 
 public abstract interface d
 {
-  public abstract void a(am paramam1, am paramam2, bzp parambzp, byte[] paramArrayOfByte, boolean paramBoolean);
+  public abstract void a(an paraman1, an paraman2, caj paramcaj, byte[] paramArrayOfByte, boolean paramBoolean);
   
-  public abstract void b(am paramam1, am paramam2, bzp parambzp, byte[] paramArrayOfByte, boolean paramBoolean);
+  public abstract void b(an paraman1, an paraman2, caj paramcaj, byte[] paramArrayOfByte, boolean paramBoolean);
 }
 
 

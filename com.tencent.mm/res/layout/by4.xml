@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" app:layout_constraintBottom_toBottomOf="ea8" app:layout_constraintLeft_toLeftOf="ea8" app:layout_constraintRight_toRightOf="ea8" app:layout_constraintTop_toTopOf="ea8">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center" android:layout_width="@dimen/e" android:layout_height="@dimen/e" android:src="@raw/ic_chat_list_empty" />
+        <TextView android:textSize="@dimen/afy" android:textStyle="bold" android:textColor="@color/s5" android:gravity="center" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/jn" android:text="@string/i3w" />
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>

@@ -6,157 +6,202 @@ import com.tencent.mm.plugin.report.a;
 public final class ft
   extends a
 {
-  private String dSb = "";
-  private int elS = 0;
-  private int elT = 0;
-  private int elU = 0;
-  private int elV = 0;
-  private String elW = "";
-  private int elX = 0;
-  private int elY = 0;
-  private String elZ = "";
-  private long ema = 0L;
+  private String dUF = "";
+  public long dUG = 0L;
+  public long dUH = 0L;
+  public long dUI = 0L;
+  public long dUJ = 0L;
+  public long dUK = 0L;
+  public long dUL = 0L;
+  public long dUM = 0L;
+  public long dUN = 0L;
+  public long dUO = 0L;
+  private String dUP = "";
+  public long dUQ = 0L;
+  public long dUR = 0L;
+  public long dUS = 0L;
+  private String env = "";
+  private String enw = "";
+  
+  public final String RC()
+  {
+    AppMethodBeat.i(126699);
+    Object localObject = new StringBuffer();
+    ((StringBuffer)localObject).append(this.env);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.enw);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.dUF);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.dUG);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.dUH);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.dUI);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.dUJ);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.dUK);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.dUL);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.dUM);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.dUN);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.dUO);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.dUP);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.dUQ);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.dUR);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.dUS);
+    localObject = ((StringBuffer)localObject).toString();
+    axO((String)localObject);
+    AppMethodBeat.o(126699);
+    return localObject;
+  }
   
   public final String RD()
   {
-    AppMethodBeat.i(118493);
+    AppMethodBeat.i(126700);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dSb);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.elS);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.elT);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.elU);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.elV);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.elW);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.elX);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.elY);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.elZ);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ema);
+    ((StringBuffer)localObject).append("Tid:").append(this.env);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("VideoUrl:").append(this.enw);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("NewMd5:").append(this.dUF);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("DownloadStartTime:").append(this.dUG);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("DownloadEndTime:").append(this.dUH);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("VideoSize:").append(this.dUI);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("VideoDuration:").append(this.dUJ);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("VideoBitrate:").append(this.dUK);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("AudioBitrate:").append(this.dUL);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("VideoFps:").append(this.dUM);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("VideoWidth:").append(this.dUN);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("VideoHeight:").append(this.dUO);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("CDNIp:").append(this.dUP);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("OriginalAudioChannel:").append(this.dUQ);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("HadPreloadSize:").append(this.dUR);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("HadPreloadCompletion:").append(this.dUS);
     localObject = ((StringBuffer)localObject).toString();
-    awz((String)localObject);
-    AppMethodBeat.o(118493);
+    AppMethodBeat.o(126700);
     return localObject;
-  }
-  
-  public final String RE()
-  {
-    AppMethodBeat.i(118494);
-    Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("SessionId:").append(this.dSb);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ExposeViewId:").append(this.elS);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ExposeOrder:").append(this.elT);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ExposeNewUinCount:").append(this.elU);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ExposeNewFavorUinCount:").append(this.elV);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ExposeNewUinList:").append(this.elW);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ExposeBeforeUinCount:").append(this.elX);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ExposeBeforeFavorUinCount:").append(this.elY);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ExposeBeforeUinList:").append(this.elZ);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("InteractiveUserCount:").append(this.ema);
-    localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(118494);
-    return localObject;
-  }
-  
-  public final int Tw()
-  {
-    return this.elS;
-  }
-  
-  public final int Tx()
-  {
-    return this.elV;
-  }
-  
-  public final int Ty()
-  {
-    return this.elY;
   }
   
   public final int getId()
   {
-    return 16887;
+    return 16665;
   }
   
-  public final ft iE(int paramInt)
+  public final ft kL(long paramLong)
   {
-    this.elS = paramInt;
+    this.dUG = paramLong;
     return this;
   }
   
-  public final ft iF(int paramInt)
+  public final ft kM(long paramLong)
   {
-    this.elT = paramInt;
+    this.dUH = paramLong;
     return this;
   }
   
-  public final ft iG(int paramInt)
+  public final ft kN(long paramLong)
   {
-    this.elU = paramInt;
+    this.dUI = paramLong;
     return this;
   }
   
-  public final ft iH(int paramInt)
+  public final ft kO(long paramLong)
   {
-    this.elV = paramInt;
+    this.dUJ = paramLong;
     return this;
   }
   
-  public final ft iI(int paramInt)
+  public final ft kP(long paramLong)
   {
-    this.elX = paramInt;
-    return this;
-  }
-  
-  public final ft iJ(int paramInt)
-  {
-    this.elY = paramInt;
+    this.dUK = paramLong;
     return this;
   }
   
   public final ft kQ(long paramLong)
   {
-    this.ema = paramLong;
+    this.dUL = paramLong;
     return this;
   }
   
-  public final ft oJ(String paramString)
+  public final ft kR(long paramLong)
   {
-    AppMethodBeat.i(118490);
-    this.dSb = t("SessionId", paramString, true);
-    AppMethodBeat.o(118490);
+    this.dUM = paramLong;
     return this;
   }
   
-  public final ft oK(String paramString)
+  public final ft kS(long paramLong)
   {
-    AppMethodBeat.i(118491);
-    this.elW = t("ExposeNewUinList", paramString, true);
-    AppMethodBeat.o(118491);
+    this.dUN = paramLong;
     return this;
   }
   
-  public final ft oL(String paramString)
+  public final ft kT(long paramLong)
   {
-    AppMethodBeat.i(118492);
-    this.elZ = t("ExposeBeforeUinList", paramString, true);
-    AppMethodBeat.o(118492);
+    this.dUO = paramLong;
+    return this;
+  }
+  
+  public final ft kU(long paramLong)
+  {
+    this.dUQ = paramLong;
+    return this;
+  }
+  
+  public final ft kV(long paramLong)
+  {
+    this.dUR = paramLong;
+    return this;
+  }
+  
+  public final ft kW(long paramLong)
+  {
+    this.dUS = paramLong;
+    return this;
+  }
+  
+  public final ft pb(String paramString)
+  {
+    AppMethodBeat.i(126696);
+    this.enw = t("VideoUrl", paramString, true);
+    AppMethodBeat.o(126696);
+    return this;
+  }
+  
+  public final ft pc(String paramString)
+  {
+    AppMethodBeat.i(126697);
+    this.dUF = t("NewMd5", paramString, true);
+    AppMethodBeat.o(126697);
+    return this;
+  }
+  
+  public final ft pd(String paramString)
+  {
+    AppMethodBeat.i(126698);
+    this.dUP = t("CDNIp", paramString, true);
+    AppMethodBeat.o(126698);
     return this;
   }
 }

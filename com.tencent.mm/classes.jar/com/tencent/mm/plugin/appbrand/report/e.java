@@ -13,19 +13,19 @@ import d.v;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/report/AppBrandLauncherDesktopReportProvider;", "Landroid/app/Application$ActivityLifecycleCallbacks;", "()V", "hasAddActivityLifecycleCallbacks", "", "reporters", "", "Landroid/support/v4/app/FragmentActivity;", "Lcom/tencent/mm/plugin/appbrand/report/AppBrandLauncherDesktopReporter;", "of", "activity", "onActivityCreated", "", "Landroid/app/Activity;", "savedInstanceState", "Landroid/os/Bundle;", "onActivityDestroyed", "onActivityPaused", "onActivityResumed", "onActivitySaveInstanceState", "outState", "onActivityStarted", "onActivityStopped", "plugin-appbrand-integration_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/report/AppBrandLauncherDesktopReportProvider;", "Landroid/app/Application$ActivityLifecycleCallbacks;", "()V", "hasAddActivityLifecycleCallbacks", "", "reporters", "", "Landroid/support/v4/app/FragmentActivity;", "Lcom/tencent/mm/plugin/appbrand/report/AppBrandLauncherDesktopReporter;", "of", "activity", "onActivityCreated", "", "Landroid/app/Activity;", "savedInstanceState", "Landroid/os/Bundle;", "onActivityDestroyed", "onActivityPaused", "onActivityResumed", "onActivitySaveInstanceState", "outState", "onActivityStarted", "onActivityStopped", "plugin-appbrand-integration_release"})
 public final class e
   implements Application.ActivityLifecycleCallbacks
 {
-  private static boolean mqX;
-  private static final Map<FragmentActivity, AppBrandLauncherDesktopReporter> mqY;
-  public static final e mqZ;
+  private static boolean mvV;
+  private static final Map<FragmentActivity, AppBrandLauncherDesktopReporter> mvW;
+  public static final e mvX;
   
   static
   {
     AppMethodBeat.i(180644);
-    mqZ = new e();
-    mqY = (Map)new LinkedHashMap();
+    mvX = new e();
+    mvW = (Map)new LinkedHashMap();
     AppMethodBeat.o(180644);
   }
   
@@ -33,19 +33,19 @@ public final class e
   {
     AppMethodBeat.i(180642);
     p.h(paramFragmentActivity, "activity");
-    synchronized (mqY)
+    synchronized (mvW)
     {
-      if (!mqX)
+      if (!mvV)
       {
-        paramFragmentActivity.getApplication().registerActivityLifecycleCallbacks((Application.ActivityLifecycleCallbacks)mqZ);
-        mqX = true;
+        paramFragmentActivity.getApplication().registerActivityLifecycleCallbacks((Application.ActivityLifecycleCallbacks)mvX);
+        mvV = true;
       }
-      AppBrandLauncherDesktopReporter localAppBrandLauncherDesktopReporter2 = (AppBrandLauncherDesktopReporter)mqY.get(paramFragmentActivity);
+      AppBrandLauncherDesktopReporter localAppBrandLauncherDesktopReporter2 = (AppBrandLauncherDesktopReporter)mvW.get(paramFragmentActivity);
       AppBrandLauncherDesktopReporter localAppBrandLauncherDesktopReporter1 = localAppBrandLauncherDesktopReporter2;
       if (localAppBrandLauncherDesktopReporter2 == null)
       {
         localAppBrandLauncherDesktopReporter1 = new AppBrandLauncherDesktopReporter();
-        mqY.put(paramFragmentActivity, localAppBrandLauncherDesktopReporter1);
+        mvW.put(paramFragmentActivity, localAppBrandLauncherDesktopReporter1);
       }
       AppMethodBeat.o(180642);
       return localAppBrandLauncherDesktopReporter1;
@@ -58,9 +58,9 @@ public final class e
   {
     AppMethodBeat.i(180643);
     Map localMap2;
-    synchronized (mqY)
+    synchronized (mvW)
     {
-      localMap2 = mqY;
+      localMap2 = mvW;
       if (localMap2 == null)
       {
         paramActivity = new v("null cannot be cast to non-null type kotlin.collections.MutableMap<K, V>");
@@ -68,7 +68,7 @@ public final class e
         throw paramActivity;
       }
     }
-    ae.eV(localMap2).remove(paramActivity);
+    ae.eY(localMap2).remove(paramActivity);
     AppMethodBeat.o(180643);
   }
   
@@ -84,7 +84,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.report.e
  * JD-Core Version:    0.7.0.1
  */

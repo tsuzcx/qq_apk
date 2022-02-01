@@ -4,37 +4,37 @@ import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.remoteservice.a;
 import com.tencent.mm.remoteservice.d;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
 import com.tencent.mm.sticker.loader.StickerLoadInfo;
-import com.tencent.mm.storage.bd;
+import com.tencent.mm.storage.be;
 import com.tencent.mm.storage.emotion.EmojiInfo;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/emoji/loader/EmojiLoaderProxy;", "Lcom/tencent/mm/remoteservice/BaseClientRequest;", "serverProxy", "Lcom/tencent/mm/remoteservice/RemoteServiceProxy;", "(Lcom/tencent/mm/remoteservice/RemoteServiceProxy;)V", "getServerProxy", "()Lcom/tencent/mm/remoteservice/RemoteServiceProxy;", "getArgs", "", "", "params", "Landroid/os/Bundle;", "(Landroid/os/Bundle;)[Ljava/lang/Object;", "load", "", "emojiInfo", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "loadRemote", "md5", "", "loadSticker", "info", "Lcom/tencent/mm/sticker/loader/StickerLoadInfo;", "loadStickerRemote", "Companion", "plugin-emojisdk_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/emoji/loader/EmojiLoaderProxy;", "Lcom/tencent/mm/remoteservice/BaseClientRequest;", "serverProxy", "Lcom/tencent/mm/remoteservice/RemoteServiceProxy;", "(Lcom/tencent/mm/remoteservice/RemoteServiceProxy;)V", "getServerProxy", "()Lcom/tencent/mm/remoteservice/RemoteServiceProxy;", "getArgs", "", "", "params", "Landroid/os/Bundle;", "(Landroid/os/Bundle;)[Ljava/lang/Object;", "load", "", "emojiInfo", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "loadRemote", "md5", "", "loadSticker", "info", "Lcom/tencent/mm/sticker/loader/StickerLoadInfo;", "loadStickerRemote", "Companion", "plugin-emojisdk_release"})
 public final class EmojiLoaderProxy
   extends a
 {
-  private static EmojiLoaderProxy giB;
-  private static int giC;
-  private static boolean giD;
-  public static final EmojiLoaderProxy.a giE;
-  private final d giA;
+  private static EmojiLoaderProxy gkT;
+  private static int gkU;
+  private static boolean gkV;
+  public static final EmojiLoaderProxy.a gkW;
+  private final d gkS;
   
   static
   {
     AppMethodBeat.i(105409);
-    giE = new EmojiLoaderProxy.a((byte)0);
-    giB = new EmojiLoaderProxy(new d(aj.getContext()));
-    giD = true;
+    gkW = new EmojiLoaderProxy.a((byte)0);
+    gkT = new EmojiLoaderProxy(new d(ak.getContext()));
+    gkV = true;
     AppMethodBeat.o(105409);
   }
   
   public EmojiLoaderProxy(d paramd)
   {
     super(paramd);
-    this.giA = paramd;
+    this.gkS = paramd;
   }
   
   public final Object[] getArgs(Bundle paramBundle)
@@ -51,15 +51,15 @@ public final class EmojiLoaderProxy
   
   public final d getServerProxy()
   {
-    return this.giA;
+    return this.gkS;
   }
   
   public final void load(EmojiInfo paramEmojiInfo)
   {
     AppMethodBeat.i(105404);
     p.h(paramEmojiInfo, "emojiInfo");
-    ad.i("MicroMsg.EmojiLoaderProxy", "load: " + paramEmojiInfo.Lb());
-    REMOTE_CALL("loadRemote", new Object[] { paramEmojiInfo.Lb() });
+    ae.i("MicroMsg.EmojiLoaderProxy", "load: " + paramEmojiInfo.Lj());
+    REMOTE_CALL("loadRemote", new Object[] { paramEmojiInfo.Lj() });
     AppMethodBeat.o(105404);
   }
   
@@ -68,16 +68,16 @@ public final class EmojiLoaderProxy
   {
     AppMethodBeat.i(105405);
     p.h(paramString, "md5");
-    ad.i("MicroMsg.EmojiLoaderProxy", "loadRemote: ".concat(String.valueOf(paramString)));
-    Object localObject = bd.frc();
+    ae.i("MicroMsg.EmojiLoaderProxy", "loadRemote: ".concat(String.valueOf(paramString)));
+    Object localObject = be.fvc();
     p.g(localObject, "EmojiStorageMgr.getInstance()");
-    paramString = ((bd)localObject).bIW().aUK(paramString);
+    paramString = ((be)localObject).bJU().aWl(paramString);
     if (paramString == null)
     {
       AppMethodBeat.o(105405);
       return;
     }
-    localObject = e.giz;
+    localObject = e.gkR;
     e.e(paramString);
     AppMethodBeat.o(105405);
   }
@@ -86,7 +86,7 @@ public final class EmojiLoaderProxy
   {
     AppMethodBeat.i(105406);
     p.h(paramStickerLoadInfo, "info");
-    ad.i("MicroMsg.EmojiLoaderProxy", "loadSticker: " + paramStickerLoadInfo.BM());
+    ae.i("MicroMsg.EmojiLoaderProxy", "loadSticker: " + paramStickerLoadInfo.BN());
     REMOTE_CALL("loadStickerRemote", new Object[] { paramStickerLoadInfo });
     AppMethodBeat.o(105406);
   }
@@ -96,15 +96,15 @@ public final class EmojiLoaderProxy
   {
     AppMethodBeat.i(105407);
     p.h(paramStickerLoadInfo, "info");
-    ad.i("MicroMsg.EmojiLoaderProxy", "loadStickerRemote: " + paramStickerLoadInfo.BM());
-    com.tencent.mm.sticker.loader.e locale = com.tencent.mm.sticker.loader.e.ImJ;
+    ae.i("MicroMsg.EmojiLoaderProxy", "loadStickerRemote: " + paramStickerLoadInfo.BN());
+    com.tencent.mm.sticker.loader.e locale = com.tencent.mm.sticker.loader.e.IGU;
     com.tencent.mm.sticker.loader.e.b(paramStickerLoadInfo);
     AppMethodBeat.o(105407);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.emoji.loader.EmojiLoaderProxy
  * JD-Core Version:    0.7.0.1
  */

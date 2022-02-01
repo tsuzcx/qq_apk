@@ -7,16 +7,16 @@ import java.util.List;
 
 public final class f
 {
-  public List<String> hRC;
+  public List<String> hUu;
   public String result;
-  public List<Pair<Integer, Integer>> wFI;
+  public List<Pair<Integer, Integer>> wVt;
   
   public f()
   {
-    AppMethodBeat.i(215710);
-    this.wFI = new ArrayList();
-    this.hRC = new ArrayList();
-    AppMethodBeat.o(215710);
+    AppMethodBeat.i(220344);
+    this.wVt = new ArrayList();
+    this.hUu = new ArrayList();
+    AppMethodBeat.o(220344);
   }
 }
 

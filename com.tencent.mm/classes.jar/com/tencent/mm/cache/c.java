@@ -7,40 +7,40 @@ import java.util.Stack;
 
 public final class c
 {
-  private static c fIj;
-  HashMap<String, Stack<g>> cDF;
-  private Stack<g> fIi;
+  private static c fKn;
+  HashMap<String, Stack<g>> cEm;
+  private Stack<g> fKm;
   
   static
   {
     AppMethodBeat.i(9210);
-    fIj = new c();
+    fKn = new c();
     AppMethodBeat.o(9210);
   }
   
   private c()
   {
     AppMethodBeat.i(9207);
-    this.cDF = new HashMap();
-    this.fIi = new Stack();
+    this.cEm = new HashMap();
+    this.fKm = new Stack();
     AppMethodBeat.o(9207);
   }
   
-  public static c XI()
+  public static c XS()
   {
-    return fIj;
+    return fKn;
   }
   
-  public final g XJ()
+  public final g XT()
   {
     AppMethodBeat.i(9209);
-    if (this.fIi.empty())
+    if (this.fKm.empty())
     {
-      localg = g.cRC;
+      localg = g.cSm;
       AppMethodBeat.o(9209);
       return localg;
     }
-    g localg = (g)this.fIi.pop();
+    g localg = (g)this.fKm.pop();
     AppMethodBeat.o(9209);
     return localg;
   }
@@ -48,26 +48,26 @@ public final class c
   public final void b(g paramg)
   {
     AppMethodBeat.i(9208);
-    this.fIi.push(paramg);
+    this.fKm.push(paramg);
     AppMethodBeat.o(9208);
   }
   
-  public final void uE(String paramString)
+  public final void uZ(String paramString)
   {
-    AppMethodBeat.i(221099);
-    if (this.cDF.containsKey(paramString))
+    AppMethodBeat.i(195425);
+    if (this.cEm.containsKey(paramString))
     {
-      this.fIi = ((Stack)this.cDF.get(paramString));
-      AppMethodBeat.o(221099);
+      this.fKm = ((Stack)this.cEm.get(paramString));
+      AppMethodBeat.o(195425);
       return;
     }
-    this.cDF.put(paramString, new Stack());
-    AppMethodBeat.o(221099);
+    this.cEm.put(paramString, new Stack());
+    AppMethodBeat.o(195425);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.cache.c
  * JD-Core Version:    0.7.0.1
  */

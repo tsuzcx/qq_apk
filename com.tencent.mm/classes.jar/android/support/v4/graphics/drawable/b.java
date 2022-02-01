@@ -18,17 +18,17 @@ public abstract class b
 {
   private int Kj = 160;
   private int Kk = 119;
-  public final BitmapShader Kl;
+  private final BitmapShader Kl;
   private final Matrix Km = new Matrix();
-  public float Kn;
+  float Kn;
   final Rect Ko = new Rect();
   private final RectF Kp = new RectF();
   private boolean Kq = true;
-  public boolean Kr;
+  private boolean Kr;
   public final Bitmap mBitmap;
   private int mBitmapHeight;
   private int mBitmapWidth;
-  public final Paint mPaint = new Paint(3);
+  private final Paint mPaint = new Paint(3);
   
   b(Resources paramResources, Bitmap paramBitmap)
   {
@@ -55,7 +55,7 @@ public abstract class b
     this.Kn = (Math.min(this.mBitmapHeight, this.mBitmapWidth) / 2);
   }
   
-  public static boolean x(float paramFloat)
+  private static boolean x(float paramFloat)
   {
     return paramFloat > 0.05F;
   }
@@ -177,6 +177,24 @@ public abstract class b
     invalidateSelf();
   }
   
+  public final void setCornerRadius(float paramFloat)
+  {
+    if (this.Kn == paramFloat) {
+      return;
+    }
+    this.Kr = false;
+    if (x(paramFloat)) {
+      this.mPaint.setShader(this.Kl);
+    }
+    for (;;)
+    {
+      this.Kn = paramFloat;
+      invalidateSelf();
+      return;
+      this.mPaint.setShader(null);
+    }
+  }
+  
   public void setDither(boolean paramBoolean)
   {
     this.mPaint.setDither(paramBoolean);
@@ -191,7 +209,7 @@ public abstract class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     android.support.v4.graphics.drawable.b
  * JD-Core Version:    0.7.0.1
  */

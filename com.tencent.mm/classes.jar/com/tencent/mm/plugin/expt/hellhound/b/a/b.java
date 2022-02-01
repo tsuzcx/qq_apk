@@ -1,28 +1,28 @@
 package com.tencent.mm.plugin.expt.hellhound.b.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.bch;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.bcx;
+import com.tencent.mm.sdk.platformtools.ae;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/expt/hellhound/model/dao/HellResponseDao;", "", "()V", "Companion", "plugin-expt_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/expt/hellhound/model/dao/HellResponseDao;", "", "()V", "Companion", "plugin-expt_release"})
 public final class b
 {
-  public static final a rac;
+  public static final a rii;
   
   static
   {
-    AppMethodBeat.i(211003);
-    rac = new a((byte)0);
-    AppMethodBeat.o(211003);
+    AppMethodBeat.i(196674);
+    rii = new a((byte)0);
+    AppMethodBeat.o(196674);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/expt/hellhound/model/dao/HellResponseDao$Companion;", "", "()V", "FLAG_DEL", "", "MMKV_KEY", "", "TAG", "_doSetResp", "", "resp", "Lcom/tencent/mm/protocal/protobuf/GetHellResponse;", "getConfigIds", "", "Lcom/tencent/mm/protocal/protobuf/ConfigId;", "read", "reset", "setResp", "write", "plugin-expt_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/expt/hellhound/model/dao/HellResponseDao$Companion;", "", "()V", "FLAG_DEL", "", "MMKV_KEY", "", "TAG", "_doSetResp", "", "resp", "Lcom/tencent/mm/protocal/protobuf/GetHellResponse;", "getConfigIds", "", "Lcom/tencent/mm/protocal/protobuf/ConfigId;", "read", "reset", "setResp", "write", "plugin-expt_release"})
   public static final class a
   {
-    public static bch cqT()
+    public static bcx csv()
     {
-      AppMethodBeat.i(211002);
+      AppMethodBeat.i(196673);
       byte[] arrayOfByte = com.tencent.mm.plugin.expt.hellhound.core.a.b.getBytes("hell_resp_mkv_key");
       if (arrayOfByte != null) {
         if (arrayOfByte.length != 0) {
@@ -32,20 +32,20 @@ public final class b
       label33:
       for (int i = 1; i != 0; i = 0)
       {
-        AppMethodBeat.o(211002);
+        AppMethodBeat.o(196673);
         return null;
       }
-      bch localbch = new bch();
+      bcx localbcx = new bcx();
       try
       {
-        localbch.parseFrom(arrayOfByte);
-        AppMethodBeat.o(211002);
-        return localbch;
+        localbcx.parseFrom(arrayOfByte);
+        AppMethodBeat.o(196673);
+        return localbcx;
       }
       catch (Exception localException)
       {
-        ad.printErrStackTrace("HABBYGE-MALI.HellResponseDao", (Throwable)localException, "HellResponseDao, read: " + localException.getMessage(), new Object[0]);
-        AppMethodBeat.o(211002);
+        ae.printErrStackTrace("HABBYGE-MALI.HellResponseDao", (Throwable)localException, "HellResponseDao, read: " + localException.getMessage(), new Object[0]);
+        AppMethodBeat.o(196673);
       }
       return null;
     }

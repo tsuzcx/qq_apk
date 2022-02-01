@@ -4,7 +4,7 @@ import java.util.Map;
 
 public abstract interface a
 {
-  public abstract void g(Map<String, Boolean> paramMap);
+  public abstract void n(Map<String, Boolean> paramMap);
 }
 
 

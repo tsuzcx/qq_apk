@@ -25,7 +25,7 @@ public final class l
     this.db = parame;
   }
   
-  public final List<j> aMD()
+  public final List<j> aNb()
   {
     AppMethodBeat.i(126892);
     LinkedList localLinkedList = new LinkedList();
@@ -47,7 +47,7 @@ public final class l
     return localLinkedList;
   }
   
-  public final Cursor aME()
+  public final Cursor aNc()
   {
     AppMethodBeat.i(126893);
     Cursor localCursor = this.db.rawQuery("SELECT * FROM SightDraftInfo WHERE fileStatus = ?  ORDER BY localId DESC ", new String[] { "1" });
@@ -57,7 +57,7 @@ public final class l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.modelvideo.l
  * JD-Core Version:    0.7.0.1
  */

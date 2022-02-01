@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.account.friend.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.gl;
+import com.tencent.mm.g.a.gm;
 import com.tencent.mm.sdk.b.c;
 
 public final class e
-  extends c<gl>
+  extends c<gm>
 {
   public e()
   {
     AppMethodBeat.i(161617);
-    this.__eventId = gl.class.getName().hashCode();
+    this.__eventId = gm.class.getName().hashCode();
     AppMethodBeat.o(161617);
   }
 }

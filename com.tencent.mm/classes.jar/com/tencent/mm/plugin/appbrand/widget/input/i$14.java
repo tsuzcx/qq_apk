@@ -10,7 +10,7 @@ final class i$14
   public final void run()
   {
     AppMethodBeat.i(136372);
-    this.ndJ.tak = false;
+    this.niS.nxw = false;
     AppMethodBeat.o(136372);
   }
 }

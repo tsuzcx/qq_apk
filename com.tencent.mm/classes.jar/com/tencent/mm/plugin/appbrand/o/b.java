@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.appbrand.o;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.Iterator;
@@ -15,34 +15,34 @@ public final class b
 {
   public static int FAILED = -1;
   public static int SUCCESS = 0;
-  public boolean kXC;
-  public c kjg;
-  protected final ArrayList<String> lVA;
-  public final Map<String, ConcurrentLinkedQueue<Runnable>> lVB;
-  public final ArrayList<com.tencent.mm.plugin.appbrand.o.a.b> lVC;
-  public int lVx;
-  public String lVy;
-  public SSLContext lVz;
-  public final String luC;
+  public c kmw;
+  public boolean lbl;
+  public final String lza;
+  public int maa;
+  public String mab;
+  public SSLContext mad;
+  protected final ArrayList<String> mae;
+  public final Map<String, ConcurrentLinkedQueue<Runnable>> maf;
+  public final ArrayList<com.tencent.mm.plugin.appbrand.o.a.b> mag;
   
   public b(c paramc, boolean paramBoolean)
   {
     AppMethodBeat.i(144302);
-    this.lVy = (com.tencent.mm.loader.j.b.arX() + "appbrand/");
-    this.kXC = false;
-    this.lVA = new ArrayList();
-    this.lVC = new ArrayList();
-    this.kjg = paramc;
+    this.mab = (com.tencent.mm.loader.j.b.asm() + "appbrand/");
+    this.lbl = false;
+    this.mae = new ArrayList();
+    this.mag = new ArrayList();
+    this.kmw = paramc;
     paramc = (a)paramc.ar(a.class);
-    this.lVx = paramc.cmO;
-    this.luC = paramc.lVu;
-    this.lVz = j.a(paramc);
-    this.lVB = new Hashtable(10);
-    this.kXC = paramBoolean;
+    this.maa = paramc.cmQ;
+    this.lza = paramc.lZX;
+    this.mad = j.a(paramc);
+    this.maf = new Hashtable(10);
+    this.lbl = paramBoolean;
     AppMethodBeat.o(144302);
   }
   
-  private void vR(String paramString)
+  private void wy(String paramString)
   {
     AppMethodBeat.i(144304);
     if (paramString == null)
@@ -50,14 +50,14 @@ public final class b
       AppMethodBeat.o(144304);
       return;
     }
-    synchronized (this.lVC)
+    synchronized (this.mag)
     {
-      Iterator localIterator = this.lVC.iterator();
+      Iterator localIterator = this.mag.iterator();
       while (localIterator.hasNext())
       {
         com.tencent.mm.plugin.appbrand.o.a.b localb = (com.tencent.mm.plugin.appbrand.o.a.b)localIterator.next();
-        if (paramString.equals(localb.iFB)) {
-          this.lVC.remove(localb);
+        if (paramString.equals(localb.iIu)) {
+          this.mag.remove(localb);
         }
       }
       AppMethodBeat.o(144304);
@@ -65,7 +65,7 @@ public final class b
     }
   }
   
-  public final void SE(final String paramString)
+  public final void Tn(final String paramString)
   {
     AppMethodBeat.i(144303);
     com.tencent.mm.sdk.g.b.c(new Runnable()
@@ -76,7 +76,7 @@ public final class b
         synchronized (b.a(b.this))
         {
           ConcurrentLinkedQueue localConcurrentLinkedQueue = (ConcurrentLinkedQueue)b.a(b.this).get(paramString);
-          ad.d("MicroMsg.AppBrandNetworkDownload", "hy: url %s queue size %d", new Object[] { paramString, Integer.valueOf(localConcurrentLinkedQueue.size()) });
+          ae.d("MicroMsg.AppBrandNetworkDownload", "hy: url %s queue size %d", new Object[] { paramString, Integer.valueOf(localConcurrentLinkedQueue.size()) });
           Runnable localRunnable = (Runnable)localConcurrentLinkedQueue.peek();
           if (localRunnable != null)
           {
@@ -84,7 +84,7 @@ public final class b
             localConcurrentLinkedQueue.poll();
             if (localConcurrentLinkedQueue.size() > 0)
             {
-              ad.i("MicroMsg.AppBrandNetworkDownload", "hy: need execute more");
+              ae.i("MicroMsg.AppBrandNetworkDownload", "hy: need execute more");
               b.b(b.this, paramString);
             }
           }
@@ -96,7 +96,7 @@ public final class b
     AppMethodBeat.o(144303);
   }
   
-  public final com.tencent.mm.plugin.appbrand.o.a.b SF(String paramString)
+  public final com.tencent.mm.plugin.appbrand.o.a.b To(String paramString)
   {
     AppMethodBeat.i(144305);
     if (paramString == null)
@@ -104,13 +104,13 @@ public final class b
       AppMethodBeat.o(144305);
       return null;
     }
-    synchronized (this.lVC)
+    synchronized (this.mag)
     {
-      Iterator localIterator = this.lVC.iterator();
+      Iterator localIterator = this.mag.iterator();
       while (localIterator.hasNext())
       {
         com.tencent.mm.plugin.appbrand.o.a.b localb = (com.tencent.mm.plugin.appbrand.o.a.b)localIterator.next();
-        if (paramString.equals(localb.iFB))
+        if (paramString.equals(localb.iIu))
         {
           AppMethodBeat.o(144305);
           return localb;
@@ -121,10 +121,10 @@ public final class b
     }
   }
   
-  public final boolean SG(String paramString)
+  public final boolean Tp(String paramString)
   {
     AppMethodBeat.i(144307);
-    boolean bool = this.lVA.contains(paramString);
+    boolean bool = this.mae.contains(paramString);
     AppMethodBeat.o(144307);
     return bool;
   }
@@ -137,24 +137,24 @@ public final class b
       AppMethodBeat.o(144306);
       return;
     }
-    this.lVA.add(paramb.iFB);
-    vR(paramb.iFB);
-    paramb.btv();
+    this.mae.add(paramb.iIu);
+    wy(paramb.iIu);
+    paramb.bug();
     AppMethodBeat.o(144306);
   }
   
   public final void release()
   {
-    AppMethodBeat.i(187752);
-    synchronized (this.lVC)
+    AppMethodBeat.i(193481);
+    synchronized (this.mag)
     {
-      Iterator localIterator = this.lVC.iterator();
+      Iterator localIterator = this.mag.iterator();
       if (localIterator.hasNext()) {
         ((com.tencent.mm.plugin.appbrand.o.a.b)localIterator.next()).isRunning = false;
       }
     }
-    this.lVC.clear();
-    AppMethodBeat.o(187752);
+    this.mag.clear();
+    AppMethodBeat.o(193481);
   }
   
   public static abstract interface a
@@ -170,7 +170,7 @@ public final class b
   
   public static abstract interface b
   {
-    public abstract boolean aXU();
+    public abstract boolean aYn();
   }
 }
 

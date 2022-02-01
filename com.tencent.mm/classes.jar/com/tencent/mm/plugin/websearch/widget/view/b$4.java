@@ -15,8 +15,8 @@ final class b$4
     AppMethodBeat.i(116706);
     com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
     localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/websearch/widget/view/WidgetView$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-    b.a(this.DFl);
+    a.b("com/tencent/mm/plugin/websearch/widget/view/WidgetView$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+    b.a(this.DXi);
     a.a(this, "com/tencent/mm/plugin/websearch/widget/view/WidgetView$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(116706);
   }

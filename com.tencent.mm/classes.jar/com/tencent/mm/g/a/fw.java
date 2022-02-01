@@ -1,13 +1,15 @@
 package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ak.h.a;
+import com.tencent.mm.ak.h.b;
 import com.tencent.mm.sdk.b.b;
 
 public final class fw
   extends b
 {
-  public a dro;
-  public b drp;
+  public a dso;
+  public b dsp;
   
   public fw()
   {
@@ -16,24 +18,27 @@ public final class fw
   
   private fw(byte paramByte)
   {
-    AppMethodBeat.i(116020);
-    this.dro = new a();
-    this.drp = new b();
-    this.IbR = false;
+    AppMethodBeat.i(116019);
+    this.dso = new a();
+    this.dsp = new b();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(116020);
+    AppMethodBeat.o(116019);
   }
   
   public static final class a
   {
+    public boolean dcN;
+    public boolean dsq = false;
+    public h.a dsr;
+    public h.b dss;
+    public String fileName;
     public int op;
-    public String username;
   }
   
   public static final class b
   {
-    public boolean dno = false;
-    public String fileName;
+    public boolean doq = false;
   }
 }
 

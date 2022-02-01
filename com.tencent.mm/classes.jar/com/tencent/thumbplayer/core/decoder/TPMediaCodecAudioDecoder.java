@@ -25,7 +25,7 @@ public class TPMediaCodecAudioDecoder
   
   void configCodec(MediaCodec paramMediaCodec)
   {
-    AppMethodBeat.i(220532);
+    AppMethodBeat.i(197471);
     TPNativeLog.printLog(2, "TPMediaCodecAudioDecoder", "configCodec: ");
     MediaFormat localMediaFormat = MediaFormat.createAudioFormat(this.mMimeType, this.mSampleRate, this.mChannelCount);
     if (this.mCsd0Data != null) {
@@ -37,7 +37,7 @@ public class TPMediaCodecAudioDecoder
       localMediaFormat.setInteger("is-adts", 1);
     }
     paramMediaCodec.configure(localMediaFormat, null, this.mMediaCrypto, 0);
-    AppMethodBeat.o(220532);
+    AppMethodBeat.o(197471);
   }
   
   String getLogTag()
@@ -52,14 +52,14 @@ public class TPMediaCodecAudioDecoder
   
   public boolean initDecoder(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(220531);
+    AppMethodBeat.i(197470);
     TPNativeLog.printLog(2, "TPMediaCodecAudioDecoder", "initDecoder, mimeType:" + paramString + " sampleRate:" + paramInt1 + " channelCount:" + paramInt2 + " drmType:" + paramInt3 + " audioFormat:" + paramInt4);
     this.mMimeType = paramString;
     this.mSampleRate = paramInt1;
     this.mChannelCount = paramInt2;
     this.mDrmType = paramInt3;
     this.mAudioFormat = paramInt4;
-    AppMethodBeat.o(220531);
+    AppMethodBeat.o(197470);
     return true;
   }
   
@@ -72,7 +72,7 @@ public class TPMediaCodecAudioDecoder
   
   void processOutputBuffer(MediaCodec paramMediaCodec, int paramInt, MediaCodec.BufferInfo paramBufferInfo, TPFrameInfo paramTPFrameInfo)
   {
-    AppMethodBeat.i(220535);
+    AppMethodBeat.i(197474);
     paramTPFrameInfo.sampleRate = this.mSampleRate;
     paramTPFrameInfo.channelCount = this.mChannelCount;
     paramTPFrameInfo.format = this.mAudioFormat;
@@ -92,17 +92,17 @@ public class TPMediaCodecAudioDecoder
         paramTPFrameInfo.errCode = 2;
       }
       paramMediaCodec.releaseOutputBuffer(paramInt, false);
-      AppMethodBeat.o(220535);
+      AppMethodBeat.o(197474);
       return;
     }
   }
   
   void processOutputConfigData(MediaCodec paramMediaCodec, int paramInt, MediaCodec.BufferInfo paramBufferInfo, TPFrameInfo paramTPFrameInfo)
   {
-    AppMethodBeat.i(220533);
+    AppMethodBeat.i(197472);
     paramMediaCodec.releaseOutputBuffer(paramInt, false);
     paramTPFrameInfo.errCode = 1;
-    AppMethodBeat.o(220533);
+    AppMethodBeat.o(197472);
   }
   
   /* Error */
@@ -216,47 +216,47 @@ public class TPMediaCodecAudioDecoder
   
   public boolean setParamBool(int paramInt, boolean paramBoolean)
   {
-    AppMethodBeat.i(220536);
+    AppMethodBeat.i(197475);
     if (paramInt == 2)
     {
       this.mIsAdts = paramBoolean;
-      AppMethodBeat.o(220536);
+      AppMethodBeat.o(197475);
       return true;
     }
     if (paramInt == 3)
     {
       this.mEnableAudioPassThrough = paramBoolean;
       TPNativeLog.printLog(2, getLogTag(), "setParamBool mEnableAudioPassThrough:" + this.mEnableAudioPassThrough);
-      AppMethodBeat.o(220536);
+      AppMethodBeat.o(197475);
       return true;
     }
     paramBoolean = super.setParamBool(paramInt, paramBoolean);
-    AppMethodBeat.o(220536);
+    AppMethodBeat.o(197475);
     return paramBoolean;
   }
   
   public boolean setParamBytes(int paramInt, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(220537);
+    AppMethodBeat.i(197476);
     if (paramInt == 200) {
       this.mCsd0Data = paramArrayOfByte;
     }
     boolean bool = super.setParamBytes(paramInt, paramArrayOfByte);
-    AppMethodBeat.o(220537);
+    AppMethodBeat.o(197476);
     return bool;
   }
   
   public boolean setParamObject(int paramInt, Object paramObject)
   {
-    AppMethodBeat.i(220538);
+    AppMethodBeat.i(197477);
     if (paramInt == 300)
     {
       this.mMediaCrypto = ((MediaCrypto)paramObject);
-      AppMethodBeat.o(220538);
+      AppMethodBeat.o(197477);
       return true;
     }
     boolean bool = super.setParamObject(paramInt, paramObject);
-    AppMethodBeat.o(220538);
+    AppMethodBeat.o(197477);
     return bool;
   }
 }

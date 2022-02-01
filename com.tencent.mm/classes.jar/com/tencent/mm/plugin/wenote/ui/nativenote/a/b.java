@@ -14,10 +14,10 @@ public final class b
   {
     super(paramView, paramk);
     AppMethodBeat.i(30847);
-    this.psv.setVisibility(8);
-    this.dsD.setVisibility(8);
-    this.jld.setVisibility(8);
-    this.psv.setOnClickListener(null);
+    this.pzb.setVisibility(8);
+    this.dtJ.setVisibility(8);
+    this.jnX.setVisibility(8);
+    this.pzb.setOnClickListener(null);
     AppMethodBeat.o(30847);
   }
   
@@ -30,16 +30,16 @@ public final class b
       AppMethodBeat.o(30848);
       return;
     }
-    if (this.EBf.EAx != 3)
+    if (this.ETB.EST != 3)
     {
       AppMethodBeat.o(30848);
       return;
     }
-    this.psD.setVisibility(0);
+    this.pzj.setVisibility(0);
     AppMethodBeat.o(30848);
   }
   
-  public final int cdT()
+  public final int cfi()
   {
     return -2;
   }

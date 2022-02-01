@@ -5,15 +5,19 @@ import android.util.AttributeSet;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.webcanvas.WebCanvasView;
-import com.tencent.mm.plugin.webcanvas.b;
+import com.tencent.mm.plugin.webcanvas.c;
 import d.g.b.p;
 import d.l;
+import d.v;
+import java.lang.ref.WeakReference;
 import java.util.Map;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/item/BizTLRecCardCanvasView;", "Lcom/tencent/mm/plugin/webcanvas/WebCanvasView;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "init", "", "msgId", "", "canvasId", "", "jsEngine", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/item/BizTLRecCardJsEngine;", "type", "data", "parent", "Landroid/view/View;", "plugin-brandservice_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/item/BizTLRecCardCanvasView;", "Lcom/tencent/mm/plugin/webcanvas/WebCanvasView;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "jsEngine", "Lcom/tencent/mm/plugin/webcanvas/WebCanvasJsEngine;", "getJsEngine", "()Lcom/tencent/mm/plugin/webcanvas/WebCanvasJsEngine;", "init", "", "msgId", "", "canvasId", "", "type", "data", "parent", "Landroid/view/View;", "plugin-brandservice_release"})
 public final class BizTLRecCardCanvasView
   extends WebCanvasView
 {
+  private final c ojA;
+  
   public BizTLRecCardCanvasView(Context paramContext, AttributeSet paramAttributeSet)
   {
     this(paramContext, paramAttributeSet, (byte)0);
@@ -22,24 +26,38 @@ public final class BizTLRecCardCanvasView
   public BizTLRecCardCanvasView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(209761);
-    paramContext = k.ode;
-    setJsEngine((b)k.a.bOF());
-    AppMethodBeat.o(209761);
+    AppMethodBeat.i(208735);
+    paramContext = k.oiS;
+    this.ojA = ((c)k.a.bPD());
+    AppMethodBeat.o(208735);
   }
   
-  public final void a(long paramLong, String paramString1, q paramq, String paramString2, String paramString3, View paramView)
+  public final void a(long paramLong, String paramString1, String paramString2, String paramString3, View paramView)
   {
-    AppMethodBeat.i(209760);
+    AppMethodBeat.i(208734);
     p.h(paramString1, "canvasId");
-    p.h(paramq, "jsEngine");
     p.h(paramString2, "type");
     p.h(paramString3, "data");
     p.h(paramView, "parent");
-    ((Map)paramq.oej).put(paramString1, Long.valueOf(paramLong));
-    paramq.context = getContext();
-    a(paramString1, (b)paramq, paramString2, paramString3, paramView);
-    AppMethodBeat.o(209760);
+    Object localObject = getJsEngine();
+    if (localObject == null)
+    {
+      paramString1 = new v("null cannot be cast to non-null type com.tencent.mm.plugin.brandservice.ui.timeline.item.BizTLRecCardJsEngine");
+      AppMethodBeat.o(208734);
+      throw paramString1;
+    }
+    ((Map)((q)localObject).ojZ).put(paramString1, Long.valueOf(paramLong));
+    localObject = (q)getJsEngine();
+    WeakReference localWeakReference = new WeakReference(getContext());
+    p.h(localWeakReference, "<set-?>");
+    ((q)localObject).kwC = localWeakReference;
+    a(paramString1, paramString2, paramString3, paramView);
+    AppMethodBeat.o(208734);
+  }
+  
+  public final c getJsEngine()
+  {
+    return this.ojA;
   }
 }
 

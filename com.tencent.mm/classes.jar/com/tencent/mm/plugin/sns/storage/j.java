@@ -2,77 +2,77 @@ package com.tencent.mm.plugin.sns.storage;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.fx;
-import com.tencent.mm.plugin.sns.model.ag;
+import com.tencent.mm.g.c.fy;
+import com.tencent.mm.plugin.sns.model.ah;
 import com.tencent.mm.sdk.e.c.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class j
-  extends fx
+  extends fy
   implements Cloneable
 {
   protected static c.a info;
-  public int zMG;
+  public int AdN;
   
   static
   {
     AppMethodBeat.i(97453);
     c.a locala = new c.a();
-    locala.IhA = new Field[13];
+    locala.IBL = new Field[13];
     locala.columns = new String[14];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "snsID";
-    locala.IhC.put("snsID", "LONG");
+    locala.IBN.put("snsID", "LONG");
     localStringBuilder.append(" snsID LONG");
     localStringBuilder.append(", ");
     locala.columns[1] = "parentID";
-    locala.IhC.put("parentID", "LONG");
+    locala.IBN.put("parentID", "LONG");
     localStringBuilder.append(" parentID LONG");
     localStringBuilder.append(", ");
     locala.columns[2] = "isRead";
-    locala.IhC.put("isRead", "SHORT default '0' ");
+    locala.IBN.put("isRead", "SHORT default '0' ");
     localStringBuilder.append(" isRead SHORT default '0' ");
     localStringBuilder.append(", ");
     locala.columns[3] = "createTime";
-    locala.IhC.put("createTime", "INTEGER");
+    locala.IBN.put("createTime", "INTEGER");
     localStringBuilder.append(" createTime INTEGER");
     localStringBuilder.append(", ");
     locala.columns[4] = "talker";
-    locala.IhC.put("talker", "TEXT");
+    locala.IBN.put("talker", "TEXT");
     localStringBuilder.append(" talker TEXT");
     localStringBuilder.append(", ");
     locala.columns[5] = "type";
-    locala.IhC.put("type", "INTEGER");
+    locala.IBN.put("type", "INTEGER");
     localStringBuilder.append(" type INTEGER");
     localStringBuilder.append(", ");
     locala.columns[6] = "isSend";
-    locala.IhC.put("isSend", "INTEGER default 'false' ");
+    locala.IBN.put("isSend", "INTEGER default 'false' ");
     localStringBuilder.append(" isSend INTEGER default 'false' ");
     localStringBuilder.append(", ");
     locala.columns[7] = "curActionBuf";
-    locala.IhC.put("curActionBuf", "BLOB");
+    locala.IBN.put("curActionBuf", "BLOB");
     localStringBuilder.append(" curActionBuf BLOB");
     localStringBuilder.append(", ");
     locala.columns[8] = "refActionBuf";
-    locala.IhC.put("refActionBuf", "BLOB");
+    locala.IBN.put("refActionBuf", "BLOB");
     localStringBuilder.append(" refActionBuf BLOB");
     localStringBuilder.append(", ");
     locala.columns[9] = "commentSvrID";
-    locala.IhC.put("commentSvrID", "LONG");
+    locala.IBN.put("commentSvrID", "LONG");
     localStringBuilder.append(" commentSvrID LONG");
     localStringBuilder.append(", ");
     locala.columns[10] = "clientId";
-    locala.IhC.put("clientId", "TEXT");
+    locala.IBN.put("clientId", "TEXT");
     localStringBuilder.append(" clientId TEXT");
     localStringBuilder.append(", ");
     locala.columns[11] = "commentflag";
-    locala.IhC.put("commentflag", "INTEGER");
+    locala.IBN.put("commentflag", "INTEGER");
     localStringBuilder.append(" commentflag INTEGER");
     localStringBuilder.append(", ");
     locala.columns[12] = "isSilence";
-    locala.IhC.put("isSilence", "INTEGER default '0' ");
+    locala.IBN.put("isSilence", "INTEGER default '0' ");
     localStringBuilder.append(" isSilence INTEGER default '0' ");
     locala.columns[13] = "rowid";
     locala.sql = localStringBuilder.toString();
@@ -86,16 +86,16 @@ public final class j
     try
     {
       super.convertFrom(paramCursor);
-      this.zMG = ((int)this.systemRowid);
+      this.AdN = ((int)this.systemRowid);
       AppMethodBeat.o(97450);
       return;
     }
     catch (Exception paramCursor)
     {
       String str = paramCursor.getMessage();
-      ad.e("MicroMsg.SnsComment", "error ".concat(String.valueOf(str)));
+      ae.e("MicroMsg.SnsComment", "error ".concat(String.valueOf(str)));
       if ((str != null) && (str.contains("Unable to convert"))) {
-        ag.dUj().dEM();
+        ah.dXJ().dId();
       }
       try
       {
@@ -104,18 +104,18 @@ public final class j
       }
       catch (Exception paramCursor)
       {
-        ad.printErrStackTrace("MicroMsg.SnsComment", paramCursor, "", new Object[0]);
+        ae.printErrStackTrace("MicroMsg.SnsComment", paramCursor, "", new Object[0]);
         AppMethodBeat.o(97450);
       }
     }
   }
   
-  public final void dYt()
+  public final void ebX()
   {
     this.field_commentflag |= 0x1;
   }
   
-  public final j dYu()
+  public final j ebY()
   {
     AppMethodBeat.i(97451);
     try
@@ -128,7 +128,7 @@ public final class j
     {
       for (;;)
       {
-        ad.e("MicroMsg.SnsComment", "snscomment clone error");
+        ae.e("MicroMsg.SnsComment", "snscomment clone error");
         Object localObject = null;
       }
     }
@@ -141,7 +141,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.j
  * JD-Core Version:    0.7.0.1
  */

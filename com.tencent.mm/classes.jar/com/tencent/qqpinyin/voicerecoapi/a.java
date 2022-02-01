@@ -5,27 +5,27 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class a
 {
   public static int MAX_FRAME_SIZE = 2000;
-  private byte[] LLe;
-  public byte[] LLf;
-  private long LLg;
-  public long LLh;
-  public TRSpeexNative LLi;
+  private byte[] Mid;
+  public byte[] Mie;
+  private long Mif;
+  public long Mig;
+  public TRSpeexNative Mih;
   
   public a()
   {
     AppMethodBeat.i(87694);
-    this.LLe = null;
-    this.LLf = null;
-    this.LLg = 0L;
-    this.LLh = 0L;
-    this.LLi = new TRSpeexNative();
+    this.Mid = null;
+    this.Mie = null;
+    this.Mif = 0L;
+    this.Mig = 0L;
+    this.Mih = new TRSpeexNative();
     AppMethodBeat.o(87694);
   }
   
-  public final byte[] ac(byte[] paramArrayOfByte, int paramInt)
+  public final byte[] ag(byte[] paramArrayOfByte, int paramInt)
   {
     AppMethodBeat.i(87696);
-    if (this.LLg == 0L)
+    if (this.Mif == 0L)
     {
       paramArrayOfByte = new b(-102);
       AppMethodBeat.o(87696);
@@ -37,7 +37,7 @@ public final class a
       AppMethodBeat.o(87696);
       throw paramArrayOfByte;
     }
-    paramInt = this.LLi.nativeTRSpeexEncode(this.LLg, paramArrayOfByte, 0, paramInt, this.LLe);
+    paramInt = this.Mih.nativeTRSpeexEncode(this.Mif, paramArrayOfByte, 0, paramInt, this.Mid);
     if (paramInt < 0)
     {
       paramArrayOfByte = new b(paramInt);
@@ -50,43 +50,43 @@ public final class a
       return null;
     }
     paramArrayOfByte = new byte[paramInt];
-    System.arraycopy(this.LLe, 0, paramArrayOfByte, 0, paramInt);
+    System.arraycopy(this.Mid, 0, paramArrayOfByte, 0, paramInt);
     AppMethodBeat.o(87696);
     return paramArrayOfByte;
   }
   
-  public final int fTF()
+  public final int fYf()
   {
     AppMethodBeat.i(87695);
-    if (this.LLg != 0L)
+    if (this.Mif != 0L)
     {
       AppMethodBeat.o(87695);
       return -103;
     }
-    long l = this.LLi.nativeTRSpeexInit();
+    long l = this.Mih.nativeTRSpeexInit();
     if (l == -1L)
     {
       int i = (int)l;
       AppMethodBeat.o(87695);
       return i;
     }
-    this.LLg = l;
-    this.LLe = new byte[MAX_FRAME_SIZE * 10];
+    this.Mif = l;
+    this.Mid = new byte[MAX_FRAME_SIZE * 10];
     AppMethodBeat.o(87695);
     return 0;
   }
   
-  public final int fTG()
+  public final int fYg()
   {
     AppMethodBeat.i(87697);
-    if (this.LLg == 0L)
+    if (this.Mif == 0L)
     {
       AppMethodBeat.o(87697);
       return -102;
     }
-    this.LLe = null;
-    int i = this.LLi.nativeTRSpeexRelease(this.LLg);
-    this.LLg = 0L;
+    this.Mid = null;
+    int i = this.Mih.nativeTRSpeexRelease(this.Mif);
+    this.Mif = 0L;
     AppMethodBeat.o(87697);
     return i;
   }

@@ -5,7 +5,7 @@ import android.graphics.RectF;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.path.BasePathActionArg;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.path.PathArcActionArg;
-import com.tencent.mm.plugin.appbrand.z.g;
+import com.tencent.mm.plugin.appbrand.y.g;
 import org.json.JSONArray;
 
 public final class b
@@ -90,7 +90,7 @@ public final class b
       return false;
     }
     paramBasePathActionArg = (PathArcActionArg)paramBasePathActionArg;
-    boolean bool = a(paramPath, paramBasePathActionArg.x, paramBasePathActionArg.y, paramBasePathActionArg.radius, paramBasePathActionArg.mh, paramBasePathActionArg.jTH, paramBasePathActionArg.jTI);
+    boolean bool = a(paramPath, paramBasePathActionArg.x, paramBasePathActionArg.y, paramBasePathActionArg.radius, paramBasePathActionArg.mh, paramBasePathActionArg.jWY, paramBasePathActionArg.jWZ);
     AppMethodBeat.o(145348);
     return bool;
   }
@@ -108,7 +108,7 @@ public final class b
     return bool;
   }
   
-  public final BasePathActionArg bdz()
+  public final BasePathActionArg bee()
   {
     AppMethodBeat.i(145349);
     PathArcActionArg localPathArcActionArg = new PathArcActionArg();

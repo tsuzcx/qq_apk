@@ -14,15 +14,15 @@ public class CardTextPreference
 {
   private TextView ayB;
   Context mContext;
-  private TextView oPS;
-  public int oPT;
-  boolean oPU;
+  private TextView oWu;
+  public int oWv;
+  boolean oWw;
   
   public CardTextPreference(Context paramContext)
   {
     super(paramContext, null);
-    this.oPT = 0;
-    this.oPU = true;
+    this.oWv = 0;
+    this.oWw = true;
     this.mContext = paramContext;
   }
   
@@ -30,8 +30,8 @@ public class CardTextPreference
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(113886);
-    this.oPT = 0;
-    this.oPU = true;
+    this.oWv = 0;
+    this.oWw = true;
     setLayoutResource(2131494804);
     this.mContext = paramContext;
     AppMethodBeat.o(113886);
@@ -40,8 +40,8 @@ public class CardTextPreference
   public CardTextPreference(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.oPT = 0;
-    this.oPU = true;
+    this.oWv = 0;
+    this.oWw = true;
     this.mContext = paramContext;
   }
   
@@ -69,7 +69,7 @@ public class CardTextPreference
     AppMethodBeat.o(113892);
   }
   
-  private void jA(boolean paramBoolean)
+  private void jz(boolean paramBoolean)
   {
     AppMethodBeat.i(113890);
     if (this.ayB != null)
@@ -86,20 +86,20 @@ public class CardTextPreference
     AppMethodBeat.o(113890);
   }
   
-  public final void bYF()
+  public final void bZU()
   {
     AppMethodBeat.i(113888);
-    if ((this.oPS != null) && (this.oPT != 0)) {
-      this.oPS.setTextColor(this.oPT);
+    if ((this.oWu != null) && (this.oWv != 0)) {
+      this.oWu.setTextColor(this.oWv);
     }
     AppMethodBeat.o(113888);
   }
   
-  public final void bYG()
+  public final void bZV()
   {
     AppMethodBeat.i(113889);
-    jA(false);
-    this.oPU = false;
+    jz(false);
+    this.oWw = false;
     AppMethodBeat.o(113889);
   }
   
@@ -107,10 +107,10 @@ public class CardTextPreference
   {
     AppMethodBeat.i(113887);
     super.onBindView(paramView);
-    this.oPS = ((TextView)paramView.findViewById(16908304));
+    this.oWu = ((TextView)paramView.findViewById(16908304));
     this.ayB = ((TextView)paramView.findViewById(16908310));
-    bYF();
-    jA(this.oPU);
+    bZU();
+    jz(this.oWw);
     AppMethodBeat.o(113887);
   }
 }

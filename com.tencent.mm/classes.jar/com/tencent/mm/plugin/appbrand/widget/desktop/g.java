@@ -12,7 +12,7 @@ import android.support.v7.widget.as;
 import android.view.View;
 import android.view.ViewPropertyAnimator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -33,12 +33,12 @@ public final class g
   ArrayList<RecyclerView.w> amg;
   ArrayList<RecyclerView.w> amh;
   ArrayList<RecyclerView.w> ami;
-  private boolean mYH;
+  private boolean ndO;
   
   g()
   {
     AppMethodBeat.i(49662);
-    this.mYH = false;
+    this.ndO = false;
     this.acW = null;
     this.alY = new ArrayList();
     this.alZ = new ArrayList();
@@ -160,7 +160,7 @@ public final class g
   public final boolean a(RecyclerView.w paramw1, RecyclerView.w paramw2, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     AppMethodBeat.i(49667);
-    ad.i("MicroMsg.RecentAppBrandItemAnimator", "alvinluo animateChange lastPos: %d", new Object[] { Integer.valueOf(paramw1.lN()) });
+    ae.i("MicroMsg.RecentAppBrandItemAnimator", "alvinluo animateChange lastPos: %d", new Object[] { Integer.valueOf(paramw1.lN()) });
     if (paramw1 == paramw2)
     {
       boolean bool = a(paramw1, paramInt1, paramInt2, paramInt3, paramInt4);
@@ -204,7 +204,7 @@ public final class g
   public final boolean b(RecyclerView.w paramw)
   {
     AppMethodBeat.i(49664);
-    ad.i("MicroMsg.RecentAppBrandItemAnimator", "alvinluo animateRemove %d", new Object[] { Integer.valueOf(paramw.lN()) });
+    ae.i("MicroMsg.RecentAppBrandItemAnimator", "alvinluo animateRemove %d", new Object[] { Integer.valueOf(paramw.lN()) });
     e(paramw);
     this.alY.add(paramw);
     AppMethodBeat.o(49664);
@@ -692,7 +692,7 @@ public final class g
     public int amx;
     public int amy;
     public int amz;
-    public boolean mYK = false;
+    public boolean ndR = false;
     
     private a(RecyclerView.w paramw1, RecyclerView.w paramw2)
     {

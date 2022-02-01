@@ -1,9 +1,9 @@
 package com.tencent.mm.sticker;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ac.h;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.vfs.i;
+import com.tencent.mm.ab.h;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.vfs.o;
 import d.g.b.p;
 import d.l;
 import d.n.d;
@@ -11,10 +11,10 @@ import d.v;
 import java.nio.charset.Charset;
 import org.json.JSONObject;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/sticker/BaseJsonObject;", "", "()V", "fromJson", "jsonObj", "Lorg/json/JSONObject;", "toJson", "Companion", "plugin-sticker_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/sticker/BaseJsonObject;", "", "()V", "fromJson", "jsonObj", "Lorg/json/JSONObject;", "toJson", "Companion", "plugin-sticker_release"})
 public abstract class a
 {
-  public static final a IlF = new a((byte)0);
+  public static final a IFQ = new a((byte)0);
   private static final String TAG = "MicroMsg.BaseJsonObject";
   
   public a bH(JSONObject paramJSONObject)
@@ -28,7 +28,7 @@ public abstract class a
     return new JSONObject();
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/sticker/BaseJsonObject$Companion;", "", "()V", "TAG", "", "parseJson", "", "jsonFile", "obj", "Lcom/tencent/mm/sticker/BaseJsonObject;", "saveJson", "plugin-sticker_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/sticker/BaseJsonObject$Companion;", "", "()V", "TAG", "", "parseJson", "", "jsonFile", "obj", "Lcom/tencent/mm/sticker/BaseJsonObject;", "saveJson", "plugin-sticker_release"})
   public static final class a
   {
     public static void a(a parama, String paramString)
@@ -51,13 +51,13 @@ public abstract class a
       }
       catch (Exception parama)
       {
-        ad.printErrStackTrace(a.access$getTAG$cp(), (Throwable)parama, "", new Object[0]);
+        ae.printErrStackTrace(a.access$getTAG$cp(), (Throwable)parama, "", new Object[0]);
         AppMethodBeat.o(105886);
         return;
       }
       parama = parama.getBytes(localCharset);
       p.g(parama, "(this as java.lang.String).getBytes(charset)");
-      i.C(paramString, parama);
+      o.C(paramString, parama);
       AppMethodBeat.o(105886);
     }
     
@@ -68,7 +68,7 @@ public abstract class a
       p.h(parama, "obj");
       try
       {
-        paramString = h.wJ(i.aYq(paramString));
+        paramString = h.xs(o.aZT(paramString));
         p.g(paramString, "jsonObj");
         parama.bH(paramString);
         AppMethodBeat.o(105885);
@@ -76,7 +76,7 @@ public abstract class a
       }
       catch (Exception paramString)
       {
-        ad.printErrStackTrace(a.access$getTAG$cp(), (Throwable)paramString, "", new Object[0]);
+        ae.printErrStackTrace(a.access$getTAG$cp(), (Throwable)paramString, "", new Object[0]);
         AppMethodBeat.o(105885);
       }
     }
@@ -84,7 +84,7 @@ public abstract class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.sticker.a
  * JD-Core Version:    0.7.0.1
  */

@@ -7,9 +7,9 @@ import com.tencent.e.h;
 import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.graphics.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bv;
 
 final class PluginPerformance$2
   implements a
@@ -19,28 +19,28 @@ final class PluginPerformance$2
   public final void a(final BitmapFactory.Options paramOptions, final int paramInt)
   {
     int i = 2;
-    AppMethodBeat.i(211733);
-    ad.e("MicroMsg.PluginPerformance", "WARNING: bitmap decode oversize \n(%s B/%s B), [w:%s, h:%s]", new Object[] { Integer.valueOf(paramInt), Long.valueOf(20971520L), Integer.valueOf(paramOptions.outWidth), Integer.valueOf(paramOptions.outHeight) });
+    AppMethodBeat.i(215404);
+    ae.e("MicroMsg.PluginPerformance", "WARNING: bitmap decode oversize \n(%s B/%s B), [w:%s, h:%s]", new Object[] { Integer.valueOf(paramInt), Long.valueOf(20971520L), Integer.valueOf(paramOptions.outWidth), Integer.valueOf(paramOptions.outHeight) });
     Throwable localThrowable = new Throwable();
-    ad.printErrStackTrace("MicroMsg.PluginPerformance", localThrowable, "bitmap stacktrace", new Object[0]);
+    ae.printErrStackTrace("MicroMsg.PluginPerformance", localThrowable, "bitmap stacktrace", new Object[0]);
     if (paramInt > 52428800) {
-      com.tencent.mm.plugin.report.service.g.yhR.f(18613, new Object[] { this.cTI.mProcessName, Log.getStackTraceString(localThrowable).replace('\n', ';').replace("\t", "") });
+      com.tencent.mm.plugin.report.service.g.yxI.f(18613, new Object[] { this.cUt.mProcessName, Log.getStackTraceString(localThrowable).replace('\n', ';').replace("\t", "") });
     }
     for (;;)
     {
-      com.tencent.mm.plugin.report.service.g.yhR.dD(1230, i);
-      if (bu.flY()) {
-        h.LTJ.aP(new Runnable()
+      com.tencent.mm.plugin.report.service.g.yxI.dD(1230, i);
+      if (bv.fpT()) {
+        h.MqF.aM(new Runnable()
         {
           public final void run()
           {
-            AppMethodBeat.i(211732);
-            Toast.makeText(aj.getContext(), String.format("WARNING: large bitmap decode \n(%s B), [w:%s, h:%s]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramOptions.outWidth), Integer.valueOf(paramOptions.outHeight) }), 1).show();
-            AppMethodBeat.o(211732);
+            AppMethodBeat.i(215403);
+            Toast.makeText(ak.getContext(), String.format("WARNING: large bitmap decode \n(%s B), [w:%s, h:%s]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramOptions.outWidth), Integer.valueOf(paramOptions.outHeight) }), 1).show();
+            AppMethodBeat.o(215403);
           }
         });
       }
-      AppMethodBeat.o(211733);
+      AppMethodBeat.o(215404);
       return;
       if (paramInt > 31457280) {
         i = 1;

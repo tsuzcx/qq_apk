@@ -6,18 +6,18 @@ import java.util.Map;
 public final class d
   implements e<Map<String, List<String>>>
 {
-  public final String loR;
-  public final String loS;
+  public final String lto;
+  public final String ltp;
   
   public d(String paramString1, String paramString2)
   {
-    this.loS = paramString1;
-    this.loR = paramString2;
+    this.ltp = paramString1;
+    this.lto = paramString2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.video.b.e.d
  * JD-Core Version:    0.7.0.1
  */

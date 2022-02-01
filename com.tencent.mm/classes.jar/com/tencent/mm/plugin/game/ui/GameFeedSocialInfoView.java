@@ -5,18 +5,18 @@ import android.util.AttributeSet;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.game.d.ab;
+import com.tencent.mm.plugin.game.d.ag;
 import com.tencent.mm.plugin.game.widget.GameSmallAvatarList;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public class GameFeedSocialInfoView
   extends LinearLayout
 {
-  private TextView lDu;
-  private LinearLayout upg;
-  private GameSmallAvatarList uph;
-  private TextView upi;
-  private LinearLayout upj;
+  private TextView lHT;
+  private LinearLayout uAC;
+  private GameSmallAvatarList uAD;
+  private TextView uAE;
+  private LinearLayout uAF;
   
   public GameFeedSocialInfoView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -27,38 +27,38 @@ public class GameFeedSocialInfoView
   {
     AppMethodBeat.i(42128);
     super.onFinishInflate();
-    this.upg = ((LinearLayout)findViewById(2131297011));
-    this.uph = ((GameSmallAvatarList)findViewById(2131297012));
-    this.upi = ((TextView)findViewById(2131297003));
-    this.upj = ((LinearLayout)findViewById(2131298996));
-    this.lDu = ((TextView)findViewById(2131299007));
+    this.uAC = ((LinearLayout)findViewById(2131297011));
+    this.uAD = ((GameSmallAvatarList)findViewById(2131297012));
+    this.uAE = ((TextView)findViewById(2131297003));
+    this.uAF = ((LinearLayout)findViewById(2131298996));
+    this.lHT = ((TextView)findViewById(2131299007));
     AppMethodBeat.o(42128);
   }
   
-  public void setData(ab paramab)
+  public void setData(ag paramag)
   {
     AppMethodBeat.i(42129);
-    if ((!bt.hj(paramab.ugp)) || (paramab.ugq != null))
+    if ((!bu.ht(paramag.urM)) || (paramag.urN != null))
     {
-      this.upg.setVisibility(0);
-      this.uph.setData(paramab.ugp);
-      if (paramab.ugq != null)
+      this.uAC.setVisibility(0);
+      this.uAD.setData(paramag.urM);
+      if (paramag.urN != null)
       {
-        this.upi.setText(paramab.ugq);
-        this.upi.setVisibility(0);
+        this.uAE.setText(paramag.urN);
+        this.uAE.setVisibility(0);
       }
     }
-    while (paramab.Desc != null)
+    while (paramag.Desc != null)
     {
-      this.upj.setVisibility(0);
-      this.lDu.setText(paramab.Desc);
+      this.uAF.setVisibility(0);
+      this.lHT.setText(paramag.Desc);
       AppMethodBeat.o(42129);
       return;
-      this.upi.setVisibility(8);
+      this.uAE.setVisibility(8);
       continue;
-      this.upg.setVisibility(8);
+      this.uAC.setVisibility(8);
     }
-    this.upj.setVisibility(8);
+    this.uAF.setVisibility(8);
     AppMethodBeat.o(42129);
   }
 }

@@ -6,18 +6,20 @@ import android.content.Intent;
 import android.os.Process;
 import android.text.TextUtils;
 import com.tencent.e.h;
+import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.performance.c;
 import com.tencent.mm.plugin.performance.diagnostic.a;
 import com.tencent.mm.plugin.report.service.g;
 import com.tencent.mm.sdk.a.c.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ax;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.ay;
 import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.vfs.e;
-import com.tencent.mm.vfs.q;
+import com.tencent.mm.sdk.platformtools.bv;
+import com.tencent.mm.sdk.platformtools.j;
+import com.tencent.mm.vfs.k;
+import com.tencent.mm.vfs.w;
 import com.tencent.wxperf.jni.HookManager;
 import com.tencent.wxperf.jni.pthread.PthreadHook;
 import d.n.d;
@@ -37,50 +39,50 @@ public class PthreadHookLogic
   implements c.a
 {
   public static String TAG;
-  private static final e wHi;
-  private static final e wHj;
-  private static final long wHr;
-  private static final Set<String> wHs;
+  private static final k wWV;
+  private static final k wWW;
+  private static final long wXe;
+  private static final Set<String> wXf;
   private StringBuilder sb = null;
   
   static
   {
-    AppMethodBeat.i(211763);
+    AppMethodBeat.i(215433);
     TAG = "MicroMsg.PthreadHookLogic";
     long l;
     String str2;
     String str1;
-    if (com.tencent.mm.sdk.platformtools.i.IS_FLAVOR_RED)
+    if (j.IS_FLAVOR_RED)
     {
       l = 300000L;
-      wHr = l;
-      wHs = new HashSet();
-      str2 = aj.getProcessName();
+      wXe = l;
+      wXf = new HashSet();
+      str2 = ak.getProcessName();
       str1 = "OTHER_";
-      if (!aj.cmR()) {
+      if (!ak.coh()) {
         break label180;
       }
       str1 = "MM_";
     }
     for (;;)
     {
-      str2 = aj.getContext().getFilesDir().getAbsolutePath() + "/pthread_hook";
+      str2 = ak.getContext().getFilesDir().getAbsolutePath() + "/pthread_hook";
       str1 = str2 + "/" + str1 + Process.myPid() + "_pthread_hook.json";
-      wHi = new e(str2);
-      wHj = new e(str1);
-      ad.d(TAG, "init dump file dir = %s", new Object[] { str2 });
-      ad.i(TAG, "init dump file path = %s", new Object[] { str1 });
-      AppMethodBeat.o(211763);
+      wWV = new k(str2);
+      wWW = new k(str1);
+      ae.d(TAG, "init dump file dir = %s", new Object[] { str2 });
+      ae.i(TAG, "init dump file path = %s", new Object[] { str1 });
+      AppMethodBeat.o(215433);
       return;
       l = 1800000L;
       break;
       label180:
-      if (aj.fkI())
+      if (ak.foC())
       {
         str1 = "tools_";
         TAG += ":tools";
       }
-      else if (aj.fkJ())
+      else if (ak.foD())
       {
         str1 = "toolsmp_";
         TAG += ":toolsmp";
@@ -113,11 +115,11 @@ public class PthreadHookLogic
     }
   }
   
-  private static void R(e parame)
+  private static void R(k paramk)
   {
-    AppMethodBeat.i(211759);
-    ad.i(TAG, ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> dump file = %s, modified = %s", new Object[] { parame.getName(), c.yt(parame.lastModified()) });
-    Object localObject1 = c.a(q.B(parame.fOK()), d.UTF_8);
+    AppMethodBeat.i(215429);
+    ae.i(TAG, ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> dump file = %s, modified = %s", new Object[] { paramk.getName(), c.yN(paramk.lastModified()) });
+    Object localObject1 = c.a(w.B(paramk.fTh()), d.UTF_8);
     for (;;)
     {
       int i;
@@ -130,15 +132,15 @@ public class PthreadHookLogic
         if (i < ((JSONArray)localObject1).length())
         {
           Object localObject3 = ((JSONArray)localObject1).getJSONObject(i);
-          long l2 = bt.getLong(((JSONObject)localObject3).getString("hash"), 0L);
+          long l2 = bu.getLong(((JSONObject)localObject3).getString("hash"), 0L);
           String str1 = ((JSONObject)localObject3).getString("native");
           String str2 = ((JSONObject)localObject3).getString("java");
-          int k = bt.getInt(((JSONObject)localObject3).getString("count"), 0);
+          int k = bu.getInt(((JSONObject)localObject3).getString("count"), 0);
           localObject3 = ((JSONObject)localObject3).getJSONArray("threads");
-          ad.i(TAG, "------------------------------- hash= %d -------------------------------", new Object[] { Long.valueOf(l2) });
-          ad.i(TAG, "native\n\t%s", new Object[] { str1.replace(";", "\n\t") });
-          ad.i(TAG, "java\n%s", new Object[] { str2.replace("\\n", "\n") });
-          ad.i(TAG, "ThreadCount = %d", new Object[] { Integer.valueOf(k) });
+          ae.i(TAG, "------------------------------- hash= %d -------------------------------", new Object[] { Long.valueOf(l2) });
+          ae.i(TAG, "native\n\t%s", new Object[] { str1.replace(";", "\n\t") });
+          ae.i(TAG, "java\n%s", new Object[] { str2.replace("\\n", "\n") });
+          ae.i(TAG, "ThreadCount = %d", new Object[] { Integer.valueOf(k) });
           ArrayList localArrayList = new ArrayList();
           HashSet localHashSet = new HashSet();
           j = 0;
@@ -149,277 +151,258 @@ public class PthreadHookLogic
             ((StringBuilder)localObject4).append("{").append(localJSONObject.getString("tid")).append("-").append(localJSONObject.getString("name")).append("}");
             localObject4 = ((StringBuilder)localObject4).toString();
             localArrayList.add(localObject4);
-            if (wHs.contains(localObject4)) {
-              break label625;
+            if (wXf.contains(localObject4)) {
+              break label632;
             }
             localHashSet.add(localObject4);
-            break label625;
-          }
-          ad.i(TAG, "==> leaked threads : %s", new Object[] { localArrayList.toString().replace(",", "") });
-          if (localHashSet.isEmpty()) {
             break label632;
           }
-          g.yhR.f(19816, new Object[] { Integer.valueOf(0), Long.valueOf(l1), Long.valueOf(l2), str1, str2, Integer.valueOf(k), localArrayList.toString().replace(",", "") });
-          wHs.addAll(localHashSet);
-          ad.i(TAG, "reported %s", new Object[] { localHashSet });
-          break label632;
+          ae.i(TAG, "==> leaked threads : %s", new Object[] { localArrayList.toString().replace(",", "") });
+          if (localHashSet.isEmpty()) {
+            break label639;
+          }
+          g.yxI.f(19816, new Object[] { Integer.valueOf(0), Long.valueOf(l1), Long.valueOf(l2), str1, str2, Integer.valueOf(k), localArrayList.toString().replace(",", ""), ak.getProcessName() });
+          wXf.addAll(localHashSet);
+          ae.i(TAG, "reported %s", new Object[] { localHashSet });
+          break label639;
         }
-        if ((bu.fjL()) || (bu.flY()) || (com.tencent.mm.sdk.platformtools.i.IS_FLAVOR_RED) || (com.tencent.mm.sdk.platformtools.i.DEBUG)) {
-          c.N(parame);
+        if ((bv.fnD()) || (bv.fpT()) || (j.IS_FLAVOR_RED) || (j.DEBUG)) {
+          c.N(paramk);
         }
-        parame.delete();
+        paramk.delete();
       }
       catch (Exception localException)
       {
-        ad.printErrStackTrace(TAG, localException, "report kv error", new Object[0]);
-        parame.delete();
+        ae.printErrStackTrace(TAG, localException, "report kv error", new Object[0]);
+        paramk.delete();
         continue;
       }
       finally
       {
-        parame.delete();
-        AppMethodBeat.o(211759);
+        paramk.delete();
+        AppMethodBeat.o(215429);
       }
-      ad.i(TAG, "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< dump file = %s, modified = %s", new Object[] { parame.getName(), c.yt(parame.lastModified()) });
-      AppMethodBeat.o(211759);
+      ae.i(TAG, "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< dump file = %s, modified = %s", new Object[] { paramk.getName(), c.yN(paramk.lastModified()) });
+      AppMethodBeat.o(215429);
       return;
-      label625:
+      label632:
       j += 1;
       continue;
-      label632:
+      label639:
       i += 1;
     }
   }
   
-  public static boolean dyC()
+  public static boolean dBS()
   {
-    AppMethodBeat.i(211755);
-    boolean bool2 = wGr.decodeBool("PH_KEY_ENABLE_BOOLEAN_v2", false);
-    ad.i(TAG, "enablePthreadHook = %s for process [%s]", new Object[] { Boolean.valueOf(bool2), aj.getProcessName() });
+    AppMethodBeat.i(215425);
+    boolean bool2 = wWe.decodeBool("PH_KEY_ENABLE_BOOLEAN_v2", false);
+    ae.i(TAG, "enablePthreadHook = %s for process [%s]", new Object[] { Boolean.valueOf(bool2), ak.getProcessName() });
     boolean bool1 = bool2;
     long l1;
     long l2;
     if (bool2)
     {
-      l1 = wGr.decodeLong("PH_KEY_DURATION_MILLIS_LONG", 0L);
-      l2 = wGr.decodeLong("PH_KEY_BEGIN_TIME_LONG", -1L);
-      ad.i(TAG, "hook duration = %s, hook begin time = %s", new Object[] { Long.valueOf(l1), c.yt(l2) });
+      l1 = wWe.decodeLong("PH_KEY_DURATION_MILLIS_LONG", 0L);
+      l2 = wWe.decodeLong("PH_KEY_BEGIN_TIME_LONG", -1L);
+      ae.i(TAG, "hook duration = %s, hook begin time = %s", new Object[] { Long.valueOf(l1), c.yN(l2) });
       if (l2 >= 0L) {
         break label154;
       }
       l1 = System.currentTimeMillis();
-      wGr.encode("PH_KEY_BEGIN_TIME_LONG", l1);
-      ad.i(TAG, "update hookBeginTime = %s", new Object[] { Long.valueOf(l1) });
+      wWe.encode("PH_KEY_BEGIN_TIME_LONG", l1);
+      ae.i(TAG, "update hookBeginTime = %s", new Object[] { Long.valueOf(l1) });
       bool1 = bool2;
     }
     for (;;)
     {
-      AppMethodBeat.o(211755);
+      AppMethodBeat.o(215425);
       return bool1;
       label154:
       bool1 = bool2;
       if (System.currentTimeMillis() - l2 > l1)
       {
-        wGr.encode("PH_KEY_ENABLE_BOOLEAN_v2", false);
-        ad.i(TAG, "time out, disable hook");
+        wWe.encode("PH_KEY_ENABLE_BOOLEAN_v2", false);
+        ae.i(TAG, "time out, disable hook");
         bool1 = false;
       }
     }
   }
   
-  public static boolean dyE()
+  public static boolean dBU()
   {
-    AppMethodBeat.i(211754);
-    boolean bool = wGr.decodeBool("PH_KEY_MULTI_PROCESS_BOOLEAN", false);
-    ad.i(TAG, "enable multiProcess = %s", new Object[] { Boolean.valueOf(bool) });
-    if ((aj.cmR()) || ((bool) && ((aj.fkI()) || (aj.fkJ()) || (aj.isAppBrandProcess()))))
+    AppMethodBeat.i(215424);
+    boolean bool = wWe.decodeBool("PH_KEY_MULTI_PROCESS_BOOLEAN", false);
+    ae.i(TAG, "enable multiProcess = %s", new Object[] { Boolean.valueOf(bool) });
+    if ((ak.coh()) || ((bool) && ((ak.foC()) || (ak.foD()) || (ak.isAppBrandProcess()))))
     {
-      AppMethodBeat.o(211754);
+      AppMethodBeat.o(215424);
       return true;
     }
-    AppMethodBeat.o(211754);
+    AppMethodBeat.o(215424);
     return false;
   }
   
-  private static void dyH()
+  public static void dBX()
   {
-    AppMethodBeat.i(211758);
-    ad.i(TAG, "memory dump begin");
+    AppMethodBeat.i(215427);
+    dBY();
+    R(new k(w.B(wWW.fTh())));
+    AppMethodBeat.o(215427);
+  }
+  
+  private static void dBY()
+  {
+    AppMethodBeat.i(215428);
+    ae.i(TAG, "memory dump begin");
     long l = System.currentTimeMillis();
     try
     {
-      Object localObject = wHi;
-      if (!((e)localObject).exists()) {
-        ((e)localObject).mkdirs();
+      k localk = wWV;
+      if (!localk.exists()) {
+        localk.mkdirs();
       }
-      localObject = PthreadHook.MoQ;
-      String str = q.B(wHj.fOK());
-      if (HookManager.MoC.MoD) {
-        ((PthreadHook)localObject).dumpNative(str);
-      }
-      ad.i(TAG, "dump path = %s", new Object[] { q.B(wHj.fOK()) });
+      PthreadHook.MLM.dump(w.B(wWW.fTh()));
+      ae.i(TAG, "dump path = %s", new Object[] { w.B(wWW.fTh()) });
     }
     catch (Exception localException)
     {
       for (;;)
       {
-        ad.printErrStackTrace(TAG, localException, "something wrong when dumping", new Object[0]);
+        ae.printErrStackTrace(TAG, localException, "something wrong when dumping", new Object[0]);
       }
     }
-    ad.i(TAG, "memory dump end, cost = %d", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
-    AppMethodBeat.o(211758);
+    ae.i(TAG, "memory dump end, cost = %d", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
+    AppMethodBeat.o(215428);
   }
   
   public static void report()
   {
-    AppMethodBeat.i(211757);
+    AppMethodBeat.i(215426);
     PthreadHookReporter.report();
-    AppMethodBeat.o(211757);
+    AppMethodBeat.o(215426);
   }
   
-  public final void av(Map<String, String> paramMap)
+  public final void aB(Map<String, String> paramMap)
   {
-    AppMethodBeat.i(211753);
-    ad.i(TAG, "onReceiveIpxxCmd: [%s]", new Object[] { paramMap });
-    boolean bool2 = wGr.decodeBool("PH_KEY_ENABLE_BOOLEAN_v2", false);
-    int i = wGr.decodeInt("PH_KEY_CRASH_TIMES_INT", 0);
+    AppMethodBeat.i(215423);
+    ae.i(TAG, "onReceiveIpxxCmd: [%s]", new Object[] { paramMap });
+    boolean bool2 = wWe.decodeBool("PH_KEY_ENABLE_BOOLEAN_v2", false);
+    int i = wWe.decodeInt("PH_KEY_CRASH_TIMES_INT", 0);
     if ("1".equals(paramMap.get(".cmd.diagnostic.PthreadHook.$force")))
     {
       i = 0;
-      wGr.encode("PH_KEY_CRASH_TIMES_INT", 0);
-      ad.i(TAG, "force enable");
+      wWe.encode("PH_KEY_CRASH_TIMES_INT", 0);
+      ae.i(TAG, "force enable");
     }
     if ((i < 3) && ("1".equals(paramMap.get(".cmd.diagnostic.PthreadHook.$enable")))) {}
     for (boolean bool1 = true;; bool1 = false)
     {
-      wGr.encode("PH_KEY_ENABLE_BOOLEAN_v2", bool1);
+      wWe.encode("PH_KEY_ENABLE_BOOLEAN_v2", bool1);
       if (!bool1) {
-        break label588;
+        break label584;
       }
       localObject2 = (String)paramMap.get(".cmd.diagnostic.PthreadHook.$hook");
       if (!TextUtils.isEmpty((CharSequence)localObject2)) {
         break;
       }
-      ad.e(TAG, "ERROR(PthreadHook): hook regex is blank");
-      AppMethodBeat.o(211753);
+      ae.e(TAG, "ERROR(PthreadHook): hook regex is blank");
+      AppMethodBeat.o(215423);
       return;
     }
     String str = (String)paramMap.get(".cmd.diagnostic.PthreadHook.$ignore");
     Object localObject1 = (String)paramMap.get(".cmd.diagnostic.PthreadHook.$thread");
-    i = bt.getInt((String)paramMap.get(".cmd.diagnostic.PthreadHook.$duration"), 0);
-    int j = bt.getInt((String)paramMap.get(".cmd.diagnostic.PthreadHook.$dumpcycle"), 30);
+    i = bu.getInt((String)paramMap.get(".cmd.diagnostic.PthreadHook.$duration"), 0);
+    int j = bu.getInt((String)paramMap.get(".cmd.diagnostic.PthreadHook.$dumpcycle"), 30);
     bool1 = "1".equals(paramMap.get(".cmd.diagnostic.PthreadHook.$multiprocess"));
-    wGr.encode("PH_KEY_HOOK_SO_STRING", (String)localObject2);
-    wGr.encode("PH_KEY_IGNORE_SO_STRING", str);
-    wGr.encode("PH_KEY_HOOK_THREAD_STRING", (String)localObject1);
-    wGr.encode("PH_KEY_DURATION_MILLIS_LONG", i * 60 * 60 * 1000L);
-    wGr.encode("PH_KEY_MULTI_PROCESS_BOOLEAN", bool1);
-    wGr.encode("PH_KEY_DUMP_CYCLE_MILLIS_LONG", j * 60 * 1000L);
-    wGr.encode("PH_KEY_BEGIN_TIME_LONG", -1L);
+    wWe.encode("PH_KEY_HOOK_SO_STRING", (String)localObject2);
+    wWe.encode("PH_KEY_IGNORE_SO_STRING", str);
+    wWe.encode("PH_KEY_HOOK_THREAD_STRING", (String)localObject1);
+    wWe.encode("PH_KEY_DURATION_MILLIS_LONG", i * 60 * 60 * 1000L);
+    wWe.encode("PH_KEY_MULTI_PROCESS_BOOLEAN", bool1);
+    wWe.encode("PH_KEY_DUMP_CYCLE_MILLIS_LONG", j * 60 * 1000L);
+    wWe.encode("PH_KEY_BEGIN_TIME_LONG", -1L);
     if (bool2)
     {
-      ad.i(TAG, "already enabled now, pls restart process");
-      AppMethodBeat.o(211753);
+      ae.i(TAG, "already enabled now, pls restart process");
+      AppMethodBeat.o(215423);
       return;
     }
     Assert.assertNotNull(localObject2);
-    ad.i(TAG, "hook immediately");
+    ae.i(TAG, "hook immediately");
     Object localObject2 = ((String)localObject2).split(";");
     if (str == null)
     {
       paramMap = new String[0];
       if (localObject1 != null) {
-        break label560;
+        break label556;
       }
       localObject1 = new String[1];
       localObject1[0] = ".*";
     }
     for (;;)
     {
-      ad.i(TAG, "hookRegex = %s", new Object[] { Arrays.toString((Object[])localObject2) });
-      ad.i(TAG, "ignoreRegex = %s", new Object[] { Arrays.toString(paramMap) });
-      ad.i(TAG, "threadRegex = %s", new Object[] { Arrays.toString((Object[])localObject1) });
+      ae.i(TAG, "hookRegex = %s", new Object[] { Arrays.toString((Object[])localObject2) });
+      ae.i(TAG, "ignoreRegex = %s", new Object[] { Arrays.toString(paramMap) });
+      ae.i(TAG, "threadRegex = %s", new Object[] { Arrays.toString((Object[])localObject1) });
       try
       {
-        paramMap = PthreadHook.MoQ.ai((String[])localObject2).aj(paramMap).ak((String[])localObject1);
-        HookManager.MoC.gai().a(paramMap).gah();
-        wGr.encode("PH_KEY_BEGIN_TIME_LONG", System.currentTimeMillis());
+        paramMap = PthreadHook.MLM.ai((String[])localObject2).aj(paramMap).ak((String[])localObject1);
+        HookManager.MLy.geK().a(paramMap).geJ();
+        wWe.encode("PH_KEY_BEGIN_TIME_LONG", System.currentTimeMillis());
         PthreadHookReporter.install();
-        dyD();
-        AppMethodBeat.o(211753);
+        AppMethodBeat.o(215423);
         return;
       }
       catch (Throwable paramMap)
       {
-        label560:
-        ad.printErrStackTrace(TAG, paramMap, "PthreadHook Error", new Object[0]);
+        label556:
+        ae.printErrStackTrace(TAG, paramMap, "PthreadHook Error", new Object[0]);
       }
       paramMap = str.split(";");
       break;
       localObject1 = ((String)localObject1).split(";");
     }
-    label588:
-    AppMethodBeat.o(211753);
+    label584:
+    AppMethodBeat.o(215423);
   }
   
-  public final String bev()
+  public final String bfd()
   {
-    AppMethodBeat.i(211760);
+    AppMethodBeat.i(215430);
     if (this.sb != null)
     {
       localObject = this.sb.toString();
-      AppMethodBeat.o(211760);
+      AppMethodBeat.o(215430);
       return localObject;
     }
-    ad.d(TAG, "onCrash");
-    boolean bool = wGr.decodeBool("PH_KEY_ENABLE_BOOLEAN_v2", false);
-    int j = wGr.decodeInt("PH_KEY_CRASH_TIMES_INT", 0);
+    ae.d(TAG, "onCrash");
+    boolean bool = wWe.decodeBool("PH_KEY_ENABLE_BOOLEAN_v2", false);
+    int j = wWe.decodeInt("PH_KEY_CRASH_TIMES_INT", 0);
     this.sb = new StringBuilder("PtheadHookConfig:\n");
     this.sb.append("enable=").append(bool).append(",");
     int i = j;
     if (bool)
     {
-      localObject = this.sb.append("hook=").append(wGr.decodeString("PH_KEY_HOOK_SO_STRING", "")).append(",thread=").append(wGr.decodeString("PH_KEY_HOOK_THREAD_STRING", "")).append(",duration=").append(wGr.decodeLong("PH_KEY_DURATION_MILLIS_LONG", 0L)).append(",begin=").append(c.yt(wGr.decodeLong("PH_KEY_BEGIN_TIME_LONG", 0L))).append(",crashTimes=");
+      localObject = this.sb.append("hook=").append(wWe.decodeString("PH_KEY_HOOK_SO_STRING", "")).append(",thread=").append(wWe.decodeString("PH_KEY_HOOK_THREAD_STRING", "")).append(",duration=").append(wWe.decodeLong("PH_KEY_DURATION_MILLIS_LONG", 0L)).append(",begin=").append(c.yN(wWe.decodeLong("PH_KEY_BEGIN_TIME_LONG", 0L))).append(",crashTimes=");
       i = j + 1;
       ((StringBuilder)localObject).append(i);
-      wGr.encode("PH_KEY_CRASH_TIMES_INT", i);
-      dyH();
-      R(new e(q.B(wHj.fOK())));
+      wWe.encode("PH_KEY_CRASH_TIMES_INT", i);
+      dBY();
+      R(new k(w.B(wWW.fTh())));
     }
     if ((bool) && (i > 3))
     {
-      wGr.encode("PH_KEY_ENABLE_BOOLEAN_v2", false);
-      ad.e(TAG, "crash happens 3 times, disable hook");
-      g.yhR.n(1376L, 1L, 1L);
+      wWe.encode("PH_KEY_ENABLE_BOOLEAN_v2", false);
+      ae.e(TAG, "crash happens 3 times, disable hook");
+      g.yxI.n(1376L, 1L, 1L);
     }
     Object localObject = this.sb.toString();
-    AppMethodBeat.o(211760);
+    AppMethodBeat.o(215430);
     return localObject;
   }
   
-  public final void dyD()
-  {
-    AppMethodBeat.i(211756);
-    String str = TAG + "-repeat";
-    h.LTJ.aZz(str);
-    final long l = wGr.decodeLong("PH_KEY_DUMP_CYCLE_MILLIS_LONG", wHr);
-    h.LTJ.a(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(211746);
-        if (a.wGr.decodeBool("PH_KEY_ENABLE_BOOLEAN_v2", false))
-        {
-          PthreadHookLogic.report();
-          h.LTJ.a(this, l, this.wHk);
-        }
-        AppMethodBeat.o(211746);
-      }
-    }, l, str);
-    AppMethodBeat.o(211756);
-  }
-  
-  public final String dyy()
+  public final String dBO()
   {
     return ".cmd.diagnostic.PthreadHook";
   }
@@ -427,25 +410,25 @@ public class PthreadHookLogic
   public static final class PthreadHookReporter
     extends BroadcastReceiver
   {
-    private static final String wHm;
-    private static PthreadHookReporter wHv;
+    private static final String wWZ;
+    private static PthreadHookReporter wXg;
     
     static
     {
-      AppMethodBeat.i(211752);
-      wHm = PthreadHookLogic.TAG + "-reporter";
-      wHv = null;
-      AppMethodBeat.o(211752);
+      AppMethodBeat.i(215422);
+      wWZ = PthreadHookLogic.TAG + "-reporter";
+      wXg = null;
+      AppMethodBeat.o(215422);
     }
     
-    static void dyG()
+    static void dBW()
     {
-      AppMethodBeat.i(211750);
+      AppMethodBeat.i(215420);
       Intent localIntent = new Intent("com.tencent.mm.pthreadhook.dump");
       localIntent.putExtra("op", 1);
-      localIntent.putExtra("log_file", q.B(PthreadHookLogic.dyF().fOK()));
-      aj.getContext().sendBroadcast(localIntent);
-      AppMethodBeat.o(211750);
+      localIntent.putExtra("log_file", w.B(PthreadHookLogic.dBV().fTh()));
+      ak.getContext().sendBroadcast(localIntent);
+      AppMethodBeat.o(215420);
     }
     
     /* Error */
@@ -456,7 +439,7 @@ public class PthreadHookLogic
       //   2: monitorenter
       //   3: ldc 99
       //   5: invokestatic 22	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-      //   8: getstatic 44	com/tencent/mm/plugin/performance/diagnostic/pthread/PthreadHookLogic$PthreadHookReporter:wHv	Lcom/tencent/mm/plugin/performance/diagnostic/pthread/PthreadHookLogic$PthreadHookReporter;
+      //   8: getstatic 44	com/tencent/mm/plugin/performance/diagnostic/pthread/PthreadHookLogic$PthreadHookReporter:wXg	Lcom/tencent/mm/plugin/performance/diagnostic/pthread/PthreadHookLogic$PthreadHookReporter;
       //   11: ifnull +12 -> 23
       //   14: ldc 99
       //   16: invokestatic 47	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -466,14 +449,14 @@ public class PthreadHookLogic
       //   23: new 2	com/tencent/mm/plugin/performance/diagnostic/pthread/PthreadHookLogic$PthreadHookReporter
       //   26: dup
       //   27: invokespecial 100	com/tencent/mm/plugin/performance/diagnostic/pthread/PthreadHookLogic$PthreadHookReporter:<init>	()V
-      //   30: putstatic 44	com/tencent/mm/plugin/performance/diagnostic/pthread/PthreadHookLogic$PthreadHookReporter:wHv	Lcom/tencent/mm/plugin/performance/diagnostic/pthread/PthreadHookLogic$PthreadHookReporter;
+      //   30: putstatic 44	com/tencent/mm/plugin/performance/diagnostic/pthread/PthreadHookLogic$PthreadHookReporter:wXg	Lcom/tencent/mm/plugin/performance/diagnostic/pthread/PthreadHookLogic$PthreadHookReporter;
       //   33: new 102	android/content/IntentFilter
       //   36: dup
       //   37: ldc 55
       //   39: invokespecial 103	android/content/IntentFilter:<init>	(Ljava/lang/String;)V
       //   42: astore_0
-      //   43: invokestatic 91	com/tencent/mm/sdk/platformtools/aj:getContext	()Landroid/content/Context;
-      //   46: getstatic 44	com/tencent/mm/plugin/performance/diagnostic/pthread/PthreadHookLogic$PthreadHookReporter:wHv	Lcom/tencent/mm/plugin/performance/diagnostic/pthread/PthreadHookLogic$PthreadHookReporter;
+      //   43: invokestatic 91	com/tencent/mm/sdk/platformtools/ak:getContext	()Landroid/content/Context;
+      //   46: getstatic 44	com/tencent/mm/plugin/performance/diagnostic/pthread/PthreadHookLogic$PthreadHookReporter:wXg	Lcom/tencent/mm/plugin/performance/diagnostic/pthread/PthreadHookLogic$PthreadHookReporter;
       //   49: aload_0
       //   50: ldc 105
       //   52: aconst_null
@@ -499,45 +482,45 @@ public class PthreadHookLogic
     
     static void report()
     {
-      AppMethodBeat.i(211749);
+      AppMethodBeat.i(215419);
       Intent localIntent = new Intent("com.tencent.mm.pthreadhook.dump");
       localIntent.putExtra("op", 0);
-      aj.getContext().sendBroadcast(localIntent);
-      AppMethodBeat.o(211749);
+      ak.getContext().sendBroadcast(localIntent);
+      AppMethodBeat.o(215419);
     }
     
     public final void onReceive(final Context paramContext, Intent paramIntent)
     {
-      AppMethodBeat.i(211751);
+      AppMethodBeat.i(215421);
       final int i = paramIntent.getIntExtra("op", 0);
       paramContext = paramIntent.getStringExtra("log_file");
-      h.LTJ.f(new Runnable()
+      h.MqF.f(new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(211747);
+          AppMethodBeat.i(215417);
           switch (i)
           {
           }
           for (;;)
           {
-            AppMethodBeat.o(211747);
+            AppMethodBeat.o(215417);
             return;
-            ad.i(PthreadHookLogic.TAG, "current process...[%s]", new Object[] { aj.getProcessName() });
+            ae.i(PthreadHookLogic.TAG, "current process...[%s]", new Object[] { ak.getProcessName() });
             PthreadHookLogic.access$200();
-            PthreadHookLogic.PthreadHookReporter.dyG();
-            AppMethodBeat.o(211747);
+            PthreadHookLogic.PthreadHookReporter.dBW();
+            AppMethodBeat.o(215417);
             return;
-            if (!aj.cmR())
+            if (!ak.coh())
             {
-              AppMethodBeat.o(211747);
+              AppMethodBeat.o(215417);
               return;
             }
-            PthreadHookLogic.S(new e(paramContext));
+            PthreadHookLogic.S(new k(paramContext));
           }
         }
-      }, wHm);
-      AppMethodBeat.o(211751);
+      }, wWZ);
+      AppMethodBeat.o(215421);
     }
   }
 }

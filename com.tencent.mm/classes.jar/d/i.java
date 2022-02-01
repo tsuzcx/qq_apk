@@ -4,7 +4,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.a.a;
 import d.g.b.p;
 
-@l(gfA=1, gfx={1, 1, 16}, gfy={""}, gfz={"lazy", "Lkotlin/Lazy;", "T", "initializer", "Lkotlin/Function0;", "lock", "", "mode", "Lkotlin/LazyThreadSafetyMode;", "kotlin-stdlib"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"lazy", "Lkotlin/Lazy;", "T", "initializer", "Lkotlin/Function0;", "lock", "", "mode", "Lkotlin/LazyThreadSafetyMode;", "kotlin-stdlib"}, gkc=1)
 public class i
 {
   public static final <T> f<T> O(a<? extends T> parama)
@@ -21,7 +21,7 @@ public class i
     AppMethodBeat.i(129244);
     p.h(paramk, "mode");
     p.h(parama, "initializer");
-    switch (h.cpQ[paramk.ordinal()])
+    switch (h.cqt[paramk.ordinal()])
     {
     default: 
       paramk = new m();

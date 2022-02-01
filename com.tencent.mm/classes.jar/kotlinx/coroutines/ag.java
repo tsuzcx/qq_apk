@@ -6,17 +6,17 @@ import d.d.f.c;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/coroutines/CoroutineName;", "Lkotlin/coroutines/AbstractCoroutineContextElement;", "name", "", "(Ljava/lang/String;)V", "getName", "()Ljava/lang/String;", "component1", "copy", "equals", "", "other", "", "hashCode", "", "toString", "Key", "kotlinx-coroutines-core"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/coroutines/CoroutineName;", "Lkotlin/coroutines/AbstractCoroutineContextElement;", "name", "", "(Ljava/lang/String;)V", "getName", "()Ljava/lang/String;", "component1", "copy", "equals", "", "other", "", "hashCode", "", "toString", "Key", "kotlinx-coroutines-core"})
 public final class ag
   extends a
 {
-  public static final a NHW;
+  public static final a Ofc;
   final String name;
   
   static
   {
     AppMethodBeat.i(118179);
-    NHW = new a((byte)0);
+    Ofc = new a((byte)0);
     AppMethodBeat.o(118179);
   }
   
@@ -62,7 +62,7 @@ public final class ag
     return str;
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/coroutines/CoroutineName$Key;", "Lkotlin/coroutines/CoroutineContext$Key;", "Lkotlinx/coroutines/CoroutineName;", "()V", "kotlinx-coroutines-core"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/coroutines/CoroutineName$Key;", "Lkotlin/coroutines/CoroutineContext$Key;", "Lkotlinx/coroutines/CoroutineName;", "()V", "kotlinx-coroutines-core"})
   public static final class a
     implements f.c<ag>
   {}

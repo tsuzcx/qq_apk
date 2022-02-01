@@ -3,13 +3,13 @@ package com.tencent.mm.dynamicbackground.model;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(gfx={1, 1, 11}, gfy={""}, gfz={"Lcom/tencent/mm/dynamicbackground/model/DynamicBgCrashListener$Companion;", "", "()V", "CHECK_DRAW_COUNT", "", "dynamicbg_release"})
+@l(gjZ={1, 1, 11}, gka={""}, gkb={"Lcom/tencent/mm/dynamicbackground/model/DynamicBgCrashListener$Companion;", "", "()V", "CHECK_DRAW_COUNT", "", "dynamicbg_release"})
 public final class b$a
 {
   static
   {
     AppMethodBeat.i(103078);
-    gfx = new a();
+    ghP = new a();
     AppMethodBeat.o(103078);
   }
 }

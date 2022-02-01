@@ -2,12 +2,12 @@ package com.tencent.mm.plugin.appbrand.jsapi.coverview;
 
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.jsapi.aa.c;
+import com.tencent.mm.plugin.appbrand.jsapi.aa.f;
 import com.tencent.mm.plugin.appbrand.jsapi.base.d;
 import com.tencent.mm.plugin.appbrand.jsapi.e;
-import com.tencent.mm.plugin.appbrand.jsapi.z.c;
-import com.tencent.mm.plugin.appbrand.jsapi.z.f;
 import com.tencent.mm.plugin.appbrand.widget.b.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import org.json.JSONObject;
 
 public final class m
@@ -27,17 +27,17 @@ public final class m
   public final boolean c(e parame, int paramInt, View paramView, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(137543);
-    ad.d("MicroMsg.JsApiUpdateImageView", "onUpdateView(viewId : %s, %s)", new Object[] { Integer.valueOf(paramInt), paramJSONObject });
+    ae.d("MicroMsg.JsApiUpdateImageView", "onUpdateView(viewId : %s, %s)", new Object[] { Integer.valueOf(paramInt), paramJSONObject });
     if (!(paramView instanceof CoverViewContainer))
     {
-      ad.w("MicroMsg.JsApiUpdateImageView", "the view(%s) is not a instance of CoverViewContainer", new Object[] { Integer.valueOf(paramInt) });
+      ae.w("MicroMsg.JsApiUpdateImageView", "the view(%s) is not a instance of CoverViewContainer", new Object[] { Integer.valueOf(paramInt) });
       AppMethodBeat.o(137543);
       return false;
     }
     a locala = (a)((CoverViewContainer)paramView).ax(a.class);
     if (locala == null)
     {
-      ad.w("MicroMsg.JsApiUpdateImageView", "the target view(%s) is null", new Object[] { Integer.valueOf(paramInt) });
+      ae.w("MicroMsg.JsApiUpdateImageView", "the target view(%s) is null", new Object[] { Integer.valueOf(paramInt) });
       AppMethodBeat.o(137543);
       return false;
     }
@@ -50,7 +50,7 @@ public final class m
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.coverview.m
  * JD-Core Version:    0.7.0.1
  */

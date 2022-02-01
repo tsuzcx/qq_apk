@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.webview.ui.tools.jsapi;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aw.d;
-import com.tencent.mm.aw.q;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.av.d;
+import com.tencent.mm.av.q;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public final class i
 {
-  public static void aJq(String paramString)
+  public static void aKJ(String paramString)
   {
     AppMethodBeat.i(82047);
-    if ((!bt.isNullOrNil(paramString)) && (paramString.startsWith("http"))) {
-      q.aIE().a(paramString, null);
+    if ((!bu.isNullOrNil(paramString)) && (paramString.startsWith("http"))) {
+      q.aIW().a(paramString, null);
     }
     AppMethodBeat.o(82047);
   }

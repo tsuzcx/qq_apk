@@ -13,19 +13,19 @@ final class FacebookLoginUI$10
   public final void run()
   {
     AppMethodBeat.i(127993);
-    Object localObject2 = com.tencent.mm.plugin.account.a.a.iRG.bC(this.jjZ);
+    Object localObject2 = com.tencent.mm.plugin.account.a.a.iUz.bE(this.jmS);
     ((Intent)localObject2).addFlags(67108864);
-    Object localObject1 = this.jjZ;
+    Object localObject1 = this.jmS;
     localObject2 = new com.tencent.mm.hellhoundlib.b.a().bc(localObject2);
-    com.tencent.mm.hellhoundlib.a.a.a(localObject1, ((com.tencent.mm.hellhoundlib.b.a)localObject2).ahp(), "com/tencent/mm/plugin/account/ui/FacebookLoginUI$8", "run", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    ((FacebookLoginUI)localObject1).startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject2).mq(0));
+    com.tencent.mm.hellhoundlib.a.a.a(localObject1, ((com.tencent.mm.hellhoundlib.b.a)localObject2).ahE(), "com/tencent/mm/plugin/account/ui/FacebookLoginUI$8", "run", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    ((FacebookLoginUI)localObject1).startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject2).mt(0));
     com.tencent.mm.hellhoundlib.a.a.a(localObject1, "com/tencent/mm/plugin/account/ui/FacebookLoginUI$8", "run", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     localObject1 = new StringBuilder();
-    g.ajA();
-    localObject1 = ((StringBuilder)localObject1).append(com.tencent.mm.kernel.a.aiO()).append(",").append(this.jjZ.getClass().getName()).append(",L14,");
-    g.ajA();
-    com.tencent.mm.plugin.b.a.vk(com.tencent.mm.kernel.a.wS("L14") + ",4");
-    this.jjZ.finish();
+    g.ajP();
+    localObject1 = ((StringBuilder)localObject1).append(com.tencent.mm.kernel.a.ajd()).append(",").append(this.jmS.getClass().getName()).append(",L14,");
+    g.ajP();
+    com.tencent.mm.plugin.b.a.vG(com.tencent.mm.kernel.a.xB("L14") + ",4");
+    this.jmS.finish();
     AppMethodBeat.o(127993);
   }
 }

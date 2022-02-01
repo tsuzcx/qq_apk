@@ -1,13 +1,12 @@
 package com.tencent.mm.g.a;
 
-import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class uk
   extends b
 {
-  public a dII;
+  public a dJR;
   
   public uk()
   {
@@ -16,18 +15,17 @@ public final class uk
   
   private uk(byte paramByte)
   {
-    AppMethodBeat.i(125636);
-    this.dII = new a();
-    this.IbR = false;
+    AppMethodBeat.i(125633);
+    this.dJR = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(125636);
+    AppMethodBeat.o(125633);
   }
   
   public static final class a
   {
-    public Context context;
-    public String drH;
-    public int dsi;
+    public String dAg;
+    public String dJS;
   }
 }
 

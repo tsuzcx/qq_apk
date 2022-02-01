@@ -10,29 +10,29 @@ import android.view.View;
 import android.view.View.OnDragListener;
 import android.widget.ListView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.u;
+import com.tencent.mm.model.v;
 import com.tencent.mm.pluginsdk.ui.chat.ChatFooter;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.ui.MMFragment;
 import com.tencent.mm.ui.chatting.BaseChattingUIFragment;
-import com.tencent.mm.ui.chatting.d.b.ai;
 import com.tencent.mm.ui.chatting.d.b.aj;
-import com.tencent.mm.ui.chatting.d.b.am;
-import com.tencent.mm.ui.chatting.d.b.ar;
+import com.tencent.mm.ui.chatting.d.b.ak;
+import com.tencent.mm.ui.chatting.d.b.an;
+import com.tencent.mm.ui.chatting.d.b.as;
 import com.tencent.mm.ui.chatting.d.b.o;
 import com.tencent.mm.ui.chatting.d.b.s;
 
-@com.tencent.mm.ui.chatting.d.a.a(fFo=o.class)
+@com.tencent.mm.ui.chatting.d.a.a(fJv=o.class)
 public class r
   extends a
   implements o
 {
   @TargetApi(11)
-  public final void edB()
+  public final void ehi()
   {
     AppMethodBeat.i(35279);
-    boolean bool1 = ((ai)this.cWM.bh(ai.class)).fEM();
-    boolean bool2 = ((ai)this.cWM.bh(ai.class)).fEN();
+    boolean bool1 = ((aj)this.cXJ.bh(aj.class)).fIP();
+    boolean bool2 = ((aj)this.cXJ.bh(aj.class)).fIQ();
     if ((bool1) || (bool2))
     {
       AppMethodBeat.o(35279);
@@ -40,7 +40,7 @@ public class r
     }
     if (Build.VERSION.SDK_INT < 11)
     {
-      ad.d("MicroMsg.ChattingUI.DragDropComponent", "sdk not support dragdrop event");
+      ae.d("MicroMsg.ChattingUI.DragDropComponent", "sdk not support dragdrop event");
       AppMethodBeat.o(35279);
       return;
     }
@@ -57,12 +57,12 @@ public class r
             Object localObject = new com.tencent.mm.hellhoundlib.b.b();
             ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramAnonymous2View);
             ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramAnonymous2DragEvent);
-            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/chatting/component/DragDropComponent$1$1", "android/view/View$OnDragListener", "onDrag", "(Landroid/view/View;Landroid/view/DragEvent;)Z", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahq());
+            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/chatting/component/DragDropComponent$1$1", "android/view/View$OnDragListener", "onDrag", "(Landroid/view/View;Landroid/view/DragEvent;)Z", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahF());
             boolean bool = false;
             switch (paramAnonymous2DragEvent.getAction())
             {
             default: 
-              ad.e("MicroMsg.ChattingUI.DragDropComponent", "Unknown action type received by OnDragListener.");
+              ae.e("MicroMsg.ChattingUI.DragDropComponent", "Unknown action type received by OnDragListener.");
             }
             for (;;)
             {
@@ -70,18 +70,18 @@ public class r
               AppMethodBeat.o(35276);
               return bool;
               bool = true;
-              ad.i("MicroMsg.ChattingUI.DragDropComponent", "ACTION_DRAG_STARTED");
+              ae.i("MicroMsg.ChattingUI.DragDropComponent", "ACTION_DRAG_STARTED");
               continue;
               bool = true;
-              ad.i("MicroMsg.ChattingUI.DragDropComponent", "ACTION_DRAG_ENTERED");
+              ae.i("MicroMsg.ChattingUI.DragDropComponent", "ACTION_DRAG_ENTERED");
               continue;
               bool = true;
-              ad.i("MicroMsg.ChattingUI.DragDropComponent", "ACTION_DRAG_LOCATION");
+              ae.i("MicroMsg.ChattingUI.DragDropComponent", "ACTION_DRAG_LOCATION");
               continue;
               bool = true;
-              ad.i("MicroMsg.ChattingUI.DragDropComponent", "ACTION_DRAG_ENDED");
+              ae.i("MicroMsg.ChattingUI.DragDropComponent", "ACTION_DRAG_ENDED");
               continue;
-              ad.i("MicroMsg.ChattingUI.DragDropComponent", "ACTION_DROP");
+              ae.i("MicroMsg.ChattingUI.DragDropComponent", "ACTION_DROP");
               paramAnonymous2View = paramAnonymous2DragEvent.getClipData();
               if (paramAnonymous2View != null)
               {
@@ -91,7 +91,7 @@ public class r
                 {
                   paramAnonymous2DragEvent = paramAnonymous2View.getItemAt(i);
                   if (paramAnonymous2DragEvent == null) {
-                    ad.e("MicroMsg.ChattingUI.DragDropComponent", "item == null");
+                    ae.e("MicroMsg.ChattingUI.DragDropComponent", "item == null");
                   }
                   for (;;)
                   {
@@ -99,44 +99,44 @@ public class r
                     break;
                     if (paramAnonymous2DragEvent.getIntent() != null)
                     {
-                      localObject = r.this.cWM.JOR;
+                      localObject = r.this.cXJ.Kkd;
                       paramAnonymous2DragEvent = paramAnonymous2DragEvent.getIntent();
                       paramAnonymous2DragEvent = new com.tencent.mm.hellhoundlib.b.a().bc(paramAnonymous2DragEvent);
-                      com.tencent.mm.hellhoundlib.a.a.a(localObject, paramAnonymous2DragEvent.ahp(), "com/tencent/mm/ui/chatting/component/DragDropComponent$1$1", "onDrag", "(Landroid/view/View;Landroid/view/DragEvent;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-                      ((MMFragment)localObject).startActivity((Intent)paramAnonymous2DragEvent.mq(0));
+                      com.tencent.mm.hellhoundlib.a.a.a(localObject, paramAnonymous2DragEvent.ahE(), "com/tencent/mm/ui/chatting/component/DragDropComponent$1$1", "onDrag", "(Landroid/view/View;Landroid/view/DragEvent;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+                      ((MMFragment)localObject).startActivity((Intent)paramAnonymous2DragEvent.mt(0));
                       com.tencent.mm.hellhoundlib.a.a.a(localObject, "com/tencent/mm/ui/chatting/component/DragDropComponent$1$1", "onDrag", "(Landroid/view/View;Landroid/view/DragEvent;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
                     }
                     else if (paramAnonymous2DragEvent.getUri() != null)
                     {
-                      localObject = new com.tencent.mm.pluginsdk.ui.tools.r(r.this.cWM.JOR.getContext(), paramAnonymous2DragEvent.getUri());
+                      localObject = new com.tencent.mm.pluginsdk.ui.tools.r(r.this.cXJ.Kkd.getContext(), paramAnonymous2DragEvent.getUri());
                       if ((((com.tencent.mm.pluginsdk.ui.tools.r)localObject).fileType != 0) && (((com.tencent.mm.pluginsdk.ui.tools.r)localObject).filePath != null)) {}
                       switch (((com.tencent.mm.pluginsdk.ui.tools.r)localObject).fileType)
                       {
                       default: 
-                        ((com.tencent.mm.ui.chatting.d.b.b)r.this.cWM.bh(com.tencent.mm.ui.chatting.d.b.b.class)).a((com.tencent.mm.pluginsdk.ui.tools.r)localObject);
+                        ((com.tencent.mm.ui.chatting.d.b.b)r.this.cXJ.bh(com.tencent.mm.ui.chatting.d.b.b.class)).a((com.tencent.mm.pluginsdk.ui.tools.r)localObject);
                         break;
                       case 3: 
                         paramAnonymous2DragEvent = ((com.tencent.mm.pluginsdk.ui.tools.r)localObject).filePath;
-                        bool = u.f(paramAnonymous2DragEvent, r.this.cWM.getTalkerUserName(), true);
-                        localObject = (aj)r.this.cWM.bh(aj.class);
+                        bool = v.f(paramAnonymous2DragEvent, r.this.cXJ.getTalkerUserName(), true);
+                        localObject = (ak)r.this.cXJ.bh(ak.class);
                         if (bool) {}
                         for (int j = 1;; j = 0)
                         {
-                          ((aj)localObject).R(j, 0, paramAnonymous2DragEvent);
+                          ((ak)localObject).R(j, 0, paramAnonymous2DragEvent);
                           break;
                         }
                       case 4: 
                         localObject = new Intent();
                         ((Intent)localObject).setData(paramAnonymous2DragEvent.getUri());
-                        ((ar)r.this.cWM.bh(ar.class)).aC((Intent)localObject);
+                        ((as)r.this.cXJ.bh(as.class)).aD((Intent)localObject);
                         continue;
-                        ad.e("MicroMsg.ChattingUI.DragDropComponent", "get file path failed");
+                        ae.e("MicroMsg.ChattingUI.DragDropComponent", "get file path failed");
                         break;
                       }
                     }
                     else if ((paramAnonymous2DragEvent.getText() != null) && (paramAnonymous2DragEvent.getText().length() > 0))
                     {
-                      ((am)r.this.cWM.bh(am.class)).aWi(paramAnonymous2DragEvent.getText().toString());
+                      ((an)r.this.cXJ.bh(an.class)).aXJ(paramAnonymous2DragEvent.getText().toString());
                     }
                   }
                 }
@@ -149,10 +149,10 @@ public class r
             }
           }
         };
-        if (r.this.cWM.getListView() != null) {
-          r.this.cWM.getListView().setOnDragListener(local1);
+        if (r.this.cXJ.getListView() != null) {
+          r.this.cXJ.getListView().setOnDragListener(local1);
         }
-        ChatFooter localChatFooter = ((s)r.this.cWM.bh(s.class)).fDC();
+        ChatFooter localChatFooter = ((s)r.this.cXJ.bh(s.class)).fHF();
         if (localChatFooter != null)
         {
           localChatFooter.setOnDragListener(local1);
@@ -164,40 +164,40 @@ public class r
     AppMethodBeat.o(35279);
   }
   
+  public final void fAt()
+  {
+    AppMethodBeat.i(35280);
+    ehi();
+    AppMethodBeat.o(35280);
+  }
+  
+  public final void fAx()
+  {
+    AppMethodBeat.i(35281);
+    fHD();
+    AppMethodBeat.o(35281);
+  }
+  
   @TargetApi(11)
-  public final void fDA()
+  public final void fHD()
   {
     AppMethodBeat.i(35278);
     if (Build.VERSION.SDK_INT < 11)
     {
-      ad.d("MicroMsg.ChattingUI.DragDropComponent", "sdk not support dragdrop event");
+      ae.d("MicroMsg.ChattingUI.DragDropComponent", "sdk not support dragdrop event");
       AppMethodBeat.o(35278);
       return;
     }
-    if (this.cWM.getListView() != null) {
-      this.cWM.getListView().setOnDragListener(null);
+    if (this.cXJ.getListView() != null) {
+      this.cXJ.getListView().setOnDragListener(null);
     }
-    ChatFooter localChatFooter = ((s)this.cWM.bh(s.class)).fDC();
+    ChatFooter localChatFooter = ((s)this.cXJ.bh(s.class)).fHF();
     if (localChatFooter != null)
     {
       localChatFooter.setOnDragListener(null);
       localChatFooter.setEditTextOnDragListener(null);
     }
     AppMethodBeat.o(35278);
-  }
-  
-  public final void fwt()
-  {
-    AppMethodBeat.i(35280);
-    edB();
-    AppMethodBeat.o(35280);
-  }
-  
-  public final void fwx()
-  {
-    AppMethodBeat.i(35281);
-    fDA();
-    AppMethodBeat.o(35281);
   }
 }
 

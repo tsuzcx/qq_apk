@@ -12,7 +12,7 @@ final class FTSEmojiDetailPageUI$8
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
     AppMethodBeat.i(109106);
-    FTSEmojiDetailPageUI.d(this.pLW);
+    FTSEmojiDetailPageUI.d(this.pSB);
     AppMethodBeat.o(109106);
     return true;
   }

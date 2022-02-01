@@ -9,7 +9,7 @@ import java.util.concurrent.TimeUnit;
 
 public final class a
 {
-  private static long EY(long paramLong)
+  private static long FA(long paramLong)
   {
     AppMethodBeat.i(183192);
     long l = System.nanoTime();
@@ -35,7 +35,7 @@ public final class a
     if (paramLong < 0L) {
       l = 0L;
     }
-    paramLong = EY(paramTimeUnit.toNanos(l));
+    paramLong = FA(paramTimeUnit.toNanos(l));
     AppMethodBeat.o(183191);
     return paramLong;
   }
@@ -45,11 +45,11 @@ public final class a
     AppMethodBeat.i(183190);
     if ((paramString == null) || (paramString.isEmpty()))
     {
-      paramCallable = new k(paramCallable, a(paramLong, TimeUnit.MILLISECONDS), ev(paramCallable));
+      paramCallable = new k(paramCallable, a(paramLong, TimeUnit.MILLISECONDS), ey(paramCallable));
       AppMethodBeat.o(183190);
       return paramCallable;
     }
-    paramCallable = new e(paramCallable, a(paramLong, TimeUnit.MILLISECONDS), paramString, ev(paramCallable));
+    paramCallable = new e(paramCallable, a(paramLong, TimeUnit.MILLISECONDS), paramString, ey(paramCallable));
     AppMethodBeat.o(183190);
     return paramCallable;
   }
@@ -59,21 +59,21 @@ public final class a
     AppMethodBeat.i(183189);
     if ((paramString == null) || (paramString.isEmpty()))
     {
-      paramRunnable = new k(paramRunnable, a(paramLong, TimeUnit.MILLISECONDS), ev(paramRunnable));
+      paramRunnable = new k(paramRunnable, a(paramLong, TimeUnit.MILLISECONDS), ey(paramRunnable));
       AppMethodBeat.o(183189);
       return paramRunnable;
     }
-    paramRunnable = new e(paramRunnable, a(paramLong, TimeUnit.MILLISECONDS), paramString, ev(paramRunnable));
+    paramRunnable = new e(paramRunnable, a(paramLong, TimeUnit.MILLISECONDS), paramString, ey(paramRunnable));
     AppMethodBeat.o(183189);
     return paramRunnable;
   }
   
-  public static boolean ev(Object paramObject)
+  public static boolean ey(Object paramObject)
   {
     AppMethodBeat.i(183193);
     if ((paramObject instanceof j))
     {
-      boolean bool = ((j)paramObject).ahh();
+      boolean bool = ((j)paramObject).ahw();
       AppMethodBeat.o(183193);
       return bool;
     }

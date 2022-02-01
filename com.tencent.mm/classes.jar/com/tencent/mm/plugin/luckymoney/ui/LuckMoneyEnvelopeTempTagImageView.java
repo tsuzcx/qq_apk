@@ -8,24 +8,24 @@ import android.graphics.Path;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cc.a;
+import com.tencent.mm.cb.a;
 import com.tencent.mm.plugin.wxpay.a.a;
 
 public class LuckMoneyEnvelopeTempTagImageView
   extends ImageView
 {
   private String mText;
-  private Paint vuq;
+  private Paint vGu;
   private Path xN;
   
   public LuckMoneyEnvelopeTempTagImageView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(65417);
-    this.vuq = new Paint();
+    this.vGu = new Paint();
     this.xN = new Path();
     this.mText = "";
-    this.vuq.setAntiAlias(true);
+    this.vGu.setAntiAlias(true);
     c(paramContext, paramAttributeSet, -1);
     AppMethodBeat.o(65417);
   }
@@ -34,10 +34,10 @@ public class LuckMoneyEnvelopeTempTagImageView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(65418);
-    this.vuq = new Paint();
+    this.vGu = new Paint();
     this.xN = new Path();
     this.mText = "";
-    this.vuq.setAntiAlias(true);
+    this.vGu.setAntiAlias(true);
     c(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.o(65418);
   }
@@ -48,9 +48,9 @@ public class LuckMoneyEnvelopeTempTagImageView
     paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, a.a.LuckMoneyEnvelopeTempTagImageView, paramInt, 0);
     this.mText = paramContext.getString(0);
     paramInt = paramContext.getColor(1, 0);
-    this.vuq.setColor(paramInt);
+    this.vGu.setColor(paramInt);
     paramInt = paramContext.getDimensionPixelSize(2, 0);
-    this.vuq.setTextSize(paramInt);
+    this.vGu.setTextSize(paramInt);
     paramContext.recycle();
     AppMethodBeat.o(65419);
   }
@@ -62,8 +62,8 @@ public class LuckMoneyEnvelopeTempTagImageView
     this.xN.moveTo(0.0F, 0.0F);
     int i = a.fromDPToPix(getContext(), 98);
     this.xN.lineTo(i, i);
-    i = (int)((a.fromDPToPix(getContext(), 139) - this.vuq.measureText(this.mText)) / 2.0F);
-    paramCanvas.drawTextOnPath(this.mText, this.xN, i, -30.0F, this.vuq);
+    i = (int)((a.fromDPToPix(getContext(), 139) - this.vGu.measureText(this.mText)) / 2.0F);
+    paramCanvas.drawTextOnPath(this.mText, this.xN, i, -30.0F, this.vGu);
     AppMethodBeat.o(65420);
   }
 }

@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class mu
   extends b
 {
-  public a dAK;
+  public a dBN;
   
   public mu()
   {
@@ -15,19 +15,16 @@ public final class mu
   
   private mu(byte paramByte)
   {
-    AppMethodBeat.i(116034);
-    this.dAK = new a();
-    this.IbR = false;
+    AppMethodBeat.i(116033);
+    this.dBN = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(116034);
+    AppMethodBeat.o(116033);
   }
   
   public static final class a
   {
-    public boolean dAL;
-    public boolean dAM;
-    public int djY;
-    public String talker;
+    public int dBO;
   }
 }
 

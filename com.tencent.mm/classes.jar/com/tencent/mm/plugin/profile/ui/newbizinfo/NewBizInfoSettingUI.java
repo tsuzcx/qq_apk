@@ -11,15 +11,17 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.am.ag;
-import com.tencent.mm.am.q;
+import com.tencent.mm.al.ag;
+import com.tencent.mm.al.q;
 import com.tencent.mm.api.c.b;
-import com.tencent.mm.g.a.dr;
-import com.tencent.mm.g.a.dr.b;
+import com.tencent.mm.g.a.ds;
+import com.tencent.mm.g.a.ds.b;
 import com.tencent.mm.g.c.aw;
+import com.tencent.mm.g.c.ba;
 import com.tencent.mm.g.c.ei;
-import com.tencent.mm.model.bj.a;
-import com.tencent.mm.model.w;
+import com.tencent.mm.model.bc;
+import com.tencent.mm.model.bl.a;
+import com.tencent.mm.model.x;
 import com.tencent.mm.msgsubscription.SubscribeMsgRequestResult;
 import com.tencent.mm.msgsubscription.storage.IBrandSubscribeMsgService.Companion.SubscribeMsgListWrapper;
 import com.tencent.mm.msgsubscription.storage.e;
@@ -27,16 +29,16 @@ import com.tencent.mm.msgsubscription.storage.e.b;
 import com.tencent.mm.plugin.messenger.foundation.a.a.i;
 import com.tencent.mm.plugin.messenger.foundation.a.a.j;
 import com.tencent.mm.plugin.messenger.foundation.a.a.k.a;
-import com.tencent.mm.protocal.protobuf.bzi;
-import com.tencent.mm.protocal.protobuf.dbo;
-import com.tencent.mm.protocal.protobuf.dcu;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.am;
-import com.tencent.mm.storage.bp;
+import com.tencent.mm.protocal.protobuf.cac;
+import com.tencent.mm.protocal.protobuf.dci;
+import com.tencent.mm.protocal.protobuf.ddo;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.an;
 import com.tencent.mm.storage.bq;
-import com.tencent.mm.storage.bu;
+import com.tencent.mm.storage.br;
+import com.tencent.mm.storage.bv;
 import com.tencent.mm.storage.s;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.base.p;
@@ -47,34 +49,34 @@ import com.tencent.mm.ui.base.preference.Preference;
 public class NewBizInfoSettingUI
   extends MMPreference
 {
-  private c.b cQr;
-  private am contact;
-  private boolean fMP;
-  private dbo hQt;
-  private SubscribeMsgRequestResult hSA;
-  private e iBi;
+  private c.b cRb;
+  private an contact;
+  private boolean fOX;
+  private dci hTl;
+  private SubscribeMsgRequestResult hVs;
+  private e iEb;
   private boolean isDeleteCancel;
-  private int jfq;
+  private int jij;
   private com.tencent.mm.ui.base.preference.f screen;
   private SharedPreferences sp;
   private p tipDialog;
-  private com.tencent.mm.api.c wPN;
-  com.tencent.mm.ui.widget.a.d wRA;
-  private long wWc;
-  private long wWd;
+  private com.tencent.mm.api.c xfE;
+  com.tencent.mm.ui.widget.a.d xhr;
+  private long xlT;
+  private long xlU;
   
   public NewBizInfoSettingUI()
   {
     AppMethodBeat.i(27567);
     this.sp = null;
-    this.iBi = new e(com.tencent.mm.am.b.b.hSI);
-    this.wRA = null;
+    this.iEb = new e(com.tencent.mm.al.b.b.hVA);
+    this.xhr = null;
     this.tipDialog = null;
     this.isDeleteCancel = false;
     AppMethodBeat.o(27567);
   }
   
-  private static boolean MS(int paramInt)
+  private static boolean Ny(int paramInt)
   {
     return (paramInt == 81) || (paramInt == 92) || (paramInt == 93) || (paramInt == 94);
   }
@@ -82,22 +84,22 @@ public class NewBizInfoSettingUI
   private void a(com.tencent.mm.api.c paramc, boolean paramBoolean)
   {
     AppMethodBeat.i(27572);
-    CheckBoxPreference localCheckBoxPreference1 = (CheckBoxPreference)this.screen.aVD("contact_info_subscribe_bizinfo");
-    CheckBoxPreference localCheckBoxPreference2 = (CheckBoxPreference)this.screen.aVD("contact_info_locate");
-    bzi localbzi = new bzi();
-    localbzi.jdq = paramc.field_brandFlag;
-    localbzi.nDo = this.contact.field_username;
-    if (MS(this.jfq))
+    CheckBoxPreference localCheckBoxPreference1 = (CheckBoxPreference)this.screen.aXe("contact_info_subscribe_bizinfo");
+    CheckBoxPreference localCheckBoxPreference2 = (CheckBoxPreference)this.screen.aXe("contact_info_locate");
+    cac localcac = new cac();
+    localcac.jgj = paramc.field_brandFlag;
+    localcac.nIJ = this.contact.field_username;
+    if (Ny(this.jij))
     {
-      com.tencent.mm.model.ba.aBQ();
-      com.tencent.mm.model.c.azo().c(new k.a(58, localbzi));
+      bc.aCg();
+      com.tencent.mm.model.c.azE().d(new k.a(58, localcac));
     }
     for (;;)
     {
-      ag.aFZ().update(paramc, new String[0]);
-      localCheckBoxPreference1.oB = paramc.Kf();
+      ag.aGp().update(paramc, new String[0]);
+      localCheckBoxPreference1.setChecked(paramc.Kn());
       if (localCheckBoxPreference2 != null) {
-        localCheckBoxPreference2.oB = paramc.Kg();
+        localCheckBoxPreference2.setChecked(paramc.Ko());
       }
       if (paramBoolean)
       {
@@ -106,34 +108,71 @@ public class NewBizInfoSettingUI
       }
       AppMethodBeat.o(27572);
       return;
-      com.tencent.mm.model.ba.aBQ();
-      com.tencent.mm.model.c.azo().c(new k.a(47, localbzi));
+      bc.aCg();
+      com.tencent.mm.model.c.azE().d(new k.a(47, localcac));
     }
   }
   
-  private void dAG()
+  private void dDX()
   {
     AppMethodBeat.i(27571);
-    if ((this.contact != null) && (com.tencent.mm.o.b.lM(this.contact.field_type)) && (!w.zQ(this.contact.field_username)) && (!w.Ax(this.contact.field_username))) {
-      if ((this.wPN != null) && (this.wPN.Kk())) {
-        this.screen.cP("contact_is_mute", false);
+    if ((this.contact != null) && (com.tencent.mm.contact.c.lO(this.contact.field_type)) && (!x.AA(this.contact.field_username)) && (!x.Bh(this.contact.field_username))) {
+      if ((this.xfE != null) && (this.xfE.Ks())) {
+        this.screen.cT("contact_is_mute", false);
       }
     }
     for (;;)
     {
-      this.screen.cP("contact_info_verifyuser_weibo", true);
-      this.screen.cP("contact_info_subscribe_bizinfo", true);
-      this.screen.cP("contact_info_template_recv", true);
-      this.screen.cP("contact_info_locate", true);
+      this.screen.cT("contact_info_verifyuser_weibo", true);
+      this.screen.cT("contact_info_subscribe_bizinfo", true);
+      this.screen.cT("contact_info_template_recv", true);
+      this.screen.cT("contact_info_locate", true);
       AppMethodBeat.o(27571);
       return;
-      this.screen.cP("contact_is_mute", true);
+      this.screen.cT("contact_is_mute", true);
       continue;
-      this.screen.cP("contact_is_mute", true);
+      this.screen.cT("contact_is_mute", true);
     }
   }
   
-  private void pq(boolean paramBoolean)
+  private void pE(boolean paramBoolean)
+  {
+    AppMethodBeat.i(27576);
+    if (this.contact == null)
+    {
+      AppMethodBeat.o(27576);
+      return;
+    }
+    ddo localddo;
+    String str;
+    if ((this.xfE != null) && (this.xfE.Ks()))
+    {
+      localddo = new ddo();
+      if (!this.contact.Pd()) {
+        break label111;
+      }
+      i = 1;
+      localddo.HLe = i;
+      localddo.Scene = getIntent().getIntExtra("key_start_biz_profile_setting_from_scene", 0);
+      ag.aGA();
+      str = this.contact.field_username;
+      if (!paramBoolean) {
+        break label116;
+      }
+    }
+    label111:
+    label116:
+    for (int i = 15;; i = 16)
+    {
+      com.tencent.mm.al.l.a(str, localddo, i);
+      AppMethodBeat.o(27576);
+      return;
+      i = 0;
+      break;
+    }
+  }
+  
+  private void py(boolean paramBoolean)
   {
     AppMethodBeat.i(27573);
     CheckBoxPreference localCheckBoxPreference;
@@ -142,8 +181,8 @@ public class NewBizInfoSettingUI
       if (this.sp == null) {
         this.sp = getSharedPreferences(getPackageName() + "_preferences", 0);
       }
-      localCheckBoxPreference = (CheckBoxPreference)this.screen.aVD("contact_is_mute");
-      if ((!paramBoolean) || (this.wPN == null) || (!this.wPN.Kk())) {
+      localCheckBoxPreference = (CheckBoxPreference)this.screen.aXe("contact_is_mute");
+      if ((!paramBoolean) || (this.xfE == null) || (!this.xfE.Ks())) {
         break label147;
       }
       setTitleMuteIconVisibility(0);
@@ -155,7 +194,7 @@ public class NewBizInfoSettingUI
     {
       if (localCheckBoxPreference != null)
       {
-        localCheckBoxPreference.oB = paramBoolean;
+        localCheckBoxPreference.setChecked(paramBoolean);
         this.screen.notifyDataSetChanged();
       }
       AppMethodBeat.o(27573);
@@ -168,43 +207,6 @@ public class NewBizInfoSettingUI
     }
   }
   
-  private void pw(boolean paramBoolean)
-  {
-    AppMethodBeat.i(27576);
-    if (this.contact == null)
-    {
-      AppMethodBeat.o(27576);
-      return;
-    }
-    dcu localdcu;
-    String str;
-    if ((this.wPN != null) && (this.wPN.Kk()))
-    {
-      localdcu = new dcu();
-      if (!this.contact.Pf()) {
-        break label111;
-      }
-      i = 1;
-      localdcu.HrC = i;
-      localdcu.Scene = getIntent().getIntExtra("key_start_biz_profile_setting_from_scene", 0);
-      ag.aGk();
-      str = this.contact.field_username;
-      if (!paramBoolean) {
-        break label116;
-      }
-    }
-    label111:
-    label116:
-    for (int i = 15;; i = 16)
-    {
-      com.tencent.mm.am.l.a(str, localdcu, i);
-      AppMethodBeat.o(27576);
-      return;
-      i = 0;
-      break;
-    }
-  }
-  
   public int getResourceId()
   {
     return 2131951698;
@@ -213,150 +215,150 @@ public class NewBizInfoSettingUI
   public void initView()
   {
     AppMethodBeat.i(27570);
-    if (this.wPN != null) {
-      this.cQr = this.wPN.bX(false);
+    if (this.xfE != null) {
+      this.cRb = this.xfE.bX(false);
     }
     boolean bool;
     label144:
     Object localObject;
-    if (this.wPN != null) {
-      if (this.wPN.Kk())
+    if (this.xfE != null) {
+      if (this.xfE.Ks())
       {
-        this.screen.cP("contact_is_mute", false);
-        this.fMP = this.contact.Pf();
-        pq(this.fMP);
-        ad.d("MicroMsg.NewBizInfoSettingUI", "KIsardDevice(%b)", new Object[] { Boolean.valueOf(getIntent().getBooleanExtra("KIsHardDevice", false)) });
+        this.screen.cT("contact_is_mute", false);
+        this.fOX = this.contact.Pd();
+        py(this.fOX);
+        ae.d("MicroMsg.NewBizInfoSettingUI", "KIsardDevice(%b)", new Object[] { Boolean.valueOf(getIntent().getBooleanExtra("KIsHardDevice", false)) });
         if ((getIntent() == null) || (!getIntent().getBooleanExtra("KIsHardDevice", false))) {
           break label689;
         }
-        ad.d("MicroMsg.NewBizInfoSettingUI", "Hard device biz...");
+        ae.d("MicroMsg.NewBizInfoSettingUI", "Hard device biz...");
         if (getIntent() != null) {
           break label385;
         }
         bool = false;
-        ad.d("MicroMsg.NewBizInfoSettingUI", "contact.isContact()(%b), isHardDeviceBound(%b)", new Object[] { Boolean.valueOf(com.tencent.mm.o.b.lM(this.contact.field_type)), Boolean.valueOf(bool) });
-        if ((!com.tencent.mm.o.b.lM(this.contact.field_type)) || (!bool)) {
+        ae.d("MicroMsg.NewBizInfoSettingUI", "contact.isContact()(%b), isHardDeviceBound(%b)", new Object[] { Boolean.valueOf(com.tencent.mm.contact.c.lO(this.contact.field_type)), Boolean.valueOf(bool) });
+        if ((!com.tencent.mm.contact.c.lO(this.contact.field_type)) || (!bool)) {
           break label585;
         }
-        if (this.wPN == null) {
+        if (this.xfE == null) {
           break label524;
         }
-        ((CheckBoxPreference)this.screen.aVD("contact_info_subscribe_bizinfo")).oB = this.wPN.Kf();
-        localObject = (CheckBoxPreference)this.screen.aVD("contact_info_locate");
-        if (!this.wPN.bX(false).Kj()) {
+        ((CheckBoxPreference)this.screen.aXe("contact_info_subscribe_bizinfo")).setChecked(this.xfE.Kn());
+        localObject = (CheckBoxPreference)this.screen.aXe("contact_info_locate");
+        if (!this.xfE.bX(false).Kr()) {
           break label455;
         }
-        ((CheckBoxPreference)localObject).oB = this.wPN.Kg();
+        ((CheckBoxPreference)localObject).setChecked(this.xfE.Ko());
       }
     }
     for (;;)
     {
-      if (this.wPN.Kf())
+      if (this.xfE.Kn())
       {
-        if ((this.cQr == null) && (this.wPN != null)) {
-          this.cQr = this.wPN.bX(false);
+        if ((this.cRb == null) && (this.xfE != null)) {
+          this.cRb = this.xfE.bX(false);
         }
-        if ((this.cQr != null) && (this.cQr.Kz()) && (com.tencent.mm.bs.d.aIu("brandservice")))
+        if ((this.cRb != null) && (this.cRb.KH()) && (com.tencent.mm.br.d.aJN("brandservice")))
         {
-          this.screen.cP("contact_info_template_recv", false);
+          this.screen.cT("contact_info_template_recv", false);
           AppMethodBeat.o(27570);
           return;
-          this.screen.cP("contact_is_mute", true);
+          this.screen.cT("contact_is_mute", true);
           break;
-          this.screen.cP("contact_is_mute", true);
+          this.screen.cT("contact_is_mute", true);
           break;
           label385:
           localObject = getIntent().getStringExtra("device_id");
           String str = getIntent().getStringExtra("device_type");
-          dr localdr = new dr();
-          localdr.doy.cUi = ((String)localObject);
-          localdr.doy.dow = str;
-          com.tencent.mm.sdk.b.a.IbL.l(localdr);
-          bool = localdr.doz.doA;
+          ds localds = new ds();
+          localds.dpD.cVh = ((String)localObject);
+          localds.dpD.dpB = str;
+          com.tencent.mm.sdk.b.a.IvT.l(localds);
+          bool = localds.dpE.dpF;
           break label144;
           label455:
-          this.screen.cP("contact_info_locate", true);
-          ((CheckBoxPreference)localObject).oB = this.wPN.Kg();
+          this.screen.cT("contact_info_locate", true);
+          ((CheckBoxPreference)localObject).setChecked(this.xfE.Ko());
           continue;
         }
-        this.screen.cP("contact_info_template_recv", true);
+        this.screen.cT("contact_info_template_recv", true);
         AppMethodBeat.o(27570);
         return;
       }
     }
-    this.screen.cP("contact_info_template_recv", true);
+    this.screen.cT("contact_info_template_recv", true);
     AppMethodBeat.o(27570);
     return;
     label524:
-    this.screen.cP("contact_info_subscribe_bizinfo", true);
-    this.screen.cP("contact_info_locate", true);
-    this.screen.cP("contact_info_template_recv", true);
-    this.screen.cP("contact_info_subscribe_msg", true);
+    this.screen.cT("contact_info_subscribe_bizinfo", true);
+    this.screen.cT("contact_info_locate", true);
+    this.screen.cT("contact_info_template_recv", true);
+    this.screen.cT("contact_info_subscribe_msg", true);
     AppMethodBeat.o(27570);
     return;
     label585:
-    ad.w("MicroMsg.NewBizInfoSettingUI", "%s is not my hard biz contact", new Object[] { this.contact.field_username });
-    dAG();
-    if (MS(this.jfq))
+    ae.w("MicroMsg.NewBizInfoSettingUI", "%s is not my hard biz contact", new Object[] { this.contact.field_username });
+    dDX();
+    if (Ny(this.jij))
     {
-      if (this.wPN == null)
+      if (this.xfE == null)
       {
-        ad.e("MicroMsg.NewBizInfoSettingUI", "bizinfo is null in temp session");
+        ae.e("MicroMsg.NewBizInfoSettingUI", "bizinfo is null in temp session");
         AppMethodBeat.o(27570);
         return;
       }
-      ((CheckBoxPreference)this.screen.aVD("contact_info_subscribe_bizinfo")).oB = this.wPN.Kf();
-      this.screen.cP("contact_info_subscribe_bizinfo", false);
+      ((CheckBoxPreference)this.screen.aXe("contact_info_subscribe_bizinfo")).setChecked(this.xfE.Kn());
+      this.screen.cT("contact_info_subscribe_bizinfo", false);
     }
     AppMethodBeat.o(27570);
     return;
     label689:
-    if (com.tencent.mm.o.b.lM(this.contact.field_type))
+    if (com.tencent.mm.contact.c.lO(this.contact.field_type))
     {
-      if (this.wPN != null)
+      if (this.xfE != null)
       {
-        ((CheckBoxPreference)this.screen.aVD("contact_info_subscribe_bizinfo")).oB = this.wPN.Kf();
-        if (this.wPN.Kf())
+        ((CheckBoxPreference)this.screen.aXe("contact_info_subscribe_bizinfo")).setChecked(this.xfE.Kn());
+        if (this.xfE.Kn())
         {
-          if ((this.cQr == null) && (this.wPN != null)) {
-            this.cQr = this.wPN.bX(false);
+          if ((this.cRb == null) && (this.xfE != null)) {
+            this.cRb = this.xfE.bX(false);
           }
-          if ((this.cQr != null) && (this.cQr.Kz()) && (com.tencent.mm.bs.d.aIu("brandservice"))) {
-            this.screen.cP("contact_info_template_recv", false);
+          if ((this.cRb != null) && (this.cRb.KH()) && (com.tencent.mm.br.d.aJN("brandservice"))) {
+            this.screen.cT("contact_info_template_recv", false);
           }
         }
         for (;;)
         {
-          localObject = (CheckBoxPreference)this.screen.aVD("contact_info_locate");
-          if (!this.wPN.bX(false).Kj()) {
+          localObject = (CheckBoxPreference)this.screen.aXe("contact_info_locate");
+          if (!this.xfE.bX(false).Kr()) {
             break;
           }
-          ((CheckBoxPreference)localObject).oB = this.wPN.Kg();
+          ((CheckBoxPreference)localObject).setChecked(this.xfE.Ko());
           AppMethodBeat.o(27570);
           return;
-          this.screen.cP("contact_info_template_recv", true);
+          this.screen.cT("contact_info_template_recv", true);
           continue;
-          this.screen.cP("contact_info_template_recv", true);
+          this.screen.cT("contact_info_template_recv", true);
         }
-        this.screen.cP("contact_info_locate", true);
-        ((CheckBoxPreference)localObject).oB = this.wPN.Kg();
+        this.screen.cT("contact_info_locate", true);
+        ((CheckBoxPreference)localObject).setChecked(this.xfE.Ko());
         AppMethodBeat.o(27570);
       }
     }
     else
     {
-      ad.w("MicroMsg.NewBizInfoSettingUI", "%s is not my contact", new Object[] { this.contact.field_username });
-      dAG();
-      if (MS(this.jfq))
+      ae.w("MicroMsg.NewBizInfoSettingUI", "%s is not my contact", new Object[] { this.contact.field_username });
+      dDX();
+      if (Ny(this.jij))
       {
-        if (this.wPN == null)
+        if (this.xfE == null)
         {
-          ad.e("MicroMsg.NewBizInfoSettingUI", "bizinfo is null in temp session");
+          ae.e("MicroMsg.NewBizInfoSettingUI", "bizinfo is null in temp session");
           AppMethodBeat.o(27570);
           return;
         }
-        ((CheckBoxPreference)this.screen.aVD("contact_info_subscribe_bizinfo")).oB = this.wPN.Kf();
-        this.screen.cP("contact_info_subscribe_bizinfo", false);
+        ((CheckBoxPreference)this.screen.aXe("contact_info_subscribe_bizinfo")).setChecked(this.xfE.Kn());
+        this.screen.cT("contact_info_subscribe_bizinfo", false);
       }
     }
     AppMethodBeat.o(27570);
@@ -366,18 +368,18 @@ public class NewBizInfoSettingUI
   {
     AppMethodBeat.i(27575);
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    ad.i("MicroMsg.NewBizInfoSettingUI", "alvinluo onActivityResult requestCode: %d, resultCode: %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    ae.i("MicroMsg.NewBizInfoSettingUI", "alvinluo onActivityResult requestCode: %d, resultCode: %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     if ((paramInt1 == 1001) && (paramIntent != null))
     {
       boolean bool = paramIntent.getBooleanExtra("key_need_update", false);
       paramIntent = (IBrandSubscribeMsgService.Companion.SubscribeMsgListWrapper)paramIntent.getParcelableExtra("key_biz_data");
-      if ((bool) && (paramIntent != null) && (this.wPN != null)) {
-        this.iBi.a(this.wPN.field_username, paramIntent.iBL, paramIntent.iBK, false, new e.b()
+      if ((bool) && (paramIntent != null) && (this.xfE != null)) {
+        this.iEb.a(this.xfE.field_username, paramIntent.iEE, paramIntent.iED, false, new e.b()
         {
           public final void a(String paramAnonymousString, SubscribeMsgRequestResult paramAnonymousSubscribeMsgRequestResult)
           {
             AppMethodBeat.i(27561);
-            ad.i("MicroMsg.NewBizInfoSettingUI", "alvinluo updateSubscribeMsgList success");
+            ae.i("MicroMsg.NewBizInfoSettingUI", "alvinluo updateSubscribeMsgList success");
             NewBizInfoSettingUI.a(NewBizInfoSettingUI.this, paramAnonymousSubscribeMsgRequestResult);
             AppMethodBeat.o(27561);
           }
@@ -385,7 +387,7 @@ public class NewBizInfoSettingUI
           public final void i(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString)
           {
             AppMethodBeat.i(27562);
-            ad.e("MicroMsg.NewBizInfoSettingUI", "alvinluo updateSubscribeMsgList onError errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString });
+            ae.e("MicroMsg.NewBizInfoSettingUI", "alvinluo updateSubscribeMsgList onError errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString });
             AppMethodBeat.o(27562);
           }
         });
@@ -400,7 +402,7 @@ public class NewBizInfoSettingUI
     AppMethodBeat.i(27568);
     super.onCreate(paramBundle);
     this.screen = getPreferenceScreen();
-    this.wWd = (System.currentTimeMillis() / 1000L);
+    this.xlU = (System.currentTimeMillis() / 1000L);
     setMMTitle(2131757623);
     setTitleDividerVis(false);
     hideActionbarLine();
@@ -414,21 +416,21 @@ public class NewBizInfoSettingUI
         return true;
       }
     });
-    paramBundle = bt.nullAsNil(getIntent().getStringExtra("Contact_User"));
-    com.tencent.mm.model.ba.aBQ();
-    this.contact = com.tencent.mm.model.c.azp().Bf(paramBundle);
-    this.wPN = com.tencent.mm.am.g.eS(paramBundle);
+    paramBundle = bu.nullAsNil(getIntent().getStringExtra("Contact_User"));
+    bc.aCg();
+    this.contact = com.tencent.mm.model.c.azF().BH(paramBundle);
+    this.xfE = com.tencent.mm.al.g.eX(paramBundle);
     if (this.contact != null) {}
     for (boolean bool1 = true;; bool1 = false)
     {
-      if (this.wPN != null) {
+      if (this.xfE != null) {
         bool2 = true;
       }
-      ad.i("MicroMsg.NewBizInfoSettingUI", "user:%s contact:%b, bizInfo:%b", new Object[] { paramBundle, Boolean.valueOf(bool1), Boolean.valueOf(bool2) });
-      this.jfq = getIntent().getIntExtra("Contact_Scene", 9);
-      this.wWc = getIntent().getLongExtra("key_profile_enter_timestamp", 0L);
+      ae.i("MicroMsg.NewBizInfoSettingUI", "user:%s contact:%b, bizInfo:%b", new Object[] { paramBundle, Boolean.valueOf(bool1), Boolean.valueOf(bool2) });
+      this.jij = getIntent().getIntExtra("Contact_Scene", 9);
+      this.xlT = getIntent().getLongExtra("key_profile_enter_timestamp", 0L);
       initView();
-      pw(true);
+      pE(true);
       AppMethodBeat.o(27568);
       return;
     }
@@ -438,7 +440,7 @@ public class NewBizInfoSettingUI
   {
     AppMethodBeat.i(27569);
     super.onDestroy();
-    pw(false);
+    pE(false);
     AppMethodBeat.o(27569);
   }
   
@@ -446,35 +448,35 @@ public class NewBizInfoSettingUI
   {
     AppMethodBeat.i(27574);
     paramPreference = paramPreference.mKey;
-    ad.i("MicroMsg.NewBizInfoSettingUI", paramPreference + " item has been clicked!");
+    ae.i("MicroMsg.NewBizInfoSettingUI", paramPreference + " item has been clicked!");
     Object localObject;
     label127:
     boolean bool;
     if ("contact_info_locate".endsWith(paramPreference))
     {
-      localObject = this.wPN;
+      localObject = this.xfE;
       if (localObject == null)
       {
         AppMethodBeat.o(27574);
         return true;
       }
-      if (((com.tencent.mm.api.c)localObject).Kg())
+      if (((com.tencent.mm.api.c)localObject).Ko())
       {
         ((com.tencent.mm.api.c)localObject).field_brandFlag &= 0xFFFFFFFB;
         a((com.tencent.mm.api.c)localObject, false);
-        if (!((CheckBoxPreference)paramf.aVD("contact_info_locate")).isChecked()) {
+        if (!((CheckBoxPreference)paramf.aXe("contact_info_locate")).isChecked()) {
           break label593;
         }
-        com.tencent.mm.plugin.profile.ui.newbizinfo.c.c.K(this.contact.field_username, 905, this.wWc);
+        com.tencent.mm.plugin.profile.ui.newbizinfo.c.c.J(this.contact.field_username, 905, this.xlT);
       }
     }
     else
     {
       if ("contact_info_add_shortcut_btn".equals(paramPreference))
       {
-        ad.d("MicroMsg.NewBizInfoSettingUI", "dealAddShortcut, username = " + this.contact.field_username);
-        com.tencent.mm.plugin.base.model.b.Y(this, this.contact.field_username);
-        aq.o(new Runnable()
+        ae.d("MicroMsg.NewBizInfoSettingUI", "dealAddShortcut, username = " + this.contact.field_username);
+        com.tencent.mm.plugin.base.model.b.aa(this, this.contact.field_username);
+        ar.o(new Runnable()
         {
           public final void run()
           {
@@ -484,28 +486,28 @@ public class NewBizInfoSettingUI
               AppMethodBeat.o(27566);
               return;
             }
-            com.tencent.mm.plugin.base.model.b.X(NewBizInfoSettingUI.this, NewBizInfoSettingUI.a(NewBizInfoSettingUI.this).field_username);
-            com.tencent.mm.plugin.base.model.b.J(NewBizInfoSettingUI.this);
+            com.tencent.mm.plugin.base.model.b.Z(NewBizInfoSettingUI.this, NewBizInfoSettingUI.a(NewBizInfoSettingUI.this).field_username);
+            com.tencent.mm.plugin.base.model.b.K(NewBizInfoSettingUI.this);
             AppMethodBeat.o(27566);
           }
         }, 1000L);
       }
       if ("contact_info_clear_msg".equals(paramPreference))
       {
-        if ((this.wPN != null) && (this.wPN.Kk()))
+        if ((this.xfE != null) && (this.xfE.Ks()))
         {
-          this.hQt = new dbo();
-          this.hQt.Hrr = 0;
-          localObject = ((com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azv().aTz(this.contact.field_username);
+          this.hTl = new dci();
+          this.hTl.HKT = 0;
+          localObject = ((com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azL().aVa(this.contact.field_username);
           if (localObject != null) {
-            this.hQt.Hrp = ((com.tencent.mm.g.c.ba)localObject).field_unReadCount;
+            this.hTl.HKR = ((ba)localObject).field_unReadCount;
           }
-          localObject = ((com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).dlK().apX(this.contact.field_username);
+          localObject = ((com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).doJ().arc(this.contact.field_username);
           if (localObject != null)
           {
-            this.hQt.Hrq = ((bu)localObject).getType();
-            if (this.hQt.Hrp > 0) {
-              this.hQt.Hro = ((int)(System.currentTimeMillis() - ((ei)localObject).field_createTime) / 1000);
+            this.hTl.HKS = ((bv)localObject).getType();
+            if (this.hTl.HKR > 0) {
+              this.hTl.HKQ = ((int)(System.currentTimeMillis() - ((ei)localObject).field_createTime) / 1000);
             }
           }
         }
@@ -515,54 +517,54 @@ public class NewBizInfoSettingUI
           {
             AppMethodBeat.i(27560);
             NewBizInfoSettingUI.c(NewBizInfoSettingUI.this);
-            com.tencent.mm.plugin.profile.ui.newbizinfo.c.c.K(NewBizInfoSettingUI.a(NewBizInfoSettingUI.this).field_username, 910, NewBizInfoSettingUI.b(NewBizInfoSettingUI.this));
+            com.tencent.mm.plugin.profile.ui.newbizinfo.c.c.J(NewBizInfoSettingUI.a(NewBizInfoSettingUI.this).field_username, 910, NewBizInfoSettingUI.b(NewBizInfoSettingUI.this));
             NewBizInfoSettingUI.d(NewBizInfoSettingUI.this);
             AppMethodBeat.o(27560);
           }
         }, null);
-        com.tencent.mm.plugin.profile.ui.newbizinfo.c.c.K(this.contact.field_username, 909, this.wWc);
+        com.tencent.mm.plugin.profile.ui.newbizinfo.c.c.J(this.contact.field_username, 909, this.xlT);
       }
       if ("contact_is_mute".endsWith(paramPreference))
       {
-        if (this.fMP) {
+        if (this.fOX) {
           break label613;
         }
         bool = true;
         label434:
-        this.fMP = bool;
-        if (!this.fMP) {
+        this.fOX = bool;
+        if (!this.fOX) {
           break label619;
         }
-        w.s(this.contact);
+        x.z(this.contact);
       }
     }
     for (;;)
     {
-      pq(this.fMP);
+      py(this.fOX);
       if ("contact_info_template_recv".equals(paramPreference))
       {
         localObject = new Intent();
-        ((Intent)localObject).putExtra("enterprise_biz_name", this.wPN.field_username);
-        com.tencent.mm.bs.d.b(this, "brandservice", ".ui.ReceiveTemplateMsgMgrUI", (Intent)localObject);
+        ((Intent)localObject).putExtra("enterprise_biz_name", this.xfE.field_username);
+        com.tencent.mm.br.d.b(this, "brandservice", ".ui.ReceiveTemplateMsgMgrUI", (Intent)localObject);
       }
       if (!"contact_info_subscribe_bizinfo".endsWith(paramPreference)) {
         break label828;
       }
-      paramPreference = this.wPN;
+      paramPreference = this.xfE;
       if (paramPreference != null) {
         break label629;
       }
       AppMethodBeat.o(27574);
       return true;
-      this.wRA = h.a(this, getString(2131757139, new Object[] { this.contact.adv() }), getString(2131755906), new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+      this.xhr = h.a(this, getString(2131757139, new Object[] { this.contact.adG() }), getString(2131755906), new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
           AppMethodBeat.i(27558);
-          this.cWD.field_hadAlert = 1;
-          this.cWD.field_brandFlag |= 0x4;
-          NewBizInfoSettingUI.a(NewBizInfoSettingUI.this, this.cWD, true);
-          com.tencent.mm.plugin.profile.ui.newbizinfo.c.c.K(NewBizInfoSettingUI.a(NewBizInfoSettingUI.this).field_username, 906, NewBizInfoSettingUI.b(NewBizInfoSettingUI.this));
+          this.cXA.field_hadAlert = 1;
+          this.cXA.field_brandFlag |= 0x4;
+          NewBizInfoSettingUI.a(NewBizInfoSettingUI.this, this.cXA, true);
+          com.tencent.mm.plugin.profile.ui.newbizinfo.c.c.J(NewBizInfoSettingUI.a(NewBizInfoSettingUI.this).field_username, 906, NewBizInfoSettingUI.b(NewBizInfoSettingUI.this));
           AppMethodBeat.o(27558);
         }
       }, new DialogInterface.OnClickListener()
@@ -570,49 +572,49 @@ public class NewBizInfoSettingUI
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
           AppMethodBeat.i(27559);
-          this.cWD.field_hadAlert = 1;
-          NewBizInfoSettingUI.a(NewBizInfoSettingUI.this, this.cWD, false);
+          this.cXA.field_hadAlert = 1;
+          NewBizInfoSettingUI.a(NewBizInfoSettingUI.this, this.cXA, false);
           AppMethodBeat.o(27559);
         }
       });
       break;
       label593:
-      com.tencent.mm.plugin.profile.ui.newbizinfo.c.c.K(this.contact.field_username, 907, this.wWc);
+      com.tencent.mm.plugin.profile.ui.newbizinfo.c.c.J(this.contact.field_username, 907, this.xlT);
       break label127;
       label613:
       bool = false;
       break label434;
       label619:
-      w.t(this.contact);
+      x.A(this.contact);
     }
     label629:
     int i;
-    if (paramPreference.Kf())
+    if (paramPreference.Kn())
     {
       paramPreference.field_brandFlag |= 0x1;
-      if ((this.cQr == null) && (paramPreference != null)) {
-        this.cQr = paramPreference.bX(false);
+      if ((this.cRb == null) && (paramPreference != null)) {
+        this.cRb = paramPreference.bX(false);
       }
-      if ((this.cQr != null) && (this.cQr.Kz()) && (com.tencent.mm.bs.d.aIu("brandservice")))
+      if ((this.cRb != null) && (this.cRb.KH()) && (com.tencent.mm.br.d.aJN("brandservice")))
       {
-        paramf.cP("contact_info_template_recv", false);
+        paramf.cT("contact_info_template_recv", false);
         long l = System.currentTimeMillis() / 1000L;
-        localObject = com.tencent.mm.plugin.brandservice.ui.timeline.a.oaa;
-        com.tencent.mm.plugin.brandservice.ui.timeline.a.r(paramPreference.field_username, l, this.wWd);
+        localObject = com.tencent.mm.plugin.brandservice.ui.timeline.a.ofK;
+        com.tencent.mm.plugin.brandservice.ui.timeline.a.r(paramPreference.field_username, l, this.xlU);
         label730:
-        localObject = com.tencent.mm.plugin.report.service.g.yhR;
+        localObject = com.tencent.mm.plugin.report.service.g.yxI;
         String str = paramPreference.field_username;
-        if (!paramPreference.Kf()) {
+        if (!paramPreference.Kn()) {
           break label875;
         }
         i = 3;
         label750:
         ((com.tencent.mm.plugin.report.service.g)localObject).f(13307, new Object[] { str, Integer.valueOf(1), Integer.valueOf(i), Integer.valueOf(0) });
         a(paramPreference, false);
-        if (!((CheckBoxPreference)paramf.aVD("contact_info_subscribe_bizinfo")).isChecked()) {
+        if (!((CheckBoxPreference)paramf.aXe("contact_info_subscribe_bizinfo")).isChecked()) {
           break label880;
         }
-        com.tencent.mm.plugin.profile.ui.newbizinfo.c.c.K(this.contact.field_username, 901, this.wWc);
+        com.tencent.mm.plugin.profile.ui.newbizinfo.c.c.J(this.contact.field_username, 901, this.xlT);
       }
     }
     for (;;)
@@ -620,16 +622,16 @@ public class NewBizInfoSettingUI
       label828:
       AppMethodBeat.o(27574);
       return false;
-      paramf.cP("contact_info_template_recv", true);
+      paramf.cT("contact_info_template_recv", true);
       break;
       paramPreference.field_brandFlag &= 0xFFFFFFFE;
-      paramf.cP("contact_info_template_recv", true);
+      paramf.cT("contact_info_template_recv", true);
       break label730;
       label875:
       i = 4;
       break label750;
       label880:
-      com.tencent.mm.plugin.profile.ui.newbizinfo.c.c.K(this.contact.field_username, 902, this.wWc);
+      com.tencent.mm.plugin.profile.ui.newbizinfo.c.c.J(this.contact.field_username, 902, this.xlT);
     }
   }
   

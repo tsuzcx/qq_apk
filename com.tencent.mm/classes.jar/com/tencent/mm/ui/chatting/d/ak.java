@@ -7,63 +7,67 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.view.MenuItem;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.g.c.ei;
-import com.tencent.mm.model.ba;
+import com.tencent.mm.model.bc;
+import com.tencent.mm.modelsimple.z;
 import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.protocal.protobuf.cbo;
-import com.tencent.mm.protocal.protobuf.ctd;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.al.a;
-import com.tencent.mm.storage.bu;
+import com.tencent.mm.protocal.protobuf.cci;
+import com.tencent.mm.protocal.protobuf.ctx;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.aj;
+import com.tencent.mm.storage.am.a;
+import com.tencent.mm.storage.bv;
 import com.tencent.mm.ui.LauncherUI;
 import com.tencent.mm.ui.MMFragment;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.chatting.BaseChattingUIFragment;
+import com.tencent.mm.ui.chatting.d.b.ad;
 import com.tencent.mm.ui.chatting.d.b.k;
 import com.tencent.mm.ui.chatting.view.c.a;
+import com.tencent.mm.ui.y;
 import com.tencent.mm.ui.y.a;
 import com.tencent.recovery.wx.util.NetUtil;
 import java.io.IOException;
 
-@com.tencent.mm.ui.chatting.d.a.a(fFo=com.tencent.mm.ui.chatting.d.b.ad.class)
+@com.tencent.mm.ui.chatting.d.a.a(fJv=ad.class)
 public class ak
   extends a
-  implements f, com.tencent.mm.ui.chatting.d.b.ad
+  implements f, ad
 {
-  private void bC(final bu parambu)
+  private void bB(final bv parambv)
   {
     AppMethodBeat.i(35497);
-    final com.tencent.mm.ui.chatting.view.c localc = new com.tencent.mm.ui.chatting.view.c(this.cWM.JOR.getContext());
-    localc.JXQ = new c.a()
+    final com.tencent.mm.ui.chatting.view.c localc = new com.tencent.mm.ui.chatting.view.c(this.cXJ.Kkd.getContext());
+    localc.Kuj = new c.a()
     {
-      public final void DQ(long paramAnonymousLong)
+      public final void Ep(long paramAnonymousLong)
       {
         AppMethodBeat.i(35491);
         localc.hide();
-        g.yhR.idkeyStat(795L, 1L, 1L, false);
-        if (!NetUtil.isConnected(ak.this.cWM.JOR.getContext()))
+        g.yxI.idkeyStat(795L, 1L, 1L, false);
+        if (!NetUtil.isConnected(ak.this.cXJ.Kkd.getContext()))
         {
-          h.c(ak.this.cWM.JOR.getContext(), ak.this.cWM.JOR.getMMResources().getString(2131761535), ak.this.cWM.JOR.getMMResources().getString(2131762410), true);
+          h.c(ak.this.cXJ.Kkd.getContext(), ak.this.cXJ.Kkd.getMMResources().getString(2131761535), ak.this.cXJ.Kkd.getMMResources().getString(2131762410), true);
           AppMethodBeat.o(35491);
           return;
         }
-        Object localObject = new ctd();
-        ((ctd)localObject).qex = ((int)(paramAnonymousLong / 1000L));
-        ((ctd)localObject).nEf = 1;
-        ((ctd)localObject).HfH = 1;
+        Object localObject = new ctx();
+        ((ctx)localObject).qlc = ((int)(paramAnonymousLong / 1000L));
+        ((ctx)localObject).nJA = 1;
+        ((ctx)localObject).Hzh = 1;
         try
         {
-          cbo localcbo = new cbo();
-          localcbo.nDo = ak.this.cWM.getTalkerUserName();
-          localcbo.xbt = parambu.field_msgSvrId;
-          localcbo.Title = ak.b(ak.this, parambu);
-          ((ctd)localObject).Gcf = new com.tencent.mm.bx.b(localcbo.toByteArray());
-          localObject = new com.tencent.mm.modelsimple.y(1, (ctd)localObject);
-          ba.aiU().a((n)localObject, 0);
+          cci localcci = new cci();
+          localcci.nIJ = ak.this.cXJ.getTalkerUserName();
+          localcci.xrk = parambv.field_msgSvrId;
+          localcci.Title = ak.b(ak.this, parambv);
+          ((ctx)localObject).GuM = new com.tencent.mm.bw.b(localcci.toByteArray());
+          localObject = new z(1, (ctx)localObject);
+          bc.ajj().a((n)localObject, 0);
           AppMethodBeat.o(35491);
           return;
         }
@@ -71,7 +75,7 @@ public class ak
         {
           for (;;)
           {
-            com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.ChattingUI.MsgRemindComponent", "[onOk] %s", new Object[] { localIOException.toString() });
+            ae.e("MicroMsg.ChattingUI.MsgRemindComponent", "[onOk] %s", new Object[] { localIOException.toString() });
           }
         }
       }
@@ -84,39 +88,39 @@ public class ak
       }
     };
     localc.show();
-    g.yhR.idkeyStat(795L, 0L, 1L, false);
+    g.yxI.idkeyStat(795L, 0L, 1L, false);
     AppMethodBeat.o(35497);
   }
   
-  public final void fCC()
-  {
-    AppMethodBeat.i(35495);
-    super.fCC();
-    ba.aiU().b(525, this);
-    AppMethodBeat.o(35495);
-  }
-  
-  public final void fwu()
+  public final void fAu()
   {
     AppMethodBeat.i(35493);
-    ba.aiU().a(525, this);
+    bc.ajj().a(525, this);
     AppMethodBeat.o(35493);
   }
   
-  public final void fwx()
+  public final void fAx()
   {
     AppMethodBeat.i(35494);
-    ba.aiU().b(525, this);
+    bc.ajj().b(525, this);
     AppMethodBeat.o(35494);
+  }
+  
+  public final void fGE()
+  {
+    AppMethodBeat.i(35495);
+    super.fGE();
+    bc.ajj().b(525, this);
+    AppMethodBeat.o(35495);
   }
   
   public final void h(MenuItem paramMenuItem)
   {
     AppMethodBeat.i(35496);
-    final bu localbu = ((k)this.cWM.bh(k.class)).ada(paramMenuItem.getGroupId());
-    if (localbu == null)
+    final bv localbv = ((k)this.cXJ.bh(k.class)).adI(paramMenuItem.getGroupId());
+    if (localbv == null)
     {
-      com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.ChattingUI.MsgRemindComponent", "context item select failed, null msg");
+      ae.e("MicroMsg.ChattingUI.MsgRemindComponent", "context item select failed, null msg");
       AppMethodBeat.o(35496);
       return;
     }
@@ -127,44 +131,44 @@ public class ak
     {
       AppMethodBeat.o(35496);
       return;
-      ba.aBQ();
-      if (((Boolean)com.tencent.mm.model.c.ajl().get(al.a.IrS, Boolean.TRUE)).booleanValue())
+      bc.aCg();
+      if (((Boolean)com.tencent.mm.model.c.ajA().get(am.a.IMo, Boolean.TRUE)).booleanValue())
       {
-        h.d(this.cWM.JOR.getContext(), this.cWM.JOR.getMMResources().getString(2131762413), this.cWM.JOR.getMMResources().getString(2131762414), new DialogInterface.OnClickListener()
+        h.d(this.cXJ.Kkd.getContext(), this.cXJ.Kkd.getMMResources().getString(2131762413), this.cXJ.Kkd.getMMResources().getString(2131762414), new DialogInterface.OnClickListener()
         {
           public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
           {
             AppMethodBeat.i(35490);
-            ak.a(ak.this, localbu);
+            ak.a(ak.this, localbv);
             AppMethodBeat.o(35490);
           }
         });
-        ba.aBQ();
-        com.tencent.mm.model.c.ajl().set(al.a.IrS, Boolean.FALSE);
+        bc.aCg();
+        com.tencent.mm.model.c.ajA().set(am.a.IMo, Boolean.FALSE);
         AppMethodBeat.o(35496);
         return;
       }
-      bC(localbu);
+      bB(localbv);
     }
   }
   
   public void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     AppMethodBeat.i(35498);
-    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.ChattingUI.MsgRemindComponent", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString + " sceneType:" + paramn.getType());
-    this.cWM.dismissDialog();
-    if (!this.cWM.cBJ)
+    ae.i("MicroMsg.ChattingUI.MsgRemindComponent", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString + " sceneType:" + paramn.getType());
+    this.cXJ.dismissDialog();
+    if (!this.cXJ.cCq)
     {
-      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.ChattingUI.MsgRemindComponent", "onSceneEnd fragment not foreground, return");
+      ae.i("MicroMsg.ChattingUI.MsgRemindComponent", "onSceneEnd fragment not foreground, return");
       AppMethodBeat.o(35498);
       return;
     }
-    if (!bt.jh(this.cWM.JOR.getContext()))
+    if (!bu.jn(this.cXJ.Kkd.getContext()))
     {
       AppMethodBeat.o(35498);
       return;
     }
-    Activity localActivity = this.cWM.JOR.getContext();
+    Activity localActivity = this.cXJ.Kkd.getContext();
     int i;
     if (y.a.a(localActivity, paramInt1, paramInt2, paramString, 7)) {
       i = 1;
@@ -173,7 +177,7 @@ public class ak
     {
       AppMethodBeat.o(35498);
       return;
-      if (com.tencent.mm.ui.y.a(localActivity, paramInt1, paramInt2, new Intent().setClass(localActivity, LauncherUI.class).putExtra("Intro_Switch", true).putExtra("animation_pop_in", true).addFlags(67108864), paramString)) {
+      if (y.a(localActivity, paramInt1, paramInt2, new Intent().setClass(localActivity, LauncherUI.class).putExtra("Intro_Switch", true).putExtra("animation_pop_in", true).addFlags(67108864), paramString)) {
         i = 1;
       } else {
         i = 0;
@@ -187,21 +191,21 @@ public class ak
         AppMethodBeat.o(35498);
         return;
       }
-      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.ChattingUI.MsgRemindComponent", "set msg remind!");
-      com.tencent.mm.ui.widget.snackbar.b.a(this.cWM.JOR.getContext(), this.cWM.JOR.getContentView(), this.cWM.JOR.getMMResources().getString(2131760231), "", null);
+      ae.i("MicroMsg.ChattingUI.MsgRemindComponent", "set msg remind!");
+      com.tencent.mm.ui.widget.snackbar.b.a(this.cXJ.Kkd.getContext(), this.cXJ.Kkd.getContentView(), this.cXJ.Kkd.getMMResources().getString(2131760231), "", null);
       AppMethodBeat.o(35498);
       return;
     }
     if (paramn.getType() == 525)
     {
-      com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.ChattingUI.MsgRemindComponent", "[setMsgRemind] scene type:%s errCode:%s, errType:%s, errMsg:%s", new Object[] { Integer.valueOf(525), Integer.valueOf(paramInt2), Integer.valueOf(paramInt1), bt.nullAsNil(paramString) });
-      localActivity = this.cWM.JOR.getContext();
+      ae.e("MicroMsg.ChattingUI.MsgRemindComponent", "[setMsgRemind] scene type:%s errCode:%s, errType:%s, errMsg:%s", new Object[] { Integer.valueOf(525), Integer.valueOf(paramInt2), Integer.valueOf(paramInt1), bu.nullAsNil(paramString) });
+      localActivity = this.cXJ.Kkd.getContext();
       paramn = paramString;
-      if (bt.isNullOrNil(paramString)) {
-        paramn = this.cWM.JOR.getMMResources().getString(2131762409);
+      if (bu.isNullOrNil(paramString)) {
+        paramn = this.cXJ.Kkd.getMMResources().getString(2131762409);
       }
-      h.c(localActivity, paramn, this.cWM.JOR.getMMResources().getString(2131762410), true);
-      g.yhR.idkeyStat(795L, 4L, 1L, false);
+      h.c(localActivity, paramn, this.cXJ.Kkd.getMMResources().getString(2131762410), true);
+      g.yxI.idkeyStat(795L, 4L, 1L, false);
     }
     AppMethodBeat.o(35498);
   }

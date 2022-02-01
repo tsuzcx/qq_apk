@@ -8,19 +8,19 @@ public abstract class bf
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eEU;
-  private static final int eFq = "updateTime".hashCode();
-  private static final int eFy;
-  private static final int eOw = "id".hashCode();
-  private static final int eQV = "cacheKey".hashCode();
-  private static final int eQW;
+  private static final int eGD;
+  private static final int eGZ = "updateTime".hashCode();
+  private static final int eHh;
+  private static final int eQh = "id".hashCode();
+  private static final int eSG = "cacheKey".hashCode();
+  private static final int eSH;
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eED = true;
-  private boolean eFn = true;
-  private boolean eFu = true;
-  private boolean eOs = true;
-  private boolean eQT = true;
-  private boolean eQU = true;
+  private boolean eGW = true;
+  private boolean eGm = true;
+  private boolean eHd = true;
+  private boolean eQd = true;
+  private boolean eSE = true;
+  private boolean eSF = true;
   public String field_appId;
   public String field_cacheKey;
   public String field_data;
@@ -30,9 +30,9 @@ public abstract class bf
   
   static
   {
-    eEU = "appId".hashCode();
-    eFy = "data".hashCode();
-    eQW = "interval".hashCode();
+    eGD = "appId".hashCode();
+    eHh = "data".hashCode();
+    eSH = "interval".hashCode();
   }
   
   public void convertFrom(Cursor paramCursor)
@@ -48,7 +48,7 @@ public abstract class bf
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eOw != k) {
+      if (eQh != k) {
         break label60;
       }
       this.field_id = paramCursor.getString(i);
@@ -59,15 +59,15 @@ public abstract class bf
       break label20;
       break;
       label60:
-      if (eQV == k) {
+      if (eSG == k) {
         this.field_cacheKey = paramCursor.getString(i);
-      } else if (eEU == k) {
+      } else if (eGD == k) {
         this.field_appId = paramCursor.getString(i);
-      } else if (eFy == k) {
+      } else if (eHh == k) {
         this.field_data = paramCursor.getString(i);
-      } else if (eQW == k) {
+      } else if (eSH == k) {
         this.field_interval = paramCursor.getInt(i);
-      } else if (eFq == k) {
+      } else if (eGZ == k) {
         this.field_updateTime = paramCursor.getLong(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
@@ -78,22 +78,22 @@ public abstract class bf
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eOs) {
+    if (this.eQd) {
       localContentValues.put("id", this.field_id);
     }
-    if (this.eQT) {
+    if (this.eSE) {
       localContentValues.put("cacheKey", this.field_cacheKey);
     }
-    if (this.eED) {
+    if (this.eGm) {
       localContentValues.put("appId", this.field_appId);
     }
-    if (this.eFu) {
+    if (this.eHd) {
       localContentValues.put("data", this.field_data);
     }
-    if (this.eQU) {
+    if (this.eSF) {
       localContentValues.put("interval", Integer.valueOf(this.field_interval));
     }
-    if (this.eFn) {
+    if (this.eGW) {
       localContentValues.put("updateTime", Long.valueOf(this.field_updateTime));
     }
     if (this.systemRowid > 0L) {

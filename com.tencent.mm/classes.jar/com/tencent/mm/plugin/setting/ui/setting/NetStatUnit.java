@@ -12,9 +12,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 class NetStatUnit
   extends View
 {
-  protected static long yEj;
-  private long dyS;
-  private long yEi;
+  protected static long yUo;
+  private long dzX;
+  private long yUn;
   
   public NetStatUnit(Context paramContext)
   {
@@ -31,7 +31,7 @@ class NetStatUnit
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  private static void zh(long paramLong)
+  private static void zF(long paramLong)
   {
     paramLong = (paramLong / 1572864L + 1L) * 1572864L;
     if (94371840L > paramLong) {
@@ -41,8 +41,8 @@ class NetStatUnit
     }
     for (;;)
     {
-      if (paramLong > yEj) {
-        yEj = paramLong;
+      if (paramLong > yUo) {
+        yUo = paramLong;
       }
       return;
       paramLong = 94371840L;
@@ -52,21 +52,21 @@ class NetStatUnit
     }
   }
   
-  public final void ah(long paramLong1, long paramLong2)
+  public final void ag(long paramLong1, long paramLong2)
   {
     AppMethodBeat.i(173792);
-    this.yEi = paramLong1;
-    this.dyS = paramLong2;
+    this.yUn = paramLong1;
+    this.dzX = paramLong2;
     if (paramLong1 > 94371840L) {
-      this.yEi = 94371840L;
+      this.yUn = 94371840L;
     }
     if (paramLong2 > 94371840L) {
-      this.dyS = 94371840L;
+      this.dzX = 94371840L;
     }
     if (paramLong1 > paramLong2) {}
     for (;;)
     {
-      zh(paramLong1);
+      zF(paramLong1);
       AppMethodBeat.o(173792);
       return;
       paramLong1 = paramLong2;
@@ -81,12 +81,12 @@ class NetStatUnit
     Paint localPaint = new Paint();
     Rect localRect1 = new Rect();
     getDrawingRect(localRect1);
-    float f1 = localRect1.height() * (float)this.dyS / (float)yEj;
+    float f1 = localRect1.height() * (float)this.dzX / (float)yUo;
     float f2 = localRect1.width();
     Rect localRect2 = new Rect(localRect1.left, (int)(localRect1.bottom - f1), (int)(f2 * 0.6F + localRect1.left), localRect1.bottom);
     localPaint.setColor(-7829368);
     paramCanvas.drawRect(localRect2, localPaint);
-    f1 = localRect1.height() * (float)this.yEi / (float)yEj;
+    f1 = localRect1.height() * (float)this.yUn / (float)yUo;
     f2 = localRect1.width();
     localRect1 = new Rect(localRect1.left, (int)(localRect1.bottom - f1), (int)(f2 * 0.6F + localRect1.left), localRect1.bottom);
     localPaint.setColor(-16711936);

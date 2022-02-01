@@ -4,7 +4,7 @@ import android.content.Context;
 
 public abstract interface c
 {
-  public abstract a aa(Context paramContext, String paramString);
+  public abstract a ac(Context paramContext, String paramString);
 }
 
 

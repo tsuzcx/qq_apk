@@ -16,30 +16,30 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.R.a;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public class IPCallFuncButton
   extends LinearLayout
 {
-  private boolean cMW;
-  private boolean dKs;
+  private boolean cNF;
+  private boolean dLH;
   private String text;
-  private ImageView uRY;
-  private TextView uRZ;
-  private Drawable uSa;
-  private Drawable uSb;
-  private Drawable uSc;
-  private boolean uSd;
-  private a uSe;
-  private View.OnTouchListener uSf;
+  private ImageView vdK;
+  private TextView vdL;
+  private Drawable vdM;
+  private Drawable vdN;
+  private Drawable vdO;
+  private boolean vdP;
+  private a vdQ;
+  private View.OnTouchListener vdR;
   
   public IPCallFuncButton(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(25799);
-    this.dKs = false;
-    this.cMW = true;
-    this.uSf = new View.OnTouchListener()
+    this.dLH = false;
+    this.cNF = true;
+    this.vdR = new View.OnTouchListener()
     {
       public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
       {
@@ -47,7 +47,7 @@ public class IPCallFuncButton
         b localb = new b();
         localb.bd(paramAnonymousView);
         localb.bd(paramAnonymousMotionEvent);
-        a.b("com/tencent/mm/plugin/ipcall/ui/IPCallFuncButton$1", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahq());
+        a.b("com/tencent/mm/plugin/ipcall/ui/IPCallFuncButton$1", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahF());
         if (!IPCallFuncButton.a(IPCallFuncButton.this))
         {
           a.a(false, this, "com/tencent/mm/plugin/ipcall/ui/IPCallFuncButton$1", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
@@ -76,7 +76,7 @@ public class IPCallFuncButton
             if (IPCallFuncButton.g(IPCallFuncButton.this) == null) {
               break label231;
             }
-            IPCallFuncButton.g(IPCallFuncButton.this).nN(IPCallFuncButton.e(IPCallFuncButton.this));
+            IPCallFuncButton.g(IPCallFuncButton.this).nR(IPCallFuncButton.e(IPCallFuncButton.this));
             break;
             IPCallFuncButton.d(IPCallFuncButton.this).setImageDrawable(IPCallFuncButton.c(IPCallFuncButton.this));
             IPCallFuncButton.a(IPCallFuncButton.this, true);
@@ -89,38 +89,38 @@ public class IPCallFuncButton
               IPCallFuncButton.d(IPCallFuncButton.this).setImageDrawable(IPCallFuncButton.f(IPCallFuncButton.this));
             }
             if (IPCallFuncButton.g(IPCallFuncButton.this) != null) {
-              IPCallFuncButton.g(IPCallFuncButton.this).nN(false);
+              IPCallFuncButton.g(IPCallFuncButton.this).nR(false);
             }
           }
         }
       }
     };
     LayoutInflater.from(getContext()).inflate(2131494507, this);
-    this.uRY = ((ImageView)findViewById(2131297631));
-    this.uRZ = ((TextView)findViewById(2131305710));
+    this.vdK = ((ImageView)findViewById(2131297631));
+    this.vdL = ((TextView)findViewById(2131305710));
     paramContext = getContext().getTheme().obtainStyledAttributes(paramAttributeSet, R.a.IPCallFuncButton, 0, 0);
-    this.uSa = paramContext.getDrawable(2);
-    this.uSb = paramContext.getDrawable(3);
-    this.uSd = paramContext.getBoolean(0, false);
-    this.uSc = paramContext.getDrawable(1);
+    this.vdM = paramContext.getDrawable(2);
+    this.vdN = paramContext.getDrawable(3);
+    this.vdP = paramContext.getBoolean(0, false);
+    this.vdO = paramContext.getDrawable(1);
     int i = paramContext.getResourceId(4, 0);
     if (i != 0) {
       this.text = getContext().getString(i);
     }
     paramContext.recycle();
-    if (!bt.isNullOrNil(this.text)) {
-      this.uRZ.setText(this.text);
+    if (!bu.isNullOrNil(this.text)) {
+      this.vdL.setText(this.text);
     }
     for (;;)
     {
-      if (this.uSa != null) {
-        this.uRY.setImageDrawable(this.uSa);
+      if (this.vdM != null) {
+        this.vdK.setImageDrawable(this.vdM);
       }
-      this.uRY.setClickable(true);
-      this.uRY.setOnTouchListener(this.uSf);
+      this.vdK.setClickable(true);
+      this.vdK.setOnTouchListener(this.vdR);
       AppMethodBeat.o(25799);
       return;
-      this.uRZ.setVisibility(8);
+      this.vdL.setVisibility(8);
     }
   }
   
@@ -131,8 +131,8 @@ public class IPCallFuncButton
   
   public final boolean isChecked()
   {
-    if (this.uSd) {
-      return this.dKs;
+    if (this.vdP) {
+      return this.dLH;
     }
     return false;
   }
@@ -140,12 +140,12 @@ public class IPCallFuncButton
   public void setCheckBoxMode(boolean paramBoolean)
   {
     AppMethodBeat.i(25801);
-    if (this.uSd != paramBoolean)
+    if (this.vdP != paramBoolean)
     {
-      this.uSd = paramBoolean;
-      this.dKs = false;
-      if (this.uSa != null) {
-        this.uRY.setImageDrawable(this.uSa);
+      this.vdP = paramBoolean;
+      this.dLH = false;
+      if (this.vdM != null) {
+        this.vdK.setImageDrawable(this.vdM);
       }
     }
     AppMethodBeat.o(25801);
@@ -154,43 +154,43 @@ public class IPCallFuncButton
   public void setChecked(boolean paramBoolean)
   {
     AppMethodBeat.i(25803);
-    if ((paramBoolean != this.dKs) && (this.uSd))
+    if ((paramBoolean != this.dLH) && (this.vdP))
     {
-      this.dKs = paramBoolean;
-      if (this.dKs)
+      this.dLH = paramBoolean;
+      if (this.dLH)
       {
-        this.uRY.setImageDrawable(this.uSb);
+        this.vdK.setImageDrawable(this.vdN);
         AppMethodBeat.o(25803);
         return;
       }
-      this.uRY.setImageDrawable(this.uSa);
+      this.vdK.setImageDrawable(this.vdM);
     }
     AppMethodBeat.o(25803);
   }
   
   public void setClickCallback(a parama)
   {
-    this.uSe = parama;
+    this.vdQ = parama;
   }
   
   public void setEnable(boolean paramBoolean)
   {
     AppMethodBeat.i(25802);
-    if (paramBoolean != this.cMW)
+    if (paramBoolean != this.cNF)
     {
-      this.cMW = paramBoolean;
-      if ((this.cMW) || (this.uSc == null)) {
+      this.cNF = paramBoolean;
+      if ((this.cNF) || (this.vdO == null)) {
         break label56;
       }
-      this.uRY.setImageDrawable(this.uSc);
+      this.vdK.setImageDrawable(this.vdO);
     }
     for (;;)
     {
-      this.dKs = false;
+      this.dLH = false;
       AppMethodBeat.o(25802);
       return;
       label56:
-      this.uRY.setImageDrawable(this.uSa);
+      this.vdK.setImageDrawable(this.vdM);
     }
   }
   
@@ -198,18 +198,18 @@ public class IPCallFuncButton
   {
     AppMethodBeat.i(25800);
     this.text = paramString;
-    this.uRZ.setText(this.text);
+    this.vdL.setText(this.text);
     AppMethodBeat.o(25800);
   }
   
   public static abstract interface a
   {
-    public abstract void nN(boolean paramBoolean);
+    public abstract void nR(boolean paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.ui.IPCallFuncButton
  * JD-Core Version:    0.7.0.1
  */

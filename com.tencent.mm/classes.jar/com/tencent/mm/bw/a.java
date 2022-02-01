@@ -1,144 +1,114 @@
 package com.tencent.mm.bw;
 
-import android.app.ActivityManager;
-import android.app.ActivityManager.RunningAppProcessInfo;
-import android.content.Context;
-import android.os.Process;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.hellhoundlib.b.c;
-import com.tencent.mm.sdk.platformtools.ad;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import f.a.a.a.a.b;
 
-public final class a
+public class a
 {
-  public static boolean bX(Context paramContext, String paramString)
+  protected static final int OPCODE_COMPUTESIZE = 1;
+  protected static final int OPCODE_PARSEFROM = 2;
+  protected static final int OPCODE_POPULATEBUILDERWITHFIELD = 3;
+  protected static final int OPCODE_WRITEFIELDS = 0;
+  protected static b unknownTagHandler;
+  private byte[] data;
+  private boolean includeUnKnownField = false;
+  
+  static
   {
-    AppMethodBeat.i(152430);
-    int i;
-    if ((paramContext == null) || (paramString == null) || (paramString.length() == 0)) {
-      i = 0;
-    }
-    while (i != 0)
-    {
-      try
-      {
-        paramContext = c.a(i, new com.tencent.mm.hellhoundlib.b.a());
-        Object localObject = new Object();
-        com.tencent.mm.hellhoundlib.a.a.a(localObject, paramContext.ahp(), "com/tencent/mm/process/ProcessOperator", "killProcess", "(Landroid/content/Context;Ljava/lang/String;)Z", "android/os/Process_EXEC_", "killProcess", "(I)V");
-        Process.killProcess(((Integer)paramContext.mq(0)).intValue());
-        com.tencent.mm.hellhoundlib.a.a.a(localObject, "com/tencent/mm/process/ProcessOperator", "killProcess", "(Landroid/content/Context;Ljava/lang/String;)Z", "android/os/Process_EXEC_", "killProcess", "(I)V");
-        AppMethodBeat.o(152430);
-        return true;
-      }
-      catch (Throwable paramContext)
-      {
-        ad.e("MicroMsg.ProcessOperator", "killProcess, process[%s] pid[%d], e=%s", new Object[] { paramString, Integer.valueOf(i), paramContext });
-        AppMethodBeat.o(152430);
-        return false;
-      }
-      paramContext = (Integer)hG(paramContext).get(paramString);
-      if (paramContext != null) {
-        i = paramContext.intValue();
-      } else {
-        i = 0;
-      }
-    }
-    AppMethodBeat.o(152430);
-    return false;
+    AppMethodBeat.i(2349);
+    unknownTagHandler = new f.a.a.a.a.a();
+    AppMethodBeat.o(2349);
   }
   
-  public static boolean f(Context paramContext, String... paramVarArgs)
+  public static int getNextFieldNumber(f.a.a.a.a parama)
   {
-    AppMethodBeat.i(152431);
-    if (paramContext == null)
-    {
-      AppMethodBeat.o(152431);
-      return false;
-    }
-    paramContext = hG(paramContext);
-    int i = 0;
-    for (;;)
-    {
-      if (i < 10)
-      {
-        String str = paramVarArgs[i];
-        Integer localInteger = (Integer)paramContext.get(str);
-        if (localInteger != null) {
-          ad.i("MicroMsg.ProcessOperator", "killProcess(pid : %s, process : %s)", new Object[] { localInteger, str });
-        }
-        try
-        {
-          com.tencent.mm.hellhoundlib.b.a locala = c.a(localInteger.intValue(), new com.tencent.mm.hellhoundlib.b.a());
-          Object localObject = new Object();
-          com.tencent.mm.hellhoundlib.a.a.a(localObject, locala.ahp(), "com/tencent/mm/process/ProcessOperator", "killProcess", "(Landroid/content/Context;[Ljava/lang/String;)Z", "android/os/Process_EXEC_", "killProcess", "(I)V");
-          Process.killProcess(((Integer)locala.mq(0)).intValue());
-          com.tencent.mm.hellhoundlib.a.a.a(localObject, "com/tencent/mm/process/ProcessOperator", "killProcess", "(Landroid/content/Context;[Ljava/lang/String;)Z", "android/os/Process_EXEC_", "killProcess", "(I)V");
-          i += 1;
-        }
-        catch (Throwable localThrowable)
-        {
-          for (;;)
-          {
-            ad.e("MicroMsg.ProcessOperator", "killProcess, process[%s] pid[%d], e=%s", new Object[] { str, localInteger, localThrowable });
-          }
-        }
-      }
-    }
-    AppMethodBeat.o(152431);
-    return true;
+    AppMethodBeat.i(2351);
+    int i = parama.gCf();
+    AppMethodBeat.o(2351);
+    return i;
   }
   
-  private static Map<String, Integer> hG(Context paramContext)
+  public int computeSize()
   {
-    AppMethodBeat.i(152429);
-    HashMap localHashMap = new HashMap();
-    if (paramContext != null) {
-      try
-      {
-        paramContext = ((ActivityManager)paramContext.getSystemService("activity")).getRunningAppProcesses().iterator();
-        while (paramContext.hasNext())
-        {
-          ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo)paramContext.next();
-          localHashMap.put(localRunningAppProcessInfo.processName, Integer.valueOf(localRunningAppProcessInfo.pid));
-        }
-        AppMethodBeat.o(152429);
-      }
-      catch (Exception paramContext)
-      {
-        ad.printErrStackTrace("MicroMsg.ProcessOperator", paramContext, "", new Object[0]);
-      }
+    AppMethodBeat.i(2354);
+    try
+    {
+      int i = op(1, new Object[0]);
+      AppMethodBeat.o(2354);
+      return i;
     }
-    return localHashMap;
+    catch (Exception localException)
+    {
+      AppMethodBeat.o(2354);
+    }
+    return 0;
   }
   
-  public static void hH(Context paramContext)
+  public byte[] getData()
   {
-    AppMethodBeat.i(152432);
-    paramContext = (ActivityManager)paramContext.getSystemService("activity");
-    int i = Process.myPid();
-    int j = Process.myUid();
-    paramContext = paramContext.getRunningAppProcesses().iterator();
-    while (paramContext.hasNext())
+    return this.data;
+  }
+  
+  public boolean isIncludeUnKnownField()
+  {
+    return this.includeUnKnownField;
+  }
+  
+  protected int op(int paramInt, Object... paramVarArgs)
+  {
+    AppMethodBeat.i(2352);
+    paramVarArgs = new Error("Cannot use this method");
+    AppMethodBeat.o(2352);
+    throw paramVarArgs;
+  }
+  
+  public a parseFrom(byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(2355);
+    this.data = paramArrayOfByte;
+    op(2, new Object[] { paramArrayOfByte });
+    AppMethodBeat.o(2355);
+    return this;
+  }
+  
+  public boolean populateBuilderWithField(f.a.a.a.a parama, a parama1, int paramInt)
+  {
+    boolean bool2 = false;
+    AppMethodBeat.i(2356);
+    if (op(3, new Object[] { parama, parama1, Integer.valueOf(paramInt) }) == 0) {}
+    for (boolean bool1 = true;; bool1 = false)
     {
-      localObject1 = (ActivityManager.RunningAppProcessInfo)paramContext.next();
-      if ((((ActivityManager.RunningAppProcessInfo)localObject1).uid == j) && (((ActivityManager.RunningAppProcessInfo)localObject1).pid != i))
-      {
-        localObject1 = c.a(((ActivityManager.RunningAppProcessInfo)localObject1).pid, new com.tencent.mm.hellhoundlib.b.a());
-        Object localObject2 = new Object();
-        com.tencent.mm.hellhoundlib.a.a.a(localObject2, ((com.tencent.mm.hellhoundlib.b.a)localObject1).ahp(), "com/tencent/mm/process/ProcessOperator", "killAllProcess", "(Landroid/content/Context;)V", "android/os/Process_EXEC_", "killProcess", "(I)V");
-        Process.killProcess(((Integer)((com.tencent.mm.hellhoundlib.b.a)localObject1).mq(0)).intValue());
-        com.tencent.mm.hellhoundlib.a.a.a(localObject2, "com/tencent/mm/process/ProcessOperator", "killAllProcess", "(Landroid/content/Context;)V", "android/os/Process_EXEC_", "killProcess", "(I)V");
+      if ((this.includeUnKnownField) || (!bool1)) {
+        bool2 = true;
       }
+      this.includeUnKnownField = bool2;
+      AppMethodBeat.o(2356);
+      return bool1;
     }
-    paramContext = c.a(i, new com.tencent.mm.hellhoundlib.b.a());
-    Object localObject1 = new Object();
-    com.tencent.mm.hellhoundlib.a.a.a(localObject1, paramContext.ahp(), "com/tencent/mm/process/ProcessOperator", "killAllProcess", "(Landroid/content/Context;)V", "android/os/Process_EXEC_", "killProcess", "(I)V");
-    Process.killProcess(((Integer)paramContext.mq(0)).intValue());
-    com.tencent.mm.hellhoundlib.a.a.a(localObject1, "com/tencent/mm/process/ProcessOperator", "killAllProcess", "(Landroid/content/Context;)V", "android/os/Process_EXEC_", "killProcess", "(I)V");
-    AppMethodBeat.o(152432);
+  }
+  
+  public byte[] toByteArray()
+  {
+    AppMethodBeat.i(2350);
+    validate();
+    byte[] arrayOfByte = new byte[computeSize()];
+    f.a.a.c.a locala = new f.a.a.c.a(arrayOfByte);
+    writeFields(locala);
+    locala.gCq();
+    AppMethodBeat.o(2350);
+    return arrayOfByte;
+  }
+  
+  protected a validate()
+  {
+    return this;
+  }
+  
+  public void writeFields(f.a.a.c.a parama)
+  {
+    AppMethodBeat.i(2353);
+    op(0, new Object[] { parama });
+    AppMethodBeat.o(2353);
   }
 }
 

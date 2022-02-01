@@ -1,21 +1,21 @@
 package com.tencent.mm.plugin.card.sharecard.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.ddg;
-import com.tencent.mm.protocal.protobuf.ddh;
-import com.tencent.mm.protocal.protobuf.ddi;
-import com.tencent.mm.protocal.protobuf.ddz;
-import com.tencent.mm.protocal.protobuf.did;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.dea;
+import com.tencent.mm.protocal.protobuf.deb;
+import com.tencent.mm.protocal.protobuf.dec;
+import com.tencent.mm.protocal.protobuf.det;
+import com.tencent.mm.protocal.protobuf.diy;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.LinkedList;
 
 public final class g
@@ -23,31 +23,31 @@ public final class g
   implements k
 {
   private f callback;
-  public String ozQ;
-  public int ozR;
-  public String ozS;
+  public String oGs;
+  public int oGt;
+  public String oGu;
   private final b rr;
   
-  public g(int paramInt1, LinkedList<ddi> paramLinkedList, String paramString1, String paramString2, ddz paramddz, int paramInt2, did paramdid)
+  public g(int paramInt1, LinkedList<dec> paramLinkedList, String paramString1, String paramString2, det paramdet, int paramInt2, diy paramdiy)
   {
     AppMethodBeat.i(112972);
     Object localObject = new b.a();
-    ((b.a)localObject).hNM = new ddg();
-    ((b.a)localObject).hNN = new ddh();
+    ((b.a)localObject).hQF = new dea();
+    ((b.a)localObject).hQG = new deb();
     ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/sharecarditem";
     ((b.a)localObject).funcId = 902;
-    ((b.a)localObject).hNO = 0;
+    ((b.a)localObject).hQH = 0;
     ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).aDC();
-    localObject = (ddg)this.rr.hNK.hNQ;
-    ((ddg)localObject).HrY = paramInt1;
-    ((ddg)localObject).hDb = paramLinkedList;
-    ((ddg)localObject).GMM = paramString1;
-    ((ddg)localObject).GvU = paramString2;
-    ad.i("MicroMsg.NetSceneShareCardItem", "list length is " + paramLinkedList.size());
-    ((ddg)localObject).HrZ = paramddz;
-    ((ddg)localObject).dHZ = paramInt2;
-    ((ddg)localObject).Frt = paramdid;
+    this.rr = ((b.a)localObject).aDS();
+    localObject = (dea)this.rr.hQD.hQJ;
+    ((dea)localObject).HLA = paramInt1;
+    ((dea)localObject).hFT = paramLinkedList;
+    ((dea)localObject).Hgn = paramString1;
+    ((dea)localObject).GPt = paramString2;
+    ae.i("MicroMsg.NetSceneShareCardItem", "list length is " + paramLinkedList.size());
+    ((dea)localObject).HLB = paramdet;
+    ((dea)localObject).dJd = paramInt2;
+    ((dea)localObject).FJR = paramdiy;
     AppMethodBeat.o(112972);
   }
   
@@ -68,16 +68,16 @@ public final class g
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(112973);
-    ad.i("MicroMsg.NetSceneShareCardItem", "onGYNetEnd, cmdType = %d, errType = %d, errCode = %d", new Object[] { Integer.valueOf(getType()), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    ae.i("MicroMsg.NetSceneShareCardItem", "onGYNetEnd, cmdType = %d, errType = %d, errCode = %d", new Object[] { Integer.valueOf(getType()), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      ad.i("MicroMsg.NetSceneShareCardItem", "do ShareCardItem netscene success!");
-      paramq = (ddh)this.rr.hNL.hNQ;
+      ae.i("MicroMsg.NetSceneShareCardItem", "do ShareCardItem netscene success!");
+      paramq = (deb)this.rr.hQE.hQJ;
       if (paramq != null)
       {
-        this.ozQ = paramq.ozQ;
-        this.ozR = paramq.ozR;
-        this.ozS = paramq.ozS;
+        this.oGs = paramq.oGs;
+        this.oGt = paramq.oGt;
+        this.oGu = paramq.oGu;
       }
     }
     for (;;)
@@ -85,12 +85,12 @@ public final class g
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
       AppMethodBeat.o(112973);
       return;
-      paramq = (ddh)this.rr.hNL.hNQ;
+      paramq = (deb)this.rr.hQE.hQJ;
       if (paramq != null)
       {
-        this.ozQ = paramq.ozQ;
-        this.ozR = paramq.ozR;
-        this.ozS = paramq.ozS;
+        this.oGs = paramq.oGs;
+        this.oGt = paramq.oGt;
+        this.oGu = paramq.oGu;
       }
     }
   }

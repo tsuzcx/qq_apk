@@ -3,29 +3,29 @@ package com.tencent.mm.plugin.recordvideo.ui.editor.item.a;
 import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.graphics.Paint;
-import com.tencent.mm.protocal.protobuf.afx;
+import com.tencent.mm.protocal.protobuf.agg;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/draw/BaseEditorItem;", "", "matrix", "Landroid/graphics/Matrix;", "(Landroid/graphics/Matrix;)V", "currFrameTime", "", "getCurrFrameTime", "()J", "setCurrFrameTime", "(J)V", "getMatrix", "()Landroid/graphics/Matrix;", "setMatrix", "selectTimeMs", "getSelectTimeMs", "setSelectTimeMs", "timeRange", "Lcom/tencent/mm/protocal/protobuf/EditTimeRange;", "getTimeRange", "()Lcom/tencent/mm/protocal/protobuf/EditTimeRange;", "setTimeRange", "(Lcom/tencent/mm/protocal/protobuf/EditTimeRange;)V", "consumeTime", "lastFrameTime", "destroy", "", "draw", "canvas", "Landroid/graphics/Canvas;", "paint", "Landroid/graphics/Paint;", "init", "prepareNext", "seekTo", "timeMs", "showAtTime", "", "plugin-recordvideo_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/draw/BaseEditorItem;", "", "matrix", "Landroid/graphics/Matrix;", "(Landroid/graphics/Matrix;)V", "currFrameTime", "", "getCurrFrameTime", "()J", "setCurrFrameTime", "(J)V", "getMatrix", "()Landroid/graphics/Matrix;", "setMatrix", "selectTimeMs", "getSelectTimeMs", "setSelectTimeMs", "timeRange", "Lcom/tencent/mm/protocal/protobuf/EditTimeRange;", "getTimeRange", "()Lcom/tencent/mm/protocal/protobuf/EditTimeRange;", "setTimeRange", "(Lcom/tencent/mm/protocal/protobuf/EditTimeRange;)V", "consumeTime", "lastFrameTime", "destroy", "", "draw", "canvas", "Landroid/graphics/Canvas;", "paint", "Landroid/graphics/Paint;", "init", "prepareNext", "seekTo", "timeMs", "showAtTime", "", "plugin-recordvideo_release"})
 public abstract class a
 {
   Matrix gR;
-  long pRV;
-  public afx xPq;
-  private long xPr;
+  long pYA;
+  public agg yfj;
+  private long yfk;
   
   public a(Matrix paramMatrix)
   {
     this.gR = paramMatrix;
   }
   
-  protected final boolean dIf()
+  protected final boolean dLw()
   {
-    afx localafx = this.xPq;
-    return (localafx == null) || ((this.xPr >= localafx.start) && (this.xPr <= localafx.bpc));
+    agg localagg = this.yfj;
+    return (localagg == null) || ((this.yfk >= localagg.start) && (this.yfk <= localagg.bpc));
   }
   
-  public abstract long dIg();
+  public abstract long dLx();
   
   public abstract void destroy();
   
@@ -35,21 +35,21 @@ public abstract class a
   
   public void seekTo(long paramLong)
   {
-    this.xPr = paramLong;
+    this.yfk = paramLong;
   }
   
-  public long yO(long paramLong)
+  public long zm(long paramLong)
   {
-    while (this.pRV <= paramLong) {
-      this.pRV += dIg();
+    while (this.pYA <= paramLong) {
+      this.pYA += dLx();
     }
-    this.pRV -= paramLong;
-    return this.pRV;
+    this.pYA -= paramLong;
+    return this.pYA;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.ui.editor.item.a.a
  * JD-Core Version:    0.7.0.1
  */

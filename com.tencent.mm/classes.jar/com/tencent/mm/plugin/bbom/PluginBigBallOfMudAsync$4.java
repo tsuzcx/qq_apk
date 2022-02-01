@@ -11,10 +11,10 @@ final class PluginBigBallOfMudAsync$4
 {
   PluginBigBallOfMudAsync$4(PluginBigBallOfMudAsync paramPluginBigBallOfMudAsync) {}
   
-  public final MMWebView eo(Context paramContext)
+  public final MMWebView es(Context paramContext)
   {
     AppMethodBeat.i(22422);
-    paramContext = MMWebViewWithJsApi.a.gZ(paramContext);
+    paramContext = MMWebViewWithJsApi.a.hf(paramContext);
     AppMethodBeat.o(22422);
     return paramContext;
   }

@@ -10,7 +10,7 @@ public abstract interface b
   
   public abstract boolean isDownloading();
   
-  public abstract boolean lz(Context paramContext);
+  public abstract boolean lF(Context paramContext);
   
   public abstract void startDownload(Context paramContext, boolean paramBoolean);
   

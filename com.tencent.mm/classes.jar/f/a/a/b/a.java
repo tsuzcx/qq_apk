@@ -2,8 +2,8 @@ package f.a.a.b;
 
 public final class a
 {
-  static final int Nsg = 16;
-  static final int Nsh = 26;
+  static final int NPm = 16;
+  static final int NPn = 26;
   
   public static int bC(int paramInt1, int paramInt2)
   {

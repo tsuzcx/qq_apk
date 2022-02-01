@@ -4,17 +4,17 @@ import android.net.Uri;
 import android.os.Looper;
 import android.os.SystemClock;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.az.c;
-import com.tencent.mm.az.f;
-import com.tencent.mm.g.a.mf;
+import com.tencent.mm.ay.c;
+import com.tencent.mm.ay.f;
+import com.tencent.mm.g.a.mg;
 import com.tencent.mm.plugin.music.cache.g;
 import com.tencent.mm.plugin.music.e.d;
 import com.tencent.mm.plugin.music.e.k;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.ay;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.platformtools.az;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.qqmusic.mediaplayer.AudioFormat.AudioType;
 import com.tencent.qqmusic.mediaplayer.AudioInformation;
 import com.tencent.qqmusic.mediaplayer.BaseMediaPlayer;
@@ -27,68 +27,68 @@ public final class e
 {
   AudioFormat.AudioType audioType;
   int bFv;
-  String dcG;
-  int ddx;
-  private com.tencent.mm.plugin.music.g.a.b wiB;
-  private long wiC;
-  private boolean wiD;
-  private PlayerListenerCallback wiF;
-  CommonPlayer wiw;
-  boolean wiy;
-  f wjT;
-  private c wjU;
-  public boolean wkh;
-  a wmj;
-  private String wmk;
+  String ddI;
+  int dez;
+  a wBS;
+  private String wBT;
+  CommonPlayer wyb;
+  boolean wyd;
+  private com.tencent.mm.plugin.music.g.a.b wyg;
+  private long wyh;
+  private boolean wyi;
+  private PlayerListenerCallback wyk;
+  public boolean wzM;
+  f wzy;
+  private c wzz;
   
   public e()
   {
     AppMethodBeat.i(137361);
-    this.dcG = "";
+    this.ddI = "";
     this.bFv = 0;
-    this.ddx = 0;
-    this.wiC = 0L;
+    this.dez = 0;
+    this.wyh = 0L;
     this.audioType = AudioFormat.AudioType.UNSUPPORT;
-    this.wiD = false;
-    this.wkh = false;
-    this.wiF = new PlayerListenerCallback()
+    this.wyi = false;
+    this.wzM = false;
+    this.wyk = new PlayerListenerCallback()
     {
-      f wml = null;
+      f wBU = null;
       
-      private void dtz()
+      private void dwO()
       {
         AppMethodBeat.i(137359);
-        ad.i("MicroMsg.Music.QQMusicPlayer", "_onPrepared");
-        if (e.this.ddx != 0)
+        ae.i("MicroMsg.Music.QQMusicPlayer", "_onPrepared");
+        if (e.this.dez != 0)
         {
-          ad.i("MicroMsg.Music.QQMusicPlayer", "seek to startTime:%d", new Object[] { Integer.valueOf(e.this.ddx) });
-          e.this.pO(e.this.ddx);
+          ae.i("MicroMsg.Music.QQMusicPlayer", "seek to startTime:%d", new Object[] { Integer.valueOf(e.this.dez) });
+          e.this.pR(e.this.dez);
           AppMethodBeat.o(137359);
           return;
         }
-        ad.i("MicroMsg.Music.QQMusicPlayer", "start to play");
-        if (k.dtc().requestFocus())
+        ae.i("MicroMsg.Music.QQMusicPlayer", "start to play");
+        if (k.dwr().requestFocus())
         {
-          if (e.this.wjT == null)
+          if (e.this.wzy == null)
           {
-            ad.e("MicroMsg.Music.QQMusicPlayer", "cbMusic is null");
+            ae.e("MicroMsg.Music.QQMusicPlayer", "cbMusic is null");
             AppMethodBeat.o(137359);
             return;
           }
-          e.this.D(e.this.wjT);
+          e.this.D(e.this.wzy);
           try
           {
-            if (e.this.wiw != null)
+            if (e.this.wyb != null)
             {
-              e.this.wiw.start();
-              if ((e.this.wiw.getCurrentAudioInformation() != null) && (e.this.wiw.getCurrentAudioInformation().getAudioType() != null))
+              e.this.wyb.start();
+              if ((e.this.wyb.getCurrentAudioInformation() != null) && (e.this.wyb.getCurrentAudioInformation().getAudioType() != null))
               {
-                ad.i("MicroMsg.Music.QQMusicPlayer", "getAudioType:%d", new Object[] { Integer.valueOf(e.this.wiw.getCurrentAudioInformation().getAudioType().getValue()) });
-                e.this.audioType = e.this.wiw.getCurrentAudioInformation().getAudioType();
+                ae.i("MicroMsg.Music.QQMusicPlayer", "getAudioType:%d", new Object[] { Integer.valueOf(e.this.wyb.getCurrentAudioInformation().getAudioType().getValue()) });
+                e.this.audioType = e.this.wyb.getCurrentAudioInformation().getAudioType();
                 e.b(e.this);
               }
             }
-            e.this.wiy = true;
+            e.this.wyd = true;
             AppMethodBeat.o(137359);
             return;
           }
@@ -96,13 +96,13 @@ public final class e
           {
             for (;;)
             {
-              ad.printErrStackTrace("MicroMsg.Music.QQMusicPlayer", localException, "_onPrepared", new Object[0]);
-              e.this.d(e.this.wjT, 502);
-              e.a(e.this, e.this.wjT, 502);
+              ae.printErrStackTrace("MicroMsg.Music.QQMusicPlayer", localException, "_onPrepared", new Object[0]);
+              e.this.d(e.this.wzy, 502);
+              e.a(e.this, e.this.wzy, 502);
             }
           }
         }
-        ad.e("MicroMsg.Music.QQMusicPlayer", "request focus error");
+        ae.e("MicroMsg.Music.QQMusicPlayer", "request focus error");
         AppMethodBeat.o(137359);
       }
       
@@ -111,58 +111,58 @@ public final class e
       public final void onCompletion(BaseMediaPlayer paramAnonymousBaseMediaPlayer)
       {
         AppMethodBeat.i(137353);
-        ad.i("MicroMsg.Music.QQMusicPlayer", "onCompletion");
+        ae.i("MicroMsg.Music.QQMusicPlayer", "onCompletion");
         AppMethodBeat.o(137353);
       }
       
       public final void onError(BaseMediaPlayer paramAnonymousBaseMediaPlayer, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3)
       {
         AppMethodBeat.i(137355);
-        ad.e("MicroMsg.Music.QQMusicPlayer", "onError what:%d, extra:%d, errCode:%d", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), Integer.valueOf(paramAnonymousInt3) });
-        paramAnonymousBaseMediaPlayer = k.dta().dsL();
+        ae.e("MicroMsg.Music.QQMusicPlayer", "onError what:%d, extra:%d, errCode:%d", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), Integer.valueOf(paramAnonymousInt3) });
+        paramAnonymousBaseMediaPlayer = k.dwp().dwa();
         if (paramAnonymousBaseMediaPlayer == null)
         {
-          ad.e("MicroMsg.Music.QQMusicPlayer", "onError, currentMusic is null");
+          ae.e("MicroMsg.Music.QQMusicPlayer", "onError, currentMusic is null");
           AppMethodBeat.o(137355);
           return;
         }
-        this.wml = e.this.wjT;
-        if (this.wml == null)
+        this.wBU = e.this.wzy;
+        if (this.wBU == null)
         {
-          ad.e("MicroMsg.Music.QQMusicPlayer", "onError, cbMusic is null");
+          ae.e("MicroMsg.Music.QQMusicPlayer", "onError, cbMusic is null");
           AppMethodBeat.o(137355);
           return;
         }
-        boolean bool = ay.isNetworkConnected(aj.getContext());
+        boolean bool = az.isNetworkConnected(ak.getContext());
         if ((paramAnonymousInt2 == 80) && (bool)) {
-          ad.e("MicroMsg.Music.QQMusicPlayer", "connect success, but download is fail!");
+          ae.e("MicroMsg.Music.QQMusicPlayer", "connect success, but download is fail!");
         }
         if (e.this.bFv > 0)
         {
-          ad.e("MicroMsg.Music.QQMusicPlayer", "errorCount %d", new Object[] { Integer.valueOf(e.this.bFv) });
+          ae.e("MicroMsg.Music.QQMusicPlayer", "errorCount %d", new Object[] { Integer.valueOf(e.this.bFv) });
           AppMethodBeat.o(137355);
           return;
         }
         e locale = e.this;
         locale.bFv += 1;
         e.a(e.this);
-        e.a(e.this, this.wml, paramAnonymousInt2);
-        if (paramAnonymousBaseMediaPlayer.f(this.wml))
+        e.a(e.this, this.wBU, paramAnonymousInt2);
+        if (paramAnonymousBaseMediaPlayer.f(this.wBU))
         {
           e.this.stopPlay();
-          aq.f(new e.1.1(this));
+          ar.f(new e.1.1(this));
         }
-        e.this.H(this.wml);
-        e.this.d(this.wml, paramAnonymousInt2);
-        if (e.this.wmj != null)
+        e.this.H(this.wBU);
+        e.this.d(this.wBU, paramAnonymousInt2);
+        if (e.this.wBS != null)
         {
-          e.this.wmj.isStop = true;
-          e.this.wmj = null;
+          e.this.wBS.isStop = true;
+          e.this.wBS = null;
         }
         if ((paramAnonymousInt1 == 91) && (paramAnonymousInt2 == 55))
         {
-          ad.i("MicroMsg.Music.QQMusicPlayer", "unknow format ,delete file");
-          g.ast(e.this.dcG);
+          ae.i("MicroMsg.Music.QQMusicPlayer", "unknow format ,delete file");
+          g.atH(e.this.ddI);
         }
         AppMethodBeat.o(137355);
       }
@@ -170,34 +170,34 @@ public final class e
       public final void onPrepared(BaseMediaPlayer paramAnonymousBaseMediaPlayer)
       {
         AppMethodBeat.i(137356);
-        ad.i("MicroMsg.Music.QQMusicPlayer", "onPrepared");
+        ae.i("MicroMsg.Music.QQMusicPlayer", "onPrepared");
         AppMethodBeat.o(137356);
       }
       
       public final void onSeekComplete(BaseMediaPlayer paramAnonymousBaseMediaPlayer, int paramAnonymousInt)
       {
         AppMethodBeat.i(137354);
-        ad.i("MicroMsg.Music.QQMusicPlayer", "onSeekComplete seekPosition:%d", new Object[] { Integer.valueOf(paramAnonymousInt) });
-        if (e.this.ddx != 0)
+        ae.i("MicroMsg.Music.QQMusicPlayer", "onSeekComplete seekPosition:%d", new Object[] { Integer.valueOf(paramAnonymousInt) });
+        if (e.this.dez != 0)
         {
-          ad.i("MicroMsg.Music.QQMusicPlayer", "seek complete to startTime :%d", new Object[] { Integer.valueOf(e.this.ddx) });
-          e.this.ddx = 0;
-          dtz();
+          ae.i("MicroMsg.Music.QQMusicPlayer", "seek complete to startTime :%d", new Object[] { Integer.valueOf(e.this.dez) });
+          e.this.dez = 0;
+          dwO();
           AppMethodBeat.o(137354);
           return;
         }
-        ad.i("MicroMsg.Music.QQMusicPlayer", "_onSeekComplete");
-        if (this.wml == null)
+        ae.i("MicroMsg.Music.QQMusicPlayer", "_onSeekComplete");
+        if (this.wBU == null)
         {
-          ad.e("MicroMsg.Music.QQMusicPlayer", "cbMusic is null");
+          ae.e("MicroMsg.Music.QQMusicPlayer", "cbMusic is null");
           AppMethodBeat.o(137354);
           return;
         }
-        e.this.I(this.wml);
-        if (e.this.aJG())
+        e.this.I(this.wBU);
+        if (e.this.aJZ())
         {
-          ad.i("MicroMsg.Music.QQMusicPlayer", "seek end, send play event!");
-          e.this.F(this.wml);
+          ae.i("MicroMsg.Music.QQMusicPlayer", "seek end, send play event!");
+          e.this.F(this.wBU);
         }
         AppMethodBeat.o(137354);
       }
@@ -205,176 +205,176 @@ public final class e
       public final void onStarted(BaseMediaPlayer paramAnonymousBaseMediaPlayer)
       {
         AppMethodBeat.i(137358);
-        ad.i("MicroMsg.Music.QQMusicPlayer", "onStarted");
+        ae.i("MicroMsg.Music.QQMusicPlayer", "onStarted");
         AppMethodBeat.o(137358);
       }
       
       public final void onStateChanged(BaseMediaPlayer paramAnonymousBaseMediaPlayer, int paramAnonymousInt)
       {
         AppMethodBeat.i(137357);
-        ad.i("MicroMsg.Music.QQMusicPlayer", "onStateChanged state %d", new Object[] { Integer.valueOf(paramAnonymousInt) });
+        ae.i("MicroMsg.Music.QQMusicPlayer", "onStateChanged state %d", new Object[] { Integer.valueOf(paramAnonymousInt) });
         if (paramAnonymousInt == 3)
         {
-          ad.i("MicroMsg.Music.QQMusicPlayer", "onStateChanged PREPARING!");
-          ad.i("MicroMsg.Music.QQMusicPlayer", "_onPreparing");
-          this.wml = e.this.wjT;
-          if (this.wml == null)
+          ae.i("MicroMsg.Music.QQMusicPlayer", "onStateChanged PREPARING!");
+          ae.i("MicroMsg.Music.QQMusicPlayer", "_onPreparing");
+          this.wBU = e.this.wzy;
+          if (this.wBU == null)
           {
-            ad.e("MicroMsg.Music.QQMusicPlayer", "cbMusic is null");
+            ae.e("MicroMsg.Music.QQMusicPlayer", "cbMusic is null");
             AppMethodBeat.o(137357);
             return;
           }
-          e.this.C(this.wml);
+          e.this.C(this.wBU);
           AppMethodBeat.o(137357);
           return;
         }
         if (paramAnonymousInt == 2)
         {
-          ad.i("MicroMsg.Music.QQMusicPlayer", "onStateChanged PREPARED!");
-          dtz();
+          ae.i("MicroMsg.Music.QQMusicPlayer", "onStateChanged PREPARED!");
+          dwO();
           AppMethodBeat.o(137357);
           return;
         }
         if (paramAnonymousInt == 4)
         {
-          ad.i("MicroMsg.Music.QQMusicPlayer", "onStateChanged STARTED!");
-          ad.i("MicroMsg.Music.QQMusicPlayer", "_onStart");
-          this.wml = e.this.wjT;
-          if (this.wml == null)
+          ae.i("MicroMsg.Music.QQMusicPlayer", "onStateChanged STARTED!");
+          ae.i("MicroMsg.Music.QQMusicPlayer", "_onStart");
+          this.wBU = e.this.wzy;
+          if (this.wBU == null)
           {
-            ad.e("MicroMsg.Music.QQMusicPlayer", "cbMusic is null");
+            ae.e("MicroMsg.Music.QQMusicPlayer", "cbMusic is null");
             AppMethodBeat.o(137357);
             return;
           }
-          e.this.hLG = SystemClock.elapsedRealtime();
-          if (e.this.wlR == "pause") {
-            e.this.F(this.wml);
+          e.this.hOz = SystemClock.elapsedRealtime();
+          if (e.this.wBA == "pause") {
+            e.this.F(this.wBU);
           }
           for (;;)
           {
-            if (e.this.wmj != null) {
-              e.this.wmj.isStop = true;
+            if (e.this.wBS != null) {
+              e.this.wBS.isStop = true;
             }
-            e.this.wmj = new e.a(e.this, (byte)0);
-            paramAnonymousBaseMediaPlayer = e.this.wmj;
+            e.this.wBS = new e.a(e.this, (byte)0);
+            paramAnonymousBaseMediaPlayer = e.this.wBS;
             paramAnonymousBaseMediaPlayer.isStop = false;
             com.tencent.mm.sdk.g.b.c(paramAnonymousBaseMediaPlayer, "music_play_progress_runnable");
             AppMethodBeat.o(137357);
             return;
-            e.this.E(this.wml);
+            e.this.E(this.wBU);
           }
         }
         if (paramAnonymousInt == 5)
         {
-          ad.i("MicroMsg.Music.QQMusicPlayer", "onStateChanged PAUSED!");
-          ad.i("MicroMsg.Music.QQMusicPlayer", "_onPause");
-          if (this.wml == null)
+          ae.i("MicroMsg.Music.QQMusicPlayer", "onStateChanged PAUSED!");
+          ae.i("MicroMsg.Music.QQMusicPlayer", "_onPause");
+          if (this.wBU == null)
           {
-            ad.e("MicroMsg.Music.QQMusicPlayer", "cbMusic is null");
+            ae.e("MicroMsg.Music.QQMusicPlayer", "cbMusic is null");
             AppMethodBeat.o(137357);
             return;
           }
           paramAnonymousBaseMediaPlayer = e.this;
-          paramAnonymousBaseMediaPlayer.wlU += SystemClock.elapsedRealtime() - e.this.hLG;
-          e.this.G(this.wml);
+          paramAnonymousBaseMediaPlayer.wBD += SystemClock.elapsedRealtime() - e.this.hOz;
+          e.this.G(this.wBU);
           AppMethodBeat.o(137357);
           return;
         }
         if (paramAnonymousInt == 6)
         {
-          ad.i("MicroMsg.Music.QQMusicPlayer", "onStateChanged STOPPED!");
-          ad.i("MicroMsg.Music.QQMusicPlayer", "_onStop");
-          if (this.wml == null)
+          ae.i("MicroMsg.Music.QQMusicPlayer", "onStateChanged STOPPED!");
+          ae.i("MicroMsg.Music.QQMusicPlayer", "_onStop");
+          if (this.wBU == null)
           {
-            ad.e("MicroMsg.Music.QQMusicPlayer", "cbMusic is null");
+            ae.e("MicroMsg.Music.QQMusicPlayer", "cbMusic is null");
             AppMethodBeat.o(137357);
             return;
           }
-          paramAnonymousBaseMediaPlayer = k.dta().dsL();
+          paramAnonymousBaseMediaPlayer = k.dwp().dwa();
           if (paramAnonymousBaseMediaPlayer == null)
           {
-            ad.e("MicroMsg.Music.QQMusicPlayer", "currentMusic is null");
+            ae.e("MicroMsg.Music.QQMusicPlayer", "currentMusic is null");
             AppMethodBeat.o(137357);
             return;
           }
-          if (paramAnonymousBaseMediaPlayer.f(this.wml))
+          if (paramAnonymousBaseMediaPlayer.f(this.wBU))
           {
-            e.this.H(this.wml);
+            e.this.H(this.wBU);
             AppMethodBeat.o(137357);
             return;
           }
-          paramAnonymousBaseMediaPlayer = this.wml;
-          ad.i("MicroMsg.Music.BaseMusicPlayer", "onStopForReportEvent");
-          mf localmf = new mf();
-          localmf.dzK.action = 18;
-          localmf.dzK.dzE = paramAnonymousBaseMediaPlayer;
-          com.tencent.mm.sdk.b.a.IbL.a(localmf, Looper.getMainLooper());
+          paramAnonymousBaseMediaPlayer = this.wBU;
+          ae.i("MicroMsg.Music.BaseMusicPlayer", "onStopForReportEvent");
+          mg localmg = new mg();
+          localmg.dAP.action = 18;
+          localmg.dAP.dAJ = paramAnonymousBaseMediaPlayer;
+          com.tencent.mm.sdk.b.a.IvT.a(localmg, Looper.getMainLooper());
           AppMethodBeat.o(137357);
           return;
         }
         if (paramAnonymousInt == 7)
         {
-          ad.i("MicroMsg.Music.QQMusicPlayer", "onStateChanged PLAYBACKCOMPLETED!");
-          ad.i("MicroMsg.Music.QQMusicPlayer", "_onCompletion");
-          if (this.wml == null)
+          ae.i("MicroMsg.Music.QQMusicPlayer", "onStateChanged PLAYBACKCOMPLETED!");
+          ae.i("MicroMsg.Music.QQMusicPlayer", "_onCompletion");
+          if (this.wBU == null)
           {
-            ad.e("MicroMsg.Music.QQMusicPlayer", "cbMusic is null");
+            ae.e("MicroMsg.Music.QQMusicPlayer", "cbMusic is null");
             AppMethodBeat.o(137357);
             return;
           }
           e.a(e.this);
-          e.this.wiy = false;
-          e.this.K(e.this.wjT);
-          if (e.this.wmj != null)
+          e.this.wyd = false;
+          e.this.K(e.this.wzy);
+          if (e.this.wBS != null)
           {
-            e.this.wmj.isStop = true;
-            e.this.wmj = null;
+            e.this.wBS.isStop = true;
+            e.this.wBS = null;
           }
           AppMethodBeat.o(137357);
           return;
         }
         if (paramAnonymousInt == 8)
         {
-          ad.i("MicroMsg.Music.QQMusicPlayer", "onStateChanged END!");
-          ad.i("MicroMsg.Music.QQMusicPlayer", "_onEnd");
+          ae.i("MicroMsg.Music.QQMusicPlayer", "onStateChanged END!");
+          ae.i("MicroMsg.Music.QQMusicPlayer", "_onEnd");
           AppMethodBeat.o(137357);
           return;
         }
         if (paramAnonymousInt == 9) {
-          ad.i("MicroMsg.Music.QQMusicPlayer", "onStateChanged ERROR!");
+          ae.i("MicroMsg.Music.QQMusicPlayer", "onStateChanged ERROR!");
         }
         AppMethodBeat.o(137357);
       }
     };
-    com.tencent.mm.plugin.music.f.a.a.dtA();
+    com.tencent.mm.plugin.music.f.a.a.dwP();
     AppMethodBeat.o(137361);
   }
   
   private void bm(float paramFloat)
   {
-    AppMethodBeat.i(194990);
-    if (this.wiw == null)
+    AppMethodBeat.i(195459);
+    if (this.wyb == null)
     {
-      AppMethodBeat.o(194990);
+      AppMethodBeat.o(195459);
       return;
     }
     if ((paramFloat >= 0.5F) && (paramFloat <= 2.0F))
     {
-      ad.i("MicroMsg.Music.QQMusicPlayer", "set speed :%f", new Object[] { Float.valueOf(paramFloat) });
-      this.wiw.setSpeed(paramFloat);
-      AppMethodBeat.o(194990);
+      ae.i("MicroMsg.Music.QQMusicPlayer", "set speed :%f", new Object[] { Float.valueOf(paramFloat) });
+      this.wyb.setSpeed(paramFloat);
+      AppMethodBeat.o(195459);
       return;
     }
-    this.wiw.setSpeed(1.0F);
-    AppMethodBeat.o(194990);
+    this.wyb.setSpeed(1.0F);
+    AppMethodBeat.o(195459);
   }
   
-  private boolean cMm()
+  private boolean cOU()
   {
     AppMethodBeat.i(137369);
-    if (this.wiw != null)
+    if (this.wyb != null)
     {
-      if (this.wiw.getPlayerState() == 3)
+      if (this.wyb.getPlayerState() == 3)
       {
         AppMethodBeat.o(137369);
         return true;
@@ -386,16 +386,16 @@ public final class e
     return false;
   }
   
-  private void dty()
+  private void dwN()
   {
     AppMethodBeat.i(137379);
-    if (this.wiw != null)
+    if (this.wyb != null)
     {
-      this.bmD = dsc();
-      this.wlU += SystemClock.elapsedRealtime() - this.hLG;
+      this.bmD = dvr();
+      this.wBD += SystemClock.elapsedRealtime() - this.hOz;
       this.duration = getDuration();
-      if (this.wlS != null) {
-        this.wlS.a(this.wjT, this.bmD, this.wlU, this.duration);
+      if (this.wBB != null) {
+        this.wBB.a(this.wzy, this.bmD, this.wBD, this.duration);
       }
     }
     AppMethodBeat.o(137379);
@@ -404,27 +404,27 @@ public final class e
   private void e(f paramf, int paramInt)
   {
     AppMethodBeat.i(137378);
-    if (this.wlS != null) {
-      this.wlS.b(paramf, paramInt);
+    if (this.wBB != null) {
+      this.wBB.b(paramf, paramInt);
     }
     AppMethodBeat.o(137378);
   }
   
   private void setVolume(float paramFloat)
   {
-    AppMethodBeat.i(194991);
-    if ((this.wiw != null) && (paramFloat >= 0.0F)) {
-      this.wiw.setVolume(paramFloat, paramFloat);
+    AppMethodBeat.i(195460);
+    if ((this.wyb != null) && (paramFloat >= 0.0F)) {
+      this.wyb.setVolume(paramFloat, paramFloat);
     }
-    AppMethodBeat.o(194991);
+    AppMethodBeat.o(195460);
   }
   
-  public final boolean aJG()
+  public final boolean aJZ()
   {
     AppMethodBeat.i(137368);
-    if (this.wiw != null)
+    if (this.wyb != null)
     {
-      if (this.wiw.getPlayerState() == 4)
+      if (this.wyb.getPlayerState() == 4)
       {
         AppMethodBeat.o(137368);
         return true;
@@ -436,15 +436,15 @@ public final class e
     return false;
   }
   
-  public final boolean aJH()
+  public final boolean aKa()
   {
-    return (this.wiy) && (this.wkh);
+    return (this.wyd) && (this.wzM);
   }
   
-  public final boolean aJI()
+  public final boolean aKb()
   {
     AppMethodBeat.i(137370);
-    if ((this.wiy) && (!cMm()))
+    if ((this.wyd) && (!cOU()))
     {
       AppMethodBeat.o(137370);
       return true;
@@ -453,43 +453,43 @@ public final class e
     return false;
   }
   
-  public final void drJ()
+  public final void duX()
   {
     AppMethodBeat.i(137366);
-    this.wkh = true;
-    ad.i("MicroMsg.Music.QQMusicPlayer", "passivePause");
-    if ((this.wiw != null) && (aJG())) {
+    this.wzM = true;
+    ae.i("MicroMsg.Music.QQMusicPlayer", "passivePause");
+    if ((this.wyb != null) && (aJZ())) {
       try
       {
-        this.wiw.pause();
+        this.wyb.pause();
         AppMethodBeat.o(137366);
         return;
       }
       catch (Exception localException)
       {
-        ad.printErrStackTrace("MicroMsg.Music.QQMusicPlayer", localException, "passivePause", new Object[0]);
-        d(this.wjT, 503);
-        e(this.wjT, 503);
+        ae.printErrStackTrace("MicroMsg.Music.QQMusicPlayer", localException, "passivePause", new Object[0]);
+        d(this.wzy, 503);
+        e(this.wzy, 503);
       }
     }
     AppMethodBeat.o(137366);
   }
   
-  public final boolean drK()
+  public final boolean duY()
   {
     return true;
   }
   
-  public final c drL()
+  public final c duZ()
   {
     int m = 0;
     int k = 0;
     AppMethodBeat.i(137375);
     int n = getDuration();
-    int i1 = dsc();
-    boolean bool = aJG();
-    if (this.wiw != null) {}
-    for (int j = this.wiw.getBufferedPercentage();; j = 0)
+    int i1 = dvr();
+    boolean bool = aJZ();
+    if (this.wyb != null) {}
+    for (int j = this.wyb.getBufferedPercentage();; j = 0)
     {
       int i;
       if (j >= 0)
@@ -506,9 +506,9 @@ public final class e
         j = 0;
       }
       c localc;
-      if (this.wjU != null)
+      if (this.wzz != null)
       {
-        localc = this.wjU;
+        localc = this.wzz;
         i = k;
         if (bool) {
           i = 1;
@@ -517,43 +517,43 @@ public final class e
       }
       for (;;)
       {
-        this.wjU.dzM = true;
-        this.wjU.ihb = dtt();
-        localc = this.wjU;
+        this.wzz.dAR = true;
+        this.wzz.ijU = dwI();
+        localc = this.wzz;
         AppMethodBeat.o(137375);
         return localc;
         i = m;
         if (bool) {
           i = 1;
         }
-        this.wjU = new c(n, i1, i, j);
+        this.wzz = new c(n, i1, i, j);
       }
     }
   }
   
-  public final void drX()
-  {
-    AppMethodBeat.i(137365);
-    ad.i("MicroMsg.Music.QQMusicPlayer", "pauseAndAbandonFocus");
-    pause();
-    k.dtc().bpH();
-    AppMethodBeat.o(137365);
-  }
-  
-  protected final void dsD()
+  protected final void dvS()
   {
     AppMethodBeat.i(137363);
-    this.wlS = ((d)com.tencent.mm.plugin.music.f.c.b.aQ(d.class));
-    this.wlT = k.dta().wkp;
+    this.wBB = ((d)com.tencent.mm.plugin.music.f.c.b.aQ(d.class));
+    this.wBC = k.dwp().wzU;
     AppMethodBeat.o(137363);
   }
   
-  public final int dsc()
+  public final void dvl()
+  {
+    AppMethodBeat.i(137365);
+    ae.i("MicroMsg.Music.QQMusicPlayer", "pauseAndAbandonFocus");
+    pause();
+    k.dwr().bqr();
+    AppMethodBeat.o(137365);
+  }
+  
+  public final int dvr()
   {
     AppMethodBeat.i(137372);
-    if (this.wiw != null)
+    if (this.wyb != null)
     {
-      int i = (int)this.wiw.getCurrentPosition();
+      int i = (int)this.wyb.getCurrentPosition();
       AppMethodBeat.o(137372);
       return i;
     }
@@ -561,21 +561,21 @@ public final class e
     return -1;
   }
   
-  public final void dse()
+  public final void dvt()
   {
     AppMethodBeat.i(137377);
-    f localf = k.dta().dsL();
+    f localf = k.dwp().dwa();
     if (localf == null)
     {
       AppMethodBeat.o(137377);
       return;
     }
-    if ((localf.f(this.wjT)) && (this.wiw != null) && (aJG()))
+    if ((localf.f(this.wzy)) && (this.wyb != null) && (aJZ()))
     {
-      int i = (int)this.wiw.getCurrentPosition();
-      int j = this.wiw.getDuration();
+      int i = (int)this.wyb.getCurrentPosition();
+      int j = this.wyb.getDuration();
       if ((i > 0) && (j > 0)) {
-        eZ(i, j);
+        fa(i, j);
       }
     }
     AppMethodBeat.o(137377);
@@ -584,9 +584,9 @@ public final class e
   public final int getDuration()
   {
     AppMethodBeat.i(137373);
-    if (this.wiw != null)
+    if (this.wyb != null)
     {
-      int i = this.wiw.getDuration();
+      int i = this.wyb.getDuration();
       AppMethodBeat.o(137373);
       return i;
     }
@@ -599,133 +599,133 @@ public final class e
     AppMethodBeat.i(137362);
     super.h(paramf);
     long l1 = System.currentTimeMillis();
-    long l2 = l1 - this.wiC;
-    if ((this.wjT != null) && (this.wjT.f(paramf)) && (l2 <= 3000L))
+    long l2 = l1 - this.wyh;
+    if ((this.wzy != null) && (this.wzy.f(paramf)) && (l2 <= 3000L))
     {
-      this.wjT = paramf;
-      ad.e("MicroMsg.Music.QQMusicPlayer", "startPlay, is playing for music src:%s, don't play again in 3 second, interval:%d", new Object[] { this.dcG, Long.valueOf(l2) });
+      this.wzy = paramf;
+      ae.e("MicroMsg.Music.QQMusicPlayer", "startPlay, is playing for music src:%s, don't play again in 3 second, interval:%d", new Object[] { this.ddI, Long.valueOf(l2) });
       AppMethodBeat.o(137362);
       return;
     }
     if (paramf == null)
     {
-      ad.e("MicroMsg.Music.QQMusicPlayer", "music is null");
+      ae.e("MicroMsg.Music.QQMusicPlayer", "music is null");
       AppMethodBeat.o(137362);
       return;
     }
     this.bmD = 0L;
-    this.hLG = SystemClock.elapsedRealtime();
-    this.wlU = 0L;
+    this.hOz = SystemClock.elapsedRealtime();
+    this.wBD = 0L;
     this.duration = 0L;
-    if (this.wlS != null) {
-      this.wlS.v(paramf);
+    if (this.wBB != null) {
+      this.wBB.v(paramf);
     }
-    this.wiC = l1;
-    this.wjT = paramf;
-    ad.i("MicroMsg.Music.QQMusicPlayer", "startPlay, currentTime:%d, startTime:%d", new Object[] { Long.valueOf(l1), Integer.valueOf(paramf.ddx) });
-    if ((this.wiw != null) && (aJG())) {
-      this.wiw.stop();
+    this.wyh = l1;
+    this.wzy = paramf;
+    ae.i("MicroMsg.Music.QQMusicPlayer", "startPlay, currentTime:%d, startTime:%d", new Object[] { Long.valueOf(l1), Integer.valueOf(paramf.dez) });
+    if ((this.wyb != null) && (aJZ())) {
+      this.wyb.stop();
     }
-    com.tencent.mm.plugin.music.f.a.a.dtB();
+    com.tencent.mm.plugin.music.f.a.a.dwQ();
     this.bFv = 0;
-    this.ddx = paramf.ddx;
+    this.dez = paramf.dez;
     this.audioType = null;
-    this.wiD = false;
-    ad.i("MicroMsg.Music.QQMusicPlayer", "initPlayer");
-    this.dcG = this.wjT.playUrl;
-    this.wmk = this.wjT.ihs;
-    ad.i("MicroMsg.Music.QQMusicPlayer", "mSrc:%s mSongLocalPath:%s", new Object[] { this.dcG, this.wmk });
-    ad.i("MicroMsg.Music.QQMusicPlayer", "field_songWifiUrl:%s", new Object[] { this.wjT.ihm });
-    if ((!bt.isNullOrNil(this.dcG)) && (bt.isNullOrNil(this.wmk)))
+    this.wyi = false;
+    ae.i("MicroMsg.Music.QQMusicPlayer", "initPlayer");
+    this.ddI = this.wzy.playUrl;
+    this.wBT = this.wzy.ikl;
+    ae.i("MicroMsg.Music.QQMusicPlayer", "mSrc:%s mSongLocalPath:%s", new Object[] { this.ddI, this.wBT });
+    ae.i("MicroMsg.Music.QQMusicPlayer", "field_songWifiUrl:%s", new Object[] { this.wzy.ikf });
+    if ((!bu.isNullOrNil(this.ddI)) && (bu.isNullOrNil(this.wBT)))
     {
-      g.asn(this.dcG);
-      g.ew(this.dcG, 0);
-      g.ex(this.dcG, 0);
+      g.atB(this.ddI);
+      g.eE(this.ddI, 0);
+      g.eF(this.ddI, 0);
     }
-    if (!bt.isNullOrNil(this.wmk))
+    if (!bu.isNullOrNil(this.wBT))
     {
-      ad.i("MicroMsg.Music.QQMusicPlayer", "play with local file, filePath:%s", new Object[] { this.wmk });
-      if (this.wiw == null) {
-        this.wiw = new CommonPlayer(this.wiF);
+      ae.i("MicroMsg.Music.QQMusicPlayer", "play with local file, filePath:%s", new Object[] { this.wBT });
+      if (this.wyb == null) {
+        this.wyb = new CommonPlayer(this.wyk);
       }
-      this.wiw.reset();
-      if (this.wmk.startsWith("file://")) {
-        this.wmk = this.wmk.substring(7);
+      this.wyb.reset();
+      if (this.wBT.startsWith("file://")) {
+        this.wBT = this.wBT.substring(7);
       }
     }
     for (;;)
     {
       try
       {
-        this.wiw.setDataSource(this.wmk);
-        this.wiw.prepare();
-        bm((float)this.wjT.hLI);
-        setVolume(this.wjT.volume);
-        dts();
+        this.wyb.setDataSource(this.wBT);
+        this.wyb.prepare();
+        bm((float)this.wzy.hOB);
+        setVolume(this.wzy.volume);
+        dwH();
         AppMethodBeat.o(137362);
         return;
       }
       catch (Exception paramf)
       {
-        ad.e("MicroMsg.Music.QQMusicPlayer", "initPlayer exception:" + paramf.getMessage());
-        ad.printErrStackTrace("MicroMsg.Music.QQMusicPlayer", paramf, "initPlayer", new Object[0]);
-        d(this.wjT, 501);
-        e(this.wjT, 501);
+        ae.e("MicroMsg.Music.QQMusicPlayer", "initPlayer exception:" + paramf.getMessage());
+        ae.printErrStackTrace("MicroMsg.Music.QQMusicPlayer", paramf, "initPlayer", new Object[0]);
+        d(this.wzy, 501);
+        e(this.wzy, 501);
         continue;
       }
       paramf = null;
       try
       {
-        URL localURL = new URL(this.dcG);
+        URL localURL = new URL(this.ddI);
         paramf = localURL;
       }
       catch (Exception localException)
       {
         for (;;)
         {
-          ad.printErrStackTrace("MicroMsg.Music.QQMusicPlayer", localException, "initPlayer", new Object[0]);
-          ad.e("MicroMsg.Music.QQMusicPlayer", "new URL exception:" + localException.getMessage());
+          ae.printErrStackTrace("MicroMsg.Music.QQMusicPlayer", localException, "initPlayer", new Object[0]);
+          ae.e("MicroMsg.Music.QQMusicPlayer", "new URL exception:" + localException.getMessage());
         }
-        if (this.wiw != null) {
+        if (this.wyb != null) {
           break label677;
         }
-        this.wiw = new CommonPlayer(this.wiF);
-        this.wiw.reset();
-        if (this.wiB != null) {
+        this.wyb = new CommonPlayer(this.wyk);
+        this.wyb.reset();
+        if (this.wyg != null) {
           break label702;
         }
-        this.wiB = new com.tencent.mm.plugin.music.g.a.b();
-        if (this.wjT != null) {
+        this.wyg = new com.tencent.mm.plugin.music.g.a.b();
+        if (this.wzy != null) {
           break label835;
         }
       }
       if (paramf != null) {
         break;
       }
-      ad.e("MicroMsg.Music.QQMusicPlayer", "initPlayer url is null");
-      d(this.wjT, 500);
-      e(this.wjT, 500);
+      ae.e("MicroMsg.Music.QQMusicPlayer", "initPlayer url is null");
+      d(this.wzy, 500);
+      e(this.wzy, 500);
     }
     label677:
     label702:
     label835:
-    for (String str = "invalidReferrer";; str = this.wjT.hLR)
+    for (String str = "invalidReferrer";; str = this.wzy.hOK)
     {
       for (;;)
       {
-        ad.i("MicroMsg.Music.QQMusicPlayer", "initPlayer, referrer: ".concat(String.valueOf(str)));
-        this.wiB.ik(this.dcG, str);
+        ae.i("MicroMsg.Music.QQMusicPlayer", "initPlayer, referrer: ".concat(String.valueOf(str)));
+        this.wyg.iq(this.ddI, str);
         try
         {
-          this.wiw.setDataSource(this.wiB, Uri.parse(paramf.toString()));
-          this.wiw.prepare();
+          this.wyb.setDataSource(this.wyg, Uri.parse(paramf.toString()));
+          this.wyb.prepare();
         }
         catch (Exception paramf)
         {
-          ad.e("MicroMsg.Music.QQMusicPlayer", "initPlayer exception:" + paramf.getMessage());
-          ad.printErrStackTrace("MicroMsg.Music.QQMusicPlayer", paramf, "initPlayer", new Object[0]);
-          d(this.wjT, 501);
-          e(this.wjT, 501);
+          ae.e("MicroMsg.Music.QQMusicPlayer", "initPlayer exception:" + paramf.getMessage());
+          ae.printErrStackTrace("MicroMsg.Music.QQMusicPlayer", paramf, "initPlayer", new Object[0]);
+          d(this.wzy, 501);
+          e(this.wzy, 501);
         }
       }
       break;
@@ -734,42 +734,42 @@ public final class e
   
   public final void m(f paramf)
   {
-    AppMethodBeat.i(194992);
-    if ((this.wjT != null) && (this.wjT.f(paramf)))
+    AppMethodBeat.i(195461);
+    if ((this.wzy != null) && (this.wzy.f(paramf)))
     {
-      ad.i("MicroMsg.Music.QQMusicPlayer", "updateCurrentMusicWrapper src:%s", new Object[] { this.dcG });
-      if ((paramf.hLI > 0.0D) && (paramf.hLI != this.wjT.hLI))
+      ae.i("MicroMsg.Music.QQMusicPlayer", "updateCurrentMusicWrapper src:%s", new Object[] { this.ddI });
+      if ((paramf.hOB > 0.0D) && (paramf.hOB != this.wzy.hOB))
       {
-        ad.i("MicroMsg.Music.QQMusicPlayer", "setPlaybackRate playbackRate:%f", new Object[] { Double.valueOf(paramf.hLI) });
-        bm((float)paramf.hLI);
-        this.wjT.hLI = paramf.hLI;
+        ae.i("MicroMsg.Music.QQMusicPlayer", "setPlaybackRate playbackRate:%f", new Object[] { Double.valueOf(paramf.hOB) });
+        bm((float)paramf.hOB);
+        this.wzy.hOB = paramf.hOB;
       }
-      if ((paramf.volume >= 0.0F) && (paramf.volume != this.wjT.volume))
+      if ((paramf.volume >= 0.0F) && (paramf.volume != this.wzy.volume))
       {
-        ad.i("MicroMsg.Music.QQMusicPlayer", "setVolume volume:%f", new Object[] { Float.valueOf(paramf.volume) });
+        ae.i("MicroMsg.Music.QQMusicPlayer", "setVolume volume:%f", new Object[] { Float.valueOf(paramf.volume) });
         setVolume(paramf.volume);
-        this.wjT.volume = paramf.volume;
+        this.wzy.volume = paramf.volume;
       }
     }
-    AppMethodBeat.o(194992);
+    AppMethodBeat.o(195461);
   }
   
-  public final boolean pO(int paramInt)
+  public final boolean pR(int paramInt)
   {
     AppMethodBeat.i(137374);
     int i = getDuration();
-    ad.i("MicroMsg.Music.QQMusicPlayer", "seekToMusic pos:%d, duration:%d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i) });
+    ae.i("MicroMsg.Music.QQMusicPlayer", "seekToMusic pos:%d, duration:%d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i) });
     if ((i < 0) || (paramInt > i))
     {
-      ad.e("MicroMsg.Music.QQMusicPlayer", "position is invalid, position:%d, duration:%d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i) });
+      ae.e("MicroMsg.Music.QQMusicPlayer", "position is invalid, position:%d, duration:%d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i) });
       stopPlay();
       AppMethodBeat.o(137374);
       return false;
     }
-    if (this.wiw != null)
+    if (this.wyb != null)
     {
-      J(this.wjT);
-      this.wiw.seekTo(paramInt);
+      J(this.wzy);
+      this.wyb.seekTo(paramInt);
     }
     AppMethodBeat.o(137374);
     return true;
@@ -778,20 +778,20 @@ public final class e
   public final void pause()
   {
     AppMethodBeat.i(137364);
-    this.wkh = false;
-    ad.i("MicroMsg.Music.QQMusicPlayer", "pause");
-    if ((this.wiw != null) && (aJG())) {
+    this.wzM = false;
+    ae.i("MicroMsg.Music.QQMusicPlayer", "pause");
+    if ((this.wyb != null) && (aJZ())) {
       try
       {
-        this.wiw.pause();
+        this.wyb.pause();
         AppMethodBeat.o(137364);
         return;
       }
       catch (Exception localException)
       {
-        ad.printErrStackTrace("MicroMsg.Music.QQMusicPlayer", localException, "pause", new Object[0]);
-        d(this.wjT, 503);
-        e(this.wjT, 503);
+        ae.printErrStackTrace("MicroMsg.Music.QQMusicPlayer", localException, "pause", new Object[0]);
+        d(this.wzy, 503);
+        e(this.wzy, 503);
       }
     }
     AppMethodBeat.o(137364);
@@ -800,13 +800,13 @@ public final class e
   public final void release()
   {
     AppMethodBeat.i(137376);
-    ad.i("MicroMsg.Music.QQMusicPlayer", "release");
-    if (this.wiw != null)
+    ae.i("MicroMsg.Music.QQMusicPlayer", "release");
+    if (this.wyb != null)
     {
-      this.wiw.release();
-      this.wiw = null;
+      this.wyb.release();
+      this.wyb = null;
     }
-    drI();
+    duW();
     AppMethodBeat.o(137376);
   }
   
@@ -814,58 +814,58 @@ public final class e
   {
     AppMethodBeat.i(137367);
     this.bFv = 0;
-    boolean bool1 = cMm();
-    boolean bool2 = aJG();
-    ad.i("MicroMsg.Music.QQMusicPlayer", "resume, isPreparing:%b, isPlayingMusic:%b", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) });
-    if ((this.wiw == null) || (bool1) || (bool2) || (k.dtc().requestFocus())) {}
+    boolean bool1 = cOU();
+    boolean bool2 = aJZ();
+    ae.i("MicroMsg.Music.QQMusicPlayer", "resume, isPreparing:%b, isPlayingMusic:%b", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) });
+    if ((this.wyb == null) || (bool1) || (bool2) || (k.dwr().requestFocus())) {}
     for (;;)
     {
       try
       {
-        this.wiw.start();
-        this.wiy = true;
+        this.wyb.start();
+        this.wyd = true;
         AppMethodBeat.o(137367);
         return;
       }
       catch (Exception localException)
       {
-        ad.printErrStackTrace("MicroMsg.Music.QQMusicPlayer", localException, "resume", new Object[0]);
-        d(this.wjT, 502);
-        e(this.wjT, 502);
+        ae.printErrStackTrace("MicroMsg.Music.QQMusicPlayer", localException, "resume", new Object[0]);
+        d(this.wzy, 502);
+        e(this.wzy, 502);
         continue;
       }
-      ad.e("MicroMsg.Music.QQMusicPlayer", "request focus error");
+      ae.e("MicroMsg.Music.QQMusicPlayer", "request focus error");
     }
   }
   
   public final void stopPlay()
   {
     AppMethodBeat.i(137371);
-    ad.i("MicroMsg.Music.QQMusicPlayer", "stopPlay");
+    ae.i("MicroMsg.Music.QQMusicPlayer", "stopPlay");
     try
     {
-      dty();
-      if (this.wiw != null) {
-        this.wiw.stop();
+      dwN();
+      if (this.wyb != null) {
+        this.wyb.stop();
       }
-      if (this.wmj != null)
+      if (this.wBS != null)
       {
-        this.wmj.isStop = true;
-        this.wmj = null;
+        this.wBS.isStop = true;
+        this.wBS = null;
       }
     }
     catch (Exception localException)
     {
       for (;;)
       {
-        ad.printErrStackTrace("MicroMsg.Music.QQMusicPlayer", localException, "stopPlay", new Object[0]);
-        d(this.wjT, 504);
-        e(this.wjT, 504);
+        ae.printErrStackTrace("MicroMsg.Music.QQMusicPlayer", localException, "stopPlay", new Object[0]);
+        d(this.wzy, 504);
+        e(this.wzy, 504);
       }
     }
-    k.dtc().bpH();
-    this.wiy = false;
-    this.wkh = false;
+    k.dwr().bqr();
+    this.wyd = false;
+    this.wzM = false;
     AppMethodBeat.o(137371);
   }
   
@@ -879,14 +879,14 @@ public final class e
     public final void run()
     {
       AppMethodBeat.i(137360);
-      ad.i("MicroMsg.Music.QQMusicPlayer", "start run play progress task");
+      ae.i("MicroMsg.Music.QQMusicPlayer", "start run play progress task");
       for (;;)
       {
         if (!this.isStop) {
           try
           {
-            if ((e.this.wiw != null) && (e.this.aJG())) {
-              e.this.dse();
+            if ((e.this.wyb != null) && (e.this.aJZ())) {
+              e.this.dvt();
             }
             try
             {
@@ -898,7 +898,7 @@ public final class e
           {
             for (;;)
             {
-              ad.e("MicroMsg.Music.QQMusicPlayer", "PlayProgressTask run exception:" + localException.getMessage());
+              ae.e("MicroMsg.Music.QQMusicPlayer", "PlayProgressTask run exception:" + localException.getMessage());
             }
           }
         }

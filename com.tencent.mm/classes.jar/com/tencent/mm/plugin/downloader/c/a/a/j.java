@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.downloader.c.a.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.cvc;
+import com.tencent.mm.protocal.protobuf.cvw;
 import com.tencent.mm.protocal.protobuf.jc;
 import f.a.a.b;
 import java.util.LinkedList;
 
 public final class j
-  extends cvc
+  extends cvw
 {
-  public String fJm;
-  public String pjP;
+  public String fLp;
+  public String pqu;
   public String source;
   
   public final int op(int paramInt, Object... paramVarArgs)
@@ -19,7 +19,7 @@ public final class j
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.fJm == null)
+      if (this.fLp == null)
       {
         paramVarArgs = new b("Not all required fields were included: download_url");
         AppMethodBeat.o(153052);
@@ -27,14 +27,14 @@ public final class j
       }
       if (this.BaseRequest != null)
       {
-        paramVarArgs.lC(1, this.BaseRequest.computeSize());
+        paramVarArgs.lJ(1, this.BaseRequest.computeSize());
         this.BaseRequest.writeFields(paramVarArgs);
       }
-      if (this.fJm != null) {
-        paramVarArgs.d(2, this.fJm);
+      if (this.fLp != null) {
+        paramVarArgs.d(2, this.fLp);
       }
-      if (this.pjP != null) {
-        paramVarArgs.d(3, this.pjP);
+      if (this.pqu != null) {
+        paramVarArgs.d(3, this.pqu);
       }
       if (this.source != null) {
         paramVarArgs.d(4, this.source);
@@ -48,15 +48,15 @@ public final class j
       }
     }
     label538:
-    for (int i = f.a.a.a.lB(1, this.BaseRequest.computeSize()) + 0;; i = 0)
+    for (int i = f.a.a.a.lI(1, this.BaseRequest.computeSize()) + 0;; i = 0)
     {
       paramInt = i;
-      if (this.fJm != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.fJm);
+      if (this.fLp != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.fLp);
       }
       i = paramInt;
-      if (this.pjP != null) {
-        i = paramInt + f.a.a.b.b.a.e(3, this.pjP);
+      if (this.pqu != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.pqu);
       }
       paramInt = i;
       if (this.source != null) {
@@ -67,12 +67,12 @@ public final class j
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = cvc.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cvc.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = cvw.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cvw.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
-        if (this.fJm == null)
+        if (this.fLp == null)
         {
           paramVarArgs = new b("Not all required fields were included: download_url");
           AppMethodBeat.o(153052);
@@ -92,7 +92,7 @@ public final class j
           AppMethodBeat.o(153052);
           return -1;
         case 1: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
+          paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
@@ -100,22 +100,22 @@ public final class j
             Object localObject2 = (byte[])paramVarArgs.get(paramInt);
             localObject1 = new jc();
             localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((jc)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, cvc.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            for (boolean bool = true; bool; bool = ((jc)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cvw.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
             localj.BaseRequest = ((jc)localObject1);
             paramInt += 1;
           }
           AppMethodBeat.o(153052);
           return 0;
         case 2: 
-          localj.fJm = ((f.a.a.a.a)localObject1).NPN.readString();
+          localj.fLp = ((f.a.a.a.a)localObject1).OmT.readString();
           AppMethodBeat.o(153052);
           return 0;
         case 3: 
-          localj.pjP = ((f.a.a.a.a)localObject1).NPN.readString();
+          localj.pqu = ((f.a.a.a.a)localObject1).OmT.readString();
           AppMethodBeat.o(153052);
           return 0;
         }
-        localj.source = ((f.a.a.a.a)localObject1).NPN.readString();
+        localj.source = ((f.a.a.a.a)localObject1).OmT.readString();
         AppMethodBeat.o(153052);
         return 0;
       }

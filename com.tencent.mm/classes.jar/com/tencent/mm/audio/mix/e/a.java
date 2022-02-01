@@ -16,21 +16,21 @@ public final class a
       float f3;
       for (float f1 = 0.0F; k < paramInt1; f1 = f3 + f1)
       {
-        f2 = (float)(f2 + Math.pow(this.dez[k][j], 2.0D) * Math.signum(this.dez[k][j]));
-        f3 = Math.abs(this.dez[k][j]);
+        f2 = (float)(f2 + Math.pow(this.dfB[k][j], 2.0D) * Math.signum(this.dfB[k][j]));
+        f3 = Math.abs(this.dfB[k][j]);
         k += 1;
       }
       if (f1 == 0.0F)
       {
         k = 0;
         label111:
-        localObject = this.deC;
+        localObject = this.dfE;
         if (f1 != 0.0F) {
           break label154;
         }
       }
       label154:
-      for (int i = 0;; i = hJ(k))
+      for (int i = 0;; i = hL(k))
       {
         localObject[j] = i;
         j += 1;
@@ -46,7 +46,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.audio.mix.e.a
  * JD-Core Version:    0.7.0.1
  */

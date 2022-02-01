@@ -14,16 +14,16 @@ public final class h$1
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(192630);
+    AppMethodBeat.i(200395);
     b localb = new b();
     localb.bd(paramView);
-    a.b("com/tencent/mm/ui/widget/dialog/MMTipsBar$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-    this.Jol.dismiss();
-    if (this.KXD != null) {
-      this.KXD.onClick(paramView);
+    a.b("com/tencent/mm/ui/widget/dialog/MMTipsBar$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+    this.JJa.dismiss();
+    if (this.Lub != null) {
+      this.Lub.onClick(paramView);
     }
     a.a(this, "com/tencent/mm/ui/widget/dialog/MMTipsBar$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-    AppMethodBeat.o(192630);
+    AppMethodBeat.o(200395);
   }
 }
 

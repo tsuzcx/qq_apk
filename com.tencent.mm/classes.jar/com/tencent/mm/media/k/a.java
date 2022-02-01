@@ -2,35 +2,35 @@ package com.tencent.mm.media.k;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.f.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/media/util/CodeMan;", "", "taskName", "", "(Ljava/lang/String;)V", "testTime", "Lcom/tencent/mm/compatible/util/CodeInfo$TestTime;", "begin", "", "diff", "getdiff", "", "mark", "toString", "plugin-mediaeditor_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/media/util/CodeMan;", "", "taskName", "", "(Ljava/lang/String;)V", "testTime", "Lcom/tencent/mm/compatible/util/CodeInfo$TestTime;", "begin", "", "diff", "getdiff", "", "mark", "toString", "plugin-mediaeditor_release"})
 public final class a
 {
-  private final String fJi;
-  public f.a gFK;
+  private final String fLl;
+  public f.a gIr;
   
   public a(String paramString)
   {
     AppMethodBeat.i(93870);
-    this.fJi = paramString;
-    this.gFK = new f.a();
-    this.gFK.reset();
+    this.fLl = paramString;
+    this.gIr = new f.a();
+    this.gIr.reset();
     AppMethodBeat.o(93870);
   }
   
-  public final void akO()
+  public final void ald()
   {
     AppMethodBeat.i(93868);
-    ad.i("MicroMsg.CodeUtil", toString());
+    ae.i("MicroMsg.CodeUtil", toString());
     AppMethodBeat.o(93868);
   }
   
   public final String toString()
   {
     AppMethodBeat.i(93869);
-    String str = "CodeMan task " + this.fJi + " cost : " + this.gFK.abj();
+    String str = "CodeMan task " + this.fLl + " cost : " + this.gIr.abs();
     AppMethodBeat.o(93869);
     return str;
   }

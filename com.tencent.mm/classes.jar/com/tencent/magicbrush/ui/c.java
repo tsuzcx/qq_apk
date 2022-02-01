@@ -7,26 +7,26 @@ import com.tencent.magicbrush.a.c.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(gfx={1, 1, 13}, gfy={""}, gfz={"Lcom/tencent/magicbrush/ui/ChoreographerInJsThreadAFHandler;", "Lcom/tencent/magicbrush/ui/AnimationFrameHandler;", "Landroid/view/Choreographer$FrameCallback;", "runtime", "Lcom/tencent/magicbrush/MBRuntime;", "jsThreadHandler", "Lcom/tencent/magicbrush/handler/MBJsThreadHandler;", "(Lcom/tencent/magicbrush/MBRuntime;Lcom/tencent/magicbrush/handler/MBJsThreadHandler;)V", "choreographer", "Landroid/view/Choreographer;", "latency", "Lcom/tencent/magicbrush/ui/LatencyCalculator;", "strategy", "Lcom/tencent/magicbrush/ui/AnimationFrameHandler$Strategy;", "getStrategy", "()Lcom/tencent/magicbrush/ui/AnimationFrameHandler$Strategy;", "tryGetTimes", "", "doFrame", "", "frameTimeNanos", "", "getLatency", "Lcom/tencent/magicbrush/ui/AnimationFrameHandler$Latency;", "onCreate", "onDestroy", "onPause", "onResume", "tryGetChoreographer", "tryLaterIfFailed", "", "lib-magicbrush-nano_release"})
+@l(gjZ={1, 1, 13}, gka={""}, gkb={"Lcom/tencent/magicbrush/ui/ChoreographerInJsThreadAFHandler;", "Lcom/tencent/magicbrush/ui/AnimationFrameHandler;", "Landroid/view/Choreographer$FrameCallback;", "runtime", "Lcom/tencent/magicbrush/MBRuntime;", "jsThreadHandler", "Lcom/tencent/magicbrush/handler/MBJsThreadHandler;", "(Lcom/tencent/magicbrush/MBRuntime;Lcom/tencent/magicbrush/handler/MBJsThreadHandler;)V", "choreographer", "Landroid/view/Choreographer;", "latency", "Lcom/tencent/magicbrush/ui/LatencyCalculator;", "strategy", "Lcom/tencent/magicbrush/ui/AnimationFrameHandler$Strategy;", "getStrategy", "()Lcom/tencent/magicbrush/ui/AnimationFrameHandler$Strategy;", "tryGetTimes", "", "doFrame", "", "frameTimeNanos", "", "getLatency", "Lcom/tencent/magicbrush/ui/AnimationFrameHandler$Latency;", "onCreate", "onDestroy", "onPause", "onResume", "tryGetChoreographer", "tryLaterIfFailed", "", "lib-magicbrush-nano_release"})
 final class c
   extends a
   implements Choreographer.FrameCallback
 {
+  private final a.b cAA;
+  private final f cAy;
+  private int cAz;
   private Choreographer choreographer;
-  private final f czR;
-  private int czS;
-  private final a.b czT;
   
   public c(MBRuntime paramMBRuntime, com.tencent.magicbrush.handler.c paramc)
   {
     super(paramMBRuntime, paramc);
-    AppMethodBeat.i(215124);
-    this.czR = new f();
-    this.czT = a.b.czL;
-    AppMethodBeat.o(215124);
+    AppMethodBeat.i(213368);
+    this.cAy = new f();
+    this.cAA = a.b.cAs;
+    AppMethodBeat.o(213368);
   }
   
-  private final Choreographer HF()
+  private final Choreographer HN()
   {
     AppMethodBeat.i(140209);
     Choreographer localChoreographer;
@@ -36,7 +36,7 @@ final class c
       AppMethodBeat.o(140209);
       return localChoreographer;
     }
-    this.czS += 1;
+    this.cAz += 1;
     try
     {
       localChoreographer = Choreographer.getInstance();
@@ -53,20 +53,20 @@ final class c
     {
       for (;;)
       {
-        if ((this.czS == 1) || (this.czS % 100000 == 0)) {
-          c.c.printStackTrace("AnimationFrameHandler", (Throwable)localException, "get choreographer failed [" + this.czS + "] times. but it's ok, i will try it later if needed. " + localException, new Object[0]);
+        if ((this.cAz == 1) || (this.cAz % 100000 == 0)) {
+          c.c.printStackTrace("AnimationFrameHandler", (Throwable)localException, "get choreographer failed [" + this.cAz + "] times. but it's ok, i will try it later if needed. " + localException, new Object[0]);
         }
         Object localObject = null;
       }
-      this.czJ.post((Runnable)new a(this));
+      this.cAq.post((Runnable)new a(this));
       AppMethodBeat.o(140209);
     }
     return null;
   }
   
-  public final a.b HE()
+  public final a.b HM()
   {
-    return this.czT;
+    return this.cAA;
   }
   
   public final void doFrame(long paramLong)
@@ -101,7 +101,7 @@ final class c
   public final void onResume()
   {
     AppMethodBeat.i(140210);
-    Choreographer localChoreographer = HF();
+    Choreographer localChoreographer = HN();
     if (localChoreographer != null) {
       localChoreographer.removeFrameCallback((Choreographer.FrameCallback)this);
     }
@@ -114,7 +114,7 @@ final class c
     AppMethodBeat.o(140210);
   }
   
-  @l(gfx={1, 1, 13}, gfy={""}, gfz={"<anonymous>", "", "run"})
+  @l(gjZ={1, 1, 13}, gka={""}, gkb={"<anonymous>", "", "run"})
   static final class a
     implements Runnable
   {
@@ -123,27 +123,27 @@ final class c
     public final void run()
     {
       AppMethodBeat.i(140208);
-      if (!this.czU.isRunning)
+      if (!this.cAB.isRunning)
       {
         AppMethodBeat.o(140208);
         return;
       }
-      Choreographer localChoreographer = c.a(this.czU);
+      Choreographer localChoreographer = c.a(this.cAB);
       if (localChoreographer == null)
       {
         AppMethodBeat.o(140208);
         return;
       }
-      localChoreographer.removeFrameCallback((Choreographer.FrameCallback)this.czU);
-      localChoreographer.postFrameCallback((Choreographer.FrameCallback)this.czU);
-      c.c.i("AnimationFrameHandler", "Aha! we get a choreographer after try [" + c.b(this.czU) + "] times ", new Object[0]);
+      localChoreographer.removeFrameCallback((Choreographer.FrameCallback)this.cAB);
+      localChoreographer.postFrameCallback((Choreographer.FrameCallback)this.cAB);
+      c.c.i("AnimationFrameHandler", "Aha! we get a choreographer after try [" + c.b(this.cAB) + "] times ", new Object[0]);
       AppMethodBeat.o(140208);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.magicbrush.ui.c
  * JD-Core Version:    0.7.0.1
  */

@@ -6,7 +6,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.ui.base.preference.Preference;
 
 public class VcardContactUserHeaderPreference
@@ -15,13 +15,13 @@ public class VcardContactUserHeaderPreference
   String bVF;
   private final Context context;
   String title;
-  String yoL;
-  private ImageView yvj;
-  private TextView yvk;
-  private TextView yvl;
-  private TextView yvm;
-  private TextView yvn;
-  String yvo;
+  String yEK;
+  private ImageView yLj;
+  private TextView yLk;
+  private TextView yLl;
+  private TextView yLm;
+  private TextView yLn;
+  String yLo;
   
   public VcardContactUserHeaderPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -39,29 +39,29 @@ public class VcardContactUserHeaderPreference
   {
     AppMethodBeat.i(52014);
     super.onBindView(paramView);
-    ad.e("MicroMsg.scanner.VcardContactUserHeaderPreference", "onbindview");
-    this.yvj = ((ImageView)paramView.findViewById(2131306266));
-    this.yvk = ((TextView)paramView.findViewById(2131306267));
-    if (this.yvo != null) {
-      this.yvk.setText(this.yvo);
+    ae.e("MicroMsg.scanner.VcardContactUserHeaderPreference", "onbindview");
+    this.yLj = ((ImageView)paramView.findViewById(2131306266));
+    this.yLk = ((TextView)paramView.findViewById(2131306267));
+    if (this.yLo != null) {
+      this.yLk.setText(this.yLo);
     }
-    this.yvl = ((TextView)paramView.findViewById(2131306268));
+    this.yLl = ((TextView)paramView.findViewById(2131306268));
     if (this.bVF != null)
     {
-      this.yvl.setText(this.context.getString(2131764630, new Object[] { this.bVF }));
-      this.yvl.setVisibility(0);
+      this.yLl.setText(this.context.getString(2131764630, new Object[] { this.bVF }));
+      this.yLl.setVisibility(0);
     }
-    this.yvm = ((TextView)paramView.findViewById(2131306269));
-    if (this.yoL != null)
+    this.yLm = ((TextView)paramView.findViewById(2131306269));
+    if (this.yEK != null)
     {
-      this.yvm.setText(this.context.getString(2131764635, new Object[] { this.yoL }));
-      this.yvm.setVisibility(0);
+      this.yLm.setText(this.context.getString(2131764635, new Object[] { this.yEK }));
+      this.yLm.setVisibility(0);
     }
-    this.yvn = ((TextView)paramView.findViewById(2131306270));
+    this.yLn = ((TextView)paramView.findViewById(2131306270));
     if (this.title != null)
     {
-      this.yvn.setText(this.context.getString(2131764636, new Object[] { this.title }));
-      this.yvn.setVisibility(0);
+      this.yLn.setText(this.context.getString(2131764636, new Object[] { this.title }));
+      this.yLn.setVisibility(0);
     }
     AppMethodBeat.o(52014);
   }

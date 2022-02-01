@@ -6,9 +6,9 @@ import com.google.b.a.e;
 public final class a$aq
   extends e
 {
-  public int LHS = 0;
-  public long ikh = 0L;
-  public int inh = 0;
+  public int MeW = 0;
+  public long ina = 0L;
+  public int iqb = 0;
   
   public a$aq()
   {
@@ -17,14 +17,14 @@ public final class a$aq
   
   public final void a(b paramb)
   {
-    if (this.ikh != 0L) {
-      paramb.m(1, this.ikh);
+    if (this.ina != 0L) {
+      paramb.m(1, this.ina);
     }
-    if (this.inh != 0) {
-      paramb.by(2, this.inh);
+    if (this.iqb != 0) {
+      paramb.by(2, this.iqb);
     }
-    if (this.LHS != 0) {
-      paramb.by(3, this.LHS);
+    if (this.MeW != 0) {
+      paramb.by(3, this.MeW);
     }
     super.a(paramb);
   }
@@ -33,16 +33,16 @@ public final class a$aq
   {
     int j = super.zq();
     int i = j;
-    if (this.ikh != 0L) {
-      i = j + b.o(1, this.ikh);
+    if (this.ina != 0L) {
+      i = j + b.o(1, this.ina);
     }
     j = i;
-    if (this.inh != 0) {
-      j = i + b.bA(2, this.inh);
+    if (this.iqb != 0) {
+      j = i + b.bA(2, this.iqb);
     }
     i = j;
-    if (this.LHS != 0) {
-      i = j + b.bA(3, this.LHS);
+    if (this.MeW != 0) {
+      i = j + b.bA(3, this.MeW);
     }
     return i;
   }

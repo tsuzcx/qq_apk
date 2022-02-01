@@ -6,21 +6,21 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 15}, gfy={""}, gfz={"Lcom/tencent/mm/videocomposition/sdk/BitmapUtil;", "", "()V", "TAG", "", "calculateInSampleSize", "", "originWidth", "originHeight", "reqWidth", "reqHeight", "rotate", "Landroid/graphics/Bitmap;", "temBmp", "degree", "", "video_composition_release"})
+@l(gjZ={1, 1, 15}, gka={""}, gkb={"Lcom/tencent/mm/videocomposition/sdk/BitmapUtil;", "", "()V", "TAG", "", "calculateInSampleSize", "", "originWidth", "originHeight", "reqWidth", "reqHeight", "rotate", "Landroid/graphics/Bitmap;", "temBmp", "degree", "", "video_composition_release"})
 public final class a
 {
-  public static final a LnC;
+  public static final a LKn;
   
   static
   {
-    AppMethodBeat.i(220916);
-    LnC = new a();
-    AppMethodBeat.o(220916);
+    AppMethodBeat.i(195051);
+    LKn = new a();
+    AppMethodBeat.o(195051);
   }
   
   public static int O(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(220914);
+    AppMethodBeat.i(195049);
     int j = 1;
     if ((paramInt1 > paramInt4) || (paramInt2 > paramInt3))
     {
@@ -40,16 +40,16 @@ public final class a
         }
       }
     }
-    AppMethodBeat.o(220914);
+    AppMethodBeat.o(195049);
     return j;
   }
   
   public static Bitmap a(Bitmap paramBitmap, float paramFloat)
   {
-    AppMethodBeat.i(220915);
+    AppMethodBeat.i(195050);
     if ((paramBitmap == null) || (paramFloat % 360.0F == 0.0F))
     {
-      AppMethodBeat.o(220915);
+      AppMethodBeat.o(195050);
       return paramBitmap;
     }
     Object localObject = new Matrix();
@@ -70,14 +70,14 @@ public final class a
             b.i("BitmapUtil", "rotate bitmap recycle ajsdfasdf adsf. %s", new Object[] { paramBitmap });
             paramBitmap.recycle();
           }
-          AppMethodBeat.o(220915);
+          AppMethodBeat.o(195050);
           return localObject;
         }
       }
       catch (Throwable localThrowable)
       {
-        b.d("BitmapUtil", "createBitmap failed : %s ", new Object[] { c.n(localThrowable) });
-        AppMethodBeat.o(220915);
+        b.d("BitmapUtil", "createBitmap failed : %s ", new Object[] { c.o(localThrowable) });
+        AppMethodBeat.o(195050);
         return paramBitmap;
       }
       boolean bool = false;
@@ -86,7 +86,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.videocomposition.c.a
  * JD-Core Version:    0.7.0.1
  */

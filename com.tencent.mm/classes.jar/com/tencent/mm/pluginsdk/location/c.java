@@ -4,25 +4,25 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class c
 {
-  public long EKe;
-  public int dyB;
-  public float hXj;
-  public float hXk;
+  public long FcC;
+  public int dzG;
+  public float iab;
+  public float iac;
   public int scene;
   
   public c(long paramLong, float paramFloat1, float paramFloat2, int paramInt1, int paramInt2)
   {
-    this.hXj = paramFloat1;
-    this.hXk = paramFloat2;
-    this.dyB = paramInt1;
+    this.iab = paramFloat1;
+    this.iac = paramFloat2;
+    this.dzG = paramInt1;
     this.scene = paramInt2;
-    this.EKe = paramLong;
+    this.FcC = paramLong;
   }
   
   public final String toString()
   {
     AppMethodBeat.i(151631);
-    String str = String.format("%d-%d-%d", new Object[] { Integer.valueOf((int)(this.hXj * 1000000.0F)), Integer.valueOf((int)(this.hXk * 1000000.0F)), Integer.valueOf(this.dyB) });
+    String str = String.format("%d-%d-%d", new Object[] { Integer.valueOf((int)(this.iab * 1000000.0F)), Integer.valueOf((int)(this.iac * 1000000.0F)), Integer.valueOf(this.dzG) });
     AppMethodBeat.o(151631);
     return str;
   }

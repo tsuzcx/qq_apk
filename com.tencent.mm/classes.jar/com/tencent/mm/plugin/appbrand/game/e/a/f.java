@@ -1,10 +1,10 @@
 package com.tencent.mm.plugin.appbrand.game.e.a;
 
 import com.tencent.mm.plugin.appbrand.jsapi.y;
-import com.tencent.mm.plugin.appbrand.q;
+import com.tencent.mm.plugin.appbrand.r;
 
 public final class f
-  extends y<q>
+  extends y<r>
 {
   public static final int CTRL_INDEX = 668;
   public static final String NAME = "isGameRecorderSupported";

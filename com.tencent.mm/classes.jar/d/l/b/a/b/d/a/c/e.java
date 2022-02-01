@@ -15,16 +15,16 @@ import java.util.Iterator;
 public final class e
   implements d.l.b.a.b.b.a.g
 {
-  private final h NeA;
-  private final d.l.b.a.b.d.a.e.d NeB;
-  private final d.l.b.a.b.l.d<a, d.l.b.a.b.b.a.c> Nez;
+  private final d.l.b.a.b.l.d<a, d.l.b.a.b.b.a.c> NBE;
+  private final h NBF;
+  private final d.l.b.a.b.d.a.e.d NBG;
   
   public e(h paramh, d.l.b.a.b.d.a.e.d paramd)
   {
     AppMethodBeat.i(57751);
-    this.NeA = paramh;
-    this.NeB = paramd;
-    this.Nez = this.NeA.NeI.MQa.J((d.g.a.b)new a(this));
+    this.NBF = paramh;
+    this.NBG = paramd;
+    this.NBE = this.NBF.NBN.Nnf.M((d.g.a.b)new a(this));
     AppMethodBeat.o(57751);
   }
   
@@ -32,17 +32,17 @@ public final class e
   {
     AppMethodBeat.i(57748);
     d.g.b.p.h(paramb, "fqName");
-    Object localObject = this.NeB.l(paramb);
+    Object localObject = this.NBG.l(paramb);
     if (localObject != null)
     {
-      d.l.b.a.b.b.a.c localc = (d.l.b.a.b.b.a.c)((d.g.a.b)this.Nez).invoke(localObject);
+      d.l.b.a.b.b.a.c localc = (d.l.b.a.b.b.a.c)((d.g.a.b)this.NBE).invoke(localObject);
       localObject = localc;
       if (localc != null) {}
     }
     else
     {
-      localObject = d.l.b.a.b.d.a.a.c.Ndr;
-      localObject = d.l.b.a.b.d.a.a.c.a(paramb, this.NeB, this.NeA);
+      localObject = d.l.b.a.b.d.a.a.c.NAw;
+      localObject = d.l.b.a.b.d.a.a.c.a(paramb, this.NBG, this.NBF);
     }
     AppMethodBeat.o(57748);
     return localObject;
@@ -60,7 +60,7 @@ public final class e
   public final boolean isEmpty()
   {
     AppMethodBeat.i(57750);
-    if (this.NeB.gkL().isEmpty())
+    if (this.NBG.gpn().isEmpty())
     {
       AppMethodBeat.o(57750);
       return true;
@@ -72,21 +72,21 @@ public final class e
   public final Iterator<d.l.b.a.b.b.a.c> iterator()
   {
     AppMethodBeat.i(57749);
-    Object localObject1 = i.d(d.a.j.v((Iterable)this.NeB.gkL()), (d.g.a.b)this.Nez);
-    Object localObject2 = d.l.b.a.b.d.a.a.c.Ndr;
-    localObject2 = d.l.b.a.b.a.g.MQb.MQC;
+    Object localObject1 = i.d(d.a.j.v((Iterable)this.NBG.gpn()), (d.g.a.b)this.NBE);
+    Object localObject2 = d.l.b.a.b.d.a.a.c.NAw;
+    localObject2 = d.l.b.a.b.a.g.Nng.NnH;
     d.g.b.p.g(localObject2, "KotlinBuiltIns.FQ_NAMES.deprecated");
-    localObject2 = d.l.b.a.b.d.a.a.c.a((d.l.b.a.b.f.b)localObject2, this.NeB, this.NeA);
+    localObject2 = d.l.b.a.b.d.a.a.c.a((d.l.b.a.b.f.b)localObject2, this.NBG, this.NBF);
     d.g.b.p.h(localObject1, "$this$plus");
-    localObject2 = i.ai(new d.m.h[] { localObject1, i.ai(new Object[] { localObject2 }) });
+    localObject2 = i.ah(new d.m.h[] { localObject1, i.ah(new Object[] { localObject2 }) });
     d.g.b.p.h(localObject2, "$this$flatten");
-    localObject1 = (d.g.a.b)l.b.NGJ;
+    localObject1 = (d.g.a.b)l.b.OdP;
     if ((localObject2 instanceof d.m.p))
     {
       localObject2 = (d.m.p)localObject2;
       d.g.b.p.h(localObject1, "iterator");
     }
-    for (localObject1 = (d.m.h)new f(((d.m.p)localObject2).NGt, ((d.m.p)localObject2).NGB, (d.g.a.b)localObject1);; localObject1 = (d.m.h)new f((d.m.h)localObject2, (d.g.a.b)l.c.NGK, (d.g.a.b)localObject1))
+    for (localObject1 = (d.m.h)new f(((d.m.p)localObject2).Odz, ((d.m.p)localObject2).OdH, (d.g.a.b)localObject1);; localObject1 = (d.m.h)new f((d.m.h)localObject2, (d.g.a.b)l.c.OdQ, (d.g.a.b)localObject1))
     {
       localObject1 = i.b((d.m.h)localObject1).iterator();
       AppMethodBeat.o(57749);
@@ -106,7 +106,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.d.a.c.e
  * JD-Core Version:    0.7.0.1
  */

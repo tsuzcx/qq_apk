@@ -8,19 +8,19 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.storage.RegionCodeDecoder.Region;
 import com.tencent.mm.ui.base.preference.Preference;
 
 public class ZoneRecommandPreference
   extends Preference
 {
-  RegionCodeDecoder.Region KLZ;
-  RegionCodeDecoder.Region KMa;
-  RegionCodeDecoder.Region KMb;
-  private TextView KMc;
-  private ImageView KMd;
-  private TextView fUR;
+  private TextView LiA;
+  private ImageView LiB;
+  RegionCodeDecoder.Region Lix;
+  RegionCodeDecoder.Region Liy;
+  RegionCodeDecoder.Region Liz;
+  private TextView fWX;
   int status;
   
   public ZoneRecommandPreference(Context paramContext)
@@ -42,10 +42,10 @@ public class ZoneRecommandPreference
     AppMethodBeat.o(39211);
   }
   
-  final void fKN()
+  final void fPg()
   {
     AppMethodBeat.i(39214);
-    if ((this.KMc == null) || (this.fUR == null))
+    if ((this.LiA == null) || (this.fWX == null))
     {
       AppMethodBeat.o(39214);
       return;
@@ -57,61 +57,61 @@ public class ZoneRecommandPreference
     {
       AppMethodBeat.o(39214);
       return;
-      this.KMc.setVisibility(8);
-      this.fUR.setVisibility(0);
-      this.fUR.setText(2131763147);
-      this.KMd.setImageResource(2131690294);
+      this.LiA.setVisibility(8);
+      this.fWX.setVisibility(0);
+      this.fWX.setText(2131763147);
+      this.LiB.setImageResource(2131690294);
       setEnabled(false);
       setSelectable(false);
       AppMethodBeat.o(39214);
       return;
-      this.KMc.setVisibility(8);
-      this.fUR.setVisibility(0);
-      this.fUR.setText(2131763144);
-      this.KMd.setImageResource(2131690293);
+      this.LiA.setVisibility(8);
+      this.fWX.setVisibility(0);
+      this.fWX.setText(2131763144);
+      this.LiB.setImageResource(2131690293);
       setEnabled(false);
       setSelectable(false);
       AppMethodBeat.o(39214);
       return;
-      this.KMc.setVisibility(0);
-      this.fUR.setVisibility(8);
-      this.KMd.setImageResource(2131690294);
+      this.LiA.setVisibility(0);
+      this.fWX.setVisibility(8);
+      this.LiB.setImageResource(2131690294);
       Object localObject2 = "";
       Object localObject1 = localObject2;
-      if (this.KLZ != null)
+      if (this.Lix != null)
       {
         localObject1 = localObject2;
-        if (!bt.isNullOrNil(this.KLZ.getName())) {
-          localObject1 = "" + this.KLZ.getName();
+        if (!bu.isNullOrNil(this.Lix.getName())) {
+          localObject1 = "" + this.Lix.getName();
         }
       }
       localObject2 = localObject1;
-      if (this.KMa != null)
+      if (this.Liy != null)
       {
         localObject2 = localObject1;
-        if (!bt.isNullOrNil(this.KMa.getName())) {
-          localObject2 = (String)localObject1 + " " + this.KMa.getName();
+        if (!bu.isNullOrNil(this.Liy.getName())) {
+          localObject2 = (String)localObject1 + " " + this.Liy.getName();
         }
       }
       localObject1 = localObject2;
-      if (this.KMb != null)
+      if (this.Liz != null)
       {
         localObject1 = localObject2;
-        if (!bt.isNullOrNil(this.KMb.getName())) {
-          localObject1 = (String)localObject2 + " " + this.KMb.getName();
+        if (!bu.isNullOrNil(this.Liz.getName())) {
+          localObject1 = (String)localObject2 + " " + this.Liz.getName();
         }
       }
-      this.KMc.setText((CharSequence)localObject1);
+      this.LiA.setText((CharSequence)localObject1);
       setEnabled(true);
       setSelectable(true);
     }
   }
   
-  public final void fKO()
+  public final void fPh()
   {
     AppMethodBeat.i(39215);
     this.status = 2;
-    fKN();
+    fPg();
     AppMethodBeat.o(39215);
   }
   
@@ -119,7 +119,7 @@ public class ZoneRecommandPreference
   {
     AppMethodBeat.i(39213);
     super.onBindView(paramView);
-    fKN();
+    fPg();
     AppMethodBeat.o(39213);
   }
   
@@ -131,9 +131,9 @@ public class ZoneRecommandPreference
     ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131298739);
     localViewGroup.removeAllViews();
     localLayoutInflater.inflate(2131494850, localViewGroup);
-    this.KMc = ((TextView)paramViewGroup.findViewById(2131307140));
-    this.fUR = ((TextView)paramViewGroup.findViewById(2131305193));
-    this.KMd = ((ImageView)paramViewGroup.findViewById(2131305202));
+    this.LiA = ((TextView)paramViewGroup.findViewById(2131307140));
+    this.fWX = ((TextView)paramViewGroup.findViewById(2131305193));
+    this.LiB = ((ImageView)paramViewGroup.findViewById(2131305202));
     AppMethodBeat.o(39212);
     return paramViewGroup;
   }

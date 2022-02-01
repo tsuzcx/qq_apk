@@ -6,7 +6,7 @@ import rx.b.b;
 public abstract class a
 {
   @Deprecated
-  public static Throwable Q(Throwable paramThrowable)
+  public static Throwable R(Throwable paramThrowable)
   {
     return paramThrowable;
   }
@@ -31,7 +31,7 @@ public abstract class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     rx.d.a
  * JD-Core Version:    0.7.0.1
  */

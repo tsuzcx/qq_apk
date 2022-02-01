@@ -4,13 +4,13 @@ import android.graphics.Bitmap;
 import android.view.ViewPropertyAnimator;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ar;
 import com.tencent.qbar.ScanDecodeFrameData;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
 final class ScanCodeMaskView$j
   implements Runnable
 {
@@ -20,29 +20,29 @@ final class ScanCodeMaskView$j
   {
     AppMethodBeat.i(170053);
     long l = System.currentTimeMillis();
-    ScanCodeMaskView.a(this.yxL, ScanCodeMaskView.a(this.yxL, this.yxW));
-    ad.i("MicroMsg.ScanCodeMaskView", "alvinluo getFrameBitmap cost: %d", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
-    aq.f((Runnable)new Runnable()
+    ScanCodeMaskView.a(this.yNL, ScanCodeMaskView.a(this.yNL, this.yNW));
+    ae.i("MicroMsg.ScanCodeMaskView", "alvinluo getFrameBitmap cost: %d", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
+    ar.f((Runnable)new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(170052);
-        if ((!ScanCodeMaskView.o(this.yxX.yxL)) && (ScanCodeMaskView.n(this.yxX.yxL) != null))
+        if ((!ScanCodeMaskView.o(this.yNX.yNL)) && (ScanCodeMaskView.n(this.yNX.yNL) != null))
         {
-          Object localObject = ScanCodeMaskView.n(this.yxX.yxL);
+          Object localObject = ScanCodeMaskView.n(this.yNX.yNL);
           if (localObject == null) {
-            p.gfZ();
+            p.gkB();
           }
           if (!((Bitmap)localObject).isRecycled())
           {
-            ScanCodeMaskView.p(this.yxX.yxL).setImageBitmap(ScanCodeMaskView.n(this.yxX.yxL));
-            ScanCodeMaskView.p(this.yxX.yxL).setVisibility(0);
-            ScanCodeMaskView.p(this.yxX.yxL).setAlpha(0.0F);
-            localObject = ScanCodeMaskView.p(this.yxX.yxL).animate();
+            ScanCodeMaskView.p(this.yNX.yNL).setImageBitmap(ScanCodeMaskView.n(this.yNX.yNL));
+            ScanCodeMaskView.p(this.yNX.yNL).setVisibility(0);
+            ScanCodeMaskView.p(this.yNX.yNL).setAlpha(0.0F);
+            localObject = ScanCodeMaskView.p(this.yNX.yNL).animate();
             if (localObject != null) {
               ((ViewPropertyAnimator)localObject).cancel();
             }
-            localObject = ScanCodeMaskView.p(this.yxX.yxL).animate();
+            localObject = ScanCodeMaskView.p(this.yNX.yNL).animate();
             if (localObject != null)
             {
               localObject = ((ViewPropertyAnimator)localObject).alpha(1.0F);

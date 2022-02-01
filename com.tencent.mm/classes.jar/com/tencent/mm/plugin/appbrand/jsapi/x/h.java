@@ -11,7 +11,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.a;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
 import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.HashMap;
 import java.util.Map;
 import org.json.JSONObject;
@@ -22,7 +22,7 @@ public final class h
   public static final int CTRL_INDEX = 232;
   public static final String NAME = "getScreenBrightness";
   
-  private static int bmG()
+  private static int bnp()
   {
     AppMethodBeat.i(137669);
     j = 255;
@@ -39,7 +39,7 @@ public final class h
     {
       for (;;)
       {
-        ad.i("MicroMsg.JsApiGetScreenBrightness", "get max brightness fail, fallback to 255");
+        ae.i("MicroMsg.JsApiGetScreenBrightness", "get max brightness fail, fallback to 255");
         int i = j;
       }
     }
@@ -47,7 +47,7 @@ public final class h
     return i;
   }
   
-  private static float du(Context paramContext)
+  private static float dy(Context paramContext)
   {
     AppMethodBeat.i(137668);
     paramContext = paramContext.getContentResolver();
@@ -55,28 +55,28 @@ public final class h
     try
     {
       float f2 = Settings.System.getInt(paramContext, "screen_brightness");
-      int i = bmG();
+      int i = bnp();
       f1 = f2 / i;
     }
     catch (Settings.SettingNotFoundException paramContext)
     {
       for (;;)
       {
-        ad.e("MicroMsg.JsApiGetScreenBrightness", "getSystemBrightnessPercent err %s", new Object[] { paramContext.getMessage() });
+        ae.e("MicroMsg.JsApiGetScreenBrightness", "getSystemBrightnessPercent err %s", new Object[] { paramContext.getMessage() });
       }
     }
     catch (IllegalArgumentException paramContext)
     {
       for (;;)
       {
-        ad.e("MicroMsg.JsApiGetScreenBrightness", "getSystemBrightnessPercent IllegalArgumentException: %s", new Object[] { paramContext.getMessage() });
+        ae.e("MicroMsg.JsApiGetScreenBrightness", "getSystemBrightnessPercent IllegalArgumentException: %s", new Object[] { paramContext.getMessage() });
       }
     }
     catch (Exception paramContext)
     {
       for (;;)
       {
-        ad.e("MicroMsg.JsApiGetScreenBrightness", "getSystemBrightnessPercent err %s", new Object[] { paramContext.getMessage() });
+        ae.e("MicroMsg.JsApiGetScreenBrightness", "getSystemBrightnessPercent err %s", new Object[] { paramContext.getMessage() });
       }
     }
     AppMethodBeat.o(137668);
@@ -86,19 +86,19 @@ public final class h
   public final void a(c paramc, JSONObject paramJSONObject, int paramInt)
   {
     AppMethodBeat.i(137667);
-    ad.d("MicroMsg.JsApiGetScreenBrightness", "JsApiGetScreenBrightness!");
+    ae.d("MicroMsg.JsApiGetScreenBrightness", "JsApiGetScreenBrightness!");
     paramJSONObject = paramc.getContext();
     if (paramJSONObject == null)
     {
       paramc.h(paramInt, e("fail", null));
-      ad.e("MicroMsg.JsApiGetScreenBrightness", "context is null, invoke fail!");
+      ae.e("MicroMsg.JsApiGetScreenBrightness", "context is null, invoke fail!");
       AppMethodBeat.o(137667);
       return;
     }
     if (!(paramJSONObject instanceof Activity))
     {
       paramc.h(paramInt, e("fail", null));
-      ad.e("MicroMsg.JsApiGetScreenBrightness", "context is not Activity, invoke fail!");
+      ae.e("MicroMsg.JsApiGetScreenBrightness", "context is not Activity, invoke fail!");
       AppMethodBeat.o(137667);
       return;
     }
@@ -106,12 +106,12 @@ public final class h
     float f2 = localLayoutParams.screenBrightness;
     float f1 = f2;
     if (f2 < 0.0F) {
-      f1 = du(paramJSONObject);
+      f1 = dy(paramJSONObject);
     }
-    ad.i("MicroMsg.JsApiGetScreenBrightness", "JsApiGetScreenBrightness %f/%f", new Object[] { Float.valueOf(f1), Float.valueOf(localLayoutParams.screenBrightness) });
+    ae.i("MicroMsg.JsApiGetScreenBrightness", "JsApiGetScreenBrightness %f/%f", new Object[] { Float.valueOf(f1), Float.valueOf(localLayoutParams.screenBrightness) });
     paramJSONObject = new HashMap();
     paramJSONObject.put("value", Float.valueOf(f1));
-    paramc.h(paramInt, m("ok", paramJSONObject));
+    paramc.h(paramInt, n("ok", paramJSONObject));
     AppMethodBeat.o(137667);
   }
 }

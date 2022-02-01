@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class un
   extends b
 {
-  public a dIL;
+  public a dJU;
   
   public un()
   {
@@ -15,22 +15,22 @@ public final class un
   
   private un(byte paramByte)
   {
-    AppMethodBeat.i(125639);
-    this.dIL = new a();
-    this.IbR = false;
+    AppMethodBeat.i(125635);
+    this.dJU = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(125639);
+    AppMethodBeat.o(125635);
   }
   
   public static final class a
   {
-    public String doX;
-    public String dzb;
+    public boolean dJV = false;
+    public long dvu = 0L;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.a.un
  * JD-Core Version:    0.7.0.1
  */

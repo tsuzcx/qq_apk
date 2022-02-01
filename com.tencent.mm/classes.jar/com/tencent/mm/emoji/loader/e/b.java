@@ -3,14 +3,14 @@ package com.tencent.mm.emoji.loader.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.emoji.loader.c.h;
 import com.tencent.mm.emoji.loader.e;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.storage.emotion.EmojiInfo;
 import d.g.b.p;
 import d.g.b.q;
 import d.l;
 import d.z;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/emoji/loader/task/EmojiLoadTask;", "Lcom/tencent/mm/emoji/loader/task/IEmojiLoadTask;", "emojiInfo", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "(Lcom/tencent/mm/storage/emotion/EmojiInfo;)V", "TAG", "", "getTAG", "()Ljava/lang/String;", "checkCache", "", "getTaskKey", "run", "", "plugin-emojisdk_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/emoji/loader/task/EmojiLoadTask;", "Lcom/tencent/mm/emoji/loader/task/IEmojiLoadTask;", "emojiInfo", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "(Lcom/tencent/mm/storage/emotion/EmojiInfo;)V", "TAG", "", "getTAG", "()Ljava/lang/String;", "checkCache", "", "getTaskKey", "run", "", "plugin-emojisdk_release"})
 public final class b
   extends c
 {
@@ -24,10 +24,10 @@ public final class b
     AppMethodBeat.o(105480);
   }
   
-  public final String aeJ()
+  public final String aeV()
   {
     AppMethodBeat.i(105478);
-    String str = this.gjb.Lb();
+    String str = this.glt.Lj();
     p.g(str, "emojiInfo.md5");
     AppMethodBeat.o(105478);
     return str;
@@ -37,26 +37,26 @@ public final class b
   {
     AppMethodBeat.i(105479);
     super.run();
-    if (this.gjb.fOu())
+    if (this.glt.fxn())
     {
       dg(true);
       AppMethodBeat.o(105479);
       return;
     }
-    Object localObject = e.giz;
-    if (e.aeB())
+    Object localObject = e.gkR;
+    if (e.aeN())
     {
-      ad.w(this.TAG, this.gjb.Lb() + ": mock download fail");
+      ae.w(this.TAG, this.glt.Lj() + ": mock download fail");
       dg(false);
       AppMethodBeat.o(105479);
       return;
     }
-    localObject = h.gji;
-    h.d(this.gjb, (d.g.a.b)new a(this));
+    localObject = h.glA;
+    h.d(this.glt, (d.g.a.b)new a(this));
     AppMethodBeat.o(105479);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "", "invoke"})
   static final class a
     extends q
     implements d.g.a.b<Boolean, z>
@@ -69,7 +69,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.emoji.loader.e.b
  * JD-Core Version:    0.7.0.1
  */

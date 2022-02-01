@@ -13,14 +13,14 @@ import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.ba;
-import com.tencent.mm.model.u;
+import com.tencent.mm.model.bc;
 import com.tencent.mm.model.v;
+import com.tencent.mm.model.w;
 import com.tencent.mm.pluginsdk.ui.a.b;
 import com.tencent.mm.pluginsdk.ui.span.k;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.bp;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.bq;
 import com.tencent.mm.ui.base.NoMeasuredTextView;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -32,69 +32,69 @@ import java.util.Map;
 public final class b
   extends BaseAdapter
 {
-  private String lEN;
+  private String lJm;
   private Context mContext;
-  List<e> qlX;
-  Map<String, String> qlY;
-  String qlZ;
-  d qma;
-  private String qmb;
-  private boolean qmc;
-  private e.a qmd;
-  private View.OnClickListener qme;
-  private View.OnClickListener qmf;
-  private View.OnClickListener qmg;
+  List<e> qsC;
+  Map<String, String> qsD;
+  String qsE;
+  d qsF;
+  private String qsG;
+  private boolean qsH;
+  private e.a qsI;
+  private View.OnClickListener qsJ;
+  private View.OnClickListener qsK;
+  private View.OnClickListener qsL;
   
   public b(Context paramContext, String paramString)
   {
     AppMethodBeat.i(24168);
-    this.qmc = false;
-    this.qmd = new e.a();
-    this.qme = new View.OnClickListener()
+    this.qsH = false;
+    this.qsI = new e.a();
+    this.qsJ = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(24165);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
         localb.bd(paramAnonymousView);
-        a.b("com/tencent/mm/plugin/exdevice/ui/ExdeviceRankAdapter$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-        ad.i("MicroMsg.ExdeviceRankAdapter", "hy: user clicked on the content");
+        a.b("com/tencent/mm/plugin/exdevice/ui/ExdeviceRankAdapter$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        ae.i("MicroMsg.ExdeviceRankAdapter", "hy: user clicked on the content");
         int i = ((Integer)paramAnonymousView.getTag()).intValue();
-        paramAnonymousView = b.this.CL(i);
-        b.a(b.this).acW(paramAnonymousView.qoQ.field_username);
+        paramAnonymousView = b.this.CX(i);
+        b.a(b.this).adN(paramAnonymousView.qvw.field_username);
         a.a(this, "com/tencent/mm/plugin/exdevice/ui/ExdeviceRankAdapter$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(24165);
       }
     };
-    this.qmf = new View.OnClickListener()
+    this.qsK = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(24166);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
         localb.bd(paramAnonymousView);
-        a.b("com/tencent/mm/plugin/exdevice/ui/ExdeviceRankAdapter$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-        b.a(b.this).acW(b.b(b.this));
+        a.b("com/tencent/mm/plugin/exdevice/ui/ExdeviceRankAdapter$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        b.a(b.this).adN(b.b(b.this));
         a.a(this, "com/tencent/mm/plugin/exdevice/ui/ExdeviceRankAdapter$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(24166);
       }
     };
-    this.qmg = new View.OnClickListener()
+    this.qsL = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(24167);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
         localb.bd(paramAnonymousView);
-        a.b("com/tencent/mm/plugin/exdevice/ui/ExdeviceRankAdapter$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-        b.a(b.this).cmz();
+        a.b("com/tencent/mm/plugin/exdevice/ui/ExdeviceRankAdapter$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        b.a(b.this).cnP();
         a.a(this, "com/tencent/mm/plugin/exdevice/ui/ExdeviceRankAdapter$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(24167);
       }
     };
-    this.lEN = u.aAm();
+    this.lJm = v.aAC();
     this.mContext = paramContext;
-    this.qmb = paramString;
+    this.qsG = paramString;
     AppMethodBeat.o(24168);
   }
   
@@ -103,15 +103,15 @@ public final class b
     AppMethodBeat.i(24171);
     Object localObject1 = new LinkedList(paramArrayList);
     paramArrayList = new ArrayList();
-    Object localObject2 = g(this.lEN, paramArrayList1);
+    Object localObject2 = g(this.lJm, paramArrayList1);
     Object localObject3;
     if (localObject2 != null)
     {
-      localObject3 = this.qmd;
-      ((e.a)localObject3).qoQ = ((com.tencent.mm.plugin.exdevice.g.b.a.d)localObject2);
-      ((e.a)localObject3).qoR = 3;
+      localObject3 = this.qsI;
+      ((e.a)localObject3).qvw = ((com.tencent.mm.plugin.exdevice.g.b.a.d)localObject2);
+      ((e.a)localObject3).qvx = 3;
       if (((com.tencent.mm.plugin.exdevice.g.b.a.d)localObject2).field_score == 0) {
-        ((com.tencent.mm.plugin.sport.a.b)g.ab(com.tencent.mm.plugin.sport.a.b.class)).g((Activity)this.mContext, this.lEN);
+        ((com.tencent.mm.plugin.sport.a.b)g.ab(com.tencent.mm.plugin.sport.a.b.class)).h((Activity)this.mContext, this.lJm);
       }
       if (!paramBoolean) {
         break label357;
@@ -119,39 +119,39 @@ public final class b
     }
     Object localObject4;
     label357:
-    for (this.qmd.azj = 2;; this.qmd.azj = 1)
+    for (this.qsI.azj = 2;; this.qsI.azj = 1)
     {
-      paramArrayList.add(this.qmd.cmF());
-      localObject2 = this.qmd;
+      paramArrayList.add(this.qsI.cnV());
+      localObject2 = this.qsI;
       ((e.a)localObject2).azj = 0;
-      paramArrayList.add(((e.a)localObject2).cmF());
-      e((LinkedList)localObject1, this.lEN);
+      paramArrayList.add(((e.a)localObject2).cnV());
+      e((LinkedList)localObject1, this.lJm);
       localObject2 = new ArrayList();
-      ad.d("MicroMsg.ExdeviceRankAdapter", "ap: follow size %s, %s", new Object[] { Integer.valueOf(((LinkedList)localObject1).size()), ((LinkedList)localObject1).toString() });
+      ae.d("MicroMsg.ExdeviceRankAdapter", "ap: follow size %s, %s", new Object[] { Integer.valueOf(((LinkedList)localObject1).size()), ((LinkedList)localObject1).toString() });
       localObject3 = paramArrayList1.iterator();
       while (((Iterator)localObject3).hasNext())
       {
         localObject4 = (com.tencent.mm.plugin.exdevice.g.b.a.d)((Iterator)localObject3).next();
-        e.a locala = this.qmd;
-        locala.qoQ = ((com.tencent.mm.plugin.exdevice.g.b.a.d)localObject4);
+        e.a locala = this.qsI;
+        locala.qvw = ((com.tencent.mm.plugin.exdevice.g.b.a.d)localObject4);
         locala.azj = 1;
-        locala.qoR = 4;
-        ((ArrayList)localObject2).add(locala.cmF());
+        locala.qvx = 4;
+        ((ArrayList)localObject2).add(locala.cnV());
         if ((((LinkedList)localObject1).size() > 0) && (f((LinkedList)localObject1, ((com.tencent.mm.plugin.exdevice.g.b.a.d)localObject4).field_username)))
         {
-          locala = this.qmd;
-          locala.qoQ = ((com.tencent.mm.plugin.exdevice.g.b.a.d)localObject4);
+          locala = this.qsI;
+          locala.qvw = ((com.tencent.mm.plugin.exdevice.g.b.a.d)localObject4);
           locala.azj = 1;
-          locala.qoR = 2;
-          paramArrayList.add(locala.cmF());
+          locala.qvx = 2;
+          paramArrayList.add(locala.cnV());
           e((LinkedList)localObject1, ((com.tencent.mm.plugin.exdevice.g.b.a.d)localObject4).field_username);
         }
       }
-      localObject2 = this.qmd;
-      ((e.a)localObject2).qoQ = null;
-      ((e.a)localObject2).qmb = this.qmb;
-      ((e.a)localObject2).username = this.lEN;
-      ((e.a)localObject2).qoR = 7;
+      localObject2 = this.qsI;
+      ((e.a)localObject2).qvw = null;
+      ((e.a)localObject2).qsG = this.qsG;
+      ((e.a)localObject2).username = this.lJm;
+      ((e.a)localObject2).qvx = 7;
       break;
     }
     if (((LinkedList)localObject1).size() > 0)
@@ -160,29 +160,29 @@ public final class b
       while (((Iterator)localObject1).hasNext())
       {
         localObject3 = (com.tencent.mm.plugin.exdevice.g.b.a.c)((Iterator)localObject1).next();
-        localObject4 = this.qmd;
+        localObject4 = this.qsI;
         ((e.a)localObject4).username = ((com.tencent.mm.plugin.exdevice.g.b.a.c)localObject3).field_username;
-        ((e.a)localObject4).qmb = this.qmb;
-        ((e.a)localObject4).qoQ = null;
+        ((e.a)localObject4).qsG = this.qsG;
+        ((e.a)localObject4).qvw = null;
         ((e.a)localObject4).azj = 1;
-        ((e.a)localObject4).qoR = 6;
-        paramArrayList.add(((e.a)localObject4).cmF());
+        ((e.a)localObject4).qvx = 6;
+        paramArrayList.add(((e.a)localObject4).cnV());
       }
     }
     if (paramArrayList.size() > 2)
     {
-      ((e)paramArrayList.get(paramArrayList.size() - 1)).qoR = (((e)paramArrayList.get(paramArrayList.size() - 1)).qoR | 0x2 | 0x1);
-      localObject1 = this.qmd;
+      ((e)paramArrayList.get(paramArrayList.size() - 1)).qvx = (((e)paramArrayList.get(paramArrayList.size() - 1)).qvx | 0x2 | 0x1);
+      localObject1 = this.qsI;
       ((e.a)localObject1).azj = 0;
-      ((e.a)localObject1).qoQ = null;
-      paramArrayList.add(((e.a)localObject1).cmF());
+      ((e.a)localObject1).qvw = null;
+      paramArrayList.add(((e.a)localObject1).cnV());
     }
     if (((ArrayList)localObject2).size() > 1) {
-      ((e)((ArrayList)localObject2).get(((ArrayList)localObject2).size() - 1)).qoR = 5;
+      ((e)((ArrayList)localObject2).get(((ArrayList)localObject2).size() - 1)).qvx = 5;
     }
     paramArrayList.addAll((Collection)localObject2);
-    ad.d("MicroMsg.ExdeviceRankAdapter", "rank: %d %s", new Object[] { Integer.valueOf(paramArrayList1.size()), paramArrayList1.toString() });
-    ad.d("MicroMsg.ExdeviceRankAdapter", "all: %s %s", new Object[] { Integer.valueOf(paramArrayList.size()), paramArrayList.toString() });
+    ae.d("MicroMsg.ExdeviceRankAdapter", "rank: %d %s", new Object[] { Integer.valueOf(paramArrayList1.size()), paramArrayList1.toString() });
+    ae.d("MicroMsg.ExdeviceRankAdapter", "all: %s %s", new Object[] { Integer.valueOf(paramArrayList.size()), paramArrayList.toString() });
     AppMethodBeat.o(24171);
     return paramArrayList;
   }
@@ -196,7 +196,7 @@ public final class b
       com.tencent.mm.plugin.exdevice.g.b.a.c localc = (com.tencent.mm.plugin.exdevice.g.b.a.c)paramLinkedList.next();
       if (localc.field_username.equalsIgnoreCase(paramString))
       {
-        ad.d("MicroMsg.ExdeviceRankAdapter", "username: %s remove", new Object[] { localc.toString() });
+        ae.d("MicroMsg.ExdeviceRankAdapter", "username: %s remove", new Object[] { localc.toString() });
         paramLinkedList.remove();
       }
     }
@@ -223,7 +223,7 @@ public final class b
     }
     catch (Exception paramLinkedList)
     {
-      ad.d("MicroMsg.ExdeviceRankAdapter", paramLinkedList.toString());
+      ae.d("MicroMsg.ExdeviceRankAdapter", paramLinkedList.toString());
       AppMethodBeat.o(24170);
     }
     return false;
@@ -232,7 +232,7 @@ public final class b
   public static void finish()
   {
     AppMethodBeat.i(24177);
-    ((com.tencent.mm.plugin.sport.a.b)g.ab(com.tencent.mm.plugin.sport.a.b.class)).ega();
+    ((com.tencent.mm.plugin.sport.a.b)g.ab(com.tencent.mm.plugin.sport.a.b.class)).ejI();
     AppMethodBeat.o(24177);
   }
   
@@ -258,10 +258,10 @@ public final class b
     return null;
   }
   
-  public final e CL(int paramInt)
+  public final e CX(int paramInt)
   {
     AppMethodBeat.i(24175);
-    e locale = (e)this.qlX.get(paramInt);
+    e locale = (e)this.qsC.get(paramInt);
     AppMethodBeat.o(24175);
     return locale;
   }
@@ -284,7 +284,7 @@ public final class b
     }
     catch (Exception paramArrayList)
     {
-      ad.w("MicroMsg.ExdeviceRankAdapter", "ap: rank exception,null info");
+      ae.w("MicroMsg.ExdeviceRankAdapter", "ap: rank exception,null info");
       paramArrayList = new ArrayList();
       AppMethodBeat.o(24172);
     }
@@ -294,12 +294,12 @@ public final class b
   public final int getCount()
   {
     AppMethodBeat.i(24174);
-    if (this.qlX == null)
+    if (this.qsC == null)
     {
       AppMethodBeat.o(24174);
       return 0;
     }
-    int i = this.qlX.size();
+    int i = this.qsC.size();
     AppMethodBeat.o(24174);
     return i;
   }
@@ -312,7 +312,7 @@ public final class b
   public final int getItemViewType(int paramInt)
   {
     AppMethodBeat.i(24176);
-    paramInt = CL(paramInt).azj;
+    paramInt = CX(paramInt).azj;
     AppMethodBeat.o(24176);
     return paramInt;
   }
@@ -320,10 +320,10 @@ public final class b
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(24178);
-    final com.tencent.mm.plugin.exdevice.g.b.a.d locald = CL(paramInt).qoQ;
-    Object localObject1 = CL(paramInt);
+    final com.tencent.mm.plugin.exdevice.g.b.a.d locald = CX(paramInt).qvw;
+    Object localObject1 = CX(paramInt);
     int i = getItemViewType(paramInt);
-    int j = ((e)localObject1).qoR;
+    int j = ((e)localObject1).qvx;
     Object localObject2;
     if (paramView == null)
     {
@@ -338,30 +338,30 @@ public final class b
         localObject2 = paramViewGroup;
         if (paramView != null)
         {
-          paramView.ize = paramViewGroup.findViewById(2131298736);
-          paramView.oeQ = paramViewGroup.findViewById(2131301145);
-          paramView.qdp = ((TextView)paramViewGroup.findViewById(2131299586));
-          paramView.qmj = ((ImageView)paramViewGroup.findViewById(2131299590));
-          paramView.qmk = ((NoMeasuredTextView)paramViewGroup.findViewById(2131299592));
-          paramView.qmm = ((TextView)paramViewGroup.findViewById(2131299538));
-          paramView.qmn = ((ExdeviceLikeView)paramViewGroup.findViewById(2131299553));
-          paramView.qmo = paramViewGroup.findViewById(2131299155);
-          paramView.qmq = paramViewGroup.findViewById(2131299594);
-          paramView.qmp = paramViewGroup.findViewById(2131299544);
-          paramView.qmr = ((TextView)paramViewGroup.findViewById(2131304752));
-          if (paramView.qmk != null)
+          paramView.iBX = paramViewGroup.findViewById(2131298736);
+          paramView.okQ = paramViewGroup.findViewById(2131301145);
+          paramView.qjU = ((TextView)paramViewGroup.findViewById(2131299586));
+          paramView.qsO = ((ImageView)paramViewGroup.findViewById(2131299590));
+          paramView.qsP = ((NoMeasuredTextView)paramViewGroup.findViewById(2131299592));
+          paramView.qsR = ((TextView)paramViewGroup.findViewById(2131299538));
+          paramView.qsS = ((ExdeviceLikeView)paramViewGroup.findViewById(2131299553));
+          paramView.qsT = paramViewGroup.findViewById(2131299155);
+          paramView.qsV = paramViewGroup.findViewById(2131299594);
+          paramView.qsU = paramViewGroup.findViewById(2131299544);
+          paramView.qsW = ((TextView)paramViewGroup.findViewById(2131304752));
+          if (paramView.qsP != null)
           {
-            paramView.qmk.setTextSize(0, this.mContext.getResources().getDimension(2131165332));
-            paramView.qmk.setTextColor(this.mContext.getResources().getColor(2131100308));
-            paramView.qmk.setSingleLine(true);
-            paramView.qmk.setShouldEllipsize(true);
+            paramView.qsP.setTextSize(0, this.mContext.getResources().getDimension(2131165332));
+            paramView.qsP.setTextColor(this.mContext.getResources().getColor(2131100308));
+            paramView.qsP.setSingleLine(true);
+            paramView.qsP.setShouldEllipsize(true);
           }
           paramViewGroup.setTag(paramView);
           localObject2 = paramViewGroup;
           localObject1 = paramView;
         }
         if ((locald != null) && (localObject1 != null)) {
-          if (!this.lEN.equalsIgnoreCase(locald.field_username)) {
+          if (!this.lJm.equalsIgnoreCase(locald.field_username)) {
             break label572;
           }
         }
@@ -369,27 +369,27 @@ public final class b
       }
     }
     label572:
-    for (this.qmc = true;; this.qmc = false)
+    for (this.qsH = true;; this.qsH = false)
     {
       if (i != 2) {
         break label580;
       }
-      ((b)localObject1).qdp.setText(String.valueOf(locald.field_ranknum));
-      ((b)localObject1).qmm.setText(String.valueOf(locald.field_score));
-      a.b.d(((b)localObject1).qmj, locald.field_username);
-      ((b)localObject1).ize.setOnClickListener(this.qmf);
-      ((b)localObject1).qmr.setOnClickListener(this.qmg);
+      ((b)localObject1).qjU.setText(String.valueOf(locald.field_ranknum));
+      ((b)localObject1).qsR.setText(String.valueOf(locald.field_score));
+      a.b.d(((b)localObject1).qsO, locald.field_username);
+      ((b)localObject1).iBX.setOnClickListener(this.qsK);
+      ((b)localObject1).qsW.setOnClickListener(this.qsL);
       AppMethodBeat.o(24178);
       return localObject2;
       paramViewGroup = ((LayoutInflater)localObject1).inflate(2131493890, paramViewGroup, false);
       paramView = new a();
-      paramView.iVT = paramViewGroup.findViewById(2131299155);
+      paramView.iYM = paramViewGroup.findViewById(2131299155);
       paramViewGroup.setTag(paramView);
       paramView = null;
       break;
       paramViewGroup = ((LayoutInflater)localObject1).inflate(2131493889, paramViewGroup, false);
       paramView = new b();
-      paramView.qml = ((TextView)paramViewGroup.findViewById(2131299593));
+      paramView.qsQ = ((TextView)paramViewGroup.findViewById(2131299593));
       break;
       paramViewGroup = ((LayoutInflater)localObject1).inflate(2131493891, paramViewGroup, false);
       paramView = new b();
@@ -408,69 +408,69 @@ public final class b
       }
     }
     label580:
-    if (((b)localObject1).qml != null)
+    if (((b)localObject1).qsQ != null)
     {
       if ((j & 0x4) != 4)
       {
-        ((b)localObject1).qml.setVisibility(0);
-        ((b)localObject1).qml.setText(this.mContext.getResources().getString(2131758587, new Object[] { Integer.valueOf(locald.field_ranknum) }));
+        ((b)localObject1).qsQ.setVisibility(0);
+        ((b)localObject1).qsQ.setText(this.mContext.getResources().getString(2131758587, new Object[] { Integer.valueOf(locald.field_ranknum) }));
       }
     }
     else
     {
-      if (((j & 0x2) == 2) || (!locald.field_username.equalsIgnoreCase(this.qlZ)) || (this.lEN.equalsIgnoreCase(this.qlZ))) {
+      if (((j & 0x2) == 2) || (!locald.field_username.equalsIgnoreCase(this.qsE)) || (this.lJm.equalsIgnoreCase(this.qsE))) {
         break label1070;
       }
-      ((b)localObject1).oeQ.setBackgroundColor(this.mContext.getResources().getColor(2131100302));
+      ((b)localObject1).okQ.setBackgroundColor(this.mContext.getResources().getColor(2131100302));
       if ((j & 0x1) != 1) {
         break label1094;
       }
-      ((b)localObject1).qmo.setVisibility(8);
+      ((b)localObject1).qsT.setVisibility(8);
       label717:
       if (locald.field_ranknum < 100) {
         break label1106;
       }
-      ((b)localObject1).qdp.setTextSize(0, this.mContext.getResources().getDimensionPixelSize(2131165334));
+      ((b)localObject1).qjU.setTextSize(0, this.mContext.getResources().getDimensionPixelSize(2131165334));
       label750:
       if ((j & 0x2) != 2) {
         break label1132;
       }
-      ((b)localObject1).qdp.setText("");
+      ((b)localObject1).qjU.setText("");
       if (locald.field_score < 10000) {
         break label1161;
       }
-      ((b)localObject1).qmm.setTextColor(this.mContext.getResources().getColor(2131100307));
-      ((b)localObject1).qmm.setText(String.valueOf(locald.field_score));
-      a.b.d(((b)localObject1).qmj, locald.field_username);
-      if (this.qmc) {
+      ((b)localObject1).qsR.setTextColor(this.mContext.getResources().getColor(2131100307));
+      ((b)localObject1).qsR.setText(String.valueOf(locald.field_score));
+      a.b.d(((b)localObject1).qsO, locald.field_username);
+      if (this.qsH) {
         break label1185;
       }
-      ba.aBQ();
-      if ((com.tencent.mm.model.c.azp().aTg(locald.field_username)) || (this.qlY == null) || (bt.isNullOrNil((String)this.qlY.get(locald.field_username)))) {
+      bc.aCg();
+      if ((com.tencent.mm.model.c.azF().aUH(locald.field_username)) || (this.qsD == null) || (bu.isNullOrNil((String)this.qsD.get(locald.field_username)))) {
         break label1185;
       }
-      ((b)localObject1).qmk.setText(k.b(this.mContext, (CharSequence)this.qlY.get(locald.field_username), ((b)localObject1).qmk.getTextSize()));
-      ((b)localObject1).qmn.setLikeNum(locald.field_likecount);
-      if (!this.qmc) {
+      ((b)localObject1).qsP.setText(k.b(this.mContext, (CharSequence)this.qsD.get(locald.field_username), ((b)localObject1).qsP.getTextSize()));
+      ((b)localObject1).qsS.setLikeNum(locald.field_likecount);
+      if (!this.qsH) {
         break label1231;
       }
       if (locald.field_likecount == 0) {
         break label1219;
       }
-      ((b)localObject1).qmn.setSelfLikeState(1);
+      ((b)localObject1).qsS.setSelfLikeState(1);
       label964:
-      if ((locald.field_score <= 0) && (!this.qmc)) {
+      if ((locald.field_score <= 0) && (!this.qsH)) {
         break label1247;
       }
-      ((b)localObject1).qmn.setClickable(true);
-      ((b)localObject1).qmn.setOnLikeViewClickListener(new ExdeviceLikeView.a()
+      ((b)localObject1).qsS.setClickable(true);
+      ((b)localObject1).qsS.setOnLikeViewClickListener(new ExdeviceLikeView.a()
       {
-        public final boolean cmj()
+        public final boolean cnz()
         {
           AppMethodBeat.i(24164);
           if (b.a(b.this) != null)
           {
-            boolean bool = b.a(b.this).acX(locald.field_username);
+            boolean bool = b.a(b.this).adO(locald.field_username);
             AppMethodBeat.o(24164);
             return bool;
           }
@@ -478,12 +478,12 @@ public final class b
           return true;
         }
         
-        public final void lf(int paramAnonymousInt)
+        public final void lh(int paramAnonymousInt)
         {
           AppMethodBeat.i(24163);
-          ad.i("MicroMsg.ExdeviceRankAdapter", "hy: like view clicked.after statae: %d", new Object[] { Integer.valueOf(paramAnonymousInt) });
+          ae.i("MicroMsg.ExdeviceRankAdapter", "hy: like view clicked.after statae: %d", new Object[] { Integer.valueOf(paramAnonymousInt) });
           if (b.a(b.this) != null) {
-            b.a(b.this).cY(locald.field_username, paramAnonymousInt);
+            b.a(b.this).dc(locald.field_username, paramAnonymousInt);
           }
           AppMethodBeat.o(24163);
         }
@@ -493,42 +493,42 @@ public final class b
     {
       label641:
       label699:
-      ((b)localObject1).qmp.setTag(Integer.valueOf(paramInt));
+      ((b)localObject1).qsU.setTag(Integer.valueOf(paramInt));
       label769:
       label801:
-      ((b)localObject1).qmp.setOnClickListener(this.qme);
+      ((b)localObject1).qsU.setOnClickListener(this.qsJ);
       label927:
-      ((b)localObject1).qmq.setTag(Integer.valueOf(paramInt));
-      ((b)localObject1).qmq.setOnClickListener(this.qme);
+      ((b)localObject1).qsV.setTag(Integer.valueOf(paramInt));
+      ((b)localObject1).qsV.setOnClickListener(this.qsJ);
       break;
-      ((b)localObject1).qml.setVisibility(8);
+      ((b)localObject1).qsQ.setVisibility(8);
       break label641;
       label1070:
-      ((b)localObject1).oeQ.setBackgroundColor(this.mContext.getResources().getColor(2131100301));
+      ((b)localObject1).okQ.setBackgroundColor(this.mContext.getResources().getColor(2131100301));
       break label699;
       label1094:
-      ((b)localObject1).qmo.setVisibility(0);
+      ((b)localObject1).qsT.setVisibility(0);
       break label717;
       label1106:
-      ((b)localObject1).qdp.setTextSize(0, this.mContext.getResources().getDimensionPixelSize(2131165333));
+      ((b)localObject1).qjU.setTextSize(0, this.mContext.getResources().getDimensionPixelSize(2131165333));
       break label750;
       label1132:
-      ((b)localObject1).qdp.setText(locald.field_ranknum);
+      ((b)localObject1).qjU.setText(locald.field_ranknum);
       break label769;
       label1161:
-      ((b)localObject1).qmm.setTextColor(this.mContext.getResources().getColor(2131100306));
+      ((b)localObject1).qsR.setTextColor(this.mContext.getResources().getColor(2131100306));
       break label801;
       label1185:
-      ((b)localObject1).qmk.setText(k.b(this.mContext, v.zf(locald.field_username), ((b)localObject1).qmk.getTextSize()));
+      ((b)localObject1).qsP.setText(k.b(this.mContext, w.zP(locald.field_username), ((b)localObject1).qsP.getTextSize()));
       break label927;
       label1219:
-      ((b)localObject1).qmn.setSelfLikeState(0);
+      ((b)localObject1).qsS.setSelfLikeState(0);
       break label964;
       label1231:
-      ((b)localObject1).qmn.setSelfLikeState(locald.field_selfLikeState);
+      ((b)localObject1).qsS.setSelfLikeState(locald.field_selfLikeState);
       break label964;
       label1247:
-      ((b)localObject1).qmn.setClickable(false);
+      ((b)localObject1).qsS.setClickable(false);
     }
   }
   
@@ -544,23 +544,23 @@ public final class b
   
   static final class a
   {
-    public View iVT;
+    public View iYM;
   }
   
   static final class b
   {
-    public View ize;
-    public View oeQ;
-    public TextView qdp;
-    public ImageView qmj;
-    public NoMeasuredTextView qmk;
-    public TextView qml;
-    public TextView qmm;
-    public ExdeviceLikeView qmn;
-    public View qmo;
-    public View qmp;
-    public View qmq;
-    public TextView qmr;
+    public View iBX;
+    public View okQ;
+    public TextView qjU;
+    public ImageView qsO;
+    public NoMeasuredTextView qsP;
+    public TextView qsQ;
+    public TextView qsR;
+    public ExdeviceLikeView qsS;
+    public View qsT;
+    public View qsU;
+    public View qsV;
+    public TextView qsW;
   }
 }
 

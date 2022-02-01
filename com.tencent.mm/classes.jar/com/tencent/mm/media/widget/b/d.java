@@ -10,7 +10,7 @@ import android.hardware.camera2.CaptureResult;
 import android.hardware.camera2.params.StreamConfigurationMap;
 import android.util.Size;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import d.g.b.p;
 import d.l;
 import d.v;
@@ -20,62 +20,62 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/media/widget/camera2/CameraUtil;", "", "()V", "BACK_CAMERA", "", "getBACK_CAMERA", "()I", "FRONT_CAMERA", "getFRONT_CAMERA", "IMAGE_STREAM", "", "getIMAGE_STREAM", "()Ljava/lang/String;", "ORIENTATION_0", "getORIENTATION_0", "ORIENTATION_180", "getORIENTATION_180", "ORIENTATION_270", "getORIENTATION_270", "ORIENTATION_90", "getORIENTATION_90", "OTHER_CAMERA", "getOTHER_CAMERA", "PREVIEW_STREAM", "getPREVIEW_STREAM", "RECORD_STREAM", "getRECORD_STREAM", "TAG", "fbLevel", "getFbLevel", "setFbLevel", "(Ljava/lang/String;)V", "isDebugFaceBeauty", "", "()Z", "setDebugFaceBeauty", "(Z)V", "isDenoisyVendorOn", "setDenoisyVendorOn", "isFaceBeautyVendorOn", "setFaceBeautyVendorOn", "isHDRCheckerVendorOn", "setHDRCheckerVendorOn", "isHDRRetOn", "Ljava/lang/Boolean;", "isHDRVendorOn", "setHDRVendorOn", "isStabilizationOn", "setStabilizationOn", "isUseBackCamera", "mBackCameraId", "getMBackCameraId", "mCameraManager", "Landroid/hardware/camera2/CameraManager;", "getMCameraManager", "()Landroid/hardware/camera2/CameraManager;", "setMCameraManager", "(Landroid/hardware/camera2/CameraManager;)V", "value", "mCurrentCameraId", "getMCurrentCameraId", "setMCurrentCameraId", "mCurrentImageFormat", "getMCurrentImageFormat", "setMCurrentImageFormat", "(I)V", "mFrontCameraId", "getMFrontCameraId", "mScreenSize", "Landroid/graphics/Point;", "getMScreenSize", "()Landroid/graphics/Point;", "setMScreenSize", "(Landroid/graphics/Point;)V", "mSensorOrientation", "getMSensorOrientation", "setMSensorOrientation", "mSupportHardWardLevel", "getMSupportHardWardLevel", "mSupportImageFormats", "", "getMSupportImageFormats", "()[I", "mSupportImageSizes", "", "Landroid/util/Size;", "getMSupportImageSizes", "()[Landroid/util/Size;", "mSupportPreviewSizes", "getMSupportPreviewSizes", "mSupportRecordSizes", "getMSupportRecordSizes", "mSupportRequestVendorTags", "Ljava/util/ArrayList;", "Lcom/tencent/mm/media/widget/camera2/effect/request/WCCameraEffectRequestTag;", "Lkotlin/collections/ArrayList;", "getMSupportRequestVendorTags", "()Ljava/util/ArrayList;", "setMSupportRequestVendorTags", "(Ljava/util/ArrayList;)V", "mSupportResultVendorTags", "Lcom/tencent/mm/media/widget/camera2/effect/result/WCCameraEffectResultTag;", "getMSupportResultVendorTags", "setMSupportResultVendorTags", "mSupportSessionVendorType", "Lcom/tencent/mm/media/widget/camera2/effect/sessionType/WCCameraEffectSessionType;", "getMSupportSessionVendorType", "setMSupportSessionVendorType", "onHDRCheckerResult", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "ret", "", "getOnHDRCheckerResult", "()Lkotlin/jvm/functions/Function1;", "setOnHDRCheckerResult", "(Lkotlin/jvm/functions/Function1;)V", "skinRate", "getSkinRate", "setSkinRate", "slimRate", "getSlimRate", "setSlimRate", "checkHDRValue", "result", "Landroid/hardware/camera2/CaptureResult;", "configAllFaceBeautyTag", "builder", "Landroid/hardware/camera2/CaptureRequest$Builder;", "configCaptureSessionType", "requestList", "", "configDenoisy", "configFaceBeauty", "configHDR", "configHDRChecker", "configStabilization", "configVendorTagValue", "tag", "getCamera2SupportHardWardLevel", "id", "getCameraId", "getCameraOrientation", "getFlashMode", "getFormatNames", "format", "getHardWardSupportLevelNames", "level", "getSupportImageFormat", "getSupportImageSize", "(Ljava/lang/String;I)[Landroid/util/Size;", "getSupportPreviewSize", "(Ljava/lang/String;)[Landroid/util/Size;", "getSupportRecordSize", "initAllParameters", "initConfigParameters", "isSettleBySessionType", "isVendorDenoisySupported", "isVendorFaceBeautySupported", "isVendorHDRCheckerSupported", "isVendorHDRSupported", "printSupportFormat", "formats", "printSupportSize", "sizes", "type", "([Landroid/util/Size;Ljava/lang/String;)V", "resumeAllCameraEffect", "setFlashMode", "mode", "setFlashOn", "isOn", "plugin-mediaeditor_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/media/widget/camera2/CameraUtil;", "", "()V", "BACK_CAMERA", "", "getBACK_CAMERA", "()I", "FRONT_CAMERA", "getFRONT_CAMERA", "IMAGE_STREAM", "", "getIMAGE_STREAM", "()Ljava/lang/String;", "ORIENTATION_0", "getORIENTATION_0", "ORIENTATION_180", "getORIENTATION_180", "ORIENTATION_270", "getORIENTATION_270", "ORIENTATION_90", "getORIENTATION_90", "OTHER_CAMERA", "getOTHER_CAMERA", "PREVIEW_STREAM", "getPREVIEW_STREAM", "RECORD_STREAM", "getRECORD_STREAM", "TAG", "fbLevel", "getFbLevel", "setFbLevel", "(Ljava/lang/String;)V", "isDebugFaceBeauty", "", "()Z", "setDebugFaceBeauty", "(Z)V", "isDenoisyVendorOn", "setDenoisyVendorOn", "isFaceBeautyVendorOn", "setFaceBeautyVendorOn", "isHDRCheckerVendorOn", "setHDRCheckerVendorOn", "isHDRRetOn", "Ljava/lang/Boolean;", "isHDRVendorOn", "setHDRVendorOn", "isStabilizationOn", "setStabilizationOn", "isUseBackCamera", "mBackCameraId", "getMBackCameraId", "mCameraManager", "Landroid/hardware/camera2/CameraManager;", "getMCameraManager", "()Landroid/hardware/camera2/CameraManager;", "setMCameraManager", "(Landroid/hardware/camera2/CameraManager;)V", "value", "mCurrentCameraId", "getMCurrentCameraId", "setMCurrentCameraId", "mCurrentImageFormat", "getMCurrentImageFormat", "setMCurrentImageFormat", "(I)V", "mFrontCameraId", "getMFrontCameraId", "mScreenSize", "Landroid/graphics/Point;", "getMScreenSize", "()Landroid/graphics/Point;", "setMScreenSize", "(Landroid/graphics/Point;)V", "mSensorOrientation", "getMSensorOrientation", "setMSensorOrientation", "mSupportHardWardLevel", "getMSupportHardWardLevel", "mSupportImageFormats", "", "getMSupportImageFormats", "()[I", "mSupportImageSizes", "", "Landroid/util/Size;", "getMSupportImageSizes", "()[Landroid/util/Size;", "mSupportPreviewSizes", "getMSupportPreviewSizes", "mSupportRecordSizes", "getMSupportRecordSizes", "mSupportRequestVendorTags", "Ljava/util/ArrayList;", "Lcom/tencent/mm/media/widget/camera2/effect/request/WCCameraEffectRequestTag;", "Lkotlin/collections/ArrayList;", "getMSupportRequestVendorTags", "()Ljava/util/ArrayList;", "setMSupportRequestVendorTags", "(Ljava/util/ArrayList;)V", "mSupportResultVendorTags", "Lcom/tencent/mm/media/widget/camera2/effect/result/WCCameraEffectResultTag;", "getMSupportResultVendorTags", "setMSupportResultVendorTags", "mSupportSessionVendorType", "Lcom/tencent/mm/media/widget/camera2/effect/sessionType/WCCameraEffectSessionType;", "getMSupportSessionVendorType", "setMSupportSessionVendorType", "onHDRCheckerResult", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "ret", "", "getOnHDRCheckerResult", "()Lkotlin/jvm/functions/Function1;", "setOnHDRCheckerResult", "(Lkotlin/jvm/functions/Function1;)V", "skinRate", "getSkinRate", "setSkinRate", "slimRate", "getSlimRate", "setSlimRate", "checkHDRValue", "result", "Landroid/hardware/camera2/CaptureResult;", "configAllFaceBeautyTag", "builder", "Landroid/hardware/camera2/CaptureRequest$Builder;", "configCaptureSessionType", "requestList", "", "configDenoisy", "configFaceBeauty", "configHDR", "configHDRChecker", "configStabilization", "configVendorTagValue", "tag", "getCamera2SupportHardWardLevel", "id", "getCameraId", "getCameraOrientation", "getFlashMode", "getFormatNames", "format", "getHardWardSupportLevelNames", "level", "getSupportImageFormat", "getSupportImageSize", "(Ljava/lang/String;I)[Landroid/util/Size;", "getSupportPreviewSize", "(Ljava/lang/String;)[Landroid/util/Size;", "getSupportRecordSize", "initAllParameters", "initConfigParameters", "isSettleBySessionType", "isVendorDenoisySupported", "isVendorFaceBeautySupported", "isVendorHDRCheckerSupported", "isVendorHDRSupported", "printSupportFormat", "formats", "printSupportSize", "sizes", "type", "([Landroid/util/Size;Ljava/lang/String;)V", "resumeAllCameraEffect", "setFlashMode", "mode", "setFlashOn", "isOn", "plugin-mediaeditor_release"})
 public final class d
 {
   private static final String TAG = "MicroMsg.CameraUtil";
-  static CameraManager hqF;
-  static final int hqG = 1;
-  static final int hqH = 0;
-  private static final int hqI = 2;
-  private static final int hqJ = 0;
-  private static final int hqK = 90;
-  private static final int hqL = 180;
-  private static final int hqM = 270;
-  private static final String hqN = "preview";
-  private static final String hqO = "record";
-  private static final String hqP = "image";
-  static String hqQ;
-  private static int hqR;
-  static int hqS;
-  private static Point hqT;
-  private static boolean hqU;
-  private static boolean hqV;
-  private static boolean hqW;
-  private static boolean hqX;
-  private static boolean hqY;
-  private static String hqZ;
-  private static d.g.a.b<? super Boolean, z> hqe;
-  private static int hra;
-  private static int hrb;
-  private static boolean hrc;
-  private static Boolean hrd;
-  private static ArrayList<com.tencent.mm.media.widget.b.a.a.a> hre;
-  private static ArrayList<com.tencent.mm.media.widget.b.a.b.a> hrf;
-  private static ArrayList<com.tencent.mm.media.widget.b.a.c.a> hrg;
-  public static final d hrh;
+  private static d.g.a.b<? super Boolean, z> hsS;
+  private static final int htA = 270;
+  private static final String htB = "preview";
+  private static final String htC = "record";
+  private static final String htD = "image";
+  static String htE;
+  private static int htF = 0;
+  static int htG = 0;
+  private static Point htH;
+  private static boolean htI = false;
+  private static boolean htJ = false;
+  private static boolean htK = false;
+  private static boolean htL = false;
+  private static boolean htM = false;
+  private static String htN;
+  private static int htO = 0;
+  private static int htP = 0;
+  private static boolean htQ = false;
+  private static Boolean htR;
+  private static ArrayList<com.tencent.mm.media.widget.b.a.a.a> htS;
+  private static ArrayList<com.tencent.mm.media.widget.b.a.b.a> htT;
+  private static ArrayList<com.tencent.mm.media.widget.b.a.c.a> htU;
+  public static final d htV;
+  static CameraManager htt;
+  static final int htu = 1;
+  static final int htv = 0;
+  private static final int htw = 2;
+  private static final int htx = 0;
+  private static final int hty = 90;
+  private static final int htz = 180;
   
   static
   {
     AppMethodBeat.i(94114);
-    hrh = new d();
+    htV = new d();
     TAG = "MicroMsg.CameraUtil";
-    hqG = 1;
-    hqI = 2;
-    hqK = 90;
-    hqL = 180;
-    hqM = 270;
-    hqN = "preview";
-    hqO = "record";
-    hqP = "image";
-    hqR = 35;
-    hqS = hqJ;
-    hqU = true;
-    hqW = true;
-    hqX = com.tencent.mm.media.widget.d.a.ayl();
-    hqY = true;
-    hra = 40;
-    hrb = 40;
+    htu = 1;
+    htw = 2;
+    hty = 90;
+    htz = 180;
+    htA = 270;
+    htB = "preview";
+    htC = "record";
+    htD = "image";
+    htF = 35;
+    htG = htx;
+    htI = true;
+    htK = true;
+    htL = com.tencent.mm.media.widget.d.a.ayA();
+    htM = true;
+    htO = 40;
+    htP = 40;
     AppMethodBeat.o(94114);
   }
   
@@ -130,18 +130,18 @@ public final class d
     AppMethodBeat.i(94112);
     p.h(paramBuilder, "builder");
     ArrayList localArrayList = new ArrayList();
-    String str = hqQ;
+    String str = htE;
     if (str == null) {
-      p.gfZ();
+      p.gkB();
     }
-    paramBuilder = ((Iterable)new com.tencent.mm.media.widget.b.a.a.b(paramBuilder, str, hre).ac(paramList)).iterator();
+    paramBuilder = ((Iterable)new com.tencent.mm.media.widget.b.a.a.b(paramBuilder, str, htS).ac(paramList)).iterator();
     while (paramBuilder.hasNext())
     {
       paramList = (String)paramBuilder.next();
-      ad.i(TAG, "request tag %s", new Object[] { paramList });
+      ae.i(TAG, "request tag %s", new Object[] { paramList });
       localArrayList.add(paramList);
     }
-    paramBuilder = hrg;
+    paramBuilder = htU;
     if (paramBuilder != null)
     {
       paramList = ((Iterable)paramBuilder).iterator();
@@ -158,7 +158,7 @@ public final class d
         if (paramBuilder == null) {
           break;
         }
-        int i = paramBuilder.hta;
+        int i = paramBuilder.hvO;
         AppMethodBeat.o(94112);
         return i;
         paramBuilder = null;
@@ -170,7 +170,7 @@ public final class d
   
   public static void a(CameraManager paramCameraManager)
   {
-    hqF = paramCameraManager;
+    htt = paramCameraManager;
   }
   
   public static void a(CaptureRequest.Builder paramBuilder, String paramString, int paramInt)
@@ -178,22 +178,22 @@ public final class d
     AppMethodBeat.i(94111);
     p.h(paramBuilder, "builder");
     p.h(paramString, "tag");
-    Object localObject = com.tencent.mm.media.widget.b.a.a.b.hsL;
-    if (p.i(paramString, com.tencent.mm.media.widget.b.a.a.b.axk()))
+    Object localObject = com.tencent.mm.media.widget.b.a.a.b.hvz;
+    if (p.i(paramString, com.tencent.mm.media.widget.b.a.a.b.axz()))
     {
-      paramString = hqQ;
+      paramString = htE;
       if (paramString == null) {
-        p.gfZ();
+        p.gkB();
       }
-      paramString = new com.tencent.mm.media.widget.b.a.a.b(paramBuilder, paramString, hre);
-      paramBuilder = com.tencent.mm.media.widget.b.a.a.b.hsL;
-      localObject = com.tencent.mm.media.widget.b.a.a.b.axj();
-      paramBuilder = com.tencent.mm.media.widget.b.a.a.b.hsL;
-      String str = com.tencent.mm.media.widget.b.a.a.b.axk();
-      paramBuilder = com.tencent.mm.media.widget.b.a.b.hsa;
-      int j = com.tencent.mm.media.widget.b.a.b.axd();
+      paramString = new com.tencent.mm.media.widget.b.a.a.b(paramBuilder, paramString, htS);
+      paramBuilder = com.tencent.mm.media.widget.b.a.a.b.hvz;
+      localObject = com.tencent.mm.media.widget.b.a.a.b.axy();
+      paramBuilder = com.tencent.mm.media.widget.b.a.a.b.hvz;
+      String str = com.tencent.mm.media.widget.b.a.a.b.axz();
+      paramBuilder = com.tencent.mm.media.widget.b.a.b.huO;
+      int j = com.tencent.mm.media.widget.b.a.b.axs();
       p.h(localObject, "key");
-      paramBuilder = paramString.hsC;
+      paramBuilder = paramString.hvq;
       boolean bool;
       label216:
       int i;
@@ -205,21 +205,21 @@ public final class d
         }
         paramBuilder = localIterator.next();
         com.tencent.mm.media.widget.b.a.a.a locala = (com.tencent.mm.media.widget.b.a.a.a)paramBuilder;
-        if (!p.i(locala.hsu, localObject)) {
+        if (!p.i(locala.hvi, localObject)) {
           break label267;
         }
-        Integer localInteger = locala.hsv;
-        if ((localInteger != null) && ((localInteger.intValue() & paramString.hsA) == 0)) {
+        Integer localInteger = locala.hvj;
+        if ((localInteger != null) && ((localInteger.intValue() & paramString.hvo) == 0)) {
           break label267;
         }
-        localInteger = locala.hsz;
+        localInteger = locala.hvn;
         if ((localInteger != null) && ((localInteger.intValue() & j) == 0)) {
           break label267;
         }
         if (str == null) {
           break label261;
         }
-        bool = p.i(locala.hsw, str);
+        bool = p.i(locala.hvk, str);
         if (!bool) {
           break label267;
         }
@@ -250,10 +250,10 @@ public final class d
         break;
         paramBuilder = null;
         break label227;
-        if (!(paramBuilder.hsx instanceof ArrayList)) {
+        if (!(paramBuilder.hvl instanceof ArrayList)) {
           break label236;
         }
-        paramBuilder = paramBuilder.hsx;
+        paramBuilder = paramBuilder.hvl;
         if (paramBuilder == null)
         {
           paramBuilder = new v("null cannot be cast to non-null type kotlin.collections.ArrayList<*> /* = java.util.ArrayList<*> */");
@@ -267,23 +267,23 @@ public final class d
       label272:
       label277:
       label327:
-      hqZ = (String)paramBuilder;
+      htN = (String)paramBuilder;
     }
     for (;;)
     {
-      hrc = true;
+      htQ = true;
       AppMethodBeat.o(94111);
       return;
-      paramBuilder = com.tencent.mm.media.widget.b.a.a.b.hsL;
-      if (p.i(paramString, com.tencent.mm.media.widget.b.a.a.b.axl()))
+      paramBuilder = com.tencent.mm.media.widget.b.a.a.b.hvz;
+      if (p.i(paramString, com.tencent.mm.media.widget.b.a.a.b.axA()))
       {
-        hra = paramInt;
+        htO = paramInt;
       }
       else
       {
-        paramBuilder = com.tencent.mm.media.widget.b.a.a.b.hsL;
-        if (p.i(paramString, com.tencent.mm.media.widget.b.a.a.b.axm())) {
-          hrb = paramInt;
+        paramBuilder = com.tencent.mm.media.widget.b.a.a.b.hvz;
+        if (p.i(paramString, com.tencent.mm.media.widget.b.a.a.b.axB())) {
+          htP = paramInt;
         }
       }
     }
@@ -294,19 +294,19 @@ public final class d
     Object localObject2 = null;
     AppMethodBeat.i(94110);
     p.h(paramCaptureResult, "result");
-    if ((hrf != null) && (hqW))
+    if ((htT != null) && (htK))
     {
-      Object localObject1 = hqQ;
+      Object localObject1 = htE;
       if (localObject1 == null) {
-        p.gfZ();
+        p.gkB();
       }
-      com.tencent.mm.media.widget.b.a.b.b localb = new com.tencent.mm.media.widget.b.a.b.b(paramCaptureResult, (String)localObject1, hrf);
-      localObject1 = com.tencent.mm.media.widget.b.a.b.b.hsU;
-      String str = com.tencent.mm.media.widget.b.a.b.b.axr();
-      localObject1 = com.tencent.mm.media.widget.b.a.b.hsa;
-      int j = com.tencent.mm.media.widget.b.a.b.axd();
+      com.tencent.mm.media.widget.b.a.b.b localb = new com.tencent.mm.media.widget.b.a.b.b(paramCaptureResult, (String)localObject1, htT);
+      localObject1 = com.tencent.mm.media.widget.b.a.b.b.hvI;
+      String str = com.tencent.mm.media.widget.b.a.b.b.axG();
+      localObject1 = com.tencent.mm.media.widget.b.a.b.huO;
+      int j = com.tencent.mm.media.widget.b.a.b.axs();
       p.h(str, "key");
-      localObject1 = localb.hsS;
+      localObject1 = localb.hvG;
       Object localObject3;
       int i;
       if (localObject1 != null)
@@ -317,12 +317,12 @@ public final class d
         }
         localObject1 = ((Iterator)localObject3).next();
         Object localObject4 = (com.tencent.mm.media.widget.b.a.b.a)localObject1;
-        if (p.i(((com.tencent.mm.media.widget.b.a.b.a)localObject4).hsu, str))
+        if (p.i(((com.tencent.mm.media.widget.b.a.b.a)localObject4).hvi, str))
         {
-          Integer localInteger = ((com.tencent.mm.media.widget.b.a.b.a)localObject4).hsv;
-          if ((localInteger == null) || ((localInteger.intValue() & localb.hsA) != 0))
+          Integer localInteger = ((com.tencent.mm.media.widget.b.a.b.a)localObject4).hvj;
+          if ((localInteger == null) || ((localInteger.intValue() & localb.hvo) != 0))
           {
-            localObject4 = ((com.tencent.mm.media.widget.b.a.b.a)localObject4).hsz;
+            localObject4 = ((com.tencent.mm.media.widget.b.a.b.a)localObject4).hvn;
             if ((localObject4 == null) || ((((Integer)localObject4).intValue() & j) != 0))
             {
               i = 1;
@@ -345,19 +345,19 @@ public final class d
         if (i == 0) {
           break label948;
         }
-        localObject1 = hqQ;
+        localObject1 = htE;
         if (localObject1 == null) {
-          p.gfZ();
+          p.gkB();
         }
-        localb = new com.tencent.mm.media.widget.b.a.b.b(paramCaptureResult, (String)localObject1, hrf);
-        paramCaptureResult = com.tencent.mm.media.widget.b.a.b.b.hsU;
-        str = com.tencent.mm.media.widget.b.a.b.b.axr();
+        localb = new com.tencent.mm.media.widget.b.a.b.b(paramCaptureResult, (String)localObject1, htT);
+        paramCaptureResult = com.tencent.mm.media.widget.b.a.b.b.hvI;
+        str = com.tencent.mm.media.widget.b.a.b.b.axG();
         p.h(str, "key");
         paramCaptureResult = localObject2;
-        if (localb.hsR.get(localb.yj(str)) != null)
+        if (localb.hvF.get(localb.yT(str)) != null)
         {
           p.h(str, "key");
-          paramCaptureResult = localb.hsS;
+          paramCaptureResult = localb.hvG;
           if (paramCaptureResult != null)
           {
             localObject1 = ((Iterable)paramCaptureResult).iterator();
@@ -367,11 +367,11 @@ public final class d
             }
             paramCaptureResult = ((Iterator)localObject1).next();
             localObject3 = (com.tencent.mm.media.widget.b.a.b.a)paramCaptureResult;
-            if (!p.i(((com.tencent.mm.media.widget.b.a.b.a)localObject3).hsu, str)) {
+            if (!p.i(((com.tencent.mm.media.widget.b.a.b.a)localObject3).hvi, str)) {
               break label474;
             }
-            localObject3 = ((com.tencent.mm.media.widget.b.a.b.a)localObject3).hsv;
-            if ((localObject3 != null) && ((((Integer)localObject3).intValue() & localb.hsA) == 0)) {
+            localObject3 = ((com.tencent.mm.media.widget.b.a.b.a)localObject3).hvj;
+            if ((localObject3 != null) && ((((Integer)localObject3).intValue() & localb.hvo) == 0)) {
               break label474;
             }
             i = 1;
@@ -395,26 +395,26 @@ public final class d
       }
       for (;;)
       {
-        if (((p.i(hrd, paramCaptureResult) ^ true)) && (paramCaptureResult != null))
+        if (((p.i(htR, paramCaptureResult) ^ true)) && (paramCaptureResult != null))
         {
-          hrd = paramCaptureResult;
-          paramCaptureResult = hqe;
+          htR = paramCaptureResult;
+          paramCaptureResult = hsS;
           if (paramCaptureResult != null)
           {
-            localObject1 = hrd;
+            localObject1 = htR;
             if (localObject1 == null) {
-              p.gfZ();
+              p.gkB();
             }
             paramCaptureResult.invoke(localObject1);
           }
-          paramCaptureResult = hrd;
+          paramCaptureResult = htR;
           if (paramCaptureResult == null) {
-            p.gfZ();
+            p.gkB();
           }
           if (paramCaptureResult.booleanValue())
           {
-            hqU = true;
-            hqV = false;
+            htI = true;
+            htJ = false;
             AppMethodBeat.o(94110);
             return;
             i = 0;
@@ -436,7 +436,7 @@ public final class d
             paramCaptureResult = null;
             break label361;
             label484:
-            localObject1 = paramCaptureResult.hsQ;
+            localObject1 = paramCaptureResult.hvE;
             break label372;
             label492:
             switch (((String)localObject1).hashCode())
@@ -449,7 +449,7 @@ public final class d
               if (!((String)localObject1).equals("String")) {
                 continue;
               }
-              paramCaptureResult = localb.hsR.get(localb.yj(str));
+              paramCaptureResult = localb.hvF.get(localb.yT(str));
               if (paramCaptureResult == null)
               {
                 paramCaptureResult = new v("null cannot be cast to non-null type kotlin.String");
@@ -461,7 +461,7 @@ public final class d
               if (!((String)localObject1).equals("Byte")) {
                 continue;
               }
-              paramCaptureResult = localb.hsR.get(localb.yj(str));
+              paramCaptureResult = localb.hvF.get(localb.yT(str));
               if (paramCaptureResult == null)
               {
                 paramCaptureResult = new v("null cannot be cast to non-null type kotlin.Byte");
@@ -473,7 +473,7 @@ public final class d
               if (!((String)localObject1).equals("Boolean")) {
                 continue;
               }
-              paramCaptureResult = localb.hsR.get(localb.yj(str));
+              paramCaptureResult = localb.hvF.get(localb.yT(str));
               if (paramCaptureResult == null)
               {
                 paramCaptureResult = new v("null cannot be cast to non-null type kotlin.Boolean");
@@ -485,7 +485,7 @@ public final class d
               if (!((String)localObject1).equals("Int")) {
                 continue;
               }
-              paramCaptureResult = localb.hsR.get(localb.yj(str));
+              paramCaptureResult = localb.hvF.get(localb.yT(str));
               if (paramCaptureResult == null)
               {
                 paramCaptureResult = new v("null cannot be cast to non-null type kotlin.Int");
@@ -542,8 +542,8 @@ public final class d
               break;
             }
           }
-          hqU = false;
-          hqV = true;
+          htI = false;
+          htJ = true;
         }
       }
     }
@@ -555,7 +555,7 @@ public final class d
   {
     AppMethodBeat.i(94103);
     p.h(paramBuilder, "builder");
-    if (com.tencent.mm.media.widget.d.a.aym())
+    if (com.tencent.mm.media.widget.d.a.ayB())
     {
       if (paramBoolean)
       {
@@ -589,60 +589,60 @@ public final class d
       localStringBuffer.append("size: " + localSize.getHeight() + ',' + localSize.getWidth() + " ratios " + localSize.getHeight() * 1.0D / localSize.getWidth() + "||");
       i += 1;
     }
-    ad.i(TAG, "Print currentCamera " + hqQ + " support " + paramString + " sizes " + localStringBuffer);
+    ae.i(TAG, "Print currentCamera " + htE + " support " + paramString + " sizes " + localStringBuffer);
     AppMethodBeat.o(94101);
   }
   
-  public static String awN()
+  public static String axc()
   {
-    return hqQ;
+    return htE;
   }
   
-  public static boolean awO()
+  public static boolean axd()
   {
     AppMethodBeat.i(94097);
-    boolean bool = p.i(hqQ, nZ(hqG));
+    boolean bool = p.i(htE, oc(htu));
     AppMethodBeat.o(94097);
     return bool;
   }
   
-  public static int awP()
+  public static int axe()
   {
-    return hqR;
+    return htF;
   }
   
-  public static int awQ()
+  public static int axf()
   {
-    return hqS;
+    return htG;
   }
   
-  public static Point awR()
+  public static Point axg()
   {
-    return hqT;
+    return htH;
   }
   
-  public static void awS()
+  public static void axh()
   {
-    hqU = true;
-    hqV = false;
-    hqW = true;
-    hqY = true;
-    hqZ = null;
-    hra = 40;
-    hrb = 40;
-    hrc = false;
-    hrd = null;
+    htI = true;
+    htJ = false;
+    htK = true;
+    htM = true;
+    htN = null;
+    htO = 40;
+    htP = 40;
+    htQ = false;
+    htR = null;
   }
   
-  public static Size[] awT()
+  public static Size[] axi()
   {
     AppMethodBeat.i(94098);
-    Object localObject2 = hqQ;
+    Object localObject2 = htE;
     Object localObject1 = localObject2;
     if (localObject2 == null) {
-      localObject1 = nZ(hqG);
+      localObject1 = oc(htu);
     }
-    localObject2 = hqF;
+    localObject2 = htt;
     if (localObject2 != null)
     {
       localObject1 = ((CameraManager)localObject2).getCameraCharacteristics((String)localObject1);
@@ -658,11 +658,11 @@ public final class d
     for (localObject1 = ((StreamConfigurationMap)localObject1).getOutputSizes(SurfaceTexture.class);; localObject1 = null)
     {
       if (localObject1 == null) {
-        p.gfZ();
+        p.gkB();
       }
-      a((Size[])localObject1, hqN);
+      a((Size[])localObject1, htB);
       if (localObject1 == null) {
-        p.gfZ();
+        p.gkB();
       }
       AppMethodBeat.o(94098);
       return localObject1;
@@ -671,16 +671,16 @@ public final class d
     }
   }
   
-  public static Size[] awU()
+  public static Size[] axj()
   {
     AppMethodBeat.i(94099);
-    Object localObject2 = hqQ;
+    Object localObject2 = htE;
     Object localObject1 = localObject2;
     if (localObject2 == null) {
-      localObject1 = nZ(hqG);
+      localObject1 = oc(htu);
     }
-    int i = hqR;
-    localObject2 = hqF;
+    int i = htF;
+    localObject2 = htt;
     if (localObject2 != null)
     {
       localObject1 = ((CameraManager)localObject2).getCameraCharacteristics((String)localObject1);
@@ -696,11 +696,11 @@ public final class d
     for (localObject1 = ((StreamConfigurationMap)localObject1).getOutputSizes(i);; localObject1 = null)
     {
       if (localObject1 == null) {
-        p.gfZ();
+        p.gkB();
       }
-      a((Size[])localObject1, hqP);
+      a((Size[])localObject1, htD);
       if (localObject1 == null) {
-        p.gfZ();
+        p.gkB();
       }
       AppMethodBeat.o(94099);
       return localObject1;
@@ -709,10 +709,10 @@ public final class d
     }
   }
   
-  public static boolean awV()
+  public static boolean axk()
   {
     AppMethodBeat.i(94113);
-    ArrayList localArrayList = hrg;
+    ArrayList localArrayList = htU;
     if (localArrayList != null)
     {
       if (!((Collection)localArrayList).isEmpty())
@@ -731,33 +731,33 @@ public final class d
   {
     AppMethodBeat.i(94104);
     p.h(paramBuilder, "builder");
-    Object localObject1 = hqQ;
+    Object localObject1 = htE;
     if (localObject1 == null) {
-      p.gfZ();
+      p.gkB();
     }
-    localObject1 = new com.tencent.mm.media.widget.b.a.a.b(paramBuilder, (String)localObject1, hre);
-    Object localObject2 = com.tencent.mm.media.widget.b.a.a.b.hsL;
-    localObject2 = com.tencent.mm.media.widget.b.a.a.b.axo();
-    com.tencent.mm.media.widget.b.a.b localb = com.tencent.mm.media.widget.b.a.b.hsa;
-    if (((com.tencent.mm.media.widget.b.a.a.b)localObject1).ac((String)localObject2, com.tencent.mm.media.widget.b.a.b.axe()))
+    localObject1 = new com.tencent.mm.media.widget.b.a.a.b(paramBuilder, (String)localObject1, htS);
+    Object localObject2 = com.tencent.mm.media.widget.b.a.a.b.hvz;
+    localObject2 = com.tencent.mm.media.widget.b.a.a.b.axD();
+    com.tencent.mm.media.widget.b.a.b localb = com.tencent.mm.media.widget.b.a.b.huO;
+    if (((com.tencent.mm.media.widget.b.a.a.b)localObject1).ad((String)localObject2, com.tencent.mm.media.widget.b.a.b.axt()))
     {
-      localObject1 = hqQ;
+      localObject1 = htE;
       if (localObject1 == null) {
-        p.gfZ();
+        p.gkB();
       }
-      paramBuilder = new com.tencent.mm.media.widget.b.a.a.b(paramBuilder, (String)localObject1, hre);
-      localObject1 = com.tencent.mm.media.widget.b.a.a.b.hsL;
-      localObject1 = com.tencent.mm.media.widget.b.a.a.b.axo();
-      boolean bool = hqU;
-      localObject2 = com.tencent.mm.media.widget.b.a.b.hsa;
-      paramBuilder.b((String)localObject1, bool, com.tencent.mm.media.widget.b.a.b.axe());
+      paramBuilder = new com.tencent.mm.media.widget.b.a.a.b(paramBuilder, (String)localObject1, htS);
+      localObject1 = com.tencent.mm.media.widget.b.a.a.b.hvz;
+      localObject1 = com.tencent.mm.media.widget.b.a.a.b.axD();
+      boolean bool = htI;
+      localObject2 = com.tencent.mm.media.widget.b.a.b.huO;
+      paramBuilder.b((String)localObject1, bool, com.tencent.mm.media.widget.b.a.b.axt());
     }
     AppMethodBeat.o(94104);
   }
   
   public static void c(Point paramPoint)
   {
-    hqT = paramPoint;
+    htH = paramPoint;
   }
   
   public static void c(CaptureRequest.Builder paramBuilder)
@@ -768,79 +768,79 @@ public final class d
     Object localObject2;
     Object localObject3;
     boolean bool;
-    if (!hrc)
+    if (!htQ)
     {
-      localObject1 = hqQ;
+      localObject1 = htE;
       if (localObject1 == null) {
-        p.gfZ();
+        p.gkB();
       }
-      localObject1 = new com.tencent.mm.media.widget.b.a.a.b(paramBuilder, (String)localObject1, hre);
-      localObject2 = com.tencent.mm.media.widget.b.a.a.b.hsL;
-      localObject2 = com.tencent.mm.media.widget.b.a.a.b.axj();
-      localObject3 = com.tencent.mm.media.widget.b.a.b.hsa;
-      if (((com.tencent.mm.media.widget.b.a.a.b)localObject1).ac((String)localObject2, com.tencent.mm.media.widget.b.a.b.axd()))
+      localObject1 = new com.tencent.mm.media.widget.b.a.a.b(paramBuilder, (String)localObject1, htS);
+      localObject2 = com.tencent.mm.media.widget.b.a.a.b.hvz;
+      localObject2 = com.tencent.mm.media.widget.b.a.a.b.axy();
+      localObject3 = com.tencent.mm.media.widget.b.a.b.huO;
+      if (((com.tencent.mm.media.widget.b.a.a.b)localObject1).ad((String)localObject2, com.tencent.mm.media.widget.b.a.b.axs()))
       {
-        localObject1 = hqQ;
+        localObject1 = htE;
         if (localObject1 == null) {
-          p.gfZ();
+          p.gkB();
         }
-        paramBuilder = new com.tencent.mm.media.widget.b.a.a.b(paramBuilder, (String)localObject1, hre);
-        localObject1 = com.tencent.mm.media.widget.b.a.a.b.hsL;
-        localObject1 = com.tencent.mm.media.widget.b.a.a.b.axj();
-        bool = hqY;
-        localObject2 = com.tencent.mm.media.widget.b.a.b.hsa;
-        paramBuilder.b((String)localObject1, bool, com.tencent.mm.media.widget.b.a.b.axd());
+        paramBuilder = new com.tencent.mm.media.widget.b.a.a.b(paramBuilder, (String)localObject1, htS);
+        localObject1 = com.tencent.mm.media.widget.b.a.a.b.hvz;
+        localObject1 = com.tencent.mm.media.widget.b.a.a.b.axy();
+        bool = htM;
+        localObject2 = com.tencent.mm.media.widget.b.a.b.huO;
+        paramBuilder.b((String)localObject1, bool, com.tencent.mm.media.widget.b.a.b.axs());
         AppMethodBeat.o(94105);
       }
     }
     else
     {
       p.h(paramBuilder, "builder");
-      localObject1 = hqQ;
+      localObject1 = htE;
       if (localObject1 == null) {
-        p.gfZ();
+        p.gkB();
       }
-      localObject1 = new com.tencent.mm.media.widget.b.a.a.b(paramBuilder, (String)localObject1, hre);
-      localObject2 = com.tencent.mm.media.widget.b.a.a.b.hsL;
-      localObject2 = com.tencent.mm.media.widget.b.a.a.b.axj();
-      localObject3 = com.tencent.mm.media.widget.b.a.a.b.hsL;
-      localObject3 = com.tencent.mm.media.widget.b.a.a.b.axk();
-      bool = hqY;
-      Object localObject4 = hqZ;
+      localObject1 = new com.tencent.mm.media.widget.b.a.a.b(paramBuilder, (String)localObject1, htS);
+      localObject2 = com.tencent.mm.media.widget.b.a.a.b.hvz;
+      localObject2 = com.tencent.mm.media.widget.b.a.a.b.axy();
+      localObject3 = com.tencent.mm.media.widget.b.a.a.b.hvz;
+      localObject3 = com.tencent.mm.media.widget.b.a.a.b.axz();
+      bool = htM;
+      Object localObject4 = htN;
       if (localObject4 == null) {
-        p.gfZ();
+        p.gkB();
       }
-      com.tencent.mm.media.widget.b.a.b localb = com.tencent.mm.media.widget.b.a.b.hsa;
-      int i = com.tencent.mm.media.widget.b.a.b.axd();
+      com.tencent.mm.media.widget.b.a.b localb = com.tencent.mm.media.widget.b.a.b.huO;
+      int i = com.tencent.mm.media.widget.b.a.b.axs();
       p.h(localObject2, "key");
       p.h(localObject3, "child");
       ((com.tencent.mm.media.widget.b.a.a.b)localObject1).a((String)localObject2, (String)localObject3, bool, localObject4, i);
-      localObject1 = hqQ;
+      localObject1 = htE;
       if (localObject1 == null) {
-        p.gfZ();
+        p.gkB();
       }
-      localObject1 = new com.tencent.mm.media.widget.b.a.a.b(paramBuilder, (String)localObject1, hre);
-      localObject2 = com.tencent.mm.media.widget.b.a.a.b.hsL;
-      localObject2 = com.tencent.mm.media.widget.b.a.a.b.axj();
-      localObject3 = com.tencent.mm.media.widget.b.a.a.b.hsL;
-      localObject3 = com.tencent.mm.media.widget.b.a.a.b.axl();
-      bool = hqY;
-      i = hra;
-      localObject4 = com.tencent.mm.media.widget.b.a.b.hsa;
-      ((com.tencent.mm.media.widget.b.a.a.b)localObject1).a((String)localObject2, (String)localObject3, bool, i, com.tencent.mm.media.widget.b.a.b.axd());
-      localObject1 = hqQ;
+      localObject1 = new com.tencent.mm.media.widget.b.a.a.b(paramBuilder, (String)localObject1, htS);
+      localObject2 = com.tencent.mm.media.widget.b.a.a.b.hvz;
+      localObject2 = com.tencent.mm.media.widget.b.a.a.b.axy();
+      localObject3 = com.tencent.mm.media.widget.b.a.a.b.hvz;
+      localObject3 = com.tencent.mm.media.widget.b.a.a.b.axA();
+      bool = htM;
+      i = htO;
+      localObject4 = com.tencent.mm.media.widget.b.a.b.huO;
+      ((com.tencent.mm.media.widget.b.a.a.b)localObject1).a((String)localObject2, (String)localObject3, bool, i, com.tencent.mm.media.widget.b.a.b.axs());
+      localObject1 = htE;
       if (localObject1 == null) {
-        p.gfZ();
+        p.gkB();
       }
-      paramBuilder = new com.tencent.mm.media.widget.b.a.a.b(paramBuilder, (String)localObject1, hre);
-      localObject1 = com.tencent.mm.media.widget.b.a.a.b.hsL;
-      localObject1 = com.tencent.mm.media.widget.b.a.a.b.axj();
-      localObject2 = com.tencent.mm.media.widget.b.a.a.b.hsL;
-      localObject2 = com.tencent.mm.media.widget.b.a.a.b.axm();
-      bool = hqY;
-      i = hrb;
-      localObject3 = com.tencent.mm.media.widget.b.a.b.hsa;
-      paramBuilder.a((String)localObject1, (String)localObject2, bool, i, com.tencent.mm.media.widget.b.a.b.axd());
+      paramBuilder = new com.tencent.mm.media.widget.b.a.a.b(paramBuilder, (String)localObject1, htS);
+      localObject1 = com.tencent.mm.media.widget.b.a.a.b.hvz;
+      localObject1 = com.tencent.mm.media.widget.b.a.a.b.axy();
+      localObject2 = com.tencent.mm.media.widget.b.a.a.b.hvz;
+      localObject2 = com.tencent.mm.media.widget.b.a.a.b.axB();
+      bool = htM;
+      i = htP;
+      localObject3 = com.tencent.mm.media.widget.b.a.b.huO;
+      paramBuilder.a((String)localObject1, (String)localObject2, bool, i, com.tencent.mm.media.widget.b.a.b.axs());
     }
     AppMethodBeat.o(94105);
   }
@@ -849,26 +849,26 @@ public final class d
   {
     AppMethodBeat.i(94106);
     p.h(paramBuilder, "builder");
-    Object localObject1 = hqQ;
+    Object localObject1 = htE;
     if (localObject1 == null) {
-      p.gfZ();
+      p.gkB();
     }
-    localObject1 = new com.tencent.mm.media.widget.b.a.a.b(paramBuilder, (String)localObject1, hre);
-    Object localObject2 = com.tencent.mm.media.widget.b.a.a.b.hsL;
-    localObject2 = com.tencent.mm.media.widget.b.a.a.b.axn();
-    com.tencent.mm.media.widget.b.a.b localb = com.tencent.mm.media.widget.b.a.b.hsa;
-    if (((com.tencent.mm.media.widget.b.a.a.b)localObject1).ac((String)localObject2, com.tencent.mm.media.widget.b.a.b.axe()))
+    localObject1 = new com.tencent.mm.media.widget.b.a.a.b(paramBuilder, (String)localObject1, htS);
+    Object localObject2 = com.tencent.mm.media.widget.b.a.a.b.hvz;
+    localObject2 = com.tencent.mm.media.widget.b.a.a.b.axC();
+    com.tencent.mm.media.widget.b.a.b localb = com.tencent.mm.media.widget.b.a.b.huO;
+    if (((com.tencent.mm.media.widget.b.a.a.b)localObject1).ad((String)localObject2, com.tencent.mm.media.widget.b.a.b.axt()))
     {
-      localObject1 = hqQ;
+      localObject1 = htE;
       if (localObject1 == null) {
-        p.gfZ();
+        p.gkB();
       }
-      paramBuilder = new com.tencent.mm.media.widget.b.a.a.b(paramBuilder, (String)localObject1, hre);
-      localObject1 = com.tencent.mm.media.widget.b.a.a.b.hsL;
-      localObject1 = com.tencent.mm.media.widget.b.a.a.b.axn();
-      boolean bool = hqV;
-      localObject2 = com.tencent.mm.media.widget.b.a.b.hsa;
-      paramBuilder.b((String)localObject1, bool, com.tencent.mm.media.widget.b.a.b.axe());
+      paramBuilder = new com.tencent.mm.media.widget.b.a.a.b(paramBuilder, (String)localObject1, htS);
+      localObject1 = com.tencent.mm.media.widget.b.a.a.b.hvz;
+      localObject1 = com.tencent.mm.media.widget.b.a.a.b.axC();
+      boolean bool = htJ;
+      localObject2 = com.tencent.mm.media.widget.b.a.b.huO;
+      paramBuilder.b((String)localObject1, bool, com.tencent.mm.media.widget.b.a.b.axt());
     }
     AppMethodBeat.o(94106);
   }
@@ -877,79 +877,79 @@ public final class d
   {
     AppMethodBeat.i(94107);
     p.h(paramBuilder, "builder");
-    Object localObject1 = hqQ;
+    Object localObject1 = htE;
     if (localObject1 == null) {
-      p.gfZ();
+      p.gkB();
     }
-    localObject1 = new com.tencent.mm.media.widget.b.a.a.b(paramBuilder, (String)localObject1, hre);
-    Object localObject2 = com.tencent.mm.media.widget.b.a.a.b.hsL;
-    localObject2 = com.tencent.mm.media.widget.b.a.a.b.axq();
-    com.tencent.mm.media.widget.b.a.b localb = com.tencent.mm.media.widget.b.a.b.hsa;
-    if (((com.tencent.mm.media.widget.b.a.a.b)localObject1).ac((String)localObject2, com.tencent.mm.media.widget.b.a.b.axd()))
+    localObject1 = new com.tencent.mm.media.widget.b.a.a.b(paramBuilder, (String)localObject1, htS);
+    Object localObject2 = com.tencent.mm.media.widget.b.a.a.b.hvz;
+    localObject2 = com.tencent.mm.media.widget.b.a.a.b.axF();
+    com.tencent.mm.media.widget.b.a.b localb = com.tencent.mm.media.widget.b.a.b.huO;
+    if (((com.tencent.mm.media.widget.b.a.a.b)localObject1).ad((String)localObject2, com.tencent.mm.media.widget.b.a.b.axs()))
     {
-      localObject1 = hqQ;
+      localObject1 = htE;
       if (localObject1 == null) {
-        p.gfZ();
+        p.gkB();
       }
-      paramBuilder = new com.tencent.mm.media.widget.b.a.a.b(paramBuilder, (String)localObject1, hre);
-      localObject1 = com.tencent.mm.media.widget.b.a.a.b.hsL;
-      localObject1 = com.tencent.mm.media.widget.b.a.a.b.axq();
-      boolean bool = hqW;
-      localObject2 = com.tencent.mm.media.widget.b.a.b.hsa;
-      paramBuilder.b((String)localObject1, bool, com.tencent.mm.media.widget.b.a.b.axd());
+      paramBuilder = new com.tencent.mm.media.widget.b.a.a.b(paramBuilder, (String)localObject1, htS);
+      localObject1 = com.tencent.mm.media.widget.b.a.a.b.hvz;
+      localObject1 = com.tencent.mm.media.widget.b.a.a.b.axF();
+      boolean bool = htK;
+      localObject2 = com.tencent.mm.media.widget.b.a.b.huO;
+      paramBuilder.b((String)localObject1, bool, com.tencent.mm.media.widget.b.a.b.axs());
     }
     AppMethodBeat.o(94107);
   }
   
-  public static void ek(boolean paramBoolean)
-  {
-    hqU = paramBoolean;
-  }
-  
-  public static void el(boolean paramBoolean)
-  {
-    hqV = paramBoolean;
-  }
-  
   public static void em(boolean paramBoolean)
   {
-    hqW = paramBoolean;
+    htI = paramBoolean;
   }
   
   public static void en(boolean paramBoolean)
   {
-    hqX = paramBoolean;
+    htJ = paramBoolean;
   }
   
   public static void eo(boolean paramBoolean)
   {
-    hqY = paramBoolean;
+    htK = paramBoolean;
+  }
+  
+  public static void ep(boolean paramBoolean)
+  {
+    htL = paramBoolean;
+  }
+  
+  public static void eq(boolean paramBoolean)
+  {
+    htM = paramBoolean;
   }
   
   public static void f(CaptureRequest.Builder paramBuilder)
   {
     AppMethodBeat.i(94108);
     p.h(paramBuilder, "builder");
-    Object localObject1 = hqQ;
+    Object localObject1 = htE;
     if (localObject1 == null) {
-      p.gfZ();
+      p.gkB();
     }
-    localObject1 = new com.tencent.mm.media.widget.b.a.a.b(paramBuilder, (String)localObject1, hre);
-    Object localObject2 = com.tencent.mm.media.widget.b.a.a.b.hsL;
-    localObject2 = com.tencent.mm.media.widget.b.a.a.b.axp();
-    com.tencent.mm.media.widget.b.a.b localb = com.tencent.mm.media.widget.b.a.b.hsa;
-    if (((com.tencent.mm.media.widget.b.a.a.b)localObject1).ac((String)localObject2, com.tencent.mm.media.widget.b.a.b.axf()))
+    localObject1 = new com.tencent.mm.media.widget.b.a.a.b(paramBuilder, (String)localObject1, htS);
+    Object localObject2 = com.tencent.mm.media.widget.b.a.a.b.hvz;
+    localObject2 = com.tencent.mm.media.widget.b.a.a.b.axE();
+    com.tencent.mm.media.widget.b.a.b localb = com.tencent.mm.media.widget.b.a.b.huO;
+    if (((com.tencent.mm.media.widget.b.a.a.b)localObject1).ad((String)localObject2, com.tencent.mm.media.widget.b.a.b.axu()))
     {
-      localObject1 = hqQ;
+      localObject1 = htE;
       if (localObject1 == null) {
-        p.gfZ();
+        p.gkB();
       }
-      paramBuilder = new com.tencent.mm.media.widget.b.a.a.b(paramBuilder, (String)localObject1, hre);
-      localObject1 = com.tencent.mm.media.widget.b.a.a.b.hsL;
-      localObject1 = com.tencent.mm.media.widget.b.a.a.b.axp();
-      boolean bool = hqX;
-      localObject2 = com.tencent.mm.media.widget.b.a.b.hsa;
-      paramBuilder.b((String)localObject1, bool, com.tencent.mm.media.widget.b.a.b.axf());
+      paramBuilder = new com.tencent.mm.media.widget.b.a.a.b(paramBuilder, (String)localObject1, htS);
+      localObject1 = com.tencent.mm.media.widget.b.a.a.b.hvz;
+      localObject1 = com.tencent.mm.media.widget.b.a.a.b.axE();
+      boolean bool = htL;
+      localObject2 = com.tencent.mm.media.widget.b.a.b.huO;
+      paramBuilder.b((String)localObject1, bool, com.tencent.mm.media.widget.b.a.b.axu());
     }
     AppMethodBeat.o(94108);
   }
@@ -958,14 +958,14 @@ public final class d
   {
     AppMethodBeat.i(94109);
     p.h(paramBuilder, "builder");
-    Object localObject = hre;
+    Object localObject = htS;
     if (localObject != null)
     {
       localObject = ((Iterable)localObject).iterator();
       while (((Iterator)localObject).hasNext())
       {
         com.tencent.mm.media.widget.b.a.a.a locala = (com.tencent.mm.media.widget.b.a.a.a)((Iterator)localObject).next();
-        ad.i(TAG, "close effect :  " + locala.hsy);
+        ae.i(TAG, "close effect :  " + locala.hvm);
         com.tencent.mm.media.widget.b.a.b.a(paramBuilder, locala, false);
       }
       AppMethodBeat.o(94109);
@@ -976,23 +976,28 @@ public final class d
   
   public static void k(ArrayList<com.tencent.mm.media.widget.b.a.a.a> paramArrayList)
   {
-    hre = paramArrayList;
+    htS = paramArrayList;
   }
   
   public static void l(ArrayList<com.tencent.mm.media.widget.b.a.b.a> paramArrayList)
   {
-    hrf = paramArrayList;
+    htT = paramArrayList;
   }
   
   public static void m(ArrayList<com.tencent.mm.media.widget.b.a.c.a> paramArrayList)
   {
-    hrg = paramArrayList;
+    htU = paramArrayList;
   }
   
-  static String nZ(int paramInt)
+  public static void o(d.g.a.b<? super Boolean, z> paramb)
+  {
+    hsS = paramb;
+  }
+  
+  static String oc(int paramInt)
   {
     AppMethodBeat.i(94100);
-    Object localObject1 = hqF;
+    Object localObject1 = htt;
     int i;
     label34:
     Object localObject2;
@@ -1013,7 +1018,7 @@ public final class d
       }
       Object localObject3 = localObject1[i];
       localObject2 = (String)localObject3;
-      CameraManager localCameraManager = hqF;
+      CameraManager localCameraManager = htt;
       if (localCameraManager == null) {
         break label131;
       }
@@ -1063,14 +1068,9 @@ public final class d
     label164:
     label170:
     label176:
-    ad.e(TAG, "can not find the id: %s in camera manage", new Object[] { Integer.valueOf(paramInt) });
+    ae.e(TAG, "can not find the id: %s in camera manage", new Object[] { Integer.valueOf(paramInt) });
     AppMethodBeat.o(94100);
     return String.valueOf(paramInt);
-  }
-  
-  public static void o(d.g.a.b<? super Boolean, z> paramb)
-  {
-    hqe = paramb;
   }
 }
 

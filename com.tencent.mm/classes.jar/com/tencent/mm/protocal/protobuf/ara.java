@@ -1,91 +1,69 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
 
 public final class ara
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public String GoS;
-  public LinkedList<arz> GoV;
-  
-  public ara()
-  {
-    AppMethodBeat.i(209355);
-    this.GoV = new LinkedList();
-    AppMethodBeat.o(209355);
-  }
+  public int GHN;
+  public int GHO;
+  public int GHP;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(209356);
+    AppMethodBeat.i(184204);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.GoS != null) {
-        paramVarArgs.d(1, this.GoS);
-      }
-      paramVarArgs.e(2, 8, this.GoV);
-      AppMethodBeat.o(209356);
+      paramVarArgs.aS(1, this.GHN);
+      paramVarArgs.aS(2, this.GHO);
+      paramVarArgs.aS(3, this.GHP);
+      AppMethodBeat.o(184204);
       return 0;
     }
-    if (paramInt == 1) {
-      if (this.GoS == null) {
-        break label358;
-      }
-    }
-    label358:
-    for (paramInt = f.a.a.b.b.a.e(1, this.GoS) + 0;; paramInt = 0)
+    if (paramInt == 1)
     {
-      int i = f.a.a.a.c(2, 8, this.GoV);
-      AppMethodBeat.o(209356);
-      return paramInt + i;
-      if (paramInt == 2)
-      {
-        paramVarArgs = (byte[])paramVarArgs[0];
-        this.GoV.clear();
-        paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
-          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
-          }
-        }
-        AppMethodBeat.o(209356);
-        return 0;
-      }
-      if (paramInt == 3)
-      {
-        Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
-        ara localara = (ara)paramVarArgs[1];
-        paramInt = ((Integer)paramVarArgs[2]).intValue();
-        switch (paramInt)
-        {
-        default: 
-          AppMethodBeat.o(209356);
-          return -1;
-        case 1: 
-          localara.GoS = ((f.a.a.a.a)localObject1).NPN.readString();
-          AppMethodBeat.o(209356);
-          return 0;
-        }
-        paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
-        i = paramVarArgs.size();
-        paramInt = 0;
-        while (paramInt < i)
-        {
-          Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-          localObject1 = new arz();
-          localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-          for (boolean bool = true; bool; bool = ((arz)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, com.tencent.mm.bx.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-          localara.GoV.add(localObject1);
-          paramInt += 1;
-        }
-        AppMethodBeat.o(209356);
-        return 0;
-      }
-      AppMethodBeat.o(209356);
-      return -1;
+      paramInt = f.a.a.b.b.a.bz(1, this.GHN);
+      int i = f.a.a.b.b.a.bz(2, this.GHO);
+      int j = f.a.a.b.b.a.bz(3, this.GHP);
+      AppMethodBeat.o(184204);
+      return paramInt + 0 + i + j;
     }
+    if (paramInt == 2)
+    {
+      paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.gCg();
+        }
+      }
+      AppMethodBeat.o(184204);
+      return 0;
+    }
+    if (paramInt == 3)
+    {
+      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+      ara localara = (ara)paramVarArgs[1];
+      switch (((Integer)paramVarArgs[2]).intValue())
+      {
+      default: 
+        AppMethodBeat.o(184204);
+        return -1;
+      case 1: 
+        localara.GHN = locala.OmT.zc();
+        AppMethodBeat.o(184204);
+        return 0;
+      case 2: 
+        localara.GHO = locala.OmT.zc();
+        AppMethodBeat.o(184204);
+        return 0;
+      }
+      localara.GHP = locala.OmT.zc();
+      AppMethodBeat.o(184204);
+      return 0;
+    }
+    AppMethodBeat.o(184204);
+    return -1;
   }
 }
 

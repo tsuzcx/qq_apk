@@ -16,25 +16,25 @@ public class TexturePool
   
   public TexturePool()
   {
-    AppMethodBeat.i(218293);
+    AppMethodBeat.i(214933);
     this.textureInfoList = new ArrayList();
     this.MaxCacheSize = 207360000L;
     this.MaxCacheLength = 60;
     Logger.d("TexturePool", "TexturePool: create " + Thread.currentThread().getId());
-    AppMethodBeat.o(218293);
+    AppMethodBeat.o(214933);
   }
   
   private void adaptCacheSize()
   {
     try
     {
-      AppMethodBeat.i(218298);
+      AppMethodBeat.i(214938);
       while ((this.textureInfoList.size() > 0) && (this.textureInfoList.size() - this.MaxCacheLength > 0))
       {
         ((TextureInfo)this.textureInfoList.get(0)).release();
         this.textureInfoList.remove(0);
       }
-      AppMethodBeat.o(218298);
+      AppMethodBeat.o(214938);
     }
     finally {}
   }
@@ -46,7 +46,7 @@ public class TexturePool
       int i;
       try
       {
-        AppMethodBeat.i(218299);
+        AppMethodBeat.i(214939);
         long l = 0L;
         i = 0;
         if (i < this.textureInfoList.size())
@@ -63,7 +63,7 @@ public class TexturePool
         }
         else
         {
-          AppMethodBeat.o(218299);
+          AppMethodBeat.o(214939);
           return;
         }
       }
@@ -270,7 +270,7 @@ public class TexturePool
   {
     try
     {
-      AppMethodBeat.i(218300);
+      AppMethodBeat.i(214940);
       Logger.d("TexturePool", " release all " + Thread.currentThread().getId());
       int i = 0;
       while (i < this.textureInfoList.size())
@@ -278,7 +278,7 @@ public class TexturePool
         ((TextureInfo)this.textureInfoList.get(i)).release();
         i += 1;
       }
-      AppMethodBeat.o(218300);
+      AppMethodBeat.o(214940);
       return;
     }
     finally {}
@@ -286,18 +286,18 @@ public class TexturePool
   
   public void setMaxCacheLength(int paramInt)
   {
-    AppMethodBeat.i(218295);
+    AppMethodBeat.i(214935);
     this.MaxCacheLength = paramInt;
     adapterCacheMemorySize();
-    AppMethodBeat.o(218295);
+    AppMethodBeat.o(214935);
   }
   
   public void setMaxCacheSize(long paramLong)
   {
-    AppMethodBeat.i(218294);
+    AppMethodBeat.i(214934);
     this.MaxCacheSize = paramLong;
     adaptCacheSize();
-    AppMethodBeat.o(218294);
+    AppMethodBeat.o(214934);
   }
 }
 

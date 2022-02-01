@@ -4,17 +4,17 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.a.b.a.a;
 import com.tencent.mm.kernel.a.b.b;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.t;
+import com.tencent.mm.model.u;
 import com.tencent.mm.plugin.fav.a.af;
 import com.tencent.mm.plugin.fts.a.n;
 
 public final class a
-  extends t
+  extends u
   implements b
 {
   public a()
   {
-    super(com.tencent.mm.bs.c.aNR("favorite"));
+    super(com.tencent.mm.br.c.aPo("favorite"));
     AppMethodBeat.i(24569);
     AppMethodBeat.o(24569);
   }

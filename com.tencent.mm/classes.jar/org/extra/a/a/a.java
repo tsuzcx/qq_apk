@@ -9,16 +9,16 @@ public final class a
 {
   public a(f paramf, c.b paramb, long paramLong, int paramInt)
   {
-    AppMethodBeat.i(220071);
+    AppMethodBeat.i(216825);
     ByteBuffer localByteBuffer = ByteBuffer.allocate(4);
-    if (paramb.NVG) {}
+    if (paramb.OsL) {}
     for (paramb = ByteOrder.BIG_ENDIAN;; paramb = ByteOrder.LITTLE_ENDIAN)
     {
       localByteBuffer.order(paramb);
       paramLong = paramInt * 8 + paramLong;
-      this.NVE = paramf.e(localByteBuffer, paramLong);
-      this.NVF = paramf.e(localByteBuffer, paramLong + 4L);
-      AppMethodBeat.o(220071);
+      this.OsJ = paramf.e(localByteBuffer, paramLong);
+      this.OsK = paramf.e(localByteBuffer, paramLong + 4L);
+      AppMethodBeat.o(216825);
       return;
     }
   }

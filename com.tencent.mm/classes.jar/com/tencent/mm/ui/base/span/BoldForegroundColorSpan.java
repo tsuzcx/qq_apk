@@ -15,10 +15,10 @@ public class BoldForegroundColorSpan
   
   public void updateDrawState(TextPaint paramTextPaint)
   {
-    AppMethodBeat.i(186488);
+    AppMethodBeat.i(193745);
     super.updateDrawState(paramTextPaint);
     al.a(paramTextPaint, 0.8F);
-    AppMethodBeat.o(186488);
+    AppMethodBeat.o(193745);
   }
 }
 

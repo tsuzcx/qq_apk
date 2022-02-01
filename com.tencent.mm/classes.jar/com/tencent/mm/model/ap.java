@@ -1,8 +1,10 @@
 package com.tencent.mm.model;
 
+import java.util.List;
+
 public abstract interface ap
 {
-  public abstract void oq(int paramInt);
+  public abstract List<ao> getDataTransferList();
 }
 
 

@@ -13,13 +13,13 @@ import com.tencent.xweb.ac;
 public class WebViewTestUI
   extends MMActivity
 {
-  MMWebViewWithJsApi Ecv;
-  private ac mdz;
+  MMWebViewWithJsApi Eux;
+  private ac mhR;
   
   public WebViewTestUI()
   {
     AppMethodBeat.i(80040);
-    this.mdz = new ac()
+    this.mhR = new ac()
     {
       public final void b(WebView paramAnonymousWebView, String paramAnonymousString)
       {
@@ -41,10 +41,10 @@ public class WebViewTestUI
     AppMethodBeat.i(80041);
     super.onCreate(paramBundle);
     paramBundle = getIntent().getStringExtra("rawUrl");
-    this.Ecv = MMWebViewWithJsApi.a.gZ(this);
-    this.Ecv.setWebViewClient(this.mdz);
-    setContentView(this.Ecv);
-    this.Ecv.loadUrl(paramBundle);
+    this.Eux = MMWebViewWithJsApi.a.hf(this);
+    this.Eux.setWebViewClient(this.mhR);
+    setContentView(this.Eux);
+    this.Eux.loadUrl(paramBundle);
     AppMethodBeat.o(80041);
   }
   

@@ -23,49 +23,49 @@ import d.g.b.p;
 import d.l;
 import d.v;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/viewmodel/component/FinderTouchMediaPreviewUIC;", "Lcom/tencent/mm/ui/component/UIComponent;", "activity", "Lcom/tencent/mm/ui/MMActivity;", "(Lcom/tencent/mm/ui/MMActivity;)V", "attach", "", "find", "Lcom/tencent/mm/ui/widget/TouchMediaPreviewLayout;", "onBackPressed", "", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "setScaleListener", "listener", "Lcom/tencent/mm/ui/widget/TouchMediaPreviewLayout$OnScaleListener;", "Companion", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/viewmodel/component/FinderTouchMediaPreviewUIC;", "Lcom/tencent/mm/ui/component/UIComponent;", "activity", "Lcom/tencent/mm/ui/MMActivity;", "(Lcom/tencent/mm/ui/MMActivity;)V", "attach", "", "find", "Lcom/tencent/mm/ui/widget/TouchMediaPreviewLayout;", "onBackPressed", "", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "setScaleListener", "listener", "Lcom/tencent/mm/ui/widget/TouchMediaPreviewLayout$OnScaleListener;", "Companion", "plugin-finder_release"})
 public final class FinderTouchMediaPreviewUIC
   extends UIComponent
 {
-  public static final a tdm;
+  public static final FinderTouchMediaPreviewUIC.a toe;
   
   static
   {
-    AppMethodBeat.i(205747);
-    tdm = new a((byte)0);
-    AppMethodBeat.o(205747);
+    AppMethodBeat.i(206361);
+    toe = new FinderTouchMediaPreviewUIC.a((byte)0);
+    AppMethodBeat.o(206361);
   }
   
   public FinderTouchMediaPreviewUIC(MMActivity paramMMActivity)
   {
     super(paramMMActivity);
-    AppMethodBeat.i(205746);
-    AppMethodBeat.o(205746);
+    AppMethodBeat.i(206360);
+    AppMethodBeat.o(206360);
   }
   
-  public final TouchMediaPreviewLayout cOC()
+  public final TouchMediaPreviewLayout cRh()
   {
-    AppMethodBeat.i(205744);
+    AppMethodBeat.i(206358);
     TouchMediaPreviewLayout localTouchMediaPreviewLayout = (TouchMediaPreviewLayout)getActivity().findViewById(2131306046);
-    AppMethodBeat.o(205744);
+    AppMethodBeat.o(206358);
     return localTouchMediaPreviewLayout;
   }
   
   public final boolean onBackPressed()
   {
-    AppMethodBeat.i(205745);
-    TouchMediaPreviewLayout localTouchMediaPreviewLayout = cOC();
-    if ((localTouchMediaPreviewLayout != null) && (localTouchMediaPreviewLayout.KUd == true))
+    AppMethodBeat.i(206359);
+    TouchMediaPreviewLayout localTouchMediaPreviewLayout = cRh();
+    if ((localTouchMediaPreviewLayout != null) && (localTouchMediaPreviewLayout.LqB == true))
     {
-      localTouchMediaPreviewLayout = cOC();
+      localTouchMediaPreviewLayout = cRh();
       if (localTouchMediaPreviewLayout != null) {
-        localTouchMediaPreviewLayout.fLM();
+        localTouchMediaPreviewLayout.fQg();
       }
-      AppMethodBeat.o(205745);
+      AppMethodBeat.o(206359);
       return true;
     }
     boolean bool = super.onBackPressed();
-    AppMethodBeat.o(205745);
+    AppMethodBeat.o(206359);
     return bool;
   }
   
@@ -75,52 +75,49 @@ public final class FinderTouchMediaPreviewUIC
   
   public final void setScaleListener(TouchMediaPreviewLayout.b paramb)
   {
-    AppMethodBeat.i(205742);
+    AppMethodBeat.i(206356);
     p.h(paramb, "listener");
-    TouchMediaPreviewLayout localTouchMediaPreviewLayout = cOC();
+    TouchMediaPreviewLayout localTouchMediaPreviewLayout = cRh();
     if (localTouchMediaPreviewLayout != null)
     {
       localTouchMediaPreviewLayout.setScaleListener(paramb);
-      AppMethodBeat.o(205742);
+      AppMethodBeat.o(206356);
       return;
     }
-    AppMethodBeat.o(205742);
+    AppMethodBeat.o(206356);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/viewmodel/component/FinderTouchMediaPreviewUIC$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
-  public static final class a {}
-  
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/finder/viewmodel/component/FinderTouchMediaPreviewUIC$setScaleListener$1", "Lcom/tencent/mm/ui/widget/TouchMediaPreviewLayout$OnScaleListener;", "touchPhotoLayout", "Lcom/tencent/mm/ui/widget/TouchMediaPreviewLayout;", "getTouchPhotoLayout", "()Lcom/tencent/mm/ui/widget/TouchMediaPreviewLayout;", "setTouchPhotoLayout", "(Lcom/tencent/mm/ui/widget/TouchMediaPreviewLayout;)V", "onScale", "", "detector", "Landroid/view/ScaleGestureDetector;", "onScaleBegin", "onScaleEnd", "", "plugin-finder_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/finder/viewmodel/component/FinderTouchMediaPreviewUIC$setScaleListener$1", "Lcom/tencent/mm/ui/widget/TouchMediaPreviewLayout$OnScaleListener;", "touchPhotoLayout", "Lcom/tencent/mm/ui/widget/TouchMediaPreviewLayout;", "getTouchPhotoLayout", "()Lcom/tencent/mm/ui/widget/TouchMediaPreviewLayout;", "setTouchPhotoLayout", "(Lcom/tencent/mm/ui/widget/TouchMediaPreviewLayout;)V", "onScale", "", "detector", "Landroid/view/ScaleGestureDetector;", "onScaleBegin", "onScaleEnd", "", "plugin-finder_release"})
   public static final class b
     implements TouchMediaPreviewLayout.b
   {
-    private TouchMediaPreviewLayout rTJ;
+    private TouchMediaPreviewLayout scn;
     
     b()
     {
-      AppMethodBeat.i(205741);
-      TouchMediaPreviewLayout localTouchMediaPreviewLayout = localTouchMediaPreviewLayout.cOC();
+      AppMethodBeat.i(206355);
+      TouchMediaPreviewLayout localTouchMediaPreviewLayout = localTouchMediaPreviewLayout.cRh();
       if (localTouchMediaPreviewLayout == null) {
-        p.gfZ();
+        p.gkB();
       }
-      this.rTJ = localTouchMediaPreviewLayout;
-      AppMethodBeat.o(205741);
+      this.scn = localTouchMediaPreviewLayout;
+      AppMethodBeat.o(206355);
     }
     
     public final boolean onScale(ScaleGestureDetector paramScaleGestureDetector)
     {
-      AppMethodBeat.i(205740);
+      AppMethodBeat.i(206354);
       p.h(paramScaleGestureDetector, "detector");
-      AppMethodBeat.o(205740);
+      AppMethodBeat.o(206354);
       return true;
     }
     
     public final boolean onScaleBegin(ScaleGestureDetector paramScaleGestureDetector)
     {
-      AppMethodBeat.i(205738);
+      AppMethodBeat.i(206352);
       p.h(paramScaleGestureDetector, "detector");
-      Object localObject = a.KiD;
-      localObject = ((FinderHomeUIC)a.s(this.tdn.getActivity()).get(FinderHomeUIC.class)).getActiveFragment().getView();
+      Object localObject = a.KEX;
+      localObject = ((FinderHomeUIC)a.s(this.tof.getActivity()).get(FinderHomeUIC.class)).getActiveFragment().getView();
       if (localObject != null)
       {
         localObject = (RefreshLoadMoreLayout)((View)localObject).findViewById(2131304203);
@@ -128,7 +125,7 @@ public final class FinderTouchMediaPreviewUIC
       }
       else
       {
-        AppMethodBeat.o(205738);
+        AppMethodBeat.o(206352);
         return false;
       }
       paramScaleGestureDetector = ((RefreshLoadMoreLayout)localObject).getRecyclerView().o(paramScaleGestureDetector.getFocusX(), paramScaleGestureDetector.getFocusY());
@@ -143,28 +140,28 @@ public final class FinderTouchMediaPreviewUIC
           paramScaleGestureDetector = ((RecyclerHorizontalViewPager)localObject).ci(paramScaleGestureDetector.getFocusPosition());
           if ((paramScaleGestureDetector != null) && (paramScaleGestureDetector.lQ() == 2))
           {
-            localObject = b.sxa;
-            if (b.cFT())
+            localObject = b.sHP;
+            if (b.cHQ())
             {
               paramScaleGestureDetector = paramScaleGestureDetector.auu.findViewById(2131299974);
               if (paramScaleGestureDetector != null)
               {
-                this.rTJ.gW(paramScaleGestureDetector);
-                AppMethodBeat.o(205738);
+                this.scn.hb(paramScaleGestureDetector);
+                AppMethodBeat.o(206352);
                 return true;
                 paramScaleGestureDetector = null;
               }
             }
             else
             {
-              AppMethodBeat.o(205738);
+              AppMethodBeat.o(206352);
               return false;
             }
           }
           else if ((paramScaleGestureDetector != null) && (paramScaleGestureDetector.lQ() == 4))
           {
-            localObject = b.sxa;
-            if (b.cFU())
+            localObject = b.sHP;
+            if (b.cHR())
             {
               paramScaleGestureDetector = (FinderVideoLayout)paramScaleGestureDetector.auu.findViewById(2131299975);
               if (paramScaleGestureDetector != null)
@@ -172,7 +169,7 @@ public final class FinderTouchMediaPreviewUIC
                 localObject = paramScaleGestureDetector.getVideoView();
                 if ((localObject != null) && (!((o)localObject).isPlaying()))
                 {
-                  AppMethodBeat.o(205738);
+                  AppMethodBeat.o(206352);
                   return false;
                 }
                 paramScaleGestureDetector = paramScaleGestureDetector.getVideoView();
@@ -180,48 +177,48 @@ public final class FinderTouchMediaPreviewUIC
                 {
                   paramScaleGestureDetector.setPreview(true);
                   paramScaleGestureDetector.setInterceptDetach(true);
-                  this.rTJ.gW(paramScaleGestureDetector.getVideoView());
-                  AppMethodBeat.o(205738);
+                  this.scn.hb(paramScaleGestureDetector.getVideoView());
+                  AppMethodBeat.o(206352);
                   return true;
                 }
               }
             }
             else
             {
-              AppMethodBeat.o(205738);
+              AppMethodBeat.o(206352);
               return false;
             }
           }
         }
       }
-      AppMethodBeat.o(205738);
+      AppMethodBeat.o(206352);
       return false;
     }
     
     public final void onScaleEnd(ScaleGestureDetector paramScaleGestureDetector)
     {
-      AppMethodBeat.i(205739);
+      AppMethodBeat.i(206353);
       p.h(paramScaleGestureDetector, "detector");
-      if ((this.rTJ.getTouchView() instanceof o))
+      if ((this.scn.getTouchView() instanceof o))
       {
-        paramScaleGestureDetector = this.rTJ.getTouchView();
+        paramScaleGestureDetector = this.scn.getTouchView();
         if (paramScaleGestureDetector == null)
         {
           paramScaleGestureDetector = new v("null cannot be cast to non-null type com.tencent.mm.plugin.finder.video.IFinderVideoView");
-          AppMethodBeat.o(205739);
+          AppMethodBeat.o(206353);
           throw paramScaleGestureDetector;
         }
         paramScaleGestureDetector = (o)paramScaleGestureDetector;
         paramScaleGestureDetector.setInterceptDetach(false);
         paramScaleGestureDetector.setPreview(false);
       }
-      AppMethodBeat.o(205739);
+      AppMethodBeat.o(206353);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.viewmodel.component.FinderTouchMediaPreviewUIC
  * JD-Core Version:    0.7.0.1
  */

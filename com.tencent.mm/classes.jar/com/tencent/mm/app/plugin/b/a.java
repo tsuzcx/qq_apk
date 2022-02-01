@@ -1,67 +1,55 @@
 package com.tencent.mm.app.plugin.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.fx;
-import com.tencent.mm.g.a.fy;
+import com.tencent.mm.g.a.fz;
 import com.tencent.mm.modelvoice.m;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.av;
-import com.tencent.mm.sdk.platformtools.av.a;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aw;
+import com.tencent.mm.sdk.platformtools.aw.a;
 
 public final class a
 {
   public static final class f
-    extends com.tencent.mm.sdk.b.c<fy>
+    extends com.tencent.mm.sdk.b.c<fz>
   {
-    m cXf;
-    av cXg;
-    boolean cXh;
-    boolean cXi;
-    boolean cXj;
-    fy cXk;
-    Runnable cXl;
+    m cYc;
+    aw cYd;
+    boolean cYe;
+    boolean cYf;
+    boolean cYg;
+    fz cYh;
+    Runnable cYi;
     String fileName;
     
     public f()
     {
       AppMethodBeat.i(161265);
       this.fileName = "";
-      this.__eventId = fy.class.getName().hashCode();
+      this.__eventId = fz.class.getName().hashCode();
       AppMethodBeat.o(161265);
     }
     
     final void stopRecord()
     {
       AppMethodBeat.i(19781);
-      if (this.cXf != null)
+      if (this.cYc != null)
       {
-        this.cXi = this.cXf.PG();
-        if (this.cXl != null)
+        this.cYf = this.cYc.PF();
+        if (this.cYi != null)
         {
-          if (this.cXk != null)
+          if (this.cYh != null)
           {
-            this.cXk.drr.drs = this.cXf.dgu.dhm;
-            this.cXk = null;
+            this.cYh.dsx.dsy = this.cYc.dhw.dio;
+            this.cYh = null;
           }
-          if (this.cXj) {
-            this.cXl.run();
+          if (this.cYg) {
+            this.cYi.run();
           }
-          this.cXl = null;
+          this.cYi = null;
         }
-        this.cXh = true;
+        this.cYe = true;
       }
       AppMethodBeat.o(19781);
-    }
-  }
-  
-  public static final class i
-    extends com.tencent.mm.sdk.b.c<fx>
-  {
-    public i()
-    {
-      AppMethodBeat.i(161268);
-      this.__eventId = fx.class.getName().hashCode();
-      AppMethodBeat.o(161268);
     }
   }
 }

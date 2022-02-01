@@ -22,10 +22,10 @@ import com.tencent.mm.plugin.appbrand.widget.input.z;
 public class WAGamePanelInputEditText
   extends EditText
 {
-  private final z clZ;
-  private final InputFilter cma;
-  private int cmb;
-  private final Spannable.Factory cmc;
+  private final z cmb;
+  private final InputFilter cmc;
+  private int cmd;
+  private final Spannable.Factory cme;
   
   public WAGamePanelInputEditText(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -36,7 +36,7 @@ public class WAGamePanelInputEditText
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(130724);
-    this.cma = new InputFilter()
+    this.cmc = new InputFilter()
     {
       public final CharSequence filter(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, Spanned paramAnonymousSpanned, int paramAnonymousInt3, int paramAnonymousInt4)
       {
@@ -61,9 +61,18 @@ public class WAGamePanelInputEditText
         return paramAnonymousSpanned;
       }
     };
-    this.cmb = 2147483647;
-    this.cmc = new WAGamePanelInputEditText.3(this);
-    this.clZ = new z(this);
+    this.cmd = 2147483647;
+    this.cme = new Spannable.Factory()
+    {
+      public final Spannable newSpannable(CharSequence paramAnonymousCharSequence)
+      {
+        AppMethodBeat.i(130723);
+        paramAnonymousCharSequence = new SpannableStringBuilder(paramAnonymousCharSequence);
+        AppMethodBeat.o(130723);
+        return paramAnonymousCharSequence;
+      }
+    };
+    this.cmb = new z(this);
     super.setEditableFactory(new Editable.Factory()
     {
       public final Editable newEditable(CharSequence paramAnonymousCharSequence)
@@ -79,7 +88,7 @@ public class WAGamePanelInputEditText
   
   public int getMaxLength()
   {
-    return this.cmb;
+    return this.cmd;
   }
   
   public InputConnection onCreateInputConnection(EditorInfo paramEditorInfo)
@@ -93,7 +102,7 @@ public class WAGamePanelInputEditText
   
   public void setComposingDismissedListener(b paramb)
   {
-    this.clZ.nge = paramb;
+    this.cmb.nlm = paramb;
   }
   
   public void setFilters(InputFilter[] paramArrayOfInputFilter)
@@ -101,7 +110,7 @@ public class WAGamePanelInputEditText
     int i = 0;
     AppMethodBeat.i(130725);
     InputFilter[] arrayOfInputFilter = paramArrayOfInputFilter;
-    if (this.cma != null)
+    if (this.cmc != null)
     {
       arrayOfInputFilter = paramArrayOfInputFilter;
       if (paramArrayOfInputFilter == null) {
@@ -113,7 +122,7 @@ public class WAGamePanelInputEditText
         paramArrayOfInputFilter[i] = arrayOfInputFilter[i];
         i += 1;
       }
-      paramArrayOfInputFilter[i] = this.cma;
+      paramArrayOfInputFilter[i] = this.cmc;
       arrayOfInputFilter = paramArrayOfInputFilter;
     }
     super.setFilters(arrayOfInputFilter);
@@ -122,7 +131,7 @@ public class WAGamePanelInputEditText
   
   public void setMaxLength(int paramInt)
   {
-    this.cmb = paramInt;
+    this.cmd = paramInt;
   }
 }
 

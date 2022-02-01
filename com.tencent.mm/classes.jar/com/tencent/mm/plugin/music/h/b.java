@@ -2,19 +2,19 @@ package com.tencent.mm.plugin.music.h;
 
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.az.f;
+import com.tencent.mm.ay.f;
 import com.tencent.mm.plugin.music.cache.g;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.vfs.e;
-import com.tencent.mm.vfs.q;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.vfs.k;
+import com.tencent.mm.vfs.w;
 
 public final class b
 {
   public static String O(f paramf)
   {
     AppMethodBeat.i(137444);
-    if (paramf.ihe == 6)
+    if (paramf.ijX == 6)
     {
       paramf = "6_" + P(paramf);
       AppMethodBeat.o(137444);
@@ -28,73 +28,73 @@ public final class b
   private static String P(f paramf)
   {
     AppMethodBeat.i(137445);
-    if (TextUtils.isEmpty(paramf.ihg))
+    if (TextUtils.isEmpty(paramf.ijZ))
     {
       AppMethodBeat.o(137445);
       return "";
     }
-    paramf = ai.ee(paramf.ihg);
+    paramf = aj.ej(paramf.ijZ);
     AppMethodBeat.o(137445);
     return paramf;
   }
   
-  public static String asP(String paramString)
+  public static String auc(String paramString)
   {
     AppMethodBeat.i(137442);
-    paramString = "piece" + ai.ee(new StringBuilder().append(paramString.hashCode()).toString());
+    paramString = "piece" + aj.ej(new StringBuilder().append(paramString.hashCode()).toString());
     AppMethodBeat.o(137442);
     return paramString;
   }
   
-  public static String asQ(String paramString)
+  public static String aud(String paramString)
   {
     AppMethodBeat.i(137443);
-    e locale = new e(g.getAccPath(), "music");
-    if (!locale.exists()) {
-      locale.mkdirs();
+    k localk = new k(g.getAccPath(), "music");
+    if (!localk.exists()) {
+      localk.mkdirs();
     }
-    paramString = asP(paramString);
-    locale = new e(locale, paramString);
-    ad.d("MicroMsg.Music.MusicFileUtil", "getMusicPieceFilePath music name %s path %s", new Object[] { paramString, locale.fOL() });
-    paramString = q.B(locale.fOK());
+    paramString = auc(paramString);
+    localk = new k(localk, paramString);
+    ae.d("MicroMsg.Music.MusicFileUtil", "getMusicPieceFilePath music name %s path %s", new Object[] { paramString, localk.fTi() });
+    paramString = w.B(localk.fTh());
     AppMethodBeat.o(137443);
     return paramString;
   }
   
-  private static String bA(String paramString, boolean paramBoolean)
+  public static String bD(String paramString, boolean paramBoolean)
+  {
+    AppMethodBeat.i(137446);
+    k localk = new k(g.getAccPath(), "music");
+    if (!localk.exists()) {
+      ae.i("MicroMsg.Music.MusicFileUtil", "create file folder:%b for path:%s", new Object[] { Boolean.valueOf(localk.mkdirs()), w.B(localk.fTh()) });
+    }
+    paramString = bE(paramString, paramBoolean);
+    localk = new k(localk, paramString);
+    ae.d("MicroMsg.Music.MusicFileUtil", "music name %s path %s", new Object[] { paramString, localk.fTi() });
+    paramString = w.B(localk.fTh());
+    AppMethodBeat.o(137446);
+    return paramString;
+  }
+  
+  private static String bE(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(137447);
     if (paramBoolean)
     {
-      paramString = ai.ee(new StringBuilder().append(paramString).append("temp").toString()) + "-wifi";
+      paramString = aj.ej(new StringBuilder().append(paramString).append("temp").toString()) + "-wifi";
       AppMethodBeat.o(137447);
       return paramString;
     }
-    paramString = ai.ee(paramString + "temp");
+    paramString = aj.ej(paramString + "temp");
     AppMethodBeat.o(137447);
     return paramString;
   }
   
-  public static String bB(String paramString, boolean paramBoolean)
+  public static String bF(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(137448);
-    paramString = bz(paramString, false) + "-thumb-" + paramBoolean;
+    paramString = bD(paramString, false) + "-thumb-" + paramBoolean;
     AppMethodBeat.o(137448);
-    return paramString;
-  }
-  
-  public static String bz(String paramString, boolean paramBoolean)
-  {
-    AppMethodBeat.i(137446);
-    e locale = new e(g.getAccPath(), "music");
-    if (!locale.exists()) {
-      ad.i("MicroMsg.Music.MusicFileUtil", "create file folder:%b for path:%s", new Object[] { Boolean.valueOf(locale.mkdirs()), q.B(locale.fOK()) });
-    }
-    paramString = bA(paramString, paramBoolean);
-    locale = new e(locale, paramString);
-    ad.d("MicroMsg.Music.MusicFileUtil", "music name %s path %s", new Object[] { paramString, locale.fOL() });
-    paramString = q.B(locale.fOK());
-    AppMethodBeat.o(137446);
     return paramString;
   }
 }

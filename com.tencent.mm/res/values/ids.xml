@@ -11636,11 +11636,14 @@
     <item type="id" name="hxg" />
     <item type="id" name="hxh" />
     <item type="id" name="hxi" />
+    <item type="id" name="hxj" />
     <item type="id" name="hxk" />
     <item type="id" name="hxl" />
     <item type="id" name="hxm" />
     <item type="id" name="hxn" />
     <item type="id" name="hxo" />
+    <item type="id" name="hxp" />
+    <item type="id" name="hxq" />
     <item type="id" name="hxr" />
     <item type="id" name="hxs" />
     <item type="id" name="hxt" />
@@ -11691,6 +11694,7 @@
     <item type="id" name="hz1" />
     <item type="id" name="hz2" />
     <item type="id" name="hz3" />
+    <item type="id" name="hz4" />
     <item type="id" name="hz5" />
     <item type="id" name="hz6" />
     <item type="id" name="hz7" />
@@ -11983,8 +11987,66 @@
     <item type="id" name="i6y" />
     <item type="id" name="i6z" />
     <item type="id" name="i70" />
-    <item type="id" name="APKTOOL_DUMMY_2e57" />
-    <item type="id" name="APKTOOL_DUMMY_2e5d" />
-    <item type="id" name="APKTOOL_DUMMY_2e5e" />
-    <item type="id" name="APKTOOL_DUMMY_2e91" />
+    <item type="id" name="i71" />
+    <item type="id" name="i72" />
+    <item type="id" name="i73" />
+    <item type="id" name="i74" />
+    <item type="id" name="i75" />
+    <item type="id" name="i76" />
+    <item type="id" name="i77" />
+    <item type="id" name="i78" />
+    <item type="id" name="i79" />
+    <item type="id" name="i7_" />
+    <item type="id" name="i7a" />
+    <item type="id" name="i7b" />
+    <item type="id" name="i7c" />
+    <item type="id" name="i7d" />
+    <item type="id" name="i7e" />
+    <item type="id" name="i7f" />
+    <item type="id" name="i7g" />
+    <item type="id" name="i7h" />
+    <item type="id" name="i7i" />
+    <item type="id" name="i7j" />
+    <item type="id" name="i7k" />
+    <item type="id" name="i7l" />
+    <item type="id" name="i7m" />
+    <item type="id" name="i7n" />
+    <item type="id" name="i7o" />
+    <item type="id" name="i7p" />
+    <item type="id" name="i7q" />
+    <item type="id" name="i7r" />
+    <item type="id" name="i7s" />
+    <item type="id" name="i7t" />
+    <item type="id" name="i7u" />
+    <item type="id" name="i7v" />
+    <item type="id" name="i7w" />
+    <item type="id" name="i7x" />
+    <item type="id" name="i7y" />
+    <item type="id" name="i7z" />
+    <item type="id" name="i80" />
+    <item type="id" name="i81" />
+    <item type="id" name="i82" />
+    <item type="id" name="i83" />
+    <item type="id" name="i84" />
+    <item type="id" name="i85" />
+    <item type="id" name="i86" />
+    <item type="id" name="i87" />
+    <item type="id" name="i88" />
+    <item type="id" name="i89" />
+    <item type="id" name="i8_" />
+    <item type="id" name="i8a" />
+    <item type="id" name="i8b" />
+    <item type="id" name="i8c" />
+    <item type="id" name="i8d" />
+    <item type="id" name="i8e" />
+    <item type="id" name="i8f" />
+    <item type="id" name="i8g" />
+    <item type="id" name="i8h" />
+    <item type="id" name="i8i" />
+    <item type="id" name="i8j" />
+    <item type="id" name="i8k" />
+    <item type="id" name="i8l" />
+    <item type="id" name="i8m" />
+    <item type="id" name="i8n" />
+    <item type="id" name="i8o" />
 </resources>

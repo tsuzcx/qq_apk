@@ -6,9 +6,9 @@ import android.os.Message;
 import com.tencent.e.c.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.media.k.c.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.ap.a;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.aq.a;
 import com.tencent.trtc.TRTCCloudDef.TRTCVideoFrame;
 import com.tencent.trtc.TRTCCloudListener.TRTCVideoRenderListener;
 import d.g.a.a;
@@ -17,94 +17,105 @@ import d.g.b.q;
 import d.l;
 import d.z;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/live/core/render/LiveVisitorRenderSurface;", "Lcom/tencent/trtc/TRTCCloudListener$TRTCVideoRenderListener;", "Lcom/tencent/mm/live/core/render/LiveRenderSurface;", "userId", "", "streamType", "", "(Ljava/lang/String;I)V", "eGLSurface", "Landroid/opengl/EGLSurface;", "eglEnvironment", "Lcom/tencent/mm/media/util/GLEnvironmentUtil$EGLEnvironment;", "eglThread", "Landroid/os/HandlerThread;", "handler", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "noSurface", "", "outputSurface", "", "outputSurfaceChange", "renderer", "Lcom/tencent/mm/live/core/render/LiveVisitorRenderer;", "getStreamType", "()I", "setStreamType", "(I)V", "getUserId", "()Ljava/lang/String;", "setUserId", "(Ljava/lang/String;)V", "initRenderer", "", "makeEGLEnvironment", "makeOutputSurface", "onRenderVideoFrame", "frame", "Lcom/tencent/trtc/TRTCCloudDef$TRTCVideoFrame;", "queue", "callback", "Lkotlin/Function0;", "release", "renderFrame", "setOutputSurface", "surface", "unsetOutputSurface", "updateDrawSize", "width", "height", "Companion", "plugin-core_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/live/core/render/LiveVisitorRenderSurface;", "Lcom/tencent/trtc/TRTCCloudListener$TRTCVideoRenderListener;", "Lcom/tencent/mm/live/core/render/LiveRenderSurface;", "userId", "", "streamType", "", "(Ljava/lang/String;I)V", "eGLSurface", "Landroid/opengl/EGLSurface;", "eglEnvironment", "Lcom/tencent/mm/media/util/GLEnvironmentUtil$EGLEnvironment;", "eglThread", "Landroid/os/HandlerThread;", "handler", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "noSurface", "", "outputSurface", "", "outputSurfaceChange", "renderer", "Lcom/tencent/mm/live/core/render/LiveVisitorRenderer;", "getStreamType", "()I", "setStreamType", "(I)V", "getUserId", "()Ljava/lang/String;", "setUserId", "(Ljava/lang/String;)V", "initRenderer", "", "makeEGLEnvironment", "makeOutputSurface", "onRenderVideoFrame", "frame", "Lcom/tencent/trtc/TRTCCloudDef$TRTCVideoFrame;", "queue", "callback", "Lkotlin/Function0;", "release", "renderFrame", "setOutputSurface", "surface", "unsetOutputSurface", "updateDrawSize", "width", "height", "Companion", "plugin-core_release"})
 public final class f
   implements TRTCCloudListener.TRTCVideoRenderListener
 {
-  public static final f.a gLy;
-  private final HandlerThread gKM;
-  private c.b gKO;
-  private Object gKR;
-  private EGLSurface gLu;
-  private boolean gLv;
-  private h gLw;
-  private boolean gLx;
-  private ap handler;
+  public static final f.a gOh;
+  private Object gNA;
+  private final HandlerThread gNv;
+  private c.b gNx;
+  private EGLSurface gOd;
+  private boolean gOe;
+  private h gOf;
+  private boolean gOg;
+  private aq handler;
   public int streamType;
   public String userId;
   
   static
   {
-    AppMethodBeat.i(216984);
-    gLy = new f.a((byte)0);
-    AppMethodBeat.o(216984);
+    AppMethodBeat.i(196996);
+    gOh = new f.a((byte)0);
+    AppMethodBeat.o(196996);
   }
   
   public f(String paramString)
   {
-    AppMethodBeat.i(216983);
+    AppMethodBeat.i(196995);
     this.userId = paramString;
     this.streamType = 0;
-    paramString = d.gX("MicroMsg.LiveCoreVisitor_render", 10);
+    paramString = d.hg("MicroMsg.LiveCoreVisitor_render", 10);
     p.g(paramString, "SpecialThreadFactory.cre…er\", Thread.MAX_PRIORITY)");
-    this.gKM = paramString;
-    this.gLx = true;
-    this.gKM.start();
-    this.handler = new ap(this.gKM.getLooper(), (ap.a)new f.1(this));
-    i((a)new c(this));
-    i((a)new f.b(this));
-    AppMethodBeat.o(216983);
+    this.gNv = paramString;
+    this.gOg = true;
+    this.gNv.start();
+    this.handler = new aq(this.gNv.getLooper(), (aq.a)new f.1(this));
+    j((a)new c(this));
+    j((a)new b(this));
+    AppMethodBeat.o(196995);
   }
   
-  private void i(a<z> parama)
+  private void j(a<z> parama)
   {
-    AppMethodBeat.i(216977);
+    AppMethodBeat.i(196989);
     this.handler.post((Runnable)new g(parama));
-    AppMethodBeat.o(216977);
+    AppMethodBeat.o(196989);
   }
   
-  public final void amv()
+  public final void amK()
   {
-    AppMethodBeat.i(216979);
-    i((a)new f(this));
-    AppMethodBeat.o(216979);
+    AppMethodBeat.i(196991);
+    j((a)new f(this));
+    AppMethodBeat.o(196991);
   }
   
   public final void bG(final Object paramObject)
   {
-    AppMethodBeat.i(216978);
-    ad.i("MicroMsg.LiveCoreVisitor", "setOutputSurface:".concat(String.valueOf(paramObject)));
-    i((a)new e(this, paramObject));
-    AppMethodBeat.o(216978);
+    AppMethodBeat.i(196990);
+    ae.i("MicroMsg.LiveCoreVisitor", "setOutputSurface:".concat(String.valueOf(paramObject)));
+    j((a)new e(this, paramObject));
+    AppMethodBeat.o(196990);
   }
   
-  public final void cS(int paramInt1, int paramInt2)
+  public final void cS(final int paramInt1, final int paramInt2)
   {
-    AppMethodBeat.i(216981);
-    i((a)new f.g(this, paramInt1, paramInt2));
-    AppMethodBeat.o(216981);
+    AppMethodBeat.i(196993);
+    j((a)new g(this, paramInt1, paramInt2));
+    AppMethodBeat.o(196993);
   }
   
   public final void onRenderVideoFrame(String paramString, int paramInt, TRTCCloudDef.TRTCVideoFrame paramTRTCVideoFrame)
   {
-    AppMethodBeat.i(216980);
+    AppMethodBeat.i(196992);
     if (((p.i(paramString, this.userId) ^ true)) || (paramInt != this.streamType))
     {
-      AppMethodBeat.o(216980);
+      AppMethodBeat.o(196992);
       return;
     }
     this.handler.obtainMessage(1024, paramTRTCVideoFrame).sendToTarget();
-    AppMethodBeat.o(216980);
+    AppMethodBeat.o(196992);
   }
   
   public final void release()
   {
-    AppMethodBeat.i(216982);
-    i((a)new d(this));
-    AppMethodBeat.o(216982);
+    AppMethodBeat.i(196994);
+    j((a)new d(this));
+    AppMethodBeat.o(196994);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
+  static final class b
+    extends q
+    implements a<z>
+  {
+    b(f paramf)
+    {
+      super();
+    }
+  }
+  
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
   static final class c
     extends q
     implements a<z>
@@ -115,7 +126,7 @@ public final class f
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
   static final class d
     extends q
     implements a<z>
@@ -126,7 +137,7 @@ public final class f
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
   static final class e
     extends q
     implements a<z>
@@ -137,12 +148,23 @@ public final class f
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
   static final class f
     extends q
     implements a<z>
   {
     f(f paramf)
+    {
+      super();
+    }
+  }
+  
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
+  static final class g
+    extends q
+    implements a<z>
+  {
+    g(f paramf, int paramInt1, int paramInt2)
     {
       super();
     }

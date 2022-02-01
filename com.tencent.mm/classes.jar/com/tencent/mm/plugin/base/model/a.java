@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.base.model;
 
 public final class a
 {
-  public int nMI = 0;
-  public int nMJ = 0;
-  public int nMK = 0;
+  public int nSn = 0;
+  public int nSo = 0;
+  public int nSp = 0;
 }
 
 

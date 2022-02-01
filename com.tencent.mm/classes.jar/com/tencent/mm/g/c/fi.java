@@ -8,39 +8,39 @@ public abstract class fi
   extends c
 {
   public static final String[] INDEX_CREATE = { "CREATE INDEX IF NOT EXISTS record_localid_index ON RecordCDNInfo(recordLocalId)" };
-  private static final int eDc;
-  private static final int eEX;
-  private static final int eEZ;
-  private static final int eFa;
-  private static final int eFw;
-  private static final int eTg;
-  private static final int eTp = "tpauthkey".hashCode();
-  private static final int eVF;
-  private static final int eVa;
-  private static final int eVc;
-  private static final int eVj = "localId".hashCode();
-  private static final int eXc;
-  private static final int eXl;
-  private static final int fpu = "recordLocalId".hashCode();
-  private static final int fpv;
-  private static final int fpw;
-  private static final int fpx = "tpdataurl".hashCode();
+  private static final int eEL;
+  private static final int eGG;
+  private static final int eGI;
+  private static final int eGJ;
+  private static final int eHf;
+  private static final int eUR;
+  private static final int eVa = "tpauthkey".hashCode();
+  private static final int eWL;
+  private static final int eWN;
+  private static final int eWU = "localId".hashCode();
+  private static final int eXq;
+  private static final int eYN;
+  private static final int eYW;
+  private static final int fru = "recordLocalId".hashCode();
+  private static final int frv;
+  private static final int frw;
+  private static final int frx = "tpdataurl".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
   private static final int type_HASHCODE;
   private boolean __hadSettype = true;
-  private boolean eCZ = true;
-  private boolean eEG = true;
   private boolean eEI = true;
-  private boolean eEJ = true;
-  private boolean eFs = true;
-  private boolean eSD = true;
-  private boolean eSu = true;
-  private boolean eUV = true;
-  private boolean eUX = true;
-  private boolean eVh = true;
-  private boolean eVr = true;
+  private boolean eGp = true;
+  private boolean eGr = true;
+  private boolean eGs = true;
+  private boolean eHb = true;
+  private boolean eUf = true;
+  private boolean eUo = true;
+  private boolean eWG = true;
   private boolean eWI = true;
-  private boolean eWz = true;
+  private boolean eWS = true;
+  private boolean eXc = true;
+  private boolean eYk = true;
+  private boolean eYt = true;
   public String field_cdnKey;
   public String field_cdnUrl;
   public String field_dataId;
@@ -59,27 +59,27 @@ public abstract class fi
   public String field_tpauthkey;
   public String field_tpdataurl;
   public int field_type;
-  private boolean fpp = true;
-  private boolean fpq = true;
-  private boolean fpr = true;
-  private boolean fpt = true;
+  private boolean frq = true;
+  private boolean frr = true;
+  private boolean frs = true;
+  private boolean frt = true;
   
   static
   {
-    eVF = "toUser".hashCode();
-    eVa = "dataId".hashCode();
-    eEX = "mediaId".hashCode();
-    eFw = "path".hashCode();
-    eTg = "cdnUrl".hashCode();
-    eVc = "cdnKey".hashCode();
-    eEZ = "totalLen".hashCode();
-    fpv = "isThumb".hashCode();
-    eFa = "offset".hashCode();
+    eXq = "toUser".hashCode();
+    eWL = "dataId".hashCode();
+    eGG = "mediaId".hashCode();
+    eHf = "path".hashCode();
+    eUR = "cdnUrl".hashCode();
+    eWN = "cdnKey".hashCode();
+    eGI = "totalLen".hashCode();
+    frv = "isThumb".hashCode();
+    eGJ = "offset".hashCode();
     type_HASHCODE = "type".hashCode();
-    eXc = "fileType".hashCode();
-    eDc = "status".hashCode();
-    eXl = "errCode".hashCode();
-    fpw = "tpaeskey".hashCode();
+    eYN = "fileType".hashCode();
+    eEL = "status".hashCode();
+    eYW = "errCode".hashCode();
+    frw = "tpaeskey".hashCode();
   }
   
   public void convertFrom(Cursor paramCursor)
@@ -95,11 +95,11 @@ public abstract class fi
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eVj != k) {
+      if (eWU != k) {
         break label65;
       }
       this.field_localId = paramCursor.getInt(i);
-      this.eVh = true;
+      this.eWS = true;
     }
     for (;;)
     {
@@ -107,41 +107,41 @@ public abstract class fi
       break label20;
       break;
       label65:
-      if (fpu == k)
+      if (fru == k)
       {
         this.field_recordLocalId = paramCursor.getInt(i);
       }
-      else if (eVF == k)
+      else if (eXq == k)
       {
         this.field_toUser = paramCursor.getString(i);
       }
-      else if (eVa == k)
+      else if (eWL == k)
       {
         this.field_dataId = paramCursor.getString(i);
       }
-      else if (eEX == k)
+      else if (eGG == k)
       {
         this.field_mediaId = paramCursor.getString(i);
       }
-      else if (eFw == k)
+      else if (eHf == k)
       {
         this.field_path = paramCursor.getString(i);
       }
-      else if (eTg == k)
+      else if (eUR == k)
       {
         this.field_cdnUrl = paramCursor.getString(i);
       }
-      else if (eVc == k)
+      else if (eWN == k)
       {
         this.field_cdnKey = paramCursor.getString(i);
       }
-      else if (eEZ == k)
+      else if (eGI == k)
       {
         this.field_totalLen = paramCursor.getInt(i);
       }
       else
       {
-        if (fpv == k)
+        if (frv == k)
         {
           if (paramCursor.getInt(i) != 0) {}
           for (boolean bool = true;; bool = false)
@@ -150,21 +150,21 @@ public abstract class fi
             break;
           }
         }
-        if (eFa == k) {
+        if (eGJ == k) {
           this.field_offset = paramCursor.getInt(i);
         } else if (type_HASHCODE == k) {
           this.field_type = paramCursor.getInt(i);
-        } else if (eXc == k) {
+        } else if (eYN == k) {
           this.field_fileType = paramCursor.getInt(i);
-        } else if (eDc == k) {
+        } else if (eEL == k) {
           this.field_status = paramCursor.getInt(i);
-        } else if (eXl == k) {
+        } else if (eYW == k) {
           this.field_errCode = paramCursor.getInt(i);
-        } else if (fpw == k) {
+        } else if (frw == k) {
           this.field_tpaeskey = paramCursor.getString(i);
-        } else if (eTp == k) {
+        } else if (eVa == k) {
           this.field_tpauthkey = paramCursor.getString(i);
-        } else if (fpx == k) {
+        } else if (frx == k) {
           this.field_tpdataurl = paramCursor.getString(i);
         } else if (rowid_HASHCODE == k) {
           this.systemRowid = paramCursor.getLong(i);
@@ -176,61 +176,61 @@ public abstract class fi
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eVh) {
+    if (this.eWS) {
       localContentValues.put("localId", Integer.valueOf(this.field_localId));
     }
-    if (this.fpp) {
+    if (this.frq) {
       localContentValues.put("recordLocalId", Integer.valueOf(this.field_recordLocalId));
     }
     if (this.field_toUser == null) {
       this.field_toUser = "";
     }
-    if (this.eVr) {
+    if (this.eXc) {
       localContentValues.put("toUser", this.field_toUser);
     }
-    if (this.eUV) {
+    if (this.eWG) {
       localContentValues.put("dataId", this.field_dataId);
     }
-    if (this.eEG) {
+    if (this.eGp) {
       localContentValues.put("mediaId", this.field_mediaId);
     }
-    if (this.eFs) {
+    if (this.eHb) {
       localContentValues.put("path", this.field_path);
     }
-    if (this.eSu) {
+    if (this.eUf) {
       localContentValues.put("cdnUrl", this.field_cdnUrl);
     }
-    if (this.eUX) {
+    if (this.eWI) {
       localContentValues.put("cdnKey", this.field_cdnKey);
     }
-    if (this.eEI) {
+    if (this.eGr) {
       localContentValues.put("totalLen", Integer.valueOf(this.field_totalLen));
     }
-    if (this.fpq) {
+    if (this.frr) {
       localContentValues.put("isThumb", Boolean.valueOf(this.field_isThumb));
     }
-    if (this.eEJ) {
+    if (this.eGs) {
       localContentValues.put("offset", Integer.valueOf(this.field_offset));
     }
     if (this.__hadSettype) {
       localContentValues.put("type", Integer.valueOf(this.field_type));
     }
-    if (this.eWz) {
+    if (this.eYk) {
       localContentValues.put("fileType", Integer.valueOf(this.field_fileType));
     }
-    if (this.eCZ) {
+    if (this.eEI) {
       localContentValues.put("status", Integer.valueOf(this.field_status));
     }
-    if (this.eWI) {
+    if (this.eYt) {
       localContentValues.put("errCode", Integer.valueOf(this.field_errCode));
     }
-    if (this.fpr) {
+    if (this.frs) {
       localContentValues.put("tpaeskey", this.field_tpaeskey);
     }
-    if (this.eSD) {
+    if (this.eUo) {
       localContentValues.put("tpauthkey", this.field_tpauthkey);
     }
-    if (this.fpt) {
+    if (this.frt) {
       localContentValues.put("tpdataurl", this.field_tpdataurl);
     }
     if (this.systemRowid > 0L) {

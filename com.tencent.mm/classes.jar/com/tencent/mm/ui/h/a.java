@@ -15,16 +15,16 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
 {
-  private static b KBl;
-  private static b KBm;
+  private static b KXF;
+  private static b KXG;
   
   @TargetApi(11)
   public static void c(Activity paramActivity, View paramView)
   {
     AppMethodBeat.i(142857);
     View localView = paramActivity.getWindow().getDecorView();
-    KBl = b.ky(paramActivity);
-    KBm = b.ky(paramActivity);
+    KXF = b.kF(paramActivity);
+    KXG = b.kF(paramActivity);
     int[] arrayOfInt = new int[2];
     paramView.getLocationOnScreen(arrayOfInt);
     Rect localRect = new Rect();
@@ -32,35 +32,35 @@ public final class a
     int i = localRect.top;
     int j = ((AppCompatActivity)paramActivity).getSupportActionBar().getHeight();
     int k = arrayOfInt[1];
-    KBl.setHeight(k - i - j);
-    k = eB(paramActivity)[1];
+    KXF.setHeight(k - i - j);
+    k = eF(paramActivity)[1];
     int m = arrayOfInt[1];
     int n = paramView.getHeight();
-    KBm.setHeight(k - m - n);
-    KBl.showAtLocation(localView, 48, 0, j + i);
-    KBm.showAtLocation(localView, 80, 0, 0);
+    KXG.setHeight(k - m - n);
+    KXF.showAtLocation(localView, 48, 0, j + i);
+    KXG.showAtLocation(localView, 80, 0, 0);
     AppMethodBeat.o(142857);
   }
   
   public static void dismiss()
   {
     AppMethodBeat.i(142858);
-    if (KBl != null)
+    if (KXF != null)
     {
-      KBl.setAnimationStyle(-1);
-      KBl.dismiss();
-      KBl = null;
+      KXF.setAnimationStyle(-1);
+      KXF.dismiss();
+      KXF = null;
     }
-    if (KBm != null)
+    if (KXG != null)
     {
-      KBm.setAnimationStyle(-1);
-      KBm.dismiss();
-      KBm = null;
+      KXG.setAnimationStyle(-1);
+      KXG.dismiss();
+      KXG = null;
     }
     AppMethodBeat.o(142858);
   }
   
-  private static int[] eB(Context paramContext)
+  private static int[] eF(Context paramContext)
   {
     AppMethodBeat.i(142859);
     int[] arrayOfInt = new int[2];

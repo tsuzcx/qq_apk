@@ -16,10 +16,10 @@ import java.util.zip.ZipException;
 public final class h
   implements Closeable
 {
-  public String FxH;
-  private final LinkedHashMap<String, g> MhU = new LinkedHashMap();
-  private File MhV;
-  private RandomAccessFile MhW;
+  public String FQf;
+  private final LinkedHashMap<String, g> MER = new LinkedHashMap();
+  private File MES;
+  private RandomAccessFile MET;
   private final String filename;
   
   public h(File paramFile)
@@ -30,9 +30,9 @@ public final class h
   private h(File paramFile, byte paramByte)
   {
     this.filename = paramFile.getPath();
-    this.MhV = null;
-    this.MhW = new RandomAccessFile(this.filename, "r");
-    fYF();
+    this.MES = null;
+    this.MET = new RandomAccessFile(this.filename, "r");
+    gde();
   }
   
   public h(String paramString)
@@ -46,23 +46,23 @@ public final class h
     throw new ZipException("file name:" + paramString1 + ", file size" + paramLong1 + ", entry name:" + paramString2 + ", entry localHeaderRelOffset:" + paramLong2 + ", " + paramString3 + " signature not found; was " + str);
   }
   
-  private void fYF()
+  private void gde()
   {
     long l1 = 0L;
-    long l2 = this.MhW.length() - 22L;
+    long l2 = this.MET.length() - 22L;
     if (l2 < 0L) {
-      throw new ZipException("File too short to be a zip file: " + this.MhW.length());
+      throw new ZipException("File too short to be a zip file: " + this.MET.length());
     }
-    this.MhW.seek(0L);
-    if (Integer.reverseBytes(this.MhW.readInt()) != 67324752L) {
+    this.MET.seek(0L);
+    if (Integer.reverseBytes(this.MET.readInt()) != 67324752L) {
       throw new ZipException("Not a zip archive");
     }
     long l3 = l2 - 65536L;
     if (l3 < 0L) {}
     for (;;)
     {
-      this.MhW.seek(l2);
-      if (Integer.reverseBytes(this.MhW.readInt()) != 101010256L)
+      this.MET.seek(l2);
+      if (Integer.reverseBytes(this.MET.readInt()) != 101010256L)
       {
         l2 -= 1L;
         if (l2 < l1) {
@@ -72,13 +72,13 @@ public final class h
       else
       {
         Object localObject = new byte[18];
-        this.MhW.readFully((byte[])localObject);
+        this.MET.readFully((byte[])localObject);
         localObject = d.a((byte[])localObject, 18, ByteOrder.LITTLE_ENDIAN);
         int i = ((c)localObject).readShort();
         int k = ((c)localObject).readShort();
         int j = ((c)localObject).readShort() & 0xFFFF;
         int m = ((c)localObject).readShort();
-        ((c)localObject).fYE();
+        ((c)localObject).gdd();
         l1 = ((c)localObject).readInt() & 0xFFFFFFFF;
         int n = ((c)localObject).readShort() & 0xFFFF;
         if ((j != (m & 0xFFFF)) || ((i & 0xFFFF) != 0) || ((k & 0xFFFF) != 0)) {
@@ -87,20 +87,20 @@ public final class h
         if (n > 0)
         {
           localObject = new byte[n];
-          this.MhW.readFully((byte[])localObject);
-          this.FxH = new String((byte[])localObject, 0, localObject.length, e.UTF_8);
+          this.MET.readFully((byte[])localObject);
+          this.FQf = new String((byte[])localObject, 0, localObject.length, e.UTF_8);
         }
-        localObject = new BufferedInputStream(new a(this.MhW, l1), 4096);
+        localObject = new BufferedInputStream(new a(this.MET, l1), 4096);
         byte[] arrayOfByte = new byte[46];
         i = 0;
         while (i < j)
         {
           g localg = new g(arrayOfByte, (InputStream)localObject, e.UTF_8);
-          if (localg.MhS >= l1) {
+          if (localg.MEP >= l1) {
             throw new ZipException("Local file header offset is after central directory");
           }
           String str = localg.name;
-          if (this.MhU.put(str, localg) != null) {
+          if (this.MER.put(str, localg) != null) {
             throw new ZipException("Duplicate entry name: ".concat(String.valueOf(str)));
           }
           i += 1;
@@ -114,19 +114,19 @@ public final class h
   
   public final InputStream a(g arg1)
   {
-    g localg = aZT(???.name);
+    g localg = bbw(???.name);
     if (localg == null) {
       return null;
     }
     a locala;
     DataInputStream localDataInputStream;
-    synchronized (this.MhW)
+    synchronized (this.MET)
     {
-      locala = new a(???, localg.MhS);
+      locala = new a(???, localg.MEP);
       localDataInputStream = new DataInputStream(locala);
       i = Integer.reverseBytes(localDataInputStream.readInt());
       if (i != 67324752L) {
-        a(this.filename, ???.length(), localg.name, localg.MhS, "Local File Header", i);
+        a(this.filename, ???.length(), localg.name, localg.MEP, "Local File Header", i);
       }
       localDataInputStream.skipBytes(2);
       i = Short.reverseBytes(localDataInputStream.readShort()) & 0xFFFF;
@@ -139,42 +139,42 @@ public final class h
     int j = Short.reverseBytes(localDataInputStream.readShort());
     localDataInputStream.close();
     locala.skip((i & 0xFFFF) + (j & 0xFFFF));
-    if (localObject.MhP == 0) {
+    if (localObject.MEM == 0) {
       a.a(locala, a.a(locala) + localObject.size);
     }
     for (;;)
     {
       return locala;
-      a.a(locala, a.a(locala) + localObject.MhO);
+      a.a(locala, a.a(locala) + localObject.MEL);
     }
   }
   
-  public final g aZT(String paramString)
+  public final g bbw(String paramString)
   {
     nU();
     if (paramString == null) {
       throw new NullPointerException("entryName == null");
     }
-    g localg2 = (g)this.MhU.get(paramString);
+    g localg2 = (g)this.MER.get(paramString);
     g localg1 = localg2;
     if (localg2 == null) {
-      localg1 = (g)this.MhU.get(paramString + "/");
+      localg1 = (g)this.MER.get(paramString + "/");
     }
     return localg1;
   }
   
   public final void close()
   {
-    RandomAccessFile localRandomAccessFile = this.MhW;
+    RandomAccessFile localRandomAccessFile = this.MET;
     if (localRandomAccessFile != null) {}
     try
     {
-      this.MhW = null;
+      this.MET = null;
       localRandomAccessFile.close();
-      if (this.MhV != null)
+      if (this.MES != null)
       {
-        this.MhV.delete();
-        this.MhV = null;
+        this.MES.delete();
+        this.MES = null;
       }
       return;
     }
@@ -196,7 +196,7 @@ public final class h
   
   public final void nU()
   {
-    if (this.MhW == null) {
+    if (this.MET == null) {
       throw new IllegalStateException("Zip file closed");
     }
   }
@@ -204,7 +204,7 @@ public final class h
   public static final class a
     extends InputStream
   {
-    private final RandomAccessFile MhY;
+    private final RandomAccessFile MEV;
     private long bux;
     private long offset;
     
@@ -215,7 +215,7 @@ public final class h
     
     private a(RandomAccessFile paramRandomAccessFile, long paramLong1, long paramLong2)
     {
-      this.MhY = paramRandomAccessFile;
+      this.MEV = paramRandomAccessFile;
       this.offset = paramLong1;
       this.bux = paramLong2;
     }
@@ -235,15 +235,15 @@ public final class h
     
     public final int read(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
     {
-      synchronized (this.MhY)
+      synchronized (this.MEV)
       {
         long l = this.bux - this.offset;
         int i = paramInt2;
         if (paramInt2 > l) {
           i = (int)l;
         }
-        this.MhY.seek(this.offset);
-        paramInt1 = this.MhY.read(paramArrayOfByte, paramInt1, i);
+        this.MEV.seek(this.offset);
+        paramInt1 = this.MEV.read(paramArrayOfByte, paramInt1, i);
         if (paramInt1 > 0)
         {
           this.offset += paramInt1;

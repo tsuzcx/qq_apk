@@ -8,99 +8,72 @@ public abstract class dw
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eDc = "status".hashCode();
-  private static final int eDl;
-  private static final int eDm;
-  private static final int eDn;
-  private static final int fhD = "LabsAppId".hashCode();
-  private static final int fhE;
-  private static final int fhF;
-  private static final int fhG;
-  private static final int fhH;
-  private static final int fhI;
-  private static final int fhJ;
-  private static final int fhK;
-  private static final int fhL;
-  private static final int fhM;
-  private static final int fhN;
-  private static final int fhO;
-  private static final int fhP;
-  private static final int fhQ;
-  private static final int fhR;
-  private static final int fhS;
-  private static final int fhT;
-  private static final int fhU;
-  private static final int fhV;
-  private static final int fhW;
-  private static final int fhX;
-  private static final int fhY;
-  private static final int fhZ;
-  private static final int fia;
-  private static final int fib = "ThumbUrl_cn".hashCode();
-  private static final int fic = "ThumbUrl_hk".hashCode();
-  private static final int fid = "ThumbUrl_tw".hashCode();
-  private static final int fie = "ThumbUrl_en".hashCode();
-  private static final int fif = "ImgUrl_android_cn".hashCode();
-  private static final int fig = "ImgUrl_android_hk".hashCode();
-  private static final int fih = "ImgUrl_android_tw".hashCode();
-  private static final int fii = "ImgUrl_android_en".hashCode();
-  private static final int fij = "RedPoint".hashCode();
-  private static final int fik = "WeAppDebugMode".hashCode();
-  private static final int fil = "idkey".hashCode();
-  private static final int fim = "idkeyValue".hashCode();
-  private static final int fin = "Icon".hashCode();
-  private static final int fio = "ImgUrl_cn".hashCode();
-  private static final int fip = "ImgUrl_hk".hashCode();
-  private static final int fiq = "ImgUrl_tw".hashCode();
-  private static final int fir = "ImgUrl_en".hashCode();
-  private static final int fit = "bItemFromXExpt".hashCode();
+  private static final int eEL = "status".hashCode();
+  private static final int eEU;
+  private static final int eEV;
+  private static final int eEW;
+  private static final int fjB = "LabsAppId".hashCode();
+  private static final int fjC;
+  private static final int fjD;
+  private static final int fjE;
+  private static final int fjF;
+  private static final int fjG;
+  private static final int fjH;
+  private static final int fjI;
+  private static final int fjJ;
+  private static final int fjK;
+  private static final int fjL;
+  private static final int fjM;
+  private static final int fjN;
+  private static final int fjO;
+  private static final int fjP;
+  private static final int fjQ;
+  private static final int fjR;
+  private static final int fjS;
+  private static final int fjT;
+  private static final int fjU;
+  private static final int fjV;
+  private static final int fjW;
+  private static final int fjX;
+  private static final int fjY;
+  private static final int fjZ = "ThumbUrl_cn".hashCode();
+  private static final int fka = "ThumbUrl_hk".hashCode();
+  private static final int fkb = "ThumbUrl_tw".hashCode();
+  private static final int fkc = "ThumbUrl_en".hashCode();
+  private static final int fkd = "ImgUrl_android_cn".hashCode();
+  private static final int fke = "ImgUrl_android_hk".hashCode();
+  private static final int fkf = "ImgUrl_android_tw".hashCode();
+  private static final int fkg = "ImgUrl_android_en".hashCode();
+  private static final int fkh = "RedPoint".hashCode();
+  private static final int fki = "WeAppDebugMode".hashCode();
+  private static final int fkj = "idkey".hashCode();
+  private static final int fkk = "idkeyValue".hashCode();
+  private static final int fkl = "Icon".hashCode();
+  private static final int fkm = "ImgUrl_cn".hashCode();
+  private static final int fkn = "ImgUrl_hk".hashCode();
+  private static final int fko = "ImgUrl_tw".hashCode();
+  private static final int fkp = "ImgUrl_en".hashCode();
+  private static final int fkq = "bItemFromXExpt".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eCZ = true;
-  private boolean eDe = true;
-  private boolean eDf = true;
-  private boolean eDg = true;
-  private boolean fgN = true;
-  private boolean fgO = true;
-  private boolean fgP = true;
-  private boolean fgQ = true;
-  private boolean fgR = true;
-  private boolean fgS = true;
-  private boolean fgT = true;
-  private boolean fgU = true;
-  private boolean fgV = true;
-  private boolean fgW = true;
-  private boolean fgX = true;
-  private boolean fgY = true;
-  private boolean fgZ = true;
-  private boolean fhA = true;
-  private boolean fhB = true;
-  private boolean fhC = true;
-  private boolean fha = true;
-  private boolean fhb = true;
-  private boolean fhc = true;
-  private boolean fhd = true;
-  private boolean fhe = true;
-  private boolean fhf = true;
-  private boolean fhg = true;
-  private boolean fhh = true;
-  private boolean fhi = true;
-  private boolean fhj = true;
-  private boolean fhk = true;
-  private boolean fhl = true;
-  private boolean fhm = true;
-  private boolean fhn = true;
-  private boolean fho = true;
-  private boolean fhp = true;
-  private boolean fhq = true;
-  private boolean fhr = true;
-  private boolean fhs = true;
-  private boolean fht = true;
-  private boolean fhu = true;
-  private boolean fhv = true;
-  private boolean fhw = true;
-  private boolean fhx = true;
-  private boolean fhy = true;
-  private boolean fhz = true;
+  private boolean eEI = true;
+  private boolean eEN = true;
+  private boolean eEO = true;
+  private boolean eEP = true;
+  private boolean fiL = true;
+  private boolean fiM = true;
+  private boolean fiN = true;
+  private boolean fiO = true;
+  private boolean fiP = true;
+  private boolean fiQ = true;
+  private boolean fiR = true;
+  private boolean fiS = true;
+  private boolean fiT = true;
+  private boolean fiU = true;
+  private boolean fiV = true;
+  private boolean fiW = true;
+  private boolean fiX = true;
+  private boolean fiY = true;
+  private boolean fiZ = true;
   public int field_AllVer;
   public int field_BizType;
   public String field_Desc_cn;
@@ -147,35 +120,62 @@ public abstract class dw
   public long field_sequence;
   public long field_starttime;
   public int field_status;
+  private boolean fjA = true;
+  private boolean fja = true;
+  private boolean fjb = true;
+  private boolean fjc = true;
+  private boolean fjd = true;
+  private boolean fje = true;
+  private boolean fjf = true;
+  private boolean fjg = true;
+  private boolean fjh = true;
+  private boolean fji = true;
+  private boolean fjj = true;
+  private boolean fjk = true;
+  private boolean fjl = true;
+  private boolean fjm = true;
+  private boolean fjn = true;
+  private boolean fjo = true;
+  private boolean fjp = true;
+  private boolean fjq = true;
+  private boolean fjr = true;
+  private boolean fjs = true;
+  private boolean fjt = true;
+  private boolean fju = true;
+  private boolean fjv = true;
+  private boolean fjw = true;
+  private boolean fjx = true;
+  private boolean fjy = true;
+  private boolean fjz = true;
   
   static
   {
-    eDl = "expId".hashCode();
-    fhE = "Type".hashCode();
-    fhF = "BizType".hashCode();
-    fhG = "Switch".hashCode();
-    fhH = "AllVer".hashCode();
-    fhI = "DetailURL".hashCode();
-    fhJ = "WeAppUser".hashCode();
-    fhK = "WeAppPath".hashCode();
-    fhL = "Pos".hashCode();
-    fhM = "TitleKey_android".hashCode();
-    fhN = "Title_cn".hashCode();
-    fhO = "Title_hk".hashCode();
-    fhP = "Title_tw".hashCode();
-    fhQ = "Title_en".hashCode();
-    fhR = "Desc_cn".hashCode();
-    fhS = "Desc_hk".hashCode();
-    fhT = "Desc_tw".hashCode();
-    fhU = "Desc_en".hashCode();
-    fhV = "Introduce_cn".hashCode();
-    fhW = "Introduce_hk".hashCode();
-    fhX = "Introduce_tw".hashCode();
-    fhY = "Introduce_en".hashCode();
-    fhZ = "starttime".hashCode();
-    fia = "endtime".hashCode();
-    eDm = "sequence".hashCode();
-    eDn = "prioritylevel".hashCode();
+    eEU = "expId".hashCode();
+    fjC = "Type".hashCode();
+    fjD = "BizType".hashCode();
+    fjE = "Switch".hashCode();
+    fjF = "AllVer".hashCode();
+    fjG = "DetailURL".hashCode();
+    fjH = "WeAppUser".hashCode();
+    fjI = "WeAppPath".hashCode();
+    fjJ = "Pos".hashCode();
+    fjK = "TitleKey_android".hashCode();
+    fjL = "Title_cn".hashCode();
+    fjM = "Title_hk".hashCode();
+    fjN = "Title_tw".hashCode();
+    fjO = "Title_en".hashCode();
+    fjP = "Desc_cn".hashCode();
+    fjQ = "Desc_hk".hashCode();
+    fjR = "Desc_tw".hashCode();
+    fjS = "Desc_en".hashCode();
+    fjT = "Introduce_cn".hashCode();
+    fjU = "Introduce_hk".hashCode();
+    fjV = "Introduce_tw".hashCode();
+    fjW = "Introduce_en".hashCode();
+    fjX = "starttime".hashCode();
+    fjY = "endtime".hashCode();
+    eEV = "sequence".hashCode();
+    eEW = "prioritylevel".hashCode();
   }
   
   public void convertFrom(Cursor paramCursor)
@@ -191,11 +191,11 @@ public abstract class dw
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (fhD != k) {
+      if (fjB != k) {
         break label65;
       }
       this.field_LabsAppId = paramCursor.getString(i);
-      this.fgN = true;
+      this.fiL = true;
     }
     for (;;)
     {
@@ -203,95 +203,95 @@ public abstract class dw
       break label20;
       break;
       label65:
-      if (eDl == k) {
+      if (eEU == k) {
         this.field_expId = paramCursor.getString(i);
-      } else if (fhE == k) {
+      } else if (fjC == k) {
         this.field_Type = paramCursor.getInt(i);
-      } else if (fhF == k) {
+      } else if (fjD == k) {
         this.field_BizType = paramCursor.getInt(i);
-      } else if (fhG == k) {
+      } else if (fjE == k) {
         this.field_Switch = paramCursor.getInt(i);
-      } else if (fhH == k) {
+      } else if (fjF == k) {
         this.field_AllVer = paramCursor.getInt(i);
-      } else if (fhI == k) {
+      } else if (fjG == k) {
         this.field_DetailURL = paramCursor.getString(i);
-      } else if (fhJ == k) {
+      } else if (fjH == k) {
         this.field_WeAppUser = paramCursor.getString(i);
-      } else if (fhK == k) {
+      } else if (fjI == k) {
         this.field_WeAppPath = paramCursor.getString(i);
-      } else if (fhL == k) {
+      } else if (fjJ == k) {
         this.field_Pos = paramCursor.getInt(i);
-      } else if (fhM == k) {
+      } else if (fjK == k) {
         this.field_TitleKey_android = paramCursor.getString(i);
-      } else if (fhN == k) {
+      } else if (fjL == k) {
         this.field_Title_cn = paramCursor.getString(i);
-      } else if (fhO == k) {
+      } else if (fjM == k) {
         this.field_Title_hk = paramCursor.getString(i);
-      } else if (fhP == k) {
+      } else if (fjN == k) {
         this.field_Title_tw = paramCursor.getString(i);
-      } else if (fhQ == k) {
+      } else if (fjO == k) {
         this.field_Title_en = paramCursor.getString(i);
-      } else if (fhR == k) {
+      } else if (fjP == k) {
         this.field_Desc_cn = paramCursor.getString(i);
-      } else if (fhS == k) {
+      } else if (fjQ == k) {
         this.field_Desc_hk = paramCursor.getString(i);
-      } else if (fhT == k) {
+      } else if (fjR == k) {
         this.field_Desc_tw = paramCursor.getString(i);
-      } else if (fhU == k) {
+      } else if (fjS == k) {
         this.field_Desc_en = paramCursor.getString(i);
-      } else if (fhV == k) {
+      } else if (fjT == k) {
         this.field_Introduce_cn = paramCursor.getString(i);
-      } else if (fhW == k) {
+      } else if (fjU == k) {
         this.field_Introduce_hk = paramCursor.getString(i);
-      } else if (fhX == k) {
+      } else if (fjV == k) {
         this.field_Introduce_tw = paramCursor.getString(i);
-      } else if (fhY == k) {
+      } else if (fjW == k) {
         this.field_Introduce_en = paramCursor.getString(i);
-      } else if (fhZ == k) {
+      } else if (fjX == k) {
         this.field_starttime = paramCursor.getLong(i);
-      } else if (fia == k) {
+      } else if (fjY == k) {
         this.field_endtime = paramCursor.getLong(i);
-      } else if (eDm == k) {
+      } else if (eEV == k) {
         this.field_sequence = paramCursor.getLong(i);
-      } else if (eDn == k) {
+      } else if (eEW == k) {
         this.field_prioritylevel = paramCursor.getInt(i);
-      } else if (eDc == k) {
+      } else if (eEL == k) {
         this.field_status = paramCursor.getInt(i);
-      } else if (fib == k) {
+      } else if (fjZ == k) {
         this.field_ThumbUrl_cn = paramCursor.getString(i);
-      } else if (fic == k) {
+      } else if (fka == k) {
         this.field_ThumbUrl_hk = paramCursor.getString(i);
-      } else if (fid == k) {
+      } else if (fkb == k) {
         this.field_ThumbUrl_tw = paramCursor.getString(i);
-      } else if (fie == k) {
+      } else if (fkc == k) {
         this.field_ThumbUrl_en = paramCursor.getString(i);
-      } else if (fif == k) {
+      } else if (fkd == k) {
         this.field_ImgUrl_android_cn = paramCursor.getString(i);
-      } else if (fig == k) {
+      } else if (fke == k) {
         this.field_ImgUrl_android_hk = paramCursor.getString(i);
-      } else if (fih == k) {
+      } else if (fkf == k) {
         this.field_ImgUrl_android_tw = paramCursor.getString(i);
-      } else if (fii == k) {
+      } else if (fkg == k) {
         this.field_ImgUrl_android_en = paramCursor.getString(i);
-      } else if (fij == k) {
+      } else if (fkh == k) {
         this.field_RedPoint = paramCursor.getInt(i);
-      } else if (fik == k) {
+      } else if (fki == k) {
         this.field_WeAppDebugMode = paramCursor.getInt(i);
-      } else if (fil == k) {
+      } else if (fkj == k) {
         this.field_idkey = paramCursor.getInt(i);
-      } else if (fim == k) {
+      } else if (fkk == k) {
         this.field_idkeyValue = paramCursor.getInt(i);
-      } else if (fin == k) {
+      } else if (fkl == k) {
         this.field_Icon = paramCursor.getString(i);
-      } else if (fio == k) {
+      } else if (fkm == k) {
         this.field_ImgUrl_cn = paramCursor.getString(i);
-      } else if (fip == k) {
+      } else if (fkn == k) {
         this.field_ImgUrl_hk = paramCursor.getString(i);
-      } else if (fiq == k) {
+      } else if (fko == k) {
         this.field_ImgUrl_tw = paramCursor.getString(i);
-      } else if (fir == k) {
+      } else if (fkp == k) {
         this.field_ImgUrl_en = paramCursor.getString(i);
-      } else if (fit == k) {
+      } else if (fkq == k) {
         this.field_bItemFromXExpt = paramCursor.getInt(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
@@ -302,145 +302,145 @@ public abstract class dw
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.fgN) {
+    if (this.fiL) {
       localContentValues.put("LabsAppId", this.field_LabsAppId);
     }
     if (this.field_expId == null) {
       this.field_expId = "";
     }
-    if (this.eDe) {
+    if (this.eEN) {
       localContentValues.put("expId", this.field_expId);
     }
-    if (this.fgO) {
+    if (this.fiM) {
       localContentValues.put("Type", Integer.valueOf(this.field_Type));
     }
-    if (this.fgP) {
+    if (this.fiN) {
       localContentValues.put("BizType", Integer.valueOf(this.field_BizType));
     }
-    if (this.fgQ) {
+    if (this.fiO) {
       localContentValues.put("Switch", Integer.valueOf(this.field_Switch));
     }
-    if (this.fgR) {
+    if (this.fiP) {
       localContentValues.put("AllVer", Integer.valueOf(this.field_AllVer));
     }
-    if (this.fgS) {
+    if (this.fiQ) {
       localContentValues.put("DetailURL", this.field_DetailURL);
     }
-    if (this.fgT) {
+    if (this.fiR) {
       localContentValues.put("WeAppUser", this.field_WeAppUser);
     }
-    if (this.fgU) {
+    if (this.fiS) {
       localContentValues.put("WeAppPath", this.field_WeAppPath);
     }
-    if (this.fgV) {
+    if (this.fiT) {
       localContentValues.put("Pos", Integer.valueOf(this.field_Pos));
     }
-    if (this.fgW) {
+    if (this.fiU) {
       localContentValues.put("TitleKey_android", this.field_TitleKey_android);
     }
-    if (this.fgX) {
+    if (this.fiV) {
       localContentValues.put("Title_cn", this.field_Title_cn);
     }
-    if (this.fgY) {
+    if (this.fiW) {
       localContentValues.put("Title_hk", this.field_Title_hk);
     }
-    if (this.fgZ) {
+    if (this.fiX) {
       localContentValues.put("Title_tw", this.field_Title_tw);
     }
-    if (this.fha) {
+    if (this.fiY) {
       localContentValues.put("Title_en", this.field_Title_en);
     }
-    if (this.fhb) {
+    if (this.fiZ) {
       localContentValues.put("Desc_cn", this.field_Desc_cn);
     }
-    if (this.fhc) {
+    if (this.fja) {
       localContentValues.put("Desc_hk", this.field_Desc_hk);
     }
-    if (this.fhd) {
+    if (this.fjb) {
       localContentValues.put("Desc_tw", this.field_Desc_tw);
     }
-    if (this.fhe) {
+    if (this.fjc) {
       localContentValues.put("Desc_en", this.field_Desc_en);
     }
-    if (this.fhf) {
+    if (this.fjd) {
       localContentValues.put("Introduce_cn", this.field_Introduce_cn);
     }
-    if (this.fhg) {
+    if (this.fje) {
       localContentValues.put("Introduce_hk", this.field_Introduce_hk);
     }
-    if (this.fhh) {
+    if (this.fjf) {
       localContentValues.put("Introduce_tw", this.field_Introduce_tw);
     }
-    if (this.fhi) {
+    if (this.fjg) {
       localContentValues.put("Introduce_en", this.field_Introduce_en);
     }
-    if (this.fhj) {
+    if (this.fjh) {
       localContentValues.put("starttime", Long.valueOf(this.field_starttime));
     }
-    if (this.fhk) {
+    if (this.fji) {
       localContentValues.put("endtime", Long.valueOf(this.field_endtime));
     }
-    if (this.eDf) {
+    if (this.eEO) {
       localContentValues.put("sequence", Long.valueOf(this.field_sequence));
     }
-    if (this.eDg) {
+    if (this.eEP) {
       localContentValues.put("prioritylevel", Integer.valueOf(this.field_prioritylevel));
     }
-    if (this.eCZ) {
+    if (this.eEI) {
       localContentValues.put("status", Integer.valueOf(this.field_status));
     }
-    if (this.fhl) {
+    if (this.fjj) {
       localContentValues.put("ThumbUrl_cn", this.field_ThumbUrl_cn);
     }
-    if (this.fhm) {
+    if (this.fjk) {
       localContentValues.put("ThumbUrl_hk", this.field_ThumbUrl_hk);
     }
-    if (this.fhn) {
+    if (this.fjl) {
       localContentValues.put("ThumbUrl_tw", this.field_ThumbUrl_tw);
     }
-    if (this.fho) {
+    if (this.fjm) {
       localContentValues.put("ThumbUrl_en", this.field_ThumbUrl_en);
     }
-    if (this.fhp) {
+    if (this.fjn) {
       localContentValues.put("ImgUrl_android_cn", this.field_ImgUrl_android_cn);
     }
-    if (this.fhq) {
+    if (this.fjo) {
       localContentValues.put("ImgUrl_android_hk", this.field_ImgUrl_android_hk);
     }
-    if (this.fhr) {
+    if (this.fjp) {
       localContentValues.put("ImgUrl_android_tw", this.field_ImgUrl_android_tw);
     }
-    if (this.fhs) {
+    if (this.fjq) {
       localContentValues.put("ImgUrl_android_en", this.field_ImgUrl_android_en);
     }
-    if (this.fht) {
+    if (this.fjr) {
       localContentValues.put("RedPoint", Integer.valueOf(this.field_RedPoint));
     }
-    if (this.fhu) {
+    if (this.fjs) {
       localContentValues.put("WeAppDebugMode", Integer.valueOf(this.field_WeAppDebugMode));
     }
-    if (this.fhv) {
+    if (this.fjt) {
       localContentValues.put("idkey", Integer.valueOf(this.field_idkey));
     }
-    if (this.fhw) {
+    if (this.fju) {
       localContentValues.put("idkeyValue", Integer.valueOf(this.field_idkeyValue));
     }
-    if (this.fhx) {
+    if (this.fjv) {
       localContentValues.put("Icon", this.field_Icon);
     }
-    if (this.fhy) {
+    if (this.fjw) {
       localContentValues.put("ImgUrl_cn", this.field_ImgUrl_cn);
     }
-    if (this.fhz) {
+    if (this.fjx) {
       localContentValues.put("ImgUrl_hk", this.field_ImgUrl_hk);
     }
-    if (this.fhA) {
+    if (this.fjy) {
       localContentValues.put("ImgUrl_tw", this.field_ImgUrl_tw);
     }
-    if (this.fhB) {
+    if (this.fjz) {
       localContentValues.put("ImgUrl_en", this.field_ImgUrl_en);
     }
-    if (this.fhC) {
+    if (this.fjA) {
       localContentValues.put("bItemFromXExpt", Integer.valueOf(this.field_bItemFromXExpt));
     }
     if (this.systemRowid > 0L) {
@@ -451,7 +451,7 @@ public abstract class dw
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.c.dw
  * JD-Core Version:    0.7.0.1
  */

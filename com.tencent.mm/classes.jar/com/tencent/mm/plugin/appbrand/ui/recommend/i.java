@@ -11,7 +11,7 @@ import d.l;
 import d.z;
 import java.util.LinkedList;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"value", "", "showFooter", "Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendUILogic;", "getShowFooter", "(Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendUILogic;)Z", "setShowFooter", "(Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendUILogic;Z)V", "show", "showThreeDots", "getShowThreeDots", "setShowThreeDots", "configFooterWording", "", "runOnUiThread", "action", "Lkotlin/Function0;", "setWordingText", "Lcom/tencent/mm/plugin/appbrand/ui/recents/AppBrandLauncherRecentsListFooter;", "wording", "", "plugin-appbrand-integration_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"value", "", "showFooter", "Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendUILogic;", "getShowFooter", "(Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendUILogic;)Z", "setShowFooter", "(Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendUILogic;Z)V", "show", "showThreeDots", "getShowThreeDots", "setShowThreeDots", "configFooterWording", "", "runOnUiThread", "action", "Lkotlin/Function0;", "setWordingText", "Lcom/tencent/mm/plugin/appbrand/ui/recents/AppBrandLauncherRecentsListFooter;", "wording", "", "plugin-appbrand-integration_release"})
 public final class i
 {
   private static void a(g paramg, String paramString)
@@ -30,7 +30,7 @@ public final class i
     AppMethodBeat.i(51383);
     p.h(paramAppBrandRecommendUILogic, "$this$runOnUiThread");
     p.h(parama, "action");
-    paramAppBrandRecommendUILogic.mNB.runOnUiThread((Runnable)new i.a(parama));
+    paramAppBrandRecommendUILogic.mSF.runOnUiThread((Runnable)new i.a(parama));
     AppMethodBeat.o(51383);
   }
   
@@ -38,7 +38,7 @@ public final class i
   {
     AppMethodBeat.i(51379);
     p.h(paramAppBrandRecommendUILogic, "$this$showFooter");
-    paramAppBrandRecommendUILogic.bBf().showLoading(paramBoolean);
+    paramAppBrandRecommendUILogic.bBZ().showLoading(paramBoolean);
     AppMethodBeat.o(51379);
   }
   
@@ -49,7 +49,7 @@ public final class i
     if (!paramBoolean) {
       h(paramAppBrandRecommendUILogic);
     }
-    paramAppBrandRecommendUILogic.bBh().hO(paramBoolean);
+    paramAppBrandRecommendUILogic.bCb().hO(paramBoolean);
     AppMethodBeat.o(51380);
   }
   
@@ -57,17 +57,17 @@ public final class i
   {
     AppMethodBeat.i(51381);
     p.h(paramAppBrandRecommendUILogic, "$this$configFooterWording");
-    if (paramAppBrandRecommendUILogic.mNn.bAV().isEmpty())
+    if (paramAppBrandRecommendUILogic.mSr.bBP().isEmpty())
     {
-      localg = paramAppBrandRecommendUILogic.bBh();
-      paramAppBrandRecommendUILogic = com.tencent.mm.cc.a.az(paramAppBrandRecommendUILogic.context, 2131755623);
+      localg = paramAppBrandRecommendUILogic.bCb();
+      paramAppBrandRecommendUILogic = com.tencent.mm.cb.a.az(paramAppBrandRecommendUILogic.context, 2131755623);
       p.g(paramAppBrandRecommendUILogic, "ResourceHelper.getString…ommend_null_list_wording)");
       a(localg, paramAppBrandRecommendUILogic);
       AppMethodBeat.o(51381);
       return;
     }
-    g localg = paramAppBrandRecommendUILogic.bBh();
-    paramAppBrandRecommendUILogic = com.tencent.mm.cc.a.az(paramAppBrandRecommendUILogic.context, 2131755500);
+    g localg = paramAppBrandRecommendUILogic.bCb();
+    paramAppBrandRecommendUILogic = com.tencent.mm.cb.a.az(paramAppBrandRecommendUILogic.context, 2131755500);
     p.g(paramAppBrandRecommendUILogic, "ResourceHelper.getString…ents_list_footer_no_more)");
     a(localg, paramAppBrandRecommendUILogic);
     AppMethodBeat.o(51381);
@@ -75,7 +75,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.recommend.i
  * JD-Core Version:    0.7.0.1
  */

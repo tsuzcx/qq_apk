@@ -2,15 +2,15 @@ package com.tencent.mm.ui;
 
 public abstract interface c
 {
-  public abstract void abs(int paramInt);
+  public abstract void aca(int paramInt);
   
-  public abstract void abt(int paramInt);
+  public abstract void acb(int paramInt);
   
-  public abstract void abu(int paramInt);
+  public abstract void acc(int paramInt);
   
-  public abstract void abv(int paramInt);
+  public abstract void acd(int paramInt);
   
-  public abstract void fuZ();
+  public abstract void fza();
   
   public abstract int getContactTabUnread();
   
@@ -32,9 +32,9 @@ public abstract interface c
   
   public abstract void setTo(int paramInt);
   
-  public abstract void wX(boolean paramBoolean);
+  public abstract void xf(boolean paramBoolean);
   
-  public abstract void wY(boolean paramBoolean);
+  public abstract void xg(boolean paramBoolean);
   
   public static abstract interface a
   {

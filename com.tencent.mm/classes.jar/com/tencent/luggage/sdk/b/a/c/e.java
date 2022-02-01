@@ -1,6 +1,7 @@
 package com.tencent.luggage.sdk.b.a.c;
 
 import com.tencent.luggage.sdk.b.a.a.a;
+import com.tencent.luggage.sdk.d.d;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
 import com.tencent.mm.plugin.appbrand.appstorage.ICommLibReader;
 import com.tencent.mm.plugin.appbrand.jsapi.m;
@@ -18,51 +19,51 @@ public abstract class e<Service extends c>
     super(paramService);
   }
   
-  public abstract boolean CK();
+  public abstract boolean CN();
   
-  protected i CL()
+  protected i CO()
   {
     return null;
   }
   
-  protected void CM() {}
+  protected void CP() {}
   
-  protected void CN() {}
+  protected void CQ() {}
   
-  protected void CO() {}
+  protected void CR() {}
   
-  public void CX() {}
-  
-  public void CY() {}
-  
-  protected Map<String, m> DG()
+  protected Map<String, m> DJ()
   {
     return null;
   }
   
-  protected void Dc() {}
+  public void Da() {}
   
-  protected abstract void Dd();
+  public void Db() {}
   
-  protected abstract void De();
+  protected void Df() {}
   
-  public final void EI()
+  protected abstract void Dg();
+  
+  protected abstract void Dh();
+  
+  public final void EK()
   {
-    ((c)El()).EI();
+    ((c)Eo()).EK();
   }
   
-  public final com.tencent.luggage.sdk.d.c En()
+  public final d Eq()
   {
-    if (El() == null) {
+    if (Eo() == null) {
       return null;
     }
-    return ((c)El()).En();
+    return ((c)Eo()).Eq();
   }
   
   public final <T> T Q(Class<T> paramClass)
   {
     if (ICommLibReader.class.equals(paramClass)) {
-      return paramClass.cast(((c)El()).aVF());
+      return paramClass.cast(((c)Eo()).aWe());
     }
     if (paramClass.isInstance(this)) {
       return paramClass.cast(this);
@@ -79,14 +80,14 @@ public abstract class e<Service extends c>
     return false;
   }
   
-  public String dn(String paramString)
+  public String dp(String paramString)
   {
     return null;
   }
   
   public final String getAppId()
   {
-    return ((c)El()).getAppId();
+    return ((c)Eo()).getAppId();
   }
   
   public boolean i(int paramInt, String paramString)
@@ -96,7 +97,7 @@ public abstract class e<Service extends c>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.luggage.sdk.b.a.c.e
  * JD-Core Version:    0.7.0.1
  */

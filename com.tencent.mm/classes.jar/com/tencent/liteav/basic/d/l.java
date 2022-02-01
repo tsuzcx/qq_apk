@@ -21,7 +21,7 @@ public class l
   
   public static float[] a(k paramk, boolean paramBoolean1, boolean paramBoolean2)
   {
-    AppMethodBeat.i(187328);
+    AppMethodBeat.i(221457);
     float[] arrayOfFloat;
     switch (1.a[paramk.ordinal()])
     {
@@ -59,7 +59,7 @@ public class l
       }
       for (;;)
       {
-        AppMethodBeat.o(187328);
+        AppMethodBeat.o(221457);
         return paramk;
         paramk = (float[])b.clone();
         break;

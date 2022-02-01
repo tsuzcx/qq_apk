@@ -7,7 +7,7 @@ public final class a$af
   extends e
 {
   public int roomId = 0;
-  public long uLt = 0L;
+  public long uXg = 0L;
   
   public a$af()
   {
@@ -19,8 +19,8 @@ public final class a$af
     if (this.roomId != 0) {
       paramb.bx(1, this.roomId);
     }
-    if (this.uLt != 0L) {
-      paramb.n(2, this.uLt);
+    if (this.uXg != 0L) {
+      paramb.n(2, this.uXg);
     }
     super.a(paramb);
   }
@@ -33,8 +33,8 @@ public final class a$af
       i = j + b.bz(1, this.roomId);
     }
     j = i;
-    if (this.uLt != 0L) {
-      j = i + b.p(2, this.uLt);
+    if (this.uXg != 0L) {
+      j = i + b.p(2, this.uXg);
     }
     return j;
   }

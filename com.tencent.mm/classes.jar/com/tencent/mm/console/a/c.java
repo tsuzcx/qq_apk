@@ -7,21 +7,23 @@ import android.os.Process;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.ba;
-import com.tencent.mm.model.v;
+import com.tencent.mm.model.bc;
 import com.tencent.mm.plugin.fts.PluginFTS;
 import com.tencent.mm.plugin.fts.a.a.j;
 import com.tencent.mm.plugin.fts.a.n;
 import com.tencent.mm.plugin.websearch.api.ah;
 import com.tencent.mm.pluginsdk.cmd.b;
-import com.tencent.mm.protocal.protobuf.cbk;
-import com.tencent.mm.protocal.protobuf.cbl;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.al.a;
+import com.tencent.mm.pluginsdk.i.i;
+import com.tencent.mm.protocal.protobuf.cce;
+import com.tencent.mm.protocal.protobuf.ccf;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.storage.aj;
+import com.tencent.mm.storage.am.a;
 import com.tencent.mm.ui.base.h;
-import com.tencent.mm.vfs.q;
+import com.tencent.mm.vfs.k;
+import com.tencent.mm.vfs.o;
 import com.tencent.wcdb.DatabaseErrorHandler;
 import java.io.IOException;
 import java.util.Iterator;
@@ -58,7 +60,7 @@ public final class c
   public final boolean a(Context paramContext, String[] paramArrayOfString, String paramString)
   {
     AppMethodBeat.i(20172);
-    if (ad.getLogLevel() > 1)
+    if (ae.getLogLevel() > 1)
     {
       AppMethodBeat.o(20172);
       return false;
@@ -142,35 +144,35 @@ public final class c
       }
       i = 11;
       break;
-      paramString = ah.eMm();
+      paramString = ah.ePV();
       paramArrayOfString = new StringBuilder();
-      paramString = paramString.nDj.iterator();
+      paramString = paramString.nIE.iterator();
       while (paramString.hasNext())
       {
-        localObject = (cbk)paramString.next();
-        paramArrayOfString.append(String.format("%s | %.2f | %s", new Object[] { v.zf(((cbk)localObject).Username), Double.valueOf(((cbk)localObject).GVA), com.tencent.mm.pluginsdk.i.i.formatTime("yyyy-MM-dd HH:mm", ((cbk)localObject).GVB / 1000L) }));
+        localObject = (cce)paramString.next();
+        paramArrayOfString.append(String.format("%s | %.2f | %s", new Object[] { com.tencent.mm.model.w.zP(((cce)localObject).Username), Double.valueOf(((cce)localObject).Hpb), i.formatTime("yyyy-MM-dd HH:mm", ((cce)localObject).Hpc / 1000L) }));
         paramArrayOfString.append("\n");
       }
       D(paramContext, paramArrayOfString.toString());
       continue;
-      ba.aBQ();
-      paramContext = new com.tencent.mm.vfs.e(com.tencent.mm.model.c.ajh(), "FTS5IndexMicroMsg_encrypt.db");
+      bc.aCg();
+      paramContext = new k(com.tencent.mm.model.c.ajw(), "FTS5IndexMicroMsg_encrypt.db");
       if (paramContext.exists()) {
         paramContext.delete();
       }
       paramContext = com.tencent.mm.hellhoundlib.b.c.a(Process.myPid(), new com.tencent.mm.hellhoundlib.b.a());
       paramArrayOfString = new Object();
-      com.tencent.mm.hellhoundlib.a.a.a(paramArrayOfString, paramContext.ahp(), "com/tencent/mm/console/command/FTSCommand", "processCommand", "(Landroid/content/Context;[Ljava/lang/String;Ljava/lang/String;)Z", "android/os/Process_EXEC_", "killProcess", "(I)V");
-      Process.killProcess(((Integer)paramContext.mq(0)).intValue());
+      com.tencent.mm.hellhoundlib.a.a.a(paramArrayOfString, paramContext.ahE(), "com/tencent/mm/console/command/FTSCommand", "processCommand", "(Landroid/content/Context;[Ljava/lang/String;Ljava/lang/String;)Z", "android/os/Process_EXEC_", "killProcess", "(I)V");
+      Process.killProcess(((Integer)paramContext.mt(0)).intValue());
       com.tencent.mm.hellhoundlib.a.a.a(paramArrayOfString, "com/tencent/mm/console/command/FTSCommand", "processCommand", "(Landroid/content/Context;[Ljava/lang/String;Ljava/lang/String;)Z", "android/os/Process_EXEC_", "killProcess", "(I)V");
       continue;
-      ba.aBQ();
-      paramContext = new com.tencent.mm.vfs.e(com.tencent.mm.model.c.ajh(), "FTS5IndexMicroMsg_encrypt.db");
-      paramArrayOfString = new com.tencent.mm.vfs.e("/sdcard/IndexMicroMsg.db");
+      bc.aCg();
+      paramContext = new k(com.tencent.mm.model.c.ajw(), "FTS5IndexMicroMsg_encrypt.db");
+      paramArrayOfString = new k("/sdcard/IndexMicroMsg.db");
       if (paramArrayOfString.exists()) {
         paramArrayOfString.delete();
       }
-      com.tencent.mm.vfs.i.mz(q.B(paramContext.fOK()), q.B(paramArrayOfString.fOK()));
+      o.mF(com.tencent.mm.vfs.w.B(paramContext.fTh()), com.tencent.mm.vfs.w.B(paramArrayOfString.fTh()));
       continue;
       try
       {
@@ -178,68 +180,68 @@ public final class c
       }
       catch (Exception paramContext)
       {
-        ad.printErrStackTrace("MicroMsg.CommandTestFTS", paramContext, "corrupt command", new Object[0]);
+        ae.printErrStackTrace("MicroMsg.CommandTestFTS", paramContext, "corrupt command", new Object[0]);
       }
       continue;
-      g.ajD();
-      g.ajC().ajl().set(al.a.IAt, Integer.valueOf(5));
+      g.ajS();
+      g.ajR().ajA().set(am.a.IUS, Integer.valueOf(5));
       continue;
       paramContext = new j();
       paramContext.query = paramArrayOfString[2];
-      paramContext.jQN = 65523;
+      paramContext.jUf = 65523;
       ((n)g.ad(n.class)).search(10000, paramContext);
       continue;
-      paramContext = al.a.IyD;
-      paramArrayOfString = al.a.IyE;
-      paramString = al.a.IyF;
-      Object localObject = al.a.IyG;
-      al.a locala1 = al.a.IyH;
-      al.a locala2 = al.a.IyI;
-      al.a locala3 = al.a.IyJ;
-      al.a locala4 = al.a.IyK;
-      al.a locala5 = al.a.IyL;
-      al.a locala6 = al.a.IyM;
-      al.a locala7 = al.a.IyN;
-      al.a locala8 = al.a.IyO;
-      al.a locala9 = al.a.IyP;
-      al.a locala10 = al.a.IyQ;
-      al.a locala11 = al.a.IyR;
-      al.a locala12 = al.a.IyS;
-      al.a locala13 = al.a.IyT;
-      al.a locala14 = al.a.IyU;
-      al.a locala15 = al.a.IyV;
-      al.a locala16 = al.a.IyW;
-      al.a locala17 = al.a.IyX;
-      al.a locala18 = al.a.IyY;
-      al.a locala19 = al.a.IyZ;
-      al.a locala20 = al.a.Iza;
-      al.a locala21 = al.a.Izb;
-      al.a locala22 = al.a.Izc;
+      paramContext = am.a.ITb;
+      paramArrayOfString = am.a.ITc;
+      paramString = am.a.ITd;
+      Object localObject = am.a.ITe;
+      am.a locala1 = am.a.ITf;
+      am.a locala2 = am.a.ITg;
+      am.a locala3 = am.a.ITh;
+      am.a locala4 = am.a.ITi;
+      am.a locala5 = am.a.ITj;
+      am.a locala6 = am.a.ITk;
+      am.a locala7 = am.a.ITl;
+      am.a locala8 = am.a.ITm;
+      am.a locala9 = am.a.ITn;
+      am.a locala10 = am.a.ITo;
+      am.a locala11 = am.a.ITp;
+      am.a locala12 = am.a.ITq;
+      am.a locala13 = am.a.ITr;
+      am.a locala14 = am.a.ITs;
+      am.a locala15 = am.a.ITt;
+      am.a locala16 = am.a.ITu;
+      am.a locala17 = am.a.ITv;
+      am.a locala18 = am.a.ITw;
+      am.a locala19 = am.a.ITx;
+      am.a locala20 = am.a.ITy;
+      am.a locala21 = am.a.ITz;
+      am.a locala22 = am.a.ITA;
       i = 0;
       while (i < 26)
       {
-        al.a locala23 = new al.a[] { paramContext, paramArrayOfString, paramString, localObject, locala1, locala2, locala3, locala4, locala5, locala6, locala7, locala8, locala9, locala10, locala11, locala12, locala13, locala14, locala15, locala16, locala17, locala18, locala19, locala20, locala21, locala22 }[i];
-        ba.aBQ();
-        com.tencent.mm.model.c.ajl().set(locala23, "");
+        am.a locala23 = new am.a[] { paramContext, paramArrayOfString, paramString, localObject, locala1, locala2, locala3, locala4, locala5, locala6, locala7, locala8, locala9, locala10, locala11, locala12, locala13, locala14, locala15, locala16, locala17, locala18, locala19, locala20, locala21, locala22 }[i];
+        bc.aCg();
+        com.tencent.mm.model.c.ajA().set(locala23, "");
         i += 1;
       }
-      paramArrayOfString = new com.tencent.mm.vfs.e(com.tencent.mm.plugin.fts.a.c.tth, "FTS5IndexMicroMsgInfo.txt");
+      paramArrayOfString = new k(com.tencent.mm.plugin.fts.a.c.tDY, "FTS5IndexMicroMsgInfo.txt");
       if (!paramArrayOfString.exists()) {
         continue;
       }
       try
       {
-        D(paramContext, com.tencent.mm.vfs.i.aYq(q.B(paramArrayOfString.fOK())));
+        D(paramContext, o.aZT(com.tencent.mm.vfs.w.B(paramArrayOfString.fTh())));
       }
       catch (IOException paramContext) {}
       continue;
       paramContext = new j();
-      paramContext.jQN = 65521;
-      paramContext.tvg = 100;
+      paramContext.jUf = 65521;
+      paramContext.tFX = 100;
       if (paramArrayOfString.length > 2) {}
       try
       {
-        paramContext.tvg = Integer.valueOf(paramArrayOfString[2]).intValue();
+        paramContext.tFX = Integer.valueOf(paramArrayOfString[2]).intValue();
         label1207:
         if (paramArrayOfString.length > 3) {
           paramContext.talker = paramArrayOfString[3];
@@ -247,20 +249,20 @@ public final class c
         ((n)g.ad(n.class)).search(10000, paramContext);
         continue;
         paramContext = new j();
-        paramContext.jQN = 65524;
+        paramContext.jUf = 65524;
         ((n)g.ad(n.class)).search(10000, paramContext);
         continue;
         paramContext = new j();
-        paramContext.jQN = 65525;
+        paramContext.jUf = 65525;
         ((n)g.ad(n.class)).search(10000, paramContext);
         continue;
         paramContext = "test_key_" + System.currentTimeMillis();
-        g.ajD();
-        g.ajC().ajl().set(al.a.IAv, paramContext);
+        g.ajS();
+        g.ajR().ajA().set(am.a.IUU, paramContext);
         paramContext = com.tencent.mm.hellhoundlib.b.c.a(Process.myPid(), new com.tencent.mm.hellhoundlib.b.a());
         paramArrayOfString = new Object();
-        com.tencent.mm.hellhoundlib.a.a.a(paramArrayOfString, paramContext.ahp(), "com/tencent/mm/console/command/FTSCommand", "processCommand", "(Landroid/content/Context;[Ljava/lang/String;Ljava/lang/String;)Z", "android/os/Process_EXEC_", "killProcess", "(I)V");
-        Process.killProcess(((Integer)paramContext.mq(0)).intValue());
+        com.tencent.mm.hellhoundlib.a.a.a(paramArrayOfString, paramContext.ahE(), "com/tencent/mm/console/command/FTSCommand", "processCommand", "(Landroid/content/Context;[Ljava/lang/String;Ljava/lang/String;)Z", "android/os/Process_EXEC_", "killProcess", "(I)V");
+        Process.killProcess(((Integer)paramContext.mt(0)).intValue());
         com.tencent.mm.hellhoundlib.a.a.a(paramArrayOfString, "com/tencent/mm/console/command/FTSCommand", "processCommand", "(Landroid/content/Context;[Ljava/lang/String;Ljava/lang/String;)Z", "android/os/Process_EXEC_", "killProcess", "(I)V");
       }
       catch (Exception paramString)
@@ -272,7 +274,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.console.a.c
  * JD-Core Version:    0.7.0.1
  */

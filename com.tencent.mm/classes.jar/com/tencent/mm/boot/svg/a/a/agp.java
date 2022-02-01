@@ -14,8 +14,8 @@ import com.tencent.mm.svg.c;
 public final class agp
   extends c
 {
-  private final int height = 104;
-  private final int width = 104;
+  private final int height = 102;
+  private final int width = 112;
   
   public final int a(int paramInt, Object... paramVarArgs)
   {
@@ -25,8 +25,8 @@ public final class agp
     for (;;)
     {
       return 0;
-      return 104;
-      return 104;
+      return 112;
+      return 102;
       Canvas localCanvas = (Canvas)paramVarArgs[0];
       paramVarArgs = (Looper)paramVarArgs[1];
       Object localObject = c.j(paramVarArgs);
@@ -47,23 +47,23 @@ public final class agp
       localPaint1.setStrokeWidth(1.0F);
       localCanvas.save();
       localPaint2 = c.a(localPaint2, paramVarArgs);
-      localPaint2.setColor(-3367936);
-      arrayOfFloat = c.a(arrayOfFloat, 0.8987941F, -0.4383712F, 28.230295F, 0.4383712F, 0.8987941F, -15.78627F);
+      localPaint2.setColor(-352965);
+      arrayOfFloat = c.a(arrayOfFloat, 0.8987941F, -0.4383712F, 28.1632F, 0.4383712F, 0.8987941F, -19.495651F);
       ((Matrix)localObject).reset();
       ((Matrix)localObject).setValues(arrayOfFloat);
       localCanvas.concat((Matrix)localObject);
       Path localPath = c.n(paramVarArgs);
-      localPath.moveTo(21.793938F, 18.856665F);
-      localPath.lineTo(90.796371F, 43.881905F);
-      localPath.cubicTo(92.528595F, 44.510136F, 93.421738F, 46.418655F, 92.79126F, 48.144703F);
-      localPath.lineTo(79.092262F, 85.648125F);
-      localPath.cubicTo(78.461784F, 87.374176F, 76.546432F, 88.26413F, 74.814201F, 87.635902F);
-      localPath.lineTo(5.811771F, 62.610661F);
-      localPath.cubicTo(4.079545F, 61.982433F, 3.186401F, 60.073914F, 3.816881F, 58.347866F);
-      localPath.lineTo(17.515879F, 20.84444F);
-      localPath.cubicTo(18.146358F, 19.118393F, 20.06171F, 18.228436F, 21.793938F, 18.856665F);
+      localPath.moveTo(29.793938F, 16.856665F);
+      localPath.lineTo(98.796371F, 41.881905F);
+      localPath.cubicTo(100.52859F, 42.510136F, 101.42174F, 44.418655F, 100.79126F, 46.144703F);
+      localPath.lineTo(87.092262F, 83.648125F);
+      localPath.cubicTo(86.461784F, 85.374176F, 84.546432F, 86.26413F, 82.814201F, 85.635902F);
+      localPath.lineTo(13.811771F, 60.610661F);
+      localPath.cubicTo(12.079545F, 59.982433F, 11.186401F, 58.073914F, 11.81688F, 56.347866F);
+      localPath.lineTo(25.515879F, 18.84444F);
+      localPath.cubicTo(26.146358F, 17.118393F, 28.06171F, 16.228436F, 29.793938F, 16.856665F);
       localPath.close();
-      localCanvas.saveLayerAlpha(null, 76, 31);
+      localCanvas.saveLayerAlpha(null, 108, 31);
       localPaint2 = c.a(localPaint2, paramVarArgs);
       WeChatSVGRenderC2Java.setFillType(localPath, 2);
       localCanvas.drawPath(localPath, localPaint2);
@@ -71,22 +71,22 @@ public final class agp
       localCanvas.restore();
       localCanvas.save();
       localPaint1 = c.a(localPaint1, paramVarArgs);
-      localPaint1.setColor(-3367936);
+      localPaint1.setColor(-352965);
       localPaint1.setStrokeWidth(3.0F);
       localPaint1.setStrokeCap(Paint.Cap.ROUND);
       localPaint1.setStrokeJoin(Paint.Join.MITER);
-      arrayOfFloat = c.a(arrayOfFloat, 0.9975641F, 0.06975647F, -3.330513F, -0.06975647F, 0.9975641F, 3.923065F);
+      arrayOfFloat = c.a(arrayOfFloat, 0.9975641F, 0.06975647F, -3.171511F, -0.06975647F, 0.9975641F, 4.476245F);
       ((Matrix)localObject).reset();
       ((Matrix)localObject).setValues(arrayOfFloat);
       localCanvas.concat((Matrix)localObject);
       localObject = c.n(paramVarArgs);
-      ((Path)localObject).moveTo(59.294525F, 21.508471F);
-      ((Path)localObject).cubicTo(64.629021F, 18.715134F, 70.330856F, 17.109463F, 76.400024F, 16.691454F);
-      ((Path)localObject).cubicTo(85.764915F, 16.630167F, 93.192741F, 19.516296F, 96.613838F, 25.42067F);
-      ((Path)localObject).cubicTo(103.76379F, 37.760567F, 90.705086F, 58.611069F, 67.446419F, 71.991562F);
-      ((Path)localObject).cubicTo(44.187748F, 85.372063F, 19.536694F, 86.21563F, 12.386744F, 73.875732F);
-      ((Path)localObject).cubicTo(11.534513F, 72.404892F, 10.96939F, 70.813141F, 10.674427F, 69.127533F);
-      ((Path)localObject).cubicTo(10.217703F, 65.512238F, 10.431046F, 62.472187F, 11.314454F, 60.00737F);
+      ((Path)localObject).moveTo(67.294525F, 19.508471F);
+      ((Path)localObject).cubicTo(72.629021F, 16.715134F, 78.330856F, 15.109462F, 84.400024F, 14.691455F);
+      ((Path)localObject).cubicTo(93.764915F, 14.630166F, 101.19274F, 17.516296F, 104.61384F, 23.42067F);
+      ((Path)localObject).cubicTo(111.76379F, 35.760567F, 98.705086F, 56.611069F, 75.446419F, 69.991562F);
+      ((Path)localObject).cubicTo(52.187748F, 83.372063F, 27.536694F, 84.21563F, 20.386744F, 71.875732F);
+      ((Path)localObject).cubicTo(19.534513F, 70.404892F, 18.969391F, 68.813141F, 18.674427F, 67.127533F);
+      ((Path)localObject).cubicTo(18.217703F, 63.512241F, 18.431046F, 60.472187F, 19.314455F, 58.00737F);
       localCanvas.drawPath((Path)localObject, localPaint1);
       localCanvas.restore();
       c.l(paramVarArgs);

@@ -11,22 +11,22 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.downloader.model.d;
 import com.tencent.mm.plugin.downloader.model.f;
 import com.tencent.mm.plugin.downloader.model.n;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.az;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 public final class a
 {
-  private static BroadcastReceiver pnj = null;
-  private static int pnk = -1;
+  private static BroadcastReceiver ptQ = null;
+  private static int ptR = -1;
   
-  public static void ccd()
+  public static void cds()
   {
     AppMethodBeat.i(89071);
-    if (pnj == null) {
-      pnj = new a((byte)0);
+    if (ptQ == null) {
+      ptQ = new a((byte)0);
     }
     IntentFilter localIntentFilter = new IntentFilter();
     localIntentFilter.addAction("android.net.wifi.STATE_CHANGE");
@@ -34,25 +34,25 @@ public final class a
     localIntentFilter.addAction("android.net.conn.CONNECTIVITY_CHANGE");
     try
     {
-      aj.getContext().registerReceiver(pnj, localIntentFilter);
+      ak.getContext().registerReceiver(ptQ, localIntentFilter);
       AppMethodBeat.o(89071);
       return;
     }
     catch (Exception localException)
     {
-      ad.e("MicroMsg.Downloader.NetWorkManager", localException.getMessage());
+      ae.e("MicroMsg.Downloader.NetWorkManager", localException.getMessage());
       AppMethodBeat.o(89071);
     }
   }
   
-  public static void cce()
+  public static void cdt()
   {
     AppMethodBeat.i(89072);
-    if (pnj != null) {}
+    if (ptQ != null) {}
     try
     {
-      aj.getContext().unregisterReceiver(pnj);
-      pnj = null;
+      ak.getContext().unregisterReceiver(ptQ);
+      ptQ = null;
       AppMethodBeat.o(89072);
       return;
     }
@@ -60,7 +60,7 @@ public final class a
     {
       for (;;)
       {
-        ad.e("MicroMsg.Downloader.NetWorkManager", localException.getMessage());
+        ae.e("MicroMsg.Downloader.NetWorkManager", localException.getMessage());
       }
     }
   }
@@ -71,37 +71,37 @@ public final class a
     public final void onReceive(final Context paramContext, Intent paramIntent)
     {
       AppMethodBeat.i(89070);
-      h.LTJ.aR(new Runnable()
+      h.MqF.aO(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(89069);
-          if ((!com.tencent.mm.kernel.g.ajx()) || (com.tencent.mm.kernel.a.aiE()))
+          if ((!com.tencent.mm.kernel.g.ajM()) || (com.tencent.mm.kernel.a.aiT()))
           {
-            ad.e("MicroMsg.Downloader.NetWorkManager", "acc has not ready");
+            ae.e("MicroMsg.Downloader.NetWorkManager", "acc has not ready");
             AppMethodBeat.o(89069);
             return;
           }
-          int i = ay.getNetType(aj.getContext());
-          if (i == a.pnk)
+          int i = az.getNetType(ak.getContext());
+          if (i == a.ptR)
           {
             AppMethodBeat.o(89069);
             return;
           }
           a.access$102(i);
-          ad.i("MicroMsg.Downloader.NetWorkManager", "onNetStateChange, netState = ".concat(String.valueOf(i)));
-          if (!ay.isConnected(paramContext))
+          ae.i("MicroMsg.Downloader.NetWorkManager", "onNetStateChange, netState = ".concat(String.valueOf(i)));
+          if (!az.isConnected(paramContext))
           {
-            ad.w("MicroMsg.Downloader.NetWorkManager", "network is not connected");
+            ae.w("MicroMsg.Downloader.NetWorkManager", "network is not connected");
             AppMethodBeat.o(89069);
             return;
           }
           Object localObject2;
           Object localObject3;
           long l;
-          if (ay.isWifi(i))
+          if (az.isWifi(i))
           {
-            localObject1 = d.azw();
+            localObject1 = d.azM();
             if (localObject1 == null)
             {
               localObject1 = null;
@@ -117,14 +117,14 @@ public final class a
                   break label511;
                 }
                 localObject2 = (com.tencent.mm.plugin.downloader.g.a)((Iterator)localObject1).next();
-                ad.i("MicroMsg.Downloader.NetWorkManager", "resumeTask, appId = %s, state = %d", new Object[] { ((com.tencent.mm.plugin.downloader.g.a)localObject2).field_appId, Integer.valueOf(((com.tencent.mm.plugin.downloader.g.a)localObject2).field_status) });
-                if (d.aah(((com.tencent.mm.plugin.downloader.g.a)localObject2).field_downloadUrl))
+                ae.i("MicroMsg.Downloader.NetWorkManager", "resumeTask, appId = %s, state = %d", new Object[] { ((com.tencent.mm.plugin.downloader.g.a)localObject2).field_appId, Integer.valueOf(((com.tencent.mm.plugin.downloader.g.a)localObject2).field_status) });
+                if (d.aaY(((com.tencent.mm.plugin.downloader.g.a)localObject2).field_downloadUrl))
                 {
-                  ad.i("MicroMsg.Downloader.NetWorkManager", "hasDuplicatedTask");
-                  d.aae(((com.tencent.mm.plugin.downloader.g.a)localObject2).field_downloadUrl);
-                  com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(710L, 26L, 1L, false);
+                  ae.i("MicroMsg.Downloader.NetWorkManager", "hasDuplicatedTask");
+                  d.aaV(((com.tencent.mm.plugin.downloader.g.a)localObject2).field_downloadUrl);
+                  com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(710L, 26L, 1L, false);
                   continue;
-                  ad.i("MicroMsg.FileDownloadInfoStorage", "getDownloadInWifiPauseTasks, sql = ".concat(String.valueOf("select * from FileDownloadInfo where status<>1 and status<>3 and downloadInWifi=1")));
+                  ae.i("MicroMsg.FileDownloadInfoStorage", "getDownloadInWifiPauseTasks, sql = ".concat(String.valueOf("select * from FileDownloadInfo where status<>1 and status<>3 and downloadInWifi=1")));
                   localObject3 = ((com.tencent.mm.plugin.downloader.g.b)localObject1).rawQuery("select * from FileDownloadInfo where status<>1 and status<>3 and downloadInWifi=1", new String[0]);
                   localObject2 = new LinkedList();
                   localObject1 = localObject2;
@@ -143,13 +143,13 @@ public final class a
                 }
                 if (((com.tencent.mm.plugin.downloader.g.a)localObject2).field_status == 2)
                 {
-                  localObject3 = f.ccl();
+                  localObject3 = f.cdA();
                   l = ((com.tencent.mm.plugin.downloader.g.a)localObject2).field_downloadId;
-                  localObject2 = d.ua(l);
+                  localObject2 = d.ur(l);
                   if ((localObject2 != null) && (((com.tencent.mm.plugin.downloader.g.a)localObject2).field_downloaderType == 3))
                   {
-                    localObject2 = ((f)localObject3).ccq();
-                    localObject3 = d.ua(l);
+                    localObject2 = ((f)localObject3).cdF();
+                    localObject3 = d.ur(l);
                     if (localObject3 != null)
                     {
                       ((com.tencent.mm.plugin.downloader.g.a)localObject3).field_downloadType = 2;
@@ -160,8 +160,8 @@ public final class a
                   }
                   else
                   {
-                    localObject2 = ((f)localObject3).ccp();
-                    localObject3 = d.ua(l);
+                    localObject2 = ((f)localObject3).cdE();
+                    localObject3 = d.ur(l);
                     if (localObject3 != null)
                     {
                       ((com.tencent.mm.plugin.downloader.g.a)localObject3).field_downloadType = 2;
@@ -173,64 +173,64 @@ public final class a
                 }
                 else if ((((com.tencent.mm.plugin.downloader.g.a)localObject2).field_status == 0) && (((com.tencent.mm.plugin.downloader.g.a)localObject2).field_reserveInWifi))
                 {
-                  localObject3 = f.ccl();
+                  localObject3 = f.cdA();
                   if (((com.tencent.mm.plugin.downloader.g.a)localObject2).field_downloaderType == 3) {
-                    ((f)localObject3).ccq().a((com.tencent.mm.plugin.downloader.g.a)localObject2);
+                    ((f)localObject3).cdF().a((com.tencent.mm.plugin.downloader.g.a)localObject2);
                   } else {
-                    ((f)localObject3).ccm().a((com.tencent.mm.plugin.downloader.g.a)localObject2);
+                    ((f)localObject3).cdB().a((com.tencent.mm.plugin.downloader.g.a)localObject2);
                   }
                 }
               }
             }
             label511:
-            com.tencent.mm.plugin.game.commlib.c.a.cWX().a("download_resume", new com.tencent.mm.plugin.game.commlib.c.a.a()
+            com.tencent.mm.plugin.game.commlib.c.a.cZE().a("download_resume", new com.tencent.mm.plugin.game.commlib.c.a.a()
             {
-              public final void ccc()
+              public final void cdr()
               {
-                AppMethodBeat.i(213704);
-                h.LTJ.aR(new Runnable()
+                AppMethodBeat.i(207167);
+                h.MqF.aO(new Runnable()
                 {
                   public final void run()
                   {
-                    AppMethodBeat.i(213703);
-                    if (ay.isWifi(aj.getContext())) {
-                      com.tencent.mm.plugin.downloader.model.a.ccf();
+                    AppMethodBeat.i(207166);
+                    if (az.isWifi(ak.getContext())) {
+                      com.tencent.mm.plugin.downloader.model.a.cdu();
                     }
-                    AppMethodBeat.o(213703);
+                    AppMethodBeat.o(207166);
                   }
                 });
-                AppMethodBeat.o(213704);
+                AppMethodBeat.o(207167);
               }
             });
             AppMethodBeat.o(89069);
             return;
           }
-          Object localObject1 = d.cci();
+          Object localObject1 = d.cdx();
           if (localObject1 != null)
           {
             localObject1 = ((LinkedList)localObject1).iterator();
             while (((Iterator)localObject1).hasNext())
             {
               localObject3 = (com.tencent.mm.plugin.downloader.g.a)((Iterator)localObject1).next();
-              ad.i("MicroMsg.Downloader.NetWorkManager", "pauseTask, appId: " + ((com.tencent.mm.plugin.downloader.g.a)localObject3).field_appId);
-              localObject2 = f.ccl();
+              ae.i("MicroMsg.Downloader.NetWorkManager", "pauseTask, appId: " + ((com.tencent.mm.plugin.downloader.g.a)localObject3).field_appId);
+              localObject2 = f.cdA();
               l = ((com.tencent.mm.plugin.downloader.g.a)localObject3).field_downloadId;
-              localObject3 = d.ua(l);
+              localObject3 = d.ur(l);
               if ((localObject3 != null) && (((com.tencent.mm.plugin.downloader.g.a)localObject3).field_downloaderType == 3))
               {
-                ((f)localObject2).ccq().tW(l);
+                ((f)localObject2).cdF().un(l);
               }
               else
               {
-                localObject2 = ((f)localObject2).ccp();
-                localObject3 = d.ua(l);
+                localObject2 = ((f)localObject2).cdE();
+                localObject3 = d.ur(l);
                 if (localObject3 != null)
                 {
                   ((com.tencent.mm.plugin.downloader.g.a)localObject3).field_downloadType = 2;
                   d.e((com.tencent.mm.plugin.downloader.g.a)localObject3);
                 }
                 com.tencent.mm.plugin.downloader.f.a.s(l, 13);
-                ((com.tencent.mm.plugin.downloader.h.a)localObject2).tT(l);
+                ((com.tencent.mm.plugin.downloader.h.a)localObject2).uk(l);
               }
             }
           }

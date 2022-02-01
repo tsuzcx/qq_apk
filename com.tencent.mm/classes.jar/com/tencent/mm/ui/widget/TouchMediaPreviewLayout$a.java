@@ -2,7 +2,7 @@ package com.tencent.mm.ui.widget;
 
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/ui/widget/TouchMediaPreviewLayout$Companion;", "", "()V", "ANIMATION_DURATION", "", "INIT_BG_ALPHA", "", "TAG", "", "isRevertImmediately", "", "()Z", "setRevertImmediately", "(Z)V", "isShowVideoBaseLine", "setShowVideoBaseLine", "libmmui_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/ui/widget/TouchMediaPreviewLayout$Companion;", "", "()V", "ANIMATION_DURATION", "", "INIT_BG_ALPHA", "", "TAG", "", "isRevertImmediately", "", "()Z", "setRevertImmediately", "(Z)V", "isShowVideoBaseLine", "setShowVideoBaseLine", "libmmui_release"})
 public final class TouchMediaPreviewLayout$a {}
 
 

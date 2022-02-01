@@ -15,18 +15,18 @@ import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cn.f;
+import com.tencent.mm.cm.f;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.plugin.appbrand.widget.recyclerview.LoadMoreRecyclerView;
 import com.tencent.mm.plugin.appbrand.widget.recyclerview.LoadMoreRecyclerView.a;
 import com.tencent.mm.plugin.appbrand.widget.recyclerview.MRecyclerView.a;
 import com.tencent.mm.plugin.appbrand.widget.recyclerview.MRecyclerView.b;
 import com.tencent.mm.plugin.card.model.a.h;
-import com.tencent.mm.protocal.protobuf.cho;
-import com.tencent.mm.protocal.protobuf.chr;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.al.a;
+import com.tencent.mm.protocal.protobuf.cii;
+import com.tencent.mm.protocal.protobuf.cil;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.storage.aj;
+import com.tencent.mm.storage.am.a;
 import com.tencent.mm.ui.base.n.d;
 import com.tencent.mm.ui.base.n.e;
 import d.g.b.p;
@@ -38,111 +38,111 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedList;
 
-@d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/card/ui/v2/CardInvalidTicketListUI;", "Lcom/tencent/mm/plugin/card/ui/v2/CardNewBaseUI;", "()V", "firstLoad", "", "isAll", "isLoading", "isShowClearBtn", "mInvalidTicketList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/card/ui/v2/CardTicketListModel;", "mTicketAdapter", "Lcom/tencent/mm/plugin/card/ui/v2/CardTicketAdapter;", "getMTicketAdapter", "()Lcom/tencent/mm/plugin/card/ui/v2/CardTicketAdapter;", "setMTicketAdapter", "(Lcom/tencent/mm/plugin/card/ui/v2/CardTicketAdapter;)V", "mTicketRv", "Lcom/tencent/mm/plugin/appbrand/widget/recyclerview/LoadMoreRecyclerView;", "getMTicketRv", "()Lcom/tencent/mm/plugin/appbrand/widget/recyclerview/LoadMoreRecyclerView;", "setMTicketRv", "(Lcom/tencent/mm/plugin/appbrand/widget/recyclerview/LoadMoreRecyclerView;)V", "offset", "", "reqNum", "doClearInvalidTicketList", "", "doDeleteInvalidTicket", "cardId", "", "doGetInvalidTicketHomePage", "getLayoutId", "gotoCardDetailUI", "initView", "invalidTicketIds", "loadSnapshot", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onFinishLocationThings", "ret", "isLocationOk", "saveSnapshot", "updateModelList", "ticketList", "Lcom/tencent/mm/protocal/protobuf/PageTicketList;", "updateOptionMenu", "Companion", "plugin-card_release"})
+@d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/card/ui/v2/CardInvalidTicketListUI;", "Lcom/tencent/mm/plugin/card/ui/v2/CardNewBaseUI;", "()V", "firstLoad", "", "isAll", "isLoading", "isShowClearBtn", "mInvalidTicketList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/card/ui/v2/CardTicketListModel;", "mTicketAdapter", "Lcom/tencent/mm/plugin/card/ui/v2/CardTicketAdapter;", "getMTicketAdapter", "()Lcom/tencent/mm/plugin/card/ui/v2/CardTicketAdapter;", "setMTicketAdapter", "(Lcom/tencent/mm/plugin/card/ui/v2/CardTicketAdapter;)V", "mTicketRv", "Lcom/tencent/mm/plugin/appbrand/widget/recyclerview/LoadMoreRecyclerView;", "getMTicketRv", "()Lcom/tencent/mm/plugin/appbrand/widget/recyclerview/LoadMoreRecyclerView;", "setMTicketRv", "(Lcom/tencent/mm/plugin/appbrand/widget/recyclerview/LoadMoreRecyclerView;)V", "offset", "", "reqNum", "doClearInvalidTicketList", "", "doDeleteInvalidTicket", "cardId", "", "doGetInvalidTicketHomePage", "getLayoutId", "gotoCardDetailUI", "initView", "invalidTicketIds", "loadSnapshot", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onFinishLocationThings", "ret", "isLocationOk", "saveSnapshot", "updateModelList", "ticketList", "Lcom/tencent/mm/protocal/protobuf/PageTicketList;", "updateOptionMenu", "Companion", "plugin-card_release"})
 public final class CardInvalidTicketListUI
   extends CardNewBaseUI
 {
-  public static final CardInvalidTicketListUI.a oLT;
-  private boolean gjj;
+  public static final CardInvalidTicketListUI.a oSv;
+  private boolean glB;
   private boolean isLoading;
-  private int oKC;
-  private boolean oKD;
-  public LoadMoreRecyclerView oLP;
-  public a oLQ;
-  private ArrayList<b> oLR;
-  private boolean oLS;
+  private int oRe;
+  private boolean oRf;
+  public LoadMoreRecyclerView oSr;
+  public a oSs;
+  private ArrayList<b> oSt;
+  private boolean oSu;
   private int offset;
   
   static
   {
     AppMethodBeat.i(112498);
-    oLT = new CardInvalidTicketListUI.a((byte)0);
+    oSv = new CardInvalidTicketListUI.a((byte)0);
     AppMethodBeat.o(112498);
   }
   
   public CardInvalidTicketListUI()
   {
     AppMethodBeat.i(112497);
-    this.oLR = new ArrayList();
-    this.oKC = 10;
-    this.gjj = true;
+    this.oSt = new ArrayList();
+    this.oRe = 10;
+    this.glB = true;
     AppMethodBeat.o(112497);
   }
   
-  private final void a(chr paramchr)
+  private final void a(cil paramcil)
   {
     AppMethodBeat.i(112495);
-    if (paramchr != null)
+    if (paramcil != null)
     {
-      Object localObject = paramchr.Hbn;
+      Object localObject = paramcil.HuN;
       p.g(localObject, "page_ticket_element");
       if (!((Collection)localObject).isEmpty()) {}
       for (int i = 1; i != 0; i = 0)
       {
-        paramchr = paramchr.Hbn.iterator();
-        while (paramchr.hasNext())
+        paramcil = paramcil.HuN.iterator();
+        while (paramcil.hasNext())
         {
-          localObject = (cho)paramchr.next();
+          localObject = (cii)paramcil.next();
           b localb = new b();
-          localb.oMp = ((cho)localObject);
+          localb.oSR = ((cii)localObject);
           localb.type = 2;
-          this.oLR.add(localb);
+          this.oSt.add(localb);
         }
       }
     }
-    paramchr = this.oLQ;
-    if (paramchr == null) {
-      p.bcb("mTicketAdapter");
+    paramcil = this.oSs;
+    if (paramcil == null) {
+      p.bdF("mTicketAdapter");
     }
-    paramchr.a(null, this.oLR, null, null);
+    paramcil.a(null, this.oSt, null, null);
     AppMethodBeat.o(112495);
   }
   
-  private final void bYa()
+  private final void bZp()
   {
     AppMethodBeat.i(112496);
-    ad.i("MicroMsg.CardInvalidTicketListUI", "do get invalid ticket: %s, %s, %s, %s", new Object[] { Integer.valueOf(this.offset), Integer.valueOf(this.oKC), Boolean.valueOf(this.oKD), Boolean.valueOf(this.isLoading) });
-    if ((!this.oKD) && (!this.isLoading))
+    ae.i("MicroMsg.CardInvalidTicketListUI", "do get invalid ticket: %s, %s, %s, %s", new Object[] { Integer.valueOf(this.offset), Integer.valueOf(this.oRe), Boolean.valueOf(this.oRf), Boolean.valueOf(this.isLoading) });
+    if ((!this.oRf) && (!this.isLoading))
     {
       this.isLoading = true;
-      new h(this.offset, this.oKC, this.dyz, this.dAp).aED().b((com.tencent.mm.vending.c.a)new c(this));
+      new h(this.offset, this.oRe, this.dzE, this.dBu).aET().b((com.tencent.mm.vending.c.a)new c(this));
     }
     AppMethodBeat.o(112496);
   }
   
-  public final void V(int paramInt, boolean paramBoolean)
+  public final void X(int paramInt, boolean paramBoolean)
   {
     AppMethodBeat.i(112494);
-    ad.i("MicroMsg.CardInvalidTicketListUI", "location finish: [%s, %s], ret: %s, isOk: %s", new Object[] { Float.valueOf(this.dyz), Float.valueOf(this.dAp), Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean) });
-    if (this.gjj)
+    ae.i("MicroMsg.CardInvalidTicketListUI", "location finish: [%s, %s], ret: %s, isOk: %s", new Object[] { Float.valueOf(this.dzE), Float.valueOf(this.dBu), Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean) });
+    if (this.glB)
     {
-      bYa();
+      bZp();
       AppMethodBeat.o(112494);
       return;
     }
     if (!paramBoolean) {
-      bYd();
+      bZs();
     }
     AppMethodBeat.o(112494);
   }
   
-  public final LoadMoreRecyclerView bXY()
+  public final LoadMoreRecyclerView bZn()
   {
     AppMethodBeat.i(112489);
-    LoadMoreRecyclerView localLoadMoreRecyclerView = this.oLP;
+    LoadMoreRecyclerView localLoadMoreRecyclerView = this.oSr;
     if (localLoadMoreRecyclerView == null) {
-      p.bcb("mTicketRv");
+      p.bdF("mTicketRv");
     }
     AppMethodBeat.o(112489);
     return localLoadMoreRecyclerView;
   }
   
-  public final a bXZ()
+  public final a bZo()
   {
     AppMethodBeat.i(112490);
-    a locala = this.oLQ;
+    a locala = this.oSs;
     if (locala == null) {
-      p.bcb("mTicketAdapter");
+      p.bdF("mTicketAdapter");
     }
     AppMethodBeat.o(112490);
     return locala;
@@ -158,60 +158,60 @@ public final class CardInvalidTicketListUI
     AppMethodBeat.i(112492);
     Object localObject1 = findViewById(2131298893);
     p.g(localObject1, "findViewById(R.id.ctlu_rv)");
-    this.oLP = ((LoadMoreRecyclerView)localObject1);
-    this.oLQ = new a(true);
-    localObject1 = this.oLP;
+    this.oSr = ((LoadMoreRecyclerView)localObject1);
+    this.oSs = new a(true);
+    localObject1 = this.oSr;
     if (localObject1 == null) {
-      p.bcb("mTicketRv");
+      p.bdF("mTicketRv");
     }
-    Object localObject2 = this.oLQ;
+    Object localObject2 = this.oSs;
     if (localObject2 == null) {
-      p.bcb("mTicketAdapter");
+      p.bdF("mTicketAdapter");
     }
     ((LoadMoreRecyclerView)localObject1).setAdapter((RecyclerView.a)localObject2);
-    localObject1 = this.oLP;
+    localObject1 = this.oSr;
     if (localObject1 == null) {
-      p.bcb("mTicketRv");
+      p.bdF("mTicketRv");
     }
     getContext();
     ((LoadMoreRecyclerView)localObject1).setLayoutManager((RecyclerView.i)new LinearLayoutManager());
-    localObject1 = this.oLP;
+    localObject1 = this.oSr;
     if (localObject1 == null) {
-      p.bcb("mTicketRv");
+      p.bdF("mTicketRv");
     }
     ((LoadMoreRecyclerView)localObject1).setEmptyView(findViewById(2131298280));
-    localObject1 = this.oLP;
+    localObject1 = this.oSr;
     if (localObject1 == null) {
-      p.bcb("mTicketRv");
+      p.bdF("mTicketRv");
     }
     localObject1 = (TextView)((LoadMoreRecyclerView)localObject1).getEmptyView().findViewById(2131298281);
     p.g(localObject1, "emptyTv");
     ((TextView)localObject1).setText((CharSequence)getString(2131756961));
     localObject1 = new w((Context)this);
     ((w)localObject1).setDrawable(getResources().getDrawable(2131231459));
-    localObject2 = this.oLP;
+    localObject2 = this.oSr;
     if (localObject2 == null) {
-      p.bcb("mTicketRv");
+      p.bdF("mTicketRv");
     }
     ((LoadMoreRecyclerView)localObject2).b((RecyclerView.h)localObject1);
-    localObject1 = this.oLP;
+    localObject1 = this.oSr;
     if (localObject1 == null) {
-      p.bcb("mTicketRv");
+      p.bdF("mTicketRv");
     }
     ((LoadMoreRecyclerView)localObject1).setLoadingView(2131493294);
-    localObject1 = this.oLP;
+    localObject1 = this.oSr;
     if (localObject1 == null) {
-      p.bcb("mTicketRv");
+      p.bdF("mTicketRv");
     }
     ((LoadMoreRecyclerView)localObject1).setOnLoadingStateChangedListener((LoadMoreRecyclerView.a)new d(this));
-    localObject1 = this.oLP;
+    localObject1 = this.oSr;
     if (localObject1 == null) {
-      p.bcb("mTicketRv");
+      p.bdF("mTicketRv");
     }
     ((LoadMoreRecyclerView)localObject1).setOnItemClickListener((MRecyclerView.a)new e(this));
-    localObject1 = this.oLP;
+    localObject1 = this.oSr;
     if (localObject1 == null) {
-      p.bcb("mTicketRv");
+      p.bdF("mTicketRv");
     }
     ((LoadMoreRecyclerView)localObject1).setOnItemLongClickListener((MRecyclerView.b)new f(this));
     AppMethodBeat.o(112492);
@@ -225,13 +225,13 @@ public final class CardInvalidTicketListUI
     setActionbarColor(Color.parseColor("#f3f3f3"));
     hideActionbarLine();
     initView();
-    paramBundle = new chr();
-    Object localObject = com.tencent.mm.plugin.card.model.a.a.oAY;
+    paramBundle = new cil();
+    Object localObject = com.tencent.mm.plugin.card.model.a.a.oHA;
     p.h(paramBundle, "invalidTicketList");
-    ad.d(com.tencent.mm.plugin.card.model.a.a.access$getTAG$cp(), "load invalid ticket page snapshot");
-    localObject = com.tencent.mm.kernel.g.ajC();
+    ae.d(com.tencent.mm.plugin.card.model.a.a.access$getTAG$cp(), "load invalid ticket page snapshot");
+    localObject = com.tencent.mm.kernel.g.ajR();
     p.g(localObject, "MMKernel.storage()");
-    localObject = (String)((e)localObject).ajl().i(al.a.IEP);
+    localObject = (String)((e)localObject).ajA().i(am.a.IZp);
     if (localObject != null)
     {
       Charset localCharset = d.ISO_8859_1;
@@ -248,7 +248,7 @@ public final class CardInvalidTicketListUI
     a(paramBundle);
     setMMTitle(2131764414);
     setBackBtn((MenuItem.OnMenuItemClickListener)new CardInvalidTicketListUI.g(this));
-    com.tencent.mm.plugin.report.service.g.yhR.f(16322, new Object[] { Integer.valueOf(9) });
+    com.tencent.mm.plugin.report.service.g.yxI.f(16322, new Object[] { Integer.valueOf(9) });
     AppMethodBeat.o(112491);
   }
   
@@ -256,25 +256,25 @@ public final class CardInvalidTicketListUI
   {
     AppMethodBeat.i(112493);
     super.onDestroy();
-    Object localObject1 = new chr();
-    ((chr)localObject1).Hbn = new LinkedList();
-    Object localObject2 = this.oLR.iterator();
+    Object localObject1 = new cil();
+    ((cil)localObject1).HuN = new LinkedList();
+    Object localObject2 = this.oSt.iterator();
     while (((Iterator)localObject2).hasNext())
     {
-      cho localcho = ((b)((Iterator)localObject2).next()).oMp;
-      if (localcho != null) {
-        ((chr)localObject1).Hbn.add(localcho);
+      cii localcii = ((b)((Iterator)localObject2).next()).oSR;
+      if (localcii != null) {
+        ((cil)localObject1).HuN.add(localcii);
       }
     }
-    localObject2 = com.tencent.mm.plugin.card.model.a.a.oAY;
+    localObject2 = com.tencent.mm.plugin.card.model.a.a.oHA;
     p.h(localObject1, "invalidTicketList");
-    ad.d(com.tencent.mm.plugin.card.model.a.a.access$getTAG$cp(), "save invalid ticket snapshot");
-    localObject1 = ((chr)localObject1).toByteArray();
+    ae.d(com.tencent.mm.plugin.card.model.a.a.access$getTAG$cp(), "save invalid ticket snapshot");
+    localObject1 = ((cil)localObject1).toByteArray();
     p.g(localObject1, "invalidTicketList.toByteArray()");
     localObject1 = new String((byte[])localObject1, d.ISO_8859_1);
-    localObject2 = com.tencent.mm.kernel.g.ajC();
+    localObject2 = com.tencent.mm.kernel.g.ajR();
     p.g(localObject2, "MMKernel.storage()");
-    ((e)localObject2).ajl().set(al.a.IEP, localObject1);
+    ((e)localObject2).ajA().set(am.a.IZp, localObject1);
     AppMethodBeat.o(112493);
   }
   
@@ -284,35 +284,35 @@ public final class CardInvalidTicketListUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "kotlin.jvm.PlatformType", "it", "Lcom/tencent/mm/modelbase/Cgi$CgiBack;", "Lcom/tencent/mm/protocal/protobuf/DeleteCardInInvalidListResponse;", "call"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "kotlin.jvm.PlatformType", "it", "Lcom/tencent/mm/modelbase/Cgi$CgiBack;", "Lcom/tencent/mm/protocal/protobuf/DeleteCardInInvalidListResponse;", "call"})
   static final class b<_Ret, _Var>
     implements com.tencent.mm.vending.c.a<_Ret, _Var>
   {
     b(CardInvalidTicketListUI paramCardInvalidTicketListUI, String paramString) {}
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "kotlin.jvm.PlatformType", "it", "Lcom/tencent/mm/modelbase/Cgi$CgiBack;", "Lcom/tencent/mm/protocal/protobuf/GetMktInvalidTicketHomePageResponse;", "call"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "kotlin.jvm.PlatformType", "it", "Lcom/tencent/mm/modelbase/Cgi$CgiBack;", "Lcom/tencent/mm/protocal/protobuf/GetMktInvalidTicketHomePageResponse;", "call"})
   static final class c<_Ret, _Var>
     implements com.tencent.mm.vending.c.a<_Ret, _Var>
   {
     c(CardInvalidTicketListUI paramCardInvalidTicketListUI) {}
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "parent", "Lcom/tencent/mm/plugin/appbrand/widget/recyclerview/LoadMoreRecyclerView;", "kotlin.jvm.PlatformType", "adapter", "Landroid/support/v7/widget/RecyclerView$Adapter;", "Landroid/support/v7/widget/RecyclerView$ViewHolder;", "onLoadMore"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "parent", "Lcom/tencent/mm/plugin/appbrand/widget/recyclerview/LoadMoreRecyclerView;", "kotlin.jvm.PlatformType", "adapter", "Landroid/support/v7/widget/RecyclerView$Adapter;", "Landroid/support/v7/widget/RecyclerView$ViewHolder;", "onLoadMore"})
   static final class d
     implements LoadMoreRecyclerView.a
   {
     d(CardInvalidTicketListUI paramCardInvalidTicketListUI) {}
     
-    public final void bAF()
+    public final void bBz()
     {
       AppMethodBeat.i(112479);
-      CardInvalidTicketListUI.a(this.oLU);
+      CardInvalidTicketListUI.a(this.oSw);
       AppMethodBeat.o(112479);
     }
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "parent", "Landroid/support/v7/widget/RecyclerView;", "kotlin.jvm.PlatformType", "view", "Landroid/view/View;", "position", "", "id", "", "onItemClick"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "parent", "Landroid/support/v7/widget/RecyclerView;", "kotlin.jvm.PlatformType", "view", "Landroid/view/View;", "position", "", "id", "", "onItemClick"})
   static final class e
     implements MRecyclerView.a
   {
@@ -321,8 +321,8 @@ public final class CardInvalidTicketListUI
     public final void T(View paramView, int paramInt)
     {
       AppMethodBeat.i(112480);
-      ad.i("MicroMsg.CardInvalidTicketListUI", "click item");
-      paramView = this.oLU.bXZ().AK(paramInt);
+      ae.i("MicroMsg.CardInvalidTicketListUI", "click item");
+      paramView = this.oSw.bZo().AW(paramInt);
       if (paramView != null)
       {
         switch (paramView.type)
@@ -332,10 +332,10 @@ public final class CardInvalidTicketListUI
         {
           AppMethodBeat.o(112480);
           return;
-          localObject = paramView.oMp;
+          localObject = paramView.oSR;
         } while (localObject == null);
-        paramView = this.oLU;
-        Object localObject = ((cho)localObject).FrW;
+        paramView = this.oSw;
+        Object localObject = ((cii)localObject).FKu;
         p.g(localObject, "user_card_id");
         CardInvalidTicketListUI.a(paramView, (String)localObject);
         AppMethodBeat.o(112480);
@@ -345,7 +345,7 @@ public final class CardInvalidTicketListUI
     }
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "parent", "Landroid/support/v7/widget/RecyclerView;", "kotlin.jvm.PlatformType", "view", "Landroid/view/View;", "position", "", "id", "", "onItemLongClick"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "parent", "Landroid/support/v7/widget/RecyclerView;", "kotlin.jvm.PlatformType", "view", "Landroid/view/View;", "position", "", "id", "", "onItemLongClick"})
   static final class f
     implements MRecyclerView.b
   {
@@ -354,8 +354,8 @@ public final class CardInvalidTicketListUI
     public final boolean U(final View paramView, int paramInt)
     {
       AppMethodBeat.i(112483);
-      ad.i("MicroMsg.CardInvalidTicketListUI", "long click item");
-      paramView = this.oLU.bXZ().AK(paramInt);
+      ae.i("MicroMsg.CardInvalidTicketListUI", "long click item");
+      paramView = this.oSw.bZo().AW(paramInt);
       if (paramView != null) {
         switch (paramView.type)
         {
@@ -365,14 +365,14 @@ public final class CardInvalidTicketListUI
       {
         AppMethodBeat.o(112483);
         return false;
-        com.tencent.mm.ui.tools.l locall = new com.tencent.mm.ui.tools.l((Context)this.oLU.getContext());
+        com.tencent.mm.ui.tools.l locall = new com.tencent.mm.ui.tools.l((Context)this.oSw.getContext());
         locall.a((n.d)new a(this, paramView));
         locall.a((n.e)new b(this, paramView));
-        locall.fKy();
+        locall.fOP();
       }
     }
     
-    @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Lcom/tencent/mm/ui/base/MMMenu;", "kotlin.jvm.PlatformType", "onCreateMMMenu", "com/tencent/mm/plugin/card/ui/v2/CardInvalidTicketListUI$initView$3$1$1"})
+    @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Lcom/tencent/mm/ui/base/MMMenu;", "kotlin.jvm.PlatformType", "onCreateMMMenu", "com/tencent/mm/plugin/card/ui/v2/CardInvalidTicketListUI$initView$3$1$1"})
     static final class a
       implements n.d
     {
@@ -381,12 +381,12 @@ public final class CardInvalidTicketListUI
       public final void onCreateMMMenu(com.tencent.mm.ui.base.l paraml)
       {
         AppMethodBeat.i(112481);
-        paraml.c(1, (CharSequence)this.oLW.oLU.getString(2131755707));
+        paraml.d(1, (CharSequence)this.oSy.oSw.getString(2131755707));
         AppMethodBeat.o(112481);
       }
     }
     
-    @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "menuItem", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "index", "", "onMMMenuItemSelected", "com/tencent/mm/plugin/card/ui/v2/CardInvalidTicketListUI$initView$3$1$2"})
+    @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "menuItem", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "index", "", "onMMMenuItemSelected", "com/tencent/mm/plugin/card/ui/v2/CardInvalidTicketListUI$initView$3$1$2"})
     static final class b
       implements n.e
     {
@@ -403,12 +403,12 @@ public final class CardInvalidTicketListUI
         {
           AppMethodBeat.o(112482);
           return;
-          paramMenuItem = this.oLW.oLU;
-          Object localObject = paramView.oMp;
+          paramMenuItem = this.oSy.oSw;
+          Object localObject = paramView.oSR;
           if (localObject == null) {
-            p.gfZ();
+            p.gkB();
           }
-          localObject = ((cho)localObject).FrW;
+          localObject = ((cii)localObject).FKu;
           p.g(localObject, "model.ticketElement!!.user_card_id");
           CardInvalidTicketListUI.b(paramMenuItem, (String)localObject);
         }

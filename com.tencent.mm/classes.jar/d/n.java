@@ -2,7 +2,7 @@ package d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlin/NotImplementedError;", "Ljava/lang/Error;", "Lkotlin/Error;", "message", "", "(Ljava/lang/String;)V", "kotlin-stdlib"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlin/NotImplementedError;", "Ljava/lang/Error;", "Lkotlin/Error;", "message", "", "(Ljava/lang/String;)V", "kotlin-stdlib"})
 public final class n
   extends Error
 {
@@ -15,7 +15,7 @@ public final class n
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.n
  * JD-Core Version:    0.7.0.1
  */

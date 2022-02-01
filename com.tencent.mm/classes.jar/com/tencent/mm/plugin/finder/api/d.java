@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.finder.api;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.k.b;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.ah.f;
+import com.tencent.mm.ah.k.b;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.Map;
 
 public class d
   extends f
 {
   public String desc;
-  public String dkh;
-  public String rHp;
+  public String dlj;
+  public String rPA;
   public int scene;
   public String title;
   
@@ -19,32 +19,32 @@ public class d
   {
     AppMethodBeat.i(168706);
     paramStringBuilder.append("<finderEndorsement>");
-    if (!bt.isNullOrNil(this.title))
+    if (!bu.isNullOrNil(this.title))
     {
       paramStringBuilder.append("<username>");
-      paramStringBuilder.append(k.b.ys(this.title));
+      paramStringBuilder.append(k.b.zc(this.title));
       paramStringBuilder.append("</username>");
     }
-    if (!bt.isNullOrNil(this.desc))
+    if (!bu.isNullOrNil(this.desc))
     {
       paramStringBuilder.append("<nickname>");
-      paramStringBuilder.append(k.b.ys(this.desc));
+      paramStringBuilder.append(k.b.zc(this.desc));
       paramStringBuilder.append("</nickname>");
     }
-    if (!bt.isNullOrNil(this.rHp))
+    if (!bu.isNullOrNil(this.rPA))
     {
       paramStringBuilder.append("<relativePath>");
-      paramStringBuilder.append(k.b.ys(this.rHp));
+      paramStringBuilder.append(k.b.zc(this.rPA));
       paramStringBuilder.append("</relativePath>");
     }
-    if (!bt.isNullOrNil(this.dkh))
+    if (!bu.isNullOrNil(this.dlj))
     {
       paramStringBuilder.append("<sceneNote>");
-      paramStringBuilder.append(k.b.ys(this.dkh));
+      paramStringBuilder.append(k.b.zc(this.dlj));
       paramStringBuilder.append("</sceneNote>");
     }
     paramStringBuilder.append("<scene>");
-    paramStringBuilder.append(k.b.ys(String.valueOf(this.scene)));
+    paramStringBuilder.append(k.b.zc(String.valueOf(this.scene)));
     paramStringBuilder.append("</scene>");
     paramStringBuilder.append("</finderEndorsement>");
     AppMethodBeat.o(168706);
@@ -55,20 +55,20 @@ public class d
     AppMethodBeat.i(168707);
     this.title = ((String)paramMap.get(".msg.appmsg.finderEndorsement.username"));
     this.desc = ((String)paramMap.get(".msg.appmsg.finderEndorsement.nickname"));
-    this.rHp = ((String)paramMap.get(".msg.appmsg.finderEndorsement.relativePath"));
-    this.dkh = ((String)paramMap.get(".msg.appmsg.finderEndorsement.sceneNote"));
-    this.scene = bt.getInt((String)paramMap.get(".msg.appmsg.finderEndorsement.scene"), 0);
+    this.rPA = ((String)paramMap.get(".msg.appmsg.finderEndorsement.relativePath"));
+    this.dlj = ((String)paramMap.get(".msg.appmsg.finderEndorsement.sceneNote"));
+    this.scene = bu.getInt((String)paramMap.get(".msg.appmsg.finderEndorsement.scene"), 0);
     AppMethodBeat.o(168707);
   }
   
-  public final f aot()
+  public final f aoI()
   {
     AppMethodBeat.i(168705);
     d locald = new d();
     locald.title = this.title;
     locald.desc = this.desc;
-    locald.rHp = this.rHp;
-    locald.dkh = this.dkh;
+    locald.rPA = this.rPA;
+    locald.dlj = this.dlj;
     locald.scene = this.scene;
     AppMethodBeat.o(168705);
     return locald;

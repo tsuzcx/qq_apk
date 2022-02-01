@@ -1,36 +1,36 @@
 package com.tencent.mm.plugin.mall.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.protocal.protobuf.cir;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.protocal.protobuf.cjl;
 import com.tencent.mm.protocal.protobuf.jn;
 import com.tencent.mm.protocal.protobuf.jo;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.LinkedList;
 import java.util.List;
 
 public final class a
-  extends com.tencent.mm.al.a<jo>
+  extends com.tencent.mm.ak.a<jo>
 {
-  public List<cir> vDa;
+  public List<cjl> vPe;
   
-  public a(LinkedList<cir> paramLinkedList, int paramInt)
+  public a(LinkedList<cjl> paramLinkedList, int paramInt)
   {
     AppMethodBeat.i(65987);
     jn localjn = new jn();
-    localjn.FCn = paramLinkedList;
-    localjn.FCo = paramInt;
-    localjn.FCp = 0;
+    localjn.FUI = paramLinkedList;
+    localjn.FUJ = paramInt;
+    localjn.FUK = 0;
     b.a locala = new b.a();
-    locala.hNM = localjn;
-    locala.hNN = new jo();
+    locala.hQF = localjn;
+    locala.hQG = new jo();
     locala.funcId = 2938;
     locala.uri = "/cgi-bin/micromsg-bin/batchfunctionoperate";
-    locala.hNO = 0;
+    locala.hQH = 0;
     locala.respCmdId = 0;
-    c(locala.aDC());
-    this.vDa = paramLinkedList;
-    ad.i("MicroMsg.CgiBatchFunctionOperate", "TpaCountry: %s", new Object[] { Integer.valueOf(paramInt) });
+    c(locala.aDS());
+    this.vPe = paramLinkedList;
+    ae.i("MicroMsg.CgiBatchFunctionOperate", "TpaCountry: %s", new Object[] { Integer.valueOf(paramInt) });
     AppMethodBeat.o(65987);
   }
 }

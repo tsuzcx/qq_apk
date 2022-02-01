@@ -1,0 +1,71 @@
+package com.tencent.mm.plugin.luckymoney.scaledLayout;
+
+import android.support.v7.widget.RecyclerView.LayoutParams;
+import android.support.v7.widget.RecyclerView.i;
+import android.view.View;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
+final class b$2
+  extends b
+{
+  b$2(RecyclerView.i parami)
+  {
+    super(parami, (byte)0);
+  }
+  
+  public final int br(View paramView)
+  {
+    AppMethodBeat.i(65331);
+    RecyclerView.LayoutParams localLayoutParams = (RecyclerView.LayoutParams)paramView.getLayoutParams();
+    int i = RecyclerView.i.bF(paramView);
+    int j = localLayoutParams.topMargin;
+    int k = localLayoutParams.bottomMargin;
+    AppMethodBeat.o(65331);
+    return k + (i + j);
+  }
+  
+  public final int bs(View paramView)
+  {
+    AppMethodBeat.i(65332);
+    RecyclerView.LayoutParams localLayoutParams = (RecyclerView.LayoutParams)paramView.getLayoutParams();
+    int i = RecyclerView.i.bE(paramView);
+    int j = localLayoutParams.leftMargin;
+    int k = localLayoutParams.rightMargin;
+    AppMethodBeat.o(65332);
+    return k + (i + j);
+  }
+  
+  public final int dlr()
+  {
+    AppMethodBeat.i(65334);
+    int i = this.arw.mWidth;
+    int j = this.arw.getPaddingLeft();
+    int k = this.arw.getPaddingRight();
+    AppMethodBeat.o(65334);
+    return i - j - k;
+  }
+  
+  public final int kB()
+  {
+    AppMethodBeat.i(65330);
+    int i = this.arw.getPaddingTop();
+    AppMethodBeat.o(65330);
+    return i;
+  }
+  
+  public final int kD()
+  {
+    AppMethodBeat.i(65333);
+    int i = this.arw.mHeight;
+    int j = this.arw.getPaddingTop();
+    int k = this.arw.getPaddingBottom();
+    AppMethodBeat.o(65333);
+    return i - j - k;
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+ * Qualified Name:     com.tencent.mm.plugin.luckymoney.scaledLayout.b.2
+ * JD-Core Version:    0.7.0.1
+ */

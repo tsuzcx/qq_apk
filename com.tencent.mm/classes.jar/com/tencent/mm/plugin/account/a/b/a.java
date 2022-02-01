@@ -3,39 +3,39 @@ package com.tencent.mm.plugin.account.a.b;
 import android.content.Context;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bs.d;
+import com.tencent.mm.br.d;
 import com.tencent.mm.protocal.GeneralControlWrapper;
 import com.tencent.mm.protocal.JsapiPermissionWrapper;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.base.h;
 
 public final class a
 {
-  public static boolean N(Context paramContext, String paramString)
+  public static boolean O(Context paramContext, String paramString)
   {
     AppMethodBeat.i(155385);
     if (paramString.length() > 16)
     {
-      a(paramContext, a.jhN);
+      a(paramContext, a.jkG);
       AppMethodBeat.o(155385);
       return false;
     }
-    if (bt.aQP(paramString))
+    if (bu.aSm(paramString))
     {
       h.l(paramContext, 2131762309, 2131762346);
       AppMethodBeat.o(155385);
       return false;
     }
-    if (!bt.aQU(paramString))
+    if (!bu.aSr(paramString))
     {
       if ((paramString.length() >= 8) && (paramString.length() < 16)) {
-        a(paramContext, a.jhP);
+        a(paramContext, a.jkI);
       }
       for (;;)
       {
         AppMethodBeat.o(155385);
         return false;
-        a(paramContext, a.jhO);
+        a(paramContext, a.jkH);
       }
     }
     AppMethodBeat.o(155385);
@@ -45,7 +45,7 @@ public final class a
   private static void a(Context paramContext, a parama)
   {
     AppMethodBeat.i(155386);
-    switch (1.jhL[parama.ordinal()])
+    switch (1.jkE[parama.ordinal()])
     {
     }
     for (;;)
@@ -78,8 +78,8 @@ public final class a
       bool = true;
     }
     localIntent.putExtra("neverGetA8Key", bool);
-    localIntent.putExtra("hardcode_jspermission", JsapiPermissionWrapper.FnD);
-    localIntent.putExtra("hardcode_general_ctrl", GeneralControlWrapper.Fnz);
+    localIntent.putExtra("hardcode_jspermission", JsapiPermissionWrapper.FGb);
+    localIntent.putExtra("hardcode_general_ctrl", GeneralControlWrapper.FFX);
     if (paramInt > 0)
     {
       d.b(paramContext, "webview", ".ui.tools.WebViewUI", localIntent, paramInt);
@@ -95,11 +95,11 @@ public final class a
     static
     {
       AppMethodBeat.i(155383);
-      jhM = new a("TwoPasswordsNotMatch", 0);
-      jhN = new a("BeyondMaximumLength", 1);
-      jhO = new a("NotReachMinimumLength", 2);
-      jhP = new a("DisallowShortNumericPassword", 3);
-      jhQ = new a[] { jhM, jhN, jhO, jhP };
+      jkF = new a("TwoPasswordsNotMatch", 0);
+      jkG = new a("BeyondMaximumLength", 1);
+      jkH = new a("NotReachMinimumLength", 2);
+      jkI = new a("DisallowShortNumericPassword", 3);
+      jkJ = new a[] { jkF, jkG, jkH, jkI };
       AppMethodBeat.o(155383);
     }
     
@@ -108,7 +108,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.account.a.b.a
  * JD-Core Version:    0.7.0.1
  */

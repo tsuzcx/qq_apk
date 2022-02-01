@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.appbrand;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.ui.v;
+import com.tencent.mm.plugin.appbrand.ui.w;
 
 final class AppBrandRuntime$2
   implements Runnable
@@ -11,8 +11,8 @@ final class AppBrandRuntime$2
   public final void run()
   {
     AppMethodBeat.i(134443);
-    if (AppBrandRuntime.j(this.jxm) != null) {
-      AppBrandRuntime.j(this.jxm).setProgress(this.val$progress);
+    if (AppBrandRuntime.j(this.jAl) != null) {
+      AppBrandRuntime.j(this.jAl).setProgress(this.val$progress);
     }
     AppMethodBeat.o(134443);
   }

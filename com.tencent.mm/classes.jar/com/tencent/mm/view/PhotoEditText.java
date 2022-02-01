@@ -18,7 +18,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class PhotoEditText
   extends AppCompatEditText
 {
-  private Xfermode Lpg;
+  private Xfermode LLR;
   private int mBgColor;
   private Paint mPaint;
   
@@ -44,7 +44,7 @@ public class PhotoEditText
   {
     AppMethodBeat.i(9367);
     new TextView(getContext()).setTextSize(getTextSize());
-    this.Lpg = new PorterDuffXfermode(PorterDuff.Mode.CLEAR);
+    this.LLR = new PorterDuffXfermode(PorterDuff.Mode.CLEAR);
     AppMethodBeat.o(9367);
   }
   
@@ -104,14 +104,14 @@ public class PhotoEditText
       paramCanvas.drawRoundRect(new RectF(localRect), 12.0F, 12.0F, this.mPaint);
       if (getLayout().getLineWidth(getLineCount() - 1) < getLayout().getLineWidth(getLineCount() - 2))
       {
-        this.mPaint.setXfermode(this.Lpg);
+        this.mPaint.setXfermode(this.LLR);
         RectF localRectF = new RectF();
         localRectF.left = (localRect.left + 36.0F + getLayout().getLineWidth(getLineCount() - 1));
         localRectF.top = (localRect.bottom - getLineHeight());
         localRectF.right = (localRect.right + 18.0F);
         localRectF.bottom = (localRect.bottom + 18.0F);
         paramCanvas.drawRoundRect(localRectF, 12.0F, 12.0F, this.mPaint);
-        this.mPaint.setXfermode(this.Lpg);
+        this.mPaint.setXfermode(this.LLR);
         paramCanvas.drawRect(new Rect((int)(localRectF.left - getTextSize() / 2.0F), (int)(localRectF.bottom - getTextSize() / 2.0F), (int)localRectF.left, (int)localRectF.bottom), this.mPaint);
         paramCanvas.drawRect(new Rect((int)(localRect.right - getTextSize() / 2.0F), (int)(localRect.top + getLayout().getLineBottom(getLineCount() - 2) - getTextSize() / 2.0F), localRect.right, localRect.top + getLayout().getLineBottom(getLineCount() - 2) + 3), this.mPaint);
         this.mPaint.setXfermode(null);

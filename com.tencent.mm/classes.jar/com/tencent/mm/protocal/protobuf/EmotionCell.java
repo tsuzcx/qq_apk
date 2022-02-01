@@ -3,7 +3,7 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class EmotionCell
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
   public String CellTitle;
   public String IconUrl;
@@ -53,9 +53,9 @@ public class EmotionCell
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
         AppMethodBeat.o(104772);
@@ -71,23 +71,23 @@ public class EmotionCell
           AppMethodBeat.o(104772);
           return -1;
         case 1: 
-          localEmotionCell.CellTitle = locala.NPN.readString();
+          localEmotionCell.CellTitle = locala.OmT.readString();
           AppMethodBeat.o(104772);
           return 0;
         case 2: 
-          localEmotionCell.ReqType = locala.NPN.zc();
+          localEmotionCell.ReqType = locala.OmT.zc();
           AppMethodBeat.o(104772);
           return 0;
         case 3: 
-          localEmotionCell.Position = locala.NPN.zc();
+          localEmotionCell.Position = locala.OmT.zc();
           AppMethodBeat.o(104772);
           return 0;
         case 4: 
-          localEmotionCell.IconUrl = locala.NPN.readString();
+          localEmotionCell.IconUrl = locala.OmT.readString();
           AppMethodBeat.o(104772);
           return 0;
         }
-        localEmotionCell.TagUrl = locala.NPN.readString();
+        localEmotionCell.TagUrl = locala.OmT.readString();
         AppMethodBeat.o(104772);
         return 0;
       }

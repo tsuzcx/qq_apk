@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.brandservice.ui.widget;
 
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/brandservice/ui/widget/MPCollapseTextLayout$Companion;", "", "()V", "TAG", "", "plugin-brandservice_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/brandservice/ui/widget/MPCollapseTextLayout$Companion;", "", "()V", "TAG", "", "plugin-brandservice_release"})
 public final class MPCollapseTextLayout$b {}
 
 

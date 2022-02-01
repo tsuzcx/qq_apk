@@ -3,42 +3,42 @@ package com.tencent.mm.plugin.finder.cgi;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.al.a;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.storage.aj;
+import com.tencent.mm.storage.am.a;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/cgi/FinderCgiConstants;", "", "()V", "CGI_1", "", "getCGI_1", "()Ljava/lang/String;", "CGI_2", "getCGI_2", "CGI_PRE", "getCGI_PRE", "setCGI_PRE", "(Ljava/lang/String;)V", "TAG", "getTAG", "config", "", "finder-sdk_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/cgi/FinderCgiConstants;", "", "()V", "CGI_1", "", "getCGI_1", "()Ljava/lang/String;", "CGI_2", "getCGI_2", "CGI_PRE", "getCGI_PRE", "setCGI_PRE", "(Ljava/lang/String;)V", "TAG", "getTAG", "config", "", "finder-sdk_release"})
 public final class x
 {
   private static final String TAG = "Finder.FinderCgiConstants";
-  private static final String rIS = "/cgi-bin/mmfinder-bin";
-  private static final String rIT = "/cgi-bin/micromsg-bin";
-  private static String rIU;
-  public static final x rIV;
+  private static final String rRc = "/cgi-bin/mmfinder-bin";
+  private static final String rRd = "/cgi-bin/micromsg-bin";
+  private static String rRe;
+  public static final x rRf;
   
   static
   {
     AppMethodBeat.i(168863);
-    rIV = new x();
+    rRf = new x();
     TAG = "Finder.FinderCgiConstants";
-    rIS = "/cgi-bin/mmfinder-bin";
-    rIT = "/cgi-bin/micromsg-bin";
-    rIU = "/cgi-bin/micromsg-bin";
+    rRc = "/cgi-bin/mmfinder-bin";
+    rRd = "/cgi-bin/micromsg-bin";
+    rRe = "/cgi-bin/micromsg-bin";
     AppMethodBeat.o(168863);
   }
   
-  public static void cxZ()
+  public static void czA()
   {
     AppMethodBeat.i(168862);
-    e locale = g.ajC();
+    e locale = g.ajR();
     p.g(locale, "MMKernel.storage()");
-    int i = locale.ajl().getInt(al.a.IHZ, 0);
+    int i = locale.ajA().getInt(am.a.JcC, 0);
     if (i == 1) {}
-    for (rIU = rIS;; rIU = rIT)
+    for (rRe = rRc;; rRe = rRd)
     {
-      ad.i(TAG, "config " + i + ' ' + rIU);
+      ae.i(TAG, "config " + i + ' ' + rRe);
       AppMethodBeat.o(168862);
       return;
     }

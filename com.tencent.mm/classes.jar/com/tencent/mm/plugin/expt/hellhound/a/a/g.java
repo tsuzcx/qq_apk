@@ -2,28 +2,28 @@ package com.tencent.mm.plugin.expt.hellhound.a.a;
 
 final class g
 {
-  long qTA = 0L;
-  long qTB = 0L;
-  long qTC = 0L;
-  long qTD = 0L;
-  long qTy = 0L;
-  long qTz = 0L;
+  long rbA = 0L;
+  long rbB = 0L;
+  long rbw = 0L;
+  long rbx = 0L;
+  long rby = 0L;
+  long rbz = 0L;
   
-  final void coG()
+  final void cqi()
   {
-    this.qTy = 0L;
-    this.qTz = 0L;
+    this.rbw = 0L;
+    this.rbx = 0L;
   }
   
-  final void coH()
+  final void cqj()
   {
-    this.qTA = 0L;
-    this.qTB = 0L;
+    this.rby = 0L;
+    this.rbz = 0L;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.hellhound.a.a.g
  * JD-Core Version:    0.7.0.1
  */

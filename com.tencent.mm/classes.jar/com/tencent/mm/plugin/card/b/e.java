@@ -8,15 +8,15 @@ import java.util.Map;
 
 public final class e
 {
-  public Map<String, Object> owN;
-  public CardInfo own;
+  public CardInfo oCP;
+  public Map<String, Object> oDp;
   
   public e()
   {
     AppMethodBeat.i(112615);
-    this.owN = new HashMap();
-    this.own = null;
-    this.owN.clear();
+    this.oDp = new HashMap();
+    this.oCP = null;
+    this.oDp.clear();
     AppMethodBeat.o(112615);
   }
   
@@ -28,9 +28,9 @@ public final class e
       AppMethodBeat.o(112617);
       return null;
     }
-    if (this.owN.containsKey(paramString))
+    if (this.oDp.containsKey(paramString))
     {
-      paramString = this.owN.get(paramString);
+      paramString = this.oDp.get(paramString);
       AppMethodBeat.o(112617);
       return paramString;
     }
@@ -46,13 +46,13 @@ public final class e
       AppMethodBeat.o(112616);
       return;
     }
-    this.owN.put(paramString, paramObject);
+    this.oDp.put(paramString, paramObject);
     AppMethodBeat.o(112616);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.card.b.e
  * JD-Core Version:    0.7.0.1
  */

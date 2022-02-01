@@ -7,19 +7,19 @@ import com.tencent.mm.plugin.appbrand.ipc.AppBrandMainProcessService;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
 import com.tencent.mm.plugin.appbrand.jsapi.a;
 import com.tencent.mm.plugin.appbrand.jsapi.nfc.hce.a.d;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public abstract class JsApiAppBrandNFCBase
   extends a
 {
-  a kXX = null;
+  a lbG = null;
   
   protected final void a(a parama)
   {
-    this.kXX = parama;
+    this.lbG = parama;
     parama = new CheckIsSupportHCETask(this);
-    parama.bhN();
+    parama.biw();
     AppBrandMainProcessService.a(parama);
   }
   
@@ -29,7 +29,7 @@ public abstract class JsApiAppBrandNFCBase
     public static final Parcelable.Creator<CheckIsSupportHCETask> CREATOR;
     private int errCode;
     private String errMsg;
-    private JsApiAppBrandNFCBase kXY;
+    private JsApiAppBrandNFCBase lbH;
     
     static
     {
@@ -41,31 +41,31 @@ public abstract class JsApiAppBrandNFCBase
     public CheckIsSupportHCETask(Parcel paramParcel)
     {
       AppMethodBeat.i(136095);
-      this.kXY = null;
+      this.lbH = null;
       e(paramParcel);
       AppMethodBeat.o(136095);
     }
     
     public CheckIsSupportHCETask(JsApiAppBrandNFCBase paramJsApiAppBrandNFCBase)
     {
-      this.kXY = null;
-      this.kXY = paramJsApiAppBrandNFCBase;
+      this.lbH = null;
+      this.lbH = paramJsApiAppBrandNFCBase;
     }
     
-    public final void aOA()
+    public final void aOX()
     {
       AppMethodBeat.i(136096);
-      if (!d.blP())
+      if (!d.bmy())
       {
         this.errCode = 13000;
         this.errMsg = "not support NFC";
       }
       for (;;)
       {
-        bhX();
+        biG();
         AppMethodBeat.o(136096);
         return;
-        if (!d.blO())
+        if (!d.bmx())
         {
           this.errCode = 13002;
           this.errMsg = "not support HCE";
@@ -78,33 +78,33 @@ public abstract class JsApiAppBrandNFCBase
       }
     }
     
-    public final void aOB()
+    public final void aOY()
     {
       AppMethodBeat.i(136097);
-      super.aOB();
-      bhO();
-      if (this.kXY != null)
+      super.aOY();
+      bix();
+      if (this.lbH != null)
       {
-        JsApiAppBrandNFCBase localJsApiAppBrandNFCBase = this.kXY;
+        JsApiAppBrandNFCBase localJsApiAppBrandNFCBase = this.lbH;
         int i = this.errCode;
         String str2 = this.errMsg;
-        ad.i("MicroMsg.JsApiAppBrandNFCBase", "alvinluo checkIsSupport resultCallback errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(i), str2 });
+        ae.i("MicroMsg.JsApiAppBrandNFCBase", "alvinluo checkIsSupport resultCallback errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(i), str2 });
         if (i == 0)
         {
-          if (localJsApiAppBrandNFCBase.kXX != null)
+          if (localJsApiAppBrandNFCBase.lbG != null)
           {
-            localJsApiAppBrandNFCBase.kXX.y(i, str2);
+            localJsApiAppBrandNFCBase.lbG.y(i, str2);
             AppMethodBeat.o(136097);
           }
         }
         else
         {
           String str1 = str2;
-          if (bt.isNullOrNil(str2)) {
+          if (bu.isNullOrNil(str2)) {
             str1 = "unknown error";
           }
-          if (localJsApiAppBrandNFCBase.kXX != null) {
-            localJsApiAppBrandNFCBase.kXX.y(i, str1);
+          if (localJsApiAppBrandNFCBase.lbG != null) {
+            localJsApiAppBrandNFCBase.lbG.y(i, str1);
           }
         }
       }

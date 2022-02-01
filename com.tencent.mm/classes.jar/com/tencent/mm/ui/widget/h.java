@@ -1,57 +1,57 @@
 package com.tencent.mm.ui.widget;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.lang.ref.WeakReference;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 public final class h
 {
-  private static LinkedList<WeakReference<a>> KTr;
+  private static LinkedList<WeakReference<a>> LpP;
   
   static
   {
     AppMethodBeat.i(143472);
-    KTr = new LinkedList();
+    LpP = new LinkedList();
     AppMethodBeat.o(143472);
-  }
-  
-  public static void Z(boolean paramBoolean, int paramInt)
-  {
-    AppMethodBeat.i(143471);
-    if (KTr.size() <= 0)
-    {
-      ad.w("MicroMsg.SwipeBackHelper", "notifySettle callback stack empty!, open:%B, speed:%d", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt) });
-      AppMethodBeat.o(143471);
-      return;
-    }
-    a locala = (a)((WeakReference)KTr.get(0)).get();
-    if (locala == null)
-    {
-      ad.w("MicroMsg.SwipeBackHelper", "notifySettle null, open:%B, speed:%d", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt) });
-      AppMethodBeat.o(143471);
-      return;
-    }
-    locala.onSettle(paramBoolean, paramInt);
-    ad.v("MicroMsg.SwipeBackHelper", "notifySettle, open:%B speed:%d callback:%s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt), locala });
-    AppMethodBeat.o(143471);
   }
   
   public static void a(a parama)
   {
     AppMethodBeat.i(143468);
-    ad.d("MicroMsg.SwipeBackHelper", "pushCallback size %d, %s", new Object[] { Integer.valueOf(KTr.size()), parama });
+    ae.d("MicroMsg.SwipeBackHelper", "pushCallback size %d, %s", new Object[] { Integer.valueOf(LpP.size()), parama });
     parama = new WeakReference(parama);
-    KTr.add(0, parama);
+    LpP.add(0, parama);
     AppMethodBeat.o(143468);
+  }
+  
+  public static void ad(boolean paramBoolean, int paramInt)
+  {
+    AppMethodBeat.i(143471);
+    if (LpP.size() <= 0)
+    {
+      ae.w("MicroMsg.SwipeBackHelper", "notifySettle callback stack empty!, open:%B, speed:%d", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt) });
+      AppMethodBeat.o(143471);
+      return;
+    }
+    a locala = (a)((WeakReference)LpP.get(0)).get();
+    if (locala == null)
+    {
+      ae.w("MicroMsg.SwipeBackHelper", "notifySettle null, open:%B, speed:%d", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt) });
+      AppMethodBeat.o(143471);
+      return;
+    }
+    locala.onSettle(paramBoolean, paramInt);
+    ae.v("MicroMsg.SwipeBackHelper", "notifySettle, open:%B speed:%d callback:%s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt), locala });
+    AppMethodBeat.o(143471);
   }
   
   public static boolean b(a parama)
   {
     AppMethodBeat.i(143469);
-    int j = KTr.size();
-    ad.d("MicroMsg.SwipeBackHelper", "popCallback size %d, %s", new Object[] { Integer.valueOf(j), parama });
+    int j = LpP.size();
+    ae.d("MicroMsg.SwipeBackHelper", "popCallback size %d, %s", new Object[] { Integer.valueOf(j), parama });
     if (parama == null)
     {
       AppMethodBeat.o(143469);
@@ -61,12 +61,12 @@ public final class h
     int i = 0;
     for (;;)
     {
-      if (i < KTr.size())
+      if (i < LpP.size())
       {
-        if (parama == ((WeakReference)KTr.get(i)).get())
+        if (parama == ((WeakReference)LpP.get(i)).get())
         {
-          KTr.remove(i);
-          ad.d("MicroMsg.SwipeBackHelper", "popCallback directly, index %d", new Object[] { Integer.valueOf(i) });
+          LpP.remove(i);
+          ae.d("MicroMsg.SwipeBackHelper", "popCallback directly, index %d", new Object[] { Integer.valueOf(i) });
         }
       }
       else
@@ -74,7 +74,7 @@ public final class h
         if ((parama.forceRemoveNoMatchOnPath()) || (localLinkedList.size() != j)) {
           break;
         }
-        ad.d("MicroMsg.SwipeBackHelper", "popCallback Fail! Maybe Top Activity");
+        ae.d("MicroMsg.SwipeBackHelper", "popCallback Fail! Maybe Top Activity");
         AppMethodBeat.o(143469);
         return false;
       }
@@ -85,11 +85,11 @@ public final class h
     if (localIterator.hasNext())
     {
       parama = (Integer)localIterator.next();
-      parama = (WeakReference)KTr.remove(parama.intValue());
+      parama = (WeakReference)LpP.remove(parama.intValue());
       if (parama != null) {}
       for (parama = parama.get();; parama = "NULL-CALLBACK")
       {
-        ad.d("MicroMsg.SwipeBackHelper", "popCallback, popup %s", new Object[] { parama });
+        ae.d("MicroMsg.SwipeBackHelper", "popCallback, popup %s", new Object[] { parama });
         break;
       }
     }
@@ -98,24 +98,24 @@ public final class h
     return bool;
   }
   
-  public static void bX(float paramFloat)
+  public static void bV(float paramFloat)
   {
     AppMethodBeat.i(143470);
-    if (KTr.size() <= 0)
+    if (LpP.size() <= 0)
     {
-      ad.w("MicroMsg.SwipeBackHelper", "notifySwipe callback stack empty!, scrollParent:%f", new Object[] { Float.valueOf(paramFloat) });
+      ae.w("MicroMsg.SwipeBackHelper", "notifySwipe callback stack empty!, scrollParent:%f", new Object[] { Float.valueOf(paramFloat) });
       AppMethodBeat.o(143470);
       return;
     }
-    a locala = (a)((WeakReference)KTr.get(0)).get();
+    a locala = (a)((WeakReference)LpP.get(0)).get();
     if (locala == null)
     {
-      ad.w("MicroMsg.SwipeBackHelper", "notifySwipe null, scrollParent:%f", new Object[] { Float.valueOf(paramFloat) });
+      ae.w("MicroMsg.SwipeBackHelper", "notifySwipe null, scrollParent:%f", new Object[] { Float.valueOf(paramFloat) });
       AppMethodBeat.o(143470);
       return;
     }
     locala.onSwipe(paramFloat);
-    ad.v("MicroMsg.SwipeBackHelper", "notifySwipe scrollParent:%f, callback:%s ", new Object[] { Float.valueOf(paramFloat), locala });
+    ae.v("MicroMsg.SwipeBackHelper", "notifySwipe scrollParent:%f, callback:%s ", new Object[] { Float.valueOf(paramFloat), locala });
     AppMethodBeat.o(143470);
   }
   

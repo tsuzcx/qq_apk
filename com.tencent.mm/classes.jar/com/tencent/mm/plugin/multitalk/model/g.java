@@ -2,14 +2,14 @@ package com.tencent.mm.plugin.multitalk.model;
 
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/multitalk/model/IRenderTargetContainer;", "", "getLargeRenderTarget", "Lcom/tencent/mm/plugin/multitalk/model/IRenderTarget;", "ori", "", "getNormalRenderTarget", "wxUserName", "", "onScreenFrame", "", "plugin-multitalk_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/multitalk/model/IRenderTargetContainer;", "", "getLargeRenderTarget", "Lcom/tencent/mm/plugin/multitalk/model/IRenderTarget;", "ori", "", "getNormalRenderTarget", "wxUserName", "", "onScreenFrame", "", "plugin-multitalk_release"})
 public abstract interface g
 {
-  public abstract f Kx(int paramInt);
+  public abstract f Lc(int paramInt);
   
-  public abstract f aqZ(String paramString);
+  public abstract f ash(String paramString);
   
-  public abstract void doL();
+  public abstract void drV();
 }
 
 

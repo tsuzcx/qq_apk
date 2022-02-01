@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.websearch.b;
 
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.storage.c;
 import com.tencent.mm.ui.al;
 import java.util.HashMap;
@@ -21,9 +21,9 @@ public final class a
     HashMap localHashMap = new HashMap();
     localHashMap.put("scene", String.valueOf(paramInt1));
     localHashMap.put("type", String.valueOf(paramInt2));
-    localHashMap.put("lang", ac.iM(aj.getContext()));
+    localHashMap.put("lang", com.tencent.mm.sdk.platformtools.ad.iR(ak.getContext()));
     localHashMap.put("platform", "android");
-    localHashMap.put("version", String.valueOf(com.tencent.mm.plugin.websearch.api.ad.We(3)));
+    localHashMap.put("version", String.valueOf(com.tencent.mm.plugin.websearch.api.ad.WL(3)));
     String str;
     if (paramBoolean)
     {
@@ -35,15 +35,15 @@ public final class a
       if (!TextUtils.isEmpty(paramString)) {
         localHashMap.put("extParams", paramString);
       }
-      paramString = com.tencent.mm.model.c.d.aDs().wz("100192");
-      if ((!paramString.isValid()) || (!"1".equals(paramString.foF().get("openSearchSuggestion")))) {
+      paramString = com.tencent.mm.model.c.d.aDI().xi("100192");
+      if ((!paramString.isValid()) || (!"1".equals(paramString.fsy().get("openSearchSuggestion")))) {
         break label253;
       }
     }
     label253:
     for (boolean bool = true;; bool = false)
     {
-      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.WxaFTSExportLogic", "genFTSParams scene = %d, isHomePage = %b, type = %d, isSug = %b", new Object[] { Integer.valueOf(paramInt1), Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt2), Boolean.valueOf(bool) });
+      ae.i("MicroMsg.WxaFTSExportLogic", "genFTSParams scene = %d, isHomePage = %b, type = %d, isSug = %b", new Object[] { Integer.valueOf(paramInt1), Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt2), Boolean.valueOf(bool) });
       if (bool) {
         localHashMap.put("isSug", "1");
       }
@@ -54,7 +54,7 @@ public final class a
     }
   }
   
-  public static Map<String, String> aS(int paramInt, boolean paramBoolean)
+  public static Map<String, String> aY(int paramInt, boolean paramBoolean)
   {
     AppMethodBeat.i(116764);
     Map localMap = a(paramInt, paramBoolean, 64, "");
@@ -62,12 +62,12 @@ public final class a
     return localMap;
   }
   
-  public static String aY(Map<String, String> paramMap)
+  public static String be(Map<String, String> paramMap)
   {
     AppMethodBeat.i(116763);
     StringBuffer localStringBuffer = new StringBuffer();
     localStringBuffer.append("file://");
-    localStringBuffer.append(com.tencent.mm.plugin.websearch.api.ad.Wg(3));
+    localStringBuffer.append(com.tencent.mm.plugin.websearch.api.ad.WN(3));
     localStringBuffer.append("/app.html?");
     Iterator localIterator = paramMap.entrySet().iterator();
     while (localIterator.hasNext())
@@ -83,7 +83,7 @@ public final class a
       localStringBuffer.append("&");
       localStringBuffer.append("sessionId");
       localStringBuffer.append("=");
-      localStringBuffer.append(com.tencent.mm.plugin.websearch.api.ad.Wb(bt.aRe((String)paramMap.get("scene"))));
+      localStringBuffer.append(com.tencent.mm.plugin.websearch.api.ad.WI(bu.aSB((String)paramMap.get("scene"))));
     }
     paramMap = localStringBuffer.toString();
     AppMethodBeat.o(116763);

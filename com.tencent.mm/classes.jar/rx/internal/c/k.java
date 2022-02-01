@@ -15,56 +15,56 @@ public final class k
   extends g
   implements j
 {
-  private static final j NZM;
-  private static final j NZN;
-  private final g NZJ;
-  private final rx.e<rx.d<rx.b>> NZK;
-  private final j NZL;
+  private static final j OwR;
+  private static final j OwS;
+  private final g OwO;
+  private final rx.e<rx.d<rx.b>> OwP;
+  private final j OwQ;
   
   static
   {
     AppMethodBeat.i(90399);
-    NZM = new j()
+    OwR = new j()
     {
-      public final void gyQ() {}
+      public final void gDs() {}
       
-      public final boolean gyR()
+      public final boolean gDt()
       {
         return false;
       }
     };
-    NZN = rx.f.d.gzD();
+    OwS = rx.f.d.gEf();
     AppMethodBeat.o(90399);
   }
   
   public k(rx.b.e<rx.d<rx.d<rx.b>>, rx.b> parame, g paramg)
   {
     AppMethodBeat.i(90395);
-    this.NZJ = paramg;
+    this.OwO = paramg;
     paramg = new c();
-    paramg.ObH = new a.1(paramg);
+    paramg.OyM = new a.1(paramg);
     paramg = new rx.e.a(paramg, paramg);
-    this.NZK = new rx.c.b(paramg);
-    this.NZL = ((rx.b)parame.call(paramg.gyO())).gyL();
+    this.OwP = new rx.c.b(paramg);
+    this.OwQ = ((rx.b)parame.call(paramg.gDq())).gDn();
     AppMethodBeat.o(90395);
   }
   
   public final g.a createWorker()
   {
     AppMethodBeat.i(90398);
-    Object localObject1 = this.NZJ.createWorker();
-    Object localObject2 = rx.internal.a.a.gyU();
+    Object localObject1 = this.OwO.createWorker();
+    Object localObject2 = rx.internal.a.a.gDw();
     final rx.c.b localb = new rx.c.b((rx.e)localObject2);
     localObject2 = ((rx.internal.a.a)localObject2).a(new rx.b.e() {});
     localObject1 = new g.a()
     {
-      private final AtomicBoolean NZS;
+      private final AtomicBoolean OwX;
       
       public final j a(rx.b.a paramAnonymousa)
       {
         AppMethodBeat.i(90392);
         paramAnonymousa = new k.b(paramAnonymousa);
-        localb.gz(paramAnonymousa);
+        localb.gC(paramAnonymousa);
         AppMethodBeat.o(90392);
         return paramAnonymousa;
       }
@@ -73,46 +73,46 @@ public final class k
       {
         AppMethodBeat.i(90391);
         paramAnonymousa = new k.a(paramAnonymousa, paramAnonymousLong, paramAnonymousTimeUnit);
-        localb.gz(paramAnonymousa);
+        localb.gC(paramAnonymousa);
         AppMethodBeat.o(90391);
         return paramAnonymousa;
       }
       
-      public final void gyQ()
+      public final void gDs()
       {
         AppMethodBeat.i(90389);
-        if (this.NZS.compareAndSet(false, true))
+        if (this.OwX.compareAndSet(false, true))
         {
-          this.NZO.gyQ();
-          localb.gyM();
+          this.OwT.gDs();
+          localb.gDo();
         }
         AppMethodBeat.o(90389);
       }
       
-      public final boolean gyR()
+      public final boolean gDt()
       {
         AppMethodBeat.i(90390);
-        boolean bool = this.NZS.get();
+        boolean bool = this.OwX.get();
         AppMethodBeat.o(90390);
         return bool;
       }
     };
-    this.NZK.gz(localObject2);
+    this.OwP.gC(localObject2);
     AppMethodBeat.o(90398);
     return localObject1;
   }
   
-  public final void gyQ()
+  public final void gDs()
   {
     AppMethodBeat.i(90396);
-    this.NZL.gyQ();
+    this.OwQ.gDs();
     AppMethodBeat.o(90396);
   }
   
-  public final boolean gyR()
+  public final boolean gDt()
   {
     AppMethodBeat.i(90397);
-    boolean bool = this.NZL.gyR();
+    boolean bool = this.OwQ.gDt();
     AppMethodBeat.o(90397);
     return bool;
   }
@@ -120,21 +120,21 @@ public final class k
   static final class a
     extends k.c
   {
-    private final long Lgo;
-    private final TimeUnit NXP;
-    private final rx.b.a NZD;
+    private final long LCQ;
+    private final TimeUnit OuU;
+    private final rx.b.a OwI;
     
     public a(rx.b.a parama, long paramLong, TimeUnit paramTimeUnit)
     {
-      this.NZD = parama;
-      this.Lgo = paramLong;
-      this.NXP = paramTimeUnit;
+      this.OwI = parama;
+      this.LCQ = paramLong;
+      this.OuU = paramTimeUnit;
     }
     
     protected final j a(g.a parama)
     {
       AppMethodBeat.i(90394);
-      parama = parama.a(this.NZD, this.Lgo, this.NXP);
+      parama = parama.a(this.OwI, this.LCQ, this.OuU);
       AppMethodBeat.o(90394);
       return parama;
     }
@@ -143,17 +143,17 @@ public final class k
   static final class b
     extends k.c
   {
-    private final rx.b.a NZD;
+    private final rx.b.a OwI;
     
     public b(rx.b.a parama)
     {
-      this.NZD = parama;
+      this.OwI = parama;
     }
     
     protected final j a(g.a parama)
     {
       AppMethodBeat.i(90393);
-      parama = parama.a(this.NZD);
+      parama = parama.a(this.OwI);
       AppMethodBeat.o(90393);
       return parama;
     }
@@ -170,32 +170,32 @@ public final class k
     
     protected abstract j a(g.a parama);
     
-    public final void gyQ()
+    public final void gDs()
     {
       j localj2;
       do
       {
-        j localj1 = k.gzf();
+        j localj1 = k.gDH();
         do
         {
           localj2 = (j)get();
-          if (localj2 == k.gzf()) {
+          if (localj2 == k.gDH()) {
             return;
           }
         } while (!compareAndSet(localj2, localj1));
-      } while (localj2 == k.gze());
-      localj2.gyQ();
+      } while (localj2 == k.gDG());
+      localj2.gDs();
     }
     
-    public final boolean gyR()
+    public final boolean gDt()
     {
-      return ((j)get()).gyR();
+      return ((j)get()).gDt();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     rx.internal.c.k
  * JD-Core Version:    0.7.0.1
  */

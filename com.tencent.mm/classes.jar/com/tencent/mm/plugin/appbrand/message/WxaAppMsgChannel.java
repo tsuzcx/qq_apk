@@ -10,33 +10,33 @@ public class WxaAppMsgChannel
 {
   public static final Parcelable.Creator<WxaAppMsgChannel> CREATOR;
   public String appId;
-  public String dDP;
-  public long kaJ;
-  public String lTW;
-  public String lTX;
+  public String dEU;
+  public long kdZ;
+  public String lYA;
+  public String lYz;
   public String msgId;
   public int msgType;
   
   static
   {
-    AppMethodBeat.i(188672);
+    AppMethodBeat.i(222842);
     CREATOR = new Parcelable.Creator() {};
-    AppMethodBeat.o(188672);
+    AppMethodBeat.o(222842);
   }
   
   public WxaAppMsgChannel() {}
   
   public WxaAppMsgChannel(Parcel paramParcel)
   {
-    AppMethodBeat.i(188670);
+    AppMethodBeat.i(222840);
     this.msgId = paramParcel.readString();
-    this.lTW = paramParcel.readString();
-    this.lTX = paramParcel.readString();
+    this.lYz = paramParcel.readString();
+    this.lYA = paramParcel.readString();
     this.appId = paramParcel.readString();
     this.msgType = paramParcel.readInt();
-    this.dDP = paramParcel.readString();
-    this.kaJ = paramParcel.readLong();
-    AppMethodBeat.o(188670);
+    this.dEU = paramParcel.readString();
+    this.kdZ = paramParcel.readLong();
+    AppMethodBeat.o(222840);
   }
   
   public int describeContents()
@@ -46,15 +46,15 @@ public class WxaAppMsgChannel
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(188671);
+    AppMethodBeat.i(222841);
     paramParcel.writeString(this.msgId);
-    paramParcel.writeString(this.lTW);
-    paramParcel.writeString(this.lTX);
+    paramParcel.writeString(this.lYz);
+    paramParcel.writeString(this.lYA);
     paramParcel.writeString(this.appId);
     paramParcel.writeInt(this.msgType);
-    paramParcel.writeString(this.dDP);
-    paramParcel.writeLong(this.kaJ);
-    AppMethodBeat.o(188671);
+    paramParcel.writeString(this.dEU);
+    paramParcel.writeLong(this.kdZ);
+    AppMethodBeat.o(222841);
   }
 }
 

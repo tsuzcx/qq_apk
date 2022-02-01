@@ -7,14 +7,14 @@ import io.flutter.plugin.a.k;
 
 public abstract class b
 {
-  public k gqZ;
+  public k gtz;
   private Handler handler;
   
-  public abstract String agw();
+  public abstract String agK();
   
   public final void e(final String paramString, final Object paramObject)
   {
-    if (this.gqZ != null)
+    if (this.gtz != null)
     {
       if (this.handler == null) {
         this.handler = new Handler(Looper.getMainLooper());
@@ -24,7 +24,7 @@ public abstract class b
         public final void run()
         {
           AppMethodBeat.i(159064);
-          b.this.gqZ.a(b.this.agw() + ":" + paramString, paramObject, null);
+          b.this.gtz.a(b.this.agK() + ":" + paramString, paramObject, null);
           AppMethodBeat.o(159064);
         }
       });
@@ -33,7 +33,7 @@ public abstract class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.flutter.b
  * JD-Core Version:    0.7.0.1
  */

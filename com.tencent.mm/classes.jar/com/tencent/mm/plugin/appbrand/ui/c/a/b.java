@@ -7,54 +7,54 @@ import com.tencent.mm.kernel.d;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.sdk.e.c;
 import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.j;
+import com.tencent.mm.vfs.o;
 import d.l;
 import java.util.Arrays;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock.ReadLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock.WriteLock;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/ui/splash/screenshot/SplashScreenshotInfoStorage;", "Lcom/tencent/mm/sdk/storage/MAutoStorage;", "Lcom/tencent/mm/plugin/appbrand/ui/splash/screenshot/SplashScreenshotInfo;", "db", "Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "(Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;)V", "guard", "Ljava/util/concurrent/locks/ReentrantReadWriteLock;", "deleteAll", "", "appId", "", "versionType", "version", "Lcom/tencent/mm/plugin/appbrand/ui/splash/screenshot/SplashScreenshotInfoStorage$VERSION_QUERY;", "fillInitConfig", "", "initConfigWC", "Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfigWC;", "getScreenshotFilePath", "appVersion", "isDarkMode", "", "updateInfo", "info", "screenshotFilePath", "updateNotify", "item", "isNotify", "keys", "", "(Lcom/tencent/mm/plugin/appbrand/ui/splash/screenshot/SplashScreenshotInfo;Z[Ljava/lang/String;)Z", "Companion", "VERSION_QUERY", "plugin-appbrand-integration_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/ui/splash/screenshot/SplashScreenshotInfoStorage;", "Lcom/tencent/mm/sdk/storage/MAutoStorage;", "Lcom/tencent/mm/plugin/appbrand/ui/splash/screenshot/SplashScreenshotInfo;", "db", "Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "(Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;)V", "guard", "Ljava/util/concurrent/locks/ReentrantReadWriteLock;", "deleteAll", "", "appId", "", "versionType", "version", "Lcom/tencent/mm/plugin/appbrand/ui/splash/screenshot/SplashScreenshotInfoStorage$VERSION_QUERY;", "fillInitConfig", "", "initConfigWC", "Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfigWC;", "getScreenshotFilePath", "appVersion", "isDarkMode", "", "updateInfo", "info", "screenshotFilePath", "updateNotify", "item", "isNotify", "keys", "", "(Lcom/tencent/mm/plugin/appbrand/ui/splash/screenshot/SplashScreenshotInfo;Z[Ljava/lang/String;)Z", "Companion", "VERSION_QUERY", "plugin-appbrand-integration_release"})
 public final class b
-  extends j<a>
+  extends com.tencent.mm.sdk.e.j<a>
 {
-  public static final String[] hEf;
-  private static final String[] jFa;
-  public static final a mNW;
+  public static final String[] hGX;
+  private static final String[] jHZ;
+  public static final a mTa;
   private final e db;
-  private final ReentrantReadWriteLock mNV;
+  private final ReentrantReadWriteLock mSZ;
   
   static
   {
-    AppMethodBeat.i(189662);
-    mNW = new a((byte)0);
-    hEf = new String[] { j.getCreateSQLs(a.hEe, "AppBrandFakeNativeSplashScreenshot") };
-    jFa = new String[] { "appId", "versionType", "appVersion", "isDarkMode" };
-    AppMethodBeat.o(189662);
+    AppMethodBeat.i(223934);
+    mTa = new a((byte)0);
+    hGX = new String[] { com.tencent.mm.sdk.e.j.getCreateSQLs(a.hGW, "AppBrandFakeNativeSplashScreenshot") };
+    jHZ = new String[] { "appId", "versionType", "appVersion", "isDarkMode" };
+    AppMethodBeat.o(223934);
   }
   
   public b(e parame)
   {
-    super(parame, a.hEe, "AppBrandFakeNativeSplashScreenshot", m.INDEX_CREATE);
-    AppMethodBeat.i(189661);
+    super(parame, a.hGW, "AppBrandFakeNativeSplashScreenshot", m.INDEX_CREATE);
+    AppMethodBeat.i(223933);
     this.db = parame;
-    this.mNV = new ReentrantReadWriteLock();
-    AppMethodBeat.o(189661);
+    this.mSZ = new ReentrantReadWriteLock();
+    AppMethodBeat.o(223933);
   }
   
-  public static final boolean bBj()
+  public static final boolean bCd()
   {
-    AppMethodBeat.i(189663);
-    boolean bool = a.bBj();
-    AppMethodBeat.o(189663);
+    AppMethodBeat.i(223935);
+    boolean bool = a.bCd();
+    AppMethodBeat.o(223935);
     return bool;
   }
   
-  public final int UR(String paramString)
+  public final int VC(String paramString)
   {
-    AppMethodBeat.i(189659);
+    AppMethodBeat.i(223931);
     int i = a(this, paramString, 0, null, 6);
-    AppMethodBeat.o(189659);
+    AppMethodBeat.o(223931);
     return i;
   }
   
@@ -149,7 +149,7 @@ public final class b
     //   188: invokespecial 155	java/util/LinkedList:<init>	()V
     //   191: astore 11
     //   193: aload_0
-    //   194: getfield 121	com/tencent/mm/plugin/appbrand/ui/c/a/b:mNV	Ljava/util/concurrent/locks/ReentrantReadWriteLock;
+    //   194: getfield 121	com/tencent/mm/plugin/appbrand/ui/c/a/b:mSZ	Ljava/util/concurrent/locks/ReentrantReadWriteLock;
     //   197: astore 9
     //   199: aload 9
     //   201: invokevirtual 221	java/util/concurrent/locks/ReentrantReadWriteLock:readLock	()Ljava/util/concurrent/locks/ReentrantReadWriteLock$ReadLock;
@@ -248,7 +248,7 @@ public final class b
     //   421: aconst_null
     //   422: invokeinterface 287 4 0
     //   427: istore 6
-    //   429: getstatic 293	d/z:MKo	Ld/z;
+    //   429: getstatic 293	d/z:Nhr	Ld/z;
     //   432: astore 10
     //   434: iconst_0
     //   435: istore 5
@@ -300,7 +300,7 @@ public final class b
     //   528: aload 8
     //   530: invokeinterface 310 1 0
     //   535: checkcast 72	java/lang/String
-    //   538: invokestatic 316	com/tencent/mm/vfs/i:deleteFile	(Ljava/lang/String;)Z
+    //   538: invokestatic 316	com/tencent/mm/vfs/o:deleteFile	(Ljava/lang/String;)Z
     //   541: pop
     //   542: goto -24 -> 518
     //   545: aload 9
@@ -309,16 +309,16 @@ public final class b
     //   552: invokestatic 95	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   555: aload_1
     //   556: athrow
-    //   557: getstatic 129	com/tencent/mm/plugin/appbrand/ui/c/a/b$b$a:mNX	Lcom/tencent/mm/plugin/appbrand/ui/c/a/b$b$a;
+    //   557: getstatic 129	com/tencent/mm/plugin/appbrand/ui/c/a/b$b$a:mTb	Lcom/tencent/mm/plugin/appbrand/ui/c/a/b$b$a;
     //   560: aload_3
     //   561: invokestatic 319	d/g/b/p:i	(Ljava/lang/Object;Ljava/lang/Object;)Z
     //   564: ifeq +16 -> 580
     //   567: iload_2
     //   568: ifge +12 -> 580
     //   571: aload_1
-    //   572: invokestatic 322	com/tencent/mm/plugin/appbrand/ui/c/a/b$a:US	(Ljava/lang/String;)Ljava/lang/String;
+    //   572: invokestatic 322	com/tencent/mm/plugin/appbrand/ui/c/a/b$a:VD	(Ljava/lang/String;)Ljava/lang/String;
     //   575: iconst_1
-    //   576: invokestatic 326	com/tencent/mm/vfs/i:cZ	(Ljava/lang/String;Z)Z
+    //   576: invokestatic 326	com/tencent/mm/vfs/o:dd	(Ljava/lang/String;Z)Z
     //   579: pop
     //   580: ldc 145
     //   582: invokestatic 95	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -361,8 +361,8 @@ public final class b
   
   public final String a(String paramString, int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    AppMethodBeat.i(189655);
-    ReentrantReadWriteLock.ReadLock localReadLock = this.mNV.readLock();
+    AppMethodBeat.i(223927);
+    ReentrantReadWriteLock.ReadLock localReadLock = this.mSZ.readLock();
     localReadLock.lock();
     label157:
     for (;;)
@@ -383,7 +383,7 @@ public final class b
               ((a)localObject).field_appVersion = paramInt2;
               ((a)localObject).field_isDarkMode = paramBoolean;
               paramString = (c)localObject;
-              String[] arrayOfString = jFa;
+              String[] arrayOfString = jHZ;
               if (super.get(paramString, (String[])Arrays.copyOf(arrayOfString, arrayOfString.length)))
               {
                 paramString = ((a)localObject).field_screenshotFilePath;
@@ -404,7 +404,7 @@ public final class b
       finally
       {
         localReadLock.unlock();
-        AppMethodBeat.o(189655);
+        AppMethodBeat.o(223927);
       }
     }
   }
@@ -413,15 +413,15 @@ public final class b
   {
     m = 0;
     int k = 0;
-    AppMethodBeat.i(189654);
+    AppMethodBeat.i(223926);
     Object localObject1 = (CharSequence)paramString1;
     if ((localObject1 == null) || (((CharSequence)localObject1).length() == 0)) {}
     for (int i = 1; i != 0; i = 0)
     {
-      AppMethodBeat.o(189654);
+      AppMethodBeat.o(223926);
       return false;
     }
-    Object localObject2 = this.mNV;
+    Object localObject2 = this.mSZ;
     localObject1 = ((ReentrantReadWriteLock)localObject2).readLock();
     if (((ReentrantReadWriteLock)localObject2).getWriteHoldCount() == 0) {}
     for (i = ((ReentrantReadWriteLock)localObject2).getReadHoldCount();; i = 0)
@@ -445,7 +445,7 @@ public final class b
         ((a)localObject3).field_appVersion = paramInt2;
         ((a)localObject3).field_isDarkMode = paramBoolean;
         paramString1 = (c)localObject3;
-        String[] arrayOfString = jFa;
+        String[] arrayOfString = jHZ;
         if (super.get(paramString1, (String[])Arrays.copyOf(arrayOfString, arrayOfString.length))) {
           continue;
         }
@@ -475,7 +475,7 @@ public final class b
       paramInt2 = k;
       if (paramInt1 == 0)
       {
-        com.tencent.mm.vfs.i.deleteFile(paramString1);
+        o.deleteFile(paramString1);
         paramInt2 = k;
       }
       if (paramInt2 >= i) {
@@ -487,13 +487,13 @@ public final class b
       paramInt1 = 0;
       continue;
       paramString2 = (c)localObject3;
-      localObject3 = jFa;
+      localObject3 = jHZ;
       paramBoolean = super.update(paramString2, (String[])Arrays.copyOf((Object[])localObject3, localObject3.length));
       continue;
       paramInt1 = 0;
     }
     ((ReentrantReadWriteLock.WriteLock)localObject2).unlock();
-    AppMethodBeat.o(189654);
+    AppMethodBeat.o(223926);
     return paramBoolean;
     while (paramInt1 < i)
     {
@@ -501,67 +501,67 @@ public final class b
       paramInt1 += 1;
     }
     ((ReentrantReadWriteLock.WriteLock)localObject2).unlock();
-    AppMethodBeat.o(189654);
+    AppMethodBeat.o(223926);
     throw paramString1;
   }
   
-  public final int cf(String paramString, int paramInt)
+  public final int cj(String paramString, int paramInt)
   {
-    AppMethodBeat.i(189658);
+    AppMethodBeat.i(223930);
     paramInt = a(this, paramString, paramInt, null, 4);
-    AppMethodBeat.o(189658);
+    AppMethodBeat.o(223930);
     return paramInt;
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/ui/splash/screenshot/SplashScreenshotInfoStorage$Companion;", "", "()V", "KEYS", "", "", "[Ljava/lang/String;", "SCREENSHOT_ROOT", "()Ljava/lang/String;", "SWITCH_ON", "", "()Z", "TABLE_CREATE", "kotlin.jvm.PlatformType", "TAG", "uin", "getUin", "generateDir", "appId", "generateFilePath", "config", "Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfigWC;", "plugin-appbrand-integration_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/ui/splash/screenshot/SplashScreenshotInfoStorage$Companion;", "", "()V", "KEYS", "", "", "[Ljava/lang/String;", "SCREENSHOT_ROOT", "()Ljava/lang/String;", "SWITCH_ON", "", "()Z", "TABLE_CREATE", "kotlin.jvm.PlatformType", "TAG", "uin", "getUin", "generateDir", "appId", "generateFilePath", "config", "Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfigWC;", "plugin-appbrand-integration_release"})
   public static final class a
   {
-    public static String US(String paramString)
+    public static String VD(String paramString)
     {
-      AppMethodBeat.i(189647);
-      paramString = bBk() + '/' + paramString;
-      AppMethodBeat.o(189647);
+      AppMethodBeat.i(223919);
+      paramString = bCe() + '/' + paramString;
+      AppMethodBeat.o(223919);
       return paramString;
     }
     
-    public static boolean bBj()
+    public static boolean bCd()
     {
-      AppMethodBeat.i(189650);
+      AppMethodBeat.i(223922);
       com.tencent.mm.plugin.expt.b.b localb = (com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class);
-      com.tencent.mm.plugin.expt.b.b.a locala = com.tencent.mm.plugin.expt.b.b.a.quT;
-      if ((com.tencent.mm.sdk.platformtools.i.IS_FLAVOR_RED) || (com.tencent.mm.sdk.platformtools.i.IS_FLAVOR_PURPLE)) {}
+      com.tencent.mm.plugin.expt.b.b.a locala = com.tencent.mm.plugin.expt.b.b.a.qBR;
+      if ((com.tencent.mm.sdk.platformtools.j.IS_FLAVOR_RED) || (com.tencent.mm.sdk.platformtools.j.IS_FLAVOR_PURPLE)) {}
       for (boolean bool = true;; bool = false)
       {
         bool = localb.a(locala, bool);
-        AppMethodBeat.o(189650);
+        AppMethodBeat.o(223922);
         return bool;
       }
     }
     
-    private static String bBk()
+    private static String bCe()
     {
-      AppMethodBeat.i(189648);
-      Object localObject = new StringBuilder().append(com.tencent.mm.loader.j.b.arM()).append("appbrand/runtime_snapshots/");
-      a locala = b.mNW;
+      AppMethodBeat.i(223920);
+      Object localObject = new StringBuilder().append(com.tencent.mm.loader.j.b.asb()).append("appbrand/runtime_snapshots/");
+      a locala = b.mTa;
       localObject = getUin();
-      com.tencent.mm.vfs.i.aYg((String)localObject);
-      AppMethodBeat.o(189648);
+      o.aZI((String)localObject);
+      AppMethodBeat.o(223920);
       return localObject;
     }
     
     private static String getUin()
     {
-      AppMethodBeat.i(189649);
-      Object localObject = g.ajz().ajb();
+      AppMethodBeat.i(223921);
+      Object localObject = g.ajO().ajq();
       d.g.b.p.g(localObject, "MMKernel.process().current()");
-      if (((h)localObject).akw()) {
-        d.g.b.p.g(g.ajA(), "MMKernel.account()");
+      if (((h)localObject).akL()) {
+        d.g.b.p.g(g.ajP(), "MMKernel.account()");
       }
-      for (int i = com.tencent.mm.kernel.a.getUin();; i = com.tencent.mm.kernel.a.air())
+      for (int i = com.tencent.mm.kernel.a.getUin();; i = com.tencent.mm.kernel.a.aiG())
       {
         localObject = new com.tencent.mm.b.p(i).toString();
         d.g.b.p.g(localObject, "if (MMKernel.process().c…(it).toString()\n        }");
-        AppMethodBeat.o(189649);
+        AppMethodBeat.o(223921);
         return localObject;
       }
     }

@@ -2,49 +2,49 @@ package com.tencent.mm.plugin.appbrand.utils.a;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.utils.g.a;
+import com.tencent.mm.plugin.appbrand.utils.h.a;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public enum a
-  implements e, g.a
+  implements e, h.a
 {
-  public static final c mPC;
-  private final e mPD;
-  private final AtomicBoolean mPE;
+  public static final c mUM;
+  private final e mUN;
+  private final AtomicBoolean mUO;
   
   static
   {
     AppMethodBeat.i(137930);
-    mPB = new a("INST");
-    mPF = new a[] { mPB };
-    mPC = new c();
+    mUL = new a("INST");
+    mUP = new a[] { mUL };
+    mUM = new c();
     AppMethodBeat.o(137930);
   }
   
   private a()
   {
     AppMethodBeat.i(137924);
-    this.mPE = new AtomicBoolean(false);
-    this.mPD = new b();
+    this.mUO = new AtomicBoolean(false);
+    this.mUN = new b();
     AppMethodBeat.o(137924);
   }
   
-  public final void bBs()
+  public final void bCm()
   {
     AppMethodBeat.i(137929);
     release();
     AppMethodBeat.o(137929);
   }
   
-  public final c bBz()
+  public final c bCt()
   {
     AppMethodBeat.i(137927);
-    c localc = this.mPD.bBz();
+    c localc = this.mUN.bCt();
     AppMethodBeat.o(137927);
     return localc;
   }
   
-  public final void dQ(Context paramContext)
+  public final void dU(Context paramContext)
   {
     AppMethodBeat.i(137928);
     init(paramContext);
@@ -54,8 +54,8 @@ public enum a
   public final void init(Context paramContext)
   {
     AppMethodBeat.i(137925);
-    if (!this.mPE.getAndSet(true)) {
-      this.mPD.init(paramContext);
+    if (!this.mUO.getAndSet(true)) {
+      this.mUN.init(paramContext);
     }
     AppMethodBeat.o(137925);
   }
@@ -63,13 +63,13 @@ public enum a
   public final void release()
   {
     AppMethodBeat.i(137926);
-    this.mPD.release();
+    this.mUN.release();
     AppMethodBeat.o(137926);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.utils.a.a
  * JD-Core Version:    0.7.0.1
  */

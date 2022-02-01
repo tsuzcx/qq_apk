@@ -6,7 +6,7 @@ public class TPDrm
 {
   public static int[] getDRMCapabilities()
   {
-    AppMethodBeat.i(220413);
+    AppMethodBeat.i(197352);
     Object localObject = null;
     try
     {
@@ -20,10 +20,10 @@ public class TPDrm
     }
     if (localObject == null)
     {
-      AppMethodBeat.o(220413);
+      AppMethodBeat.o(197352);
       return new int[0];
     }
-    AppMethodBeat.o(220413);
+    AppMethodBeat.o(197352);
     return localObject;
   }
   

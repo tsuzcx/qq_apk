@@ -10,7 +10,7 @@ final class d
   final void a(String paramString, Uri paramUri, a.a parama)
   {
     AppMethodBeat.i(47413);
-    switch (1.lMI[parama.ordinal()])
+    switch (1.lRi[parama.ordinal()])
     {
     default: 
       AppBrand404PageUI.show(2131755402);

@@ -4,7 +4,7 @@ import d.l;
 import d.l.b;
 import kotlinx.a.h;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/serialization/modules/SerialModuleCollector;", "", "contextual", "", "T", "kClass", "Lkotlin/reflect/KClass;", "serializer", "Lkotlinx/serialization/KSerializer;", "polymorphic", "Base", "Sub", "baseClass", "actualClass", "actualSerializer", "kotlinx-serialization-runtime"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/serialization/modules/SerialModuleCollector;", "", "contextual", "", "T", "kClass", "Lkotlin/reflect/KClass;", "serializer", "Lkotlinx/serialization/KSerializer;", "polymorphic", "Base", "Sub", "baseClass", "actualClass", "actualSerializer", "kotlinx-serialization-runtime"})
 public abstract interface d
 {
   public abstract <Base, Sub extends Base> void a(b<Base> paramb, b<Sub> paramb1, h<Sub> paramh);

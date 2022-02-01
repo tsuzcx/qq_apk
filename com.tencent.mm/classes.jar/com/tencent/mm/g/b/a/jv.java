@@ -6,115 +6,49 @@ import com.tencent.mm.plugin.report.a;
 public final class jv
   extends a
 {
-  private String dQt = "";
-  private long dUW = 0L;
-  private String eCp = "";
-  private String eCv = "";
-  private String eCw = "";
-  private String eif = "";
-  private String erH = "";
+  public long dQX = 0L;
+  public long eDX = 0L;
+  private String ejP = "";
+  
+  public final String RC()
+  {
+    AppMethodBeat.i(111808);
+    Object localObject = new StringBuffer();
+    ((StringBuffer)localObject).append(this.eDX);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.dQX);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.ejP);
+    localObject = ((StringBuffer)localObject).toString();
+    axO((String)localObject);
+    AppMethodBeat.o(111808);
+    return localObject;
+  }
   
   public final String RD()
   {
-    AppMethodBeat.i(116504);
+    AppMethodBeat.i(111809);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dUW);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.erH);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eCp);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dQt);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eif);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eCv);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eCw);
+    ((StringBuffer)localObject).append("actionScene:").append(this.eDX);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("action:").append(this.dQX);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("query:").append(this.ejP);
     localObject = ((StringBuffer)localObject).toString();
-    awz((String)localObject);
-    AppMethodBeat.o(116504);
+    AppMethodBeat.o(111809);
     return localObject;
-  }
-  
-  public final String RE()
-  {
-    AppMethodBeat.i(116505);
-    Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("scene:").append(this.dUW);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("content:").append(this.erH);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("searchid:").append(this.eCp);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("sessionid:").append(this.dQt);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("query:").append(this.eif);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("resulttype:").append(this.eCv);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("resultsubtypelist:").append(this.eCw);
-    localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(116505);
-    return localObject;
-  }
-  
-  public final jv Vt()
-  {
-    this.dUW = 47L;
-    return this;
   }
   
   public final int getId()
   {
-    return 16032;
+    return 15776;
   }
   
-  public final jv so(String paramString)
+  public final jv sI(String paramString)
   {
-    AppMethodBeat.i(116498);
-    this.erH = t("content", paramString, true);
-    AppMethodBeat.o(116498);
-    return this;
-  }
-  
-  public final jv sp(String paramString)
-  {
-    AppMethodBeat.i(116499);
-    this.eCp = t("searchid", paramString, true);
-    AppMethodBeat.o(116499);
-    return this;
-  }
-  
-  public final jv sq(String paramString)
-  {
-    AppMethodBeat.i(116500);
-    this.dQt = t("sessionid", paramString, true);
-    AppMethodBeat.o(116500);
-    return this;
-  }
-  
-  public final jv sr(String paramString)
-  {
-    AppMethodBeat.i(116501);
-    this.eif = t("query", paramString, true);
-    AppMethodBeat.o(116501);
-    return this;
-  }
-  
-  public final jv ss(String paramString)
-  {
-    AppMethodBeat.i(116502);
-    this.eCv = t("resulttype", paramString, true);
-    AppMethodBeat.o(116502);
-    return this;
-  }
-  
-  public final jv st(String paramString)
-  {
-    AppMethodBeat.i(116503);
-    this.eCw = t("resultsubtypelist", paramString, true);
-    AppMethodBeat.o(116503);
+    AppMethodBeat.i(111807);
+    this.ejP = t("query", paramString, true);
+    AppMethodBeat.o(111807);
     return this;
   }
 }

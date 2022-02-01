@@ -7,7 +7,7 @@ import com.tencent.mm.sdk.b.b;
 public final class sj
   extends b
 {
-  public a dGR;
+  public a dHV;
   
   public sj()
   {
@@ -16,19 +16,17 @@ public final class sj
   
   private sj(byte paramByte)
   {
-    AppMethodBeat.i(146077);
-    this.dGR = new a();
-    this.IbR = false;
+    AppMethodBeat.i(146076);
+    this.dHV = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(146077);
+    AppMethodBeat.o(146076);
   }
   
   public static final class a
   {
-    public String cardType;
-    public int dGS = 0;
-    public String dGT;
-    public Bitmap dGU;
+    public String cardId;
+    public Bitmap dHW;
   }
 }
 

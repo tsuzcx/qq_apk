@@ -4,13 +4,13 @@ import java.util.Arrays;
 
 public final class b
 {
-  public final byte[] cIj;
+  public final byte[] cIS;
   
   public b(byte[] paramArrayOfByte)
   {
     int i = paramArrayOfByte.length;
-    this.cIj = new byte[i];
-    System.arraycopy(paramArrayOfByte, 0, this.cIj, 0, i);
+    this.cIS = new byte[i];
+    System.arraycopy(paramArrayOfByte, 0, this.cIS, 0, i);
   }
   
   public final boolean equals(Object paramObject)
@@ -18,19 +18,19 @@ public final class b
     if (!(paramObject instanceof b)) {
       return false;
     }
-    return Arrays.equals(this.cIj, ((b)paramObject).cIj);
+    return Arrays.equals(this.cIS, ((b)paramObject).cIS);
   }
   
   public final int hashCode()
   {
-    return Arrays.hashCode(this.cIj);
+    return Arrays.hashCode(this.cIS);
   }
   
   public final String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("0x");
-    byte[] arrayOfByte = this.cIj;
+    byte[] arrayOfByte = this.cIS;
     int j = arrayOfByte.length;
     int i = 0;
     while (i < j)

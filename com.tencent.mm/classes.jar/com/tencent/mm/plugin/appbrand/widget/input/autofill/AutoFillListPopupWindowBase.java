@@ -28,7 +28,7 @@ import android.widget.PopupWindow.OnDismissListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.aq;
 
 public class AutoFillListPopupWindowBase
 {
@@ -51,15 +51,15 @@ public class AutoFillListPopupWindowBase
   boolean arm;
   PopupWindow arn;
   private Context mContext;
-  private ap mHandler;
+  private aq mHandler;
   DataSetObserver mObserver;
   private Rect mTempRect;
-  AutoFillListPopupWindowBase.a nhD;
-  private final f nhE;
-  private final e nhF;
-  private final d nhG;
-  private final b nhH;
-  private boolean nhI;
+  AutoFillListPopupWindowBase.a nmL;
+  private final f nmM;
+  private final e nmN;
+  private final d nmO;
+  private final b nmP;
+  private boolean nmQ;
   
   public AutoFillListPopupWindowBase(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -75,13 +75,13 @@ public class AutoFillListPopupWindowBase
     this.aqZ = false;
     this.ara = 2147483647;
     this.arc = 0;
-    this.nhE = new f((byte)0);
-    this.nhF = new e((byte)0);
-    this.nhG = new d((byte)0);
-    this.nhH = new b((byte)0);
-    this.mHandler = new ap();
+    this.nmM = new f((byte)0);
+    this.nmN = new e((byte)0);
+    this.nmO = new d((byte)0);
+    this.nmP = new b((byte)0);
+    this.mHandler = new aq();
     this.mTempRect = new Rect();
-    this.nhI = false;
+    this.nmQ = false;
     this.mContext = paramContext;
     this.arn = new PopupWindow(paramContext);
     this.arn.setInputMethodMode(1);
@@ -105,7 +105,7 @@ public class AutoFillListPopupWindowBase
   public final void clearListSelection()
   {
     AppMethodBeat.i(136668);
-    AutoFillListPopupWindowBase.a locala = this.nhD;
+    AutoFillListPopupWindowBase.a locala = this.nmL;
     if (locala != null)
     {
       AutoFillListPopupWindowBase.a.a(locala, true);
@@ -120,8 +120,8 @@ public class AutoFillListPopupWindowBase
     this.arn.dismiss();
     kv();
     this.arn.setContentView(null);
-    this.nhD = null;
-    this.mHandler.removeCallbacks(this.nhE);
+    this.nmL = null;
+    this.mHandler.removeCallbacks(this.nmM);
     AppMethodBeat.o(136665);
   }
   
@@ -162,7 +162,7 @@ public class AutoFillListPopupWindowBase
     View localView;
     FrameLayout.LayoutParams localLayoutParams1;
     FrameLayout.LayoutParams localLayoutParams2;
-    if (this.nhD == null)
+    if (this.nmL == null)
     {
       localObject2 = this.mContext;
       this.arl = new Runnable()
@@ -180,17 +180,17 @@ public class AutoFillListPopupWindowBase
       if (!this.arm)
       {
         bool1 = true;
-        this.nhD = new AutoFillListPopupWindowBase.a((Context)localObject2, bool1);
+        this.nmL = new AutoFillListPopupWindowBase.a((Context)localObject2, bool1);
         if (this.are != null) {
-          this.nhD.setSelector(this.are);
+          this.nmL.setSelector(this.are);
         }
-        this.nhD.setAdapter(this.GE);
-        this.nhD.setOnItemClickListener(this.arf);
-        this.nhD.setFocusable(true);
-        this.nhD.setFocusableInTouchMode(true);
-        this.nhD.setDivider(null);
-        this.nhD.setDividerHeight(0);
-        this.nhD.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
+        this.nmL.setAdapter(this.GE);
+        this.nmL.setOnItemClickListener(this.arf);
+        this.nmL.setFocusable(true);
+        this.nmL.setFocusableInTouchMode(true);
+        this.nmL.setDivider(null);
+        this.nmL.setDividerHeight(0);
+        this.nmL.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
         {
           public final void onItemSelected(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
           {
@@ -198,9 +198,9 @@ public class AutoFillListPopupWindowBase
             b localb = new b();
             localb.bd(paramAnonymousAdapterView);
             localb.bd(paramAnonymousView);
-            localb.mr(paramAnonymousInt);
-            localb.qY(paramAnonymousLong);
-            a.b("com/tencent/mm/plugin/appbrand/widget/input/autofill/AutoFillListPopupWindowBase$2", "android/widget/AdapterView$OnItemSelectedListener", "onItemSelected", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.ahq());
+            localb.mu(paramAnonymousInt);
+            localb.rl(paramAnonymousLong);
+            a.b("com/tencent/mm/plugin/appbrand/widget/input/autofill/AutoFillListPopupWindowBase$2", "android/widget/AdapterView$OnItemSelectedListener", "onItemSelected", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.ahF());
             if (paramAnonymousInt != -1)
             {
               paramAnonymousAdapterView = AutoFillListPopupWindowBase.a(AutoFillListPopupWindowBase.this);
@@ -214,11 +214,11 @@ public class AutoFillListPopupWindowBase
           
           public final void onNothingSelected(AdapterView<?> paramAnonymousAdapterView) {}
         });
-        this.nhD.setOnScrollListener(this.nhG);
+        this.nmL.setOnScrollListener(this.nmO);
         if (this.arg != null) {
-          this.nhD.setOnItemSelectedListener(this.arg);
+          this.nmL.setOnItemSelectedListener(this.arg);
         }
-        localObject1 = this.nhD;
+        localObject1 = this.nmL;
         localView = this.arb;
         if (localView == null) {
           break label1343;
@@ -323,7 +323,7 @@ public class AutoFillListPopupWindowBase
           for (bool1 = bool2;; bool1 = false)
           {
             ((PopupWindow)localObject1).setOutsideTouchable(bool1);
-            if (!this.nhI) {
+            if (!this.nmQ) {
               break label1002;
             }
             this.arn.showAtLocation(this.ard, 17, 0, 0);
@@ -359,7 +359,7 @@ public class AutoFillListPopupWindowBase
             }
             for (;;)
             {
-              m = this.nhD.ey(j, m - i);
+              m = this.nmL.ey(j, m - i);
               j = i;
               if (m > 0) {
                 j = i + k;
@@ -413,20 +413,20 @@ public class AutoFillListPopupWindowBase
             bool1 = bool3;
             label1094:
             ((PopupWindow)localObject1).setOutsideTouchable(bool1);
-            this.arn.setTouchInterceptor(this.nhF);
-            if (!this.nhI) {
+            this.arn.setTouchInterceptor(this.nmN);
+            if (!this.nmQ) {
               break label1276;
             }
             this.arn.showAtLocation(this.ard, 17, 0, 0);
           }
           for (;;)
           {
-            this.nhD.setSelection(-1);
-            if ((!this.arm) || (this.nhD.isInTouchMode())) {
+            this.nmL.setSelection(-1);
+            if ((!this.arm) || (this.nmL.isInTouchMode())) {
               clearListSelection();
             }
             if (!this.arm) {
-              this.mHandler.post(this.nhH);
+              this.mHandler.post(this.nmP);
             }
             AppMethodBeat.o(136664);
             return;
@@ -544,7 +544,7 @@ public class AutoFillListPopupWindowBase
       b localb = new b();
       localb.bd(paramView);
       localb.bd(paramMotionEvent);
-      a.b("com/tencent/mm/plugin/appbrand/widget/input/autofill/AutoFillListPopupWindowBase$PopupTouchInterceptor", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahq());
+      a.b("com/tencent/mm/plugin/appbrand/widget/input/autofill/AutoFillListPopupWindowBase$PopupTouchInterceptor", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahF());
       int i = paramMotionEvent.getAction();
       int j = (int)paramMotionEvent.getX();
       int k = (int)paramMotionEvent.getY();

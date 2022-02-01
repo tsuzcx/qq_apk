@@ -1,44 +1,44 @@
 package com.tencent.mm.plugin.backup.g;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bx.a;
+import com.tencent.mm.bw.a;
 import com.tencent.mm.plugin.backup.i.j;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 public final class i
   extends b
 {
-  private com.tencent.mm.plugin.backup.i.i nzK;
-  public j nzL;
+  private com.tencent.mm.plugin.backup.i.i nFf;
+  public j nFg;
   
   public i(LinkedList<String> paramLinkedList, long paramLong1, long paramLong2)
   {
     AppMethodBeat.i(21733);
-    this.nzK = new com.tencent.mm.plugin.backup.i.i();
-    this.nzL = new j();
-    ad.i("MicroMsg.BackupRequestSessionScene", "init sessionName[%d], startTime[%d], endTime[%d]", new Object[] { Integer.valueOf(paramLinkedList.size()), Long.valueOf(paramLong1), Long.valueOf(paramLong2) });
-    this.nzK.nDk = paramLinkedList;
-    this.nzK.nDl = new LinkedList();
+    this.nFf = new com.tencent.mm.plugin.backup.i.i();
+    this.nFg = new j();
+    ae.i("MicroMsg.BackupRequestSessionScene", "init sessionName[%d], startTime[%d], endTime[%d]", new Object[] { Integer.valueOf(paramLinkedList.size()), Long.valueOf(paramLong1), Long.valueOf(paramLong2) });
+    this.nFf.nIF = paramLinkedList;
+    this.nFf.nIG = new LinkedList();
     paramLinkedList = paramLinkedList.iterator();
     while (paramLinkedList.hasNext())
     {
       paramLinkedList.next();
-      this.nzK.nDl.add(Long.valueOf(paramLong1));
-      this.nzK.nDl.add(Long.valueOf(paramLong2));
+      this.nFf.nIG.add(Long.valueOf(paramLong1));
+      this.nFf.nIG.add(Long.valueOf(paramLong2));
     }
     AppMethodBeat.o(21733);
   }
   
-  public final a bIA()
+  public final a bJx()
   {
-    return this.nzK;
+    return this.nFg;
   }
   
-  public final a bIz()
+  public final a bJy()
   {
-    return this.nzL;
+    return this.nFf;
   }
   
   public final int getType()
@@ -46,20 +46,20 @@ public final class i
     return 11;
   }
   
-  public final void xC(int paramInt)
+  public final void xG(int paramInt)
   {
     AppMethodBeat.i(21734);
-    if ((this.nzL.nDk == null) || (this.nzL.nDl == null) || (this.nzL.nDk.isEmpty()) || (this.nzL.nDk.size() * 2 != this.nzL.nDl.size()))
+    if ((this.nFg.nIF == null) || (this.nFg.nIG == null) || (this.nFg.nIF.isEmpty()) || (this.nFg.nIF.size() * 2 != this.nFg.nIG.size()))
     {
-      if ((this.nzL.nDk != null) && (this.nzL.nDl != null)) {
-        ad.e("MicroMsg.BackupRequestSessionScene", "onSceneEnd sessionName and TimeInterval size error. sessionName size[%d], timeInterval size[%d]", new Object[] { Integer.valueOf(this.nzL.nDk.size()), Integer.valueOf(this.nzL.nDl.size()) });
+      if ((this.nFg.nIF != null) && (this.nFg.nIG != null)) {
+        ae.e("MicroMsg.BackupRequestSessionScene", "onSceneEnd sessionName and TimeInterval size error. sessionName size[%d], timeInterval size[%d]", new Object[] { Integer.valueOf(this.nFg.nIF.size()), Integer.valueOf(this.nFg.nIG.size()) });
       }
       q(4, -1, "BackupRequestSession failed");
       AppMethodBeat.o(21734);
       return;
     }
-    ad.i("MicroMsg.BackupRequestSessionScene", "onSceneEnd sessionName size[%d], name:%s", new Object[] { Integer.valueOf(this.nzL.nDk.size()), this.nzL.nDk.toString() });
-    ad.i("MicroMsg.BackupRequestSessionScene", "onSceneEnd requestsession resp, TimeInterval:%s", new Object[] { this.nzL.nDl.toString() });
+    ae.i("MicroMsg.BackupRequestSessionScene", "onSceneEnd sessionName size[%d], name:%s", new Object[] { Integer.valueOf(this.nFg.nIF.size()), this.nFg.nIF.toString() });
+    ae.i("MicroMsg.BackupRequestSessionScene", "onSceneEnd requestsession resp, TimeInterval:%s", new Object[] { this.nFg.nIG.toString() });
     q(0, 0, "BackupRequestSession success");
     AppMethodBeat.o(21734);
   }

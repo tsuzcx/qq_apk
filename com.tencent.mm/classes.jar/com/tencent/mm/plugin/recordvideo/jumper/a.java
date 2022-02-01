@@ -5,18 +5,18 @@ import android.content.Context;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.permission.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.at;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.au;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public final class a
 {
-  public static final a xyI;
+  public static final a xOE;
   
   static
   {
     AppMethodBeat.i(101522);
-    xyI = new a();
+    xOE = new a();
     AppMethodBeat.o(101522);
   }
   
@@ -26,32 +26,32 @@ public final class a
     if (paramInt == 0)
     {
       Boolean localBoolean;
-      if ((com.tencent.mm.s.a.n(paramActivity, true)) || (com.tencent.mm.s.a.cf(paramActivity)) || (com.tencent.mm.s.a.cd(paramActivity)))
+      if ((com.tencent.mm.r.a.n(paramActivity, true)) || (com.tencent.mm.r.a.ch(paramActivity)) || (com.tencent.mm.r.a.cf(paramActivity)))
       {
-        ad.i("MicroMsg.VideoCaptureJumper", "startStoryCapture, voip or multitalk running");
+        ae.i("MicroMsg.VideoCaptureJumper", "startStoryCapture, voip or multitalk running");
         localBoolean = Boolean.FALSE;
       }
       while (!localBoolean.booleanValue())
       {
-        ad.i("MicroMsg.VideoCaptureJumper", "not get enough permission");
+        ae.i("MicroMsg.VideoCaptureJumper", "not get enough permission");
         AppMethodBeat.o(101520);
         return null;
         if ((paramActivity instanceof Activity))
         {
           if (!b.a(paramActivity, "android.permission.CAMERA", 16, "", ""))
           {
-            ad.i("MicroMsg.VideoCaptureJumper", "not get enough permission checkCamera");
+            ae.i("MicroMsg.VideoCaptureJumper", "not get enough permission checkCamera");
             localBoolean = Boolean.FALSE;
             continue;
           }
           if (!b.a(paramActivity, "android.permission.RECORD_AUDIO", 80, "", ""))
           {
-            ad.i("MicroMsg.VideoCaptureJumper", "not get enough permission checkMicroPhone");
+            ae.i("MicroMsg.VideoCaptureJumper", "not get enough permission checkMicroPhone");
             localBoolean = Boolean.FALSE;
             continue;
           }
         }
-        ad.i("MicroMsg.VideoCaptureJumper", "startStoryCapture %s", new Object[] { bt.flS().toString() });
+        ae.i("MicroMsg.VideoCaptureJumper", "startStoryCapture %s", new Object[] { bu.fpN().toString() });
         localBoolean = Boolean.TRUE;
       }
     }
@@ -65,7 +65,7 @@ public final class a
     {
       for (;;)
       {
-        ad.printErrStackTrace("MicroMsg.VideoCaptureJumper", paramActivity, "buildIntent failed!", new Object[0]);
+        ae.printErrStackTrace("MicroMsg.VideoCaptureJumper", paramActivity, "buildIntent failed!", new Object[0]);
         paramActivity = null;
       }
     }
@@ -83,7 +83,7 @@ public final class a
     localIntent.putExtra("KEY_PARAMS_CONFIG", paramRecordConfigProvider);
     localIntent.putExtra("KEY_PARAMS_TO_WHERE", 0);
     localIntent.putExtra("KEY_PARAMS_EXIT_ANIM", paramInt3);
-    ad.i("MicroMsg.VideoCaptureJumper", "configProvider: %s", new Object[] { paramRecordConfigProvider });
+    ae.i("MicroMsg.VideoCaptureJumper", "configProvider: %s", new Object[] { paramRecordConfigProvider });
     ((Activity)paramContext).startActivityForResult(localIntent, paramInt1);
     g(paramContext, paramInt2, paramInt3);
     AppMethodBeat.o(101518);
@@ -103,7 +103,7 @@ public final class a
     localIntent.putExtra("KEY_PARAMS_TO_WHERE", paramInt4);
     localIntent.putExtra("KEY_PARAMS_SELECTED_BIZ_INT", paramInt5);
     localIntent.putExtra("KEY_PARAMS_EXIT_ANIM", paramInt3);
-    ad.i("MicroMsg.VideoCaptureJumper", "configProvider : $provider");
+    ae.i("MicroMsg.VideoCaptureJumper", "configProvider : $provider");
     ((Activity)paramContext).startActivityForResult(localIntent, paramInt1);
     g(paramContext, paramInt2, paramInt3);
     AppMethodBeat.o(168713);
@@ -123,7 +123,7 @@ public final class a
     localIntent.putExtra("KEY_PARAMS_TO_WHERE", 0);
     localIntent.putExtra("KEY_PARAMS_EXIT_ANIM", 2130772138);
     localIntent.putExtra("KEY_PARAMS_SELECTED_BIZ_INT", 0);
-    ad.i("MicroMsg.VideoCaptureJumper", "configProvider: %s", new Object[] { paramRecordConfigProvider });
+    ae.i("MicroMsg.VideoCaptureJumper", "configProvider: %s", new Object[] { paramRecordConfigProvider });
     ((Activity)paramContext).startActivityForResult(localIntent, paramInt);
     g(paramContext, 2130772137, 2130772138);
     AppMethodBeat.o(101519);
@@ -142,7 +142,7 @@ public final class a
     localIntent.putExtra("KEY_PARAMS_CONFIG", paramRecordConfigProvider);
     localIntent.putExtra("KEY_PARAMS_TO_WHERE", 2);
     localIntent.putExtra("KEY_PARAMS_EXIT_ANIM", -1);
-    ad.i("MicroMsg.VideoCaptureJumper", "configProvider : $provider");
+    ae.i("MicroMsg.VideoCaptureJumper", "configProvider : $provider");
     ((Activity)paramContext).startActivityForResult(localIntent, 121);
     g(paramContext, 2130772137, -1);
     AppMethodBeat.o(101517);

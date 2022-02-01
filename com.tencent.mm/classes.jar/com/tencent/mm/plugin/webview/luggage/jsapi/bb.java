@@ -7,9 +7,9 @@ import com.tencent.luggage.d.b.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.webview.luggage.g;
 import com.tencent.mm.plugin.webview.luggage.g.14;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bu;
 import org.json.JSONObject;
 
 public class bb
@@ -20,9 +20,9 @@ public class bb
   public final void b(b<g>.a paramb)
   {
     AppMethodBeat.i(78622);
-    ad.i("MicroMsg.JsApiSetBounceBackground", "invokeInOwn");
+    ae.i("MicroMsg.JsApiSetBounceBackground", "invokeInOwn");
     String str = paramb.chh.cgn.optString("backgroundColor");
-    if (bt.isNullOrNil(str))
+    if (bu.isNullOrNil(str))
     {
       paramb.a("invalid_data", null);
       AppMethodBeat.o(78622);
@@ -34,7 +34,7 @@ public class bb
     AppMethodBeat.o(78622);
   }
   
-  public final int ccO()
+  public final int ced()
   {
     return 0;
   }

@@ -11,21 +11,21 @@ import com.tencent.mm.pluginsdk.model.app.h;
 import com.tencent.mm.pluginsdk.model.app.j;
 import com.tencent.mm.sdk.e.k.a;
 import com.tencent.mm.sdk.e.m;
-import com.tencent.mm.sdk.platformtools.av;
-import com.tencent.mm.sdk.platformtools.av.a;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.aw;
+import com.tencent.mm.sdk.platformtools.aw.a;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.LinkedList;
 
 public abstract class a<T>
   extends BaseAdapter
 {
-  private static int ukF = 500;
+  private static int uwc = 500;
   protected Context mContext;
-  protected LinkedList<T> udU;
-  private a ukC;
-  protected boolean ukD = false;
-  private f<String, Bitmap> ukE;
-  private av ukG = new av(new av.a()
+  protected LinkedList<T> upc;
+  private a uvZ;
+  protected boolean uwa = false;
+  private f<String, Bitmap> uwb;
+  private aw uwd = new aw(new aw.a()
   {
     public final boolean onTimerExpired()
     {
@@ -35,15 +35,15 @@ public abstract class a<T>
       return false;
     }
   }, false);
-  private final k.a ukH = new k.a()
+  private final k.a uwe = new k.a()
   {
     public final void a(String paramAnonymousString, m paramAnonymousm)
     {
       AppMethodBeat.i(41857);
       a.a(a.this).stopTimer();
       paramAnonymousString = a.a(a.this);
-      long l = a.ukF;
-      paramAnonymousString.az(l, l);
+      long l = a.uwc;
+      paramAnonymousString.ay(l, l);
       AppMethodBeat.o(41857);
     }
   };
@@ -51,31 +51,31 @@ public abstract class a<T>
   public a(Context paramContext)
   {
     this.mContext = paramContext;
-    this.udU = new LinkedList();
-    this.ukE = new b(20, getClass());
-    com.tencent.mm.plugin.s.a.dxQ().add(this.ukH);
+    this.upc = new LinkedList();
+    this.uwb = new b(20, getClass());
+    com.tencent.mm.plugin.s.a.dBg().add(this.uwe);
   }
   
   public void aA(LinkedList<T> paramLinkedList)
   {
     if (paramLinkedList == null)
     {
-      if (this.ukC != null) {
-        this.udU.size();
+      if (this.uvZ != null) {
+        this.upc.size();
       }
       return;
     }
-    this.udU = paramLinkedList;
-    if (this.ukC != null) {
-      this.udU.size();
+    this.upc = paramLinkedList;
+    if (this.uvZ != null) {
+      this.upc.size();
     }
     super.notifyDataSetChanged();
   }
   
-  protected final Bitmap ami(String paramString)
+  protected final Bitmap ani(String paramString)
   {
     Object localObject;
-    if (bt.isNullOrNil(paramString)) {
+    if (bu.isNullOrNil(paramString)) {
       localObject = null;
     }
     Bitmap localBitmap;
@@ -86,21 +86,21 @@ public abstract class a<T>
         do
         {
           return localObject;
-          if (!this.ukE.aM(paramString)) {
+          if (!this.uwb.aM(paramString)) {
             break;
           }
-          localBitmap = (Bitmap)this.ukE.get(paramString);
+          localBitmap = (Bitmap)this.uwb.get(paramString);
           if (localBitmap == null) {
             break;
           }
           localObject = localBitmap;
         } while (!localBitmap.isRecycled());
-        localBitmap = h.c(paramString, 1, com.tencent.mm.cc.a.getDensity(this.mContext));
+        localBitmap = h.c(paramString, 1, com.tencent.mm.cb.a.getDensity(this.mContext));
         localObject = localBitmap;
       } while (localBitmap == null);
       localObject = localBitmap;
     } while (localBitmap.isRecycled());
-    this.ukE.q(paramString, localBitmap);
+    this.uwb.q(paramString, localBitmap);
     return localBitmap;
   }
   
@@ -108,38 +108,38 @@ public abstract class a<T>
   {
     if (paramLinkedList == null)
     {
-      if (this.ukC != null) {
-        this.udU.size();
+      if (this.uvZ != null) {
+        this.upc.size();
       }
       return;
     }
-    this.udU.addAll(paramLinkedList);
-    if (this.ukC != null) {
-      this.udU.size();
+    this.upc.addAll(paramLinkedList);
+    if (this.uvZ != null) {
+      this.upc.size();
     }
     super.notifyDataSetChanged();
   }
   
   public void clear()
   {
-    if (this.udU != null) {
-      this.udU.clear();
+    if (this.upc != null) {
+      this.upc.clear();
     }
-    if (this.ukE != null) {
-      this.ukE.a(new f.a() {});
+    if (this.uwb != null) {
+      this.uwb.a(new f.a() {});
     }
-    this.ukE = null;
-    com.tencent.mm.plugin.s.a.dxQ().remove(this.ukH);
+    this.uwb = null;
+    com.tencent.mm.plugin.s.a.dBg().remove(this.uwe);
   }
   
   public int getCount()
   {
-    return this.udU.size();
+    return this.upc.size();
   }
   
   public Object getItem(int paramInt)
   {
-    return this.udU.get(paramInt);
+    return this.upc.get(paramInt);
   }
   
   public long getItemId(int paramInt)
@@ -151,7 +151,7 @@ public abstract class a<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.a
  * JD-Core Version:    0.7.0.1
  */

@@ -8,17 +8,17 @@ public abstract class dl
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eFp;
-  private static final int eRQ = "sort".hashCode();
-  private static final int ffO;
-  private static final int ffP = "appusername".hashCode();
-  private static final int ffU;
+  private static final int eGY;
+  private static final int eTB = "sort".hashCode();
+  private static final int fhL;
+  private static final int fhM = "appusername".hashCode();
+  private static final int fhR;
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eFm = true;
-  private boolean eRq = true;
-  private boolean ffL = true;
-  private boolean ffM = true;
-  private boolean ffT = true;
+  private boolean eGV = true;
+  private boolean eTb = true;
+  private boolean fhI = true;
+  private boolean fhJ = true;
+  private boolean fhQ = true;
   public String field_appusername;
   public String field_rankID;
   public int field_sort;
@@ -27,9 +27,9 @@ public abstract class dl
   
   static
   {
-    ffO = "rankID".hashCode();
-    eFp = "username".hashCode();
-    ffU = "step".hashCode();
+    fhL = "rankID".hashCode();
+    eGY = "username".hashCode();
+    fhR = "step".hashCode();
   }
   
   public void convertFrom(Cursor paramCursor)
@@ -45,7 +45,7 @@ public abstract class dl
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (ffP != k) {
+      if (fhM != k) {
         break label60;
       }
       this.field_appusername = paramCursor.getString(i);
@@ -56,13 +56,13 @@ public abstract class dl
       break label20;
       break;
       label60:
-      if (ffO == k) {
+      if (fhL == k) {
         this.field_rankID = paramCursor.getString(i);
-      } else if (eFp == k) {
+      } else if (eGY == k) {
         this.field_username = paramCursor.getString(i);
-      } else if (ffU == k) {
+      } else if (fhR == k) {
         this.field_step = paramCursor.getInt(i);
-      } else if (eRQ == k) {
+      } else if (eTB == k) {
         this.field_sort = paramCursor.getInt(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
@@ -73,19 +73,19 @@ public abstract class dl
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.ffM) {
+    if (this.fhJ) {
       localContentValues.put("appusername", this.field_appusername);
     }
-    if (this.ffL) {
+    if (this.fhI) {
       localContentValues.put("rankID", this.field_rankID);
     }
-    if (this.eFm) {
+    if (this.eGV) {
       localContentValues.put("username", this.field_username);
     }
-    if (this.ffT) {
+    if (this.fhQ) {
       localContentValues.put("step", Integer.valueOf(this.field_step));
     }
-    if (this.eRq) {
+    if (this.eTb) {
       localContentValues.put("sort", Integer.valueOf(this.field_sort));
     }
     if (this.systemRowid > 0L) {

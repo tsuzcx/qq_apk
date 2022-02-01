@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout android:layout_width="@dimen/c9" android:layout_height="@dimen/c9" android:layout_marginEnd="@dimen/c9"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.plugin.webview.luggage.DownloadProgressImageView android:layout_gravity="bottom|center|left" android:layout_width="@dimen/c8" android:layout_height="@dimen/c8" />
+    <com.tencent.mm.plugin.webview.luggage.DownloadProgressImageView android:layout_gravity="bottom|center|left" android:id="@id/i7c" android:layout_width="@dimen/c8" android:layout_height="@dimen/c8" />
     <com.tencent.mm.plugin.webview.luggage.RedDotView android:layout_gravity="center|right|top" android:id="@id/bf_" android:visibility="gone" android:layout_width="@dimen/ci" android:layout_height="@dimen/ci" />
 </FrameLayout>

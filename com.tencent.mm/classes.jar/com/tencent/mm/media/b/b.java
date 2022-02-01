@@ -3,27 +3,27 @@ package com.tencent.mm.media.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/media/config/CodecConfigFlag;", "", "()V", "useSupportedEncoder", "", "getUseSupportedEncoder", "()Z", "setUseSupportedEncoder", "(Z)V", "plugin-mediaeditor_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/media/config/CodecConfigFlag;", "", "()V", "useSupportedEncoder", "", "getUseSupportedEncoder", "()Z", "setUseSupportedEncoder", "(Z)V", "plugin-mediaeditor_release"})
 public final class b
 {
-  private static boolean hhN;
-  public static final b hhO;
+  private static boolean hkB;
+  public static final b hkC;
   
   static
   {
     AppMethodBeat.i(93517);
-    hhO = new b();
+    hkC = new b();
     AppMethodBeat.o(93517);
   }
   
-  public static boolean ata()
+  public static boolean atp()
   {
-    return hhN;
+    return hkB;
   }
   
-  public static void ea(boolean paramBoolean)
+  public static void ec(boolean paramBoolean)
   {
-    hhN = paramBoolean;
+    hkB = paramBoolean;
   }
 }
 

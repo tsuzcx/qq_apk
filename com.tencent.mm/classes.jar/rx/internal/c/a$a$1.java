@@ -11,7 +11,7 @@ final class a$a$1
   public final Thread newThread(Runnable paramRunnable)
   {
     AppMethodBeat.i(90310);
-    paramRunnable = this.NYN.newThread(paramRunnable);
+    paramRunnable = this.OvS.newThread(paramRunnable);
     paramRunnable.setName(paramRunnable.getName() + " (Evictor)");
     AppMethodBeat.o(90310);
     return paramRunnable;

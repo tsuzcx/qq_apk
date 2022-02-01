@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.backup.backupmoveui;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 final class BackupMoveRecoverUI$1$14
   implements DialogInterface.OnClickListener
@@ -13,8 +13,8 @@ final class BackupMoveRecoverUI$1$14
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     AppMethodBeat.i(21434);
-    ad.i("MicroMsg.BackupMoveRecoverUI", "move phone old version");
-    BackupMoveRecoverUI.h(this.nwW.nwV);
+    ae.i("MicroMsg.BackupMoveRecoverUI", "move phone old version");
+    BackupMoveRecoverUI.h(this.nCr.nCq);
     AppMethodBeat.o(21434);
   }
 }

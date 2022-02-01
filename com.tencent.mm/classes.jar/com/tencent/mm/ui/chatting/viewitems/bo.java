@@ -12,7 +12,7 @@ import com.tencent.mm.ui.base.span.a;
 final class bo
   extends LinkMovementMethod
 {
-  private a KhM;
+  private a KEg;
   
   private static a a(TextView paramTextView, Spannable paramSpannable, MotionEvent paramMotionEvent)
   {
@@ -39,11 +39,11 @@ final class bo
     AppMethodBeat.i(37562);
     if (paramMotionEvent.getAction() == 0)
     {
-      this.KhM = a(paramTextView, paramSpannable, paramMotionEvent);
-      if (this.KhM != null)
+      this.KEg = a(paramTextView, paramSpannable, paramMotionEvent);
+      if (this.KEg != null)
       {
-        this.KhM.setIsPressed(true);
-        Selection.setSelection(paramSpannable, paramSpannable.getSpanStart(this.KhM), paramSpannable.getSpanEnd(this.KhM));
+        this.KEg.setIsPressed(true);
+        Selection.setSelection(paramSpannable, paramSpannable.getSpanStart(this.KEg), paramSpannable.getSpanEnd(this.KEg));
       }
     }
     for (;;)
@@ -53,21 +53,21 @@ final class bo
       if (paramMotionEvent.getAction() == 2)
       {
         paramTextView = a(paramTextView, paramSpannable, paramMotionEvent);
-        if ((this.KhM != null) && (paramTextView != this.KhM))
+        if ((this.KEg != null) && (paramTextView != this.KEg))
         {
-          this.KhM.setIsPressed(false);
-          this.KhM = null;
+          this.KEg.setIsPressed(false);
+          this.KEg = null;
           Selection.removeSelection(paramSpannable);
         }
       }
       else
       {
-        if (this.KhM != null)
+        if (this.KEg != null)
         {
-          this.KhM.setIsPressed(false);
+          this.KEg.setIsPressed(false);
           super.onTouchEvent(paramTextView, paramSpannable, paramMotionEvent);
         }
-        this.KhM = null;
+        this.KEg = null;
         Selection.removeSelection(paramSpannable);
       }
     }
@@ -75,7 +75,7 @@ final class bo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.viewitems.bo
  * JD-Core Version:    0.7.0.1
  */

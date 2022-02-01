@@ -13,14 +13,14 @@ final class f$1
   public final String[] getSQLs()
   {
     AppMethodBeat.i(63025);
-    String str = j.getCreateSQLs(em.Vv(), "Music");
+    String str = j.getCreateSQLs(em.VD(), "Music");
     AppMethodBeat.o(63025);
     return new String[] { str };
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.music.model.f.1
  * JD-Core Version:    0.7.0.1
  */

@@ -27,15 +27,15 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-@d.l(gfx={1, 1, 16}, gfy={""}, gfz={"JVM_STATIC", "Lkotlin/reflect/jvm/internal/impl/name/FqName;", "getJVM_STATIC", "()Lorg/jetbrains/kotlin/name/FqName;", "instanceReceiverParameter", "Lkotlin/reflect/jvm/internal/impl/descriptors/ReceiverParameterDescriptor;", "Lkotlin/reflect/jvm/internal/impl/descriptors/CallableDescriptor;", "getInstanceReceiverParameter", "(Lorg/jetbrains/kotlin/descriptors/CallableDescriptor;)Lorg/jetbrains/kotlin/descriptors/ReceiverParameterDescriptor;", "deserializeToDescriptor", "D", "M", "Lkotlin/reflect/jvm/internal/impl/protobuf/MessageLite;", "moduleAnchor", "Ljava/lang/Class;", "proto", "nameResolver", "Lkotlin/reflect/jvm/internal/impl/metadata/deserialization/NameResolver;", "typeTable", "Lkotlin/reflect/jvm/internal/impl/metadata/deserialization/TypeTable;", "metadataVersion", "Lkotlin/reflect/jvm/internal/impl/metadata/deserialization/BinaryVersion;", "createDescriptor", "Lkotlin/Function2;", "Lkotlin/reflect/jvm/internal/impl/serialization/deserialization/MemberDeserializer;", "Lkotlin/ExtensionFunctionType;", "(Ljava/lang/Class;Lorg/jetbrains/kotlin/protobuf/MessageLite;Lorg/jetbrains/kotlin/metadata/deserialization/NameResolver;Lorg/jetbrains/kotlin/metadata/deserialization/TypeTable;Lorg/jetbrains/kotlin/metadata/deserialization/BinaryVersion;Lkotlin/jvm/functions/Function2;)Lorg/jetbrains/kotlin/descriptors/CallableDescriptor;", "loadClass", "classLoader", "Ljava/lang/ClassLoader;", "packageName", "", "className", "arrayDimensions", "", "kotlinClassId", "Lkotlin/reflect/jvm/internal/impl/name/ClassId;", "reflectionCall", "R", "block", "Lkotlin/Function0;", "(Lkotlin/jvm/functions/Function0;)Ljava/lang/Object;", "asKCallableImpl", "Lkotlin/reflect/jvm/internal/KCallableImpl;", "", "asKFunctionImpl", "Lkotlin/reflect/jvm/internal/KFunctionImpl;", "asKPropertyImpl", "Lkotlin/reflect/jvm/internal/KPropertyImpl;", "computeAnnotations", "", "", "Lkotlin/reflect/jvm/internal/impl/descriptors/annotations/Annotated;", "toAnnotationInstance", "Lkotlin/reflect/jvm/internal/impl/descriptors/annotations/AnnotationDescriptor;", "toJavaClass", "Lkotlin/reflect/jvm/internal/impl/descriptors/ClassDescriptor;", "toKVisibility", "Lkotlin/reflect/KVisibility;", "Lkotlin/reflect/jvm/internal/impl/descriptors/Visibility;", "toRuntimeValue", "Lkotlin/reflect/jvm/internal/impl/resolve/constants/ConstantValue;", "kotlin-reflection"})
+@d.l(gjZ={1, 1, 16}, gka={""}, gkb={"JVM_STATIC", "Lkotlin/reflect/jvm/internal/impl/name/FqName;", "getJVM_STATIC", "()Lorg/jetbrains/kotlin/name/FqName;", "instanceReceiverParameter", "Lkotlin/reflect/jvm/internal/impl/descriptors/ReceiverParameterDescriptor;", "Lkotlin/reflect/jvm/internal/impl/descriptors/CallableDescriptor;", "getInstanceReceiverParameter", "(Lorg/jetbrains/kotlin/descriptors/CallableDescriptor;)Lorg/jetbrains/kotlin/descriptors/ReceiverParameterDescriptor;", "deserializeToDescriptor", "D", "M", "Lkotlin/reflect/jvm/internal/impl/protobuf/MessageLite;", "moduleAnchor", "Ljava/lang/Class;", "proto", "nameResolver", "Lkotlin/reflect/jvm/internal/impl/metadata/deserialization/NameResolver;", "typeTable", "Lkotlin/reflect/jvm/internal/impl/metadata/deserialization/TypeTable;", "metadataVersion", "Lkotlin/reflect/jvm/internal/impl/metadata/deserialization/BinaryVersion;", "createDescriptor", "Lkotlin/Function2;", "Lkotlin/reflect/jvm/internal/impl/serialization/deserialization/MemberDeserializer;", "Lkotlin/ExtensionFunctionType;", "(Ljava/lang/Class;Lorg/jetbrains/kotlin/protobuf/MessageLite;Lorg/jetbrains/kotlin/metadata/deserialization/NameResolver;Lorg/jetbrains/kotlin/metadata/deserialization/TypeTable;Lorg/jetbrains/kotlin/metadata/deserialization/BinaryVersion;Lkotlin/jvm/functions/Function2;)Lorg/jetbrains/kotlin/descriptors/CallableDescriptor;", "loadClass", "classLoader", "Ljava/lang/ClassLoader;", "packageName", "", "className", "arrayDimensions", "", "kotlinClassId", "Lkotlin/reflect/jvm/internal/impl/name/ClassId;", "reflectionCall", "R", "block", "Lkotlin/Function0;", "(Lkotlin/jvm/functions/Function0;)Ljava/lang/Object;", "asKCallableImpl", "Lkotlin/reflect/jvm/internal/KCallableImpl;", "", "asKFunctionImpl", "Lkotlin/reflect/jvm/internal/KFunctionImpl;", "asKPropertyImpl", "Lkotlin/reflect/jvm/internal/KPropertyImpl;", "computeAnnotations", "", "", "Lkotlin/reflect/jvm/internal/impl/descriptors/annotations/Annotated;", "toAnnotationInstance", "Lkotlin/reflect/jvm/internal/impl/descriptors/annotations/AnnotationDescriptor;", "toJavaClass", "Lkotlin/reflect/jvm/internal/impl/descriptors/ClassDescriptor;", "toKVisibility", "Lkotlin/reflect/KVisibility;", "Lkotlin/reflect/jvm/internal/impl/descriptors/Visibility;", "toRuntimeValue", "Lkotlin/reflect/jvm/internal/impl/resolve/constants/ConstantValue;", "kotlin-reflection"})
 public final class ae
 {
-  private static final d.l.b.a.b.f.b MOY;
+  private static final d.l.b.a.b.f.b Nmd;
   
   static
   {
     AppMethodBeat.i(56564);
-    MOY = new d.l.b.a.b.f.b("kotlin.jvm.JvmStatic");
+    Nmd = new d.l.b.a.b.f.b("kotlin.jvm.JvmStatic");
     AppMethodBeat.o(56564);
   }
   
@@ -50,12 +50,12 @@ public final class ae
     p.h(paramm, "createDescriptor");
     Object localObject1 = x.bs(paramClass);
     if ((paramM instanceof a.h)) {}
-    for (paramClass = ((a.h)paramM).NkM;; paramClass = ((a.m)paramM).NkM)
+    for (paramClass = ((a.h)paramM).NHS;; paramClass = ((a.m)paramM).NHS)
     {
-      d.l.b.a.b.k.a.l locall = ((d.l.b.a.b.b.d.a.j)localObject1).Naa;
-      localObject1 = (d.l.b.a.b.b.l)((d.l.b.a.b.b.d.a.j)localObject1).Naa.MTr;
-      Object localObject2 = i.Npa;
-      localObject2 = i.gqm();
+      d.l.b.a.b.k.a.l locall = ((d.l.b.a.b.b.d.a.j)localObject1).Nxg;
+      localObject1 = (d.l.b.a.b.b.l)((d.l.b.a.b.b.d.a.j)localObject1).Nxg.Nqw;
+      Object localObject2 = i.NMg;
+      localObject2 = i.guO();
       p.g(paramClass, "typeParameters");
       paramClass = (d.l.b.a.b.b.a)paramm.p(new w(new d.l.b.a.b.k.a.n(locall, paramc, (d.l.b.a.b.b.l)localObject1, paramh, (i)localObject2, parama, null, null, paramClass)), paramM);
       AppMethodBeat.o(56563);
@@ -73,16 +73,16 @@ public final class ae
   {
     AppMethodBeat.i(56562);
     p.h(parama, "$this$instanceReceiverParameter");
-    if (parama.gio() != null)
+    if (parama.gmQ() != null)
     {
-      parama = parama.ghs();
+      parama = parama.glU();
       if (parama == null)
       {
         parama = new d.v("null cannot be cast to non-null type org.jetbrains.kotlin.descriptors.ClassDescriptor");
         AppMethodBeat.o(56562);
         throw parama;
       }
-      parama = ((d.l.b.a.b.b.e)parama).giK();
+      parama = ((d.l.b.a.b.b.e)parama).gnm();
       AppMethodBeat.o(56562);
       return parama;
     }
@@ -94,31 +94,31 @@ public final class ae
   {
     AppMethodBeat.i(56554);
     p.h(parame, "$this$toJavaClass");
-    Object localObject = parame.ghI();
+    Object localObject = parame.gmk();
     p.g(localObject, "source");
     if ((localObject instanceof d.l.b.a.b.d.b.r))
     {
-      parame = ((d.l.b.a.b.d.b.r)localObject).Njd;
+      parame = ((d.l.b.a.b.d.b.r)localObject).NGj;
       if (parame == null)
       {
         parame = new d.v("null cannot be cast to non-null type org.jetbrains.kotlin.descriptors.runtime.components.ReflectKotlinClass");
         AppMethodBeat.o(56554);
         throw parame;
       }
-      parame = ((d.l.b.a.b.b.d.a.f)parame).MZV;
+      parame = ((d.l.b.a.b.b.d.a.f)parame).Nxb;
       AppMethodBeat.o(56554);
       return parame;
     }
     if ((localObject instanceof k.a))
     {
-      parame = ((k.a)localObject).Nae;
+      parame = ((k.a)localObject).Nxk;
       if (parame == null)
       {
         parame = new d.v("null cannot be cast to non-null type org.jetbrains.kotlin.descriptors.runtime.structure.ReflectJavaClass");
         AppMethodBeat.o(56554);
         throw parame;
       }
-      parame = ((d.l.b.a.b.b.d.b.j)parame).MZV;
+      parame = ((d.l.b.a.b.b.d.b.j)parame).Nxb;
       AppMethodBeat.o(56554);
       return parame;
     }
@@ -136,16 +136,16 @@ public final class ae
   private static final Class<?> a(ClassLoader paramClassLoader, d.l.b.a.b.f.a parama, int paramInt)
   {
     AppMethodBeat.i(56555);
-    Object localObject = d.l.b.a.b.a.b.c.MTm;
-    localObject = parama.gre().grf();
+    Object localObject = d.l.b.a.b.a.b.c.Nqr;
+    localObject = parama.gvG().gvH();
     p.g(localObject, "kotlinClassId.asSingleFqName().toUnsafe()");
     localObject = d.l.b.a.b.a.b.c.c((d.l.b.a.b.f.c)localObject);
     if (localObject == null) {}
     for (;;)
     {
-      localObject = parama.gqZ().sD();
+      localObject = parama.gvB().sD();
       p.g(localObject, "javaClassId.packageFqName.asString()");
-      parama = parama.gra().sD();
+      parama = parama.gvC().sD();
       p.g(parama, "javaClassId.relativeClassName.asString()");
       paramClassLoader = a(paramClassLoader, (String)localObject, parama, paramInt);
       AppMethodBeat.o(56555);
@@ -275,13 +275,13 @@ public final class ae
         paramg = (r.b)((d.l.b.a.b.j.b.r)paramg).getValue();
         if ((paramg instanceof r.b.b))
         {
-          paramg = a(paramClassLoader, ((r.b.b)paramg).NwI.MSw, ((r.b.b)paramg).NwI.Nwr);
+          paramg = a(paramClassLoader, ((r.b.b)paramg).NTO.NpB, ((r.b.b)paramg).NTO.NTx);
           AppMethodBeat.o(56559);
           return paramg;
         }
         if ((paramg instanceof r.b.a))
         {
-          paramClassLoader = ((r.b.a)paramg).MOF.gsZ().ghO();
+          paramClassLoader = ((r.b.a)paramg).NlK.gxB().gmq();
           paramg = paramClassLoader;
           if (!(paramClassLoader instanceof d.l.b.a.b.b.e)) {
             paramg = null;
@@ -334,7 +334,7 @@ public final class ae
         localObject1 = null;
         break;
       }
-      paramc = (Iterable)paramc.gjK().entrySet();
+      paramc = (Iterable)paramc.gom().entrySet();
       Collection localCollection = (Collection)new ArrayList();
       Iterator localIterator = paramc.iterator();
       while (localIterator.hasNext())
@@ -346,7 +346,7 @@ public final class ae
         p.g(localClassLoader, "annotationClass.classLoader");
         localObject2 = a((g)localObject2, localClassLoader);
         if (localObject2 != null) {}
-        for (paramc = u.S(paramc.sD(), localObject2);; paramc = null)
+        for (paramc = u.R(paramc.sD(), localObject2);; paramc = null)
         {
           if (paramc == null) {
             break label178;
@@ -365,16 +365,16 @@ public final class ae
   {
     AppMethodBeat.i(56557);
     p.h(parama, "$this$computeAnnotations");
-    parama = (Iterable)parama.ghH();
+    parama = (Iterable)parama.gmj();
     Collection localCollection = (Collection)new ArrayList();
     Iterator localIterator = parama.iterator();
     label151:
     while (localIterator.hasNext())
     {
       parama = (d.l.b.a.b.b.a.c)localIterator.next();
-      Object localObject = parama.ghI();
+      Object localObject = parama.gmk();
       if ((localObject instanceof d.l.b.a.b.b.d.a.b)) {
-        parama = ((d.l.b.a.b.b.d.a.b)localObject).MZS;
+        parama = ((d.l.b.a.b.b.d.a.b)localObject).NwY;
       }
       for (;;)
       {
@@ -385,14 +385,14 @@ public final class ae
         break;
         if ((localObject instanceof k.a))
         {
-          localObject = ((k.a)localObject).Nae;
+          localObject = ((k.a)localObject).Nxk;
           parama = (d.l.b.a.b.b.a.a)localObject;
           if (!(localObject instanceof d.l.b.a.b.b.d.b.c)) {
             parama = null;
           }
           parama = (d.l.b.a.b.b.d.b.c)parama;
           if (parama != null) {
-            parama = parama.MZS;
+            parama = parama.NwY;
           } else {
             parama = null;
           }
@@ -408,7 +408,7 @@ public final class ae
     return parama;
   }
   
-  public static final j eZ(Object paramObject)
+  public static final j fc(Object paramObject)
   {
     AppMethodBeat.i(56560);
     if (!(paramObject instanceof j)) {}
@@ -428,7 +428,7 @@ public final class ae
       {
         paramObject = (d.g.b.n)paramObject;
         if (paramObject != null) {}
-        for (paramObject = paramObject.gfQ();; paramObject = null)
+        for (paramObject = paramObject.gks();; paramObject = null)
         {
           localObject = paramObject;
           if (!(paramObject instanceof j)) {
@@ -442,7 +442,7 @@ public final class ae
     }
   }
   
-  public static final r<?> fa(Object paramObject)
+  public static final r<?> fd(Object paramObject)
   {
     AppMethodBeat.i(56561);
     if (!(paramObject instanceof r)) {}
@@ -462,7 +462,7 @@ public final class ae
       {
         paramObject = (d.g.b.v)paramObject;
         if (paramObject != null) {}
-        for (paramObject = paramObject.gfQ();; paramObject = null)
+        for (paramObject = paramObject.gks();; paramObject = null)
         {
           localObject = paramObject;
           if (!(paramObject instanceof r)) {
@@ -476,14 +476,14 @@ public final class ae
     }
   }
   
-  public static final d.l.b.a.b.f.b ggP()
+  public static final d.l.b.a.b.f.b glr()
   {
-    return MOY;
+    return Nmd;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.ae
  * JD-Core Version:    0.7.0.1
  */

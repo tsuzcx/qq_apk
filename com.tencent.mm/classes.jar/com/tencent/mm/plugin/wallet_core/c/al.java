@@ -6,11 +6,11 @@ import org.json.JSONObject;
 
 public final class al
 {
-  public boolean CPG;
-  public ak CPH;
-  public String CPI;
-  public String CPJ;
-  public String nch;
+  public boolean Dhk;
+  public ak Dhl;
+  public String Dhm;
+  public String Dhn;
+  public String nhq;
   public String title;
   
   public static al aX(JSONObject paramJSONObject)
@@ -23,19 +23,19 @@ public final class al
     }
     al localal = new al();
     localal.title = paramJSONObject.optString("title");
-    localal.nch = paramJSONObject.optString("sub_title");
-    localal.CPG = paramJSONObject.optBoolean("is_lqt_user");
-    localal.CPI = paramJSONObject.optString("lqt_operate_id");
-    localal.CPJ = paramJSONObject.optString("lqt_trace_info");
-    ae.aDQ(localal.CPJ);
+    localal.nhq = paramJSONObject.optString("sub_title");
+    localal.Dhk = paramJSONObject.optBoolean("is_lqt_user");
+    localal.Dhm = paramJSONObject.optString("lqt_operate_id");
+    localal.Dhn = paramJSONObject.optString("lqt_trace_info");
+    ae.aFj(localal.Dhn);
     paramJSONObject = paramJSONObject.optJSONObject("open_lqt_info");
     if (paramJSONObject != null)
     {
-      localal.CPH = new ak();
-      localal.CPH.CPE = paramJSONObject.optString("open_info");
-      localal.CPH.CPF = paramJSONObject.optString("open_url");
-      localal.CPH.kzJ = paramJSONObject.optInt("route_type");
-      localal.CPH.hBg = paramJSONObject.optString("appname");
+      localal.Dhl = new ak();
+      localal.Dhl.Dhi = paramJSONObject.optString("open_info");
+      localal.Dhl.Dhj = paramJSONObject.optString("open_url");
+      localal.Dhl.kCY = paramJSONObject.optInt("route_type");
+      localal.Dhl.hDU = paramJSONObject.optString("appname");
     }
     AppMethodBeat.o(69966);
     return localal;
@@ -43,7 +43,7 @@ public final class al
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.c.al
  * JD-Core Version:    0.7.0.1
  */

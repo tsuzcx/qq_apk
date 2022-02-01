@@ -5,14 +5,14 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class b
   implements com.tencent.f.b
 {
-  private a Mki;
+  private a MHf;
   
   public final void a(com.tencent.f.b.a parama)
   {
     AppMethodBeat.i(62817);
-    this.Mki = new a();
-    this.Mki.Mkh = new c();
-    parama.z("EventCenter", this.Mki);
+    this.MHf = new a();
+    this.MHf.MHe = new c();
+    parama.z("EventCenter", this.MHf);
     AppMethodBeat.o(62817);
   }
 }

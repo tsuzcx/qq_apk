@@ -6,11 +6,11 @@ import com.google.b.a.e;
 public final class a$i
   extends e
 {
-  public a.ao[] LGk = a.ao.fTa();
+  public a.ao[] Mdo = a.ao.fXA();
   public String groupId = "";
   public int roomId = 0;
   public long timestamp = 0L;
-  public long uLt = 0L;
+  public long uXg = 0L;
   
   public a$i()
   {
@@ -20,16 +20,16 @@ public final class a$i
   public final void a(b paramb)
   {
     paramb.bx(1, this.roomId);
-    paramb.n(2, this.uLt);
+    paramb.n(2, this.uXg);
     if (!this.groupId.equals("")) {
       paramb.d(3, this.groupId);
     }
-    if ((this.LGk != null) && (this.LGk.length > 0))
+    if ((this.Mdo != null) && (this.Mdo.length > 0))
     {
       int i = 0;
-      while (i < this.LGk.length)
+      while (i < this.Mdo.length)
       {
-        a.ao localao = this.LGk[i];
+        a.ao localao = this.Mdo[i];
         if (localao != null) {
           paramb.a(4, localao);
         }
@@ -44,21 +44,21 @@ public final class a$i
   
   public final int zq()
   {
-    int j = super.zq() + b.bz(1, this.roomId) + b.p(2, this.uLt);
+    int j = super.zq() + b.bz(1, this.roomId) + b.p(2, this.uXg);
     int i = j;
     if (!this.groupId.equals("")) {
       i = j + b.e(3, this.groupId);
     }
     j = i;
-    if (this.LGk != null)
+    if (this.Mdo != null)
     {
       j = i;
-      if (this.LGk.length > 0)
+      if (this.Mdo.length > 0)
       {
         j = 0;
-        while (j < this.LGk.length)
+        while (j < this.Mdo.length)
         {
-          a.ao localao = this.LGk[j];
+          a.ao localao = this.Mdo[j];
           int k = i;
           if (localao != null) {
             k = i + b.b(4, localao);

@@ -4,19 +4,19 @@ import android.graphics.Bitmap;
 import d.l;
 import d.v;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/loader/model/LoadResult;", "R", "", "()V", "status", "", "from", "value", "(IILjava/lang/Object;)V", "data", "", "contentType", "", "([BLjava/lang/String;)V", "([BILjava/lang/String;)V", "getContentType", "()Ljava/lang/String;", "setContentType", "(Ljava/lang/String;)V", "getData", "()[B", "setData", "([B)V", "getFrom", "()I", "setFrom", "(I)V", "getStatus", "setStatus", "getValue", "()Ljava/lang/Object;", "setValue", "(Ljava/lang/Object;)V", "Ljava/lang/Object;", "isValid", "", "(Ljava/lang/Object;)Lcom/tencent/mm/loader/model/LoadResult;", "Companion", "libimageloader_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/loader/model/LoadResult;", "R", "", "()V", "status", "", "from", "value", "(IILjava/lang/Object;)V", "data", "", "contentType", "", "([BLjava/lang/String;)V", "([BILjava/lang/String;)V", "getContentType", "()Ljava/lang/String;", "setContentType", "(Ljava/lang/String;)V", "getData", "()[B", "setData", "([B)V", "getFrom", "()I", "setFrom", "(I)V", "getStatus", "setStatus", "getValue", "()Ljava/lang/Object;", "setValue", "(Ljava/lang/Object;)V", "Ljava/lang/Object;", "isValid", "", "(Ljava/lang/Object;)Lcom/tencent/mm/loader/model/LoadResult;", "Companion", "libimageloader_release"})
 public final class c<R>
 {
   private static final int STATUS_DEFAULT = -1;
   private static final int STATUS_OK = 0;
-  private static final int hgk = 1;
-  private static final int hgl = 2;
-  private static final int hgm = 3;
-  private static final int hgn = 4;
-  private static final int hgo = 0;
-  private static final int hgp = 1;
-  private static final int hgq = 2;
-  public static final c.a hgr = new c.a((byte)0);
+  private static final int hiY = 1;
+  private static final int hiZ = 2;
+  private static final int hja = 3;
+  private static final int hjb = 4;
+  private static final int hjc = 0;
+  private static final int hjd = 1;
+  private static final int hje = 2;
+  public static final c.a hjf = new c.a((byte)0);
   public int from;
   public int status;
   public R value;
@@ -51,7 +51,7 @@ public final class c<R>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.loader.h.c
  * JD-Core Version:    0.7.0.1
  */

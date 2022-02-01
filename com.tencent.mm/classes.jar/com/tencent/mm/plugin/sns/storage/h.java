@@ -1,61 +1,61 @@
 package com.tencent.mm.plugin.sns.storage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.model.ag;
+import com.tencent.mm.plugin.sns.model.ah;
 
 public final class h
 {
   public static boolean a(String paramString, p paramp)
   {
     AppMethodBeat.i(97445);
-    if (x.axz(paramString))
+    if (x.ayP(paramString))
     {
-      bool = ag.dUe().b(x.axN(paramString), paramp);
+      bool = ah.dXE().b(x.aze(paramString), paramp);
       AppMethodBeat.o(97445);
       return bool;
     }
-    boolean bool = ag.dUh().b(x.axN(paramString), paramp.dYU());
+    boolean bool = ah.dXH().b(x.aze(paramString), paramp.ecy());
     AppMethodBeat.o(97445);
     return bool;
   }
   
-  public static p aAa(String paramString)
-  {
-    AppMethodBeat.i(97446);
-    if (x.axz(paramString))
-    {
-      paramString = ag.dUe().QP(x.aAw(paramString));
-      AppMethodBeat.o(97446);
-      return paramString;
-    }
-    paramString = ag.dUh().QK(x.aAw(paramString));
-    if (paramString != null)
-    {
-      paramString = paramString.dYr();
-      AppMethodBeat.o(97446);
-      return paramString;
-    }
-    AppMethodBeat.o(97446);
-    return null;
-  }
-  
-  public static p azZ(String paramString)
+  public static p aBq(String paramString)
   {
     AppMethodBeat.i(97444);
-    if (x.axz(paramString))
+    if (x.ayP(paramString))
     {
-      paramString = ag.dUe().Ai(x.axN(paramString));
+      paramString = ah.dXE().AG(x.aze(paramString));
       AppMethodBeat.o(97444);
       return paramString;
     }
-    paramString = ag.dUh().zZ(x.axN(paramString));
+    paramString = ah.dXH().Ax(x.aze(paramString));
     if (paramString != null)
     {
-      paramString = paramString.dYr();
+      paramString = paramString.ebV();
       AppMethodBeat.o(97444);
       return paramString;
     }
     AppMethodBeat.o(97444);
+    return null;
+  }
+  
+  public static p aBr(String paramString)
+  {
+    AppMethodBeat.i(97446);
+    if (x.ayP(paramString))
+    {
+      paramString = ah.dXE().Rw(x.aBN(paramString));
+      AppMethodBeat.o(97446);
+      return paramString;
+    }
+    paramString = ah.dXH().Rr(x.aBN(paramString));
+    if (paramString != null)
+    {
+      paramString = paramString.ebV();
+      AppMethodBeat.o(97446);
+      return paramString;
+    }
+    AppMethodBeat.o(97446);
     return null;
   }
 }

@@ -13,56 +13,56 @@ import d.l.b.a.b.f.a;
 
 public abstract class z
 {
-  public final c MMU;
-  public final h MMV;
-  public final an MVx;
+  public final c NjZ;
+  public final h Nka;
+  public final an NsC;
   
   private z(c paramc, h paramh, an paraman)
   {
-    this.MMU = paramc;
-    this.MMV = paramh;
-    this.MVx = paraman;
+    this.NjZ = paramc;
+    this.Nka = paramh;
+    this.NsC = paraman;
   }
   
-  public abstract d.l.b.a.b.f.b gtA();
+  public abstract d.l.b.a.b.f.b gyc();
   
   public String toString()
   {
-    return getClass().getSimpleName() + ": " + gtA();
+    return getClass().getSimpleName() + ": " + gyc();
   }
   
   public static final class a
     extends z
   {
-    public final a MSw;
-    public final boolean MUM;
-    final a.b Nyx;
-    public final a.b.b Nzx;
-    public final a Nzy;
+    final a.b NVE;
+    public final a.b.b NWE;
+    public final a NWF;
+    public final a NpB;
+    public final boolean NrR;
     
     public a(a.b paramb, c paramc, h paramh, an paraman, a parama)
     {
       super(paramh, paraman, (byte)0);
       AppMethodBeat.i(60347);
-      this.Nyx = paramb;
-      this.Nzy = parama;
-      this.MSw = x.a(paramc, this.Nyx.NkK);
-      paramc = (a.b.b)d.l.b.a.b.e.b.b.Noo.get(this.Nyx.Nkt);
+      this.NVE = paramb;
+      this.NWF = parama;
+      this.NpB = x.a(paramc, this.NVE.NHQ);
+      paramc = (a.b.b)d.l.b.a.b.e.b.b.NLu.get(this.NVE.NHz);
       paramb = paramc;
       if (paramc == null) {
-        paramb = a.b.b.Nlc;
+        paramb = a.b.b.NIi;
       }
-      this.Nzx = paramb;
-      paramb = d.l.b.a.b.e.b.b.Nop.akK(this.Nyx.Nkt);
+      this.NWE = paramb;
+      paramb = d.l.b.a.b.e.b.b.NLv.alu(this.NVE.NHz);
       p.g(paramb, "Flags.IS_INNER.get(classProto.flags)");
-      this.MUM = paramb.booleanValue();
+      this.NrR = paramb.booleanValue();
       AppMethodBeat.o(60347);
     }
     
-    public final d.l.b.a.b.f.b gtA()
+    public final d.l.b.a.b.f.b gyc()
     {
       AppMethodBeat.i(60346);
-      d.l.b.a.b.f.b localb = this.MSw.gre();
+      d.l.b.a.b.f.b localb = this.NpB.gvG();
       p.g(localb, "classId.asSingleFqName()");
       AppMethodBeat.o(60346);
       return localb;
@@ -72,25 +72,25 @@ public abstract class z
   public static final class b
     extends z
   {
-    private final d.l.b.a.b.f.b MVU;
+    private final d.l.b.a.b.f.b Nta;
     
     public b(d.l.b.a.b.f.b paramb, c paramc, h paramh, an paraman)
     {
       super(paramh, paraman, (byte)0);
       AppMethodBeat.i(60348);
-      this.MVU = paramb;
+      this.Nta = paramb;
       AppMethodBeat.o(60348);
     }
     
-    public final d.l.b.a.b.f.b gtA()
+    public final d.l.b.a.b.f.b gyc()
     {
-      return this.MVU;
+      return this.Nta;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.k.a.z
  * JD-Core Version:    0.7.0.1
  */

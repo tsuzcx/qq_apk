@@ -5,7 +5,7 @@ import com.tencent.mm.plugin.appbrand.jsapi.co;
 import com.tencent.mm.plugin.appbrand.jsapi.d;
 import com.tencent.mm.plugin.appbrand.jsapi.m;
 import com.tencent.mm.plugin.appbrand.jsapi.y;
-import com.tencent.mm.plugin.appbrand.page.aa;
+import com.tencent.mm.plugin.appbrand.page.z;
 import org.json.JSONObject;
 
 @Deprecated
@@ -21,21 +21,21 @@ public abstract class k<CONTEXT extends c, EXTENSION>
   
   public final String a(CONTEXT paramCONTEXT, JSONObject paramJSONObject)
   {
-    aa localaa = co.i(paramCONTEXT);
-    if (localaa == null) {
+    z localz = co.i(paramCONTEXT);
+    if (localz == null) {
       return e("fail:page don't exist", null);
     }
     if (paramJSONObject == null) {
       return e("fail:invalid data", null);
     }
-    Object localObject = localaa.Q(this.aWK);
+    Object localObject = localz.Q(this.aWK);
     if (localObject != null) {
       return a(paramCONTEXT, paramJSONObject, localObject);
     }
-    if (!localaa.isRunning()) {
+    if (!localz.isRunning()) {
       return e("fail:interrupted", null);
     }
-    if (localaa.jxf) {
+    if (localz.jAe) {
       throw new IllegalAccessError(String.format("%s Not Found", new Object[] { this.aWK.getName() }));
     }
     return e("fail:not supported", null);

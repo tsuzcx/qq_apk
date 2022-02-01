@@ -8,17 +8,17 @@ import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.ui.aq;
 import com.tencent.mm.ui.widget.imageview.WeImageButton;
 
 public class ToolsBar
   extends LinearLayout
 {
-  private WeImageButton JBp;
-  private WeImageButton JBt;
-  private WeImageButton JEP;
-  private LinearLayout.LayoutParams uqc;
+  private WeImageButton JWg;
+  private WeImageButton JWk;
+  private WeImageButton JZG;
+  private LinearLayout.LayoutParams uBy;
   
   public ToolsBar(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -27,26 +27,26 @@ public class ToolsBar
     setOrientation(0);
     setGravity(16);
     setBackground(aq.aM(getContext(), 2130969246));
-    this.uqc = new LinearLayout.LayoutParams(0, getResources().getDimensionPixelSize(2131165567), 1.0F);
-    this.JBp = new WeImageButton(getContext());
-    this.JBp.setImageResource(2131231575);
-    this.JBp.setScaleType(ImageView.ScaleType.CENTER);
-    this.JBp.setBackgroundResource(0);
-    this.JBp.setContentDescription(paramContext.getString(2131757252));
-    this.JBt = new WeImageButton(getContext());
-    this.JBt.setImageResource(2131231572);
-    this.JBt.setScaleType(ImageView.ScaleType.CENTER);
-    this.JBt.setBackgroundResource(0);
-    this.JBt.setContentDescription(paramContext.getString(2131757251));
-    this.JEP = new WeImageButton(getContext());
-    this.JEP.setImageResource(2131231574);
-    this.JEP.setScaleType(ImageView.ScaleType.CENTER);
-    this.JEP.setBackgroundResource(0);
-    this.JEP.setContentDescription(paramContext.getString(2131757251));
+    this.uBy = new LinearLayout.LayoutParams(0, getResources().getDimensionPixelSize(2131165567), 1.0F);
+    this.JWg = new WeImageButton(getContext());
+    this.JWg.setImageResource(2131231575);
+    this.JWg.setScaleType(ImageView.ScaleType.CENTER);
+    this.JWg.setBackgroundResource(0);
+    this.JWg.setContentDescription(paramContext.getString(2131757252));
+    this.JWk = new WeImageButton(getContext());
+    this.JWk.setImageResource(2131231572);
+    this.JWk.setScaleType(ImageView.ScaleType.CENTER);
+    this.JWk.setBackgroundResource(0);
+    this.JWk.setContentDescription(paramContext.getString(2131757251));
+    this.JZG = new WeImageButton(getContext());
+    this.JZG.setImageResource(2131231574);
+    this.JZG.setScaleType(ImageView.ScaleType.CENTER);
+    this.JZG.setBackgroundResource(0);
+    this.JZG.setContentDescription(paramContext.getString(2131757251));
     removeAllViews();
-    addView(this.JBp, this.uqc);
-    addView(this.JBt, this.uqc);
-    addView(this.JEP, this.uqc);
+    addView(this.JWg, this.uBy);
+    addView(this.JWk, this.uBy);
+    addView(this.JZG, this.uBy);
     AppMethodBeat.o(34960);
   }
   
@@ -56,19 +56,19 @@ public class ToolsBar
     switch (paramInt)
     {
     default: 
-      ad.w("MicroMsg.ToolsBar", "set button listener error button index %d", new Object[] { Integer.valueOf(paramInt) });
+      ae.w("MicroMsg.ToolsBar", "set button listener error button index %d", new Object[] { Integer.valueOf(paramInt) });
       AppMethodBeat.o(34961);
       return;
     case 0: 
-      this.JBp.setOnClickListener(paramOnClickListener);
+      this.JWg.setOnClickListener(paramOnClickListener);
       AppMethodBeat.o(34961);
       return;
     case 1: 
-      this.JBt.setOnClickListener(paramOnClickListener);
+      this.JWk.setOnClickListener(paramOnClickListener);
       AppMethodBeat.o(34961);
       return;
     }
-    this.JEP.setOnClickListener(paramOnClickListener);
+    this.JZG.setOnClickListener(paramOnClickListener);
     AppMethodBeat.o(34961);
   }
 }

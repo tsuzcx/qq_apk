@@ -16,13 +16,13 @@ class TenpaySecureEditText$5
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(199373);
+    AppMethodBeat.i(190260);
     b localb = new b();
     localb.bd(paramView);
     localb.bd(paramMotionEvent);
-    a.b("com/tenpay/android/wechat/TenpaySecureEditText$5", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahq());
+    a.b("com/tenpay/android/wechat/TenpaySecureEditText$5", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahF());
     a.a(false, this, "com/tenpay/android/wechat/TenpaySecureEditText$5", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
-    AppMethodBeat.o(199373);
+    AppMethodBeat.o(190260);
     return false;
   }
 }

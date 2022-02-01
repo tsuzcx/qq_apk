@@ -7,98 +7,106 @@ import com.tencent.mm.plugin.finder.storage.FinderItem;
 import com.tencent.mm.plugin.finder.storage.FinderItem.a;
 import com.tencent.mm.plugin.finder.storage.m;
 import com.tencent.mm.plugin.finder.storage.t;
-import com.tencent.mm.plugin.finder.storage.t.a;
 import com.tencent.mm.plugin.finder.storage.u;
 import com.tencent.mm.protocal.protobuf.FinderObject;
-import com.tencent.mm.protocal.protobuf.apj;
-import com.tencent.mm.protocal.protobuf.apk;
 import com.tencent.mm.protocal.protobuf.apw;
-import com.tencent.mm.protocal.protobuf.arg;
+import com.tencent.mm.protocal.protobuf.apx;
+import com.tencent.mm.protocal.protobuf.aqj;
+import com.tencent.mm.protocal.protobuf.arv;
 import d.f;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/feed/FinderMixFeedLogic;", "", "()V", "finderFeedToMixFeed", "Lcom/tencent/mm/plugin/finder/model/BaseMixFeed;", "feed", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "finderObjectToMixFeed", "Lcom/tencent/mm/protocal/protobuf/FinderObject;", "lbsToMixFeed", "lbsSection", "Lcom/tencent/mm/protocal/protobuf/FinderNearbySection;", "localToMixFeed", "localPb", "Lcom/tencent/mm/protocal/protobuf/FinderMixLocalItemPb;", "pack", "mixItemPb", "Lcom/tencent/mm/protocal/protobuf/FinderMixItemPb;", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/feed/FinderMixFeedLogic;", "", "()V", "finderFeedToMixFeed", "Lcom/tencent/mm/plugin/finder/model/BaseMixFeed;", "feed", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "finderObjectToMixFeed", "Lcom/tencent/mm/protocal/protobuf/FinderObject;", "lbsToMixFeed", "lbsSection", "Lcom/tencent/mm/protocal/protobuf/FinderNearbySection;", "localToMixFeed", "localPb", "Lcom/tencent/mm/protocal/protobuf/FinderMixLocalItemPb;", "pack", "mixItemPb", "Lcom/tencent/mm/protocal/protobuf/FinderMixItemPb;", "plugin-finder_release"})
 public final class v
 {
-  public static final v rWu;
+  public static final v sff;
   
   static
   {
-    AppMethodBeat.i(201971);
-    rWu = new v();
-    AppMethodBeat.o(201971);
+    AppMethodBeat.i(202435);
+    sff = new v();
+    AppMethodBeat.o(202435);
   }
   
-  public static c a(apw paramapw)
+  public static c a(aqj paramaqj)
   {
-    AppMethodBeat.i(201969);
-    p.h(paramapw, "lbsSection");
-    Object localObject = new apj();
-    t.a locala = t.sza;
-    ((apj)localObject).dataType = t.cIB();
-    ((apj)localObject).syv = paramapw;
-    paramapw = new t((apj)localObject);
-    int i = paramapw.syW.dataType;
-    localObject = t.sza;
-    if (i == t.cIB())
+    AppMethodBeat.i(202433);
+    p.h(paramaqj, "lbsSection");
+    Object localObject1 = new apw();
+    Object localObject2 = t.sJR;
+    ((apw)localObject1).dataType = t.cLg();
+    ((apw)localObject1).sJm = paramaqj;
+    localObject2 = new t((apw)localObject1);
+    int i = ((t)localObject2).sJN.dataType;
+    paramaqj = t.sJR;
+    if (i == t.cLg())
     {
-      localObject = paramapw.syW.syv;
-      p.g(localObject, "viewItemPb.section");
-      localObject = new m((apw)localObject);
-      paramapw.syT = ((m)localObject);
-      paramapw.syU = null;
-      paramapw.sjP = null;
-      paramapw.oIb = (((m)localObject).cIu().Gpb + 1000);
-      long l = ((Number)((m)localObject).rWv.getValue()).longValue();
-      localObject = paramapw.syT;
-      if (localObject != null)
+      localObject1 = ((t)localObject2).sJN.sJm;
+      paramaqj = (aqj)localObject1;
+      if (localObject1 == null) {
+        paramaqj = new aqj();
+      }
+      paramaqj = new m(paramaqj);
+      ((t)localObject2).sJK = paramaqj;
+      ((t)localObject2).sJL = null;
+      ((t)localObject2).ssM = null;
+      ((t)localObject2).oOD = (paramaqj.cKZ().GIr + 1000);
+      long l = ((Number)paramaqj.sfg.getValue()).longValue();
+      paramaqj = ((t)localObject2).sJK;
+      if (paramaqj != null)
       {
-        i = localObject.hashCode();
-        paramapw.syV = (i + l);
+        i = paramaqj.hashCode();
+        ((t)localObject2).sJM = (i + l);
       }
     }
     for (;;)
     {
-      paramapw = new c(paramapw);
-      AppMethodBeat.o(201969);
-      return paramapw;
+      paramaqj = new c((t)localObject2);
+      AppMethodBeat.o(202433);
+      return paramaqj;
       i = 0;
       break;
-      localObject = t.sza;
-      if (i == t.cIC())
+      paramaqj = t.sJR;
+      if (i == t.cLh())
       {
-        paramapw.syT = null;
-        localObject = FinderItem.syk;
-        localObject = paramapw.syW.Glx;
-        p.g(localObject, "viewItemPb.finderObject");
-        localObject = FinderItem.a.a((FinderObject)localObject, 0);
-        paramapw.syU = ((FinderItem)localObject);
-        paramapw.sjP = null;
-        paramapw.oIb = ((FinderItem)localObject).getMediaType();
-        paramapw.syV = ((FinderItem)localObject).getId();
+        ((t)localObject2).sJK = null;
+        paramaqj = FinderItem.sJb;
+        localObject1 = ((t)localObject2).sJN.GEz;
+        paramaqj = (aqj)localObject1;
+        if (localObject1 == null) {
+          paramaqj = new FinderObject();
+        }
+        paramaqj = FinderItem.a.a(paramaqj, 0);
+        ((t)localObject2).sJL = paramaqj;
+        ((t)localObject2).ssM = null;
+        ((t)localObject2).oOD = paramaqj.getMediaType();
+        ((t)localObject2).sJM = paramaqj.getId();
       }
       else
       {
-        localObject = t.sza;
-        if (i == t.cID())
+        paramaqj = t.sJR;
+        if (i == t.cLi())
         {
-          paramapw.syT = null;
-          paramapw.syU = null;
-          localObject = paramapw.syW.GnR;
-          p.g(localObject, "viewItemPb.localItem");
-          localObject = new u((apk)localObject);
-          paramapw.sjP = ((u)localObject);
-          paramapw.oIb = ((u)localObject).szb.GnS;
-          paramapw.syV = ((u)localObject).getId();
+          ((t)localObject2).sJK = null;
+          ((t)localObject2).sJL = null;
+          localObject1 = ((t)localObject2).sJN.GGX;
+          paramaqj = (aqj)localObject1;
+          if (localObject1 == null) {
+            paramaqj = new apx();
+          }
+          paramaqj = new u(paramaqj);
+          ((t)localObject2).ssM = paramaqj;
+          ((t)localObject2).oOD = paramaqj.sJS.GGY;
+          ((t)localObject2).sJM = paramaqj.getId();
         }
         else
         {
-          paramapw.syT = null;
-          paramapw.syU = null;
-          paramapw.sjP = null;
-          paramapw.oIb = 10000;
-          paramapw.syV = -1L;
+          ((t)localObject2).sJK = null;
+          ((t)localObject2).sJL = null;
+          ((t)localObject2).ssM = null;
+          ((t)localObject2).oOD = 10000;
+          ((t)localObject2).sJM = -1L;
         }
       }
     }
@@ -106,22 +114,22 @@ public final class v
   
   public static c i(BaseFinderFeed paramBaseFinderFeed)
   {
-    AppMethodBeat.i(201970);
+    AppMethodBeat.i(202434);
     p.h(paramBaseFinderFeed, "feed");
-    Object localObject1 = new apj();
-    Object localObject2 = t.sza;
-    ((apj)localObject1).dataType = t.cIC();
-    ((apj)localObject1).Glx = paramBaseFinderFeed.feedObject.getFeedObject();
-    localObject1 = new t((apj)localObject1);
-    ((t)localObject1).syT = null;
+    Object localObject1 = new apw();
+    Object localObject2 = t.sJR;
+    ((apw)localObject1).dataType = t.cLh();
+    ((apw)localObject1).GEz = paramBaseFinderFeed.feedObject.getFeedObject();
+    localObject1 = new t((apw)localObject1);
+    ((t)localObject1).sJK = null;
     localObject2 = paramBaseFinderFeed.feedObject;
-    ((t)localObject1).syU = ((FinderItem)localObject2);
-    ((t)localObject1).sjP = null;
-    ((t)localObject1).oIb = ((FinderItem)localObject2).getMediaType();
-    ((t)localObject1).syV = ((FinderItem)localObject2).getId();
+    ((t)localObject1).sJL = ((FinderItem)localObject2);
+    ((t)localObject1).ssM = null;
+    ((t)localObject1).oOD = ((FinderItem)localObject2).getMediaType();
+    ((t)localObject1).sJM = ((FinderItem)localObject2).getId();
     localObject1 = new c((t)localObject1);
-    ((c)localObject1).sjQ = paramBaseFinderFeed;
-    AppMethodBeat.o(201970);
+    ((c)localObject1).ssN = paramBaseFinderFeed;
+    AppMethodBeat.o(202434);
     return localObject1;
   }
 }

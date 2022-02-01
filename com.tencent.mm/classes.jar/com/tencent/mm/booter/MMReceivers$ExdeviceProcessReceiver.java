@@ -8,13 +8,13 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class MMReceivers$ExdeviceProcessReceiver
   extends BroadcastReceiver
 {
-  private static MMReceivers.a fEk = null;
+  private static MMReceivers.a fGo = null;
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
     AppMethodBeat.i(131891);
-    if (fEk != null) {
-      fEk.onReceive(paramContext, paramIntent);
+    if (fGo != null) {
+      fGo.onReceive(paramContext, paramIntent);
     }
     AppMethodBeat.o(131891);
   }

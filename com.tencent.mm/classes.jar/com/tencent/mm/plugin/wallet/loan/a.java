@@ -15,7 +15,7 @@ public class a
   public final d a(Activity paramActivity, Bundle paramBundle)
   {
     AppMethodBeat.i(69177);
-    if (t.eFy().eGa()) {
+    if (t.eJf().eJH()) {
       b(paramActivity, WalletLoanCheckPwdUI.class, paramBundle);
     }
     for (;;)
@@ -40,13 +40,13 @@ public class a
   public final void g(Activity paramActivity, int paramInt)
   {
     AppMethodBeat.i(69178);
-    b(paramActivity, this.dxT);
+    b(paramActivity, this.dyY);
     AppMethodBeat.o(69178);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.loan.a
  * JD-Core Version:    0.7.0.1
  */

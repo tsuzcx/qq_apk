@@ -1,43 +1,66 @@
 package com.tencent.mm.plugin.lite.ui;
 
+import android.content.Context;
+import android.view.MotionEvent;
+import android.view.ViewParent;
+import android.widget.FrameLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.wax.c.a.a;
+import com.tencent.wax.c.a;
 
-public final class b
-  implements a.a
+final class b
+  extends FrameLayout
 {
-  public final void d(String paramString1, String paramString2, Object... paramVarArgs)
+  b(Context paramContext)
   {
-    AppMethodBeat.i(214661);
-    ad.d(paramString1, paramString2, paramVarArgs);
-    AppMethodBeat.o(214661);
+    super(paramContext);
   }
   
-  public final void i(String paramString1, String paramString2, Object... paramVarArgs)
+  public final boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(214662);
-    ad.i(paramString1, paramString2, paramVarArgs);
-    AppMethodBeat.o(214662);
+    AppMethodBeat.i(212453);
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    int i = paramMotionEvent.getAction();
+    if (bool) {}
+    for (paramMotionEvent = "true";; paramMotionEvent = "false")
+    {
+      a.i("MicroMsg.LiteApp.WxaLiteAppBaseView", "dispatchTouchEvent action=%d r=%s", new Object[] { Integer.valueOf(i), paramMotionEvent });
+      AppMethodBeat.o(212453);
+      return bool;
+    }
   }
   
-  public final void v(String paramString1, String paramString2, Object... paramVarArgs)
+  public final boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(214660);
-    ad.v(paramString1, paramString2, paramVarArgs);
-    AppMethodBeat.o(214660);
+    AppMethodBeat.i(212451);
+    getParent().requestDisallowInterceptTouchEvent(true);
+    boolean bool = super.onInterceptTouchEvent(paramMotionEvent);
+    int i = paramMotionEvent.getAction();
+    if (bool) {}
+    for (paramMotionEvent = "true";; paramMotionEvent = "false")
+    {
+      a.i("MicroMsg.LiteApp.WxaLiteAppBaseView", "onInterceptTouchEvent action=%d r=%s", new Object[] { Integer.valueOf(i), paramMotionEvent });
+      AppMethodBeat.o(212451);
+      return bool;
+    }
   }
   
-  public final void w(String paramString1, String paramString2, Object... paramVarArgs)
+  public final boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(214663);
-    ad.w(paramString1, paramString2, paramVarArgs);
-    AppMethodBeat.o(214663);
+    AppMethodBeat.i(212452);
+    boolean bool = super.onTouchEvent(paramMotionEvent);
+    int i = paramMotionEvent.getAction();
+    if (bool) {}
+    for (paramMotionEvent = "true";; paramMotionEvent = "false")
+    {
+      a.i("MicroMsg.LiteApp.WxaLiteAppBaseView", "onTouchEvent action=%d r=%s", new Object[] { Integer.valueOf(i), paramMotionEvent });
+      AppMethodBeat.o(212452);
+      return bool;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.lite.ui.b
  * JD-Core Version:    0.7.0.1
  */

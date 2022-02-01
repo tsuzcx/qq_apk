@@ -5,7 +5,7 @@ public final class ak
 {
   public ak()
   {
-    this.NQs = 356;
+    this.Ony = 356;
   }
 }
 

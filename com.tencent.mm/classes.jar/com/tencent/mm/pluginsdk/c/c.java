@@ -1,9 +1,9 @@
 package com.tencent.mm.pluginsdk.c;
 
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
-import com.tencent.mm.g.a.mq;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.g.a.mr;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.sdk.b.a;
 import com.tencent.mm.sdk.b.b;
@@ -16,13 +16,13 @@ public abstract class c<T extends b>
   extends com.tencent.mm.sdk.b.c<T>
   implements f
 {
-  private static HashMap<n, b> EJR = new HashMap();
+  private static HashMap<n, b> Fcp = new HashMap();
   private static HashMap<b, c<? extends b>> bGq = new HashMap();
-  private int EJQ = 0;
+  private int Fco = 0;
   
   public static void j(b paramb)
   {
-    Iterator localIterator = EJR.entrySet().iterator();
+    Iterator localIterator = Fcp.entrySet().iterator();
     Map.Entry localEntry;
     do
     {
@@ -35,63 +35,63 @@ public abstract class c<T extends b>
     {
       if (paramb != null)
       {
-        g.aiU().a(paramb);
-        EJR.remove(paramb);
+        g.ajj().a(paramb);
+        Fcp.remove(paramb);
       }
       return;
     }
   }
   
-  public abstract int Yb();
+  public abstract int Yl();
   
   public abstract n a(T paramT);
   
   public abstract b a(int paramInt, n paramn, T paramT);
   
-  public final void dfk()
+  public final void dic()
   {
-    if (this.EJQ == 0) {}
+    if (this.Fco == 0) {}
     do
     {
       return;
-      this.EJQ -= 1;
-    } while (this.EJQ != 0);
-    g.aiU().b(Yb(), this);
+      this.Fco -= 1;
+    } while (this.Fco != 0);
+    g.ajj().b(Yl(), this);
   }
   
-  public final void eZc()
+  public final void fcQ()
   {
-    if (this.EJQ == 0) {
-      g.aiU().a(Yb(), this);
+    if (this.Fco == 0) {
+      g.ajj().a(Yl(), this);
     }
-    this.EJQ += 1;
+    this.Fco += 1;
   }
   
   public final void k(T paramT)
   {
     n localn = a(paramT);
-    g.aiU().a(localn, 0);
-    EJR.put(localn, paramT);
+    g.ajj().a(localn, 0);
+    Fcp.put(localn, paramT);
   }
   
   public void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     b localb;
-    if (Yb() == paramn.getType())
+    if (Yl() == paramn.getType())
     {
-      localb = (b)EJR.remove(paramn);
+      localb = (b)Fcp.remove(paramn);
       if (localb != null) {}
     }
     else
     {
       return;
     }
-    mq localmq = new mq();
-    localmq.dAz.dAA = a(paramInt2, paramn, localb);
-    localmq.dAz.errType = paramInt1;
-    localmq.dAz.errCode = paramInt2;
-    localmq.dAz.errMsg = paramString;
-    a.IbL.l(localmq);
+    mr localmr = new mr();
+    localmr.dBE.dBF = a(paramInt2, paramn, localb);
+    localmr.dBE.errType = paramInt1;
+    localmr.dBE.errCode = paramInt2;
+    localmr.dBE.errMsg = paramString;
+    a.IvT.l(localmr);
   }
 }
 

@@ -3,7 +3,7 @@ package com.tencent.mm.sdk.e;
 import android.os.Looper;
 import com.tencent.e.j.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.aq;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -15,17 +15,17 @@ import java.util.Vector;
 
 public abstract class l<T, E>
 {
-  private static final ap IhH = new ap(Looper.getMainLooper());
-  public int IhE = 0;
-  private final Hashtable<T, Object> IhF = new Hashtable();
-  private final HashSet<E> IhG = new HashSet();
+  private static final aq IBS = new aq(Looper.getMainLooper());
+  public int IBP = 0;
+  private final Hashtable<T, Object> IBQ = new Hashtable();
+  private final HashSet<E> IBR = new HashSet();
   
-  private Vector<T> fmm()
+  private Vector<T> fqh()
   {
     try
     {
       Vector localVector = new Vector();
-      localVector.addAll(this.IhF.keySet());
+      localVector.addAll(this.IBQ.keySet());
       return localVector;
     }
     finally
@@ -35,12 +35,12 @@ public abstract class l<T, E>
     }
   }
   
-  private void fmn()
+  private void fqi()
   {
-    final Object localObject1 = fmm();
+    final Object localObject1 = fqh();
     if (((Vector)localObject1).size() <= 0)
     {
-      this.IhG.clear();
+      this.IBR.clear();
       return;
     }
     for (;;)
@@ -49,11 +49,11 @@ public abstract class l<T, E>
       final Object localObject5;
       a locala;
       Runnable local1;
-      synchronized (this.IhG)
+      synchronized (this.IBR)
       {
-        ArrayList localArrayList = new ArrayList(this.IhG);
-        this.IhG.clear();
-        hk(localArrayList);
+        ArrayList localArrayList = new ArrayList(this.IBR);
+        this.IBR.clear();
+        hu(localArrayList);
         localHashMap = new HashMap();
         Iterator localIterator1 = ((Vector)localObject1).iterator();
         continue;
@@ -61,7 +61,7 @@ public abstract class l<T, E>
           break;
         }
         localObject5 = localIterator1.next();
-        Object localObject6 = this.IhF.get(localObject5);
+        Object localObject6 = this.IBQ.get(localObject5);
         Iterator localIterator2 = localArrayList.iterator();
         if (!localIterator2.hasNext()) {
           continue;
@@ -83,33 +83,33 @@ public abstract class l<T, E>
             AppMethodBeat.o(158085);
           }
         };
-        if (locala.IhL != null)
+        if (locala.IBW != null)
         {
-          ??? = (ap)localHashMap.get(locala.IhL);
+          ??? = (aq)localHashMap.get(locala.IBW);
           localObject1 = ???;
           if (??? == null)
           {
-            localObject1 = new ap(locala.IhL);
-            localHashMap.put(locala.IhL, localObject1);
+            localObject1 = new aq(locala.IBW);
+            localHashMap.put(locala.IBW, localObject1);
           }
-          ((ap)localObject1).post(local1);
+          ((aq)localObject1).post(local1);
         }
       }
       Object localObject3;
-      if (locala.cJU != null)
+      if (locala.cKD != null)
       {
-        ??? = (ap)localHashMap.get(locala.cJU);
+        ??? = (aq)localHashMap.get(locala.cKD);
         localObject3 = ???;
         if (??? == null)
         {
-          localObject3 = new ap(locala.cJU);
-          localHashMap.put(locala.cJU, localObject3);
+          localObject3 = new aq(locala.cKD);
+          localHashMap.put(locala.cKD, localObject3);
         }
-        ((ap)localObject3).post(local1);
+        ((aq)localObject3).post(local1);
       }
       else
       {
-        IhH.post(local1);
+        IBS.post(local1);
         continue;
         label310:
         B(localObject5, localObject3);
@@ -126,14 +126,14 @@ public abstract class l<T, E>
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 46	com/tencent/mm/sdk/e/l:IhF	Ljava/util/Hashtable;
+    //   3: getfield 46	com/tencent/mm/sdk/e/l:IBQ	Ljava/util/Hashtable;
     //   6: aload_1
     //   7: invokevirtual 141	java/util/Hashtable:containsKey	(Ljava/lang/Object;)Z
     //   10: ifne +24 -> 34
     //   13: aload_2
     //   14: ifnull +23 -> 37
     //   17: aload_0
-    //   18: getfield 46	com/tencent/mm/sdk/e/l:IhF	Ljava/util/Hashtable;
+    //   18: getfield 46	com/tencent/mm/sdk/e/l:IBQ	Ljava/util/Hashtable;
     //   21: aload_1
     //   22: new 9	com/tencent/mm/sdk/e/l$a
     //   25: dup
@@ -145,7 +145,7 @@ public abstract class l<T, E>
     //   35: monitorexit
     //   36: return
     //   37: aload_0
-    //   38: getfield 46	com/tencent/mm/sdk/e/l:IhF	Ljava/util/Hashtable;
+    //   38: getfield 46	com/tencent/mm/sdk/e/l:IBQ	Ljava/util/Hashtable;
     //   41: aload_1
     //   42: new 5	java/lang/Object
     //   45: dup
@@ -177,14 +177,14 @@ public abstract class l<T, E>
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 46	com/tencent/mm/sdk/e/l:IhF	Ljava/util/Hashtable;
+    //   3: getfield 46	com/tencent/mm/sdk/e/l:IBQ	Ljava/util/Hashtable;
     //   6: aload_1
     //   7: invokevirtual 141	java/util/Hashtable:containsKey	(Ljava/lang/Object;)Z
     //   10: ifne +24 -> 34
     //   13: aload_2
     //   14: ifnull +23 -> 37
     //   17: aload_0
-    //   18: getfield 46	com/tencent/mm/sdk/e/l:IhF	Ljava/util/Hashtable;
+    //   18: getfield 46	com/tencent/mm/sdk/e/l:IBQ	Ljava/util/Hashtable;
     //   21: aload_1
     //   22: new 9	com/tencent/mm/sdk/e/l$a
     //   25: dup
@@ -196,7 +196,7 @@ public abstract class l<T, E>
     //   35: monitorexit
     //   36: return
     //   37: aload_0
-    //   38: getfield 46	com/tencent/mm/sdk/e/l:IhF	Ljava/util/Hashtable;
+    //   38: getfield 46	com/tencent/mm/sdk/e/l:IBQ	Ljava/util/Hashtable;
     //   41: aload_1
     //   42: new 5	java/lang/Object
     //   45: dup
@@ -221,11 +221,11 @@ public abstract class l<T, E>
     //   37	53	56	finally
   }
   
-  public final boolean dV(E paramE)
+  public final boolean dW(E paramE)
   {
-    synchronized (this.IhG)
+    synchronized (this.IBR)
     {
-      boolean bool = this.IhG.add(paramE);
+      boolean bool = this.IBR.add(paramE);
       return bool;
     }
   }
@@ -233,27 +233,27 @@ public abstract class l<T, E>
   public final void doNotify()
   {
     if (!isLocked()) {
-      fmn();
+      fqi();
     }
   }
   
-  public void hk(List<E> paramList) {}
+  public void hu(List<E> paramList) {}
   
   public final boolean isLocked()
   {
-    return this.IhE > 0;
+    return this.IBP > 0;
   }
   
   public final void lock()
   {
-    this.IhE += 1;
+    this.IBP += 1;
   }
   
   public final void remove(T paramT)
   {
     try
     {
-      this.IhF.remove(paramT);
+      this.IBQ.remove(paramT);
       return;
     }
     finally
@@ -267,7 +267,7 @@ public abstract class l<T, E>
   {
     try
     {
-      this.IhF.clear();
+      this.IBQ.clear();
       return;
     }
     finally
@@ -279,29 +279,29 @@ public abstract class l<T, E>
   
   public final void unlock()
   {
-    this.IhE -= 1;
-    if (this.IhE <= 0)
+    this.IBP -= 1;
+    if (this.IBP <= 0)
     {
-      this.IhE = 0;
-      fmn();
+      this.IBP = 0;
+      fqi();
     }
   }
   
   protected static final class a
   {
-    a IhL;
-    Looper cJU;
+    a IBW;
+    Looper cKD;
     
     public a() {}
     
     public a(Looper paramLooper)
     {
-      this.cJU = paramLooper;
+      this.cKD = paramLooper;
     }
     
     public a(a parama)
     {
-      this.IhL = parama;
+      this.IBW = parama;
     }
   }
 }

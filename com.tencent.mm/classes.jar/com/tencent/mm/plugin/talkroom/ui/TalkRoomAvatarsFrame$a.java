@@ -14,14 +14,14 @@ import java.util.List;
 final class TalkRoomAvatarsFrame$a
   extends BaseAdapter
 {
-  List<String> BoO;
+  List<String> BGn;
   private Context mContext;
-  String vcX;
+  String vpi;
   
   public TalkRoomAvatarsFrame$a(Context paramContext)
   {
     AppMethodBeat.i(29577);
-    this.BoO = new LinkedList();
+    this.BGn = new LinkedList();
     this.mContext = paramContext;
     AppMethodBeat.o(29577);
   }
@@ -29,7 +29,7 @@ final class TalkRoomAvatarsFrame$a
   public final int getCount()
   {
     AppMethodBeat.i(29579);
-    int i = this.BoO.size();
+    int i = this.BGn.size();
     AppMethodBeat.o(29579);
     return i;
   }
@@ -37,7 +37,7 @@ final class TalkRoomAvatarsFrame$a
   public final Object getItem(int paramInt)
   {
     AppMethodBeat.i(29580);
-    Object localObject = this.BoO.get(paramInt);
+    Object localObject = this.BGn.get(paramInt);
     AppMethodBeat.o(29580);
     return localObject;
   }
@@ -50,17 +50,17 @@ final class TalkRoomAvatarsFrame$a
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(29581);
-    String str = (String)this.BoO.get(paramInt);
+    String str = (String)this.BGn.get(paramInt);
     ImageView localImageView;
     if (paramView == null)
     {
       paramView = View.inflate(this.mContext, 2131495742, null);
       paramViewGroup = new a();
-      paramViewGroup.fOf = ((ImageView)paramView.findViewById(2131301204));
-      paramViewGroup.fOg = ((TextView)paramView.findViewById(2131306142));
+      paramViewGroup.fQl = ((ImageView)paramView.findViewById(2131301204));
+      paramViewGroup.fQm = ((TextView)paramView.findViewById(2131306142));
       paramView.setTag(paramViewGroup);
-      localImageView = paramViewGroup.fOf;
-      if (!str.equals(this.vcX)) {
+      localImageView = paramViewGroup.fQl;
+      if (!str.equals(this.vpi)) {
         break label140;
       }
     }
@@ -68,8 +68,8 @@ final class TalkRoomAvatarsFrame$a
     for (paramInt = 2131234301;; paramInt = 0)
     {
       localImageView.setBackgroundResource(paramInt);
-      paramViewGroup.fOg.setVisibility(8);
-      a.b.w(paramViewGroup.fOf, str);
+      paramViewGroup.fQm.setVisibility(8);
+      a.b.w(paramViewGroup.fQl, str);
       AppMethodBeat.o(29581);
       return paramView;
       paramViewGroup = (a)paramView.getTag();
@@ -80,15 +80,15 @@ final class TalkRoomAvatarsFrame$a
   public final int indexOf(String paramString)
   {
     AppMethodBeat.i(29578);
-    int i = this.BoO.indexOf(paramString);
+    int i = this.BGn.indexOf(paramString);
     AppMethodBeat.o(29578);
     return i;
   }
   
   final class a
   {
-    public ImageView fOf;
-    public TextView fOg;
+    public ImageView fQl;
+    public TextView fQm;
     
     a() {}
   }

@@ -1,92 +1,83 @@
 package com.tencent.mm.ai;
 
+import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.i.d;
-import com.tencent.mm.sdk.platformtools.bt;
-import java.util.Map;
 
-public class b
-  extends f
+public final class b
 {
-  public String dEn;
-  public String hyA;
-  public String hyB;
-  public String hyC;
-  public String hyD;
-  public String hyE;
-  public String hyF;
-  public String hyG;
-  public String hyH;
-  public String hyI;
-  public String hyJ;
-  public String hyK;
-  public String hyL;
-  public String hyM;
-  public String hyN;
-  public String hyO;
-  public String hyP;
-  public String hyQ;
-  public String hyR;
-  public String hyS;
-  public String hyT;
-  public String hyx;
-  public String hyy;
-  public String hyz;
+  public String appId = "";
+  public boolean ddd = true;
+  public String ddg = "";
+  public String der = "";
+  public int dez = 0;
+  public int dlC = 0;
+  public String filePath = "";
+  public long fileSize = 0L;
+  public int fromScene = 0;
+  public double hOA = 1.0D;
+  public double hOB = 1.0D;
+  public long hOC = 0L;
+  public long hOD = 0L;
+  public long hOE = 0L;
+  public long hOF = 0L;
+  public long hOG = 0L;
+  public long hOH = 0L;
+  public long hOI = 0L;
+  public String hOJ = null;
+  public String hOK = null;
+  public e hOL;
+  public boolean hOM = false;
+  public boolean hON = false;
+  public int hOx = 0;
+  public boolean hOy = false;
+  public long hOz = 0L;
+  public boolean loop = false;
+  public String processName = "";
   
-  private static String c(Map<String, String> paramMap, String paramString)
+  public final boolean e(b paramb)
   {
-    AppMethodBeat.i(20229);
-    paramMap = bt.nullAsNil((String)paramMap.get(".msg.appmsg.wcpaythirdinfo.".concat(String.valueOf(paramString))));
-    AppMethodBeat.o(20229);
-    return paramMap;
-  }
-  
-  public final void a(StringBuilder paramStringBuilder, k.b paramb, String paramString, d paramd, int paramInt1, int paramInt2) {}
-  
-  public final void a(Map<String, String> paramMap, k.b paramb)
-  {
-    AppMethodBeat.i(20228);
-    if (paramb.type == 2002)
+    AppMethodBeat.i(136977);
+    if (paramb == null)
     {
-      this.hyx = c(paramMap, "templateid");
-      this.hyy = c(paramMap, "senderurl");
-      this.hyz = c(paramMap, "sendernativeurl");
-      this.hyA = c(paramMap, "receiverurl");
-      this.hyB = c(paramMap, "receivernativeurl");
-      this.hyC = c(paramMap, "iconurl");
-      this.hyD = c(paramMap, "miniiconurl");
-      this.hyE = c(paramMap, "backgroundurl");
-      this.hyF = c(paramMap, "backgroundname");
-      this.hyG = c(paramMap, "backgroundcolor");
-      this.hyH = c(paramMap, "receivertitle");
-      this.hyI = c(paramMap, "sendertitle");
-      this.hyJ = c(paramMap, "titlecolor");
-      this.hyK = c(paramMap, "senderscenetext");
-      this.hyL = c(paramMap, "receiverscenetext");
-      this.hyM = c(paramMap, "senderdes");
-      this.hyN = c(paramMap, "receiverdes");
-      this.hyO = c(paramMap, "descolor");
-      this.hyP = c(paramMap, "sceneid");
-      this.dEn = c(paramMap, "paymsgid");
-      this.hyQ = c(paramMap, "senderbackgroundname");
-      this.hyR = c(paramMap, "senderbackgroundurl");
-      this.hyS = c(paramMap, "receiverbackgroundname");
-      this.hyT = c(paramMap, "receiverbackgroundurl");
+      AppMethodBeat.o(136977);
+      return false;
     }
-    AppMethodBeat.o(20228);
+    if ((this.ddg != null) && (this.ddg.equalsIgnoreCase(paramb.ddg)) && (this.der != null) && (this.der.equalsIgnoreCase(paramb.der)))
+    {
+      AppMethodBeat.o(136977);
+      return true;
+    }
+    AppMethodBeat.o(136977);
+    return false;
   }
   
-  public final f aot()
+  public final void f(b paramb)
   {
-    AppMethodBeat.i(20227);
-    b localb = new b();
-    AppMethodBeat.o(20227);
-    return localb;
+    AppMethodBeat.i(136978);
+    this.ddg = paramb.ddg;
+    this.der = paramb.der;
+    if (!TextUtils.isEmpty(paramb.filePath)) {
+      this.filePath = paramb.filePath;
+    }
+    this.dez = paramb.dez;
+    this.hOx = paramb.hOx;
+    this.hOy = paramb.hOy;
+    this.loop = paramb.loop;
+    this.fromScene = paramb.fromScene;
+    this.processName = paramb.processName;
+    this.hOA = paramb.hOA;
+    this.appId = paramb.appId;
+    if (paramb.hOL != null) {
+      this.hOL = paramb.hOL;
+    }
+    this.fileSize = paramb.fileSize;
+    this.hOB = paramb.hOB;
+    AppMethodBeat.o(136978);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ai.b
  * JD-Core Version:    0.7.0.1
  */

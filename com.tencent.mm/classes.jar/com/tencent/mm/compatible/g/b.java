@@ -3,25 +3,25 @@ package com.tencent.mm.compatible.g;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
 
 public final class b
 {
-  private static int gdq = 0;
+  private static int gfy = 0;
   
-  public static boolean abd()
+  public static boolean abm()
   {
     AppMethodBeat.i(155860);
-    if (gdq == 0)
+    if (gfy == 0)
     {
-      SharedPreferences localSharedPreferences = aj.fkD();
+      SharedPreferences localSharedPreferences = ak.fox();
       if ((localSharedPreferences == null) || (!localSharedPreferences.getBoolean("settings_support_swipe", true))) {
         break label49;
       }
     }
     label49:
-    for (gdq = 1; gdq == 1; gdq = 2)
+    for (gfy = 1; gfy == 1; gfy = 2)
     {
       AppMethodBeat.o(155860);
       return true;
@@ -33,12 +33,12 @@ public final class b
   public static void cK(boolean paramBoolean)
   {
     AppMethodBeat.i(155861);
-    SharedPreferences localSharedPreferences = aj.fkD();
+    SharedPreferences localSharedPreferences = ak.fox();
     boolean bool = localSharedPreferences.getBoolean("settings_support_swipe", true);
     if (bool != paramBoolean) {
       localSharedPreferences.edit().putBoolean("settings_support_swipe", paramBoolean).commit();
     }
-    ad.i("MicroMsg.StyleUtil", "switchSwipebackMode, from %B to %B", new Object[] { Boolean.valueOf(bool), Boolean.valueOf(paramBoolean) });
+    ae.i("MicroMsg.StyleUtil", "switchSwipebackMode, from %B to %B", new Object[] { Boolean.valueOf(bool), Boolean.valueOf(paramBoolean) });
     AppMethodBeat.o(155861);
   }
 }

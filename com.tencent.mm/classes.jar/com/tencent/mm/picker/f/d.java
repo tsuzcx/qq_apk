@@ -7,38 +7,38 @@ import java.util.List;
 
 public final class d<T>
 {
-  private int iKN;
-  float iLM;
-  WheelView.b iLO;
-  com.tencent.mm.picker.d.b iLm;
-  boolean iLo;
-  WheelView iMd;
-  public WheelView iMe;
-  List<T> iMf;
-  boolean iMg = true;
+  private int iNG;
+  float iOF;
+  WheelView.b iOH;
+  WheelView iOW;
+  public WheelView iOX;
+  List<T> iOY;
+  boolean iOZ = true;
+  com.tencent.mm.picker.d.b iOf;
+  boolean iOh;
   
   @Deprecated
-  private void aQf()
+  private void aQE()
   {
     AppMethodBeat.i(175361);
-    this.iMe.setDividerColor(this.iKN);
+    this.iOX.setDividerColor(this.iNG);
     AppMethodBeat.o(175361);
   }
   
-  private void qW(int paramInt)
+  private void qZ(int paramInt)
   {
     AppMethodBeat.i(175364);
-    if (this.iMf != null) {
-      this.iMe.setCurrentItem(paramInt);
+    if (this.iOY != null) {
+      this.iOX.setCurrentItem(paramInt);
     }
     AppMethodBeat.o(175364);
   }
   
-  public final int[] aQg()
+  public final int[] aQF()
   {
     AppMethodBeat.i(175362);
     int[] arrayOfInt = new int[3];
-    arrayOfInt[0] = this.iMe.getCurrentItem();
+    arrayOfInt[0] = this.iOX.getCurrentItem();
     AppMethodBeat.o(175362);
     return arrayOfInt;
   }
@@ -46,28 +46,28 @@ public final class d<T>
   public final void du(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(175366);
-    this.iMe.setPadding(0, paramInt1, 0, paramInt2);
+    this.iOX.setPadding(0, paramInt1, 0, paramInt2);
     AppMethodBeat.o(175366);
   }
   
-  public final void qV(int paramInt)
+  public final void qY(int paramInt)
   {
     AppMethodBeat.i(175363);
-    if (this.iMg)
+    if (this.iOZ)
     {
-      qW(paramInt);
+      qZ(paramInt);
       AppMethodBeat.o(175363);
       return;
     }
-    this.iMe.setCurrentItem(paramInt);
+    this.iOX.setCurrentItem(paramInt);
     AppMethodBeat.o(175363);
   }
   
   public final void setDividerColor(int paramInt)
   {
     AppMethodBeat.i(175365);
-    this.iKN = paramInt;
-    aQf();
+    this.iNG = paramInt;
+    aQE();
     AppMethodBeat.o(175365);
   }
 }

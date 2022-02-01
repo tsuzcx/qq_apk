@@ -12,19 +12,16 @@ import android.os.SystemClock;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.booter.aa;
 import com.tencent.mm.booter.d;
-import com.tencent.mm.cd.b;
-import com.tencent.mm.compatible.util.j;
 import com.tencent.mm.compatible.util.j.b;
 import com.tencent.mm.kernel.b.h;
 import com.tencent.mm.plugin.report.business.DataPackageFrequencyDetect;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ax;
-import com.tencent.mm.sdk.platformtools.i;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.ay;
 import com.tencent.mm.splash.m;
 import com.tencent.mm.ui.NoRomSpaceDexUI;
 import com.tencent.mm.ui.al;
-import com.tencent.mm.vfs.o;
+import com.tencent.mm.vfs.u;
 import com.tencent.tinker.entry.ApplicationLifeCycle;
 import com.tencent.tinker.entry.ApplicationLike;
 
@@ -53,93 +50,93 @@ public class MMApplicationWrapper
   private void setupXLogDebugger(h paramh)
   {
     AppMethodBeat.i(160079);
-    d locald = paramh.fFy;
-    if (paramh.akw())
+    d locald = paramh.fHC;
+    if (paramh.akL())
     {
-      locald.uc("MM");
+      locald.ux("MM");
       AppMethodBeat.o(160079);
       return;
     }
-    if (paramh.xf(":push"))
+    if (paramh.xO(":push"))
     {
-      locald.uc("PUSH");
+      locald.ux("PUSH");
       AppMethodBeat.o(160079);
       return;
     }
-    if (paramh.xf(":tools"))
+    if (paramh.xO(":tools"))
     {
-      locald.uc("TOOL");
+      locald.ux("TOOL");
       AppMethodBeat.o(160079);
       return;
     }
-    if (paramh.xf(":toolsmp"))
+    if (paramh.xO(":toolsmp"))
     {
-      locald.uc("TOOLSMP");
+      locald.ux("TOOLSMP");
       AppMethodBeat.o(160079);
       return;
     }
-    if (paramh.xf(":sandbox"))
+    if (paramh.xO(":sandbox"))
     {
-      locald.uc("SANDBOX");
+      locald.ux("SANDBOX");
       AppMethodBeat.o(160079);
       return;
     }
-    if (paramh.xf(":exdevice"))
+    if (paramh.xO(":exdevice"))
     {
-      locald.uc("EXDEVICE");
+      locald.ux("EXDEVICE");
       AppMethodBeat.o(160079);
       return;
     }
-    if (paramh.xf(":patch"))
+    if (paramh.xO(":patch"))
     {
-      locald.uc("PATCH");
+      locald.ux("PATCH");
       AppMethodBeat.o(160079);
       return;
     }
-    if (paramh.xf(":appbrand0"))
+    if (paramh.xO(":appbrand0"))
     {
-      locald.uc("APPBRAND0");
+      locald.ux("APPBRAND0");
       AppMethodBeat.o(160079);
       return;
     }
-    if (paramh.xf(":appbrand1"))
+    if (paramh.xO(":appbrand1"))
     {
-      locald.uc("APPBRAND1");
+      locald.ux("APPBRAND1");
       AppMethodBeat.o(160079);
       return;
     }
-    if (paramh.xf(":appbrand2"))
+    if (paramh.xO(":appbrand2"))
     {
-      locald.uc("APPBRAND2");
+      locald.ux("APPBRAND2");
       AppMethodBeat.o(160079);
       return;
     }
-    if (paramh.xf(":appbrand3"))
+    if (paramh.xO(":appbrand3"))
     {
-      locald.uc("APPBRAND3");
+      locald.ux("APPBRAND3");
       AppMethodBeat.o(160079);
       return;
     }
-    if (paramh.xf(":appbrand4"))
+    if (paramh.xO(":appbrand4"))
     {
-      locald.uc("APPBRAND4");
+      locald.ux("APPBRAND4");
       AppMethodBeat.o(160079);
       return;
     }
-    if (paramh.xf(":TMAssistantDownloadSDKService"))
+    if (paramh.xO(":TMAssistantDownloadSDKService"))
     {
-      locald.uc("TMSDK");
+      locald.ux("TMSDK");
       AppMethodBeat.o(160079);
       return;
     }
-    if (paramh.xf(":dexopt"))
+    if (paramh.xO(":dexopt"))
     {
-      locald.uc("DEXOPT");
+      locald.ux("DEXOPT");
       AppMethodBeat.o(160079);
       return;
     }
-    if (paramh.xf(":extmig")) {
-      locald.uc("EXTMIG");
+    if (paramh.xO(":extmig")) {
+      locald.ux("EXTMIG");
     }
     AppMethodBeat.o(160079);
   }
@@ -147,100 +144,100 @@ public class MMApplicationWrapper
   public void onBaseContextAttached(final Context paramContext)
   {
     AppMethodBeat.i(160078);
-    com.tencent.mm.kernel.a.a.gCt = SystemClock.elapsedRealtime();
-    com.tencent.mm.kernel.a.a.gCs = System.currentTimeMillis();
-    com.tencent.mm.sdk.platformtools.a.a(paramContext.getApplicationInfo());
+    com.tencent.mm.kernel.a.a.gFa = SystemClock.elapsedRealtime();
+    com.tencent.mm.kernel.a.a.gEZ = System.currentTimeMillis();
+    com.tencent.mm.sdk.platformtools.b.a(paramContext.getApplicationInfo());
     this.profile = new h(this.thisProcess, this.app, this.lifeCycle);
-    this.profile.gDU.gDV = this.processInitTimestamp;
-    j.a(new j.b()
+    this.profile.gGB.gGC = this.processInitTimestamp;
+    com.tencent.mm.compatible.util.j.a(new j.b()
     {
-      public final boolean Ma()
+      public final boolean Mi()
       {
-        AppMethodBeat.i(221135);
-        if ((i.hgJ) && (!Build.CPU_ABI.equals("arm64-v8a")))
+        AppMethodBeat.i(224045);
+        if ((com.tencent.mm.sdk.platformtools.j.hjx) && (!Build.CPU_ABI.equals("arm64-v8a")))
         {
           Object localObject1 = paramContext;
           Object localObject2 = new Intent(paramContext, NoRomSpaceDexUI.class).addFlags(268435456).putExtra("titleRes", 2131756079).putExtra("messageRes", 2131756078).putExtra("buttonRes", 2131756077).putExtra("action", PendingIntent.getActivity(paramContext, 0, new Intent("android.intent.action.VIEW", Uri.parse("http://weixin.qq.com/m")).addFlags(268435456), 0));
           localObject2 = new com.tencent.mm.hellhoundlib.b.a().bc(localObject2);
-          com.tencent.mm.hellhoundlib.a.a.a(localObject1, ((com.tencent.mm.hellhoundlib.b.a)localObject2).ahp(), "com/tencent/mm/app/MMApplicationWrapper$1", "onFailure", "(Ljava/lang/String;Ljava/lang/UnsatisfiedLinkError;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          ((Context)localObject1).startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject2).mq(0));
+          com.tencent.mm.hellhoundlib.a.a.a(localObject1, ((com.tencent.mm.hellhoundlib.b.a)localObject2).ahE(), "com/tencent/mm/app/MMApplicationWrapper$1", "onFailure", "(Ljava/lang/String;Ljava/lang/UnsatisfiedLinkError;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          ((Context)localObject1).startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject2).mt(0));
           com.tencent.mm.hellhoundlib.a.a.a(localObject1, "com/tencent/mm/app/MMApplicationWrapper$1", "onFailure", "(Ljava/lang/String;Ljava/lang/UnsatisfiedLinkError;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
           localObject1 = com.tencent.mm.hellhoundlib.b.c.a(Process.myPid(), new com.tencent.mm.hellhoundlib.b.a());
           localObject2 = new Object();
-          com.tencent.mm.hellhoundlib.a.a.a(localObject2, ((com.tencent.mm.hellhoundlib.b.a)localObject1).ahp(), "com/tencent/mm/app/MMApplicationWrapper$1", "onFailure", "(Ljava/lang/String;Ljava/lang/UnsatisfiedLinkError;)Z", "android/os/Process_EXEC_", "killProcess", "(I)V");
-          Process.killProcess(((Integer)((com.tencent.mm.hellhoundlib.b.a)localObject1).mq(0)).intValue());
+          com.tencent.mm.hellhoundlib.a.a.a(localObject2, ((com.tencent.mm.hellhoundlib.b.a)localObject1).ahE(), "com/tencent/mm/app/MMApplicationWrapper$1", "onFailure", "(Ljava/lang/String;Ljava/lang/UnsatisfiedLinkError;)Z", "android/os/Process_EXEC_", "killProcess", "(I)V");
+          Process.killProcess(((Integer)((com.tencent.mm.hellhoundlib.b.a)localObject1).mt(0)).intValue());
           com.tencent.mm.hellhoundlib.a.a.a(localObject2, "com/tencent/mm/app/MMApplicationWrapper$1", "onFailure", "(Ljava/lang/String;Ljava/lang/UnsatisfiedLinkError;)Z", "android/os/Process_EXEC_", "killProcess", "(I)V");
-          AppMethodBeat.o(221135);
+          AppMethodBeat.o(224045);
           return true;
         }
-        AppMethodBeat.o(221135);
+        AppMethodBeat.o(224045);
         return false;
       }
     });
-    o.f(this.profile);
+    u.g(this.profile);
     com.tencent.e.g.a(this.profile.ca, new aa());
-    boolean bool1 = z.fs(this.thisProcess);
-    boolean bool2 = z.fr(this.thisProcess);
+    boolean bool1 = z.fy(this.thisProcess);
+    boolean bool2 = z.fx(this.thisProcess);
     if (!bool1)
     {
       paramContext.getClassLoader();
-      j.vr("stlport_shared");
+      com.tencent.mm.compatible.util.j.vN("stlport_shared");
       paramContext.getClassLoader();
-      j.vr("c++_shared");
-      String str = com.tencent.mm.xlog.app.a.LBF;
+      com.tencent.mm.compatible.util.j.vN("c++_shared");
+      String str = com.tencent.mm.xlog.app.a.LYI;
       paramContext.getClassLoader();
-      j.vr(str);
-      this.profile.fFy = d.bJ(this.profile.ca);
+      com.tencent.mm.compatible.util.j.vN(str);
+      this.profile.fHC = d.bL(this.profile.ca);
       setupXLogDebugger(this.profile);
     }
-    com.tencent.mm.splash.a.n(this.app);
-    AppForegroundDelegate.cSQ.d(this.app);
-    DataPackageFrequencyDetect.ygN.d(this.app);
-    com.tencent.mm.bv.a.a.ffX();
+    com.tencent.mm.splash.a.p(this.app);
+    AppForegroundDelegate.cTA.d(this.app);
+    DataPackageFrequencyDetect.ywE.d(this.app);
+    com.tencent.mm.bu.a.a.fjN();
     if (!bool2)
     {
       ai.a(this.profile, "com.tencent.mm.app.WeChatSplashStartup");
       paramContext = this.app;
-      aj.h(b.a(paramContext.getResources(), paramContext, bool2));
-      com.tencent.mm.cd.a.a(new com.tencent.mm.cd.a.a()
+      ak.h(com.tencent.mm.cc.b.a(paramContext.getResources(), paramContext, bool2));
+      com.tencent.mm.cc.a.a(new com.tencent.mm.cc.a.a()
       {
-        public final void Mb()
+        public final void Mj()
         {
-          AppMethodBeat.i(221134);
-          com.tencent.mm.bw.a.hH(aj.getContext());
+          AppMethodBeat.i(224044);
+          com.tencent.mm.bv.a.hN(ak.getContext());
           com.tencent.mm.hellhoundlib.b.a locala = com.tencent.mm.hellhoundlib.b.c.a(0, new com.tencent.mm.hellhoundlib.b.a());
           Object localObject = new Object();
-          com.tencent.mm.hellhoundlib.a.a.a(localObject, locala.ahp(), "com/tencent/mm/app/MMApplicationWrapper$2", "onDensityChange", "()V", "java/lang/System_EXEC_", "exit", "(I)V");
-          System.exit(((Integer)locala.mq(0)).intValue());
+          com.tencent.mm.hellhoundlib.a.a.a(localObject, locala.ahE(), "com/tencent/mm/app/MMApplicationWrapper$2", "onDensityChange", "()V", "java/lang/System_EXEC_", "exit", "(I)V");
+          System.exit(((Integer)locala.mt(0)).intValue());
           com.tencent.mm.hellhoundlib.a.a.a(localObject, "com/tencent/mm/app/MMApplicationWrapper$2", "onDensityChange", "()V", "java/lang/System_EXEC_", "exit", "(I)V");
-          AppMethodBeat.o(221134);
+          AppMethodBeat.o(224044);
         }
       });
-      if (!com.tencent.mm.cd.c.fhZ()) {
+      if (!com.tencent.mm.cc.c.flR()) {
         break label339;
       }
-      if (!ax.aQz(aj.fkC()).getBoolean("special_dark_mode_set_follow_system", false))
+      if (!ay.aRW(ak.fow()).getBoolean("special_dark_mode_set_follow_system", false))
       {
-        ax.aQz(aj.fkC()).putBoolean("dark_mode_follow_system", true);
-        al.fya();
-        ax.aQz(aj.fkC()).putBoolean("special_dark_mode_set_follow_system", true);
+        ay.aRW(ak.fow()).putBoolean("dark_mode_follow_system", true);
+        al.fCc();
+        ay.aRW(ak.fow()).putBoolean("special_dark_mode_set_follow_system", true);
       }
     }
     for (;;)
     {
       ab.Y(com.tencent.mm.boot.a.a.class);
-      ab.ft("com.tencent.mm.boot");
+      ab.fz("com.tencent.mm.boot");
       AppMethodBeat.o(160078);
       return;
-      ad.i("MicroMsg.MMApplicationWrapper", "is plain process. load nothing");
+      ae.i("MicroMsg.MMApplicationWrapper", "is plain process. load nothing");
       ai.a(this.profile, null);
       break;
       label339:
-      if (!ax.aQz(aj.fkC()).getBoolean("dark_mode_set_follow_system", false))
+      if (!ay.aRW(ak.fow()).getBoolean("dark_mode_set_follow_system", false))
       {
-        ax.aQz(aj.fkC()).putBoolean("dark_mode_follow_system", true);
-        al.fya();
-        ax.aQz(aj.fkC()).putBoolean("dark_mode_set_follow_system", true);
+        ay.aRW(ak.fow()).putBoolean("dark_mode_follow_system", true);
+        al.fCc();
+        ay.aRW(ak.fow()).putBoolean("dark_mode_set_follow_system", true);
       }
     }
   }
@@ -257,8 +254,8 @@ public class MMApplicationWrapper
   public void onCreate()
   {
     AppMethodBeat.i(160080);
-    com.tencent.mm.ae.c.g(this.app);
-    m.fnG();
+    com.tencent.mm.ad.c.h(this.app);
+    m.frz();
     AppMethodBeat.o(160080);
   }
   

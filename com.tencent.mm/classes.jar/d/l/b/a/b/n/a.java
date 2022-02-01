@@ -4,11 +4,11 @@ import java.util.List;
 
 public abstract class a
 {
-  public abstract List<d> gul();
+  public abstract List<d> gyN();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.n.a
  * JD-Core Version:    0.7.0.1
  */

@@ -13,12 +13,12 @@ final class ChatroomInfoUI$33
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(213463);
+    AppMethodBeat.i(217180);
     b localb = new b();
     localb.bd(paramView);
-    a.b("com/tencent/mm/chatroom/ui/ChatroomInfoUI$9", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+    a.b("com/tencent/mm/chatroom/ui/ChatroomInfoUI$9", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
     a.a(this, "com/tencent/mm/chatroom/ui/ChatroomInfoUI$9", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-    AppMethodBeat.o(213463);
+    AppMethodBeat.o(217180);
   }
 }
 

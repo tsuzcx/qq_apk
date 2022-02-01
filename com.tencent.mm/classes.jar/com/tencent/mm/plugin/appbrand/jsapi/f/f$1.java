@@ -1,12 +1,12 @@
 package com.tencent.mm.plugin.appbrand.jsapi.f;
 
-import com.tencent.mm.plugin.appbrand.page.aa;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.plugin.appbrand.page.z;
+import com.tencent.mm.sdk.platformtools.bp;
 
 final class f$1
-  extends bo<Void>
+  extends bp<Void>
 {
-  f$1(f paramf, aa paramaa, boolean paramBoolean) {}
+  f$1(f paramf, z paramz, boolean paramBoolean) {}
 }
 
 

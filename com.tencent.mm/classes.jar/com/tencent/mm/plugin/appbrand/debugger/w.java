@@ -18,10 +18,12 @@ import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.protocal.protobuf.dzb;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
+import com.tencent.mm.protocal.protobuf.eas;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.ui.widget.a.d;
 import com.tencent.mm.ui.widget.a.d.a;
 import java.util.LinkedList;
 
@@ -29,31 +31,31 @@ import java.util.LinkedList;
 public final class w
   extends FrameLayout
 {
-  private m coY;
-  ViewGroup kca;
-  RemoteDebugMoveView kcb;
-  private LinkedList<String> kcc;
-  private TextView kcd;
-  private TextView kce;
-  private TextView kcf;
-  private TextView kcg;
-  private TextView kch;
-  private TextView kci;
-  private TextView kcj;
-  private ImageView kck;
-  private ImageView kcl;
-  private View kcm;
-  boolean kcn;
-  private a kco;
-  private com.tencent.mm.ui.widget.a.d kcp;
+  private m cpc;
+  private TextView kfA;
+  private ImageView kfB;
+  private ImageView kfC;
+  private View kfD;
+  boolean kfE;
+  private a kfF;
+  private d kfG;
+  ViewGroup kfr;
+  RemoteDebugMoveView kfs;
+  private LinkedList<String> kft;
+  private TextView kfu;
+  private TextView kfv;
+  private TextView kfw;
+  private TextView kfx;
+  private TextView kfy;
+  private TextView kfz;
   private View.OnClickListener mOnClickListener;
   
   public w(Context paramContext, m paramm, a parama)
   {
     super(paramContext);
     AppMethodBeat.i(147113);
-    this.kcc = new LinkedList();
-    this.kcn = false;
+    this.kft = new LinkedList();
+    this.kfE = false;
     this.mOnClickListener = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
@@ -61,13 +63,13 @@ public final class w
         AppMethodBeat.i(147106);
         Object localObject = new b();
         ((b)localObject).bd(paramAnonymousView);
-        a.b("com/tencent/mm/plugin/appbrand/debugger/RemoteDebugView$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahq());
+        a.b("com/tencent/mm/plugin/appbrand/debugger/RemoteDebugView$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahF());
         localObject = w.this;
         if (paramAnonymousView.getId() == 2131296825)
         {
-          ((w)localObject).kcn = true;
+          ((w)localObject).kfE = true;
           ((w)localObject).show();
-          paramAnonymousView = ((w)localObject).kcb;
+          paramAnonymousView = ((w)localObject).kfs;
           paramAnonymousView.postDelayed(new RemoteDebugMoveView.3(paramAnonymousView), 50L);
         }
         for (;;)
@@ -77,28 +79,28 @@ public final class w
           return;
           if (paramAnonymousView.getId() == 2131296820)
           {
-            ((w)localObject).kcn = false;
+            ((w)localObject).kfE = false;
             ((w)localObject).show();
           }
           else if (paramAnonymousView.getId() == 2131296828)
           {
-            ((w)localObject).bfc();
+            ((w)localObject).bfK();
           }
         }
       }
     };
-    this.coY = paramm;
-    this.kco = parama;
+    this.cpc = paramm;
+    this.kfF = parama;
     setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
     setBackgroundColor(getContext().getResources().getColor(2131101053));
     setId(2131296693);
     AppMethodBeat.o(147113);
   }
   
-  private boolean beZ()
+  private boolean bfH()
   {
     AppMethodBeat.i(147118);
-    if ((this.coY.beH()) || (this.coY.isQuit()) || (this.coY.beI()))
+    if ((this.cpc.bfp()) || (this.cpc.isQuit()) || (this.cpc.bfq()))
     {
       AppMethodBeat.o(147118);
       return true;
@@ -107,43 +109,43 @@ public final class w
     return false;
   }
   
-  private void bfa()
+  private void bfI()
   {
     AppMethodBeat.i(147119);
-    this.kcb = ((RemoteDebugMoveView)LayoutInflater.from(getContext()).inflate(2131493050, null));
-    this.kce = ((TextView)this.kcb.findViewById(2131296822));
-    this.kcd = ((TextView)this.kcb.findViewById(2131296831));
-    this.kcf = ((TextView)this.kcb.findViewById(2131296826));
-    this.kcg = ((TextView)this.kcb.findViewById(2131296828));
-    this.kch = ((TextView)this.kcb.findViewById(2131296825));
-    this.kci = ((TextView)this.kcb.findViewById(2131296820));
-    this.kcj = ((TextView)this.kcb.findViewById(2131296824));
-    this.kcl = ((ImageView)this.kcb.findViewById(2131296821));
-    this.kck = ((ImageView)this.kcb.findViewById(2131296829));
-    this.kcm = this.kcb.findViewById(2131296823);
+    this.kfs = ((RemoteDebugMoveView)LayoutInflater.from(getContext()).inflate(2131493050, null));
+    this.kfv = ((TextView)this.kfs.findViewById(2131296822));
+    this.kfu = ((TextView)this.kfs.findViewById(2131296831));
+    this.kfw = ((TextView)this.kfs.findViewById(2131296826));
+    this.kfx = ((TextView)this.kfs.findViewById(2131296828));
+    this.kfy = ((TextView)this.kfs.findViewById(2131296825));
+    this.kfz = ((TextView)this.kfs.findViewById(2131296820));
+    this.kfA = ((TextView)this.kfs.findViewById(2131296824));
+    this.kfC = ((ImageView)this.kfs.findViewById(2131296821));
+    this.kfB = ((ImageView)this.kfs.findViewById(2131296829));
+    this.kfD = this.kfs.findViewById(2131296823);
     show();
-    bfb();
+    bfJ();
     AppMethodBeat.o(147119);
   }
   
-  private void bfb()
+  private void bfJ()
   {
     AppMethodBeat.i(147120);
-    this.kch.setOnClickListener(this.mOnClickListener);
-    this.kci.setOnClickListener(this.mOnClickListener);
-    this.kcg.setOnClickListener(this.mOnClickListener);
+    this.kfy.setOnClickListener(this.mOnClickListener);
+    this.kfz.setOnClickListener(this.mOnClickListener);
+    this.kfx.setOnClickListener(this.mOnClickListener);
     AppMethodBeat.o(147120);
   }
   
-  public final void Oi(final String paramString)
+  public final void OP(final String paramString)
   {
     AppMethodBeat.i(147125);
-    if (bt.isNullOrNil(paramString))
+    if (bu.isNullOrNil(paramString))
     {
       AppMethodBeat.o(147125);
       return;
     }
-    aq.f(new Runnable()
+    ar.f(new Runnable()
     {
       public final void run()
       {
@@ -155,17 +157,45 @@ public final class w
     AppMethodBeat.o(147125);
   }
   
-  public final void beY()
+  public final void S(AppBrandRuntime paramAppBrandRuntime)
+  {
+    AppMethodBeat.i(220780);
+    this.kfr = paramAppBrandRuntime.jzF;
+    if ((getParent() instanceof ViewGroup)) {
+      ((ViewGroup)getParent()).removeView(this);
+    }
+    paramAppBrandRuntime.cC(this);
+    bfI();
+    postDelayed(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(147104);
+        RemoteDebugMoveView localRemoteDebugMoveView = w.a(w.this);
+        int i = w.this.getWidth();
+        int j = w.this.getHeight();
+        localRemoteDebugMoveView.setLayoutParams(new ViewGroup.LayoutParams(-2, -2));
+        localRemoteDebugMoveView.gqj = i;
+        localRemoteDebugMoveView.of = j;
+        localRemoteDebugMoveView.post(new RemoteDebugMoveView.1(localRemoteDebugMoveView));
+        w.this.addView(w.a(w.this));
+        AppMethodBeat.o(147104);
+      }
+    }, 100L);
+    AppMethodBeat.o(220780);
+  }
+  
+  public final void bfG()
   {
     AppMethodBeat.i(147117);
-    aq.f(new Runnable()
+    ar.f(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(147105);
         if (w.b(w.this) == null)
         {
-          ad.w("MicroMsg.RemoteDebugView", "showDebugView mContentView is null");
+          ae.w("MicroMsg.RemoteDebugView", "showDebugView mContentView is null");
           AppMethodBeat.o(147105);
           return;
         }
@@ -187,10 +217,10 @@ public final class w
     AppMethodBeat.o(147117);
   }
   
-  final void bfc()
+  final void bfK()
   {
     AppMethodBeat.i(147121);
-    if ((this.kcp != null) && (this.kcp.isShowing()))
+    if ((this.kfG != null) && (this.kfG.isShowing()))
     {
       AppMethodBeat.o(147121);
       return;
@@ -201,30 +231,30 @@ public final class w
       AppMethodBeat.o(147121);
       return;
     }
-    this.kcp = new d.a(localContext).aXF(localContext.getString(2131755632)).aXG("").afl(2131756757).c(new DialogInterface.OnClickListener()
+    this.kfG = new d.a(localContext).aZh(localContext.getString(2131755632)).aZi("").afU(2131756757).c(new DialogInterface.OnClickListener()
     {
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
         AppMethodBeat.i(147107);
         if (w.d(w.this) != null) {
-          w.d(w.this).beL();
+          w.d(w.this).bft();
         }
         AppMethodBeat.o(147107);
       }
-    }).afm(2131756755).fMb();
-    this.kcp.show();
+    }).afV(2131756755).fQv();
+    this.kfG.show();
     AppMethodBeat.o(147121);
   }
   
-  public final void bfd()
+  public final void bfL()
   {
     AppMethodBeat.i(147122);
-    aq.f(new Runnable()
+    ar.f(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(147108);
-        if (w.e(w.this).beH())
+        if (w.e(w.this).bfp())
         {
           w.f(w.this).setImageResource(2131231017);
           w.g(w.this).setText(w.this.getContext().getString(2131755627));
@@ -250,66 +280,30 @@ public final class w
     AppMethodBeat.o(147122);
   }
   
-  public final void bfe()
+  public final void bfM()
   {
     AppMethodBeat.i(147124);
-    beY();
-    bfd();
+    bfG();
+    bfL();
     AppMethodBeat.o(147124);
   }
   
   public final void bringToFront()
   {
     AppMethodBeat.i(147116);
-    if (this.kca == null)
+    if (this.kfr == null)
     {
-      ad.w("MicroMsg.RemoteDebugView", "bringToFront mContentView is null");
+      ae.w("MicroMsg.RemoteDebugView", "bringToFront mContentView is null");
       AppMethodBeat.o(147116);
       return;
     }
-    this.kca.bringChildToFront(this);
     AppMethodBeat.o(147116);
-  }
-  
-  public final void c(com.tencent.mm.plugin.appbrand.widget.d paramd)
-  {
-    AppMethodBeat.i(192208);
-    this.kca = paramd;
-    int i = 0;
-    while (i < this.kca.getChildCount())
-    {
-      paramd = this.kca.getChildAt(i);
-      if ((paramd instanceof w)) {
-        this.kca.removeView(paramd);
-      }
-      i += 1;
-    }
-    this.kca.addView(this);
-    this.kca.bringChildToFront(this);
-    bfa();
-    postDelayed(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(147104);
-        RemoteDebugMoveView localRemoteDebugMoveView = w.a(w.this);
-        int i = w.this.getWidth();
-        int j = w.this.getHeight();
-        localRemoteDebugMoveView.setLayoutParams(new ViewGroup.LayoutParams(-2, -2));
-        localRemoteDebugMoveView.gnN = i;
-        localRemoteDebugMoveView.of = j;
-        localRemoteDebugMoveView.post(new RemoteDebugMoveView.1(localRemoteDebugMoveView));
-        w.this.addView(w.a(w.this));
-        AppMethodBeat.o(147104);
-      }
-    }, 100L);
-    AppMethodBeat.o(192208);
   }
   
   public final boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(147114);
-    if (beZ())
+    if (bfH())
     {
       AppMethodBeat.o(147114);
       return true;
@@ -322,13 +316,13 @@ public final class w
   public final void show()
   {
     AppMethodBeat.i(147123);
-    if (this.kcn)
+    if (this.kfE)
     {
-      this.kcm.setVisibility(0);
-      if (this.kcc.size() > 0)
+      this.kfD.setVisibility(0);
+      if (this.kft.size() > 0)
       {
-        this.kcj.setVisibility(0);
-        this.kch.setVisibility(8);
+        this.kfA.setVisibility(0);
+        this.kfy.setVisibility(8);
       }
     }
     for (;;)
@@ -336,17 +330,17 @@ public final class w
       invalidate();
       AppMethodBeat.o(147123);
       return;
-      this.kcj.setVisibility(8);
+      this.kfA.setVisibility(8);
       break;
-      this.kcm.setVisibility(8);
-      this.kcj.setVisibility(8);
-      this.kch.setVisibility(0);
+      this.kfD.setVisibility(8);
+      this.kfA.setVisibility(8);
+      this.kfy.setVisibility(0);
     }
   }
   
   public static abstract interface a
   {
-    public abstract void beL();
+    public abstract void bft();
   }
 }
 

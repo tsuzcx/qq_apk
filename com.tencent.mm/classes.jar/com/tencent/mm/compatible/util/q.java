@@ -11,37 +11,37 @@ import java.util.BitSet;
 
 public final class q
 {
-  static BitSet gdP;
-  static String gdQ;
+  static BitSet gfX;
+  static String gfY;
   
   static
   {
     AppMethodBeat.i(155915);
-    gdQ = null;
-    gdP = new BitSet(256);
+    gfY = null;
+    gfX = new BitSet(256);
     int i = 97;
     while (i <= 122)
     {
-      gdP.set(i);
+      gfX.set(i);
       i += 1;
     }
     i = 65;
     while (i <= 90)
     {
-      gdP.set(i);
+      gfX.set(i);
       i += 1;
     }
     i = 48;
     while (i <= 57)
     {
-      gdP.set(i);
+      gfX.set(i);
       i += 1;
     }
-    gdP.set(45);
-    gdP.set(95);
-    gdP.set(46);
-    gdP.set(42);
-    gdQ = (String)AccessController.doPrivileged(new h("file.encoding"));
+    gfX.set(45);
+    gfX.set(95);
+    gfX.set(46);
+    gfX.set(42);
+    gfY = (String)AccessController.doPrivileged(new h("file.encoding"));
     AppMethodBeat.o(155915);
   }
   
@@ -52,7 +52,7 @@ public final class q
     Object localObject = null;
     try
     {
-      paramString = encode(paramString, gdQ);
+      paramString = encode(paramString, gfY);
       AppMethodBeat.o(155913);
       return paramString;
     }
@@ -90,7 +90,7 @@ public final class q
           break;
         }
         k = paramString1.charAt(i);
-        if (gdP.get(k))
+        if (gfX.get(k))
         {
           if (k == 32) {
             j = 1;
@@ -144,7 +144,7 @@ public final class q
         if (k >= paramString1.length()) {
           break;
         }
-        paramString2 = gdP;
+        paramString2 = gfX;
         m = paramString1.charAt(k);
         j = m;
         i = k;
@@ -191,7 +191,7 @@ public final class q
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.compatible.util.q
  * JD-Core Version:    0.7.0.1
  */

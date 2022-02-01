@@ -20,65 +20,65 @@ public abstract interface c
   @Deprecated
   public abstract void ae(long paramLong, int paramInt);
   
-  public abstract void au(boolean paramBoolean1, boolean paramBoolean2);
+  public abstract void at(boolean paramBoolean1, boolean paramBoolean2);
   
-  public abstract boolean euW();
+  public abstract boolean eyD();
   
-  public abstract boolean euX();
+  public abstract boolean eyE();
   
-  public abstract boolean euY();
+  public abstract boolean eyF();
   
-  public abstract boolean euZ();
+  public abstract boolean eyG();
   
-  public abstract void evC();
+  public abstract void eyH();
   
-  public abstract void evD();
+  public abstract boolean eyI();
   
-  public abstract void eva();
+  public abstract boolean eyJ();
   
-  public abstract boolean evb();
+  public abstract boolean eyK();
   
-  public abstract boolean evc();
+  public abstract boolean eyL();
   
-  public abstract boolean evd();
+  public abstract void eyM();
   
-  public abstract boolean eve();
+  public abstract void eyN();
   
-  public abstract void evf();
+  public abstract void eyP();
   
-  public abstract void evg();
+  public abstract void eyQ();
   
-  public abstract void evi();
+  public abstract void eyR();
   
-  public abstract void evj();
+  public abstract void eyS();
   
-  public abstract void evk();
+  public abstract void eyT();
   
-  public abstract void evl();
+  public abstract void eyU();
   
-  public abstract void evm();
+  public abstract void eyV();
   
-  public abstract void evn();
+  public abstract boolean eyW();
   
-  public abstract void evo();
+  public abstract void ezj();
   
-  public abstract boolean evp();
+  public abstract void ezk();
   
-  public abstract void nL(int paramInt);
+  public abstract void nO(int paramInt);
   
-  public abstract void oG(boolean paramBoolean);
+  public abstract void oN(boolean paramBoolean);
   
   public abstract void setVoicePlayDevice(int paramInt);
   
-  public abstract void td(boolean paramBoolean);
+  public abstract void tk(boolean paramBoolean);
   
-  public abstract void te(boolean paramBoolean);
+  public abstract void tl(boolean paramBoolean);
   
-  public abstract boolean tf(boolean paramBoolean);
+  public abstract boolean tm(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.ui.c
  * JD-Core Version:    0.7.0.1
  */

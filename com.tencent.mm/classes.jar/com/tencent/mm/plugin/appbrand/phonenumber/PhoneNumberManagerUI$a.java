@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.appbrand.phonenumber;
 
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/phonenumber/PhoneNumberManagerUI$Companion;", "", "()V", "APPID", "", "PAGE_PATH", "TAG", "luggage-wechat-full-sdk_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/phonenumber/PhoneNumberManagerUI$Companion;", "", "()V", "APPID", "", "PAGE_PATH", "TAG", "luggage-wechat-full-sdk_release"})
 public final class PhoneNumberManagerUI$a {}
 
 

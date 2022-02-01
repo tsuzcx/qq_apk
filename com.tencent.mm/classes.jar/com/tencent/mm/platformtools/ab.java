@@ -2,23 +2,23 @@ package com.tencent.mm.platformtools;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.e;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.storagebase.f;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public final class ab
 {
-  private static final ab iNX;
-  public static AtomicBoolean iNY;
-  public f iNZ;
+  private static final ab iQR;
+  public static AtomicBoolean iQS;
+  public f iQT;
   
   static
   {
-    AppMethodBeat.i(189863);
-    iNX = new ab();
-    iNY = new AtomicBoolean(true);
-    AppMethodBeat.o(189863);
+    AppMethodBeat.i(193581);
+    iQR = new ab();
+    iQS = new AtomicBoolean(true);
+    AppMethodBeat.o(193581);
   }
   
   /* Error */
@@ -94,25 +94,25 @@ public final class ab
   
   public static String a(String paramString, String[] paramArrayOfString1, String[] paramArrayOfString2)
   {
-    AppMethodBeat.i(189857);
+    AppMethodBeat.i(193575);
     int i = 0;
     while (i < 2)
     {
       if (paramArrayOfString1[i].equalsIgnoreCase(paramString))
       {
         paramString = paramArrayOfString2[i];
-        AppMethodBeat.o(189857);
+        AppMethodBeat.o(193575);
         return paramString;
       }
       i += 1;
     }
-    AppMethodBeat.o(189857);
+    AppMethodBeat.o(193575);
     return "";
   }
   
   public static boolean a(f paramf, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(189859);
+    AppMethodBeat.i(193577);
     Object localObject = null;
     try
     {
@@ -123,18 +123,18 @@ public final class ab
     {
       for (;;)
       {
-        ad.e("TableIndexFixer", "DROP INDEX, failure! indexName=%s %s", new Object[] { paramString1, paramf });
-        e.ygI.idkeyStat(1457L, 0L, 1L, true);
-        e.ygI.f(20708, new Object[] { "1", Integer.valueOf(0), paramf.getMessage() + " indexName=" + paramString1 });
+        ae.e("TableIndexFixer", "DROP INDEX, failure! indexName=%s %s", new Object[] { paramString1, paramf });
+        e.ywz.idkeyStat(1457L, 0L, 1L, true);
+        e.ywz.f(20708, new Object[] { "1", Integer.valueOf(0), paramf.getMessage() + " indexName=" + paramString1 });
       }
-      AppMethodBeat.o(189859);
+      AppMethodBeat.o(193577);
     }
     if (paramf == null) {
-      ad.i("TableIndexFixer", "DROP INDEX, successfully! indexName=%s, tblName=%s", new Object[] { paramString1, paramString2 });
+      ae.i("TableIndexFixer", "DROP INDEX, successfully! indexName=%s, tblName=%s", new Object[] { paramString1, paramString2 });
     }
     if (paramf == null)
     {
-      AppMethodBeat.o(189859);
+      AppMethodBeat.o(193577);
       return true;
     }
     return false;
@@ -142,11 +142,11 @@ public final class ab
   
   public static boolean a(f paramf, String paramString1, String paramString2, String paramString3)
   {
-    AppMethodBeat.i(189860);
-    if (bt.isNullOrNil(paramString1))
+    AppMethodBeat.i(193578);
+    if (bu.isNullOrNil(paramString1))
     {
-      ad.e("TableIndexFixer", "[createIndex] rightTblName is wrong.");
-      AppMethodBeat.o(189860);
+      ae.e("TableIndexFixer", "[createIndex] rightTblName is wrong.");
+      AppMethodBeat.o(193578);
       return false;
     }
     Object localObject = null;
@@ -160,18 +160,18 @@ public final class ab
     {
       for (;;)
       {
-        ad.e("TableIndexFixer", "CREATE INDEX, failure! sql=%s %s", new Object[] { paramString1, paramf });
-        e.ygI.idkeyStat(1457L, 5L, 1L, true);
-        e.ygI.f(20708, new Object[] { "1", Integer.valueOf(4), paramf.getMessage() + "sql=" + paramString1 });
+        ae.e("TableIndexFixer", "CREATE INDEX, failure! sql=%s %s", new Object[] { paramString1, paramf });
+        e.ywz.idkeyStat(1457L, 5L, 1L, true);
+        e.ywz.f(20708, new Object[] { "1", Integer.valueOf(4), paramf.getMessage() + "sql=" + paramString1 });
       }
-      AppMethodBeat.o(189860);
+      AppMethodBeat.o(193578);
     }
     if (paramf == null) {
-      ad.i("TableIndexFixer", "CREATE INDEX, successfully! %s => %s", new Object[] { paramString3, paramString1 });
+      ae.i("TableIndexFixer", "CREATE INDEX, successfully! %s => %s", new Object[] { paramString3, paramString1 });
     }
     if (paramf == null)
     {
-      AppMethodBeat.o(189860);
+      AppMethodBeat.o(193578);
       return true;
     }
     return false;
@@ -179,20 +179,20 @@ public final class ab
   
   public static boolean a(String[] paramArrayOfString, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(189858);
+    AppMethodBeat.i(193576);
     if (paramString1.startsWith("sqlite_"))
     {
-      AppMethodBeat.o(189858);
+      AppMethodBeat.o(193576);
       return false;
     }
     if (paramString1.equals(paramString2))
     {
-      AppMethodBeat.o(189858);
+      AppMethodBeat.o(193576);
       return false;
     }
     if (paramString1.startsWith(paramString2))
     {
-      AppMethodBeat.o(189858);
+      AppMethodBeat.o(193576);
       return false;
     }
     int i = 0;
@@ -200,18 +200,18 @@ public final class ab
     {
       if (paramString2.equalsIgnoreCase(paramArrayOfString[i]))
       {
-        AppMethodBeat.o(189858);
+        AppMethodBeat.o(193576);
         return true;
       }
       i += 1;
     }
-    AppMethodBeat.o(189858);
+    AppMethodBeat.o(193576);
     return false;
   }
   
-  public static ab aQI()
+  public static ab aRh()
   {
-    return iNX;
+    return iQR;
   }
   
   /* Error */

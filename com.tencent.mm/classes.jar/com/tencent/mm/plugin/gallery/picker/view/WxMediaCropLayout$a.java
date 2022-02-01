@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.gallery.picker.view;
 
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/gallery/picker/view/WxMediaCropLayout$Companion;", "", "()V", "MAXTARGETSIZE", "", "TAG", "", "TYPE_IMAGE", "TYPE_VIDEO", "plugin-gallery_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/gallery/picker/view/WxMediaCropLayout$Companion;", "", "()V", "MAXTARGETSIZE", "", "TAG", "", "TYPE_IMAGE", "TYPE_VIDEO", "plugin-gallery_release"})
 public final class WxMediaCropLayout$a {}
 
 

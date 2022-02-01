@@ -1,23 +1,23 @@
 package com.tencent.mm.plugin.wallet.pwd.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.cpp;
-import com.tencent.mm.protocal.protobuf.cpq;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.cqj;
+import com.tencent.mm.protocal.protobuf.cqk;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class i
   extends n
   implements k
 {
-  private cpq CKS;
+  private cqk Dcy;
   private f callback;
   private final b rr;
   
@@ -25,13 +25,13 @@ public final class i
   {
     AppMethodBeat.i(69547);
     b.a locala = new b.a();
-    cpp localcpp = new cpp();
-    localcpp.FpN = System.currentTimeMillis();
-    locala.hNM = localcpp;
-    locala.hNN = new cpq();
+    cqj localcqj = new cqj();
+    localcqj.FIl = System.currentTimeMillis();
+    locala.hQF = localcqj;
+    locala.hQG = new cqk();
     locala.uri = "/cgi-bin/mmpay-bin/querywalletentrancebalanceswitchstate";
     locala.funcId = 2635;
-    this.rr = locala.aDC();
+    this.rr = locala.aDS();
     AppMethodBeat.o(69547);
   }
   
@@ -44,18 +44,18 @@ public final class i
     return i;
   }
   
-  public final cpq eDX()
+  public final cqk eHE()
   {
     AppMethodBeat.i(69550);
-    if (this.CKS == null)
+    if (this.Dcy == null)
     {
-      localcpq = new cpq();
+      localcqk = new cqk();
       AppMethodBeat.o(69550);
-      return localcpq;
+      return localcqk;
     }
-    cpq localcpq = this.CKS;
+    cqk localcqk = this.Dcy;
     AppMethodBeat.o(69550);
-    return localcpq;
+    return localcqk;
   }
   
   public final int getType()
@@ -66,9 +66,9 @@ public final class i
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(69549);
-    ad.w("MicroMsg.NetSceneQueryWalletEntranceBalanceSwitchState", "errType = %s errCode = %s errMsg = %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    ae.w("MicroMsg.NetSceneQueryWalletEntranceBalanceSwitchState", "errType = %s errCode = %s errMsg = %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
     if ((paramInt2 == 0) && (paramInt3 == 0)) {
-      this.CKS = ((cpq)((b)paramq).hNL.hNQ);
+      this.Dcy = ((cqk)((b)paramq).hQE.hQJ);
     }
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(69549);

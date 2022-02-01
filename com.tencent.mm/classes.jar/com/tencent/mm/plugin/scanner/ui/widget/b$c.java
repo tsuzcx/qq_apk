@@ -1,10 +1,10 @@
 package com.tencent.mm.plugin.scanner.ui.widget;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/scanner/ui/widget/ScanScrollTabController$attachScrollTabView$1", "Lcom/tencent/mm/plugin/scanner/ui/widget/ScrollTabOnScrollListener;", "onScroll", "", "currentIndex", "", "offsetX", "", "offsetY", "onScrollStateChanged", "state", "plugin-scan_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/scanner/ui/widget/ScanScrollTabController$attachScrollTabView$1", "Lcom/tencent/mm/plugin/scanner/ui/widget/ScrollTabOnScrollListener;", "onScroll", "", "currentIndex", "", "offsetX", "", "offsetY", "onScrollStateChanged", "state", "plugin-scan_release"})
 public final class b$c
   implements d
 {
@@ -13,7 +13,7 @@ public final class b$c
   public final void t(int paramInt, float paramFloat)
   {
     AppMethodBeat.i(52432);
-    ad.d("MicroMsg.ScanScrollTabController", "alvinluo onScroll currentIndex: %d, offsetX: %f, offsetY: %f", new Object[] { Integer.valueOf(paramInt), Float.valueOf(paramFloat), Float.valueOf(0.0F) });
+    ae.d("MicroMsg.ScanScrollTabController", "alvinluo onScroll currentIndex: %d, offsetX: %f, offsetY: %f", new Object[] { Integer.valueOf(paramInt), Float.valueOf(paramFloat), Float.valueOf(0.0F) });
     AppMethodBeat.o(52432);
   }
 }

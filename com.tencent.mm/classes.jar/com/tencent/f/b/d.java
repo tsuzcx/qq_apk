@@ -2,18 +2,18 @@ package com.tencent.f.b;
 
 public final class d
 {
-  public String Mkk;
-  public String Mkl;
-  public String[] Mkm;
-  public boolean Mkn;
+  public String MHh;
+  public String MHi;
+  public String[] MHj;
+  public boolean MHk;
   
   public d() {}
   
   public d(String paramString1, String paramString2)
   {
-    this.Mkl = paramString1;
-    this.Mkk = paramString2;
-    this.Mkm = null;
+    this.MHi = paramString1;
+    this.MHh = paramString2;
+    this.MHj = null;
   }
 }
 

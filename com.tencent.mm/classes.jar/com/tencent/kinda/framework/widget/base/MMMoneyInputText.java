@@ -44,7 +44,7 @@ public class MMMoneyInputText
         AppMethodBeat.i(19286);
         b localb = new b();
         localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/kinda/framework/widget/base/MMMoneyInputText$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/kinda/framework/widget/base/MMMoneyInputText$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
         if ((paramContext instanceof BaseFrActivity)) {
           ((BaseFrActivity)paramContext).hideTenpayKB();
         }
@@ -197,7 +197,7 @@ public class MMMoneyInputText
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.kinda.framework.widget.base.MMMoneyInputText
  * JD-Core Version:    0.7.0.1
  */

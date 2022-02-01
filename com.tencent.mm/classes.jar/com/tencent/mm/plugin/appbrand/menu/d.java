@@ -12,25 +12,25 @@ import android.view.ViewGroup;
 import android.view.ViewPropertyAnimator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.menu.a.a;
-import com.tencent.mm.plugin.appbrand.page.aa;
-import com.tencent.mm.plugin.appbrand.page.ae;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.plugin.appbrand.page.ad;
+import com.tencent.mm.plugin.appbrand.page.z;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
 import java.lang.ref.WeakReference;
 
 public final class d
-  extends a<ae>
+  extends a<ad>
 {
   public d()
   {
-    super(r.lSI.ordinal());
+    super(s.lXj.ordinal());
     AppMethodBeat.i(47623);
     AppMethodBeat.o(47623);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.menu.d
  * JD-Core Version:    0.7.0.1
  */

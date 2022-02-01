@@ -7,9 +7,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
   static
   {
     AppMethodBeat.i(111452);
-    tMP = new b("CREATE", 0);
-    tMQ = new b("SKIP", 1);
-    tMR = new b[] { tMP, tMQ };
+    tXG = new b("CREATE", 0);
+    tXH = new b("SKIP", 1);
+    tXI = new b[] { tXG, tXH };
     AppMethodBeat.o(111452);
   }
   

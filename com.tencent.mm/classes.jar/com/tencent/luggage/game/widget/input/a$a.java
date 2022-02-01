@@ -8,13 +8,13 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.widget.input.w.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class a$a
   extends FrameLayout
   implements w.a
 {
-  public View clY;
+  public View cma;
   
   public a$a(Context paramContext)
   {
@@ -28,22 +28,22 @@ public final class a$a
   public final View getConfirmButton()
   {
     AppMethodBeat.i(130707);
-    if (this.clY == null) {
-      this.clY = findViewById(2131300437);
+    if (this.cma == null) {
+      this.cma = findViewById(2131300437);
     }
-    View localView = this.clY;
+    View localView = this.cma;
     AppMethodBeat.o(130707);
     return localView;
   }
   
   public final void setEditBarMargins(int paramInt)
   {
-    AppMethodBeat.i(221361);
-    LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)this.clY.getLayoutParams();
-    ad.i("MicroMsg.WAGameInputPanel", "EditBar setmConfirmButtonPadding tolerate(%d),rightMargin(%d).", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(localLayoutParams.rightMargin) });
+    AppMethodBeat.i(224435);
+    LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)this.cma.getLayoutParams();
+    ae.i("MicroMsg.WAGameInputPanel", "EditBar setmConfirmButtonPadding tolerate(%d),rightMargin(%d).", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(localLayoutParams.rightMargin) });
     localLayoutParams.setMargins(localLayoutParams.leftMargin, localLayoutParams.topMargin, localLayoutParams.rightMargin + paramInt, localLayoutParams.bottomMargin);
-    this.clY.setLayoutParams(localLayoutParams);
-    AppMethodBeat.o(221361);
+    this.cma.setLayoutParams(localLayoutParams);
+    AppMethodBeat.o(224435);
   }
   
   public final void setIsHide(boolean paramBoolean)

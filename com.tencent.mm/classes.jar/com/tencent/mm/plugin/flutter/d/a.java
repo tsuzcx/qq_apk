@@ -7,11 +7,13 @@ import android.provider.Settings.System;
 import android.view.Window;
 import android.view.WindowManager.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import io.flutter.plugin.a.j;
 import io.flutter.plugin.a.k.c;
 import io.flutter.plugin.a.k.d;
 import io.flutter.plugin.a.m.c;
+import io.flutter.plugin.a.m.f;
+import io.flutter.view.FlutterNativeView;
 
 public final class a
   implements k.c
@@ -23,15 +25,15 @@ public final class a
     this.bbB = paramc;
   }
   
-  private float cQo()
+  private float cST()
   {
     AppMethodBeat.i(148875);
-    float f2 = this.bbB.JQ().getWindow().getAttributes().screenBrightness;
+    float f2 = this.bbB.JY().getWindow().getAttributes().screenBrightness;
     f1 = f2;
     if (f2 < 0.0F) {}
     try
     {
-      int i = Settings.System.getInt(this.bbB.JR().getContentResolver(), "screen_brightness");
+      int i = Settings.System.getInt(this.bbB.JZ().getContentResolver(), "screen_brightness");
       f1 = i / 255.0F;
     }
     catch (Settings.SettingNotFoundException localSettingNotFoundException)
@@ -39,7 +41,7 @@ public final class a
       for (;;)
       {
         f1 = 1.0F;
-        ad.printErrStackTrace("MicroMsg.FlutterScreenPlugin", localSettingNotFoundException, "", new Object[0]);
+        ae.printErrStackTrace("MicroMsg.FlutterScreenPlugin", localSettingNotFoundException, "", new Object[0]);
       }
     }
     AppMethodBeat.o(148875);
@@ -60,7 +62,7 @@ public final class a
       switch (i)
       {
       default: 
-        paramd.djR();
+        paramd.dmQ();
         AppMethodBeat.o(148874);
         return;
         if (str.equals("brightness"))
@@ -84,64 +86,64 @@ public final class a
         break;
       }
     }
-    if (this.bbB.JQ() == null)
+    if (this.bbB.JY() == null)
     {
-      ad.w("MicroMsg.FlutterScreenPlugin", "activity is null, please must sure the activity have attach. ignore");
+      ae.w("MicroMsg.FlutterScreenPlugin", "activity is null, please must sure the activity have attach. ignore");
       paramd.f("MicroMsg.FlutterScreenPlugin", "activity is null", "");
       AppMethodBeat.o(148874);
       return;
     }
-    paramd.de(Float.valueOf(cQo()));
+    paramd.df(Float.valueOf(cST()));
     AppMethodBeat.o(148874);
     return;
-    if (this.bbB.JQ() == null)
+    if (this.bbB.JY() == null)
     {
-      ad.w("MicroMsg.FlutterScreenPlugin", "activity is null, please must sure the activity have attach. ignore");
+      ae.w("MicroMsg.FlutterScreenPlugin", "activity is null, please must sure the activity have attach. ignore");
       paramd.f("MicroMsg.FlutterScreenPlugin", "activity is null", "");
       AppMethodBeat.o(148874);
       return;
     }
-    double d = ((Double)paramj.wd("brightness")).doubleValue();
-    paramj = this.bbB.JQ().getWindow().getAttributes();
+    double d = ((Double)paramj.wM("brightness")).doubleValue();
+    paramj = this.bbB.JY().getWindow().getAttributes();
     paramj.screenBrightness = ((float)d);
-    this.bbB.JQ().getWindow().setAttributes(paramj);
-    paramd.de(null);
+    this.bbB.JY().getWindow().setAttributes(paramj);
+    paramd.df(null);
     AppMethodBeat.o(148874);
     return;
-    if (this.bbB.JQ() == null)
+    if (this.bbB.JY() == null)
     {
-      ad.w("MicroMsg.FlutterScreenPlugin", "activity is null, please must sure the activity have attach. ignore");
+      ae.w("MicroMsg.FlutterScreenPlugin", "activity is null, please must sure the activity have attach. ignore");
       paramd.f("MicroMsg.FlutterScreenPlugin", "activity is null", "");
       AppMethodBeat.o(148874);
       return;
     }
-    if ((this.bbB.JQ().getWindow().getAttributes().flags & 0x80) != 0) {}
+    if ((this.bbB.JY().getWindow().getAttributes().flags & 0x80) != 0) {}
     for (;;)
     {
-      paramd.de(Boolean.valueOf(bool));
+      paramd.df(Boolean.valueOf(bool));
       AppMethodBeat.o(148874);
       return;
       bool = false;
     }
-    if (this.bbB.JQ() == null)
+    if (this.bbB.JY() == null)
     {
-      ad.w("MicroMsg.FlutterScreenPlugin", "activity is null, please must sure the activity have attach. ignore");
+      ae.w("MicroMsg.FlutterScreenPlugin", "activity is null, please must sure the activity have attach. ignore");
       paramd.f("MicroMsg.FlutterScreenPlugin", "activity is null", "");
       AppMethodBeat.o(148874);
       return;
     }
-    if (((Boolean)paramj.wd("on")).booleanValue())
+    if (((Boolean)paramj.wM("on")).booleanValue())
     {
-      ad.i("MicroMsg.FlutterScreenPlugin", "Keeping screen on ");
-      this.bbB.JQ().getWindow().addFlags(128);
+      ae.i("MicroMsg.FlutterScreenPlugin", "Keeping screen on ");
+      this.bbB.JY().getWindow().addFlags(128);
     }
     for (;;)
     {
-      paramd.de(null);
+      paramd.df(null);
       AppMethodBeat.o(148874);
       return;
-      ad.i("MicroMsg.FlutterScreenPlugin", "Not keeping screen on");
-      this.bbB.JQ().getWindow().clearFlags(128);
+      ae.i("MicroMsg.FlutterScreenPlugin", "Not keeping screen on");
+      this.bbB.JY().getWindow().clearFlags(128);
     }
   }
 }

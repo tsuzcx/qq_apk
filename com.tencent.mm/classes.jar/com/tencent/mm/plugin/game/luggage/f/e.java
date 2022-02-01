@@ -1,42 +1,46 @@
 package com.tencent.mm.plugin.game.luggage.f;
 
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
 import com.tencent.luggage.d.s;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.webview.luggage.DownloadProgressImageView;
 import com.tencent.mm.plugin.webview.luggage.RedDotView;
 import com.tencent.mm.plugin.webview.luggage.b.n;
 import com.tencent.mm.plugin.webview.luggage.m;
 import com.tencent.mm.plugin.webview.ui.tools.game.menu.d;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.z;
 
 public final class e
   extends m
 {
-  private com.tencent.mm.plugin.game.luggage.d.a.b tUV;
-  private com.tencent.mm.plugin.game.luggage.d.b tUW;
-  private com.tencent.mm.plugin.game.luggage.d.a.c tUX;
-  private RedDotView tUY;
-  private com.tencent.mm.plugin.downloader_app.api.e tUZ;
-  private g tUx;
+  private com.tencent.mm.plugin.game.luggage.d.a.b ufQ;
+  private com.tencent.mm.plugin.game.luggage.d.b ufR;
+  private com.tencent.mm.plugin.game.luggage.d.a.c ufS;
+  private DownloadProgressImageView ufT;
+  private RedDotView ufU;
+  private com.tencent.mm.plugin.downloader_app.api.e ufV;
+  private g ufp;
   
   public e(g paramg)
   {
     super(paramg);
     AppMethodBeat.i(180138);
-    this.tUx = paramg;
-    if (this.tUx.mParams.getBoolean("from_find_more_friend", false))
+    this.ufp = paramg;
+    if (this.ufp.mParams.getBoolean("from_find_more_friend", false))
     {
-      View localView = z.jO(getContext()).inflate(2131494234, this.DPy, false);
-      this.tUY = ((RedDotView)localView.findViewById(2131299218));
-      this.DPy.addView(localView, 0);
-      cXr();
-      this.tUZ = new com.tencent.mm.plugin.downloader_app.api.e()
+      View localView = z.jV(getContext()).inflate(2131494234, this.Ehy, false);
+      this.ufT = ((DownloadProgressImageView)localView.findViewById(2131308482));
+      this.ufU = ((RedDotView)localView.findViewById(2131299218));
+      this.Ehy.addView(localView, 0);
+      dab();
+      this.ufV = new com.tencent.mm.plugin.downloader_app.api.e()
       {
         public final void onChange(final boolean paramAnonymousBoolean)
         {
@@ -59,7 +63,7 @@ public final class e
           AppMethodBeat.o(180137);
         }
       };
-      ((com.tencent.mm.plugin.downloader_app.api.c)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.downloader_app.api.c.class)).a(this.tUZ);
+      ((com.tencent.mm.plugin.downloader_app.api.c)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.downloader_app.api.c.class)).a(this.ufV);
     }
     if (paramg.mParams.getInt("share_report_from_scene", -1) >= 0) {}
     for (int i = 1;; i = 0)
@@ -72,48 +76,48 @@ public final class e
     }
   }
   
-  private void cXr()
+  private void dab()
   {
     AppMethodBeat.i(180141);
-    if (this.tUY == null)
+    if (this.ufU == null)
     {
       AppMethodBeat.o(180141);
       return;
     }
-    if (((com.tencent.mm.plugin.downloader_app.api.c)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.downloader_app.api.c.class)).ccI())
+    if (((com.tencent.mm.plugin.downloader_app.api.c)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.downloader_app.api.c.class)).cdX())
     {
-      this.tUY.setVisibility(0);
+      this.ufU.setVisibility(0);
       AppMethodBeat.o(180141);
       return;
     }
-    this.tUY.setVisibility(8);
+    this.ufU.setVisibility(8);
     AppMethodBeat.o(180141);
   }
   
   private com.tencent.mm.plugin.game.luggage.d.a.b getH5GameMenuHelp()
   {
     AppMethodBeat.i(83129);
-    if (this.tUV == null) {
-      this.tUV = new com.tencent.mm.plugin.game.luggage.d.a.b(this.tUx.mParams.getString("game_hv_menu_appid"));
+    if (this.ufQ == null) {
+      this.ufQ = new com.tencent.mm.plugin.game.luggage.d.a.b(this.ufp.mParams.getString("game_hv_menu_appid"));
     }
-    com.tencent.mm.plugin.game.luggage.d.a.b localb = this.tUV;
+    com.tencent.mm.plugin.game.luggage.d.a.b localb = this.ufQ;
     AppMethodBeat.o(83129);
     return localb;
   }
   
-  public final void cXo()
+  public final void cZY()
   {
     AppMethodBeat.i(83130);
-    if (!(this.tUx instanceof a)) {}
+    if (!(this.ufp instanceof a)) {}
     for (boolean bool = true;; bool = false)
     {
-      this.tUx.gg(bool);
+      this.ufp.ge(bool);
       AppMethodBeat.o(83130);
       return;
     }
   }
   
-  public final void cXp()
+  public final void cZZ()
   {
     AppMethodBeat.i(83131);
     boolean bool = false;
@@ -125,7 +129,7 @@ public final class e
       public final void run()
       {
         AppMethodBeat.i(83127);
-        if (bt.isNullOrNil(e.a(e.this).mParams.getString("game_hv_menu_appid")))
+        if (bu.isNullOrNil(e.a(e.this).mParams.getString("game_hv_menu_appid")))
         {
           e.a(e.this, new com.tencent.mm.plugin.game.luggage.d.b(e.a(e.this), e.this.getMenuHelp()));
           AppMethodBeat.o(83127);
@@ -138,23 +142,23 @@ public final class e
     if (bool) {}
     for (long l = 100L;; l = 0L)
     {
-      aq.o(local1, l);
+      ar.o(local1, l);
       AppMethodBeat.o(83131);
       return;
     }
   }
   
-  public final void cXq()
+  public final void daa()
   {
     AppMethodBeat.i(83132);
-    if (this.tUW != null) {
-      this.tUW.ePB();
+    if (this.ufR != null) {
+      this.ufR.eTn();
     }
-    if (this.tUX != null)
+    if (this.ufS != null)
     {
-      com.tencent.mm.plugin.game.luggage.d.a.c localc = this.tUX;
-      if (localc.tUz != null) {
-        localc.tUz.bpT();
+      com.tencent.mm.plugin.game.luggage.d.a.c localc = this.ufS;
+      if (localc.ufr != null) {
+        localc.ufr.bqD();
       }
     }
     AppMethodBeat.o(83132);
@@ -163,10 +167,10 @@ public final class e
   public final n getMenuHelp()
   {
     AppMethodBeat.i(83128);
-    if (this.DPC == null) {
-      this.DPC = new com.tencent.mm.plugin.game.luggage.d.a();
+    if (this.EhC == null) {
+      this.EhC = new com.tencent.mm.plugin.game.luggage.d.a();
     }
-    n localn = this.DPC;
+    n localn = this.EhC;
     AppMethodBeat.o(83128);
     return localn;
   }
@@ -175,7 +179,7 @@ public final class e
   {
     AppMethodBeat.i(180139);
     super.onDestroy();
-    ((com.tencent.mm.plugin.downloader_app.api.c)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.downloader_app.api.c.class)).b(this.tUZ);
+    ((com.tencent.mm.plugin.downloader_app.api.c)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.downloader_app.api.c.class)).b(this.ufV);
     AppMethodBeat.o(180139);
   }
   
@@ -183,8 +187,52 @@ public final class e
   {
     AppMethodBeat.i(180140);
     super.onForeground();
-    cXr();
+    dab();
     AppMethodBeat.o(180140);
+  }
+  
+  public final void setActionBarColor(int paramInt)
+  {
+    AppMethodBeat.i(193066);
+    super.setActionBarColor(paramInt);
+    int i = paramInt;
+    if (paramInt == 0) {
+      i = getResources().getColor(2131101179);
+    }
+    if (this.ufT != null) {
+      this.ufT.setBgColor(i);
+    }
+    AppMethodBeat.o(193066);
+  }
+  
+  public final void setAlpha(float paramFloat)
+  {
+    AppMethodBeat.i(193067);
+    super.setAlpha(paramFloat);
+    float f = paramFloat;
+    if (paramFloat == 0.0F) {
+      f = 1.0F;
+    }
+    if ((f < 0.0F) || (f > 1.0F))
+    {
+      AppMethodBeat.o(193067);
+      return;
+    }
+    int i = (int)(255.0F * f);
+    if (this.ufT != null) {
+      this.ufT.setImageAlpha(i);
+    }
+    AppMethodBeat.o(193067);
+  }
+  
+  public final void setImmersiveStyle(boolean paramBoolean)
+  {
+    AppMethodBeat.i(193065);
+    super.setImmersiveStyle(paramBoolean);
+    if (this.ufT != null) {
+      this.ufT.setDarkMode(paramBoolean);
+    }
+    AppMethodBeat.o(193065);
   }
 }
 

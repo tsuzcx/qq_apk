@@ -1,13 +1,12 @@
 package com.tencent.mm.g.a;
 
-import android.app.Activity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class gh
   extends b
 {
-  public a drX;
+  public a dtb;
   
   public gh()
   {
@@ -16,24 +15,21 @@ public final class gh
   
   private gh(byte paramByte)
   {
-    AppMethodBeat.i(63288);
-    this.drX = new a();
-    this.IbR = false;
+    AppMethodBeat.i(63287);
+    this.dtb = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(63288);
+    AppMethodBeat.o(63287);
   }
   
   public static final class a
   {
-    public String drY;
-    public int drZ = 0;
-    public Activity dsa;
-    public int mRequestCode;
+    public boolean dtc;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.a.gh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.appbrand.floatball;
 
 import android.app.Activity;
-import com.tencent.mm.plugin.appbrand.o;
+import com.tencent.mm.plugin.appbrand.p;
 
 public final class i
   extends e
 {
-  public i(Activity paramActivity, o paramo)
+  public i(Activity paramActivity, p paramp)
   {
-    super(paramActivity, paramo);
+    super(paramActivity, paramp);
   }
   
-  public final boolean bgM()
+  public final boolean bhu()
   {
     return false;
   }

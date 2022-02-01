@@ -7,70 +7,70 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.k.d;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class e
   implements c
 {
-  public boolean drv;
+  public boolean dsB;
   private boolean isVisible;
-  public String jDf;
-  private String uZn;
-  private double uZr;
-  private double uZs;
-  private boolean vbN;
-  private View vbO;
-  private d vbP;
-  private TextView vbQ;
-  private TextView vbR;
-  public ImageButton vbS;
-  private String vbu;
+  public String jGd;
+  private double vlC;
+  private double vlD;
+  private String vly;
+  private String vnF;
+  private boolean vnY;
+  private View vnZ;
+  private d voa;
+  private TextView vob;
+  private TextView voc;
+  public ImageButton vod;
   
   public e(d paramd, Context paramContext)
   {
     AppMethodBeat.i(55842);
-    this.drv = false;
-    this.vbN = true;
-    this.uZr = 1000000.0D;
-    this.uZs = 1000000.0D;
+    this.dsB = false;
+    this.vnY = true;
+    this.vlC = 1000000.0D;
+    this.vlD = 1000000.0D;
     this.isVisible = true;
-    this.vbu = "";
+    this.vnF = "";
     paramContext = ((Activity)paramContext).findViewById(2131301527);
-    this.vbQ = ((TextView)paramContext.findViewById(2131301525));
-    this.vbR = ((TextView)paramContext.findViewById(2131301526));
-    this.vbS = ((ImageButton)paramContext.findViewById(2131301534));
-    this.vbP = paramd;
-    this.vbO = paramContext;
+    this.vob = ((TextView)paramContext.findViewById(2131301525));
+    this.voc = ((TextView)paramContext.findViewById(2131301526));
+    this.vod = ((ImageButton)paramContext.findViewById(2131301534));
+    this.voa = paramd;
+    this.vnZ = paramContext;
     AppMethodBeat.o(55842);
   }
   
   public final String getPreText()
   {
-    return this.vbu;
+    return this.vnF;
   }
   
   public final void setText(String paramString)
   {
     AppMethodBeat.i(55843);
-    this.uZn = paramString;
-    paramString = this.uZn;
-    ad.d("NewItemOverlay", "popView " + this.vbO.getWidth() + " " + this.vbO.getHeight());
+    this.vly = paramString;
+    paramString = this.vly;
+    ae.d("NewItemOverlay", "popView " + this.vnZ.getWidth() + " " + this.vnZ.getHeight());
     if ((paramString != null) && (!paramString.equals(""))) {
-      this.vbR.setText(paramString);
+      this.voc.setText(paramString);
     }
-    if ((this.jDf != null) && (!this.jDf.equals(""))) {
-      this.vbQ.setText(this.jDf);
+    if ((this.jGd != null) && (!this.jGd.equals(""))) {
+      this.vob.setText(this.jGd);
     }
     for (;;)
     {
-      if (this.vbN)
+      if (this.vnY)
       {
-        this.vbO.setVisibility(0);
-        this.vbO.invalidate();
+        this.vnZ.setVisibility(0);
+        this.vnZ.invalidate();
       }
       AppMethodBeat.o(55843);
       return;
-      this.vbQ.setText(2131760712);
+      this.vob.setText(2131760712);
     }
   }
 }

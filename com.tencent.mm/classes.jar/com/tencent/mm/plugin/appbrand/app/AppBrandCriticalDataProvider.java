@@ -7,27 +7,27 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.api.c;
 import com.tencent.mm.kernel.e.c;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.appbrand.appcache.bg;
+import com.tencent.mm.plugin.appbrand.appcache.bh;
 import com.tencent.mm.plugin.appbrand.config.u;
 import com.tencent.mm.plugin.appbrand.task.f;
 import com.tencent.mm.sdk.e.e;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/app/AppBrandCriticalDataProvider;", "Lcom/tencent/luggage/wxa/storage/WxaCriticalDataProvider;", "Lcom/tencent/mm/kernel/api/ICoreAccountCallback;", "()V", "insert", "Landroid/net/Uri;", "uri", "contentValues", "Landroid/content/ContentValues;", "onAccountInitialized", "", "upgrade", "Lcom/tencent/mm/kernel/CoreStorage$UpgradeInfo;", "onAccountRelease", "provideDatabase", "Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "plugin-appbrand-integration_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/app/AppBrandCriticalDataProvider;", "Lcom/tencent/luggage/wxa/storage/WxaCriticalDataProvider;", "Lcom/tencent/mm/kernel/api/ICoreAccountCallback;", "()V", "insert", "Landroid/net/Uri;", "uri", "contentValues", "Landroid/content/ContentValues;", "onAccountInitialized", "", "upgrade", "Lcom/tencent/mm/kernel/CoreStorage$UpgradeInfo;", "onAccountRelease", "provideDatabase", "Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "plugin-appbrand-integration_release"})
 public final class AppBrandCriticalDataProvider
   extends WxaCriticalDataProvider
   implements c
 {
-  public final e FA()
+  public final e FG()
   {
     AppMethodBeat.i(50159);
-    Object localObject = j.aYL();
+    Object localObject = j.aZh();
     if (localObject != null)
     {
-      c(u.class, j.aYP());
-      c(bg.class, j.aYX());
-      g.ajD().bp(localObject);
+      c(u.class, j.aZl());
+      c(bh.class, j.aZu());
+      g.ajS().bp(localObject);
     }
     for (;;)
     {
@@ -69,7 +69,7 @@ public final class AppBrandCriticalDataProvider
     for (int j = 1;; j = 0)
     {
       if ((j == 0) && (i != -1)) {
-        f.bY(paramUri, i);
+        f.cc(paramUri, i);
       }
       AppMethodBeat.o(50160);
       return localUri;
@@ -87,7 +87,7 @@ public final class AppBrandCriticalDataProvider
   public final void onAccountRelease()
   {
     AppMethodBeat.i(50158);
-    super.FB();
+    super.FH();
     AppMethodBeat.o(50158);
   }
 }

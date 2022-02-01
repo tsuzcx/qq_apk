@@ -2,14 +2,14 @@ package com.tencent.mm.plugin.expt.hellhound.a.b.b;
 
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/monitor/IFinderClickListener;", "", "onFeedClick", "", "obj", "position", "", "plugin-expt_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/monitor/IFinderClickListener;", "", "onFeedClick", "", "obj", "position", "", "plugin-expt_release"})
 public abstract interface d
 {
   public abstract void i(Object paramObject, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.hellhound.a.b.b.d
  * JD-Core Version:    0.7.0.1
  */

@@ -3,30 +3,30 @@ package com.tencent.mm.plugin.forcenotify.a;
 import android.content.Context;
 import com.tencent.mm.kernel.c.a;
 import com.tencent.mm.plugin.messenger.foundation.a.q;
-import com.tencent.mm.plugin.messenger.foundation.a.x;
+import com.tencent.mm.plugin.messenger.foundation.a.y;
 import com.tencent.mm.protocal.protobuf.cv;
 import com.tencent.mm.sdk.e.j;
 
 public abstract interface b
-  extends a, q, x<cv>
+  extends a, q, y<cv>
 {
-  public abstract void aJ(String paramString, int paramInt);
+  public abstract void aM(String paramString, int paramInt);
   
-  public abstract void ajx(String paramString);
+  public abstract void akv(String paramString);
   
-  public abstract long ajy(String paramString);
+  public abstract long akw(String paramString);
   
-  public abstract boolean ajz(String paramString);
+  public abstract boolean akx(String paramString);
   
-  public abstract boolean cQx();
+  public abstract boolean cTc();
   
-  public abstract j cQy();
+  public abstract j cTd();
   
-  public abstract void fg(Context paramContext);
+  public abstract void fk(Context paramContext);
   
   public abstract boolean hasError();
   
-  public abstract void mH(boolean paramBoolean);
+  public abstract void mL(boolean paramBoolean);
 }
 
 

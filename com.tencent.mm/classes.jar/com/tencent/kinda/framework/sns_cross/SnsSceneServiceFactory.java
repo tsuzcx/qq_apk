@@ -32,6 +32,8 @@ public class SnsSceneServiceFactory
       localObject = new LuckMoneyUseCaseCallback();
       continue;
       localObject = new T2BUseCaseCallback();
+      continue;
+      localObject = new MobileRemittanceCaseCallBack();
     }
   }
   
@@ -54,13 +56,15 @@ public class SnsSceneServiceFactory
       continue;
       localObject = new T2BSceneServiceImpl();
       continue;
+      localObject = new MobileRemittanceServiceImpl();
+      continue;
       localObject = new HongBaoServiceImpl();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.kinda.framework.sns_cross.SnsSceneServiceFactory
  * JD-Core Version:    0.7.0.1
  */

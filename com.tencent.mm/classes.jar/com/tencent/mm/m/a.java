@@ -1,29 +1,29 @@
 package com.tencent.mm.m;
 
-import com.tencent.mm.storage.bu;
+import com.tencent.mm.storage.bv;
 
 public abstract interface a
 {
-  public abstract String I(String paramString, int paramInt);
+  public abstract String J(String paramString, int paramInt);
   
-  public abstract void n(bu parambu);
+  public abstract void n(bv parambv);
   
-  public abstract String o(bu parambu);
+  public abstract String o(bv parambv);
   
-  public abstract boolean vd(String paramString);
+  public abstract boolean vz(String paramString);
   
   public static final class a
   {
-    private static a fVs = null;
+    private static a fXy = null;
     
-    public static a ZG()
+    public static a ZP()
     {
-      return fVs;
+      return fXy;
     }
     
     public static void a(a parama)
     {
-      fVs = parama;
+      fXy = parama;
     }
   }
 }

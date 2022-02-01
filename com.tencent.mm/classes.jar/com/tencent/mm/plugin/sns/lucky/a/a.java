@@ -6,9 +6,9 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.memory.n;
-import com.tencent.mm.plugin.sns.data.q;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.g;
+import com.tencent.mm.plugin.sns.data.r;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.h;
 import java.io.IOException;
 
 public final class a
@@ -16,17 +16,17 @@ public final class a
   public static n a(Bitmap paramBitmap, String paramString, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(95175);
-    paramBitmap = n.D(g.l(paramBitmap, paramInt2));
+    paramBitmap = n.E(h.l(paramBitmap, paramInt2));
     if (paramBitmap == null) {
-      ad.e("MicroMsg.BlurHelper", "returnBitmap error2 ");
+      ae.e("MicroMsg.BlurHelper", "returnBitmap error2 ");
     }
     if (paramBitmap != null) {
-      new Canvas(paramBitmap.ayF()).drawColor(paramInt1);
+      new Canvas(paramBitmap.ayU()).drawColor(paramInt1);
     }
     try
     {
-      g.a(paramBitmap.ayF(), 70, Bitmap.CompressFormat.JPEG, paramString, false);
-      ad.i("MicroMsg.BlurHelper", "blur done bitmap  ".concat(String.valueOf(paramBitmap)));
+      h.a(paramBitmap.ayU(), 70, Bitmap.CompressFormat.JPEG, paramString, false);
+      ae.i("MicroMsg.BlurHelper", "blur done bitmap  ".concat(String.valueOf(paramBitmap)));
       AppMethodBeat.o(95175);
       return paramBitmap;
     }
@@ -34,24 +34,24 @@ public final class a
     {
       for (;;)
       {
-        ad.e("MicroMsg.BlurHelper", "error for exception " + paramString.getMessage());
-        ad.printErrStackTrace("MicroMsg.BlurHelper", paramString, "", new Object[0]);
+        ae.e("MicroMsg.BlurHelper", "error for exception " + paramString.getMessage());
+        ae.printErrStackTrace("MicroMsg.BlurHelper", paramString, "", new Object[0]);
       }
     }
   }
   
-  public static n jj(String paramString1, String paramString2)
+  public static n jq(String paramString1, String paramString2)
   {
     AppMethodBeat.i(95174);
     int i = Color.argb(51, 255, 255, 255);
-    paramString1 = q.aya(paramString1);
+    paramString1 = r.azr(paramString1);
     if (paramString1 == null)
     {
-      ad.e("MicroMsg.BlurHelper", "returnBitmap error1 ");
+      ae.e("MicroMsg.BlurHelper", "returnBitmap error1 ");
       AppMethodBeat.o(95174);
       return null;
     }
-    paramString1 = a(paramString1.ayF(), paramString2, i, 55);
+    paramString1 = a(paramString1.ayU(), paramString2, i, 55);
     AppMethodBeat.o(95174);
     return paramString1;
   }

@@ -6,50 +6,37 @@ import com.tencent.mm.plugin.report.a;
 public final class hk
   extends a
 {
-  public long dVd = 0L;
-  private String erX;
+  public long dWt = 0L;
   
-  public final String RD()
+  public final String RC()
   {
-    AppMethodBeat.i(149947);
+    AppMethodBeat.i(149942);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dVd);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.erX);
+    ((StringBuffer)localObject).append(this.dWt);
     localObject = ((StringBuffer)localObject).toString();
-    awz((String)localObject);
-    AppMethodBeat.o(149947);
+    axO((String)localObject);
+    AppMethodBeat.o(149942);
     return localObject;
   }
   
-  public final String RE()
+  public final String RD()
   {
-    AppMethodBeat.i(149948);
+    AppMethodBeat.i(149943);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("Scene:").append(this.dVd);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ReqKey:").append(this.erX);
+    ((StringBuffer)localObject).append("Scene:").append(this.dWt);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(149948);
+    AppMethodBeat.o(149943);
     return localObject;
   }
   
   public final int getId()
   {
-    return 18263;
-  }
-  
-  public final hk qb(String paramString)
-  {
-    AppMethodBeat.i(149946);
-    this.erX = t("ReqKey", paramString, true);
-    AppMethodBeat.o(149946);
-    return this;
+    return 18564;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.b.a.hk
  * JD-Core Version:    0.7.0.1
  */

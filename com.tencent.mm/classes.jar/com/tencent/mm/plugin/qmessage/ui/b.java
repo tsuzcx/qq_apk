@@ -8,22 +8,22 @@ import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.os.Message;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bs.d;
+import com.tencent.mm.br.d;
 import com.tencent.mm.g.c.aw;
-import com.tencent.mm.model.ba;
+import com.tencent.mm.model.bc;
 import com.tencent.mm.model.c;
-import com.tencent.mm.model.u;
-import com.tencent.mm.model.w;
+import com.tencent.mm.model.v;
+import com.tencent.mm.model.x;
 import com.tencent.mm.plugin.messenger.foundation.a.a.j;
 import com.tencent.mm.plugin.qmessage.a.g;
 import com.tencent.mm.pluginsdk.ui.preference.HelperHeaderPreference;
 import com.tencent.mm.sdk.e.n;
 import com.tencent.mm.sdk.e.n.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.am;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.aj;
+import com.tencent.mm.storage.an;
 import com.tencent.mm.ui.base.preference.CheckBoxPreference;
 import com.tencent.mm.ui.base.preference.f;
 import com.tencent.mm.ui.r;
@@ -34,20 +34,20 @@ import junit.framework.Assert;
 public final class b
   implements com.tencent.mm.pluginsdk.b.a, n.b
 {
-  private am contact;
+  private an contact;
   Context context;
   private f screen;
-  private boolean wPZ;
+  private boolean xfQ;
   
   public b(Context paramContext)
   {
     this.context = paramContext;
   }
   
-  private static boolean Nj(int paramInt)
+  private static boolean NP(int paramInt)
   {
     AppMethodBeat.i(27753);
-    if ((u.aAq() & paramInt) != 0)
+    if ((v.aAG() & paramInt) != 0)
     {
       AppMethodBeat.o(27753);
       return true;
@@ -59,12 +59,12 @@ public final class b
   static void e(int paramInt1, boolean paramBoolean, int paramInt2)
   {
     AppMethodBeat.i(27756);
-    int i = u.aAq();
+    int i = v.aAG();
     if (paramBoolean)
     {
       paramInt1 = i | paramInt1;
-      ba.aBQ();
-      c.ajl().set(7, Integer.valueOf(paramInt1));
+      bc.aCg();
+      c.ajA().set(7, Integer.valueOf(paramInt1));
       if (!paramBoolean) {
         break label77;
       }
@@ -72,8 +72,8 @@ public final class b
     label77:
     for (paramInt1 = 1;; paramInt1 = 2)
     {
-      ba.aBQ();
-      c.azo().c(new com.tencent.mm.bb.h(paramInt2, paramInt1));
+      bc.aCg();
+      c.azE().d(new com.tencent.mm.ba.h(paramInt2, paramInt1));
       AppMethodBeat.o(27756);
       return;
       paramInt1 = i & (paramInt1 ^ 0xFFFFFFFF);
@@ -84,7 +84,7 @@ public final class b
   private static boolean isOpen()
   {
     AppMethodBeat.i(27752);
-    if ((u.aAy() & 0x20) == 0)
+    if ((v.aAO() & 0x20) == 0)
     {
       AppMethodBeat.o(27752);
       return true;
@@ -101,28 +101,28 @@ public final class b
     {
       paramContext.getString(2131755906);
       paramContext = com.tencent.mm.ui.base.h.b(paramContext, (String)localObject, true, null);
-      localObject = new ap()
+      localObject = new aq()
       {
         public final void handleMessage(Message paramAnonymousMessage)
         {
           AppMethodBeat.i(27748);
-          b.e(64, this.prx, 5);
-          b.e(8192, this.prx, 12);
-          int i = u.aAy();
-          if (this.prx) {
+          b.e(64, this.pyd, 5);
+          b.e(8192, this.pyd, 12);
+          int i = v.aAO();
+          if (this.pyd) {
             i &= 0xFFFFFFDF;
           }
           for (;;)
           {
-            ba.aBQ();
-            c.ajl().set(34, Integer.valueOf(i));
-            ba.aBQ();
-            c.azo().c(new com.tencent.mm.bb.l("", "", "", "", "", "", "", "", i, "", ""));
-            if (!this.prx) {
-              g.dBV();
+            bc.aCg();
+            c.ajA().set(34, Integer.valueOf(i));
+            bc.aCg();
+            c.azE().d(new com.tencent.mm.ba.l("", "", "", "", "", "", "", "", i, "", ""));
+            if (!this.pyd) {
+              g.dFm();
             }
-            if (this.vHr != null) {
-              this.vHr.a(null, null);
+            if (this.vTv != null) {
+              this.vTv.a(null, null);
             }
             AppMethodBeat.o(27748);
             return;
@@ -135,10 +135,10 @@ public final class b
         public final void run()
         {
           AppMethodBeat.i(27749);
-          if (this.pgO != null)
+          if (this.pnu != null)
           {
-            this.pgO.dismiss();
-            this.uDu.sendEmptyMessage(0);
+            this.pnu.dismiss();
+            this.uOZ.sendEmptyMessage(0);
           }
           AppMethodBeat.o(27749);
         }
@@ -151,46 +151,46 @@ public final class b
   public final void a(int paramInt, n paramn, Object paramObject)
   {
     AppMethodBeat.i(27758);
-    ba.aBQ();
-    if (paramn != c.ajl())
+    bc.aCg();
+    if (paramn != c.ajA())
     {
       AppMethodBeat.o(27758);
       return;
     }
-    cdo();
+    ceD();
     AppMethodBeat.o(27758);
   }
   
-  public final boolean a(f paramf, am paramam, boolean paramBoolean, int paramInt)
+  public final boolean a(f paramf, an paraman, boolean paramBoolean, int paramInt)
   {
     boolean bool2 = false;
     AppMethodBeat.i(27754);
-    if (paramam != null) {}
+    if (paraman != null) {}
     for (boolean bool1 = true;; bool1 = false)
     {
       Assert.assertTrue(bool1);
-      Assert.assertTrue(w.zL(paramam.field_username));
+      Assert.assertTrue(x.Av(paraman.field_username));
       bool1 = bool2;
       if (paramf != null) {
         bool1 = true;
       }
       Assert.assertTrue(bool1);
-      ba.aBQ();
-      c.ajl().a(this);
-      this.contact = paramam;
-      this.wPZ = paramBoolean;
+      bc.aCg();
+      c.ajA().a(this);
+      this.contact = paraman;
+      this.xfQ = paramBoolean;
       this.screen = paramf;
-      cdo();
+      ceD();
       AppMethodBeat.o(27754);
       return true;
     }
   }
   
-  public final boolean aaG(final String paramString)
+  public final boolean abx(final String paramString)
   {
     AppMethodBeat.i(27750);
-    ad.d("MicroMsg.ContactWidgetQMessage", "handleEvent : key = ".concat(String.valueOf(paramString)));
-    if (bt.nullAsNil(paramString).length() <= 0)
+    ae.d("MicroMsg.ContactWidgetQMessage", "handleEvent : key = ".concat(String.valueOf(paramString)));
+    if (bu.nullAsNil(paramString).length() <= 0)
     {
       AppMethodBeat.o(27750);
       return false;
@@ -198,7 +198,7 @@ public final class b
     if (paramString.equals("contact_info_view_message"))
     {
       Object localObject = new Intent(this.context, QConversationUI.class);
-      if (this.wPZ) {
+      if (this.xfQ) {
         ((Activity)this.context).setResult(-1, (Intent)localObject);
       }
       for (;;)
@@ -208,14 +208,14 @@ public final class b
         return true;
         paramString = this.context;
         localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
-        com.tencent.mm.hellhoundlib.a.a.a(paramString, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahp(), "com/tencent/mm/plugin/qmessage/ui/ContactWidgetQMessage", "viewMsg", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        paramString.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mq(0));
+        com.tencent.mm.hellhoundlib.a.a.a(paramString, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahE(), "com/tencent/mm/plugin/qmessage/ui/ContactWidgetQMessage", "viewMsg", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramString.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mt(0));
         com.tencent.mm.hellhoundlib.a.a.a(paramString, "com/tencent/mm/plugin/qmessage/ui/ContactWidgetQMessage", "viewMsg", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       }
     }
     if (paramString.equals("contact_info_qmessage_recv_offline_msg"))
     {
-      paramString = (CheckBoxPreference)this.screen.aVD(paramString);
+      paramString = (CheckBoxPreference)this.screen.aXe(paramString);
       if (paramString.isChecked()) {
         e(64, true, 5);
       }
@@ -223,7 +223,7 @@ public final class b
       {
         AppMethodBeat.o(27750);
         return true;
-        if (!Nj(8192))
+        if (!NP(8192))
         {
           e(64, false, 5);
           AppMethodBeat.o(27750);
@@ -243,8 +243,8 @@ public final class b
           public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
           {
             AppMethodBeat.i(27744);
-            paramString.oB = true;
-            b.this.cdo();
+            paramString.setChecked(true);
+            b.this.ceD();
             AppMethodBeat.o(27744);
           }
         });
@@ -252,7 +252,7 @@ public final class b
     }
     if (paramString.equals("contact_info_qmessage_display_weixin_online"))
     {
-      e(8192, ((CheckBoxPreference)this.screen.aVD(paramString)).isChecked(), 12);
+      e(8192, ((CheckBoxPreference)this.screen.aXe(paramString)).isChecked(), 12);
       AppMethodBeat.o(27750);
       return true;
     }
@@ -263,7 +263,7 @@ public final class b
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
           AppMethodBeat.i(27745);
-          g.dBV();
+          g.dFm();
           AppMethodBeat.o(27745);
         }
       }, null);
@@ -272,8 +272,8 @@ public final class b
     }
     if (paramString.equals("contact_info_qmessage_install"))
     {
-      ba.aBQ();
-      if (bt.n((Integer)c.ajl().get(9, null)) == 0)
+      bc.aCg();
+      if (bu.o((Integer)c.ajA().get(9, null)) == 0)
       {
         com.tencent.mm.ui.base.h.b(this.context, 2131763508, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
         {
@@ -308,31 +308,31 @@ public final class b
       AppMethodBeat.o(27750);
       return true;
     }
-    ad.e("MicroMsg.ContactWidgetQMessage", "handleEvent : unExpected key = ".concat(String.valueOf(paramString)));
+    ae.e("MicroMsg.ContactWidgetQMessage", "handleEvent : unExpected key = ".concat(String.valueOf(paramString)));
     AppMethodBeat.o(27750);
     return false;
   }
   
-  public final boolean cdn()
+  public final boolean ceC()
   {
     AppMethodBeat.i(27757);
-    ba.aBQ();
-    c.ajl().b(this);
-    com.tencent.mm.plugin.qmessage.a.xaa.MR();
+    bc.aCg();
+    c.ajA().b(this);
+    com.tencent.mm.plugin.qmessage.a.xpR.MM();
     AppMethodBeat.o(27757);
     return true;
   }
   
-  final void cdo()
+  final void ceD()
   {
     AppMethodBeat.i(27755);
     boolean bool1 = isOpen();
-    boolean bool2 = Nj(64);
-    Nj(8192);
+    boolean bool2 = NP(64);
+    NP(8192);
     this.screen.removeAll();
     this.screen.addPreferencesFromResource(2131951650);
-    HelperHeaderPreference localHelperHeaderPreference = (HelperHeaderPreference)this.screen.aVD("contact_info_header_helper");
-    localHelperHeaderPreference.aZ(this.contact.field_username, this.contact.adv(), this.context.getString(2131757760));
+    HelperHeaderPreference localHelperHeaderPreference = (HelperHeaderPreference)this.screen.aXe("contact_info_header_helper");
+    localHelperHeaderPreference.ba(this.contact.field_username, this.contact.adG(), this.context.getString(2131757760));
     if (bool1) {}
     for (int i = 1;; i = 0)
     {
@@ -340,15 +340,15 @@ public final class b
       if (bool1) {
         break;
       }
-      this.screen.aVE("contact_info_view_message");
-      this.screen.aVE("contact_info_qmessage_recv_offline_msg");
-      this.screen.aVE("contact_info_qmessage_uninstall");
-      this.screen.aVE("contact_info_qmessage_clear_data");
+      this.screen.aXf("contact_info_view_message");
+      this.screen.aXf("contact_info_qmessage_recv_offline_msg");
+      this.screen.aXf("contact_info_qmessage_uninstall");
+      this.screen.aXf("contact_info_qmessage_clear_data");
       AppMethodBeat.o(27755);
       return;
     }
-    this.screen.aVE("contact_info_qmessage_install");
-    ((CheckBoxPreference)this.screen.aVD("contact_info_qmessage_recv_offline_msg")).oB = bool2;
+    this.screen.aXf("contact_info_qmessage_install");
+    ((CheckBoxPreference)this.screen.aXe("contact_info_qmessage_recv_offline_msg")).setChecked(bool2);
     AppMethodBeat.o(27755);
   }
   

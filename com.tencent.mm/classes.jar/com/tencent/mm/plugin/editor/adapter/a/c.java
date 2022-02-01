@@ -7,20 +7,20 @@ import com.tencent.mm.plugin.editor.model.nativenote.manager.j;
 
 public final class c
 {
-  private static final int psq = 2131493749;
-  private static final int psr = 2131493747;
-  public SparseIntArray pss;
+  private static final int pyW = 2131493749;
+  private static final int pyX = 2131493747;
+  public SparseIntArray pyY;
   
   public c()
   {
     AppMethodBeat.i(181646);
-    this.pss = new SparseIntArray();
-    this.pss.put(1, psq);
-    this.pss.put(2, psr);
-    this.pss.put(4, psr);
-    this.pss.put(6, psr);
-    this.pss.put(0, psr);
-    this.pss.put(-1, psr);
+    this.pyY = new SparseIntArray();
+    this.pyY.put(1, pyW);
+    this.pyY.put(2, pyX);
+    this.pyY.put(4, pyX);
+    this.pyY.put(6, pyX);
+    this.pyY.put(0, pyX);
+    this.pyY.put(-1, pyX);
     AppMethodBeat.o(181646);
   }
   

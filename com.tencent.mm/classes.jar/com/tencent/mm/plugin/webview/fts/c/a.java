@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.webview.fts.c;
 
 public abstract interface a
 {
-  public abstract void DA();
+  public abstract void DD();
 }
 
 

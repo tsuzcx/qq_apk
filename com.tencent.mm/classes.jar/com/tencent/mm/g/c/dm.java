@@ -8,21 +8,21 @@ public abstract class dm
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eFp;
-  private static final int ffO = "rankID".hashCode();
-  private static final int ffP = "appusername".hashCode();
-  private static final int ffS = "score".hashCode();
-  private static final int ffY;
-  private static final int ffZ = "likecount".hashCode();
-  private static final int fga = "selfLikeState".hashCode();
+  private static final int eGY;
+  private static final int fhL = "rankID".hashCode();
+  private static final int fhM = "appusername".hashCode();
+  private static final int fhP = "score".hashCode();
+  private static final int fhV;
+  private static final int fhW = "likecount".hashCode();
+  private static final int fhX = "selfLikeState".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eFm = true;
-  private boolean ffL = true;
-  private boolean ffM = true;
-  private boolean ffR = true;
-  private boolean ffV = true;
-  private boolean ffW = true;
-  private boolean ffX = true;
+  private boolean eGV = true;
+  private boolean fhI = true;
+  private boolean fhJ = true;
+  private boolean fhO = true;
+  private boolean fhS = true;
+  private boolean fhT = true;
+  private boolean fhU = true;
   public String field_appusername;
   public int field_likecount;
   public String field_rankID;
@@ -33,8 +33,8 @@ public abstract class dm
   
   static
   {
-    eFp = "username".hashCode();
-    ffY = "ranknum".hashCode();
+    eGY = "username".hashCode();
+    fhV = "ranknum".hashCode();
   }
   
   public void convertFrom(Cursor paramCursor)
@@ -50,7 +50,7 @@ public abstract class dm
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (ffO != k) {
+      if (fhL != k) {
         break label60;
       }
       this.field_rankID = paramCursor.getString(i);
@@ -61,17 +61,17 @@ public abstract class dm
       break label20;
       break;
       label60:
-      if (ffP == k) {
+      if (fhM == k) {
         this.field_appusername = paramCursor.getString(i);
-      } else if (eFp == k) {
+      } else if (eGY == k) {
         this.field_username = paramCursor.getString(i);
-      } else if (ffY == k) {
+      } else if (fhV == k) {
         this.field_ranknum = paramCursor.getInt(i);
-      } else if (ffS == k) {
+      } else if (fhP == k) {
         this.field_score = paramCursor.getInt(i);
-      } else if (ffZ == k) {
+      } else if (fhW == k) {
         this.field_likecount = paramCursor.getInt(i);
-      } else if (fga == k) {
+      } else if (fhX == k) {
         this.field_selfLikeState = paramCursor.getInt(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
@@ -82,25 +82,25 @@ public abstract class dm
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.ffL) {
+    if (this.fhI) {
       localContentValues.put("rankID", this.field_rankID);
     }
-    if (this.ffM) {
+    if (this.fhJ) {
       localContentValues.put("appusername", this.field_appusername);
     }
-    if (this.eFm) {
+    if (this.eGV) {
       localContentValues.put("username", this.field_username);
     }
-    if (this.ffV) {
+    if (this.fhS) {
       localContentValues.put("ranknum", Integer.valueOf(this.field_ranknum));
     }
-    if (this.ffR) {
+    if (this.fhO) {
       localContentValues.put("score", Integer.valueOf(this.field_score));
     }
-    if (this.ffW) {
+    if (this.fhT) {
       localContentValues.put("likecount", Integer.valueOf(this.field_likecount));
     }
-    if (this.ffX) {
+    if (this.fhU) {
       localContentValues.put("selfLikeState", Integer.valueOf(this.field_selfLikeState));
     }
     if (this.systemRowid > 0L) {

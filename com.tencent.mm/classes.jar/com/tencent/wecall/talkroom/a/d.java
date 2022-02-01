@@ -16,42 +16,42 @@ import com.tencent.wecall.talkroom.model.k;
 public final class d
   extends com.tencent.pb.common.b.d
 {
-  public String MlP;
-  public boolean Moc;
+  public String MIM;
+  public boolean MKY;
   public int mType;
   
   public d(String paramString1, String[] paramArrayOfString, byte[] paramArrayOfByte, String paramString2, a.bb parambb, int paramInt1, int paramInt2, long paramLong, String paramString3, boolean paramBoolean, String paramString4)
   {
-    AppMethodBeat.i(213645);
-    this.Moc = true;
+    AppMethodBeat.i(208320);
+    this.MKY = true;
     b.d("MicroMsg.Voip", new Object[] { this.TAG2, "create" });
     a.d locald = new a.d();
     for (;;)
     {
       try
       {
-        locald.LFV = paramString1;
-        this.MlP = paramString1;
-        locald.LGa = paramInt1;
-        this.LFq = paramInt1;
+        locald.McZ = paramString1;
+        this.MIM = paramString1;
+        locald.Mde = paramInt1;
+        this.Mcu = paramInt1;
         if (parambb != null) {
-          locald.LGc = parambb;
+          locald.Mdg = parambb;
         }
         paramString1 = new a.aw();
         paramString1.name = paramString2;
-        paramString1.LIu = paramString4;
-        paramString1.LIt = a.fTk();
-        paramString1.dtc = paramInt2;
+        paramString1.Mfy = paramString4;
+        paramString1.Mfx = a.fXK();
+        paramString1.dui = paramInt2;
         this.mType = paramInt2;
-        this.Moc = paramBoolean;
-        paramString1.LIm = paramLong;
-        locald.LFX = paramString1;
-        locald.LGe = paramArrayOfString;
+        this.MKY = paramBoolean;
+        paramString1.Mfq = paramLong;
+        locald.Mdb = paramString1;
+        locald.Mdi = paramArrayOfString;
         paramString1 = paramString3;
         if (paramString3 == null) {
           paramString1 = "";
         }
-        locald.LGd = paramString1;
+        locald.Mdh = paramString1;
         paramString1 = new a.an();
         if (paramArrayOfByte == null) {
           continue;
@@ -60,11 +60,11 @@ public final class d
         paramString1.iLen = paramArrayOfByte.length;
         paramArrayOfString = new a.bd();
         paramArrayOfString.type = 3;
-        paramArrayOfString.LJn = paramString1;
-        locald.LFZ = paramArrayOfString;
+        paramArrayOfString.Mgr = paramString1;
+        locald.Mdd = paramArrayOfString;
         this.mNetType = 3;
-        locald.LGb = 2;
-        locald.netType = k.ls(c.ClL);
+        locald.Mdf = 2;
+        locald.netType = k.ly(c.CDp);
       }
       catch (Exception paramString1)
       {
@@ -72,13 +72,13 @@ public final class d
         continue;
       }
       c(139, locald);
-      AppMethodBeat.o(213645);
+      AppMethodBeat.o(208320);
       return;
       paramString1.iLen = 0;
     }
   }
   
-  public final Object cI(byte[] paramArrayOfByte)
+  public final Object cL(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(62539);
     b.d("MicroMsg.Voip", new Object[] { this.TAG2, "data2Resp" });
@@ -101,7 +101,7 @@ public final class d
     }
   }
   
-  public final String fSQ()
+  public final String fXq()
   {
     return "CsCmd.Cmd_V_CSCreateVoiceGroupReq";
   }

@@ -2,88 +2,88 @@ package com.tencent.mm.plugin.finder.cgi;
 
 import android.arch.lifecycle.ViewModelProvider;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.a.a;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.bx.b;
-import com.tencent.mm.cn.f;
+import com.tencent.mm.ak.a.a;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.bw.b;
 import com.tencent.mm.plugin.finder.PluginFinder;
-import com.tencent.mm.plugin.finder.report.e;
 import com.tencent.mm.plugin.finder.viewmodel.FinderGlobalLocationVM;
-import com.tencent.mm.protocal.protobuf.aog;
-import com.tencent.mm.protocal.protobuf.aoh;
-import com.tencent.mm.protocal.protobuf.aqy;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.aot;
+import com.tencent.mm.protocal.protobuf.aou;
+import com.tencent.mm.protocal.protobuf.arn;
+import com.tencent.mm.sdk.platformtools.ae;
 import d.g.b.p;
 import d.l;
 import d.o;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/cgi/CgiFinderGetNearbyList;", "Lcom/tencent/mm/plugin/finder/cgi/FinderCgi;", "Lcom/tencent/mm/protocal/protobuf/FinderGetNearbyListResp;", "lastBuffer", "Lcom/tencent/mm/protobuf/ByteString;", "callback", "Lcom/tencent/mm/plugin/finder/cgi/CgiFinderGetNearbyList$Callback;", "pullType", "", "consume", "Lcom/tencent/mm/plugin/finder/cgi/CgiFinderTimelineStream$ConsumeCallback;", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "(Lcom/tencent/mm/protobuf/ByteString;Lcom/tencent/mm/plugin/finder/cgi/CgiFinderGetNearbyList$Callback;ILcom/tencent/mm/plugin/finder/cgi/CgiFinderTimelineStream$ConsumeCallback;Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;)V", "getType", "isFetchFeedCgi", "", "onCgiBack", "", "errType", "errCode", "errMsg", "", "resp", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "run", "Lcom/tencent/mm/wx/WxPipeline;", "Lcom/tencent/mm/modelbase/Cgi$CgiBack;", "Callback", "Companion", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/cgi/CgiFinderGetNearbyList;", "Lcom/tencent/mm/plugin/finder/cgi/FinderCgi;", "Lcom/tencent/mm/protocal/protobuf/FinderGetNearbyListResp;", "lastBuffer", "Lcom/tencent/mm/protobuf/ByteString;", "callback", "Lcom/tencent/mm/plugin/finder/cgi/CgiFinderGetNearbyList$Callback;", "pullType", "", "consume", "Lcom/tencent/mm/plugin/finder/cgi/CgiFinderTimelineStream$ConsumeCallback;", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "(Lcom/tencent/mm/protobuf/ByteString;Lcom/tencent/mm/plugin/finder/cgi/CgiFinderGetNearbyList$Callback;ILcom/tencent/mm/plugin/finder/cgi/CgiFinderTimelineStream$ConsumeCallback;Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;)V", "getType", "isFetchFeedCgi", "", "onCgiBack", "", "errType", "errCode", "errMsg", "", "resp", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "run", "Lcom/tencent/mm/wx/WxPipeline;", "Lcom/tencent/mm/modelbase/Cgi$CgiBack;", "Callback", "Companion", "plugin-finder_release"})
 public final class h
-  extends w<aoh>
+  extends w<aou>
 {
-  public static final b rHV;
+  public static final b rQg;
   private final int pullType;
-  private final n.c rHR;
-  private final a rHU;
+  private final n.c rQc;
+  private final a rQf;
   
   static
   {
-    AppMethodBeat.i(201029);
-    rHV = new b((byte)0);
-    AppMethodBeat.o(201029);
+    AppMethodBeat.i(201451);
+    rQg = new b((byte)0);
+    AppMethodBeat.o(201451);
   }
   
-  public h(b paramb, a parama, int paramInt, n.c paramc, aqy paramaqy)
+  public h(b paramb, a parama, int paramInt, n.c paramc, arn paramarn)
   {
-    super(paramaqy);
-    AppMethodBeat.i(201028);
-    this.rHU = parama;
+    super(paramarn);
+    AppMethodBeat.i(201450);
+    this.rQf = parama;
     this.pullType = paramInt;
-    this.rHR = paramc;
+    this.rQc = paramc;
     parama = new b.a();
-    parama.oP(375);
-    paramc = new aog();
-    Object localObject = com.tencent.mm.ui.component.a.KiD;
+    parama.oS(375);
+    paramc = new aot();
+    Object localObject = com.tencent.mm.ui.component.a.KEX;
     com.tencent.mm.ui.component.a.bi(PluginFinder.class).get(FinderGlobalLocationVM.class);
-    localObject = FinderGlobalLocationVM.cOb();
-    paramc.dAp = ((Number)((o)localObject).first).floatValue();
-    paramc.dyz = ((Number)((o)localObject).second).floatValue();
+    localObject = FinderGlobalLocationVM.cQL();
+    paramc.dBu = ((Number)((o)localObject).first).floatValue();
+    paramc.dzE = ((Number)((o)localObject).second).floatValue();
     paramc.lastBuffer = paramb;
-    localObject = v.rIR;
-    paramc.Gle = v.cxY();
-    parama.c((com.tencent.mm.bx.a)paramc);
-    parama.d((com.tencent.mm.bx.a)new aoh());
-    parama.Dl("/cgi-bin/micromsg-bin/findergetnearbylist");
-    c(parama.aDC());
-    ad.i("Finder.CgiFinderGetNearbyList", "CgiFinderGetNearbyList lat.lng:" + paramc.dyz + ", " + paramc.dAp + ' ' + this.pullType + ' ' + paramb);
-    paramb = e.snY;
-    e.a(2, this.pullType, paramaqy, 4L);
-    AppMethodBeat.o(201028);
+    localObject = v.rRb;
+    paramc.GEg = v.czz();
+    localObject = v.rRb;
+    paramc.GDS = v.cXN();
+    parama.c((com.tencent.mm.bw.a)paramc);
+    parama.d((com.tencent.mm.bw.a)new aou());
+    parama.DN("/cgi-bin/micromsg-bin/findergetnearbylist");
+    c(parama.aDS());
+    ae.i("Finder.CgiFinderGetNearbyList", "CgiFinderGetNearbyList lat.lng:" + paramc.dzE + ", " + paramc.dBu + ' ' + this.pullType + ' ' + paramb);
+    paramb = com.tencent.mm.plugin.finder.report.f.syc;
+    com.tencent.mm.plugin.finder.report.f.a(2, this.pullType, paramarn, 4L);
+    AppMethodBeat.o(201450);
   }
   
-  public final f<a.a<aoh>> aED()
+  public final com.tencent.mm.cm.f<a.a<aou>> aET()
   {
-    AppMethodBeat.i(201026);
-    Object localObject = e.snY;
-    e.ae(2, true);
-    localObject = super.aED();
+    AppMethodBeat.i(201448);
+    Object localObject = com.tencent.mm.plugin.finder.report.f.syc;
+    com.tencent.mm.plugin.finder.report.f.ah(2, true);
+    localObject = super.aET();
     p.g(localObject, "super.run()");
-    AppMethodBeat.o(201026);
+    AppMethodBeat.o(201448);
     return localObject;
   }
   
-  public final boolean cxU()
+  public final boolean czv()
   {
     return true;
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/cgi/CgiFinderGetNearbyList$Callback;", "", "onFetchDone", "", "errType", "", "errCode", "errMsg", "", "info", "Lcom/tencent/mm/protocal/protobuf/FinderGetNearbyListResp;", "pullType", "plugin-finder_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/cgi/CgiFinderGetNearbyList$Callback;", "", "onFetchDone", "", "errType", "", "errCode", "errMsg", "", "info", "Lcom/tencent/mm/protocal/protobuf/FinderGetNearbyListResp;", "pullType", "plugin-finder_release"})
   public static abstract interface a
   {
-    public abstract void a(int paramInt1, int paramInt2, String paramString, aoh paramaoh, int paramInt3);
+    public abstract void a(int paramInt1, int paramInt2, String paramString, aou paramaou, int paramInt3);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/cgi/CgiFinderGetNearbyList$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/cgi/CgiFinderGetNearbyList$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
   public static final class b {}
 }
 

@@ -6,32 +6,32 @@ import com.tencent.mm.loader.g.j;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/upload/action/LikeActionTask;", "Lcom/tencent/mm/loader/loader/IWorkTask;", "action", "Lcom/tencent/mm/plugin/finder/upload/action/FinderAction;", "(Lcom/tencent/mm/plugin/finder/upload/action/FinderAction;)V", "getAction", "()Lcom/tencent/mm/plugin/finder/upload/action/FinderAction;", "needRetry", "", "getNeedRetry", "()Z", "setNeedRetry", "(Z)V", "call", "", "uniqueId", "", "Companion", "ICallback", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/upload/action/LikeActionTask;", "Lcom/tencent/mm/loader/loader/IWorkTask;", "action", "Lcom/tencent/mm/plugin/finder/upload/action/FinderAction;", "(Lcom/tencent/mm/plugin/finder/upload/action/FinderAction;)V", "getAction", "()Lcom/tencent/mm/plugin/finder/upload/action/FinderAction;", "needRetry", "", "getNeedRetry", "()Z", "setNeedRetry", "(Z)V", "call", "", "uniqueId", "", "Companion", "ICallback", "plugin-finder_release"})
 public final class h
   extends c
 {
-  public static final a sKl;
-  boolean sJV;
-  final e sJW;
+  public static final a sVy;
+  boolean sVi;
+  final e sVj;
   
   static
   {
     AppMethodBeat.i(167829);
-    sKl = new a((byte)0);
+    sVy = new a((byte)0);
     AppMethodBeat.o(167829);
   }
   
   public h(e parame)
   {
     AppMethodBeat.i(167828);
-    this.sJW = parame;
+    this.sVj = parame;
     AppMethodBeat.o(167828);
   }
   
-  public final String aeK()
+  public final String aeW()
   {
     AppMethodBeat.i(167827);
-    String str = this.sJW.aeK();
+    String str = this.sVj.aeW();
     AppMethodBeat.o(167827);
     return str;
   }
@@ -39,20 +39,20 @@ public final class h
   public final void call()
   {
     AppMethodBeat.i(167826);
-    this.sJW.a((b)new c(this));
+    this.sVj.a((b)new c(this));
     AppMethodBeat.o(167826);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/upload/action/LikeActionTask$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/upload/action/LikeActionTask$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
   public static final class a {}
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/upload/action/LikeActionTask$ICallback;", "", "onTaskResult", "", "status", "Lcom/tencent/mm/loader/loader/WorkStatus;", "needRetry", "", "plugin-finder_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/upload/action/LikeActionTask$ICallback;", "", "onTaskResult", "", "status", "Lcom/tencent/mm/loader/loader/WorkStatus;", "needRetry", "", "plugin-finder_release"})
   public static abstract interface b
   {
     public abstract void a(j paramj, boolean paramBoolean);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/finder/upload/action/LikeActionTask$call$1", "Lcom/tencent/mm/plugin/finder/upload/action/LikeActionTask$ICallback;", "onTaskResult", "", "status", "Lcom/tencent/mm/loader/loader/WorkStatus;", "isNeedRetry", "", "plugin-finder_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/finder/upload/action/LikeActionTask$call$1", "Lcom/tencent/mm/plugin/finder/upload/action/LikeActionTask$ICallback;", "onTaskResult", "", "status", "Lcom/tencent/mm/loader/loader/WorkStatus;", "isNeedRetry", "", "plugin-finder_release"})
   public static final class c
     implements h.b
   {
@@ -60,8 +60,8 @@ public final class h
     {
       AppMethodBeat.i(167825);
       p.h(paramj, "status");
-      this.sKm.sJV = paramBoolean;
-      this.sKm.a(paramj);
+      this.sVz.sVi = paramBoolean;
+      this.sVz.a(paramj);
       AppMethodBeat.o(167825);
     }
   }

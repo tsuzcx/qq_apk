@@ -6,7 +6,7 @@ public final class by
   public static final int CTRL_INDEX = 408;
   public static final String NAME = "private_quicklyAddBrandContact";
   
-  protected final int bis()
+  protected final int bjb()
   {
     return 0;
   }

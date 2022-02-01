@@ -11,12 +11,12 @@ public abstract interface k
   public static final class a
     implements k
   {
-    public static final a Ncp;
+    public static final a Nzu;
     
     static
     {
       AppMethodBeat.i(57586);
-      Ncp = new a();
+      Nzu = new a();
       AppMethodBeat.o(57586);
     }
     
@@ -30,7 +30,7 @@ public abstract interface k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.d.a.k
  * JD-Core Version:    0.7.0.1
  */

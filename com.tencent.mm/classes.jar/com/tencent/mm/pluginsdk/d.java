@@ -3,19 +3,19 @@ package com.tencent.mm.pluginsdk;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/pluginsdk/BusinessViewHandler;", "", "()V", "Companion", "plugin-biz_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/pluginsdk/BusinessViewHandler;", "", "()V", "Companion", "plugin-biz_release"})
 public final class d
 {
-  public static final a EJl;
+  public static final a FbJ;
   
   static
   {
     AppMethodBeat.i(124791);
-    EJl = new a((byte)0);
+    FbJ = new a((byte)0);
     AppMethodBeat.o(124791);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/pluginsdk/BusinessViewHandler$Companion;", "", "()V", "TAG", "", "handle", "", "businessType", "appid", "extInfo", "openId", "handleEmergencyContact", "", "handleOpenGameHaoWan", "handleShareToHaoKan", "handleUpdateRoomToOpenImChatroom", "isSameAccount", "plugin-biz_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/pluginsdk/BusinessViewHandler$Companion;", "", "()V", "TAG", "", "handle", "", "businessType", "appid", "extInfo", "openId", "handleEmergencyContact", "", "handleOpenGameHaoWan", "handleShareToHaoKan", "handleUpdateRoomToOpenImChatroom", "isSameAccount", "plugin-biz_release"})
   public static final class a {}
 }
 

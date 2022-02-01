@@ -14,30 +14,30 @@ public final class a
   
   static
   {
-    AppMethodBeat.i(213424);
+    AppMethodBeat.i(217137);
     c.a locala = new c.a();
-    locala.IhA = new Field[2];
+    locala.IBL = new Field[2];
     locala.columns = new String[3];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "chatRoomName";
-    locala.IhC.put("chatRoomName", "TEXT default '群username'  PRIMARY KEY ");
+    locala.IBN.put("chatRoomName", "TEXT default '群username'  PRIMARY KEY ");
     localStringBuilder.append(" chatRoomName TEXT default '群username'  PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.IhB = "chatRoomName";
+    locala.IBM = "chatRoomName";
     locala.columns[1] = "BindAppData";
-    locala.IhC.put("BindAppData", "BLOB");
+    locala.IBN.put("BindAppData", "BLOB");
     localStringBuilder.append(" BindAppData BLOB");
     locala.columns[2] = "rowid";
     locala.sql = localStringBuilder.toString();
     info = locala;
-    AppMethodBeat.o(213424);
+    AppMethodBeat.o(217137);
   }
   
   public final void convertFrom(Cursor paramCursor)
   {
-    AppMethodBeat.i(213423);
+    AppMethodBeat.i(217136);
     super.convertFrom(paramCursor);
-    AppMethodBeat.o(213423);
+    AppMethodBeat.o(217136);
   }
   
   public final c.a getDBInfo()
@@ -47,7 +47,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.chatroom.storage.a
  * JD-Core Version:    0.7.0.1
  */

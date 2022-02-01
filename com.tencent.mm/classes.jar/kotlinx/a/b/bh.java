@@ -3,16 +3,16 @@ package kotlinx.a.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"NULL", "", "NULL$annotations", "()V", "deprecationMessage", "", "kotlinx-serialization-runtime"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"NULL", "", "NULL$annotations", "()V", "deprecationMessage", "", "kotlinx-serialization-runtime"})
 public final class bh
 {
   private static final Object NULL;
   
   static
   {
-    AppMethodBeat.i(191091);
+    AppMethodBeat.i(199679);
     NULL = new Object();
-    AppMethodBeat.o(191091);
+    AppMethodBeat.o(199679);
   }
 }
 

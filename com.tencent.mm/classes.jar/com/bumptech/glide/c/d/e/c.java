@@ -34,7 +34,7 @@ public class c
   
   public c(Context paramContext, a parama, m<Bitmap> paramm, int paramInt1, int paramInt2, Bitmap paramBitmap)
   {
-    this(new a(new g(com.bumptech.glide.c.ad(paramContext), parama, paramInt1, paramInt2, paramm, paramBitmap)));
+    this(new a(new g(com.bumptech.glide.c.ae(paramContext), parama, paramInt1, paramInt2, paramm, paramBitmap)));
     AppMethodBeat.i(77484);
     AppMethodBeat.o(77484);
   }

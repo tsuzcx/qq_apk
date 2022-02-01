@@ -15,16 +15,16 @@ public final class v
   {
     AppMethodBeat.i(41518);
     c.a locala = new c.a();
-    locala.IhA = new Field[2];
+    locala.IBL = new Field[2];
     locala.columns = new String[3];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "key";
-    locala.IhC.put("key", "TEXT PRIMARY KEY ");
+    locala.IBN.put("key", "TEXT PRIMARY KEY ");
     localStringBuilder.append(" key TEXT PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.IhB = "key";
+    locala.IBM = "key";
     locala.columns[1] = "value";
-    locala.IhC.put("value", "BLOB");
+    locala.IBN.put("value", "BLOB");
     localStringBuilder.append(" value BLOB");
     locala.columns[2] = "rowid";
     locala.sql = localStringBuilder.toString();

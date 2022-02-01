@@ -1,369 +1,148 @@
 package com.tencent.mm.sdk.platformtools;
 
-import android.app.Activity;
-import android.content.pm.ApplicationInfo;
-import android.content.res.TypedArray;
-import android.os.Build.VERSION;
+import android.accessibilityservice.AccessibilityServiceInfo;
+import android.content.Context;
+import android.view.accessibility.AccessibilityManager;
+import com.tencent.e.h;
+import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
 
-public class a
+public final class a
 {
-  private static a IbZ;
-  private static int Ica = 0;
-  private static boolean Icb = false;
-  private static int[] Icc;
-  private static int Icd;
-  private static int Ice;
-  private static int Icf;
+  private static HashSet<String> Iwh;
+  private static String TAG;
   
-  public static void a(ApplicationInfo paramApplicationInfo)
+  static
   {
-    AppMethodBeat.i(156057);
-    if ((Build.VERSION.SDK_INT == 26) && (paramApplicationInfo.targetSdkVersion > 26))
+    AppMethodBeat.i(196733);
+    TAG = "AccessibilityUtil";
+    HashSet localHashSet = new HashSet();
+    Iwh = localHashSet;
+    localHashSet.add("com.eg.android.AlipayGphone/com.alipay.mobile.rome.voicebroadcast.a11y.A11yService");
+    Iwh.add("com.apowersoft.mirror/.service.ListenAppService");
+    Iwh.add("com.tencent.android.qqdownloader/com.tencent.nucleus.manager.accessibility.YYBAccessibilityService");
+    Iwh.add("com.huawei.recsys/.service.PortraitDaService");
+    AppMethodBeat.o(196733);
+  }
+  
+  private static void a(AccessibilityManager paramAccessibilityManager)
+  {
+    AppMethodBeat.i(196731);
+    ae.i(TAG, "printEnabledAccessibilityServiceInfo");
+    try
     {
-      Ica = paramApplicationInfo.targetSdkVersion;
-      paramApplicationInfo.targetSdkVersion = 26;
-      ad.i("MicroMsg.AndroidOSafety", "replaceTargetVersion %s %s", new Object[] { Integer.valueOf(paramApplicationInfo.targetSdkVersion), Integer.valueOf(Ica) });
-      AppMethodBeat.o(156057);
+      ae.i(TAG, "printEnabledAccessibilityServiceInfo enabled = " + paramAccessibilityManager.isEnabled());
+      paramAccessibilityManager = paramAccessibilityManager.getEnabledAccessibilityServiceList(-1).iterator();
+      while (paramAccessibilityManager.hasNext())
+      {
+        AccessibilityServiceInfo localAccessibilityServiceInfo = (AccessibilityServiceInfo)paramAccessibilityManager.next();
+        ae.i(TAG, "enabledAccessibilityServiceInfo : %s", new Object[] { localAccessibilityServiceInfo.toString() });
+      }
+      AppMethodBeat.o(196731);
+    }
+    catch (Throwable paramAccessibilityManager)
+    {
+      ae.e(TAG, "printEnabledAccessibilityServiceInfo error : %s", new Object[] { paramAccessibilityManager.getMessage() });
+      AppMethodBeat.o(196731);
       return;
     }
-    AppMethodBeat.o(156057);
   }
   
-  public static void a(a parama)
+  public static void fnK()
   {
-    IbZ = parama;
-  }
-  
-  /* Error */
-  private static boolean cQr()
-  {
-    // Byte code:
-    //   0: ldc 78
-    //   2: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: getstatic 24	com/tencent/mm/sdk/platformtools/a:Icb	Z
-    //   8: ifeq +10 -> 18
-    //   11: ldc 78
-    //   13: invokestatic 64	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   16: iconst_1
-    //   17: ireturn
-    //   18: ldc 2
-    //   20: monitorenter
-    //   21: getstatic 24	com/tencent/mm/sdk/platformtools/a:Icb	Z
-    //   24: ifeq +13 -> 37
-    //   27: ldc 2
-    //   29: monitorexit
-    //   30: ldc 78
-    //   32: invokestatic 64	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   35: iconst_1
-    //   36: ireturn
-    //   37: ldc 80
-    //   39: invokestatic 86	java/lang/Class:forName	(Ljava/lang/String;)Ljava/lang/Class;
-    //   42: astore_0
-    //   43: aload_0
-    //   44: ldc 88
-    //   46: invokevirtual 92	java/lang/Class:getDeclaredField	(Ljava/lang/String;)Ljava/lang/reflect/Field;
-    //   49: astore_1
-    //   50: aload_1
-    //   51: iconst_1
-    //   52: invokevirtual 98	java/lang/reflect/Field:setAccessible	(Z)V
-    //   55: aload_1
-    //   56: aload_0
-    //   57: invokevirtual 102	java/lang/reflect/Field:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   60: checkcast 103	[I
-    //   63: checkcast 103	[I
-    //   66: putstatic 105	com/tencent/mm/sdk/platformtools/a:Icc	[I
-    //   69: aload_0
-    //   70: ldc 107
-    //   72: invokevirtual 92	java/lang/Class:getDeclaredField	(Ljava/lang/String;)Ljava/lang/reflect/Field;
-    //   75: astore_1
-    //   76: aload_1
-    //   77: iconst_1
-    //   78: invokevirtual 98	java/lang/reflect/Field:setAccessible	(Z)V
-    //   81: aload_1
-    //   82: aload_0
-    //   83: invokevirtual 102	java/lang/reflect/Field:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   86: checkcast 52	java/lang/Integer
-    //   89: invokevirtual 111	java/lang/Integer:intValue	()I
-    //   92: putstatic 113	com/tencent/mm/sdk/platformtools/a:Icd	I
-    //   95: aload_0
-    //   96: ldc 115
-    //   98: invokevirtual 92	java/lang/Class:getDeclaredField	(Ljava/lang/String;)Ljava/lang/reflect/Field;
-    //   101: astore_1
-    //   102: aload_1
-    //   103: iconst_1
-    //   104: invokevirtual 98	java/lang/reflect/Field:setAccessible	(Z)V
-    //   107: aload_1
-    //   108: aload_0
-    //   109: invokevirtual 102	java/lang/reflect/Field:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   112: checkcast 52	java/lang/Integer
-    //   115: invokevirtual 111	java/lang/Integer:intValue	()I
-    //   118: putstatic 117	com/tencent/mm/sdk/platformtools/a:Ice	I
-    //   121: aload_0
-    //   122: ldc 119
-    //   124: invokevirtual 92	java/lang/Class:getDeclaredField	(Ljava/lang/String;)Ljava/lang/reflect/Field;
-    //   127: astore_1
-    //   128: aload_1
-    //   129: iconst_1
-    //   130: invokevirtual 98	java/lang/reflect/Field:setAccessible	(Z)V
-    //   133: aload_1
-    //   134: aload_0
-    //   135: invokevirtual 102	java/lang/reflect/Field:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   138: checkcast 52	java/lang/Integer
-    //   141: invokevirtual 111	java/lang/Integer:intValue	()I
-    //   144: putstatic 121	com/tencent/mm/sdk/platformtools/a:Icf	I
-    //   147: iconst_1
-    //   148: putstatic 24	com/tencent/mm/sdk/platformtools/a:Icb	Z
-    //   151: ldc 2
-    //   153: monitorexit
-    //   154: ldc 78
-    //   156: invokestatic 64	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   159: iconst_1
-    //   160: ireturn
-    //   161: astore_0
-    //   162: ldc 48
-    //   164: aload_0
-    //   165: ldc 123
-    //   167: iconst_0
-    //   168: anewarray 4	java/lang/Object
-    //   171: invokestatic 127	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   174: ldc 2
-    //   176: monitorexit
-    //   177: ldc 78
-    //   179: invokestatic 64	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   182: iconst_0
-    //   183: ireturn
-    //   184: astore_0
-    //   185: ldc 48
-    //   187: aload_0
-    //   188: ldc 123
-    //   190: iconst_0
-    //   191: anewarray 4	java/lang/Object
-    //   194: invokestatic 127	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   197: ldc 2
-    //   199: monitorexit
-    //   200: ldc 78
-    //   202: invokestatic 64	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   205: iconst_0
-    //   206: ireturn
-    //   207: astore_0
-    //   208: ldc 48
-    //   210: aload_0
-    //   211: ldc 123
-    //   213: iconst_0
-    //   214: anewarray 4	java/lang/Object
-    //   217: invokestatic 127	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   220: ldc 2
-    //   222: monitorexit
-    //   223: ldc 78
-    //   225: invokestatic 64	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   228: iconst_0
-    //   229: ireturn
-    //   230: astore_0
-    //   231: ldc 48
-    //   233: aload_0
-    //   234: ldc 123
-    //   236: iconst_0
-    //   237: anewarray 4	java/lang/Object
-    //   240: invokestatic 127	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   243: ldc 2
-    //   245: monitorexit
-    //   246: ldc 78
-    //   248: invokestatic 64	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   251: iconst_0
-    //   252: ireturn
-    //   253: astore_0
-    //   254: ldc 2
-    //   256: monitorexit
-    //   257: ldc 78
-    //   259: invokestatic 64	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   262: aload_0
-    //   263: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   42	93	0	localClass	java.lang.Class
-    //   161	4	0	localClassNotFoundException	java.lang.ClassNotFoundException
-    //   184	4	0	localNoSuchFieldException	java.lang.NoSuchFieldException
-    //   207	4	0	localIllegalAccessException	java.lang.IllegalAccessException
-    //   230	4	0	localThrowable	java.lang.Throwable
-    //   253	10	0	localObject	Object
-    //   49	85	1	localField	java.lang.reflect.Field
-    // Exception table:
-    //   from	to	target	type
-    //   37	147	161	java/lang/ClassNotFoundException
-    //   37	147	184	java/lang/NoSuchFieldException
-    //   37	147	207	java/lang/IllegalAccessException
-    //   37	147	230	java/lang/Throwable
-    //   21	30	253	finally
-    //   37	147	253	finally
-    //   147	154	253	finally
-    //   162	177	253	finally
-    //   185	200	253	finally
-    //   208	223	253	finally
-    //   231	246	253	finally
-    //   254	257	253	finally
-  }
-  
-  public static boolean p(Activity paramActivity, int paramInt)
-  {
-    AppMethodBeat.i(156059);
-    Object localObject = paramActivity.getApplicationInfo();
-    int i;
-    if (Build.VERSION.SDK_INT == 26) {
-      if (Ica > 26)
-      {
-        i = 1;
-        if (i == 0) {
-          break label565;
-        }
-        if ((paramInt != 0) && (paramInt != 6) && (paramInt != 8) && (paramInt != 11)) {
-          break label117;
-        }
-        i = 1;
-        label57:
-        if (i != 0) {
-          break label127;
-        }
-        if ((paramInt != 1) && (paramInt != 7) && (paramInt != 9) && (paramInt != 12)) {
-          break label122;
-        }
-      }
-    }
-    label117:
-    label122:
-    for (paramInt = 1;; paramInt = 0)
-    {
-      if (paramInt != 0) {
-        break label127;
-      }
-      AppMethodBeat.o(156059);
-      return true;
-      if (((ApplicationInfo)localObject).targetSdkVersion > 26)
-      {
-        i = 1;
-        break;
-      }
-      i = 0;
-      break;
-      i = 0;
-      break label57;
-    }
-    label127:
-    boolean bool2;
-    boolean bool1;
-    boolean bool3;
-    if (cQr())
-    {
-      localObject = Icc;
-      paramInt = Icd;
-      i = Ice;
-      int j = Icf;
-      localObject = paramActivity.obtainStyledAttributes((int[])localObject);
-      bool2 = ((TypedArray)localObject).getBoolean(paramInt, false);
-      if ((!((TypedArray)localObject).hasValue(i)) && (((TypedArray)localObject).getBoolean(i, false)))
-      {
-        bool1 = true;
-        bool3 = ((TypedArray)localObject).getBoolean(j, false);
-        ((TypedArray)localObject).recycle();
-        ad.i("MicroMsg.AndroidOSafety", "activity %s, isTranslucent %s, isFloating %s, isSwipeToDismiss %s", new Object[] { paramActivity, Boolean.valueOf(bool2), Boolean.valueOf(bool3), Boolean.valueOf(bool1) });
-        if (!bool2) {
-          break label376;
-        }
-        paramInt = 1;
-        label249:
-        if (paramInt != 1) {
-          break label436;
-        }
-        ad.i("MicroMsg.AndroidOSafety", "invokeToOpaque %s %s", new Object[] { paramActivity, Integer.valueOf(paramActivity.hashCode()) });
-        if (IbZ == null) {
-          break label559;
-        }
-        if (IbZ.M(paramActivity)) {
-          break label421;
-        }
-        ad.i("MicroMsg.AndroidOSafety", "not support swipe %s %s", new Object[] { paramActivity, Integer.valueOf(paramActivity.hashCode()) });
-        bool1 = false;
-        label325:
-        bool2 = bool1;
-        if (IbZ != null)
-        {
-          IbZ.yT(paramInt);
-          if (paramInt != 2) {
-            break label513;
-          }
-          IbZ.yT(0);
-          bool2 = bool1;
-        }
-      }
-    }
+    AppMethodBeat.i(196730);
     for (;;)
     {
-      AppMethodBeat.o(156059);
-      return bool2;
-      bool1 = false;
-      break;
-      label376:
-      if (bool3)
+      boolean bool2;
+      try
       {
-        paramInt = 2;
-        break label249;
-      }
-      if (bool1)
-      {
-        paramInt = 3;
-        break label249;
-      }
-      paramInt = 0;
-      break label249;
-      ad.e("MicroMsg.AndroidOSafety", "prepare Failed %s", new Object[] { paramActivity });
-      paramInt = 4;
-      break label249;
-      label421:
-      IbZ.L(paramActivity);
-      bool1 = true;
-      break label325;
-      label436:
-      if ((paramInt == 2) || (paramInt == 3))
-      {
-        ad.e("MicroMsg.AndroidOSafety", "ignore by IS_FLOATING or IS_SWIPE_TO_DISMISS  %s %s", new Object[] { paramActivity, Integer.valueOf(paramActivity.hashCode()) });
-        bool1 = false;
-        break label325;
-      }
-      if (paramInt == 4)
-      {
-        ad.e("MicroMsg.AndroidOSafety", "prepare Failed  %s %s", new Object[] { paramActivity, Integer.valueOf(paramActivity.hashCode()) });
-        bool1 = false;
-        break label325;
-        label513:
-        if (paramInt == 3)
+        ae.i(TAG, "smartDisableAccessibility");
+        AccessibilityManager localAccessibilityManager = (AccessibilityManager)ak.getContext().getSystemService("accessibility");
+        boolean bool1 = localAccessibilityManager.isEnabled();
+        Object localObject1 = AccessibilityManager.class.getDeclaredField("mIsHighTextContrastEnabled");
+        ((Field)localObject1).setAccessible(true);
+        bool2 = ((Boolean)((Field)localObject1).get(localAccessibilityManager)).booleanValue();
+        if (!bool1) {}
+        try
         {
-          IbZ.yT(1);
-          bool2 = bool1;
+          ae.i(TAG, "recoverAccessibilityEnable");
+          localObject1 = AccessibilityManager.class.getDeclaredMethod("setStateLocked", new Class[] { Integer.TYPE });
+          ((Method)localObject1).setAccessible(true);
+          if (!localAccessibilityManager.isTouchExplorationEnabled()) {
+            break label430;
+          }
+          i = 3;
+        }
+        catch (Throwable localThrowable2)
+        {
+          ae.e(TAG, "recoverAccessibilityEnable error : %s", new Object[] { localThrowable2.getMessage() });
           continue;
         }
-        bool2 = bool1;
-        if (paramInt != 4) {
-          continue;
+        ((Method)localObject1).invoke(localAccessibilityManager, new Object[] { Integer.valueOf(j) });
+        ae.i(TAG, "recoverAccessibilityEnable setStateLocked is invoked, flag = %d", new Object[] { Integer.valueOf(j) });
+        if ((bv.fpR()) || (j.IS_FLAVOR_RED))
+        {
+          ae.i(TAG, "isCoolassistEnv or flavor red, return");
+          AppMethodBeat.o(196730);
+          return;
         }
-        IbZ.yT(2);
-        bool2 = bool1;
-        continue;
       }
-      label559:
-      bool1 = true;
-      break label325;
-      label565:
-      bool2 = true;
+      catch (Throwable localThrowable1)
+      {
+        ae.w(TAG, "disableAccessibility exception -> " + localThrowable1.getMessage());
+        AppMethodBeat.o(196730);
+        return;
+      }
+      Object localObject2 = localThrowable1.getEnabledAccessibilityServiceList(1).iterator();
+      while (((Iterator)localObject2).hasNext())
+      {
+        AccessibilityServiceInfo localAccessibilityServiceInfo = (AccessibilityServiceInfo)((Iterator)localObject2).next();
+        if (!Iwh.contains(localAccessibilityServiceInfo.getId()))
+        {
+          ae.i(TAG, "has spoken service, return");
+          a(localThrowable1);
+          AppMethodBeat.o(196730);
+          return;
+        }
+      }
+      if (localThrowable1.isTouchExplorationEnabled())
+      {
+        ae.i(TAG, "isTouchExplorationEnabled is true, return");
+        AppMethodBeat.o(196730);
+        return;
+      }
+      ae.i(TAG, "disableAccessibility");
+      localObject2 = AccessibilityManager.class.getDeclaredMethod("setStateLocked", new Class[] { Integer.TYPE });
+      ((Method)localObject2).setAccessible(true);
+      if (bool2) {}
+      for (int i = 4;; i = 0)
+      {
+        ((Method)localObject2).invoke(localThrowable1, new Object[] { Integer.valueOf(i) });
+        ae.i(TAG, "smartDisableAccessibility setStateLocked is invoked, flag = %d", new Object[] { Integer.valueOf(i) });
+        h.MqF.aO(new Runnable()
+        {
+          public final void run()
+          {
+            AppMethodBeat.i(196729);
+            a.b(this.Iwi);
+            AppMethodBeat.o(196729);
+          }
+        });
+        AppMethodBeat.o(196730);
+        return;
+      }
+      label430:
+      i = 1;
+      int j = i;
+      if (bool2) {
+        j = i | 0x4;
+      }
     }
-  }
-  
-  public static abstract interface a
-  {
-    public abstract void L(Activity paramActivity);
-    
-    public abstract boolean M(Activity paramActivity);
-    
-    public abstract void yT(int paramInt);
   }
 }
 

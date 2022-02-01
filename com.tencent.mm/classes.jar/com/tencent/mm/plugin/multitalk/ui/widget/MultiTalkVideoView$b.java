@@ -7,11 +7,11 @@ public enum MultiTalkVideoView$b
   static
   {
     AppMethodBeat.i(114761);
-    whp = new b("Avatar", 0);
-    whq = new b("Video", 1);
-    whr = new b("ScreenCast", 2);
-    whs = new b("None", 3);
-    wht = new b[] { whp, whq, whr, whs };
+    wwT = new b("Avatar", 0);
+    wwU = new b("Video", 1);
+    wwV = new b("ScreenCast", 2);
+    wwW = new b("None", 3);
+    wwX = new b[] { wwT, wwU, wwV, wwW };
     AppMethodBeat.o(114761);
   }
   
@@ -19,7 +19,7 @@ public enum MultiTalkVideoView$b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.multitalk.ui.widget.MultiTalkVideoView.b
  * JD-Core Version:    0.7.0.1
  */

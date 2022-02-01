@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bs.d;
+import com.tencent.mm.br.d;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.ui.base.preference.Preference;
@@ -19,9 +19,9 @@ final class AccountInfoPreference$1
     AppMethodBeat.i(31805);
     b localb = new b();
     localb.bd(paramView);
-    a.b("com/tencent/mm/pluginsdk/ui/preference/AccountInfoPreference$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+    a.b("com/tencent/mm/pluginsdk/ui/preference/AccountInfoPreference$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
     paramView = new Intent();
-    d.b(this.FfE.mContext, "setting", ".ui.setting.SettingsPersonalInfoUI", paramView);
+    d.b(this.Fyc.mContext, "setting", ".ui.setting.SettingsPersonalInfoUI", paramView);
     a.a(this, "com/tencent/mm/pluginsdk/ui/preference/AccountInfoPreference$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(31805);
   }

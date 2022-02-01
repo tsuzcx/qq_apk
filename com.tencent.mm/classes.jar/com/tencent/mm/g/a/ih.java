@@ -6,7 +6,8 @@ import com.tencent.mm.sdk.b.b;
 public final class ih
   extends b
 {
-  public a duP;
+  public a dvR;
+  public b dvS;
   
   public ih()
   {
@@ -15,21 +16,28 @@ public final class ih
   
   private ih(byte paramByte)
   {
-    AppMethodBeat.i(214674);
-    this.duP = new a();
-    this.IbR = false;
+    AppMethodBeat.i(89643);
+    this.dvR = new a();
+    this.dvS = new b();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(214674);
+    AppMethodBeat.o(89643);
   }
   
   public static final class a
   {
-    public String dln;
+    public int EN = 0;
+    public String param;
+  }
+  
+  public static final class b
+  {
+    public String dvT;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.a.ih
  * JD-Core Version:    0.7.0.1
  */

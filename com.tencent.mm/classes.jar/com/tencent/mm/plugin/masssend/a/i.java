@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.masssend.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.xl;
+import com.tencent.mm.g.a.xp;
 import com.tencent.mm.sdk.b.c;
 
 public final class i
-  extends c<xl>
+  extends c<xp>
 {
   public i()
   {
     AppMethodBeat.i(161393);
-    this.__eventId = xl.class.getName().hashCode();
+    this.__eventId = xp.class.getName().hashCode();
     AppMethodBeat.o(161393);
   }
 }

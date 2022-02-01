@@ -11,7 +11,22 @@ import java.util.TimeZone;
 
 public final class a
 {
-  private static float du(Context paramContext)
+  public static float dA(Context paramContext)
+  {
+    AppMethodBeat.i(110226);
+    WindowManager.LayoutParams localLayoutParams = ((Activity)paramContext).getWindow().getAttributes();
+    if (localLayoutParams.screenBrightness < 0.0F)
+    {
+      f = dy(paramContext);
+      AppMethodBeat.o(110226);
+      return f;
+    }
+    float f = localLayoutParams.screenBrightness;
+    AppMethodBeat.o(110226);
+    return f;
+  }
+  
+  private static float dy(Context paramContext)
   {
     AppMethodBeat.i(110227);
     paramContext = paramContext.getContentResolver();
@@ -30,22 +45,7 @@ public final class a
     return f;
   }
   
-  public static float dw(Context paramContext)
-  {
-    AppMethodBeat.i(110226);
-    WindowManager.LayoutParams localLayoutParams = ((Activity)paramContext).getWindow().getAttributes();
-    if (localLayoutParams.screenBrightness < 0.0F)
-    {
-      f = du(paramContext);
-      AppMethodBeat.o(110226);
-      return f;
-    }
-    float f = localLayoutParams.screenBrightness;
-    AppMethodBeat.o(110226);
-    return f;
-  }
-  
-  public static String sm(long paramLong)
+  public static String sz(long paramLong)
   {
     AppMethodBeat.i(110228);
     if (paramLong < 3600000L) {}
@@ -61,7 +61,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.websearch.ui.a
  * JD-Core Version:    0.7.0.1
  */

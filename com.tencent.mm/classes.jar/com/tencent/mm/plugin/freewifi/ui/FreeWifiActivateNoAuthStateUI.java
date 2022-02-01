@@ -7,47 +7,47 @@ import android.os.Bundle;
 import android.widget.Button;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.freewifi.model.d;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 @Deprecated
 public abstract class FreeWifiActivateNoAuthStateUI
   extends FreeWifiActivateStateUI
 {
-  private String dxJ;
-  private int toO;
-  private boolean toP;
+  private String dyO;
+  private int tzF;
+  private boolean tzG;
   
   public void a(NetworkInfo.State paramState)
   {
-    ad.i("MicroMsg.FreeWifi.FreeWifiActivateNoAuthStateUI", "now network state : %s", new Object[] { paramState.toString() });
-    if ((paramState == NetworkInfo.State.CONNECTED) && (d.ajQ(this.ssid)))
+    ae.i("MicroMsg.FreeWifi.FreeWifiActivateNoAuthStateUI", "now network state : %s", new Object[] { paramState.toString() });
+    if ((paramState == NetworkInfo.State.CONNECTED) && (d.akO(this.ssid)))
     {
-      cSf();
-      this.toX = false;
+      cUK();
+      this.tzO = false;
       d.a(this.ssid, 2, getIntent());
     }
   }
   
-  protected final void aTT()
+  protected final void aUs()
   {
-    cSa();
+    cUF();
   }
   
-  protected final void cSa()
+  protected final void cUF()
   {
-    if (this.toX)
+    if (this.tzO)
     {
-      ad.i("MicroMsg.FreeWifi.FreeWifiActivateNoAuthStateUI", "it is authing now");
+      ae.i("MicroMsg.FreeWifi.FreeWifiActivateNoAuthStateUI", "it is authing now");
       return;
     }
-    this.toX = true;
-    cSe();
-    d.e(this.ssid, this.dxJ, this.toO, this.toP);
+    this.tzO = true;
+    cUJ();
+    d.e(this.ssid, this.dyO, this.tzF, this.tzG);
   }
   
-  protected int cSb()
+  protected int cUG()
   {
-    if (d.ajQ(this.ssid))
+    if (d.akO(this.ssid))
     {
       d.a(this.ssid, 2, getIntent());
       return 2;
@@ -55,23 +55,23 @@ public abstract class FreeWifiActivateNoAuthStateUI
     return 1;
   }
   
-  protected abstract String cSc();
+  protected abstract String cUH();
   
   public void initView()
   {
     super.initView();
-    this.toU.setVisibility(0);
-    setMMTitle(cSc());
+    this.tzL.setVisibility(0);
+    setMMTitle(cUH());
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    this.toO = getIntent().getIntExtra("free_wifi_encrypt_type", 0);
-    this.dxJ = getIntent().getStringExtra("free_wifi_passowrd");
-    this.toP = getIntent().getBooleanExtra("free_wifi_hide_ssid", false);
+    this.tzF = getIntent().getIntExtra("free_wifi_encrypt_type", 0);
+    this.dyO = getIntent().getStringExtra("free_wifi_passowrd");
+    this.tzG = getIntent().getBooleanExtra("free_wifi_hide_ssid", false);
     super.onCreate(paramBundle);
     d.a(this.ssid, 1, getIntent());
-    ad.i("MicroMsg.FreeWifi.FreeWifiActivateNoAuthStateUI", "Comes from webview, do auth");
+    ae.i("MicroMsg.FreeWifi.FreeWifiActivateNoAuthStateUI", "Comes from webview, do auth");
   }
   
   public void onDestroy()
@@ -87,7 +87,7 @@ public abstract class FreeWifiActivateNoAuthStateUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.freewifi.ui.FreeWifiActivateNoAuthStateUI
  * JD-Core Version:    0.7.0.1
  */

@@ -9,9 +9,9 @@ public class VideoCaptureReportInfo
   implements Parcelable
 {
   public static final Parcelable.Creator<VideoCaptureReportInfo> CREATOR;
-  public int pPw;
-  public int rgD;
-  public long xyJ;
+  public int pWb;
+  public int roH;
+  public long xOF;
   
   static
   {
@@ -22,20 +22,20 @@ public class VideoCaptureReportInfo
   
   public VideoCaptureReportInfo()
   {
-    this.rgD = -1;
-    this.pPw = -1;
-    this.xyJ = -1L;
+    this.roH = -1;
+    this.pWb = -1;
+    this.xOF = -1L;
   }
   
   public VideoCaptureReportInfo(Parcel paramParcel)
   {
     AppMethodBeat.i(101524);
-    this.rgD = -1;
-    this.pPw = -1;
-    this.xyJ = -1L;
-    this.rgD = paramParcel.readInt();
-    this.pPw = paramParcel.readInt();
-    this.xyJ = paramParcel.readLong();
+    this.roH = -1;
+    this.pWb = -1;
+    this.xOF = -1L;
+    this.roH = paramParcel.readInt();
+    this.pWb = paramParcel.readInt();
+    this.xOF = paramParcel.readLong();
     AppMethodBeat.o(101524);
   }
   
@@ -47,15 +47,15 @@ public class VideoCaptureReportInfo
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(101525);
-    paramParcel.writeInt(this.rgD);
-    paramParcel.writeInt(this.pPw);
-    paramParcel.writeLong(this.xyJ);
+    paramParcel.writeInt(this.roH);
+    paramParcel.writeInt(this.pWb);
+    paramParcel.writeLong(this.xOF);
     AppMethodBeat.o(101525);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.jumper.VideoCaptureReportInfo
  * JD-Core Version:    0.7.0.1
  */

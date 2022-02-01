@@ -6,15 +6,15 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.app.m;
-import com.tencent.mm.bs.d;
+import com.tencent.mm.app.n;
+import com.tencent.mm.br.d;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.bj;
+import com.tencent.mm.model.bl;
 import com.tencent.mm.plugin.backup.backupmoveui.BackupUI;
 import com.tencent.mm.plugin.messenger.foundation.a.a.c;
 import com.tencent.mm.plugin.messenger.foundation.a.l;
-import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.ui.MMWizardActivity;
 import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.ui.base.preference.Preference;
@@ -46,7 +46,7 @@ public class BackupChooseBackupModeUI
         return true;
       }
     });
-    ((m)g.ab(m.class)).LX();
+    ((n)g.ab(n.class)).Mf();
     AppMethodBeat.o(21780);
   }
   
@@ -54,7 +54,7 @@ public class BackupChooseBackupModeUI
   {
     AppMethodBeat.i(21782);
     super.onDestroy();
-    ((m)g.ab(m.class)).LW();
+    ((n)g.ab(n.class)).Me();
     AppMethodBeat.o(21782);
   }
   
@@ -64,8 +64,8 @@ public class BackupChooseBackupModeUI
     if (paramPreference.mKey.equals("backup_move_to_device")) {
       try
       {
-        if (((l)g.ab(l.class)).azS().dlO()) {
-          bj.aCc();
+        if (((l)g.ab(l.class)).aAi().doN()) {
+          bl.aCs();
         }
         MMWizardActivity.al(this, new Intent(getContext(), BackupUI.class));
         AppMethodBeat.o(21781);
@@ -75,7 +75,7 @@ public class BackupChooseBackupModeUI
       {
         for (;;)
         {
-          ad.printErrStackTrace("MicroMsg.BackupChooseBackupModeUI", paramf, "", new Object[0]);
+          ae.printErrStackTrace("MicroMsg.BackupChooseBackupModeUI", paramf, "", new Object[0]);
         }
       }
     }
@@ -83,7 +83,7 @@ public class BackupChooseBackupModeUI
     {
       paramf = new Intent();
       paramf.putExtra("title", getString(2131756190));
-      paramf.putExtra("rawUrl", getString(2131756248, new Object[] { ac.fks() }));
+      paramf.putExtra("rawUrl", getString(2131756248, new Object[] { ad.fom() }));
       paramf.putExtra("showShare", false);
       paramf.putExtra("neverGetA8Key", true);
       d.b(this, "webview", ".ui.tools.WebViewUI", paramf);

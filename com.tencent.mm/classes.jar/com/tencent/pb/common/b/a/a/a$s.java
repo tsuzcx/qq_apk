@@ -6,7 +6,7 @@ import com.google.b.a.e;
 public final class a$s
   extends e
 {
-  public a.ap[] LGM = a.ap.fTb();
+  public a.ap[] MdQ = a.ap.fXB();
   
   public a$s()
   {
@@ -15,12 +15,12 @@ public final class a$s
   
   public final void a(b paramb)
   {
-    if ((this.LGM != null) && (this.LGM.length > 0))
+    if ((this.MdQ != null) && (this.MdQ.length > 0))
     {
       int i = 0;
-      while (i < this.LGM.length)
+      while (i < this.MdQ.length)
       {
-        a.ap localap = this.LGM[i];
+        a.ap localap = this.MdQ[i];
         if (localap != null) {
           paramb.a(1, localap);
         }
@@ -34,19 +34,19 @@ public final class a$s
   {
     int i = super.zq();
     int k = i;
-    if (this.LGM != null)
+    if (this.MdQ != null)
     {
       k = i;
-      if (this.LGM.length > 0)
+      if (this.MdQ.length > 0)
       {
         int j = 0;
         for (;;)
         {
           k = i;
-          if (j >= this.LGM.length) {
+          if (j >= this.MdQ.length) {
             break;
           }
-          a.ap localap = this.LGM[j];
+          a.ap localap = this.MdQ[j];
           k = i;
           if (localap != null) {
             k = i + b.b(1, localap);

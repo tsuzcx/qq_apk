@@ -9,30 +9,30 @@ import java.util.Map;
 
 public class a
 {
-  private static a kcL;
-  public boolean kcM;
-  public Map<String, c> kcN;
+  private static a kgc;
+  public boolean kgd;
+  public Map<String, c> kge;
   public List<a> listeners;
   
   private a()
   {
     AppMethodBeat.i(158902);
-    this.kcM = false;
+    this.kgd = false;
     this.listeners = new ArrayList();
-    this.kcN = new HashMap();
+    this.kge = new HashMap();
     AppMethodBeat.o(158902);
   }
   
-  public static a bfk()
+  public static a bfS()
   {
     AppMethodBeat.i(158903);
-    if (kcL == null) {}
+    if (kgc == null) {}
     try
     {
-      if (kcL == null) {
-        kcL = new a();
+      if (kgc == null) {
+        kgc = new a();
       }
-      a locala = kcL;
+      a locala = kgc;
       AppMethodBeat.o(158903);
       return locala;
     }
@@ -42,10 +42,10 @@ public class a
     }
   }
   
-  public final c Oj(String paramString)
+  public final c OQ(String paramString)
   {
     AppMethodBeat.i(158906);
-    paramString = (c)this.kcN.get(paramString);
+    paramString = (c)this.kge.get(paramString);
     AppMethodBeat.o(158906);
     return paramString;
   }
@@ -53,7 +53,7 @@ public class a
   public final void a(a parama)
   {
     AppMethodBeat.i(158908);
-    if (this.kcM)
+    if (this.kgd)
     {
       AppMethodBeat.o(158908);
       return;
@@ -71,23 +71,23 @@ public class a
     AppMethodBeat.o(158909);
   }
   
-  public final Collection<c> bfl()
+  public final Collection<c> bfT()
   {
     AppMethodBeat.i(158907);
-    Collection localCollection = this.kcN.values();
+    Collection localCollection = this.kge.values();
     AppMethodBeat.o(158907);
     return localCollection;
   }
   
-  public final void bfm()
+  public final void bfU()
   {
-    this.kcM = true;
+    this.kgd = true;
   }
   
   public final boolean contains(String paramString)
   {
     AppMethodBeat.i(158904);
-    boolean bool = this.kcN.containsKey(paramString);
+    boolean bool = this.kge.containsKey(paramString);
     AppMethodBeat.o(158904);
     return bool;
   }
@@ -95,20 +95,20 @@ public class a
   public final void destroy()
   {
     AppMethodBeat.i(158910);
-    this.kcN.clear();
-    kcL = null;
+    this.kge.clear();
+    kgc = null;
     AppMethodBeat.o(158910);
   }
   
   public final void remove(String paramString)
   {
     AppMethodBeat.i(158905);
-    if (this.kcM)
+    if (this.kgd)
     {
       AppMethodBeat.o(158905);
       return;
     }
-    paramString = (c)this.kcN.remove(paramString);
+    paramString = (c)this.kge.remove(paramString);
     int i = 0;
     while (i < this.listeners.size())
     {
@@ -137,7 +137,7 @@ public class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.g.b.a
  * JD-Core Version:    0.7.0.1
  */

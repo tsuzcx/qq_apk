@@ -2,45 +2,45 @@ package com.tencent.mm.plugin.emoji.e;
 
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.dg;
-import com.tencent.mm.g.a.dg.a;
+import com.tencent.mm.g.a.dh;
+import com.tencent.mm.g.a.dh.a;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.plugin.emoji.model.k;
 import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.al.a;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.storage.aj;
+import com.tencent.mm.storage.am.a;
 
 final class b$11
-  extends c<dg>
+  extends c<dh>
 {
   b$11(b paramb)
   {
     AppMethodBeat.i(161078);
-    this.__eventId = dg.class.getName().hashCode();
+    this.__eventId = dh.class.getName().hashCode();
     AppMethodBeat.o(161078);
   }
   
-  private static boolean a(dg paramdg)
+  private static boolean a(dh paramdh)
   {
     AppMethodBeat.i(108408);
-    if ((paramdg != null) && ((paramdg instanceof dg)))
+    if ((paramdh != null) && ((paramdh instanceof dh)))
     {
-      boolean bool = paramdg.doc.enable;
-      com.tencent.mm.kernel.g.ajC().ajl().set(al.a.IqE, Boolean.valueOf(bool));
-      k.cgU().pDr = bool;
+      boolean bool = paramdh.dph.enable;
+      com.tencent.mm.kernel.g.ajR().ajA().set(am.a.ILa, Boolean.valueOf(bool));
+      k.cik().pJV = bool;
       if (bool) {
         break label95;
       }
-      com.tencent.mm.plugin.report.service.g.yhR.f(12953, new Object[] { Integer.valueOf(2), "" });
-      Toast.makeText(aj.getContext(), 2131758240, 0).show();
+      com.tencent.mm.plugin.report.service.g.yxI.f(12953, new Object[] { Integer.valueOf(2), "" });
+      Toast.makeText(ak.getContext(), 2131758240, 0).show();
     }
     for (;;)
     {
       AppMethodBeat.o(108408);
       return false;
       label95:
-      Toast.makeText(aj.getContext(), 2131758242, 0).show();
+      Toast.makeText(ak.getContext(), 2131758242, 0).show();
     }
   }
 }

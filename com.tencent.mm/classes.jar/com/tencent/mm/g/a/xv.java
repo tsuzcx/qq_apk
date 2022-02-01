@@ -2,11 +2,12 @@ package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.storage.bv;
 
 public final class xv
   extends b
 {
-  public a dMe;
+  public a dNp;
   
   public xv()
   {
@@ -15,21 +16,21 @@ public final class xv
   
   private xv(byte paramByte)
   {
-    AppMethodBeat.i(19845);
-    this.dMe = new a();
-    this.IbR = false;
+    AppMethodBeat.i(104422);
+    this.dNp = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(19845);
+    AppMethodBeat.o(104422);
   }
   
   public static final class a
   {
-    public boolean dMf;
+    public bv dlw;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.a.xv
  * JD-Core Version:    0.7.0.1
  */

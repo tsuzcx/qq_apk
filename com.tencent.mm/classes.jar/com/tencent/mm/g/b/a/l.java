@@ -6,39 +6,39 @@ import com.tencent.mm.plugin.report.a;
 public final class l
   extends a
 {
-  public long dSa;
-  public String dSb;
-  public long dSc;
-  public long dSd;
+  public long dTq;
+  public String dTr = "";
+  public long dTs;
+  public long dTt;
   
-  public final String RD()
+  public final String RC()
   {
     AppMethodBeat.i(163174);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dSa);
+    ((StringBuffer)localObject).append(this.dTq);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dSb);
+    ((StringBuffer)localObject).append(this.dTr);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dSc);
+    ((StringBuffer)localObject).append(this.dTs);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dSd);
+    ((StringBuffer)localObject).append(this.dTt);
     localObject = ((StringBuffer)localObject).toString();
-    awz((String)localObject);
+    axO((String)localObject);
     AppMethodBeat.o(163174);
     return localObject;
   }
   
-  public final String RE()
+  public final String RD()
   {
     AppMethodBeat.i(163175);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("ActionType:").append(this.dSa);
+    ((StringBuffer)localObject).append("ActionType:").append(this.dTq);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("SessionId:").append(this.dSb);
+    ((StringBuffer)localObject).append("SessionId:").append(this.dTr);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("WeShiCount:").append(this.dSc);
+    ((StringBuffer)localObject).append("WeShiCount:").append(this.dTs);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ClickTime:").append(this.dSd);
+    ((StringBuffer)localObject).append("ClickTime:").append(this.dTt);
     localObject = ((StringBuffer)localObject).toString();
     AppMethodBeat.o(163175);
     return localObject;

@@ -7,7 +7,7 @@ import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "v", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "v", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
 final class ScanSharedMaskView$c
   implements View.OnClickListener
 {
@@ -18,8 +18,8 @@ final class ScanSharedMaskView$c
     AppMethodBeat.i(52449);
     Object localObject = new b();
     ((b)localObject).bd(paramView);
-    a.b("com/tencent/mm/plugin/scanner/ui/widget/ScanSharedMaskView$init$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahq());
-    localObject = ScanSharedMaskView.a(this.yyU);
+    a.b("com/tencent/mm/plugin/scanner/ui/widget/ScanSharedMaskView$init$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahF());
+    localObject = ScanSharedMaskView.a(this.yOU);
     if (localObject != null) {
       ((View.OnClickListener)localObject).onClick(paramView);
     }

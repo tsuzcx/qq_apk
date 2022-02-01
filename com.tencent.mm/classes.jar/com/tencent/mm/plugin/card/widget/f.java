@@ -10,190 +10,190 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.card.base.b;
 import com.tencent.mm.plugin.card.d.l;
 import com.tencent.mm.plugin.card.d.n;
-import com.tencent.mm.protocal.protobuf.aaf;
-import com.tencent.mm.protocal.protobuf.tl;
-import com.tencent.mm.protocal.protobuf.ts;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.aai;
+import com.tencent.mm.protocal.protobuf.tn;
+import com.tencent.mm.protocal.protobuf.tu;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
 public final class f
   extends a
 {
-  protected TextView iVq;
-  private TextView oQA;
-  private TextView oQB;
-  private View oQC;
-  private TextView oQD;
-  private TextView oQE;
-  private ImageView oQF;
-  private TextView oQG;
-  private View oQy;
-  private ImageView oQz;
-  public ArrayList<tl> owR;
+  protected TextView iYj;
+  public ArrayList<tn> oDt;
+  private View oXa;
+  private ImageView oXb;
+  private TextView oXc;
+  private TextView oXd;
+  private View oXe;
+  private TextView oXf;
+  private TextView oXg;
+  private ImageView oXh;
+  private TextView oXi;
   
   public f(Context paramContext)
   {
     super(paramContext);
   }
   
-  protected final void bYI()
+  protected final void bZX()
   {
     AppMethodBeat.i(113913);
-    this.iVq = ((TextView)bYH().findViewById(2131297911));
-    this.oQy = bYH().findViewById(2131297740);
-    this.oQz = ((ImageView)bYH().findViewById(2131305805));
-    this.oQA = ((TextView)bYH().findViewById(2131305804));
-    this.oQB = ((TextView)bYH().findViewById(2131305803));
-    this.oQC = bYH().findViewById(2131305807);
-    this.oQD = ((TextView)bYH().findViewById(2131305809));
-    this.oQE = ((TextView)bYH().findViewById(2131305808));
-    this.oQF = ((ImageView)bYH().findViewById(2131305806));
-    this.oQG = ((TextView)bYH().findViewById(2131305802));
+    this.iYj = ((TextView)bZW().findViewById(2131297911));
+    this.oXa = bZW().findViewById(2131297740);
+    this.oXb = ((ImageView)bZW().findViewById(2131305805));
+    this.oXc = ((TextView)bZW().findViewById(2131305804));
+    this.oXd = ((TextView)bZW().findViewById(2131305803));
+    this.oXe = bZW().findViewById(2131305807);
+    this.oXf = ((TextView)bZW().findViewById(2131305809));
+    this.oXg = ((TextView)bZW().findViewById(2131305808));
+    this.oXh = ((ImageView)bZW().findViewById(2131305806));
+    this.oXi = ((TextView)bZW().findViewById(2131305802));
     AppMethodBeat.o(113913);
   }
   
-  protected final void bYJ()
+  protected final void bZY()
   {
     AppMethodBeat.i(113914);
     label129:
     label206:
     Object localObject;
     StringBuilder localStringBuilder;
-    aaf localaaf1;
-    if ((this.owK.bTN().FSa != null) && (!TextUtils.isEmpty(this.owK.bTN().FSa.title)))
+    aai localaai1;
+    if ((this.oDm.bVc().Gkz != null) && (!TextUtils.isEmpty(this.oDm.bVc().Gkz.title)))
     {
-      this.mMD.setText(this.owK.bTN().FSa.title);
-      if ((this.owK.bTN().FSa == null) || (TextUtils.isEmpty(this.owK.bTN().FSa.oxN))) {
+      this.mRG.setText(this.oDm.bVc().Gkz.title);
+      if ((this.oDm.bVc().Gkz == null) || (TextUtils.isEmpty(this.oDm.bVc().Gkz.oEp))) {
         break label604;
       }
-      this.iVq.setText(this.owK.bTN().FSa.oxN);
-      this.iVq.setVisibility(0);
-      ad.i("MicroMsg.CardWidgetTicket", "updateContentView()");
-      if (bt.isNullOrNil(this.owK.bTN().FRG)) {
+      this.iYj.setText(this.oDm.bVc().Gkz.oEp);
+      this.iYj.setVisibility(0);
+      ae.i("MicroMsg.CardWidgetTicket", "updateContentView()");
+      if (bu.isNullOrNil(this.oDm.bVc().Gkf)) {
         break label625;
       }
       int i = this.mContext.getResources().getDimensionPixelSize(2131166000);
-      n.a(this.mContext, this.oQz, this.owK.bTN().FRG, i, l.Zh(this.owK.bTN().hAD));
+      n.a(this.mContext, this.oXb, this.oDm.bVc().Gkf, i, l.ZY(this.oDm.bVc().hDr));
       localObject = new StringBuilder();
       localStringBuilder = new StringBuilder();
-      if ((this.owK.bTN().FRz == null) || (this.owK.bTN().FRz.size() < 2)) {
+      if ((this.oDm.bVc().GjY == null) || (this.oDm.bVc().GjY.size() < 2)) {
         break label652;
       }
-      ad.i("MicroMsg.CardWidgetTicket", "primary_fields length is >= 2");
-      localaaf1 = (aaf)this.owK.bTN().FRz.get(0);
-      aaf localaaf2 = (aaf)this.owK.bTN().FRz.get(1);
-      ((StringBuilder)localObject).append(localaaf1.title).append(" - ").append(localaaf2.title);
-      if ((!TextUtils.isEmpty(localaaf1.oxO)) && (!TextUtils.isEmpty(localaaf2.oxO)))
+      ae.i("MicroMsg.CardWidgetTicket", "primary_fields length is >= 2");
+      localaai1 = (aai)this.oDm.bVc().GjY.get(0);
+      aai localaai2 = (aai)this.oDm.bVc().GjY.get(1);
+      ((StringBuilder)localObject).append(localaai1.title).append(" - ").append(localaai2.title);
+      if ((!TextUtils.isEmpty(localaai1.oEq)) && (!TextUtils.isEmpty(localaai2.oEq)))
       {
-        localStringBuilder.append(localaaf1.oxO).append(" ").append(localaaf1.oxN);
+        localStringBuilder.append(localaai1.oEq).append(" ").append(localaai1.oEp);
         localStringBuilder.append(" - ");
-        localStringBuilder.append(localaaf2.oxO).append(" ").append(localaaf2.oxN);
+        localStringBuilder.append(localaai2.oEq).append(" ").append(localaai2.oEp);
       }
       label403:
       if (TextUtils.isEmpty(((StringBuilder)localObject).toString())) {
         break label737;
       }
-      this.oQA.setText(((StringBuilder)localObject).toString());
+      this.oXc.setText(((StringBuilder)localObject).toString());
       label424:
       if (TextUtils.isEmpty(localStringBuilder.toString())) {
         break label749;
       }
-      ad.i("MicroMsg.CardWidgetTicket", "sub_title_builder is not empty!");
-      this.oQB.setText(localStringBuilder.toString());
-      this.oQB.setVisibility(0);
+      ae.i("MicroMsg.CardWidgetTicket", "sub_title_builder is not empty!");
+      this.oXd.setText(localStringBuilder.toString());
+      this.oXd.setVisibility(0);
       label460:
-      ad.e("MicroMsg.CardWidgetTicket", "updateShopView(), shop_count:" + this.owK.bTN().FRD);
-      if (this.owK.bTN().FRD > 0) {
+      ae.e("MicroMsg.CardWidgetTicket", "updateShopView(), shop_count:" + this.oDm.bVc().Gkc);
+      if (this.oDm.bVc().Gkc > 0) {
         break label816;
       }
-      this.oQC.setVisibility(8);
-      this.oQG.setVisibility(8);
+      this.oXe.setVisibility(8);
+      this.oXi.setVisibility(8);
     }
     for (;;)
     {
-      if (!this.owK.bTM()) {
+      if (!this.oDm.bVb()) {
         break label1198;
       }
-      this.oQy.setVisibility(8);
+      this.oXa.setVisibility(8);
       AppMethodBeat.o(113914);
       return;
-      if (!TextUtils.isEmpty(this.owK.bTN().oze))
+      if (!TextUtils.isEmpty(this.oDm.bVc().oFG))
       {
-        this.mMD.setText(this.owK.bTN().oze);
+        this.mRG.setText(this.oDm.bVc().oFG);
         break;
       }
-      this.mMD.setText("");
+      this.mRG.setText("");
       break;
       label604:
-      this.iVq.setText("");
-      this.iVq.setVisibility(8);
+      this.iYj.setText("");
+      this.iYj.setVisibility(8);
       break label129;
       label625:
-      n.b(this.oQz, 2131231506, l.Zh(this.owK.bTN().hAD));
+      n.b(this.oXb, 2131231506, l.ZY(this.oDm.bVc().hDr));
       break label206;
       label652:
-      if ((this.owK.bTN().FRz == null) || (this.owK.bTN().FRz.size() != 1)) {
+      if ((this.oDm.bVc().GjY == null) || (this.oDm.bVc().GjY.size() != 1)) {
         break label403;
       }
-      ad.i("MicroMsg.CardWidgetTicket", "primary_fields length is == 1");
-      localaaf1 = (aaf)this.owK.bTN().FRz.get(0);
-      ((StringBuilder)localObject).append(localaaf1.title);
-      localStringBuilder.append(localaaf1.oxN);
+      ae.i("MicroMsg.CardWidgetTicket", "primary_fields length is == 1");
+      localaai1 = (aai)this.oDm.bVc().GjY.get(0);
+      ((StringBuilder)localObject).append(localaai1.title);
+      localStringBuilder.append(localaai1.oEp);
       break label403;
       label737:
-      this.oQA.setText("");
+      this.oXc.setText("");
       break label424;
       label749:
-      if (!TextUtils.isEmpty(this.owK.bTN().FRO))
+      if (!TextUtils.isEmpty(this.oDm.bVc().Gkn))
       {
-        ad.i("MicroMsg.CardWidgetTicket", "primary_sub_title is not empty!");
-        this.oQB.setText(this.owK.bTN().FRO);
-        this.oQB.setVisibility(0);
+        ae.i("MicroMsg.CardWidgetTicket", "primary_sub_title is not empty!");
+        this.oXd.setText(this.oDm.bVc().Gkn);
+        this.oXd.setVisibility(0);
         break label460;
       }
-      this.oQB.setVisibility(8);
+      this.oXd.setVisibility(8);
       break label460;
       label816:
-      this.oQC.setVisibility(0);
-      this.oQC.setOnClickListener(this.jtG);
-      n.b(this.oQF, 2131231507, l.Zh(this.owK.bTN().hAD));
+      this.oXe.setVisibility(0);
+      this.oXe.setOnClickListener(this.jwB);
+      n.b(this.oXh, 2131231507, l.ZY(this.oDm.bVc().hDr));
       localStringBuilder = null;
       localObject = localStringBuilder;
-      if (this.owR != null)
+      if (this.oDt != null)
       {
         localObject = localStringBuilder;
-        if (this.owR.size() > 0) {
-          localObject = (tl)this.owR.get(0);
+        if (this.oDt.size() > 0) {
+          localObject = (tn)this.oDt.get(0);
         }
       }
-      if ((this.owK.bTN().FRD == 1) && (localObject != null))
+      if ((this.oDm.bVc().Gkc == 1) && (localObject != null))
       {
-        this.oQD.setText(((tl)localObject).name);
-        this.oQE.setText(this.mContext.getString(2131756996, new Object[] { l.f(this.mContext, ((tl)localObject).zxp), ((tl)localObject).hWY }));
-        this.oQG.setVisibility(8);
-        this.oQC.setTag(((tl)localObject).name);
+        this.oXf.setText(((tn)localObject).name);
+        this.oXg.setText(this.mContext.getString(2131756996, new Object[] { l.f(this.mContext, ((tn)localObject).zOO), ((tn)localObject).hZQ }));
+        this.oXi.setVisibility(8);
+        this.oXe.setTag(((tn)localObject).name);
       }
-      else if ((this.owK.bTN().FRD > 1) && (localObject != null))
+      else if ((this.oDm.bVc().Gkc > 1) && (localObject != null))
       {
-        this.oQD.setText(((tl)localObject).name);
-        this.oQE.setText(this.mContext.getString(2131756996, new Object[] { l.f(this.mContext, ((tl)localObject).zxp), ((tl)localObject).hWY }));
-        this.oQG.setVisibility(0);
-        this.oQG.setOnClickListener(this.jtG);
-        this.oQC.setTag(((tl)localObject).name);
+        this.oXf.setText(((tn)localObject).name);
+        this.oXg.setText(this.mContext.getString(2131756996, new Object[] { l.f(this.mContext, ((tn)localObject).zOO), ((tn)localObject).hZQ }));
+        this.oXi.setVisibility(0);
+        this.oXi.setOnClickListener(this.jwB);
+        this.oXe.setTag(((tn)localObject).name);
       }
-      else if (this.owK.bTN().FRD > 0)
+      else if (this.oDm.bVc().Gkc > 0)
       {
-        this.oQD.setText(2131756806);
-        this.oQE.setText(this.mContext.getString(2131757022, new Object[] { Integer.valueOf(this.owK.bTN().FRD) }));
-        this.oQG.setVisibility(8);
-        this.oQG.setOnClickListener(null);
-        this.oQC.setTag(this.mContext.getString(2131756806));
+        this.oXf.setText(2131756806);
+        this.oXg.setText(this.mContext.getString(2131757022, new Object[] { Integer.valueOf(this.oDm.bVc().Gkc) }));
+        this.oXi.setVisibility(8);
+        this.oXi.setOnClickListener(null);
+        this.oXe.setTag(this.mContext.getString(2131756806));
       }
     }
     label1198:
-    this.oQy.setVisibility(0);
+    this.oXa.setVisibility(0);
     AppMethodBeat.o(113914);
   }
 }

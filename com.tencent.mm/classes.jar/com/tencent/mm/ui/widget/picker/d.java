@@ -1,8 +1,6 @@
 package com.tencent.mm.ui.widget.picker;
 
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
 import android.support.design.widget.BottomSheetBehavior;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -18,37 +16,37 @@ import java.util.Locale;
 public final class d
   implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  private LinearLayout LaU;
-  private CustomTimePickerNew LaV;
-  public a LaW;
-  private Button gUt;
-  private Button gWI;
-  private View kBS;
-  private int lzC;
-  private BottomSheetBehavior lzD;
+  private LinearLayout Lxv;
+  private CustomTimePickerNew Lxw;
+  public a Lxx;
+  private Button gXc;
+  private Button gZv;
+  private View kFh;
+  private int lEa;
+  private BottomSheetBehavior lEb;
   private Context mContext;
-  private android.support.design.widget.a uBI;
+  private android.support.design.widget.a uNn;
   
   public d(Context paramContext)
   {
     AppMethodBeat.i(159555);
     this.mContext = paramContext;
-    this.uBI = new android.support.design.widget.a(this.mContext);
-    this.kBS = View.inflate(this.mContext, 2131495753, null);
-    this.LaU = ((LinearLayout)this.kBS.findViewById(2131305816));
-    this.LaV = new CustomTimePickerNew(this.mContext);
-    this.LaU.removeAllViews();
-    this.LaU.setGravity(17);
-    this.LaU.addView(this.LaV.getView(), new LinearLayout.LayoutParams(-1, -1));
-    this.gUt = ((Button)this.kBS.findViewById(2131302999));
-    this.gUt.setOnClickListener(new View.OnClickListener()
+    this.uNn = new android.support.design.widget.a(this.mContext);
+    this.kFh = View.inflate(this.mContext, 2131495753, null);
+    this.Lxv = ((LinearLayout)this.kFh.findViewById(2131305816));
+    this.Lxw = new CustomTimePickerNew(this.mContext);
+    this.Lxv.removeAllViews();
+    this.Lxv.setGravity(17);
+    this.Lxv.addView(this.Lxw.getView(), new LinearLayout.LayoutParams(-1, -1));
+    this.gXc = ((Button)this.kFh.findViewById(2131302999));
+    this.gXc.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(159552);
         Object localObject = new b();
         ((b)localObject).bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/widget/picker/MMTimePicker$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahq());
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/widget/picker/MMTimePicker$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahF());
         localObject = d.this;
         if (d.a(d.this) == null) {}
         for (paramAnonymousView = null;; paramAnonymousView = String.format(Locale.US, "%02d:%02d", new Object[] { Integer.valueOf(paramAnonymousView.currentHour), Integer.valueOf(paramAnonymousView.currentMinute) }))
@@ -58,46 +56,38 @@ public final class d
           AppMethodBeat.o(159552);
           return;
           paramAnonymousView = d.a(d.this);
-          paramAnonymousView.LaA.aQc();
+          paramAnonymousView.LwY.aQB();
         }
       }
     });
-    this.gWI = ((Button)this.kBS.findViewById(2131297690));
-    this.gWI.setOnClickListener(new d.2(this));
-    this.uBI.setContentView(this.kBS);
-    this.lzC = aq.fromDPToPix(this.mContext, 420);
-    this.lzD = BottomSheetBehavior.l((View)this.kBS.getParent());
-    if (this.lzD != null)
+    this.gZv = ((Button)this.kFh.findViewById(2131297690));
+    this.gZv.setOnClickListener(new d.2(this));
+    this.uNn.setContentView(this.kFh);
+    this.lEa = aq.fromDPToPix(this.mContext, 420);
+    this.lEb = BottomSheetBehavior.l((View)this.kFh.getParent());
+    if (this.lEb != null)
     {
-      this.lzD.J(this.lzC);
-      this.lzD.nZ = false;
+      this.lEb.J(this.lEa);
+      this.lEb.nZ = false;
     }
-    this.uBI.setOnDismissListener(new DialogInterface.OnDismissListener()
-    {
-      public final void onDismiss(DialogInterface paramAnonymousDialogInterface)
-      {
-        AppMethodBeat.i(159554);
-        d.b(d.this);
-        AppMethodBeat.o(159554);
-      }
-    });
+    this.uNn.setOnDismissListener(new d.3(this));
     AppMethodBeat.o(159555);
   }
   
   public final void hide()
   {
     AppMethodBeat.i(159560);
-    if (this.uBI != null) {
-      this.uBI.dismiss();
+    if (this.uNn != null) {
+      this.uNn.dismiss();
     }
     AppMethodBeat.o(159560);
   }
   
-  public final void kl(int paramInt1, int paramInt2)
+  public final void ks(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(159558);
-    if (this.LaV != null) {
-      this.LaV.init(paramInt1, paramInt2);
+    if (this.Lxw != null) {
+      this.Lxw.init(paramInt1, paramInt2);
     }
     AppMethodBeat.o(159558);
   }
@@ -107,8 +97,8 @@ public final class d
   public final void setMaxTime(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(159557);
-    if (this.LaV != null) {
-      this.LaV.setMaxTime(paramInt1, paramInt2);
+    if (this.Lxw != null) {
+      this.Lxw.setMaxTime(paramInt1, paramInt2);
     }
     AppMethodBeat.o(159557);
   }
@@ -116,8 +106,8 @@ public final class d
   public final void setMinTime(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(159556);
-    if (this.LaV != null) {
-      this.LaV.setMinTime(paramInt1, paramInt2);
+    if (this.Lxw != null) {
+      this.Lxw.setMinTime(paramInt1, paramInt2);
     }
     AppMethodBeat.o(159556);
   }
@@ -125,12 +115,12 @@ public final class d
   public final void show()
   {
     AppMethodBeat.i(159559);
-    if (this.uBI != null)
+    if (this.uNn != null)
     {
-      if (this.LaV != null) {
-        this.LaV.onShow();
+      if (this.Lxw != null) {
+        this.Lxw.onShow();
       }
-      this.uBI.show();
+      this.uNn.show();
     }
     AppMethodBeat.o(159559);
   }
@@ -142,7 +132,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.ui.widget.picker.d
  * JD-Core Version:    0.7.0.1
  */

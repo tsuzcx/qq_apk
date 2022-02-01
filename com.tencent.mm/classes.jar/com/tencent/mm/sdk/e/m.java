@@ -4,31 +4,31 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class m
 {
-  public k IhM;
-  public String dln;
-  public int dtK;
+  public k IBX;
+  public String dmp;
+  public int duP;
   public Object obj;
   
   public m()
   {
-    this.dln = null;
-    this.IhM = null;
-    this.dtK = -1;
+    this.dmp = null;
+    this.IBX = null;
+    this.duP = -1;
     this.obj = null;
   }
   
   public m(String paramString)
   {
-    this.dln = paramString;
-    this.IhM = null;
-    this.dtK = -1;
+    this.dmp = paramString;
+    this.IBX = null;
+    this.duP = -1;
     this.obj = null;
   }
   
   public final String toString()
   {
     AppMethodBeat.i(158086);
-    String str = "MStorageEventData [event=" + this.dln + ", eventId=" + this.dtK + ", stg=" + this.IhM + ", obj=" + this.obj + "]";
+    String str = "MStorageEventData [event=" + this.dmp + ", eventId=" + this.duP + ", stg=" + this.IBX + ", obj=" + this.obj + "]";
     AppMethodBeat.o(158086);
     return str;
   }

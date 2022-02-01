@@ -1,12 +1,13 @@
 package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.protocal.protobuf.SnsObject;
 import com.tencent.mm.sdk.b.b;
 
 public final class ry
   extends b
 {
-  public a dGx;
+  public a dHC;
   
   public ry()
   {
@@ -15,16 +16,16 @@ public final class ry
   
   private ry(byte paramByte)
   {
-    AppMethodBeat.i(207377);
-    this.dGx = new a();
-    this.IbR = false;
+    AppMethodBeat.i(125630);
+    this.dHC = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(207377);
+    AppMethodBeat.o(125630);
   }
   
   public static final class a
   {
-    public long msgId;
+    public SnsObject dxv;
   }
 }
 

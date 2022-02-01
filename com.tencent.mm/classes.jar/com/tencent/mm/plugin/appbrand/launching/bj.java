@@ -3,8 +3,8 @@ package com.tencent.mm.plugin.appbrand.launching;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.loader.a;
 import com.tencent.mm.plugin.appbrand.app.j;
-import com.tencent.mm.plugin.appbrand.appcache.bc;
-import com.tencent.mm.plugin.appbrand.appcache.bg;
+import com.tencent.mm.plugin.appbrand.appcache.bd;
+import com.tencent.mm.plugin.appbrand.appcache.bh;
 import com.tencent.mm.plugin.appbrand.appstorage.ICommLibReader;
 import com.tencent.mm.plugin.appbrand.config.AppBrandGlobalSystemConfig;
 import com.tencent.mm.plugin.appbrand.config.AppBrandLaunchFromNotifyReferrer;
@@ -17,37 +17,37 @@ public class bj
 {
   final int aDD;
   final String appId;
-  final AppBrandLaunchReferrer cmv;
-  final int dJQ;
+  final AppBrandLaunchReferrer cmx;
+  final int dLf;
   final int enterScene;
-  final int hQh;
-  final String jCN;
-  final AppBrandLaunchFromNotifyReferrer jCZ;
-  final QualitySession jXD;
-  final String lFL;
-  final ICommLibReader lLs;
+  final int hSZ;
+  final String jFL;
+  final AppBrandLaunchFromNotifyReferrer jFX;
+  final QualitySession kaS;
+  final String lKk;
+  final ICommLibReader lPS;
   final String userName;
   
   bj(String paramString1, int paramInt1, int paramInt2, int paramInt3, String paramString2, AppBrandLaunchReferrer paramAppBrandLaunchReferrer, String paramString3, ICommLibReader paramICommLibReader, QualitySession paramQualitySession, String paramString4, AppBrandLaunchFromNotifyReferrer paramAppBrandLaunchFromNotifyReferrer)
   {
-    AppMethodBeat.i(188637);
+    AppMethodBeat.i(222796);
     this.appId = paramString1;
-    this.hQh = paramInt1;
-    this.dJQ = paramInt2;
+    this.hSZ = paramInt1;
+    this.dLf = paramInt2;
     this.enterScene = paramInt3;
-    this.jCN = paramString2;
-    this.cmv = paramAppBrandLaunchReferrer;
-    this.lFL = paramString3;
+    this.jFL = paramString2;
+    this.cmx = paramAppBrandLaunchReferrer;
+    this.lKk = paramString3;
     this.userName = paramString4;
-    this.jCZ = paramAppBrandLaunchFromNotifyReferrer;
-    paramString1 = j.aYX().a(paramString1, paramInt1, new String[] { "version" });
+    this.jFX = paramAppBrandLaunchFromNotifyReferrer;
+    paramString1 = j.aZu().a(paramString1, paramInt1, new String[] { "version" });
     if (paramString1 == null) {}
     for (paramInt1 = 0;; paramInt1 = paramString1.field_version)
     {
       this.aDD = paramInt1;
-      this.lLs = paramICommLibReader;
-      this.jXD = paramQualitySession;
-      AppMethodBeat.o(188637);
+      this.lPS = paramICommLibReader;
+      this.kaS = paramQualitySession;
+      AppMethodBeat.o(222796);
       return;
     }
   }
@@ -57,10 +57,10 @@ public class bj
     return (paramax != null) && (paramax.field_jsapiInfo != null);
   }
   
-  public static boolean um(int paramInt)
+  public static boolean us(int paramInt)
   {
     AppMethodBeat.i(47351);
-    int[] arrayOfInt = AppBrandGlobalSystemConfig.bdT().jWB;
+    int[] arrayOfInt = AppBrandGlobalSystemConfig.bez().jZQ;
     if ((arrayOfInt != null) && (a.contains(arrayOfInt, paramInt)))
     {
       AppMethodBeat.o(47351);
@@ -70,7 +70,7 @@ public class bj
     return false;
   }
   
-  void aXo() {}
+  void aXJ() {}
   
   final String getTag()
   {

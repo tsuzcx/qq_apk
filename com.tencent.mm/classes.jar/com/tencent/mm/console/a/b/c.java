@@ -2,13 +2,13 @@ package com.tencent.mm.console.a.b;
 
 public final class c<M, S>
 {
-  public final M gfh;
-  public final S gfi;
+  public final M ghr;
+  public final S ghs;
   
   public c(M paramM, S paramS)
   {
-    this.gfh = paramM;
-    this.gfi = paramS;
+    this.ghr = paramM;
+    this.ghs = paramS;
   }
 }
 

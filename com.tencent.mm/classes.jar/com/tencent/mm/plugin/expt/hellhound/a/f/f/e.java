@@ -2,15 +2,15 @@ package com.tencent.mm.plugin.expt.hellhound.a.f.f;
 
 import android.os.Process;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.b.a.eo;
+import com.tencent.mm.g.b.a.eq;
 import com.tencent.mm.kernel.b.h;
 import com.tencent.mm.plugin.expt.d.d.a.3;
 import com.tencent.mm.plugin.expt.d.d.a.8;
 import com.tencent.mm.plugin.expt.hellhound.a.f.b.c;
-import com.tencent.mm.protocal.protobuf.boe;
-import com.tencent.mm.protocal.protobuf.chg;
-import com.tencent.mm.protocal.protobuf.chk;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.bow;
+import com.tencent.mm.protocal.protobuf.cia;
+import com.tencent.mm.protocal.protobuf.cie;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -21,7 +21,7 @@ import org.json.JSONObject;
 
 final class e
 {
-  private static boolean afo(String paramString)
+  private static boolean agk(String paramString)
   {
     boolean bool = false;
     int i = 0;
@@ -31,19 +31,19 @@ final class e
       AppMethodBeat.o(184377);
       return false;
     }
-    ad.i("HABBYGE-MALI.HellSessionDetailReport", "reportSessionDetail: %s", new Object[] { paramString });
-    paramString = com.tencent.mm.plugin.report.a.awA(paramString.replace(',', '#'));
+    ae.i("HABBYGE-MALI.HellSessionDetailReport", "reportSessionDetail: %s", new Object[] { paramString });
+    paramString = com.tencent.mm.plugin.report.a.axP(paramString.replace(',', '#'));
     if (paramString != null)
     {
-      eo localeo1 = new eo();
-      localeo1.eij = Process.myPid();
-      eo localeo2 = localeo1.nS(((h)com.tencent.mm.kernel.g.ajz().ajb()).mProcessName);
-      localeo2.egV = com.tencent.mm.plugin.report.a.dJZ();
-      localeo2.eil = paramString.size();
+      eq localeq1 = new eq();
+      localeq1.ejT = Process.myPid();
+      eq localeq2 = localeq1.on(((h)com.tencent.mm.kernel.g.ajO().ajq()).mProcessName);
+      localeq2.eiF = com.tencent.mm.plugin.report.a.dNr();
+      localeq2.ejV = paramString.size();
       while (i < paramString.size())
       {
-        localeo1.eik = i;
-        localeo1.nT((String)paramString.get(i)).aLk();
+        localeq1.ejU = i;
+        localeq1.oo((String)paramString.get(i)).aLH();
         i += 1;
       }
       bool = true;
@@ -52,37 +52,37 @@ final class e
     return bool;
   }
   
-  static void f(boe paramboe)
+  static void f(bow parambow)
   {
     AppMethodBeat.i(122225);
-    if (paramboe == null)
+    if (parambow == null)
     {
       AppMethodBeat.o(122225);
       return;
     }
-    String str1 = h(paramboe);
-    if (org.apache.commons.b.g.ea(str1))
+    String str1 = h(parambow);
+    if (org.apache.commons.b.g.ef(str1))
     {
       AppMethodBeat.o(122225);
       return;
     }
-    paramboe = com.tencent.mm.plugin.expt.d.a.cng().qPn;
-    if (com.tencent.mm.plugin.expt.d.b.cni())
+    parambow = com.tencent.mm.plugin.expt.d.a.cow().qXi;
+    if (com.tencent.mm.plugin.expt.d.b.coz())
     {
-      if (!org.apache.commons.b.g.ea(str1)) {
+      if (!org.apache.commons.b.g.ef(str1)) {
         break label98;
       }
-      ad.e("EdgeComputingDataSourceService", "[EdgeComputingDataSourceService] sendSessionSingleAll data isEmpty!");
+      ae.e("EdgeComputingDataSourceService", "[EdgeComputingDataSourceService] sendSessionSingleAll data isEmpty!");
     }
     for (;;)
     {
-      if (com.tencent.mm.plugin.expt.hellhound.a.cnt())
+      if (com.tencent.mm.plugin.expt.hellhound.a.coV())
       {
-        c.cpQ();
-        if ((!c.cpS()) && (com.tencent.mm.plugin.expt.hellhound.core.b.getUin() != 0))
+        c.crs();
+        if ((!c.cru()) && (com.tencent.mm.plugin.expt.hellhound.core.b.getUin() != 0))
         {
-          c.cpQ();
-          if (c.cpT()) {
+          c.crs();
+          if (c.crv()) {
             break;
           }
         }
@@ -91,51 +91,51 @@ final class e
       return;
       label98:
       l = System.currentTimeMillis();
-      paramboe.qPs.execute(new a.8(paramboe, l, str1));
+      parambow.qXo.execute(new a.8(parambow, l, str1));
     }
-    long l = com.tencent.mm.plugin.expt.hellhound.a.f.c.d.afb(com.tencent.mm.plugin.expt.hellhound.a.f.c.g.cqn());
-    ad.i("HABBYGE-MALI.HellSessionDetailReport", "doReportDetailWhenEvent8, lastReportTime: %s, %s", new Object[] { Long.valueOf(l), str1 });
+    long l = com.tencent.mm.plugin.expt.hellhound.a.f.c.d.afX(com.tencent.mm.plugin.expt.hellhound.a.f.c.g.crP());
+    ae.i("HABBYGE-MALI.HellSessionDetailReport", "doReportDetailWhenEvent8, lastReportTime: %s, %s", new Object[] { Long.valueOf(l), str1 });
     if (l != -1L) {
       if (l == 0L) {
-        if (afo(str1)) {
-          com.tencent.mm.plugin.expt.hellhound.a.f.c.g.aff(String.valueOf(System.currentTimeMillis()));
+        if (agk(str1)) {
+          com.tencent.mm.plugin.expt.hellhound.a.f.c.g.agb(String.valueOf(System.currentTimeMillis()));
         }
       }
     }
     for (;;)
     {
-      paramboe = com.tencent.mm.plugin.expt.d.a.cng().qPn;
-      if (!com.tencent.mm.plugin.expt.d.b.cni()) {
+      parambow = com.tencent.mm.plugin.expt.d.a.cow().qXi;
+      if (!com.tencent.mm.plugin.expt.d.b.coz()) {
         break label490;
       }
-      if (!org.apache.commons.b.g.ea(str1)) {
+      if (!org.apache.commons.b.g.ef(str1)) {
         break label469;
       }
-      ad.e("EdgeComputingDataSourceService", "[EdgeComputingDataSourceService] sendSessionSingle data isEmpty!");
+      ae.e("EdgeComputingDataSourceService", "[EdgeComputingDataSourceService] sendSessionSingle data isEmpty!");
       AppMethodBeat.o(122225);
       return;
-      String str2 = com.tencent.mm.plugin.expt.hellhound.a.f.c.d.afc(com.tencent.mm.plugin.expt.hellhound.a.f.c.g.cqn());
+      String str2 = com.tencent.mm.plugin.expt.hellhound.a.f.c.d.afY(com.tencent.mm.plugin.expt.hellhound.a.f.c.g.crP());
       if (!"-1".equals(str2))
       {
         if ((str2 == null) || (str2.isEmpty())) {
-          paramboe = str1;
+          parambow = str1;
         }
         for (;;)
         {
-          if (!i.ar(paramboe, l)) {
+          if (!i.ar(parambow, l)) {
             break label319;
           }
-          if (!afo(paramboe)) {
+          if (!agk(parambow)) {
             break;
           }
-          com.tencent.mm.plugin.expt.hellhound.a.f.c.g.aff(String.valueOf(System.currentTimeMillis()));
+          com.tencent.mm.plugin.expt.hellhound.a.f.c.g.agb(String.valueOf(System.currentTimeMillis()));
           break;
-          paramboe = str2;
+          parambow = str2;
           if (str1 != null)
           {
-            paramboe = str2;
+            parambow = str2;
             if (!str1.isEmpty()) {
-              paramboe = str2 + "|" + str1;
+              parambow = str2 + "|" + str1;
             }
           }
         }
@@ -143,37 +143,37 @@ final class e
       label319:
       if ((str1 != null) && (!str1.isEmpty()))
       {
-        paramboe = com.tencent.mm.plugin.expt.hellhound.a.f.c.g.cqn();
-        if ((paramboe == null) || (paramboe.isEmpty()))
+        parambow = com.tencent.mm.plugin.expt.hellhound.a.f.c.g.crP();
+        if ((parambow == null) || (parambow.isEmpty()))
         {
-          com.tencent.mm.plugin.expt.hellhound.a.f.c.g.aff(System.currentTimeMillis() + "@" + str1);
+          com.tencent.mm.plugin.expt.hellhound.a.f.c.g.agb(System.currentTimeMillis() + "@" + str1);
         }
         else
         {
-          if (!"-1".equals(paramboe)) {
+          if (!"-1".equals(parambow)) {
             break;
           }
-          ad.e("HABBYGE-MALI.HellSessionReportCache", "storeSessionDetail not login");
+          ae.e("HABBYGE-MALI.HellSessionReportCache", "storeSessionDetail not login");
         }
       }
     }
-    if (paramboe.split("@").length <= 1) {}
-    for (paramboe = paramboe + "@" + str1;; paramboe = paramboe + "|" + str1)
+    if (parambow.split("@").length <= 1) {}
+    for (parambow = parambow + "@" + str1;; parambow = parambow + "|" + str1)
     {
-      com.tencent.mm.plugin.expt.hellhound.a.f.c.g.aff(paramboe);
+      com.tencent.mm.plugin.expt.hellhound.a.f.c.g.agb(parambow);
       break;
     }
     label469:
     l = System.currentTimeMillis();
-    paramboe.qPs.execute(new a.3(paramboe, l, str1));
+    parambow.qXo.execute(new a.3(parambow, l, str1));
     label490:
     AppMethodBeat.o(122225);
   }
   
-  private static String h(boe paramboe)
+  private static String h(bow parambow)
   {
     AppMethodBeat.i(122226);
-    if (paramboe.GIK <= 0L)
+    if (parambow.Hcm <= 0L)
     {
       AppMethodBeat.o(122226);
       return null;
@@ -189,31 +189,31 @@ final class e
       try
       {
         localJSONObject1 = new JSONObject();
-        localJSONObject1.put("tbe", paramboe.GIK);
-        l = paramboe.GIL - paramboe.GIK;
+        localJSONObject1.put("tbe", parambow.Hcm);
+        l = parambow.Hcn - parambow.Hcm;
         if (l > 0L)
         {
           localJSONObject1.put("in", l);
           localJSONObject1.put("vv", "2.0");
           localJSONArray = new JSONArray();
-          localObject3 = paramboe.GIM.iterator();
+          localObject3 = parambow.Hco.iterator();
           if (!((Iterator)localObject3).hasNext()) {
             break;
           }
-          localObject4 = (chk)((Iterator)localObject3).next();
-          if (((chk)localObject4).startTime <= 0L) {
+          localObject4 = (cie)((Iterator)localObject3).next();
+          if (((cie)localObject4).startTime <= 0L) {
             continue;
           }
           JSONObject localJSONObject2 = new JSONObject();
-          localJSONObject2.put("sessionId", ((chk)localObject4).sessionId);
-          localObject2 = com.tencent.mm.plugin.expt.hellhound.a.f.b.b.aeS(((chk)localObject4).ssn);
+          localJSONObject2.put("sessionId", ((cie)localObject4).sessionId);
+          localObject2 = com.tencent.mm.plugin.expt.hellhound.a.f.b.b.afO(((cie)localObject4).sCx);
           localObject1 = localObject2;
           if (localObject2 == null) {
             localObject1 = "";
           }
           localJSONObject2.put("lastSessionId", localObject1);
-          localJSONObject2.put("tbe", ((chk)localObject4).startTime);
-          l = ((chk)localObject4).endTime - ((chk)localObject4).startTime;
+          localJSONObject2.put("tbe", ((cie)localObject4).startTime);
+          l = ((cie)localObject4).endTime - ((cie)localObject4).startTime;
           if (l <= 0L) {
             break label271;
           }
@@ -223,9 +223,9 @@ final class e
         }
         l = 0L;
       }
-      catch (JSONException paramboe)
+      catch (JSONException parambow)
       {
-        ad.printErrStackTrace("HABBYGE-MALI.HellSessionDetailReport", paramboe, "HellSessionDetailReport.toJsonOfDetail crash", new Object[0]);
+        ae.printErrStackTrace("HABBYGE-MALI.HellSessionDetailReport", parambow, "HellSessionDetailReport.toJsonOfDetail crash", new Object[0]);
         AppMethodBeat.o(122226);
         return null;
       }
@@ -233,23 +233,23 @@ final class e
       label271:
       l = 0L;
     }
-    Object localObject2 = paramboe.GIO.iterator();
+    Object localObject2 = parambow.Hcq.iterator();
     while (((Iterator)localObject2).hasNext())
     {
-      localObject3 = (chg)((Iterator)localObject2).next();
-      if (((chg)localObject3).startTime > 0L)
+      localObject3 = (cia)((Iterator)localObject2).next();
+      if (((cia)localObject3).startTime > 0L)
       {
         localObject4 = new JSONObject();
-        paramboe = com.tencent.mm.plugin.expt.hellhound.a.f.b.b.aeR(((chg)localObject3).dtL);
-        ((JSONObject)localObject4).put("sessionId", paramboe + "_" + ((chg)localObject3).startTime);
-        localObject1 = com.tencent.mm.plugin.expt.hellhound.a.f.b.b.aeS(((chg)localObject3).ssn);
-        paramboe = (boe)localObject1;
+        parambow = com.tencent.mm.plugin.expt.hellhound.a.f.b.b.afN(((cia)localObject3).duQ);
+        ((JSONObject)localObject4).put("sessionId", parambow + "_" + ((cia)localObject3).startTime);
+        localObject1 = com.tencent.mm.plugin.expt.hellhound.a.f.b.b.afO(((cia)localObject3).sCx);
+        parambow = (bow)localObject1;
         if (localObject1 == null) {
-          paramboe = "";
+          parambow = "";
         }
-        ((JSONObject)localObject4).put("lastSessionId", paramboe);
-        ((JSONObject)localObject4).put("tbe", ((chg)localObject3).startTime);
-        l = ((chg)localObject3).endTime - ((chg)localObject3).startTime;
+        ((JSONObject)localObject4).put("lastSessionId", parambow);
+        ((JSONObject)localObject4).put("tbe", ((cia)localObject3).startTime);
+        l = ((cia)localObject3).endTime - ((cia)localObject3).startTime;
         if (l <= 0L) {
           break label500;
         }
@@ -267,9 +267,9 @@ final class e
         return null;
       }
       localJSONObject1.put("content", localJSONArray);
-      paramboe = localJSONObject1.toString();
+      parambow = localJSONObject1.toString();
       AppMethodBeat.o(122226);
-      return paramboe;
+      return parambow;
       label500:
       l = 0L;
     }
@@ -277,7 +277,7 @@ final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.hellhound.a.f.f.e
  * JD-Core Version:    0.7.0.1
  */

@@ -4,45 +4,45 @@ import android.content.Context;
 import android.graphics.Point;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.widget.desktop.b;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.ui.al;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/widget/desktop/dynamicbackground/DynamicBgServiceImpl;", "Lcom/tencent/mm/dynamicbackground/model/DynamicBgService;", "()V", "getDisplayRealSize", "Landroid/graphics/Point;", "context", "Landroid/content/Context;", "getSleepTimeInMsPerFrame", "", "isEnableNativeDynamicBackground", "", "isInitCrash", "loadDynamicBgLibrary", "", "markDrawEndPoint", "markDrawStartPoint", "markWillCrash", "needMarkDrawPoint", "onInitCrash", "onInitEnd", "onInitStart", "setEnableNativeDynamicBackground", "enable", "willCrash", "Companion", "plugin-appbrand-integration_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/widget/desktop/dynamicbackground/DynamicBgServiceImpl;", "Lcom/tencent/mm/dynamicbackground/model/DynamicBgService;", "()V", "getDisplayRealSize", "Landroid/graphics/Point;", "context", "Landroid/content/Context;", "getSleepTimeInMsPerFrame", "", "isEnableNativeDynamicBackground", "", "isInitCrash", "loadDynamicBgLibrary", "", "markDrawEndPoint", "markDrawStartPoint", "markWillCrash", "needMarkDrawPoint", "onInitCrash", "onInitEnd", "onInitStart", "setEnableNativeDynamicBackground", "enable", "willCrash", "Companion", "plugin-appbrand-integration_release"})
 public final class e
   implements com.tencent.mm.dynamicbackground.model.c
 {
-  public static final e.a mZm;
+  public static final e.a neu;
   
   static
   {
     AppMethodBeat.i(51440);
-    mZm = new e.a((byte)0);
+    neu = new e.a((byte)0);
     AppMethodBeat.o(51440);
   }
   
-  public final boolean adI()
+  public final boolean adU()
   {
     AppMethodBeat.i(51430);
-    boolean bool = b.adI();
+    boolean bool = b.adU();
     AppMethodBeat.o(51430);
     return bool;
   }
   
-  public final void adJ()
+  public final void adV()
   {
     AppMethodBeat.i(51438);
-    b.ib(false);
+    b.hZ(false);
     AppMethodBeat.o(51438);
   }
   
-  public final void adK()
+  public final void adW()
   {
     AppMethodBeat.i(51429);
-    ad.i("MicroMsg.DynamicBgServiceImpl", "alvinluo loadDynamicBgLibrary");
-    if (b.adI()) {
-      c.bDp();
+    ae.i("MicroMsg.DynamicBgServiceImpl", "alvinluo loadDynamicBgLibrary");
+    if (b.adU()) {
+      c.bEh();
     }
     try
     {
@@ -52,85 +52,85 @@ public final class e
     }
     catch (Throwable localThrowable)
     {
-      ad.printErrStackTrace("MicroMsg.DynamicBgServiceImpl", localThrowable, "alvinluo DynamicBackgroundNative exception", new Object[0]);
-      c.bDo();
+      ae.printErrStackTrace("MicroMsg.DynamicBgServiceImpl", localThrowable, "alvinluo DynamicBackgroundNative exception", new Object[0]);
+      c.bEg();
       AppMethodBeat.o(51429);
     }
   }
   
-  public final boolean adL()
+  public final boolean adX()
   {
     AppMethodBeat.i(51439);
-    boolean bool = c.bDr();
+    boolean bool = c.bEj();
     AppMethodBeat.o(51439);
     return bool;
   }
   
-  public final void adM()
+  public final void adY()
   {
     AppMethodBeat.i(51434);
-    c.adM();
+    c.adY();
     AppMethodBeat.o(51434);
   }
   
-  public final void adN()
+  public final void adZ()
   {
     AppMethodBeat.i(51436);
-    c.bDo();
+    c.bEg();
     AppMethodBeat.o(51436);
   }
   
-  public final void adO()
+  public final void aea()
   {
     AppMethodBeat.i(51437);
-    c.bDq();
+    c.bEi();
     AppMethodBeat.o(51437);
   }
   
-  public final boolean adP()
+  public final boolean aeb()
   {
     AppMethodBeat.i(51431);
-    boolean bool = c.adP();
+    boolean bool = c.aeb();
     AppMethodBeat.o(51431);
     return bool;
   }
   
-  public final boolean adQ()
+  public final boolean aec()
   {
     AppMethodBeat.i(51435);
-    boolean bool = c.adQ();
+    boolean bool = c.aec();
     AppMethodBeat.o(51435);
     return bool;
   }
   
-  public final void adR()
+  public final void aed()
   {
     AppMethodBeat.i(51433);
-    c.adR();
+    c.aed();
     AppMethodBeat.o(51433);
   }
   
-  public final void adS()
+  public final void aee()
   {
     AppMethodBeat.i(51432);
-    c.adS();
+    c.aee();
     AppMethodBeat.o(51432);
   }
   
-  public final float adT()
+  public final float aef()
   {
     AppMethodBeat.i(51428);
-    a locala = a.mZg;
-    float f = a.bDj();
+    a locala = a.nen;
+    float f = a.bEb();
     AppMethodBeat.o(51428);
     return f;
   }
   
-  public final Point ci(Context paramContext)
+  public final Point ck(Context paramContext)
   {
     AppMethodBeat.i(51427);
     p.h(paramContext, "context");
-    paramContext = al.ci(paramContext);
+    paramContext = al.ck(paramContext);
     p.g(paramContext, "UIUtils.getDisplayRealSize(context)");
     AppMethodBeat.o(51427);
     return paramContext;

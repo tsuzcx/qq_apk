@@ -1,28 +1,30 @@
 package com.tencent.mm.bb;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.messenger.foundation.a.a.k.b;
-import com.tencent.mm.protocal.protobuf.drm;
+import com.tencent.mm.g.a.ct;
+import com.tencent.mm.g.a.xp;
+import com.tencent.mm.sdk.b.c;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
-@Deprecated
 public final class n
-  extends k.b
 {
-  private drm iiz;
+  Map<Integer, Object<?>> imk;
+  public c iml;
+  public c imm;
   
-  public n(int paramInt)
+  public n()
   {
-    super(30);
-    AppMethodBeat.i(20568);
-    this.iiz = new drm();
-    this.iiz.OpCode = paramInt;
-    this.vKm = this.iiz;
-    AppMethodBeat.o(20568);
+    AppMethodBeat.i(150833);
+    this.imk = new ConcurrentHashMap();
+    this.iml = new c() {};
+    this.imm = new c() {};
+    AppMethodBeat.o(150833);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.bb.n
  * JD-Core Version:    0.7.0.1
  */

@@ -14,9 +14,9 @@ public final class a
   protected final void send()
   {
     AppMethodBeat.i(30124);
-    com.tencent.mm.plugin.wear.model.a.eKz();
+    com.tencent.mm.plugin.wear.model.a.eOh();
     r.a(20009, null, false);
-    com.tencent.mm.plugin.wear.model.a.eKz();
+    com.tencent.mm.plugin.wear.model.a.eOh();
     r.a(20017, null, false);
     AppMethodBeat.o(30124);
   }

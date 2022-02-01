@@ -5,421 +5,421 @@ import com.tencent.thumbplayer.b.j;
 
 public final class g
 {
-  private j LWX;
+  private j MtS;
   
   public g(j paramj)
   {
-    this.LWX = paramj;
+    this.MtS = paramj;
   }
   
   private static boolean a(j paramj)
   {
-    AppMethodBeat.i(191635);
-    if ((paramj.ahi(2)) || (paramj.ahi(8)))
+    AppMethodBeat.i(194313);
+    if ((paramj.ahR(2)) || (paramj.ahR(8)))
     {
-      AppMethodBeat.o(191635);
+      AppMethodBeat.o(194313);
       return true;
     }
-    AppMethodBeat.o(191635);
+    AppMethodBeat.o(194313);
     return false;
   }
   
   private static boolean b(j paramj)
   {
-    AppMethodBeat.i(191636);
-    if ((paramj.ahi(1)) || (paramj.ahi(2)) || (paramj.ahi(3)) || (paramj.ahi(4)) || (paramj.ahi(5)) || (paramj.ahi(6)) || (paramj.ahi(7)) || (paramj.ahi(8)))
+    AppMethodBeat.i(194314);
+    if ((paramj.ahR(1)) || (paramj.ahR(2)) || (paramj.ahR(3)) || (paramj.ahR(4)) || (paramj.ahR(5)) || (paramj.ahR(6)) || (paramj.ahR(7)) || (paramj.ahR(8)))
     {
-      AppMethodBeat.o(191636);
+      AppMethodBeat.o(194314);
       return true;
     }
-    AppMethodBeat.o(191636);
+    AppMethodBeat.o(194314);
     return false;
   }
   
   private static boolean c(j paramj)
   {
-    AppMethodBeat.i(191637);
-    if ((paramj.ahi(4)) || (paramj.ahi(5)) || (paramj.ahi(6)) || (paramj.ahi(7)))
+    AppMethodBeat.i(194315);
+    if ((paramj.ahR(4)) || (paramj.ahR(5)) || (paramj.ahR(6)) || (paramj.ahR(7)))
     {
-      AppMethodBeat.o(191637);
+      AppMethodBeat.o(194315);
       return true;
     }
-    AppMethodBeat.o(191637);
+    AppMethodBeat.o(194315);
     return false;
   }
   
   private static boolean d(j paramj)
   {
-    AppMethodBeat.i(191638);
-    if ((paramj.ahi(5)) || (paramj.ahi(6)) || (paramj.ahi(7)))
+    AppMethodBeat.i(194316);
+    if ((paramj.ahR(5)) || (paramj.ahR(6)) || (paramj.ahR(7)))
     {
-      AppMethodBeat.o(191638);
+      AppMethodBeat.o(194316);
       return true;
     }
-    AppMethodBeat.o(191638);
+    AppMethodBeat.o(194316);
     return false;
   }
   
   private static boolean e(j paramj)
   {
-    AppMethodBeat.i(191639);
-    if ((paramj.ahi(3)) || (paramj.ahi(4)) || (paramj.ahi(5)) || (paramj.ahi(8)) || (paramj.ahi(6)) || (paramj.ahi(7)))
+    AppMethodBeat.i(194317);
+    if ((paramj.ahR(3)) || (paramj.ahR(4)) || (paramj.ahR(5)) || (paramj.ahR(8)) || (paramj.ahR(6)) || (paramj.ahR(7)))
     {
-      AppMethodBeat.o(191639);
+      AppMethodBeat.o(194317);
       return true;
     }
-    AppMethodBeat.o(191639);
+    AppMethodBeat.o(194317);
     return false;
   }
   
   private static boolean f(j paramj)
   {
-    AppMethodBeat.i(191640);
-    if ((paramj.ahi(1)) || (paramj.ahi(2)) || (paramj.ahi(3)) || (paramj.ahi(4)) || (paramj.ahi(5)) || (paramj.ahi(6)) || (paramj.ahi(8)) || (paramj.ahi(7)) || (paramj.ahi(9)))
+    AppMethodBeat.i(194318);
+    if ((paramj.ahR(1)) || (paramj.ahR(2)) || (paramj.ahR(3)) || (paramj.ahR(4)) || (paramj.ahR(5)) || (paramj.ahR(6)) || (paramj.ahR(8)) || (paramj.ahR(7)) || (paramj.ahR(9)))
     {
-      AppMethodBeat.o(191640);
+      AppMethodBeat.o(194318);
       return true;
     }
-    AppMethodBeat.o(191640);
+    AppMethodBeat.o(194318);
     return false;
   }
   
   private static boolean g(j paramj)
   {
-    AppMethodBeat.i(191641);
-    if ((paramj.ahi(4)) || (paramj.ahi(5)) || (paramj.ahi(6)) || (paramj.ahi(7)))
+    AppMethodBeat.i(194319);
+    if ((paramj.ahR(4)) || (paramj.ahR(5)) || (paramj.ahR(6)) || (paramj.ahR(7)))
     {
-      AppMethodBeat.o(191641);
+      AppMethodBeat.o(194319);
       return true;
     }
-    AppMethodBeat.o(191641);
+    AppMethodBeat.o(194319);
     return false;
   }
   
   private static boolean h(j paramj)
   {
-    AppMethodBeat.i(191642);
-    if ((paramj.ahi(4)) || (paramj.ahi(5)) || (paramj.ahi(6)) || (paramj.ahi(8)) || (paramj.ahi(7)))
+    AppMethodBeat.i(194320);
+    if ((paramj.ahR(4)) || (paramj.ahR(5)) || (paramj.ahR(6)) || (paramj.ahR(8)) || (paramj.ahR(7)))
     {
-      AppMethodBeat.o(191642);
+      AppMethodBeat.o(194320);
       return true;
     }
-    AppMethodBeat.o(191642);
+    AppMethodBeat.o(194320);
     return false;
   }
   
   private static boolean i(j paramj)
   {
-    AppMethodBeat.i(191643);
-    if ((paramj.ahi(1)) || (paramj.ahi(2)) || (paramj.ahi(3)) || (paramj.ahi(4)) || (paramj.ahi(5)) || (paramj.ahi(6)) || (paramj.ahi(8)) || (paramj.ahi(7)))
+    AppMethodBeat.i(194321);
+    if ((paramj.ahR(1)) || (paramj.ahR(2)) || (paramj.ahR(3)) || (paramj.ahR(4)) || (paramj.ahR(5)) || (paramj.ahR(6)) || (paramj.ahR(8)) || (paramj.ahR(7)))
     {
-      AppMethodBeat.o(191643);
+      AppMethodBeat.o(194321);
       return true;
     }
-    AppMethodBeat.o(191643);
+    AppMethodBeat.o(194321);
     return false;
   }
   
   private static boolean j(j paramj)
   {
-    AppMethodBeat.i(191644);
-    if ((paramj.ahi(1)) || (paramj.ahi(2)) || (paramj.ahi(3)) || (paramj.ahi(4)) || (paramj.ahi(5)) || (paramj.ahi(6)) || (paramj.ahi(8)) || (paramj.ahi(7)))
+    AppMethodBeat.i(194322);
+    if ((paramj.ahR(1)) || (paramj.ahR(2)) || (paramj.ahR(3)) || (paramj.ahR(4)) || (paramj.ahR(5)) || (paramj.ahR(6)) || (paramj.ahR(8)) || (paramj.ahR(7)))
     {
-      AppMethodBeat.o(191644);
+      AppMethodBeat.o(194322);
       return true;
     }
-    AppMethodBeat.o(191644);
+    AppMethodBeat.o(194322);
     return false;
   }
   
   private static boolean k(j paramj)
   {
-    AppMethodBeat.i(191645);
-    if ((paramj.ahi(1)) || (paramj.ahi(2)) || (paramj.ahi(3)) || (paramj.ahi(4)) || (paramj.ahi(5)) || (paramj.ahi(6)) || (paramj.ahi(8)) || (paramj.ahi(7)))
+    AppMethodBeat.i(194323);
+    if ((paramj.ahR(1)) || (paramj.ahR(2)) || (paramj.ahR(3)) || (paramj.ahR(4)) || (paramj.ahR(5)) || (paramj.ahR(6)) || (paramj.ahR(8)) || (paramj.ahR(7)))
     {
-      AppMethodBeat.o(191645);
+      AppMethodBeat.o(194323);
       return true;
     }
-    AppMethodBeat.o(191645);
+    AppMethodBeat.o(194323);
     return false;
   }
   
   private static boolean l(j paramj)
   {
-    AppMethodBeat.i(191646);
-    if ((paramj.ahi(4)) || (paramj.ahi(5)) || (paramj.ahi(6)) || (paramj.ahi(8)) || (paramj.ahi(7)))
+    AppMethodBeat.i(194324);
+    if ((paramj.ahR(4)) || (paramj.ahR(5)) || (paramj.ahR(6)) || (paramj.ahR(8)) || (paramj.ahR(7)))
     {
-      AppMethodBeat.o(191646);
+      AppMethodBeat.o(194324);
       return true;
     }
-    AppMethodBeat.o(191646);
+    AppMethodBeat.o(194324);
     return false;
   }
   
   private static boolean m(j paramj)
   {
-    AppMethodBeat.i(191647);
-    if ((paramj.ahi(1)) || (paramj.ahi(2)) || (paramj.ahi(3)) || (paramj.ahi(4)) || (paramj.ahi(5)) || (paramj.ahi(6)) || (paramj.ahi(8)) || (paramj.ahi(7)) || (paramj.ahi(9)))
+    AppMethodBeat.i(194325);
+    if ((paramj.ahR(1)) || (paramj.ahR(2)) || (paramj.ahR(3)) || (paramj.ahR(4)) || (paramj.ahR(5)) || (paramj.ahR(6)) || (paramj.ahR(8)) || (paramj.ahR(7)) || (paramj.ahR(9)))
     {
-      AppMethodBeat.o(191647);
+      AppMethodBeat.o(194325);
       return true;
     }
-    AppMethodBeat.o(191647);
+    AppMethodBeat.o(194325);
     return false;
   }
   
   private static boolean n(j paramj)
   {
-    AppMethodBeat.i(191648);
-    if ((paramj.ahi(4)) || (paramj.ahi(5)) || (paramj.ahi(6)))
+    AppMethodBeat.i(194326);
+    if ((paramj.ahR(4)) || (paramj.ahR(5)) || (paramj.ahR(6)))
     {
-      AppMethodBeat.o(191648);
+      AppMethodBeat.o(194326);
       return true;
     }
-    AppMethodBeat.o(191648);
+    AppMethodBeat.o(194326);
     return false;
   }
   
   private static boolean o(j paramj)
   {
-    AppMethodBeat.i(191649);
-    if ((paramj.ahi(3)) || (paramj.ahi(4)) || (paramj.ahi(5)) || (paramj.ahi(6)))
+    AppMethodBeat.i(194327);
+    if ((paramj.ahR(3)) || (paramj.ahR(4)) || (paramj.ahR(5)) || (paramj.ahR(6)))
     {
-      AppMethodBeat.o(191649);
+      AppMethodBeat.o(194327);
       return true;
     }
-    AppMethodBeat.o(191649);
+    AppMethodBeat.o(194327);
     return false;
   }
   
   private static boolean p(j paramj)
   {
-    AppMethodBeat.i(191650);
-    if ((paramj.ahi(2)) || (paramj.ahi(3)) || (paramj.ahi(4)) || (paramj.ahi(5)) || (paramj.ahi(6)))
+    AppMethodBeat.i(194328);
+    if ((paramj.ahR(2)) || (paramj.ahR(3)) || (paramj.ahR(4)) || (paramj.ahR(5)) || (paramj.ahR(6)))
     {
-      AppMethodBeat.o(191650);
+      AppMethodBeat.o(194328);
       return true;
     }
-    AppMethodBeat.o(191650);
+    AppMethodBeat.o(194328);
     return false;
   }
   
   private static boolean q(j paramj)
   {
-    AppMethodBeat.i(191651);
-    if ((paramj.ahi(4)) || (paramj.ahi(5)) || (paramj.ahi(6)))
+    AppMethodBeat.i(194329);
+    if ((paramj.ahR(4)) || (paramj.ahR(5)) || (paramj.ahR(6)))
     {
-      AppMethodBeat.o(191651);
+      AppMethodBeat.o(194329);
       return true;
     }
-    AppMethodBeat.o(191651);
+    AppMethodBeat.o(194329);
     return false;
   }
   
   private static boolean r(j paramj)
   {
-    AppMethodBeat.i(191652);
-    if ((paramj.ahi(3)) || (paramj.ahi(4)) || (paramj.ahi(5)) || (paramj.ahi(6)))
+    AppMethodBeat.i(194330);
+    if ((paramj.ahR(3)) || (paramj.ahR(4)) || (paramj.ahR(5)) || (paramj.ahR(6)))
     {
-      AppMethodBeat.o(191652);
+      AppMethodBeat.o(194330);
       return true;
     }
-    AppMethodBeat.o(191652);
+    AppMethodBeat.o(194330);
     return false;
   }
   
   private static boolean s(j paramj)
   {
-    AppMethodBeat.i(191653);
-    if ((paramj.ahi(5)) || (paramj.ahi(6)))
+    AppMethodBeat.i(194331);
+    if ((paramj.ahR(5)) || (paramj.ahR(6)))
     {
-      AppMethodBeat.o(191653);
+      AppMethodBeat.o(194331);
       return true;
     }
-    AppMethodBeat.o(191653);
+    AppMethodBeat.o(194331);
     return false;
   }
   
   private static boolean t(j paramj)
   {
-    AppMethodBeat.i(191654);
-    if ((paramj.ahi(4)) || (paramj.ahi(5)) || (paramj.ahi(6)) || (paramj.ahi(7)))
+    AppMethodBeat.i(194332);
+    if ((paramj.ahR(4)) || (paramj.ahR(5)) || (paramj.ahR(6)) || (paramj.ahR(7)))
     {
-      AppMethodBeat.o(191654);
+      AppMethodBeat.o(194332);
       return true;
     }
-    AppMethodBeat.o(191654);
+    AppMethodBeat.o(194332);
     return false;
   }
   
   private static boolean u(j paramj)
   {
-    AppMethodBeat.i(191655);
-    if ((paramj.ahi(4)) || (paramj.ahi(5)) || (paramj.ahi(8)) || (paramj.ahi(6)) || (paramj.ahi(7)))
+    AppMethodBeat.i(194333);
+    if ((paramj.ahR(4)) || (paramj.ahR(5)) || (paramj.ahR(8)) || (paramj.ahR(6)) || (paramj.ahR(7)))
     {
-      AppMethodBeat.o(191655);
+      AppMethodBeat.o(194333);
       return true;
     }
-    AppMethodBeat.o(191655);
+    AppMethodBeat.o(194333);
     return false;
   }
   
-  public final boolean agX(int paramInt)
+  public final boolean ahG(int paramInt)
   {
-    AppMethodBeat.i(191633);
+    AppMethodBeat.i(194311);
     boolean bool;
     if (paramInt == 1)
     {
-      bool = a(this.LWX);
-      AppMethodBeat.o(191633);
+      bool = a(this.MtS);
+      AppMethodBeat.o(194311);
       return bool;
     }
     if (paramInt == 2)
     {
-      bool = this.LWX.ahi(1);
-      AppMethodBeat.o(191633);
+      bool = this.MtS.ahR(1);
+      AppMethodBeat.o(194311);
       return bool;
     }
     if (paramInt == 3)
     {
-      bool = b(this.LWX);
-      AppMethodBeat.o(191633);
+      bool = b(this.MtS);
+      AppMethodBeat.o(194311);
       return bool;
     }
     if (paramInt == 4)
     {
-      AppMethodBeat.o(191633);
+      AppMethodBeat.o(194311);
       return true;
     }
     if (paramInt == 5)
     {
-      bool = c(this.LWX);
-      AppMethodBeat.o(191633);
+      bool = c(this.MtS);
+      AppMethodBeat.o(194311);
       return bool;
     }
     if (paramInt == 6)
     {
-      bool = d(this.LWX);
-      AppMethodBeat.o(191633);
+      bool = d(this.MtS);
+      AppMethodBeat.o(194311);
       return bool;
     }
     if (paramInt == 7)
     {
-      bool = e(this.LWX);
-      AppMethodBeat.o(191633);
+      bool = e(this.MtS);
+      AppMethodBeat.o(194311);
       return bool;
     }
     if (paramInt == 8)
     {
-      bool = f(this.LWX);
-      AppMethodBeat.o(191633);
+      bool = f(this.MtS);
+      AppMethodBeat.o(194311);
       return bool;
     }
     if (paramInt == 9)
     {
-      bool = g(this.LWX);
-      AppMethodBeat.o(191633);
+      bool = g(this.MtS);
+      AppMethodBeat.o(194311);
       return bool;
     }
     if (paramInt == 11)
     {
-      bool = h(this.LWX);
-      AppMethodBeat.o(191633);
+      bool = h(this.MtS);
+      AppMethodBeat.o(194311);
       return bool;
     }
     if (paramInt == 12)
     {
-      bool = i(this.LWX);
-      AppMethodBeat.o(191633);
+      bool = i(this.MtS);
+      AppMethodBeat.o(194311);
       return bool;
     }
     if (paramInt == 13)
     {
-      bool = j(this.LWX);
-      AppMethodBeat.o(191633);
+      bool = j(this.MtS);
+      AppMethodBeat.o(194311);
       return bool;
     }
     if (paramInt == 14)
     {
-      bool = k(this.LWX);
-      AppMethodBeat.o(191633);
+      bool = k(this.MtS);
+      AppMethodBeat.o(194311);
       return bool;
     }
     if (paramInt == 15)
     {
-      bool = l(this.LWX);
-      AppMethodBeat.o(191633);
+      bool = l(this.MtS);
+      AppMethodBeat.o(194311);
       return bool;
     }
     if (paramInt == 16)
     {
-      bool = m(this.LWX);
-      AppMethodBeat.o(191633);
+      bool = m(this.MtS);
+      AppMethodBeat.o(194311);
       return bool;
     }
     if (paramInt == 17)
     {
-      bool = t(this.LWX);
-      AppMethodBeat.o(191633);
+      bool = t(this.MtS);
+      AppMethodBeat.o(194311);
       return bool;
     }
     if (paramInt == 18)
     {
-      bool = u(this.LWX);
-      AppMethodBeat.o(191633);
+      bool = u(this.MtS);
+      AppMethodBeat.o(194311);
       return bool;
     }
-    AppMethodBeat.o(191633);
+    AppMethodBeat.o(194311);
     return false;
   }
   
-  public final boolean agY(int paramInt)
+  public final boolean ahH(int paramInt)
   {
-    AppMethodBeat.i(191634);
+    AppMethodBeat.i(194312);
     boolean bool;
     if (paramInt == 1)
     {
-      bool = this.LWX.ahi(3);
-      AppMethodBeat.o(191634);
+      bool = this.MtS.ahR(3);
+      AppMethodBeat.o(194312);
       return bool;
     }
     if (paramInt == 2)
     {
-      bool = n(this.LWX);
-      AppMethodBeat.o(191634);
+      bool = n(this.MtS);
+      AppMethodBeat.o(194312);
       return bool;
     }
     if (paramInt == 3)
     {
-      bool = o(this.LWX);
-      AppMethodBeat.o(191634);
+      bool = o(this.MtS);
+      AppMethodBeat.o(194312);
       return bool;
     }
     if (paramInt == 4)
     {
-      bool = p(this.LWX);
-      AppMethodBeat.o(191634);
+      bool = p(this.MtS);
+      AppMethodBeat.o(194312);
       return bool;
     }
     if (paramInt == 5)
     {
-      bool = q(this.LWX);
-      AppMethodBeat.o(191634);
+      bool = q(this.MtS);
+      AppMethodBeat.o(194312);
       return bool;
     }
     if (paramInt == 6)
     {
-      bool = r(this.LWX);
-      AppMethodBeat.o(191634);
+      bool = r(this.MtS);
+      AppMethodBeat.o(194312);
       return bool;
     }
     if (paramInt == 7)
     {
-      bool = s(this.LWX);
-      AppMethodBeat.o(191634);
+      bool = s(this.MtS);
+      AppMethodBeat.o(194312);
       return bool;
     }
-    AppMethodBeat.o(191634);
+    AppMethodBeat.o(194312);
     return false;
   }
 }

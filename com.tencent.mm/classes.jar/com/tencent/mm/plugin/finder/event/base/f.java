@@ -13,57 +13,57 @@ import android.view.View;
 import android.view.ViewConfiguration;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.aq;
 import com.tencent.mm.view.recyclerview.WxRecyclerAdapter;
 import d.g.b.k;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/event/base/FinderFeedFlowEventSubscriber;", "Lcom/tencent/mm/plugin/finder/event/base/EventSubscriber;", "Landroid/support/v7/widget/RecyclerView$OnScrollListener;", "eventDispatcher", "Lcom/tencent/mm/plugin/finder/event/base/EventDispatcher;", "(Lcom/tencent/mm/plugin/finder/event/base/EventDispatcher;)V", "PostDelayTime", "", "getPostDelayTime", "()J", "TAG", "", "adapterDataObserver", "Landroid/support/v7/widget/RecyclerView$AdapterDataObserver;", "getAdapterDataObserver", "()Landroid/support/v7/widget/RecyclerView$AdapterDataObserver;", "config", "Landroid/view/ViewConfiguration;", "kotlin.jvm.PlatformType", "getConfig", "()Landroid/view/ViewConfiguration;", "currentStats", "", "getCurrentStats", "()I", "setCurrentStats", "(I)V", "dataChangeHandler", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "getDataChangeHandler", "()Lcom/tencent/mm/sdk/platformtools/MMHandler;", "globalVisibleRect", "Landroid/graphics/Rect;", "getGlobalVisibleRect", "()Landroid/graphics/Rect;", "setGlobalVisibleRect", "(Landroid/graphics/Rect;)V", "isOpenTPPlayerScroll", "", "()Z", "last5Index", "getLast5Index", "setLast5Index", "last5Offset", "", "getLast5Offset", "()[I", "setLast5Offset", "([I)V", "lastFirstVisibleItemPosition", "getLastFirstVisibleItemPosition", "setLastFirstVisibleItemPosition", "lastLastVisibleItemPosition", "getLastLastVisibleItemPosition", "setLastLastVisibleItemPosition", "lastState", "getLastState", "setLastState", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "scaledTouchSlop", "getScaledTouchSlop", "sessionScrollOffset", "getSessionScrollOffset", "setSessionScrollOffset", "sumOffset", "getSumOffset", "setSumOffset", "visible", "calculateVariance", "", "array", "average", "createEvent", "Lcom/tencent/mm/plugin/finder/event/base/Event;", "newState", "getBehavior", "handleEvent", "onBindRecyclerView", "", "onInvisible", "onVisible", "publish", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/event/base/FinderFeedFlowEventSubscriber;", "Lcom/tencent/mm/plugin/finder/event/base/EventSubscriber;", "Landroid/support/v7/widget/RecyclerView$OnScrollListener;", "eventDispatcher", "Lcom/tencent/mm/plugin/finder/event/base/EventDispatcher;", "(Lcom/tencent/mm/plugin/finder/event/base/EventDispatcher;)V", "PostDelayTime", "", "getPostDelayTime", "()J", "TAG", "", "adapterDataObserver", "Landroid/support/v7/widget/RecyclerView$AdapterDataObserver;", "getAdapterDataObserver", "()Landroid/support/v7/widget/RecyclerView$AdapterDataObserver;", "config", "Landroid/view/ViewConfiguration;", "kotlin.jvm.PlatformType", "getConfig", "()Landroid/view/ViewConfiguration;", "currentStats", "", "getCurrentStats", "()I", "setCurrentStats", "(I)V", "dataChangeHandler", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "getDataChangeHandler", "()Lcom/tencent/mm/sdk/platformtools/MMHandler;", "globalVisibleRect", "Landroid/graphics/Rect;", "getGlobalVisibleRect", "()Landroid/graphics/Rect;", "setGlobalVisibleRect", "(Landroid/graphics/Rect;)V", "isOpenTPPlayerScroll", "", "()Z", "last5Index", "getLast5Index", "setLast5Index", "last5Offset", "", "getLast5Offset", "()[I", "setLast5Offset", "([I)V", "lastFirstVisibleItemPosition", "getLastFirstVisibleItemPosition", "setLastFirstVisibleItemPosition", "lastLastVisibleItemPosition", "getLastLastVisibleItemPosition", "setLastLastVisibleItemPosition", "lastState", "getLastState", "setLastState", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "scaledTouchSlop", "getScaledTouchSlop", "sessionScrollOffset", "getSessionScrollOffset", "setSessionScrollOffset", "sumOffset", "getSumOffset", "setSumOffset", "visible", "calculateVariance", "", "array", "average", "createEvent", "Lcom/tencent/mm/plugin/finder/event/base/Event;", "newState", "getBehavior", "handleEvent", "onBindRecyclerView", "", "onInvisible", "onVisible", "publish", "plugin-finder_release"})
 public abstract class f
   extends e<RecyclerView.m>
 {
   final String TAG = "Finder.FinderFeedFlowEventSubscriber";
-  RecyclerView gmV;
-  public int obN = 2147483647;
-  protected int obO = 2147483647;
-  private final ViewConfiguration rQK = ViewConfiguration.get(aj.getContext());
-  protected Rect rQL;
-  final int rQM;
-  final boolean rQN;
-  int rQO;
-  int rQP;
-  int rQQ;
-  int rQR;
-  int[] rQS;
-  final long rQT;
-  public final RecyclerView.c rQU;
-  final ap rQV;
+  RecyclerView gpr;
+  public int ohB = 2147483647;
+  protected int ohC = 2147483647;
+  private final ViewConfiguration rZm = ViewConfiguration.get(ak.getContext());
+  protected Rect rZn;
+  final int rZo;
+  final boolean rZp;
+  int rZq;
+  int rZr;
+  int rZs;
+  int rZt;
+  int[] rZu;
+  final long rZv;
+  public final RecyclerView.c rZw;
+  final aq rZx;
   private boolean visible;
   
   public f(c paramc)
   {
     super(paramc);
-    paramc = this.rQK;
+    paramc = this.rZm;
     p.g(paramc, "config");
-    this.rQM = paramc.getScaledTouchSlop();
+    this.rZo = paramc.getScaledTouchSlop();
     paramc = g.ad(com.tencent.mm.plugin.thumbplayer.a.a.class);
     p.g(paramc, "MMKernel.plugin(IPluginThumbPlayer::class.java)");
-    this.rQN = ((com.tencent.mm.plugin.thumbplayer.a.a)paramc).isOpenTPPlayerScroll();
-    this.rQS = new int[5];
-    this.rQT = 500L;
-    this.rQU = ((RecyclerView.c)new a(this));
-    this.rQV = ((ap)new b(this, Looper.getMainLooper()));
+    this.rZp = ((com.tencent.mm.plugin.thumbplayer.a.a)paramc).isOpenTPPlayerScroll();
+    this.rZu = new int[5];
+    this.rZv = 500L;
+    this.rZw = ((RecyclerView.c)new a(this));
+    this.rZx = ((aq)new b(this, Looper.getMainLooper()));
   }
   
-  public b Em(int paramInt)
+  public b Ez(int paramInt)
   {
     return new b();
   }
   
-  public final RecyclerView.m czz()
+  public final RecyclerView.m cBd()
   {
     return (RecyclerView.m)new c(this);
   }
@@ -77,23 +77,23 @@ public abstract class f
   public b h(RecyclerView paramRecyclerView, int paramInt)
   {
     p.h(paramRecyclerView, "recyclerView");
-    return Em(paramInt);
+    return Ez(paramInt);
   }
   
   public void onInvisible()
   {
     this.visible = false;
-    this.rQV.removeMessages(0);
-    ad.i(this.TAG, "onInvisible " + this.obN + ' ' + this.obO);
+    this.rZx.removeMessages(0);
+    ae.i(this.TAG, "onInvisible " + this.ohB + ' ' + this.ohC);
   }
   
   public final void onVisible()
   {
-    ad.i(this.TAG, "onVisible " + this.obN + ' ' + this.obO);
+    ae.i(this.TAG, "onVisible " + this.ohB + ' ' + this.ohC);
     this.visible = true;
-    this.obN = 2147483647;
-    this.obO = 2147483647;
-    RecyclerView localRecyclerView = this.gmV;
+    this.ohB = 2147483647;
+    this.ohC = 2147483647;
+    RecyclerView localRecyclerView = this.gpr;
     if (localRecyclerView != null) {
       g(localRecyclerView, 7);
     }
@@ -102,68 +102,68 @@ public abstract class f
   public final void s(final RecyclerView paramRecyclerView)
   {
     p.h(paramRecyclerView, "recyclerView");
-    this.gmV = paramRecyclerView;
-    paramRecyclerView.a(czz());
+    this.gpr = paramRecyclerView;
+    paramRecyclerView.a(cBd());
     paramRecyclerView.a((RecyclerView.j)new d(this, paramRecyclerView));
     paramRecyclerView = paramRecyclerView.getAdapter();
     if ((paramRecyclerView != null) && ((paramRecyclerView instanceof WxRecyclerAdapter))) {
-      paramRecyclerView.a(this.rQU);
+      paramRecyclerView.a(this.rZw);
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/finder/event/base/FinderFeedFlowEventSubscriber$adapterDataObserver$1", "Landroid/support/v7/widget/RecyclerView$AdapterDataObserver;", "onChanged", "", "onItemRangeChanged", "positionStart", "", "itemCount", "onItemRangeInserted", "onItemRangeMoved", "fromPosition", "toPosition", "onItemRangeRemoved", "plugin-finder_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/finder/event/base/FinderFeedFlowEventSubscriber$adapterDataObserver$1", "Landroid/support/v7/widget/RecyclerView$AdapterDataObserver;", "onChanged", "", "onItemRangeChanged", "positionStart", "", "itemCount", "onItemRangeInserted", "onItemRangeMoved", "fromPosition", "toPosition", "onItemRangeRemoved", "plugin-finder_release"})
   public static final class a
     extends RecyclerView.c
   {
     public final void at(int paramInt1, int paramInt2)
     {
-      AppMethodBeat.i(201551);
-      ad.d(this.rQW.TAG, "onItemRangeChanged " + paramInt1 + ' ' + paramInt2);
-      this.rQW.rQV.removeMessages(0);
-      this.rQW.rQV.sendEmptyMessageDelayed(1, this.rQW.rQT);
-      AppMethodBeat.o(201551);
+      AppMethodBeat.i(201998);
+      ae.d(this.rZy.TAG, "onItemRangeChanged " + paramInt1 + ' ' + paramInt2);
+      this.rZy.rZx.removeMessages(0);
+      this.rZy.rZx.sendEmptyMessageDelayed(1, this.rZy.rZv);
+      AppMethodBeat.o(201998);
     }
     
     public final void au(int paramInt1, int paramInt2)
     {
-      AppMethodBeat.i(201552);
-      ad.d(this.rQW.TAG, "onItemRangeInserted " + paramInt1 + ' ' + paramInt2);
-      this.rQW.rQV.removeMessages(0);
-      this.rQW.rQV.sendEmptyMessageDelayed(0, this.rQW.rQT);
-      AppMethodBeat.o(201552);
+      AppMethodBeat.i(201999);
+      ae.d(this.rZy.TAG, "onItemRangeInserted " + paramInt1 + ' ' + paramInt2);
+      this.rZy.rZx.removeMessages(0);
+      this.rZy.rZx.sendEmptyMessageDelayed(0, this.rZy.rZv);
+      AppMethodBeat.o(201999);
     }
     
     public final void av(int paramInt1, int paramInt2)
     {
-      AppMethodBeat.i(201554);
-      ad.d(this.rQW.TAG, "onItemRangeRemoved " + paramInt1 + ' ' + paramInt2);
-      this.rQW.rQV.removeMessages(0);
-      this.rQW.rQV.sendEmptyMessageDelayed(0, this.rQW.rQT);
-      AppMethodBeat.o(201554);
+      AppMethodBeat.i(202001);
+      ae.d(this.rZy.TAG, "onItemRangeRemoved " + paramInt1 + ' ' + paramInt2);
+      this.rZy.rZx.removeMessages(0);
+      this.rZy.rZx.sendEmptyMessageDelayed(0, this.rZy.rZv);
+      AppMethodBeat.o(202001);
     }
     
     public final void l(int paramInt1, int paramInt2, int paramInt3)
     {
-      AppMethodBeat.i(201553);
-      ad.d(this.rQW.TAG, "onItemRangeMoved " + paramInt1 + ' ' + paramInt2 + ' ' + paramInt3);
-      this.rQW.rQV.removeMessages(0);
-      this.rQW.rQV.sendEmptyMessageDelayed(0, this.rQW.rQT);
-      AppMethodBeat.o(201553);
+      AppMethodBeat.i(202000);
+      ae.d(this.rZy.TAG, "onItemRangeMoved " + paramInt1 + ' ' + paramInt2 + ' ' + paramInt3);
+      this.rZy.rZx.removeMessages(0);
+      this.rZy.rZx.sendEmptyMessageDelayed(0, this.rZy.rZv);
+      AppMethodBeat.o(202000);
     }
     
     public final void onChanged()
     {
-      AppMethodBeat.i(201555);
-      ad.d(this.rQW.TAG, "onChanged");
-      this.rQW.rQV.removeMessages(0);
-      this.rQW.rQV.sendEmptyMessageDelayed(0, this.rQW.rQT);
-      AppMethodBeat.o(201555);
+      AppMethodBeat.i(202002);
+      ae.d(this.rZy.TAG, "onChanged");
+      this.rZy.rZx.removeMessages(0);
+      this.rZy.rZx.sendEmptyMessageDelayed(0, this.rZy.rZv);
+      AppMethodBeat.o(202002);
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/finder/event/base/FinderFeedFlowEventSubscriber$dataChangeHandler$1", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "handleMessage", "", "msg", "Landroid/os/Message;", "plugin-finder_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/finder/event/base/FinderFeedFlowEventSubscriber$dataChangeHandler$1", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "handleMessage", "", "msg", "Landroid/os/Message;", "plugin-finder_release"})
   public static final class b
-    extends ap
+    extends aq
   {
     b(Looper paramLooper)
     {
@@ -172,7 +172,7 @@ public abstract class f
     
     public final void handleMessage(Message paramMessage)
     {
-      AppMethodBeat.i(201556);
+      AppMethodBeat.i(202003);
       if (paramMessage != null)
       {
         switch (paramMessage.what)
@@ -180,42 +180,42 @@ public abstract class f
         }
         do
         {
-          AppMethodBeat.o(201556);
+          AppMethodBeat.o(202003);
           return;
-          paramMessage = this.rQW.gmV;
+          paramMessage = this.rZy.gpr;
           if (paramMessage != null)
           {
-            this.rQW.g(paramMessage, 5);
-            AppMethodBeat.o(201556);
+            this.rZy.g(paramMessage, 5);
+            AppMethodBeat.o(202003);
             return;
           }
-          AppMethodBeat.o(201556);
+          AppMethodBeat.o(202003);
           return;
-          paramMessage = this.rQW.gmV;
+          paramMessage = this.rZy.gpr;
         } while (paramMessage == null);
-        this.rQW.g(paramMessage, 9);
-        AppMethodBeat.o(201556);
+        this.rZy.g(paramMessage, 9);
+        AppMethodBeat.o(202003);
         return;
       }
-      AppMethodBeat.o(201556);
+      AppMethodBeat.o(202003);
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/finder/event/base/FinderFeedFlowEventSubscriber$getBehavior$1", "Landroid/support/v7/widget/RecyclerView$OnScrollListener;", "onScrollStateChanged", "", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "newState", "", "onScrolled", "dx", "dy", "plugin-finder_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/finder/event/base/FinderFeedFlowEventSubscriber$getBehavior$1", "Landroid/support/v7/widget/RecyclerView$OnScrollListener;", "onScrollStateChanged", "", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "newState", "", "onScrolled", "dx", "dy", "plugin-finder_release"})
   public static final class c
     extends RecyclerView.m
   {
     public final void a(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
     {
-      AppMethodBeat.i(201558);
+      AppMethodBeat.i(202005);
       Object localObject = new com.tencent.mm.hellhoundlib.b.b();
       ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramRecyclerView);
-      ((com.tencent.mm.hellhoundlib.b.b)localObject).mr(paramInt1);
-      ((com.tencent.mm.hellhoundlib.b.b)localObject).mr(paramInt2);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/event/base/FinderFeedFlowEventSubscriber$getBehavior$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroid/support/v7/widget/RecyclerView;II)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahq());
+      ((com.tencent.mm.hellhoundlib.b.b)localObject).mu(paramInt1);
+      ((com.tencent.mm.hellhoundlib.b.b)localObject).mu(paramInt2);
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/event/base/FinderFeedFlowEventSubscriber$getBehavior$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroid/support/v7/widget/RecyclerView;II)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahF());
       p.h(paramRecyclerView, "recyclerView");
       super.a(paramRecyclerView, paramInt1, paramInt2);
-      if (this.rQW.rQN)
+      if (this.rZy.rZp)
       {
         localObject = paramRecyclerView.getLayoutManager();
         if (localObject != null)
@@ -224,33 +224,33 @@ public abstract class f
             break label232;
           }
           paramInt1 = Math.abs(paramInt1);
-          localObject = this.rQW;
-          ((f)localObject).rQQ += paramInt1;
-          this.rQW.rQS[this.rQW.rQR] = paramInt1;
-          this.rQW.rQR = ((this.rQW.rQR + 1) % this.rQW.rQS.length);
-          if (this.rQW.rQO != 1) {
+          localObject = this.rZy;
+          ((f)localObject).rZs += paramInt1;
+          this.rZy.rZu[this.rZy.rZt] = paramInt1;
+          this.rZy.rZt = ((this.rZy.rZt + 1) % this.rZy.rZu.length);
+          if (this.rZy.rZq != 1) {
             break label237;
           }
-          if (this.rQW.rQQ > this.rQW.rQM * 5)
+          if (this.rZy.rZs > this.rZy.rZo * 5)
           {
-            ad.i(this.rQW.TAG, "publish DRAGGING_DISTANCE");
-            this.rQW.g(paramRecyclerView, 3);
-            this.rQW.rQQ = 0;
+            ae.i(this.rZy.TAG, "publish DRAGGING_DISTANCE");
+            this.rZy.g(paramRecyclerView, 3);
+            this.rZy.rZs = 0;
           }
         }
       }
       for (;;)
       {
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/event/base/FinderFeedFlowEventSubscriber$getBehavior$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroid/support/v7/widget/RecyclerView;II)V");
-        AppMethodBeat.o(201558);
+        AppMethodBeat.o(202005);
         return;
         label232:
         paramInt1 = paramInt2;
         break;
         label237:
-        if (this.rQW.rQO == 2)
+        if (this.rZy.rZq == 2)
         {
-          localObject = this.rQW.rQS;
+          localObject = this.rZy.rZu;
           p.h(localObject, "$this$average");
           double d1 = 0.0D;
           paramInt2 = 0;
@@ -263,12 +263,12 @@ public abstract class f
             paramInt1 += 1;
           }
           if (paramInt2 == 0) {
-            localObject = k.MLL;
+            localObject = k.NiO;
           }
           double d2;
-          for (d1 = k.gfX();; d1 /= paramInt2)
+          for (d1 = k.gkz();; d1 /= paramInt2)
           {
-            localObject = this.rQW.rQS;
+            localObject = this.rZy.rZu;
             d2 = 0.0D;
             paramInt2 = localObject.length;
             paramInt1 = 0;
@@ -279,11 +279,11 @@ public abstract class f
             }
           }
           d2 /= localObject.length;
-          if ((d1 < 50.0D) && (d2 < 50.0D) && (this.rQW.rQQ > this.rQW.rQM * 5))
+          if ((d1 < 50.0D) && (d2 < 50.0D) && (this.rZy.rZs > this.rZy.rZo * 5))
           {
-            ad.i(this.rQW.TAG, "publish LOW_SPEED_FLING");
-            this.rQW.g(paramRecyclerView, 8);
-            this.rQW.rQQ = 0;
+            ae.i(this.rZy.TAG, "publish LOW_SPEED_FLING");
+            this.rZy.g(paramRecyclerView, 8);
+            this.rZy.rZs = 0;
           }
         }
       }
@@ -291,40 +291,40 @@ public abstract class f
     
     public final void b(RecyclerView paramRecyclerView, int paramInt)
     {
-      AppMethodBeat.i(201557);
+      AppMethodBeat.i(202004);
       Object localObject = new com.tencent.mm.hellhoundlib.b.b();
       ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramRecyclerView);
-      ((com.tencent.mm.hellhoundlib.b.b)localObject).mr(paramInt);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/event/base/FinderFeedFlowEventSubscriber$getBehavior$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroid/support/v7/widget/RecyclerView;I)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahq());
+      ((com.tencent.mm.hellhoundlib.b.b)localObject).mu(paramInt);
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/event/base/FinderFeedFlowEventSubscriber$getBehavior$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroid/support/v7/widget/RecyclerView;I)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahF());
       p.h(paramRecyclerView, "recyclerView");
       super.b(paramRecyclerView, paramInt);
-      if (this.rQW.rQL == null)
+      if (this.rZy.rZn == null)
       {
-        localObject = this.rQW;
+        localObject = this.rZy;
         Rect localRect = new Rect();
         paramRecyclerView.getGlobalVisibleRect(localRect);
-        ((f)localObject).rQL = localRect;
+        ((f)localObject).rZn = localRect;
       }
-      if (this.rQW.rQO != paramInt)
+      if (this.rZy.rZq != paramInt)
       {
-        this.rQW.rQP = this.rQW.rQO;
-        this.rQW.rQO = paramInt;
+        this.rZy.rZr = this.rZy.rZq;
+        this.rZy.rZq = paramInt;
       }
-      this.rQW.g(paramRecyclerView, paramInt);
-      if (this.rQW.rQO == 0)
+      this.rZy.g(paramRecyclerView, paramInt);
+      if (this.rZy.rZq == 0)
       {
-        paramRecyclerView = this.rQW;
+        paramRecyclerView = this.rZy;
         localObject = new int[5];
         p.h(localObject, "<set-?>");
-        paramRecyclerView.rQS = ((int[])localObject);
-        this.rQW.rQR = 0;
+        paramRecyclerView.rZu = ((int[])localObject);
+        this.rZy.rZt = 0;
       }
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/event/base/FinderFeedFlowEventSubscriber$getBehavior$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroid/support/v7/widget/RecyclerView;I)V");
-      AppMethodBeat.o(201557);
+      AppMethodBeat.o(202004);
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/finder/event/base/FinderFeedFlowEventSubscriber$onBindRecyclerView$1", "Landroid/support/v7/widget/RecyclerView$OnChildAttachStateChangeListener;", "isFirst", "", "()Z", "setFirst", "(Z)V", "onChildViewAttachedToWindow", "", "view", "Landroid/view/View;", "onChildViewDetachedFromWindow", "plugin-finder_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/finder/event/base/FinderFeedFlowEventSubscriber$onBindRecyclerView$1", "Landroid/support/v7/widget/RecyclerView$OnChildAttachStateChangeListener;", "isFirst", "", "()Z", "setFirst", "(Z)V", "onChildViewAttachedToWindow", "", "view", "Landroid/view/View;", "onChildViewDetachedFromWindow", "plugin-finder_release"})
   public static final class d
     implements RecyclerView.j
   {
@@ -334,24 +334,24 @@ public abstract class f
     
     public final void bQ(View paramView)
     {
-      AppMethodBeat.i(201561);
+      AppMethodBeat.i(202008);
       p.h(paramView, "view");
       if (this.isFirst)
       {
         this.isFirst = false;
         paramRecyclerView.post((Runnable)new a(this));
       }
-      AppMethodBeat.o(201561);
+      AppMethodBeat.o(202008);
     }
     
     public final void bR(View paramView)
     {
-      AppMethodBeat.i(201560);
+      AppMethodBeat.i(202007);
       p.h(paramView, "view");
-      AppMethodBeat.o(201560);
+      AppMethodBeat.o(202007);
     }
     
-    @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
+    @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
     static final class a
       implements Runnable
     {
@@ -359,14 +359,14 @@ public abstract class f
       
       public final void run()
       {
-        AppMethodBeat.i(201559);
-        this.rQX.rQW.czz().b(this.rQX.rOk, 4);
-        AppMethodBeat.o(201559);
+        AppMethodBeat.i(202006);
+        this.rZz.rZy.cBd().b(this.rZz.rWI, 4);
+        AppMethodBeat.o(202006);
       }
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
   static final class e
     implements Runnable
   {
@@ -374,9 +374,9 @@ public abstract class f
     
     public final void run()
     {
-      AppMethodBeat.i(201562);
-      this.rQW.c(this.rQY);
-      AppMethodBeat.o(201562);
+      AppMethodBeat.i(202009);
+      this.rZy.c(this.rZA);
+      AppMethodBeat.o(202009);
     }
   }
 }

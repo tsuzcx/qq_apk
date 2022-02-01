@@ -8,42 +8,42 @@ import com.tencent.mm.pluginsdk.ui.chat.f;
 public abstract class ChatFooterPanel
   extends LinearLayout
 {
-  public static int ESA;
-  public static int ESB = 14;
-  public static int ESo = 0;
-  public static int ESp = 1;
-  public static int ESq;
-  public static int ESr;
-  public static int ESs;
-  public static int ESt;
-  public static int ESu;
-  public static int ESv;
-  public static int ESw;
-  public static int ESx;
-  public static int ESy;
-  public static int ESz;
-  public static int rJs;
-  public static int xuL = 2;
-  public static int xuM;
-  protected int DCQ;
-  protected ChatFooterPanel.a ESm;
-  protected f ESn;
+  public static int FkJ = 0;
+  public static int FkK = 1;
+  public static int FkL;
+  public static int FkM;
+  public static int FkN;
+  public static int FkO;
+  public static int FkP;
+  public static int FkQ;
+  public static int FkR;
+  public static int FkS;
+  public static int FkT;
+  public static int FkU;
+  public static int FkV;
+  public static int FkW = 14;
+  public static int rRG;
+  public static int xKI = 2;
+  public static int xKJ;
+  protected int DUO;
+  protected ChatFooterPanel.a FkH;
+  protected f FkI;
   
   static
   {
-    ESq = 3;
-    ESr = 4;
-    ESs = 5;
-    ESt = 6;
-    xuM = ESo;
-    ESu = 12;
-    ESv = 7;
-    ESw = 8;
-    ESx = 9;
-    ESy = 10;
-    ESz = 11;
-    ESA = 12;
-    rJs = 13;
+    FkL = 3;
+    FkM = 4;
+    FkN = 5;
+    FkO = 6;
+    xKJ = FkJ;
+    FkP = 12;
+    FkQ = 7;
+    FkR = 8;
+    FkS = 9;
+    FkT = 10;
+    FkU = 11;
+    FkV = 12;
+    rRG = 13;
   }
   
   public ChatFooterPanel(Context paramContext, AttributeSet paramAttributeSet)
@@ -53,18 +53,18 @@ public abstract class ChatFooterPanel
   
   public void destroy() {}
   
-  public abstract void fbE();
+  public abstract void ffs();
   
   @Deprecated
-  public abstract void fbF();
+  public abstract void fft();
   
   @Deprecated
-  public abstract void fbG();
+  public abstract void ffu();
   
   @Deprecated
-  public abstract void fbH();
+  public abstract void ffv();
   
-  public abstract void fbI();
+  public abstract void ffw();
   
   public abstract void onPause();
   
@@ -72,7 +72,7 @@ public abstract class ChatFooterPanel
   
   public void setCallback(f paramf)
   {
-    this.ESn = paramf;
+    this.FkI = paramf;
   }
   
   public abstract void setDefaultEmojiByDetail(String paramString);
@@ -81,12 +81,12 @@ public abstract class ChatFooterPanel
   
   public void setFooterType(int paramInt)
   {
-    this.DCQ = paramInt;
+    this.DUO = paramInt;
   }
   
   public void setOnTextOperationListener(ChatFooterPanel.a parama)
   {
-    this.ESm = parama;
+    this.FkH = parama;
   }
   
   @Deprecated

@@ -10,10 +10,10 @@ public class OpenGLHook
   
   static
   {
-    AppMethodBeat.i(186983);
+    AppMethodBeat.i(193519);
     System.loadLibrary("openglapihook");
     mInstance = new OpenGLHook();
-    AppMethodBeat.o(186983);
+    AppMethodBeat.o(193519);
   }
   
   public static OpenGLHook getInstance()
@@ -23,9 +23,9 @@ public class OpenGLHook
   
   public static String getStack()
   {
-    AppMethodBeat.i(186981);
+    AppMethodBeat.i(193517);
     String str = stackTraceToString(new Throwable().getStackTrace());
-    AppMethodBeat.o(186981);
+    AppMethodBeat.o(193517);
     return str;
   }
   
@@ -49,91 +49,91 @@ public class OpenGLHook
   
   public static void onGetError(int paramInt)
   {
-    AppMethodBeat.i(186980);
+    AppMethodBeat.i(193516);
     if (getInstance().mListener != null) {
       getInstance().mListener.a(new a(paramInt));
     }
-    AppMethodBeat.o(186980);
+    AppMethodBeat.o(193516);
   }
   
   public static void onGlDeleteBuffers(int[] paramArrayOfInt)
   {
-    AppMethodBeat.i(186975);
+    AppMethodBeat.i(193511);
     if (getInstance().mListener != null) {
       getInstance().mListener.e(new a(paramArrayOfInt));
     }
-    AppMethodBeat.o(186975);
+    AppMethodBeat.o(193511);
   }
   
   public static void onGlDeleteFramebuffers(int[] paramArrayOfInt)
   {
-    AppMethodBeat.i(186977);
+    AppMethodBeat.i(193513);
     if (getInstance().mListener != null) {
       getInstance().mListener.g(new a(paramArrayOfInt));
     }
-    AppMethodBeat.o(186977);
+    AppMethodBeat.o(193513);
   }
   
   public static void onGlDeleteRenderbuffers(int[] paramArrayOfInt)
   {
-    AppMethodBeat.i(186979);
+    AppMethodBeat.i(193515);
     if (getInstance().mListener != null) {
       getInstance().mListener.i(new a(paramArrayOfInt));
     }
-    AppMethodBeat.o(186979);
+    AppMethodBeat.o(193515);
   }
   
   public static void onGlDeleteTextures(int[] paramArrayOfInt)
   {
-    AppMethodBeat.i(186973);
+    AppMethodBeat.i(193509);
     if (getInstance().mListener != null) {
       getInstance().mListener.c(new a(paramArrayOfInt));
     }
-    AppMethodBeat.o(186973);
+    AppMethodBeat.o(193509);
   }
   
   public static void onGlGenBuffers(int[] paramArrayOfInt)
   {
-    AppMethodBeat.i(186974);
+    AppMethodBeat.i(193510);
     if (getInstance().mListener != null) {
       getInstance().mListener.d(new a(paramArrayOfInt));
     }
-    AppMethodBeat.o(186974);
+    AppMethodBeat.o(193510);
   }
   
   public static void onGlGenFramebuffers(int[] paramArrayOfInt)
   {
-    AppMethodBeat.i(186976);
+    AppMethodBeat.i(193512);
     if (getInstance().mListener != null) {
       getInstance().mListener.f(new a(paramArrayOfInt));
     }
-    AppMethodBeat.o(186976);
+    AppMethodBeat.o(193512);
   }
   
   public static void onGlGenRenderbuffers(int[] paramArrayOfInt)
   {
-    AppMethodBeat.i(186978);
+    AppMethodBeat.i(193514);
     if (getInstance().mListener != null) {
       getInstance().mListener.h(new a(paramArrayOfInt));
     }
-    AppMethodBeat.o(186978);
+    AppMethodBeat.o(193514);
   }
   
   public static void onGlGenTextures(int[] paramArrayOfInt)
   {
-    AppMethodBeat.i(186972);
+    AppMethodBeat.i(193508);
     if (getInstance().mListener != null) {
       getInstance().mListener.b(new a(paramArrayOfInt));
     }
-    AppMethodBeat.o(186972);
+    AppMethodBeat.o(193508);
   }
   
   private static String stackTraceToString(StackTraceElement[] paramArrayOfStackTraceElement)
   {
-    AppMethodBeat.i(186982);
+    AppMethodBeat.i(193518);
     if (paramArrayOfStackTraceElement == null)
     {
-      AppMethodBeat.o(186982);
+      AppMethodBeat.o(193518);
       return "";
     }
     StringBuilder localStringBuilder = new StringBuilder();
@@ -150,69 +150,69 @@ public class OpenGLHook
       i += 1;
     }
     paramArrayOfStackTraceElement = localStringBuilder.toString();
-    AppMethodBeat.o(186982);
+    AppMethodBeat.o(193518);
     return paramArrayOfStackTraceElement;
   }
   
   public boolean hook(String paramString, int paramInt)
   {
-    AppMethodBeat.i(186971);
+    AppMethodBeat.i(193507);
     boolean bool;
     if (paramString.equals("glGetError"))
     {
       bool = hookGlGetError(paramInt);
-      AppMethodBeat.o(186971);
+      AppMethodBeat.o(193507);
       return bool;
     }
     if (paramString.equals("glGenTextures"))
     {
       bool = hookGlGenTextures(paramInt);
-      AppMethodBeat.o(186971);
+      AppMethodBeat.o(193507);
       return bool;
     }
     if (paramString.equals("glDeleteTextures"))
     {
       bool = hookGlDeleteTextures(paramInt);
-      AppMethodBeat.o(186971);
+      AppMethodBeat.o(193507);
       return bool;
     }
     if (paramString.equals("glGenBuffers"))
     {
       bool = hookGlGenBuffers(paramInt);
-      AppMethodBeat.o(186971);
+      AppMethodBeat.o(193507);
       return bool;
     }
     if (paramString.equals("glDeleteBuffers"))
     {
       bool = hookGlDeleteBuffers(paramInt);
-      AppMethodBeat.o(186971);
+      AppMethodBeat.o(193507);
       return bool;
     }
     if (paramString.equals("glGenFramebuffers"))
     {
       bool = hookGlGenFramebuffers(paramInt);
-      AppMethodBeat.o(186971);
+      AppMethodBeat.o(193507);
       return bool;
     }
     if (paramString.equals("glDeleteFramebuffers"))
     {
       bool = hookGlDeleteFramebuffers(paramInt);
-      AppMethodBeat.o(186971);
+      AppMethodBeat.o(193507);
       return bool;
     }
     if (paramString.equals("glGenRenderbuffers"))
     {
       bool = hookGlGenRenderbuffers(paramInt);
-      AppMethodBeat.o(186971);
+      AppMethodBeat.o(193507);
       return bool;
     }
     if (paramString.equals("glDeleteRenderbuffers"))
     {
       bool = hookGlDeleteRenderbuffers(paramInt);
-      AppMethodBeat.o(186971);
+      AppMethodBeat.o(193507);
       return bool;
     }
-    AppMethodBeat.o(186971);
+    AppMethodBeat.o(193507);
     return false;
   }
   
@@ -246,7 +246,7 @@ public class OpenGLHook
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.openglapihook.OpenGLHook
  * JD-Core Version:    0.7.0.1
  */

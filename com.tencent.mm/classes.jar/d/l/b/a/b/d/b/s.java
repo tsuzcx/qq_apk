@@ -11,13 +11,13 @@ import d.m;
 
 public final class s
 {
-  public static final a Nje;
+  public static final a NGk;
   final String signature;
   
   static
   {
     AppMethodBeat.i(58237);
-    Nje = new a((byte)0);
+    NGk = new a((byte)0);
     AppMethodBeat.o(58237);
   }
   
@@ -84,7 +84,7 @@ public final class s
       AppMethodBeat.i(58232);
       p.h(paramc, "nameResolver");
       p.h(paramb, "signature");
-      paramc = nt(paramc.getString(paramb.NlC), paramc.getString(paramb.Npn));
+      paramc = nz(paramc.getString(paramb.NII), paramc.getString(paramb.NMt));
       AppMethodBeat.o(58232);
       return paramc;
     }
@@ -95,13 +95,13 @@ public final class s
       p.h(parame, "signature");
       if ((parame instanceof e.b))
       {
-        parame = nt(parame.getName(), parame.getDesc());
+        parame = nz(parame.getName(), parame.getDesc());
         AppMethodBeat.o(58235);
         return parame;
       }
       if ((parame instanceof e.a))
       {
-        parame = nu(parame.getName(), parame.getDesc());
+        parame = nA(parame.getName(), parame.getDesc());
         AppMethodBeat.o(58235);
         return parame;
       }
@@ -110,23 +110,23 @@ public final class s
       throw parame;
     }
     
-    public static s nt(String paramString1, String paramString2)
-    {
-      AppMethodBeat.i(58233);
-      p.h(paramString1, "name");
-      p.h(paramString2, "desc");
-      paramString1 = new s(paramString1 + paramString2, (byte)0);
-      AppMethodBeat.o(58233);
-      return paramString1;
-    }
-    
-    public static s nu(String paramString1, String paramString2)
+    public static s nA(String paramString1, String paramString2)
     {
       AppMethodBeat.i(58234);
       p.h(paramString1, "name");
       p.h(paramString2, "desc");
       paramString1 = new s(paramString1 + '#' + paramString2, (byte)0);
       AppMethodBeat.o(58234);
+      return paramString1;
+    }
+    
+    public static s nz(String paramString1, String paramString2)
+    {
+      AppMethodBeat.i(58233);
+      p.h(paramString1, "name");
+      p.h(paramString2, "desc");
+      paramString1 = new s(paramString1 + paramString2, (byte)0);
+      AppMethodBeat.o(58233);
       return paramString1;
     }
   }

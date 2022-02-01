@@ -3,8 +3,8 @@ package com.tencent.mm.plugin.appbrand.xweb_ext;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.expt.b.b;
 import com.tencent.mm.plugin.expt.b.b.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ax;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ay;
 import com.tencent.xweb.WebView;
 import d.f;
 import d.g.a.a;
@@ -13,51 +13,51 @@ import d.g.b.q;
 import d.l;
 import org.xwalk.core.XWalkEnvironment;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/xweb_ext/XWebABTests;", "", "()V", "TAG", "", "XWEB_ABTEST_COMMAND", "XWEB_LIVE_COMMAND", "XWEB_VIDEO_COMMAND", "_abtestXWebCameraEnable", "", "_abtestXWebCameraEnable$annotations", "get_abtestXWebCameraEnable", "()Z", "_abtestXWebCameraEnable$delegate", "Lkotlin/Lazy;", "_canHideAllPagesRenderingWhenRuntimeOnBackground", "get_canHideAllPagesRenderingWhenRuntimeOnBackground", "_canHideAllPagesRenderingWhenRuntimeOnBackground$delegate", "_canHideInvisibleTabPageWhenSwitchTab", "get_canHideInvisibleTabPageWhenSwitchTab", "_canHideInvisibleTabPageWhenSwitchTab$delegate", "_keepPagesNoHideRenderingTopCount", "", "get_keepPagesNoHideRenderingTopCount", "()I", "_keepPagesNoHideRenderingTopCount$delegate", "_supportXWebTextArea", "_supportXWebTextArea$annotations", "get_supportXWebTextArea", "_supportXWebTextArea$delegate", "_useXWebCamera", "_useXWebCamera$annotations", "get_useXWebCamera", "_useXWebCamera$delegate", "_useXWebTextArea", "_useXWebTextArea$annotations", "get_useXWebTextArea", "_useXWebTextArea$delegate", "canUseXWebHideInterface", "getCanUseXWebHideInterface", "canUseXWebHideInterface$delegate", "useXWebCanvasRaf", "getUseXWebCanvasRaf", "()Ljava/lang/Boolean;", "setUseXWebCanvasRaf", "(Ljava/lang/Boolean;)V", "Ljava/lang/Boolean;", "useXWebMap", "getUseXWebMap", "setUseXWebMap", "useXWebWebGLCanvas", "getUseXWebWebGLCanvas", "setUseXWebWebGLCanvas", "canHideAllPagesRenderingWhenRuntimeOnBackground", "canHideInvisibleTabPageWhenSwitchTab", "clearXwebLiveCommandValue", "", "clearXwebVideoCommandValue", "getKeepPagesNoHideRenderingTopCount", "getXwebLiveCommandValue", "getXwebVideoCommandValue", "injectXWebCanvas", "openXWebCameraSameLayer", "openXWebHideInterfaceSwitch", "openXWebMapSameLayer", "openXWebSameLayerRendering", "openXWebSameLayerRenderingForLive", "openXWebTextAreaSameLayer", "openXWebWebGLCanvas", "setXwebLiveCommandValue", "value", "setXwebVideoCommandValue", "supportSameLayerTouch", "supportXWebCanvasSameLayer", "xwebABTestCameraSameLayerEnable", "xwebSupportTextAreaSameLayer", "plugin-appbrand-integration_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/xweb_ext/XWebABTests;", "", "()V", "TAG", "", "XWEB_ABTEST_COMMAND", "XWEB_LIVE_COMMAND", "XWEB_VIDEO_COMMAND", "_abtestXWebCameraEnable", "", "_abtestXWebCameraEnable$annotations", "get_abtestXWebCameraEnable", "()Z", "_abtestXWebCameraEnable$delegate", "Lkotlin/Lazy;", "_canHideAllPagesRenderingWhenRuntimeOnBackground", "get_canHideAllPagesRenderingWhenRuntimeOnBackground", "_canHideAllPagesRenderingWhenRuntimeOnBackground$delegate", "_canHideInvisibleTabPageWhenSwitchTab", "get_canHideInvisibleTabPageWhenSwitchTab", "_canHideInvisibleTabPageWhenSwitchTab$delegate", "_keepPagesNoHideRenderingTopCount", "", "get_keepPagesNoHideRenderingTopCount", "()I", "_keepPagesNoHideRenderingTopCount$delegate", "_supportXWebTextArea", "_supportXWebTextArea$annotations", "get_supportXWebTextArea", "_supportXWebTextArea$delegate", "_useXWebCamera", "_useXWebCamera$annotations", "get_useXWebCamera", "_useXWebCamera$delegate", "_useXWebTextArea", "_useXWebTextArea$annotations", "get_useXWebTextArea", "_useXWebTextArea$delegate", "canUseXWebHideInterface", "getCanUseXWebHideInterface", "canUseXWebHideInterface$delegate", "useXWebCanvasRaf", "getUseXWebCanvasRaf", "()Ljava/lang/Boolean;", "setUseXWebCanvasRaf", "(Ljava/lang/Boolean;)V", "Ljava/lang/Boolean;", "useXWebMap", "getUseXWebMap", "setUseXWebMap", "useXWebWebGLCanvas", "getUseXWebWebGLCanvas", "setUseXWebWebGLCanvas", "canHideAllPagesRenderingWhenRuntimeOnBackground", "canHideInvisibleTabPageWhenSwitchTab", "clearXwebLiveCommandValue", "", "clearXwebVideoCommandValue", "getKeepPagesNoHideRenderingTopCount", "getXwebLiveCommandValue", "getXwebVideoCommandValue", "injectXWebCanvas", "openXWebCameraSameLayer", "openXWebHideInterfaceSwitch", "openXWebMapSameLayer", "openXWebSameLayerRendering", "openXWebSameLayerRenderingForLive", "openXWebTextAreaSameLayer", "openXWebWebGLCanvas", "setXwebLiveCommandValue", "value", "setXwebVideoCommandValue", "supportSameLayerTouch", "supportXWebCanvasSameLayer", "xwebABTestCameraSameLayerEnable", "xwebSupportTextAreaSameLayer", "plugin-appbrand-integration_release"})
 public final class c
 {
-  private static Boolean nqS;
-  private static Boolean nqT;
-  private static final f nqU;
-  private static final f nqV;
-  private static final f nqW;
-  private static final f nqX;
-  private static Boolean nqY;
-  private static final f nqZ;
-  private static final f nra;
-  private static final f nrb;
-  private static final f nrc;
-  public static final c nrd;
+  private static Boolean nwl;
+  private static Boolean nwm;
+  private static final f nwn;
+  private static final f nwo;
+  private static final f nwp;
+  private static final f nwq;
+  private static Boolean nwr;
+  private static final f nws;
+  private static final f nwt;
+  private static final f nwu;
+  private static final f nwv;
+  public static final c nww;
   
   static
   {
     AppMethodBeat.i(51473);
-    nrd = new c();
-    nqU = d.g.O((a)e.nri);
-    nqV = d.g.O((a)g.nrk);
-    nqW = d.g.O((a)c.a.nre);
-    nqX = d.g.O((a)f.nrj);
-    nqZ = d.g.O((a)c.h.nrl);
-    nra = d.g.O((a)c.b.nrf);
-    nrb = d.g.O((a)c.d.nrh);
-    nrc = d.g.O((a)c.c.nrg);
+    nww = new c();
+    nwn = d.g.O((a)e.nwB);
+    nwo = d.g.O((a)g.nwD);
+    nwp = d.g.O((a)c.a.nwx);
+    nwq = d.g.O((a)f.nwC);
+    nws = d.g.O((a)c.h.nwE);
+    nwt = d.g.O((a)c.b.nwy);
+    nwu = d.g.O((a)c.d.nwA);
+    nwv = d.g.O((a)c.c.nwz);
     AppMethodBeat.o(51473);
   }
   
-  public static final void bFP()
+  public static final void bGL()
   {
     AppMethodBeat.i(51474);
-    ax.aQz("xweb_abtest_command").removeValueForKey("xweb_video_command_value");
+    ay.aRW("xweb_abtest_command").removeValueForKey("xweb_video_command_value");
     AppMethodBeat.o(51474);
   }
   
-  public static final boolean bFQ()
+  public static final boolean bGM()
   {
     AppMethodBeat.i(51476);
-    int i = ax.aQz("xweb_abtest_command").decodeInt("xweb_video_command_value", -1);
+    int i = ay.aRW("xweb_abtest_command").decodeInt("xweb_video_command_value", -1);
     if (i >= 0)
     {
-      ad.i("MicroMsg.AppBrand.SameLayer.XWebABTests", "openXWebSameLayerRendering for video, commandValue:%s", new Object[] { Integer.valueOf(i) });
+      ae.i("MicroMsg.AppBrand.SameLayer.XWebABTests", "openXWebSameLayerRendering for video, commandValue:%s", new Object[] { Integer.valueOf(i) });
       if (i == 1)
       {
         AppMethodBeat.o(51476);
@@ -70,12 +70,12 @@ public final class c
     return true;
   }
   
-  public static final boolean bFR()
+  public static final boolean bGN()
   {
     AppMethodBeat.i(51478);
     boolean bool1 = XWalkEnvironment.isCurrentVersionSupportMapExtendPluginForAppbrand();
     boolean bool2 = WebView.isXWalk();
-    ad.i("MicroMsg.AppBrand.SameLayer.XWebABTests", "supportXWebCanvasSameLayer supportXWeb:" + bool1 + " isXWeb:" + bool2);
+    ae.i("MicroMsg.AppBrand.SameLayer.XWebABTests", "supportXWebCanvasSameLayer supportXWeb:" + bool1 + " isXWeb:" + bool2);
     if ((bool1) && (bool2))
     {
       AppMethodBeat.o(51478);
@@ -85,44 +85,44 @@ public final class c
     return false;
   }
   
-  public static final boolean bFS()
+  public static final boolean bGO()
   {
-    AppMethodBeat.i(189744);
+    AppMethodBeat.i(224033);
     Boolean localBoolean;
-    if (nqS != null)
+    if (nwl != null)
     {
-      localBoolean = nqS;
+      localBoolean = nwl;
       if (localBoolean == null) {
-        p.gfZ();
+        p.gkB();
       }
       bool = localBoolean.booleanValue();
-      AppMethodBeat.o(189744);
+      AppMethodBeat.o(224033);
       return bool;
     }
-    if (((b)com.tencent.mm.kernel.g.ab(b.class)).a(b.a.qvv, 0) == 1) {}
+    if (((b)com.tencent.mm.kernel.g.ab(b.class)).a(b.a.qCu, 0) == 1) {}
     for (boolean bool = true;; bool = false)
     {
-      nqS = Boolean.valueOf(bool);
-      ad.i("MicroMsg.AppBrand.SameLayer.XWebABTests", "useXWebCanvasRaf:" + nqS);
-      localBoolean = nqS;
+      nwl = Boolean.valueOf(bool);
+      ae.i("MicroMsg.AppBrand.SameLayer.XWebABTests", "useXWebCanvasRaf:" + nwl);
+      localBoolean = nwl;
       if (localBoolean == null) {
-        p.gfZ();
+        p.gkB();
       }
       bool = localBoolean.booleanValue();
-      AppMethodBeat.o(189744);
+      AppMethodBeat.o(224033);
       return bool;
     }
   }
   
-  public static final boolean bFT()
+  public static final boolean bGP()
   {
     AppMethodBeat.i(51479);
     Boolean localBoolean;
-    if (nqT != null)
+    if (nwm != null)
     {
-      localBoolean = nqT;
+      localBoolean = nwm;
       if (localBoolean == null) {
-        p.gfZ();
+        p.gkB();
       }
       bool1 = localBoolean.booleanValue();
       AppMethodBeat.o(51479);
@@ -130,14 +130,14 @@ public final class c
     }
     boolean bool1 = XWalkEnvironment.isCurrentVersionSupportMapExtendPluginForAppbrand();
     boolean bool2 = WebView.isXWalk();
-    ad.i("MicroMsg.AppBrand.SameLayer.XWebABTests", "useXWebMap: " + bool1 + ", " + bool2);
+    ae.i("MicroMsg.AppBrand.SameLayer.XWebABTests", "useXWebMap: " + bool1 + ", " + bool2);
     if ((bool1) && (bool2)) {}
     for (bool1 = true;; bool1 = false)
     {
       localBoolean = Boolean.valueOf(bool1);
-      nqT = localBoolean;
+      nwm = localBoolean;
       if (localBoolean == null) {
-        p.gfZ();
+        p.gkB();
       }
       bool1 = localBoolean.booleanValue();
       AppMethodBeat.o(51479);
@@ -145,31 +145,31 @@ public final class c
     }
   }
   
-  private static boolean bFU()
+  private static boolean bGQ()
   {
     AppMethodBeat.i(51480);
-    boolean bool = ((Boolean)nqU.getValue()).booleanValue();
+    boolean bool = ((Boolean)nwn.getValue()).booleanValue();
     AppMethodBeat.o(51480);
     return bool;
   }
   
-  public static final boolean bFV()
+  public static final boolean bGR()
   {
     AppMethodBeat.i(51481);
-    boolean bool = bFU();
+    boolean bool = bGQ();
     AppMethodBeat.o(51481);
     return bool;
   }
   
-  public static final boolean bFW()
+  public static final boolean bGS()
   {
     AppMethodBeat.i(51482);
-    boolean bool = ((Boolean)nqV.getValue()).booleanValue();
+    boolean bool = ((Boolean)nwo.getValue()).booleanValue();
     AppMethodBeat.o(51482);
     return bool;
   }
   
-  public static final boolean bFX()
+  public static final boolean bGT()
   {
     AppMethodBeat.i(51483);
     boolean bool = XWalkEnvironment.isCurrentVersionSupportMapExtendPluginForAppbrand();
@@ -177,47 +177,47 @@ public final class c
     return bool;
   }
   
-  private static boolean bFY()
+  private static boolean bGU()
   {
-    AppMethodBeat.i(189745);
-    boolean bool = ((Boolean)nqW.getValue()).booleanValue();
-    AppMethodBeat.o(189745);
+    AppMethodBeat.i(224034);
+    boolean bool = ((Boolean)nwp.getValue()).booleanValue();
+    AppMethodBeat.o(224034);
     return bool;
   }
   
-  public static final boolean bFZ()
+  public static final boolean bGV()
   {
-    AppMethodBeat.i(189746);
-    boolean bool = bFY();
-    AppMethodBeat.o(189746);
+    AppMethodBeat.i(224035);
+    boolean bool = bGU();
+    AppMethodBeat.o(224035);
     return bool;
   }
   
-  public static final boolean bGa()
+  public static final boolean bGW()
   {
     AppMethodBeat.i(51484);
-    boolean bool = ((Boolean)nqX.getValue()).booleanValue();
+    boolean bool = ((Boolean)nwq.getValue()).booleanValue();
     AppMethodBeat.o(51484);
     return bool;
   }
   
-  public static final boolean bGb()
+  public static final boolean bGX()
   {
     boolean bool2 = true;
-    AppMethodBeat.i(189747);
-    Boolean localBoolean = nqY;
+    AppMethodBeat.i(224036);
+    Boolean localBoolean = nwr;
     if (localBoolean != null)
     {
       bool1 = localBoolean.booleanValue();
-      AppMethodBeat.o(189747);
+      AppMethodBeat.o(224036);
       return bool1;
     }
-    if (((b)com.tencent.mm.kernel.g.ab(b.class)).a(b.a.qvr, 0) == 1)
+    if (((b)com.tencent.mm.kernel.g.ab(b.class)).a(b.a.qCq, 0) == 1)
     {
       bool1 = true;
       boolean bool3 = XWalkEnvironment.isCurrentVersionSupportMapExtendPluginForAppbrand();
       boolean bool4 = WebView.isXWalk();
-      ad.i("MicroMsg.AppBrand.SameLayer.XWebABTests", "useXWebWebGLCanvas: " + bool1 + ", " + bool3 + ", " + bool4);
+      ae.i("MicroMsg.AppBrand.SameLayer.XWebABTests", "useXWebWebGLCanvas: " + bool1 + ", " + bool3 + ", " + bool4);
       if ((!bool1) || (!bool3) || (!bool4)) {
         break label158;
       }
@@ -226,32 +226,32 @@ public final class c
     for (boolean bool1 = bool2;; bool1 = false)
     {
       localBoolean = Boolean.valueOf(bool1);
-      nqY = localBoolean;
+      nwr = localBoolean;
       if (localBoolean == null) {
-        p.gfZ();
+        p.gkB();
       }
       bool1 = localBoolean.booleanValue();
-      AppMethodBeat.o(189747);
+      AppMethodBeat.o(224036);
       return bool1;
       bool1 = false;
       break;
     }
   }
   
-  public static final void bGc()
+  public static final void bGY()
   {
     AppMethodBeat.i(51485);
-    ax.aQz("xweb_abtest_command").removeValueForKey("xweb_live_command_value");
+    ay.aRW("xweb_abtest_command").removeValueForKey("xweb_live_command_value");
     AppMethodBeat.o(51485);
   }
   
-  public static final boolean bGd()
+  public static final boolean bGZ()
   {
     AppMethodBeat.i(51487);
-    int i = ax.aQz("xweb_abtest_command").decodeInt("xweb_live_command_value", -1);
+    int i = ay.aRW("xweb_abtest_command").decodeInt("xweb_live_command_value", -1);
     if (i >= 0)
     {
-      ad.i("MicroMsg.AppBrand.SameLayer.XWebABTests", "openXWebSameLayerRendering for Live, commandValue:%s", new Object[] { Integer.valueOf(i) });
+      ae.i("MicroMsg.AppBrand.SameLayer.XWebABTests", "openXWebSameLayerRendering for Live, commandValue:%s", new Object[] { Integer.valueOf(i) });
       if (i == 1)
       {
         AppMethodBeat.o(51487);
@@ -261,68 +261,68 @@ public final class c
       return false;
     }
     boolean bool = XWalkEnvironment.isCurrentVersionSupportMapExtendPluginForAppbrand();
-    ad.i("MicroMsg.AppBrand.SameLayer.XWebABTests", "openXWebSameLayerRendering for Live:%b", new Object[] { Boolean.valueOf(bool) });
+    ae.i("MicroMsg.AppBrand.SameLayer.XWebABTests", "openXWebSameLayerRendering for Live:%b", new Object[] { Boolean.valueOf(bool) });
     AppMethodBeat.o(51487);
     return bool;
   }
   
-  public static final boolean bGe()
+  public static final boolean bHa()
   {
     AppMethodBeat.i(51488);
-    boolean bool = ((Boolean)nqZ.getValue()).booleanValue();
+    boolean bool = ((Boolean)nws.getValue()).booleanValue();
     AppMethodBeat.o(51488);
     return bool;
   }
   
-  public static final boolean bGf()
+  public static final boolean bHb()
   {
     AppMethodBeat.i(51489);
-    boolean bool = ((Boolean)nra.getValue()).booleanValue();
+    boolean bool = ((Boolean)nwt.getValue()).booleanValue();
     AppMethodBeat.o(51489);
     return bool;
   }
   
-  public static final int bGg()
+  public static final int bHc()
   {
     AppMethodBeat.i(51490);
-    int i = ((Number)nrb.getValue()).intValue();
+    int i = ((Number)nwu.getValue()).intValue();
     AppMethodBeat.o(51490);
     return i;
   }
   
-  public static final boolean bGh()
+  public static final boolean bHd()
   {
     AppMethodBeat.i(51491);
-    boolean bool = ((Boolean)nrc.getValue()).booleanValue();
+    boolean bool = ((Boolean)nwv.getValue()).booleanValue();
     AppMethodBeat.o(51491);
     return bool;
   }
   
-  public static final void xa(int paramInt)
+  public static final void xf(int paramInt)
   {
     AppMethodBeat.i(51475);
-    ax.aQz("xweb_abtest_command").encode("xweb_video_command_value", paramInt);
+    ay.aRW("xweb_abtest_command").encode("xweb_video_command_value", paramInt);
     AppMethodBeat.o(51475);
   }
   
-  public static final void xb(int paramInt)
+  public static final void xg(int paramInt)
   {
     AppMethodBeat.i(51486);
-    ax.aQz("xweb_abtest_command").encode("xweb_live_command_value", paramInt);
+    ay.aRW("xweb_abtest_command").encode("xweb_live_command_value", paramInt);
     AppMethodBeat.o(51486);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
   static final class e
     extends q
     implements a<Boolean>
   {
-    public static final e nri;
+    public static final e nwB;
     
     static
     {
       AppMethodBeat.i(51467);
-      nri = new e();
+      nwB = new e();
       AppMethodBeat.o(51467);
     }
     
@@ -332,18 +332,18 @@ public final class c
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
   static final class f
     extends q
     implements a<Boolean>
   {
-    public static final f nrj;
+    public static final f nwC;
     
     static
     {
-      AppMethodBeat.i(189743);
-      nrj = new f();
-      AppMethodBeat.o(189743);
+      AppMethodBeat.i(224032);
+      nwC = new f();
+      AppMethodBeat.o(224032);
     }
     
     f()
@@ -352,17 +352,17 @@ public final class c
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
   static final class g
     extends q
     implements a<Boolean>
   {
-    public static final g nrk;
+    public static final g nwD;
     
     static
     {
       AppMethodBeat.i(51470);
-      nrk = new g();
+      nwD = new g();
       AppMethodBeat.o(51470);
     }
     
@@ -378,7 +378,7 @@ public final class c
       {
         try
         {
-          int i = ((b)com.tencent.mm.kernel.g.ab(b.class)).a(b.a.qvw, 0);
+          int i = ((b)com.tencent.mm.kernel.g.ab(b.class)).a(b.a.qCv, 0);
           if (i != 1) {
             continue;
           }
@@ -393,13 +393,13 @@ public final class c
           AppMethodBeat.o(51469);
         }
         localObject = new StringBuilder("useXWebTextArea: abtest[").append(bool).append("], isXWeb[").append(WebView.isXWalk()).append("], supper[");
-        localc = c.nrd;
-        ad.i("MicroMsg.AppBrand.SameLayer.XWebABTests", c.bGi() + ']');
+        localc = c.nww;
+        ae.i("MicroMsg.AppBrand.SameLayer.XWebABTests", c.bHe() + ']');
         if (!bool) {
           continue;
         }
-        localObject = c.nrd;
-        if (!c.bGi()) {
+        localObject = c.nww;
+        if (!c.bHe()) {
           continue;
         }
         AppMethodBeat.o(51469);
@@ -412,7 +412,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.xweb_ext.c
  * JD-Core Version:    0.7.0.1
  */

@@ -5,34 +5,28 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.fav.a.af;
 import com.tencent.mm.plugin.fav.a.x;
-import com.tencent.mm.plugin.fts.a.a.i;
-import com.tencent.mm.plugin.fts.a.a.k;
 import com.tencent.mm.plugin.fts.a.c;
-import com.tencent.mm.plugin.fts.a.d;
+import com.tencent.mm.plugin.fts.a.n;
+import com.tencent.mm.protocal.protobuf.akn;
+import com.tencent.mm.protocal.protobuf.ala;
 import com.tencent.mm.sdk.e.e;
 import com.tencent.mm.sdk.e.k.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashMap;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
 
 public final class b
   extends com.tencent.mm.plugin.fts.a.b
 {
-  com.tencent.mm.plugin.fts.a.m grs;
-  private com.tencent.mm.plugin.fts.a.j rtX;
-  a rtY;
-  e rtZ;
-  private k.a rua;
+  com.tencent.mm.plugin.fts.a.m gtT;
+  private com.tencent.mm.plugin.fts.a.j rCj;
+  a rCk;
+  e rCl;
+  private k.a rCm;
   
   public b()
   {
     AppMethodBeat.i(101572);
-    this.rua = new k.a()
+    this.rCm = new k.a()
     {
       public final void a(String paramAnonymousString, com.tencent.mm.sdk.e.m paramAnonymousm)
       {
@@ -42,7 +36,7 @@ public final class b
           AppMethodBeat.o(101561);
           return;
         }
-        int i = paramAnonymousm.dtK;
+        int i = paramAnonymousm.duP;
         if (paramAnonymousm.obj == null)
         {
           AppMethodBeat.o(101561);
@@ -54,7 +48,7 @@ public final class b
           AppMethodBeat.o(101561);
           return;
         }
-        ad.i("MicroMsg.FTS.FTS5SearchFavoriteLogic", "EventData: %s", new Object[] { paramAnonymousm });
+        ae.i("MicroMsg.FTS.FTS5SearchFavoriteLogic", "EventData: %s", new Object[] { paramAnonymousm });
         switch (i)
         {
         }
@@ -62,10 +56,10 @@ public final class b
         {
           AppMethodBeat.o(101561);
           return;
-          b.this.grs.a(65576, new b.d(b.this, l, (byte)0));
+          b.this.gtT.a(65576, new b.d(b.this, l, (byte)0));
           AppMethodBeat.o(101561);
           return;
-          b.this.grs.a(65576, new b.b(b.this, l));
+          b.this.gtT.a(65576, new b.b(b.this, l));
         }
       }
     };
@@ -100,7 +94,7 @@ public final class b
       }
       for (;;)
       {
-        this.rtY.a(paramArrayOfInt[0], paramLong1, paramString, paramLong2, str2, paramInt);
+        this.rCk.a(paramArrayOfInt[0], paramLong1, paramString, paramLong2, str2, paramInt);
         j = 1;
         i = j;
         if (str1 != null)
@@ -108,13 +102,13 @@ public final class b
           i = j;
           if (str1.length() > 0)
           {
-            this.rtY.a(paramArrayOfInt[1], paramLong1, paramString, paramLong2, str1, paramInt);
+            this.rCk.a(paramArrayOfInt[1], paramLong1, paramString, paramLong2, str1, paramInt);
             i = 2;
           }
         }
         if ((paramArrayOfString != null) && (paramArrayOfString.length() > 0))
         {
-          this.rtY.a(paramArrayOfInt[2], paramLong1, paramString, paramLong2, paramArrayOfString, paramInt);
+          this.rCk.a(paramArrayOfInt[2], paramLong1, paramString, paramLong2, paramArrayOfString, paramInt);
           i += 1;
         }
         for (;;)
@@ -129,21 +123,21 @@ public final class b
   public final com.tencent.mm.plugin.fts.a.a.a a(com.tencent.mm.plugin.fts.a.a.j paramj)
   {
     AppMethodBeat.i(101571);
-    if (paramj.jQN == 1) {}
-    for (paramj = new f(paramj);; paramj = new e(paramj))
+    if (paramj.jUf == 1) {}
+    for (paramj = new b.f(this, paramj);; paramj = new b.e(this, paramj))
     {
-      paramj = this.grs.a(-65536, paramj);
+      paramj = this.gtT.a(-65536, paramj);
       AppMethodBeat.o(101571);
       return paramj;
     }
   }
   
-  public final boolean agA()
+  public final boolean agO()
   {
     AppMethodBeat.i(101574);
-    ((af)g.ad(af.class)).getFavItemInfoStorage().remove(this.rua);
-    this.rtY = null;
-    this.grs = null;
+    ((af)g.ad(af.class)).getFavItemInfoStorage().remove(this.rCm);
+    this.rCk = null;
+    this.gtT = null;
     AppMethodBeat.o(101574);
     return true;
   }
@@ -156,19 +150,19 @@ public final class b
   public final boolean onCreate()
   {
     AppMethodBeat.i(101573);
-    if (!((com.tencent.mm.plugin.fts.a.n)g.ad(com.tencent.mm.plugin.fts.a.n.class)).isFTSContextReady())
+    if (!((n)g.ad(n.class)).isFTSContextReady())
     {
-      ad.i("MicroMsg.FTS.FTS5SearchFavoriteLogic", "Create Fail!");
+      ae.i("MicroMsg.FTS.FTS5SearchFavoriteLogic", "Create Fail!");
       AppMethodBeat.o(101573);
       return false;
     }
-    ad.i("MicroMsg.FTS.FTS5SearchFavoriteLogic", "Create Success!");
-    this.grs = ((com.tencent.mm.plugin.fts.a.n)g.ad(com.tencent.mm.plugin.fts.a.n.class)).getFTSTaskDaemon();
-    this.rtY = ((a)((com.tencent.mm.plugin.fts.a.n)g.ad(com.tencent.mm.plugin.fts.a.n.class)).getFTSIndexStorage(256));
-    this.rtX = ((com.tencent.mm.plugin.fts.a.n)g.ad(com.tencent.mm.plugin.fts.a.n.class)).getFTSMainDB();
-    this.rtZ = ((af)g.ad(af.class)).getFavItemInfoStorage().cvk();
-    this.grs.a(131122, new a((byte)0));
-    ((af)g.ad(af.class)).getFavItemInfoStorage().add(this.rua);
+    ae.i("MicroMsg.FTS.FTS5SearchFavoriteLogic", "Create Success!");
+    this.gtT = ((n)g.ad(n.class)).getFTSTaskDaemon();
+    this.rCk = ((a)((n)g.ad(n.class)).getFTSIndexStorage(256));
+    this.rCj = ((n)g.ad(n.class)).getFTSMainDB();
+    this.rCl = ((af)g.ad(af.class)).getFavItemInfoStorage().cwL();
+    this.gtT.a(131122, new a((byte)0));
+    ((af)g.ad(af.class)).getFavItemInfoStorage().add(this.rCm);
     AppMethodBeat.o(101573);
     return true;
   }
@@ -177,17 +171,17 @@ public final class b
     extends com.tencent.mm.plugin.fts.a.a.a
   {
     private int mFailedCount = 0;
-    private HashSet<Long> ruc = null;
-    private int rud = 0;
-    private int rue = 0;
-    private int ruf = 0;
+    private HashSet<Long> rCo = null;
+    private int rCp = 0;
+    private int rCq = 0;
+    private int rCr = 0;
     
     private a() {}
     
-    public final String bgU()
+    public final String bhC()
     {
       AppMethodBeat.i(101563);
-      String str = String.format("{new: %d exist: %d removed: %d failed: %d}", new Object[] { Integer.valueOf(this.rue), Integer.valueOf(this.rud), Integer.valueOf(this.ruf), Integer.valueOf(this.mFailedCount) });
+      String str = String.format("{new: %d exist: %d removed: %d failed: %d}", new Object[] { Integer.valueOf(this.rCq), Integer.valueOf(this.rCp), Integer.valueOf(this.rCr), Integer.valueOf(this.mFailedCount) });
       AppMethodBeat.o(101563);
       return str;
     }
@@ -199,31 +193,31 @@ public final class b
       //   0: ldc 71
       //   2: invokestatic 47	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
       //   5: aload_0
-      //   6: getfield 21	com/tencent/mm/plugin/fav/b/a/b$a:rub	Lcom/tencent/mm/plugin/fav/b/a/b;
-      //   9: getfield 75	com/tencent/mm/plugin/fav/b/a/b:rtZ	Lcom/tencent/mm/sdk/e/e;
+      //   6: getfield 21	com/tencent/mm/plugin/fav/b/a/b$a:rCn	Lcom/tencent/mm/plugin/fav/b/a/b;
+      //   9: getfield 75	com/tencent/mm/plugin/fav/b/a/b:rCl	Lcom/tencent/mm/sdk/e/e;
       //   12: ifnonnull +17 -> 29
       //   15: ldc 77
       //   17: ldc 79
-      //   19: invokestatic 85	com/tencent/mm/sdk/platformtools/ad:w	(Ljava/lang/String;Ljava/lang/String;)V
+      //   19: invokestatic 85	com/tencent/mm/sdk/platformtools/ae:w	(Ljava/lang/String;Ljava/lang/String;)V
       //   22: ldc 71
       //   24: invokestatic 66	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   27: iconst_1
       //   28: ireturn
       //   29: ldc 77
       //   31: ldc 87
-      //   33: invokestatic 89	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+      //   33: invokestatic 89	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
       //   36: aload_0
-      //   37: getfield 26	com/tencent/mm/plugin/fav/b/a/b$a:ruc	Ljava/util/HashSet;
+      //   37: getfield 26	com/tencent/mm/plugin/fav/b/a/b$a:rCo	Ljava/util/HashSet;
       //   40: ifnonnull +151 -> 191
       //   43: aload_0
       //   44: new 91	java/util/HashSet
       //   47: dup
       //   48: invokespecial 92	java/util/HashSet:<init>	()V
-      //   51: putfield 26	com/tencent/mm/plugin/fav/b/a/b$a:ruc	Ljava/util/HashSet;
+      //   51: putfield 26	com/tencent/mm/plugin/fav/b/a/b$a:rCo	Ljava/util/HashSet;
       //   54: aload_0
-      //   55: getfield 21	com/tencent/mm/plugin/fav/b/a/b$a:rub	Lcom/tencent/mm/plugin/fav/b/a/b;
-      //   58: getfield 96	com/tencent/mm/plugin/fav/b/a/b:rtY	Lcom/tencent/mm/plugin/fav/b/a/a;
-      //   61: getstatic 102	com/tencent/mm/plugin/fts/a/c:tsN	[I
+      //   55: getfield 21	com/tencent/mm/plugin/fav/b/a/b$a:rCn	Lcom/tencent/mm/plugin/fav/b/a/b;
+      //   58: getfield 96	com/tencent/mm/plugin/fav/b/a/b:rCk	Lcom/tencent/mm/plugin/fav/b/a/a;
+      //   61: getstatic 102	com/tencent/mm/plugin/fts/a/c:tDE	[I
       //   64: iconst_0
       //   65: iconst_1
       //   66: iconst_0
@@ -245,7 +239,7 @@ public final class b
       //   101: aload 6
       //   103: astore 5
       //   105: aload_0
-      //   106: getfield 26	com/tencent/mm/plugin/fav/b/a/b$a:ruc	Ljava/util/HashSet;
+      //   106: getfield 26	com/tencent/mm/plugin/fav/b/a/b$a:rCo	Ljava/util/HashSet;
       //   109: lload_3
       //   110: invokestatic 121	java/lang/Long:valueOf	(J)Ljava/lang/Long;
       //   113: invokevirtual 125	java/util/HashSet:add	(Ljava/lang/Object;)Z
@@ -279,9 +273,9 @@ public final class b
       //   175: invokeinterface 128 1 0
       //   180: aload_0
       //   181: aload_0
-      //   182: getfield 26	com/tencent/mm/plugin/fav/b/a/b$a:ruc	Ljava/util/HashSet;
+      //   182: getfield 26	com/tencent/mm/plugin/fav/b/a/b$a:rCo	Ljava/util/HashSet;
       //   185: invokevirtual 132	java/util/HashSet:size	()I
-      //   188: putfield 28	com/tencent/mm/plugin/fav/b/a/b$a:rud	I
+      //   188: putfield 28	com/tencent/mm/plugin/fav/b/a/b$a:rCp	I
       //   191: invokestatic 137	java/lang/Thread:interrupted	()Z
       //   194: ifeq +20 -> 214
       //   197: new 139	java/lang/InterruptedException
@@ -293,8 +287,8 @@ public final class b
       //   211: aload 5
       //   213: athrow
       //   214: aload_0
-      //   215: getfield 21	com/tencent/mm/plugin/fav/b/a/b$a:rub	Lcom/tencent/mm/plugin/fav/b/a/b;
-      //   218: getfield 75	com/tencent/mm/plugin/fav/b/a/b:rtZ	Lcom/tencent/mm/sdk/e/e;
+      //   215: getfield 21	com/tencent/mm/plugin/fav/b/a/b$a:rCn	Lcom/tencent/mm/plugin/fav/b/a/b;
+      //   218: getfield 75	com/tencent/mm/plugin/fav/b/a/b:rCl	Lcom/tencent/mm/sdk/e/e;
       //   221: ldc 142
       //   223: aconst_null
       //   224: invokeinterface 148 3 0
@@ -307,8 +301,8 @@ public final class b
       //   244: invokestatic 137	java/lang/Thread:interrupted	()Z
       //   247: ifeq +62 -> 309
       //   250: aload_0
-      //   251: getfield 21	com/tencent/mm/plugin/fav/b/a/b$a:rub	Lcom/tencent/mm/plugin/fav/b/a/b;
-      //   254: getfield 96	com/tencent/mm/plugin/fav/b/a/b:rtY	Lcom/tencent/mm/plugin/fav/b/a/a;
+      //   251: getfield 21	com/tencent/mm/plugin/fav/b/a/b$a:rCn	Lcom/tencent/mm/plugin/fav/b/a/b;
+      //   254: getfield 96	com/tencent/mm/plugin/fav/b/a/b:rCk	Lcom/tencent/mm/plugin/fav/b/a/a;
       //   257: invokevirtual 151	com/tencent/mm/plugin/fav/b/a/a:commit	()V
       //   260: new 139	java/lang/InterruptedException
       //   263: dup
@@ -335,7 +329,7 @@ public final class b
       //   309: new 153	com/tencent/mm/plugin/fav/b/a/b$c
       //   312: dup
       //   313: aload_0
-      //   314: getfield 21	com/tencent/mm/plugin/fav/b/a/b$a:rub	Lcom/tencent/mm/plugin/fav/b/a/b;
+      //   314: getfield 21	com/tencent/mm/plugin/fav/b/a/b$a:rCn	Lcom/tencent/mm/plugin/fav/b/a/b;
       //   317: iconst_0
       //   318: invokespecial 155	com/tencent/mm/plugin/fav/b/a/b$c:<init>	(Lcom/tencent/mm/plugin/fav/b/a/b;B)V
       //   321: astore 6
@@ -346,9 +340,9 @@ public final class b
       //   332: invokestatic 162	com/tencent/mm/plugin/fav/b/a/b:a	(Lcom/tencent/mm/plugin/fav/b/a/b$c;)Z
       //   335: ifne -101 -> 234
       //   338: aload_0
-      //   339: getfield 26	com/tencent/mm/plugin/fav/b/a/b$a:ruc	Ljava/util/HashSet;
+      //   339: getfield 26	com/tencent/mm/plugin/fav/b/a/b$a:rCo	Ljava/util/HashSet;
       //   342: aload 6
-      //   344: getfield 166	com/tencent/mm/plugin/fav/b/a/b$c:dnz	J
+      //   344: getfield 166	com/tencent/mm/plugin/fav/b/a/b$c:doE	J
       //   347: invokestatic 121	java/lang/Long:valueOf	(J)Ljava/lang/Long;
       //   350: invokevirtual 169	java/util/HashSet:remove	(Ljava/lang/Object;)Z
       //   353: ifne -119 -> 234
@@ -356,12 +350,12 @@ public final class b
       //   357: bipush 50
       //   359: if_icmplt +274 -> 633
       //   362: aload_0
-      //   363: getfield 21	com/tencent/mm/plugin/fav/b/a/b$a:rub	Lcom/tencent/mm/plugin/fav/b/a/b;
-      //   366: getfield 96	com/tencent/mm/plugin/fav/b/a/b:rtY	Lcom/tencent/mm/plugin/fav/b/a/a;
+      //   363: getfield 21	com/tencent/mm/plugin/fav/b/a/b$a:rCn	Lcom/tencent/mm/plugin/fav/b/a/b;
+      //   366: getfield 96	com/tencent/mm/plugin/fav/b/a/b:rCk	Lcom/tencent/mm/plugin/fav/b/a/a;
       //   369: invokevirtual 151	com/tencent/mm/plugin/fav/b/a/a:commit	()V
       //   372: aload_0
-      //   373: getfield 21	com/tencent/mm/plugin/fav/b/a/b$a:rub	Lcom/tencent/mm/plugin/fav/b/a/b;
-      //   376: getfield 96	com/tencent/mm/plugin/fav/b/a/b:rtY	Lcom/tencent/mm/plugin/fav/b/a/a;
+      //   373: getfield 21	com/tencent/mm/plugin/fav/b/a/b$a:rCn	Lcom/tencent/mm/plugin/fav/b/a/b;
+      //   376: getfield 96	com/tencent/mm/plugin/fav/b/a/b:rCk	Lcom/tencent/mm/plugin/fav/b/a/a;
       //   379: invokevirtual 172	com/tencent/mm/plugin/fav/b/a/a:beginTransaction	()V
       //   382: iconst_0
       //   383: istore_2
@@ -369,7 +363,7 @@ public final class b
       //   385: istore_1
       //   386: iload_2
       //   387: aload_0
-      //   388: getfield 21	com/tencent/mm/plugin/fav/b/a/b$a:rub	Lcom/tencent/mm/plugin/fav/b/a/b;
+      //   388: getfield 21	com/tencent/mm/plugin/fav/b/a/b$a:rCn	Lcom/tencent/mm/plugin/fav/b/a/b;
       //   391: aload 6
       //   393: invokestatic 175	com/tencent/mm/plugin/fav/b/a/b:a	(Lcom/tencent/mm/plugin/fav/b/a/b;Lcom/tencent/mm/plugin/fav/b/a/b$c;)I
       //   396: iadd
@@ -378,10 +372,10 @@ public final class b
       //   399: istore_1
       //   400: aload_0
       //   401: aload_0
-      //   402: getfield 30	com/tencent/mm/plugin/fav/b/a/b$a:rue	I
+      //   402: getfield 30	com/tencent/mm/plugin/fav/b/a/b$a:rCq	I
       //   405: iconst_1
       //   406: iadd
-      //   407: putfield 30	com/tencent/mm/plugin/fav/b/a/b$a:rue	I
+      //   407: putfield 30	com/tencent/mm/plugin/fav/b/a/b$a:rCq	I
       //   410: iload_2
       //   411: istore_1
       //   412: goto -178 -> 234
@@ -391,7 +385,7 @@ public final class b
       //   421: ldc 177
       //   423: iconst_0
       //   424: anewarray 51	java/lang/Object
-      //   427: invokestatic 181	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+      //   427: invokestatic 181	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
       //   430: aload_0
       //   431: aload_0
       //   432: getfield 34	com/tencent/mm/plugin/fav/b/a/b$a:mFailedCount	I
@@ -404,11 +398,11 @@ public final class b
       //   448: aload 5
       //   450: invokeinterface 128 1 0
       //   455: aload_0
-      //   456: getfield 21	com/tencent/mm/plugin/fav/b/a/b$a:rub	Lcom/tencent/mm/plugin/fav/b/a/b;
-      //   459: getfield 96	com/tencent/mm/plugin/fav/b/a/b:rtY	Lcom/tencent/mm/plugin/fav/b/a/a;
+      //   456: getfield 21	com/tencent/mm/plugin/fav/b/a/b$a:rCn	Lcom/tencent/mm/plugin/fav/b/a/b;
+      //   459: getfield 96	com/tencent/mm/plugin/fav/b/a/b:rCk	Lcom/tencent/mm/plugin/fav/b/a/a;
       //   462: invokevirtual 151	com/tencent/mm/plugin/fav/b/a/a:commit	()V
       //   465: aload_0
-      //   466: getfield 26	com/tencent/mm/plugin/fav/b/a/b$a:ruc	Ljava/util/HashSet;
+      //   466: getfield 26	com/tencent/mm/plugin/fav/b/a/b$a:rCo	Ljava/util/HashSet;
       //   469: invokevirtual 185	java/util/HashSet:iterator	()Ljava/util/Iterator;
       //   472: astore 5
       //   474: aload 5
@@ -417,8 +411,8 @@ public final class b
       //   484: invokestatic 137	java/lang/Thread:interrupted	()Z
       //   487: ifeq +30 -> 517
       //   490: aload_0
-      //   491: getfield 21	com/tencent/mm/plugin/fav/b/a/b$a:rub	Lcom/tencent/mm/plugin/fav/b/a/b;
-      //   494: getfield 96	com/tencent/mm/plugin/fav/b/a/b:rtY	Lcom/tencent/mm/plugin/fav/b/a/a;
+      //   491: getfield 21	com/tencent/mm/plugin/fav/b/a/b$a:rCn	Lcom/tencent/mm/plugin/fav/b/a/b;
+      //   494: getfield 96	com/tencent/mm/plugin/fav/b/a/b:rCk	Lcom/tencent/mm/plugin/fav/b/a/a;
       //   497: invokevirtual 151	com/tencent/mm/plugin/fav/b/a/a:commit	()V
       //   500: new 139	java/lang/InterruptedException
       //   503: dup
@@ -432,12 +426,12 @@ public final class b
       //   518: bipush 50
       //   520: if_icmplt +110 -> 630
       //   523: aload_0
-      //   524: getfield 21	com/tencent/mm/plugin/fav/b/a/b$a:rub	Lcom/tencent/mm/plugin/fav/b/a/b;
-      //   527: getfield 96	com/tencent/mm/plugin/fav/b/a/b:rtY	Lcom/tencent/mm/plugin/fav/b/a/a;
+      //   524: getfield 21	com/tencent/mm/plugin/fav/b/a/b$a:rCn	Lcom/tencent/mm/plugin/fav/b/a/b;
+      //   527: getfield 96	com/tencent/mm/plugin/fav/b/a/b:rCk	Lcom/tencent/mm/plugin/fav/b/a/a;
       //   530: invokevirtual 151	com/tencent/mm/plugin/fav/b/a/a:commit	()V
       //   533: aload_0
-      //   534: getfield 21	com/tencent/mm/plugin/fav/b/a/b$a:rub	Lcom/tencent/mm/plugin/fav/b/a/b;
-      //   537: getfield 96	com/tencent/mm/plugin/fav/b/a/b:rtY	Lcom/tencent/mm/plugin/fav/b/a/a;
+      //   534: getfield 21	com/tencent/mm/plugin/fav/b/a/b$a:rCn	Lcom/tencent/mm/plugin/fav/b/a/b;
+      //   537: getfield 96	com/tencent/mm/plugin/fav/b/a/b:rCk	Lcom/tencent/mm/plugin/fav/b/a/a;
       //   540: invokevirtual 172	com/tencent/mm/plugin/fav/b/a/a:beginTransaction	()V
       //   543: iconst_0
       //   544: istore_1
@@ -447,9 +441,9 @@ public final class b
       //   555: invokevirtual 198	java/lang/Long:longValue	()J
       //   558: lstore_3
       //   559: aload_0
-      //   560: getfield 21	com/tencent/mm/plugin/fav/b/a/b$a:rub	Lcom/tencent/mm/plugin/fav/b/a/b;
-      //   563: getfield 96	com/tencent/mm/plugin/fav/b/a/b:rtY	Lcom/tencent/mm/plugin/fav/b/a/a;
-      //   566: getstatic 102	com/tencent/mm/plugin/fts/a/c:tsN	[I
+      //   560: getfield 21	com/tencent/mm/plugin/fav/b/a/b$a:rCn	Lcom/tencent/mm/plugin/fav/b/a/b;
+      //   563: getfield 96	com/tencent/mm/plugin/fav/b/a/b:rCk	Lcom/tencent/mm/plugin/fav/b/a/a;
+      //   566: getstatic 102	com/tencent/mm/plugin/fts/a/c:tDE	[I
       //   569: lload_3
       //   570: invokevirtual 202	com/tencent/mm/plugin/fav/b/a/a:c	([IJ)V
       //   573: iload_1
@@ -458,16 +452,16 @@ public final class b
       //   576: istore_1
       //   577: aload_0
       //   578: aload_0
-      //   579: getfield 32	com/tencent/mm/plugin/fav/b/a/b$a:ruf	I
+      //   579: getfield 32	com/tencent/mm/plugin/fav/b/a/b$a:rCr	I
       //   582: iconst_1
       //   583: iadd
-      //   584: putfield 32	com/tencent/mm/plugin/fav/b/a/b$a:ruf	I
+      //   584: putfield 32	com/tencent/mm/plugin/fav/b/a/b$a:rCr	I
       //   587: aload 5
       //   589: invokeinterface 204 1 0
       //   594: goto -120 -> 474
       //   597: aload_0
-      //   598: getfield 21	com/tencent/mm/plugin/fav/b/a/b$a:rub	Lcom/tencent/mm/plugin/fav/b/a/b;
-      //   601: getfield 96	com/tencent/mm/plugin/fav/b/a/b:rtY	Lcom/tencent/mm/plugin/fav/b/a/a;
+      //   598: getfield 21	com/tencent/mm/plugin/fav/b/a/b$a:rCn	Lcom/tencent/mm/plugin/fav/b/a/b;
+      //   601: getfield 96	com/tencent/mm/plugin/fav/b/a/b:rCk	Lcom/tencent/mm/plugin/fav/b/a/a;
       //   604: invokevirtual 151	com/tencent/mm/plugin/fav/b/a/a:commit	()V
       //   607: ldc 71
       //   609: invokestatic 66	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -543,17 +537,17 @@ public final class b
   final class b
     extends com.tencent.mm.plugin.fts.a.a.a
   {
-    private long rug;
+    private long rCs;
     
     public b(long paramLong)
     {
-      this.rug = paramLong;
+      this.rCs = paramLong;
     }
     
-    public final String bgU()
+    public final String bhC()
     {
       AppMethodBeat.i(101565);
-      String str = String.format("{favItemId: %d}", new Object[] { Long.valueOf(this.rug) });
+      String str = String.format("{favItemId: %d}", new Object[] { Long.valueOf(this.rCs) });
       AppMethodBeat.o(101565);
       return str;
     }
@@ -561,9 +555,9 @@ public final class b
     public final boolean execute()
     {
       AppMethodBeat.i(101564);
-      ad.d("MicroMsg.FTS.FTS5SearchFavoriteLogic", "start to delete favorite item");
-      long l = this.rug;
-      b.this.rtY.c(c.tsN, l);
+      ae.d("MicroMsg.FTS.FTS5SearchFavoriteLogic", "start to delete favorite item");
+      long l = this.rCs;
+      b.this.rCk.c(c.tDE, l);
       AppMethodBeat.o(101564);
       return true;
     }
@@ -574,21 +568,58 @@ public final class b
     }
   }
   
+  final class c
+  {
+    akn dFV;
+    long doE;
+    String dzZ;
+    long fOl;
+    ala rCt;
+    int type;
+    
+    private c() {}
+    
+    public final void convertFrom(Cursor paramCursor)
+    {
+      AppMethodBeat.i(101566);
+      this.doE = paramCursor.getLong(0);
+      this.type = paramCursor.getInt(1);
+      this.fOl = paramCursor.getLong(2);
+      this.dzZ = paramCursor.getString(3);
+      byte[] arrayOfByte = paramCursor.getBlob(4);
+      if ((arrayOfByte == null) || (arrayOfByte.length == 0)) {
+        ae.d("MicroMsg.FTS.FTS5SearchFavoriteLogic", "FavIndexItem protoData is null or data length is 0");
+      }
+      for (this.dFV = new akn();; this.dFV = ((akn)new akn().parseFrom(arrayOfByte)))
+      {
+        paramCursor = paramCursor.getBlob(5);
+        if ((paramCursor != null) && (paramCursor.length != 0)) {
+          break;
+        }
+        this.rCt = null;
+        AppMethodBeat.o(101566);
+        return;
+      }
+      this.rCt = ((ala)new ala().parseFrom(paramCursor));
+      AppMethodBeat.o(101566);
+    }
+  }
+  
   final class d
     extends com.tencent.mm.plugin.fts.a.a.a
   {
-    private long rug;
-    private int rui;
+    private long rCs;
+    private int rCu;
     
     private d(long paramLong)
     {
-      this.rug = paramLong;
+      this.rCs = paramLong;
     }
     
-    public final String bgU()
+    public final String bhC()
     {
       AppMethodBeat.i(101568);
-      String str = String.format("{favItemId: %d transactionCount: %d}", new Object[] { Long.valueOf(this.rug), Integer.valueOf(this.rui) });
+      String str = String.format("{favItemId: %d transactionCount: %d}", new Object[] { Long.valueOf(this.rCs), Integer.valueOf(this.rCu) });
       AppMethodBeat.o(101568);
       return str;
     }
@@ -596,14 +627,14 @@ public final class b
     public final boolean execute()
     {
       AppMethodBeat.i(101567);
-      if (b.this.rtZ == null)
+      if (b.this.rCl == null)
       {
-        ad.e("MicroMsg.FTS.FTS5SearchFavoriteLogic", "InsertFavItemTask: fav db is null");
+        ae.e("MicroMsg.FTS.FTS5SearchFavoriteLogic", "InsertFavItemTask: fav db is null");
         AppMethodBeat.o(101567);
         return true;
       }
-      ad.d("MicroMsg.FTS.FTS5SearchFavoriteLogic", "start to insert favorite item");
-      Cursor localCursor2 = b.this.rtZ.a("SELECT localId, type, updateTime, fromUser, favProto, tagProto FROM FavItemInfo WHERE localId = ? AND flag <> -1;", new String[] { String.valueOf(this.rug) }, 2);
+      ae.d("MicroMsg.FTS.FTS5SearchFavoriteLogic", "start to insert favorite item");
+      Cursor localCursor2 = b.this.rCl.a("SELECT localId, type, updateTime, fromUser, favProto, tagProto FROM FavItemInfo WHERE localId = ? AND flag <> -1;", new String[] { String.valueOf(this.rCs) }, 2);
       Cursor localCursor3 = localCursor2;
       Cursor localCursor1 = localCursor2;
       Object localObject1 = localCursor2;
@@ -633,19 +664,19 @@ public final class b
           }
           localCursor1 = localCursor2;
           localObject1 = localObject3;
-          b.this.rtY.beginTransaction();
+          b.this.rCk.beginTransaction();
           localCursor1 = localCursor2;
           localObject1 = localObject3;
-          long l = this.rug;
+          long l = this.rCs;
           localCursor1 = localCursor2;
           localObject1 = localObject3;
-          b.this.rtY.c(c.tsN, l);
+          b.this.rCk.c(c.tDE, l);
           localCursor1 = localCursor2;
           localObject1 = localObject3;
-          this.rui = b.a(b.this, localc);
+          this.rCu = b.a(b.this, localc);
           localCursor1 = localCursor2;
           localObject1 = localObject3;
-          b.this.rtY.commit();
+          b.this.rCk.commit();
         }
         if (localCursor3 != null) {
           localCursor3.close();
@@ -672,118 +703,6 @@ public final class b
     public final String getName()
     {
       return "InsertFavItemTask";
-    }
-  }
-  
-  final class e
-    extends i
-  {
-    e(com.tencent.mm.plugin.fts.a.a.j paramj)
-    {
-      super();
-    }
-    
-    public final void a(k paramk)
-    {
-      AppMethodBeat.i(101569);
-      paramk.tun = com.tencent.mm.plugin.fts.a.a.h.bn(this.tuY.query, true);
-      Object localObject1 = new HashMap();
-      Object localObject2 = b.this.rtY.a(paramk.tun, c.tsN, null, false, false);
-      while (((Cursor)localObject2).moveToNext())
-      {
-        com.tencent.mm.plugin.fts.a.a.n localn = new com.tencent.mm.plugin.fts.a.a.n().i((Cursor)localObject2);
-        com.tencent.mm.plugin.fts.a.a.m localm = (com.tencent.mm.plugin.fts.a.a.m)((HashMap)localObject1).get(Long.valueOf(localn.tvo));
-        if ((localm == null) || (d.f(c.ttg, localn.tug, localm.tug) < 0)) {
-          ((HashMap)localObject1).put(Long.valueOf(localn.tvo), localn);
-        }
-        if (Thread.interrupted())
-        {
-          ((Cursor)localObject2).close();
-          paramk = new InterruptedException();
-          AppMethodBeat.o(101569);
-          throw paramk;
-        }
-      }
-      ((Cursor)localObject2).close();
-      if (Thread.interrupted())
-      {
-        paramk = new InterruptedException();
-        AppMethodBeat.o(101569);
-        throw paramk;
-      }
-      paramk.tvl = new ArrayList(((HashMap)localObject1).size());
-      localObject1 = ((HashMap)localObject1).values().iterator();
-      while (((Iterator)localObject1).hasNext())
-      {
-        localObject2 = (com.tencent.mm.plugin.fts.a.a.n)((Iterator)localObject1).next();
-        paramk.tvl.add(localObject2);
-      }
-      if (this.tuY.tvi != null) {
-        Collections.sort(paramk.tvl, this.tuY.tvi);
-      }
-      AppMethodBeat.o(101569);
-    }
-    
-    public final String getName()
-    {
-      return "SearchFavoriteTask";
-    }
-  }
-  
-  final class f
-    extends i
-  {
-    f(com.tencent.mm.plugin.fts.a.a.j paramj)
-    {
-      super();
-    }
-    
-    public final void a(k paramk)
-    {
-      AppMethodBeat.i(101570);
-      paramk.tun = com.tencent.mm.plugin.fts.a.a.h.bn(this.tuY.query, true);
-      Object localObject1 = b.this.rtY;
-      Object localObject2 = paramk.tun;
-      int i = this.tuY.tvg;
-      localObject2 = ((com.tencent.mm.plugin.fts.a.a.h)localObject2).cSL();
-      localObject2 = String.format("SELECT %s.docid, type, subtype, entity_id, aux_index, timestamp FROM %s NOT INDEXED JOIN %s ON (%s.docid = %s.rowid) WHERE %s MATCH '%s' ORDER BY -timestamp, subtype limit " + (i + 1 + 1) + ";", new Object[] { ((a)localObject1).cSF(), ((a)localObject1).cSF(), ((a)localObject1).cSG(), ((a)localObject1).cSF(), ((a)localObject1).cSG(), ((a)localObject1).cSG(), localObject2 });
-      localObject1 = ((com.tencent.mm.plugin.fts.a.a)localObject1).tsD.rawQuery((String)localObject2, null);
-      paramk.tvl = new ArrayList();
-      localObject2 = new HashSet();
-      while (((Cursor)localObject1).moveToNext()) {
-        if (((HashSet)localObject2).add(String.valueOf(((Cursor)localObject1).getLong(3))))
-        {
-          com.tencent.mm.plugin.fts.a.a.n localn = new com.tencent.mm.plugin.fts.a.a.n().i((Cursor)localObject1);
-          paramk.tvl.add(localn);
-          if (paramk.tvl.size() <= this.tuY.tvg) {
-            if (Thread.interrupted())
-            {
-              ((Cursor)localObject1).close();
-              paramk = new InterruptedException();
-              AppMethodBeat.o(101570);
-              throw paramk;
-            }
-          }
-        }
-      }
-      ((Cursor)localObject1).close();
-      if (Thread.interrupted())
-      {
-        paramk = new InterruptedException();
-        AppMethodBeat.o(101570);
-        throw paramk;
-      }
-      AppMethodBeat.o(101570);
-    }
-    
-    public final int getId()
-    {
-      return 9;
-    }
-    
-    public final String getName()
-    {
-      return "SearchTopFavoriteTask";
     }
   }
 }

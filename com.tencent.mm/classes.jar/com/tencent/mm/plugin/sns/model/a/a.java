@@ -2,71 +2,71 @@ package com.tencent.mm.plugin.sns.model.a;
 
 import android.util.SparseArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.data.m;
-import com.tencent.mm.plugin.sns.data.q;
-import com.tencent.mm.plugin.sns.model.ag;
-import com.tencent.mm.plugin.sns.model.ao;
-import com.tencent.mm.protocal.protobuf.byn;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.bj;
+import com.tencent.mm.plugin.sns.data.n;
+import com.tencent.mm.plugin.sns.data.r;
+import com.tencent.mm.plugin.sns.model.ah;
+import com.tencent.mm.plugin.sns.model.ap;
+import com.tencent.mm.protocal.protobuf.bzh;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.bk;
 
 public final class a
 {
-  public String dzb;
+  public String dAg;
   public String md5 = "";
   public String mediaId = "";
   public int mediaType = 0;
   public int size;
   public String url = "";
-  public m zcG = null;
-  public SparseArray<m> zcH;
-  public String zdt = "";
-  public String zdu = "";
-  public SparseArray<byn> zdw;
-  public String zhn = "";
-  public String zhr = "";
-  public byn zhs;
-  public boolean znX = false;
-  public boolean znY = false;
-  public int znZ = 0;
-  public bj zoa;
-  public float zob = 0.0F;
+  public boolean zFm = false;
+  public boolean zFn = false;
+  public int zFo = 0;
+  public bk zFp;
+  public float zFq = 0.0F;
+  public n ztw = null;
+  public SparseArray<n> ztx;
+  public String zuj = "";
+  public String zuk = "";
+  public SparseArray<bzh> zum;
+  public String zyc = "";
+  public String zyg = "";
+  public bzh zyh;
   
   public a(String paramString)
   {
     this.mediaId = paramString;
   }
   
-  public a(String paramString, SparseArray<byn> paramSparseArray, SparseArray<m> paramSparseArray1, int paramInt)
+  public a(String paramString, SparseArray<bzh> paramSparseArray, SparseArray<n> paramSparseArray1, int paramInt)
   {
-    this.dzb = paramString;
-    this.zdw = paramSparseArray;
-    this.zcH = paramSparseArray1;
+    this.dAg = paramString;
+    this.zum = paramSparseArray;
+    this.ztx = paramSparseArray1;
     this.size = paramInt;
   }
   
-  public final String dVg()
+  public final String dYH()
   {
     AppMethodBeat.i(96064);
-    if (this.znZ == 4)
+    if (this.zFo == 4)
     {
-      str = q.o(this.zhs);
+      str = r.o(this.zyh);
       AppMethodBeat.o(96064);
       return str;
     }
-    if (this.znZ == 6)
+    if (this.zFo == 6)
     {
-      str = q.p(this.zhs);
+      str = r.p(this.zyh);
       AppMethodBeat.o(96064);
       return str;
     }
-    if (this.znX)
+    if (this.zFm)
     {
-      str = q.m(this.zhs);
+      str = r.m(this.zyh);
       AppMethodBeat.o(96064);
       return str;
     }
-    String str = q.l(this.zhs);
+    String str = r.l(this.zyh);
     AppMethodBeat.o(96064);
     return str;
   }
@@ -74,16 +74,16 @@ public final class a
   public final String getPath()
   {
     AppMethodBeat.i(96065);
-    if (!bt.isNullOrNil(this.zdt))
+    if (!bu.isNullOrNil(this.zuj))
     {
-      str = this.zdt;
+      str = this.zuj;
       AppMethodBeat.o(96065);
       return str;
     }
-    if (bt.isNullOrNil(this.zhn)) {
+    if (bu.isNullOrNil(this.zyc)) {
       init();
     }
-    String str = this.zhn;
+    String str = this.zyc;
     AppMethodBeat.o(96065);
     return str;
   }
@@ -91,15 +91,15 @@ public final class a
   public final boolean init()
   {
     AppMethodBeat.i(96063);
-    this.zhn = ao.jo(ag.getAccSnsPath(), this.mediaId);
+    this.zyc = ap.jv(ah.getAccSnsPath(), this.mediaId);
     AppMethodBeat.o(96063);
     return true;
   }
   
-  public final a ju(String paramString1, String paramString2)
+  public final a jB(String paramString1, String paramString2)
   {
-    this.zdt = paramString1;
-    this.zdu = paramString2;
+    this.zuj = paramString1;
+    this.zuk = paramString2;
     return this;
   }
 }

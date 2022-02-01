@@ -3,7 +3,7 @@ package com.tencent.tinker.lib.util;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
-import androidx.annotation.Keep;
+import com.tencent.tinker.anno.Keep;
 import com.tencent.tinker.loader.shareutil.ShareTinkerLog;
 import com.tencent.tinker.loader.shareutil.ShareTinkerLog.TinkerLogImp;
 import java.text.SimpleDateFormat;
@@ -140,22 +140,22 @@ public final class TinkerLogInlineFence
               default: 
                 return;
               case 2: 
-                TinkerLogInlineFence.1.this.Mhs.v((String)arrayOfObject[2], str + (String)arrayOfObject[3], (Object[])arrayOfObject[4]);
+                TinkerLogInlineFence.1.this.MEp.v((String)arrayOfObject[2], str + (String)arrayOfObject[3], (Object[])arrayOfObject[4]);
                 return;
               case 3: 
-                TinkerLogInlineFence.1.this.Mhs.d((String)arrayOfObject[2], str + (String)arrayOfObject[3], (Object[])arrayOfObject[4]);
+                TinkerLogInlineFence.1.this.MEp.d((String)arrayOfObject[2], str + (String)arrayOfObject[3], (Object[])arrayOfObject[4]);
                 return;
               case 4: 
-                TinkerLogInlineFence.1.this.Mhs.i((String)arrayOfObject[2], str + (String)arrayOfObject[3], (Object[])arrayOfObject[4]);
+                TinkerLogInlineFence.1.this.MEp.i((String)arrayOfObject[2], str + (String)arrayOfObject[3], (Object[])arrayOfObject[4]);
                 return;
               case 5: 
-                TinkerLogInlineFence.1.this.Mhs.w((String)arrayOfObject[2], str + (String)arrayOfObject[3], (Object[])arrayOfObject[4]);
+                TinkerLogInlineFence.1.this.MEp.w((String)arrayOfObject[2], str + (String)arrayOfObject[3], (Object[])arrayOfObject[4]);
                 return;
               case 6: 
-                TinkerLogInlineFence.1.this.Mhs.e((String)arrayOfObject[2], str + (String)arrayOfObject[3], (Object[])arrayOfObject[4]);
+                TinkerLogInlineFence.1.this.MEp.e((String)arrayOfObject[2], str + (String)arrayOfObject[3], (Object[])arrayOfObject[4]);
                 return;
               }
-              TinkerLogInlineFence.1.this.Mhs.printErrStackTrace((String)arrayOfObject[2], (Throwable)arrayOfObject[3], str + (String)arrayOfObject[4], (Object[])arrayOfObject[5]);
+              TinkerLogInlineFence.1.this.MEp.printErrStackTrace((String)arrayOfObject[2], (Throwable)arrayOfObject[3], str + (String)arrayOfObject[4], (Object[])arrayOfObject[5]);
             }
           });
         }

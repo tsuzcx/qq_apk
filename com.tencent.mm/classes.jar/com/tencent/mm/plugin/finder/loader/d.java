@@ -2,12 +2,15 @@ package com.tencent.mm.plugin.finder.loader;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.i.c;
+import com.tencent.mm.i.e;
 import com.tencent.mm.i.g.a;
 import com.tencent.mm.loader.d.b.b;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ay;
-import com.tencent.mm.vfs.i;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.az;
+import com.tencent.mm.vfs.o;
+import d.g.b.ad;
 import d.l;
 import java.io.ByteArrayOutputStream;
 import java.net.MalformedURLException;
@@ -16,20 +19,20 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/loader/FinderCdnDownloader;", "Lcom/tencent/mm/loader/common/IDataFetcher;", "Lcom/tencent/mm/plugin/finder/loader/FinderLoaderData;", "()V", "attachSnsImgTaskInfo", "", "data", "imageUrl", "", "tmpFilePath", "taskInfo", "Lcom/tencent/mm/cdn/keep_SnsImageTaskInfo;", "isDcIp", "referer", "getStringArray", "", "strList", "", "(Ljava/util/List;)[Ljava/lang/String;", "loadDataImp", "", "item", "Lcom/tencent/mm/loader/model/data/DataItem;", "fileNameCreator", "Lcom/tencent/mm/loader/listener/ILoadFileNameCreator;", "callback", "Lcom/tencent/mm/loader/common/IDataFetcher$IDataReady2;", "Companion", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/loader/FinderCdnDownloader;", "Lcom/tencent/mm/loader/common/IDataFetcher;", "Lcom/tencent/mm/plugin/finder/loader/FinderLoaderData;", "()V", "attachSnsImgTaskInfo", "", "data", "imageUrl", "", "tmpFilePath", "taskInfo", "Lcom/tencent/mm/cdn/keep_SnsImageTaskInfo;", "isDcIp", "referer", "getStringArray", "", "strList", "", "(Ljava/util/List;)[Ljava/lang/String;", "loadDataImp", "", "item", "Lcom/tencent/mm/loader/model/data/DataItem;", "fileNameCreator", "Lcom/tencent/mm/loader/listener/ILoadFileNameCreator;", "callback", "Lcom/tencent/mm/loader/common/IDataFetcher$IDataReady2;", "Companion", "plugin-finder_release"})
 public final class d
   extends com.tencent.mm.loader.d.b<k>
 {
-  public static final a siy;
+  public static final a srt;
   
   static
   {
     AppMethodBeat.i(166308);
-    siy = new a((byte)0);
+    srt = new a((byte)0);
     AppMethodBeat.o(166308);
   }
   
-  private static boolean a(k paramk, String paramString1, String paramString2, com.tencent.mm.i.e parame, String paramString3)
+  private static boolean a(k paramk, String paramString1, String paramString2, e parame, String paramString3)
   {
     AppMethodBeat.i(166306);
     try
@@ -39,36 +42,36 @@ public final class d
       int i = com.tencent.mm.network.b.a(str, false, (List)localArrayList1);
       ArrayList localArrayList2 = new ArrayList();
       int j = com.tencent.mm.network.b.a(str, true, (List)localArrayList2);
-      parame.field_mediaId = ai.ee(paramString1);
+      parame.field_mediaId = aj.ej(paramString1);
       parame.url = paramString1;
-      parame.snsCipherKey = paramk.cCy();
+      parame.snsCipherKey = paramk.cEk();
       parame.host = str;
       parame.referer = paramString3;
-      parame.fIZ = paramString2;
-      parame.fJa = dF((List)localArrayList1);
-      parame.fJb = dF((List)localArrayList2);
-      parame.fJc = i;
-      parame.fJd = j;
+      parame.fLd = paramString2;
+      parame.fLe = dI((List)localArrayList1);
+      parame.fLf = dI((List)localArrayList2);
+      parame.fLg = i;
+      parame.fLh = j;
       parame.isColdSnsData = false;
-      parame.signalQuality = ay.getStrength(aj.getContext());
+      parame.signalQuality = az.getStrength(ak.getContext());
       parame.snsScene = "";
-      parame.ePC = 3;
+      parame.eRn = 3;
       parame.appType = 150;
       parame.fileType = 20201;
-      com.tencent.mm.sdk.platformtools.ad.i("Finder.FinderCdnDownloader", "attachSnsImgTaskInfo decodeKey:%s, imageUrl:%s", new Object[] { paramk.cCy(), paramString1 });
+      ae.i("Finder.FinderCdnDownloader", "attachSnsImgTaskInfo decodeKey:%s, imageUrl:%s", new Object[] { paramk.cEk(), paramString1 });
       AppMethodBeat.o(166306);
       return true;
     }
     catch (MalformedURLException paramk)
     {
-      com.tencent.mm.sdk.platformtools.ad.printErrStackTrace("Finder.FinderCdnDownloader", (Throwable)paramk, "", new Object[0]);
-      com.tencent.mm.sdk.platformtools.ad.w("Finder.FinderCdnDownloader", "attachSnsImgTaskInfo fail:".concat(String.valueOf(paramk)));
+      ae.printErrStackTrace("Finder.FinderCdnDownloader", (Throwable)paramk, "", new Object[0]);
+      ae.w("Finder.FinderCdnDownloader", "attachSnsImgTaskInfo fail:".concat(String.valueOf(paramk)));
       AppMethodBeat.o(166306);
     }
     return false;
   }
   
-  private static String[] dF(List<String> paramList)
+  private static String[] dI(List<String> paramList)
   {
     AppMethodBeat.i(166307);
     String[] arrayOfString = new String[paramList.size()];
@@ -90,52 +93,52 @@ public final class d
     d.g.b.p.h(paramg, "fileNameCreator");
     d.g.b.p.h(paramb, "callback");
     paramg = (k)parama.value();
-    if (paramg.cCx() == com.tencent.mm.plugin.finder.storage.r.syD)
+    if (paramg.cEj() == com.tencent.mm.plugin.finder.storage.r.sJu)
     {
-      parama = paramg.getUrl() + paramg.cCz();
-      com.tencent.mm.sdk.platformtools.ad.i("Finder.FinderCdnDownloader", "[loadByCdn] finder image, " + paramg.cCx() + ' ' + paramg.cCz() + " uniqueValue=" + paramg.aeA() + ' ' + parama);
+      parama = paramg.getUrl() + paramg.cEl();
+      ae.i("Finder.FinderCdnDownloader", "[loadByCdn] finder image, " + paramg.cEj() + ' ' + paramg.cEl() + " uniqueValue=" + paramg.aeM() + ' ' + parama);
     }
     for (;;)
     {
-      Object localObject1 = d.g.b.ad.MLZ;
-      int i = com.tencent.mm.protocal.d.Fnj;
-      d.g.b.p.g(com.tencent.mm.kernel.g.ajA(), "MMKernel.account()");
-      localObject1 = String.format("http://weixin.qq.com/?version=%d&uin=%s&nettype=%d&signal=%d%s", Arrays.copyOf(new Object[] { Integer.valueOf(i), com.tencent.mm.b.p.getString(com.tencent.mm.kernel.a.getUin()), Integer.valueOf(ay.getNetTypeForStat(aj.getContext())), Integer.valueOf(ay.getStrength(aj.getContext())), "" }, 5));
+      Object localObject1 = ad.Njc;
+      int i = com.tencent.mm.protocal.d.FFH;
+      d.g.b.p.g(com.tencent.mm.kernel.g.ajP(), "MMKernel.account()");
+      localObject1 = String.format("http://weixin.qq.com/?version=%d&uin=%s&nettype=%d&signal=%d%s", Arrays.copyOf(new Object[] { Integer.valueOf(i), com.tencent.mm.b.p.getString(com.tencent.mm.kernel.a.getUin()), Integer.valueOf(az.getNetTypeForStat(ak.getContext())), Integer.valueOf(az.getStrength(ak.getContext())), "" }, 5));
       d.g.b.p.g(localObject1, "java.lang.String.format(format, *args)");
-      com.tencent.mm.i.e locale = new com.tencent.mm.i.e();
-      locale.fJi = "task_FinderCdnDownloader";
-      Object localObject2 = com.tencent.mm.plugin.finder.utils.r.sNc;
+      e locale = new e();
+      locale.fLl = "task_FinderCdnDownloader";
+      Object localObject2 = com.tencent.mm.plugin.finder.utils.r.sYn;
       d.g.b.p.g(paramg, "data");
       localObject2 = com.tencent.mm.plugin.finder.utils.r.a(paramg);
-      i.deleteFile((String)localObject2);
-      i.aYg(new com.tencent.mm.vfs.e((String)localObject2).getParent());
+      o.deleteFile((String)localObject2);
+      o.aZI(new com.tencent.mm.vfs.k((String)localObject2).getParent());
       if (!a(paramg, parama, (String)localObject2, locale, (String)localObject1)) {
         break label461;
       }
-      locale.fJj = ((g.a)new b(paramg, paramb, (String)localObject2));
-      if (!com.tencent.mm.ao.f.aGI().e((com.tencent.mm.i.g)locale)) {
+      locale.fLm = ((g.a)new b(paramg, paramb, (String)localObject2));
+      if (!com.tencent.mm.an.f.aGZ().e((com.tencent.mm.i.g)locale)) {
         break;
       }
-      com.tencent.mm.sdk.platformtools.ad.i("Finder.FinderCdnDownloader", "SubCoreCdnTransport addRecvTask suc");
+      ae.i("Finder.FinderCdnDownloader", "SubCoreCdnTransport addRecvTask suc");
       AppMethodBeat.o(166305);
       return;
-      parama = paramg.akW() + paramg.cCA();
-      com.tencent.mm.sdk.platformtools.ad.i("Finder.FinderCdnDownloader", "[loadByCdn] finder image, " + paramg.cCx() + ' ' + paramg.cCA() + " uniqueValue=" + paramg.aeA() + ' ' + parama);
+      parama = paramg.all() + paramg.cEm();
+      ae.i("Finder.FinderCdnDownloader", "[loadByCdn] finder image, " + paramg.cEj() + ' ' + paramg.cEm() + " uniqueValue=" + paramg.aeM() + ' ' + parama);
     }
-    com.tencent.mm.sdk.platformtools.ad.w("Finder.FinderCdnDownloader", "SubCoreCdnTransport addRecvTask failed");
+    ae.w("Finder.FinderCdnDownloader", "SubCoreCdnTransport addRecvTask failed");
     paramb.onError();
     AppMethodBeat.o(166305);
     return;
     label461:
-    com.tencent.mm.sdk.platformtools.ad.w("Finder.FinderCdnDownloader", "attachSnsImgTaskInfo failed");
+    ae.w("Finder.FinderCdnDownloader", "attachSnsImgTaskInfo failed");
     paramb.onError();
     AppMethodBeat.o(166305);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/loader/FinderCdnDownloader$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/loader/FinderCdnDownloader$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
   public static final class a {}
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/finder/loader/FinderCdnDownloader$loadDataImp$1", "Lcom/tencent/mm/cdn/keep_TaskInfo$TaskCallback;", "callback", "", "mediaId", "", "startRet", "progressInfo", "Lcom/tencent/mm/cdn/keep_ProgressInfo;", "sceneResult", "Lcom/tencent/mm/cdn/keep_SceneResult;", "onlyCheckExist", "", "decodePrepareResponse", "", "inbuf", "getCdnAuthInfo", "", "buff", "Ljava/io/ByteArrayOutputStream;", "plugin-finder_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/finder/loader/FinderCdnDownloader$loadDataImp$1", "Lcom/tencent/mm/cdn/keep_TaskInfo$TaskCallback;", "callback", "", "mediaId", "", "startRet", "progressInfo", "Lcom/tencent/mm/cdn/keep_ProgressInfo;", "sceneResult", "Lcom/tencent/mm/cdn/keep_SceneResult;", "onlyCheckExist", "", "decodePrepareResponse", "", "inbuf", "getCdnAuthInfo", "", "buff", "Ljava/io/ByteArrayOutputStream;", "plugin-finder_release"})
   public static final class b
     implements g.a
   {
@@ -145,16 +148,16 @@ public final class d
     {
       AppMethodBeat.i(166302);
       d.g.b.p.h(paramString, "mediaId");
-      com.tencent.mm.sdk.platformtools.ad.i("Finder.FinderCdnDownloader", "mediaId " + paramString + " startRet " + paramInt + " sceneResult " + paramd + " onlyCheckExist " + paramBoolean);
+      ae.i("Finder.FinderCdnDownloader", "mediaId " + paramString + " startRet " + paramInt + " sceneResult " + paramd + " onlyCheckExist " + paramBoolean);
       if (paramd != null)
       {
-        if (this.siz == null)
+        if (this.sru == null)
         {
           AppMethodBeat.o(166302);
           return 0;
         }
         paramString = paramb;
-        paramc = com.tencent.mm.loader.h.a.aw(this.siB, "");
+        paramc = com.tencent.mm.loader.h.a.ax(this.srw, "");
         d.g.b.p.g(paramc, "HttpFileResponse.create(tmpFilePath, \"\")");
         paramString.a((com.tencent.mm.loader.h.f)paramc);
       }

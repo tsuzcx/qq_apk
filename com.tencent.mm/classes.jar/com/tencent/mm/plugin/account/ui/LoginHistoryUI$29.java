@@ -12,7 +12,7 @@ final class LoginHistoryUI$29
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
     AppMethodBeat.i(128110);
-    LoginHistoryUI.b(this.jlq);
+    LoginHistoryUI.b(this.jok);
     AppMethodBeat.o(128110);
     return true;
   }

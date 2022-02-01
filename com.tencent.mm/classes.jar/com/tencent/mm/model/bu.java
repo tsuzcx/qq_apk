@@ -1,131 +1,58 @@
 package com.tencent.mm.model;
 
-import android.database.Cursor;
-import android.database.MergeCursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.storage.bp;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mm.az.a;
+import com.tencent.mm.az.a.a;
+import com.tencent.mm.storage.bv;
+import java.util.LinkedList;
+import java.util.Map;
 
 public final class bu
+  extends a
 {
-  private e db;
-  private bp hHX;
-  
-  public bu(e parame, bp parambp)
+  public bu(Map<String, String> paramMap, bv parambv)
   {
-    this.db = parame;
-    this.hHX = parambp;
+    super(paramMap, parambv);
   }
   
-  private static String a(String paramString, ArrayList<String> paramArrayList1, ArrayList<String> paramArrayList2, ArrayList<String> paramArrayList3)
+  public static void aAt()
   {
-    AppMethodBeat.i(20390);
-    StringBuffer localStringBuffer = new StringBuffer();
-    localStringBuffer.append(" and (username in (");
-    localStringBuffer.append("select chatroomname from chatroom where ");
-    if ((paramArrayList2 != null) && (paramArrayList2.size() != 0))
+    AppMethodBeat.i(123974);
+    a.a.a("reportbizlocation", new a.a()
     {
-      paramArrayList2 = paramArrayList2.iterator();
-      while (paramArrayList2.hasNext())
+      public final a a(Map<String, String> paramAnonymousMap, bv paramAnonymousbv)
       {
-        String str = (String)paramArrayList2.next();
-        localStringBuffer.append("chatroomname != '" + str + "' and ");
+        AppMethodBeat.i(123972);
+        paramAnonymousMap = new bu(paramAnonymousMap, paramAnonymousbv);
+        AppMethodBeat.o(123972);
+        return paramAnonymousMap;
       }
-    }
-    localStringBuffer.append("(memberlist like '%" + paramString + "%'");
-    paramString = paramArrayList1.iterator();
-    while (paramString.hasNext())
+    });
+    AppMethodBeat.o(123974);
+  }
+  
+  public final boolean aAs()
+  {
+    AppMethodBeat.i(123973);
+    if (this.values == null)
     {
-      paramArrayList1 = (String)paramString.next();
-      localStringBuffer.append(" or memberlist like '%" + paramArrayList1 + "%'");
+      AppMethodBeat.o(123973);
+      return false;
     }
-    if ((paramArrayList3 != null) && (paramArrayList3.size() != 0))
+    if (!this.TYPE.equals("reportbizlocation"))
     {
-      paramString = paramArrayList3.iterator();
-      while (paramString.hasNext())
-      {
-        paramArrayList1 = (String)paramString.next();
-        localStringBuffer.append(" or chatroomname = '" + paramArrayList1 + "'");
-      }
+      AppMethodBeat.o(123973);
+      return false;
     }
-    localStringBuffer.append(")))");
-    paramString = localStringBuffer.toString();
-    AppMethodBeat.o(20390);
-    return paramString;
-  }
-  
-  public final Cursor a(String paramString1, String paramString2, List<String> paramList1, List<String> paramList2)
-  {
-    AppMethodBeat.i(20386);
-    paramString1 = a(paramString1, paramString2, paramList1, true, 2, paramList2);
-    AppMethodBeat.o(20386);
-    return paramString1;
-  }
-  
-  public final Cursor a(String paramString1, String paramString2, List<String> paramList, boolean paramBoolean)
-  {
-    AppMethodBeat.i(20385);
-    paramString1 = a(paramString1, paramString2, paramList, paramBoolean, 1, null);
-    AppMethodBeat.o(20385);
-    return paramString1;
-  }
-  
-  public final Cursor a(String paramString1, String paramString2, List<String> paramList1, boolean paramBoolean, int paramInt, List<String> paramList2)
-  {
-    AppMethodBeat.i(20388);
-    Object localObject = "select  username, alias, conRemark, domainList, nickname, pyInitial, quanPin, showHead, type, weiboFlag, weiboNickname, conRemarkPYFull, conRemarkPYShort, lvbuff, verifyFlag, encryptUsername, chatroomFlag, deleteFlag, contactLabelIds, descWordingId, openImAppid, sourceExtInfo, rowid  from rcontact ";
-    if (paramInt == 2) {
-      localObject = "select 2, *,rowid from rcontact ";
-    }
-    paramString2 = (String)localObject + this.hHX.f(paramString2, null, paramList1) + this.hHX.aTs(paramString1) + this.hHX.aFv();
-    ad.v("Micro.SimpleSearchConversationModel", paramString2);
-    paramString2 = this.db.rawQuery(paramString2, null);
-    ArrayList localArrayList;
-    if (paramBoolean)
-    {
-      localObject = new ArrayList();
-      localArrayList = new ArrayList();
-      while (paramString2.moveToNext())
-      {
-        String str = paramString2.getString(paramString2.getColumnIndex("username"));
-        if (!w.vF(str)) {
-          ((ArrayList)localObject).add(str);
-        } else {
-          localArrayList.add(str);
-        }
-      }
-      if ((paramList2 != null) && (paramList2.size() != 0)) {
-        ((ArrayList)localObject).addAll(paramList2);
-      }
-      if (((ArrayList)localObject).size() == 0) {}
-    }
-    for (paramString1 = new MergeCursor(new Cursor[] { paramString2, a(paramString1, (ArrayList)localObject, localArrayList, null, paramList1) });; paramString1 = paramString2)
-    {
-      AppMethodBeat.o(20388);
-      return paramString1;
-    }
-  }
-  
-  public final Cursor a(String paramString, ArrayList<String> paramArrayList1, ArrayList<String> paramArrayList2, ArrayList<String> paramArrayList3, List<String> paramList)
-  {
-    AppMethodBeat.i(20389);
-    paramString = "select  username, alias, conRemark, domainList, nickname, pyInitial, quanPin, showHead, type, weiboFlag, weiboNickname, conRemarkPYFull, conRemarkPYShort, lvbuff, verifyFlag, encryptUsername, chatroomFlag, deleteFlag, contactLabelIds, descWordingId, openImAppid, sourceExtInfo, rowid  from rcontact " + this.hHX.f("@all.contact.android", "", paramList) + a(paramString, paramArrayList1, paramArrayList2, paramArrayList3) + this.hHX.aFv();
-    ad.v("Micro.SimpleSearchConversationModel", "roomsSql ".concat(String.valueOf(paramString)));
-    paramString = this.db.rawQuery(paramString, null);
-    AppMethodBeat.o(20389);
-    return paramString;
-  }
-  
-  public final Cursor b(String paramString1, String paramString2, List<String> paramList1, List<String> paramList2)
-  {
-    AppMethodBeat.i(20387);
-    paramString1 = a(paramString1, paramString2, paramList1, true, 2, paramList2);
-    AppMethodBeat.o(20387);
-    return paramString1;
+    String str2 = (String)this.values.get(".sysmsg.reportbizlocation.text");
+    String str1 = (String)this.values.get(".sysmsg.reportbizlocation.link.text");
+    str2 = str2 + str1;
+    this.ikJ.add(str1);
+    this.ikK.addFirst(Integer.valueOf(str2.length() - str1.length()));
+    this.ikL.add(Integer.valueOf(str2.length()));
+    this.ikH = str2;
+    AppMethodBeat.o(123973);
+    return false;
   }
 }
 

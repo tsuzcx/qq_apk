@@ -3,38 +3,38 @@ package com.tencent.mm.plugin.gallery.model;
 public class GalleryItem$PrivateAlbumItem
   extends GalleryItem.AlbumItem
 {
-  public s.a tHb;
+  public s.a tRS;
   
   public GalleryItem$PrivateAlbumItem(s.a parama)
   {
-    super(parama.tGK, parama.tHG);
-    this.tHb = parama;
+    super(parama.tRB, parama.tSx);
+    this.tRS = parama;
   }
   
-  public final String axA()
+  public final String axP()
   {
-    return this.tHb.tHI;
+    return this.tRS.tSz;
   }
   
-  public final String cVj()
+  public final String cXO()
   {
-    return this.tHb.tHI;
+    return this.tRS.tSz;
   }
   
-  public final long cVk()
+  public final long cXP()
   {
-    return this.tHb.tHH;
+    return this.tRS.tSy;
   }
   
-  public final int cVl()
+  public final int cXQ()
   {
     int j = 1;
-    s.b localb = this.tHb.tHJ;
+    s.b localb = this.tRS.tSA;
     int i = j;
     if (localb != null)
     {
       i = j;
-      if (localb.tHL) {
+      if (localb.tSC) {
         i = 2;
       }
     }

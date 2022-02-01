@@ -6,8 +6,8 @@ import com.tencent.mm.sdk.b.b;
 public final class os
   extends b
 {
-  public a dCJ;
-  public b dCK;
+  public a dDJ;
+  public b dDK;
   
   public os()
   {
@@ -16,27 +16,29 @@ public final class os
   
   private os(byte paramByte)
   {
-    AppMethodBeat.i(130032);
-    this.dCJ = new a();
-    this.dCK = new b();
-    this.IbR = false;
+    AppMethodBeat.i(130031);
+    this.dDJ = new a();
+    this.dDK = new b();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(130032);
+    AppMethodBeat.o(130031);
   }
   
   public static final class a
   {
+    public boolean dDL = false;
+    public boolean dDM = false;
     public int type;
   }
   
   public static final class b
   {
-    public boolean dCI = false;
+    public boolean dDN = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.g.a.os
  * JD-Core Version:    0.7.0.1
  */

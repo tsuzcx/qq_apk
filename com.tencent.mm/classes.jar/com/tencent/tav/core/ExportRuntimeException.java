@@ -10,8 +10,8 @@ public class ExportRuntimeException
   public ExportRuntimeException(int paramInt, Throwable paramThrowable)
   {
     this(new ExportErrorStatus(paramInt, paramThrowable));
-    AppMethodBeat.i(217936);
-    AppMethodBeat.o(217936);
+    AppMethodBeat.i(214575);
+    AppMethodBeat.o(214575);
   }
   
   public ExportRuntimeException(ExportErrorStatus paramExportErrorStatus)

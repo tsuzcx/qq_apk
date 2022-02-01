@@ -8,31 +8,31 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cc.a;
+import com.tencent.mm.cb.a;
 import com.tencent.mm.plugin.appbrand.config.WxaAttributes.WxaEntryInfo;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ak;
 import java.util.LinkedList;
 import java.util.List;
 
 public class WxaBindBizInfoView
   extends LinearLayout
 {
-  private static int mTw;
-  private static int mTx;
-  private ImageView kAX;
-  private TextView lCL;
-  private List<WxaAttributes.WxaEntryInfo> mTq;
-  private View mTr;
-  private TextView mTs;
-  private LinearLayout mTt;
-  private ViewGroup mTu;
-  private View mTv;
+  private static int mYE;
+  private static int mYF;
+  private ImageView kEm;
+  private TextView lHk;
+  private TextView mYA;
+  private LinearLayout mYB;
+  private ViewGroup mYC;
+  private View mYD;
+  private List<WxaAttributes.WxaEntryInfo> mYy;
+  private View mYz;
   
   static
   {
     AppMethodBeat.i(49377);
-    mTw = a.fromDPToPix(aj.getContext(), 15);
-    mTx = a.fromDPToPix(aj.getContext(), 30);
+    mYE = a.fromDPToPix(ak.getContext(), 15);
+    mYF = a.fromDPToPix(ak.getContext(), 30);
     AppMethodBeat.o(49377);
   }
   
@@ -55,21 +55,21 @@ public class WxaBindBizInfoView
   private void init()
   {
     AppMethodBeat.i(49376);
-    this.mTq = new LinkedList();
+    this.mYy = new LinkedList();
     View localView = View.inflate(getContext(), 2131493032, this);
-    this.mTr = localView.findViewById(2131300108);
-    this.kAX = ((ImageView)localView.findViewById(2131300882));
-    this.lCL = ((TextView)localView.findViewById(2131305906));
-    this.mTs = ((TextView)localView.findViewById(2131298797));
-    this.mTv = localView.findViewById(2131302454);
-    this.mTt = ((LinearLayout)localView.findViewById(2131298737));
-    this.mTu = ((ViewGroup)localView.findViewById(2131301138));
+    this.mYz = localView.findViewById(2131300108);
+    this.kEm = ((ImageView)localView.findViewById(2131300882));
+    this.lHk = ((TextView)localView.findViewById(2131305906));
+    this.mYA = ((TextView)localView.findViewById(2131298797));
+    this.mYD = localView.findViewById(2131302454);
+    this.mYB = ((LinearLayout)localView.findViewById(2131298737));
+    this.mYC = ((ViewGroup)localView.findViewById(2131301138));
     AppMethodBeat.o(49376);
   }
   
   public List<WxaAttributes.WxaEntryInfo> getWxaEntryInfoList()
   {
-    return this.mTq;
+    return this.mYy;
   }
 }
 

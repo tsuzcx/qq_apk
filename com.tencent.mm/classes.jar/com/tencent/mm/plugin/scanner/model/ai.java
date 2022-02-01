@@ -1,267 +1,249 @@
 package com.tencent.mm.plugin.scanner.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.io.StringReader;
-import java.util.ArrayList;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.List;
-import org.xmlpull.v1.XmlPullParser;
-import org.xmlpull.v1.XmlPullParserFactory;
 
 public final class ai
 {
-  private ah yoO;
+  public static ai yEN;
+  public String bVF;
+  public String eQY;
+  public String kML;
+  public String kMT;
+  public String title;
+  public String url;
+  public String yEA;
+  public a yEB;
+  public a yEC;
+  public a yED;
+  public a yEE;
+  public List<String> yEF;
+  public List<String> yEG;
+  public List<String> yEH;
+  public List<String> yEI;
+  public List<String> yEJ;
+  public String yEK;
+  public String yEL;
+  public String yEM;
+  public b yEw;
+  c yEx;
+  public c yEy;
+  c yEz;
   
-  public ai()
+  public static final class a
   {
-    AppMethodBeat.i(51655);
-    this.yoO = new ah();
-    AppMethodBeat.o(51655);
-  }
-  
-  private static ah.a f(XmlPullParser paramXmlPullParser)
-  {
-    AppMethodBeat.i(51657);
-    paramXmlPullParser = new ah.a(paramXmlPullParser.getAttributeValue(null, "postOfficeBox"), paramXmlPullParser.getAttributeValue(null, "extendedAddress"), paramXmlPullParser.getAttributeValue(null, "street"), paramXmlPullParser.getAttributeValue(null, "locality"), paramXmlPullParser.getAttributeValue(null, "region"), paramXmlPullParser.getAttributeValue(null, "postalCode"), paramXmlPullParser.getAttributeValue(null, "country"));
-    AppMethodBeat.o(51657);
-    return paramXmlPullParser;
-  }
-  
-  private static ah.c g(XmlPullParser paramXmlPullParser)
-  {
-    AppMethodBeat.i(51658);
-    paramXmlPullParser = new ah.c(paramXmlPullParser.getAttributeValue(null, "type"), paramXmlPullParser.getAttributeValue(null, "buffer"));
-    AppMethodBeat.o(51658);
-    return paramXmlPullParser;
-  }
-  
-  public final void awL(String paramString)
-  {
-    AppMethodBeat.i(51656);
-    Object localObject = XmlPullParserFactory.newInstance();
-    ((XmlPullParserFactory)localObject).setNamespaceAware(true);
-    XmlPullParser localXmlPullParser = ((XmlPullParserFactory)localObject).newPullParser();
-    localXmlPullParser.setInput(new StringReader(paramString));
-    int i = localXmlPullParser.getEventType();
-    localObject = "";
-    if (i != 1)
+    private String country;
+    private String hZS;
+    private String iqx;
+    private String kMX;
+    private String kMY;
+    private String yEO;
+    private String yEP;
+    
+    public a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7)
     {
-      paramString = (String)localObject;
-      switch (i)
+      AppMethodBeat.i(51651);
+      String str = paramString1;
+      if (paramString1 == null) {
+        str = "";
+      }
+      this.yEO = str;
+      paramString1 = paramString2;
+      if (paramString2 == null) {
+        paramString1 = "";
+      }
+      this.yEP = paramString1;
+      paramString1 = paramString3;
+      if (paramString3 == null) {
+        paramString1 = "";
+      }
+      this.kMX = paramString1;
+      paramString1 = paramString4;
+      if (paramString4 == null) {
+        paramString1 = "";
+      }
+      this.hZS = paramString1;
+      paramString1 = paramString5;
+      if (paramString5 == null) {
+        paramString1 = "";
+      }
+      this.iqx = paramString1;
+      paramString1 = paramString6;
+      if (paramString6 == null) {
+        paramString1 = "";
+      }
+      this.kMY = paramString1;
+      paramString1 = paramString7;
+      if (paramString7 == null) {
+        paramString1 = "";
+      }
+      this.country = paramString1;
+      AppMethodBeat.o(51651);
+    }
+    
+    public final String bkK()
+    {
+      AppMethodBeat.i(51652);
+      if ((bu.aSm(this.yEO)) || (bu.aSm(this.yEP)) || (bu.aSm(this.kMX)) || (bu.aSm(this.hZS)) || (bu.aSm(this.iqx)) || (bu.aSm(this.country)))
       {
-      default: 
-        paramString = (String)localObject;
+        localObject = new StringBuilder();
+        if (this.country.length() > 0)
+        {
+          ((StringBuilder)localObject).append(this.country);
+          ((StringBuilder)localObject).append("\n");
+        }
+        if (this.iqx.length() > 0) {
+          ((StringBuilder)localObject).append(this.iqx + " ");
+        }
+        if (this.hZS.length() > 0) {
+          ((StringBuilder)localObject).append(this.hZS);
+        }
+        if ((this.iqx.length() > 0) || (this.hZS.length() > 0)) {
+          ((StringBuilder)localObject).append("\n");
+        }
+        if (this.kMX.length() > 0)
+        {
+          ((StringBuilder)localObject).append(this.kMX + " ");
+          ((StringBuilder)localObject).append("\n");
+        }
+        if (this.yEP.length() > 0)
+        {
+          ((StringBuilder)localObject).append(this.yEP);
+          ((StringBuilder)localObject).append("\n");
+        }
+        if (this.yEO.length() > 0)
+        {
+          ((StringBuilder)localObject).append(this.yEO);
+          ((StringBuilder)localObject).append("\n");
+        }
+        if (this.kMY.length() > 0) {
+          ((StringBuilder)localObject).append(this.kMY);
+        }
+        str = ((StringBuilder)localObject).toString();
+        localObject = str;
+        if (str.endsWith("\n")) {
+          localObject = str.substring(0, str.length() - 1);
+        }
+        AppMethodBeat.o(51652);
+        return localObject;
+      }
+      Object localObject = new StringBuilder();
+      if (this.yEO.length() > 0)
+      {
+        ((StringBuilder)localObject).append(this.yEO);
+        ((StringBuilder)localObject).append("\n");
+      }
+      if (this.yEP.length() > 0)
+      {
+        ((StringBuilder)localObject).append(this.yEP);
+        ((StringBuilder)localObject).append("\n");
+      }
+      if (this.kMX.length() > 0)
+      {
+        ((StringBuilder)localObject).append(this.kMX);
+        ((StringBuilder)localObject).append("\n");
+      }
+      if (this.hZS.length() > 0) {
+        ((StringBuilder)localObject).append(this.hZS + " ");
+      }
+      if (this.iqx.length() > 0) {
+        ((StringBuilder)localObject).append(this.iqx + " ");
+      }
+      if (this.kMY.length() > 0) {
+        ((StringBuilder)localObject).append(this.kMY);
+      }
+      if ((this.hZS.length() > 0) || (this.iqx.length() > 0)) {
+        ((StringBuilder)localObject).append("\n");
+      }
+      if (this.country.length() > 0) {
+        ((StringBuilder)localObject).append(this.country);
+      }
+      String str = ((StringBuilder)localObject).toString();
+      localObject = str;
+      if (str.endsWith("\n")) {
+        localObject = str.substring(0, str.length() - 1);
+      }
+      AppMethodBeat.o(51652);
+      return localObject;
+    }
+  }
+  
+  public static final class b
+  {
+    private String firstName;
+    private String lastName;
+    private String middleName;
+    
+    public b(String paramString1, String paramString2, String paramString3)
+    {
+      AppMethodBeat.i(51653);
+      String str = paramString1;
+      if (paramString1 == null) {
+        str = "";
+      }
+      this.firstName = str;
+      paramString1 = paramString2;
+      if (paramString2 == null) {
+        paramString1 = "";
+      }
+      this.middleName = paramString1;
+      paramString1 = paramString3;
+      if (paramString3 == null) {
+        paramString1 = "";
+      }
+      this.lastName = paramString1;
+      AppMethodBeat.o(51653);
+    }
+    
+    public final String bkK()
+    {
+      AppMethodBeat.i(51654);
+      Object localObject = new StringBuilder();
+      if ((bu.aSm(this.firstName)) || (bu.aSm(this.middleName)) || (bu.aSm(this.lastName)))
+      {
+        if (this.lastName.trim().length() > 0) {
+          ((StringBuilder)localObject).append(this.lastName);
+        }
+        if (this.middleName.trim().length() > 0) {
+          ((StringBuilder)localObject).append(this.middleName);
+        }
+        if (this.firstName.trim().length() > 0) {
+          ((StringBuilder)localObject).append(this.firstName);
+        }
       }
       for (;;)
       {
-        i = localXmlPullParser.next();
-        localObject = paramString;
-        break;
-        localObject = localXmlPullParser.getName();
-        if (((String)localObject).equals("name"))
-        {
-          this.yoO.yox = new ah.b(localXmlPullParser.getAttributeValue(null, "firstName"), localXmlPullParser.getAttributeValue(null, "middleName"), localXmlPullParser.getAttributeValue(null, "lastName"));
-          paramString = (String)localObject;
+        localObject = ((StringBuilder)localObject).toString();
+        AppMethodBeat.o(51654);
+        return localObject;
+        if (this.firstName.trim().length() > 0) {
+          ((StringBuilder)localObject).append(this.firstName);
         }
-        else if (((String)localObject).equals("address"))
+        if (this.middleName.trim().length() > 0)
         {
-          this.yoO.yoC = f(localXmlPullParser);
-          paramString = (String)localObject;
+          ((StringBuilder)localObject).append(" ");
+          ((StringBuilder)localObject).append(this.middleName);
         }
-        else if (((String)localObject).equals("deliveryAddress"))
+        if (this.lastName.trim().length() > 0)
         {
-          this.yoO.yoD = f(localXmlPullParser);
-          paramString = (String)localObject;
-        }
-        else if (((String)localObject).equals("homeAddress"))
-        {
-          this.yoO.yoE = f(localXmlPullParser);
-          paramString = (String)localObject;
-        }
-        else if (((String)localObject).equals("workAddress"))
-        {
-          this.yoO.yoF = f(localXmlPullParser);
-          paramString = (String)localObject;
-        }
-        else if (((String)localObject).equals("photo"))
-        {
-          this.yoO.yoy = g(localXmlPullParser);
-          paramString = (String)localObject;
-        }
-        else if (((String)localObject).equals("logo"))
-        {
-          this.yoO.yoz = g(localXmlPullParser);
-          paramString = (String)localObject;
-        }
-        else
-        {
-          paramString = (String)localObject;
-          if (((String)localObject).equals("sound"))
-          {
-            this.yoO.yoA = g(localXmlPullParser);
-            paramString = (String)localObject;
-            continue;
-            String str = localXmlPullParser.getText();
-            paramString = (String)localObject;
-            if (str != null)
-            {
-              paramString = (String)localObject;
-              if (str.trim().length() > 0)
-              {
-                str = str.trim();
-                if (((String)localObject).equals("nickName"))
-                {
-                  this.yoO.bVF = str;
-                  paramString = (String)localObject;
-                }
-                else if (((String)localObject).equals("photoUrl"))
-                {
-                  this.yoO.kJw = str;
-                  paramString = (String)localObject;
-                }
-                else if (((String)localObject).equals("birthday"))
-                {
-                  this.yoO.yoB = str;
-                  paramString = (String)localObject;
-                }
-                else
-                {
-                  ah localah;
-                  if (((String)localObject).equals("mobilePhoneNumber"))
-                  {
-                    localah = this.yoO;
-                    if (localah.yoG == null) {
-                      localah.yoG = new ArrayList();
-                    }
-                    paramString = (String)localObject;
-                    if (str != null)
-                    {
-                      paramString = (String)localObject;
-                      if (!localah.yoG.contains(str))
-                      {
-                        localah.yoG.add(str);
-                        paramString = (String)localObject;
-                      }
-                    }
-                  }
-                  else if (((String)localObject).equals("homePhoneNumber"))
-                  {
-                    localah = this.yoO;
-                    if (localah.yoH == null) {
-                      localah.yoH = new ArrayList();
-                    }
-                    paramString = (String)localObject;
-                    if (str != null)
-                    {
-                      paramString = (String)localObject;
-                      if (!localah.yoH.contains(str))
-                      {
-                        localah.yoH.add(str);
-                        paramString = (String)localObject;
-                      }
-                    }
-                  }
-                  else if (((String)localObject).equals("workPhoneNumber"))
-                  {
-                    localah = this.yoO;
-                    if (localah.yoI == null) {
-                      localah.yoI = new ArrayList();
-                    }
-                    paramString = (String)localObject;
-                    if (str != null)
-                    {
-                      paramString = (String)localObject;
-                      if (!localah.yoI.contains(str))
-                      {
-                        localah.yoI.add(str);
-                        paramString = (String)localObject;
-                      }
-                    }
-                  }
-                  else if (((String)localObject).equals("telAVPhoneNumber"))
-                  {
-                    localah = this.yoO;
-                    if (localah.yoJ == null) {
-                      localah.yoJ = new ArrayList();
-                    }
-                    paramString = (String)localObject;
-                    if (str != null)
-                    {
-                      paramString = (String)localObject;
-                      if (!localah.yoJ.contains(str))
-                      {
-                        localah.yoJ.add(str);
-                        paramString = (String)localObject;
-                      }
-                    }
-                  }
-                  else if (((String)localObject).equals("phoneNumber"))
-                  {
-                    localah = this.yoO;
-                    if (localah.yoK == null) {
-                      localah.yoK = new ArrayList();
-                    }
-                    paramString = (String)localObject;
-                    if (str != null)
-                    {
-                      paramString = (String)localObject;
-                      if (!localah.yoK.contains(str))
-                      {
-                        localah.yoK.add(str);
-                        paramString = (String)localObject;
-                      }
-                    }
-                  }
-                  else if (((String)localObject).equals("email"))
-                  {
-                    this.yoO.ePn = str;
-                    paramString = (String)localObject;
-                  }
-                  else if (((String)localObject).equals("title"))
-                  {
-                    this.yoO.title = str;
-                    paramString = (String)localObject;
-                  }
-                  else if (((String)localObject).equals("role"))
-                  {
-                    this.yoO.yoL = str;
-                    paramString = (String)localObject;
-                  }
-                  else if (((String)localObject).equals("agent"))
-                  {
-                    this.yoO.yoM = str;
-                    paramString = (String)localObject;
-                  }
-                  else if (((String)localObject).equals("note"))
-                  {
-                    this.yoO.yoN = str;
-                    paramString = (String)localObject;
-                  }
-                  else if (((String)localObject).equals("url"))
-                  {
-                    this.yoO.url = str;
-                    paramString = (String)localObject;
-                  }
-                  else
-                  {
-                    paramString = (String)localObject;
-                    if (((String)localObject).equals("organization"))
-                    {
-                      this.yoO.kJE = str;
-                      paramString = (String)localObject;
-                      continue;
-                      ah.yoO = this.yoO;
-                      paramString = (String)localObject;
-                    }
-                  }
-                }
-              }
-            }
-          }
+          ((StringBuilder)localObject).append(" ");
+          ((StringBuilder)localObject).append(this.lastName);
         }
       }
     }
-    ah.yoO = this.yoO;
-    AppMethodBeat.o(51656);
+  }
+  
+  public static final class c
+  {
+    public String hnC;
+    public String yEQ;
+    
+    public c(String paramString1, String paramString2)
+    {
+      this.hnC = paramString1;
+      this.yEQ = paramString2;
+    }
   }
 }
 

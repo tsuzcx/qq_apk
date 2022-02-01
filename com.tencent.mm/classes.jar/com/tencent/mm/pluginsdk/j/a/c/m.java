@@ -5,8 +5,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class m
 {
-  public final String EPe;
-  public final Exception EQN;
+  public final String Fhz;
+  public final Exception Fji;
   public final long aNU;
   public final Bundle bundle;
   public final String contentType;
@@ -18,7 +18,7 @@ public final class m
   
   public m(e parame, long paramLong, String paramString)
   {
-    this(parame.afw(), parame.faC(), parame.getURL(), parame.getFilePath(), paramLong, paramString, 2, null, -1);
+    this(parame.afK(), parame.feq(), parame.getURL(), parame.getFilePath(), paramLong, paramString, 2, null, -1);
     AppMethodBeat.i(152032);
     AppMethodBeat.o(152032);
   }
@@ -30,14 +30,14 @@ public final class m
   
   public m(e parame, Exception paramException, int paramInt1, int paramInt2)
   {
-    this(parame.afw(), parame.faC(), parame.getURL(), parame.getFilePath(), -1L, null, paramInt2, paramException, paramInt1);
+    this(parame.afK(), parame.feq(), parame.getURL(), parame.getFilePath(), -1L, null, paramInt2, paramException, paramInt1);
     AppMethodBeat.i(152033);
     AppMethodBeat.o(152033);
   }
   
   public m(l paraml, long paramLong)
   {
-    this(paraml.afw(), paraml.EPe, paraml.url, paraml.getFilePath(), paramLong, null, 2, null, -1);
+    this(paraml.afK(), paraml.Fhz, paraml.url, paraml.getFilePath(), paramLong, null, 2, null, -1);
     AppMethodBeat.i(152031);
     AppMethodBeat.o(152031);
   }
@@ -52,13 +52,13 @@ public final class m
     AppMethodBeat.i(152030);
     this.bundle = new Bundle();
     this.groupId = paramString1;
-    this.EPe = paramString2;
+    this.Fhz = paramString2;
     this.url = paramString3;
     this.filePath = paramString4;
     this.aNU = paramLong;
     this.contentType = paramString5;
     this.status = paramInt1;
-    this.EQN = paramException;
+    this.Fji = paramException;
     this.httpStatusCode = paramInt2;
     AppMethodBeat.o(152030);
   }
@@ -76,14 +76,14 @@ public final class m
   public final String toString()
   {
     AppMethodBeat.i(152034);
-    String str = "NetworkResponse{urlKey='" + this.EPe + '\'' + ", url='" + this.url + '\'' + ", filePath='" + this.filePath + '\'' + ", contentLength=" + this.aNU + ", contentType='" + this.contentType + '\'' + ", status=" + this.status + ", e=" + this.EQN + '}';
+    String str = "NetworkResponse{urlKey='" + this.Fhz + '\'' + ", url='" + this.url + '\'' + ", filePath='" + this.filePath + '\'' + ", contentLength=" + this.aNU + ", contentType='" + this.contentType + '\'' + ", status=" + this.status + ", e=" + this.Fji + '}';
     AppMethodBeat.o(152034);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.j.a.c.m
  * JD-Core Version:    0.7.0.1
  */

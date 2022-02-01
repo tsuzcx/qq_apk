@@ -1,10 +1,10 @@
 package com.tencent.mm.plugin.appbrand.jsapi.f;
 
 import com.tencent.mm.plugin.appbrand.jsapi.a;
-import com.tencent.mm.plugin.appbrand.q;
+import com.tencent.mm.plugin.appbrand.r;
 
 public final class g
-  extends a<q>
+  extends a<r>
 {
   private static final int CTRL_INDEX = 77;
   private static final String NAME = "setKeyboardValue";

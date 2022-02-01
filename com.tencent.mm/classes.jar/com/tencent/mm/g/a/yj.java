@@ -6,7 +6,8 @@ import com.tencent.mm.sdk.b.b;
 public final class yj
   extends b
 {
-  public a dME;
+  public a dNJ;
+  public b dNK;
   
   public yj()
   {
@@ -15,23 +16,33 @@ public final class yj
   
   private yj(byte paramByte)
   {
-    AppMethodBeat.i(91224);
-    this.dME = new a();
-    this.IbR = false;
+    AppMethodBeat.i(130930);
+    this.dNJ = new a();
+    this.dNK = new b();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(91224);
+    AppMethodBeat.o(130930);
   }
   
   public static final class a
   {
+    public String action;
     public String appId;
-    public int dMF;
-    public String dMw;
-    public String dlu;
+    public String buffer;
+    public String cVJ;
+    public String dNL;
+    public String dNM;
+    public int dNN;
     public String nonceStr;
-    public String packageExt;
     public String signType;
-    public String timeStamp;
+    public String url;
+  }
+  
+  public static final class b
+  {
+    public String buffer;
+    public Runnable dNO;
+    public int retCode;
   }
 }
 

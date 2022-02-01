@@ -8,64 +8,62 @@ import android.text.Spanned;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.api.c;
-import com.tencent.mm.aw.a.a;
-import com.tencent.mm.aw.a.a.c.a;
-import com.tencent.mm.aw.q;
+import com.tencent.mm.av.a.a;
+import com.tencent.mm.av.a.a.c.a;
+import com.tencent.mm.av.q;
 import com.tencent.mm.g.c.aw;
-import com.tencent.mm.o.b;
 import com.tencent.mm.plugin.fts.a.a.e;
 import com.tencent.mm.pluginsdk.ui.a.b;
-import com.tencent.mm.protocal.protobuf.acg;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.am;
+import com.tencent.mm.protocal.protobuf.acp;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.an;
 import java.util.List;
 
 public final class d
 {
-  private static ap hxM;
+  private static aq hAA;
   
   static
   {
     AppMethodBeat.i(5566);
-    hxM = new ap(Looper.getMainLooper());
+    hAA = new aq(Looper.getMainLooper());
     AppMethodBeat.o(5566);
   }
   
-  public static c a(c paramc, acg paramacg)
+  public static com.tencent.mm.api.c a(com.tencent.mm.api.c paramc, acp paramacp)
   {
-    if (paramacg != null)
+    if (paramacp != null)
     {
-      paramc.field_brandFlag = paramacg.jdq;
-      paramc.field_brandIconURL = paramacg.jdt;
-      paramc.field_brandInfo = paramacg.jds;
-      paramc.field_extInfo = paramacg.jdr;
+      paramc.field_brandFlag = paramacp.jgj;
+      paramc.field_brandIconURL = paramacp.jgm;
+      paramc.field_brandInfo = paramacp.jgl;
+      paramc.field_extInfo = paramacp.jgk;
     }
     return paramc;
   }
   
-  public static void a(ImageView paramImageView, am paramam, String paramString, boolean paramBoolean)
+  public static void a(ImageView paramImageView, an paraman, String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(5565);
-    if ((!paramBoolean) && (b.lM(paramam.field_type)))
+    if ((!paramBoolean) && (com.tencent.mm.contact.c.lO(paraman.field_type)))
     {
-      a.b.d(paramImageView, paramam.field_username);
+      a.b.d(paramImageView, paraman.field_username);
       AppMethodBeat.o(5565);
       return;
     }
-    paramam = new c.a();
-    paramam.idD = 2131231342;
-    paramam.idq = true;
-    paramam.hfi = true;
-    q.aIJ().a(paramString, paramImageView, paramam.aJc());
+    paraman = new c.a();
+    paraman.igv = 2131231342;
+    paraman.igj = true;
+    paraman.hhW = true;
+    q.aJb().a(paramString, paramImageView, paraman.aJu());
     AppMethodBeat.o(5565);
   }
   
-  public static Spanned b(Context paramContext, String paramString, List<String> paramList)
+  public static Spanned c(Context paramContext, String paramString, List<String> paramList)
   {
     AppMethodBeat.i(5563);
-    if (bt.isNullOrNil(paramString))
+    if (bu.isNullOrNil(paramString))
     {
       AppMethodBeat.o(5563);
       return null;
@@ -77,13 +75,13 @@ public final class d
       return paramContext;
     }
     paramContext = com.tencent.mm.plugin.fts.a.f.a(e.a(paramString, paramList));
-    if ((paramContext.tuE instanceof Spannable))
+    if ((paramContext.tFv instanceof Spannable))
     {
-      paramContext = (Spannable)paramContext.tuE;
+      paramContext = (Spannable)paramContext.tFv;
       AppMethodBeat.o(5563);
       return paramContext;
     }
-    paramContext = new SpannableString(paramContext.tuE);
+    paramContext = new SpannableString(paramContext.tFv);
     AppMethodBeat.o(5563);
     return paramContext;
   }
@@ -106,6 +104,13 @@ public final class d
     paramTextView.setText(paramCharSequence);
     AppMethodBeat.o(5564);
     return true;
+  }
+  
+  public static class a
+  {
+    public ImageView fQl;
+    public String iconUrl;
+    public String username;
   }
 }
 

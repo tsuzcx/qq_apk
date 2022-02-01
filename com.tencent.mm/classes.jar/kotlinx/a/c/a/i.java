@@ -8,53 +8,53 @@ import kotlinx.a.c.b;
 import kotlinx.a.c.f;
 import kotlinx.a.n;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/serialization/json/internal/JsonTreeListInput;", "Lkotlinx/serialization/json/internal/AbstractJsonTreeInput;", "json", "Lkotlinx/serialization/json/Json;", "value", "Lkotlinx/serialization/json/JsonArray;", "(Lkotlinx/serialization/json/Json;Lkotlinx/serialization/json/JsonArray;)V", "currentIndex", "", "size", "getValue", "()Lkotlinx/serialization/json/JsonArray;", "currentElement", "Lkotlinx/serialization/json/JsonElement;", "tag", "", "decodeElementIndex", "descriptor", "Lkotlinx/serialization/SerialDescriptor;", "elementName", "desc", "index", "kotlinx-serialization-runtime"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/serialization/json/internal/JsonTreeListInput;", "Lkotlinx/serialization/json/internal/AbstractJsonTreeInput;", "json", "Lkotlinx/serialization/json/Json;", "value", "Lkotlinx/serialization/json/JsonArray;", "(Lkotlinx/serialization/json/Json;Lkotlinx/serialization/json/JsonArray;)V", "currentIndex", "", "size", "getValue", "()Lkotlinx/serialization/json/JsonArray;", "currentElement", "Lkotlinx/serialization/json/JsonElement;", "tag", "", "decodeElementIndex", "descriptor", "Lkotlinx/serialization/SerialDescriptor;", "elementName", "desc", "index", "kotlinx-serialization-runtime"})
 final class i
   extends a
 {
-  private final b NOm;
+  private final b Ols;
   private int currentIndex;
   private final int size;
   
   public i(kotlinx.a.c.a parama, b paramb)
   {
     super(parama, (f)paramb, (byte)0);
-    AppMethodBeat.i(191357);
-    this.NOm = paramb;
-    this.size = this.NOm.NNm.size();
+    AppMethodBeat.i(199945);
+    this.Ols = paramb;
+    this.size = this.Ols.Oks.size();
     this.currentIndex = -1;
-    AppMethodBeat.o(191357);
+    AppMethodBeat.o(199945);
   }
   
   public final int b(n paramn)
   {
-    AppMethodBeat.i(191356);
+    AppMethodBeat.i(199944);
     p.h(paramn, "descriptor");
     if (this.currentIndex < this.size - 1)
     {
       this.currentIndex += 1;
       int i = this.currentIndex;
-      AppMethodBeat.o(191356);
+      AppMethodBeat.o(199944);
       return i;
     }
-    AppMethodBeat.o(191356);
+    AppMethodBeat.o(199944);
     return -1;
   }
   
-  protected final f bdo(String paramString)
+  protected final f beS(String paramString)
   {
-    AppMethodBeat.i(191355);
+    AppMethodBeat.i(199943);
     p.h(paramString, "tag");
-    paramString = this.NOm.alL(Integer.parseInt(paramString));
-    AppMethodBeat.o(191355);
+    paramString = this.Ols.amv(Integer.parseInt(paramString));
+    AppMethodBeat.o(199943);
     return paramString;
   }
   
   public final String m(n paramn, int paramInt)
   {
-    AppMethodBeat.i(191354);
+    AppMethodBeat.i(199942);
     p.h(paramn, "desc");
-    AppMethodBeat.o(191354);
+    AppMethodBeat.o(199942);
     return String.valueOf(paramInt);
   }
 }

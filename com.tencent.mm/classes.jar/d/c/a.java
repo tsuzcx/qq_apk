@@ -5,21 +5,21 @@ import d.g.b.p;
 import d.l;
 import d.z;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"thread", "Ljava/lang/Thread;", "start", "", "isDaemon", "contextClassLoader", "Ljava/lang/ClassLoader;", "name", "", "priority", "", "block", "Lkotlin/Function0;", "", "getOrSet", "T", "", "Ljava/lang/ThreadLocal;", "default", "(Ljava/lang/ThreadLocal;Lkotlin/jvm/functions/Function0;)Ljava/lang/Object;", "kotlin-stdlib"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"thread", "Ljava/lang/Thread;", "start", "", "isDaemon", "contextClassLoader", "Ljava/lang/ClassLoader;", "name", "", "priority", "", "block", "Lkotlin/Function0;", "", "getOrSet", "T", "", "Ljava/lang/ThreadLocal;", "default", "(Ljava/lang/ThreadLocal;Lkotlin/jvm/functions/Function0;)Ljava/lang/Object;", "kotlin-stdlib"})
 public final class a
 {
   public static Thread P(d.g.a.a<z> parama)
   {
-    AppMethodBeat.i(199606);
+    AppMethodBeat.i(188698);
     p.h(parama, "block");
     parama = new a(parama);
     parama.start();
     parama = (Thread)parama;
-    AppMethodBeat.o(199606);
+    AppMethodBeat.o(188698);
     return parama;
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"kotlin/concurrent/ThreadsKt$thread$thread$1", "Ljava/lang/Thread;", "run", "", "kotlin-stdlib"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"kotlin/concurrent/ThreadsKt$thread$thread$1", "Ljava/lang/Thread;", "run", "", "kotlin-stdlib"})
   public static final class a
     extends Thread
   {
@@ -28,7 +28,7 @@ public final class a
     public final void run()
     {
       AppMethodBeat.i(168704);
-      this.gFS.invoke();
+      this.gIz.invoke();
       AppMethodBeat.o(168704);
     }
   }

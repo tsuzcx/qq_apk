@@ -4,137 +4,137 @@ import android.content.Context;
 import android.os.Bundle;
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.e.a;
-import com.tencent.mm.al.e.c;
-import com.tencent.mm.al.q;
-import com.tencent.mm.g.a.ng;
-import com.tencent.mm.model.au;
-import com.tencent.mm.model.ba;
-import com.tencent.mm.model.cd.a;
+import com.tencent.mm.ak.e.a;
+import com.tencent.mm.ak.e.c;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.g.a.nh;
+import com.tencent.mm.model.aw;
+import com.tencent.mm.model.bc;
+import com.tencent.mm.model.cf.a;
 import com.tencent.mm.platformtools.z;
 import com.tencent.mm.plugin.report.service.g;
 import com.tencent.mm.protocal.protobuf.cv;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ai;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.aj;
 import java.util.Map;
 
 public final class a
-  implements cd.a
+  implements cf.a
 {
-  com.tencent.mm.sdk.b.c BgZ;
+  com.tencent.mm.sdk.b.c Byx;
   
   public a()
   {
     AppMethodBeat.i(28865);
-    this.BgZ = new com.tencent.mm.sdk.b.c() {};
+    this.Byx = new com.tencent.mm.sdk.b.c() {};
     AppMethodBeat.o(28865);
   }
   
   public final void a(e.a parama)
   {
     AppMethodBeat.i(28866);
-    ad.i("MicroMsg.JDSysMsgNotifyLsn", "receivemsg jd");
-    parama = parama.gqE;
+    ae.i("MicroMsg.JDSysMsgNotifyLsn", "receivemsg jd");
+    parama = parama.gte;
     if (parama == null)
     {
-      ad.e("MicroMsg.JDSysMsgNotifyLsn", "onPreAddMessage cmdAM is null");
+      ae.e("MicroMsg.JDSysMsgNotifyLsn", "onPreAddMessage cmdAM is null");
       AppMethodBeat.o(28866);
       return;
     }
     final c localc = new c();
-    localc.azH(z.a(parama.Fvk));
-    ad.i("MicroMsg.JDSysMsgNotifyLsn", "bizType " + bt.bI(localc.Bhc, ""));
-    if (bt.isNullOrNil(localc.Bhc)) {
-      ad.e("MicroMsg.JDSysMsgNotifyLsn", "bizTye is null or nil");
+    localc.aAY(z.a(parama.FNI));
+    ae.i("MicroMsg.JDSysMsgNotifyLsn", "bizType " + bu.bI(localc.ByA, ""));
+    if (bu.isNullOrNil(localc.ByA)) {
+      ae.e("MicroMsg.JDSysMsgNotifyLsn", "bizTye is null or nil");
     }
     for (;;)
     {
-      ba.aBQ();
-      com.tencent.mm.model.c.ajl().fqc();
+      bc.aCg();
+      com.tencent.mm.model.c.ajA().fuc();
       AppMethodBeat.o(28866);
       return;
-      if (bt.isNullOrNil(localc.Bhd))
+      if (bu.isNullOrNil(localc.ByB))
       {
-        ad.e("MicroMsg.JDSysMsgNotifyLsn", "activity id is null");
+        ae.e("MicroMsg.JDSysMsgNotifyLsn", "activity id is null");
       }
-      else if (!localc.a(d.emI().emN()))
+      else if (!localc.a(d.eqr().eqw()))
       {
-        ad.i("MicroMsg.JDSysMsgNotifyLsn", "fo zu baoyou! the activityid is same");
+        ae.i("MicroMsg.JDSysMsgNotifyLsn", "fo zu baoyou! the activityid is same");
       }
-      else if (!d.emI().emQ())
+      else if (!d.eqr().eqz())
       {
-        ad.e("MicroMsg.JDSysMsgNotifyLsn", "no config entrance, ignore msg");
+        ae.e("MicroMsg.JDSysMsgNotifyLsn", "no config entrance, ignore msg");
       }
       else
       {
         String str;
-        if (localc.Bhc.equals("3"))
+        if (localc.ByA.equals("3"))
         {
-          parama.Fvo = null;
-          if ((bt.isNullOrNil(localc.Bhn)) || (bt.isNullOrNil(localc.jumpUrl)) || (bt.isNullOrNil(localc.Bho)) || (bt.isNullOrNil(localc.Bhp)) || (bt.isNullOrNil(localc.Bhm))) {
-            ad.e("MicroMsg.JDSysMsgNotifyLsn", "invalid params");
+          parama.FNM = null;
+          if ((bu.isNullOrNil(localc.ByL)) || (bu.isNullOrNil(localc.jumpUrl)) || (bu.isNullOrNil(localc.ByM)) || (bu.isNullOrNil(localc.ByN)) || (bu.isNullOrNil(localc.ByK))) {
+            ae.e("MicroMsg.JDSysMsgNotifyLsn", "invalid params");
           }
           for (;;)
           {
             d.b(localc);
             break;
-            if (localc.cQB())
+            if (localc.cTg())
             {
-              ad.i("MicroMsg.JDSysMsgNotifyLsn", "ingore msg due to msg is expired");
+              ae.i("MicroMsg.JDSysMsgNotifyLsn", "ingore msg due to msg is expired");
             }
             else
             {
-              parama = d.emI();
-              str = localc.Bhd;
-              if (bt.isNullOrNil(str)) {}
-              for (boolean bool = false;; bool = parama.Bhv.containsKey(str))
+              parama = d.eqr();
+              str = localc.ByB;
+              if (bu.isNullOrNil(str)) {}
+              for (boolean bool = false;; bool = parama.ByT.containsKey(str))
               {
                 if (!bool) {
                   break label357;
                 }
-                ad.i("MicroMsg.JDSysMsgNotifyLsn", "activity id already show, " + localc.Bhd);
+                ae.i("MicroMsg.JDSysMsgNotifyLsn", "activity id already show, " + localc.ByB);
                 break;
               }
               label357:
-              if (!localc.a(d.emI().emN()))
+              if (!localc.a(d.eqr().eqw()))
               {
-                ad.i("MicroMsg.JDSysMsgNotifyLsn", "the remind activitid is same");
+                ae.i("MicroMsg.JDSysMsgNotifyLsn", "the remind activitid is same");
               }
               else
               {
-                parama = d.emI();
-                str = localc.Bhd;
-                if (!bt.isNullOrNil(str)) {
-                  parama.Bhv.put(str, Integer.valueOf(1));
+                parama = d.eqr();
+                str = localc.ByB;
+                if (!bu.isNullOrNil(str)) {
+                  parama.ByT.put(str, Integer.valueOf(1));
                 }
-                ad.i("MicroMsg.JDSysMsgNotifyLsn", "add activity id" + localc.Bhd);
-                new ap(Looper.getMainLooper()).post(new Runnable()
+                ae.i("MicroMsg.JDSysMsgNotifyLsn", "add activity id" + localc.ByB);
+                new aq(Looper.getMainLooper()).post(new Runnable()
                 {
                   public final void run()
                   {
                     AppMethodBeat.i(28864);
                     Object localObject = a.this;
                     c localc = localc;
-                    ba.aBQ();
-                    int i = ((Integer)com.tencent.mm.model.c.ajl().get(15, Integer.valueOf(0))).intValue();
-                    if ((ba.aiU().foreground) && (1 == i))
+                    bc.aCg();
+                    int i = ((Integer)com.tencent.mm.model.c.ajA().get(15, Integer.valueOf(0))).intValue();
+                    if ((bc.ajj().foreground) && (1 == i))
                     {
-                      localObject = d.fh(localc.jumpUrl, 5);
-                      JDRemindDialog.a(aj.getContext(), localc.Bhn, localc.Bho, localc.Bhp, (String)localObject, localc.Bhd);
-                      g.yhR.f(11178, new Object[] { localObject, d.emI().emN().Bhd, Integer.valueOf(5) });
+                      localObject = d.fq(localc.jumpUrl, 5);
+                      JDRemindDialog.a(ak.getContext(), localc.ByL, localc.ByM, localc.ByN, (String)localObject, localc.ByB);
+                      g.yxI.f(11178, new Object[] { localObject, d.eqr().eqw().ByB, Integer.valueOf(5) });
                       AppMethodBeat.o(28864);
                       return;
                     }
-                    String str = d.fh(localc.jumpUrl, 4);
+                    String str = d.fq(localc.jumpUrl, 4);
                     Bundle localBundle = new Bundle();
-                    localBundle.putString("activity_id", localc.Bhd);
+                    localBundle.putString("activity_id", localc.ByB);
                     localBundle.putString("jump_url", str);
-                    ((au)ba.getNotification()).a(37, aj.getContext().getString(2131755866), localc.Bhm, str, "bizjd", localBundle);
-                    com.tencent.mm.sdk.b.a.IbL.c(((a)localObject).BgZ);
-                    g.yhR.f(11178, new Object[] { str, d.emI().emN().Bhd, Integer.valueOf(4) });
+                    ((aw)bc.getNotification()).a(37, ak.getContext().getString(2131755866), localc.ByK, str, "bizjd", localBundle);
+                    com.tencent.mm.sdk.b.a.IvT.c(((a)localObject).Byx);
+                    g.yxI.f(11178, new Object[] { str, d.eqr().eqw().ByB, Integer.valueOf(4) });
                     AppMethodBeat.o(28864);
                   }
                 });
@@ -142,19 +142,19 @@ public final class a
             }
           }
         }
-        if (localc.Bhc.equals("1"))
+        if (localc.ByA.equals("1"))
         {
           d.b(localc);
         }
-        else if (localc.Bhc.equals("2"))
+        else if (localc.ByA.equals("2"))
         {
           d.b(localc);
-          str = d.emI().emV().username;
+          str = d.eqr().eqE().username;
           parama = str;
-          if (bt.isNullOrNil(str)) {
-            parama = d.emI().emU();
+          if (bu.isNullOrNil(str)) {
+            parama = d.eqr().eqD();
           }
-          g.yhR.f(11178, new Object[] { parama, localc.Bhd, Integer.valueOf(3), Integer.valueOf(1) });
+          g.yxI.f(11178, new Object[] { parama, localc.ByB, Integer.valueOf(3), Integer.valueOf(1) });
         }
       }
     }

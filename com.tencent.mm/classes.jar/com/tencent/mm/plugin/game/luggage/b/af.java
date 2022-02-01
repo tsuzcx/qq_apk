@@ -10,7 +10,7 @@ import com.tencent.mm.plugin.game.luggage.f.d.a;
 import com.tencent.mm.plugin.game.luggage.f.g;
 import com.tencent.mm.plugin.webview.luggage.jsapi.bq.a;
 import com.tencent.mm.plugin.webview.luggage.jsapi.br;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import org.json.JSONObject;
 
 public class af
@@ -20,46 +20,46 @@ public class af
   
   public final void b(b<g>.a paramb)
   {
-    AppMethodBeat.i(211619);
-    ad.i("MicroMsg.JsApiSetGameTab", "invokeInOwn");
+    AppMethodBeat.i(193008);
+    ae.i("MicroMsg.JsApiSetGameTab", "invokeInOwn");
     JSONObject localJSONObject = paramb.chh.cgn;
     if (localJSONObject == null)
     {
-      ad.e("MicroMsg.JsApiSetGameTab", "data is null");
+      ae.e("MicroMsg.JsApiSetGameTab", "data is null");
       paramb.a("null_data", null);
-      AppMethodBeat.o(211619);
+      AppMethodBeat.o(193008);
       return;
     }
-    d locald = ((g)paramb.chg).tVG;
+    d locald = ((g)paramb.chg).ugE;
     if (locald == null)
     {
-      ad.e("MicroMsg.JsApiSetGameTab", "is not tab page");
+      ae.e("MicroMsg.JsApiSetGameTab", "is not tab page");
       paramb.a("not_tab", null);
-      AppMethodBeat.o(211619);
+      AppMethodBeat.o(193008);
       return;
     }
     int i;
     if (localJSONObject.has("isShowTab"))
     {
       i = localJSONObject.optInt("isShowTab", -1);
-      ad.i("MicroMsg.JsApiSetGameTab", "isShowTab:%d", new Object[] { Integer.valueOf(i) });
-      if (locald.tUN != null) {
-        locald.tUN.HA(i);
+      ae.i("MicroMsg.JsApiSetGameTab", "isShowTab:%d", new Object[] { Integer.valueOf(i) });
+      if (locald.ufH != null) {
+        locald.ufH.HX(i);
       }
     }
     if (localJSONObject.has("isSwitchEnable"))
     {
       i = localJSONObject.optInt("isSwitchEnable", -1);
-      ad.i("MicroMsg.JsApiSetGameTab", "isSwitchEnable:%d", new Object[] { Integer.valueOf(i) });
-      if (locald.tUN != null) {
-        locald.tUN.HB(i);
+      ae.i("MicroMsg.JsApiSetGameTab", "isSwitchEnable:%d", new Object[] { Integer.valueOf(i) });
+      if (locald.ufH != null) {
+        locald.ufH.HY(i);
       }
     }
     paramb.a("", null);
-    AppMethodBeat.o(211619);
+    AppMethodBeat.o(193008);
   }
   
-  public final int ccO()
+  public final int ced()
   {
     return 0;
   }

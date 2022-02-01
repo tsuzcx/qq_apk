@@ -13,19 +13,19 @@ final class c$1
     AppMethodBeat.i(132156);
     if (paramClass == com.tencent.mm.kernel.a.c.b.class)
     {
-      c.ajP().gCw.a(paramClass, paramObject1, paramObject2);
+      c.ake().gFd.a(paramClass, paramObject1, paramObject2);
       AppMethodBeat.o(132156);
       return;
     }
     if (paramClass == com.tencent.mm.kernel.b.b.class) {
-      c.ajP().gCx.a(paramClass, paramObject1, paramObject2);
+      c.ake().gFe.a(paramClass, paramObject1, paramObject2);
     }
     AppMethodBeat.o(132156);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.kernel.a.c.1
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,7 @@ package com.tencent.mm.modelvoice;
 
 public abstract interface b
 {
-  public abstract void aNm();
+  public abstract void aNK();
   
   public abstract g dr(int paramInt1, int paramInt2);
   

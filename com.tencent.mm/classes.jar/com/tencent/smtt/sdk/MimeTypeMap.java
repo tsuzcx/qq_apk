@@ -4,7 +4,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.smtt.export.external.interfaces.IX5CoreMessy;
 
 public class MimeTypeMap
-  extends x
+  extends z
 {
   private static MimeTypeMap a;
   

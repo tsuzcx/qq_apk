@@ -6,8 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class fd
   extends b
 {
-  public a dqn;
-  public b dqo;
+  public a drr;
   
   public fd()
   {
@@ -16,27 +15,23 @@ public final class fd
   
   private fd(byte paramByte)
   {
-    AppMethodBeat.i(19800);
-    this.dqn = new a();
-    this.dqo = new b();
-    this.IbR = false;
+    AppMethodBeat.i(19799);
+    this.drr = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(19800);
+    AppMethodBeat.o(19799);
   }
   
   public static final class a
   {
-    public boolean doE = false;
-  }
-  
-  public static final class b
-  {
-    public boolean doF;
+    public boolean bsb;
+    public String drl;
+    public String mac;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.a.fd
  * JD-Core Version:    0.7.0.1
  */

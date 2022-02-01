@@ -2,13 +2,14 @@ package com.tencent.mm.plugin.appbrand.jsapi.g;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ipcinvoker.extension.XIPCInvoker;
+import com.tencent.mm.ipcinvoker.k;
 import com.tencent.mm.ipcinvoker.type.IPCInteger;
 import com.tencent.mm.ipcinvoker.type.IPCVoid;
 import com.tencent.mm.plugin.appbrand.backgroundrunning.AppBrandBackgroundRunningMonitor;
-import com.tencent.mm.plugin.appbrand.backgroundrunning.d;
+import com.tencent.mm.plugin.appbrand.backgroundrunning.c;
 import com.tencent.mm.plugin.appbrand.config.AppBrandGlobalSystemConfig;
 import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import org.json.JSONObject;
 
 public final class h
@@ -17,47 +18,51 @@ public final class h
   private static final int CTRL_INDEX = 586;
   private static final String NAME = "enableLocationUpdateBackground";
   
-  public final void b(com.tencent.mm.plugin.appbrand.q paramq, JSONObject paramJSONObject, int paramInt)
+  public final void b(com.tencent.mm.plugin.appbrand.r paramr, JSONObject paramJSONObject, int paramInt)
   {
     AppMethodBeat.i(46378);
-    this.kOt = ((q)paramq.as(q.class));
-    if ((this.kOt instanceof r))
+    this.kRV = ((r)paramr.as(r.class));
+    if ((this.kRV instanceof s))
     {
-      localObject = (r)this.kOt;
-      if ((((q)localObject).jSa) && (((q)localObject).kOG))
+      localObject = (s)this.kRV;
+      if ((((r)localObject).jVr) && (((r)localObject).kSo))
       {
-        ad.i("MicroMsg.JsApiEnableLocationUpdateBackgroundWxImp", "already in location background mode");
-        paramq.h(paramInt, e("ok", null));
+        ae.i("MicroMsg.JsApiEnableLocationUpdateBackgroundWxImp", "already in location background mode");
+        paramr.h(paramInt, e("ok", null));
         AppMethodBeat.o(46378);
         return;
       }
     }
-    Object localObject = (IPCInteger)XIPCInvoker.a("com.tencent.mm", new IPCVoid(), h.a.class);
-    AppBrandGlobalSystemConfig localAppBrandGlobalSystemConfig = AppBrandGlobalSystemConfig.bdT();
-    if ((localObject != null) && (((IPCInteger)localObject).value >= localAppBrandGlobalSystemConfig.jWs))
+    Object localObject = (IPCInteger)XIPCInvoker.a("com.tencent.mm", new IPCVoid(), a.class);
+    AppBrandGlobalSystemConfig localAppBrandGlobalSystemConfig = AppBrandGlobalSystemConfig.bez();
+    if ((localObject != null) && (((IPCInteger)localObject).value >= localAppBrandGlobalSystemConfig.jZH))
     {
-      ad.w("MicroMsg.JsApiEnableLocationUpdateBackgroundWxImp", "enableLocationBackground: fail reach max concurrent background count");
-      paramq.h(paramInt, e("fail reach max concurrent background count", null));
+      ae.w("MicroMsg.JsApiEnableLocationUpdateBackgroundWxImp", "enableLocationBackground: fail reach max concurrent background count");
+      paramr.h(paramInt, e("fail reach max concurrent background count", null));
       AppMethodBeat.o(46378);
       return;
     }
-    super.b(paramq, paramJSONObject, paramInt);
-    if (!(this.kOt instanceof r))
+    super.b(paramr, paramJSONObject, paramInt);
+    if (!(this.kRV instanceof s))
     {
-      ad.w("MicroMsg.JsApiEnableLocationUpdateBackgroundWxImp", "state manager not RuntimeLocationUpdateStateManagerWxa");
-      paramq.h(paramInt, e("fail:system error", null));
+      ae.w("MicroMsg.JsApiEnableLocationUpdateBackgroundWxImp", "state manager not RuntimeLocationUpdateStateManagerWxa");
+      paramr.h(paramInt, e("fail:system error", null));
       AppMethodBeat.o(46378);
       return;
     }
-    if ((this.kOt != null) && (this.kOt.kOG)) {
-      AppBrandBackgroundRunningMonitor.a(paramq, 1, d.jSc.beO);
+    if ((this.kRV != null) && (this.kRV.kSo)) {
+      AppBrandBackgroundRunningMonitor.a(paramr, 1, c.jVt.beO);
     }
     AppMethodBeat.o(46378);
   }
+  
+  static class a
+    implements k<IPCVoid, IPCInteger>
+  {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.g.h
  * JD-Core Version:    0.7.0.1
  */

@@ -45,8 +45,8 @@ public class ExportErrorStatus
   public ExportErrorStatus(CMSampleState paramCMSampleState)
   {
     this((int)paramCMSampleState.getStateCode(), paramCMSampleState.getThrowable(), paramCMSampleState.getMsg());
-    AppMethodBeat.i(217935);
-    AppMethodBeat.o(217935);
+    AppMethodBeat.i(214574);
+    AppMethodBeat.o(214574);
   }
 }
 

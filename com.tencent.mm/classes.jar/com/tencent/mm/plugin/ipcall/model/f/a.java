@@ -6,14 +6,14 @@ public class a
 {
   public boolean isStart = false;
   
-  protected void bxK() {}
+  protected void byD() {}
   
   public final void finish()
   {
     AppMethodBeat.i(25497);
     if (this.isStart)
     {
-      bxK();
+      byD();
       this.isStart = false;
     }
     AppMethodBeat.o(25497);

@@ -17,9 +17,9 @@ final class d$49
     AppMethodBeat.i(154212);
     b localb = new b();
     localb.bd(paramView);
-    a.b("com/tencent/xweb/xwalk/WebDebugPage$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-    paramView = this.Mwz;
-    if (!this.Mwz.isChecked()) {}
+    a.b("com/tencent/xweb/xwalk/WebDebugPage$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+    paramView = this.MTD;
+    if (!this.MTD.isChecked()) {}
     for (boolean bool = true;; bool = false)
     {
       paramView.setChecked(bool);

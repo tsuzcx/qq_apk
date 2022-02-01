@@ -1,15 +1,15 @@
 package com.tencent.mm.plugin.appbrand.jsapi.finder;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
+import com.tencent.mm.ak.b;
 import com.tencent.mm.ipcinvoker.wx_extension.IPCRunCgi.a;
-import com.tencent.mm.plugin.appbrand.q;
+import com.tencent.mm.plugin.appbrand.r;
 import org.json.JSONObject;
 
 final class f$1
   implements IPCRunCgi.a
 {
-  f$1(f paramf, q paramq, int paramInt) {}
+  f$1(f paramf, r paramr, int paramInt) {}
   
   public final void a(int paramInt1, int paramInt2, String paramString, b paramb)
   {
@@ -17,17 +17,17 @@ final class f$1
     paramb = new JSONObject();
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      this.klR.h(this.cjQ, a.a("", 0, paramb));
+      this.kph.h(this.cjS, a.a("", 0, paramb));
       AppMethodBeat.o(163958);
       return;
     }
     if (paramInt1 == 4)
     {
-      this.klR.h(this.cjQ, a.a(paramString, paramInt2, paramb));
+      this.kph.h(this.cjS, a.a(paramString, paramInt2, paramb));
       AppMethodBeat.o(163958);
       return;
     }
-    this.klR.h(this.cjQ, a.a(paramString, -1, paramb));
+    this.kph.h(this.cjS, a.a(paramString, -1, paramb));
     AppMethodBeat.o(163958);
   }
 }

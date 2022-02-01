@@ -39,6 +39,7 @@ import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.SpinnerAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.VideoView;
 import com.danikula.videocache.HttpProxyCacheServer;
 import com.danikula.videocache.HttpProxyCacheServer.Builder;
@@ -46,22 +47,22 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.g.a.au;
 import com.tencent.mm.g.a.cd;
 import com.tencent.mm.g.a.co;
-import com.tencent.mm.g.a.mx;
-import com.tencent.mm.g.a.qc;
-import com.tencent.mm.g.a.qe;
-import com.tencent.mm.g.a.qq;
-import com.tencent.mm.g.a.sp;
-import com.tencent.mm.g.a.sp.a;
+import com.tencent.mm.g.a.my;
+import com.tencent.mm.g.a.qd;
+import com.tencent.mm.g.a.qf;
+import com.tencent.mm.g.a.qr;
+import com.tencent.mm.g.a.sq;
+import com.tencent.mm.g.a.sq.a;
 import com.tencent.mm.g.b.a.ce;
 import com.tencent.mm.g.c.fp;
 import com.tencent.mm.media.model.AppBrandMediaSource;
-import com.tencent.mm.model.ab;
-import com.tencent.mm.model.ab.b;
-import com.tencent.mm.model.ba;
-import com.tencent.mm.model.u;
-import com.tencent.mm.model.w;
-import com.tencent.mm.model.y;
-import com.tencent.mm.model.y.b;
+import com.tencent.mm.model.ac;
+import com.tencent.mm.model.ac.b;
+import com.tencent.mm.model.bc;
+import com.tencent.mm.model.v;
+import com.tencent.mm.model.z;
+import com.tencent.mm.model.z.b;
+import com.tencent.mm.platformtools.p.a;
 import com.tencent.mm.plugin.ball.f.f;
 import com.tencent.mm.plugin.gif.MMAnimateView;
 import com.tencent.mm.plugin.scanner.ScanCodeSheetItemLogic;
@@ -70,15 +71,15 @@ import com.tencent.mm.plugin.scanner.ui.TranslationResultUI;
 import com.tencent.mm.plugin.scanner.word.ImageWordScanDetailEngine;
 import com.tencent.mm.pluginsdk.m;
 import com.tencent.mm.pluginsdk.ui.tools.RedesignVideoPlayerSeekBar;
-import com.tencent.mm.pluginsdk.ui.tools.x;
 import com.tencent.mm.sdk.b.c;
 import com.tencent.mm.sdk.platformtools.MMNativeJpeg;
-import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.sdk.platformtools.t;
+import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.r;
+import com.tencent.mm.sdk.platformtools.u;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.al;
 import com.tencent.mm.ui.base.MultiTouchImageView;
@@ -94,7 +95,8 @@ import com.tencent.mm.ui.tools.PressAlphaImageView;
 import com.tencent.mm.ui.tools.e.c;
 import com.tencent.mm.ui.widget.a.e.b;
 import com.tencent.mm.ui.widget.bottomsheet.ViewTitleWithAnimation;
-import com.tencent.mm.vfs.i;
+import com.tencent.mm.vfs.k;
+import com.tencent.mm.vfs.o;
 import java.io.File;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -110,156 +112,156 @@ import org.json.JSONObject;
 @com.tencent.mm.ui.base.a(3)
 public class GestureGalleryUI
   extends MMActivity
-  implements ab.b, com.tencent.mm.plugin.scanner.word.a.a<String, com.tencent.mm.plugin.scanner.word.b>, a.a
+  implements ac.b, com.tencent.mm.plugin.scanner.word.a.a<String, com.tencent.mm.plugin.scanner.word.b>, a.a
 {
-  private float Aal;
-  private int Aam;
-  private int Aan;
-  private a BiO;
-  MMGestureGallery BiP;
-  private int BiQ;
-  private String BiR;
-  private ab BiS;
-  private boolean BiT;
-  private boolean BiU;
-  private boolean BiV;
-  private boolean BiW;
-  private JSONArray BiX;
-  private com.tencent.mm.ui.widget.a.e BiY;
-  private volatile boolean BiZ;
-  private AdapterView.OnItemSelectedListener BjA;
-  private View BjB;
-  private b BjC;
-  private int Bja;
-  private int Bjb;
-  private int Bjc;
-  private final Set<Integer> Bjd;
-  private final Set<Integer> Bje;
-  private boolean Bjf;
-  private TextView Bjg;
-  private a Bjh;
-  private com.tencent.mm.plugin.webview.j.h Bji;
-  private String Bjj;
-  GestureGalleryUI.a.a Bjk;
-  private boolean Bjl;
-  private RelativeLayout Bjm;
-  private RelativeLayout Bjn;
-  private PressAlphaImageView Bjo;
-  RedesignVideoPlayerSeekBar Bjp;
-  private long Bjq;
-  private c Bjr;
-  boolean Bjs;
-  private c<cd> Bjt;
-  private List<String> Bju;
-  private List<AppBrandMediaSource> Bjv;
-  private int Bjw;
-  private int Bjx;
-  private String Bjy;
-  private boolean Bjz;
-  private boolean hDR;
-  private String hFI;
-  private String hFx;
+  private volatile String AhJ;
+  private String AhM;
+  private String AhN;
+  private String AhO;
+  private String AhP;
+  private String AhQ;
+  private c AhV;
+  private int Aiw;
+  private int ArA;
+  private float Ary;
+  private int Arz;
+  private int BAA;
+  private int BAB;
+  private final Set<Integer> BAC;
+  private final Set<Integer> BAD;
+  private boolean BAE;
+  private TextView BAF;
+  private a BAG;
+  private com.tencent.mm.plugin.webview.j.h BAH;
+  private String BAI;
+  GestureGalleryUI.a.a BAJ;
+  private boolean BAK;
+  private RelativeLayout BAL;
+  private RelativeLayout BAM;
+  private PressAlphaImageView BAN;
+  RedesignVideoPlayerSeekBar BAO;
+  private long BAP;
+  private c BAQ;
+  boolean BAR;
+  private c<cd> BAS;
+  private List<String> BAT;
+  private List<AppBrandMediaSource> BAU;
+  private int BAV;
+  private int BAW;
+  private String BAX;
+  private boolean BAY;
+  private AdapterView.OnItemSelectedListener BAZ;
+  private a BAn;
+  MMGestureGallery BAo;
+  private int BAp;
+  private String BAq;
+  private ac BAr;
+  private boolean BAs;
+  private boolean BAt;
+  private boolean BAu;
+  private boolean BAv;
+  private JSONArray BAw;
+  private com.tencent.mm.ui.widget.a.e BAx;
+  private volatile boolean BAy;
+  private int BAz;
+  private View BBa;
+  private b BBb;
+  private boolean hGJ;
+  private String hIA;
+  private String hIp;
   private boolean isAnimated;
-  private String liC;
-  private ScanCodeSheetItemLogic lvI;
-  private ap mHandler;
-  private ImageView oGj;
-  private Bundle oGn;
-  private com.tencent.mm.ui.tools.e oGo;
-  private int oGp;
-  private int oGq;
-  private int oGr;
-  private int oGs;
-  private boolean rwL;
-  private c rwO;
+  private ScanCodeSheetItemLogic lAg;
+  private String lmo;
+  private aq mHandler;
+  private ImageView oML;
+  private Bundle oMP;
+  private com.tencent.mm.ui.tools.e oMQ;
+  private int oMR;
+  private int oMS;
+  private int oMT;
+  private int oMU;
+  private long oym;
+  private boolean rEX;
+  private c rFa;
   private int type;
-  private long vtP;
-  private volatile String zQC;
-  private String zQF;
-  private String zQG;
-  private String zQH;
-  private String zQI;
-  private String zQJ;
-  private c zQO;
-  private int zRp;
   
   public GestureGalleryUI()
   {
     AppMethodBeat.i(29091);
-    this.BiT = false;
-    this.BiU = false;
-    this.hFx = "";
-    this.hFI = null;
-    this.BiV = false;
-    this.BiW = true;
-    this.BiX = null;
-    this.zRp = 0;
-    this.Bjd = new HashSet();
-    this.Bje = new HashSet();
-    this.Bjf = false;
+    this.BAs = false;
+    this.BAt = false;
+    this.hIp = "";
+    this.hIA = null;
+    this.BAu = false;
+    this.BAv = true;
+    this.BAw = null;
+    this.Aiw = 0;
+    this.BAC = new HashSet();
+    this.BAD = new HashSet();
+    this.BAE = false;
     this.isAnimated = false;
-    this.oGp = 0;
-    this.oGq = 0;
-    this.oGr = 0;
-    this.oGs = 0;
-    this.mHandler = new ap();
-    this.Bjj = "";
-    this.hDR = false;
-    this.Bjl = false;
-    this.vtP = 0L;
-    this.Bjq = 0L;
-    this.Bjr = c.BjR;
-    this.Bjs = false;
-    this.Bjt = new GestureGalleryUI.10(this);
-    this.Bju = new ArrayList();
-    this.Bjv = new ArrayList();
+    this.oMR = 0;
+    this.oMS = 0;
+    this.oMT = 0;
+    this.oMU = 0;
+    this.mHandler = new aq();
+    this.BAI = "";
+    this.hGJ = false;
+    this.BAK = false;
+    this.oym = 0L;
+    this.BAP = 0L;
+    this.BAQ = c.BBq;
+    this.BAR = false;
+    this.BAS = new GestureGalleryUI.10(this);
+    this.BAT = new ArrayList();
+    this.BAU = new ArrayList();
     this.type = 0;
-    this.Bjw = -1;
-    this.Bjx = -1;
-    this.liC = null;
-    this.Bjy = null;
-    this.Aal = 1.0F;
-    this.Aam = 0;
-    this.Aan = 0;
-    this.Bjz = false;
-    this.BjA = new AdapterView.OnItemSelectedListener()
+    this.BAV = -1;
+    this.BAW = -1;
+    this.lmo = null;
+    this.BAX = null;
+    this.Ary = 1.0F;
+    this.Arz = 0;
+    this.ArA = 0;
+    this.BAY = false;
+    this.BAZ = new AdapterView.OnItemSelectedListener()
     {
-      VideoView BjG;
+      VideoView BBf;
       
       public final void onItemSelected(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
       {
-        AppMethodBeat.i(193368);
+        AppMethodBeat.i(186647);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
         localb.bd(paramAnonymousAdapterView);
         localb.bd(paramAnonymousView);
-        localb.mr(paramAnonymousInt);
-        localb.qY(paramAnonymousLong);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/subapp/ui/gallery/GestureGalleryUI$16", "android/widget/AdapterView$OnItemSelectedListener", "onItemSelected", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.ahq());
+        localb.mu(paramAnonymousInt);
+        localb.rl(paramAnonymousLong);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/subapp/ui/gallery/GestureGalleryUI$16", "android/widget/AdapterView$OnItemSelectedListener", "onItemSelected", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.ahF());
         GestureGalleryUI.f(GestureGalleryUI.this, paramAnonymousInt);
         GestureGalleryUI.H(GestureGalleryUI.this).setText(GestureGalleryUI.c(GestureGalleryUI.this) + 1 + "/" + GestureGalleryUI.m(GestureGalleryUI.this).getCount());
         GestureGalleryUI.this.setMMTitle(GestureGalleryUI.c(GestureGalleryUI.this) + 1 + " / " + GestureGalleryUI.I(GestureGalleryUI.this).size());
-        ad.d("MicroMsg.GestureGalleryUI", "pos:".concat(String.valueOf(paramAnonymousInt)));
+        ae.d("MicroMsg.GestureGalleryUI", "pos:".concat(String.valueOf(paramAnonymousInt)));
         GestureGalleryUI.c(GestureGalleryUI.this, (String)GestureGalleryUI.I(GestureGalleryUI.this).get(paramAnonymousInt));
         GestureGalleryUI.d(GestureGalleryUI.this, "");
         GestureGalleryUI.b(GestureGalleryUI.this, false);
-        if (this.BjG != null)
+        if (this.BBf != null)
         {
-          this.BjG.stopPlayback();
-          this.BjG = null;
+          this.BBf.stopPlayback();
+          this.BBf = null;
         }
         GestureGalleryUI.J(GestureGalleryUI.this).setIsPlay(false);
-        GestureGalleryUI.a(GestureGalleryUI.this, GestureGalleryUI.c.BjR);
+        GestureGalleryUI.a(GestureGalleryUI.this, GestureGalleryUI.c.BBq);
         if ((paramAnonymousView != null) && (paramAnonymousView.getTag() != null))
         {
           paramAnonymousAdapterView = (GestureGalleryUI.a.a)paramAnonymousView.getTag();
           if ((paramAnonymousAdapterView != null) && (GestureGalleryUI.a(GestureGalleryUI.this, paramAnonymousInt)))
           {
-            this.BjG = paramAnonymousAdapterView.BjN;
+            this.BBf = paramAnonymousAdapterView.BBm;
             GestureGalleryUI.a(GestureGalleryUI.this, paramAnonymousAdapterView);
-            paramAnonymousAdapterView.tEo.setVisibility(0);
-            paramAnonymousAdapterView.zSR.setVisibility(0);
-            paramAnonymousAdapterView.BjL.setVisibility(8);
-            paramAnonymousAdapterView.BjO.setVisibility(8);
+            paramAnonymousAdapterView.tPf.setVisibility(0);
+            paramAnonymousAdapterView.AjY.setVisibility(0);
+            paramAnonymousAdapterView.BBk.setVisibility(8);
+            paramAnonymousAdapterView.BBn.setVisibility(8);
           }
         }
         else
@@ -272,20 +274,20 @@ public class GestureGalleryUI
         }
         for (;;)
         {
-          ad.i("MicroMsg.GestureGalleryUI", "curFilename:%s", new Object[] { GestureGalleryUI.j(GestureGalleryUI.this) });
+          ae.i("MicroMsg.GestureGalleryUI", "curFilename:%s", new Object[] { GestureGalleryUI.j(GestureGalleryUI.this) });
           GestureGalleryUI.l(GestureGalleryUI.this);
           GestureGalleryUI.a(GestureGalleryUI.this, false);
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/subapp/ui/gallery/GestureGalleryUI$16", "android/widget/AdapterView$OnItemSelectedListener", "onItemSelected", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
-          AppMethodBeat.o(193368);
+          AppMethodBeat.o(186647);
           return;
-          if ((paramAnonymousAdapterView == null) || (paramAnonymousAdapterView.tEo == null)) {
+          if ((paramAnonymousAdapterView == null) || (paramAnonymousAdapterView.tPf == null)) {
             break;
           }
-          paramAnonymousAdapterView.tEo.setVisibility(8);
+          paramAnonymousAdapterView.tPf.setVisibility(8);
           break;
           label459:
           GestureGalleryUI.d(GestureGalleryUI.this, GestureGalleryUI.M(GestureGalleryUI.this).c((String)GestureGalleryUI.I(GestureGalleryUI.this).get(paramAnonymousInt), GestureGalleryUI.K(GestureGalleryUI.this), paramAnonymousInt, GestureGalleryUI.L(GestureGalleryUI.this)));
-          if (bt.isNullOrNil(GestureGalleryUI.j(GestureGalleryUI.this))) {
+          if (bu.isNullOrNil(GestureGalleryUI.j(GestureGalleryUI.this))) {
             GestureGalleryUI.d(GestureGalleryUI.this, (String)GestureGalleryUI.I(GestureGalleryUI.this).get(paramAnonymousInt));
           }
           GestureGalleryUI.g(GestureGalleryUI.this, paramAnonymousInt);
@@ -301,54 +303,54 @@ public class GestureGalleryUI
       
       public final void onNothingSelected(AdapterView<?> paramAnonymousAdapterView) {}
     };
-    this.rwO = new c() {};
-    this.zQO = new c() {};
+    this.rFa = new c() {};
+    this.AhV = new c() {};
     AppMethodBeat.o(29091);
   }
   
-  private boolean SI(int paramInt)
+  private boolean Tp(int paramInt)
   {
-    AppMethodBeat.i(193388);
-    if ((this.Bjv != null) && (this.Bjv.size() > paramInt) && (this.Bjv.get(paramInt) != null) && ("video".endsWith(((AppBrandMediaSource)this.Bjv.get(paramInt)).hkO)))
+    AppMethodBeat.i(186667);
+    if ((this.BAU != null) && (this.BAU.size() > paramInt) && (this.BAU.get(paramInt) != null) && ("video".endsWith(((AppBrandMediaSource)this.BAU.get(paramInt)).hnC)))
     {
-      AppMethodBeat.o(193388);
+      AppMethodBeat.o(186667);
       return true;
     }
-    AppMethodBeat.o(193388);
+    AppMethodBeat.o(186667);
     return false;
   }
   
-  private void cxt()
+  private void cyU()
   {
     AppMethodBeat.i(179724);
-    ad.i("MicroMsg.GestureGalleryUI", "pauseVideo");
-    if (this.Bjk != null)
+    ae.i("MicroMsg.GestureGalleryUI", "pauseVideo");
+    if (this.BAJ != null)
     {
-      this.Bjq = (this.Bjp.getmPosition() * 1000);
-      ad.i("MicroMsg.GestureGalleryUI", "pauseVideo currentVideoPos：%d", new Object[] { Long.valueOf(this.Bjq) });
-      this.Bjk.BjN.pause();
-      this.Bjk.zSR.setVisibility(0);
-      if ((this.Bjr != c.BjT) && (this.Bjr != c.BjU)) {
+      this.BAP = (this.BAO.getmPosition() * 1000);
+      ae.i("MicroMsg.GestureGalleryUI", "pauseVideo currentVideoPos：%d", new Object[] { Long.valueOf(this.BAP) });
+      this.BAJ.BBm.pause();
+      this.BAJ.AjY.setVisibility(0);
+      if ((this.BAQ != c.BBs) && (this.BAQ != c.BBt)) {
         break label133;
       }
-      this.Bjr = c.BjV;
-      this.Bjs = true;
+      this.BAQ = c.BBu;
+      this.BAR = true;
     }
     for (;;)
     {
-      this.Bjp.setIsPlay(false);
-      enh();
+      this.BAO.setIsPlay(false);
+      eqP();
       AppMethodBeat.o(179724);
       return;
       label133:
-      c localc = c.BjV;
+      c localc = c.BBu;
     }
   }
   
-  private boolean ene()
+  private boolean eqM()
   {
     AppMethodBeat.i(169766);
-    if ((this.BiZ) && (!bt.isNullOrNil(this.zQF)))
+    if ((this.BAy) && (!bu.isNullOrNil(this.AhM)))
     {
       AppMethodBeat.o(169766);
       return true;
@@ -357,59 +359,59 @@ public class GestureGalleryUI
     return false;
   }
   
-  private String enf()
+  private String eqN()
   {
     AppMethodBeat.i(179723);
-    if ((this.Bjw < 0) || (this.Bjv == null) || (this.Bjv.size() == 0))
+    if ((this.BAV < 0) || (this.BAU == null) || (this.BAU.size() == 0))
     {
       AppMethodBeat.o(179723);
       return "";
     }
-    String str = ((AppBrandMediaSource)this.Bjv.get(this.Bjw)).url;
-    ad.i("MicroMsg.GestureGalleryUI", "playVideo  url :%s", new Object[] { str });
+    String str = ((AppBrandMediaSource)this.BAU.get(this.BAV)).url;
+    ae.i("MicroMsg.GestureGalleryUI", "playVideo  url :%s", new Object[] { str });
     if ((str != null) && (str.startsWith("http")))
     {
       Object localObject;
-      if (com.tencent.mm.plugin.ab.a.BEP == null)
+      if (com.tencent.mm.plugin.ab.a.BWn == null)
       {
-        localObject = new File(com.tencent.mm.loader.j.b.asL());
+        localObject = new File(com.tencent.mm.loader.j.b.ata());
         if ((!((File)localObject).exists()) || (!((File)localObject).isDirectory())) {
           ((File)localObject).mkdir();
         }
         localObject = new HttpProxyCacheServer.Builder(this).maxCacheSize(134217728L).cacheDirectory((File)localObject).build();
-        com.tencent.mm.plugin.ab.a.BEP = (HttpProxyCacheServer)localObject;
+        com.tencent.mm.plugin.ab.a.BWn = (HttpProxyCacheServer)localObject;
       }
       for (;;)
       {
         localObject = ((HttpProxyCacheServer)localObject).getProxyUrl(str);
         AppMethodBeat.o(179723);
         return localObject;
-        localObject = com.tencent.mm.plugin.ab.a.BEP;
+        localObject = com.tencent.mm.plugin.ab.a.BWn;
       }
     }
     AppMethodBeat.o(179723);
     return str;
   }
   
-  private void eng()
+  private void eqO()
   {
     AppMethodBeat.i(179725);
-    enh();
-    this.BjC = new b((byte)0);
-    b localb = this.BjC;
+    eqP();
+    this.BBb = new b((byte)0);
+    b localb = this.BBb;
     localb.isStop = false;
     com.tencent.mm.sdk.g.b.c(localb, "gesture_gallery_ui_video_update_progress");
     AppMethodBeat.o(179725);
   }
   
-  private void enh()
+  private void eqP()
   {
-    if (this.BjC != null) {
-      this.BjC.isStop = true;
+    if (this.BBb != null) {
+      this.BBb.isStop = true;
     }
   }
   
-  private static void gx(Context paramContext)
+  private static void gC(Context paramContext)
   {
     AppMethodBeat.i(29103);
     if ((Build.VERSION.SDK_INT < 19) || (Build.VERSION.SDK_INT > 22))
@@ -456,14 +458,14 @@ public class GestureGalleryUI
     AppMethodBeat.o(29103);
   }
   
-  private void sC(boolean paramBoolean)
+  private void sJ(boolean paramBoolean)
   {
     int i = 0;
     AppMethodBeat.i(29102);
-    if (this.BiY == null) {
-      this.BiY = new com.tencent.mm.ui.widget.a.e(getContext(), 1, false);
+    if (this.BAx == null) {
+      this.BAx = new com.tencent.mm.ui.widget.a.e(getContext(), 1, false);
     }
-    this.BiY.KJy = new n.d()
+    this.BAx.LfS = new n.d()
     {
       public final void onCreateMMMenu(l paramAnonymousl)
       {
@@ -474,26 +476,26 @@ public class GestureGalleryUI
         ce localce;
         if (!GestureGalleryUI.p(GestureGalleryUI.this))
         {
-          paramAnonymousl.jI(1, 2131762163);
+          paramAnonymousl.jM(1, 2131762163);
           if (GestureGalleryUI.a(GestureGalleryUI.this, GestureGalleryUI.c(GestureGalleryUI.this)))
           {
-            paramAnonymousl.jI(2, 2131762784);
-            paramAnonymousl.jI(3, 2131761941);
+            paramAnonymousl.jM(2, 2131762784);
+            paramAnonymousl.jM(3, 2131761941);
           }
         }
-        else if ((GestureGalleryUI.q(GestureGalleryUI.this)) && (!bt.isNullOrNil(GestureGalleryUI.j(GestureGalleryUI.this))))
+        else if ((GestureGalleryUI.q(GestureGalleryUI.this)) && (!bu.isNullOrNil(GestureGalleryUI.j(GestureGalleryUI.this))))
         {
-          paramAnonymousl.jI(4, 2131757184);
+          paramAnonymousl.jM(4, 2131757184);
           localObject = GestureGalleryUI.e(GestureGalleryUI.this);
           localce = new ce();
-          if (((a)localObject).ryV != 2) {
+          if (((a)localObject).rHg != 2) {
             break label244;
           }
           l = 1L;
           label132:
-          localce.dVd = l;
-          localce.dPl = 2L;
-          if (!((a)localObject).BiK) {
+          localce.dWt = l;
+          localce.dQB = 2L;
+          if (!((a)localObject).BAj) {
             break label249;
           }
         }
@@ -501,8 +503,8 @@ public class GestureGalleryUI
         label249:
         for (long l = 6L;; l = 5L)
         {
-          localce.eca = l;
-          localce.aLk();
+          localce.edv = l;
+          localce.aLH();
           if (!GestureGalleryUI.r(GestureGalleryUI.this)) {
             break label266;
           }
@@ -517,7 +519,7 @@ public class GestureGalleryUI
           ((ViewTitleWithAnimation)localObject).setTopPaddingVisibility(0);
           AppMethodBeat.o(29085);
           return;
-          paramAnonymousl.jI(2, 2131762781);
+          paramAnonymousl.jM(2, 2131762781);
           break;
           l = 0L;
           break label132;
@@ -528,7 +530,7 @@ public class GestureGalleryUI
         AppMethodBeat.o(29085);
       }
     };
-    this.BiY.KJz = new n.e()
+    this.BAx.LfT = new n.e()
     {
       public final void onMMMenuItemSelected(MenuItem paramAnonymousMenuItem, int paramAnonymousInt)
       {
@@ -553,30 +555,30 @@ public class GestureGalleryUI
           return;
           GestureGalleryUI.d(GestureGalleryUI.this, 6);
           paramAnonymousMenuItem = GestureGalleryUI.e(GestureGalleryUI.this);
-          localObject1 = paramAnonymousMenuItem.BiJ.cwq();
-        } while (((paramAnonymousMenuItem.ryV != 0) && (paramAnonymousMenuItem.ryV != 2)) || (bt.isNullOrNil((String)localObject1)));
+          localObject1 = paramAnonymousMenuItem.BAi.cxR();
+        } while (((paramAnonymousMenuItem.rHg != 0) && (paramAnonymousMenuItem.rHg != 2)) || (bu.isNullOrNil((String)localObject1)));
         Object localObject2 = new ce();
         long l;
-        if (paramAnonymousMenuItem.ryV == 2)
+        if (paramAnonymousMenuItem.rHg == 2)
         {
           l = 1L;
-          ((ce)localObject2).dVd = l;
-          ((ce)localObject2).dPl = 3L;
-          if (!paramAnonymousMenuItem.BiK) {
+          ((ce)localObject2).dWt = l;
+          ((ce)localObject2).dQB = 3L;
+          if (!paramAnonymousMenuItem.BAj) {
             break label402;
           }
           l = 6L;
           label188:
-          ((ce)localObject2).eca = l;
-          ((ce)localObject2).aLk();
-          paramAnonymousMenuItem.ryU = ((int)(u.aAm().hashCode() + System.currentTimeMillis()));
-          localObject2 = ((com.tencent.mm.plugin.scanner.d)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.scanner.d.class)).getTranslationResult((String)localObject1);
-          if ((localObject2 == null) || (!i.fv(((fp)localObject2).field_resultFile))) {
+          ((ce)localObject2).edv = l;
+          ((ce)localObject2).aLH();
+          paramAnonymousMenuItem.rHf = ((int)(v.aAC().hashCode() + System.currentTimeMillis()));
+          localObject2 = ((com.tencent.mm.plugin.scanner.e)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.scanner.e.class)).getTranslationResult((String)localObject1);
+          if ((localObject2 == null) || (!o.fB(((fp)localObject2).field_resultFile))) {
             break label414;
           }
           localObject2 = new Intent();
           ((Intent)localObject2).putExtra("original_file_path", (String)localObject1);
-          if (!paramAnonymousMenuItem.BiK) {
+          if (!paramAnonymousMenuItem.BAj) {
             break label409;
           }
         }
@@ -588,8 +590,8 @@ public class GestureGalleryUI
           ((Intent)localObject2).setClass(paramAnonymousMenuItem.activity, TranslationResultUI.class);
           localObject1 = paramAnonymousMenuItem.activity;
           localObject2 = new com.tencent.mm.hellhoundlib.b.a().bc(localObject2);
-          com.tencent.mm.hellhoundlib.a.a.a(localObject1, ((com.tencent.mm.hellhoundlib.b.a)localObject2).ahp(), "com/tencent/mm/plugin/subapp/ui/gallery/GestureGalleryTransLogic", "doTransPhoto", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          ((MMActivity)localObject1).startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject2).mq(0));
+          com.tencent.mm.hellhoundlib.a.a.a(localObject1, ((com.tencent.mm.hellhoundlib.b.a)localObject2).ahE(), "com/tencent/mm/plugin/subapp/ui/gallery/GestureGalleryTransLogic", "doTransPhoto", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          ((MMActivity)localObject1).startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject2).mt(0));
           com.tencent.mm.hellhoundlib.a.a.a(localObject1, "com/tencent/mm/plugin/subapp/ui/gallery/GestureGalleryTransLogic", "doTransPhoto", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
           paramAnonymousMenuItem.activity.finish();
           paramAnonymousMenuItem.activity.overridePendingTransition(2130771986, 2130771986);
@@ -602,39 +604,39 @@ public class GestureGalleryUI
         }
         label414:
         label459:
-        sp.a locala;
-        if ((com.tencent.mm.kernel.g.aiU().aEN() != 6) && (com.tencent.mm.kernel.g.aiU().aEN() != 4))
+        sq.a locala;
+        if ((com.tencent.mm.kernel.g.ajj().aFd() != 6) && (com.tencent.mm.kernel.g.ajj().aFd() != 4))
         {
           com.tencent.mm.ui.base.h.c(paramAnonymousMenuItem.activity, paramAnonymousMenuItem.activity.getString(2131755828), "", true);
-          paramAnonymousMenuItem.cwC();
-          ad.i("MicroMsg.GestureGalleryTransLogic", "try to translate img %s, sessionId %d", new Object[] { localObject1, Integer.valueOf(paramAnonymousMenuItem.ryU) });
-          localObject2 = new sp();
-          locala = ((sp)localObject2).dHf;
-          if (!paramAnonymousMenuItem.BiK) {
+          paramAnonymousMenuItem.cyd();
+          ae.i("MicroMsg.GestureGalleryTransLogic", "try to translate img %s, sessionId %d", new Object[] { localObject1, Integer.valueOf(paramAnonymousMenuItem.rHf) });
+          localObject2 = new sq();
+          locala = ((sq)localObject2).dIl;
+          if (!paramAnonymousMenuItem.BAj) {
             break label603;
           }
         }
         for (;;)
         {
           locala.scene = paramAnonymousInt;
-          ((sp)localObject2).dHf.filePath = ((String)localObject1);
-          ((sp)localObject2).dHf.dlK = paramAnonymousMenuItem.ryU;
-          com.tencent.mm.sdk.b.a.IbL.l((com.tencent.mm.sdk.b.b)localObject2);
+          ((sq)localObject2).dIl.filePath = ((String)localObject1);
+          ((sq)localObject2).dIl.dmM = paramAnonymousMenuItem.rHf;
+          com.tencent.mm.sdk.b.a.IvT.l((com.tencent.mm.sdk.b.b)localObject2);
           break;
-          paramAnonymousMenuItem.ryV = 1;
-          paramAnonymousMenuItem.ryX.setVisibility(0);
-          paramAnonymousMenuItem.ryY.setVisibility(0);
-          paramAnonymousMenuItem.ryZ.setVisibility(0);
-          paramAnonymousMenuItem.rza.setRepeatMode(1);
-          paramAnonymousMenuItem.rza.setRepeatCount(-1);
-          paramAnonymousMenuItem.rza.start();
+          paramAnonymousMenuItem.rHg = 1;
+          paramAnonymousMenuItem.rHi.setVisibility(0);
+          paramAnonymousMenuItem.rHj.setVisibility(0);
+          paramAnonymousMenuItem.rHk.setVisibility(0);
+          paramAnonymousMenuItem.rHl.setRepeatMode(1);
+          paramAnonymousMenuItem.rHl.setRepeatCount(-1);
+          paramAnonymousMenuItem.rHl.start();
           break label459;
           label603:
           paramAnonymousInt = 5;
         }
       }
     };
-    this.BiY.JXC = new e.b()
+    this.BAx.KtV = new e.b()
     {
       public final void onDismiss()
       {
@@ -653,7 +655,7 @@ public class GestureGalleryUI
       }
     };
     if (!getContext().isFinishing()) {
-      if ((!this.hDR) || (ene()) || (this.rwL)) {
+      if ((!this.hGJ) || (eqM()) || (this.rEX)) {
         break label273;
       }
     }
@@ -662,26 +664,26 @@ public class GestureGalleryUI
     for (;;)
     {
       if (i != 0) {
-        this.BiY.cMW();
+        this.BAx.cPF();
       }
-      if ((this.BiZ) && (bt.isNullOrNil(this.zQF)) && (ba.aiU().aEN() != 0))
+      if ((this.BAy) && (bu.isNullOrNil(this.AhM)) && (bc.ajj().aFd() != 0))
       {
-        localObject = new qc();
-        ((qc)localObject).dEC.dlI = System.currentTimeMillis();
-        ((qc)localObject).dEC.filePath = this.BiR;
-        ((qc)localObject).dEC.dED = new HashSet(this.Bjd);
-        this.zQC = this.BiR;
-        com.tencent.mm.sdk.b.a.IbL.l((com.tencent.mm.sdk.b.b)localObject);
+        localObject = new qd();
+        ((qd)localObject).dFH.dmK = System.currentTimeMillis();
+        ((qd)localObject).dFH.filePath = this.BAq;
+        ((qd)localObject).dFH.dFI = new HashSet(this.BAC);
+        this.AhJ = this.BAq;
+        com.tencent.mm.sdk.b.a.IvT.l((com.tencent.mm.sdk.b.b)localObject);
       }
-      if (bt.isNullOrNil(this.BiR)) {
+      if (bu.isNullOrNil(this.BAq)) {
         break label315;
       }
-      com.tencent.mm.kernel.g.ajD();
-      if ((com.tencent.mm.kernel.g.ajB().gAO.aEN() == 0) || (!paramBoolean)) {
+      com.tencent.mm.kernel.g.ajS();
+      if ((com.tencent.mm.kernel.g.ajQ().gDv.aFd() == 0) || (!paramBoolean)) {
         break label315;
       }
-      localObject = this.Bjh;
-      str = this.BiR;
+      localObject = this.BAG;
+      str = this.BAq;
       if ((((a)localObject).activity != null) && (!((a)localObject).activity.isFinishing())) {
         break;
       }
@@ -690,91 +692,91 @@ public class GestureGalleryUI
       label273:
       i = 1;
     }
-    if (((a)localObject).ryT == null) {
-      ((a)localObject).ryT = new ImageWordScanDetailEngine(((a)localObject).activity);
+    if (((a)localObject).rHe == null) {
+      ((a)localObject).rHe = new ImageWordScanDetailEngine(((a)localObject).activity);
     }
-    ((a)localObject).ryT.a(str, ((a)localObject).ryS);
+    ((a)localObject).rHe.a(str, ((a)localObject).rHd);
     label315:
     AppMethodBeat.o(29102);
   }
   
-  private void tQ(int paramInt)
+  private void tW(int paramInt)
   {
-    AppMethodBeat.i(193387);
-    if ((this.Bji == null) || (bt.isNullOrNil(this.Bjy)))
+    AppMethodBeat.i(186666);
+    if ((this.BAH == null) || (bu.isNullOrNil(this.BAX)))
     {
-      AppMethodBeat.o(193387);
+      AppMethodBeat.o(186666);
       return;
     }
-    this.Bji.url = this.Bjy;
-    this.Bji.dOE = this.Bjc;
-    if (!bt.isNullOrNil(this.zQF))
+    this.BAH.url = this.BAX;
+    this.BAH.dPU = this.BAB;
+    if (!bu.isNullOrNil(this.AhM))
     {
-      this.Bji.Etq = true;
-      this.Bji.XW(this.Bja);
-      this.Bji.scanResult = this.zQF;
+      this.BAH.ELK = true;
+      this.BAH.YC(this.BAz);
+      this.BAH.scanResult = this.AhM;
     }
-    String str = x.aNF(this.Bjj);
-    this.Bji.vyg = str;
-    this.Bji.ma(paramInt);
-    AppMethodBeat.o(193387);
+    String str = com.tencent.mm.pluginsdk.ui.tools.x.aPc(this.BAI);
+    this.BAH.vKk = str;
+    this.BAH.md(paramInt);
+    AppMethodBeat.o(186666);
   }
   
-  public final void bWL()
+  public final void bYa()
   {
     AppMethodBeat.i(29100);
-    if ((this.BiP.getSelectedItemPosition() != this.Bjx) || (!this.Bjf))
+    if ((this.BAo.getSelectedItemPosition() != this.BAW) || (!this.BAE))
     {
       finish();
       overridePendingTransition(0, 0);
       AppMethodBeat.o(29100);
       return;
     }
-    if ((this.Bjz) || (this.BiO == null))
+    if ((this.BAY) || (this.BAn == null))
     {
-      ad.i("MicroMsg.GestureGalleryUI", "isRunningExitAnimation");
+      ae.i("MicroMsg.GestureGalleryUI", "isRunningExitAnimation");
       AppMethodBeat.o(29100);
       return;
     }
-    ad.i("MicroMsg.GestureGalleryUI", "runExitAnimation");
-    int k = this.BiP.getWidth();
-    int i = this.BiP.getHeight();
-    int j = this.BiP.getSelectedItemPosition();
-    Object localObject = (String)this.Bju.get(j);
-    if (i.fv((String)localObject))
+    ae.i("MicroMsg.GestureGalleryUI", "runExitAnimation");
+    int k = this.BAo.getWidth();
+    int i = this.BAo.getHeight();
+    int j = this.BAo.getSelectedItemPosition();
+    Object localObject = (String)this.BAT.get(j);
+    if (o.fB((String)localObject))
     {
-      if (bt.isNullOrNil((String)localObject)) {
+      if (bu.isNullOrNil((String)localObject)) {
         break label412;
       }
-      localObject = com.tencent.mm.sdk.platformtools.g.aQc((String)localObject);
+      localObject = com.tencent.mm.sdk.platformtools.h.aRz((String)localObject);
       float f = k / ((BitmapFactory.Options)localObject).outWidth;
       j = (int)(((BitmapFactory.Options)localObject).outHeight * f);
       i = j;
-      if (j > this.BiP.getHeight())
+      if (j > this.BAo.getHeight())
       {
-        if (j < this.BiP.getHeight() * 2.5D) {
-          this.oGs = (this.BiP.getHeight() * this.oGs / j);
+        if (j < this.BAo.getHeight() * 2.5D) {
+          this.oMU = (this.BAo.getHeight() * this.oMU / j);
         }
-        i = this.BiP.getHeight();
+        i = this.BAo.getHeight();
       }
     }
     label412:
     for (;;)
     {
-      this.oGo.jZ(k, i);
-      this.oGo.R(this.oGq, this.oGp, this.oGr, this.oGs);
-      if (this.Aal != 1.0D)
+      this.oMQ.kg(k, i);
+      this.oMQ.R(this.oMS, this.oMR, this.oMT, this.oMU);
+      if (this.Ary != 1.0D)
       {
-        this.oGo.KIl = (1.0F / this.Aal);
-        if ((this.Aam != 0) || (this.Aan != 0))
+        this.oMQ.LeF = (1.0F / this.Ary);
+        if ((this.Arz != 0) || (this.ArA != 0))
         {
-          j = (int)(this.BiP.getWidth() / 2 * (1.0F - this.Aal));
-          k = this.Aam;
-          i = (int)(this.BiP.getHeight() / 2 + this.Aan - i / 2 * this.Aal);
-          this.oGo.kb(j + k, i);
+          j = (int)(this.BAo.getWidth() / 2 * (1.0F - this.Ary));
+          k = this.Arz;
+          i = (int)(this.BAo.getHeight() / 2 + this.ArA - i / 2 * this.Ary);
+          this.oMQ.ki(j + k, i);
         }
       }
-      this.oGo.a(this.BiP, this.oGj, new e.c()
+      this.oMQ.a(this.BAo, this.oML, new e.c()
       {
         public final void onAnimationEnd()
         {
@@ -802,9 +804,9 @@ public class GestureGalleryUI
             public final void run()
             {
               AppMethodBeat.i(29079);
-              View localView = GestureGalleryUI.m(GestureGalleryUI.this).eni();
+              View localView = GestureGalleryUI.m(GestureGalleryUI.this).eqQ();
               if ((localView instanceof MultiTouchImageView)) {
-                ((MultiTouchImageView)localView).fyy();
+                ((MultiTouchImageView)localView).fCA();
               }
               AppMethodBeat.o(29079);
             }
@@ -814,14 +816,14 @@ public class GestureGalleryUI
       }, null);
       AppMethodBeat.o(29100);
       return;
-      localObject = this.BiS.c((String)localObject, this.type, j, this.hFI);
+      localObject = this.BAr.c((String)localObject, this.type, j, this.hIA);
       break;
     }
   }
   
-  public final String cwq()
+  public final String cxR()
   {
-    return this.BiR;
+    return this.BAq;
   }
   
   public boolean dispatchKeyEvent(KeyEvent paramKeyEvent)
@@ -829,8 +831,8 @@ public class GestureGalleryUI
     AppMethodBeat.i(29101);
     if ((paramKeyEvent.getKeyCode() == 4) && (paramKeyEvent.getAction() == 0))
     {
-      ad.d("MicroMsg.GestureGalleryUI", "dispatchKeyEvent");
-      bWL();
+      ae.d("MicroMsg.GestureGalleryUI", "dispatchKeyEvent");
+      bYa();
       AppMethodBeat.o(29101);
       return true;
     }
@@ -847,21 +849,21 @@ public class GestureGalleryUI
   public void initView()
   {
     AppMethodBeat.i(29098);
-    String str1 = bt.nullAsNil(getIntent().getStringExtra("nowUrl"));
-    this.liC = bt.nullAsNil(getIntent().getStringExtra("nowUrlPath"));
-    this.Bjy = bt.nullAsNil(getIntent().getStringExtra("nowWebUrl"));
+    String str1 = bu.nullAsNil(getIntent().getStringExtra("nowUrl"));
+    this.lmo = bu.nullAsNil(getIntent().getStringExtra("nowUrlPath"));
+    this.BAX = bu.nullAsNil(getIntent().getStringExtra("nowWebUrl"));
     this.type = getIntent().getIntExtra("type", 0);
     Object localObject = getIntent().getParcelableArrayListExtra("mediaSource");
     if ((localObject != null) && (!((List)localObject).isEmpty()))
     {
-      this.Bjv.clear();
-      this.Bjv.addAll((Collection)localObject);
+      this.BAU.clear();
+      this.BAU.addAll((Collection)localObject);
     }
     localObject = getIntent().getStringArrayExtra("urlList");
     final int i;
     if ((localObject == null) || (localObject.length == 0))
     {
-      localObject = bt.nullAsNil(getIntent().getStringExtra("htmlData"));
+      localObject = bu.nullAsNil(getIntent().getStringExtra("htmlData"));
       i = 0;
     }
     while (i >= 0)
@@ -873,96 +875,96 @@ public class GestureGalleryUI
         if (i >= 0)
         {
           String str2 = ((String)localObject).substring(j + 19, i);
-          ad.d("MicroMsg.GestureGalleryUI", "start:" + j + " end:" + i + " url:" + str2);
-          this.Bju.add(str2);
+          ae.d("MicroMsg.GestureGalleryUI", "start:" + j + " end:" + i + " url:" + str2);
+          this.BAT.add(str2);
           continue;
-          this.Bju = Arrays.asList((Object[])localObject);
+          this.BAT = Arrays.asList((Object[])localObject);
         }
       }
     }
     localObject = getIntent().getStringExtra("pageInfos");
-    if (!bt.isNullOrNil((String)localObject)) {}
+    if (!bu.isNullOrNil((String)localObject)) {}
     try
     {
-      this.BiX = new JSONArray((String)localObject);
+      this.BAw = new JSONArray((String)localObject);
       label302:
       i = 0;
       for (;;)
       {
-        if (i < this.Bju.size())
+        if (i < this.BAT.size())
         {
-          if (str1.equals(this.Bju.get(i))) {
-            this.Bjw = i;
+          if (str1.equals(this.BAT.get(i))) {
+            this.BAV = i;
           }
         }
         else
         {
-          this.Bjx = this.Bjw;
+          this.BAW = this.BAV;
           if (getIntent().getIntExtra("currentPos", -1) >= 0) {
-            this.Bjx = getIntent().getIntExtra("currentPos", -1);
+            this.BAW = getIntent().getIntExtra("currentPos", -1);
           }
           setBackBtn(new MenuItem.OnMenuItemClickListener()
           {
             public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
             {
               AppMethodBeat.i(29074);
-              GestureGalleryUI.this.bWL();
+              GestureGalleryUI.this.bYa();
               AppMethodBeat.o(29074);
               return true;
             }
           });
-          this.Bjg = ((TextView)findViewById(2131303133));
-          this.oGj = ((ImageView)findViewById(2131300336));
-          this.Bjn = ((RelativeLayout)findViewById(2131306407));
-          this.Bjp = ((RedesignVideoPlayerSeekBar)findViewById(2131306375));
-          this.Bjo = ((PressAlphaImageView)findViewById(2131306316));
-          this.Bjo.setOnClickListener(new GestureGalleryUI.15(this));
-          this.Bjp.setPlayBtnOnClickListener(new View.OnClickListener()
+          this.BAF = ((TextView)findViewById(2131303133));
+          this.oML = ((ImageView)findViewById(2131300336));
+          this.BAM = ((RelativeLayout)findViewById(2131306407));
+          this.BAO = ((RedesignVideoPlayerSeekBar)findViewById(2131306375));
+          this.BAN = ((PressAlphaImageView)findViewById(2131306316));
+          this.BAN.setOnClickListener(new GestureGalleryUI.15(this));
+          this.BAO.setPlayBtnOnClickListener(new View.OnClickListener()
           {
             public final void onClick(View paramAnonymousView)
             {
-              AppMethodBeat.i(193376);
+              AppMethodBeat.i(186655);
               com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
               localb.bd(paramAnonymousView);
-              com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/subapp/ui/gallery/GestureGalleryUI$25", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-              if (GestureGalleryUI.J(GestureGalleryUI.this).cfC()) {
+              com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/subapp/ui/gallery/GestureGalleryUI$25", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+              if (GestureGalleryUI.J(GestureGalleryUI.this).cgS()) {
                 GestureGalleryUI.Y(GestureGalleryUI.this);
               }
               for (;;)
               {
                 com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/subapp/ui/gallery/GestureGalleryUI$25", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-                AppMethodBeat.o(193376);
+                AppMethodBeat.o(186655);
                 return;
                 GestureGalleryUI.Z(GestureGalleryUI.this);
               }
             }
           });
-          this.Bjp.setVideoTotalTime(0);
-          this.Bjp.seek(0);
-          this.Bjp.setIplaySeekCallback(new com.tencent.mm.plugin.sight.decode.ui.b()
+          this.BAO.setVideoTotalTime(0);
+          this.BAO.seek(0);
+          this.BAO.setIplaySeekCallback(new com.tencent.mm.plugin.sight.decode.ui.b()
           {
-            public final void aqD() {}
+            public final void aqS() {}
             
-            public final void nM(int paramAnonymousInt)
+            public final void nP(int paramAnonymousInt)
             {
-              AppMethodBeat.i(193377);
+              AppMethodBeat.i(186656);
               if (GestureGalleryUI.aa(GestureGalleryUI.this) != null) {
-                GestureGalleryUI.aa(GestureGalleryUI.this).BjN.seekTo(paramAnonymousInt * 1000);
+                GestureGalleryUI.aa(GestureGalleryUI.this).BBm.seekTo(paramAnonymousInt * 1000);
               }
-              AppMethodBeat.o(193377);
+              AppMethodBeat.o(186656);
             }
           });
-          this.BiO = new a();
-          this.BiP = ((MMGestureGallery)findViewById(2131300335));
-          this.BiP.setVisibility(0);
-          this.BiP.setVerticalFadingEdgeEnabled(false);
-          this.BiP.setHorizontalFadingEdgeEnabled(false);
-          this.BiP.setAdapter(this.BiO);
-          this.BiP.setSelection(this.Bjw);
-          this.BiP.setOnItemSelectedListener(this.BjA);
-          this.BiP.setSingleClickOverListener(new MMGestureGallery.f()
+          this.BAn = new a();
+          this.BAo = ((MMGestureGallery)findViewById(2131300335));
+          this.BAo.setVisibility(0);
+          this.BAo.setVerticalFadingEdgeEnabled(false);
+          this.BAo.setHorizontalFadingEdgeEnabled(false);
+          this.BAo.setAdapter(this.BAn);
+          this.BAo.setSelection(this.BAV);
+          this.BAo.setOnItemSelectedListener(this.BAZ);
+          this.BAo.setSingleClickOverListener(new MMGestureGallery.f()
           {
-            public final void aRp()
+            public final void aRO()
             {
               boolean bool2 = true;
               AppMethodBeat.i(29075);
@@ -991,8 +993,8 @@ public class GestureGalleryUI
                     break;
                   }
                 }
-                if (GestureGalleryUI.e(GestureGalleryUI.this).ryV != 1) {
-                  GestureGalleryUI.this.bWL();
+                if (GestureGalleryUI.e(GestureGalleryUI.this).rHg != 1) {
+                  GestureGalleryUI.this.bYa();
                 }
                 AppMethodBeat.o(29075);
                 return;
@@ -1000,20 +1002,20 @@ public class GestureGalleryUI
             }
           });
           i = getIntent().getIntExtra("nevNext", 1);
-          this.BiP.setLongClickOverListener(new MMGestureGallery.c()
+          this.BAo.setLongClickOverListener(new MMGestureGallery.c()
           {
-            public final void aRq()
+            public final void aRP()
             {
               boolean bool2 = true;
               AppMethodBeat.i(29077);
-              if (GestureGalleryUI.e(GestureGalleryUI.this).ryV == 1)
+              if (GestureGalleryUI.e(GestureGalleryUI.this).rHg == 1)
               {
                 AppMethodBeat.o(29077);
                 return;
               }
               if ((GestureGalleryUI.f(GestureGalleryUI.this)) && (!GestureGalleryUI.g(GestureGalleryUI.this)))
               {
-                ad.e("MicroMsg.GestureGalleryUI", "is from appbrand, but showmenu is false, don't show menu");
+                ae.e("MicroMsg.GestureGalleryUI", "is from appbrand, but showmenu is false, don't show menu");
                 AppMethodBeat.o(29077);
                 return;
               }
@@ -1022,41 +1024,41 @@ public class GestureGalleryUI
               Object localObject1;
               if (1 == i)
               {
-                localObject1 = y.aBq().F("basescanui@datacenter", true);
-                ((y.b)localObject1).k("key_basescanui_screen_x", Integer.valueOf(GestureGalleryUI.i(GestureGalleryUI.this).getXDown()));
-                ((y.b)localObject1).k("key_basescanui_screen_y", Integer.valueOf(GestureGalleryUI.i(GestureGalleryUI.this).getYDown()));
-                if ((GestureGalleryUI.e(GestureGalleryUI.this).ryV == 0) || (GestureGalleryUI.e(GestureGalleryUI.this).ryV == 2))
+                localObject1 = z.aBG().F("basescanui@datacenter", true);
+                ((z.b)localObject1).k("key_basescanui_screen_x", Integer.valueOf(GestureGalleryUI.i(GestureGalleryUI.this).getXDown()));
+                ((z.b)localObject1).k("key_basescanui_screen_y", Integer.valueOf(GestureGalleryUI.i(GestureGalleryUI.this).getYDown()));
+                if ((GestureGalleryUI.e(GestureGalleryUI.this).rHg == 0) || (GestureGalleryUI.e(GestureGalleryUI.this).rHg == 2))
                 {
                   localObject1 = GestureGalleryUI.e(GestureGalleryUI.this);
                   Object localObject2 = new ce();
                   long l;
                   label233:
                   boolean bool1;
-                  if (((a)localObject1).ryV == 2)
+                  if (((a)localObject1).rHg == 2)
                   {
                     l = 1L;
-                    ((ce)localObject2).dVd = l;
-                    ((ce)localObject2).dPl = 1L;
-                    if (!((a)localObject1).BiK) {
+                    ((ce)localObject2).dWt = l;
+                    ((ce)localObject2).dQB = 1L;
+                    if (!((a)localObject1).BAj) {
                       break label392;
                     }
                     l = 6L;
-                    ((ce)localObject2).eca = l;
-                    ((ce)localObject2).aLk();
+                    ((ce)localObject2).edv = l;
+                    ((ce)localObject2).aLH();
                     localObject1 = GestureGalleryUI.this;
-                    int i = ((com.tencent.mm.plugin.zero.b.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.zero.b.a.class)).acA().getInt("EnableWebviewPicTranslation", 0);
-                    localObject2 = ((com.tencent.mm.plugin.zero.b.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.zero.b.a.class)).acA().getValue("PicTranslationSupportUserLanguage");
+                    int i = ((com.tencent.mm.plugin.zero.b.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.zero.b.a.class)).acL().getInt("EnableWebviewPicTranslation", 0);
+                    localObject2 = ((com.tencent.mm.plugin.zero.b.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.zero.b.a.class)).acL().getValue("PicTranslationSupportUserLanguage");
                     if (i != 1) {
                       break label400;
                     }
                     bool1 = true;
                     label299:
-                    ad.i("MicroMsg.ScannerHelper", "enable %s, support lang %s, current lang %s", new Object[] { Boolean.valueOf(bool1), localObject2, ac.fks() });
-                    if ((i != 1) || (bt.isNullOrNil((String)localObject2))) {
+                    ae.i("MicroMsg.ScannerHelper", "enable %s, support lang %s, current lang %s", new Object[] { Boolean.valueOf(bool1), localObject2, ad.fom() });
+                    if ((i != 1) || (bu.isNullOrNil((String)localObject2))) {
                       break label405;
                     }
                     localObject2 = ((String)localObject2).split(";");
-                    if ((localObject2 == null) || (!Arrays.asList((Object[])localObject2).contains(ac.fks()))) {
+                    if ((localObject2 == null) || (!Arrays.asList((Object[])localObject2).contains(ad.fom()))) {
                       break label405;
                     }
                     bool1 = bool2;
@@ -1076,7 +1078,7 @@ public class GestureGalleryUI
                     break label299;
                     label405:
                     bool1 = bool2;
-                    if (!com.tencent.mm.protocal.d.Fnn) {
+                    if (!com.tencent.mm.protocal.d.FFL) {
                       bool1 = false;
                     }
                   }
@@ -1090,7 +1092,7 @@ public class GestureGalleryUI
                 localObject1 = GestureGalleryUI.this.getContext().getResources().getStringArray(2130903084);
                 com.tencent.mm.ui.base.h.b(GestureGalleryUI.this, null, (String[])localObject1, "", new h.c()
                 {
-                  public final void lf(int paramAnonymous2Int)
+                  public final void lh(int paramAnonymous2Int)
                   {
                     AppMethodBeat.i(29076);
                     switch (paramAnonymous2Int)
@@ -1114,7 +1116,7 @@ public class GestureGalleryUI
                       localIntent.putExtra("Retr_File_Name", str);
                       localIntent.putExtra("Retr_Msg_Type", 0);
                       localIntent.putExtra("Retr_Compress_Type", 0);
-                      com.tencent.mm.plugin.subapp.b.iRG.k(localIntent, localGestureGalleryUI.getContext());
+                      com.tencent.mm.plugin.subapp.b.iUz.k(localIntent, localGestureGalleryUI.getContext());
                     }
                   }
                 });
@@ -1122,7 +1124,7 @@ public class GestureGalleryUI
               AppMethodBeat.o(29077);
             }
           });
-          this.oGo = new com.tencent.mm.ui.tools.e(this);
+          this.oMQ = new com.tencent.mm.ui.tools.e(this);
           AppMethodBeat.o(29098);
           return;
         }
@@ -1138,15 +1140,15 @@ public class GestureGalleryUI
   public final void j(String paramString1, String paramString2, int paramInt)
   {
     AppMethodBeat.i(29092);
-    if (this.BiO != null)
+    if (this.BAn != null)
     {
-      if (paramInt == this.BiP.getSelectedItemPosition())
+      if (paramInt == this.BAo.getSelectedItemPosition())
       {
-        this.BiR = paramString2;
-        this.BiQ = paramInt;
-        ad.d("MicroMsg.GestureGalleryUI", "onDownSucc, curFilename:%s, url:%s", new Object[] { this.BiR, paramString1 });
+        this.BAq = paramString2;
+        this.BAp = paramInt;
+        ae.d("MicroMsg.GestureGalleryUI", "onDownSucc, curFilename:%s, url:%s", new Object[] { this.BAq, paramString1 });
       }
-      this.BiO.notifyDataSetChanged();
+      this.BAn.notifyDataSetChanged();
     }
     AppMethodBeat.o(29092);
   }
@@ -1172,12 +1174,12 @@ public class GestureGalleryUI
         {
           public final void run()
           {
-            AppMethodBeat.i(193384);
-            this.rvc.dismiss();
-            AppMethodBeat.o(193384);
+            AppMethodBeat.i(186663);
+            this.rDo.dismiss();
+            AppMethodBeat.o(186663);
           }
         };
-        if (!bt.isNullOrNil((String)localObject)) {
+        if (!bu.isNullOrNil((String)localObject)) {
           break label93;
         }
         AppMethodBeat.o(179726);
@@ -1186,36 +1188,36 @@ public class GestureGalleryUI
         break;
       }
       label93:
-      Iterator localIterator = bt.U(((String)localObject).split(",")).iterator();
+      Iterator localIterator = bu.U(((String)localObject).split(",")).iterator();
       while (localIterator.hasNext())
       {
         final String str2 = (String)localIterator.next();
-        String str1 = ((AppBrandMediaSource)this.Bjv.get(this.Bjw)).hkP;
+        String str1 = ((AppBrandMediaSource)this.BAU.get(this.BAV)).hnD;
         localObject = str1;
-        if (!i.fv(str1)) {
-          localObject = this.BiS.c(str1, this.type, this.Bjw, this.hFI);
+        if (!o.fB(str1)) {
+          localObject = this.BAr.c(str1, this.type, this.BAV, this.hIA);
         }
-        ad.i("MicroMsg.GestureGalleryUI", "onActivityResult,  sendVideo video:%s,  thumbFilename:%s", new Object[] { enf(), localObject });
-        com.tencent.mm.kernel.g.ajF().ay(new Runnable()
+        ae.i("MicroMsg.GestureGalleryUI", "onActivityResult,  sendVideo video:%s,  thumbFilename:%s", new Object[] { eqN(), localObject });
+        com.tencent.mm.kernel.g.ajU().aw(new Runnable()
         {
           public final void run()
           {
-            AppMethodBeat.i(193385);
-            com.tencent.mm.plugin.messenger.a.g.dlD().a(GestureGalleryUI.this.getContext(), str2, GestureGalleryUI.D(GestureGalleryUI.this), this.BjH, 1, (int)GestureGalleryUI.ab(GestureGalleryUI.this), "", "");
-            aq.f(local25);
-            AppMethodBeat.o(193385);
+            AppMethodBeat.i(186664);
+            com.tencent.mm.plugin.messenger.a.g.doC().a(GestureGalleryUI.this.getContext(), str2, GestureGalleryUI.D(GestureGalleryUI.this), this.BBg, 1, (int)GestureGalleryUI.ab(GestureGalleryUI.this), "", "");
+            ar.f(local25);
+            AppMethodBeat.o(186664);
           }
           
           public final String toString()
           {
-            AppMethodBeat.i(193386);
+            AppMethodBeat.i(186665);
             String str = super.toString() + "send video";
-            AppMethodBeat.o(193386);
+            AppMethodBeat.o(186665);
             return str;
           }
         });
-        if (!bt.isNullOrNil(paramIntent)) {
-          com.tencent.mm.plugin.messenger.a.g.dlD().aa(str2, paramIntent, w.Ar(str2));
+        if (!bu.isNullOrNil(paramIntent)) {
+          com.tencent.mm.plugin.messenger.a.g.doC().aa(str2, paramIntent, com.tencent.mm.model.x.Bb(str2));
         }
       }
       com.tencent.mm.ui.widget.snackbar.b.n(this, getString(2131759420));
@@ -1230,23 +1232,23 @@ public class GestureGalleryUI
   {
     AppMethodBeat.i(29093);
     super.onCreate(paramBundle);
-    this.oGn = paramBundle;
-    this.Bjt.alive();
+    this.oMP = paramBundle;
+    this.BAS.alive();
     if (Build.VERSION.SDK_INT >= 21)
     {
       getWindow().setFlags(1024, 1024);
       getWindow().addFlags(67108864);
     }
     fullScreenNoTitleBar(true);
-    this.BiV = getIntent().getBooleanExtra("isFromAppBrand", false);
-    this.hDR = getIntent().getBooleanExtra("forBidForward", false);
-    this.BiT = getIntent().getBooleanExtra("isFromWebView", false);
-    this.BiW = getIntent().getBooleanExtra("showmenu", true);
-    this.BiU = getIntent().getBooleanExtra("isOuntLink", false);
-    this.hFx = getIntent().getStringExtra("IsFromWebViewReffer");
-    this.BiZ = getIntent().getBooleanExtra("shouldShowScanQrCodeMenu", false);
-    this.Bjf = getIntent().getBooleanExtra("shouldRunDragAnimation", false);
-    this.Bjc = getIntent().getIntExtra("scanQrCodeGetA8KeyScene", 0);
+    this.BAu = getIntent().getBooleanExtra("isFromAppBrand", false);
+    this.hGJ = getIntent().getBooleanExtra("forBidForward", false);
+    this.BAs = getIntent().getBooleanExtra("isFromWebView", false);
+    this.BAv = getIntent().getBooleanExtra("showmenu", true);
+    this.BAt = getIntent().getBooleanExtra("isOuntLink", false);
+    this.hIp = getIntent().getStringExtra("IsFromWebViewReffer");
+    this.BAy = getIntent().getBooleanExtra("shouldShowScanQrCodeMenu", false);
+    this.BAE = getIntent().getBooleanExtra("shouldRunDragAnimation", false);
+    this.BAB = getIntent().getIntExtra("scanQrCodeGetA8KeyScene", 0);
     paramBundle = getIntent().getIntArrayExtra("scanCodeTypes");
     int i;
     if ((paramBundle != null) && (paramBundle.length > 0))
@@ -1254,7 +1256,7 @@ public class GestureGalleryUI
       i = 0;
       while (i < paramBundle.length)
       {
-        this.Bjd.add(Integer.valueOf(paramBundle[i]));
+        this.BAC.add(Integer.valueOf(paramBundle[i]));
         i += 1;
       }
     }
@@ -1264,27 +1266,27 @@ public class GestureGalleryUI
       i = 0;
       while (i < paramBundle.length)
       {
-        this.Bje.add(Integer.valueOf(paramBundle[i]));
+        this.BAD.add(Integer.valueOf(paramBundle[i]));
         i += 1;
       }
     }
-    this.Bjh = new a(this, this, this, this.BiU);
-    this.hFI = getIntent().getStringExtra("cookie");
-    ad.d("MicroMsg.GestureGalleryUI", "isFromWebView: %b, isFromWebViewReffer:%s, cookie = %s, forbidForward=%b", new Object[] { Boolean.valueOf(this.BiT), this.hFx, this.hFI, Boolean.valueOf(this.hDR) });
-    this.BiS = new ab(this.BiT, this.hFx);
-    paramBundle = this.BiS;
-    ad.d("MicroMsg.GetPicService", "addListener :" + hashCode());
-    paramBundle.hFz = this;
-    com.tencent.mm.sdk.b.a.IbL.c(this.rwO);
-    com.tencent.mm.sdk.b.a.IbL.c(this.zQO);
+    this.BAG = new a(this, this, this, this.BAt);
+    this.hIA = getIntent().getStringExtra("cookie");
+    ae.d("MicroMsg.GestureGalleryUI", "isFromWebView: %b, isFromWebViewReffer:%s, cookie = %s, forbidForward=%b", new Object[] { Boolean.valueOf(this.BAs), this.hIp, this.hIA, Boolean.valueOf(this.hGJ) });
+    this.BAr = new ac(this.BAs, this.hIp);
+    paramBundle = this.BAr;
+    ae.d("MicroMsg.GetPicService", "addListener :" + hashCode());
+    paramBundle.hIr = this;
+    com.tencent.mm.sdk.b.a.IvT.c(this.rFa);
+    com.tencent.mm.sdk.b.a.IvT.c(this.AhV);
     initView();
-    this.Bjz = false;
-    if (this.BiV) {
+    this.BAY = false;
+    if (this.BAu) {
       getWindow().setBackgroundDrawableResource(2131231318);
     }
-    this.lvI = new ScanCodeSheetItemLogic(this, new ScanCodeSheetItemLogic.a()
+    this.lAg = new ScanCodeSheetItemLogic(this, new ScanCodeSheetItemLogic.a()
     {
-      public final void bpj()
+      public final void bpT()
       {
         AppMethodBeat.i(29065);
         if ((GestureGalleryUI.a(GestureGalleryUI.this) != null) && (GestureGalleryUI.a(GestureGalleryUI.this).isShowing())) {
@@ -1293,19 +1295,19 @@ public class GestureGalleryUI
         AppMethodBeat.o(29065);
       }
     });
-    this.Bjm = ((RelativeLayout)findViewById(2131308329));
-    if (this.BiX != null)
+    this.BAL = ((RelativeLayout)findViewById(2131308329));
+    if (this.BAw != null)
     {
-      this.BjB = findViewById(2131308432);
-      this.Bjm.setVisibility(0);
+      this.BBa = findViewById(2131308432);
+      this.BAL.setVisibility(0);
       ((TextView)findViewById(2131308379)).setTextSize(1, 12.0F);
-      this.BjB.setOnClickListener(new GestureGalleryUI.12(this));
+      this.BBa.setOnClickListener(new GestureGalleryUI.12(this));
       findViewById(2131308330).setOnClickListener(new GestureGalleryUI.13(this));
       findViewById(2131299194).setOnClickListener(new GestureGalleryUI.14(this));
       AppMethodBeat.o(29093);
       return;
     }
-    this.Bjm.setVisibility(8);
+    this.BAL.setVisibility(8);
     AppMethodBeat.o(29093);
   }
   
@@ -1313,44 +1315,44 @@ public class GestureGalleryUI
   {
     AppMethodBeat.i(29094);
     super.onDestroy();
-    Object localObject = this.BiS;
-    ad.d("MicroMsg.GetPicService", "removeListener :" + hashCode());
-    ((ab)localObject).hFz = null;
-    localObject = this.BiS;
-    if (((ab)localObject).hFv != null) {
-      ((ab)localObject).hFv.hFD = true;
+    Object localObject = this.BAr;
+    ae.d("MicroMsg.GetPicService", "removeListener :" + hashCode());
+    ((ac)localObject).hIr = null;
+    localObject = this.BAr;
+    if (((ac)localObject).hIn != null) {
+      ((ac)localObject).hIn.hIv = true;
     }
-    ((ab)localObject).hFv = null;
-    com.tencent.mm.sdk.b.a.IbL.d(this.rwO);
-    com.tencent.mm.sdk.b.a.IbL.d(this.zQO);
-    this.Bjt.dead();
-    gx(this);
-    if (this.Bjh != null)
+    ((ac)localObject).hIn = null;
+    com.tencent.mm.sdk.b.a.IvT.d(this.rFa);
+    com.tencent.mm.sdk.b.a.IvT.d(this.AhV);
+    this.BAS.dead();
+    gC(this);
+    if (this.BAG != null)
     {
-      localObject = this.Bjh;
-      ((a)localObject).cwE();
-      ((a)localObject).rza.removeAllUpdateListeners();
-      ((a)localObject).rzb.dead();
-      com.tencent.mm.kernel.g.ajB().b(((a)localObject).rzc);
-      ((a)localObject).ryS = null;
+      localObject = this.BAG;
+      ((a)localObject).cyf();
+      ((a)localObject).rHl.removeAllUpdateListeners();
+      ((a)localObject).rHm.dead();
+      com.tencent.mm.kernel.g.ajQ().b(((a)localObject).rHn);
+      ((a)localObject).rHd = null;
       ((a)localObject).activity = null;
-      ((a)localObject).BiJ = null;
+      ((a)localObject).BAi = null;
     }
-    localObject = new qq();
-    ((qq)localObject).dFm.activity = this;
-    com.tencent.mm.sdk.b.a.IbL.l((com.tencent.mm.sdk.b.b)localObject);
-    ad.i("MicroMsg.GestureGalleryUI", "stopVideo");
-    if (this.Bjk != null)
+    localObject = new qr();
+    ((qr)localObject).dGr.activity = this;
+    com.tencent.mm.sdk.b.a.IvT.l((com.tencent.mm.sdk.b.b)localObject);
+    ae.i("MicroMsg.GestureGalleryUI", "stopVideo");
+    if (this.BAJ != null)
     {
-      this.Bjk.BjN.stopPlayback();
-      this.Bjr = c.BjX;
-      this.Bjp.setIsPlay(false);
-      this.Bjp.setIplaySeekCallback(null);
-      this.Bjk.zSR.setVisibility(0);
-      this.Bjk.teJ.setVisibility(0);
-      this.Bjk.BjN.setVisibility(8);
+      this.BAJ.BBm.stopPlayback();
+      this.BAQ = c.BBw;
+      this.BAO.setIsPlay(false);
+      this.BAO.setIplaySeekCallback(null);
+      this.BAJ.AjY.setVisibility(0);
+      this.BAJ.tpC.setVisibility(0);
+      this.BAJ.BBm.setVisibility(8);
     }
-    enh();
+    eqP();
     AppMethodBeat.o(29094);
   }
   
@@ -1358,7 +1360,7 @@ public class GestureGalleryUI
   {
     AppMethodBeat.i(29095);
     super.onPause();
-    cxt();
+    cyU();
     if (Build.VERSION.SDK_INT >= 21) {
       getWindow().setFlags(2048, 2048);
     }
@@ -1380,21 +1382,21 @@ public class GestureGalleryUI
   public void onStart()
   {
     AppMethodBeat.i(29099);
-    Bundle localBundle = this.oGn;
-    if ((this.isAnimated) || (!this.Bjf)) {}
+    Bundle localBundle = this.oMP;
+    if ((this.isAnimated) || (!this.BAE)) {}
     for (;;)
     {
       super.onStart();
       AppMethodBeat.o(29099);
       return;
       this.isAnimated = true;
-      this.oGp = getIntent().getIntExtra("img_gallery_top", 0);
-      this.oGq = getIntent().getIntExtra("img_gallery_left", 0);
-      this.oGr = getIntent().getIntExtra("img_gallery_width", 0);
-      this.oGs = getIntent().getIntExtra("img_gallery_height", 0);
-      this.oGo.R(this.oGq, this.oGp, this.oGr, this.oGs);
+      this.oMR = getIntent().getIntExtra("img_gallery_top", 0);
+      this.oMS = getIntent().getIntExtra("img_gallery_left", 0);
+      this.oMT = getIntent().getIntExtra("img_gallery_width", 0);
+      this.oMU = getIntent().getIntExtra("img_gallery_height", 0);
+      this.oMQ.R(this.oMS, this.oMR, this.oMT, this.oMU);
       if (localBundle == null) {
-        this.BiP.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener()
+        this.BAo.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener()
         {
           public final boolean onPreDraw()
           {
@@ -1414,15 +1416,15 @@ public class GestureGalleryUI
   {
     AppMethodBeat.i(29097);
     super.onStop();
-    if (this.zQF != null)
+    if (this.AhM != null)
     {
       au localau = new au();
-      localau.dlF.activity = this;
-      localau.dlF.dlG = this.zQF;
-      com.tencent.mm.sdk.b.a.IbL.l(localau);
-      this.zQF = null;
-      this.Bjb = 0;
-      this.Bja = 0;
+      localau.dmH.activity = this;
+      localau.dmH.dmI = this.AhM;
+      com.tencent.mm.sdk.b.a.IvT.l(localau);
+      this.AhM = null;
+      this.BAA = 0;
+      this.BAz = 0;
     }
     AppMethodBeat.o(29097);
   }
@@ -1438,7 +1440,7 @@ public class GestureGalleryUI
   {
     public a() {}
     
-    private View SJ(int paramInt)
+    private View Tq(int paramInt)
     {
       AppMethodBeat.i(29089);
       int i = GestureGalleryUI.i(GestureGalleryUI.this).getFirstVisiblePosition();
@@ -1454,10 +1456,10 @@ public class GestureGalleryUI
       return localView;
     }
     
-    public final View eni()
+    public final View eqQ()
     {
       AppMethodBeat.i(29088);
-      View localView = SJ(GestureGalleryUI.this.BiP.getSelectedItemPosition());
+      View localView = Tq(GestureGalleryUI.this.BAo.getSelectedItemPosition());
       AppMethodBeat.o(29088);
       return localView;
     }
@@ -1465,7 +1467,7 @@ public class GestureGalleryUI
     public final int getCount()
     {
       AppMethodBeat.i(29086);
-      ad.d("MicroMsg.GestureGalleryUI", "lstpicurl:" + GestureGalleryUI.I(GestureGalleryUI.this).size());
+      ae.d("MicroMsg.GestureGalleryUI", "lstpicurl:" + GestureGalleryUI.I(GestureGalleryUI.this).size());
       int i = GestureGalleryUI.I(GestureGalleryUI.this).size();
       AppMethodBeat.o(29086);
       return i;
@@ -1504,22 +1506,22 @@ public class GestureGalleryUI
         }
         Object localObject1;
         View localView;
-        if ((paramView == null) || ((i != 0) && (paramViewGroup != null) && (paramViewGroup.BjN == null)))
+        if ((paramView == null) || ((i != 0) && (paramViewGroup != null) && (paramViewGroup.BBm == null)))
         {
           localObject1 = new a();
           localView = View.inflate(GestureGalleryUI.this, 2131495191, null);
-          ((a)localObject1).BjL = ((ProgressBar)localView.findViewById(2131303535));
-          ((a)localObject1).BjM = ((MMAnimateView)localView.findViewById(2131300914));
-          ((a)localObject1).teJ = ((ImageView)localView.findViewById(2131305793));
-          ((a)localObject1).tEo = localView.findViewById(2131306319);
-          ((a)localObject1).BjN = ((VideoView)localView.findViewById(2131306410));
-          ((a)localObject1).zSR = ((ImageView)localView.findViewById(2131306413));
-          ((a)localObject1).BjO = localView.findViewById(2131306339);
-          ((a)localObject1).BjP = ((TextView)localView.findViewById(2131306340));
+          ((a)localObject1).BBk = ((ProgressBar)localView.findViewById(2131303535));
+          ((a)localObject1).BBl = ((MMAnimateView)localView.findViewById(2131300914));
+          ((a)localObject1).tpC = ((ImageView)localView.findViewById(2131305793));
+          ((a)localObject1).tPf = localView.findViewById(2131306319);
+          ((a)localObject1).BBm = ((VideoView)localView.findViewById(2131306410));
+          ((a)localObject1).AjY = ((ImageView)localView.findViewById(2131306413));
+          ((a)localObject1).BBn = localView.findViewById(2131306339);
+          ((a)localObject1).BBo = ((TextView)localView.findViewById(2131306340));
           if (i != 0)
           {
-            ((a)localObject1).teJ.setVisibility(8);
-            ((a)localObject1).teJ = ((ImageView)localView.findViewById(2131306347));
+            ((a)localObject1).tpC.setVisibility(8);
+            ((a)localObject1).tpC = ((ImageView)localView.findViewById(2131306347));
           }
           localView.setTag(localObject1);
         }
@@ -1531,21 +1533,21 @@ public class GestureGalleryUI
           j = i;
           if (i != 0)
           {
-            paramView = ((AppBrandMediaSource)localObject2).hkP;
+            paramView = ((AppBrandMediaSource)localObject2).hnD;
             j = 1;
           }
           paramViewGroup = paramView;
-          if (!i.fv(paramView))
+          if (!o.fB(paramView))
           {
             paramView = GestureGalleryUI.M(GestureGalleryUI.this).c(paramView, GestureGalleryUI.K(GestureGalleryUI.this), paramInt, GestureGalleryUI.L(GestureGalleryUI.this));
             paramViewGroup = paramView;
             if (paramInt == GestureGalleryUI.R(GestureGalleryUI.this))
             {
               paramViewGroup = paramView;
-              if (bt.isNullOrNil(paramView))
+              if (bu.isNullOrNil(paramView))
               {
                 paramViewGroup = paramView;
-                if (i.fv(GestureGalleryUI.S(GestureGalleryUI.this))) {
+                if (o.fB(GestureGalleryUI.S(GestureGalleryUI.this))) {
                   paramViewGroup = GestureGalleryUI.S(GestureGalleryUI.this);
                 }
               }
@@ -1553,18 +1555,18 @@ public class GestureGalleryUI
           }
           for (i = 1;; i = k)
           {
-            ((a)localObject1).BjN.setVisibility(8);
-            ((a)localObject1).BjN.stopPlayback();
+            ((a)localObject1).BBm.setVisibility(8);
+            ((a)localObject1).BBm.stopPlayback();
             if (j != 0)
             {
-              ((a)localObject1).tEo.setVisibility(0);
+              ((a)localObject1).tPf.setVisibility(0);
               GestureGalleryUI.b(GestureGalleryUI.this, (a)localObject1);
-              if (bt.isNullOrNil(paramViewGroup)) {
+              if (bu.isNullOrNil(paramViewGroup)) {
                 break label1368;
               }
-              ((a)localObject1).BjL.setVisibility(8);
+              ((a)localObject1).BBk.setVisibility(8);
               if ((GestureGalleryUI.Q(GestureGalleryUI.this) != null) && (!GestureGalleryUI.Q(GestureGalleryUI.this).isEmpty())) {
-                TextUtils.isEmpty(((AppBrandMediaSource)GestureGalleryUI.Q(GestureGalleryUI.this).get(paramInt)).hkP);
+                TextUtils.isEmpty(((AppBrandMediaSource)GestureGalleryUI.Q(GestureGalleryUI.this).get(paramInt)).hnD);
               }
               if (paramViewGroup != null) {
                 break label600;
@@ -1579,10 +1581,10 @@ public class GestureGalleryUI
               GestureGalleryUI.this.finish();
               AppMethodBeat.o(29090);
               return localView;
-              ((a)localObject1).tEo.setVisibility(8);
+              ((a)localObject1).tPf.setVisibility(8);
               break;
               label600:
-              localObject2 = com.tencent.mm.aw.a.a.aIP().FD(paramViewGroup + "_" + i.aYo(paramViewGroup));
+              localObject2 = com.tencent.mm.av.a.a.aJh().Gf(paramViewGroup + "_" + o.aZR(paramViewGroup));
               if (localObject2 != null)
               {
                 paramView = (View)localObject2;
@@ -1595,10 +1597,10 @@ public class GestureGalleryUI
                 paramView = BitmapFactory.decodeFile(paramViewGroup, paramView);
                 if (paramView != null)
                 {
-                  ad.i("MicroMsg.GestureGalleryUI", "recycle bitmap:%s", new Object[] { paramView.toString() });
+                  ae.i("MicroMsg.GestureGalleryUI", "recycle bitmap:%s", new Object[] { paramView.toString() });
                   paramView.recycle();
                 }
-                localObject2 = com.tencent.mm.sdk.platformtools.g.aQf(paramViewGroup);
+                localObject2 = com.tencent.mm.sdk.platformtools.h.aRC(paramViewGroup);
                 paramView = (View)localObject2;
                 if (localObject2 == null)
                 {
@@ -1618,16 +1620,16 @@ public class GestureGalleryUI
                 label787:
                 for (boolean bool = true;; bool = false)
                 {
-                  ad.i("MicroMsg.GestureGalleryUI", "Progressive jpeg, result isNull:%b", new Object[] { Boolean.valueOf(bool) });
+                  ae.i("MicroMsg.GestureGalleryUI", "Progressive jpeg, result isNull:%b", new Object[] { Boolean.valueOf(bool) });
                   if (paramView != null) {
                     break label793;
                   }
-                  ad.e("MicroMsg.GestureGalleryUI", "getSuitableBmp fail, temBmp is null, filePath = ".concat(String.valueOf(paramViewGroup)));
+                  ae.e("MicroMsg.GestureGalleryUI", "getSuitableBmp fail, temBmp is null, filePath = ".concat(String.valueOf(paramViewGroup)));
                   paramView = null;
                   break;
                 }
                 label793:
-                com.tencent.mm.aw.a.a.aIP().h(paramViewGroup + "_" + i.aYo(paramViewGroup), paramView);
+                com.tencent.mm.av.a.a.aJh().h(paramViewGroup + "_" + o.aZR(paramViewGroup), paramView);
               }
             }
             label830:
@@ -1652,8 +1654,8 @@ public class GestureGalleryUI
             {
               if (paramView != null)
               {
-                k = al.ci(GestureGalleryUI.this.getContext()).x;
-                m = al.ci(GestureGalleryUI.this.getContext()).y;
+                k = al.ck(GestureGalleryUI.this.getContext()).x;
+                m = al.ck(GestureGalleryUI.this.getContext()).y;
                 long l = paramView.getWidth() * paramView.getHeight();
                 if ((GestureGalleryUI.f(GestureGalleryUI.this)) && (!paramView.isRecycled()) && (l < k * m))
                 {
@@ -1666,7 +1668,7 @@ public class GestureGalleryUI
             }
             else
             {
-              if (!t.aQj(paramViewGroup)) {
+              if (!u.aRG(paramViewGroup)) {
                 break label1111;
               }
               if (paramInt == GestureGalleryUI.R(GestureGalleryUI.this)) {
@@ -1678,43 +1680,43 @@ public class GestureGalleryUI
             {
               try
               {
-                ((a)localObject1).BjM.setLayoutParams(new RelativeLayout.LayoutParams(-1, -1));
-                ((a)localObject1).teJ.setVisibility(8);
-                ((a)localObject1).BjM.setVisibility(0);
-                localObject2 = ((a)localObject1).BjM;
-                ((MMAnimateView)localObject2).uzQ = GestureGalleryUI.f(GestureGalleryUI.this);
-                ((MMAnimateView)localObject2).hh(paramViewGroup, null);
+                ((a)localObject1).BBl.setLayoutParams(new RelativeLayout.LayoutParams(-1, -1));
+                ((a)localObject1).tpC.setVisibility(8);
+                ((a)localObject1).BBl.setVisibility(0);
+                localObject2 = ((a)localObject1).BBl;
+                ((MMAnimateView)localObject2).uLv = GestureGalleryUI.f(GestureGalleryUI.this);
+                ((MMAnimateView)localObject2).ho(paramViewGroup, null);
                 AppMethodBeat.o(29090);
                 return localView;
                 k = 0;
               }
               catch (Exception paramViewGroup)
               {
-                ad.e("MicroMsg.GestureGalleryUI", bt.n(paramViewGroup));
-                ((a)localObject1).BjM.setVisibility(0);
-                ((a)localObject1).teJ.setVisibility(8);
-                ((a)localObject1).BjM.setImageBitmap(paramView);
+                ae.e("MicroMsg.GestureGalleryUI", bu.o(paramViewGroup));
+                ((a)localObject1).BBl.setVisibility(0);
+                ((a)localObject1).tpC.setVisibility(8);
+                ((a)localObject1).BBl.setImageBitmap(paramView);
                 continue;
               }
               label1111:
               if ((i != 0) && (paramView != null) && (!paramView.isRecycled()))
               {
-                ((a)localObject1).BjL.setVisibility(0);
-                ((a)localObject1).teJ.setVisibility(0);
-                ((a)localObject1).teJ.setLayoutParams(new RelativeLayout.LayoutParams(-1, -1));
-                ((a)localObject1).teJ.setImageBitmap(paramView);
+                ((a)localObject1).BBk.setVisibility(0);
+                ((a)localObject1).tpC.setVisibility(0);
+                ((a)localObject1).tpC.setLayoutParams(new RelativeLayout.LayoutParams(-1, -1));
+                ((a)localObject1).tpC.setImageBitmap(paramView);
               }
               else if ((j != 0) && (paramView != null) && (!paramView.isRecycled()))
               {
-                ((a)localObject1).BjL.setVisibility(8);
-                ((a)localObject1).teJ.setVisibility(0);
-                ((a)localObject1).teJ.setLayoutParams(new RelativeLayout.LayoutParams(-1, -1));
-                ((a)localObject1).teJ.setImageBitmap(paramView);
+                ((a)localObject1).BBk.setVisibility(8);
+                ((a)localObject1).tpC.setVisibility(0);
+                ((a)localObject1).tpC.setLayoutParams(new RelativeLayout.LayoutParams(-1, -1));
+                ((a)localObject1).tpC.setImageBitmap(paramView);
               }
               else if ((paramView != null) && (!paramView.isRecycled()))
               {
-                ((a)localObject1).BjM.setVisibility(8);
-                ((a)localObject1).teJ.setVisibility(8);
+                ((a)localObject1).BBl.setVisibility(8);
+                ((a)localObject1).tpC.setVisibility(8);
                 paramViewGroup = new MultiTouchImageView(GestureGalleryUI.this, paramView.getWidth(), paramView.getHeight(), (byte)0);
                 if (i != 0)
                 {
@@ -1733,13 +1735,13 @@ public class GestureGalleryUI
                   return paramViewGroup;
                   paramViewGroup.setEnabled(true);
                   break;
-                  com.tencent.mm.sdk.platformtools.q.A(paramViewGroup, paramView.getWidth(), paramView.getHeight());
+                  r.z(paramViewGroup, paramView.getWidth(), paramView.getHeight());
                 }
                 label1368:
-                ((a)localObject1).BjL.setVisibility(0);
-                ((a)localObject1).BjM.setVisibility(8);
-                ((a)localObject1).teJ.setVisibility(8);
-                ((a)localObject1).tEo.setVisibility(8);
+                ((a)localObject1).BBk.setVisibility(0);
+                ((a)localObject1).BBl.setVisibility(8);
+                ((a)localObject1).tpC.setVisibility(8);
+                ((a)localObject1).tPf.setVisibility(8);
               }
             }
           }
@@ -1751,14 +1753,14 @@ public class GestureGalleryUI
     
     public final class a
     {
-      ProgressBar BjL;
-      MMAnimateView BjM;
-      VideoView BjN;
-      View BjO;
-      TextView BjP;
-      View tEo;
-      ImageView teJ;
-      ImageView zSR;
+      ImageView AjY;
+      ProgressBar BBk;
+      MMAnimateView BBl;
+      VideoView BBm;
+      View BBn;
+      TextView BBo;
+      View tPf;
+      ImageView tpC;
       
       public a() {}
     }
@@ -1774,7 +1776,7 @@ public class GestureGalleryUI
     public final void run()
     {
       AppMethodBeat.i(179719);
-      ad.i("MicroMsg.GestureGalleryUI", "start run play progress task");
+      ae.i("MicroMsg.GestureGalleryUI", "start run play progress task");
       for (;;)
       {
         if (this.isStop) {
@@ -1782,11 +1784,11 @@ public class GestureGalleryUI
         }
         try
         {
-          if ((GestureGalleryUI.ac(GestureGalleryUI.this) == GestureGalleryUI.c.BjT) || (GestureGalleryUI.ac(GestureGalleryUI.this) == GestureGalleryUI.c.BjS) || (GestureGalleryUI.ac(GestureGalleryUI.this) == GestureGalleryUI.c.BjU))
+          if ((GestureGalleryUI.ac(GestureGalleryUI.this) == GestureGalleryUI.c.BBs) || (GestureGalleryUI.ac(GestureGalleryUI.this) == GestureGalleryUI.c.BBr) || (GestureGalleryUI.ac(GestureGalleryUI.this) == GestureGalleryUI.c.BBt))
           {
             GestureGalleryUI localGestureGalleryUI = GestureGalleryUI.this;
-            if (localGestureGalleryUI.Bjk != null) {
-              localGestureGalleryUI.Bjp.post(new GestureGalleryUI.24(localGestureGalleryUI));
+            if (localGestureGalleryUI.BAJ != null) {
+              localGestureGalleryUI.BAO.post(new GestureGalleryUI.24(localGestureGalleryUI));
             }
           }
         }
@@ -1794,7 +1796,7 @@ public class GestureGalleryUI
         {
           for (;;)
           {
-            ad.e("MicroMsg.GestureGalleryUI", "PlayProgressTask run exception:" + localException.getMessage());
+            ae.e("MicroMsg.GestureGalleryUI", "PlayProgressTask run exception:" + localException.getMessage());
           }
         }
         try
@@ -1813,15 +1815,15 @@ public class GestureGalleryUI
     static
     {
       AppMethodBeat.i(179722);
-      BjR = new c("Idle", 0);
-      BjS = new c("Prepared", 1);
-      BjT = new c("Start", 2);
-      BjU = new c("Resume", 3);
-      BjV = new c("Paused", 4);
-      BjW = new c("Complete", 5);
-      BjX = new c("Stop", 6);
-      BjY = new c("Error", 7);
-      BjZ = new c[] { BjR, BjS, BjT, BjU, BjV, BjW, BjX, BjY };
+      BBq = new c("Idle", 0);
+      BBr = new c("Prepared", 1);
+      BBs = new c("Start", 2);
+      BBt = new c("Resume", 3);
+      BBu = new c("Paused", 4);
+      BBv = new c("Complete", 5);
+      BBw = new c("Stop", 6);
+      BBx = new c("Error", 7);
+      BBy = new c[] { BBq, BBr, BBs, BBt, BBu, BBv, BBw, BBx };
       AppMethodBeat.o(179722);
     }
     

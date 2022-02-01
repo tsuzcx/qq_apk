@@ -79,11 +79,21 @@ public class TickerView
     AppMethodBeat.o(39867);
   }
   
-  private void Aa()
+  private int Aa()
+  {
+    AppMethodBeat.i(39879);
+    int i = (int)this.bVW.bWc;
+    int j = getPaddingTop();
+    int k = getPaddingBottom();
+    AppMethodBeat.o(39879);
+    return i + j + k;
+  }
+  
+  private void Ab()
   {
     AppMethodBeat.i(39880);
     this.bVW.invalidate();
-    zX();
+    zY();
     invalidate();
     AppMethodBeat.o(39880);
   }
@@ -137,8 +147,8 @@ public class TickerView
         setCharacterLists(new String[] { "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ" });
       }
     }
-    this.bVW.bWp = TickerView.a.bWB;
-    if (zW()) {
+    this.bVW.bWp = a.bWB;
+    if (zX()) {
       setText(localb.text, false);
     }
     for (;;)
@@ -168,28 +178,28 @@ public class TickerView
       });
       AppMethodBeat.o(39868);
       return;
-      this.bVW.bWp = TickerView.a.bWC;
+      this.bVW.bWp = a.bWC;
       break;
-      this.bVW.bWp = TickerView.a.bWD;
+      this.bVW.bWp = a.bWD;
       break;
       this.bWz = localb.text;
     }
   }
   
-  private boolean zW()
+  private boolean zX()
   {
     return this.bWr.bVV != null;
   }
   
-  private void zX()
+  private void zY()
   {
     int j = 1;
     AppMethodBeat.i(39877);
     int i;
-    if (this.bWt != zY())
+    if (this.bWt != zZ())
     {
       i = 1;
-      if (this.bWu == zZ()) {
+      if (this.bWu == Aa()) {
         break label56;
       }
     }
@@ -207,11 +217,11 @@ public class TickerView
     }
   }
   
-  private int zY()
+  private int zZ()
   {
     AppMethodBeat.i(39878);
     if (this.bWy) {}
-    for (float f = this.bWr.zS();; f = this.bWr.zU())
+    for (float f = this.bWr.zT();; f = this.bWr.zV())
     {
       int i = (int)f;
       int j = getPaddingLeft();
@@ -219,16 +229,6 @@ public class TickerView
       AppMethodBeat.o(39878);
       return i + j + k;
     }
-  }
-  
-  private int zZ()
-  {
-    AppMethodBeat.i(39879);
-    int i = (int)this.bVW.bWc;
-    int j = getPaddingTop();
-    int k = getPaddingBottom();
-    AppMethodBeat.o(39879);
-    return i + j + k;
   }
   
   public boolean getAnimateMeasurementChange()
@@ -284,7 +284,7 @@ public class TickerView
     AppMethodBeat.i(39883);
     super.onDraw(paramCanvas);
     paramCanvas.save();
-    float f3 = this.bWr.zS();
+    float f3 = this.bWr.zT();
     float f4 = this.bVW.bWc;
     int i = this.gravity;
     Object localObject = this.bWs;
@@ -330,7 +330,7 @@ public class TickerView
           }
           d.a(paramCanvas, localPaint, locald.bVZ, locald.bWa + 1, locald.bWb - locald.bWc);
           d.a(paramCanvas, localPaint, locald.bVZ, locald.bWa - 1, locald.bWb + locald.bWc);
-          paramCanvas.translate(locald.zS(), 0.0F);
+          paramCanvas.translate(locald.zT(), 0.0F);
           i += 1;
         }
         paramCanvas.restore();
@@ -343,8 +343,8 @@ public class TickerView
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(39881);
-    this.bWt = zY();
-    this.bWu = zZ();
+    this.bWt = zZ();
+    this.bWu = Aa();
     setMeasuredDimension(resolveSize(this.bWt, paramInt1), resolveSize(this.bWu, paramInt2));
     AppMethodBeat.o(39881);
   }
@@ -414,7 +414,7 @@ public class TickerView
     AppMethodBeat.o(39876);
   }
   
-  public void setPreferredScrollingDirection(TickerView.a parama)
+  public void setPreferredScrollingDirection(a parama)
   {
     this.bVW.bWp = parama;
   }
@@ -460,7 +460,7 @@ public class TickerView
     }
     this.bWr.setAnimationProgress(1.0F);
     this.bWr.onAnimationEnd();
-    zX();
+    zY();
     invalidate();
     AppMethodBeat.o(39871);
   }
@@ -484,7 +484,7 @@ public class TickerView
     {
       this.textSize = paramFloat;
       this.bWm.setTextSize(paramFloat);
-      Aa();
+      Ab();
     }
     AppMethodBeat.o(39873);
   }
@@ -499,7 +499,7 @@ public class TickerView
     for (;;)
     {
       this.bWm.setTypeface(localTypeface);
-      Aa();
+      Ab();
       AppMethodBeat.o(39875);
       return;
       if (this.textStyle == 1)
@@ -514,6 +514,21 @@ public class TickerView
         }
       }
     }
+  }
+  
+  public static enum a
+  {
+    static
+    {
+      AppMethodBeat.i(39863);
+      bWB = new a("ANY", 0);
+      bWC = new a("UP", 1);
+      bWD = new a("DOWN", 2);
+      bWE = new a[] { bWB, bWC, bWD };
+      AppMethodBeat.o(39863);
+    }
+    
+    private a() {}
   }
   
   final class b

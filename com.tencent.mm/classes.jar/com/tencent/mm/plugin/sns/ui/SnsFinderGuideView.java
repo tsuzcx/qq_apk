@@ -15,55 +15,55 @@ import com.tencent.mm.ui.z;
 public class SnsFinderGuideView
   extends RelativeLayout
 {
-  private a AcZ;
-  private Button gUt;
+  private a Aum;
+  private Button gXc;
   
   public SnsFinderGuideView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(198353);
-    this.gUt = null;
-    this.AcZ = null;
+    AppMethodBeat.i(219891);
+    this.gXc = null;
+    this.Aum = null;
     init();
-    AppMethodBeat.o(198353);
+    AppMethodBeat.o(219891);
   }
   
   public SnsFinderGuideView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(198354);
-    this.gUt = null;
-    this.AcZ = null;
+    AppMethodBeat.i(219892);
+    this.gXc = null;
+    this.Aum = null;
     init();
-    AppMethodBeat.o(198354);
+    AppMethodBeat.o(219892);
   }
   
   private void init()
   {
-    AppMethodBeat.i(198355);
-    z.jO(getContext()).inflate(2131496488, this);
-    this.gUt = ((Button)findViewById(2131308424));
-    this.gUt.setOnClickListener(new View.OnClickListener()
+    AppMethodBeat.i(219893);
+    z.jV(getContext()).inflate(2131496488, this);
+    this.gXc = ((Button)findViewById(2131308424));
+    this.gXc.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(198352);
+        AppMethodBeat.i(219890);
         b localb = new b();
         localb.bd(paramAnonymousView);
-        a.b("com/tencent/mm/plugin/sns/ui/SnsFinderGuideView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        a.b("com/tencent/mm/plugin/sns/ui/SnsFinderGuideView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
         if (SnsFinderGuideView.a(SnsFinderGuideView.this) != null) {
           SnsFinderGuideView.a(SnsFinderGuideView.this);
         }
         a.a(this, "com/tencent/mm/plugin/sns/ui/SnsFinderGuideView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(198352);
+        AppMethodBeat.o(219890);
       }
     });
-    AppMethodBeat.o(198355);
+    AppMethodBeat.o(219893);
   }
   
   public void setOnFinishDialogViewCallback(a parama)
   {
-    this.AcZ = parama;
+    this.Aum = parama;
   }
   
   static abstract interface a {}

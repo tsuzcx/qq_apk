@@ -6,46 +6,51 @@ import com.tencent.mm.plugin.report.a;
 public final class dj
   extends a
 {
-  private String dZH;
-  private String efH;
-  private long efI;
-  private long efJ;
-  private long efK;
+  private String eba = "";
+  private String ehi = "";
+  private long ehj;
+  private long ehk;
+  private long ehl;
+  private long ehm;
   
-  public final String RD()
+  public final String RC()
   {
-    AppMethodBeat.i(195654);
+    AppMethodBeat.i(191111);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dZH);
+    ((StringBuffer)localObject).append(this.eba);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.efH);
+    ((StringBuffer)localObject).append(this.ehi);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.efI);
+    ((StringBuffer)localObject).append(this.ehj);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.efJ);
+    ((StringBuffer)localObject).append(this.ehk);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.efK);
+    ((StringBuffer)localObject).append(this.ehl);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.ehm);
     localObject = ((StringBuffer)localObject).toString();
-    awz((String)localObject);
-    AppMethodBeat.o(195654);
+    axO((String)localObject);
+    AppMethodBeat.o(191111);
     return localObject;
   }
   
-  public final String RE()
+  public final String RD()
   {
-    AppMethodBeat.i(195655);
+    AppMethodBeat.i(191112);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("EditId:").append(this.dZH);
+    ((StringBuffer)localObject).append("EditId:").append(this.eba);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("JsonInfo:").append(this.efH);
+    ((StringBuffer)localObject).append("JsonInfo:").append(this.ehi);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("VideoCount:").append(this.efI);
+    ((StringBuffer)localObject).append("VideoCount:").append(this.ehj);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ImageCount:").append(this.efJ);
+    ((StringBuffer)localObject).append("ImageCount:").append(this.ehk);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("EditItemCount:").append(this.efK);
+    ((StringBuffer)localObject).append("EditItemCount:").append(this.ehl);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("AudioCount:").append(this.ehm);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(195655);
+    AppMethodBeat.o(191112);
     return localObject;
   }
   
@@ -54,37 +59,43 @@ public final class dj
     return 20741;
   }
   
-  public final dj jI(long paramLong)
+  public final dj jS(long paramLong)
   {
-    this.efI = paramLong;
+    this.ehj = paramLong;
     return this;
   }
   
-  public final dj jJ(long paramLong)
+  public final dj jT(long paramLong)
   {
-    this.efJ = paramLong;
+    this.ehk = paramLong;
     return this;
   }
   
-  public final dj jK(long paramLong)
+  public final dj jU(long paramLong)
   {
-    this.efK = paramLong;
+    this.ehl = paramLong;
     return this;
   }
   
-  public final dj mQ(String paramString)
+  public final dj jV(long paramLong)
   {
-    AppMethodBeat.i(195652);
-    this.dZH = t("EditId", paramString, true);
-    AppMethodBeat.o(195652);
+    this.ehm = paramLong;
     return this;
   }
   
-  public final dj mR(String paramString)
+  public final dj ni(String paramString)
   {
-    AppMethodBeat.i(195653);
-    this.efH = t("JsonInfo", paramString, true);
-    AppMethodBeat.o(195653);
+    AppMethodBeat.i(191109);
+    this.eba = t("EditId", paramString, true);
+    AppMethodBeat.o(191109);
+    return this;
+  }
+  
+  public final dj nj(String paramString)
+  {
+    AppMethodBeat.i(191110);
+    this.ehi = t("JsonInfo", paramString, true);
+    AppMethodBeat.o(191110);
     return this;
   }
 }

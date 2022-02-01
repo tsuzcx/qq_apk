@@ -1,8 +1,11 @@
 package com.tencent.mm.plugin.appbrand.page;
 
+import android.view.View;
+
 public abstract interface ap
-  extends ao
-{}
+{
+  public abstract void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView);
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar

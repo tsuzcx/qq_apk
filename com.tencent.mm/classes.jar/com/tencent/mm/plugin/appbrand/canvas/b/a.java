@@ -10,7 +10,7 @@ public abstract interface a
   
   public abstract boolean a(Path paramPath, JSONArray paramJSONArray);
   
-  public abstract BasePathActionArg bdz();
+  public abstract BasePathActionArg bee();
   
   public abstract String getMethod();
 }

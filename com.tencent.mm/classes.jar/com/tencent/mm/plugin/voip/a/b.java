@@ -21,62 +21,62 @@ public final class b
   {
     AppMethodBeat.i(184045);
     super.ac(paramInt, paramString);
-    bKG().nGc = 10;
-    if (com.tencent.mm.plugin.voip.c.euM() != null) {
-      bKG().dwX = String.valueOf(com.tencent.mm.plugin.voip.c.euM().CdF.BXC.CaI.uLt);
+    bLD().nLC = 10;
+    if (com.tencent.mm.plugin.voip.c.eys() != null) {
+      bLD().dyc = String.valueOf(com.tencent.mm.plugin.voip.c.eys().Cvg.Cpd.Csj.uXg);
     }
-    bKC();
+    bLz();
     AppMethodBeat.o(184045);
   }
   
-  public final void bKs()
+  public final void bLp()
   {
-    AppMethodBeat.i(216238);
-    ((com.tencent.mm.plugin.ball.c.c)g.ab(com.tencent.mm.plugin.ball.c.c.class)).iV(true);
-    super.bKs();
-    AppMethodBeat.o(216238);
+    AppMethodBeat.i(209915);
+    ((com.tencent.mm.plugin.ball.c.c)g.ab(com.tencent.mm.plugin.ball.c.c.class)).iU(true);
+    super.bLp();
+    AppMethodBeat.o(209915);
   }
   
-  public final boolean bgA()
+  public final boolean bhh()
   {
     return false;
   }
   
-  public final void bgC()
+  public final boolean bhi()
+  {
+    return false;
+  }
+  
+  public final void bhk()
   {
     AppMethodBeat.i(184048);
-    ((com.tencent.mm.plugin.ball.c.c)g.ab(com.tencent.mm.plugin.ball.c.c.class)).iV(false);
-    this.nGj.nFZ.opType = 4;
-    if (this.nGl != null) {
-      this.nGl.r(this.nGj);
+    ((com.tencent.mm.plugin.ball.c.c)g.ab(com.tencent.mm.plugin.ball.c.c.class)).iU(false);
+    this.nLK.nLw.opType = 4;
+    if (this.nLM != null) {
+      this.nLM.r(this.nLK);
     }
     AppMethodBeat.o(184048);
   }
   
-  public final void bgD()
+  public final void bhl()
   {
     AppMethodBeat.i(184047);
-    super.bgD();
-    this.nHb.gg(false);
+    super.bhl();
+    this.nME.ge(false);
     AppMethodBeat.o(184047);
   }
   
-  public final boolean bgz()
-  {
-    return false;
-  }
-  
-  public final boolean sv(int paramInt)
+  public final boolean sy(int paramInt)
   {
     AppMethodBeat.i(184046);
-    boolean bool = super.sv(paramInt);
+    boolean bool = super.sy(paramInt);
     AppMethodBeat.o(184046);
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.a.b
  * JD-Core Version:    0.7.0.1
  */

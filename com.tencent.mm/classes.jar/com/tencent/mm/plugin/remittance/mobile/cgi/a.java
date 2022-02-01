@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.remittance.mobile.cgi;
 
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.f;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.f;
 import com.tencent.mm.network.e;
 import com.tencent.mm.wallet_core.c.r;
 

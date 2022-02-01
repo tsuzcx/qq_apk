@@ -11,13 +11,13 @@ import com.tencent.mm.sdk.e.m;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/story/storage/StoryHistoryInfoStorage;", "Lcom/tencent/mm/sdk/storage/MAutoStorage;", "Lcom/tencent/mm/plugin/story/storage/StoryHistoryInfo;", "Lcom/tencent/mm/sdk/storage/MStorage$IOnStorageChange;", "db", "Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "(Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;)V", "getDb", "()Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "deleteByDate", "", "date", "", "getStoryHistoryByDate", "isDateExist", "onNotifyChange", "", "event", "eventData", "Lcom/tencent/mm/sdk/storage/MStorageEventData;", "replaceHistoryInfoByDate", "storyHistoryInfo", "set", "info", "Companion", "plugin-story_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/story/storage/StoryHistoryInfoStorage;", "Lcom/tencent/mm/sdk/storage/MAutoStorage;", "Lcom/tencent/mm/plugin/story/storage/StoryHistoryInfo;", "Lcom/tencent/mm/sdk/storage/MStorage$IOnStorageChange;", "db", "Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "(Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;)V", "getDb", "()Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "deleteByDate", "", "date", "", "getStoryHistoryByDate", "isDateExist", "onNotifyChange", "", "event", "eventData", "Lcom/tencent/mm/sdk/storage/MStorageEventData;", "replaceHistoryInfoByDate", "storyHistoryInfo", "set", "info", "Companion", "plugin-story_release"})
 public final class i
   extends j<h>
   implements k.a
 {
-  private static final String ATX = "select * from MMStoryHistoryItem ";
-  public static final a AUa;
+  private static final String Blv = "select * from MMStoryHistoryItem ";
+  public static final i.a Bly;
   private static final String[] SQL_CREATE;
   public static final String TABLE = "MMStoryHistoryItem";
   private static final String TAG = "MicroMsg.StoryHistoryInfoStorage";
@@ -26,12 +26,12 @@ public final class i
   static
   {
     AppMethodBeat.i(119529);
-    AUa = new a((byte)0);
+    Bly = new i.a((byte)0);
     TAG = "MicroMsg.StoryHistoryInfoStorage";
     TABLE = "MMStoryHistoryItem";
-    h.a locala = h.ATZ;
+    h.a locala = h.Blx;
     SQL_CREATE = new String[] { j.getCreateSQLs(h.access$getInfo$cp(), TABLE) };
-    ATX = "select * from " + TABLE + ' ';
+    Blv = "select * from " + TABLE + ' ';
     AppMethodBeat.o(119529);
   }
   
@@ -43,11 +43,11 @@ public final class i
     AppMethodBeat.o(119528);
   }
   
-  private boolean aCj(String paramString)
+  private boolean aDC(String paramString)
   {
     AppMethodBeat.i(119525);
     p.h(paramString, "date");
-    paramString = ATX + " WHERE " + TABLE + ".date = '" + paramString + '\'';
+    paramString = Blv + " WHERE " + TABLE + ".date = '" + paramString + '\'';
     paramString = this.db.rawQuery(paramString, null);
     p.g(paramString, "cu");
     int i = paramString.getCount();
@@ -76,7 +76,7 @@ public final class i
   {
     AppMethodBeat.i(119524);
     p.h(paramh, "storyHistoryInfo");
-    if (aCj(paramh.elu()))
+    if (aDC(paramh.epd()))
     {
       bool = update((c)paramh, new String[] { "date" });
       AppMethodBeat.o(119524);
@@ -87,11 +87,11 @@ public final class i
     return bool;
   }
   
-  public final h aCk(String paramString)
+  public final h aDD(String paramString)
   {
     AppMethodBeat.i(119526);
     p.h(paramString, "date");
-    paramString = ATX + " WHERE " + TABLE + ".date = '" + paramString + '\'';
+    paramString = Blv + " WHERE " + TABLE + ".date = '" + paramString + '\'';
     paramString = this.db.rawQuery(paramString, null);
     if (paramString.moveToFirst())
     {
@@ -105,13 +105,10 @@ public final class i
     AppMethodBeat.o(119526);
     return null;
   }
-  
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/story/storage/StoryHistoryInfoStorage$Companion;", "", "()V", "SQL_CREATE", "", "", "kotlin.jvm.PlatformType", "getSQL_CREATE", "()[Ljava/lang/String;", "[Ljava/lang/String;", "SelectAllData", "TABLE", "getTABLE", "()Ljava/lang/String;", "TAG", "plugin-story_release"})
-  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.story.i.i
  * JD-Core Version:    0.7.0.1
  */

@@ -15,36 +15,36 @@ public final class d
   {
     AppMethodBeat.i(105049);
     c.a locala = new c.a();
-    locala.IhA = new Field[7];
+    locala.IBL = new Field[7];
     locala.columns = new String[8];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "md5_lang";
-    locala.IhC.put("md5_lang", "TEXT PRIMARY KEY  COLLATE NOCASE ");
+    locala.IBN.put("md5_lang", "TEXT PRIMARY KEY  COLLATE NOCASE ");
     localStringBuilder.append(" md5_lang TEXT PRIMARY KEY  COLLATE NOCASE ");
     localStringBuilder.append(", ");
-    locala.IhB = "md5_lang";
+    locala.IBM = "md5_lang";
     locala.columns[1] = "md5";
-    locala.IhC.put("md5", "TEXT COLLATE NOCASE ");
+    locala.IBN.put("md5", "TEXT COLLATE NOCASE ");
     localStringBuilder.append(" md5 TEXT COLLATE NOCASE ");
     localStringBuilder.append(", ");
     locala.columns[2] = "lang";
-    locala.IhC.put("lang", "TEXT COLLATE NOCASE ");
+    locala.IBN.put("lang", "TEXT COLLATE NOCASE ");
     localStringBuilder.append(" lang TEXT COLLATE NOCASE ");
     localStringBuilder.append(", ");
     locala.columns[3] = "desc";
-    locala.IhC.put("desc", "TEXT");
+    locala.IBN.put("desc", "TEXT");
     localStringBuilder.append(" desc TEXT");
     localStringBuilder.append(", ");
     locala.columns[4] = "groupId";
-    locala.IhC.put("groupId", "TEXT default '' ");
+    locala.IBN.put("groupId", "TEXT default '' ");
     localStringBuilder.append(" groupId TEXT default '' ");
     localStringBuilder.append(", ");
     locala.columns[5] = "click_flag";
-    locala.IhC.put("click_flag", "INTEGER");
+    locala.IBN.put("click_flag", "INTEGER");
     localStringBuilder.append(" click_flag INTEGER");
     localStringBuilder.append(", ");
     locala.columns[6] = "download_flag";
-    locala.IhC.put("download_flag", "INTEGER");
+    locala.IBN.put("download_flag", "INTEGER");
     localStringBuilder.append(" download_flag INTEGER");
     locala.columns[7] = "rowid";
     locala.sql = localStringBuilder.toString();
@@ -52,7 +52,7 @@ public final class d
     AppMethodBeat.o(105049);
   }
   
-  public final String Lb()
+  public final String Lj()
   {
     if (this.field_md5 == null) {
       return "";

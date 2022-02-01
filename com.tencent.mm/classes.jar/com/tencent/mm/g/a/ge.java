@@ -6,7 +6,8 @@ import com.tencent.mm.sdk.b.b;
 public final class ge
   extends b
 {
-  public a drO;
+  public a dsS;
+  public b dsT;
   
   public ge()
   {
@@ -15,18 +16,22 @@ public final class ge
   
   private ge(byte paramByte)
   {
-    AppMethodBeat.i(116026);
-    this.drO = new a();
-    this.IbR = false;
+    AppMethodBeat.i(116025);
+    this.dsS = new a();
+    this.dsT = new b();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(116026);
+    AppMethodBeat.o(116025);
   }
   
   public static final class a
   {
-    public int drP;
+    public long msgId;
+  }
+  
+  public static final class b
+  {
     public String fileName;
-    public int scene;
   }
 }
 

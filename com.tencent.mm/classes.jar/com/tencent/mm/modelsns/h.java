@@ -6,35 +6,35 @@ import android.util.DisplayMetrics;
 import android.util.Pair;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.b.g;
-import com.tencent.mm.cc.a;
+import com.tencent.mm.cb.a;
 import com.tencent.mm.protocal.protobuf.TimeLineObject;
-import com.tencent.mm.protocal.protobuf.abf;
-import com.tencent.mm.protocal.protobuf.arj;
-import com.tencent.mm.protocal.protobuf.ark;
+import com.tencent.mm.protocal.protobuf.abo;
+import com.tencent.mm.protocal.protobuf.ary;
+import com.tencent.mm.protocal.protobuf.arz;
 import com.tencent.mm.protocal.protobuf.ay;
 import com.tencent.mm.protocal.protobuf.ba;
-import com.tencent.mm.protocal.protobuf.bvq;
-import com.tencent.mm.protocal.protobuf.bww;
-import com.tencent.mm.protocal.protobuf.byn;
-import com.tencent.mm.protocal.protobuf.byp;
-import com.tencent.mm.protocal.protobuf.dfx;
-import com.tencent.mm.protocal.protobuf.dkh;
+import com.tencent.mm.protocal.protobuf.bwk;
+import com.tencent.mm.protocal.protobuf.bxq;
+import com.tencent.mm.protocal.protobuf.bzh;
+import com.tencent.mm.protocal.protobuf.bzj;
+import com.tencent.mm.protocal.protobuf.dgr;
+import com.tencent.mm.protocal.protobuf.dlc;
 import com.tencent.mm.protocal.protobuf.dy;
-import com.tencent.mm.protocal.protobuf.ece;
-import com.tencent.mm.protocal.protobuf.eeq;
+import com.tencent.mm.protocal.protobuf.edv;
+import com.tencent.mm.protocal.protobuf.egh;
 import com.tencent.mm.protocal.protobuf.en;
 import com.tencent.mm.protocal.protobuf.eo;
 import com.tencent.mm.protocal.protobuf.ep;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.sdk.platformtools.bw;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.bx;
 import java.util.LinkedList;
 import java.util.Map;
 
 public final class h
 {
-  private static float Gv(String paramString)
+  private static float GX(String paramString)
   {
     AppMethodBeat.i(94861);
     if (paramString == null)
@@ -42,12 +42,12 @@ public final class h
       AppMethodBeat.o(94861);
       return 0.0F;
     }
-    float f = bt.getFloat(paramString, 0.0F);
+    float f = bu.getFloat(paramString, 0.0F);
     AppMethodBeat.o(94861);
     return f;
   }
   
-  private static String Gw(String paramString)
+  private static String GY(String paramString)
   {
     String str = paramString;
     if (paramString == null) {
@@ -56,11 +56,11 @@ public final class h
     return str;
   }
   
-  public static TimeLineObject Gx(String paramString)
+  public static TimeLineObject GZ(String paramString)
   {
     AppMethodBeat.i(94866);
-    Map localMap = bw.M(paramString, "TimelineObject");
-    TimeLineObject localTimeLineObject = aLm();
+    Map localMap = bx.M(paramString, "TimelineObject");
+    TimeLineObject localTimeLineObject = aLJ();
     Object localObject1;
     int i;
     Object localObject4;
@@ -70,57 +70,57 @@ public final class h
     int j;
     if (localMap != null)
     {
-      localTimeLineObject.Id = Gw((String)localMap.get(".TimelineObject.id"));
-      localTimeLineObject.nDo = Gw((String)localMap.get(".TimelineObject.username"));
-      localTimeLineObject.GSK = bt.getInt((String)localMap.get(".TimelineObject.private"), 0);
-      localTimeLineObject.CreateTime = bt.getInt((String)localMap.get(".TimelineObject.createTime"), 0);
-      localTimeLineObject.HAQ = Gw((String)localMap.get(".TimelineObject.contentDesc"));
-      localTimeLineObject.HAV = bt.getInt((String)localMap.get(".TimelineObject.contentDescShowType"), 0);
-      localTimeLineObject.HAW = bt.getInt((String)localMap.get(".TimelineObject.contentDescScene"), 0);
-      localTimeLineObject.zRz = Gw((String)localMap.get(".TimelineObject.statExtStr"));
-      localTimeLineObject.HBa = bt.getInt((String)localMap.get(".TimelineObject.sightFolded"), 0);
-      localTimeLineObject.ePo = bt.getInt((String)localMap.get(".TimelineObject.showFlag"), 0);
-      localObject1 = new bvq();
-      ((bvq)localObject1).FOA = Gv((String)localMap.get(".TimelineObject.location.$longitude"));
-      ((bvq)localObject1).FOB = Gv((String)localMap.get(".TimelineObject.location.$latitude"));
-      ((bvq)localObject1).jde = Gw((String)localMap.get(".TimelineObject.location.$city"));
-      ((bvq)localObject1).GPP = bt.getInt((String)localMap.get(".TimelineObject.location.$poiScale"), 0);
-      ((bvq)localObject1).Gnu = Gw((String)localMap.get(".TimelineObject.location.$poiClassifyId"));
-      ((bvq)localObject1).zSm = bt.getInt((String)localMap.get(".TimelineObject.location.$poiClassifyType"), 0);
-      ((bvq)localObject1).zSk = Gw((String)localMap.get(".TimelineObject.location.$poiAddress"));
-      ((bvq)localObject1).jDf = Gw((String)localMap.get(".TimelineObject.location.$poiName"));
-      ((bvq)localObject1).GPQ = bt.getInt((String)localMap.get(".TimelineObject.location.$poiClickableStatus"), 0);
-      ((bvq)localObject1).GPT = Gw((String)localMap.get(".TimelineObject.location.$poiAddressName"));
-      ((bvq)localObject1).country = Gw((String)localMap.get(".TimelineObject.location.$country"));
-      localTimeLineObject.HAR = ((bvq)localObject1);
-      if (localTimeLineObject.HAT == null) {
-        localTimeLineObject.HAT = new abf();
+      localTimeLineObject.Id = GY((String)localMap.get(".TimelineObject.id"));
+      localTimeLineObject.nIJ = GY((String)localMap.get(".TimelineObject.username"));
+      localTimeLineObject.Hml = bu.getInt((String)localMap.get(".TimelineObject.private"), 0);
+      localTimeLineObject.CreateTime = bu.getInt((String)localMap.get(".TimelineObject.createTime"), 0);
+      localTimeLineObject.HUD = GY((String)localMap.get(".TimelineObject.contentDesc"));
+      localTimeLineObject.HUI = bu.getInt((String)localMap.get(".TimelineObject.contentDescShowType"), 0);
+      localTimeLineObject.HUJ = bu.getInt((String)localMap.get(".TimelineObject.contentDescScene"), 0);
+      localTimeLineObject.AiG = GY((String)localMap.get(".TimelineObject.statExtStr"));
+      localTimeLineObject.HUN = bu.getInt((String)localMap.get(".TimelineObject.sightFolded"), 0);
+      localTimeLineObject.eQZ = bu.getInt((String)localMap.get(".TimelineObject.showFlag"), 0);
+      localObject1 = new bwk();
+      ((bwk)localObject1).GgZ = GX((String)localMap.get(".TimelineObject.location.$longitude"));
+      ((bwk)localObject1).Gha = GX((String)localMap.get(".TimelineObject.location.$latitude"));
+      ((bwk)localObject1).jfX = GY((String)localMap.get(".TimelineObject.location.$city"));
+      ((bwk)localObject1).Hjr = bu.getInt((String)localMap.get(".TimelineObject.location.$poiScale"), 0);
+      ((bwk)localObject1).GGA = GY((String)localMap.get(".TimelineObject.location.$poiClassifyId"));
+      ((bwk)localObject1).Ajt = bu.getInt((String)localMap.get(".TimelineObject.location.$poiClassifyType"), 0);
+      ((bwk)localObject1).Ajr = GY((String)localMap.get(".TimelineObject.location.$poiAddress"));
+      ((bwk)localObject1).jGd = GY((String)localMap.get(".TimelineObject.location.$poiName"));
+      ((bwk)localObject1).Hjs = bu.getInt((String)localMap.get(".TimelineObject.location.$poiClickableStatus"), 0);
+      ((bwk)localObject1).Hju = GY((String)localMap.get(".TimelineObject.location.$poiAddressName"));
+      ((bwk)localObject1).country = GY((String)localMap.get(".TimelineObject.location.$country"));
+      localTimeLineObject.HUE = ((bwk)localObject1);
+      if (localTimeLineObject.HUG == null) {
+        localTimeLineObject.HUG = new abo();
       }
-      localTimeLineObject.HAT.Desc = Gw((String)localMap.get(".TimelineObject.ContentObject.description"));
-      localTimeLineObject.HAT.GaP = bt.getInt((String)localMap.get(".TimelineObject.ContentObject.contentStyle"), 0);
-      localTimeLineObject.HAT.GaR = bt.getInt((String)localMap.get(".TimelineObject.ContentObject.contentSubStyle"), 0);
-      localTimeLineObject.HAT.Title = Gw((String)localMap.get(".TimelineObject.ContentObject.title"));
-      localTimeLineObject.HAT.Url = Gw((String)localMap.get(".TimelineObject.ContentObject.contentUrl"));
+      localTimeLineObject.HUG.Desc = GY((String)localMap.get(".TimelineObject.ContentObject.description"));
+      localTimeLineObject.HUG.Gtw = bu.getInt((String)localMap.get(".TimelineObject.ContentObject.contentStyle"), 0);
+      localTimeLineObject.HUG.Gty = bu.getInt((String)localMap.get(".TimelineObject.ContentObject.contentSubStyle"), 0);
+      localTimeLineObject.HUG.Title = GY((String)localMap.get(".TimelineObject.ContentObject.title"));
+      localTimeLineObject.HUG.Url = GY((String)localMap.get(".TimelineObject.ContentObject.contentUrl"));
       if (localMap.containsKey(".TimelineObject.ContentObject.mmreadershare.itemshowtype"))
       {
-        i = bt.getInt((String)localMap.get(".TimelineObject.ContentObject.mmreadershare.itemshowtype"), 0);
+        i = bu.getInt((String)localMap.get(".TimelineObject.ContentObject.mmreadershare.itemshowtype"), 0);
         if (i != -1)
         {
-          localTimeLineObject.HAT.GaT = new bww();
-          localTimeLineObject.HAT.GaT.hCZ = i;
-          localTimeLineObject.HAT.GaT.hzk = bt.getInt((String)localMap.get(".TimelineObject.ContentObject.mmreadershare.ispaysubscribe"), 0);
+          localTimeLineObject.HUG.GtA = new bxq();
+          localTimeLineObject.HUG.GtA.hFR = i;
+          localTimeLineObject.HUG.GtA.hBY = bu.getInt((String)localMap.get(".TimelineObject.ContentObject.mmreadershare.ispaysubscribe"), 0);
         }
         if (i == 5)
         {
-          localTimeLineObject.HAT.GaT.hzi = bt.getInt((String)localMap.get(".TimelineObject.ContentObject.mmreadershare.pubtime"), 0);
-          localTimeLineObject.HAT.GaT.hzm = Gw((String)localMap.get(".TimelineObject.ContentObject.mmreadershare.vid"));
-          localTimeLineObject.HAT.GaT.coverUrl = Gw((String)localMap.get(".TimelineObject.ContentObject.mmreadershare.cover"));
-          localTimeLineObject.HAT.GaT.hzl = bt.getInt((String)localMap.get(".TimelineObject.ContentObject.mmreadershare.funcflag"), 0);
-          localTimeLineObject.HAT.GaT.duration = bt.getInt((String)localMap.get(".TimelineObject.ContentObject.mmreadershare.duration"), 0);
-          localTimeLineObject.HAT.GaT.desc = Gw((String)localMap.get(".TimelineObject.ContentObject.mmreadershare.digest"));
-          localTimeLineObject.HAT.GaT.hzj = bt.getInt((String)localMap.get(".TimelineObject.ContentObject.mmreadershare.nativepage"), 0);
-          localTimeLineObject.HAT.GaT.videoWidth = bt.getInt((String)localMap.get(".TimelineObject.ContentObject.mmreadershare.width"), 0);
-          localTimeLineObject.HAT.GaT.videoHeight = bt.getInt((String)localMap.get(".TimelineObject.ContentObject.mmreadershare.height"), 0);
+          localTimeLineObject.HUG.GtA.hBW = bu.getInt((String)localMap.get(".TimelineObject.ContentObject.mmreadershare.pubtime"), 0);
+          localTimeLineObject.HUG.GtA.hCa = GY((String)localMap.get(".TimelineObject.ContentObject.mmreadershare.vid"));
+          localTimeLineObject.HUG.GtA.coverUrl = GY((String)localMap.get(".TimelineObject.ContentObject.mmreadershare.cover"));
+          localTimeLineObject.HUG.GtA.hBZ = bu.getInt((String)localMap.get(".TimelineObject.ContentObject.mmreadershare.funcflag"), 0);
+          localTimeLineObject.HUG.GtA.duration = bu.getInt((String)localMap.get(".TimelineObject.ContentObject.mmreadershare.duration"), 0);
+          localTimeLineObject.HUG.GtA.desc = GY((String)localMap.get(".TimelineObject.ContentObject.mmreadershare.digest"));
+          localTimeLineObject.HUG.GtA.hBX = bu.getInt((String)localMap.get(".TimelineObject.ContentObject.mmreadershare.nativepage"), 0);
+          localTimeLineObject.HUG.GtA.videoWidth = bu.getInt((String)localMap.get(".TimelineObject.ContentObject.mmreadershare.width"), 0);
+          localTimeLineObject.HUG.GtA.videoHeight = bu.getInt((String)localMap.get(".TimelineObject.ContentObject.mmreadershare.height"), 0);
         }
       }
       i = 0;
@@ -193,18 +193,18 @@ public final class h
         str26 = (String)localMap.get(str26);
         str27 = (String)localMap.get(str27);
         localObject7 = (String)localMap.get(localObject6);
-        localObject6 = new byp();
-        ((byp)localObject6).GTA = 0.0F;
-        ((byp)localObject6).GTz = 0.0F;
-        ((byp)localObject6).GTB = 0.0F;
+        localObject6 = new bzj();
+        ((bzj)localObject6).Hnb = 0.0F;
+        ((bzj)localObject6).Hna = 0.0F;
+        ((bzj)localObject6).Hnc = 0.0F;
         if (str26 != null) {
-          ((byp)localObject6).GTz = Gv(str26);
+          ((bzj)localObject6).Hna = GX(str26);
         }
         if (str27 != null) {
-          ((byp)localObject6).GTA = Gv(str27);
+          ((bzj)localObject6).Hnb = GX(str27);
         }
         if (localObject7 != null) {
-          ((byp)localObject6).GTB = Gv((String)localObject7);
+          ((bzj)localObject6).Hnc = GX((String)localObject7);
         }
         str25 = (String)localMap.get(str25);
         str24 = (String)localMap.get(str24);
@@ -240,48 +240,48 @@ public final class h
         if ((str24 == null) || (str25 == null)) {
           break label2855;
         }
-        localObject7 = new byn();
-        ((byn)localObject7).Id = Gw(str25);
-        ((byn)localObject7).nEf = bt.getInt(str24, 0);
-        ((byn)localObject7).Title = Gw(str23);
-        ((byn)localObject7).Desc = Gw(str22);
-        ((byn)localObject7).Url = Gw(str26);
-        ((byn)localObject7).GEe = bt.getInt(str17, 0);
-        ((byn)localObject7).GSI = Gw(str19);
-        ((byn)localObject7).GSJ = bt.getInt(str16, 0);
-        ((byn)localObject7).GSK = bt.getInt(str20, 0);
-        ((byn)localObject7).GSL = ((byp)localObject6);
-        ((byn)localObject7).GSM = Gw(str15);
-        ((byn)localObject7).GSN = bt.getInt(str14, 0);
-        ((byn)localObject7).songAlbumUrl = str13;
-        ((byn)localObject7).songLyric = str12;
-        ((byn)localObject7).zQh = Gw(str10);
-        ((byn)localObject7).subType = bt.getInt(str11, 0);
-        ((byn)localObject7).GSP = Gw(str9);
-        ((byn)localObject7).GSR = Gw(str8);
-        ((byn)localObject7).GSQ = Gw(str7);
-        ((byn)localObject7).GTd = Gw(str18);
-        ((byn)localObject7).AqM = bt.getInt(str6, 0);
-        ((byn)localObject7).GSS = Gw(str5);
-        ((byn)localObject7).GST = Gw(str4);
-        ((byn)localObject7).GSU = bt.getInt(str3, 0);
-        ((byn)localObject7).GSV = bt.getLong(str2, 0L);
-        if (((byn)localObject7).Url != null) {
+        localObject7 = new bzh();
+        ((bzh)localObject7).Id = GY(str25);
+        ((bzh)localObject7).nJA = bu.getInt(str24, 0);
+        ((bzh)localObject7).Title = GY(str23);
+        ((bzh)localObject7).Desc = GY(str22);
+        ((bzh)localObject7).Url = GY(str26);
+        ((bzh)localObject7).GXH = bu.getInt(str17, 0);
+        ((bzh)localObject7).Hmj = GY(str19);
+        ((bzh)localObject7).Hmk = bu.getInt(str16, 0);
+        ((bzh)localObject7).Hml = bu.getInt(str20, 0);
+        ((bzh)localObject7).Hmm = ((bzj)localObject6);
+        ((bzh)localObject7).Hmn = GY(str15);
+        ((bzh)localObject7).Hmo = bu.getInt(str14, 0);
+        ((bzh)localObject7).songAlbumUrl = str13;
+        ((bzh)localObject7).songLyric = str12;
+        ((bzh)localObject7).Aho = GY(str10);
+        ((bzh)localObject7).subType = bu.getInt(str11, 0);
+        ((bzh)localObject7).Hmq = GY(str9);
+        ((bzh)localObject7).Hms = GY(str8);
+        ((bzh)localObject7).Hmr = GY(str7);
+        ((bzh)localObject7).HmE = GY(str18);
+        ((bzh)localObject7).AIa = bu.getInt(str6, 0);
+        ((bzh)localObject7).Hmt = GY(str5);
+        ((bzh)localObject7).Hmu = GY(str4);
+        ((bzh)localObject7).Hmv = bu.getInt(str3, 0);
+        ((bzh)localObject7).Hmw = bu.getLong(str2, 0L);
+        if (((bzh)localObject7).Url != null) {
           break label2843;
         }
       }
       label2843:
-      for (localObject1 = "".getBytes();; localObject1 = ((byn)localObject7).Url.getBytes())
+      for (localObject1 = "".getBytes();; localObject1 = ((bzh)localObject7).Url.getBytes())
       {
-        ((byn)localObject7).GSW = g.getMessageDigest((byte[])localObject1);
-        ((byn)localObject7).GSX = str1;
-        ((byn)localObject7).GSY = bt.getInt((String)localObject5, 0);
-        ((byn)localObject7).GSZ = ((String)localObject4);
-        ((byn)localObject7).GTa = ((String)localObject3);
-        ((byn)localObject7).GTb = bt.getInt((String)localObject2, 0);
-        ((byn)localObject7).GTc = str27;
-        ((byn)localObject7).GTe = Gv(str21);
-        localTimeLineObject.HAT.GaQ.add(localObject7);
+        ((bzh)localObject7).Hmx = g.getMessageDigest((byte[])localObject1);
+        ((bzh)localObject7).Hmy = str1;
+        ((bzh)localObject7).Hmz = bu.getInt((String)localObject5, 0);
+        ((bzh)localObject7).HmA = ((String)localObject4);
+        ((bzh)localObject7).HmB = ((String)localObject3);
+        ((bzh)localObject7).HmC = bu.getInt((String)localObject2, 0);
+        ((bzh)localObject7).HmD = str27;
+        ((bzh)localObject7).HmF = GX(str21);
+        localTimeLineObject.HUG.Gtx.add(localObject7);
         i += 1;
         break;
         str25 = ".TimelineObject.ContentObject.mediaList.media.id";
@@ -322,7 +322,7 @@ public final class h
       if ((i < 0) || (j < 0))
       {
         localObject2 = localTimeLineObject;
-        localObject3 = ((TimeLineObject)localObject2).HAT;
+        localObject3 = ((TimeLineObject)localObject2).HUG;
         localObject1 = new b();
         i = paramString.indexOf("<finderFeed>");
         j = paramString.indexOf("</finderFeed>");
@@ -331,8 +331,8 @@ public final class h
         }
         localObject1 = null;
         label2924:
-        ((abf)localObject3).GaU = ((arj)localObject1);
-        localObject3 = ((TimeLineObject)localObject2).HAT;
+        ((abo)localObject3).GtB = ((ary)localObject1);
+        localObject3 = ((TimeLineObject)localObject2).HUG;
         localObject1 = new c();
         i = paramString.indexOf("<finderTopic>");
         j = paramString.indexOf("</finderTopic>");
@@ -341,8 +341,8 @@ public final class h
         }
         localObject1 = null;
         label2971:
-        ((abf)localObject3).GaV = ((ark)localObject1);
-        localObject1 = ((TimeLineObject)localObject2).HAT;
+        ((abo)localObject3).GtC = ((arz)localObject1);
+        localObject1 = ((TimeLineObject)localObject2).HUG;
         localObject3 = new d();
         i = paramString.indexOf("<mmbrandmpvideo>");
         j = paramString.indexOf("</mmbrandmpvideo>");
@@ -351,183 +351,183 @@ public final class h
         }
         paramString = null;
         label3018:
-        ((abf)localObject1).GaW = paramString;
+        ((abo)localObject1).GtD = paramString;
         paramString = new en();
-        localObject1 = Gw((String)localMap.get(".TimelineObject.appInfo.id"));
-        localObject3 = Gw((String)localMap.get(".TimelineObject.appInfo.version"));
-        localObject4 = Gw((String)localMap.get(".TimelineObject.appInfo.appName"));
-        localObject5 = Gw((String)localMap.get(".TimelineObject.appInfo.installUrl "));
-        str1 = Gw((String)localMap.get(".TimelineObject.appInfo.fromUrl "));
+        localObject1 = GY((String)localMap.get(".TimelineObject.appInfo.id"));
+        localObject3 = GY((String)localMap.get(".TimelineObject.appInfo.version"));
+        localObject4 = GY((String)localMap.get(".TimelineObject.appInfo.appName"));
+        localObject5 = GY((String)localMap.get(".TimelineObject.appInfo.installUrl "));
+        str1 = GY((String)localMap.get(".TimelineObject.appInfo.fromUrl "));
         paramString.Id = ((String)localObject1);
-        paramString.uiR = ((String)localObject4);
-        paramString.Fwk = ((String)localObject5);
-        paramString.Fwl = str1;
+        paramString.uuo = ((String)localObject4);
+        paramString.FOI = ((String)localObject5);
+        paramString.FOJ = str1;
         paramString.Version = ((String)localObject3);
-        paramString.Fwm = bt.getInt((String)localMap.get(".TimelineObject.appInfo.clickable"), 0);
-        ((TimeLineObject)localObject2).HAS = paramString;
-        paramString = new ece();
-        localObject1 = Gw((String)localMap.get(".TimelineObject.weappInfo.appUserName"));
-        localObject3 = Gw((String)localMap.get(".TimelineObject.weappInfo.pagePath"));
-        localObject4 = Gw((String)localMap.get(".TimelineObject.weappInfo.version"));
-        localObject5 = Gw((String)localMap.get(".TimelineObject.weappInfo.debugMode"));
-        str1 = Gw((String)localMap.get(".TimelineObject.weappInfo.shareActionId"));
-        str2 = Gw((String)localMap.get(".TimelineObject.weappInfo.isGame"));
-        str3 = Gw((String)localMap.get(".TimelineObject.weappInfo.messageExtraData"));
-        str4 = Gw((String)localMap.get(".TimelineObject.weappInfo.subType"));
+        paramString.FOK = bu.getInt((String)localMap.get(".TimelineObject.appInfo.clickable"), 0);
+        ((TimeLineObject)localObject2).HUF = paramString;
+        paramString = new edv();
+        localObject1 = GY((String)localMap.get(".TimelineObject.weappInfo.appUserName"));
+        localObject3 = GY((String)localMap.get(".TimelineObject.weappInfo.pagePath"));
+        localObject4 = GY((String)localMap.get(".TimelineObject.weappInfo.version"));
+        localObject5 = GY((String)localMap.get(".TimelineObject.weappInfo.debugMode"));
+        str1 = GY((String)localMap.get(".TimelineObject.weappInfo.shareActionId"));
+        str2 = GY((String)localMap.get(".TimelineObject.weappInfo.isGame"));
+        str3 = GY((String)localMap.get(".TimelineObject.weappInfo.messageExtraData"));
+        str4 = GY((String)localMap.get(".TimelineObject.weappInfo.subType"));
         paramString.username = ((String)localObject1);
         paramString.path = ((String)localObject3);
-        paramString.version = bt.getInt((String)localObject4, 0);
-        paramString.DCU = bt.getInt((String)localObject5, 0);
-        paramString.HOB = str1;
-        paramString.isGame = bt.getInt(str2, 0);
-        paramString.dJW = str3;
-        paramString.subType = bt.getInt(str4, 0);
-        ((TimeLineObject)localObject2).HAZ = paramString;
-        paramString = new dkh();
-        localObject1 = Gw((String)localMap.get(".TimelineObject.streamvideo.streamvideotitle"));
-        localObject3 = Gw((String)localMap.get(".TimelineObject.streamvideo.streamvideototaltime"));
-        localObject4 = Gw((String)localMap.get(".TimelineObject.streamvideo.streamvideourl"));
-        localObject5 = Gw((String)localMap.get(".TimelineObject.streamvideo.streamvideoweburl"));
-        str1 = Gw((String)localMap.get(".TimelineObject.streamvideo.streamvideowording"));
-        str2 = Gw((String)localMap.get(".TimelineObject.streamvideo.streamvideothumburl"));
-        str3 = Gw((String)localMap.get(".TimelineObject.streamvideo.streamvideoaduxinfo"));
-        str4 = Gw((String)localMap.get(".TimelineObject.streamvideo.streamvideopublishid"));
-        paramString.hCg = ((String)localObject1);
-        paramString.hCf = bt.aRe((String)localObject3);
-        paramString.hCe = ((String)localObject4);
-        paramString.hCi = ((String)localObject5);
-        paramString.hCh = str1;
-        paramString.hCj = str2;
-        paramString.hCk = str3;
-        paramString.hCl = str4;
-        ((TimeLineObject)localObject2).HAY = paramString;
-        paramString = new dfx();
-        localObject1 = Gw((String)localMap.get(".TimelineObject.redEnvelopesInfo.sendId"));
-        localObject3 = Gw((String)localMap.get(".TimelineObject.redEnvelopesInfo.ticket"));
-        paramString.vkl = ((String)localObject1);
-        paramString.dpf = ((String)localObject3);
+        paramString.version = bu.getInt((String)localObject4, 0);
+        paramString.DUS = bu.getInt((String)localObject5, 0);
+        paramString.IiI = str1;
+        paramString.isGame = bu.getInt(str2, 0);
+        paramString.dLl = str3;
+        paramString.subType = bu.getInt(str4, 0);
+        ((TimeLineObject)localObject2).HUM = paramString;
+        paramString = new dlc();
+        localObject1 = GY((String)localMap.get(".TimelineObject.streamvideo.streamvideotitle"));
+        localObject3 = GY((String)localMap.get(".TimelineObject.streamvideo.streamvideototaltime"));
+        localObject4 = GY((String)localMap.get(".TimelineObject.streamvideo.streamvideourl"));
+        localObject5 = GY((String)localMap.get(".TimelineObject.streamvideo.streamvideoweburl"));
+        str1 = GY((String)localMap.get(".TimelineObject.streamvideo.streamvideowording"));
+        str2 = GY((String)localMap.get(".TimelineObject.streamvideo.streamvideothumburl"));
+        str3 = GY((String)localMap.get(".TimelineObject.streamvideo.streamvideoaduxinfo"));
+        str4 = GY((String)localMap.get(".TimelineObject.streamvideo.streamvideopublishid"));
+        paramString.hEV = ((String)localObject1);
+        paramString.hEU = bu.aSB((String)localObject3);
+        paramString.hET = ((String)localObject4);
+        paramString.hEX = ((String)localObject5);
+        paramString.hEW = str1;
+        paramString.hEY = str2;
+        paramString.hEZ = str3;
+        paramString.hFa = str4;
+        ((TimeLineObject)localObject2).HUL = paramString;
+        paramString = new dgr();
+        localObject1 = GY((String)localMap.get(".TimelineObject.redEnvelopesInfo.sendId"));
+        localObject3 = GY((String)localMap.get(".TimelineObject.redEnvelopesInfo.ticket"));
+        paramString.vwq = ((String)localObject1);
+        paramString.dqk = ((String)localObject3);
         paramString = new ba();
-        i = bt.getInt((String)localMap.get(".TimelineObject.actionInfo.scene"), 0);
-        localObject1 = Gw((String)localMap.get(".TimelineObject.actionInfo.appid"));
-        j = bt.getInt((String)localMap.get(".TimelineObject.actionInfo.type"), 0);
-        localObject3 = Gw((String)localMap.get(".TimelineObject.actionInfo.url"));
-        localObject4 = Gw((String)localMap.get(".TimelineObject.actionInfo.mediaTagName"));
-        localObject5 = Gw((String)localMap.get(".TimelineObject.actionInfo.wordingKey"));
-        paramString.Fsv = ((String)localObject1);
+        i = bu.getInt((String)localMap.get(".TimelineObject.actionInfo.scene"), 0);
+        localObject1 = GY((String)localMap.get(".TimelineObject.actionInfo.appid"));
+        j = bu.getInt((String)localMap.get(".TimelineObject.actionInfo.type"), 0);
+        localObject3 = GY((String)localMap.get(".TimelineObject.actionInfo.url"));
+        localObject4 = GY((String)localMap.get(".TimelineObject.actionInfo.mediaTagName"));
+        localObject5 = GY((String)localMap.get(".TimelineObject.actionInfo.wordingKey"));
+        paramString.FKT = ((String)localObject1);
         paramString.Scene = i;
-        paramString.nEf = j;
+        paramString.nJA = j;
         paramString.Url = ((String)localObject3);
-        paramString.Fsw = ((String)localObject4);
-        paramString.Fsx = ((String)localObject5);
+        paramString.FKU = ((String)localObject4);
+        paramString.FKV = ((String)localObject5);
         localObject1 = new ay();
-        localObject3 = Gw((String)localMap.get(".TimelineObject.actionInfo.appMsg.appid"));
-        localObject4 = Gw((String)localMap.get(".TimelineObject.actionInfo.appMsg.mediaTagName"));
-        localObject5 = Gw((String)localMap.get(".TimelineObject.actionInfo.appMsg.messageExt"));
-        str1 = Gw((String)localMap.get(".TimelineObject.actionInfo.appMsg.messageAction"));
-        ((ay)localObject1).iht = ((String)localObject3);
-        ((ay)localObject1).Fss = ((String)localObject4);
-        ((ay)localObject1).Fst = ((String)localObject5);
-        ((ay)localObject1).Fsu = str1;
-        paramString.Fsy = ((ay)localObject1);
-        i = bt.getInt((String)localMap.get(".TimelineObject.actionInfo.appActionScene.installedActionScene"), 0);
-        j = bt.getInt((String)localMap.get(".TimelineObject.actionInfo.appActionScene.uninstalledActionScene"), 0);
-        localObject1 = Gw((String)localMap.get(".TimelineObject.actionInfo.appJumpWordingKey.installedWordingKey"));
-        localObject3 = Gw((String)localMap.get(".TimelineObject.actionInfo.appJumpWordingKey.uninstalledWordingKey"));
-        paramString.Fsz = Gw((String)localMap.get(".TimelineObject.actionInfo.newWordingKey"));
+        localObject3 = GY((String)localMap.get(".TimelineObject.actionInfo.appMsg.appid"));
+        localObject4 = GY((String)localMap.get(".TimelineObject.actionInfo.appMsg.mediaTagName"));
+        localObject5 = GY((String)localMap.get(".TimelineObject.actionInfo.appMsg.messageExt"));
+        str1 = GY((String)localMap.get(".TimelineObject.actionInfo.appMsg.messageAction"));
+        ((ay)localObject1).ikm = ((String)localObject3);
+        ((ay)localObject1).FKQ = ((String)localObject4);
+        ((ay)localObject1).FKR = ((String)localObject5);
+        ((ay)localObject1).FKS = str1;
+        paramString.FKW = ((ay)localObject1);
+        i = bu.getInt((String)localMap.get(".TimelineObject.actionInfo.appActionScene.installedActionScene"), 0);
+        j = bu.getInt((String)localMap.get(".TimelineObject.actionInfo.appActionScene.uninstalledActionScene"), 0);
+        localObject1 = GY((String)localMap.get(".TimelineObject.actionInfo.appJumpWordingKey.installedWordingKey"));
+        localObject3 = GY((String)localMap.get(".TimelineObject.actionInfo.appJumpWordingKey.uninstalledWordingKey"));
+        paramString.FKX = GY((String)localMap.get(".TimelineObject.actionInfo.newWordingKey"));
         localObject4 = new dy();
-        ((dy)localObject4).FvX = i;
-        ((dy)localObject4).FvY = j;
+        ((dy)localObject4).FOv = i;
+        ((dy)localObject4).FOw = j;
         localObject5 = new ep();
-        ((ep)localObject5).Fwq = ((String)localObject1);
-        ((ep)localObject5).Fwr = ((String)localObject3);
-        paramString.FsA = ((dy)localObject4);
-        paramString.FsB = ((ep)localObject5);
-        paramString.FsC = Gy((String)localMap.get(".TimelineObject.actionInfo.installedWording"));
-        paramString.FsD = Gy((String)localMap.get(".TimelineObject.actionInfo.uninstalledWording"));
-        ((TimeLineObject)localObject2).znQ = paramString;
-        ((TimeLineObject)localObject2).jYs = Gw((String)localMap.get(".TimelineObject.sourceUserName"));
-        ((TimeLineObject)localObject2).EUR = Gw((String)localMap.get(".TimelineObject.sourceNickName"));
-        ((TimeLineObject)localObject2).HAU = Gw((String)localMap.get(".TimelineObject.publicUserName"));
-        ((TimeLineObject)localObject2).HAX = Gw((String)localMap.get(".TimelineObject.statisticsData"));
-        ((TimeLineObject)localObject2).zTv = Gw((String)localMap.get(".TimelineObject.canvasInfoXml"));
-        ((TimeLineObject)localObject2).hzT = bt.getInt((String)localMap.get(".TimelineObject.contentattr"), 0);
-        paramString = new eeq();
-        paramString.DBG = Gw((String)localMap.get(".TimelineObject.websearch.relevant_vid"));
-        paramString.DBH = Gw((String)localMap.get(".TimelineObject.websearch.relevant_expand"));
-        paramString.DBI = Gw((String)localMap.get(".TimelineObject.websearch.relevant_pre_searchid"));
-        paramString.DBJ = Gw((String)localMap.get(".TimelineObject.websearch.relevant_shared_openid"));
-        paramString.DBK = bt.getLong((String)localMap.get(".TimelineObject.websearch.rec_category"), 0L);
-        paramString.qeQ = Gw((String)localMap.get(".TimelineObject.websearch.shareUrl"));
-        paramString.qeR = Gw((String)localMap.get(".TimelineObject.websearch.shareTitle"));
-        paramString.uaw = Gw((String)localMap.get(".TimelineObject.websearch.shareDesc"));
-        paramString.DBL = Gw((String)localMap.get(".TimelineObject.websearch.shareImgUrl"));
-        paramString.DBM = Gw((String)localMap.get(".TimelineObject.websearch.shareString"));
-        paramString.DBN = Gw((String)localMap.get(".TimelineObject.websearch.shareStringUrl"));
-        paramString.source = Gw((String)localMap.get(".TimelineObject.websearch.source"));
-        paramString.lox = Gw((String)localMap.get(".TimelineObject.websearch.sourceUrl"));
-        paramString.DBO = Gw((String)localMap.get(".TimelineObject.websearch.strPlayCount"));
-        paramString.DBP = Gw((String)localMap.get(".TimelineObject.websearch.titleUrl"));
-        paramString.DBQ = Gw((String)localMap.get(".TimelineObject.websearch.extReqParams"));
-        paramString.DBR = Gw((String)localMap.get(".TimelineObject.websearch.tagList"));
-        paramString.DBS = bt.getLong((String)localMap.get(".TimelineObject.websearch.channelId"), 0L);
-        paramString.DBT = Gw((String)localMap.get(".TimelineObject.websearch.shareTag"));
-        ((TimeLineObject)localObject2).znS = paramString;
+        ((ep)localObject5).FOO = ((String)localObject1);
+        ((ep)localObject5).FOP = ((String)localObject3);
+        paramString.FKY = ((dy)localObject4);
+        paramString.FKZ = ((ep)localObject5);
+        paramString.FLa = Ha((String)localMap.get(".TimelineObject.actionInfo.installedWording"));
+        paramString.FLb = Ha((String)localMap.get(".TimelineObject.actionInfo.uninstalledWording"));
+        ((TimeLineObject)localObject2).zFf = paramString;
+        ((TimeLineObject)localObject2).kbH = GY((String)localMap.get(".TimelineObject.sourceUserName"));
+        ((TimeLineObject)localObject2).Fnm = GY((String)localMap.get(".TimelineObject.sourceNickName"));
+        ((TimeLineObject)localObject2).HUH = GY((String)localMap.get(".TimelineObject.publicUserName"));
+        ((TimeLineObject)localObject2).HUK = GY((String)localMap.get(".TimelineObject.statisticsData"));
+        ((TimeLineObject)localObject2).AkC = GY((String)localMap.get(".TimelineObject.canvasInfoXml"));
+        ((TimeLineObject)localObject2).hCH = bu.getInt((String)localMap.get(".TimelineObject.contentattr"), 0);
+        paramString = new egh();
+        paramString.DTD = GY((String)localMap.get(".TimelineObject.websearch.relevant_vid"));
+        paramString.DTE = GY((String)localMap.get(".TimelineObject.websearch.relevant_expand"));
+        paramString.DTF = GY((String)localMap.get(".TimelineObject.websearch.relevant_pre_searchid"));
+        paramString.DTG = GY((String)localMap.get(".TimelineObject.websearch.relevant_shared_openid"));
+        paramString.DTH = bu.getLong((String)localMap.get(".TimelineObject.websearch.rec_category"), 0L);
+        paramString.qlv = GY((String)localMap.get(".TimelineObject.websearch.shareUrl"));
+        paramString.qlw = GY((String)localMap.get(".TimelineObject.websearch.shareTitle"));
+        paramString.uly = GY((String)localMap.get(".TimelineObject.websearch.shareDesc"));
+        paramString.DTI = GY((String)localMap.get(".TimelineObject.websearch.shareImgUrl"));
+        paramString.DTJ = GY((String)localMap.get(".TimelineObject.websearch.shareString"));
+        paramString.DTK = GY((String)localMap.get(".TimelineObject.websearch.shareStringUrl"));
+        paramString.source = GY((String)localMap.get(".TimelineObject.websearch.source"));
+        paramString.dJL = GY((String)localMap.get(".TimelineObject.websearch.sourceUrl"));
+        paramString.DTL = GY((String)localMap.get(".TimelineObject.websearch.strPlayCount"));
+        paramString.DTM = GY((String)localMap.get(".TimelineObject.websearch.titleUrl"));
+        paramString.DTN = GY((String)localMap.get(".TimelineObject.websearch.extReqParams"));
+        paramString.DTO = GY((String)localMap.get(".TimelineObject.websearch.tagList"));
+        paramString.DTP = bu.getLong((String)localMap.get(".TimelineObject.websearch.channelId"), 0L);
+        paramString.DTQ = GY((String)localMap.get(".TimelineObject.websearch.shareTag"));
+        ((TimeLineObject)localObject2).zFh = paramString;
       }
     }
     for (;;)
     {
       AppMethodBeat.o(94866);
       return localTimeLineObject;
-      localTimeLineObject.HAT.GaS = paramString.substring(i, j + 11);
+      localTimeLineObject.HUG.Gtz = paramString.substring(i, j + 11);
       break;
       label4657:
-      localObject4 = bw.M(paramString.substring(i, j + 13), "finderFeed");
+      localObject4 = bx.M(paramString.substring(i, j + 13), "finderFeed");
       if (localObject4 != null) {
-        ((b)localObject1).i("", (Map)localObject4);
+        ((b)localObject1).j("", (Map)localObject4);
       }
-      localObject1 = ((b)localObject1).inc;
+      localObject1 = ((b)localObject1).ipW;
       break label2924;
       label4695:
-      localObject4 = bw.M(paramString.substring(i, j + 14), "finderTopic");
+      localObject4 = bx.M(paramString.substring(i, j + 14), "finderTopic");
       if (localObject4 != null) {
-        ((c)localObject1).i("", (Map)localObject4);
+        ((c)localObject1).j("", (Map)localObject4);
       }
-      localObject1 = ((c)localObject1).ind;
+      localObject1 = ((c)localObject1).ipX;
       break label2971;
       label4733:
-      paramString = bw.M(paramString.substring(i, j + 17), "mmbrandmpvideo");
+      paramString = bx.M(paramString.substring(i, j + 17), "mmbrandmpvideo");
       if (paramString != null) {
-        ((d)localObject3).ine = d.j("", paramString);
+        ((d)localObject3).ipY = d.k("", paramString);
       }
-      paramString = ((d)localObject3).ine;
+      paramString = ((d)localObject3).ipY;
       break label3018;
     }
   }
   
-  private static eo Gy(String paramString)
+  private static eo Ha(String paramString)
   {
     AppMethodBeat.i(94867);
-    if (bt.isNullOrNil(paramString))
+    if (bu.isNullOrNil(paramString))
     {
       AppMethodBeat.o(94867);
       return null;
     }
-    paramString = Gz(paramString);
-    paramString = bw.M("<root>" + paramString + "</root>", "root");
+    paramString = Hb(paramString);
+    paramString = bx.M("<root>" + paramString + "</root>", "root");
     if (paramString == null)
     {
       AppMethodBeat.o(94867);
       return null;
     }
     eo localeo = new eo();
-    localeo.Fwn = Gw((String)paramString.get(".root.en"));
-    localeo.Fwo = Gw((String)paramString.get(".root.zh-CN"));
-    localeo.Fwp = Gw((String)paramString.get(".root.zh-TW"));
+    localeo.FOL = GY((String)paramString.get(".root.en"));
+    localeo.FOM = GY((String)paramString.get(".root.zh-CN"));
+    localeo.FON = GY((String)paramString.get(".root.zh-TW"));
     AppMethodBeat.o(94867);
     return localeo;
   }
   
-  private static String Gz(String paramString)
+  private static String Hb(String paramString)
   {
     AppMethodBeat.i(94868);
     StringBuilder localStringBuilder = new StringBuilder(paramString.length());
@@ -574,10 +574,10 @@ public final class h
   
   public static Pair<Integer, Integer> a(int paramInt1, int paramInt2, Context paramContext)
   {
-    AppMethodBeat.i(197554);
-    int i = BackwardSupportUtil.b.g(paramContext, 160.0F);
-    int j = BackwardSupportUtil.b.g(paramContext, 200.0F);
-    int k = BackwardSupportUtil.b.g(paramContext, 44.0F);
+    AppMethodBeat.i(218982);
+    int i = BackwardSupportUtil.b.h(paramContext, 160.0F);
+    int j = BackwardSupportUtil.b.h(paramContext, 200.0F);
+    int k = BackwardSupportUtil.b.h(paramContext, 44.0F);
     double d3 = paramInt1;
     double d1 = paramInt2;
     double d2;
@@ -626,7 +626,7 @@ public final class h
         d3 = 1.0D;
       }
       paramContext = Pair.create(Integer.valueOf((int)d2), Integer.valueOf((int)d3));
-      AppMethodBeat.o(197554);
+      AppMethodBeat.o(218982);
       return paramContext;
       d4 = i;
       d1 = i;
@@ -647,7 +647,7 @@ public final class h
       }
       if (paramContext == null)
       {
-        ad.e("MicroMsg.TimeLineHelper", "the context is null");
+        ae.e("MicroMsg.TimeLineHelper", "the context is null");
         paramContext = Pair.create(Integer.valueOf(paramInt1), Integer.valueOf(k));
         AppMethodBeat.o(94870);
         return paramContext;
@@ -662,7 +662,7 @@ public final class h
         {
           paramInt2 = i;
           if (paramContext != null) {
-            paramInt2 = Math.min(BackwardSupportUtil.b.g(paramContext, 160.0F), i);
+            paramInt2 = Math.min(BackwardSupportUtil.b.h(paramContext, 160.0F), i);
           }
         }
         int m = (int)(paramInt2 * 1.0D * k / paramInt1);
@@ -678,7 +678,7 @@ public final class h
         }
         for (;;)
         {
-          ad.i("MicroMsg.TimeLineHelper", "getTimelineVideoSize: width %d, height %d, expectWidth %d,expectHeight %d, isAd: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(k), Integer.valueOf(j), Integer.valueOf(i), Boolean.valueOf(paramBoolean) });
+          ae.i("MicroMsg.TimeLineHelper", "getTimelineVideoSize: width %d, height %d, expectWidth %d,expectHeight %d, isAd: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(k), Integer.valueOf(j), Integer.valueOf(i), Boolean.valueOf(paramBoolean) });
           paramContext = Pair.create(Integer.valueOf(j), Integer.valueOf(i));
           AppMethodBeat.o(94870);
           return paramContext;
@@ -696,13 +696,13 @@ public final class h
     AppMethodBeat.i(94869);
     int j;
     int i;
-    if ((paramTimeLineObject != null) && (paramTimeLineObject.HAT != null) && (paramTimeLineObject.HAT.GaQ != null) && (paramTimeLineObject.HAT.GaQ.size() > 0))
+    if ((paramTimeLineObject != null) && (paramTimeLineObject.HUG != null) && (paramTimeLineObject.HUG.Gtx != null) && (paramTimeLineObject.HUG.Gtx.size() > 0))
     {
-      paramTimeLineObject = (byn)paramTimeLineObject.HAT.GaQ.get(0);
-      if ((paramTimeLineObject != null) && (paramTimeLineObject.GSL != null) && (paramTimeLineObject.GSL.GTz > 0.0F) && (paramTimeLineObject.GSL.GTA > 0.0F))
+      paramTimeLineObject = (bzh)paramTimeLineObject.HUG.Gtx.get(0);
+      if ((paramTimeLineObject != null) && (paramTimeLineObject.Hmm != null) && (paramTimeLineObject.Hmm.Hna > 0.0F) && (paramTimeLineObject.Hmm.Hnb > 0.0F))
       {
-        j = (int)paramTimeLineObject.GSL.GTz;
-        i = (int)paramTimeLineObject.GSL.GTA;
+        j = (int)paramTimeLineObject.Hmm.Hna;
+        i = (int)paramTimeLineObject.Hmm.Hnb;
       }
     }
     for (;;)
@@ -715,81 +715,81 @@ public final class h
     }
   }
   
-  public static byn a(String paramString1, int paramInt1, String paramString2, String paramString3, int paramInt2, int paramInt3, int paramInt4, String paramString4, byp parambyp)
+  public static bzh a(String paramString1, int paramInt1, String paramString2, String paramString3, int paramInt2, int paramInt3, int paramInt4, String paramString4, bzj parambzj)
   {
     AppMethodBeat.i(94865);
-    byn localbyn = new byn();
-    localbyn.Id = Gw(paramString1);
-    localbyn.nEf = paramInt1;
-    localbyn.Desc = Gw(paramString4);
-    localbyn.Url = Gw(paramString2);
-    localbyn.GEe = paramInt2;
-    localbyn.GSI = Gw(paramString3);
-    localbyn.GSJ = paramInt3;
-    localbyn.GSK = paramInt4;
-    localbyn.GSL = parambyp;
+    bzh localbzh = new bzh();
+    localbzh.Id = GY(paramString1);
+    localbzh.nJA = paramInt1;
+    localbzh.Desc = GY(paramString4);
+    localbzh.Url = GY(paramString2);
+    localbzh.GXH = paramInt2;
+    localbzh.Hmj = GY(paramString3);
+    localbzh.Hmk = paramInt3;
+    localbzh.Hml = paramInt4;
+    localbzh.Hmm = parambzj;
     if (paramString2 == null) {}
     for (paramString1 = "".getBytes();; paramString1 = paramString2.getBytes())
     {
-      localbyn.GSW = g.getMessageDigest(paramString1);
+      localbzh.Hmx = g.getMessageDigest(paramString1);
       AppMethodBeat.o(94865);
-      return localbyn;
+      return localbzh;
     }
   }
   
-  public static byn a(String paramString1, int paramInt1, String paramString2, String paramString3, int paramInt2, int paramInt3, String paramString4)
+  public static bzh a(String paramString1, int paramInt1, String paramString2, String paramString3, int paramInt2, int paramInt3, String paramString4)
   {
     AppMethodBeat.i(94864);
-    byn localbyn = new byn();
-    localbyn.Id = paramString1;
-    localbyn.nEf = paramInt1;
-    localbyn.Url = paramString2;
-    localbyn.GSI = paramString3;
-    localbyn.GEe = paramInt2;
-    localbyn.GSJ = paramInt3;
-    localbyn.Desc = paramString4;
-    paramString1 = new byp();
-    paramString1.GTA = 0.0F;
-    paramString1.GTz = 0.0F;
-    paramString1.GTB = 0.0F;
-    localbyn.GSL = paramString1;
+    bzh localbzh = new bzh();
+    localbzh.Id = paramString1;
+    localbzh.nJA = paramInt1;
+    localbzh.Url = paramString2;
+    localbzh.Hmj = paramString3;
+    localbzh.GXH = paramInt2;
+    localbzh.Hmk = paramInt3;
+    localbzh.Desc = paramString4;
+    paramString1 = new bzj();
+    paramString1.Hnb = 0.0F;
+    paramString1.Hna = 0.0F;
+    paramString1.Hnc = 0.0F;
+    localbzh.Hmm = paramString1;
     if (paramString2 == null) {}
     for (paramString1 = "".getBytes();; paramString1 = paramString2.getBytes())
     {
-      localbyn.GSW = g.getMessageDigest(paramString1);
+      localbzh.Hmx = g.getMessageDigest(paramString1);
       AppMethodBeat.o(94864);
-      return localbyn;
+      return localbzh;
     }
   }
   
-  public static TimeLineObject aLm()
+  public static TimeLineObject aLJ()
   {
     AppMethodBeat.i(94862);
     TimeLineObject localTimeLineObject = new TimeLineObject();
-    Object localObject = new abf();
-    localTimeLineObject.HAS = new en();
-    localTimeLineObject.HAT = ((abf)localObject);
-    localTimeLineObject.GSK = 0;
+    Object localObject = new abo();
+    localTimeLineObject.HUF = new en();
+    localTimeLineObject.HUG = ((abo)localObject);
+    localTimeLineObject.Hml = 0;
     localTimeLineObject.CreateTime = 0;
     localTimeLineObject.Id = "";
-    localObject = new bvq();
-    ((bvq)localObject).FOB = 0.0F;
-    ((bvq)localObject).FOA = 0.0F;
-    localTimeLineObject.HAR = ((bvq)localObject);
-    localTimeLineObject.zTv = "";
-    localTimeLineObject.HAZ = new ece();
+    localObject = new bwk();
+    ((bwk)localObject).Gha = 0.0F;
+    ((bwk)localObject).GgZ = 0.0F;
+    localTimeLineObject.HUE = ((bwk)localObject);
+    localTimeLineObject.AkC = "";
+    localTimeLineObject.HUM = new edv();
     AppMethodBeat.o(94862);
     return localTimeLineObject;
   }
   
-  public static byn aLn()
+  public static bzh aLK()
   {
     AppMethodBeat.i(94863);
-    byn localbyn = new byn();
-    localbyn.Desc = "";
-    localbyn.GSK = 0;
+    bzh localbzh = new bzh();
+    localbzh.Desc = "";
+    localbzh.Hml = 0;
     AppMethodBeat.o(94863);
-    return localbyn;
+    return localbzh;
   }
 }
 

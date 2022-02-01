@@ -10,7 +10,7 @@ import com.tencent.mm.plugin.card.model.n.a;
 import com.tencent.mm.plugin.card.sharecard.model.ShareCardInfo;
 import com.tencent.mm.plugin.card.sharecard.model.k;
 import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.ui.r;
 
 public final class c
@@ -19,53 +19,53 @@ public final class c
   private final String TAG;
   long beginTime;
   long endTime;
-  private int oCX;
-  com.tencent.mm.plugin.card.base.c oCY;
-  private int oCZ;
+  com.tencent.mm.plugin.card.base.c oJA;
+  private int oJB;
+  private int oJz;
   
   public c(Context paramContext)
   {
     super(paramContext, new ShareCardInfo());
     AppMethodBeat.i(113074);
     this.TAG = "MicroMsg.ShareCardAdatper";
-    this.oCX = 0;
-    this.oCZ = -1;
+    this.oJz = 0;
+    this.oJB = -1;
     this.beginTime = 0L;
     this.endTime = 0L;
-    xk(true);
-    this.oCY = new j(paramContext, this);
+    xs(true);
+    this.oJA = new j(paramContext, this);
     AppMethodBeat.o(113074);
   }
   
-  public final void Ax(int paramInt)
+  public final void AJ(int paramInt)
   {
     AppMethodBeat.i(113078);
-    this.oCZ = paramInt;
+    this.oJB = paramInt;
     a(null, null);
     AppMethodBeat.o(113078);
   }
   
-  public final void Zu()
+  public final void ZD()
   {
     AppMethodBeat.i(113076);
     this.beginTime = System.currentTimeMillis();
     Object localObject1;
     Object localObject2;
     Object localObject3;
-    if (this.oCZ == -1)
+    if (this.oJB == -1)
     {
-      localObject1 = am.bUV();
-      localObject2 = n.a.ozI;
+      localObject1 = am.bWk();
+      localObject2 = n.a.oGk;
       localObject3 = new StringBuilder();
-      switch (com.tencent.mm.plugin.card.sharecard.model.k.1.ozc[localObject2.ordinal()])
+      switch (com.tencent.mm.plugin.card.sharecard.model.k.1.oFE[localObject2.ordinal()])
       {
       default: 
         localObject2 = "select * from ShareCardInfo" + ((StringBuilder)localObject3).toString() + " order by status asc , share_time desc";
         localObject1 = ((k)localObject1).db.rawQuery((String)localObject2, null);
         if (localObject1 != null)
         {
-          this.oCX = ((Cursor)localObject1).getCount();
-          ad.i("MicroMsg.ShareCardAdatper", "resetCursor showType %s, card count:%s", new Object[] { Integer.valueOf(this.oCZ), Integer.valueOf(this.oCX) });
+          this.oJz = ((Cursor)localObject1).getCount();
+          ae.i("MicroMsg.ShareCardAdatper", "resetCursor showType %s, card count:%s", new Object[] { Integer.valueOf(this.oJB), Integer.valueOf(this.oJz) });
         }
         break;
       }
@@ -83,8 +83,8 @@ public final class c
       break;
       ((StringBuilder)localObject3).append(" where (status=0 OR status=5) and (block_mask= '1' OR block_mask= '0' )");
       break;
-      localObject3 = am.bUV();
-      int i = this.oCZ;
+      localObject3 = am.bWk();
+      int i = this.oJB;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append(" where ( status=0) ");
       localObject2 = "";
@@ -101,11 +101,11 @@ public final class c
         break;
         localStringBuilder.append(" AND (");
         localStringBuilder.append(" (");
-        localStringBuilder.append(k.At(1));
+        localStringBuilder.append(k.AF(1));
         localStringBuilder.append(" categoryType= '10' ");
         localStringBuilder.append(") ");
         localStringBuilder.append(" OR (");
-        localStringBuilder.append(k.At(2));
+        localStringBuilder.append(k.AF(2));
         localStringBuilder.append(" categoryType= '0' ");
         localStringBuilder.append(") ");
         localStringBuilder.append(" )");
@@ -113,14 +113,14 @@ public final class c
         continue;
         localStringBuilder.append(" AND ");
         localStringBuilder.append(" (");
-        localStringBuilder.append(k.At(1));
+        localStringBuilder.append(k.AF(1));
         localStringBuilder.append(" categoryType= '10' ");
         localStringBuilder.append(") ");
         localObject1 = " order by categoryType desc , itemIndex asc";
         continue;
         localStringBuilder.append(" AND ");
         localStringBuilder.append(" (");
-        localStringBuilder.append(k.At(2));
+        localStringBuilder.append(k.AF(2));
         localStringBuilder.append(" categoryType= '0' ");
         localStringBuilder.append(") ");
         localObject1 = " order by categoryType desc , itemIndex asc";
@@ -128,15 +128,15 @@ public final class c
         localStringBuilder.append(" AND 1 != 1 ");
         localObject1 = localObject2;
       }
-      ad.e("MicroMsg.ShareCardAdatper", "resetCursor cursor is null, showType %s", new Object[] { Integer.valueOf(this.oCZ) });
+      ae.e("MicroMsg.ShareCardAdatper", "resetCursor cursor is null, showType %s", new Object[] { Integer.valueOf(this.oJB) });
     }
   }
   
-  public final void Zv()
+  public final void ZE()
   {
     AppMethodBeat.i(113077);
-    det();
-    Zu();
+    dhl();
+    ZD();
     AppMethodBeat.o(113077);
   }
   
@@ -144,7 +144,7 @@ public final class c
   {
     AppMethodBeat.i(113075);
     paramViewGroup = (ShareCardInfo)getItem(paramInt);
-    paramView = this.oCY.a(paramInt, paramView, paramViewGroup);
+    paramView = this.oJA.a(paramInt, paramView, paramViewGroup);
     AppMethodBeat.o(113075);
     return paramView;
   }

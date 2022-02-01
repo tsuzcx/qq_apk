@@ -7,101 +7,101 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class b
   implements com.tencent.mapsdk.raster.model.Circle
 {
-  private com.tencent.tencentmap.mapsdk.maps.model.Circle Mzu;
+  private com.tencent.tencentmap.mapsdk.maps.model.Circle MWB;
   
   public b(com.tencent.tencentmap.mapsdk.maps.model.Circle paramCircle)
   {
-    this.Mzu = paramCircle;
+    this.MWB = paramCircle;
   }
   
   public final boolean contains(LatLng paramLatLng)
   {
-    AppMethodBeat.i(199943);
-    if (this.Mzu != null)
+    AppMethodBeat.i(212635);
+    if (this.MWB != null)
     {
-      boolean bool = this.Mzu.contains(l.c(paramLatLng));
-      AppMethodBeat.o(199943);
+      boolean bool = this.MWB.contains(l.c(paramLatLng));
+      AppMethodBeat.o(212635);
       return bool;
     }
-    AppMethodBeat.o(199943);
+    AppMethodBeat.o(212635);
     return false;
   }
   
   public final LatLng getCenter()
   {
-    AppMethodBeat.i(199928);
-    if (this.Mzu != null)
+    AppMethodBeat.i(212620);
+    if (this.MWB != null)
     {
-      LatLng localLatLng = l.a(this.Mzu.getCenter());
-      AppMethodBeat.o(199928);
+      LatLng localLatLng = l.a(this.MWB.getCenter());
+      AppMethodBeat.o(212620);
       return localLatLng;
     }
-    AppMethodBeat.o(199928);
+    AppMethodBeat.o(212620);
     return null;
   }
   
   public final int getFillColor()
   {
-    AppMethodBeat.i(199936);
-    if (this.Mzu != null)
+    AppMethodBeat.i(212628);
+    if (this.MWB != null)
     {
-      int i = this.Mzu.getFillColor();
-      AppMethodBeat.o(199936);
+      int i = this.MWB.getFillColor();
+      AppMethodBeat.o(212628);
       return i;
     }
-    AppMethodBeat.o(199936);
+    AppMethodBeat.o(212628);
     return 0;
   }
   
   public final String getId()
   {
-    AppMethodBeat.i(199926);
-    if (this.Mzu != null)
+    AppMethodBeat.i(212618);
+    if (this.MWB != null)
     {
-      String str = this.Mzu.getId();
-      AppMethodBeat.o(199926);
+      String str = this.MWB.getId();
+      AppMethodBeat.o(212618);
       return str;
     }
-    AppMethodBeat.o(199926);
+    AppMethodBeat.o(212618);
     return null;
   }
   
   public final int getLevel()
   {
-    AppMethodBeat.i(199940);
-    if (this.Mzu != null)
+    AppMethodBeat.i(212632);
+    if (this.MWB != null)
     {
-      int i = this.Mzu.getLevel();
-      AppMethodBeat.o(199940);
+      int i = this.MWB.getLevel();
+      AppMethodBeat.o(212632);
       return i;
     }
-    AppMethodBeat.o(199940);
+    AppMethodBeat.o(212632);
     return 0;
   }
   
   public final double getRadius()
   {
-    AppMethodBeat.i(199930);
-    if (this.Mzu != null)
+    AppMethodBeat.i(212622);
+    if (this.MWB != null)
     {
-      double d = this.Mzu.getRadius();
-      AppMethodBeat.o(199930);
+      double d = this.MWB.getRadius();
+      AppMethodBeat.o(212622);
       return d;
     }
-    AppMethodBeat.o(199930);
+    AppMethodBeat.o(212622);
     return 0.0D;
   }
   
   public final int getStrokeColor()
   {
-    AppMethodBeat.i(199934);
-    if (this.Mzu != null)
+    AppMethodBeat.i(212626);
+    if (this.MWB != null)
     {
-      int i = this.Mzu.getStrokeColor();
-      AppMethodBeat.o(199934);
+      int i = this.MWB.getStrokeColor();
+      AppMethodBeat.o(212626);
       return i;
     }
-    AppMethodBeat.o(199934);
+    AppMethodBeat.o(212626);
     return 0;
   }
   
@@ -117,130 +117,130 @@ public final class b
   
   public final float getStrokeWidth()
   {
-    AppMethodBeat.i(199932);
-    if (this.Mzu != null)
+    AppMethodBeat.i(212624);
+    if (this.MWB != null)
     {
-      float f = this.Mzu.getStrokeWidth();
-      AppMethodBeat.o(199932);
+      float f = this.MWB.getStrokeWidth();
+      AppMethodBeat.o(212624);
       return f;
     }
-    AppMethodBeat.o(199932);
+    AppMethodBeat.o(212624);
     return 0.0F;
   }
   
   public final float getZIndex()
   {
-    AppMethodBeat.i(199938);
-    if (this.Mzu != null)
+    AppMethodBeat.i(212630);
+    if (this.MWB != null)
     {
-      float f = (int)this.Mzu.getZIndex();
-      AppMethodBeat.o(199938);
+      float f = (int)this.MWB.getZIndex();
+      AppMethodBeat.o(212630);
       return f;
     }
-    AppMethodBeat.o(199938);
+    AppMethodBeat.o(212630);
     return 0.0F;
   }
   
   public final boolean isVisible()
   {
-    AppMethodBeat.i(199942);
-    if (this.Mzu != null)
+    AppMethodBeat.i(212634);
+    if (this.MWB != null)
     {
-      boolean bool = this.Mzu.isVisible();
-      AppMethodBeat.o(199942);
+      boolean bool = this.MWB.isVisible();
+      AppMethodBeat.o(212634);
       return bool;
     }
-    AppMethodBeat.o(199942);
+    AppMethodBeat.o(212634);
     return false;
   }
   
   public final void remove()
   {
-    AppMethodBeat.i(199925);
-    if (this.Mzu != null) {
-      this.Mzu.remove();
+    AppMethodBeat.i(212617);
+    if (this.MWB != null) {
+      this.MWB.remove();
     }
-    AppMethodBeat.o(199925);
+    AppMethodBeat.o(212617);
   }
   
   public final void setCenter(LatLng paramLatLng)
   {
-    AppMethodBeat.i(199927);
-    if (this.Mzu != null) {
-      this.Mzu.setCenter(l.c(paramLatLng));
+    AppMethodBeat.i(212619);
+    if (this.MWB != null) {
+      this.MWB.setCenter(l.c(paramLatLng));
     }
-    AppMethodBeat.o(199927);
+    AppMethodBeat.o(212619);
   }
   
   public final void setFillColor(int paramInt)
   {
-    AppMethodBeat.i(199935);
-    if (this.Mzu != null) {
-      this.Mzu.setFillColor(paramInt);
+    AppMethodBeat.i(212627);
+    if (this.MWB != null) {
+      this.MWB.setFillColor(paramInt);
     }
-    AppMethodBeat.o(199935);
+    AppMethodBeat.o(212627);
   }
   
   public final void setLevel(int paramInt)
   {
-    AppMethodBeat.i(199939);
-    if (this.Mzu != null) {
-      this.Mzu.setLevel(paramInt);
+    AppMethodBeat.i(212631);
+    if (this.MWB != null) {
+      this.MWB.setLevel(paramInt);
     }
-    AppMethodBeat.o(199939);
+    AppMethodBeat.o(212631);
   }
   
   public final void setRadius(double paramDouble)
   {
-    AppMethodBeat.i(199929);
-    if (this.Mzu != null) {
-      this.Mzu.setRadius(paramDouble);
+    AppMethodBeat.i(212621);
+    if (this.MWB != null) {
+      this.MWB.setRadius(paramDouble);
     }
-    AppMethodBeat.o(199929);
+    AppMethodBeat.o(212621);
   }
   
   public final void setStrokeColor(int paramInt)
   {
-    AppMethodBeat.i(199933);
-    if (this.Mzu != null) {
-      this.Mzu.setStrokeColor(paramInt);
+    AppMethodBeat.i(212625);
+    if (this.MWB != null) {
+      this.MWB.setStrokeColor(paramInt);
     }
-    AppMethodBeat.o(199933);
+    AppMethodBeat.o(212625);
   }
   
   public final void setStrokeDash(boolean paramBoolean) {}
   
   public final void setStrokeWidth(float paramFloat)
   {
-    AppMethodBeat.i(199931);
-    if (this.Mzu != null)
+    AppMethodBeat.i(212623);
+    if (this.MWB != null)
     {
-      com.tencent.tencentmap.mapsdk.maps.model.Circle localCircle = this.Mzu;
+      com.tencent.tencentmap.mapsdk.maps.model.Circle localCircle = this.MWB;
       float f = paramFloat;
       if (paramFloat < 0.0F) {
         f = 0.0F;
       }
       localCircle.setStrokeWidth(f);
     }
-    AppMethodBeat.o(199931);
+    AppMethodBeat.o(212623);
   }
   
   public final void setVisible(boolean paramBoolean)
   {
-    AppMethodBeat.i(199941);
-    if (this.Mzu != null) {
-      this.Mzu.setVisible(paramBoolean);
+    AppMethodBeat.i(212633);
+    if (this.MWB != null) {
+      this.MWB.setVisible(paramBoolean);
     }
-    AppMethodBeat.o(199941);
+    AppMethodBeat.o(212633);
   }
   
   public final void setZIndex(float paramFloat)
   {
-    AppMethodBeat.i(199937);
-    if (this.Mzu != null) {
-      this.Mzu.setZIndex((int)paramFloat);
+    AppMethodBeat.i(212629);
+    if (this.MWB != null) {
+      this.MWB.setZIndex((int)paramFloat);
     }
-    AppMethodBeat.o(199937);
+    AppMethodBeat.o(212629);
   }
   
   public final void strokeDashPathEffect(DashPathEffect paramDashPathEffect) {}

@@ -1,19 +1,19 @@
 package com.tencent.mm.plugin.secinforeport.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public enum d
   implements c
 {
-  private static c yBR;
+  private static c yRR;
   
   static
   {
     AppMethodBeat.i(145664);
-    yBQ = new d("INSTANCE");
-    yBS = new d[] { yBQ };
-    yBR = new a((byte)0);
+    yRQ = new d("INSTANCE");
+    yRS = new d[] { yRQ };
+    yRR = new a((byte)0);
     AppMethodBeat.o(145664);
   }
   
@@ -22,42 +22,42 @@ public enum d
   public static void a(c paramc)
   {
     if (paramc != null) {
-      yBR = paramc;
+      yRR = paramc;
     }
   }
   
-  public final void OX(int paramInt)
+  public final void PE(int paramInt)
   {
-    AppMethodBeat.i(186426);
-    yBR.OX(paramInt);
-    AppMethodBeat.o(186426);
+    AppMethodBeat.i(189019);
+    yRR.PE(paramInt);
+    AppMethodBeat.o(189019);
   }
   
-  public final void OY(int paramInt)
+  public final void PF(int paramInt)
   {
     AppMethodBeat.i(145659);
-    yBR.OY(paramInt);
+    yRR.PF(paramInt);
     AppMethodBeat.o(145659);
   }
   
   public final void asyncReportFinderSecurityInfoThroughCgi(int paramInt)
   {
-    AppMethodBeat.i(186427);
-    yBR.asyncReportFinderSecurityInfoThroughCgi(paramInt);
-    AppMethodBeat.o(186427);
+    AppMethodBeat.i(189020);
+    yRR.asyncReportFinderSecurityInfoThroughCgi(paramInt);
+    AppMethodBeat.o(189020);
   }
   
   public final void asyncReportPaySecurityInfoThroughCgi()
   {
     AppMethodBeat.i(145663);
-    yBR.asyncReportPaySecurityInfoThroughCgi();
+    yRR.asyncReportPaySecurityInfoThroughCgi();
     AppMethodBeat.o(145663);
   }
   
   public final boolean ay(int paramInt, long paramLong)
   {
     AppMethodBeat.i(145657);
-    boolean bool = yBR.ay(paramInt, paramLong);
+    boolean bool = yRR.ay(paramInt, paramLong);
     AppMethodBeat.o(145657);
     return bool;
   }
@@ -65,67 +65,67 @@ public enum d
   public final boolean az(int paramInt, long paramLong)
   {
     AppMethodBeat.i(145661);
-    boolean bool = yBR.az(paramInt, paramLong);
+    boolean bool = yRR.az(paramInt, paramLong);
     AppMethodBeat.o(145661);
     return bool;
   }
   
-  public final void dMZ()
+  public final void dQs()
   {
     AppMethodBeat.i(145662);
-    yBR.dMZ();
+    yRR.dQs();
     AppMethodBeat.o(145662);
   }
   
-  public final void hu(int paramInt1, int paramInt2)
+  public final void hw(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(145658);
-    yBR.hu(paramInt1, paramInt2);
+    yRR.hw(paramInt1, paramInt2);
     AppMethodBeat.o(145658);
   }
   
   public final void r(int paramInt, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(145660);
-    yBR.r(paramInt, paramArrayOfByte);
+    yRR.r(paramInt, paramArrayOfByte);
     AppMethodBeat.o(145660);
   }
   
   static final class a
     implements c
   {
-    public final void OX(int paramInt)
+    public final void PE(int paramInt)
     {
-      AppMethodBeat.i(186424);
-      ad.w("MicroMsg.SecInfoReporter", "!! Dummy implementation !!");
-      AppMethodBeat.o(186424);
+      AppMethodBeat.i(189017);
+      ae.w("MicroMsg.SecInfoReporter", "!! Dummy implementation !!");
+      AppMethodBeat.o(189017);
     }
     
-    public final void OY(int paramInt)
+    public final void PF(int paramInt)
     {
       AppMethodBeat.i(145650);
-      ad.w("MicroMsg.SecInfoReporter", "!! Dummy implementation !!");
+      ae.w("MicroMsg.SecInfoReporter", "!! Dummy implementation !!");
       AppMethodBeat.o(145650);
     }
     
     public final void asyncReportFinderSecurityInfoThroughCgi(int paramInt)
     {
-      AppMethodBeat.i(186425);
-      ad.w("MicroMsg.SecInfoReporter", "!! Dummy implementation !!");
-      AppMethodBeat.o(186425);
+      AppMethodBeat.i(189018);
+      ae.w("MicroMsg.SecInfoReporter", "!! Dummy implementation !!");
+      AppMethodBeat.o(189018);
     }
     
     public final void asyncReportPaySecurityInfoThroughCgi()
     {
       AppMethodBeat.i(145654);
-      ad.w("MicroMsg.SecInfoReporter", "!! Dummy implementation !!");
+      ae.w("MicroMsg.SecInfoReporter", "!! Dummy implementation !!");
       AppMethodBeat.o(145654);
     }
     
     public final boolean ay(int paramInt, long paramLong)
     {
       AppMethodBeat.i(145648);
-      ad.w("MicroMsg.SecInfoReporter", "!! Dummy implementation !!");
+      ae.w("MicroMsg.SecInfoReporter", "!! Dummy implementation !!");
       AppMethodBeat.o(145648);
       return false;
     }
@@ -133,36 +133,36 @@ public enum d
     public final boolean az(int paramInt, long paramLong)
     {
       AppMethodBeat.i(145652);
-      ad.w("MicroMsg.SecInfoReporter", "!! Dummy implementation !!");
+      ae.w("MicroMsg.SecInfoReporter", "!! Dummy implementation !!");
       AppMethodBeat.o(145652);
       return false;
     }
     
-    public final void dMZ()
+    public final void dQs()
     {
       AppMethodBeat.i(145653);
-      ad.w("MicroMsg.SecInfoReporter", "!! Dummy implementation !!");
+      ae.w("MicroMsg.SecInfoReporter", "!! Dummy implementation !!");
       AppMethodBeat.o(145653);
     }
     
-    public final void hu(int paramInt1, int paramInt2)
+    public final void hw(int paramInt1, int paramInt2)
     {
       AppMethodBeat.i(145649);
-      ad.w("MicroMsg.SecInfoReporter", "!! Dummy implementation !!");
+      ae.w("MicroMsg.SecInfoReporter", "!! Dummy implementation !!");
       AppMethodBeat.o(145649);
     }
     
     public final void r(int paramInt, byte[] paramArrayOfByte)
     {
       AppMethodBeat.i(145651);
-      ad.w("MicroMsg.SecInfoReporter", "!! Dummy implementation !!");
+      ae.w("MicroMsg.SecInfoReporter", "!! Dummy implementation !!");
       AppMethodBeat.o(145651);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.secinforeport.a.d
  * JD-Core Version:    0.7.0.1
  */

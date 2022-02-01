@@ -1,130 +1,272 @@
 package com.tencent.mm.plugin.scanner.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.expt.b.b.a;
-import com.tencent.mm.plugin.scanner.d.c;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.qbar.a.a;
-import d.g.b.p;
-import d.l;
+import java.io.StringReader;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
+import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlPullParserFactory;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/scanner/model/WxScanCodeResultFilter;", "Lcom/tencent/mm/plugin/scanner/result/IScanCodeResultFilter;", "()V", "directJumpWhiteCode", "", "directJumpWhiteListCode", "filter", "", "Lcom/tencent/qbar/QBar$QBarResult;", "codeResultList", "Companion", "plugin-scan_release"})
 public final class aj
-  implements c
 {
-  public static final a yoT;
-  private boolean yoS;
-  
-  static
-  {
-    AppMethodBeat.i(186336);
-    yoT = new a((byte)0);
-    AppMethodBeat.o(186336);
-  }
+  private ai yEN;
   
   public aj()
   {
-    AppMethodBeat.i(186335);
-    int i = ((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qBJ, 0);
-    if (i != 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.yoS = bool;
-      ad.i("MicroMsg.WxScanCodeResultFilter", "alvinluo WxScanCodeResultFilter init config: %d, directJumpWhiteCode: %b", new Object[] { Integer.valueOf(i), Boolean.valueOf(this.yoS) });
-      AppMethodBeat.o(186335);
-      return;
-    }
+    AppMethodBeat.i(51655);
+    this.yEN = new ai();
+    AppMethodBeat.o(51655);
   }
   
-  public final List<a.a> fw(List<? extends a.a> paramList)
+  private static ai.a f(XmlPullParser paramXmlPullParser)
   {
-    boolean bool2 = true;
-    AppMethodBeat.i(186334);
-    p.h(paramList, "codeResultList");
-    if (paramList.size() <= 1)
-    {
-      AppMethodBeat.o(186334);
-      return paramList;
-    }
-    List localList2 = (List)new ArrayList();
-    List localList1 = (List)new ArrayList();
-    Object localObject = ((Iterable)paramList).iterator();
-    int i = 0;
-    while (((Iterator)localObject).hasNext())
-    {
-      a.a locala = (a.a)((Iterator)localObject).next();
-      if (com.tencent.qbar.b.aZd(locala.data))
-      {
-        i += 1;
-      }
-      else
-      {
-        localList2.add(locala);
-        if (com.tencent.qbar.b.aZc(locala.data)) {
-          localList1.add(locala);
-        }
-      }
-    }
-    int j;
-    int k;
-    int m;
-    int n;
-    boolean bool1;
-    if ((i != paramList.size()) && (localList1.size() == 1)) {
-      if (i == paramList.size() - localList1.size())
-      {
-        localObject = localList1;
-        j = localList1.size();
-        k = localList2.size();
-        m = paramList.size();
-        n = ((List)localObject).size();
-        if (((List)localObject).size() != 1) {
-          break label360;
-        }
-        bool1 = true;
-        label233:
-        if (((List)localObject).size() != paramList.size()) {
-          break label366;
-        }
-      }
-    }
-    for (;;)
-    {
-      ad.i("MicroMsg.WxScanCodeResultFilter", "alvinluo filter badCodeNum: %d, whiteCodeNum: %d, commonCodeNum: %d, originNum: %d, finalNum: %d, directJump: %b, showMultiCode: %b", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m), Integer.valueOf(n), Boolean.valueOf(bool1), Boolean.valueOf(bool2) });
-      AppMethodBeat.o(186334);
-      return localObject;
-      if (i == 0)
-      {
-        if (this.yoS)
-        {
-          localObject = localList1;
-          break;
-        }
-        localObject = paramList;
-        break;
-      }
-      localObject = paramList;
-      break;
-      localObject = paramList;
-      break;
-      label360:
-      bool1 = false;
-      break label233;
-      label366:
-      bool2 = false;
-    }
+    AppMethodBeat.i(51657);
+    paramXmlPullParser = new ai.a(paramXmlPullParser.getAttributeValue(null, "postOfficeBox"), paramXmlPullParser.getAttributeValue(null, "extendedAddress"), paramXmlPullParser.getAttributeValue(null, "street"), paramXmlPullParser.getAttributeValue(null, "locality"), paramXmlPullParser.getAttributeValue(null, "region"), paramXmlPullParser.getAttributeValue(null, "postalCode"), paramXmlPullParser.getAttributeValue(null, "country"));
+    AppMethodBeat.o(51657);
+    return paramXmlPullParser;
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/scanner/model/WxScanCodeResultFilter$Companion;", "", "()V", "TAG", "", "plugin-scan_release"})
-  public static final class a {}
+  private static ai.c g(XmlPullParser paramXmlPullParser)
+  {
+    AppMethodBeat.i(51658);
+    paramXmlPullParser = new ai.c(paramXmlPullParser.getAttributeValue(null, "type"), paramXmlPullParser.getAttributeValue(null, "buffer"));
+    AppMethodBeat.o(51658);
+    return paramXmlPullParser;
+  }
+  
+  public final void aya(String paramString)
+  {
+    AppMethodBeat.i(51656);
+    Object localObject = XmlPullParserFactory.newInstance();
+    ((XmlPullParserFactory)localObject).setNamespaceAware(true);
+    XmlPullParser localXmlPullParser = ((XmlPullParserFactory)localObject).newPullParser();
+    localXmlPullParser.setInput(new StringReader(paramString));
+    int i = localXmlPullParser.getEventType();
+    localObject = "";
+    if (i != 1)
+    {
+      paramString = (String)localObject;
+      switch (i)
+      {
+      default: 
+        paramString = (String)localObject;
+      }
+      for (;;)
+      {
+        i = localXmlPullParser.next();
+        localObject = paramString;
+        break;
+        localObject = localXmlPullParser.getName();
+        if (((String)localObject).equals("name"))
+        {
+          this.yEN.yEw = new ai.b(localXmlPullParser.getAttributeValue(null, "firstName"), localXmlPullParser.getAttributeValue(null, "middleName"), localXmlPullParser.getAttributeValue(null, "lastName"));
+          paramString = (String)localObject;
+        }
+        else if (((String)localObject).equals("address"))
+        {
+          this.yEN.yEB = f(localXmlPullParser);
+          paramString = (String)localObject;
+        }
+        else if (((String)localObject).equals("deliveryAddress"))
+        {
+          this.yEN.yEC = f(localXmlPullParser);
+          paramString = (String)localObject;
+        }
+        else if (((String)localObject).equals("homeAddress"))
+        {
+          this.yEN.yED = f(localXmlPullParser);
+          paramString = (String)localObject;
+        }
+        else if (((String)localObject).equals("workAddress"))
+        {
+          this.yEN.yEE = f(localXmlPullParser);
+          paramString = (String)localObject;
+        }
+        else if (((String)localObject).equals("photo"))
+        {
+          this.yEN.yEx = g(localXmlPullParser);
+          paramString = (String)localObject;
+        }
+        else if (((String)localObject).equals("logo"))
+        {
+          this.yEN.yEy = g(localXmlPullParser);
+          paramString = (String)localObject;
+        }
+        else
+        {
+          paramString = (String)localObject;
+          if (((String)localObject).equals("sound"))
+          {
+            this.yEN.yEz = g(localXmlPullParser);
+            paramString = (String)localObject;
+            continue;
+            String str = localXmlPullParser.getText();
+            paramString = (String)localObject;
+            if (str != null)
+            {
+              paramString = (String)localObject;
+              if (str.trim().length() > 0)
+              {
+                str = str.trim();
+                if (((String)localObject).equals("nickName"))
+                {
+                  this.yEN.bVF = str;
+                  paramString = (String)localObject;
+                }
+                else if (((String)localObject).equals("photoUrl"))
+                {
+                  this.yEN.kML = str;
+                  paramString = (String)localObject;
+                }
+                else if (((String)localObject).equals("birthday"))
+                {
+                  this.yEN.yEA = str;
+                  paramString = (String)localObject;
+                }
+                else
+                {
+                  ai localai;
+                  if (((String)localObject).equals("mobilePhoneNumber"))
+                  {
+                    localai = this.yEN;
+                    if (localai.yEF == null) {
+                      localai.yEF = new ArrayList();
+                    }
+                    paramString = (String)localObject;
+                    if (str != null)
+                    {
+                      paramString = (String)localObject;
+                      if (!localai.yEF.contains(str))
+                      {
+                        localai.yEF.add(str);
+                        paramString = (String)localObject;
+                      }
+                    }
+                  }
+                  else if (((String)localObject).equals("homePhoneNumber"))
+                  {
+                    localai = this.yEN;
+                    if (localai.yEG == null) {
+                      localai.yEG = new ArrayList();
+                    }
+                    paramString = (String)localObject;
+                    if (str != null)
+                    {
+                      paramString = (String)localObject;
+                      if (!localai.yEG.contains(str))
+                      {
+                        localai.yEG.add(str);
+                        paramString = (String)localObject;
+                      }
+                    }
+                  }
+                  else if (((String)localObject).equals("workPhoneNumber"))
+                  {
+                    localai = this.yEN;
+                    if (localai.yEH == null) {
+                      localai.yEH = new ArrayList();
+                    }
+                    paramString = (String)localObject;
+                    if (str != null)
+                    {
+                      paramString = (String)localObject;
+                      if (!localai.yEH.contains(str))
+                      {
+                        localai.yEH.add(str);
+                        paramString = (String)localObject;
+                      }
+                    }
+                  }
+                  else if (((String)localObject).equals("telAVPhoneNumber"))
+                  {
+                    localai = this.yEN;
+                    if (localai.yEI == null) {
+                      localai.yEI = new ArrayList();
+                    }
+                    paramString = (String)localObject;
+                    if (str != null)
+                    {
+                      paramString = (String)localObject;
+                      if (!localai.yEI.contains(str))
+                      {
+                        localai.yEI.add(str);
+                        paramString = (String)localObject;
+                      }
+                    }
+                  }
+                  else if (((String)localObject).equals("phoneNumber"))
+                  {
+                    localai = this.yEN;
+                    if (localai.yEJ == null) {
+                      localai.yEJ = new ArrayList();
+                    }
+                    paramString = (String)localObject;
+                    if (str != null)
+                    {
+                      paramString = (String)localObject;
+                      if (!localai.yEJ.contains(str))
+                      {
+                        localai.yEJ.add(str);
+                        paramString = (String)localObject;
+                      }
+                    }
+                  }
+                  else if (((String)localObject).equals("email"))
+                  {
+                    this.yEN.eQY = str;
+                    paramString = (String)localObject;
+                  }
+                  else if (((String)localObject).equals("title"))
+                  {
+                    this.yEN.title = str;
+                    paramString = (String)localObject;
+                  }
+                  else if (((String)localObject).equals("role"))
+                  {
+                    this.yEN.yEK = str;
+                    paramString = (String)localObject;
+                  }
+                  else if (((String)localObject).equals("agent"))
+                  {
+                    this.yEN.yEL = str;
+                    paramString = (String)localObject;
+                  }
+                  else if (((String)localObject).equals("note"))
+                  {
+                    this.yEN.yEM = str;
+                    paramString = (String)localObject;
+                  }
+                  else if (((String)localObject).equals("url"))
+                  {
+                    this.yEN.url = str;
+                    paramString = (String)localObject;
+                  }
+                  else
+                  {
+                    paramString = (String)localObject;
+                    if (((String)localObject).equals("organization"))
+                    {
+                      this.yEN.kMT = str;
+                      paramString = (String)localObject;
+                      continue;
+                      ai.yEN = this.yEN;
+                      paramString = (String)localObject;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    ai.yEN = this.yEN;
+    AppMethodBeat.o(51656);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.model.aj
  * JD-Core Version:    0.7.0.1
  */

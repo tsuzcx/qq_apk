@@ -5,23 +5,23 @@ import android.os.Parcelable.Creator;
 import com.tencent.e.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.appbrand.appstorage.l;
-import com.tencent.mm.plugin.appbrand.appstorage.p;
+import com.tencent.mm.plugin.appbrand.appstorage.m;
+import com.tencent.mm.plugin.appbrand.appstorage.q;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
-import com.tencent.mm.plugin.appbrand.q;
+import com.tencent.mm.plugin.appbrand.r;
 import com.tencent.mm.plugin.finder.PluginFinder;
 import com.tencent.mm.plugin.finder.storage.FinderItem;
 import com.tencent.mm.protocal.protobuf.FinderObject;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.vfs.e;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.vfs.k;
 import java.util.Iterator;
 import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 public final class JsApiFetchSendingAndFailProfileFeed
-  extends com.tencent.mm.plugin.appbrand.jsapi.a<q>
+  extends com.tencent.mm.plugin.appbrand.jsapi.a<r>
 {
   public static final int CTRL_INDEX = -2;
   public static final String NAME = "fetchSendingAndFailProfileFeed";
@@ -30,9 +30,9 @@ public final class JsApiFetchSendingAndFailProfileFeed
     extends MainProcessTask
   {
     public static final Parcelable.Creator<FetchSendingAndFailProfileFeedTask> CREATOR;
-    private q jCl;
-    private String kNo;
-    private int kje;
+    private r jFj;
+    private String kQL;
+    private int kmu;
     
     static
     {
@@ -41,10 +41,10 @@ public final class JsApiFetchSendingAndFailProfileFeed
       AppMethodBeat.o(163937);
     }
     
-    public FetchSendingAndFailProfileFeedTask(int paramInt, q paramq)
+    public FetchSendingAndFailProfileFeedTask(int paramInt, r paramr)
     {
-      this.kje = paramInt;
-      this.jCl = paramq;
+      this.kmu = paramInt;
+      this.jFj = paramr;
     }
     
     public FetchSendingAndFailProfileFeedTask(Parcel paramParcel)
@@ -54,15 +54,15 @@ public final class JsApiFetchSendingAndFailProfileFeed
       AppMethodBeat.o(163931);
     }
     
-    public final void aOA()
+    public final void aOX()
     {
       AppMethodBeat.i(163934);
-      h.LTJ.f(new Runnable()
+      h.MqF.f(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(163930);
-          Object localObject = ((PluginFinder)g.ad(PluginFinder.class)).getFeedStorage().cIt();
+          Object localObject = ((PluginFinder)g.ad(PluginFinder.class)).getFeedStorage().cKY();
           JSONArray localJSONArray = new JSONArray();
           localObject = ((List)localObject).iterator();
           while (((Iterator)localObject).hasNext())
@@ -87,12 +87,12 @@ public final class JsApiFetchSendingAndFailProfileFeed
       AppMethodBeat.o(163934);
     }
     
-    public final void aOB()
+    public final void aOY()
     {
       AppMethodBeat.i(163935);
       try
       {
-        localJSONObject1 = new JSONObject(this.kNo);
+        localJSONObject1 = new JSONObject(this.kQL);
         localJSONArray = localJSONObject1.optJSONArray("data");
         if (localJSONArray == null) {
           break label269;
@@ -111,9 +111,9 @@ public final class JsApiFetchSendingAndFailProfileFeed
           JSONObject localJSONObject2;
           Object localObject2;
           String str;
-          com.tencent.mm.plugin.appbrand.z.i locali;
+          com.tencent.mm.plugin.appbrand.y.i locali;
           label269:
-          this.kNo = a.a(localException.getMessage(), -1, new JSONArray());
+          this.kQL = a.a(localException.getMessage(), -1, new JSONArray());
           continue;
           j += 1;
           continue;
@@ -143,28 +143,28 @@ public final class JsApiFetchSendingAndFailProfileFeed
         {
           localObject2 = localJSONObject2.optString("url");
           str = localJSONObject2.optString("thumbUrl");
-          if ((!bt.isNullOrNil((String)localObject2)) && (!((String)localObject2).startsWith("http")))
+          if ((!bu.isNullOrNil((String)localObject2)) && (!((String)localObject2).startsWith("http")))
           {
-            locali = new com.tencent.mm.plugin.appbrand.z.i();
-            if (this.jCl.Fg().a(new e((String)localObject2), null, false, locali) == l.jMv) {
+            locali = new com.tencent.mm.plugin.appbrand.y.i();
+            if (this.jFj.Fl().a(new k((String)localObject2), null, false, locali) == m.jPM) {
               localJSONObject2.put("url", locali.value);
             }
           }
-          if ((!bt.isNullOrNil(str)) && (!str.startsWith("http")))
+          if ((!bu.isNullOrNil(str)) && (!str.startsWith("http")))
           {
-            localObject2 = new com.tencent.mm.plugin.appbrand.z.i();
-            if (this.jCl.Fg().a(new e(str), null, false, (com.tencent.mm.plugin.appbrand.z.i)localObject2) == l.jMv) {
-              localJSONObject2.put("thumbUrl", ((com.tencent.mm.plugin.appbrand.z.i)localObject2).value);
+            localObject2 = new com.tencent.mm.plugin.appbrand.y.i();
+            if (this.jFj.Fl().a(new k(str), null, false, (com.tencent.mm.plugin.appbrand.y.i)localObject2) == m.jPM) {
+              localJSONObject2.put("thumbUrl", ((com.tencent.mm.plugin.appbrand.y.i)localObject2).value);
             }
           }
         }
       }
       else
       {
-        this.kNo = localJSONObject1.toString();
-        ad.i("MicroMsg.Finder.JsApiFetchSendingAndFailProfileFeed", "runInClientProcess callback, appId[%s], msg[%s], callbackId[%d], isRunning[%b]", new Object[] { this.jCl.getAppId(), this.kNo, Integer.valueOf(this.kje), Boolean.valueOf(this.jCl.isRunning()) });
-        this.jCl.h(this.kje, this.kNo);
-        bhO();
+        this.kQL = localJSONObject1.toString();
+        ae.i("MicroMsg.Finder.JsApiFetchSendingAndFailProfileFeed", "runInClientProcess callback, appId[%s], msg[%s], callbackId[%d], isRunning[%b]", new Object[] { this.jFj.getAppId(), this.kQL, Integer.valueOf(this.kmu), Boolean.valueOf(this.jFj.isRunning()) });
+        this.jFj.h(this.kmu, this.kQL);
+        bix();
         AppMethodBeat.o(163935);
         return;
       }
@@ -173,14 +173,14 @@ public final class JsApiFetchSendingAndFailProfileFeed
     public final void e(Parcel paramParcel)
     {
       AppMethodBeat.i(163932);
-      this.kNo = paramParcel.readString();
+      this.kQL = paramParcel.readString();
       AppMethodBeat.o(163932);
     }
     
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
       AppMethodBeat.i(163933);
-      paramParcel.writeString(this.kNo);
+      paramParcel.writeString(this.kQL);
       AppMethodBeat.o(163933);
     }
   }

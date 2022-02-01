@@ -1,38 +1,38 @@
 package com.tencent.mm.pluginsdk.ui.applet;
 
-import com.tencent.mm.aw.a.d.b;
+import com.tencent.mm.av.a.d.b;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/pluginsdk/ui/applet/BizImageHttpUrlConnectionListener;", "", "onAfterCloseStream", "", "onAfterGetResponseCode", "onAfterOpenConnection", "connection", "Ljava/net/HttpURLConnection;", "onAfterReadStreamData", "onBeforeCloseStream", "onBeforeGetResponseCode", "onBeforeOpenConnection", "onBeforeReadStreamData", "onDisconnect", "onRequest", "imageType", "", "forceNormal", "", "onResultError", "responseCode", "onResultSuccess", "response", "Lcom/tencent/mm/modelimage/loader/model/Response;", "onRetry", "onStart", "key", "", "requestUrl", "plugin-biz_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/pluginsdk/ui/applet/BizImageHttpUrlConnectionListener;", "", "onAfterCloseStream", "", "onAfterGetResponseCode", "onAfterOpenConnection", "connection", "Ljava/net/HttpURLConnection;", "onAfterReadStreamData", "onBeforeCloseStream", "onBeforeGetResponseCode", "onBeforeOpenConnection", "onBeforeReadStreamData", "onDisconnect", "onRequest", "imageType", "", "forceNormal", "", "onResultError", "responseCode", "onResultSuccess", "response", "Lcom/tencent/mm/modelimage/loader/model/Response;", "onRetry", "onStart", "key", "", "requestUrl", "plugin-biz_release"})
 public abstract interface j
 {
-  public abstract void YQ(int paramInt);
-  
-  public abstract void aZ(int paramInt, boolean paramBoolean);
+  public abstract void Zw(int paramInt);
   
   public abstract void b(b paramb);
   
-  public abstract void ef(String paramString1, String paramString2);
+  public abstract void bf(int paramInt, boolean paramBoolean);
   
-  public abstract void fcn();
+  public abstract void eh(String paramString1, String paramString2);
   
-  public abstract void fco();
+  public abstract void fgb();
   
-  public abstract void fcp();
+  public abstract void fgc();
   
-  public abstract void fcq();
+  public abstract void fgd();
   
-  public abstract void fcr();
+  public abstract void fge();
   
-  public abstract void fcs();
+  public abstract void fgf();
   
-  public abstract void fct();
+  public abstract void fgg();
   
-  public abstract void fcu();
+  public abstract void fgh();
   
-  public abstract void fcv();
+  public abstract void fgi();
   
-  public abstract void fcw();
+  public abstract void fgj();
+  
+  public abstract void fgk();
 }
 
 

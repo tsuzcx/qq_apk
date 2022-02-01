@@ -10,57 +10,57 @@ import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.view.ViewGroup.MarginLayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cc.a;
+import com.tencent.mm.cb.a;
 import com.tencent.mm.plugin.recordvideo.plugin.parent.d;
 import com.tencent.mm.plugin.recordvideo.plugin.parent.d.b;
 import com.tencent.mm.plugin.recordvideo.plugin.parent.d.c;
 import com.tencent.mm.plugin.recordvideo.plugin.t;
 import com.tencent.mm.plugin.recordvideo.plugin.t.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.ui.widget.InsectRelativeLayout;
 import d.g.b.p;
 import d.l;
 import d.v;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/vlog/ui/plugin/TemplateNormalModeSelectPlugin;", "Lcom/tencent/mm/plugin/recordvideo/plugin/IBaseRecordPlugin;", "parent", "Landroid/view/ViewGroup;", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "(Landroid/view/ViewGroup;Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "containerLayout", "Lcom/tencent/mm/ui/widget/InsectRelativeLayout;", "getParent", "()Landroid/view/ViewGroup;", "setParent", "(Landroid/view/ViewGroup;)V", "getStatus", "()Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "setStatus", "(Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "tabLayout", "Landroid/support/design/widget/TabLayout;", "isInTemplateMode", "", "selectNormalMode", "", "selectTemplateMode", "setShowContainer", "show", "setVisibility", "visibility", "", "Companion", "plugin-vlog_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/vlog/ui/plugin/TemplateNormalModeSelectPlugin;", "Lcom/tencent/mm/plugin/recordvideo/plugin/IBaseRecordPlugin;", "parent", "Landroid/view/ViewGroup;", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "(Landroid/view/ViewGroup;Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "containerLayout", "Lcom/tencent/mm/ui/widget/InsectRelativeLayout;", "getParent", "()Landroid/view/ViewGroup;", "setParent", "(Landroid/view/ViewGroup;)V", "getStatus", "()Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "setStatus", "(Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "tabLayout", "Landroid/support/design/widget/TabLayout;", "isInTemplateMode", "", "selectNormalMode", "", "selectTemplateMode", "setShowContainer", "show", "setVisibility", "visibility", "", "Companion", "plugin-vlog_release"})
 public final class y
   implements t
 {
-  public static final y.a BOg;
-  private final InsectRelativeLayout BOe;
-  public final TabLayout BOf;
-  private ViewGroup gqv;
-  public d sQE;
+  public static final y.a CfF;
+  private final InsectRelativeLayout CfD;
+  public final TabLayout CfE;
+  private ViewGroup gsV;
+  public d tbP;
   
   static
   {
-    AppMethodBeat.i(196348);
-    BOg = new y.a((byte)0);
-    AppMethodBeat.o(196348);
+    AppMethodBeat.i(191807);
+    CfF = new y.a((byte)0);
+    AppMethodBeat.o(191807);
   }
   
   public y(ViewGroup paramViewGroup, d paramd)
   {
-    AppMethodBeat.i(196347);
-    this.gqv = paramViewGroup;
-    this.sQE = paramd;
-    paramViewGroup = this.gqv.findViewById(2131308441);
+    AppMethodBeat.i(191806);
+    this.gsV = paramViewGroup;
+    this.tbP = paramd;
+    paramViewGroup = this.gsV.findViewById(2131308441);
     p.g(paramViewGroup, "parent.findViewById(R.id…al_mode_switch_container)");
-    this.BOe = ((InsectRelativeLayout)paramViewGroup);
-    paramViewGroup = this.gqv.findViewById(2131308442);
+    this.CfD = ((InsectRelativeLayout)paramViewGroup);
+    paramViewGroup = this.gsV.findViewById(2131308442);
     p.g(paramViewGroup, "parent.findViewById(R.id…ate_normal_mode_switcher)");
-    this.BOf = ((TabLayout)paramViewGroup);
-    ad.i("MicroMsg.TemplateNormalModeSelectPlugin", "init tabLayout.tabCount:" + this.BOf.getTabCount());
-    this.BOe.setDiscardKeyboard(true);
-    int j = this.BOf.getTabCount();
+    this.CfE = ((TabLayout)paramViewGroup);
+    ae.i("MicroMsg.TemplateNormalModeSelectPlugin", "init tabLayout.tabCount:" + this.CfE.getTabCount());
+    this.CfD.setDiscardKeyboard(true);
+    int j = this.CfE.getTabCount();
     int i = 0;
     while (i < j - 1)
     {
-      paramViewGroup = this.BOf.getChildAt(0);
+      paramViewGroup = this.CfE.getChildAt(0);
       if (paramViewGroup == null)
       {
         paramViewGroup = new v("null cannot be cast to non-null type android.view.ViewGroup");
-        AppMethodBeat.o(196347);
+        AppMethodBeat.o(191806);
         throw paramViewGroup;
       }
       paramViewGroup = ((ViewGroup)paramViewGroup).getChildAt(i);
@@ -69,53 +69,53 @@ public final class y
       if (paramd == null)
       {
         paramViewGroup = new v("null cannot be cast to non-null type android.view.ViewGroup.MarginLayoutParams");
-        AppMethodBeat.o(196347);
+        AppMethodBeat.o(191806);
         throw paramViewGroup;
       }
       paramd = (ViewGroup.MarginLayoutParams)paramd;
-      paramd.setMarginEnd(a.ax(this.gqv.getContext(), 2131165294));
+      paramd.setMarginEnd(a.ax(this.gsV.getContext(), 2131165294));
       paramViewGroup.setLayoutParams((ViewGroup.LayoutParams)paramd);
       i += 1;
     }
-    this.BOf.a((TabLayout.b)new TabLayout.c()
+    this.CfE.a((TabLayout.b)new TabLayout.c()
     {
       public final void f(TabLayout.f paramAnonymousf)
       {
-        AppMethodBeat.i(196344);
+        AppMethodBeat.i(191803);
         if (paramAnonymousf != null)
         {
           if (paramAnonymousf.getPosition() == 1)
           {
-            ad.i("MicroMsg.TemplateNormalModeSelectPlugin", "onSelect template mode");
-            d.b.a(this.BOh.sQE, d.c.xGm);
-            AppMethodBeat.o(196344);
+            ae.i("MicroMsg.TemplateNormalModeSelectPlugin", "onSelect template mode");
+            d.b.a(this.CfG.tbP, d.c.xWh);
+            AppMethodBeat.o(191803);
             return;
           }
           if (paramAnonymousf.getPosition() == 0)
           {
-            ad.i("MicroMsg.TemplateNormalModeSelectPlugin", "onSelect normal mode");
-            d.b.a(this.BOh.sQE, d.c.xGn);
+            ae.i("MicroMsg.TemplateNormalModeSelectPlugin", "onSelect normal mode");
+            d.b.a(this.CfG.tbP, d.c.xWi);
           }
-          AppMethodBeat.o(196344);
+          AppMethodBeat.o(191803);
           return;
         }
-        AppMethodBeat.o(196344);
+        AppMethodBeat.o(191803);
       }
       
       public final void g(TabLayout.f paramAnonymousf) {}
       
       public final void h(TabLayout.f paramAnonymousf) {}
     });
-    sV(false);
-    AppMethodBeat.o(196347);
+    tc(false);
+    AppMethodBeat.o(191806);
   }
   
-  public final boolean aoB()
+  public final boolean aoQ()
   {
     return false;
   }
   
-  public final void ayX() {}
+  public final void azm() {}
   
   public final String name()
   {
@@ -130,11 +130,11 @@ public final class y
   
   public final void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    AppMethodBeat.i(196349);
+    AppMethodBeat.i(191808);
     p.h(paramArrayOfString, "permissions");
     p.h(paramArrayOfInt, "grantResults");
     t.a.a(paramArrayOfString, paramArrayOfInt);
-    AppMethodBeat.o(196349);
+    AppMethodBeat.o(191808);
   }
   
   public final void onResume() {}
@@ -143,24 +143,24 @@ public final class y
   
   public final void reset() {}
   
-  public final void sV(boolean paramBoolean)
+  public final void setVisibility(int paramInt)
   {
-    AppMethodBeat.i(196345);
-    InsectRelativeLayout localInsectRelativeLayout = this.BOe;
+    AppMethodBeat.i(191805);
+    this.CfE.setVisibility(paramInt);
+    AppMethodBeat.o(191805);
+  }
+  
+  public final void tc(boolean paramBoolean)
+  {
+    AppMethodBeat.i(191804);
+    InsectRelativeLayout localInsectRelativeLayout = this.CfD;
     if (paramBoolean) {}
     for (int i = 0;; i = 8)
     {
       localInsectRelativeLayout.setVisibility(i);
-      AppMethodBeat.o(196345);
+      AppMethodBeat.o(191804);
       return;
     }
-  }
-  
-  public final void setVisibility(int paramInt)
-  {
-    AppMethodBeat.i(196346);
-    this.BOf.setVisibility(paramInt);
-    AppMethodBeat.o(196346);
   }
 }
 

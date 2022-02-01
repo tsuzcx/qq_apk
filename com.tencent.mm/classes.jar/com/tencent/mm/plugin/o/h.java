@@ -2,73 +2,73 @@ package com.tencent.mm.plugin.o;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public final class h
 {
   public long bdJ = 0L;
   private int businessType;
-  public long dOX = 0L;
-  private boolean fMP;
-  public boolean pUP = true;
-  public boolean pUQ = false;
-  public long vLl = 0L;
-  public long vLm = -1L;
-  public long vLn = 0L;
-  public long vLo = 0L;
-  public long vLp = 0L;
-  public long vLq = 10L;
-  public boolean vLr = true;
-  public boolean vLs = false;
-  boolean vLt = false;
-  boolean vLu = false;
+  public long dQn = 0L;
+  private boolean fOX;
+  public boolean qbu = true;
+  public boolean qbv = false;
+  public long vXp = 0L;
+  public long vXq = -1L;
+  public long vXr = 0L;
+  public long vXs = 0L;
+  public long vXt = 0L;
+  public long vXu = 10L;
+  public boolean vXv = true;
+  public boolean vXw = false;
+  boolean vXx = false;
+  boolean vXy = false;
   
   public h(boolean paramBoolean, int paramInt)
   {
-    this.fMP = paramBoolean;
+    this.fOX = paramBoolean;
     this.businessType = paramInt;
   }
   
-  public final void aqH(String paramString)
+  public final void arM(String paramString)
   {
     AppMethodBeat.i(133911);
-    if (!this.vLr)
+    if (!this.vXv)
     {
       AppMethodBeat.o(133911);
       return;
     }
-    g.yhR.idkeyStat(dmu(), 152L, 1L, false);
-    g.yhR.f(dmt(), new Object[] { Integer.valueOf(500), Long.valueOf(bt.aQJ()), paramString });
+    g.yxI.idkeyStat(dps(), 152L, 1L, false);
+    g.yxI.f(dpr(), new Object[] { Integer.valueOf(500), Long.valueOf(bu.aRi()), paramString });
     AppMethodBeat.o(133911);
   }
   
-  public final void aqI(String paramString)
+  public final void arN(String paramString)
   {
     AppMethodBeat.i(133912);
-    if (!this.vLr)
+    if (!this.vXv)
     {
       AppMethodBeat.o(133912);
       return;
     }
-    g.yhR.idkeyStat(dmu(), 153L, 1L, false);
-    g.yhR.f(dmt(), new Object[] { Integer.valueOf(501), Long.valueOf(bt.aQJ()), paramString });
+    g.yxI.idkeyStat(dps(), 153L, 1L, false);
+    g.yxI.f(dpr(), new Object[] { Integer.valueOf(501), Long.valueOf(bu.aRi()), paramString });
     AppMethodBeat.o(133912);
   }
   
-  public final void dms()
+  public final void dpq()
   {
     AppMethodBeat.i(133913);
-    if (!this.vLr)
+    if (!this.vXv)
     {
       AppMethodBeat.o(133913);
       return;
     }
-    g.yhR.idkeyStat(dmu(), 155L, 1L, false);
-    g.yhR.f(dmt(), new Object[] { Integer.valueOf(503), Long.valueOf(bt.aQJ()), "" });
+    g.yxI.idkeyStat(dps(), 155L, 1L, false);
+    g.yxI.f(dpr(), new Object[] { Integer.valueOf(503), Long.valueOf(bu.aRi()), "" });
     AppMethodBeat.o(133913);
   }
   
-  public final int dmt()
+  public final int dpr()
   {
     if (this.businessType == 1) {
       return 20439;
@@ -76,7 +76,7 @@ public final class h
     return 13836;
   }
   
-  public final int dmu()
+  public final int dps()
   {
     if (this.businessType == 1) {
       return 1427;

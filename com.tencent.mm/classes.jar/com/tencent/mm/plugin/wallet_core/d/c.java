@@ -31,7 +31,7 @@ public final class c
     AppMethodBeat.o(70591);
   }
   
-  public final boolean VC(int paramInt)
+  public final boolean Wj(int paramInt)
   {
     AppMethodBeat.i(70595);
     String str = "delete from WalletBankcardScene where scene=".concat(String.valueOf(paramInt));
@@ -56,7 +56,7 @@ public final class c
     return false;
   }
   
-  public final boolean aSJ()
+  public final boolean aTi()
   {
     AppMethodBeat.i(70594);
     boolean bool = this.db.execSQL("WalletBankcardScene", "delete from WalletBankcardScene");
@@ -64,7 +64,7 @@ public final class c
     return bool;
   }
   
-  public final boolean cY(List<BankcardScene> paramList)
+  public final boolean gV(List<BankcardScene> paramList)
   {
     AppMethodBeat.i(70592);
     paramList = paramList.iterator();
@@ -81,7 +81,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.d.c
  * JD-Core Version:    0.7.0.1
  */

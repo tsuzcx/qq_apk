@@ -9,25 +9,25 @@ import java.util.HashMap;
 import java.util.Map;
 import org.json.JSONObject;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiAppBindGroup;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandAsyncJsApi;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "()V", "invoke", "", "env", "data", "Lorg/json/JSONObject;", "callbackId", "", "Companion", "plugin-appbrand-integration_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiAppBindGroup;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandAsyncJsApi;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "()V", "invoke", "", "env", "data", "Lorg/json/JSONObject;", "callbackId", "", "Companion", "plugin-appbrand-integration_release"})
 public final class aj
   extends a<c>
 {
   public static final int CTRL_INDEX = 875;
   public static final String NAME = "bindGroup";
-  public static final a krs;
+  public static final a kuI;
   
   static
   {
-    AppMethodBeat.i(189056);
-    krs = new a((byte)0);
-    AppMethodBeat.o(189056);
+    AppMethodBeat.i(223315);
+    kuI = new a((byte)0);
+    AppMethodBeat.o(223315);
   }
   
   public final void a(final c paramc, JSONObject paramJSONObject, final int paramInt)
   {
     String str3 = null;
-    AppMethodBeat.i(189055);
+    AppMethodBeat.i(223314);
     String str1;
     Object localObject;
     int i;
@@ -46,8 +46,8 @@ public final class aj
       {
         if (paramc != null)
         {
-          paramc.h(paramInt, Pg("fail:appId is null"));
-          AppMethodBeat.o(189055);
+          paramc.h(paramInt, PO("fail:appId is null"));
+          AppMethodBeat.o(223314);
           return;
           str1 = null;
           break;
@@ -55,7 +55,7 @@ public final class aj
           i = 0;
           continue;
         }
-        AppMethodBeat.o(189055);
+        AppMethodBeat.o(223314);
         return;
       }
     }
@@ -75,20 +75,20 @@ public final class aj
       paramJSONObject = new c.b();
       paramJSONObject.appId = str1;
       paramJSONObject.signature = ((String)localObject);
-      paramJSONObject.vJO = str2;
-      paramJSONObject.vJP = str3;
+      paramJSONObject.vVS = str2;
+      paramJSONObject.vVT = str3;
       ((com.tencent.mm.plugin.messenger.foundation.a.c)g.ab(com.tencent.mm.plugin.messenger.foundation.a.c.class)).a(paramc.getContext(), paramJSONObject, (c.a)new b(this, paramc, paramInt));
-      AppMethodBeat.o(189055);
+      AppMethodBeat.o(223314);
       return;
       localObject = null;
       break;
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiAppBindGroup$Companion;", "", "()V", "CTRL_INDEX", "", "NAME", "", "TAG", "plugin-appbrand-integration_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiAppBindGroup$Companion;", "", "()V", "CTRL_INDEX", "", "NAME", "", "TAG", "plugin-appbrand-integration_release"})
   public static final class a {}
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "success", "", "errorMsg", "", "groupOpenId", "onDealEnd"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "success", "", "errorMsg", "", "groupOpenId", "onDealEnd"})
   static final class b
     implements c.a
   {
@@ -96,7 +96,7 @@ public final class aj
     
     public final void a(boolean paramBoolean, String paramString1, String paramString2)
     {
-      AppMethodBeat.i(189054);
+      AppMethodBeat.i(223313);
       if (paramBoolean)
       {
         paramString1 = (CharSequence)paramString2;
@@ -111,14 +111,14 @@ public final class aj
           paramString2 = paramc;
           if (paramString2 != null)
           {
-            paramString2.h(paramInt, this.krt.m("ok", (Map)paramString1));
-            AppMethodBeat.o(189054);
+            paramString2.h(paramInt, this.kuJ.n("ok", (Map)paramString1));
+            AppMethodBeat.o(223313);
             return;
             i = 0;
           }
           else
           {
-            AppMethodBeat.o(189054);
+            AppMethodBeat.o(223313);
             return;
           }
         }
@@ -126,11 +126,11 @@ public final class aj
       paramString1 = paramc;
       if (paramString1 != null)
       {
-        paramString1.h(paramInt, this.krt.Pg("fail"));
-        AppMethodBeat.o(189054);
+        paramString1.h(paramInt, this.kuJ.PO("fail"));
+        AppMethodBeat.o(223313);
         return;
       }
-      AppMethodBeat.o(189054);
+      AppMethodBeat.o(223313);
     }
   }
 }

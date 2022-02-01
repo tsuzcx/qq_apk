@@ -7,25 +7,25 @@ import com.tencent.mm.modelvideo.b;
 import com.tencent.mm.modelvideo.b.a;
 import com.tencent.mm.plugin.report.service.g;
 import com.tencent.mm.plugin.sns.model.AdLandingPagesProxy;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ar;
 
 public final class a
   implements b
 {
-  b.a pzN;
-  String tZz = "";
+  b.a pGr;
+  String ukB = "";
   
   public final void a(b.a parama)
   {
-    this.pzN = parama;
+    this.pGr = parama;
   }
   
-  public final void gj(String paramString)
+  public final void gp(String paramString)
   {
     AppMethodBeat.i(96963);
-    ad.i("MicroMsg.AdLandingOnlineVideoProxy", "%s, stop stream[%s]", new Object[] { Integer.valueOf(hashCode()), paramString });
-    if (this.tZz.equals(paramString)) {
+    ae.i("MicroMsg.AdLandingOnlineVideoProxy", "%s, stop stream[%s]", new Object[] { Integer.valueOf(hashCode()), paramString });
+    if (this.ukB.equals(paramString)) {
       AdLandingPagesProxy.getInstance().stopDownloadLandingPageVideo(paramString);
     }
     AppMethodBeat.o(96963);
@@ -34,8 +34,8 @@ public final class a
   public final boolean isVideoDataAvailable(String paramString, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(96965);
-    ad.i("MicroMsg.AdLandingOnlineVideoProxy", "%s, check video data available[%s, %s, %s]", new Object[] { Integer.valueOf(hashCode()), paramString, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    if (this.tZz.equals(paramString))
+    ae.i("MicroMsg.AdLandingOnlineVideoProxy", "%s, check video data available[%s, %s, %s]", new Object[] { Integer.valueOf(hashCode()), paramString, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    if (this.ukB.equals(paramString))
     {
       boolean bool = AdLandingPagesProxy.getInstance().isVideoDataAvailable(paramString, paramInt1, paramInt2);
       AppMethodBeat.o(96965);
@@ -48,8 +48,8 @@ public final class a
   public final void p(String paramString1, String paramString2, String paramString3)
   {
     AppMethodBeat.i(96962);
-    this.tZz = paramString1;
-    ad.i("MicroMsg.AdLandingOnlineVideoProxy", "%s start http stream[%s, %s, %s]", new Object[] { Integer.valueOf(hashCode()), paramString1, paramString3, paramString2 });
+    this.ukB = paramString1;
+    ae.i("MicroMsg.AdLandingOnlineVideoProxy", "%s start http stream[%s, %s, %s]", new Object[] { Integer.valueOf(hashCode()), paramString1, paramString3, paramString2 });
     AdLandingPagesProxy.getInstance().downloadLandingPageVideo(paramString1, paramString3, paramString2, new a((byte)0));
     AppMethodBeat.o(96962);
   }
@@ -57,8 +57,8 @@ public final class a
   public final void requestVideoData(String paramString, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(96964);
-    ad.d("MicroMsg.AdLandingOnlineVideoProxy", "%s, request video data[%s, %s, %s]", new Object[] { Integer.valueOf(hashCode()), paramString, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    if (this.tZz.equals(paramString)) {
+    ae.d("MicroMsg.AdLandingOnlineVideoProxy", "%s, request video data[%s, %s, %s]", new Object[] { Integer.valueOf(hashCode()), paramString, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    if (this.ukB.equals(paramString)) {
       AdLandingPagesProxy.getInstance().requestVideoData(paramString, paramInt1, paramInt2);
     }
     AppMethodBeat.o(96964);
@@ -72,14 +72,14 @@ public final class a
     public final void a(final String paramString, final int paramInt, d paramd)
     {
       AppMethodBeat.i(96961);
-      if ((a.this.pzN != null) && (a.this.tZz.equals(paramString))) {
-        aq.f(new Runnable()
+      if ((a.this.pGr != null) && (a.this.ukB.equals(paramString))) {
+        ar.f(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(96957);
-            g.yhR.dD(955, 31);
-            a.this.pzN.as(paramString, paramInt);
+            g.yxI.dD(955, 31);
+            a.this.pGr.at(paramString, paramInt);
             AppMethodBeat.o(96957);
           }
         });
@@ -89,32 +89,32 @@ public final class a
     
     public final void a(final String paramString1, final long paramLong1, long paramLong2, final String paramString2)
     {
-      AppMethodBeat.i(198092);
-      if ((a.this.pzN != null) && (a.this.tZz.equals(paramString1))) {
-        aq.f(new Runnable()
+      AppMethodBeat.i(219604);
+      if ((a.this.pGr != null) && (a.this.ukB.equals(paramString1))) {
+        ar.f(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(96954);
-            g.yhR.dD(955, 27);
-            a.this.pzN.sp(paramLong1);
+            g.yxI.dD(955, 27);
+            a.this.pGr.sC(paramLong1);
             AppMethodBeat.o(96954);
           }
         });
       }
-      AppMethodBeat.o(198092);
+      AppMethodBeat.o(219604);
     }
     
     public final void i(final String paramString, final long paramLong1, long paramLong2)
     {
       AppMethodBeat.i(96960);
-      if ((a.this.pzN != null) && (a.this.tZz.equals(paramString))) {
-        aq.f(new Runnable()
+      if ((a.this.pGr != null) && (a.this.ukB.equals(paramString))) {
+        ar.f(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(96956);
-            a.this.pzN.i(paramString, paramLong1, this.tYW);
+            a.this.pGr.i(paramString, paramLong1, this.ujY);
             AppMethodBeat.o(96956);
           }
         });
@@ -125,14 +125,14 @@ public final class a
     public final void onDataAvailable(final String paramString, final long paramLong1, long paramLong2)
     {
       AppMethodBeat.i(96959);
-      if ((a.this.pzN != null) && (a.this.tZz.equals(paramString))) {
-        aq.f(new Runnable()
+      if ((a.this.pGr != null) && (a.this.ukB.equals(paramString))) {
+        ar.f(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(96955);
-            g.yhR.dD(955, 29);
-            a.this.pzN.onDataAvailable(paramString, paramLong1, this.llK);
+            g.yxI.dD(955, 29);
+            a.this.pGr.onDataAvailable(paramString, paramLong1, this.lqk);
             AppMethodBeat.o(96955);
           }
         });

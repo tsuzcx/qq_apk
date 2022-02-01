@@ -6,7 +6,7 @@ import android.os.IInterface;
 public abstract interface b
   extends IInterface
 {
-  public abstract void q(Bundle paramBundle);
+  public abstract void r(Bundle paramBundle);
 }
 
 

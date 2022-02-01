@@ -70,7 +70,7 @@ public final class ar
   protected final void onConfigurationChanged(Configuration paramConfiguration)
   {
     super.onConfigurationChanged(paramConfiguration);
-    paramConfiguration = a.Z(getContext());
+    paramConfiguration = a.aa(getContext());
     TypedArray localTypedArray = paramConfiguration.mContext.obtainStyledAttributes(null, a.a.ActionBar, 2130968602, 0);
     int j = localTypedArray.getLayoutDimension(13, 0);
     Resources localResources = paramConfiguration.mContext.getResources();

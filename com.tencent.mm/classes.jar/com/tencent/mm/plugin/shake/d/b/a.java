@@ -12,6 +12,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.view.View;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.b.g;
 import com.tencent.mm.platformtools.s;
 import com.tencent.mm.platformtools.s.a;
 import com.tencent.mm.platformtools.s.b;
@@ -21,31 +22,32 @@ import com.tencent.mm.plugin.shake.d.a.i;
 import com.tencent.mm.plugin.shake.d.a.k;
 import com.tencent.mm.plugin.shake.e.b;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.h;
 import java.io.IOException;
 
 public final class a
   extends BitmapDrawable
   implements u.a
 {
-  private static final Paint hxL;
-  private static Bitmap yOf;
-  private int hdT;
-  private ImageView rCL;
+  private static final Paint hAz;
+  private static Bitmap zep;
+  private int hgH;
+  private ImageView rKW;
   private int type;
   private String username;
-  private String yOd;
-  private s yOe;
+  private String zen;
+  private s zeo;
   
   static
   {
     AppMethodBeat.i(28358);
     Paint localPaint = new Paint();
-    hxL = localPaint;
+    hAz = localPaint;
     localPaint.setAntiAlias(true);
-    hxL.setFilterBitmap(true);
+    hAz.setFilterBitmap(true);
     AppMethodBeat.o(28358);
   }
   
@@ -54,51 +56,51 @@ public final class a
     AppMethodBeat.i(28355);
     if (paramView == null)
     {
-      paramView = yOf;
+      paramView = zep;
       AppMethodBeat.o(28355);
       return paramView;
     }
     int i = paramView.getMeasuredWidth();
     int j = paramView.getMeasuredHeight();
-    if (((yOf != null) && (yOf.getWidth() == i)) || (paramInt > 0)) {}
+    if (((zep != null) && (zep.getWidth() == i)) || (paramInt > 0)) {}
     for (;;)
     {
       try
       {
-        yOf = com.tencent.mm.sdk.platformtools.g.A(paramView.getResources().getDrawable(paramInt));
-        if ((yOf.getWidth() != i) && (i > 0) && (j > 0)) {
-          yOf = Bitmap.createScaledBitmap(yOf, i, j, true);
+        zep = h.B(paramView.getResources().getDrawable(paramInt));
+        if ((zep.getWidth() != i) && (i > 0) && (j > 0)) {
+          zep = Bitmap.createScaledBitmap(zep, i, j, true);
         }
       }
       catch (IOException paramView)
       {
-        ad.printErrStackTrace("MicroMsg.ShakeAvatarDrawable", paramView, "", new Object[0]);
+        ae.printErrStackTrace("MicroMsg.ShakeAvatarDrawable", paramView, "", new Object[0]);
         continue;
       }
-      paramView = yOf;
+      paramView = zep;
       AppMethodBeat.o(28355);
       return paramView;
-      yOf = BackwardSupportUtil.b.b(aj.getContext().getAssets().open("avatar/default_nor_avatar.png"), com.tencent.mm.cc.a.getDensity(null));
+      zep = BackwardSupportUtil.b.b(ak.getContext().getAssets().open("avatar/default_nor_avatar.png"), com.tencent.mm.cb.a.getDensity(null));
     }
   }
   
-  public static String auC(String paramString)
+  public static String avR(String paramString)
   {
     AppMethodBeat.i(28357);
-    if (bt.isNullOrNil(paramString))
+    if (bu.isNullOrNil(paramString))
     {
-      ad.w("MicroMsg.ShakeAvatarDrawable", "getStoragePath: but url is null");
+      ae.w("MicroMsg.ShakeAvatarDrawable", "getStoragePath: but url is null");
       AppMethodBeat.o(28357);
       return null;
     }
-    String str = i.dPs();
-    if (bt.isNullOrNil(str))
+    String str = i.dSP();
+    if (bu.isNullOrNil(str))
     {
-      ad.w("MicroMsg.ShakeAvatarDrawable", "getStoragePath, but save dir is null");
+      ae.w("MicroMsg.ShakeAvatarDrawable", "getStoragePath, but save dir is null");
       AppMethodBeat.o(28357);
       return null;
     }
-    paramString = String.format("%s/%s", new Object[] { str, com.tencent.mm.b.g.getMessageDigest(paramString.getBytes()) });
+    paramString = String.format("%s/%s", new Object[] { str, g.getMessageDigest(paramString.getBytes()) });
     AppMethodBeat.o(28357);
     return paramString;
   }
@@ -106,8 +108,8 @@ public final class a
   public final void draw(Canvas paramCanvas)
   {
     AppMethodBeat.i(28354);
-    ad.i("MicroMsg.ShakeAvatarDrawable", "album username[%s], url[%s], type[%d], attr[%s]", new Object[] { this.username, this.yOd, Integer.valueOf(this.type), toString() });
-    if ((4 != this.type) && ((!k.Pq(this.type)) || (6 == this.type)))
+    ae.i("MicroMsg.ShakeAvatarDrawable", "album username[%s], url[%s], type[%d], attr[%s]", new Object[] { this.username, this.zen, Integer.valueOf(this.type), toString() });
+    if ((4 != this.type) && ((!k.PX(this.type)) || (6 == this.type)))
     {
       AppMethodBeat.o(28354);
       return;
@@ -116,8 +118,8 @@ public final class a
     Object localObject1;
     if (4 == this.type)
     {
-      this.yOe = new a(this.yOd);
-      localObject1 = u.a(this.yOe);
+      this.zeo = new a(this.zen);
+      localObject1 = u.a(this.zeo);
     }
     for (;;)
     {
@@ -128,22 +130,22 @@ public final class a
       }
       else
       {
-        ad.i("MicroMsg.ShakeAvatarDrawable", "bm is null or recycled, album url[%s]", new Object[] { this.yOd });
-        localObject2 = aq(this.rCL, this.hdT);
+        ae.i("MicroMsg.ShakeAvatarDrawable", "bm is null or recycled, album url[%s]", new Object[] { this.zen });
+        localObject2 = aq(this.rKW, this.hgH);
       }
       if (localObject2 != null) {
-        paramCanvas.drawBitmap((Bitmap)localObject2, null, getBounds(), hxL);
+        paramCanvas.drawBitmap((Bitmap)localObject2, null, getBounds(), hAz);
       }
       AppMethodBeat.o(28354);
       return;
       localObject1 = localObject2;
-      if (k.Pq(this.type))
+      if (k.PX(this.type))
       {
         localObject1 = localObject2;
         if (6 != this.type)
         {
-          this.yOe = new b(this.yOd);
-          localObject1 = u.a(this.yOe);
+          this.zeo = new b(this.zen);
+          localObject1 = u.a(this.zeo);
         }
       }
     }
@@ -152,9 +154,9 @@ public final class a
   public final void k(String paramString, final Bitmap paramBitmap)
   {
     AppMethodBeat.i(28356);
-    ad.i("MicroMsg.ShakeAvatarDrawable", "type[%d] notifyKey[%s] albumUrl[%s]", new Object[] { Integer.valueOf(this.type), paramString, this.yOd });
-    if ((this.yOe != null) && (paramString.equals(this.yOe.aQy())) && ((4 == this.type) || ((k.Pq(this.type)) && (6 != this.type)))) {
-      this.rCL.post(new Runnable()
+    ae.i("MicroMsg.ShakeAvatarDrawable", "type[%d] notifyKey[%s] albumUrl[%s]", new Object[] { Integer.valueOf(this.type), paramString, this.zen });
+    if ((this.zeo != null) && (paramString.equals(this.zeo.aQX())) && ((4 == this.type) || ((k.PX(this.type)) && (6 != this.type)))) {
+      this.rKW.post(new Runnable()
       {
         public final void run()
         {
@@ -170,21 +172,21 @@ public final class a
   static final class a
     implements s
   {
-    private String yOd;
+    private String zen;
     
     public a(String paramString)
     {
-      this.yOd = paramString;
+      this.zen = paramString;
     }
     
     public final Bitmap a(Bitmap paramBitmap, s.a parama, String paramString)
     {
       AppMethodBeat.i(28353);
-      if (s.a.iNr == parama) {}
+      if (s.a.iQl == parama) {}
       try
       {
-        com.tencent.mm.sdk.platformtools.g.a(paramBitmap, 100, Bitmap.CompressFormat.PNG, a.auC(this.yOd), false);
-        ad.d("MicroMsg.ShakeAvatarDrawable", "get bitmap, from %s", new Object[] { parama.toString() });
+        h.a(paramBitmap, 100, Bitmap.CompressFormat.PNG, a.avR(this.zen), false);
+        ae.d("MicroMsg.ShakeAvatarDrawable", "get bitmap, from %s", new Object[] { parama.toString() });
         AppMethodBeat.o(28353);
         return paramBitmap;
       }
@@ -192,62 +194,62 @@ public final class a
       {
         for (;;)
         {
-          ad.printErrStackTrace("MicroMsg.ShakeAvatarDrawable", paramString, "", new Object[0]);
-          ad.w("MicroMsg.ShakeAvatarDrawable", "save bitmap fail");
+          ae.printErrStackTrace("MicroMsg.ShakeAvatarDrawable", paramString, "", new Object[0]);
+          ae.w("MicroMsg.ShakeAvatarDrawable", "save bitmap fail");
         }
       }
     }
     
     public final void a(s.a parama, String paramString) {}
     
-    public final boolean aQA()
-    {
-      return false;
-    }
-    
-    public final Bitmap aQB()
-    {
-      AppMethodBeat.i(28352);
-      Bitmap localBitmap = BitmapFactory.decodeResource(aj.getContext().getResources(), 2131233476);
-      AppMethodBeat.o(28352);
-      return localBitmap;
-    }
-    
-    public final void aQC() {}
-    
-    public final s.b aQv()
+    public final s.b aQU()
     {
       return null;
     }
     
-    public final String aQw()
+    public final String aQV()
     {
       AppMethodBeat.i(28351);
-      String str = a.auC(this.yOd);
+      String str = a.avR(this.zen);
       AppMethodBeat.o(28351);
       return str;
     }
     
-    public final String aQx()
+    public final String aQW()
     {
-      return this.yOd;
+      return this.zen;
     }
     
-    public final String aQy()
+    public final String aQX()
     {
-      return this.yOd;
+      return this.zen;
     }
     
-    public final boolean aQz()
+    public final boolean aQY()
     {
       return true;
     }
+    
+    public final boolean aQZ()
+    {
+      return false;
+    }
+    
+    public final Bitmap aRa()
+    {
+      AppMethodBeat.i(28352);
+      Bitmap localBitmap = BitmapFactory.decodeResource(ak.getContext().getResources(), 2131233476);
+      AppMethodBeat.o(28352);
+      return localBitmap;
+    }
+    
+    public final void aRb() {}
     
     public final void aa(String paramString, boolean paramBoolean) {}
     
     public final String getCacheKey()
     {
-      return this.yOd;
+      return this.zen;
     }
   }
 }

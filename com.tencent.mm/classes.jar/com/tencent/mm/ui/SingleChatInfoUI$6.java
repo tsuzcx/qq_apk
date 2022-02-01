@@ -2,8 +2,8 @@ package com.tencent.mm.ui;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.i.a.p.b;
-import com.tencent.mm.protocal.protobuf.apv;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.aqi;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.Iterator;
 import java.util.List;
 
@@ -12,10 +12,10 @@ final class SingleChatInfoUI$6
 {
   SingleChatInfoUI$6(SingleChatInfoUI paramSingleChatInfoUI) {}
   
-  public final void dH(List<apv> paramList)
+  public final void dK(List<aqi> paramList)
   {
-    AppMethodBeat.i(193747);
-    ad.i("MicroMsg.SingleChatInfoUI", "sessionInfos size :" + paramList.size());
+    AppMethodBeat.i(187038);
+    ae.i("MicroMsg.SingleChatInfoUI", "sessionInfos size :" + paramList.size());
     Object localObject;
     if ((paramList != null) && (!paramList.isEmpty()))
     {
@@ -25,16 +25,16 @@ final class SingleChatInfoUI$6
         if (!((Iterator)localObject).hasNext()) {
           break;
         }
-        paramList = (apv)((Iterator)localObject).next();
-      } while (!paramList.sessionId.equals(SingleChatInfoUI.a(this.JfL)));
+        paramList = (aqi)((Iterator)localObject).next();
+      } while (!paramList.sessionId.equals(SingleChatInfoUI.a(this.JAw)));
     }
     for (;;)
     {
       if (paramList != null)
       {
-        ad.i("MicroMsg.SingleChatInfoUI", "sessionId: " + paramList.sessionId + ", sessionReject: " + paramList.GnZ);
-        localObject = this.JfL;
-        if (paramList.GnZ != 1) {
+        ae.i("MicroMsg.SingleChatInfoUI", "sessionId: " + paramList.sessionId + ", sessionReject: " + paramList.GHf);
+        localObject = this.JAw;
+        if (paramList.GHf != 1) {
           break label161;
         }
       }
@@ -42,8 +42,8 @@ final class SingleChatInfoUI$6
       for (boolean bool = true;; bool = false)
       {
         SingleChatInfoUI.a((SingleChatInfoUI)localObject, bool);
-        SingleChatInfoUI.b(this.JfL);
-        AppMethodBeat.o(193747);
+        SingleChatInfoUI.b(this.JAw);
+        AppMethodBeat.o(187038);
         return;
       }
       paramList = null;

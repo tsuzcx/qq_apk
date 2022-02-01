@@ -1,65 +1,65 @@
 package com.tencent.mm.plugin.facedetect.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.ajc;
-import com.tencent.mm.protocal.protobuf.ajd;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.ajm;
+import com.tencent.mm.protocal.protobuf.ajn;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class m
   extends n
   implements k, e
 {
   private f callback;
-  public boolean pQM;
-  private boolean rgp;
-  public String rgq;
-  private String rgr;
+  public boolean pXr;
+  private boolean ros;
+  public String rot;
+  private String rou;
   private b rr;
   
   public m(long paramLong, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt1, float paramFloat, int paramInt2)
   {
     AppMethodBeat.i(103607);
-    this.rgp = false;
-    this.rgq = null;
-    this.pQM = false;
-    this.rgr = "";
+    this.ros = false;
+    this.rot = null;
+    this.pXr = false;
+    this.rou = "";
     Object localObject = new b.a();
-    ((b.a)localObject).hNM = new ajc();
-    ((b.a)localObject).hNN = new ajd();
+    ((b.a)localObject).hQF = new ajm();
+    ((b.a)localObject).hQG = new ajn();
     ((b.a)localObject).uri = "/cgi-bin/mmbiz-bin/usrmsg/faceidentify";
     ((b.a)localObject).funcId = getType();
-    ((b.a)localObject).hNO = 0;
+    ((b.a)localObject).hQH = 0;
     ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).aDC();
-    localObject = (ajc)this.rr.hNK.hNQ;
-    ((ajc)localObject).duW = paramString1;
-    ((ajc)localObject).Ggm = paramLong;
-    ((ajc)localObject).FFt = paramString2;
-    ((ajc)localObject).Ggo = paramString3;
-    ((ajc)localObject).Ggn = paramString4;
-    ((ajc)localObject).rgn = paramInt1;
-    ((ajc)localObject).Ggq = paramFloat;
-    ((ajc)localObject).Ggr = paramInt2;
-    ad.i("MicroMsg.NetSceneFaceVerifyFace", "create NetSceneFacePicThirdVerifyFace, checkAliveType: %s  ,light:%f ,upload_video:%d", new Object[] { Integer.valueOf(paramInt1), Float.valueOf(paramFloat), Integer.valueOf(paramInt2) });
+    this.rr = ((b.a)localObject).aDS();
+    localObject = (ajm)this.rr.hQD.hQJ;
+    ((ajm)localObject).dwb = paramString1;
+    ((ajm)localObject).GyV = paramLong;
+    ((ajm)localObject).FXO = paramString2;
+    ((ajm)localObject).GyX = paramString3;
+    ((ajm)localObject).GyW = paramString4;
+    ((ajm)localObject).roq = paramInt1;
+    ((ajm)localObject).GyZ = paramFloat;
+    ((ajm)localObject).Gza = paramInt2;
+    ae.i("MicroMsg.NetSceneFaceVerifyFace", "create NetSceneFacePicThirdVerifyFace, checkAliveType: %s  ,light:%f ,upload_video:%d", new Object[] { Integer.valueOf(paramInt1), Float.valueOf(paramFloat), Integer.valueOf(paramInt2) });
     AppMethodBeat.o(103607);
   }
   
-  public final boolean csE()
+  public final boolean cuf()
   {
-    return this.pQM;
+    return this.pXr;
   }
   
-  public final String csF()
+  public final String cug()
   {
-    return this.rgq;
+    return this.rot;
   }
   
   public final int doScene(com.tencent.mm.network.e parame, f paramf)
@@ -79,11 +79,11 @@ public final class m
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(103609);
-    ad.d("MicroMsg.NetSceneFaceVerifyFace", "alvinluo NetSceneFacePicThirdVerifyFace errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    paramq = (ajd)((b)paramq).hNL.hNQ;
-    ad.i("MicroMsg.NetSceneFaceVerifyFace", "identity_id: %s", new Object[] { paramq.Ggs });
-    this.rgq = paramq.Ggs;
-    this.pQM = paramq.Ggt;
+    ae.d("MicroMsg.NetSceneFaceVerifyFace", "alvinluo NetSceneFacePicThirdVerifyFace errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    paramq = (ajn)((b)paramq).hQE.hQJ;
+    ae.i("MicroMsg.NetSceneFaceVerifyFace", "identity_id: %s", new Object[] { paramq.Gzb });
+    this.rot = paramq.Gzb;
+    this.pXr = paramq.Gzc;
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }

@@ -25,27 +25,27 @@ public final class a
   extends d.l.b.a.b.m.g
   implements c
 {
-  public static final a NCZ;
-  private final boolean NCW;
-  private final boolean NCX;
-  private final boolean NCY;
-  private final i NvP;
+  public static final a Oag;
+  private final i NSV;
+  private final boolean Oad;
+  private final boolean Oae;
+  private final boolean Oaf;
   
   static
   {
     AppMethodBeat.i(60923);
-    NCZ = new a((byte)0);
+    Oag = new a((byte)0);
     AppMethodBeat.o(60923);
   }
   
   private a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, i parami)
   {
-    AppMethodBeat.i(187794);
-    this.NCW = paramBoolean1;
-    this.NCX = paramBoolean2;
-    this.NCY = paramBoolean3;
-    this.NvP = parami;
-    AppMethodBeat.o(187794);
+    AppMethodBeat.i(193318);
+    this.Oad = paramBoolean1;
+    this.Oae = paramBoolean2;
+    this.Oaf = paramBoolean3;
+    this.NSV = parami;
+    AppMethodBeat.o(193318);
   }
   
   public final int a(l paraml)
@@ -81,13 +81,13 @@ public final class a
     d.g.b.p.h(paramh, "type");
     if (!(paramh instanceof ab))
     {
-      paramh = (Throwable)new IllegalArgumentException(b.fy(paramh).toString());
+      paramh = (Throwable)new IllegalArgumentException(b.fB(paramh).toString());
       AppMethodBeat.o(60916);
       throw paramh;
     }
-    n.a locala = n.NDp;
-    n.a.guj();
-    paramh = (d.l.b.a.b.m.c.h)o.c(((ab)paramh).gua());
+    n.a locala = n.Oaw;
+    n.a.gyL();
+    paramh = (d.l.b.a.b.m.c.h)o.c(((ab)paramh).gyC());
     AppMethodBeat.o(60916);
     return paramh;
   }
@@ -218,13 +218,13 @@ public final class a
     d.g.b.p.h(paramn2, "b");
     if (!(paramn1 instanceof at))
     {
-      paramn1 = (Throwable)new IllegalArgumentException(b.fy(paramn1).toString());
+      paramn1 = (Throwable)new IllegalArgumentException(b.fB(paramn1).toString());
       AppMethodBeat.o(60918);
       throw paramn1;
     }
     if (!(paramn2 instanceof at))
     {
-      paramn1 = (Throwable)new IllegalArgumentException(b.fy(paramn2).toString());
+      paramn1 = (Throwable)new IllegalArgumentException(b.fB(paramn2).toString());
       AppMethodBeat.o(60918);
       throw paramn1;
     }
@@ -255,11 +255,11 @@ public final class a
     d.g.b.p.h(paramh, "type");
     if (!(paramh instanceof ab))
     {
-      paramh = (Throwable)new IllegalArgumentException(b.fy(paramh).toString());
+      paramh = (Throwable)new IllegalArgumentException(b.fB(paramh).toString());
       AppMethodBeat.o(60917);
       throw paramh;
     }
-    paramh = (d.l.b.a.b.m.c.h)this.NvP.aL((ab)paramh);
+    paramh = (d.l.b.a.b.m.c.h)this.NSV.aL((ab)paramh);
     AppMethodBeat.o(60917);
     return paramh;
   }
@@ -353,7 +353,7 @@ public final class a
   {
     AppMethodBeat.i(60920);
     d.g.b.p.h(paramh, "$this$isAllowedTypeVariable");
-    if (((paramh instanceof bg)) && (this.NCY) && ((((bg)paramh).gsZ() instanceof p)))
+    if (((paramh instanceof bg)) && (this.Oaf) && ((((bg)paramh).gxB() instanceof p)))
     {
       AppMethodBeat.o(60920);
       return true;
@@ -485,14 +485,14 @@ public final class a
     return bool;
   }
   
-  public final boolean gtQ()
+  public final boolean gys()
   {
-    return this.NCW;
+    return this.Oad;
   }
   
-  public final boolean gtR()
+  public final boolean gyt()
   {
-    return this.NCX;
+    return this.Oae;
   }
   
   public final boolean h(d.l.b.a.b.m.c.h paramh)
@@ -585,11 +585,11 @@ public final class a
     return bool;
   }
   
-  public final d.l.b.a.b.m.c.h ju(List<? extends d.l.b.a.b.m.c.h> paramList)
+  public final d.l.b.a.b.m.c.h jD(List<? extends d.l.b.a.b.m.c.h> paramList)
   {
     AppMethodBeat.i(60962);
     d.g.b.p.h(paramList, "types");
-    paramList = c.a.jv(paramList);
+    paramList = c.a.jE(paramList);
     AppMethodBeat.o(60962);
     return paramList;
   }
@@ -750,20 +750,20 @@ public final class a
         AppMethodBeat.i(60915);
         d.g.b.p.h(paramg, "context");
         d.g.b.p.h(paramh, "type");
-        paramg = this.NDa;
-        ba localba = this.MUf;
-        paramh = this.NDa.e(paramh);
+        paramg = this.Oah;
+        ba localba = this.Nrk;
+        paramh = this.Oah.e(paramh);
         if (paramh == null)
         {
           paramg = new v("null cannot be cast to non-null type org.jetbrains.kotlin.types.KotlinType");
           AppMethodBeat.o(60915);
           throw paramg;
         }
-        paramh = localba.b((ab)paramh, bh.NCP);
+        paramh = localba.b((ab)paramh, bh.NZW);
         d.g.b.p.g(paramh, "substitutor.safeSubstitu…ANT\n                    )");
         paramg = paramg.o((d.l.b.a.b.m.c.h)paramh);
         if (paramg == null) {
-          d.g.b.p.gfZ();
+          d.g.b.p.gkB();
         }
         AppMethodBeat.o(60915);
         return paramg;
@@ -773,7 +773,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.m.a.a
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,7 @@ package com.tencent.mm.search.data;
 
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/search/data/SimilarEmojiManager$Companion;", "", "()V", "TAG", "", "plugin-emojisdk_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/search/data/SimilarEmojiManager$Companion;", "", "()V", "TAG", "", "plugin-emojisdk_release"})
 public final class c$a {}
 
 

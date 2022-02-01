@@ -4,31 +4,31 @@ import android.graphics.Bitmap;
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.d;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.at;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.au;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class n
   implements i
 {
-  private static ConcurrentHashMap<Bitmap, Integer> hwL;
+  private static ConcurrentHashMap<Bitmap, Integer> hzz;
   private boolean DEBUG;
   public Bitmap bitmap;
-  private ap gIf;
-  private boolean hwJ;
-  private AtomicInteger hwK;
-  private boolean hwM;
-  private Runnable hwN;
-  private int hwO;
-  private int hwP;
+  private aq gKO;
+  private boolean hzA;
+  private Runnable hzB;
+  private int hzC;
+  private int hzD;
+  private boolean hzx;
+  private AtomicInteger hzy;
   
   static
   {
     AppMethodBeat.i(156452);
-    hwL = new ConcurrentHashMap();
+    hzz = new ConcurrentHashMap();
     AppMethodBeat.o(156452);
   }
   
@@ -37,11 +37,11 @@ public class n
     AppMethodBeat.i(156438);
     this.bitmap = null;
     this.DEBUG = false;
-    this.gIf = new ap(Looper.getMainLooper());
-    this.hwJ = false;
-    this.hwK = new AtomicInteger();
-    this.hwM = true;
-    this.hwN = new Runnable()
+    this.gKO = new aq(Looper.getMainLooper());
+    this.hzx = false;
+    this.hzy = new AtomicInteger();
+    this.hzA = true;
+    this.hzB = new Runnable()
     {
       public final void run()
       {
@@ -50,19 +50,19 @@ public class n
         AppMethodBeat.o(156437);
       }
     };
-    this.hwO = 0;
-    this.hwP = 0;
+    this.hzC = 0;
+    this.hzD = 0;
     this.bitmap = paramBitmap;
-    this.hwK.set(1);
+    this.hzy.set(1);
     if (this.DEBUG) {
-      ad.i("MicroMsg.ReleasableBitmap", "bitmap " + paramBitmap + " " + this.bitmap.hashCode() + " mm: " + hashCode() + " this: " + this + " " + bt.flS().toString());
+      ae.i("MicroMsg.ReleasableBitmap", "bitmap " + paramBitmap + " " + this.bitmap.hashCode() + " mm: " + hashCode() + " this: " + this + " " + bu.fpN().toString());
     }
-    this.hwJ = false;
+    this.hzx = false;
     getAllocationByteCount();
     AppMethodBeat.o(156438);
   }
   
-  public static n D(Bitmap paramBitmap)
+  public static n E(Bitmap paramBitmap)
   {
     AppMethodBeat.i(156439);
     if (paramBitmap == null)
@@ -75,104 +75,104 @@ public class n
     return paramBitmap;
   }
   
-  private boolean ayI()
+  private boolean ayX()
   {
     AppMethodBeat.i(156445);
     if (this.DEBUG) {
-      ad.i("MicroMsg.ReleasableBitmap", "recycleImpl~:" + this.hwJ + " isMutable:" + this.hwM + " bitmap:" + this.bitmap + " " + hashCode() + " attachCount: " + this.hwK + bt.flS().toString());
+      ae.i("MicroMsg.ReleasableBitmap", "recycleImpl~:" + this.hzx + " isMutable:" + this.hzA + " bitmap:" + this.bitmap + " " + hashCode() + " attachCount: " + this.hzy + bu.fpN().toString());
     }
-    if ((this.hwJ) || (this.hwK.get() > 0))
+    if ((this.hzx) || (this.hzy.get() > 0))
     {
       AppMethodBeat.o(156445);
       return false;
     }
-    this.hwJ = true;
+    this.hzx = true;
     if (this.DEBUG) {
-      hwL.remove(this.bitmap);
+      hzz.remove(this.bitmap);
     }
-    if (this.hwM) {
-      l.ayD().C(this.bitmap);
+    if (this.hzA) {
+      l.ayS().D(this.bitmap);
     }
     AppMethodBeat.o(156445);
     return true;
   }
   
-  private final int ayJ()
+  private final int ayY()
   {
     AppMethodBeat.i(156446);
     if ((this.bitmap == null) || (this.bitmap.isRecycled()))
     {
-      ad.i("MicroMsg.ReleasableBitmap", "getByteCount recycle " + this.hwO + " " + toString());
-      i = this.hwO;
+      ae.i("MicroMsg.ReleasableBitmap", "getByteCount recycle " + this.hzC + " " + toString());
+      i = this.hzC;
       AppMethodBeat.o(156446);
       return i;
     }
-    this.hwO = this.bitmap.getByteCount();
-    int i = this.hwO;
+    this.hzC = this.bitmap.getByteCount();
+    int i = this.hzC;
     AppMethodBeat.o(156446);
     return i;
   }
   
-  public final void ayB()
+  public final void ayQ()
   {
     AppMethodBeat.i(156440);
-    this.hwK.incrementAndGet();
+    this.hzy.incrementAndGet();
     if (this.DEBUG) {
-      ad.i("MicroMsg.ReleasableBitmap", "addLiveReference, attachCount:" + this.hwK + " bitmap:" + this.bitmap + " " + this + " " + bt.flS().toString());
+      ae.i("MicroMsg.ReleasableBitmap", "addLiveReference, attachCount:" + this.hzy + " bitmap:" + this.bitmap + " " + this + " " + bu.fpN().toString());
     }
     AppMethodBeat.o(156440);
   }
   
-  public final void ayC()
+  public final void ayR()
   {
     AppMethodBeat.i(156441);
     if (this.DEBUG) {
-      ad.i("MicroMsg.ReleasableBitmap", "removeLiveReference, attachCount:" + this.hwK + " bitmap:" + this.bitmap + " " + this + " " + bt.flS().toString());
+      ae.i("MicroMsg.ReleasableBitmap", "removeLiveReference, attachCount:" + this.hzy + " bitmap:" + this.bitmap + " " + this + " " + bu.fpN().toString());
     }
-    if (this.hwK.get() > 0)
+    if (this.hzy.get() > 0)
     {
-      this.hwK.decrementAndGet();
-      if (this.hwK.get() < 0)
+      this.hzy.decrementAndGet();
+      if (this.hzy.get() < 0)
       {
         AppMethodBeat.o(156441);
         return;
       }
-      this.gIf.removeCallbacks(this.hwN);
-      this.gIf.postDelayed(this.hwN, 500L);
+      this.gKO.removeCallbacks(this.hzB);
+      this.gKO.postDelayed(this.hzB, 500L);
     }
     AppMethodBeat.o(156441);
   }
   
-  public final Bitmap ayF()
+  public final Bitmap ayU()
   {
-    this.hwM = false;
+    this.hzA = false;
     return this.bitmap;
   }
   
-  public final Bitmap ayG()
+  public final Bitmap ayV()
   {
     AppMethodBeat.i(156442);
     if (this.DEBUG) {
-      ad.i("MicroMsg.ReleasableBitmap", "getBitmapReadOnly " + toString() + " " + bt.flS().toString());
+      ae.i("MicroMsg.ReleasableBitmap", "getBitmapReadOnly " + toString() + " " + bu.fpN().toString());
     }
     Bitmap localBitmap = this.bitmap;
     AppMethodBeat.o(156442);
     return localBitmap;
   }
   
-  public final boolean ayH()
+  public final boolean ayW()
   {
     AppMethodBeat.i(156444);
-    this.hwK.decrementAndGet();
+    this.hzy.decrementAndGet();
     if (this.DEBUG) {
-      ad.i("MicroMsg.ReleasableBitmap", "recycle~:" + this.hwJ + " isMutable:" + this.hwM + " bitmap:" + this.bitmap + " " + hashCode() + " attachCount: " + this.hwK + bt.flS().toString());
+      ae.i("MicroMsg.ReleasableBitmap", "recycle~:" + this.hzx + " isMutable:" + this.hzA + " bitmap:" + this.bitmap + " " + hashCode() + " attachCount: " + this.hzy + bu.fpN().toString());
     }
-    ayI();
+    ayX();
     AppMethodBeat.o(156444);
     return true;
   }
   
-  public final String ayK()
+  public final String ayZ()
   {
     AppMethodBeat.i(156450);
     String str = this + " " + this.bitmap;
@@ -184,7 +184,7 @@ public class n
   {
     AppMethodBeat.i(156449);
     if (this.DEBUG) {
-      ad.i("MicroMsg.ReleasableBitmap", "bitmap finalize " + toString());
+      ae.i("MicroMsg.ReleasableBitmap", "bitmap finalize " + toString());
     }
     AppMethodBeat.o(156449);
   }
@@ -192,21 +192,21 @@ public class n
   public final int getAllocationByteCount()
   {
     AppMethodBeat.i(156447);
-    if (d.lz(19))
+    if (d.lB(19))
     {
-      i = ayJ();
+      i = ayY();
       AppMethodBeat.o(156447);
       return i;
     }
     if ((this.bitmap == null) || (this.bitmap.isRecycled()))
     {
-      ad.i("MicroMsg.ReleasableBitmap", "getAllocationByteCount recycle " + this.hwP + " " + toString());
-      i = this.hwP;
+      ae.i("MicroMsg.ReleasableBitmap", "getAllocationByteCount recycle " + this.hzD + " " + toString());
+      i = this.hzD;
       AppMethodBeat.o(156447);
       return i;
     }
-    this.hwP = this.bitmap.getAllocationByteCount();
-    int i = this.hwP;
+    this.hzD = this.bitmap.getAllocationByteCount();
+    int i = this.hzD;
     AppMethodBeat.o(156447);
     return i;
   }
@@ -214,7 +214,7 @@ public class n
   public final boolean isRecycled()
   {
     AppMethodBeat.i(156443);
-    if ((this.hwJ) || (this.bitmap == null) || (this.bitmap.isRecycled()))
+    if ((this.hzx) || (this.bitmap == null) || (this.bitmap.isRecycled()))
     {
       AppMethodBeat.o(156443);
       return true;
@@ -228,7 +228,7 @@ public class n
     AppMethodBeat.i(156448);
     if (this.DEBUG)
     {
-      String str2 = super.toString() + " code: " + hashCode() + " attachCount: " + this.hwK;
+      String str2 = super.toString() + " code: " + hashCode() + " attachCount: " + this.hzy;
       str1 = str2;
       if (this.bitmap != null) {
         str1 = str2 + this.bitmap;

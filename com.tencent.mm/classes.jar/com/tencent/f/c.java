@@ -2,7 +2,7 @@ package com.tencent.f;
 
 public abstract interface c
 {
-  public abstract Object fYK();
+  public abstract Object gdj();
 }
 
 

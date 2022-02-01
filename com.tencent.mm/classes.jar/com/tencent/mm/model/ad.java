@@ -1,66 +1,55 @@
 package com.tencent.mm.model;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.storage.ca;
-import com.tencent.mm.storage.ca.a;
-
-public final class ad
+public class ad
 {
-  public static ac AL(String paramString)
+  private final String dEC;
+  public final boolean enable;
+  private final String fUS;
+  private boolean hIB;
+  private final String name;
+  private final String type;
+  
+  public ad()
   {
-    AppMethodBeat.i(150163);
-    paramString = new ac("@black.android", null, paramString, null, true, true);
-    AppMethodBeat.o(150163);
-    return paramString;
+    this.type = "";
+    this.name = "";
+    this.dEC = "";
+    this.fUS = "";
+    this.enable = true;
   }
   
-  public static ac AM(String paramString)
+  public ad(String paramString1, String paramString2, String paramString3, String paramString4, boolean paramBoolean1, boolean paramBoolean2)
   {
-    AppMethodBeat.i(150164);
-    ca localca = ((com.tencent.mm.plugin.messenger.foundation.a.l)g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azy().aqy("@t.qq.com");
-    if (localca == null)
-    {
-      AppMethodBeat.o(150164);
-      return null;
-    }
-    paramString = new ac("@t.qq.com", null, paramString, null, localca.isEnable(), localca.fsC());
-    AppMethodBeat.o(150164);
-    return paramString;
+    this.type = paramString1;
+    this.name = paramString2;
+    this.dEC = paramString3;
+    this.fUS = paramString4;
+    this.enable = paramBoolean1;
+    this.hIB = paramBoolean2;
   }
   
-  private static String aJ(String paramString1, String paramString2)
+  public final String aBL()
   {
-    AppMethodBeat.i(150165);
-    String str = "";
-    if (paramString1 != null) {
-      str = "" + paramString1.replace("@", "");
+    if (this.fUS == null) {
+      return "";
     }
-    paramString1 = str;
-    if (paramString2 != null) {
-      paramString1 = str + paramString2;
-    }
-    AppMethodBeat.o(150165);
-    return paramString1;
+    return this.fUS;
   }
   
-  public static ac aK(String paramString1, String paramString2)
+  public final String adF()
   {
-    AppMethodBeat.i(150166);
-    if ((paramString1 == null) || (paramString1.length() <= 0))
-    {
-      AppMethodBeat.o(150166);
-      return null;
+    if (this.dEC == null) {
+      return "";
     }
-    paramString1 = ((com.tencent.mm.plugin.messenger.foundation.a.l)g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azy().aqy(paramString1);
-    if ((paramString1 == null) || (!paramString1.fsD()))
-    {
-      AppMethodBeat.o(150166);
-      return null;
+    return this.dEC;
+  }
+  
+  public final String getType()
+  {
+    if (this.type == null) {
+      return "";
     }
-    paramString1 = new ac("@domain.android", paramString1.name, aJ(paramString1.INb.aUs(""), paramString2), paramString1.INb.aUs(""), paramString1.isEnable(), true);
-    AppMethodBeat.o(150166);
-    return paramString1;
+    return this.type;
   }
 }
 

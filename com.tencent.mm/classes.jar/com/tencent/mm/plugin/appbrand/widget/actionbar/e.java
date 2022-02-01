@@ -1,179 +1,35 @@
 package com.tencent.mm.plugin.appbrand.widget.actionbar;
 
-import android.animation.Animator;
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.content.Context;
-import android.graphics.drawable.Drawable;
 import android.view.View;
-import android.widget.ImageView;
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.page.a.a;
-import com.tencent.mm.plugin.appbrand.page.a.b;
-import com.tencent.mm.plugin.appbrand.page.a.c.a;
-import com.tencent.mm.sdk.platformtools.aq;
-import d.g.b.p;
-import d.l;
+import android.view.View.OnClickListener;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/widget/actionbar/AppBrandCapsuleBarWorkaroundImpl;", "Lcom/tencent/mm/plugin/appbrand/page/capsulebar/BaseBlinkingCapsuleBarPart;", "Lcom/tencent/mm/plugin/appbrand/page/capsulebar/CapsuleBar;", "Lcom/tencent/mm/plugin/appbrand/page/capsulebar/CapsuleBarBlinkingPart$BlinkHandler;", "()V", "mAnimator", "Landroid/animation/Animator;", "mButton", "Lcom/tencent/mm/plugin/appbrand/widget/actionbar/AppBrandOptionButton;", "applyDescription", "", "description", "", "applyLogo", "logo", "Landroid/graphics/drawable/Drawable;", "applyStatus", "status", "", "blink", "clearAnimation", "destroy", "dismiss", "getContext", "Landroid/content/Context;", "pause", "resume", "scheduleToUiThread", "runnable", "Ljava/lang/Runnable;", "setDescription", "resId", "setLogo", "drawable", "setStatus", "setStyle", "style", "Lcom/tencent/mm/plugin/appbrand/page/capsulebar/CapsuleBarColoredStylePart$Style;", "wrap", "button", "luggage-wxa-app_release"})
-public final class e
-  extends a
-  implements b, c.a
+public abstract interface e
 {
-  private Animator EZ;
-  AppBrandOptionButton mUg;
+  public abstract void destroy();
   
-  private final void clearAnimation()
-  {
-    AppMethodBeat.i(135623);
-    Object localObject = this.EZ;
-    if (localObject != null) {
-      ((Animator)localObject).cancel();
-    }
-    localObject = this.mUg;
-    if (localObject != null)
-    {
-      localObject = ((AppBrandOptionButton)localObject).getButtonImage();
-      if (localObject != null)
-      {
-        ((ImageView)localObject).clearAnimation();
-        AppMethodBeat.o(135623);
-        return;
-      }
-    }
-    AppMethodBeat.o(135623);
-  }
+  public abstract void fE(boolean paramBoolean);
   
-  public final void A(CharSequence paramCharSequence) {}
+  public abstract View getActionView();
   
-  public final void M(Runnable paramRunnable)
-  {
-    AppMethodBeat.i(160942);
-    aq.f(paramRunnable);
-    AppMethodBeat.o(160942);
-  }
+  public abstract int getBackgroundColor();
   
-  public final c.a bvC()
-  {
-    return (c.a)this;
-  }
+  public abstract void setBackButtonClickListener(View.OnClickListener paramOnClickListener);
   
-  public final void destroy()
-  {
-    AppMethodBeat.i(135618);
-    clearAnimation();
-    this.mUg = null;
-    AppMethodBeat.o(135618);
-  }
+  public abstract void setBackgroundColor(int paramInt);
   
-  public final void dismiss()
-  {
-    AppMethodBeat.i(135617);
-    x(null);
-    AppMethodBeat.o(135617);
-  }
+  public abstract void setCloseButtonClickListener(View.OnClickListener paramOnClickListener);
   
-  public final Context getContext()
-  {
-    AppMethodBeat.i(135622);
-    Object localObject = this.mUg;
-    if (localObject == null) {
-      p.gfZ();
-    }
-    localObject = ((AppBrandOptionButton)localObject).getContext();
-    p.g(localObject, "mButton!!.context");
-    AppMethodBeat.o(135622);
-    return localObject;
-  }
+  public abstract void setForegroundColor(int paramInt);
   
-  public final void pause()
-  {
-    AppMethodBeat.i(135620);
-    Animator localAnimator = this.EZ;
-    if (localAnimator != null)
-    {
-      localAnimator.pause();
-      AppMethodBeat.o(135620);
-      return;
-    }
-    AppMethodBeat.o(135620);
-  }
+  public abstract void setForegroundStyle(String paramString);
   
-  public final void resume()
-  {
-    AppMethodBeat.i(135619);
-    Animator localAnimator = this.EZ;
-    if (localAnimator != null)
-    {
-      localAnimator.resume();
-      AppMethodBeat.o(135619);
-      return;
-    }
-    AppMethodBeat.o(135619);
-  }
+  public abstract void setLoadingIconVisibility(boolean paramBoolean);
   
-  public final void setLogo(int paramInt) {}
-  
-  public final void setLogo(Drawable paramDrawable)
-  {
-    AppMethodBeat.i(135616);
-    x(paramDrawable);
-    AppMethodBeat.o(135616);
-  }
-  
-  public final void setStatus(int paramInt) {}
-  
-  public final void uK(int paramInt) {}
-  
-  public final void uW(int paramInt) {}
-  
-  public final void x(final Drawable paramDrawable)
-  {
-    AppMethodBeat.i(135621);
-    AppBrandOptionButton localAppBrandOptionButton = this.mUg;
-    if (localAppBrandOptionButton == null) {
-      p.gfZ();
-    }
-    clearAnimation();
-    if (paramDrawable == null)
-    {
-      localAppBrandOptionButton.reset();
-      AppMethodBeat.o(135621);
-      return;
-    }
-    localAppBrandOptionButton.getButtonImage().setImageDrawable(paramDrawable);
-    Animator localAnimator = cL((View)localAppBrandOptionButton.getButtonImage());
-    if (!(localAnimator instanceof ValueAnimator)) {}
-    for (Object localObject = null;; localObject = localAnimator)
-    {
-      localObject = (ValueAnimator)localObject;
-      if (localObject != null) {
-        ((ValueAnimator)localObject).addUpdateListener((ValueAnimator.AnimatorUpdateListener)new a(localAppBrandOptionButton, paramDrawable));
-      }
-      localAnimator.start();
-      this.EZ = localAnimator;
-      AppMethodBeat.o(135621);
-      return;
-    }
-  }
-  
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate", "com/tencent/mm/plugin/appbrand/widget/actionbar/AppBrandCapsuleBarWorkaroundImpl$applyLogo$1$1"})
-  static final class a
-    implements ValueAnimator.AnimatorUpdateListener
-  {
-    a(AppBrandOptionButton paramAppBrandOptionButton, Drawable paramDrawable) {}
-    
-    public final void onAnimationUpdate(ValueAnimator paramValueAnimator)
-    {
-      AppMethodBeat.i(135615);
-      this.mUh.getButtonImage().setImageDrawable(paramDrawable);
-      AppMethodBeat.o(135615);
-    }
-  }
+  public abstract void setMainTitle(CharSequence paramCharSequence);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.actionbar.e
  * JD-Core Version:    0.7.0.1
  */

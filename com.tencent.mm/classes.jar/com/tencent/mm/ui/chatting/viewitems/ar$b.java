@@ -6,9 +6,9 @@ import android.widget.TextView;
 final class ar$b
   extends c.a
 {
-  ImageView KbA;
-  TextView KeJ;
-  TextView Kfk;
+  TextView KBD;
+  TextView KBc;
+  ImageView KxS;
 }
 
 

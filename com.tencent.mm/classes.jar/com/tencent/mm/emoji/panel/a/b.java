@@ -2,19 +2,19 @@ package com.tencent.mm.emoji.panel.a;
 
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.emoji.a.a.ac;
-import com.tencent.mm.emoji.a.a.h;
+import com.tencent.mm.emoji.a.b.ac;
+import com.tencent.mm.emoji.a.b.h;
 import com.tencent.mm.storage.emotion.EmojiInfo;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/emoji/panel/adapter/EmojiLoadingPanelViewHolder;", "Lcom/tencent/mm/emoji/panel/adapter/EmojiPanelViewHolder;", "itemView", "Landroid/view/View;", "onClick", "Lcom/tencent/mm/emoji/panel/adapter/IEmojiPanelClickListener;", "(Landroid/view/View;Lcom/tencent/mm/emoji/panel/adapter/IEmojiPanelClickListener;)V", "captureStatusFailureView", "getCaptureStatusFailureView", "()Landroid/view/View;", "captureStatusLayout", "getCaptureStatusLayout", "captureStatusLoadingView", "getCaptureStatusLoadingView", "onBind", "", "item", "Lcom/tencent/mm/emoji/model/panel/PanelItem;", "plugin-emojisdk_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/emoji/panel/adapter/EmojiLoadingPanelViewHolder;", "Lcom/tencent/mm/emoji/panel/adapter/EmojiPanelViewHolder;", "itemView", "Landroid/view/View;", "onClick", "Lcom/tencent/mm/emoji/panel/adapter/IEmojiPanelClickListener;", "(Landroid/view/View;Lcom/tencent/mm/emoji/panel/adapter/IEmojiPanelClickListener;)V", "captureStatusFailureView", "getCaptureStatusFailureView", "()Landroid/view/View;", "captureStatusLayout", "getCaptureStatusLayout", "captureStatusLoadingView", "getCaptureStatusLoadingView", "onBind", "", "item", "Lcom/tencent/mm/emoji/model/panel/PanelItem;", "plugin-emojisdk_release"})
 public final class b
   extends k
 {
-  private final View gnk;
-  private final View gnl;
-  private final View gnm;
+  private final View gpG;
+  private final View gpH;
+  private final View gpI;
   
   public b(View paramView, n paramn)
   {
@@ -22,13 +22,13 @@ public final class b
     AppMethodBeat.i(105630);
     paramn = paramView.findViewById(2131299347);
     p.g(paramn, "itemView.findViewById(R.…ji_capture_status_layout)");
-    this.gnk = paramn;
+    this.gpG = paramn;
     paramn = paramView.findViewById(2131299345);
     p.g(paramn, "itemView.findViewById(R.…oji_capture_loading_view)");
-    this.gnl = paramn;
+    this.gpH = paramn;
     paramView = paramView.findViewById(2131299341);
     p.g(paramView, "itemView.findViewById(R.…oji_capture_failure_view)");
-    this.gnm = paramView;
+    this.gpI = paramView;
     AppMethodBeat.o(105630);
   }
   
@@ -37,31 +37,31 @@ public final class b
     AppMethodBeat.i(105629);
     p.h(paramac, "item");
     super.a(paramac);
-    paramac = (h)this.gnS;
+    paramac = (h)this.gqo;
     if (paramac != null)
     {
-      paramac = paramac.gjb.gzL();
+      paramac = paramac.glt.fxx();
       if (paramac == null)
       {
-        this.gnk.setVisibility(8);
+        this.gpG.setVisibility(8);
         AppMethodBeat.o(105629);
         return;
       }
-      switch (c.cpQ[paramac.ordinal()])
+      switch (c.cqt[paramac.ordinal()])
       {
       }
       for (;;)
       {
         AppMethodBeat.o(105629);
         return;
-        this.gnk.setVisibility(0);
-        this.gnl.setVisibility(0);
-        this.gnm.setVisibility(8);
+        this.gpG.setVisibility(0);
+        this.gpH.setVisibility(0);
+        this.gpI.setVisibility(8);
         AppMethodBeat.o(105629);
         return;
-        this.gnk.setVisibility(0);
-        this.gnl.setVisibility(8);
-        this.gnm.setVisibility(0);
+        this.gpG.setVisibility(0);
+        this.gpH.setVisibility(8);
+        this.gpI.setVisibility(0);
       }
     }
     AppMethodBeat.o(105629);
@@ -69,7 +69,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.emoji.panel.a.b
  * JD-Core Version:    0.7.0.1
  */

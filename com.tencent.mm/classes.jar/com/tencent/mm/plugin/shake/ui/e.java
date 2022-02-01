@@ -2,14 +2,14 @@ package com.tencent.mm.plugin.shake.ui;
 
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aw.a.a;
-import com.tencent.mm.aw.a.a.c;
-import com.tencent.mm.aw.a.a.c.a;
-import com.tencent.mm.aw.q;
+import com.tencent.mm.av.a.a;
+import com.tencent.mm.av.a.a.c;
+import com.tencent.mm.av.a.a.c.a;
+import com.tencent.mm.av.q;
 import com.tencent.mm.plugin.shake.b.f;
 import com.tencent.mm.plugin.shake.b.g;
 import com.tencent.mm.plugin.shake.b.m;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.Iterator;
 import java.util.List;
 
@@ -24,26 +24,26 @@ public final class e
       return;
     }
     paramImageView.setImageBitmap(null);
-    if (!bt.isNullOrNil(paramString))
+    if (!bu.isNullOrNil(paramString))
     {
       Object localObject = new c.a();
-      ((c.a)localObject).hdP = m.FA(paramString);
-      ((c.a)localObject).idr = true;
-      ((c.a)localObject).hdX = true;
-      ((c.a)localObject).hfi = paramBoolean;
+      ((c.a)localObject).hgD = m.Gc(paramString);
+      ((c.a)localObject).igk = true;
+      ((c.a)localObject).hgL = true;
+      ((c.a)localObject).hhW = paramBoolean;
       if (paramInt != 0) {
-        ((c.a)localObject).idG = paramInt;
+        ((c.a)localObject).igy = paramInt;
       }
-      localObject = ((c.a)localObject).aJc();
-      q.aIJ().a(paramString, paramImageView, (c)localObject);
+      localObject = ((c.a)localObject).aJu();
+      q.aJb().a(paramString, paramImageView, (c)localObject);
     }
     AppMethodBeat.o(28577);
   }
   
-  public static String dPO()
+  public static String dTl()
   {
     AppMethodBeat.i(28578);
-    Object localObject2 = m.dOP().dOG();
+    Object localObject2 = m.dSm().dSd();
     Object localObject1 = new StringBuilder();
     localObject2 = ((List)localObject2).iterator();
     while (((Iterator)localObject2).hasNext())

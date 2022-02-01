@@ -2,28 +2,28 @@ package com.tencent.mm.plugin.mmsight.ui.cameraglview;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.mmsight.model.g;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class a
 {
-  public g huH;
-  MMSightCameraGLSurfaceView vXx;
+  public g hxv;
+  MMSightCameraGLSurfaceView wjB;
   
   public a(MMSightCameraGLSurfaceView paramMMSightCameraGLSurfaceView)
   {
     AppMethodBeat.i(94764);
-    this.huH = new g()
+    this.hxv = new g()
     {
       public final boolean U(byte[] paramAnonymousArrayOfByte)
       {
         AppMethodBeat.i(94762);
-        if (a.this.vXx != null)
+        if (a.this.wjB != null)
         {
-          MMSightCameraGLSurfaceView localMMSightCameraGLSurfaceView = a.this.vXx;
-          if ((paramAnonymousArrayOfByte == null) || (localMMSightCameraGLSurfaceView.vXz == null) || (localMMSightCameraGLSurfaceView.vXz.jur)) {
+          MMSightCameraGLSurfaceView localMMSightCameraGLSurfaceView = a.this.wjB;
+          if ((paramAnonymousArrayOfByte == null) || (localMMSightCameraGLSurfaceView.wjD == null) || (localMMSightCameraGLSurfaceView.wjD.jxm)) {
             break label76;
           }
-          localMMSightCameraGLSurfaceView.vXz.b(paramAnonymousArrayOfByte, localMMSightCameraGLSurfaceView.jus, localMMSightCameraGLSurfaceView.jut, localMMSightCameraGLSurfaceView.huh, false);
+          localMMSightCameraGLSurfaceView.wjD.b(paramAnonymousArrayOfByte, localMMSightCameraGLSurfaceView.jxn, localMMSightCameraGLSurfaceView.jxo, localMMSightCameraGLSurfaceView.hwV, false);
           localMMSightCameraGLSurfaceView.requestRender();
         }
         for (;;)
@@ -31,19 +31,19 @@ public final class a
           AppMethodBeat.o(94762);
           return false;
           label76:
-          ad.v("MicroMsg.MMSightCameraGLSurfaceView", "passing draw");
+          ae.v("MicroMsg.MMSightCameraGLSurfaceView", "passing draw");
         }
       }
     };
-    this.vXx = paramMMSightCameraGLSurfaceView;
+    this.wjB = paramMMSightCameraGLSurfaceView;
     AppMethodBeat.o(94764);
   }
   
   public final void a(byte[] paramArrayOfByte, boolean paramBoolean, int paramInt)
   {
     AppMethodBeat.i(94763);
-    if (this.vXx != null) {
-      this.vXx.e(paramArrayOfByte, paramInt, paramBoolean);
+    if (this.wjB != null) {
+      this.wjB.e(paramArrayOfByte, paramInt, paramBoolean);
     }
     AppMethodBeat.o(94763);
   }
@@ -51,8 +51,8 @@ public final class a
   public final void al(int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(94765);
-    ad.d("MicroMsg.MMSightCameraDrawController", "cameraPreviewWidth: " + paramInt1 + " cameraPreviewHeight : " + paramInt2 + " rotate : " + paramInt3);
-    if (this.vXx != null) {
+    ae.d("MicroMsg.MMSightCameraDrawController", "cameraPreviewWidth: " + paramInt1 + " cameraPreviewHeight : " + paramInt2 + " rotate : " + paramInt3);
+    if (this.wjB != null) {
       if ((paramInt3 != 0) && (paramInt3 != 180)) {
         break label95;
       }
@@ -63,17 +63,17 @@ public final class a
       if ((paramInt3 == 0) || (paramInt3 == 180)) {
         paramInt1 = paramInt2;
       }
-      this.vXx.al(i, paramInt1, paramInt3);
+      this.wjB.al(i, paramInt1, paramInt3);
       AppMethodBeat.o(94765);
       return;
     }
   }
   
-  public final void amn()
+  public final void amC()
   {
     AppMethodBeat.i(94766);
-    if (this.vXx != null) {
-      this.vXx.amn();
+    if (this.wjB != null) {
+      this.wjB.amC();
     }
     AppMethodBeat.o(94766);
   }

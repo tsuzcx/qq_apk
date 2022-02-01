@@ -13,27 +13,27 @@ import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.Button;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cn.f;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.cm.f;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aq;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.h;
 import d.l;
 
 @com.tencent.mm.ui.base.a(3)
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/forcenotify/ui/ForceNotifyAcceptUI;", "Lcom/tencent/mm/ui/MMActivity;", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "dialog", "Lcom/tencent/mm/ui/base/MMProgressDialog;", "executor", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "getLayoutId", "", "onBackPressed", "", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "plugin-force-notify_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/forcenotify/ui/ForceNotifyAcceptUI;", "Lcom/tencent/mm/ui/MMActivity;", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "dialog", "Lcom/tencent/mm/ui/base/MMProgressDialog;", "executor", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "getLayoutId", "", "onBackPressed", "", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "plugin-force-notify_release"})
 public final class ForceNotifyAcceptUI
   extends MMActivity
 {
   final String TAG;
-  private com.tencent.mm.ui.base.p mCn;
-  private final ap tjX;
+  private com.tencent.mm.ui.base.p mHs;
+  private final aq tuP;
   
   public ForceNotifyAcceptUI()
   {
     AppMethodBeat.i(149206);
     this.TAG = "MicroMsg.ForceNotifyAcceptUI";
-    this.tjX = new ap(this.TAG);
+    this.tuP = new aq(this.TAG);
     AppMethodBeat.o(149206);
   }
   
@@ -59,23 +59,23 @@ public final class ForceNotifyAcceptUI
     setBackBtn((MenuItem.OnMenuItemClickListener)new a(this));
     paramBundle = (Context)this;
     getString(2131755906);
-    this.mCn = h.b(paramBundle, getString(2131755936), false, (DialogInterface.OnCancelListener)b.tjZ);
-    paramBundle = this.mCn;
+    this.mHs = h.b(paramBundle, getString(2131755936), false, (DialogInterface.OnCancelListener)b.tuR);
+    paramBundle = this.mHs;
     if (paramBundle != null) {
       paramBundle.show();
     }
     paramBundle = getIntent();
     d.g.b.p.g(paramBundle, "intent");
     paramBundle = paramBundle.getExtras().getString("data");
-    ad.d(this.TAG, "data:%s", new Object[] { paramBundle });
+    ae.d(this.TAG, "data:%s", new Object[] { paramBundle });
     if (paramBundle == null)
     {
       finish();
-      ad.d(this.TAG, "data is null");
+      ae.d(this.TAG, "data is null");
       AppMethodBeat.o(149203);
       return;
     }
-    this.tjX.post((Runnable)new c(this, paramBundle));
+    this.tuP.post((Runnable)new c(this, paramBundle));
     ((Button)findViewById(2131296313)).setOnClickListener((View.OnClickListener)new d(this, paramBundle));
     ((Button)findViewById(2131297687)).setOnClickListener((View.OnClickListener)new e(this));
     AppMethodBeat.o(149203);
@@ -85,7 +85,7 @@ public final class ForceNotifyAcceptUI
   {
     AppMethodBeat.i(149205);
     super.onDestroy();
-    com.tencent.mm.ui.base.p localp = this.mCn;
+    com.tencent.mm.ui.base.p localp = this.mHs;
     if (localp != null)
     {
       localp.dismiss();
@@ -101,7 +101,7 @@ public final class ForceNotifyAcceptUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
   static final class a
     implements MenuItem.OnMenuItemClickListener
   {
@@ -110,29 +110,29 @@ public final class ForceNotifyAcceptUI
     public final boolean onMenuItemClick(MenuItem paramMenuItem)
     {
       AppMethodBeat.i(149195);
-      this.tjY.onBackPressed();
+      this.tuQ.onBackPressed();
       AppMethodBeat.o(149195);
       return true;
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onCancel"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onCancel"})
   static final class b
     implements DialogInterface.OnCancelListener
   {
-    public static final b tjZ;
+    public static final b tuR;
     
     static
     {
       AppMethodBeat.i(149196);
-      tjZ = new b();
+      tuR = new b();
       AppMethodBeat.o(149196);
     }
     
     public final void onCancel(DialogInterface paramDialogInterface) {}
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
   static final class c
     implements Runnable
   {
@@ -141,12 +141,12 @@ public final class ForceNotifyAcceptUI
     public final void run()
     {
       AppMethodBeat.i(149198);
-      new com.tencent.mm.plugin.forcenotify.c.b(paramBundle).aED().b((com.tencent.mm.vending.c.a)new com.tencent.mm.vending.c.a() {});
+      new com.tencent.mm.plugin.forcenotify.c.b(paramBundle).aET().b((com.tencent.mm.vending.c.a)new com.tencent.mm.vending.c.a() {});
       AppMethodBeat.o(149198);
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class d
     implements View.OnClickListener
   {
@@ -157,22 +157,22 @@ public final class ForceNotifyAcceptUI
       AppMethodBeat.i(149201);
       Object localObject = new com.tencent.mm.hellhoundlib.b.b();
       ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/forcenotify/ui/ForceNotifyAcceptUI$onCreate$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahq());
-      paramView = this.tjY;
-      localObject = (Context)this.tjY;
-      this.tjY.getString(2131755906);
-      ForceNotifyAcceptUI.a(paramView, h.b((Context)localObject, this.tjY.getString(2131755936), false, (DialogInterface.OnCancelListener)1.tkb));
-      paramView = ForceNotifyAcceptUI.a(this.tjY);
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/forcenotify/ui/ForceNotifyAcceptUI$onCreate$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahF());
+      paramView = this.tuQ;
+      localObject = (Context)this.tuQ;
+      this.tuQ.getString(2131755906);
+      ForceNotifyAcceptUI.a(paramView, h.b((Context)localObject, this.tuQ.getString(2131755936), false, (DialogInterface.OnCancelListener)1.tuT));
+      paramView = ForceNotifyAcceptUI.a(this.tuQ);
       if (paramView != null) {
         paramView.show();
       }
-      new com.tencent.mm.plugin.forcenotify.c.a(paramBundle).aED().b((com.tencent.mm.vending.c.a)new com.tencent.mm.vending.c.a() {});
+      new com.tencent.mm.plugin.forcenotify.c.a(paramBundle).aET().b((com.tencent.mm.vending.c.a)new com.tencent.mm.vending.c.a() {});
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/forcenotify/ui/ForceNotifyAcceptUI$onCreate$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(149201);
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class e
     implements View.OnClickListener
   {
@@ -183,9 +183,9 @@ public final class ForceNotifyAcceptUI
       AppMethodBeat.i(149202);
       com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
       localb.bd(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/forcenotify/ui/ForceNotifyAcceptUI$onCreate$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-      ad.i(this.tjY.TAG, "Cancel!");
-      this.tjY.finish();
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/forcenotify/ui/ForceNotifyAcceptUI$onCreate$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+      ae.i(this.tuQ.TAG, "Cancel!");
+      this.tuQ.finish();
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/forcenotify/ui/ForceNotifyAcceptUI$onCreate$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(149202);
     }

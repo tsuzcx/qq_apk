@@ -26,29 +26,29 @@ final class l$i
   
   public final int getLength()
   {
-    AppMethodBeat.i(214969);
+    AppMethodBeat.i(213200);
     int i = this.aWJ.getAttributeCount();
-    AppMethodBeat.o(214969);
+    AppMethodBeat.o(213200);
     return i;
   }
   
   public final String getLocalName(int paramInt)
   {
-    AppMethodBeat.i(214971);
+    AppMethodBeat.i(213202);
     String str = this.aWJ.getAttributeName(paramInt);
-    AppMethodBeat.o(214971);
+    AppMethodBeat.o(213202);
     return str;
   }
   
   public final String getQName(int paramInt)
   {
-    AppMethodBeat.i(214972);
+    AppMethodBeat.i(213203);
     String str2 = this.aWJ.getAttributeName(paramInt);
     String str1 = str2;
     if (this.aWJ.getAttributePrefix(paramInt) != null) {
       str1 = this.aWJ.getAttributePrefix(paramInt) + ':' + str2;
     }
-    AppMethodBeat.o(214972);
+    AppMethodBeat.o(213203);
     return str1;
   }
   
@@ -69,17 +69,17 @@ final class l$i
   
   public final String getURI(int paramInt)
   {
-    AppMethodBeat.i(214970);
+    AppMethodBeat.i(213201);
     String str = this.aWJ.getAttributeNamespace(paramInt);
-    AppMethodBeat.o(214970);
+    AppMethodBeat.o(213201);
     return str;
   }
   
   public final String getValue(int paramInt)
   {
-    AppMethodBeat.i(214973);
+    AppMethodBeat.i(213204);
     String str = this.aWJ.getAttributeValue(paramInt);
-    AppMethodBeat.o(214973);
+    AppMethodBeat.o(213204);
     return str;
   }
   

@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.clean.c;
 
 public abstract interface b
 {
-  public abstract void fa(int paramInt1, int paramInt2);
+  public abstract void fb(int paramInt1, int paramInt2);
   
-  public abstract void tI(long paramLong);
+  public abstract void tZ(long paramLong);
 }
 
 

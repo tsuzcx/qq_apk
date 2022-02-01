@@ -4,7 +4,7 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Rect;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bu.b;
+import com.tencent.mm.bt.b;
 
 public final class c
   extends a
@@ -14,12 +14,12 @@ public final class c
     super(paramContext, paramb);
   }
   
-  protected final boolean fQj()
+  protected final boolean fUF()
   {
     return false;
   }
   
-  public final boolean fQk()
+  public final boolean fUG()
   {
     return false;
   }
@@ -42,7 +42,7 @@ public final class c
   {
     AppMethodBeat.i(9400);
     paramCanvas.drawColor(0);
-    paramCanvas.setMatrix(this.dal);
+    paramCanvas.setMatrix(this.dbn);
     getPresenter().onDraw(paramCanvas);
     AppMethodBeat.o(9400);
   }

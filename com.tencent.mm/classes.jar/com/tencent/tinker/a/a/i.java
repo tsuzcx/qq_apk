@@ -12,33 +12,33 @@ import java.util.zip.Adler32;
 
 public final class i
 {
-  static final short[] Mdk = new short[0];
-  public final s Mdl = new s();
-  private final f Mdm = new f((byte)0);
-  private final g Mdn = new g((byte)0);
-  private final h Mdo = new h((byte)0);
-  private final d Mdp = new d((byte)0);
-  private final b Mdq = new b((byte)0);
-  private final c Mdr = new c((byte)0);
-  private final a Mds = new a((byte)0);
-  private int Mdt = 0;
+  static final short[] MAf = new short[0];
+  public final s MAg = new s();
+  private final f MAh = new f((byte)0);
+  private final g MAi = new g((byte)0);
+  private final h MAj = new h((byte)0);
+  private final d MAk = new d((byte)0);
+  private final b MAl = new b((byte)0);
+  private final c MAm = new c((byte)0);
+  private final a MAn = new a((byte)0);
+  private int MAo = 0;
   public ByteBuffer aKX;
-  private byte[] vkY = null;
+  private byte[] vxd = null;
   
   public i(int paramInt)
   {
     this.aKX = ByteBuffer.wrap(new byte[paramInt]);
     this.aKX.order(ByteOrder.LITTLE_ENDIAN);
-    this.Mdl.fileSize = paramInt;
+    this.MAg.fileSize = paramInt;
   }
   
   public i(InputStream paramInputStream)
   {
     this.aKX = ByteBuffer.wrap(com.tencent.tinker.a.a.b.d.c(paramInputStream, 0));
     this.aKX.order(ByteOrder.LITTLE_ENDIAN);
-    paramInputStream = this.Mdl;
-    e locale = a(paramInputStream.MdF);
-    byte[] arrayOfByte = locale.ahD(8);
+    paramInputStream = this.MAg;
+    e locale = a(paramInputStream.MAA);
+    byte[] arrayOfByte = locale.aim(8);
     int i = j;
     if (arrayOfByte.length == 8)
     {
@@ -80,8 +80,8 @@ public final class i
         }
       }
     }
-    paramInputStream.ixp = locale.aKX.getInt();
-    paramInputStream.vkY = locale.ahD(20);
+    paramInputStream.iAi = locale.aKX.getInt();
+    paramInputStream.vxd = locale.aim(20);
     paramInputStream.fileSize = locale.aKX.getInt();
     i = locale.aKX.getInt();
     if (i != 112) {
@@ -91,31 +91,31 @@ public final class i
     if (i != 305419896) {
       throw new j("Unexpected endian tag: 0x" + Integer.toHexString(i));
     }
-    paramInputStream.MdY = locale.aKX.getInt();
-    paramInputStream.MdZ = locale.aKX.getInt();
-    paramInputStream.MdM.off = locale.aKX.getInt();
-    if (paramInputStream.MdM.off == 0) {
+    paramInputStream.MAU = locale.aKX.getInt();
+    paramInputStream.MAV = locale.aKX.getInt();
+    paramInputStream.MAH.off = locale.aKX.getInt();
+    if (paramInputStream.MAH.off == 0) {
       throw new j("Cannot merge dex files that do not contain a map");
     }
-    paramInputStream.MdG.size = locale.aKX.getInt();
-    paramInputStream.MdG.off = locale.aKX.getInt();
-    paramInputStream.MdH.size = locale.aKX.getInt();
-    paramInputStream.MdH.off = locale.aKX.getInt();
-    paramInputStream.MdI.size = locale.aKX.getInt();
-    paramInputStream.MdI.off = locale.aKX.getInt();
-    paramInputStream.MdJ.size = locale.aKX.getInt();
-    paramInputStream.MdJ.off = locale.aKX.getInt();
-    paramInputStream.MdK.size = locale.aKX.getInt();
-    paramInputStream.MdK.off = locale.aKX.getInt();
-    paramInputStream.MdL.size = locale.aKX.getInt();
-    paramInputStream.MdL.off = locale.aKX.getInt();
+    paramInputStream.MAB.size = locale.aKX.getInt();
+    paramInputStream.MAB.off = locale.aKX.getInt();
+    paramInputStream.MAC.size = locale.aKX.getInt();
+    paramInputStream.MAC.off = locale.aKX.getInt();
+    paramInputStream.MAD.size = locale.aKX.getInt();
+    paramInputStream.MAD.off = locale.aKX.getInt();
+    paramInputStream.MAE.size = locale.aKX.getInt();
+    paramInputStream.MAE.off = locale.aKX.getInt();
+    paramInputStream.MAF.size = locale.aKX.getInt();
+    paramInputStream.MAF.off = locale.aKX.getInt();
+    paramInputStream.MAG.size = locale.aKX.getInt();
+    paramInputStream.MAG.off = locale.aKX.getInt();
     paramInputStream.dataSize = locale.aKX.getInt();
-    paramInputStream.Mea = locale.aKX.getInt();
-    paramInputStream.a(ahy(paramInputStream.MdM.off));
-    paramInputStream.fYk();
+    paramInputStream.MAW = locale.aKX.getInt();
+    paramInputStream.a(aih(paramInputStream.MAH.off));
+    paramInputStream.gcJ();
   }
   
-  private static void kW(int paramInt1, int paramInt2)
+  private static void ld(int paramInt1, int paramInt2)
   {
     if ((paramInt1 < 0) || (paramInt1 >= paramInt2)) {
       throw new IndexOutOfBoundsException("index:" + paramInt1 + ", length=" + paramInt2);
@@ -135,7 +135,7 @@ public final class i
     return new e("section", localByteBuffer, (byte)0);
   }
   
-  public final e ahy(int paramInt)
+  public final e aih(int paramInt)
   {
     if ((paramInt < 0) || (paramInt >= this.aKX.capacity())) {
       throw new IllegalArgumentException("position=" + paramInt + " length=" + this.aKX.capacity());
@@ -147,17 +147,17 @@ public final class i
     return new e("temp-section", localByteBuffer, (byte)0);
   }
   
-  public final int ahz(int paramInt)
+  public final int aii(int paramInt)
   {
-    kW(paramInt, this.Mdl.MdH.size);
-    int i = this.Mdl.MdH.off;
+    ld(paramInt, this.MAg.MAC.size);
+    int i = this.MAg.MAC.off;
     return this.aKX.getInt(i + paramInt * 4);
   }
   
-  public final void fXM()
+  public final void gcl()
   {
-    ahy(12).write(zB(true));
-    e locale = ahy(8);
+    aih(12).write(zP(true));
+    e locale = aih(8);
     Adler32 localAdler32 = new Adler32();
     byte[] arrayOfByte = new byte[8192];
     ByteBuffer localByteBuffer = this.aKX.duplicate();
@@ -172,10 +172,10 @@ public final class i
     locale.writeInt((int)localAdler32.getValue());
   }
   
-  public final byte[] zB(boolean paramBoolean)
+  public final byte[] zP(boolean paramBoolean)
   {
-    if ((this.vkY != null) && (!paramBoolean)) {
-      return this.vkY;
+    if ((this.vxd != null) && (!paramBoolean)) {
+      return this.vxd;
     }
     try
     {
@@ -197,7 +197,7 @@ public final class i
       throw new AssertionError();
     }
     byte[] arrayOfByte1;
-    this.vkY = arrayOfByte1;
+    this.vxd = arrayOfByte1;
     return arrayOfByte1;
   }
   
@@ -209,7 +209,7 @@ public final class i
     
     public final int size()
     {
-      return i.a(i.this).MdL.size;
+      return i.a(i.this).MAG.size;
     }
   }
   
@@ -221,7 +221,7 @@ public final class i
     
     public final int size()
     {
-      return i.a(i.this).MdJ.size;
+      return i.a(i.this).MAE.size;
     }
   }
   
@@ -233,7 +233,7 @@ public final class i
     
     public final int size()
     {
-      return i.a(i.this).MdK.size;
+      return i.a(i.this).MAF.size;
     }
   }
   
@@ -245,7 +245,7 @@ public final class i
     
     public final int size()
     {
-      return i.a(i.this).MdI.size;
+      return i.a(i.this).MAD.size;
     }
   }
   
@@ -262,184 +262,184 @@ public final class i
     
     private void a(s.a parama, boolean paramBoolean)
     {
-      if (parama.Mec)
+      if (parama.MAZ)
       {
         if (paramBoolean) {
-          fYp();
+          gcO();
         }
       }
       else {
         return;
       }
-      fYo();
+      gcN();
     }
     
     public final int a(k paramk)
     {
-      a(i.a(i.this).MdV, true);
+      a(i.a(i.this).MAR, true);
       return super.a(paramk);
     }
     
     public final int a(n paramn)
     {
-      a(i.a(i.this).MdJ, true);
+      a(i.a(i.this).MAE, true);
       return super.a(paramn);
     }
     
     public final int a(p paramp)
     {
-      a(i.a(i.this).MdK, true);
+      a(i.a(i.this).MAF, true);
       return super.a(paramp);
     }
     
     public final int a(q paramq)
     {
-      a(i.a(i.this).MdI, true);
+      a(i.a(i.this).MAD, true);
       return super.a(paramq);
     }
     
     public final int a(r paramr)
     {
-      a(i.a(i.this).MdS, true);
+      a(i.a(i.this).MAN, true);
       return super.a(paramr);
     }
     
     public final int a(t paramt)
     {
-      a(i.a(i.this).MdN, true);
+      a(i.a(i.this).MAI, true);
       return super.a(paramt);
     }
     
     public final int b(a parama)
     {
-      a(i.a(i.this).MdU, true);
+      a(i.a(i.this).MAQ, true);
       return super.b(parama);
     }
     
     public final int b(b paramb)
     {
-      a(i.a(i.this).MdP, true);
+      a(i.a(i.this).MAK, true);
       return super.b(paramb);
     }
     
     public final int b(c paramc)
     {
-      a(i.a(i.this).MdO, true);
+      a(i.a(i.this).MAJ, true);
       return super.b(paramc);
     }
     
     public final int b(d paramd)
     {
-      a(i.a(i.this).MdW, true);
+      a(i.a(i.this).MAS, true);
       return super.b(paramd);
     }
     
     public final int b(e parame)
     {
-      a(i.a(i.this).MdQ, true);
+      a(i.a(i.this).MAL, true);
       return super.b(parame);
     }
     
     public final int b(f paramf)
     {
-      a(i.a(i.this).MdL, true);
+      a(i.a(i.this).MAG, true);
       return super.b(paramf);
     }
     
     public final int b(g paramg)
     {
-      a(i.a(i.this).MdR, true);
+      a(i.a(i.this).MAM, true);
       return super.b(paramg);
     }
     
     public final int b(h paramh)
     {
-      a(i.a(i.this).MdT, true);
+      a(i.a(i.this).MAO, true);
       return super.b(paramh);
     }
     
-    public final r fXN()
+    public final r gcm()
     {
-      a(i.a(i.this).MdS, false);
-      return super.fXN();
+      a(i.a(i.this).MAN, false);
+      return super.gcm();
     }
     
-    public final t fXO()
+    public final t gcn()
     {
-      a(i.a(i.this).MdN, false);
-      return super.fXO();
+      a(i.a(i.this).MAI, false);
+      return super.gcn();
     }
     
-    public final n fXP()
+    public final n gco()
     {
-      a(i.a(i.this).MdJ, false);
-      return super.fXP();
+      a(i.a(i.this).MAE, false);
+      return super.gco();
     }
     
-    public final p fXQ()
+    public final p gcp()
     {
-      a(i.a(i.this).MdK, false);
-      return super.fXQ();
+      a(i.a(i.this).MAF, false);
+      return super.gcp();
     }
     
-    public final q fXR()
+    public final q gcq()
     {
-      a(i.a(i.this).MdI, false);
-      return super.fXR();
+      a(i.a(i.this).MAD, false);
+      return super.gcq();
     }
     
-    public final f fXS()
+    public final f gcr()
     {
-      a(i.a(i.this).MdL, false);
-      return super.fXS();
+      a(i.a(i.this).MAG, false);
+      return super.gcr();
     }
     
-    public final g fXT()
+    public final g gcs()
     {
-      a(i.a(i.this).MdR, false);
-      return super.fXT();
+      a(i.a(i.this).MAM, false);
+      return super.gcs();
     }
     
-    public final h fXU()
+    public final h gct()
     {
-      a(i.a(i.this).MdT, false);
-      return super.fXU();
+      a(i.a(i.this).MAO, false);
+      return super.gct();
     }
     
-    public final e fXV()
+    public final e gcu()
     {
-      a(i.a(i.this).MdQ, false);
-      return super.fXV();
+      a(i.a(i.this).MAL, false);
+      return super.gcu();
     }
     
-    public final a fXW()
+    public final a gcv()
     {
-      a(i.a(i.this).MdU, false);
-      return super.fXW();
+      a(i.a(i.this).MAQ, false);
+      return super.gcv();
     }
     
-    public final b fXX()
+    public final b gcw()
     {
-      a(i.a(i.this).MdP, false);
-      return super.fXX();
+      a(i.a(i.this).MAK, false);
+      return super.gcw();
     }
     
-    public final c fXY()
+    public final c gcx()
     {
-      a(i.a(i.this).MdO, false);
-      return super.fXY();
+      a(i.a(i.this).MAJ, false);
+      return super.gcx();
     }
     
-    public final d fXZ()
+    public final d gcy()
     {
-      a(i.a(i.this).MdW, false);
-      return super.fXZ();
+      a(i.a(i.this).MAS, false);
+      return super.gcy();
     }
     
-    public final k fYa()
+    public final k gcz()
     {
-      a(i.a(i.this).MdV, false);
-      return super.fYa();
+      a(i.a(i.this).MAR, false);
+      return super.gcz();
     }
   }
   
@@ -449,16 +449,16 @@ public final class i
   {
     private f() {}
     
-    public final String Kw(int paramInt)
+    public final String KW(int paramInt)
     {
-      i.kX(paramInt, i.a(i.this).MdG.size);
-      paramInt = i.this.ahy(i.a(i.this).MdG.off + paramInt * 4).aKX.getInt();
-      return i.this.ahy(paramInt).fXN().value;
+      i.le(paramInt, i.a(i.this).MAB.size);
+      paramInt = i.this.aih(i.a(i.this).MAB.off + paramInt * 4).aKX.getInt();
+      return i.this.aih(paramInt).gcm().value;
     }
     
     public final int size()
     {
-      return i.a(i.this).MdG.size;
+      return i.a(i.this).MAB.size;
     }
   }
   
@@ -470,7 +470,7 @@ public final class i
     
     public final int size()
     {
-      return i.a(i.this).MdH.size;
+      return i.a(i.this).MAC.size;
     }
   }
   
@@ -482,7 +482,7 @@ public final class i
     
     public final int size()
     {
-      return i.a(i.this).MdH.size;
+      return i.a(i.this).MAC.size;
     }
   }
 }

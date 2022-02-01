@@ -3,24 +3,18 @@ package com.tencent.mm.plugin.finder.utils;
 import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.graphics.Matrix;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.os.Parcelable;
-import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.component.api.jumper.UICustomParam.a;
 import com.tencent.mm.g.b.a.an;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.cf;
-import com.tencent.mm.model.u;
+import com.tencent.mm.model.ch;
+import com.tencent.mm.model.v;
 import com.tencent.mm.modelcontrol.VideoTransPara;
-import com.tencent.mm.plugin.appbrand.api.f;
-import com.tencent.mm.plugin.appbrand.service.o;
 import com.tencent.mm.plugin.finder.edit.FinderPhotoEditPluginLayout;
 import com.tencent.mm.plugin.finder.edit.FinderVideoEditPluginLayout;
 import com.tencent.mm.plugin.finder.feed.ui.FinderAtTimelineUI;
@@ -77,14 +71,15 @@ import com.tencent.mm.plugin.finder.viewmodel.component.FinderReporterUIC;
 import com.tencent.mm.plugin.finder.viewmodel.component.FinderReporterUIC.a;
 import com.tencent.mm.plugin.i.a.p.a;
 import com.tencent.mm.plugin.recordvideo.jumper.RecordConfigProvider;
-import com.tencent.mm.protocal.protobuf.amu;
-import com.tencent.mm.protocal.protobuf.aqb;
-import com.tencent.mm.protocal.protobuf.aqy;
-import com.tencent.mm.protocal.protobuf.bve;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.al.a;
+import com.tencent.mm.plugin.report.e;
+import com.tencent.mm.protocal.protobuf.ang;
+import com.tencent.mm.protocal.protobuf.aqq;
+import com.tencent.mm.protocal.protobuf.arn;
+import com.tencent.mm.protocal.protobuf.bvy;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.am.a;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.view.ViewAnimHelper.ViewInfo;
 import d.g.b.q;
@@ -94,37 +89,37 @@ import d.n.n;
 import d.z;
 import java.util.LinkedList;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/utils/ActivityRouter;", "", "()V", "TAG", "", "enterAtMyTimelineUI", "", "context", "Landroid/content/Context;", "i", "Landroid/content/Intent;", "enterAuthInfoWeApp", "appId", "enterPath", "enterChattingUIFromComment", "sessionId", "username", "feedId", "", "commentId", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "enterChattingUIFromFans", "fansId", "enterChattingUIFromProfile", "scene", "", "enterCropAvatarUI", "Landroid/app/Activity;", "rc", "enterFavFeedUI", "Lcom/tencent/mm/ui/MMActivity;", "reqCode", "enterFavTimelineUI", "requestCode", "enterFeedReletedTimelineUI", "enterFinderBlackConversationUI", "convType", "enterFinderCommentUI", "enterFinderContactSearchIncludeFollowUI", "finderDataCache", "Lcom/tencent/mm/protocal/protobuf/FinderFeedSearchObj;", "enterFinderContactSearchIncludeFollowUIForResult", "activity", "enterFinderContactSearchUI", "enterFinderConversationUI", "enterFinderCreateContactUI", "enterFinderEditTextUI", "enterFinderFansListUI", "enterFinderFeedLbsUI", "enterFinderFeedRelUI", "enterFinderFeedSearchUI", "enterFinderFinderMsgUI", "enterFinderFinderSysMsgUI", "enterFinderHelloConversationUI", "enterFinderImagePreviewUI", "enterFinderLikedFeedUI", "enterFinderMediaEditUI", "rawPath", "type", "matrix", "Landroid/graphics/Matrix;", "cropRect", "Landroid/graphics/Rect;", "offset", "", "isVlogMode", "", "enterFinderMediaPreviewUI", "viewInfo", "Lcom/tencent/mm/view/ViewAnimHelper$ViewInfo;", "localContent", "Lcom/tencent/mm/protocal/protobuf/LocalFinderContent;", "refFeedInfo", "Lcom/tencent/mm/protocal/protobuf/FinderObjectRefInfo;", "enterFinderMixSearchUI", "enterFinderMsgFeedDetailUI", "enterFinderNewUIC", "enterFinderPostAlbumUI", "enterFinderPostRouterUI", "intent", "enterFinderPostUI", "enterFinderProfileTimelineUI", "enterFinderProfileUI", "enterFinderRetransmitSourceUI", "enterFinderSelfUI", "enterFinderSettingInfoUI", "enterFinderShareFeedDetailUI", "enterFinderShareFeedDetailUI2", "enterFinderTimelineUI", "enterFinderWxConversationUI", "enterFinderWxMsgUI", "enterFinderWxSettingUI", "enterFriendBlackListUI", "enterFriendContactUI", "enterFriendFoldedTimelineUI", "enterFriendLikeFeedUI", "enterFriendLikeTimelineUI", "enterFriendRecommendUI", "actionInfo", "Lcom/tencent/mm/protocal/protobuf/FriendLikeFinderObject;", "totalCount", "isPosterView", "enterLbsStreamFeedUI", "enterLbsStreamListUI", "enterModifyNameUI", "enterOriginalRequestUI", "enterOriginalUI", "enterPostAtUI", "enterRealnameVerifyUI", "fromActivity", "enterRelatedFeedUI", "enterRelatedTimelineUI", "enterSelectCoverUI", "enterSelectDistrictUI", "enterSelectSexUI", "enterSelfQRCodeUI", "enterTopicFeedUI", "enterTopicTimelineUI", "enterUnOpenUI", "fillPostFromRoute", "curIntent", "goDraft", "key", "Lcom/tencent/mm/storage/ConstantsStorage$BusinessInfoKey;", "routeFrom", "openImagePreviewGallery", "path", "args", "", "tryGoPlainTextPostUIIfDraftExist", "tryGoPostUIIfDraftExist", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/utils/ActivityRouter;", "", "()V", "TAG", "", "enterAtMyTimelineUI", "", "context", "Landroid/content/Context;", "i", "Landroid/content/Intent;", "enterAuthInfoWeApp", "appId", "enterPath", "enterChattingUIFromComment", "sessionId", "username", "feedId", "", "commentId", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "enterChattingUIFromFans", "fansId", "enterChattingUIFromProfile", "scene", "", "enterCropAvatarUI", "Landroid/app/Activity;", "rc", "enterFavFeedUI", "Lcom/tencent/mm/ui/MMActivity;", "reqCode", "enterFavTimelineUI", "requestCode", "enterFeedReletedTimelineUI", "enterFinderBlackConversationUI", "convType", "enterFinderCommentUI", "enterFinderContactSearchIncludeFollowUI", "finderDataCache", "Lcom/tencent/mm/protocal/protobuf/FinderFeedSearchObj;", "enterFinderContactSearchIncludeFollowUIForResult", "activity", "enterFinderContactSearchUI", "enterFinderConversationUI", "enterFinderCreateContactUI", "enterFinderEditTextUI", "enterFinderFansListUI", "enterFinderFeedLbsUI", "enterFinderFeedRelUI", "enterFinderFeedSearchUI", "enterFinderFinderMsgUI", "enterFinderFinderSysMsgUI", "enterFinderHelloConversationUI", "enterFinderImagePreviewUI", "enterFinderLikedFeedUI", "enterFinderMediaEditUI", "rawPath", "type", "matrix", "Landroid/graphics/Matrix;", "cropRect", "Landroid/graphics/Rect;", "offset", "", "isVlogMode", "", "enterFinderMediaPreviewUI", "viewInfo", "Lcom/tencent/mm/view/ViewAnimHelper$ViewInfo;", "localContent", "Lcom/tencent/mm/protocal/protobuf/LocalFinderContent;", "refFeedInfo", "Lcom/tencent/mm/protocal/protobuf/FinderObjectRefInfo;", "enterFinderMixSearchUI", "enterFinderMsgFeedDetailUI", "enterFinderNewUIC", "enterFinderPostAlbumUI", "enterFinderPostRouterUI", "intent", "enterFinderPostUI", "enterFinderProfileTimelineUI", "enterFinderProfileUI", "enterFinderRetransmitSourceUI", "enterFinderSelfUI", "enterFinderSettingInfoUI", "enterFinderShareFeedDetailUI", "enterFinderShareFeedDetailUI2", "enterFinderTimelineUI", "enterFinderWxConversationUI", "enterFinderWxMsgUI", "enterFinderWxSettingUI", "enterFriendBlackListUI", "enterFriendContactUI", "enterFriendFoldedTimelineUI", "enterFriendLikeFeedUI", "enterFriendLikeTimelineUI", "enterFriendRecommendUI", "actionInfo", "Lcom/tencent/mm/protocal/protobuf/FriendLikeFinderObject;", "totalCount", "isPosterView", "enterLbsStreamFeedUI", "enterLbsStreamListUI", "enterModifyNameUI", "enterOriginalRequestUI", "enterOriginalUI", "enterPostAtUI", "enterRealnameVerifyUI", "fromActivity", "enterRelatedFeedUI", "enterRelatedTimelineUI", "enterSelectCoverUI", "enterSelectDistrictUI", "enterSelectSexUI", "enterSelfQRCodeUI", "enterTopicFeedUI", "enterTopicTimelineUI", "enterUnOpenUI", "fillPostFromRoute", "curIntent", "goDraft", "key", "Lcom/tencent/mm/storage/ConstantsStorage$BusinessInfoKey;", "routeFrom", "openImagePreviewGallery", "path", "args", "", "tryGoPlainTextPostUIIfDraftExist", "tryGoPostUIIfDraftExist", "plugin-finder_release"})
 public final class a
 {
-  public static final a sKD;
+  public static final a sVQ;
   
   static
   {
     AppMethodBeat.i(167872);
-    sKD = new a();
+    sVQ = new a();
     AppMethodBeat.o(167872);
   }
   
   public static void A(Context paramContext, Intent paramIntent)
   {
-    AppMethodBeat.i(204414);
+    AppMethodBeat.i(205032);
     d.g.b.p.h(paramContext, "context");
-    com.tencent.mm.plugin.finder.spam.a locala = com.tencent.mm.plugin.finder.spam.a.suA;
-    if (com.tencent.mm.plugin.finder.spam.a.ain("search") != 0)
+    com.tencent.mm.plugin.finder.spam.a locala = com.tencent.mm.plugin.finder.spam.a.sEK;
+    if (com.tencent.mm.plugin.finder.spam.a.ajk("search") != 0)
     {
-      paramIntent = com.tencent.mm.plugin.finder.spam.a.suA;
-      com.tencent.mm.ui.base.h.a(paramContext, com.tencent.mm.plugin.finder.spam.a.aio("search"), "", paramContext.getString(2131766205), null);
-      AppMethodBeat.o(204414);
+      paramIntent = com.tencent.mm.plugin.finder.spam.a.sEK;
+      com.tencent.mm.ui.base.h.a(paramContext, com.tencent.mm.plugin.finder.spam.a.ajl("search"), "", paramContext.getString(2131766205), null);
+      AppMethodBeat.o(205032);
       return;
     }
-    com.tencent.mm.plugin.report.e.ygI.idkeyStat(1265L, 0L, 1L, false);
+    e.ywz.idkeyStat(1265L, 0L, 1L, false);
     paramIntent.setClass(paramContext, FinderMixSearchUI.class);
     paramIntent = new com.tencent.mm.hellhoundlib.b.a().bc(paramIntent);
-    com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramIntent.ahp(), "com/tencent/mm/plugin/finder/utils/ActivityRouter", "enterFinderMixSearchUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    paramContext.startActivity((Intent)paramIntent.mq(0));
+    com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramIntent.ahE(), "com/tencent/mm/plugin/finder/utils/ActivityRouter", "enterFinderMixSearchUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramContext.startActivity((Intent)paramIntent.mt(0));
     com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/plugin/finder/utils/ActivityRouter", "enterFinderMixSearchUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    AppMethodBeat.o(204414);
+    AppMethodBeat.o(205032);
   }
   
   public static void B(Context paramContext, Intent paramIntent)
@@ -144,8 +139,8 @@ public final class a
       localIntent.addFlags(67108864);
       localIntent.setClass(paramContext, FinderEditTextUI.class);
       paramIntent = new com.tencent.mm.hellhoundlib.b.a().bc(localIntent);
-      com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramIntent.ahp(), "com/tencent/mm/plugin/finder/utils/ActivityRouter", "enterFinderEditTextUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramContext.startActivity((Intent)paramIntent.mq(0));
+      com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramIntent.ahE(), "com/tencent/mm/plugin/finder/utils/ActivityRouter", "enterFinderEditTextUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramContext.startActivity((Intent)paramIntent.mt(0));
       com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/plugin/finder/utils/ActivityRouter", "enterFinderEditTextUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       AppMethodBeat.o(167851);
       return;
@@ -167,11 +162,11 @@ public final class a
         paramIntent.addFlags(268435456);
       }
       localIntent.setClass(paramContext, FinderShareFeedRelUI.class);
-      paramIntent = com.tencent.mm.plugin.finder.report.e.snY;
-      com.tencent.mm.plugin.finder.report.e.cDs();
+      paramIntent = com.tencent.mm.plugin.finder.report.f.syc;
+      com.tencent.mm.plugin.finder.report.f.cFn();
       paramIntent = new com.tencent.mm.hellhoundlib.b.a().bc(localIntent);
-      com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramIntent.ahp(), "com/tencent/mm/plugin/finder/utils/ActivityRouter", "enterFinderShareFeedDetailUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramContext.startActivity((Intent)paramIntent.mq(0));
+      com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramIntent.ahE(), "com/tencent/mm/plugin/finder/utils/ActivityRouter", "enterFinderShareFeedDetailUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramContext.startActivity((Intent)paramIntent.mt(0));
       com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/plugin/finder/utils/ActivityRouter", "enterFinderShareFeedDetailUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       AppMethodBeat.o(167852);
       return;
@@ -180,7 +175,7 @@ public final class a
   
   public static void D(Context paramContext, Intent paramIntent)
   {
-    AppMethodBeat.i(204415);
+    AppMethodBeat.i(205033);
     d.g.b.p.h(paramContext, "context");
     if (!(paramContext instanceof Activity)) {}
     for (Intent localIntent = paramIntent;; localIntent = null)
@@ -190,10 +185,10 @@ public final class a
       }
       paramIntent.setClass(paramContext, FinderShareFeedDetailUI.class);
       paramIntent = new com.tencent.mm.hellhoundlib.b.a().bc(paramIntent);
-      com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramIntent.ahp(), "com/tencent/mm/plugin/finder/utils/ActivityRouter", "enterFinderShareFeedDetailUI2", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramContext.startActivity((Intent)paramIntent.mq(0));
+      com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramIntent.ahE(), "com/tencent/mm/plugin/finder/utils/ActivityRouter", "enterFinderShareFeedDetailUI2", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramContext.startActivity((Intent)paramIntent.mt(0));
       com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/plugin/finder/utils/ActivityRouter", "enterFinderShareFeedDetailUI2", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      AppMethodBeat.o(204415);
+      AppMethodBeat.o(205033);
       return;
     }
   }
@@ -210,8 +205,8 @@ public final class a
       }
       paramIntent.setClass(paramContext, FinderRetransmitSourceUI.class);
       paramIntent = new com.tencent.mm.hellhoundlib.b.a().bc(paramIntent);
-      com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramIntent.ahp(), "com/tencent/mm/plugin/finder/utils/ActivityRouter", "enterFinderRetransmitSourceUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramContext.startActivity((Intent)paramIntent.mq(0));
+      com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramIntent.ahE(), "com/tencent/mm/plugin/finder/utils/ActivityRouter", "enterFinderRetransmitSourceUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramContext.startActivity((Intent)paramIntent.mt(0));
       com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/plugin/finder/utils/ActivityRouter", "enterFinderRetransmitSourceUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       AppMethodBeat.o(167853);
       return;
@@ -230,8 +225,8 @@ public final class a
       }
       paramIntent.setClass(paramContext, FinderMsgFeedDetailUI.class);
       paramIntent = new com.tencent.mm.hellhoundlib.b.a().bc(paramIntent);
-      com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramIntent.ahp(), "com/tencent/mm/plugin/finder/utils/ActivityRouter", "enterFinderMsgFeedDetailUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramContext.startActivity((Intent)paramIntent.mq(0));
+      com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramIntent.ahE(), "com/tencent/mm/plugin/finder/utils/ActivityRouter", "enterFinderMsgFeedDetailUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramContext.startActivity((Intent)paramIntent.mt(0));
       com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/plugin/finder/utils/ActivityRouter", "enterFinderMsgFeedDetailUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       AppMethodBeat.o(167854);
       return;
@@ -244,8 +239,8 @@ public final class a
     d.g.b.p.h(paramContext, "context");
     paramIntent.addFlags(67108864);
     paramIntent.setClass(paramContext, FinderAlbumUI.class);
-    b localb = b.sxa;
-    if (!b.cGa()) {
+    b localb = b.sHP;
+    if (!b.cHX()) {
       paramIntent.putExtra("key_can_select_video_and_pic", true);
     }
     paramIntent.putExtra("is_hide_album_footer", true);
@@ -253,13 +248,13 @@ public final class a
     paramIntent.putExtra("max_select_count", 9);
     paramIntent.putExtra("query_source_type", 25);
     paramIntent.putExtra("query_media_type", 3);
-    localb = b.sxa;
-    paramIntent.putExtra("album_video_max_duration", b.cEZ());
-    localb = b.sxa;
-    paramIntent.putExtra("album_video_min_duration", b.cEY().minDuration);
+    localb = b.sHP;
+    paramIntent.putExtra("album_video_max_duration", b.cGV());
+    localb = b.sHP;
+    paramIntent.putExtra("album_video_min_duration", b.cGU().minDuration);
     paramIntent = new com.tencent.mm.hellhoundlib.b.a().bc(paramIntent);
-    com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramIntent.ahp(), "com/tencent/mm/plugin/finder/utils/ActivityRouter", "enterFinderPostAlbumUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    paramContext.startActivity((Intent)paramIntent.mq(0));
+    com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramIntent.ahE(), "com/tencent/mm/plugin/finder/utils/ActivityRouter", "enterFinderPostAlbumUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramContext.startActivity((Intent)paramIntent.mt(0));
     com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/plugin/finder/utils/ActivityRouter", "enterFinderPostAlbumUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     AppMethodBeat.o(167855);
   }
@@ -276,8 +271,8 @@ public final class a
         localIntent.addFlags(268435456);
       }
       paramIntent = new com.tencent.mm.hellhoundlib.b.a().bc(paramIntent);
-      com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramIntent.ahp(), "com/tencent/mm/plugin/finder/utils/ActivityRouter", "enterFinderImagePreviewUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramContext.startActivity((Intent)paramIntent.mq(0));
+      com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramIntent.ahE(), "com/tencent/mm/plugin/finder/utils/ActivityRouter", "enterFinderImagePreviewUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramContext.startActivity((Intent)paramIntent.mt(0));
       com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/plugin/finder/utils/ActivityRouter", "enterFinderImagePreviewUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       AppMethodBeat.o(167860);
       return;
@@ -290,8 +285,8 @@ public final class a
     d.g.b.p.h(paramContext, "context");
     paramIntent.setClass(paramContext, FinderModifyNameUI.class);
     paramIntent = new com.tencent.mm.hellhoundlib.b.a().bc(paramIntent);
-    com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramIntent.ahp(), "com/tencent/mm/plugin/finder/utils/ActivityRouter", "enterModifyNameUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    paramContext.startActivity((Intent)paramIntent.mq(0));
+    com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramIntent.ahE(), "com/tencent/mm/plugin/finder/utils/ActivityRouter", "enterModifyNameUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramContext.startActivity((Intent)paramIntent.mt(0));
     com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/plugin/finder/utils/ActivityRouter", "enterModifyNameUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     AppMethodBeat.o(167862);
   }
@@ -312,8 +307,8 @@ public final class a
       }
       localIntent.setClass(paramContext, FinderTopicFeedUI.class);
       paramIntent = new com.tencent.mm.hellhoundlib.b.a().bc(localIntent);
-      com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramIntent.ahp(), "com/tencent/mm/plugin/finder/utils/ActivityRouter", "enterTopicFeedUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramContext.startActivity((Intent)paramIntent.mq(0));
+      com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramIntent.ahE(), "com/tencent/mm/plugin/finder/utils/ActivityRouter", "enterTopicFeedUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramContext.startActivity((Intent)paramIntent.mt(0));
       com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/plugin/finder/utils/ActivityRouter", "enterTopicFeedUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       AppMethodBeat.o(167870);
       return;
@@ -332,8 +327,8 @@ public final class a
       }
       paramIntent.setClass(paramContext, FinderTopicTimelineUI.class);
       paramIntent = new com.tencent.mm.hellhoundlib.b.a().bc(paramIntent);
-      com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramIntent.ahp(), "com/tencent/mm/plugin/finder/utils/ActivityRouter", "enterTopicTimelineUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramContext.startActivity((Intent)paramIntent.mq(0));
+      com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramIntent.ahE(), "com/tencent/mm/plugin/finder/utils/ActivityRouter", "enterTopicTimelineUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramContext.startActivity((Intent)paramIntent.mt(0));
       com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/plugin/finder/utils/ActivityRouter", "enterTopicTimelineUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       AppMethodBeat.o(167871);
       return;
@@ -342,7 +337,7 @@ public final class a
   
   public static void L(Context paramContext, Intent paramIntent)
   {
-    AppMethodBeat.i(204420);
+    AppMethodBeat.i(205038);
     d.g.b.p.h(paramContext, "context");
     if (!(paramContext instanceof Activity)) {}
     for (Intent localIntent = paramIntent;; localIntent = null)
@@ -352,17 +347,17 @@ public final class a
       }
       paramIntent.setClass(paramContext, FinderLbsStreamListUI.class);
       paramIntent = new com.tencent.mm.hellhoundlib.b.a().bc(paramIntent);
-      com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramIntent.ahp(), "com/tencent/mm/plugin/finder/utils/ActivityRouter", "enterLbsStreamListUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramContext.startActivity((Intent)paramIntent.mq(0));
+      com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramIntent.ahE(), "com/tencent/mm/plugin/finder/utils/ActivityRouter", "enterLbsStreamListUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramContext.startActivity((Intent)paramIntent.mt(0));
       com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/plugin/finder/utils/ActivityRouter", "enterLbsStreamListUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      AppMethodBeat.o(204420);
+      AppMethodBeat.o(205038);
       return;
     }
   }
   
   public static void M(Context paramContext, Intent paramIntent)
   {
-    AppMethodBeat.i(204422);
+    AppMethodBeat.i(205040);
     d.g.b.p.h(paramContext, "context");
     if (!(paramContext instanceof Activity)) {}
     for (Intent localIntent = paramIntent;; localIntent = null)
@@ -372,36 +367,36 @@ public final class a
       }
       paramIntent.setClass(paramContext, FinderRelatedFeedUI.class);
       paramIntent = new com.tencent.mm.hellhoundlib.b.a().bc(paramIntent);
-      com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramIntent.ahp(), "com/tencent/mm/plugin/finder/utils/ActivityRouter", "enterRelatedFeedUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramContext.startActivity((Intent)paramIntent.mq(0));
+      com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramIntent.ahE(), "com/tencent/mm/plugin/finder/utils/ActivityRouter", "enterRelatedFeedUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramContext.startActivity((Intent)paramIntent.mt(0));
       com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/plugin/finder/utils/ActivityRouter", "enterRelatedFeedUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      AppMethodBeat.o(204422);
+      AppMethodBeat.o(205040);
       return;
     }
   }
   
   public static void N(Context paramContext, Intent paramIntent)
   {
-    AppMethodBeat.i(204423);
+    AppMethodBeat.i(205041);
     d.g.b.p.h(paramContext, "context");
     paramIntent.setClass(paramContext, FinderRelatedTimelineUI.class);
     if ((paramContext instanceof Activity))
     {
       ((Activity)paramContext).startActivityForResult(paramIntent, 501);
-      AppMethodBeat.o(204423);
+      AppMethodBeat.o(205041);
       return;
     }
     paramIntent.addFlags(268435456);
     paramIntent = new com.tencent.mm.hellhoundlib.b.a().bc(paramIntent);
-    com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramIntent.ahp(), "com/tencent/mm/plugin/finder/utils/ActivityRouter", "enterRelatedTimelineUI", "(Landroid/content/Context;Landroid/content/Intent;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    paramContext.startActivity((Intent)paramIntent.mq(0));
+    com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramIntent.ahE(), "com/tencent/mm/plugin/finder/utils/ActivityRouter", "enterRelatedTimelineUI", "(Landroid/content/Context;Landroid/content/Intent;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramContext.startActivity((Intent)paramIntent.mt(0));
     com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/plugin/finder/utils/ActivityRouter", "enterRelatedTimelineUI", "(Landroid/content/Context;Landroid/content/Intent;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    AppMethodBeat.o(204423);
+    AppMethodBeat.o(205041);
   }
   
   public static void O(Context paramContext, Intent paramIntent)
   {
-    AppMethodBeat.i(204424);
+    AppMethodBeat.i(205042);
     d.g.b.p.h(paramContext, "context");
     if (!(paramContext instanceof Activity)) {}
     for (Intent localIntent = paramIntent;; localIntent = null)
@@ -411,17 +406,17 @@ public final class a
       }
       paramIntent.setClass(paramContext, FinderFriendLikeTimelineUI.class);
       paramIntent = new com.tencent.mm.hellhoundlib.b.a().bc(paramIntent);
-      com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramIntent.ahp(), "com/tencent/mm/plugin/finder/utils/ActivityRouter", "enterFriendLikeTimelineUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramContext.startActivity((Intent)paramIntent.mq(0));
+      com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramIntent.ahE(), "com/tencent/mm/plugin/finder/utils/ActivityRouter", "enterFriendLikeTimelineUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramContext.startActivity((Intent)paramIntent.mt(0));
       com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/plugin/finder/utils/ActivityRouter", "enterFriendLikeTimelineUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      AppMethodBeat.o(204424);
+      AppMethodBeat.o(205042);
       return;
     }
   }
   
   public static void P(Context paramContext, Intent paramIntent)
   {
-    AppMethodBeat.i(204425);
+    AppMethodBeat.i(205043);
     d.g.b.p.h(paramContext, "context");
     if (!(paramContext instanceof Activity)) {}
     for (Intent localIntent = paramIntent;; localIntent = null)
@@ -431,17 +426,17 @@ public final class a
       }
       paramIntent.setClass(paramContext, FinderLikedFeedUI.class);
       paramIntent = new com.tencent.mm.hellhoundlib.b.a().bc(paramIntent);
-      com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramIntent.ahp(), "com/tencent/mm/plugin/finder/utils/ActivityRouter", "enterFinderLikedFeedUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramContext.startActivity((Intent)paramIntent.mq(0));
+      com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramIntent.ahE(), "com/tencent/mm/plugin/finder/utils/ActivityRouter", "enterFinderLikedFeedUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramContext.startActivity((Intent)paramIntent.mt(0));
       com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/plugin/finder/utils/ActivityRouter", "enterFinderLikedFeedUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      AppMethodBeat.o(204425);
+      AppMethodBeat.o(205043);
       return;
     }
   }
   
   public static void Q(Context paramContext, Intent paramIntent)
   {
-    AppMethodBeat.i(204426);
+    AppMethodBeat.i(205044);
     d.g.b.p.h(paramContext, "context");
     Intent localIntent = paramIntent;
     if (paramIntent == null) {
@@ -455,17 +450,17 @@ public final class a
       }
       localIntent.setClass(paramContext, FinderFriendBlackListUI.class);
       paramIntent = new com.tencent.mm.hellhoundlib.b.a().bc(localIntent);
-      com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramIntent.ahp(), "com/tencent/mm/plugin/finder/utils/ActivityRouter", "enterFriendBlackListUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramContext.startActivity((Intent)paramIntent.mq(0));
+      com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramIntent.ahE(), "com/tencent/mm/plugin/finder/utils/ActivityRouter", "enterFriendBlackListUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramContext.startActivity((Intent)paramIntent.mt(0));
       com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/plugin/finder/utils/ActivityRouter", "enterFriendBlackListUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      AppMethodBeat.o(204426);
+      AppMethodBeat.o(205044);
       return;
     }
   }
   
   public static void R(Context paramContext, Intent paramIntent)
   {
-    AppMethodBeat.i(204427);
+    AppMethodBeat.i(205045);
     d.g.b.p.h(paramContext, "context");
     if (!(paramContext instanceof Activity)) {}
     for (Object localObject = paramIntent;; localObject = null)
@@ -474,34 +469,34 @@ public final class a
         ((Intent)localObject).addFlags(268435456);
       }
       paramIntent.setClass(paramContext, FinderFriendFoldedTimelineUI.class);
-      localObject = FinderReporterUIC.tcM;
+      localObject = FinderReporterUIC.tnG;
       FinderReporterUIC.a.a(paramContext, paramIntent, 0L, 0, false, 124);
       paramIntent = new com.tencent.mm.hellhoundlib.b.a().bc(paramIntent);
-      com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramIntent.ahp(), "com/tencent/mm/plugin/finder/utils/ActivityRouter", "enterFriendFoldedTimelineUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramContext.startActivity((Intent)paramIntent.mq(0));
+      com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramIntent.ahE(), "com/tencent/mm/plugin/finder/utils/ActivityRouter", "enterFriendFoldedTimelineUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramContext.startActivity((Intent)paramIntent.mt(0));
       com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/plugin/finder/utils/ActivityRouter", "enterFriendFoldedTimelineUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      AppMethodBeat.o(204427);
+      AppMethodBeat.o(205045);
       return;
     }
   }
   
   public static void S(Context paramContext, Intent paramIntent)
   {
-    AppMethodBeat.i(204428);
+    AppMethodBeat.i(205046);
     d.g.b.p.h(paramContext, "context");
     paramIntent.setClass(paramContext, FinderNewUIB.class);
-    FinderReporterUIC.a locala = FinderReporterUIC.tcM;
+    FinderReporterUIC.a locala = FinderReporterUIC.tnG;
     FinderReporterUIC.a.a(paramContext, paramIntent, 0L, 0, false, 124);
     paramIntent = new com.tencent.mm.hellhoundlib.b.a().bc(paramIntent);
-    com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramIntent.ahp(), "com/tencent/mm/plugin/finder/utils/ActivityRouter", "enterFeedReletedTimelineUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    paramContext.startActivity((Intent)paramIntent.mq(0));
+    com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramIntent.ahE(), "com/tencent/mm/plugin/finder/utils/ActivityRouter", "enterFeedReletedTimelineUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramContext.startActivity((Intent)paramIntent.mt(0));
     com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/plugin/finder/utils/ActivityRouter", "enterFeedReletedTimelineUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    AppMethodBeat.o(204428);
+    AppMethodBeat.o(205046);
   }
   
   public static void T(Context paramContext, Intent paramIntent)
   {
-    AppMethodBeat.i(204429);
+    AppMethodBeat.i(205047);
     d.g.b.p.h(paramContext, "context");
     if (!(paramContext instanceof Activity)) {}
     for (Intent localIntent = paramIntent;; localIntent = null)
@@ -511,17 +506,17 @@ public final class a
       }
       paramIntent.setClass(paramContext, FinderFeedRelTimelineUI.class);
       paramIntent = new com.tencent.mm.hellhoundlib.b.a().bc(paramIntent);
-      com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramIntent.ahp(), "com/tencent/mm/plugin/finder/utils/ActivityRouter", "enterFinderFeedRelUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramContext.startActivity((Intent)paramIntent.mq(0));
+      com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramIntent.ahE(), "com/tencent/mm/plugin/finder/utils/ActivityRouter", "enterFinderFeedRelUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramContext.startActivity((Intent)paramIntent.mt(0));
       com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/plugin/finder/utils/ActivityRouter", "enterFinderFeedRelUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      AppMethodBeat.o(204429);
+      AppMethodBeat.o(205047);
       return;
     }
   }
   
   public static void U(Context paramContext, Intent paramIntent)
   {
-    AppMethodBeat.i(204431);
+    AppMethodBeat.i(205049);
     d.g.b.p.h(paramContext, "context");
     if (!(paramContext instanceof Activity)) {}
     for (Intent localIntent = paramIntent;; localIntent = null)
@@ -532,17 +527,17 @@ public final class a
       paramIntent.addFlags(67108864);
       paramIntent.setClass(paramContext, FinderFinderMsgUI.class);
       paramIntent = new com.tencent.mm.hellhoundlib.b.a().bc(paramIntent);
-      com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramIntent.ahp(), "com/tencent/mm/plugin/finder/utils/ActivityRouter", "enterFinderFinderMsgUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramContext.startActivity((Intent)paramIntent.mq(0));
+      com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramIntent.ahE(), "com/tencent/mm/plugin/finder/utils/ActivityRouter", "enterFinderFinderMsgUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramContext.startActivity((Intent)paramIntent.mt(0));
       com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/plugin/finder/utils/ActivityRouter", "enterFinderFinderMsgUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      AppMethodBeat.o(204431);
+      AppMethodBeat.o(205049);
       return;
     }
   }
   
   public static void V(Context paramContext, Intent paramIntent)
   {
-    AppMethodBeat.i(204437);
+    AppMethodBeat.i(205055);
     d.g.b.p.h(paramContext, "context");
     if (!(paramContext instanceof Activity)) {}
     for (Intent localIntent = paramIntent;; localIntent = null)
@@ -552,75 +547,75 @@ public final class a
       }
       paramIntent.setClass(paramContext, FinderAtTimelineUI.class);
       paramIntent = new com.tencent.mm.hellhoundlib.b.a().bc(paramIntent);
-      com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramIntent.ahp(), "com/tencent/mm/plugin/finder/utils/ActivityRouter", "enterAtMyTimelineUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramContext.startActivity((Intent)paramIntent.mq(0));
+      com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramIntent.ahE(), "com/tencent/mm/plugin/finder/utils/ActivityRouter", "enterAtMyTimelineUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramContext.startActivity((Intent)paramIntent.mt(0));
       com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/plugin/finder/utils/ActivityRouter", "enterAtMyTimelineUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramContext = com.tencent.mm.plugin.finder.report.h.soM;
+      paramContext = com.tencent.mm.plugin.finder.report.i.syT;
       paramContext = new an();
-      paramContext.dg(cf.aCL());
-      paramContext.hI(u.aAu());
-      paramContext.hJ(((com.tencent.mm.plugin.expt.b.c)g.ab(com.tencent.mm.plugin.expt.b.c.class)).cnc());
-      paramContext.aLk();
-      com.tencent.mm.plugin.finder.report.h.a((com.tencent.mm.plugin.report.a)paramContext);
-      AppMethodBeat.o(204437);
+      paramContext.dg(ch.aDb());
+      paramContext.hQ(v.aAK());
+      paramContext.hR(((com.tencent.mm.plugin.expt.b.c)g.ab(com.tencent.mm.plugin.expt.b.c.class)).cos());
+      paramContext.aLH();
+      com.tencent.mm.plugin.finder.report.i.a((com.tencent.mm.plugin.report.a)paramContext);
+      AppMethodBeat.o(205055);
       return;
     }
   }
   
   public static void W(Context paramContext, Intent paramIntent)
   {
-    AppMethodBeat.i(204444);
+    AppMethodBeat.i(205062);
     d.g.b.p.h(paramContext, "context");
     paramIntent.setClass(paramContext, FinderNewUIC.class);
     paramIntent = new com.tencent.mm.hellhoundlib.b.a().bc(paramIntent);
-    com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramIntent.ahp(), "com/tencent/mm/plugin/finder/utils/ActivityRouter", "enterFinderNewUIC", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    paramContext.startActivity((Intent)paramIntent.mq(0));
+    com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramIntent.ahE(), "com/tencent/mm/plugin/finder/utils/ActivityRouter", "enterFinderNewUIC", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramContext.startActivity((Intent)paramIntent.mt(0));
     com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/plugin/finder/utils/ActivityRouter", "enterFinderNewUIC", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    AppMethodBeat.o(204444);
+    AppMethodBeat.o(205062);
   }
   
   public static boolean X(Context paramContext, int paramInt)
   {
-    AppMethodBeat.i(204407);
+    AppMethodBeat.i(205025);
     d.g.b.p.h(paramContext, "context");
-    boolean bool = a(paramContext, al.a.IHS, paramInt);
-    AppMethodBeat.o(204407);
+    boolean bool = a(paramContext, am.a.Jcv, paramInt);
+    AppMethodBeat.o(205025);
     return bool;
   }
   
-  public static void a(Activity paramActivity, ViewAnimHelper.ViewInfo paramViewInfo, bve parambve, int paramInt)
+  public static void a(Activity paramActivity, ViewAnimHelper.ViewInfo paramViewInfo, bvy parambvy, int paramInt)
   {
-    AppMethodBeat.i(204430);
+    AppMethodBeat.i(205048);
     d.g.b.p.h(paramActivity, "context");
     d.g.b.p.h(paramViewInfo, "viewInfo");
-    d.g.b.p.h(parambve, "localContent");
+    d.g.b.p.h(parambvy, "localContent");
     Intent localIntent = new Intent();
     localIntent.setClass((Context)paramActivity, FinderSelectCoverUI.class);
-    localIntent.putExtra("media_list_", parambve.toByteArray());
+    localIntent.putExtra("media_list_", parambvy.toByteArray());
     localIntent.putExtra("crop_info", (Parcelable)paramViewInfo);
-    localIntent.putExtra("media_list_count", parambve.mediaList.size());
+    localIntent.putExtra("media_list_count", parambvy.mediaList.size());
     paramActivity.startActivityForResult(localIntent, paramInt);
-    AppMethodBeat.o(204430);
+    AppMethodBeat.o(205048);
   }
   
-  public static void a(Activity paramActivity, ViewAnimHelper.ViewInfo paramViewInfo, bve parambve, aqb paramaqb)
+  public static void a(Activity paramActivity, ViewAnimHelper.ViewInfo paramViewInfo, bvy parambvy, aqq paramaqq)
   {
     AppMethodBeat.i(167858);
     d.g.b.p.h(paramActivity, "context");
     d.g.b.p.h(paramViewInfo, "viewInfo");
-    d.g.b.p.h(parambve, "localContent");
+    d.g.b.p.h(parambvy, "localContent");
     Intent localIntent = new Intent();
     localIntent.setClass((Context)paramActivity, FinderMediaPreviewUI.class);
-    localIntent.putExtra("media_list_", parambve.toByteArray());
+    localIntent.putExtra("media_list_", parambvy.toByteArray());
     localIntent.putExtra("crop_info", (Parcelable)paramViewInfo);
-    localIntent.putExtra("media_list_count", parambve.mediaList.size());
-    if (paramaqb != null) {}
-    for (paramViewInfo = paramaqb.toByteArray();; paramViewInfo = null)
+    localIntent.putExtra("media_list_count", parambvy.mediaList.size());
+    if (paramaqq != null) {}
+    for (paramViewInfo = paramaqq.toByteArray();; paramViewInfo = null)
     {
       localIntent.putExtra("ref_feed_info", paramViewInfo);
       paramViewInfo = new com.tencent.mm.hellhoundlib.b.a().bc(localIntent);
-      com.tencent.mm.hellhoundlib.a.a.a(paramActivity, paramViewInfo.ahp(), "com/tencent/mm/plugin/finder/utils/ActivityRouter", "enterFinderMediaPreviewUI", "(Landroid/app/Activity;Lcom/tencent/mm/view/ViewAnimHelper$ViewInfo;Lcom/tencent/mm/protocal/protobuf/LocalFinderContent;Lcom/tencent/mm/protocal/protobuf/FinderObjectRefInfo;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramActivity.startActivity((Intent)paramViewInfo.mq(0));
+      com.tencent.mm.hellhoundlib.a.a.a(paramActivity, paramViewInfo.ahE(), "com/tencent/mm/plugin/finder/utils/ActivityRouter", "enterFinderMediaPreviewUI", "(Landroid/app/Activity;Lcom/tencent/mm/view/ViewAnimHelper$ViewInfo;Lcom/tencent/mm/protocal/protobuf/LocalFinderContent;Lcom/tencent/mm/protocal/protobuf/FinderObjectRefInfo;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramActivity.startActivity((Intent)paramViewInfo.mt(0));
       com.tencent.mm.hellhoundlib.a.a.a(paramActivity, "com/tencent/mm/plugin/finder/utils/ActivityRouter", "enterFinderMediaPreviewUI", "(Landroid/app/Activity;Lcom/tencent/mm/view/ViewAnimHelper$ViewInfo;Lcom/tencent/mm/protocal/protobuf/LocalFinderContent;Lcom/tencent/mm/protocal/protobuf/FinderObjectRefInfo;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       paramActivity.overridePendingTransition(0, 0);
       AppMethodBeat.o(167858);
@@ -630,16 +625,16 @@ public final class a
   
   public static void a(Activity paramActivity, String paramString, int paramInt, Matrix paramMatrix, Rect paramRect, float[] paramArrayOfFloat)
   {
-    AppMethodBeat.i(204416);
+    AppMethodBeat.i(205034);
     d.g.b.p.h(paramActivity, "context");
     d.g.b.p.h(paramString, "rawPath");
     d.g.b.p.h(paramMatrix, "matrix");
     d.g.b.p.h(paramRect, "cropRect");
     UICustomParam.a locala = new UICustomParam.a();
-    locala.aby();
-    locala.abx();
+    locala.abH();
+    locala.abG();
     locala.cP(false);
-    locala.abz();
+    locala.abI();
     float[] arrayOfFloat = new float[9];
     paramMatrix.getValues(arrayOfFloat);
     paramMatrix = new Bundle();
@@ -650,32 +645,32 @@ public final class a
     {
       paramString = RecordConfigProvider.as(paramString, "", "");
       paramString.scene = 11;
-      paramString.xyk = locala.abA();
-      paramRect = b.sxa;
-      paramString.xyj = b.cEY();
+      paramString.xOh = locala.abJ();
+      paramRect = b.sHP;
+      paramString.xOg = b.cGU();
       paramString.remuxType = 2;
-      paramString.xym = 3;
-      paramString.xyt = (paramString.xyj.duration * 1000);
+      paramString.xOj = 3;
+      paramString.xOp = (paramString.xOg.duration * 1000);
       locala.cO(false);
-      paramString.ime = paramMatrix;
+      paramString.ioY = paramMatrix;
       paramString.D(2, FinderVideoEditPluginLayout.class.getName());
-      paramMatrix = com.tencent.mm.plugin.recordvideo.jumper.a.xyI;
+      paramMatrix = com.tencent.mm.plugin.recordvideo.jumper.a.xOE;
       com.tencent.mm.plugin.recordvideo.jumper.a.a((Context)paramActivity, 1, 2130771986, 2130771986, paramString, 2, 0);
-      AppMethodBeat.o(204416);
+      AppMethodBeat.o(205034);
       return;
     }
     if (paramInt == 1)
     {
-      locala.abw();
-      paramString = RecordConfigProvider.iI(paramString, "");
+      locala.abF();
+      paramString = RecordConfigProvider.iO(paramString, "");
       paramString.scene = 11;
-      paramString.xyk = locala.abA();
-      paramString.ime = paramMatrix;
+      paramString.xOh = locala.abJ();
+      paramString.ioY = paramMatrix;
       paramString.D(1, FinderPhotoEditPluginLayout.class.getName());
-      paramMatrix = com.tencent.mm.plugin.recordvideo.jumper.a.xyI;
+      paramMatrix = com.tencent.mm.plugin.recordvideo.jumper.a.xOE;
       com.tencent.mm.plugin.recordvideo.jumper.a.a((Context)paramActivity, 1, 2130771986, 2130771986, paramString, 1, 1);
     }
-    AppMethodBeat.o(204416);
+    AppMethodBeat.o(205034);
   }
   
   public static void a(Context paramContext, Intent paramIntent, int paramInt)
@@ -690,55 +685,55 @@ public final class a
     localIntent.addFlags(67108864);
     localIntent.addFlags(536870912);
     localIntent.setClass(paramContext, FinderHomeUI.class);
-    paramIntent = com.tencent.mm.plugin.finder.report.e.snY;
-    com.tencent.mm.plugin.finder.report.e.cDs();
+    paramIntent = com.tencent.mm.plugin.finder.report.f.syc;
+    com.tencent.mm.plugin.finder.report.f.cFn();
     paramIntent = new com.tencent.mm.hellhoundlib.b.a().bc(localIntent);
-    com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramIntent.ahp(), "com/tencent/mm/plugin/finder/utils/ActivityRouter", "enterFinderTimelineUI", "(Landroid/content/Context;Landroid/content/Intent;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    paramContext.startActivity((Intent)paramIntent.mq(0));
+    com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramIntent.ahE(), "com/tencent/mm/plugin/finder/utils/ActivityRouter", "enterFinderTimelineUI", "(Landroid/content/Context;Landroid/content/Intent;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramContext.startActivity((Intent)paramIntent.mt(0));
     com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/plugin/finder/utils/ActivityRouter", "enterFinderTimelineUI", "(Landroid/content/Context;Landroid/content/Intent;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     AppMethodBeat.o(167836);
   }
   
-  public static void a(Context paramContext, amu paramamu, Intent paramIntent)
+  public static void a(Context paramContext, ang paramang, Intent paramIntent)
   {
     AppMethodBeat.i(167847);
     d.g.b.p.h(paramContext, "context");
     d.g.b.p.h(paramIntent, "i");
-    com.tencent.mm.plugin.finder.search.h localh = com.tencent.mm.plugin.finder.search.h.stT;
-    com.tencent.mm.plugin.finder.search.h.a(paramamu);
-    com.tencent.mm.plugin.report.e.ygI.idkeyStat(1265L, 2L, 1L, false);
+    com.tencent.mm.plugin.finder.search.h localh = com.tencent.mm.plugin.finder.search.h.sEe;
+    com.tencent.mm.plugin.finder.search.h.a(paramang);
+    e.ywz.idkeyStat(1265L, 2L, 1L, false);
     paramIntent.setClass(paramContext, FinderContactSearchUI.class);
-    paramamu = new com.tencent.mm.hellhoundlib.b.a().bc(paramIntent);
-    com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramamu.ahp(), "com/tencent/mm/plugin/finder/utils/ActivityRouter", "enterFinderContactSearchUI", "(Landroid/content/Context;Lcom/tencent/mm/protocal/protobuf/FinderFeedSearchObj;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    paramContext.startActivity((Intent)paramamu.mq(0));
+    paramang = new com.tencent.mm.hellhoundlib.b.a().bc(paramIntent);
+    com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramang.ahE(), "com/tencent/mm/plugin/finder/utils/ActivityRouter", "enterFinderContactSearchUI", "(Landroid/content/Context;Lcom/tencent/mm/protocal/protobuf/FinderFeedSearchObj;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramContext.startActivity((Intent)paramang.mt(0));
     com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/plugin/finder/utils/ActivityRouter", "enterFinderContactSearchUI", "(Landroid/content/Context;Lcom/tencent/mm/protocal/protobuf/FinderFeedSearchObj;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     AppMethodBeat.o(167847);
   }
   
-  public static void a(final Context paramContext, String paramString1, String paramString2, long paramLong1, long paramLong2, final aqy paramaqy)
+  public static void a(final Context paramContext, String paramString1, String paramString2, long paramLong1, long paramLong2, final arn paramarn)
   {
-    AppMethodBeat.i(204443);
+    AppMethodBeat.i(205061);
     d.g.b.p.h(paramContext, "context");
     d.g.b.p.h(paramString1, "sessionId");
     d.g.b.p.h(paramString2, "username");
     final y.f localf = new y.f();
-    localf.MLV = null;
-    com.tencent.e.i.d locald = com.tencent.e.h.LTJ.q((Runnable)new b(localf, paramContext), 1500L);
-    ((com.tencent.mm.plugin.i.a.p)g.ab(com.tencent.mm.plugin.i.a.p.class)).a(paramString1, paramString2, Long.valueOf(paramLong1), Long.valueOf(paramLong2), (p.a)new a(locald, localf, paramContext, paramaqy));
-    AppMethodBeat.o(204443);
+    localf.NiY = null;
+    com.tencent.e.i.d locald = com.tencent.e.h.MqF.q((Runnable)new a.b(localf, paramContext), 1500L);
+    ((com.tencent.mm.plugin.i.a.p)g.ab(com.tencent.mm.plugin.i.a.p.class)).a(paramString1, paramString2, Long.valueOf(paramLong1), Long.valueOf(paramLong2), (p.a)new a(locald, localf, paramContext, paramarn));
+    AppMethodBeat.o(205061);
   }
   
-  public static void a(final Context paramContext, String paramString1, String paramString2, final aqy paramaqy)
+  public static void a(final Context paramContext, String paramString1, String paramString2, final arn paramarn)
   {
-    AppMethodBeat.i(204442);
+    AppMethodBeat.i(205060);
     d.g.b.p.h(paramContext, "context");
     d.g.b.p.h(paramString1, "sessionId");
     d.g.b.p.h(paramString2, "fansId");
     final y.f localf = new y.f();
-    localf.MLV = null;
-    com.tencent.e.i.d locald = com.tencent.e.h.LTJ.q((Runnable)new d(localf, paramContext), 1500L);
-    ((com.tencent.mm.plugin.i.a.p)g.ab(com.tencent.mm.plugin.i.a.p.class)).a(paramString1, paramString2, (p.a)new c(locald, localf, paramContext, paramaqy));
-    AppMethodBeat.o(204442);
+    localf.NiY = null;
+    com.tencent.e.i.d locald = com.tencent.e.h.MqF.q((Runnable)new a.d(localf, paramContext), 1500L);
+    ((com.tencent.mm.plugin.i.a.p)g.ab(com.tencent.mm.plugin.i.a.p.class)).a(paramString1, paramString2, (p.a)new c(locald, localf, paramContext, paramarn));
+    AppMethodBeat.o(205060);
   }
   
   public static void a(Intent paramIntent1, Intent paramIntent2)
@@ -752,15 +747,15 @@ public final class a
   
   public static void a(MMActivity paramMMActivity, Intent paramIntent)
   {
-    AppMethodBeat.i(204412);
+    AppMethodBeat.i(205030);
     d.g.b.p.h(paramMMActivity, "activity");
     d.g.b.p.h(paramIntent, "i");
-    com.tencent.mm.plugin.finder.search.h localh = com.tencent.mm.plugin.finder.search.h.stT;
+    com.tencent.mm.plugin.finder.search.h localh = com.tencent.mm.plugin.finder.search.h.sEe;
     com.tencent.mm.plugin.finder.search.h.a(null);
-    com.tencent.mm.plugin.report.e.ygI.idkeyStat(1265L, 2L, 1L, false);
+    e.ywz.idkeyStat(1265L, 2L, 1L, false);
     paramIntent.setClass((Context)paramMMActivity, FinderContactSearchIncludeFollowUI.class);
     paramMMActivity.startActivityForResult(paramIntent, 20000);
-    AppMethodBeat.o(204412);
+    AppMethodBeat.o(205030);
   }
   
   public static void a(MMActivity paramMMActivity, Intent paramIntent, int paramInt)
@@ -773,121 +768,121 @@ public final class a
   }
   
   /* Error */
-  private static boolean a(Context paramContext, al.a parama, int paramInt)
+  private static boolean a(Context paramContext, am.a parama, int paramInt)
   {
     // Byte code:
-    //   0: ldc_w 798
-    //   3: invokestatic 170	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   6: invokestatic 802	com/tencent/mm/kernel/g:ajC	()Lcom/tencent/mm/kernel/e;
+    //   0: ldc_w 790
+    //   3: invokestatic 158	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   6: invokestatic 794	com/tencent/mm/kernel/g:ajR	()Lcom/tencent/mm/kernel/e;
     //   9: astore_3
     //   10: aload_3
-    //   11: ldc_w 804
-    //   14: invokestatic 807	d/g/b/p:g	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   11: ldc_w 796
+    //   14: invokestatic 799	d/g/b/p:g	(Ljava/lang/Object;Ljava/lang/String;)V
     //   17: aload_3
-    //   18: invokevirtual 813	com/tencent/mm/kernel/e:ajl	()Lcom/tencent/mm/storage/ai;
+    //   18: invokevirtual 805	com/tencent/mm/kernel/e:ajA	()Lcom/tencent/mm/storage/aj;
     //   21: aload_1
-    //   22: ldc 207
-    //   24: invokevirtual 819	com/tencent/mm/storage/ai:get	(Lcom/tencent/mm/storage/al$a;Ljava/lang/Object;)Ljava/lang/Object;
-    //   27: invokevirtual 822	java/lang/Object:toString	()Ljava/lang/String;
+    //   22: ldc 195
+    //   24: invokevirtual 811	com/tencent/mm/storage/aj:get	(Lcom/tencent/mm/storage/am$a;Ljava/lang/Object;)Ljava/lang/Object;
+    //   27: invokevirtual 814	java/lang/Object:toString	()Ljava/lang/String;
     //   30: astore_3
     //   31: aload_3
-    //   32: invokestatic 828	com/tencent/mm/sdk/platformtools/bt:isNullOrNil	(Ljava/lang/String;)Z
+    //   32: invokestatic 820	com/tencent/mm/sdk/platformtools/bu:isNullOrNil	(Ljava/lang/String;)Z
     //   35: ifne +157 -> 192
     //   38: aload_3
-    //   39: invokestatic 834	com/tencent/d/f/e:aZn	(Ljava/lang/String;)[B
+    //   39: invokestatic 826	com/tencent/d/f/e:baQ	(Ljava/lang/String;)[B
     //   42: astore_3
-    //   43: invokestatic 840	android/os/Parcel:obtain	()Landroid/os/Parcel;
+    //   43: invokestatic 832	android/os/Parcel:obtain	()Landroid/os/Parcel;
     //   46: astore 4
     //   48: aload 4
     //   50: aload_3
     //   51: iconst_0
     //   52: aload_3
     //   53: arraylength
-    //   54: invokevirtual 844	android/os/Parcel:unmarshall	([BII)V
+    //   54: invokevirtual 836	android/os/Parcel:unmarshall	([BII)V
     //   57: aload 4
     //   59: iconst_0
-    //   60: invokevirtual 847	android/os/Parcel:setDataPosition	(I)V
-    //   63: getstatic 851	android/content/Intent:CREATOR	Landroid/os/Parcelable$Creator;
+    //   60: invokevirtual 839	android/os/Parcel:setDataPosition	(I)V
+    //   63: getstatic 843	android/content/Intent:CREATOR	Landroid/os/Parcelable$Creator;
     //   66: aload 4
-    //   68: invokeinterface 857 2 0
-    //   73: checkcast 236	android/content/Intent
+    //   68: invokeinterface 849 2 0
+    //   73: checkcast 224	android/content/Intent
     //   76: astore_3
     //   77: aload_3
-    //   78: getstatic 862	com/tencent/mm/plugin/finder/video/LocalVideoCropInfoParcelable:CREATOR	Lcom/tencent/mm/plugin/finder/video/LocalVideoCropInfoParcelable$a;
-    //   81: invokevirtual 866	java/lang/Object:getClass	()Ljava/lang/Class;
-    //   84: invokevirtual 870	java/lang/Class:getClassLoader	()Ljava/lang/ClassLoader;
-    //   87: invokevirtual 874	android/content/Intent:setExtrasClassLoader	(Ljava/lang/ClassLoader;)V
+    //   78: getstatic 854	com/tencent/mm/plugin/finder/video/LocalVideoCropInfoParcelable:CREATOR	Lcom/tencent/mm/plugin/finder/video/LocalVideoCropInfoParcelable$a;
+    //   81: invokevirtual 858	java/lang/Object:getClass	()Ljava/lang/Class;
+    //   84: invokevirtual 862	java/lang/Class:getClassLoader	()Ljava/lang/ClassLoader;
+    //   87: invokevirtual 866	android/content/Intent:setExtrasClassLoader	(Ljava/lang/ClassLoader;)V
     //   90: aload_3
-    //   91: ldc_w 779
+    //   91: ldc_w 771
     //   94: iload_2
-    //   95: invokevirtual 347	android/content/Intent:putExtra	(Ljava/lang/String;I)Landroid/content/Intent;
+    //   95: invokevirtual 335	android/content/Intent:putExtra	(Ljava/lang/String;I)Landroid/content/Intent;
     //   98: pop
     //   99: aload_3
-    //   100: ldc_w 876
-    //   103: invokevirtual 879	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
-    //   106: invokestatic 828	com/tencent/mm/sdk/platformtools/bt:isNullOrNil	(Ljava/lang/String;)Z
+    //   100: ldc_w 868
+    //   103: invokevirtual 871	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
+    //   106: invokestatic 820	com/tencent/mm/sdk/platformtools/bu:isNullOrNil	(Ljava/lang/String;)Z
     //   109: ifne +37 -> 146
     //   112: aload_0
     //   113: aload_3
-    //   114: invokestatic 881	com/tencent/mm/plugin/finder/utils/a:B	(Landroid/content/Context;Landroid/content/Intent;)V
-    //   117: invokestatic 802	com/tencent/mm/kernel/g:ajC	()Lcom/tencent/mm/kernel/e;
+    //   114: invokestatic 873	com/tencent/mm/plugin/finder/utils/a:B	(Landroid/content/Context;Landroid/content/Intent;)V
+    //   117: invokestatic 794	com/tencent/mm/kernel/g:ajR	()Lcom/tencent/mm/kernel/e;
     //   120: astore_0
     //   121: aload_0
-    //   122: ldc_w 804
-    //   125: invokestatic 807	d/g/b/p:g	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   122: ldc_w 796
+    //   125: invokestatic 799	d/g/b/p:g	(Ljava/lang/Object;Ljava/lang/String;)V
     //   128: aload_0
-    //   129: invokevirtual 813	com/tencent/mm/kernel/e:ajl	()Lcom/tencent/mm/storage/ai;
+    //   129: invokevirtual 805	com/tencent/mm/kernel/e:ajA	()Lcom/tencent/mm/storage/aj;
     //   132: aload_1
-    //   133: ldc 207
-    //   135: invokevirtual 885	com/tencent/mm/storage/ai:set	(Lcom/tencent/mm/storage/al$a;Ljava/lang/Object;)V
-    //   138: ldc_w 798
-    //   141: invokestatic 178	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   133: ldc 195
+    //   135: invokevirtual 877	com/tencent/mm/storage/aj:set	(Lcom/tencent/mm/storage/am$a;Ljava/lang/Object;)V
+    //   138: ldc_w 790
+    //   141: invokestatic 166	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   144: iconst_1
     //   145: ireturn
     //   146: aload_0
     //   147: aload_3
-    //   148: invokestatic 887	com/tencent/mm/plugin/finder/utils/a:enterFinderPostUI	(Landroid/content/Context;Landroid/content/Intent;)V
+    //   148: invokestatic 879	com/tencent/mm/plugin/finder/utils/a:enterFinderPostUI	(Landroid/content/Context;Landroid/content/Intent;)V
     //   151: goto -34 -> 117
     //   154: astore_0
-    //   155: ldc_w 889
-    //   158: ldc_w 891
+    //   155: ldc_w 881
+    //   158: ldc_w 883
     //   161: aload_0
-    //   162: invokestatic 896	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   165: invokevirtual 899	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   168: invokestatic 905	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   171: invokestatic 802	com/tencent/mm/kernel/g:ajC	()Lcom/tencent/mm/kernel/e;
+    //   162: invokestatic 888	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   165: invokevirtual 891	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   168: invokestatic 897	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   171: invokestatic 794	com/tencent/mm/kernel/g:ajR	()Lcom/tencent/mm/kernel/e;
     //   174: astore_0
     //   175: aload_0
-    //   176: ldc_w 804
-    //   179: invokestatic 807	d/g/b/p:g	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   176: ldc_w 796
+    //   179: invokestatic 799	d/g/b/p:g	(Ljava/lang/Object;Ljava/lang/String;)V
     //   182: aload_0
-    //   183: invokevirtual 813	com/tencent/mm/kernel/e:ajl	()Lcom/tencent/mm/storage/ai;
+    //   183: invokevirtual 805	com/tencent/mm/kernel/e:ajA	()Lcom/tencent/mm/storage/aj;
     //   186: aload_1
-    //   187: ldc 207
-    //   189: invokevirtual 885	com/tencent/mm/storage/ai:set	(Lcom/tencent/mm/storage/al$a;Ljava/lang/Object;)V
-    //   192: ldc_w 798
-    //   195: invokestatic 178	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   187: ldc 195
+    //   189: invokevirtual 877	com/tencent/mm/storage/aj:set	(Lcom/tencent/mm/storage/am$a;Ljava/lang/Object;)V
+    //   192: ldc_w 790
+    //   195: invokestatic 166	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   198: iconst_0
     //   199: ireturn
     //   200: astore_0
-    //   201: invokestatic 802	com/tencent/mm/kernel/g:ajC	()Lcom/tencent/mm/kernel/e;
+    //   201: invokestatic 794	com/tencent/mm/kernel/g:ajR	()Lcom/tencent/mm/kernel/e;
     //   204: astore_3
     //   205: aload_3
-    //   206: ldc_w 804
-    //   209: invokestatic 807	d/g/b/p:g	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   206: ldc_w 796
+    //   209: invokestatic 799	d/g/b/p:g	(Ljava/lang/Object;Ljava/lang/String;)V
     //   212: aload_3
-    //   213: invokevirtual 813	com/tencent/mm/kernel/e:ajl	()Lcom/tencent/mm/storage/ai;
+    //   213: invokevirtual 805	com/tencent/mm/kernel/e:ajA	()Lcom/tencent/mm/storage/aj;
     //   216: aload_1
-    //   217: ldc 207
-    //   219: invokevirtual 885	com/tencent/mm/storage/ai:set	(Lcom/tencent/mm/storage/al$a;Ljava/lang/Object;)V
-    //   222: ldc_w 798
-    //   225: invokestatic 178	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   217: ldc 195
+    //   219: invokevirtual 877	com/tencent/mm/storage/aj:set	(Lcom/tencent/mm/storage/am$a;Ljava/lang/Object;)V
+    //   222: ldc_w 790
+    //   225: invokestatic 166	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   228: aload_0
     //   229: athrow
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	230	0	paramContext	Context
-    //   0	230	1	parama	al.a
+    //   0	230	1	parama	am.a
     //   0	230	2	paramInt	int
     //   9	204	3	localObject	Object
     //   46	21	4	localParcel	android.os.Parcel
@@ -900,28 +895,28 @@ public final class a
     //   155	171	200	finally
   }
   
-  public static void aq(final Context paramContext, String paramString)
+  public static void as(final Context paramContext, String paramString)
   {
-    AppMethodBeat.i(204441);
+    AppMethodBeat.i(205059);
     d.g.b.p.h(paramContext, "context");
     d.g.b.p.h(paramString, "username");
-    ad.i("Finder.ActivityRouter", "[startChattingUI] username=" + paramString + " scene=2");
+    ae.i("Finder.ActivityRouter", "[startChattingUI] username=" + paramString + " scene=2");
     final y.f localf = new y.f();
-    localf.MLV = null;
-    final com.tencent.e.i.d locald = com.tencent.e.h.LTJ.q((Runnable)new f(localf, paramContext), 1500L);
+    localf.NiY = null;
+    final com.tencent.e.i.d locald = com.tencent.e.h.MqF.q((Runnable)new a.f(localf, paramContext), 1500L);
     ((com.tencent.mm.plugin.i.a.p)g.ab(com.tencent.mm.plugin.i.a.p.class)).a(paramString, (p.a)new e(paramString, locald, localf, paramContext));
-    AppMethodBeat.o(204441);
+    AppMethodBeat.o(205059);
   }
   
   public static void b(Activity paramActivity, Intent paramIntent)
   {
-    AppMethodBeat.i(204419);
+    AppMethodBeat.i(205037);
     d.g.b.p.h(paramActivity, "context");
     paramIntent.setClass((Context)paramActivity, FinderFavTimelineUI.class);
-    FinderReporterUIC.a locala = FinderReporterUIC.tcM;
+    FinderReporterUIC.a locala = FinderReporterUIC.tnG;
     FinderReporterUIC.a.a((Context)paramActivity, paramIntent, 0L, 0, false, 124);
     paramActivity.startActivityForResult(paramIntent, 10001);
-    AppMethodBeat.o(204419);
+    AppMethodBeat.o(205037);
   }
   
   public static void b(Activity paramActivity, Intent paramIntent, int paramInt)
@@ -939,25 +934,25 @@ public final class a
     AppMethodBeat.o(167863);
   }
   
-  public static void b(Context paramContext, amu paramamu, Intent paramIntent)
+  public static void b(Context paramContext, ang paramang, Intent paramIntent)
   {
-    AppMethodBeat.i(204413);
+    AppMethodBeat.i(205031);
     d.g.b.p.h(paramContext, "context");
     d.g.b.p.h(paramIntent, "i");
-    com.tencent.mm.plugin.finder.search.h localh = com.tencent.mm.plugin.finder.search.h.stT;
-    com.tencent.mm.plugin.finder.search.h.a(paramamu);
+    com.tencent.mm.plugin.finder.search.h localh = com.tencent.mm.plugin.finder.search.h.sEe;
+    com.tencent.mm.plugin.finder.search.h.a(paramang);
     paramIntent.setClass(paramContext, FinderFeedSearchUI.class);
-    paramamu = new com.tencent.mm.hellhoundlib.b.a().bc(paramIntent);
-    com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramamu.ahp(), "com/tencent/mm/plugin/finder/utils/ActivityRouter", "enterFinderFeedSearchUI", "(Landroid/content/Context;Lcom/tencent/mm/protocal/protobuf/FinderFeedSearchObj;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    paramContext.startActivity((Intent)paramamu.mq(0));
+    paramang = new com.tencent.mm.hellhoundlib.b.a().bc(paramIntent);
+    com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramang.ahE(), "com/tencent/mm/plugin/finder/utils/ActivityRouter", "enterFinderFeedSearchUI", "(Landroid/content/Context;Lcom/tencent/mm/protocal/protobuf/FinderFeedSearchObj;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramContext.startActivity((Intent)paramang.mt(0));
     com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/plugin/finder/utils/ActivityRouter", "enterFinderFeedSearchUI", "(Landroid/content/Context;Lcom/tencent/mm/protocal/protobuf/FinderFeedSearchObj;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    com.tencent.mm.plugin.report.e.ygI.idkeyStat(1265L, 1L, 1L, false);
-    AppMethodBeat.o(204413);
+    e.ywz.idkeyStat(1265L, 1L, 1L, false);
+    AppMethodBeat.o(205031);
   }
   
   public static void b(MMActivity paramMMActivity, Intent paramIntent)
   {
-    AppMethodBeat.i(204434);
+    AppMethodBeat.i(205052);
     d.g.b.p.h(paramMMActivity, "context");
     if (!(paramMMActivity instanceof Activity)) {}
     for (Intent localIntent = paramIntent;; localIntent = null)
@@ -967,7 +962,7 @@ public final class a
       }
       paramIntent.setClass((Context)paramMMActivity, FinderTimelineLbsUI.class);
       paramMMActivity.startActivityForResult(paramIntent, 19999);
-      AppMethodBeat.o(204434);
+      AppMethodBeat.o(205052);
       return;
     }
   }
@@ -983,27 +978,46 @@ public final class a
   
   public static void c(Activity paramActivity, Intent paramIntent)
   {
-    AppMethodBeat.i(204421);
+    AppMethodBeat.i(205039);
     d.g.b.p.h(paramActivity, "context");
     paramIntent.setClass((Context)paramActivity, FinderLbsStreamListUI.class);
     paramActivity.startActivityForResult(paramIntent, 501);
-    AppMethodBeat.o(204421);
+    AppMethodBeat.o(205039);
   }
   
-  public static void c(Activity paramActivity, String paramString)
+  public static void c(MMActivity paramMMActivity, Intent paramIntent)
+  {
+    AppMethodBeat.i(205053);
+    d.g.b.p.h(paramMMActivity, "context");
+    paramIntent.setClass((Context)paramMMActivity, FinderCommentUI.class);
+    paramMMActivity.startActivityForResult(paramIntent, 500);
+    paramMMActivity.overridePendingTransition(0, 0);
+    AppMethodBeat.o(205053);
+  }
+  
+  public static void c(MMActivity paramMMActivity, Intent paramIntent, int paramInt)
+  {
+    AppMethodBeat.i(205036);
+    d.g.b.p.h(paramMMActivity, "context");
+    paramIntent.setClass((Context)paramMMActivity, FinderFavFeedUI.class);
+    paramMMActivity.startActivityForResult(paramIntent, paramInt);
+    AppMethodBeat.o(205036);
+  }
+  
+  public static void d(Activity paramActivity, String paramString)
   {
     AppMethodBeat.i(167864);
     d.g.b.p.h(paramActivity, "context");
     Bundle localBundle = new Bundle();
     String str;
-    if (bt.isNullOrNil(paramString))
+    if (bu.isNullOrNil(paramString))
     {
       paramString = paramActivity.getComponentName();
       d.g.b.p.g(paramString, "context.componentName");
       str = paramString.getClassName();
-      paramString = aj.getPackageName() + ".plugin.finder";
+      paramString = ak.getPackageName() + ".plugin.finder";
       d.g.b.p.g(str, "fullActivityName");
-      if (!n.nz(str, paramString)) {
+      if (!n.nF(str, paramString)) {
         break label183;
       }
       paramString = str.substring(paramString.length());
@@ -1011,7 +1025,7 @@ public final class a
     }
     for (;;)
     {
-      ad.i("Finder.ActivityRouter", "fullActivity " + str + ", fromActivity " + paramString);
+      ae.i("Finder.ActivityRouter", "fullActivity " + str + ", fromActivity " + paramString);
       localBundle.putString("realname_verify_process_jump_activity", paramString);
       for (;;)
       {
@@ -1026,46 +1040,30 @@ public final class a
     }
   }
   
-  public static void c(MMActivity paramMMActivity, Intent paramIntent)
-  {
-    AppMethodBeat.i(204435);
-    d.g.b.p.h(paramMMActivity, "context");
-    paramIntent.setClass((Context)paramMMActivity, FinderCommentUI.class);
-    paramMMActivity.startActivityForResult(paramIntent, 500);
-    paramMMActivity.overridePendingTransition(0, 0);
-    AppMethodBeat.o(204435);
-  }
-  
-  public static void c(MMActivity paramMMActivity, Intent paramIntent, int paramInt)
-  {
-    AppMethodBeat.i(204418);
-    d.g.b.p.h(paramMMActivity, "context");
-    paramIntent.setClass((Context)paramMMActivity, FinderFavFeedUI.class);
-    paramMMActivity.startActivityForResult(paramIntent, paramInt);
-    AppMethodBeat.o(204418);
-  }
-  
   public static void d(MMActivity paramMMActivity, Intent paramIntent, int paramInt)
   {
-    AppMethodBeat.i(204436);
+    AppMethodBeat.i(205054);
     d.g.b.p.h(paramMMActivity, "activity");
     paramIntent.setClass((Context)paramMMActivity, FinderPostAtUI.class);
     paramMMActivity.startActivityForResult(paramIntent, paramInt);
-    AppMethodBeat.o(204436);
+    AppMethodBeat.o(205054);
   }
   
   public static void d(String paramString, Context paramContext)
   {
     AppMethodBeat.i(167867);
-    d.g.b.p.h(paramString, "username");
     d.g.b.p.h(paramContext, "context");
     Intent localIntent = new Intent();
-    localIntent.putExtra("Contact_User", paramString);
-    com.tencent.mm.bs.d.b(paramContext, "profile", ".ui.ContactInfoUI", localIntent);
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
+    }
+    localIntent.putExtra("Contact_User", str);
+    com.tencent.mm.br.d.b(paramContext, "profile", ".ui.ContactInfoUI", localIntent);
     AppMethodBeat.o(167867);
   }
   
-  public static void eP(Context paramContext)
+  public static void eT(Context paramContext)
   {
     AppMethodBeat.i(167845);
     d.g.b.p.h(paramContext, "context");
@@ -1079,15 +1077,15 @@ public final class a
       localIntent.addFlags(67108864);
       localIntent.setClass(paramContext, FinderSettingInfoUI.class);
       localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localIntent);
-      com.tencent.mm.hellhoundlib.a.a.a(paramContext, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahp(), "com/tencent/mm/plugin/finder/utils/ActivityRouter", "enterFinderSettingInfoUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mq(0));
+      com.tencent.mm.hellhoundlib.a.a.a(paramContext, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahE(), "com/tencent/mm/plugin/finder/utils/ActivityRouter", "enterFinderSettingInfoUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mt(0));
       com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/plugin/finder/utils/ActivityRouter", "enterFinderSettingInfoUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       AppMethodBeat.o(167845);
       return;
     }
   }
   
-  public static void eQ(Context paramContext)
+  public static void eU(Context paramContext)
   {
     AppMethodBeat.i(167859);
     d.g.b.p.h(paramContext, "context");
@@ -1099,46 +1097,46 @@ public final class a
         ((Intent)localObject).addFlags(268435456);
       }
       localIntent.addFlags(67108864);
-      localObject = FinderReporterUIC.tcM;
+      localObject = FinderReporterUIC.tnG;
       FinderReporterUIC.a.a(paramContext, localIntent, 0L, 0, false, 124);
       localIntent.setClass(paramContext, FinderWxMsgUI.class);
       localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localIntent);
-      com.tencent.mm.hellhoundlib.a.a.a(paramContext, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahp(), "com/tencent/mm/plugin/finder/utils/ActivityRouter", "enterFinderWxMsgUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mq(0));
+      com.tencent.mm.hellhoundlib.a.a.a(paramContext, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahE(), "com/tencent/mm/plugin/finder/utils/ActivityRouter", "enterFinderWxMsgUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mt(0));
       com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/plugin/finder/utils/ActivityRouter", "enterFinderWxMsgUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       AppMethodBeat.o(167859);
       return;
     }
   }
   
-  public static void eR(Context paramContext)
+  public static void eV(Context paramContext)
   {
     AppMethodBeat.i(167861);
     d.g.b.p.h(paramContext, "context");
     Object localObject = new Intent();
     ((Intent)localObject).setClass(paramContext, FinderSelfQRCodeUI.class);
     localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
-    com.tencent.mm.hellhoundlib.a.a.a(paramContext, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahp(), "com/tencent/mm/plugin/finder/utils/ActivityRouter", "enterSelfQRCodeUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    paramContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mq(0));
+    com.tencent.mm.hellhoundlib.a.a.a(paramContext, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahE(), "com/tencent/mm/plugin/finder/utils/ActivityRouter", "enterSelfQRCodeUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mt(0));
     com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/plugin/finder/utils/ActivityRouter", "enterSelfQRCodeUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     AppMethodBeat.o(167861);
   }
   
-  public static void eS(Context paramContext)
+  public static void eW(Context paramContext)
   {
     AppMethodBeat.i(167866);
     d.g.b.p.h(paramContext, "context");
     Object localObject = new Intent(paramContext, FinderUnOpenUI.class);
     localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
-    com.tencent.mm.hellhoundlib.a.a.a(paramContext, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahp(), "com/tencent/mm/plugin/finder/utils/ActivityRouter", "enterUnOpenUI", "(Landroid/content/Context;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    paramContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mq(0));
+    com.tencent.mm.hellhoundlib.a.a.a(paramContext, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahE(), "com/tencent/mm/plugin/finder/utils/ActivityRouter", "enterUnOpenUI", "(Landroid/content/Context;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mt(0));
     com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/plugin/finder/utils/ActivityRouter", "enterUnOpenUI", "(Landroid/content/Context;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     AppMethodBeat.o(167866);
   }
   
-  public static void eT(Context paramContext)
+  public static void eX(Context paramContext)
   {
-    AppMethodBeat.i(204432);
+    AppMethodBeat.i(205050);
     d.g.b.p.h(paramContext, "context");
     Intent localIntent = new Intent();
     if (!(paramContext instanceof Activity)) {}
@@ -1150,17 +1148,17 @@ public final class a
       localIntent.addFlags(67108864);
       localIntent.setClass(paramContext, FinderFinderSysMsgUI.class);
       localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localIntent);
-      com.tencent.mm.hellhoundlib.a.a.a(paramContext, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahp(), "com/tencent/mm/plugin/finder/utils/ActivityRouter", "enterFinderFinderSysMsgUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mq(0));
+      com.tencent.mm.hellhoundlib.a.a.a(paramContext, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahE(), "com/tencent/mm/plugin/finder/utils/ActivityRouter", "enterFinderFinderSysMsgUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mt(0));
       com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/plugin/finder/utils/ActivityRouter", "enterFinderFinderSysMsgUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      AppMethodBeat.o(204432);
+      AppMethodBeat.o(205050);
       return;
     }
   }
   
-  public static void eU(Context paramContext)
+  public static void eY(Context paramContext)
   {
-    AppMethodBeat.i(204433);
+    AppMethodBeat.i(205051);
     d.g.b.p.h(paramContext, "context");
     Intent localIntent = new Intent();
     if (!(paramContext instanceof Activity)) {}
@@ -1171,10 +1169,10 @@ public final class a
       }
       localIntent.setClass(paramContext, FinderFansListUI.class);
       localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localIntent);
-      com.tencent.mm.hellhoundlib.a.a.a(paramContext, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahp(), "com/tencent/mm/plugin/finder/utils/ActivityRouter", "enterFinderFansListUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mq(0));
+      com.tencent.mm.hellhoundlib.a.a.a(paramContext, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahE(), "com/tencent/mm/plugin/finder/utils/ActivityRouter", "enterFinderFansListUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mt(0));
       com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/plugin/finder/utils/ActivityRouter", "enterFinderFansListUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      AppMethodBeat.o(204433);
+      AppMethodBeat.o(205051);
       return;
     }
   }
@@ -1196,8 +1194,8 @@ public final class a
       localIntent.addFlags(67108864);
       localIntent.setClass(paramContext, FinderPostRouterUI.class);
       paramIntent = new com.tencent.mm.hellhoundlib.b.a().bc(localIntent);
-      com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramIntent.ahp(), "com/tencent/mm/plugin/finder/utils/ActivityRouter", "enterFinderPostRouterUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramContext.startActivity((Intent)paramIntent.mq(0));
+      com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramIntent.ahE(), "com/tencent/mm/plugin/finder/utils/ActivityRouter", "enterFinderPostRouterUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramContext.startActivity((Intent)paramIntent.mt(0));
       com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/plugin/finder/utils/ActivityRouter", "enterFinderPostRouterUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       if ((paramContext instanceof Activity)) {
         ((Activity)paramContext).overridePendingTransition(2130772108, 2130771986);
@@ -1224,8 +1222,8 @@ public final class a
       localIntent.addFlags(67108864);
       localIntent.setClass(paramContext, FinderPostUI.class);
       paramIntent = new com.tencent.mm.hellhoundlib.b.a().bc(localIntent);
-      com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramIntent.ahp(), "com/tencent/mm/plugin/finder/utils/ActivityRouter", "enterFinderPostUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramContext.startActivity((Intent)paramIntent.mq(0));
+      com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramIntent.ahE(), "com/tencent/mm/plugin/finder/utils/ActivityRouter", "enterFinderPostUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramContext.startActivity((Intent)paramIntent.mt(0));
       com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/plugin/finder/utils/ActivityRouter", "enterFinderPostUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       AppMethodBeat.o(167840);
       return;
@@ -1248,8 +1246,8 @@ public final class a
       }
       localIntent.setClass(paramContext, FinderProfileUI.class);
       paramIntent = new com.tencent.mm.hellhoundlib.b.a().bc(localIntent);
-      com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramIntent.ahp(), "com/tencent/mm/plugin/finder/utils/ActivityRouter", "enterFinderProfileUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramContext.startActivity((Intent)paramIntent.mq(0));
+      com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramIntent.ahE(), "com/tencent/mm/plugin/finder/utils/ActivityRouter", "enterFinderProfileUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramContext.startActivity((Intent)paramIntent.mt(0));
       com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/plugin/finder/utils/ActivityRouter", "enterFinderProfileUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       AppMethodBeat.o(167843);
       return;
@@ -1269,8 +1267,8 @@ public final class a
       paramIntent.addFlags(67108864);
       paramIntent.setClass(paramContext, FinderCreateContactUI.class);
       paramIntent = new com.tencent.mm.hellhoundlib.b.a().bc(paramIntent);
-      com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramIntent.ahp(), "com/tencent/mm/plugin/finder/utils/ActivityRouter", "enterFinderCreateContactUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramContext.startActivity((Intent)paramIntent.mq(0));
+      com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramIntent.ahE(), "com/tencent/mm/plugin/finder/utils/ActivityRouter", "enterFinderCreateContactUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramContext.startActivity((Intent)paramIntent.mt(0));
       com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/plugin/finder/utils/ActivityRouter", "enterFinderCreateContactUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       AppMethodBeat.o(167838);
       return;
@@ -1289,8 +1287,8 @@ public final class a
       }
       paramIntent.setClass(paramContext, FinderProfileTimeLineUI.class);
       paramIntent = new com.tencent.mm.hellhoundlib.b.a().bc(paramIntent);
-      com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramIntent.ahp(), "com/tencent/mm/plugin/finder/utils/ActivityRouter", "enterFinderProfileTimelineUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramContext.startActivity((Intent)paramIntent.mq(0));
+      com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramIntent.ahE(), "com/tencent/mm/plugin/finder/utils/ActivityRouter", "enterFinderProfileTimelineUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramContext.startActivity((Intent)paramIntent.mt(0));
       com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/plugin/finder/utils/ActivityRouter", "enterFinderProfileTimelineUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       AppMethodBeat.o(167844);
       return;
@@ -1299,7 +1297,7 @@ public final class a
   
   public static void y(Context paramContext, Intent paramIntent)
   {
-    AppMethodBeat.i(204410);
+    AppMethodBeat.i(205028);
     d.g.b.p.h(paramContext, "context");
     Intent localIntent = paramIntent;
     if (paramIntent == null) {
@@ -1314,28 +1312,28 @@ public final class a
       localIntent.addFlags(67108864);
       localIntent.setClass(paramContext, FinderSelfUI.class);
       paramIntent = new com.tencent.mm.hellhoundlib.b.a().bc(localIntent);
-      com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramIntent.ahp(), "com/tencent/mm/plugin/finder/utils/ActivityRouter", "enterFinderSelfUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramContext.startActivity((Intent)paramIntent.mq(0));
+      com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramIntent.ahE(), "com/tencent/mm/plugin/finder/utils/ActivityRouter", "enterFinderSelfUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramContext.startActivity((Intent)paramIntent.mt(0));
       com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/plugin/finder/utils/ActivityRouter", "enterFinderSelfUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      AppMethodBeat.o(204410);
+      AppMethodBeat.o(205028);
       return;
     }
   }
   
   public static void z(Context paramContext, Intent paramIntent)
   {
-    AppMethodBeat.i(204411);
+    AppMethodBeat.i(205029);
     d.g.b.p.h(paramContext, "context");
     d.g.b.p.h(paramIntent, "i");
-    com.tencent.mm.plugin.finder.search.h localh = com.tencent.mm.plugin.finder.search.h.stT;
+    com.tencent.mm.plugin.finder.search.h localh = com.tencent.mm.plugin.finder.search.h.sEe;
     com.tencent.mm.plugin.finder.search.h.a(null);
-    com.tencent.mm.plugin.report.e.ygI.idkeyStat(1265L, 2L, 1L, false);
+    e.ywz.idkeyStat(1265L, 2L, 1L, false);
     paramIntent.setClass(paramContext, FinderContactSearchIncludeFollowUI.class);
     paramIntent = new com.tencent.mm.hellhoundlib.b.a().bc(paramIntent);
-    com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramIntent.ahp(), "com/tencent/mm/plugin/finder/utils/ActivityRouter", "enterFinderContactSearchIncludeFollowUI", "(Landroid/content/Context;Lcom/tencent/mm/protocal/protobuf/FinderFeedSearchObj;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    paramContext.startActivity((Intent)paramIntent.mq(0));
+    com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramIntent.ahE(), "com/tencent/mm/plugin/finder/utils/ActivityRouter", "enterFinderContactSearchIncludeFollowUI", "(Landroid/content/Context;Lcom/tencent/mm/protocal/protobuf/FinderFeedSearchObj;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramContext.startActivity((Intent)paramIntent.mt(0));
     com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/plugin/finder/utils/ActivityRouter", "enterFinderContactSearchIncludeFollowUI", "(Landroid/content/Context;Lcom/tencent/mm/protocal/protobuf/FinderFeedSearchObj;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    AppMethodBeat.o(204411);
+    AppMethodBeat.o(205029);
   }
   
   public static void z(Context paramContext, String paramString1, String paramString2)
@@ -1344,71 +1342,43 @@ public final class a
     d.g.b.p.h(paramContext, "context");
     d.g.b.p.h(paramString1, "appId");
     d.g.b.p.h(paramString2, "enterPath");
-    f localf = new f();
+    com.tencent.mm.plugin.appbrand.api.f localf = new com.tencent.mm.plugin.appbrand.api.f();
     localf.username = paramString1;
-    localf.jCN = bt.bI(paramString2, "");
+    localf.jFL = bu.bI(paramString2, "");
     localf.scene = 1201;
-    ((o)g.ab(o.class)).a(paramContext, localf);
+    ((com.tencent.mm.plugin.appbrand.service.p)g.ab(com.tencent.mm.plugin.appbrand.service.p.class)).a(paramContext, localf);
     AppMethodBeat.o(167868);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "sessionId", "", "kotlin.jvm.PlatformType", "errType", "", "errCode", "errMsg", "onDone"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "sessionId", "", "kotlin.jvm.PlatformType", "errType", "", "errCode", "errMsg", "onDone"})
   static final class a
     implements p.a
   {
-    a(com.tencent.e.i.d paramd, y.f paramf, Context paramContext, aqy paramaqy) {}
+    a(com.tencent.e.i.d paramd, y.f paramf, Context paramContext, arn paramarn) {}
     
     public final void j(final String paramString1, final int paramInt1, final int paramInt2, final String paramString2)
     {
-      AppMethodBeat.i(204396);
-      com.tencent.mm.ad.c.g((d.g.a.a)new q(paramInt1) {});
-      AppMethodBeat.o(204396);
+      AppMethodBeat.i(205014);
+      com.tencent.mm.ac.c.h((d.g.a.a)new q(paramInt1) {});
+      AppMethodBeat.o(205014);
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
-  static final class b
-    implements Runnable
-  {
-    b(y.f paramf, Context paramContext) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(204398);
-      this.sKF.MLV = com.tencent.mm.ui.base.p.a(paramContext, (CharSequence)paramContext.getResources().getString(2131755936), false, 0, (DialogInterface.OnCancelListener)1.sKJ);
-      AppMethodBeat.o(204398);
-    }
-  }
-  
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "sessionId", "", "kotlin.jvm.PlatformType", "errType", "", "errCode", "errMsg", "onDone"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "sessionId", "", "kotlin.jvm.PlatformType", "errType", "", "errCode", "errMsg", "onDone"})
   static final class c
     implements p.a
   {
-    c(com.tencent.e.i.d paramd, y.f paramf, Context paramContext, aqy paramaqy) {}
+    c(com.tencent.e.i.d paramd, y.f paramf, Context paramContext, arn paramarn) {}
     
     public final void j(final String paramString1, final int paramInt1, final int paramInt2, final String paramString2)
     {
-      AppMethodBeat.i(204400);
-      com.tencent.mm.ad.c.g((d.g.a.a)new q(paramInt1) {});
-      AppMethodBeat.o(204400);
+      AppMethodBeat.i(205018);
+      com.tencent.mm.ac.c.h((d.g.a.a)new q(paramInt1) {});
+      AppMethodBeat.o(205018);
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
-  static final class d
-    implements Runnable
-  {
-    d(y.f paramf, Context paramContext) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(204402);
-      this.sKF.MLV = com.tencent.mm.ui.base.p.a(paramContext, (CharSequence)paramContext.getResources().getString(2131755936), false, 0, (DialogInterface.OnCancelListener)1.sKL);
-      AppMethodBeat.o(204402);
-    }
-  }
-  
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "sessionId", "", "kotlin.jvm.PlatformType", "errType", "", "errCode", "errMsg", "onDone"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "sessionId", "", "kotlin.jvm.PlatformType", "errType", "", "errCode", "errMsg", "onDone"})
   static final class e
     implements p.a
   {
@@ -1416,30 +1386,16 @@ public final class a
     
     public final void j(final String paramString1, final int paramInt1, final int paramInt2, final String paramString2)
     {
-      AppMethodBeat.i(204404);
-      ad.i("Finder.ActivityRouter", "[enterChattingUI] ]username=" + this.gRf + " sessionId=" + paramString1);
-      com.tencent.mm.ad.c.g((d.g.a.a)new q(paramInt1) {});
-      AppMethodBeat.o(204404);
-    }
-  }
-  
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
-  static final class f
-    implements Runnable
-  {
-    f(y.f paramf, Context paramContext) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(204406);
-      this.sKF.MLV = com.tencent.mm.ui.base.p.a(paramContext, (CharSequence)paramContext.getResources().getString(2131755936), false, 0, (DialogInterface.OnCancelListener)1.sKN);
-      AppMethodBeat.o(204406);
+      AppMethodBeat.i(205022);
+      ae.i("Finder.ActivityRouter", "[enterChattingUI] ]username=" + this.gTN + " sessionId=" + paramString1);
+      com.tencent.mm.ac.c.h((d.g.a.a)new q(paramInt1) {});
+      AppMethodBeat.o(205022);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.utils.a
  * JD-Core Version:    0.7.0.1
  */

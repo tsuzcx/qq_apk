@@ -7,8 +7,8 @@ import com.tencent.mm.plugin.story.f.s;
 import com.tencent.mm.plugin.story.i.f;
 import com.tencent.mm.plugin.story.i.n;
 import com.tencent.mm.plugin.story.ui.view.gallery.m;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import d.g.b.p;
 import d.l;
 import java.util.ArrayList;
@@ -18,202 +18,202 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/story/report/StoryBrowseDetailIDKeyStat;", "", "()V", "ID", "", "TAG", "", "isWaiting", "", "isWifi", "lastStoryId", "last_selectedColumn", "", "last_selectedRow", "markGalleryItem", "Lcom/tencent/mm/plugin/story/model/gallery/StoryGalleryItem;", "markStoryId", "onClickTime", "onCreateTime", "onPlayUser", "onResumeTime", "onSelectItemReport", "onStoryLauncherTime", "preLoadInfo", "Lcom/tencent/mm/plugin/story/report/StoryBrowseDetailIDKeyStat$Info;", "storyIdsState", "", "unReadList", "Ljava/util/ArrayList;", "withCache", "canPlay", "", "user", "storyId", "chatting", "clickScene", "checkCanPlay", "item", "Lcom/tencent/mm/plugin/story/model/gallery/StoryVideoItem;", "cacheSecondsDowngrade", "checkReport", "checkStayTime", "checkUnRead", "clean", "downloadEnd", "enter", "list", "", "finish", "initID", "markInit", "markResumeTime", "netSpeed", "speed", "onDestroy", "onSelectItem", "group", "selectedRow", "selectedColumn", "onVideoEnd", "onVideoPlay", "onVideoWaiting", "playUser", "preLoadVideo", "galleryItem", "extinfo", "Lcom/tencent/mm/plugin/story/storage/StoryExtInfo;", "preloadWithCache", "report", "IID", "key", "mval", "startDownload", "isAll", "startHttp", "Info", "State", "plugin-story_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/story/report/StoryBrowseDetailIDKeyStat;", "", "()V", "ID", "", "TAG", "", "isWaiting", "", "isWifi", "lastStoryId", "last_selectedColumn", "", "last_selectedRow", "markGalleryItem", "Lcom/tencent/mm/plugin/story/model/gallery/StoryGalleryItem;", "markStoryId", "onClickTime", "onCreateTime", "onPlayUser", "onResumeTime", "onSelectItemReport", "onStoryLauncherTime", "preLoadInfo", "Lcom/tencent/mm/plugin/story/report/StoryBrowseDetailIDKeyStat$Info;", "storyIdsState", "", "unReadList", "Ljava/util/ArrayList;", "withCache", "canPlay", "", "user", "storyId", "chatting", "clickScene", "checkCanPlay", "item", "Lcom/tencent/mm/plugin/story/model/gallery/StoryVideoItem;", "cacheSecondsDowngrade", "checkReport", "checkStayTime", "checkUnRead", "clean", "downloadEnd", "enter", "list", "", "finish", "initID", "markInit", "markResumeTime", "netSpeed", "speed", "onDestroy", "onSelectItem", "group", "selectedRow", "selectedColumn", "onVideoEnd", "onVideoPlay", "onVideoWaiting", "playUser", "preLoadVideo", "galleryItem", "extinfo", "Lcom/tencent/mm/plugin/story/storage/StoryExtInfo;", "preloadWithCache", "report", "IID", "key", "mval", "startDownload", "isAll", "startHttp", "Info", "State", "plugin-story_release"})
 public final class b
 {
-  public static long ARi;
-  public static final Map<Long, a> ARj;
-  public static a ARk;
-  public static long ARl;
-  private static long ARm;
-  private static long ARn;
-  public static h ARo;
-  public static boolean ARp;
-  public static long ARq;
-  private static long ARr;
-  private static long ARs;
-  private static int ARt;
-  private static int ARu;
-  private static boolean ARv;
-  private static ArrayList<String> ARw;
-  public static final b ARx;
+  public static long BiG;
+  public static final Map<Long, a> BiH;
+  public static a BiI;
+  public static long BiJ;
+  private static long BiK;
+  private static long BiL;
+  public static h BiM;
+  public static boolean BiN;
+  public static long BiO;
+  private static long BiP;
+  private static long BiQ;
+  private static int BiR;
+  private static int BiS;
+  private static boolean BiT;
+  private static ArrayList<String> BiU;
+  public static final b BiV;
   private static boolean isWaiting;
-  public static long pQX;
-  public static boolean ruo;
+  public static long pXC;
+  public static boolean rCA;
   
   static
   {
     AppMethodBeat.i(119402);
-    ARx = new b();
-    pQX = 998L;
-    ruo = true;
+    BiV = new b();
+    pXC = 998L;
+    rCA = true;
     Map localMap = Collections.synchronizedMap((Map)new HashMap());
     p.g(localMap, "Collections.synchronizedMap(HashMap<Long, Info>())");
-    ARj = localMap;
+    BiH = localMap;
     AppMethodBeat.o(119402);
   }
   
-  public static void AK(long paramLong)
+  public static void Bi(long paramLong)
   {
-    ARl = paramLong;
+    BiJ = paramLong;
   }
   
-  public static void AL(long paramLong)
+  public static void Bj(long paramLong)
   {
     AppMethodBeat.i(119398);
-    if (!ARj.containsKey(Long.valueOf(paramLong)))
+    if (!BiH.containsKey(Long.valueOf(paramLong)))
     {
       AppMethodBeat.o(119398);
       return;
     }
-    a locala = (a)ARj.get(Long.valueOf(paramLong));
-    if ((locala != null) && (locala.zVg))
+    a locala = (a)BiH.get(Long.valueOf(paramLong));
+    if ((locala != null) && (locala.Amo))
     {
       AppMethodBeat.o(119398);
       return;
     }
-    if (paramLong == ARl)
+    if (paramLong == BiJ)
     {
-      locala = ARk;
+      locala = BiI;
       if (locala != null)
       {
-        if (locala.ARC <= 0L)
+        if (locala.Bja <= 0L)
         {
           AppMethodBeat.o(119398);
           return;
         }
-        paramLong = bt.Df(locala.ARC);
-        ad.i("MicroMsg.StoryBrowseDetailIDKeyStat", "downloadEnd1 ".concat(String.valueOf(paramLong)));
-        if (locala.oKD)
+        paramLong = bu.DD(locala.Bja);
+        ae.i("MicroMsg.StoryBrowseDetailIDKeyStat", "downloadEnd1 ".concat(String.valueOf(paramLong)));
+        if (locala.oRf)
         {
-          e(pQX, 62L, 1L);
-          e(pQX, 63L, paramLong);
+          e(pXC, 62L, 1L);
+          e(pXC, 63L, paramLong);
         }
-        e(pQX, 60L, 1L);
-        e(pQX, 61L, paramLong);
+        e(pXC, 60L, 1L);
+        e(pXC, 61L, paramLong);
         AppMethodBeat.o(119398);
         return;
       }
       AppMethodBeat.o(119398);
       return;
     }
-    locala = (a)ARj.get(Long.valueOf(paramLong));
+    locala = (a)BiH.get(Long.valueOf(paramLong));
     if (locala != null)
     {
-      if (locala.ARC <= 0L)
+      if (locala.Bja <= 0L)
       {
         AppMethodBeat.o(119398);
         return;
       }
-      paramLong = bt.Df(locala.ARC);
-      ad.i("MicroMsg.StoryBrowseDetailIDKeyStat", "downloadEnd2 ".concat(String.valueOf(paramLong)));
-      if (locala.oKD)
+      paramLong = bu.DD(locala.Bja);
+      ae.i("MicroMsg.StoryBrowseDetailIDKeyStat", "downloadEnd2 ".concat(String.valueOf(paramLong)));
+      if (locala.oRf)
       {
-        e(pQX, 62L, 1L);
-        e(pQX, 63L, paramLong);
+        e(pXC, 62L, 1L);
+        e(pXC, 63L, paramLong);
       }
-      e(pQX, 60L, 1L);
-      e(pQX, 61L, paramLong);
+      e(pXC, 60L, 1L);
+      e(pXC, 61L, paramLong);
       AppMethodBeat.o(119398);
       return;
     }
     AppMethodBeat.o(119398);
   }
   
-  public static void F(long paramLong, boolean paramBoolean)
+  public static void H(long paramLong, boolean paramBoolean)
   {
     AppMethodBeat.i(119397);
-    if (!ARj.containsKey(Long.valueOf(paramLong)))
+    if (!BiH.containsKey(Long.valueOf(paramLong)))
     {
       AppMethodBeat.o(119397);
       return;
     }
-    a locala = (a)ARj.get(Long.valueOf(paramLong));
+    a locala = (a)BiH.get(Long.valueOf(paramLong));
     if (locala != null)
     {
-      locala.ARC = bt.flT();
-      locala.oKD = paramBoolean;
+      locala.Bja = bu.fpO();
+      locala.oRf = paramBoolean;
       AppMethodBeat.o(119397);
       return;
     }
     AppMethodBeat.o(119397);
   }
   
-  public static void So(int paramInt)
+  public static void SV(int paramInt)
   {
     if ((paramInt == 1) || (paramInt == 2))
     {
-      pQX = 998L;
+      pXC = 998L;
       return;
     }
     if (paramInt == 3)
     {
-      pQX = 1006L;
+      pXC = 1006L;
       return;
     }
-    pQX = -1L;
+    pXC = -1L;
   }
   
-  public static void Sp(int paramInt)
+  public static void SW(int paramInt)
   {
     AppMethodBeat.i(119393);
-    long l = bt.Df(ARs);
-    ad.i("MicroMsg.StoryBrowseDetailIDKeyStat", "cur speed " + paramInt + " cur: " + l);
+    long l = bu.DD(BiQ);
+    ae.i("MicroMsg.StoryBrowseDetailIDKeyStat", "cur speed " + paramInt + " cur: " + l);
     if (l > 5000L)
     {
       if (paramInt < 10)
       {
-        e(pQX, 82L, 1L);
+        e(pXC, 82L, 1L);
         AppMethodBeat.o(119393);
         return;
       }
       if (paramInt < 100)
       {
-        e(pQX, 83L, 1L);
+        e(pXC, 83L, 1L);
         AppMethodBeat.o(119393);
         return;
       }
       if (paramInt < 200)
       {
-        e(pQX, 89L, 1L);
+        e(pXC, 89L, 1L);
         AppMethodBeat.o(119393);
         return;
       }
       if (paramInt < 250)
       {
-        e(pQX, 84L, 1L);
+        e(pXC, 84L, 1L);
         AppMethodBeat.o(119393);
         return;
       }
       if (paramInt < 450)
       {
-        e(pQX, 85L, 1L);
+        e(pXC, 85L, 1L);
         AppMethodBeat.o(119393);
         return;
       }
       if (paramInt < 900)
       {
-        e(pQX, 86L, 1L);
+        e(pXC, 86L, 1L);
         AppMethodBeat.o(119393);
         return;
       }
       if (paramInt < 1350)
       {
-        e(pQX, 87L, 1L);
+        e(pXC, 87L, 1L);
         AppMethodBeat.o(119393);
         return;
       }
       if (paramInt < 1800) {
-        e(pQX, 88L, 1L);
+        e(pXC, 88L, 1L);
       }
     }
     AppMethodBeat.o(119393);
   }
   
-  public static boolean aKi()
+  public static boolean aKB()
   {
-    if (ARs <= 0L) {}
-    while (!ruo) {
+    if (BiQ <= 0L) {}
+    while (!rCA) {
       return false;
     }
     return true;
@@ -222,11 +222,11 @@ public final class b
   private static int c(com.tencent.mm.plugin.story.f.d.j paramj)
   {
     AppMethodBeat.i(119395);
-    Object localObject = s.ALd;
+    Object localObject = s.BcG;
     localObject = s.a(paramj);
-    if (((n)localObject).elH())
+    if (((n)localObject).epq())
     {
-      ad.v("MicroMsg.StoryBrowseDetailIDKeyStat", "z checkCanPlay downloadFinish " + paramj.dKt);
+      ae.v("MicroMsg.StoryBrowseDetailIDKeyStat", "z checkCanPlay downloadFinish " + paramj.dLI);
       AppMethodBeat.o(119395);
       return 1;
     }
@@ -236,10 +236,10 @@ public final class b
       return 0;
     }
     float f = ((n)localObject).field_cacheSize / ((n)localObject).field_totalSize;
-    paramj = m.Bfs;
-    if (f * 100.0F >= m.emm().BdL)
+    paramj = m.BwQ;
+    if (f * 100.0F >= m.epV().Bvj)
     {
-      ad.v("MicroMsg.StoryBrowseDetailIDKeyStat", "z checkCanPlay cachesize " + ((n)localObject).field_cacheSize + " totalSize: " + ((n)localObject).field_totalSize);
+      ae.v("MicroMsg.StoryBrowseDetailIDKeyStat", "z checkCanPlay cachesize " + ((n)localObject).field_cacheSize + " totalSize: " + ((n)localObject).field_totalSize);
       AppMethodBeat.o(119395);
       return 1;
     }
@@ -250,20 +250,20 @@ public final class b
   public static void clean()
   {
     AppMethodBeat.i(119391);
-    ARm = 0L;
-    ARn = 0L;
-    ARs = 0L;
-    ARv = false;
-    ARt = -1;
-    ARu = -1;
-    ARq = 0L;
-    ARr = 0L;
-    ARj.clear();
-    ARp = false;
-    ARo = null;
+    BiK = 0L;
+    BiL = 0L;
+    BiQ = 0L;
+    BiT = false;
+    BiR = -1;
+    BiS = -1;
+    BiO = 0L;
+    BiP = 0L;
+    BiH.clear();
+    BiN = false;
+    BiM = null;
     isWaiting = false;
-    ARw = new ArrayList();
-    ARk = null;
+    BiU = new ArrayList();
+    BiI = null;
     AppMethodBeat.o(119391);
   }
   
@@ -271,51 +271,51 @@ public final class b
   {
     AppMethodBeat.i(119394);
     p.h(paramArrayList, "group");
-    if (!aKi())
+    if (!aKB())
     {
       AppMethodBeat.o(119394);
       return;
     }
-    ad.v("MicroMsg.StoryBrowseDetailIDKeyStat", " last_selectedColumn:" + ARu + ",last_selectedRow:" + ARt + " selectedRow:" + paramInt1 + ",selectedColumn:" + paramInt2);
+    ae.v("MicroMsg.StoryBrowseDetailIDKeyStat", " last_selectedColumn:" + BiS + ",last_selectedRow:" + BiR + " selectedRow:" + paramInt1 + ",selectedColumn:" + paramInt2);
     int i;
     int j;
     if (paramArrayList.size() > 0) {
       if ((((ArrayList)paramArrayList.get(paramInt1)).size() > 0) && (paramInt2 + 1 < ((ArrayList)paramArrayList.get(paramInt1)).size()))
       {
-        if (!ARv) {
-          e(pQX, 101L, 1L);
+        if (!BiT) {
+          e(pXC, 101L, 1L);
         }
         i = 1;
         if (paramInt1 + 1 < paramArrayList.size())
         {
-          if (!ARv) {
-            e(pQX, 102L, 1L);
+          if (!BiT) {
+            e(pXC, 102L, 1L);
           }
           j = 1;
           label167:
-          ARv = true;
+          BiT = true;
         }
       }
     }
     for (;;)
     {
-      if ((ARu != -1) && (ARt != -1))
+      if ((BiS != -1) && (BiR != -1))
       {
         if (isWaiting)
         {
-          e(pQX, 100L, 1L);
+          e(pXC, 100L, 1L);
           isWaiting = false;
         }
-        if (paramInt1 != ARt)
+        if (paramInt1 != BiR)
         {
           if (i != 0) {
-            e(pQX, 105L, 1L);
+            e(pXC, 105L, 1L);
           }
-          e(pQX, 106L, 1L);
-          i = paramInt1 - ARt;
+          e(pXC, 106L, 1L);
+          i = paramInt1 - BiR;
           if (i == 1)
           {
-            e(pQX, 110L, 1L);
+            e(pXC, 110L, 1L);
             if (paramArrayList.size() <= 0) {
               break label585;
             }
@@ -326,10 +326,10 @@ public final class b
             }
             if ((paramInt1 + i < paramArrayList.size()) && (((ArrayList)paramArrayList.get(paramInt1 + i)).size() > 0))
             {
-              com.tencent.mm.plugin.story.f.d.j localj = ((h)((ArrayList)paramArrayList.get(paramInt1 + i)).get(0)).AMA;
-              if ((localj != null) && (localj.username != null) && (ARw != null))
+              com.tencent.mm.plugin.story.f.d.j localj = ((h)((ArrayList)paramArrayList.get(paramInt1 + i)).get(0)).Bec;
+              if ((localj != null) && (localj.username != null) && (BiU != null))
               {
-                ArrayList localArrayList = ARw;
+                ArrayList localArrayList = BiU;
                 if ((localArrayList != null) && (localArrayList.contains(localj.username) == true))
                 {
                   if (c(localj) == 1)
@@ -337,13 +337,13 @@ public final class b
                     if (i != 0) {
                       break label460;
                     }
-                    e(pQX, 120L, 1L);
+                    e(pXC, 120L, 1L);
                   }
                   label385:
                   if (i != 0) {
                     break label496;
                   }
-                  e(pQX, 125L, 1L);
+                  e(pXC, 125L, 1L);
                 }
               }
             }
@@ -354,94 +354,94 @@ public final class b
             break label266;
             if (i == 2)
             {
-              e(pQX, 111L, 1L);
+              e(pXC, 111L, 1L);
               break;
             }
             if (i == 3)
             {
-              e(pQX, 112L, 1L);
+              e(pXC, 112L, 1L);
               break;
             }
             if (i < 4) {
               break;
             }
-            e(pQX, 113L, 1L);
+            e(pXC, 113L, 1L);
             break;
             label460:
             if (i == 1)
             {
-              e(pQX, 121L, 1L);
+              e(pXC, 121L, 1L);
               break label385;
             }
             if (i != 2) {
               break label385;
             }
-            e(pQX, 122L, 1L);
+            e(pXC, 122L, 1L);
             break label385;
             label496:
             if (i == 1) {
-              e(pQX, 126L, 1L);
+              e(pXC, 126L, 1L);
             } else if (i == 2) {
-              e(pQX, 127L, 1L);
+              e(pXC, 127L, 1L);
             }
           }
         }
-        else if (paramInt2 != ARu)
+        else if (paramInt2 != BiS)
         {
           if (j != 0) {
-            e(pQX, 103L, 1L);
+            e(pXC, 103L, 1L);
           }
-          e(pQX, 104L, 1L);
-          i = paramInt2 - ARu;
+          e(pXC, 104L, 1L);
+          i = paramInt2 - BiS;
           if (i != 1) {
             break label957;
           }
-          e(pQX, 115L, 1L);
+          e(pXC, 115L, 1L);
         }
       }
       for (;;)
       {
         label585:
-        if ((ARt >= 0) && (ARt < paramArrayList.size()) && (ARu >= 0) && (ARu < ((ArrayList)paramArrayList.get(ARt)).size()) && ((ARu != paramInt2) || (ARt != paramInt1)))
+        if ((BiR >= 0) && (BiR < paramArrayList.size()) && (BiS >= 0) && (BiS < ((ArrayList)paramArrayList.get(BiR)).size()) && ((BiS != paramInt2) || (BiR != paramInt1)))
         {
-          long l = ((h)((ArrayList)paramArrayList.get(ARt)).get(ARu)).AMA.dKt;
-          ad.v("MicroMsg.StoryBrowseDetailIDKeyStat", "checkStayTime storyId " + l + " lastStoryId " + ARi);
-          if ((aKi()) && (ARj.containsKey(Long.valueOf(l))))
+          long l = ((h)((ArrayList)paramArrayList.get(BiR)).get(BiS)).Bec.dLI;
+          ae.v("MicroMsg.StoryBrowseDetailIDKeyStat", "checkStayTime storyId " + l + " lastStoryId " + BiG);
+          if ((aKB()) && (BiH.containsKey(Long.valueOf(l))))
           {
-            paramArrayList = (a)ARj.get(Long.valueOf(l));
-            if ((paramArrayList != null) && (paramArrayList.ARy <= 0L) && (!paramArrayList.zVg) && (paramArrayList.ARz >= 0L))
+            paramArrayList = (a)BiH.get(Long.valueOf(l));
+            if ((paramArrayList != null) && (paramArrayList.BiW <= 0L) && (!paramArrayList.Amo) && (paramArrayList.BiX >= 0L))
             {
-              paramArrayList.ARy = bt.Df(paramArrayList.ARz);
-              ad.i("MicroMsg.StoryBrowseDetailIDKeyStat", "checkStayTime onStayTime " + l + ' ' + paramArrayList.ARy + " hasHttp:" + paramArrayList.ARB + "  isWaiting:" + paramArrayList.isWaiting);
-              if (paramArrayList.ARB)
+              paramArrayList.BiW = bu.DD(paramArrayList.BiX);
+              ae.i("MicroMsg.StoryBrowseDetailIDKeyStat", "checkStayTime onStayTime " + l + ' ' + paramArrayList.BiW + " hasHttp:" + paramArrayList.BiZ + "  isWaiting:" + paramArrayList.isWaiting);
+              if (paramArrayList.BiZ)
               {
-                e(pQX, 21L, 1L);
-                e(pQX, 20L, paramArrayList.ARy);
+                e(pXC, 21L, 1L);
+                e(pXC, 20L, paramArrayList.BiW);
               }
               if (paramArrayList.isWaiting)
               {
-                e(pQX, 23L, 1L);
-                e(pQX, 22L, paramArrayList.ARy);
+                e(pXC, 23L, 1L);
+                e(pXC, 22L, paramArrayList.BiW);
               }
-              e(pQX, 25L, 1L);
-              e(pQX, 24L, paramArrayList.ARy);
-              if (paramArrayList.hhJ) {
-                e(pQX, 26L, 1L);
+              e(pXC, 25L, 1L);
+              e(pXC, 24L, paramArrayList.BiW);
+              if (paramArrayList.hkx) {
+                e(pXC, 26L, 1L);
               }
             }
           }
         }
-        ARu = paramInt2;
-        ARt = paramInt1;
+        BiS = paramInt2;
+        BiR = paramInt1;
         AppMethodBeat.o(119394);
         return;
         label957:
         if (i == 2) {
-          e(pQX, 116L, 1L);
+          e(pXC, 116L, 1L);
         } else if (i == 3) {
-          e(pQX, 117L, 1L);
+          e(pXC, 117L, 1L);
         } else if (i >= 4) {
-          e(pQX, 118L, 1L);
+          e(pXC, 118L, 1L);
         }
       }
       j = 0;
@@ -461,36 +461,36 @@ public final class b
       AppMethodBeat.o(119390);
       return;
     }
-    com.tencent.mm.plugin.report.service.g.yhR.n(paramLong1, paramLong2, paramLong3);
+    com.tencent.mm.plugin.report.service.g.yxI.n(paramLong1, paramLong2, paramLong3);
     AppMethodBeat.o(119390);
   }
   
-  public static void ejD()
+  public static void enm()
   {
-    ARp = true;
+    BiN = true;
   }
   
-  public static void ejE()
+  public static void enn()
   {
     AppMethodBeat.i(119399);
-    ad.v("MicroMsg.StoryBrowseDetailIDKeyStat", "makeResumeTime onResumeTime " + ARm + " onPlayUser " + ARn);
-    ARm = bt.flT();
+    ae.v("MicroMsg.StoryBrowseDetailIDKeyStat", "makeResumeTime onResumeTime " + BiK + " onPlayUser " + BiL);
+    BiK = bu.fpO();
     AppMethodBeat.o(119399);
   }
   
-  public static void ejF()
+  public static void eno()
   {
     AppMethodBeat.i(119401);
-    ARs = bt.flT();
+    BiQ = bu.fpO();
     AppMethodBeat.o(119401);
   }
   
-  public static void gp(List<String> paramList)
+  public static void gy(List<String> paramList)
   {
     AppMethodBeat.i(119392);
     p.h(paramList, "list");
     ArrayList localArrayList = new ArrayList();
-    ARw = localArrayList;
+    BiU = localArrayList;
     localArrayList.addAll((Collection)paramList);
     AppMethodBeat.o(119392);
   }
@@ -499,42 +499,42 @@ public final class b
   {
     AppMethodBeat.i(119400);
     p.h(paramString, "user");
-    if (!aKi())
+    if (!aKB())
     {
       AppMethodBeat.o(119400);
       return;
     }
-    if ((ARq > 0L) && (ARr <= 0L))
+    if ((BiO > 0L) && (BiP <= 0L))
     {
-      ARr = bt.Df(ARq);
-      e(pQX, 130L, 1L);
-      e(pQX, 131L, ARr);
+      BiP = bu.DD(BiO);
+      e(pXC, 130L, 1L);
+      e(pXC, 131L, BiP);
     }
-    ad.v("MicroMsg.StoryBrowseDetailIDKeyStat", "playUser user " + paramString + " storyId " + paramLong + " selectedColumn " + paramInt + " lastStoryId:" + ARi + " onStoryLauncherTime " + ARr);
+    ae.v("MicroMsg.StoryBrowseDetailIDKeyStat", "playUser user " + paramString + " storyId " + paramLong + " selectedColumn " + paramInt + " lastStoryId:" + BiG + " onStoryLauncherTime " + BiP);
     int j = 0;
     int i = j;
-    if (ARi != paramLong)
+    if (BiG != paramLong)
     {
       i = j;
-      if (ARi != 0L) {
+      if (BiG != 0L) {
         i = 1;
       }
     }
-    long l = ARi;
-    ARi = paramLong;
+    long l = BiG;
+    BiG = paramLong;
     p.h(paramString, "user");
-    Object localObject = ARw;
+    Object localObject = BiU;
     if ((localObject != null) && (((ArrayList)localObject).contains(paramString) == true)) {}
     for (j = 1; j == 0; j = 0)
     {
       AppMethodBeat.o(119400);
       return;
     }
-    if ((ARj.containsKey(Long.valueOf(l))) && (i != 0))
+    if ((BiH.containsKey(Long.valueOf(l))) && (i != 0))
     {
-      localObject = (a)ARj.get(Long.valueOf(l));
+      localObject = (a)BiH.get(Long.valueOf(l));
       if (localObject != null) {
-        ((a)localObject).zVg = true;
+        ((a)localObject).Amo = true;
       }
     }
     if (paramInt > 0)
@@ -542,54 +542,54 @@ public final class b
       AppMethodBeat.o(119400);
       return;
     }
-    localObject = ARj;
-    a locala = new a(paramString, b.b.ARF);
-    locala.ARz = bt.flT();
+    localObject = BiH;
+    a locala = new a(paramString, b.b.Bjd);
+    locala.BiX = bu.fpO();
     ((Map)localObject).put(Long.valueOf(paramLong), locala);
-    ARn = bt.flT();
-    ad.v("MicroMsg.StoryBrowseDetailIDKeyStat", "playUser onResumeTime " + ARn);
-    localObject = com.tencent.mm.plugin.story.f.j.AKb;
-    localObject = j.b.ehU().aBD(paramString);
-    ad.i("MicroMsg.StoryBrowseDetailIDKeyStat", "preLoadCache > 0 then " + paramString + " preload " + bt.sy(((f)localObject).elp()));
-    e(pQX, 2L, 1L);
-    if (((f)localObject).elp() > 0L) {
-      e(pQX, 3L, 1L);
+    BiL = bu.fpO();
+    ae.v("MicroMsg.StoryBrowseDetailIDKeyStat", "playUser onResumeTime " + BiL);
+    localObject = com.tencent.mm.plugin.story.f.j.BbE;
+    localObject = j.b.elC().aCW(paramString);
+    ae.i("MicroMsg.StoryBrowseDetailIDKeyStat", "preLoadCache > 0 then " + paramString + " preload " + bu.sL(((f)localObject).eoY()));
+    e(pXC, 2L, 1L);
+    if (((f)localObject).eoY() > 0L) {
+      e(pXC, 3L, 1L);
     }
-    if (paramLong == ARl)
+    if (paramLong == BiJ)
     {
-      if (ARp)
+      if (BiN)
       {
-        e(pQX, 6L, 1L);
-        if (((f)localObject).elp() > 0L)
+        e(pXC, 6L, 1L);
+        if (((f)localObject).eoY() > 0L)
         {
-          if (!ARp) {
+          if (!BiN) {
             break label545;
           }
-          e(pQX, 7L, 1L);
+          e(pXC, 7L, 1L);
         }
       }
       for (;;)
       {
-        paramString = ARo;
+        paramString = BiM;
         if (paramString == null) {
           break label575;
         }
-        if (c(paramString.AMA) != 1) {
+        if (c(paramString.Bec) != 1) {
           break label568;
         }
-        if (!ARp) {
+        if (!BiN) {
           break label558;
         }
-        e(pQX, 8L, 1L);
+        e(pXC, 8L, 1L);
         AppMethodBeat.o(119400);
         return;
-        e(pQX, 9L, 1L);
+        e(pXC, 9L, 1L);
         break;
         label545:
-        e(pQX, 10L, 1L);
+        e(pXC, 10L, 1L);
       }
       label558:
-      e(pQX, 11L, 1L);
+      e(pXC, 11L, 1L);
       label568:
       AppMethodBeat.o(119400);
       return;
@@ -598,33 +598,33 @@ public final class b
     AppMethodBeat.o(119400);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/story/report/StoryBrowseDetailIDKeyStat$Info;", "", "user", "", "state", "Lcom/tencent/mm/plugin/story/report/StoryBrowseDetailIDKeyStat$State;", "(Ljava/lang/String;Lcom/tencent/mm/plugin/story/report/StoryBrowseDetailIDKeyStat$State;)V", "clean", "", "getClean", "()Z", "setClean", "(Z)V", "hasHttp", "getHasHttp", "setHasHttp", "isAll", "setAll", "isEnd", "setEnd", "isWaiting", "setWaiting", "onMarkPlayCall", "", "getOnMarkPlayCall", "()J", "setOnMarkPlayCall", "(J)V", "onMarkPlayingCall", "getOnMarkPlayingCall", "setOnMarkPlayingCall", "onStayTime", "getOnStayTime", "setOnStayTime", "startHttp", "getStartHttp", "setStartHttp", "getState", "()Lcom/tencent/mm/plugin/story/report/StoryBrowseDetailIDKeyStat$State;", "setState", "(Lcom/tencent/mm/plugin/story/report/StoryBrowseDetailIDKeyStat$State;)V", "getUser", "()Ljava/lang/String;", "plugin-story_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/story/report/StoryBrowseDetailIDKeyStat$Info;", "", "user", "", "state", "Lcom/tencent/mm/plugin/story/report/StoryBrowseDetailIDKeyStat$State;", "(Ljava/lang/String;Lcom/tencent/mm/plugin/story/report/StoryBrowseDetailIDKeyStat$State;)V", "clean", "", "getClean", "()Z", "setClean", "(Z)V", "hasHttp", "getHasHttp", "setHasHttp", "isAll", "setAll", "isEnd", "setEnd", "isWaiting", "setWaiting", "onMarkPlayCall", "", "getOnMarkPlayCall", "()J", "setOnMarkPlayCall", "(J)V", "onMarkPlayingCall", "getOnMarkPlayingCall", "setOnMarkPlayingCall", "onStayTime", "getOnStayTime", "setOnStayTime", "startHttp", "getStartHttp", "setStartHttp", "getState", "()Lcom/tencent/mm/plugin/story/report/StoryBrowseDetailIDKeyStat$State;", "setState", "(Lcom/tencent/mm/plugin/story/report/StoryBrowseDetailIDKeyStat$State;)V", "getUser", "()Ljava/lang/String;", "plugin-story_release"})
   public static final class a
   {
-    public long ARA;
-    public boolean ARB;
-    public long ARC;
-    private b.b ARD;
-    long ARy;
-    public long ARz;
-    private final String dDy;
-    public boolean hhJ;
+    public boolean Amo;
+    long BiW;
+    public long BiX;
+    public long BiY;
+    public boolean BiZ;
+    public long Bja;
+    private b.b Bjb;
+    private final String dED;
+    public boolean hkx;
     public boolean isWaiting;
-    public boolean oKD;
-    public boolean zVg;
+    public boolean oRf;
     
     public a(String paramString, b.b paramb)
     {
       AppMethodBeat.i(119386);
-      this.dDy = paramString;
-      this.ARD = paramb;
+      this.dED = paramString;
+      this.Bjb = paramb;
       AppMethodBeat.o(119386);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.story.h.b
  * JD-Core Version:    0.7.0.1
  */

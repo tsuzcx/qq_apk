@@ -743,8 +743,8 @@ public class WebDialog
           paramWebView = WebDialog.this.getContext();
           paramString = new Intent("android.intent.action.VIEW", Uri.parse(paramString));
           paramString = new com.tencent.mm.hellhoundlib.b.a().bc(paramString);
-          com.tencent.mm.hellhoundlib.a.a.a(paramWebView, paramString.ahp(), "com/facebook/internal/WebDialog$DialogWebViewClient", "shouldOverrideUrlLoading", "(Landroid/webkit/WebView;Ljava/lang/String;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          paramWebView.startActivity((Intent)paramString.mq(0));
+          com.tencent.mm.hellhoundlib.a.a.a(paramWebView, paramString.ahE(), "com/facebook/internal/WebDialog$DialogWebViewClient", "shouldOverrideUrlLoading", "(Landroid/webkit/WebView;Ljava/lang/String;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          paramWebView.startActivity((Intent)paramString.mt(0));
           com.tencent.mm.hellhoundlib.a.a.a(paramWebView, "com/facebook/internal/WebDialog$DialogWebViewClient", "shouldOverrideUrlLoading", "(Landroid/webkit/WebView;Ljava/lang/String;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
           AppMethodBeat.o(7687);
           return true;

@@ -9,7 +9,7 @@ import d.g.b.p;
 import d.l;
 import d.v;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "animation", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "animation", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate"})
 final class ScanCodeMaskView$e
   implements ValueAnimator.AnimatorUpdateListener
 {
@@ -27,24 +27,24 @@ final class ScanCodeMaskView$e
       throw paramValueAnimator;
     }
     float f2 = ((Float)paramValueAnimator).floatValue();
-    ScanCodeMaskView.a(this.yxL).setTranslationY(f2);
-    float f1 = ScanCodeMaskView.b(this.yxL).height() * ScanCodeMaskView.c(this.yxL);
-    f2 -= ScanCodeMaskView.b(this.yxL).top;
+    ScanCodeMaskView.a(this.yNL).setTranslationY(f2);
+    float f1 = ScanCodeMaskView.b(this.yNL).height() * ScanCodeMaskView.c(this.yNL);
+    f2 -= ScanCodeMaskView.b(this.yNL).top;
     if (f2 <= f1)
     {
       f1 = (f1 - f2) / f1;
-      ScanCodeMaskView.a(this.yxL).setAlpha(1.0F - f1);
+      ScanCodeMaskView.a(this.yNL).setAlpha(1.0F - f1);
       AppMethodBeat.o(52380);
       return;
     }
-    if (f2 >= ScanCodeMaskView.b(this.yxL).height() * (1.0F - ScanCodeMaskView.c(this.yxL)))
+    if (f2 >= ScanCodeMaskView.b(this.yNL).height() * (1.0F - ScanCodeMaskView.c(this.yNL)))
     {
-      f1 = (f2 - ScanCodeMaskView.b(this.yxL).height() * (1.0F - ScanCodeMaskView.c(this.yxL))) / f1;
-      ScanCodeMaskView.a(this.yxL).setAlpha(1.0F - f1);
+      f1 = (f2 - ScanCodeMaskView.b(this.yNL).height() * (1.0F - ScanCodeMaskView.c(this.yNL))) / f1;
+      ScanCodeMaskView.a(this.yNL).setAlpha(1.0F - f1);
       AppMethodBeat.o(52380);
       return;
     }
-    ScanCodeMaskView.a(this.yxL).setAlpha(1.0F);
+    ScanCodeMaskView.a(this.yNL).setAlpha(1.0F);
     AppMethodBeat.o(52380);
   }
 }

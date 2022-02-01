@@ -2,30 +2,30 @@ package com.tencent.mm.ui.contact;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public final class ac
 {
-  public static void aep(int paramInt)
+  public static void aeY(int paramInt)
   {
     AppMethodBeat.i(102928);
-    ad.i("MicroMsg.SelectContactReportLogic", "reportCreateChatroomClick %d %d", new Object[] { Integer.valueOf(13941), Integer.valueOf(paramInt) });
-    g.yhR.f(13941, new Object[] { Integer.valueOf(paramInt) });
+    ae.i("MicroMsg.SelectContactReportLogic", "reportCreateChatroomClick %d %d", new Object[] { Integer.valueOf(13941), Integer.valueOf(paramInt) });
+    g.yxI.f(13941, new Object[] { Integer.valueOf(paramInt) });
     AppMethodBeat.o(102928);
   }
   
   public static final void u(String paramString, int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(102927);
-    if (bt.isNullOrNil(paramString))
+    if (bu.isNullOrNil(paramString))
     {
       AppMethodBeat.o(102927);
       return;
     }
     paramString = String.format("%s,%d,%d,%d,%d", new Object[] { paramString, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(0) });
-    ad.v("MicroMsg.SelectContactReportLogic", "reportClick: %s", new Object[] { paramString });
-    g.yhR.kvStat(13234, paramString);
+    ae.v("MicroMsg.SelectContactReportLogic", "reportClick: %s", new Object[] { paramString });
+    g.yxI.kvStat(13234, paramString);
     AppMethodBeat.o(102927);
   }
 }

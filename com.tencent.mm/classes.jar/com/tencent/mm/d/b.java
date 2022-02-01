@@ -3,17 +3,17 @@ package com.tencent.mm.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class b
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
   public String apkMd5;
-  public int cSc;
-  public String cSd;
-  public int cSe;
-  public String cSf;
-  public String cSg;
-  public boolean cSh;
-  public int cSi;
-  public boolean cSj;
+  public int cSM;
+  public String cSN;
+  public int cSO;
+  public String cSP;
+  public String cSQ;
+  public boolean cSR;
+  public int cSS;
+  public boolean cST;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -30,20 +30,20 @@ public final class b
       if (this.apkMd5 != null) {
         paramVarArgs.d(1, this.apkMd5);
       }
-      paramVarArgs.lD(2, this.cSc);
-      if (this.cSd != null) {
-        paramVarArgs.d(3, this.cSd);
+      paramVarArgs.lK(2, this.cSM);
+      if (this.cSN != null) {
+        paramVarArgs.d(3, this.cSN);
       }
-      paramVarArgs.lD(4, this.cSe);
-      if (this.cSf != null) {
-        paramVarArgs.d(5, this.cSf);
+      paramVarArgs.lK(4, this.cSO);
+      if (this.cSP != null) {
+        paramVarArgs.d(5, this.cSP);
       }
-      if (this.cSg != null) {
-        paramVarArgs.d(6, this.cSg);
+      if (this.cSQ != null) {
+        paramVarArgs.d(6, this.cSQ);
       }
-      paramVarArgs.bt(7, this.cSh);
-      paramVarArgs.lD(8, this.cSi);
-      paramVarArgs.bt(9, this.cSj);
+      paramVarArgs.bC(7, this.cSR);
+      paramVarArgs.lK(8, this.cSS);
+      paramVarArgs.bC(9, this.cST);
       AppMethodBeat.o(944);
       return 0;
     }
@@ -55,29 +55,29 @@ public final class b
     label654:
     for (paramInt = f.a.a.a.e(1, this.apkMd5) + 0;; paramInt = 0)
     {
-      int i = paramInt + f.a.a.a.lA(2, this.cSc);
+      int i = paramInt + f.a.a.a.lH(2, this.cSM);
       paramInt = i;
-      if (this.cSd != null) {
-        paramInt = i + f.a.a.a.e(3, this.cSd);
+      if (this.cSN != null) {
+        paramInt = i + f.a.a.a.e(3, this.cSN);
       }
-      i = paramInt + f.a.a.a.lA(4, this.cSe);
+      i = paramInt + f.a.a.a.lH(4, this.cSO);
       paramInt = i;
-      if (this.cSf != null) {
-        paramInt = i + f.a.a.a.e(5, this.cSf);
+      if (this.cSP != null) {
+        paramInt = i + f.a.a.a.e(5, this.cSP);
       }
       i = paramInt;
-      if (this.cSg != null) {
-        i = paramInt + f.a.a.a.e(6, this.cSg);
+      if (this.cSQ != null) {
+        i = paramInt + f.a.a.a.e(6, this.cSQ);
       }
-      paramInt = f.a.a.a.alP(7);
-      int j = f.a.a.a.lA(8, this.cSi);
-      int k = f.a.a.a.alP(9);
+      paramInt = f.a.a.a.amz(7);
+      int j = f.a.a.a.lH(8, this.cSS);
+      int k = f.a.a.a.amz(9);
       AppMethodBeat.o(944);
       return i + paramInt + j + k;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs);; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs))
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs);; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs))
         {
           if (paramInt <= 0)
           {
@@ -89,7 +89,7 @@ public final class b
             throw paramVarArgs;
           }
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
         AppMethodBeat.o(944);
@@ -105,39 +105,39 @@ public final class b
           AppMethodBeat.o(944);
           return -1;
         case 1: 
-          localb.apkMd5 = locala.gxB();
+          localb.apkMd5 = locala.gCd();
           AppMethodBeat.o(944);
           return 0;
         case 2: 
-          localb.cSc = locala.gxA();
+          localb.cSM = locala.gCc();
           AppMethodBeat.o(944);
           return 0;
         case 3: 
-          localb.cSd = locala.gxB();
+          localb.cSN = locala.gCd();
           AppMethodBeat.o(944);
           return 0;
         case 4: 
-          localb.cSe = locala.gxA();
+          localb.cSO = locala.gCc();
           AppMethodBeat.o(944);
           return 0;
         case 5: 
-          localb.cSf = locala.gxB();
+          localb.cSP = locala.gCd();
           AppMethodBeat.o(944);
           return 0;
         case 6: 
-          localb.cSg = locala.gxB();
+          localb.cSQ = locala.gCd();
           AppMethodBeat.o(944);
           return 0;
         case 7: 
-          localb.cSh = locala.gxC();
+          localb.cSR = locala.gCe();
           AppMethodBeat.o(944);
           return 0;
         case 8: 
-          localb.cSi = locala.gxA();
+          localb.cSS = locala.gCc();
           AppMethodBeat.o(944);
           return 0;
         }
-        localb.cSj = locala.gxC();
+        localb.cST = locala.gCe();
         AppMethodBeat.o(944);
         return 0;
       }

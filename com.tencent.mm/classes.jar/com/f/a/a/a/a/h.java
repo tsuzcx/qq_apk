@@ -9,20 +9,20 @@ import com.tencent.tencentmap.mapsdk.maps.model.CameraPosition;
 public final class h
   implements com.tencent.tencentmap.mapsdk.map.Projection
 {
-  private com.tencent.tencentmap.mapsdk.maps.Projection MzA;
+  private com.tencent.tencentmap.mapsdk.maps.Projection MWH;
   private TencentMap mMap;
   
   public h(TencentMap paramTencentMap)
   {
-    AppMethodBeat.i(200031);
-    this.MzA = paramTencentMap.getProjection();
+    AppMethodBeat.i(212723);
+    this.MWH = paramTencentMap.getProjection();
     this.mMap = paramTencentMap;
-    AppMethodBeat.o(200031);
+    AppMethodBeat.o(212723);
   }
   
   public final double distanceBetween(com.tencent.mapsdk.raster.model.LatLng paramLatLng1, com.tencent.mapsdk.raster.model.LatLng paramLatLng2)
   {
-    AppMethodBeat.i(200035);
+    AppMethodBeat.i(212727);
     double d4 = paramLatLng1.getLongitude();
     double d3 = paramLatLng1.getLatitude();
     double d2 = paramLatLng2.getLongitude();
@@ -48,64 +48,64 @@ public final class h
     paramLatLng2[1] = (d4 * d7);
     paramLatLng2[2] = d8;
     d1 = Math.asin(Math.sqrt((paramLatLng1[0] - paramLatLng2[0]) * (paramLatLng1[0] - paramLatLng2[0]) + (paramLatLng1[1] - paramLatLng2[1]) * (paramLatLng1[1] - paramLatLng2[1]) + (paramLatLng1[2] - paramLatLng2[2]) * (paramLatLng1[2] - paramLatLng2[2])) / 2.0D);
-    AppMethodBeat.o(200035);
+    AppMethodBeat.o(212727);
     return d1 * 12742001.579854401D;
   }
   
   public final com.tencent.mapsdk.raster.model.LatLng fromScreenLocation(Point paramPoint)
   {
-    AppMethodBeat.i(200032);
-    paramPoint = l.a(this.MzA.fromScreenLocation(paramPoint));
-    AppMethodBeat.o(200032);
+    AppMethodBeat.i(212724);
+    paramPoint = l.a(this.MWH.fromScreenLocation(paramPoint));
+    AppMethodBeat.o(212724);
     return paramPoint;
   }
   
   public final double getLatitudeSpan()
   {
-    AppMethodBeat.i(200038);
-    com.tencent.tencentmap.mapsdk.maps.model.VisibleRegion localVisibleRegion = this.MzA.getVisibleRegion();
+    AppMethodBeat.i(212730);
+    com.tencent.tencentmap.mapsdk.maps.model.VisibleRegion localVisibleRegion = this.MWH.getVisibleRegion();
     if (localVisibleRegion == null)
     {
-      AppMethodBeat.o(200038);
+      AppMethodBeat.o(212730);
       return -1.0D;
     }
     double d1 = localVisibleRegion.latLngBounds.southwest.latitude;
     double d2 = localVisibleRegion.latLngBounds.northeast.latitude;
-    AppMethodBeat.o(200038);
+    AppMethodBeat.o(212730);
     return d1 - d2;
   }
   
   public final double getLongitudeSpan()
   {
-    AppMethodBeat.i(200039);
-    com.tencent.tencentmap.mapsdk.maps.model.VisibleRegion localVisibleRegion = this.MzA.getVisibleRegion();
+    AppMethodBeat.i(212731);
+    com.tencent.tencentmap.mapsdk.maps.model.VisibleRegion localVisibleRegion = this.MWH.getVisibleRegion();
     if (localVisibleRegion == null)
     {
-      AppMethodBeat.o(200039);
+      AppMethodBeat.o(212731);
       return -1.0D;
     }
     double d1 = localVisibleRegion.latLngBounds.southwest.longitude;
     double d2 = localVisibleRegion.latLngBounds.northeast.longitude;
-    AppMethodBeat.o(200039);
+    AppMethodBeat.o(212731);
     return d1 - d2;
   }
   
   public final float getScalePerPixel()
   {
-    AppMethodBeat.i(200040);
-    float f = (float)this.MzA.metersPerPixel(this.mMap.getCameraPosition().target.latitude);
-    AppMethodBeat.o(200040);
+    AppMethodBeat.i(212732);
+    float f = (float)this.MWH.metersPerPixel(this.mMap.getCameraPosition().target.latitude);
+    AppMethodBeat.o(212732);
     return f;
   }
   
   public final com.tencent.mapsdk.raster.model.VisibleRegion getVisibleRegion()
   {
     Object localObject2 = null;
-    AppMethodBeat.i(200034);
-    Object localObject1 = this.MzA.getVisibleRegion();
+    AppMethodBeat.i(212726);
+    Object localObject1 = this.MWH.getVisibleRegion();
     if (localObject1 == null)
     {
-      AppMethodBeat.o(200034);
+      AppMethodBeat.o(212726);
       return null;
     }
     com.tencent.mapsdk.raster.model.LatLng localLatLng1 = l.a(((com.tencent.tencentmap.mapsdk.maps.model.VisibleRegion)localObject1).nearLeft);
@@ -127,47 +127,47 @@ public final class h
     for (localObject1 = localObject2;; localObject1 = new com.tencent.mapsdk.raster.model.LatLngBounds(new com.tencent.mapsdk.raster.model.LatLng(localLatLngBounds.southwest.latitude, localLatLngBounds.southwest.longitude), new com.tencent.mapsdk.raster.model.LatLng(localLatLngBounds.northeast.latitude, localLatLngBounds.northeast.longitude)))
     {
       localObject1 = new com.tencent.mapsdk.raster.model.VisibleRegion(localLatLng1, localLatLng2, localLatLng3, localLatLng4, (com.tencent.mapsdk.raster.model.LatLngBounds)localObject1);
-      AppMethodBeat.o(200034);
+      AppMethodBeat.o(212726);
       return localObject1;
     }
   }
   
   public final float metersToEquatorPixels(float paramFloat)
   {
-    AppMethodBeat.i(200036);
+    AppMethodBeat.i(212728);
     paramFloat = metersToPixels(0.0D, paramFloat);
-    AppMethodBeat.o(200036);
+    AppMethodBeat.o(212728);
     return paramFloat;
   }
   
   public final float metersToPixels(double paramDouble1, double paramDouble2)
   {
-    AppMethodBeat.i(200037);
-    float f = (float)(paramDouble2 / this.MzA.metersPerPixel(paramDouble1));
-    AppMethodBeat.o(200037);
+    AppMethodBeat.i(212729);
+    float f = (float)(paramDouble2 / this.MWH.metersPerPixel(paramDouble1));
+    AppMethodBeat.o(212729);
     return f;
   }
   
   @Deprecated
   public final Point toPixels(GeoPoint paramGeoPoint, Point paramPoint)
   {
-    AppMethodBeat.i(200041);
+    AppMethodBeat.i(212733);
     paramGeoPoint = GeoPoint.g2l(paramGeoPoint);
     if (paramGeoPoint == null)
     {
-      AppMethodBeat.o(200041);
+      AppMethodBeat.o(212733);
       return null;
     }
     paramGeoPoint = toScreenLocation(paramGeoPoint);
-    AppMethodBeat.o(200041);
+    AppMethodBeat.o(212733);
     return paramGeoPoint;
   }
   
   public final Point toScreenLocation(com.tencent.mapsdk.raster.model.LatLng paramLatLng)
   {
-    AppMethodBeat.i(200033);
-    paramLatLng = this.MzA.toScreenLocation(l.c(paramLatLng));
-    AppMethodBeat.o(200033);
+    AppMethodBeat.i(212725);
+    paramLatLng = this.MWH.toScreenLocation(l.c(paramLatLng));
+    AppMethodBeat.o(212725);
     return paramLatLng;
   }
 }

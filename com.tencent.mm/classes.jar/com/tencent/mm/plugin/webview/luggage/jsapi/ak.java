@@ -4,15 +4,14 @@ import android.content.Context;
 import android.content.Intent;
 import com.tencent.luggage.d.b.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bs.d;
+import com.tencent.mm.br.d;
+import com.tencent.mm.contact.c;
 import com.tencent.mm.g.c.aw;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.o.b;
 import com.tencent.mm.plugin.messenger.foundation.a.l;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.am;
-import com.tencent.mm.storage.bp;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.an;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -26,7 +25,7 @@ public class ak
     {
       paramString = new JSONObject(paramString);
       paramString = paramString.optString("username");
-      if (bt.isNullOrNil(paramString))
+      if (bu.isNullOrNil(paramString))
       {
         parama.f("param_err", null);
         AppMethodBeat.o(78586);
@@ -35,19 +34,19 @@ public class ak
     }
     catch (JSONException paramContext)
     {
-      ad.e("MicroMsg.JsApiOpenBizChat", "parase json fail");
+      ae.e("MicroMsg.JsApiOpenBizChat", "parase json fail");
       parama.f("fail", null);
       AppMethodBeat.o(78586);
       return;
     }
-    Object localObject = ((l)g.ab(l.class)).azp().Bf(paramString);
-    if ((localObject == null) || (!((am)localObject).fqg()))
+    Object localObject = ((l)g.ab(l.class)).azF().BH(paramString);
+    if ((localObject == null) || (!((an)localObject).fug()))
     {
       parama.f("not biz username", null);
       AppMethodBeat.o(78586);
       return;
     }
-    if (!b.lM(((aw)localObject).field_type))
+    if (!c.lO(((aw)localObject).field_type))
     {
       parama.f("open_biz_chat", null);
       AppMethodBeat.o(78586);
@@ -63,7 +62,7 @@ public class ak
   
   public final void b(b.a parama) {}
   
-  public final int ccO()
+  public final int ced()
   {
     return 1;
   }

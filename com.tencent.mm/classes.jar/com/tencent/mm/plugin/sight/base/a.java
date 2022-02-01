@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.sight.base;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public final class a
 {
@@ -13,14 +13,14 @@ public final class a
   public int videoBitrate = 0;
   public int videoDuration = 0;
   public int width = 0;
-  public int xRx = 0;
-  public int xRy = 0;
-  public int xRz = 0;
+  public int yhq = 0;
+  public int yhr = 0;
+  public int yhs = 0;
   
   public final int getVideoDuration()
   {
     AppMethodBeat.i(133594);
-    int i = bt.Dg(this.videoDuration);
+    int i = bu.DE(this.videoDuration);
     AppMethodBeat.o(133594);
     return i;
   }
@@ -28,7 +28,7 @@ public final class a
   public final String toString()
   {
     AppMethodBeat.i(133595);
-    String str = "[ videoDuration: " + this.videoDuration + " videoBitrate: " + this.videoBitrate + " width: " + this.width + " height: " + this.height + " frameRate: " + this.frameRate + " audioChannel: " + this.audioChannel + " audioBitrate: " + this.audioBitrate + " audioSampleRate: " + this.audioSampleRate + " useABA: " + this.xRx + " useMinMaxQP: " + this.xRz + " bitrateAdaptiveUp: " + this.xRy + "]";
+    String str = "[ videoDuration: " + this.videoDuration + " videoBitrate: " + this.videoBitrate + " width: " + this.width + " height: " + this.height + " frameRate: " + this.frameRate + " audioChannel: " + this.audioChannel + " audioBitrate: " + this.audioBitrate + " audioSampleRate: " + this.audioSampleRate + " useABA: " + this.yhq + " useMinMaxQP: " + this.yhs + " bitrateAdaptiveUp: " + this.yhr + "]";
     AppMethodBeat.o(133595);
     return str;
   }

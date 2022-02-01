@@ -15,47 +15,47 @@ public final class e
   {
     AppMethodBeat.i(122444);
     c.a locala = new c.a();
-    locala.IhA = new Field[10];
+    locala.IBL = new Field[10];
     locala.columns = new String[11];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "chatroom";
-    locala.IhC.put("chatroom", "TEXT");
+    locala.IBN.put("chatroom", "TEXT");
     localStringBuilder.append(" chatroom TEXT");
     localStringBuilder.append(", ");
     locala.columns[1] = "daySec";
-    locala.IhC.put("daySec", "TEXT");
+    locala.IBN.put("daySec", "TEXT");
     localStringBuilder.append(" daySec TEXT");
     localStringBuilder.append(", ");
     locala.columns[2] = "nickname";
-    locala.IhC.put("nickname", "TEXT");
+    locala.IBN.put("nickname", "TEXT");
     localStringBuilder.append(" nickname TEXT");
     localStringBuilder.append(", ");
     locala.columns[3] = "isMute";
-    locala.IhC.put("isMute", "INTEGER");
+    locala.IBN.put("isMute", "INTEGER");
     localStringBuilder.append(" isMute INTEGER");
     localStringBuilder.append(", ");
     locala.columns[4] = "unReadCount";
-    locala.IhC.put("unReadCount", "INTEGER");
+    locala.IBN.put("unReadCount", "INTEGER");
     localStringBuilder.append(" unReadCount INTEGER");
     localStringBuilder.append(", ");
     locala.columns[5] = "sendCount";
-    locala.IhC.put("sendCount", "INTEGER");
+    locala.IBN.put("sendCount", "INTEGER");
     localStringBuilder.append(" sendCount INTEGER");
     localStringBuilder.append(", ");
     locala.columns[6] = "enterCount";
-    locala.IhC.put("enterCount", "INTEGER");
+    locala.IBN.put("enterCount", "INTEGER");
     localStringBuilder.append(" enterCount INTEGER");
     localStringBuilder.append(", ");
     locala.columns[7] = "disRedDotCount";
-    locala.IhC.put("disRedDotCount", "INTEGER");
+    locala.IBN.put("disRedDotCount", "INTEGER");
     localStringBuilder.append(" disRedDotCount INTEGER");
     localStringBuilder.append(", ");
     locala.columns[8] = "stayTime";
-    locala.IhC.put("stayTime", "LONG");
+    locala.IBN.put("stayTime", "LONG");
     localStringBuilder.append(" stayTime LONG");
     localStringBuilder.append(", ");
     locala.columns[9] = "score";
-    locala.IhC.put("score", "FLOAT");
+    locala.IBN.put("score", "FLOAT");
     localStringBuilder.append(" score FLOAT");
     locala.columns[10] = "rowid";
     locala.sql = localStringBuilder.toString();
@@ -78,7 +78,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.roomexpt.e
  * JD-Core Version:    0.7.0.1
  */

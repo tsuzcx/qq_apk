@@ -8,19 +8,16 @@ public abstract class gn
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eEf = "createTime".hashCode();
-  private static final int eLN = "canvasId".hashCode();
-  private static final int eLO = "canvasXml".hashCode();
-  private static final int fvr = "canvasExt".hashCode();
+  private static final int eGD = "appId".hashCode();
+  private static final int eGY = "username".hashCode();
+  private static final int eIR = "openId".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eDI = true;
-  private boolean eLL = true;
-  private boolean eLM = true;
-  public String field_canvasExt;
-  public String field_canvasId;
-  public String field_canvasXml;
-  public long field_createTime;
-  private boolean fvq = true;
+  private boolean eGV = true;
+  private boolean eGm = true;
+  private boolean eIv = true;
+  public String field_appId;
+  public String field_openId;
+  public String field_username;
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -35,11 +32,11 @@ public abstract class gn
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eLN != k) {
+      if (eIR != k) {
         break label65;
       }
-      this.field_canvasId = paramCursor.getString(i);
-      this.eLL = true;
+      this.field_openId = paramCursor.getString(i);
+      this.eIv = true;
     }
     for (;;)
     {
@@ -47,12 +44,10 @@ public abstract class gn
       break label20;
       break;
       label65:
-      if (eLO == k) {
-        this.field_canvasXml = paramCursor.getString(i);
-      } else if (eEf == k) {
-        this.field_createTime = paramCursor.getLong(i);
-      } else if (fvr == k) {
-        this.field_canvasExt = paramCursor.getString(i);
+      if (eGD == k) {
+        this.field_appId = paramCursor.getString(i);
+      } else if (eGY == k) {
+        this.field_username = paramCursor.getString(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -62,17 +57,14 @@ public abstract class gn
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eLL) {
-      localContentValues.put("canvasId", this.field_canvasId);
+    if (this.eIv) {
+      localContentValues.put("openId", this.field_openId);
     }
-    if (this.eLM) {
-      localContentValues.put("canvasXml", this.field_canvasXml);
+    if (this.eGm) {
+      localContentValues.put("appId", this.field_appId);
     }
-    if (this.eDI) {
-      localContentValues.put("createTime", Long.valueOf(this.field_createTime));
-    }
-    if (this.fvq) {
-      localContentValues.put("canvasExt", this.field_canvasExt);
+    if (this.eGV) {
+      localContentValues.put("username", this.field_username);
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));
@@ -82,7 +74,7 @@ public abstract class gn
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.c.gn
  * JD-Core Version:    0.7.0.1
  */

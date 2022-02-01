@@ -5,11 +5,11 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.media.g.a;
 import com.tencent.mm.media.g.c;
 import com.tencent.mm.media.g.d;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class f
 {
-  private static volatile int Cqm = 0;
+  private static volatile int CHQ = 0;
   
   public static int createProgram(String paramString1, String paramString2)
   {
@@ -29,7 +29,7 @@ public final class f
     }
     int j = GLES20.glCreateProgram();
     if (j == 0) {
-      ad.e("MicroMsg.VoipRenderUtils", "Could not create program");
+      ae.e("MicroMsg.VoipRenderUtils", "Could not create program");
     }
     GLES20.glAttachShader(j, k);
     GLES20.glAttachShader(j, m);
@@ -38,8 +38,8 @@ public final class f
     GLES20.glGetProgramiv(j, 35714, paramString1, 0);
     if (paramString1[0] != 1)
     {
-      ad.e("MicroMsg.VoipRenderUtils", "Could not link program: ");
-      ad.e("MicroMsg.VoipRenderUtils", GLES20.glGetProgramInfoLog(j));
+      ae.e("MicroMsg.VoipRenderUtils", "Could not link program: ");
+      ae.e("MicroMsg.VoipRenderUtils", GLES20.glGetProgramInfoLog(j));
       GLES20.glDeleteProgram(j);
     }
     for (;;)
@@ -50,7 +50,7 @@ public final class f
     }
   }
   
-  static d eAM()
+  static d eEu()
   {
     AppMethodBeat.i(115742);
     d locald = c.a(true, 14L);
@@ -58,11 +58,11 @@ public final class f
     return locald;
   }
   
-  static a eAN()
+  static a eEv()
   {
     AppMethodBeat.i(115743);
-    Object localObject = c.hkn;
-    localObject = c.rq(14L);
+    Object localObject = c.hnb;
+    localObject = c.rD(14L);
     AppMethodBeat.o(115743);
     return localObject;
   }
@@ -78,7 +78,7 @@ public final class f
     GLES20.glGetShaderiv(j, 35713, paramString, 0);
     if (paramString[0] == 0)
     {
-      ad.e("MicroMsg.VoipRenderUtils", "Could not compile shader %s and shader info is %s", new Object[] { Integer.valueOf(paramInt), GLES20.glGetShaderInfoLog(j) });
+      ae.e("MicroMsg.VoipRenderUtils", "Could not compile shader %s and shader info is %s", new Object[] { Integer.valueOf(paramInt), GLES20.glGetShaderInfoLog(j) });
       GLES20.glDeleteShader(j);
     }
     for (paramInt = i;; paramInt = j)

@@ -11,8 +11,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class NetStatGroup
   extends LinearLayout
 {
-  LinearLayout yEf;
-  final TextView yEg;
+  LinearLayout yUk;
+  final TextView yUl;
   
   public NetStatGroup(Context paramContext)
   {
@@ -24,9 +24,9 @@ public class NetStatGroup
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(73893);
     View.inflate(paramContext, 2131495007, this);
-    this.yEf = ((LinearLayout)findViewById(2131300621));
-    this.yEg = ((TextView)findViewById(2131298928));
-    this.yEg.setTextSize(0, paramContext.getResources().getDimensionPixelSize(2131165466));
+    this.yUk = ((LinearLayout)findViewById(2131300621));
+    this.yUl = ((TextView)findViewById(2131298928));
+    this.yUl.setTextSize(0, paramContext.getResources().getDimensionPixelSize(2131165466));
     AppMethodBeat.o(73893);
   }
 }

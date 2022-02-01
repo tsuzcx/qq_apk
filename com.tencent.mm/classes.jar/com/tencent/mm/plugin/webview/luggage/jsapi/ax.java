@@ -6,7 +6,7 @@ import com.tencent.e.i;
 import com.tencent.luggage.d.a;
 import com.tencent.luggage.d.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.security.cert.X509Certificate;
 import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.SSLContext;
@@ -17,25 +17,25 @@ import javax.net.ssl.X509TrustManager;
 public class ax<T extends a>
   extends bq<T>
 {
-  private static TrustManager DRu;
+  private static TrustManager Eju;
   
   static
   {
-    AppMethodBeat.i(207916);
-    DRu = new X509TrustManager()
+    AppMethodBeat.i(198096);
+    Eju = new X509TrustManager()
     {
       public final void checkClientTrusted(X509Certificate[] paramAnonymousArrayOfX509Certificate, String paramAnonymousString)
       {
-        AppMethodBeat.i(207911);
-        ad.i("MicroMsg.JsApiRequest", "checkClientTrusted");
-        AppMethodBeat.o(207911);
+        AppMethodBeat.i(198091);
+        ae.i("MicroMsg.JsApiRequest", "checkClientTrusted");
+        AppMethodBeat.o(198091);
       }
       
       public final void checkServerTrusted(X509Certificate[] paramAnonymousArrayOfX509Certificate, String paramAnonymousString)
       {
-        AppMethodBeat.i(207912);
-        ad.i("MicroMsg.JsApiRequest", "checkServerTrusted");
-        AppMethodBeat.o(207912);
+        AppMethodBeat.i(198092);
+        ae.i("MicroMsg.JsApiRequest", "checkServerTrusted");
+        AppMethodBeat.o(198092);
       }
       
       public final X509Certificate[] getAcceptedIssuers()
@@ -43,21 +43,21 @@ public class ax<T extends a>
         return new X509Certificate[0];
       }
     };
-    AppMethodBeat.o(207916);
+    AppMethodBeat.o(198096);
   }
   
-  private static SSLContext aHd(String paramString)
+  private static SSLContext aIx(String paramString)
   {
-    AppMethodBeat.i(207914);
+    AppMethodBeat.i(198094);
     try
     {
       paramString = SSLContext.getInstance(paramString);
-      AppMethodBeat.o(207914);
+      AppMethodBeat.o(198094);
       return paramString;
     }
     catch (Exception paramString)
     {
-      AppMethodBeat.o(207914);
+      AppMethodBeat.o(198094);
     }
     return null;
   }
@@ -66,12 +66,12 @@ public class ax<T extends a>
   
   public final void b(b<T>.a paramb)
   {
-    AppMethodBeat.i(207913);
-    h.LTJ.aR(new ax.1(this, paramb));
-    AppMethodBeat.o(207913);
+    AppMethodBeat.i(198093);
+    h.MqF.aO(new ax.1(this, paramb));
+    AppMethodBeat.o(198093);
   }
   
-  public final int ccO()
+  public final int ced()
   {
     return 0;
   }

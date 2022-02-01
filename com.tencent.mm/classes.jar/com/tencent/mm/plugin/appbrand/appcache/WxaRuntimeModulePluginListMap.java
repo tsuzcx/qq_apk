@@ -14,19 +14,19 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/appcache/WxaRuntimeModulePluginListMap;", "Landroid/os/Parcelable;", "p", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "()V", "isEmpty", "", "()Z", "mPrimaryMap", "Landroid/util/ArrayMap;", "Lcom/tencent/mm/plugin/appbrand/appcache/WxaRuntimeModulePluginListMap$Namespace$MODULE;", "", "Lcom/tencent/mm/plugin/appbrand/appcache/WxaPluginPkgInfo;", "mSecondaryMap", "Lcom/tencent/mm/plugin/appbrand/appcache/WxaRuntimeModulePluginListMap$Namespace$PLUGIN;", "Ljava/util/LinkedList;", "size", "", "getSize", "()I", "describeContents", "getPluginList", "moduleName", "", "mergeUpdatedPlugin", "", "updated", "putPluginList", "list", "setupMapping", "writeToParcel", "dest", "flags", "addPluginInfoInstance", "plugin", "createModuleMappedPluginList", "writeModuleMappedPluginList", "Companion", "Namespace", "luggage-wxa-app_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/appcache/WxaRuntimeModulePluginListMap;", "Landroid/os/Parcelable;", "p", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "()V", "isEmpty", "", "()Z", "mPrimaryMap", "Landroid/util/ArrayMap;", "Lcom/tencent/mm/plugin/appbrand/appcache/WxaRuntimeModulePluginListMap$Namespace$MODULE;", "", "Lcom/tencent/mm/plugin/appbrand/appcache/WxaPluginPkgInfo;", "mSecondaryMap", "Lcom/tencent/mm/plugin/appbrand/appcache/WxaRuntimeModulePluginListMap$Namespace$PLUGIN;", "Ljava/util/LinkedList;", "size", "", "getSize", "()I", "describeContents", "getPluginList", "moduleName", "", "mergeUpdatedPlugin", "", "updated", "putPluginList", "list", "setupMapping", "writeToParcel", "dest", "flags", "addPluginInfoInstance", "plugin", "createModuleMappedPluginList", "writeModuleMappedPluginList", "Companion", "Namespace", "luggage-wxa-app_release"})
 public final class WxaRuntimeModulePluginListMap
   implements Parcelable
 {
   public static final Parcelable.Creator<WxaRuntimeModulePluginListMap> CREATOR;
-  public static final a jJh;
-  public final ArrayMap<c.a, List<WxaPluginPkgInfo>> jJf;
-  private ArrayMap<WxaRuntimeModulePluginListMap.c.b, LinkedList<WxaPluginPkgInfo>> jJg;
+  public static final a jMi;
+  public final ArrayMap<c.a, List<WxaPluginPkgInfo>> jMg;
+  private ArrayMap<WxaRuntimeModulePluginListMap.c.b, LinkedList<WxaPluginPkgInfo>> jMh;
   
   static
   {
     AppMethodBeat.i(178662);
-    jJh = new a((byte)0);
+    jMi = new a((byte)0);
     CREATOR = (Parcelable.Creator)new b();
     AppMethodBeat.o(178662);
   }
@@ -34,7 +34,7 @@ public final class WxaRuntimeModulePluginListMap
   public WxaRuntimeModulePluginListMap()
   {
     AppMethodBeat.i(178661);
-    this.jJf = new ArrayMap();
+    this.jMg = new ArrayMap();
     AppMethodBeat.o(178661);
   }
   
@@ -42,17 +42,17 @@ public final class WxaRuntimeModulePluginListMap
   {
     AppMethodBeat.i(178660);
     int j = paramParcel.readInt();
-    this.jJf = new ArrayMap(j);
-    this.jJg = new ArrayMap();
+    this.jMg = new ArrayMap(j);
+    this.jMh = new ArrayMap();
     int i = 0;
     while (i < j)
     {
       String str = paramParcel.readString();
       if (str == null) {
-        p.gfZ();
+        p.gkB();
       }
       List localList = f(paramParcel);
-      ((Map)this.jJf).put(new c.a(str), localList);
+      ((Map)this.jMg).put(new c.a(str), localList);
       i += 1;
     }
     AppMethodBeat.o(178660);
@@ -85,9 +85,9 @@ public final class WxaRuntimeModulePluginListMap
     while (i < j)
     {
       WxaPluginPkgInfo localWxaPluginPkgInfo = (WxaPluginPkgInfo)WxaPluginPkgInfo.CREATOR.createFromParcel(paramParcel);
-      ArrayMap localArrayMap = this.jJg;
+      ArrayMap localArrayMap = this.jMh;
       if (localArrayMap == null) {
-        p.bcb("mSecondaryMap");
+        p.bdF("mSecondaryMap");
       }
       p.g(localWxaPluginPkgInfo, "p");
       a(localArrayMap, localWxaPluginPkgInfo);
@@ -99,11 +99,11 @@ public final class WxaRuntimeModulePluginListMap
     return paramParcel;
   }
   
-  public final List<WxaPluginPkgInfo> LN(String paramString)
+  public final List<WxaPluginPkgInfo> Mq(String paramString)
   {
     AppMethodBeat.i(178653);
     p.h(paramString, "moduleName");
-    paramString = (List)this.jJf.get(new c.a(paramString));
+    paramString = (List)this.jMg.get(new c.a(paramString));
     AppMethodBeat.o(178653);
     return paramString;
   }
@@ -112,9 +112,9 @@ public final class WxaRuntimeModulePluginListMap
   {
     AppMethodBeat.i(178655);
     p.h(paramWxaPluginPkgInfo, "updated");
-    Object localObject1 = this.jJg;
+    Object localObject1 = this.jMh;
     if (localObject1 == null) {
-      p.bcb("mSecondaryMap");
+      p.bdF("mSecondaryMap");
     }
     Object localObject2 = paramWxaPluginPkgInfo.provider;
     p.g(localObject2, "updated.provider");
@@ -138,13 +138,13 @@ public final class WxaRuntimeModulePluginListMap
     AppMethodBeat.o(178655);
   }
   
-  public final void baP()
+  public final void bbo()
   {
     AppMethodBeat.i(178656);
-    if (((WxaRuntimeModulePluginListMap)this).jJg == null)
+    if (((WxaRuntimeModulePluginListMap)this).jMh == null)
     {
-      this.jJg = new ArrayMap();
-      Object localObject1 = this.jJf.values();
+      this.jMh = new ArrayMap();
+      Object localObject1 = this.jMg.values();
       p.g(localObject1, "mPrimaryMap.values");
       localObject1 = ((Iterable)localObject1).iterator();
       while (((Iterator)localObject1).hasNext())
@@ -155,9 +155,9 @@ public final class WxaRuntimeModulePluginListMap
         while (((Iterator)localObject2).hasNext())
         {
           WxaPluginPkgInfo localWxaPluginPkgInfo = (WxaPluginPkgInfo)((Iterator)localObject2).next();
-          ArrayMap localArrayMap = this.jJg;
+          ArrayMap localArrayMap = this.jMh;
           if (localArrayMap == null) {
-            p.bcb("mSecondaryMap");
+            p.bdF("mSecondaryMap");
           }
           a(localArrayMap, localWxaPluginPkgInfo);
         }
@@ -174,7 +174,7 @@ public final class WxaRuntimeModulePluginListMap
   public final boolean isEmpty()
   {
     AppMethodBeat.i(178654);
-    if (this.jJf.size() <= 0)
+    if (this.jMg.size() <= 0)
     {
       AppMethodBeat.o(178654);
       return true;
@@ -187,8 +187,8 @@ public final class WxaRuntimeModulePluginListMap
   {
     AppMethodBeat.i(178657);
     p.h(paramParcel, "dest");
-    paramParcel.writeInt(this.jJf.size());
-    Iterator localIterator = ((Map)this.jJf).entrySet().iterator();
+    paramParcel.writeInt(this.jMg.size());
+    Iterator localIterator = ((Map)this.jMg).entrySet().iterator();
     while (localIterator.hasNext())
     {
       Object localObject2 = (Map.Entry)localIterator.next();
@@ -205,15 +205,15 @@ public final class WxaRuntimeModulePluginListMap
     AppMethodBeat.o(178657);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/appcache/WxaRuntimeModulePluginListMap$Companion;", "", "()V", "CREATOR", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/appbrand/appcache/WxaRuntimeModulePluginListMap;", "luggage-wxa-app_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/appcache/WxaRuntimeModulePluginListMap$Companion;", "", "()V", "CREATOR", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/appbrand/appcache/WxaRuntimeModulePluginListMap;", "luggage-wxa-app_release"})
   public static final class a {}
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/appbrand/appcache/WxaRuntimeModulePluginListMap$Companion$CREATOR$1", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/appbrand/appcache/WxaRuntimeModulePluginListMap;", "createFromParcel", "source", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/mm/plugin/appbrand/appcache/WxaRuntimeModulePluginListMap;", "luggage-wxa-app_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/appbrand/appcache/WxaRuntimeModulePluginListMap$Companion$CREATOR$1", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/appbrand/appcache/WxaRuntimeModulePluginListMap;", "createFromParcel", "source", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/mm/plugin/appbrand/appcache/WxaRuntimeModulePluginListMap;", "luggage-wxa-app_release"})
   public static final class b
     implements Parcelable.Creator<WxaRuntimeModulePluginListMap>
   {}
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/appcache/WxaRuntimeModulePluginListMap$Namespace$MODULE;", "", "name", "", "(Ljava/lang/String;)V", "getName", "()Ljava/lang/String;", "equals", "", "other", "hashCode", "", "luggage-wxa-app_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/appcache/WxaRuntimeModulePluginListMap$Namespace$MODULE;", "", "name", "", "(Ljava/lang/String;)V", "getName", "()Ljava/lang/String;", "equals", "", "other", "hashCode", "", "luggage-wxa-app_release"})
   public static final class c$a
   {
     final String name;
@@ -221,9 +221,9 @@ public final class WxaRuntimeModulePluginListMap
     public c$a(String paramString)
     {
       AppMethodBeat.i(178648);
-      paramString = WxaPkgWrappingInfo.LK(paramString);
+      paramString = WxaPkgWrappingInfo.Mn(paramString);
       if (paramString == null) {
-        p.gfZ();
+        p.gkB();
       }
       this.name = paramString;
       AppMethodBeat.o(178648);

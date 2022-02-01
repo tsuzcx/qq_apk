@@ -1,23 +1,23 @@
 package com.tencent.mm.plugin.wallet_index.c.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.f;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.f;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.cjw;
-import com.tencent.mm.protocal.protobuf.cjx;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.ckq;
+import com.tencent.mm.protocal.protobuf.ckr;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.wallet_core.c.w;
 
 public final class a
   extends w
 {
-  public String DpR;
-  public String DpS;
+  public String DHx;
+  public String DHy;
   private f callback;
   private b rr;
   
@@ -25,24 +25,24 @@ public final class a
   {
     AppMethodBeat.i(71849);
     Object localObject = new b.a();
-    ((b.a)localObject).hNM = new cjw();
-    ((b.a)localObject).hNN = new cjx();
+    ((b.a)localObject).hQF = new ckq();
+    ((b.a)localObject).hQG = new ckr();
     ((b.a)localObject).uri = "/cgi-bin/mmpay-bin/payugenprepay";
     ((b.a)localObject).funcId = 1521;
-    ((b.a)localObject).hNO = 0;
+    ((b.a)localObject).hQH = 0;
     ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).aDC();
-    localObject = (cjw)this.rr.hNK.hNQ;
-    ((cjw)localObject).iht = paramString1;
-    ((cjw)localObject).FXf = paramString4;
-    ((cjw)localObject).FXe = paramString3;
-    ((cjw)localObject).FXg = paramString5;
-    ((cjw)localObject).FXh = paramString2;
-    ((cjw)localObject).FDD = paramString6;
-    ((cjw)localObject).FWa = paramString7;
-    ((cjw)localObject).GsQ = paramString8;
-    ((cjw)localObject).FqH = paramInt;
-    ad.d("MicroMsg.NetScenePayUGenPrepay", String.format("appid:%s,packageExt:%s,nonceStr:%s,paySignature:%s,signtype:%s,timeStamp:%s,url:%s,bizUsername:%s,", new Object[] { paramString1, paramString4, paramString3, paramString5, paramString2, paramString6, paramString7, paramString8 }));
+    this.rr = ((b.a)localObject).aDS();
+    localObject = (ckq)this.rr.hQD.hQJ;
+    ((ckq)localObject).ikm = paramString1;
+    ((ckq)localObject).GpE = paramString4;
+    ((ckq)localObject).GpD = paramString3;
+    ((ckq)localObject).GpF = paramString5;
+    ((ckq)localObject).GpG = paramString2;
+    ((ckq)localObject).FVY = paramString6;
+    ((ckq)localObject).Goz = paramString7;
+    ((ckq)localObject).GMo = paramString8;
+    ((ckq)localObject).FJf = paramInt;
+    ae.d("MicroMsg.NetScenePayUGenPrepay", String.format("appid:%s,packageExt:%s,nonceStr:%s,paySignature:%s,signtype:%s,timeStamp:%s,url:%s,bizUsername:%s,", new Object[] { paramString1, paramString4, paramString3, paramString5, paramString2, paramString6, paramString7, paramString8 }));
     AppMethodBeat.o(71849);
   }
   
@@ -63,15 +63,15 @@ public final class a
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte, long paramLong)
   {
     AppMethodBeat.i(71850);
-    ad.d("MicroMsg.NetScenePayUGenPrepay", "errType:" + paramInt2 + ",errCode:" + paramInt3 + ",errMsg" + paramString);
-    paramString = (cjx)((b)paramq).hNL.hNQ;
+    ae.d("MicroMsg.NetScenePayUGenPrepay", "errType:" + paramInt2 + ",errCode:" + paramInt3 + ",errMsg" + paramString);
+    paramString = (ckr)((b)paramq).hQE.hQJ;
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      ad.d("MicroMsg.NetScenePayUGenPrepay", "rr " + paramString.GsR);
-      this.DpR = paramString.GsR;
-      this.DpS = paramString.GsS;
+      ae.d("MicroMsg.NetScenePayUGenPrepay", "rr " + paramString.GMp);
+      this.DHx = paramString.GMp;
+      this.DHy = paramString.GMq;
     }
-    paramString = paramString.qem;
+    paramString = paramString.qkR;
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(71850);
   }

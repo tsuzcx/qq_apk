@@ -9,15 +9,16 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.contact.c;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.messenger.foundation.a.l;
 import com.tencent.mm.pluginsdk.ui.span.k;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.am;
-import com.tencent.mm.storage.bp;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.aj;
+import com.tencent.mm.storage.an;
+import com.tencent.mm.storage.bq;
 import com.tencent.mm.ui.widget.listview.AnimatedExpandableListView.a;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -28,23 +29,23 @@ import java.util.List;
 public final class a
   extends AnimatedExpandableListView.a
 {
-  public int[] AeO;
-  ArrayList<String> AeP;
-  public int AeQ;
-  public boolean AeR;
-  public ArrayList<String> AeS;
-  public ArrayList<String> AeT;
-  public ArrayList<String> AeU;
-  public ArrayList<String> AeV;
-  public int[] Aeo;
-  public int AxS;
-  public int AxT;
-  public int AxU;
-  public int AxV;
-  int Ayb;
-  List<String> Ayc;
-  b Ayd;
-  boolean Aye;
+  public int APl;
+  public int APm;
+  public int APn;
+  public int APo;
+  int APu;
+  List<String> APv;
+  b APw;
+  boolean APx;
+  public int[] AvA;
+  public int[] Awa;
+  ArrayList<String> Awb;
+  public int Awc;
+  public boolean Awd;
+  public ArrayList<String> Awe;
+  public ArrayList<String> Awf;
+  public ArrayList<String> Awg;
+  public ArrayList<String> Awh;
   private Context mContext;
   private LayoutInflater mInflater;
   public int style;
@@ -52,21 +53,21 @@ public final class a
   public a(Context paramContext)
   {
     AppMethodBeat.i(100178);
-    this.Ayb = 4;
-    this.AxS = 0;
-    this.AxT = 1;
-    this.AxU = 2;
-    this.AxV = 3;
-    this.Aeo = new int[] { 2131763871, 2131763869, 2131763865, 2131763856 };
-    this.AeO = new int[] { 2131763872, 2131763870, 2131763866, 2131763857 };
-    this.AeQ = 0;
-    this.AeR = false;
-    this.AeS = new ArrayList();
-    this.AeT = new ArrayList();
-    this.AeU = new ArrayList();
-    this.AeV = new ArrayList();
-    this.Ayd = null;
-    this.Aye = true;
+    this.APu = 4;
+    this.APl = 0;
+    this.APm = 1;
+    this.APn = 2;
+    this.APo = 3;
+    this.AvA = new int[] { 2131763871, 2131763869, 2131763865, 2131763856 };
+    this.Awa = new int[] { 2131763872, 2131763870, 2131763866, 2131763857 };
+    this.Awc = 0;
+    this.Awd = false;
+    this.Awe = new ArrayList();
+    this.Awf = new ArrayList();
+    this.Awg = new ArrayList();
+    this.Awh = new ArrayList();
+    this.APw = null;
+    this.APx = true;
     this.mContext = paramContext;
     this.mInflater = ((LayoutInflater)paramContext.getSystemService("layout_inflater"));
     AppMethodBeat.o(100178);
@@ -76,8 +77,8 @@ public final class a
   {
     AppMethodBeat.i(100186);
     LinkedList localLinkedList = new LinkedList();
-    g.ajD();
-    if (!g.ajA().aiK())
+    g.ajS();
+    if (!g.ajP().aiZ())
     {
       AppMethodBeat.o(100186);
       return localLinkedList;
@@ -91,14 +92,14 @@ public final class a
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
-      g.ajD();
-      am localam = ((l)g.ab(l.class)).azp().Bf(str);
+      g.ajS();
+      an localan = ((l)g.ab(l.class)).azF().BH(str);
       paramList = str;
-      if (localam != null)
+      if (localan != null)
       {
         paramList = str;
-        if ((int)localam.gfj != 0) {
-          paramList = localam.adv();
+        if ((int)localan.ght != 0) {
+          paramList = localan.adG();
         }
       }
       localLinkedList.add(paramList);
@@ -107,28 +108,28 @@ public final class a
     return localLinkedList;
   }
   
-  public static void aAP(String paramString)
+  public static void aCg(String paramString)
   {
     AppMethodBeat.i(100182);
-    ad.d("MicroMsg.Sns.AnimatedExpandableListAdapter", "recordTopFive : %s", new Object[] { paramString });
-    if (ecm() != null)
+    ae.d("MicroMsg.Sns.AnimatedExpandableListAdapter", "recordTopFive : %s", new Object[] { paramString });
+    if (efT() != null)
     {
-      ArrayList localArrayList = new ArrayList(ecm());
+      ArrayList localArrayList = new ArrayList(efT());
       if (!o(localArrayList, paramString))
       {
         if (localArrayList.size() == 5) {
           localArrayList.remove(4);
         }
         localArrayList.add(0, paramString);
-        paramString = bt.m(localArrayList, ",");
-        g.ajD();
-        g.ajC().ajl().set(335875, paramString);
+        paramString = bu.m(localArrayList, ",");
+        g.ajS();
+        g.ajR().ajA().set(335875, paramString);
       }
       AppMethodBeat.o(100182);
       return;
     }
-    g.ajD();
-    g.ajC().ajl().set(335875, paramString);
+    g.ajS();
+    g.ajR().ajA().set(335875, paramString);
     AppMethodBeat.o(100182);
   }
   
@@ -137,27 +138,27 @@ public final class a
     AppMethodBeat.i(100184);
     if (paramInt == 1)
     {
-      bool = o(this.AeS, paramString);
+      bool = o(this.Awe, paramString);
       AppMethodBeat.o(100184);
       return bool;
     }
-    boolean bool = o(this.AeT, paramString);
+    boolean bool = o(this.Awf, paramString);
     AppMethodBeat.o(100184);
     return bool;
   }
   
-  private static List<String> ecm()
+  private static List<String> efT()
   {
     AppMethodBeat.i(100181);
-    g.ajD();
-    Object localObject = (String)g.ajC().ajl().get(335875, null);
-    ad.d("MicroMsg.Sns.AnimatedExpandableListAdapter", "dz:getTopFive : %s", new Object[] { localObject });
-    if (bt.isNullOrNil((String)localObject))
+    g.ajS();
+    Object localObject = (String)g.ajR().ajA().get(335875, null);
+    ae.d("MicroMsg.Sns.AnimatedExpandableListAdapter", "dz:getTopFive : %s", new Object[] { localObject });
+    if (bu.isNullOrNil((String)localObject))
     {
       AppMethodBeat.o(100181);
       return null;
     }
-    localObject = bt.U(((String)localObject).split(","));
+    localObject = bu.U(((String)localObject).split(","));
     AppMethodBeat.o(100181);
     return localObject;
   }
@@ -177,12 +178,12 @@ public final class a
     return false;
   }
   
-  public final int Rl(int paramInt)
+  public final int RS(int paramInt)
   {
     AppMethodBeat.i(100188);
-    if ((("visible".equals(this.Ayc.get(paramInt))) || ("invisible".equals(this.Ayc.get(paramInt)))) && (this.AeP != null))
+    if ((("visible".equals(this.APv.get(paramInt))) || ("invisible".equals(this.APv.get(paramInt)))) && (this.Awb != null))
     {
-      paramInt = this.AeP.size();
+      paramInt = this.Awb.size();
       AppMethodBeat.o(100188);
       return paramInt + 1;
     }
@@ -190,10 +191,10 @@ public final class a
     return 0;
   }
   
-  public final void az(ArrayList<String> paramArrayList)
+  public final void aA(ArrayList<String> paramArrayList)
   {
     AppMethodBeat.i(100180);
-    Object localObject2 = ecm();
+    Object localObject2 = efT();
     Object localObject1 = new ArrayList();
     if ((localObject2 != null) && (paramArrayList != null))
     {
@@ -208,11 +209,11 @@ public final class a
         }
       }
       paramArrayList.addAll(0, (Collection)localObject1);
-      localObject1 = bt.m((List)localObject1, ",");
-      g.ajD();
-      g.ajC().ajl().set(335875, localObject1);
+      localObject1 = bu.m((List)localObject1, ",");
+      g.ajS();
+      g.ajR().ajA().set(335875, localObject1);
     }
-    this.AeP = paramArrayList;
+    this.Awb = paramArrayList;
     AppMethodBeat.o(100180);
   }
   
@@ -229,23 +230,23 @@ public final class a
         paramView = this.mInflater.inflate(2131495556, null);
         locala = new a((byte)0);
         locala.titleView = ((TextView)paramView.findViewById(2131304997));
-        locala.vgS = ((TextView)paramView.findViewById(2131304996));
-        locala.Afa = ((TextView)paramView.findViewById(2131304995));
-        locala.Afb = ((TextView)paramView.findViewById(2131304994));
-        locala.vEo = ((ImageView)paramView.findViewById(2131304990));
-        locala.Afc = ((ImageView)paramView.findViewById(2131304993));
-        locala.Afc.setOnClickListener(new View.OnClickListener()
+        locala.vsZ = ((TextView)paramView.findViewById(2131304996));
+        locala.Awm = ((TextView)paramView.findViewById(2131304995));
+        locala.Awn = ((TextView)paramView.findViewById(2131304994));
+        locala.vQs = ((ImageView)paramView.findViewById(2131304990));
+        locala.Awo = ((ImageView)paramView.findViewById(2131304993));
+        locala.Awo.setOnClickListener(new View.OnClickListener()
         {
           public final void onClick(View paramAnonymousView)
           {
             AppMethodBeat.i(100177);
             com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
             localb.bd(paramAnonymousView);
-            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/sns/ui/jsapi/JsapiSnsLabelUIAdapter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/sns/ui/jsapi/JsapiSnsLabelUIAdapter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
             if ((paramAnonymousView.getTag() == null) || (!(paramAnonymousView.getTag() instanceof a.c))) {}
             for (paramAnonymousView = null; paramAnonymousView == null; paramAnonymousView = (a.c)paramAnonymousView.getTag())
             {
-              ad.w("MicroMsg.Sns.AnimatedExpandableListAdapter", "dividerIv tag is null.");
+              ae.w("MicroMsg.Sns.AnimatedExpandableListAdapter", "dividerIv tag is null.");
               com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/sns/ui/jsapi/JsapiSnsLabelUIAdapter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
               AppMethodBeat.o(100177);
               return;
@@ -258,35 +259,35 @@ public final class a
           }
         });
         paramView.setTag(locala);
-        localObject1 = locala.Afc;
+        localObject1 = locala.Awo;
         localObject2 = ((View)localObject1).getTag();
         if ((localObject2 != null) && ((localObject2 instanceof c))) {
           break label394;
         }
         localObject2 = new c();
-        ((c)localObject2).Afd = paramInt1;
-        ((c)localObject2).Afe = paramInt2;
+        ((c)localObject2).Awp = paramInt1;
+        ((c)localObject2).Awq = paramInt2;
         ((View)localObject1).setTag(localObject2);
         label209:
-        if (paramInt2 != this.AeP.size()) {
+        if (paramInt2 != this.Awb.size()) {
           break label551;
         }
         locala.titleView.setVisibility(8);
-        locala.vgS.setVisibility(8);
-        locala.vEo.setVisibility(8);
-        locala.Afc.setVisibility(8);
-        locala.Afa.setVisibility(0);
-        locala.Afb.setVisibility(0);
-        if (paramInt1 != this.AxV) {
+        locala.vsZ.setVisibility(8);
+        locala.vQs.setVisibility(8);
+        locala.Awo.setVisibility(8);
+        locala.Awm.setVisibility(0);
+        locala.Awn.setVisibility(0);
+        if (paramInt1 != this.APo) {
           break label443;
         }
-        if (this.AeV.size() <= 0) {
+        if (this.Awh.size() <= 0) {
           break label419;
         }
-        localObject1 = bt.m(P(this.AeV), ",");
-        locala.Afb.setText("√".concat(String.valueOf(localObject1)));
-        locala.Afb.setVisibility(0);
-        locala.Afb.setTextColor(this.mContext.getResources().getColor(2131100929));
+        localObject1 = bu.m(P(this.Awh), ",");
+        locala.Awn.setText("√".concat(String.valueOf(localObject1)));
+        locala.Awn.setVisibility(0);
+        locala.Awn.setTextColor(this.mContext.getResources().getColor(2131100929));
       }
     }
     label394:
@@ -301,93 +302,93 @@ public final class a
       locala = (a)paramView.getTag();
       break label153;
       localObject1 = (c)((View)localObject1).getTag();
-      ((c)localObject1).Afd = paramInt1;
-      ((c)localObject1).Afe = paramInt2;
+      ((c)localObject1).Awp = paramInt1;
+      ((c)localObject1).Awq = paramInt2;
       break label209;
-      locala.Afb.setText("");
-      locala.Afb.setVisibility(8);
+      locala.Awn.setText("");
+      locala.Awn.setVisibility(8);
       continue;
       label443:
-      if (paramInt1 == this.AxU) {
-        if (this.AeU.size() > 0)
+      if (paramInt1 == this.APn) {
+        if (this.Awg.size() > 0)
         {
-          localObject1 = bt.m(P(this.AeU), ",");
-          locala.Afb.setText("√".concat(String.valueOf(localObject1)));
-          locala.Afb.setVisibility(0);
-          locala.Afb.setTextColor(this.mContext.getResources().getColor(2131100928));
+          localObject1 = bu.m(P(this.Awg), ",");
+          locala.Awn.setText("√".concat(String.valueOf(localObject1)));
+          locala.Awn.setVisibility(0);
+          locala.Awn.setTextColor(this.mContext.getResources().getColor(2131100928));
         }
         else
         {
-          locala.Afb.setText("");
-          locala.Afb.setVisibility(8);
+          locala.Awn.setText("");
+          locala.Awn.setVisibility(8);
           continue;
           locala.titleView.setVisibility(0);
-          locala.vgS.setVisibility(0);
-          locala.vEo.setVisibility(0);
-          locala.Afc.setVisibility(4);
-          locala.Afa.setVisibility(8);
-          locala.Afb.setVisibility(8);
-          localObject2 = (String)this.AeP.get(paramInt2);
+          locala.vsZ.setVisibility(0);
+          locala.vQs.setVisibility(0);
+          locala.Awo.setVisibility(4);
+          locala.Awm.setVisibility(8);
+          locala.Awn.setVisibility(8);
+          localObject2 = (String)this.Awb.get(paramInt2);
           locala.titleView.setText(k.c(this.mContext, (CharSequence)localObject2));
-          TextView localTextView = locala.vgS;
-          localObject1 = com.tencent.mm.plugin.label.a.a.dfo().aom((String)localObject2);
-          Object localObject3 = com.tencent.mm.plugin.label.a.a.dfo().aop((String)localObject1);
+          TextView localTextView = locala.vsZ;
+          localObject1 = com.tencent.mm.plugin.label.a.a.dig().apo((String)localObject2);
+          Object localObject3 = com.tencent.mm.plugin.label.a.a.dig().apr((String)localObject1);
           if ((localObject3 == null) || (((List)localObject3).size() == 0)) {}
           for (localObject1 = "";; localObject1 = k.c(this.mContext, (CharSequence)localObject1))
           {
             localTextView.setText((CharSequence)localObject1);
-            locala.Afc.setImageResource(2131691196);
+            locala.Awo.setImageResource(2131691196);
             if (this.style != 1) {
               break label930;
             }
-            if (paramInt1 != this.AxU) {
+            if (paramInt1 != this.APn) {
               break label851;
             }
             if (!cd(1, (String)localObject2)) {
               break label837;
             }
-            locala.vEo.setImageResource(2131691180);
+            locala.vQs.setImageResource(2131691180);
             break;
             localObject1 = new ArrayList(((List)localObject3).size());
             localObject3 = ((List)localObject3).iterator();
             while (((Iterator)localObject3).hasNext()) {
-              ((ArrayList)localObject1).add(((com.tencent.mm.plugin.messenger.a.b)g.ab(com.tencent.mm.plugin.messenger.a.b.class)).zf((String)((Iterator)localObject3).next()));
+              ((ArrayList)localObject1).add(((com.tencent.mm.plugin.messenger.a.b)g.ab(com.tencent.mm.plugin.messenger.a.b.class)).zP((String)((Iterator)localObject3).next()));
             }
-            localObject1 = bt.m((List)localObject1, ",");
+            localObject1 = bu.m((List)localObject1, ",");
           }
           label837:
-          locala.vEo.setImageResource(2131691182);
+          locala.vQs.setImageResource(2131691182);
           continue;
           label851:
-          if (paramInt1 == this.AxV)
+          if (paramInt1 == this.APo)
           {
-            if (this.AeQ != paramInt1) {
-              locala.vEo.setImageResource(2131691183);
+            if (this.Awc != paramInt1) {
+              locala.vQs.setImageResource(2131691183);
             }
             for (;;)
             {
               if (!cd(2, (String)localObject2)) {
                 break label916;
               }
-              locala.vEo.setImageResource(2131691181);
+              locala.vQs.setImageResource(2131691181);
               break;
-              locala.vEo.setImageResource(2131691181);
+              locala.vQs.setImageResource(2131691181);
             }
-            locala.vEo.setImageResource(2131691183);
+            locala.vQs.setImageResource(2131691183);
             continue;
-            if (paramInt1 == this.AxU)
+            if (paramInt1 == this.APn)
             {
               if (cd(1, (String)localObject2)) {
-                locala.vEo.setImageResource(2131689936);
+                locala.vQs.setImageResource(2131689936);
               } else {
-                locala.vEo.setImageResource(2131231750);
+                locala.vQs.setImageResource(2131231750);
               }
             }
-            else if (paramInt1 == this.AxV) {
+            else if (paramInt1 == this.APo) {
               if (cd(2, (String)localObject2)) {
-                locala.vEo.setImageResource(2131689940);
+                locala.vQs.setImageResource(2131689940);
               } else {
-                locala.vEo.setImageResource(2131231750);
+                locala.vQs.setImageResource(2131231750);
               }
             }
           }
@@ -399,7 +400,7 @@ public final class a
   public final Object getChild(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(100179);
-    Object localObject = this.AeP.get(paramInt2);
+    Object localObject = this.Awb.get(paramInt2);
     AppMethodBeat.o(100179);
     return localObject;
   }
@@ -416,7 +417,7 @@ public final class a
   
   public final int getGroupCount()
   {
-    return this.Ayb;
+    return this.APu;
   }
   
   public final long getGroupId(int paramInt)
@@ -433,24 +434,24 @@ public final class a
         paramView = this.mInflater.inflate(2131495558, null);
         paramViewGroup = new a((byte)0);
         paramViewGroup.titleView = ((TextView)paramView.findViewById(2131304997));
-        paramViewGroup.vEo = ((ImageView)paramView.findViewById(2131304990));
-        paramViewGroup.vgS = ((TextView)paramView.findViewById(2131304996));
+        paramViewGroup.vQs = ((ImageView)paramView.findViewById(2131304990));
+        paramViewGroup.vsZ = ((TextView)paramView.findViewById(2131304996));
         paramView.setTag(paramViewGroup);
         label102:
-        paramViewGroup.titleView.setText(this.Aeo[paramInt]);
-        paramViewGroup.vgS.setText(this.AeO[paramInt]);
-        if ((paramInt != this.AxT) && (paramInt != this.AxS)) {
+        paramViewGroup.titleView.setText(this.AvA[paramInt]);
+        paramViewGroup.vsZ.setText(this.Awa[paramInt]);
+        if ((paramInt != this.APm) && (paramInt != this.APl)) {
           break label265;
         }
-        if (this.AeQ == paramInt) {
+        if (this.Awc == paramInt) {
           break label233;
         }
-        paramViewGroup.vEo.setImageResource(2131691077);
+        paramViewGroup.vQs.setImageResource(2131691077);
       }
     }
     for (;;)
     {
-      if ((!this.AeR) || (paramInt != this.AxT)) {
+      if ((!this.Awd) || (paramInt != this.APm)) {
         break label451;
       }
       paramView = new View(this.mContext);
@@ -462,43 +463,43 @@ public final class a
       paramViewGroup = (a)paramView.getTag();
       break label102;
       label233:
-      paramViewGroup.vEo.setImageResource(2131691078);
-      paramViewGroup.vEo.setContentDescription(this.mContext.getString(2131763023));
+      paramViewGroup.vQs.setImageResource(2131691078);
+      paramViewGroup.vQs.setContentDescription(this.mContext.getString(2131763023));
       continue;
       label265:
-      if (paramInt == this.AxU)
+      if (paramInt == this.APn)
       {
-        if (this.AeQ != paramInt)
+        if (this.Awc != paramInt)
         {
-          paramViewGroup.vEo.setImageResource(2131691077);
+          paramViewGroup.vQs.setImageResource(2131691077);
         }
         else
         {
-          paramViewGroup.vEo.setImageResource(2131691078);
-          paramViewGroup.vEo.setContentDescription(this.mContext.getString(2131763023));
+          paramViewGroup.vQs.setImageResource(2131691078);
+          paramViewGroup.vQs.setContentDescription(this.mContext.getString(2131763023));
         }
       }
-      else if (paramInt == this.AxV) {
+      else if (paramInt == this.APo) {
         if (this.style == 1)
         {
-          if (this.AeQ != paramInt)
+          if (this.Awc != paramInt)
           {
-            paramViewGroup.vEo.setImageResource(2131691077);
+            paramViewGroup.vQs.setImageResource(2131691077);
           }
           else
           {
-            paramViewGroup.vEo.setImageResource(2131691106);
-            paramViewGroup.vEo.setContentDescription(this.mContext.getString(2131763023));
+            paramViewGroup.vQs.setImageResource(2131691106);
+            paramViewGroup.vQs.setContentDescription(this.mContext.getString(2131763023));
           }
         }
-        else if (this.AeQ != paramInt)
+        else if (this.Awc != paramInt)
         {
-          paramViewGroup.vEo.setImageResource(2131691077);
+          paramViewGroup.vQs.setImageResource(2131691077);
         }
         else
         {
-          paramViewGroup.vEo.setImageResource(2131691079);
-          paramViewGroup.vEo.setContentDescription(this.mContext.getString(2131763023));
+          paramViewGroup.vQs.setImageResource(2131691079);
+          paramViewGroup.vQs.setContentDescription(this.mContext.getString(2131763023));
         }
       }
     }
@@ -519,12 +520,12 @@ public final class a
   
   final class a
   {
-    TextView Afa;
-    TextView Afb;
-    ImageView Afc;
+    TextView Awm;
+    TextView Awn;
+    ImageView Awo;
     TextView titleView;
-    ImageView vEo;
-    TextView vgS;
+    ImageView vQs;
+    TextView vsZ;
     
     private a() {}
   }
@@ -536,15 +537,15 @@ public final class a
   
   final class c
   {
-    public int Afd;
-    public int Afe;
+    public int Awp;
+    public int Awq;
     
     c() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.jsapi.a
  * JD-Core Version:    0.7.0.1
  */

@@ -7,7 +7,7 @@ import java.util.Locale;
 public final class l
   extends a
 {
-  final int jFF;
+  final int jIE;
   
   public l(String paramString1, int paramInt1, int paramInt2, String paramString2)
   {
@@ -19,13 +19,13 @@ public final class l
   private l(String paramString1, String paramString2, String paramString3, String paramString4, int paramInt1, int paramInt2)
   {
     super(paramString1, paramString2, paramString3, paramString4, paramInt2, 0);
-    this.jFF = paramInt1;
+    this.jIE = paramInt1;
   }
   
   public final String toShortString()
   {
     AppMethodBeat.i(90550);
-    String str = String.format(Locale.US, "EncryptPkgDownloadRequest[%s %d %d]", new Object[] { this.appId, Integer.valueOf(this.jFF), Integer.valueOf(this.version) });
+    String str = String.format(Locale.US, "EncryptPkgDownloadRequest[%s %d %d]", new Object[] { this.appId, Integer.valueOf(this.jIE), Integer.valueOf(this.version) });
     AppMethodBeat.o(90550);
     return str;
   }

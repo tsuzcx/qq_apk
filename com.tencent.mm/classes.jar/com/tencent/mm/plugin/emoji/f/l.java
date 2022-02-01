@@ -1,12 +1,12 @@
 package com.tencent.mm.plugin.emoji.f;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
@@ -15,10 +15,10 @@ import com.tencent.mm.plugin.emoji.b.d;
 import com.tencent.mm.protocal.protobuf.EmotionDetail;
 import com.tencent.mm.protocal.protobuf.GetEmotionDetailRequest;
 import com.tencent.mm.protocal.protobuf.GetEmotionDetailResponse;
-import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.storage.bd;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.storage.be;
 import com.tencent.mm.storage.emotion.m;
 
 public class l
@@ -28,7 +28,7 @@ public class l
   private int cR;
   private f callback;
   private int mScene;
-  public String pFG;
+  public String pMk;
   private final b rr;
   
   public l(String paramString, int paramInt)
@@ -39,41 +39,41 @@ public class l
   public l(String paramString, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(108699);
-    this.pFG = paramString;
+    this.pMk = paramString;
     this.mScene = paramInt1;
     this.cR = paramInt2;
     paramString = new b.a();
-    paramString.hNM = new GetEmotionDetailRequest();
-    paramString.hNN = new GetEmotionDetailResponse();
+    paramString.hQF = new GetEmotionDetailRequest();
+    paramString.hQG = new GetEmotionDetailResponse();
     paramString.uri = "/cgi-bin/micromsg-bin/getemotiondetail";
     paramString.funcId = 412;
-    paramString.hNO = 211;
+    paramString.hQH = 211;
     paramString.respCmdId = 1000000211;
-    this.rr = paramString.aDC();
+    this.rr = paramString.aDS();
     AppMethodBeat.o(108699);
   }
   
-  public final EmotionDetail chg()
+  public final EmotionDetail ciw()
   {
     AppMethodBeat.i(108702);
     new EmotionDetail();
-    EmotionDetail localEmotionDetail = ((GetEmotionDetailResponse)this.rr.hNL.hNQ).EmotionDetail;
+    EmotionDetail localEmotionDetail = ((GetEmotionDetailResponse)this.rr.hQE.hQJ).EmotionDetail;
     AppMethodBeat.o(108702);
     return localEmotionDetail;
   }
   
-  public final GetEmotionDetailResponse chh()
+  public final GetEmotionDetailResponse cix()
   {
-    return (GetEmotionDetailResponse)this.rr.hNL.hNQ;
+    return (GetEmotionDetailResponse)this.rr.hQE.hQJ;
   }
   
   public int doScene(e parame, f paramf)
   {
     AppMethodBeat.i(108700);
-    ad.i("MicroMsg.emoji.NetSceneGetEmotionDetail", "ProductID:%s, Scene:%d, Version:%d", new Object[] { this.pFG, Integer.valueOf(this.mScene), Integer.valueOf(this.cR) });
+    ae.i("MicroMsg.emoji.NetSceneGetEmotionDetail", "ProductID:%s, Scene:%d, Version:%d", new Object[] { this.pMk, Integer.valueOf(this.mScene), Integer.valueOf(this.cR) });
     this.callback = paramf;
-    paramf = (GetEmotionDetailRequest)this.rr.hNK.hNQ;
-    paramf.ProductID = this.pFG;
+    paramf = (GetEmotionDetailRequest)this.rr.hQD.hQJ;
+    paramf.ProductID = this.pMk;
     paramf.Scene = this.mScene;
     paramf.Version = this.cR;
     int i = dispatch(parame, this.rr, this);
@@ -89,7 +89,7 @@ public class l
   public void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(108701);
-    ad.i("MicroMsg.emoji.NetSceneGetEmotionDetail", "ErrType:" + paramInt2 + "   errCode:" + paramInt3);
+    ae.i("MicroMsg.emoji.NetSceneGetEmotionDetail", "ErrType:" + paramInt2 + "   errCode:" + paramInt3);
     if ((paramInt2 != 0) && (paramInt3 != 0) && (paramInt3 != 5))
     {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
@@ -97,7 +97,7 @@ public class l
       return;
     }
     if ((paramInt2 == 0) && (paramInt3 == 0)) {
-      ((d)g.ad(d.class)).getEmojiStorageMgr().ILr.a(this.pFG, chh(), ac.iM(aj.getContext()));
+      ((d)g.ad(d.class)).getEmojiStorageMgr().JfY.a(this.pMk, cix(), ad.iR(ak.getContext()));
     }
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(108701);

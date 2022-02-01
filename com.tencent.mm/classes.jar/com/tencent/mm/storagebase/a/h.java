@@ -3,7 +3,7 @@ package com.tencent.mm.storagebase.a;
 import android.database.CursorIndexOutOfBoundsException;
 import android.util.SparseArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.wcdb.database.SQLiteDatabase;
 import com.tencent.wcdb.database.SQLiteDirectQuery;
 import com.tencent.wcdb.database.SQLiteException;
@@ -33,7 +33,7 @@ public final class h
         i = step(paramInt1);
         if (i < paramInt1)
         {
-          ad.w("WCDB.SQLiteNewQuery", "startPos %d > actual rows %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(i) });
+          ae.w("WCDB.SQLiteNewQuery", "startPos %d > actual rows %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(i) });
           return i;
         }
         int m = getColumnNames().length;
@@ -45,7 +45,7 @@ public final class h
         if (step(1) != 1) {
           break;
         }
-        paramb.IPo = paramb.ftV();
+        paramb.JjW = paramb.fxW();
         j = 0;
         if (j >= m) {
           break label394;
@@ -54,7 +54,7 @@ public final class h
         {
         case 3: 
           label164:
-          paramb.jA(i, 1);
+          paramb.jE(i, 1);
           SQLiteException localSQLiteException1 = new SQLiteException("Unknown column type when filling window.");
           AppMethodBeat.o(133505);
           throw localSQLiteException1;
@@ -62,23 +62,23 @@ public final class h
       }
       catch (IllegalStateException localIllegalStateException)
       {
-        ad.printErrStackTrace("WCDB.SQLiteNewQuery", localIllegalStateException, "fillWindow failed", new Object[0]);
+        ae.printErrStackTrace("WCDB.SQLiteNewQuery", localIllegalStateException, "fillWindow failed", new Object[0]);
         return 0;
         String str = getString(j);
-        if (paramb.IPo == null) {
+        if (paramb.JjW == null) {
           break label451;
         }
-        paramb.IPo.cN(j, str);
+        paramb.JjW.cN(j, str);
         break label451;
         long l = getLong(j);
-        if (paramb.IPo == null) {
+        if (paramb.JjW == null) {
           break label451;
         }
-        paramb.IPo.aO(j, l);
+        paramb.JjW.aO(j, l);
       }
       catch (SQLiteException localSQLiteException2)
       {
-        ad.e("WCDB.SQLiteNewQuery", "exception: " + localSQLiteException2.getMessage() + "; query: " + getSql());
+        ae.e("WCDB.SQLiteNewQuery", "exception: " + localSQLiteException2.getMessage() + "; query: " + getSql());
         checkCorruption(localSQLiteException2);
         AppMethodBeat.o(133505);
         throw localSQLiteException2;
@@ -92,13 +92,13 @@ public final class h
       getDouble(j);
       break label451;
       byte[] arrayOfByte = getBlob(j);
-      if (paramb.IPo == null) {
+      if (paramb.JjW == null) {
         break label451;
       }
-      paramb.IPo.t(j, arrayOfByte);
+      paramb.JjW.t(j, arrayOfByte);
       break label451;
       label394:
-      paramb.jA(i, 0);
+      paramb.jE(i, 0);
       i += 1;
     }
     for (;;)
@@ -136,7 +136,7 @@ public final class h
         i = step(paramInt1);
         if (i < paramInt1)
         {
-          ad.w("WCDB.SQLiteNewQuery", "startPos %d > actual rows %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(i) });
+          ae.w("WCDB.SQLiteNewQuery", "startPos %d > actual rows %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(i) });
           return i;
         }
         int k = getColumnNames().length;
@@ -147,19 +147,19 @@ public final class h
         if (step(1) != 1) {
           break label531;
         }
-        j = i / paramc.IPq;
-        if (paramc.IPp.indexOfKey(j) < 0)
+        j = i / paramc.JjY;
+        if (paramc.JjX.indexOfKey(j) < 0)
         {
-          localObject = new Object[paramc.IPq * paramc.columnCount];
-          paramc.IPp.put(j, localObject);
-          j = paramc.IPq;
+          localObject = new Object[paramc.JjY * paramc.columnCount];
+          paramc.JjX.put(j, localObject);
+          j = paramc.JjY;
           m = paramc.columnCount * (i % j);
           int n = paramc.columnCount;
           j = i + 1;
-          if (j <= paramc.IPr) {
+          if (j <= paramc.JjZ) {
             break label347;
           }
-          paramc.IPr = j;
+          paramc.JjZ = j;
           locala = new c.a(paramc, m, m + n, (Object[])localObject);
           j = 0;
           if (j >= k) {
@@ -177,7 +177,7 @@ public final class h
       }
       catch (SQLiteException paramc)
       {
-        ad.e("WCDB.SQLiteNewQuery", "exception: " + paramc.getMessage() + "; query: " + getSql());
+        ae.e("WCDB.SQLiteNewQuery", "exception: " + paramc.getMessage() + "; query: " + getSql());
         checkCorruption(paramc);
         AppMethodBeat.o(133506);
         throw paramc;
@@ -187,10 +187,10 @@ public final class h
         releaseReference();
         AppMethodBeat.o(133506);
       }
-      localObject = (Object[])paramc.IPp.get(j);
+      localObject = (Object[])paramc.JjX.get(j);
       continue;
       label347:
-      int j = paramc.IPr;
+      int j = paramc.JjZ;
       continue;
       localObject = getString(j);
       label364:
@@ -205,7 +205,7 @@ public final class h
         continue;
         localObject = getBlob(j);
       }
-      Object[] arrayOfObject = locala.IPs;
+      Object[] arrayOfObject = locala.Jka;
       int m = locala.index;
       locala.index = (m + 1);
       arrayOfObject[m] = localObject;

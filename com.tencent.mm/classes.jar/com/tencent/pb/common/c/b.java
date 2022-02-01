@@ -5,11 +5,11 @@ import com.tencent.wecall.talkroom.model.f;
 
 public final class b
 {
-  private static int LJt = 2;
-  private static boolean LJu = false;
+  private static int Mgx = 2;
+  private static boolean Mgy = false;
   public static int level = 0;
   
-  private static String O(Object[] paramArrayOfObject)
+  private static String N(Object[] paramArrayOfObject)
   {
     if ((paramArrayOfObject == null) || (paramArrayOfObject.length == 0)) {
       return "";
@@ -41,7 +41,7 @@ public final class b
   
   private static void X(int paramInt, String paramString1, String paramString2)
   {
-    e locale = f.fZR();
+    e locale = f.ges();
     if (locale != null) {
       locale.E(paramInt, "MTSDK".concat(String.valueOf(paramString1)), paramString2);
     }
@@ -49,42 +49,42 @@ public final class b
   
   public static void d(String paramString, Object... paramVarArgs)
   {
-    if ((!LJu) || (LJt > 1)) {}
+    if ((!Mgy) || (Mgx > 1)) {}
     while (paramString == null) {
       return;
     }
-    X(1, paramString, " ".concat(String.valueOf(O(paramVarArgs))));
+    X(1, paramString, " ".concat(String.valueOf(N(paramVarArgs))));
   }
   
   public static void e(String paramString, Object... paramVarArgs)
   {
-    if ((!LJu) || (LJt > 4)) {
+    if ((!Mgy) || (Mgx > 4)) {
       return;
     }
-    X(4, paramString, " ".concat(String.valueOf(O(paramVarArgs))));
+    X(4, paramString, " ".concat(String.valueOf(N(paramVarArgs))));
   }
   
-  public static void fTi()
+  public static void fXI()
   {
-    LJt = 0;
-    LJu = true;
+    Mgx = 0;
+    Mgy = true;
   }
   
   public static void i(String paramString, Object... paramVarArgs)
   {
-    if ((!LJu) || (LJt > 2)) {
+    if ((!Mgy) || (Mgx > 2)) {
       return;
     }
-    X(2, paramString, " ".concat(String.valueOf(O(paramVarArgs))));
+    X(2, paramString, " ".concat(String.valueOf(N(paramVarArgs))));
   }
   
   public static void w(String paramString, Object... paramVarArgs)
   {
-    if ((!LJu) || (LJt > 3)) {}
+    if ((!Mgy) || (Mgx > 3)) {}
     while (paramString == null) {
       return;
     }
-    X(3, paramString, " ".concat(String.valueOf(O(paramVarArgs))));
+    X(3, paramString, " ".concat(String.valueOf(N(paramVarArgs))));
   }
 }
 

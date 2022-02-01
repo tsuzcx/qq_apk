@@ -5,31 +5,31 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
 {
-  private static d.a cye;
+  private static d.a cyL;
   
   static
   {
     AppMethodBeat.i(140005);
-    cye = new d.a()
+    cyL = new d.a()
     {
-      public final void gS(int paramAnonymousInt) {}
+      public final void gT(int paramAnonymousInt) {}
     };
     AppMethodBeat.o(140005);
   }
   
-  public static d.a HA()
+  public static d.a HI()
   {
-    return cye;
+    return cyL;
   }
   
   public static void a(d.a parama)
   {
-    cye = parama;
+    cyL = parama;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.magicbrush.handler.glfont.a
  * JD-Core Version:    0.7.0.1
  */

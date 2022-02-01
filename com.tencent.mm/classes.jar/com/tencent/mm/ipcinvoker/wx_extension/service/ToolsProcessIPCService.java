@@ -6,17 +6,17 @@ import com.tencent.mm.ipcinvoker.BaseIPCService;
 import com.tencent.mm.ipcinvoker.b;
 import com.tencent.mm.ipcinvoker.d;
 import com.tencent.mm.ipcinvoker.h;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ak;
 
 public class ToolsProcessIPCService
   extends BaseIPCService
 {
-  static int gyv = 0;
-  private static a gyw;
+  static int gBc = 0;
+  private static a gBd;
   
   public static void a(a parama)
   {
-    gyw = parama;
+    gBd = parama;
   }
   
   public static <T extends b<InputType, ResultType>, InputType extends Parcelable, ResultType extends Parcelable> boolean a(InputType paramInputType, Class<T> paramClass)
@@ -24,7 +24,7 @@ public class ToolsProcessIPCService
     AppMethodBeat.i(146441);
     boolean bool2 = h.a("com.tencent.mm:tools", paramInputType, paramClass, null);
     boolean bool1 = bool2;
-    if (!ahO()) {
+    if (!aid()) {
       if ((!h.a("com.tencent.mm:toolsmp", paramInputType, paramClass, null)) || (!bool2)) {
         break label46;
       }
@@ -42,7 +42,7 @@ public class ToolsProcessIPCService
     boolean bool3 = true;
     AppMethodBeat.i(146440);
     boolean bool1;
-    if (aj.aQt(aj.getPackageName() + ":tools")) {
+    if (ak.aRQ(ak.getPackageName() + ":tools")) {
       if (h.a("com.tencent.mm:tools", paramInputType, paramClass, paramd)) {
         bool1 = true;
       }
@@ -50,10 +50,10 @@ public class ToolsProcessIPCService
     for (;;)
     {
       boolean bool2 = bool1;
-      if (!ahO())
+      if (!aid())
       {
         bool2 = bool1;
-        if (aj.aQt(aj.getPackageName() + ":toolsmp")) {
+        if (ak.aRQ(ak.getPackageName() + ":toolsmp")) {
           if ((!h.a("com.tencent.mm:toolsmp", paramInputType, paramClass, paramd)) || (!bool1)) {
             break label121;
           }
@@ -80,26 +80,26 @@ public class ToolsProcessIPCService
     return bool;
   }
   
-  public static boolean ahO()
+  public static boolean aid()
   {
     AppMethodBeat.i(146439);
     boolean bool;
-    if (gyv == 0)
+    if (gBc == 0)
     {
-      a locala = gyw;
+      a locala = gBd;
       if (locala == null) {
         break label47;
       }
-      bool = locala.ahO();
+      bool = locala.aid();
       if (!bool) {
         break label52;
       }
     }
     label47:
     label52:
-    for (gyv = 1;; gyv = -1)
+    for (gBc = 1;; gBc = -1)
     {
-      if (gyv <= 0) {
+      if (gBc <= 0) {
         break label59;
       }
       AppMethodBeat.o(146439);
@@ -119,7 +119,7 @@ public class ToolsProcessIPCService
   
   public static abstract interface a
   {
-    public abstract boolean ahO();
+    public abstract boolean aid();
   }
 }
 

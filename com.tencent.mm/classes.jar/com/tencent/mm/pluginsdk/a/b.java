@@ -2,14 +2,14 @@ package com.tencent.mm.pluginsdk.a;
 
 import android.content.Context;
 import com.tencent.mm.plugin.messenger.a.d;
-import com.tencent.mm.protocal.protobuf.dki;
+import com.tencent.mm.protocal.protobuf.dld;
 
 public final class b
   implements d
 {
   public final void a(Context paramContext, String paramString1, String paramString2, int paramInt, String paramString3, String paramString4, long paramLong, String paramString5) {}
   
-  public final void a(Context paramContext, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, dki paramdki, String paramString4, String paramString5) {}
+  public final void a(Context paramContext, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, dld paramdld, String paramString4, String paramString5) {}
   
   public final void a(Context paramContext, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, String paramString4, String paramString5) {}
   
@@ -17,7 +17,7 @@ public final class b
   
   public final void aa(String paramString1, String paramString2, int paramInt) {}
   
-  public final void hP(String paramString1, String paramString2) {}
+  public final void hW(String paramString1, String paramString2) {}
   
   public final void q(String paramString1, String paramString2, boolean paramBoolean) {}
 }

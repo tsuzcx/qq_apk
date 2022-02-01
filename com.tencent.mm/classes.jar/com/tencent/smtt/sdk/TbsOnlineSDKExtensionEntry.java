@@ -8,7 +8,7 @@ import android.util.Log;
 import android.webkit.ValueCallback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.smtt.export.external.DexLoader;
-import com.tencent.smtt.sdk.a.c;
+import com.tencent.smtt.sdk.b.c;
 import com.tencent.smtt.utils.TbsLog;
 import com.tencent.smtt.utils.b;
 import com.tencent.smtt.utils.k;
@@ -40,7 +40,7 @@ public class TbsOnlineSDKExtensionEntry
         AppMethodBeat.o(55003);
         return true;
       }
-      Object localObject = o.a().q(paramContext);
+      Object localObject = q.a().r(paramContext);
       if (localObject == null)
       {
         TbsLog.e("TbsOnlineSDKExtensionEntry", "QbSdk initExtension (false) optDir == null");
@@ -55,7 +55,7 @@ public class TbsOnlineSDKExtensionEntry
         return false;
       }
       TbsLog.i("TbsOnlineSDKExtensionEntry", "new DexLoader #3 dexFile is " + localFile.getAbsolutePath());
-      v.a().a(paramContext);
+      x.a().a(paramContext);
       m.a(paramContext);
       String str1 = localFile.getParent();
       String str2 = localFile.getAbsolutePath();
@@ -87,7 +87,7 @@ public class TbsOnlineSDKExtensionEntry
         AppMethodBeat.o(55004);
         return true;
       }
-      Object localObject2 = o.a().q(paramContext);
+      Object localObject2 = q.a().r(paramContext);
       if (localObject2 == null)
       {
         TbsLog.e("TbsOnlineSDKExtensionEntry", "QbSdk initForX5DisableConfig (false) optDir == null");
@@ -97,7 +97,7 @@ public class TbsOnlineSDKExtensionEntry
       if (TbsShareManager.isThirdPartyApp(paramContext)) {
         if (!TbsShareManager.j(paramContext)) {}
       }
-      for (Object localObject1 = new File(TbsShareManager.c(paramContext), "tbs_sdk_extension_dex.jar"); !((File)localObject1).exists(); localObject1 = new File(o.a().q(paramContext), "tbs_sdk_extension_dex.jar"))
+      for (Object localObject1 = new File(TbsShareManager.c(paramContext), "tbs_sdk_extension_dex.jar"); !((File)localObject1).exists(); localObject1 = new File(q.a().r(paramContext), "tbs_sdk_extension_dex.jar"))
       {
         TbsLog.d("TbsOnlineSDKExtensionEntry", "QbSdk initForX5DisableConfig (false) tbs_sdk_extension_dex.jar is not exist!");
         TbsCoreLoadStat.getInstance().setLoadErrorCode(paramContext, 406, new Exception("initForX5DisableConfig failure -- tbs_sdk_extension_dex.jar is not exist!"));
@@ -113,7 +113,7 @@ public class TbsOnlineSDKExtensionEntry
       {
         TbsLog.i("TbsOnlineSDKExtensionEntry", "QbSdk init optDirExtension #3 is ".concat(String.valueOf(localObject2)));
         TbsLog.i("TbsOnlineSDKExtensionEntry", "new DexLoader #4 dexFile is " + ((File)localObject1).getAbsolutePath());
-        v.a().a(paramContext);
+        x.a().a(paramContext);
         m.a(paramContext);
         String str1 = ((File)localObject1).getParent();
         String str2 = ((File)localObject1).getAbsolutePath();
@@ -143,11 +143,11 @@ public class TbsOnlineSDKExtensionEntry
   public static void fileInfoDetect(Context paramContext, String paramString, ValueCallback<String> paramValueCallback)
   {
     AppMethodBeat.i(55006);
-    v localv = v.a();
-    if ((localv != null) && (localv.b())) {
+    x localx = x.a();
+    if ((localx != null) && (localx.b())) {
       try
       {
-        localv.c().a().invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "fileInfoDetect", new Class[] { Context.class, String.class, ValueCallback.class }, new Object[] { paramContext, paramString, paramValueCallback });
+        localx.c().a().invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "fileInfoDetect", new Class[] { Context.class, String.class, ValueCallback.class }, new Object[] { paramContext, paramString, paramValueCallback });
         AppMethodBeat.o(55006);
         return;
       }
@@ -505,9 +505,9 @@ public class TbsOnlineSDKExtensionEntry
     //   23: iload 4
     //   25: ifeq +31 -> 56
     //   28: iload 4
-    //   30: invokestatic 66	com/tencent/smtt/sdk/o:a	()Lcom/tencent/smtt/sdk/o;
+    //   30: invokestatic 66	com/tencent/smtt/sdk/q:a	()Lcom/tencent/smtt/sdk/q;
     //   33: aload_1
-    //   34: invokevirtual 355	com/tencent/smtt/sdk/o:i	(Landroid/content/Context;)I
+    //   34: invokevirtual 355	com/tencent/smtt/sdk/q:j	(Landroid/content/Context;)I
     //   37: if_icmpne +19 -> 56
     //   40: ldc 13
     //   42: ldc_w 357
@@ -613,7 +613,7 @@ public class TbsOnlineSDKExtensionEntry
     //   272: ifeq +174 -> 446
     //   275: aload_1
     //   276: invokestatic 391	com/tencent/smtt/sdk/TbsShareManager:d	(Landroid/content/Context;)I
-    //   279: invokestatic 395	com/tencent/smtt/sdk/e:a	(I)V
+    //   279: invokestatic 395	com/tencent/smtt/sdk/g:a	(I)V
     //   282: aload_1
     //   283: invokestatic 391	com/tencent/smtt/sdk/TbsShareManager:d	(Landroid/content/Context;)I
     //   286: invokestatic 398	java/lang/String:valueOf	(I)Ljava/lang/String;
@@ -692,7 +692,7 @@ public class TbsOnlineSDKExtensionEntry
     //   471: invokestatic 432	java/lang/Integer:parseInt	(Ljava/lang/String;)I
     //   474: putstatic 31	com/tencent/smtt/sdk/TbsOnlineSDKExtensionEntry:e	I
     //   477: getstatic 31	com/tencent/smtt/sdk/TbsOnlineSDKExtensionEntry:e	I
-    //   480: invokestatic 395	com/tencent/smtt/sdk/e:a	(I)V
+    //   480: invokestatic 395	com/tencent/smtt/sdk/g:a	(I)V
     //   483: getstatic 31	com/tencent/smtt/sdk/TbsOnlineSDKExtensionEntry:e	I
     //   486: ifne +80 -> 566
     //   489: invokestatic 186	com/tencent/smtt/sdk/TbsCoreLoadStat:getInstance	()Lcom/tencent/smtt/sdk/TbsCoreLoadStat;
@@ -755,9 +755,9 @@ public class TbsOnlineSDKExtensionEntry
     //   632: invokevirtual 448	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   635: invokevirtual 108	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   638: invokestatic 74	com/tencent/smtt/utils/TbsLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   641: invokestatic 66	com/tencent/smtt/sdk/o:a	()Lcom/tencent/smtt/sdk/o;
+    //   641: invokestatic 66	com/tencent/smtt/sdk/q:a	()Lcom/tencent/smtt/sdk/q;
     //   644: aload_1
-    //   645: invokevirtual 70	com/tencent/smtt/sdk/o:q	(Landroid/content/Context;)Ljava/io/File;
+    //   645: invokevirtual 70	com/tencent/smtt/sdk/q:r	(Landroid/content/Context;)Ljava/io/File;
     //   648: invokestatic 453	com/tencent/smtt/utils/f:b	(Ljava/io/File;)V
     //   651: invokestatic 186	com/tencent/smtt/sdk/TbsCoreLoadStat:getInstance	()Lcom/tencent/smtt/sdk/TbsCoreLoadStat;
     //   654: aload_1
@@ -944,10 +944,10 @@ public class TbsOnlineSDKExtensionEntry
     //   1105: aload 7
     //   1107: instanceof 332
     //   1110: ifeq -272 -> 838
-    //   1113: invokestatic 474	com/tencent/smtt/sdk/e:d	()I
+    //   1113: invokestatic 474	com/tencent/smtt/sdk/g:d	()I
     //   1116: putstatic 31	com/tencent/smtt/sdk/TbsOnlineSDKExtensionEntry:e	I
     //   1119: aload_1
-    //   1120: invokestatic 474	com/tencent/smtt/sdk/e:d	()I
+    //   1120: invokestatic 474	com/tencent/smtt/sdk/g:d	()I
     //   1123: invokestatic 477	com/tencent/smtt/sdk/QbSdk:a	(Landroid/content/Context;I)Z
     //   1126: istore 5
     //   1128: iload_3
@@ -1046,7 +1046,7 @@ public class TbsOnlineSDKExtensionEntry
       }
       if (b == null)
       {
-        Object localObject = o.a().q(paramContext);
+        Object localObject = q.a().r(paramContext);
         if (localObject == null)
         {
           TbsLog.e("TbsOnlineSDKExtensionEntry", "QbSdk canLoadX5FirstTimeThirdApp (false) optDir == null");
@@ -1065,7 +1065,7 @@ public class TbsOnlineSDKExtensionEntry
         {
           TbsLog.i("TbsOnlineSDKExtensionEntry", "QbSdk init optDirExtension #2 is ".concat(String.valueOf(localObject)));
           TbsLog.i("TbsOnlineSDKExtensionEntry", "new DexLoader #2 dexFile is " + localFile.getAbsolutePath());
-          v.a().a(paramContext);
+          x.a().a(paramContext);
           m.a(paramContext);
           String str1 = localFile.getParent();
           String str2 = localFile.getAbsolutePath();
@@ -1114,6 +1114,18 @@ public class TbsOnlineSDKExtensionEntry
     }
     AppMethodBeat.o(55002);
     return false;
+  }
+  
+  public void dispatchX5EcCommands(Context paramContext, Integer paramInteger, Map<Integer, String> paramMap)
+  {
+    AppMethodBeat.i(192589);
+    if (!a(paramContext))
+    {
+      AppMethodBeat.o(192589);
+      return;
+    }
+    k.a(c, "dispatchEmergencyCommand", new Class[] { Integer.class, Map.class }, new Object[] { paramInteger, paramMap });
+    AppMethodBeat.o(192589);
   }
   
   public String[] getDexLoaderFileList(Context paramContext1, Context paramContext2, String paramString)
@@ -1181,7 +1193,7 @@ public class TbsOnlineSDKExtensionEntry
     int i;
     try
     {
-      localObject2 = o.a().q(paramContext);
+      localObject2 = q.a().r(paramContext);
       if (localObject2 == null)
       {
         TbsLog.e("TbsOnlineSDKExtensionEntry", "QbSdk init (false) optDir == null");
@@ -1219,7 +1231,7 @@ public class TbsOnlineSDKExtensionEntry
         return true;
         if (e != 0)
         {
-          int j = o.a().a(true, paramContext);
+          int j = q.a().a(true, paramContext);
           i = j;
           if (e != j)
           {
@@ -1262,7 +1274,7 @@ public class TbsOnlineSDKExtensionEntry
         try
         {
           TbsLog.e("TbsOnlineSDKExtensionEntry", "QbSdk init (false) tbs_sdk_extension_dex.jar is not exist!");
-          i = o.a().i(paramContext);
+          i = q.a().j(paramContext);
           if (!new File(((File)localObject1).getParentFile(), "tbs_jars_fusion_dex.jar").exists()) {
             continue;
           }
@@ -1282,7 +1294,7 @@ public class TbsOnlineSDKExtensionEntry
         TbsCoreLoadStat.getInstance().setLoadErrorCode(paramContext, 304, new Throwable("isShareTbsCoreAvailable false!"));
         AppMethodBeat.o(54997);
         return false;
-        localObject1 = new File(o.a().q(paramContext), "tbs_sdk_extension_dex.jar");
+        localObject1 = new File(q.a().r(paramContext), "tbs_sdk_extension_dex.jar");
         break;
         TbsCoreLoadStat.getInstance().setLoadErrorCode(paramContext, 4132, new Exception("tbs_sdk_extension_dex not exist(with fusion dex)!".concat(String.valueOf(i))));
         continue;
@@ -1298,7 +1310,7 @@ public class TbsOnlineSDKExtensionEntry
     {
       TbsLog.i("TbsOnlineSDKExtensionEntry", "QbSdk init optDirExtension #1 is ".concat(String.valueOf(localObject2)));
       TbsLog.i("TbsOnlineSDKExtensionEntry", "new DexLoader #1 dexFile is " + ((File)localObject1).getAbsolutePath());
-      v.a().a(paramContext);
+      x.a().a(paramContext);
       m.a(paramContext);
       String str1 = ((File)localObject1).getParent();
       String str2 = ((File)localObject1).getAbsolutePath();
@@ -1327,18 +1339,18 @@ public class TbsOnlineSDKExtensionEntry
       AppMethodBeat.o(55000);
       return true;
     }
-    o localo = o.a();
-    if (e.a == 0) {}
+    q localq = q.a();
+    if (g.a == 0) {}
     for (boolean bool = true;; bool = false)
     {
-      localo.b(paramContext, bool);
+      localq.b(paramContext, bool);
       if (b(paramContext)) {
         break;
       }
       AppMethodBeat.o(55000);
       return true;
     }
-    paramContext = k.a(c, "isX5Disabled", new Class[] { Integer.TYPE, Integer.TYPE, Integer.TYPE }, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(43804), Integer.valueOf(paramInt2) });
+    paramContext = k.a(c, "isX5Disabled", new Class[] { Integer.TYPE, Integer.TYPE, Integer.TYPE }, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(43805), Integer.valueOf(paramInt2) });
     TbsLog.d("TbsOnlineSDKExtensionEntry", "QbSdk isX5Disabled  ret=".concat(String.valueOf(paramContext)));
     if (paramContext != null)
     {
@@ -1346,7 +1358,7 @@ public class TbsOnlineSDKExtensionEntry
       AppMethodBeat.o(55000);
       return bool;
     }
-    paramContext = k.a(c, "isX5Disabled", new Class[] { Integer.TYPE, Integer.TYPE }, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(43804) });
+    paramContext = k.a(c, "isX5Disabled", new Class[] { Integer.TYPE, Integer.TYPE }, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(43805) });
     if (paramContext != null)
     {
       bool = ((Boolean)paramContext).booleanValue();
@@ -1360,7 +1372,7 @@ public class TbsOnlineSDKExtensionEntry
   public boolean isX5DisabledSync(Context paramContext)
   {
     AppMethodBeat.i(55001);
-    if (l.a(paramContext).c() == 2) {}
+    if (n.a(paramContext).c() == 2) {}
     for (int i = 1; i != 0; i = 0)
     {
       AppMethodBeat.o(55001);
@@ -1371,8 +1383,8 @@ public class TbsOnlineSDKExtensionEntry
       AppMethodBeat.o(55001);
       return true;
     }
-    i = o.a().i(paramContext);
-    paramContext = k.a(c, "isX5DisabledSync", new Class[] { Integer.TYPE, Integer.TYPE }, new Object[] { Integer.valueOf(i), Integer.valueOf(43804) });
+    i = q.a().j(paramContext);
+    paramContext = k.a(c, "isX5DisabledSync", new Class[] { Integer.TYPE, Integer.TYPE }, new Object[] { Integer.valueOf(i), Integer.valueOf(43805) });
     TbsLog.d("TbsOnlineSDKExtensionEntry", "QbSdk isX5DisabledSync  ret=".concat(String.valueOf(paramContext)));
     if (paramContext != null)
     {

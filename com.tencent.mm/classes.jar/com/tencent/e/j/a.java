@@ -9,63 +9,63 @@ import java.util.concurrent.atomic.AtomicLong;
 
 public final class a
 {
-  private static a LVA;
-  private static final AtomicLong LVB;
-  private static final ThreadLocal<a> LVz;
-  private static final ConcurrentHashMap<String, a> cpF;
-  public final d LVC;
-  private int LVD;
+  private static final ThreadLocal<a> Msu;
+  private static a Msv;
+  private static final AtomicLong Msw;
+  private static final ConcurrentHashMap<String, a> cqi;
+  public final d Msx;
+  private int Msy;
   public final String tag;
   
   static
   {
     AppMethodBeat.i(183407);
-    LVz = new ThreadLocal();
-    LVA = null;
-    cpF = new ConcurrentHashMap();
-    LVB = new AtomicLong(0L);
+    Msu = new ThreadLocal();
+    Msv = null;
+    cqi = new ConcurrentHashMap();
+    Msw = new AtomicLong(0L);
     AppMethodBeat.o(183407);
   }
   
   private a(String paramString)
   {
     AppMethodBeat.i(183392);
-    this.LVD = 0;
+    this.Msy = 0;
     this.tag = paramString;
-    this.LVC = new d(new b(new b.a() {}));
-    cpF.put(this.tag, this);
+    this.Msx = new d(new b(new b.a() {}));
+    cqi.put(this.tag, this);
     AppMethodBeat.o(183392);
   }
   
   static void a(a parama)
   {
     AppMethodBeat.i(183394);
-    LVz.set(parama);
+    Msu.set(parama);
     AppMethodBeat.o(183394);
   }
   
-  public static a aZF(String paramString)
+  public static a bbi(String paramString)
   {
     AppMethodBeat.i(183393);
-    paramString = new a(paramString + "@" + LVB.getAndIncrement());
+    paramString = new a(paramString + "@" + Msw.getAndIncrement());
     AppMethodBeat.o(183393);
     return paramString;
   }
   
-  public static a aZG(String paramString)
+  public static a bbj(String paramString)
   {
     AppMethodBeat.i(183400);
-    paramString = (a)cpF.get(paramString);
+    paramString = (a)cqi.get(paramString);
     AppMethodBeat.o(183400);
     return paramString;
   }
   
-  static a aZH(String paramString)
+  static a bbk(String paramString)
   {
     try
     {
       AppMethodBeat.i(183401);
-      a locala2 = (a)cpF.get(paramString);
+      a locala2 = (a)cqi.get(paramString);
       a locala1 = locala2;
       if (locala2 == null) {
         locala1 = new a(paramString);
@@ -76,48 +76,48 @@ public final class a
     finally {}
   }
   
-  public static a fVT()
+  public static a gas()
   {
     AppMethodBeat.i(183396);
-    if (LVA == null)
+    if (Msv == null)
     {
       String str = p(Looper.getMainLooper());
-      a locala2 = (a)cpF.get(str);
+      a locala2 = (a)cqi.get(str);
       locala1 = locala2;
       if (locala2 == null) {
         locala1 = new a(str);
       }
-      LVA = locala1;
+      Msv = locala1;
     }
-    a locala1 = LVA;
+    a locala1 = Msv;
     AppMethodBeat.o(183396);
     return locala1;
   }
   
-  public static a fVU()
+  public static a gat()
   {
     AppMethodBeat.i(183397);
     if (Looper.getMainLooper() == Looper.myLooper())
     {
-      locala = fVT();
+      locala = gas();
       AppMethodBeat.o(183397);
       return locala;
     }
-    a locala = (a)LVz.get();
+    a locala = (a)Msu.get();
     AppMethodBeat.o(183397);
     return locala;
   }
   
-  public static String fVV()
+  public static String gau()
   {
     AppMethodBeat.i(183398);
     if (Looper.getMainLooper() == Looper.myLooper())
     {
-      localObject = fVT().tag;
+      localObject = gas().tag;
       AppMethodBeat.o(183398);
       return localObject;
     }
-    Object localObject = (a)LVz.get();
+    Object localObject = (a)Msu.get();
     if (localObject == null)
     {
       AppMethodBeat.o(183398);
@@ -128,10 +128,10 @@ public final class a
     return localObject;
   }
   
-  public static Collection<a> fVX()
+  public static Collection<a> gaw()
   {
     AppMethodBeat.i(183402);
-    Collection localCollection = cpF.values();
+    Collection localCollection = cqi.values();
     AppMethodBeat.o(183402);
     return localCollection;
   }
@@ -153,11 +153,11 @@ public final class a
   public static void release()
   {
     AppMethodBeat.i(183403);
-    Iterator localIterator = cpF.values().iterator();
+    Iterator localIterator = cqi.values().iterator();
     while (localIterator.hasNext()) {
-      ((a)localIterator.next()).LVC.quit();
+      ((a)localIterator.next()).Msx.quit();
     }
-    cpF.clear();
+    cqi.clear();
     AppMethodBeat.o(183403);
   }
   
@@ -174,9 +174,9 @@ public final class a
     return false;
   }
   
-  public final d fVW()
+  public final d gav()
   {
-    return this.LVC;
+    return this.Msx;
   }
   
   public final int hashCode()
@@ -190,7 +190,7 @@ public final class a
   public final void quit()
   {
     AppMethodBeat.i(183399);
-    this.LVC.quit();
+    this.Msx.quit();
     AppMethodBeat.o(183399);
   }
   

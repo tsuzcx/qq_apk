@@ -6,35 +6,35 @@ import java.io.OutputStream;
 
 public final class i
 {
-  static e MsB;
+  static e MPF;
   
   static
   {
     AppMethodBeat.i(183528);
-    MsB = g.gbz().gby();
+    MPF = g.ggb().gga();
     AppMethodBeat.o(183528);
   }
   
-  public static OutputStream Cz(String paramString)
+  public static OutputStream Db(String paramString)
   {
     AppMethodBeat.i(183527);
-    paramString = MsB.Cz(paramString);
+    paramString = MPF.Db(paramString);
     AppMethodBeat.o(183527);
     return paramString;
   }
   
-  public static String aPK(String paramString)
+  public static String aRh(String paramString)
   {
     AppMethodBeat.i(183524);
-    paramString = MsB.aPK(paramString);
+    paramString = MPF.aRh(paramString);
     AppMethodBeat.o(183524);
     return paramString;
   }
   
-  public static boolean lL(String paramString1, String paramString2)
+  public static boolean lS(String paramString1, String paramString2)
   {
     AppMethodBeat.i(183525);
-    boolean bool = MsB.lL(paramString1, paramString2);
+    boolean bool = MPF.lS(paramString1, paramString2);
     AppMethodBeat.o(183525);
     return bool;
   }
@@ -42,7 +42,7 @@ public final class i
   public static InputStream openRead(String paramString)
   {
     AppMethodBeat.i(183526);
-    paramString = MsB.openRead(paramString);
+    paramString = MPF.openRead(paramString);
     AppMethodBeat.o(183526);
     return paramString;
   }

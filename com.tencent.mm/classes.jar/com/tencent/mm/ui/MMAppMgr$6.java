@@ -5,7 +5,7 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 final class MMAppMgr$6
   implements DialogInterface.OnClickListener
@@ -20,15 +20,15 @@ final class MMAppMgr$6
       Object localObject = new Intent("android.settings.LOCATION_SOURCE_SETTINGS");
       paramDialogInterface = this.val$context;
       localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
-      com.tencent.mm.hellhoundlib.a.a.a(paramDialogInterface, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahp(), "com/tencent/mm/ui/MMAppMgr$14", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramDialogInterface.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mq(0));
+      com.tencent.mm.hellhoundlib.a.a.a(paramDialogInterface, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahE(), "com/tencent/mm/ui/MMAppMgr$14", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramDialogInterface.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mt(0));
       com.tencent.mm.hellhoundlib.a.a.a(paramDialogInterface, "com/tencent/mm/ui/MMAppMgr$14", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       AppMethodBeat.o(33408);
       return;
     }
     catch (Exception paramDialogInterface)
     {
-      ad.printErrStackTrace("MicroMsg.MMAppMgr", paramDialogInterface, "showLbsTipsAlert", new Object[0]);
+      ae.printErrStackTrace("MicroMsg.MMAppMgr", paramDialogInterface, "showLbsTipsAlert", new Object[0]);
       AppMethodBeat.o(33408);
     }
   }

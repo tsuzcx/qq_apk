@@ -3,16 +3,16 @@ package com.tencent.luggage.sdk.config;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/luggage/sdk/config/WxaLabelConstant;", "", "()V", "Companion", "luggage-wechat-full-sdk_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/luggage/sdk/config/WxaLabelConstant;", "", "()V", "Companion", "luggage-wechat-full-sdk_release"})
 public final class c
 {
-  public static final a cnj;
+  public static final a cnl;
   
   static
   {
-    AppMethodBeat.i(192328);
-    cnj = new a((byte)0);
-    AppMethodBeat.o(192328);
+    AppMethodBeat.i(220903);
+    cnl = new a((byte)0);
+    AppMethodBeat.o(220903);
   }
   
   public static final boolean gA(int paramInt)
@@ -25,7 +25,7 @@ public final class c
     return paramInt != 0;
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/luggage/sdk/config/WxaLabelConstant$Companion;", "", "()V", "OFFICIAL_FLAG_COMMON", "", "OFFICIAL_FLAG_E_COMMERCE", "OFFICIAL_FLAG_NONE", "TRADING_GUARANTEE_FLAG_NONE", "TRADING_GUARANTEE_FLAG_SHOW", "showBrandOfficialLabel", "", "flag", "showTradingGuaranteeLabel", "luggage-wechat-full-sdk_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/luggage/sdk/config/WxaLabelConstant$Companion;", "", "()V", "OFFICIAL_FLAG_COMMON", "", "OFFICIAL_FLAG_E_COMMERCE", "OFFICIAL_FLAG_NONE", "TRADING_GUARANTEE_FLAG_NONE", "TRADING_GUARANTEE_FLAG_SHOW", "showBrandOfficialLabel", "", "flag", "showTradingGuaranteeLabel", "luggage-wechat-full-sdk_release"})
   public static final class a {}
 }
 

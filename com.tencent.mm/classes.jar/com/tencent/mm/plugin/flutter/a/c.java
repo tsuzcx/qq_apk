@@ -1,8 +1,8 @@
 package com.tencent.mm.plugin.flutter.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ac.g;
-import com.tencent.mm.ac.i;
+import com.tencent.mm.ab.g;
+import com.tencent.mm.ab.i;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map.Entry;
@@ -11,22 +11,22 @@ import java.util.Set;
 public final class c
 {
   public HashMap<String, Object> params;
-  public String til;
-  public String tim;
-  public HashMap<String, Object> tin;
-  public int tio = 0;
-  public boolean tip = false;
+  public String ttd;
+  public String tte;
+  public HashMap<String, Object> ttf;
+  public int ttg = 0;
+  public boolean tth = false;
   
   public c() {}
   
   public c(String paramString1, String paramString2, HashMap<String, Object> paramHashMap)
   {
-    this.til = paramString1;
-    this.tim = paramString2;
+    this.ttd = paramString1;
+    this.tte = paramString2;
     this.params = paramHashMap;
   }
   
-  public final String aYt()
+  public final String aYO()
   {
     AppMethodBeat.i(123738);
     Object localObject = new i();
@@ -34,8 +34,8 @@ public final class c
     Map.Entry localEntry;
     try
     {
-      ((i)localObject).h("plugin", this.til);
-      ((i)localObject).h("entry", this.tim);
+      ((i)localObject).h("plugin", this.ttd);
+      ((i)localObject).h("entry", this.tte);
       if (this.params != null)
       {
         i locali1 = new i();
@@ -55,10 +55,10 @@ public final class c
       AppMethodBeat.o(123738);
       return localObject;
       ((i)localObject).h("params", localg);
-      if (this.tin != null)
+      if (this.ttf != null)
       {
         i locali2 = new i();
-        localIterator = this.tin.entrySet().iterator();
+        localIterator = this.ttf.entrySet().iterator();
         while (localIterator.hasNext())
         {
           localEntry = (Map.Entry)localIterator.next();
@@ -66,12 +66,12 @@ public final class c
         }
         ((i)localObject).h("initParams", locali2);
       }
-      ((i)localObject).R("parentPageType", this.tio);
-      ((i)localObject).v("isInitRoute", this.tip);
+      ((i)localObject).S("parentPageType", this.ttg);
+      ((i)localObject).v("isInitRoute", this.tth);
     }
   }
   
-  public final c ajt(String paramString)
+  public final c akr(String paramString)
   {
     AppMethodBeat.i(123737);
     i locali;
@@ -81,9 +81,9 @@ public final class c
     try
     {
       paramString = new i(paramString);
-      this.til = paramString.optString("plugin");
-      this.tim = paramString.optString("entry");
-      locali = paramString.wP("params");
+      this.ttd = paramString.optString("plugin");
+      this.tte = paramString.optString("entry");
+      locali = paramString.xy("params");
       if (locali != null)
       {
         this.params = new HashMap();
@@ -102,34 +102,34 @@ public final class c
     for (;;)
     {
       return this;
-      locali = paramString.wP("initParams");
+      locali = paramString.xy("initParams");
       if (locali != null)
       {
-        this.tin = new HashMap();
+        this.ttf = new HashMap();
         localIterator = locali.keys();
         while (localIterator.hasNext())
         {
           str = (String)localIterator.next();
           localObject = locali.opt(str);
-          this.tin.put(str, localObject);
+          this.ttf.put(str, localObject);
         }
       }
-      this.tio = paramString.optInt("parentPageType");
-      this.tip = paramString.optBoolean("isInitRoute");
+      this.ttg = paramString.optInt("parentPageType");
+      this.tth = paramString.optBoolean("isInitRoute");
     }
   }
   
   public final String toString()
   {
     AppMethodBeat.i(123739);
-    String str = aYt();
+    String str = aYO();
     AppMethodBeat.o(123739);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.flutter.a.c
  * JD-Core Version:    0.7.0.1
  */

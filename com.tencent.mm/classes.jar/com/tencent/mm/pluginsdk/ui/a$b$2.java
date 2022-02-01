@@ -18,7 +18,7 @@ final class a$b$2
     AppMethodBeat.i(152100);
     Object localObject = new b();
     ((b)localObject).bd(paramView);
-    a.b("com/tencent/mm/pluginsdk/ui/AvatarDrawable$Factory$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahq());
+    a.b("com/tencent/mm/pluginsdk/ui/AvatarDrawable$Factory$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahF());
     paramView = (View)paramView.getParent();
     for (;;)
     {
@@ -30,7 +30,7 @@ final class a$b$2
         if (!(paramView instanceof AdapterView)) {
           break label112;
         }
-        localObject = this.qeK.getTag();
+        localObject = this.qlp.getTag();
         if ((localObject instanceof Integer)) {
           ((AdapterView)paramView).performItemClick(null, ((Integer)localObject).intValue(), -1L);
         }

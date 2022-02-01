@@ -9,8 +9,8 @@ import com.tencent.mm.plugin.appbrand.jsruntime.o;
 import com.tencent.mm.plugin.appbrand.o.g;
 import com.tencent.mm.plugin.appbrand.o.h;
 import com.tencent.mm.plugin.appbrand.o.i;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.HashMap;
 import java.util.Map;
 import org.json.JSONObject;
@@ -24,53 +24,53 @@ public final class d
   public final void a(c paramc, JSONObject paramJSONObject, int paramInt)
   {
     AppMethodBeat.i(179549);
-    a(paramc, paramJSONObject, paramInt, paramc.aYh());
+    a(paramc, paramJSONObject, paramInt, paramc.aYB());
     AppMethodBeat.o(179549);
   }
   
   public final void a(c paramc, JSONObject paramJSONObject, int paramInt, o paramo)
   {
-    AppMethodBeat.i(187751);
-    ad.d("MicroMsg.JsApiOperateUploadTask", "JsApiOperateUploadTask");
+    AppMethodBeat.i(193480);
+    ae.d("MicroMsg.JsApiOperateUploadTask", "JsApiOperateUploadTask");
     if (paramJSONObject == null)
     {
       paramc.h(paramInt, e("fail:data is null", null));
-      ad.e("MicroMsg.JsApiOperateUploadTask", "data is null");
-      AppMethodBeat.o(187751);
+      ae.e("MicroMsg.JsApiOperateUploadTask", "data is null");
+      AppMethodBeat.o(193480);
       return;
     }
     String str = paramJSONObject.optString("uploadTaskId");
-    if (bt.isNullOrNil(str))
+    if (bu.isNullOrNil(str))
     {
-      ad.e("MicroMsg.JsApiOperateUploadTask", "uploadTaskId is null");
+      ae.e("MicroMsg.JsApiOperateUploadTask", "uploadTaskId is null");
       paramc.h(paramInt, e("fail:uploadTaskId is null or nil", null));
-      AppMethodBeat.o(187751);
+      AppMethodBeat.o(193480);
       return;
     }
     paramJSONObject = paramJSONObject.optString("operationType");
-    if (bt.isNullOrNil(paramJSONObject))
+    if (bu.isNullOrNil(paramJSONObject))
     {
-      ad.e("MicroMsg.JsApiOperateUploadTask", "operationType is null");
+      ae.e("MicroMsg.JsApiOperateUploadTask", "operationType is null");
       paramc.h(paramInt, e("fail:operationType is null or nil", null));
-      AppMethodBeat.o(187751);
+      AppMethodBeat.o(193480);
       return;
     }
     if (paramJSONObject.equals("abort"))
     {
-      paramJSONObject = i.btk().SO(paramc.getAppId());
+      paramJSONObject = i.btV().Tx(paramc.getAppId());
       if (paramJSONObject == null)
       {
-        ad.i("MicroMsg.JsApiOperateUploadTask", "upload is null");
+        ae.i("MicroMsg.JsApiOperateUploadTask", "upload is null");
         paramc.h(paramInt, e("fail:no task", null));
-        AppMethodBeat.o(187751);
+        AppMethodBeat.o(193480);
         return;
       }
-      h localh = paramJSONObject.SN(str);
+      h localh = paramJSONObject.Tw(str);
       if (localh == null)
       {
-        ad.i("MicroMsg.JsApiOperateUploadTask", "uploadInfo is null %s", new Object[] { str });
+        ae.i("MicroMsg.JsApiOperateUploadTask", "uploadInfo is null %s", new Object[] { str });
         paramc.h(paramInt, e("fail:no task", null));
-        AppMethodBeat.o(187751);
+        AppMethodBeat.o(193480);
         return;
       }
       paramJSONObject.a(localh);
@@ -80,16 +80,16 @@ public final class d
       paramJSONObject.put("state", "fail");
       paramJSONObject.put("errMsg", "abort");
       paramJSONObject = new JSONObject(paramJSONObject).toString();
-      new a.a().h(paramc).Pi(paramJSONObject).a(paramo);
-      ad.d("MicroMsg.JsApiOperateUploadTask", "abortTask finish %s", new Object[] { str });
-      AppMethodBeat.o(187751);
+      new a.a().h(paramc).PQ(paramJSONObject).a(paramo);
+      ae.d("MicroMsg.JsApiOperateUploadTask", "abortTask finish %s", new Object[] { str });
+      AppMethodBeat.o(193480);
       return;
     }
     paramc.h(paramInt, e("fail:unknown operationType", null));
-    AppMethodBeat.o(187751);
+    AppMethodBeat.o(193480);
   }
   
-  public final boolean bij()
+  public final boolean biS()
   {
     return true;
   }

@@ -2,8 +2,8 @@ package com.tencent.mm.plugin.webview.ui.tools.game;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -12,64 +12,64 @@ import java.util.TreeMap;
 
 public final class d
 {
-  private static final Map<String, Map<Integer, Object>> EiL;
+  private static final Map<String, Map<Integer, Object>> EAP;
   
   static
   {
     AppMethodBeat.i(80872);
-    EiL = new HashMap();
+    EAP = new HashMap();
     AppMethodBeat.o(80872);
   }
   
-  public static void L(String paramString, Map<Integer, Object> paramMap)
+  public static void M(String paramString, Map<Integer, Object> paramMap)
   {
     AppMethodBeat.i(80869);
-    if (bt.isNullOrNil(paramString))
+    if (bu.isNullOrNil(paramString))
     {
       AppMethodBeat.o(80869);
       return;
     }
-    Map localMap = (Map)EiL.get(paramString);
+    Map localMap = (Map)EAP.get(paramString);
     if (localMap != null)
     {
       localMap.putAll(paramMap);
       AppMethodBeat.o(80869);
       return;
     }
-    EiL.put(paramString, paramMap);
+    EAP.put(paramString, paramMap);
     AppMethodBeat.o(80869);
   }
   
   public static void a(String paramString, e parame)
   {
-    AppMethodBeat.i(208224);
-    if (bt.isNullOrNil(paramString))
+    AppMethodBeat.i(198405);
+    if (bu.isNullOrNil(paramString))
     {
-      AppMethodBeat.o(208224);
+      AppMethodBeat.o(198405);
       return;
     }
     TreeMap localTreeMap = new TreeMap(new Comparator() {});
-    localTreeMap.putAll(parame.cXy());
-    localTreeMap.putAll(parame.cXz());
-    parame = (Map)EiL.remove(paramString);
+    localTreeMap.putAll(parame.dai());
+    localTreeMap.putAll(parame.daj());
+    parame = (Map)EAP.remove(paramString);
     paramString = localTreeMap;
     if (parame != null)
     {
       parame.putAll(localTreeMap);
       paramString = parame;
     }
-    if (paramString.containsKey(Integer.valueOf(b.EiW))) {}
-    for (boolean bool = ((Boolean)paramString.remove(Integer.valueOf(b.EiW))).booleanValue();; bool = true)
+    if (paramString.containsKey(Integer.valueOf(b.EBa))) {}
+    for (boolean bool = ((Boolean)paramString.remove(Integer.valueOf(b.EBa))).booleanValue();; bool = true)
     {
-      paramString = bE(paramString);
-      ad.i("MicroMsg.GameWebReport", "report web performance. isReportNow: %b, reportData: [%s]", new Object[] { Boolean.valueOf(bool), paramString });
-      g.yhR.a(16142, paramString, bool, false);
-      AppMethodBeat.o(208224);
+      paramString = bK(paramString);
+      ae.i("MicroMsg.GameWebReport", "report web performance. isReportNow: %b, reportData: [%s]", new Object[] { Boolean.valueOf(bool), paramString });
+      g.yxI.a(16142, paramString, bool, false);
+      AppMethodBeat.o(198405);
       return;
     }
   }
   
-  public static String bE(Map<Integer, Object> paramMap)
+  public static String bK(Map<Integer, Object> paramMap)
   {
     AppMethodBeat.i(80871);
     if ((paramMap == null) || (paramMap.isEmpty()))
@@ -100,37 +100,37 @@ public final class d
   
   public static enum a
   {
-    public static int EiM = 21;
-    public static int EiN = 22;
-    public static int EiO = 23;
-    public static int EiP = 24;
-    public static int EiQ = 25;
-    public static int EiR = 26;
-    public static int EiS = 27;
-    public static int EiT = 28;
-    public static int EiU = 29;
+    public static int EAQ = 21;
+    public static int EAR = 22;
+    public static int EAS = 23;
+    public static int EAT = 24;
+    public static int EAU = 25;
+    public static int EAV = 26;
+    public static int EAW = 27;
+    public static int EAX = 28;
+    public static int EAY = 29;
   }
   
   public static enum b
   {
-    public static int EiW = 1000;
-    public static int EiX = 30;
-    public static int EiY = 31;
-    public static int EiZ = 32;
-    public static int Eja = 33;
-    public static int Ejb = 34;
-    public static int Ejc = 38;
-    public static int Ejd = 39;
-    public static int Eje = 40;
-    public static int Ejf = 41;
-    public static int Ejg = 42;
-    public static int Ejh = 43;
-    public static int Eji = 44;
-    public static int Ejj = 45;
-    public static int Ejk = 49;
-    public static int Ejl = 50;
-    public static int Ejm = 51;
-    public static int Ejn = 52;
+    public static int EBa = 1000;
+    public static int EBb = 30;
+    public static int EBc = 31;
+    public static int EBd = 32;
+    public static int EBe = 33;
+    public static int EBf = 34;
+    public static int EBg = 38;
+    public static int EBh = 39;
+    public static int EBi = 40;
+    public static int EBj = 41;
+    public static int EBk = 42;
+    public static int EBl = 43;
+    public static int EBm = 44;
+    public static int EBn = 45;
+    public static int EBo = 49;
+    public static int EBp = 50;
+    public static int EBq = 51;
+    public static int EBr = 52;
   }
 }
 

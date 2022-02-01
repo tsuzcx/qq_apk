@@ -1,15 +1,17 @@
 package com.tencent.mm.g.a;
 
 import android.content.Context;
+import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.opensdk.modelmsg.WXMediaMessage;
+import com.tencent.mm.pluginsdk.model.app.al;
 import com.tencent.mm.sdk.b.b;
-import java.util.ArrayList;
 
 public final class kz
   extends b
 {
-  public a dyf;
-  public b dyg;
+  public a dzg;
+  public b dzh;
   
   public kz()
   {
@@ -18,26 +20,32 @@ public final class kz
   
   private kz(byte paramByte)
   {
-    AppMethodBeat.i(63290);
-    this.dyf = new a();
-    this.dyg = new b();
-    this.IbR = false;
+    AppMethodBeat.i(149868);
+    this.dzg = new a();
+    this.dzh = new b();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(63290);
+    AppMethodBeat.o(149868);
   }
   
   public static final class a
   {
+    public String appId;
     public Context context;
-    public ArrayList dyh;
-    public String dyi;
+    public int dmr;
+    public Bundle doz;
+    public WXMediaMessage dve;
+    public al dzi;
   }
   
-  public static final class b {}
+  public static final class b
+  {
+    public boolean dzj;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.a.kz
  * JD-Core Version:    0.7.0.1
  */

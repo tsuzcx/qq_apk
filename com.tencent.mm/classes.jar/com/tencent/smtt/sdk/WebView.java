@@ -46,10 +46,9 @@ import com.tencent.smtt.export.external.interfaces.IX5WebViewBase.FindListener;
 import com.tencent.smtt.export.external.interfaces.IX5WebViewBase.HitTestResult;
 import com.tencent.smtt.export.external.interfaces.IX5WebViewBase.PictureListener;
 import com.tencent.smtt.export.external.interfaces.IX5WebViewClient;
+import com.tencent.smtt.sdk.c.c;
 import com.tencent.smtt.utils.Apn;
 import com.tencent.smtt.utils.TbsLog;
-import com.tencent.smtt.utils.d;
-import com.tencent.smtt.utils.k;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -95,7 +94,7 @@ public class WebView
   private WebSettings h;
   private Context i;
   private boolean k;
-  private n l;
+  private p l;
   private boolean m;
   public WebViewCallbackClient mWebViewCallbackClient;
   private WebViewClient q;
@@ -162,7 +161,7 @@ public class WebView
     this.A = null;
     this.B = null;
     mWebViewCreated = true;
-    this.l = new n();
+    this.l = new p();
     this.l.a("init_all", (byte)1);
     if ((QbSdk.getIsSysWebViewForcedByOuter()) && (TbsShareManager.isThirdPartyApp(paramContext)))
     {
@@ -178,7 +177,7 @@ public class WebView
     {
       paramAttributeSet = Class.forName("android.webkit.WebViewWorker").getDeclaredMethod("getHandler", new Class[0]);
       paramAttributeSet.setAccessible(true);
-      ((Handler)paramAttributeSet.invoke(null, new Object[0])).getLooper().getThread().setUncaughtExceptionHandler(new f());
+      ((Handler)paramAttributeSet.invoke(null, new Object[0])).getLooper().getThread().setUncaughtExceptionHandler(new h());
       mSysWebviewCreated = true;
       label249:
       CookieManager.getInstance().a();
@@ -187,7 +186,7 @@ public class WebView
       TbsLog.i("WebView", "SystemWebView Created Success! #3");
       TbsLog.e("WebView", "sys WebView: IsSysWebViewForcedByOuter = true", true);
       TbsCoreLoadStat.getInstance().setLoadErrorCode(paramContext, 402, new Throwable());
-      c.a(paramContext, this);
+      d.a(paramContext, this);
       AppMethodBeat.o(54156);
       return;
       if (TbsShareManager.isThirdPartyApp(paramContext)) {
@@ -254,8 +253,8 @@ public class WebView
           label657:
           b(paramContext);
           TbsLog.writeLogToDisk();
-          o.a(paramContext);
-          c.a(paramContext, this);
+          q.a(paramContext);
+          d.a(paramContext, this);
           AppMethodBeat.o(54156);
           return;
           this.g = new b(paramContext);
@@ -292,15 +291,15 @@ public class WebView
               if (!TbsShareManager.isThirdPartyApp(paramContext))
               {
                 paramInt = TbsDownloadConfig.getInstance(paramContext).mPreferences.getInt("tbs_decouplecoreversion", 0);
-                if ((paramInt <= 0) || (paramInt == o.a().h(paramContext)) || (paramInt != o.a().i(paramContext))) {
+                if ((paramInt <= 0) || (paramInt == q.a().i(paramContext)) || (paramInt != q.a().j(paramContext))) {
                   break label1090;
                 }
-                o.a().n(paramContext);
+                q.a().o(paramContext);
               }
             }
             for (;;)
             {
-              c.a(paramContext, this);
+              d.a(paramContext, this);
               paramContext = new StringBuilder("loadX5 -> isX5webview:");
               if (this.f != null) {
                 paramBoolean = true;
@@ -325,11 +324,11 @@ public class WebView
                 setDownloadListener(null);
                 b(paramContext);
                 TbsLog.writeLogToDisk();
-                o.a(paramContext);
+                q.a(paramContext);
                 break;
               }
               label1090:
-              TbsLog.i("WebView", "webview construction #1 deCoupleCoreVersion is " + paramInt + " getTbsCoreShareDecoupleCoreVersion is " + o.a().h(paramContext) + " getTbsCoreInstalledVerInNolock is " + o.a().i(paramContext));
+              TbsLog.i("WebView", "webview construction #1 deCoupleCoreVersion is " + paramInt + " getTbsCoreShareDecoupleCoreVersion is " + q.a().i(paramContext) + " getTbsCoreInstalledVerInNolock is " + q.a().j(paramContext));
             }
           }
           catch (Throwable paramAttributeSet)
@@ -376,19 +375,19 @@ public class WebView
     this.B = null;
   }
   
-  private void a(Context paramContext, n paramn)
+  private void a(Context paramContext, p paramp)
   {
-    AppMethodBeat.i(54167);
+    AppMethodBeat.i(192565);
     if ((QbSdk.h) && (TbsShareManager.isThirdPartyApp(paramContext))) {
       TbsExtensionFunctionManager.getInstance().initTbsBuglyIfNeed(paramContext);
     }
-    if (paramn != null) {
-      paramn.a("x5_core_engine_init_sync", (byte)1);
+    if (paramp != null) {
+      paramp.a("x5_core_engine_init_sync", (byte)1);
     }
-    v localv = v.a();
-    localv.a(paramContext, paramn);
-    this.e = localv.b();
-    AppMethodBeat.o(54167);
+    x localx = x.a();
+    localx.a(paramContext, paramp);
+    this.e = localx.b();
+    AppMethodBeat.o(192565);
   }
   
   private void a(AttributeSet paramAttributeSet)
@@ -447,7 +446,7 @@ public class WebView
       AppMethodBeat.o(54297);
       return false;
     }
-    paramView = k.a(this.A, "onLongClick", new Class[] { View.class }, new Object[] { paramView });
+    paramView = com.tencent.smtt.utils.k.a(this.A, "onLongClick", new Class[] { View.class }, new Object[] { paramView });
     if (paramView != null)
     {
       boolean bool = ((Boolean)paramView).booleanValue();
@@ -792,39 +791,39 @@ public class WebView
           AppMethodBeat.o(54930);
           return;
         }
-        e locale = e.a(true);
-        if (e.b)
+        g localg = g.a(true);
+        if (g.b)
         {
           TbsLog.d("TbsNeedReboot", "WebView.updateNeeeRebootStatus--needReboot = true");
           AppMethodBeat.o(54930);
           return;
         }
-        l locall = l.a(WebView.h());
-        int i = locall.c();
+        n localn = n.a(WebView.h());
+        int i = localn.c();
         TbsLog.d("TbsNeedReboot", "WebView.updateNeeeRebootStatus--installStatus = ".concat(String.valueOf(i)));
         if (i == 2)
         {
           TbsLog.d("TbsNeedReboot", "WebView.updateNeeeRebootStatus--install setTbsNeedReboot true");
-          locale.a(String.valueOf(locall.b()));
-          locale.b(true);
+          localg.a(String.valueOf(localn.b()));
+          localg.b(true);
           AppMethodBeat.o(54930);
           return;
         }
-        int j = locall.b("copy_status");
+        int j = localn.b("copy_status");
         TbsLog.d("TbsNeedReboot", "WebView.updateNeeeRebootStatus--copyStatus = ".concat(String.valueOf(j)));
         if (j == 1)
         {
           TbsLog.d("TbsNeedReboot", "WebView.updateNeeeRebootStatus--copy setTbsNeedReboot true");
-          locale.a(String.valueOf(locall.c("copy_core_ver")));
-          locale.b(true);
+          localg.a(String.valueOf(localn.c("copy_core_ver")));
+          localg.b(true);
           AppMethodBeat.o(54930);
           return;
         }
-        if ((!v.a().b()) && ((i == 3) || (j == 3)))
+        if ((!x.a().b()) && ((i == 3) || (j == 3)))
         {
           TbsLog.d("TbsNeedReboot", "WebView.updateNeeeRebootStatus--setTbsNeedReboot true");
-          locale.a(String.valueOf(e.d()));
-          locale.b(true);
+          localg.a(String.valueOf(g.d()));
+          localg.b(true);
         }
         AppMethodBeat.o(54930);
       }
@@ -846,8 +845,8 @@ public class WebView
   public static void disablePlatformNotifications()
   {
     AppMethodBeat.i(54186);
-    if (!v.a().b()) {
-      k.a("android.webkit.WebView", "disablePlatformNotifications");
+    if (!x.a().b()) {
+      com.tencent.smtt.utils.k.a("android.webkit.WebView", "disablePlatformNotifications");
     }
     AppMethodBeat.o(54186);
   }
@@ -880,8 +879,8 @@ public class WebView
   public static void enablePlatformNotifications()
   {
     AppMethodBeat.i(54185);
-    if (!v.a().b()) {
-      k.a("android.webkit.WebView", "enablePlatformNotifications");
+    if (!x.a().b()) {
+      com.tencent.smtt.utils.k.a("android.webkit.WebView", "enablePlatformNotifications");
     }
     AppMethodBeat.o(54185);
   }
@@ -889,7 +888,7 @@ public class WebView
   public static String findAddress(String paramString)
   {
     AppMethodBeat.i(54245);
-    if (!v.a().b())
+    if (!x.a().b())
     {
       paramString = android.webkit.WebView.findAddress(paramString);
       AppMethodBeat.o(54245);
@@ -908,7 +907,7 @@ public class WebView
       AppMethodBeat.o(54300);
       return "";
     }
-    String str = "tbs_core_version:" + QbSdk.getTbsVersionForCrash(paramContext) + ";tbs_sdk_version:43804;";
+    String str = "tbs_core_version:" + QbSdk.getTbsVersionForCrash(paramContext) + ";tbs_sdk_version:43805;";
     i1 = i2;
     if ("com.tencent.mm".equals(paramContext.getApplicationInfo().packageName)) {}
     try
@@ -938,7 +937,7 @@ public class WebView
       return paramContext;
     }
     localStringBuilder = new StringBuilder();
-    localStringBuilder.append(e.a(true).e());
+    localStringBuilder.append(g.a(true).e());
     localStringBuilder.append("\n");
     localStringBuilder.append(str);
     if ((!TbsShareManager.isThirdPartyApp(paramContext)) && (QbSdk.mSettings != null) && (QbSdk.mSettings.containsKey("weapp_id")) && (QbSdk.mSettings.containsKey("weapp_name")))
@@ -961,7 +960,7 @@ public class WebView
   public static PackageInfo getCurrentWebViewPackage()
   {
     AppMethodBeat.i(54225);
-    if (!v.a().b())
+    if (!x.a().b())
     {
       if (Build.VERSION.SDK_INT < 26)
       {
@@ -970,7 +969,7 @@ public class WebView
       }
       try
       {
-        PackageInfo localPackageInfo = (PackageInfo)k.a("android.webkit.WebView", "getCurrentWebViewPackage");
+        PackageInfo localPackageInfo = (PackageInfo)com.tencent.smtt.utils.k.a("android.webkit.WebView", "getCurrentWebViewPackage");
         AppMethodBeat.o(54225);
         return localPackageInfo;
       }
@@ -993,8 +992,8 @@ public class WebView
     //   2: monitorenter
     //   3: ldc_w 855
     //   6: invokestatic 112	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   9: invokestatic 561	com/tencent/smtt/sdk/v:a	()Lcom/tencent/smtt/sdk/v;
-    //   12: invokevirtual 564	com/tencent/smtt/sdk/v:b	()Z
+    //   9: invokestatic 561	com/tencent/smtt/sdk/x:a	()Lcom/tencent/smtt/sdk/x;
+    //   12: invokevirtual 564	com/tencent/smtt/sdk/x:b	()Z
     //   15: ifne +24 -> 39
     //   18: ldc_w 757
     //   21: ldc_w 856
@@ -1038,7 +1037,7 @@ public class WebView
   {
     AppMethodBeat.i(54301);
     d();
-    boolean bool = e.a(true).f();
+    boolean bool = g.a(true).f();
     TbsLog.d("TbsNeedReboot", "WebView.getTbsNeedReboot--ret = ".concat(String.valueOf(bool)));
     AppMethodBeat.o(54301);
     return bool;
@@ -1046,7 +1045,7 @@ public class WebView
   
   public static int getTbsSDKVersion(Context paramContext)
   {
-    return 43804;
+    return 43805;
   }
   
   private long i()
@@ -1110,8 +1109,8 @@ public class WebView
   public static void setWebContentsDebuggingEnabled(boolean paramBoolean)
   {
     AppMethodBeat.i(54202);
-    Object localObject = v.a();
-    if ((localObject != null) && (((v)localObject).b()))
+    Object localObject = x.a();
+    if ((localObject != null) && (((x)localObject).b()))
     {
       TbsOneGreyInfoHelper.getCoreEntry().getX5CoreMessy().setWebContentsDebuggingEnabled(paramBoolean);
       AppMethodBeat.o(54202);
@@ -1181,7 +1180,7 @@ public class WebView
     try
     {
       bool = this.f.getX5WebViewExtension().isX5CoreSandboxMode();
-      com.tencent.smtt.sdk.b.b.a(this.i, str3, str2, str1, this.a, this.e, i(), bool);
+      com.tencent.smtt.sdk.c.b.a(this.i, str3, str2, str1, this.a, this.e, i(), bool);
       this.a = 0;
       this.k = false;
       super.onDetachedFromWindow();
@@ -1278,7 +1277,7 @@ public class WebView
     View localView = this.f.getView();
     try
     {
-      Method localMethod = k.a(localView, "addView", new Class[] { View.class });
+      Method localMethod = com.tencent.smtt.utils.k.a(localView, "addView", new Class[] { View.class });
       localMethod.setAccessible(true);
       localMethod.invoke(localView, new Object[] { paramView });
       AppMethodBeat.o(54298);
@@ -1353,7 +1352,7 @@ public class WebView
     {
       if (Build.VERSION.SDK_INT >= 11)
       {
-        Object localObject = k.a(this.g, "canZoomIn");
+        Object localObject = com.tencent.smtt.utils.k.a(this.g, "canZoomIn");
         if (localObject == null)
         {
           AppMethodBeat.o(54263);
@@ -1379,7 +1378,7 @@ public class WebView
     {
       if (Build.VERSION.SDK_INT >= 11)
       {
-        Object localObject = k.a(this.g, "canZoomOut");
+        Object localObject = com.tencent.smtt.utils.k.a(this.g, "canZoomOut");
         if (localObject == null)
         {
           AppMethodBeat.o(54265);
@@ -1403,7 +1402,7 @@ public class WebView
     AppMethodBeat.i(54213);
     if (!this.e)
     {
-      localObject = k.a(this.g, "capturePicture");
+      localObject = com.tencent.smtt.utils.k.a(this.g, "capturePicture");
       if (localObject == null)
       {
         AppMethodBeat.o(54213);
@@ -1490,7 +1489,7 @@ public class WebView
     AppMethodBeat.i(54212);
     if (!this.e)
     {
-      k.a(this.g, "clearView");
+      com.tencent.smtt.utils.k.a(this.g, "clearView");
       AppMethodBeat.o(54212);
       return;
     }
@@ -1505,13 +1504,13 @@ public class WebView
     {
       if (this.e)
       {
-        localMethod = k.a(this.f.getView(), "computeHorizontalScrollExtent", new Class[0]);
+        localMethod = com.tencent.smtt.utils.k.a(this.f.getView(), "computeHorizontalScrollExtent", new Class[0]);
         localMethod.setAccessible(true);
         i1 = ((Integer)localMethod.invoke(this.f.getView(), new Object[0])).intValue();
         AppMethodBeat.o(54163);
         return i1;
       }
-      Method localMethod = k.a(this.g, "computeHorizontalScrollExtent", new Class[0]);
+      Method localMethod = com.tencent.smtt.utils.k.a(this.g, "computeHorizontalScrollExtent", new Class[0]);
       localMethod.setAccessible(true);
       int i1 = ((Integer)localMethod.invoke(this.g, new Object[0])).intValue();
       AppMethodBeat.o(54163);
@@ -1531,13 +1530,13 @@ public class WebView
     {
       if (this.e)
       {
-        localMethod = k.a(this.f.getView(), "computeHorizontalScrollOffset", new Class[0]);
+        localMethod = com.tencent.smtt.utils.k.a(this.f.getView(), "computeHorizontalScrollOffset", new Class[0]);
         localMethod.setAccessible(true);
         i1 = ((Integer)localMethod.invoke(this.f.getView(), new Object[0])).intValue();
         AppMethodBeat.o(54159);
         return i1;
       }
-      Method localMethod = k.a(this.g, "computeHorizontalScrollOffset", new Class[0]);
+      Method localMethod = com.tencent.smtt.utils.k.a(this.g, "computeHorizontalScrollOffset", new Class[0]);
       localMethod.setAccessible(true);
       int i1 = ((Integer)localMethod.invoke(this.g, new Object[0])).intValue();
       AppMethodBeat.o(54159);
@@ -1557,11 +1556,11 @@ public class WebView
     {
       if (this.e)
       {
-        i1 = ((Integer)k.a(this.f.getView(), "computeHorizontalScrollRange", new Class[0], new Object[0])).intValue();
+        i1 = ((Integer)com.tencent.smtt.utils.k.a(this.f.getView(), "computeHorizontalScrollRange", new Class[0], new Object[0])).intValue();
         AppMethodBeat.o(54162);
         return i1;
       }
-      Method localMethod = k.a(this.g, "computeHorizontalScrollRange", new Class[0]);
+      Method localMethod = com.tencent.smtt.utils.k.a(this.g, "computeHorizontalScrollRange", new Class[0]);
       localMethod.setAccessible(true);
       int i1 = ((Integer)localMethod.invoke(this.g, new Object[0])).intValue();
       AppMethodBeat.o(54162);
@@ -1594,13 +1593,13 @@ public class WebView
     {
       if (this.e)
       {
-        localMethod = k.a(this.f.getView(), "computeVerticalScrollExtent", new Class[0]);
+        localMethod = com.tencent.smtt.utils.k.a(this.f.getView(), "computeVerticalScrollExtent", new Class[0]);
         localMethod.setAccessible(true);
         i1 = ((Integer)localMethod.invoke(this.f.getView(), new Object[0])).intValue();
         AppMethodBeat.o(54161);
         return i1;
       }
-      Method localMethod = k.a(this.g, "computeVerticalScrollExtent", new Class[0]);
+      Method localMethod = com.tencent.smtt.utils.k.a(this.g, "computeVerticalScrollExtent", new Class[0]);
       localMethod.setAccessible(true);
       int i1 = ((Integer)localMethod.invoke(this.g, new Object[0])).intValue();
       AppMethodBeat.o(54161);
@@ -1620,13 +1619,13 @@ public class WebView
     {
       if (this.e)
       {
-        localMethod = k.a(this.f.getView(), "computeVerticalScrollOffset", new Class[0]);
+        localMethod = com.tencent.smtt.utils.k.a(this.f.getView(), "computeVerticalScrollOffset", new Class[0]);
         localMethod.setAccessible(true);
         i1 = ((Integer)localMethod.invoke(this.f.getView(), new Object[0])).intValue();
         AppMethodBeat.o(54160);
         return i1;
       }
-      Method localMethod = k.a(this.g, "computeVerticalScrollOffset", new Class[0]);
+      Method localMethod = com.tencent.smtt.utils.k.a(this.g, "computeVerticalScrollOffset", new Class[0]);
       localMethod.setAccessible(true);
       int i1 = ((Integer)localMethod.invoke(this.g, new Object[0])).intValue();
       AppMethodBeat.o(54160);
@@ -1646,11 +1645,11 @@ public class WebView
     {
       if (this.e)
       {
-        i1 = ((Integer)k.a(this.f.getView(), "computeVerticalScrollRange", new Class[0], new Object[0])).intValue();
+        i1 = ((Integer)com.tencent.smtt.utils.k.a(this.f.getView(), "computeVerticalScrollRange", new Class[0], new Object[0])).intValue();
         AppMethodBeat.o(54164);
         return i1;
       }
-      Method localMethod = k.a(this.g, "computeVerticalScrollRange", new Class[0]);
+      Method localMethod = com.tencent.smtt.utils.k.a(this.g, "computeVerticalScrollRange", new Class[0]);
       localMethod.setAccessible(true);
       int i1 = ((Integer)localMethod.invoke(this.g, new Object[0])).intValue();
       AppMethodBeat.o(54164);
@@ -1698,7 +1697,7 @@ public class WebView
       AppMethodBeat.o(54158);
       return null;
     }
-    paramString = k.a(this.g, "createPrintDocumentAdapter", new Class[] { String.class }, new Object[] { paramString });
+    paramString = com.tencent.smtt.utils.k.a(this.g, "createPrintDocumentAdapter", new Class[] { String.class }, new Object[] { paramString });
     AppMethodBeat.o(54158);
     return paramString;
   }
@@ -1771,7 +1770,7 @@ public class WebView
     AppMethodBeat.i(54268);
     if (!this.e)
     {
-      k.a(this.g, "dumpViewHierarchyWithProperties", new Class[] { BufferedWriter.class, Integer.TYPE }, new Object[] { paramBufferedWriter, Integer.valueOf(paramInt) });
+      com.tencent.smtt.utils.k.a(this.g, "dumpViewHierarchyWithProperties", new Class[] { BufferedWriter.class, Integer.TYPE }, new Object[] { paramBufferedWriter, Integer.valueOf(paramInt) });
       AppMethodBeat.o(54268);
       return;
     }
@@ -1786,7 +1785,7 @@ public class WebView
     if (this.e) {
       try
       {
-        localMethod = k.a(this.f.getView(), "evaluateJavascript", new Class[] { String.class, android.webkit.ValueCallback.class });
+        localMethod = com.tencent.smtt.utils.k.a(this.f.getView(), "evaluateJavascript", new Class[] { String.class, android.webkit.ValueCallback.class });
         localMethod.setAccessible(true);
         localMethod.invoke(this.f.getView(), new Object[] { paramString, paramValueCallback });
         AppMethodBeat.o(54282);
@@ -1819,7 +1818,7 @@ public class WebView
     AppMethodBeat.i(54244);
     if (!this.e)
     {
-      paramString = k.a(this.g, "findAll", new Class[] { String.class }, new Object[] { paramString });
+      paramString = com.tencent.smtt.utils.k.a(this.g, "findAll", new Class[] { String.class }, new Object[] { paramString });
       if (paramString == null)
       {
         AppMethodBeat.o(54244);
@@ -1842,7 +1841,7 @@ public class WebView
     {
       if (Build.VERSION.SDK_INT >= 16)
       {
-        k.a(this.g, "findAllAsync", new Class[] { String.class }, new Object[] { paramString });
+        com.tencent.smtt.utils.k.a(this.g, "findAllAsync", new Class[] { String.class }, new Object[] { paramString });
         AppMethodBeat.o(54246);
       }
     }
@@ -1857,7 +1856,7 @@ public class WebView
     AppMethodBeat.i(54269);
     if (!this.e)
     {
-      paramString = (View)k.a(this.g, "findHierarchyView", new Class[] { String.class, Integer.TYPE }, new Object[] { paramString, Integer.valueOf(paramInt) });
+      paramString = (View)com.tencent.smtt.utils.k.a(this.g, "findHierarchyView", new Class[] { String.class, Integer.TYPE }, new Object[] { paramString, Integer.valueOf(paramInt) });
       AppMethodBeat.o(54269);
       return paramString;
     }
@@ -1899,7 +1898,7 @@ public class WebView
     AppMethodBeat.i(54236);
     if (!this.e)
     {
-      k.a(this.g, "freeMemory");
+      com.tencent.smtt.utils.k.a(this.g, "freeMemory");
       AppMethodBeat.o(54236);
       return;
     }
@@ -1940,7 +1939,7 @@ public class WebView
     AppMethodBeat.i(54231);
     if (!this.e)
     {
-      Object localObject = k.a(this.g, "getContentWidth");
+      Object localObject = com.tencent.smtt.utils.k.a(this.g, "getContentWidth");
       if (localObject == null)
       {
         AppMethodBeat.o(54231);
@@ -2039,7 +2038,7 @@ public class WebView
           AppMethodBeat.o(54228);
           return false;
         }
-        Object localObject = k.a(this.g, "getRendererPriorityWaivedWhenNotVisible");
+        Object localObject = com.tencent.smtt.utils.k.a(this.g, "getRendererPriorityWaivedWhenNotVisible");
         if (localObject == null)
         {
           AppMethodBeat.o(54228);
@@ -2072,7 +2071,7 @@ public class WebView
           AppMethodBeat.o(54227);
           return 0;
         }
-        Object localObject = k.a(this.g, "getRendererRequestedPriority");
+        Object localObject = com.tencent.smtt.utils.k.a(this.g, "getRendererRequestedPriority");
         if (localObject == null)
         {
           AppMethodBeat.o(54227);
@@ -2098,7 +2097,7 @@ public class WebView
     AppMethodBeat.i(54214);
     if (!this.e)
     {
-      Object localObject = k.a(this.g, "getScale");
+      Object localObject = com.tencent.smtt.utils.k.a(this.g, "getScale");
       if (localObject == null)
       {
         AppMethodBeat.o(54214);
@@ -2252,7 +2251,7 @@ public class WebView
     AppMethodBeat.i(54176);
     if (!this.e)
     {
-      Object localObject = k.a(this.g, "getVisibleTitleHeight");
+      Object localObject = com.tencent.smtt.utils.k.a(this.g, "getVisibleTitleHeight");
       if (localObject == null)
       {
         AppMethodBeat.o(54176);
@@ -2363,7 +2362,7 @@ public class WebView
     AppMethodBeat.i(54262);
     if (!this.e)
     {
-      localView = (View)k.a(this.g, "getZoomControls");
+      localView = (View)com.tencent.smtt.utils.k.a(this.g, "getZoomControls");
       AppMethodBeat.o(54262);
       return localView;
     }
@@ -2436,7 +2435,7 @@ public class WebView
     {
       if (Build.VERSION.SDK_INT >= 11)
       {
-        Object localObject = k.a(this.g, "isPrivateBrowsingEnabled");
+        Object localObject = com.tencent.smtt.utils.k.a(this.g, "isPrivateBrowsingEnabled");
         if (localObject == null)
         {
           AppMethodBeat.o(54264);
@@ -2589,7 +2588,7 @@ public class WebView
     AppMethodBeat.i(54234);
     if (!this.e)
     {
-      k.a(this.g, "onPause");
+      com.tencent.smtt.utils.k.a(this.g, "onPause");
       AppMethodBeat.o(54234);
       return;
     }
@@ -2602,7 +2601,7 @@ public class WebView
     AppMethodBeat.i(54235);
     if (!this.e)
     {
-      k.a(this.g, "onResume");
+      com.tencent.smtt.utils.k.a(this.g, "onResume");
       AppMethodBeat.o(54235);
       return;
     }
@@ -2679,7 +2678,7 @@ public class WebView
     try
     {
       bool = this.f.getX5WebViewExtension().isX5CoreSandboxMode();
-      com.tencent.smtt.sdk.b.b.a(this.i, str3, str2, str1, this.a, this.e, i(), bool);
+      com.tencent.smtt.sdk.c.b.a(this.i, str3, str2, str1, this.a, this.e, i(), bool);
       this.a = 0;
       this.k = false;
       super.onVisibilityChanged(paramView, paramInt);
@@ -2785,7 +2784,7 @@ public class WebView
     AppMethodBeat.i(54259);
     if (!this.e)
     {
-      k.a(this.g, "refreshPlugins", new Class[] { Boolean.TYPE }, new Object[] { Boolean.valueOf(paramBoolean) });
+      com.tencent.smtt.utils.k.a(this.g, "refreshPlugins", new Class[] { Boolean.TYPE }, new Object[] { Boolean.valueOf(paramBoolean) });
       AppMethodBeat.o(54259);
       return;
     }
@@ -2814,7 +2813,7 @@ public class WebView
     {
       if (Build.VERSION.SDK_INT >= 11)
       {
-        k.a(this.g, "removeJavascriptInterface", new Class[] { String.class }, new Object[] { paramString });
+        com.tencent.smtt.utils.k.a(this.g, "removeJavascriptInterface", new Class[] { String.class }, new Object[] { paramString });
         AppMethodBeat.o(54256);
         return;
       }
@@ -2835,7 +2834,7 @@ public class WebView
     View localView = this.f.getView();
     try
     {
-      Method localMethod = k.a(localView, "removeView", new Class[] { View.class });
+      Method localMethod = com.tencent.smtt.utils.k.a(localView, "removeView", new Class[] { View.class });
       localMethod.setAccessible(true);
       localMethod.invoke(localView, new Object[] { paramView });
       AppMethodBeat.o(54299);
@@ -2950,7 +2949,7 @@ public class WebView
     AppMethodBeat.i(54190);
     if (!this.e)
     {
-      paramBundle = k.a(this.g, "restorePicture", new Class[] { Bundle.class, File.class }, new Object[] { paramBundle, paramFile });
+      paramBundle = com.tencent.smtt.utils.k.a(this.g, "restorePicture", new Class[] { Bundle.class, File.class }, new Object[] { paramBundle, paramFile });
       if (paramBundle == null)
       {
         AppMethodBeat.o(54190);
@@ -2998,7 +2997,7 @@ public class WebView
     AppMethodBeat.i(54179);
     if (!this.e)
     {
-      k.a(this.g, "savePassword", new Class[] { String.class, String.class, String.class }, new Object[] { paramString1, paramString2, paramString3 });
+      com.tencent.smtt.utils.k.a(this.g, "savePassword", new Class[] { String.class, String.class, String.class }, new Object[] { paramString1, paramString2, paramString3 });
       AppMethodBeat.o(54179);
       return;
     }
@@ -3012,7 +3011,7 @@ public class WebView
     AppMethodBeat.i(54189);
     if (!this.e)
     {
-      paramBundle = k.a(this.g, "savePicture", new Class[] { Bundle.class, File.class }, new Object[] { paramBundle, paramFile });
+      paramBundle = com.tencent.smtt.utils.k.a(this.g, "savePicture", new Class[] { Bundle.class, File.class }, new Object[] { paramBundle, paramFile });
       if (paramBundle == null)
       {
         AppMethodBeat.o(54189);
@@ -3049,7 +3048,7 @@ public class WebView
     {
       if (Build.VERSION.SDK_INT >= 11)
       {
-        k.a(this.g, "saveWebArchive", new Class[] { String.class }, new Object[] { paramString });
+        com.tencent.smtt.utils.k.a(this.g, "saveWebArchive", new Class[] { String.class }, new Object[] { paramString });
         AppMethodBeat.o(54199);
       }
     }
@@ -3067,7 +3066,7 @@ public class WebView
     {
       if (Build.VERSION.SDK_INT >= 11)
       {
-        k.a(this.g, "saveWebArchive", new Class[] { String.class, Boolean.TYPE, android.webkit.ValueCallback.class }, new Object[] { paramString, Boolean.valueOf(paramBoolean), paramValueCallback });
+        com.tencent.smtt.utils.k.a(this.g, "saveWebArchive", new Class[] { String.class, Boolean.TYPE, android.webkit.ValueCallback.class }, new Object[] { paramString, Boolean.valueOf(paramBoolean), paramValueCallback });
         AppMethodBeat.o(54200);
       }
     }
@@ -3158,7 +3157,7 @@ public class WebView
             for (paramAnonymousString2 = null;; paramAnonymousString2 = WebView.a(WebView.this).getApplicationInfo())
             {
               if ((paramAnonymousString2 == null) || (!"com.tencent.mm".equals(paramAnonymousString2.packageName))) {
-                com.tencent.smtt.sdk.b.c.a(WebView.a(WebView.this), paramAnonymousString1, null, null);
+                c.a(WebView.a(WebView.this), paramAnonymousString1, null, null);
               }
               AppMethodBeat.o(54352);
               return;
@@ -3246,7 +3245,7 @@ public class WebView
     AppMethodBeat.i(54260);
     if (!this.e)
     {
-      k.a(this.g, "setMapTrackballToArrowKeys", new Class[] { Boolean.TYPE }, new Object[] { Boolean.valueOf(paramBoolean) });
+      com.tencent.smtt.utils.k.a(this.g, "setMapTrackballToArrowKeys", new Class[] { Boolean.TYPE }, new Object[] { Boolean.valueOf(paramBoolean) });
       AppMethodBeat.o(54260);
       return;
     }
@@ -3285,7 +3284,7 @@ public class WebView
     {
       if (this.A == null)
       {
-        Object localObject2 = k.a(localObject1, "getListenerInfo", new Class[0]);
+        Object localObject2 = com.tencent.smtt.utils.k.a(localObject1, "getListenerInfo", new Class[0]);
         ((Method)localObject2).setAccessible(true);
         localObject1 = ((Method)localObject2).invoke(localObject1, null);
         localObject2 = localObject1.getClass().getDeclaredField("mOnLongClickListener");
@@ -3368,7 +3367,7 @@ public class WebView
           AppMethodBeat.o(54226);
           return;
         }
-        k.a(this.g, "setRendererPriorityPolicy", new Class[] { Integer.TYPE, Boolean.TYPE }, new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean) });
+        com.tencent.smtt.utils.k.a(this.g, "setRendererPriorityPolicy", new Class[] { Integer.TYPE, Boolean.TYPE }, new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean) });
         AppMethodBeat.o(54226);
         return;
       }
@@ -3461,7 +3460,7 @@ public class WebView
         this.r = paramWebChromeClient;
         AppMethodBeat.o(54253);
         return;
-        localObject = new h(TbsOneGreyInfoHelper.getCoreEntry().getX5CoreMessy().createDefaultX5WebChromeClient(), this, paramWebChromeClient);
+        localObject = new j(TbsOneGreyInfoHelper.getCoreEntry().getX5CoreMessy().createDefaultX5WebChromeClient(), this, paramWebChromeClient);
       }
     }
     b localb = this.g;
@@ -3513,7 +3512,7 @@ public class WebView
         this.q = paramWebViewClient;
         AppMethodBeat.o(54249);
         return;
-        localObject = new i(TbsOneGreyInfoHelper.getCoreEntry().getX5CoreMessy().createDefaultX5WebViewClient(), this, paramWebViewClient);
+        localObject = new k(TbsOneGreyInfoHelper.getCoreEntry().getX5CoreMessy().createDefaultX5WebViewClient(), this, paramWebViewClient);
       }
     }
     b localb = this.g;
@@ -3545,7 +3544,7 @@ public class WebView
     if (paramString.startsWith("http://debugtbs.qq.com"))
     {
       getView().setVisibility(4);
-      d.a(this.i).a(paramString, this, this.i, m.a().getLooper());
+      com.tencent.smtt.utils.d.a(this.i).a(paramString, this, this.i, o.a().getLooper());
       AppMethodBeat.o(54195);
       return true;
     }
@@ -3603,7 +3602,7 @@ public class WebView
     View localView = this.f.getView();
     try
     {
-      k.a(localView, "super_computeScroll");
+      com.tencent.smtt.utils.k.a(localView, "super_computeScroll");
       AppMethodBeat.o(54309);
       return;
     }
@@ -3626,7 +3625,7 @@ public class WebView
     View localView = this.f.getView();
     try
     {
-      paramMotionEvent = k.a(localView, "super_dispatchTouchEvent", new Class[] { MotionEvent.class }, new Object[] { paramMotionEvent });
+      paramMotionEvent = com.tencent.smtt.utils.k.a(localView, "super_dispatchTouchEvent", new Class[] { MotionEvent.class }, new Object[] { paramMotionEvent });
       if (paramMotionEvent == null)
       {
         AppMethodBeat.o(54306);
@@ -3656,7 +3655,7 @@ public class WebView
     View localView = this.f.getView();
     try
     {
-      paramMotionEvent = k.a(localView, "super_onInterceptTouchEvent", new Class[] { MotionEvent.class }, new Object[] { paramMotionEvent });
+      paramMotionEvent = com.tencent.smtt.utils.k.a(localView, "super_onInterceptTouchEvent", new Class[] { MotionEvent.class }, new Object[] { paramMotionEvent });
       if (paramMotionEvent == null)
       {
         AppMethodBeat.o(54307);
@@ -3685,7 +3684,7 @@ public class WebView
     View localView = this.f.getView();
     try
     {
-      k.a(localView, "super_onOverScrolled", new Class[] { Integer.TYPE, Integer.TYPE, Boolean.TYPE, Boolean.TYPE }, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2) });
+      com.tencent.smtt.utils.k.a(localView, "super_onOverScrolled", new Class[] { Integer.TYPE, Integer.TYPE, Boolean.TYPE, Boolean.TYPE }, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2) });
       AppMethodBeat.o(54305);
       return;
     }
@@ -3707,7 +3706,7 @@ public class WebView
     View localView = this.f.getView();
     try
     {
-      k.a(localView, "super_onScrollChanged", new Class[] { Integer.TYPE, Integer.TYPE, Integer.TYPE, Integer.TYPE }, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4) });
+      com.tencent.smtt.utils.k.a(localView, "super_onScrollChanged", new Class[] { Integer.TYPE, Integer.TYPE, Integer.TYPE, Integer.TYPE }, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4) });
       AppMethodBeat.o(54303);
       return;
     }
@@ -3730,7 +3729,7 @@ public class WebView
     View localView = this.f.getView();
     try
     {
-      paramMotionEvent = k.a(localView, "super_onTouchEvent", new Class[] { MotionEvent.class }, new Object[] { paramMotionEvent });
+      paramMotionEvent = com.tencent.smtt.utils.k.a(localView, "super_onTouchEvent", new Class[] { MotionEvent.class }, new Object[] { paramMotionEvent });
       if (paramMotionEvent == null)
       {
         AppMethodBeat.o(54308);
@@ -3759,7 +3758,7 @@ public class WebView
     Object localObject = this.f.getView();
     try
     {
-      localObject = k.a(localObject, "super_overScrollBy", new Class[] { Integer.TYPE, Integer.TYPE, Integer.TYPE, Integer.TYPE, Integer.TYPE, Integer.TYPE, Integer.TYPE, Integer.TYPE, Boolean.TYPE }, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4), Integer.valueOf(paramInt5), Integer.valueOf(paramInt6), Integer.valueOf(paramInt7), Integer.valueOf(paramInt8), Boolean.valueOf(paramBoolean) });
+      localObject = com.tencent.smtt.utils.k.a(localObject, "super_overScrollBy", new Class[] { Integer.TYPE, Integer.TYPE, Integer.TYPE, Integer.TYPE, Integer.TYPE, Integer.TYPE, Integer.TYPE, Integer.TYPE, Boolean.TYPE }, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4), Integer.valueOf(paramInt5), Integer.valueOf(paramInt6), Integer.valueOf(paramInt7), Integer.valueOf(paramInt8), Boolean.valueOf(paramBoolean) });
       if (localObject == null)
       {
         AppMethodBeat.o(54304);
@@ -3852,7 +3851,7 @@ public class WebView
     try
     {
       bool = this.f.getX5WebViewExtension().isX5CoreSandboxMode();
-      com.tencent.smtt.sdk.b.b.a(this.i, (String)localObject4, (String)???, (String)localObject1, this.a, this.e, i(), bool);
+      com.tencent.smtt.sdk.c.b.a(this.i, (String)localObject4, (String)???, (String)localObject1, this.a, this.e, i(), bool);
       this.a = 0;
       this.k = false;
       if (this.e) {}
@@ -4134,7 +4133,7 @@ public class WebView
         {
           this$1 = Class.forName("android.webkit.WebViewWorker").getDeclaredMethod("getHandler", new Class[0]);
           WebView.this.setAccessible(true);
-          ((Handler)WebView.this.invoke(null, new Object[0])).getLooper().getThread().setUncaughtExceptionHandler(new f());
+          ((Handler)WebView.this.invoke(null, new Object[0])).getLooper().getThread().setUncaughtExceptionHandler(new h());
           WebView.mSysWebviewCreated = true;
           AppMethodBeat.o(54510);
           return;

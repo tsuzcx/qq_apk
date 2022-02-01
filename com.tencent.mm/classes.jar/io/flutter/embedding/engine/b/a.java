@@ -17,125 +17,125 @@ import java.util.concurrent.atomic.AtomicLong;
 public final class a
   implements c
 {
-  private b MBR;
-  private final b MBl;
-  public final FlutterJNI MCg;
-  private final AtomicLong MDD;
-  public boolean MDE;
+  private b MYW;
+  private final b MYq;
+  public final FlutterJNI MZl;
+  private final AtomicLong NaI;
+  public boolean NaJ;
   private Surface surface;
   
   public a(FlutterJNI paramFlutterJNI)
   {
     AppMethodBeat.i(10185);
-    this.MDD = new AtomicLong(0L);
-    this.MDE = false;
-    this.MBl = new b()
+    this.NaI = new AtomicLong(0L);
+    this.NaJ = false;
+    this.MYq = new b()
     {
-      public final void cQm()
+      public final void cSR()
       {
-        a.this.MDE = true;
+        a.this.NaJ = true;
       }
       
-      public final void cQn()
+      public final void cSS()
       {
-        a.this.MDE = false;
+        a.this.NaJ = false;
       }
     };
-    this.MCg = paramFlutterJNI;
-    this.MCg.addIsDisplayingFlutterUiListener(this.MBl);
+    this.MZl = paramFlutterJNI;
+    this.MZl.addIsDisplayingFlutterUiListener(this.MYq);
     AppMethodBeat.o(10185);
   }
   
   public final void a(b paramb)
   {
     AppMethodBeat.i(10193);
-    new StringBuilder("Setting viewport metrics\nSize: ").append(paramb.width).append(" x ").append(paramb.height).append("\nPadding - L: ").append(paramb.paddingLeft).append(", T: ").append(paramb.paddingTop).append(", R: ").append(paramb.paddingRight).append(", B: ").append(paramb.paddingBottom).append("\nInsets - L: ").append(paramb.MDM).append(", T: ").append(paramb.MDJ).append(", R: ").append(paramb.MDK).append(", B: ").append(paramb.MDL).append("\nSystem Gesture Insets - L: ").append(paramb.MDQ).append(", T: ").append(paramb.MDN).append(", R: ").append(paramb.MDO).append(", B: ").append(paramb.MDL);
-    io.flutter.a.gea();
-    this.MBR = paramb;
-    this.MCg.setViewportMetrics(paramb.MDI, paramb.width, paramb.height, paramb.paddingTop, paramb.paddingRight, paramb.paddingBottom, paramb.paddingLeft, paramb.MDJ, paramb.MDK, paramb.MDL, paramb.MDM, paramb.MDN, paramb.MDO, paramb.MDP, paramb.MDQ);
+    new StringBuilder("Setting viewport metrics\nSize: ").append(paramb.width).append(" x ").append(paramb.height).append("\nPadding - L: ").append(paramb.paddingLeft).append(", T: ").append(paramb.paddingTop).append(", R: ").append(paramb.paddingRight).append(", B: ").append(paramb.paddingBottom).append("\nInsets - L: ").append(paramb.NaS).append(", T: ").append(paramb.NaP).append(", R: ").append(paramb.NaQ).append(", B: ").append(paramb.NaR).append("\nSystem Gesture Insets - L: ").append(paramb.NaW).append(", T: ").append(paramb.NaT).append(", R: ").append(paramb.NaU).append(", B: ").append(paramb.NaR);
+    io.flutter.a.giD();
+    this.MYW = paramb;
+    this.MZl.setViewportMetrics(paramb.NaO, paramb.width, paramb.height, paramb.paddingTop, paramb.paddingRight, paramb.paddingBottom, paramb.paddingLeft, paramb.NaP, paramb.NaQ, paramb.NaR, paramb.NaS, paramb.NaT, paramb.NaU, paramb.NaV, paramb.NaW);
     AppMethodBeat.o(10193);
   }
   
   public final void addIsDisplayingFlutterUiListener(b paramb)
   {
-    AppMethodBeat.i(213260);
-    this.MCg.addIsDisplayingFlutterUiListener(paramb);
-    if (this.MDE) {
-      paramb.cQm();
+    AppMethodBeat.i(197842);
+    this.MZl.addIsDisplayingFlutterUiListener(paramb);
+    if (this.NaJ) {
+      paramb.cSR();
     }
-    AppMethodBeat.o(213260);
+    AppMethodBeat.o(197842);
   }
   
   public final void dispatchPointerDataPacket(ByteBuffer paramByteBuffer, int paramInt)
   {
     AppMethodBeat.i(10194);
-    this.MCg.dispatchPointerDataPacket(paramByteBuffer, paramInt);
+    this.MZl.dispatchPointerDataPacket(paramByteBuffer, paramInt);
     AppMethodBeat.o(10194);
   }
   
-  public final c.a geU()
+  public final c.a gjw()
   {
     AppMethodBeat.i(10190);
-    io.flutter.a.gea();
+    io.flutter.a.giD();
     SurfaceTexture localSurfaceTexture = new SurfaceTexture(0);
     localSurfaceTexture.detachFromGLContext();
-    a locala = new a(this.MDD.getAndIncrement(), localSurfaceTexture);
+    a locala = new a(this.NaI.getAndIncrement(), localSurfaceTexture);
     new StringBuilder("New SurfaceTexture ID: ").append(locala.id);
-    io.flutter.a.gea();
+    io.flutter.a.giD();
     long l = locala.id;
-    this.MCg.registerTexture(l, localSurfaceTexture);
+    this.MZl.registerTexture(l, localSurfaceTexture);
     AppMethodBeat.o(10190);
     return locala;
   }
   
-  public final void geV()
+  public final void gjx()
   {
-    AppMethodBeat.i(213263);
-    this.MCg.onSurfaceDestroyed();
+    AppMethodBeat.i(197845);
+    this.MZl.onSurfaceDestroyed();
     this.surface = null;
-    if (this.MDE) {
-      this.MBl.cQn();
+    if (this.NaJ) {
+      this.MYq.cSS();
     }
-    this.MDE = false;
-    AppMethodBeat.o(213263);
+    this.NaJ = false;
+    AppMethodBeat.o(197845);
   }
   
-  public final void geW()
+  public final void gjy()
   {
-    AppMethodBeat.i(213264);
-    this.MCg.setSemanticsEnabled(false);
-    AppMethodBeat.o(213264);
+    AppMethodBeat.i(197846);
+    this.MZl.setSemanticsEnabled(false);
+    AppMethodBeat.o(197846);
   }
   
   public final void m(Surface paramSurface)
   {
-    AppMethodBeat.i(213262);
+    AppMethodBeat.i(197844);
     if (this.surface != null) {
-      geV();
+      gjx();
     }
     this.surface = paramSurface;
-    this.MCg.onSurfaceCreated(paramSurface);
-    AppMethodBeat.o(213262);
+    this.MZl.onSurfaceCreated(paramSurface);
+    AppMethodBeat.o(197844);
   }
   
   public final void removeIsDisplayingFlutterUiListener(b paramb)
   {
-    AppMethodBeat.i(213261);
-    this.MCg.removeIsDisplayingFlutterUiListener(paramb);
-    AppMethodBeat.o(213261);
+    AppMethodBeat.i(197843);
+    this.MZl.removeIsDisplayingFlutterUiListener(paramb);
+    AppMethodBeat.o(197843);
   }
   
   public final void surfaceChanged(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(10192);
-    this.MCg.onSurfaceChanged(paramInt1, paramInt2);
+    this.MZl.onSurfaceChanged(paramInt1, paramInt2);
     AppMethodBeat.o(10192);
   }
   
   final class a
     implements c.a
   {
-    private SurfaceTexture.OnFrameAvailableListener MDG;
+    private SurfaceTexture.OnFrameAvailableListener NaL;
     final long id;
     boolean released;
     private final SurfaceTexture surfaceTexture;
@@ -143,7 +143,7 @@ public final class a
     a(long paramLong, SurfaceTexture paramSurfaceTexture)
     {
       AppMethodBeat.i(10195);
-      this.MDG = new SurfaceTexture.OnFrameAvailableListener()
+      this.NaL = new SurfaceTexture.OnFrameAvailableListener()
       {
         public final void onFrameAvailable(SurfaceTexture paramAnonymousSurfaceTexture)
         {
@@ -155,7 +155,7 @@ public final class a
           }
           paramAnonymousSurfaceTexture = a.this;
           long l = a.a.this.id;
-          paramAnonymousSurfaceTexture.MCg.markTextureFrameAvailable(l);
+          paramAnonymousSurfaceTexture.MZl.markTextureFrameAvailable(l);
           AppMethodBeat.o(10197);
         }
       };
@@ -163,15 +163,15 @@ public final class a
       this.surfaceTexture = paramSurfaceTexture;
       if (Build.VERSION.SDK_INT >= 21)
       {
-        this.surfaceTexture.setOnFrameAvailableListener(this.MDG, new Handler());
+        this.surfaceTexture.setOnFrameAvailableListener(this.NaL, new Handler());
         AppMethodBeat.o(10195);
         return;
       }
-      this.surfaceTexture.setOnFrameAvailableListener(this.MDG);
+      this.surfaceTexture.setOnFrameAvailableListener(this.NaL);
       AppMethodBeat.o(10195);
     }
     
-    public final long geX()
+    public final long gjz()
     {
       return this.id;
     }
@@ -185,11 +185,11 @@ public final class a
         return;
       }
       new StringBuilder("Releasing a SurfaceTexture (").append(this.id).append(").");
-      io.flutter.a.gea();
+      io.flutter.a.giD();
       this.surfaceTexture.release();
       a locala = a.this;
       long l = this.id;
-      locala.MCg.unregisterTexture(l);
+      locala.MZl.unregisterTexture(l);
       this.released = true;
       AppMethodBeat.o(10196);
     }
@@ -202,15 +202,15 @@ public final class a
   
   public static final class b
   {
-    public float MDI = 1.0F;
-    public int MDJ = 0;
-    public int MDK = 0;
-    public int MDL = 0;
-    public int MDM = 0;
-    public int MDN = 0;
-    public int MDO = 0;
-    public int MDP = 0;
-    public int MDQ = 0;
+    public float NaO = 1.0F;
+    public int NaP = 0;
+    public int NaQ = 0;
+    public int NaR = 0;
+    public int NaS = 0;
+    public int NaT = 0;
+    public int NaU = 0;
+    public int NaV = 0;
+    public int NaW = 0;
     public int height = 0;
     public int paddingBottom = 0;
     public int paddingLeft = 0;
@@ -221,7 +221,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     io.flutter.embedding.engine.b.a
  * JD-Core Version:    0.7.0.1
  */

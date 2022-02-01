@@ -1,6 +1,6 @@
 package com.tencent.mm.g.a;
 
-import android.content.Context;
+import android.app.Activity;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
@@ -8,8 +8,8 @@ import com.tencent.mm.sdk.b.b;
 public final class ri
   extends b
 {
-  public a dFW;
-  public b dFX;
+  public a dGW;
+  public b dGX;
   
   public ri()
   {
@@ -18,24 +18,28 @@ public final class ri
   
   private ri(byte paramByte)
   {
-    AppMethodBeat.i(149884);
-    this.dFW = new a();
-    this.dFX = new b();
-    this.IbR = false;
+    AppMethodBeat.i(149883);
+    this.dGW = new a();
+    this.dGX = new b();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(149884);
+    AppMethodBeat.o(149883);
   }
   
   public static final class a
   {
-    public Context context;
-    public int dFY;
-    public Bundle extras;
+    public String dGY;
+    public String dGZ;
+    public String dHa;
+    public Activity dtg;
+    public String packageName;
+    public int requestCode;
+    public int scene;
   }
   
   public static final class b
   {
-    public boolean dFV;
+    public boolean dHb;
     public Bundle extras;
   }
 }

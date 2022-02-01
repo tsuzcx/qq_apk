@@ -4,10 +4,10 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 public class FinderMedia
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
   public int bitrate;
-  public apb codec_info;
+  public apo codec_info;
   public String coverUrl;
   public String cover_url_token;
   public String decodeKey;
@@ -15,7 +15,7 @@ public class FinderMedia
   public float height;
   public String md5sum;
   public int mediaType;
-  public LinkedList<apc> spec;
+  public LinkedList<app> spec;
   public String thumbUrl;
   public String thumb_url_token;
   public String url;
@@ -44,8 +44,8 @@ public class FinderMedia
       }
       paramVarArgs.aS(3, this.mediaType);
       paramVarArgs.aS(4, this.videoDuration);
-      paramVarArgs.z(5, this.width);
-      paramVarArgs.z(6, this.height);
+      paramVarArgs.y(5, this.width);
+      paramVarArgs.y(6, this.height);
       if (this.md5sum != null) {
         paramVarArgs.d(7, this.md5sum);
       }
@@ -69,7 +69,7 @@ public class FinderMedia
       }
       if (this.codec_info != null)
       {
-        paramVarArgs.lC(16, this.codec_info.computeSize());
+        paramVarArgs.lJ(16, this.codec_info.computeSize());
         this.codec_info.writeFields(paramVarArgs);
       }
       AppMethodBeat.o(169005);
@@ -87,7 +87,7 @@ public class FinderMedia
       if (this.thumbUrl != null) {
         i = paramInt + f.a.a.b.b.a.e(2, this.thumbUrl);
       }
-      i = i + f.a.a.b.b.a.bz(3, this.mediaType) + f.a.a.b.b.a.bz(4, this.videoDuration) + f.a.a.b.b.a.alU(5) + f.a.a.b.b.a.alU(6);
+      i = i + f.a.a.b.b.a.bz(3, this.mediaType) + f.a.a.b.b.a.bz(4, this.videoDuration) + f.a.a.b.b.a.amE(5) + f.a.a.b.b.a.amE(6);
       paramInt = i;
       if (this.md5sum != null) {
         paramInt = i + f.a.a.b.b.a.e(7, this.md5sum);
@@ -115,7 +115,7 @@ public class FinderMedia
       }
       i = paramInt;
       if (this.codec_info != null) {
-        i = paramInt + f.a.a.a.lB(16, this.codec_info.computeSize());
+        i = paramInt + f.a.a.a.lI(16, this.codec_info.computeSize());
       }
       AppMethodBeat.o(169005);
       return i;
@@ -124,9 +124,9 @@ public class FinderMedia
         paramVarArgs = (byte[])paramVarArgs[0];
         this.spec.clear();
         paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
         AppMethodBeat.o(169005);
@@ -145,87 +145,87 @@ public class FinderMedia
           AppMethodBeat.o(169005);
           return -1;
         case 1: 
-          localFinderMedia.url = ((f.a.a.a.a)localObject1).NPN.readString();
+          localFinderMedia.url = ((f.a.a.a.a)localObject1).OmT.readString();
           AppMethodBeat.o(169005);
           return 0;
         case 2: 
-          localFinderMedia.thumbUrl = ((f.a.a.a.a)localObject1).NPN.readString();
+          localFinderMedia.thumbUrl = ((f.a.a.a.a)localObject1).OmT.readString();
           AppMethodBeat.o(169005);
           return 0;
         case 3: 
-          localFinderMedia.mediaType = ((f.a.a.a.a)localObject1).NPN.zc();
+          localFinderMedia.mediaType = ((f.a.a.a.a)localObject1).OmT.zc();
           AppMethodBeat.o(169005);
           return 0;
         case 4: 
-          localFinderMedia.videoDuration = ((f.a.a.a.a)localObject1).NPN.zc();
+          localFinderMedia.videoDuration = ((f.a.a.a.a)localObject1).OmT.zc();
           AppMethodBeat.o(169005);
           return 0;
         case 5: 
-          localFinderMedia.width = Float.intBitsToFloat(((f.a.a.a.a)localObject1).NPN.grz());
+          localFinderMedia.width = Float.intBitsToFloat(((f.a.a.a.a)localObject1).OmT.gwb());
           AppMethodBeat.o(169005);
           return 0;
         case 6: 
-          localFinderMedia.height = Float.intBitsToFloat(((f.a.a.a.a)localObject1).NPN.grz());
+          localFinderMedia.height = Float.intBitsToFloat(((f.a.a.a.a)localObject1).OmT.gwb());
           AppMethodBeat.o(169005);
           return 0;
         case 7: 
-          localFinderMedia.md5sum = ((f.a.a.a.a)localObject1).NPN.readString();
+          localFinderMedia.md5sum = ((f.a.a.a.a)localObject1).OmT.readString();
           AppMethodBeat.o(169005);
           return 0;
         case 8: 
-          localFinderMedia.fileSize = ((f.a.a.a.a)localObject1).NPN.zc();
+          localFinderMedia.fileSize = ((f.a.a.a.a)localObject1).OmT.zc();
           AppMethodBeat.o(169005);
           return 0;
         case 9: 
-          localFinderMedia.bitrate = ((f.a.a.a.a)localObject1).NPN.zc();
+          localFinderMedia.bitrate = ((f.a.a.a.a)localObject1).OmT.zc();
           AppMethodBeat.o(169005);
           return 0;
         case 10: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
+          paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
             localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new apc();
+            localObject1 = new app();
             localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (bool = true; bool; bool = ((apc)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, com.tencent.mm.bx.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            for (bool = true; bool; bool = ((app)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
             localFinderMedia.spec.add(localObject1);
             paramInt += 1;
           }
           AppMethodBeat.o(169005);
           return 0;
         case 11: 
-          localFinderMedia.coverUrl = ((f.a.a.a.a)localObject1).NPN.readString();
+          localFinderMedia.coverUrl = ((f.a.a.a.a)localObject1).OmT.readString();
           AppMethodBeat.o(169005);
           return 0;
         case 12: 
-          localFinderMedia.decodeKey = ((f.a.a.a.a)localObject1).NPN.readString();
+          localFinderMedia.decodeKey = ((f.a.a.a.a)localObject1).OmT.readString();
           AppMethodBeat.o(169005);
           return 0;
         case 13: 
-          localFinderMedia.url_token = ((f.a.a.a.a)localObject1).NPN.readString();
+          localFinderMedia.url_token = ((f.a.a.a.a)localObject1).OmT.readString();
           AppMethodBeat.o(169005);
           return 0;
         case 14: 
-          localFinderMedia.thumb_url_token = ((f.a.a.a.a)localObject1).NPN.readString();
+          localFinderMedia.thumb_url_token = ((f.a.a.a.a)localObject1).OmT.readString();
           AppMethodBeat.o(169005);
           return 0;
         case 15: 
-          localFinderMedia.cover_url_token = ((f.a.a.a.a)localObject1).NPN.readString();
+          localFinderMedia.cover_url_token = ((f.a.a.a.a)localObject1).OmT.readString();
           AppMethodBeat.o(169005);
           return 0;
         }
-        paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
+        paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
         i = paramVarArgs.size();
         paramInt = 0;
         while (paramInt < i)
         {
           localObject2 = (byte[])paramVarArgs.get(paramInt);
-          localObject1 = new apb();
+          localObject1 = new apo();
           localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-          for (bool = true; bool; bool = ((apb)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, com.tencent.mm.bx.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-          localFinderMedia.codec_info = ((apb)localObject1);
+          for (bool = true; bool; bool = ((apo)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+          localFinderMedia.codec_info = ((apo)localObject1);
           paramInt += 1;
         }
         AppMethodBeat.o(169005);
@@ -238,7 +238,7 @@ public class FinderMedia
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.FinderMedia
  * JD-Core Version:    0.7.0.1
  */

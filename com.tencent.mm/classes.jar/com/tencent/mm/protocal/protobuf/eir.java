@@ -3,41 +3,41 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class eir
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public int HTh;
-  public boolean HTi;
-  public boolean HTj;
+  public boolean IlR;
+  public boolean IlS;
+  public int IlT;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(123713);
+    AppMethodBeat.i(50120);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aS(1, this.HTh);
-      paramVarArgs.bt(2, this.HTi);
-      paramVarArgs.bt(3, this.HTj);
-      AppMethodBeat.o(123713);
+      paramVarArgs.bC(1, this.IlR);
+      paramVarArgs.bC(2, this.IlS);
+      paramVarArgs.aS(3, this.IlT);
+      AppMethodBeat.o(50120);
       return 0;
     }
     if (paramInt == 1)
     {
-      paramInt = f.a.a.b.b.a.bz(1, this.HTh);
-      int i = f.a.a.b.b.a.alV(2);
-      int j = f.a.a.b.b.a.alV(3);
-      AppMethodBeat.o(123713);
+      paramInt = f.a.a.b.b.a.amF(1);
+      int i = f.a.a.b.b.a.amF(2);
+      int j = f.a.a.b.b.a.bz(3, this.IlT);
+      AppMethodBeat.o(50120);
       return paramInt + 0 + i + j;
     }
     if (paramInt == 2)
     {
       paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gxE();
+          paramVarArgs.gCg();
         }
       }
-      AppMethodBeat.o(123713);
+      AppMethodBeat.o(50120);
       return 0;
     }
     if (paramInt == 3)
@@ -47,22 +47,22 @@ public final class eir
       switch (((Integer)paramVarArgs[2]).intValue())
       {
       default: 
-        AppMethodBeat.o(123713);
+        AppMethodBeat.o(50120);
         return -1;
       case 1: 
-        localeir.HTh = locala.NPN.zc();
-        AppMethodBeat.o(123713);
+        localeir.IlR = locala.OmT.gvY();
+        AppMethodBeat.o(50120);
         return 0;
       case 2: 
-        localeir.HTi = locala.NPN.grw();
-        AppMethodBeat.o(123713);
+        localeir.IlS = locala.OmT.gvY();
+        AppMethodBeat.o(50120);
         return 0;
       }
-      localeir.HTj = locala.NPN.grw();
-      AppMethodBeat.o(123713);
+      localeir.IlT = locala.OmT.zc();
+      AppMethodBeat.o(50120);
       return 0;
     }
-    AppMethodBeat.o(123713);
+    AppMethodBeat.o(50120);
     return -1;
   }
 }

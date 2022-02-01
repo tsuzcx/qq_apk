@@ -10,35 +10,35 @@ import android.view.View.OnFocusChangeListener;
 import android.widget.EditText;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.widget.input.c.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aq;
 
 public final class z
   implements View.OnFocusChangeListener
 {
-  final ap jwD;
-  boolean ngd;
-  public b nge;
-  final Runnable ngf;
+  final aq jzz;
+  boolean nll;
+  public b nlm;
+  final Runnable nln;
   
   public z(EditText paramEditText)
   {
     AppMethodBeat.i(136572);
-    this.ngd = false;
-    this.ngf = new Runnable()
+    this.nll = false;
+    this.nln = new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(136567);
         if (z.a(z.this) != null) {
-          z.a(z.this).Dm();
+          z.a(z.this).Dp();
         }
         AppMethodBeat.o(136567);
       }
     };
-    this.ngd = paramEditText.isFocused();
+    this.nll = paramEditText.isFocused();
     paramEditText.setOnFocusChangeListener(this);
-    this.jwD = new ap(Looper.getMainLooper());
+    this.jzz = new aq(Looper.getMainLooper());
     AppMethodBeat.o(136572);
   }
   
@@ -50,8 +50,8 @@ public final class z
       public final void onSpanAdded(Spannable paramAnonymousSpannable, Object paramAnonymousObject, int paramAnonymousInt1, int paramAnonymousInt2)
       {
         AppMethodBeat.i(136568);
-        if (aj.cN(paramAnonymousObject)) {
-          ad.d("MicroMsg.EditTextComposingTextDismissedObserver", "[bindInput] onSpanAdded %s, %s", new Object[] { paramAnonymousSpannable, paramAnonymousObject.getClass().getSimpleName() });
+        if (aj.cO(paramAnonymousObject)) {
+          ae.d("MicroMsg.EditTextComposingTextDismissedObserver", "[bindInput] onSpanAdded %s, %s", new Object[] { paramAnonymousSpannable, paramAnonymousObject.getClass().getSimpleName() });
         }
         AppMethodBeat.o(136568);
       }
@@ -59,8 +59,8 @@ public final class z
       public final void onSpanChanged(Spannable paramAnonymousSpannable, Object paramAnonymousObject, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3, int paramAnonymousInt4)
       {
         AppMethodBeat.i(136570);
-        if (aj.cN(paramAnonymousObject)) {
-          ad.d("MicroMsg.EditTextComposingTextDismissedObserver", "[bindInput] onSpanChanged %s, %s", new Object[] { paramAnonymousSpannable, paramAnonymousObject.getClass().getSimpleName() });
+        if (aj.cO(paramAnonymousObject)) {
+          ae.d("MicroMsg.EditTextComposingTextDismissedObserver", "[bindInput] onSpanChanged %s, %s", new Object[] { paramAnonymousSpannable, paramAnonymousObject.getClass().getSimpleName() });
         }
         AppMethodBeat.o(136570);
       }
@@ -68,9 +68,9 @@ public final class z
       public final void onSpanRemoved(Spannable paramAnonymousSpannable, Object paramAnonymousObject, int paramAnonymousInt1, int paramAnonymousInt2)
       {
         AppMethodBeat.i(136569);
-        if (aj.cN(paramAnonymousObject))
+        if (aj.cO(paramAnonymousObject))
         {
-          ad.d("MicroMsg.EditTextComposingTextDismissedObserver", "[bindInput] onSpanRemoved %s, %s", new Object[] { paramAnonymousSpannable, paramAnonymousObject.getClass().getSimpleName() });
+          ae.d("MicroMsg.EditTextComposingTextDismissedObserver", "[bindInput] onSpanRemoved %s, %s", new Object[] { paramAnonymousSpannable, paramAnonymousObject.getClass().getSimpleName() });
           z.c(z.this).removeCallbacks(z.b(z.this));
           z.c(z.this).postDelayed(z.b(z.this), 100L);
         }
@@ -97,9 +97,9 @@ public final class z
   public final void onFocusChange(View paramView, boolean paramBoolean)
   {
     AppMethodBeat.i(136574);
-    this.ngd = paramBoolean;
+    this.nll = paramBoolean;
     if (!paramBoolean) {
-      this.jwD.removeCallbacks(this.ngf);
+      this.jzz.removeCallbacks(this.nln);
     }
     AppMethodBeat.o(136574);
   }

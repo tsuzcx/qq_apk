@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.appbrand.jsapi.file;
 
 import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.z.d;
+import com.tencent.mm.plugin.appbrand.y.d;
 import java.math.BigInteger;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
@@ -14,24 +14,24 @@ abstract interface h
 {
   public static final Charset UTF_8 = Charset.forName("UTF-8");
   
-  public abstract ByteBuffer PC(String paramString);
+  public abstract ByteBuffer Qk(String paramString);
   
   public abstract String n(ByteBuffer paramByteBuffer);
   
   public static final class a
   {
-    static final Map<String, h> kMz;
+    static final Map<String, h> kPP;
     
     static
     {
       AppMethodBeat.i(128865);
       Object localObject = new HashMap();
-      kMz = (Map)localObject;
+      kPP = (Map)localObject;
       ((Map)localObject).put("ascii", new h()
       {
         private final Charset yR;
         
-        public final ByteBuffer PC(String paramAnonymousString)
+        public final ByteBuffer Qk(String paramAnonymousString)
         {
           AppMethodBeat.i(128851);
           paramAnonymousString = ByteBuffer.wrap(paramAnonymousString.getBytes(this.yR));
@@ -47,9 +47,9 @@ abstract interface h
           return paramAnonymousByteBuffer;
         }
       });
-      kMz.put("base64", new h()
+      kPP.put("base64", new h()
       {
-        public final ByteBuffer PC(String paramAnonymousString)
+        public final ByteBuffer Qk(String paramAnonymousString)
         {
           AppMethodBeat.i(128853);
           paramAnonymousString = ByteBuffer.wrap(Base64.decode(paramAnonymousString.getBytes(UTF_8), 2));
@@ -65,9 +65,9 @@ abstract interface h
           return paramAnonymousByteBuffer;
         }
       });
-      kMz.put("hex", new h()
+      kPP.put("hex", new h()
       {
-        public final ByteBuffer PC(String paramAnonymousString)
+        public final ByteBuffer Qk(String paramAnonymousString)
         {
           AppMethodBeat.i(128855);
           paramAnonymousString = ByteBuffer.wrap(new BigInteger(paramAnonymousString, 16).toByteArray());
@@ -85,10 +85,10 @@ abstract interface h
       });
       localObject = new h()
       {
-        public final ByteBuffer PC(String paramAnonymousString)
+        public final ByteBuffer Qk(String paramAnonymousString)
         {
           AppMethodBeat.i(128857);
-          paramAnonymousString = ByteBuffer.wrap(paramAnonymousString.getBytes(this.kMA)).order(ByteOrder.LITTLE_ENDIAN);
+          paramAnonymousString = ByteBuffer.wrap(paramAnonymousString.getBytes(this.kPQ)).order(ByteOrder.LITTLE_ENDIAN);
           AppMethodBeat.o(128857);
           return paramAnonymousString;
         }
@@ -97,19 +97,19 @@ abstract interface h
         {
           AppMethodBeat.i(128856);
           paramAnonymousByteBuffer.order(ByteOrder.LITTLE_ENDIAN);
-          paramAnonymousByteBuffer = new String(d.p(paramAnonymousByteBuffer), this.kMA);
+          paramAnonymousByteBuffer = new String(d.p(paramAnonymousByteBuffer), this.kPQ);
           AppMethodBeat.o(128856);
           return paramAnonymousByteBuffer;
         }
       };
-      kMz.put("ucs2", localObject);
-      kMz.put("ucs-2", localObject);
+      kPP.put("ucs2", localObject);
+      kPP.put("ucs-2", localObject);
       localObject = new h()
       {
-        public final ByteBuffer PC(String paramAnonymousString)
+        public final ByteBuffer Qk(String paramAnonymousString)
         {
           AppMethodBeat.i(128859);
-          paramAnonymousString = ByteBuffer.wrap(paramAnonymousString.getBytes(this.kMB)).order(ByteOrder.LITTLE_ENDIAN);
+          paramAnonymousString = ByteBuffer.wrap(paramAnonymousString.getBytes(this.kPR)).order(ByteOrder.LITTLE_ENDIAN);
           AppMethodBeat.o(128859);
           return paramAnonymousString;
         }
@@ -118,16 +118,16 @@ abstract interface h
         {
           AppMethodBeat.i(128858);
           paramAnonymousByteBuffer.order(ByteOrder.LITTLE_ENDIAN);
-          paramAnonymousByteBuffer = new String(d.p(paramAnonymousByteBuffer), this.kMB);
+          paramAnonymousByteBuffer = new String(d.p(paramAnonymousByteBuffer), this.kPR);
           AppMethodBeat.o(128858);
           return paramAnonymousByteBuffer;
         }
       };
-      kMz.put("utf16le", localObject);
-      kMz.put("utf-16le", localObject);
+      kPP.put("utf16le", localObject);
+      kPP.put("utf-16le", localObject);
       localObject = new h()
       {
-        public final ByteBuffer PC(String paramAnonymousString)
+        public final ByteBuffer Qk(String paramAnonymousString)
         {
           AppMethodBeat.i(128861);
           paramAnonymousString = ByteBuffer.wrap(paramAnonymousString.getBytes(UTF_8));
@@ -143,16 +143,16 @@ abstract interface h
           return paramAnonymousByteBuffer;
         }
       };
-      kMz.put("utf8", localObject);
-      kMz.put("utf-8", localObject);
+      kPP.put("utf8", localObject);
+      kPP.put("utf-8", localObject);
       localObject = new h()
       {
-        private final Charset kMC;
+        private final Charset kPS;
         
-        public final ByteBuffer PC(String paramAnonymousString)
+        public final ByteBuffer Qk(String paramAnonymousString)
         {
           AppMethodBeat.i(128864);
-          paramAnonymousString = ByteBuffer.wrap(paramAnonymousString.getBytes(this.kMC));
+          paramAnonymousString = ByteBuffer.wrap(paramAnonymousString.getBytes(this.kPS));
           AppMethodBeat.o(128864);
           return paramAnonymousString;
         }
@@ -160,13 +160,13 @@ abstract interface h
         public final String n(ByteBuffer paramAnonymousByteBuffer)
         {
           AppMethodBeat.i(128863);
-          paramAnonymousByteBuffer = new String(d.p(paramAnonymousByteBuffer), this.kMC);
+          paramAnonymousByteBuffer = new String(d.p(paramAnonymousByteBuffer), this.kPS);
           AppMethodBeat.o(128863);
           return paramAnonymousByteBuffer;
         }
       };
-      kMz.put("latin1", localObject);
-      kMz.put("binary", localObject);
+      kPP.put("latin1", localObject);
+      kPP.put("binary", localObject);
       AppMethodBeat.o(128865);
     }
     
@@ -175,7 +175,7 @@ abstract interface h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.file.h
  * JD-Core Version:    0.7.0.1
  */

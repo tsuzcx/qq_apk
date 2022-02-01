@@ -11,38 +11,38 @@ import java.util.List;
 
 public class h
 {
-  Context a;
-  private final String b;
+  private final String a;
+  private Context b;
   
   public h(Context paramContext)
   {
     AppMethodBeat.i(180795);
-    this.b = h.class.getSimpleName();
-    this.a = paramContext;
+    this.a = h.class.getSimpleName();
+    this.b = paramContext;
     AppMethodBeat.o(180795);
   }
   
   private int a(Context paramContext)
   {
     AppMethodBeat.i(180797);
-    Object localObject1 = y.a(y.b(paramContext, u.q, "default"));
+    Object localObject1 = x.a(x.b(paramContext, t.q, "default"));
     if (((List)localObject1).isEmpty())
     {
       AppMethodBeat.o(180797);
       return 0;
     }
-    Object localObject2 = this.a;
+    Object localObject2 = this.b;
     paramContext = new ArrayList();
     new ArrayList();
     new ArrayList();
-    Object localObject3 = y.b(y.a((Context)localObject2, y.a));
+    Object localObject3 = x.b(x.a((Context)localObject2, x.a));
     if (localObject3 != null)
     {
       paramContext.addAll((Collection)localObject3);
-      if (z.e == 1)
+      if (y.e == 1)
       {
-        i = t.a(this.a).a;
-        localObject2 = y.b(y.a((Context)localObject2, y.c + File.separator + u.F[i]));
+        i = s.a(this.b).a();
+        localObject2 = x.b(x.a((Context)localObject2, x.c + File.separator + t.F[i]));
         if (localObject2 != null) {
           paramContext.addAll((Collection)localObject2);
         }
@@ -50,13 +50,13 @@ public class h
     }
     if (paramContext.size() == 0)
     {
-      g.a(this.a).a("DLC", "localComp file error");
+      g.a(this.b).a("DLC", "localComp file error");
       AppMethodBeat.o(180797);
       return 1;
     }
-    localObject2 = y.b(this.a, u.v, "preference_default");
-    localObject3 = y.a((String)localObject2);
-    if ((!((String)localObject2).equals("preference_default")) && (!((List)localObject3).isEmpty()) && (y.a((List)localObject1, (List)localObject3)))
+    localObject2 = x.b(this.b, t.v, "preference_default");
+    localObject3 = x.a((String)localObject2);
+    if ((!((String)localObject2).equals("preference_default")) && (!((List)localObject3).isEmpty()) && (x.a((List)localObject1, (List)localObject3)))
     {
       AppMethodBeat.o(180797);
       return 2;
@@ -98,7 +98,7 @@ public class h
   private void a(String paramString)
   {
     AppMethodBeat.i(180798);
-    paramString = new File(y.b(this.a, paramString));
+    paramString = new File(x.b(this.b, paramString));
     if (paramString.exists()) {
       paramString.delete();
     }
@@ -108,12 +108,32 @@ public class h
   public final boolean a()
   {
     AppMethodBeat.i(180796);
-    Object localObject1 = this.a;
-    int i = y.d((Context)localObject1);
-    if (i <= 3) {
-      y.a((Context)localObject1, u.A, "default");
+    s.a(this.b);
+    x.a(this.b, x.a);
+    x.a(this.b, x.b);
+    x.a(this.b, x.c);
+    String str1 = t.k;
+    String str2 = x.b(this.b, t.C, "");
+    g.a(this.b).a("DCV", str2 + "_" + str1);
+    if (!str1.equals(str2))
+    {
+      boolean bool = l.a(this.b, str1);
+      AppMethodBeat.o(180796);
+      return bool;
     }
-    Object localObject3 = y.a(y.b((Context)localObject1, u.q, "default"));
+    AppMethodBeat.o(180796);
+    return true;
+  }
+  
+  public final boolean b()
+  {
+    AppMethodBeat.i(224079);
+    Object localObject1 = this.b;
+    int i = x.d((Context)localObject1);
+    if (i <= 3) {
+      x.a((Context)localObject1, t.A, "default");
+    }
+    Object localObject3 = x.a(x.b((Context)localObject1, t.q, "default"));
     if (((List)localObject3).isEmpty()) {
       i = 0;
     }
@@ -127,20 +147,20 @@ public class h
     {
       if (i == 0)
       {
-        AppMethodBeat.o(180796);
+        AppMethodBeat.o(224079);
         return false;
-        if (z.e == -1) {
-          z.e = y.b((List)localObject3);
+        if (y.e == -1) {
+          y.e = x.b((List)localObject3);
         }
-        localObject1 = y.b((Context)localObject1, u.B, "default");
+        localObject1 = x.b((Context)localObject1, t.B, "default");
         if ((localObject1 == null) || (((String)localObject1).equals("default")))
         {
           i = 1;
         }
         else
         {
-          localObject5 = y.a((String)localObject1);
-          if (y.a((List)localObject5, (List)localObject3))
+          localObject5 = x.a((String)localObject1);
+          if (x.a((List)localObject5, (List)localObject3))
           {
             if (i <= 3) {
               i = 2;
@@ -150,14 +170,14 @@ public class h
           }
           else if (i <= 3)
           {
-            localObject2 = this.a;
-            if ((y.b((Context)localObject2, u.u, "default").equals(u.k)) && (!((List)localObject5).isEmpty()))
+            localObject2 = this.b;
+            if ((x.b((Context)localObject2, t.u, "default").equals(t.k)) && (!((List)localObject5).isEmpty()))
             {
-              localObject1 = y.b((Context)localObject2, u.v, "preference_default");
-              localObject4 = y.a((String)localObject1);
-              if ((((String)localObject1).equals("preference_default")) || (((List)localObject4).isEmpty()) || (!y.a((List)localObject5, (List)localObject4)))
+              localObject1 = x.b((Context)localObject2, t.v, "preference_default");
+              localObject4 = x.a((String)localObject1);
+              if ((((String)localObject1).equals("preference_default")) || (((List)localObject4).isEmpty()) || (!x.a((List)localObject5, (List)localObject4)))
               {
-                j = t.a((Context)localObject2).a;
+                j = s.a((Context)localObject2).a();
                 localObject4 = new ArrayList();
                 localArrayList1 = new ArrayList();
                 localArrayList2 = new ArrayList();
@@ -167,23 +187,23 @@ public class h
                 while (localIterator.hasNext())
                 {
                   p localp = (p)localIterator.next();
-                  localObject1 = y.a(localp.a, (List)localObject3);
+                  localObject1 = x.a(localp.a, (List)localObject3);
                   if (localObject1 != null)
                   {
                     String str1;
                     String str2;
                     String str3;
-                    if ((y.a(localp.a)) && (localp.a == j))
+                    if ((x.a(localp.a)) && (localp.a == j))
                     {
-                      str1 = y.e + File.separator + u.F[j] + File.separator + localp.c;
-                      str2 = y.c + File.separator + u.F[j] + File.separator + localp.c;
-                      str3 = y.c + File.separator + u.F[j] + File.separator + ((p)localObject1).c;
-                      str1 = y.b((Context)localObject2, str1);
-                      str2 = y.b((Context)localObject2, str2);
+                      str1 = x.e + File.separator + t.F[j] + File.separator + localp.c;
+                      str2 = x.c + File.separator + t.F[j] + File.separator + localp.c;
+                      str3 = x.c + File.separator + t.F[j] + File.separator + ((p)localObject1).c;
+                      str1 = x.b((Context)localObject2, str1);
+                      str2 = x.b((Context)localObject2, str2);
                       if (((p)localObject1).c.equals(localp.c)) {}
-                      for (localObject1 = null;; localObject1 = y.b((Context)localObject2, str3))
+                      for (localObject1 = null;; localObject1 = x.b((Context)localObject2, str3))
                       {
-                        if (!y.a((Context)localObject2, str1, str2, false, false)) {
+                        if (!x.a((Context)localObject2, str1, str2, false, false)) {
                           break label557;
                         }
                         localArrayList2.add(new Pair(str2, localObject1));
@@ -195,18 +215,18 @@ public class h
                     }
                     else
                     {
-                      if (y.a(localp.a)) {
+                      if (x.a(localp.a)) {
                         break label1134;
                       }
-                      str1 = y.d + File.separator + localp.c;
-                      str2 = y.a + File.separator + localp.c;
-                      str3 = y.a + File.separator + ((p)localObject1).c;
-                      str1 = y.b((Context)localObject2, str1);
-                      str2 = y.b((Context)localObject2, str2);
+                      str1 = x.d + File.separator + localp.c;
+                      str2 = x.a + File.separator + localp.c;
+                      str3 = x.a + File.separator + ((p)localObject1).c;
+                      str1 = x.b((Context)localObject2, str1);
+                      str2 = x.b((Context)localObject2, str2);
                       if (((p)localObject1).c.equals(localp.c)) {}
-                      for (localObject1 = null;; localObject1 = y.b((Context)localObject2, str3))
+                      for (localObject1 = null;; localObject1 = x.b((Context)localObject2, str3))
                       {
-                        if (!y.a((Context)localObject2, str1, str2, false, false)) {
+                        if (!x.a((Context)localObject2, str1, str2, false, false)) {
                           break label757;
                         }
                         localArrayList2.add(new Pair(str2, localObject1));
@@ -248,12 +268,12 @@ public class h
         while (((Iterator)localObject1).hasNext())
         {
           localObject3 = (p)((Iterator)localObject1).next();
-          if (y.a(((p)localObject3).a, (List)localObject4) == null) {
+          if (x.a(((p)localObject3).a, (List)localObject4) == null) {
             localArrayList1.add(localObject3);
           }
         }
-        localObject1 = y.a(localArrayList1);
-        y.a((Context)localObject2, u.q, (String)localObject1);
+        localObject1 = x.a(localArrayList1);
+        x.a((Context)localObject2, t.q, (String)localObject1);
         g.a((Context)localObject2).a("DBC", (String)localObject1);
       }
       for (i = 1;; i = 0)
@@ -267,10 +287,10 @@ public class h
         while (((Iterator)localObject1).hasNext())
         {
           localObject2 = (p)((Iterator)localObject1).next();
-          if ((y.a(((p)localObject2).a)) && (((p)localObject2).a == j)) {
-            a(y.c + File.separator + u.F[j] + File.separator + ((p)localObject2).c);
+          if ((x.a(((p)localObject2).a)) && (((p)localObject2).a == j)) {
+            a(x.c + File.separator + t.F[j] + File.separator + ((p)localObject2).c);
           } else {
-            a(y.a + File.separator + ((p)localObject2).c);
+            a(x.a + File.separator + ((p)localObject2).c);
           }
         }
       }
@@ -278,13 +298,13 @@ public class h
       break;
       i = 4;
       break;
-      i = a(this.a);
+      i = a(this.b);
       if ((i >= 0) && (i < 4))
       {
-        AppMethodBeat.o(180796);
+        AppMethodBeat.o(224079);
         return false;
       }
-      AppMethodBeat.o(180796);
+      AppMethodBeat.o(224079);
       return true;
     }
   }

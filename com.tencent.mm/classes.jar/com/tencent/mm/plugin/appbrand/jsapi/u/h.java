@@ -2,21 +2,20 @@ package com.tencent.mm.plugin.appbrand.jsapi.u;
 
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.bx.a;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.bw.a;
 import com.tencent.mm.ipcinvoker.wx_extension.IPCRunCgi;
 import com.tencent.mm.ipcinvoker.wx_extension.IPCRunCgi.a;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
 import com.tencent.mm.plugin.appbrand.a.c.a;
 import com.tencent.mm.plugin.appbrand.d;
-import com.tencent.mm.plugin.appbrand.o;
 import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.protocal.protobuf.cwr;
-import com.tencent.mm.protocal.protobuf.cws;
-import com.tencent.mm.protocal.protobuf.eht;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.av;
-import com.tencent.mm.sdk.platformtools.av.a;
+import com.tencent.mm.protocal.protobuf.cxl;
+import com.tencent.mm.protocal.protobuf.cxm;
+import com.tencent.mm.protocal.protobuf.ejk;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aw;
+import com.tencent.mm.sdk.platformtools.aw.a;
 import d.a.j;
 import d.g.a.m;
 import d.g.b.q;
@@ -36,23 +35,23 @@ import java.util.WeakHashMap;
 import java.util.concurrent.TimeUnit;
 import org.json.JSONArray;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/report/RealtimeReportQueue;", "", "()V", "PER_SLICE_SIZE_LIMIT", "", "REPORT_PERIOD_INTERVAL", "REQUEST_DIAGNOSE_ID", "REQUEST_DIAGNOSE_KEY_BATCH_COUNT", "REQUEST_DIAGNOSE_KEY_BATCH_SUCCESS_COUNT", "REQUEST_DIAGNOSE_KEY_DEQUEUE", "REQUEST_DIAGNOSE_KEY_ENQUEUE", "REQUEST_DIAGNOSE_KEY_UPLOADED", "TAG", "", "attachedRuntimes", "Ljava/util/HashSet;", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntimeWC;", "Lkotlin/collections/HashSet;", "bufferQueue", "Lcom/tencent/mm/plugin/appbrand/jsapi/report/RealtimeReportQueue$BufferQueueAIO;", "periodTimer", "Lcom/tencent/mm/sdk/platformtools/MTimerHandler;", "detachCaller", "", "component", "Lcom/tencent/mm/plugin/appbrand/AppBrandComponentWxaShared;", "doCgi", "queue", "", "Lcom/tencent/mm/plugin/appbrand/jsapi/report/RealtimeReportQueue$Entry;", "reason", "Lcom/tencent/mm/plugin/appbrand/jsapi/report/RealtimeReportQueue$CGIReason;", "enqueueReportData", "id", "", "type", "content", "priority", "Lcom/tencent/mm/plugin/appbrand/jsapi/report/JsApiOperateRealtimeReport$Priority;", "periodReport", "triggerReport", "BufferQueue", "BufferQueueAIO", "CGIReason", "Entry", "IBufferQueue", "plugin-appbrand-integration_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsapi/report/RealtimeReportQueue;", "", "()V", "PER_SLICE_SIZE_LIMIT", "", "REPORT_PERIOD_INTERVAL", "REQUEST_DIAGNOSE_ID", "REQUEST_DIAGNOSE_KEY_BATCH_COUNT", "REQUEST_DIAGNOSE_KEY_BATCH_SUCCESS_COUNT", "REQUEST_DIAGNOSE_KEY_DEQUEUE", "REQUEST_DIAGNOSE_KEY_ENQUEUE", "REQUEST_DIAGNOSE_KEY_UPLOADED", "TAG", "", "attachedRuntimes", "Ljava/util/HashSet;", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntimeWC;", "Lkotlin/collections/HashSet;", "bufferQueue", "Lcom/tencent/mm/plugin/appbrand/jsapi/report/RealtimeReportQueue$BufferQueueAIO;", "periodTimer", "Lcom/tencent/mm/sdk/platformtools/MTimerHandler;", "detachCaller", "", "component", "Lcom/tencent/mm/plugin/appbrand/AppBrandComponentWxaShared;", "doCgi", "queue", "", "Lcom/tencent/mm/plugin/appbrand/jsapi/report/RealtimeReportQueue$Entry;", "reason", "Lcom/tencent/mm/plugin/appbrand/jsapi/report/RealtimeReportQueue$CGIReason;", "enqueueReportData", "id", "", "type", "content", "priority", "Lcom/tencent/mm/plugin/appbrand/jsapi/report/JsApiOperateRealtimeReport$Priority;", "periodReport", "triggerReport", "BufferQueue", "BufferQueueAIO", "CGIReason", "Entry", "IBufferQueue", "plugin-appbrand-integration_release"})
 final class h
 {
-  private static final long lfS;
-  private static final av lfT;
-  private static final HashSet<o> lfU;
-  private static final b lfV;
-  public static final h lfW;
+  private static final long ljE;
+  private static final aw ljF;
+  private static final HashSet<com.tencent.mm.plugin.appbrand.p> ljG;
+  private static final b ljH;
+  public static final h ljI;
   
   static
   {
     AppMethodBeat.i(50694);
-    lfW = new h();
-    lfS = TimeUnit.MINUTES.toMillis(5L);
-    lfT = new av(Looper.getMainLooper(), (av.a)g.lgl, true);
-    lfU = new HashSet();
-    lfV = new b();
+    ljI = new h();
+    ljE = TimeUnit.MINUTES.toMillis(5L);
+    ljF = new aw(Looper.getMainLooper(), (aw.a)g.ljX, true);
+    ljG = new HashSet();
+    ljH = new b();
     AppMethodBeat.o(50694);
   }
   
@@ -63,9 +62,9 @@ final class h
     d.g.b.p.h(paramString, "content");
     d.g.b.p.h(paramc, "priority");
     AppBrandRuntime localAppBrandRuntime;
-    synchronized (lfU)
+    synchronized (ljG)
     {
-      localObject = lfU;
+      localObject = ljG;
       localAppBrandRuntime = paramd.getRuntime();
       if (localAppBrandRuntime == null)
       {
@@ -74,20 +73,20 @@ final class h
         throw paramd;
       }
     }
-    boolean bool = ((HashSet)localObject).add((o)localAppBrandRuntime);
-    if ((bool) && (lfU.size() == 1)) {
-      lfT.CX(lfS);
+    boolean bool = ((HashSet)localObject).add((com.tencent.mm.plugin.appbrand.p)localAppBrandRuntime);
+    if ((bool) && (ljG.size() == 1)) {
+      ljF.Dv(ljE);
     }
     if (bool)
     {
       localObject = paramd.getRuntime();
       d.g.b.p.g(localObject, "component.runtime");
-      ((AppBrandRuntime)localObject).aVQ().a((c.a)new f(paramd));
+      ((AppBrandRuntime)localObject).aWq().a((c.a)new f(paramd));
     }
-    Object localObject = z.MKo;
-    g.yhR.A(1074L, 0L);
-    lfV.a(new d(paramInt1, paramInt2, paramString, paramc, (com.tencent.mm.plugin.appbrand.jsapi.c)paramd));
-    paramd = lfV.lgc;
+    Object localObject = z.Nhr;
+    g.yxI.A(1074L, 0L);
+    ljH.a(new d(paramInt1, paramInt2, paramString, paramc, (com.tencent.mm.plugin.appbrand.jsapi.c)paramd));
+    paramd = ljH.ljO;
     paramString = (Collection)new ArrayList(paramd.length);
     paramInt2 = paramd.length;
     paramInt1 = 0;
@@ -97,7 +96,7 @@ final class h
       paramInt1 += 1;
     }
     if (j.y((Iterable)paramString) >= 65536L) {
-      a(lfV.bmu(), c.lge);
+      a(ljH.bnd(), c.ljQ);
     }
     AppMethodBeat.o(50691);
   }
@@ -105,15 +104,15 @@ final class h
   private static void a(c paramc)
   {
     AppMethodBeat.i(50692);
-    a(lfV.bmu(), paramc);
+    a(ljH.bnd(), paramc);
     AppMethodBeat.o(50692);
   }
   
   private static void a(List<d> paramList, c paramc)
   {
     AppMethodBeat.i(50693);
-    lfT.CX(lfS);
-    ad.i("MicroMsg.AppBrand.JsApiOperateRealtimeReport.RealtimeReportQueue", "doCgi queue.size=" + paramList.size() + ", reason=" + paramc.name());
+    ljF.Dv(ljE);
+    ae.i("MicroMsg.AppBrand.JsApiOperateRealtimeReport.RealtimeReportQueue", "doCgi queue.size=" + paramList.size() + ", reason=" + paramc.name());
     paramc = (Collection)paramList;
     if ((paramc == null) || (paramc.isEmpty())) {}
     for (int i = 1; i != 0; i = 0)
@@ -121,52 +120,52 @@ final class h
       AppMethodBeat.o(50693);
       return;
     }
-    g.yhR.n(1074L, 1L, paramList.size());
-    g.yhR.A(1074L, 4L);
+    g.yxI.n(1074L, 1L, paramList.size());
+    g.yxI.A(1074L, 4L);
     paramc = new b.a();
-    paramc.Dl("/cgi-bin/mmbiz-bin/wxartrappsvr/route");
-    paramc.oP(2946);
-    cwr localcwr = new cwr();
+    paramc.DN("/cgi-bin/mmbiz-bin/wxartrappsvr/route");
+    paramc.oS(2946);
+    cxl localcxl = new cxl();
     Iterator localIterator = ((Iterable)paramList).iterator();
     while (localIterator.hasNext())
     {
       d locald = (d)localIterator.next();
-      LinkedList localLinkedList = localcwr.HoA;
-      eht localeht = new eht();
-      localeht.type = locald.type;
-      localeht.GbV = com.tencent.mm.bx.b.aNZ(locald.content);
-      localeht.duW = locald.appId;
-      localLinkedList.add(localeht);
+      LinkedList localLinkedList = localcxl.HIc;
+      ejk localejk = new ejk();
+      localejk.type = locald.type;
+      localejk.GuC = com.tencent.mm.bw.b.aPw(locald.content);
+      localejk.dwb = locald.appId;
+      localLinkedList.add(localejk);
     }
-    paramc.c((a)localcwr);
-    paramc.d((a)new cws());
-    IPCRunCgi.a(paramc.aDC(), (IPCRunCgi.a)new e(paramList));
+    paramc.c((a)localcxl);
+    paramc.d((a)new cxm());
+    IPCRunCgi.a(paramc.aDS(), (IPCRunCgi.a)new e(paramList));
     AppMethodBeat.o(50693);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/report/RealtimeReportQueue$BufferQueue;", "Lcom/tencent/mm/plugin/appbrand/jsapi/report/RealtimeReportQueue$IBufferQueue;", "priority", "Lcom/tencent/mm/plugin/appbrand/jsapi/report/JsApiOperateRealtimeReport$Priority;", "requestTryCountLimit", "", "(Lcom/tencent/mm/plugin/appbrand/jsapi/report/JsApiOperateRealtimeReport$Priority;I)V", "bytesCount", "", "getPriority", "()Lcom/tencent/mm/plugin/appbrand/jsapi/report/JsApiOperateRealtimeReport$Priority;", "queueImpl", "Ljava/util/LinkedList;", "Lcom/tencent/mm/plugin/appbrand/jsapi/report/RealtimeReportQueue$Entry;", "getRequestTryCountLimit", "()I", "poll", "", "_bytes", "push", "", "entry", "size", "Companion", "plugin-appbrand-integration_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsapi/report/RealtimeReportQueue$BufferQueue;", "Lcom/tencent/mm/plugin/appbrand/jsapi/report/RealtimeReportQueue$IBufferQueue;", "priority", "Lcom/tencent/mm/plugin/appbrand/jsapi/report/JsApiOperateRealtimeReport$Priority;", "requestTryCountLimit", "", "(Lcom/tencent/mm/plugin/appbrand/jsapi/report/JsApiOperateRealtimeReport$Priority;I)V", "bytesCount", "", "getPriority", "()Lcom/tencent/mm/plugin/appbrand/jsapi/report/JsApiOperateRealtimeReport$Priority;", "queueImpl", "Ljava/util/LinkedList;", "Lcom/tencent/mm/plugin/appbrand/jsapi/report/RealtimeReportQueue$Entry;", "getRequestTryCountLimit", "()I", "poll", "", "_bytes", "push", "", "entry", "size", "Companion", "plugin-appbrand-integration_release"})
   static final class a
   {
     @Deprecated
-    public static final a lgb;
-    private final LinkedList<h.d> lfX;
-    private long lfY;
-    final c.c lfZ;
-    private final int lga;
+    public static final a ljN;
+    private final LinkedList<h.d> ljJ;
+    private long ljK;
+    final c.c ljL;
+    private final int ljM;
     
     static
     {
       AppMethodBeat.i(50676);
-      lgb = new a((byte)0);
+      ljN = new a((byte)0);
       AppMethodBeat.o(50676);
     }
     
     public a(c.c paramc, int paramInt)
     {
       AppMethodBeat.i(50675);
-      this.lfZ = paramc;
-      this.lga = paramInt;
-      this.lfX = new LinkedList();
+      this.ljL = paramc;
+      this.ljM = paramInt;
+      this.ljJ = new LinkedList();
       AppMethodBeat.o(50675);
     }
     
@@ -174,86 +173,86 @@ final class h
     {
       AppMethodBeat.i(50673);
       d.g.b.p.h(paramd, "entry");
-      if (paramd.lgh > this.lga)
+      if (paramd.ljT > this.ljM)
       {
-        ad.e("MicroMsg.AppBrand.JsApiOperateRealtimeReport.RealtimeReportQueue.BufferQueue", "push reach TryCountLimit priority[" + this.lfZ.name() + "], entry[" + paramd.appId + ", " + paramd.id + ", " + paramd.type + ']');
+        ae.e("MicroMsg.AppBrand.JsApiOperateRealtimeReport.RealtimeReportQueue.BufferQueue", "push reach TryCountLimit priority[" + this.ljL.name() + "], entry[" + paramd.appId + ", " + paramd.id + ", " + paramd.type + ']');
         AppMethodBeat.o(50673);
         return false;
       }
-      synchronized (this.lfX)
+      synchronized (this.ljJ)
       {
-        this.lfX.addLast(paramd);
-        this.lfY += paramd.content.length();
-        paramd = z.MKo;
+        this.ljJ.addLast(paramd);
+        this.ljK += paramd.content.length();
+        paramd = z.Nhr;
         AppMethodBeat.o(50673);
         return true;
       }
     }
     
-    public final List<h.d> sP(long paramLong)
+    public final long size()
+    {
+      synchronized (this.ljJ)
+      {
+        long l = this.ljK;
+        return l;
+      }
+    }
+    
+    public final List<h.d> tc(long paramLong)
     {
       AppMethodBeat.i(50674);
       long l;
       for (;;)
       {
-        synchronized (this.lfX)
+        synchronized (this.ljJ)
         {
           Object localObject1;
-          if (this.lfX.isEmpty())
+          if (this.ljJ.isEmpty())
           {
-            localObject1 = (List)d.a.v.MKE;
+            localObject1 = (List)d.a.v.NhH;
             AppMethodBeat.o(50674);
             return localObject1;
           }
           if (paramLong < 0L)
           {
-            paramLong = ((h.d)this.lfX.peekFirst()).content.length();
+            paramLong = ((h.d)this.ljJ.peekFirst()).content.length();
             localObject1 = new LinkedList();
             l = paramLong;
-            if ((this.lfX.isEmpty()) || (l <= 0L)) {
+            if ((this.ljJ.isEmpty()) || (l <= 0L)) {
               break;
             }
-            Object localObject3 = this.lfX.pollFirst();
+            Object localObject3 = this.ljJ.pollFirst();
             h.d locald = (h.d)localObject3;
-            locald.lgh += 1;
+            locald.ljT += 1;
             l -= locald.content.length();
             ((LinkedList)localObject1).addLast(localObject3);
           }
         }
       }
-      this.lfY -= paramLong - l;
-      if (this.lfY < 0L)
+      this.ljK -= paramLong - l;
+      if (this.ljK < 0L)
       {
-        ad.e("MicroMsg.AppBrand.JsApiOperateRealtimeReport.RealtimeReportQueue.BufferQueue", "[" + this.lfZ.name() + "] poll(" + paramLong + ") final bytesCount becomes minus");
-        this.lfY = 0L;
+        ae.e("MicroMsg.AppBrand.JsApiOperateRealtimeReport.RealtimeReportQueue.BufferQueue", "[" + this.ljL.name() + "] poll(" + paramLong + ") final bytesCount becomes minus");
+        this.ljK = 0L;
       }
       List localList = (List)localObject2;
       AppMethodBeat.o(50674);
       return localList;
     }
     
-    public final long size()
-    {
-      synchronized (this.lfX)
-      {
-        long l = this.lfY;
-        return l;
-      }
-    }
-    
-    @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/report/RealtimeReportQueue$BufferQueue$Companion;", "", "()V", "TAG", "", "plugin-appbrand-integration_release"})
+    @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsapi/report/RealtimeReportQueue$BufferQueue$Companion;", "", "()V", "TAG", "", "plugin-appbrand-integration_release"})
     static final class a {}
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/report/RealtimeReportQueue$BufferQueueAIO;", "Lcom/tencent/mm/plugin/appbrand/jsapi/report/RealtimeReportQueue$IBufferQueue;", "()V", "typedQueues", "", "Lcom/tencent/mm/plugin/appbrand/jsapi/report/RealtimeReportQueue$BufferQueue;", "[Lcom/tencent/mm/plugin/appbrand/jsapi/report/RealtimeReportQueue$BufferQueue;", "poll", "", "Lcom/tencent/mm/plugin/appbrand/jsapi/report/RealtimeReportQueue$Entry;", "bytes", "", "push", "", "entry", "size", "plugin-appbrand-integration_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsapi/report/RealtimeReportQueue$BufferQueueAIO;", "Lcom/tencent/mm/plugin/appbrand/jsapi/report/RealtimeReportQueue$IBufferQueue;", "()V", "typedQueues", "", "Lcom/tencent/mm/plugin/appbrand/jsapi/report/RealtimeReportQueue$BufferQueue;", "[Lcom/tencent/mm/plugin/appbrand/jsapi/report/RealtimeReportQueue$BufferQueue;", "poll", "", "Lcom/tencent/mm/plugin/appbrand/jsapi/report/RealtimeReportQueue$Entry;", "bytes", "", "push", "", "entry", "size", "plugin-appbrand-integration_release"})
   static final class b
   {
-    final h.a[] lgc;
+    final h.a[] ljO;
     
     public b()
     {
       AppMethodBeat.i(50679);
-      this.lgc = new h.a[] { new h.a(c.c.lfO, 3), new h.a(c.c.lfP, 1) };
+      this.ljO = new h.a[] { new h.a(c.c.ljA, 3), new h.a(c.c.ljB, 1) };
       AppMethodBeat.o(50679);
     }
     
@@ -261,13 +260,13 @@ final class h
     {
       AppMethodBeat.i(50677);
       d.g.b.p.h(paramd, "entry");
-      h.a[] arrayOfa = this.lgc;
+      h.a[] arrayOfa = this.ljO;
       int j = arrayOfa.length;
       int i = 0;
       while (i < j)
       {
         h.a locala = arrayOfa[i];
-        if (locala.lfZ == paramd.lfZ)
+        if (locala.ljL == paramd.ljL)
         {
           boolean bool = locala.a(paramd);
           AppMethodBeat.o(50677);
@@ -279,19 +278,19 @@ final class h
       return false;
     }
     
-    public final List<h.d> bmu()
+    public final List<h.d> bnd()
     {
       AppMethodBeat.i(50678);
       Object localObject = new LinkedList();
       long l1 = 0L;
-      h.a[] arrayOfa = this.lgc;
+      h.a[] arrayOfa = this.ljO;
       int j = arrayOfa.length;
       int i = 0;
       while (i < j)
       {
         h.a locala = arrayOfa[i];
         long l2 = locala.size();
-        ((LinkedList)localObject).addAll((Collection)locala.sP(65536L - l1));
+        ((LinkedList)localObject).addAll((Collection)locala.tc(65536L - l1));
         l1 += l2 - locala.size();
         i += 1;
       }
@@ -301,34 +300,34 @@ final class h
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/report/RealtimeReportQueue$CGIReason;", "", "(Ljava/lang/String;I)V", "TIMER_PERIOD", "REACH_SLICE_LIMIT", "RUNTIME_KILLED", "plugin-appbrand-integration_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsapi/report/RealtimeReportQueue$CGIReason;", "", "(Ljava/lang/String;I)V", "TIMER_PERIOD", "REACH_SLICE_LIMIT", "RUNTIME_KILLED", "plugin-appbrand-integration_release"})
   static enum c
   {
     static
     {
       AppMethodBeat.i(50680);
       c localc1 = new c("TIMER_PERIOD", 0);
-      lgd = localc1;
+      ljP = localc1;
       c localc2 = new c("REACH_SLICE_LIMIT", 1);
-      lge = localc2;
+      ljQ = localc2;
       c localc3 = new c("RUNTIME_KILLED", 2);
-      lgf = localc3;
-      lgg = new c[] { localc1, localc2, localc3 };
+      ljR = localc3;
+      ljS = new c[] { localc1, localc2, localc3 };
       AppMethodBeat.o(50680);
     }
     
     private c() {}
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/report/RealtimeReportQueue$Entry;", "", "id", "", "type", "content", "", "priority", "Lcom/tencent/mm/plugin/appbrand/jsapi/report/JsApiOperateRealtimeReport$Priority;", "component", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "(IILjava/lang/String;Lcom/tencent/mm/plugin/appbrand/jsapi/report/JsApiOperateRealtimeReport$Priority;Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;)V", "appId", "getAppId", "()Ljava/lang/String;", "getComponent", "()Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "componentRef", "Ljava/lang/ref/WeakReference;", "componentRef$annotations", "()V", "getContent", "getId", "()I", "getPriority", "()Lcom/tencent/mm/plugin/appbrand/jsapi/report/JsApiOperateRealtimeReport$Priority;", "triedCount", "getTriedCount", "setTriedCount", "(I)V", "getType", "plugin-appbrand-integration_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsapi/report/RealtimeReportQueue$Entry;", "", "id", "", "type", "content", "", "priority", "Lcom/tencent/mm/plugin/appbrand/jsapi/report/JsApiOperateRealtimeReport$Priority;", "component", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "(IILjava/lang/String;Lcom/tencent/mm/plugin/appbrand/jsapi/report/JsApiOperateRealtimeReport$Priority;Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;)V", "appId", "getAppId", "()Ljava/lang/String;", "getComponent", "()Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "componentRef", "Ljava/lang/ref/WeakReference;", "componentRef$annotations", "()V", "getContent", "getId", "()I", "getPriority", "()Lcom/tencent/mm/plugin/appbrand/jsapi/report/JsApiOperateRealtimeReport$Priority;", "triedCount", "getTriedCount", "setTriedCount", "(I)V", "getType", "plugin-appbrand-integration_release"})
   public static final class d
   {
     final String appId;
-    private final WeakReference<com.tencent.mm.plugin.appbrand.jsapi.c> cXP;
+    private final WeakReference<com.tencent.mm.plugin.appbrand.jsapi.c> cYN;
     final String content;
     final int id;
-    final c.c lfZ;
-    int lgh;
+    final c.c ljL;
+    int ljT;
     final int type;
     
     public d(int paramInt1, int paramInt2, String paramString, c.c paramc, com.tencent.mm.plugin.appbrand.jsapi.c paramc1)
@@ -337,33 +336,33 @@ final class h
       this.id = paramInt1;
       this.type = paramInt2;
       this.content = paramString;
-      this.lfZ = paramc;
-      this.cXP = new WeakReference(paramc1);
+      this.ljL = paramc;
+      this.cYN = new WeakReference(paramc1);
       paramString = paramc1.getAppId();
       d.g.b.p.g(paramString, "component.appId");
       this.appId = paramString;
       AppMethodBeat.o(50684);
     }
     
-    public final com.tencent.mm.plugin.appbrand.jsapi.c El()
+    public final com.tencent.mm.plugin.appbrand.jsapi.c Eo()
     {
       AppMethodBeat.i(50683);
-      com.tencent.mm.plugin.appbrand.jsapi.c localc = (com.tencent.mm.plugin.appbrand.jsapi.c)this.cXP.get();
+      com.tencent.mm.plugin.appbrand.jsapi.c localc = (com.tencent.mm.plugin.appbrand.jsapi.c)this.cYN.get();
       AppMethodBeat.o(50683);
       return localc;
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "errType", "", "errCode", "errMsg", "", "rr", "Lcom/tencent/mm/modelbase/CommReqResp;", "kotlin.jvm.PlatformType", "callback"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "errType", "", "errCode", "errMsg", "", "rr", "Lcom/tencent/mm/modelbase/CommReqResp;", "kotlin.jvm.PlatformType", "callback"})
   static final class e
     implements IPCRunCgi.a
   {
     e(List paramList) {}
     
-    public final void a(int paramInt1, int paramInt2, String paramString, com.tencent.mm.al.b paramb)
+    public final void a(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ak.b paramb)
     {
       AppMethodBeat.i(50687);
-      ad.i("MicroMsg.AppBrand.JsApiOperateRealtimeReport.RealtimeReportQueue", "onCgiBack, errType=" + paramInt1 + ", errCode=" + paramInt2 + ", errMsg=" + paramString);
+      ae.i("MicroMsg.AppBrand.JsApiOperateRealtimeReport.RealtimeReportQueue", "onCgiBack, errType=" + paramInt1 + ", errCode=" + paramInt2 + ", errMsg=" + paramString);
       paramb = new WeakHashMap();
       Object localObject1 = new q(paramb)
       {
@@ -373,12 +372,12 @@ final class h
           d.g.b.p.h(paramAnonymousd, "entry");
           if (paramAnonymousc != null)
           {
-            LinkedList localLinkedList2 = (LinkedList)this.lgj.get(paramAnonymousc);
+            LinkedList localLinkedList2 = (LinkedList)this.ljV.get(paramAnonymousc);
             LinkedList localLinkedList1 = localLinkedList2;
             if (localLinkedList2 == null)
             {
               localLinkedList1 = new LinkedList();
-              ((Map)this.lgj).put(paramAnonymousc, localLinkedList1);
+              ((Map)this.ljV).put(paramAnonymousc, localLinkedList1);
             }
             localLinkedList1.addLast(paramAnonymousd);
           }
@@ -389,14 +388,14 @@ final class h
       Object localObject3;
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        localObject2 = ((Iterable)this.lgi).iterator();
+        localObject2 = ((Iterable)this.ljU).iterator();
         while (((Iterator)localObject2).hasNext())
         {
           localObject3 = (h.d)((Iterator)localObject2).next();
-          ((1)localObject1).a(((h.d)localObject3).El(), (h.d)localObject3);
+          ((1)localObject1).a(((h.d)localObject3).Eo(), (h.d)localObject3);
         }
-        g.yhR.n(1074L, 2L, this.lgi.size());
-        g.yhR.A(1074L, 5L);
+        g.yxI.n(1074L, 2L, this.ljU.size());
+        g.yxI.A(1074L, 5L);
         paramb = paramb.entrySet();
         d.g.b.p.g(paramb, "component2EntryMap.entries");
         paramb = ((Iterable)paramb).iterator();
@@ -425,14 +424,14 @@ final class h
             while (((Iterator)localObject5).hasNext()) {
               ((Collection)localObject4).add(Long.valueOf(((h.d)((Iterator)localObject5).next()).content.length()));
             }
-            localObject2 = ((Iterable)this.lgi).iterator();
+            localObject2 = ((Iterable)this.ljU).iterator();
             i = 0;
             while (((Iterator)localObject2).hasNext())
             {
               localObject3 = (h.d)((Iterator)localObject2).next();
-              localObject4 = h.lfW;
-              if (!h.bms().a((h.d)localObject3)) {
-                ((1)localObject1).a(((h.d)localObject3).El(), (h.d)localObject3);
+              localObject4 = h.ljI;
+              if (!h.bnb().a((h.d)localObject3)) {
+                ((1)localObject1).a(((h.d)localObject3).Eo(), (h.d)localObject3);
               } else {
                 i += 1;
               }
@@ -440,7 +439,7 @@ final class h
             if (i <= 0) {
               break;
             }
-            g.yhR.n(1074L, 0L, i);
+            g.yxI.n(1074L, 0L, i);
             break;
           }
           ((HashMap)localObject2).put("dataSize", Long.valueOf(j.y((Iterable)localObject4)));
@@ -453,7 +452,7 @@ final class h
             ((Collection)localObject3).add(Integer.valueOf(((h.d)((Iterator)localObject4).next()).id));
           }
           ((HashMap)localObject2).put("idList", new JSONArray((Collection)j.l((Iterable)localObject3)));
-          ((com.tencent.mm.plugin.appbrand.jsapi.p)localObject1).A((Map)localObject2).bir();
+          ((com.tencent.mm.plugin.appbrand.jsapi.p)localObject1).H((Map)localObject2).bja();
         }
       }
       label629:
@@ -461,7 +460,7 @@ final class h
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "<anonymous parameter 0>", "", "kotlin.jvm.PlatformType", "state", "Lcom/tencent/mm/plugin/appbrand/appstate/AppRunningState;", "onRunningStateChanged", "com/tencent/mm/plugin/appbrand/jsapi/report/RealtimeReportQueue$enqueueReportData$1$1"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "<anonymous parameter 0>", "", "kotlin.jvm.PlatformType", "state", "Lcom/tencent/mm/plugin/appbrand/appstate/AppRunningState;", "onRunningStateChanged", "com/tencent/mm/plugin/appbrand/jsapi/report/RealtimeReportQueue$enqueueReportData$1$1"})
   static final class f
     implements c.a
   {
@@ -470,35 +469,35 @@ final class h
     public final void a(String paramString, com.tencent.mm.plugin.appbrand.a.b paramb)
     {
       AppMethodBeat.i(50688);
-      if (paramb == com.tencent.mm.plugin.appbrand.a.b.jKR)
+      if (paramb == com.tencent.mm.plugin.appbrand.a.b.jOd)
       {
-        paramString = h.lfW;
-        h.b(h.c.lgf);
-        paramString = h.lfW;
-        h.f(this.lgk);
+        paramString = h.ljI;
+        h.b(h.c.ljR);
+        paramString = h.ljI;
+        h.f(this.ljW);
       }
       AppMethodBeat.o(50688);
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "onTimerExpired"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "onTimerExpired"})
   static final class g
-    implements av.a
+    implements aw.a
   {
-    public static final g lgl;
+    public static final g ljX;
     
     static
     {
       AppMethodBeat.i(50690);
-      lgl = new g();
+      ljX = new g();
       AppMethodBeat.o(50690);
     }
     
     public final boolean onTimerExpired()
     {
       AppMethodBeat.i(50689);
-      h localh = h.lfW;
-      h.bmt();
+      h localh = h.ljI;
+      h.bnc();
       AppMethodBeat.o(50689);
       return true;
     }

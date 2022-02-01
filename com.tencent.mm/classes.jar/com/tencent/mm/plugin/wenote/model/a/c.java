@@ -4,25 +4,25 @@ import com.tencent.mm.plugin.wenote.model.nativenote.manager.WXRTEditText;
 
 public abstract class c
 {
-  public WXRTEditText EzA;
-  public WXRTEditText EzB;
-  public WXRTEditText EzC;
-  public String dsU = "";
-  public boolean ptF = false;
-  public int ptG = 0;
-  public int ptH = -1;
-  public boolean ptL = false;
-  public boolean ptM = false;
-  public boolean ptN = false;
-  public int ptO = 0;
-  public int ptP = 0;
+  public WXRTEditText ERW;
+  public WXRTEditText ERX;
+  public WXRTEditText ERY;
+  public String dua = "";
+  public boolean pAj = false;
+  public int pAk = 0;
+  public int pAl = -1;
+  public boolean pAp = false;
+  public boolean pAq = false;
+  public boolean pAr = false;
+  public int pAs = 0;
+  public int pAt = 0;
   
-  public String ceb()
+  public String cfq()
   {
     return "";
   }
   
-  public abstract String eWO();
+  public abstract String faA();
   
   public int getType()
   {

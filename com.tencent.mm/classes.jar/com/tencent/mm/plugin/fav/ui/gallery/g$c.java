@@ -7,8 +7,8 @@ public enum g$c
   static
   {
     AppMethodBeat.i(107422);
-    rCV = new c("TYPE_IMAGE_AND_VIDEO");
-    rCW = new c[] { rCV };
+    rLg = new c("TYPE_IMAGE_AND_VIDEO");
+    rLh = new c[] { rLg };
     AppMethodBeat.o(107422);
   }
   
@@ -16,7 +16,7 @@ public enum g$c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.ui.gallery.g.c
  * JD-Core Version:    0.7.0.1
  */

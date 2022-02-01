@@ -2,43 +2,43 @@ package com.tencent.mm.ui.chatting.viewitems;
 
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.k.b;
+import com.tencent.mm.ah.k.b;
 import com.tencent.mm.pluginsdk.ui.chat.c;
-import com.tencent.mm.storage.bu;
+import com.tencent.mm.storage.bv;
 import com.tencent.mm.storage.w;
 
 public class bk
   extends c
 {
-  public long DUA;
-  public int DUB;
-  public boolean Jxs;
-  public w KhA;
-  public int KhB = -1;
-  public int KhC;
-  public String KhD;
-  public boolean Kht;
-  public String Khu;
-  public boolean Khv;
-  public boolean Khw;
-  public String Khx;
-  public boolean Khy;
-  public Bundle Khz;
+  public int EmA;
+  public long Emz;
+  public boolean JSi;
+  public boolean KDO;
+  public String KDP;
+  public boolean KDQ;
+  public boolean KDR;
+  public String KDS;
+  public boolean KDT;
+  public Bundle KDU;
+  public w KDV;
+  public int KDW = -1;
+  public String KDX;
   public String chatroomName;
-  public k.b dEu;
-  public String dHo;
-  public String dHp;
-  public String dNL;
-  public int dOE = 0;
+  public k.b dFz;
+  public String dIt;
+  public String dIu;
+  public int dPU = 0;
+  public String dPb;
   public String desc;
   public String designerName;
   public String designerRediretctUrl;
   public int designerUIN;
-  public String dok;
-  public String fkq;
-  public String hCc;
-  public int hGR = 0;
+  public String dpp;
+  public String fmn;
+  public String hEQ;
+  public int hJJ = 0;
   public String iconUrl;
+  public int opType;
   public int pageType;
   public String pageUrl;
   public int position;
@@ -49,83 +49,83 @@ public class bk
   
   public bk() {}
   
-  public bk(bu parambu, int paramInt1, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt2, String paramString6, String paramString7, String paramString8)
+  public bk(bv parambv, int paramInt1, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt2, String paramString6, String paramString7, String paramString8)
   {
-    this.dBd = parambu;
-    this.Jxs = false;
+    this.dCi = parambv;
+    this.JSi = false;
     this.position = paramInt1;
     this.userName = paramString1;
-    this.Kht = false;
+    this.KDO = false;
     this.title = paramString2;
-    this.dHo = paramString3;
-    this.dHp = paramString4;
-    this.Khu = paramString5;
+    this.dIt = paramString3;
+    this.dIu = paramString4;
+    this.KDP = paramString5;
     this.designerUIN = paramInt2;
     this.designerName = paramString6;
     this.designerRediretctUrl = paramString7;
-    this.fkq = paramString8;
+    this.fmn = paramString8;
   }
   
-  public bk(bu parambu, String paramString)
+  public bk(bv parambv, String paramString)
   {
     this(paramString);
-    this.dBd = parambu;
+    this.dCi = parambv;
   }
   
-  public bk(bu parambu, String paramString1, String paramString2)
+  public bk(bv parambv, String paramString1, String paramString2)
   {
-    this.dBd = parambu;
+    this.dCi = parambv;
     this.userName = paramString1;
-    this.dBd = parambu;
+    this.dCi = parambv;
     this.pageUrl = paramString2;
   }
   
-  private bk(bu parambu, boolean paramBoolean, int paramInt, String paramString)
+  private bk(bv parambv, boolean paramBoolean, int paramInt, String paramString)
   {
-    this(parambu, paramBoolean, paramInt, paramString, false, null, null, null);
+    this(parambv, paramBoolean, paramInt, paramString, false, null, null, null);
   }
   
-  private bk(bu parambu, boolean paramBoolean, int paramInt, String paramString, byte paramByte)
+  private bk(bv parambv, boolean paramBoolean, int paramInt, String paramString, byte paramByte)
   {
-    this(parambu, paramBoolean, paramInt, paramString);
+    this(parambv, paramBoolean, paramInt, paramString);
   }
   
-  public bk(bu parambu, boolean paramBoolean, int paramInt, String paramString, char paramChar)
+  public bk(bv parambv, boolean paramBoolean, int paramInt, String paramString, char paramChar)
   {
-    this(parambu, paramBoolean, paramInt, paramString, (byte)0);
+    this(parambv, paramBoolean, paramInt, paramString, (byte)0);
   }
   
-  public bk(bu parambu, boolean paramBoolean, int paramInt, String paramString1, String paramString2)
+  public bk(bv parambv, boolean paramBoolean, int paramInt, String paramString1, String paramString2)
   {
-    this(parambu, paramBoolean, paramInt, paramString1, (byte)0);
+    this(parambv, paramBoolean, paramInt, paramString1, (byte)0);
     this.chatroomName = paramString2;
   }
   
-  public bk(bu parambu, boolean paramBoolean1, int paramInt, String paramString1, boolean paramBoolean2, String paramString2, String paramString3, String paramString4)
+  public bk(bv parambv, boolean paramBoolean1, int paramInt, String paramString1, boolean paramBoolean2, String paramString2, String paramString3, String paramString4)
   {
-    this(parambu, paramBoolean1, paramInt, paramString1, paramBoolean2, paramString2, paramString3, paramString4, null);
+    this(parambv, paramBoolean1, paramInt, paramString1, paramBoolean2, paramString2, paramString3, paramString4, null);
   }
   
-  public bk(bu parambu, boolean paramBoolean1, int paramInt, String paramString1, boolean paramBoolean2, String paramString2, String paramString3, String paramString4, String paramString5)
+  public bk(bv parambv, boolean paramBoolean1, int paramInt, String paramString1, boolean paramBoolean2, String paramString2, String paramString3, String paramString4, String paramString5)
   {
-    this(parambu, paramBoolean1, paramInt, paramString1, paramBoolean2, paramString2, paramString3, paramString4, paramString5, null, null, false, false);
+    this(parambv, paramBoolean1, paramInt, paramString1, paramBoolean2, paramString2, paramString3, paramString4, paramString5, null, null, false, false);
   }
   
-  public bk(bu parambu, boolean paramBoolean1, int paramInt, String paramString1, boolean paramBoolean2, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, boolean paramBoolean3, boolean paramBoolean4)
+  public bk(bv parambv, boolean paramBoolean1, int paramInt, String paramString1, boolean paramBoolean2, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, boolean paramBoolean3, boolean paramBoolean4)
   {
-    this.dBd = parambu;
-    this.Jxs = paramBoolean1;
+    this.dCi = parambv;
+    this.JSi = paramBoolean1;
     this.position = paramInt;
     this.userName = paramString1;
-    this.Kht = paramBoolean2;
+    this.KDO = paramBoolean2;
     this.title = paramString2;
-    this.dHo = paramString3;
-    this.dHp = paramString4;
-    this.Khu = paramString5;
-    this.dok = paramString6;
-    this.fkq = paramString7;
-    this.Khv = paramBoolean3;
-    this.Khw = paramBoolean4;
+    this.dIt = paramString3;
+    this.dIu = paramString4;
+    this.KDP = paramString5;
+    this.dpp = paramString6;
+    this.fmn = paramString7;
+    this.KDQ = paramBoolean3;
+    this.KDR = paramBoolean4;
   }
   
   private bk(String paramString)
@@ -139,40 +139,40 @@ public class bk
     this.chatroomName = paramString2;
   }
   
-  public static bk a(k.b paramb, bu parambu)
+  public static bk a(k.b paramb, bv parambv)
   {
     AppMethodBeat.i(37554);
     bk localbk = new bk();
-    localbk.dEu = paramb;
-    localbk.dBd = parambu;
+    localbk.dFz = paramb;
+    localbk.dCi = parambv;
     AppMethodBeat.o(37554);
     return localbk;
   }
   
-  public static bk aWI(String paramString)
+  public static bk aYj(String paramString)
   {
     AppMethodBeat.i(37553);
     bk localbk = new bk();
-    localbk.fkq = paramString;
+    localbk.fmn = paramString;
     AppMethodBeat.o(37553);
     return localbk;
   }
   
-  public static bk b(bu parambu, boolean paramBoolean, int paramInt)
+  public static bk b(bv parambv, boolean paramBoolean, int paramInt)
   {
     AppMethodBeat.i(37555);
     bk localbk = new bk();
-    localbk.dBd = parambu;
-    localbk.Jxs = paramBoolean;
+    localbk.dCi = parambv;
+    localbk.JSi = paramBoolean;
     localbk.position = paramInt;
-    localbk.Khy = false;
+    localbk.KDT = false;
     AppMethodBeat.o(37555);
     return localbk;
   }
   
-  public final bk aWJ(String paramString)
+  public final bk aYk(String paramString)
   {
-    this.dNL = paramString;
+    this.dPb = paramString;
     return this;
   }
 }

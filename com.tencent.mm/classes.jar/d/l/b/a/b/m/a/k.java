@@ -20,34 +20,34 @@ public final class k
   extends aj
   implements d
 {
-  private final g MVu;
-  private final b NDg;
-  final l NDh;
-  final bg NDi;
-  private final boolean Nwk;
+  private final boolean NTq;
+  private final g Nsz;
+  private final b Oan;
+  final l Oao;
+  final bg Oap;
   
   public k(b paramb, l paraml, bg parambg, g paramg, boolean paramBoolean)
   {
     AppMethodBeat.i(61069);
-    this.NDg = paramb;
-    this.NDh = paraml;
-    this.NDi = parambg;
-    this.MVu = paramg;
-    this.Nwk = paramBoolean;
+    this.Oan = paramb;
+    this.Oao = paraml;
+    this.Oap = parambg;
+    this.Nsz = paramg;
+    this.NTq = paramBoolean;
     AppMethodBeat.o(61069);
   }
   
   public k(b paramb, bg parambg, av paramav, as paramas)
   {
     this(paramb, new l(paramav, null, paramas, 6), parambg);
-    AppMethodBeat.i(187796);
-    AppMethodBeat.o(187796);
+    AppMethodBeat.i(193320);
+    AppMethodBeat.o(193320);
   }
   
-  private k As(boolean paramBoolean)
+  private k AF(boolean paramBoolean)
   {
     AppMethodBeat.i(61063);
-    k localk = new k(this.NDg, this.NDh, this.NDi, this.MVu, paramBoolean);
+    k localk = new k(this.Oan, this.Oao, this.Oap, this.Nsz, paramBoolean);
     AppMethodBeat.o(61063);
     return localk;
   }
@@ -56,7 +56,7 @@ public final class k
   {
     AppMethodBeat.i(61060);
     p.h(paramg, "newAnnotations");
-    paramg = new k(this.NDg, this.NDh, this.NDi, paramg, this.Nwk);
+    paramg = new k(this.Oan, this.Oao, this.Oap, paramg, this.NTq);
     AppMethodBeat.o(61060);
     return paramg;
   }
@@ -66,31 +66,31 @@ public final class k
     Object localObject3 = null;
     AppMethodBeat.i(61066);
     p.h(parami, "kotlinTypeRefiner");
-    b localb = this.NDg;
-    l locall1 = this.NDh;
+    b localb = this.Oan;
+    l locall1 = this.Oao;
     p.h(parami, "kotlinTypeRefiner");
-    av localav = locall1.Nwm.m(parami);
+    av localav = locall1.NTs.m(parami);
     p.g(localav, "projection.refine(kotlinTypeRefiner)");
     Object localObject1;
     Object localObject2;
-    if (locall1.NDk != null)
+    if (locall1.Oar != null)
     {
       localObject1 = (a)new l.c(locall1, parami);
-      l locall2 = locall1.NDl;
+      l locall2 = locall1.Oas;
       localObject2 = locall2;
       if (locall2 == null) {
         localObject2 = locall1;
       }
-      localObject1 = new l(localav, (a)localObject1, (l)localObject2, locall1.NCv);
-      localObject2 = this.NDi;
+      localObject1 = new l(localav, (a)localObject1, (l)localObject2, locall1.NZC);
+      localObject2 = this.Oap;
       if (localObject2 == null) {
         break label162;
       }
     }
     label162:
-    for (parami = parami.aL((ab)localObject2).gua();; parami = localObject3)
+    for (parami = parami.aL((ab)localObject2).gyC();; parami = localObject3)
     {
-      parami = new k(localb, (l)localObject1, parami, this.MVu, this.Nwk);
+      parami = new k(localb, (l)localObject1, parami, this.Nsz, this.NTq);
       AppMethodBeat.o(61066);
       return parami;
       localObject1 = null;
@@ -98,33 +98,33 @@ public final class k
     }
   }
   
-  public final g ghH()
-  {
-    return this.MVu;
-  }
-  
-  public final h gil()
+  public final h gmN()
   {
     AppMethodBeat.i(61059);
-    h localh = u.dv("No member resolution should be done on captured type!", true);
+    h localh = u.dy("No member resolution should be done on captured type!", true);
     p.g(localh, "ErrorUtils.createErrorSc…on captured type!\", true)");
     AppMethodBeat.o(61059);
     return localh;
   }
   
-  public final boolean glW()
+  public final g gmj()
   {
-    return this.Nwk;
+    return this.Nsz;
   }
   
-  public final List<av> gsW()
+  public final boolean gqy()
   {
-    return (List)v.MKE;
+    return this.NTq;
+  }
+  
+  public final List<av> gxy()
+  {
+    return (List)v.NhH;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.m.a.k
  * JD-Core Version:    0.7.0.1
  */

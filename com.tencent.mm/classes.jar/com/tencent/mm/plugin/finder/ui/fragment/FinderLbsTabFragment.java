@@ -9,7 +9,7 @@ import d.l;
 import java.util.HashMap;
 import java.util.Set;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/ui/fragment/FinderLbsTabFragment;", "Lcom/tencent/mm/plugin/finder/ui/fragment/FinderHomeTabFragment;", "()V", "importUIComponents", "", "Ljava/lang/Class;", "Lcom/tencent/mm/ui/component/UIComponent;", "onActionbarClick", "", "onActionbarDoubleClick", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/ui/fragment/FinderLbsTabFragment;", "Lcom/tencent/mm/plugin/finder/ui/fragment/FinderHomeTabFragment;", "()V", "importUIComponents", "", "Ljava/lang/Class;", "Lcom/tencent/mm/ui/component/UIComponent;", "onActionbarClick", "", "onActionbarDoubleClick", "plugin-finder_release"})
 public final class FinderLbsTabFragment
   extends FinderHomeTabFragment
 {
@@ -22,33 +22,33 @@ public final class FinderLbsTabFragment
   
   public final void _$_clearFindViewByIdCache()
   {
-    AppMethodBeat.i(204313);
+    AppMethodBeat.i(204931);
     if (this._$_findViewCache != null) {
       this._$_findViewCache.clear();
     }
-    AppMethodBeat.o(204313);
+    AppMethodBeat.o(204931);
   }
   
-  public final Set<Class<? extends UIComponent>> cCu()
+  public final Set<Class<? extends UIComponent>> cEg()
   {
-    AppMethodBeat.i(204311);
+    AppMethodBeat.i(204929);
     Set localSet = ak.setOf(new Class[] { FinderTimelineLbsUIC.class, FinderDoubleClickTipUIC.class });
-    AppMethodBeat.o(204311);
+    AppMethodBeat.o(204929);
     return localSet;
   }
   
-  public final void cKz()
+  public final void cNd()
   {
-    AppMethodBeat.i(204312);
-    super.cKz();
-    ((FinderDoubleClickTipUIC)bj(FinderDoubleClickTipUIC.class)).cOl();
-    ((FinderTimelineLbsUIC)bj(FinderTimelineLbsUIC.class)).cKz();
-    AppMethodBeat.o(204312);
+    AppMethodBeat.i(204930);
+    super.cNd();
+    ((FinderDoubleClickTipUIC)bj(FinderDoubleClickTipUIC.class)).cQQ();
+    ((FinderTimelineLbsUIC)bj(FinderTimelineLbsUIC.class)).cNd();
+    AppMethodBeat.o(204930);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.ui.fragment.FinderLbsTabFragment
  * JD-Core Version:    0.7.0.1
  */

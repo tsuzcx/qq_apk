@@ -8,21 +8,21 @@ import android.text.TextUtils;
 import android.view.TextureView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.graphics.MMBitmapFactory;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.am;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.an;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.f.a;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.h;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.vfs.e;
-import com.tencent.mm.vfs.i;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.vfs.k;
+import com.tencent.mm.vfs.o;
 import java.io.OutputStream;
 
 public final class a
 {
+  protected d Abz;
   protected int mScreenHeight;
   protected int mScreenWidth;
-  protected d zKs;
   
   public a()
   {
@@ -31,19 +31,19 @@ public final class a
     this.mScreenHeight = 1280;
     try
     {
-      int[] arrayOfInt = am.gk(aj.getContext());
+      int[] arrayOfInt = an.gp(ak.getContext());
       if ((arrayOfInt[0] > 0) && (arrayOfInt[1] > 0))
       {
         this.mScreenWidth = Math.min(arrayOfInt[0], arrayOfInt[1]);
         this.mScreenHeight = Math.max(arrayOfInt[0], arrayOfInt[1]);
-        ad.i("SphereImageView.SphereImageLoader", "screen.w=" + this.mScreenWidth + ", screen.h=" + this.mScreenHeight);
+        ae.i("SphereImageView.SphereImageLoader", "screen.w=" + this.mScreenWidth + ", screen.h=" + this.mScreenHeight);
       }
       AppMethodBeat.o(97242);
       return;
     }
     catch (Exception localException)
     {
-      ad.e("SphereImageView.SphereImageLoader", "init exp=" + localException.toString());
+      ae.e("SphereImageView.SphereImageLoader", "init exp=" + localException.toString());
       AppMethodBeat.o(97242);
     }
   }
@@ -57,19 +57,19 @@ public final class a
       paramTextureView = paramTextureView.getBitmap();
       if ((paramTextureView == null) || (paramTextureView.getWidth() <= 0) || (paramTextureView.getHeight() <= 0) || (TextUtils.isEmpty(paramString1)))
       {
-        ad.e("SphereImageView.SphereImageLoader", "saveSphereImageViewShootAsyn, params err");
+        ae.e("SphereImageView.SphereImageLoader", "saveSphereImageViewShootAsyn, params err");
         AppMethodBeat.o(97245);
         return;
       }
       new b(paramTextureView, paramString1, paramString2).execute(new Void[0]);
       long l2 = System.currentTimeMillis();
-      ad.i("SphereImageView.SphereImageLoader", "saveSphereImageViewShootAsyn, timeCost=" + (l2 - l1));
+      ae.i("SphereImageView.SphereImageLoader", "saveSphereImageViewShootAsyn, timeCost=" + (l2 - l1));
       AppMethodBeat.o(97245);
       return;
     }
     catch (Throwable paramTextureView)
     {
-      ad.e("SphereImageView.SphereImageLoader", "saveSphereImageViewShootAsyn, exp=" + paramTextureView.toString());
+      ae.e("SphereImageView.SphereImageLoader", "saveSphereImageViewShootAsyn, exp=" + paramTextureView.toString());
       AppMethodBeat.o(97245);
     }
   }
@@ -79,13 +79,13 @@ public final class a
     AppMethodBeat.i(97246);
     if (TextUtils.isEmpty(paramString1))
     {
-      ad.e("SphereImageView.SphereImageLoader", "doSaveSphereImageViewFrameShot, imageUrl is empty, scene=".concat(String.valueOf(paramString2)));
+      ae.e("SphereImageView.SphereImageLoader", "doSaveSphereImageViewFrameShot, imageUrl is empty, scene=".concat(String.valueOf(paramString2)));
       AppMethodBeat.o(97246);
       return false;
     }
     if ((paramBitmap == null) || (paramBitmap.getHeight() <= 0) || (paramBitmap.getWidth() <= 0))
     {
-      ad.e("SphereImageView.SphereImageLoader", "doSaveSphereImageViewFrameShot, bitmap==null or size<=0, scene=".concat(String.valueOf(paramString2)));
+      ae.e("SphereImageView.SphereImageLoader", "doSaveSphereImageViewFrameShot, bitmap==null or size<=0, scene=".concat(String.valueOf(paramString2)));
       AppMethodBeat.o(97246);
       return false;
     }
@@ -122,7 +122,7 @@ public final class a
         String str;
         long l2;
         localObject1 = localObject2;
-        ad.e("SphereImageView.SphereImageLoader", "doSaveSphereImageViewFrameShot exp:" + paramBitmap.toString() + ", scene=" + paramString2);
+        ae.e("SphereImageView.SphereImageLoader", "doSaveSphereImageViewFrameShot exp:" + paramBitmap.toString() + ", scene=" + paramString2);
         if (localObject2 == null) {
           continue;
         }
@@ -132,14 +132,14 @@ public final class a
         }
         catch (Exception paramBitmap)
         {
-          ad.e("SphereImageView.SphereImageLoader", "doSaveSphereImageViewFrameShot, fout.close exp:" + paramBitmap.toString() + ", scene=" + paramString2);
+          ae.e("SphereImageView.SphereImageLoader", "doSaveSphereImageViewFrameShot, fout.close exp:" + paramBitmap.toString() + ", scene=" + paramString2);
         }
         continue;
       }
       catch (OutOfMemoryError paramBitmap)
       {
         localObject1 = localObject3;
-        ad.e("SphereImageView.SphereImageLoader", "doSaveSphereImageViewFrameShot OOM:" + paramBitmap.toString() + ", scene=" + paramString2);
+        ae.e("SphereImageView.SphereImageLoader", "doSaveSphereImageViewFrameShot OOM:" + paramBitmap.toString() + ", scene=" + paramString2);
         if (localObject3 == null) {
           continue;
         }
@@ -149,7 +149,7 @@ public final class a
         }
         catch (Exception paramBitmap)
         {
-          ad.e("SphereImageView.SphereImageLoader", "doSaveSphereImageViewFrameShot, fout.close exp:" + paramBitmap.toString() + ", scene=" + paramString2);
+          ae.e("SphereImageView.SphereImageLoader", "doSaveSphereImageViewFrameShot, fout.close exp:" + paramBitmap.toString() + ", scene=" + paramString2);
         }
         continue;
       }
@@ -168,7 +168,7 @@ public final class a
         }
         catch (Exception paramString1)
         {
-          ad.e("SphereImageView.SphereImageLoader", "doSaveSphereImageViewFrameShot, fout.close exp:" + paramString1.toString() + ", scene=" + paramString2);
+          ae.e("SphereImageView.SphereImageLoader", "doSaveSphereImageViewFrameShot, fout.close exp:" + paramString1.toString() + ", scene=" + paramString2);
           continue;
         }
         int i = 0;
@@ -235,11 +235,11 @@ public final class a
         localObject2 = localObject4;
         localObject3 = localObject5;
         localObject1 = localObject6;
-        str = jE(paramString2, paramString1);
+        str = jK(paramString2, paramString1);
         localObject2 = localObject4;
         localObject3 = localObject5;
         localObject1 = localObject6;
-        paramString1 = i.aj(new e(str));
+        paramString1 = o.aj(new k(str));
         localObject2 = paramString1;
         localObject3 = paramString1;
         localObject1 = paramString1;
@@ -255,7 +255,7 @@ public final class a
         localObject2 = paramString1;
         localObject3 = paramString1;
         localObject1 = paramString1;
-        ad.i("SphereImageView.SphereImageLoader", "doSaveSphereImageViewFrameShot, timeCost=" + (l2 - l1) + ", bmp.w=" + paramBitmap.getWidth() + ", h=" + paramBitmap.getHeight() + ", path=" + str + ", isValid=true");
+        ae.i("SphereImageView.SphereImageLoader", "doSaveSphereImageViewFrameShot, timeCost=" + (l2 - l1) + ", bmp.w=" + paramBitmap.getWidth() + ", h=" + paramBitmap.getHeight() + ", path=" + str + ", isValid=true");
         if (paramString1 != null) {}
         try
         {
@@ -343,19 +343,19 @@ public final class a
         }
         catch (Exception paramBitmap)
         {
-          ad.e("SphereImageView.SphereImageLoader", "doSaveSphereImageViewFrameShot, fout.close exp:" + paramBitmap.toString() + ", scene=" + paramString2);
+          ae.e("SphereImageView.SphereImageLoader", "doSaveSphereImageViewFrameShot, fout.close exp:" + paramBitmap.toString() + ", scene=" + paramString2);
         }
       }
     }
     localObject2 = localObject4;
     localObject3 = localObject5;
     localObject1 = localObject6;
-    ad.i("SphereImageView.SphereImageLoader", "doSaveSphereImageViewFrameShot, isValid=false");
+    ae.i("SphereImageView.SphereImageLoader", "doSaveSphereImageViewFrameShot, isValid=false");
     AppMethodBeat.o(97246);
     return false;
   }
   
-  private static String azT(String paramString)
+  private static String aBk(String paramString)
   {
     AppMethodBeat.i(97244);
     if (TextUtils.isEmpty(paramString))
@@ -365,10 +365,10 @@ public final class a
     }
     try
     {
-      paramString = h.jF("adId", paramString);
+      paramString = h.jL("adId", paramString);
       if (!TextUtils.isEmpty(paramString))
       {
-        boolean bool = i.fv(paramString);
+        boolean bool = o.fB(paramString);
         if (bool)
         {
           AppMethodBeat.o(97244);
@@ -378,19 +378,19 @@ public final class a
     }
     catch (Exception paramString)
     {
-      ad.e("SphereImageView.SphereImageLoader", "getImgCacheFilePath, exp:" + paramString.toString());
+      ae.e("SphereImageView.SphereImageLoader", "getImgCacheFilePath, exp:" + paramString.toString());
       AppMethodBeat.o(97244);
     }
     return "";
   }
   
-  public static Bitmap jC(String paramString1, String paramString2)
+  public static Bitmap jI(String paramString1, String paramString2)
   {
     boolean bool = false;
     AppMethodBeat.i(97247);
     if (TextUtils.isEmpty(paramString1))
     {
-      ad.e("SphereImageView.SphereImageLoader", "getSphereImageViewFrameShot, imageUrl is empty, scene=".concat(String.valueOf(paramString2)));
+      ae.e("SphereImageView.SphereImageLoader", "getSphereImageViewFrameShot, imageUrl is empty, scene=".concat(String.valueOf(paramString2)));
       AppMethodBeat.o(97247);
       return null;
     }
@@ -398,8 +398,8 @@ public final class a
     {
       try
       {
-        paramString1 = jE(paramString2, paramString1);
-        if ((TextUtils.isEmpty(paramString1)) || (!i.fv(paramString1))) {
+        paramString1 = jK(paramString2, paramString1);
+        if ((TextUtils.isEmpty(paramString1)) || (!o.fB(paramString1))) {
           continue;
         }
         l1 = System.currentTimeMillis();
@@ -416,13 +416,13 @@ public final class a
         long l2;
         int i;
         StringBuilder localStringBuilder;
-        ad.e("SphereImageView.SphereImageLoader", "getSphereImageViewFrameShot, exp:" + paramString1.toString() + ", scene=" + paramString2);
+        ae.e("SphereImageView.SphereImageLoader", "getSphereImageViewFrameShot, exp:" + paramString1.toString() + ", scene=" + paramString2);
         continue;
       }
       catch (OutOfMemoryError paramString1)
       {
         Bitmap localBitmap;
-        ad.e("SphereImageView.SphereImageLoader", "getSphereImageViewFrameShot, OOM:" + paramString1.toString() + ", scene=" + paramString2);
+        ae.e("SphereImageView.SphereImageLoader", "getSphereImageViewFrameShot, OOM:" + paramString1.toString() + ", scene=" + paramString2);
         continue;
         if (localBitmap != null) {
           continue;
@@ -434,34 +434,34 @@ public final class a
       if (localBitmap == null) {
         bool = true;
       }
-      ad.i("SphereImageView.SphereImageLoader", bool + ", w=" + i + ", h=" + j + ", path=" + paramString1);
+      ae.i("SphereImageView.SphereImageLoader", bool + ", w=" + i + ", h=" + j + ", path=" + paramString1);
       AppMethodBeat.o(97247);
       return localBitmap;
       i = localBitmap.getWidth();
       continue;
       j = localBitmap.getHeight();
     }
-    ad.e("SphereImageView.SphereImageLoader", "getSphereImageViewFrameShot, file not exists, scene=" + paramString2 + ", path=" + paramString1);
+    ae.e("SphereImageView.SphereImageLoader", "getSphereImageViewFrameShot, file not exists, scene=" + paramString2 + ", path=" + paramString1);
     AppMethodBeat.o(97247);
     return null;
   }
   
-  public static boolean jD(String paramString1, String paramString2)
+  public static boolean jJ(String paramString1, String paramString2)
   {
     AppMethodBeat.i(97248);
     if (TextUtils.isEmpty(paramString1))
     {
-      ad.e("SphereImageView.SphereImageLoader", "hasSphereImageViewFrameShot, imageUrl is empty, scene=".concat(String.valueOf(paramString2)));
+      ae.e("SphereImageView.SphereImageLoader", "hasSphereImageViewFrameShot, imageUrl is empty, scene=".concat(String.valueOf(paramString2)));
       AppMethodBeat.o(97248);
       return false;
     }
     try
     {
-      paramString1 = jE(paramString2, paramString1);
-      if ((!TextUtils.isEmpty(paramString1)) && (i.fv(paramString1))) {}
+      paramString1 = jK(paramString2, paramString1);
+      if ((!TextUtils.isEmpty(paramString1)) && (o.fB(paramString1))) {}
       for (boolean bool = true;; bool = false)
       {
-        ad.i("SphereImageView.SphereImageLoader", "hasSphereImageViewFrameShot, ret=" + bool + ", scene=" + paramString2);
+        ae.i("SphereImageView.SphereImageLoader", "hasSphereImageViewFrameShot, ret=" + bool + ", scene=" + paramString2);
         AppMethodBeat.o(97248);
         return bool;
       }
@@ -469,73 +469,73 @@ public final class a
     }
     catch (Exception paramString1)
     {
-      ad.e("SphereImageView.SphereImageLoader", "hasSphereImageViewFrameShot, exp:" + paramString1.toString() + ", scene=" + paramString2);
+      ae.e("SphereImageView.SphereImageLoader", "hasSphereImageViewFrameShot, exp:" + paramString1.toString() + ", scene=" + paramString2);
       AppMethodBeat.o(97248);
     }
   }
   
-  private static String jE(String paramString1, String paramString2)
+  private static String jK(String paramString1, String paramString2)
   {
     AppMethodBeat.i(97249);
-    paramString1 = h.jF("sphere_shot_".concat(String.valueOf(paramString1)), paramString2);
+    paramString1 = h.jL("sphere_shot_".concat(String.valueOf(paramString1)), paramString2);
     AppMethodBeat.o(97249);
     return paramString1;
   }
   
   public final void a(d paramd)
   {
-    this.zKs = paramd;
+    this.Abz = paramd;
   }
   
   public final void l(final String paramString1, final int paramInt1, final int paramInt2, final String paramString2)
   {
     AppMethodBeat.i(97243);
-    ad.i("SphereImageView.SphereImageLoader", "loadImage, view.w=" + paramInt1 + ", view.h=" + paramInt2 + ", scene=" + paramString2);
+    ae.i("SphereImageView.SphereImageLoader", "loadImage, view.w=" + paramInt1 + ", view.h=" + paramInt2 + ", scene=" + paramString2);
     if ((paramInt1 == 0) || (paramInt2 == 0))
     {
       AppMethodBeat.o(97243);
       return;
     }
-    if (this.zKs != null) {
-      this.zKs.onStart(paramString1);
+    if (this.Abz != null) {
+      this.Abz.onStart(paramString1);
     }
-    String str = azT(paramString1);
+    String str = aBk(paramString1);
     if (!TextUtils.isEmpty(str))
     {
-      ad.i("SphereImageView.SphereImageLoader", "hit disk cache, path=".concat(String.valueOf(str)));
+      ae.i("SphereImageView.SphereImageLoader", "hit disk cache, path=".concat(String.valueOf(str)));
       new a(paramString1, paramInt1, paramInt2, paramString2).execute(new String[] { str });
       AppMethodBeat.o(97243);
       return;
     }
-    ad.i("SphereImageView.SphereImageLoader", "no cache, download");
+    ae.i("SphereImageView.SphereImageLoader", "no cache, download");
     h.a(paramString1, 133, new f.a()
     {
-      public final void axG(String paramAnonymousString)
+      public final void ayY(String paramAnonymousString)
       {
         AppMethodBeat.i(97234);
-        ad.i("SphereImageView.SphereImageLoader", "loadImage onDownloaded, path=".concat(String.valueOf(paramAnonymousString)));
+        ae.i("SphereImageView.SphereImageLoader", "loadImage onDownloaded, path=".concat(String.valueOf(paramAnonymousString)));
         new a.a(a.this, paramString1, paramInt1, paramInt2, paramString2).execute(new String[] { paramAnonymousString });
         AppMethodBeat.o(97234);
       }
       
-      public final void dRW()
+      public final void dVu()
       {
         AppMethodBeat.i(97232);
-        ad.i("SphereImageView.SphereImageLoader", "onStartDownload");
+        ae.i("SphereImageView.SphereImageLoader", "onStartDownload");
         AppMethodBeat.o(97232);
       }
       
-      public final void dRX()
+      public final void dVv()
       {
         AppMethodBeat.i(97233);
-        ad.e("SphereImageView.SphereImageLoader", "onDownloadError");
-        aq.f(new Runnable()
+        ae.e("SphereImageView.SphereImageLoader", "onDownloadError");
+        ar.f(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(97231);
-            if (a.this.zKs != null) {
-              a.this.zKs.a(false, "onDownloadError", null, a.1.this.zbw);
+            if (a.this.Abz != null) {
+              a.this.Abz.a(false, "onDownloadError", null, a.1.this.zsa);
             }
             AppMethodBeat.o(97231);
           }
@@ -549,17 +549,17 @@ public final class a
   protected final class a
     extends AsyncTask<String, Void, Bitmap>
   {
-    String crF = "";
+    int AbC;
+    int AbD;
+    String csi = "";
     String scene;
     String url;
-    int zKv;
-    int zKw;
     
     public a(String paramString1, int paramInt1, int paramInt2, String paramString2)
     {
       this.url = paramString1;
-      this.zKv = paramInt1;
-      this.zKw = paramInt2;
+      this.AbC = paramInt1;
+      this.AbD = paramInt2;
       this.scene = paramString2;
     }
     
@@ -571,8 +571,8 @@ public final class a
       AppMethodBeat.i(97235);
       if ((paramVarArgs == null) || (paramVarArgs.length == 0) || (TextUtils.isEmpty(paramVarArgs[0])))
       {
-        ad.e("SphereImageView.SphereImageLoader", "ImageDecodeTask run, path is empty");
-        this.crF = "path is empty";
+        ae.e("SphereImageView.SphereImageLoader", "ImageDecodeTask run, path is empty");
+        this.csi = "path is empty";
         AppMethodBeat.o(97235);
         return null;
       }
@@ -612,18 +612,18 @@ public final class a
           int i1;
           int i2;
           long l2;
-          this.crF = paramVarArgs.toString();
-          ad.e("SphereImageView.SphereImageLoader", "ImageDecodeTask, exp:" + this.crF);
+          this.csi = paramVarArgs.toString();
+          ae.e("SphereImageView.SphereImageLoader", "ImageDecodeTask, exp:" + this.csi);
           paramVarArgs = localStringBuilder;
           continue;
         }
         catch (OutOfMemoryError localOutOfMemoryError)
         {
-          this.crF = localOutOfMemoryError.toString();
-          ad.e("SphereImageView.SphereImageLoader", "ImageDecodeTask, oom:" + this.crF);
+          this.csi = localOutOfMemoryError.toString();
+          ae.e("SphereImageView.SphereImageLoader", "ImageDecodeTask, oom:" + this.csi);
           try
           {
-            ad.i("SphereImageView.SphereImageLoader", "ImageDecodeTask, try again after oom");
+            ae.i("SphereImageView.SphereImageLoader", "ImageDecodeTask, try again after oom");
             System.gc();
             paramVarArgs = new BitmapFactory.Options();
             paramVarArgs.inSampleSize = (j + 1);
@@ -631,8 +631,8 @@ public final class a
           }
           catch (Throwable paramVarArgs)
           {
-            this.crF = localOutOfMemoryError.toString();
-            ad.e("SphereImageView.SphereImageLoader", "ImageDecodeTask, try again exp:" + this.crF);
+            this.csi = localOutOfMemoryError.toString();
+            ae.e("SphereImageView.SphereImageLoader", "ImageDecodeTask, try again exp:" + this.csi);
             paramVarArgs = localStringBuilder;
           }
           continue;
@@ -644,7 +644,7 @@ public final class a
           continue;
         }
         j = i;
-        ad.i("SphereImageView.SphereImageLoader", "decode, bmp.w=" + i1 + ", bmp.h=" + i2 + ", screen.w=" + a.this.mScreenWidth + ", screen.h=" + a.this.mScreenHeight + ", view.w=" + this.zKv + ", view.h=" + this.zKw + ", inSampleSize=" + i);
+        ae.i("SphereImageView.SphereImageLoader", "decode, bmp.w=" + i1 + ", bmp.h=" + i2 + ", screen.w=" + a.this.mScreenWidth + ", screen.h=" + a.this.mScreenHeight + ", view.w=" + this.AbC + ", view.h=" + this.AbD + ", inSampleSize=" + i);
         j = i;
         paramVarArgs.inJustDecodeBounds = false;
         j = i;
@@ -662,7 +662,7 @@ public final class a
           continue;
         }
         i = k;
-        ad.i("SphereImageView.SphereImageLoader", i + ", path=" + str);
+        ae.i("SphereImageView.SphereImageLoader", i + ", path=" + str);
         AppMethodBeat.o(97235);
         return paramVarArgs;
         i = m;
@@ -698,13 +698,13 @@ public final class a
     extends AsyncTask<Void, Void, Void>
   {
     Bitmap bitmap;
-    String hym;
+    String hBa;
     String scene;
     
     public b(Bitmap paramBitmap, String paramString1, String paramString2)
     {
       this.bitmap = paramBitmap;
-      this.hym = paramString1;
+      this.hBa = paramString1;
       this.scene = paramString2;
     }
   }
@@ -712,27 +712,27 @@ public final class a
   public static final class c
     extends AsyncTask<Void, Void, Bitmap>
   {
-    String hym;
+    a.d AbE;
+    String hBa;
     String scene;
     String thumbUrl;
-    a.d zKx;
     
     public c(String paramString1, String paramString2, String paramString3, a.d paramd)
     {
-      this.hym = paramString1;
+      this.hBa = paramString1;
       this.thumbUrl = paramString2;
       this.scene = paramString3;
-      this.zKx = paramd;
+      this.AbE = paramd;
     }
     
     private Bitmap rI()
     {
       AppMethodBeat.i(97239);
-      Bitmap localBitmap = a.jC(this.hym, this.scene);
+      Bitmap localBitmap = a.jI(this.hBa, this.scene);
       Object localObject;
       if (localBitmap != null)
       {
-        ad.i("SphereImageView.SphereImageLoader", "has shot");
+        ae.i("SphereImageView.SphereImageLoader", "has shot");
         localObject = localBitmap;
       }
       for (;;)
@@ -746,23 +746,23 @@ public final class a
             break label109;
           }
           localObject = localBitmap;
-          localBitmap = h.jJ("adId", this.thumbUrl);
+          localBitmap = h.jP("adId", this.thumbUrl);
           localObject = localBitmap;
           if (localBitmap == null) {
             continue;
           }
           localObject = localBitmap;
-          ad.i("SphereImageView.SphereImageLoader", "has cache thumb");
+          ae.i("SphereImageView.SphereImageLoader", "has cache thumb");
           localObject = localBitmap;
         }
         catch (Throwable localThrowable)
         {
-          ad.e("SphereImageView.SphereImageLoader", "getCachedImg exp:" + localThrowable.toString());
+          ae.e("SphereImageView.SphereImageLoader", "getCachedImg exp:" + localThrowable.toString());
         }
         continue;
         label109:
         localObject = localThrowable;
-        ad.e("SphereImageView.SphereImageLoader", "thumbUrl is empty");
+        ae.e("SphereImageView.SphereImageLoader", "thumbUrl is empty");
         localObject = localThrowable;
       }
     }

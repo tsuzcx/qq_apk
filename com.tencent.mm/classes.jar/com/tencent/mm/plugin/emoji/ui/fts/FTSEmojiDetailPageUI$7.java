@@ -16,8 +16,8 @@ final class FTSEmojiDetailPageUI$7
     AppMethodBeat.i(109105);
     b localb = new b();
     localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/emoji/ui/fts/FTSEmojiDetailPageUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-    FTSEmojiDetailPageUI.c(this.pLW);
+    a.b("com/tencent/mm/plugin/emoji/ui/fts/FTSEmojiDetailPageUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+    FTSEmojiDetailPageUI.c(this.pSB);
     a.a(this, "com/tencent/mm/plugin/emoji/ui/fts/FTSEmojiDetailPageUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(109105);
   }

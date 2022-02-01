@@ -1,48 +1,50 @@
 package com.tencent.mm.plugin.exdevice.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.q;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.i.d;
 import com.tencent.mm.i.g.a;
-import com.tencent.mm.model.ba;
-import com.tencent.mm.model.u;
+import com.tencent.mm.model.bc;
+import com.tencent.mm.model.v;
 import com.tencent.mm.plugin.exdevice.g.b.a.a;
+import com.tencent.mm.plugin.exdevice.model.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.io.ByteArrayOutputStream;
 
 public final class c
   implements g.a
 {
   String appName = null;
-  String qeH = null;
+  String qlm = null;
   
   public final int a(String paramString, int paramInt, com.tencent.mm.i.c paramc, d paramd, boolean paramBoolean)
   {
     AppMethodBeat.i(23502);
-    com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.ExdevicePictureUploader", "cdntra cdnCallback clientid:%s startRet:%d proginfo:[%s] res:[%s]", new Object[] { paramString, Integer.valueOf(paramInt), paramc, paramd });
-    if ((paramd != null) && (paramString.equals(this.qeH))) {
+    ae.d("MicroMsg.ExdevicePictureUploader", "cdntra cdnCallback clientid:%s startRet:%d proginfo:[%s] res:[%s]", new Object[] { paramString, Integer.valueOf(paramInt), paramc, paramd });
+    if ((paramd != null) && (paramString.equals(this.qlm))) {
       if ((paramInt == 0) && (paramd.field_retCode == 0))
       {
-        com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.ExdevicePictureUploader", "hy: transfer done, upload callback success");
-        com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.ExdevicePictureUploader", "transfer done, mediaid=%s, completeInfo=%s", new Object[] { paramString, paramd.toString() });
+        ae.d("MicroMsg.ExdevicePictureUploader", "hy: transfer done, upload callback success");
+        ae.i("MicroMsg.ExdevicePictureUploader", "transfer done, mediaid=%s, completeInfo=%s", new Object[] { paramString, paramd.toString() });
         paramString = new a();
         paramString.field_championUrl = paramd.field_fileUrl;
-        paramString.field_username = u.aAm();
-        b.acz(paramString.field_championUrl);
-        com.tencent.mm.plugin.exdevice.model.ad.clx().a(paramString);
-        com.tencent.mm.plugin.exdevice.model.ad.clB();
+        paramString.field_username = v.aAC();
+        b.adq(paramString.field_championUrl);
+        ad.cmN().a(paramString);
+        ad.cmR();
         paramc = paramString.field_championUrl;
         paramString = paramString.field_championMotto;
-        ba.aiU().a(new m(paramc, paramString), 0);
+        bc.ajj().a(new m(paramc, paramString), 0);
       }
     }
     for (;;)
     {
       AppMethodBeat.o(23502);
       return 0;
-      com.tencent.mm.sdk.platformtools.ad.w("MicroMsg.ExdevicePictureUploader", "hy: transfer done, fail");
+      ae.w("MicroMsg.ExdevicePictureUploader", "hy: transfer done, fail");
       continue;
       if (paramc != null) {
-        com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.ExdevicePictureUploader", "hy: upload progressing....");
+        ae.d("MicroMsg.ExdevicePictureUploader", "hy: upload progressing....");
       }
     }
   }

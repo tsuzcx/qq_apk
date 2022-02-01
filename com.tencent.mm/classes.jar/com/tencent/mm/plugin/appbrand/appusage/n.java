@@ -5,27 +5,27 @@ import com.tencent.mm.plugin.appbrand.config.AppBrandGlobalSystemConfig;
 import com.tencent.mm.plugin.appbrand.config.v;
 import com.tencent.mm.plugin.appbrand.task.f;
 import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 
 @Deprecated
 public final class n
   extends com.tencent.mm.sdk.e.j<m>
 {
-  public static final String[] hEf;
-  private final e jHa;
+  public static final String[] hGX;
+  private final e jKa;
   
   static
   {
     AppMethodBeat.i(44511);
-    hEf = new String[] { com.tencent.mm.sdk.e.j.getCreateSQLs(m.jGU, "AppBrandLocalUsageRecord") };
+    hGX = new String[] { com.tencent.mm.sdk.e.j.getCreateSQLs(m.jJU, "AppBrandLocalUsageRecord") };
     AppMethodBeat.o(44511);
   }
   
   public n(e parame)
   {
-    super(parame, m.jGU, "AppBrandLocalUsageRecord", m.INDEX_CREATE);
-    this.jHa = parame;
+    super(parame, m.jJU, "AppBrandLocalUsageRecord", m.INDEX_CREATE);
+    this.jKa = parame;
   }
   
   private boolean a(m paramm, boolean paramBoolean, String... paramVarArgs)
@@ -55,8 +55,8 @@ public final class n
   public final boolean a(String paramString, int paramInt, a parama)
   {
     AppMethodBeat.i(44507);
-    ad.i("MicroMsg.AppBrandLocalUsageStorage", "addUsage, username %s, type %d, scene %s", new Object[] { paramString, Integer.valueOf(paramInt), parama });
-    if (bt.isNullOrNil(paramString))
+    ae.i("MicroMsg.AppBrandLocalUsageStorage", "addUsage, username %s, type %d, scene %s", new Object[] { paramString, Integer.valueOf(paramInt), parama });
+    if (bu.isNullOrNil(paramString))
     {
       AppMethodBeat.o(44507);
       return false;
@@ -64,9 +64,9 @@ public final class n
     parama = new m();
     parama.field_username = paramString;
     parama.field_versionType = paramInt;
-    if (super.get(parama, m.jFa))
+    if (super.get(parama, m.jHZ))
     {
-      parama.field_updateTime = bt.aQJ();
+      parama.field_updateTime = bu.aRi();
       bool = super.update(parama.systemRowid, parama, false);
       if (bool) {
         doNotify("single", 3, null);
@@ -74,14 +74,14 @@ public final class n
       AppMethodBeat.o(44507);
       return bool;
     }
-    parama.field_updateTime = bt.aQJ();
+    parama.field_updateTime = bu.aRi();
     super.insertNotify(parama, false);
-    boolean bool = super.get(parama, m.jFa);
+    boolean bool = super.get(parama, m.jHZ);
     if (bool)
     {
-      paramInt = AppBrandGlobalSystemConfig.bdT().jWD;
+      paramInt = AppBrandGlobalSystemConfig.bez().jZS;
       paramString = "delete from AppBrandLocalUsageRecord where rowid not in ( select rowid from AppBrandLocalUsageRecord order by updateTime desc  limit " + paramInt + " offset 0)";
-      this.jHa.execSQL("AppBrandLocalUsageRecord", paramString);
+      this.jKa.execSQL("AppBrandLocalUsageRecord", paramString);
       doNotify("single", 2, null);
     }
     AppMethodBeat.o(44507);
@@ -91,8 +91,8 @@ public final class n
   final boolean b(String paramString, int paramInt, a parama)
   {
     AppMethodBeat.i(44508);
-    ad.i("MicroMsg.AppBrandLocalUsageStorage", "removeUsage, username %s, type %d, scene %s", new Object[] { paramString, Integer.valueOf(paramInt), parama });
-    if (bt.isNullOrNil(paramString))
+    ae.i("MicroMsg.AppBrandLocalUsageStorage", "removeUsage, username %s, type %d, scene %s", new Object[] { paramString, Integer.valueOf(paramInt), parama });
+    if (bu.isNullOrNil(paramString))
     {
       AppMethodBeat.o(44508);
       return false;
@@ -100,15 +100,15 @@ public final class n
     m localm = new m();
     localm.field_username = paramString;
     localm.field_versionType = paramInt;
-    boolean bool = a(localm, false, m.jFa);
+    boolean bool = a(localm, false, m.jHZ);
     if (bool) {
       doNotify("single", 5, null);
     }
-    if ((bool) && (a.jOJ == parama)) {
-      com.tencent.mm.plugin.appbrand.app.j.aYV().bh(paramString, paramInt);
+    if ((bool) && (a.jSb == parama)) {
+      com.tencent.mm.plugin.appbrand.app.j.aZs().bk(paramString, paramInt);
     }
-    if ((bool) && (a.jOJ == parama)) {
-      f.bY(v.NE(paramString), paramInt);
+    if ((bool) && (a.jSb == parama)) {
+      f.cc(v.Om(paramString), paramInt);
     }
     AppMethodBeat.o(44508);
     return bool;
@@ -119,9 +119,9 @@ public final class n
     static
     {
       AppMethodBeat.i(44506);
-      jOJ = new a("CHATTING", 0);
-      jOK = new a("USAGE_LIST", 1);
-      jOL = new a[] { jOJ, jOK };
+      jSb = new a("CHATTING", 0);
+      jSc = new a("USAGE_LIST", 1);
+      jSd = new a[] { jSb, jSc };
       AppMethodBeat.o(44506);
     }
     

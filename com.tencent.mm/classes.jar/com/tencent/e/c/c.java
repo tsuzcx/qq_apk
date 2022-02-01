@@ -15,10 +15,10 @@ public final class c
     return paramString;
   }
   
-  public static HandlerThread aRF(String paramString)
+  public static HandlerThread aTc(String paramString)
   {
     AppMethodBeat.i(183236);
-    paramString = a.gV(paramString, 5);
+    paramString = a.he(paramString, 5);
     AppMethodBeat.o(183236);
     return paramString;
   }

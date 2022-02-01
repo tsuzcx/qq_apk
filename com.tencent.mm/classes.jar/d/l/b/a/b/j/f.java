@@ -16,8 +16,8 @@ import java.util.Comparator;
 public class f
   implements Comparator<l>
 {
-  public static final f NvJ;
-  private static final d.l.b.a.b.i.c NvK;
+  public static final f NSP;
+  private static final d.l.b.a.b.i.c NSQ;
   
   static
   {
@@ -26,9 +26,9 @@ public class f
     for (boolean bool = true;; bool = false)
     {
       $assertionsDisabled = bool;
-      NvJ = new f();
-      c.a locala = d.l.b.a.b.i.c.Nth;
-      NvK = c.a.H(new b() {});
+      NSP = new f();
+      c.a locala = d.l.b.a.b.i.c.NQn;
+      NSQ = c.a.K(new b() {});
       AppMethodBeat.o(59953);
       return;
     }
@@ -37,12 +37,12 @@ public class f
   public static final class a
     implements Comparator<l>
   {
-    public static final a NvL;
+    public static final a NSR;
     
     static
     {
       AppMethodBeat.i(59951);
-      NvL = new a();
+      NSR = new a();
       AppMethodBeat.o(59951);
     }
     
@@ -61,7 +61,7 @@ public class f
       }
       if ((paraml instanceof ah))
       {
-        if (((ah)paraml).gin() == null)
+        if (((ah)paraml).gmP() == null)
         {
           AppMethodBeat.o(59947);
           return 6;
@@ -71,7 +71,7 @@ public class f
       }
       if ((paraml instanceof t))
       {
-        if (((t)paraml).gin() == null)
+        if (((t)paraml).gmP() == null)
         {
           AppMethodBeat.o(59947);
           return 4;
@@ -107,7 +107,7 @@ public class f
         AppMethodBeat.o(59948);
         return Integer.valueOf(0);
       }
-      i = paraml1.giD().u(paraml2.giD());
+      i = paraml1.gnf().u(paraml2.gnf());
       if (i != 0)
       {
         AppMethodBeat.o(59948);
@@ -120,7 +120,7 @@ public class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.j.f
  * JD-Core Version:    0.7.0.1
  */

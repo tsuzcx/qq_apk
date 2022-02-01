@@ -13,16 +13,16 @@ import d.g.b.p;
 import d.l;
 import java.util.ArrayList;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/view/animation/RefreshItemAnimation;", "Lcom/tencent/mm/plugin/finder/view/animation/DefaultItemAnimator;", "()V", "animateAdd", "", "holder", "Landroid/support/v7/widget/RecyclerView$ViewHolder;", "animateAddImpl", "", "animateRemove", "animateRemoveImpl", "getAddDelay", "", "getAddDuration", "getRemoveDelay", "getRemoveDuration", "Companion", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/view/animation/RefreshItemAnimation;", "Lcom/tencent/mm/plugin/finder/view/animation/DefaultItemAnimator;", "()V", "animateAdd", "", "holder", "Landroid/support/v7/widget/RecyclerView$ViewHolder;", "animateAddImpl", "", "animateRemove", "animateRemoveImpl", "getAddDelay", "", "getAddDuration", "getRemoveDelay", "getRemoveDuration", "Companion", "plugin-finder_release"})
 public final class d
   extends a
 {
-  public static final a sXB;
+  public static final a tiP;
   
   static
   {
     AppMethodBeat.i(168472);
-    sXB = new a((byte)0);
+    tiP = new a((byte)0);
     AppMethodBeat.o(168472);
   }
   
@@ -30,7 +30,7 @@ public final class d
   {
     AppMethodBeat.i(168469);
     if (paramw == null) {
-      p.gfZ();
+      p.gkB();
     }
     final View localView = paramw.auu;
     p.g(localView, "holder!!.itemView");
@@ -50,7 +50,7 @@ public final class d
   {
     AppMethodBeat.i(168471);
     if (paramw == null) {
-      p.gfZ();
+      p.gkB();
     }
     final View localView = paramw.auu;
     p.g(localView, "holder!!.itemView");
@@ -93,7 +93,7 @@ public final class d
     return true;
   }
   
-  protected final long cNF()
+  protected final long cQp()
   {
     return 0L;
   }
@@ -108,10 +108,10 @@ public final class d
     return 200L;
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/view/animation/RefreshItemAnimation$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/view/animation/RefreshItemAnimation$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
   public static final class a {}
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/finder/view/animation/RefreshItemAnimation$animateAddImpl$1", "Landroid/animation/AnimatorListenerAdapter;", "onAnimationCancel", "", "animator", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationStart", "plugin-finder_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/finder/view/animation/RefreshItemAnimation$animateAddImpl$1", "Landroid/animation/AnimatorListenerAdapter;", "onAnimationCancel", "", "animator", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationStart", "plugin-finder_release"})
   public static final class b
     extends AnimatorListenerAdapter
   {
@@ -131,9 +131,9 @@ public final class d
       p.h(paramAnimator, "animator");
       e.el(localView);
       localViewPropertyAnimator.setListener(null);
-      this.sXC.y(paramw);
-      this.sXC.amf.remove(paramw);
-      this.sXC.jv();
+      this.tiQ.y(paramw);
+      this.tiQ.amf.remove(paramw);
+      this.tiQ.jv();
       AppMethodBeat.o(168464);
     }
     
@@ -145,7 +145,7 @@ public final class d
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/finder/view/animation/RefreshItemAnimation$animateRemoveImpl$1", "Landroid/animation/AnimatorListenerAdapter;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "animator", "onAnimationStart", "plugin-finder_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/finder/view/animation/RefreshItemAnimation$animateRemoveImpl$1", "Landroid/animation/AnimatorListenerAdapter;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "animator", "onAnimationStart", "plugin-finder_release"})
   public static final class c
     extends AnimatorListenerAdapter
   {
@@ -165,9 +165,9 @@ public final class d
       p.h(paramAnimator, "animator");
       e.el(localView);
       localViewPropertyAnimator1.setListener(null);
-      this.sXC.w(paramw);
-      this.sXC.amh.remove(paramw);
-      this.sXC.jv();
+      this.tiQ.w(paramw);
+      this.tiQ.amh.remove(paramw);
+      this.tiQ.jv();
       AppMethodBeat.o(168467);
     }
     
@@ -175,7 +175,7 @@ public final class d
     {
       AppMethodBeat.i(168465);
       p.h(paramAnimator, "animator");
-      this.sXC.z(paramw);
+      this.tiQ.z(paramw);
       AppMethodBeat.o(168465);
     }
   }

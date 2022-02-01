@@ -8,35 +8,39 @@ public abstract class df
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eFp;
-  private static final int eFw;
-  private static final int eHT;
-  private static final int eST = "state".hashCode();
-  private static final int feI = "todoid".hashCode();
-  private static final int feJ = "roomname".hashCode();
-  private static final int feK;
-  private static final int feL;
-  private static final int feM;
-  private static final int feN;
-  private static final int feO;
-  private static final int feP;
-  private static final int feQ = "netSceneState".hashCode();
-  private static final int feu;
+  private static final int eGY;
+  private static final int eHf;
+  private static final int eJC;
+  private static final int eUE = "state".hashCode();
+  private static final int fgD = "todoid".hashCode();
+  private static final int fgE = "roomname".hashCode();
+  private static final int fgF;
+  private static final int fgG;
+  private static final int fgH;
+  private static final int fgI;
+  private static final int fgJ;
+  private static final int fgK;
+  private static final int fgL = "netSceneState".hashCode();
+  private static final int fgM = "shareKey".hashCode();
+  private static final int fgN = "shareName".hashCode();
+  private static final int fgn;
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eFm = true;
-  private boolean eFs = true;
-  private boolean eHQ = true;
-  private boolean eSh = true;
-  private boolean feA = true;
-  private boolean feB = true;
-  private boolean feC = true;
-  private boolean feD = true;
-  private boolean feE = true;
-  private boolean feF = true;
-  private boolean feG = true;
-  private boolean feH = true;
-  private boolean fep = true;
-  private boolean fez = true;
+  private boolean eGV = true;
+  private boolean eHb = true;
+  private boolean eJz = true;
+  private boolean eTS = true;
+  private boolean fgA = true;
+  private boolean fgB = true;
+  private boolean fgC = true;
+  private boolean fgi = true;
+  private boolean fgs = true;
+  private boolean fgt = true;
+  private boolean fgu = true;
+  private boolean fgv = true;
+  private boolean fgw = true;
+  private boolean fgx = true;
+  private boolean fgy = true;
+  private boolean fgz = true;
   public long field_createtime;
   public String field_creator;
   public String field_custominfo;
@@ -46,6 +50,8 @@ public abstract class df
   public String field_path;
   public String field_related_msgids;
   public String field_roomname;
+  public String field_shareKey;
+  public String field_shareName;
   public int field_state;
   public String field_title;
   public String field_todoid;
@@ -54,16 +60,16 @@ public abstract class df
   
   static
   {
-    eFp = "username".hashCode();
-    eFw = "path".hashCode();
-    feK = "createtime".hashCode();
-    feL = "updatetime".hashCode();
-    feM = "custominfo".hashCode();
-    eHT = "title".hashCode();
-    feu = "creator".hashCode();
-    feN = "related_msgids".hashCode();
-    feO = "manager".hashCode();
-    feP = "nreply".hashCode();
+    eGY = "username".hashCode();
+    eHf = "path".hashCode();
+    fgF = "createtime".hashCode();
+    fgG = "updatetime".hashCode();
+    fgH = "custominfo".hashCode();
+    eJC = "title".hashCode();
+    fgn = "creator".hashCode();
+    fgI = "related_msgids".hashCode();
+    fgJ = "manager".hashCode();
+    fgK = "nreply".hashCode();
   }
   
   public void convertFrom(Cursor paramCursor)
@@ -79,7 +85,7 @@ public abstract class df
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (feI != k) {
+      if (fgD != k) {
         break label60;
       }
       this.field_todoid = paramCursor.getString(i);
@@ -90,32 +96,36 @@ public abstract class df
       break label20;
       break;
       label60:
-      if (feJ == k) {
+      if (fgE == k) {
         this.field_roomname = paramCursor.getString(i);
-      } else if (eFp == k) {
+      } else if (eGY == k) {
         this.field_username = paramCursor.getString(i);
-      } else if (eFw == k) {
+      } else if (eHf == k) {
         this.field_path = paramCursor.getString(i);
-      } else if (feK == k) {
+      } else if (fgF == k) {
         this.field_createtime = paramCursor.getLong(i);
-      } else if (feL == k) {
+      } else if (fgG == k) {
         this.field_updatetime = paramCursor.getLong(i);
-      } else if (feM == k) {
+      } else if (fgH == k) {
         this.field_custominfo = paramCursor.getString(i);
-      } else if (eHT == k) {
+      } else if (eJC == k) {
         this.field_title = paramCursor.getString(i);
-      } else if (feu == k) {
+      } else if (fgn == k) {
         this.field_creator = paramCursor.getString(i);
-      } else if (feN == k) {
+      } else if (fgI == k) {
         this.field_related_msgids = paramCursor.getString(i);
-      } else if (feO == k) {
+      } else if (fgJ == k) {
         this.field_manager = paramCursor.getString(i);
-      } else if (feP == k) {
+      } else if (fgK == k) {
         this.field_nreply = paramCursor.getInt(i);
-      } else if (eST == k) {
+      } else if (eUE == k) {
         this.field_state = paramCursor.getInt(i);
-      } else if (feQ == k) {
+      } else if (fgL == k) {
         this.field_netSceneState = paramCursor.getInt(i);
+      } else if (fgM == k) {
+        this.field_shareKey = paramCursor.getString(i);
+      } else if (fgN == k) {
+        this.field_shareName = paramCursor.getString(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -125,62 +135,59 @@ public abstract class df
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.fez) {
+    if (this.fgs) {
       localContentValues.put("todoid", this.field_todoid);
     }
-    if (this.feA) {
+    if (this.fgt) {
       localContentValues.put("roomname", this.field_roomname);
     }
-    if (this.eFm) {
+    if (this.eGV) {
       localContentValues.put("username", this.field_username);
     }
-    if (this.field_path == null) {
-      this.field_path = "小程序字段";
-    }
-    if (this.eFs) {
+    if (this.eHb) {
       localContentValues.put("path", this.field_path);
     }
-    if (this.feB) {
+    if (this.fgu) {
       localContentValues.put("createtime", Long.valueOf(this.field_createtime));
     }
-    if (this.feC) {
+    if (this.fgv) {
       localContentValues.put("updatetime", Long.valueOf(this.field_updatetime));
     }
     if (this.field_custominfo == null) {
       this.field_custominfo = "";
     }
-    if (this.feD) {
+    if (this.fgw) {
       localContentValues.put("custominfo", this.field_custominfo);
     }
     if (this.field_title == null) {
       this.field_title = "";
     }
-    if (this.eHQ) {
+    if (this.eJz) {
       localContentValues.put("title", this.field_title);
     }
-    if (this.field_creator == null) {
-      this.field_creator = "创建者username";
-    }
-    if (this.fep) {
+    if (this.fgi) {
       localContentValues.put("creator", this.field_creator);
     }
-    if (this.feE) {
+    if (this.fgx) {
       localContentValues.put("related_msgids", this.field_related_msgids);
     }
-    if (this.field_manager == null) {
-      this.field_manager = "管理员username";
-    }
-    if (this.feF) {
+    if (this.fgy) {
       localContentValues.put("manager", this.field_manager);
     }
-    if (this.feG) {
+    if (this.fgz) {
       localContentValues.put("nreply", Integer.valueOf(this.field_nreply));
     }
-    if (this.eSh) {
+    if (this.eTS) {
       localContentValues.put("state", Integer.valueOf(this.field_state));
     }
-    if (this.feH) {
+    if (this.fgA) {
       localContentValues.put("netSceneState", Integer.valueOf(this.field_netSceneState));
+    }
+    if (this.fgB) {
+      localContentValues.put("shareKey", this.field_shareKey);
+    }
+    if (this.fgC) {
+      localContentValues.put("shareName", this.field_shareName);
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));
@@ -190,7 +197,7 @@ public abstract class df
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.c.df
  * JD-Core Version:    0.7.0.1
  */

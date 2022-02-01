@@ -7,26 +7,26 @@ import java.nio.ByteBuffer;
 public final class j
 {
   public static final byte[] EMPTY_BYTE_ARRAY;
-  public static final ByteBuffer Nrp;
+  public static final ByteBuffer NOv;
   
   static
   {
     AppMethodBeat.i(59480);
     byte[] arrayOfByte = new byte[0];
     EMPTY_BYTE_ARRAY = arrayOfByte;
-    Nrp = ByteBuffer.wrap(arrayOfByte);
+    NOv = ByteBuffer.wrap(arrayOfByte);
     AppMethodBeat.o(59480);
   }
   
-  public static boolean dc(byte[] paramArrayOfByte)
+  public static boolean df(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(59478);
-    boolean bool = y.L(paramArrayOfByte, 0, paramArrayOfByte.length);
+    boolean bool = y.M(paramArrayOfByte, 0, paramArrayOfByte.length);
     AppMethodBeat.o(59478);
     return bool;
   }
   
-  public static String dd(byte[] paramArrayOfByte)
+  public static String dg(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(59479);
     try
@@ -41,16 +41,6 @@ public final class j
       AppMethodBeat.o(59479);
       throw paramArrayOfByte;
     }
-  }
-  
-  public static abstract interface a
-  {
-    public abstract int getNumber();
-  }
-  
-  public static abstract interface b<T extends j.a>
-  {
-    public abstract T ajA(int paramInt);
   }
 }
 

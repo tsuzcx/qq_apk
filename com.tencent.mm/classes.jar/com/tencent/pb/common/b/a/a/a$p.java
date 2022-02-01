@@ -7,9 +7,9 @@ import com.google.b.a.e;
 public final class a$p
   extends e
 {
-  private static volatile p[] LGy;
-  public String LGA = "";
-  public int LGz = 0;
+  private static volatile p[] MdC;
+  public int MdD = 0;
+  public String MdE = "";
   public int port = 0;
   
   public a$p()
@@ -17,28 +17,28 @@ public final class a$p
     this.bQO = -1;
   }
   
-  public static p[] fSY()
+  public static p[] fXy()
   {
-    if (LGy == null) {}
+    if (MdC == null) {}
     synchronized (c.bQN)
     {
-      if (LGy == null) {
-        LGy = new p[0];
+      if (MdC == null) {
+        MdC = new p[0];
       }
-      return LGy;
+      return MdC;
     }
   }
   
   public final void a(b paramb)
   {
-    if (this.LGz != 0) {
-      paramb.by(1, this.LGz);
+    if (this.MdD != 0) {
+      paramb.by(1, this.MdD);
     }
     if (this.port != 0) {
       paramb.bx(2, this.port);
     }
-    if (!this.LGA.equals("")) {
-      paramb.d(3, this.LGA);
+    if (!this.MdE.equals("")) {
+      paramb.d(3, this.MdE);
     }
     super.a(paramb);
   }
@@ -47,16 +47,16 @@ public final class a$p
   {
     int j = super.zq();
     int i = j;
-    if (this.LGz != 0) {
-      i = j + b.bA(1, this.LGz);
+    if (this.MdD != 0) {
+      i = j + b.bA(1, this.MdD);
     }
     j = i;
     if (this.port != 0) {
       j = i + b.bz(2, this.port);
     }
     i = j;
-    if (!this.LGA.equals("")) {
-      i = j + b.e(3, this.LGA);
+    if (!this.MdE.equals("")) {
+      i = j + b.e(3, this.MdE);
     }
     return i;
   }

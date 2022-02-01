@@ -4,7 +4,7 @@ import android.graphics.Bitmap;
 import android.graphics.Rect;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.vlog.model.aa;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import d.g.a.a;
 import d.g.a.m;
 import d.g.b.p;
@@ -13,191 +13,191 @@ import d.l;
 import d.z;
 import java.nio.IntBuffer;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/vlog/player/VLogDirector;", "", "width", "", "height", "textureWidth", "textureHeight", "widthScale", "", "heightScale", "loop", "", "previewPlay", "(IIIIFFZZ)V", "(IIZZ)V", "cropRect", "Landroid/graphics/Rect;", "drawCount", "durationMs", "getDurationMs", "()I", "setDurationMs", "(I)V", "getHeight", "lastPlayTime", "", "getLoop", "()Z", "setLoop", "(Z)V", "nextDrawTimeDelay", "onEnd", "Lkotlin/Function1;", "", "getOnEnd", "()Lkotlin/jvm/functions/Function1;", "setOnEnd", "(Lkotlin/jvm/functions/Function1;)V", "onProgress", "Lkotlin/Function2;", "getOnProgress", "()Lkotlin/jvm/functions/Function2;", "setOnProgress", "(Lkotlin/jvm/functions/Function2;)V", "prepared", "pts", "getPts", "()J", "setPts", "(J)V", "render", "Lcom/tencent/mm/media/render/proc/GLTextureRenderProcBlend;", "scriptReader", "Lcom/tencent/mm/plugin/vlog/player/VLogScriptReader;", "snapShotCallback", "Ljava/nio/IntBuffer;", "Lkotlin/ParameterName;", "name", "buffer", "getSnapShotCallback", "setSnapShotCallback", "vLogSurface", "Lcom/tencent/mm/plugin/vlog/player/VLogSurface;", "getWidth", "drawPreloadFrame", "getNextPtsStep", "getSize", "Landroid/util/Size;", "pause", "playNextFrame", "blendBitmap", "Landroid/graphics/Bitmap;", "withSnapshot", "drawCallback", "Lkotlin/Function0;", "preloadOneFrame", "release", "reset", "resetPts", "resume", "setCallback", "setCropRect", "rect", "setFrameRate", "videoFps", "imageFps", "setMute", "mute", "setScript", "scriptModel", "Lcom/tencent/mm/plugin/vlog/model/VLogScriptModel;", "musicUrl", "", "setSnapshotCallback", "callback", "setVLogSurface", "updateDrawSize", "videoDecodeEnd", "Companion", "plugin-vlog_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/vlog/player/VLogDirector;", "", "width", "", "height", "textureWidth", "textureHeight", "widthScale", "", "heightScale", "loop", "", "previewPlay", "(IIIIFFZZ)V", "(IIZZ)V", "cropRect", "Landroid/graphics/Rect;", "drawCount", "durationMs", "getDurationMs", "()I", "setDurationMs", "(I)V", "getHeight", "lastPlayTime", "", "getLoop", "()Z", "setLoop", "(Z)V", "nextDrawTimeDelay", "onEnd", "Lkotlin/Function1;", "", "getOnEnd", "()Lkotlin/jvm/functions/Function1;", "setOnEnd", "(Lkotlin/jvm/functions/Function1;)V", "onProgress", "Lkotlin/Function2;", "getOnProgress", "()Lkotlin/jvm/functions/Function2;", "setOnProgress", "(Lkotlin/jvm/functions/Function2;)V", "prepared", "pts", "getPts", "()J", "setPts", "(J)V", "render", "Lcom/tencent/mm/media/render/proc/GLTextureRenderProcBlend;", "scriptReader", "Lcom/tencent/mm/plugin/vlog/player/VLogScriptReader;", "snapShotCallback", "Ljava/nio/IntBuffer;", "Lkotlin/ParameterName;", "name", "buffer", "getSnapShotCallback", "setSnapShotCallback", "vLogSurface", "Lcom/tencent/mm/plugin/vlog/player/VLogSurface;", "getWidth", "drawPreloadFrame", "getNextPtsStep", "getSize", "Landroid/util/Size;", "pause", "playNextFrame", "blendBitmap", "Landroid/graphics/Bitmap;", "withSnapshot", "drawCallback", "Lkotlin/Function0;", "preloadOneFrame", "release", "reset", "resetPts", "resume", "setCallback", "setCropRect", "rect", "setFrameRate", "videoFps", "imageFps", "setMute", "mute", "setScript", "scriptModel", "Lcom/tencent/mm/plugin/vlog/model/VLogScriptModel;", "musicUrl", "", "setSnapshotCallback", "callback", "setVLogSurface", "updateDrawSize", "videoDecodeEnd", "Companion", "plugin-vlog_release"})
 public final class c
 {
-  public static final a BIj;
-  private long AAY;
-  private i BIb;
-  private com.tencent.mm.media.j.b.b BIc;
-  public k BId;
-  public m<? super Long, ? super Long, z> BIe;
-  public d.g.a.b<? super Long, z> BIf;
-  public d.g.a.b<? super IntBuffer, z> BIg;
-  public long BIh;
-  private final boolean BIi;
+  public static final a BZI;
+  private long ASt;
+  private i BZA;
+  private com.tencent.mm.media.j.b.b BZB;
+  public k BZC;
+  public m<? super Long, ? super Long, z> BZD;
+  public d.g.a.b<? super Long, z> BZE;
+  public d.g.a.b<? super IntBuffer, z> BZF;
+  public long BZG;
+  private final boolean BZH;
   private boolean bdb;
-  private int gKJ;
-  private int gKK;
-  private int gfZ;
+  private int gNs;
+  private int gNt;
+  private int gir;
   public final int height;
-  private Rect hmm;
-  int imR;
+  private Rect hpa;
+  int ipL;
+  private float lDA;
+  private float lDz;
   private boolean loop;
-  private float lzb;
-  private float lzc;
   long pts;
   public final int width;
   
   static
   {
-    AppMethodBeat.i(195925);
-    BIj = new a((byte)0);
-    AppMethodBeat.o(195925);
+    AppMethodBeat.i(191385);
+    BZI = new a((byte)0);
+    AppMethodBeat.o(191385);
   }
   
   public c(int paramInt1, int paramInt2, int paramInt3, int paramInt4, float paramFloat1, float paramFloat2)
   {
     this(paramInt1, paramInt2, false, false);
-    AppMethodBeat.i(195924);
-    this.lzb = paramFloat1;
-    this.lzc = paramFloat2;
-    this.gKJ = paramInt3;
-    this.gKK = paramInt4;
-    ad.i("MicroMsg.VLogDirector", "create VLogDirector, scale:[" + paramFloat1 + ", " + paramFloat2 + "], texture:[" + paramInt3 + ", " + paramInt4 + ']');
-    AppMethodBeat.o(195924);
+    AppMethodBeat.i(191384);
+    this.lDz = paramFloat1;
+    this.lDA = paramFloat2;
+    this.gNs = paramInt3;
+    this.gNt = paramInt4;
+    ae.i("MicroMsg.VLogDirector", "create VLogDirector, scale:[" + paramFloat1 + ", " + paramFloat2 + "], texture:[" + paramInt3 + ", " + paramInt4 + ']');
+    AppMethodBeat.o(191384);
   }
   
   private c(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2)
   {
-    AppMethodBeat.i(195923);
+    AppMethodBeat.i(191383);
     this.width = paramInt1;
     this.height = paramInt2;
     this.loop = paramBoolean1;
-    this.BIi = paramBoolean2;
-    this.BIb = new i(this.BIi);
-    this.lzb = 1.0F;
-    this.lzc = 1.0F;
+    this.BZH = paramBoolean2;
+    this.BZA = new i(this.BZH);
+    this.lDz = 1.0F;
+    this.lDA = 1.0F;
     this.pts = -1L;
-    AppMethodBeat.o(195923);
+    AppMethodBeat.o(191383);
   }
   
-  private final void esH()
+  private final void ewo()
   {
     this.pts = 0L;
-    this.gfZ = 0;
+    this.gir = 0;
   }
   
   public final void a(final aa paramaa, int paramInt, String paramString)
   {
-    AppMethodBeat.i(195913);
+    AppMethodBeat.i(191373);
     p.h(paramaa, "scriptModel");
     p.h(paramString, "musicUrl");
-    ad.i("MicroMsg.VLogDirector", hashCode() + "  setScript  durationMs :" + paramInt + "  musicUrl:" + paramString);
-    this.imR = paramInt;
-    esH();
+    ae.i("MicroMsg.VLogDirector", hashCode() + "  setScript  durationMs :" + paramInt + "  musicUrl:" + paramString);
+    this.ipL = paramInt;
+    ewo();
     this.bdb = true;
-    paramString = this.BId;
+    paramString = this.BZC;
     if (paramString != null)
     {
-      paramString.h((a)new h(this, paramaa));
-      AppMethodBeat.o(195913);
+      paramString.i((a)new h(this, paramaa));
+      AppMethodBeat.o(191373);
       return;
     }
-    AppMethodBeat.o(195913);
+    AppMethodBeat.o(191373);
   }
   
   public final void a(final k paramk)
   {
-    AppMethodBeat.i(195917);
+    AppMethodBeat.i(191377);
     p.h(paramk, "vLogSurface");
-    ad.i("MicroMsg.VLogDirector", hashCode() + " setSurface");
-    this.BId = paramk;
-    paramk.h((a)new i(this, paramk));
-    AppMethodBeat.o(195917);
+    ae.i("MicroMsg.VLogDirector", hashCode() + " setSurface");
+    this.BZC = paramk;
+    paramk.i((a)new i(this, paramk));
+    AppMethodBeat.o(191377);
   }
   
   public final void cS(final int paramInt1, final int paramInt2)
   {
-    AppMethodBeat.i(195918);
-    ad.i("MicroMsg.VLogDirector", hashCode() + " updateDrawSize:[" + paramInt1 + ", " + paramInt2 + ']');
-    k localk = this.BId;
+    AppMethodBeat.i(191378);
+    ae.i("MicroMsg.VLogDirector", hashCode() + " updateDrawSize:[" + paramInt1 + ", " + paramInt2 + ']');
+    k localk = this.BZC;
     if (localk != null)
     {
-      localk.h((a)new j(this, paramInt1, paramInt2));
-      AppMethodBeat.o(195918);
+      localk.i((a)new j(this, paramInt1, paramInt2));
+      AppMethodBeat.o(191378);
       return;
     }
-    AppMethodBeat.o(195918);
+    AppMethodBeat.o(191378);
   }
   
-  public final void esF()
+  public final void ewm()
   {
-    AppMethodBeat.i(195915);
-    i locali = this.BIb;
-    locali.BIH = 33L;
-    locali.BII = 33L;
-    ad.i("MicroMsg.VLogScriptReader", "videoPtsStep :" + locali.BIH + " imagePtsStep:" + locali.BII);
-    AppMethodBeat.o(195915);
+    AppMethodBeat.i(191375);
+    i locali = this.BZA;
+    locali.Cag = 33L;
+    locali.Cah = 33L;
+    ae.i("MicroMsg.VLogScriptReader", "videoPtsStep :" + locali.Cag + " imagePtsStep:" + locali.Cah);
+    AppMethodBeat.o(191375);
   }
   
-  public final void esG()
+  public final void ewn()
   {
-    AppMethodBeat.i(195919);
-    k localk = this.BId;
+    AppMethodBeat.i(191379);
+    k localk = this.BZC;
     if (localk != null)
     {
-      localk.h((a)new b(this));
-      AppMethodBeat.o(195919);
+      localk.i((a)new b(this));
+      AppMethodBeat.o(191379);
       return;
     }
-    AppMethodBeat.o(195919);
+    AppMethodBeat.o(191379);
   }
   
   public final void release()
   {
-    AppMethodBeat.i(195921);
-    ad.m("MicroMsg.VLogDirector", "VLogRelease into VLogDirector#release 1", new Object[0]);
-    Object localObject = this.BId;
+    AppMethodBeat.i(191381);
+    ae.m("MicroMsg.VLogDirector", "VLogRelease into VLogDirector#release 1", new Object[0]);
+    Object localObject = this.BZC;
     if (localObject != null)
     {
-      ad.d("MicroMsg.VLogDirector", "VLogRelease into VLogDirector#release 2");
-      ((k)localObject).h((a)new e(this));
+      ae.d("MicroMsg.VLogDirector", "VLogRelease into VLogDirector#release 2");
+      ((k)localObject).i((a)new e(this));
     }
-    localObject = this.BId;
+    localObject = this.BZC;
     if (localObject != null) {
       ((k)localObject).release();
     }
-    localObject = e.BIv;
+    localObject = e.BZU;
     e.clearCache();
-    AppMethodBeat.o(195921);
+    AppMethodBeat.o(191381);
   }
   
   public final void setCropRect(Rect paramRect)
   {
-    AppMethodBeat.i(195916);
+    AppMethodBeat.i(191376);
     if (paramRect != null)
     {
-      ad.i("MicroMsg.VLogDirector", "setCropRect:" + paramRect + ", width:" + this.width + ", height:" + this.height + ", textureWidth:" + this.gKJ + ", textureHeight:" + this.gKK);
-      this.hmm = new Rect(paramRect);
-      paramRect = this.BIc;
+      ae.i("MicroMsg.VLogDirector", "setCropRect:" + paramRect + ", width:" + this.width + ", height:" + this.height + ", textureWidth:" + this.gNs + ", textureHeight:" + this.gNt);
+      this.hpa = new Rect(paramRect);
+      paramRect = this.BZB;
       if (paramRect != null)
       {
-        paramRect.hnr = this.hmm;
-        AppMethodBeat.o(195916);
+        paramRect.hqf = this.hpa;
+        AppMethodBeat.o(191376);
         return;
       }
     }
-    AppMethodBeat.o(195916);
+    AppMethodBeat.o(191376);
   }
   
   public final void setMute(final boolean paramBoolean)
   {
-    AppMethodBeat.i(195922);
-    k localk = this.BId;
+    AppMethodBeat.i(191382);
+    k localk = this.BZC;
     if (localk != null)
     {
-      localk.h((a)new g(this, paramBoolean));
-      AppMethodBeat.o(195922);
+      localk.i((a)new g(this, paramBoolean));
+      AppMethodBeat.o(191382);
       return;
     }
-    AppMethodBeat.o(195922);
+    AppMethodBeat.o(191382);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/vlog/player/VLogDirector$Companion;", "", "()V", "TAG", "", "plugin-vlog_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/vlog/player/VLogDirector$Companion;", "", "()V", "TAG", "", "plugin-vlog_release"})
   public static final class a {}
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke", "com/tencent/mm/plugin/vlog/player/VLogDirector$drawPreloadFrame$1$1"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke", "com/tencent/mm/plugin/vlog/player/VLogDirector$drawPreloadFrame$1$1"})
   static final class b
     extends q
     implements a<z>
@@ -208,7 +208,7 @@ public final class c
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke", "com/tencent/mm/plugin/vlog/player/VLogDirector$pause$1$1"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke", "com/tencent/mm/plugin/vlog/player/VLogDirector$pause$1$1"})
   public static final class c
     extends q
     implements a<z>
@@ -219,7 +219,7 @@ public final class c
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke", "com/tencent/mm/plugin/vlog/player/VLogDirector$playNextFrame$1$1"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke", "com/tencent/mm/plugin/vlog/player/VLogDirector$playNextFrame$1$1"})
   static final class d
     extends q
     implements a<z>
@@ -230,7 +230,7 @@ public final class c
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke", "com/tencent/mm/plugin/vlog/player/VLogDirector$release$1$1"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke", "com/tencent/mm/plugin/vlog/player/VLogDirector$release$1$1"})
   static final class e
     extends q
     implements a<z>
@@ -241,7 +241,7 @@ public final class c
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke", "com/tencent/mm/plugin/vlog/player/VLogDirector$resume$1$1"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke", "com/tencent/mm/plugin/vlog/player/VLogDirector$resume$1$1"})
   public static final class f
     extends q
     implements a<z>
@@ -252,7 +252,7 @@ public final class c
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke", "com/tencent/mm/plugin/vlog/player/VLogDirector$setMute$1$1"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke", "com/tencent/mm/plugin/vlog/player/VLogDirector$setMute$1$1"})
   static final class g
     extends q
     implements a<z>
@@ -263,7 +263,7 @@ public final class c
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
   static final class h
     extends q
     implements a<z>
@@ -274,7 +274,7 @@ public final class c
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
   static final class i
     extends q
     implements a<z>
@@ -285,7 +285,7 @@ public final class c
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
   static final class j
     extends q
     implements a<z>

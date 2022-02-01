@@ -19,7 +19,7 @@ import com.tencent.mm.ui.MMActivity;
 public class ResourcesExceedUI
   extends MMActivity
 {
-  private TextView JEb;
+  private TextView JYS;
   private int type = 0;
   
   public void finish()
@@ -40,7 +40,7 @@ public class ResourcesExceedUI
     AppMethodBeat.i(34870);
     hideTitleView();
     fullScreenNoTitleBar(true);
-    if (d.ly(19))
+    if (d.lA(19))
     {
       getWindow().setFlags(201327616, 201327616);
       setBackBtn(new MenuItem.OnMenuItemClickListener()
@@ -53,7 +53,7 @@ public class ResourcesExceedUI
           return true;
         }
       });
-      this.JEb = ((TextView)findViewById(2131299205));
+      this.JYS = ((TextView)findViewById(2131299205));
       switch (this.type)
       {
       }
@@ -68,7 +68,7 @@ public class ResourcesExceedUI
           b localb = new b();
           localb.bd(paramAnonymousView);
           localb.bd(paramAnonymousMotionEvent);
-          a.b("com/tencent/mm/ui/chatting/ResourcesExceedUI$2", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahq());
+          a.b("com/tencent/mm/ui/chatting/ResourcesExceedUI$2", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahF());
           ResourcesExceedUI.this.finish();
           a.a(false, this, "com/tencent/mm/ui/chatting/ResourcesExceedUI$2", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
           AppMethodBeat.o(34868);
@@ -79,11 +79,11 @@ public class ResourcesExceedUI
       return;
       getWindow().setFlags(1024, 1024);
       break;
-      this.JEb.setText(2131764677);
+      this.JYS.setText(2131764677);
       continue;
-      this.JEb.setText(2131759063);
+      this.JYS.setText(2131759063);
       continue;
-      this.JEb.setText(2131760324);
+      this.JYS.setText(2131760324);
     }
   }
   

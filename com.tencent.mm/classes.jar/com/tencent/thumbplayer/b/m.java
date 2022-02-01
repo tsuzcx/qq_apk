@@ -2,9 +2,9 @@ package com.tencent.thumbplayer.b;
 
 public final class m
 {
-  public long LWv;
-  public String LZk;
-  public long LZl;
+  public long Mtq;
+  public String Mwf;
+  public long Mwg;
 }
 
 

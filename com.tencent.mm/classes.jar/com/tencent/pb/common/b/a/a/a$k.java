@@ -8,11 +8,11 @@ import java.util.Arrays;
 public final class a$k
   extends e
 {
-  public int CcE = 0;
-  public long CcF = 0L;
-  public a.bd LFZ = null;
-  public int LGb = 0;
-  public byte[] LGl = g.bQV;
+  public int Cuf = 0;
+  public long Cug = 0L;
+  public a.bd Mdd = null;
+  public int Mdf = 0;
+  public byte[] Mdp = g.bQV;
   public String groupId = "";
   
   public a$k()
@@ -25,20 +25,20 @@ public final class a$k
     if (!this.groupId.equals("")) {
       paramb.d(1, this.groupId);
     }
-    if (this.CcE != 0) {
-      paramb.bx(2, this.CcE);
+    if (this.Cuf != 0) {
+      paramb.bx(2, this.Cuf);
     }
-    if (this.CcF != 0L) {
-      paramb.n(3, this.CcF);
+    if (this.Cug != 0L) {
+      paramb.n(3, this.Cug);
     }
-    if (this.LFZ != null) {
-      paramb.a(4, this.LFZ);
+    if (this.Mdd != null) {
+      paramb.a(4, this.Mdd);
     }
-    if (this.LGb != 0) {
-      paramb.by(5, this.LGb);
+    if (this.Mdf != 0) {
+      paramb.by(5, this.Mdf);
     }
-    if (!Arrays.equals(this.LGl, g.bQV)) {
-      paramb.b(200, this.LGl);
+    if (!Arrays.equals(this.Mdp, g.bQV)) {
+      paramb.b(200, this.Mdp);
     }
     super.a(paramb);
   }
@@ -51,24 +51,24 @@ public final class a$k
       i = j + b.e(1, this.groupId);
     }
     j = i;
-    if (this.CcE != 0) {
-      j = i + b.bz(2, this.CcE);
+    if (this.Cuf != 0) {
+      j = i + b.bz(2, this.Cuf);
     }
     i = j;
-    if (this.CcF != 0L) {
-      i = j + b.p(3, this.CcF);
+    if (this.Cug != 0L) {
+      i = j + b.p(3, this.Cug);
     }
     j = i;
-    if (this.LFZ != null) {
-      j = i + b.b(4, this.LFZ);
+    if (this.Mdd != null) {
+      j = i + b.b(4, this.Mdd);
     }
     i = j;
-    if (this.LGb != 0) {
-      i = j + b.bA(5, this.LGb);
+    if (this.Mdf != 0) {
+      i = j + b.bA(5, this.Mdf);
     }
     j = i;
-    if (!Arrays.equals(this.LGl, g.bQV)) {
-      j = i + b.c(200, this.LGl);
+    if (!Arrays.equals(this.Mdp, g.bQV)) {
+      j = i + b.c(200, this.Mdp);
     }
     return j;
   }

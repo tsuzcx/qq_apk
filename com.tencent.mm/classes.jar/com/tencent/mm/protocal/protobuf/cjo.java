@@ -1,245 +1,122 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
 
 public final class cjo
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public int CreateTime;
-  public int Hdr;
-  public String uiR;
-  public String wDA;
-  public int wDB;
-  public LinkedList<den> wDC;
-  public String wDo;
-  public String wDq;
-  public String wDr;
-  public int wDs;
-  public String wDt;
-  public int wDu;
-  public int wDv;
-  public String wDw;
-  public String wDx;
-  public String wDy;
-  public String wDz;
-  
-  public cjo()
-  {
-    AppMethodBeat.i(91596);
-    this.wDC = new LinkedList();
-    AppMethodBeat.o(91596);
-  }
+  public String GjV;
+  public int Hwh;
+  public String Hwi;
+  public String Hwj;
+  public String dwb;
+  public String hCp;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(91597);
+    AppMethodBeat.i(91579);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.wDo != null) {
-        paramVarArgs.d(1, this.wDo);
+      if (this.dwb != null) {
+        paramVarArgs.d(1, this.dwb);
       }
-      paramVarArgs.aS(2, this.Hdr);
-      if (this.wDq != null) {
-        paramVarArgs.d(3, this.wDq);
+      paramVarArgs.aS(2, this.Hwh);
+      if (this.Hwi != null) {
+        paramVarArgs.d(3, this.Hwi);
       }
-      paramVarArgs.aS(4, this.CreateTime);
-      if (this.wDr != null) {
-        paramVarArgs.d(5, this.wDr);
+      if (this.Hwj != null) {
+        paramVarArgs.d(4, this.Hwj);
       }
-      paramVarArgs.aS(6, this.wDs);
-      if (this.wDt != null) {
-        paramVarArgs.d(7, this.wDt);
+      if (this.GjV != null) {
+        paramVarArgs.d(5, this.GjV);
       }
-      paramVarArgs.aS(8, this.wDu);
-      paramVarArgs.aS(9, this.wDv);
-      if (this.wDw != null) {
-        paramVarArgs.d(10, this.wDw);
+      if (this.hCp != null) {
+        paramVarArgs.d(6, this.hCp);
       }
-      if (this.uiR != null) {
-        paramVarArgs.d(11, this.uiR);
-      }
-      if (this.wDx != null) {
-        paramVarArgs.d(12, this.wDx);
-      }
-      if (this.wDy != null) {
-        paramVarArgs.d(13, this.wDy);
-      }
-      if (this.wDz != null) {
-        paramVarArgs.d(14, this.wDz);
-      }
-      if (this.wDA != null) {
-        paramVarArgs.d(15, this.wDA);
-      }
-      paramVarArgs.aS(16, this.wDB);
-      paramVarArgs.e(17, 8, this.wDC);
-      AppMethodBeat.o(91597);
+      AppMethodBeat.o(91579);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.wDo == null) {
-        break label1186;
+      if (this.dwb == null) {
+        break label502;
       }
     }
-    label1186:
-    for (paramInt = f.a.a.b.b.a.e(1, this.wDo) + 0;; paramInt = 0)
+    label502:
+    for (paramInt = f.a.a.b.b.a.e(1, this.dwb) + 0;; paramInt = 0)
     {
-      int i = paramInt + f.a.a.b.b.a.bz(2, this.Hdr);
+      int i = paramInt + f.a.a.b.b.a.bz(2, this.Hwh);
       paramInt = i;
-      if (this.wDq != null) {
-        paramInt = i + f.a.a.b.b.a.e(3, this.wDq);
-      }
-      i = paramInt + f.a.a.b.b.a.bz(4, this.CreateTime);
-      paramInt = i;
-      if (this.wDr != null) {
-        paramInt = i + f.a.a.b.b.a.e(5, this.wDr);
-      }
-      i = paramInt + f.a.a.b.b.a.bz(6, this.wDs);
-      paramInt = i;
-      if (this.wDt != null) {
-        paramInt = i + f.a.a.b.b.a.e(7, this.wDt);
-      }
-      i = paramInt + f.a.a.b.b.a.bz(8, this.wDu) + f.a.a.b.b.a.bz(9, this.wDv);
-      paramInt = i;
-      if (this.wDw != null) {
-        paramInt = i + f.a.a.b.b.a.e(10, this.wDw);
+      if (this.Hwi != null) {
+        paramInt = i + f.a.a.b.b.a.e(3, this.Hwi);
       }
       i = paramInt;
-      if (this.uiR != null) {
-        i = paramInt + f.a.a.b.b.a.e(11, this.uiR);
+      if (this.Hwj != null) {
+        i = paramInt + f.a.a.b.b.a.e(4, this.Hwj);
       }
       paramInt = i;
-      if (this.wDx != null) {
-        paramInt = i + f.a.a.b.b.a.e(12, this.wDx);
+      if (this.GjV != null) {
+        paramInt = i + f.a.a.b.b.a.e(5, this.GjV);
       }
       i = paramInt;
-      if (this.wDy != null) {
-        i = paramInt + f.a.a.b.b.a.e(13, this.wDy);
+      if (this.hCp != null) {
+        i = paramInt + f.a.a.b.b.a.e(6, this.hCp);
       }
-      paramInt = i;
-      if (this.wDz != null) {
-        paramInt = i + f.a.a.b.b.a.e(14, this.wDz);
-      }
-      i = paramInt;
-      if (this.wDA != null) {
-        i = paramInt + f.a.a.b.b.a.e(15, this.wDA);
-      }
-      paramInt = f.a.a.b.b.a.bz(16, this.wDB);
-      int j = f.a.a.a.c(17, 8, this.wDC);
-      AppMethodBeat.o(91597);
-      return i + paramInt + j;
+      AppMethodBeat.o(91579);
+      return i;
       if (paramInt == 2)
       {
-        paramVarArgs = (byte[])paramVarArgs[0];
-        this.wDC.clear();
-        paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
-        AppMethodBeat.o(91597);
+        AppMethodBeat.o(91579);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
+        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
         cjo localcjo = (cjo)paramVarArgs[1];
-        paramInt = ((Integer)paramVarArgs[2]).intValue();
-        switch (paramInt)
+        switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(91597);
+          AppMethodBeat.o(91579);
           return -1;
         case 1: 
-          localcjo.wDo = ((f.a.a.a.a)localObject1).NPN.readString();
-          AppMethodBeat.o(91597);
+          localcjo.dwb = locala.OmT.readString();
+          AppMethodBeat.o(91579);
           return 0;
         case 2: 
-          localcjo.Hdr = ((f.a.a.a.a)localObject1).NPN.zc();
-          AppMethodBeat.o(91597);
+          localcjo.Hwh = locala.OmT.zc();
+          AppMethodBeat.o(91579);
           return 0;
         case 3: 
-          localcjo.wDq = ((f.a.a.a.a)localObject1).NPN.readString();
-          AppMethodBeat.o(91597);
+          localcjo.Hwi = locala.OmT.readString();
+          AppMethodBeat.o(91579);
           return 0;
         case 4: 
-          localcjo.CreateTime = ((f.a.a.a.a)localObject1).NPN.zc();
-          AppMethodBeat.o(91597);
+          localcjo.Hwj = locala.OmT.readString();
+          AppMethodBeat.o(91579);
           return 0;
         case 5: 
-          localcjo.wDr = ((f.a.a.a.a)localObject1).NPN.readString();
-          AppMethodBeat.o(91597);
-          return 0;
-        case 6: 
-          localcjo.wDs = ((f.a.a.a.a)localObject1).NPN.zc();
-          AppMethodBeat.o(91597);
-          return 0;
-        case 7: 
-          localcjo.wDt = ((f.a.a.a.a)localObject1).NPN.readString();
-          AppMethodBeat.o(91597);
-          return 0;
-        case 8: 
-          localcjo.wDu = ((f.a.a.a.a)localObject1).NPN.zc();
-          AppMethodBeat.o(91597);
-          return 0;
-        case 9: 
-          localcjo.wDv = ((f.a.a.a.a)localObject1).NPN.zc();
-          AppMethodBeat.o(91597);
-          return 0;
-        case 10: 
-          localcjo.wDw = ((f.a.a.a.a)localObject1).NPN.readString();
-          AppMethodBeat.o(91597);
-          return 0;
-        case 11: 
-          localcjo.uiR = ((f.a.a.a.a)localObject1).NPN.readString();
-          AppMethodBeat.o(91597);
-          return 0;
-        case 12: 
-          localcjo.wDx = ((f.a.a.a.a)localObject1).NPN.readString();
-          AppMethodBeat.o(91597);
-          return 0;
-        case 13: 
-          localcjo.wDy = ((f.a.a.a.a)localObject1).NPN.readString();
-          AppMethodBeat.o(91597);
-          return 0;
-        case 14: 
-          localcjo.wDz = ((f.a.a.a.a)localObject1).NPN.readString();
-          AppMethodBeat.o(91597);
-          return 0;
-        case 15: 
-          localcjo.wDA = ((f.a.a.a.a)localObject1).NPN.readString();
-          AppMethodBeat.o(91597);
-          return 0;
-        case 16: 
-          localcjo.wDB = ((f.a.a.a.a)localObject1).NPN.zc();
-          AppMethodBeat.o(91597);
+          localcjo.GjV = locala.OmT.readString();
+          AppMethodBeat.o(91579);
           return 0;
         }
-        paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
-        i = paramVarArgs.size();
-        paramInt = 0;
-        while (paramInt < i)
-        {
-          Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-          localObject1 = new den();
-          localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-          for (boolean bool = true; bool; bool = ((den)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, com.tencent.mm.bx.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-          localcjo.wDC.add(localObject1);
-          paramInt += 1;
-        }
-        AppMethodBeat.o(91597);
+        localcjo.hCp = locala.OmT.readString();
+        AppMethodBeat.o(91579);
         return 0;
       }
-      AppMethodBeat.o(91597);
+      AppMethodBeat.o(91579);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.cjo
  * JD-Core Version:    0.7.0.1
  */

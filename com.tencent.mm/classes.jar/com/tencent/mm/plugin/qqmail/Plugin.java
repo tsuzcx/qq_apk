@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.qqmail;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.ax;
+import com.tencent.mm.model.az;
 import com.tencent.mm.plugin.qqmail.a.a;
 import com.tencent.mm.plugin.qqmail.d.ac;
 import com.tencent.mm.pluginsdk.b.c;
@@ -10,12 +10,12 @@ import com.tencent.mm.pluginsdk.n;
 public final class Plugin
   implements com.tencent.mm.pluginsdk.b.d
 {
-  private d xaZ;
+  private d xqQ;
   
   public Plugin()
   {
     AppMethodBeat.i(122626);
-    this.xaZ = new d();
+    this.xqQ = new d();
     AppMethodBeat.o(122626);
   }
   
@@ -27,7 +27,7 @@ public final class Plugin
     return locala;
   }
   
-  public final ax createSubCore()
+  public final az createSubCore()
   {
     AppMethodBeat.i(122628);
     ac localac = new ac();
@@ -37,7 +37,7 @@ public final class Plugin
   
   public final c getContactWidgetFactory()
   {
-    return this.xaZ;
+    return this.xqQ;
   }
 }
 

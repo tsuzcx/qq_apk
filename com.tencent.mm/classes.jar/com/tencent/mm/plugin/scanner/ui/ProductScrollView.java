@@ -8,7 +8,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class ProductScrollView
   extends ScrollView
 {
-  private a yrn;
+  private a yHn;
   
   public ProductScrollView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -24,20 +24,20 @@ public class ProductScrollView
   {
     AppMethodBeat.i(51848);
     super.onScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    if (this.yrn != null) {
-      this.yrn.cms();
+    if (this.yHn != null) {
+      this.yHn.cnI();
     }
     AppMethodBeat.o(51848);
   }
   
   public void setOnScrollListener(a parama)
   {
-    this.yrn = parama;
+    this.yHn = parama;
   }
   
   public static abstract interface a
   {
-    public abstract void cms();
+    public abstract void cnI();
   }
 }
 

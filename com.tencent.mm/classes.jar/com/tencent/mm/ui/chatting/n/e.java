@@ -9,9 +9,9 @@ public abstract interface e<T>
   
   public abstract void close();
   
-  public abstract int fpw();
+  public abstract int ftv();
   
-  public abstract void in(List<T> paramList);
+  public abstract void ix(List<T> paramList);
 }
 
 

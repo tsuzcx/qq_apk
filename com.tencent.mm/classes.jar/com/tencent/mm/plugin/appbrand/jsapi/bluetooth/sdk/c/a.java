@@ -15,14 +15,18 @@ public abstract class a
   implements e
 {
   protected final Handler aCF = new Handler(Looper.getMainLooper());
-  public boolean aXD = com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.a.kEm.aXD;
+  public boolean aXD = com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.a.kHB.aXD;
   public boolean brw = false;
-  public boolean kEr = com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.a.kEm.kEr;
-  public boolean kEt = com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.a.kEm.kEt;
-  public d kFh;
-  protected com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.a.b kFi;
-  public b kFj;
-  private Runnable kFk = new Runnable()
+  public boolean kHG = com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.a.kHB.kHG;
+  public boolean kHI = com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.a.kHB.kHI;
+  public long kIA = com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.a.kHB.kHD;
+  public long kIB = com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.a.kHB.kHM;
+  public j kIC;
+  protected int kID = hashCode();
+  public d kIw;
+  protected com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.a.b kIx;
+  public b kIy;
+  private Runnable kIz = new Runnable()
   {
     public final void run()
     {
@@ -32,72 +36,68 @@ public abstract class a
         AppMethodBeat.o(144589);
         return;
       }
-      a.this.a(j.kFP);
+      a.this.a(j.kJe);
       a.this.done();
       AppMethodBeat.o(144589);
     }
   };
-  public long kFl = com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.a.kEm.kEo;
-  public long kFm = com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.a.kEm.kEx;
-  public j kFn;
-  protected int kFo = hashCode();
   
   public final void a(com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.a.b paramb)
   {
-    this.kFi = paramb;
+    this.kIx = paramb;
   }
   
   public final void a(final j paramj)
   {
-    this.kFn = paramj;
-    if (this.kEr)
+    this.kIC = paramj;
+    if (this.kHG)
     {
       this.aCF.post(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(144590);
-          a.this.kFj.a(paramj);
+          a.this.kIy.a(paramj);
           AppMethodBeat.o(144590);
         }
       });
       return;
     }
-    this.kFj.a(paramj);
+    this.kIy.a(paramj);
   }
   
   public void b(j paramj) {}
   
-  public abstract void bjq();
+  public abstract void bjZ();
   
   public final void doAction()
   {
-    Assert.assertNotNull(this.kFh);
-    Assert.assertNotNull(this.kFi);
-    Assert.assertNotNull(this.kFj);
-    this.aCF.postDelayed(this.kFk, this.kFl);
-    bjq();
+    Assert.assertNotNull(this.kIw);
+    Assert.assertNotNull(this.kIx);
+    Assert.assertNotNull(this.kIy);
+    this.aCF.postDelayed(this.kIz, this.kIA);
+    bjZ();
   }
   
   public final void done()
   {
-    this.aCF.removeCallbacks(this.kFk);
+    this.aCF.removeCallbacks(this.kIz);
     this.brw = true;
-    b(this.kFn);
-    com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.a.b localb = this.kFi;
-    Object localObject = this.kFn;
+    b(this.kIC);
+    com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.a.b localb = this.kIx;
+    Object localObject = this.kIC;
     if (localObject != null) {}
     for (;;)
     {
       com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.a.i("MicroMsg.Ble.BleConnectDispatcher", "actionCompleteCallback action:%s result:%s", new Object[] { this, localObject });
-      if (!this.kEt) {
+      if (!this.kHI) {
         break;
       }
-      localb.bjo();
+      localb.bjX();
       return;
       localObject = "";
     }
-    localb.kEF.remove(this);
+    localb.kHU.remove(this);
   }
   
   public abstract String getName();
@@ -124,7 +124,7 @@ public abstract class a
   
   public String toString()
   {
-    return "Action#" + this.kFo + "{action='" + getName() + '\'' + ", debug=" + this.aXD + ", mainThread=" + this.kEr + ", serial=" + this.kEt + '}';
+    return "Action#" + this.kID + "{action='" + getName() + '\'' + ", debug=" + this.aXD + ", mainThread=" + this.kHG + ", serial=" + this.kHI + '}';
   }
 }
 

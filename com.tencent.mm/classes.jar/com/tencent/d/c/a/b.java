@@ -8,25 +8,25 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class b
   extends JceStruct
 {
-  public int LLD = 0;
-  public int LLE = 0;
-  public int LLF = 0;
+  public int MiC = 0;
+  public int MiD = 0;
+  public int MiE = 0;
   
   public final void readFrom(JceInputStream paramJceInputStream)
   {
     AppMethodBeat.i(138323);
-    this.LLD = paramJceInputStream.read(this.LLD, 1, true);
-    this.LLE = paramJceInputStream.read(this.LLE, 2, true);
-    this.LLF = paramJceInputStream.read(this.LLF, 3, true);
+    this.MiC = paramJceInputStream.read(this.MiC, 1, true);
+    this.MiD = paramJceInputStream.read(this.MiD, 2, true);
+    this.MiE = paramJceInputStream.read(this.MiE, 3, true);
     AppMethodBeat.o(138323);
   }
   
   public final void writeTo(JceOutputStream paramJceOutputStream)
   {
     AppMethodBeat.i(138322);
-    paramJceOutputStream.write(this.LLD, 1);
-    paramJceOutputStream.write(this.LLE, 2);
-    paramJceOutputStream.write(this.LLF, 3);
+    paramJceOutputStream.write(this.MiC, 1);
+    paramJceOutputStream.write(this.MiD, 2);
+    paramJceOutputStream.write(this.MiE, 3);
     AppMethodBeat.o(138322);
   }
 }

@@ -6,15 +6,15 @@ import com.tencent.mm.plugin.exdevice.g.b.a.d;
 final class e$a
 {
   int azj;
-  String qmb;
-  d qoQ = null;
-  int qoR;
+  String qsG;
+  d qvw = null;
+  int qvx;
   String username;
   
-  public final e cmF()
+  public final e cnV()
   {
     AppMethodBeat.i(24308);
-    e locale = new e(this.azj, this.qoR, this.qmb, this.username, this.qoQ, (byte)0);
+    e locale = new e(this.azj, this.qvx, this.qsG, this.username, this.qvw, (byte)0);
     AppMethodBeat.o(24308);
     return locale;
   }

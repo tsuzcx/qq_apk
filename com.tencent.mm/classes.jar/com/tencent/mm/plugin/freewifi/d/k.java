@@ -1,56 +1,56 @@
 package com.tencent.mm.plugin.freewifi.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.protocal.protobuf.cxf;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.protocal.protobuf.cxz;
 import com.tencent.mm.protocal.protobuf.dx;
-import com.tencent.mm.protocal.protobuf.pl;
-import com.tencent.mm.protocal.protobuf.pm;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.pn;
+import com.tencent.mm.protocal.protobuf.po;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.LinkedList;
 
 public final class k
   extends c
 {
-  public k(String paramString1, cxf paramcxf, int paramInt, String paramString2)
+  public k(String paramString1, cxz paramcxz, int paramInt, String paramString2)
   {
     AppMethodBeat.i(24866);
-    cRG();
+    cUl();
     if ((8 != paramInt) || (9 != paramInt)) {
-      ad.e("MicroMsg.FreeWifi.NetSceneScanAndReportNearFieldFreeWifi", "invalid channel, channel is :%d", new Object[] { Integer.valueOf(paramInt) });
+      ae.e("MicroMsg.FreeWifi.NetSceneScanAndReportNearFieldFreeWifi", "invalid channel, channel is :%d", new Object[] { Integer.valueOf(paramInt) });
     }
-    pl localpl = (pl)this.rr.hNK.hNQ;
-    localpl.FGE = paramString1;
-    localpl.FKF = paramcxf;
-    localpl.FqH = paramInt;
-    localpl.FqI = paramString2;
+    pn localpn = (pn)this.rr.hQD.hQJ;
+    localpn.FZa = paramString1;
+    localpn.Gde = paramcxz;
+    localpn.FJf = paramInt;
+    localpn.FJg = paramString2;
     AppMethodBeat.o(24866);
   }
   
-  protected final void cRG()
+  protected final void cUl()
   {
     AppMethodBeat.i(24865);
     b.a locala = new b.a();
-    locala.hNM = new pl();
-    locala.hNN = new pm();
+    locala.hQF = new pn();
+    locala.hQG = new po();
     locala.uri = "/cgi-bin/mmo2o-bin/bizwificonnect";
     locala.funcId = 1705;
-    locala.hNO = 0;
+    locala.hQH = 0;
     locala.respCmdId = 0;
-    this.rr = locala.aDC();
+    this.rr = locala.aDS();
     AppMethodBeat.o(24865);
   }
   
-  public final String cRS()
+  public final String cUx()
   {
     AppMethodBeat.i(24867);
-    Object localObject = ((pm)this.rr.hNL.hNQ).FKG;
+    Object localObject = ((po)this.rr.hQE.hQJ).Gdf;
     if ((localObject != null) && (((LinkedList)localObject).size() == 1))
     {
-      localObject = ((dx)((LinkedList)localObject).get(0)).FvV;
+      localObject = ((dx)((LinkedList)localObject).get(0)).FOt;
       AppMethodBeat.o(24867);
       return localObject;
     }

@@ -1,51 +1,35 @@
 package com.tencent.mm.storage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.ay;
+import com.tencent.mm.g.c.ax;
 import com.tencent.mm.sdk.e.c.a;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class ao
-  extends ay
+  extends ax
 {
   protected static c.a info;
   
   static
   {
-    AppMethodBeat.i(32839);
+    AppMethodBeat.i(116966);
     c.a locala = new c.a();
-    locala.IhA = new Field[6];
-    locala.columns = new String[7];
+    locala.IBL = new Field[2];
+    locala.columns = new String[3];
     StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "labelID";
-    locala.IhC.put("labelID", "INTEGER PRIMARY KEY ");
-    localStringBuilder.append(" labelID INTEGER PRIMARY KEY ");
+    locala.columns[0] = "username";
+    locala.IBN.put("username", "TEXT default ''  PRIMARY KEY ");
+    localStringBuilder.append(" username TEXT default ''  PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.IhB = "labelID";
-    locala.columns[1] = "labelName";
-    locala.IhC.put("labelName", "TEXT");
-    localStringBuilder.append(" labelName TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[2] = "labelPYFull";
-    locala.IhC.put("labelPYFull", "TEXT");
-    localStringBuilder.append(" labelPYFull TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[3] = "labelPYShort";
-    locala.IhC.put("labelPYShort", "TEXT");
-    localStringBuilder.append(" labelPYShort TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[4] = "createTime";
-    locala.IhC.put("createTime", "LONG");
-    localStringBuilder.append(" createTime LONG");
-    localStringBuilder.append(", ");
-    locala.columns[5] = "isTemporary";
-    locala.IhC.put("isTemporary", "INTEGER");
-    localStringBuilder.append(" isTemporary INTEGER");
-    locala.columns[6] = "rowid";
+    locala.IBM = "username";
+    locala.columns[1] = "cmdbuf";
+    locala.IBN.put("cmdbuf", "BLOB default '' ");
+    localStringBuilder.append(" cmdbuf BLOB default '' ");
+    locala.columns[2] = "rowid";
     locala.sql = localStringBuilder.toString();
     info = locala;
-    AppMethodBeat.o(32839);
+    AppMethodBeat.o(116966);
   }
   
   public final c.a getDBInfo()

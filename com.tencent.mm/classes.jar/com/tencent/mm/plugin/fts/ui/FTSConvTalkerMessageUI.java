@@ -7,7 +7,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.fts.a.d.c;
 import com.tencent.mm.plugin.fts.a.n;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.ui.search.FTSEditTextView.b;
 import com.tencent.mm.ui.search.a.c;
 import java.util.ArrayList;
@@ -16,21 +16,21 @@ import java.util.List;
 public class FTSConvTalkerMessageUI
   extends FTSBaseUI
 {
-  private int dlp;
-  private int ljZ;
+  private int dmr;
+  private int lox;
   private String query;
+  private String tFT;
+  private String tFU;
+  private i tKt;
   private String talker;
-  private String tvc;
-  private String tvd;
-  private i tzC;
   
   protected final d a(e parame)
   {
     AppMethodBeat.i(111928);
-    if (this.tzC == null) {
-      this.tzC = new i(this, this.talker, this.tvd, this.tvc, this.ljZ, this.dlp);
+    if (this.tKt == null) {
+      this.tKt = new i(this, this.talker, this.tFU, this.tFT, this.lox, this.dmr);
     }
-    parame = this.tzC;
+    parame = this.tKt;
     AppMethodBeat.o(111928);
     return parame;
   }
@@ -42,17 +42,17 @@ public class FTSConvTalkerMessageUI
     AppMethodBeat.o(168770);
   }
   
-  protected final void cTt()
+  protected final void cVY()
   {
     AppMethodBeat.i(111927);
-    super.cTt();
-    this.tvc = getIntent().getStringExtra("key_conv");
+    super.cVY();
+    this.tFT = getIntent().getStringExtra("key_conv");
     this.talker = getIntent().getStringExtra("key_talker");
     this.query = getIntent().getStringExtra("key_query");
-    this.tvd = getIntent().getStringExtra("key_talker_query");
-    this.dlp = getIntent().getIntExtra("detail_type", 1);
-    this.ljZ = getIntent().getIntExtra("Search_Scene", 0);
-    ad.i("MicroMsg.FTS.FTSConvTalkerMessageUI", "initSearchData query=%s talker=%s conversation=%s showType=%d", new Object[] { this.query, this.talker, this.tvc, Integer.valueOf(this.dlp) });
+    this.tFU = getIntent().getStringExtra("key_talker_query");
+    this.dmr = getIntent().getIntExtra("detail_type", 1);
+    this.lox = getIntent().getIntExtra("Search_Scene", 0);
+    ae.i("MicroMsg.FTS.FTSConvTalkerMessageUI", "initSearchData query=%s talker=%s conversation=%s showType=%d", new Object[] { this.query, this.talker, this.tFT, Integer.valueOf(this.dmr) });
     AppMethodBeat.o(111927);
   }
   
@@ -65,15 +65,15 @@ public class FTSConvTalkerMessageUI
   {
     AppMethodBeat.i(111926);
     super.onCreate(paramBundle);
-    ((n)g.ad(n.class)).getFTSImageLoader().cSz();
+    ((n)g.ad(n.class)).getFTSImageLoader().cVe();
     paramBundle = new a((byte)0);
-    a.a(paramBundle, this.tvd);
+    a.a(paramBundle, this.tFU);
     a locala1 = new a((byte)0);
     a.a(locala1, ">");
     a locala2 = new a((byte)0);
-    a.a(locala2, com.tencent.mm.plugin.fts.a.d.agg(this.tvc));
+    a.a(locala2, com.tencent.mm.plugin.fts.a.d.ahd(this.tFT));
     ArrayList localArrayList = new ArrayList();
-    if (this.dlp == 2)
+    if (this.dmr == 2)
     {
       localArrayList.add(paramBundle);
       localArrayList.add(locala1);
@@ -81,8 +81,8 @@ public class FTSConvTalkerMessageUI
     }
     for (;;)
     {
-      t(this.query, localArrayList);
-      cTo();
+      u(this.query, localArrayList);
+      cVT();
       AppMethodBeat.o(111926);
       return;
       localArrayList.add(locala2);
@@ -100,7 +100,7 @@ public class FTSConvTalkerMessageUI
   final class a
     implements a.c
   {
-    private String fVj;
+    private String fXp;
     
     private a() {}
     
@@ -111,13 +111,13 @@ public class FTSConvTalkerMessageUI
     
     public final String getTagName()
     {
-      return this.fVj;
+      return this.fXp;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.ui.FTSConvTalkerMessageUI
  * JD-Core Version:    0.7.0.1
  */

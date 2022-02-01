@@ -19,14 +19,14 @@ public class TPDownloadParamAidl
   
   static
   {
-    AppMethodBeat.i(190002);
+    AppMethodBeat.i(207215);
     CREATOR = new Parcelable.Creator()
     {
       public final TPDownloadParamAidl createFromParcel(Parcel paramAnonymousParcel)
       {
-        AppMethodBeat.i(189997);
+        AppMethodBeat.i(207210);
         paramAnonymousParcel = new TPDownloadParamAidl(paramAnonymousParcel);
-        AppMethodBeat.o(189997);
+        AppMethodBeat.o(207210);
         return paramAnonymousParcel;
       }
       
@@ -35,18 +35,18 @@ public class TPDownloadParamAidl
         return new TPDownloadParamAidl[paramAnonymousInt];
       }
     };
-    AppMethodBeat.o(190002);
+    AppMethodBeat.o(207215);
   }
   
   protected TPDownloadParamAidl(Parcel paramParcel)
   {
-    AppMethodBeat.i(190000);
+    AppMethodBeat.i(207213);
     try
     {
       this.urlList = paramParcel.createStringArrayList();
       this.dlType = paramParcel.readInt();
       this.extInfoMap = paramParcel.readHashMap(TPDownloadParamAidl.class.getClassLoader());
-      AppMethodBeat.o(190000);
+      AppMethodBeat.o(207213);
       return;
     }
     catch (Throwable paramParcel)
@@ -55,7 +55,7 @@ public class TPDownloadParamAidl
       this.urlList = new ArrayList();
       this.dlType = 0;
       this.extInfoMap = new HashMap();
-      AppMethodBeat.o(190000);
+      AppMethodBeat.o(207213);
     }
   }
   
@@ -103,11 +103,11 @@ public class TPDownloadParamAidl
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(190001);
+    AppMethodBeat.i(207214);
     paramParcel.writeStringList(this.urlList);
     paramParcel.writeInt(this.dlType);
     paramParcel.writeMap(this.extInfoMap);
-    AppMethodBeat.o(190001);
+    AppMethodBeat.o(207214);
   }
 }
 

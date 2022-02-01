@@ -1,18 +1,19 @@
 package com.tencent.mm.pluginsdk.ui.applet;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public final class u
 {
-  public String EWS;
   public int backgroundColor;
   public String chatroomName;
   public Object data;
   public int end;
+  public int fmC;
   public int linkColor;
   public String mSessionId;
-  public Object scd;
+  public String seP;
+  public Object skU;
   public int start;
   public int type;
   public String url;
@@ -71,7 +72,7 @@ public final class u
     AppMethodBeat.i(152235);
     int j = super.hashCode();
     int i = j;
-    if (!bt.isNullOrNil(this.url)) {
+    if (!bu.isNullOrNil(this.url)) {
       i = j + this.url.hashCode();
     }
     j = i + this.type + this.end + this.start;

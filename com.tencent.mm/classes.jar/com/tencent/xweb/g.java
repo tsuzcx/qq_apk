@@ -15,12 +15,12 @@ import org.xwalk.core.Log;
 
 public final class g
 {
-  private static Map<String, Integer> kMT;
+  private static Map<String, Integer> kQq;
   
   static
   {
     AppMethodBeat.i(156755);
-    kMT = new HashMap();
+    kQq = new HashMap();
     AppMethodBeat.o(156755);
   }
   
@@ -47,7 +47,7 @@ public final class g
           paramHashMap.put("token", paramString3);
           paramHashMap = paramHashMap.toString();
           int i = d.startMiniQBToLoadUrl(paramContext, paramHashMap, localHashMap, paramValueCallback);
-          kMT.put(paramString3 + paramString1, Integer.valueOf(i));
+          kQq.put(paramString3 + paramString1, Integer.valueOf(i));
           Log.i("XFilesReaderX5", "loadByMiniQB, ret = " + i + ", isSecondTime = " + String.valueOf(paramBoolean));
           a(paramString2, paramValueCallback1, i, paramInt);
           AppMethodBeat.o(156750);
@@ -98,8 +98,8 @@ public final class g
     for (Object localObject1 = paramString2;; localObject1 = "null")
     {
       Log.i("XFilesReaderX5", (String)localObject1);
-      f.mY(paramString2, f.a.Mpk.name());
-      f.hh(paramString2, paramInt);
+      f.ne(paramString2, f.a.MMg.name());
+      f.hq(paramString2, paramInt);
       try
       {
         localObject1 = new JSONObject();
@@ -126,13 +126,13 @@ public final class g
     AppMethodBeat.i(156749);
     try
     {
-      Integer localInteger = (Integer)kMT.get(paramString1 + paramString2);
+      Integer localInteger = (Integer)kQq.get(paramString1 + paramString2);
       if (localInteger == null)
       {
         AppMethodBeat.o(156749);
         return;
       }
-      kMT.remove(paramString1 + paramString2);
+      kQq.remove(paramString1 + paramString2);
       if (localInteger.intValue() == 0)
       {
         Log.i("XFilesReaderX5", "finishReadFile");

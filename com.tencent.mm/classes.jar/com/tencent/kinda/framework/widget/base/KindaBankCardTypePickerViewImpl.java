@@ -114,7 +114,7 @@ public class KindaBankCardTypePickerViewImpl
     if (paramBoolean)
     {
       this.mOptionPiker = new c(this.mContext, this.mFirstOptionList, this.mSecondOptionStringList);
-      this.mOptionPiker.LaQ = new c.a()
+      this.mOptionPiker.Lxq = new c.a()
       {
         public void onResult(boolean paramAnonymousBoolean, Object paramAnonymousObject1, Object paramAnonymousObject2)
         {
@@ -125,12 +125,12 @@ public class KindaBankCardTypePickerViewImpl
             paramAnonymousObject1 = (String)paramAnonymousObject1;
             paramAnonymousObject2 = (String)paramAnonymousObject2;
             KindaBankCardTypePickerViewImpl.this.mEditText.setText(paramAnonymousObject1 + " " + paramAnonymousObject2);
-            KindaBankCardTypePickerViewImpl.access$202(KindaBankCardTypePickerViewImpl.this, KindaBankCardTypePickerViewImpl.this.mOptionPiker.fMM());
+            KindaBankCardTypePickerViewImpl.access$202(KindaBankCardTypePickerViewImpl.this, KindaBankCardTypePickerViewImpl.this.mOptionPiker.fRg());
             paramAnonymousObject1 = KindaBankCardTypePickerViewImpl.this;
             paramAnonymousObject2 = KindaBankCardTypePickerViewImpl.this.mOptionPiker;
             int i = 0;
-            if (paramAnonymousObject2.LaP != null) {
-              i = paramAnonymousObject2.LaP.getValue();
+            if (paramAnonymousObject2.Lxo != null) {
+              i = paramAnonymousObject2.Lxo.getValue();
             }
             KindaBankCardTypePickerViewImpl.access$302(paramAnonymousObject1, i);
             if ((KindaBankCardTypePickerViewImpl.this.mFirstSelectedIndex >= 0) && (KindaBankCardTypePickerViewImpl.this.mSecondSelectedIndex >= 0))
@@ -148,7 +148,7 @@ public class KindaBankCardTypePickerViewImpl
         if (this.mSecondSelectedIndex < 0) {
           break label91;
         }
-        this.mOptionPiker.kk(this.mFirstSelectedIndex, this.mSecondSelectedIndex);
+        this.mOptionPiker.kr(this.mFirstSelectedIndex, this.mSecondSelectedIndex);
       }
     }
     for (;;)
@@ -157,7 +157,7 @@ public class KindaBankCardTypePickerViewImpl
       AppMethodBeat.o(18839);
       return;
       label91:
-      this.mOptionPiker.afD(this.mFirstSelectedIndex);
+      this.mOptionPiker.agm(this.mFirstSelectedIndex);
     }
   }
   
@@ -233,7 +233,7 @@ public class KindaBankCardTypePickerViewImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.kinda.framework.widget.base.KindaBankCardTypePickerViewImpl
  * JD-Core Version:    0.7.0.1
  */

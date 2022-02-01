@@ -17,10 +17,10 @@ public class WXLocationObject
   
   public WXLocationObject(double paramDouble1, double paramDouble2)
   {
-    AppMethodBeat.i(196930);
+    AppMethodBeat.i(194042);
     this.lat = paramDouble1;
     this.lng = paramDouble2;
-    AppMethodBeat.o(196930);
+    AppMethodBeat.o(194042);
   }
   
   public boolean checkArgs()

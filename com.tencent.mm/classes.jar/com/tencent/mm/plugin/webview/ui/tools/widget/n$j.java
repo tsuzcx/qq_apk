@@ -4,7 +4,7 @@ import d.g.a.a;
 import d.g.b.q;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "Lcom/tencent/mm/plugin/webview/ui/tools/widget/MPSmileyFooter;", "kotlin.jvm.PlatformType", "invoke"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "Lcom/tencent/mm/plugin/webview/ui/tools/widget/MPSmileyFooter;", "kotlin.jvm.PlatformType", "invoke"})
 final class n$j
   extends q
   implements a<MPSmileyFooter>

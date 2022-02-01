@@ -16,8 +16,8 @@ final class MobileInputUI$2
     AppMethodBeat.i(128334);
     b localb = new b();
     localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/account/ui/MobileInputUI$10", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-    MobileInputUI.d(this.jmP);
+    a.b("com/tencent/mm/plugin/account/ui/MobileInputUI$10", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+    MobileInputUI.d(this.jpJ);
     a.a(this, "com/tencent/mm/plugin/account/ui/MobileInputUI$10", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(128334);
   }

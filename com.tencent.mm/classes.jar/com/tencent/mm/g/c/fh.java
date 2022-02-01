@@ -8,26 +8,26 @@ public abstract class fh
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eEU = "appId".hashCode();
-  private static final int eFG = "appVersion".hashCode();
-  private static final int eGy = "reportId".hashCode();
-  private static final int foA;
-  private static final int fpo = "decryptKey".hashCode();
+  private static final int eGD = "appId".hashCode();
+  private static final int eHp = "appVersion".hashCode();
+  private static final int eIh = "reportId".hashCode();
+  private static final int fqB;
+  private static final int frp = "decryptKey".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eED = true;
-  private boolean eFC = true;
-  private boolean eGt = true;
+  private boolean eGm = true;
+  private boolean eHl = true;
+  private boolean eIc = true;
   public String field_appId;
   public int field_appVersion;
   public String field_decryptKey;
   public String field_pkgMd5;
   public int field_reportId;
-  private boolean jdField_for = true;
-  private boolean fpn = true;
+  private boolean fqs = true;
+  private boolean fro = true;
   
   static
   {
-    foA = "pkgMd5".hashCode();
+    fqB = "pkgMd5".hashCode();
   }
   
   public void convertFrom(Cursor paramCursor)
@@ -43,7 +43,7 @@ public abstract class fh
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eEU != k) {
+      if (eGD != k) {
         break label60;
       }
       this.field_appId = paramCursor.getString(i);
@@ -54,13 +54,13 @@ public abstract class fh
       break label20;
       break;
       label60:
-      if (eFG == k) {
+      if (eHp == k) {
         this.field_appVersion = paramCursor.getInt(i);
-      } else if (fpo == k) {
+      } else if (frp == k) {
         this.field_decryptKey = paramCursor.getString(i);
-      } else if (foA == k) {
+      } else if (fqB == k) {
         this.field_pkgMd5 = paramCursor.getString(i);
-      } else if (eGy == k) {
+      } else if (eIh == k) {
         this.field_reportId = paramCursor.getInt(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
@@ -71,19 +71,19 @@ public abstract class fh
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eED) {
+    if (this.eGm) {
       localContentValues.put("appId", this.field_appId);
     }
-    if (this.eFC) {
+    if (this.eHl) {
       localContentValues.put("appVersion", Integer.valueOf(this.field_appVersion));
     }
-    if (this.fpn) {
+    if (this.fro) {
       localContentValues.put("decryptKey", this.field_decryptKey);
     }
-    if (this.jdField_for) {
+    if (this.fqs) {
       localContentValues.put("pkgMd5", this.field_pkgMd5);
     }
-    if (this.eGt) {
+    if (this.eIc) {
       localContentValues.put("reportId", Integer.valueOf(this.field_reportId));
     }
     if (this.systemRowid > 0L) {

@@ -3,18 +3,18 @@ package com.tencent.mm.plugin.mmsight.model;
 import android.content.Context;
 import android.view.OrientationEventListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public final class d
   extends OrientationEventListener
 {
-  private int gNO = -1;
+  private int cpv = -1;
   private int orientation = -1;
-  private long vNA = 0L;
-  private long vNB = 0L;
-  public a vNC;
-  private int vNz = -1;
+  private int vZC = -1;
+  private long vZD = 0L;
+  private long vZE = 0L;
+  public a vZF;
   
   public d(Context paramContext)
   {
@@ -28,19 +28,19 @@ public final class d
   
   public final void a(a parama)
   {
-    this.vNC = parama;
+    this.vZF = parama;
   }
   
-  public final boolean aol()
+  public final boolean aoA()
   {
     AppMethodBeat.i(89359);
-    if (!k.vOn)
+    if (!k.waq)
     {
       AppMethodBeat.o(89359);
       return false;
     }
-    long l = bt.aO(this.vNB);
-    ad.i("MicroMsg.DeviceOrientationListener", "isLandscape, tickToNow: %s, orientation: %s", new Object[] { Long.valueOf(l), Integer.valueOf(this.orientation) });
+    long l = bu.aO(this.vZE);
+    ae.i("MicroMsg.DeviceOrientationListener", "isLandscape, tickToNow: %s, orientation: %s", new Object[] { Long.valueOf(l), Integer.valueOf(this.orientation) });
     if (l < 2000L)
     {
       AppMethodBeat.o(89359);
@@ -60,7 +60,7 @@ public final class d
     return false;
   }
   
-  public final int dmJ()
+  public final int dpH()
   {
     AppMethodBeat.i(89358);
     int i = getOrientation();
@@ -84,18 +84,18 @@ public final class d
   public final void enable()
   {
     AppMethodBeat.i(89357);
-    ad.i("MicroMsg.DeviceOrientationListener", "enable, config isEnableLandscapeMode: %s", new Object[] { Boolean.valueOf(k.vOn) });
-    if (k.vOn)
+    ae.i("MicroMsg.DeviceOrientationListener", "enable, config isEnableLandscapeMode: %s", new Object[] { Boolean.valueOf(k.waq) });
+    if (k.waq)
     {
       super.enable();
-      this.vNB = bt.HI();
+      this.vZE = bu.HQ();
     }
     AppMethodBeat.o(89357);
   }
   
   public final int getOrientation()
   {
-    if (!k.vOn) {
+    if (!k.waq) {
       return 0;
     }
     return this.orientation;
@@ -104,27 +104,27 @@ public final class d
   public final void onOrientationChanged(int paramInt)
   {
     AppMethodBeat.i(89356);
-    if (!k.vOn)
+    if (!k.waq)
     {
       AppMethodBeat.o(89356);
       return;
     }
-    if (bt.aO(this.vNB) < 2000L)
+    if (bu.aO(this.vZE) < 2000L)
     {
-      ad.v("MicroMsg.DeviceOrientationListener", "onOrientationChanged, not reach DETECT_THRESHOLD");
+      ae.v("MicroMsg.DeviceOrientationListener", "onOrientationChanged, not reach DETECT_THRESHOLD");
       AppMethodBeat.o(89356);
       return;
     }
     if ((paramInt < 0) || (paramInt > 360))
     {
-      ad.d("MicroMsg.DeviceOrientationListener", "orientation out of range, ignore");
+      ae.d("MicroMsg.DeviceOrientationListener", "orientation out of range, ignore");
       AppMethodBeat.o(89356);
       return;
     }
-    if ((Math.abs(this.vNz - paramInt) >= 30) || (bt.aO(this.vNA) >= 300L))
+    if ((Math.abs(this.vZC - paramInt) >= 30) || (bu.aO(this.vZD) >= 300L))
     {
-      this.vNz = paramInt;
-      this.vNA = bt.HI();
+      this.vZC = paramInt;
+      this.vZD = bu.HQ();
       if ((paramInt > 60) && (paramInt < 300)) {
         break label165;
       }
@@ -134,8 +134,8 @@ public final class d
     }
     for (;;)
     {
-      if (this.vNC != null) {
-        this.vNC.nL(this.orientation);
+      if (this.vZF != null) {
+        this.vZF.nO(this.orientation);
       }
       AppMethodBeat.o(89356);
       return;
@@ -161,16 +161,16 @@ public final class d
   public final void reset()
   {
     AppMethodBeat.i(89360);
-    ad.i("MicroMsg.DeviceOrientationListener", "reset");
-    this.gNO = -1;
+    ae.i("MicroMsg.DeviceOrientationListener", "reset");
+    this.cpv = -1;
     this.orientation = -1;
-    this.vNz = -1;
+    this.vZC = -1;
     AppMethodBeat.o(89360);
   }
   
   public static abstract interface a
   {
-    public abstract void nL(int paramInt);
+    public abstract void nO(int paramInt);
   }
 }
 

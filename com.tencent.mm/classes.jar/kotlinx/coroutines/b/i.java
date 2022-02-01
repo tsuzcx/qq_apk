@@ -2,22 +2,22 @@ package kotlinx.coroutines.b;
 
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/coroutines/scheduling/Task;", "Ljava/lang/Runnable;", "Lkotlinx/coroutines/Runnable;", "()V", "submissionTime", "", "taskContext", "Lkotlinx/coroutines/scheduling/TaskContext;", "(JLkotlinx/coroutines/scheduling/TaskContext;)V", "mode", "", "getMode", "()I", "kotlinx-coroutines-core"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/coroutines/scheduling/Task;", "Ljava/lang/Runnable;", "Lkotlinx/coroutines/Runnable;", "()V", "submissionTime", "", "taskContext", "Lkotlinx/coroutines/scheduling/TaskContext;", "(JLkotlinx/coroutines/scheduling/TaskContext;)V", "mode", "", "getMode", "()I", "kotlinx-coroutines-core"})
 public abstract class i
   implements Runnable
 {
-  public long NKW;
-  public j NKX;
+  public long Oic;
+  public j Oid;
   
   public i()
   {
-    this(0L, (j)h.NKV);
+    this(0L, (j)h.Oib);
   }
   
   public i(long paramLong, j paramj)
   {
-    this.NKW = paramLong;
-    this.NKX = paramj;
+    this.Oic = paramLong;
+    this.Oid = paramj;
   }
 }
 

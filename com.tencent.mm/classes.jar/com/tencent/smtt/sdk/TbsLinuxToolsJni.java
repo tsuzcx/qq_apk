@@ -50,7 +50,7 @@ class TbsLinuxToolsJni
             {
               localObject2 = localObject1;
               if (!TbsShareManager.isThirdPartyApp(paramContext)) {
-                localObject2 = o.a().p(paramContext);
+                localObject2 = q.a().q(paramContext);
               }
             }
             if (localObject2 != null)
@@ -75,7 +75,7 @@ class TbsLinuxToolsJni
       {
         AppMethodBeat.o(54094);
       }
-      localObject1 = o.a().q(paramContext);
+      localObject1 = q.a().r(paramContext);
     }
   }
   

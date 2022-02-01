@@ -5,8 +5,8 @@ import android.opengl.EGLDisplay;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.deviceinfo.ac;
 import com.tencent.mm.media.k.c.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aq;
 import d.g.a.a;
 import d.g.b.p;
 import d.g.b.q;
@@ -15,299 +15,299 @@ import d.l;
 import d.z;
 import java.util.ArrayList;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/voip/video/render/LocalWindowsSurfaceRenderer;", "", "()V", "mLocalWindowSurfaceRender", "Lcom/tencent/mm/plugin/voip/video/render/WindowSurfaceRenderer;", "mPboSurfaceRender", "Lcom/tencent/mm/plugin/voip/video/render/PboSurfaceRender;", "getMPboSurfaceRender", "()Lcom/tencent/mm/plugin/voip/video/render/PboSurfaceRender;", "setMPboSurfaceRender", "(Lcom/tencent/mm/plugin/voip/video/render/PboSurfaceRender;)V", "mRenderEventListener", "Lcom/tencent/mm/plugin/voip/video/render/IVoIPRendererEvent;", "getMRenderEventListener", "()Lcom/tencent/mm/plugin/voip/video/render/IVoIPRendererEvent;", "setMRenderEventListener", "(Lcom/tencent/mm/plugin/voip/video/render/IVoIPRendererEvent;)V", "addRenderSurface", "", "surface", "Lcom/tencent/mm/plugin/voip/video/render/OpenGLSurface;", "renderSide", "", "checkInit", "callback", "Lkotlin/Function1;", "choiceRenderSurface", "mIsRenderLocal", "", "getFaceBeautyType", "initLocalPboSurfaceRenderer", "width", "height", "isUseFaceBeauty", "release", "removeSurface", "setCameraPreviewSize", "size", "Lcom/tencent/mm/compatible/deviceinfo/Size;", "rotateDegree", "mirror", "setLocalRenderOrientation", "setOnDrawProcEndAfterViewAddCallback", "Lkotlin/Function0;", "setOnFrameDataCallback", "Lkotlin/Function4;", "Ljava/nio/ByteBuffer;", "Lcom/tencent/mm/plugin/voip/video/program/FaceBeautyDataCallBack;", "setVoIPBeauty", "cmd", "startRender", "stopRender", "switchRenderSurface", "updateDrawViewSize", "outputSurface", "Companion", "plugin-voip_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/voip/video/render/LocalWindowsSurfaceRenderer;", "", "()V", "mLocalWindowSurfaceRender", "Lcom/tencent/mm/plugin/voip/video/render/WindowSurfaceRenderer;", "mPboSurfaceRender", "Lcom/tencent/mm/plugin/voip/video/render/PboSurfaceRender;", "getMPboSurfaceRender", "()Lcom/tencent/mm/plugin/voip/video/render/PboSurfaceRender;", "setMPboSurfaceRender", "(Lcom/tencent/mm/plugin/voip/video/render/PboSurfaceRender;)V", "mRenderEventListener", "Lcom/tencent/mm/plugin/voip/video/render/IVoIPRendererEvent;", "getMRenderEventListener", "()Lcom/tencent/mm/plugin/voip/video/render/IVoIPRendererEvent;", "setMRenderEventListener", "(Lcom/tencent/mm/plugin/voip/video/render/IVoIPRendererEvent;)V", "addRenderSurface", "", "surface", "Lcom/tencent/mm/plugin/voip/video/render/OpenGLSurface;", "renderSide", "", "checkInit", "callback", "Lkotlin/Function1;", "choiceRenderSurface", "mIsRenderLocal", "", "getFaceBeautyType", "initLocalPboSurfaceRenderer", "width", "height", "isUseFaceBeauty", "release", "removeSurface", "setCameraPreviewSize", "size", "Lcom/tencent/mm/compatible/deviceinfo/Size;", "rotateDegree", "mirror", "setLocalRenderOrientation", "setOnDrawProcEndAfterViewAddCallback", "Lkotlin/Function0;", "setOnFrameDataCallback", "Lkotlin/Function4;", "Ljava/nio/ByteBuffer;", "Lcom/tencent/mm/plugin/voip/video/program/FaceBeautyDataCallBack;", "setVoIPBeauty", "cmd", "startRender", "stopRender", "switchRenderSurface", "updateDrawViewSize", "outputSurface", "Companion", "plugin-voip_release"})
 public final class e
 {
-  public static final e.a CrP;
-  public g CrM;
-  public m CrN;
-  b CrO;
+  public static final e.a CJt;
+  public g CJq;
+  public m CJr;
+  b CJs;
   
   static
   {
-    AppMethodBeat.i(216120);
-    CrP = new e.a((byte)0);
-    AppMethodBeat.o(216120);
+    AppMethodBeat.i(210541);
+    CJt = new e.a((byte)0);
+    AppMethodBeat.o(210541);
   }
   
-  private final boolean eBg()
+  private final boolean eEO()
   {
-    AppMethodBeat.i(216114);
-    g localg = this.CrM;
-    if ((localg == null) || (localg.eBe() != 0))
+    AppMethodBeat.i(210535);
+    g localg = this.CJq;
+    if ((localg == null) || (localg.eEM() != 0))
     {
-      AppMethodBeat.o(216114);
+      AppMethodBeat.o(210535);
       return true;
     }
-    AppMethodBeat.o(216114);
+    AppMethodBeat.o(210535);
     return false;
   }
   
   public final void K(a<z> parama)
   {
-    Object localObject = this.CrN;
+    Object localObject = this.CJr;
     if (localObject != null) {
-      ((c)localObject).Cru = parama;
+      ((c)localObject).CIY = parama;
     }
-    localObject = this.CrM;
+    localObject = this.CJq;
     if (localObject != null) {
-      ((g)localObject).Cru = parama;
+      ((g)localObject).CIY = parama;
     }
   }
   
-  public final void UW(int paramInt)
+  public final void VD(int paramInt)
   {
-    AppMethodBeat.i(216109);
-    g localg = this.CrM;
+    AppMethodBeat.i(210530);
+    g localg = this.CJq;
     if (localg != null)
     {
-      localg.UW(paramInt);
-      AppMethodBeat.o(216109);
+      localg.VD(paramInt);
+      AppMethodBeat.o(210530);
       return;
     }
-    AppMethodBeat.o(216109);
+    AppMethodBeat.o(210530);
   }
   
   public final void a(ac paramac, int paramInt, boolean paramBoolean)
   {
-    AppMethodBeat.i(216111);
+    AppMethodBeat.i(210532);
     p.h(paramac, "size");
-    g localg = this.CrM;
+    g localg = this.CJq;
     if (localg != null)
     {
-      m localm = this.CrN;
+      m localm = this.CJr;
       if (localm != null)
       {
         localm.a(localg, paramac, Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean));
-        AppMethodBeat.o(216111);
+        AppMethodBeat.o(210532);
         return;
       }
-      AppMethodBeat.o(216111);
+      AppMethodBeat.o(210532);
       return;
     }
-    AppMethodBeat.o(216111);
+    AppMethodBeat.o(210532);
   }
   
   public final void a(f paramf, int paramInt)
   {
-    AppMethodBeat.i(216118);
-    Object localObject = this.CrN;
+    AppMethodBeat.i(210539);
+    Object localObject = this.CJr;
     if (localObject != null) {
       ((m)localObject).a(paramf, paramInt);
     }
-    localObject = this.CrM;
+    localObject = this.CJq;
     if (localObject != null)
     {
       if (paramInt == 0)
       {
-        ((g)localObject).Crz = paramf;
-        AppMethodBeat.o(216118);
+        ((g)localObject).CJd = paramf;
+        AppMethodBeat.o(210539);
         return;
       }
-      ((g)localObject).CrA = paramf;
-      AppMethodBeat.o(216118);
+      ((g)localObject).CJe = paramf;
+      AppMethodBeat.o(210539);
       return;
     }
-    AppMethodBeat.o(216118);
+    AppMethodBeat.o(210539);
+  }
+  
+  public final void b(f paramf)
+  {
+    AppMethodBeat.i(224121);
+    if (eEO())
+    {
+      m localm = this.CJr;
+      if (localm != null)
+      {
+        localm.b(paramf);
+        AppMethodBeat.o(224121);
+        return;
+      }
+    }
+    AppMethodBeat.o(224121);
   }
   
   public final void b(f paramf, int paramInt)
   {
-    AppMethodBeat.i(216113);
+    AppMethodBeat.i(210534);
     if (paramf != null)
     {
-      ad.m("MicroMsg.LocalWindowsSurfaceRenderer", "add render surface renderSide " + paramInt + " and :" + paramf, new Object[0]);
-      Object localObject = this.CrN;
+      ae.m("MicroMsg.LocalWindowsSurfaceRenderer", "add render surface renderSide " + paramInt + " and :" + paramf, new Object[0]);
+      Object localObject = this.CJr;
       if (localObject != null) {
         ((m)localObject).b(paramf, paramInt);
       }
-      localObject = this.CrM;
+      localObject = this.CJq;
       if (localObject != null)
       {
         if (paramf != null)
         {
-          ad.m("MicroMsg.PboSurfaceRender", "add render surface renderSide " + paramInt + " and :" + paramf, new Object[0]);
+          ae.m("MicroMsg.PboSurfaceRender", "add render surface renderSide " + paramInt + " and :" + paramf, new Object[0]);
           if (paramInt == 0)
           {
-            ((g)localObject).Crz = paramf;
-            AppMethodBeat.o(216113);
+            ((g)localObject).CJd = paramf;
+            AppMethodBeat.o(210534);
             return;
           }
-          ((g)localObject).CrA = paramf;
-          AppMethodBeat.o(216113);
+          ((g)localObject).CJe = paramf;
+          AppMethodBeat.o(210534);
           return;
         }
-        ad.e("MicroMsg.PboSurfaceRender", "add a null surface");
-        AppMethodBeat.o(216113);
+        ae.e("MicroMsg.PboSurfaceRender", "add a null surface");
+        AppMethodBeat.o(210534);
         return;
       }
-      AppMethodBeat.o(216113);
+      AppMethodBeat.o(210534);
       return;
     }
-    ad.e("MicroMsg.LocalWindowsSurfaceRenderer", "add a null surface");
-    AppMethodBeat.o(216113);
+    ae.e("MicroMsg.LocalWindowsSurfaceRenderer", "add a null surface");
+    AppMethodBeat.o(210534);
   }
   
   public final void c(f paramf, int paramInt)
   {
-    AppMethodBeat.i(216115);
+    AppMethodBeat.i(210536);
     if (paramf != null)
     {
-      Object localObject = this.CrN;
+      Object localObject = this.CJr;
       if (localObject != null) {
         ((m)localObject).c(paramf, paramInt);
       }
-      g localg = this.CrM;
+      g localg = this.CJq;
       if (localg != null)
       {
         if (paramf != null)
         {
-          ad.i("MicroMsg.PboSurfaceRender", "remove render surface :".concat(String.valueOf(paramf)));
-          localObject = localg.huo;
+          ae.i("MicroMsg.PboSurfaceRender", "remove render surface :".concat(String.valueOf(paramf)));
+          localObject = localg.hxc;
           if (localObject != null)
           {
-            localObject = ((c.b)localObject).hoQ;
-            if ((localObject != null) && ((p.i(paramf.eBi(), EGL14.EGL_NO_SURFACE) ^ true)))
+            localObject = ((c.b)localObject).hrE;
+            if ((localObject != null) && ((p.i(paramf.eEQ(), EGL14.EGL_NO_SURFACE) ^ true)))
             {
-              localObject = localg.huo;
+              localObject = localg.hxc;
               if (localObject == null) {
                 break label132;
               }
             }
           }
           label132:
-          for (localObject = ((c.b)localObject).hoQ;; localObject = null)
+          for (localObject = ((c.b)localObject).hrE;; localObject = null)
           {
-            EGL14.eglDestroySurface((EGLDisplay)localObject, paramf.eBi());
+            EGL14.eglDestroySurface((EGLDisplay)localObject, paramf.eEQ());
             if (paramInt != 0) {
               break label137;
             }
-            localg.Crz = null;
-            AppMethodBeat.o(216115);
+            localg.CJd = null;
+            AppMethodBeat.o(210536);
             return;
             localObject = null;
             break;
           }
           label137:
-          localg.CrA = null;
-          AppMethodBeat.o(216115);
+          localg.CJe = null;
+          AppMethodBeat.o(210536);
           return;
         }
-        ad.e("MicroMsg.PboSurfaceRender", "remove a null surface");
-        AppMethodBeat.o(216115);
+        ae.e("MicroMsg.PboSurfaceRender", "remove a null surface");
+        AppMethodBeat.o(210536);
         return;
       }
-      AppMethodBeat.o(216115);
+      AppMethodBeat.o(210536);
       return;
     }
-    ad.e("MicroMsg.LocalWindowsSurfaceRenderer", "remove a null surface");
-    AppMethodBeat.o(216115);
+    ae.e("MicroMsg.LocalWindowsSurfaceRenderer", "remove a null surface");
+    AppMethodBeat.o(210536);
   }
   
-  public final void eBc()
+  public final void eEK()
   {
-    AppMethodBeat.i(216117);
-    if (eBg())
+    AppMethodBeat.i(210538);
+    if (eEO())
     {
-      m localm = this.CrN;
+      m localm = this.CJr;
       if (localm != null)
       {
-        localm.eBc();
-        AppMethodBeat.o(216117);
+        localm.eEK();
+        AppMethodBeat.o(210538);
         return;
       }
     }
-    AppMethodBeat.o(216117);
+    AppMethodBeat.o(210538);
   }
   
-  public final void eBd()
+  public final int eEM()
   {
-    AppMethodBeat.i(216116);
-    if (eBg())
-    {
-      m localm = this.CrN;
-      if (localm != null)
-      {
-        localm.eBd();
-        AppMethodBeat.o(216116);
-        return;
-      }
-    }
-    AppMethodBeat.o(216116);
-  }
-  
-  public final int eBe()
-  {
-    AppMethodBeat.i(216110);
-    g localg = this.CrM;
+    AppMethodBeat.i(210531);
+    g localg = this.CJq;
     if (localg != null)
     {
-      int i = localg.eBe();
-      AppMethodBeat.o(216110);
+      int i = localg.eEM();
+      AppMethodBeat.o(210531);
       return i;
     }
-    AppMethodBeat.o(216110);
+    AppMethodBeat.o(210531);
     return 0;
   }
   
-  public final void eBf()
+  public final void eEN()
   {
-    AppMethodBeat.i(216112);
-    Object localObject = this.CrN;
+    AppMethodBeat.i(210533);
+    Object localObject = this.CJr;
     if (localObject != null) {
-      ((m)localObject).tL(true);
+      ((m)localObject).tS(true);
     }
-    localObject = this.CrM;
+    localObject = this.CJq;
     if (localObject != null)
     {
-      ((g)localObject).i((a)new g.c((g)localObject));
-      AppMethodBeat.o(216112);
+      ((g)localObject).j((a)new g.c((g)localObject));
+      AppMethodBeat.o(210533);
       return;
     }
-    AppMethodBeat.o(216112);
+    AppMethodBeat.o(210533);
   }
   
   public final void release()
   {
-    AppMethodBeat.i(216119);
-    Object localObject = this.CrM;
-    ap localap;
+    AppMethodBeat.i(210540);
+    Object localObject = this.CJq;
+    aq localaq;
     if (localObject != null)
     {
-      ad.i("MicroMsg.PboSurfaceRender", "stop");
-      localap = ((g)localObject).handler;
-      if (localap != null) {
-        localap.removeCallbacksAndMessages(null);
+      ae.i("MicroMsg.PboSurfaceRender", "stop");
+      localaq = ((g)localObject).handler;
+      if (localaq != null) {
+        localaq.removeCallbacksAndMessages(null);
       }
-      ((g)localObject).i((a)new g.l((g)localObject));
+      ((g)localObject).j((a)new g.l((g)localObject));
     }
-    localObject = this.CrM;
+    localObject = this.CJq;
     if (localObject != null)
     {
-      ad.i("MicroMsg.PboSurfaceRender", "destroy");
-      localap = ((g)localObject).handler;
-      if (localap != null) {
-        localap.removeCallbacksAndMessages(null);
+      ae.i("MicroMsg.PboSurfaceRender", "destroy");
+      localaq = ((g)localObject).handler;
+      if (localaq != null) {
+        localaq.removeCallbacksAndMessages(null);
       }
-      ((g)localObject).Csa.clear();
-      ((g)localObject).Csb.clear();
-      ((g)localObject).i((a)new g.h((g)localObject));
+      ((g)localObject).CJE.clear();
+      ((g)localObject).CJF.clear();
+      ((g)localObject).j((a)new g.h((g)localObject));
     }
-    localObject = this.CrN;
+    localObject = this.CJr;
     if (localObject != null) {
-      ((m)localObject).eBd();
+      c.h((c)localObject);
     }
-    localObject = this.CrN;
+    localObject = this.CJr;
     if (localObject != null)
     {
       ((m)localObject).release();
-      AppMethodBeat.o(216119);
+      AppMethodBeat.o(210540);
       return;
     }
-    AppMethodBeat.o(216119);
+    AppMethodBeat.o(210540);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/voip/video/render/PboSurfaceRender;", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/voip/video/render/PboSurfaceRender;", "invoke"})
   static final class b
     extends q
     implements d.g.a.b<g, z>
@@ -318,7 +318,7 @@ public final class e
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "", "invoke"})
   static final class c
     extends q
     implements d.g.a.b
@@ -329,7 +329,7 @@ public final class e
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "", "invoke", "(J)Lkotlin/Unit;"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "", "invoke", "(J)Lkotlin/Unit;"})
   static final class d
     extends q
     implements d.g.a.b<Long, z>

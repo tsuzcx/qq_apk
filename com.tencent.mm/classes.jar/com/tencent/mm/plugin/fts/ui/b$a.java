@@ -2,19 +2,19 @@ package com.tencent.mm.plugin.fts.ui;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cc.a;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.cb.a;
+import com.tencent.mm.sdk.platformtools.ak;
 
 public final class b$a
 {
-  public static int txZ;
+  public static int tIQ;
   
   static
   {
     AppMethodBeat.i(111810);
-    txZ = 0;
-    Context localContext = aj.getContext();
-    txZ = a.ip(localContext) - a.ax(localContext, 2131165550) * 2 - a.ax(localContext, 2131165508) - a.ax(localContext, 2131165550);
+    tIQ = 0;
+    Context localContext = ak.getContext();
+    tIQ = a.iu(localContext) - a.ax(localContext, 2131165550) * 2 - a.ax(localContext, 2131165508) - a.ax(localContext, 2131165550);
     AppMethodBeat.o(111810);
   }
 }

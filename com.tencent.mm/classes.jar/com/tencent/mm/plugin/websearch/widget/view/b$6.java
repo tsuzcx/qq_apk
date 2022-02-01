@@ -17,9 +17,9 @@ final class b$6
     com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
     localb.bd(paramView);
     localb.bd(paramMotionEvent);
-    a.b("com/tencent/mm/plugin/websearch/widget/view/WidgetView$6", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahq());
-    this.DFl.DFa[0] = paramMotionEvent.getX();
-    this.DFl.DFa[1] = paramMotionEvent.getY();
+    a.b("com/tencent/mm/plugin/websearch/widget/view/WidgetView$6", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahF());
+    this.DXi.DWX[0] = paramMotionEvent.getX();
+    this.DXi.DWX[1] = paramMotionEvent.getY();
     a.a(false, this, "com/tencent/mm/plugin/websearch/widget/view/WidgetView$6", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
     AppMethodBeat.o(116708);
     return false;

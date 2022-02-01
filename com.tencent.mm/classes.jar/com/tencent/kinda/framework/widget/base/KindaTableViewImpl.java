@@ -3,26 +3,30 @@ package com.tencent.kinda.framework.widget.base;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
+import android.widget.BaseAdapter;
+import android.widget.FrameLayout;
 import android.widget.ListView;
 import com.tencent.kinda.gen.KTableView;
 import com.tencent.kinda.gen.KTableViewCellManager;
 import com.tencent.kinda.gen.VoidCallback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.ui.z;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import junit.framework.Assert;
 
 public class KindaTableViewImpl
   extends MMKView<ListView>
   implements KTableView
 {
   private static final String TAG = "MicroMsg.KindaTableViewImplV2";
-  private KindaTableViewImpl.Adapter mAdapter;
+  private Adapter mAdapter;
   private ArrayList<KTableViewCellManager> mDataList;
   private boolean mEnableRefresh;
   private VoidCallback mLoadMoreCallback;
@@ -31,75 +35,120 @@ public class KindaTableViewImpl
   
   public KindaTableViewImpl()
   {
-    AppMethodBeat.i(199495);
+    AppMethodBeat.i(193211);
     this.mDataList = new ArrayList();
     this.mEnableRefresh = false;
     this.mViewMap = new HashMap();
-    AppMethodBeat.o(199495);
+    AppMethodBeat.o(193211);
   }
   
   public ListView createView(Context paramContext)
   {
-    AppMethodBeat.i(199496);
-    ad.d("MicroMsg.KindaTableViewImplV2", "create view");
+    AppMethodBeat.i(193212);
+    ae.d("MicroMsg.KindaTableViewImplV2", "create view");
     this.view = new ListView(paramContext);
-    this.refreshFooterView = z.jO(paramContext).inflate(2131492888, null);
+    this.refreshFooterView = z.jV(paramContext).inflate(2131492888, null);
     this.refreshFooterView.setVisibility(8);
     ((ListView)this.view).addFooterView(this.refreshFooterView, null, false);
-    this.mAdapter = new KindaTableViewImpl.Adapter(this, null);
+    this.mAdapter = new Adapter(null);
     ((ListView)this.view).setAdapter(this.mAdapter);
     ((ListView)this.view).setSelector(2131101053);
     ((ListView)this.view).setOnScrollListener(new AbsListView.OnScrollListener()
     {
       public void onScroll(AbsListView paramAnonymousAbsListView, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3)
       {
-        AppMethodBeat.i(199490);
+        AppMethodBeat.i(193206);
         if ((KindaTableViewImpl.this.mEnableRefresh) && (paramAnonymousAbsListView.getLastVisiblePosition() == paramAnonymousAbsListView.getCount() - 1) && (paramAnonymousAbsListView.getCount() > 0) && (KindaTableViewImpl.this.mLoadMoreCallback != null)) {
           KindaTableViewImpl.this.mLoadMoreCallback.call();
         }
-        AppMethodBeat.o(199490);
+        AppMethodBeat.o(193206);
       }
       
       public void onScrollStateChanged(AbsListView paramAnonymousAbsListView, int paramAnonymousInt) {}
     });
     paramContext = (ListView)this.view;
-    AppMethodBeat.o(199496);
+    AppMethodBeat.o(193212);
     return paramContext;
   }
   
   public void setCells(ArrayList<KTableViewCellManager> paramArrayList)
   {
-    AppMethodBeat.i(199497);
-    ad.i("MicroMsg.KindaTableViewImplV2", "set cells: %s", new Object[] { Integer.valueOf(paramArrayList.size()) });
+    AppMethodBeat.i(193213);
+    ae.i("MicroMsg.KindaTableViewImplV2", "set cells: %s", new Object[] { Integer.valueOf(paramArrayList.size()) });
     this.mDataList.clear();
     this.mViewMap.clear();
     this.mDataList.addAll(paramArrayList);
     if (this.mAdapter != null) {
       this.mAdapter.notifyDataSetChanged();
     }
-    AppMethodBeat.o(199497);
+    AppMethodBeat.o(193213);
   }
   
   public void setEnableFooterRefreshView(boolean paramBoolean)
   {
-    AppMethodBeat.i(199498);
+    AppMethodBeat.i(193214);
     this.mEnableRefresh = paramBoolean;
     if (paramBoolean)
     {
       this.refreshFooterView.setVisibility(0);
-      AppMethodBeat.o(199498);
+      AppMethodBeat.o(193214);
       return;
     }
     this.refreshFooterView.setVisibility(8);
-    AppMethodBeat.o(199498);
+    AppMethodBeat.o(193214);
   }
   
   public void setFooterRefreshViewLoadMoreCallbackImpl(VoidCallback paramVoidCallback)
   {
-    AppMethodBeat.i(199499);
-    ad.d("MicroMsg.KindaTableViewImplV2", "set footer refresh callback");
+    AppMethodBeat.i(193215);
+    ae.d("MicroMsg.KindaTableViewImplV2", "set footer refresh callback");
     this.mLoadMoreCallback = paramVoidCallback;
-    AppMethodBeat.o(199499);
+    AppMethodBeat.o(193215);
+  }
+  
+  class Adapter
+    extends BaseAdapter
+  {
+    private Adapter() {}
+    
+    public int getCount()
+    {
+      AppMethodBeat.i(193207);
+      int i = KindaTableViewImpl.this.mDataList.size();
+      AppMethodBeat.o(193207);
+      return i;
+    }
+    
+    public KTableViewCellManager getItem(int paramInt)
+    {
+      AppMethodBeat.i(193208);
+      KTableViewCellManager localKTableViewCellManager = (KTableViewCellManager)KindaTableViewImpl.this.mDataList.get(paramInt);
+      AppMethodBeat.o(193208);
+      return localKTableViewCellManager;
+    }
+    
+    public long getItemId(int paramInt)
+    {
+      return 0L;
+    }
+    
+    public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+    {
+      AppMethodBeat.i(193209);
+      ae.v("MicroMsg.KindaTableViewImplV2", "get view for: %s", new Object[] { Integer.valueOf(paramInt) });
+      paramView = ((KTableViewCellManager)KindaTableViewImpl.this.mDataList.get(paramInt)).getView();
+      Assert.assertTrue("kViewLayout must be MMKViewLayout!", paramView instanceof MMKViewLayout);
+      KindaTableViewImpl.this.mViewMap.put(Integer.valueOf(paramInt), new WeakReference(((MMKViewLayout)paramView).getView()));
+      ((MMKViewLayout)paramView).getView().setTag("test_position_".concat(String.valueOf(paramInt)));
+      paramView = (ViewGroup)((MMKViewLayout)paramView).getView();
+      if (paramView.getParent() != null) {
+        ((ViewGroup)paramView.getParent()).removeView(paramView);
+      }
+      paramViewGroup = new FrameLayout(KindaTableViewImpl.this.mContext);
+      paramViewGroup.addView(paramView);
+      AppMethodBeat.o(193209);
+      return paramViewGroup;
+    }
   }
 }
 

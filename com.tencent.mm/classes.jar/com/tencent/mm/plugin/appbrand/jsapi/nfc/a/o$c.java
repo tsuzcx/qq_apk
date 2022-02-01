@@ -6,18 +6,18 @@ import d.g.b.p;
 import d.g.b.q;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "invoke"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "invoke"})
 final class o$c
   extends q
   implements b<Object, Object>
 {
-  public static final c kZw;
+  public static final c ldf;
   
   static
   {
-    AppMethodBeat.i(199694);
-    kZw = new c();
-    AppMethodBeat.o(199694);
+    AppMethodBeat.i(208208);
+    ldf = new c();
+    AppMethodBeat.o(208208);
   }
   
   o$c()
@@ -27,9 +27,9 @@ final class o$c
   
   public final Object invoke(Object paramObject)
   {
-    AppMethodBeat.i(199693);
+    AppMethodBeat.i(208207);
     p.h(paramObject, "it");
-    AppMethodBeat.o(199693);
+    AppMethodBeat.o(208207);
     return paramObject;
   }
 }

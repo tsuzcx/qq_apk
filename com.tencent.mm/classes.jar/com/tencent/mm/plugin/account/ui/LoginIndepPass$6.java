@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.account.ui;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.m;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 final class LoginIndepPass$6
   implements Runnable
@@ -13,15 +13,15 @@ final class LoginIndepPass$6
   public final void run()
   {
     AppMethodBeat.i(128152);
-    ad.d("MicroMsg.LoginIndepPass", "onSceneEnd, in runnable");
-    Object localObject = com.tencent.mm.plugin.account.a.a.iRG.bC(this.jly);
+    ae.d("MicroMsg.LoginIndepPass", "onSceneEnd, in runnable");
+    Object localObject = com.tencent.mm.plugin.account.a.a.iUz.bE(this.jos);
     ((Intent)localObject).addFlags(67108864);
-    LoginIndepPass localLoginIndepPass = this.jly;
+    LoginIndepPass localLoginIndepPass = this.jos;
     localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
-    com.tencent.mm.hellhoundlib.a.a.a(localLoginIndepPass, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahp(), "com/tencent/mm/plugin/account/ui/LoginIndepPass$14", "run", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    localLoginIndepPass.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mq(0));
+    com.tencent.mm.hellhoundlib.a.a.a(localLoginIndepPass, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahE(), "com/tencent/mm/plugin/account/ui/LoginIndepPass$14", "run", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    localLoginIndepPass.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mt(0));
     com.tencent.mm.hellhoundlib.a.a.a(localLoginIndepPass, "com/tencent/mm/plugin/account/ui/LoginIndepPass$14", "run", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    this.jly.finish();
+    this.jos.finish();
     AppMethodBeat.o(128152);
   }
 }

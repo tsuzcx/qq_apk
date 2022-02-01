@@ -6,9 +6,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
 import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
 import com.tencent.mm.plugin.appbrand.report.t;
-import com.tencent.mm.sdk.platformtools.av;
-import com.tencent.mm.sdk.platformtools.av.a;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.aw;
+import com.tencent.mm.sdk.platformtools.aw.a;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.lang.ref.WeakReference;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -17,46 +17,46 @@ import java.util.concurrent.TimeUnit;
 public final class d
   extends a
 {
-  private static final Map<String, d> lNv;
-  private final String lNw;
-  private final String lNx;
+  private static final Map<String, d> lRW;
+  private final String lRX;
+  private final String lRY;
   private final WeakReference<Context> mContextRef;
   
   static
   {
     AppMethodBeat.i(47452);
-    lNv = new ConcurrentHashMap();
+    lRW = new ConcurrentHashMap();
     AppMethodBeat.o(47452);
   }
   
   d(Context paramContext, String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(47449);
-    this.lNw = paramString;
-    this.lNx = paramContext.getClass().getName();
+    this.lRX = paramString;
+    this.lRY = paramContext.getClass().getName();
     this.mContextRef = new WeakReference(paramContext);
-    this.lNj = paramBoolean;
-    lNv.put(paramString, this);
+    this.lRK = paramBoolean;
+    lRW.put(paramString, this);
     paramContext = new a(paramString);
     long l = TimeUnit.SECONDS.toMillis(300L);
-    paramContext.az(l, l);
+    paramContext.ay(l, l);
     AppMethodBeat.o(47449);
   }
   
-  public static d RY(String paramString)
+  public static d SH(String paramString)
   {
     AppMethodBeat.i(47448);
-    if (bt.isNullOrNil(paramString))
+    if (bu.isNullOrNil(paramString))
     {
       AppMethodBeat.o(47448);
       return null;
     }
-    paramString = (d)lNv.remove(paramString);
+    paramString = (d)lRW.remove(paramString);
     AppMethodBeat.o(47448);
     return paramString;
   }
   
-  protected final Context brY()
+  protected final Context bsJ()
   {
     AppMethodBeat.i(47451);
     Context localContext = (Context)this.mContextRef.get();
@@ -70,25 +70,25 @@ public final class d
     super.c(paramAppBrandInitConfigWC, paramAppBrandStatObject);
     if (paramAppBrandInitConfigWC != null)
     {
-      paramAppBrandStatObject = t.mrY;
+      paramAppBrandStatObject = t.mwW;
       t.g(paramAppBrandInitConfigWC);
     }
     AppMethodBeat.o(47450);
   }
   
   static final class a
-    extends av
+    extends aw
   {
     a(String paramString)
     {
-      super(new av.a()
+      super(new aw.a()
       {
         public final boolean onTimerExpired()
         {
           AppMethodBeat.i(47446);
-          d locald = d.RY(d.a.this);
+          d locald = d.SH(d.a.this);
           if (locald != null) {
-            locald.brV();
+            locald.bsG();
           }
           AppMethodBeat.o(47446);
           return false;

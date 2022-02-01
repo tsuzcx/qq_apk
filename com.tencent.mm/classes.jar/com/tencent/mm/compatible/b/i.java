@@ -4,46 +4,46 @@ import android.annotation.TargetApi;
 import android.media.AudioRecord;
 import android.media.audiofx.AutomaticGainControl;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class i
   implements h.a
 {
-  private AutomaticGainControl fWa;
+  private AutomaticGainControl fYg;
   
   @TargetApi(16)
   public i(AudioRecord paramAudioRecord)
   {
     AppMethodBeat.i(155611);
-    this.fWa = null;
+    this.fYg = null;
     boolean bool = AutomaticGainControl.isAvailable();
-    ad.d("MicroMsg.MMAutomaticGainControl", "available  ".concat(String.valueOf(bool)));
+    ae.d("MicroMsg.MMAutomaticGainControl", "available  ".concat(String.valueOf(bool)));
     if (bool) {
-      this.fWa = AutomaticGainControl.create(paramAudioRecord.getAudioSessionId());
+      this.fYg = AutomaticGainControl.create(paramAudioRecord.getAudioSessionId());
     }
     AppMethodBeat.o(155611);
   }
   
   @TargetApi(16)
-  public final boolean ZI()
+  public final boolean ZR()
   {
     AppMethodBeat.i(155613);
-    if (this.fWa != null) {}
+    if (this.fYg != null) {}
     try
     {
-      int i = this.fWa.setEnabled(true);
+      int i = this.fYg.setEnabled(true);
       if (i == 0)
       {
         AppMethodBeat.o(155613);
         return true;
       }
-      ad.d("MicroMsg.MMAutomaticGainControl", "setEnabled failed ".concat(String.valueOf(i)));
+      ae.d("MicroMsg.MMAutomaticGainControl", "setEnabled failed ".concat(String.valueOf(i)));
     }
     catch (Exception localException)
     {
       for (;;)
       {
-        ad.printErrStackTrace("MicroMsg.MMAutomaticGainControl", localException, "", new Object[0]);
+        ae.printErrStackTrace("MicroMsg.MMAutomaticGainControl", localException, "", new Object[0]);
       }
     }
     AppMethodBeat.o(155613);

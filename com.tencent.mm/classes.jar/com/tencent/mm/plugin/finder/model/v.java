@@ -1,85 +1,129 @@
 package com.tencent.mm.plugin.finder.model;
 
-import android.text.SpannableString;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.feed.model.internal.i;
-import com.tencent.mm.pluginsdk.ui.span.k;
-import com.tencent.mm.protocal.protobuf.arp;
-import com.tencent.mm.sdk.platformtools.aj;
-import d.f;
-import d.g;
-import d.g.a.a;
+import com.tencent.mm.g.b.a.ak;
+import com.tencent.mm.plugin.finder.cgi.af;
+import com.tencent.mm.plugin.finder.report.i;
+import com.tencent.mm.plugin.finder.storage.FinderItem;
+import com.tencent.mm.plugin.finder.utils.o;
+import com.tencent.mm.plugin.report.a;
+import com.tencent.mm.plugin.report.e;
+import com.tencent.mm.protocal.protobuf.FinderObject;
+import com.tencent.mm.protocal.protobuf.arn;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import d.g.b.p;
-import d.g.b.q;
 import d.l;
+import d.n.n;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/model/FinderHistoryDivider;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "divider", "Lcom/tencent/mm/protocal/protobuf/FinderStreamDivider;", "(Lcom/tencent/mm/protocal/protobuf/FinderStreamDivider;)V", "getDivider", "()Lcom/tencent/mm/protocal/protobuf/FinderStreamDivider;", "id", "", "getId", "()J", "id$delegate", "Lkotlin/Lazy;", "tip", "Landroid/text/SpannableString;", "kotlin.jvm.PlatformType", "getTip", "()Landroid/text/SpannableString;", "tipStyle", "", "getTipStyle", "()I", "compare", "obj", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "getItemId", "getItemType", "toString", "", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/model/FinderFollowLogic;", "", "()V", "follow", "Lcom/tencent/mm/plugin/finder/cgi/NetSceneFinderFollow;", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "finderUser", "", "opType", "", "plugin-finder_release"})
 public final class v
-  implements al
 {
-  private final f rWv;
-  final arp rWx;
-  public final SpannableString skn;
-  public final int sko;
+  public static final v stj;
   
-  public v(arp paramarp)
+  static
   {
-    AppMethodBeat.i(202962);
-    this.rWx = paramarp;
-    this.rWv = g.O((a)new a(this));
-    this.skn = k.c(aj.getContext(), (CharSequence)this.rWx.dxD);
-    this.sko = this.rWx.Gpr;
-    AppMethodBeat.o(202962);
+    AppMethodBeat.i(166392);
+    stj = new v();
+    AppMethodBeat.o(166392);
   }
   
-  public final int a(i parami)
+  public static af a(arn paramarn, String paramString, int paramInt)
   {
-    AppMethodBeat.i(202960);
-    p.h(parami, "obj");
-    if (((parami instanceof v)) && (((v)parami).rWx.Gpl == this.rWx.Gpl) && (((v)parami).rWx.Gpr == this.rWx.Gpr) && (p.i(((v)parami).rWx.dxD, this.rWx.dxD)))
+    AppMethodBeat.i(203440);
+    p.h(paramarn, "contextObj");
+    p.h(paramString, "finderUser");
+    ae.i("Finder.FinderFollowLogic", "follow event commentScene:" + paramarn.tnf + " user:" + paramString + " opType: " + paramInt + " form " + bu.fpN());
+    Object localObject1 = e.ywz;
+    Object localObject2 = af.rRv;
+    long l;
+    int i;
+    label129:
+    ak localak;
+    if (paramInt == af.czF())
     {
-      AppMethodBeat.o(202960);
-      return 0;
+      l = 5L;
+      ((e)localObject1).idkeyStat(1278L, l, 1L, false);
+      localObject1 = i.syT;
+      l = paramarn.tnd;
+      localObject1 = af.rRv;
+      if (paramInt != af.czF()) {
+        break label499;
+      }
+      i = 1;
+      p.h(paramarn, "contextObj");
+      p.h(paramString, "finderUsername");
+      localak = new ak();
+      localak.hy(paramarn.sessionId);
+      localak.hz("");
+      localak.cV(paramarn.sch);
+      localak.hB(paramString);
+      localak.cN(3L);
+      localak.cO(i);
+      localak.hC("");
+      localak.cQ(2L);
+      localak.hF(paramarn.rfA);
+      localak.hG(paramarn.rfo);
+      localObject1 = i.wJ(l);
+      if (localObject1 == null) {
+        break label504;
+      }
+      localak.hA(i.wL(l));
+      localak.cR(((FinderItem)localObject1).getFeedObject().likeCount);
+      localak.cS(((FinderItem)localObject1).getFeedObject().commentCount);
+      localak.cT(((FinderItem)localObject1).getFeedObject().friendLikeCount);
+      localak.cU(((FinderItem)localObject1).getMediaType());
+      localObject2 = o.sXt;
+      localak.hD(n.h(o.p((FinderItem)localObject1), ",", ";", false));
+      localak.hE("");
+      localak.hH(i.I(l, paramarn.tnf));
     }
-    AppMethodBeat.o(202960);
-    return -1;
-  }
-  
-  public final int bYk()
-  {
-    return 2011;
-  }
-  
-  public final long lP()
-  {
-    AppMethodBeat.i(202959);
-    long l = ((Number)this.rWv.getValue()).longValue();
-    AppMethodBeat.o(202959);
-    return l;
-  }
-  
-  public final String toString()
-  {
-    AppMethodBeat.i(202961);
-    String str = "ItemId=" + lP() + ",ItemType=2011 tipStyle=" + this.sko + " tip=" + this.skn;
-    AppMethodBeat.o(202961);
-    return str;
-  }
-  
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
-  static final class a
-    extends q
-    implements a<Long>
-  {
-    a(v paramv)
+    for (;;)
     {
-      super();
+      localObject1 = paramarn.extraInfo;
+      if (localObject1 != null)
+      {
+        localObject2 = n.h((String)localObject1, ",", ";", false);
+        localObject1 = localObject2;
+        if (localObject2 != null) {}
+      }
+      else
+      {
+        localObject1 = "";
+      }
+      localak.hI((String)localObject1);
+      localObject1 = paramarn.rfr;
+      if (localObject1 != null)
+      {
+        localObject2 = n.h((String)localObject1, ",", ";", false);
+        localObject1 = localObject2;
+        if (localObject2 != null) {}
+      }
+      else
+      {
+        localObject1 = "";
+      }
+      localak.hJ((String)localObject1);
+      localak.aLH();
+      i.a((a)localak);
+      paramarn = new af(paramString, paramInt, paramarn, paramarn.tnd);
+      AppMethodBeat.o(203440);
+      return paramarn;
+      l = 4L;
+      break;
+      label499:
+      i = 2;
+      break label129;
+      label504:
+      localak.hA("0");
+      localak.hD("");
+      localak.hE("");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.model.v
  * JD-Core Version:    0.7.0.1
  */

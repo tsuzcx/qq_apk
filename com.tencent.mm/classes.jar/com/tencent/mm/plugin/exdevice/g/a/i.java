@@ -1,16 +1,18 @@
 package com.tencent.mm.plugin.exdevice.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.ba;
-import com.tencent.mm.model.u;
-import com.tencent.mm.protocal.protobuf.atc;
-import com.tencent.mm.protocal.protobuf.bka;
-import com.tencent.mm.protocal.protobuf.bkb;
-import com.tencent.mm.protocal.protobuf.diq;
-import com.tencent.mm.protocal.protobuf.eiz;
-import com.tencent.mm.protocal.protobuf.eja;
-import com.tencent.mm.protocal.protobuf.rc;
-import com.tencent.mm.storage.bp;
+import com.tencent.mm.model.bc;
+import com.tencent.mm.model.v;
+import com.tencent.mm.plugin.exdevice.model.ad;
+import com.tencent.mm.protocal.protobuf.ats;
+import com.tencent.mm.protocal.protobuf.bks;
+import com.tencent.mm.protocal.protobuf.bkt;
+import com.tencent.mm.protocal.protobuf.djl;
+import com.tencent.mm.protocal.protobuf.ekq;
+import com.tencent.mm.protocal.protobuf.ekr;
+import com.tencent.mm.protocal.protobuf.re;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.storage.bq;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -18,34 +20,34 @@ import java.util.LinkedList;
 import java.util.List;
 
 public final class i
-  extends com.tencent.mm.plugin.exdevice.b.a<bka, bkb>
+  extends com.tencent.mm.plugin.exdevice.b.a<bks, bkt>
 {
   public String appName;
   public String coverUrl;
-  private final WeakReference<com.tencent.mm.plugin.exdevice.b.b<i>> qap;
-  public String qeO;
-  public String qeP;
-  public String qeQ;
-  public String qeR;
-  public List<diq> qeS;
-  public List<eja> qeT;
-  public eiz qeU;
-  public ArrayList<String> qeV;
-  public List<atc> qeW;
-  public List<rc> qeX;
-  public boolean qeY;
-  public int qeZ;
-  public boolean qfa;
+  private final WeakReference<com.tencent.mm.plugin.exdevice.b.b<i>> qgU;
+  public ArrayList<String> qlA;
+  public List<ats> qlB;
+  public List<re> qlC;
+  public boolean qlD;
+  public int qlE;
+  public boolean qlF;
+  public String qlt;
+  public String qlu;
+  public String qlv;
+  public String qlw;
+  public List<djl> qlx;
+  public List<ekr> qly;
+  public ekq qlz;
   public String source;
   public String username;
   
   public i(String paramString1, String paramString2, com.tencent.mm.plugin.exdevice.b.b<i> paramb)
   {
     AppMethodBeat.i(23522);
-    com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.NetSceneGetProfileDetail", "appusername: %s, username: %s", new Object[] { paramString2, paramString1 });
+    ae.d("MicroMsg.NetSceneGetProfileDetail", "appusername: %s, username: %s", new Object[] { paramString2, paramString1 });
     this.username = paramString1;
     this.appName = paramString2;
-    this.qap = new WeakReference(paramb);
+    this.qgU = new WeakReference(paramb);
     AppMethodBeat.o(23522);
   }
   
@@ -63,62 +65,62 @@ public final class i
   {
     AppMethodBeat.i(23523);
     super.onGYNetEnd(paramInt1, paramInt2, paramInt3, paramString, paramq, paramArrayOfByte);
-    com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.NetSceneGetProfileDetail", "hy: getdetail scene gy end. errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    ae.d("MicroMsg.NetSceneGetProfileDetail", "hy: getdetail scene gy end. errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      paramq = (bkb)bIz();
-      this.coverUrl = paramq.GEt;
-      this.qeP = paramq.qeP;
-      this.qeT = paramq.GEw;
-      this.qeU = paramq.GEu;
-      this.qeQ = paramq.GEy;
+      paramq = (bkt)bJx();
+      this.coverUrl = paramq.GXW;
+      this.qlu = paramq.qlu;
+      this.qly = paramq.GXZ;
+      this.qlz = paramq.GXX;
+      this.qlv = paramq.GYb;
       this.source = paramq.source;
-      this.qeR = paramq.GEz;
-      this.qeS = paramq.FvN;
-      this.qeY = paramq.qeY;
-      this.qeW = paramq.Fve;
-      this.qeX = paramq.GEA;
-      this.qeV = new ArrayList();
-      this.qeZ = paramq.qlz;
-      this.qfa = paramq.GEB;
-      this.qeO = paramq.qeO;
-      if (paramq.GEx != null) {
-        this.qeV.addAll(paramq.GEx);
+      this.qlw = paramq.GYc;
+      this.qlx = paramq.FOl;
+      this.qlD = paramq.qlD;
+      this.qlB = paramq.FNC;
+      this.qlC = paramq.GYd;
+      this.qlA = new ArrayList();
+      this.qlE = paramq.qse;
+      this.qlF = paramq.GYe;
+      this.qlt = paramq.qlt;
+      if (paramq.GYa != null) {
+        this.qlA.addAll(paramq.GYa);
       }
-      this.qeS = new LinkedList();
-      if (paramq.FvN != null) {
-        this.qeS.addAll(paramq.FvN);
+      this.qlx = new LinkedList();
+      if (paramq.FOl != null) {
+        this.qlx.addAll(paramq.FOl);
       }
       Object localObject1;
-      if ((this.username != null) && (!this.username.equalsIgnoreCase(u.aAm())))
+      if ((this.username != null) && (!this.username.equalsIgnoreCase(v.aAC())))
       {
-        if (!this.qeY) {
-          com.tencent.mm.plugin.exdevice.model.ad.clv().acE(this.username);
+        if (!this.qlD) {
+          ad.cmL().adv(this.username);
         }
       }
       else
       {
-        if (paramq.Fve == null) {
+        if (paramq.FNC == null) {
           break label564;
         }
         paramArrayOfByte = new ArrayList();
-        localObject1 = paramq.Fve.iterator();
+        localObject1 = paramq.FNC.iterator();
       }
       for (;;)
       {
         if (!((Iterator)localObject1).hasNext()) {
           break label512;
         }
-        Object localObject2 = (atc)((Iterator)localObject1).next();
-        ba.aBQ();
-        if (com.tencent.mm.model.c.azp().aTg(((atc)localObject2).username))
+        Object localObject2 = (ats)((Iterator)localObject1).next();
+        bc.aCg();
+        if (com.tencent.mm.model.c.azF().aUH(((ats)localObject2).username))
         {
           com.tencent.mm.plugin.exdevice.g.b.a.c localc = new com.tencent.mm.plugin.exdevice.g.b.a.c();
-          localc.field_username = ((atc)localObject2).username;
-          localc.field_step = ((atc)localObject2).kuN;
+          localc.field_username = ((ats)localObject2).username;
+          localc.field_step = ((ats)localObject2).kyd;
           paramArrayOfByte.add(localc);
           continue;
-          paramArrayOfByte = com.tencent.mm.plugin.exdevice.model.ad.clv();
+          paramArrayOfByte = ad.cmL();
           localObject1 = this.username;
           if (paramArrayOfByte.a(new com.tencent.mm.plugin.exdevice.g.b.b("hardcode_rank_id", "hardcode_app_name", (String)localObject1)) != null) {
             break;
@@ -131,26 +133,26 @@ public final class i
           paramArrayOfByte.insert((com.tencent.mm.sdk.e.c)localObject2);
           break;
         }
-        ba.aiU().a(new h(((atc)localObject2).username, null), 0);
+        bc.ajj().a(new h(((ats)localObject2).username, null), 0);
       }
       label512:
-      com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.NetSceneGetProfileDetail", "follows %d %s", new Object[] { Integer.valueOf(paramArrayOfByte.size()), paramArrayOfByte.toString() });
-      if (u.aAm().equalsIgnoreCase(this.username)) {
-        com.tencent.mm.plugin.exdevice.model.ad.clv().cV(paramArrayOfByte);
+      ae.d("MicroMsg.NetSceneGetProfileDetail", "follows %d %s", new Object[] { Integer.valueOf(paramArrayOfByte.size()), paramArrayOfByte.toString() });
+      if (v.aAC().equalsIgnoreCase(this.username)) {
+        ad.cmL().cY(paramArrayOfByte);
       }
       label564:
-      this.qeX = new ArrayList();
-      if (paramq.GEA != null) {
-        this.qeX.addAll(paramq.GEA);
+      this.qlC = new ArrayList();
+      if (paramq.GYd != null) {
+        this.qlC.addAll(paramq.GYd);
       }
-      this.qeY = paramq.qeY;
+      this.qlD = paramq.qlD;
       paramq = new com.tencent.mm.plugin.exdevice.g.b.a.a();
-      paramq.field_championMotto = this.qeP;
+      paramq.field_championMotto = this.qlu;
       paramq.field_championUrl = this.coverUrl;
       paramq.field_username = this.username;
-      com.tencent.mm.plugin.exdevice.model.ad.clx().a(paramq);
+      ad.cmN().a(paramq);
     }
-    paramq = (com.tencent.mm.plugin.exdevice.b.b)this.qap.get();
+    paramq = (com.tencent.mm.plugin.exdevice.b.b)this.qgU.get();
     if (paramq != null) {
       paramq.a(paramInt2, paramInt3, paramString, this);
     }

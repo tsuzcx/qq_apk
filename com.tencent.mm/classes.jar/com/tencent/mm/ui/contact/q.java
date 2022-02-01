@@ -5,8 +5,8 @@ import java.util.List;
 public abstract class q
   extends p
 {
-  protected boolean Knh;
-  protected List<String> fSL;
+  protected boolean KJB;
+  protected List<String> fUR;
   
   public q(n paramn, List<String> paramList, boolean paramBoolean1, boolean paramBoolean2)
   {
@@ -21,8 +21,8 @@ public abstract class q
   private q(n paramn, List<String> paramList, boolean paramBoolean1, boolean paramBoolean2, int paramInt, boolean paramBoolean3)
   {
     super(paramn, paramBoolean2, paramInt, paramBoolean3);
-    this.fSL = paramList;
-    this.Knh = paramBoolean1;
+    this.fUR = paramList;
+    this.KJB = paramBoolean1;
   }
   
   public q(n paramn, List<String> paramList, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
@@ -30,9 +30,9 @@ public abstract class q
     this(paramn, paramList, paramBoolean1, paramBoolean2, 0, paramBoolean3);
   }
   
-  public void Zh() {}
+  public void Zq() {}
   
-  public int aWM(String paramString)
+  public int aYn(String paramString)
   {
     return -1;
   }

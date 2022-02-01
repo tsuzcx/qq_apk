@@ -8,15 +8,15 @@ import android.content.res.Resources;
 import android.text.TextUtils;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
-import com.tencent.mm.g.a.ly;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.g.a.lz;
 import com.tencent.mm.pluginsdk.model.o;
-import com.tencent.mm.protocal.protobuf.dva;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.am;
+import com.tencent.mm.protocal.protobuf.dvx;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.an;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.base.p;
 import java.util.LinkedList;
@@ -25,47 +25,47 @@ import junit.framework.Assert;
 public final class a
   implements f
 {
-  private a EUM;
-  public b EUN;
-  private LinkedList<String> EUO;
-  public String EUP;
-  String EUQ;
-  private String EUR;
-  public boolean EUS;
-  public boolean EUT;
-  boolean EUU;
-  public boolean EUV;
-  public String EUW;
-  public dva EUX;
+  private a Fnh;
+  public b Fni;
+  private LinkedList<String> Fnj;
+  public String Fnk;
+  String Fnl;
+  private String Fnm;
+  public boolean Fnn;
+  public boolean Fno;
+  boolean Fnp;
+  public boolean Fnq;
+  public String Fnr;
+  public dvx Fns;
   private String chatroomName;
   private Context context;
-  private String gwS;
-  private String jYs;
-  public String jgN;
-  public int ooi;
+  private String gzz;
+  public String jjG;
+  private String kbH;
+  public int otZ;
+  public String tIA;
   private p tipDialog;
-  public String txJ;
-  private LinkedList<String> xim;
-  private LinkedList<Integer> xin;
+  private LinkedList<String> xyi;
+  private LinkedList<Integer> xyj;
   
   public a(Context paramContext, a parama)
   {
     AppMethodBeat.i(152151);
-    this.gwS = "";
-    this.txJ = "";
-    this.EUQ = "";
+    this.gzz = "";
+    this.tIA = "";
+    this.Fnl = "";
     this.chatroomName = "";
-    this.EUS = true;
-    this.EUT = true;
-    this.EUU = true;
-    this.jgN = "";
-    this.EUV = false;
-    this.EUW = "";
-    this.ooi = 0;
+    this.Fnn = true;
+    this.Fno = true;
+    this.Fnp = true;
+    this.jjG = "";
+    this.Fnq = false;
+    this.Fnr = "";
+    this.otZ = 0;
     this.context = paramContext;
-    this.EUM = parama;
-    this.xim = new LinkedList();
-    this.EUO = new LinkedList();
+    this.Fnh = parama;
+    this.xyi = new LinkedList();
+    this.Fnj = new LinkedList();
     this.tipDialog = null;
     AppMethodBeat.o(152151);
   }
@@ -73,17 +73,17 @@ public final class a
   private void P(int paramInt1, int paramInt2, String paramString)
   {
     AppMethodBeat.i(152162);
-    if ((this.EUV) && (!bt.isNullOrNil(paramString))) {
+    if ((this.Fnq) && (!bu.isNullOrNil(paramString))) {
       h.c(this.context, paramString, "", true);
     }
     for (;;)
     {
-      c(false, false, this.EUQ, this.jgN);
+      c(false, false, this.Fnl, this.jjG);
       AppMethodBeat.o(152162);
       return;
       if ((paramInt1 == 4) && (paramInt2 == -22)) {
         Toast.makeText(this.context, this.context.getString(2131755167), 1).show();
-      } else if ((paramInt1 == 4) && (paramInt2 == -24) && (!bt.isNullOrNil(paramString))) {
+      } else if ((paramInt1 == 4) && (paramInt2 == -24) && (!bu.isNullOrNil(paramString))) {
         Toast.makeText(this.context, paramString, 1).show();
       } else {
         Toast.makeText(this.context, this.context.getString(2131755166), 1).show();
@@ -107,12 +107,12 @@ public final class a
     for (boolean bool1 = bool2;; bool1 = false)
     {
       Assert.assertTrue(bool1);
-      this.EUS = paramBoolean;
-      this.gwS = paramString2;
-      this.xin = paramLinkedList;
-      this.xim.add(paramString1);
-      this.EUQ = paramString1;
-      fci();
+      this.Fnn = paramBoolean;
+      this.gzz = paramString2;
+      this.xyj = paramLinkedList;
+      this.xyi.add(paramString1);
+      this.Fnl = paramString1;
+      ffW();
       AppMethodBeat.o(152157);
       return;
       bool1 = false;
@@ -123,14 +123,14 @@ public final class a
   private void c(boolean paramBoolean1, boolean paramBoolean2, String paramString1, String paramString2)
   {
     AppMethodBeat.i(152159);
-    if (this.EUM != null) {
-      this.EUM.a(paramBoolean1, paramBoolean2, paramString1, paramString2);
+    if (this.Fnh != null) {
+      this.Fnh.a(paramBoolean1, paramBoolean2, paramString1, paramString2);
     }
     if (paramBoolean1)
     {
-      paramString2 = new ly();
-      paramString2.dzm.username = paramString1;
-      com.tencent.mm.sdk.b.a.IbL.l(paramString2);
+      paramString2 = new lz();
+      paramString2.dAr.username = paramString1;
+      com.tencent.mm.sdk.b.a.IvT.l(paramString2);
     }
     AppMethodBeat.o(152159);
   }
@@ -138,8 +138,8 @@ public final class a
   private void onStart()
   {
     AppMethodBeat.i(152160);
-    com.tencent.mm.kernel.g.ajB().gAO.a(30, this);
-    com.tencent.mm.kernel.g.ajB().gAO.a(667, this);
+    com.tencent.mm.kernel.g.ajQ().gDv.a(30, this);
+    com.tencent.mm.kernel.g.ajQ().gDv.a(667, this);
     AppMethodBeat.o(152160);
   }
   
@@ -150,11 +150,11 @@ public final class a
     AppMethodBeat.o(152154);
   }
   
-  public final void aME(String paramString)
+  public final void aOa(String paramString)
   {
     AppMethodBeat.i(152155);
     if (!TextUtils.isEmpty(paramString)) {
-      this.EUO.add(paramString);
+      this.Fnj.add(paramString);
     }
     AppMethodBeat.o(152155);
   }
@@ -174,11 +174,11 @@ public final class a
     AppMethodBeat.o(152152);
   }
   
-  final void fci()
+  final void ffW()
   {
     AppMethodBeat.i(152158);
     onStart();
-    if (this.EUT)
+    if (this.Fno)
     {
       localObject = this.context;
       this.context.getString(2131755906);
@@ -187,32 +187,32 @@ public final class a
         public final void onCancel(DialogInterface paramAnonymousDialogInterface)
         {
           AppMethodBeat.i(152147);
-          a.a(a.this, false, a.this.EUQ, a.this.jgN);
+          a.a(a.this, false, a.this.Fnl, a.this.jjG);
           AppMethodBeat.o(152147);
         }
       });
     }
-    if (am.aSQ((String)this.xim.getFirst()))
+    if (an.aUq((String)this.xyi.getFirst()))
     {
-      String str = (String)this.xim.getFirst();
-      if (this.EUO.isEmpty()) {}
-      for (localObject = "";; localObject = (String)this.EUO.getFirst())
+      String str = (String)this.xyi.getFirst();
+      if (this.Fnj.isEmpty()) {}
+      for (localObject = "";; localObject = (String)this.Fnj.getFirst())
       {
         localObject = new com.tencent.mm.openim.b.b(str, (String)localObject);
-        com.tencent.mm.kernel.g.ajB().gAO.a((n)localObject, 0);
+        com.tencent.mm.kernel.g.ajQ().gDv.a((n)localObject, 0);
         AppMethodBeat.o(152158);
         return;
       }
     }
-    Object localObject = new o(1, this.xim, this.xin, this.EUO, "", this.txJ, null, this.chatroomName, this.gwS);
-    if (!bt.isNullOrNil(this.jYs)) {
-      ((o)localObject).lr(this.jYs, this.EUR);
+    Object localObject = new o(1, this.xyi, this.xyj, this.Fnj, "", this.tIA, null, this.chatroomName, this.gzz);
+    if (!bu.isNullOrNil(this.kbH)) {
+      ((o)localObject).ly(this.kbH, this.Fnm);
     }
-    ((o)localObject).Gl(this.EUW);
-    ((o)localObject).setSubScene(this.ooi);
-    ((o)localObject).a(this.EUX);
-    ((o)localObject).vE(this.EUU);
-    com.tencent.mm.kernel.g.ajB().gAO.a((n)localObject, 0);
+    ((o)localObject).GN(this.Fnr);
+    ((o)localObject).setSubScene(this.otZ);
+    ((o)localObject).a(this.Fns);
+    ((o)localObject).vM(this.Fnp);
+    com.tencent.mm.kernel.g.ajQ().gDv.a((n)localObject, 0);
     AppMethodBeat.o(152158);
   }
   
@@ -223,25 +223,25 @@ public final class a
     AppMethodBeat.o(152153);
   }
   
-  public final void lu(String paramString1, String paramString2)
+  public final void lB(String paramString1, String paramString2)
   {
-    this.jYs = paramString1;
-    this.EUR = paramString2;
+    this.kbH = paramString1;
+    this.Fnm = paramString2;
   }
   
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     AppMethodBeat.i(152161);
-    ad.d("MicroMsg.AddContact", "onSceneEnd, errType = " + paramInt1 + ", errCode = " + paramInt2 + "," + paramString);
+    ae.d("MicroMsg.AddContact", "onSceneEnd, errType = " + paramInt1 + ", errCode = " + paramInt2 + "," + paramString);
     if ((paramn.getType() != 30) && (paramn.getType() != 667))
     {
-      ad.w("MicroMsg.AddContact", "not expected scene,  type = " + paramn.getType());
+      ae.w("MicroMsg.AddContact", "not expected scene,  type = " + paramn.getType());
       AppMethodBeat.o(152161);
       return;
     }
-    if (((paramn instanceof o)) && (((o)paramn).dsi != 1))
+    if (((paramn instanceof o)) && (((o)paramn).dto != 1))
     {
-      ad.e("MicroMsg.AddContact", "not opcode addcontact!");
+      ae.e("MicroMsg.AddContact", "not opcode addcontact!");
       AppMethodBeat.o(152161);
       return;
     }
@@ -250,22 +250,22 @@ public final class a
       this.tipDialog.dismiss();
       this.tipDialog = null;
     }
-    com.tencent.mm.kernel.g.ajB().gAO.b(30, this);
-    com.tencent.mm.kernel.g.ajB().gAO.b(667, this);
+    com.tencent.mm.kernel.g.ajQ().gDv.b(30, this);
+    com.tencent.mm.kernel.g.ajQ().gDv.b(667, this);
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
       if (paramn.getType() == 30)
       {
-        this.EUQ = ((o)paramn).eZF();
-        c(true, false, this.EUQ, this.jgN);
-        paramString = com.tencent.mm.plugin.report.service.g.yhR;
-        paramn = this.jYs;
-        if (this.xin.size() <= 0) {
+        this.Fnl = ((o)paramn).fdt();
+        c(true, false, this.Fnl, this.jjG);
+        paramString = com.tencent.mm.plugin.report.service.g.yxI;
+        paramn = this.kbH;
+        if (this.xyj.size() <= 0) {
           break label355;
         }
       }
       label355:
-      for (paramInt1 = ((Integer)this.xin.getLast()).intValue();; paramInt1 = 0)
+      for (paramInt1 = ((Integer)this.xyj.getLast()).intValue();; paramInt1 = 0)
       {
         paramString.f(18713, new Object[] { paramn, Integer.valueOf(1), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(paramInt1), Integer.valueOf(1), Integer.valueOf(0) });
         AppMethodBeat.o(152161);
@@ -273,21 +273,21 @@ public final class a
         if (paramn.getType() != 667) {
           break;
         }
-        this.EUQ = ((com.tencent.mm.openim.b.b)paramn).iHA;
+        this.Fnl = ((com.tencent.mm.openim.b.b)paramn).iKt;
         break;
       }
     }
     if (paramInt2 == -44)
     {
-      paramn = this.jgN;
-      if (this.EUN != null)
+      paramn = this.jjG;
+      if (this.Fni != null)
       {
-        b localb = this.EUN;
-        if (this.EUO.isEmpty()) {}
-        for (paramString = "";; paramString = (String)this.EUO.getFirst())
+        b localb = this.Fni;
+        if (this.Fnj.isEmpty()) {}
+        for (paramString = "";; paramString = (String)this.Fnj.getFirst())
         {
-          localb.az(paramString, paramInt2);
-          c(false, false, this.EUQ, paramn);
+          localb.aA(paramString, paramInt2);
+          c(false, false, this.Fnl, paramn);
           AppMethodBeat.o(152161);
           return;
         }
@@ -297,22 +297,22 @@ public final class a
         public final void cF(boolean paramAnonymousBoolean)
         {
           AppMethodBeat.i(152150);
-          String str = a.this.jgN;
+          String str = a.this.jjG;
           a locala = a.this;
-          a.a(locala, paramAnonymousBoolean, locala.EUQ, str);
+          a.a(locala, paramAnonymousBoolean, locala.Fnl, str);
           AppMethodBeat.o(152150);
         }
       });
-      if (this.EUP != null) {
-        paramString.EUP = this.EUP;
+      if (this.Fnk != null) {
+        paramString.Fnk = this.Fnk;
       }
-      if (this.EUS)
+      if (this.Fnn)
       {
-        paramString.E(this.xim, this.xin);
+        paramString.D(this.xyi, this.xyj);
         AppMethodBeat.o(152161);
         return;
       }
-      paramString.a(this.xim, this.xin, this.EUO);
+      paramString.a(this.xyi, this.xyj, this.Fnj);
       AppMethodBeat.o(152161);
       return;
     }
@@ -322,15 +322,15 @@ public final class a
       AppMethodBeat.o(152161);
       return;
     }
-    if ((paramInt2 == -101) && (!bt.isNullOrNil(paramString)))
+    if ((paramInt2 == -101) && (!bu.isNullOrNil(paramString)))
     {
-      ad.d("MicroMsg.AddContact", "jacks catch add Contact errCode: %d && errMsg: %s", new Object[] { Integer.valueOf(paramInt2), paramString });
+      ae.d("MicroMsg.AddContact", "jacks catch add Contact errCode: %d && errMsg: %s", new Object[] { Integer.valueOf(paramInt2), paramString });
       h.a(this.context, paramString, "", false, new DialogInterface.OnClickListener()
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
           AppMethodBeat.i(152148);
-          a.a(a.this, false, a.this.EUQ, a.this.jgN);
+          a.a(a.this, false, a.this.Fnl, a.this.jjG);
           AppMethodBeat.o(152148);
         }
       });
@@ -339,7 +339,7 @@ public final class a
     }
     if (paramInt2 == -2)
     {
-      if (!bt.isNullOrNil(paramString))
+      if (!bu.isNullOrNil(paramString))
       {
         h.a(this.context, paramString, this.context.getString(2131755906), this.context.getString(2131755835), null);
         AppMethodBeat.o(152161);
@@ -351,15 +351,15 @@ public final class a
     }
     if (paramInt2 == -160)
     {
-      if (!bt.isNullOrNil(paramString))
+      if (!bu.isNullOrNil(paramString))
       {
         h.e(this.context, paramString, "", this.context.getResources().getString(2131755700), this.context.getResources().getString(2131755691), new DialogInterface.OnClickListener()
         {
           public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
           {
             AppMethodBeat.i(152149);
-            a.this.EUU = false;
-            a.this.fci();
+            a.this.Fnp = false;
+            a.this.ffW();
             AppMethodBeat.o(152149);
           }
         }, null);
@@ -381,7 +381,7 @@ public final class a
   
   public static abstract interface b
   {
-    public abstract boolean az(String paramString, int paramInt);
+    public abstract boolean aA(String paramString, int paramInt);
   }
 }
 

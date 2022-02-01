@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public final class a
 {
-  public static void H(int paramInt, long paramLong)
+  public static void G(int paramInt, long paramLong)
   {
     AppMethodBeat.i(73438);
     int i;
@@ -16,7 +16,7 @@ public final class a
     }
     for (;;)
     {
-      g.yhR.idkeyStat(paramInt, i, 1L, false);
+      g.yxI.idkeyStat(paramInt, i, 1L, false);
       AppMethodBeat.o(73438);
       return;
       if (paramLong <= 1000000L) {
@@ -35,7 +35,7 @@ public final class a
     }
   }
   
-  public static void I(int paramInt, long paramLong)
+  public static void H(int paramInt, long paramLong)
   {
     AppMethodBeat.i(73439);
     int i;
@@ -44,7 +44,7 @@ public final class a
     }
     for (;;)
     {
-      g.yhR.idkeyStat(paramInt, i, 1L, false);
+      g.yxI.idkeyStat(paramInt, i, 1L, false);
       AppMethodBeat.o(73439);
       return;
       if (paramLong <= 25000000L) {
@@ -110,7 +110,7 @@ public final class a
       localIDKey.SetKey(paramInt1);
       localIDKey.SetValue(paramInt2);
       localArrayList.add(localIDKey);
-      g.yhR.b(localArrayList, false);
+      g.yxI.b(localArrayList, false);
       AppMethodBeat.o(73437);
       return;
       i = 0;

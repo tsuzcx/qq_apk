@@ -16,8 +16,8 @@ final class FreeWifiFrontPageUI$5
     AppMethodBeat.i(25022);
     b localb = new b();
     localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/freewifi/ui/FreeWifiFrontPageUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-    FreeWifiFrontPageUI.b(this.tpQ);
+    a.b("com/tencent/mm/plugin/freewifi/ui/FreeWifiFrontPageUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+    FreeWifiFrontPageUI.b(this.tAH);
     a.a(this, "com/tencent/mm/plugin/freewifi/ui/FreeWifiFrontPageUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(25022);
   }

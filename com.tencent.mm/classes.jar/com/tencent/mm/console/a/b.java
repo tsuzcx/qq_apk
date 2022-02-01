@@ -3,7 +3,7 @@ package com.tencent.mm.console.a;
 import android.content.Context;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.Arrays;
 
 public final class b
@@ -21,12 +21,12 @@ public final class b
   public final boolean a(Context paramContext, String[] paramArrayOfString, String paramString)
   {
     AppMethodBeat.i(20170);
-    ad.d("MicroMsg.DiagnosticCommand", "process Command : %s", new Object[] { Arrays.toString(paramArrayOfString) });
+    ae.d("MicroMsg.DiagnosticCommand", "process Command : %s", new Object[] { Arrays.toString(paramArrayOfString) });
     paramArrayOfString = new Intent();
     paramArrayOfString.setClassName(paramContext, "com.tencent.mm.plugin.performance.diagnostic.DiagnosticSettingsUI");
     paramArrayOfString = new com.tencent.mm.hellhoundlib.b.a().bc(paramArrayOfString);
-    com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramArrayOfString.ahp(), "com/tencent/mm/console/command/DiagnosticCommand", "processCommand", "(Landroid/content/Context;[Ljava/lang/String;Ljava/lang/String;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    paramContext.startActivity((Intent)paramArrayOfString.mq(0));
+    com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramArrayOfString.ahE(), "com/tencent/mm/console/command/DiagnosticCommand", "processCommand", "(Landroid/content/Context;[Ljava/lang/String;Ljava/lang/String;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramContext.startActivity((Intent)paramArrayOfString.mt(0));
     com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/console/command/DiagnosticCommand", "processCommand", "(Landroid/content/Context;[Ljava/lang/String;Ljava/lang/String;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     AppMethodBeat.o(20170);
     return true;

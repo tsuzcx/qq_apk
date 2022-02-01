@@ -13,33 +13,34 @@ import android.view.ViewPropertyAnimator;
 import android.view.animation.LinearInterpolator;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import com.tencent.mm.al.q;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.scanner.api.BaseScanRequest;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.qbar.ScanDecodeFrameData;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/scanner/view/BaseScanMaskView;", "T", "Lcom/tencent/mm/plugin/scanner/api/BaseScanRequest;", "Landroid/widget/RelativeLayout;", "Lcom/tencent/mm/plugin/scanner/view/IScanMaskView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attributeSet", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "activity", "Landroid/app/Activity;", "getActivity", "()Landroid/app/Activity;", "setActivity", "(Landroid/app/Activity;)V", "currentNetworkAvailable", "", "getCurrentNetworkAvailable", "()Z", "setCurrentNetworkAvailable", "(Z)V", "flashSwitcher", "Landroid/view/View;", "getFlashSwitcher", "()Landroid/view/View;", "setFlashSwitcher", "(Landroid/view/View;)V", "frameData", "Lcom/tencent/qbar/ScanDecodeFrameData;", "getFrameData", "()Lcom/tencent/qbar/ScanDecodeFrameData;", "setFrameData", "(Lcom/tencent/qbar/ScanDecodeFrameData;)V", "isViewDestroy", "setViewDestroy", "mBottomExtraHeight", "getMBottomExtraHeight", "()I", "setMBottomExtraHeight", "(I)V", "mGalleryButton", "getMGalleryButton", "setMGalleryButton", "mPreviewRect", "Landroid/graphics/Rect;", "getMPreviewRect", "()Landroid/graphics/Rect;", "setMPreviewRect", "(Landroid/graphics/Rect;)V", "mScanRect", "getMScanRect", "setMScanRect", "mScanSource", "getMScanSource", "setMScanSource", "request", "getRequest", "()Lcom/tencent/mm/plugin/scanner/api/BaseScanRequest;", "setRequest", "(Lcom/tencent/mm/plugin/scanner/api/BaseScanRequest;)V", "scanCamera", "Lcom/tencent/mm/plugin/scanner/camera/WxScanCamera;", "getScanCamera", "()Lcom/tencent/mm/plugin/scanner/camera/WxScanCamera;", "setScanCamera", "(Lcom/tencent/mm/plugin/scanner/camera/WxScanCamera;)V", "scanTips", "Landroid/widget/TextView;", "getScanTips", "()Landroid/widget/TextView;", "setScanTips", "(Landroid/widget/TextView;)V", "animateAlpha", "", "view", "fromAlpha", "", "targetAlpha", "animatorListener", "Landroid/animation/Animator$AnimatorListener;", "animateShow", "show", "attachActivity", "attachBackgroundView", "backgroundView", "attachFlashSwitcherView", "attachGalleryButton", "galleryButton", "attachScanCamera", "attachScanTipsView", "tipsView", "checkNetwork", "getTargetSuccessMarkView", "init", "onBackPressed", "onNetworkChange", "state", "onPause", "onPreviewReady", "isSwitchTab", "onResume", "onScanSuccess", "data", "", "scanResultAnimationListener", "Lcom/tencent/mm/plugin/scanner/view/ScanResultAnimationListener;", "onShowNetworkLoading", "onShowNetworkUnconnectedView", "onShowNetworkWeakView", "onViewDestroy", "onViewReady", "release", "setBottomExtraHeight", "bottomHeight", "setDecodeSuccessFrameData", "setPreviewRect", "rect", "setScanRect", "setScanRequest", "setScanSource", "scanSource", "showLoadingView", "cancelListener", "Landroid/content/DialogInterface$OnCancelListener;", "showScanTips", "Companion", "scan-sdk_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/scanner/view/BaseScanMaskView;", "T", "Lcom/tencent/mm/plugin/scanner/api/BaseScanRequest;", "Landroid/widget/RelativeLayout;", "Lcom/tencent/mm/plugin/scanner/view/IScanMaskView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attributeSet", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "activity", "Landroid/app/Activity;", "getActivity", "()Landroid/app/Activity;", "setActivity", "(Landroid/app/Activity;)V", "currentNetworkAvailable", "", "getCurrentNetworkAvailable", "()Z", "setCurrentNetworkAvailable", "(Z)V", "flashSwitcher", "Landroid/view/View;", "getFlashSwitcher", "()Landroid/view/View;", "setFlashSwitcher", "(Landroid/view/View;)V", "frameData", "Lcom/tencent/qbar/ScanDecodeFrameData;", "getFrameData", "()Lcom/tencent/qbar/ScanDecodeFrameData;", "setFrameData", "(Lcom/tencent/qbar/ScanDecodeFrameData;)V", "isViewDestroy", "setViewDestroy", "mBottomExtraHeight", "getMBottomExtraHeight", "()I", "setMBottomExtraHeight", "(I)V", "mGalleryButton", "getMGalleryButton", "setMGalleryButton", "mPreviewRect", "Landroid/graphics/Rect;", "getMPreviewRect", "()Landroid/graphics/Rect;", "setMPreviewRect", "(Landroid/graphics/Rect;)V", "mScanRect", "getMScanRect", "setMScanRect", "mScanSource", "getMScanSource", "setMScanSource", "request", "getRequest", "()Lcom/tencent/mm/plugin/scanner/api/BaseScanRequest;", "setRequest", "(Lcom/tencent/mm/plugin/scanner/api/BaseScanRequest;)V", "scanCamera", "Lcom/tencent/mm/plugin/scanner/camera/WxScanCamera;", "getScanCamera", "()Lcom/tencent/mm/plugin/scanner/camera/WxScanCamera;", "setScanCamera", "(Lcom/tencent/mm/plugin/scanner/camera/WxScanCamera;)V", "scanTips", "Landroid/widget/TextView;", "getScanTips", "()Landroid/widget/TextView;", "setScanTips", "(Landroid/widget/TextView;)V", "scanTipsWording", "", "getScanTipsWording", "()Ljava/lang/String;", "setScanTipsWording", "(Ljava/lang/String;)V", "animateAlpha", "", "view", "fromAlpha", "", "targetAlpha", "animatorListener", "Landroid/animation/Animator$AnimatorListener;", "animateShow", "show", "attachActivity", "attachBackgroundView", "backgroundView", "attachFlashSwitcherView", "attachGalleryButton", "galleryButton", "attachScanCamera", "attachScanTipsView", "tipsView", "tipsWording", "checkNetwork", "getTargetSuccessMarkView", "init", "onBackPressed", "onNetworkChange", "state", "onPause", "onPreviewReady", "isSwitchTab", "onResume", "onScanSuccess", "data", "", "scanResultAnimationListener", "Lcom/tencent/mm/plugin/scanner/view/ScanResultAnimationListener;", "onShowNetworkLoading", "onShowNetworkUnconnectedView", "onShowNetworkWeakView", "onViewDestroy", "onViewReady", "release", "setBottomExtraHeight", "bottomHeight", "setDecodeSuccessFrameData", "setPreviewRect", "rect", "setScanRect", "setScanRequest", "setScanSource", "scanSource", "showLoadingView", "cancelListener", "Landroid/content/DialogInterface$OnCancelListener;", "showScanTips", "Companion", "scan-sdk_release"})
 public abstract class BaseScanMaskView<T extends BaseScanRequest>
   extends RelativeLayout
   implements a<T>
 {
-  public static final BaseScanMaskView.a yAG = new BaseScanMaskView.a((byte)0);
+  public static final BaseScanMaskView.a yQG = new BaseScanMaskView.a((byte)0);
   public Activity activity;
-  private Rect yAA;
-  private int yAB;
-  private int yAC;
-  public boolean yAD;
-  private ScanDecodeFrameData yAE;
-  private BaseScanRequest yAF;
-  private View yAx;
-  private View yAy;
-  private Rect yAz;
-  private boolean ypI;
-  public com.tencent.mm.plugin.scanner.a.a ysK;
-  private TextView yyK;
+  private boolean yFH;
+  public com.tencent.mm.plugin.scanner.a.a yIK;
+  private TextView yOK;
+  private Rect yQA;
+  private int yQB;
+  private int yQC;
+  public boolean yQD;
+  private ScanDecodeFrameData yQE;
+  private BaseScanRequest yQF;
+  private View yQx;
+  private View yQy;
+  private Rect yQz;
+  private String yzK = "";
   
   public BaseScanMaskView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -49,39 +50,39 @@ public abstract class BaseScanMaskView<T extends BaseScanRequest>
   public BaseScanMaskView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    dLz();
-    ad.i("MicroMsg.BaseScanMaskView", "alvinluo init networkAvailable: %b", new Object[] { Boolean.valueOf(this.ypI) });
+    dOS();
+    ae.i("MicroMsg.BaseScanMaskView", "alvinluo init networkAvailable: %b", new Object[] { Boolean.valueOf(this.yFH) });
   }
   
-  private final void dLz()
+  private final void dOS()
   {
-    q localq = g.aiU();
+    q localq = g.ajj();
     p.g(localq, "MMKernel.getNetSceneQueue()");
-    if (localq.aEN() != 6)
+    if (localq.aFd() != 6)
     {
-      localq = g.aiU();
+      localq = g.ajj();
       p.g(localq, "MMKernel.getNetSceneQueue()");
-      if (localq.aEN() != 4) {
+      if (localq.aFd() != 4) {
         break label45;
       }
     }
     label45:
     for (boolean bool = true;; bool = false)
     {
-      this.ypI = bool;
+      this.yFH = bool;
       return;
     }
   }
   
   public void a(Animator.AnimatorListener paramAnimatorListener)
   {
-    ad.d("MicroMsg.BaseScanMaskView", "alvinluo onViewDestroy hashCode: %d", new Object[] { Integer.valueOf(hashCode()) });
-    this.yAD = true;
+    ae.d("MicroMsg.BaseScanMaskView", "alvinluo onViewDestroy hashCode: %d", new Object[] { Integer.valueOf(hashCode()) });
+    this.yQD = true;
   }
   
   protected final void a(View paramView, float paramFloat1, float paramFloat2, Animator.AnimatorListener paramAnimatorListener)
   {
-    ad.v("MicroMsg.BaseScanMaskView", "alvinluo animateAlpha from: %f, to: %f, hashCode: %d", new Object[] { Float.valueOf(paramFloat1), Float.valueOf(paramFloat2), Integer.valueOf(hashCode()) });
+    ae.v("MicroMsg.BaseScanMaskView", "alvinluo animateAlpha from: %f, to: %f, hashCode: %d", new Object[] { Float.valueOf(paramFloat1), Float.valueOf(paramFloat2), Integer.valueOf(hashCode()) });
     if (paramView != null)
     {
       ViewPropertyAnimator localViewPropertyAnimator = paramView.animate();
@@ -136,21 +137,54 @@ public abstract class BaseScanMaskView<T extends BaseScanRequest>
   
   public void a(boolean paramBoolean, DialogInterface.OnCancelListener paramOnCancelListener) {}
   
-  public void dMn()
+  public void d(TextView paramTextView, String paramString)
   {
-    ad.i("MicroMsg.BaseScanMaskView", "alvinluo onViewReady hashCode: %d", new Object[] { Integer.valueOf(hashCode()) });
-    this.yAD = false;
+    p.h(paramTextView, "tipsView");
+    this.yOK = paramTextView;
+    paramTextView = paramString;
+    if (paramString == null) {
+      paramTextView = "";
+    }
+    this.yzK = paramTextView;
+    paramString = this.yOK;
+    if (paramString != null)
+    {
+      paramTextView = this.yOK;
+      if (paramTextView == null) {
+        break label87;
+      }
+      paramTextView = paramTextView.getLayoutParams();
+      if (paramTextView == null) {
+        break label87;
+      }
+      if ((paramTextView instanceof ViewGroup.MarginLayoutParams)) {
+        ((ViewGroup.MarginLayoutParams)paramTextView).bottomMargin = (com.tencent.mm.cb.a.fromDPToPix(getContext(), 120) + this.yQC);
+      }
+    }
+    for (;;)
+    {
+      paramString.setLayoutParams(paramTextView);
+      return;
+      label87:
+      paramTextView = null;
+    }
   }
   
-  public void dMx() {}
+  public void dPG()
+  {
+    ae.i("MicroMsg.BaseScanMaskView", "alvinluo onViewReady hashCode: %d", new Object[] { Integer.valueOf(hashCode()) });
+    this.yQD = false;
+  }
   
-  public void dMy() {}
+  public void dPQ() {}
+  
+  public void dPR() {}
   
   public void eH(View paramView)
   {
     p.h(paramView, "flashSwitcher");
-    ad.v("MicroMsg.BaseScanMaskView", "alvinluo attachFlashSwitcherView");
-    this.yAx = paramView;
+    ae.v("MicroMsg.BaseScanMaskView", "alvinluo attachFlashSwitcherView");
+    this.yQx = paramView;
   }
   
   public void eI(View paramView) {}
@@ -158,11 +192,11 @@ public abstract class BaseScanMaskView<T extends BaseScanRequest>
   public void eJ(View paramView)
   {
     p.h(paramView, "galleryButton");
-    this.yAy = paramView;
-    View localView = this.yAy;
+    this.yQy = paramView;
+    View localView = this.yQy;
     if (localView != null)
     {
-      paramView = this.yAy;
+      paramView = this.yQy;
       if (paramView == null) {
         break label73;
       }
@@ -171,7 +205,7 @@ public abstract class BaseScanMaskView<T extends BaseScanRequest>
         break label73;
       }
       if ((paramView instanceof ViewGroup.MarginLayoutParams)) {
-        ((ViewGroup.MarginLayoutParams)paramView).bottomMargin = (com.tencent.mm.cc.a.fromDPToPix(getContext(), 32) + this.yAC);
+        ((ViewGroup.MarginLayoutParams)paramView).bottomMargin = (com.tencent.mm.cb.a.fromDPToPix(getContext(), 32) + this.yQC);
       }
     }
     for (;;)
@@ -190,90 +224,67 @@ public abstract class BaseScanMaskView<T extends BaseScanRequest>
   
   protected final boolean getCurrentNetworkAvailable()
   {
-    return this.ypI;
+    return this.yFH;
   }
   
   protected final View getFlashSwitcher()
   {
-    return this.yAx;
+    return this.yQx;
   }
   
   protected final ScanDecodeFrameData getFrameData()
   {
-    return this.yAE;
+    return this.yQE;
   }
   
   protected final int getMBottomExtraHeight()
   {
-    return this.yAC;
+    return this.yQC;
   }
   
   protected final View getMGalleryButton()
   {
-    return this.yAy;
+    return this.yQy;
   }
   
   protected final Rect getMPreviewRect()
   {
-    return this.yAz;
+    return this.yQz;
   }
   
   protected final Rect getMScanRect()
   {
-    return this.yAA;
+    return this.yQA;
   }
   
   public final int getMScanSource()
   {
-    return this.yAB;
+    return this.yQB;
   }
   
   public final BaseScanRequest getRequest()
   {
-    return this.yAF;
+    return this.yQF;
   }
   
   protected final com.tencent.mm.plugin.scanner.a.a getScanCamera()
   {
-    return this.ysK;
+    return this.yIK;
   }
   
   public final TextView getScanTips()
   {
-    return this.yyK;
+    return this.yOK;
+  }
+  
+  protected final String getScanTipsWording()
+  {
+    return this.yzK;
   }
   
   public View getTargetSuccessMarkView()
   {
     return null;
-  }
-  
-  public void o(TextView paramTextView)
-  {
-    p.h(paramTextView, "tipsView");
-    this.yyK = paramTextView;
-    TextView localTextView = this.yyK;
-    if (localTextView != null)
-    {
-      paramTextView = this.yyK;
-      if (paramTextView == null) {
-        break label73;
-      }
-      paramTextView = paramTextView.getLayoutParams();
-      if (paramTextView == null) {
-        break label73;
-      }
-      if ((paramTextView instanceof ViewGroup.MarginLayoutParams)) {
-        ((ViewGroup.MarginLayoutParams)paramTextView).bottomMargin = (com.tencent.mm.cc.a.fromDPToPix(getContext(), 120) + this.yAC);
-      }
-    }
-    for (;;)
-    {
-      localTextView.setLayoutParams(paramTextView);
-      return;
-      label73:
-      paramTextView = null;
-    }
   }
   
   public boolean onBackPressed()
@@ -283,31 +294,36 @@ public abstract class BaseScanMaskView<T extends BaseScanRequest>
   
   public void onNetworkChange(int paramInt)
   {
-    ad.i("MicroMsg.BaseScanMaskView", "alvinluo onNetworkChange state: %d", new Object[] { Integer.valueOf(paramInt) });
-    dLz();
+    ae.i("MicroMsg.BaseScanMaskView", "alvinluo onNetworkChange state: %d", new Object[] { Integer.valueOf(paramInt) });
+    dOS();
   }
   
   public void onPause() {}
   
   public void onResume() {}
   
-  public void qB(boolean paramBoolean) {}
+  public void qG(boolean paramBoolean)
+  {
+    ae.i("MicroMsg.BaseScanMaskView", "alvinluo onPreviewReady hashCode: %d, isSwitchTab: %b", new Object[] { Integer.valueOf(hashCode()), Boolean.valueOf(paramBoolean) });
+  }
   
-  public final void qF(boolean paramBoolean)
+  public void qI(boolean paramBoolean) {}
+  
+  public final void qM(boolean paramBoolean)
   {
     int j = 0;
     int i = 0;
     TextView localTextView;
-    if ((paramBoolean) && (this.yAF != null))
+    if ((paramBoolean) && (this.yQF != null))
     {
-      localTextView = this.yyK;
+      localTextView = this.yOK;
       if (localTextView != null)
       {
-        BaseScanRequest localBaseScanRequest = this.yAF;
+        BaseScanRequest localBaseScanRequest = this.yQF;
         if (localBaseScanRequest == null) {
-          p.gfZ();
+          p.gkB();
         }
-        if ((localBaseScanRequest.yjF) || (!paramBoolean)) {
+        if ((localBaseScanRequest.yzB) || (!paramBoolean)) {
           break label59;
         }
         localTextView.setVisibility(i);
@@ -319,7 +335,7 @@ public abstract class BaseScanMaskView<T extends BaseScanRequest>
       return;
       i = 8;
       break;
-      localTextView = this.yyK;
+      localTextView = this.yOK;
     } while (localTextView == null);
     if (paramBoolean) {}
     for (i = j;; i = 8)
@@ -329,7 +345,7 @@ public abstract class BaseScanMaskView<T extends BaseScanRequest>
     }
   }
   
-  public final void qI(boolean paramBoolean)
+  public final void qP(boolean paramBoolean)
   {
     if (paramBoolean) {
       if (getAlpha() == 0.0F) {
@@ -342,11 +358,6 @@ public abstract class BaseScanMaskView<T extends BaseScanRequest>
     a((View)this, 1.0F, 0.0F, null);
   }
   
-  public void qz(boolean paramBoolean)
-  {
-    ad.i("MicroMsg.BaseScanMaskView", "alvinluo onPreviewReady hashCode: %d, isSwitchTab: %b", new Object[] { Integer.valueOf(hashCode()), Boolean.valueOf(paramBoolean) });
-  }
-  
   public void release() {}
   
   protected final void setActivity(Activity paramActivity)
@@ -356,93 +367,99 @@ public abstract class BaseScanMaskView<T extends BaseScanRequest>
   
   public void setBottomExtraHeight(int paramInt)
   {
-    this.yAC = paramInt;
+    this.yQC = paramInt;
   }
   
   protected final void setCurrentNetworkAvailable(boolean paramBoolean)
   {
-    this.ypI = paramBoolean;
+    this.yFH = paramBoolean;
   }
   
   public void setDecodeSuccessFrameData(ScanDecodeFrameData paramScanDecodeFrameData)
   {
-    this.yAE = paramScanDecodeFrameData;
+    this.yQE = paramScanDecodeFrameData;
   }
   
   protected final void setFlashSwitcher(View paramView)
   {
-    this.yAx = paramView;
+    this.yQx = paramView;
   }
   
   protected final void setFrameData(ScanDecodeFrameData paramScanDecodeFrameData)
   {
-    this.yAE = paramScanDecodeFrameData;
+    this.yQE = paramScanDecodeFrameData;
   }
   
   protected final void setMBottomExtraHeight(int paramInt)
   {
-    this.yAC = paramInt;
+    this.yQC = paramInt;
   }
   
   protected final void setMGalleryButton(View paramView)
   {
-    this.yAy = paramView;
+    this.yQy = paramView;
   }
   
   protected final void setMPreviewRect(Rect paramRect)
   {
-    this.yAz = paramRect;
+    this.yQz = paramRect;
   }
   
   protected final void setMScanRect(Rect paramRect)
   {
-    this.yAA = paramRect;
+    this.yQA = paramRect;
   }
   
   protected final void setMScanSource(int paramInt)
   {
-    this.yAB = paramInt;
+    this.yQB = paramInt;
   }
   
   public final void setPreviewRect(Rect paramRect)
   {
-    this.yAz = paramRect;
+    this.yQz = paramRect;
     postInvalidate();
   }
   
   protected final void setRequest(BaseScanRequest paramBaseScanRequest)
   {
-    this.yAF = paramBaseScanRequest;
+    this.yQF = paramBaseScanRequest;
   }
   
   protected final void setScanCamera(com.tencent.mm.plugin.scanner.a.a parama)
   {
-    this.ysK = parama;
+    this.yIK = parama;
   }
   
   public final void setScanRect(Rect paramRect)
   {
-    this.yAA = paramRect;
+    this.yQA = paramRect;
   }
   
   public void setScanRequest(T paramT)
   {
-    this.yAF = paramT;
+    this.yQF = paramT;
   }
   
   public void setScanSource(int paramInt)
   {
-    this.yAB = paramInt;
+    this.yQB = paramInt;
   }
   
   protected final void setScanTips(TextView paramTextView)
   {
-    this.yyK = paramTextView;
+    this.yOK = paramTextView;
+  }
+  
+  protected final void setScanTipsWording(String paramString)
+  {
+    p.h(paramString, "<set-?>");
+    this.yzK = paramString;
   }
   
   protected final void setViewDestroy(boolean paramBoolean)
   {
-    this.yAD = paramBoolean;
+    this.yQD = paramBoolean;
   }
 }
 

@@ -14,48 +14,48 @@ import org.xmlpull.v1.XmlSerializer;
 public final class d
   implements com.tencent.thumbplayer.b.a.d, Serializable
 {
-  private int Mao;
-  private int Map;
-  public List<e> Maq;
+  private int Mxj;
+  private int Mxk;
+  public List<e> Mxl;
   
-  public final List<e> fWE()
+  public final List<e> gbd()
   {
-    return this.Maq;
+    return this.Mxl;
   }
   
-  public final long fWF()
+  public final long gbe()
   {
-    AppMethodBeat.i(191882);
-    Iterator localIterator = this.Maq.iterator();
-    for (long l = 0L; localIterator.hasNext(); l = ((e)localIterator.next()).fWH() + l) {}
-    AppMethodBeat.o(191882);
+    AppMethodBeat.i(194560);
+    Iterator localIterator = this.Mxl.iterator();
+    for (long l = 0L; localIterator.hasNext(); l = ((e)localIterator.next()).gbg() + l) {}
+    AppMethodBeat.o(194560);
     return l;
   }
   
   public final int getMediaType()
   {
-    return this.Map;
+    return this.Mxk;
   }
   
   public final int getTrackId()
   {
-    return this.Mao;
+    return this.Mxj;
   }
   
   public final String getUrl()
   {
-    AppMethodBeat.i(191881);
+    AppMethodBeat.i(194559);
     for (;;)
     {
       int i;
       try
       {
-        localList = this.Maq;
-        i = this.Map;
+        localList = this.Mxl;
+        i = this.Mxk;
         if (!a.isEmpty(localList)) {
           break label156;
         }
-        AppMethodBeat.o(191881);
+        AppMethodBeat.o(194559);
         return "";
       }
       catch (IOException localIOException)
@@ -65,7 +65,7 @@ public final class d
         StringWriter localStringWriter;
         String str1;
         com.tencent.thumbplayer.utils.d.e("TPMediaCompositionTrack", localIOException);
-        AppMethodBeat.o(191881);
+        AppMethodBeat.o(194559);
         return null;
       }
       localXmlSerializer = Xml.newSerializer();
@@ -78,7 +78,7 @@ public final class d
       localXmlSerializer.endTag("", "assets");
       localXmlSerializer.endDocument();
       str1 = localStringWriter.toString();
-      AppMethodBeat.o(191881);
+      AppMethodBeat.o(194559);
       return str1;
       label156:
       String str2;
@@ -87,7 +87,7 @@ public final class d
         str3 = "video_tracks";
         str1 = "video_track";
         continue;
-        AppMethodBeat.o(191881);
+        AppMethodBeat.o(194559);
         return "";
         if (i == 1)
         {

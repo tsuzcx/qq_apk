@@ -2,10 +2,10 @@ package com.tencent.mm.plugin.appbrand.jsapi.nfc;
 
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/IBackPressInterceptor;", "", "forceEnableBackPress", "", "luggage-commons_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/IBackPressInterceptor;", "", "forceEnableBackPress", "", "luggage-commons_release"})
 public abstract interface b
 {
-  public abstract void blB();
+  public abstract void bmk();
 }
 
 

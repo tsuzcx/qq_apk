@@ -15,7 +15,7 @@ public class PathActionArgWrapper
   extends BaseDrawActionArg
 {
   public static final Parcelable.Creator<PathActionArgWrapper> CREATOR;
-  public List<BasePathActionArg> jTJ;
+  public List<BasePathActionArg> jXa;
   
   static
   {
@@ -27,7 +27,7 @@ public class PathActionArgWrapper
   public PathActionArgWrapper()
   {
     AppMethodBeat.i(145273);
-    this.jTJ = new ArrayList();
+    this.jXa = new ArrayList();
     AppMethodBeat.o(145273);
   }
   
@@ -40,8 +40,8 @@ public class PathActionArgWrapper
   {
     super(paramParcel);
     AppMethodBeat.i(145272);
-    this.jTJ = new ArrayList();
-    this.jTJ = paramParcel.readArrayList(PathActionArgWrapper.class.getClassLoader());
+    this.jXa = new ArrayList();
+    this.jXa = paramParcel.readArrayList(PathActionArgWrapper.class.getClassLoader());
     AppMethodBeat.o(145272);
   }
   
@@ -61,7 +61,7 @@ public class PathActionArgWrapper
     if ((paramObject instanceof PathActionArgWrapper))
     {
       paramObject = (PathActionArgWrapper)paramObject;
-      boolean bool = this.jTJ.equals(paramObject.jTJ);
+      boolean bool = this.jXa.equals(paramObject.jXa);
       AppMethodBeat.o(145277);
       return bool;
     }
@@ -91,9 +91,9 @@ public class PathActionArgWrapper
     {
       JSONObject localJSONObject = paramJSONObject.optJSONObject(i);
       Object localObject = localJSONObject.optString("method");
-      localObject = (BasePathActionArg)f.bdu().MN((String)localObject);
+      localObject = (BasePathActionArg)f.bdZ().Nu((String)localObject);
       ((BasePathActionArg)localObject).parse(localJSONObject);
-      this.jTJ.add(localObject);
+      this.jXa.add(localObject);
       i += 1;
     }
     AppMethodBeat.o(145276);
@@ -103,13 +103,13 @@ public class PathActionArgWrapper
   {
     AppMethodBeat.i(145274);
     super.reset();
-    Iterator localIterator = this.jTJ.iterator();
+    Iterator localIterator = this.jXa.iterator();
     while (localIterator.hasNext())
     {
       BasePathActionArg localBasePathActionArg = (BasePathActionArg)localIterator.next();
-      f.bdu().a(localBasePathActionArg);
+      f.bdZ().a(localBasePathActionArg);
     }
-    this.jTJ.clear();
+    this.jXa.clear();
     AppMethodBeat.o(145274);
   }
   
@@ -117,7 +117,7 @@ public class PathActionArgWrapper
   {
     AppMethodBeat.i(145278);
     super.writeToParcel(paramParcel, paramInt);
-    paramParcel.writeList(this.jTJ);
+    paramParcel.writeList(this.jXa);
     AppMethodBeat.o(145278);
   }
 }

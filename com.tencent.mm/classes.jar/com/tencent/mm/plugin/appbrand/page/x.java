@@ -1,115 +1,85 @@
 package com.tencent.mm.plugin.appbrand.page;
 
-import android.graphics.Bitmap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.modelappbrand.a.b.d;
-import com.tencent.mm.modelappbrand.a.b.l;
-import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
-import com.tencent.mm.plugin.appbrand.appcache.bf;
-import com.tencent.mm.plugin.appbrand.appstorage.m;
-import com.tencent.mm.plugin.appbrand.z.h;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.sdk.platformtools.g;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Iterator;
-import java.util.Set;
+import com.tencent.mm.plugin.appbrand.appstorage.ICommLibReader;
+import com.tencent.mm.plugin.appbrand.jsapi.j;
+import d.f;
+import d.g;
+import d.g.a.a;
+import d.g.b.p;
+import d.l;
 
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/page/AppBrandPageScriptInjectConfig;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandConfig;", "libFileProvider", "Lcom/tencent/mm/plugin/appbrand/appstorage/ICommLibReader;", "wxaPkgFileProvider", "Lcom/tencent/mm/plugin/appbrand/appcache/IWxaPkgRuntimeReader;", "(Lcom/tencent/mm/plugin/appbrand/appstorage/ICommLibReader;Lcom/tencent/mm/plugin/appbrand/appcache/IWxaPkgRuntimeReader;)V", "useLazyCodeLoadingMode", "", "getUseLazyCodeLoadingMode", "()Z", "useLazyCodeLoadingMode$delegate", "Lkotlin/Lazy;", "Constants", "luggage-wechat-full-sdk_release"})
 public final class x
+  implements j
 {
-  private static final b.l mbG;
-  private static final h<AppBrandRuntime, String> mbH;
+  public static final a mge;
+  private final f mgb;
+  private final ICommLibReader mgc;
+  private final com.tencent.mm.plugin.appbrand.appcache.q mgd;
   
   static
   {
-    AppMethodBeat.i(135112);
-    mbG = new b.d();
-    mbH = new h();
-    AppMethodBeat.o(135112);
+    AppMethodBeat.i(147962);
+    mge = new a((byte)0);
+    AppMethodBeat.o(147962);
   }
   
-  public static void af(AppBrandRuntime paramAppBrandRuntime)
+  public x(ICommLibReader paramICommLibReader, com.tencent.mm.plugin.appbrand.appcache.q paramq)
   {
-    AppMethodBeat.i(197330);
-    paramAppBrandRuntime = mbH.cF(paramAppBrandRuntime);
-    if (paramAppBrandRuntime != null)
-    {
-      paramAppBrandRuntime = paramAppBrandRuntime.iterator();
-      while (paramAppBrandRuntime.hasNext())
-      {
-        String str = (String)paramAppBrandRuntime.next();
-        mbG.remove(str);
-      }
-    }
-    AppMethodBeat.o(197330);
+    AppMethodBeat.i(183061);
+    this.mgc = paramICommLibReader;
+    this.mgd = paramq;
+    this.mgb = g.O((a)new b(this));
+    AppMethodBeat.o(183061);
   }
   
-  public static Bitmap k(AppBrandRuntime paramAppBrandRuntime, String paramString)
+  public final boolean bva()
   {
-    AppMethodBeat.i(135111);
-    if (paramAppBrandRuntime == null)
+    AppMethodBeat.i(147963);
+    boolean bool = ((Boolean)this.mgb.getValue()).booleanValue();
+    AppMethodBeat.o(147963);
+    return bool;
+  }
+  
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/page/AppBrandPageScriptInjectConfig$Constants;", "", "()V", "COMMON_JS_NAME", "", "TAG", "WEBVIEW_APP_JS_NAME", "supportLazyCodeLoading", "", "Lcom/tencent/mm/plugin/appbrand/appstorage/ICommLibReader;", "luggage-wechat-full-sdk_release"})
+  public static final class a
+  {
+    public static boolean d(ICommLibReader paramICommLibReader)
     {
-      AppMethodBeat.o(135111);
-      return null;
-    }
-    Object localObject = m.Mo(paramString);
-    if (bt.isNullOrNil((String)localObject))
-    {
-      AppMethodBeat.o(135111);
-      return null;
-    }
-    paramString = paramAppBrandRuntime.hashCode() + 35 + (String)localObject;
-    mbH.j(paramAppBrandRuntime, paramString);
-    Bitmap localBitmap = mbG.vT(paramString);
-    if ((localBitmap != null) && (!localBitmap.isRecycled()))
-    {
-      AppMethodBeat.o(135111);
-      return localBitmap;
-    }
-    paramAppBrandRuntime = bf.f(paramAppBrandRuntime, (String)localObject);
-    if (paramAppBrandRuntime != null) {}
-    try
-    {
-      int i = paramAppBrandRuntime.available();
-      if (i <= 0) {
-        return null;
-      }
-      localObject = g.decodeStream(paramAppBrandRuntime);
-      if ((localObject != null) && (!((Bitmap)localObject).isRecycled()))
+      AppMethodBeat.i(224458);
+      p.h(paramICommLibReader, "$this$supportLazyCodeLoading");
+      int i = 0;
+      while (i < 2)
       {
-        mbG.put(paramString, (Bitmap)localObject);
-        return localObject;
-      }
-      if (paramAppBrandRuntime != null) {
-        bt.d(paramAppBrandRuntime);
-      }
-    }
-    catch (IOException paramString)
-    {
-      for (;;)
-      {
-        ad.e("MicroMsg.AppBrandPageIconCache", "try decode icon e = %s", new Object[] { paramString });
-        if (paramAppBrandRuntime != null) {
-          bt.d(paramAppBrandRuntime);
+        CharSequence localCharSequence = (CharSequence)paramICommLibReader.LE(new java.lang.String[] { "lazyCodeLoading", "lazyCodeLoading2" }[i]);
+        if ((localCharSequence == null) || (localCharSequence.length() == 0)) {}
+        for (int j = 1; j == 0; j = 0)
+        {
+          AppMethodBeat.o(224458);
+          return true;
         }
+        i += 1;
       }
+      AppMethodBeat.o(224458);
+      return false;
     }
-    finally
+  }
+  
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
+  static final class b
+    extends d.g.b.q
+    implements a<Boolean>
+  {
+    b(x paramx)
     {
-      if (paramAppBrandRuntime == null) {
-        break label227;
-      }
-      bt.d(paramAppBrandRuntime);
-      AppMethodBeat.o(135111);
+      super();
     }
-    AppMethodBeat.o(135111);
-    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.page.x
  * JD-Core Version:    0.7.0.1
  */

@@ -6,35 +6,35 @@ import com.tencent.mm.plugin.finder.model.BaseFinderFeed;
 import d.l;
 import java.util.ArrayList;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/viewmodel/FinderTopicFeedCache;", "Landroid/arch/lifecycle/ViewModel;", "()V", "caches", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "Lkotlin/collections/ArrayList;", "get", "onCleared", "", "resetCache", "store", "lastDataList", "Cache", "Companion", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/viewmodel/FinderTopicFeedCache;", "Landroid/arch/lifecycle/ViewModel;", "()V", "caches", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "Lkotlin/collections/ArrayList;", "get", "onCleared", "", "resetCache", "store", "lastDataList", "Cache", "Companion", "plugin-finder_release"})
 public final class FinderTopicFeedCache
   extends ViewModel
 {
-  public static final a taE;
-  public ArrayList<BaseFinderFeed> taD;
+  public static final a tls;
+  public ArrayList<BaseFinderFeed> tlr;
   
   static
   {
-    AppMethodBeat.i(205482);
-    taE = new a((byte)0);
-    AppMethodBeat.o(205482);
+    AppMethodBeat.i(206092);
+    tls = new a((byte)0);
+    AppMethodBeat.o(206092);
   }
   
   public final void af()
   {
-    AppMethodBeat.i(205481);
+    AppMethodBeat.i(206091);
     super.af();
-    ArrayList localArrayList = this.taD;
+    ArrayList localArrayList = this.tlr;
     if (localArrayList != null)
     {
       localArrayList.clear();
-      AppMethodBeat.o(205481);
+      AppMethodBeat.o(206091);
       return;
     }
-    AppMethodBeat.o(205481);
+    AppMethodBeat.o(206091);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/viewmodel/FinderTopicFeedCache$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/viewmodel/FinderTopicFeedCache$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
   public static final class a {}
 }
 

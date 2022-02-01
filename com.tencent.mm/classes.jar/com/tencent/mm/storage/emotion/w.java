@@ -3,8 +3,8 @@ package com.tencent.mm.storage.emotion;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.sdk.e.k;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.al.a;
+import com.tencent.mm.storage.aj;
+import com.tencent.mm.storage.am.a;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -17,25 +17,25 @@ import org.xwalk.core.Log;
 public final class w
   extends k
 {
-  public final LinkedList<v> vHi;
+  public final LinkedList<v> vTm;
   
   public w()
   {
     AppMethodBeat.i(105154);
-    this.vHi = new LinkedList();
-    ftE();
+    this.vTm = new LinkedList();
+    fxF();
     AppMethodBeat.o(105154);
   }
   
-  private void ftE()
+  private void fxF()
   {
     AppMethodBeat.i(105155);
-    Object localObject1 = (String)g.ajC().ajl().get(al.a.IDU, "");
+    Object localObject1 = (String)g.ajR().ajA().get(am.a.IYu, "");
     try
     {
-      synchronized (this.vHi)
+      synchronized (this.vTm)
       {
-        this.vHi.clear();
+        this.vTm.clear();
         localObject1 = new JSONArray((String)localObject1);
         int i = 0;
         while (i < ((JSONArray)localObject1).length())
@@ -43,9 +43,9 @@ public final class w
           v localv = new v();
           JSONObject localJSONObject = ((JSONArray)localObject1).getJSONObject(i);
           localv.key = localJSONObject.optString("key", "");
-          localv.IOs = localJSONObject.optInt("use_count", 0);
-          localv.hfU = localJSONObject.optLong("last_time", 0L);
-          this.vHi.add(localv);
+          localv.JiY = localJSONObject.optInt("use_count", 0);
+          localv.hiI = localJSONObject.optLong("last_time", 0L);
+          this.vTm.add(localv);
           i += 1;
         }
         AppMethodBeat.o(105155);
@@ -56,30 +56,30 @@ public final class w
     catch (JSONException localJSONException)
     {
       Log.w("SmileyUsageInfoStorage", "data error clear all");
-      bcD();
+      bdi();
       AppMethodBeat.o(105155);
     }
   }
   
-  public final void bcD()
+  public final void bdi()
   {
     AppMethodBeat.i(105157);
-    g.ajC().ajl().set(al.a.IDU, null);
-    this.vHi.clear();
+    g.ajR().ajA().set(am.a.IYu, null);
+    this.vTm.clear();
     AppMethodBeat.o(105157);
   }
   
-  public final List<v> cgC()
+  public final List<v> chS()
   {
     AppMethodBeat.i(105156);
     ArrayList localArrayList = new ArrayList();
-    synchronized (this.vHi)
+    synchronized (this.vTm)
     {
-      Iterator localIterator = this.vHi.iterator();
+      Iterator localIterator = this.vTm.iterator();
       while (localIterator.hasNext())
       {
         v localv = (v)localIterator.next();
-        if (com.tencent.mm.cf.e.fmZ().containsKey(localv.key)) {
+        if (com.tencent.mm.ce.e.fqT().containsKey(localv.key)) {
           localArrayList.add(localv);
         }
       }
@@ -90,7 +90,7 @@ public final class w
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.storage.emotion.w
  * JD-Core Version:    0.7.0.1
  */

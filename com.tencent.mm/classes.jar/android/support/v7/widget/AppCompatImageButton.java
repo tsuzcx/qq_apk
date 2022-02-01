@@ -23,7 +23,7 @@ public class AppCompatImageButton
   
   public AppCompatImageButton(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
-    super(aw.ac(paramContext), paramAttributeSet, paramInt);
+    super(aw.ad(paramContext), paramAttributeSet, paramInt);
     this.ajP.a(paramAttributeSet, paramInt);
     this.aks = new i(this);
     this.aks.a(paramAttributeSet, paramInt);

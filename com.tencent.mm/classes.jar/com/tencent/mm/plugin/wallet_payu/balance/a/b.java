@@ -9,33 +9,33 @@ import org.json.JSONObject;
 public final class b
   extends a
 {
-  public int DrA;
-  public boolean DrB;
-  public String DrC;
-  public String DrD;
-  public boolean DrE;
-  public String DrF;
-  public String Drw;
-  public String Drx;
-  public String Dry;
-  public String Drz;
-  public String dlu;
-  public double dlx;
-  public String dne;
-  public String oZO;
+  public String DJb;
+  public String DJc;
+  public String DJd;
+  public String DJe;
+  public int DJf;
+  public boolean DJg;
+  public String DJh;
+  public String DJi;
+  public boolean DJj;
+  public String DJk;
+  public String dmw;
+  public double dmz;
+  public String dog;
+  public String pgs;
   public String pin;
   
   public b(String paramString1, String paramString2, String paramString3, double paramDouble, String paramString4, String paramString5, String paramString6, String paramString7)
   {
     AppMethodBeat.i(71963);
     this.pin = paramString1;
-    this.Drw = paramString2;
-    this.dlu = paramString3;
-    this.dlx = paramDouble;
-    this.dne = paramString4;
-    this.Drx = paramString5;
-    this.Dry = paramString6;
-    this.Drz = paramString7;
+    this.DJb = paramString2;
+    this.dmw = paramString3;
+    this.dmz = paramDouble;
+    this.dog = paramString4;
+    this.DJc = paramString5;
+    this.DJd = paramString6;
+    this.DJe = paramString7;
     HashMap localHashMap = new HashMap();
     localHashMap.put("pin", paramString1);
     localHashMap.put("bind_serial", paramString5);
@@ -49,7 +49,7 @@ public final class b
     AppMethodBeat.o(71963);
   }
   
-  public final int eEK()
+  public final int eIr()
   {
     return 10;
   }
@@ -57,19 +57,19 @@ public final class b
   public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(71964);
-    this.oZO = paramJSONObject.optString("trans_id");
-    this.DrA = paramJSONObject.optInt("response_result");
-    this.DrB = paramJSONObject.optBoolean("redirect");
-    this.DrC = paramJSONObject.optString("gateway_reference");
-    this.DrD = paramJSONObject.optString("gateway_code");
-    this.DrE = paramJSONObject.optBoolean("is_force_adjust");
-    this.DrF = paramJSONObject.optString("force_adjust_code");
+    this.pgs = paramJSONObject.optString("trans_id");
+    this.DJf = paramJSONObject.optInt("response_result");
+    this.DJg = paramJSONObject.optBoolean("redirect");
+    this.DJh = paramJSONObject.optString("gateway_reference");
+    this.DJi = paramJSONObject.optString("gateway_code");
+    this.DJj = paramJSONObject.optBoolean("is_force_adjust");
+    this.DJk = paramJSONObject.optString("force_adjust_code");
     AppMethodBeat.o(71964);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_payu.balance.a.b
  * JD-Core Version:    0.7.0.1
  */

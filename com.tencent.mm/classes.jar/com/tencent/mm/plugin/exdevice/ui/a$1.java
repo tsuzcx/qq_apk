@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bs.d;
+import com.tencent.mm.br.d;
 import com.tencent.mm.hellhoundlib.b.b;
 
 final class a$1
@@ -17,10 +17,10 @@ final class a$1
     AppMethodBeat.i(24072);
     b localb = new b();
     localb.bd(paramView);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/exdevice/ui/ExdeviceProfileAdapter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/exdevice/ui/ExdeviceProfileAdapter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
     paramView = new Intent();
-    paramView.putExtra("Contact_User", a.a(this.qkS));
-    d.b(a.b(this.qkS), "profile", ".ui.ContactInfoUI", paramView);
+    paramView.putExtra("Contact_User", a.a(this.qrx));
+    d.b(a.b(this.qrx), "profile", ".ui.ContactInfoUI", paramView);
     com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/exdevice/ui/ExdeviceProfileAdapter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(24072);
   }

@@ -5,7 +5,9 @@ import com.tencent.mm.ui.chatting.d.ad;
 public abstract interface an
   extends ad
 {
-  public abstract void fDx();
+  public abstract boolean aXJ(String paramString);
+  
+  public abstract void aoa(String paramString);
 }
 
 

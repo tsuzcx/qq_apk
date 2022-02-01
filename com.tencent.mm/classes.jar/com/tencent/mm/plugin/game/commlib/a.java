@@ -2,94 +2,160 @@ package com.tencent.mm.plugin.game.commlib;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.game.commlib.util.b;
-import com.tencent.mm.plugin.game.d.ag;
-import com.tencent.mm.plugin.game.d.au;
-import com.tencent.mm.plugin.game.d.bb;
-import com.tencent.mm.plugin.game.d.db;
-import com.tencent.mm.plugin.game.d.dm;
-import com.tencent.mm.plugin.game.d.ed;
-import com.tencent.mm.plugin.game.d.ee;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.plugin.game.d.ai;
+import com.tencent.mm.plugin.game.d.am;
+import com.tencent.mm.plugin.game.d.ba;
+import com.tencent.mm.plugin.game.d.bg;
+import com.tencent.mm.plugin.game.d.bi;
+import com.tencent.mm.plugin.game.d.d;
+import com.tencent.mm.plugin.game.d.dj;
+import com.tencent.mm.plugin.game.d.dv;
+import com.tencent.mm.plugin.game.d.em;
+import com.tencent.mm.plugin.game.d.en;
+import com.tencent.mm.plugin.game.d.k;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public final class a
 {
-  public static bb tSI;
+  public static bi udz;
   
-  public static String cWN()
+  public static bg cZA()
   {
-    AppMethodBeat.i(199563);
-    String str = b.cWZ() + "globalconfig";
-    AppMethodBeat.o(199563);
+    AppMethodBeat.i(221861);
+    if (udz != null)
+    {
+      bg localbg = udz.utk;
+      AppMethodBeat.o(221861);
+      return localbg;
+    }
+    cZs();
+    AppMethodBeat.o(221861);
+    return null;
+  }
+  
+  public static JSONArray cZB()
+  {
+    AppMethodBeat.i(221862);
+    JSONArray localJSONArray = new JSONArray();
+    Object localObject;
+    if (udz != null) {
+      localObject = udz.utl;
+    }
+    for (;;)
+    {
+      label45:
+      d locald;
+      JSONObject localJSONObject;
+      if ((localObject != null) && (((ai)localObject).urQ != null))
+      {
+        localObject = ((ai)localObject).urQ.iterator();
+        if (((Iterator)localObject).hasNext())
+        {
+          locald = (d)((Iterator)localObject).next();
+          localJSONObject = new JSONObject();
+        }
+      }
+      try
+      {
+        localJSONObject.put("appId", locald.ikm);
+        localJSONObject.put("gameName", locald.uqj);
+        localJSONObject.put("albumName", locald.uqk);
+        localJSONObject.put("defaultTitle", locald.uql);
+        label116:
+        localJSONArray.put(localJSONObject);
+        break label45;
+        cZs();
+        localObject = null;
+        continue;
+        AppMethodBeat.o(221862);
+        return localJSONArray;
+      }
+      catch (JSONException localJSONException)
+      {
+        break label116;
+      }
+    }
+  }
+  
+  public static String cZr()
+  {
+    AppMethodBeat.i(221858);
+    String str = b.cZG() + "globalconfig";
+    AppMethodBeat.o(221858);
     return str;
   }
   
   /* Error */
-  public static void cWO()
+  public static void cZs()
   {
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: ldc 45
+    //   3: ldc 125
     //   5: invokestatic 15	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   8: getstatic 47	com/tencent/mm/plugin/game/commlib/a:tSI	Lcom/tencent/mm/plugin/game/d/bb;
+    //   8: getstatic 17	com/tencent/mm/plugin/game/commlib/a:udz	Lcom/tencent/mm/plugin/game/d/bi;
     //   11: ifnull +12 -> 23
-    //   14: ldc 45
-    //   16: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   14: ldc 125
+    //   16: invokestatic 26	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   19: ldc 2
     //   21: monitorexit
     //   22: return
-    //   23: invokestatic 53	java/lang/System:currentTimeMillis	()J
+    //   23: invokestatic 131	java/lang/System:currentTimeMillis	()J
     //   26: lstore_0
-    //   27: new 55	com/tencent/mm/vfs/e
+    //   27: new 133	com/tencent/mm/vfs/k
     //   30: dup
-    //   31: invokestatic 57	com/tencent/mm/plugin/game/commlib/a:cWN	()Ljava/lang/String;
-    //   34: invokespecial 60	com/tencent/mm/vfs/e:<init>	(Ljava/lang/String;)V
+    //   31: invokestatic 135	com/tencent/mm/plugin/game/commlib/a:cZr	()Ljava/lang/String;
+    //   34: invokespecial 138	com/tencent/mm/vfs/k:<init>	(Ljava/lang/String;)V
     //   37: astore_3
-    //   38: new 62	com/tencent/mm/vfs/h
+    //   38: new 140	com/tencent/mm/vfs/n
     //   41: dup
     //   42: aload_3
-    //   43: invokespecial 65	com/tencent/mm/vfs/h:<init>	(Lcom/tencent/mm/vfs/e;)V
+    //   43: invokespecial 143	com/tencent/mm/vfs/n:<init>	(Lcom/tencent/mm/vfs/k;)V
     //   46: astore_2
     //   47: aload_3
-    //   48: invokevirtual 68	com/tencent/mm/vfs/e:length	()J
+    //   48: invokevirtual 146	com/tencent/mm/vfs/k:length	()J
     //   51: l2i
     //   52: newarray byte
     //   54: astore_3
     //   55: aload_2
     //   56: aload_3
-    //   57: invokevirtual 72	com/tencent/mm/vfs/h:read	([B)I
+    //   57: invokevirtual 150	com/tencent/mm/vfs/n:read	([B)I
     //   60: pop
-    //   61: new 74	com/tencent/mm/plugin/game/d/bb
+    //   61: new 19	com/tencent/mm/plugin/game/d/bi
     //   64: dup
-    //   65: invokespecial 75	com/tencent/mm/plugin/game/d/bb:<init>	()V
+    //   65: invokespecial 151	com/tencent/mm/plugin/game/d/bi:<init>	()V
     //   68: astore 4
     //   70: aload 4
-    //   72: putstatic 47	com/tencent/mm/plugin/game/commlib/a:tSI	Lcom/tencent/mm/plugin/game/d/bb;
+    //   72: putstatic 17	com/tencent/mm/plugin/game/commlib/a:udz	Lcom/tencent/mm/plugin/game/d/bi;
     //   75: aload 4
     //   77: aload_3
-    //   78: invokevirtual 79	com/tencent/mm/plugin/game/d/bb:parseFrom	([B)Lcom/tencent/mm/bx/a;
+    //   78: invokevirtual 155	com/tencent/mm/plugin/game/d/bi:parseFrom	([B)Lcom/tencent/mm/bw/a;
     //   81: pop
     //   82: aload_2
     //   83: ifnull +7 -> 90
     //   86: aload_2
-    //   87: invokevirtual 82	com/tencent/mm/vfs/h:close	()V
-    //   90: ldc 84
-    //   92: new 17	java/lang/StringBuilder
+    //   87: invokevirtual 158	com/tencent/mm/vfs/n:close	()V
+    //   90: ldc 160
+    //   92: new 105	java/lang/StringBuilder
     //   95: dup
-    //   96: ldc 86
-    //   98: invokespecial 87	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   101: invokestatic 53	java/lang/System:currentTimeMillis	()J
+    //   96: ldc 162
+    //   98: invokespecial 163	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   101: invokestatic 131	java/lang/System:currentTimeMillis	()J
     //   104: lload_0
     //   105: lsub
-    //   106: invokevirtual 90	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   109: invokevirtual 35	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   112: invokestatic 95	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   115: ldc 45
-    //   117: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   106: invokevirtual 166	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   109: invokevirtual 120	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   112: invokestatic 171	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   115: ldc 125
+    //   117: invokestatic 26	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   120: goto -101 -> 19
     //   123: astore_2
     //   124: ldc 2
@@ -99,16 +165,16 @@ public final class a
     //   129: astore_3
     //   130: aconst_null
     //   131: astore_2
-    //   132: ldc 84
-    //   134: new 17	java/lang/StringBuilder
+    //   132: ldc 160
+    //   134: new 105	java/lang/StringBuilder
     //   137: dup
-    //   138: ldc 97
-    //   140: invokespecial 87	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   138: ldc 173
+    //   140: invokespecial 163	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   143: aload_3
-    //   144: invokevirtual 100	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   147: invokevirtual 30	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   150: invokevirtual 35	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   153: invokestatic 103	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   144: invokevirtual 176	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   147: invokevirtual 115	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   150: invokevirtual 120	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   153: invokestatic 179	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   156: goto -74 -> 82
     //   159: astore_2
     //   160: goto -70 -> 90
@@ -117,14 +183,14 @@ public final class a
     // Local variable table:
     //   start	length	slot	name	signature
     //   26	79	0	l	long
-    //   46	41	2	localh	com.tencent.mm.vfs.h
+    //   46	41	2	localn	com.tencent.mm.vfs.n
     //   123	5	2	localObject1	Object
     //   131	1	2	localObject2	Object
     //   159	1	2	localIOException	java.io.IOException
     //   37	41	3	localObject3	Object
     //   129	15	3	localException1	java.lang.Exception
     //   163	1	3	localException2	java.lang.Exception
-    //   68	8	4	localbb	bb
+    //   68	8	4	localbi	bi
     // Exception table:
     //   from	to	target	type
     //   3	19	123	finally
@@ -139,81 +205,81 @@ public final class a
     //   47	82	163	java/lang/Exception
   }
   
-  public static ag cWP()
+  public static am cZt()
   {
     AppMethodBeat.i(149392);
     Object localObject = null;
-    if (tSI != null)
+    if (udz != null)
     {
-      ag localag = tSI.uhA;
-      localObject = localag;
-      if (localag != null)
+      am localam = udz.usY;
+      localObject = localam;
+      if (localam != null)
       {
-        ad.i("MicroMsg.GameConfigManager", "getGameDetailSettingControl jumpType:%d, jumpUrl:%s", new Object[] { Integer.valueOf(localag.ugz), localag.ueY });
-        localObject = localag;
+        ae.i("MicroMsg.GameConfigManager", "getGameDetailSettingControl jumpType:%d, jumpUrl:%s", new Object[] { Integer.valueOf(localam.uqI), localam.uqf });
+        localObject = localam;
       }
     }
     for (;;)
     {
       AppMethodBeat.o(149392);
       return localObject;
-      cWO();
+      cZs();
     }
   }
   
-  public static dm cWQ()
+  public static dv cZu()
   {
     AppMethodBeat.i(149393);
-    if (tSI != null)
+    if (udz != null)
     {
-      if (tSI.uhC != null) {
-        ad.i("MicroMsg.GameConfigManager", "getStatusBarStyle color:%s, darkModeColor:%s, style:%s", new Object[] { tSI.uhC.hAD, tSI.uhC.ujP, tSI.uhC.udZ });
+      if (udz.uta != null) {
+        ae.i("MicroMsg.GameConfigManager", "getStatusBarStyle color:%s, darkModeColor:%s, style:%s", new Object[] { udz.uta.hDr, udz.uta.uvn, udz.uta.uph });
       }
-      dm localdm = tSI.uhC;
+      dv localdv = udz.uta;
       AppMethodBeat.o(149393);
-      return localdm;
+      return localdv;
     }
-    cWO();
+    cZs();
     AppMethodBeat.o(149393);
     return null;
   }
   
-  public static boolean cWR()
+  public static boolean cZv()
   {
     AppMethodBeat.i(149394);
-    if (tSI != null)
+    if (udz != null)
     {
-      if (tSI.uhE != null)
+      if (udz.utc != null)
       {
-        boolean bool = tSI.uhE.ukn;
+        boolean bool = udz.utc.uvK;
         AppMethodBeat.o(149394);
         return bool;
       }
     }
     else {
-      cWO();
+      cZs();
     }
     AppMethodBeat.o(149394);
     return false;
   }
   
-  public static List<String> cWS()
+  public static List<String> cZw()
   {
     AppMethodBeat.i(149397);
-    if (tSI != null)
+    if (udz != null)
     {
-      if (tSI.uhE != null)
+      if (udz.utc != null)
       {
-        Object localObject = tSI.uhE.ukp;
-        if (!bt.hj((List)localObject))
+        Object localObject = udz.utc.uvM;
+        if (!bu.ht((List)localObject))
         {
           ArrayList localArrayList = new ArrayList();
           localObject = ((List)localObject).iterator();
           while (((Iterator)localObject).hasNext())
           {
-            db localdb = (db)((Iterator)localObject).next();
-            if ((localdb != null) && (!bt.isNullOrNil(localdb.ufQ))) {
-              localArrayList.add(localdb.ufQ);
+            dj localdj = (dj)((Iterator)localObject).next();
+            if ((localdj != null) && (!bu.isNullOrNil(localdj.urm))) {
+              localArrayList.add(localdj.urm);
             }
           }
           AppMethodBeat.o(149397);
@@ -222,47 +288,66 @@ public final class a
       }
     }
     else {
-      cWO();
+      cZs();
     }
     AppMethodBeat.o(149397);
     return null;
   }
   
-  public static int cWT()
+  public static int cZx()
   {
     AppMethodBeat.i(149398);
-    if (tSI != null)
+    if (udz != null)
     {
-      if (tSI.uhG != null)
+      if (udz.ute != null)
       {
-        int i = tSI.uhG.ukm;
+        int i = udz.ute.uvJ;
         AppMethodBeat.o(149398);
         return i;
       }
       AppMethodBeat.o(149398);
       return 0;
     }
-    cWO();
+    cZs();
     AppMethodBeat.o(149398);
     return 0;
   }
   
-  public static au cWU()
+  public static ba cZy()
   {
-    AppMethodBeat.i(199564);
-    if (tSI != null)
+    AppMethodBeat.i(221859);
+    if (udz != null)
     {
-      if (tSI.uhL != null)
+      if (udz.utj != null)
       {
-        au localau = tSI.uhL;
-        AppMethodBeat.o(199564);
-        return localau;
+        ba localba = udz.utj;
+        AppMethodBeat.o(221859);
+        return localba;
       }
     }
     else {
-      cWO();
+      cZs();
     }
-    AppMethodBeat.o(199564);
+    AppMethodBeat.o(221859);
+    return null;
+  }
+  
+  public static k cZz()
+  {
+    AppMethodBeat.i(221860);
+    if (udz != null)
+    {
+      if (udz.utj != null)
+      {
+        k localk = udz.utj.usK;
+        AppMethodBeat.o(221860);
+        return localk;
+      }
+    }
+    else {
+      cZs();
+    }
+    AppMethodBeat.o(221860);
     return null;
   }
 }

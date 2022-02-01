@@ -21,8 +21,8 @@ public abstract class r
     d.g.b.p.h(paramArrayOfType, "parameterTypes");
     d.g.b.p.h(paramArrayOfAnnotation, "parameterAnnotations");
     ArrayList localArrayList = new ArrayList(paramArrayOfType.length);
-    Object localObject = a.Nah;
-    List localList = a.b(ggQ());
+    Object localObject = a.Nxn;
+    List localList = a.b(gls());
     if (localList != null) {}
     int j;
     w localw;
@@ -33,19 +33,19 @@ public abstract class r
       if (j >= k) {
         break label251;
       }
-      localObject = w.NaG;
+      localObject = w.NxM;
       localw = w.a.j(paramArrayOfType[j]);
       if (localList == null) {
         break label239;
       }
-      localObject = (String)j.E(localList, j + i);
+      localObject = (String)j.F(localList, j + i);
       if (localObject != null) {
         break;
       }
-      throw ((Throwable)new IllegalStateException(("No parameter with index " + j + '+' + i + " (name=" + giD() + " type=" + localw + ") in " + localList + "@ReflectJavaMember").toString()));
+      throw ((Throwable)new IllegalStateException(("No parameter with index " + j + '+' + i + " (name=" + gnf() + " type=" + localw + ") in " + localList + "@ReflectJavaMember").toString()));
     }
     label191:
-    if ((paramBoolean) && (j == e.V(paramArrayOfType))) {}
+    if ((paramBoolean) && (j == e.U(paramArrayOfType))) {}
     for (boolean bool = true;; bool = false)
     {
       localArrayList.add(new y(localw, paramArrayOfAnnotation[j], (String)localObject, bool));
@@ -61,69 +61,69 @@ public abstract class r
   
   public boolean equals(Object paramObject)
   {
-    return ((paramObject instanceof r)) && (d.g.b.p.i(ggQ(), ((r)paramObject).ggQ()));
+    return ((paramObject instanceof r)) && (d.g.b.p.i(gls(), ((r)paramObject).gls()));
   }
   
-  public final boolean fQB()
+  public final boolean fUX()
   {
     return t.a.b(this);
   }
   
   public final int getModifiers()
   {
-    return ggQ().getModifiers();
+    return gls().getModifiers();
   }
   
-  public abstract Member ggQ();
+  public abstract Member gls();
   
-  public final ba ghz()
+  public final ba gmb()
   {
     return t.a.d(this);
   }
   
-  public final d.l.b.a.b.f.f giD()
+  public final d.l.b.a.b.f.f gnf()
   {
-    Object localObject = ggQ().getName();
+    Object localObject = gls().getName();
     if (localObject != null) {
-      return d.l.b.a.b.f.f.bcE((String)localObject);
+      return d.l.b.a.b.f.f.bei((String)localObject);
     }
-    localObject = h.Nqs;
+    localObject = h.NNy;
     d.g.b.p.g(localObject, "SpecialNames.NO_NAME_PROVIDED");
     return localObject;
   }
   
-  public final AnnotatedElement gkC()
+  public final AnnotatedElement gpe()
   {
-    Member localMember = ggQ();
+    Member localMember = gls();
     if (localMember == null) {
       throw new v("null cannot be cast to non-null type java.lang.reflect.AnnotatedElement");
     }
     return (AnnotatedElement)localMember;
   }
   
-  public final boolean gkM()
+  public final boolean gpo()
   {
     return t.a.a(this);
   }
   
-  public final boolean gkN()
+  public final boolean gpp()
   {
     return t.a.c(this);
   }
   
   public int hashCode()
   {
-    return ggQ().hashCode();
+    return gls().hashCode();
   }
   
   public String toString()
   {
-    return getClass().getName() + ": " + ggQ();
+    return getClass().getName() + ": " + gls();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.b.d.b.r
  * JD-Core Version:    0.7.0.1
  */

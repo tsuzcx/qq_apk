@@ -6,7 +6,7 @@ import com.tencent.mm.plugin.appbrand.jsapi.i.a.b.ac;
 import com.tencent.mm.plugin.appbrand.jsapi.i.a.b.ad;
 import com.tencent.mm.plugin.appbrand.jsapi.i.a.b.i;
 import com.tencent.mm.plugin.appbrand.jsapi.i.a.b.j;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -14,17 +14,17 @@ public final class a
 {
   public static void a(b paramb, JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(186136);
-    paramb = paramb.bkO().kSm;
+    AppMethodBeat.i(206451);
+    paramb = paramb.bly().kVV;
     if (paramb == null) {
-      ad.e("MicroMsg.AppBrandMapUtils", "visibleRegion is  null");
+      ae.e("MicroMsg.AppBrandMapUtils", "visibleRegion is  null");
     }
-    Object localObject = paramb.kSn;
+    Object localObject = paramb.kVW;
     if (localObject == null) {
-      ad.e("MicroMsg.AppBrandMapUtils", "latLngBounds is  null");
+      ae.e("MicroMsg.AppBrandMapUtils", "latLngBounds is  null");
     }
-    paramb = ((b.j)localObject).kRM;
-    localObject = ((b.j)localObject).kRN;
+    paramb = ((b.j)localObject).kVv;
+    localObject = ((b.j)localObject).kVw;
     JSONObject localJSONObject1 = new JSONObject();
     if (paramb != null) {}
     try
@@ -42,20 +42,20 @@ public final class a
       }
       paramJSONObject.remove("region");
       paramJSONObject.put("region", localJSONObject1);
-      AppMethodBeat.o(186136);
+      AppMethodBeat.o(206451);
       return;
     }
     catch (JSONException paramb)
     {
-      ad.printErrStackTrace("MicroMsg.AppBrandMapUtils", paramb, "", new Object[0]);
-      AppMethodBeat.o(186136);
+      ae.printErrStackTrace("MicroMsg.AppBrandMapUtils", paramb, "", new Object[0]);
+      AppMethodBeat.o(206451);
     }
   }
   
   public static void b(b paramb, JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(186137);
-    paramb = paramb.bkS();
+    AppMethodBeat.i(206452);
+    paramb = paramb.blC();
     JSONObject localJSONObject = new JSONObject();
     try
     {
@@ -63,19 +63,19 @@ public final class a
       localJSONObject.put("longitude", paramb.longitude);
       paramJSONObject.remove("centerLocation");
       paramJSONObject.put("centerLocation", localJSONObject);
-      AppMethodBeat.o(186137);
+      AppMethodBeat.o(206452);
       return;
     }
     catch (JSONException paramb)
     {
-      ad.printErrStackTrace("MicroMsg.AppBrandMapUtils", paramb, "", new Object[0]);
-      AppMethodBeat.o(186137);
+      ae.printErrStackTrace("MicroMsg.AppBrandMapUtils", paramb, "", new Object[0]);
+      AppMethodBeat.o(206452);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.i.a
  * JD-Core Version:    0.7.0.1
  */

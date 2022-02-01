@@ -4,9 +4,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import f.a.a.b;
 
 public final class kk
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public String FCM;
+  public String FVh;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -14,37 +14,37 @@ public final class kk
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.FCM == null)
+      if (this.FVh == null)
       {
         paramVarArgs = new b("Not all required fields were included: Mac");
         AppMethodBeat.o(82388);
         throw paramVarArgs;
       }
-      if (this.FCM != null) {
-        paramVarArgs.d(1, this.FCM);
+      if (this.FVh != null) {
+        paramVarArgs.d(1, this.FVh);
       }
       AppMethodBeat.o(82388);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.FCM == null) {
+      if (this.FVh == null) {
         break label261;
       }
     }
     label261:
-    for (paramInt = f.a.a.b.b.a.e(1, this.FCM) + 0;; paramInt = 0)
+    for (paramInt = f.a.a.b.b.a.e(1, this.FVh) + 0;; paramInt = 0)
     {
       AppMethodBeat.o(82388);
       return paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
-        if (this.FCM == null)
+        if (this.FVh == null)
         {
           paramVarArgs = new b("Not all required fields were included: Mac");
           AppMethodBeat.o(82388);
@@ -63,7 +63,7 @@ public final class kk
           AppMethodBeat.o(82388);
           return -1;
         }
-        localkk.FCM = locala.NPN.readString();
+        localkk.FVh = locala.OmT.readString();
         AppMethodBeat.o(82388);
         return 0;
       }

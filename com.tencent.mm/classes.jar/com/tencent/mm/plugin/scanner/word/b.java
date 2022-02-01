@@ -1,32 +1,32 @@
 package com.tencent.mm.plugin.scanner.word;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.worddetect.WordDetectNative.WordDetectDetailResult;
 import java.util.ArrayList;
 import java.util.List;
 
 public final class b
 {
-  private WordDetectNative.WordDetectDetailResult yBr;
-  public List<Float> yBs;
+  private WordDetectNative.WordDetectDetailResult yRr;
+  public List<Float> yRs;
   
   public b(WordDetectNative.WordDetectDetailResult paramWordDetectDetailResult)
   {
-    AppMethodBeat.i(218747);
-    this.yBs = new ArrayList();
-    this.yBr = paramWordDetectDetailResult;
+    AppMethodBeat.i(196682);
+    this.yRs = new ArrayList();
+    this.yRr = paramWordDetectDetailResult;
     if ((paramWordDetectDetailResult != null) && (paramWordDetectDetailResult.rate_lang != null))
     {
       int i = 0;
       while (i < paramWordDetectDetailResult.rate_lang.length)
       {
-        ad.i("MicroMsg.WordDetectDetailResultWrapper", "%d ratio %f", new Object[] { Integer.valueOf(i), Float.valueOf(paramWordDetectDetailResult.rate_lang[i]) });
-        this.yBs.add(Float.valueOf(paramWordDetectDetailResult.rate_lang[i]));
+        ae.i("MicroMsg.WordDetectDetailResultWrapper", "%d ratio %f", new Object[] { Integer.valueOf(i), Float.valueOf(paramWordDetectDetailResult.rate_lang[i]) });
+        this.yRs.add(Float.valueOf(paramWordDetectDetailResult.rate_lang[i]));
         i += 1;
       }
     }
-    AppMethodBeat.o(218747);
+    AppMethodBeat.o(196682);
   }
 }
 

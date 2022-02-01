@@ -6,94 +6,79 @@ import com.tencent.mm.plugin.report.a;
 public final class fq
   extends a
 {
-  private long dQy = 0L;
-  private String elK = "";
-  public long elL = 0L;
-  private long elM = 0L;
-  private long elh = 0L;
-  private long eli = 0L;
+  private long ehx = 0L;
+  private long emQ = 0L;
+  private long emR = 0L;
+  private long emS = 0L;
+  private String emT = "";
+  private String emU = "";
+  
+  public final String RC()
+  {
+    AppMethodBeat.i(118483);
+    Object localObject = new StringBuffer();
+    ((StringBuffer)localObject).append(this.emQ);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.emR);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.ehx);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.emS);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.emT);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.emU);
+    localObject = ((StringBuffer)localObject).toString();
+    axO((String)localObject);
+    AppMethodBeat.o(118483);
+    return localObject;
+  }
   
   public final String RD()
   {
-    AppMethodBeat.i(118486);
+    AppMethodBeat.i(118484);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dQy);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.elh);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.elK);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.elL);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eli);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.elM);
+    ((StringBuffer)localObject).append("ComposeTime:").append(this.emQ);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("ComposeErrorType:").append(this.emR);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("UploadTime:").append(this.ehx);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("UploadErrorType:").append(this.emS);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("ComposeErrorTypeStr:").append(this.emT);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("UploadErrorTypeStr:").append(this.emU);
     localObject = ((StringBuffer)localObject).toString();
-    awz((String)localObject);
-    AppMethodBeat.o(118486);
+    AppMethodBeat.o(118484);
     return localObject;
   }
   
-  public final String RE()
+  public final long Tf()
   {
-    AppMethodBeat.i(118487);
-    Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("NetType:").append(this.dQy);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("PreviewEnterScene:").append(this.elh);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("SourceUserName:").append(this.elK);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("SourceContactType:").append(this.elL);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("HasUnreadStoryTips:").append(this.eli);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("HasEnterPreview:").append(this.elM);
-    localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(118487);
-    return localObject;
-  }
-  
-  public final fq Ts()
-  {
-    this.eli = 1L;
-    return this;
-  }
-  
-  public final fq Tt()
-  {
-    this.elM = 1L;
-    return this;
+    return this.ehx;
   }
   
   public final int getId()
   {
-    return 16659;
+    return 16688;
   }
   
-  public final fq ky(long paramLong)
+  public final fq kq(long paramLong)
   {
-    this.dQy = paramLong;
+    this.ehx = paramLong;
     return this;
   }
   
-  public final fq kz(long paramLong)
+  public final fq kr(long paramLong)
   {
-    this.elh = paramLong;
-    return this;
-  }
-  
-  public final fq oF(String paramString)
-  {
-    AppMethodBeat.i(118485);
-    this.elK = t("SourceUserName", paramString, true);
-    AppMethodBeat.o(118485);
+    this.emS = paramLong;
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.g.b.a.fq
  * JD-Core Version:    0.7.0.1
  */

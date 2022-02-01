@@ -13,9 +13,9 @@ public class EmptyReaderOutput
   
   public CMSampleBuffer nextSampleBuffer()
   {
-    AppMethodBeat.i(217903);
+    AppMethodBeat.i(214541);
     CMSampleBuffer localCMSampleBuffer = new CMSampleBuffer(CMSampleState.fromError(-1L));
-    AppMethodBeat.o(217903);
+    AppMethodBeat.o(214541);
     return localCMSampleBuffer;
   }
   

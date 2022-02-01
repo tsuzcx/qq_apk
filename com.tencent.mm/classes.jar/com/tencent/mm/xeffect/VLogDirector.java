@@ -8,8 +8,8 @@ import java.util.List;
 
 public class VLogDirector
 {
-  private long LBd;
-  private long LBl = 0L;
+  private long LYd;
+  private long LYl = 0L;
   private int height;
   private int outputHeight;
   private int outputWidth;
@@ -18,19 +18,19 @@ public class VLogDirector
   
   static
   {
-    AppMethodBeat.i(220015);
+    AppMethodBeat.i(216766);
     e.load("xlabeffect");
     e.load("pag");
-    AppMethodBeat.o(220015);
+    AppMethodBeat.o(216766);
   }
   
   private void checkThread()
   {
-    AppMethodBeat.i(220014);
+    AppMethodBeat.i(216765);
     if (Thread.currentThread().getId() != this.threadId) {
       XEffectLog.e("VLogDirector", "Thread error", new Object[0]);
     }
-    AppMethodBeat.o(220014);
+    AppMethodBeat.o(216765);
   }
   
   private static native int nAddBlendTexture(long paramLong, int paramInt1, int paramInt2, int paramInt3);
@@ -63,22 +63,22 @@ public class VLogDirector
   
   public final void W(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(220011);
+    AppMethodBeat.i(216762);
     checkThread();
-    if (this.LBd != 0L) {
-      nSetOutputCrop(this.LBd, paramInt1, paramInt2, paramInt3, paramInt4);
+    if (this.LYd != 0L) {
+      nSetOutputCrop(this.LYd, paramInt1, paramInt2, paramInt3, paramInt4);
     }
-    AppMethodBeat.o(220011);
+    AppMethodBeat.o(216762);
   }
   
   public final void a(List<a> paramList, int paramInt, long paramLong, a parama)
   {
-    AppMethodBeat.i(220012);
+    AppMethodBeat.i(216763);
     checkThread();
-    if (this.LBd != 0L)
+    if (this.LYd != 0L)
     {
       if (parama != null) {
-        nAddBlendTexture(this.LBd, parama.textureId, parama.width, parama.height);
+        nAddBlendTexture(this.LYd, parama.textureId, parama.width, parama.height);
       }
       paramList = paramList.iterator();
       while (paramList.hasNext())
@@ -92,25 +92,25 @@ public class VLogDirector
           if (i == 0) {
             break label233;
           }
-          if (parama.LBj.isEmpty()) {
+          if (parama.LYj.isEmpty()) {
             break label345;
           }
-          if (!parama.LBh.isEmpty()) {
+          if (!parama.LYh.isEmpty()) {
             break label235;
           }
-          nAddInputTextureByContentCrop(this.LBd, parama.LBf, parama.textureId, parama.width, parama.height, parama.dGc, parama.Crb, parama.LBg, parama.LBj.left, parama.LBj.top, parama.LBj.right, parama.LBj.bottom, parama.LBi.left, parama.LBi.top, parama.LBi.right, parama.LBi.bottom);
+          nAddInputTextureByContentCrop(this.LYd, parama.LYf, parama.textureId, parama.width, parama.height, parama.dHi, parama.CIF, parama.LYg, parama.LYj.left, parama.LYj.top, parama.LYj.right, parama.LYj.bottom, parama.LYi.left, parama.LYi.top, parama.LYi.right, parama.LYi.bottom);
           break;
         }
         label233:
         continue;
         label235:
-        nAddInputTextureByCropAndFitContent(this.LBd, parama.LBf, parama.textureId, parama.width, parama.height, parama.dGc, parama.Crb, parama.LBg, parama.LBh.left, parama.LBh.top, parama.LBh.right, parama.LBh.bottom, parama.LBj.left, parama.LBj.top, parama.LBj.right, parama.LBj.bottom);
+        nAddInputTextureByCropAndFitContent(this.LYd, parama.LYf, parama.textureId, parama.width, parama.height, parama.dHi, parama.CIF, parama.LYg, parama.LYh.left, parama.LYh.top, parama.LYh.right, parama.LYh.bottom, parama.LYj.left, parama.LYj.top, parama.LYj.right, parama.LYj.bottom);
         continue;
         label345:
-        if (!parama.LBh.isEmpty()) {
-          nAddInputTextureByCrop(this.LBd, parama.LBf, parama.textureId, parama.width, parama.height, parama.dGc, parama.Crb, parama.LBg, parama.LBh.left, parama.LBh.top, parama.LBh.right, parama.LBh.bottom);
+        if (!parama.LYh.isEmpty()) {
+          nAddInputTextureByCrop(this.LYd, parama.LYf, parama.textureId, parama.width, parama.height, parama.dHi, parama.CIF, parama.LYg, parama.LYh.left, parama.LYh.top, parama.LYh.right, parama.LYh.bottom);
         } else {
-          nAddInputTextureByTransform(this.LBd, parama.LBf, parama.textureId, parama.width, parama.height, parama.dGc, parama.Crb, parama.LBg, parama.hnk, parama.scale, parama.translateX, parama.translateY);
+          nAddInputTextureByTransform(this.LYd, parama.LYf, parama.textureId, parama.width, parama.height, parama.dHi, parama.CIF, parama.LYg, parama.hpY, parama.scale, parama.translateX, parama.translateY);
         }
       }
       if ((this.outputWidth <= 0) || (this.outputHeight <= 0))
@@ -123,40 +123,40 @@ public class VLogDirector
         this.outputHeight = paramList[1];
       }
       XEffectLog.d("VLogDirector", "render output size, width:%d, height:%d", new Object[] { Integer.valueOf(this.outputWidth), Integer.valueOf(this.outputHeight) });
-      nRender(this.LBd, paramInt, this.outputWidth, this.outputHeight, paramLong);
+      nRender(this.LYd, paramInt, this.outputWidth, this.outputHeight, paramLong);
     }
-    AppMethodBeat.o(220012);
+    AppMethodBeat.o(216763);
   }
   
   public final void b(VLogEffectMgr paramVLogEffectMgr)
   {
-    AppMethodBeat.i(220013);
-    if ((paramVLogEffectMgr != null) && (paramVLogEffectMgr.LBd != 0L) && (paramVLogEffectMgr.LBd != this.LBl))
+    AppMethodBeat.i(216764);
+    if ((paramVLogEffectMgr != null) && (paramVLogEffectMgr.LYd != 0L) && (paramVLogEffectMgr.LYd != this.LYl))
     {
-      nSetVLogEffectMgr(this.LBd, paramVLogEffectMgr.LBd);
-      this.LBl = paramVLogEffectMgr.LBd;
+      nSetVLogEffectMgr(this.LYd, paramVLogEffectMgr.LYd);
+      this.LYl = paramVLogEffectMgr.LYd;
     }
-    AppMethodBeat.o(220013);
+    AppMethodBeat.o(216764);
   }
   
   public final void destroy()
   {
-    AppMethodBeat.i(220010);
+    AppMethodBeat.i(216761);
     checkThread();
-    if (this.LBd != 0L)
+    if (this.LYd != 0L)
     {
-      nDestroy(this.LBd);
-      this.LBd = 0L;
+      nDestroy(this.LYd);
+      this.LYd = 0L;
     }
-    AppMethodBeat.o(220010);
+    AppMethodBeat.o(216761);
   }
   
   public final void init()
   {
-    AppMethodBeat.i(220009);
+    AppMethodBeat.i(216760);
     this.threadId = Thread.currentThread().getId();
-    this.LBd = nInit();
-    AppMethodBeat.o(220009);
+    this.LYd = nInit();
+    AppMethodBeat.o(216760);
   }
   
   public final void setOutputSize(int paramInt1, int paramInt2)
@@ -167,14 +167,14 @@ public class VLogDirector
   
   public final void setSize(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(220008);
+    AppMethodBeat.i(216759);
     this.width = paramInt1;
     this.height = paramInt2;
     checkThread();
-    if (this.LBd != 0L) {
-      nSetViewCrop(this.LBd, 0, 0, paramInt1, paramInt2);
+    if (this.LYd != 0L) {
+      nSetViewCrop(this.LYd, 0, 0, paramInt1, paramInt2);
     }
-    AppMethodBeat.o(220008);
+    AppMethodBeat.o(216759);
   }
 }
 

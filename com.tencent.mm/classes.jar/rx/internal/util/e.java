@@ -7,29 +7,29 @@ import java.security.PrivilegedAction;
 
 public final class e
 {
-  private static final int Oar;
-  private static final boolean Oas;
+  private static final int Oxw;
+  private static final boolean Oxx;
   
   static
   {
     AppMethodBeat.i(90204);
-    int i = gzi();
-    Oar = i;
+    int i = gDK();
+    Oxw = i;
     if (i != 0) {}
     for (boolean bool = true;; bool = false)
     {
-      Oas = bool;
+      Oxx = bool;
       AppMethodBeat.o(90204);
       return;
     }
   }
   
-  public static int gzh()
+  public static int gDJ()
   {
-    return Oar;
+    return Oxw;
   }
   
-  private static int gzi()
+  private static int gDK()
   {
     AppMethodBeat.i(90203);
     try
@@ -51,12 +51,12 @@ public final class e
   
   public static boolean isAndroid()
   {
-    return Oas;
+    return Oxx;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     rx.internal.util.e
  * JD-Core Version:    0.7.0.1
  */

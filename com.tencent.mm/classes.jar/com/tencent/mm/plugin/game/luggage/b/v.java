@@ -9,13 +9,13 @@ import com.tencent.luggage.d.b.a;
 import com.tencent.luggage.d.h;
 import com.tencent.luggage.d.s;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bs.d;
+import com.tencent.mm.br.d;
 import com.tencent.mm.plugin.webview.luggage.jsapi.bq;
 import com.tencent.mm.plugin.webview.luggage.jsapi.bq.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.LinkedList;
 import org.json.JSONObject;
 
@@ -27,17 +27,17 @@ public class v
   public final void b(b.a parama)
   {
     AppMethodBeat.i(83083);
-    ad.i("MicroMsg.JsApiOpenGameUrlWithExtraWebView", "invokeInOwn");
+    ae.i("MicroMsg.JsApiOpenGameUrlWithExtraWebView", "invokeInOwn");
     final String str1 = parama.chh.cgn.optString("url");
-    if (bt.isNullOrNil(str1))
+    if (bu.isNullOrNil(str1))
     {
-      ad.e("MicroMsg.JsApiOpenGameUrlWithExtraWebView", "url is null");
+      ae.e("MicroMsg.JsApiOpenGameUrlWithExtraWebView", "url is null");
       parama.a("fail", null);
       AppMethodBeat.o(83083);
       return;
     }
-    ad.i("MicroMsg.JsApiOpenGameUrlWithExtraWebView", "url: %s", new Object[] { str1 });
-    Object localObject1 = (s)com.tencent.mm.plugin.webview.luggage.j.ePw().getLast();
+    ae.i("MicroMsg.JsApiOpenGameUrlWithExtraWebView", "url: %s", new Object[] { str1 });
+    Object localObject1 = (s)com.tencent.mm.plugin.webview.luggage.j.eTi().getLast();
     if (localObject1 == null)
     {
       AppMethodBeat.o(83083);
@@ -45,37 +45,39 @@ public class v
     }
     String str2 = parama.chh.cgn.optString("html");
     Object localObject2 = Uri.parse(str1);
-    if ((bt.nullAsNil(((Uri)localObject2).getQueryParameter("not_in_game_luggage")).equals("1")) || ((((Uri)localObject2).getHost() != null) && (!((Uri)localObject2).getHost().equals("game.weixin.qq.com"))))
+    if ((bu.nullAsNil(((Uri)localObject2).getQueryParameter("not_in_game_luggage")).equals("1")) || ((((Uri)localObject2).getHost() != null) && (!((Uri)localObject2).getHost().equals("game.weixin.qq.com"))))
     {
       localObject1 = new Intent();
       ((Intent)localObject1).putExtra("rawUrl", str1);
-      d.b(aj.getContext(), "webview", ".ui.tools.WebViewUI", (Intent)localObject1);
+      d.b(ak.getContext(), "webview", ".ui.tools.WebViewUI", (Intent)localObject1);
       parama.a("", null);
       AppMethodBeat.o(83083);
       return;
     }
     localObject2 = parama.chh.cgn.optString("statusBarColor");
-    if (!bt.isNullOrNil((String)localObject2)) {}
+    if (!bu.isNullOrNil((String)localObject2)) {}
     for (;;)
     {
       try
       {
         i = Color.parseColor((String)localObject2);
         localObject2 = parama.chh.cgn.optString("statusBarStyle");
+        String str3 = parama.chh.cgn.optString("preInjectData");
         final Bundle localBundle = new Bundle();
         localBundle.putString("rawUrl", str1);
         localBundle.putInt("customize_status_bar_color", i);
         localBundle.putString("status_bar_style", (String)localObject2);
+        localBundle.putString("game_pre_inject_data", str3);
         localBundle.putBoolean("from_find_more_friend", ((s)localObject1).mParams.getBoolean("from_find_more_friend", false));
-        if (!bt.isNullOrNil(str2)) {
+        if (!bu.isNullOrNil(str2)) {
           localBundle.putString("game_open_html", str2);
         }
-        aq.f(new Runnable()
+        ar.f(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(83082);
-            this.tUc.chm.Ce().h(str1, localBundle);
+            this.ueU.chm.Ch().h(str1, localBundle);
             AppMethodBeat.o(83082);
           }
         });
@@ -85,7 +87,7 @@ public class v
       }
       catch (IllegalArgumentException localIllegalArgumentException)
       {
-        ad.e("MicroMsg.JsApiOpenGameUrlWithExtraWebView", localIllegalArgumentException.getMessage());
+        ae.e("MicroMsg.JsApiOpenGameUrlWithExtraWebView", localIllegalArgumentException.getMessage());
         parama.a("invalid_color", null);
         AppMethodBeat.o(83083);
         return;
@@ -94,7 +96,7 @@ public class v
     }
   }
   
-  public final int ccO()
+  public final int ced()
   {
     return 0;
   }

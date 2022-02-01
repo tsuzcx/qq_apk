@@ -10,8 +10,8 @@ import com.tencent.mm.pluginsdk.ui.applet.u;
 import com.tencent.mm.pluginsdk.ui.span.k;
 import com.tencent.mm.pluginsdk.ui.span.l;
 import com.tencent.mm.pluginsdk.ui.span.o;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public final class g
 {
@@ -27,11 +27,11 @@ public final class g
   
   public static CharSequence d(Spannable paramSpannable)
   {
-    AppMethodBeat.i(198614);
+    AppMethodBeat.i(220161);
     localSpannableStringBuilder = new SpannableStringBuilder(paramSpannable);
     try
     {
-      if (!bt.ai(paramSpannable))
+      if (!bu.ah(paramSpannable))
       {
         o[] arrayOfo = (o[])paramSpannable.getSpans(0, paramSpannable.length(), o.class);
         if ((arrayOfo != null) && (arrayOfo.length > 0))
@@ -44,9 +44,9 @@ public final class g
             if (localo.getType() == 1)
             {
               String str1 = localo.getHrefInfo().url;
-              if ((str1 != null) && (str1.length() > a.ArI))
+              if ((str1 != null) && (str1.length() > a.AIW))
               {
-                String str2 = str1.substring(0, a.ArI) + "...";
+                String str2 = str1.substring(0, a.AIW) + "...";
                 SpannableString localSpannableString = new SpannableString(str2);
                 localSpannableString.setSpan(new o(2, localo.getHrefInfo()), 0, str2.length(), 33);
                 int k = localSpannableStringBuilder.toString().indexOf(str1);
@@ -61,14 +61,14 @@ public final class g
     }
     catch (Exception localException)
     {
-      ad.w(TAG, "compressedPostDesc fail:%s", new Object[] { paramSpannable });
-      AppMethodBeat.o(198614);
+      ae.w(TAG, "compressedPostDesc fail:%s", new Object[] { paramSpannable });
+      AppMethodBeat.o(220161);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.widget.g
  * JD-Core Version:    0.7.0.1
  */

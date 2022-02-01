@@ -18,7 +18,7 @@ public final class d
     super(paramViewGroup, parama);
   }
   
-  public final int cus()
+  public final int cvT()
   {
     return 2131493913;
   }
@@ -26,9 +26,9 @@ public final class d
   public final void initView()
   {
     AppMethodBeat.i(104326);
-    FaceDetectReporter.cth().cti();
-    FaceDetectReporter.cth().ctj();
-    FaceDetectReporter.cth().rhZ = System.currentTimeMillis();
+    FaceDetectReporter.cuI().cuJ();
+    FaceDetectReporter.cuI().cuK();
+    FaceDetectReporter.cuI().rqd = System.currentTimeMillis();
     MMAnimateView localMMAnimateView = (MMAnimateView)findViewById(2131299705);
     localMMAnimateView.setImageResource(2131690129);
     localMMAnimateView.start();
@@ -41,11 +41,11 @@ public final class d
     AppMethodBeat.i(104327);
     b localb = new b();
     localb.bd(paramView);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/facedetectlight/ui/FaceReflectTransitionUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/facedetectlight/ui/FaceReflectTransitionUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
     if (paramView.getId() == 2131299704)
     {
       setVisibility(8);
-      this.rqH.startPreview();
+      this.ryW.startPreview();
     }
     com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/facedetectlight/ui/FaceReflectTransitionUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(104327);

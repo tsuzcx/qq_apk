@@ -6,97 +6,97 @@ import java.util.concurrent.TimeUnit;
 
 public final class h
 {
-  public int HUe;
-  public int HUf;
-  public long HUg;
-  public long HUh;
-  public long HUi;
-  public long HUj;
-  public g HUk;
+  public int Iom;
+  public int Ion;
+  public long Ioo;
+  public long Iop;
+  public long Ioq;
+  public long Ior;
+  public g Ios;
   
   private h(Context paramContext)
   {
-    AppMethodBeat.i(207036);
-    this.HUk = new g.b(paramContext, "recovery_setting");
-    this.HUk.fhb();
-    this.HUe = Math.max(this.HUk.getInt("setting_threshold_1", 3), 2);
-    this.HUf = Math.max(this.HUk.getInt("setting_threshold_2", 5), 3);
-    if (this.HUf < this.HUe) {
-      this.HUf = this.HUe;
+    AppMethodBeat.i(195344);
+    this.Ios = new g.b(paramContext, "recovery_setting");
+    this.Ios.fkT();
+    this.Iom = Math.max(this.Ios.getInt("setting_threshold_1", 3), 2);
+    this.Ion = Math.max(this.Ios.getInt("setting_threshold_2", 5), 3);
+    if (this.Ion < this.Iom) {
+      this.Ion = this.Iom;
     }
-    this.HUg = Math.max(this.HUk.getLong("setting_crash_interval", 10000L), 5000L);
-    this.HUh = Math.max(this.HUk.getLong("setting_crash_interval_sub", 30000L), 5000L);
-    this.HUi = Math.max(this.HUk.getLong("setting_crash_minimal_interval", 1000L), 0L);
-    this.HUj = Math.max(this.HUk.getLong("setting_reset_delay", 5000L), 1000L);
-    AppMethodBeat.o(207036);
+    this.Ioo = Math.max(this.Ios.getLong("setting_crash_interval", 10000L), 5000L);
+    this.Iop = Math.max(this.Ios.getLong("setting_crash_interval_sub", 30000L), 5000L);
+    this.Ioq = Math.max(this.Ios.getLong("setting_crash_minimal_interval", 1000L), 0L);
+    this.Ior = Math.max(this.Ios.getLong("setting_reset_delay", 5000L), 1000L);
+    AppMethodBeat.o(195344);
   }
   
-  public static h hN(Context paramContext)
+  public static h hT(Context paramContext)
   {
-    AppMethodBeat.i(207035);
+    AppMethodBeat.i(195343);
     paramContext = new h(paramContext);
-    AppMethodBeat.o(207035);
+    AppMethodBeat.o(195343);
     return paramContext;
   }
   
   public static final class a
   {
-    public final g HUk;
+    public final g Ios;
     public boolean mEnabled;
     
     private a(Context paramContext)
     {
-      AppMethodBeat.i(207026);
-      this.HUk = new g.b(paramContext, "recovery_enable").fhb();
-      this.mEnabled = this.HUk.getBoolean("enable", true);
-      AppMethodBeat.o(207026);
+      AppMethodBeat.i(195334);
+      this.Ios = new g.b(paramContext, "recovery_enable").fkT();
+      this.mEnabled = this.Ios.getBoolean("enable", true);
+      AppMethodBeat.o(195334);
     }
     
-    public static a hO(Context paramContext)
+    public static a hU(Context paramContext)
     {
-      AppMethodBeat.i(207025);
+      AppMethodBeat.i(195333);
       paramContext = new a(paramContext);
-      AppMethodBeat.o(207025);
+      AppMethodBeat.o(195333);
       return paramContext;
     }
   }
   
   public static final class b
   {
-    private static final long jPD;
-    private final g HUk;
-    long HUl;
-    long HUm;
+    private static final long jSV;
+    private final g Ios;
+    long Iot;
+    long Iou;
     
     static
     {
-      AppMethodBeat.i(207030);
-      jPD = TimeUnit.DAYS.toMillis(1L) / 2L;
-      AppMethodBeat.o(207030);
+      AppMethodBeat.i(195338);
+      jSV = TimeUnit.DAYS.toMillis(1L) / 2L;
+      AppMethodBeat.o(195338);
     }
     
     private b(Context paramContext)
     {
-      AppMethodBeat.i(207028);
-      this.HUk = new g.b(paramContext, "recovery_internal").fhb();
-      this.HUl = this.HUk.getLong("internal_last_ui_launched", 0L);
-      this.HUm = this.HUk.getLong("internal_ui_launch_interval", jPD);
-      AppMethodBeat.o(207028);
+      AppMethodBeat.i(195336);
+      this.Ios = new g.b(paramContext, "recovery_internal").fkT();
+      this.Iot = this.Ios.getLong("internal_last_ui_launched", 0L);
+      this.Iou = this.Ios.getLong("internal_ui_launch_interval", jSV);
+      AppMethodBeat.o(195336);
     }
     
-    public static b hP(Context paramContext)
+    public static b hV(Context paramContext)
     {
-      AppMethodBeat.i(207027);
+      AppMethodBeat.i(195335);
       paramContext = new b(paramContext);
-      AppMethodBeat.o(207027);
+      AppMethodBeat.o(195335);
       return paramContext;
     }
     
     public final void save()
     {
-      AppMethodBeat.i(207029);
-      this.HUk.bR("internal_last_ui_launched", this.HUl).bR("internal_ui_launch_interval", this.HUm).fhc();
-      AppMethodBeat.o(207029);
+      AppMethodBeat.i(195337);
+      this.Ios.bS("internal_last_ui_launched", this.Iot).bS("internal_ui_launch_interval", this.Iou).fkU();
+      AppMethodBeat.o(195337);
     }
   }
 }

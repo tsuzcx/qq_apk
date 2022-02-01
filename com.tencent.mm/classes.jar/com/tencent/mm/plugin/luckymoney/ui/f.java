@@ -26,25 +26,25 @@ public final class f
     {
       paramView = this.mInflater.inflate(2131494650, paramViewGroup, false);
       paramViewGroup = new a();
-      paramViewGroup.lCL = ((TextView)paramView.findViewById(2131301859));
-      paramViewGroup.lDu = ((TextView)paramView.findViewById(2131301857));
-      paramViewGroup.vjQ = ((TextView)paramView.findViewById(2131301858));
-      paramViewGroup.vjR = ((TextView)paramView.findViewById(2131301856));
+      paramViewGroup.lHk = ((TextView)paramView.findViewById(2131301859));
+      paramViewGroup.lHT = ((TextView)paramView.findViewById(2131301857));
+      paramViewGroup.vvV = ((TextView)paramView.findViewById(2131301858));
+      paramViewGroup.vvW = ((TextView)paramView.findViewById(2131301856));
       paramViewGroup.fq = paramInt;
       paramView.setTag(paramViewGroup);
     }
     for (;;)
     {
-      t localt = Js(paramInt);
-      paramViewGroup.lCL.setText(localt.vpp);
-      paramViewGroup.vjQ.setText(localt.vpq);
-      paramViewGroup.vjR.setText(this.mContext.getString(2131760831, new Object[] { com.tencent.mm.wallet_core.ui.e.C(localt.vok / 100.0D) }));
-      String str2 = this.mContext.getString(2131760961, new Object[] { Long.valueOf(localt.voi), Long.valueOf(localt.vpr) });
+      t localt = JR(paramInt);
+      paramViewGroup.lHk.setText(localt.vBu);
+      paramViewGroup.vvV.setText(localt.vBv);
+      paramViewGroup.vvW.setText(this.mContext.getString(2131760831, new Object[] { com.tencent.mm.wallet_core.ui.f.C(localt.vAp / 100.0D) }));
+      String str2 = this.mContext.getString(2131760961, new Object[] { Long.valueOf(localt.vAn), Long.valueOf(localt.vBw) });
       String str1 = str2;
       if (localt.status == 5) {
         str1 = this.mContext.getString(2131760962) + " " + str2;
       }
-      paramViewGroup.lDu.setText(str1);
+      paramViewGroup.lHT.setText(str1);
       AppMethodBeat.o(65660);
       return paramView;
       paramViewGroup = (a)paramView.getTag();
@@ -54,10 +54,10 @@ public final class f
   final class a
   {
     int fq;
-    TextView lCL;
-    TextView lDu;
-    TextView vjQ;
-    TextView vjR;
+    TextView lHT;
+    TextView lHk;
+    TextView vvV;
+    TextView vvW;
     
     a() {}
   }

@@ -7,10 +7,10 @@ import com.tencent.mm.plugin.messenger.foundation.a.a.k.a;
 import com.tencent.mm.plugin.messenger.foundation.a.l;
 import com.tencent.mm.plugin.secinforeport.a.b;
 import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.ze;
-import com.tencent.mm.protocal.protobuf.zf;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.zh;
+import com.tencent.mm.protocal.protobuf.zi;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.nio.charset.Charset;
 import java.util.LinkedList;
 
@@ -20,8 +20,8 @@ public enum a
   static
   {
     AppMethodBeat.i(89142);
-    yBD = new a("INSTANCE");
-    yBE = new a[] { yBD };
+    yRD = new a("INSTANCE");
+    yRE = new a[] { yRD };
     AppMethodBeat.o(89142);
   }
   
@@ -32,27 +32,27 @@ public enum a
     AppMethodBeat.i(89141);
     if (paramString == null)
     {
-      ad.w("MicroMsg.ClipBordReportImpl", "operationInfo isNullOrNil");
+      ae.w("MicroMsg.ClipBordReportImpl", "operationInfo isNullOrNil");
       AppMethodBeat.o(89141);
       return;
     }
-    if (!g.ajx())
+    if (!g.ajM())
     {
       AppMethodBeat.o(89141);
       return;
     }
-    ze localze = new ze();
-    localze.FYI = paramInt1;
-    localze.FYK = paramInt2;
+    zh localzh = new zh();
+    localzh.Grh = paramInt1;
+    localzh.Grj = paramInt2;
     paramString = paramString.getBytes(Charset.forName("UTF-8"));
-    localze.FYJ = new SKBuiltinBuffer_t().setBuffer(paramString);
-    if (!bt.cC(paramArrayOfByte)) {
-      localze.FYL = new SKBuiltinBuffer_t().setBuffer(paramArrayOfByte);
+    localzh.Gri = new SKBuiltinBuffer_t().setBuffer(paramString);
+    if (!bu.cF(paramArrayOfByte)) {
+      localzh.Grk = new SKBuiltinBuffer_t().setBuffer(paramArrayOfByte);
     }
-    paramString = new zf();
-    paramString.FYN.add(localze);
-    paramString.FYM = paramString.FYN.size();
-    ((l)g.ab(l.class)).azo().c(new k.a(211, paramString));
+    paramString = new zi();
+    paramString.Grm.add(localzh);
+    paramString.Grl = paramString.Grm.size();
+    ((l)g.ab(l.class)).azE().d(new k.a(211, paramString));
     AppMethodBeat.o(89141);
   }
 }

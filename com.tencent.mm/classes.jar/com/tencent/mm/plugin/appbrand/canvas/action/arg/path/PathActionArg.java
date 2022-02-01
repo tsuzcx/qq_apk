@@ -1,15 +1,15 @@
 package com.tencent.mm.plugin.appbrand.canvas.action.arg.path;
 
 import android.os.Parcel;
-import com.tencent.mm.plugin.appbrand.z.g;
+import com.tencent.mm.plugin.appbrand.y.g;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 public abstract class PathActionArg
   extends BasePathActionArg
 {
-  public float jTH;
-  public boolean jTI;
+  public float jWY;
+  public boolean jWZ;
   public float mh;
   public float radius;
   public float x;
@@ -37,7 +37,7 @@ public abstract class PathActionArg
         return false;
       } while (!(paramObject instanceof PathActionArg));
       paramObject = (PathActionArg)paramObject;
-    } while ((paramObject.x != this.x) || (paramObject.y != this.y) || (paramObject.radius != this.radius) || (paramObject.mh != this.mh) || (paramObject.jTI != this.jTI));
+    } while ((paramObject.x != this.x) || (paramObject.y != this.y) || (paramObject.radius != this.radius) || (paramObject.mh != this.mh) || (paramObject.jWZ != this.jWZ));
     return true;
   }
   
@@ -49,11 +49,11 @@ public abstract class PathActionArg
     this.y = paramParcel.readFloat();
     this.radius = paramParcel.readFloat();
     this.mh = paramParcel.readFloat();
-    this.jTH = paramParcel.readFloat();
+    this.jWY = paramParcel.readFloat();
     if (paramParcel.readInt() == 1) {}
     for (;;)
     {
-      this.jTI = bool;
+      this.jWZ = bool;
       return;
       bool = false;
     }
@@ -67,8 +67,8 @@ public abstract class PathActionArg
     this.y = g.f(paramJSONObject, 1);
     this.radius = g.f(paramJSONObject, 2);
     this.mh = ((float)paramJSONObject.optDouble(3));
-    this.jTH = ((float)paramJSONObject.optDouble(4));
-    this.jTI = paramJSONObject.optBoolean(5);
+    this.jWY = ((float)paramJSONObject.optDouble(4));
+    this.jWZ = paramJSONObject.optBoolean(5);
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -78,8 +78,8 @@ public abstract class PathActionArg
     paramParcel.writeFloat(this.y);
     paramParcel.writeFloat(this.radius);
     paramParcel.writeFloat(this.mh);
-    paramParcel.writeFloat(this.jTH);
-    if (this.jTI) {}
+    paramParcel.writeFloat(this.jWY);
+    if (this.jWZ) {}
     for (paramInt = 1;; paramInt = 0)
     {
       paramParcel.writeInt(paramInt);

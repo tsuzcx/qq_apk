@@ -13,7 +13,7 @@ final class EmojiStoreV2BaseFragment$4
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
     AppMethodBeat.i(109137);
-    this.pMn.thisActivity().finish();
+    this.pSS.thisActivity().finish();
     AppMethodBeat.o(109137);
     return false;
   }

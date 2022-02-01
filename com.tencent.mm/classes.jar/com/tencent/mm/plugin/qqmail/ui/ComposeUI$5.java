@@ -14,18 +14,18 @@ final class ComposeUI$5
   
   public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(215276);
+    AppMethodBeat.i(218022);
     b localb = new b();
     localb.bd(paramView);
     localb.bd(paramMotionEvent);
-    a.b("com/tencent/mm/plugin/qqmail/ui/ComposeUI$13", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahq());
+    a.b("com/tencent/mm/plugin/qqmail/ui/ComposeUI$13", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahF());
     switch (paramMotionEvent.getAction())
     {
     }
     for (;;)
     {
       a.a(false, this, "com/tencent/mm/plugin/qqmail/ui/ComposeUI$13", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
-      AppMethodBeat.o(215276);
+      AppMethodBeat.o(218022);
       return false;
       if (!paramView.hasFocus()) {
         paramView.requestFocus();

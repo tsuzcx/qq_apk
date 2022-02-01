@@ -2,7 +2,7 @@ package com.tencent.soter.a.f;
 
 public abstract interface b<T>
 {
-  public abstract void eu(T paramT);
+  public abstract void ex(T paramT);
 }
 
 

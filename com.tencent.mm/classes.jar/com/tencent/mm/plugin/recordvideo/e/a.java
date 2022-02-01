@@ -3,49 +3,49 @@ package com.tencent.mm.plugin.recordvideo.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/recordvideo/util/MediaDebugInfo;", "", "()V", "mediaNum", "", "getMediaNum", "()I", "setMediaNum", "(I)V", "useCpuCrop", "", "getUseCpuCrop", "()Z", "setUseCpuCrop", "(Z)V", "useDaemonRecord", "getUseDaemonRecord", "setUseDaemonRecord", "plugin-recordvideo_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/recordvideo/util/MediaDebugInfo;", "", "()V", "mediaNum", "", "getMediaNum", "()I", "setMediaNum", "(I)V", "useCpuCrop", "", "getUseCpuCrop", "()Z", "setUseCpuCrop", "(Z)V", "useDaemonRecord", "getUseDaemonRecord", "setUseDaemonRecord", "plugin-recordvideo_release"})
 public final class a
 {
-  private static boolean hpe;
-  private static boolean xRf;
-  private static int xRg;
-  public static final a xRh;
+  private static boolean hrS;
+  private static boolean ygY;
+  private static int ygZ;
+  public static final a yha;
   
   static
   {
     AppMethodBeat.i(76177);
-    xRh = new a();
+    yha = new a();
     AppMethodBeat.o(76177);
   }
   
-  public static void NV(int paramInt)
+  public static void OB(int paramInt)
   {
-    xRg = paramInt;
+    ygZ = paramInt;
   }
   
-  public static boolean dIp()
+  public static boolean dLG()
   {
-    return hpe;
+    return hrS;
   }
   
-  public static boolean dIq()
+  public static boolean dLH()
   {
-    return xRf;
+    return ygY;
   }
   
-  public static int dIr()
+  public static int dLI()
   {
-    return xRg;
+    return ygZ;
   }
   
-  public static void qh(boolean paramBoolean)
+  public static void qo(boolean paramBoolean)
   {
-    hpe = paramBoolean;
+    hrS = paramBoolean;
   }
   
-  public static void qi(boolean paramBoolean)
+  public static void qp(boolean paramBoolean)
   {
-    xRf = paramBoolean;
+    ygY = paramBoolean;
   }
 }
 

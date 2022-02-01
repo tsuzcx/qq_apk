@@ -1,35 +1,36 @@
 package com.tencent.mm.plugin.exdevice.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
-import com.tencent.mm.g.a.zc;
-import com.tencent.mm.g.a.zc.a;
-import com.tencent.mm.model.ba;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.g.a.zi;
+import com.tencent.mm.g.a.zi.a;
+import com.tencent.mm.model.bc;
 import com.tencent.mm.plugin.exdevice.c.k.f;
 import com.tencent.mm.plugin.exdevice.i.b;
 import com.tencent.mm.plugin.exdevice.service.d;
 import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public final class af
   implements f
 {
-  com.tencent.mm.sdk.b.c fFn;
+  com.tencent.mm.sdk.b.c fHr;
   
   public af()
   {
     AppMethodBeat.i(23477);
-    this.fFn = new com.tencent.mm.sdk.b.c()
+    this.fHr = new com.tencent.mm.sdk.b.c()
     {
-      private boolean a(final zc paramAnonymouszc)
+      private boolean a(final zi paramAnonymouszi)
       {
         boolean bool = true;
         AppMethodBeat.i(23475);
-        if ((paramAnonymouszc instanceof zc)) {
-          switch (paramAnonymouszc.dOj.dkM)
+        if ((paramAnonymouszi instanceof zi)) {
+          switch (paramAnonymouszi.dPz.dlO)
           {
           }
         }
@@ -37,73 +38,73 @@ public final class af
         {
           AppMethodBeat.o(23475);
           return false;
-          com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.WearHardDeviceLogic", "receive register deviceId=%s", new Object[] { paramAnonymouszc.dOj.cUi });
-          i.qcH.a(aj.getContext(), new i.a()
+          ae.i("MicroMsg.WearHardDeviceLogic", "receive register deviceId=%s", new Object[] { paramAnonymouszi.dPz.cVh });
+          i.qjm.a(ak.getContext(), new i.a()
           {
             public final void kN(boolean paramAnonymous2Boolean)
             {
               AppMethodBeat.i(23474);
               if (!paramAnonymous2Boolean)
               {
-                com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.WearHardDeviceLogic", "GetBoundDeviceLogic Fail, deviceId=%s|deviceType=%s", new Object[] { paramAnonymouszc.dOj.cUi, paramAnonymouszc.dOj.dow });
-                af.aQ(paramAnonymouszc.dOj.cUi, false);
+                ae.e("MicroMsg.WearHardDeviceLogic", "GetBoundDeviceLogic Fail, deviceId=%s|deviceType=%s", new Object[] { paramAnonymouszi.dPz.cVh, paramAnonymouszi.dPz.dpB });
+                af.aS(paramAnonymouszi.dPz.cVh, false);
                 AppMethodBeat.o(23474);
                 return;
               }
-              af.aQ(paramAnonymouszc.dOj.cUi, true);
+              af.aS(paramAnonymouszi.dPz.cVh, true);
               AppMethodBeat.o(23474);
             }
           });
           continue;
-          b localb = ad.clt().acJ(paramAnonymouszc.dOj.cUi);
-          paramAnonymouszc = paramAnonymouszc.dOj;
+          b localb = ad.cmJ().adA(paramAnonymouszi.dPz.cVh);
+          paramAnonymouszi = paramAnonymouszi.dPz;
           if (localb != null) {}
           for (;;)
           {
-            paramAnonymouszc.dpX = bool;
+            paramAnonymouszi.drc = bool;
             break;
             bool = false;
           }
-          com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.WearHardDeviceLogic", "receive send deviceId=%s", new Object[] { paramAnonymouszc.dOj.cUi });
-          ba.aiU().a(538, af.this);
-          paramAnonymouszc = new w(0L, paramAnonymouszc.dOj.dow, paramAnonymouszc.dOj.cUi, k.f.ckW(), bt.flT(), paramAnonymouszc.dOj.data, 1);
-          ba.aiU().a(paramAnonymouszc, 0);
+          ae.i("MicroMsg.WearHardDeviceLogic", "receive send deviceId=%s", new Object[] { paramAnonymouszi.dPz.cVh });
+          bc.ajj().a(538, af.this);
+          paramAnonymouszi = new w(0L, paramAnonymouszi.dPz.dpB, paramAnonymouszi.dPz.cVh, k.f.cmm(), bu.fpO(), paramAnonymouszi.dPz.data, 1);
+          bc.ajj().a(paramAnonymouszi, 0);
           continue;
-          ba.aiU().a(541, af.this);
-          paramAnonymouszc = new r("AndroidWear", paramAnonymouszc.dOj.dow, paramAnonymouszc.dOj.cUi, 1, new byte[0]);
-          ba.aiU().a(paramAnonymouszc, 0);
+          bc.ajj().a(541, af.this);
+          paramAnonymouszi = new r("AndroidWear", paramAnonymouszi.dPz.dpB, paramAnonymouszi.dPz.cVh, 1, new byte[0]);
+          bc.ajj().a(paramAnonymouszi, 0);
           continue;
-          if (!bt.isProcessRunning(aj.getContext(), aj.getPackageName() + ":exdevice")) {
-            d.eF(aj.getContext());
+          if (!bu.isProcessRunning(ak.getContext(), ak.getPackageName() + ":exdevice")) {
+            d.eJ(ak.getContext());
           }
         }
       }
     };
-    a.IbL.c(this.fFn);
+    a.IvT.c(this.fHr);
     AppMethodBeat.o(23477);
   }
   
-  private static void aO(String paramString, boolean paramBoolean)
+  private static void aQ(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(23479);
-    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.WearHardDeviceLogic", "publish auth response deviceId=%s | isSuccess=%b", new Object[] { paramString, Boolean.valueOf(paramBoolean) });
-    zc localzc = new zc();
-    localzc.dOj.dkM = 8;
-    localzc.dOj.dpX = paramBoolean;
-    localzc.dOj.cUi = paramString;
-    a.IbL.l(localzc);
+    ae.i("MicroMsg.WearHardDeviceLogic", "publish auth response deviceId=%s | isSuccess=%b", new Object[] { paramString, Boolean.valueOf(paramBoolean) });
+    zi localzi = new zi();
+    localzi.dPz.dlO = 8;
+    localzi.dPz.drc = paramBoolean;
+    localzi.dPz.cVh = paramString;
+    a.IvT.l(localzi);
     AppMethodBeat.o(23479);
   }
   
-  private static void aP(String paramString, boolean paramBoolean)
+  private static void aR(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(23480);
-    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.WearHardDeviceLogic", "publish send response deviceId=%s | isSuccess=%b", new Object[] { paramString, Boolean.valueOf(paramBoolean) });
-    zc localzc = new zc();
-    localzc.dOj.dkM = 5;
-    localzc.dOj.dpX = paramBoolean;
-    localzc.dOj.cUi = paramString;
-    a.IbL.l(localzc);
+    ae.i("MicroMsg.WearHardDeviceLogic", "publish send response deviceId=%s | isSuccess=%b", new Object[] { paramString, Boolean.valueOf(paramBoolean) });
+    zi localzi = new zi();
+    localzi.dPz.dlO = 5;
+    localzi.dPz.drc = paramBoolean;
+    localzi.dPz.cVh = paramString;
+    a.IvT.l(localzi);
     AppMethodBeat.o(23480);
   }
   
@@ -112,36 +113,36 @@ public final class af
     AppMethodBeat.i(23478);
     if ((paramn instanceof r))
     {
-      ba.aiU().b(541, this);
+      bc.ajj().b(541, this);
       paramString = (r)paramn;
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        aO(paramString.qcX, true);
+        aQ(paramString.qjC, true);
         AppMethodBeat.o(23478);
         return;
       }
-      aO(paramString.qcX, false);
+      aQ(paramString.qjC, false);
       AppMethodBeat.o(23478);
       return;
     }
     if ((paramn instanceof w))
     {
-      ba.aiU().b(538, this);
+      bc.ajj().b(538, this);
       paramString = (w)paramn;
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        aP(paramString.qcZ, true);
+        aR(paramString.qjE, true);
         AppMethodBeat.o(23478);
         return;
       }
-      aP(paramString.qcZ, false);
+      aR(paramString.qjE, false);
     }
     AppMethodBeat.o(23478);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.model.af
  * JD-Core Version:    0.7.0.1
  */

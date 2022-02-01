@@ -4,19 +4,19 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
 {
-  int[] nPh;
+  int[] nUN;
   
   public a(int[] paramArrayOfInt)
   {
     AppMethodBeat.i(22436);
-    this.nPh = null;
+    this.nUN = null;
     if (paramArrayOfInt.length == 0)
     {
       paramArrayOfInt = new NullPointerException("null == aDataGroup || 0 == aDataGroup.length");
       AppMethodBeat.o(22436);
       throw paramArrayOfInt;
     }
-    this.nPh = paramArrayOfInt;
+    this.nUN = paramArrayOfInt;
     AppMethodBeat.o(22436);
   }
 }

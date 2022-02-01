@@ -2,39 +2,39 @@ package com.tencent.mm.plugin.d.a.b.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.d.a.b.h;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public class b
   extends a
 {
   static final String TAG;
-  public static String nRD;
-  public static String nRE;
-  public static String nRF;
-  private final int nRG = 1;
-  private final int nRH = 2;
-  private final int nRI = 4;
-  private final int nRJ = 8;
-  private final int nRK = 16;
-  b nRL = null;
-  a nRM;
-  int nRN;
+  public static String nXj;
+  public static String nXk;
+  public static String nXl;
+  private final int nXm = 1;
+  private final int nXn = 2;
+  private final int nXo = 4;
+  private final int nXp = 8;
+  private final int nXq = 16;
+  b nXr = null;
+  a nXs;
+  int nXt;
   
   static
   {
     AppMethodBeat.i(22572);
     TAG = b.class.getName();
-    nRD = h.nRx;
-    nRE = h.nRy;
-    nRF = h.nRz;
+    nXj = h.nXd;
+    nXk = h.nXe;
+    nXl = h.nXf;
     AppMethodBeat.o(22572);
   }
   
   public b()
   {
-    this.nRB = null;
-    this.nRC = 2;
-    this.nQV = 8L;
+    this.nXh = null;
+    this.nXi = 2;
+    this.nWB = 8L;
   }
   
   static double M(byte[] paramArrayOfByte, int paramInt)
@@ -46,60 +46,60 @@ public class b
     paramInt = (paramArrayOfByte[paramInt] & 0xFF) + (0xFF00 & k);
     double d1 = paramInt;
     double d2 = Math.pow(10.0D, j);
-    ad.d(TAG, "hbyte=" + i + " hvalue=" + k + " value=" + paramInt + " exp=" + j);
+    ae.d(TAG, "hbyte=" + i + " hvalue=" + k + " value=" + paramInt + " exp=" + j);
     AppMethodBeat.o(22571);
     return d1 * d2;
   }
   
-  public final byte[] bMO()
+  public final byte[] bNM()
   {
     return null;
   }
   
   final class a
   {
-    public boolean nRO;
-    public double nRP;
-    public int nRQ;
-    public int nRR;
-    public int nRS;
-    public b.c nRT;
+    public boolean nXu;
+    public double nXv;
+    public int nXw;
+    public int nXx;
+    public int nXy;
+    public b.c nXz;
     
     public a()
     {
       AppMethodBeat.i(22568);
-      this.nRO = false;
-      this.nRP = 0.0D;
-      this.nRQ = 0;
-      this.nRR = 0;
-      this.nRS = 0;
-      this.nRT = new b.c();
+      this.nXu = false;
+      this.nXv = 0.0D;
+      this.nXw = 0;
+      this.nXx = 0;
+      this.nXy = 0;
+      this.nXz = new b.c();
       AppMethodBeat.o(22568);
     }
   }
   
   final class b
   {
-    public boolean nRO;
-    public int nRQ;
-    public int nRR;
-    public int nRS;
-    public b.c nRT;
-    public double nRV;
-    public double nRW;
-    public double nRX;
+    public double nXB;
+    public double nXC;
+    public double nXD;
+    public boolean nXu;
+    public int nXw;
+    public int nXx;
+    public int nXy;
+    public b.c nXz;
     
     public b()
     {
       AppMethodBeat.i(22569);
-      this.nRO = false;
-      this.nRV = 0.0D;
-      this.nRW = 0.0D;
-      this.nRX = 0.0D;
-      this.nRQ = 0;
-      this.nRR = 0;
-      this.nRS = 0;
-      this.nRT = new b.c();
+      this.nXu = false;
+      this.nXB = 0.0D;
+      this.nXC = 0.0D;
+      this.nXD = 0.0D;
+      this.nXw = 0;
+      this.nXx = 0;
+      this.nXy = 0;
+      this.nXz = new b.c();
       AppMethodBeat.o(22569);
     }
   }

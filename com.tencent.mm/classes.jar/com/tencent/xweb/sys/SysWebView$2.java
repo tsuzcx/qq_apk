@@ -26,13 +26,13 @@ class SysWebView$2
   public View getVideoLoadingProgressView()
   {
     AppMethodBeat.i(153705);
-    if (this.Mun.Mug != null)
+    if (this.MRr.MRk != null)
     {
-      localView = this.Mun.Mug.getVideoLoadingProgressView();
+      localView = this.MRr.MRk.getVideoLoadingProgressView();
       AppMethodBeat.o(153705);
       return localView;
     }
-    View localView = LayoutInflater.from(this.Mun.Mud.getContext()).inflate(2131495836, null);
+    View localView = LayoutInflater.from(this.MRr.MRh.getContext()).inflate(2131495836, null);
     AppMethodBeat.o(153705);
     return localView;
   }
@@ -41,9 +41,9 @@ class SysWebView$2
   {
     AppMethodBeat.i(153700);
     Log.i("SysWebView", "onConsoleMessage " + paramConsoleMessage.message());
-    if (this.Mun.Mug != null)
+    if (this.MRr.MRk != null)
     {
-      bool = this.Mun.Mug.onConsoleMessage(paramConsoleMessage);
+      bool = this.MRr.MRk.onConsoleMessage(paramConsoleMessage);
       AppMethodBeat.o(153700);
       return bool;
     }
@@ -56,9 +56,9 @@ class SysWebView$2
   {
     AppMethodBeat.i(153699);
     Log.i("SysWebView", "onGeolocationPermissionsHidePrompt");
-    if (this.Mun.Mug != null)
+    if (this.MRr.MRk != null)
     {
-      this.Mun.Mug.onGeolocationPermissionsHidePrompt();
+      this.MRr.MRk.onGeolocationPermissionsHidePrompt();
       AppMethodBeat.o(153699);
       return;
     }
@@ -70,9 +70,9 @@ class SysWebView$2
   {
     AppMethodBeat.i(153698);
     Log.i("SysWebView", "onGeolocationPermissionsShowPrompt");
-    if (this.Mun.Mug != null)
+    if (this.MRr.MRk != null)
     {
-      this.Mun.Mug.onGeolocationPermissionsShowPrompt(paramString, paramCallback);
+      this.MRr.MRk.onGeolocationPermissionsShowPrompt(paramString, paramCallback);
       AppMethodBeat.o(153698);
       return;
     }
@@ -85,9 +85,9 @@ class SysWebView$2
     boolean bool = false;
     AppMethodBeat.i(153694);
     Log.i("SysWebView", "onHideCustomView");
-    e.a(this.Mun, false);
-    if (this.Mun.Mug != null) {
-      bool = this.Mun.Mug.bpk();
+    e.a(this.MRr, false);
+    if (this.MRr.MRk != null) {
+      bool = this.MRr.MRk.bpU();
     }
     if (bool)
     {
@@ -95,15 +95,15 @@ class SysWebView$2
       AppMethodBeat.o(153694);
       return;
     }
-    if (e.a(this.Mun) != null)
+    if (e.a(this.MRr) != null)
     {
-      e.a(this.Mun).onHideCustomView();
+      e.a(this.MRr).onHideCustomView();
       AppMethodBeat.o(153694);
       return;
     }
-    if (this.Mun.Mug != null)
+    if (this.MRr.MRk != null)
     {
-      this.Mun.Mug.onHideCustomView();
+      this.MRr.MRk.onHideCustomView();
       AppMethodBeat.o(153694);
       return;
     }
@@ -115,9 +115,9 @@ class SysWebView$2
   {
     AppMethodBeat.i(153695);
     Log.i("SysWebView", "onJsAlert");
-    if (this.Mun.Mug != null)
+    if (this.MRr.MRk != null)
     {
-      bool = this.Mun.Mug.a(this.Mun.Mud, paramString1, paramString2, new c.e(paramJsResult));
+      bool = this.MRr.MRk.a(this.MRr.MRh, paramString1, paramString2, new c.e(paramJsResult));
       AppMethodBeat.o(153695);
       return bool;
     }
@@ -130,9 +130,9 @@ class SysWebView$2
   {
     AppMethodBeat.i(153696);
     Log.i("SysWebView", "onJsConfirm");
-    if (this.Mun.Mug != null)
+    if (this.MRr.MRk != null)
     {
-      bool = this.Mun.Mug.b(this.Mun.Mud, paramString1, paramString2, new c.e(paramJsResult));
+      bool = this.MRr.MRk.b(this.MRr.MRh, paramString1, paramString2, new c.e(paramJsResult));
       AppMethodBeat.o(153696);
       return bool;
     }
@@ -145,9 +145,9 @@ class SysWebView$2
   {
     AppMethodBeat.i(153697);
     Log.i("SysWebView", "onJsPrompt");
-    if (this.Mun.Mug != null)
+    if (this.MRr.MRk != null)
     {
-      bool = this.Mun.Mug.a(this.Mun.Mud, paramString1, paramString2, paramString3, new c.d(paramJsPromptResult));
+      bool = this.MRr.MRk.a(this.MRr.MRh, paramString1, paramString2, paramString3, new c.d(paramJsPromptResult));
       AppMethodBeat.o(153697);
       return bool;
     }
@@ -159,9 +159,9 @@ class SysWebView$2
   public void onProgressChanged(android.webkit.WebView paramWebView, int paramInt)
   {
     AppMethodBeat.i(153691);
-    if (this.Mun.Mug != null)
+    if (this.MRr.MRk != null)
     {
-      this.Mun.Mug.a(this.Mun.Mud, paramInt);
+      this.MRr.MRk.a(this.MRr.MRh, paramInt);
       AppMethodBeat.o(153691);
       return;
     }
@@ -174,21 +174,21 @@ class SysWebView$2
     AppMethodBeat.i(153692);
     Log.i("SysWebView", "onReceivedTitle: ".concat(String.valueOf(paramString)));
     b localb;
-    if (e.a(this.Mun) != null)
+    if (e.a(this.MRr) != null)
     {
-      localb = e.a(this.Mun);
-      if (this.Mun.Mud.getFullscreenVideoKind() != WebView.a.Mqr) {
+      localb = e.a(this.MRr);
+      if (this.MRr.MRh.getFullscreenVideoKind() != WebView.a.MNv) {
         break label99;
       }
     }
     label99:
     for (boolean bool = true;; bool = false)
     {
-      localb.bb(true, bool);
-      if (this.Mun.Mug == null) {
+      localb.ba(true, bool);
+      if (this.MRr.MRk == null) {
         break;
       }
-      this.Mun.Mug.d(this.Mun.Mud, paramString);
+      this.MRr.MRk.d(this.MRr.MRh, paramString);
       AppMethodBeat.o(153692);
       return;
     }
@@ -200,27 +200,27 @@ class SysWebView$2
   {
     AppMethodBeat.i(153693);
     Log.i("SysWebView", "onShowCustomView");
-    e.a(this.Mun, true);
+    e.a(this.MRr, true);
     boolean bool = false;
-    if (this.Mun.Mug != null) {
-      bool = this.Mun.Mug.a(paramView, paramCustomViewCallback);
+    if (this.MRr.MRk != null) {
+      bool = this.MRr.MRk.a(paramView, paramCustomViewCallback);
     }
-    g.gcm();
+    g.ggO();
     if (bool)
     {
       Log.i("SysWebView", "onShowCustomView isHandled:true");
       AppMethodBeat.o(153693);
       return;
     }
-    if (e.a(this.Mun) != null)
+    if (e.a(this.MRr) != null)
     {
-      e.a(this.Mun).onShowCustomView(paramView, paramCustomViewCallback);
+      e.a(this.MRr).onShowCustomView(paramView, paramCustomViewCallback);
       AppMethodBeat.o(153693);
       return;
     }
-    if (this.Mun.Mug != null)
+    if (this.MRr.MRk != null)
     {
-      this.Mun.Mug.onShowCustomView(paramView, paramCustomViewCallback);
+      this.MRr.MRk.onShowCustomView(paramView, paramCustomViewCallback);
       AppMethodBeat.o(153693);
       return;
     }
@@ -232,9 +232,9 @@ class SysWebView$2
   {
     AppMethodBeat.i(153704);
     Log.i("SysWebView", "onShowFileChooser last method");
-    if (this.Mun.Mug != null)
+    if (this.MRr.MRk != null)
     {
-      bool = this.Mun.Mug.a(this.Mun.Mud, paramValueCallback, new c.c(paramFileChooserParams));
+      bool = this.MRr.MRk.a(this.MRr.MRh, paramValueCallback, new c.c(paramFileChooserParams));
       AppMethodBeat.o(153704);
       return bool;
     }
@@ -247,9 +247,9 @@ class SysWebView$2
   {
     AppMethodBeat.i(153701);
     Log.i("SysWebView", "openFileChooser with one param");
-    if (this.Mun.Mug != null)
+    if (this.MRr.MRk != null)
     {
-      this.Mun.Mug.openFileChooser(paramValueCallback, null, null);
+      this.MRr.MRk.openFileChooser(paramValueCallback, null, null);
       AppMethodBeat.o(153701);
       return;
     }
@@ -261,9 +261,9 @@ class SysWebView$2
   {
     AppMethodBeat.i(153702);
     Log.i("SysWebView", "openFileChooser with two param");
-    if (this.Mun.Mug != null)
+    if (this.MRr.MRk != null)
     {
-      this.Mun.Mug.openFileChooser(paramValueCallback, paramString, null);
+      this.MRr.MRk.openFileChooser(paramValueCallback, paramString, null);
       AppMethodBeat.o(153702);
       return;
     }
@@ -275,9 +275,9 @@ class SysWebView$2
   {
     AppMethodBeat.i(153703);
     Log.i("SysWebView", "openFileChooser with three param");
-    if (this.Mun.Mug != null)
+    if (this.MRr.MRk != null)
     {
-      this.Mun.Mug.openFileChooser(paramValueCallback, paramString1, paramString2);
+      this.MRr.MRk.openFileChooser(paramValueCallback, paramString1, paramString2);
       AppMethodBeat.o(153703);
       return;
     }

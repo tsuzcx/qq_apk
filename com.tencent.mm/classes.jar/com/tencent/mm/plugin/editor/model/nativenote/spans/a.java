@@ -4,21 +4,21 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
 {
-  public final o pxc;
-  public int pxd;
-  public int pxe;
+  public final o pDG;
+  public int pDH;
+  public int pDI;
   
   public a(o paramo, int paramInt1, int paramInt2)
   {
-    this.pxc = paramo;
-    this.pxd = paramInt1;
-    this.pxe = paramInt2;
+    this.pDG = paramo;
+    this.pDH = paramInt1;
+    this.pDI = paramInt2;
   }
   
   public final String toString()
   {
     AppMethodBeat.i(181925);
-    String str = this.pxc.name() + " - " + this.pxd + "/" + this.pxe;
+    String str = this.pDG.name() + " - " + this.pDH + "/" + this.pDI;
     AppMethodBeat.o(181925);
     return str;
   }

@@ -4,10 +4,10 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import f.a.a.b;
 
 public final class t
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
   public String ID;
-  public int nEa;
+  public int nJv;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -24,7 +24,7 @@ public final class t
       if (this.ID != null) {
         paramVarArgs.d(1, this.ID);
       }
-      paramVarArgs.aS(2, this.nEa);
+      paramVarArgs.aS(2, this.nJv);
       AppMethodBeat.o(22125);
       return 0;
     }
@@ -36,15 +36,15 @@ public final class t
     label318:
     for (paramInt = f.a.a.b.b.a.e(1, this.ID) + 0;; paramInt = 0)
     {
-      int i = f.a.a.b.b.a.bz(2, this.nEa);
+      int i = f.a.a.b.b.a.bz(2, this.nJv);
       AppMethodBeat.o(22125);
       return paramInt + i;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
         if (this.ID == null)
@@ -66,11 +66,11 @@ public final class t
           AppMethodBeat.o(22125);
           return -1;
         case 1: 
-          localt.ID = locala.NPN.readString();
+          localt.ID = locala.OmT.readString();
           AppMethodBeat.o(22125);
           return 0;
         }
-        localt.nEa = locala.NPN.zc();
+        localt.nJv = locala.OmT.zc();
         AppMethodBeat.o(22125);
         return 0;
       }

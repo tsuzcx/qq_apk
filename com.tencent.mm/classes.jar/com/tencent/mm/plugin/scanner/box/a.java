@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.scanner.box;
 
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/scanner/box/BoxDialogBackgroundViewModel;", "", "getBackgroundTransY", "", "getMarkViewHeight", "getMarkViewTransY", "setBackgroundTransY", "", "translationY", "setMarkViewTransY", "plugin-scan_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/scanner/box/BoxDialogBackgroundViewModel;", "", "getBackgroundTransY", "", "getMarkViewHeight", "getMarkViewTransY", "setBackgroundTransY", "", "translationY", "setMarkViewTransY", "plugin-scan_release"})
 public abstract interface a
 {
   public abstract float getBackgroundTransY();

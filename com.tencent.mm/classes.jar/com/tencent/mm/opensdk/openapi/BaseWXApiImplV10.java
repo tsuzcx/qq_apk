@@ -1,6 +1,7 @@
 package com.tencent.mm.opensdk.openapi;
 
 import android.app.PendingIntent;
+import android.app.PendingIntent.OnFinished;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
@@ -223,7 +224,7 @@ class BaseWXApiImplV10
         return true;
       }
       if (("subscribeminiprogrammsg".equals(localObject)) || ("5".equals(localObject))) {
-        break label441;
+        break label442;
       }
       Log.e("MicroMsg.SDK.WXApiImplV10", "this open sdk version not support the request type");
     }
@@ -238,7 +239,7 @@ class BaseWXApiImplV10
     }
     AppMethodBeat.o(3795);
     return false;
-    label441:
+    label442:
     localObject = new SubscribeMiniProgramMsg.Resp();
     str = paramString.getQueryParameter("ret");
     if ((str != null) && (str.length() > 0)) {
@@ -276,33 +277,41 @@ class BaseWXApiImplV10
   
   private void launchWXUsingPendingIntent()
   {
-    AppMethodBeat.i(196945);
+    AppMethodBeat.i(194057);
     if (!this.detached)
     {
       if (!isWXAppInstalled())
       {
         Log.e("MicroMsg.SDK.WXApiImplV10", "openWXApp failed, not installed or signature check failed");
-        AppMethodBeat.o(196945);
+        AppMethodBeat.o(194057);
         return;
       }
       try
       {
         Log.i("MicroMsg.SDK.WXApiImplV10", "launchWXUsingPendingIntent");
         Intent localIntent = this.context.getPackageManager().getLaunchIntentForPackage("com.tencent.mm");
-        PendingIntent.getActivity(this.context, 1, localIntent, 134217728).send(this.context, 2, null, new BaseWXApiImplV10.2(this), null);
-        AppMethodBeat.o(196945);
+        PendingIntent.getActivity(this.context, 1, localIntent, 134217728).send(this.context, 2, null, new PendingIntent.OnFinished()
+        {
+          public void onSendFinished(PendingIntent paramAnonymousPendingIntent, Intent paramAnonymousIntent, int paramAnonymousInt, String paramAnonymousString, Bundle paramAnonymousBundle)
+          {
+            AppMethodBeat.i(194041);
+            Log.d("MicroMsg.SDK.WXApiImplV10", "onSendFinished resultCode: " + paramAnonymousInt + ", resultData: " + paramAnonymousString);
+            AppMethodBeat.o(194041);
+          }
+        }, null);
+        AppMethodBeat.o(194057);
         return;
       }
       catch (Exception localException)
       {
         Log.e("MicroMsg.SDK.WXApiImplV10", "launchWXUsingPendingIntent pendingIntent send failed: " + localException.getMessage());
         openWXApp();
-        AppMethodBeat.o(196945);
+        AppMethodBeat.o(194057);
         return;
       }
     }
     IllegalStateException localIllegalStateException = new IllegalStateException("openWXApp fail, WXMsgImpl has been detached");
-    AppMethodBeat.o(196945);
+    AppMethodBeat.o(194057);
     throw localIllegalStateException;
   }
   
@@ -539,13 +548,13 @@ class BaseWXApiImplV10
   
   private boolean sendPreloadWXMiniProgramEnvironment(Context paramContext, BaseReq paramBaseReq)
   {
-    AppMethodBeat.i(196946);
+    AppMethodBeat.i(194058);
     paramBaseReq = (WXPreloadMiniProgramEnvironment.Req)paramBaseReq;
     paramContext = paramContext.getContentResolver().query(Uri.parse("content://com.tencent.mm.sdk.comm.provider/preloadWXMiniprogramEnvironment"), null, null, new String[] { this.appId, paramBaseReq.extData }, null);
     if (paramContext != null) {
       paramContext.close();
     }
-    AppMethodBeat.o(196946);
+    AppMethodBeat.o(194058);
     return true;
   }
   
@@ -589,7 +598,7 @@ class BaseWXApiImplV10
   
   private boolean sendToWxaRedirectingPage(Context paramContext, BaseReq paramBaseReq)
   {
-    AppMethodBeat.i(196947);
+    AppMethodBeat.i(194059);
     launchWXIfNeed();
     paramBaseReq = (WXLaunchWxaRedirectingPage.Req)paramBaseReq;
     paramContext = paramContext.getContentResolver();
@@ -607,7 +616,7 @@ class BaseWXApiImplV10
     }
     finally
     {
-      AppMethodBeat.o(196947);
+      AppMethodBeat.o(194059);
     }
   }
   
@@ -632,8 +641,29 @@ class BaseWXApiImplV10
         return 0;
       }
       this.wxSdkVersion = 0;
-      CountDownLatch localCountDownLatch = new CountDownLatch(1);
-      b.e.submit(new BaseWXApiImplV10.1(this, localCountDownLatch));
+      final CountDownLatch localCountDownLatch = new CountDownLatch(1);
+      b.e.submit(new Runnable()
+      {
+        public void run()
+        {
+          AppMethodBeat.i(3764);
+          try
+          {
+            MMSharedPreferences localMMSharedPreferences = new MMSharedPreferences(BaseWXApiImplV10.this.context);
+            BaseWXApiImplV10.access$002(BaseWXApiImplV10.this, localMMSharedPreferences.getInt("_build_info_sdk_int_", 0));
+            localCountDownLatch.countDown();
+            AppMethodBeat.o(3764);
+            return;
+          }
+          catch (Exception localException)
+          {
+            for (;;)
+            {
+              Log.w("MicroMsg.SDK.WXApiImplV10", localException.getMessage());
+            }
+          }
+        }
+      });
       try
       {
         localCountDownLatch.await(1000L, TimeUnit.MILLISECONDS);
@@ -887,8 +917,8 @@ class BaseWXApiImplV10
         Context localContext = this.context;
         Object localObject = this.context.getPackageManager().getLaunchIntentForPackage("com.tencent.mm");
         localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
-        com.tencent.mm.hellhoundlib.a.a.a(localContext, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahp(), "com/tencent/mm/opensdk/openapi/BaseWXApiImplV10", "openWXApp", "()Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        localContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mq(0));
+        com.tencent.mm.hellhoundlib.a.a.a(localContext, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahE(), "com/tencent/mm/opensdk/openapi/BaseWXApiImplV10", "openWXApp", "()Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        localContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mt(0));
         com.tencent.mm.hellhoundlib.a.a.a(localContext, "com/tencent/mm/opensdk/openapi/BaseWXApiImplV10", "openWXApp", "()Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
         AppMethodBeat.o(3798);
         return true;
@@ -1248,7 +1278,7 @@ class BaseWXApiImplV10
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.opensdk.openapi.BaseWXApiImplV10
  * JD-Core Version:    0.7.0.1
  */

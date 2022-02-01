@@ -10,22 +10,22 @@ import android.view.inputmethod.InputConnection;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.plugin.appbrand.widget.input.numberpad.BaseNumberKeyboardView;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class AppBrandNumberKeyboardView
   extends BaseNumberKeyboardView
 {
-  private int nfg;
-  private final SparseArray<String> nfh;
-  InputConnection nfi;
-  com.tencent.mm.plugin.appbrand.widget.input.numberpad.a nfj;
+  private int nko;
+  private final SparseArray<String> nkp;
+  InputConnection nkq;
+  com.tencent.mm.plugin.appbrand.widget.input.numberpad.a nkr;
   
   public AppBrandNumberKeyboardView(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(136495);
-    this.nfg = 0;
-    this.nfh = new SparseArray() {};
+    this.nko = 0;
+    this.nkp = new SparseArray() {};
     init();
     AppMethodBeat.o(136495);
   }
@@ -34,8 +34,8 @@ public final class AppBrandNumberKeyboardView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(136496);
-    this.nfg = 0;
-    this.nfh = new SparseArray() {};
+    this.nko = 0;
+    this.nkp = new SparseArray() {};
     init();
     AppMethodBeat.o(136496);
   }
@@ -50,7 +50,7 @@ public final class AppBrandNumberKeyboardView
         AppMethodBeat.i(136492);
         Object localObject1 = new b();
         ((b)localObject1).bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/appbrand/widget/input/AppBrandNumberKeyboardView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject1).ahq());
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/appbrand/widget/input/AppBrandNumberKeyboardView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject1).ahF());
         if (AppBrandNumberKeyboardView.a(AppBrandNumberKeyboardView.this) == null)
         {
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/appbrand/widget/input/AppBrandNumberKeyboardView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
@@ -102,27 +102,27 @@ public final class AppBrandNumberKeyboardView
       }
     };
     int i = 0;
-    while (i < this.nfh.size())
+    while (i < this.nkp.size())
     {
-      findViewById(getId((String)this.nfh.valueAt(i))).setOnClickListener(local2);
+      findViewById(getId((String)this.nkp.valueAt(i))).setOnClickListener(local2);
       i += 1;
     }
     findViewById(getId("tenpay_keyboard_x")).setOnClickListener(local2);
     findViewById(getId("tenpay_keyboard_d")).setOnClickListener(null);
     findViewById(getId("tenpay_keyboard_d")).setOnTouchListener(new an()
     {
-      protected final void bEy()
+      protected final void bFq()
       {
         AppMethodBeat.i(136494);
-        ad.d("MicroMsg.AppBrand.AppBrandNumberKeyboardView", "backspace onRepeat");
+        ae.d("MicroMsg.AppBrand.AppBrandNumberKeyboardView", "backspace onRepeat");
         AppBrandNumberKeyboardView.d(AppBrandNumberKeyboardView.this);
         AppMethodBeat.o(136494);
       }
       
-      protected final void bmV()
+      protected final void bnF()
       {
         AppMethodBeat.i(136493);
-        ad.d("MicroMsg.AppBrand.AppBrandNumberKeyboardView", "backspace onSingleTap");
+        ae.d("MicroMsg.AppBrand.AppBrandNumberKeyboardView", "backspace onSingleTap");
         AppBrandNumberKeyboardView.d(AppBrandNumberKeyboardView.this);
         AppMethodBeat.o(136493);
       }
@@ -142,13 +142,13 @@ public final class AppBrandNumberKeyboardView
   {
     AppMethodBeat.i(136498);
     super.setXMode(paramInt);
-    this.nfg = paramInt;
+    this.nko = paramInt;
     AppMethodBeat.o(136498);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.AppBrandNumberKeyboardView
  * JD-Core Version:    0.7.0.1
  */

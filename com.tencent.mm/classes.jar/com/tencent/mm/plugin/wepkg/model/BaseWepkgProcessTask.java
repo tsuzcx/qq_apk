@@ -6,7 +6,7 @@ import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
 public abstract class BaseWepkgProcessTask
   extends MainProcessTask
 {
-  public boolean EED = false;
+  public boolean EWZ = false;
   public boolean result = false;
   
   public abstract void a(Parcel paramParcel, int paramInt);
@@ -25,7 +25,7 @@ public abstract class BaseWepkgProcessTask
     label41:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      this.EED = bool1;
+      this.EWZ = bool1;
       n(paramParcel);
       return;
       bool1 = false;
@@ -42,7 +42,7 @@ public abstract class BaseWepkgProcessTask
     {
       i = 1;
       paramParcel.writeByte((byte)i);
-      if (!this.EED) {
+      if (!this.EWZ) {
         break label46;
       }
     }

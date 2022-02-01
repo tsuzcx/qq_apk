@@ -7,22 +7,22 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/utils/LocalFinderAtContactParcel;", "Landroid/os/Parcelable;", "parcel", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "()V", "atTime", "", "getAtTime", "()J", "setAtTime", "(J)V", "authInfoByteArray", "", "getAuthInfoByteArray", "()[B", "setAuthInfoByteArray", "([B)V", "avatarUrl", "", "getAvatarUrl", "()Ljava/lang/String;", "setAvatarUrl", "(Ljava/lang/String;)V", "nickname", "getNickname", "setNickname", "username", "getUsername", "setUsername", "describeContents", "", "writeToParcel", "", "flags", "CREATOR", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/utils/LocalFinderAtContactParcel;", "Landroid/os/Parcelable;", "parcel", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "()V", "atTime", "", "getAtTime", "()J", "setAtTime", "(J)V", "authInfoByteArray", "", "getAuthInfoByteArray", "()[B", "setAuthInfoByteArray", "([B)V", "avatarUrl", "", "getAvatarUrl", "()Ljava/lang/String;", "setAvatarUrl", "(Ljava/lang/String;)V", "nickname", "getNickname", "setNickname", "username", "getUsername", "setUsername", "describeContents", "", "writeToParcel", "", "flags", "CREATOR", "plugin-finder_release"})
 public final class LocalFinderAtContactParcel
   implements Parcelable
 {
   public static final a CREATOR;
-  String jna;
+  String jpU;
   String nickname;
-  byte[] sMO;
-  long sMP;
+  byte[] sXZ;
+  long sYa;
   String username;
   
   static
   {
-    AppMethodBeat.i(204575);
+    AppMethodBeat.i(205199);
     CREATOR = new a((byte)0);
-    AppMethodBeat.o(204575);
+    AppMethodBeat.o(205199);
   }
   
   public LocalFinderAtContactParcel() {}
@@ -30,13 +30,13 @@ public final class LocalFinderAtContactParcel
   public LocalFinderAtContactParcel(Parcel paramParcel)
   {
     this();
-    AppMethodBeat.i(204574);
+    AppMethodBeat.i(205198);
     this.username = paramParcel.readString();
-    this.jna = paramParcel.readString();
+    this.jpU = paramParcel.readString();
     this.nickname = paramParcel.readString();
-    this.sMO = paramParcel.createByteArray();
-    this.sMP = paramParcel.readLong();
-    AppMethodBeat.o(204574);
+    this.sXZ = paramParcel.createByteArray();
+    this.sYa = paramParcel.readLong();
+    AppMethodBeat.o(205198);
   }
   
   public final int describeContents()
@@ -46,17 +46,17 @@ public final class LocalFinderAtContactParcel
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(204573);
+    AppMethodBeat.i(205197);
     p.h(paramParcel, "parcel");
     paramParcel.writeString(this.username);
-    paramParcel.writeString(this.jna);
+    paramParcel.writeString(this.jpU);
     paramParcel.writeString(this.nickname);
-    paramParcel.writeByteArray(this.sMO);
-    paramParcel.writeLong(this.sMP);
-    AppMethodBeat.o(204573);
+    paramParcel.writeByteArray(this.sXZ);
+    paramParcel.writeLong(this.sYa);
+    AppMethodBeat.o(205197);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/utils/LocalFinderAtContactParcel$CREATOR;", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/finder/utils/LocalFinderAtContactParcel;", "()V", "createFromParcel", "parcel", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/mm/plugin/finder/utils/LocalFinderAtContactParcel;", "plugin-finder_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/utils/LocalFinderAtContactParcel$CREATOR;", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/finder/utils/LocalFinderAtContactParcel;", "()V", "createFromParcel", "parcel", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/mm/plugin/finder/utils/LocalFinderAtContactParcel;", "plugin-finder_release"})
   public static final class a
     implements Parcelable.Creator<LocalFinderAtContactParcel>
   {}

@@ -5,11 +5,11 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.d.a;
 import com.tencent.mm.plugin.hp.d.d;
 import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.protocal.protobuf.dna;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.vfs.i;
+import com.tencent.mm.protocal.protobuf.dnx;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.vfs.o;
 import com.tencent.tinker.loader.shareutil.SharePatchFileUtil;
 import java.io.File;
 
@@ -22,44 +22,44 @@ public final class a$1
   {
     AppMethodBeat.i(117377);
     int i;
-    if (!i.fv(this.uHX))
+    if (!o.fB(this.uTK))
     {
       long l = System.currentTimeMillis();
-      i = b.a(d.fE(this.val$context), this.uHY, this.uHX, this.uHZ.uJh);
-      SharePatchFileUtil.safeDeleteFile(new File(this.uHY));
-      ad.i("MicroMsg.Tinker.CTinkerInstaller", "merge apk use :%d second retCode:%d", new Object[] { Long.valueOf((System.currentTimeMillis() - l) / 1000L), Integer.valueOf(i) });
+      i = b.a(d.fJ(this.val$context), this.uTL, this.uTK, this.uTM.uUU);
+      SharePatchFileUtil.safeDeleteFile(new File(this.uTL));
+      ae.i("MicroMsg.Tinker.CTinkerInstaller", "merge apk use :%d second retCode:%d", new Object[] { Long.valueOf((System.currentTimeMillis() - l) / 1000L), Integer.valueOf(i) });
     }
     for (;;)
     {
       String str;
       if (i == 0)
       {
-        boolean bool = a.eW(this.uHX);
+        boolean bool = a.fb(this.uTK);
         if (bool)
         {
-          ad.i("MicroMsg.Tinker.CTinkerInstaller", "checkApk:%s", new Object[] { Boolean.valueOf(bool) });
-          Context localContext = aj.getContext();
-          if (bt.isNullOrNil(this.uHZ.dcJ()))
+          ae.i("MicroMsg.Tinker.CTinkerInstaller", "checkApk:%s", new Object[] { Boolean.valueOf(bool) });
+          Context localContext = ak.getContext();
+          if (bu.isNullOrNil(this.uTM.dfB()))
           {
             str = localContext.getString(2131764588);
-            dna localdna = new dna();
-            localdna.nUh = this.uHZ.nUh;
-            localdna.title = localContext.getString(2131759571);
-            localdna.HBn = localContext.getString(2131760343);
-            localdna.utw = localContext.getString(2131764569);
-            localdna.uJh = this.uHZ.uJh;
-            localdna.uJi = this.uHZ.uJi;
-            localdna.mtM = this.uHZ.fileSize;
-            localdna.gHx = this.uHZ.gHx;
-            localdna.patchMd5 = this.uHZ.nUg;
-            localdna.versionCode = this.uHZ.versionCode;
-            localdna.HBm = this.uHX;
-            localdna.msg = str;
-            d.a(localdna);
-            if (this.uHZ.nUe.intValue() == 3) {
-              g.yhR.idkeyStat(614L, 58L, 1L, false);
+            dnx localdnx = new dnx();
+            localdnx.nZN = this.uTM.nZN;
+            localdnx.title = localContext.getString(2131759571);
+            localdnx.HVa = localContext.getString(2131760343);
+            localdnx.uEP = localContext.getString(2131764569);
+            localdnx.uUU = this.uTM.uUU;
+            localdnx.uUV = this.uTM.uUV;
+            localdnx.myJ = this.uTM.fileSize;
+            localdnx.gKg = this.uTM.gKg;
+            localdnx.patchMd5 = this.uTM.nZM;
+            localdnx.versionCode = this.uTM.versionCode;
+            localdnx.HUZ = this.uTK;
+            localdnx.msg = str;
+            d.a(localdnx);
+            if (this.uTM.nZK.intValue() == 3) {
+              g.yxI.idkeyStat(614L, 58L, 1L, false);
             }
-            ad.d("MicroMsg.Tinker.CTinkerInstaller", "boots download success.");
+            ae.d("MicroMsg.Tinker.CTinkerInstaller", "boots download success.");
             label342:
             switch (i)
             {
@@ -71,18 +71,18 @@ public final class a$1
       {
         AppMethodBeat.o(117377);
         return;
-        str = this.uHZ.dcJ();
+        str = this.uTM.dfB();
         break;
-        ad.i("MicroMsg.Tinker.CTinkerInstaller", "md5 is no equal.");
+        ae.i("MicroMsg.Tinker.CTinkerInstaller", "md5 is no equal.");
         break label342;
-        ad.i("MicroMsg.Tinker.CTinkerInstaller", "merge apk failed.");
+        ae.i("MicroMsg.Tinker.CTinkerInstaller", "merge apk failed.");
         break label342;
-        g.yhR.idkeyStat(614L, 52L, 1L, false);
-        ad.d("MicroMsg.Tinker.CTinkerInstaller", "boots download failed sdcard full.");
+        g.yxI.idkeyStat(614L, 52L, 1L, false);
+        ae.d("MicroMsg.Tinker.CTinkerInstaller", "boots download failed sdcard full.");
         AppMethodBeat.o(117377);
         return;
-        g.yhR.idkeyStat(614L, 53L, 1L, false);
-        ad.d("MicroMsg.Tinker.CTinkerInstaller", "boots download failed apk md5 no equal.");
+        g.yxI.idkeyStat(614L, 53L, 1L, false);
+        ae.d("MicroMsg.Tinker.CTinkerInstaller", "boots download failed apk md5 no equal.");
       }
       i = 0;
     }
@@ -90,7 +90,7 @@ public final class a$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.hp.a.a.1
  * JD-Core Version:    0.7.0.1
  */

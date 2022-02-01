@@ -1,46 +1,57 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import f.a.a.b;
 import java.util.LinkedList;
 
 public final class dvn
-  extends com.tencent.mm.bx.a
+  extends cwj
 {
-  public dvr HHU;
-  
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(207257);
+    AppMethodBeat.i(152722);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.HHU != null)
+      if (this.BaseResponse == null)
       {
-        paramVarArgs.lC(1, this.HHU.computeSize());
-        this.HHU.writeFields(paramVarArgs);
+        paramVarArgs = new b("Not all required fields were included: BaseResponse");
+        AppMethodBeat.o(152722);
+        throw paramVarArgs;
       }
-      AppMethodBeat.o(207257);
+      if (this.BaseResponse != null)
+      {
+        paramVarArgs.lJ(1, this.BaseResponse.computeSize());
+        this.BaseResponse.writeFields(paramVarArgs);
+      }
+      AppMethodBeat.o(152722);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.HHU == null) {
-        break label310;
+      if (this.BaseResponse == null) {
+        break label358;
       }
     }
-    label310:
-    for (paramInt = f.a.a.a.lB(1, this.HHU.computeSize()) + 0;; paramInt = 0)
+    label358:
+    for (paramInt = f.a.a.a.lI(1, this.BaseResponse.computeSize()) + 0;; paramInt = 0)
     {
-      AppMethodBeat.o(207257);
+      AppMethodBeat.o(152722);
       return paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = cwj.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cwj.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
-        AppMethodBeat.o(207257);
+        if (this.BaseResponse == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: BaseResponse");
+          AppMethodBeat.o(152722);
+          throw paramVarArgs;
+        }
+        AppMethodBeat.o(152722);
         return 0;
       }
       if (paramInt == 3)
@@ -51,32 +62,32 @@ public final class dvn
         switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(207257);
+          AppMethodBeat.o(152722);
           return -1;
         }
-        paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
+        paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
         int i = paramVarArgs.size();
         paramInt = 0;
         while (paramInt < i)
         {
           Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-          localObject1 = new dvr();
+          localObject1 = new BaseResponse();
           localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-          for (boolean bool = true; bool; bool = ((dvr)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, com.tencent.mm.bx.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-          localdvn.HHU = ((dvr)localObject1);
+          for (boolean bool = true; bool; bool = ((BaseResponse)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cwj.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+          localdvn.BaseResponse = ((BaseResponse)localObject1);
           paramInt += 1;
         }
-        AppMethodBeat.o(207257);
+        AppMethodBeat.o(152722);
         return 0;
       }
-      AppMethodBeat.o(207257);
+      AppMethodBeat.o(152722);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.dvn
  * JD-Core Version:    0.7.0.1
  */

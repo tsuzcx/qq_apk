@@ -1,8 +1,8 @@
 package com.tencent.mm.plugin.appbrand.o;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.io.InputStream;
 import java.security.KeyStore;
 import java.security.cert.Certificate;
@@ -20,37 +20,37 @@ import javax.net.ssl.X509TrustManager;
 public final class n
   implements X509TrustManager
 {
-  private LinkedList<X509TrustManager> lWC;
-  private LinkedList<X509TrustManager> lWD;
-  private KeyStore lWE;
-  private final boolean lWF;
-  private List<String> lWG;
-  private KeyStore lWH;
-  private X509Certificate[] lWI;
+  private LinkedList<X509TrustManager> mbi;
+  private LinkedList<X509TrustManager> mbj;
+  private KeyStore mbk;
+  private final boolean mbl;
+  private List<String> mbm;
+  private KeyStore mbn;
+  private X509Certificate[] mbo;
   
   public n(boolean paramBoolean)
   {
     AppMethodBeat.i(144434);
-    this.lWG = null;
-    this.lWH = null;
-    this.lWC = new LinkedList();
-    this.lWD = new LinkedList();
-    this.lWF = paramBoolean;
+    this.mbm = null;
+    this.mbn = null;
+    this.mbi = new LinkedList();
+    this.mbj = new LinkedList();
+    this.mbl = paramBoolean;
     try
     {
-      this.lWE = KeyStore.getInstance(KeyStore.getDefaultType());
-      this.lWE.load(null, null);
+      this.mbk = KeyStore.getInstance(KeyStore.getDefaultType());
+      this.mbk.load(null, null);
       AppMethodBeat.o(144434);
       return;
     }
     catch (Exception localException)
     {
-      ad.printErrStackTrace("MicroMsg.AppBrandX509TrustManager", localException, "Exception: Local KeyStore init failed", new Object[0]);
+      ae.printErrStackTrace("MicroMsg.AppBrandX509TrustManager", localException, "Exception: Local KeyStore init failed", new Object[0]);
       AppMethodBeat.o(144434);
     }
   }
   
-  private void btp()
+  private void bua()
   {
     AppMethodBeat.i(144439);
     try
@@ -61,7 +61,7 @@ public final class n
       int i = 0;
       while ((localObject != null) && (i < localObject.length))
       {
-        this.lWC.add((X509TrustManager)localObject[i]);
+        this.mbi.add((X509TrustManager)localObject[i]);
         i += 1;
       }
       AppMethodBeat.o(144439);
@@ -69,15 +69,15 @@ public final class n
     }
     catch (Exception localException)
     {
-      ad.printErrStackTrace("MicroMsg.AppBrandX509TrustManager", localException, "Exception: init SystemTrustManager", new Object[0]);
+      ae.printErrStackTrace("MicroMsg.AppBrandX509TrustManager", localException, "Exception: init SystemTrustManager", new Object[0]);
       AppMethodBeat.o(144439);
     }
   }
   
-  private void btq()
+  private void bub()
   {
     AppMethodBeat.i(144440);
-    if (this.lWE == null)
+    if (this.mbk == null)
     {
       AppMethodBeat.o(144440);
       return;
@@ -85,12 +85,12 @@ public final class n
     try
     {
       Object localObject = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
-      ((TrustManagerFactory)localObject).init(this.lWE);
+      ((TrustManagerFactory)localObject).init(this.mbk);
       localObject = ((TrustManagerFactory)localObject).getTrustManagers();
       int i = 0;
       while ((localObject != null) && (i < localObject.length))
       {
-        this.lWD.add((X509TrustManager)localObject[i]);
+        this.mbj.add((X509TrustManager)localObject[i]);
         i += 1;
       }
       AppMethodBeat.o(144440);
@@ -98,17 +98,17 @@ public final class n
     }
     catch (Exception localException)
     {
-      ad.printErrStackTrace("MicroMsg.AppBrandX509TrustManager", localException, "Exception: init LocalTrustManager", new Object[0]);
+      ae.printErrStackTrace("MicroMsg.AppBrandX509TrustManager", localException, "Exception: init LocalTrustManager", new Object[0]);
       AppMethodBeat.o(144440);
     }
   }
   
-  private void btr()
+  private void buc()
   {
     AppMethodBeat.i(144441);
     ArrayList localArrayList = new ArrayList();
     long l1 = System.currentTimeMillis();
-    Iterator localIterator = this.lWC.iterator();
+    Iterator localIterator = this.mbi.iterator();
     X509Certificate[] arrayOfX509Certificate;
     while (localIterator.hasNext())
     {
@@ -118,7 +118,7 @@ public final class n
       }
     }
     long l2 = System.currentTimeMillis();
-    localIterator = this.lWD.iterator();
+    localIterator = this.mbj.iterator();
     while (localIterator.hasNext())
     {
       arrayOfX509Certificate = ((X509TrustManager)localIterator.next()).getAcceptedIssuers();
@@ -127,18 +127,18 @@ public final class n
       }
     }
     long l3 = System.currentTimeMillis();
-    this.lWI = new X509Certificate[localArrayList.size()];
-    this.lWI = ((X509Certificate[])localArrayList.toArray(this.lWI));
-    ad.i("MicroMsg.AppBrandX509TrustManager", "initAcceptedIssuers: %d, %d, %d", new Object[] { Long.valueOf(l2 - l1), Long.valueOf(l3 - l2), Long.valueOf(System.currentTimeMillis() - l3) });
+    this.mbo = new X509Certificate[localArrayList.size()];
+    this.mbo = ((X509Certificate[])localArrayList.toArray(this.mbo));
+    ae.i("MicroMsg.AppBrandX509TrustManager", "initAcceptedIssuers: %d, %d, %d", new Object[] { Long.valueOf(l2 - l1), Long.valueOf(l3 - l2), Long.valueOf(System.currentTimeMillis() - l3) });
     AppMethodBeat.o(144441);
   }
   
   public final void H(InputStream paramInputStream)
   {
     AppMethodBeat.i(144435);
-    if (this.lWE == null)
+    if (this.mbk == null)
     {
-      ad.e("MicroMsg.AppBrandX509TrustManager", "local keystore is null");
+      ae.e("MicroMsg.AppBrandX509TrustManager", "local keystore is null");
       AppMethodBeat.o(144435);
       return;
     }
@@ -149,7 +149,7 @@ public final class n
       {
         localObject1 = ((CertificateFactory)localObject1).generateCertificate(paramInputStream);
         paramInputStream.close();
-        this.lWE.setCertificateEntry(((X509Certificate)localObject1).getSubjectDN(), (Certificate)localObject1);
+        this.mbk.setCertificateEntry(((X509Certificate)localObject1).getSubjectDN(), (Certificate)localObject1);
         AppMethodBeat.o(144435);
         return;
       }
@@ -162,7 +162,7 @@ public final class n
     }
     catch (Exception paramInputStream)
     {
-      ad.printErrStackTrace("MicroMsg.AppBrandX509TrustManager", paramInputStream, "Exception: initLocalSelfSignedCertificate", new Object[0]);
+      ae.printErrStackTrace("MicroMsg.AppBrandX509TrustManager", paramInputStream, "Exception: initLocalSelfSignedCertificate", new Object[0]);
       AppMethodBeat.o(144435);
     }
   }
@@ -183,7 +183,7 @@ public final class n
     //   2: invokestatic 34	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: ldc 233
     //   7: invokestatic 239	com/tencent/luggage/a/e:L	(Ljava/lang/Class;)Lcom/tencent/luggage/a/d;
-    //   10: checkcast 233	com/tencent/mm/plugin/appbrand/t/a
+    //   10: checkcast 233	com/tencent/mm/plugin/appbrand/s/a
     //   13: ldc2_w 240
     //   16: lconst_0
     //   17: lconst_1
@@ -195,13 +195,13 @@ public final class n
     //   30: ldc 247
     //   32: invokespecial 248	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   35: aload_0
-    //   36: getfield 43	com/tencent/mm/plugin/appbrand/o/n:lWC	Ljava/util/LinkedList;
+    //   36: getfield 43	com/tencent/mm/plugin/appbrand/o/n:mbi	Ljava/util/LinkedList;
     //   39: invokevirtual 249	java/util/LinkedList:size	()I
     //   42: invokevirtual 252	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   45: invokevirtual 207	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   48: invokestatic 254	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   48: invokestatic 254	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   51: aload_0
-    //   52: getfield 43	com/tencent/mm/plugin/appbrand/o/n:lWC	Ljava/util/LinkedList;
+    //   52: getfield 43	com/tencent/mm/plugin/appbrand/o/n:mbi	Ljava/util/LinkedList;
     //   55: invokevirtual 120	java/util/LinkedList:iterator	()Ljava/util/Iterator;
     //   58: astore 9
     //   60: iconst_0
@@ -222,7 +222,7 @@ public final class n
     //   98: invokevirtual 257	java/lang/Object:toString	()Ljava/lang/String;
     //   101: invokevirtual 260	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   104: invokevirtual 207	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   107: invokestatic 254	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   107: invokestatic 254	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   110: aload 10
     //   112: aload_1
     //   113: aload_2
@@ -236,17 +236,17 @@ public final class n
     //   133: invokevirtual 257	java/lang/Object:toString	()Ljava/lang/String;
     //   136: invokevirtual 260	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   139: invokevirtual 207	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   142: invokestatic 254	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   142: invokestatic 254	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   145: iconst_1
     //   146: istore_3
     //   147: iload_3
     //   148: ifeq +55 -> 203
     //   151: ldc 68
     //   153: ldc_w 266
-    //   156: invokestatic 254	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   156: invokestatic 254	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   159: ldc 233
     //   161: invokestatic 239	com/tencent/luggage/a/e:L	(Ljava/lang/Class;)Lcom/tencent/luggage/a/d;
-    //   164: checkcast 233	com/tencent/mm/plugin/appbrand/t/a
+    //   164: checkcast 233	com/tencent/mm/plugin/appbrand/s/a
     //   167: ldc2_w 240
     //   170: lconst_1
     //   171: lconst_1
@@ -261,7 +261,7 @@ public final class n
     //   190: ldc_w 268
     //   193: iconst_0
     //   194: anewarray 4	java/lang/Object
-    //   197: invokestatic 76	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   197: invokestatic 76	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   200: goto -140 -> 60
     //   203: ldc 68
     //   205: ldc_w 270
@@ -270,13 +270,13 @@ public final class n
     //   212: dup
     //   213: iconst_0
     //   214: aload_0
-    //   215: getfield 45	com/tencent/mm/plugin/appbrand/o/n:lWD	Ljava/util/LinkedList;
+    //   215: getfield 45	com/tencent/mm/plugin/appbrand/o/n:mbj	Ljava/util/LinkedList;
     //   218: invokevirtual 249	java/util/LinkedList:size	()I
     //   221: invokestatic 275	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   224: aastore
-    //   225: invokestatic 168	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   225: invokestatic 168	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   228: aload_0
-    //   229: getfield 45	com/tencent/mm/plugin/appbrand/o/n:lWD	Ljava/util/LinkedList;
+    //   229: getfield 45	com/tencent/mm/plugin/appbrand/o/n:mbj	Ljava/util/LinkedList;
     //   232: invokevirtual 120	java/util/LinkedList:iterator	()Ljava/util/Iterator;
     //   235: astore 9
     //   237: iconst_0
@@ -301,17 +301,17 @@ public final class n
     //   284: invokevirtual 257	java/lang/Object:toString	()Ljava/lang/String;
     //   287: invokevirtual 260	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   290: invokevirtual 207	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   293: invokestatic 254	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   293: invokestatic 254	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   296: iconst_1
     //   297: istore_3
     //   298: iload_3
     //   299: ifeq +57 -> 356
     //   302: ldc 68
     //   304: ldc_w 279
-    //   307: invokestatic 254	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   307: invokestatic 254	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   310: ldc 233
     //   312: invokestatic 239	com/tencent/luggage/a/e:L	(Ljava/lang/Class;)Lcom/tencent/luggage/a/d;
-    //   315: checkcast 233	com/tencent/mm/plugin/appbrand/t/a
+    //   315: checkcast 233	com/tencent/mm/plugin/appbrand/s/a
     //   318: ldc2_w 240
     //   321: ldc2_w 280
     //   324: lconst_1
@@ -326,14 +326,14 @@ public final class n
     //   343: ldc_w 283
     //   346: iconst_0
     //   347: anewarray 4	java/lang/Object
-    //   350: invokestatic 76	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   350: invokestatic 76	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   353: goto -116 -> 237
     //   356: aload_0
-    //   357: getfield 47	com/tencent/mm/plugin/appbrand/o/n:lWF	Z
+    //   357: getfield 47	com/tencent/mm/plugin/appbrand/o/n:mbl	Z
     //   360: ifeq +951 -> 1311
     //   363: ldc 68
     //   365: ldc_w 285
-    //   368: invokestatic 254	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   368: invokestatic 254	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   371: iconst_0
     //   372: istore 5
     //   374: iconst_0
@@ -347,25 +347,25 @@ public final class n
     //   386: iload 8
     //   388: istore_3
     //   389: aload_0
-    //   390: getfield 38	com/tencent/mm/plugin/appbrand/o/n:lWH	Ljava/security/KeyStore;
+    //   390: getfield 38	com/tencent/mm/plugin/appbrand/o/n:mbn	Ljava/security/KeyStore;
     //   393: ifnonnull +28 -> 421
     //   396: iload 8
     //   398: istore_3
     //   399: aload_0
     //   400: ldc_w 287
     //   403: invokestatic 57	java/security/KeyStore:getInstance	(Ljava/lang/String;)Ljava/security/KeyStore;
-    //   406: putfield 38	com/tencent/mm/plugin/appbrand/o/n:lWH	Ljava/security/KeyStore;
+    //   406: putfield 38	com/tencent/mm/plugin/appbrand/o/n:mbn	Ljava/security/KeyStore;
     //   409: iload 8
     //   411: istore_3
     //   412: aload_0
-    //   413: getfield 38	com/tencent/mm/plugin/appbrand/o/n:lWH	Ljava/security/KeyStore;
+    //   413: getfield 38	com/tencent/mm/plugin/appbrand/o/n:mbn	Ljava/security/KeyStore;
     //   416: aconst_null
     //   417: aconst_null
     //   418: invokevirtual 63	java/security/KeyStore:load	(Ljava/io/InputStream;[C)V
     //   421: iload 8
     //   423: istore_3
     //   424: aload_0
-    //   425: getfield 36	com/tencent/mm/plugin/appbrand/o/n:lWG	Ljava/util/List;
+    //   425: getfield 36	com/tencent/mm/plugin/appbrand/o/n:mbm	Ljava/util/List;
     //   428: ifnonnull +172 -> 600
     //   431: iload 8
     //   433: istore_3
@@ -373,11 +373,11 @@ public final class n
     //   435: new 109	java/util/ArrayList
     //   438: dup
     //   439: invokespecial 110	java/util/ArrayList:<init>	()V
-    //   442: putfield 36	com/tencent/mm/plugin/appbrand/o/n:lWG	Ljava/util/List;
+    //   442: putfield 36	com/tencent/mm/plugin/appbrand/o/n:mbm	Ljava/util/List;
     //   445: iload 8
     //   447: istore_3
     //   448: aload_0
-    //   449: getfield 38	com/tencent/mm/plugin/appbrand/o/n:lWH	Ljava/security/KeyStore;
+    //   449: getfield 38	com/tencent/mm/plugin/appbrand/o/n:mbn	Ljava/security/KeyStore;
     //   452: invokevirtual 291	java/security/KeyStore:aliases	()Ljava/util/Enumeration;
     //   455: astore_2
     //   456: iload 8
@@ -402,7 +402,7 @@ public final class n
     //   501: iload 8
     //   503: istore_3
     //   504: aload_0
-    //   505: getfield 36	com/tencent/mm/plugin/appbrand/o/n:lWG	Ljava/util/List;
+    //   505: getfield 36	com/tencent/mm/plugin/appbrand/o/n:mbm	Ljava/util/List;
     //   508: aload 9
     //   510: invokeinterface 310 2 0
     //   515: pop
@@ -415,12 +415,12 @@ public final class n
     //   526: ldc_w 312
     //   529: iconst_0
     //   530: anewarray 4	java/lang/Object
-    //   533: invokestatic 76	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   533: invokestatic 76	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   536: iload 4
     //   538: istore_3
     //   539: ldc 233
     //   541: invokestatic 239	com/tencent/luggage/a/e:L	(Ljava/lang/Class;)Lcom/tencent/luggage/a/d;
-    //   544: checkcast 233	com/tencent/mm/plugin/appbrand/t/a
+    //   544: checkcast 233	com/tencent/mm/plugin/appbrand/s/a
     //   547: ldc2_w 240
     //   550: ldc2_w 313
     //   553: lconst_1
@@ -430,10 +430,10 @@ public final class n
     //   562: ifeq +290 -> 852
     //   565: ldc 68
     //   567: ldc_w 316
-    //   570: invokestatic 254	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   570: invokestatic 254	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   573: ldc 233
     //   575: invokestatic 239	com/tencent/luggage/a/e:L	(Ljava/lang/Class;)Lcom/tencent/luggage/a/d;
-    //   578: checkcast 233	com/tencent/mm/plugin/appbrand/t/a
+    //   578: checkcast 233	com/tencent/mm/plugin/appbrand/s/a
     //   581: ldc2_w 240
     //   584: ldc2_w 317
     //   587: lconst_1
@@ -445,13 +445,13 @@ public final class n
     //   600: iload 8
     //   602: istore_3
     //   603: aload_0
-    //   604: getfield 36	com/tencent/mm/plugin/appbrand/o/n:lWG	Ljava/util/List;
+    //   604: getfield 36	com/tencent/mm/plugin/appbrand/o/n:mbm	Ljava/util/List;
     //   607: invokeinterface 319 1 0
     //   612: ifle +115 -> 727
     //   615: iload 8
     //   617: istore_3
     //   618: aload_0
-    //   619: getfield 36	com/tencent/mm/plugin/appbrand/o/n:lWG	Ljava/util/List;
+    //   619: getfield 36	com/tencent/mm/plugin/appbrand/o/n:mbm	Ljava/util/List;
     //   622: invokeinterface 320 1 0
     //   627: astore_2
     //   628: iconst_0
@@ -466,7 +466,7 @@ public final class n
     //   648: checkcast 301	java/lang/String
     //   651: astore 9
     //   653: aload_0
-    //   654: getfield 38	com/tencent/mm/plugin/appbrand/o/n:lWH	Ljava/security/KeyStore;
+    //   654: getfield 38	com/tencent/mm/plugin/appbrand/o/n:mbn	Ljava/security/KeyStore;
     //   657: aload 9
     //   659: invokevirtual 324	java/security/KeyStore:getCertificate	(Ljava/lang/String;)Ljava/security/cert/Certificate;
     //   662: checkcast 150	java/security/cert/X509Certificate
@@ -496,7 +496,7 @@ public final class n
     //   708: ldc_w 334
     //   711: iconst_0
     //   712: anewarray 4	java/lang/Object
-    //   715: invokestatic 76	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   715: invokestatic 76	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   718: iload 4
     //   720: iconst_1
     //   721: iadd
@@ -506,12 +506,12 @@ public final class n
     //   729: istore_3
     //   730: ldc 68
     //   732: ldc_w 336
-    //   735: invokestatic 254	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   735: invokestatic 254	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   738: iload 8
     //   740: istore_3
     //   741: ldc 233
     //   743: invokestatic 239	com/tencent/luggage/a/e:L	(Ljava/lang/Class;)Lcom/tencent/luggage/a/d;
-    //   746: checkcast 233	com/tencent/mm/plugin/appbrand/t/a
+    //   746: checkcast 233	com/tencent/mm/plugin/appbrand/s/a
     //   749: ldc2_w 240
     //   752: ldc2_w 337
     //   755: lconst_1
@@ -523,10 +523,10 @@ public final class n
     //   767: ifeq +38 -> 805
     //   770: ldc 68
     //   772: ldc_w 316
-    //   775: invokestatic 254	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   775: invokestatic 254	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   778: ldc 233
     //   780: invokestatic 239	com/tencent/luggage/a/e:L	(Ljava/lang/Class;)Lcom/tencent/luggage/a/d;
-    //   783: checkcast 233	com/tencent/mm/plugin/appbrand/t/a
+    //   783: checkcast 233	com/tencent/mm/plugin/appbrand/s/a
     //   786: ldc2_w 240
     //   789: ldc2_w 317
     //   792: lconst_1
@@ -537,10 +537,10 @@ public final class n
     //   804: return
     //   805: ldc 68
     //   807: ldc_w 340
-    //   810: invokestatic 254	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   810: invokestatic 254	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   813: ldc 233
     //   815: invokestatic 239	com/tencent/luggage/a/e:L	(Ljava/lang/Class;)Lcom/tencent/luggage/a/d;
-    //   818: checkcast 233	com/tencent/mm/plugin/appbrand/t/a
+    //   818: checkcast 233	com/tencent/mm/plugin/appbrand/s/a
     //   821: ldc2_w 240
     //   824: ldc2_w 341
     //   827: lconst_1
@@ -557,10 +557,10 @@ public final class n
     //   851: athrow
     //   852: ldc 68
     //   854: ldc_w 340
-    //   857: invokestatic 254	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   857: invokestatic 254	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   860: ldc 233
     //   862: invokestatic 239	com/tencent/luggage/a/e:L	(Ljava/lang/Class;)Lcom/tencent/luggage/a/d;
-    //   865: checkcast 233	com/tencent/mm/plugin/appbrand/t/a
+    //   865: checkcast 233	com/tencent/mm/plugin/appbrand/s/a
     //   868: ldc2_w 240
     //   871: ldc2_w 341
     //   874: lconst_1
@@ -577,12 +577,12 @@ public final class n
     //   895: ldc_w 346
     //   898: iconst_0
     //   899: anewarray 4	java/lang/Object
-    //   902: invokestatic 76	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   902: invokestatic 76	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   905: iload 4
     //   907: istore_3
     //   908: ldc 233
     //   910: invokestatic 239	com/tencent/luggage/a/e:L	(Ljava/lang/Class;)Lcom/tencent/luggage/a/d;
-    //   913: checkcast 233	com/tencent/mm/plugin/appbrand/t/a
+    //   913: checkcast 233	com/tencent/mm/plugin/appbrand/s/a
     //   916: ldc2_w 240
     //   919: ldc2_w 347
     //   922: lconst_1
@@ -592,10 +592,10 @@ public final class n
     //   931: ifeq +38 -> 969
     //   934: ldc 68
     //   936: ldc_w 316
-    //   939: invokestatic 254	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   939: invokestatic 254	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   942: ldc 233
     //   944: invokestatic 239	com/tencent/luggage/a/e:L	(Ljava/lang/Class;)Lcom/tencent/luggage/a/d;
-    //   947: checkcast 233	com/tencent/mm/plugin/appbrand/t/a
+    //   947: checkcast 233	com/tencent/mm/plugin/appbrand/s/a
     //   950: ldc2_w 240
     //   953: ldc2_w 317
     //   956: lconst_1
@@ -606,10 +606,10 @@ public final class n
     //   968: return
     //   969: ldc 68
     //   971: ldc_w 340
-    //   974: invokestatic 254	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   974: invokestatic 254	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   977: ldc 233
     //   979: invokestatic 239	com/tencent/luggage/a/e:L	(Ljava/lang/Class;)Lcom/tencent/luggage/a/d;
-    //   982: checkcast 233	com/tencent/mm/plugin/appbrand/t/a
+    //   982: checkcast 233	com/tencent/mm/plugin/appbrand/s/a
     //   985: ldc2_w 240
     //   988: ldc2_w 341
     //   991: lconst_1
@@ -626,12 +626,12 @@ public final class n
     //   1012: ldc_w 350
     //   1015: iconst_0
     //   1016: anewarray 4	java/lang/Object
-    //   1019: invokestatic 76	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   1019: invokestatic 76	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   1022: iload 4
     //   1024: istore_3
     //   1025: ldc 233
     //   1027: invokestatic 239	com/tencent/luggage/a/e:L	(Ljava/lang/Class;)Lcom/tencent/luggage/a/d;
-    //   1030: checkcast 233	com/tencent/mm/plugin/appbrand/t/a
+    //   1030: checkcast 233	com/tencent/mm/plugin/appbrand/s/a
     //   1033: ldc2_w 240
     //   1036: ldc2_w 351
     //   1039: lconst_1
@@ -641,10 +641,10 @@ public final class n
     //   1048: ifeq +38 -> 1086
     //   1051: ldc 68
     //   1053: ldc_w 316
-    //   1056: invokestatic 254	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1056: invokestatic 254	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   1059: ldc 233
     //   1061: invokestatic 239	com/tencent/luggage/a/e:L	(Ljava/lang/Class;)Lcom/tencent/luggage/a/d;
-    //   1064: checkcast 233	com/tencent/mm/plugin/appbrand/t/a
+    //   1064: checkcast 233	com/tencent/mm/plugin/appbrand/s/a
     //   1067: ldc2_w 240
     //   1070: ldc2_w 317
     //   1073: lconst_1
@@ -655,10 +655,10 @@ public final class n
     //   1085: return
     //   1086: ldc 68
     //   1088: ldc_w 340
-    //   1091: invokestatic 254	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1091: invokestatic 254	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   1094: ldc 233
     //   1096: invokestatic 239	com/tencent/luggage/a/e:L	(Ljava/lang/Class;)Lcom/tencent/luggage/a/d;
-    //   1099: checkcast 233	com/tencent/mm/plugin/appbrand/t/a
+    //   1099: checkcast 233	com/tencent/mm/plugin/appbrand/s/a
     //   1102: ldc2_w 240
     //   1105: ldc2_w 341
     //   1108: lconst_1
@@ -675,12 +675,12 @@ public final class n
     //   1129: ldc_w 354
     //   1132: iconst_0
     //   1133: anewarray 4	java/lang/Object
-    //   1136: invokestatic 76	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   1136: invokestatic 76	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   1139: iload 4
     //   1141: istore_3
     //   1142: ldc 233
     //   1144: invokestatic 239	com/tencent/luggage/a/e:L	(Ljava/lang/Class;)Lcom/tencent/luggage/a/d;
-    //   1147: checkcast 233	com/tencent/mm/plugin/appbrand/t/a
+    //   1147: checkcast 233	com/tencent/mm/plugin/appbrand/s/a
     //   1150: ldc2_w 240
     //   1153: ldc2_w 355
     //   1156: lconst_1
@@ -690,10 +690,10 @@ public final class n
     //   1165: ifeq +38 -> 1203
     //   1168: ldc 68
     //   1170: ldc_w 316
-    //   1173: invokestatic 254	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1173: invokestatic 254	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   1176: ldc 233
     //   1178: invokestatic 239	com/tencent/luggage/a/e:L	(Ljava/lang/Class;)Lcom/tencent/luggage/a/d;
-    //   1181: checkcast 233	com/tencent/mm/plugin/appbrand/t/a
+    //   1181: checkcast 233	com/tencent/mm/plugin/appbrand/s/a
     //   1184: ldc2_w 240
     //   1187: ldc2_w 317
     //   1190: lconst_1
@@ -704,10 +704,10 @@ public final class n
     //   1202: return
     //   1203: ldc 68
     //   1205: ldc_w 340
-    //   1208: invokestatic 254	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1208: invokestatic 254	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   1211: ldc 233
     //   1213: invokestatic 239	com/tencent/luggage/a/e:L	(Ljava/lang/Class;)Lcom/tencent/luggage/a/d;
-    //   1216: checkcast 233	com/tencent/mm/plugin/appbrand/t/a
+    //   1216: checkcast 233	com/tencent/mm/plugin/appbrand/s/a
     //   1219: ldc2_w 240
     //   1222: ldc2_w 341
     //   1225: lconst_1
@@ -719,10 +719,10 @@ public final class n
     //   1237: ifeq +38 -> 1275
     //   1240: ldc 68
     //   1242: ldc_w 316
-    //   1245: invokestatic 254	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1245: invokestatic 254	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   1248: ldc 233
     //   1250: invokestatic 239	com/tencent/luggage/a/e:L	(Ljava/lang/Class;)Lcom/tencent/luggage/a/d;
-    //   1253: checkcast 233	com/tencent/mm/plugin/appbrand/t/a
+    //   1253: checkcast 233	com/tencent/mm/plugin/appbrand/s/a
     //   1256: ldc2_w 240
     //   1259: ldc2_w 317
     //   1262: lconst_1
@@ -733,10 +733,10 @@ public final class n
     //   1274: return
     //   1275: ldc 68
     //   1277: ldc_w 340
-    //   1280: invokestatic 254	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1280: invokestatic 254	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   1283: ldc 233
     //   1285: invokestatic 239	com/tencent/luggage/a/e:L	(Ljava/lang/Class;)Lcom/tencent/luggage/a/d;
-    //   1288: checkcast 233	com/tencent/mm/plugin/appbrand/t/a
+    //   1288: checkcast 233	com/tencent/mm/plugin/appbrand/s/a
     //   1291: ldc2_w 240
     //   1294: ldc2_w 341
     //   1297: lconst_1
@@ -748,7 +748,7 @@ public final class n
     //   1310: athrow
     //   1311: ldc 233
     //   1313: invokestatic 239	com/tencent/luggage/a/e:L	(Ljava/lang/Class;)Lcom/tencent/luggage/a/d;
-    //   1316: checkcast 233	com/tencent/mm/plugin/appbrand/t/a
+    //   1316: checkcast 233	com/tencent/mm/plugin/appbrand/s/a
     //   1319: ldc2_w 240
     //   1322: ldc2_w 357
     //   1325: lconst_1
@@ -892,17 +892,17 @@ public final class n
   
   public final X509Certificate[] getAcceptedIssuers()
   {
-    return this.lWI;
+    return this.mbo;
   }
   
   public final void init()
   {
     AppMethodBeat.i(144436);
-    long l = bt.flT();
-    btp();
-    btq();
-    btr();
-    ad.d("MicroMsg.AppBrandX509TrustManager", "init() cost[%dms]", new Object[] { Long.valueOf(bt.flT() - l) });
+    long l = bu.fpO();
+    bua();
+    bub();
+    buc();
+    ae.d("MicroMsg.AppBrandX509TrustManager", "init() cost[%dms]", new Object[] { Long.valueOf(bu.fpO() - l) });
     AppMethodBeat.o(144436);
   }
 }

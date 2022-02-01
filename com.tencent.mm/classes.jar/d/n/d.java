@@ -5,11 +5,11 @@ import d.g.b.p;
 import d.l;
 import java.nio.charset.Charset;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlin/text/Charsets;", "", "()V", "ISO_8859_1", "Ljava/nio/charset/Charset;", "US_ASCII", "UTF_16", "UTF_16BE", "UTF_16LE", "UTF_32", "UTF32", "()Ljava/nio/charset/Charset;", "UTF_32BE", "UTF32_BE", "UTF_32LE", "UTF32_LE", "UTF_8", "utf_32", "utf_32be", "utf_32le", "kotlin-stdlib"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlin/text/Charsets;", "", "()V", "ISO_8859_1", "Ljava/nio/charset/Charset;", "US_ASCII", "UTF_16", "UTF_16BE", "UTF_16LE", "UTF_32", "UTF32", "()Ljava/nio/charset/Charset;", "UTF_32BE", "UTF32_BE", "UTF_32LE", "UTF32_LE", "UTF_8", "utf_32", "utf_32be", "utf_32le", "kotlin-stdlib"})
 public final class d
 {
   public static final Charset ISO_8859_1;
-  public static final d NGS;
+  public static final d OdY;
   public static final Charset US_ASCII;
   public static final Charset UTF_16;
   public static final Charset UTF_16BE;
@@ -19,7 +19,7 @@ public final class d
   static
   {
     AppMethodBeat.i(129459);
-    NGS = new d();
+    OdY = new d();
     Charset localCharset = Charset.forName("UTF-8");
     p.g(localCharset, "Charset.forName(\"UTF-8\")");
     UTF_8 = localCharset;

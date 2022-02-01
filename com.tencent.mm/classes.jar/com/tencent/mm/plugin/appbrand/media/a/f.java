@@ -5,7 +5,7 @@ import com.tencent.mm.plugin.appbrand.appcache.WxaPkg.Info;
 
 public final class f
 {
-  public static com.tencent.mm.aj.e c(WxaPkg.Info paramInfo)
+  public static com.tencent.mm.ai.e c(WxaPkg.Info paramInfo)
   {
     AppMethodBeat.i(182599);
     if (paramInfo == null)
@@ -13,20 +13,20 @@ public final class f
       AppMethodBeat.o(182599);
       return null;
     }
-    if (g.bsC())
+    if (g.btn())
     {
-      paramInfo = new e(paramInfo.fileName, paramInfo.jHK);
+      paramInfo = new e(paramInfo.fileName, paramInfo.jKL);
       AppMethodBeat.o(182599);
       return paramInfo;
     }
-    paramInfo = new d(paramInfo.fileName, paramInfo.jHK);
+    paramInfo = new d(paramInfo.fileName, paramInfo.jKL);
     AppMethodBeat.o(182599);
     return paramInfo;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.media.a.f
  * JD-Core Version:    0.7.0.1
  */

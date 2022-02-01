@@ -1,6 +1,6 @@
 package com.tencent.mm.b;
 
-import com.tencent.mm.vfs.e;
+import com.tencent.mm.vfs.k;
 import java.io.InputStream;
 import java.security.MessageDigest;
 
@@ -20,22 +20,22 @@ public final class g
   }
   
   /* Error */
-  private static String b(e parame)
+  private static String b(k paramk)
   {
     // Byte code:
     //   0: ldc2_w 30
     //   3: lstore_1
     //   4: aload_0
-    //   5: invokevirtual 37	com/tencent/mm/vfs/e:exists	()Z
+    //   5: invokevirtual 37	com/tencent/mm/vfs/k:exists	()Z
     //   8: ifne +5 -> 13
     //   11: aconst_null
     //   12: areturn
     //   13: aload_0
-    //   14: invokestatic 43	com/tencent/mm/vfs/i:ai	(Lcom/tencent/mm/vfs/e;)Ljava/io/InputStream;
+    //   14: invokestatic 43	com/tencent/mm/vfs/o:ai	(Lcom/tencent/mm/vfs/k;)Ljava/io/InputStream;
     //   17: astore_3
     //   18: ldc2_w 30
     //   21: aload_0
-    //   22: invokevirtual 47	com/tencent/mm/vfs/e:length	()J
+    //   22: invokevirtual 47	com/tencent/mm/vfs/k:length	()J
     //   25: lcmp
     //   26: ifgt +24 -> 50
     //   29: aload_3
@@ -52,7 +52,7 @@ public final class g
     //   48: aload_0
     //   49: areturn
     //   50: aload_0
-    //   51: invokevirtual 47	com/tencent/mm/vfs/e:length	()J
+    //   51: invokevirtual 47	com/tencent/mm/vfs/k:length	()J
     //   54: lstore_1
     //   55: goto -26 -> 29
     //   58: astore_0
@@ -88,7 +88,7 @@ public final class g
     //   102: goto -41 -> 61
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	105	0	parame	e
+    //   0	105	0	paramk	k
     //   3	52	1	l	long
     //   17	65	3	localInputStream	InputStream
     //   87	1	3	localIOException1	java.io.IOException
@@ -142,16 +142,16 @@ public final class g
   }
   
   /* Error */
-  private static String c(e parame)
+  private static String c(k paramk)
   {
     // Byte code:
     //   0: aload_0
-    //   1: invokevirtual 37	com/tencent/mm/vfs/e:exists	()Z
+    //   1: invokevirtual 37	com/tencent/mm/vfs/k:exists	()Z
     //   4: ifne +5 -> 9
     //   7: aconst_null
     //   8: areturn
     //   9: aload_0
-    //   10: invokestatic 43	com/tencent/mm/vfs/i:ai	(Lcom/tencent/mm/vfs/e;)Ljava/io/InputStream;
+    //   10: invokestatic 43	com/tencent/mm/vfs/o:ai	(Lcom/tencent/mm/vfs/k;)Ljava/io/InputStream;
     //   13: astore_0
     //   14: aload_0
     //   15: invokestatic 93	com/tencent/mm/b/g:r	(Ljava/io/InputStream;)Ljava/lang/String;
@@ -195,7 +195,7 @@ public final class g
     //   75: goto -39 -> 36
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	78	0	parame	e
+    //   0	78	0	paramk	k
     //   18	14	1	str	String
     //   49	12	1	localObject1	Object
     //   70	1	1	localObject2	Object
@@ -211,13 +211,13 @@ public final class g
     //   14	23	74	java/lang/Exception
   }
   
-  public static String ep(String paramString)
+  public static String eu(String paramString)
   {
     if (paramString == null) {}
     do
     {
       return null;
-      paramString = new e(paramString);
+      paramString = new k(paramString);
     } while (!paramString.exists());
     return c(paramString);
   }
@@ -228,7 +228,7 @@ public final class g
     do
     {
       return null;
-      paramString = new e(paramString);
+      paramString = new k(paramString);
     } while (!paramString.exists());
     return b(paramString);
   }

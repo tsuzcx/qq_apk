@@ -1,26 +1,26 @@
 package com.tencent.mm.plugin.scanner.util;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.storage.c;
 import java.util.Map;
 
 public final class e
 {
-  public static boolean dMO()
+  public static boolean dQh()
   {
     AppMethodBeat.i(52058);
-    Object localObject = com.tencent.mm.model.c.d.aDs().wz("100027");
+    Object localObject = com.tencent.mm.model.c.d.aDI().xi("100027");
     if (!((c)localObject).isValid())
     {
-      ad.e("MicroMsg.ScanHistoryUtil", "shouldShowHistoryList item.isValid is false");
+      ae.e("MicroMsg.ScanHistoryUtil", "shouldShowHistoryList item.isValid is false");
       AppMethodBeat.o(52058);
       return false;
     }
-    localObject = ((c)localObject).foF();
+    localObject = ((c)localObject).fsy();
     if (localObject == null)
     {
-      ad.e("MicroMsg.ScanHistoryUtil", "shouldShowHistoryList args == null");
+      ae.e("MicroMsg.ScanHistoryUtil", "shouldShowHistoryList args == null");
       AppMethodBeat.o(52058);
       return false;
     }
@@ -29,7 +29,7 @@ public final class e
       AppMethodBeat.o(52058);
       return true;
     }
-    ad.e("MicroMsg.ScanHistoryUtil", "not contain the showEntrance key or the value is not 1");
+    ae.e("MicroMsg.ScanHistoryUtil", "not contain the showEntrance key or the value is not 1");
     AppMethodBeat.o(52058);
     return false;
   }

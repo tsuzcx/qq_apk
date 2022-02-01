@@ -3,6 +3,7 @@ package com.tencent.tinker.loader;
 import android.app.Application;
 import android.content.Context;
 import android.os.Build.VERSION;
+import dalvik.system.DelegateLastClassLoader;
 import dalvik.system.PathClassLoader;
 import java.io.File;
 import java.lang.reflect.Field;
@@ -17,11 +18,10 @@ final class NewClassLoaderInjector
     throw new UnsupportedOperationException();
   }
   
-  private static ClassLoader createNewClassLoader(Context paramContext, ClassLoader paramClassLoader, File paramFile, String... paramVarArgs)
+  private static ClassLoader createNewClassLoader(ClassLoader paramClassLoader, File paramFile, boolean paramBoolean, String... paramVarArgs)
   {
-    int j = 1;
-    Object localObject = findField(Class.forName("dalvik.system.BaseDexClassLoader", false, paramClassLoader), "pathList").get(paramClassLoader);
-    paramContext = new StringBuilder();
+    Object localObject1 = findField(Class.forName("dalvik.system.BaseDexClassLoader", false, paramClassLoader), "pathList").get(paramClassLoader);
+    Object localObject2 = new StringBuilder();
     if ((paramVarArgs != null) && (paramVarArgs.length > 0)) {}
     for (int i = 1; i != 0; i = 0)
     {
@@ -29,47 +29,59 @@ final class NewClassLoaderInjector
       while (i < paramVarArgs.length)
       {
         if (i > 0) {
-          paramContext.append(File.pathSeparator);
+          ((StringBuilder)localObject2).append(File.pathSeparator);
         }
-        paramContext.append(paramVarArgs[i]);
+        ((StringBuilder)localObject2).append(paramVarArgs[i]);
         i += 1;
       }
     }
-    paramVarArgs = paramContext.toString();
-    paramContext = findField(localObject.getClass(), "nativeLibraryDirectories");
+    localObject2 = ((StringBuilder)localObject2).toString();
+    paramVarArgs = findField(localObject1.getClass(), "nativeLibraryDirectories");
     StringBuilder localStringBuilder;
-    label155:
+    label156:
     File localFile;
-    if (paramContext.getType().isArray())
+    if (paramVarArgs.getType().isArray())
     {
-      paramContext = Arrays.asList((File[])paramContext.get(localObject));
+      paramVarArgs = Arrays.asList((File[])paramVarArgs.get(localObject1));
       localStringBuilder = new StringBuilder();
-      paramContext = paramContext.iterator();
-      i = j;
+      paramVarArgs = paramVarArgs.iterator();
+      i = 1;
       do
       {
-        if (!paramContext.hasNext()) {
+        if (!paramVarArgs.hasNext()) {
           break;
         }
-        localFile = (File)paramContext.next();
+        localFile = (File)paramVarArgs.next();
       } while (localFile == null);
       if (i == 0) {
-        break label215;
+        break label216;
       }
       i = 0;
     }
     for (;;)
     {
       localStringBuilder.append(localFile.getAbsolutePath());
-      break label155;
-      paramContext = (List)paramContext.get(localObject);
+      break label156;
+      paramVarArgs = (List)paramVarArgs.get(localObject1);
       break;
-      label215:
+      label216:
       localStringBuilder.append(File.pathSeparator);
     }
-    paramContext = new TinkerClassLoader(paramVarArgs, paramFile, localStringBuilder.toString(), paramClassLoader);
-    findField(localObject.getClass(), "definingContext").set(localObject, paramContext);
-    return paramContext;
+    paramVarArgs = localStringBuilder.toString();
+    if ((paramBoolean) && (Build.VERSION.SDK_INT >= 29))
+    {
+      paramFile = new DelegateLastClassLoader((String)localObject2, paramVarArgs, ClassLoader.getSystemClassLoader());
+      paramVarArgs = ClassLoader.class.getDeclaredField("parent");
+      paramVarArgs.setAccessible(true);
+      paramVarArgs.set(paramFile, paramClassLoader);
+    }
+    for (paramClassLoader = paramFile;; paramClassLoader = new TinkerClassLoader((String)localObject2, paramFile, paramVarArgs, paramClassLoader))
+    {
+      if (Build.VERSION.SDK_INT < 26) {
+        findField(localObject1.getClass(), "definingContext").set(localObject1, paramClassLoader);
+      }
+      return paramClassLoader;
+    }
   }
   
   private static void doInject(Application paramApplication, ClassLoader paramClassLoader)
@@ -114,7 +126,7 @@ final class NewClassLoaderInjector
     }
   }
   
-  public static ClassLoader inject(Application paramApplication, ClassLoader paramClassLoader, File paramFile, List<File> paramList)
+  public static ClassLoader inject(Application paramApplication, ClassLoader paramClassLoader, File paramFile, boolean paramBoolean, List<File> paramList)
   {
     String[] arrayOfString = new String[paramList.size()];
     int i = 0;
@@ -123,13 +135,18 @@ final class NewClassLoaderInjector
       arrayOfString[i] = ((File)paramList.get(i)).getAbsolutePath();
       i += 1;
     }
-    paramClassLoader = createNewClassLoader(paramApplication, paramClassLoader, paramFile, arrayOfString);
+    paramClassLoader = createNewClassLoader(paramClassLoader, paramFile, paramBoolean, arrayOfString);
     doInject(paramApplication, paramClassLoader);
     return paramClassLoader;
   }
   
-  public static void triggerDex2Oat(Context paramContext, File paramFile, String... paramVarArgs)
+  public static void triggerDex2Oat(Context paramContext, File paramFile, boolean paramBoolean, String... paramVarArgs)
   {
+    if ((paramBoolean) && (Build.VERSION.SDK_INT >= 29))
+    {
+      createNewClassLoader(paramContext.getClassLoader(), paramFile, paramBoolean, paramVarArgs);
+      return;
+    }
     paramContext = new StringBuilder();
     int j = 1;
     int k = paramVarArgs.length;

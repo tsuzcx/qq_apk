@@ -11,20 +11,20 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.q;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.model.ba;
+import com.tencent.mm.model.bc;
 import com.tencent.mm.model.c;
 import com.tencent.mm.pluginsdk.m;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.t;
 
 public class NetworkDiagnoseIntroUI
   extends MMActivity
 {
-  private Button BzM;
-  private TextView BzN;
+  private Button BRk;
+  private TextView BRl;
   
   public int getLayoutId()
   {
@@ -34,16 +34,16 @@ public class NetworkDiagnoseIntroUI
   public void initView()
   {
     AppMethodBeat.i(29698);
-    this.BzM = ((Button)findViewById(2131305175));
-    this.BzM.setOnClickListener(new View.OnClickListener()
+    this.BRk = ((Button)findViewById(2131305175));
+    this.BRk.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(29694);
         Object localObject = new b();
         ((b)localObject).bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/traceroute/ui/NetworkDiagnoseIntroUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahq());
-        ba.aBQ();
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/traceroute/ui/NetworkDiagnoseIntroUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahF());
+        bc.aCg();
         if (!c.isSDCardAvailable())
         {
           t.g(NetworkDiagnoseIntroUI.this, null);
@@ -51,7 +51,7 @@ public class NetworkDiagnoseIntroUI
           AppMethodBeat.o(29694);
           return;
         }
-        if (ba.aiU().aEN() == 0)
+        if (bc.ajj().aFd() == 0)
         {
           Toast.makeText(NetworkDiagnoseIntroUI.this, NetworkDiagnoseIntroUI.this.getString(2131759511), 0).show();
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/traceroute/ui/NetworkDiagnoseIntroUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
@@ -61,28 +61,28 @@ public class NetworkDiagnoseIntroUI
         localObject = new Intent(NetworkDiagnoseIntroUI.this, NetworkDiagnoseUI.class);
         paramAnonymousView = NetworkDiagnoseIntroUI.this;
         localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
-        com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahp(), "com/tencent/mm/plugin/traceroute/ui/NetworkDiagnoseIntroUI$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mq(0));
+        com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahE(), "com/tencent/mm/plugin/traceroute/ui/NetworkDiagnoseIntroUI$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mt(0));
         com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, "com/tencent/mm/plugin/traceroute/ui/NetworkDiagnoseIntroUI$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
         NetworkDiagnoseIntroUI.this.finish();
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/traceroute/ui/NetworkDiagnoseIntroUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(29694);
       }
     });
-    this.BzN = ((TextView)findViewById(2131302706));
-    this.BzN.setOnClickListener(new View.OnClickListener()
+    this.BRl = ((TextView)findViewById(2131302706));
+    this.BRl.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(29695);
         b localb = new b();
         localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/traceroute/ui/NetworkDiagnoseIntroUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/traceroute/ui/NetworkDiagnoseIntroUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
         paramAnonymousView = new Intent();
         paramAnonymousView.putExtra("title", NetworkDiagnoseIntroUI.this.getString(2131762012));
-        paramAnonymousView.putExtra("rawUrl", NetworkDiagnoseIntroUI.this.getString(2131764600, new Object[] { ac.fks(), ac.fkr() }));
+        paramAnonymousView.putExtra("rawUrl", NetworkDiagnoseIntroUI.this.getString(2131764600, new Object[] { ad.fom(), ad.fol() }));
         paramAnonymousView.putExtra("showShare", false);
-        com.tencent.mm.plugin.traceroute.a.a.iRG.i(paramAnonymousView, NetworkDiagnoseIntroUI.this.getContext());
+        com.tencent.mm.plugin.traceroute.a.a.iUz.i(paramAnonymousView, NetworkDiagnoseIntroUI.this.getContext());
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/traceroute/ui/NetworkDiagnoseIntroUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(29695);
       }

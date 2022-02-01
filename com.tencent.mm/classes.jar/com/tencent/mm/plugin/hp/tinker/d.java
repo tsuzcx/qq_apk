@@ -5,9 +5,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.hp.b.b;
 import com.tencent.mm.plugin.hp.b.b.a;
 import com.tencent.mm.plugin.hp.b.b.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.i;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.j;
 import com.tencent.tinker.lib.util.c;
 import com.tencent.tinker.loader.shareutil.SharePatchFileUtil;
 import com.tencent.tinker.loader.shareutil.ShareTinkerInternals;
@@ -23,16 +23,16 @@ public final class d
     super(paramContext);
   }
   
-  private void dcz()
+  private void dfr()
   {
     AppMethodBeat.i(117477);
     new a(this.context, new a.a()
     {
-      public final void dcu()
+      public final void dfm()
       {
         AppMethodBeat.i(117466);
-        if (d.this.fYv()) {
-          b.dcj();
+        if (d.this.gcU()) {
+          b.dfb();
         }
         AppMethodBeat.o(117466);
       }
@@ -51,21 +51,21 @@ public final class d
     switch (paramInt)
     {
     default: 
-      if (!com.tencent.tinker.lib.e.a.lk(this.context).AEC)
+      if (!com.tencent.tinker.lib.e.a.lq(this.context).AWf)
       {
         ShareTinkerLog.v("Tinker.TinkerPatchLoadReporter", "onPatchRetryLoad retry is not main process, just return", new Object[0]);
-        ad.d("Tinker.TinkerPatchLoadReporter", "onLoadResult loadcode:%d icost:%d", new Object[] { Integer.valueOf(paramInt), Long.valueOf(paramLong) });
+        ae.d("Tinker.TinkerPatchLoadReporter", "onLoadResult loadcode:%d icost:%d", new Object[] { Integer.valueOf(paramInt), Long.valueOf(paramLong) });
         if (paramInt == 0) {
-          ad.i("Tinker.TinkerPatchLoadReporter", "onLoadResult currentVersion:%s", new Object[] { com.tencent.tinker.lib.e.a.lk(this.context).Mha.Mhf });
+          ae.i("Tinker.TinkerPatchLoadReporter", "onLoadResult currentVersion:%s", new Object[] { com.tencent.tinker.lib.e.a.lq(this.context).MDX.MEc });
         }
-        localObject = com.tencent.tinker.lib.e.a.lk(this.context);
-        if ((((com.tencent.tinker.lib.e.a)localObject).Mha == null) || (((com.tencent.tinker.lib.e.a)localObject).Mha.Mhq == null)) {
+        localObject = com.tencent.tinker.lib.e.a.lq(this.context);
+        if ((((com.tencent.tinker.lib.e.a)localObject).MDX == null) || (((com.tencent.tinker.lib.e.a)localObject).MDX.MEn == null)) {
           break label322;
         }
-        paramFile = i.hgG;
-        str = (String)((com.tencent.tinker.lib.e.a)localObject).Mha.Mhq.get("patch.client.ver");
-        localObject = (String)((com.tencent.tinker.lib.e.a)localObject).Mha.Mhq.get("NEW_TINKER_ID");
-        i = b.b.uIf.value;
+        paramFile = j.hju;
+        str = (String)((com.tencent.tinker.lib.e.a)localObject).MDX.MEn.get("patch.client.ver");
+        localObject = (String)((com.tencent.tinker.lib.e.a)localObject).MDX.MEn.get("NEW_TINKER_ID");
+        i = b.b.uTS.value;
         if (paramInt != 0) {
           break label312;
         }
@@ -73,12 +73,12 @@ public final class d
       break;
     }
     label312:
-    for (paramInt = b.a.uIc.value;; paramInt = b.a.uIb.value)
+    for (paramInt = b.a.uTP.value;; paramInt = b.a.uTO.value)
     {
       b.e(paramFile, str, (String)localObject, i, paramInt);
       AppMethodBeat.o(117475);
       return;
-      b.x(paramLong, com.tencent.tinker.lib.e.a.lk(this.context).AEC);
+      b.x(paramLong, com.tencent.tinker.lib.e.a.lq(this.context).AWf);
       break;
       paramFile = new File(SharePatchFileUtil.getPatchTempDirectory(this.context), "temp.apk").getAbsolutePath();
       if ((paramFile == null) || (!new File(paramFile).exists()))
@@ -88,11 +88,11 @@ public final class d
       }
       new a(this.context, new a.a()
       {
-        public final void dcu()
+        public final void dfm()
         {
           AppMethodBeat.i(117467);
-          if (c.lp(d.this.context).fYC()) {
-            b.dcj();
+          if (c.lv(d.this.context).gdb()) {
+            b.dfb();
           }
           AppMethodBeat.o(117467);
         }
@@ -100,7 +100,7 @@ public final class d
       break label56;
     }
     label322:
-    ad.i("Tinker.TinkerPatchLoadReporter", "patchCheck properties is null.");
+    ae.i("Tinker.TinkerPatchLoadReporter", "patchCheck properties is null.");
     AppMethodBeat.o(117475);
   }
   
@@ -109,23 +109,23 @@ public final class d
     AppMethodBeat.i(117470);
     ShareTinkerLog.v("Tinker.TinkerPatchLoadReporter", "patch loadReporter onLoadFileNotFound: patch file not found: %s, fileType:%d, isDirectory:%b", new Object[] { paramFile.getAbsolutePath(), Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean) });
     if (paramInt == 4) {
-      dcz();
+      dfr();
     }
     for (;;)
     {
       if (paramInt == 1)
       {
-        paramFile = com.tencent.tinker.lib.e.a.lk(this.context).Mha;
-        if ((paramFile.Mhf != null) && ("00000000000000000000000000000000".equals(paramFile.Mhf)))
+        paramFile = com.tencent.tinker.lib.e.a.lq(this.context).MDX;
+        if ((paramFile.MEc != null) && ("00000000000000000000000000000000".equals(paramFile.MEc)))
         {
           ShareTinkerLog.v("Tinker.TinkerPatchLoadReporter", "Roll back patch when restarting main process, restart all other process also!", new Object[0]);
           ShareTinkerInternals.killAllOtherProcess(this.context);
         }
       }
-      b.It(paramInt);
+      b.IR(paramInt);
       AppMethodBeat.o(117470);
       return;
-      fYu();
+      gcT();
     }
   }
   
@@ -133,7 +133,7 @@ public final class d
   {
     AppMethodBeat.i(117474);
     super.a(paramString1, paramString2, paramFile, paramString3);
-    b.dcn();
+    b.dff();
     AppMethodBeat.o(117474);
   }
   
@@ -154,7 +154,7 @@ public final class d
     }
     for (;;)
     {
-      dcz();
+      dfr();
       b.a(paramInt, paramThrowable);
       AppMethodBeat.o(117471);
       return;
@@ -170,7 +170,7 @@ public final class d
   {
     AppMethodBeat.i(117469);
     super.b(paramFile, paramInt);
-    b.Iu(paramInt);
+    b.IS(paramInt);
     AppMethodBeat.o(117469);
   }
   
@@ -178,7 +178,7 @@ public final class d
   {
     AppMethodBeat.i(117473);
     super.b(paramString1, paramString2, paramFile);
-    b.dcm();
+    b.dfe();
     AppMethodBeat.o(117473);
   }
   
@@ -186,7 +186,7 @@ public final class d
   {
     AppMethodBeat.i(117472);
     super.c(paramFile, paramInt);
-    b.F(aj.IdC, paramInt);
+    b.H(ak.IxN, paramInt);
     AppMethodBeat.o(117472);
   }
   
@@ -197,15 +197,15 @@ public final class d
     if ((paramInt == -26) || (paramInt == -5))
     {
       ShareTinkerInternals.setTinkerDisableWithSharedPreferences(this.context);
-      com.tencent.tinker.lib.e.a.lk(this.context).tinkerFlags = 0;
+      com.tencent.tinker.lib.e.a.lq(this.context).tinkerFlags = 0;
     }
-    b.Iq(paramInt);
+    b.IO(paramInt);
     AppMethodBeat.o(117476);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.hp.tinker.d
  * JD-Core Version:    0.7.0.1
  */

@@ -3,11 +3,11 @@ package e.a.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class g
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public String HcE;
-  public String HcF;
-  public int HcG;
+  public String Hwe;
+  public String Hwf;
+  public int Hwg;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -15,37 +15,37 @@ public final class g
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.HcE != null) {
-        paramVarArgs.d(1, this.HcE);
+      if (this.Hwe != null) {
+        paramVarArgs.d(1, this.Hwe);
       }
-      if (this.HcF != null) {
-        paramVarArgs.d(2, this.HcF);
+      if (this.Hwf != null) {
+        paramVarArgs.d(2, this.Hwf);
       }
-      paramVarArgs.aS(3, this.HcG);
+      paramVarArgs.aS(3, this.Hwg);
       AppMethodBeat.o(91745);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.HcE == null) {
+      if (this.Hwe == null) {
         break label318;
       }
     }
     label318:
-    for (paramInt = f.a.a.b.b.a.e(1, this.HcE) + 0;; paramInt = 0)
+    for (paramInt = f.a.a.b.b.a.e(1, this.Hwe) + 0;; paramInt = 0)
     {
       int i = paramInt;
-      if (this.HcF != null) {
-        i = paramInt + f.a.a.b.b.a.e(2, this.HcF);
+      if (this.Hwf != null) {
+        i = paramInt + f.a.a.b.b.a.e(2, this.Hwf);
       }
-      paramInt = f.a.a.b.b.a.bz(3, this.HcG);
+      paramInt = f.a.a.b.b.a.bz(3, this.Hwg);
       AppMethodBeat.o(91745);
       return i + paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
         AppMethodBeat.o(91745);
@@ -61,15 +61,15 @@ public final class g
           AppMethodBeat.o(91745);
           return -1;
         case 1: 
-          localg.HcE = locala.NPN.readString();
+          localg.Hwe = locala.OmT.readString();
           AppMethodBeat.o(91745);
           return 0;
         case 2: 
-          localg.HcF = locala.NPN.readString();
+          localg.Hwf = locala.OmT.readString();
           AppMethodBeat.o(91745);
           return 0;
         }
-        localg.HcG = locala.NPN.zc();
+        localg.Hwg = locala.OmT.zc();
         AppMethodBeat.o(91745);
         return 0;
       }
@@ -80,7 +80,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     e.a.a.g
  * JD-Core Version:    0.7.0.1
  */

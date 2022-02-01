@@ -3,59 +3,59 @@ package com.tencent.mm.plugin.facedetect.c;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Process;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
-import com.tencent.mm.ao.b;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.an.b;
 import com.tencent.mm.plugin.facedetect.b.u;
 import com.tencent.mm.plugin.facedetect.b.v;
 import com.tencent.mm.plugin.facedetect.model.FaceDetectReporter;
 import com.tencent.mm.plugin.facedetect.model.e;
 import com.tencent.mm.plugin.facedetect.model.p;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.vfs.i;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.vfs.o;
 import java.lang.ref.WeakReference;
 
 public abstract class a
 {
-  private com.tencent.mm.remoteservice.d giA = null;
+  private com.tencent.mm.remoteservice.d gkS = null;
   private Context mContext;
-  private int rfF;
-  protected com.tencent.mm.plugin.facedetect.b.d rfG = null;
-  protected com.tencent.mm.plugin.facedetect.b.c rfH = null;
-  protected WeakReference<f> rgB;
-  protected boolean rgC = false;
-  int rgD = -1;
-  public int rgE;
-  protected com.tencent.mm.plugin.facedetect.b.a rgF = null;
-  protected boolean rgG = false;
-  protected int rgH;
+  private int rnI;
+  protected com.tencent.mm.plugin.facedetect.b.d rnJ = null;
+  protected com.tencent.mm.plugin.facedetect.b.c rnK = null;
+  protected WeakReference<f> roF;
+  protected boolean roG = false;
+  int roH = -1;
+  public int roI;
+  protected com.tencent.mm.plugin.facedetect.b.a roJ = null;
+  protected boolean roK = false;
+  protected int roL;
   
   a(Context paramContext, f paramf, int paramInt1, int paramInt2)
   {
     this.mContext = paramContext;
-    this.rfF = paramInt1;
-    this.rgB = new WeakReference(paramf);
-    this.rgE = paramInt2;
-    this.rgF = new com.tencent.mm.plugin.facedetect.b.a(paramInt1, paramInt2);
-    this.rgD = FaceDetectReporter.DL(paramInt1);
+    this.rnI = paramInt1;
+    this.roF = new WeakReference(paramf);
+    this.roI = paramInt2;
+    this.roJ = new com.tencent.mm.plugin.facedetect.b.a(paramInt1, paramInt2);
+    this.roH = FaceDetectReporter.DY(paramInt1);
   }
   
-  public final void DG(int paramInt)
+  public final void DT(int paramInt)
   {
-    this.rgH = paramInt;
+    this.roL = paramInt;
   }
   
   protected final void a(int paramInt1, int paramInt2, String paramString, Bundle paramBundle)
   {
     boolean bool = true;
-    if (this.rgB == null) {}
+    if (this.roF == null) {}
     for (;;)
     {
-      ad.i("MicroMsg.FaceDetectBaseController", "alvinluo finishWithResult mUIModel == null: %b", new Object[] { Boolean.valueOf(bool) });
-      if ((this.rgB != null) && (this.rgB.get() != null)) {
-        ((f)this.rgB.get()).a(paramInt1, paramInt2, paramString, paramBundle);
+      ae.i("MicroMsg.FaceDetectBaseController", "alvinluo finishWithResult mUIModel == null: %b", new Object[] { Boolean.valueOf(bool) });
+      if ((this.roF != null) && (this.roF.get() != null)) {
+        ((f)this.roF.get()).a(paramInt1, paramInt2, paramString, paramBundle);
       }
       return;
       bool = false;
@@ -64,44 +64,44 @@ public abstract class a
   
   public final void a(com.tencent.mm.plugin.facedetect.b.c paramc)
   {
-    if (this.rgF != null)
+    if (this.roJ != null)
     {
-      this.rfH = paramc;
-      this.rgF.rfH = this.rfH;
+      this.rnK = paramc;
+      this.roJ.rnK = this.rnK;
     }
   }
   
   public final void a(com.tencent.mm.plugin.facedetect.b.d paramd)
   {
-    if (this.rgF != null)
+    if (this.roJ != null)
     {
-      this.rfG = paramd;
-      this.rgF.rfG = paramd;
+      this.rnJ = paramd;
+      this.roJ.rnJ = paramd;
     }
   }
   
   public final void a(boolean paramBoolean1, boolean paramBoolean2, com.tencent.mm.plugin.facedetect.ui.c paramc)
   {
-    if ((this.rgB != null) && (this.rgB.get() != null)) {
-      ((f)this.rgB.get()).a(paramBoolean1, paramBoolean2, paramc);
+    if ((this.roF != null) && (this.roF.get() != null)) {
+      ((f)this.roF.get()).a(paramBoolean1, paramBoolean2, paramc);
     }
   }
   
-  public abstract void aT(int paramInt, String paramString);
+  public abstract void aS(int paramInt, String paramString);
   
-  public final void afU(String paramString)
+  public final void agQ(String paramString)
   {
     com.tencent.mm.plugin.facedetect.b.a locala;
-    if (this.rgF != null)
+    if (this.roJ != null)
     {
-      locala = this.rgF;
-      if (!locala.rfJ)
+      locala = this.roJ;
+      if (!locala.rnM)
       {
-        locala.rfL = 1;
-        if (!bt.isNullOrNil(paramString)) {
+        locala.rnO = 1;
+        if (!bu.isNullOrNil(paramString)) {
           break label48;
         }
-        ad.e("MicroMsg.FaceUploadProcessor", "hy: err face file null");
+        ae.e("MicroMsg.FaceUploadProcessor", "hy: err face file null");
         locala.s(4, 90011, "face file null");
       }
     }
@@ -112,44 +112,44 @@ public abstract class a
       do
       {
         return;
-        if (!i.fv(paramString))
+        if (!o.fB(paramString))
         {
-          ad.e("MicroMsg.FaceUploadProcessor", "hy: file not exist");
+          ae.e("MicroMsg.FaceUploadProcessor", "hy: file not exist");
           locala.s(4, 90011, "get image failed");
           return;
         }
-        if (locala.rfK == 0L)
+        if (locala.rnN == 0L)
         {
-          ad.e("MicroMsg.FaceUploadProcessor", "hy: err not init");
+          ae.e("MicroMsg.FaceUploadProcessor", "hy: err not init");
           locala.s(4, 90014, "uploadId not init");
           return;
         }
-        ad.i("MicroMsg.FaceUploadProcessor", "hy: start upload file : %s", new Object[] { paramString });
-      } while (locala.rfJ);
+        ae.i("MicroMsg.FaceUploadProcessor", "hy: start upload file : %s", new Object[] { paramString });
+      } while (locala.rnM);
       localg = new com.tencent.mm.i.g();
-      localg.fJi = "task_FaceUploadProcessor";
-      localg.fJj = locala.rfR;
-      localg.field_mediaId = p.afX(paramString);
+      localg.fLl = "task_FaceUploadProcessor";
+      localg.fLm = locala.rnU;
+      localg.field_mediaId = p.agT(paramString);
       localg.field_fullpath = paramString;
       localg.field_thumbpath = "";
       localg.field_fileType = com.tencent.mm.i.a.MediaType_FILE;
       localg.field_talker = "";
-      localg.field_priority = com.tencent.mm.i.a.fIw;
+      localg.field_priority = com.tencent.mm.i.a.fKA;
       localg.field_needStorage = false;
       localg.field_isStreamMedia = false;
       localg.field_appType = 1;
       localg.field_bzScene = 0;
       localg.field_largesvideo = 0;
-      localg.ePC = 5;
-    } while (com.tencent.mm.ao.f.aGI().f(localg));
-    ad.e("MicroMsg.FaceUploadProcessor", "hy: cdntra addSendTask failed. clientid:%s", new Object[] { localg.field_mediaId });
+      localg.eRn = 5;
+    } while (com.tencent.mm.an.f.aGZ().f(localg));
+    ae.e("MicroMsg.FaceUploadProcessor", "hy: cdntra addSendTask failed. clientid:%s", new Object[] { localg.field_mediaId });
     locala.s(4, 90019, "add to cdn failed");
   }
   
   protected final void b(int paramInt1, int paramInt2, String paramString, Bundle paramBundle)
   {
-    if ((this.rgB != null) && (this.rgB.get() != null)) {
-      ((f)this.rgB.get()).d(paramInt1, paramInt2, paramString, paramBundle);
+    if ((this.roF != null) && (this.roF.get() != null)) {
+      ((f)this.roF.get()).d(paramInt1, paramInt2, paramString, paramBundle);
     }
   }
   
@@ -157,150 +157,150 @@ public abstract class a
   {
     if ((paramInt == 0) && (!c(paramInt, paramString, paramBundle)))
     {
-      ad.i("MicroMsg.FaceDetectBaseController", "alvinluo onUploadSuccess");
-      this.rgC = true;
-      if (this.rgG)
+      ae.i("MicroMsg.FaceDetectBaseController", "alvinluo onUploadSuccess");
+      this.roG = true;
+      if (this.roK)
       {
-        paramString = csL();
+        paramString = cum();
         if (paramString != null) {
           break label51;
         }
-        ad.e("MicroMsg.FaceDetectBaseController", "alvinluo verifyNetScene is null, stop verify");
+        ae.e("MicroMsg.FaceDetectBaseController", "alvinluo verifyNetScene is null, stop verify");
       }
     }
     label51:
     do
     {
       return;
-      ad.i("MicroMsg.FaceDetectBaseController", "alvinluo start verify, sceneType: %d", new Object[] { Integer.valueOf(paramString.getType()) });
-      if (!this.rgC)
+      ae.i("MicroMsg.FaceDetectBaseController", "alvinluo start verify, sceneType: %d", new Object[] { Integer.valueOf(paramString.getType()) });
+      if (!this.roG)
       {
-        ad.e("MicroMsg.FaceDetectBaseController", "isUploadDone: %b, upload not done, can't startVerify", new Object[] { Boolean.valueOf(this.rgC) });
+        ae.e("MicroMsg.FaceDetectBaseController", "isUploadDone: %b, upload not done, can't startVerify", new Object[] { Boolean.valueOf(this.roG) });
         return;
       }
-    } while (this.rgF == null);
-    paramBundle = this.rgF;
+    } while (this.roJ == null);
+    paramBundle = this.roJ;
     if (paramString == null)
     {
-      ad.e("MicroMsg.FaceUploadProcessor", "alvinluo verifyNetScene is null");
+      ae.e("MicroMsg.FaceUploadProcessor", "alvinluo verifyNetScene is null");
       return;
     }
-    ad.i("MicroMsg.FaceUploadProcessor", "uploader start verify, sceneType: %d", new Object[] { Integer.valueOf(paramString.getType()) });
-    paramBundle.csB();
-    paramBundle.rfN = paramString;
-    paramBundle.rfL = 2;
-    com.tencent.mm.kernel.g.aiU().a(paramString.getType(), paramBundle);
-    com.tencent.mm.kernel.g.aiU().a(paramString, 0);
-    paramBundle.rfO = System.currentTimeMillis();
+    ae.i("MicroMsg.FaceUploadProcessor", "uploader start verify, sceneType: %d", new Object[] { Integer.valueOf(paramString.getType()) });
+    paramBundle.cuc();
+    paramBundle.rnQ = paramString;
+    paramBundle.rnO = 2;
+    com.tencent.mm.kernel.g.ajj().a(paramString.getType(), paramBundle);
+    com.tencent.mm.kernel.g.ajj().a(paramString, 0);
+    paramBundle.rnR = System.currentTimeMillis();
   }
   
   public abstract void c(int paramInt1, int paramInt2, String paramString, Bundle paramBundle);
   
   public abstract boolean c(int paramInt, String paramString, Bundle paramBundle);
   
-  public final void csH()
+  public final void cui()
   {
     com.tencent.mm.plugin.facedetect.b.a locala;
-    if (this.rgF != null)
+    if (this.roJ != null)
     {
-      this.rgF.rfQ = this.rgE;
-      locala = this.rgF;
-      com.tencent.mm.kernel.g.ajA();
-      locala.rfI = com.tencent.mm.kernel.a.aiJ();
-      ad.i("MicroMsg.FaceUploadProcessor", "alvinluo isLogin: %b", new Object[] { Boolean.valueOf(locala.rfI) });
-      if (!locala.rfI) {
+      this.roJ.rnT = this.roI;
+      locala = this.roJ;
+      com.tencent.mm.kernel.g.ajP();
+      locala.rnL = com.tencent.mm.kernel.a.aiY();
+      ae.i("MicroMsg.FaceUploadProcessor", "alvinluo isLogin: %b", new Object[] { Boolean.valueOf(locala.rnL) });
+      if (!locala.rnL) {
         break label157;
       }
-      com.tencent.mm.kernel.g.aiU().a(732, locala);
-      locala = this.rgF;
-      locala.rfK = 0L;
-      locala.rfL = 0;
-      if (locala.rfM != null) {
-        com.tencent.mm.kernel.g.aiU().a(locala.rfM);
+      com.tencent.mm.kernel.g.ajj().a(732, locala);
+      locala = this.roJ;
+      locala.rnN = 0L;
+      locala.rnO = 0;
+      if (locala.rnP != null) {
+        com.tencent.mm.kernel.g.ajj().a(locala.rnP);
       }
-      if (e.csR()) {
-        e.vl(locala.rfK);
+      if (e.cus()) {
+        e.vB(locala.rnN);
       }
-      if (!locala.rfI) {
+      if (!locala.rnL) {
         break label170;
       }
     }
     label157:
     label170:
-    for (locala.rfM = new u(locala.rfF, locala.rfQ);; locala.rfM = new v(locala.rfF, locala.rfQ))
+    for (locala.rnP = new u(locala.rnI, locala.rnT);; locala.rnP = new v(locala.rnI, locala.rnT))
     {
-      com.tencent.mm.kernel.g.aiU().a(locala.rfM, 0);
+      com.tencent.mm.kernel.g.ajj().a(locala.rnP, 0);
       return;
-      com.tencent.mm.kernel.g.aiU().a(733, locala);
+      com.tencent.mm.kernel.g.ajj().a(733, locala);
       break;
     }
   }
   
-  public final void csI()
+  public final void cuj()
   {
-    if ((this.rgB != null) && (this.rgB.get() != null)) {
-      ((f)this.rgB.get()).csI();
+    if ((this.roF != null) && (this.roF.get() != null)) {
+      ((f)this.roF.get()).cuj();
     }
     onStart();
   }
   
-  public final long csJ()
+  public final long cuk()
   {
-    if (this.rgF != null) {
-      return this.rgF.rfK;
+    if (this.roJ != null) {
+      return this.roJ.rnN;
     }
     return -1L;
   }
   
-  public final void csK()
+  public final void cul()
   {
-    ad.i("MicroMsg.FaceDetectBaseController", "alvinluo controller releaseFaceDetect");
-    if ((this.rgB != null) && (this.rgB.get() != null)) {
-      ((f)this.rgB.get()).csK();
+    ae.i("MicroMsg.FaceDetectBaseController", "alvinluo controller releaseFaceDetect");
+    if ((this.roF != null) && (this.roF.get() != null)) {
+      ((f)this.roF.get()).cul();
     }
-    this.rgB = null;
-    Object localObject = bt.getProcessNameByPid(aj.getContext(), Process.myPid());
-    String str = aj.getPackageName();
-    ad.i("MicroMsg.FaceDetectBaseController", "process name: %s", new Object[] { localObject });
+    this.roF = null;
+    Object localObject = bu.getProcessNameByPid(ak.getContext(), Process.myPid());
+    String str = ak.getPackageName();
+    ae.i("MicroMsg.FaceDetectBaseController", "process name: %s", new Object[] { localObject });
     boolean bool;
     if (((String)localObject).equalsIgnoreCase(str)) {
-      if (this.rgF != null)
+      if (this.roJ != null)
       {
-        localObject = this.rgF;
-        if (((com.tencent.mm.plugin.facedetect.b.a)localObject).rfM != null) {
+        localObject = this.roJ;
+        if (((com.tencent.mm.plugin.facedetect.b.a)localObject).rnP != null) {
           break label201;
         }
         bool = true;
-        ad.v("MicroMsg.FaceUploadProcessor", "alvinluo uinit mCurrentNetScene == null: %b", new Object[] { Boolean.valueOf(bool) });
-        ((com.tencent.mm.plugin.facedetect.b.a)localObject).rfJ = true;
-        if (((com.tencent.mm.plugin.facedetect.b.a)localObject).rfM != null)
+        ae.v("MicroMsg.FaceUploadProcessor", "alvinluo uinit mCurrentNetScene == null: %b", new Object[] { Boolean.valueOf(bool) });
+        ((com.tencent.mm.plugin.facedetect.b.a)localObject).rnM = true;
+        if (((com.tencent.mm.plugin.facedetect.b.a)localObject).rnP != null)
         {
-          ad.i("MicroMsg.FaceUploadProcessor", "alvinluo hy: current scene: %s is not finished yet. cancel.", new Object[] { ((com.tencent.mm.plugin.facedetect.b.a)localObject).rfM.getClass().getSimpleName() });
-          com.tencent.mm.kernel.g.aiU().a(((com.tencent.mm.plugin.facedetect.b.a)localObject).rfM);
+          ae.i("MicroMsg.FaceUploadProcessor", "alvinluo hy: current scene: %s is not finished yet. cancel.", new Object[] { ((com.tencent.mm.plugin.facedetect.b.a)localObject).rnP.getClass().getSimpleName() });
+          com.tencent.mm.kernel.g.ajj().a(((com.tencent.mm.plugin.facedetect.b.a)localObject).rnP);
         }
-        if (!((com.tencent.mm.plugin.facedetect.b.a)localObject).rfI) {
+        if (!((com.tencent.mm.plugin.facedetect.b.a)localObject).rnL) {
           break label206;
         }
-        com.tencent.mm.kernel.g.aiU().b(732, (com.tencent.mm.al.f)localObject);
+        com.tencent.mm.kernel.g.ajj().b(732, (com.tencent.mm.ak.f)localObject);
       }
     }
     for (;;)
     {
-      ((com.tencent.mm.plugin.facedetect.b.a)localObject).csB();
-      this.rgF = null;
+      ((com.tencent.mm.plugin.facedetect.b.a)localObject).cuc();
+      this.roJ = null;
       onRelease();
       return;
       label201:
       bool = false;
       break;
       label206:
-      com.tencent.mm.kernel.g.aiU().b(733, (com.tencent.mm.al.f)localObject);
+      com.tencent.mm.kernel.g.ajj().b(733, (com.tencent.mm.ak.f)localObject);
     }
   }
   
-  protected abstract n csL();
+  protected abstract n cum();
   
-  public abstract Bundle csM();
+  public abstract Bundle cun();
   
   public abstract void f(int paramInt1, int paramInt2, String paramString, n paramn);
   

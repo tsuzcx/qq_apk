@@ -5,9 +5,9 @@ import android.content.Context;
 import android.database.Cursor;
 import android.provider.MediaStore.Video.Media;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.LinkedList;
 
 public final class u
@@ -18,22 +18,22 @@ public final class u
   public u()
   {
     AppMethodBeat.i(111380);
-    this.bEI = aj.getContext().getContentResolver();
+    this.bEI = ak.getContext().getContentResolver();
     AppMethodBeat.o(111380);
   }
   
   public final LinkedList<GalleryItem.MediaItem> a(String paramString, int paramInt, i.c paramc, long paramLong)
   {
     AppMethodBeat.i(111386);
-    this.hjP = false;
+    this.hmD = false;
     LinkedList localLinkedList = new LinkedList();
     for (;;)
     {
       try
       {
-        if (bt.isNullOrNil(paramString))
+        if (bu.isNullOrNil(paramString))
         {
-          localCursor1 = this.bEI.query(MediaStore.Video.Media.EXTERNAL_CONTENT_URI, getProjection(), b(new String[] { this.tFF[0] }, false), null, mL(false));
+          localCursor1 = this.bEI.query(MediaStore.Video.Media.EXTERNAL_CONTENT_URI, getProjection(), b(new String[] { this.tQw[0] }, false), null, mP(false));
           localObject1 = localCursor1;
         }
       }
@@ -51,7 +51,7 @@ public final class u
       }
       try
       {
-        localCursor2 = this.bEI.query(MediaStore.Video.Media.EXTERNAL_CONTENT_URI, getProjection(), b(new String[] { this.tFF[0] }, true), null, mL(true));
+        localCursor2 = this.bEI.query(MediaStore.Video.Media.EXTERNAL_CONTENT_URI, getProjection(), b(new String[] { this.tQw[0] }, true), null, mP(true));
         if (localCursor1 == null) {}
       }
       finally
@@ -94,7 +94,7 @@ public final class u
         if (localMediaItem == null) {
           continue;
         }
-        if (((GalleryItem.MediaItem)localObject1).tGW > localMediaItem.tGW)
+        if (((GalleryItem.MediaItem)localObject1).tRN > localMediaItem.tRN)
         {
           localLinkedList.add(localObject1);
           localCursor2.moveToNext();
@@ -111,7 +111,7 @@ public final class u
               bool1 = false;
             }
           }
-          bool2 = this.hjP;
+          bool2 = this.hmD;
           if (!bool2) {
             break label915;
           }
@@ -123,11 +123,11 @@ public final class u
           }
           AppMethodBeat.o(111386);
           return localLinkedList;
-          localCursor1 = this.bEI.query(MediaStore.Video.Media.EXTERNAL_CONTENT_URI, getProjection(), bo(paramString, false), null, mL(false));
+          localCursor1 = this.bEI.query(MediaStore.Video.Media.EXTERNAL_CONTENT_URI, getProjection(), br(paramString, false), null, mP(false));
           localObject1 = localCursor1;
-          localCursor2 = this.bEI.query(MediaStore.Video.Media.EXTERNAL_CONTENT_URI, getProjection(), bo(paramString, true), null, mL(true));
+          localCursor2 = this.bEI.query(MediaStore.Video.Media.EXTERNAL_CONTENT_URI, getProjection(), br(paramString, true), null, mP(true));
         }
-        else if (((GalleryItem.MediaItem)localObject1).tGW < localMediaItem.tGW)
+        else if (((GalleryItem.MediaItem)localObject1).tRN < localMediaItem.tRN)
         {
           localLinkedList.add(localMediaItem);
           localCursor1.moveToNext();
@@ -161,7 +161,7 @@ public final class u
     localObject2 = localMediaItem;
     if (localObject4 != null)
     {
-      if ((localObject3 != null) && (localObject3.tGW > ((GalleryItem.MediaItem)localObject4).tGW))
+      if ((localObject3 != null) && (localObject3.tRN > ((GalleryItem.MediaItem)localObject4).tRN))
       {
         localLinkedList.add(localObject3);
         localLinkedList.add(localObject4);
@@ -179,7 +179,7 @@ public final class u
             bool2 = false;
           }
         }
-        bool1 = this.hjP;
+        bool1 = this.hmD;
         if (!bool1) {
           break;
         }
@@ -196,7 +196,7 @@ public final class u
     }
     if (localObject2 != null)
     {
-      if ((localObject1 != null) && (((GalleryItem.MediaItem)localObject1).tGW > ((GalleryItem.MediaItem)localObject2).tGW))
+      if ((localObject1 != null) && (((GalleryItem.MediaItem)localObject1).tRN > ((GalleryItem.MediaItem)localObject2).tRN))
       {
         localLinkedList.add(localObject1);
         localLinkedList.add(localObject2);
@@ -214,7 +214,7 @@ public final class u
             bool1 = false;
           }
         }
-        boolean bool3 = this.hjP;
+        boolean bool3 = this.hmD;
         bool2 = bool1;
         if (!bool3) {
           break;
@@ -234,7 +234,7 @@ public final class u
       localLinkedList.add(localObject1);
     }
     paramc.b(localLinkedList, paramLong, bool2);
-    ad.i("MicroMsg.ImageMediaQuery", "[queryMediaItemsInAlbum] albumName:%s type:%s result:%s ticket:%s", new Object[] { paramString, Integer.valueOf(paramInt), Integer.valueOf(localLinkedList.size()), Long.valueOf(paramLong) });
+    ae.i("MicroMsg.ImageMediaQuery", "[queryMediaItemsInAlbum] albumName:%s type:%s result:%s ticket:%s", new Object[] { paramString, Integer.valueOf(paramInt), Integer.valueOf(localLinkedList.size()), Long.valueOf(paramLong) });
     if (localCursor1 != null) {
       localCursor1.close();
     }
@@ -254,7 +254,7 @@ public final class u
     String str2;
     if (paramBoolean)
     {
-      str1 = "(" + b.tFG + ">2147483647 OR " + b.tFG + "<=0 ) AND (_size>10240";
+      str1 = "(" + b.tQx + ">2147483647 OR " + b.tQx + "<=0 ) AND (_size>10240";
       j = paramArrayOfString.length;
       i = 0;
       while (i < j)
@@ -266,10 +266,10 @@ public final class u
     }
     for (paramArrayOfString = str1 + ")";; paramArrayOfString = str1 + ")")
     {
-      ad.d("MicroMsg.ImageMediaQuery", "where %s", new Object[] { paramArrayOfString });
+      ae.d("MicroMsg.ImageMediaQuery", "where %s", new Object[] { paramArrayOfString });
       AppMethodBeat.o(111382);
       return paramArrayOfString;
-      str1 = b.tFG + "<=2147483647 AND " + b.tFG + ">0 AND (_size>10240";
+      str1 = b.tQx + "<=2147483647 AND " + b.tQx + ">0 AND (_size>10240";
       j = paramArrayOfString.length;
       i = 0;
       while (i < j)
@@ -281,12 +281,12 @@ public final class u
     }
   }
   
-  public final String bo(String paramString, boolean paramBoolean)
+  public final String br(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(111381);
     StringBuilder localStringBuilder = new StringBuilder("bucket_display_name='").append(paramString).append("' AND ");
     if (paramBoolean) {}
-    for (paramString = "(" + b.tFG + ">2147483647 OR " + b.tFG + "<=0 )";; paramString = b.tFG + "<=2147483647 AND " + b.tFG + ">0")
+    for (paramString = "(" + b.tQx + ">2147483647 OR " + b.tQx + "<=0 )";; paramString = b.tQx + "<=2147483647 AND " + b.tQx + ">0")
     {
       paramString = paramString;
       AppMethodBeat.o(111381);
@@ -295,7 +295,7 @@ public final class u
   }
   
   /* Error */
-  public final LinkedList<GalleryItem.AlbumItem> cUw()
+  public final LinkedList<GalleryItem.AlbumItem> cXb()
   {
     // Byte code:
     //   0: ldc 202
@@ -308,7 +308,7 @@ public final class u
     //   14: getfield 31	com/tencent/mm/plugin/gallery/model/u:bEI	Landroid/content/ContentResolver;
     //   17: getstatic 57	android/provider/MediaStore$Video$Media:EXTERNAL_CONTENT_URI	Landroid/net/Uri;
     //   20: aload_0
-    //   21: invokevirtual 205	com/tencent/mm/plugin/gallery/model/u:cUx	()[Ljava/lang/String;
+    //   21: invokevirtual 205	com/tencent/mm/plugin/gallery/model/u:cXc	()[Ljava/lang/String;
     //   24: ldc 207
     //   26: aconst_null
     //   27: ldc 209
@@ -369,7 +369,7 @@ public final class u
     //   144: aload_1
     //   145: invokevirtual 223	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   148: aastore
-    //   149: invokestatic 226	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   149: invokestatic 226	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   152: goto -58 -> 94
     //   155: astore 4
     //   157: aload_2
@@ -415,38 +415,38 @@ public final class u
     //   68	82	176	finally
   }
   
-  public final String[] cUx()
+  public final String[] cXc()
   {
     AppMethodBeat.i(111384);
-    String str1 = b.tFH;
-    String str2 = b.tFG;
-    String str3 = "max(" + b.tFG + ") as max_time";
+    String str1 = b.tQy;
+    String str2 = b.tQx;
+    String str3 = "max(" + b.tQx + ") as max_time";
     AppMethodBeat.o(111384);
     return new String[] { "_id", "_data", "bucket_display_name", "count(*)", str1, str2, "mime_type", str3, "bucket_id" };
   }
   
   public final String[] getProjection()
   {
-    return new String[] { "_id", "_data", b.tFH, b.tFG, "mime_type", "latitude", "longitude" };
+    return new String[] { "_id", "_data", b.tQy, b.tQx, "mime_type", "latitude", "longitude" };
   }
   
-  public final String mL(boolean paramBoolean)
+  public final String mP(boolean paramBoolean)
   {
     AppMethodBeat.i(111383);
     if (paramBoolean)
     {
-      str = b.tFH + " desc, bucket_display_name desc, _id desc";
+      str = b.tQy + " desc, bucket_display_name desc, _id desc";
       AppMethodBeat.o(111383);
       return str;
     }
-    String str = b.tFG + " desc, bucket_display_name desc, _id desc";
+    String str = b.tQx + " desc, bucket_display_name desc, _id desc";
     AppMethodBeat.o(111383);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.gallery.model.u
  * JD-Core Version:    0.7.0.1
  */

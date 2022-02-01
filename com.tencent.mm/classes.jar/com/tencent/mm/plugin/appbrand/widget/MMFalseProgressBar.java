@@ -6,21 +6,21 @@ import android.os.Message;
 import android.util.AttributeSet;
 import android.widget.ProgressBar;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.az;
 
 public class MMFalseProgressBar
   extends ProgressBar
 {
-  private ap mHandler;
+  private aq mHandler;
   private boolean mIsStart;
   private float mProgress;
-  private float mTg;
-  private float mTh;
-  private float mTi;
-  private float mTj;
-  private boolean mTk;
+  private float mYo;
+  private float mYp;
+  private float mYq;
+  private float mYr;
+  private boolean mYs;
   
   public MMFalseProgressBar(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -33,8 +33,8 @@ public class MMFalseProgressBar
     AppMethodBeat.i(135398);
     this.mIsStart = false;
     this.mProgress = 0.0F;
-    this.mTk = true;
-    this.mHandler = new ap(Looper.getMainLooper())
+    this.mYs = true;
+    this.mHandler = new aq(Looper.getMainLooper())
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
@@ -60,19 +60,19 @@ public class MMFalseProgressBar
       }
     };
     setMax(1000);
-    if (ay.iY(aj.getContext()))
+    if (az.jd(ak.getContext()))
     {
-      this.mTg = 4.0F;
-      this.mTh = 1.0F;
-      this.mTi = 0.3F;
-      this.mTj = 50.0F;
+      this.mYo = 4.0F;
+      this.mYp = 1.0F;
+      this.mYq = 0.3F;
+      this.mYr = 50.0F;
       AppMethodBeat.o(135398);
       return;
     }
-    this.mTg = 2.0F;
-    this.mTh = 0.5F;
-    this.mTi = 0.15F;
-    this.mTj = 50.0F;
+    this.mYo = 2.0F;
+    this.mYp = 0.5F;
+    this.mYq = 0.15F;
+    this.mYr = 50.0F;
     AppMethodBeat.o(135398);
   }
 }

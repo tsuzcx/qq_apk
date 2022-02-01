@@ -8,10 +8,10 @@ public class PAGSolidLayer
 {
   static
   {
-    AppMethodBeat.i(220198);
+    AppMethodBeat.i(216952);
     b.loadLibrary("libpag");
     nativeInit();
-    AppMethodBeat.o(220198);
+    AppMethodBeat.o(216952);
   }
   
   public PAGSolidLayer(long paramLong)

@@ -6,15 +6,15 @@ import java.util.Collection;
 public abstract interface t
   extends d, l
 {
-  public abstract Collection<g> G(d.g.a.b<? super f, Boolean> paramb);
+  public abstract Collection<g> J(d.g.a.b<? super f, Boolean> paramb);
   
-  public abstract d.l.b.a.b.f.b gjg();
+  public abstract d.l.b.a.b.f.b gnI();
   
-  public abstract Collection<t> glc();
+  public abstract Collection<t> gpE();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.d.a.e.t
  * JD-Core Version:    0.7.0.1
  */

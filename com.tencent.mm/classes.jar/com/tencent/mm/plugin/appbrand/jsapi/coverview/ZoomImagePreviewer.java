@@ -13,9 +13,9 @@ import com.tencent.mm.plugin.appbrand.f.a;
 import com.tencent.mm.plugin.appbrand.f.b;
 import com.tencent.mm.plugin.appbrand.jsapi.at;
 import com.tencent.mm.plugin.appbrand.jsapi.e;
-import com.tencent.mm.plugin.appbrand.page.aa;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.q;
+import com.tencent.mm.plugin.appbrand.page.z;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.r;
 import com.tencent.mm.ui.base.MultiTouchImageView;
 import com.tencent.mm.ui.tools.MMGestureGallery;
 import java.lang.ref.SoftReference;
@@ -30,12 +30,12 @@ public class ZoomImagePreviewer
   implements a.a
 {
   private int height;
-  private a kLo;
-  private ArrayList<String> kLp;
-  private aa kLq;
-  private HashMap<String, SoftReference<MultiTouchImageView>> kLr;
-  private HashSet<String> kLs;
-  private b kLt;
+  private a kOD;
+  private ArrayList<String> kOE;
+  private z kOF;
+  private HashMap<String, SoftReference<MultiTouchImageView>> kOG;
+  private HashSet<String> kOH;
+  private b kOI;
   private float scale;
   private int viewId;
   private int width;
@@ -43,60 +43,44 @@ public class ZoomImagePreviewer
   public ZoomImagePreviewer(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(188321);
-    this.kLp = new ArrayList();
+    AppMethodBeat.i(222447);
+    this.kOE = new ArrayList();
     this.width = 0;
     this.height = 0;
     this.scale = 1.0F;
-    this.kLr = new HashMap();
-    this.kLs = new HashSet();
+    this.kOG = new HashMap();
+    this.kOH = new HashSet();
     this.viewId = 0;
-    this.kLt = new b((byte)0);
+    this.kOI = new b((byte)0);
     init();
-    AppMethodBeat.o(188321);
+    AppMethodBeat.o(222447);
   }
   
   public ZoomImagePreviewer(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(188320);
-    this.kLp = new ArrayList();
+    AppMethodBeat.i(222446);
+    this.kOE = new ArrayList();
     this.width = 0;
     this.height = 0;
     this.scale = 1.0F;
-    this.kLr = new HashMap();
-    this.kLs = new HashSet();
+    this.kOG = new HashMap();
+    this.kOH = new HashSet();
     this.viewId = 0;
-    this.kLt = new b((byte)0);
+    this.kOI = new b((byte)0);
     init();
-    AppMethodBeat.o(188320);
+    AppMethodBeat.o(222446);
   }
   
   private void init()
   {
-    AppMethodBeat.i(188322);
-    this.kLo = new a((byte)0);
+    AppMethodBeat.i(222448);
+    this.kOD = new a((byte)0);
     setVerticalFadingEdgeEnabled(false);
     setHorizontalFadingEdgeEnabled(false);
-    setAdapter(this.kLo);
+    setAdapter(this.kOD);
     setSelection(0);
-    AppMethodBeat.o(188322);
-  }
-  
-  public final void cZ(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(188325);
-    if (!this.kLs.contains(paramString1))
-    {
-      this.kLs.add(paramString1);
-      b localb = this.kLt;
-      HashMap localHashMap = new HashMap();
-      localHashMap.put("url", paramString1);
-      localHashMap.put("reason", paramString2);
-      localHashMap.put("viewId", Integer.valueOf(localb.kLu.viewId));
-      localb.B(localHashMap).h(localb.kLu.kLq.Ew()).bir();
-    }
-    AppMethodBeat.o(188325);
+    AppMethodBeat.o(222448);
   }
   
   public final void dQ(int paramInt1, int paramInt2)
@@ -105,25 +89,41 @@ public class ZoomImagePreviewer
     this.height = paramInt2;
   }
   
-  public void setComponent(aa paramaa)
+  public final void db(String paramString1, String paramString2)
   {
-    this.kLq = paramaa;
+    AppMethodBeat.i(222451);
+    if (!this.kOH.contains(paramString1))
+    {
+      this.kOH.add(paramString1);
+      b localb = this.kOI;
+      HashMap localHashMap = new HashMap();
+      localHashMap.put("url", paramString1);
+      localHashMap.put("reason", paramString2);
+      localHashMap.put("viewId", Integer.valueOf(localb.kOJ.viewId));
+      localb.I(localHashMap).h(localb.kOJ.kOF.Ey()).bja();
+    }
+    AppMethodBeat.o(222451);
+  }
+  
+  public void setComponent(z paramz)
+  {
+    this.kOF = paramz;
   }
   
   public void setData(ArrayList<String> paramArrayList)
   {
-    AppMethodBeat.i(188323);
-    ad.i("MicroMsg.appbrand.ZoomImagePreviewer", "setData");
-    if ((this.kLq == null) || (paramArrayList == null))
+    AppMethodBeat.i(222449);
+    ae.i("MicroMsg.appbrand.ZoomImagePreviewer", "setData");
+    if ((this.kOF == null) || (paramArrayList == null))
     {
-      ad.i("MicroMsg.appbrand.ZoomImagePreviewer", "url is empty or component is null");
-      AppMethodBeat.o(188323);
+      ae.i("MicroMsg.appbrand.ZoomImagePreviewer", "url is empty or component is null");
+      AppMethodBeat.o(222449);
       return;
     }
-    this.kLp.clear();
-    this.kLp.addAll(paramArrayList);
-    this.kLo.notifyDataSetChanged();
-    AppMethodBeat.o(188323);
+    this.kOE.clear();
+    this.kOE.addAll(paramArrayList);
+    this.kOD.notifyDataSetChanged();
+    AppMethodBeat.o(222449);
   }
   
   public void setScale(float paramFloat)
@@ -138,19 +138,19 @@ public class ZoomImagePreviewer
   
   public final void x(ArrayList<String> paramArrayList)
   {
-    AppMethodBeat.i(188324);
-    ad.i("MicroMsg.appbrand.ZoomImagePreviewer", "updateDataView");
-    if (this.kLq == null)
+    AppMethodBeat.i(222450);
+    ae.i("MicroMsg.appbrand.ZoomImagePreviewer", "updateDataView");
+    if (this.kOF == null)
     {
-      ad.i("MicroMsg.appbrand.ZoomImagePreviewer", "updateDataView url is empty or component is null");
-      AppMethodBeat.o(188324);
+      ae.i("MicroMsg.appbrand.ZoomImagePreviewer", "updateDataView url is empty or component is null");
+      AppMethodBeat.o(222450);
       return;
     }
-    if ((this.kLp.isEmpty()) && (!paramArrayList.isEmpty()))
+    if ((this.kOE.isEmpty()) && (!paramArrayList.isEmpty()))
     {
-      this.kLp.addAll(paramArrayList);
-      this.kLo.notifyDataSetChanged();
-      AppMethodBeat.o(188324);
+      this.kOE.addAll(paramArrayList);
+      this.kOD.notifyDataSetChanged();
+      AppMethodBeat.o(222450);
       return;
     }
     if (!paramArrayList.isEmpty())
@@ -161,50 +161,50 @@ public class ZoomImagePreviewer
       while (paramArrayList.hasNext())
       {
         localObject2 = (String)paramArrayList.next();
-        if (!this.kLp.contains(localObject2))
+        if (!this.kOE.contains(localObject2))
         {
           ((ArrayList)localObject1).add(localObject2);
-          ad.i("MicroMsg.appbrand.ZoomImagePreviewer", "new url is added, url:%s", new Object[] { localObject2 });
+          ae.i("MicroMsg.appbrand.ZoomImagePreviewer", "new url is added, url:%s", new Object[] { localObject2 });
         }
       }
       if (!((ArrayList)localObject1).isEmpty())
       {
-        ad.i("MicroMsg.appbrand.ZoomImagePreviewer", "add new Data");
-        this.kLp.addAll((Collection)localObject1);
-        this.kLo.notifyDataSetChanged();
+        ae.i("MicroMsg.appbrand.ZoomImagePreviewer", "add new Data");
+        this.kOE.addAll((Collection)localObject1);
+        this.kOD.notifyDataSetChanged();
       }
-      ad.i("MicroMsg.appbrand.ZoomImagePreviewer", "update Data");
-      paramArrayList = this.kLp.iterator();
+      ae.i("MicroMsg.appbrand.ZoomImagePreviewer", "update Data");
+      paramArrayList = this.kOE.iterator();
       while (paramArrayList.hasNext())
       {
         localObject1 = (String)paramArrayList.next();
-        localObject2 = (SoftReference)this.kLr.get(localObject1);
+        localObject2 = (SoftReference)this.kOG.get(localObject1);
         if ((localObject2 != null) && (((SoftReference)localObject2).get() != null))
         {
           localObject1 = (MultiTouchImageView)((SoftReference)localObject2).get();
-          ad.i("MicroMsg.appbrand.ZoomImagePreviewer", "update Data width:%d, height:%d, scale:%f", new Object[] { Integer.valueOf(this.width), Integer.valueOf(this.height), Float.valueOf(this.scale) });
+          ae.i("MicroMsg.appbrand.ZoomImagePreviewer", "update Data width:%d, height:%d, scale:%f", new Object[] { Integer.valueOf(this.width), Integer.valueOf(this.height), Float.valueOf(this.scale) });
           ((MultiTouchImageView)localObject1).postDelayed(new Runnable()
           {
             public final void run()
             {
-              AppMethodBeat.i(188314);
-              if (ZoomImagePreviewer.a(ZoomImagePreviewer.this) != this.iUS.getOriginScale())
+              AppMethodBeat.i(222440);
+              if (ZoomImagePreviewer.a(ZoomImagePreviewer.this) != this.iXL.getOriginScale())
               {
-                this.iUS.setOriginScale(ZoomImagePreviewer.a(ZoomImagePreviewer.this));
-                this.iUS.bS(ZoomImagePreviewer.a(ZoomImagePreviewer.this));
-                this.iUS.fyz();
+                this.iXL.setOriginScale(ZoomImagePreviewer.a(ZoomImagePreviewer.this));
+                this.iXL.bQ(ZoomImagePreviewer.a(ZoomImagePreviewer.this));
+                this.iXL.fCB();
               }
-              AppMethodBeat.o(188314);
+              AppMethodBeat.o(222440);
             }
           }, 100L);
         }
         else
         {
-          ad.i("MicroMsg.appbrand.ZoomImagePreviewer", "update Data url with view is recycle or not exist, url:%s", new Object[] { localObject1 });
+          ae.i("MicroMsg.appbrand.ZoomImagePreviewer", "update Data url with view is recycle or not exist, url:%s", new Object[] { localObject1 });
         }
       }
     }
-    AppMethodBeat.o(188324);
+    AppMethodBeat.o(222450);
   }
   
   final class a
@@ -214,17 +214,17 @@ public class ZoomImagePreviewer
     
     public final int getCount()
     {
-      AppMethodBeat.i(188317);
+      AppMethodBeat.i(222443);
       int i = ZoomImagePreviewer.d(ZoomImagePreviewer.this).size();
-      AppMethodBeat.o(188317);
+      AppMethodBeat.o(222443);
       return i;
     }
     
     public final Object getItem(int paramInt)
     {
-      AppMethodBeat.i(188318);
+      AppMethodBeat.i(222444);
       Object localObject = ZoomImagePreviewer.d(ZoomImagePreviewer.this).get(paramInt);
-      AppMethodBeat.o(188318);
+      AppMethodBeat.o(222444);
       return localObject;
     }
     
@@ -235,9 +235,9 @@ public class ZoomImagePreviewer
     
     public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
     {
-      AppMethodBeat.i(188319);
+      AppMethodBeat.i(222445);
       label95:
-      aa localaa;
+      z localz;
       float f;
       ZoomImagePreviewer localZoomImagePreviewer;
       if (paramView == null)
@@ -245,7 +245,7 @@ public class ZoomImagePreviewer
         paramView = new MultiTouchImageView(ZoomImagePreviewer.this.getContext(), 0, 0, (byte)0);
         paramView.setLayoutParams(new Gallery.LayoutParams(-1, -1));
         paramViewGroup = new a();
-        paramViewGroup.kLw = paramView;
+        paramViewGroup.kOL = paramView;
         paramView.setTag(paramViewGroup);
         paramView.setMinZoomLimit(0.5F);
         paramView.setMaxZoomDoubleTab(true);
@@ -256,57 +256,57 @@ public class ZoomImagePreviewer
         paramView.setLayerType(1, null);
         paramView.setEnableHorLongBmpMode(false);
         paramViewGroup = (String)getItem(paramInt);
-        ad.i("MicroMsg.appbrand.ZoomImagePreviewer", "getView url:%s", new Object[] { paramViewGroup });
-        localaa = ZoomImagePreviewer.c(ZoomImagePreviewer.this);
+        ae.i("MicroMsg.appbrand.ZoomImagePreviewer", "getView url:%s", new Object[] { paramViewGroup });
+        localz = ZoomImagePreviewer.c(ZoomImagePreviewer.this);
         f = ZoomImagePreviewer.a(ZoomImagePreviewer.this);
         localZoomImagePreviewer = ZoomImagePreviewer.this;
         if ((paramView != null) && (paramViewGroup != null)) {
           break label245;
         }
         if (localZoomImagePreviewer != null) {
-          localZoomImagePreviewer.cZ(paramViewGroup, "invalid imageView or url");
+          localZoomImagePreviewer.db(paramViewGroup, "invalid imageView or url");
         }
       }
       for (;;)
       {
         paramView.setTag(paramView);
         ZoomImagePreviewer.g(ZoomImagePreviewer.this).put(paramViewGroup, new SoftReference(paramView));
-        AppMethodBeat.o(188319);
+        AppMethodBeat.o(222445);
         return paramView;
-        paramView = ((a)paramView.getTag()).kLw;
-        ad.i("MicroMsg.appbrand.ZoomImagePreviewer", "getView from holder");
+        paramView = ((a)paramView.getTag()).kOL;
+        ae.i("MicroMsg.appbrand.ZoomImagePreviewer", "getView from holder");
         break;
         label224:
-        q.A(paramView, ZoomImagePreviewer.e(ZoomImagePreviewer.this), ZoomImagePreviewer.f(ZoomImagePreviewer.this));
+        r.z(paramView, ZoomImagePreviewer.e(ZoomImagePreviewer.this), ZoomImagePreviewer.f(ZoomImagePreviewer.this));
         break label95;
         label245:
         if (!TextUtils.isEmpty(paramViewGroup))
         {
-          String str = ((b)localaa.K(b.class)).b(localaa, paramViewGroup);
-          ((a)localaa.K(a.class)).a(str, new a.1(localZoomImagePreviewer, paramViewGroup, str, paramView, f));
+          String str = ((b)localz.K(b.class)).b(localz, paramViewGroup);
+          ((a)localz.K(a.class)).a(str, new a.1(localZoomImagePreviewer, paramViewGroup, str, paramView, f));
         }
       }
     }
     
     public final void notifyDataSetChanged()
     {
-      AppMethodBeat.i(188316);
+      AppMethodBeat.i(222442);
       ZoomImagePreviewer.c(ZoomImagePreviewer.this).runOnUiThread(new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(188315);
+          AppMethodBeat.i(222441);
           ZoomImagePreviewer.b(ZoomImagePreviewer.this).clear();
-          AppMethodBeat.o(188315);
+          AppMethodBeat.o(222441);
         }
       });
       super.notifyDataSetChanged();
-      AppMethodBeat.o(188316);
+      AppMethodBeat.o(222442);
     }
     
     public final class a
     {
-      public MultiTouchImageView kLw;
+      public MultiTouchImageView kOL;
       
       public a() {}
     }
@@ -323,7 +323,7 @@ public class ZoomImagePreviewer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.coverview.ZoomImagePreviewer
  * JD-Core Version:    0.7.0.1
  */

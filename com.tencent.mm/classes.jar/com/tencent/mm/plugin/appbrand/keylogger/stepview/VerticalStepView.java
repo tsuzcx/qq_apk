@@ -17,12 +17,12 @@ public class VerticalStepView
   implements VerticalStepViewIndicator.a
 {
   private TextView Wf;
-  private int lDA;
-  private int lDB;
-  private int lDC;
-  private RelativeLayout lDx;
-  public VerticalStepViewIndicator lDy;
-  public List<c> lDz;
+  private RelativeLayout lHW;
+  public VerticalStepViewIndicator lHX;
+  public List<c> lHY;
+  private int lHZ;
+  private int lIa;
+  private int lIb;
   private int mTextSize;
   
   public VerticalStepView(Context paramContext, AttributeSet paramAttributeSet)
@@ -33,57 +33,57 @@ public class VerticalStepView
   public VerticalStepView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(187724);
-    this.lDB = b.n(getContext(), 2131101194);
-    this.lDC = b.n(getContext(), 17170443);
+    AppMethodBeat.i(201291);
+    this.lIa = b.n(getContext(), 2131101194);
+    this.lIb = b.n(getContext(), 17170443);
     this.mTextSize = 14;
     paramContext = LayoutInflater.from(getContext()).inflate(2131496163, this);
-    this.lDy = ((VerticalStepViewIndicator)paramContext.findViewById(2131307251));
-    this.lDy.setOnDrawListener(this);
-    this.lDx = ((RelativeLayout)paramContext.findViewById(2131307238));
-    AppMethodBeat.o(187724);
+    this.lHX = ((VerticalStepViewIndicator)paramContext.findViewById(2131307251));
+    this.lHX.setOnDrawListener(this);
+    this.lHW = ((RelativeLayout)paramContext.findViewById(2131307238));
+    AppMethodBeat.o(201291);
   }
   
-  public final void bqH()
+  public final void brr()
   {
-    AppMethodBeat.i(187726);
-    if (this.lDx != null)
+    AppMethodBeat.i(201293);
+    if (this.lHW != null)
     {
-      this.lDx.removeAllViews();
-      List localList = this.lDy.getCircleCenterPointPositionList();
-      if ((this.lDz != null) && (localList != null) && (localList.size() > 0))
+      this.lHW.removeAllViews();
+      List localList = this.lHX.getCircleCenterPointPositionList();
+      if ((this.lHY != null) && (localList != null) && (localList.size() > 0))
       {
         int i = 0;
-        if (i < this.lDz.size())
+        if (i < this.lHY.size())
         {
           this.Wf = new TextView(getContext());
           this.Wf.setTextSize(2, this.mTextSize);
-          this.Wf.setText(((c)this.lDz.get(i)).lDw);
-          this.Wf.setY(((Float)localList.get(i)).floatValue() - this.lDy.getCircleRadius() / 2.0F);
+          this.Wf.setText(((c)this.lHY.get(i)).lHV);
+          this.Wf.setY(((Float)localList.get(i)).floatValue() - this.lHX.getCircleRadius() / 2.0F);
           this.Wf.setLayoutParams(new ViewGroup.LayoutParams(-2, -2));
-          if (i <= this.lDA)
+          if (i <= this.lHZ)
           {
             this.Wf.setTypeface(null, 1);
-            this.Wf.setTextColor(this.lDC);
+            this.Wf.setTextColor(this.lIb);
           }
           for (;;)
           {
-            this.lDx.addView(this.Wf);
+            this.lHW.addView(this.Wf);
             i += 1;
             break;
-            this.Wf.setTextColor(this.lDB);
+            this.Wf.setTextColor(this.lIa);
           }
         }
       }
     }
-    AppMethodBeat.o(187726);
+    AppMethodBeat.o(201293);
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(187725);
+    AppMethodBeat.i(201292);
     super.onMeasure(paramInt1, paramInt2);
-    AppMethodBeat.o(187725);
+    AppMethodBeat.o(201292);
   }
 }
 

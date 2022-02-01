@@ -59,7 +59,7 @@ public abstract interface IPlayer
   {
     static
     {
-      AppMethodBeat.i(218557);
+      AppMethodBeat.i(215197);
       IDLE = new PlayerStatus("IDLE", 0);
       READY = new PlayerStatus("READY", 1);
       PLAYING = new PlayerStatus("PLAYING", 2);
@@ -69,7 +69,7 @@ public abstract interface IPlayer
       ERROR = new PlayerStatus("ERROR", 6);
       REPLAY = new PlayerStatus("REPLAY", 7);
       $VALUES = new PlayerStatus[] { IDLE, READY, PLAYING, STOPPED, PAUSED, FINISHED, ERROR, REPLAY };
-      AppMethodBeat.o(218557);
+      AppMethodBeat.o(215197);
     }
     
     private PlayerStatus() {}

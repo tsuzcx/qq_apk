@@ -10,26 +10,26 @@ import com.tencent.mm.plugin.appbrand.jsapi.c;
 import com.tencent.mm.plugin.appbrand.jsapi.m;
 import com.tencent.mm.plugin.brandservice.a.b;
 import com.tencent.mm.plugin.brandservice.a.b.b;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import d.g.b.p;
 import d.l;
 import java.util.HashMap;
 import java.util.Map;
 import org.json.JSONObject;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/bizvideochannel/JsApiHandleMpChannelAction;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandAsyncJsApi;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "()V", "operateType", "", "callback", "", "env", "callbackId", "", "resultJson", "getChannelFeeds", "invoke", "data", "Lorg/json/JSONObject;", "updateChannelFeeds", "Companion", "GetChannelFeedsTask", "UpdateChannelFeedsTask", "plugin-appbrand-integration_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsapi/bizvideochannel/JsApiHandleMpChannelAction;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandAsyncJsApi;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "()V", "operateType", "", "callback", "", "env", "callbackId", "", "resultJson", "getChannelFeeds", "invoke", "data", "Lorg/json/JSONObject;", "updateChannelFeeds", "Companion", "GetChannelFeedsTask", "UpdateChannelFeedsTask", "plugin-appbrand-integration_release"})
 public final class JsApiHandleMpChannelAction
   extends com.tencent.mm.plugin.appbrand.jsapi.a<c>
 {
   private static final int CTRL_INDEX = 766;
   private static final String NAME = "handleMPChannelAction";
-  public static final a kCO;
-  private String kCN = "";
+  public static final a kGd;
+  private String kGc = "";
   
   static
   {
     AppMethodBeat.i(175154);
-    kCO = new a((byte)0);
+    kGd = new a((byte)0);
     NAME = "handleMPChannelAction";
     CTRL_INDEX = 766;
     AppMethodBeat.o(175154);
@@ -60,55 +60,55 @@ public final class JsApiHandleMpChannelAction
     {
       paramJSONObject = "";
     }
-    this.kCN = paramJSONObject;
-    ad.i("MicroMsg.JsApiHandleMpChannelAction", "alvinluo handleMPChannelAction operateType: %s", new Object[] { this.kCN });
-    if (((CharSequence)this.kCN).length() == 0) {}
+    this.kGc = paramJSONObject;
+    ae.i("MicroMsg.JsApiHandleMpChannelAction", "alvinluo handleMPChannelAction operateType: %s", new Object[] { this.kGc });
+    if (((CharSequence)this.kGc).length() == 0) {}
     for (int i = 1; i != 0; i = 0)
     {
-      ad.e("MicroMsg.JsApiHandleMpChannelAction", "alvinluo handleMPChannelAction operateType empty");
-      paramJSONObject = Pg("fail: operationType empty");
+      ae.e("MicroMsg.JsApiHandleMpChannelAction", "alvinluo handleMPChannelAction operateType empty");
+      paramJSONObject = PO("fail: operationType empty");
       p.g(paramJSONObject, "makeReturnJson(\"fail: operationType empty\")");
       a(paramc, paramInt, paramJSONObject);
       AppMethodBeat.o(175152);
       return;
     }
-    if (this.kCN.equals("getChannelFeeds"))
+    if (this.kGc.equals("getChannelFeeds"))
     {
-      ad.i("MicroMsg.JsApiHandleMpChannelAction", "alvinluo getChannelFeeds");
+      ae.i("MicroMsg.JsApiHandleMpChannelAction", "alvinluo getChannelFeeds");
       paramc = new GetChannelFeedsTask((m)this, paramc, paramInt);
-      paramc.bhN();
-      paramc.aOD();
+      paramc.biw();
+      paramc.aPa();
       AppMethodBeat.o(175152);
       return;
     }
-    if (this.kCN.equals("updateChannelFeeds"))
+    if (this.kGc.equals("updateChannelFeeds"))
     {
-      ad.i("MicroMsg.JsApiHandleMpChannelAction", "alvinluo updateChannelFeeds");
+      ae.i("MicroMsg.JsApiHandleMpChannelAction", "alvinluo updateChannelFeeds");
       paramJSONObject = new UpdateChannelFeedsTask(paramc);
-      paramJSONObject.bhN();
-      paramJSONObject.aOD();
-      paramJSONObject = Pg("ok");
+      paramJSONObject.biw();
+      paramJSONObject.aPa();
+      paramJSONObject = PO("ok");
       p.g(paramJSONObject, "makeReturnJson(\"ok\")");
       a(paramc, paramInt, paramJSONObject);
       AppMethodBeat.o(175152);
       return;
     }
-    ad.e("MicroMsg.JsApiHandleMpChannelAction", "alvinluo handleMPChannelAction operateType invalid");
-    paramJSONObject = Pg("fail: operationType error");
+    ae.e("MicroMsg.JsApiHandleMpChannelAction", "alvinluo handleMPChannelAction operateType invalid");
+    paramJSONObject = PO("fail: operationType error");
     p.g(paramJSONObject, "makeReturnJson(\"fail: operationType error\")");
     a(paramc, paramInt, paramJSONObject);
     AppMethodBeat.o(175152);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/bizvideochannel/JsApiHandleMpChannelAction$GetChannelFeedsTask;", "Lcom/tencent/mm/plugin/appbrand/ipc/MainProcessTask;", "()V", "api", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandJsApi;", "service", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "callbackId", "", "(Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandJsApi;Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;I)V", "parcel", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "channelFeedsData", "", "jsapi", "describeContents", "parseFromParcel", "", "src", "runInClientProcess", "runInMainProcess", "writeToParcel", "flags", "CREATOR", "plugin-appbrand-integration_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsapi/bizvideochannel/JsApiHandleMpChannelAction$GetChannelFeedsTask;", "Lcom/tencent/mm/plugin/appbrand/ipc/MainProcessTask;", "()V", "api", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandJsApi;", "service", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "callbackId", "", "(Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandJsApi;Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;I)V", "parcel", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "channelFeedsData", "", "jsapi", "describeContents", "parseFromParcel", "", "src", "runInClientProcess", "runInMainProcess", "writeToParcel", "flags", "CREATOR", "plugin-appbrand-integration_release"})
   static final class GetChannelFeedsTask
     extends MainProcessTask
   {
     public static final a CREATOR;
-    private String kCP = "";
-    private m kCQ;
-    private int kje;
-    private c ktc;
+    private String kGe = "";
+    private m kGf;
+    private int kmu;
+    private c kws;
     
     static
     {
@@ -129,48 +129,48 @@ public final class JsApiHandleMpChannelAction
     
     public GetChannelFeedsTask(m paramm, c paramc, int paramInt)
     {
-      this.kCQ = paramm;
-      this.ktc = paramc;
-      this.kje = paramInt;
+      this.kGf = paramm;
+      this.kws = paramc;
+      this.kmu = paramInt;
     }
     
-    public final void aOA()
+    public final void aOX()
     {
       AppMethodBeat.i(175136);
-      String str = ((b)g.ab(b.class)).bNl();
+      String str = ((b)g.ab(b.class)).bOj();
       p.g(str, "MMKernel.service(IBrandS…s.java).getChannelFeeds()");
-      this.kCP = str;
-      ad.i("MicroMsg.JsApiHandleMpChannelAction", "alvinluo GetChannelFeedsTask channelFeedsData: %s", new Object[] { this.kCP });
-      bhX();
+      this.kGe = str;
+      ae.i("MicroMsg.JsApiHandleMpChannelAction", "alvinluo GetChannelFeedsTask channelFeedsData: %s", new Object[] { this.kGe });
+      biG();
       AppMethodBeat.o(175136);
     }
     
-    public final void aOB()
+    public final void aOY()
     {
       Object localObject = null;
       AppMethodBeat.i(175137);
-      super.aOB();
-      bhO();
+      super.aOY();
+      bix();
       int i;
-      if (((CharSequence)this.kCP).length() == 0)
+      if (((CharSequence)this.kGe).length() == 0)
       {
         i = 1;
         if (i == 0) {
           break label103;
         }
-        ad.e("MicroMsg.JsApiHandleMpChannelAction", "alvinluo getChannelFeeds error: data empty");
-        localc = this.ktc;
+        ae.e("MicroMsg.JsApiHandleMpChannelAction", "alvinluo getChannelFeeds error: data empty");
+        localc = this.kws;
         if (localc == null) {
           break label97;
         }
-        i = this.kje;
-        localObject = this.kCQ;
+        i = this.kmu;
+        localObject = this.kGf;
         if (localObject == null) {
           break label92;
         }
       }
       label92:
-      for (localObject = ((m)localObject).Pg("fail: no channel feeds");; localObject = null)
+      for (localObject = ((m)localObject).PO("fail: no channel feeds");; localObject = null)
       {
         localc.h(i, (String)localObject);
         AppMethodBeat.o(175137);
@@ -184,15 +184,15 @@ public final class JsApiHandleMpChannelAction
       label103:
       HashMap localHashMap = new HashMap();
       ((Map)localHashMap).put("errCode", Integer.valueOf(0));
-      ((Map)localHashMap).put("channelFeedsData", this.kCP);
-      ad.i("MicroMsg.JsApiHandleMpChannelAction", "alvinluo getChannelFeeds success");
-      c localc = this.ktc;
+      ((Map)localHashMap).put("channelFeedsData", this.kGe);
+      ae.i("MicroMsg.JsApiHandleMpChannelAction", "alvinluo getChannelFeeds success");
+      c localc = this.kws;
       if (localc != null)
       {
-        i = this.kje;
-        m localm = this.kCQ;
+        i = this.kmu;
+        m localm = this.kGf;
         if (localm != null) {
-          localObject = localm.m("ok", (Map)localHashMap);
+          localObject = localm.n("ok", (Map)localHashMap);
         }
         localc.h(i, (String)localObject);
         AppMethodBeat.o(175137);
@@ -220,7 +220,7 @@ public final class JsApiHandleMpChannelAction
       {
         paramParcel = "";
       }
-      this.kCP = paramParcel;
+      this.kGe = paramParcel;
       AppMethodBeat.o(175138);
     }
     
@@ -229,23 +229,23 @@ public final class JsApiHandleMpChannelAction
       AppMethodBeat.i(175139);
       p.h(paramParcel, "parcel");
       super.writeToParcel(paramParcel, paramInt);
-      paramParcel.writeString(this.kCP);
+      paramParcel.writeString(this.kGe);
       AppMethodBeat.o(175139);
     }
     
-    @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/bizvideochannel/JsApiHandleMpChannelAction$GetChannelFeedsTask$CREATOR;", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/appbrand/jsapi/bizvideochannel/JsApiHandleMpChannelAction$GetChannelFeedsTask;", "()V", "createFromParcel", "parcel", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/mm/plugin/appbrand/jsapi/bizvideochannel/JsApiHandleMpChannelAction$GetChannelFeedsTask;", "plugin-appbrand-integration_release"})
+    @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsapi/bizvideochannel/JsApiHandleMpChannelAction$GetChannelFeedsTask$CREATOR;", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/appbrand/jsapi/bizvideochannel/JsApiHandleMpChannelAction$GetChannelFeedsTask;", "()V", "createFromParcel", "parcel", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/mm/plugin/appbrand/jsapi/bizvideochannel/JsApiHandleMpChannelAction$GetChannelFeedsTask;", "plugin-appbrand-integration_release"})
     public static final class a
       implements Parcelable.Creator<JsApiHandleMpChannelAction.GetChannelFeedsTask>
     {}
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/bizvideochannel/JsApiHandleMpChannelAction$UpdateChannelFeedsTask;", "Lcom/tencent/mm/plugin/appbrand/ipc/MainProcessTask;", "()V", "service", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "(Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;)V", "parcel", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "channelFeedsData", "", "success", "", "describeContents", "", "parseFromParcel", "", "src", "runInClientProcess", "runInMainProcess", "writeToParcel", "flags", "CREATOR", "plugin-appbrand-integration_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsapi/bizvideochannel/JsApiHandleMpChannelAction$UpdateChannelFeedsTask;", "Lcom/tencent/mm/plugin/appbrand/ipc/MainProcessTask;", "()V", "service", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "(Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;)V", "parcel", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "channelFeedsData", "", "success", "", "describeContents", "", "parseFromParcel", "", "src", "runInClientProcess", "runInMainProcess", "writeToParcel", "flags", "CREATOR", "plugin-appbrand-integration_release"})
   static final class UpdateChannelFeedsTask
     extends MainProcessTask
   {
     public static final a CREATOR;
-    private String kCP = "";
-    private c ktc;
+    private String kGe = "";
+    private c kws;
     private boolean success;
     
     static
@@ -268,28 +268,28 @@ public final class JsApiHandleMpChannelAction
     public UpdateChannelFeedsTask(c paramc)
     {
       this();
-      this.ktc = paramc;
+      this.kws = paramc;
     }
     
-    public final void aOA()
+    public final void aOX()
     {
       AppMethodBeat.i(175146);
       ((b)g.ab(b.class)).a((b.b)new b(this));
       AppMethodBeat.o(175146);
     }
     
-    public final void aOB()
+    public final void aOY()
     {
       AppMethodBeat.i(175147);
-      super.aOB();
-      bhO();
-      ad.i("MicroMsg.JsApiHandleMpChannelAction", "alvinluo updateChannelFeeds end and dispatch onUpdateChannelFeeds, success: %b", new Object[] { Boolean.valueOf(this.success) });
+      super.aOY();
+      bix();
+      ae.i("MicroMsg.JsApiHandleMpChannelAction", "alvinluo updateChannelFeeds end and dispatch onUpdateChannelFeeds, success: %b", new Object[] { Boolean.valueOf(this.success) });
       a locala = new a();
-      c localc = this.ktc;
+      c localc = this.kws;
       boolean bool = this.success;
-      String str = this.kCP;
+      String str = this.kGe;
       p.h(str, "channelFeedsData");
-      ad.i("MicroMsg.JsApiEventOnUpdateChannelFeeds", "alvinluo onUpdateChannelFeeds dispatch success: %b, channelFeedsData: %s", new Object[] { Boolean.valueOf(bool), str });
+      ae.i("MicroMsg.JsApiEventOnUpdateChannelFeeds", "alvinluo onUpdateChannelFeeds dispatch success: %b, channelFeedsData: %s", new Object[] { Boolean.valueOf(bool), str });
       HashMap localHashMap = new HashMap();
       int i;
       if (bool) {
@@ -306,7 +306,7 @@ public final class JsApiHandleMpChannelAction
       }
       for (;;)
       {
-        locala.h(localc).B((Map)localHashMap).bir();
+        locala.h(localc).I((Map)localHashMap).bja();
         AppMethodBeat.o(175147);
         return;
         i = 0;
@@ -338,7 +338,7 @@ public final class JsApiHandleMpChannelAction
       {
         str1 = "";
       }
-      this.kCP = str1;
+      this.kGe = str1;
       if ((paramParcel != null) && (paramParcel.readInt() == 1)) {}
       for (boolean bool = true;; bool = false)
       {
@@ -352,7 +352,7 @@ public final class JsApiHandleMpChannelAction
     {
       AppMethodBeat.i(175148);
       p.h(paramParcel, "parcel");
-      paramParcel.writeString(this.kCP);
+      paramParcel.writeString(this.kGe);
       if (this.success) {}
       for (paramInt = 1;; paramInt = 0)
       {
@@ -362,42 +362,42 @@ public final class JsApiHandleMpChannelAction
       }
     }
     
-    @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/bizvideochannel/JsApiHandleMpChannelAction$UpdateChannelFeedsTask$CREATOR;", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/appbrand/jsapi/bizvideochannel/JsApiHandleMpChannelAction$UpdateChannelFeedsTask;", "()V", "createFromParcel", "parcel", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/mm/plugin/appbrand/jsapi/bizvideochannel/JsApiHandleMpChannelAction$UpdateChannelFeedsTask;", "plugin-appbrand-integration_release"})
+    @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsapi/bizvideochannel/JsApiHandleMpChannelAction$UpdateChannelFeedsTask$CREATOR;", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/appbrand/jsapi/bizvideochannel/JsApiHandleMpChannelAction$UpdateChannelFeedsTask;", "()V", "createFromParcel", "parcel", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/mm/plugin/appbrand/jsapi/bizvideochannel/JsApiHandleMpChannelAction$UpdateChannelFeedsTask;", "plugin-appbrand-integration_release"})
     public static final class a
       implements Parcelable.Creator<JsApiHandleMpChannelAction.UpdateChannelFeedsTask>
     {}
     
-    @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/appbrand/jsapi/bizvideochannel/JsApiHandleMpChannelAction$UpdateChannelFeedsTask$runInMainProcess$1", "Lcom/tencent/mm/plugin/brandservice/api/IBrandService$UpdateChannelFeedsCallback;", "onFailed", "", "errType", "", "errCode", "errMsg", "", "onSuccess", "channelFeeds", "plugin-appbrand-integration_release"})
+    @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/appbrand/jsapi/bizvideochannel/JsApiHandleMpChannelAction$UpdateChannelFeedsTask$runInMainProcess$1", "Lcom/tencent/mm/plugin/brandservice/api/IBrandService$UpdateChannelFeedsCallback;", "onFailed", "", "errType", "", "errCode", "errMsg", "", "onSuccess", "channelFeeds", "plugin-appbrand-integration_release"})
     public static final class b
       implements b.b
     {
       public final void onSuccess(String paramString)
       {
         AppMethodBeat.i(175143);
-        ad.i("MicroMsg.JsApiHandleMpChannelAction", "alvinluo updateChannelFeeds onSuccess %s", new Object[] { paramString });
-        JsApiHandleMpChannelAction.UpdateChannelFeedsTask localUpdateChannelFeedsTask = this.kCR;
+        ae.i("MicroMsg.JsApiHandleMpChannelAction", "alvinluo updateChannelFeeds onSuccess %s", new Object[] { paramString });
+        JsApiHandleMpChannelAction.UpdateChannelFeedsTask localUpdateChannelFeedsTask = this.kGg;
         String str = paramString;
         if (paramString == null) {
           str = "";
         }
         JsApiHandleMpChannelAction.UpdateChannelFeedsTask.a(localUpdateChannelFeedsTask, str);
-        JsApiHandleMpChannelAction.UpdateChannelFeedsTask.a(this.kCR, true);
-        JsApiHandleMpChannelAction.UpdateChannelFeedsTask.a(this.kCR);
+        JsApiHandleMpChannelAction.UpdateChannelFeedsTask.a(this.kGg, true);
+        JsApiHandleMpChannelAction.UpdateChannelFeedsTask.a(this.kGg);
         AppMethodBeat.o(175143);
       }
       
       public final void p(int paramInt1, int paramInt2, String paramString)
       {
         AppMethodBeat.i(175144);
-        ad.e("MicroMsg.JsApiHandleMpChannelAction", "alvinluo updateChannelFeeds onFailed errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-        JsApiHandleMpChannelAction.UpdateChannelFeedsTask.a(this.kCR, false);
-        JsApiHandleMpChannelAction.UpdateChannelFeedsTask.a(this.kCR);
+        ae.e("MicroMsg.JsApiHandleMpChannelAction", "alvinluo updateChannelFeeds onFailed errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+        JsApiHandleMpChannelAction.UpdateChannelFeedsTask.a(this.kGg, false);
+        JsApiHandleMpChannelAction.UpdateChannelFeedsTask.a(this.kGg);
         AppMethodBeat.o(175144);
       }
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/bizvideochannel/JsApiHandleMpChannelAction$Companion;", "", "()V", "CTRL_INDEX", "", "NAME", "", "OPERATE_TYPE_GET", "OPERATE_TYPE_UPDATE", "TAG", "plugin-appbrand-integration_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsapi/bizvideochannel/JsApiHandleMpChannelAction$Companion;", "", "()V", "CTRL_INDEX", "", "NAME", "", "OPERATE_TYPE_GET", "OPERATE_TYPE_UPDATE", "TAG", "plugin-appbrand-integration_release"})
   public static final class a {}
 }
 

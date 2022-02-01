@@ -1,12 +1,13 @@
 package com.tencent.mm.g.a;
 
+import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class oi
   extends b
 {
-  public a dCj;
+  public a dDm;
   
   public oi()
   {
@@ -15,21 +16,25 @@ public final class oi
   
   private oi(byte paramByte)
   {
-    AppMethodBeat.i(94812);
-    this.dCj = new a();
-    this.IbR = false;
+    AppMethodBeat.i(127409);
+    this.dDm = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(94812);
+    AppMethodBeat.o(127409);
   }
   
   public static final class a
   {
-    public String dCk;
+    public Context context;
+    public boolean dCy = true;
+    public String dDn;
+    public long msgId = -1L;
+    public int scene;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.a.oi
  * JD-Core Version:    0.7.0.1
  */

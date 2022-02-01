@@ -7,16 +7,16 @@ import com.tencent.mm.ui.widget.MMNeat7extView;
 
 final class ae$a
 {
-  View iCM;
-  MMNeat7extView ocA;
-  ImageView ocn;
-  View odh;
-  View oeQ;
-  TextView oeS;
-  View oeT;
-  View oeU;
-  ImageView oeV;
-  ImageView oeW;
+  View iFF;
+  View oiV;
+  ImageView oic;
+  MMNeat7extView oip;
+  View okQ;
+  TextView okS;
+  View okT;
+  View okU;
+  ImageView okV;
+  ImageView okW;
 }
 
 

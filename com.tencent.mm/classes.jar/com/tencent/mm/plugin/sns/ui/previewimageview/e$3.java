@@ -7,7 +7,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.plugin.sns.ui.y.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 final class e$3
   implements AdapterView.OnItemClickListener
@@ -20,10 +20,10 @@ final class e$3
     b localb = new b();
     localb.bd(paramAdapterView);
     localb.bd(paramView);
-    localb.mr(paramInt);
-    localb.qY(paramLong);
-    a.b("com/tencent/mm/plugin/sns/ui/previewimageview/DynamicGridPreviewImgView$3", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.ahq());
-    if (this.AzP.AzH != null)
+    localb.mu(paramInt);
+    localb.rl(paramLong);
+    a.b("com/tencent/mm/plugin/sns/ui/previewimageview/DynamicGridPreviewImgView$3", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.ahF());
+    if (this.ARl.ARd != null)
     {
       if (paramView.getTag() == null)
       {
@@ -32,14 +32,14 @@ final class e$3
         return;
       }
       paramInt = ((Integer)paramView.getTag()).intValue();
-      ad.i("DynamicGrid", "click ".concat(String.valueOf(paramInt)));
+      ae.i("DynamicGrid", "click ".concat(String.valueOf(paramInt)));
       if (paramInt == 2147483647)
       {
         a.a(this, "com/tencent/mm/plugin/sns/ui/previewimageview/DynamicGridPreviewImgView$3", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
         AppMethodBeat.o(100285);
         return;
       }
-      this.AzP.AzH.Fq(paramInt);
+      this.ARl.ARd.FN(paramInt);
     }
     a.a(this, "com/tencent/mm/plugin/sns/ui/previewimageview/DynamicGridPreviewImgView$3", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
     AppMethodBeat.o(100285);

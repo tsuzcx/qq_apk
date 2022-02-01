@@ -62,7 +62,7 @@ public class f
   
   public static a a(c paramc)
   {
-    AppMethodBeat.i(187539);
+    AppMethodBeat.i(221668);
     a locala = new a();
     switch (1.a[paramc.ordinal()])
     {
@@ -72,7 +72,7 @@ public class f
     }
     for (;;)
     {
-      AppMethodBeat.o(187539);
+      AppMethodBeat.o(221668);
       return locala;
       locala.a = 368;
       locala.b = 640;

@@ -1,82 +1,72 @@
 package com.tencent.mm.cm;
 
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.BitmapFactory.Options;
-import android.util.DisplayMetrics;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.loader.j.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.vfs.e;
+import com.tencent.mm.vending.b.b;
+import com.tencent.mm.vending.h.d;
+import com.tencent.mm.vending.h.f;
+import java.util.Iterator;
+import java.util.LinkedList;
 
-public final class a
+public class a<_Callback>
+  extends com.tencent.mm.vending.b.a<_Callback>
 {
-  public static int a(BitmapFactory.Options paramOptions, int paramInt1, int paramInt2)
+  public a()
   {
-    int k = paramOptions.outHeight;
-    int m = paramOptions.outWidth;
-    int i = 1;
-    int j;
-    for (;;)
-    {
-      j = i;
-      if (m / i <= paramInt1) {
-        break;
-      }
-      i += 1;
-    }
-    while (k / j > paramInt2) {
-      j += 1;
-    }
-    return j;
+    super(new e());
+    AppMethodBeat.i(158413);
+    AppMethodBeat.o(158413);
   }
   
-  public static String aXW(String paramString)
+  public a(d paramd)
   {
-    AppMethodBeat.i(9345);
-    paramString = b.asd() + String.format("%s%d.%s", new Object[] { "wx_photo_edit_", Long.valueOf(System.currentTimeMillis()), paramString });
-    AppMethodBeat.o(9345);
-    return paramString;
+    super(paramd);
   }
   
-  public static void aXX(String paramString)
+  public final void a(final a<_Callback> parama)
   {
-    int i = 0;
-    AppMethodBeat.i(9347);
-    ad.i("MicroMsg.MMPhotoEditUtil", "[deleteDirAllFile] dir:%s", new Object[] { paramString });
-    paramString = new e(paramString);
-    if (paramString.exists())
+    AppMethodBeat.i(158414);
+    Iterator localIterator = fSr().iterator();
+    while (localIterator.hasNext())
     {
-      paramString = paramString.fOM();
-      if (paramString != null)
-      {
-        int j = paramString.length;
-        while (i < j)
+      final b localb = (b)localIterator.next();
+      if (localb != null) {
+        if (localb.cUP != null)
         {
-          Object localObject = paramString[i];
-          if ((localObject.isFile()) && (!bt.isNullOrNil(localObject.getName())) && (localObject.getName().startsWith("wx_photo_edit_"))) {
-            localObject.delete();
-          }
-          i += 1;
+          this.LEl.c(localb.cUP);
+          this.LEl.a(new com.tencent.mm.vending.c.a() {}, com.tencent.mm.vending.c.a.LEs, true);
+        }
+        else
+        {
+          parama.bn(localb.LEn);
         }
       }
     }
-    AppMethodBeat.o(9347);
+    AppMethodBeat.o(158414);
   }
   
-  public static int cd(float paramFloat)
+  public b<_Callback> bu(_Callback param_Callback)
   {
-    AppMethodBeat.i(9346);
-    int i = (int)(aj.getContext().getResources().getDisplayMetrics().density * paramFloat + 0.5F);
-    AppMethodBeat.o(9346);
-    return i;
+    AppMethodBeat.i(158415);
+    param_Callback = super.a(new b(param_Callback, this));
+    AppMethodBeat.o(158415);
+    return param_Callback;
+  }
+  
+  public final void remove(_Callback param_Callback)
+  {
+    AppMethodBeat.i(158416);
+    super.b(new b(param_Callback, this));
+    AppMethodBeat.o(158416);
+  }
+  
+  public static abstract interface a<_Callback>
+  {
+    public abstract void bn(_Callback param_Callback);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.cm.a
  * JD-Core Version:    0.7.0.1
  */

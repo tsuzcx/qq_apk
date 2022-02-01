@@ -12,7 +12,7 @@ import d.v;
 import java.util.HashMap;
 import java.util.Set;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/ui/component/Sample$SampleFragment;", "Lcom/tencent/mm/ui/component/UIComponentFragment;", "()V", "importUIComponents", "", "Ljava/lang/Class;", "Lcom/tencent/mm/ui/component/UIComponent;", "onCreate", "", "savedInstanceState", "Landroid/os/Bundle;", "libmmui_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/ui/component/Sample$SampleFragment;", "Lcom/tencent/mm/ui/component/UIComponentFragment;", "()V", "importUIComponents", "", "Ljava/lang/Class;", "Lcom/tencent/mm/ui/component/UIComponent;", "onCreate", "", "savedInstanceState", "Landroid/os/Bundle;", "libmmui_release"})
 public final class Sample$SampleFragment
   extends UIComponentFragment
 {
@@ -20,39 +20,39 @@ public final class Sample$SampleFragment
   
   public final void _$_clearFindViewByIdCache()
   {
-    AppMethodBeat.i(186586);
+    AppMethodBeat.i(193844);
     if (this._$_findViewCache != null) {
       this._$_findViewCache.clear();
     }
-    AppMethodBeat.o(186586);
+    AppMethodBeat.o(193844);
   }
   
-  public final Set<Class<? extends UIComponent>> cCu()
+  public final Set<Class<? extends UIComponent>> cEg()
   {
-    AppMethodBeat.i(186584);
+    AppMethodBeat.i(193842);
     Set localSet = ak.setOf(new Class[] { Sample.MainUIC.class, Sample.ABizUIC.class, Sample.BBizUIC.class, Sample.CBizUIC.class });
-    AppMethodBeat.o(186584);
+    AppMethodBeat.o(193842);
     return localSet;
   }
   
   public final void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(186585);
+    AppMethodBeat.i(193843);
     super.onCreate(paramBundle);
-    paramBundle = a.KiD;
+    paramBundle = a.KEX;
     ((Sample.ABizUIC)a.of((Fragment)this).get(Sample.ABizUIC.class)).hashCode();
-    paramBundle = a.KiD;
+    paramBundle = a.KEX;
     paramBundle = getActivity();
     if (paramBundle == null)
     {
       paramBundle = new v("null cannot be cast to non-null type com.tencent.mm.ui.MMActivity");
-      AppMethodBeat.o(186585);
+      AppMethodBeat.o(193843);
       throw paramBundle;
     }
     ((Sample.BBizUIC)a.s((MMActivity)paramBundle).get(Sample.BBizUIC.class)).hashCode();
-    paramBundle = a.KiD;
+    paramBundle = a.KEX;
     ((Sample.CBizUIC)a.bi(PluginReport.class).get(Sample.CBizUIC.class)).hashCode();
-    AppMethodBeat.o(186585);
+    AppMethodBeat.o(193843);
   }
 }
 

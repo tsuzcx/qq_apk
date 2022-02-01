@@ -6,6 +6,7 @@ import android.app.Application.ActivityLifecycleCallbacks;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import com.tencent.luggage.sdk.launching.ActivityStarterIpcDelegate;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.launching.AppBrandLaunchProxyUI;
 import com.tencent.mm.plugin.appbrand.launching.params.LaunchParcel;
@@ -14,7 +15,7 @@ import com.tencent.mm.plugin.appbrand.service.d;
 import com.tencent.mm.plugin.appbrand.ui.AppBrandPluginUI;
 import com.tencent.mm.plugin.appbrand.ui.AppBrandUI;
 import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ak;
 import java.lang.ref.WeakReference;
 
 final class b
@@ -31,33 +32,61 @@ final class b
       localIntent.putExtra("extra_from_mm", false);
       localIntent.putExtra("extra_launch_parcel", paramLaunchParcel);
       localIntent.putExtra("extra_launch_source_context", paramContext.getClass().getName());
-      localIntent.putExtra("extra_launch_source_process_name", aj.getProcessName());
+      localIntent.putExtra("extra_launch_source_process_name", ak.getProcessName());
       if ((paramContext instanceof AppBrandUI)) {
-        break label179;
+        break label210;
       }
       i = 0;
-    }
-    for (;;)
-    {
+      label85:
       if (i != 0) {
         new a(paramContext);
       }
-      paramLaunchParcel = new com.tencent.mm.hellhoundlib.b.a().bc(localIntent);
-      com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramLaunchParcel.ahp(), "com/tencent/mm/plugin/appbrand/launching/precondition/ClientLaunchEntry", "startWithParcel", "(Landroid/content/Context;Lcom/tencent/mm/plugin/appbrand/launching/params/LaunchParcel;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramContext.startActivity((Intent)paramLaunchParcel.mq(0));
-      com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/plugin/appbrand/launching/precondition/ClientLaunchEntry", "startWithParcel", "(Landroid/content/Context;Lcom/tencent/mm/plugin/appbrand/launching/params/LaunchParcel;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      AppMethodBeat.o(47437);
-      return true;
-      h.c(localIntent, (Activity)paramContext);
-      break;
-      label179:
-      if ((paramContext instanceof AppBrandPluginUI)) {
-        i = 0;
-      } else if (paramLaunchParcel.lMZ.scene != 1090) {
-        i = 0;
-      } else {
+      if (paramLaunchParcel.lIP == null) {
+        break label317;
+      }
+      i = localIntent.getFlags();
+    }
+    for (;;)
+    {
+      try
+      {
+        localIntent.setFlags(0xEFFFFFFF & i);
+        paramLaunchParcel = paramLaunchParcel.lIP;
+        com.tencent.mm.hellhoundlib.b.a locala = new com.tencent.mm.hellhoundlib.b.a().bc(localIntent);
+        com.tencent.mm.hellhoundlib.a.a.a(paramLaunchParcel, locala.ahE(), "com/tencent/mm/plugin/appbrand/launching/precondition/ClientLaunchEntry", "startWithParcel", "(Landroid/content/Context;Lcom/tencent/mm/plugin/appbrand/launching/params/LaunchParcel;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramLaunchParcel.startActivity((Intent)locala.mt(0));
+        com.tencent.mm.hellhoundlib.a.a.a(paramLaunchParcel, "com/tencent/mm/plugin/appbrand/launching/precondition/ClientLaunchEntry", "startWithParcel", "(Landroid/content/Context;Lcom/tencent/mm/plugin/appbrand/launching/params/LaunchParcel;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        AppMethodBeat.o(47437);
+        return true;
+        h.c(localIntent, (Activity)paramContext);
+        break;
+        label210:
+        if ((paramContext instanceof AppBrandPluginUI))
+        {
+          i = 0;
+          break label85;
+        }
+        if (paramLaunchParcel.lRA.scene != 1090)
+        {
+          i = 0;
+          break label85;
+        }
         i = 1;
       }
+      catch (Exception paramLaunchParcel)
+      {
+        localIntent.setFlags(i);
+        paramLaunchParcel = new com.tencent.mm.hellhoundlib.b.a().bc(localIntent);
+        com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramLaunchParcel.ahE(), "com/tencent/mm/plugin/appbrand/launching/precondition/ClientLaunchEntry", "startWithParcel", "(Landroid/content/Context;Lcom/tencent/mm/plugin/appbrand/launching/params/LaunchParcel;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramContext.startActivity((Intent)paramLaunchParcel.mt(0));
+        com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/plugin/appbrand/launching/precondition/ClientLaunchEntry", "startWithParcel", "(Landroid/content/Context;Lcom/tencent/mm/plugin/appbrand/launching/params/LaunchParcel;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        continue;
+      }
+      label317:
+      paramLaunchParcel = new com.tencent.mm.hellhoundlib.b.a().bc(localIntent);
+      com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramLaunchParcel.ahE(), "com/tencent/mm/plugin/appbrand/launching/precondition/ClientLaunchEntry", "startWithParcel", "(Landroid/content/Context;Lcom/tencent/mm/plugin/appbrand/launching/params/LaunchParcel;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramContext.startActivity((Intent)paramLaunchParcel.mt(0));
+      com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/plugin/appbrand/launching/precondition/ClientLaunchEntry", "startWithParcel", "(Landroid/content/Context;Lcom/tencent/mm/plugin/appbrand/launching/params/LaunchParcel;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     }
   }
   
@@ -66,13 +95,13 @@ final class b
     implements Application.ActivityLifecycleCallbacks
   {
     private final Application app;
-    private final WeakReference<Activity> lNs;
+    private final WeakReference<Activity> lRT;
     
     a()
     {
       AppMethodBeat.i(47431);
       this.app = ((Application)paramContext.getApplicationContext());
-      this.lNs = new WeakReference((Activity)paramContext);
+      this.lRT = new WeakReference((Activity)paramContext);
       alive();
       this.app.registerActivityLifecycleCallbacks(this);
       this.__eventId = d.class.getName().hashCode();
@@ -92,7 +121,7 @@ final class b
     public final void onActivityDestroyed(Activity paramActivity)
     {
       AppMethodBeat.i(47434);
-      if (paramActivity == this.lNs.get()) {
+      if (paramActivity == this.lRT.get()) {
         unregisterAll();
       }
       AppMethodBeat.o(47434);
@@ -103,7 +132,7 @@ final class b
     public final void onActivityResumed(Activity paramActivity)
     {
       AppMethodBeat.i(47433);
-      if (paramActivity == this.lNs.get()) {
+      if (paramActivity == this.lRT.get()) {
         unregisterAll();
       }
       AppMethodBeat.o(47433);
@@ -114,7 +143,7 @@ final class b
     public final void onActivityStarted(Activity paramActivity)
     {
       AppMethodBeat.i(47432);
-      if (paramActivity == this.lNs.get()) {
+      if (paramActivity == this.lRT.get()) {
         unregisterAll();
       }
       AppMethodBeat.o(47432);

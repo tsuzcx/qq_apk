@@ -3,56 +3,56 @@ package com.tencent.mm.plugin.finder.storage;
 import android.content.ContentValues;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.g.c.cd;
-import com.tencent.mm.model.cf;
+import com.tencent.mm.model.ch;
 import com.tencent.mm.plugin.finder.PluginFinder;
 import com.tencent.mm.plugin.finder.api.g.a;
 import com.tencent.mm.sdk.e.e;
 import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.storage.bp;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.storage.bq;
 import d.g.b.p;
 
-@d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/storage/FinderMsgStrangerContactStorage;", "Lcom/tencent/mm/sdk/storage/MAutoStorage;", "Lcom/tencent/mm/autogen/table/BaseFinderContact;", "storage", "Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "(Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;)V", "getStorage", "()Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "getContact", "Lcom/tencent/mm/plugin/finder/api/LocalFinderContact;", "username", "", "insertContact", "", "contact", "removeCacheFromWx", "", "replaceContact", "", "ct", "isUpdateTime", "updateContact", "Companion", "plugin-finder_release"})
+@d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/storage/FinderMsgStrangerContactStorage;", "Lcom/tencent/mm/sdk/storage/MAutoStorage;", "Lcom/tencent/mm/autogen/table/BaseFinderContact;", "storage", "Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "(Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;)V", "getStorage", "()Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "getContact", "Lcom/tencent/mm/plugin/finder/api/LocalFinderContact;", "username", "", "insertContact", "", "contact", "removeCacheFromWx", "", "replaceContact", "", "ct", "isUpdateTime", "updateContact", "Companion", "plugin-finder_release"})
 public final class v
   extends j<cd>
 {
   private static final String[] INDEX_CREATE;
   private static final String[] SQL_CREATE;
-  public static final a szd;
-  private final e sxB;
+  public static final a sJU;
+  private final e sIs;
   
   static
   {
-    AppMethodBeat.i(203729);
-    szd = new a((byte)0);
+    AppMethodBeat.i(204296);
+    sJU = new a((byte)0);
     INDEX_CREATE = new String[] { "CREATE INDEX IF NOT EXISTS FinderMsgContactStorage_username_index ON FinderMsgContactStorage(username)" };
-    g.a locala = com.tencent.mm.plugin.finder.api.g.rHB;
+    g.a locala = com.tencent.mm.plugin.finder.api.g.rPM;
     SQL_CREATE = new String[] { j.getCreateSQLs(com.tencent.mm.plugin.finder.api.g.access$getInfo$cp(), "FinderMsgContactStorage") };
-    AppMethodBeat.o(203729);
+    AppMethodBeat.o(204296);
   }
   
   public v(e parame)
   {
     super(parame, com.tencent.mm.plugin.finder.api.g.access$getInfo$cp(), "FinderMsgContactStorage", INDEX_CREATE);
-    AppMethodBeat.i(203728);
-    this.sxB = parame;
-    AppMethodBeat.o(203728);
+    AppMethodBeat.i(204295);
+    this.sIs = parame;
+    AppMethodBeat.o(204295);
   }
   
   private static void h(com.tencent.mm.plugin.finder.api.g paramg)
   {
-    AppMethodBeat.i(203727);
+    AppMethodBeat.i(204294);
     Object localObject = com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class);
     p.g(localObject, "MMKernel.service(IMessengerStorage::class.java)");
-    localObject = ((com.tencent.mm.plugin.messenger.foundation.a.l)localObject).azp();
-    String str = ((PluginFinder)com.tencent.mm.kernel.g.ad(PluginFinder.class)).getSessionInfoStorage().aix(paramg.getUsername());
-    ((bp)localObject).akd(paramg.getUsername());
-    ((bp)localObject).akd(str);
-    AppMethodBeat.o(203727);
+    localObject = ((com.tencent.mm.plugin.messenger.foundation.a.l)localObject).azF();
+    String str = ((PluginFinder)com.tencent.mm.kernel.g.ad(PluginFinder.class)).getSessionInfoStorage().aju(paramg.getUsername());
+    ((bq)localObject).alb(paramg.getUsername());
+    ((bq)localObject).alb(str);
+    AppMethodBeat.o(204294);
   }
   
   /* Error */
-  public final com.tencent.mm.plugin.finder.api.g agW(String paramString)
+  public final com.tencent.mm.plugin.finder.api.g ahT(String paramString)
   {
     // Byte code:
     //   0: aconst_null
@@ -67,12 +67,12 @@ public final class v
     //   17: ldc 163
     //   19: invokespecial 165	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   22: aload_1
-    //   23: invokestatic 170	com/tencent/mm/storagebase/h:wo	(Ljava/lang/String;)Ljava/lang/String;
+    //   23: invokestatic 170	com/tencent/mm/storagebase/h:wX	(Ljava/lang/String;)Ljava/lang/String;
     //   26: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   29: invokevirtual 177	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   32: astore_1
     //   33: aload_0
-    //   34: getfield 100	com/tencent/mm/plugin/finder/storage/v:sxB	Lcom/tencent/mm/sdk/e/e;
+    //   34: getfield 100	com/tencent/mm/plugin/finder/storage/v:sIs	Lcom/tencent/mm/sdk/e/e;
     //   37: aload_1
     //   38: aconst_null
     //   39: iconst_2
@@ -95,7 +95,7 @@ public final class v
     //   79: aload_1
     //   80: aload 4
     //   82: invokevirtual 196	com/tencent/mm/plugin/finder/api/g:convertFrom	(Landroid/database/Cursor;)V
-    //   85: getstatic 202	d/z:MKo	Ld/z;
+    //   85: getstatic 202	d/z:Nhr	Ld/z;
     //   88: astore 4
     //   90: aload_3
     //   91: aconst_null
@@ -147,18 +147,18 @@ public final class v
   public final boolean b(com.tencent.mm.plugin.finder.api.g paramg, boolean paramBoolean)
   {
     boolean bool = true;
-    AppMethodBeat.i(203725);
+    AppMethodBeat.i(204292);
     p.h(paramg, "ct");
     if (paramBoolean) {
-      paramg.field_updateTime = cf.aCM();
+      paramg.field_updateTime = ch.aDc();
     }
     ContentValues localContentValues;
-    if (agW(paramg.getUsername()) == null)
+    if (ahT(paramg.getUsername()) == null)
     {
       p.h(paramg, "contact");
       localContentValues = paramg.convertTo();
-      long l = this.sxB.insert("FinderContact", "", localContentValues);
-      ad.i("Finder.MsgContactStorage", "insert contact " + paramg + ' ' + l);
+      long l = this.sIs.insert("FinderContact", "", localContentValues);
+      ae.i("Finder.MsgContactStorage", "insert contact " + paramg + ' ' + l);
       paramg.systemRowid = l;
       if (l > 0L) {
         paramBoolean = bool;
@@ -171,15 +171,15 @@ public final class v
         h(paramg);
         doNotify("FinderContact", 4, paramg.getUsername());
       }
-      AppMethodBeat.o(203725);
+      AppMethodBeat.o(204292);
       return paramBoolean;
       paramBoolean = false;
       continue;
       p.h(paramg, "contact");
       localContentValues = paramg.convertTo();
       localContentValues.remove("rowid");
-      int i = this.sxB.update("FinderContact", localContentValues, "username=?", new String[] { paramg.field_username });
-      ad.i("Finder.MsgContactStorage", "updateContact " + paramg.cxP() + ' ' + i);
+      int i = this.sIs.update("FinderContact", localContentValues, "username=?", new String[] { paramg.field_username });
+      ae.i("Finder.MsgContactStorage", "updateContact " + paramg.czq() + ' ' + i);
       if (i > 0) {
         h(paramg);
       }
@@ -190,7 +190,7 @@ public final class v
     }
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/storage/FinderMsgStrangerContactStorage$Companion;", "", "()V", "INDEX_CREATE", "", "", "getINDEX_CREATE", "()[Ljava/lang/String;", "[Ljava/lang/String;", "SQL_CREATE", "kotlin.jvm.PlatformType", "getSQL_CREATE", "TABLE_NAME", "TAG", "plugin-finder_release"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/storage/FinderMsgStrangerContactStorage$Companion;", "", "()V", "INDEX_CREATE", "", "", "getINDEX_CREATE", "()[Ljava/lang/String;", "[Ljava/lang/String;", "SQL_CREATE", "kotlin.jvm.PlatformType", "getSQL_CREATE", "TABLE_NAME", "TAG", "plugin-finder_release"})
   public static final class a {}
 }
 

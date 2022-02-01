@@ -29,17 +29,17 @@ public class FlutterActivity
   extends HellActivity
   implements LifecycleOwner, c.a
 {
-  protected c MBi;
-  private LifecycleRegistry uZb;
+  protected c MYn;
+  private LifecycleRegistry vld;
   
   public FlutterActivity()
   {
     AppMethodBeat.i(10028);
-    this.uZb = new LifecycleRegistry(this);
+    this.vld = new LifecycleRegistry(this);
     AppMethodBeat.o(10028);
   }
   
-  private Drawable dfM()
+  private Drawable diQ()
   {
     AppMethodBeat.i(10031);
     for (;;)
@@ -76,17 +76,17 @@ public class FlutterActivity
     }
   }
   
-  private d.a dfN()
+  private d.a diU()
   {
-    AppMethodBeat.i(213367);
+    AppMethodBeat.i(197949);
     if (getIntent().hasExtra("background_mode"))
     {
       locala = d.a.valueOf(getIntent().getStringExtra("background_mode"));
-      AppMethodBeat.o(213367);
+      AppMethodBeat.o(197949);
       return locala;
     }
-    d.a locala = d.a.MBn;
-    AppMethodBeat.o(213367);
+    d.a locala = d.a.MYs;
+    AppMethodBeat.o(197949);
     return locala;
   }
   
@@ -95,7 +95,7 @@ public class FlutterActivity
     AppMethodBeat.i(10053);
     if (paramActivity != null)
     {
-      paramActivity = new b(this, parama.MCn);
+      paramActivity = new b(this, parama.MZs);
       AppMethodBeat.o(10053);
       return paramActivity;
     }
@@ -105,49 +105,35 @@ public class FlutterActivity
   
   public final void a(io.flutter.embedding.engine.a parama)
   {
-    AppMethodBeat.i(213368);
+    AppMethodBeat.i(197950);
     try
     {
       Class.forName("io.flutter.a.a").getDeclaredMethod("registerWith", new Class[] { io.flutter.embedding.engine.a.class }).invoke(null, new Object[] { parama });
-      AppMethodBeat.o(213368);
+      AppMethodBeat.o(197950);
       return;
     }
     catch (Exception localException)
     {
       new StringBuilder("Tried to automatically register plugins with FlutterEngine (").append(parama).append(") but could not find and invoke the GeneratedPluginRegistrant.");
-      io.flutter.a.ged();
-      AppMethodBeat.o(213368);
+      io.flutter.a.giG();
+      AppMethodBeat.o(197950);
     }
   }
   
   public final void b(io.flutter.embedding.engine.a parama) {}
   
-  public final void cQm()
+  public final void cSR()
   {
-    AppMethodBeat.i(213369);
+    AppMethodBeat.i(197951);
     if (Build.VERSION.SDK_INT >= 21) {
       reportFullyDrawn();
     }
-    AppMethodBeat.o(213369);
+    AppMethodBeat.o(197951);
   }
   
-  public final void cQn() {}
+  public final void cSS() {}
   
-  public final h dfL()
-  {
-    AppMethodBeat.i(10030);
-    Object localObject = dfM();
-    if (localObject != null)
-    {
-      localObject = new DrawableSplashScreen((Drawable)localObject);
-      AppMethodBeat.o(10030);
-      return localObject;
-    }
-    AppMethodBeat.o(10030);
-    return null;
-  }
-  
-  public final String dfO()
+  public final String diI()
   {
     AppMethodBeat.i(10045);
     String str = getIntent().getStringExtra("cached_engine_id");
@@ -155,7 +141,7 @@ public class FlutterActivity
     return str;
   }
   
-  public final String dfP()
+  public final String diJ()
   {
     AppMethodBeat.i(10047);
     for (;;)
@@ -184,7 +170,7 @@ public class FlutterActivity
     }
   }
   
-  public final String dfQ()
+  public final String diK()
   {
     AppMethodBeat.i(10049);
     if ((getApplicationInfo().flags & 0x2) != 0) {}
@@ -202,7 +188,7 @@ public class FlutterActivity
     return str;
   }
   
-  public final String dfR()
+  public final String diL()
   {
     AppMethodBeat.i(10048);
     Object localObject1;
@@ -238,64 +224,23 @@ public class FlutterActivity
     return "/";
   }
   
-  public final io.flutter.embedding.engine.a dfU()
+  public final io.flutter.embedding.engine.a diO()
   {
     return null;
   }
   
-  public final d gej()
+  public final h diP()
   {
-    AppMethodBeat.i(10044);
-    d locald = d.bB(getIntent());
-    AppMethodBeat.o(10044);
-    return locald;
-  }
-  
-  public final boolean gek()
-  {
-    AppMethodBeat.i(10046);
-    boolean bool = getIntent().getBooleanExtra("destroy_engine_with_activity", false);
-    if ((dfO() != null) || (this.MBi.Mld))
+    AppMethodBeat.i(10030);
+    Object localObject = diQ();
+    if (localObject != null)
     {
-      AppMethodBeat.o(10046);
-      return bool;
+      localObject = new DrawableSplashScreen((Drawable)localObject);
+      AppMethodBeat.o(10030);
+      return localObject;
     }
-    bool = getIntent().getBooleanExtra("destroy_engine_with_activity", true);
-    AppMethodBeat.o(10046);
-    return bool;
-  }
-  
-  public final g gel()
-  {
-    AppMethodBeat.i(213365);
-    if (dfN() == d.a.MBn)
-    {
-      localg = g.MCa;
-      AppMethodBeat.o(213365);
-      return localg;
-    }
-    g localg = g.MCb;
-    AppMethodBeat.o(213365);
-    return localg;
-  }
-  
-  public final j gem()
-  {
-    AppMethodBeat.i(213366);
-    if (dfN() == d.a.MBn)
-    {
-      localj = j.MCd;
-      AppMethodBeat.o(213366);
-      return localj;
-    }
-    j localj = j.MCe;
-    AppMethodBeat.o(213366);
-    return localj;
-  }
-  
-  public final boolean gen()
-  {
-    return true;
+    AppMethodBeat.o(10030);
+    return null;
   }
   
   public final Activity getActivity()
@@ -310,20 +255,75 @@ public class FlutterActivity
   
   public Lifecycle getLifecycle()
   {
-    return this.uZb;
+    return this.vld;
+  }
+  
+  public final d giM()
+  {
+    AppMethodBeat.i(10044);
+    d locald = d.bC(getIntent());
+    AppMethodBeat.o(10044);
+    return locald;
+  }
+  
+  public final boolean giN()
+  {
+    AppMethodBeat.i(10046);
+    boolean bool = getIntent().getBooleanExtra("destroy_engine_with_activity", false);
+    if ((diI() != null) || (this.MYn.MIa))
+    {
+      AppMethodBeat.o(10046);
+      return bool;
+    }
+    bool = getIntent().getBooleanExtra("destroy_engine_with_activity", true);
+    AppMethodBeat.o(10046);
+    return bool;
+  }
+  
+  public final g giO()
+  {
+    AppMethodBeat.i(197947);
+    if (diU() == d.a.MYs)
+    {
+      localg = g.MZf;
+      AppMethodBeat.o(197947);
+      return localg;
+    }
+    g localg = g.MZg;
+    AppMethodBeat.o(197947);
+    return localg;
+  }
+  
+  public final j giP()
+  {
+    AppMethodBeat.i(197948);
+    if (diU() == d.a.MYs)
+    {
+      localj = j.MZi;
+      AppMethodBeat.o(197948);
+      return localj;
+    }
+    j localj = j.MZj;
+    AppMethodBeat.o(197948);
+    return localj;
+  }
+  
+  public final boolean giQ()
+  {
+    return true;
   }
   
   protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     AppMethodBeat.i(10038);
-    this.MBi.onActivityResult(paramInt1, paramInt2, paramIntent);
+    this.MYn.onActivityResult(paramInt1, paramInt2, paramIntent);
     AppMethodBeat.o(10038);
   }
   
   public void onBackPressed()
   {
     AppMethodBeat.i(10040);
-    this.MBi.onBackPressed();
+    this.MYn.onBackPressed();
     AppMethodBeat.o(10040);
   }
   
@@ -345,18 +345,18 @@ public class FlutterActivity
       }
       catch (PackageManager.NameNotFoundException localNameNotFoundException)
       {
-        io.flutter.a.gee();
+        io.flutter.a.giH();
         continue;
       }
       super.onCreate(paramBundle);
-      this.uZb.handleLifecycleEvent(Lifecycle.Event.ON_CREATE);
-      this.MBi = new c(this);
-      this.MBi.fYW();
-      this.MBi.geo();
-      if (dfN() == d.a.MBo) {
+      this.vld.handleLifecycleEvent(Lifecycle.Event.ON_CREATE);
+      this.MYn = new c(this);
+      this.MYn.gdx();
+      this.MYn.giR();
+      if (diU() == d.a.MYt) {
         getWindow().setBackgroundDrawable(new ColorDrawable(0));
       }
-      setContentView(this.MBi.fYY());
+      setContentView(this.MYn.gdz());
       if (Build.VERSION.SDK_INT >= 21)
       {
         paramBundle = getWindow();
@@ -366,7 +366,7 @@ public class FlutterActivity
       }
       AppMethodBeat.o(10029);
       return;
-      io.flutter.a.gea();
+      io.flutter.a.giD();
     }
   }
   
@@ -374,9 +374,9 @@ public class FlutterActivity
   {
     AppMethodBeat.i(10037);
     super.onDestroy();
-    this.MBi.onDestroyView();
-    this.MBi.onDetach();
-    this.uZb.handleLifecycleEvent(Lifecycle.Event.ON_DESTROY);
+    this.MYn.onDestroyView();
+    this.MYn.onDetach();
+    this.vld.handleLifecycleEvent(Lifecycle.Event.ON_DESTROY);
     AppMethodBeat.o(10037);
   }
   
@@ -384,7 +384,7 @@ public class FlutterActivity
   {
     AppMethodBeat.i(10039);
     super.onNewIntent(paramIntent);
-    this.MBi.onNewIntent(paramIntent);
+    this.MYn.onNewIntent(paramIntent);
     AppMethodBeat.o(10039);
   }
   
@@ -392,8 +392,8 @@ public class FlutterActivity
   {
     AppMethodBeat.i(10035);
     super.onPause();
-    this.MBi.onPause();
-    this.uZb.handleLifecycleEvent(Lifecycle.Event.ON_PAUSE);
+    this.MYn.onPause();
+    this.vld.handleLifecycleEvent(Lifecycle.Event.ON_PAUSE);
     AppMethodBeat.o(10035);
   }
   
@@ -401,14 +401,14 @@ public class FlutterActivity
   {
     AppMethodBeat.i(10034);
     super.onPostResume();
-    this.MBi.onPostResume();
+    this.MYn.onPostResume();
     AppMethodBeat.o(10034);
   }
   
   public void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
     AppMethodBeat.i(10041);
-    this.MBi.onRequestPermissionsResult(paramInt, paramArrayOfString, paramArrayOfInt);
+    this.MYn.onRequestPermissionsResult(paramInt, paramArrayOfString, paramArrayOfInt);
     AppMethodBeat.o(10041);
   }
   
@@ -416,25 +416,25 @@ public class FlutterActivity
   {
     AppMethodBeat.i(10033);
     super.onResume();
-    this.uZb.handleLifecycleEvent(Lifecycle.Event.ON_RESUME);
-    this.MBi.onResume();
+    this.vld.handleLifecycleEvent(Lifecycle.Event.ON_RESUME);
+    this.MYn.onResume();
     AppMethodBeat.o(10033);
   }
   
   protected void onSaveInstanceState(Bundle paramBundle)
   {
-    AppMethodBeat.i(213364);
+    AppMethodBeat.i(197946);
     super.onSaveInstanceState(paramBundle);
-    this.MBi.gep();
-    AppMethodBeat.o(213364);
+    this.MYn.giS();
+    AppMethodBeat.o(197946);
   }
   
   protected void onStart()
   {
     AppMethodBeat.i(10032);
     super.onStart();
-    this.uZb.handleLifecycleEvent(Lifecycle.Event.ON_START);
-    this.MBi.onStart();
+    this.vld.handleLifecycleEvent(Lifecycle.Event.ON_START);
+    this.MYn.onStart();
     AppMethodBeat.o(10032);
   }
   
@@ -442,8 +442,8 @@ public class FlutterActivity
   {
     AppMethodBeat.i(10036);
     super.onStop();
-    this.MBi.onStop();
-    this.uZb.handleLifecycleEvent(Lifecycle.Event.ON_STOP);
+    this.MYn.onStop();
+    this.vld.handleLifecycleEvent(Lifecycle.Event.ON_STOP);
     AppMethodBeat.o(10036);
   }
   
@@ -451,14 +451,14 @@ public class FlutterActivity
   {
     AppMethodBeat.i(10043);
     super.onTrimMemory(paramInt);
-    this.MBi.onTrimMemory(paramInt);
+    this.MYn.onTrimMemory(paramInt);
     AppMethodBeat.o(10043);
   }
   
   public void onUserLeaveHint()
   {
     AppMethodBeat.i(10042);
-    this.MBi.onUserLeaveHint();
+    this.MYn.onUserLeaveHint();
     AppMethodBeat.o(10042);
   }
   
@@ -470,7 +470,7 @@ public class FlutterActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     io.flutter.embedding.android.FlutterActivity
  * JD-Core Version:    0.7.0.1
  */

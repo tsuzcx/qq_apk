@@ -2,7 +2,7 @@ package kotlinx.coroutines;
 
 import d.l;
 
-@l(gfx={1, 1, 16})
+@l(gjZ={1, 1, 16})
 public final class ak {}
 
 

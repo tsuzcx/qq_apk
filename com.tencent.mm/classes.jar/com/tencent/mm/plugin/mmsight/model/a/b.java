@@ -2,43 +2,43 @@ package com.tencent.mm.plugin.mmsight.model.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.sight.base.SightVideoJNI;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public final class b
 {
-  int dGc;
-  int hhQ;
-  int ivD;
-  int ivE;
-  boolean mWk;
+  int dHi;
+  int hkE;
+  int iyw;
+  int iyx;
+  boolean nbq;
   int targetHeight;
   int targetWidth;
-  byte[] vPf;
-  byte[] vPg;
-  int vPh;
-  int vPi;
-  long vPj;
-  int vPk;
-  boolean vPl;
+  byte[] wbi;
+  byte[] wbj;
+  int wbk;
+  int wbl;
+  long wbm;
+  int wbn;
+  boolean wbo;
   
   public b(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, boolean paramBoolean1, boolean paramBoolean2, int paramInt6, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(89471);
-    this.vPh = 0;
-    this.vPi = 0;
-    this.vPj = bt.HI();
-    this.hhQ = paramInt3;
+    this.wbk = 0;
+    this.wbl = 0;
+    this.wbm = bu.HQ();
+    this.hkE = paramInt3;
     this.targetWidth = paramInt4;
     this.targetHeight = paramInt5;
-    this.ivD = paramInt1;
-    this.ivE = paramInt2;
-    this.vPl = paramBoolean2;
-    this.mWk = paramBoolean1;
-    this.dGc = paramInt6;
-    this.vPf = paramArrayOfByte;
-    this.vPh = paramArrayOfByte.length;
-    this.vPg = k.vQc.g(Integer.valueOf(paramInt4 * paramInt5 * 3 / 2));
+    this.iyw = paramInt1;
+    this.iyx = paramInt2;
+    this.wbo = paramBoolean2;
+    this.nbq = paramBoolean1;
+    this.dHi = paramInt6;
+    this.wbi = paramArrayOfByte;
+    this.wbk = paramArrayOfByte.length;
+    this.wbj = k.wcg.h(Integer.valueOf(paramInt4 * paramInt5 * 3 / 2));
     AppMethodBeat.o(89471);
   }
   

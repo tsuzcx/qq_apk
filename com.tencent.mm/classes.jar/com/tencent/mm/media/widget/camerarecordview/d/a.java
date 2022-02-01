@@ -6,16 +6,16 @@ import com.tencent.mm.media.widget.camerarecordview.preview.e;
 import com.tencent.mm.modelcontrol.VideoTransPara;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/media/widget/camerarecordview/process/ICameraContainerProcess;", "", "enableCameraOrientationFit", "", "getCameraPreviewView", "Lcom/tencent/mm/media/widget/camerarecordview/preview/ICameraPreviewView;", "getContext", "Landroid/content/Context;", "getDaemonVideoTransPara", "Lcom/tencent/mm/modelcontrol/VideoTransPara;", "getEncodeConfig", "Lcom/tencent/mm/media/widget/camerarecordview/data/IEncodeConfig;", "getPreviewRenderer", "Lcom/tencent/mm/media/render/AbsSurfaceRenderer;", "getRecordRenderer", "getRecordScene", "", "getRecorder", "Lcom/tencent/mm/media/widget/recorder/IMediaRecorder;", "getResolutionLimit", "getVideoTransPara", "isMute", "useCpuCrop", "useDaemonRecorder", "plugin-mediaeditor_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/media/widget/camerarecordview/process/ICameraContainerProcess;", "", "enableCameraOrientationFit", "", "getCameraPreviewView", "Lcom/tencent/mm/media/widget/camerarecordview/preview/ICameraPreviewView;", "getContext", "Landroid/content/Context;", "getDaemonVideoTransPara", "Lcom/tencent/mm/modelcontrol/VideoTransPara;", "getEncodeConfig", "Lcom/tencent/mm/media/widget/camerarecordview/data/IEncodeConfig;", "getPreviewRenderer", "Lcom/tencent/mm/media/render/AbsSurfaceRenderer;", "getRecordRenderer", "getRecordScene", "", "getRecorder", "Lcom/tencent/mm/media/widget/recorder/IMediaRecorder;", "getResolutionLimit", "getVideoTransPara", "isMute", "useCpuCrop", "useDaemonRecorder", "plugin-mediaeditor_release"})
 public abstract interface a
 {
-  public abstract boolean Pf();
+  public abstract boolean Pd();
   
-  public abstract boolean axJ();
+  public abstract boolean axY();
   
-  public abstract boolean axK();
+  public abstract boolean axZ();
   
-  public abstract boolean axL();
+  public abstract boolean aya();
   
   public abstract e getCameraPreviewView();
   

@@ -30,14 +30,14 @@ public abstract interface j
   public static abstract class a
     implements j
   {
-    protected h HTO;
-    protected RecoveryCrash HUA;
-    protected RecoveryCrash HUB;
-    protected final Handler HUv;
-    protected final AtomicReference<b> HUw;
-    protected final SparseArray<List<d>> HUx;
-    protected a HUy;
-    protected long HUz;
+    protected h InW;
+    protected final Handler IoD;
+    protected final AtomicReference<b> IoE;
+    protected final SparseArray<List<d>> IoF;
+    protected a IoG;
+    protected long IoH;
+    protected RecoveryCrash IoI;
+    protected RecoveryCrash IoJ;
     protected final Context mContext;
     protected final String mVersionName;
     
@@ -49,38 +49,38 @@ public abstract interface j
     private a(Context paramContext, byte paramByte)
     {
       this.mContext = paramContext;
-      this.HUv = new Handler(Looper.getMainLooper());
-      this.mVersionName = l.hX(this.mContext);
-      this.HTO = null;
-      this.HUw = new AtomicReference(new b.c().a(null));
-      this.HUx = new SparseArray(2);
-      this.HUx.put(1, new ArrayList());
-      this.HUx.put(2, new ArrayList());
-      this.HUB = RecoveryCrash.hK(this.mContext);
+      this.IoD = new Handler(Looper.getMainLooper());
+      this.mVersionName = l.ic(this.mContext);
+      this.InW = null;
+      this.IoE = new AtomicReference(new b.c().a(null));
+      this.IoF = new SparseArray(2);
+      this.IoF.put(1, new ArrayList());
+      this.IoF.put(2, new ArrayList());
+      this.IoJ = RecoveryCrash.hQ(this.mContext);
     }
     
     public a(a parama)
     {
-      this.HUy = parama;
+      this.IoG = parama;
       this.mContext = parama.mContext;
-      this.HUv = parama.HUv;
+      this.IoD = parama.IoD;
       this.mVersionName = parama.mVersionName;
-      this.HUB = parama.HUB;
-      this.HTO = parama.HTO;
-      this.HUw = parama.HUw;
-      this.HUx = parama.HUx;
+      this.IoJ = parama.IoJ;
+      this.InW = parama.InW;
+      this.IoE = parama.IoE;
+      this.IoF = parama.IoF;
     }
     
-    protected final void ZX(int paramInt)
+    protected final void aaD(int paramInt)
     {
       a.a.log(4, "MicroMsg.recovery.trigger", "recovery event, level = ".concat(String.valueOf(paramInt)));
-      Iterator localIterator = ((List)this.HUx.get(paramInt)).iterator();
+      Iterator localIterator = ((List)this.IoF.get(paramInt)).iterator();
       while (localIterator.hasNext())
       {
         d locald = (d)localIterator.next();
         try
         {
-          locald.ZV(paramInt);
+          locald.aaB(paramInt);
         }
         catch (Throwable localThrowable)
         {
@@ -91,38 +91,38 @@ public abstract interface j
     
     public void begin()
     {
-      this.HUz = System.currentTimeMillis();
+      this.IoH = System.currentTimeMillis();
     }
     
-    protected final void fgY()
+    protected final void fkQ()
     {
-      if (this.HTO == null)
+      if (this.InW == null)
       {
-        this.HTO = h.hN(this.mContext);
-        ((b)this.HUw.get()).a(this.HTO);
+        this.InW = h.hT(this.mContext);
+        ((b)this.IoE.get()).a(this.InW);
       }
-      if (this.HUB == null) {
-        this.HUB = RecoveryCrash.hK(this.mContext);
+      if (this.IoJ == null) {
+        this.IoJ = RecoveryCrash.hQ(this.mContext);
       }
-      this.HUB.fgY();
-      if (this.HUA == null)
+      this.IoJ.fkQ();
+      if (this.IoI == null)
       {
-        Object localObject = this.HUB;
+        Object localObject = this.IoJ;
         Context localContext = ((RecoveryCrash)localObject).mContext;
-        long l = ((RecoveryCrash)localObject).HTR;
-        String str = ((RecoveryCrash)localObject).HTS;
-        g localg = ((RecoveryCrash)localObject).HTT;
-        localObject = ((RecoveryCrash)localObject).HTU;
-        this.HUA = new RecoveryCrash(localContext, l, str, localg, new c(((c)localObject).HTW, ((c)localObject).HTT));
+        long l = ((RecoveryCrash)localObject).InZ;
+        String str = ((RecoveryCrash)localObject).Ioa;
+        g localg = ((RecoveryCrash)localObject).Iob;
+        localObject = ((RecoveryCrash)localObject).Ioc;
+        this.IoI = new RecoveryCrash(localContext, l, str, localg, new c(((c)localObject).Ioe, ((c)localObject).Iob));
       }
     }
     
-    protected boolean fhm()
+    protected boolean fle()
     {
       a.a.log(4, "MicroMsg.recovery.trigger", "onLaunchRecovery");
       try
       {
-        ((b)this.HUw.get()).a(this.mContext, this.HUA);
+        ((b)this.IoE.get()).a(this.mContext, this.IoI);
         return true;
       }
       catch (Throwable localThrowable)
@@ -132,18 +132,18 @@ public abstract interface j
       return false;
     }
     
-    protected final void fhn()
+    protected final void flf()
     {
-      RecoveryCrash localRecoveryCrash = this.HUA;
-      c localc = localRecoveryCrash.HTU;
-      localc.HTW += 1;
-      localRecoveryCrash.HTS = this.mVersionName;
-      localRecoveryCrash.HTR = this.HUz;
+      RecoveryCrash localRecoveryCrash = this.IoI;
+      c localc = localRecoveryCrash.Ioc;
+      localc.Ioe += 1;
+      localRecoveryCrash.Ioa = this.mVersionName;
+      localRecoveryCrash.InZ = this.IoH;
     }
     
-    protected final void fho()
+    protected final void flg()
     {
-      this.HUA.fgZ();
+      this.IoI.fkR();
     }
     
     protected final void onTerminate()
@@ -151,125 +151,125 @@ public abstract interface j
       a.a.log(4, "MicroMsg.recovery.trigger", "#onTerminate");
       try
       {
-        ((b)this.HUw.get()).b(this.mContext, this.HUA);
+        ((b)this.IoE.get()).b(this.mContext, this.IoI);
         return;
       }
       catch (Throwable localThrowable) {}
     }
     
-    protected final void wm(boolean paramBoolean)
+    protected final void wu(boolean paramBoolean)
     {
       if (paramBoolean)
       {
-        this.HUA.save();
+        this.IoI.save();
         return;
       }
-      RecoveryCrash localRecoveryCrash = this.HUA;
-      c localc = localRecoveryCrash.HTU;
-      localc.HTT.ge("crash_count", localc.HTW).fhd();
-      localRecoveryCrash.HTT.lF("crash_version", localRecoveryCrash.HTS).bR("crash_time", localRecoveryCrash.HTR).fhd();
+      RecoveryCrash localRecoveryCrash = this.IoI;
+      c localc = localRecoveryCrash.Ioc;
+      localc.Iob.gn("crash_count", localc.Ioe).fkV();
+      localRecoveryCrash.Iob.lM("crash_version", localRecoveryCrash.Ioa).bS("crash_time", localRecoveryCrash.InZ).fkV();
     }
   }
   
   public static final class b
     extends j.a
   {
-    final long HUC;
-    j.d HUD;
-    j.e HUE;
+    final long IoK;
+    j.d IoL;
+    j.e IoM;
     
     public b(Context paramContext)
     {
       super();
-      AppMethodBeat.i(207043);
-      this.HUC = System.currentTimeMillis();
-      AppMethodBeat.o(207043);
+      AppMethodBeat.i(195351);
+      this.IoK = System.currentTimeMillis();
+      AppMethodBeat.o(195351);
     }
     
-    private j.e fhp()
+    private j.e flh()
     {
-      AppMethodBeat.i(207046);
-      if (this.HUD == null) {}
-      for (Object localObject = this;; localObject = this.HUD)
+      AppMethodBeat.i(195354);
+      if (this.IoL == null) {}
+      for (Object localObject = this;; localObject = this.IoL)
       {
         localObject = new j.e((j.a)localObject);
-        j.e.a locala = j.e.a.bZ(this.mContext, "signal_acc");
-        localObject = ((j.e)localObject).CN(this.HUC).a(locala);
-        AppMethodBeat.o(207046);
+        j.e.a locala = j.e.a.ca(this.mContext, "signal_acc");
+        localObject = ((j.e)localObject).Dl(this.IoK).a(locala);
+        AppMethodBeat.o(195354);
         return localObject;
       }
     }
     
-    public final void ZY(int paramInt)
+    public final void aaE(int paramInt)
     {
-      AppMethodBeat.i(207045);
+      AppMethodBeat.i(195353);
       try
       {
-        if (this.HUE == null) {
-          this.HUE = fhp();
+        if (this.IoM == null) {
+          this.IoM = flh();
         }
-        this.HUE.ZZ(paramInt);
+        this.IoM.aaF(paramInt);
         return;
       }
       finally
       {
-        AppMethodBeat.o(207045);
+        AppMethodBeat.o(195353);
       }
     }
     
     public final void begin()
     {
-      AppMethodBeat.i(207044);
+      AppMethodBeat.i(195352);
       super.begin();
       try
       {
-        if ((this.HUD == null) && (this.HUE == null))
+        if ((this.IoL == null) && (this.IoM == null))
         {
-          this.HUD = new j.c(this)
+          this.IoL = new j.c(this)
           {
             public final void finish()
             {
-              AppMethodBeat.i(207042);
+              AppMethodBeat.i(195350);
               a.a.log(4, "MicroMsg.recovery.combination", "safePoint finish, switch to signal handler");
-              if (j.b.this.HUE == null) {
-                j.b.this.HUE = j.b.a(j.b.this);
+              if (j.b.this.IoM == null) {
+                j.b.this.IoM = j.b.a(j.b.this);
               }
               super.finish();
-              AppMethodBeat.o(207042);
+              AppMethodBeat.o(195350);
             }
           };
-          if (this.HUD != null) {
-            this.HUD.begin();
+          if (this.IoL != null) {
+            this.IoL.begin();
           }
           return;
         }
-        if (this.HUE == null) {
-          this.HUE = fhp();
+        if (this.IoM == null) {
+          this.IoM = flh();
         }
-        if (this.HUE != null) {
-          this.HUE.begin();
+        if (this.IoM != null) {
+          this.IoM.begin();
         }
         return;
       }
       finally
       {
-        AppMethodBeat.o(207044);
+        AppMethodBeat.o(195352);
       }
     }
     
     public final void finish()
     {
-      AppMethodBeat.i(207047);
+      AppMethodBeat.i(195355);
       try
       {
-        if (this.HUD != null) {
-          this.HUD.finish();
+        if (this.IoL != null) {
+          this.IoL.finish();
         }
         return;
       }
       finally
       {
-        AppMethodBeat.o(207047);
+        AppMethodBeat.o(195355);
       }
     }
   }
@@ -285,16 +285,16 @@ public abstract interface j
     @SuppressLint({"MissingSuperCall"})
     public final void begin()
     {
-      AppMethodBeat.i(207050);
-      int i = this.HUB.HTU.HTW;
+      AppMethodBeat.i(195358);
+      int i = this.IoJ.Ioc.Ioe;
       if (i <= 0)
       {
         a.a.log(4, "MicroMsg.recovery.safePointLazy", "no need check, crash count = ".concat(String.valueOf(i)));
-        this.HUH.set(true);
-        fhq();
+        this.IoP.set(true);
+        fli();
         Callable local1 = new Callable() {};
         Executors.newCachedThreadPool().submit(local1);
-        AppMethodBeat.o(207050);
+        AppMethodBeat.o(195358);
         return;
       }
       super.begin();
@@ -315,166 +315,166 @@ public abstract interface j
           return true;
         }
       };
-      AppMethodBeat.o(207050);
+      AppMethodBeat.o(195358);
     }
   }
   
   public static class d
     extends j.a
   {
-    protected final AtomicBoolean HUH;
-    protected final AtomicBoolean HUI;
+    protected final AtomicBoolean IoP;
+    protected final AtomicBoolean IoQ;
     
     public d(j.a parama)
     {
       super();
-      AppMethodBeat.i(207052);
-      this.HUH = new AtomicBoolean();
-      this.HUI = new AtomicBoolean();
-      AppMethodBeat.o(207052);
+      AppMethodBeat.i(195360);
+      this.IoP = new AtomicBoolean();
+      this.IoQ = new AtomicBoolean();
+      AppMethodBeat.o(195360);
     }
     
     public void begin()
     {
-      AppMethodBeat.i(207053);
+      AppMethodBeat.i(195361);
       super.begin();
-      fgY();
-      long l1 = this.HUz - this.HUB.HTR;
+      fkQ();
+      long l1 = this.IoH - this.IoJ.InZ;
       a.a.log(4, "MicroMsg.recovery.safePoint", "recovery interval = ".concat(String.valueOf(l1)));
-      long l2 = this.HTO.HUi;
+      long l2 = this.InW.Ioq;
       if ((l2 > 0L) && (l1 < l2))
       {
         a.a.log(4, "MicroMsg.recovery.safePoint", "too fast, skip and do nothing, min = ".concat(String.valueOf(l2)));
-        AppMethodBeat.o(207053);
+        AppMethodBeat.o(195361);
         return;
       }
-      this.HUH.set(true);
-      if ((!TextUtils.isEmpty(this.HUB.HTS)) && (!this.HUB.HTS.equals(this.mVersionName)))
+      this.IoP.set(true);
+      if ((!TextUtils.isEmpty(this.IoJ.Ioa)) && (!this.IoJ.Ioa.equals(this.mVersionName)))
       {
         a.a.log(4, "MicroMsg.recovery.safePoint", "version code mismatch, skip");
-        fho();
+        flg();
       }
-      if (l1 >= this.HTO.HUg)
+      if (l1 >= this.InW.Ioo)
       {
         a.a.log(4, "MicroMsg.recovery.safePoint", "over interval, skip");
-        fho();
+        flg();
       }
-      int i = this.HUA.HTU.HTW;
+      int i = this.IoI.Ioc.Ioe;
       a.a.log(4, "MicroMsg.recovery.safePoint", "recovery crashCount = ".concat(String.valueOf(i)));
-      if (i >= this.HTO.HUe)
+      if (i >= this.InW.Iom)
       {
-        if (!fhm())
+        if (!fle())
         {
           a.a.log(5, "MicroMsg.recovery.safePoint", "launch recovery fail");
-          wm(true);
-          AppMethodBeat.o(207053);
+          wu(true);
+          AppMethodBeat.o(195361);
           return;
         }
-        if (i < this.HTO.HUf)
+        if (i < this.InW.Ion)
         {
-          ZX(1);
-          fhn();
+          aaD(1);
+          flf();
         }
         for (;;)
         {
-          wm(true);
+          wu(true);
           onTerminate();
-          AppMethodBeat.o(207053);
+          AppMethodBeat.o(195361);
           return;
-          ZX(2);
-          fho();
+          aaD(2);
+          flg();
         }
       }
-      fhq();
-      fhn();
-      wm(false);
-      fhr();
-      AppMethodBeat.o(207053);
-    }
-    
-    protected final boolean fhm()
-    {
-      AppMethodBeat.i(207055);
-      boolean bool = super.fhm();
-      if (bool)
-      {
-        i locali = i.hR(this.mContext);
-        locali.HUs = false;
-        locali.HTW = this.HUA.HTU.HTW;
-        locali.HUo = true;
-        locali.mFrom = 1;
-        locali.fhl();
-      }
-      AppMethodBeat.o(207055);
-      return bool;
-    }
-    
-    protected final void fhq()
-    {
-      AppMethodBeat.i(207056);
-      a.a.log(4, "MicroMsg.recovery.safePoint", "onLaunchNormal");
-      if ((this.HUA != null) && (this.HUA.HTU.HTW > 0))
-      {
-        i locali = i.hR(this.mContext);
-        locali.HUs = false;
-        locali.HTW = this.HUA.HTU.HTW;
-        locali.HUo = false;
-        locali.mFrom = 1;
-        locali.fhl();
-      }
-      AppMethodBeat.o(207056);
-    }
-    
-    protected final void fhr()
-    {
-      AppMethodBeat.i(207057);
-      this.HUv.postDelayed(new Runnable()
-      {
-        public final void run()
-        {
-          AppMethodBeat.i(207051);
-          if (j.d.this.HUI.get())
-          {
-            a.a.log(4, "MicroMsg.recovery.safePoint", "auto clear task has been canceled, skip");
-            AppMethodBeat.o(207051);
-            return;
-          }
-          a.a.log(4, "MicroMsg.recovery.safePoint", "auto clear point");
-          j.d.this.finish();
-          AppMethodBeat.o(207051);
-        }
-      }, this.HTO.HUj);
-      AppMethodBeat.o(207057);
-    }
-    
-    protected final void fhs()
-    {
-      AppMethodBeat.i(207058);
-      this.HUI.set(true);
-      AppMethodBeat.o(207058);
+      fli();
+      flf();
+      wu(false);
+      flj();
+      AppMethodBeat.o(195361);
     }
     
     public void finish()
     {
-      AppMethodBeat.i(207054);
+      AppMethodBeat.i(195362);
       a.a.log(4, "MicroMsg.recovery.safePoint", "#finish");
-      if (this.HUH.get())
+      if (this.IoP.get())
       {
         a.a.log(4, "MicroMsg.recovery.safePoint", "clear crash point");
-        fgY();
-        fho();
-        wm(true);
+        fkQ();
+        flg();
+        wu(true);
       }
-      AppMethodBeat.o(207054);
+      AppMethodBeat.o(195362);
+    }
+    
+    protected final boolean fle()
+    {
+      AppMethodBeat.i(195363);
+      boolean bool = super.fle();
+      if (bool)
+      {
+        i locali = i.hX(this.mContext);
+        locali.IoA = false;
+        locali.Ioe = this.IoI.Ioc.Ioe;
+        locali.Iow = true;
+        locali.mFrom = 1;
+        locali.fld();
+      }
+      AppMethodBeat.o(195363);
+      return bool;
+    }
+    
+    protected final void fli()
+    {
+      AppMethodBeat.i(195364);
+      a.a.log(4, "MicroMsg.recovery.safePoint", "onLaunchNormal");
+      if ((this.IoI != null) && (this.IoI.Ioc.Ioe > 0))
+      {
+        i locali = i.hX(this.mContext);
+        locali.IoA = false;
+        locali.Ioe = this.IoI.Ioc.Ioe;
+        locali.Iow = false;
+        locali.mFrom = 1;
+        locali.fld();
+      }
+      AppMethodBeat.o(195364);
+    }
+    
+    protected final void flj()
+    {
+      AppMethodBeat.i(195365);
+      this.IoD.postDelayed(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(195359);
+          if (j.d.this.IoQ.get())
+          {
+            a.a.log(4, "MicroMsg.recovery.safePoint", "auto clear task has been canceled, skip");
+            AppMethodBeat.o(195359);
+            return;
+          }
+          a.a.log(4, "MicroMsg.recovery.safePoint", "auto clear point");
+          j.d.this.finish();
+          AppMethodBeat.o(195359);
+        }
+      }, this.InW.Ior);
+      AppMethodBeat.o(195365);
+    }
+    
+    protected final void flk()
+    {
+      AppMethodBeat.i(195366);
+      this.IoQ.set(true);
+      AppMethodBeat.o(195366);
     }
   }
   
   public static final class e
     extends j.a
   {
-    protected long HUC = 0L;
-    protected a HUK;
-    protected long HUu = 0L;
+    protected long IoC = 0L;
+    protected long IoK = 0L;
+    protected a IoS;
     protected int mFrom = 2;
     
     public e(Context paramContext)
@@ -487,7 +487,7 @@ public abstract interface j
       super();
     }
     
-    private static int ax(long paramLong1, long paramLong2)
+    private static int aw(long paramLong1, long paramLong2)
     {
       if (paramLong1 >= paramLong2) {
         return 0;
@@ -504,155 +504,155 @@ public abstract interface j
       return 100;
     }
     
-    private void fhq()
+    private void fli()
     {
-      AppMethodBeat.i(207067);
+      AppMethodBeat.i(195375);
       a.a.log(4, "MicroMsg.recovery.signalHandler", "onLaunchNormal");
-      if (this.HUA.HTU.HTW > 0)
+      if (this.IoI.Ioc.Ioe > 0)
       {
-        i locali = i.hR(this.mContext);
-        locali.HUs = false;
-        locali.HTW = this.HUA.HTU.HTW;
-        locali.HUo = false;
+        i locali = i.hX(this.mContext);
+        locali.IoA = false;
+        locali.Ioe = this.IoI.Ioc.Ioe;
+        locali.Iow = false;
         locali.mFrom = this.mFrom;
-        locali.HUu = Math.max(this.HUu, 0L);
+        locali.IoC = Math.max(this.IoC, 0L);
         locali.save();
       }
-      AppMethodBeat.o(207067);
+      AppMethodBeat.o(195375);
     }
     
-    public final e CN(long paramLong)
+    public final e Dl(long paramLong)
     {
-      this.HUC = paramLong;
+      this.IoK = paramLong;
       return this;
-    }
-    
-    public final void ZZ(int paramInt)
-    {
-      AppMethodBeat.i(207064);
-      super.begin();
-      fgY();
-      a.a.log(4, "MicroMsg.recovery.signalHandler", "#begin");
-      this.mFrom = paramInt;
-      if (this.HUC > 0L) {
-        this.HUu = (this.HUz - this.HUC);
-      }
-      long l1 = this.HUz - this.HUB.HTR;
-      a.a.log(4, "MicroMsg.recovery.signalHandler", "recovery interval = ".concat(String.valueOf(l1)));
-      long l2 = this.HTO.HUi;
-      if ((l2 > 0L) && (l1 < l2))
-      {
-        a.a.log(4, "MicroMsg.recovery.signalHandler", "too fast, skip and do nothing, min = ".concat(String.valueOf(l2)));
-        AppMethodBeat.o(207064);
-        return;
-      }
-      if ((this.HUy instanceof j.d)) {
-        ((j.d)this.HUy).fhs();
-      }
-      if ((!TextUtils.isEmpty(this.HUB.HTS)) && (!this.HUB.HTS.equals(this.mVersionName)))
-      {
-        a.a.log(4, "MicroMsg.recovery.signalHandler", "version code mismatch, skip");
-        fho();
-      }
-      if (l1 < this.HTO.HUg)
-      {
-        a.a.log(4, "MicroMsg.recovery.signalHandler", "within interval, inc");
-        fhn();
-      }
-      for (;;)
-      {
-        paramInt = this.HUA.HTU.HTW;
-        a.a.log(4, "MicroMsg.recovery.signalHandler", "recovery crashCount = ".concat(String.valueOf(paramInt)));
-        if (paramInt < this.HTO.HUe) {
-          break label403;
-        }
-        if (fhm()) {
-          break;
-        }
-        a.a.log(5, "MicroMsg.recovery.signalHandler", "launch recovery fail");
-        wm(true);
-        AppMethodBeat.o(207064);
-        return;
-        l2 = this.HTO.HUh;
-        if ((l1 < l2) && (this.HUK != null))
-        {
-          a.a.log(4, "MicroMsg.recovery.signalHandler", "within signal interval");
-          paramInt = ax(l1, l2);
-          if (this.HUK.aab(paramInt))
-          {
-            a.a.log(4, "MicroMsg.recovery.signalHandler", "acc meet, inc");
-            fhn();
-          }
-          this.HUK.save();
-        }
-        else
-        {
-          a.a.log(4, "MicroMsg.recovery.signalHandler", "over signal interval, clear point");
-          fho();
-          fhn();
-        }
-      }
-      if (paramInt < this.HTO.HUf) {
-        ZX(1);
-      }
-      for (;;)
-      {
-        wm(true);
-        onTerminate();
-        AppMethodBeat.o(207064);
-        return;
-        ZX(2);
-        fho();
-      }
-      label403:
-      wm(true);
-      fhq();
-      AppMethodBeat.o(207064);
     }
     
     public final e a(a parama)
     {
-      this.HUK = parama;
+      this.IoS = parama;
       return this;
+    }
+    
+    public final void aaF(int paramInt)
+    {
+      AppMethodBeat.i(195372);
+      super.begin();
+      fkQ();
+      a.a.log(4, "MicroMsg.recovery.signalHandler", "#begin");
+      this.mFrom = paramInt;
+      if (this.IoK > 0L) {
+        this.IoC = (this.IoH - this.IoK);
+      }
+      long l1 = this.IoH - this.IoJ.InZ;
+      a.a.log(4, "MicroMsg.recovery.signalHandler", "recovery interval = ".concat(String.valueOf(l1)));
+      long l2 = this.InW.Ioq;
+      if ((l2 > 0L) && (l1 < l2))
+      {
+        a.a.log(4, "MicroMsg.recovery.signalHandler", "too fast, skip and do nothing, min = ".concat(String.valueOf(l2)));
+        AppMethodBeat.o(195372);
+        return;
+      }
+      if ((this.IoG instanceof j.d)) {
+        ((j.d)this.IoG).flk();
+      }
+      if ((!TextUtils.isEmpty(this.IoJ.Ioa)) && (!this.IoJ.Ioa.equals(this.mVersionName)))
+      {
+        a.a.log(4, "MicroMsg.recovery.signalHandler", "version code mismatch, skip");
+        flg();
+      }
+      if (l1 < this.InW.Ioo)
+      {
+        a.a.log(4, "MicroMsg.recovery.signalHandler", "within interval, inc");
+        flf();
+      }
+      for (;;)
+      {
+        paramInt = this.IoI.Ioc.Ioe;
+        a.a.log(4, "MicroMsg.recovery.signalHandler", "recovery crashCount = ".concat(String.valueOf(paramInt)));
+        if (paramInt < this.InW.Iom) {
+          break label403;
+        }
+        if (fle()) {
+          break;
+        }
+        a.a.log(5, "MicroMsg.recovery.signalHandler", "launch recovery fail");
+        wu(true);
+        AppMethodBeat.o(195372);
+        return;
+        l2 = this.InW.Iop;
+        if ((l1 < l2) && (this.IoS != null))
+        {
+          a.a.log(4, "MicroMsg.recovery.signalHandler", "within signal interval");
+          paramInt = aw(l1, l2);
+          if (this.IoS.aaH(paramInt))
+          {
+            a.a.log(4, "MicroMsg.recovery.signalHandler", "acc meet, inc");
+            flf();
+          }
+          this.IoS.save();
+        }
+        else
+        {
+          a.a.log(4, "MicroMsg.recovery.signalHandler", "over signal interval, clear point");
+          flg();
+          flf();
+        }
+      }
+      if (paramInt < this.InW.Ion) {
+        aaD(1);
+      }
+      for (;;)
+      {
+        wu(true);
+        onTerminate();
+        AppMethodBeat.o(195372);
+        return;
+        aaD(2);
+        flg();
+      }
+      label403:
+      wu(true);
+      fli();
+      AppMethodBeat.o(195372);
     }
     
     @SuppressLint({"MissingSuperCall"})
     public final void begin()
     {
-      AppMethodBeat.i(207063);
-      ZZ(2);
-      AppMethodBeat.o(207063);
-    }
-    
-    protected final boolean fhm()
-    {
-      AppMethodBeat.i(207066);
-      boolean bool = super.fhm();
-      if (bool)
-      {
-        i locali = i.hR(this.mContext);
-        locali.HUs = false;
-        locali.HTW = this.HUA.HTU.HTW;
-        locali.HUo = true;
-        locali.mFrom = this.mFrom;
-        locali.HUu = Math.max(this.HUu, 0L);
-        locali.save();
-      }
-      AppMethodBeat.o(207066);
-      return bool;
+      AppMethodBeat.i(195371);
+      aaF(2);
+      AppMethodBeat.o(195371);
     }
     
     public final void finish()
     {
-      AppMethodBeat.i(207065);
+      AppMethodBeat.i(195373);
       a.a.log(4, "MicroMsg.recovery.signalHandler", "#finish");
-      AppMethodBeat.o(207065);
+      AppMethodBeat.o(195373);
+    }
+    
+    protected final boolean fle()
+    {
+      AppMethodBeat.i(195374);
+      boolean bool = super.fle();
+      if (bool)
+      {
+        i locali = i.hX(this.mContext);
+        locali.IoA = false;
+        locali.Ioe = this.IoI.Ioc.Ioe;
+        locali.Iow = true;
+        locali.mFrom = this.mFrom;
+        locali.IoC = Math.max(this.IoC, 0L);
+        locali.save();
+      }
+      AppMethodBeat.o(195374);
+      return bool;
     }
     
     static final class a
     {
-      int HUL;
-      g HUk;
+      int IoT;
+      g Ios;
       final String mName;
       
       private a(String paramString)
@@ -660,53 +660,53 @@ public abstract interface j
         this.mName = paramString;
       }
       
-      private a aaa(int paramInt)
+      private a aaG(int paramInt)
       {
-        this.HUL += paramInt;
+        this.IoT += paramInt;
         return this;
       }
       
-      public static a bZ(Context paramContext, String paramString)
+      public static a ca(Context paramContext, String paramString)
       {
-        AppMethodBeat.i(207059);
-        paramContext = new a(paramString).hS(paramContext);
-        AppMethodBeat.o(207059);
+        AppMethodBeat.i(195367);
+        paramContext = new a(paramString).hY(paramContext);
+        AppMethodBeat.o(195367);
         return paramContext;
       }
       
-      private boolean fht()
+      private boolean fll()
       {
         boolean bool = false;
-        if (this.HUL >= 100)
+        if (this.IoT >= 100)
         {
-          this.HUL = 0;
+          this.IoT = 0;
           bool = true;
         }
         return bool;
       }
       
-      private a hS(Context paramContext)
+      private a hY(Context paramContext)
       {
-        AppMethodBeat.i(207060);
-        this.HUk = new g.b(paramContext, this.mName).fhg();
-        this.HUL = this.HUk.getInt("acc_total", 0);
-        AppMethodBeat.o(207060);
+        AppMethodBeat.i(195368);
+        this.Ios = new g.b(paramContext, this.mName).fkY();
+        this.IoT = this.Ios.getInt("acc_total", 0);
+        AppMethodBeat.o(195368);
         return this;
       }
       
-      public final boolean aab(int paramInt)
+      public final boolean aaH(int paramInt)
       {
-        AppMethodBeat.i(207061);
-        boolean bool = aaa(paramInt).fht();
-        AppMethodBeat.o(207061);
+        AppMethodBeat.i(195369);
+        boolean bool = aaG(paramInt).fll();
+        AppMethodBeat.o(195369);
         return bool;
       }
       
       public final void save()
       {
-        AppMethodBeat.i(207062);
-        this.HUk.ge("acc_total", this.HUL).fhc();
-        AppMethodBeat.o(207062);
+        AppMethodBeat.i(195370);
+        this.Ios.gn("acc_total", this.IoT).fkU();
+        AppMethodBeat.o(195370);
       }
     }
   }

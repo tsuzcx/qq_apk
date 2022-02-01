@@ -1044,7 +1044,7 @@ public class XWalkDecompressor
     //   204: astore 8
     //   206: aload 10
     //   208: aload 9
-    //   210: invokevirtual 273	g/a/b/a:du	([B)Z
+    //   210: invokevirtual 273	g/a/b/a:dx	([B)Z
     //   213: ifne +250 -> 463
     //   216: aload_0
     //   217: astore 7

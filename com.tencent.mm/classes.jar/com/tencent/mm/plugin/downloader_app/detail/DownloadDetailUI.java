@@ -19,8 +19,8 @@ import com.tencent.luggage.d.m;
 import com.tencent.luggage.d.p;
 import com.tencent.luggage.h.e.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.al;
 import com.tencent.mm.ui.statusbar.b;
@@ -31,7 +31,7 @@ public class DownloadDetailUI
   extends MMActivity
   implements e.e
 {
-  private a pob;
+  private a puI;
   
   public int getLayoutId()
   {
@@ -71,14 +71,14 @@ public class DownloadDetailUI
   {
     AppMethodBeat.i(8795);
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    this.pob.onActivityResult(paramInt1, paramInt2, paramIntent);
+    this.puI.onActivityResult(paramInt1, paramInt2, paramIntent);
     AppMethodBeat.o(8795);
   }
   
   public void onBackPressed()
   {
     AppMethodBeat.i(8792);
-    if (!this.pob.onBackPressed()) {
+    if (!this.puI.onBackPressed()) {
       finish();
     }
     AppMethodBeat.o(8792);
@@ -88,11 +88,11 @@ public class DownloadDetailUI
   {
     AppMethodBeat.i(8788);
     super.onCreate(paramBundle);
-    ad.i("MicroMsg.DownloadDetailUI", "onCreate");
+    ae.i("MicroMsg.DownloadDetailUI", "onCreate");
     paramBundle = getIntent().getStringExtra("rawUrl");
-    if (bt.isNullOrNil(paramBundle))
+    if (bu.isNullOrNil(paramBundle))
     {
-      ad.e("MicroMsg.DownloadDetailUI", "url is null");
+      ae.e("MicroMsg.DownloadDetailUI", "url is null");
       AppMethodBeat.o(8788);
       return;
     }
@@ -121,28 +121,28 @@ public class DownloadDetailUI
         break label251;
       }
       if (Build.VERSION.SDK_INT >= 21) {
-        i = al.Xp(i);
+        i = al.XV(i);
       }
     }
     label251:
     for (;;)
     {
       localWindow.setStatusBarColor(i);
-      this.pob = new a(this);
-      setContentView(this.pob.chr);
-      this.pob.a(new m()
+      this.puI = new a(this);
+      setContentView(this.puI.chr);
+      this.puI.a(new m()
       {
         public final h k(String paramAnonymousString, Bundle paramAnonymousBundle)
         {
           boolean bool = true;
           AppMethodBeat.i(8787);
-          p localp = d.ex(DownloadDetailUI.this);
+          p localp = d.eB(DownloadDetailUI.this);
           if (localp == null) {}
           for (;;)
           {
-            ad.i("MicroMsg.DownloadDetailUI", "preloadDetail is null ? %b", new Object[] { Boolean.valueOf(bool) });
+            ae.i("MicroMsg.DownloadDetailUI", "preloadDetail is null ? %b", new Object[] { Boolean.valueOf(bool) });
             if (localp == null) {
-              d.aat(paramAnonymousString);
+              d.abk(paramAnonymousString);
             }
             paramAnonymousString = new c(DownloadDetailUI.a(DownloadDetailUI.this).chy, localp, paramAnonymousBundle);
             AppMethodBeat.o(8787);
@@ -151,7 +151,7 @@ public class DownloadDetailUI
           }
         }
       });
-      this.pob.h(paramBundle, getIntent().getExtras());
+      this.puI.h(paramBundle, getIntent().getExtras());
       AppMethodBeat.o(8788);
       return;
     }
@@ -168,14 +168,14 @@ public class DownloadDetailUI
   {
     AppMethodBeat.i(8791);
     super.onDestroy();
-    ad.i("MicroMsg.DownloadDetailUI", "onDestroy");
-    this.pob.destroy();
-    ad.i("MicroMsg.DownloadDetailUI", "fixInputMethodManagerLeak");
+    ae.i("MicroMsg.DownloadDetailUI", "onDestroy");
+    this.puI.destroy();
+    ae.i("MicroMsg.DownloadDetailUI", "fixInputMethodManagerLeak");
     InputMethodManager localInputMethodManager = (InputMethodManager)getSystemService("input_method");
     int i;
     if (localInputMethodManager != null)
     {
-      ad.i("MicroMsg.DownloadDetailUI", "fixInputMethodManagerLeak, imm");
+      ae.i("MicroMsg.DownloadDetailUI", "fixInputMethodManagerLeak, imm");
       i = 0;
     }
     for (;;)
@@ -206,7 +206,7 @@ public class DownloadDetailUI
         }
         catch (Throwable localThrowable)
         {
-          ad.printErrStackTrace("MicroMsg.DownloadDetailUI", localThrowable, "", new Object[0]);
+          ae.printErrStackTrace("MicroMsg.DownloadDetailUI", localThrowable, "", new Object[0]);
         }
       }
       System.gc();
@@ -221,8 +221,8 @@ public class DownloadDetailUI
   {
     AppMethodBeat.i(8790);
     super.onPause();
-    ad.i("MicroMsg.DownloadDetailUI", "onPause");
-    this.pob.onPause();
+    ae.i("MicroMsg.DownloadDetailUI", "onPause");
+    this.puI.onPause();
     AppMethodBeat.o(8790);
   }
   
@@ -230,8 +230,8 @@ public class DownloadDetailUI
   {
     AppMethodBeat.i(8789);
     super.onResume();
-    ad.i("MicroMsg.DownloadDetailUI", "onResume");
-    this.pob.onResume();
+    ae.i("MicroMsg.DownloadDetailUI", "onResume");
+    this.puI.onResume();
     AppMethodBeat.o(8789);
   }
   

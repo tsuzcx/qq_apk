@@ -2,97 +2,96 @@ package com.tencent.mm.plugin.xlabeffect;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ax;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ay;
 import d.g.a.m;
 import d.l;
 import d.z;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/xlabeffect/XLabEffectGlobalConfig;", "", "()V", "COUNT_DIFF", "", "KEY_END_COUNT", "", "KEY_EYE_BRIGHT", "KEY_EYE_MORPH", "KEY_FACE_MORPH", "KEY_SKIN_BRIGHT", "KEY_SKIN_SMOOTH", "KEY_START_COUNT", "MMKV_NAME", "TAG", "endCount", "eyeBright", "getEyeBright", "()I", "setEyeBright", "(I)V", "eyeMorph", "getEyeMorph", "setEyeMorph", "faceMorph", "getFaceMorph", "setFaceMorph", "onConfigChange", "Lkotlin/Function2;", "Lkotlin/ParameterName;", "name", "type", "value", "", "getOnConfigChange", "()Lkotlin/jvm/functions/Function2;", "setOnConfigChange", "(Lkotlin/jvm/functions/Function2;)V", "skinBright", "getSkinBright", "setSkinBright", "skinSmooth", "getSkinSmooth", "setSkinSmooth", "startCount", "getNumOfThread", "markEnd", "markStart", "setConfig", "plugin-xlabeffect_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/xlabeffect/XLabEffectGlobalConfig;", "", "()V", "COUNT_DIFF", "", "KEY_END_COUNT", "", "KEY_EYE_BRIGHT", "KEY_EYE_MORPH", "KEY_FACE_MORPH", "KEY_SKIN_BRIGHT", "KEY_SKIN_SMOOTH", "KEY_START_COUNT", "MMKV_NAME", "TAG", "endCount", "eyeBright", "getEyeBright", "()I", "setEyeBright", "(I)V", "eyeMorph", "getEyeMorph", "setEyeMorph", "faceMorph", "getFaceMorph", "setFaceMorph", "onConfigChange", "Lkotlin/Function2;", "Lkotlin/ParameterName;", "name", "type", "value", "", "getOnConfigChange", "()Lkotlin/jvm/functions/Function2;", "setOnConfigChange", "(Lkotlin/jvm/functions/Function2;)V", "skinBright", "getSkinBright", "setSkinBright", "skinSmooth", "getSkinSmooth", "setSkinSmooth", "startCount", "getNumOfThread", "markEnd", "markStart", "setConfig", "plugin-xlabeffect_release"})
 public final class c
 {
-  private static int EIh = 0;
-  private static int EIi = 0;
-  public static final c EIj;
+  private static int FaE = 0;
+  private static int FaF = 0;
+  public static final c FaG;
   private static final String TAG = "MicroMsg.XLabEffectConfig";
-  private static m<? super Integer, ? super Integer, z> hrS;
-  private static int xyM;
-  private static int xyN;
-  private static int xyO;
-  private static int xyP;
-  private static int xyQ;
+  private static m<? super Integer, ? super Integer, z> huG;
+  private static int xOI;
+  private static int xOJ;
+  private static int xOK;
+  private static int xOL;
+  private static int xOM;
   
   static
   {
     AppMethodBeat.i(184222);
-    EIj = new c();
+    FaG = new c();
     TAG = "MicroMsg.XLabEffectConfig";
-    xyM = 45;
-    xyN = 10;
-    xyO = 10;
-    xyP = 20;
-    xyQ = 40;
-    ax localax = ax.aQz("xlab_effect_config");
-    ad.i(TAG, "config is : " + xyM + ", " + xyN + ", " + xyO + ", " + xyP + ", " + xyQ);
-    EIh = localax.getInt("start_count", EIh);
-    EIi = localax.getInt("end_count", EIi);
-    ad.i(TAG, "count track is : " + EIh + ", " + EIi);
+    xOI = 65;
+    xOK = 60;
+    xOL = 100;
+    xOM = 30;
+    ay localay = ay.aRW("xlab_effect_config");
+    ae.i(TAG, "config is : " + xOI + ", " + xOJ + ", " + xOK + ", " + xOL + ", " + xOM);
+    FaE = localay.getInt("start_count", FaE);
+    FaF = localay.getInt("end_count", FaF);
+    ae.i(TAG, "count track is : " + FaE + ", " + FaF);
     AppMethodBeat.o(184222);
   }
   
   public static void b(m<? super Integer, ? super Integer, z> paramm)
   {
-    hrS = paramm;
+    huG = paramm;
   }
   
-  public static int eYo()
+  public static int fcb()
   {
-    return xyM;
+    return xOI;
   }
   
-  public static int eYp()
+  public static int fcc()
   {
-    return xyN;
+    return xOJ;
   }
   
-  public static int eYq()
+  public static int fcd()
   {
-    return xyO;
+    return xOK;
   }
   
-  public static int eYr()
+  public static int fce()
   {
-    return xyP;
+    return xOL;
   }
   
-  public static int eYs()
+  public static int fcf()
   {
-    return xyQ;
+    return xOM;
   }
   
-  public static void eYt()
+  public static void fcg()
   {
     AppMethodBeat.i(184219);
-    EIh += 1;
-    ax.aQz("xlab_effect_config").putInt("start_count", EIh);
+    FaE += 1;
+    ay.aRW("xlab_effect_config").putInt("start_count", FaE);
     AppMethodBeat.o(184219);
   }
   
-  public static void eYu()
+  public static void fch()
   {
     AppMethodBeat.i(184220);
-    EIi += 1;
-    ax.aQz("xlab_effect_config").putInt("end_count", EIi);
+    FaF += 1;
+    ay.aRW("xlab_effect_config").putInt("end_count", FaF);
     AppMethodBeat.o(184220);
   }
   
-  public static int eYv()
+  public static int fci()
   {
     int i = 0;
     AppMethodBeat.i(184221);
-    ax.aQz("xlab_effect_config");
+    ay.aRW("xlab_effect_config");
     boolean bool;
-    if (EIh - EIi < 3)
+    if (FaE - FaF < 3)
     {
       bool = true;
       if (bool) {
@@ -101,11 +100,11 @@ public final class c
       if (i == 0) {
         break label78;
       }
-      g.yhR.dD(1012, 101);
+      g.yxI.dD(1012, 101);
     }
     for (;;)
     {
-      ad.i(TAG, "getNumOfThread: true, ".concat(String.valueOf(bool)));
+      ae.i(TAG, "getNumOfThread: true, ".concat(String.valueOf(bool)));
       if (i == 0) {
         break label92;
       }
@@ -114,44 +113,44 @@ public final class c
       bool = false;
       break;
       label78:
-      g.yhR.dD(1012, 102);
+      g.yxI.dD(1012, 102);
     }
     label92:
     AppMethodBeat.o(184221);
     return 1;
   }
   
-  public static void jj(int paramInt1, int paramInt2)
+  public static void jn(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(184218);
-    ad.i(TAG, "setConfig: " + paramInt1 + ", " + paramInt2);
-    Object localObject = ax.aQz("xlab_effect_config");
+    ae.i(TAG, "setConfig: " + paramInt1 + ", " + paramInt2);
+    Object localObject = ay.aRW("xlab_effect_config");
     switch (paramInt1)
     {
     }
     for (;;)
     {
-      localObject = hrS;
+      localObject = huG;
       if (localObject == null) {
         break;
       }
       ((m)localObject).p(Integer.valueOf(paramInt1), Integer.valueOf(paramInt2));
       AppMethodBeat.o(184218);
       return;
-      xyM = paramInt2;
-      ((ax)localObject).putInt("skin_smooth", xyM);
+      xOI = paramInt2;
+      ((ay)localObject).putInt("skin_smooth", xOI);
       continue;
-      xyN = paramInt2;
-      ((ax)localObject).putInt("eye_morph", xyN);
+      xOJ = paramInt2;
+      ((ay)localObject).putInt("eye_morph", xOJ);
       continue;
-      xyO = paramInt2;
-      ((ax)localObject).putInt("face_morph", xyO);
+      xOK = paramInt2;
+      ((ay)localObject).putInt("face_morph", xOK);
       continue;
-      xyP = paramInt2;
-      ((ax)localObject).putInt("skin_bright", xyP);
+      xOL = paramInt2;
+      ((ay)localObject).putInt("skin_bright", xOL);
       continue;
-      xyQ = paramInt2;
-      ((ax)localObject).putInt("eye_bright", xyQ);
+      xOM = paramInt2;
+      ((ay)localObject).putInt("eye_bright", xOM);
     }
     AppMethodBeat.o(184218);
   }

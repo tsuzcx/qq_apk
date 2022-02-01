@@ -7,39 +7,39 @@ import com.tencent.mm.plugin.mmsight.model.g;
 
 public abstract interface d
 {
-  public abstract void D(Runnable paramRunnable);
+  public abstract void B(Runnable paramRunnable);
   
   public abstract void L(int paramInt1, int paramInt2, int paramInt3);
   
-  public abstract String Lb();
+  public abstract String Lj();
   
   public abstract void a(a parama);
   
   public abstract void am(float paramFloat);
   
-  public abstract boolean aol();
+  public abstract boolean aoA();
   
-  public abstract String axA();
+  public abstract String axP();
   
-  public abstract String axR();
+  public abstract String ayg();
   
-  public abstract float axS();
+  public abstract float ayh();
   
-  public abstract long axT();
+  public abstract long ayi();
   
-  public abstract c axU();
+  public abstract c ayj();
   
-  public abstract int axV();
+  public abstract int ayk();
   
-  public abstract Point axW();
+  public abstract Point ayl();
   
-  public abstract int axX();
+  public abstract int aym();
   
-  public abstract boolean axY();
+  public abstract boolean ayn();
   
-  public abstract c.a axZ();
+  public abstract c.a ayo();
   
-  public abstract void aya();
+  public abstract void ayp();
   
   public abstract int b(int paramInt1, boolean paramBoolean, int paramInt2);
   
@@ -47,7 +47,7 @@ public abstract interface d
   
   public abstract void clear();
   
-  public abstract void es(boolean paramBoolean);
+  public abstract void eu(boolean paramBoolean);
   
   public abstract String getFileName();
   
@@ -55,9 +55,9 @@ public abstract interface d
   
   public abstract g getFrameDataCallback();
   
-  public abstract boolean od(int paramInt);
+  public abstract boolean og(int paramInt);
   
-  public abstract void oe(int paramInt);
+  public abstract void oh(int paramInt);
   
   public abstract void pause();
   
@@ -71,13 +71,13 @@ public abstract interface d
   
   public abstract void setMute(boolean paramBoolean);
   
-  public abstract void yo(String paramString);
+  public abstract void yY(String paramString);
   
-  public abstract void yp(String paramString);
+  public abstract void yZ(String paramString);
   
   public static abstract interface a
   {
-    public abstract void aVt();
+    public abstract void aVS();
   }
   
   public static abstract interface b {}
@@ -87,17 +87,17 @@ public abstract interface d
     static
     {
       AppMethodBeat.i(148825);
-      vPo = new c("WaitStart", 0);
-      vPp = new c("Start", 1);
-      vPq = new c("PrepareStop", 2);
-      vPr = new c("WaitStop", 3);
-      vPs = new c("Stop", 4);
-      vPt = new c("WaitSend", 5);
-      vPu = new c("Sent", 6);
-      vPv = new c("Error", 7);
-      vPw = new c("Initialized", 8);
-      vPx = new c("Pause", 9);
-      vPy = new c[] { vPo, vPp, vPq, vPr, vPs, vPt, vPu, vPv, vPw, vPx };
+      wbr = new c("WaitStart", 0);
+      wbs = new c("Start", 1);
+      wbt = new c("PrepareStop", 2);
+      wbu = new c("WaitStop", 3);
+      wbv = new c("Stop", 4);
+      wbw = new c("WaitSend", 5);
+      wbx = new c("Sent", 6);
+      wby = new c("Error", 7);
+      wbz = new c("Initialized", 8);
+      wbA = new c("Pause", 9);
+      wbB = new c[] { wbr, wbs, wbt, wbu, wbv, wbw, wbx, wby, wbz, wbA };
       AppMethodBeat.o(148825);
     }
     

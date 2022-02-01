@@ -7,30 +7,37 @@ final class a$1
 {
   public final void d(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    AppMethodBeat.i(217504);
+    AppMethodBeat.i(195511);
     String.format(paramString2, paramVarArgs);
-    AppMethodBeat.o(217504);
+    AppMethodBeat.o(195511);
+  }
+  
+  public final void e(String paramString1, String paramString2, Object... paramVarArgs)
+  {
+    AppMethodBeat.i(195514);
+    String.format(paramString2, paramVarArgs);
+    AppMethodBeat.o(195514);
   }
   
   public final void i(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    AppMethodBeat.i(217505);
+    AppMethodBeat.i(195512);
     String.format(paramString2, paramVarArgs);
-    AppMethodBeat.o(217505);
+    AppMethodBeat.o(195512);
   }
   
   public final void v(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    AppMethodBeat.i(217503);
+    AppMethodBeat.i(195510);
     String.format(paramString2, paramVarArgs);
-    AppMethodBeat.o(217503);
+    AppMethodBeat.o(195510);
   }
   
   public final void w(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    AppMethodBeat.i(217506);
+    AppMethodBeat.i(195513);
     String.format(paramString2, paramVarArgs);
-    AppMethodBeat.o(217506);
+    AppMethodBeat.o(195513);
   }
 }
 

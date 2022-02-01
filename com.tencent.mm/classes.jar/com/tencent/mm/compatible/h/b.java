@@ -6,7 +6,7 @@ import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.a.a;
 import com.tencent.mm.compatible.a.a.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class b
 {
@@ -20,8 +20,8 @@ public final class b
       public final void run()
       {
         AppMethodBeat.i(155921);
-        this.gdR.putExtra("android.intent.extra.durationLimit", 30);
-        this.gdR.putExtra("android.intent.extra.sizeLimit", 10485760);
+        this.gfZ.putExtra("android.intent.extra.durationLimit", 30);
+        this.gfZ.putExtra("android.intent.extra.sizeLimit", 10485760);
         AppMethodBeat.o(155921);
       }
     });
@@ -33,7 +33,7 @@ public final class b
     }
     catch (ActivityNotFoundException paramActivity)
     {
-      ad.printErrStackTrace("MicroMsg.TakeVideoUtil", paramActivity, "", new Object[0]);
+      ae.printErrStackTrace("MicroMsg.TakeVideoUtil", paramActivity, "", new Object[0]);
       AppMethodBeat.o(155922);
     }
     return false;

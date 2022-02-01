@@ -14,12 +14,12 @@ import java.util.List;
 
 public final class v
 {
-  public static final v Njg;
+  public static final v NGm;
   
   static
   {
     AppMethodBeat.i(58262);
-    Njg = new v();
+    NGm = new v();
     AppMethodBeat.o(58262);
   }
   
@@ -29,23 +29,23 @@ public final class v
     p.h(parame, "classDescriptor");
     p.h(paramString, "jvmDescriptor");
     p.h(parame, "$this$internalName");
-    Object localObject = d.l.b.a.b.a.b.c.MTm;
-    localObject = d.l.b.a.b.j.d.a.o((l)parame).grf();
+    Object localObject = d.l.b.a.b.a.b.c.Nqr;
+    localObject = d.l.b.a.b.j.d.a.o((l)parame).gvH();
     p.g(localObject, "fqNameSafe.toUnsafe()");
     localObject = d.l.b.a.b.a.b.c.c((d.l.b.a.b.f.c)localObject);
     if (localObject != null)
     {
       parame = d.l.b.a.b.j.e.c.e((d.l.b.a.b.f.a)localObject);
       p.g(parame, "JvmClassName.byClassId(it)");
-      parame = parame.gtd();
+      parame = parame.gxF();
       p.g(parame, "JvmClassName.byClassId(it).internalName");
     }
     for (;;)
     {
-      parame = nv(parame, paramString);
+      parame = nB(parame, paramString);
       AppMethodBeat.o(58258);
       return parame;
-      parame = aa.a(parame, (w)x.Nji);
+      parame = aa.a(parame, (w)x.NGo);
     }
   }
   
@@ -74,7 +74,34 @@ public final class v
     return paramVarArgs;
   }
   
-  private static String bcA(String paramString)
+  public static String beb(String paramString)
+  {
+    AppMethodBeat.i(58251);
+    p.h(paramString, "name");
+    paramString = "java/lang/".concat(String.valueOf(paramString));
+    AppMethodBeat.o(58251);
+    return paramString;
+  }
+  
+  public static String bec(String paramString)
+  {
+    AppMethodBeat.i(58252);
+    p.h(paramString, "name");
+    paramString = "java/util/".concat(String.valueOf(paramString));
+    AppMethodBeat.o(58252);
+    return paramString;
+  }
+  
+  public static String bed(String paramString)
+  {
+    AppMethodBeat.i(58253);
+    p.h(paramString, "name");
+    paramString = "java/util/function/".concat(String.valueOf(paramString));
+    AppMethodBeat.o(58253);
+    return paramString;
+  }
+  
+  private static String bee(String paramString)
   {
     AppMethodBeat.i(58261);
     if (paramString.length() > 1)
@@ -87,45 +114,18 @@ public final class v
     return paramString;
   }
   
-  public static String bcx(String paramString)
-  {
-    AppMethodBeat.i(58251);
-    p.h(paramString, "name");
-    paramString = "java/lang/".concat(String.valueOf(paramString));
-    AppMethodBeat.o(58251);
-    return paramString;
-  }
-  
-  public static String bcy(String paramString)
-  {
-    AppMethodBeat.i(58252);
-    p.h(paramString, "name");
-    paramString = "java/util/".concat(String.valueOf(paramString));
-    AppMethodBeat.o(58252);
-    return paramString;
-  }
-  
-  public static String bcz(String paramString)
-  {
-    AppMethodBeat.i(58253);
-    p.h(paramString, "name");
-    paramString = "java/util/function/".concat(String.valueOf(paramString));
-    AppMethodBeat.o(58253);
-    return paramString;
-  }
-  
   public static String e(String paramString1, List<String> paramList, String paramString2)
   {
     AppMethodBeat.i(58260);
     p.h(paramString1, "name");
     p.h(paramList, "parameters");
     p.h(paramString2, "ret");
-    paramString1 = paramString1 + '(' + j.a((Iterable)paramList, (CharSequence)"", null, null, 0, null, (d.g.a.b)a.Njh, 30) + ')' + bcA(paramString2);
+    paramString1 = paramString1 + '(' + j.a((Iterable)paramList, (CharSequence)"", null, null, 0, null, (d.g.a.b)a.NGn, 30) + ')' + bee(paramString2);
     AppMethodBeat.o(58260);
     return paramString1;
   }
   
-  public static String nv(String paramString1, String paramString2)
+  public static String nB(String paramString1, String paramString2)
   {
     AppMethodBeat.i(58259);
     p.h(paramString1, "internalName");
@@ -140,7 +140,7 @@ public final class v
     AppMethodBeat.i(58255);
     p.h(paramString, "name");
     p.h(paramVarArgs, "signatures");
-    paramString = t(bcx(paramString), (String[])Arrays.copyOf(paramVarArgs, paramVarArgs.length));
+    paramString = t(beb(paramString), (String[])Arrays.copyOf(paramVarArgs, paramVarArgs.length));
     AppMethodBeat.o(58255);
     return paramString;
   }
@@ -150,7 +150,7 @@ public final class v
     AppMethodBeat.i(58256);
     p.h(paramString, "name");
     p.h(paramVarArgs, "signatures");
-    paramString = t(bcy(paramString), (String[])Arrays.copyOf(paramVarArgs, paramVarArgs.length));
+    paramString = t(bec(paramString), (String[])Arrays.copyOf(paramVarArgs, paramVarArgs.length));
     AppMethodBeat.o(58256);
     return paramString;
   }
@@ -178,12 +178,12 @@ public final class v
     extends q
     implements d.g.a.b<String, String>
   {
-    public static final a Njh;
+    public static final a NGn;
     
     static
     {
       AppMethodBeat.i(58250);
-      Njh = new a();
+      NGn = new a();
       AppMethodBeat.o(58250);
     }
     
@@ -195,7 +195,7 @@ public final class v
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.d.b.v
  * JD-Core Version:    0.7.0.1
  */

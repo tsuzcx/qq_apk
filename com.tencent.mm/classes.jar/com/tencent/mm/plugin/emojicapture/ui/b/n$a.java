@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.emojicapture.ui.b;
 
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/emojicapture/ui/gl/StickerPreviewRender$Companion;", "", "()V", "MAX_FACE_TRACK_WIDTH", "", "MAX_PREVIEW_WIDTH", "plugin-emojicapture_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/emojicapture/ui/gl/StickerPreviewRender$Companion;", "", "()V", "MAX_FACE_TRACK_WIDTH", "", "MAX_PREVIEW_WIDTH", "plugin-emojicapture_release"})
 public final class n$a {}
 
 

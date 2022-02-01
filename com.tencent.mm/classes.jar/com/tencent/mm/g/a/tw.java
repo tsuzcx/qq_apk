@@ -1,10 +1,16 @@
 package com.tencent.mm.g.a;
 
+import android.content.Context;
+import android.content.DialogInterface.OnDismissListener;
+import android.os.Bundle;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class tw
   extends b
 {
+  public a dJp;
+  
   public tw()
   {
     this((byte)0);
@@ -12,8 +18,19 @@ public final class tw
   
   private tw(byte paramByte)
   {
-    this.IbR = false;
+    AppMethodBeat.i(77798);
+    this.dJp = new a();
+    this.IvZ = false;
     this.callback = null;
+    AppMethodBeat.o(77798);
+  }
+  
+  public static final class a
+  {
+    public Context context;
+    public String dJq;
+    public DialogInterface.OnDismissListener dJr;
+    public Bundle dJs;
   }
 }
 

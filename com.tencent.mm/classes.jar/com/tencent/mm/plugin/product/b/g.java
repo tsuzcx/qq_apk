@@ -1,20 +1,20 @@
 package com.tencent.mm.plugin.product.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.ahk;
-import com.tencent.mm.protocal.protobuf.bcu;
-import com.tencent.mm.protocal.protobuf.bcv;
+import com.tencent.mm.protocal.protobuf.ahu;
+import com.tencent.mm.protocal.protobuf.bdk;
+import com.tencent.mm.protocal.protobuf.bdl;
 import com.tencent.mm.protocal.protobuf.di;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.LinkedList;
 
 public final class g
@@ -23,26 +23,26 @@ public final class g
 {
   private f callback;
   private b rr;
-  public LinkedList<ahk> wLU;
-  public String wMc;
+  public LinkedList<ahu> xbI;
+  public String xbQ;
   
   public g(String paramString1, String paramString2, di paramdi)
   {
     AppMethodBeat.i(66891);
     Object localObject = new b.a();
-    ((b.a)localObject).hNM = new bcu();
-    ((b.a)localObject).hNN = new bcv();
+    ((b.a)localObject).hQF = new bdk();
+    ((b.a)localObject).hQG = new bdl();
     ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/getlastestexpressinfo";
     ((b.a)localObject).funcId = 578;
-    ((b.a)localObject).hNO = 0;
+    ((b.a)localObject).hQH = 0;
     ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).aDC();
-    localObject = (bcu)this.rr.hNK.hNQ;
-    this.wMc = paramString1;
-    ((bcu)localObject).FME = paramString1;
-    ad.d("MicroMsg.NetSceneMallGetLastestExpressInfo", "pid ".concat(String.valueOf(paramString1)));
-    ((bcu)localObject).FOY = paramString2;
-    ((bcu)localObject).Gzn = paramdi;
+    this.rr = ((b.a)localObject).aDS();
+    localObject = (bdk)this.rr.hQD.hQJ;
+    this.xbQ = paramString1;
+    ((bdk)localObject).Gfd = paramString1;
+    ae.d("MicroMsg.NetSceneMallGetLastestExpressInfo", "pid ".concat(String.valueOf(paramString1)));
+    ((bdk)localObject).Ghx = paramString2;
+    ((bdk)localObject).GSN = paramdi;
     AppMethodBeat.o(66891);
   }
   
@@ -63,11 +63,11 @@ public final class g
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(66892);
-    paramArrayOfByte = (bcv)((b)paramq).hNL.hNQ;
-    if ((paramInt2 == 0) && (paramInt3 == 0) && (paramArrayOfByte.FCq == 0))
+    paramArrayOfByte = (bdl)((b)paramq).hQE.hQJ;
+    if ((paramInt2 == 0) && (paramInt3 == 0) && (paramArrayOfByte.FUL == 0))
     {
-      ad.d("MicroMsg.NetSceneMallGetLastestExpressInfo", "resp.ExpressCount " + paramArrayOfByte.Gzp);
-      this.wLU = paramArrayOfByte.Gzo;
+      ae.d("MicroMsg.NetSceneMallGetLastestExpressInfo", "resp.ExpressCount " + paramArrayOfByte.GSP);
+      this.xbI = paramArrayOfByte.GSO;
     }
     paramInt1 = paramInt3;
     paramq = paramString;
@@ -75,13 +75,13 @@ public final class g
     {
       paramInt1 = paramInt3;
       paramq = paramString;
-      if (paramArrayOfByte.FCq != 0)
+      if (paramArrayOfByte.FUL != 0)
       {
-        paramInt1 = paramArrayOfByte.FCq;
-        paramq = paramArrayOfByte.FCr;
+        paramInt1 = paramArrayOfByte.FUL;
+        paramq = paramArrayOfByte.FUM;
       }
     }
-    ad.d("MicroMsg.NetSceneMallGetLastestExpressInfo", "errCode " + paramInt1 + ", errMsg " + paramq);
+    ae.d("MicroMsg.NetSceneMallGetLastestExpressInfo", "errCode " + paramInt1 + ", errMsg " + paramq);
     this.callback.onSceneEnd(paramInt2, paramInt1, paramq, this);
     AppMethodBeat.o(66892);
   }

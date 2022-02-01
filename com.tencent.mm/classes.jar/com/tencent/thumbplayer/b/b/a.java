@@ -2,7 +2,7 @@ package com.tencent.thumbplayer.b.b;
 
 public abstract interface a
 {
-  public abstract long fWJ();
+  public abstract long gbi();
 }
 
 

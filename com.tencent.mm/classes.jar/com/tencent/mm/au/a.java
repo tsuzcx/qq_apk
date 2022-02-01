@@ -1,61 +1,89 @@
 package com.tencent.mm.au;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.az;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storagebase.h.b;
+import java.util.HashMap;
 
-public final class a
+public class a
+  implements az
 {
-  int dDp;
-  int hHL;
-  String hHN;
-  String hHO;
-  long hYr;
-  int hYs;
-  int hYt;
-  int type;
-  String username;
+  private static aq ibI = null;
   
-  public a()
+  public static boolean h(Runnable paramRunnable, long paramLong)
   {
-    AppMethodBeat.i(20513);
-    this.dDp = -1;
-    this.username = "";
-    this.hYr = 0L;
-    this.type = 0;
-    this.hYs = 0;
-    this.hHL = 0;
-    this.hYt = 0;
-    this.hHN = "";
-    this.hHO = "";
-    AppMethodBeat.o(20513);
-  }
-  
-  public final String aCq()
-  {
-    if (this.hHO == null) {
-      return "";
+    AppMethodBeat.i(104523);
+    if (paramRunnable == null)
+    {
+      AppMethodBeat.o(104523);
+      return false;
     }
-    return this.hHO;
+    boolean bool;
+    if (ibI == null)
+    {
+      if (ibI != null)
+      {
+        bool = true;
+        ae.w("MicroMsg.GIF.SubCoreGIF", "check decoder thread available fail, handler[%B] stack[%s]", new Object[] { Boolean.valueOf(bool), bu.fpN() });
+        if (ibI != null) {
+          ibI.removeCallbacksAndMessages(null);
+        }
+        aq localaq = new aq("GIF-Decoder");
+        ibI = localaq;
+        localaq.setLogging(false);
+      }
+    }
+    else
+    {
+      if (paramLong <= 0L) {
+        break label116;
+      }
+      ibI.postDelayed(paramRunnable, paramLong);
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(104523);
+      return true;
+      bool = false;
+      break;
+      label116:
+      ibI.post(paramRunnable);
+    }
   }
   
-  public final String aHX()
+  public void clearPluginData(int paramInt) {}
+  
+  public HashMap<Integer, h.b> getBaseDBFactories()
   {
-    if (this.hHN == null) {
-      return "";
-    }
-    return this.hHN;
+    return null;
   }
   
-  public final String getUsername()
+  public void onAccountPostReset(boolean paramBoolean)
   {
-    if (this.username == null) {
-      return "";
+    AppMethodBeat.i(104524);
+    if (ibI != null) {
+      ibI.removeCallbacksAndMessages(null);
     }
-    return this.username;
+    AppMethodBeat.o(104524);
   }
+  
+  public void onAccountRelease()
+  {
+    AppMethodBeat.i(104525);
+    if (ibI != null) {
+      ibI.removeCallbacksAndMessages(null);
+    }
+    AppMethodBeat.o(104525);
+  }
+  
+  public void onSdcardMount(boolean paramBoolean) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.au.a
  * JD-Core Version:    0.7.0.1
  */

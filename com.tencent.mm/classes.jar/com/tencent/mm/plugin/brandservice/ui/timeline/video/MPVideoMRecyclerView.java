@@ -12,19 +12,19 @@ import d.g.b.p;
 import d.l;
 import d.v;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/MPVideoMRecyclerView;", "Lcom/tencent/mm/plugin/appbrand/widget/recyclerview/MRecyclerView;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "TAG", "", "animationContainerContainer", "Landroid/view/View;", "canScroll", "", "downY", "", "hasDown", "maxVideoHeight", "", "minVideoHeight", "moveY", "videoView", "Lcom/tencent/mm/plugin/brandservice/ui/widget/MPVideoView;", "videoViewContainer", "Landroid/widget/FrameLayout;", "deltaY", "inScrollRange", "curHeight", "onTouchEvent", "event", "Landroid/view/MotionEvent;", "setParam", "", "animationView", "maxHeight", "minHeight", "setVideoHeight", "videoHeight", "plugin-brandservice_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/MPVideoMRecyclerView;", "Lcom/tencent/mm/plugin/appbrand/widget/recyclerview/MRecyclerView;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "TAG", "", "animationContainerContainer", "Landroid/view/View;", "canScroll", "", "downY", "", "hasDown", "maxVideoHeight", "", "minVideoHeight", "moveY", "videoView", "Lcom/tencent/mm/plugin/brandservice/ui/widget/MPVideoView;", "videoViewContainer", "Landroid/widget/FrameLayout;", "deltaY", "inScrollRange", "curHeight", "onTouchEvent", "event", "Landroid/view/MotionEvent;", "setParam", "", "animationView", "maxHeight", "minHeight", "setVideoHeight", "videoHeight", "plugin-brandservice_release"})
 public final class MPVideoMRecyclerView
   extends MRecyclerView
 {
   private final String TAG = "MicroMsg.MPVideoMRecyclerView";
   private int bEk;
-  private float cNh;
+  private float cNR;
   private boolean canScroll = true;
-  private float kbE;
-  private boolean mVq;
-  private int opS;
-  private FrameLayout opT;
-  private View opU;
+  private float keV;
+  private boolean naw;
+  private int ovK;
+  private FrameLayout ovL;
+  private View ovM;
   
   public MPVideoMRecyclerView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -34,9 +34,9 @@ public final class MPVideoMRecyclerView
   private final void setVideoHeight(int paramInt)
   {
     AppMethodBeat.i(7267);
-    Object localObject1 = this.opT;
+    Object localObject1 = this.ovL;
     if (localObject1 == null) {
-      p.bcb("videoViewContainer");
+      p.bdF("videoViewContainer");
     }
     localObject1 = ((FrameLayout)localObject1).getLayoutParams();
     if (localObject1 == null)
@@ -46,20 +46,20 @@ public final class MPVideoMRecyclerView
       throw ((Throwable)localObject1);
     }
     ((ViewGroup.LayoutParams)localObject1).height = paramInt;
-    Object localObject2 = this.opT;
+    Object localObject2 = this.ovL;
     if (localObject2 == null) {
-      p.bcb("videoViewContainer");
+      p.bdF("videoViewContainer");
     }
     ((FrameLayout)localObject2).setLayoutParams((ViewGroup.LayoutParams)localObject1);
-    localObject1 = this.opU;
+    localObject1 = this.ovM;
     if (localObject1 == null) {
-      p.bcb("animationContainerContainer");
+      p.bdF("animationContainerContainer");
     }
     if (((View)localObject1).getVisibility() == 0)
     {
-      localObject1 = this.opU;
+      localObject1 = this.ovM;
       if (localObject1 == null) {
-        p.bcb("animationContainerContainer");
+        p.bdF("animationContainerContainer");
       }
       localObject1 = ((View)localObject1).getLayoutParams();
       if (localObject1 == null)
@@ -69,9 +69,9 @@ public final class MPVideoMRecyclerView
         throw ((Throwable)localObject1);
       }
       ((ViewGroup.LayoutParams)localObject1).height = paramInt;
-      localObject2 = this.opU;
+      localObject2 = this.ovM;
       if (localObject2 == null) {
-        p.bcb("animationContainerContainer");
+        p.bdF("animationContainerContainer");
       }
       ((View)localObject2).setLayoutParams((ViewGroup.LayoutParams)localObject1);
     }
@@ -82,9 +82,9 @@ public final class MPVideoMRecyclerView
   {
     int i = 1;
     AppMethodBeat.i(7266);
-    Object localObject = this.opT;
+    Object localObject = this.ovL;
     if (localObject == null) {
-      p.bcb("videoViewContainer");
+      p.bdF("videoViewContainer");
     }
     int j = ((FrameLayout)localObject).getHeight();
     if (paramMotionEvent != null)
@@ -113,20 +113,20 @@ public final class MPVideoMRecyclerView
       if (((Integer)localObject).intValue() != 0) {
         break label49;
       }
-      this.cNh = paramMotionEvent.getRawY();
-      this.mVq = true;
+      this.cNR = paramMotionEvent.getRawY();
+      this.naw = true;
       continue;
       label105:
       if (((Integer)localObject).intValue() != 2) {
         break label54;
       }
-      if (!this.mVq)
+      if (!this.naw)
       {
-        this.cNh = paramMotionEvent.getRawY();
-        this.mVq = true;
+        this.cNR = paramMotionEvent.getRawY();
+        this.naw = true;
       }
-      this.kbE = paramMotionEvent.getRawY();
-      float f = (this.kbE - this.cNh) * 1.2F;
+      this.keV = paramMotionEvent.getRawY();
+      float f = (this.keV - this.cNR) * 1.2F;
       j = (int)(j + f);
       label172:
       int m;
@@ -136,7 +136,7 @@ public final class MPVideoMRecyclerView
         this.canScroll = bool;
         if (this.canScroll)
         {
-          int k = this.opS;
+          int k = this.ovK;
           m = this.bEk;
           if (k <= j) {
             break label333;
@@ -152,13 +152,13 @@ public final class MPVideoMRecyclerView
       }
       for (;;)
       {
-        this.cNh = this.kbE;
+        this.cNR = this.keV;
         break;
         if (f > 0.0F)
         {
-          localObject = this.opT;
+          localObject = this.ovL;
           if (localObject == null) {
-            p.bcb("videoViewContainer");
+            p.bdF("videoViewContainer");
           }
           if (((FrameLayout)localObject).getHeight() >= this.bEk)
           {
@@ -168,11 +168,11 @@ public final class MPVideoMRecyclerView
         }
         if (f < 0.0F)
         {
-          localObject = this.opT;
+          localObject = this.ovL;
           if (localObject == null) {
-            p.bcb("videoViewContainer");
+            p.bdF("videoViewContainer");
           }
-          if (((FrameLayout)localObject).getHeight() <= this.opS)
+          if (((FrameLayout)localObject).getHeight() <= this.ovK)
           {
             bool = false;
             break label172;
@@ -191,15 +191,15 @@ public final class MPVideoMRecyclerView
         }
         break label206;
         label343:
-        if (j <= this.opS) {
-          setVideoHeight(this.opS);
+        if (j <= this.ovK) {
+          setVideoHeight(this.ovK);
         } else if (j >= this.bEk) {
           setVideoHeight(this.bEk);
         }
       }
       label383:
       if (((Integer)localObject).intValue() == 1) {
-        this.mVq = false;
+        this.naw = false;
       }
     }
   }

@@ -17,7 +17,7 @@ public abstract interface d
   
   public abstract void a(File paramFile, boolean paramBoolean, long paramLong);
   
-  public abstract void aw(Intent paramIntent);
+  public abstract void ax(Intent paramIntent);
   
   public abstract void b(File paramFile, String paramString1, String paramString2);
   

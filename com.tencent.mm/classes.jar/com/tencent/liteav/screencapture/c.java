@@ -40,14 +40,14 @@ public class c
   
   public c(Context paramContext)
   {
-    AppMethodBeat.i(187032);
+    AppMethodBeat.i(221161);
     this.d = new HashMap();
     this.e = false;
     this.i = new MediaProjection.Callback()
     {
       public void onStop()
       {
-        AppMethodBeat.i(187029);
+        AppMethodBeat.i(221158);
         TXCLog.e("VirtualDisplayManager", "MediaProjection session is no longer valid");
         Object localObject = new HashMap(c.a(c.this));
         c.a(c.this).clear();
@@ -64,18 +64,18 @@ public class c
           }
         }
         c.a(c.this, false);
-        AppMethodBeat.o(187029);
+        AppMethodBeat.o(221158);
       }
     };
     this.j = new h.a()
     {
       public void a()
       {
-        AppMethodBeat.i(187051);
+        AppMethodBeat.i(221180);
         boolean bool = c.a(c.this, c.b(c.this));
         if (c.c(c.this) == bool)
         {
-          AppMethodBeat.o(187051);
+          AppMethodBeat.o(221180);
           return;
         }
         c.b(c.this, bool);
@@ -87,18 +87,18 @@ public class c
             locala.d.a(bool);
           }
         }
-        AppMethodBeat.o(187051);
+        AppMethodBeat.o(221180);
       }
     };
     this.b = paramContext.getApplicationContext();
     this.c = new e(Looper.getMainLooper());
     this.h = b(paramContext);
-    AppMethodBeat.o(187032);
+    AppMethodBeat.o(221161);
   }
   
   public static c a(Context paramContext)
   {
-    AppMethodBeat.i(187031);
+    AppMethodBeat.i(221160);
     if (a == null) {}
     try
     {
@@ -106,18 +106,18 @@ public class c
         a = new c(paramContext);
       }
       paramContext = a;
-      AppMethodBeat.o(187031);
+      AppMethodBeat.o(221160);
       return paramContext;
     }
     finally
     {
-      AppMethodBeat.o(187031);
+      AppMethodBeat.o(221160);
     }
   }
   
   private void a()
   {
-    AppMethodBeat.i(187035);
+    AppMethodBeat.i(221164);
     Iterator localIterator = this.d.values().iterator();
     while (localIterator.hasNext())
     {
@@ -131,15 +131,15 @@ public class c
         }
       }
     }
-    AppMethodBeat.o(187035);
+    AppMethodBeat.o(221164);
   }
   
   private void a(boolean paramBoolean)
   {
-    AppMethodBeat.i(187036);
+    AppMethodBeat.i(221165);
     if (!this.d.isEmpty())
     {
-      AppMethodBeat.o(187036);
+      AppMethodBeat.o(221165);
       return;
     }
     if (paramBoolean)
@@ -148,12 +148,12 @@ public class c
       {
         public void run()
         {
-          AppMethodBeat.i(187030);
+          AppMethodBeat.i(221159);
           c.a(c.this, false);
-          AppMethodBeat.o(187030);
+          AppMethodBeat.o(221159);
         }
       }, TimeUnit.SECONDS.toMillis(1L));
-      AppMethodBeat.o(187036);
+      AppMethodBeat.o(221165);
       return;
     }
     TXCLog.i("VirtualDisplayManager", "stop media projection session " + this.f);
@@ -168,31 +168,31 @@ public class c
       this.g.a();
       this.g = null;
     }
-    AppMethodBeat.o(187036);
+    AppMethodBeat.o(221165);
   }
   
   private boolean b(Context paramContext)
   {
-    AppMethodBeat.i(187038);
+    AppMethodBeat.i(221167);
     paramContext = (WindowManager)paramContext.getSystemService("window");
     if (paramContext == null)
     {
-      AppMethodBeat.o(187038);
+      AppMethodBeat.o(221167);
       return true;
     }
     int k = paramContext.getDefaultDisplay().getRotation();
     if ((k == 0) || (k == 2))
     {
-      AppMethodBeat.o(187038);
+      AppMethodBeat.o(221167);
       return true;
     }
-    AppMethodBeat.o(187038);
+    AppMethodBeat.o(221167);
     return false;
   }
   
   public void a(MediaProjection paramMediaProjection)
   {
-    AppMethodBeat.i(187037);
+    AppMethodBeat.i(221166);
     this.e = false;
     if (paramMediaProjection == null)
     {
@@ -206,7 +206,7 @@ public class c
           locala.d.a(false, true);
         }
       }
-      AppMethodBeat.o(187037);
+      AppMethodBeat.o(221166);
       return;
     }
     TXCLog.i("VirtualDisplayManager", "Got session ".concat(String.valueOf(paramMediaProjection)));
@@ -216,21 +216,21 @@ public class c
     this.g = new h(Looper.getMainLooper(), this.j);
     this.g.a(50, 50);
     a(true);
-    AppMethodBeat.o(187037);
+    AppMethodBeat.o(221166);
   }
   
   public void a(Surface paramSurface)
   {
-    AppMethodBeat.i(187034);
+    AppMethodBeat.i(221163);
     if (Looper.myLooper() != Looper.getMainLooper())
     {
       paramSurface = new IllegalStateException("Must call this at main thread!");
-      AppMethodBeat.o(187034);
+      AppMethodBeat.o(221163);
       throw paramSurface;
     }
     if (paramSurface == null)
     {
-      AppMethodBeat.o(187034);
+      AppMethodBeat.o(221163);
       return;
     }
     paramSurface = (a)this.d.remove(paramSurface);
@@ -240,23 +240,23 @@ public class c
       TXCLog.i("VirtualDisplayManager", "VirtualDisplay released, " + paramSurface.e);
     }
     a(true);
-    AppMethodBeat.o(187034);
+    AppMethodBeat.o(221163);
   }
   
   public void a(Surface paramSurface, int paramInt1, int paramInt2, b paramb)
   {
-    AppMethodBeat.i(187033);
+    AppMethodBeat.i(221162);
     if (Looper.myLooper() != Looper.getMainLooper())
     {
       paramSurface = new IllegalStateException("Must call this method in main thread!");
-      AppMethodBeat.o(187033);
+      AppMethodBeat.o(221162);
       throw paramSurface;
     }
     if (paramSurface == null)
     {
       TXCLog.e("VirtualDisplayManager", "surface is null!");
       paramb.a(false, false);
-      AppMethodBeat.o(187033);
+      AppMethodBeat.o(221162);
       return;
     }
     a locala = new a(null);
@@ -275,16 +275,16 @@ public class c
         paramb.addFlags(268435456);
         paramSurface = this.b;
         paramb = new com.tencent.mm.hellhoundlib.b.a().bc(paramb);
-        com.tencent.mm.hellhoundlib.a.a.a(paramSurface, paramb.ahp(), "com/tencent/liteav/screencapture/c", "a", "(Landroid/view/Surface;IILcom/tencent/liteav/screencapture/c$b;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        paramSurface.startActivity((Intent)paramb.mq(0));
+        com.tencent.mm.hellhoundlib.a.a.a(paramSurface, paramb.ahE(), "com/tencent/liteav/screencapture/c", "a", "(Landroid/view/Surface;IILcom/tencent/liteav/screencapture/c$b;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramSurface.startActivity((Intent)paramb.mt(0));
         com.tencent.mm.hellhoundlib.a.a.a(paramSurface, "com/tencent/liteav/screencapture/c", "a", "(Landroid/view/Surface;IILcom/tencent/liteav/screencapture/c$b;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        AppMethodBeat.o(187033);
+        AppMethodBeat.o(221162);
       }
     }
     else {
       a();
     }
-    AppMethodBeat.o(187033);
+    AppMethodBeat.o(221162);
   }
   
   static class a

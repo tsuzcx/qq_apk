@@ -13,9 +13,9 @@ import com.tencent.mm.storage.emotion.EmojiInfo;
 public class PopEmojiView
   extends LinearLayout
 {
-  private MMEmojiView Ffd;
-  private ProgressBar Ffe;
-  private ViewGroup lYb;
+  private MMEmojiView FxB;
+  private ProgressBar FxC;
+  private ViewGroup mcI;
   
   public PopEmojiView(Context paramContext)
   {
@@ -44,20 +44,20 @@ public class PopEmojiView
   private void init(Context paramContext)
   {
     AppMethodBeat.i(104718);
-    this.lYb = ((ViewGroup)inflate(getContext(), 2131495106, null));
-    this.Ffd = ((MMEmojiView)this.lYb.findViewById(2131300914));
-    this.Ffd.setIsMaxSizeLimit(true);
-    this.Ffd.setMaxSize(paramContext.getResources().getDimensionPixelSize(2131166264) - paramContext.getResources().getDimensionPixelSize(2131165500) * 3);
-    this.Ffe = ((ProgressBar)this.lYb.findViewById(2131303515));
-    addView(this.lYb, -1, -1);
+    this.mcI = ((ViewGroup)inflate(getContext(), 2131495106, null));
+    this.FxB = ((MMEmojiView)this.mcI.findViewById(2131300914));
+    this.FxB.setIsMaxSizeLimit(true);
+    this.FxB.setMaxSize(paramContext.getResources().getDimensionPixelSize(2131166264) - paramContext.getResources().getDimensionPixelSize(2131165500) * 3);
+    this.FxC = ((ProgressBar)this.mcI.findViewById(2131303515));
+    addView(this.mcI, -1, -1);
     AppMethodBeat.o(104718);
   }
   
   public void setEmojiInfo(EmojiInfo paramEmojiInfo)
   {
     AppMethodBeat.i(104720);
-    if (this.Ffd != null) {
-      this.Ffd.a(paramEmojiInfo, "");
+    if (this.FxB != null) {
+      this.FxB.a(paramEmojiInfo, "");
     }
     AppMethodBeat.o(104720);
   }
@@ -65,10 +65,10 @@ public class PopEmojiView
   public void setImageBitmap(Bitmap paramBitmap)
   {
     AppMethodBeat.i(104721);
-    if ((this.Ffd != null) && (paramBitmap != null) && (!paramBitmap.isRecycled()))
+    if ((this.FxB != null) && (paramBitmap != null) && (!paramBitmap.isRecycled()))
     {
-      paramBitmap.setDensity(this.Ffd.getEmojiDensity());
-      this.Ffd.setImageBitmap(paramBitmap);
+      paramBitmap.setDensity(this.FxB.getEmojiDensity());
+      this.FxB.setImageBitmap(paramBitmap);
     }
     AppMethodBeat.o(104721);
   }
@@ -76,15 +76,15 @@ public class PopEmojiView
   public void setImageResource(int paramInt)
   {
     AppMethodBeat.i(104719);
-    if (this.Ffd != null) {
-      this.Ffd.setImageResource(paramInt);
+    if (this.FxB != null) {
+      this.FxB.setImageResource(paramInt);
     }
     AppMethodBeat.o(104719);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.emoji.PopEmojiView
  * JD-Core Version:    0.7.0.1
  */

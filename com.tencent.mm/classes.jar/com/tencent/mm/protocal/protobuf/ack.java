@@ -1,61 +1,99 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bx.b;
+import f.a.a.b;
+import java.util.LinkedList;
 
 public final class ack
-  extends com.tencent.mm.bx.a
+  extends cwj
 {
-  public b GbV;
+  public String Gun;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(152526);
+    AppMethodBeat.i(32183);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.GbV != null) {
-        paramVarArgs.c(1, this.GbV);
+      if (this.BaseResponse == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: BaseResponse");
+        AppMethodBeat.o(32183);
+        throw paramVarArgs;
       }
-      AppMethodBeat.o(152526);
+      if (this.BaseResponse != null)
+      {
+        paramVarArgs.lJ(1, this.BaseResponse.computeSize());
+        this.BaseResponse.writeFields(paramVarArgs);
+      }
+      if (this.Gun != null) {
+        paramVarArgs.d(2, this.Gun);
+      }
+      AppMethodBeat.o(32183);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.GbV == null) {
-        break label213;
+      if (this.BaseResponse == null) {
+        break label430;
       }
     }
-    label213:
-    for (paramInt = f.a.a.b.b.a.b(1, this.GbV) + 0;; paramInt = 0)
+    label430:
+    for (paramInt = f.a.a.a.lI(1, this.BaseResponse.computeSize()) + 0;; paramInt = 0)
     {
-      AppMethodBeat.o(152526);
-      return paramInt;
+      int i = paramInt;
+      if (this.Gun != null) {
+        i = paramInt + f.a.a.b.b.a.e(2, this.Gun);
+      }
+      AppMethodBeat.o(32183);
+      return i;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = cwj.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cwj.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
-        AppMethodBeat.o(152526);
+        if (this.BaseResponse == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: BaseResponse");
+          AppMethodBeat.o(32183);
+          throw paramVarArgs;
+        }
+        AppMethodBeat.o(32183);
         return 0;
       }
       if (paramInt == 3)
       {
-        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+        Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
         ack localack = (ack)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(152526);
+          AppMethodBeat.o(32183);
           return -1;
+        case 1: 
+          paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            Object localObject2 = (byte[])paramVarArgs.get(paramInt);
+            localObject1 = new BaseResponse();
+            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
+            for (boolean bool = true; bool; bool = ((BaseResponse)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cwj.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            localack.BaseResponse = ((BaseResponse)localObject1);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(32183);
+          return 0;
         }
-        localack.GbV = locala.NPN.gxI();
-        AppMethodBeat.o(152526);
+        localack.Gun = ((f.a.a.a.a)localObject1).OmT.readString();
+        AppMethodBeat.o(32183);
         return 0;
       }
-      AppMethodBeat.o(152526);
+      AppMethodBeat.o(32183);
       return -1;
     }
   }

@@ -47,8 +47,8 @@ public final class xt
       localCanvas.save();
       localPaint1 = c.a(localPaint1, paramVarArgs);
       localPaint2 = c.a(localPaint2, paramVarArgs);
-      localPaint1.setColor(-13882324);
-      localPaint2.setColor(234881023);
+      localPaint1.setColor(-1);
+      localPaint2.setColor(838860800);
       localPaint2.setStrokeWidth(1.5F);
       Path localPath = c.n(paramVarArgs);
       localPath.moveTo(155.25F, 272.53323F);

@@ -4,13 +4,13 @@ import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public class ExceptionMonitorService
   extends Service
   implements b.a
 {
-  b HWH = null;
+  b IqP = null;
   
   public IBinder onBind(Intent paramIntent)
   {
@@ -21,9 +21,9 @@ public class ExceptionMonitorService
   {
     AppMethodBeat.i(32607);
     super.onCreate();
-    ad.i("MicroMsg.ExceptionMonitorService", "onCreate()");
-    this.HWH = new b();
-    this.HWH.a(this);
+    ae.i("MicroMsg.ExceptionMonitorService", "onCreate()");
+    this.IqP = new b();
+    this.IqP.a(this);
     AppMethodBeat.o(32607);
   }
   
@@ -31,11 +31,11 @@ public class ExceptionMonitorService
   {
     AppMethodBeat.i(32610);
     super.onDestroy();
-    ad.i("MicroMsg.ExceptionMonitorService", "onDestroy()");
-    if (this.HWH != null)
+    ae.i("MicroMsg.ExceptionMonitorService", "onDestroy()");
+    if (this.IqP != null)
     {
-      this.HWH.onDestroy();
-      this.HWH = null;
+      this.IqP.onDestroy();
+      this.IqP = null;
     }
     AppMethodBeat.o(32610);
   }
@@ -44,9 +44,9 @@ public class ExceptionMonitorService
   {
     AppMethodBeat.i(32608);
     super.onStart(paramIntent, paramInt);
-    ad.i("MicroMsg.ExceptionMonitorService", "onStart()");
-    if (this.HWH != null) {
-      this.HWH.o(paramIntent);
+    ae.i("MicroMsg.ExceptionMonitorService", "onStart()");
+    if (this.IqP != null) {
+      this.IqP.o(paramIntent);
     }
     AppMethodBeat.o(32608);
   }
@@ -54,9 +54,9 @@ public class ExceptionMonitorService
   public int onStartCommand(Intent paramIntent, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(32609);
-    ad.i("MicroMsg.ExceptionMonitorService", "onStartCommand()");
-    if (this.HWH != null) {
-      this.HWH.o(paramIntent);
+    ae.i("MicroMsg.ExceptionMonitorService", "onStartCommand()");
+    if (this.IqP != null) {
+      this.IqP.o(paramIntent);
     }
     AppMethodBeat.o(32609);
     return 1;

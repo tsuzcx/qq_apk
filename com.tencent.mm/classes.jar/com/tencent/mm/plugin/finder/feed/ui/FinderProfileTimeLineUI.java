@@ -24,9 +24,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.loader.d;
-import com.tencent.mm.model.u;
 import com.tencent.mm.plugin.finder.api.g;
 import com.tencent.mm.plugin.finder.feed.model.BaseFinderFeedLoader;
 import com.tencent.mm.plugin.finder.feed.x.b;
@@ -45,8 +44,8 @@ import com.tencent.mm.plugin.finder.view.e;
 import com.tencent.mm.plugin.finder.view.e.a;
 import com.tencent.mm.plugin.finder.viewmodel.component.FinderReporterUIC;
 import com.tencent.mm.pluginsdk.ui.span.k;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.widget.TouchMediaPreviewLayout;
 import com.tencent.mm.ui.widget.TouchMediaPreviewLayout.b;
@@ -55,77 +54,76 @@ import com.tencent.mm.view.RefreshLoadMoreLayout;
 import com.tencent.mm.view.RefreshLoadMoreLayout.a;
 import d.g.b.p;
 import d.l;
-import d.v;
 import java.util.HashMap;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderProfileTimeLineUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "()V", "MENU_ID_EXPOSE", "", "MENU_ID_MORE_INFO", "MENU_ID_RECOMMEND", "MENU_ID_SETTING", "MENU_ID_UNFOLLOW", "TAG", "", "avatarIv", "Landroid/widget/ImageView;", "drawer", "Lcom/tencent/mm/plugin/finder/view/FinderCommentComponent;", "friendLikeDrawer", "Lcom/tencent/mm/plugin/finder/view/FinderLikeDrawer;", "isSelf", "", "likeDrawer", "nickTv", "Landroid/widget/TextView;", "presenter", "Lcom/tencent/mm/plugin/finder/feed/FinderProfileTimelineContract$ProfileTimelinePresenter;", "rlLayout", "Lcom/tencent/mm/view/RefreshLoadMoreLayout;", "selfFlag", "signatureTv", "subscribeBtn", "Landroid/widget/Button;", "username", "viewCallback", "Lcom/tencent/mm/plugin/finder/feed/FinderProfileTimelineContract$ProfileTimelineViewCallback;", "getCommentScene", "getLayoutId", "getReportType", "goBack", "", "initView", "onActivityResult", "requestCode", "resultCode", "data", "Landroid/content/Intent;", "onBackPressed", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onPause", "onResume", "onSceneEnd", "errType", "errCode", "errMsg", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "refreshProfile", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderProfileTimeLineUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "()V", "MENU_ID_EXPOSE", "", "MENU_ID_MORE_INFO", "MENU_ID_RECOMMEND", "MENU_ID_SETTING", "MENU_ID_UNFOLLOW", "TAG", "", "avatarIv", "Landroid/widget/ImageView;", "drawer", "Lcom/tencent/mm/plugin/finder/view/FinderCommentComponent;", "friendLikeDrawer", "Lcom/tencent/mm/plugin/finder/view/FinderLikeDrawer;", "isSelf", "", "likeDrawer", "nickTv", "Landroid/widget/TextView;", "presenter", "Lcom/tencent/mm/plugin/finder/feed/FinderProfileTimelineContract$ProfileTimelinePresenter;", "rlLayout", "Lcom/tencent/mm/view/RefreshLoadMoreLayout;", "selfFlag", "signatureTv", "subscribeBtn", "Landroid/widget/Button;", "username", "viewCallback", "Lcom/tencent/mm/plugin/finder/feed/FinderProfileTimelineContract$ProfileTimelineViewCallback;", "getCommentScene", "getLayoutId", "getReportType", "goBack", "", "initView", "onActivityResult", "requestCode", "resultCode", "data", "Landroid/content/Intent;", "onBackPressed", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onPause", "onResume", "onSceneEnd", "errType", "errCode", "errMsg", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "refreshProfile", "plugin-finder_release"})
 public final class FinderProfileTimeLineUI
   extends MMFinderUI
-  implements com.tencent.mm.al.f
+  implements com.tencent.mm.ak.f
 {
   private final String TAG = "Finder.FinderProfileTimeLineUI";
   private HashMap _$_findViewCache;
-  private boolean drv;
-  private ImageView fRd;
-  private TextView jhg;
-  private final int orV = 10004;
-  private final int rMA = 10001;
-  private RefreshLoadMoreLayout rTF;
-  private e rTG;
-  private FinderLikeDrawer rTH;
-  private FinderLikeDrawer rTI;
-  private x.c rWB;
-  private boolean rWI;
-  private x.b rWR;
-  private TextView sfD;
-  private Button sfE;
-  private final int sfF = 10000;
-  private final int sfG = 10002;
-  private final int sfH = 10003;
+  private boolean dsB;
+  private ImageView fTj;
+  private TextView jjZ;
+  private final int oyw = 10004;
+  private final int rUN = 10001;
+  private RefreshLoadMoreLayout scj;
+  private e sck;
+  private FinderLikeDrawer scl;
+  private FinderLikeDrawer scm;
+  private x.b sfC;
+  private x.c sfm;
+  private boolean sft;
+  private final int soA = 10003;
+  private TextView sow;
+  private Button sox;
+  private final int soy = 10000;
+  private final int soz = 10002;
   private String username;
   
   private final void goBack()
   {
     AppMethodBeat.i(166145);
-    Object localObject = this.rTG;
+    Object localObject = this.sck;
     if (localObject == null) {
-      p.bcb("drawer");
+      p.bdF("drawer");
     }
-    if (((e)localObject).cMZ())
+    if (((e)localObject).cPI())
     {
-      localObject = this.rTG;
+      localObject = this.sck;
       if (localObject == null) {
-        p.bcb("drawer");
+        p.bdF("drawer");
       }
-      ((e)localObject).cMY();
+      ((e)localObject).cPH();
       AppMethodBeat.o(166145);
       return;
     }
-    localObject = this.rTH;
+    localObject = this.scl;
     if (localObject == null) {
-      p.bcb("likeDrawer");
+      p.bdF("likeDrawer");
     }
-    if (((FinderLikeDrawer)localObject).cMZ())
+    if (((FinderLikeDrawer)localObject).cPI())
     {
-      localObject = this.rTH;
+      localObject = this.scl;
       if (localObject == null) {
-        p.bcb("likeDrawer");
+        p.bdF("likeDrawer");
       }
-      ((FinderLikeDrawer)localObject).cMY();
+      ((FinderLikeDrawer)localObject).cPH();
       AppMethodBeat.o(166145);
       return;
     }
-    localObject = this.rTI;
+    localObject = this.scm;
     if (localObject == null) {
-      p.bcb("friendLikeDrawer");
+      p.bdF("friendLikeDrawer");
     }
-    if (((FinderLikeDrawer)localObject).cMZ())
+    if (((FinderLikeDrawer)localObject).cPI())
     {
-      localObject = this.rTI;
+      localObject = this.scm;
       if (localObject == null) {
-        p.bcb("friendLikeDrawer");
+        p.bdF("friendLikeDrawer");
       }
-      ((FinderLikeDrawer)localObject).cMY();
+      ((FinderLikeDrawer)localObject).cPH();
       AppMethodBeat.o(166145);
       return;
     }
@@ -135,7 +133,7 @@ public final class FinderProfileTimeLineUI
   
   public final View _$_findCachedViewById(int paramInt)
   {
-    AppMethodBeat.i(202816);
+    AppMethodBeat.i(203295);
     if (this._$_findViewCache == null) {
       this._$_findViewCache = new HashMap();
     }
@@ -146,18 +144,18 @@ public final class FinderProfileTimeLineUI
       localView1 = findViewById(paramInt);
       this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
     }
-    AppMethodBeat.o(202816);
+    AppMethodBeat.o(203295);
     return localView1;
   }
   
-  public final int cAZ()
+  public final int cCL()
   {
     int j = 0;
-    AppMethodBeat.i(202815);
+    AppMethodBeat.i(203294);
     String str = getIntent().getStringExtra("finder_username");
     boolean bool = getIntent().getBooleanExtra("KEY_FINDER_SELF_FLAG", false);
     int i = j;
-    if (p.i(str, u.aAu()))
+    if (p.i(str, com.tencent.mm.model.v.aAK()))
     {
       i = j;
       if (bool) {
@@ -166,14 +164,14 @@ public final class FinderProfileTimeLineUI
     }
     if (i != 0)
     {
-      AppMethodBeat.o(202815);
+      AppMethodBeat.o(203294);
       return 8;
     }
-    AppMethodBeat.o(202815);
+    AppMethodBeat.o(203294);
     return 1;
   }
   
-  public final int cBZ()
+  public final int cDL()
   {
     return 2;
   }
@@ -186,15 +184,15 @@ public final class FinderProfileTimeLineUI
   public final void initView()
   {
     AppMethodBeat.i(166143);
-    Object localObject1 = com.tencent.mm.plugin.finder.api.c.rHn;
+    Object localObject1 = com.tencent.mm.plugin.finder.api.c.rPy;
     localObject1 = this.username;
     if (localObject1 == null) {
-      p.gfZ();
+      p.gkB();
     }
-    Object localObject3 = com.tencent.mm.plugin.finder.api.c.a.agW((String)localObject1);
+    Object localObject3 = com.tencent.mm.plugin.finder.api.c.a.ahT((String)localObject1);
     if (localObject3 != null)
     {
-      localObject2 = ((g)localObject3).VC();
+      localObject2 = ((g)localObject3).VK();
       localObject1 = localObject2;
       if (localObject2 != null) {}
     }
@@ -206,28 +204,28 @@ public final class FinderProfileTimeLineUI
     localObject1 = getLayoutInflater().inflate(2131494124, null);
     Object localObject2 = ((View)localObject1).findViewById(2131297008);
     p.g(localObject2, "header.findViewById(R.id.avatar_iv)");
-    this.fRd = ((ImageView)localObject2);
+    this.fTj = ((ImageView)localObject2);
     localObject2 = ((View)localObject1).findViewById(2131302861);
     p.g(localObject2, "header.findViewById(R.id.nick_tv)");
-    this.jhg = ((TextView)localObject2);
+    this.jjZ = ((TextView)localObject2);
     localObject2 = ((View)localObject1).findViewById(2131304823);
     p.g(localObject2, "header.findViewById(R.id.signature_tv)");
-    this.sfD = ((TextView)localObject2);
+    this.sow = ((TextView)localObject2);
     localObject2 = ((View)localObject1).findViewById(2131305519);
     p.g(localObject2, "header.findViewById(R.id.subscribe_btn)");
-    this.sfE = ((Button)localObject2);
+    this.sox = ((Button)localObject2);
     localObject2 = findViewById(2131304203);
     p.g(localObject2, "findViewById(R.id.rl_layout)");
-    this.rTF = ((RefreshLoadMoreLayout)localObject2);
+    this.scj = ((RefreshLoadMoreLayout)localObject2);
     localObject1 = ((View)localObject1).findViewById(2131299162);
     p.g(localObject1, "header.findViewById<ImageView>(R.id.divider_item)");
     ((ImageView)localObject1).setVisibility(0);
     setBackBtn((MenuItem.OnMenuItemClickListener)new a(this));
-    localObject1 = i.sja;
-    d locald = i.cCC();
+    localObject1 = i.srW;
+    d locald = i.cEo();
     if (localObject3 != null)
     {
-      localObject2 = ((g)localObject3).cxL();
+      localObject2 = ((g)localObject3).czm();
       localObject1 = localObject2;
       if (localObject2 != null) {}
     }
@@ -236,80 +234,80 @@ public final class FinderProfileTimeLineUI
       localObject1 = "";
     }
     localObject1 = new com.tencent.mm.plugin.finder.loader.a((String)localObject1);
-    localObject2 = this.fRd;
+    localObject2 = this.fTj;
     if (localObject2 == null) {
-      p.bcb("avatarIv");
+      p.bdF("avatarIv");
     }
-    localObject3 = i.sja;
-    locald.a(localObject1, (ImageView)localObject2, i.a(i.a.sjd));
-    localObject1 = e.sSA;
+    localObject3 = i.srW;
+    locald.a(localObject1, (ImageView)localObject2, i.a(i.a.srZ));
+    localObject1 = e.tdM;
     localObject1 = (MMActivity)this;
     localObject2 = getWindow();
     p.g(localObject2, "window");
     localObject2 = ((Window)localObject2).getDecorView();
     p.g(localObject2, "window.decorView");
-    if (this.drv) {}
+    if (this.dsB) {}
     for (int i = 1;; i = 2)
     {
-      this.rTG = e.a.a((MMActivity)localObject1, (View)localObject2, i, false);
+      this.sck = e.a.a((MMActivity)localObject1, (View)localObject2, i, false);
       localObject1 = (MMActivity)this;
-      localObject2 = this.rTG;
+      localObject2 = this.sck;
       if (localObject2 == null) {
-        p.bcb("drawer");
+        p.bdF("drawer");
       }
       localObject3 = this.username;
       if (localObject3 == null) {
-        p.gfZ();
+        p.gkB();
       }
-      this.rWR = new x.b((MMActivity)localObject1, (e)localObject2, (String)localObject3, this.rWI);
+      this.sfC = new x.b((MMActivity)localObject1, (e)localObject2, (String)localObject3, this.sft);
       localObject1 = (MMActivity)this;
-      localObject2 = this.rWR;
+      localObject2 = this.sfC;
       if (localObject2 == null) {
-        p.bcb("presenter");
+        p.bdF("presenter");
       }
       localObject1 = new x.c((MMActivity)localObject1, (x.b)localObject2);
-      localObject2 = this.rWR;
+      localObject2 = this.sfC;
       if (localObject2 == null) {
-        p.bcb("presenter");
+        p.bdF("presenter");
       }
       ((x.b)localObject2).a((x.c)localObject1);
-      localObject2 = ((x.c)localObject1).rTF;
+      localObject2 = ((x.c)localObject1).scj;
       if (localObject2 == null) {
-        p.bcb("rlLayout");
+        p.bdF("rlLayout");
       }
       ((RefreshLoadMoreLayout)localObject2).setActionCallback((RefreshLoadMoreLayout.a)new x.c.b((x.c)localObject1));
-      localObject2 = ((x.c)localObject1).gmV;
+      localObject2 = ((x.c)localObject1).gpr;
       if (localObject2 == null) {
-        p.bcb("recyclerView");
+        p.bdF("recyclerView");
       }
       ((RecyclerView)localObject2).b((RecyclerView.h)new com.tencent.mm.plugin.finder.view.decoration.b((Drawable)new ColorDrawable(com.tencent.mm.plugin.finder.presenter.base.c.a.a((com.tencent.mm.plugin.finder.presenter.base.c)localObject1).getColor(2131099679)), (int)com.tencent.mm.plugin.finder.presenter.base.c.a.a((com.tencent.mm.plugin.finder.presenter.base.c)localObject1).getDimension(2131166294)));
-      com.tencent.mm.ad.c.a(com.tencent.mm.ad.c.akP(), (d.g.a.b)new x.c.c((x.c)localObject1));
-      localObject2 = com.tencent.mm.ui.component.a.KiD;
-      localObject2 = FinderReporterUIC.d((FinderReporterUIC)com.tencent.mm.ui.component.a.s(((x.c)localObject1).fLP).get(FinderReporterUIC.class));
+      com.tencent.mm.ac.c.a(com.tencent.mm.ac.c.ale(), (d.g.a.b)new x.c.c((x.c)localObject1));
+      localObject2 = com.tencent.mm.ui.component.a.KEX;
+      localObject2 = FinderReporterUIC.d((FinderReporterUIC)com.tencent.mm.ui.component.a.s(((x.c)localObject1).fNT).get(FinderReporterUIC.class));
       if (localObject2 != null)
       {
-        localObject3 = ((x.c)localObject1).gmV;
+        localObject3 = ((x.c)localObject1).gpr;
         if (localObject3 == null) {
-          p.bcb("recyclerView");
+          p.bdF("recyclerView");
         }
         ((com.tencent.mm.plugin.finder.event.base.f)localObject2).s((RecyclerView)localObject3);
       }
-      ((BaseFinderFeedLoader)((x.c)localObject1).rWR.cBm()).register(((x.c)localObject1).rTR);
-      this.rWB = ((x.c)localObject1);
-      localObject1 = FinderLikeDrawer.sUO;
+      ((BaseFinderFeedLoader)((x.c)localObject1).sfC.cCY()).register(((x.c)localObject1).scv);
+      this.sfm = ((x.c)localObject1);
+      localObject1 = FinderLikeDrawer.tgd;
       localObject1 = (Context)this;
       localObject2 = getWindow();
       p.g(localObject2, "window");
-      localObject3 = FinderLikeDrawer.sUO;
-      this.rTH = FinderLikeDrawer.a.a((Context)localObject1, (Window)localObject2, FinderLikeDrawer.cNu());
-      localObject1 = FinderLikeDrawer.sUO;
+      localObject3 = FinderLikeDrawer.tgd;
+      this.scl = FinderLikeDrawer.a.a((Context)localObject1, (Window)localObject2, FinderLikeDrawer.cQe());
+      localObject1 = FinderLikeDrawer.tgd;
       localObject1 = getContext();
       p.g(localObject1, "context");
       localObject1 = (Context)localObject1;
       localObject2 = getWindow();
       p.g(localObject2, "this@FinderProfileTimeLineUI.window");
-      localObject3 = FinderLikeDrawer.sUO;
-      this.rTI = FinderLikeDrawer.a.a((Context)localObject1, (Window)localObject2, FinderLikeDrawer.cNt());
+      localObject3 = FinderLikeDrawer.tgd;
+      this.scm = FinderLikeDrawer.a.a((Context)localObject1, (Window)localObject2, FinderLikeDrawer.cQd());
       localObject1 = getBaseContext();
       p.g(localObject1, "baseContext");
       localObject1 = new TouchMediaPreviewLayout((Context)localObject1);
@@ -320,7 +318,7 @@ public final class FinderProfileTimeLineUI
       p.g(localObject2, "context.window");
       localObject2 = ((Window)localObject2).getDecorView();
       p.g(localObject2, "context.window.decorView");
-      ((TouchMediaPreviewLayout)localObject1).gX((View)localObject2);
+      ((TouchMediaPreviewLayout)localObject1).hc((View)localObject2);
       ((TouchMediaPreviewLayout)localObject1).setScaleListener((TouchMediaPreviewLayout.b)new b(this, (TouchMediaPreviewLayout)localObject1));
       AppMethodBeat.o(166143);
       return;
@@ -329,14 +327,14 @@ public final class FinderProfileTimeLineUI
   
   public final void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    AppMethodBeat.i(202814);
+    AppMethodBeat.i(203293);
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    e locale = this.rTG;
+    e locale = this.sck;
     if (locale == null) {
-      p.bcb("drawer");
+      p.bdF("drawer");
     }
     locale.d(paramInt1, paramIntent);
-    AppMethodBeat.o(202814);
+    AppMethodBeat.o(203293);
   }
   
   public final void onBackPressed()
@@ -352,9 +350,9 @@ public final class FinderProfileTimeLineUI
     AppMethodBeat.i(166142);
     super.onCreate(paramBundle);
     this.username = getIntent().getStringExtra("finder_username");
-    this.rWI = getIntent().getBooleanExtra("KEY_FINDER_SELF_FLAG", false);
-    ad.i(this.TAG, "username " + this.username);
-    if (bt.isNullOrNil(this.username))
+    this.sft = getIntent().getBooleanExtra("KEY_FINDER_SELF_FLAG", false);
+    ae.i(this.TAG, "username " + this.username);
+    if (bu.isNullOrNil(this.username))
     {
       finish();
       AppMethodBeat.o(166142);
@@ -362,17 +360,17 @@ public final class FinderProfileTimeLineUI
     }
     paramBundle = this.username;
     if (paramBundle != null) {}
-    for (boolean bool1 = paramBundle.equals(u.aAu());; bool1 = false)
+    for (boolean bool1 = paramBundle.equals(com.tencent.mm.model.v.aAK());; bool1 = false)
     {
       boolean bool2 = bool3;
       if (bool1)
       {
         bool2 = bool3;
-        if (this.rWI) {
+        if (this.sft) {
           bool2 = true;
         }
       }
-      this.drv = bool2;
+      this.dsB = bool2;
       initView();
       AppMethodBeat.o(166142);
       return;
@@ -382,17 +380,17 @@ public final class FinderProfileTimeLineUI
   public final void onDestroy()
   {
     AppMethodBeat.i(166150);
-    Object localObject = this.rTG;
+    Object localObject = this.sck;
     if (localObject == null) {
-      p.bcb("drawer");
+      p.bdF("drawer");
     }
     ((e)localObject).onDetach();
     super.onDestroy();
-    localObject = this.rWB;
+    localObject = this.sfm;
     if (localObject != null)
     {
-      ((BaseFinderFeedLoader)((x.c)localObject).rWR.cBm()).unregister(((x.c)localObject).rTR);
-      ((x.c)localObject).rWR.onDetach();
+      ((BaseFinderFeedLoader)((x.c)localObject).sfC.cCY()).unregister(((x.c)localObject).scv);
+      ((x.c)localObject).sfC.onDetach();
       ((x.c)localObject).getRecyclerView().setAdapter(null);
       AppMethodBeat.o(166150);
       return;
@@ -404,8 +402,8 @@ public final class FinderProfileTimeLineUI
   {
     AppMethodBeat.i(166149);
     super.onPause();
-    if (this.rTG == null) {
-      p.bcb("drawer");
+    if (this.sck == null) {
+      p.bdF("drawer");
     }
     AppMethodBeat.o(166149);
   }
@@ -414,93 +412,93 @@ public final class FinderProfileTimeLineUI
   {
     AppMethodBeat.i(166148);
     super.onResume();
-    Object localObject1 = com.tencent.mm.plugin.finder.convert.a.rLR;
+    Object localObject1 = com.tencent.mm.plugin.finder.convert.a.rUe;
     Object localObject2 = this.username;
     localObject1 = localObject2;
     if (localObject2 == null) {
       localObject1 = "";
     }
-    com.tencent.mm.plugin.finder.convert.a.ahf((String)localObject1);
-    localObject1 = com.tencent.mm.plugin.finder.api.c.rHn;
+    com.tencent.mm.plugin.finder.convert.a.aic((String)localObject1);
+    localObject1 = com.tencent.mm.plugin.finder.api.c.rPy;
     localObject1 = this.username;
     if (localObject1 == null) {
-      p.gfZ();
+      p.gkB();
     }
-    localObject1 = com.tencent.mm.plugin.finder.api.c.a.agW((String)localObject1);
+    localObject1 = com.tencent.mm.plugin.finder.api.c.a.ahT((String)localObject1);
     if (localObject1 != null)
     {
-      localObject2 = this.jhg;
+      localObject2 = this.jjZ;
       if (localObject2 == null) {
-        p.bcb("nickTv");
+        p.bdF("nickTv");
       }
-      ((TextView)localObject2).setText((CharSequence)k.c((Context)this, (CharSequence)((g)localObject1).VC()));
-      localObject2 = this.sfD;
+      ((TextView)localObject2).setText((CharSequence)k.c((Context)this, (CharSequence)((g)localObject1).VK()));
+      localObject2 = this.sow;
       if (localObject2 == null) {
-        p.bcb("signatureTv");
+        p.bdF("signatureTv");
       }
       ((TextView)localObject2).setText((CharSequence)k.c((Context)this, (CharSequence)((g)localObject1).field_signature));
-      localObject2 = com.tencent.mm.plugin.finder.api.c.rHn;
-      if (!com.tencent.mm.plugin.finder.api.c.a.agZ(((g)localObject1).getUsername())) {
+      localObject2 = com.tencent.mm.plugin.finder.api.c.rPy;
+      if (!com.tencent.mm.plugin.finder.api.c.a.ahW(((g)localObject1).getUsername())) {
         break label266;
       }
-      localObject1 = this.sfE;
+      localObject1 = this.sox;
       if (localObject1 == null) {
-        p.bcb("subscribeBtn");
+        p.bdF("subscribeBtn");
       }
       ((Button)localObject1).setText(2131760230);
-      localObject1 = this.sfE;
+      localObject1 = this.sox;
       if (localObject1 == null) {
-        p.bcb("subscribeBtn");
+        p.bdF("subscribeBtn");
       }
       ((Button)localObject1).setBackgroundResource(2131234429);
-      localObject1 = this.sfE;
+      localObject1 = this.sox;
       if (localObject1 == null) {
-        p.bcb("subscribeBtn");
+        p.bdF("subscribeBtn");
       }
       ((Button)localObject1).setTextColor(getResources().getColor(2131100549));
-      localObject1 = this.sfE;
+      localObject1 = this.sox;
       if (localObject1 == null) {
-        p.bcb("subscribeBtn");
+        p.bdF("subscribeBtn");
       }
-      ((Button)localObject1).setOnClickListener((View.OnClickListener)FinderProfileTimeLineUI.c.sfK);
+      ((Button)localObject1).setOnClickListener((View.OnClickListener)FinderProfileTimeLineUI.c.soD);
     }
     for (;;)
     {
-      localObject1 = this.rTG;
+      localObject1 = this.sck;
       if (localObject1 == null) {
-        p.bcb("drawer");
+        p.bdF("drawer");
       }
       ((e)localObject1).onUIResume();
       AppMethodBeat.o(166148);
       return;
       label266:
-      localObject1 = this.sfE;
+      localObject1 = this.sox;
       if (localObject1 == null) {
-        p.bcb("subscribeBtn");
+        p.bdF("subscribeBtn");
       }
       ((Button)localObject1).setText(2131759228);
-      localObject1 = this.sfE;
+      localObject1 = this.sox;
       if (localObject1 == null) {
-        p.bcb("subscribeBtn");
+        p.bdF("subscribeBtn");
       }
       ((Button)localObject1).setTextColor(getResources().getColor(2131101182));
-      localObject1 = this.sfE;
+      localObject1 = this.sox;
       if (localObject1 == null) {
-        p.bcb("subscribeBtn");
+        p.bdF("subscribeBtn");
       }
       ((Button)localObject1).setBackgroundResource(2131231366);
-      localObject1 = this.sfE;
+      localObject1 = this.sox;
       if (localObject1 == null) {
-        p.bcb("subscribeBtn");
+        p.bdF("subscribeBtn");
       }
-      ((Button)localObject1).setOnClickListener((View.OnClickListener)FinderProfileTimeLineUI.d.sfL);
+      ((Button)localObject1).setOnClickListener((View.OnClickListener)FinderProfileTimeLineUI.d.soE);
     }
   }
   
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     AppMethodBeat.i(166147);
-    ad.i(this.TAG, "errType " + paramInt1 + ", errCode " + paramInt2 + ", errMsg " + paramString);
+    ae.i(this.TAG, "errType " + paramInt1 + ", errCode " + paramInt2 + ", errMsg " + paramString);
     AppMethodBeat.o(166147);
   }
   
@@ -510,7 +508,7 @@ public final class FinderProfileTimeLineUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
   static final class a
     implements MenuItem.OnMenuItemClickListener
   {
@@ -519,45 +517,45 @@ public final class FinderProfileTimeLineUI
     public final boolean onMenuItemClick(MenuItem paramMenuItem)
     {
       AppMethodBeat.i(166131);
-      FinderProfileTimeLineUI.a(this.sfI);
+      FinderProfileTimeLineUI.a(this.soB);
       AppMethodBeat.o(166131);
       return true;
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/finder/feed/ui/FinderProfileTimeLineUI$initView$3", "Lcom/tencent/mm/ui/widget/TouchMediaPreviewLayout$OnScaleListener;", "focusBanner", "Lcom/tencent/mm/plugin/finder/view/FinderMediaBanner;", "getFocusBanner", "()Lcom/tencent/mm/plugin/finder/view/FinderMediaBanner;", "setFocusBanner", "(Lcom/tencent/mm/plugin/finder/view/FinderMediaBanner;)V", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "getRecyclerView", "()Landroid/support/v7/widget/RecyclerView;", "onScale", "", "detector", "Landroid/view/ScaleGestureDetector;", "onScaleBegin", "onScaleEnd", "", "plugin-finder_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/finder/feed/ui/FinderProfileTimeLineUI$initView$3", "Lcom/tencent/mm/ui/widget/TouchMediaPreviewLayout$OnScaleListener;", "focusBanner", "Lcom/tencent/mm/plugin/finder/view/FinderMediaBanner;", "getFocusBanner", "()Lcom/tencent/mm/plugin/finder/view/FinderMediaBanner;", "setFocusBanner", "(Lcom/tencent/mm/plugin/finder/view/FinderMediaBanner;)V", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "getRecyclerView", "()Landroid/support/v7/widget/RecyclerView;", "onScale", "", "detector", "Landroid/view/ScaleGestureDetector;", "onScaleBegin", "onScaleEnd", "", "plugin-finder_release"})
   public static final class b
     implements TouchMediaPreviewLayout.b
   {
-    private final RecyclerView gmV;
-    private FinderMediaBanner rTP;
+    private final RecyclerView gpr;
+    private FinderMediaBanner sct;
     
     b(TouchMediaPreviewLayout paramTouchMediaPreviewLayout)
     {
-      AppMethodBeat.i(202809);
+      AppMethodBeat.i(203288);
       paramTouchMediaPreviewLayout = FinderProfileTimeLineUI.b(paramTouchMediaPreviewLayout);
       if (paramTouchMediaPreviewLayout != null) {}
       for (paramTouchMediaPreviewLayout = paramTouchMediaPreviewLayout.getRecyclerView();; paramTouchMediaPreviewLayout = null)
       {
-        this.gmV = paramTouchMediaPreviewLayout;
-        AppMethodBeat.o(202809);
+        this.gpr = paramTouchMediaPreviewLayout;
+        AppMethodBeat.o(203288);
         return;
       }
     }
     
     public final boolean onScale(ScaleGestureDetector paramScaleGestureDetector)
     {
-      AppMethodBeat.i(202808);
+      AppMethodBeat.i(203287);
       p.h(paramScaleGestureDetector, "detector");
-      AppMethodBeat.o(202808);
+      AppMethodBeat.o(203287);
       return true;
     }
     
     public final boolean onScaleBegin(ScaleGestureDetector paramScaleGestureDetector)
     {
-      AppMethodBeat.i(202806);
+      AppMethodBeat.i(203285);
       p.h(paramScaleGestureDetector, "detector");
-      Object localObject = this.gmV;
+      Object localObject = this.gpr;
       if (localObject != null)
       {
         paramScaleGestureDetector = ((RecyclerView)localObject).o(paramScaleGestureDetector.getFocusX(), paramScaleGestureDetector.getFocusY());
@@ -565,8 +563,8 @@ public final class FinderProfileTimeLineUI
       }
       for (paramScaleGestureDetector = (FinderMediaBanner)paramScaleGestureDetector.findViewById(2131302203);; paramScaleGestureDetector = null)
       {
-        this.rTP = paramScaleGestureDetector;
-        paramScaleGestureDetector = this.rTP;
+        this.sct = paramScaleGestureDetector;
+        paramScaleGestureDetector = this.sct;
         if (paramScaleGestureDetector == null) {
           break label268;
         }
@@ -574,33 +572,33 @@ public final class FinderProfileTimeLineUI
         if (paramScaleGestureDetector == null) {
           break label268;
         }
-        localObject = this.rTP;
+        localObject = this.sct;
         if (localObject == null) {
-          p.gfZ();
+          p.gkB();
         }
         paramScaleGestureDetector = paramScaleGestureDetector.ci(((FinderMediaBanner)localObject).getFocusPosition());
         if ((paramScaleGestureDetector == null) || (paramScaleGestureDetector.lQ() != 2)) {
           break label154;
         }
-        localObject = com.tencent.mm.plugin.finder.storage.b.sxa;
-        if (!com.tencent.mm.plugin.finder.storage.b.cFT()) {
+        localObject = com.tencent.mm.plugin.finder.storage.b.sHP;
+        if (!com.tencent.mm.plugin.finder.storage.b.cHQ()) {
           break;
         }
         paramScaleGestureDetector = paramScaleGestureDetector.auu.findViewById(2131299974);
         if (paramScaleGestureDetector == null) {
           break label268;
         }
-        this.sfJ.gW(paramScaleGestureDetector);
-        AppMethodBeat.o(202806);
+        this.soC.hb(paramScaleGestureDetector);
+        AppMethodBeat.o(203285);
         return true;
       }
-      AppMethodBeat.o(202806);
+      AppMethodBeat.o(203285);
       return false;
       label154:
       if ((paramScaleGestureDetector != null) && (paramScaleGestureDetector.lQ() == 4))
       {
-        localObject = com.tencent.mm.plugin.finder.storage.b.sxa;
-        if (com.tencent.mm.plugin.finder.storage.b.cFU())
+        localObject = com.tencent.mm.plugin.finder.storage.b.sHP;
+        if (com.tencent.mm.plugin.finder.storage.b.cHR())
         {
           paramScaleGestureDetector = (FinderVideoLayout)paramScaleGestureDetector.auu.findViewById(2131299975);
           if (paramScaleGestureDetector != null)
@@ -608,7 +606,7 @@ public final class FinderProfileTimeLineUI
             localObject = paramScaleGestureDetector.getVideoView();
             if ((localObject != null) && (!((o)localObject).isPlaying()))
             {
-              AppMethodBeat.o(202806);
+              AppMethodBeat.o(203285);
               return false;
             }
             paramScaleGestureDetector = paramScaleGestureDetector.getVideoView();
@@ -616,47 +614,47 @@ public final class FinderProfileTimeLineUI
             {
               paramScaleGestureDetector.setPreview(true);
               paramScaleGestureDetector.setInterceptDetach(true);
-              this.sfJ.gW(paramScaleGestureDetector.getVideoView());
-              AppMethodBeat.o(202806);
+              this.soC.hb(paramScaleGestureDetector.getVideoView());
+              AppMethodBeat.o(203285);
               return true;
             }
           }
         }
         else
         {
-          AppMethodBeat.o(202806);
+          AppMethodBeat.o(203285);
           return false;
         }
       }
       label268:
-      AppMethodBeat.o(202806);
+      AppMethodBeat.o(203285);
       return false;
     }
     
     public final void onScaleEnd(ScaleGestureDetector paramScaleGestureDetector)
     {
-      AppMethodBeat.i(202807);
+      AppMethodBeat.i(203286);
       p.h(paramScaleGestureDetector, "detector");
-      if ((this.sfJ.getTouchView() instanceof o))
+      if ((this.soC.getTouchView() instanceof o))
       {
-        paramScaleGestureDetector = this.sfJ.getTouchView();
+        paramScaleGestureDetector = this.soC.getTouchView();
         if (paramScaleGestureDetector == null)
         {
-          paramScaleGestureDetector = new v("null cannot be cast to non-null type com.tencent.mm.plugin.finder.video.IFinderVideoView");
-          AppMethodBeat.o(202807);
+          paramScaleGestureDetector = new d.v("null cannot be cast to non-null type com.tencent.mm.plugin.finder.video.IFinderVideoView");
+          AppMethodBeat.o(203286);
           throw paramScaleGestureDetector;
         }
         paramScaleGestureDetector = (o)paramScaleGestureDetector;
         paramScaleGestureDetector.setInterceptDetach(false);
         paramScaleGestureDetector.setPreview(false);
       }
-      AppMethodBeat.o(202807);
+      AppMethodBeat.o(203286);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.feed.ui.FinderProfileTimeLineUI
  * JD-Core Version:    0.7.0.1
  */

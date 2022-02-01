@@ -6,7 +6,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/emojicapture/ui/editor/text/DefaultTextDrawer;", "Lcom/tencent/mm/plugin/emojicapture/ui/editor/text/TextDrawer;", "()V", "text", "", "drawLine", "", "canvas", "Landroid/graphics/Canvas;", "lineStart", "", "lineEnd", "x", "", "y", "paint", "Landroid/graphics/Paint;", "withEllipsis", "", "refresh", "setText", "switchFont", "fontName", "", "plugin-emojicapture_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/emojicapture/ui/editor/text/DefaultTextDrawer;", "Lcom/tencent/mm/plugin/emojicapture/ui/editor/text/TextDrawer;", "()V", "text", "", "drawLine", "", "canvas", "Landroid/graphics/Canvas;", "lineStart", "", "lineEnd", "x", "", "y", "paint", "Landroid/graphics/Paint;", "withEllipsis", "", "refresh", "setText", "switchFont", "fontName", "", "plugin-emojicapture_release"})
 public final class a
   implements c
 {
@@ -26,12 +26,12 @@ public final class a
     if (paramBoolean)
     {
       float f = paramPaint.measureText(this.text, paramInt1, paramInt2);
-      paramCanvas.drawText(c.a.ckA(), f + paramFloat1, paramFloat2, paramPaint);
+      paramCanvas.drawText(c.a.clQ(), f + paramFloat1, paramFloat2, paramPaint);
     }
     AppMethodBeat.o(809);
   }
   
-  public final void acr(String paramString)
+  public final void adi(String paramString)
   {
     AppMethodBeat.i(808);
     p.h(paramString, "fontName");
@@ -50,7 +50,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.emojicapture.ui.editor.text.a
  * JD-Core Version:    0.7.0.1
  */

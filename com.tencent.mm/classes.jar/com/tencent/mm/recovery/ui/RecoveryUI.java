@@ -3,6 +3,7 @@ package com.tencent.mm.recovery.ui;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v4.e.c;
 import android.support.v7.app.ActionBar;
@@ -18,24 +19,40 @@ import com.tencent.mm.recovery.b;
 import com.tencent.mm.recoveryv2.RecoveryCrash;
 import com.tencent.mm.recoveryv2.RecoveryCrash.Record;
 import com.tencent.mm.recoveryv2.f;
+import com.tencent.mm.sdk.platformtools.ak;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
 public class RecoveryUI
   extends AppCompatActivity
 {
-  private TextView HTD;
-  private RecoveryCrash.Record HTE;
-  private ProgressBar jqx;
-  private Button uot;
+  private TextView InK;
+  private TextView InL;
+  private RecoveryCrash.Record InM;
+  private ProgressBar jtq;
+  private Button uzP;
   
-  private void fgV()
+  private void fkN()
   {
-    AppMethodBeat.i(192846);
-    this.uot.setClickable(true);
-    this.uot.setVisibility(0);
-    this.jqx.setVisibility(8);
-    AppMethodBeat.o(192846);
+    AppMethodBeat.i(186170);
+    this.uzP.setClickable(true);
+    this.uzP.setVisibility(0);
+    this.jtq.setVisibility(8);
+    AppMethodBeat.o(186170);
+  }
+  
+  public Resources getResources()
+  {
+    AppMethodBeat.i(186166);
+    if (ak.getResources() == null)
+    {
+      localResources = super.getResources();
+      AppMethodBeat.o(186166);
+      return localResources;
+    }
+    Resources localResources = ak.getResources();
+    AppMethodBeat.o(186166);
+    return localResources;
   }
   
   public void onBackPressed() {}
@@ -43,137 +60,152 @@ public class RecoveryUI
   @SuppressLint({"SourceLockedOrientationActivity"})
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(192843);
+    AppMethodBeat.i(186167);
     super.onCreate(paramBundle);
     f.i("MicroMsg.recovery.ui", "activity onCreate, id = ".concat(String.valueOf(this)));
     try
     {
       setRequestedOrientation(1);
-      setContentView(2131492934);
-      this.HTD = ((TextView)findViewById(2131306160));
-      this.uot = ((Button)findViewById(2131297591));
-      this.jqx = ((ProgressBar)findViewById(2131303527));
-      this.uot.setOnClickListener(new View.OnClickListener()
-      {
-        public final void onClick(final View paramAnonymousView)
-        {
-          AppMethodBeat.i(192841);
-          RecoveryUI.a(RecoveryUI.this);
-          RecoveryUI.b(RecoveryUI.this).setText(2131762265);
-          paramAnonymousView = new CountDownLatch(3);
-          h.LTJ.aR(new Runnable()
-          {
-            public final void run()
-            {
-              AppMethodBeat.i(192837);
-              if (paramAnonymousView.getCount() > 0L) {}
-              try
-              {
-                paramAnonymousView.await(10000L, TimeUnit.MILLISECONDS);
-                label31:
-                RecoveryUI.b(RecoveryUI.this).post(new Runnable()
-                {
-                  public final void run()
-                  {
-                    AppMethodBeat.i(192836);
-                    if (!RecoveryUI.this.isFinishing())
-                    {
-                      RecoveryUI.c(RecoveryUI.this);
-                      RecoveryUI.b(RecoveryUI.this).setText(2131762266);
-                      RecoveryUI.d(RecoveryUI.this).setText(2131762261);
-                      RecoveryUI.d(RecoveryUI.this).setOnClickListener(new View.OnClickListener()
-                      {
-                        public final void onClick(View paramAnonymous4View)
-                        {
-                          AppMethodBeat.i(192835);
-                          RecoveryUI.e(RecoveryUI.this);
-                          AppMethodBeat.o(192835);
-                        }
-                      });
-                    }
-                    AppMethodBeat.o(192836);
-                  }
-                });
-                AppMethodBeat.o(192837);
-                return;
-              }
-              catch (Throwable localThrowable)
-              {
-                break label31;
-              }
-            }
-          });
-          RecoveryUI.b(RecoveryUI.this).postDelayed(new Runnable()
-          {
-            public final void run()
-            {
-              AppMethodBeat.i(192838);
-              paramAnonymousView.countDown();
-              AppMethodBeat.o(192838);
-            }
-          }, 3000L);
-          h.LTJ.aR(new Runnable()
-          {
-            public final void run()
-            {
-              AppMethodBeat.i(192839);
-              RecoveryUI.f(RecoveryUI.this);
-              RecoveryCrash.hJ(RecoveryUI.this.getApplication()).fgZ().save();
-              paramAnonymousView.countDown();
-              AppMethodBeat.o(192839);
-            }
-          });
-          h.LTJ.aR(new Runnable()
-          {
-            public final void run()
-            {
-              AppMethodBeat.i(192840);
-              RecoveryUI.g(RecoveryUI.this);
-              paramAnonymousView.countDown();
-              AppMethodBeat.o(192840);
-            }
-          });
-          AppMethodBeat.o(192841);
-        }
-      });
-      paramBundle = getSupportActionBar();
-      if (paramBundle != null) {
-        paramBundle.hide();
-      }
-      fgV();
-      this.HTD.setText(2131762267);
-      this.HTE = ((RecoveryCrash.Record)getIntent().getParcelableExtra("extra_crash_record"));
-      paramBundle = com.tencent.mm.recoveryv2.i.hR(getApplication());
-      paramBundle.HUs = false;
-      paramBundle.HUp = true;
-      paramBundle.save();
-      b.fgU();
-      AppMethodBeat.o(192843);
-      return;
     }
     catch (Throwable paramBundle)
     {
-      for (;;)
+      try
       {
-        f.w("MicroMsg.recovery.ui", "set portrait mode fail", paramBundle);
+        for (;;)
+        {
+          setContentView(2131492934);
+          this.InK = ((TextView)findViewById(2131306137));
+          this.InL = ((TextView)findViewById(2131306160));
+          this.uzP = ((Button)findViewById(2131297591));
+          this.jtq = ((ProgressBar)findViewById(2131303527));
+          this.uzP.setOnClickListener(new View.OnClickListener()
+          {
+            public final void onClick(final View paramAnonymousView)
+            {
+              AppMethodBeat.i(186164);
+              RecoveryUI.a(RecoveryUI.this);
+              RecoveryUI.b(RecoveryUI.this).setText(RecoveryUI.this.getResources().getString(2131762265));
+              paramAnonymousView = new CountDownLatch(3);
+              h.MqF.aO(new Runnable()
+              {
+                public final void run()
+                {
+                  AppMethodBeat.i(186160);
+                  if (paramAnonymousView.getCount() > 0L) {}
+                  try
+                  {
+                    paramAnonymousView.await(10000L, TimeUnit.MILLISECONDS);
+                    label31:
+                    RecoveryUI.b(RecoveryUI.this).post(new Runnable()
+                    {
+                      public final void run()
+                      {
+                        AppMethodBeat.i(186159);
+                        if (!RecoveryUI.this.isFinishing())
+                        {
+                          RecoveryUI.c(RecoveryUI.this);
+                          RecoveryUI.b(RecoveryUI.this).setText(RecoveryUI.this.getResources().getString(2131762266));
+                          RecoveryUI.d(RecoveryUI.this).setText(RecoveryUI.this.getResources().getString(2131762261));
+                          RecoveryUI.d(RecoveryUI.this).setOnClickListener(new View.OnClickListener()
+                          {
+                            public final void onClick(View paramAnonymous4View)
+                            {
+                              AppMethodBeat.i(186158);
+                              RecoveryUI.e(RecoveryUI.this);
+                              AppMethodBeat.o(186158);
+                            }
+                          });
+                        }
+                        AppMethodBeat.o(186159);
+                      }
+                    });
+                    AppMethodBeat.o(186160);
+                    return;
+                  }
+                  catch (Throwable localThrowable)
+                  {
+                    break label31;
+                  }
+                }
+              });
+              RecoveryUI.b(RecoveryUI.this).postDelayed(new Runnable()
+              {
+                public final void run()
+                {
+                  AppMethodBeat.i(186161);
+                  paramAnonymousView.countDown();
+                  AppMethodBeat.o(186161);
+                }
+              }, 3000L);
+              h.MqF.aO(new Runnable()
+              {
+                public final void run()
+                {
+                  AppMethodBeat.i(186162);
+                  RecoveryUI.f(RecoveryUI.this);
+                  RecoveryCrash.hP(RecoveryUI.this.getApplication()).fkR().save();
+                  paramAnonymousView.countDown();
+                  AppMethodBeat.o(186162);
+                }
+              });
+              h.MqF.aO(new Runnable()
+              {
+                public final void run()
+                {
+                  AppMethodBeat.i(186163);
+                  RecoveryUI.g(RecoveryUI.this);
+                  paramAnonymousView.countDown();
+                  AppMethodBeat.o(186163);
+                }
+              });
+              AppMethodBeat.o(186164);
+            }
+          });
+          paramBundle = getSupportActionBar();
+          if (paramBundle != null) {
+            paramBundle.hide();
+          }
+          fkN();
+          this.InK.setText(getResources().getString(2131762264));
+          this.InL.setText(getResources().getString(2131762267));
+          this.uzP.setText(getResources().getString(2131762262));
+          this.InM = ((RecoveryCrash.Record)getIntent().getParcelableExtra("extra_crash_record"));
+          paramBundle = com.tencent.mm.recoveryv2.i.hX(getApplication());
+          paramBundle.IoA = false;
+          paramBundle.Iox = true;
+          paramBundle.save();
+          b.fkM();
+          AppMethodBeat.o(186167);
+          return;
+          paramBundle = paramBundle;
+          f.w("MicroMsg.recovery.ui", "set portrait mode fail", paramBundle);
+        }
+      }
+      catch (Throwable paramBundle)
+      {
+        for (;;)
+        {
+          f.w("MicroMsg.recovery.ui", "setContentView fail, try raw layout", paramBundle);
+          setContentView(2131496507);
+        }
       }
     }
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(192845);
+    AppMethodBeat.i(186169);
     super.onDestroy();
     f.i("MicroMsg.recovery.ui", "activity onDestroy, id = ".concat(String.valueOf(this)));
-    AppMethodBeat.o(192845);
+    AppMethodBeat.o(186169);
   }
   
   public void onNewIntent(Intent paramIntent)
   {
-    AppMethodBeat.i(192844);
+    AppMethodBeat.i(186168);
     super.onNewIntent(paramIntent);
     f.i("MicroMsg.recovery.ui", "activity onNewIntent, id = ".concat(String.valueOf(this)));
-    AppMethodBeat.o(192844);
+    AppMethodBeat.o(186168);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)

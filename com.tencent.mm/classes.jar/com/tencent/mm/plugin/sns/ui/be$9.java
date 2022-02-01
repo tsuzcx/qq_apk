@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bs.d;
+import com.tencent.mm.br.d;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.plugin.report.service.g;
@@ -20,11 +20,11 @@ final class be$9
     AppMethodBeat.i(99025);
     b localb = new b();
     localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/sns/ui/SnsSelfAdapter$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+    a.b("com/tencent/mm/plugin/sns/ui/SnsSelfAdapter$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
     paramView = new Intent();
-    paramView.putExtra("enter_scene", e.i.IUE);
-    d.b(be.f(this.AhA), "setting", ".ui.setting.SettingsPrivacyUI", paramView);
-    g.yhR.f(14098, new Object[] { Integer.valueOf(8) });
+    paramView.putExtra("enter_scene", e.i.Jpm);
+    d.b(be.f(this.AyM), "setting", ".ui.setting.SettingsPrivacyUI", paramView);
+    g.yxI.f(14098, new Object[] { Integer.valueOf(8) });
     a.a(this, "com/tencent/mm/plugin/sns/ui/SnsSelfAdapter$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(99025);
   }

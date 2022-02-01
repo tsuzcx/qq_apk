@@ -12,7 +12,7 @@ final class b
     //   2: invokestatic 19	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: ldc 21
     //   7: ldc 23
-    //   9: invokestatic 27	com/tencent/mm/booter/notification/b:um	(Ljava/lang/String;)Ljava/lang/String;
+    //   9: invokestatic 27	com/tencent/mm/booter/notification/b:uH	(Ljava/lang/String;)Ljava/lang/String;
     //   12: iconst_1
     //   13: anewarray 21	java/lang/Class
     //   16: dup
@@ -102,18 +102,18 @@ final class b
     //   182: dup
     //   183: invokespecial 85	java/lang/StringBuilder:<init>	()V
     //   186: ldc 87
-    //   188: invokestatic 27	com/tencent/mm/booter/notification/b:um	(Ljava/lang/String;)Ljava/lang/String;
+    //   188: invokestatic 27	com/tencent/mm/booter/notification/b:uH	(Ljava/lang/String;)Ljava/lang/String;
     //   191: invokevirtual 66	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   194: aload_1
     //   195: invokevirtual 66	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   198: ldc 89
-    //   200: invokestatic 27	com/tencent/mm/booter/notification/b:um	(Ljava/lang/String;)Ljava/lang/String;
+    //   200: invokestatic 27	com/tencent/mm/booter/notification/b:uH	(Ljava/lang/String;)Ljava/lang/String;
     //   203: invokevirtual 66	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   206: aload_0
     //   207: invokevirtual 62	java/lang/Class:getName	()Ljava/lang/String;
     //   210: invokevirtual 66	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   213: ldc 91
-    //   215: invokestatic 27	com/tencent/mm/booter/notification/b:um	(Ljava/lang/String;)Ljava/lang/String;
+    //   215: invokestatic 27	com/tencent/mm/booter/notification/b:uH	(Ljava/lang/String;)Ljava/lang/String;
     //   218: invokevirtual 66	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   221: invokevirtual 71	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   224: invokespecial 72	java/lang/NoSuchFieldException:<init>	(Ljava/lang/String;)V
@@ -161,9 +161,9 @@ final class b
     //   27	51	147	java/lang/reflect/InvocationTargetException
   }
   
-  private static String um(String paramString)
+  private static String uH(String paramString)
   {
-    AppMethodBeat.i(193100);
+    AppMethodBeat.i(186337);
     for (;;)
     {
       int m;
@@ -188,17 +188,17 @@ final class b
         case 16: 
         default: 
           paramString = new IllegalStateException();
-          AppMethodBeat.o(193100);
+          AppMethodBeat.o(186337);
           throw paramString;
         }
       }
       catch (Throwable localThrowable)
       {
-        AppMethodBeat.o(193100);
+        AppMethodBeat.o(186337);
         return paramString;
       }
       paramString = localThrowable.toString();
-      AppMethodBeat.o(193100);
+      AppMethodBeat.o(186337);
       return paramString;
       if (k >= m) {
         i -= 2;

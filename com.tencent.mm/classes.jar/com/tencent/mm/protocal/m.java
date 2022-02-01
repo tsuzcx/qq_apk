@@ -3,8 +3,8 @@ package com.tencent.mm.protocal;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.protocal.protobuf.lb;
 import com.tencent.mm.protocal.protobuf.lc;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.io.IOException;
 
 public final class m
@@ -14,7 +14,7 @@ public final class m
     extends l.d
     implements l.b
   {
-    public int FnX = 0;
+    public int FGv = 0;
     public int netType;
     
     public final int getCmdId()
@@ -41,11 +41,11 @@ public final class m
     {
       AppMethodBeat.i(32084);
       Object localObject2 = new lb();
-      ((lb)localObject2).FCf = d.Fnj;
-      ((lb)localObject2).FDl = 2;
-      ((lb)localObject2).FDm = this.netType;
-      ((lb)localObject2).FDn = this.FnX;
-      ad.i("MicroMsg.MMBgFg", "somr online:%d nettype:%d ver:%d devid:%d", new Object[] { Integer.valueOf(((lb)localObject2).FDn), Integer.valueOf(((lb)localObject2).FDm), Integer.valueOf(((lb)localObject2).FCf), Integer.valueOf(((lb)localObject2).FDl) });
+      ((lb)localObject2).FUA = d.FFH;
+      ((lb)localObject2).FVG = 2;
+      ((lb)localObject2).FVH = this.netType;
+      ((lb)localObject2).FVI = this.FGv;
+      ae.i("MicroMsg.MMBgFg", "somr online:%d nettype:%d ver:%d devid:%d", new Object[] { Integer.valueOf(((lb)localObject2).FVI), Integer.valueOf(((lb)localObject2).FVH), Integer.valueOf(((lb)localObject2).FUA), Integer.valueOf(((lb)localObject2).FVG) });
       Object localObject1 = null;
       try
       {
@@ -56,7 +56,7 @@ public final class m
       {
         for (;;)
         {
-          ad.e("MicroMsg.MMBgFg", "MMBgfg toProtoBuf exception:%s", new Object[] { bt.n(localIOException) });
+          ae.e("MicroMsg.MMBgFg", "MMBgfg toProtoBuf exception:%s", new Object[] { bu.o(localIOException) });
         }
       }
       AppMethodBeat.o(32084);
@@ -68,21 +68,21 @@ public final class m
     extends l.e
     implements l.c
   {
-    public lc FnY;
+    public lc FGw;
     
     public b()
     {
       AppMethodBeat.i(32085);
-      this.FnY = new lc();
+      this.FGw = new lc();
       AppMethodBeat.o(32085);
     }
     
     public final int fromProtoBuf(byte[] paramArrayOfByte)
     {
       AppMethodBeat.i(32086);
-      this.FnY = ((lc)new lc().parseFrom(paramArrayOfByte));
-      ad.d("MicroMsg.MMBgFg", "retcode:" + this.FnY.dlw);
-      int i = this.FnY.dlw;
+      this.FGw = ((lc)new lc().parseFrom(paramArrayOfByte));
+      ae.d("MicroMsg.MMBgFg", "retcode:" + this.FGw.dmy);
+      int i = this.FGw.dmy;
       AppMethodBeat.o(32086);
       return i;
     }

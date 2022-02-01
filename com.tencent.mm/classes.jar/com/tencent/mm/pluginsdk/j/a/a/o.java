@@ -1,16 +1,16 @@
 package com.tencent.mm.pluginsdk.j.a.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.l;
+import com.tencent.mm.ak.l;
 import com.tencent.mm.kernel.b;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.protocal.f;
 import com.tencent.mm.protocal.l.d;
 import com.tencent.mm.protocal.l.e;
-import com.tencent.mm.protocal.protobuf.ago;
-import com.tencent.mm.protocal.protobuf.agp;
-import com.tencent.mm.protocal.protobuf.xs;
-import com.tencent.mm.protocal.protobuf.xt;
+import com.tencent.mm.protocal.protobuf.agy;
+import com.tencent.mm.protocal.protobuf.agz;
+import com.tencent.mm.protocal.protobuf.xv;
+import com.tencent.mm.protocal.protobuf.xw;
 import com.tencent.mm.protocal.q.a;
 import com.tencent.mm.protocal.q.b;
 import java.util.LinkedList;
@@ -18,21 +18,21 @@ import java.util.LinkedList;
 public final class o
   extends n
 {
-  public static void bMa()
+  public static void bMY()
   {
     AppMethodBeat.i(152004);
     o localo = new o();
-    g.ajB().gAO.a(localo, 0);
+    g.ajQ().gDv.a(localo, 0);
     AppMethodBeat.o(152004);
   }
   
-  protected final com.tencent.mm.network.q faU()
+  protected final com.tencent.mm.network.q feI()
   {
     AppMethodBeat.i(152005);
     a locala = new a();
     q.a locala1 = (q.a)locala.getReqObjImp();
     locala1.setUin(0);
-    locala1.Foh.GeG.GeE.FXq.addAll(this.EQn);
+    locala1.FGF.Gxo.Gxm.GpP.addAll(this.FiI);
     AppMethodBeat.o(152005);
     return locala;
   }
@@ -44,28 +44,28 @@ public final class o
   
   public final int getType()
   {
-    if (f.Fns) {
+    if (f.FFQ) {
       return 784;
     }
     return 722;
   }
   
-  protected final xt h(com.tencent.mm.network.q paramq)
+  protected final xw h(com.tencent.mm.network.q paramq)
   {
-    return ((a)paramq).EQs.Fok;
+    return ((a)paramq).FiN.FGI;
   }
   
   static final class a
     extends l
   {
-    private final q.a EQr;
-    final q.b EQs;
+    private final q.a FiM;
+    final q.b FiN;
     
     public a()
     {
       AppMethodBeat.i(152003);
-      this.EQr = new q.a();
-      this.EQs = new q.b();
+      this.FiM = new q.a();
+      this.FiN = new q.b();
       AppMethodBeat.o(152003);
     }
     
@@ -76,17 +76,17 @@ public final class o
     
     public final l.d getReqObjImp()
     {
-      return this.EQr;
+      return this.FiM;
     }
     
     public final l.e getRespObj()
     {
-      return this.EQs;
+      return this.FiN;
     }
     
     public final int getType()
     {
-      if (f.Fns) {
+      if (f.FFQ) {
         return 784;
       }
       return 722;
@@ -94,7 +94,7 @@ public final class o
     
     public final String getUri()
     {
-      if (f.Fns) {
+      if (f.FFQ) {
         return "/cgi-bin/micromsg-bin/secencryptcheckresupdate";
       }
       return "/cgi-bin/micromsg-bin/encryptcheckresupdate";

@@ -17,22 +17,22 @@ public class PluginABTest
     AppMethodBeat.i(153143);
     ToolsProcessIPCService.a(new ToolsProcessIPCService.a()
     {
-      public final boolean ahO()
+      public final boolean aid()
       {
         int j = 1;
         AppMethodBeat.i(153142);
-        Object localObject = a.a.gyq;
-        localObject = com.tencent.mm.ipcinvoker.wx_extension.a.a.wz("100488");
+        Object localObject = a.a.gAX;
+        localObject = com.tencent.mm.ipcinvoker.wx_extension.a.a.xi("100488");
         if (localObject == null)
         {
           AppMethodBeat.o(153142);
           return false;
         }
         int i;
-        if ((((com.tencent.mm.storage.c)localObject).isValid()) && ("1".equals(((com.tencent.mm.storage.c)localObject).foF().get("SAFEFLAG"))))
+        if ((((com.tencent.mm.storage.c)localObject).isValid()) && ("1".equals(((com.tencent.mm.storage.c)localObject).fsy().get("SAFEFLAG"))))
         {
           i = 1;
-          if ((!((com.tencent.mm.storage.c)localObject).isValid()) || (!"1".equals(((com.tencent.mm.storage.c)localObject).foF().get("TURNOFFTOOLMP")))) {
+          if ((!((com.tencent.mm.storage.c)localObject).isValid()) || (!"1".equals(((com.tencent.mm.storage.c)localObject).fsy().get("TURNOFFTOOLMP")))) {
             break label96;
           }
         }
@@ -47,18 +47,18 @@ public class PluginABTest
         }
       }
     });
-    if (paramg.akw())
+    if (paramg.akL())
     {
-      pin(b.aRN());
-      pin(c.aRO());
-      pin(com.tencent.mm.model.c.c.hJn);
+      pin(b.aSm());
+      pin(c.aSn());
+      pin(com.tencent.mm.model.c.c.hMg);
     }
     AppMethodBeat.o(153143);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.abtest.PluginABTest
  * JD-Core Version:    0.7.0.1
  */

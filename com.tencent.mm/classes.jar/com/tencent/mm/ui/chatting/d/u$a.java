@@ -2,7 +2,7 @@ package com.tencent.mm.ui.chatting.d;
 
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/ui/chatting/component/FloatBallComponent$Companion;", "", "()V", "TAG", "", "app_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/ui/chatting/component/FloatBallComponent$Companion;", "", "()V", "TAG", "", "app_release"})
 public final class u$a {}
 
 

@@ -8,47 +8,47 @@ import d.l;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/media/widget/camera2/effect/result/WCCaptureResult;", "", "result", "Landroid/hardware/camera2/CaptureResult;", "mCameraId", "", "mWCEffectResultList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/media/widget/camera2/effect/result/WCCameraEffectResultTag;", "Lkotlin/collections/ArrayList;", "(Landroid/hardware/camera2/CaptureResult;Ljava/lang/String;Ljava/util/ArrayList;)V", "mCameraIDRef", "", "getMCameraIDRef", "()I", "setMCameraIDRef", "(I)V", "getMWCEffectResultList", "()Ljava/util/ArrayList;", "setMWCEffectResultList", "(Ljava/util/ArrayList;)V", "getResult", "()Landroid/hardware/camera2/CaptureResult;", "setResult", "(Landroid/hardware/camera2/CaptureResult;)V", "checkEffectSupported", "", "key", "stream", "getBooleanRet", "(Ljava/lang/String;)Ljava/lang/Boolean;", "getByteRet", "", "(Ljava/lang/String;)Ljava/lang/Byte;", "getIntRet", "(Ljava/lang/String;)Ljava/lang/Integer;", "getRetType", "getStringRet", "refKey", "Landroid/hardware/camera2/CaptureResult$Key;", "Companion", "plugin-mediaeditor_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/media/widget/camera2/effect/result/WCCaptureResult;", "", "result", "Landroid/hardware/camera2/CaptureResult;", "mCameraId", "", "mWCEffectResultList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/media/widget/camera2/effect/result/WCCameraEffectResultTag;", "Lkotlin/collections/ArrayList;", "(Landroid/hardware/camera2/CaptureResult;Ljava/lang/String;Ljava/util/ArrayList;)V", "mCameraIDRef", "", "getMCameraIDRef", "()I", "setMCameraIDRef", "(I)V", "getMWCEffectResultList", "()Ljava/util/ArrayList;", "setMWCEffectResultList", "(Ljava/util/ArrayList;)V", "getResult", "()Landroid/hardware/camera2/CaptureResult;", "setResult", "(Landroid/hardware/camera2/CaptureResult;)V", "checkEffectSupported", "", "key", "stream", "getBooleanRet", "(Ljava/lang/String;)Ljava/lang/Boolean;", "getByteRet", "", "(Ljava/lang/String;)Ljava/lang/Byte;", "getIntRet", "(Ljava/lang/String;)Ljava/lang/Integer;", "getRetType", "getStringRet", "refKey", "Landroid/hardware/camera2/CaptureResult$Key;", "Companion", "plugin-mediaeditor_release"})
 public final class b
 {
   private static final String TAG = "MicroMsg.WCCaptureResult";
-  private static final String hsT = "cameraeffect.result.hdrdetected";
-  public static final b.a hsU;
-  public int hsA;
-  public CaptureResult hsR;
-  public ArrayList<a> hsS;
+  private static final String hvH = "cameraeffect.result.hdrdetected";
+  public static final b.a hvI;
+  public CaptureResult hvF;
+  public ArrayList<a> hvG;
+  public int hvo;
   
   static
   {
     AppMethodBeat.i(94208);
-    hsU = new b.a((byte)0);
+    hvI = new b.a((byte)0);
     TAG = "MicroMsg.WCCaptureResult";
-    hsT = "cameraeffect.result.hdrdetected";
+    hvH = "cameraeffect.result.hdrdetected";
     AppMethodBeat.o(94208);
   }
   
   public b(CaptureResult paramCaptureResult, String paramString, ArrayList<a> paramArrayList)
   {
     AppMethodBeat.i(94207);
-    this.hsR = paramCaptureResult;
-    this.hsS = paramArrayList;
+    this.hvF = paramCaptureResult;
+    this.hvG = paramArrayList;
     if (p.i(paramString, "0")) {
-      paramCaptureResult = com.tencent.mm.media.widget.b.a.b.hsa;
+      paramCaptureResult = com.tencent.mm.media.widget.b.a.b.huO;
     }
-    for (int i = com.tencent.mm.media.widget.b.a.b.axg();; i = com.tencent.mm.media.widget.b.a.b.axh())
+    for (int i = com.tencent.mm.media.widget.b.a.b.axv();; i = com.tencent.mm.media.widget.b.a.b.axw())
     {
-      this.hsA = i;
+      this.hvo = i;
       AppMethodBeat.o(94207);
       return;
-      paramCaptureResult = com.tencent.mm.media.widget.b.a.b.hsa;
+      paramCaptureResult = com.tencent.mm.media.widget.b.a.b.huO;
     }
   }
   
-  public final CaptureResult.Key<?> yj(String paramString)
+  public final CaptureResult.Key<?> yT(String paramString)
   {
     AppMethodBeat.i(94206);
     p.h(paramString, "key");
-    Object localObject1 = this.hsS;
+    Object localObject1 = this.hvG;
     int i;
     if (localObject1 != null)
     {
@@ -58,11 +58,11 @@ public final class b
       }
       localObject1 = localIterator.next();
       Object localObject2 = (a)localObject1;
-      if (!p.i(((a)localObject2).hsu, paramString)) {
+      if (!p.i(((a)localObject2).hvi, paramString)) {
         break label116;
       }
-      localObject2 = ((a)localObject2).hsv;
-      if ((localObject2 != null) && ((((Integer)localObject2).intValue() & this.hsA) == 0)) {
+      localObject2 = ((a)localObject2).hvj;
+      if ((localObject2 != null) && ((((Integer)localObject2).intValue() & this.hvo) == 0)) {
         break label116;
       }
       i = 1;
@@ -87,7 +87,7 @@ public final class b
       break;
     }
     label126:
-    localObject1 = paramString.hsQ;
+    localObject1 = paramString.hvE;
     if (localObject1 == null) {}
     do
     {
@@ -106,33 +106,33 @@ public final class b
               }
             }
           } while (!((String)localObject1).equals("String"));
-          paramString = paramString.hsy;
+          paramString = paramString.hvm;
           if (paramString == null) {
-            p.gfZ();
+            p.gkB();
           }
           paramString = c.e(paramString, String.class);
           AppMethodBeat.o(94206);
           return paramString;
         } while (!((String)localObject1).equals("Integer"));
-        paramString = paramString.hsy;
+        paramString = paramString.hvm;
         if (paramString == null) {
-          p.gfZ();
+          p.gkB();
         }
         paramString = c.e(paramString, Integer.TYPE);
         AppMethodBeat.o(94206);
         return paramString;
       } while (!((String)localObject1).equals("Byte"));
-      paramString = paramString.hsy;
+      paramString = paramString.hvm;
       if (paramString == null) {
-        p.gfZ();
+        p.gkB();
       }
       paramString = c.e(paramString, Byte.TYPE);
       AppMethodBeat.o(94206);
       return paramString;
     } while (!((String)localObject1).equals("Boolean"));
-    paramString = paramString.hsy;
+    paramString = paramString.hvm;
     if (paramString == null) {
-      p.gfZ();
+      p.gkB();
     }
     paramString = c.e(paramString, Boolean.TYPE);
     AppMethodBeat.o(94206);

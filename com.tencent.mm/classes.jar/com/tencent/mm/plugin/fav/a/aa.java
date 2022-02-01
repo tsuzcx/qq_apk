@@ -13,13 +13,13 @@ public abstract interface aa
   
   public abstract boolean a(j paramj, String... paramVarArgs);
   
-  public abstract boolean agx(String paramString);
+  public abstract boolean ahu(String paramString);
   
   public abstract ArrayList<Long> b(List<String> paramList1, List<String> paramList2, List<Integer> paramList);
   
-  public abstract void vG(long paramLong);
+  public abstract void vW(long paramLong);
   
-  public abstract j vH(long paramLong);
+  public abstract j vX(long paramLong);
 }
 
 

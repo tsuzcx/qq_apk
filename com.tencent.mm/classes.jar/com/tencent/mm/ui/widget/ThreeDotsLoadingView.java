@@ -16,29 +16,29 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.widget.l.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public class ThreeDotsLoadingView
   extends FrameLayout
 {
-  private static int KTR = -16777216;
+  private static int Lqp = -16777216;
   private boolean FH;
-  private int KTS;
-  private boolean KTT;
-  private ViewGroup KTU;
-  private ImageView KTV;
-  private ImageView KTW;
-  private ImageView KTX;
-  private final Runnable KTY;
+  private int Lqq;
+  private boolean Lqr;
+  private ViewGroup Lqs;
+  private ImageView Lqt;
+  private ImageView Lqu;
+  private ImageView Lqv;
+  private final Runnable Lqw;
   
   public ThreeDotsLoadingView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(131603);
-    this.KTS = KTR;
+    this.Lqq = Lqp;
     this.FH = false;
-    this.KTT = false;
-    this.KTY = new Runnable()
+    this.Lqr = false;
+    this.Lqw = new Runnable()
     {
       public final void run()
       {
@@ -58,10 +58,10 @@ public class ThreeDotsLoadingView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(131604);
-    this.KTS = KTR;
+    this.Lqq = Lqp;
     this.FH = false;
-    this.KTT = false;
-    this.KTY = new Runnable()
+    this.Lqr = false;
+    this.Lqw = new Runnable()
     {
       public final void run()
       {
@@ -82,7 +82,7 @@ public class ThreeDotsLoadingView
     int i = 0;
     AppMethodBeat.i(131612);
     AnimationDrawable localAnimationDrawable = new AnimationDrawable();
-    ad.i("ThreeDotsLoadingView", "AnimationDrawable hash:" + localAnimationDrawable.hashCode());
+    ae.i("ThreeDotsLoadingView", "AnimationDrawable hash:" + localAnimationDrawable.hashCode());
     localAnimationDrawable.setOneShot(false);
     while (i < 3)
     {
@@ -93,31 +93,31 @@ public class ThreeDotsLoadingView
     return localAnimationDrawable;
   }
   
-  private void fLL()
+  private void fQf()
   {
     AppMethodBeat.i(131611);
-    this.KTV.setImageDrawable(n(this.KTS, 0.5F));
-    this.KTW.setImageDrawable(n(this.KTS, 0.4F));
-    this.KTX.setImageDrawable(n(this.KTS, 0.3F));
+    this.Lqt.setImageDrawable(n(this.Lqq, 0.5F));
+    this.Lqu.setImageDrawable(n(this.Lqq, 0.4F));
+    this.Lqv.setImageDrawable(n(this.Lqq, 0.3F));
     AppMethodBeat.o(131611);
   }
   
   private void init(Context paramContext, AttributeSet paramAttributeSet)
   {
     AppMethodBeat.i(131605);
-    this.KTU = ((ViewGroup)LayoutInflater.from(paramContext).inflate(2131494574, this, true));
-    KTR = paramContext.getResources().getColor(2131100018);
-    this.KTS = KTR;
-    this.KTV = ((ImageView)this.KTU.findViewById(2131301495));
-    this.KTW = ((ImageView)this.KTU.findViewById(2131301496));
-    this.KTX = ((ImageView)this.KTU.findViewById(2131301497));
+    this.Lqs = ((ViewGroup)LayoutInflater.from(paramContext).inflate(2131494574, this, true));
+    Lqp = paramContext.getResources().getColor(2131100018);
+    this.Lqq = Lqp;
+    this.Lqt = ((ImageView)this.Lqs.findViewById(2131301495));
+    this.Lqu = ((ImageView)this.Lqs.findViewById(2131301496));
+    this.Lqv = ((ImageView)this.Lqs.findViewById(2131301497));
     if (paramAttributeSet != null)
     {
       paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, l.a.ThreeDotsLoadingView);
-      this.KTS = paramContext.getColor(0, KTR);
+      this.Lqq = paramContext.getColor(0, Lqp);
       paramContext.recycle();
     }
-    fLL();
+    fQf();
     AppMethodBeat.o(131605);
   }
   
@@ -133,12 +133,12 @@ public class ThreeDotsLoadingView
     return localShapeDrawable;
   }
   
-  public final void fLJ()
+  public final void fQd()
   {
     AppMethodBeat.i(131609);
     if (!t.aC(this))
     {
-      this.KTT = true;
+      this.Lqr = true;
       AppMethodBeat.o(131609);
       return;
     }
@@ -148,27 +148,27 @@ public class ThreeDotsLoadingView
       return;
     }
     this.FH = true;
-    fLL();
-    postDelayed(this.KTY, 300L);
+    fQf();
+    postDelayed(this.Lqw, 300L);
     AppMethodBeat.o(131609);
   }
   
-  public final void fLK()
+  public final void fQe()
   {
     AppMethodBeat.i(131610);
-    this.KTT = false;
+    this.Lqr = false;
     if (!this.FH)
     {
       AppMethodBeat.o(131610);
       return;
     }
     this.FH = false;
-    removeCallbacks(this.KTY);
-    if ((this.KTV.getDrawable() instanceof AnimationDrawable))
+    removeCallbacks(this.Lqw);
+    if ((this.Lqt.getDrawable() instanceof AnimationDrawable))
     {
-      ((AnimationDrawable)this.KTV.getDrawable()).stop();
-      ((AnimationDrawable)this.KTW.getDrawable()).stop();
-      ((AnimationDrawable)this.KTX.getDrawable()).stop();
+      ((AnimationDrawable)this.Lqt.getDrawable()).stop();
+      ((AnimationDrawable)this.Lqu.getDrawable()).stop();
+      ((AnimationDrawable)this.Lqv.getDrawable()).stop();
     }
     AppMethodBeat.o(131610);
   }
@@ -177,10 +177,10 @@ public class ThreeDotsLoadingView
   {
     AppMethodBeat.i(131607);
     super.onAttachedToWindow();
-    if (this.KTT)
+    if (this.Lqr)
     {
-      this.KTT = false;
-      fLJ();
+      this.Lqr = false;
+      fQd();
     }
     AppMethodBeat.o(131607);
   }
@@ -188,9 +188,9 @@ public class ThreeDotsLoadingView
   public void setAlpha(float paramFloat)
   {
     AppMethodBeat.i(131608);
-    this.KTV.setAlpha(paramFloat);
-    this.KTW.setAlpha(paramFloat);
-    this.KTX.setAlpha(paramFloat);
+    this.Lqt.setAlpha(paramFloat);
+    this.Lqu.setAlpha(paramFloat);
+    this.Lqv.setAlpha(paramFloat);
     if (getBackground() != null) {
       getBackground().setAlpha(Math.round(255.0F * paramFloat));
     }
@@ -201,7 +201,7 @@ public class ThreeDotsLoadingView
   {
     AppMethodBeat.i(131606);
     if ((8 == paramInt) || (4 == paramInt)) {
-      fLK();
+      fQe();
     }
     super.setVisibility(paramInt);
     AppMethodBeat.o(131606);

@@ -1,52 +1,100 @@
 package com.tencent.mm.al;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.mm.g.c.aj;
+import com.tencent.mm.sdk.e.c.a;
+import java.lang.reflect.Field;
+import java.util.Map;
 
-public abstract interface d
-  extends e
+public final class d
+  extends aj
 {
-  public abstract int adG();
+  protected static c.a info;
   
-  public abstract int adH();
-  
-  public static final class a
+  static
   {
-    private static ConcurrentHashMap<Object, d> hNR;
-    
-    static
-    {
-      AppMethodBeat.i(43001);
-      hNR = new ConcurrentHashMap();
-      AppMethodBeat.o(43001);
-    }
-    
-    public static void a(d paramd)
-    {
-      AppMethodBeat.i(42998);
-      ad.i("MicroMsg.IFunctionMessageExtension.Factory", "registerExtensionFor %s, %s", new Object[] { Integer.valueOf(paramd.adG()), Integer.valueOf(paramd.adH()) });
-      hNR.put(Integer.valueOf(paramd.adH()), paramd);
-      e.d.a(Integer.valueOf(paramd.adG()), paramd);
-      AppMethodBeat.o(42998);
-    }
-    
-    public static void b(d paramd)
-    {
-      AppMethodBeat.i(42999);
-      ad.i("MicroMsg.IFunctionMessageExtension.Factory", "unregisterExtensionFor %s, %s", new Object[] { Integer.valueOf(paramd.adG()), Integer.valueOf(paramd.adH()) });
-      hNR.remove(Integer.valueOf(paramd.adH()));
-      e.d.b(Integer.valueOf(paramd.adG()), paramd);
-      AppMethodBeat.o(42999);
-    }
-    
-    public static d bZ(Object paramObject)
-    {
-      AppMethodBeat.i(43000);
-      paramObject = (d)hNR.get(paramObject);
-      AppMethodBeat.o(43000);
-      return paramObject;
-    }
+    AppMethodBeat.i(123984);
+    c.a locala = new c.a();
+    locala.IBL = new Field[17];
+    locala.columns = new String[18];
+    StringBuilder localStringBuilder = new StringBuilder();
+    locala.columns[0] = "userName";
+    locala.IBN.put("userName", "TEXT PRIMARY KEY ");
+    localStringBuilder.append(" userName TEXT PRIMARY KEY ");
+    localStringBuilder.append(", ");
+    locala.IBM = "userName";
+    locala.columns[1] = "qyUin";
+    locala.IBN.put("qyUin", "INTEGER");
+    localStringBuilder.append(" qyUin INTEGER");
+    localStringBuilder.append(", ");
+    locala.columns[2] = "userUin";
+    locala.IBN.put("userUin", "INTEGER");
+    localStringBuilder.append(" userUin INTEGER");
+    localStringBuilder.append(", ");
+    locala.columns[3] = "userFlag";
+    locala.IBN.put("userFlag", "INTEGER");
+    localStringBuilder.append(" userFlag INTEGER");
+    localStringBuilder.append(", ");
+    locala.columns[4] = "wwExposeTimes";
+    locala.IBN.put("wwExposeTimes", "INTEGER");
+    localStringBuilder.append(" wwExposeTimes INTEGER");
+    localStringBuilder.append(", ");
+    locala.columns[5] = "wwMaxExposeTimes";
+    locala.IBN.put("wwMaxExposeTimes", "INTEGER");
+    localStringBuilder.append(" wwMaxExposeTimes INTEGER");
+    localStringBuilder.append(", ");
+    locala.columns[6] = "wwCorpId";
+    locala.IBN.put("wwCorpId", "LONG");
+    localStringBuilder.append(" wwCorpId LONG");
+    localStringBuilder.append(", ");
+    locala.columns[7] = "wwUserVid";
+    locala.IBN.put("wwUserVid", "LONG");
+    localStringBuilder.append(" wwUserVid LONG");
+    localStringBuilder.append(", ");
+    locala.columns[8] = "userType";
+    locala.IBN.put("userType", "INTEGER");
+    localStringBuilder.append(" userType INTEGER");
+    localStringBuilder.append(", ");
+    locala.columns[9] = "chatOpen";
+    locala.IBN.put("chatOpen", "INTEGER");
+    localStringBuilder.append(" chatOpen INTEGER");
+    localStringBuilder.append(", ");
+    locala.columns[10] = "wwUnreadCnt";
+    locala.IBN.put("wwUnreadCnt", "INTEGER default '0' ");
+    localStringBuilder.append(" wwUnreadCnt INTEGER default '0' ");
+    localStringBuilder.append(", ");
+    locala.columns[11] = "show_confirm";
+    locala.IBN.put("show_confirm", "INTEGER");
+    localStringBuilder.append(" show_confirm INTEGER");
+    localStringBuilder.append(", ");
+    locala.columns[12] = "use_preset_banner_tips";
+    locala.IBN.put("use_preset_banner_tips", "INTEGER");
+    localStringBuilder.append(" use_preset_banner_tips INTEGER");
+    localStringBuilder.append(", ");
+    locala.columns[13] = "hide_create_chat";
+    locala.IBN.put("hide_create_chat", "INTEGER");
+    localStringBuilder.append(" hide_create_chat INTEGER");
+    localStringBuilder.append(", ");
+    locala.columns[14] = "hide_mod_chat_member";
+    locala.IBN.put("hide_mod_chat_member", "INTEGER");
+    localStringBuilder.append(" hide_mod_chat_member INTEGER");
+    localStringBuilder.append(", ");
+    locala.columns[15] = "hide_colleage_invite";
+    locala.IBN.put("hide_colleage_invite", "INTEGER default 'true' ");
+    localStringBuilder.append(" hide_colleage_invite INTEGER default 'true' ");
+    localStringBuilder.append(", ");
+    locala.columns[16] = "raw_attrs";
+    locala.IBN.put("raw_attrs", "BLOB");
+    localStringBuilder.append(" raw_attrs BLOB");
+    locala.columns[17] = "rowid";
+    locala.sql = localStringBuilder.toString();
+    info = locala;
+    AppMethodBeat.o(123984);
+  }
+  
+  public final c.a getDBInfo()
+  {
+    return info;
   }
 }
 

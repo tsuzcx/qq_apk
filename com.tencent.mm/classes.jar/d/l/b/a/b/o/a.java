@@ -33,7 +33,7 @@ public final class a
     return paramIterable;
   }
   
-  public static final <K, V> HashMap<K, V> als(int paramInt)
+  public static final <K, V> HashMap<K, V> amc(int paramInt)
   {
     AppMethodBeat.i(61344);
     HashMap localHashMap = new HashMap(ge(paramInt));
@@ -41,7 +41,7 @@ public final class a
     return localHashMap;
   }
   
-  public static final <E> HashSet<E> alt(int paramInt)
+  public static final <E> HashSet<E> amd(int paramInt)
   {
     AppMethodBeat.i(61345);
     HashSet localHashSet = new HashSet(ge(paramInt));
@@ -49,7 +49,7 @@ public final class a
     return localHashSet;
   }
   
-  public static final <T> List<T> bc(ArrayList<T> paramArrayList)
+  public static final <T> List<T> bd(ArrayList<T> paramArrayList)
   {
     AppMethodBeat.i(61346);
     p.h(paramArrayList, "$this$compact");
@@ -61,11 +61,11 @@ public final class a
       AppMethodBeat.o(61346);
       return paramArrayList;
     case 0: 
-      paramArrayList = (List)v.MKE;
+      paramArrayList = (List)v.NhH;
       AppMethodBeat.o(61346);
       return paramArrayList;
     }
-    paramArrayList = j.listOf(j.jc((List)paramArrayList));
+    paramArrayList = j.listOf(j.jl((List)paramArrayList));
     AppMethodBeat.o(61346);
     return paramArrayList;
   }
@@ -90,7 +90,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.o.a
  * JD-Core Version:    0.7.0.1
  */

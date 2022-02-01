@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.setting.ui.setting;
 
 import android.view.MenuItem;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bi.e;
-import com.tencent.mm.bs.d;
-import com.tencent.mm.s.a;
+import com.tencent.mm.bh.e;
+import com.tencent.mm.br.d;
+import com.tencent.mm.r.a;
 import com.tencent.mm.ui.base.n.e;
 
 final class SelfQRCodeUI$2
@@ -14,29 +14,29 @@ final class SelfQRCodeUI$2
   
   public final void onMMMenuItemSelected(MenuItem paramMenuItem, int paramInt)
   {
-    AppMethodBeat.i(220945);
+    AppMethodBeat.i(190307);
     switch (paramMenuItem.getItemId())
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(220945);
+      AppMethodBeat.o(190307);
       return;
-      SelfQRCodeUI.g(this.yEJ);
-      AppMethodBeat.o(220945);
+      SelfQRCodeUI.g(this.yUO);
+      AppMethodBeat.o(190307);
       return;
-      SelfQRCodeUI.a(this.yEJ, 0);
-      AppMethodBeat.o(220945);
+      SelfQRCodeUI.a(this.yUO, 0);
+      AppMethodBeat.o(190307);
       return;
-      if (!a.n(this.yEJ.getContext(), true))
+      if (!a.n(this.yUO.getContext(), true))
       {
-        this.yEJ.getContext();
-        if ((!e.aMh()) && (!a.p(this.yEJ.getContext(), true)))
+        this.yUO.getContext();
+        if ((!e.aME()) && (!a.p(this.yUO.getContext(), true)))
         {
-          d.Q(this.yEJ.getContext(), "scanner", ".ui.BaseScanUI");
-          AppMethodBeat.o(220945);
+          d.Q(this.yUO.getContext(), "scanner", ".ui.BaseScanUI");
+          AppMethodBeat.o(190307);
           return;
-          SelfQRCodeUI.h(this.yEJ);
+          SelfQRCodeUI.h(this.yUO);
         }
       }
     }

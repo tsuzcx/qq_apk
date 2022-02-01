@@ -3,25 +3,25 @@ package com.tencent.mm.hardcoder;
 public final class j
   extends h
 {
-  public final boolean dIU;
-  public final boolean gwi;
+  public final boolean dKi;
+  public final boolean gyP;
   public final int key;
   public final int value;
   
   public j(int paramInt)
   {
-    this.gwi = false;
+    this.gyP = false;
     this.key = paramInt;
     this.value = 1;
-    this.dIU = false;
+    this.dKi = false;
   }
   
   public j(boolean paramBoolean1, int paramInt1, int paramInt2, boolean paramBoolean2)
   {
-    this.gwi = paramBoolean1;
+    this.gyP = paramBoolean1;
     this.key = paramInt1;
     this.value = paramInt2;
-    this.dIU = paramBoolean2;
+    this.dKi = paramBoolean2;
   }
 }
 

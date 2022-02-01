@@ -15,54 +15,54 @@ import android.view.WindowManager.LayoutParams;
 import android.widget.RelativeLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aq;
 import d.g.b.p;
 import d.l;
 import d.v;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/live/core/mini/LiveMiniView;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "currentState", "", "mAnimationRunnable", "com/tencent/mm/live/core/mini/LiveMiniView$mAnimationRunnable$1", "Lcom/tencent/mm/live/core/mini/LiveMiniView$mAnimationRunnable$1;", "mAnimationStartPos", "Landroid/graphics/Point;", "mAnimationTargetPos", "mFingerPosOnDown", "Landroid/graphics/PointF;", "mOnClickListener", "Landroid/view/View$OnClickListener;", "getMOnClickListener", "()Landroid/view/View$OnClickListener;", "setMOnClickListener", "(Landroid/view/View$OnClickListener;)V", "mScreenResolution", "mStartTime", "", "mUIHandler", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "mViewPosOnDown", "mWindowManager", "Landroid/view/WindowManager;", "stateTextView", "Landroid/widget/TextView;", "addStateView", "", "onAnimationBegin", "onAnimationEnd", "onMoveStop", "onTouchEvent", "", "event", "Landroid/view/MotionEvent;", "startAbsorbAnimation", "x", "", "y", "updateState", "state", "updateWindowPosition", "", "Companion", "plugin-core_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/live/core/mini/LiveMiniView;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "currentState", "", "mAnimationRunnable", "com/tencent/mm/live/core/mini/LiveMiniView$mAnimationRunnable$1", "Lcom/tencent/mm/live/core/mini/LiveMiniView$mAnimationRunnable$1;", "mAnimationStartPos", "Landroid/graphics/Point;", "mAnimationTargetPos", "mFingerPosOnDown", "Landroid/graphics/PointF;", "mOnClickListener", "Landroid/view/View$OnClickListener;", "getMOnClickListener", "()Landroid/view/View$OnClickListener;", "setMOnClickListener", "(Landroid/view/View$OnClickListener;)V", "mScreenResolution", "mStartTime", "", "mUIHandler", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "mViewPosOnDown", "mWindowManager", "Landroid/view/WindowManager;", "stateTextView", "Landroid/widget/TextView;", "addStateView", "", "onAnimationBegin", "onAnimationEnd", "onMoveStop", "onTouchEvent", "", "event", "Landroid/view/MotionEvent;", "startAbsorbAnimation", "x", "", "y", "updateState", "state", "updateWindowPosition", "", "Companion", "plugin-core_release"})
 public final class LiveMiniView
   extends RelativeLayout
 {
-  public static final LiveMiniView.a gKF;
-  private final Point gKA;
-  private Point gKB;
-  private WindowManager gKC;
-  private ap gKD;
-  private final b gKE;
-  private final PointF gKx;
-  private final Point gKy;
-  private final Point gKz;
+  public static final LiveMiniView.a gNo;
+  private final PointF gNg;
+  private final Point gNh;
+  private final Point gNi;
+  private final Point gNj;
+  private Point gNk;
+  private WindowManager gNl;
+  private aq gNm;
+  private final b gNn;
   private View.OnClickListener mOnClickListener;
   private long mStartTime;
   
   static
   {
-    AppMethodBeat.i(216923);
-    gKF = new LiveMiniView.a((byte)0);
-    AppMethodBeat.o(216923);
+    AppMethodBeat.i(196935);
+    gNo = new LiveMiniView.a((byte)0);
+    AppMethodBeat.o(196935);
   }
   
   public LiveMiniView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(216922);
-    this.gKx = new PointF();
-    this.gKy = new Point();
-    this.gKz = new Point();
-    this.gKA = new Point();
-    this.gKD = new ap();
-    this.gKE = new b(this);
+    AppMethodBeat.i(196934);
+    this.gNg = new PointF();
+    this.gNh = new Point();
+    this.gNi = new Point();
+    this.gNj = new Point();
+    this.gNm = new aq();
+    this.gNn = new b(this);
     paramAttributeSet = paramContext.getSystemService("window");
     if (paramAttributeSet == null)
     {
       paramContext = new v("null cannot be cast to non-null type android.view.WindowManager");
-      AppMethodBeat.o(216922);
+      AppMethodBeat.o(196934);
       throw paramContext;
     }
-    this.gKC = ((WindowManager)paramAttributeSet);
-    paramAttributeSet = this.gKC;
+    this.gNl = ((WindowManager)paramAttributeSet);
+    paramAttributeSet = this.gNl;
     if (paramAttributeSet != null)
     {
       paramAttributeSet = paramAttributeSet.getDefaultDisplay();
@@ -70,7 +70,7 @@ public final class LiveMiniView
     }
     for (int i = paramAttributeSet.getWidth();; i = 0)
     {
-      paramAttributeSet = this.gKC;
+      paramAttributeSet = this.gNl;
       int j = k;
       if (paramAttributeSet != null)
       {
@@ -80,50 +80,50 @@ public final class LiveMiniView
           j = paramAttributeSet.getHeight();
         }
       }
-      this.gKB = new Point(i, j);
+      this.gNk = new Point(i, j);
       setBackgroundColor(paramContext.getResources().getColor(2131100017));
-      AppMethodBeat.o(216922);
+      AppMethodBeat.o(196934);
       return;
     }
   }
   
   private final void cR(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(216920);
-    if (this.gKC != null)
+    AppMethodBeat.i(196932);
+    if (this.gNl != null)
     {
       Object localObject = getLayoutParams();
       if (localObject == null)
       {
         localObject = new v("null cannot be cast to non-null type android.view.WindowManager.LayoutParams");
-        AppMethodBeat.o(216920);
+        AppMethodBeat.o(196932);
         throw ((Throwable)localObject);
       }
       localObject = (WindowManager.LayoutParams)localObject;
       ((WindowManager.LayoutParams)localObject).x = paramInt1;
       ((WindowManager.LayoutParams)localObject).y = paramInt2;
-      ad.d("MicroMsg.LiveCoreMini", "updateWindowPosition, x: %d, y: %d", new Object[] { Integer.valueOf(((WindowManager.LayoutParams)localObject).x), Integer.valueOf(((WindowManager.LayoutParams)localObject).y) });
+      ae.d("MicroMsg.LiveCoreMini", "updateWindowPosition, x: %d, y: %d", new Object[] { Integer.valueOf(((WindowManager.LayoutParams)localObject).x), Integer.valueOf(((WindowManager.LayoutParams)localObject).y) });
       try
       {
         if (getParent() != null)
         {
-          WindowManager localWindowManager = this.gKC;
+          WindowManager localWindowManager = this.gNl;
           if (localWindowManager != null)
           {
             localWindowManager.updateViewLayout((View)this, (ViewGroup.LayoutParams)localObject);
-            AppMethodBeat.o(216920);
+            AppMethodBeat.o(196932);
             return;
           }
-          AppMethodBeat.o(216920);
+          AppMethodBeat.o(196932);
           return;
         }
       }
       catch (Throwable localThrowable)
       {
-        ad.printErrStackTrace("MicroMsg.LiveCoreMini", localThrowable, "", new Object[0]);
+        ae.printErrStackTrace("MicroMsg.LiveCoreMini", localThrowable, "", new Object[0]);
       }
     }
-    AppMethodBeat.o(216920);
+    AppMethodBeat.o(196932);
   }
   
   public final View.OnClickListener getMOnClickListener()
@@ -133,15 +133,15 @@ public final class LiveMiniView
   
   protected final void onAnimationEnd()
   {
-    AppMethodBeat.i(216921);
+    AppMethodBeat.i(196933);
     super.onAnimationEnd();
-    AppMethodBeat.o(216921);
+    AppMethodBeat.o(196933);
   }
   
   public final boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
     int k = 0;
-    AppMethodBeat.i(216919);
+    AppMethodBeat.i(196931);
     p.h(paramMotionEvent, "event");
     switch (paramMotionEvent.getAction())
     {
@@ -150,21 +150,21 @@ public final class LiveMiniView
     case 2: 
       for (;;)
       {
-        AppMethodBeat.o(216919);
+        AppMethodBeat.o(196931);
         return true;
-        this.gKx.x = paramMotionEvent.getRawX();
-        this.gKx.y = paramMotionEvent.getRawY();
+        this.gNg.x = paramMotionEvent.getRawX();
+        this.gNg.y = paramMotionEvent.getRawY();
         paramMotionEvent = getLayoutParams();
         if (paramMotionEvent == null)
         {
           paramMotionEvent = new v("null cannot be cast to non-null type android.view.WindowManager.LayoutParams");
-          AppMethodBeat.o(216919);
+          AppMethodBeat.o(196931);
           throw paramMotionEvent;
         }
         paramMotionEvent = (WindowManager.LayoutParams)paramMotionEvent;
-        this.gKy.x = paramMotionEvent.x;
-        this.gKy.y = paramMotionEvent.y;
-        paramMotionEvent = this.gKC;
+        this.gNh.x = paramMotionEvent.x;
+        this.gNh.y = paramMotionEvent.y;
+        paramMotionEvent = this.gNl;
         if (paramMotionEvent != null)
         {
           paramMotionEvent = paramMotionEvent.getDefaultDisplay();
@@ -172,7 +172,7 @@ public final class LiveMiniView
         }
         for (i = paramMotionEvent.getWidth();; i = 0)
         {
-          paramMotionEvent = this.gKC;
+          paramMotionEvent = this.gNl;
           int j = k;
           if (paramMotionEvent != null)
           {
@@ -182,13 +182,13 @@ public final class LiveMiniView
               j = paramMotionEvent.getHeight();
             }
           }
-          this.gKB = new Point(i, j);
+          this.gNk = new Point(i, j);
           break;
         }
-        cR((int)Math.max(Math.min(this.gKy.x + paramMotionEvent.getRawX() - this.gKx.x, this.gKB.x), 0.0F), (int)Math.max(Math.min(this.gKy.y + paramMotionEvent.getRawY() - this.gKx.y, this.gKB.y), 0.0F));
+        cR((int)Math.max(Math.min(this.gNh.x + paramMotionEvent.getRawX() - this.gNg.x, this.gNk.x), 0.0F), (int)Math.max(Math.min(this.gNh.y + paramMotionEvent.getRawY() - this.gNg.y, this.gNk.y), 0.0F));
       }
     }
-    if ((Math.abs(paramMotionEvent.getRawX() - this.gKx.x) < BackwardSupportUtil.b.g(getContext(), 3.0F)) && (Math.abs(paramMotionEvent.getRawY() - this.gKx.y) < BackwardSupportUtil.b.g(getContext(), 3.0F)) && (this.mOnClickListener != null))
+    if ((Math.abs(paramMotionEvent.getRawX() - this.gNg.x) < BackwardSupportUtil.b.h(getContext(), 3.0F)) && (Math.abs(paramMotionEvent.getRawY() - this.gNg.y) < BackwardSupportUtil.b.h(getContext(), 3.0F)) && (this.mOnClickListener != null))
     {
       View.OnClickListener localOnClickListener = this.mOnClickListener;
       if (localOnClickListener != null) {
@@ -197,15 +197,15 @@ public final class LiveMiniView
     }
     float f1 = paramMotionEvent.getRawX();
     float f2 = paramMotionEvent.getRawY();
-    this.gKz.x = ((int)Math.max(Math.min(f1 + this.gKy.x - this.gKx.x, this.gKB.x), 0.0F));
-    this.gKz.y = ((int)Math.max(Math.min(f2 + this.gKy.y - this.gKx.y, this.gKB.y), 0.0F));
-    int i = BackwardSupportUtil.b.g(getContext(), 5.0F);
-    if (this.gKz.x + getWidth() / 2 <= this.gKB.x / 2) {}
-    for (this.gKA.x = i;; this.gKA.x = (this.gKB.x - getWidth() - i))
+    this.gNi.x = ((int)Math.max(Math.min(f1 + this.gNh.x - this.gNg.x, this.gNk.x), 0.0F));
+    this.gNi.y = ((int)Math.max(Math.min(f2 + this.gNh.y - this.gNg.y, this.gNk.y), 0.0F));
+    int i = BackwardSupportUtil.b.h(getContext(), 5.0F);
+    if (this.gNi.x + getWidth() / 2 <= this.gNk.x / 2) {}
+    for (this.gNj.x = i;; this.gNj.x = (this.gNk.x - getWidth() - i))
     {
-      this.gKA.y = this.gKz.y;
+      this.gNj.y = this.gNi.y;
       this.mStartTime = System.currentTimeMillis();
-      this.gKD.postDelayed((Runnable)this.gKE, 5L);
+      this.gNm.postDelayed((Runnable)this.gNn, 5L);
       break;
     }
   }
@@ -215,34 +215,34 @@ public final class LiveMiniView
     this.mOnClickListener = paramOnClickListener;
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/live/core/mini/LiveMiniView$mAnimationRunnable$1", "Ljava/lang/Runnable;", "run", "", "plugin-core_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/live/core/mini/LiveMiniView$mAnimationRunnable$1", "Ljava/lang/Runnable;", "run", "", "plugin-core_release"})
   public static final class b
     implements Runnable
   {
     public final void run()
     {
-      AppMethodBeat.i(216918);
-      float f = (float)(System.currentTimeMillis() - LiveMiniView.a(this.gKG)) * 1.0F / 200.0F;
+      AppMethodBeat.i(196930);
+      float f = (float)(System.currentTimeMillis() - LiveMiniView.a(this.gNp)) * 1.0F / 200.0F;
       if (f <= 1.0F)
       {
-        LiveMiniView.b(this.gKG).postDelayed((Runnable)this, 5L);
-        LiveMiniView localLiveMiniView = this.gKG;
-        int i = LiveMiniView.c(this.gKG).x;
-        int j = (int)((LiveMiniView.d(this.gKG).x * 1.0F - LiveMiniView.c(this.gKG).x) * f);
-        int k = LiveMiniView.c(this.gKG).y;
-        LiveMiniView.a(localLiveMiniView, i + j, (int)(f * (LiveMiniView.d(this.gKG).y * 1.0F - LiveMiniView.c(this.gKG).y)) + k);
-        AppMethodBeat.o(216918);
+        LiveMiniView.b(this.gNp).postDelayed((Runnable)this, 5L);
+        LiveMiniView localLiveMiniView = this.gNp;
+        int i = LiveMiniView.c(this.gNp).x;
+        int j = (int)((LiveMiniView.d(this.gNp).x * 1.0F - LiveMiniView.c(this.gNp).x) * f);
+        int k = LiveMiniView.c(this.gNp).y;
+        LiveMiniView.a(localLiveMiniView, i + j, (int)(f * (LiveMiniView.d(this.gNp).y * 1.0F - LiveMiniView.c(this.gNp).y)) + k);
+        AppMethodBeat.o(196930);
         return;
       }
-      LiveMiniView.a(this.gKG, LiveMiniView.d(this.gKG).x, LiveMiniView.d(this.gKG).y);
-      this.gKG.onAnimationEnd();
-      AppMethodBeat.o(216918);
+      LiveMiniView.a(this.gNp, LiveMiniView.d(this.gNp).x, LiveMiniView.d(this.gNp).y);
+      this.gNp.onAnimationEnd();
+      AppMethodBeat.o(196930);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.live.core.mini.LiveMiniView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,8 @@
 package com.tencent.mm.model.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.io.ByteArrayInputStream;
 import java.util.HashMap;
 import javax.xml.parsers.DocumentBuilder;
@@ -16,38 +16,38 @@ import org.xml.sax.InputSource;
 
 public final class c
 {
-  b hIE = null;
-  b hIF = null;
+  b hLx = null;
+  b hLy = null;
   
-  public final e BE(String paramString)
+  public final e Cg(String paramString)
   {
     AppMethodBeat.i(153092);
     e locale1 = null;
-    if (this.hIE != null) {
-      locale1 = this.hIE.BE(paramString);
+    if (this.hLx != null) {
+      locale1 = this.hLx.Cg(paramString);
     }
     e locale2 = locale1;
     if (locale1 == null)
     {
       locale2 = locale1;
-      if (this.hIF != null) {
-        locale2 = this.hIF.BE(paramString);
+      if (this.hLy != null) {
+        locale2 = this.hLy.Cg(paramString);
       }
     }
     AppMethodBeat.o(153092);
     return locale2;
   }
   
-  final void BF(String paramString)
+  final void Ch(String paramString)
   {
     AppMethodBeat.i(153091);
-    if (bt.isNullOrNil(paramString))
+    if (bu.isNullOrNil(paramString))
     {
-      ad.w("MicroMsg.abtest.AbTestManager", "[Abtest] parse xml faild. xml is null.");
+      ae.w("MicroMsg.abtest.AbTestManager", "[Abtest] parse xml faild. xml is null.");
       AppMethodBeat.o(153091);
       return;
     }
-    ad.i("MicroMsg.abtest.AbTestManager", "[Abtest] parseXML content:%s", new Object[] { paramString });
+    ae.i("MicroMsg.abtest.AbTestManager", "[Abtest] parseXML content:%s", new Object[] { paramString });
     Object localObject1 = DocumentBuilderFactory.newInstance();
     for (;;)
     {
@@ -85,61 +85,61 @@ public final class c
             if (localObject5 != null)
             {
               localObject5 = ((Node)localObject5).getNodeValue();
-              ad.d("MicroMsg.abtest.AbTestManager", "[Abtest] idValue:%s", new Object[] { localObject5 });
+              ae.d("MicroMsg.abtest.AbTestManager", "[Abtest] idValue:%s", new Object[] { localObject5 });
               ((e)localObject2).id = ((String)localObject5);
             }
             localObject4 = ((NamedNodeMap)localObject4).getNamedItem("reportid");
             if (localObject4 != null)
             {
               localObject4 = ((Node)localObject4).getNodeValue();
-              ad.d("MicroMsg.abtest.AbTestManager", "[Abtest] reportIdValue:%s", new Object[] { localObject4 });
-              ((e)localObject2).hIG = ((String)localObject4);
+              ae.d("MicroMsg.abtest.AbTestManager", "[Abtest] reportIdValue:%s", new Object[] { localObject4 });
+              ((e)localObject2).hLz = ((String)localObject4);
             }
           }
           localObject3 = ((Node)localObject3).getTextContent();
-          ad.d("MicroMsg.abtest.AbTestManager", "[Abtest] casePointContent:%s", new Object[] { localObject3 });
+          ae.d("MicroMsg.abtest.AbTestManager", "[Abtest] casePointContent:%s", new Object[] { localObject3 });
           ((e)localObject2).value = ((String)localObject3);
           localObject3 = ((e)localObject2).id;
-          ((b)localObject1).hID.put(localObject3, localObject2);
+          ((b)localObject1).hLw.put(localObject3, localObject2);
         }
         else if ((localObject3 != null) && (((Node)localObject3).getNodeName() != null) && (((Node)localObject3).getNodeName().equals("verifymd5")))
         {
           localObject2 = ((Node)localObject3).getTextContent();
-          ad.d("MicroMsg.abtest.AbTestManager", "[Abtest] verifymd5Content:%s", new Object[] { localObject2 });
-          ((b)localObject1).gjG = ((String)localObject2);
+          ae.d("MicroMsg.abtest.AbTestManager", "[Abtest] verifymd5Content:%s", new Object[] { localObject2 });
+          ((b)localObject1).glZ = ((String)localObject2);
         }
       }
       catch (Exception paramString)
       {
-        ad.e("MicroMsg.abtest.AbTestManager", "[Abtest] parseXML exception:%s", new Object[] { paramString.toString() });
+        ae.e("MicroMsg.abtest.AbTestManager", "[Abtest] parseXML exception:%s", new Object[] { paramString.toString() });
         AppMethodBeat.o(153091);
         return;
       }
       if ((localObject3 != null) && (((Node)localObject3).getNodeName() != null) && (((Node)localObject3).getNodeName().equals("testcaseid")))
       {
         localObject2 = ((Node)localObject3).getTextContent();
-        ad.d("MicroMsg.abtest.AbTestManager", "[Abtest] testcaseidContent:%s", new Object[] { localObject2 });
-        ((b)localObject1).hIA = ((String)localObject2);
+        ae.d("MicroMsg.abtest.AbTestManager", "[Abtest] testcaseidContent:%s", new Object[] { localObject2 });
+        ((b)localObject1).hLt = ((String)localObject2);
       }
       else if ((localObject3 != null) && (((Node)localObject3).getNodeName() != null) && (((Node)localObject3).getNodeName().equals("starttime")))
       {
         localObject2 = ((Node)localObject3).getTextContent();
-        ad.d("MicroMsg.abtest.AbTestManager", "[Abtest] starttimeContent:%s", new Object[] { localObject2 });
-        ((b)localObject1).hIB = ((String)localObject2);
+        ae.d("MicroMsg.abtest.AbTestManager", "[Abtest] starttimeContent:%s", new Object[] { localObject2 });
+        ((b)localObject1).hLu = ((String)localObject2);
       }
       else if ((localObject3 != null) && (((Node)localObject3).getNodeName() != null) && (((Node)localObject3).getNodeName().equals("endtime")))
       {
         localObject2 = ((Node)localObject3).getTextContent();
-        ad.d("MicroMsg.abtest.AbTestManager", "[Abtest] endtimeContent:%s", new Object[] { localObject2 });
-        ((b)localObject1).hIC = ((String)localObject2);
+        ae.d("MicroMsg.abtest.AbTestManager", "[Abtest] endtimeContent:%s", new Object[] { localObject2 });
+        ((b)localObject1).hLv = ((String)localObject2);
         break label695;
         label647:
-        if ((!bt.isNullOrNil(((b)localObject1).hIA)) && ("0".equals(((b)localObject1).hIA)))
+        if ((!bu.isNullOrNil(((b)localObject1).hLt)) && ("0".equals(((b)localObject1).hLt)))
         {
-          this.hIF = ((b)localObject1);
+          this.hLy = ((b)localObject1);
           break label702;
         }
-        this.hIE = ((b)localObject1);
+        this.hLx = ((b)localObject1);
         break label702;
         label689:
         AppMethodBeat.o(153091);
@@ -153,14 +153,14 @@ public final class c
     }
   }
   
-  public final boolean aCP()
+  public final boolean aDf()
   {
-    return this.hIE != null;
+    return this.hLx != null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.model.a.c
  * JD-Core Version:    0.7.0.1
  */

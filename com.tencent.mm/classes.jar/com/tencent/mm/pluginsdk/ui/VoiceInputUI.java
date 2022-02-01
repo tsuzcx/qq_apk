@@ -19,14 +19,14 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.i;
-import com.tencent.mm.g.a.xt;
+import com.tencent.mm.g.a.xx;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.plugin.report.kvdata.VoiceInputBehavior;
 import com.tencent.mm.plugin.report.kvdata.log_13905;
 import com.tencent.mm.pluginsdk.ui.chat.n;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.at;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.au;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.tools.h;
 import com.tencent.mm.ui.widget.MMEditText;
@@ -36,32 +36,32 @@ public class VoiceInputUI
   extends MMActivity
   implements com.tencent.mm.ui.tools.g
 {
-  private MMEditText EUB;
-  private VoiceInputFooter EUC;
-  private String EUD;
-  private long EUE;
-  private boolean EUF;
-  private boolean EUG;
-  private View.OnTouchListener EUH;
-  private MenuItem.OnMenuItemClickListener EUI;
-  private VoiceInputFooter.a EUJ;
-  boolean EUK;
-  h fQT;
+  private MMEditText FmW;
+  private VoiceInputFooter FmX;
+  private String FmY;
+  private long FmZ;
+  private boolean Fna;
+  private boolean Fnb;
+  private View.OnTouchListener Fnc;
+  private MenuItem.OnMenuItemClickListener Fnd;
+  private VoiceInputFooter.a Fne;
+  boolean Fnf;
+  h fSZ;
   private String msg;
   private int offset;
-  private Button pLF;
+  private Button pSk;
   private int textChangeCount;
   private String userCode;
-  boolean vTq;
+  boolean wfu;
   
   public VoiceInputUI()
   {
     AppMethodBeat.i(31316);
-    this.EUE = 0L;
+    this.FmZ = 0L;
     this.textChangeCount = 0;
-    this.EUF = true;
-    this.EUG = false;
-    this.EUH = new View.OnTouchListener()
+    this.Fna = true;
+    this.Fnb = false;
+    this.Fnc = new View.OnTouchListener()
     {
       public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
       {
@@ -69,7 +69,7 @@ public class VoiceInputUI
         b localb = new b();
         localb.bd(paramAnonymousView);
         localb.bd(paramAnonymousMotionEvent);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/pluginsdk/ui/VoiceInputUI$2", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahq());
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/pluginsdk/ui/VoiceInputUI$2", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahF());
         if (paramAnonymousMotionEvent.getAction() == 0) {
           VoiceInputUI.a(VoiceInputUI.this);
         }
@@ -80,49 +80,49 @@ public class VoiceInputUI
           return false;
           if (paramAnonymousMotionEvent.getAction() == 1)
           {
-            if (VoiceInputUI.b(VoiceInputUI.this).fcd())
+            if (VoiceInputUI.b(VoiceInputUI.this).ffR())
             {
               paramAnonymousView = VoiceInputUI.b(VoiceInputUI.this);
-              paramAnonymousView.fce();
+              paramAnonymousView.ffS();
               paramAnonymousView.setVisibility(8);
             }
-            if (VoiceInputUI.b(VoiceInputUI.this).edz())
+            if (VoiceInputUI.b(VoiceInputUI.this).ehg())
             {
               paramAnonymousView = VoiceInputUI.b(VoiceInputUI.this);
-              paramAnonymousView.bEF();
+              paramAnonymousView.bFx();
               paramAnonymousView.setVisibility(8);
             }
             paramAnonymousView = VoiceInputUI.b(VoiceInputUI.this);
             paramAnonymousView.setVisibility(0);
-            if (paramAnonymousView.EUd != null) {
-              paramAnonymousView.EUd.setImageResource(2131231701);
+            if (paramAnonymousView.Fmy != null) {
+              paramAnonymousView.Fmy.setImageResource(2131231701);
             }
           }
         }
       }
     };
-    this.EUI = new MenuItem.OnMenuItemClickListener()
+    this.Fnd = new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
         AppMethodBeat.i(31311);
         VoiceInputUI.c(VoiceInputUI.this).setText("");
         VoiceInputUI.d(VoiceInputUI.this);
-        VoiceInputUI.this.rE(6);
+        VoiceInputUI.this.rH(6);
         AppMethodBeat.o(31311);
         return true;
       }
     };
-    this.EUJ = new VoiceInputFooter.a()
+    this.Fne = new VoiceInputFooter.a()
     {
-      public final void fcg()
+      public final void ffU()
       {
         AppMethodBeat.i(31313);
-        VoiceInputUI.this.rE(8);
+        VoiceInputUI.this.rH(8);
         AppMethodBeat.o(31313);
       }
       
-      public final void vL(boolean paramAnonymousBoolean)
+      public final void vT(boolean paramAnonymousBoolean)
       {
         AppMethodBeat.i(31312);
         if (paramAnonymousBoolean)
@@ -135,31 +135,31 @@ public class VoiceInputUI
         AppMethodBeat.o(31312);
       }
     };
-    this.vTq = false;
-    this.EUK = false;
+    this.wfu = false;
+    this.Fnf = false;
     AppMethodBeat.o(31316);
   }
   
   private static void a(VoiceInputBehavior paramVoiceInputBehavior)
   {
     AppMethodBeat.i(31324);
-    ad.i("VoiceInputUI", "report cancel = %s send = %s click = %s longClick = %s longClickTime = %s textClick = %s textChangeCount = %s textChangeTime = %s textChangeReturn = %s voiceInputTime = %s fail = %s clear = %s smileIconClick = %s voiceIconClick = %s fullScreenVoiceLongClick = %s fullScreenVoiceLongClickTime = %s", new Object[] { Integer.valueOf(paramVoiceInputBehavior.cancel), Integer.valueOf(paramVoiceInputBehavior.send), Integer.valueOf(paramVoiceInputBehavior.click), Integer.valueOf(paramVoiceInputBehavior.longClick), Long.valueOf(paramVoiceInputBehavior.longClickTime), Integer.valueOf(paramVoiceInputBehavior.textClick), Integer.valueOf(paramVoiceInputBehavior.textChangeCount), Long.valueOf(paramVoiceInputBehavior.textChangeTime), Integer.valueOf(paramVoiceInputBehavior.textChangeReturn), Long.valueOf(paramVoiceInputBehavior.voiceInputTime), Integer.valueOf(paramVoiceInputBehavior.fail), Integer.valueOf(paramVoiceInputBehavior.clear), Integer.valueOf(paramVoiceInputBehavior.smileIconClick), Integer.valueOf(paramVoiceInputBehavior.voiceIconClick), Integer.valueOf(paramVoiceInputBehavior.fullScreenVoiceLongClick), Long.valueOf(paramVoiceInputBehavior.fullScreenVoiceLongClickTime) });
+    ae.i("VoiceInputUI", "report cancel = %s send = %s click = %s longClick = %s longClickTime = %s textClick = %s textChangeCount = %s textChangeTime = %s textChangeReturn = %s voiceInputTime = %s fail = %s clear = %s smileIconClick = %s voiceIconClick = %s fullScreenVoiceLongClick = %s fullScreenVoiceLongClickTime = %s", new Object[] { Integer.valueOf(paramVoiceInputBehavior.cancel), Integer.valueOf(paramVoiceInputBehavior.send), Integer.valueOf(paramVoiceInputBehavior.click), Integer.valueOf(paramVoiceInputBehavior.longClick), Long.valueOf(paramVoiceInputBehavior.longClickTime), Integer.valueOf(paramVoiceInputBehavior.textClick), Integer.valueOf(paramVoiceInputBehavior.textChangeCount), Long.valueOf(paramVoiceInputBehavior.textChangeTime), Integer.valueOf(paramVoiceInputBehavior.textChangeReturn), Long.valueOf(paramVoiceInputBehavior.voiceInputTime), Integer.valueOf(paramVoiceInputBehavior.fail), Integer.valueOf(paramVoiceInputBehavior.clear), Integer.valueOf(paramVoiceInputBehavior.smileIconClick), Integer.valueOf(paramVoiceInputBehavior.voiceIconClick), Integer.valueOf(paramVoiceInputBehavior.fullScreenVoiceLongClick), Long.valueOf(paramVoiceInputBehavior.fullScreenVoiceLongClickTime) });
     log_13905 locallog_13905 = new log_13905();
     locallog_13905.viOp_ = paramVoiceInputBehavior;
-    com.tencent.mm.plugin.report.service.g.yhR.c(13905, locallog_13905);
+    com.tencent.mm.plugin.report.service.g.yxI.c(13905, locallog_13905);
     AppMethodBeat.o(31324);
   }
   
-  private void ma(int paramInt)
+  private void md(int paramInt)
   {
     AppMethodBeat.i(31325);
     VoiceInputBehavior localVoiceInputBehavior = new VoiceInputBehavior();
     localVoiceInputBehavior.textChangeCount = this.textChangeCount;
     localVoiceInputBehavior.textChangeReturn = paramInt;
-    if (this.EUE != 0L)
+    if (this.FmZ != 0L)
     {
-      localVoiceInputBehavior.textChangeTime = bt.aO(this.EUE);
-      this.EUE = 0L;
+      localVoiceInputBehavior.textChangeTime = bu.aO(this.FmZ);
+      this.FmZ = 0L;
     }
     a(localVoiceInputBehavior);
     AppMethodBeat.o(31325);
@@ -180,21 +180,21 @@ public class VoiceInputUI
     {
       this.msg = paramBundle.getStringExtra("text");
       this.offset = paramBundle.getIntExtra("offset", -1);
-      this.EUD = paramBundle.getStringExtra("punctuation");
+      this.FmY = paramBundle.getStringExtra("punctuation");
       this.userCode = paramBundle.getStringExtra("userCode");
     }
-    this.EUE = bt.HI();
+    this.FmZ = bu.HQ();
     this.textChangeCount = 0;
-    this.EUG = false;
-    this.EUF = true;
-    this.EUB = ((MMEditText)findViewById(2131306489));
-    this.pLF = ((Button)findViewById(2131306488));
-    this.EUB.addTextChangedListener(new TextWatcher()
+    this.Fnb = false;
+    this.Fna = true;
+    this.FmW = ((MMEditText)findViewById(2131306489));
+    this.pSk = ((Button)findViewById(2131306488));
+    this.FmW.addTextChangedListener(new TextWatcher()
     {
       public final void afterTextChanged(Editable paramAnonymousEditable)
       {
         AppMethodBeat.i(31314);
-        ad.d("VoiceInputUI", "afterTextChanged firstTextChange:%s,textChange:%s", new Object[] { Boolean.valueOf(VoiceInputUI.f(VoiceInputUI.this)), Boolean.valueOf(VoiceInputUI.g(VoiceInputUI.this)) });
+        ae.d("VoiceInputUI", "afterTextChanged firstTextChange:%s,textChange:%s", new Object[] { Boolean.valueOf(VoiceInputUI.f(VoiceInputUI.this)), Boolean.valueOf(VoiceInputUI.g(VoiceInputUI.this)) });
         if (VoiceInputUI.f(VoiceInputUI.this))
         {
           VoiceInputUI.h(VoiceInputUI.this);
@@ -210,18 +210,18 @@ public class VoiceInputUI
       
       public final void onTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3) {}
     });
-    this.pLF.setOnClickListener(new View.OnClickListener()
+    this.pSk.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(31315);
         b localb = new b();
         localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/pluginsdk/ui/VoiceInputUI$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/pluginsdk/ui/VoiceInputUI$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
         paramAnonymousView = new VoiceInputBehavior();
         paramAnonymousView.send = 3;
         VoiceInputUI.b(paramAnonymousView);
-        VoiceInputUI.this.rE(7);
+        VoiceInputUI.this.rH(7);
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/pluginsdk/ui/VoiceInputUI$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(31315);
       }
@@ -233,55 +233,55 @@ public class VoiceInputUI
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
         AppMethodBeat.i(31309);
-        VoiceInputUI.this.rE(1);
+        VoiceInputUI.this.rH(1);
         AppMethodBeat.o(31309);
         return true;
       }
     });
-    this.EUB.setOnTouchListener(this.EUH);
-    this.EUB.aXD(this.msg);
+    this.FmW.setOnTouchListener(this.Fnc);
+    this.FmW.aZf(this.msg);
     if (this.offset != -1) {
-      this.EUB.setSelection(this.offset);
+      this.FmW.setSelection(this.offset);
     }
-    this.EUC = ((VoiceInputFooter)findViewById(2131304290));
-    VoiceInputFooter localVoiceInputFooter = this.EUC;
-    paramBundle = this.EUB;
-    String str1 = this.EUD;
+    this.FmX = ((VoiceInputFooter)findViewById(2131304290));
+    VoiceInputFooter localVoiceInputFooter = this.FmX;
+    paramBundle = this.FmW;
+    String str1 = this.FmY;
     String str2 = this.userCode;
-    localVoiceInputFooter.AiM = paramBundle;
+    localVoiceInputFooter.AzX = paramBundle;
     paramBundle.setOnClickListener(new VoiceInputFooter.1(localVoiceInputFooter));
     paramBundle.setOnEditorActionListener(new VoiceInputFooter.2(localVoiceInputFooter));
-    if (localVoiceInputFooter.EUc == null)
+    if (localVoiceInputFooter.Fmx == null)
     {
-      localVoiceInputFooter.EUc = new n(localVoiceInputFooter.getContext(), true, localVoiceInputFooter.AiM);
-      localVoiceInputFooter.EUc.setCallback(new VoiceInputFooter.6(localVoiceInputFooter));
-      localVoiceInputFooter.EUc.setPortHeightPX(i.iI(localVoiceInputFooter.getContext()));
+      localVoiceInputFooter.Fmx = new n(localVoiceInputFooter.getContext(), true, localVoiceInputFooter.AzX);
+      localVoiceInputFooter.Fmx.setCallback(new VoiceInputFooter.6(localVoiceInputFooter));
+      localVoiceInputFooter.Fmx.setPortHeightPX(i.iN(localVoiceInputFooter.getContext()));
     }
-    localVoiceInputFooter.EUc.fex();
-    n localn = localVoiceInputFooter.EUc;
-    ad.d("MicroMsg.VoiceInputPanel", "refreshHeight DISPLAY_HEIGHT_PORT_IN_PX %s,needRefreshProtHeight %s", new Object[] { Integer.valueOf(localn.EXY), Boolean.valueOf(localn.FeV) });
-    if (localn.FeV)
+    localVoiceInputFooter.Fmx.fin();
+    n localn = localVoiceInputFooter.Fmx;
+    ae.d("MicroMsg.VoiceInputPanel", "refreshHeight DISPLAY_HEIGHT_PORT_IN_PX %s,needRefreshProtHeight %s", new Object[] { Integer.valueOf(localn.Fqs), Boolean.valueOf(localn.Fxt) });
+    if (localn.Fxt)
     {
-      localn.FeV = false;
+      localn.Fxt = false;
       View localView = localn.findViewById(2131306495);
       ViewGroup.LayoutParams localLayoutParams = localView.getLayoutParams();
-      int i = localn.EXY;
+      int i = localn.Fqs;
       paramBundle = localLayoutParams;
       if (localLayoutParams == null) {
         paramBundle = new LinearLayout.LayoutParams(-1, i);
       }
       paramBundle.height = i;
       localView.setLayoutParams(paramBundle);
-      localn.fez();
+      localn.fip();
       localn.requestLayout();
     }
-    localVoiceInputFooter.EUc.setVisibility(8);
-    localVoiceInputFooter.EUc.setToUser(str2);
-    localVoiceInputFooter.EUc.setFullScreenData(str1);
-    localVoiceInputFooter.vXw.addView(localVoiceInputFooter.EUc, -1, 0);
-    this.EUC.setVoiceInputFooterListener(this.EUJ);
-    this.fQT = new h(this);
-    this.fQT.KIP = this;
+    localVoiceInputFooter.Fmx.setVisibility(8);
+    localVoiceInputFooter.Fmx.setToUser(str2);
+    localVoiceInputFooter.Fmx.setFullScreenData(str1);
+    localVoiceInputFooter.wjA.addView(localVoiceInputFooter.Fmx, -1, 0);
+    this.FmX.setVoiceInputFooterListener(this.Fne);
+    this.fSZ = new h(this);
+    this.fSZ.Lfj = this;
     AppMethodBeat.o(31317);
   }
   
@@ -296,7 +296,7 @@ public class VoiceInputUI
   {
     AppMethodBeat.i(31322);
     if ((paramKeyEvent.getKeyCode() == 4) && (paramKeyEvent.getAction() == 0)) {
-      rE(2);
+      rH(2);
     }
     boolean bool = super.onKeyDown(paramInt, paramKeyEvent);
     AppMethodBeat.o(31322);
@@ -307,7 +307,7 @@ public class VoiceInputUI
   {
     AppMethodBeat.i(31319);
     super.onPause();
-    this.fQT.close();
+    this.fSZ.close();
     AppMethodBeat.o(31319);
   }
   
@@ -315,15 +315,15 @@ public class VoiceInputUI
   {
     AppMethodBeat.i(31318);
     super.onResume();
-    this.EUB.requestFocus();
-    this.fQT.start();
+    this.FmW.requestFocus();
+    this.fSZ.start();
     AppMethodBeat.o(31318);
   }
   
   public void onSwipeBack()
   {
     AppMethodBeat.i(31321);
-    rE(3);
+    rH(3);
     super.onSwipeBack();
     AppMethodBeat.o(31321);
   }
@@ -331,61 +331,60 @@ public class VoiceInputUI
   public void onWindowFocusChanged(boolean paramBoolean)
   {
     AppMethodBeat.i(179756);
+    AppMethodBeat.at(this, paramBoolean);
     if (paramBoolean)
     {
-      this.fQT.start();
-      AppMethodBeat.at(this, paramBoolean);
+      this.fSZ.start();
       AppMethodBeat.o(179756);
       return;
     }
-    this.fQT.close();
-    AppMethodBeat.at(this, paramBoolean);
+    this.fSZ.close();
     AppMethodBeat.o(179756);
   }
   
-  public final void rE(int paramInt)
+  public final void rH(int paramInt)
   {
     AppMethodBeat.i(31323);
-    ad.i("VoiceInputUI", "alvinluo voiceinputui finish type: %d, call stack: %s", new Object[] { Integer.valueOf(paramInt), bt.flS().toString() });
-    this.vTq = true;
-    xt localxt;
+    ae.i("VoiceInputUI", "alvinluo voiceinputui finish type: %d, call stack: %s", new Object[] { Integer.valueOf(paramInt), bu.fpN().toString() });
+    this.wfu = true;
+    xx localxx;
     if (paramInt == 8)
     {
-      ma(7);
-      localxt = new xt();
+      md(7);
+      localxx = new xx();
       if (paramInt != 7) {
         break label172;
       }
-      localxt.dMb.action = 1;
+      localxx.dNq.action = 1;
       label73:
-      if (!this.EUG) {
+      if (!this.Fnb) {
         break label200;
       }
     }
     label172:
     label200:
-    for (localxt.dMb.dMc = 1;; localxt.dMb.dMc = 2)
+    for (localxx.dNq.dNr = 1;; localxx.dNq.dNr = 2)
     {
-      localxt.dMb.result = this.EUB.getText().toString();
-      localxt.dMb.userCode = this.userCode;
-      if (this.EUC != null) {
-        this.EUC.release();
+      localxx.dNq.result = this.FmW.getText().toString();
+      localxx.dNq.userCode = this.userCode;
+      if (this.FmX != null) {
+        this.FmX.release();
       }
-      com.tencent.mm.sdk.b.a.IbL.l(localxt);
-      bt.hideVKB(this.EUB);
-      if (this.EUK) {
+      com.tencent.mm.sdk.b.a.IvT.l(localxx);
+      bu.hideVKB(this.FmW);
+      if (this.Fnf) {
         super.finish();
       }
       AppMethodBeat.o(31323);
       return;
-      ma(paramInt);
+      md(paramInt);
       break;
       if (paramInt == 8)
       {
-        localxt.dMb.action = 4;
+        localxx.dNq.action = 4;
         break label73;
       }
-      localxt.dMb.action = 2;
+      localxx.dNq.action = 2;
       break label73;
     }
   }
@@ -395,8 +394,8 @@ public class VoiceInputUI
     AppMethodBeat.i(179757);
     if (paramInt <= 0)
     {
-      this.EUK = true;
-      if (this.vTq)
+      this.Fnf = true;
+      if (this.wfu)
       {
         super.finish();
         AppMethodBeat.o(179757);
@@ -404,7 +403,7 @@ public class VoiceInputUI
     }
     else
     {
-      this.EUK = false;
+      this.Fnf = false;
     }
     AppMethodBeat.o(179757);
   }

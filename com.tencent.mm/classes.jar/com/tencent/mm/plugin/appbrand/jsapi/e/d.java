@@ -5,7 +5,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.at;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
 import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.HashMap;
 import java.util.Map;
 import org.json.JSONException;
@@ -21,18 +21,18 @@ public final class d
   public final void a(c paramc, JSONObject paramJSONObject, int paramInt)
   {
     AppMethodBeat.i(144681);
-    ad.i("MicroMsg.JsApiStopBeaconDiscovery", "stopBeaconDiscovery!");
-    paramJSONObject = a.PD(paramc.getAppId());
+    ae.i("MicroMsg.JsApiStopBeaconDiscovery", "stopBeaconDiscovery!");
+    paramJSONObject = a.Ql(paramc.getAppId());
     if (paramJSONObject == null)
     {
-      ad.e("MicroMsg.JsApiStopBeaconDiscovery", "beaconWorker is null");
+      ae.e("MicroMsg.JsApiStopBeaconDiscovery", "beaconWorker is null");
       paramJSONObject = new HashMap();
       paramJSONObject.put("errCode", Integer.valueOf(11004));
-      paramc.h(paramInt, m("fail:not start", paramJSONObject));
+      paramc.h(paramInt, n("fail:not start", paramJSONObject));
       AppMethodBeat.o(144681);
       return;
     }
-    if (paramJSONObject.Gv())
+    if (paramJSONObject.GB())
     {
       a.remove(paramc.getAppId());
       new HashMap().put("errCode", Integer.valueOf(0));
@@ -44,21 +44,21 @@ public final class d
       JSONObject localJSONObject = new JSONObject();
       try
       {
-        localJSONObject.put("available", a.kCU);
+        localJSONObject.put("available", a.kGj);
         localJSONObject.put("discovering", false);
-        ad.i("MicroMsg.JsApiStopBeaconDiscovery", "OnBeaconServiceChangedEvent %s", new Object[] { localJSONObject.toString() });
-        paramJSONObject.b(paramc, paramc.aXC()).Pi(localJSONObject.toString()).bir();
+        ae.i("MicroMsg.JsApiStopBeaconDiscovery", "OnBeaconServiceChangedEvent %s", new Object[] { localJSONObject.toString() });
+        paramJSONObject.b(paramc, paramc.aXX()).PQ(localJSONObject.toString()).bja();
         AppMethodBeat.o(144681);
         return;
         paramJSONObject = new HashMap();
         paramJSONObject.put("errCode", Integer.valueOf(11004));
-        paramc.h(paramInt, m("fail:not start", paramJSONObject));
+        paramc.h(paramInt, n("fail:not start", paramJSONObject));
       }
       catch (JSONException localJSONException)
       {
         for (;;)
         {
-          ad.e("MicroMsg.JsApiStopBeaconDiscovery", "put JSON data error : %s", new Object[] { localJSONException });
+          ae.e("MicroMsg.JsApiStopBeaconDiscovery", "put JSON data error : %s", new Object[] { localJSONException });
         }
       }
     }

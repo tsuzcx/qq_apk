@@ -3,11 +3,11 @@ package com.tencent.mm.plugin.appbrand.jsapi;
 import com.tencent.luggage.a.b;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/IUserAuthorizedHelper;", "Lcom/tencent/luggage/base/ICustomize;", "isUserAuthorized", "", "luggage-commons_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsapi/IUserAuthorizedHelper;", "Lcom/tencent/luggage/base/ICustomize;", "isUserAuthorized", "", "luggage-commons_release"})
 public abstract interface ad
   extends b
 {
-  public abstract boolean bin();
+  public abstract boolean biW();
 }
 
 

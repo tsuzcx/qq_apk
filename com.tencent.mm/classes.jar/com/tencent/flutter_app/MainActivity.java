@@ -12,7 +12,7 @@ public class MainActivity
   {
     AppMethodBeat.i(159055);
     super.onCreate(paramBundle);
-    io.flutter.a.geb();
+    io.flutter.a.giE();
     io.flutter.a.a.registerWith(this);
     AppMethodBeat.o(159055);
   }
@@ -25,7 +25,7 @@ public class MainActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.flutter_app.MainActivity
  * JD-Core Version:    0.7.0.1
  */

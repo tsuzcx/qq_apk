@@ -10,14 +10,14 @@ import com.tencent.mm.plugin.appbrand.a.c.a;
 
 public enum b
 {
-  public String lCa = null;
-  private boolean lCb = false;
+  private boolean lGA = false;
+  public String lGz = null;
   
   static
   {
     AppMethodBeat.i(47040);
-    lBZ = new b("INSTANCE");
-    lCc = new b[] { lBZ };
+    lGy = new b("INSTANCE");
+    lGB = new b[] { lGy };
     AppMethodBeat.o(47040);
   }
   
@@ -27,10 +27,18 @@ public enum b
   {
     AppMethodBeat.i(47037);
     if (!TextUtils.isEmpty(paramString)) {
-      XIPCInvoker.a("com.tencent.mm", new IPCString(paramString), b.a.class, new d() {});
+      XIPCInvoker.a("com.tencent.mm", new IPCString(paramString), a.class, new d() {});
     }
     AppMethodBeat.o(47037);
   }
+  
+  static final class a
+    implements com.tencent.mm.ipcinvoker.b<IPCString, IPCVoid>
+  {}
+  
+  static final class b
+    implements com.tencent.mm.ipcinvoker.b<IPCString, IPCVoid>
+  {}
 }
 
 

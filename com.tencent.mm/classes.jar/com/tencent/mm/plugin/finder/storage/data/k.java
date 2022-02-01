@@ -1,14 +1,14 @@
 package com.tencent.mm.plugin.finder.storage.data;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.u;
-import com.tencent.mm.plugin.finder.model.al;
+import com.tencent.mm.model.v;
+import com.tencent.mm.plugin.finder.model.am;
 import com.tencent.mm.plugin.finder.storage.FinderItem;
-import com.tencent.mm.protocal.protobuf.amo;
-import com.tencent.mm.protocal.protobuf.amw;
-import com.tencent.mm.protocal.protobuf.and;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.vfs.i;
+import com.tencent.mm.protocal.protobuf.ana;
+import com.tencent.mm.protocal.protobuf.ani;
+import com.tencent.mm.protocal.protobuf.anq;
+import com.tencent.mm.sdk.platformtools.ae;
+import d.a.e;
 import d.a.j;
 import d.g.b.q;
 import java.util.ArrayList;
@@ -17,138 +17,138 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-@d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/storage/data/FinderPage;", "", "()V", "Companion", "plugin-finder_release"})
+@d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/storage/data/FinderPage;", "", "()V", "Companion", "plugin-finder_release"})
 public final class k
 {
   private static boolean DEBUG = false;
   private static final int MAX_CACHE_SIZE = 20;
-  private static final Integer[] sAa;
-  private static final Integer[] sAb;
-  private static final m sAc;
-  private static m sAd;
-  public static final a sAe;
+  private static final Integer[] sKX;
+  private static final Integer[] sKY;
+  private static final m sKZ;
+  private static m sLa;
+  public static final a sLb;
   
   static
   {
     AppMethodBeat.i(167083);
-    sAe = new a((byte)0);
+    sLb = new a((byte)0);
     MAX_CACHE_SIZE = 20;
-    sAa = new Integer[] { Integer.valueOf(3), Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(2), Integer.valueOf(4), Integer.valueOf(5), Integer.valueOf(6), Integer.valueOf(9), Integer.valueOf(7), Integer.valueOf(8), Integer.valueOf(10) };
-    sAb = new Integer[] { Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(2), Integer.valueOf(4), Integer.valueOf(5), Integer.valueOf(6), Integer.valueOf(9), Integer.valueOf(7), Integer.valueOf(8), Integer.valueOf(10) };
-    m localm = new m(new a[] { new a(0, "main_v3", new amw(), 0), new a(1, "profile_v3", new amw(), 0), new a(2, "like_v3", new amw(), 0), new a(3, "others_v3", new amw(), 0), new a(4, "prefetch_v3", new amw(), 0), new a(5, "friend_tab_v3", new amw(), 0), new a(6, "lbs_tab_v3", new amw(), 0), new a(7, "follow_v3", new amw(), 0), new a(8, "machine_v3", new amw(), 0), new a(9, "lbs_tab_section_v3", new amw(), 0), new a(10, "fav_v3", new amw(), 0) });
-    sAc = localm;
-    sAd = localm;
+    sKX = new Integer[] { Integer.valueOf(3), Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(2), Integer.valueOf(4), Integer.valueOf(5), Integer.valueOf(6), Integer.valueOf(9), Integer.valueOf(7), Integer.valueOf(8), Integer.valueOf(10) };
+    sKY = new Integer[] { Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(2), Integer.valueOf(4), Integer.valueOf(5), Integer.valueOf(6), Integer.valueOf(9), Integer.valueOf(7), Integer.valueOf(8), Integer.valueOf(10) };
+    m localm = new m(new a[] { new a(0, "main_v3", new ani(), 0), new a(1, "profile_v3", new ani(), 0), new a(2, "like_v3", new ani(), 0), new a(3, "others_v3", new ani(), 0), new a(4, "prefetch_v3", new ani(), 0), new a(5, "friend_tab_v3", new ani(), 0), new a(6, "lbs_tab_v3", new ani(), 0), new a(7, "follow_v3", new ani(), 0), new a(8, "machine_v3", new ani(), 0), new a(9, "lbs_tab_section_v3", new ani(), 0), new a(10, "fav_v3", new ani(), 0) });
+    sKZ = localm;
+    sLa = localm;
     AppMethodBeat.o(167083);
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/storage/data/FinderPage$Companion;", "", "()V", "DEBUG", "", "getDEBUG", "()Z", "setDEBUG", "(Z)V", "FILE_VERSION", "", "MAX_CACHE_SIZE", "", "getMAX_CACHE_SIZE", "()I", "TAG", "cache", "Lcom/tencent/mm/plugin/finder/storage/data/PageCacheList;", "defaultCache", "legalArray", "", "[Ljava/lang/Integer;", "selfArray", "cacheToFile", "", "page", "Lcom/tencent/mm/plugin/finder/storage/data/CachePage;", "type", "username", "list", "Ljava/util/LinkedList;", "Lcom/tencent/mm/plugin/finder/storage/data/PageItem;", "cacheToFinderItemList", "Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "cacheToRVFeedList", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "cacheToSectionList", "Lcom/tencent/mm/plugin/finder/model/BaseMixFeed;", "clearAll", "deletePageData", "svrId", "", "pageName", "svrIds", "", "deletePageDataByLocalId", "localId", "fileToCache", "getLast", "typeFlag", "getLastSection", "insertLocalIntoCache", "item", "readCache", "update", "updateLocalIntoCache", "plugin-finder_release"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/storage/data/FinderPage$Companion;", "", "()V", "DEBUG", "", "getDEBUG", "()Z", "setDEBUG", "(Z)V", "FILE_VERSION", "", "MAX_CACHE_SIZE", "", "getMAX_CACHE_SIZE", "()I", "TAG", "cache", "Lcom/tencent/mm/plugin/finder/storage/data/PageCacheList;", "defaultCache", "legalArray", "", "[Ljava/lang/Integer;", "selfArray", "cacheToFile", "", "page", "Lcom/tencent/mm/plugin/finder/storage/data/CachePage;", "type", "username", "list", "Ljava/util/LinkedList;", "Lcom/tencent/mm/plugin/finder/storage/data/PageItem;", "cacheToFinderItemList", "Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "cacheToRVFeedList", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "cacheToSectionList", "Lcom/tencent/mm/plugin/finder/model/BaseMixFeed;", "clearAll", "deletePageData", "svrId", "", "pageName", "svrIds", "", "deletePageDataByLocalId", "localId", "fileToCache", "getLast", "typeFlag", "getLastSection", "insertLocalIntoCache", "item", "readCache", "update", "updateLocalIntoCache", "plugin-finder_release"})
   public static final class a
   {
-    private static a Fs(int paramInt)
+    private static a FP(int paramInt)
     {
       a locala = null;
-      AppMethodBeat.i(203828);
+      AppMethodBeat.i(204419);
       for (;;)
       {
         try
         {
           localObject1 = new StringBuilder();
-          localObject3 = com.tencent.mm.plugin.finder.utils.p.sMo;
-          str = com.tencent.mm.plugin.finder.utils.p.FK(2) + '/' + k.cJh().Fv(paramInt).name + ".ext";
-          localb = new com.tencent.mm.ad.b("file2Cache");
-          arrayOfByte = i.aY(str, 0, -1);
-          localObject1 = (com.tencent.mm.bx.a)new amw();
+          localObject3 = com.tencent.mm.plugin.finder.utils.p.sXz;
+          str = com.tencent.mm.plugin.finder.utils.p.Gi(2) + '/' + k.cLK().FS(paramInt).name + ".ext";
+          localb = new com.tencent.mm.ac.b("file2Cache");
+          arrayOfByte = com.tencent.mm.vfs.o.bb(str, 0, -1);
+          localObject1 = (com.tencent.mm.bw.a)new ani();
         }
         catch (Exception localException2)
         {
           Object localObject1;
           Object localObject3;
           String str;
-          com.tencent.mm.ad.b localb;
+          com.tencent.mm.ac.b localb;
           byte[] arrayOfByte;
           StringBuilder localStringBuilder;
           Object localObject2;
-          ad.printErrStackTrace("Finder.FinderPage", (Throwable)localException2, "", new Object[0]);
+          ae.printErrStackTrace("Finder.FinderPage", (Throwable)localException2, "", new Object[0]);
           continue;
         }
         try
         {
-          ((com.tencent.mm.bx.a)localObject1).parseFrom(arrayOfByte);
-          localObject3 = (amw)localObject1;
+          ((com.tencent.mm.bw.a)localObject1).parseFrom(arrayOfByte);
+          localObject3 = (ani)localObject1;
           localStringBuilder = new StringBuilder("file2Cache ").append(paramInt).append("  ");
           localObject1 = locala;
           if (arrayOfByte != null) {
             localObject1 = Integer.valueOf(arrayOfByte.length);
           }
-          ad.i("Finder.FinderPage", localObject1 + ' ' + str + ' ' + localb);
-          locala = k.cJh().Fv(paramInt);
+          ae.i("Finder.FinderPage", localObject1 + ' ' + str + ' ' + localb);
+          locala = k.cLK().FS(paramInt);
           localObject1 = localObject3;
           if (localObject3 == null) {
-            localObject1 = new amw();
+            localObject1 = new ani();
           }
-          locala.a((amw)localObject1);
-          k.cJh().Fv(paramInt).kFr = true;
-          localObject1 = k.cJh().Fv(paramInt);
-          AppMethodBeat.o(203828);
+          locala.a((ani)localObject1);
+          k.cLK().FS(paramInt).kIG = true;
+          localObject1 = k.cLK().FS(paramInt);
+          AppMethodBeat.o(204419);
           return localObject1;
         }
         catch (Exception localException1)
         {
-          ad.l("safeParser", "", new Object[] { localException1 });
+          ae.l("safeParser", "", new Object[] { localException1 });
           localObject2 = null;
         }
       }
     }
     
-    public static a Ft(int paramInt)
+    public static a FQ(int paramInt)
     {
-      AppMethodBeat.i(203833);
-      if (k.cJh().Fv(paramInt).kFr)
+      AppMethodBeat.i(204424);
+      if (k.cLK().FS(paramInt).kIG)
       {
-        locala = k.cJh().Fv(paramInt);
-        AppMethodBeat.o(203833);
+        locala = k.cLK().FS(paramInt);
+        AppMethodBeat.o(204424);
         return locala;
       }
-      k.cJh().a(paramInt, Fs(paramInt));
-      a locala = k.cJh().Fv(paramInt);
-      AppMethodBeat.o(203833);
+      k.cLK().a(paramInt, FP(paramInt));
+      a locala = k.cLK().FS(paramInt);
+      AppMethodBeat.o(204424);
       return locala;
     }
     
-    public static List<al> Fu(int paramInt)
+    public static List<am> FR(int paramInt)
     {
       AppMethodBeat.i(167081);
-      Ft(paramInt);
-      List localList = (List)dq("", paramInt);
+      FQ(paramInt);
+      List localList = (List)dv("", paramInt);
       AppMethodBeat.o(167081);
       return localList;
     }
     
     public static void M(long paramLong, int paramInt)
     {
-      AppMethodBeat.i(203832);
-      Ft(paramInt);
-      Object localObject = k.cJh().Fv(paramInt).szD.vHi;
+      AppMethodBeat.i(204423);
+      FQ(paramInt);
+      Object localObject = k.cLK().FS(paramInt).sKx.vTm;
       if (localObject != null)
       {
-        localObject = (and)j.E((List)localObject, 0);
+        localObject = (anq)j.F((List)localObject, 0);
         if (localObject != null)
         {
-          localObject = ((and)localObject).fVg;
+          localObject = ((anq)localObject).fXm;
           if (localObject != null)
           {
-            h localh = h.szU;
+            h localh = h.sKR;
             if (h.a(paramLong, (LinkedList)localObject))
             {
-              localObject = k.sAe;
-              a(k.cJh().Fv(paramInt));
+              localObject = k.sLb;
+              a(k.cLK().FS(paramInt));
             }
-            AppMethodBeat.o(203832);
+            AppMethodBeat.o(204423);
             return;
           }
         }
       }
-      AppMethodBeat.o(203832);
+      AppMethodBeat.o(204423);
     }
     
     public static void a(int paramInt, String paramString, final LinkedList<o> paramLinkedList)
@@ -156,119 +156,119 @@ public final class k
       AppMethodBeat.i(167073);
       d.g.b.p.h(paramString, "username");
       d.g.b.p.h(paramLinkedList, "list");
-      final and localand;
-      if (d.a.e.contains(k.cJg(), Integer.valueOf(paramInt))) {
+      final anq localanq;
+      if (e.contains(k.cLJ(), Integer.valueOf(paramInt))) {
         try
         {
-          localand = new and();
+          localanq = new anq();
           localObject1 = new LinkedList();
           localObject3 = (Iterable)paramLinkedList;
           localObject2 = (Collection)new ArrayList(j.a((Iterable)localObject3, 10));
           localObject3 = ((Iterable)localObject3).iterator();
           while (((Iterator)localObject3).hasNext()) {
-            ((Collection)localObject2).add(((o)((Iterator)localObject3).next()).sAk);
+            ((Collection)localObject2).add(((o)((Iterator)localObject3).next()).sLi);
           }
           AppMethodBeat.o(167073);
         }
         catch (Exception paramString)
         {
-          ad.printErrStackTrace("Finder.FinderPage", (Throwable)paramString, "", new Object[0]);
+          ae.printErrStackTrace("Finder.FinderPage", (Throwable)paramString, "", new Object[0]);
         }
       } else {
         return;
       }
       ((LinkedList)localObject1).addAll((Collection)localObject2);
-      localand.fVg = ((LinkedList)localObject1);
-      localand.username = paramString;
-      Object localObject1 = k.cJh().Fv(paramInt);
-      Object localObject2 = ((a)localObject1).szD;
-      Object localObject3 = ((amw)localObject2).vHi;
+      localanq.fXm = ((LinkedList)localObject1);
+      localanq.username = paramString;
+      Object localObject1 = k.cLK().FS(paramInt);
+      Object localObject2 = ((a)localObject1).sKx;
+      Object localObject3 = ((ani)localObject2).vTm;
       d.g.b.p.g(localObject3, "it.infoList");
-      com.tencent.mm.ad.c.a((LinkedList)localObject3, (d.g.a.b)new a(paramString, localand, paramLinkedList));
+      com.tencent.mm.ac.c.a((LinkedList)localObject3, (d.g.a.b)new a(paramString, localanq, paramLinkedList));
       for (;;)
       {
-        paramInt = ((amw)localObject2).vHi.size();
-        localObject3 = k.sAe;
-        if (paramInt <= k.cJf()) {
+        paramInt = ((ani)localObject2).vTm.size();
+        localObject3 = k.sLb;
+        if (paramInt <= k.cLI()) {
           break;
         }
-        localObject3 = ((amw)localObject2).vHi;
-        LinkedList localLinkedList = ((amw)localObject2).vHi;
+        localObject3 = ((ani)localObject2).vTm;
+        LinkedList localLinkedList = ((ani)localObject2).vTm;
         d.g.b.p.g(localLinkedList, "it.infoList");
-        ((LinkedList)localObject3).remove(j.E((List)localLinkedList, 0));
+        ((LinkedList)localObject3).remove(j.F((List)localLinkedList, 0));
       }
-      ((amw)localObject2).vHi.add(localand);
-      ad.i("Finder.FinderPage", "total cache username " + paramString + " list " + paramLinkedList.size() + " totalCount: " + ((amw)localObject2).vHi.size());
+      ((ani)localObject2).vTm.add(localanq);
+      ae.i("Finder.FinderPage", "total cache username " + paramString + " list " + paramLinkedList.size() + " totalCount: " + ((ani)localObject2).vTm.size());
       a((a)localObject1);
       AppMethodBeat.o(167073);
     }
     
     public static void a(a parama)
     {
-      AppMethodBeat.i(203827);
+      AppMethodBeat.i(204418);
       try
       {
-        byte[] arrayOfByte = parama.szD.toByteArray();
-        com.tencent.mm.ad.b localb = new com.tencent.mm.ad.b("cache2File");
-        Object localObject = com.tencent.mm.plugin.finder.utils.p.sMo;
-        localObject = new com.tencent.mm.vfs.e(com.tencent.mm.plugin.finder.utils.p.FK(2));
-        if (!((com.tencent.mm.vfs.e)localObject).isDirectory()) {
-          ((com.tencent.mm.vfs.e)localObject).delete();
+        byte[] arrayOfByte = parama.sKx.toByteArray();
+        com.tencent.mm.ac.b localb = new com.tencent.mm.ac.b("cache2File");
+        Object localObject = com.tencent.mm.plugin.finder.utils.p.sXz;
+        localObject = new com.tencent.mm.vfs.k(com.tencent.mm.plugin.finder.utils.p.Gi(2));
+        if (!((com.tencent.mm.vfs.k)localObject).isDirectory()) {
+          ((com.tencent.mm.vfs.k)localObject).delete();
         }
-        if (!((com.tencent.mm.vfs.e)localObject).exists()) {
-          ((com.tencent.mm.vfs.e)localObject).mkdirs();
+        if (!((com.tencent.mm.vfs.k)localObject).exists()) {
+          ((com.tencent.mm.vfs.k)localObject).mkdirs();
         }
-        localObject = ((com.tencent.mm.vfs.e)localObject).getAbsolutePath() + '/' + parama.name + ".ext";
-        i.C((String)localObject, arrayOfByte);
-        ad.i("Finder.FinderPage", "cache2File " + parama.name + ' ' + arrayOfByte.length + ' ' + (String)localObject + ' ' + localb);
-        AppMethodBeat.o(203827);
+        localObject = ((com.tencent.mm.vfs.k)localObject).getAbsolutePath() + '/' + parama.name + ".ext";
+        com.tencent.mm.vfs.o.C((String)localObject, arrayOfByte);
+        ae.i("Finder.FinderPage", "cache2File " + parama.name + ' ' + arrayOfByte.length + ' ' + (String)localObject + ' ' + localb);
+        AppMethodBeat.o(204418);
         return;
       }
       catch (Exception parama)
       {
-        ad.printErrStackTrace("Finder.FinderPage", (Throwable)parama, "", new Object[0]);
-        AppMethodBeat.o(203827);
+        ae.printErrStackTrace("Finder.FinderPage", (Throwable)parama, "", new Object[0]);
+        AppMethodBeat.o(204418);
       }
     }
     
-    public static LinkedList<com.tencent.mm.plugin.finder.model.c> aiB(String paramString)
+    public static LinkedList<com.tencent.mm.plugin.finder.model.c> ajy(String paramString)
     {
       Object localObject2 = null;
-      AppMethodBeat.i(203831);
-      Object localObject1 = k.cJh().Fv(9).szD;
+      AppMethodBeat.i(204422);
+      Object localObject1 = k.cLK().FS(9).sKx;
       LinkedList localLinkedList = new LinkedList();
       if (k.access$getDEBUG$cp()) {
-        ad.v("Finder.FinderPage", "-----file2Cache START------");
+        ae.v("Finder.FinderPage", "-----file2Cache START------");
       }
       int i;
       if (((CharSequence)paramString).length() == 0)
       {
         i = 1;
-        if ((i == 0) && (!d.g.b.p.i(paramString, u.aAu()))) {
+        if ((i == 0) && (!d.g.b.p.i(paramString, v.aAK()))) {
           break label201;
         }
-        localObject1 = ((amw)localObject1).vHi;
+        localObject1 = ((ani)localObject1).vTm;
         d.g.b.p.g(localObject1, "cache.infoList");
-        localObject1 = j.E((List)localObject1, 0);
+        localObject1 = j.F((List)localObject1, 0);
       }
       for (;;)
       {
-        localObject1 = (and)localObject1;
+        localObject1 = (anq)localObject1;
         if (localObject1 == null) {
           break label264;
         }
-        localObject3 = ((and)localObject1).fVg;
+        localObject3 = ((anq)localObject1).fXm;
         if (localObject3 == null) {
           break label264;
         }
         localObject3 = ((Iterable)localObject3).iterator();
         while (((Iterator)localObject3).hasNext())
         {
-          Object localObject4 = (amo)((Iterator)localObject3).next();
+          Object localObject4 = (ana)((Iterator)localObject3).next();
           d.g.b.p.g(localObject4, "it");
-          localObject4 = new p((amo)localObject4);
-          l locall = l.sAi;
-          localObject4 = l.b(((o)localObject4).sAk);
+          localObject4 = new p((ana)localObject4);
+          l locall = l.sLg;
+          localObject4 = l.b(((o)localObject4).sLi);
           if (localObject4 != null) {
             localLinkedList.add(localObject4);
           }
@@ -276,7 +276,7 @@ public final class k
         i = 0;
         break;
         label201:
-        localObject1 = ((amw)localObject1).vHi;
+        localObject1 = ((ani)localObject1).vTm;
         d.g.b.p.g(localObject1, "cache.infoList");
         localObject3 = ((Iterable)localObject1).iterator();
         for (;;)
@@ -284,7 +284,7 @@ public final class k
           if (((Iterator)localObject3).hasNext())
           {
             localObject1 = ((Iterator)localObject3).next();
-            if (d.g.b.p.i(((and)localObject1).username, paramString)) {
+            if (d.g.b.p.i(((anq)localObject1).username, paramString)) {
               break;
             }
           }
@@ -296,45 +296,45 @@ public final class k
       paramString = localObject2;
       if (localObject1 != null)
       {
-        localObject1 = ((and)localObject1).fVg;
+        localObject1 = ((anq)localObject1).fXm;
         paramString = localObject2;
         if (localObject1 != null) {
           paramString = Integer.valueOf(((LinkedList)localObject1).size());
         }
       }
-      ad.i("Finder.FinderPage", paramString);
+      ae.i("Finder.FinderPage", paramString);
       if (k.access$getDEBUG$cp()) {
-        ad.v("Finder.FinderPage", "-----file2Cache END------");
+        ae.v("Finder.FinderPage", "-----file2Cache END------");
       }
-      AppMethodBeat.o(203831);
+      AppMethodBeat.o(204422);
       return localLinkedList;
     }
     
     public static void c(long paramLong, FinderItem paramFinderItem)
     {
       AppMethodBeat.i(167078);
-      Integer[] arrayOfInteger = k.cJi();
+      Integer[] arrayOfInteger = k.cLL();
       int j = arrayOfInteger.length;
       int i = 0;
       while (i < j)
       {
         int k = ((Number)arrayOfInteger[i]).intValue();
-        Object localObject = k.sAe;
-        Ft(k);
-        localObject = k.cJh().Fv(k).szD.vHi;
+        Object localObject = k.sLb;
+        FQ(k);
+        localObject = k.cLK().FS(k).sKx.vTm;
         if (localObject != null)
         {
-          localObject = (and)j.E((List)localObject, 0);
+          localObject = (anq)j.F((List)localObject, 0);
           if (localObject != null)
           {
-            localObject = ((and)localObject).fVg;
+            localObject = ((anq)localObject).fXm;
             if (localObject != null)
             {
-              h localh = h.szU;
+              h localh = h.sKR;
               if (h.a(paramLong, paramFinderItem, (LinkedList)localObject))
               {
-                localObject = k.sAe;
-                a(k.cJh().Fv(k));
+                localObject = k.sLb;
+                a(k.cLK().FS(k));
               }
             }
           }
@@ -347,28 +347,28 @@ public final class k
     public static void clearAll()
     {
       AppMethodBeat.i(167082);
-      Object localObject = com.tencent.mm.plugin.finder.utils.p.sMo;
-      localObject = com.tencent.mm.plugin.finder.utils.p.cLA();
-      if (i.fv((String)localObject))
+      Object localObject = com.tencent.mm.plugin.finder.utils.p.sXz;
+      localObject = com.tencent.mm.plugin.finder.utils.p.cOg();
+      if (com.tencent.mm.vfs.o.fB((String)localObject))
       {
-        i.deleteDir((String)localObject);
-        i.aYg((String)localObject);
-        ad.i("Finder.FinderPage", "del " + (String)localObject + " and ret " + i.fv((String)localObject));
+        com.tencent.mm.vfs.o.deleteDir((String)localObject);
+        com.tencent.mm.vfs.o.aZI((String)localObject);
+        ae.i("Finder.FinderPage", "del " + (String)localObject + " and ret " + com.tencent.mm.vfs.o.fB((String)localObject));
       }
-      k.a(k.cJj());
-      k.cJh().reset();
-      ad.i("Finder.FinderPage", "clearAll " + k.cJh() + ' ' + k.cJh().sAj.length);
+      k.a(k.cLM());
+      k.cLK().reset();
+      ae.i("Finder.FinderPage", "clearAll " + k.cLK() + ' ' + k.cLK().sLh.length);
       AppMethodBeat.o(167082);
     }
     
-    private static LinkedList<al> dq(String paramString, int paramInt)
+    private static LinkedList<am> dv(String paramString, int paramInt)
     {
       Object localObject2 = null;
-      AppMethodBeat.i(203829);
-      Object localObject1 = k.cJh().Fv(paramInt).szD;
+      AppMethodBeat.i(204420);
+      Object localObject1 = k.cLK().FS(paramInt).sKx;
       LinkedList localLinkedList = new LinkedList();
       if (k.access$getDEBUG$cp()) {
-        ad.v("Finder.FinderPage", "-----file2Cache START------");
+        ae.v("Finder.FinderPage", "-----file2Cache START------");
       }
       label91:
       Object localObject3;
@@ -376,17 +376,17 @@ public final class k
       if (((CharSequence)paramString).length() == 0)
       {
         paramInt = 1;
-        if ((paramInt == 0) && (!d.g.b.p.i(paramString, u.aAu()))) {
+        if ((paramInt == 0) && (!d.g.b.p.i(paramString, v.aAK()))) {
           break label205;
         }
-        localObject1 = ((amw)localObject1).vHi;
+        localObject1 = ((ani)localObject1).vTm;
         d.g.b.p.g(localObject1, "cache.infoList");
-        localObject1 = j.E((List)localObject1, 0);
-        localObject3 = (and)localObject1;
+        localObject1 = j.F((List)localObject1, 0);
+        localObject3 = (anq)localObject1;
         if (localObject3 == null) {
           break label305;
         }
-        localObject1 = ((and)localObject3).fVg;
+        localObject1 = ((anq)localObject3).fXm;
         if (localObject1 == null) {
           break label305;
         }
@@ -399,20 +399,20 @@ public final class k
         if (!localIterator.hasNext()) {
           break label305;
         }
-        localObject1 = (amo)localIterator.next();
-        paramInt = ((amo)localObject1).dataType;
-        Object localObject4 = h.szU;
+        localObject1 = (ana)localIterator.next();
+        paramInt = ((ana)localObject1).dataType;
+        Object localObject4 = h.sKR;
         if (paramInt == 0)
         {
           d.g.b.p.g(localObject1, "it");
-          localObject1 = (o)new n((amo)localObject1);
+          localObject1 = (o)new n((ana)localObject1);
         }
         for (;;)
         {
           if (localObject1 == null) {
             break label303;
           }
-          localObject1 = ((o)localObject1).cJk();
+          localObject1 = ((o)localObject1).cLN();
           if (localObject1 == null) {
             break label123;
           }
@@ -421,7 +421,7 @@ public final class k
           paramInt = 0;
           break;
           label205:
-          localObject1 = ((amw)localObject1).vHi;
+          localObject1 = ((ani)localObject1).vTm;
           d.g.b.p.g(localObject1, "cache.infoList");
           localObject3 = ((Iterable)localObject1).iterator();
           for (;;)
@@ -429,18 +429,18 @@ public final class k
             if (((Iterator)localObject3).hasNext())
             {
               localObject1 = ((Iterator)localObject3).next();
-              if (d.g.b.p.i(((and)localObject1).username, paramString)) {
+              if (d.g.b.p.i(((anq)localObject1).username, paramString)) {
                 break;
               }
             }
           }
           localObject1 = null;
           break label91;
-          localObject4 = l.sAi;
+          localObject4 = l.sLg;
           if (paramInt == 1)
           {
             d.g.b.p.g(localObject1, "it");
-            localObject1 = (o)new p((amo)localObject1);
+            localObject1 = (o)new p((ana)localObject1);
           }
           else
           {
@@ -453,57 +453,57 @@ public final class k
       paramString = localObject2;
       if (localObject3 != null)
       {
-        localObject3 = ((and)localObject3).fVg;
+        localObject3 = ((anq)localObject3).fXm;
         paramString = localObject2;
         if (localObject3 != null) {
           paramString = Integer.valueOf(((LinkedList)localObject3).size());
         }
       }
-      ad.i("Finder.FinderPage", paramString);
+      ae.i("Finder.FinderPage", paramString);
       if (k.access$getDEBUG$cp()) {
-        ad.v("Finder.FinderPage", "-----file2Cache END------");
+        ae.v("Finder.FinderPage", "-----file2Cache END------");
       }
-      AppMethodBeat.o(203829);
+      AppMethodBeat.o(204420);
       return localLinkedList;
     }
     
-    private static LinkedList<FinderItem> dr(String paramString, int paramInt)
+    private static LinkedList<FinderItem> dw(String paramString, int paramInt)
     {
       Object localObject2 = null;
-      AppMethodBeat.i(203830);
-      Object localObject1 = k.cJh().Fv(paramInt).szD;
+      AppMethodBeat.i(204421);
+      Object localObject1 = k.cLK().FS(paramInt).sKx;
       LinkedList localLinkedList = new LinkedList();
       if (k.access$getDEBUG$cp()) {
-        ad.v("Finder.FinderPage", "-----file2Cache START------");
+        ae.v("Finder.FinderPage", "-----file2Cache START------");
       }
       if (((CharSequence)paramString).length() == 0)
       {
         paramInt = 1;
-        if ((paramInt == 0) && (!d.g.b.p.i(paramString, u.aAu()))) {
+        if ((paramInt == 0) && (!d.g.b.p.i(paramString, v.aAK()))) {
           break label200;
         }
-        localObject1 = ((amw)localObject1).vHi;
+        localObject1 = ((ani)localObject1).vTm;
         d.g.b.p.g(localObject1, "cache.infoList");
-        localObject1 = j.E((List)localObject1, 0);
+        localObject1 = j.F((List)localObject1, 0);
       }
       for (;;)
       {
-        localObject1 = (and)localObject1;
+        localObject1 = (anq)localObject1;
         if (localObject1 == null) {
           break label263;
         }
-        localObject3 = ((and)localObject1).fVg;
+        localObject3 = ((anq)localObject1).fXm;
         if (localObject3 == null) {
           break label263;
         }
         localObject3 = ((Iterable)localObject3).iterator();
         while (((Iterator)localObject3).hasNext())
         {
-          Object localObject4 = (amo)((Iterator)localObject3).next();
+          Object localObject4 = (ana)((Iterator)localObject3).next();
           d.g.b.p.g(localObject4, "it");
-          localObject4 = new n((amo)localObject4);
-          h localh = h.szU;
-          localObject4 = h.a(((o)localObject4).sAk);
+          localObject4 = new n((ana)localObject4);
+          h localh = h.sKR;
+          localObject4 = h.a(((o)localObject4).sLi);
           if (localObject4 != null) {
             localLinkedList.add(localObject4);
           }
@@ -511,7 +511,7 @@ public final class k
         paramInt = 0;
         break;
         label200:
-        localObject1 = ((amw)localObject1).vHi;
+        localObject1 = ((ani)localObject1).vTm;
         d.g.b.p.g(localObject1, "cache.infoList");
         localObject3 = ((Iterable)localObject1).iterator();
         for (;;)
@@ -519,7 +519,7 @@ public final class k
           if (((Iterator)localObject3).hasNext())
           {
             localObject1 = ((Iterator)localObject3).next();
-            if (d.g.b.p.i(((and)localObject1).username, paramString)) {
+            if (d.g.b.p.i(((anq)localObject1).username, paramString)) {
               break;
             }
           }
@@ -531,27 +531,27 @@ public final class k
       paramString = localObject2;
       if (localObject1 != null)
       {
-        localObject1 = ((and)localObject1).fVg;
+        localObject1 = ((anq)localObject1).fXm;
         paramString = localObject2;
         if (localObject1 != null) {
           paramString = Integer.valueOf(((LinkedList)localObject1).size());
         }
       }
-      ad.i("Finder.FinderPage", paramString);
+      ae.i("Finder.FinderPage", paramString);
       if (k.access$getDEBUG$cp()) {
-        ad.v("Finder.FinderPage", "-----file2Cache END------");
+        ae.v("Finder.FinderPage", "-----file2Cache END------");
       }
-      AppMethodBeat.o(203830);
+      AppMethodBeat.o(204421);
       return localLinkedList;
     }
     
-    public static List<FinderItem> ds(String paramString, int paramInt)
+    public static List<FinderItem> dx(String paramString, int paramInt)
     {
-      AppMethodBeat.i(203834);
+      AppMethodBeat.i(204425);
       d.g.b.p.h(paramString, "username");
-      Ft(paramInt);
-      paramString = (List)dr(paramString, paramInt);
-      AppMethodBeat.o(203834);
+      FQ(paramInt);
+      paramString = (List)dw(paramString, paramInt);
+      AppMethodBeat.o(204425);
       return paramString;
     }
     
@@ -559,15 +559,15 @@ public final class k
     {
       AppMethodBeat.i(167077);
       d.g.b.p.h(paramFinderItem, "item");
-      if (k.cJh().Fv(0).kFr)
+      if (k.cLK().FS(0).kIG)
       {
-        Object localObject = k.cJh().Fv(0).szD.vHi;
+        Object localObject = k.cLK().FS(0).sKx.vTm;
         d.g.b.p.g(localObject, "cache[ConstantsFinder.Lo…MELINE_ALL].page.infoList");
-        localObject = (and)j.E((List)localObject, 0);
+        localObject = (anq)j.F((List)localObject, 0);
         if (localObject != null)
         {
           paramFinderItem = new n(2, paramFinderItem.getLocalId(), paramFinderItem.getFeedObject(), 0);
-          ((and)localObject).fVg.addFirst(paramFinderItem.sAk);
+          ((anq)localObject).fXm.addFirst(paramFinderItem.sLi);
           AppMethodBeat.o(167077);
           return;
         }
@@ -575,31 +575,31 @@ public final class k
       AppMethodBeat.o(167077);
     }
     
-    public static void xe(long paramLong)
+    public static void xv(long paramLong)
     {
       AppMethodBeat.i(167079);
-      Integer[] arrayOfInteger = k.cJi();
+      Integer[] arrayOfInteger = k.cLL();
       int j = arrayOfInteger.length;
       int i = 0;
       while (i < j)
       {
         int k = ((Number)arrayOfInteger[i]).intValue();
-        Object localObject = k.sAe;
-        Ft(k);
-        localObject = k.cJh().Fv(k).szD.vHi;
+        Object localObject = k.sLb;
+        FQ(k);
+        localObject = k.cLK().FS(k).sKx.vTm;
         if (localObject != null)
         {
-          localObject = (and)j.E((List)localObject, 0);
+          localObject = (anq)j.F((List)localObject, 0);
           if (localObject != null)
           {
-            localObject = ((and)localObject).fVg;
+            localObject = ((anq)localObject).fXm;
             if (localObject != null)
             {
-              h localh = h.szU;
+              h localh = h.sKR;
               if (h.b(paramLong, (LinkedList)localObject))
               {
-                localObject = k.sAe;
-                a(k.cJh().Fv(k));
+                localObject = k.sLb;
+                a(k.cLK().FS(k));
               }
             }
           }
@@ -609,12 +609,12 @@ public final class k
       AppMethodBeat.o(167079);
     }
     
-    @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Lcom/tencent/mm/protocal/protobuf/FinderFpList;", "kotlin.jvm.PlatformType", "invoke", "com/tencent/mm/plugin/finder/storage/data/FinderPage$Companion$cacheToFile$1$1"})
+    @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Lcom/tencent/mm/protocal/protobuf/FinderFpList;", "kotlin.jvm.PlatformType", "invoke", "com/tencent/mm/plugin/finder/storage/data/FinderPage$Companion$cacheToFile$1$1"})
     static final class a
       extends q
-      implements d.g.a.b<and, Boolean>
+      implements d.g.a.b<anq, Boolean>
     {
-      a(String paramString, and paramand, LinkedList paramLinkedList)
+      a(String paramString, anq paramanq, LinkedList paramLinkedList)
       {
         super();
       }

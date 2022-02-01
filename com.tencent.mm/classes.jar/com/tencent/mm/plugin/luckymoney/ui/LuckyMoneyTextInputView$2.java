@@ -16,9 +16,9 @@ final class LuckyMoneyTextInputView$2
     AppMethodBeat.i(65932);
     b localb = new b();
     localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/luckymoney/ui/LuckyMoneyTextInputView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-    if (LuckyMoneyTextInputView.b(this.vBi) != null) {
-      LuckyMoneyTextInputView.b(this.vBi).onClick(paramView);
+    a.b("com/tencent/mm/plugin/luckymoney/ui/LuckyMoneyTextInputView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+    if (LuckyMoneyTextInputView.b(this.vNm) != null) {
+      LuckyMoneyTextInputView.b(this.vNm).onClick(paramView);
     }
     a.a(this, "com/tencent/mm/plugin/luckymoney/ui/LuckyMoneyTextInputView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(65932);

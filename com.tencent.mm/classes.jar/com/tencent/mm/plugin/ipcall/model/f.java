@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.ipcall.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -9,51 +9,51 @@ import java.util.Map;
 
 public final class f
 {
-  private static Map<Integer, List<Integer>> uKt;
-  public int lpU = -1;
+  private static Map<Integer, List<Integer>> uWg;
+  public int lur = -1;
   
   static
   {
     AppMethodBeat.i(25362);
-    uKt = new HashMap();
+    uWg = new HashMap();
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(Integer.valueOf(3));
     localArrayList.add(Integer.valueOf(2));
     localArrayList.add(Integer.valueOf(8));
     localArrayList.add(Integer.valueOf(12));
-    uKt.put(Integer.valueOf(1), localArrayList);
+    uWg.put(Integer.valueOf(1), localArrayList);
     localArrayList = new ArrayList();
     localArrayList.add(Integer.valueOf(12));
     localArrayList.add(Integer.valueOf(8));
-    uKt.put(Integer.valueOf(2), localArrayList);
+    uWg.put(Integer.valueOf(2), localArrayList);
     localArrayList = new ArrayList();
     localArrayList.add(Integer.valueOf(4));
     localArrayList.add(Integer.valueOf(5));
     localArrayList.add(Integer.valueOf(8));
     localArrayList.add(Integer.valueOf(12));
-    uKt.put(Integer.valueOf(3), localArrayList);
+    uWg.put(Integer.valueOf(3), localArrayList);
     localArrayList = new ArrayList();
     localArrayList.add(Integer.valueOf(5));
     localArrayList.add(Integer.valueOf(8));
     localArrayList.add(Integer.valueOf(12));
-    uKt.put(Integer.valueOf(4), localArrayList);
+    uWg.put(Integer.valueOf(4), localArrayList);
     localArrayList = new ArrayList();
     localArrayList.add(Integer.valueOf(9));
     localArrayList.add(Integer.valueOf(10));
     localArrayList.add(Integer.valueOf(11));
-    uKt.put(Integer.valueOf(5), localArrayList);
+    uWg.put(Integer.valueOf(5), localArrayList);
     AppMethodBeat.o(25362);
   }
   
-  private boolean Iz(int paramInt)
+  private boolean IX(int paramInt)
   {
     AppMethodBeat.i(25360);
-    if (this.lpU == -1)
+    if (this.lur == -1)
     {
       AppMethodBeat.o(25360);
       return true;
     }
-    if ((uKt.containsKey(Integer.valueOf(this.lpU))) && (((List)uKt.get(Integer.valueOf(this.lpU))).contains(Integer.valueOf(paramInt))))
+    if ((uWg.containsKey(Integer.valueOf(this.lur))) && (((List)uWg.get(Integer.valueOf(this.lur))).contains(Integer.valueOf(paramInt))))
     {
       AppMethodBeat.o(25360);
       return true;
@@ -108,44 +108,44 @@ public final class f
     return "CANCEL_BY_ERR";
   }
   
-  public final boolean Iy(int paramInt)
+  public final boolean IW(int paramInt)
   {
     AppMethodBeat.i(25359);
-    if (Iz(paramInt))
+    if (IX(paramInt))
     {
-      ad.i("MicroMsg.IPCallStateIndicator", "updateState, origin: %s, new: %s", new Object[] { stateToString(this.lpU), stateToString(paramInt) });
-      this.lpU = paramInt;
+      ae.i("MicroMsg.IPCallStateIndicator", "updateState, origin: %s, new: %s", new Object[] { stateToString(this.lur), stateToString(paramInt) });
+      this.lur = paramInt;
       AppMethodBeat.o(25359);
       return true;
     }
-    ad.i("MicroMsg.IPCallStateIndicator", "transform state error, origin state: %s, new state: %s", new Object[] { stateToString(i.ddK().lpU), stateToString(paramInt) });
+    ae.i("MicroMsg.IPCallStateIndicator", "transform state error, origin state: %s, new state: %s", new Object[] { stateToString(i.dgC().lur), stateToString(paramInt) });
     AppMethodBeat.o(25359);
     return false;
   }
   
-  public final boolean ddA()
+  public final boolean dgr()
   {
-    return (this.lpU == 4) || (this.lpU == 5);
+    return (this.lur == 1) || (this.lur == 3) || (this.lur == 4) || (this.lur == 5);
   }
   
-  public final boolean ddB()
+  public final boolean dgs()
   {
-    return this.lpU == 5;
+    return (this.lur == 4) || (this.lur == 5);
   }
   
-  public final boolean ddC()
+  public final boolean dgt()
   {
-    return this.lpU == 5;
+    return this.lur == 5;
   }
   
-  public final boolean ddz()
+  public final boolean dgu()
   {
-    return (this.lpU == 1) || (this.lpU == 3) || (this.lpU == 4) || (this.lpU == 5);
+    return this.lur == 5;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.model.f
  * JD-Core Version:    0.7.0.1
  */

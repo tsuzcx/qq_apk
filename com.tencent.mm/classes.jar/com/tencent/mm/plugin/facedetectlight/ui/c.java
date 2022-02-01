@@ -14,10 +14,10 @@ import com.tencent.mm.plugin.facedetectlight.Utils.YTAGFaceReflectForWXJNIInterf
 import com.tencent.mm.plugin.facedetectlight.Utils.YTAGFaceReflectResult;
 import com.tencent.mm.plugin.report.service.g;
 import com.tencent.mm.protocal.protobuf.lw;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.youtu.ytagreflectlivecheck.YTAGReflectLiveCheckInterface;
 import com.tencent.youtu.ytagreflectlivecheck.YTAGReflectLiveCheckInterface.LightLiveCheckResult;
 import com.tencent.youtu.ytagreflectlivecheck.jni.model.ReflectLiveReq;
@@ -37,50 +37,50 @@ import org.json.JSONObject;
 
 public final class c
 {
-  int kHi;
+  int kKx;
   public String mAppId;
   Context mContext;
   int mDesiredPreviewHeight;
   int mDesiredPreviewWidth;
   public int mState = 0;
-  byte[] rkt;
-  TextView rpm;
-  Rect rpo;
-  Rect rpp;
-  v rqL;
-  FaceReflectMask rqO;
-  String rqR;
-  public com.tencent.mm.plugin.facedetectlight.ui.a.b rqX;
-  int rrf;
-  int rrg;
-  int rrh;
-  Point rri;
-  float rrj;
-  float rrk;
-  UploadVideoRequesterV2.UploadVideoResponse rrl;
+  byte[] rsx;
+  TextView rxq;
+  Rect rxs;
+  Rect rxt;
+  UploadVideoRequesterV2.UploadVideoResponse rzA;
+  v rza;
+  FaceReflectMask rzd;
+  String rzg;
+  public com.tencent.mm.plugin.facedetectlight.ui.a.b rzm;
+  int rzu;
+  int rzv;
+  int rzw;
+  Point rzx;
+  float rzy;
+  float rzz;
   
   static String a(YTAGFaceReflectResult paramYTAGFaceReflectResult)
   {
     AppMethodBeat.i(104320);
     if ((paramYTAGFaceReflectResult == null) || (paramYTAGFaceReflectResult.result != 0))
     {
-      ad.e("MicroMsg.FaceReflectLogic", "carson  face result is null or result code not 0");
+      ae.e("MicroMsg.FaceReflectLogic", "carson  face result is null or result code not 0");
       AppMethodBeat.o(104320);
       return null;
     }
     try
     {
-      String str = p.ctr();
+      String str = p.cuS();
       lw locallw = new lw();
-      locallw.FEB = com.tencent.mm.bx.b.cj(paramYTAGFaceReflectResult.sidedata);
-      locallw.FEC = com.tencent.mm.bx.b.cj(paramYTAGFaceReflectResult.data);
+      locallw.FWW = com.tencent.mm.bw.b.cm(paramYTAGFaceReflectResult.sidedata);
+      locallw.FWX = com.tencent.mm.bw.b.cm(paramYTAGFaceReflectResult.data);
       p.e(locallw.toByteArray(), str);
       AppMethodBeat.o(104320);
       return str;
     }
     catch (Exception paramYTAGFaceReflectResult)
     {
-      ad.printErrStackTrace("MicroMsg.FaceReflectLogic", paramYTAGFaceReflectResult, "", new Object[0]);
+      ae.printErrStackTrace("MicroMsg.FaceReflectLogic", paramYTAGFaceReflectResult, "", new Object[0]);
       AppMethodBeat.o(104320);
     }
     return null;
@@ -91,18 +91,18 @@ public final class c
     AppMethodBeat.i(104321);
     if ((this.mState == 0) || (this.mState == 1))
     {
-      this.rqX.aX(90004, "user cancelled in processing");
+      this.rzm.aW(90004, "user cancelled in processing");
       AppMethodBeat.o(104321);
       return;
     }
     if (this.mState == 2)
     {
-      this.rqX.aX(90025, "user cancelled in intermediate page");
+      this.rzm.aW(90025, "user cancelled in intermediate page");
       AppMethodBeat.o(104321);
       return;
     }
     if (this.mState == 3) {
-      this.rqX.aX(90006, "cancel with on stop");
+      this.rzm.aW(90006, "cancel with on stop");
     }
     AppMethodBeat.o(104321);
   }
@@ -112,7 +112,7 @@ public final class c
     AppMethodBeat.i(104322);
     try
     {
-      ad.i("MicroMsg.FaceReflectLogic", "release ");
+      ae.i("MicroMsg.FaceReflectLogic", "release ");
       if ((this.mState == 0) || (this.mState == 1)) {
         YTAGReflectLiveCheckInterface.cancel();
       }
@@ -126,19 +126,19 @@ public final class c
     }
     catch (Exception localException)
     {
-      ad.printErrStackTrace("MicroMsg.FaceReflectLogic", localException, "release error, e: %s", new Object[] { localException.getMessage() });
+      ae.printErrStackTrace("MicroMsg.FaceReflectLogic", localException, "release error, e: %s", new Object[] { localException.getMessage() });
       AppMethodBeat.o(104322);
     }
   }
   
   public static final class a
   {
-    private static c rrq;
+    private static c rzF;
     
     static
     {
       AppMethodBeat.i(104319);
-      rrq = new c((byte)0);
+      rzF = new c((byte)0);
       AppMethodBeat.o(104319);
     }
   }

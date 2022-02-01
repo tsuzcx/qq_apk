@@ -16,7 +16,7 @@ import com.tencent.mm.plugin.downloader_app.api.a.c;
 import com.tencent.mm.plugin.downloader_app.ui.DownloadMainUI;
 import com.tencent.mm.plugin.expt.b.b;
 import com.tencent.mm.plugin.expt.b.b.a;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
@@ -29,10 +29,10 @@ import org.json.JSONObject;
 public final class c
   implements com.tencent.mm.plugin.downloader_app.api.c
 {
-  private static String aar(String paramString)
+  private static String abi(String paramString)
   {
     AppMethodBeat.i(8779);
-    if (!bt.isNullOrNil(paramString)) {}
+    if (!bu.isNullOrNil(paramString)) {}
     for (;;)
     {
       try
@@ -90,7 +90,7 @@ public final class c
   public final long a(com.tencent.mm.plugin.downloader_app.a.a parama, a.b paramb)
   {
     AppMethodBeat.i(8773);
-    parama.extInfo = aar(parama.extInfo);
+    parama.extInfo = abi(parama.extInfo);
     long l = com.tencent.mm.plugin.downloader_app.a.c.a(parama, paramb);
     AppMethodBeat.o(8773);
     return l;
@@ -102,7 +102,7 @@ public final class c
     if (paramContext == null)
     {
       if (paramc != null) {
-        paramc.biA();
+        paramc.bjj();
       }
       AppMethodBeat.o(8772);
       return;
@@ -117,11 +117,11 @@ public final class c
     }
     localIntent.setClass(paramContext, DownloadMainUI.class);
     paramIntent = new com.tencent.mm.hellhoundlib.b.a().bc(localIntent);
-    com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramIntent.ahp(), "com/tencent/mm/plugin/downloader_app/DownloaderAppDelegateImpl", "startDownloadManager", "(Landroid/content/Context;Landroid/content/Intent;Lcom/tencent/mm/plugin/downloader_app/api/DownloadAppCallback$StartDownloadManagerCallBack;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    paramContext.startActivity((Intent)paramIntent.mq(0));
+    com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramIntent.ahE(), "com/tencent/mm/plugin/downloader_app/DownloaderAppDelegateImpl", "startDownloadManager", "(Landroid/content/Context;Landroid/content/Intent;Lcom/tencent/mm/plugin/downloader_app/api/DownloadAppCallback$StartDownloadManagerCallBack;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramContext.startActivity((Intent)paramIntent.mt(0));
     com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/plugin/downloader_app/DownloaderAppDelegateImpl", "startDownloadManager", "(Landroid/content/Context;Landroid/content/Intent;Lcom/tencent/mm/plugin/downloader_app/api/DownloadAppCallback$StartDownloadManagerCallBack;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     if (paramc != null) {
-      paramc.biA();
+      paramc.bjj();
     }
     AppMethodBeat.o(8772);
   }
@@ -129,7 +129,7 @@ public final class c
   public final void a(com.tencent.mm.plugin.downloader_app.api.e parame)
   {
     AppMethodBeat.i(183800);
-    com.tencent.mm.plugin.downloader_app.a.e.ccS();
+    com.tencent.mm.plugin.downloader_app.a.e.ceh();
     com.tencent.mm.plugin.downloader_app.a.e.a(parame);
     AppMethodBeat.o(183800);
   }
@@ -137,21 +137,21 @@ public final class c
   public final boolean a(long paramLong, boolean paramBoolean, a.b paramb)
   {
     AppMethodBeat.i(8778);
-    com.tencent.mm.plugin.downloader.g.a locala = com.tencent.mm.plugin.downloader.model.d.ua(paramLong);
+    com.tencent.mm.plugin.downloader.g.a locala = com.tencent.mm.plugin.downloader.model.d.ur(paramLong);
     if (locala != null)
     {
-      locala.field_extInfo = aar(locala.field_extInfo);
+      locala.field_extInfo = abi(locala.field_extInfo);
       com.tencent.mm.plugin.downloader.model.d.e(locala);
       paramBoolean = com.tencent.mm.plugin.downloader_app.a.c.a(locala, paramBoolean, paramb);
       AppMethodBeat.o(8778);
       return paramBoolean;
     }
-    paramb.a(a.a.pnW, paramLong);
+    paramb.a(a.a.puD, paramLong);
     AppMethodBeat.o(8778);
     return false;
   }
   
-  public final void ai(final Context paramContext, final String paramString)
+  public final void ak(final Context paramContext, final String paramString)
   {
     AppMethodBeat.i(8774);
     com.tencent.mm.ipcinvoker.p.postDelayed(new Runnable()
@@ -169,31 +169,31 @@ public final class c
   public final void b(com.tencent.mm.plugin.downloader_app.api.e parame)
   {
     AppMethodBeat.i(183801);
-    com.tencent.mm.plugin.downloader_app.a.e.ccS();
+    com.tencent.mm.plugin.downloader_app.a.e.ceh();
     com.tencent.mm.plugin.downloader_app.a.e.b(parame);
     AppMethodBeat.o(183801);
   }
   
-  public final boolean ccE()
+  public final boolean cdT()
   {
     AppMethodBeat.i(8770);
-    boolean bool = j.ccE();
+    boolean bool = j.cdT();
     AppMethodBeat.o(8770);
     return bool;
   }
   
-  public final void ccF()
+  public final void cdU()
   {
     AppMethodBeat.i(8771);
-    j.cda();
+    j.cep();
     AppMethodBeat.o(8771);
   }
   
-  public final LinkedList<DownloadWidgetTaskInfo> ccG()
+  public final LinkedList<DownloadWidgetTaskInfo> cdV()
   {
     AppMethodBeat.i(8775);
-    Object localObject1 = j.cdc();
-    if (bt.hj((List)localObject1))
+    Object localObject1 = j.cer();
+    if (bu.ht((List)localObject1))
     {
       AppMethodBeat.o(8775);
       return null;
@@ -205,35 +205,35 @@ public final class c
       Object localObject2 = (String)((Iterator)localObject1).next();
       DownloadWidgetTaskInfo localDownloadWidgetTaskInfo = new DownloadWidgetTaskInfo();
       localDownloadWidgetTaskInfo.appId = ((String)localObject2);
-      localObject2 = f.ccl().aai((String)localObject2);
+      localObject2 = f.cdA().aaZ((String)localObject2);
       if (localObject2 != null)
       {
-        localDownloadWidgetTaskInfo.djM = ((FileDownloadTaskInfo)localObject2).id;
+        localDownloadWidgetTaskInfo.dkO = ((FileDownloadTaskInfo)localObject2).id;
         localDownloadWidgetTaskInfo.state = ((FileDownloadTaskInfo)localObject2).status;
         switch (((FileDownloadTaskInfo)localObject2).status)
         {
         default: 
-          localDownloadWidgetTaskInfo.poa = "default";
+          localDownloadWidgetTaskInfo.puH = "default";
         }
         for (;;)
         {
-          if (((FileDownloadTaskInfo)localObject2).nsQ > 0L)
+          if (((FileDownloadTaskInfo)localObject2).nyl > 0L)
           {
-            localDownloadWidgetTaskInfo.progress = ((int)(((FileDownloadTaskInfo)localObject2).pmT * 100L / ((FileDownloadTaskInfo)localObject2).nsQ));
-            localDownloadWidgetTaskInfo.kvl = ((float)((FileDownloadTaskInfo)localObject2).pmT * 100.0F / (float)((FileDownloadTaskInfo)localObject2).nsQ);
+            localDownloadWidgetTaskInfo.progress = ((int)(((FileDownloadTaskInfo)localObject2).ptA * 100L / ((FileDownloadTaskInfo)localObject2).nyl));
+            localDownloadWidgetTaskInfo.kyA = ((float)((FileDownloadTaskInfo)localObject2).ptA * 100.0F / (float)((FileDownloadTaskInfo)localObject2).nyl);
           }
-          if (((FileDownloadTaskInfo)localObject2).pmW) {
-            localDownloadWidgetTaskInfo.pmW = true;
+          if (((FileDownloadTaskInfo)localObject2).ptD) {
+            localDownloadWidgetTaskInfo.ptD = true;
           }
           localLinkedList.add(localDownloadWidgetTaskInfo);
           break;
-          localDownloadWidgetTaskInfo.poa = "downloading";
+          localDownloadWidgetTaskInfo.puH = "downloading";
           continue;
-          localDownloadWidgetTaskInfo.poa = "download_succ";
+          localDownloadWidgetTaskInfo.puH = "download_succ";
           continue;
-          localDownloadWidgetTaskInfo.poa = "download_pause";
+          localDownloadWidgetTaskInfo.puH = "download_pause";
           continue;
-          localDownloadWidgetTaskInfo.poa = "download_fail";
+          localDownloadWidgetTaskInfo.puH = "download_fail";
         }
       }
     }
@@ -241,18 +241,18 @@ public final class c
     return localLinkedList;
   }
   
-  public final void ccH()
+  public final void cdW()
   {
     AppMethodBeat.i(175256);
-    j.ccH();
+    j.cdW();
     AppMethodBeat.o(175256);
   }
   
-  public final boolean ccI()
+  public final boolean cdX()
   {
     AppMethodBeat.i(183799);
-    com.tencent.mm.plugin.downloader_app.a.e.ccS();
-    boolean bool = com.tencent.mm.plugin.downloader_app.a.e.ccV();
+    com.tencent.mm.plugin.downloader_app.a.e.ceh();
+    boolean bool = com.tencent.mm.plugin.downloader_app.a.e.cek();
     AppMethodBeat.o(183799);
     return bool;
   }
@@ -267,20 +267,20 @@ public final class c
     }
     Intent localIntent = new Intent();
     localIntent.putExtras(paramBundle);
-    if (((b)g.ab(b.class)).a(b.a.qpL, true))
+    if (((b)g.ab(b.class)).a(b.a.qws, true))
     {
       com.tencent.mm.plugin.webview.luggage.p.ae(paramContext, localIntent);
       AppMethodBeat.o(8776);
       return;
     }
-    com.tencent.mm.bs.d.b(paramContext, "webview", ".ui.tools.WebViewUI", localIntent);
+    com.tencent.mm.br.d.b(paramContext, "webview", ".ui.tools.WebViewUI", localIntent);
     AppMethodBeat.o(8776);
   }
   
-  public final void vR(String paramString)
+  public final void wy(String paramString)
   {
     AppMethodBeat.i(8777);
-    j.vR(paramString);
+    j.wy(paramString);
     AppMethodBeat.o(8777);
   }
 }

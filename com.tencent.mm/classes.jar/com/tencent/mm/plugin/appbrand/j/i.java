@@ -8,7 +8,7 @@ import com.tencent.mm.plugin.appbrand.appusage.y;
 import com.tencent.mm.plugin.appbrand.appusage.y.a;
 import com.tencent.mm.plugin.appbrand.config.v;
 import com.tencent.mm.sdk.e.k.a;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.storagebase.h;
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -17,33 +17,33 @@ import java.util.Locale;
 
  enum i
 {
-  private static final a kki;
+  private static final a kny;
   
   static
   {
     AppMethodBeat.i(45047);
-    kkj = new i[0];
-    kki = new a();
+    knz = new i[0];
+    kny = new a();
     AppMethodBeat.o(45047);
   }
   
-  static AppBrandRecentTaskInfo ON(String paramString)
+  static AppBrandRecentTaskInfo Pv(String paramString)
   {
     AppMethodBeat.i(45044);
-    if (j.aYV() == null)
+    if (j.aZs() == null)
     {
       AppMethodBeat.o(45044);
       return null;
     }
-    Object localObject = j.aYV();
-    if (bt.isNullOrNil(paramString)) {
+    Object localObject = j.aZs();
+    if (bu.isNullOrNil(paramString)) {
       paramString = null;
     }
     while (paramString == null)
     {
       AppMethodBeat.o(45044);
       return null;
-      localObject = ((y)localObject).jPq.query("AppBrandLauncherLayoutItem", null, String.format(Locale.US, "%s=? and %s=?", new Object[] { "scene", "recordId" }), new String[] { "2", paramString }, null, null, null);
+      localObject = ((y)localObject).jSI.query("AppBrandLauncherLayoutItem", null, String.format(Locale.US, "%s=? and %s=?", new Object[] { "scene", "recordId" }), new String[] { "2", paramString }, null, null, null);
       if (localObject == null)
       {
         paramString = null;
@@ -55,7 +55,7 @@ import java.util.Locale;
         }
         paramString = new y.a();
         paramString.convertFrom((Cursor)localObject);
-        if (bt.isNullOrNil(paramString.field_brandId)) {
+        if (bu.isNullOrNil(paramString.field_brandId)) {
           break label179;
         }
       }
@@ -70,14 +70,14 @@ import java.util.Locale;
     }
   }
   
-  static List<AppBrandRecentTaskInfo> bgX()
+  static List<AppBrandRecentTaskInfo> bhF()
   {
     AppMethodBeat.i(45043);
     LinkedList localLinkedList = new LinkedList();
-    if (j.aYV() != null)
+    if (j.aZs() != null)
     {
-      ArrayList localArrayList = j.aYV().sb(10000);
-      if (!bt.hj(localArrayList)) {
+      ArrayList localArrayList = j.aZs().se(10000);
+      if (!bu.ht(localArrayList)) {
         localLinkedList.addAll(localArrayList);
       }
     }
@@ -88,8 +88,8 @@ import java.util.Locale;
   static void c(k.a parama)
   {
     AppMethodBeat.i(45045);
-    if (j.aYV() != null) {
-      j.aYV().add(parama);
+    if (j.aZs() != null) {
+      j.aZs().add(parama);
     }
     AppMethodBeat.o(45045);
   }
@@ -97,8 +97,8 @@ import java.util.Locale;
   static void d(k.a parama)
   {
     AppMethodBeat.i(45046);
-    if (j.aYV() != null) {
-      j.aYV().remove(parama);
+    if (j.aZs() != null) {
+      j.aZs().remove(parama);
     }
     AppMethodBeat.o(45046);
   }
@@ -106,14 +106,14 @@ import java.util.Locale;
   static void onCreate()
   {
     AppMethodBeat.i(45041);
-    v.bej().add(kki);
+    v.beQ().add(kny);
     AppMethodBeat.o(45041);
   }
   
   static void onDestroy()
   {
     AppMethodBeat.i(45042);
-    v.bej().remove(kki);
+    v.beQ().remove(kny);
     AppMethodBeat.o(45042);
   }
 }

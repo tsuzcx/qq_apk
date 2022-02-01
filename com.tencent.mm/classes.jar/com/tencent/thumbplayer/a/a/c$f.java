@@ -2,7 +2,7 @@ package com.tencent.thumbplayer.a.a;
 
 public abstract interface c$f
 {
-  public abstract void ckp();
+  public abstract void clF();
 }
 
 

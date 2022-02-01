@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.recordvideo.ui.editor;
 
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/EditorInputView$Companion;", "", "()V", "AlphaBg", "", "getAlphaBg", "()I", "AlphaText", "getAlphaText", "ColorArray", "", "getColorArray", "()[I", "DefaultBgColor", "getDefaultBgColor", "DefaultTextColor", "getDefaultTextColor", "DefaultTipBgColor", "getDefaultTipBgColor", "DefaultTipColor", "getDefaultTipColor", "MODE_CAPTION", "MODE_TEXT", "MODE_TIP", "plugin-recordvideo_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/EditorInputView$Companion;", "", "()V", "AlphaBg", "", "getAlphaBg", "()I", "AlphaText", "getAlphaText", "ColorArray", "", "getColorArray", "()[I", "DefaultBgColor", "getDefaultBgColor", "DefaultTextColor", "getDefaultTextColor", "DefaultTipBgColor", "getDefaultTipBgColor", "DefaultTipColor", "getDefaultTipColor", "MODE_CAPTION", "MODE_TEXT", "MODE_TIP", "plugin-recordvideo_release"})
 public final class EditorInputView$c {}
 
 

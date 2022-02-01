@@ -15,29 +15,29 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/video/ThumbFetcherWrapper;", "Lcom/tencent/mm/videocomposition/ITrackThumbFetcher;", "start", "", "thumbFetcher", "destroyCallback", "Lkotlin/Function0;", "", "(JLcom/tencent/mm/videocomposition/ITrackThumbFetcher;Lkotlin/jvm/functions/Function0;)V", "getDestroyCallback", "()Lkotlin/jvm/functions/Function0;", "getStart", "()J", "getThumbFetcher", "()Lcom/tencent/mm/videocomposition/ITrackThumbFetcher;", "cancel", "callback", "Lkotlin/Function2;", "Landroid/graphics/Bitmap;", "Lcom/tencent/mm/videocomposition/ThumbCallback;", "time", "destroy", "requestFrames", "times", "", "setSize", "width", "", "height", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/video/ThumbFetcherWrapper;", "Lcom/tencent/mm/videocomposition/ITrackThumbFetcher;", "start", "", "thumbFetcher", "destroyCallback", "Lkotlin/Function0;", "", "(JLcom/tencent/mm/videocomposition/ITrackThumbFetcher;Lkotlin/jvm/functions/Function0;)V", "getDestroyCallback", "()Lkotlin/jvm/functions/Function0;", "getStart", "()J", "getThumbFetcher", "()Lcom/tencent/mm/videocomposition/ITrackThumbFetcher;", "cancel", "callback", "Lkotlin/Function2;", "Landroid/graphics/Bitmap;", "Lcom/tencent/mm/videocomposition/ThumbCallback;", "time", "destroy", "requestFrames", "times", "", "setSize", "width", "", "height", "plugin-finder_release"})
 public final class s
   implements c
 {
-  private final c sFx;
-  private final a<z> sQq;
+  private final c sQw;
   final long start;
+  private final a<z> tbB;
   
   public s(long paramLong, c paramc, a<z> parama)
   {
-    AppMethodBeat.i(204888);
+    AppMethodBeat.i(205513);
     this.start = paramLong;
-    this.sFx = paramc;
-    this.sQq = parama;
-    AppMethodBeat.o(204888);
+    this.sQw = paramc;
+    this.tbB = parama;
+    AppMethodBeat.o(205513);
   }
   
   public final void b(List<Long> paramList, final m<? super Long, ? super Bitmap, z> paramm)
   {
-    AppMethodBeat.i(204885);
+    AppMethodBeat.i(205510);
     p.h(paramList, "times");
     p.h(paramm, "callback");
-    c localc = this.sFx;
+    c localc = this.sQw;
     Object localObject = (Iterable)paramList;
     paramList = (Collection)new ArrayList(j.a((Iterable)localObject, 10));
     localObject = ((Iterable)localObject).iterator();
@@ -45,33 +45,33 @@ public final class s
       paramList.add(Long.valueOf(((Number)((Iterator)localObject).next()).longValue() + this.start));
     }
     localc.b((List)paramList, (m)new a(this, paramm));
-    AppMethodBeat.o(204885);
+    AppMethodBeat.o(205510);
   }
   
   public final void c(m<? super Long, ? super Bitmap, z> paramm)
   {
-    AppMethodBeat.i(204886);
+    AppMethodBeat.i(205511);
     p.h(paramm, "callback");
-    this.sFx.c(paramm);
-    AppMethodBeat.o(204886);
+    this.sQw.c(paramm);
+    AppMethodBeat.o(205511);
   }
   
   public final void destroy()
   {
-    AppMethodBeat.i(204887);
-    this.sFx.destroy();
-    this.sQq.invoke();
-    AppMethodBeat.o(204887);
+    AppMethodBeat.i(205512);
+    this.sQw.destroy();
+    this.tbB.invoke();
+    AppMethodBeat.o(205512);
   }
   
   public final void setSize(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(204884);
-    this.sFx.setSize(paramInt1, paramInt2);
-    AppMethodBeat.o(204884);
+    AppMethodBeat.i(205509);
+    this.sQw.setSize(paramInt1, paramInt2);
+    AppMethodBeat.o(205509);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "time", "", "bitmap", "Landroid/graphics/Bitmap;", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "time", "", "bitmap", "Landroid/graphics/Bitmap;", "invoke"})
   static final class a
     extends q
     implements m<Long, Bitmap, z>

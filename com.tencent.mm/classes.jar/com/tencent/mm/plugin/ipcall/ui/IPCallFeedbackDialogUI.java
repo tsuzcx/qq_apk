@@ -7,7 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Window;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.a;
 
@@ -15,16 +15,16 @@ import com.tencent.mm.ui.base.a;
 public class IPCallFeedbackDialogUI
   extends MMActivity
 {
-  private g uRW;
+  private g vdI;
   
   public void finish()
   {
     AppMethodBeat.i(25795);
-    ad.i("MicroMsg.IPCallFeedbackDialogUI", "finish");
-    if ((this.uRW != null) && (this.uRW.isShowing()))
+    ae.i("MicroMsg.IPCallFeedbackDialogUI", "finish");
+    if ((this.vdI != null) && (this.vdI.isShowing()))
     {
-      this.uRW.dismiss();
-      this.uRW = null;
+      this.vdI.dismiss();
+      this.vdI = null;
     }
     super.finish();
     AppMethodBeat.o(25795);
@@ -39,9 +39,9 @@ public class IPCallFeedbackDialogUI
   {
     AppMethodBeat.i(25791);
     super.onCreate(paramBundle);
-    ad.i("MicroMsg.IPCallFeedbackDialogUI", "onCreate");
-    this.uRW = new g(this, getContext(), getIntent().getIntExtra("IPCallFeedbackDialogUI_KRoomId", 0), getIntent().getLongExtra("IPCallFeedbackDialogUI_KCallseq", 0L));
-    this.uRW.setOnDismissListener(new DialogInterface.OnDismissListener()
+    ae.i("MicroMsg.IPCallFeedbackDialogUI", "onCreate");
+    this.vdI = new g(this, getContext(), getIntent().getIntExtra("IPCallFeedbackDialogUI_KRoomId", 0), getIntent().getLongExtra("IPCallFeedbackDialogUI_KCallseq", 0L));
+    this.vdI.setOnDismissListener(new DialogInterface.OnDismissListener()
     {
       public final void onDismiss(DialogInterface paramAnonymousDialogInterface)
       {
@@ -50,15 +50,15 @@ public class IPCallFeedbackDialogUI
         AppMethodBeat.o(25790);
       }
     });
-    this.uRW.getWindow().setSoftInputMode(16);
-    this.uRW.show();
+    this.vdI.getWindow().setSoftInputMode(16);
+    this.vdI.show();
     AppMethodBeat.o(25791);
   }
   
   public void onDestroy()
   {
     AppMethodBeat.i(25794);
-    ad.d("MicroMsg.IPCallFeedbackDialogUI", "onDestroy");
+    ae.d("MicroMsg.IPCallFeedbackDialogUI", "onDestroy");
     super.onDestroy();
     AppMethodBeat.o(25794);
   }
@@ -66,7 +66,7 @@ public class IPCallFeedbackDialogUI
   public void onNewIntent(Intent paramIntent)
   {
     AppMethodBeat.i(25793);
-    ad.d("MicroMsg.IPCallFeedbackDialogUI", "onNewIntent");
+    ae.d("MicroMsg.IPCallFeedbackDialogUI", "onNewIntent");
     super.onNewIntent(paramIntent);
     AppMethodBeat.o(25793);
   }
@@ -74,7 +74,7 @@ public class IPCallFeedbackDialogUI
   public void onResume()
   {
     AppMethodBeat.i(25792);
-    ad.d("MicroMsg.IPCallFeedbackDialogUI", "onResume");
+    ae.d("MicroMsg.IPCallFeedbackDialogUI", "onResume");
     super.onResume();
     AppMethodBeat.o(25792);
   }

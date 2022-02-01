@@ -2,131 +2,131 @@ package com.tencent.mm.openim.c.a;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ba.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.bu;
+import com.tencent.mm.az.a;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.bv;
 import java.util.LinkedList;
 import java.util.Map;
 
 public final class b
   extends a
 {
-  public String dpf;
-  public LinkedList<String> iHS;
-  public LinkedList<String> iHT;
-  public String iHU;
-  public String iHV;
-  public String ihU;
-  public LinkedList<String> ihV;
-  public int ihX;
-  public LinkedList<String> ihY;
-  public LinkedList<String> ihZ;
-  public String iia;
-  public String iib;
-  public String iic;
+  public String dqk;
+  public LinkedList<String> iKL;
+  public LinkedList<String> iKM;
+  public String iKN;
+  public String iKO;
+  public String ikN;
+  public LinkedList<String> ikO;
+  public int ikQ;
+  public LinkedList<String> ikR;
+  public LinkedList<String> ikS;
+  public String ikT;
+  public String ikU;
+  public String ikV;
   public String text;
   
-  public b(Map<String, String> paramMap, bu parambu)
+  public b(Map<String, String> paramMap, bv parambv)
   {
-    super(paramMap, parambu);
+    super(paramMap, parambv);
     AppMethodBeat.i(151262);
-    this.ihV = new LinkedList();
-    this.ihY = new LinkedList();
-    this.iHS = new LinkedList();
-    this.iHT = new LinkedList();
-    this.ihZ = new LinkedList();
-    this.iia = null;
-    this.iHU = null;
-    this.iHV = null;
-    this.iib = null;
-    this.iic = null;
+    this.ikO = new LinkedList();
+    this.ikR = new LinkedList();
+    this.iKL = new LinkedList();
+    this.iKM = new LinkedList();
+    this.ikS = new LinkedList();
+    this.ikT = null;
+    this.iKN = null;
+    this.iKO = null;
+    this.ikU = null;
+    this.ikV = null;
     this.text = null;
     AppMethodBeat.o(151262);
   }
   
-  public final boolean aAc()
+  public final boolean aAs()
   {
     int i = 0;
     AppMethodBeat.i(151263);
     if (this.values == null)
     {
-      ad.e("MicroMsg.OpenIMChatRoomAddChatRoomMemberApplicationNewXmlMsg", "[parseXml] values == null ");
+      ae.e("MicroMsg.OpenIMChatRoomAddChatRoomMemberApplicationNewXmlMsg", "[parseXml] values == null ");
       AppMethodBeat.o(151263);
       return false;
     }
-    ad.i("MicroMsg.OpenIMChatRoomAddChatRoomMemberApplicationNewXmlMsg", "[parseXml] type:%s, values size:%s", new Object[] { bt.nullAsNil(this.TYPE), Integer.valueOf(this.values.size()) });
-    if ((!bt.isNullOrNil(this.TYPE)) && (this.TYPE.equalsIgnoreCase("NewXmlOpenIMChatRoomAddChatRoomMemberApplication")))
+    ae.i("MicroMsg.OpenIMChatRoomAddChatRoomMemberApplicationNewXmlMsg", "[parseXml] type:%s, values size:%s", new Object[] { bu.nullAsNil(this.TYPE), Integer.valueOf(this.values.size()) });
+    if ((!bu.isNullOrNil(this.TYPE)) && (this.TYPE.equalsIgnoreCase("NewXmlOpenIMChatRoomAddChatRoomMemberApplication")))
     {
-      this.ihU = ((String)this.values.get(".sysmsg.NewXmlOpenIMChatRoomAddChatRoomMemberApplication.RoomName"));
+      this.ikN = ((String)this.values.get(".sysmsg.NewXmlOpenIMChatRoomAddChatRoomMemberApplication.RoomName"));
       if (this.values.containsKey(".sysmsg.NewXmlOpenIMChatRoomAddChatRoomMemberApplication.link.text")) {
-        this.iic = bt.nullAsNil((String)this.values.get(".sysmsg.NewXmlOpenIMChatRoomAddChatRoomMemberApplication.link.text"));
+        this.ikV = bu.nullAsNil((String)this.values.get(".sysmsg.NewXmlOpenIMChatRoomAddChatRoomMemberApplication.link.text"));
       }
       if (this.values.containsKey(".sysmsg.NewXmlOpenIMChatRoomAddChatRoomMemberApplication.link.inviter" + ".username")) {
-        this.iia = bt.nullAsNil((String)this.values.get(".sysmsg.NewXmlOpenIMChatRoomAddChatRoomMemberApplication.link.inviter" + ".username"));
+        this.ikT = bu.nullAsNil((String)this.values.get(".sysmsg.NewXmlOpenIMChatRoomAddChatRoomMemberApplication.link.inviter" + ".username"));
       }
       if (this.values.containsKey(".sysmsg.NewXmlOpenIMChatRoomAddChatRoomMemberApplication.link.inviter" + ".appid")) {
-        this.iHU = bt.nullAsNil((String)this.values.get(".sysmsg.NewXmlOpenIMChatRoomAddChatRoomMemberApplication.link.inviter" + ".appid"));
+        this.iKN = bu.nullAsNil((String)this.values.get(".sysmsg.NewXmlOpenIMChatRoomAddChatRoomMemberApplication.link.inviter" + ".appid"));
       }
       if (this.values.containsKey(".sysmsg.NewXmlOpenIMChatRoomAddChatRoomMemberApplication.link.inviter" + ".descid")) {
-        this.iHV = bt.nullAsNil((String)this.values.get(".sysmsg.NewXmlOpenIMChatRoomAddChatRoomMemberApplication.link.inviter" + ".descid"));
+        this.iKO = bu.nullAsNil((String)this.values.get(".sysmsg.NewXmlOpenIMChatRoomAddChatRoomMemberApplication.link.inviter" + ".descid"));
       }
       if (this.values.containsKey(".sysmsg.NewXmlOpenIMChatRoomAddChatRoomMemberApplication.link.invitationreason")) {
-        this.iib = bt.nullAsNil((String)this.values.get(".sysmsg.NewXmlOpenIMChatRoomAddChatRoomMemberApplication.link.invitationreason"));
+        this.ikU = bu.nullAsNil((String)this.values.get(".sysmsg.NewXmlOpenIMChatRoomAddChatRoomMemberApplication.link.invitationreason"));
       }
-      if (this.values.containsKey(ihM)) {
-        this.text = bt.nullAsNil((String)this.values.get(ihM));
+      if (this.values.containsKey(ikF)) {
+        this.text = bu.nullAsNil((String)this.values.get(ikF));
       }
       if (this.values.containsKey(".sysmsg.NewXmlOpenIMChatRoomAddChatRoomMemberApplication.link.ticket")) {
-        this.dpf = ((String)this.values.get(".sysmsg.NewXmlOpenIMChatRoomAddChatRoomMemberApplication.link.ticket"));
+        this.dqk = ((String)this.values.get(".sysmsg.NewXmlOpenIMChatRoomAddChatRoomMemberApplication.link.ticket"));
       }
       if (this.values.containsKey(".sysmsg.NewXmlOpenIMChatRoomAddChatRoomMemberApplication.link.memberlist.memberlistsize")) {
-        this.ihX = bt.getInt((String)this.values.get(".sysmsg.NewXmlOpenIMChatRoomAddChatRoomMemberApplication.link.memberlist.memberlistsize"), 0);
+        this.ikQ = bu.getInt((String)this.values.get(".sysmsg.NewXmlOpenIMChatRoomAddChatRoomMemberApplication.link.memberlist.memberlistsize"), 0);
       }
-      if (!this.dBd.fsh())
+      if (!this.dCi.fwi())
       {
-        this.ihR.add(Integer.valueOf(this.text.length()));
-        this.ihQ.add(this.iic);
-        this.ihO = (this.text + this.iic);
-        this.ihS.add(Integer.valueOf(this.ihO.length()));
-        if (i >= this.ihX) {
+        this.ikK.add(Integer.valueOf(this.text.length()));
+        this.ikJ.add(this.ikV);
+        this.ikH = (this.text + this.ikV);
+        this.ikL.add(Integer.valueOf(this.ikH.length()));
+        if (i >= this.ikQ) {
           break label1079;
         }
         if (i != 0) {
           break label856;
         }
-        this.ihV.add(bt.nullAsNil((String)this.values.get(".sysmsg.NewXmlOpenIMChatRoomAddChatRoomMemberApplication.link.memberlist.member.username")));
-        this.ihY.add(bt.nullAsNil((String)this.values.get(".sysmsg.NewXmlOpenIMChatRoomAddChatRoomMemberApplication.link.memberlist.member.nickname")));
-        this.iHS.add(bt.nullAsNil((String)this.values.get(".sysmsg.NewXmlOpenIMChatRoomAddChatRoomMemberApplication.link.memberlist.member.descid")));
-        this.iHT.add(bt.nullAsNil((String)this.values.get(".sysmsg.NewXmlOpenIMChatRoomAddChatRoomMemberApplication.link.memberlist.member.appid")));
-        this.ihZ.add(bt.nullAsNil((String)this.values.get(".sysmsg.NewXmlOpenIMChatRoomAddChatRoomMemberApplication.link.memberlist.member.headimgurl")));
+        this.ikO.add(bu.nullAsNil((String)this.values.get(".sysmsg.NewXmlOpenIMChatRoomAddChatRoomMemberApplication.link.memberlist.member.username")));
+        this.ikR.add(bu.nullAsNil((String)this.values.get(".sysmsg.NewXmlOpenIMChatRoomAddChatRoomMemberApplication.link.memberlist.member.nickname")));
+        this.iKL.add(bu.nullAsNil((String)this.values.get(".sysmsg.NewXmlOpenIMChatRoomAddChatRoomMemberApplication.link.memberlist.member.descid")));
+        this.iKM.add(bu.nullAsNil((String)this.values.get(".sysmsg.NewXmlOpenIMChatRoomAddChatRoomMemberApplication.link.memberlist.member.appid")));
+        this.ikS.add(bu.nullAsNil((String)this.values.get(".sysmsg.NewXmlOpenIMChatRoomAddChatRoomMemberApplication.link.memberlist.member.headimgurl")));
       }
       for (;;)
       {
         i += 1;
         break;
-        this.ihQ.clear();
-        this.ihR.clear();
-        this.ihS.clear();
-        this.ihO = (this.text + " ");
-        this.ihR.add(Integer.valueOf(this.ihO.length()));
-        this.ihQ.add(aj.getContext().getString(2131760229));
-        this.ihO += aj.getContext().getString(2131760229);
-        this.ihS.add(Integer.valueOf(this.ihO.length()));
+        this.ikJ.clear();
+        this.ikK.clear();
+        this.ikL.clear();
+        this.ikH = (this.text + " ");
+        this.ikK.add(Integer.valueOf(this.ikH.length()));
+        this.ikJ.add(ak.getContext().getString(2131760229));
+        this.ikH += ak.getContext().getString(2131760229);
+        this.ikL.add(Integer.valueOf(this.ikH.length()));
         break;
         label856:
-        this.ihV.add(bt.nullAsNil((String)this.values.get(".sysmsg.NewXmlOpenIMChatRoomAddChatRoomMemberApplication.link.memberlist.member" + i + ".username")));
-        this.ihY.add(bt.nullAsNil((String)this.values.get(".sysmsg.NewXmlOpenIMChatRoomAddChatRoomMemberApplication.link.memberlist.member" + i + ".nickname")));
-        this.iHT.add(bt.nullAsNil((String)this.values.get(".sysmsg.NewXmlOpenIMChatRoomAddChatRoomMemberApplication.link.memberlist.member" + i + ".appid")));
-        this.iHS.add(bt.nullAsNil((String)this.values.get(".sysmsg.NewXmlOpenIMChatRoomAddChatRoomMemberApplication.link.memberlist.member" + i + ".descid")));
-        this.ihZ.add(bt.nullAsNil((String)this.values.get(".sysmsg.NewXmlOpenIMChatRoomAddChatRoomMemberApplication.link.memberlist.member" + i + ".headimgurl")));
+        this.ikO.add(bu.nullAsNil((String)this.values.get(".sysmsg.NewXmlOpenIMChatRoomAddChatRoomMemberApplication.link.memberlist.member" + i + ".username")));
+        this.ikR.add(bu.nullAsNil((String)this.values.get(".sysmsg.NewXmlOpenIMChatRoomAddChatRoomMemberApplication.link.memberlist.member" + i + ".nickname")));
+        this.iKM.add(bu.nullAsNil((String)this.values.get(".sysmsg.NewXmlOpenIMChatRoomAddChatRoomMemberApplication.link.memberlist.member" + i + ".appid")));
+        this.iKL.add(bu.nullAsNil((String)this.values.get(".sysmsg.NewXmlOpenIMChatRoomAddChatRoomMemberApplication.link.memberlist.member" + i + ".descid")));
+        this.ikS.add(bu.nullAsNil((String)this.values.get(".sysmsg.NewXmlOpenIMChatRoomAddChatRoomMemberApplication.link.memberlist.member" + i + ".headimgurl")));
       }
       label1079:
       AppMethodBeat.o(151263);
       return true;
     }
-    ad.e("MicroMsg.OpenIMChatRoomAddChatRoomMemberApplicationNewXmlMsg", "[parseXml] type err :%s", new Object[] { bt.nullAsNil(this.TYPE) });
+    ae.e("MicroMsg.OpenIMChatRoomAddChatRoomMemberApplicationNewXmlMsg", "[parseXml] type err :%s", new Object[] { bu.nullAsNil(this.TYPE) });
     AppMethodBeat.o(151263);
     return false;
   }

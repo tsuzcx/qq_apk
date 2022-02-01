@@ -6,41 +6,41 @@ import d.l;
 import d.z;
 import java.util.List;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"nullable", "Lkotlinx/serialization/SerialDescriptor;", "getNullable", "(Lkotlinx/serialization/SerialDescriptor;)Lkotlinx/serialization/SerialDescriptor;", "PrimitiveDescriptor", "serialName", "", "kind", "Lkotlinx/serialization/PrimitiveKind;", "SerialDescriptor", "Lkotlinx/serialization/SerialKind;", "builder", "Lkotlin/Function1;", "Lkotlinx/serialization/SerialDescriptorBuilder;", "", "Lkotlin/ExtensionFunctionType;", "descriptor", "T", "listDescriptor", "typeDescriptor", "mapDescriptor", "K", "V", "keyDescriptor", "valueDescriptor", "setDescriptor", "kotlinx-serialization-runtime"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"nullable", "Lkotlinx/serialization/SerialDescriptor;", "getNullable", "(Lkotlinx/serialization/SerialDescriptor;)Lkotlinx/serialization/SerialDescriptor;", "PrimitiveDescriptor", "serialName", "", "kind", "Lkotlinx/serialization/PrimitiveKind;", "SerialDescriptor", "Lkotlinx/serialization/SerialKind;", "builder", "Lkotlin/Function1;", "Lkotlinx/serialization/SerialDescriptorBuilder;", "", "Lkotlin/ExtensionFunctionType;", "descriptor", "T", "listDescriptor", "typeDescriptor", "mapDescriptor", "K", "V", "keyDescriptor", "valueDescriptor", "setDescriptor", "kotlinx-serialization-runtime"})
 public final class p
 {
   public static final n a(String paramString, s params, b<? super o, z> paramb)
   {
-    AppMethodBeat.i(191003);
+    AppMethodBeat.i(199591);
     d.g.b.p.h(paramString, "serialName");
     d.g.b.p.h(params, "kind");
     d.g.b.p.h(paramb, "builder");
-    if (!d.n.n.aE((CharSequence)paramString)) {}
+    if (!d.n.n.aD((CharSequence)paramString)) {}
     for (int i = 1; i == 0; i = 0)
     {
       paramString = (Throwable)new IllegalArgumentException("Blank serial names are prohibited".toString());
-      AppMethodBeat.o(191003);
+      AppMethodBeat.o(199591);
       throw paramString;
     }
     o localo = new o(paramString);
     paramb.invoke(localo);
-    paramString = (n)new q(paramString, params, localo.NLB.size(), localo);
-    AppMethodBeat.o(191003);
+    paramString = (n)new q(paramString, params, localo.OiH.size(), localo);
+    AppMethodBeat.o(199591);
     return paramString;
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "Lkotlinx/serialization/SerialDescriptorBuilder;", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "Lkotlinx/serialization/SerialDescriptorBuilder;", "invoke"})
   static final class a
     extends d.g.b.q
     implements b<o, z>
   {
-    public static final a NLH;
+    public static final a OiN;
     
     static
     {
-      AppMethodBeat.i(191020);
-      NLH = new a();
-      AppMethodBeat.o(191020);
+      AppMethodBeat.i(199608);
+      OiN = new a();
+      AppMethodBeat.o(199608);
     }
     
     a()

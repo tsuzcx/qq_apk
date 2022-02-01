@@ -12,7 +12,7 @@ final class SnsCommentDetailUI$b$1
   public final void run()
   {
     AppMethodBeat.i(98585);
-    SnsCommentDetailUI.a(this.Aci.AbL).setSelection(SnsCommentDetailUI.a(this.Aci.AbL).getHeaderViewsCount() + this.Aci.commentList.size() - 1);
+    SnsCommentDetailUI.a(this.Atv.AsY).setSelection(SnsCommentDetailUI.a(this.Atv.AsY).getHeaderViewsCount() + this.Atv.commentList.size() - 1);
     AppMethodBeat.o(98585);
   }
 }

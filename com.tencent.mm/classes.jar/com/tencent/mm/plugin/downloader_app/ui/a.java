@@ -18,14 +18,14 @@ public final class a
 {
   private final Drawable amC;
   private int mSize;
-  private final Drawable pqJ;
+  private final Drawable pxp;
   
   public a(Resources paramResources)
   {
     AppMethodBeat.i(9025);
     this.amC = new ColorDrawable(paramResources.getColor(2131100251));
     this.mSize = paramResources.getDimensionPixelSize(2131166455);
-    this.pqJ = new ColorDrawable(paramResources.getColor(2131101179));
+    this.pxp = new ColorDrawable(paramResources.getColor(2131101179));
     AppMethodBeat.o(9025);
   }
   
@@ -46,8 +46,8 @@ public final class a
       if ((localView2.getVisibility() == 8) || (localView1.getVisibility() == 8)) {
         if ((localView1 instanceof TaskItemView))
         {
-          this.pqJ.setBounds(j, n, k, i1);
-          this.pqJ.draw(paramCanvas);
+          this.pxp.setBounds(j, n, k, i1);
+          this.pxp.draw(paramCanvas);
         }
       }
       for (;;)
@@ -79,8 +79,8 @@ public final class a
             }
             this.amC.setBounds(((TaskItemView)localView1).getNamePaddingLeft() + j, n, k, i1);
             this.amC.draw(paramCanvas);
-            this.pqJ.setBounds(j, n, ((TaskItemView)localView1).getNamePaddingLeft() + j, i1);
-            this.pqJ.draw(paramCanvas);
+            this.pxp.setBounds(j, n, ((TaskItemView)localView1).getNamePaddingLeft() + j, i1);
+            this.pxp.draw(paramCanvas);
             continue;
           }
           label353:
@@ -100,7 +100,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.downloader_app.ui.a
  * JD-Core Version:    0.7.0.1
  */

@@ -14,50 +14,50 @@ public class SensorController
   extends BroadcastReceiver
   implements SensorEventListener
 {
-  private static float Iga = 4.294967E+009F;
-  private static float Igc = 0.5F;
-  public static boolean Igi = false;
-  public static double Igj = -1.0D;
-  private float Igb;
-  private a Igd;
-  private Sensor Ige;
-  private final boolean Igf;
-  private boolean Igg;
-  private float Igh;
+  private static float IAl = 4.294967E+009F;
+  private static float IAn = 0.5F;
+  public static boolean IAt = false;
+  public static double IAu = -1.0D;
+  private float IAm;
+  private a IAo;
+  private Sensor IAp;
+  private final boolean IAq;
+  private boolean IAr;
+  private float IAs;
   public boolean aMy;
   private Context context;
   private SensorManager sensorManager;
-  private float zBV;
+  private float zSX;
   
   public SensorController(Context paramContext)
   {
     AppMethodBeat.i(157825);
-    this.Igg = false;
+    this.IAr = false;
     this.aMy = false;
-    this.zBV = -1.0F;
-    this.Igh = -1.0F;
+    this.zSX = -1.0F;
+    this.IAs = -1.0F;
     if (paramContext == null)
     {
-      this.Igf = false;
+      this.IAq = false;
       AppMethodBeat.o(157825);
       return;
     }
     this.context = paramContext;
     this.sensorManager = ((SensorManager)paramContext.getSystemService("sensor"));
-    this.Ige = this.sensorManager.getDefaultSensor(8);
-    if (this.Ige != null) {
-      this.zBV = Math.min(10.0F, this.Ige.getMaximumRange());
+    this.IAp = this.sensorManager.getDefaultSensor(8);
+    if (this.IAp != null) {
+      this.zSX = Math.min(10.0F, this.IAp.getMaximumRange());
     }
-    if (this.zBV < 0.0F)
+    if (this.zSX < 0.0F)
     {
-      ad.e("MicroMsg.SensorController", "error, getMaximumRange return %s, set to 1", new Object[] { Float.valueOf(this.zBV) });
-      this.zBV = 1.0F;
+      ae.e("MicroMsg.SensorController", "error, getMaximumRange return %s, set to 1", new Object[] { Float.valueOf(this.zSX) });
+      this.zSX = 1.0F;
     }
-    if (this.Ige != null) {}
+    if (this.IAp != null) {}
     for (boolean bool = true;; bool = false)
     {
-      this.Igf = bool;
-      this.Igb = (Igc + 1.0F);
+      this.IAq = bool;
+      this.IAm = (IAn + 1.0F);
       AppMethodBeat.o(157825);
       return;
     }
@@ -66,32 +66,32 @@ public class SensorController
   public final void a(a parama)
   {
     AppMethodBeat.i(157826);
-    ad.i("MicroMsg.SensorController", "sensor callback set, isRegistered:" + this.aMy + ", proximitySensor: " + this.Ige + ", maxValue: " + this.zBV);
+    ae.i("MicroMsg.SensorController", "sensor callback set, isRegistered:" + this.aMy + ", proximitySensor: " + this.IAp + ", maxValue: " + this.zSX);
     if (!this.aMy)
     {
-      this.Igh = -1.0F;
+      this.IAs = -1.0F;
       IntentFilter localIntentFilter = new IntentFilter();
       localIntentFilter.addAction("android.intent.action.HEADSET_PLUG");
       this.context.registerReceiver(this, localIntentFilter);
-      this.sensorManager.registerListener(this, this.Ige, 2);
+      this.sensorManager.registerListener(this, this.IAp, 2);
       this.aMy = true;
     }
-    this.Igd = parama;
+    this.IAo = parama;
     AppMethodBeat.o(157826);
   }
   
-  public final void flC()
+  public final void fpx()
   {
     AppMethodBeat.i(157827);
-    ad.i("MicroMsg.SensorController", "sensor callback removed");
+    ae.i("MicroMsg.SensorController", "sensor callback removed");
     try
     {
       this.context.unregisterReceiver(this);
-      this.sensorManager.unregisterListener(this, this.Ige);
+      this.sensorManager.unregisterListener(this, this.IAp);
       this.sensorManager.unregisterListener(this);
       this.aMy = false;
-      this.Igd = null;
-      this.Igh = -1.0F;
+      this.IAo = null;
+      this.IAs = -1.0F;
       AppMethodBeat.o(157827);
       return;
     }
@@ -99,7 +99,7 @@ public class SensorController
     {
       for (;;)
       {
-        ad.v("MicroMsg.SensorController", "sensor receiver has already unregistered");
+        ae.v("MicroMsg.SensorController", "sensor receiver has already unregistered");
       }
     }
   }
@@ -119,10 +119,10 @@ public class SensorController
     {
       int i = paramIntent.getIntExtra("state", 0);
       if (i == 1) {
-        this.Igg = true;
+        this.IAr = true;
       }
       if (i == 0) {
-        this.Igg = false;
+        this.IAr = false;
       }
     }
     AppMethodBeat.o(157829);
@@ -131,28 +131,28 @@ public class SensorController
   public void onSensorChanged(SensorEvent paramSensorEvent)
   {
     AppMethodBeat.i(157828);
-    if ((paramSensorEvent == null) || (paramSensorEvent.sensor == null) || (this.Ige == null))
+    if ((paramSensorEvent == null) || (paramSensorEvent.sensor == null) || (this.IAp == null))
     {
       AppMethodBeat.o(157828);
       return;
     }
-    if (this.Igg)
+    if (this.IAr)
     {
       AppMethodBeat.o(157828);
       return;
     }
     float f2 = paramSensorEvent.values[0];
     double d = 3.0D;
-    ad.i("MicroMsg.SensorController", "newValue: %s, maxValue: %s, divideRatio: %s, configNearFarDivideRatio: %s, lastValue: %s, maxRange: %s", new Object[] { Float.valueOf(f2), Float.valueOf(this.zBV), Double.valueOf(3.0D), Double.valueOf(Igj), Float.valueOf(this.Igh), Float.valueOf(this.Ige.getMaximumRange()) });
-    if (Igj > 0.0D) {
-      d = Igj;
+    ae.i("MicroMsg.SensorController", "newValue: %s, maxValue: %s, divideRatio: %s, configNearFarDivideRatio: %s, lastValue: %s, maxRange: %s", new Object[] { Float.valueOf(f2), Float.valueOf(this.zSX), Double.valueOf(3.0D), Double.valueOf(IAu), Float.valueOf(this.IAs), Float.valueOf(this.IAp.getMaximumRange()) });
+    if (IAu > 0.0D) {
+      d = IAu;
     }
-    if ((Igj > 0.0D) || (this.zBV < 0.0F)) {}
+    if ((IAu > 0.0D) || (this.zSX < 0.0F)) {}
     float f3;
-    for (float f1 = this.Ige.getMaximumRange();; f1 = this.zBV)
+    for (float f1 = this.IAp.getMaximumRange();; f1 = this.zSX)
     {
       f3 = Math.max(0.1F, (float)(f1 / d));
-      ad.i("MicroMsg.SensorController", "onSensorChanged, near threshold: %s, max: %s", new Object[] { Float.valueOf(f3), Float.valueOf(f1) });
+      ae.i("MicroMsg.SensorController", "onSensorChanged, near threshold: %s, max: %s", new Object[] { Float.valueOf(f3), Float.valueOf(f1) });
       switch (paramSensorEvent.sensor.getType())
       {
       default: 
@@ -160,33 +160,33 @@ public class SensorController
         return;
       }
     }
-    if (this.Igd == null)
+    if (this.IAo == null)
     {
       AppMethodBeat.o(157828);
       return;
     }
-    if (f2 == this.Igh)
+    if (f2 == this.IAs)
     {
       AppMethodBeat.o(157828);
       return;
     }
     if (f2 < f3)
     {
-      ad.i("MicroMsg.SensorController", "sensor near-far event near false");
-      this.Igd.kn(false);
+      ae.i("MicroMsg.SensorController", "sensor near-far event near false");
+      this.IAo.km(false);
     }
     for (;;)
     {
-      this.Igh = f2;
+      this.IAs = f2;
       break;
-      ad.i("MicroMsg.SensorController", "sensor near-far event far true");
-      this.Igd.kn(true);
+      ae.i("MicroMsg.SensorController", "sensor near-far event far true");
+      this.IAo.km(true);
     }
   }
   
   public static abstract interface a
   {
-    public abstract void kn(boolean paramBoolean);
+    public abstract void km(boolean paramBoolean);
   }
 }
 

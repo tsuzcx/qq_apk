@@ -5,10 +5,10 @@ import com.tencent.mm.plugin.finder.model.BaseFinderFeed;
 import com.tencent.mm.plugin.finder.storage.logic.b;
 import com.tencent.mm.plugin.finder.storage.logic.b.a;
 import com.tencent.mm.protocal.protobuf.FinderObject;
-import com.tencent.mm.protocal.protobuf.aok;
-import com.tencent.mm.protocal.protobuf.aoo;
-import com.tencent.mm.protocal.protobuf.apw;
-import com.tencent.mm.protocal.protobuf.arg;
+import com.tencent.mm.protocal.protobuf.aox;
+import com.tencent.mm.protocal.protobuf.apb;
+import com.tencent.mm.protocal.protobuf.aqj;
+import com.tencent.mm.protocal.protobuf.arv;
 import d.a.v;
 import d.f;
 import d.g;
@@ -21,45 +21,45 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedList;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/storage/FinderLbsItem;", "", "section", "Lcom/tencent/mm/protocal/protobuf/FinderNearbySection;", "(Lcom/tencent/mm/protocal/protobuf/FinderNearbySection;)V", "feedList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "getFeedList", "()Ljava/util/LinkedList;", "iconType", "", "getIconType", "()I", "iconUrlDark", "", "getIconUrlDark", "()Ljava/lang/String;", "iconUrlLight", "getIconUrlLight", "id", "", "getId", "()J", "id$delegate", "Lkotlin/Lazy;", "moreActionType", "getMoreActionType", "relatedResp", "Lcom/tencent/mm/protocal/protobuf/FinderGetRelatedListResp;", "getRelatedResp", "()Lcom/tencent/mm/protocal/protobuf/FinderGetRelatedListResp;", "getSection", "()Lcom/tencent/mm/protocal/protobuf/FinderNearbySection;", "sectionDesc", "getSectionDesc", "sectionId", "getSectionId", "sectionInfo", "Lcom/tencent/mm/protocal/protobuf/FinderSectionInfo;", "getSectionInfo", "()Lcom/tencent/mm/protocal/protobuf/FinderSectionInfo;", "sectionSubTitle", "getSectionSubTitle", "sectionTitle", "getSectionTitle", "sectionType", "getSectionType", "streamResp", "Lcom/tencent/mm/protocal/protobuf/FinderStreamResponse;", "getStreamResp", "()Lcom/tencent/mm/protocal/protobuf/FinderStreamResponse;", "topicResp", "Lcom/tencent/mm/protocal/protobuf/FinderGetTopicListResponse;", "getTopicResp", "()Lcom/tencent/mm/protocal/protobuf/FinderGetTopicListResponse;", "Companion", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/storage/FinderLbsItem;", "", "section", "Lcom/tencent/mm/protocal/protobuf/FinderNearbySection;", "(Lcom/tencent/mm/protocal/protobuf/FinderNearbySection;)V", "feedList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "getFeedList", "()Ljava/util/LinkedList;", "iconType", "", "getIconType", "()I", "iconUrlDark", "", "getIconUrlDark", "()Ljava/lang/String;", "iconUrlLight", "getIconUrlLight", "id", "", "getId", "()J", "id$delegate", "Lkotlin/Lazy;", "moreActionType", "getMoreActionType", "relatedResp", "Lcom/tencent/mm/protocal/protobuf/FinderGetRelatedListResp;", "getRelatedResp", "()Lcom/tencent/mm/protocal/protobuf/FinderGetRelatedListResp;", "getSection", "()Lcom/tencent/mm/protocal/protobuf/FinderNearbySection;", "sectionDesc", "getSectionDesc", "sectionId", "getSectionId", "sectionInfo", "Lcom/tencent/mm/protocal/protobuf/FinderSectionInfo;", "getSectionInfo", "()Lcom/tencent/mm/protocal/protobuf/FinderSectionInfo;", "sectionSubTitle", "getSectionSubTitle", "sectionTitle", "getSectionTitle", "sectionType", "getSectionType", "streamResp", "Lcom/tencent/mm/protocal/protobuf/FinderStreamResponse;", "getStreamResp", "()Lcom/tencent/mm/protocal/protobuf/FinderStreamResponse;", "topicResp", "Lcom/tencent/mm/protocal/protobuf/FinderGetTopicListResponse;", "getTopicResp", "()Lcom/tencent/mm/protocal/protobuf/FinderGetTopicListResponse;", "Companion", "plugin-finder_release"})
 public final class m
 {
-  public static final a syw;
-  public final f rWv;
-  public final LinkedList<BaseFinderFeed> syu;
-  public final apw syv;
+  public static final a sJn;
+  public final LinkedList<BaseFinderFeed> sJl;
+  public final aqj sJm;
+  public final f sfg;
   
   static
   {
-    AppMethodBeat.i(203695);
-    syw = new a((byte)0);
-    AppMethodBeat.o(203695);
+    AppMethodBeat.i(204263);
+    sJn = new a((byte)0);
+    AppMethodBeat.o(204263);
   }
   
-  public m(apw paramapw)
+  public m(aqj paramaqj)
   {
-    AppMethodBeat.i(203694);
-    this.syv = paramapw;
-    this.syu = new LinkedList();
-    LinkedList localLinkedList = this.syu;
-    paramapw = this.syv.Gmm;
-    if (paramapw != null)
+    AppMethodBeat.i(204262);
+    this.sJm = paramaqj;
+    this.sJl = new LinkedList();
+    LinkedList localLinkedList = this.sJl;
+    paramaqj = this.sJm.GFu;
+    if (paramaqj != null)
     {
-      paramapw = (Iterable)paramapw;
+      paramaqj = (Iterable)paramaqj;
       Object localObject1 = (Collection)new ArrayList();
-      Object localObject2 = paramapw.iterator();
+      Object localObject2 = paramaqj.iterator();
       Object localObject3;
       label135:
       label138:
       while (((Iterator)localObject2).hasNext())
       {
         localObject3 = ((Iterator)localObject2).next();
-        paramapw = (FinderObject)localObject3;
-        if (paramapw != null)
+        paramaqj = (FinderObject)localObject3;
+        if (paramaqj != null)
         {
-          paramapw = paramapw.objectDesc;
+          paramaqj = paramaqj.objectDesc;
           label107:
-          if (paramapw == null) {
+          if (paramaqj == null) {
             break label135;
           }
         }
@@ -70,130 +70,130 @@ public final class m
           }
           ((Collection)localObject1).add(localObject3);
           break;
-          paramapw = null;
+          paramaqj = null;
           break label107;
         }
       }
       localObject1 = (Iterable)localObject1;
-      paramapw = (Collection)new ArrayList();
+      paramaqj = (Collection)new ArrayList();
       localObject1 = ((Iterable)localObject1).iterator();
       while (((Iterator)localObject1).hasNext())
       {
         localObject2 = (FinderObject)((Iterator)localObject1).next();
-        localObject3 = FinderItem.syk;
+        localObject3 = FinderItem.sJb;
         p.g(localObject2, "feed");
         localObject2 = FinderItem.a.a((FinderObject)localObject2, 1);
-        localObject3 = b.sAs;
-        paramapw.add(b.a.j((FinderItem)localObject2));
+        localObject3 = b.sLq;
+        paramaqj.add(b.a.j((FinderItem)localObject2));
       }
     }
-    for (paramapw = (Collection)paramapw;; paramapw = (Collection)v.MKE)
+    for (paramaqj = (Collection)paramaqj;; paramaqj = (Collection)v.NhH)
     {
-      localLinkedList.addAll(paramapw);
-      this.rWv = g.O((a)new b(this));
-      AppMethodBeat.o(203694);
+      localLinkedList.addAll(paramaqj);
+      this.sfg = g.O((a)new b(this));
+      AppMethodBeat.o(204262);
       return;
     }
   }
   
-  public final String bXX()
+  public final String bZm()
   {
-    AppMethodBeat.i(203689);
-    String str2 = cIu().oLa;
+    AppMethodBeat.i(204257);
+    String str2 = cKZ().oRC;
     String str1 = str2;
     if (str2 == null) {
       str1 = "";
     }
-    AppMethodBeat.o(203689);
+    AppMethodBeat.o(204257);
     return str1;
   }
   
-  public final arg cIu()
+  public final arv cKZ()
   {
-    AppMethodBeat.i(203687);
-    arg localarg2 = this.syv.rJv;
-    arg localarg1 = localarg2;
-    if (localarg2 == null)
+    AppMethodBeat.i(204255);
+    arv localarv2 = this.sJm.rRJ;
+    arv localarv1 = localarv2;
+    if (localarv2 == null)
     {
-      localarg1 = new arg();
-      localarg1.oLa = "";
-      localarg1.GoZ = "";
-      localarg1.Gpa = "";
-      localarg1.Gpb = 0;
-      localarg1.Gpc = 0;
-      localarg1.Gpd = "";
-      localarg1.Gpe = "";
-      localarg1.EYP = "";
-      localarg1.ilN = 0;
+      localarv1 = new arv();
+      localarv1.oRC = "";
+      localarv1.GIp = "";
+      localarv1.GIq = "";
+      localarv1.GIr = 0;
+      localarv1.GIs = 0;
+      localarv1.GIt = "";
+      localarv1.GIu = "";
+      localarv1.Frk = "";
+      localarv1.ioG = 0;
     }
-    AppMethodBeat.o(203687);
-    return localarg1;
+    AppMethodBeat.o(204255);
+    return localarv1;
   }
   
-  public final String cIv()
+  public final String cLa()
   {
-    AppMethodBeat.i(203688);
-    String str2 = cIu().GoZ;
+    AppMethodBeat.i(204256);
+    String str2 = cKZ().GIp;
     String str1 = str2;
     if (str2 == null) {
       str1 = "";
     }
-    AppMethodBeat.o(203688);
+    AppMethodBeat.o(204256);
     return str1;
   }
   
-  public final String cIw()
+  public final String cLb()
   {
-    AppMethodBeat.i(203690);
-    String str2 = cIu().Gpa;
+    AppMethodBeat.i(204258);
+    String str2 = cKZ().GIq;
     String str1 = str2;
     if (str2 == null) {
       str1 = "";
     }
-    AppMethodBeat.o(203690);
+    AppMethodBeat.o(204258);
     return str1;
   }
   
-  public final String cIx()
+  public final String cLc()
   {
-    AppMethodBeat.i(203691);
-    String str2 = cIu().Gpd;
+    AppMethodBeat.i(204259);
+    String str2 = cKZ().GIt;
     String str1 = str2;
     if (str2 == null) {
       str1 = "";
     }
-    AppMethodBeat.o(203691);
+    AppMethodBeat.o(204259);
     return str1;
   }
   
-  public final aoo cIy()
+  public final apb cLd()
   {
-    AppMethodBeat.i(203692);
-    aoo localaoo2 = cIu().Gpf;
-    aoo localaoo1 = localaoo2;
-    if (localaoo2 == null) {
-      localaoo1 = new aoo();
+    AppMethodBeat.i(204260);
+    apb localapb2 = cKZ().GIv;
+    apb localapb1 = localapb2;
+    if (localapb2 == null) {
+      localapb1 = new apb();
     }
-    AppMethodBeat.o(203692);
-    return localaoo1;
+    AppMethodBeat.o(204260);
+    return localapb1;
   }
   
-  public final aok cIz()
+  public final aox cLe()
   {
-    AppMethodBeat.i(203693);
-    aok localaok2 = cIu().Gpg;
-    aok localaok1 = localaok2;
-    if (localaok2 == null) {
-      localaok1 = new aok();
+    AppMethodBeat.i(204261);
+    aox localaox2 = cKZ().GIw;
+    aox localaox1 = localaox2;
+    if (localaox2 == null) {
+      localaox1 = new aox();
     }
-    AppMethodBeat.o(203693);
-    return localaok1;
+    AppMethodBeat.o(204261);
+    return localaox1;
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/storage/FinderLbsItem$Companion;", "", "()V", "careSectionType", "", "sectionType", "", "plugin-finder_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/storage/FinderLbsItem$Companion;", "", "()V", "careSectionType", "", "sectionType", "", "plugin-finder_release"})
   public static final class a {}
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
   static final class b
     extends q
     implements a<Long>

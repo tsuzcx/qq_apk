@@ -7,12 +7,12 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a$a
 {
-  public static String bd(Context paramContext, String paramString)
+  public static String bf(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(197732);
+    AppMethodBeat.i(219204);
     if ((paramContext == null) || (TextUtils.isEmpty(paramString)))
     {
-      AppMethodBeat.o(197732);
+      AppMethodBeat.o(219204);
       return "";
     }
     try
@@ -22,13 +22,13 @@ public final class a$a
       if (paramContext != null)
       {
         paramContext = paramContext.toString();
-        AppMethodBeat.o(197732);
+        AppMethodBeat.o(219204);
         return paramContext;
       }
     }
     catch (Throwable paramContext)
     {
-      AppMethodBeat.o(197732);
+      AppMethodBeat.o(219204);
     }
     return "";
   }

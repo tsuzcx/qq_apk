@@ -5,8 +5,8 @@ import org.json.JSONObject;
 
 public class c
 {
-  public JSONObject cEZ;
-  public b cFa;
+  public JSONObject cFG;
+  public b cFH;
   public String key;
   public String tag;
   public int type;
@@ -20,14 +20,14 @@ public class c
   
   public c(JSONObject paramJSONObject)
   {
-    this.cEZ = paramJSONObject;
+    this.cFG = paramJSONObject;
   }
   
   public String toString()
   {
     String str = "";
-    if (this.cEZ != null) {
-      str = this.cEZ.toString();
+    if (this.cFG != null) {
+      str = this.cFG.toString();
     }
     return String.format("tag[%s]type[%d];key[%s];content[%s]", new Object[] { this.tag, Integer.valueOf(this.type), this.key, str });
   }

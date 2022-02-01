@@ -5,15 +5,17 @@ import android.media.MediaExtractor;
 import android.media.MediaFormat;
 import android.view.Surface;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ad.c;
+import com.tencent.mm.ac.c;
 import com.tencent.mm.media.d.f;
+import com.tencent.mm.media.d.i;
 import com.tencent.mm.media.i.e.c;
 import com.tencent.mm.media.i.e.d;
 import com.tencent.mm.media.i.e.e;
 import com.tencent.mm.plugin.sight.base.SightVideoJNI;
 import com.tencent.mm.plugin.vlog.model.ab;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.vfs.o;
 import d.g.a.m;
 import d.g.b.p;
 import d.g.b.q;
@@ -21,27 +23,27 @@ import d.n.n;
 import d.v;
 import d.z;
 
-@d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/vlog/player/VLogVideoPlayer;", "Lcom/tencent/mm/plugin/vlog/player/MaterialPlayer;", "texture", "", "drawWidth", "drawHeight", "material", "Lcom/tencent/mm/plugin/vlog/model/VideoMaterial;", "mute", "", "(IIILcom/tencent/mm/plugin/vlog/model/VideoMaterial;Z)V", "canPlaying", "didCheckCrop", "lastSurfaceUpdatedTime", "", "player", "Lcom/tencent/mm/plugin/mmplayer/VideoPlayer;", "playerCallback", "Lcom/tencent/mm/plugin/mmplayer/IPlayerCallback;", "prepareLock", "Ljava/lang/Object;", "seekLock", "seekTime", "surface", "Landroid/view/Surface;", "surfaceTexture", "Landroid/graphics/SurfaceTexture;", "videoIsPrepared", "checkCropRect", "", "enableMute", "isMirror", "isOES", "isPlaying", "pause", "playing", "pts", "updateTex", "prepare", "readyAt", "release", "resume", "start", "stop", "Companion", "plugin-vlog_release"})
+@d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/vlog/player/VLogVideoPlayer;", "Lcom/tencent/mm/plugin/vlog/player/MaterialPlayer;", "texture", "", "drawWidth", "drawHeight", "material", "Lcom/tencent/mm/plugin/vlog/model/VideoMaterial;", "mute", "", "(IIILcom/tencent/mm/plugin/vlog/model/VideoMaterial;Z)V", "canPlaying", "didCheckCrop", "lastSurfaceUpdatedTime", "", "player", "Lcom/tencent/mm/plugin/mmplayer/VideoPlayer;", "playerCallback", "Lcom/tencent/mm/plugin/mmplayer/IPlayerCallback;", "prepareLock", "Ljava/lang/Object;", "seekLock", "seekTime", "surface", "Landroid/view/Surface;", "surfaceTexture", "Landroid/graphics/SurfaceTexture;", "videoIsPrepared", "checkCropRect", "", "enableMute", "isMirror", "isOES", "isPlaying", "pause", "playing", "pts", "updateTex", "prepare", "readyAt", "release", "resume", "start", "stop", "Companion", "plugin-vlog_release"})
 public final class l
   extends b
 {
-  public static final a BJc;
-  private long BIW;
-  private final Object BIX;
-  private final Object BIY;
-  private volatile boolean BIZ;
-  private volatile boolean BJa;
-  private boolean BJb;
-  private long lsQ;
-  private com.tencent.mm.plugin.o.j pUJ;
-  private com.tencent.mm.plugin.o.d pUT;
+  public static final a CaB;
+  private boolean CaA;
+  private long Cav;
+  private final Object Caw;
+  private final Object Cax;
+  private volatile boolean Cay;
+  private volatile boolean Caz;
+  private long lxp;
+  private com.tencent.mm.plugin.o.j qbo;
+  private com.tencent.mm.plugin.o.d qby;
   private Surface surface;
   private SurfaceTexture surfaceTexture;
   
   static
   {
     AppMethodBeat.i(111004);
-    BJc = new a((byte)0);
+    CaB = new a((byte)0);
     AppMethodBeat.o(111004);
   }
   
@@ -49,9 +51,9 @@ public final class l
   {
     super(paramInt1, paramInt2, paramInt3, (com.tencent.mm.plugin.vlog.model.l)paramab, paramBoolean);
     AppMethodBeat.i(111003);
-    this.BIX = new Object();
-    this.BIY = new Object();
-    this.pUT = ((com.tencent.mm.plugin.o.d)new c(this));
+    this.Caw = new Object();
+    this.Cax = new Object();
+    this.qby = ((com.tencent.mm.plugin.o.d)new c(this));
     AppMethodBeat.o(111003);
   }
   
@@ -59,15 +61,15 @@ public final class l
   {
     boolean bool = false;
     AppMethodBeat.i(110994);
-    if ((this.pUJ != null) && (this.BJa))
+    if ((this.qbo != null) && (this.Caz))
     {
-      Object localObject = "%d player start surface[%b], seekTime:" + this.BIW;
+      Object localObject = "%d player start surface[%b], seekTime:" + this.Cav;
       i = hashCode();
       if (this.surface != null) {
         bool = true;
       }
-      ad.i("MicroMsg.VLogVideoPlayer", (String)localObject, new Object[] { Integer.valueOf(i), Boolean.valueOf(bool) });
-      localObject = this.pUJ;
+      ae.i("MicroMsg.VLogVideoPlayer", (String)localObject, new Object[] { Integer.valueOf(i), Boolean.valueOf(bool) });
+      localObject = this.qbo;
       if (localObject != null) {
         ((com.tencent.mm.plugin.o.j)localObject).start();
       }
@@ -75,34 +77,34 @@ public final class l
       return true;
     }
     int i = hashCode();
-    if (this.pUJ == null) {}
+    if (this.qbo == null) {}
     for (bool = true;; bool = false)
     {
-      ad.w("MicroMsg.VLogVideoPlayer", "%d player is null[%b] or it prepared [%b]", new Object[] { Integer.valueOf(i), Boolean.valueOf(bool), Boolean.valueOf(this.BJa) });
+      ae.w("MicroMsg.VLogVideoPlayer", "%d player is null[%b] or it prepared [%b]", new Object[] { Integer.valueOf(i), Boolean.valueOf(bool), Boolean.valueOf(this.Caz) });
       AppMethodBeat.o(110994);
       return false;
     }
   }
   
   /* Error */
-  public final void Bm(long paramLong)
+  public final void BK(long paramLong)
   {
     // Byte code:
     //   0: ldc 196
     //   2: invokestatic 87	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: aload_0
-    //   6: getfield 199	com/tencent/mm/plugin/vlog/player/b:BHY	Z
+    //   6: getfield 199	com/tencent/mm/plugin/vlog/player/b:BZx	Z
     //   9: ifeq +16 -> 25
     //   12: ldc 166
     //   14: ldc 201
-    //   16: invokestatic 204	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   16: invokestatic 204	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   19: ldc 196
     //   21: invokestatic 96	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   24: return
     //   25: aload_0
     //   26: iconst_1
-    //   27: putfield 199	com/tencent/mm/plugin/vlog/player/b:BHY	Z
-    //   30: invokestatic 210	com/tencent/mm/sdk/platformtools/bt:HI	()J
+    //   27: putfield 199	com/tencent/mm/plugin/vlog/player/b:BZx	Z
+    //   30: invokestatic 210	com/tencent/mm/sdk/platformtools/bu:HQ	()J
     //   33: lstore 4
     //   35: ldc 166
     //   37: new 143	java/lang/StringBuilder
@@ -110,7 +112,7 @@ public final class l
     //   41: ldc 212
     //   43: invokespecial 148	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   46: aload_0
-    //   47: getfield 216	com/tencent/mm/plugin/vlog/player/b:BHZ	I
+    //   47: getfield 216	com/tencent/mm/plugin/vlog/player/b:BZy	I
     //   50: invokevirtual 219	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   53: ldc 221
     //   55: invokevirtual 224	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -119,7 +121,7 @@ public final class l
     //   62: ldc 226
     //   64: invokevirtual 224	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   67: aload_0
-    //   68: getfield 229	com/tencent/mm/plugin/vlog/player/b:dGc	I
+    //   68: getfield 229	com/tencent/mm/plugin/vlog/player/b:dHi	I
     //   71: invokevirtual 219	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   74: invokevirtual 158	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   77: iconst_2
@@ -133,19 +135,19 @@ public final class l
     //   91: dup
     //   92: iconst_1
     //   93: aload_0
-    //   94: getfield 233	com/tencent/mm/plugin/vlog/player/b:BIa	Lcom/tencent/mm/plugin/vlog/model/l;
+    //   94: getfield 233	com/tencent/mm/plugin/vlog/player/b:BZz	Lcom/tencent/mm/plugin/vlog/model/l;
     //   97: getfield 237	com/tencent/mm/plugin/vlog/model/l:path	Ljava/lang/String;
     //   100: aastore
-    //   101: invokestatic 182	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   101: invokestatic 182	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   104: aload_0
-    //   105: getfield 233	com/tencent/mm/plugin/vlog/player/b:BIa	Lcom/tencent/mm/plugin/vlog/model/l;
+    //   105: getfield 233	com/tencent/mm/plugin/vlog/player/b:BZz	Lcom/tencent/mm/plugin/vlog/model/l;
     //   108: getfield 237	com/tencent/mm/plugin/vlog/model/l:path	Ljava/lang/String;
-    //   111: invokestatic 241	com/tencent/mm/sdk/platformtools/bt:isNullOrNil	(Ljava/lang/String;)Z
+    //   111: invokestatic 241	com/tencent/mm/sdk/platformtools/bu:isNullOrNil	(Ljava/lang/String;)Z
     //   114: ifne +16 -> 130
     //   117: aload_0
-    //   118: getfield 233	com/tencent/mm/plugin/vlog/player/b:BIa	Lcom/tencent/mm/plugin/vlog/model/l;
+    //   118: getfield 233	com/tencent/mm/plugin/vlog/player/b:BZz	Lcom/tencent/mm/plugin/vlog/model/l;
     //   121: getfield 237	com/tencent/mm/plugin/vlog/model/l:path	Ljava/lang/String;
-    //   124: invokestatic 246	com/tencent/mm/vfs/i:fv	(Ljava/lang/String;)Z
+    //   124: invokestatic 246	com/tencent/mm/vfs/o:fB	(Ljava/lang/String;)Z
     //   127: ifne +30 -> 157
     //   130: ldc 166
     //   132: ldc 248
@@ -157,7 +159,7 @@ public final class l
     //   141: invokevirtual 162	com/tencent/mm/plugin/vlog/player/l:hashCode	()I
     //   144: invokestatic 172	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   147: aastore
-    //   148: invokestatic 191	com/tencent/mm/sdk/platformtools/ad:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   148: invokestatic 191	com/tencent/mm/sdk/platformtools/ae:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   151: ldc 196
     //   153: invokestatic 96	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   156: return
@@ -174,12 +176,12 @@ public final class l
     //   175: dup
     //   176: iconst_1
     //   177: aload_0
-    //   178: getfield 233	com/tencent/mm/plugin/vlog/player/b:BIa	Lcom/tencent/mm/plugin/vlog/model/l;
+    //   178: getfield 233	com/tencent/mm/plugin/vlog/player/b:BZz	Lcom/tencent/mm/plugin/vlog/model/l;
     //   181: getfield 237	com/tencent/mm/plugin/vlog/model/l:path	Ljava/lang/String;
     //   184: aastore
-    //   185: invokestatic 182	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   185: invokestatic 182	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   188: aload_0
-    //   189: getfield 252	com/tencent/mm/plugin/vlog/player/l:BJb	Z
+    //   189: getfield 252	com/tencent/mm/plugin/vlog/player/l:CaA	Z
     //   192: ifne +128 -> 320
     //   195: ldc 166
     //   197: new 143	java/lang/StringBuilder
@@ -191,7 +193,7 @@ public final class l
     //   211: bipush 32
     //   213: invokevirtual 256	java/lang/StringBuilder:append	(C)Ljava/lang/StringBuilder;
     //   216: aload_0
-    //   217: getfield 233	com/tencent/mm/plugin/vlog/player/b:BIa	Lcom/tencent/mm/plugin/vlog/model/l;
+    //   217: getfield 233	com/tencent/mm/plugin/vlog/player/b:BZz	Lcom/tencent/mm/plugin/vlog/model/l;
     //   220: getfield 237	com/tencent/mm/plugin/vlog/model/l:path	Ljava/lang/String;
     //   223: invokevirtual 224	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   226: ldc_w 258
@@ -205,7 +207,7 @@ public final class l
     //   246: getfield 266	com/tencent/mm/plugin/vlog/player/b:height	I
     //   249: invokevirtual 219	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   252: invokevirtual 158	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   255: invokestatic 204	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   255: invokestatic 204	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   258: aload_0
     //   259: getfield 261	com/tencent/mm/plugin/vlog/player/b:width	I
     //   262: ifeq +10 -> 272
@@ -222,21 +224,21 @@ public final class l
     //   288: bipush 32
     //   290: invokevirtual 256	java/lang/StringBuilder:append	(C)Ljava/lang/StringBuilder;
     //   293: aload_0
-    //   294: getfield 233	com/tencent/mm/plugin/vlog/player/b:BIa	Lcom/tencent/mm/plugin/vlog/model/l;
+    //   294: getfield 233	com/tencent/mm/plugin/vlog/player/b:BZz	Lcom/tencent/mm/plugin/vlog/model/l;
     //   297: getfield 237	com/tencent/mm/plugin/vlog/model/l:path	Ljava/lang/String;
     //   300: invokevirtual 224	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   303: ldc_w 268
     //   306: invokevirtual 224	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   309: invokevirtual 158	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   312: invokestatic 204	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   312: invokestatic 204	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   315: aload_0
     //   316: iconst_0
-    //   317: putfield 252	com/tencent/mm/plugin/vlog/player/l:BJb	Z
+    //   317: putfield 252	com/tencent/mm/plugin/vlog/player/l:CaA	Z
     //   320: aload_0
     //   321: new 270	android/graphics/SurfaceTexture
     //   324: dup
     //   325: aload_0
-    //   326: getfield 216	com/tencent/mm/plugin/vlog/player/b:BHZ	I
+    //   326: getfield 216	com/tencent/mm/plugin/vlog/player/b:BZy	I
     //   329: invokespecial 272	android/graphics/SurfaceTexture:<init>	(I)V
     //   332: putfield 274	com/tencent/mm/plugin/vlog/player/l:surfaceTexture	Landroid/graphics/SurfaceTexture;
     //   335: aload_0
@@ -248,34 +250,34 @@ public final class l
     //   347: putfield 164	com/tencent/mm/plugin/vlog/player/l:surface	Landroid/view/Surface;
     //   350: aload_0
     //   351: iconst_0
-    //   352: putfield 132	com/tencent/mm/plugin/vlog/player/l:BJa	Z
+    //   352: putfield 132	com/tencent/mm/plugin/vlog/player/l:Caz	Z
     //   355: aload_0
     //   356: new 184	com/tencent/mm/plugin/o/j
     //   359: dup
     //   360: invokestatic 285	android/os/Looper:getMainLooper	()Landroid/os/Looper;
     //   363: invokespecial 288	com/tencent/mm/plugin/o/j:<init>	(Landroid/os/Looper;)V
-    //   366: putfield 138	com/tencent/mm/plugin/vlog/player/l:pUJ	Lcom/tencent/mm/plugin/o/j;
+    //   366: putfield 138	com/tencent/mm/plugin/vlog/player/l:qbo	Lcom/tencent/mm/plugin/o/j;
     //   369: aload_0
-    //   370: getfield 138	com/tencent/mm/plugin/vlog/player/l:pUJ	Lcom/tencent/mm/plugin/o/j;
+    //   370: getfield 138	com/tencent/mm/plugin/vlog/player/l:qbo	Lcom/tencent/mm/plugin/o/j;
     //   373: astore 6
     //   375: aload 6
     //   377: ifnull +15 -> 392
     //   380: aload 6
     //   382: aload_0
-    //   383: getfield 233	com/tencent/mm/plugin/vlog/player/b:BIa	Lcom/tencent/mm/plugin/vlog/model/l;
+    //   383: getfield 233	com/tencent/mm/plugin/vlog/player/b:BZz	Lcom/tencent/mm/plugin/vlog/model/l;
     //   386: getfield 237	com/tencent/mm/plugin/vlog/model/l:path	Ljava/lang/String;
     //   389: invokevirtual 291	com/tencent/mm/plugin/o/j:setPath	(Ljava/lang/String;)V
     //   392: aload_0
-    //   393: getfield 138	com/tencent/mm/plugin/vlog/player/l:pUJ	Lcom/tencent/mm/plugin/o/j;
+    //   393: getfield 138	com/tencent/mm/plugin/vlog/player/l:qbo	Lcom/tencent/mm/plugin/o/j;
     //   396: astore 6
     //   398: aload 6
     //   400: ifnull +12 -> 412
     //   403: aload 6
     //   405: aload_0
-    //   406: getfield 126	com/tencent/mm/plugin/vlog/player/l:pUT	Lcom/tencent/mm/plugin/o/d;
+    //   406: getfield 126	com/tencent/mm/plugin/vlog/player/l:qby	Lcom/tencent/mm/plugin/o/d;
     //   409: invokevirtual 294	com/tencent/mm/plugin/o/j:a	(Lcom/tencent/mm/plugin/o/d;)V
     //   412: aload_0
-    //   413: getfield 138	com/tencent/mm/plugin/vlog/player/l:pUJ	Lcom/tencent/mm/plugin/o/j;
+    //   413: getfield 138	com/tencent/mm/plugin/vlog/player/l:qbo	Lcom/tencent/mm/plugin/o/j;
     //   416: astore 6
     //   418: aload 6
     //   420: ifnull +12 -> 432
@@ -284,16 +286,16 @@ public final class l
     //   426: getfield 164	com/tencent/mm/plugin/vlog/player/l:surface	Landroid/view/Surface;
     //   429: invokevirtual 298	com/tencent/mm/plugin/o/j:setSurface	(Landroid/view/Surface;)V
     //   432: aload_0
-    //   433: getfield 138	com/tencent/mm/plugin/vlog/player/l:pUJ	Lcom/tencent/mm/plugin/o/j;
+    //   433: getfield 138	com/tencent/mm/plugin/vlog/player/l:qbo	Lcom/tencent/mm/plugin/o/j;
     //   436: astore 6
     //   438: aload 6
     //   440: ifnull +12 -> 452
     //   443: aload 6
     //   445: aload_0
-    //   446: getfield 301	com/tencent/mm/plugin/vlog/player/b:hvp	Z
+    //   446: getfield 301	com/tencent/mm/plugin/vlog/player/b:hyd	Z
     //   449: invokevirtual 305	com/tencent/mm/plugin/o/j:setMute	(Z)V
     //   452: aload_0
-    //   453: getfield 138	com/tencent/mm/plugin/vlog/player/l:pUJ	Lcom/tencent/mm/plugin/o/j;
+    //   453: getfield 138	com/tencent/mm/plugin/vlog/player/l:qbo	Lcom/tencent/mm/plugin/o/j;
     //   456: astore 6
     //   458: aload 6
     //   460: ifnull +9 -> 469
@@ -301,7 +303,7 @@ public final class l
     //   465: iconst_0
     //   466: invokevirtual 308	com/tencent/mm/plugin/o/j:setNeedResetExtractor	(Z)V
     //   469: aload_0
-    //   470: getfield 138	com/tencent/mm/plugin/vlog/player/l:pUJ	Lcom/tencent/mm/plugin/o/j;
+    //   470: getfield 138	com/tencent/mm/plugin/vlog/player/l:qbo	Lcom/tencent/mm/plugin/o/j;
     //   473: astore 6
     //   475: aload 6
     //   477: ifnull +9 -> 486
@@ -309,16 +311,16 @@ public final class l
     //   482: iconst_0
     //   483: invokevirtual 311	com/tencent/mm/plugin/o/j:setIsOnlineVideoType	(Z)V
     //   486: aload_0
-    //   487: getfield 138	com/tencent/mm/plugin/vlog/player/l:pUJ	Lcom/tencent/mm/plugin/o/j;
+    //   487: getfield 138	com/tencent/mm/plugin/vlog/player/l:qbo	Lcom/tencent/mm/plugin/o/j;
     //   490: astore 6
     //   492: aload 6
     //   494: ifnull +9 -> 503
     //   497: aload 6
-    //   499: invokevirtual 314	com/tencent/mm/plugin/o/j:cQr	()Z
+    //   499: invokevirtual 314	com/tencent/mm/plugin/o/j:cSW	()Z
     //   502: pop
     //   503: aload_0
     //   504: lload_1
-    //   505: putfield 150	com/tencent/mm/plugin/vlog/player/l:BIW	J
+    //   505: putfield 150	com/tencent/mm/plugin/vlog/player/l:Cav	J
     //   508: ldc 166
     //   510: new 143	java/lang/StringBuilder
     //   513: dup
@@ -329,21 +331,21 @@ public final class l
     //   524: ldc_w 316
     //   527: invokevirtual 224	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   530: invokevirtual 158	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   533: invokestatic 204	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   533: invokestatic 204	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   536: aload_0
-    //   537: getfield 117	com/tencent/mm/plugin/vlog/player/l:BIX	Ljava/lang/Object;
+    //   537: getfield 117	com/tencent/mm/plugin/vlog/player/l:Caw	Ljava/lang/Object;
     //   540: astore 6
     //   542: aload 6
     //   544: monitorenter
     //   545: aload_0
-    //   546: getfield 117	com/tencent/mm/plugin/vlog/player/l:BIX	Ljava/lang/Object;
+    //   546: getfield 117	com/tencent/mm/plugin/vlog/player/l:Caw	Ljava/lang/Object;
     //   549: invokevirtual 319	java/lang/Object:wait	()V
-    //   552: getstatic 325	d/z:MKo	Ld/z;
+    //   552: getstatic 325	d/z:Nhr	Ld/z;
     //   555: astore 7
     //   557: aload 6
     //   559: monitorexit
     //   560: aload_0
-    //   561: getfield 233	com/tencent/mm/plugin/vlog/player/b:BIa	Lcom/tencent/mm/plugin/vlog/model/l;
+    //   561: getfield 233	com/tencent/mm/plugin/vlog/player/b:BZz	Lcom/tencent/mm/plugin/vlog/model/l;
     //   564: astore 6
     //   566: aload 6
     //   568: ifnonnull +432 -> 1000
@@ -376,7 +378,7 @@ public final class l
     //   629: aload 6
     //   631: invokevirtual 337	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   634: aastore
-    //   635: invokestatic 341	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   635: invokestatic 341	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   638: ldc 196
     //   640: invokestatic 96	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   643: return
@@ -390,12 +392,12 @@ public final class l
     //   658: bipush 16
     //   660: irem
     //   661: ifeq +271 -> 932
-    //   664: getstatic 347	com/tencent/mm/plugin/vlog/player/e:BIv	Lcom/tencent/mm/plugin/vlog/player/e;
+    //   664: getstatic 347	com/tencent/mm/plugin/vlog/player/e:BZU	Lcom/tencent/mm/plugin/vlog/player/e;
     //   667: astore 6
     //   669: aload_0
-    //   670: getfield 233	com/tencent/mm/plugin/vlog/player/b:BIa	Lcom/tencent/mm/plugin/vlog/model/l;
+    //   670: getfield 233	com/tencent/mm/plugin/vlog/player/b:BZz	Lcom/tencent/mm/plugin/vlog/model/l;
     //   673: getfield 237	com/tencent/mm/plugin/vlog/model/l:path	Ljava/lang/String;
-    //   676: invokestatic 351	com/tencent/mm/plugin/vlog/player/e:aDs	(Ljava/lang/String;)Lcom/tencent/mm/plugin/vlog/player/a;
+    //   676: invokestatic 351	com/tencent/mm/plugin/vlog/player/e:aEL	(Ljava/lang/String;)Lcom/tencent/mm/plugin/vlog/player/a;
     //   679: astore 6
     //   681: aload 6
     //   683: ifnull +257 -> 940
@@ -413,11 +415,11 @@ public final class l
     //   714: iflt +226 -> 940
     //   717: ldc 166
     //   719: ldc_w 367
-    //   722: invokestatic 204	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   722: invokestatic 204	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   725: aload_0
     //   726: aload 6
-    //   728: getfield 368	com/tencent/mm/plugin/vlog/player/a:dGc	I
-    //   731: putfield 229	com/tencent/mm/plugin/vlog/player/b:dGc	I
+    //   728: getfield 368	com/tencent/mm/plugin/vlog/player/a:dHi	I
+    //   731: putfield 229	com/tencent/mm/plugin/vlog/player/b:dHi	I
     //   734: aload_0
     //   735: aload 6
     //   737: getfield 369	com/tencent/mm/plugin/vlog/player/a:width	I
@@ -452,7 +454,7 @@ public final class l
     //   804: bipush 32
     //   806: invokevirtual 256	java/lang/StringBuilder:append	(C)Ljava/lang/StringBuilder;
     //   809: aload_0
-    //   810: getfield 233	com/tencent/mm/plugin/vlog/player/b:BIa	Lcom/tencent/mm/plugin/vlog/model/l;
+    //   810: getfield 233	com/tencent/mm/plugin/vlog/player/b:BZz	Lcom/tencent/mm/plugin/vlog/model/l;
     //   813: getfield 237	com/tencent/mm/plugin/vlog/model/l:path	Ljava/lang/String;
     //   816: invokevirtual 224	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   819: ldc_w 376
@@ -486,12 +488,12 @@ public final class l
     //   891: getfield 266	com/tencent/mm/plugin/vlog/player/b:height	I
     //   894: invokevirtual 219	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   897: invokevirtual 158	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   900: invokestatic 204	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   900: invokestatic 204	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   903: iconst_1
     //   904: istore_3
     //   905: iload_3
     //   906: ifne -586 -> 320
-    //   909: getstatic 388	com/tencent/e/h:LTJ	Lcom/tencent/e/i;
+    //   909: getstatic 388	com/tencent/e/h:MqF	Lcom/tencent/e/i;
     //   912: new 9	com/tencent/mm/plugin/vlog/player/l$b
     //   915: dup
     //   916: aload_0
@@ -502,7 +504,7 @@ public final class l
     //   931: pop
     //   932: aload_0
     //   933: iconst_1
-    //   934: putfield 252	com/tencent/mm/plugin/vlog/player/l:BJb	Z
+    //   934: putfield 252	com/tencent/mm/plugin/vlog/player/l:CaA	Z
     //   937: goto -617 -> 320
     //   940: iconst_0
     //   941: istore_3
@@ -522,7 +524,7 @@ public final class l
     //   974: invokevirtual 158	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   977: iconst_0
     //   978: anewarray 113	java/lang/Object
-    //   981: invokestatic 341	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   981: invokestatic 341	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   984: goto -432 -> 552
     //   987: astore 7
     //   989: aload 6
@@ -533,7 +535,7 @@ public final class l
     //   999: athrow
     //   1000: aload 6
     //   1002: checkcast 403	com/tencent/mm/plugin/vlog/model/ab
-    //   1005: getfield 406	com/tencent/mm/plugin/vlog/model/ab:BGQ	J
+    //   1005: getfield 406	com/tencent/mm/plugin/vlog/model/ab:BYp	J
     //   1008: lload_1
     //   1009: ladd
     //   1010: l2i
@@ -541,7 +543,7 @@ public final class l
     //   1012: iload_3
     //   1013: ifle +210 -> 1223
     //   1016: aload_0
-    //   1017: getfield 138	com/tencent/mm/plugin/vlog/player/l:pUJ	Lcom/tencent/mm/plugin/o/j;
+    //   1017: getfield 138	com/tencent/mm/plugin/vlog/player/l:qbo	Lcom/tencent/mm/plugin/o/j;
     //   1020: astore 6
     //   1022: aload 6
     //   1024: ifnull +9 -> 1033
@@ -549,7 +551,7 @@ public final class l
     //   1029: iload_3
     //   1030: invokevirtual 409	com/tencent/mm/plugin/o/j:seek	(I)V
     //   1033: aload_0
-    //   1034: getfield 119	com/tencent/mm/plugin/vlog/player/l:BIY	Ljava/lang/Object;
+    //   1034: getfield 119	com/tencent/mm/plugin/vlog/player/l:Cax	Ljava/lang/Object;
     //   1037: astore 6
     //   1039: aload 6
     //   1041: monitorenter
@@ -565,12 +567,12 @@ public final class l
     //   1064: iload_3
     //   1065: invokevirtual 219	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   1068: invokevirtual 158	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1071: invokestatic 204	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1071: invokestatic 204	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   1074: aload_0
-    //   1075: getfield 119	com/tencent/mm/plugin/vlog/player/l:BIY	Ljava/lang/Object;
+    //   1075: getfield 119	com/tencent/mm/plugin/vlog/player/l:Cax	Ljava/lang/Object;
     //   1078: ldc2_w 412
     //   1081: invokevirtual 415	java/lang/Object:wait	(J)V
-    //   1084: getstatic 325	d/z:MKo	Ld/z;
+    //   1084: getstatic 325	d/z:Nhr	Ld/z;
     //   1087: astore 7
     //   1089: aload 6
     //   1091: monitorexit
@@ -584,7 +586,7 @@ public final class l
     //   1108: ldc_w 417
     //   1111: invokevirtual 224	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1114: invokevirtual 158	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1117: invokestatic 204	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1117: invokestatic 204	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   1120: ldc 166
     //   1122: new 143	java/lang/StringBuilder
     //   1125: dup
@@ -595,12 +597,12 @@ public final class l
     //   1136: ldc_w 419
     //   1139: invokevirtual 224	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1142: lload 4
-    //   1144: invokestatic 423	com/tencent/mm/sdk/platformtools/bt:aO	(J)J
+    //   1144: invokestatic 423	com/tencent/mm/sdk/platformtools/bu:aO	(J)J
     //   1147: invokevirtual 154	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   1150: ldc_w 425
     //   1153: invokevirtual 224	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1156: invokevirtual 158	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1159: invokestatic 204	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1159: invokestatic 204	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   1162: ldc 196
     //   1164: invokestatic 96	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   1167: return
@@ -619,7 +621,7 @@ public final class l
     //   1197: invokevirtual 158	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   1200: iconst_0
     //   1201: anewarray 113	java/lang/Object
-    //   1204: invokestatic 341	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   1204: invokestatic 341	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   1207: goto -123 -> 1084
     //   1210: astore 7
     //   1212: aload 6
@@ -642,12 +644,12 @@ public final class l
     //   1249: ldc_w 431
     //   1252: invokevirtual 224	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1255: invokevirtual 158	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1258: invokestatic 204	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1258: invokestatic 204	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   1261: aload_0
     //   1262: iconst_1
-    //   1263: putfield 129	com/tencent/mm/plugin/vlog/player/l:BIZ	Z
+    //   1263: putfield 129	com/tencent/mm/plugin/vlog/player/l:Cay	Z
     //   1266: aload_0
-    //   1267: getfield 138	com/tencent/mm/plugin/vlog/player/l:pUJ	Lcom/tencent/mm/plugin/o/j;
+    //   1267: getfield 138	com/tencent/mm/plugin/vlog/player/l:qbo	Lcom/tencent/mm/plugin/o/j;
     //   1270: astore 6
     //   1272: aload 6
     //   1274: ifnull -154 -> 1120
@@ -664,7 +666,7 @@ public final class l
     //   1301: ldc_w 435
     //   1304: invokevirtual 224	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1307: invokevirtual 158	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1310: invokestatic 204	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1310: invokestatic 204	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   1313: aload_0
     //   1314: invokespecial 437	com/tencent/mm/plugin/vlog/player/l:start	()Z
     //   1317: pop
@@ -721,14 +723,14 @@ public final class l
     //   1170	1207	1210	finally
   }
   
-  public final void H(long paramLong, boolean paramBoolean)
+  public final void J(long paramLong, boolean paramBoolean)
   {
     AppMethodBeat.i(111000);
-    this.BIZ = true;
-    Object localObject = this.pUJ;
+    this.Cay = true;
+    Object localObject = this.qbo;
     if ((localObject != null) && (!((com.tencent.mm.plugin.o.j)localObject).isPlaying()))
     {
-      ad.i("MicroMsg.VLogVideoPlayer", hashCode() + " playing start now");
+      ae.i("MicroMsg.VLogVideoPlayer", hashCode() + " playing start now");
       start();
     }
     if (paramBoolean) {
@@ -746,7 +748,7 @@ public final class l
       }
       catch (Exception localException)
       {
-        ad.printErrStackTrace("MicroMsg.VLogVideoPlayer", (Throwable)localException, hashCode() + " updateTexImage error", new Object[0]);
+        ae.printErrStackTrace("MicroMsg.VLogVideoPlayer", (Throwable)localException, hashCode() + " updateTexImage error", new Object[0]);
       }
     }
     AppMethodBeat.o(111000);
@@ -755,12 +757,12 @@ public final class l
   public final void pause()
   {
     AppMethodBeat.i(110997);
-    com.tencent.mm.plugin.o.j localj = this.pUJ;
+    com.tencent.mm.plugin.o.j localj = this.qbo;
     if (localj != null)
     {
       if (localj.isPlaying() == true)
       {
-        localj = this.pUJ;
+        localj = this.qbo;
         if (localj != null)
         {
           localj.pause();
@@ -780,17 +782,17 @@ public final class l
   {
     int i = 1;
     AppMethodBeat.i(111001);
-    long l1 = bt.HI();
-    if ((bt.isNullOrNil(this.BIa.path)) || (!com.tencent.mm.vfs.i.fv(this.BIa.path))) {
-      ad.e("MicroMsg.VLogVideoPlayer", hashCode() + " prepare file not exist or is null");
+    long l1 = bu.HQ();
+    if ((bu.isNullOrNil(this.BZz.path)) || (!o.fB(this.BZz.path))) {
+      ae.e("MicroMsg.VLogVideoPlayer", hashCode() + " prepare file not exist or is null");
     }
     this.bdb = true;
-    Object localObject1 = e.BIv;
-    localObject1 = e.aDs(this.BIa.path);
+    Object localObject1 = e.BZU;
+    localObject1 = e.aEL(this.BZz.path);
     if (localObject1 != null)
     {
-      ad.i("MicroMsg.VLogVideoPlayer", "prepare get info from cache");
-      this.dGc = ((a)localObject1).dGc;
+      ae.i("MicroMsg.VLogVideoPlayer", "prepare get info from cache");
+      this.dHi = ((a)localObject1).dHi;
       this.width = ((a)localObject1).width;
       this.height = ((a)localObject1).height;
       this.cropLeft = ((a)localObject1).cropLeft;
@@ -801,9 +803,9 @@ public final class l
     Object localObject2;
     while (i != 0)
     {
-      ad.i("MicroMsg.VLogVideoPlayer", "prepare finish get from cache");
-      localObject1 = new StringBuilder().append(hashCode()).append(" prepare video, rotate = ").append(this.dGc).append(", width = ").append(this.width).append(", height = ").append(this.height).append(", startTime = ").append(this.BIa.startTime).append(", endTime = ").append(this.BIa.endTime).append(", videoStartTime = ");
-      localObject2 = this.BIa;
+      ae.i("MicroMsg.VLogVideoPlayer", "prepare finish get from cache");
+      localObject1 = new StringBuilder().append(hashCode()).append(" prepare video, rotate = ").append(this.dHi).append(", width = ").append(this.width).append(", height = ").append(this.height).append(", startTime = ").append(this.BZz.startTime).append(", endTime = ").append(this.BZz.endTime).append(", videoStartTime = ");
+      localObject2 = this.BZz;
       if (localObject2 == null)
       {
         localObject1 = new v("null cannot be cast to non-null type com.tencent.mm.plugin.vlog.model.VideoMaterial");
@@ -813,7 +815,7 @@ public final class l
       }
       else
       {
-        ad.i("MicroMsg.VLogVideoPlayer", ((ab)localObject2).BGQ + ", videoEndTime = " + ((ab)this.BIa).BGR + ", cost:" + bt.aO(l1) + "ms");
+        ae.i("MicroMsg.VLogVideoPlayer", ((ab)localObject2).BYp + ", videoEndTime = " + ((ab)this.BZz).BYq + ", cost:" + bu.aO(l1) + "ms");
         AppMethodBeat.o(111001);
         return;
       }
@@ -822,11 +824,11 @@ public final class l
     {
       try
       {
-        ad.m("MicroMsg.VLogVideoPlayer", hashCode() + " start prepare " + this.BIa.path, new Object[0]);
-        this.dGc = -1;
-        long l2 = bt.HI();
+        ae.m("MicroMsg.VLogVideoPlayer", hashCode() + " start prepare " + this.BZz.path, new Object[0]);
+        this.dHi = -1;
+        long l2 = bu.HQ();
         localObject1 = new MediaExtractor();
-        ((MediaExtractor)localObject1).setDataSource(this.BIa.path);
+        ((MediaExtractor)localObject1).setDataSource(this.BZz.path);
         int j = ((MediaExtractor)localObject1).getTrackCount();
         i = 0;
         if (i < j)
@@ -834,29 +836,29 @@ public final class l
           localObject2 = ((MediaExtractor)localObject1).getTrackFormat(i);
           String str = ((MediaFormat)localObject2).getString("mime");
           p.g(str, "mediaFormat.getString(MediaFormat.KEY_MIME)");
-          if (!n.nz(str, "video")) {
+          if (!n.nF(str, "video")) {
             break label857;
           }
           this.width = ((MediaFormat)localObject2).getInteger("width");
           this.height = ((MediaFormat)localObject2).getInteger("height");
-          if ((com.tencent.mm.compatible.util.d.ly(23)) && (((MediaFormat)localObject2).containsKey("rotation-degrees"))) {
-            this.dGc = ((MediaFormat)localObject2).getInteger("rotation-degrees");
+          if ((com.tencent.mm.compatible.util.d.lA(23)) && (((MediaFormat)localObject2).containsKey("rotation-degrees"))) {
+            this.dHi = ((MediaFormat)localObject2).getInteger("rotation-degrees");
           }
         }
         ((MediaExtractor)localObject1).release();
-        ad.i("MicroMsg.VLogVideoPlayer", hashCode() + " prepare video get width/height cost:" + bt.aO(l2) + "ms, try-get rotate:" + this.dGc);
-        if (this.dGc < 0)
+        ae.i("MicroMsg.VLogVideoPlayer", hashCode() + " prepare video get width/height cost:" + bu.aO(l2) + "ms, try-get rotate:" + this.dHi);
+        if (this.dHi < 0)
         {
-          l2 = bt.HI();
-          this.dGc = SightVideoJNI.getMp4RotateVFS(this.BIa.path);
-          ad.i("MicroMsg.VLogVideoPlayer", hashCode() + " prepare video get rotate cost:" + bt.aO(l2) + "ms");
+          l2 = bu.HQ();
+          this.dHi = SightVideoJNI.getMp4RotateVFS(this.BZz.path);
+          ae.i("MicroMsg.VLogVideoPlayer", hashCode() + " prepare video get rotate cost:" + bu.aO(l2) + "ms");
         }
-        if (this.dGc != 90) {
+        if (this.dHi != 90) {
           break label864;
         }
-        this.dGc = 3;
-        localObject1 = new StringBuilder().append(hashCode()).append(" prepare video, rotate = ").append(this.dGc).append(", width = ").append(this.width).append(", height = ").append(this.height).append(", startTime = ").append(this.BIa.startTime).append(", endTime = ").append(this.BIa.endTime).append(", videoStartTime = ");
-        localObject2 = this.BIa;
+        this.dHi = 3;
+        localObject1 = new StringBuilder().append(hashCode()).append(" prepare video, rotate = ").append(this.dHi).append(", width = ").append(this.width).append(", height = ").append(this.height).append(", startTime = ").append(this.BZz.startTime).append(", endTime = ").append(this.BZz.endTime).append(", videoStartTime = ");
+        localObject2 = this.BZz;
         if (localObject2 != null) {
           break;
         }
@@ -866,7 +868,7 @@ public final class l
       }
       catch (Exception localException)
       {
-        ad.printErrStackTrace("MicroMsg.VLogVideoPlayer", (Throwable)localException, hashCode() + " prepare error", new Object[0]);
+        ae.printErrStackTrace("MicroMsg.VLogVideoPlayer", (Throwable)localException, hashCode() + " prepare error", new Object[0]);
         AppMethodBeat.o(111001);
         return;
       }
@@ -874,38 +876,38 @@ public final class l
       i += 1;
       continue;
       label864:
-      if (this.dGc == 180) {
-        this.dGc = 2;
-      } else if (this.dGc == 270) {
-        this.dGc = 1;
+      if (this.dHi == 180) {
+        this.dHi = 2;
+      } else if (this.dHi == 270) {
+        this.dHi = 1;
       }
     }
-    ad.i("MicroMsg.VLogVideoPlayer", ((ab)localObject2).BGQ + ", videoEndTime = " + ((ab)this.BIa).BGR + ", cost:" + bt.aO(l1) + "ms");
-    e locale = e.BIv;
-    e.o(this.BIa.path, this.width, this.height, this.dGc);
+    ae.i("MicroMsg.VLogVideoPlayer", ((ab)localObject2).BYp + ", videoEndTime = " + ((ab)this.BZz).BYq + ", cost:" + bu.aO(l1) + "ms");
+    e locale = e.BZU;
+    e.o(this.BZz.path, this.width, this.height, this.dHi);
     AppMethodBeat.o(111001);
   }
   
   public final void release()
   {
     AppMethodBeat.i(110996);
-    ad.i("MicroMsg.VLogVideoPlayer", "%d player release [%s]", new Object[] { Integer.valueOf(hashCode()), bt.flS() });
-    this.BHY = false;
-    Object localObject = this.pUJ;
+    ae.i("MicroMsg.VLogVideoPlayer", "%d player release [%s]", new Object[] { Integer.valueOf(hashCode()), bu.fpN() });
+    this.BZx = false;
+    Object localObject = this.qbo;
     if (localObject != null) {
       ((com.tencent.mm.plugin.o.j)localObject).a(null);
     }
-    localObject = this.pUJ;
+    localObject = this.qbo;
     if (localObject != null) {
       ((com.tencent.mm.plugin.o.j)localObject).stop();
     }
-    localObject = this.pUJ;
+    localObject = this.qbo;
     if (localObject != null) {
       ((com.tencent.mm.plugin.o.j)localObject).release();
     }
-    this.pUJ = null;
-    this.BJa = false;
-    this.lsQ = 0L;
+    this.qbo = null;
+    this.Caz = false;
+    this.lxp = 0L;
     localObject = this.surface;
     if (localObject != null) {
       ((Surface)localObject).release();
@@ -923,7 +925,7 @@ public final class l
   public final void resume()
   {
     AppMethodBeat.i(110998);
-    com.tencent.mm.plugin.o.j localj = this.pUJ;
+    com.tencent.mm.plugin.o.j localj = this.qbo;
     if (localj != null)
     {
       if (!localj.isPlaying()) {
@@ -935,38 +937,38 @@ public final class l
     AppMethodBeat.o(110998);
   }
   
-  public final void sR(boolean paramBoolean)
+  public final void sY(boolean paramBoolean)
   {
     AppMethodBeat.i(111002);
-    if (this.hvp != paramBoolean)
+    if (this.hyd != paramBoolean)
     {
-      com.tencent.mm.plugin.o.j localj = this.pUJ;
+      com.tencent.mm.plugin.o.j localj = this.qbo;
       if (localj != null) {
         localj.setMute(paramBoolean);
       }
     }
-    this.hvp = paramBoolean;
+    this.hyd = paramBoolean;
     AppMethodBeat.o(111002);
   }
   
   public final void stop()
   {
     AppMethodBeat.i(110995);
-    this.BHY = false;
-    Object localObject = this.pUJ;
+    this.BZx = false;
+    Object localObject = this.qbo;
     if (localObject != null) {
       ((com.tencent.mm.plugin.o.j)localObject).a(null);
     }
-    localObject = this.pUJ;
+    localObject = this.qbo;
     if (localObject != null) {
       ((com.tencent.mm.plugin.o.j)localObject).stop();
     }
-    localObject = this.pUJ;
+    localObject = this.qbo;
     if (localObject != null) {
       ((com.tencent.mm.plugin.o.j)localObject).release();
     }
-    this.pUJ = null;
-    this.BJa = false;
+    this.qbo = null;
+    this.Caz = false;
     localObject = this.surface;
     if (localObject != null) {
       ((Surface)localObject).release();
@@ -980,10 +982,10 @@ public final class l
     AppMethodBeat.o(110995);
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/vlog/player/VLogVideoPlayer$Companion;", "", "()V", "TAG", "", "plugin-vlog_release"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/vlog/player/VLogVideoPlayer$Companion;", "", "()V", "TAG", "", "plugin-vlog_release"})
   public static final class a {}
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
   static final class b
     implements Runnable
   {
@@ -992,68 +994,68 @@ public final class l
     public final void run()
     {
       AppMethodBeat.i(110989);
-      ad.i("MicroMsg.VLogVideoPlayer", this.BJd.hashCode() + ' ' + this.BJd.BIa.path + " start do check crop rect");
-      final long l = bt.HI();
-      Object localObject = new com.tencent.mm.media.f.a(this.BJd.BIa.path);
+      ae.i("MicroMsg.VLogVideoPlayer", this.CaC.hashCode() + ' ' + this.CaC.BZz.path + " start do check crop rect");
+      final long l = bu.HQ();
+      Object localObject = new com.tencent.mm.media.f.a(this.CaC.BZz.path);
       locale = new com.tencent.mm.media.i.e((com.tencent.mm.media.f.a)localObject, (byte)0);
       localm = (m)new q(l) {};
-      locale.gjf = localm;
+      locale.glx = localm;
       for (;;)
       {
         try
         {
-          if (!com.tencent.mm.compatible.util.d.ly(23)) {
+          if (!com.tencent.mm.compatible.util.d.lA(23)) {
             continue;
           }
-          localObject = (f)new com.tencent.mm.media.d.j(locale.hlB.getDuration() / 1000, locale.hlB, (d.g.a.b)new e.c(locale));
-          locale.hlx = ((f)localObject);
+          localObject = (f)new com.tencent.mm.media.d.j(locale.hoq.getDuration() / 1000, locale.hoq, (d.g.a.b)new e.c(locale));
+          locale.hom = ((f)localObject);
         }
         catch (Exception localException)
         {
-          ad.printErrStackTrace(locale.TAG, (Throwable)localException, "start check init decoder error", new Object[0]);
-          com.tencent.mm.media.k.d locald = com.tencent.mm.media.k.d.hoU;
-          com.tencent.mm.media.k.d.avN();
+          ae.printErrStackTrace(locale.TAG, (Throwable)localException, "start check init decoder error", new Object[0]);
+          com.tencent.mm.media.k.d locald = com.tencent.mm.media.k.d.hrI;
+          com.tencent.mm.media.k.d.awc();
           localm.p(null, locale);
           continue;
         }
-        locale.hlz = c.a("MediaCodecCheckVideoCropRect_decode", false, (d.g.a.a)new e.e(locale));
-        ad.i("MicroMsg.VLogVideoPlayer", this.BJd.hashCode() + " checkCropRect finish cost " + bt.aO(l) + "ms");
+        locale.hoo = c.a("MediaCodecCheckVideoCropRect_decode", false, (d.g.a.a)new e.e(locale));
+        ae.i("MicroMsg.VLogVideoPlayer", this.CaC.hashCode() + " checkCropRect finish cost " + bu.aO(l) + "ms");
         AppMethodBeat.o(110989);
         return;
-        localObject = (f)new com.tencent.mm.media.d.i(locale.hlB.getDuration() / 1000, locale.hlB, (d.g.a.b)new e.d(locale));
+        localObject = (f)new i(locale.hoq.getDuration() / 1000, locale.hoq, (d.g.a.b)new e.d(locale));
       }
     }
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/vlog/player/VLogVideoPlayer$playerCallback$1", "Lcom/tencent/mm/plugin/mmplayer/IPlayerCallback;", "onCompletion", "", "onError", "what", "", "error", "onPrepared", "onSeekComplete", "onVideoSizeChanged", "width", "height", "degrees", "plugin-vlog_release"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/vlog/player/VLogVideoPlayer$playerCallback$1", "Lcom/tencent/mm/plugin/mmplayer/IPlayerCallback;", "onCompletion", "", "onError", "what", "", "error", "onPrepared", "onSeekComplete", "onVideoSizeChanged", "width", "height", "degrees", "plugin-vlog_release"})
   public static final class c
     implements com.tencent.mm.plugin.o.d
   {
     public final void Z(int paramInt1, int paramInt2, int paramInt3)
     {
       AppMethodBeat.i(110993);
-      ad.i("MicroMsg.VLogVideoPlayer", this.BJd.hashCode() + " video size changed size[%d, %d] degrees[%d]", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+      ae.i("MicroMsg.VLogVideoPlayer", this.CaC.hashCode() + " video size changed size[%d, %d] degrees[%d]", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
       AppMethodBeat.o(110993);
     }
     
-    public final void ckp()
+    public final void clF()
     {
       AppMethodBeat.i(110992);
-      Object localObject2 = this.BJd.hashCode() + " %s player seek done";
-      ??? = l.d(this.BJd);
+      Object localObject2 = this.CaC.hashCode() + " %s player seek done";
+      ??? = l.d(this.CaC);
       if (??? != null) {
         ??? = ((com.tencent.mm.plugin.o.j)???).info();
       }
       for (;;)
       {
-        ad.d("MicroMsg.VLogVideoPlayer", (String)localObject2, new Object[] { ??? });
-        synchronized (l.e(this.BJd))
+        ae.d("MicroMsg.VLogVideoPlayer", (String)localObject2, new Object[] { ??? });
+        synchronized (l.e(this.CaC))
         {
           try
           {
-            ad.i("MicroMsg.VLogVideoPlayer", this.BJd.hashCode() + " player seek notifyAll");
-            l.e(this.BJd).notifyAll();
-            localObject2 = z.MKo;
+            ae.i("MicroMsg.VLogVideoPlayer", this.CaC.hashCode() + " player seek notifyAll");
+            l.e(this.CaC).notifyAll();
+            localObject2 = z.Nhr;
             AppMethodBeat.o(110992);
             return;
             ??? = null;
@@ -1062,7 +1064,7 @@ public final class l
           {
             for (;;)
             {
-              ad.printErrStackTrace("MicroMsg.VLogVideoPlayer", (Throwable)localException, this.BJd.hashCode() + " notify seekLock error", new Object[0]);
+              ae.printErrStackTrace("MicroMsg.VLogVideoPlayer", (Throwable)localException, this.CaC.hashCode() + " notify seekLock error", new Object[0]);
             }
           }
         }
@@ -1074,22 +1076,22 @@ public final class l
     public final void onError(int paramInt1, int paramInt2)
     {
       AppMethodBeat.i(110991);
-      ad.i("MicroMsg.VLogVideoPlayer", this.BJd.hashCode() + " onError what:" + paramInt1 + " error :" + paramInt2);
+      ae.i("MicroMsg.VLogVideoPlayer", this.CaC.hashCode() + " onError what:" + paramInt1 + " error :" + paramInt2);
       AppMethodBeat.o(110991);
     }
     
     public final void ta()
     {
       AppMethodBeat.i(110990);
-      ad.i("MicroMsg.VLogVideoPlayer", this.BJd.hashCode() + " onPrepared, canPlaying:" + l.a(this.BJd) + ", notify all");
-      l.b(this.BJd);
-      synchronized (l.c(this.BJd))
+      ae.i("MicroMsg.VLogVideoPlayer", this.CaC.hashCode() + " onPrepared, canPlaying:" + l.a(this.CaC) + ", notify all");
+      l.b(this.CaC);
+      synchronized (l.c(this.CaC))
       {
         try
         {
-          ad.i("MicroMsg.VLogVideoPlayer", this.BJd.hashCode() + " onPrepared notifyAll");
-          l.c(this.BJd).notifyAll();
-          z localz = z.MKo;
+          ae.i("MicroMsg.VLogVideoPlayer", this.CaC.hashCode() + " onPrepared notifyAll");
+          l.c(this.CaC).notifyAll();
+          z localz = z.Nhr;
           AppMethodBeat.o(110990);
           return;
         }
@@ -1097,7 +1099,7 @@ public final class l
         {
           for (;;)
           {
-            ad.printErrStackTrace("MicroMsg.VLogVideoPlayer", (Throwable)localException, "prepare lock notify error", new Object[0]);
+            ae.printErrStackTrace("MicroMsg.VLogVideoPlayer", (Throwable)localException, "prepare lock notify error", new Object[0]);
           }
         }
       }

@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.account.friend.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.cwt;
-import com.tencent.mm.protocal.protobuf.dao;
-import com.tencent.mm.protocal.protobuf.dap;
+import com.tencent.mm.protocal.protobuf.cxn;
+import com.tencent.mm.protocal.protobuf.dbi;
+import com.tencent.mm.protocal.protobuf.dbj;
 
 public final class am
   extends n
@@ -24,14 +24,14 @@ public final class am
   {
     AppMethodBeat.i(131142);
     b.a locala = new b.a();
-    locala.hNM = new dao();
-    locala.hNN = new dap();
+    locala.hQF = new dbi();
+    locala.hQG = new dbj();
     locala.uri = "/cgi-bin/micromsg-bin/sendverifyemail";
     locala.funcId = 108;
-    locala.hNO = 43;
+    locala.hQH = 43;
     locala.respCmdId = 1000000043;
-    this.rr = locala.aDC();
-    ((dao)this.rr.hNK.hNQ).GbY = new cwt().aPy(paramString);
+    this.rr = locala.aDS();
+    ((dbi)this.rr.hQD.hQJ).GuF = new cxn().aQV(paramString);
     AppMethodBeat.o(131142);
   }
   

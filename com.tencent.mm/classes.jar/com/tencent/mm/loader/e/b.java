@@ -3,8 +3,8 @@ package com.tencent.mm.loader.e;
 import com.tencent.mm.loader.d.b.b;
 import com.tencent.mm.loader.f.g;
 import com.tencent.mm.loader.h.a.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
@@ -19,16 +19,16 @@ public final class b
 {
   public final void a(a<String> parama, g paramg, b.b paramb)
   {
-    ad.i("MicroMsg.Loader.DefaultImageDownloader", "[cpan] get image data from url:%s", new Object[] { parama });
+    ae.i("MicroMsg.Loader.DefaultImageDownloader", "[cpan] get image data from url:%s", new Object[] { parama });
     try
     {
-      paramb.a(a.ya((String)parama.value()));
+      paramb.a(a.yK((String)parama.value()));
       return;
     }
     catch (InterruptedException parama)
     {
-      ad.e("MicroMsg.Loader.DefaultImageDownloader", "[cpan] get image data failed.:%s", new Object[] { bt.n(parama) });
-      ad.e("MicroMsg.Loader.DefaultImageDownloader", "[cpan] onError");
+      ae.e("MicroMsg.Loader.DefaultImageDownloader", "[cpan] get image data failed.:%s", new Object[] { bu.o(parama) });
+      ae.e("MicroMsg.Loader.DefaultImageDownloader", "[cpan] onError");
       paramb.onError();
       return;
     }
@@ -36,69 +36,69 @@ public final class b
     {
       for (;;)
       {
-        ad.e("MicroMsg.Loader.DefaultImageDownloader", "[cpan] get image data failed.:%s", new Object[] { bt.n(parama) });
+        ae.e("MicroMsg.Loader.DefaultImageDownloader", "[cpan] get image data failed.:%s", new Object[] { bu.o(parama) });
       }
     }
     catch (SSLHandshakeException parama)
     {
       for (;;)
       {
-        ad.e("MicroMsg.Loader.DefaultImageDownloader", "[cpan] get image data failed.:%s", new Object[] { bt.n(parama) });
+        ae.e("MicroMsg.Loader.DefaultImageDownloader", "[cpan] get image data failed.:%s", new Object[] { bu.o(parama) });
       }
     }
     catch (SocketException parama)
     {
       for (;;)
       {
-        ad.e("MicroMsg.Loader.DefaultImageDownloader", "[cpan] get image data failed.:%s", new Object[] { bt.n(parama) });
+        ae.e("MicroMsg.Loader.DefaultImageDownloader", "[cpan] get image data failed.:%s", new Object[] { bu.o(parama) });
       }
     }
     catch (SocketTimeoutException parama)
     {
       for (;;)
       {
-        ad.e("MicroMsg.Loader.DefaultImageDownloader", "[cpan] get image data failed.:%s", new Object[] { bt.n(parama) });
+        ae.e("MicroMsg.Loader.DefaultImageDownloader", "[cpan] get image data failed.:%s", new Object[] { bu.o(parama) });
       }
     }
     catch (IOException parama)
     {
       for (;;)
       {
-        ad.e("MicroMsg.Loader.DefaultImageDownloader", "[cpan] get image data failed.:%s", new Object[] { bt.n(parama) });
+        ae.e("MicroMsg.Loader.DefaultImageDownloader", "[cpan] get image data failed.:%s", new Object[] { bu.o(parama) });
       }
     }
     catch (Exception parama)
     {
       for (;;)
       {
-        ad.e("MicroMsg.Loader.DefaultImageDownloader", "[cpan] get image data failed.:%s", new Object[] { bt.n(parama) });
+        ae.e("MicroMsg.Loader.DefaultImageDownloader", "[cpan] get image data failed.:%s", new Object[] { bu.o(parama) });
       }
     }
   }
   
   static final class a
   {
-    public static com.tencent.mm.loader.h.b ya(String paramString)
+    public static com.tencent.mm.loader.h.b yK(String paramString)
     {
       paramString = (HttpURLConnection)new URL(paramString).openConnection();
       paramString.setConnectTimeout(15000);
       paramString.setReadTimeout(20000);
       if (paramString == null) {
-        ad.i("MicroMsg.Loader.DefaultImageDownloader.HttpClientFactory", "open connection failed.");
+        ae.i("MicroMsg.Loader.DefaultImageDownloader.HttpClientFactory", "open connection failed.");
       }
       if (paramString.getResponseCode() >= 300) {
         try
         {
           paramString.getInputStream().close();
           paramString.disconnect();
-          ad.w("MicroMsg.Loader.DefaultImageDownloader.HttpClientFactory", "dz[httpURLConnectionGet 300]");
+          ae.w("MicroMsg.Loader.DefaultImageDownloader.HttpClientFactory", "dz[httpURLConnectionGet 300]");
           return null;
         }
         catch (Exception localException1)
         {
           for (;;)
           {
-            ad.e("MicroMsg.Loader.DefaultImageDownloader.HttpClientFactory", localException1.getMessage());
+            ae.e("MicroMsg.Loader.DefaultImageDownloader.HttpClientFactory", localException1.getMessage());
           }
         }
       }
@@ -115,7 +115,7 @@ public final class b
       {
         for (;;)
         {
-          ad.e("MicroMsg.Loader.DefaultImageDownloader.HttpClientFactory", localException2.getMessage());
+          ae.e("MicroMsg.Loader.DefaultImageDownloader.HttpClientFactory", localException2.getMessage());
         }
       }
     }

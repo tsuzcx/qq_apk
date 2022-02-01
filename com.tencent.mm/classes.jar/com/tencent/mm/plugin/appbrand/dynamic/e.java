@@ -2,15 +2,15 @@ package com.tencent.mm.plugin.appbrand.dynamic;
 
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.lang.ref.WeakReference;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class e
 {
-  private static volatile e keZ;
+  private static volatile e kip;
   public Map<String, WeakReference<View>> mViewMap;
   
   private e()
@@ -20,16 +20,16 @@ public class e
     AppMethodBeat.o(121159);
   }
   
-  public static e bfH()
+  public static e bgp()
   {
     AppMethodBeat.i(121160);
-    if (keZ == null) {}
+    if (kip == null) {}
     try
     {
-      if (keZ == null) {
-        keZ = new e();
+      if (kip == null) {
+        kip = new e();
       }
-      e locale = keZ;
+      e locale = kip;
       AppMethodBeat.o(121160);
       return locale;
     }
@@ -39,12 +39,12 @@ public class e
     }
   }
   
-  public final View Oq(String paramString)
+  public final View OY(String paramString)
   {
     AppMethodBeat.i(121162);
-    if (bt.isNullOrNil(paramString))
+    if (bu.isNullOrNil(paramString))
     {
-      ad.w("MicroMsg.DynamicPageViewMgr", "get view from manager failed, key is null or nil.");
+      ae.w("MicroMsg.DynamicPageViewMgr", "get view from manager failed, key is null or nil.");
       AppMethodBeat.o(121162);
       return null;
     }
@@ -62,21 +62,21 @@ public class e
   public final boolean c(String paramString, View paramView)
   {
     AppMethodBeat.i(121161);
-    if (bt.isNullOrNil(paramString))
+    if (bu.isNullOrNil(paramString))
     {
-      ad.w("MicroMsg.DynamicPageViewMgr", "add view into manager failed, key is null or nil.");
+      ae.w("MicroMsg.DynamicPageViewMgr", "add view into manager failed, key is null or nil.");
       AppMethodBeat.o(121161);
       return false;
     }
     if (paramView == null)
     {
-      ad.w("MicroMsg.DynamicPageViewMgr", "add view into manager failed, view is null.");
+      ae.w("MicroMsg.DynamicPageViewMgr", "add view into manager failed, view is null.");
       AppMethodBeat.o(121161);
       return false;
     }
     paramView = (WeakReference)this.mViewMap.put(paramString, new WeakReference(paramView));
     if ((paramView != null) && (paramView.get() != null)) {
-      ad.i("MicroMsg.DynamicPageViewMgr", "add a new view and remove old one with key : %s.", new Object[] { paramString });
+      ae.i("MicroMsg.DynamicPageViewMgr", "add a new view and remove old one with key : %s.", new Object[] { paramString });
     }
     AppMethodBeat.o(121161);
     return true;

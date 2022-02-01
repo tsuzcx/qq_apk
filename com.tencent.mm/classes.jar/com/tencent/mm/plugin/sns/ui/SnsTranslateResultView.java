@@ -14,30 +14,30 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cc.a;
+import com.tencent.mm.cb.a;
 import com.tencent.mm.compatible.util.d;
-import com.tencent.mm.plugin.sns.model.ar;
-import com.tencent.mm.plugin.sns.model.ar.b;
+import com.tencent.mm.plugin.sns.model.as;
+import com.tencent.mm.plugin.sns.model.as.b;
 import com.tencent.mm.pluginsdk.ui.span.k;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.tools.j;
 
 public class SnsTranslateResultView
   extends LinearLayout
 {
-  private static final int Anx;
-  private int AiT;
-  private TextView Anu;
-  private TextView Anv;
-  private View Anw;
-  private float Any;
-  private int Anz;
-  private Drawable idF;
+  private static final int AEK;
+  private int AAe;
+  private TextView AEH;
+  private TextView AEI;
+  private View AEJ;
+  private float AEL;
+  private int AEM;
+  private Drawable igx;
   
   static
   {
     AppMethodBeat.i(99450);
-    Anx = Color.parseColor("#19000000");
+    AEK = Color.parseColor("#19000000");
     AppMethodBeat.o(99450);
   }
   
@@ -45,72 +45,72 @@ public class SnsTranslateResultView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(99444);
-    this.AiT = -1;
-    this.Any = -1.0F;
-    this.Anz = -1;
+    this.AAe = -1;
+    this.AEL = -1.0F;
+    this.AEM = -1;
     LayoutInflater.from(getContext()).inflate(2131495805, this);
-    this.Anu = ((TextView)findViewById(2131305089));
-    this.Anv = ((TextView)findViewById(2131305090));
-    this.Anw = findViewById(2131306076);
-    this.idF = getResources().getDrawable(2131234151);
-    this.idF.setBounds(0, 0, (int)(this.Anv.getTextSize() * 0.8F), (int)(this.Anv.getTextSize() * 0.8F));
-    this.idF.setColorFilter(Anx, PorterDuff.Mode.SRC_IN);
+    this.AEH = ((TextView)findViewById(2131305089));
+    this.AEI = ((TextView)findViewById(2131305090));
+    this.AEJ = findViewById(2131306076);
+    this.igx = getResources().getDrawable(2131234151);
+    this.igx.setBounds(0, 0, (int)(this.AEI.getTextSize() * 0.8F), (int)(this.AEI.getTextSize() * 0.8F));
+    this.igx.setColorFilter(AEK, PorterDuff.Mode.SRC_IN);
     AppMethodBeat.o(99444);
   }
   
-  private void edm()
+  private void egT()
   {
     AppMethodBeat.i(99448);
-    if ((this.Any == -1.0F) && (this.Anz == -1)) {
-      if (this.AiT == 2) {
-        this.Anv.setTextSize(1, 14.0F * a.eb(getContext()));
+    if ((this.AEL == -1.0F) && (this.AEM == -1)) {
+      if (this.AAe == 2) {
+        this.AEI.setTextSize(1, 14.0F * a.ef(getContext()));
       }
     }
-    while (this.AiT == 2)
+    while (this.AAe == 2)
     {
-      this.Anv.setTextColor(getContext().getResources().getColor(2131100933));
+      this.AEI.setTextColor(getContext().getResources().getColor(2131100933));
       AppMethodBeat.o(99448);
       return;
-      if (this.AiT == 1)
+      if (this.AAe == 1)
       {
-        this.Anv.setTextSize(1, 15.0F * a.eb(getContext()));
+        this.AEI.setTextSize(1, 15.0F * a.ef(getContext()));
         continue;
-        this.Anv.setTextSize(this.Anz, this.Any);
+        this.AEI.setTextSize(this.AEM, this.AEL);
       }
     }
-    if (this.AiT == 1) {
-      this.Anv.setTextColor(getContext().getResources().getColor(2131100935));
+    if (this.AAe == 1) {
+      this.AEI.setTextColor(getContext().getResources().getColor(2131100935));
     }
     AppMethodBeat.o(99448);
   }
   
-  public final void Rt(int paramInt)
+  public final void Sa(int paramInt)
   {
     AppMethodBeat.i(99445);
-    this.Anv.setCompoundDrawables(this.idF, null, null, null);
-    this.Anv.setCompoundDrawablePadding(a.fromDPToPix(getContext(), 3));
-    this.Anv.setText(2131764045);
-    j.a(this.Anv, null);
-    this.Anu.setVisibility(4);
-    this.AiT = paramInt;
-    this.Anv.setTextSize(0, this.Anu.getTextSize());
-    this.Anv.setTextColor(getContext().getResources().getColor(2131100934));
+    this.AEI.setCompoundDrawables(this.igx, null, null, null);
+    this.AEI.setCompoundDrawablePadding(a.fromDPToPix(getContext(), 3));
+    this.AEI.setText(2131764045);
+    j.a(this.AEI, null);
+    this.AEH.setVisibility(4);
+    this.AAe = paramInt;
+    this.AEI.setTextSize(0, this.AEH.getTextSize());
+    this.AEI.setTextColor(getContext().getResources().getColor(2131100934));
     AppMethodBeat.o(99445);
   }
   
   @TargetApi(11)
-  public final void a(final ar.b paramb, int paramInt, String paramString1, String paramString2, boolean paramBoolean)
+  public final void a(final as.b paramb, int paramInt, String paramString1, String paramString2, boolean paramBoolean)
   {
     AppMethodBeat.i(99449);
-    this.AiT = paramInt;
-    edm();
-    if (!bt.isNullOrNil(paramString1))
+    this.AAe = paramInt;
+    egT();
+    if (!bu.isNullOrNil(paramString1))
     {
-      this.Anv.setText(paramString1);
-      k.n(this.Anv, 2);
-      this.Anv.setCompoundDrawables(null, null, null, null);
-      if ((paramBoolean) && (d.ly(11))) {
-        j.a(this.Anv, new Animator.AnimatorListener()
+      this.AEI.setText(paramString1);
+      k.o(this.AEI, 2);
+      this.AEI.setCompoundDrawables(null, null, null, null);
+      if ((paramBoolean) && (d.lA(11))) {
+        j.a(this.AEI, new Animator.AnimatorListener()
         {
           public final void onAnimationCancel(Animator paramAnonymousAnimator) {}
           
@@ -118,7 +118,7 @@ public class SnsTranslateResultView
           {
             AppMethodBeat.i(99443);
             if (paramb != null) {
-              ar.a(paramb);
+              as.a(paramb);
             }
             AppMethodBeat.o(99443);
           }
@@ -128,48 +128,48 @@ public class SnsTranslateResultView
           public final void onAnimationStart(Animator paramAnonymousAnimator) {}
         });
       }
-      if (bt.isNullOrNil(paramString2)) {
+      if (bu.isNullOrNil(paramString2)) {
         break label121;
       }
-      this.Anu.setText(paramString2);
+      this.AEH.setText(paramString2);
     }
     for (;;)
     {
-      this.Anu.setVisibility(0);
+      this.AEH.setVisibility(0);
       AppMethodBeat.o(99449);
       return;
-      this.Anv.setText(2131764043);
+      this.AEI.setText(2131764043);
       break;
       label121:
-      this.Anu.setText(2131757326);
+      this.AEH.setText(2131757326);
     }
   }
   
   public TextView getResultTextView()
   {
-    return this.Anv;
+    return this.AEI;
   }
   
   public View getSplitlineView()
   {
-    return this.Anw;
+    return this.AEJ;
   }
   
   public void setResultTextSize(float paramFloat)
   {
     AppMethodBeat.i(99447);
-    this.Anv.setTextSize(0, paramFloat);
-    this.Any = paramFloat;
-    this.Anz = 0;
+    this.AEI.setTextSize(0, paramFloat);
+    this.AEL = paramFloat;
+    this.AEM = 0;
     AppMethodBeat.o(99447);
   }
   
   public final void setResultTextSize$255e752(float paramFloat)
   {
     AppMethodBeat.i(99446);
-    this.Anv.setTextSize(1, paramFloat);
-    this.Any = paramFloat;
-    this.Anz = 1;
+    this.AEI.setTextSize(1, paramFloat);
+    this.AEL = paramFloat;
+    this.AEM = 1;
     AppMethodBeat.o(99446);
   }
 }

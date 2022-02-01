@@ -4,14 +4,14 @@ import com.tencent.kinda.framework.jsapi.KindaJSInvokeListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.ax;
+import com.tencent.mm.model.az;
 import com.tencent.mm.model.b;
-import com.tencent.mm.model.t;
+import com.tencent.mm.model.u;
 import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
 
 public class SubCoreKinda
-  implements ax
+  implements az
 {
   public static final String TAG = "MicroMsg.SubCoreKinda";
   private static HashMap<Integer, h.b> baseDBFactories;
@@ -36,15 +36,15 @@ public class SubCoreKinda
   
   public SubCoreKinda()
   {
-    AppMethodBeat.i(199430);
+    AppMethodBeat.i(193140);
     this.jsInvokeListener = new KindaJSInvokeListener();
-    AppMethodBeat.o(199430);
+    AppMethodBeat.o(193140);
   }
   
   public static SubCoreKinda getCore()
   {
     AppMethodBeat.i(18563);
-    SubCoreKinda localSubCoreKinda = (SubCoreKinda)t.ap(SubCoreKinda.class);
+    SubCoreKinda localSubCoreKinda = (SubCoreKinda)u.ap(SubCoreKinda.class);
     AppMethodBeat.o(18563);
     return localSubCoreKinda;
   }
@@ -59,14 +59,14 @@ public class SubCoreKinda
   public KindaCacheStg getCacheStg()
   {
     AppMethodBeat.i(18565);
-    if (!g.ajx())
+    if (!g.ajM())
     {
       localObject = new b();
       AppMethodBeat.o(18565);
       throw ((Throwable)localObject);
     }
     if (getCore().cacheStg == null) {
-      getCore().cacheStg = new KindaCacheStg(g.ajC().gBq);
+      getCore().cacheStg = new KindaCacheStg(g.ajR().gDX);
     }
     Object localObject = getCore().cacheStg;
     AppMethodBeat.o(18565);
@@ -76,14 +76,14 @@ public class SubCoreKinda
   public KindaConfigCacheStg getConfigCacheStg()
   {
     AppMethodBeat.i(18564);
-    if (!g.ajx())
+    if (!g.ajM())
     {
       localObject = new b();
       AppMethodBeat.o(18564);
       throw ((Throwable)localObject);
     }
     if (getCore().configCacheStg == null) {
-      getCore().configCacheStg = new KindaConfigCacheStg(g.ajC().gBq);
+      getCore().configCacheStg = new KindaConfigCacheStg(g.ajR().gDX);
     }
     Object localObject = getCore().configCacheStg;
     AppMethodBeat.o(18564);
@@ -92,23 +92,23 @@ public class SubCoreKinda
   
   public void onAccountPostReset(boolean paramBoolean)
   {
-    AppMethodBeat.i(199431);
+    AppMethodBeat.i(193141);
     this.jsInvokeListener.alive();
-    AppMethodBeat.o(199431);
+    AppMethodBeat.o(193141);
   }
   
   public void onAccountRelease() {}
   
   public void onSdcardMount(boolean paramBoolean)
   {
-    AppMethodBeat.i(199432);
+    AppMethodBeat.i(193142);
     this.jsInvokeListener.dead();
-    AppMethodBeat.o(199432);
+    AppMethodBeat.o(193142);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.kinda.framework.app.SubCoreKinda
  * JD-Core Version:    0.7.0.1
  */

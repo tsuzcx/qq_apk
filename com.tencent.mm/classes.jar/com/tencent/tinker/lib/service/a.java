@@ -5,25 +5,25 @@ import java.io.Serializable;
 public final class a
   implements Serializable
 {
-  public String MgK;
-  public long MgL;
-  public boolean MgM;
-  public String MgN;
-  public boolean dpX;
+  public String MDH;
+  public long MDI;
+  public boolean MDJ;
+  public String MDK;
+  public boolean drc;
   public Throwable e;
-  public long msQ;
+  public long mxN;
   
   public final String toString()
   {
     StringBuffer localStringBuffer = new StringBuffer();
     localStringBuffer.append("\nPatchResult: \n");
-    localStringBuffer.append("isSuccess:" + this.dpX + "\n");
-    localStringBuffer.append("rawPatchFilePath:" + this.MgK + "\n");
-    localStringBuffer.append("costTime:" + this.msQ + "\n");
-    localStringBuffer.append("dexoptTriggerTime:" + this.MgL + "\n");
-    localStringBuffer.append("isOatGenerated:" + this.MgM + "\n");
-    if (this.MgN != null) {
-      localStringBuffer.append("patchVersion:" + this.MgN + "\n");
+    localStringBuffer.append("isSuccess:" + this.drc + "\n");
+    localStringBuffer.append("rawPatchFilePath:" + this.MDH + "\n");
+    localStringBuffer.append("costTime:" + this.mxN + "\n");
+    localStringBuffer.append("dexoptTriggerTime:" + this.MDI + "\n");
+    localStringBuffer.append("isOatGenerated:" + this.MDJ + "\n");
+    if (this.MDK != null) {
+      localStringBuffer.append("patchVersion:" + this.MDK + "\n");
     }
     if (this.e != null) {
       localStringBuffer.append("Throwable:" + this.e.getMessage() + "\n");

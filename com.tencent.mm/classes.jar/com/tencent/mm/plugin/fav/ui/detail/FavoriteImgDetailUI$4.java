@@ -6,8 +6,8 @@ import android.view.View.OnTouchListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.model.y;
-import com.tencent.mm.model.y.b;
+import com.tencent.mm.model.z;
+import com.tencent.mm.model.z.b;
 
 final class FavoriteImgDetailUI$4
   implements View.OnTouchListener
@@ -20,7 +20,7 @@ final class FavoriteImgDetailUI$4
     b localb = new b();
     localb.bd(paramView);
     localb.bd(paramMotionEvent);
-    a.b("com/tencent/mm/plugin/fav/ui/detail/FavoriteImgDetailUI$12", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahq());
+    a.b("com/tencent/mm/plugin/fav/ui/detail/FavoriteImgDetailUI$12", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahF());
     switch (paramMotionEvent.getAction())
     {
     }
@@ -29,7 +29,7 @@ final class FavoriteImgDetailUI$4
       a.a(false, this, "com/tencent/mm/plugin/fav/ui/detail/FavoriteImgDetailUI$12", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
       AppMethodBeat.o(164096);
       return false;
-      paramView = y.aBq().F("basescanui@datacenter", true);
+      paramView = z.aBG().F("basescanui@datacenter", true);
       paramView.k("key_basescanui_screen_x", Integer.valueOf((int)paramMotionEvent.getRawX()));
       paramView.k("key_basescanui_screen_y", Integer.valueOf((int)paramMotionEvent.getRawY()));
     }

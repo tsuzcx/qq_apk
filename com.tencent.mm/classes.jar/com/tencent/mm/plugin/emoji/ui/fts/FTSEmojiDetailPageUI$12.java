@@ -15,9 +15,9 @@ final class FTSEmojiDetailPageUI$12
     AppMethodBeat.i(109113);
     paraml.setHeaderTitle("");
     int i = 0;
-    while (i < this.pMa.size())
+    while (i < this.pSF.size())
     {
-      paraml.c(((Integer)this.pMa.get(i)).intValue(), (CharSequence)this.pMb.get(i));
+      paraml.d(((Integer)this.pSF.get(i)).intValue(), (CharSequence)this.pSG.get(i));
       i += 1;
     }
     AppMethodBeat.o(109113);

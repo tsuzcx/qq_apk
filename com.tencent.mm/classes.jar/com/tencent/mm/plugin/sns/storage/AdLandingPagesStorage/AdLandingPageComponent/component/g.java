@@ -18,83 +18,83 @@ import android.widget.FrameLayout.LayoutParams;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ac.i;
+import com.tencent.mm.ab.i;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.plugin.sns.model.ac;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ae;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ag;
+import com.tencent.mm.plugin.sns.model.ad;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.af;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ah;
 import com.tencent.mm.plugin.sns.ui.av;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.ui.widget.RoundedCornerFrameLayout;
 
 public final class g
-  extends l
+  extends m
 {
   int clickCount;
   protected View mContentView;
   protected Context mContext;
   protected Handler mHandler;
-  protected TextView zCG;
-  protected FrameLayout zCH;
-  protected ViewGroup zCJ;
-  protected o zCK;
-  protected boolean zCL;
-  protected ag zDm;
-  protected RoundedCornerFrameLayout zDn;
+  protected TextView zTI;
+  protected FrameLayout zTJ;
+  protected ViewGroup zTL;
+  protected p zTM;
+  protected boolean zTN;
+  protected ah zUo;
+  protected RoundedCornerFrameLayout zUp;
   
-  public g(Context paramContext, ag paramag, ViewGroup paramViewGroup)
+  public g(Context paramContext, ah paramah, ViewGroup paramViewGroup)
   {
-    super(paramContext, paramag, paramViewGroup);
-    AppMethodBeat.i(197918);
-    this.zCL = false;
+    super(paramContext, paramah, paramViewGroup);
+    AppMethodBeat.i(219415);
+    this.zTN = false;
     this.clickCount = 0;
     this.mHandler = new Handler(Looper.getMainLooper())
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
-        AppMethodBeat.i(197916);
+        AppMethodBeat.i(219413);
         if (paramAnonymousMessage.what == 1)
         {
           g.this.W(((Boolean)paramAnonymousMessage.obj).booleanValue());
-          AppMethodBeat.o(197916);
+          AppMethodBeat.o(219413);
           return;
         }
         if (paramAnonymousMessage.what == 2) {
           g.this.X(((Boolean)paramAnonymousMessage.obj).booleanValue());
         }
-        AppMethodBeat.o(197916);
+        AppMethodBeat.o(219413);
       }
     };
     this.mContext = paramContext;
-    this.zCJ = paramViewGroup;
-    this.zDm = paramag;
-    dRk();
-    dRl();
-    ad.i("AdLandingFullScreenFloatBarComp", "refreshView, cid=" + paramag.zAg + ", hash=" + hashCode());
-    AppMethodBeat.o(197918);
+    this.zTL = paramViewGroup;
+    this.zUo = paramah;
+    dUI();
+    dUJ();
+    ae.i("AdLandingFullScreenFloatBarComp", "refreshView, cid=" + paramah.zRg + ", hash=" + hashCode());
+    AppMethodBeat.o(219415);
   }
   
-  private static ae dWJ()
+  private static af eal()
   {
-    AppMethodBeat.i(197925);
-    if (ac.ziT != null)
+    AppMethodBeat.i(219422);
+    if (ad.zAi != null)
     {
-      localae = ac.ziT;
-      AppMethodBeat.o(197925);
-      return localae;
+      localaf = ad.zAi;
+      AppMethodBeat.o(219422);
+      return localaf;
     }
-    ae localae = new ae();
-    AppMethodBeat.o(197925);
-    return localae;
+    af localaf = new af();
+    AppMethodBeat.o(219422);
+    return localaf;
   }
   
   protected final void W(boolean paramBoolean)
   {
-    AppMethodBeat.i(197922);
+    AppMethodBeat.i(219419);
     if (this.mContentView.getVisibility() != 0)
     {
       this.mContentView.setVisibility(0);
-      dRm();
+      dUK();
       this.mContentView.clearAnimation();
       if (paramBoolean)
       {
@@ -104,16 +104,16 @@ public final class g
         this.mContentView.startAnimation(localTranslateAnimation);
       }
     }
-    AppMethodBeat.o(197922);
+    AppMethodBeat.o(219419);
   }
   
   protected final void X(boolean paramBoolean)
   {
-    AppMethodBeat.i(197924);
+    AppMethodBeat.i(219421);
     if (this.mContentView.getVisibility() == 0)
     {
       this.mContentView.setVisibility(8);
-      dRn();
+      dUL();
       this.mContentView.clearAnimation();
       if (paramBoolean)
       {
@@ -122,263 +122,233 @@ public final class g
         this.mContentView.startAnimation(localTranslateAnimation);
       }
     }
-    AppMethodBeat.o(197924);
+    AppMethodBeat.o(219421);
   }
   
-  public final void dRk()
+  public final void dUI()
   {
-    AppMethodBeat.i(197919);
-    View localView = LayoutInflater.from(this.mContext).inflate(2131496426, this.zCJ, false);
+    AppMethodBeat.i(219416);
+    View localView = LayoutInflater.from(this.mContext).inflate(2131496426, this.zTL, false);
     this.mContentView = localView;
-    this.zCG = ((TextView)localView.findViewById(2131300136));
-    this.zCH = ((FrameLayout)localView.findViewById(2131300135));
-    this.zDn = ((RoundedCornerFrameLayout)localView.findViewById(2131300132));
-    this.zDn.setRadius(0.0F);
-    this.zCJ.addView(this.mContentView);
+    this.zTI = ((TextView)localView.findViewById(2131300136));
+    this.zTJ = ((FrameLayout)localView.findViewById(2131300135));
+    this.zUp = ((RoundedCornerFrameLayout)localView.findViewById(2131300132));
+    this.zUp.setRadius(0.0F);
+    this.zTL.addView(this.mContentView);
     this.mContentView.setVisibility(8);
-    AppMethodBeat.o(197919);
+    AppMethodBeat.o(219416);
   }
   
-  protected final void dRl()
+  protected final void dUJ()
   {
-    AppMethodBeat.i(197920);
-    if (!TextUtils.isEmpty(this.zDm.desc))
+    AppMethodBeat.i(219417);
+    if (!TextUtils.isEmpty(this.zUo.desc))
     {
-      this.zCG.setText(this.zDm.desc);
-      this.zCG.setVisibility(0);
+      this.zTI.setText(this.zUo.desc);
+      this.zTI.setVisibility(0);
     }
     for (;;)
     {
-      if (!TextUtils.isEmpty(this.zDm.zAw)) {}
+      if (!TextUtils.isEmpty(this.zUo.zRw)) {}
       try
       {
-        this.zCG.setTextColor(Color.parseColor(this.zDm.zAw));
-        this.zCH.removeAllViews();
-        Object localObject = av.a(this.mContext, this.zDm.zAB, this.zCH, 0);
-        if ((localObject instanceof o))
+        this.zTI.setTextColor(Color.parseColor(this.zUo.zRw));
+        this.zTJ.removeAllViews();
+        Object localObject = av.a(this.mContext, this.zUo.zRB, this.zTJ, 0);
+        if ((localObject instanceof p))
         {
-          this.zCK = ((o)localObject);
-          this.zCK.a(this.zDm.zAB, dWJ());
-          if (this.zCK != null)
+          this.zTM = ((p)localObject);
+          this.zTM.a(this.zUo.zRB, eal());
+          if (this.zTM != null)
           {
-            localObject = this.zCK.getView();
-            this.zCH.addView((View)localObject);
+            localObject = this.zTM.getView();
+            this.zTJ.addView((View)localObject);
           }
-          this.zCL = this.zDm.zAx;
+          this.zTN = this.zUo.zRx;
           this.mContentView.setOnClickListener(new View.OnClickListener()
           {
             public final void onClick(View paramAnonymousView)
             {
-              AppMethodBeat.i(197915);
+              AppMethodBeat.i(219412);
               b localb = new b();
               localb.bd(paramAnonymousView);
-              com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/AdLandingFullScreenFloatBarComp$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-              if (!g.this.zCL)
+              com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/AdLandingFullScreenFloatBarComp$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+              if (!g.this.zTN)
               {
                 com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/AdLandingFullScreenFloatBarComp$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-                AppMethodBeat.o(197915);
+                AppMethodBeat.o(219412);
                 return;
               }
               paramAnonymousView = g.this;
               paramAnonymousView.clickCount += 1;
-              if (g.this.zCK != null) {
+              if (g.this.zTM != null) {
                 paramAnonymousView = null;
               }
               for (;;)
               {
                 try
                 {
-                  if ((g.this.zCK instanceof p))
+                  if ((g.this.zTM instanceof q))
                   {
-                    paramAnonymousView = ((p)g.this.zCK).zEd;
+                    paramAnonymousView = ((q)g.this.zTM).zVi;
                     if (paramAnonymousView != null)
                     {
                       paramAnonymousView.performClick();
-                      i = g.this.zCK.clickCount;
-                      ad.i("AdLandingFullScreenFloatBarComp", "onClick, clickCount=" + g.this.clickCount + ", btnClickCount=" + i);
+                      i = g.this.zTM.clickCount;
+                      ae.i("AdLandingFullScreenFloatBarComp", "onClick, clickCount=" + g.this.clickCount + ", btnClickCount=" + i);
                       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/AdLandingFullScreenFloatBarComp$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-                      AppMethodBeat.o(197915);
+                      AppMethodBeat.o(219412);
                     }
                   }
                   else
                   {
-                    if (!(g.this.zCK instanceof r)) {
+                    if (!(g.this.zTM instanceof s)) {
                       continue;
                     }
-                    paramAnonymousView = ((r)g.this.zCK).zEo;
+                    paramAnonymousView = ((s)g.this.zTM).zVu;
                     continue;
                   }
-                  ad.e("AdLandingFullScreenFloatBarComp", "onClick noBtn found, comp=" + g.this.zCK);
+                  ae.e("AdLandingFullScreenFloatBarComp", "onClick noBtn found, comp=" + g.this.zTM);
                   continue;
                   int i = 0;
                 }
                 catch (Exception paramAnonymousView)
                 {
-                  ad.e("AdLandingFullScreenFloatBarComp", "onClick exp=" + paramAnonymousView.toString());
+                  ae.e("AdLandingFullScreenFloatBarComp", "onClick exp=" + paramAnonymousView.toString());
                 }
               }
             }
           });
-          AppMethodBeat.o(197920);
+          AppMethodBeat.o(219417);
           return;
-          this.zCG.setVisibility(8);
+          this.zTI.setVisibility(8);
         }
       }
       catch (Exception localException)
       {
         for (;;)
         {
-          ad.e("AdLandingFullScreenFloatBarComp", "refreshView descColor, exp=" + localException.toString() + ", color=" + this.zDm.zAw);
+          ae.e("AdLandingFullScreenFloatBarComp", "refreshView descColor, exp=" + localException.toString() + ", color=" + this.zUo.zRw);
           continue;
-          ad.e("AdLandingFullScreenFloatBarComp", "btnComp=".concat(String.valueOf(localException)));
+          ae.e("AdLandingFullScreenFloatBarComp", "btnComp=".concat(String.valueOf(localException)));
         }
       }
     }
   }
   
-  public final void dRm()
+  public final void dUK()
   {
-    AppMethodBeat.i(197926);
-    super.dRm();
-    if (this.zCK != null) {
-      this.zCK.dRm();
+    AppMethodBeat.i(219423);
+    super.dUK();
+    if (this.zTM != null) {
+      this.zTM.dUK();
     }
-    ad.i("AdLandingFullScreenFloatBarComp", "viewWillAppear");
-    AppMethodBeat.o(197926);
+    ae.i("AdLandingFullScreenFloatBarComp", "viewWillAppear");
+    AppMethodBeat.o(219423);
   }
   
-  public final void dRn()
+  public final void dUL()
   {
-    AppMethodBeat.i(197927);
-    super.dRn();
-    if (this.zCK != null)
+    AppMethodBeat.i(219424);
+    super.dUL();
+    if (this.zTM != null)
     {
-      this.zCK.dRn();
-      ad.i("AdLandingFullScreenFloatBarComp", "viewWillDisappear, mBtnComponent exposureCount = " + this.zCK.zDL + ", mBtnComponent stayTime = " + this.zCK.dBD + ", mBtnComponent cid = " + this.zCK.dWV());
+      this.zTM.dUL();
+      ae.i("AdLandingFullScreenFloatBarComp", "viewWillDisappear, mBtnComponent exposureCount = " + this.zTM.zUQ + ", mBtnComponent stayTime = " + this.zTM.dCI + ", mBtnComponent cid = " + this.zTM.eaz());
     }
-    ad.i("AdLandingFullScreenFloatBarComp", "viewWillDisappear, exposureCount = " + this.zDL + ", stayTime = " + this.dBD);
-    AppMethodBeat.o(197927);
+    ae.i("AdLandingFullScreenFloatBarComp", "viewWillDisappear, exposureCount = " + this.zUQ + ", stayTime = " + this.dCI);
+    AppMethodBeat.o(219424);
   }
   
-  public final void dRo()
+  public final void dUM()
   {
-    AppMethodBeat.i(197928);
-    super.dRo();
-    if (this.zCK != null)
+    AppMethodBeat.i(219425);
+    super.dUM();
+    if (this.zTM != null)
     {
-      this.zCK.dRo();
-      ad.i("AdLandingFullScreenFloatBarComp", "viewWillDestroy, mBtnComponent exposureCount = " + this.zCK.zDL + ", mBtnComponent stayTime = " + this.zCK.dBD + ", mBtnComponent cid = " + this.zCK.dWV());
+      this.zTM.dUM();
+      ae.i("AdLandingFullScreenFloatBarComp", "viewWillDestroy, mBtnComponent exposureCount = " + this.zTM.zUQ + ", mBtnComponent stayTime = " + this.zTM.dCI + ", mBtnComponent cid = " + this.zTM.eaz());
     }
     this.mHandler.removeCallbacksAndMessages(null);
-    ad.i("AdLandingFullScreenFloatBarComp", "viewWillDestroy");
-    AppMethodBeat.o(197928);
+    ae.i("AdLandingFullScreenFloatBarComp", "viewWillDestroy");
+    AppMethodBeat.o(219425);
   }
   
-  public final void dWI()
+  public final void eak()
   {
-    AppMethodBeat.i(197921);
+    AppMethodBeat.i(219418);
     this.mHandler.removeCallbacksAndMessages(null);
     Message localMessage = this.mHandler.obtainMessage(1, Boolean.TRUE);
     this.mHandler.sendMessageDelayed(localMessage, 0L);
-    AppMethodBeat.o(197921);
+    AppMethodBeat.o(219418);
   }
   
-  public final void dWK()
+  public final void eam()
   {
-    AppMethodBeat.i(197929);
-    int i = com.tencent.mm.cc.a.fromDPToPix(this.mContext, 44);
+    AppMethodBeat.i(219426);
+    int i = com.tencent.mm.cb.a.fromDPToPix(this.mContext, 44);
     if ((this.mContentView.getLayoutParams() instanceof FrameLayout.LayoutParams))
     {
       FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.mContentView.getLayoutParams();
       localLayoutParams.leftMargin = i;
       localLayoutParams.rightMargin = i;
     }
-    if ((this.zCH.getLayoutParams() instanceof LinearLayout.LayoutParams)) {
-      ((LinearLayout.LayoutParams)this.zCH.getLayoutParams()).leftMargin = com.tencent.mm.cc.a.fromDPToPix(this.mContext, 24);
+    if ((this.zTJ.getLayoutParams() instanceof LinearLayout.LayoutParams)) {
+      ((LinearLayout.LayoutParams)this.zTJ.getLayoutParams()).leftMargin = com.tencent.mm.cb.a.fromDPToPix(this.mContext, 24);
     }
-    AppMethodBeat.o(197929);
+    AppMethodBeat.o(219426);
   }
   
-  public final void dWL()
+  public final void ean()
   {
-    AppMethodBeat.i(197930);
+    AppMethodBeat.i(219427);
     if ((this.mContentView.getLayoutParams() instanceof FrameLayout.LayoutParams))
     {
       FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.mContentView.getLayoutParams();
       localLayoutParams.leftMargin = 0;
       localLayoutParams.rightMargin = 0;
     }
-    AppMethodBeat.o(197930);
+    AppMethodBeat.o(219427);
   }
   
-  public final String dWM()
+  public final String eao()
   {
-    AppMethodBeat.i(197931);
+    AppMethodBeat.i(219428);
     try
     {
-      Object localObject = this.zCK;
+      Object localObject = this.zTM;
       if (localObject != null)
       {
-        if (this.zCK != null)
+        if (this.zTM != null)
         {
-          this.zCK.clickCount -= this.clickCount;
-          ad.i("AdLandingFullScreenFloatBarComp", "btn kv, clickCount=" + this.zCK.clickCount + ", stayTime=" + this.zCK.dBD);
+          this.zTM.clickCount -= this.clickCount;
+          ae.i("AdLandingFullScreenFloatBarComp", "btn kv, clickCount=" + this.zTM.clickCount + ", stayTime=" + this.zTM.dCI);
         }
-        localObject = new a(this.zDL, this.dBD, this.clickCount, ((o)localObject).dWV(), ((l)localObject).zDL, ((l)localObject).dBD, ((o)localObject).clickCount).zDp.toString();
-        AppMethodBeat.o(197931);
+        localObject = new g.a(this.zUQ, this.dCI, this.clickCount, ((p)localObject).eaz(), ((m)localObject).zUQ, ((m)localObject).dCI, ((p)localObject).clickCount).zUr.toString();
+        AppMethodBeat.o(219428);
         return localObject;
       }
     }
     catch (Throwable localThrowable)
     {
-      ad.e("AdLandingFullScreenFloatBarComp", localThrowable.toString());
-      AppMethodBeat.o(197931);
+      ae.e("AdLandingFullScreenFloatBarComp", localThrowable.toString());
+      AppMethodBeat.o(219428);
     }
     return "";
   }
   
-  public final void rC(boolean paramBoolean)
+  public final void rJ(boolean paramBoolean)
   {
-    AppMethodBeat.i(197923);
+    AppMethodBeat.i(219420);
     this.mHandler.removeCallbacksAndMessages(null);
     Message localMessage = this.mHandler.obtainMessage(2, Boolean.valueOf(paramBoolean));
     this.mHandler.sendMessageDelayed(localMessage, 0L);
-    AppMethodBeat.o(197923);
-  }
-  
-  public static final class a
-  {
-    i zDp;
-    
-    public a(int paramInt1, long paramLong1, int paramInt2, String paramString, int paramInt3, long paramLong2, int paramInt4)
-    {
-      AppMethodBeat.i(197917);
-      this.zDp = new i();
-      try
-      {
-        i locali = new i();
-        locali.h("cid", paramString);
-        locali.R("exposureCount", paramInt3);
-        locali.u("stayTime", paramLong2);
-        locali.R("clickCount", paramInt4);
-        this.zDp.R("exposureCount", paramInt1);
-        this.zDp.u("stayTime", paramLong1);
-        this.zDp.R("clickCount", paramInt2);
-        this.zDp.h("btnInfo", locali);
-        AppMethodBeat.o(197917);
-        return;
-      }
-      catch (Throwable paramString)
-      {
-        ad.e("AdLandingFullScreenFloatBarComp", paramString.toString());
-        AppMethodBeat.o(197917);
-      }
-    }
+    AppMethodBeat.o(219420);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.g
  * JD-Core Version:    0.7.0.1
  */

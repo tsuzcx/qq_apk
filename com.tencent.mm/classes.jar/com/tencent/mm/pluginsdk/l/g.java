@@ -15,14 +15,12 @@ import android.hardware.SensorManager;
 import android.os.Build.VERSION;
 import android.view.SurfaceHolder;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.deviceinfo.ae;
 import com.tencent.mm.compatible.deviceinfo.c;
 import com.tencent.mm.compatible.deviceinfo.d.a.a;
 import com.tencent.mm.compatible.deviceinfo.h;
 import com.tencent.mm.compatible.deviceinfo.v;
 import com.tencent.mm.compatible.util.f;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ak;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -30,42 +28,42 @@ import java.util.List;
 public final class g
   implements SensorEventListener
 {
-  private static int vNE = 0;
-  private SurfaceHolder Bps;
-  private a ERA;
-  public List<Integer> ERB;
-  private boolean ERC;
-  private boolean ERD;
-  private Camera.AutoFocusCallback ERE;
-  public v fYS;
-  d.a.a hpP;
+  private static int vZH = 0;
+  private SurfaceHolder BGR;
+  private a FjV;
+  public List<Integer> FjW;
+  private boolean FjX;
+  private boolean FjY;
+  private Camera.AutoFocusCallback FjZ;
+  public v gaZ;
+  d.a.a hsD;
   private Camera.PreviewCallback mPreviewCallback;
   private SensorManager mSensorManager;
-  private boolean vND;
-  private Sensor vNG;
-  private float vNH;
-  private float vNI;
-  private float vNJ;
+  private boolean vZG;
+  private Sensor vZJ;
+  private float vZK;
+  private float vZL;
+  private float vZM;
   
   public g()
   {
     AppMethodBeat.i(31186);
-    this.fYS = null;
-    this.vND = false;
-    this.Bps = null;
-    this.ERB = new ArrayList();
-    this.ERC = true;
-    this.vNH = 0.0F;
-    this.vNI = 0.0F;
-    this.vNJ = 0.0F;
+    this.gaZ = null;
+    this.vZG = false;
+    this.BGR = null;
+    this.FjW = new ArrayList();
+    this.FjX = true;
+    this.vZK = 0.0F;
+    this.vZL = 0.0F;
+    this.vZM = 0.0F;
     this.mPreviewCallback = null;
-    this.ERD = true;
-    this.ERE = new Camera.AutoFocusCallback()
+    this.FjY = true;
+    this.FjZ = new Camera.AutoFocusCallback()
     {
       public final void onAutoFocus(boolean paramAnonymousBoolean, Camera paramAnonymousCamera)
       {
         AppMethodBeat.i(31185);
-        ad.d("MicroMsg.YuvReocrder", "auto focus callback");
+        com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.YuvReocrder", "auto focus callback");
         g.a(g.this);
         AppMethodBeat.o(31185);
       }
@@ -77,7 +75,7 @@ public final class g
   private static void g(Camera.Parameters paramParameters)
   {
     AppMethodBeat.i(31188);
-    if (ae.gcE.fYs > 0)
+    if (com.tencent.mm.compatible.deviceinfo.ae.geM.gaz > 0)
     {
       AppMethodBeat.o(31188);
       return;
@@ -105,7 +103,7 @@ public final class g
       }
       int n = arrayOfInt[0];
       int m = arrayOfInt[1];
-      ad.d("MicroMsg.YuvReocrder", "dkfps %d:[%d %d]", new Object[] { Integer.valueOf(k), Integer.valueOf(n), Integer.valueOf(m) });
+      com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.YuvReocrder", "dkfps %d:[%d %d]", new Object[] { Integer.valueOf(k), Integer.valueOf(n), Integer.valueOf(m) });
       if ((n < 0) || (m < n) || (m < j)) {
         break label267;
       }
@@ -117,7 +115,7 @@ public final class g
     {
       k += 1;
       break;
-      ad.d("MicroMsg.YuvReocrder", "dkfps get fit  [%d %d]", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
+      com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.YuvReocrder", "dkfps get fit  [%d %d]", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
       if ((i == 2147483647) || (j == 2147483647))
       {
         AppMethodBeat.o(31188);
@@ -131,7 +129,7 @@ public final class g
       }
       catch (Exception paramParameters)
       {
-        ad.printErrStackTrace("MicroMsg.YuvReocrder", paramParameters, "", new Object[0]);
+        com.tencent.mm.sdk.platformtools.ae.printErrStackTrace("MicroMsg.YuvReocrder", paramParameters, "", new Object[0]);
         AppMethodBeat.o(31188);
         return;
       }
@@ -140,7 +138,7 @@ public final class g
   
   public static int getCameraId()
   {
-    return vNE;
+    return vZH;
   }
   
   public final int a(Activity paramActivity, a parama, boolean paramBoolean)
@@ -153,31 +151,31 @@ public final class g
       AppMethodBeat.o(31190);
       return 0 - i;
     }
-    this.ERA = parama;
-    if ((this.mSensorManager == null) && (this.vNG == null))
+    this.FjV = parama;
+    if ((this.mSensorManager == null) && (this.vZJ == null))
     {
-      this.mSensorManager = ((SensorManager)aj.getContext().getSystemService("sensor"));
-      this.vNG = this.mSensorManager.getDefaultSensor(1);
+      this.mSensorManager = ((SensorManager)ak.getContext().getSystemService("sensor"));
+      this.vZJ = this.mSensorManager.getDefaultSensor(1);
     }
-    if ((paramBoolean) || (this.fYS == null))
+    if ((paramBoolean) || (this.gaZ == null))
     {
-      dmK();
+      dpI();
       if (paramBoolean) {
-        vNE = (vNE ^ 0xFFFFFFFF) & 0x1;
+        vZH = (vZH ^ 0xFFFFFFFF) & 0x1;
       }
-      this.hpP = com.tencent.mm.compatible.deviceinfo.d.a(paramActivity, vNE, null);
-      if (this.hpP == null)
+      this.hsD = com.tencent.mm.compatible.deviceinfo.d.a(paramActivity, vZH, null);
+      if (this.hsD == null)
       {
-        ad.e("MicroMsg.YuvReocrder", "start camera FAILED!");
+        com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.YuvReocrder", "start camera FAILED!");
         i = f.getLine();
         AppMethodBeat.o(31190);
         return 0 - i;
       }
-      this.fYS = this.hpP.fYS;
-      this.ERA.dGc = this.hpP.dGc;
-      if (this.fYS == null)
+      this.gaZ = this.hsD.gaZ;
+      this.FjV.dHi = this.hsD.dHi;
+      if (this.gaZ == null)
       {
-        ad.e("MicroMsg.YuvReocrder", "start camera FAILED!");
+        com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.YuvReocrder", "start camera FAILED!");
         i = f.getLine();
         AppMethodBeat.o(31190);
         return 0 - i;
@@ -190,7 +188,7 @@ public final class g
   public final int b(SurfaceHolder paramSurfaceHolder)
   {
     AppMethodBeat.i(31189);
-    if (this.vND)
+    if (this.vZG)
     {
       AppMethodBeat.o(31189);
       return 0;
@@ -208,10 +206,10 @@ public final class g
       int k;
       try
       {
-        this.Bps = paramSurfaceHolder;
-        localParameters = this.fYS.getParameters();
-        locala = this.ERA;
-        ad.d("MicroMsg.YuvReocrder", "getFitRecordSize");
+        this.BGR = paramSurfaceHolder;
+        localParameters = this.gaZ.getParameters();
+        locala = this.FjV;
+        com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.YuvReocrder", "getFitRecordSize");
         j = 2147483647;
         if (Build.VERSION.SDK_INT < 11) {
           break label723;
@@ -221,7 +219,7 @@ public final class g
         if (localObject != null) {
           break label701;
         }
-        ad.d("MicroMsg.YuvReocrder", "getFitRecordSize getSupportedVideoSizes null, use getSupportedPreviewSizes instead");
+        com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.YuvReocrder", "getFitRecordSize getSupportedVideoSizes null, use getSupportedPreviewSizes instead");
         new com.tencent.mm.compatible.deviceinfo.g();
         localObject = localParameters.getSupportedPreviewSizes();
       }
@@ -233,8 +231,8 @@ public final class g
         int n;
         int i1;
         int m;
-        ad.printErrStackTrace("MicroMsg.YuvReocrder", paramSurfaceHolder, "", new Object[0]);
-        ad.e("MicroMsg.YuvReocrder", "Start preview FAILED :" + paramSurfaceHolder.getMessage());
+        com.tencent.mm.sdk.platformtools.ae.printErrStackTrace("MicroMsg.YuvReocrder", paramSurfaceHolder, "", new Object[0]);
+        com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.YuvReocrder", "Start preview FAILED :" + paramSurfaceHolder.getMessage());
         i = f.getLine();
         AppMethodBeat.o(31189);
         return 0 - i;
@@ -243,12 +241,12 @@ public final class g
       {
         n = ((Camera.Size)((List)localObject).get(k)).height;
         i1 = ((Camera.Size)((List)localObject).get(k)).width;
-        ad.d("MicroMsg.YuvReocrder", "supp w:" + i1 + " h:" + n);
+        com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.YuvReocrder", "supp w:" + i1 + " h:" + n);
         m = n * i1;
-        if (((locala.dGc != 0) && (locala.dGc != 180)) || (((n >= locala.vOK) && (i1 >= locala.vOL)) || (((locala.dGc == 90) || (locala.dGc == 270)) && (i1 >= locala.vOK) && (n >= locala.vOL) && (m < j))))
+        if (((locala.dHi != 0) && (locala.dHi != 180)) || (((n >= locala.waN) && (i1 >= locala.waO)) || (((locala.dHi == 90) || (locala.dHi == 270)) && (i1 >= locala.waN) && (n >= locala.waO) && (m < j))))
         {
-          locala.rmx = i1;
-          locala.rmy = n;
+          locala.ruC = i1;
+          locala.ruD = n;
           i = 1;
           j = m;
           break label714;
@@ -259,47 +257,47 @@ public final class g
         if (i == 0)
         {
           localObject = localParameters.getPreviewSize();
-          locala.rmy = ((Camera.Size)localObject).height;
-          locala.rmx = ((Camera.Size)localObject).width;
+          locala.ruD = ((Camera.Size)localObject).height;
+          locala.ruC = ((Camera.Size)localObject).width;
         }
-        ad.d("MicroMsg.YuvReocrder", " rotate:" + locala.dGc + " w:" + locala.rmx + " h:" + locala.rmy);
-        localParameters.setPreviewSize(this.ERA.rmx, this.ERA.rmy);
+        com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.YuvReocrder", " rotate:" + locala.dHi + " w:" + locala.ruC + " h:" + locala.ruD);
+        localParameters.setPreviewSize(this.FjV.ruC, this.FjV.ruD);
         g(localParameters);
         localObject = localParameters.getSupportedPreviewFrameRates();
-        this.ERB.clear();
-        this.ERB.addAll((Collection)localObject);
+        this.FjW.clear();
+        this.FjW.addAll((Collection)localObject);
         localParameters.setPreviewFormat(17);
         localObject = localParameters.getSupportedFocusModes();
         if (localObject != null)
         {
-          if ((com.tencent.mm.compatible.util.d.lA(9)) && (true == ((List)localObject).contains("continuous-video")))
+          if ((com.tencent.mm.compatible.util.d.lC(9)) && (true == ((List)localObject).contains("continuous-video")))
           {
-            ad.i("MicroMsg.YuvReocrder", "support continous-video");
-            this.ERC = false;
+            com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.YuvReocrder", "support continous-video");
+            this.FjX = false;
             localParameters.setFocusMode("continuous-video");
           }
         }
         else
         {
-          this.fYS.setParameters(localParameters);
-          this.fYS.setPreviewDisplay(paramSurfaceHolder);
-          this.fYS.startPreview();
-          if ((this.mSensorManager != null) && (this.vNG != null) && (this.ERC)) {
-            this.mSensorManager.registerListener(this, this.vNG, 2);
+          this.gaZ.setParameters(localParameters);
+          this.gaZ.setPreviewDisplay(paramSurfaceHolder);
+          this.gaZ.startPreview();
+          if ((this.mSensorManager != null) && (this.vZJ != null) && (this.FjX)) {
+            this.mSensorManager.registerListener(this, this.vZJ, 2);
           }
-          this.vND = true;
+          this.vZG = true;
           AppMethodBeat.o(31189);
           return 0;
           localObject = localParameters.getPreviewSize();
-          locala.rmy = ((Camera.Size)localObject).height;
-          locala.rmx = ((Camera.Size)localObject).width;
+          locala.ruD = ((Camera.Size)localObject).height;
+          locala.ruC = ((Camera.Size)localObject).width;
           continue;
         }
         if (((List)localObject).contains("auto")) {
           continue;
         }
-        ad.i("MicroMsg.YuvReocrder", "don't support auto");
-        this.ERC = false;
+        com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.YuvReocrder", "don't support auto");
+        this.FjX = false;
         continue;
       }
       label701:
@@ -317,20 +315,20 @@ public final class g
     }
   }
   
-  public final void dmK()
+  public final void dpI()
   {
     AppMethodBeat.i(31187);
-    if ((this.mSensorManager != null) && (this.vNG != null)) {
+    if ((this.mSensorManager != null) && (this.vZJ != null)) {
       this.mSensorManager.unregisterListener(this);
     }
-    if (this.fYS != null)
+    if (this.gaZ != null)
     {
-      ad.d("MicroMsg.YuvReocrder", "release camera");
-      this.fYS.setPreviewCallback(null);
-      this.fYS.stopPreview();
-      this.fYS.release();
-      this.fYS = null;
-      this.vND = false;
+      com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.YuvReocrder", "release camera");
+      this.gaZ.setPreviewCallback(null);
+      this.gaZ.stopPreview();
+      this.gaZ.release();
+      this.gaZ = null;
+      this.vZG = false;
     }
     AppMethodBeat.o(31187);
   }
@@ -343,15 +341,15 @@ public final class g
     float f1 = paramSensorEvent.values[0];
     float f2 = paramSensorEvent.values[1];
     float f3 = paramSensorEvent.values[2];
-    if (((Math.abs(this.vNH - f1) > 2.0F) || (Math.abs(this.vNI - f2) > 2.0F) || (Math.abs(this.vNJ - f3) > 2.0F)) && (this.fYS != null) && (this.ERD) && (true == this.ERC)) {}
+    if (((Math.abs(this.vZK - f1) > 2.0F) || (Math.abs(this.vZL - f2) > 2.0F) || (Math.abs(this.vZM - f3) > 2.0F)) && (this.gaZ != null) && (this.FjY) && (true == this.FjX)) {}
     try
     {
-      ad.d("MicroMsg.YuvReocrder", "auto focus");
-      this.fYS.autoFocus(this.ERE);
-      this.ERD = false;
-      this.vNH = f1;
-      this.vNI = f2;
-      this.vNJ = f3;
+      com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.YuvReocrder", "auto focus");
+      this.gaZ.autoFocus(this.FjZ);
+      this.FjY = false;
+      this.vZK = f1;
+      this.vZL = f2;
+      this.vZM = f3;
       AppMethodBeat.o(31191);
       return;
     }
@@ -359,7 +357,7 @@ public final class g
     {
       for (;;)
       {
-        ad.d("MicroMsg.YuvReocrder", "auto focus failed");
+        com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.YuvReocrder", "auto focus failed");
       }
     }
   }

@@ -4,11 +4,11 @@ import d.g.b.a.a;
 import d.l;
 import java.util.Collection;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlin/text/MatchGroupCollection;", "", "Lkotlin/text/MatchGroup;", "get", "index", "", "kotlin-stdlib"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlin/text/MatchGroupCollection;", "", "Lkotlin/text/MatchGroup;", "get", "index", "", "kotlin-stdlib"})
 public abstract interface g
   extends a, Collection<f>
 {
-  public abstract f alz(int paramInt);
+  public abstract f amj(int paramInt);
 }
 
 

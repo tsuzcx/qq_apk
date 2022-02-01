@@ -8,33 +8,33 @@ import java.util.EnumMap;
 
 public final class d
 {
-  final EnumMap<a.a, h> Ney;
+  final EnumMap<a.a, h> NBD;
   
   public d(EnumMap<a.a, h> paramEnumMap)
   {
     AppMethodBeat.i(57746);
-    this.Ney = paramEnumMap;
+    this.NBD = paramEnumMap;
     AppMethodBeat.o(57746);
   }
   
   public final d.l.b.a.b.d.a.f.d b(a.a parama)
   {
     AppMethodBeat.i(57745);
-    parama = (h)this.Ney.get(parama);
+    parama = (h)this.NBD.get(parama);
     if (parama == null)
     {
       AppMethodBeat.o(57745);
       return null;
     }
     p.g(parama, "nullabilityQualifiers[ap…ilityType] ?: return null");
-    parama = new d.l.b.a.b.d.a.f.d(parama.Nhl, null, false, parama.Nhm);
+    parama = new d.l.b.a.b.d.a.f.d(parama.NEq, null, false, parama.NEr);
     AppMethodBeat.o(57745);
     return parama;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.d.a.c.d
  * JD-Core Version:    0.7.0.1
  */

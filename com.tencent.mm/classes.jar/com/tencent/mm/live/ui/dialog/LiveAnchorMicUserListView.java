@@ -21,15 +21,15 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.live.b.a.k;
 import com.tencent.mm.live.b.b.a.a;
 import com.tencent.mm.pluginsdk.ui.a.b;
-import com.tencent.mm.protocal.protobuf.buq;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.storage.am;
-import com.tencent.mm.storage.bp;
+import com.tencent.mm.protocal.protobuf.bvk;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.storage.an;
+import com.tencent.mm.storage.bq;
 import com.tencent.mm.ui.base.n.d;
 import com.tencent.mm.ui.base.n.e;
 import com.tencent.mm.ui.base.t;
@@ -48,97 +48,97 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
-@d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/live/ui/dialog/LiveAnchorMicUserListView;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "style", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "acceptLiveMicListener", "Lkotlin/Function1;", "Lcom/tencent/mm/live/model/linkmic/LiveSysMsgManager$LiveMicUser;", "Lkotlin/ParameterName;", "name", "user", "", "adapter", "Lcom/tencent/mm/live/ui/dialog/LiveAnchorMicUserListView$LiveAnchorMicUserAdapter;", "bottomSheet", "Lcom/tencent/mm/ui/widget/dialog/MMBottomSheet;", "callMicListener", "Lkotlin/Function2;", "", "calling", "getCallMicListener", "()Lkotlin/jvm/functions/Function2;", "setCallMicListener", "(Lkotlin/jvm/functions/Function2;)V", "canSelectUser", "hideClickListener", "Lkotlin/Function0;", "getHideClickListener", "()Lkotlin/jvm/functions/Function0;", "setHideClickListener", "(Lkotlin/jvm/functions/Function0;)V", "micPermission", "getMicPermission", "()Z", "setMicPermission", "(Z)V", "micPermissionListener", "enable", "getMicPermissionListener", "()Lkotlin/jvm/functions/Function1;", "setMicPermissionListener", "(Lkotlin/jvm/functions/Function1;)V", "parent", "Landroid/view/View;", "getParent", "()Landroid/view/View;", "setParent", "(Landroid/view/View;)V", "ringPlayer", "Lcom/tencent/mm/plugin/voip/video/RingPlayer;", "selectUser", "stopLiveMicListener", "userListView", "Landroid/support/v7/widget/RecyclerView;", "waitingMic", "acceptMic", "anchorCloseMic", "callback", "errType", "errCode", "buildBottomSheet", "buildMicCallingItemData", "buildMicWaitingItemData", "users", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "buildNoPermissionItemData", "buildNoUserItemData", "buildPermissionItemData", "clearData", "getSelectUser", "loadOnlineMembers", "playMicHungUpVoice", "refreshListView", "refreshParentsView", "resetMicUser", "sdkStartMic", "setDefaultMicState", "setMicUser", "micUser", "updateMicPermission", "Companion", "LiveAnchorMicUserAdapter", "LiveMicListItem", "plugin-logic_release"})
+@d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/live/ui/dialog/LiveAnchorMicUserListView;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "style", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "acceptLiveMicListener", "Lkotlin/Function1;", "Lcom/tencent/mm/live/model/linkmic/LiveSysMsgManager$LiveMicUser;", "Lkotlin/ParameterName;", "name", "user", "", "adapter", "Lcom/tencent/mm/live/ui/dialog/LiveAnchorMicUserListView$LiveAnchorMicUserAdapter;", "bottomSheet", "Lcom/tencent/mm/ui/widget/dialog/MMBottomSheet;", "callMicListener", "Lkotlin/Function2;", "", "calling", "getCallMicListener", "()Lkotlin/jvm/functions/Function2;", "setCallMicListener", "(Lkotlin/jvm/functions/Function2;)V", "canSelectUser", "hideClickListener", "Lkotlin/Function0;", "getHideClickListener", "()Lkotlin/jvm/functions/Function0;", "setHideClickListener", "(Lkotlin/jvm/functions/Function0;)V", "micPermission", "getMicPermission", "()Z", "setMicPermission", "(Z)V", "micPermissionListener", "enable", "getMicPermissionListener", "()Lkotlin/jvm/functions/Function1;", "setMicPermissionListener", "(Lkotlin/jvm/functions/Function1;)V", "parent", "Landroid/view/View;", "getParent", "()Landroid/view/View;", "setParent", "(Landroid/view/View;)V", "ringPlayer", "Lcom/tencent/mm/plugin/voip/video/RingPlayer;", "selectUser", "stopLiveMicListener", "userListView", "Landroid/support/v7/widget/RecyclerView;", "waitingMic", "acceptMic", "anchorCloseMic", "callback", "errType", "errCode", "buildBottomSheet", "buildMicCallingItemData", "buildMicWaitingItemData", "users", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "buildNoPermissionItemData", "buildNoUserItemData", "buildPermissionItemData", "clearData", "getSelectUser", "loadOnlineMembers", "playMicHungUpVoice", "refreshListView", "refreshParentsView", "resetMicUser", "sdkStartMic", "setDefaultMicState", "setMicUser", "micUser", "updateMicPermission", "Companion", "LiveAnchorMicUserAdapter", "LiveMicListItem", "plugin-logic_release"})
 public final class LiveAnchorMicUserListView
   extends RelativeLayout
 {
-  public static final LiveAnchorMicUserListView.a gZx;
-  private e gSS;
-  private final com.tencent.mm.plugin.voip.video.i gXE;
-  private boolean gZl;
-  private d.g.a.a<z> gZm;
-  private m<? super Boolean, ? super a.a, z> gZn;
-  private d.g.a.b<? super Boolean, z> gZo;
-  private final RecyclerView gZp;
-  public final b gZq;
-  private a.a gZr;
-  private boolean gZs;
-  public boolean gZt;
-  private d.g.a.b<? super a.a, z> gZu;
-  private d.g.a.b<? super a.a, z> gZv;
-  private View gZw;
+  public static final LiveAnchorMicUserListView.a hck;
+  private e gVB;
+  private final com.tencent.mm.plugin.voip.video.i haq;
+  private boolean hbY;
+  private d.g.a.a<z> hbZ;
+  private m<? super Boolean, ? super a.a, z> hca;
+  private d.g.a.b<? super Boolean, z> hcb;
+  private final RecyclerView hcc;
+  public final b hcd;
+  private a.a hce;
+  private boolean hcf;
+  public boolean hcg;
+  private d.g.a.b<? super a.a, z> hch;
+  private d.g.a.b<? super a.a, z> hci;
+  private View hcj;
   
   static
   {
-    AppMethodBeat.i(212878);
-    gZx = new LiveAnchorMicUserListView.a((byte)0);
-    AppMethodBeat.o(212878);
+    AppMethodBeat.i(216506);
+    hck = new LiveAnchorMicUserListView.a((byte)0);
+    AppMethodBeat.o(216506);
   }
   
   public LiveAnchorMicUserListView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(212877);
-    this.gXE = new com.tencent.mm.plugin.voip.video.i(aj.getContext());
-    this.gZl = true;
-    this.gZq = new b();
-    this.gZs = true;
-    this.gZu = ((d.g.a.b)new d(this));
-    this.gZv = ((d.g.a.b)new j(this));
+    AppMethodBeat.i(216505);
+    this.haq = new com.tencent.mm.plugin.voip.video.i(ak.getContext());
+    this.hbY = true;
+    this.hcd = new b();
+    this.hcf = true;
+    this.hch = ((d.g.a.b)new d(this));
+    this.hci = ((d.g.a.b)new j(this));
     paramContext = LayoutInflater.from(paramContext).inflate(2131496296, (ViewGroup)this, true);
     p.g(paramContext, "LayoutInflater.from(cont…ic_list_view, this, true)");
-    this.gZw = paramContext;
-    this.gZw.findViewById(2131298372).setOnClickListener((View.OnClickListener)new View.OnClickListener()
+    this.hcj = paramContext;
+    this.hcj.findViewById(2131298372).setOnClickListener((View.OnClickListener)new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(212840);
+        AppMethodBeat.i(216468);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
         localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/live/ui/dialog/LiveAnchorMicUserListView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-        paramAnonymousView = this.gZy.getHideClickListener();
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/live/ui/dialog/LiveAnchorMicUserListView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        paramAnonymousView = this.hcl.getHideClickListener();
         if (paramAnonymousView != null) {
           paramAnonymousView.invoke();
         }
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/live/ui/dialog/LiveAnchorMicUserListView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(212840);
+        AppMethodBeat.o(216468);
       }
     });
-    paramContext = this.gZw.findViewById(2131307558);
+    paramContext = this.hcj.findViewById(2131307558);
     p.g(paramContext, "parent.findViewById(R.id.live_anchor_mic_list)");
-    this.gZp = ((RecyclerView)paramContext);
-    this.gZp.setLayoutManager((RecyclerView.i)new LinearLayoutManager());
-    this.gZp.setAdapter((RecyclerView.a)this.gZq);
-    this.gZp.setItemViewCacheSize(0);
-    AppMethodBeat.o(212877);
+    this.hcc = ((RecyclerView)paramContext);
+    this.hcc.setLayoutManager((RecyclerView.i)new LinearLayoutManager());
+    this.hcc.setAdapter((RecyclerView.a)this.hcd);
+    this.hcc.setItemViewCacheSize(0);
+    AppMethodBeat.o(216505);
   }
   
   private void a(final m<? super Integer, ? super Integer, z> paramm)
   {
-    AppMethodBeat.i(212866);
-    a.a locala = this.gZr;
+    AppMethodBeat.i(216494);
+    a.a locala = this.hce;
     if (locala != null)
     {
-      Object localObject = com.tencent.mm.live.core.debug.a.gKp;
-      com.tencent.mm.live.core.debug.a.ar("MicroMsg.LiveCoreMic", "[cgi]anchor close mic.".concat(String.valueOf(locala)));
-      localObject = com.tencent.mm.live.b.g.gOr;
-      long l = com.tencent.mm.live.b.g.ans().Fsa;
-      localObject = com.tencent.mm.live.b.g.gOr;
-      localObject = new k(l, com.tencent.mm.live.b.g.anm(), String.valueOf(System.currentTimeMillis()), locala.gQS, locala.gQU);
-      com.tencent.mm.al.q localq = com.tencent.mm.kernel.g.aiU();
+      Object localObject = com.tencent.mm.live.core.debug.a.gMY;
+      com.tencent.mm.live.core.debug.a.as("MicroMsg.LiveCoreMic", "[cgi]anchor close mic.".concat(String.valueOf(locala)));
+      localObject = com.tencent.mm.live.b.g.gQZ;
+      long l = com.tencent.mm.live.b.g.anH().FKy;
+      localObject = com.tencent.mm.live.b.g.gQZ;
+      localObject = new k(l, com.tencent.mm.live.b.g.anC(), String.valueOf(System.currentTimeMillis()), locala.gTA, locala.gTC);
+      com.tencent.mm.ak.q localq = com.tencent.mm.kernel.g.ajj();
       p.g(localq, "MMKernel.getNetSceneQueue()");
-      ((k)localObject).doScene(localq.aiY(), (f)new f(locala, this, paramm));
-      AppMethodBeat.o(212866);
+      ((k)localObject).doScene(localq.ajn(), (f)new f(locala, this, paramm));
+      AppMethodBeat.o(216494);
       return;
     }
-    AppMethodBeat.o(212866);
+    AppMethodBeat.o(216494);
   }
   
-  private void aqr()
+  private void aqG()
   {
-    AppMethodBeat.i(212868);
-    int i = com.tencent.mm.cc.a.ip(getContext());
-    int j = com.tencent.mm.cc.a.iq(getContext());
+    AppMethodBeat.i(216496);
+    int i = com.tencent.mm.cb.a.iu(getContext());
+    int j = com.tencent.mm.cb.a.iv(getContext());
     if (i > j) {
       i = j;
     }
@@ -149,79 +149,79 @@ public final class LiveAnchorMicUserListView
       Context localContext1 = getContext();
       Context localContext2 = getContext();
       p.g(localContext2, "context");
-      localLayoutParams.topMargin = com.tencent.mm.cc.a.g(localContext1, localContext2.getResources().getDimension(2131167038));
-      this.gZw.setLayoutParams((ViewGroup.LayoutParams)localLayoutParams);
-      AppMethodBeat.o(212868);
+      localLayoutParams.topMargin = com.tencent.mm.cb.a.h(localContext1, localContext2.getResources().getDimension(2131167038));
+      this.hcj.setLayoutParams((ViewGroup.LayoutParams)localLayoutParams);
+      AppMethodBeat.o(216496);
       return;
     }
   }
   
-  public static void aqt()
+  public static void aqI()
   {
-    AppMethodBeat.i(212870);
-    Object localObject1 = com.tencent.mm.live.b.g.gOr;
-    Object localObject2 = com.tencent.mm.live.b.g.aod().gQO;
+    AppMethodBeat.i(216498);
+    Object localObject1 = com.tencent.mm.live.b.g.gQZ;
+    Object localObject2 = com.tencent.mm.live.b.g.aos().gTw;
     localObject1 = new ArrayList();
     localObject2 = ((Iterable)localObject2).iterator();
     while (((Iterator)localObject2).hasNext()) {
-      ((ArrayList)localObject1).add(((a.a)((Iterator)localObject2).next()).gQT);
+      ((ArrayList)localObject1).add(((a.a)((Iterator)localObject2).next()).gTB);
     }
-    localObject2 = com.tencent.mm.live.b.i.gPh;
+    localObject2 = com.tencent.mm.live.b.i.gRP;
     com.tencent.mm.live.b.i.Y((List)localObject1);
-    AppMethodBeat.o(212870);
+    AppMethodBeat.o(216498);
   }
   
-  private final void aqu()
+  private final void aqJ()
   {
-    AppMethodBeat.i(212872);
-    this.gZq.gZz.add(new LiveAnchorMicUserListView.c(0, null, null, 6));
-    AppMethodBeat.o(212872);
+    AppMethodBeat.i(216500);
+    this.hcd.hcm.add(new LiveAnchorMicUserListView.c(0, null, null, 6));
+    AppMethodBeat.o(216500);
   }
   
-  private final void aqv()
+  private final void aqK()
   {
-    AppMethodBeat.i(212873);
-    a.a locala = this.gZr;
+    AppMethodBeat.i(216501);
+    a.a locala = this.hce;
     if (locala != null)
     {
-      this.gZq.gZz.add(new LiveAnchorMicUserListView.c(1, null, com.tencent.mm.cc.a.az(getContext(), 2131766681), 2));
-      this.gZq.gZz.add(new LiveAnchorMicUserListView.c(3, locala, null, 4));
-      AppMethodBeat.o(212873);
+      this.hcd.hcm.add(new LiveAnchorMicUserListView.c(1, null, com.tencent.mm.cb.a.az(getContext(), 2131766681), 2));
+      this.hcd.hcm.add(new LiveAnchorMicUserListView.c(3, locala, null, 4));
+      AppMethodBeat.o(216501);
       return;
     }
-    AppMethodBeat.o(212873);
+    AppMethodBeat.o(216501);
   }
   
-  private final void aqw()
+  private final void aqL()
   {
-    AppMethodBeat.i(212875);
-    this.gZq.gZz.add(new LiveAnchorMicUserListView.c(4, null, null, 6));
-    AppMethodBeat.o(212875);
+    AppMethodBeat.i(216503);
+    this.hcd.hcm.add(new LiveAnchorMicUserListView.c(4, null, null, 6));
+    AppMethodBeat.o(216503);
   }
   
-  private final void aqx()
+  private final void aqM()
   {
-    AppMethodBeat.i(212876);
-    this.gZq.gZz.add(new LiveAnchorMicUserListView.c(5, null, null, 6));
-    AppMethodBeat.o(212876);
+    AppMethodBeat.i(216504);
+    this.hcd.hcm.add(new LiveAnchorMicUserListView.c(5, null, null, 6));
+    AppMethodBeat.o(216504);
   }
   
   private final void clearData()
   {
-    AppMethodBeat.i(212871);
-    this.gZq.gZz.clear();
-    AppMethodBeat.o(212871);
+    AppMethodBeat.i(216499);
+    this.hcd.hcm.clear();
+    AppMethodBeat.o(216499);
   }
   
   private final void j(ArrayList<a.a> paramArrayList)
   {
-    AppMethodBeat.i(212874);
-    Object localObject1 = this.gZq.gZz;
-    Object localObject2 = ad.MLZ;
-    localObject2 = com.tencent.mm.cc.a.az(getContext(), 2131766716);
+    AppMethodBeat.i(216502);
+    Object localObject1 = this.hcd.hcm;
+    Object localObject2 = ad.Njc;
+    localObject2 = com.tencent.mm.cb.a.az(getContext(), 2131766716);
     p.g(localObject2, "ResourceHelper.getString…ive_room_wait_mic_number)");
-    Object localObject3 = com.tencent.mm.live.b.g.gOr;
-    localObject2 = String.format((String)localObject2, Arrays.copyOf(new Object[] { Integer.valueOf(com.tencent.mm.live.b.g.aod().gQO.size()) }, 1));
+    Object localObject3 = com.tencent.mm.live.b.g.gQZ;
+    localObject2 = String.format((String)localObject2, Arrays.copyOf(new Object[] { Integer.valueOf(com.tencent.mm.live.b.g.aos().gTw.size()) }, 1));
     p.g(localObject2, "java.lang.String.format(format, *args)");
     ((ArrayList)localObject1).add(new LiveAnchorMicUserListView.c(1, null, (String)localObject2, 2));
     localObject1 = ((Iterable)paramArrayList).iterator();
@@ -229,209 +229,209 @@ public final class LiveAnchorMicUserListView
     while (((Iterator)localObject1).hasNext())
     {
       localObject2 = (a.a)((Iterator)localObject1).next();
-      localObject3 = ((a.a)localObject2).gQT;
-      paramArrayList = this.gZr;
+      localObject3 = ((a.a)localObject2).gTB;
+      paramArrayList = this.hce;
       if (paramArrayList != null) {}
-      for (paramArrayList = paramArrayList.gQT;; paramArrayList = null)
+      for (paramArrayList = paramArrayList.gTB;; paramArrayList = null)
       {
         if (!(p.i(localObject3, paramArrayList) ^ true)) {
           break label180;
         }
-        this.gZq.gZz.add(new LiveAnchorMicUserListView.c(2, (a.a)localObject2, null, 4));
+        this.hcd.hcm.add(new LiveAnchorMicUserListView.c(2, (a.a)localObject2, null, 4));
         break;
       }
     }
-    AppMethodBeat.o(212874);
+    AppMethodBeat.o(216502);
   }
   
-  public final void aqp()
+  public final void aqE()
   {
-    AppMethodBeat.i(212865);
-    this.gXE.U(true, 1);
-    AppMethodBeat.o(212865);
+    AppMethodBeat.i(216493);
+    this.haq.X(true, 1);
+    AppMethodBeat.o(216493);
   }
   
-  public final void aqq()
+  public final void aqF()
   {
-    this.gZs = true;
-    this.gZr = null;
+    this.hcf = true;
+    this.hce = null;
   }
   
-  public final void aqs()
+  public final void aqH()
   {
-    AppMethodBeat.i(212869);
-    aqr();
+    AppMethodBeat.i(216497);
+    aqG();
     clearData();
-    aqu();
-    if (this.gZr != null) {
-      aqv();
+    aqJ();
+    if (this.hce != null) {
+      aqK();
     }
-    if (this.gZl)
+    if (this.hbY)
     {
-      Object localObject = com.tencent.mm.live.b.g.gOr;
-      localObject = com.tencent.mm.live.b.g.aod().gQO;
+      Object localObject = com.tencent.mm.live.b.g.gQZ;
+      localObject = com.tencent.mm.live.b.g.aos().gTw;
       Collection localCollection = (Collection)localObject;
-      a.a locala = this.gZr;
+      a.a locala = this.hce;
       if (localCollection == null)
       {
         localObject = new v("null cannot be cast to non-null type kotlin.collections.MutableCollection<T>");
-        AppMethodBeat.o(212869);
+        AppMethodBeat.o(216497);
         throw ((Throwable)localObject);
       }
-      ae.eR(localCollection).remove(locala);
+      ae.eU(localCollection).remove(locala);
       if (((ArrayList)localObject).size() > 0) {
         j((ArrayList)localObject);
       }
     }
     for (;;)
     {
-      this.gZq.notifyDataSetChanged();
-      AppMethodBeat.o(212869);
+      this.hcd.notifyDataSetChanged();
+      AppMethodBeat.o(216497);
       return;
-      if (this.gZr == null)
+      if (this.hce == null)
       {
-        aqw();
+        aqL();
         continue;
-        aqx();
+        aqM();
       }
     }
   }
   
   public final m<Boolean, a.a, z> getCallMicListener()
   {
-    return this.gZn;
+    return this.hca;
   }
   
   public final d.g.a.a<z> getHideClickListener()
   {
-    return this.gZm;
+    return this.hbZ;
   }
   
   public final boolean getMicPermission()
   {
-    return this.gZl;
+    return this.hbY;
   }
   
   public final d.g.a.b<Boolean, z> getMicPermissionListener()
   {
-    return this.gZo;
+    return this.hcb;
   }
   
   public final View getParent()
   {
-    return this.gZw;
+    return this.hcj;
   }
   
   public final a.a getSelectUser()
   {
-    return this.gZr;
+    return this.hce;
   }
   
   public final void setCallMicListener(m<? super Boolean, ? super a.a, z> paramm)
   {
-    this.gZn = paramm;
+    this.hca = paramm;
   }
   
   public final void setDefaultMicState(boolean paramBoolean)
   {
-    this.gZl = paramBoolean;
+    this.hbY = paramBoolean;
   }
   
   public final void setHideClickListener(d.g.a.a<z> parama)
   {
-    this.gZm = parama;
+    this.hbZ = parama;
   }
   
   public final void setMicPermission(boolean paramBoolean)
   {
-    this.gZl = paramBoolean;
+    this.hbY = paramBoolean;
   }
   
   public final void setMicPermissionListener(d.g.a.b<? super Boolean, z> paramb)
   {
-    this.gZo = paramb;
+    this.hcb = paramb;
   }
   
   public final void setMicUser(a.a parama)
   {
-    this.gZr = parama;
+    this.hce = parama;
   }
   
   public final void setParent(View paramView)
   {
-    AppMethodBeat.i(212864);
+    AppMethodBeat.i(216492);
     p.h(paramView, "<set-?>");
-    this.gZw = paramView;
-    AppMethodBeat.o(212864);
+    this.hcj = paramView;
+    AppMethodBeat.o(216492);
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/live/ui/dialog/LiveAnchorMicUserListView$LiveAnchorMicUserAdapter;", "Landroid/support/v7/widget/RecyclerView$Adapter;", "Landroid/support/v7/widget/RecyclerView$ViewHolder;", "(Lcom/tencent/mm/live/ui/dialog/LiveAnchorMicUserListView;)V", "liveMicItems", "Ljava/util/ArrayList;", "Lcom/tencent/mm/live/ui/dialog/LiveAnchorMicUserListView$LiveMicListItem;", "Lkotlin/collections/ArrayList;", "getLiveMicItems", "()Ljava/util/ArrayList;", "setLiveMicItems", "(Ljava/util/ArrayList;)V", "onItemClickListener", "Lkotlin/Function2;", "", "Lkotlin/ParameterName;", "name", "position", "", "uid", "", "getOnItemClickListener", "()Lkotlin/jvm/functions/Function2;", "setOnItemClickListener", "(Lkotlin/jvm/functions/Function2;)V", "getItemCount", "getItemViewType", "loadUserInfo", "itemView", "Landroid/view/View;", "user", "Lcom/tencent/mm/live/model/linkmic/LiveSysMsgManager$LiveMicUser;", "onBindViewHolder", "holder", "onCreateViewHolder", "parent", "Landroid/view/ViewGroup;", "viewType", "plugin-logic_release"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/live/ui/dialog/LiveAnchorMicUserListView$LiveAnchorMicUserAdapter;", "Landroid/support/v7/widget/RecyclerView$Adapter;", "Landroid/support/v7/widget/RecyclerView$ViewHolder;", "(Lcom/tencent/mm/live/ui/dialog/LiveAnchorMicUserListView;)V", "liveMicItems", "Ljava/util/ArrayList;", "Lcom/tencent/mm/live/ui/dialog/LiveAnchorMicUserListView$LiveMicListItem;", "Lkotlin/collections/ArrayList;", "getLiveMicItems", "()Ljava/util/ArrayList;", "setLiveMicItems", "(Ljava/util/ArrayList;)V", "onItemClickListener", "Lkotlin/Function2;", "", "Lkotlin/ParameterName;", "name", "position", "", "uid", "", "getOnItemClickListener", "()Lkotlin/jvm/functions/Function2;", "setOnItemClickListener", "(Lkotlin/jvm/functions/Function2;)V", "getItemCount", "getItemViewType", "loadUserInfo", "itemView", "Landroid/view/View;", "user", "Lcom/tencent/mm/live/model/linkmic/LiveSysMsgManager$LiveMicUser;", "onBindViewHolder", "holder", "onCreateViewHolder", "parent", "Landroid/view/ViewGroup;", "viewType", "plugin-logic_release"})
   public final class b
     extends RecyclerView.a<RecyclerView.w>
   {
-    ArrayList<LiveAnchorMicUserListView.c> gZz;
+    ArrayList<LiveAnchorMicUserListView.c> hcm;
     
     public b()
     {
-      AppMethodBeat.i(212849);
-      this.gZz = new ArrayList();
-      AppMethodBeat.o(212849);
+      AppMethodBeat.i(216477);
+      this.hcm = new ArrayList();
+      AppMethodBeat.o(216477);
     }
     
     private static void a(View paramView, a.a parama)
     {
-      AppMethodBeat.i(212848);
+      AppMethodBeat.i(216476);
       Object localObject = com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class);
       p.g(localObject, "service<IMessengerStorag…engerStorage::class.java)");
-      localObject = ((com.tencent.mm.plugin.messenger.foundation.a.l)localObject).azp().Bf(parama.gQT);
-      a.b.d((ImageView)paramView.findViewById(2131307568), parama.gQT, 0.1F);
+      localObject = ((com.tencent.mm.plugin.messenger.foundation.a.l)localObject).azF().BH(parama.gTB);
+      a.b.d((ImageView)paramView.findViewById(2131307568), parama.gTB, 0.1F);
       paramView = paramView.findViewById(2131307572);
       p.g(paramView, "itemView.findViewById<Te…ive_anchor_mic_user_name)");
       paramView = (TextView)paramView;
       p.g(localObject, "contact");
-      paramView.setText((CharSequence)((am)localObject).VC());
-      AppMethodBeat.o(212848);
+      paramView.setText((CharSequence)((an)localObject).VK());
+      AppMethodBeat.o(216476);
     }
     
     public final RecyclerView.w a(final ViewGroup paramViewGroup, int paramInt)
     {
-      AppMethodBeat.i(212844);
+      AppMethodBeat.i(216472);
       p.h(paramViewGroup, "parent");
       switch (paramInt)
       {
       default: 
-        paramViewGroup = (RecyclerView.w)new j(this, paramViewGroup, LayoutInflater.from(this.gZy.getContext()).inflate(2131496295, paramViewGroup, false));
-        AppMethodBeat.o(212844);
+        paramViewGroup = (RecyclerView.w)new j(this, paramViewGroup, LayoutInflater.from(this.hcl.getContext()).inflate(2131496295, paramViewGroup, false));
+        AppMethodBeat.o(216472);
         return paramViewGroup;
       case 0: 
-        paramViewGroup = (RecyclerView.w)new d(this, paramViewGroup, LayoutInflater.from(this.gZy.getContext()).inflate(2131496294, paramViewGroup, false));
-        AppMethodBeat.o(212844);
+        paramViewGroup = (RecyclerView.w)new d(this, paramViewGroup, LayoutInflater.from(this.hcl.getContext()).inflate(2131496294, paramViewGroup, false));
+        AppMethodBeat.o(216472);
         return paramViewGroup;
       case 1: 
-        paramViewGroup = (RecyclerView.w)new e(this, paramViewGroup, LayoutInflater.from(this.gZy.getContext()).inflate(2131496295, paramViewGroup, false));
-        AppMethodBeat.o(212844);
+        paramViewGroup = (RecyclerView.w)new e(this, paramViewGroup, LayoutInflater.from(this.hcl.getContext()).inflate(2131496295, paramViewGroup, false));
+        AppMethodBeat.o(216472);
         return paramViewGroup;
       case 2: 
-        paramViewGroup = (RecyclerView.w)new f(this, paramViewGroup, LayoutInflater.from(this.gZy.getContext()).inflate(2131496290, paramViewGroup, false));
-        AppMethodBeat.o(212844);
+        paramViewGroup = (RecyclerView.w)new f(this, paramViewGroup, LayoutInflater.from(this.hcl.getContext()).inflate(2131496290, paramViewGroup, false));
+        AppMethodBeat.o(216472);
         return paramViewGroup;
       case 3: 
-        paramViewGroup = (RecyclerView.w)new g(this, paramViewGroup, LayoutInflater.from(this.gZy.getContext()).inflate(2131496291, paramViewGroup, false));
-        AppMethodBeat.o(212844);
+        paramViewGroup = (RecyclerView.w)new g(this, paramViewGroup, LayoutInflater.from(this.hcl.getContext()).inflate(2131496291, paramViewGroup, false));
+        AppMethodBeat.o(216472);
         return paramViewGroup;
       case 4: 
-        paramViewGroup = (RecyclerView.w)new h(this, paramViewGroup, LayoutInflater.from(this.gZy.getContext()).inflate(2131496292, paramViewGroup, false));
-        AppMethodBeat.o(212844);
+        paramViewGroup = (RecyclerView.w)new h(this, paramViewGroup, LayoutInflater.from(this.hcl.getContext()).inflate(2131496292, paramViewGroup, false));
+        AppMethodBeat.o(216472);
         return paramViewGroup;
       }
-      paramViewGroup = (RecyclerView.w)new i(this, paramViewGroup, LayoutInflater.from(this.gZy.getContext()).inflate(2131496293, paramViewGroup, false));
-      AppMethodBeat.o(212844);
+      paramViewGroup = (RecyclerView.w)new i(this, paramViewGroup, LayoutInflater.from(this.hcl.getContext()).inflate(2131496293, paramViewGroup, false));
+      AppMethodBeat.o(216472);
       return paramViewGroup;
     }
     
     public final void a(RecyclerView.w paramw, final int paramInt)
     {
-      AppMethodBeat.i(212846);
+      AppMethodBeat.i(216474);
       p.h(paramw, "holder");
       switch (getItemViewType(paramInt))
       {
@@ -443,28 +443,28 @@ public final class LiveAnchorMicUserListView
         {
           paramw = paramw.auu;
           p.g(paramw, "holder.itemView");
-          if (!LiveAnchorMicUserListView.e(this.gZy)) {
+          if (!LiveAnchorMicUserListView.e(this.hcl)) {
             break;
           }
           paramw.setAlpha(1.0F);
           paramw.setEnabled(true);
-          AppMethodBeat.o(212846);
+          AppMethodBeat.o(216474);
           return;
           localObject1 = (MMSwitchBtn)paramw.auu.findViewById(2131307576);
           ((TextView)paramw.auu.findViewById(2131307577)).setOnClickListener((View.OnClickListener)new a(this));
           p.g(localObject1, "switchView");
-          ((MMSwitchBtn)localObject1).setCheck(this.gZy.getMicPermission());
+          ((MMSwitchBtn)localObject1).setCheck(this.hcl.getMicPermission());
           continue;
           localObject1 = paramw.auu;
           if (localObject1 == null)
           {
             paramw = new v("null cannot be cast to non-null type android.widget.TextView");
-            AppMethodBeat.o(212846);
+            AppMethodBeat.o(216474);
             throw paramw;
           }
-          ((TextView)localObject1).setText((CharSequence)((LiveAnchorMicUserListView.c)this.gZz.get(paramInt)).title);
+          ((TextView)localObject1).setText((CharSequence)((LiveAnchorMicUserListView.c)this.hcm.get(paramInt)).title);
           continue;
-          localObject1 = ((LiveAnchorMicUserListView.c)this.gZz.get(paramInt)).gZC;
+          localObject1 = ((LiveAnchorMicUserListView.c)this.hcm.get(paramInt)).hcp;
           if (localObject1 != null)
           {
             localObject2 = paramw.auu;
@@ -474,7 +474,7 @@ public final class LiveAnchorMicUserListView
           ((TextView)paramw.auu.findViewById(2131307692)).setOnClickListener((View.OnClickListener)new b(this, paramInt));
         }
       }
-      Object localObject1 = ((LiveAnchorMicUserListView.c)this.gZz.get(paramInt)).gZC;
+      Object localObject1 = ((LiveAnchorMicUserListView.c)this.hcm.get(paramInt)).hcp;
       if (localObject1 != null)
       {
         localObject2 = paramw.auu;
@@ -484,7 +484,7 @@ public final class LiveAnchorMicUserListView
       Object localObject2 = (ImageView)paramw.auu.findViewById(2131307713);
       Object localObject3 = (ImageView)paramw.auu.findViewById(2131307714);
       localObject1 = (TextView)paramw.auu.findViewById(2131307706);
-      if (LiveAnchorMicUserListView.f(this.gZy))
+      if (LiveAnchorMicUserListView.f(this.hcl))
       {
         p.g(localObject3, "maskView");
         ((ImageView)localObject3).setVisibility(0);
@@ -494,7 +494,7 @@ public final class LiveAnchorMicUserListView
         if (localObject3 == null)
         {
           paramw = new v("null cannot be cast to non-null type android.graphics.drawable.AnimationDrawable");
-          AppMethodBeat.o(212846);
+          AppMethodBeat.o(216474);
           throw paramw;
         }
         ((AnimationDrawable)localObject3).stop();
@@ -502,15 +502,15 @@ public final class LiveAnchorMicUserListView
         if (localObject2 == null)
         {
           paramw = new v("null cannot be cast to non-null type android.graphics.drawable.AnimationDrawable");
-          AppMethodBeat.o(212846);
+          AppMethodBeat.o(216474);
           throw paramw;
         }
         ((AnimationDrawable)localObject2).start();
         p.g(localObject1, "btn");
-        localObject2 = this.gZy.getContext();
+        localObject2 = this.hcl.getContext();
         p.g(localObject2, "context");
         ((TextView)localObject1).setBackground(((Context)localObject2).getResources().getDrawable(2131234913));
-        localObject2 = this.gZy.getContext();
+        localObject2 = this.hcl.getContext();
         p.g(localObject2, "context");
         ((TextView)localObject1).setText((CharSequence)((Context)localObject2).getResources().getString(2131766682));
       }
@@ -526,15 +526,15 @@ public final class LiveAnchorMicUserListView
         if (localObject2 == null)
         {
           paramw = new v("null cannot be cast to non-null type android.graphics.drawable.AnimationDrawable");
-          AppMethodBeat.o(212846);
+          AppMethodBeat.o(216474);
           throw paramw;
         }
         ((AnimationDrawable)localObject2).stop();
         p.g(localObject1, "btn");
-        localObject2 = this.gZy.getContext();
+        localObject2 = this.hcl.getContext();
         p.g(localObject2, "context");
         ((TextView)localObject1).setBackground(((Context)localObject2).getResources().getDrawable(2131234934));
-        localObject2 = this.gZy.getContext();
+        localObject2 = this.hcl.getContext();
         p.g(localObject2, "context");
         ((TextView)localObject1).setText((CharSequence)((Context)localObject2).getResources().getString(2131766690));
       }
@@ -543,26 +543,26 @@ public final class LiveAnchorMicUserListView
         paramw.setAlpha(0.3F);
         paramw.setEnabled(false);
       }
-      AppMethodBeat.o(212846);
+      AppMethodBeat.o(216474);
     }
     
     public final int getItemCount()
     {
-      AppMethodBeat.i(212845);
-      int i = this.gZz.size();
-      AppMethodBeat.o(212845);
+      AppMethodBeat.i(216473);
+      int i = this.hcm.size();
+      AppMethodBeat.o(216473);
       return i;
     }
     
     public final int getItemViewType(int paramInt)
     {
-      AppMethodBeat.i(212847);
-      paramInt = ((LiveAnchorMicUserListView.c)this.gZz.get(paramInt)).type;
-      AppMethodBeat.o(212847);
+      AppMethodBeat.i(216475);
+      paramInt = ((LiveAnchorMicUserListView.c)this.hcm.get(paramInt)).type;
+      AppMethodBeat.o(216475);
       return paramInt;
     }
     
-    @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+    @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
     static final class a
       implements View.OnClickListener
     {
@@ -570,29 +570,29 @@ public final class LiveAnchorMicUserListView
       
       public final void onClick(View paramView)
       {
-        AppMethodBeat.i(212841);
+        AppMethodBeat.i(216469);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
         localb.bd(paramView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/live/ui/dialog/LiveAnchorMicUserListView$LiveAnchorMicUserAdapter$onBindViewHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-        if (this.gZA.gZy.getMicPermission())
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/live/ui/dialog/LiveAnchorMicUserListView$LiveAnchorMicUserAdapter$onBindViewHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        if (this.hcn.hcl.getMicPermission())
         {
-          LiveAnchorMicUserListView.b(this.gZA.gZy);
-          paramView = LiveAnchorMicUserListView.c(this.gZA.gZy);
+          LiveAnchorMicUserListView.b(this.hcn.hcl);
+          paramView = LiveAnchorMicUserListView.c(this.hcn.hcl);
           if (paramView != null) {
-            paramView.cMW();
+            paramView.cPF();
           }
         }
         for (;;)
         {
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/live/ui/dialog/LiveAnchorMicUserListView$LiveAnchorMicUserAdapter$onBindViewHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-          AppMethodBeat.o(212841);
+          AppMethodBeat.o(216469);
           return;
-          LiveAnchorMicUserListView.a(this.gZA.gZy, true);
+          LiveAnchorMicUserListView.a(this.hcn.hcl, true);
         }
       }
     }
     
-    @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+    @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
     static final class b
       implements View.OnClickListener
     {
@@ -600,21 +600,21 @@ public final class LiveAnchorMicUserListView
       
       public final void onClick(View paramView)
       {
-        AppMethodBeat.i(212842);
+        AppMethodBeat.i(216470);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
         localb.bd(paramView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/live/ui/dialog/LiveAnchorMicUserListView$LiveAnchorMicUserAdapter$onBindViewHolder$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-        if (LiveAnchorMicUserListView.e(this.gZA.gZy))
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/live/ui/dialog/LiveAnchorMicUserListView$LiveAnchorMicUserAdapter$onBindViewHolder$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        if (LiveAnchorMicUserListView.e(this.hcn.hcl))
         {
-          LiveAnchorMicUserListView.g(this.gZA.gZy);
-          LiveAnchorMicUserListView.h(this.gZA.gZy).invoke(((LiveAnchorMicUserListView.c)this.gZA.gZz.get(paramInt)).gZC);
+          LiveAnchorMicUserListView.g(this.hcn.hcl);
+          LiveAnchorMicUserListView.h(this.hcn.hcl).invoke(((LiveAnchorMicUserListView.c)this.hcn.hcm.get(paramInt)).hcp);
         }
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/live/ui/dialog/LiveAnchorMicUserListView$LiveAnchorMicUserAdapter$onBindViewHolder$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(212842);
+        AppMethodBeat.o(216470);
       }
     }
     
-    @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+    @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
     static final class c
       implements View.OnClickListener
     {
@@ -622,17 +622,17 @@ public final class LiveAnchorMicUserListView
       
       public final void onClick(View paramView)
       {
-        AppMethodBeat.i(212843);
+        AppMethodBeat.i(216471);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
         localb.bd(paramView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/live/ui/dialog/LiveAnchorMicUserListView$LiveAnchorMicUserAdapter$onBindViewHolder$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-        LiveAnchorMicUserListView.i(this.gZA.gZy).invoke(((LiveAnchorMicUserListView.c)this.gZA.gZz.get(paramInt)).gZC);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/live/ui/dialog/LiveAnchorMicUserListView$LiveAnchorMicUserAdapter$onBindViewHolder$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        LiveAnchorMicUserListView.i(this.hcn.hcl).invoke(((LiveAnchorMicUserListView.c)this.hcn.hcm.get(paramInt)).hcp);
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/live/ui/dialog/LiveAnchorMicUserListView$LiveAnchorMicUserAdapter$onBindViewHolder$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(212843);
+        AppMethodBeat.o(216471);
       }
     }
     
-    @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/live/ui/dialog/LiveAnchorMicUserListView$LiveAnchorMicUserAdapter$onCreateViewHolder$1", "Landroid/support/v7/widget/RecyclerView$ViewHolder;", "plugin-logic_release"})
+    @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/live/ui/dialog/LiveAnchorMicUserListView$LiveAnchorMicUserAdapter$onCreateViewHolder$1", "Landroid/support/v7/widget/RecyclerView$ViewHolder;", "plugin-logic_release"})
     public static final class d
       extends RecyclerView.w
     {
@@ -642,7 +642,7 @@ public final class LiveAnchorMicUserListView
       }
     }
     
-    @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/live/ui/dialog/LiveAnchorMicUserListView$LiveAnchorMicUserAdapter$onCreateViewHolder$2", "Landroid/support/v7/widget/RecyclerView$ViewHolder;", "plugin-logic_release"})
+    @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/live/ui/dialog/LiveAnchorMicUserListView$LiveAnchorMicUserAdapter$onCreateViewHolder$2", "Landroid/support/v7/widget/RecyclerView$ViewHolder;", "plugin-logic_release"})
     public static final class e
       extends RecyclerView.w
     {
@@ -652,7 +652,7 @@ public final class LiveAnchorMicUserListView
       }
     }
     
-    @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/live/ui/dialog/LiveAnchorMicUserListView$LiveAnchorMicUserAdapter$onCreateViewHolder$3", "Landroid/support/v7/widget/RecyclerView$ViewHolder;", "plugin-logic_release"})
+    @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/live/ui/dialog/LiveAnchorMicUserListView$LiveAnchorMicUserAdapter$onCreateViewHolder$3", "Landroid/support/v7/widget/RecyclerView$ViewHolder;", "plugin-logic_release"})
     public static final class f
       extends RecyclerView.w
     {
@@ -662,7 +662,7 @@ public final class LiveAnchorMicUserListView
       }
     }
     
-    @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/live/ui/dialog/LiveAnchorMicUserListView$LiveAnchorMicUserAdapter$onCreateViewHolder$4", "Landroid/support/v7/widget/RecyclerView$ViewHolder;", "plugin-logic_release"})
+    @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/live/ui/dialog/LiveAnchorMicUserListView$LiveAnchorMicUserAdapter$onCreateViewHolder$4", "Landroid/support/v7/widget/RecyclerView$ViewHolder;", "plugin-logic_release"})
     public static final class g
       extends RecyclerView.w
     {
@@ -672,7 +672,7 @@ public final class LiveAnchorMicUserListView
       }
     }
     
-    @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/live/ui/dialog/LiveAnchorMicUserListView$LiveAnchorMicUserAdapter$onCreateViewHolder$5", "Landroid/support/v7/widget/RecyclerView$ViewHolder;", "plugin-logic_release"})
+    @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/live/ui/dialog/LiveAnchorMicUserListView$LiveAnchorMicUserAdapter$onCreateViewHolder$5", "Landroid/support/v7/widget/RecyclerView$ViewHolder;", "plugin-logic_release"})
     public static final class h
       extends RecyclerView.w
     {
@@ -682,7 +682,7 @@ public final class LiveAnchorMicUserListView
       }
     }
     
-    @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/live/ui/dialog/LiveAnchorMicUserListView$LiveAnchorMicUserAdapter$onCreateViewHolder$6", "Landroid/support/v7/widget/RecyclerView$ViewHolder;", "plugin-logic_release"})
+    @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/live/ui/dialog/LiveAnchorMicUserListView$LiveAnchorMicUserAdapter$onCreateViewHolder$6", "Landroid/support/v7/widget/RecyclerView$ViewHolder;", "plugin-logic_release"})
     public static final class i
       extends RecyclerView.w
     {
@@ -692,7 +692,7 @@ public final class LiveAnchorMicUserListView
       }
     }
     
-    @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/live/ui/dialog/LiveAnchorMicUserListView$LiveAnchorMicUserAdapter$onCreateViewHolder$7", "Landroid/support/v7/widget/RecyclerView$ViewHolder;", "plugin-logic_release"})
+    @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/live/ui/dialog/LiveAnchorMicUserListView$LiveAnchorMicUserAdapter$onCreateViewHolder$7", "Landroid/support/v7/widget/RecyclerView$ViewHolder;", "plugin-logic_release"})
     public static final class j
       extends RecyclerView.w
     {
@@ -703,7 +703,7 @@ public final class LiveAnchorMicUserListView
     }
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Lcom/tencent/mm/live/model/linkmic/LiveSysMsgManager$LiveMicUser;", "invoke"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Lcom/tencent/mm/live/model/linkmic/LiveSysMsgManager$LiveMicUser;", "invoke"})
   static final class d
     extends d.g.b.q
     implements d.g.a.b<a.a, z>
@@ -714,7 +714,7 @@ public final class LiveAnchorMicUserListView
     }
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "errType", "", "errCode", "errMsg", "", "kotlin.jvm.PlatformType", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "onSceneEnd"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "errType", "", "errCode", "errMsg", "", "kotlin.jvm.PlatformType", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "onSceneEnd"})
   static final class e
     implements f
   {
@@ -722,30 +722,30 @@ public final class LiveAnchorMicUserListView
     
     public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
     {
-      AppMethodBeat.i(212855);
+      AppMethodBeat.i(216483);
       paramn.setHasCallbackToQueue(true);
-      paramn = com.tencent.mm.live.core.debug.a.gKp;
-      com.tencent.mm.live.core.debug.a.ar("MicroMsg.LiveCoreMic", "[cgi]accept mic errType:" + paramInt1 + " errCode:" + paramInt2 + " errMsg:" + paramString);
+      paramn = com.tencent.mm.live.core.debug.a.gMY;
+      com.tencent.mm.live.core.debug.a.as("MicroMsg.LiveCoreMic", "[cgi]accept mic errType:" + paramInt1 + " errCode:" + paramInt2 + " errMsg:" + paramString);
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        LiveAnchorMicUserListView.j(this.gZy).U(true, 1);
-        paramString = com.tencent.mm.live.b.g.gOr;
-        com.tencent.mm.live.b.g.aod().a(this.gQX);
-        AppMethodBeat.o(212855);
+        LiveAnchorMicUserListView.j(this.hcl).X(true, 1);
+        paramString = com.tencent.mm.live.b.g.gQZ;
+        com.tencent.mm.live.b.g.aos().a(this.gTF);
+        AppMethodBeat.o(216483);
         return;
       }
-      t.makeText(this.gZy.getContext(), (CharSequence)com.tencent.mm.cc.a.az(this.gZy.getContext(), 2131766680), 0).show();
-      LiveAnchorMicUserListView.b(this.gZy, true);
-      paramString = this.gZy.getCallMicListener();
+      t.makeText(this.hcl.getContext(), (CharSequence)com.tencent.mm.cb.a.az(this.hcl.getContext(), 2131766680), 0).show();
+      LiveAnchorMicUserListView.b(this.hcl, true);
+      paramString = this.hcl.getCallMicListener();
       if (paramString != null) {
         paramString.p(Boolean.FALSE, null);
       }
-      this.gZy.aqs();
-      AppMethodBeat.o(212855);
+      this.hcl.aqH();
+      AppMethodBeat.o(216483);
     }
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "errType", "", "errCode", "errMsg", "", "kotlin.jvm.PlatformType", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "onSceneEnd", "com/tencent/mm/live/ui/dialog/LiveAnchorMicUserListView$anchorCloseMic$1$1"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "errType", "", "errCode", "errMsg", "", "kotlin.jvm.PlatformType", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "onSceneEnd", "com/tencent/mm/live/ui/dialog/LiveAnchorMicUserListView$anchorCloseMic$1$1"})
   static final class f
     implements f
   {
@@ -753,12 +753,12 @@ public final class LiveAnchorMicUserListView
     
     public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
     {
-      AppMethodBeat.i(212856);
+      AppMethodBeat.i(216484);
       paramn.setHasCallbackToQueue(true);
-      paramn = com.tencent.mm.live.core.debug.a.gKp;
-      com.tencent.mm.live.core.debug.a.ar("MicroMsg.LiveCoreMic", "[cgi-ret]anchor close mic :" + paramInt1 + " errCode:" + paramInt2 + " errMsg:" + paramString);
+      paramn = com.tencent.mm.live.core.debug.a.gMY;
+      com.tencent.mm.live.core.debug.a.as("MicroMsg.LiveCoreMic", "[cgi-ret]anchor close mic :" + paramInt1 + " errCode:" + paramInt2 + " errMsg:" + paramString);
       if ((paramInt1 == 0) && (paramInt2 == 0)) {
-        jdField_this.aqp();
+        jdField_this.aqE();
       }
       if (paramm == null)
       {
@@ -768,30 +768,30 @@ public final class LiveAnchorMicUserListView
           paramn = jdField_this.getContext();
           p.g(paramn, "context");
           t.makeText(paramString, (CharSequence)paramn.getResources().getString(2131766703), 0).show();
-          paramString = com.tencent.mm.live.b.g.gOr;
-          com.tencent.mm.live.b.g.aod().gQO.remove(this.gZD);
-          jdField_this.aqq();
-          paramString = com.tencent.mm.live.b.g.gOr;
-          com.tencent.mm.live.b.g.aod().aou();
-          jdField_this.aqs();
+          paramString = com.tencent.mm.live.b.g.gQZ;
+          com.tencent.mm.live.b.g.aos().gTw.remove(this.hcq);
+          jdField_this.aqF();
+          paramString = com.tencent.mm.live.b.g.gQZ;
+          com.tencent.mm.live.b.g.aos().aoJ();
+          jdField_this.aqH();
           paramString = jdField_this.getCallMicListener();
           if (paramString != null)
           {
             paramString.p(Boolean.FALSE, null);
-            AppMethodBeat.o(212856);
+            AppMethodBeat.o(216484);
             return;
           }
-          AppMethodBeat.o(212856);
+          AppMethodBeat.o(216484);
         }
       }
       else {
         paramm.p(Integer.valueOf(paramInt1), Integer.valueOf(paramInt2));
       }
-      AppMethodBeat.o(212856);
+      AppMethodBeat.o(216484);
     }
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "menu", "Lcom/tencent/mm/ui/base/MMMenu;", "kotlin.jvm.PlatformType", "onCreateMMMenu"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "menu", "Lcom/tencent/mm/ui/base/MMMenu;", "kotlin.jvm.PlatformType", "onCreateMMMenu"})
   static final class g
     implements n.d
   {
@@ -799,23 +799,23 @@ public final class LiveAnchorMicUserListView
     
     public final void onCreateMMMenu(com.tencent.mm.ui.base.l paraml)
     {
-      AppMethodBeat.i(212857);
-      Object localObject = LiveAnchorMicUserListView.c(this.gZy);
+      AppMethodBeat.i(216485);
+      Object localObject = LiveAnchorMicUserListView.c(this.hcl);
       if (localObject != null) {
         ((e)localObject).setFooterView(null);
       }
       paraml.clear();
-      localObject = this.gZy.getContext();
+      localObject = this.hcl.getContext();
       p.g(localObject, "context");
       int i = ((Context)localObject).getResources().getColor(2131101209);
-      localObject = this.gZy.getContext();
+      localObject = this.hcl.getContext();
       p.g(localObject, "context");
       paraml.a(1, i, (CharSequence)((Context)localObject).getResources().getString(2131766684));
-      AppMethodBeat.o(212857);
+      AppMethodBeat.o(216485);
     }
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "menuItem", "Landroid/view/MenuItem;", "i", "", "onMMMenuItemSelected"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "menuItem", "Landroid/view/MenuItem;", "i", "", "onMMMenuItemSelected"})
   static final class h
     implements n.e
   {
@@ -823,36 +823,36 @@ public final class LiveAnchorMicUserListView
     
     public final void onMMMenuItemSelected(MenuItem paramMenuItem, int paramInt)
     {
-      AppMethodBeat.i(212858);
+      AppMethodBeat.i(216486);
       p.h(paramMenuItem, "menuItem");
       switch (paramMenuItem.getItemId())
       {
       default: 
-        paramMenuItem = LiveAnchorMicUserListView.c(this.gZy);
+        paramMenuItem = LiveAnchorMicUserListView.c(this.hcl);
         if (paramMenuItem != null)
         {
-          paramMenuItem.bpT();
-          AppMethodBeat.o(212858);
+          paramMenuItem.bqD();
+          AppMethodBeat.o(216486);
           return;
         }
         break;
       case 0: 
-        AppMethodBeat.o(212858);
+        AppMethodBeat.o(216486);
         return;
       case 1: 
-        paramMenuItem = LiveAnchorMicUserListView.c(this.gZy);
+        paramMenuItem = LiveAnchorMicUserListView.c(this.hcl);
         if (paramMenuItem != null) {
-          paramMenuItem.bpT();
+          paramMenuItem.bqD();
         }
-        LiveAnchorMicUserListView.a(this.gZy, false);
-        AppMethodBeat.o(212858);
+        LiveAnchorMicUserListView.a(this.hcl, false);
+        AppMethodBeat.o(216486);
         return;
       }
-      AppMethodBeat.o(212858);
+      AppMethodBeat.o(216486);
     }
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "onDismiss"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "onDismiss"})
   static final class i
     implements e.b
   {
@@ -860,13 +860,13 @@ public final class LiveAnchorMicUserListView
     
     public final void onDismiss()
     {
-      AppMethodBeat.i(212859);
-      LiveAnchorMicUserListView.d(this.gZy);
-      AppMethodBeat.o(212859);
+      AppMethodBeat.i(216487);
+      LiveAnchorMicUserListView.d(this.hcl);
+      AppMethodBeat.o(216487);
     }
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Lcom/tencent/mm/live/model/linkmic/LiveSysMsgManager$LiveMicUser;", "invoke"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Lcom/tencent/mm/live/model/linkmic/LiveSysMsgManager$LiveMicUser;", "invoke"})
   static final class j
     extends d.g.b.q
     implements d.g.a.b<a.a, z>
@@ -877,7 +877,7 @@ public final class LiveAnchorMicUserListView
     }
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "errType", "", "errCode", "errMsg", "", "kotlin.jvm.PlatformType", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "onSceneEnd"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "errType", "", "errCode", "errMsg", "", "kotlin.jvm.PlatformType", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "onSceneEnd"})
   static final class k
     implements f
   {
@@ -885,31 +885,31 @@ public final class LiveAnchorMicUserListView
     
     public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
     {
-      AppMethodBeat.i(212861);
+      AppMethodBeat.i(216489);
       paramn.setHasCallbackToQueue(true);
-      paramn = com.tencent.mm.live.core.debug.a.gKp;
-      com.tencent.mm.live.core.debug.a.ar("MicroMsg.LiveCoreMic", "anchor close mic permission:" + paramInt1 + " errCode:" + paramInt2 + " errMsg:" + paramString);
+      paramn = com.tencent.mm.live.core.debug.a.gMY;
+      com.tencent.mm.live.core.debug.a.as("MicroMsg.LiveCoreMic", "anchor close mic permission:" + paramInt1 + " errCode:" + paramInt2 + " errMsg:" + paramString);
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        this.gZy.setMicPermission(true);
-        this.gZy.aqs();
+        this.hcl.setMicPermission(true);
+        this.hcl.aqH();
       }
       for (;;)
       {
-        paramString = this.gZy.getMicPermissionListener();
+        paramString = this.hcl.getMicPermissionListener();
         if (paramString == null) {
           break;
         }
-        paramString.invoke(Boolean.valueOf(this.gZy.getMicPermission()));
-        AppMethodBeat.o(212861);
+        paramString.invoke(Boolean.valueOf(this.hcl.getMicPermission()));
+        AppMethodBeat.o(216489);
         return;
-        this.gZy.setMicPermission(false);
+        this.hcl.setMicPermission(false);
       }
-      AppMethodBeat.o(212861);
+      AppMethodBeat.o(216489);
     }
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "errType", "", "errCode", "invoke"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "errType", "", "errCode", "invoke"})
   static final class l
     extends d.g.b.q
     implements m<Integer, Integer, z>
@@ -920,7 +920,7 @@ public final class LiveAnchorMicUserListView
     }
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "errType", "", "errCode", "errMsg", "", "kotlin.jvm.PlatformType", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "onSceneEnd"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "errType", "", "errCode", "errMsg", "", "kotlin.jvm.PlatformType", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "onSceneEnd"})
   static final class m
     implements f
   {
@@ -928,35 +928,35 @@ public final class LiveAnchorMicUserListView
     
     public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
     {
-      AppMethodBeat.i(212863);
+      AppMethodBeat.i(216491);
       paramn.setHasCallbackToQueue(true);
-      paramn = com.tencent.mm.live.core.debug.a.gKp;
-      com.tencent.mm.live.core.debug.a.ar("MicroMsg.LiveCoreMic", "anchor close mic permission:" + paramInt1 + " errCode:" + paramInt2 + " errMsg:" + paramString);
+      paramn = com.tencent.mm.live.core.debug.a.gMY;
+      com.tencent.mm.live.core.debug.a.as("MicroMsg.LiveCoreMic", "anchor close mic permission:" + paramInt1 + " errCode:" + paramInt2 + " errMsg:" + paramString);
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        this.gZy.setMicPermission(false);
-        paramString = com.tencent.mm.live.b.g.gOr;
-        com.tencent.mm.live.b.g.aod().gQO.clear();
-        this.gZy.aqs();
+        this.hcl.setMicPermission(false);
+        paramString = com.tencent.mm.live.b.g.gQZ;
+        com.tencent.mm.live.b.g.aos().gTw.clear();
+        this.hcl.aqH();
       }
       for (;;)
       {
-        paramString = this.gZy.getMicPermissionListener();
+        paramString = this.hcl.getMicPermissionListener();
         if (paramString == null) {
           break;
         }
-        paramString.invoke(Boolean.valueOf(this.gZy.getMicPermission()));
-        AppMethodBeat.o(212863);
+        paramString.invoke(Boolean.valueOf(this.hcl.getMicPermission()));
+        AppMethodBeat.o(216491);
         return;
-        this.gZy.setMicPermission(true);
+        this.hcl.setMicPermission(true);
       }
-      AppMethodBeat.o(212863);
+      AppMethodBeat.o(216491);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.live.ui.dialog.LiveAnchorMicUserListView
  * JD-Core Version:    0.7.0.1
  */

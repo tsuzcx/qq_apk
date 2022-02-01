@@ -16,10 +16,10 @@ public class k
 {
   private long bEH;
   private RandomAccessFile file;
-  private final s lmH = null;
-  private long lmJ = -1L;
-  private String lmq = "";
-  private String lne;
+  private String lqQ = "";
+  private String lrE;
+  private final s lrh = null;
+  private long lrj = -1L;
   private boolean opened;
   private Uri uri;
   
@@ -30,14 +30,14 @@ public class k
   
   private k(byte paramByte) {}
   
-  public final void QL(String paramString)
+  public final void Ru(String paramString)
   {
-    this.lmq = paramString;
+    this.lqQ = paramString;
   }
   
   public final long a(g paramg)
   {
-    AppMethodBeat.i(206055);
+    AppMethodBeat.i(211082);
     for (;;)
     {
       try
@@ -49,40 +49,40 @@ public class k
         {
           l = this.file.length() - paramg.position;
           this.bEH = l;
-          this.lmJ = (this.file.length() - paramg.position);
+          this.lrj = (this.file.length() - paramg.position);
           if (this.bEH >= 0L) {
             break;
           }
           paramg = new EOFException();
-          AppMethodBeat.o(206055);
+          AppMethodBeat.o(211082);
           throw paramg;
         }
       }
       catch (IOException paramg)
       {
         paramg = new a(paramg);
-        AppMethodBeat.o(206055);
+        AppMethodBeat.o(211082);
         throw paramg;
       }
       l = paramg.length;
     }
     this.opened = true;
-    if (this.lmH != null) {
-      this.lmH.onTransferStart();
+    if (this.lrh != null) {
+      this.lrh.onTransferStart();
     }
     long l = this.bEH;
-    AppMethodBeat.o(206055);
+    AppMethodBeat.o(211082);
     return l;
   }
   
   public final long available()
   {
-    return this.lmJ;
+    return this.lrj;
   }
   
-  public final long baK()
+  public final long bbj()
   {
-    AppMethodBeat.i(206060);
+    AppMethodBeat.i(211087);
     long l1 = 0L;
     try
     {
@@ -94,29 +94,29 @@ public class k
       label17:
       break label17;
     }
-    AppMethodBeat.o(206060);
+    AppMethodBeat.o(211087);
     return l1;
   }
   
-  public c bnC()
+  public c bom()
   {
-    AppMethodBeat.i(206059);
-    Object localObject = a.bnx().appContext.getContentResolver().getType(this.uri);
+    AppMethodBeat.i(211086);
+    Object localObject = a.boh().appContext.getContentResolver().getType(this.uri);
     if (localObject == null)
     {
-      localObject = c.lnr;
-      AppMethodBeat.o(206059);
+      localObject = c.lrQ;
+      AppMethodBeat.o(211086);
       return localObject;
     }
-    localObject = c.QO((String)localObject);
-    AppMethodBeat.o(206059);
+    localObject = c.Rx((String)localObject);
+    AppMethodBeat.o(211086);
     return localObject;
   }
   
   public final void close()
   {
-    AppMethodBeat.i(206058);
-    this.lne = null;
+    AppMethodBeat.i(211085);
+    this.lrE = null;
     if (this.file != null) {
       try
       {
@@ -126,7 +126,7 @@ public class k
       catch (IOException localIOException)
       {
         a locala = new a(localIOException);
-        AppMethodBeat.o(206058);
+        AppMethodBeat.o(211085);
         throw locala;
       }
       finally
@@ -135,33 +135,33 @@ public class k
         if (this.opened)
         {
           this.opened = false;
-          if (this.lmH != null) {
-            this.lmH.onTransferEnd();
+          if (this.lrh != null) {
+            this.lrh.onTransferEnd();
           }
         }
-        AppMethodBeat.o(206058);
+        AppMethodBeat.o(211085);
       }
     }
-    AppMethodBeat.o(206058);
+    AppMethodBeat.o(211085);
   }
   
   public final String getUri()
   {
-    AppMethodBeat.i(206057);
-    if ((TextUtils.isEmpty(this.lne)) && (this.uri != null)) {
-      this.lne = this.uri.toString();
+    AppMethodBeat.i(211084);
+    if ((TextUtils.isEmpty(this.lrE)) && (this.uri != null)) {
+      this.lrE = this.uri.toString();
     }
-    String str = this.lne;
-    AppMethodBeat.o(206057);
+    String str = this.lrE;
+    AppMethodBeat.o(211084);
     return str;
   }
   
   public final int read(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(206056);
+    AppMethodBeat.i(211083);
     if (this.bEH == 0L)
     {
-      AppMethodBeat.o(206056);
+      AppMethodBeat.o(211083);
       return -1;
     }
     try
@@ -170,17 +170,17 @@ public class k
       if (paramInt1 > 0)
       {
         this.bEH -= paramInt1;
-        if (this.lmH != null) {
-          this.lmH.tv(paramInt1);
+        if (this.lrh != null) {
+          this.lrh.tz(paramInt1);
         }
       }
-      AppMethodBeat.o(206056);
+      AppMethodBeat.o(211083);
       return paramInt1;
     }
     catch (IOException paramArrayOfByte)
     {
       paramArrayOfByte = new a(paramArrayOfByte);
-      AppMethodBeat.o(206056);
+      AppMethodBeat.o(211083);
       throw paramArrayOfByte;
     }
   }

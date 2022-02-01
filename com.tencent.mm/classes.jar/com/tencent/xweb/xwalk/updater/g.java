@@ -4,18 +4,18 @@ import java.nio.channels.FileLock;
 
 public final class g
 {
-  static boolean Mzi = false;
-  static FileLock Mzj = null;
+  static boolean MWn = false;
+  static FileLock MWo = null;
   
   /* Error */
-  public static boolean gdP()
+  public static boolean gir()
   {
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
     //   3: ldc 18
     //   5: invokestatic 24	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   8: getstatic 12	com/tencent/xweb/xwalk/updater/g:Mzi	Z
+    //   8: getstatic 12	com/tencent/xweb/xwalk/updater/g:MWn	Z
     //   11: ifeq +20 -> 31
     //   14: ldc 26
     //   16: invokestatic 32	org/xwalk/core/XWalkInitializer:addXWalkInitializeLog	(Ljava/lang/String;)V
@@ -129,7 +129,7 @@ public final class g
   }
   
   /* Error */
-  public static boolean gdQ()
+  public static boolean gis()
   {
     // Byte code:
     //   0: iconst_1
@@ -138,7 +138,7 @@ public final class g
     //   4: monitorenter
     //   5: ldc 121
     //   7: invokestatic 24	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   10: invokestatic 123	com/tencent/xweb/xwalk/updater/g:gdP	()Z
+    //   10: invokestatic 123	com/tencent/xweb/xwalk/updater/g:gir	()Z
     //   13: ifeq +20 -> 33
     //   16: ldc 125
     //   18: invokestatic 126	org/xwalk/core/XWalkEnvironment:addXWalkInitializeLog	(Ljava/lang/String;)V
@@ -151,7 +151,7 @@ public final class g
     //   31: iload_1
     //   32: ireturn
     //   33: iconst_1
-    //   34: putstatic 12	com/tencent/xweb/xwalk/updater/g:Mzi	Z
+    //   34: putstatic 12	com/tencent/xweb/xwalk/updater/g:MWn	Z
     //   37: invokestatic 57	android/os/Process:myPid	()I
     //   40: istore_0
     //   41: ldc 37
@@ -195,14 +195,14 @@ public final class g
   }
   
   /* Error */
-  public static void gdR()
+  public static void git()
   {
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
     //   3: ldc 146
     //   5: invokestatic 24	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   8: getstatic 12	com/tencent/xweb/xwalk/updater/g:Mzi	Z
+    //   8: getstatic 12	com/tencent/xweb/xwalk/updater/g:MWn	Z
     //   11: ifne +12 -> 23
     //   14: ldc 146
     //   16: invokestatic 35	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -210,7 +210,7 @@ public final class g
     //   21: monitorexit
     //   22: return
     //   23: iconst_0
-    //   24: putstatic 12	com/tencent/xweb/xwalk/updater/g:Mzi	Z
+    //   24: putstatic 12	com/tencent/xweb/xwalk/updater/g:MWn	Z
     //   27: invokestatic 57	android/os/Process:myPid	()I
     //   30: pop
     //   31: ldc 37

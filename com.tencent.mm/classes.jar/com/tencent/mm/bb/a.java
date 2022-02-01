@@ -1,124 +1,113 @@
 package com.tencent.mm.bb;
 
-import android.util.SparseArray;
+import android.content.ContentValues;
+import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.messenger.foundation.a.a.h;
-import com.tencent.mm.plugin.messenger.foundation.a.a.h.a;
-import com.tencent.mm.plugin.messenger.foundation.a.a.k.b;
-import com.tencent.mm.protocal.protobuf.cgk;
-import com.tencent.mm.protocal.protobuf.cgl;
-import com.tencent.mm.protocal.protobuf.cgm;
-import com.tencent.mm.protocal.protobuf.cgn;
-import com.tencent.mm.protocal.protobuf.zu;
-import com.tencent.mm.protocal.protobuf.zv;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
 
 public final class a
-  implements h
 {
-  SparseArray<LinkedList<h.a>> iig;
+  int dEu;
+  private String hPK;
+  private String hPL;
+  private int hPM;
+  private int hPN;
+  public int ilF;
+  private String path;
+  public String username;
   
   public a()
   {
-    AppMethodBeat.i(116837);
-    this.iig = new SparseArray();
-    AppMethodBeat.o(116837);
+    AppMethodBeat.i(150784);
+    this.dEu = -1;
+    this.username = "";
+    this.ilF = 0;
+    this.path = "";
+    this.hPK = "";
+    this.hPL = "";
+    this.hPM = 0;
+    this.hPN = 0;
+    AppMethodBeat.o(150784);
   }
   
-  public final void a(int paramInt, h.a parama)
+  public final void convertFrom(Cursor paramCursor)
   {
-    AppMethodBeat.i(116839);
-    if (this.iig.indexOfKey(paramInt) < 0) {
-      this.iig.put(paramInt, new LinkedList());
-    }
-    ((LinkedList)this.iig.get(paramInt)).add(parama);
-    AppMethodBeat.o(116839);
+    AppMethodBeat.i(150785);
+    this.username = paramCursor.getString(0);
+    this.ilF = paramCursor.getInt(1);
+    this.path = paramCursor.getString(2);
+    this.hPK = paramCursor.getString(3);
+    this.hPL = paramCursor.getString(4);
+    this.hPM = paramCursor.getInt(5);
+    this.hPN = paramCursor.getInt(6);
+    AppMethodBeat.o(150785);
   }
   
-  public final void a(final k.b paramb)
+  public final ContentValues convertTo()
   {
-    AppMethodBeat.i(116838);
-    if ((g.ajB().gAO == null) || (g.ajB().gAO.hOv == null))
-    {
-      AppMethodBeat.o(116838);
-      return;
+    AppMethodBeat.i(150786);
+    ContentValues localContentValues = new ContentValues();
+    if ((this.dEu & 0x1) != 0) {
+      localContentValues.put("username", getUsername());
     }
-    Object localObject = new ArrayList(1);
-    ((ArrayList)localObject).add(paramb);
-    localObject = new b((List)localObject);
-    g.ajD();
-    ((b)localObject).doScene(g.ajB().gAO.hOv, new f()
+    if ((this.dEu & 0x2) != 0) {
+      localContentValues.put("bgflag", Integer.valueOf(this.ilF));
+    }
+    if ((this.dEu & 0x4) != 0)
     {
-      public final void onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, n paramAnonymousn)
+      if (this.path == null)
       {
-        paramAnonymousInt1 = -1;
-        AppMethodBeat.i(116836);
-        if (paramAnonymousn.getType() != 681)
-        {
-          AppMethodBeat.o(116836);
-          return;
-        }
-        if (((b)paramAnonymousn).iij == null)
-        {
-          AppMethodBeat.o(116836);
-          return;
-        }
-        ((b)paramAnonymousn).iij.getReqObjImp();
-        paramAnonymousString = ((b.c)((b)paramAnonymousn).iij.getRespObj()).iio;
-        paramAnonymousInt2 = ((zu)((b.b)((b)paramAnonymousn).iij.getReqObj()).iin.GWT.nDj.getLast()).FYU;
-        if ((paramAnonymousString == null) || (paramAnonymousString.GZB == null) || (paramAnonymousString.GZB.GtN == null))
-        {
-          paramAnonymousString = (List)a.this.iig.get(paramAnonymousInt2);
-          if (paramAnonymousString != null)
-          {
-            paramAnonymousString = paramAnonymousString.iterator();
-            while (paramAnonymousString.hasNext()) {
-              ((h.a)paramAnonymousString.next()).a(-1, new cgk(), paramb);
-            }
-          }
-          AppMethodBeat.o(116836);
-          return;
-        }
-        if (paramAnonymousString.GZB.GtN.size() > 0) {
-          paramAnonymousInt1 = ((Integer)paramAnonymousString.GZB.GtN.getLast()).intValue();
-        }
-        if (paramAnonymousString.GZB.GZC.size() > 0) {}
-        for (paramAnonymousString = (cgk)paramAnonymousString.GZB.GZC.getLast();; paramAnonymousString = new cgk())
-        {
-          paramAnonymousn = (List)a.this.iig.get(paramAnonymousInt2);
-          if (paramAnonymousn == null) {
-            break;
-          }
-          paramAnonymousn = paramAnonymousn.iterator();
-          while (paramAnonymousn.hasNext()) {
-            ((h.a)paramAnonymousn.next()).a(paramAnonymousInt1, paramAnonymousString, paramb);
-          }
-        }
-        AppMethodBeat.o(116836);
+        str = "";
+        localContentValues.put("path", str);
       }
-    });
-    AppMethodBeat.o(116838);
+    }
+    else
+    {
+      if ((this.dEu & 0x8) != 0)
+      {
+        if (this.hPK != null) {
+          break label195;
+        }
+        str = "";
+        label100:
+        localContentValues.put("reserved1", str);
+      }
+      if ((this.dEu & 0x10) != 0) {
+        if (this.hPL != null) {
+          break label203;
+        }
+      }
+    }
+    label195:
+    label203:
+    for (String str = "";; str = this.hPL)
+    {
+      localContentValues.put("reserved2", str);
+      if ((this.dEu & 0x20) != 0) {
+        localContentValues.put("reserved3", Integer.valueOf(this.hPM));
+      }
+      if ((this.dEu & 0x40) != 0) {
+        localContentValues.put("reserved4", Integer.valueOf(this.hPN));
+      }
+      AppMethodBeat.o(150786);
+      return localContentValues;
+      str = this.path;
+      break;
+      str = this.hPK;
+      break label100;
+    }
   }
   
-  public final void b(int paramInt, h.a parama)
+  public final String getUsername()
   {
-    AppMethodBeat.i(116840);
-    if (this.iig.indexOfKey(paramInt) >= 0) {
-      ((LinkedList)this.iig.get(paramInt)).remove(parama);
+    if (this.username == null) {
+      return "";
     }
-    AppMethodBeat.o(116840);
+    return this.username;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.bb.a
  * JD-Core Version:    0.7.0.1
  */

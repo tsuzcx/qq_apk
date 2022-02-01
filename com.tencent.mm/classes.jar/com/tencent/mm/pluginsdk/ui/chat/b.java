@@ -4,39 +4,39 @@ import android.view.MotionEvent;
 
 public abstract interface b
 {
-  public abstract long PZ();
+  public abstract long PY();
   
-  public abstract void V(MotionEvent paramMotionEvent);
+  public abstract void T(MotionEvent paramMotionEvent);
   
-  public abstract void amZ(String paramString);
+  public abstract void aoa(String paramString);
   
-  public abstract boolean apn(String paramString);
+  public abstract boolean aqs(String paramString);
   
-  public abstract boolean apo(String paramString);
+  public abstract boolean aqt(String paramString);
   
-  public abstract boolean dZ(String paramString, int paramInt);
+  public abstract boolean dnV();
   
-  public abstract boolean dkV();
+  public abstract boolean dnW();
   
-  public abstract boolean dkW();
+  public abstract boolean dnY();
   
-  public abstract boolean dkY();
+  public abstract void dnZ();
   
-  public abstract void dkZ();
+  public abstract boolean doa();
   
-  public abstract boolean dla();
+  public abstract void dob();
   
-  public abstract void dlb();
+  public abstract void doc();
   
-  public abstract void dlc();
+  public abstract void dod();
   
-  public abstract void dld();
+  public abstract boolean eg(String paramString, int paramInt);
   
   public abstract String getFileName();
   
   public abstract void onPause();
   
-  public abstract void oo(boolean paramBoolean);
+  public abstract void ot(boolean paramBoolean);
   
   public abstract void release();
 }

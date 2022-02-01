@@ -10,8 +10,8 @@ import com.tencent.mm.plugin.appbrand.jsapi.video.c.b.j;
 import com.tencent.mm.plugin.appbrand.jsapi.video.c.b.k;
 import com.tencent.mm.plugin.appbrand.jsapi.video.d;
 import com.tencent.mm.plugin.appbrand.jsapi.video.h;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.HashMap;
 import java.util.Map;
 import org.json.JSONArray;
@@ -25,7 +25,7 @@ public final class b
   
   static void a(c paramc, String paramString, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(206230);
+    AppMethodBeat.i(211258);
     String str = "";
     switch (paramInt1)
     {
@@ -36,8 +36,8 @@ public final class b
       localHashMap.put("errMsg", str);
       localHashMap.put("resource", paramString);
       paramString = new JSONObject(localHashMap).toString();
-      new b.j().h(paramc).Pi(paramString).bir();
-      AppMethodBeat.o(206230);
+      new b.j().h(paramc).PQ(paramString).bja();
+      AppMethodBeat.o(211258);
       return;
       str = "args illegal";
       continue;
@@ -53,20 +53,20 @@ public final class b
   
   public final void a(final c paramc, JSONObject paramJSONObject, int paramInt)
   {
-    AppMethodBeat.i(206229);
+    AppMethodBeat.i(211257);
     if (paramJSONObject == null)
     {
       paramc.h(paramInt, e("fail:data nil", null));
-      ad.w("MicroMsg.JsApiLoadVideoResource", "data is null");
-      AppMethodBeat.o(206229);
+      ae.w("MicroMsg.JsApiLoadVideoResource", "data is null");
+      AppMethodBeat.o(211257);
       return;
     }
     paramJSONObject = paramJSONObject.optJSONArray("resources");
     if ((paramJSONObject == null) || (paramJSONObject.length() == 0))
     {
-      ad.w("MicroMsg.JsApiLoadVideoResource", "dataArr nil");
+      ae.w("MicroMsg.JsApiLoadVideoResource", "dataArr nil");
       paramc.h(paramInt, e("fail:dataArr nil", null));
-      AppMethodBeat.o(206229);
+      AppMethodBeat.o(211257);
       return;
     }
     int k = 0;
@@ -74,11 +74,11 @@ public final class b
     if (j < paramJSONObject.length())
     {
       String str = paramJSONObject.optString(j, "");
-      ad.d("MicroMsg.JsApiLoadVideoResource", "preLoadVideo videoUrl:%s", new Object[] { str });
+      ae.d("MicroMsg.JsApiLoadVideoResource", "preLoadVideo videoUrl:%s", new Object[] { str });
       int i;
-      if (bt.isNullOrNil(str))
+      if (bu.isNullOrNil(str))
       {
-        ad.w("MicroMsg.JsApiLoadVideoResource", "videoUrl i nil");
+        ae.w("MicroMsg.JsApiLoadVideoResource", "videoUrl i nil");
         i = k + 1;
       }
       for (;;)
@@ -91,30 +91,30 @@ public final class b
         {
           int m = ((h)e.K(h.class)).a(str, new d()
           {
-            public final void bG(String paramAnonymousString, int paramAnonymousInt)
+            public final void bJ(String paramAnonymousString, int paramAnonymousInt)
             {
-              AppMethodBeat.i(206228);
-              ad.i("MicroMsg.JsApiLoadVideoResource", "leonlad downloadVideo onPreLoadFail err_code = %s, url = %s", new Object[] { Integer.valueOf(paramAnonymousInt), paramAnonymousString });
+              AppMethodBeat.i(211256);
+              ae.i("MicroMsg.JsApiLoadVideoResource", "leonlad downloadVideo onPreLoadFail err_code = %s, url = %s", new Object[] { Integer.valueOf(paramAnonymousInt), paramAnonymousString });
               b.a(paramc, paramAnonymousString, -5, paramAnonymousInt);
-              AppMethodBeat.o(206228);
+              AppMethodBeat.o(211256);
             }
             
-            public final void dw(String paramAnonymousString1, String paramAnonymousString2)
+            public final void dy(String paramAnonymousString1, String paramAnonymousString2)
             {
-              AppMethodBeat.i(206227);
-              ad.i("MicroMsg.JsApiLoadVideoResource", "leonlad downloadVideo onPreLoadSucc save_path = %s, url = %s", new Object[] { paramAnonymousString2, paramAnonymousString1 });
+              AppMethodBeat.i(211255);
+              ae.i("MicroMsg.JsApiLoadVideoResource", "leonlad downloadVideo onPreLoadSucc save_path = %s, url = %s", new Object[] { paramAnonymousString2, paramAnonymousString1 });
               paramAnonymousString2 = paramc;
               HashMap localHashMap = new HashMap();
               localHashMap.put("resource", paramAnonymousString1);
               paramAnonymousString1 = new JSONObject(localHashMap).toString();
-              new b.k().h(paramAnonymousString2).Pi(paramAnonymousString1).bir();
-              AppMethodBeat.o(206227);
+              new b.k().h(paramAnonymousString2).PQ(paramAnonymousString1).bja();
+              AppMethodBeat.o(211255);
             }
           });
           i = k;
           if (m != 0)
           {
-            ad.i("MicroMsg.JsApiLoadVideoResource", "leonlad downloadVideo genPreLoad fail ret = %s, videoUrl = %s", new Object[] { Integer.valueOf(m), str });
+            ae.i("MicroMsg.JsApiLoadVideoResource", "leonlad downloadVideo genPreLoad fail ret = %s, videoUrl = %s", new Object[] { Integer.valueOf(m), str });
             a(paramc, str, m, 0);
             i = k + 1;
           }
@@ -124,7 +124,7 @@ public final class b
     if ((k != 0) && (k == paramJSONObject.length())) {
       paramc.h(paramInt, e("fail", null));
     }
-    AppMethodBeat.o(206229);
+    AppMethodBeat.o(211257);
   }
 }
 

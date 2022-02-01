@@ -11,13 +11,13 @@ import java.util.List;
 
 final class a
 {
-  private static a Nag;
-  public static final a Nah;
+  private static a Nxm;
+  public static final a Nxn;
   
   static
   {
     AppMethodBeat.i(57394);
-    Nah = new a();
+    Nxn = new a();
     AppMethodBeat.o(57394);
   }
   
@@ -45,20 +45,20 @@ final class a
   {
     AppMethodBeat.i(57393);
     p.h(paramMember, "member");
-    Object localObject2 = Nag;
+    Object localObject2 = Nxm;
     Object localObject1 = localObject2;
     if (localObject2 == null)
     {
       localObject1 = a(paramMember);
-      Nag = (a)localObject1;
+      Nxm = (a)localObject1;
     }
-    localObject2 = ((a)localObject1).Nai;
+    localObject2 = ((a)localObject1).Nxo;
     if (localObject2 == null)
     {
       AppMethodBeat.o(57393);
       return null;
     }
-    localObject1 = ((a)localObject1).Naj;
+    localObject1 = ((a)localObject1).Nxp;
     if (localObject1 == null)
     {
       AppMethodBeat.o(57393);
@@ -94,19 +94,19 @@ final class a
   
   public static final class a
   {
-    final Method Nai;
-    final Method Naj;
+    final Method Nxo;
+    final Method Nxp;
     
     public a(Method paramMethod1, Method paramMethod2)
     {
-      this.Nai = paramMethod1;
-      this.Naj = paramMethod2;
+      this.Nxo = paramMethod1;
+      this.Nxp = paramMethod2;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.b.d.b.a
  * JD-Core Version:    0.7.0.1
  */

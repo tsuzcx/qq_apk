@@ -8,55 +8,50 @@ import d.l.b;
 import d.l.d;
 import d.l.h;
 
-@l(gfx={1, 1, 13})
+@l(gjZ={1, 1, 13})
 final class ac
   extends t
 {
-  public static final h cxK;
+  public static final h cyr;
   
   static
   {
-    AppMethodBeat.i(215092);
-    cxK = new ac();
-    AppMethodBeat.o(215092);
+    AppMethodBeat.i(175883);
+    cyr = new ac();
+    AppMethodBeat.o(175883);
   }
   
-  public final String Hu()
+  public final String HC()
   {
-    return "getSupport_client_vertex_buffer()Z";
+    return "getSdcard_path()Ljava/lang/String;";
   }
   
-  public final d Hv()
+  public final d HD()
   {
-    AppMethodBeat.i(215093);
+    AppMethodBeat.i(175884);
     b localb = z.bp(MBRuntime.MBParams.class);
-    AppMethodBeat.o(215093);
+    AppMethodBeat.o(175884);
     return localb;
   }
   
   public final Object get(Object paramObject)
   {
-    AppMethodBeat.i(215094);
-    boolean bool = ((MBRuntime.MBParams)paramObject).support_client_vertex_buffer;
-    AppMethodBeat.o(215094);
-    return Boolean.valueOf(bool);
+    return ((MBRuntime.MBParams)paramObject).sdcard_path;
   }
   
   public final String getName()
   {
-    return "support_client_vertex_buffer";
+    return "sdcard_path";
   }
   
   public final void set(Object paramObject1, Object paramObject2)
   {
-    AppMethodBeat.i(215095);
-    ((MBRuntime.MBParams)paramObject1).support_client_vertex_buffer = ((Boolean)paramObject2).booleanValue();
-    AppMethodBeat.o(215095);
+    ((MBRuntime.MBParams)paramObject1).sdcard_path = ((String)paramObject2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.magicbrush.ac
  * JD-Core Version:    0.7.0.1
  */

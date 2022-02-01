@@ -2,8 +2,8 @@ package com.tencent.mm.plugin.card.sharecard.model;
 
 public final class p
 {
-  public boolean oBV = false;
-  public String oxM = "";
+  public String oEo = "";
+  public boolean oIx = false;
   public int top = 0;
 }
 

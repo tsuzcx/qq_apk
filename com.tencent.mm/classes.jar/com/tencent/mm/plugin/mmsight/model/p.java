@@ -2,33 +2,33 @@ package com.tencent.mm.plugin.mmsight.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.modelcontrol.VideoTransPara;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class p
 {
-  public int gbj = 2;
-  public int hpj = -1;
-  public VideoTransPara hvh;
-  public boolean hwb = false;
-  public int juM = -1;
-  public boolean pQy = true;
-  public int vOB = 1;
-  public int vOC = -1;
-  public boolean vOD = false;
-  public boolean vOE = true;
-  public boolean vOF = false;
-  h.c vOG;
-  public boolean vOn = false;
+  public int gdr = 2;
+  public int hrX = -1;
+  public VideoTransPara hxV;
+  public boolean hyP = false;
+  public int jxH = -1;
+  public boolean pXd = true;
   public int videoBitrate;
+  public int waE = 1;
+  public int waF = -1;
+  public boolean waG = false;
+  public boolean waH = true;
+  public boolean waI = false;
+  h.c waJ;
+  public boolean waq = false;
   
   public p() {}
   
   private p(int paramInt, VideoTransPara paramVideoTransPara)
   {
-    this.hvh = paramVideoTransPara;
-    this.gbj = paramInt;
+    this.hxV = paramVideoTransPara;
+    this.gdr = paramInt;
     this.videoBitrate = paramVideoTransPara.videoBitrate;
-    this.hpj = paramVideoTransPara.width;
+    this.hrX = paramVideoTransPara.width;
   }
   
   public static p a(int paramInt, VideoTransPara paramVideoTransPara)
@@ -45,7 +45,7 @@ public final class p
     for (;;)
     {
       if (paramVideoTransPara != null) {
-        paramVideoTransPara.vOC = paramInt;
+        paramVideoTransPara.waF = paramInt;
       }
       AppMethodBeat.o(89447);
       return paramVideoTransPara;
@@ -73,11 +73,11 @@ public final class p
     }
   }
   
-  private p dnd()
+  private p dqb()
   {
-    this.hpj = 1080;
-    if ((this.juM > 0) && (this.hpj > this.juM)) {
-      this.hpj = this.juM;
+    this.hrX = 1080;
+    if ((this.jxH > 0) && (this.hrX > this.jxH)) {
+      this.hrX = this.jxH;
     }
     return this;
   }
@@ -85,9 +85,9 @@ public final class p
   private static p e(VideoTransPara paramVideoTransPara)
   {
     AppMethodBeat.i(89448);
-    ad.i("MicroMsg.RecoderParameter", "setToPresetConfig1");
+    ae.i("MicroMsg.RecoderParameter", "setToPresetConfig1");
     paramVideoTransPara = new p(2, paramVideoTransPara);
-    paramVideoTransPara.vOD = false;
+    paramVideoTransPara.waG = false;
     AppMethodBeat.o(89448);
     return paramVideoTransPara;
   }
@@ -95,10 +95,10 @@ public final class p
   private static p f(VideoTransPara paramVideoTransPara)
   {
     AppMethodBeat.i(89449);
-    ad.i("MicroMsg.RecoderParameter", "setToPresetConfig2");
+    ae.i("MicroMsg.RecoderParameter", "setToPresetConfig2");
     paramVideoTransPara = new p(2, paramVideoTransPara);
-    paramVideoTransPara.vOD = false;
-    paramVideoTransPara = paramVideoTransPara.dnb().dna();
+    paramVideoTransPara.waG = false;
+    paramVideoTransPara = paramVideoTransPara.dpZ().dpY();
     AppMethodBeat.o(89449);
     return paramVideoTransPara;
   }
@@ -106,9 +106,9 @@ public final class p
   private static p g(VideoTransPara paramVideoTransPara)
   {
     AppMethodBeat.i(89450);
-    ad.i("MicroMsg.RecoderParameter", "setToPresetConfig3");
+    ae.i("MicroMsg.RecoderParameter", "setToPresetConfig3");
     paramVideoTransPara = new p(1, paramVideoTransPara);
-    paramVideoTransPara.vOD = false;
+    paramVideoTransPara.waG = false;
     AppMethodBeat.o(89450);
     return paramVideoTransPara;
   }
@@ -116,10 +116,10 @@ public final class p
   private static p h(VideoTransPara paramVideoTransPara)
   {
     AppMethodBeat.i(89451);
-    ad.i("MicroMsg.RecoderParameter", "setToPresetConfig4");
+    ae.i("MicroMsg.RecoderParameter", "setToPresetConfig4");
     paramVideoTransPara = new p(1, paramVideoTransPara);
-    paramVideoTransPara.vOD = false;
-    paramVideoTransPara = paramVideoTransPara.dnb().dna();
+    paramVideoTransPara.waG = false;
+    paramVideoTransPara = paramVideoTransPara.dpZ().dpY();
     AppMethodBeat.o(89451);
     return paramVideoTransPara;
   }
@@ -127,11 +127,11 @@ public final class p
   private static p i(VideoTransPara paramVideoTransPara)
   {
     AppMethodBeat.i(89452);
-    ad.i("MicroMsg.RecoderParameter", "setToPresetConfig5");
+    ae.i("MicroMsg.RecoderParameter", "setToPresetConfig5");
     paramVideoTransPara = new p(2, paramVideoTransPara);
-    paramVideoTransPara.vOD = true;
-    paramVideoTransPara.hwb = false;
-    paramVideoTransPara = paramVideoTransPara.dna();
+    paramVideoTransPara.waG = true;
+    paramVideoTransPara.hyP = false;
+    paramVideoTransPara = paramVideoTransPara.dpY();
     AppMethodBeat.o(89452);
     return paramVideoTransPara;
   }
@@ -139,10 +139,10 @@ public final class p
   private static p j(VideoTransPara paramVideoTransPara)
   {
     AppMethodBeat.i(89453);
-    ad.i("MicroMsg.RecoderParameter", "setToPresetConfig6");
+    ae.i("MicroMsg.RecoderParameter", "setToPresetConfig6");
     paramVideoTransPara = new p(1, paramVideoTransPara);
-    paramVideoTransPara.vOD = true;
-    paramVideoTransPara = paramVideoTransPara.dna();
+    paramVideoTransPara.waG = true;
+    paramVideoTransPara = paramVideoTransPara.dpY();
     AppMethodBeat.o(89453);
     return paramVideoTransPara;
   }
@@ -150,11 +150,11 @@ public final class p
   private static p k(VideoTransPara paramVideoTransPara)
   {
     AppMethodBeat.i(89454);
-    ad.i("MicroMsg.RecoderParameter", "setToPresetConfig7");
+    ae.i("MicroMsg.RecoderParameter", "setToPresetConfig7");
     paramVideoTransPara = new p(2, paramVideoTransPara);
-    paramVideoTransPara.vOD = true;
-    paramVideoTransPara = paramVideoTransPara.dnc();
-    paramVideoTransPara.hwb = false;
+    paramVideoTransPara.waG = true;
+    paramVideoTransPara = paramVideoTransPara.dqa();
+    paramVideoTransPara.hyP = false;
     AppMethodBeat.o(89454);
     return paramVideoTransPara;
   }
@@ -162,11 +162,11 @@ public final class p
   private static p l(VideoTransPara paramVideoTransPara)
   {
     AppMethodBeat.i(89455);
-    ad.i("MicroMsg.RecoderParameter", "setToPresetConfig8");
+    ae.i("MicroMsg.RecoderParameter", "setToPresetConfig8");
     paramVideoTransPara = new p(2, paramVideoTransPara);
-    paramVideoTransPara.vOD = true;
-    paramVideoTransPara = paramVideoTransPara.dnc();
-    paramVideoTransPara.hwb = true;
+    paramVideoTransPara.waG = true;
+    paramVideoTransPara = paramVideoTransPara.dqa();
+    paramVideoTransPara.hyP = true;
     AppMethodBeat.o(89455);
     return paramVideoTransPara;
   }
@@ -175,9 +175,9 @@ public final class p
   {
     AppMethodBeat.i(89456);
     paramVideoTransPara = new p(1, paramVideoTransPara);
-    paramVideoTransPara.vOD = true;
-    paramVideoTransPara = paramVideoTransPara.dnc();
-    paramVideoTransPara.hwb = false;
+    paramVideoTransPara.waG = true;
+    paramVideoTransPara = paramVideoTransPara.dqa();
+    paramVideoTransPara.hyP = false;
     AppMethodBeat.o(89456);
     return paramVideoTransPara;
   }
@@ -185,11 +185,11 @@ public final class p
   private static p n(VideoTransPara paramVideoTransPara)
   {
     AppMethodBeat.i(89457);
-    ad.i("MicroMsg.RecoderParameter", "setToPresetConfig10");
+    ae.i("MicroMsg.RecoderParameter", "setToPresetConfig10");
     paramVideoTransPara = new p(1, paramVideoTransPara);
-    paramVideoTransPara.vOD = true;
-    paramVideoTransPara = paramVideoTransPara.dnc();
-    paramVideoTransPara.hwb = true;
+    paramVideoTransPara.waG = true;
+    paramVideoTransPara = paramVideoTransPara.dqa();
+    paramVideoTransPara.hyP = true;
     AppMethodBeat.o(89457);
     return paramVideoTransPara;
   }
@@ -197,12 +197,12 @@ public final class p
   private static p o(VideoTransPara paramVideoTransPara)
   {
     AppMethodBeat.i(89458);
-    ad.i("MicroMsg.RecoderParameter", "setToPresetConfig10");
+    ae.i("MicroMsg.RecoderParameter", "setToPresetConfig10");
     paramVideoTransPara = new p(2, paramVideoTransPara);
-    paramVideoTransPara.vOD = true;
-    paramVideoTransPara = paramVideoTransPara.dnc();
-    paramVideoTransPara.hwb = false;
-    paramVideoTransPara = paramVideoTransPara.dnb();
+    paramVideoTransPara.waG = true;
+    paramVideoTransPara = paramVideoTransPara.dqa();
+    paramVideoTransPara.hyP = false;
+    paramVideoTransPara = paramVideoTransPara.dpZ();
     AppMethodBeat.o(89458);
     return paramVideoTransPara;
   }
@@ -210,50 +210,50 @@ public final class p
   private static p p(VideoTransPara paramVideoTransPara)
   {
     AppMethodBeat.i(89459);
-    ad.i("MicroMsg.RecoderParameter", "setToPresetConfig10");
+    ae.i("MicroMsg.RecoderParameter", "setToPresetConfig10");
     paramVideoTransPara = new p(2, paramVideoTransPara);
-    paramVideoTransPara.vOD = true;
-    paramVideoTransPara = paramVideoTransPara.dnd();
-    paramVideoTransPara.hwb = false;
-    paramVideoTransPara = paramVideoTransPara.dnb();
+    paramVideoTransPara.waG = true;
+    paramVideoTransPara = paramVideoTransPara.dqb();
+    paramVideoTransPara.hyP = false;
+    paramVideoTransPara = paramVideoTransPara.dpZ();
     AppMethodBeat.o(89459);
     return paramVideoTransPara;
   }
   
-  public final p dna()
+  public final p dpY()
   {
-    this.hpj = 720;
-    if ((this.juM > 0) && (this.hpj > this.juM)) {
-      this.hpj = this.juM;
+    this.hrX = 720;
+    if ((this.jxH > 0) && (this.hrX > this.jxH)) {
+      this.hrX = this.jxH;
     }
     return this;
   }
   
-  public final p dnb()
+  public final p dpZ()
   {
-    this.videoBitrate = (this.hvh.videoBitrate * 2);
-    this.vOF = true;
+    this.videoBitrate = (this.hxV.videoBitrate * 2);
+    this.waI = true;
     return this;
   }
   
-  public final p dnc()
+  public final p dqa()
   {
-    this.hpj = (this.hvh.width * 2);
-    if ((this.juM > 0) && (this.hpj > this.juM)) {
-      this.hpj = this.juM;
+    this.hrX = (this.hxV.width * 2);
+    if ((this.jxH > 0) && (this.hrX > this.jxH)) {
+      this.hrX = this.jxH;
     }
     return this;
   }
   
-  public final boolean dne()
+  public final boolean dqc()
   {
-    return this.hvh.width < this.hpj;
+    return this.hxV.width < this.hrX;
   }
   
   public final String toString()
   {
     AppMethodBeat.i(89460);
-    String str = String.format("mediatype %s videoBitrate : %s isEnableLandscapeMode %s needRotateEachFrame %s isNeedRealtimeScale %s resolutionLimit %s videoParams %s", new Object[] { Integer.valueOf(this.gbj), Integer.valueOf(this.videoBitrate), Boolean.valueOf(this.vOn), Boolean.valueOf(this.hwb), Boolean.valueOf(this.vOD), Integer.valueOf(this.hpj), this.hvh });
+    String str = String.format("mediatype %s videoBitrate : %s isEnableLandscapeMode %s needRotateEachFrame %s isNeedRealtimeScale %s resolutionLimit %s videoParams %s", new Object[] { Integer.valueOf(this.gdr), Integer.valueOf(this.videoBitrate), Boolean.valueOf(this.waq), Boolean.valueOf(this.hyP), Boolean.valueOf(this.waG), Integer.valueOf(this.hrX), this.hxV });
     AppMethodBeat.o(89460);
     return str;
   }

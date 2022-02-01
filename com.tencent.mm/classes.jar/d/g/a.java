@@ -9,7 +9,7 @@ import d.l.b;
 import d.v;
 import java.lang.annotation.Annotation;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"annotationClass", "Lkotlin/reflect/KClass;", "T", "", "getAnnotationClass", "(Ljava/lang/annotation/Annotation;)Lkotlin/reflect/KClass;", "java", "Ljava/lang/Class;", "java$annotations", "(Lkotlin/reflect/KClass;)V", "getJavaClass", "(Lkotlin/reflect/KClass;)Ljava/lang/Class;", "javaClass", "", "(Ljava/lang/Object;)Ljava/lang/Class;", "javaClass$annotations", "getRuntimeClassOfKClassInstance", "javaObjectType", "getJavaObjectType", "javaPrimitiveType", "getJavaPrimitiveType", "kotlin", "getKotlinClass", "(Ljava/lang/Class;)Lkotlin/reflect/KClass;", "isArrayOf", "", "", "([Ljava/lang/Object;)Z", "kotlin-stdlib"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"annotationClass", "Lkotlin/reflect/KClass;", "T", "", "getAnnotationClass", "(Ljava/lang/annotation/Annotation;)Lkotlin/reflect/KClass;", "java", "Ljava/lang/Class;", "java$annotations", "(Lkotlin/reflect/KClass;)V", "getJavaClass", "(Lkotlin/reflect/KClass;)Ljava/lang/Class;", "javaClass", "", "(Ljava/lang/Object;)Ljava/lang/Class;", "javaClass$annotations", "getRuntimeClassOfKClassInstance", "javaObjectType", "getJavaObjectType", "javaPrimitiveType", "getJavaPrimitiveType", "kotlin", "getKotlinClass", "(Ljava/lang/Class;)Lkotlin/reflect/KClass;", "isArrayOf", "", "", "([Ljava/lang/Object;)Z", "kotlin-stdlib"})
 public final class a
 {
   public static final <T extends Annotation> b<? extends T> a(T paramT)
@@ -33,7 +33,7 @@ public final class a
   {
     AppMethodBeat.i(129345);
     p.h(paramb, "$this$java");
-    paramb = ((g)paramb).gfT();
+    paramb = ((g)paramb).gkv();
     if (paramb == null)
     {
       paramb = new v("null cannot be cast to non-null type java.lang.Class<T>");
@@ -48,7 +48,7 @@ public final class a
   {
     AppMethodBeat.i(129346);
     p.h(paramb, "$this$javaPrimitiveType");
-    paramb = ((g)paramb).gfT();
+    paramb = ((g)paramb).gkv();
     if (paramb.isPrimitive())
     {
       if (paramb == null)
@@ -139,7 +139,7 @@ public final class a
   {
     AppMethodBeat.i(129347);
     p.h(paramb, "$this$javaObjectType");
-    paramb = ((g)paramb).gfT();
+    paramb = ((g)paramb).gkv();
     if (!paramb.isPrimitive())
     {
       if (paramb == null)

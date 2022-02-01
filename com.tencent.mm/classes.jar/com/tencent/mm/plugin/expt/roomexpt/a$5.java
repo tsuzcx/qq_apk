@@ -4,14 +4,14 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.modelmulti.k;
 import com.tencent.mm.modelmulti.r;
-import com.tencent.mm.plugin.messenger.foundation.a.y;
-import com.tencent.mm.protocal.protobuf.ccs;
-import com.tencent.mm.protocal.protobuf.zv;
+import com.tencent.mm.plugin.messenger.foundation.a.z;
+import com.tencent.mm.protocal.protobuf.cdm;
+import com.tencent.mm.protocal.protobuf.zy;
 import com.tencent.mm.protocal.v.b;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.ar;
 
 final class a$5
-  implements y
+  implements z
 {
   a$5(a parama) {}
   
@@ -20,23 +20,23 @@ final class a$5
   public final void aJ(Object paramObject)
   {
     AppMethodBeat.i(122398);
-    aq localaq;
+    ar localar;
     String str;
     r localr;
     if ((paramObject instanceof k))
     {
-      localaq = g.ajF();
+      localar = g.ajU();
       str = ((k)paramObject).TAG;
-      localr = ((k)paramObject).ifm;
+      localr = ((k)paramObject).iif;
       paramObject = (k)paramObject;
-      if ((paramObject.ifu != null) && (paramObject.ifu.Foy.FRu != null)) {
+      if ((paramObject.iin != null) && (paramObject.iin.FGW.GjT != null)) {
         break label82;
       }
     }
     label82:
-    for (paramObject = null;; paramObject = paramObject.ifu.Foy.FRu.nDj)
+    for (paramObject = null;; paramObject = paramObject.iin.FGW.GjT.nIE)
     {
-      localaq.ay(new a.a(str, localr, paramObject));
+      localar.aw(new a.a(str, localr, paramObject));
       AppMethodBeat.o(122398);
       return;
     }

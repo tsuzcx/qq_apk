@@ -14,14 +14,14 @@ public final class s
   private static final f a(f paramf, String paramString1, boolean paramBoolean, String paramString2)
   {
     AppMethodBeat.i(57623);
-    if (paramf.Nqp)
+    if (paramf.NNv)
     {
       AppMethodBeat.o(57623);
       return null;
     }
     String str = paramf.getIdentifier();
     p.g(str, "methodName.identifier");
-    if (!n.nz(str, paramString1))
+    if (!n.nF(str, paramString1))
     {
       AppMethodBeat.o(57623);
       return null;
@@ -34,7 +34,7 @@ public final class s
     int i = str.charAt(paramString1.length());
     if (97 > i) {}
     while (paramString2 != null) {
-      if ((ac.MKp) && (!paramBoolean))
+      if ((ac.Nhs) && (!paramBoolean))
       {
         paramf = (Throwable)new AssertionError("Assertion failed");
         AppMethodBeat.o(57623);
@@ -47,7 +47,7 @@ public final class s
       }
       else
       {
-        paramf = f.bcE(paramString2 + n.b(str, (CharSequence)paramString1));
+        paramf = f.bei(paramString2 + n.b(str, (CharSequence)paramString1));
         AppMethodBeat.o(57623);
         return paramf;
       }
@@ -57,13 +57,13 @@ public final class s
       AppMethodBeat.o(57623);
       return paramf;
     }
-    paramf = a.bcY(n.b(str, (CharSequence)paramString1));
-    if (!f.bcF(paramf))
+    paramf = a.beC(n.b(str, (CharSequence)paramString1));
+    if (!f.bej(paramf))
     {
       AppMethodBeat.o(57623);
       return null;
     }
-    paramf = f.bcE(paramf);
+    paramf = f.bei(paramf);
     AppMethodBeat.o(57623);
     return paramf;
   }
@@ -87,7 +87,7 @@ public final class s
     p.h(paramf, "name");
     Object localObject = paramf.sD();
     p.g(localObject, "name.asString()");
-    if (o.bcn((String)localObject))
+    if (o.bdR((String)localObject))
     {
       p.h(paramf, "methodName");
       f localf = a(paramf, "get", false, null, 12);
@@ -95,18 +95,18 @@ public final class s
       if (localf == null) {
         localObject = a(paramf, "is", false, null, 8);
       }
-      paramf = j.eM(localObject);
+      paramf = j.eP(localObject);
       AppMethodBeat.o(57625);
       return paramf;
     }
-    if (o.bco((String)localObject))
+    if (o.bdS((String)localObject))
     {
       p.h(paramf, "methodName");
-      paramf = j.ad(new f[] { a(paramf, false), a(paramf, true) });
+      paramf = j.ac(new f[] { a(paramf, false), a(paramf, true) });
       AppMethodBeat.o(57625);
       return paramf;
     }
-    localObject = e.Nci;
+    localObject = e.Nzn;
     paramf = e.h(paramf);
     AppMethodBeat.o(57625);
     return paramf;
@@ -114,7 +114,7 @@ public final class s
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.d.a.s
  * JD-Core Version:    0.7.0.1
  */

@@ -2,51 +2,51 @@ package com.tencent.mm.model;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.am.q;
+import com.tencent.mm.al.q;
 import com.tencent.mm.api.c;
 import com.tencent.mm.g.c.aw;
 import com.tencent.mm.plugin.messenger.foundation.a.l;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.am;
-import com.tencent.mm.storage.at;
-import com.tencent.mm.storage.bp;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.an;
+import com.tencent.mm.storage.au;
 import com.tencent.mm.storage.bq;
-import com.tencent.mm.storage.bu;
+import com.tencent.mm.storage.br;
+import com.tencent.mm.storage.bv;
 import com.tencent.mm.storage.r;
 import junit.framework.Assert;
 
 public final class j
 {
-  public static int a(String paramString, final long paramLong, bj.a parama)
+  public static int a(String paramString, final long paramLong, bl.a parama)
   {
     AppMethodBeat.i(123960);
-    ad.d("MicroMsg.BizConversationLogic", "deleteMsgByBizChatId %s", new Object[] { Long.valueOf(paramLong) });
-    com.tencent.mm.kernel.g.ajF().ay(new Runnable()
+    ae.d("MicroMsg.BizConversationLogic", "deleteMsgByBizChatId %s", new Object[] { Long.valueOf(paramLong) });
+    com.tencent.mm.kernel.g.ajU().aw(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(123957);
-        Cursor localCursor = ((q)com.tencent.mm.kernel.g.ab(q.class)).azt().cd(this.geH, paramLong);
+        Cursor localCursor = ((q)com.tencent.mm.kernel.g.ab(q.class)).azJ().ce(this.ggQ, paramLong);
         if (localCursor.moveToFirst()) {
-          while ((!localCursor.isAfterLast()) && ((this.hEQ == null) || (!this.hEQ.YK())))
+          while ((!localCursor.isAfterLast()) && ((this.hHI == null) || (!this.hHI.YT())))
           {
-            bu localbu = new bu();
-            localbu.convertFrom(localCursor);
-            bj.x(localbu);
+            bv localbv = new bv();
+            localbv.convertFrom(localCursor);
+            bl.x(localbv);
             localCursor.moveToNext();
           }
         }
         localCursor.close();
-        ((q)com.tencent.mm.kernel.g.ab(q.class)).azt().cc(this.geH, paramLong);
-        aq.f(new Runnable()
+        ((q)com.tencent.mm.kernel.g.ab(q.class)).azJ().cd(this.ggQ, paramLong);
+        ar.f(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(123956);
-            if (j.1.this.hEQ != null) {
-              j.1.this.hEQ.YL();
+            if (j.1.this.hHI != null) {
+              j.1.this.hHI.YU();
             }
             AppMethodBeat.o(123956);
           }
@@ -66,59 +66,59 @@ public final class j
     return 0;
   }
   
-  public static void yC(String paramString)
+  public static void zm(String paramString)
   {
     AppMethodBeat.i(123959);
-    if (!bt.isNullOrNil(paramString)) {}
+    if (!bu.isNullOrNil(paramString)) {}
     Object localObject;
     for (boolean bool = true;; bool = false)
     {
       Assert.assertTrue(bool);
-      localObject = ((l)com.tencent.mm.kernel.g.ab(l.class)).azp().Bf(paramString);
-      if ((localObject != null) && (!bt.isNullOrNil(((aw)localObject).field_username))) {
+      localObject = ((l)com.tencent.mm.kernel.g.ab(l.class)).azF().BH(paramString);
+      if ((localObject != null) && (!bu.isNullOrNil(((aw)localObject).field_username))) {
         break;
       }
       AppMethodBeat.o(123959);
       return;
     }
-    ((am)localObject).setType(((aw)localObject).field_type | 0x800);
-    w.z((am)localObject);
-    if ((((l)com.tencent.mm.kernel.g.ab(l.class)).azv().aTz(paramString) == null) && (((am)localObject).fqg()))
+    ((an)localObject).setType(((aw)localObject).field_type | 0x800);
+    x.G((an)localObject);
+    if ((((l)com.tencent.mm.kernel.g.ab(l.class)).azL().aVa(paramString) == null) && (((an)localObject).fug()))
     {
-      if (!com.tencent.mm.am.g.DN(paramString)) {
+      if (!com.tencent.mm.al.g.Ep(paramString)) {
         break label254;
       }
-      if (((l)com.tencent.mm.kernel.g.ab(l.class)).azv().aTz("officialaccounts") == null)
+      if (((l)com.tencent.mm.kernel.g.ab(l.class)).azL().aVa("officialaccounts") == null)
       {
-        localObject = new at("officialaccounts");
-        ((at)localObject).fqK();
-        ((l)com.tencent.mm.kernel.g.ab(l.class)).azv().e((at)localObject);
+        localObject = new au("officialaccounts");
+        ((au)localObject).fuK();
+        ((l)com.tencent.mm.kernel.g.ab(l.class)).azL().e((au)localObject);
       }
-      localObject = new at(paramString);
-      ((at)localObject).qu(System.currentTimeMillis());
-      ((at)localObject).tD("officialaccounts");
-      ((l)com.tencent.mm.kernel.g.ab(l.class)).azv().e((at)localObject);
+      localObject = new au(paramString);
+      ((au)localObject).qH(System.currentTimeMillis());
+      ((au)localObject).tY("officialaccounts");
+      ((l)com.tencent.mm.kernel.g.ab(l.class)).azL().e((au)localObject);
     }
     for (;;)
     {
-      ad.i("MicroMsg.BizConversationLogic", "setPlacedTop username = ".concat(String.valueOf(paramString)));
-      ((l)com.tencent.mm.kernel.g.ab(l.class)).azv().aTF(paramString);
+      ae.i("MicroMsg.BizConversationLogic", "setPlacedTop username = ".concat(String.valueOf(paramString)));
+      ((l)com.tencent.mm.kernel.g.ab(l.class)).azL().aVg(paramString);
       AppMethodBeat.o(123959);
       return;
       label254:
-      if (com.tencent.mm.am.g.DP(paramString))
+      if (com.tencent.mm.al.g.Er(paramString))
       {
-        localObject = com.tencent.mm.am.g.eS(paramString);
-        if (((l)com.tencent.mm.kernel.g.ab(l.class)).azv().aTz(((c)localObject).field_enterpriseFather) == null)
+        localObject = com.tencent.mm.al.g.eX(paramString);
+        if (((l)com.tencent.mm.kernel.g.ab(l.class)).azL().aVa(((c)localObject).field_enterpriseFather) == null)
         {
-          localat = new at(((c)localObject).field_enterpriseFather);
-          localat.fqK();
-          ((l)com.tencent.mm.kernel.g.ab(l.class)).azv().e(localat);
+          localau = new au(((c)localObject).field_enterpriseFather);
+          localau.fuK();
+          ((l)com.tencent.mm.kernel.g.ab(l.class)).azL().e(localau);
         }
-        at localat = new at(paramString);
-        localat.qu(System.currentTimeMillis());
-        localat.tD(((c)localObject).Kv());
-        ((l)com.tencent.mm.kernel.g.ab(l.class)).azv().e(localat);
+        au localau = new au(paramString);
+        localau.qH(System.currentTimeMillis());
+        localau.tY(((c)localObject).KD());
+        ((l)com.tencent.mm.kernel.g.ab(l.class)).azL().e(localau);
       }
     }
   }

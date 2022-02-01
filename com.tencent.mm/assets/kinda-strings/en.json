@@ -292,7 +292,7 @@
     "wechat_user_agreement": "WeChat Payment System User Service Agreement",
     "wxp_common_cancel": "Cancel",
     "wxp_common_confirm": "OK",
-    "wxp_common_i_know": "Got it",
+    "wxp_common_i_know": "Got It",
     "wxp_common_remind": "Reminder",
     "wxp_network_error": "System is busy. Try again later.",
     "wxp_payment_network_error": "Transaction submitted. You will receive a payment status notification from the WeChat Pay Official Account. Confirm payment status before resubmitting the payment if necessary.",

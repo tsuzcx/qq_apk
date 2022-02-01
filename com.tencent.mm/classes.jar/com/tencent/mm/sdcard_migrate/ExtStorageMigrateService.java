@@ -18,7 +18,7 @@ import android.support.v4.app.s.c;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdcard_migrate.util.a;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ak;
 import java.io.File;
 import java.nio.ByteBuffer;
 import java.util.Collection;
@@ -32,98 +32,98 @@ import java.util.Set;
 public class ExtStorageMigrateService
   extends Service
 {
-  private Thread HZA;
-  private final MigrateResultCallback[] HZB;
-  private volatile int HZC;
-  private final boolean[] HZD;
-  private final PowerManager.WakeLock[] HZE;
-  private final boolean[] HZF;
-  private final e.a HZG;
-  private final b HZy;
-  private final a[] HZz;
+  private final b ItF;
+  private final a[] ItG;
+  private Thread ItH;
+  private final MigrateResultCallback[] ItI;
+  private volatile int ItJ;
+  private final boolean[] ItK;
+  private final PowerManager.WakeLock[] ItL;
+  private final boolean[] ItM;
+  private final e.a ItN;
   
   public ExtStorageMigrateService()
   {
     AppMethodBeat.i(169829);
-    this.HZy = new b((byte)0);
-    this.HZz = new a[] { null };
-    this.HZA = null;
-    this.HZB = new MigrateResultCallback[] { null };
-    this.HZC = 0;
-    this.HZD = new boolean[] { false };
-    this.HZE = new PowerManager.WakeLock[] { null };
-    this.HZF = new boolean[] { false };
-    this.HZG = new e.a()
+    this.ItF = new b((byte)0);
+    this.ItG = new a[] { null };
+    this.ItH = null;
+    this.ItI = new MigrateResultCallback[] { null };
+    this.ItJ = 0;
+    this.ItK = new boolean[] { false };
+    this.ItL = new PowerManager.WakeLock[] { null };
+    this.ItM = new boolean[] { false };
+    this.ItN = new e.a()
     {
       public final void a(ExtStorageMigrateConfig paramAnonymousExtStorageMigrateConfig)
       {
-        AppMethodBeat.i(193545);
+        AppMethodBeat.i(186831);
         ExtStorageMigrateService.a(ExtStorageMigrateService.this, paramAnonymousExtStorageMigrateConfig);
-        AppMethodBeat.o(193545);
+        AppMethodBeat.o(186831);
       }
       
       public final void a(MigrateResultCallback paramAnonymousMigrateResultCallback)
       {
-        AppMethodBeat.i(193543);
+        AppMethodBeat.i(186829);
         synchronized (ExtStorageMigrateService.a(ExtStorageMigrateService.this))
         {
           if ((ExtStorageMigrateService.a(ExtStorageMigrateService.this)[0] != null) && (ExtStorageMigrateService.a(ExtStorageMigrateService.this)[0] != paramAnonymousMigrateResultCallback)) {
-            ExtStorageMigrateService.a(ExtStorageMigrateService.this)[0].jt(ExtStorageMigrateService.c(ExtStorageMigrateService.this), Binder.getCallingPid());
+            ExtStorageMigrateService.a(ExtStorageMigrateService.this)[0].jx(ExtStorageMigrateService.c(ExtStorageMigrateService.this), Binder.getCallingPid());
           }
           ExtStorageMigrateService.a(ExtStorageMigrateService.this)[0] = paramAnonymousMigrateResultCallback;
-          if (!fjn()) {
+          if (!fnf()) {
             break label147;
           }
         }
         synchronized (ExtStorageMigrateService.b(ExtStorageMigrateService.this))
         {
-          paramAnonymousMigrateResultCallback.lI(ExtStorageMigrateService.a.c(ExtStorageMigrateService.b(ExtStorageMigrateService.this)[0]), ExtStorageMigrateService.a.d(ExtStorageMigrateService.b(ExtStorageMigrateService.this)[0]));
-          AppMethodBeat.o(193543);
+          paramAnonymousMigrateResultCallback.lP(ExtStorageMigrateService.a.c(ExtStorageMigrateService.b(ExtStorageMigrateService.this)[0]), ExtStorageMigrateService.a.d(ExtStorageMigrateService.b(ExtStorageMigrateService.this)[0]));
+          AppMethodBeat.o(186829);
           return;
           paramAnonymousMigrateResultCallback = finally;
-          AppMethodBeat.o(193543);
+          AppMethodBeat.o(186829);
           throw paramAnonymousMigrateResultCallback;
         }
         label147:
-        AppMethodBeat.o(193543);
+        AppMethodBeat.o(186829);
       }
       
       public final void b(MigrateResultCallback arg1)
       {
-        AppMethodBeat.i(193544);
+        AppMethodBeat.i(186830);
         synchronized (ExtStorageMigrateService.a(ExtStorageMigrateService.this))
         {
           if (ExtStorageMigrateService.a(ExtStorageMigrateService.this)[0] != null) {
             ExtStorageMigrateService.a(ExtStorageMigrateService.this)[0] = null;
           }
-          AppMethodBeat.o(193544);
+          AppMethodBeat.o(186830);
           return;
         }
       }
       
-      public final boolean fjn()
+      public final boolean fnf()
       {
-        AppMethodBeat.i(193542);
+        AppMethodBeat.i(186828);
         if ((ExtStorageMigrateService.b(ExtStorageMigrateService.this)[0] != null) && (ExtStorageMigrateService.a.b(ExtStorageMigrateService.b(ExtStorageMigrateService.this)[0])))
         {
-          AppMethodBeat.o(193542);
+          AppMethodBeat.o(186828);
           return true;
         }
-        AppMethodBeat.o(193542);
+        AppMethodBeat.o(186828);
         return false;
       }
       
-      public final void fjr()
+      public final void fnj()
       {
-        AppMethodBeat.i(193546);
+        AppMethodBeat.i(186832);
         ExtStorageMigrateService.d(ExtStorageMigrateService.this);
-        AppMethodBeat.o(193546);
+        AppMethodBeat.o(186832);
       }
     };
     AppMethodBeat.o(169829);
   }
   
-  private static String MB(String paramString)
+  private static String Ni(String paramString)
   {
     AppMethodBeat.i(169831);
     try
@@ -134,7 +134,7 @@ public class ExtStorageMigrateService
     }
     catch (Throwable localThrowable)
     {
-      ExtStorageMigrateMonitor.fjf().printErrStackTrace("MicroMsg.ExtStorageMigrateService", localThrowable, "[-] Fail to get canonical path for: %s", new Object[] { paramString });
+      ExtStorageMigrateMonitor.fmX().printErrStackTrace("MicroMsg.ExtStorageMigrateService", localThrowable, "[-] Fail to get canonical path for: %s", new Object[] { paramString });
       paramString = new File(paramString).getAbsolutePath();
       AppMethodBeat.o(169831);
     }
@@ -152,25 +152,25 @@ public class ExtStorageMigrateService
     }
     catch (Throwable localThrowable)
     {
-      ExtStorageMigrateMonitor.fjf().printErrStackTrace("MicroMsg.ExtStorageMigrateService", localThrowable, "[-] Fail to get canonical file for: %s", new Object[] { paramFile.getAbsolutePath() });
+      ExtStorageMigrateMonitor.fmX().printErrStackTrace("MicroMsg.ExtStorageMigrateService", localThrowable, "[-] Fail to get canonical file for: %s", new Object[] { paramFile.getAbsolutePath() });
       paramFile = paramFile.getAbsoluteFile();
       AppMethodBeat.o(169830);
     }
     return paramFile;
   }
   
-  private boolean fjn()
+  private boolean fnf()
   {
     boolean bool2 = false;
-    AppMethodBeat.i(193559);
-    a[] arrayOfa = this.HZz;
+    AppMethodBeat.i(186845);
+    a[] arrayOfa = this.ItG;
     boolean bool1 = bool2;
     try
     {
-      if (this.HZz[0] != null)
+      if (this.ItG[0] != null)
       {
         bool1 = bool2;
-        if (a.b(this.HZz[0])) {
+        if (a.b(this.ItG[0])) {
           bool1 = true;
         }
       }
@@ -178,97 +178,97 @@ public class ExtStorageMigrateService
     }
     finally
     {
-      AppMethodBeat.o(193559);
+      AppMethodBeat.o(186845);
     }
   }
   
-  private boolean fjo()
+  private boolean fng()
   {
-    synchronized (this.HZD)
+    synchronized (this.ItK)
     {
-      int i = this.HZD[0];
+      int i = this.ItK[0];
       return i;
     }
   }
   
-  private boolean fjp()
+  private boolean fnh()
   {
-    synchronized (this.HZF)
+    synchronized (this.ItM)
     {
-      int i = this.HZF[0];
+      int i = this.ItM[0];
       return i;
     }
   }
   
-  private void fjq()
+  private void fni()
   {
-    AppMethodBeat.i(193560);
-    ExtStorageMigrateMonitor.fjf().i("MicroMsg.ExtStorageMigrateService", "[+] expectedStopSelf called.", new Object[0]);
-    wv(true);
+    AppMethodBeat.i(186846);
+    ExtStorageMigrateMonitor.fmX().i("MicroMsg.ExtStorageMigrateService", "[+] expectedStopSelf called.", new Object[0]);
+    wD(true);
     stopSelf();
-    AppMethodBeat.o(193560);
+    AppMethodBeat.o(186846);
   }
   
   private void releaseWakeLock()
   {
-    AppMethodBeat.i(193561);
-    synchronized (this.HZE)
+    AppMethodBeat.i(186847);
+    synchronized (this.ItL)
     {
-      if ((this.HZE[0] != null) && (this.HZE[0].isHeld()))
+      if ((this.ItL[0] != null) && (this.ItL[0].isHeld()))
       {
-        this.HZE[0].release();
-        this.HZE[0] = null;
-        ExtStorageMigrateMonitor.fjf().i("MicroMsg.ExtStorageMigrateService", "[+] WakeLock released.", new Object[0]);
+        this.ItL[0].release();
+        this.ItL[0] = null;
+        ExtStorageMigrateMonitor.fmX().i("MicroMsg.ExtStorageMigrateService", "[+] WakeLock released.", new Object[0]);
       }
-      AppMethodBeat.o(193561);
+      AppMethodBeat.o(186847);
       return;
     }
   }
   
-  private void wu(boolean paramBoolean)
+  private void wC(boolean paramBoolean)
   {
-    synchronized (this.HZD)
+    synchronized (this.ItK)
     {
-      this.HZD[0] = paramBoolean;
+      this.ItK[0] = paramBoolean;
       return;
     }
   }
   
-  private void wv(boolean paramBoolean)
+  private void wD(boolean paramBoolean)
   {
-    synchronized (this.HZF)
+    synchronized (this.ItM)
     {
-      this.HZF[0] = paramBoolean;
+      this.ItM[0] = paramBoolean;
       return;
     }
   }
   
   public IBinder onBind(Intent paramIntent)
   {
-    AppMethodBeat.i(193558);
-    paramIntent = this.HZG.asBinder();
-    AppMethodBeat.o(193558);
+    AppMethodBeat.i(186844);
+    paramIntent = this.ItN.asBinder();
+    AppMethodBeat.o(186844);
     return paramIntent;
   }
   
   public void onCreate()
   {
-    AppMethodBeat.i(193557);
+    AppMethodBeat.i(186843);
     super.onCreate();
-    synchronized (this.HZz)
+    synchronized (this.ItG)
     {
-      this.HZz[0] = null;
-      this.HZA = null;
+      this.ItG[0] = null;
+      this.ItH = null;
     }
-    synchronized (this.HZB)
+    synchronized (this.ItI)
     {
-      this.HZB[0] = null;
-      this.HZC = 0;
-      wu(false);
-      AppMethodBeat.o(193557);
+      this.ItI[0] = null;
+      this.ItJ = 0;
+      wC(false);
+      AppMethodBeat.o(186843);
       return;
       localObject2 = finally;
-      AppMethodBeat.o(193557);
+      AppMethodBeat.o(186843);
       throw localObject2;
     }
   }
@@ -276,31 +276,31 @@ public class ExtStorageMigrateService
   public void onDestroy()
   {
     AppMethodBeat.i(169833);
-    ExtStorageMigrateMonitor.fjf().i("MicroMsg.ExtStorageMigrateService", "[+] OnDestroy called.", new Object[0]);
-    synchronized (this.HZz)
+    ExtStorageMigrateMonitor.fmX().i("MicroMsg.ExtStorageMigrateService", "[+] OnDestroy called.", new Object[0]);
+    synchronized (this.ItG)
     {
-      if (fjn()) {
-        a.a(this.HZz[0]);
+      if (fnf()) {
+        a.a(this.ItG[0]);
       }
     }
     try
     {
-      this.HZA.join();
+      this.ItH.join();
       for (;;)
       {
         label53:
-        this.HZz[0] = null;
-        if (fjo()) {
+        this.ItG[0] = null;
+        if (fng()) {
           stopForeground(true);
         }
         releaseWakeLock();
         AppMethodBeat.o(169833);
         return;
-        if (fjo()) {
-          if (fjp())
+        if (fng()) {
+          if (fnh())
           {
-            wv(false);
-            this.HZy.aal(2);
+            wD(false);
+            this.ItF.aaR(2);
             continue;
             localObject = finally;
             AppMethodBeat.o(169833);
@@ -308,7 +308,7 @@ public class ExtStorageMigrateService
           }
           else
           {
-            this.HZy.c(6, null);
+            this.ItF.c(6, null);
           }
         }
       }
@@ -322,44 +322,47 @@ public class ExtStorageMigrateService
   public int onStartCommand(Intent paramIntent, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(169832);
-    ExtStorageMigrateMonitor.fjf().i("MicroMsg.ExtStorageMigrateService", "[+] OnStartCommand called, intent: %s", new Object[] { paramIntent });
-    if (paramIntent == null) {
-      ExtStorageMigrateMonitor.fjf().e("MicroMsg.ExtStorageMigrateService", "[-] intent is null, skip rest logic.", new Object[0]);
+    ExtStorageMigrateMonitor.fmX().i("MicroMsg.ExtStorageMigrateService", "[+] OnStartCommand called, intent: %s", new Object[] { paramIntent });
+    if (paramIntent == null)
+    {
+      ExtStorageMigrateMonitor.fmX().e("MicroMsg.ExtStorageMigrateService", "[-] intent is null, skip rest logic.", new Object[0]);
+      fni();
     }
     for (;;)
     {
       AppMethodBeat.o(169832);
-      return 1;
+      return 2;
       paramIntent = paramIntent.getAction();
       if (paramIntent == null)
       {
-        ExtStorageMigrateMonitor.fjf().e("MicroMsg.ExtStorageMigrateService", "[-] action is null, skip rest logic.", new Object[0]);
+        ExtStorageMigrateMonitor.fmX().e("MicroMsg.ExtStorageMigrateService", "[-] action is null, skip rest logic.", new Object[0]);
+        fni();
       }
       else if ("service_action_startup".equals(paramIntent))
       {
-        Object localObject = this.HZy;
-        if ((((b)localObject).HZH.fjo()) || (((b)localObject).HZH.fjn()))
+        Object localObject = this.ItF;
+        if ((((b)localObject).ItO.fng()) || (((b)localObject).ItO.fnf()))
         {
-          ExtStorageMigrateMonitor.fjf().w("MicroMsg.ExtStorageMigrateService", "[!] Already on foreground or migrating logic, skip startup steps.", new Object[0]);
+          ExtStorageMigrateMonitor.fmX().w("MicroMsg.ExtStorageMigrateService", "[!] Already on foreground or migrating logic, skip startup steps.", new Object[0]);
         }
         else
         {
-          paramIntent = ((b)localObject).wx(true);
-          s.c localc = paramIntent.i(System.currentTimeMillis()).g(aj.getResources().getString(2131758667)).b(0, 0, true);
+          paramIntent = ((b)localObject).wF(true);
+          s.c localc = paramIntent.i(System.currentTimeMillis()).g(ak.getResources().getString(2131758667)).b(0, 0, true);
           localc.f(2, true);
-          localc.a(((b)localObject).fjs()).Hl = ((b)localObject).wy(false);
-          localObject = ((b)localObject).HZH;
+          localc.a(((b)localObject).fnk()).Hl = ((b)localObject).wG(false);
+          localObject = ((b)localObject).ItO;
           ((ExtStorageMigrateService)localObject).startForeground(1027, paramIntent.build());
-          ((ExtStorageMigrateService)localObject).wu(true);
+          ((ExtStorageMigrateService)localObject).wC(true);
         }
       }
       else if ("service_action_cancel_migrate".equals(paramIntent))
       {
-        fjq();
+        fni();
       }
       else
       {
-        ExtStorageMigrateMonitor.fjf().e("MicroMsg.ExtStorageMigrateService", "[-] Unknown action: %s", new Object[] { paramIntent });
+        ExtStorageMigrateMonitor.fmX().e("MicroMsg.ExtStorageMigrateService", "[-] Unknown action: %s", new Object[] { paramIntent });
       }
     }
   }
@@ -367,50 +370,50 @@ public class ExtStorageMigrateService
   final class a
     implements Runnable
   {
-    private final boolean[] HZI;
-    private final CancellationSignal HZJ;
-    private final Set<String> HZK;
-    private final Set<String> HZL;
-    private final Map<String, String> HZM;
-    private String HZN;
-    private String HZO;
-    private ByteBuffer HZP;
-    private final boolean HZi;
+    private final boolean[] ItP;
+    private final CancellationSignal ItQ;
+    private final Set<String> ItR;
+    private final Set<String> ItS;
+    private final Map<String, String> ItT;
+    private String ItU;
+    private String ItV;
+    private ByteBuffer ItW;
+    private final boolean Itp;
     private float mProgress;
     
     a(ExtStorageMigrateConfig paramExtStorageMigrateConfig, CancellationSignal paramCancellationSignal)
     {
-      AppMethodBeat.i(193547);
-      this.HZI = new boolean[] { false };
-      this.HZN = null;
-      this.HZO = null;
-      this.HZP = null;
+      AppMethodBeat.i(186833);
+      this.ItP = new boolean[] { false };
+      this.ItU = null;
+      this.ItV = null;
+      this.ItW = null;
       this.mProgress = 0.0F;
-      this.HZJ = paramCancellationSignal;
-      this.HZi = paramExtStorageMigrateConfig.HZd;
-      this.HZK = new HashSet(64);
-      this.HZL = new HashSet(5);
-      this.HZM = new HashMap(5);
-      this.HZN = ExtStorageMigrateService.access$1500(paramExtStorageMigrateConfig.sourceDir);
-      this.HZO = ExtStorageMigrateService.access$1500(paramExtStorageMigrateConfig.HZc);
-      if (paramExtStorageMigrateConfig.HZd) {
-        ExtStorageMigrateMonitor.fjf().w("MicroMsg.ExtStorageMigrateService", "[!] Force copy mode enabled, are we under test mode ??", new Object[0]);
+      this.ItQ = paramCancellationSignal;
+      this.Itp = paramExtStorageMigrateConfig.Itk;
+      this.ItR = new HashSet(64);
+      this.ItS = new HashSet(5);
+      this.ItT = new HashMap(5);
+      this.ItU = ExtStorageMigrateService.access$1500(paramExtStorageMigrateConfig.sourceDir);
+      this.ItV = ExtStorageMigrateService.access$1500(paramExtStorageMigrateConfig.Itj);
+      if (paramExtStorageMigrateConfig.Itk) {
+        ExtStorageMigrateMonitor.fmX().w("MicroMsg.ExtStorageMigrateService", "[!] Force copy mode enabled, are we under test mode ??", new Object[0]);
       }
-      b(paramExtStorageMigrateConfig.sourceDir, paramExtStorageMigrateConfig.HZe);
-      ExtStorageMigrateMonitor.fjf().i("MicroMsg.ExtStorageMigrateService", "[+] MigrateTask, pass in config: %s", new Object[] { paramExtStorageMigrateConfig });
-      AppMethodBeat.o(193547);
+      b(paramExtStorageMigrateConfig.sourceDir, paramExtStorageMigrateConfig.Itl);
+      ExtStorageMigrateMonitor.fmX().i("MicroMsg.ExtStorageMigrateService", "[+] MigrateTask, pass in config: %s", new Object[] { paramExtStorageMigrateConfig });
+      AppMethodBeat.o(186833);
     }
     
     private String R(File paramFile)
     {
       AppMethodBeat.i(169821);
-      paramFile = aPP(paramFile.getAbsolutePath().substring(this.HZN.length()));
+      paramFile = aRm(paramFile.getAbsolutePath().substring(this.ItU.length()));
       if (paramFile.startsWith("/")) {
         paramFile = paramFile.substring(1);
       }
       for (;;)
       {
-        ExtStorageMigrateMonitor.fjf().i("MicroMsg.ExtStorageMigrateService", "[+] getMigratedFilePath, relSrcPath: %s", new Object[] { paramFile });
+        ExtStorageMigrateMonitor.fmX().i("MicroMsg.ExtStorageMigrateService", "[+] getMigratedFilePath, relSrcPath: %s", new Object[] { paramFile });
         Object localObject2;
         label182:
         int i;
@@ -419,8 +422,8 @@ public class ExtStorageMigrateService
           localObject2 = paramFile;
           if (!TextUtils.isEmpty((CharSequence)localObject1))
           {
-            localObject2 = (String)this.HZM.get(localObject1);
-            ExtStorageMigrateMonitor.fjf().i("MicroMsg.ExtStorageMigrateService", "[+] getMigratedFilePath, currRelSrcPath: %s, newRelPath: %s", new Object[] { localObject1, localObject2 });
+            localObject2 = (String)this.ItT.get(localObject1);
+            ExtStorageMigrateMonitor.fmX().i("MicroMsg.ExtStorageMigrateService", "[+] getMigratedFilePath, currRelSrcPath: %s, newRelPath: %s", new Object[] { localObject1, localObject2 });
             if (localObject2 == null) {
               break label182;
             }
@@ -431,21 +434,21 @@ public class ExtStorageMigrateService
             if (!((String)localObject2).startsWith("/")) {
               break;
             }
-            ExtStorageMigrateMonitor.fjf().i("MicroMsg.ExtStorageMigrateService", "[+] getMigratedFilePath, result: %s", new Object[] { localObject2 });
+            ExtStorageMigrateMonitor.fmX().i("MicroMsg.ExtStorageMigrateService", "[+] getMigratedFilePath, result: %s", new Object[] { localObject2 });
             AppMethodBeat.o(169821);
             return localObject2;
             i = ((String)localObject1).lastIndexOf('/');
             localObject2 = paramFile;
           } while (i < 0);
         }
-        paramFile = this.HZO + "/" + (String)localObject2;
-        ExtStorageMigrateMonitor.fjf().i("MicroMsg.ExtStorageMigrateService", "[+] getMigratedFilePath, result: %s", new Object[] { paramFile });
+        paramFile = this.ItV + "/" + (String)localObject2;
+        ExtStorageMigrateMonitor.fmX().i("MicroMsg.ExtStorageMigrateService", "[+] getMigratedFilePath, result: %s", new Object[] { paramFile });
         AppMethodBeat.o(169821);
         return paramFile;
       }
     }
     
-    private static String aPO(String paramString)
+    private static String aRl(String paramString)
     {
       AppMethodBeat.i(169817);
       if ((paramString == null) || (paramString.isEmpty()))
@@ -463,7 +466,7 @@ public class ExtStorageMigrateService
       return paramString;
     }
     
-    private static String aPP(String paramString)
+    private static String aRm(String paramString)
     {
       AppMethodBeat.i(169818);
       if ((paramString == null) || (paramString.isEmpty()))
@@ -487,10 +490,10 @@ public class ExtStorageMigrateService
     
     private void b(String paramString, Collection<ExtStorageMigrateConfig.ExtraPathAction> paramCollection)
     {
-      AppMethodBeat.i(193548);
+      AppMethodBeat.i(186834);
       if (paramCollection == null)
       {
-        AppMethodBeat.o(193548);
+        AppMethodBeat.o(186834);
         return;
       }
       Iterator localIterator = paramCollection.iterator();
@@ -501,27 +504,27 @@ public class ExtStorageMigrateService
         if ((paramCollection instanceof ExtStorageMigrateConfig.ExtraPathAction.Ignore))
         {
           paramCollection = (ExtStorageMigrateConfig.ExtraPathAction.Ignore)paramCollection;
-          localObject = ExtStorageMigrateService.Q(new File(paramString, paramCollection.HZk));
-          this.HZL.add(((File)localObject).getAbsolutePath());
-          lH(paramString, paramCollection.HZk);
+          localObject = ExtStorageMigrateService.Q(new File(paramString, paramCollection.Itr));
+          this.ItS.add(((File)localObject).getAbsolutePath());
+          lO(paramString, paramCollection.Itr);
         }
         else if ((paramCollection instanceof ExtStorageMigrateConfig.ExtraPathAction.Remap))
         {
           localObject = (ExtStorageMigrateConfig.ExtraPathAction.Remap)paramCollection;
-          Map localMap = this.HZM;
-          String str = aPP(((ExtStorageMigrateConfig.ExtraPathAction.Remap)localObject).HZl);
-          if (((ExtStorageMigrateConfig.ExtraPathAction.Remap)localObject).itC.startsWith("/")) {}
-          for (paramCollection = ((ExtStorageMigrateConfig.ExtraPathAction.Remap)localObject).itC;; paramCollection = aPP(((ExtStorageMigrateConfig.ExtraPathAction.Remap)localObject).itC))
+          Map localMap = this.ItT;
+          String str = aRm(((ExtStorageMigrateConfig.ExtraPathAction.Remap)localObject).Its);
+          if (((ExtStorageMigrateConfig.ExtraPathAction.Remap)localObject).iww.startsWith("/")) {}
+          for (paramCollection = ((ExtStorageMigrateConfig.ExtraPathAction.Remap)localObject).iww;; paramCollection = aRm(((ExtStorageMigrateConfig.ExtraPathAction.Remap)localObject).iww))
           {
             localMap.put(str, paramCollection);
-            lH(paramString, ((ExtStorageMigrateConfig.ExtraPathAction.Remap)localObject).HZl);
+            lO(paramString, ((ExtStorageMigrateConfig.ExtraPathAction.Remap)localObject).Its);
             break;
           }
         }
       }
-      this.HZK.add(paramString);
-      ExtStorageMigrateMonitor.fjf().i("MicroMsg.ExtStorageMigrateService", "[+] MigrateTask, mSrcDirPath: %s, mDestDirPath: %s, mRemappedRelPaths: %s", new Object[] { this.HZN, this.HZO, this.HZM });
-      AppMethodBeat.o(193548);
+      this.ItR.add(paramString);
+      ExtStorageMigrateMonitor.fmX().i("MicroMsg.ExtStorageMigrateService", "[+] MigrateTask, mSrcDirPath: %s, mDestDirPath: %s, mRemappedRelPaths: %s", new Object[] { this.ItU, this.ItV, this.ItT });
+      AppMethodBeat.o(186834);
     }
     
     /* Error */
@@ -563,7 +566,7 @@ public class ExtStorageMigrateService
       //   70: iload_3
       //   71: ifle +43 -> 114
       //   74: aload_0
-      //   75: getfield 59	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$a:HZJ	Landroid/os/CancellationSignal;
+      //   75: getfield 59	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$a:ItQ	Landroid/os/CancellationSignal;
       //   78: invokevirtual 310	android/os/CancellationSignal:throwIfCanceled	()V
       //   81: aload 5
       //   83: aload 6
@@ -575,14 +578,14 @@ public class ExtStorageMigrateService
       //   94: aload 5
       //   96: astore_2
       //   97: aload_2
-      //   98: invokestatic 322	com/tencent/mm/vfs/q:closeQuietly	(Ljava/io/Closeable;)V
+      //   98: invokestatic 322	com/tencent/mm/vfs/w:closeQuietly	(Ljava/io/Closeable;)V
       //   101: aload 4
-      //   103: invokestatic 322	com/tencent/mm/vfs/q:closeQuietly	(Ljava/io/Closeable;)V
+      //   103: invokestatic 322	com/tencent/mm/vfs/w:closeQuietly	(Ljava/io/Closeable;)V
       //   106: ldc_w 273
       //   109: invokestatic 119	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   112: aload_1
       //   113: athrow
-      //   114: invokestatic 95	com/tencent/mm/sdcard_migrate/ExtStorageMigrateMonitor:fjf	()Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateMonitor$a;
+      //   114: invokestatic 95	com/tencent/mm/sdcard_migrate/ExtStorageMigrateMonitor:fmX	()Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateMonitor$a;
       //   117: ldc 97
       //   119: ldc_w 324
       //   122: iconst_2
@@ -599,9 +602,9 @@ public class ExtStorageMigrateService
       //   139: aastore
       //   140: invokeinterface 326 4 0
       //   145: aload 5
-      //   147: invokestatic 322	com/tencent/mm/vfs/q:closeQuietly	(Ljava/io/Closeable;)V
+      //   147: invokestatic 322	com/tencent/mm/vfs/w:closeQuietly	(Ljava/io/Closeable;)V
       //   150: aload 4
-      //   152: invokestatic 322	com/tencent/mm/vfs/q:closeQuietly	(Ljava/io/Closeable;)V
+      //   152: invokestatic 322	com/tencent/mm/vfs/w:closeQuietly	(Ljava/io/Closeable;)V
       //   155: ldc_w 273
       //   158: invokestatic 119	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   161: return
@@ -636,21 +639,21 @@ public class ExtStorageMigrateService
     
     private boolean isRunning()
     {
-      synchronized (this.HZI)
+      synchronized (this.ItP)
       {
-        int i = this.HZI[0];
+        int i = this.ItP[0];
         return i;
       }
     }
     
-    private void lH(String paramString1, String paramString2)
+    private void lO(String paramString1, String paramString2)
     {
       AppMethodBeat.i(169816);
-      String str = aPO(paramString1);
+      String str = aRl(paramString1);
       paramString1 = new File(str, paramString2);
       do
       {
-        this.HZK.add(aPO(paramString1.getAbsolutePath()));
+        this.ItR.add(aRl(paramString1.getAbsolutePath()));
         paramString2 = paramString1.getParentFile();
         if (paramString2 == null) {
           break;
@@ -660,11 +663,11 @@ public class ExtStorageMigrateService
       AppMethodBeat.o(169816);
     }
     
-    private void ww(boolean paramBoolean)
+    private void wE(boolean paramBoolean)
     {
-      synchronized (this.HZI)
+      synchronized (this.ItP)
       {
-        this.HZI[0] = paramBoolean;
+        this.ItP[0] = paramBoolean;
         return;
       }
     }
@@ -676,26 +679,26 @@ public class ExtStorageMigrateService
       //   0: ldc_w 340
       //   3: invokestatic 47	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
       //   6: aload_0
-      //   7: getfield 37	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$a:HZH	Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateService;
+      //   7: getfield 37	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$a:ItO	Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateService;
       //   10: invokestatic 343	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService:e	(Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateService;)V
       //   13: aload_0
       //   14: iconst_1
-      //   15: invokespecial 345	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$a:ww	(Z)V
+      //   15: invokespecial 345	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$a:wE	(Z)V
       //   18: aload_0
-      //   19: getfield 37	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$a:HZH	Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateService;
+      //   19: getfield 37	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$a:ItO	Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateService;
       //   22: invokestatic 349	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService:f	(Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateService;)Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateService$b;
       //   25: astore 10
       //   27: aload_0
-      //   28: getfield 51	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$a:HZN	Ljava/lang/String;
+      //   28: getfield 51	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$a:ItU	Ljava/lang/String;
       //   31: astore 7
       //   33: aload_0
-      //   34: getfield 53	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$a:HZO	Ljava/lang/String;
+      //   34: getfield 53	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$a:ItV	Ljava/lang/String;
       //   37: astore 8
       //   39: aload 10
       //   41: iconst_1
-      //   42: invokevirtual 355	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$b:wx	(Z)Landroid/support/v4/app/s$c;
+      //   42: invokevirtual 355	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$b:wF	(Z)Landroid/support/v4/app/s$c;
       //   45: ldc_w 356
-      //   48: invokestatic 359	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService:aaj	(I)Ljava/lang/String;
+      //   48: invokestatic 359	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService:aaP	(I)Ljava/lang/String;
       //   51: invokevirtual 365	android/support/v4/app/s$c:g	(Ljava/lang/CharSequence;)Landroid/support/v4/app/s$c;
       //   54: bipush 100
       //   56: iconst_0
@@ -708,16 +711,16 @@ public class ExtStorageMigrateService
       //   67: invokevirtual 371	android/support/v4/app/s$c:f	(IZ)V
       //   70: aload 9
       //   72: aload 10
-      //   74: invokevirtual 375	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$b:fjs	()Landroid/support/v4/app/s$a;
+      //   74: invokevirtual 375	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$b:fnk	()Landroid/support/v4/app/s$a;
       //   77: invokevirtual 378	android/support/v4/app/s$c:a	(Landroid/support/v4/app/s$a;)Landroid/support/v4/app/s$c;
       //   80: astore 9
       //   82: aload 9
       //   84: aload 10
       //   86: iconst_0
-      //   87: invokevirtual 382	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$b:wy	(Z)Landroid/app/PendingIntent;
+      //   87: invokevirtual 382	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$b:wG	(Z)Landroid/app/PendingIntent;
       //   90: putfield 386	android/support/v4/app/s$c:Hl	Landroid/app/PendingIntent;
       //   93: aload 10
-      //   95: getfield 387	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$b:HZH	Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateService;
+      //   95: getfield 387	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$b:ItO	Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateService;
       //   98: ldc_w 389
       //   101: invokevirtual 393	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
       //   104: checkcast 395	android/app/NotificationManager
@@ -726,13 +729,13 @@ public class ExtStorageMigrateService
       //   112: invokevirtual 399	android/support/v4/app/s$c:build	()Landroid/app/Notification;
       //   115: invokevirtual 403	android/app/NotificationManager:notify	(ILandroid/app/Notification;)V
       //   118: aload 10
-      //   120: getfield 387	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$b:HZH	Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateService;
+      //   120: getfield 387	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$b:ItO	Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateService;
       //   123: invokestatic 406	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService:a	(Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateService;)[Lcom/tencent/mm/sdcard_migrate/MigrateResultCallback;
       //   126: astore 9
       //   128: aload 9
       //   130: monitorenter
       //   131: aload 10
-      //   133: getfield 387	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$b:HZH	Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateService;
+      //   133: getfield 387	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$b:ItO	Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateService;
       //   136: invokestatic 406	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService:a	(Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateService;)[Lcom/tencent/mm/sdcard_migrate/MigrateResultCallback;
       //   139: iconst_0
       //   140: aaload
@@ -746,19 +749,19 @@ public class ExtStorageMigrateService
       //   161: aload 10
       //   163: aload 7
       //   165: aload 8
-      //   167: invokevirtual 420	com/tencent/mm/sdcard_migrate/MigrateResultCallback:lI	(Ljava/lang/String;Ljava/lang/String;)V
+      //   167: invokevirtual 420	com/tencent/mm/sdcard_migrate/MigrateResultCallback:lP	(Ljava/lang/String;Ljava/lang/String;)V
       //   170: aload 9
       //   172: monitorexit
       //   173: aload_0
-      //   174: getfield 51	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$a:HZN	Ljava/lang/String;
+      //   174: getfield 51	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$a:ItU	Ljava/lang/String;
       //   177: aload_0
-      //   178: getfield 53	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$a:HZO	Ljava/lang/String;
+      //   178: getfield 53	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$a:ItV	Ljava/lang/String;
       //   181: invokevirtual 332	java/lang/String:equals	(Ljava/lang/Object;)Z
       //   184: ifne +1209 -> 1393
       //   187: new 125	java/io/File
       //   190: dup
       //   191: aload_0
-      //   192: getfield 51	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$a:HZN	Ljava/lang/String;
+      //   192: getfield 51	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$a:ItU	Ljava/lang/String;
       //   195: invokespecial 204	java/io/File:<init>	(Ljava/lang/String;)V
       //   198: astore 9
       //   200: aload 9
@@ -785,7 +788,7 @@ public class ExtStorageMigrateService
       //   255: aload 7
       //   257: athrow
       //   258: astore 7
-      //   260: invokestatic 95	com/tencent/mm/sdcard_migrate/ExtStorageMigrateMonitor:fjf	()Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateMonitor$a;
+      //   260: invokestatic 95	com/tencent/mm/sdcard_migrate/ExtStorageMigrateMonitor:fmX	()Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateMonitor$a;
       //   263: ldc 97
       //   265: aload 7
       //   267: ldc_w 430
@@ -793,32 +796,32 @@ public class ExtStorageMigrateService
       //   271: anewarray 4	java/lang/Object
       //   274: invokeinterface 434 5 0
       //   279: aload_0
-      //   280: getfield 37	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$a:HZH	Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateService;
+      //   280: getfield 37	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$a:ItO	Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateService;
       //   283: invokestatic 437	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService:g	(Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateService;)Z
       //   286: ifeq +1306 -> 1592
       //   289: aload_0
-      //   290: getfield 37	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$a:HZH	Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateService;
+      //   290: getfield 37	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$a:ItO	Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateService;
       //   293: invokestatic 440	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService:h	(Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateService;)V
       //   296: aload_0
-      //   297: getfield 37	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$a:HZH	Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateService;
+      //   297: getfield 37	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$a:ItO	Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateService;
       //   300: invokestatic 349	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService:f	(Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateService;)Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateService$b;
       //   303: iconst_3
-      //   304: invokevirtual 443	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$b:aal	(I)V
+      //   304: invokevirtual 443	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$b:aaR	(I)V
       //   307: aload_0
       //   308: iconst_0
-      //   309: invokespecial 345	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$a:ww	(Z)V
-      //   312: invokestatic 446	com/tencent/mm/sdcard_migrate/ExtStorageMigrateMonitor:fji	()V
+      //   309: invokespecial 345	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$a:wE	(Z)V
+      //   312: invokestatic 446	com/tencent/mm/sdcard_migrate/ExtStorageMigrateMonitor:fna	()V
       //   315: aload_0
-      //   316: getfield 37	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$a:HZH	Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateService;
+      //   316: getfield 37	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$a:ItO	Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateService;
       //   319: invokestatic 448	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService:i	(Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateService;)V
       //   322: aload_0
-      //   323: getfield 37	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$a:HZH	Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateService;
+      //   323: getfield 37	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$a:ItO	Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateService;
       //   326: invokestatic 451	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService:j	(Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateService;)V
       //   329: ldc_w 340
       //   332: invokestatic 119	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   335: return
       //   336: astore 7
-      //   338: invokestatic 95	com/tencent/mm/sdcard_migrate/ExtStorageMigrateMonitor:fjf	()Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateMonitor$a;
+      //   338: invokestatic 95	com/tencent/mm/sdcard_migrate/ExtStorageMigrateMonitor:fmX	()Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateMonitor$a;
       //   341: ldc_w 453
       //   344: aload 7
       //   346: ldc_w 455
@@ -834,7 +837,7 @@ public class ExtStorageMigrateService
       //   372: aload 7
       //   374: athrow
       //   375: astore 7
-      //   377: invokestatic 95	com/tencent/mm/sdcard_migrate/ExtStorageMigrateMonitor:fjf	()Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateMonitor$a;
+      //   377: invokestatic 95	com/tencent/mm/sdcard_migrate/ExtStorageMigrateMonitor:fmX	()Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateMonitor$a;
       //   380: ldc 97
       //   382: aload 7
       //   384: ldc_w 457
@@ -842,20 +845,20 @@ public class ExtStorageMigrateService
       //   388: anewarray 4	java/lang/Object
       //   391: invokeinterface 434 5 0
       //   396: aload_0
-      //   397: getfield 37	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$a:HZH	Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateService;
+      //   397: getfield 37	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$a:ItO	Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateService;
       //   400: invokestatic 349	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService:f	(Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateService;)Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateService$b;
       //   403: iconst_5
       //   404: aload 7
       //   406: invokevirtual 460	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$b:c	(ILjava/lang/Throwable;)V
       //   409: aload_0
       //   410: iconst_0
-      //   411: invokespecial 345	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$a:ww	(Z)V
-      //   414: invokestatic 446	com/tencent/mm/sdcard_migrate/ExtStorageMigrateMonitor:fji	()V
+      //   411: invokespecial 345	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$a:wE	(Z)V
+      //   414: invokestatic 446	com/tencent/mm/sdcard_migrate/ExtStorageMigrateMonitor:fna	()V
       //   417: aload_0
-      //   418: getfield 37	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$a:HZH	Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateService;
+      //   418: getfield 37	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$a:ItO	Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateService;
       //   421: invokestatic 448	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService:i	(Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateService;)V
       //   424: aload_0
-      //   425: getfield 37	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$a:HZH	Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateService;
+      //   425: getfield 37	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$a:ItO	Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateService;
       //   428: invokestatic 451	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService:j	(Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateService;)V
       //   431: ldc_w 340
       //   434: invokestatic 119	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -883,17 +886,17 @@ public class ExtStorageMigrateService
       //   480: fconst_0
       //   481: putfield 57	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$a:mProgress	F
       //   484: aload_0
-      //   485: getfield 37	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$a:HZH	Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateService;
+      //   485: getfield 37	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$a:ItO	Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateService;
       //   488: invokestatic 349	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService:f	(Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateService;)Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateService$b;
       //   491: aload_0
       //   492: getfield 57	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$a:mProgress	F
       //   495: f2i
-      //   496: invokevirtual 472	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$b:aak	(I)V
+      //   496: invokevirtual 472	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$b:aaQ	(I)V
       //   499: aload 8
       //   501: invokeinterface 473 1 0
       //   506: ifne +779 -> 1285
       //   509: aload_0
-      //   510: getfield 59	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$a:HZJ	Landroid/os/CancellationSignal;
+      //   510: getfield 59	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$a:ItQ	Landroid/os/CancellationSignal;
       //   513: invokevirtual 310	android/os/CancellationSignal:throwIfCanceled	()V
       //   516: aload 8
       //   518: iconst_0
@@ -901,7 +904,7 @@ public class ExtStorageMigrateService
       //   524: checkcast 11	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$a$a
       //   527: astore 10
       //   529: aload 10
-      //   531: getfield 481	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$a$a:HZQ	Ljava/io/File;
+      //   531: getfield 481	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$a$a:ItX	Ljava/io/File;
       //   534: astore 9
       //   536: new 125	java/io/File
       //   539: dup
@@ -911,13 +914,13 @@ public class ExtStorageMigrateService
       //   546: invokespecial 204	java/io/File:<init>	(Ljava/lang/String;)V
       //   549: astore 11
       //   551: aload_0
-      //   552: getfield 74	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$a:HZL	Ljava/util/Set;
+      //   552: getfield 74	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$a:ItS	Ljava/util/Set;
       //   555: aload 9
       //   557: invokevirtual 129	java/io/File:getAbsolutePath	()Ljava/lang/String;
-      //   560: invokestatic 329	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$a:aPO	(Ljava/lang/String;)Ljava/lang/String;
+      //   560: invokestatic 329	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$a:aRl	(Ljava/lang/String;)Ljava/lang/String;
       //   563: invokeinterface 486 2 0
       //   568: ifeq +64 -> 632
-      //   571: invokestatic 95	com/tencent/mm/sdcard_migrate/ExtStorageMigrateMonitor:fjf	()Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateMonitor$a;
+      //   571: invokestatic 95	com/tencent/mm/sdcard_migrate/ExtStorageMigrateMonitor:fmX	()Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateMonitor$a;
       //   574: ldc 97
       //   576: ldc_w 488
       //   579: iconst_1
@@ -932,19 +935,19 @@ public class ExtStorageMigrateService
       //   599: astore 7
       //   601: aload_0
       //   602: iconst_0
-      //   603: invokespecial 345	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$a:ww	(Z)V
-      //   606: invokestatic 446	com/tencent/mm/sdcard_migrate/ExtStorageMigrateMonitor:fji	()V
+      //   603: invokespecial 345	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$a:wE	(Z)V
+      //   606: invokestatic 446	com/tencent/mm/sdcard_migrate/ExtStorageMigrateMonitor:fna	()V
       //   609: aload_0
-      //   610: getfield 37	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$a:HZH	Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateService;
+      //   610: getfield 37	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$a:ItO	Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateService;
       //   613: invokestatic 448	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService:i	(Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateService;)V
       //   616: aload_0
-      //   617: getfield 37	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$a:HZH	Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateService;
+      //   617: getfield 37	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$a:ItO	Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateService;
       //   620: invokestatic 451	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService:j	(Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateService;)V
       //   623: ldc_w 340
       //   626: invokestatic 119	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   629: aload 7
       //   631: athrow
-      //   632: invokestatic 95	com/tencent/mm/sdcard_migrate/ExtStorageMigrateMonitor:fjf	()Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateMonitor$a;
+      //   632: invokestatic 95	com/tencent/mm/sdcard_migrate/ExtStorageMigrateMonitor:fmX	()Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateMonitor$a;
       //   635: ldc 97
       //   637: ldc_w 490
       //   640: iconst_2
@@ -961,13 +964,13 @@ public class ExtStorageMigrateService
       //   659: aastore
       //   660: invokeinterface 116 4 0
       //   665: aload_0
-      //   666: getfield 66	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$a:HZi	Z
+      //   666: getfield 66	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$a:Itp	Z
       //   669: ifne +118 -> 787
       //   672: aload_0
-      //   673: getfield 72	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$a:HZK	Ljava/util/Set;
+      //   673: getfield 72	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$a:ItR	Ljava/util/Set;
       //   676: aload 9
       //   678: invokevirtual 129	java/io/File:getAbsolutePath	()Ljava/lang/String;
-      //   681: invokestatic 329	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$a:aPO	(Ljava/lang/String;)Ljava/lang/String;
+      //   681: invokestatic 329	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$a:aRl	(Ljava/lang/String;)Ljava/lang/String;
       //   684: invokeinterface 486 2 0
       //   689: istore 5
       //   691: iload 5
@@ -976,7 +979,7 @@ public class ExtStorageMigrateService
       //   698: aload 11
       //   700: invokevirtual 494	java/io/File:renameTo	(Ljava/io/File;)Z
       //   703: ifeq +84 -> 787
-      //   706: invokestatic 95	com/tencent/mm/sdcard_migrate/ExtStorageMigrateMonitor:fjf	()Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateMonitor$a;
+      //   706: invokestatic 95	com/tencent/mm/sdcard_migrate/ExtStorageMigrateMonitor:fmX	()Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateMonitor$a;
       //   709: ldc 97
       //   711: ldc_w 496
       //   714: iconst_2
@@ -996,7 +999,7 @@ public class ExtStorageMigrateService
       //   740: aload_0
       //   741: getfield 57	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$a:mProgress	F
       //   744: aload 10
-      //   746: getfield 499	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$a$a:HZR	F
+      //   746: getfield 499	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$a$a:ItY	F
       //   749: fadd
       //   750: putfield 57	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$a:mProgress	F
       //   753: aload_0
@@ -1010,14 +1013,14 @@ public class ExtStorageMigrateService
       //   769: d2i
       //   770: istore_2
       //   771: aload_0
-      //   772: getfield 37	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$a:HZH	Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateService;
+      //   772: getfield 37	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$a:ItO	Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateService;
       //   775: invokestatic 349	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService:f	(Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateService;)Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateService$b;
       //   778: iload_2
-      //   779: invokevirtual 472	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$b:aak	(I)V
+      //   779: invokevirtual 472	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$b:aaQ	(I)V
       //   782: goto -283 -> 499
       //   785: astore 12
       //   787: aload_0
-      //   788: getfield 59	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$a:HZJ	Landroid/os/CancellationSignal;
+      //   788: getfield 59	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$a:ItQ	Landroid/os/CancellationSignal;
       //   791: invokevirtual 310	android/os/CancellationSignal:throwIfCanceled	()V
       //   794: aload 7
       //   796: aload 9
@@ -1032,7 +1035,7 @@ public class ExtStorageMigrateService
       //   818: arraylength
       //   819: ifeq +377 -> 1196
       //   822: aload 10
-      //   824: getfield 499	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$a$a:HZR	F
+      //   824: getfield 499	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$a$a:ItY	F
       //   827: aload 9
       //   829: arraylength
       //   830: i2f
@@ -1051,7 +1054,7 @@ public class ExtStorageMigrateService
       //   847: aaload
       //   848: astore 10
       //   850: aload_0
-      //   851: getfield 59	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$a:HZJ	Landroid/os/CancellationSignal;
+      //   851: getfield 59	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$a:ItQ	Landroid/os/CancellationSignal;
       //   854: invokevirtual 310	android/os/CancellationSignal:throwIfCanceled	()V
       //   857: aload 10
       //   859: invokevirtual 514	java/io/File:isDirectory	()Z
@@ -1067,12 +1070,12 @@ public class ExtStorageMigrateService
       //   883: pop
       //   884: goto +724 -> 1608
       //   887: aload_0
-      //   888: getfield 74	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$a:HZL	Ljava/util/Set;
+      //   888: getfield 74	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$a:ItS	Ljava/util/Set;
       //   891: aload 10
       //   893: invokevirtual 129	java/io/File:getAbsolutePath	()Ljava/lang/String;
       //   896: invokeinterface 486 2 0
       //   901: ifeq +72 -> 973
-      //   904: invokestatic 95	com/tencent/mm/sdcard_migrate/ExtStorageMigrateMonitor:fjf	()Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateMonitor$a;
+      //   904: invokestatic 95	com/tencent/mm/sdcard_migrate/ExtStorageMigrateMonitor:fmX	()Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateMonitor$a;
       //   907: ldc 97
       //   909: ldc_w 488
       //   912: iconst_1
@@ -1100,10 +1103,10 @@ public class ExtStorageMigrateService
       //   955: d2i
       //   956: istore 4
       //   958: aload_0
-      //   959: getfield 37	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$a:HZH	Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateService;
+      //   959: getfield 37	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$a:ItO	Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateService;
       //   962: invokestatic 349	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService:f	(Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateService;)Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateService$b;
       //   965: iload 4
-      //   967: invokevirtual 472	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$b:aak	(I)V
+      //   967: invokevirtual 472	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$b:aaQ	(I)V
       //   970: goto +638 -> 1608
       //   973: new 125	java/io/File
       //   976: dup
@@ -1118,7 +1121,7 @@ public class ExtStorageMigrateService
       //   995: invokevirtual 129	java/io/File:getAbsolutePath	()Ljava/lang/String;
       //   998: invokevirtual 332	java/lang/String:equals	(Ljava/lang/Object;)Z
       //   1001: ifeq +31 -> 1032
-      //   1004: invokestatic 95	com/tencent/mm/sdcard_migrate/ExtStorageMigrateMonitor:fjf	()Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateMonitor$a;
+      //   1004: invokestatic 95	com/tencent/mm/sdcard_migrate/ExtStorageMigrateMonitor:fmX	()Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateMonitor$a;
       //   1007: ldc 97
       //   1009: ldc_w 516
       //   1012: iconst_1
@@ -1136,7 +1139,7 @@ public class ExtStorageMigrateService
       //   1040: aload 11
       //   1042: invokevirtual 276	java/io/File:exists	()Z
       //   1045: ifeq +39 -> 1084
-      //   1048: invokestatic 95	com/tencent/mm/sdcard_migrate/ExtStorageMigrateMonitor:fjf	()Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateMonitor$a;
+      //   1048: invokestatic 95	com/tencent/mm/sdcard_migrate/ExtStorageMigrateMonitor:fmX	()Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateMonitor$a;
       //   1051: ldc 97
       //   1053: ldc_w 518
       //   1056: iconst_2
@@ -1156,18 +1159,18 @@ public class ExtStorageMigrateService
       //   1084: iconst_0
       //   1085: istore 5
       //   1087: aload_0
-      //   1088: getfield 66	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$a:HZi	Z
+      //   1088: getfield 66	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$a:Itp	Z
       //   1091: istore 6
       //   1093: iload 6
       //   1095: ifne +52 -> 1147
       //   1098: aload_0
-      //   1099: getfield 59	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$a:HZJ	Landroid/os/CancellationSignal;
+      //   1099: getfield 59	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$a:ItQ	Landroid/os/CancellationSignal;
       //   1102: invokevirtual 310	android/os/CancellationSignal:throwIfCanceled	()V
       //   1105: aload 10
       //   1107: aload 11
       //   1109: invokevirtual 494	java/io/File:renameTo	(Ljava/io/File;)Z
       //   1112: istore 5
-      //   1114: invokestatic 95	com/tencent/mm/sdcard_migrate/ExtStorageMigrateMonitor:fjf	()Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateMonitor$a;
+      //   1114: invokestatic 95	com/tencent/mm/sdcard_migrate/ExtStorageMigrateMonitor:fmX	()Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateMonitor$a;
       //   1117: ldc 97
       //   1119: ldc_w 496
       //   1122: iconst_2
@@ -1192,7 +1195,7 @@ public class ExtStorageMigrateService
       //   1160: aload 10
       //   1162: invokevirtual 523	java/io/File:delete	()Z
       //   1165: ifne -236 -> 929
-      //   1168: invokestatic 95	com/tencent/mm/sdcard_migrate/ExtStorageMigrateMonitor:fjf	()Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateMonitor$a;
+      //   1168: invokestatic 95	com/tencent/mm/sdcard_migrate/ExtStorageMigrateMonitor:fmX	()Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateMonitor$a;
       //   1171: ldc 97
       //   1173: ldc_w 525
       //   1176: iconst_1
@@ -1210,7 +1213,7 @@ public class ExtStorageMigrateService
       //   1204: aload 11
       //   1206: invokevirtual 283	java/io/File:mkdirs	()Z
       //   1209: ifne +28 -> 1237
-      //   1212: invokestatic 95	com/tencent/mm/sdcard_migrate/ExtStorageMigrateMonitor:fjf	()Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateMonitor$a;
+      //   1212: invokestatic 95	com/tencent/mm/sdcard_migrate/ExtStorageMigrateMonitor:fmX	()Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateMonitor$a;
       //   1215: ldc 97
       //   1217: ldc_w 527
       //   1220: iconst_1
@@ -1226,7 +1229,7 @@ public class ExtStorageMigrateService
       //   1241: fstore_1
       //   1242: aload_0
       //   1243: aload 10
-      //   1245: getfield 499	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$a$a:HZR	F
+      //   1245: getfield 499	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$a$a:ItY	F
       //   1248: fload_1
       //   1249: fadd
       //   1250: putfield 57	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$a:mProgress	F
@@ -1241,10 +1244,10 @@ public class ExtStorageMigrateService
       //   1269: d2i
       //   1270: istore_2
       //   1271: aload_0
-      //   1272: getfield 37	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$a:HZH	Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateService;
+      //   1272: getfield 37	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$a:ItO	Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateService;
       //   1275: invokestatic 349	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService:f	(Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateService;)Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateService$b;
       //   1278: iload_2
-      //   1279: invokevirtual 472	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$b:aak	(I)V
+      //   1279: invokevirtual 472	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$b:aaQ	(I)V
       //   1282: goto -783 -> 499
       //   1285: aload 7
       //   1287: invokeinterface 532 1 0
@@ -1254,7 +1257,7 @@ public class ExtStorageMigrateService
       //   1295: iload_2
       //   1296: iflt +67 -> 1363
       //   1299: aload_0
-      //   1300: getfield 59	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$a:HZJ	Landroid/os/CancellationSignal;
+      //   1300: getfield 59	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$a:ItQ	Landroid/os/CancellationSignal;
       //   1303: invokevirtual 310	android/os/CancellationSignal:throwIfCanceled	()V
       //   1306: aload 7
       //   1308: iload_2
@@ -1267,7 +1270,7 @@ public class ExtStorageMigrateService
       //   1327: aload 8
       //   1329: invokevirtual 523	java/io/File:delete	()Z
       //   1332: ifne +291 -> 1623
-      //   1335: invokestatic 95	com/tencent/mm/sdcard_migrate/ExtStorageMigrateMonitor:fjf	()Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateMonitor$a;
+      //   1335: invokestatic 95	com/tencent/mm/sdcard_migrate/ExtStorageMigrateMonitor:fmX	()Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateMonitor$a;
       //   1338: ldc 97
       //   1340: ldc_w 536
       //   1343: iconst_1
@@ -1287,24 +1290,24 @@ public class ExtStorageMigrateService
       //   1375: invokestatic 545	java/lang/Float:compare	(FF)I
       //   1378: ifeq +15 -> 1393
       //   1381: aload_0
-      //   1382: getfield 37	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$a:HZH	Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateService;
+      //   1382: getfield 37	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$a:ItO	Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateService;
       //   1385: invokestatic 349	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService:f	(Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateService;)Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateService$b;
       //   1388: bipush 100
-      //   1390: invokevirtual 472	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$b:aak	(I)V
+      //   1390: invokevirtual 472	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$b:aaQ	(I)V
       //   1393: aload_0
-      //   1394: getfield 51	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$a:HZN	Ljava/lang/String;
-      //   1397: invokestatic 550	com/tencent/mm/sdcard_migrate/b:aPR	(Ljava/lang/String;)V
+      //   1394: getfield 51	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$a:ItU	Ljava/lang/String;
+      //   1397: invokestatic 550	com/tencent/mm/sdcard_migrate/b:aRo	(Ljava/lang/String;)V
       //   1400: aload_0
-      //   1401: getfield 37	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$a:HZH	Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateService;
+      //   1401: getfield 37	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$a:ItO	Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateService;
       //   1404: invokestatic 349	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService:f	(Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateService;)Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateService$b;
       //   1407: astore 8
       //   1409: aload 8
       //   1411: iconst_1
-      //   1412: invokevirtual 355	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$b:wx	(Z)Landroid/support/v4/app/s$c;
+      //   1412: invokevirtual 355	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$b:wF	(Z)Landroid/support/v4/app/s$c;
       //   1415: invokestatic 556	java/lang/System:currentTimeMillis	()J
       //   1418: invokevirtual 559	android/support/v4/app/s$c:i	(J)Landroid/support/v4/app/s$c;
       //   1421: ldc_w 560
-      //   1424: invokestatic 359	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService:aaj	(I)Ljava/lang/String;
+      //   1424: invokestatic 359	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService:aaP	(I)Ljava/lang/String;
       //   1427: invokevirtual 365	android/support/v4/app/s$c:g	(Ljava/lang/CharSequence;)Landroid/support/v4/app/s$c;
       //   1430: iconst_0
       //   1431: iconst_0
@@ -1316,25 +1319,25 @@ public class ExtStorageMigrateService
       //   1442: aload 7
       //   1444: aload 8
       //   1446: iconst_1
-      //   1447: invokevirtual 382	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$b:wy	(Z)Landroid/app/PendingIntent;
+      //   1447: invokevirtual 382	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$b:wG	(Z)Landroid/app/PendingIntent;
       //   1450: putfield 386	android/support/v4/app/s$c:Hl	Landroid/app/PendingIntent;
       //   1453: aload 7
       //   1455: iconst_2
       //   1456: iconst_0
       //   1457: invokevirtual 371	android/support/v4/app/s$c:f	(IZ)V
       //   1460: aload 8
-      //   1462: getfield 387	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$b:HZH	Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateService;
+      //   1462: getfield 387	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$b:ItO	Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateService;
       //   1465: aload 7
       //   1467: invokevirtual 399	android/support/v4/app/s$c:build	()Landroid/app/Notification;
       //   1470: invokestatic 565	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService:a	(Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateService;Landroid/app/Notification;)V
       //   1473: aload 8
-      //   1475: getfield 387	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$b:HZH	Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateService;
+      //   1475: getfield 387	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$b:ItO	Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateService;
       //   1478: invokestatic 406	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService:a	(Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateService;)[Lcom/tencent/mm/sdcard_migrate/MigrateResultCallback;
       //   1481: astore 7
       //   1483: aload 7
       //   1485: monitorenter
       //   1486: aload 8
-      //   1488: getfield 387	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$b:HZH	Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateService;
+      //   1488: getfield 387	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$b:ItO	Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateService;
       //   1491: invokestatic 406	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService:a	(Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateService;)[Lcom/tencent/mm/sdcard_migrate/MigrateResultCallback;
       //   1494: iconst_0
       //   1495: aaload
@@ -1346,24 +1349,24 @@ public class ExtStorageMigrateService
       //   1508: invokeinterface 417 1 0
       //   1513: ifeq +8 -> 1521
       //   1516: aload 8
-      //   1518: invokevirtual 568	com/tencent/mm/sdcard_migrate/MigrateResultCallback:fjE	()V
+      //   1518: invokevirtual 568	com/tencent/mm/sdcard_migrate/MigrateResultCallback:fnw	()V
       //   1521: aload 7
       //   1523: monitorexit
       //   1524: aload_0
       //   1525: iconst_0
-      //   1526: invokespecial 345	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$a:ww	(Z)V
-      //   1529: invokestatic 446	com/tencent/mm/sdcard_migrate/ExtStorageMigrateMonitor:fji	()V
+      //   1526: invokespecial 345	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$a:wE	(Z)V
+      //   1529: invokestatic 446	com/tencent/mm/sdcard_migrate/ExtStorageMigrateMonitor:fna	()V
       //   1532: aload_0
-      //   1533: getfield 37	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$a:HZH	Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateService;
+      //   1533: getfield 37	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$a:ItO	Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateService;
       //   1536: invokestatic 448	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService:i	(Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateService;)V
       //   1539: aload_0
-      //   1540: getfield 37	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$a:HZH	Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateService;
+      //   1540: getfield 37	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$a:ItO	Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateService;
       //   1543: invokestatic 451	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService:j	(Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateService;)V
       //   1546: ldc_w 340
       //   1549: invokestatic 119	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   1552: return
       //   1553: astore 8
-      //   1555: invokestatic 95	com/tencent/mm/sdcard_migrate/ExtStorageMigrateMonitor:fjf	()Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateMonitor$a;
+      //   1555: invokestatic 95	com/tencent/mm/sdcard_migrate/ExtStorageMigrateMonitor:fmX	()Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateMonitor$a;
       //   1558: ldc_w 453
       //   1561: aload 8
       //   1563: ldc_w 455
@@ -1379,7 +1382,7 @@ public class ExtStorageMigrateService
       //   1589: aload 8
       //   1591: athrow
       //   1592: aload_0
-      //   1593: getfield 37	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$a:HZH	Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateService;
+      //   1593: getfield 37	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService$a:ItO	Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateService;
       //   1596: invokestatic 349	com/tencent/mm/sdcard_migrate/ExtStorageMigrateService:f	(Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateService;)Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateService$b;
       //   1599: bipush 6
       //   1601: aconst_null
@@ -1515,115 +1518,115 @@ public class ExtStorageMigrateService
     
     final class a
     {
-      final File HZQ;
-      final float HZR;
+      final File ItX;
+      final float ItY;
       
       a(File paramFile, float paramFloat)
       {
-        this.HZQ = paramFile;
-        this.HZR = paramFloat;
+        this.ItX = paramFile;
+        this.ItY = paramFloat;
       }
     }
   }
   
   final class b
   {
-    private final s.c[] HZT;
-    private final int[] HZU;
+    private final s.c[] Iua;
+    private final int[] Iub;
     
     private b()
     {
-      AppMethodBeat.i(193550);
-      this.HZT = new s.c[] { null };
-      this.HZU = new int[] { -1 };
-      AppMethodBeat.o(193550);
+      AppMethodBeat.i(186836);
+      this.Iua = new s.c[] { null };
+      this.Iub = new int[] { -1 };
+      AppMethodBeat.o(186836);
     }
     
-    final void aak(int paramInt)
+    final void aaQ(int paramInt)
     {
-      AppMethodBeat.i(193554);
-      synchronized (this.HZU)
+      AppMethodBeat.i(186840);
+      synchronized (this.Iub)
       {
-        if ((this.HZU[0] == -1) || ((paramInt != this.HZU[0]) && (paramInt % 10 == 0)))
+        if ((this.Iub[0] == -1) || ((paramInt != this.Iub[0]) && (paramInt % 10 == 0)))
         {
-          s.c localc = wx(false).g(ExtStorageMigrateService.aaj(2131758664));
+          s.c localc = wF(false).g(ExtStorageMigrateService.aaP(2131758664));
           localc.f(2, true);
           localc = localc.b(100, paramInt, false);
           ((NotificationManager)ExtStorageMigrateService.this.getSystemService("notification")).notify(1027, localc.build());
         }
-        this.HZU[0] = paramInt;
+        this.Iub[0] = paramInt;
       }
       synchronized (ExtStorageMigrateService.a(ExtStorageMigrateService.this))
       {
         a.b(ExtStorageMigrateService.a(ExtStorageMigrateService.this)[0], paramInt);
-        AppMethodBeat.o(193554);
+        AppMethodBeat.o(186840);
         return;
         localObject2 = finally;
-        AppMethodBeat.o(193554);
+        AppMethodBeat.o(186840);
         throw localObject2;
       }
     }
     
-    final void aal(int paramInt)
+    final void aaR(int paramInt)
     {
-      AppMethodBeat.i(193556);
-      ??? = wx(true).i(System.currentTimeMillis()).g(ExtStorageMigrateService.aaj(2131758657)).b(0, 0, false).F(true);
-      ((s.c)???).Hl = wy(true);
+      AppMethodBeat.i(186842);
+      ??? = wF(true).i(System.currentTimeMillis()).g(ExtStorageMigrateService.aaP(2131758657)).b(0, 0, false).F(true);
+      ((s.c)???).Hl = wG(true);
       ((s.c)???).f(2, false);
       ExtStorageMigrateService.a(ExtStorageMigrateService.this, ((s.c)???).build());
       synchronized (ExtStorageMigrateService.a(ExtStorageMigrateService.this))
       {
         a.a(ExtStorageMigrateService.a(ExtStorageMigrateService.this)[0], paramInt);
-        AppMethodBeat.o(193556);
+        AppMethodBeat.o(186842);
         return;
       }
     }
     
     final void c(int paramInt, Throwable paramThrowable)
     {
-      AppMethodBeat.i(193555);
-      s.c localc = wx(true).i(System.currentTimeMillis());
+      AppMethodBeat.i(186841);
+      s.c localc = wF(true).i(System.currentTimeMillis());
       if (paramInt == 6) {
-        ??? = ExtStorageMigrateService.aaj(2131758661);
+        ??? = ExtStorageMigrateService.aaP(2131758661);
       }
       for (;;)
       {
         ??? = localc.g((CharSequence)???).b(0, 0, false).F(true);
-        ((s.c)???).Hl = wy(true);
+        ((s.c)???).Hl = wG(true);
         ((s.c)???).f(2, false);
         ExtStorageMigrateService.a(ExtStorageMigrateService.this, ((s.c)???).build());
         synchronized (ExtStorageMigrateService.a(ExtStorageMigrateService.this))
         {
           a.a(ExtStorageMigrateService.a(ExtStorageMigrateService.this)[0], paramInt, paramThrowable);
-          AppMethodBeat.o(193555);
+          AppMethodBeat.o(186841);
           return;
-          ??? = ExtStorageMigrateService.aaj(2131758659);
+          ??? = ExtStorageMigrateService.aaP(2131758659);
         }
       }
     }
     
-    final s.a fjs()
+    final s.a fnk()
     {
-      AppMethodBeat.i(193552);
+      AppMethodBeat.i(186838);
       Object localObject = new Intent(ExtStorageMigrateService.this, ExtStorageMigrateService.class);
       ((Intent)localObject).setAction("service_action_cancel_migrate");
       localObject = PendingIntent.getService(ExtStorageMigrateService.this, 3843, (Intent)localObject, 268435456);
-      localObject = new s.a.a(2131233504, ExtStorageMigrateService.aaj(2131756766), (PendingIntent)localObject);
+      localObject = new s.a.a(2131233504, ExtStorageMigrateService.aaP(2131756766), (PendingIntent)localObject);
       ((s.a.a)localObject).GZ = false;
       localObject = ((s.a.a)localObject).eo();
-      AppMethodBeat.o(193552);
+      AppMethodBeat.o(186838);
       return localObject;
     }
     
-    final s.c wx(boolean paramBoolean)
+    final s.c wF(boolean paramBoolean)
     {
-      AppMethodBeat.i(193551);
-      synchronized (this.HZT)
+      AppMethodBeat.i(186837);
+      synchronized (this.Iua)
       {
-        if ((this.HZT[0] != null) && (!paramBoolean))
+        if ((this.Iua[0] != null) && (!paramBoolean))
         {
-          localObject1 = this.HZT[0];
-          AppMethodBeat.o(193551);
+          localObject1 = this.Iua[0];
+          AppMethodBeat.o(186837);
           return localObject1;
         }
         try
@@ -1658,22 +1661,22 @@ public class ExtStorageMigrateService
         }
         label156:
         Object localObject1 = new s.c(ExtStorageMigrateService.this.getApplicationContext(), "reminder_channel_id");
-        ((s.c)localObject1).f(ExtStorageMigrateService.aaj(2131755822)).as(2131233502).F(false);
-        this.HZT[0] = localObject1;
-        AppMethodBeat.o(193551);
+        ((s.c)localObject1).f(ExtStorageMigrateService.aaP(2131755822)).as(2131233502).F(false);
+        this.Iua[0] = localObject1;
+        AppMethodBeat.o(186837);
         return localObject1;
       }
     }
     
-    final PendingIntent wy(boolean paramBoolean)
+    final PendingIntent wG(boolean paramBoolean)
     {
-      AppMethodBeat.i(193553);
+      AppMethodBeat.i(186839);
       Object localObject = new Intent(ExtStorageMigrateService.this, ExtStorageMigrateAuxActivity.class);
       ((Intent)localObject).setAction("auxui_action_do_migrate_routine");
       ((Intent)localObject).putExtra("auxui_param_is_migration_end", paramBoolean);
       ((Intent)localObject).addFlags(268435456);
       localObject = PendingIntent.getActivity(ExtStorageMigrateService.this, 3841, (Intent)localObject, 268435456);
-      AppMethodBeat.o(193553);
+      AppMethodBeat.o(186839);
       return localObject;
     }
   }

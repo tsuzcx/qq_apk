@@ -5,31 +5,31 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class e
 {
-  public final String dFy;
-  public final String zee;
-  public final String zef;
-  public final String zeg;
-  public final boolean zeh;
-  public final long zei;
+  public final String dGD;
+  public final String zsJ;
+  public final String zuU;
+  public final String zuV;
+  public final boolean zuW;
+  public final long zuX;
   
   private e(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    AppMethodBeat.i(197818);
-    this.zee = paramString1;
-    this.zef = paramString2;
+    AppMethodBeat.i(219301);
+    this.zuU = paramString1;
+    this.zuV = paramString2;
     if (paramString3 != null)
     {
-      this.dFy = paramString3;
+      this.dGD = paramString3;
       if (paramString4 == null) {
         break label63;
       }
     }
     for (;;)
     {
-      this.zeg = paramString4;
-      this.zeh = true;
-      this.zei = SystemClock.elapsedRealtime();
-      AppMethodBeat.o(197818);
+      this.zsJ = paramString4;
+      this.zuW = true;
+      this.zuX = SystemClock.elapsedRealtime();
+      AppMethodBeat.o(219301);
       return;
       paramString3 = "";
       break;
@@ -40,16 +40,16 @@ public final class e
   
   public static e y(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    AppMethodBeat.i(197817);
+    AppMethodBeat.i(219300);
     try
     {
       paramString1 = new e(paramString1, paramString2, paramString3, paramString4);
-      AppMethodBeat.o(197817);
+      AppMethodBeat.o(219300);
       return paramString1;
     }
     catch (Throwable paramString1)
     {
-      AppMethodBeat.o(197817);
+      AppMethodBeat.o(219300);
     }
     return null;
   }

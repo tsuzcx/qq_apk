@@ -7,21 +7,21 @@ import android.content.DialogInterface.OnCancelListener;
 import android.content.Intent;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.g.c.aw;
-import com.tencent.mm.model.ba;
+import com.tencent.mm.model.bc;
 import com.tencent.mm.platformtools.ac;
 import com.tencent.mm.plugin.qmessage.a.b;
 import com.tencent.mm.plugin.qmessage.a.d;
 import com.tencent.mm.plugin.qmessage.a.e;
 import com.tencent.mm.plugin.qmessage.a.g;
 import com.tencent.mm.pluginsdk.ui.preference.NormalUserHeaderPreference;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.sdk.platformtools.bw;
-import com.tencent.mm.storage.am;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.bx;
+import com.tencent.mm.storage.an;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.base.preference.Preference;
 import java.util.HashSet;
@@ -30,11 +30,11 @@ import java.util.Set;
 import junit.framework.Assert;
 
 public final class a
-  implements com.tencent.mm.al.f, com.tencent.mm.pluginsdk.b.a
+  implements com.tencent.mm.ak.f, com.tencent.mm.pluginsdk.b.a
 {
-  private am contact;
+  private an contact;
   Context context;
-  private ProgressDialog fMu;
+  private ProgressDialog fOC;
   private com.tencent.mm.ui.base.preference.f screen;
   
   public a(Context paramContext)
@@ -42,42 +42,42 @@ public final class a
     this.context = paramContext;
   }
   
-  private void cdo()
+  private void ceD()
   {
     AppMethodBeat.i(27740);
-    d locald = g.dBT().auT(this.contact.field_username);
-    if ((locald == null) || (bt.nullAsNil(locald.getUsername()).length() <= 0))
+    d locald = g.dFk().awi(this.contact.field_username);
+    if ((locald == null) || (bu.nullAsNil(locald.getUsername()).length() <= 0))
     {
-      ad.e("MicroMsg.ContactWidgetQContact", "updateProfile : Qcontact is null");
+      ae.e("MicroMsg.ContactWidgetQContact", "updateProfile : Qcontact is null");
       AppMethodBeat.o(27740);
       return;
     }
-    if (bt.nullAsNil(locald.dBR()).length() <= 0) {
-      ad.e("MicroMsg.ContactWidgetQContact", "updateProfile: QContact extInfo is null");
+    if (bu.nullAsNil(locald.dFi()).length() <= 0) {
+      ae.e("MicroMsg.ContactWidgetQContact", "updateProfile: QContact extInfo is null");
     }
-    Preference localPreference1 = this.screen.aVD("contact_info_qcontact_sex");
-    Preference localPreference2 = this.screen.aVD("contact_info_qcontact_age");
-    Preference localPreference3 = this.screen.aVD("contact_info_qcontact_birthday");
-    Preference localPreference4 = this.screen.aVD("contact_info_qcontact_address");
+    Preference localPreference1 = this.screen.aXe("contact_info_qcontact_sex");
+    Preference localPreference2 = this.screen.aXe("contact_info_qcontact_age");
+    Preference localPreference3 = this.screen.aXe("contact_info_qcontact_birthday");
+    Preference localPreference4 = this.screen.aXe("contact_info_qcontact_address");
     a locala = new a((byte)0);
-    locala.parse(locald.dBR());
+    locala.parse(locald.dFi());
     if (localPreference1 != null) {
-      localPreference1.setSummary(locala.dBW());
+      localPreference1.setSummary(locala.dFn());
     }
     if (localPreference2 != null) {
-      localPreference2.setSummary(locala.dBX());
+      localPreference2.setSummary(locala.dFo());
     }
     if (localPreference3 != null) {
-      localPreference3.setSummary(locala.dBZ());
+      localPreference3.setSummary(locala.dFq());
     }
     if (localPreference4 != null) {
-      localPreference4.setSummary(locala.dBY());
+      localPreference4.setSummary(locala.dFp());
     }
     this.screen.notifyDataSetChanged();
     AppMethodBeat.o(27740);
   }
   
-  public final boolean a(final com.tencent.mm.ui.base.preference.f paramf, am paramam, boolean paramBoolean, int paramInt)
+  public final boolean a(final com.tencent.mm.ui.base.preference.f paramf, an paraman, boolean paramBoolean, int paramInt)
   {
     boolean bool = false;
     AppMethodBeat.i(27739);
@@ -85,42 +85,42 @@ public final class a
     {
       paramBoolean = true;
       Assert.assertTrue(paramBoolean);
-      if (paramam == null) {
+      if (paraman == null) {
         break label328;
       }
       paramBoolean = true;
       label25:
       Assert.assertTrue(paramBoolean);
-      Assert.assertTrue(am.aSP(paramam.field_username));
-      ba.aiU().a(140, this);
-      this.contact = paramam;
+      Assert.assertTrue(an.aUp(paraman.field_username));
+      bc.ajj().a(140, this);
+      this.contact = paraman;
       this.screen = paramf;
       paramf.addPreferencesFromResource(2131951649);
-      paramf = (NormalUserHeaderPreference)paramf.aVD("contact_info_header_normal");
+      paramf = (NormalUserHeaderPreference)paramf.aXe("contact_info_header_normal");
       if (paramf != null)
       {
-        paramf.FgD = "ContactWidgetQContact";
-        paramf.a(paramam, 0, null);
+        paramf.Fzb = "ContactWidgetQContact";
+        paramf.a(paraman, 0, null);
       }
-      cdo();
-      paramam = g.dBT().auT(this.contact.field_username);
-      if (paramam != null)
+      ceD();
+      paraman = g.dFk().awi(this.contact.field_username);
+      if (paraman != null)
       {
-        paramf = paramam;
-        if (bt.nullAsNil(paramam.getUsername()).length() > 0) {}
+        paramf = paraman;
+        if (bu.nullAsNil(paraman.getUsername()).length() > 0) {}
       }
       else
       {
-        ad.e("MicroMsg.ContactWidgetQContact", "getProfileOrNot: QContact is null, should not in this way");
+        ae.e("MicroMsg.ContactWidgetQContact", "getProfileOrNot: QContact is null, should not in this way");
         paramf = new d();
         paramf.username = this.contact.field_username;
-        paramf.dDp = -1;
-        g.dBT().a(paramf);
+        paramf.dEu = -1;
+        g.dFk().a(paramf);
       }
-      if (paramf.xad == 1)
+      if (paramf.xpU == 1)
       {
-        paramam = this.contact.field_username;
-        if (bt.nullAsNil(paramf.dBR()).length() > 0) {
+        paraman = this.contact.field_username;
+        if (bu.nullAsNil(paramf.dFi()).length() > 0) {
           break label333;
         }
       }
@@ -130,32 +130,32 @@ public final class a
     for (paramInt = 1;; paramInt = 0)
     {
       paramBoolean = bool;
-      if (bt.nullAsNil(paramam).length() > 0) {
+      if (bu.nullAsNil(paraman).length() > 0) {
         paramBoolean = true;
       }
       Assert.assertTrue(paramBoolean);
       paramf = new HashSet();
-      paramf.add(paramam);
+      paramf.add(paraman);
       paramf = new b(paramf);
-      new ap().post(new Runnable()
+      new aq().post(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(27736);
-          ba.aiU().a(paramf, 0);
+          bc.ajj().a(paramf, 0);
           AppMethodBeat.o(27736);
         }
       });
       if (paramInt != 0)
       {
-        paramam = this.context;
+        paraman = this.context;
         this.context.getString(2131755906);
-        this.fMu = h.b(paramam, this.context.getString(2131755805), true, new DialogInterface.OnCancelListener()
+        this.fOC = h.b(paraman, this.context.getString(2131755805), true, new DialogInterface.OnCancelListener()
         {
           public final void onCancel(DialogInterface paramAnonymousDialogInterface)
           {
             AppMethodBeat.i(27737);
-            ba.aiU().a(paramf);
+            bc.ajj().a(paramf);
             AppMethodBeat.o(27737);
           }
         });
@@ -169,16 +169,16 @@ public final class a
     }
   }
   
-  public final boolean aaG(String paramString)
+  public final boolean abx(String paramString)
   {
     return true;
   }
   
-  public final boolean cdn()
+  public final boolean ceC()
   {
     AppMethodBeat.i(27741);
-    ba.aiU().b(140, this);
-    NormalUserHeaderPreference localNormalUserHeaderPreference = (NormalUserHeaderPreference)this.screen.aVD("contact_info_header_normal");
+    bc.ajj().b(140, this);
+    NormalUserHeaderPreference localNormalUserHeaderPreference = (NormalUserHeaderPreference)this.screen.aXe("contact_info_header_normal");
     if (localNormalUserHeaderPreference != null) {
       localNormalUserHeaderPreference.onDetach();
     }
@@ -197,10 +197,10 @@ public final class a
       AppMethodBeat.o(27742);
       return;
     }
-    if (this.fMu != null)
+    if (this.fOC != null)
     {
-      this.fMu.dismiss();
-      this.fMu = null;
+      this.fOC.dismiss();
+      this.fOC = null;
       switch (paramInt1)
       {
       default: 
@@ -213,12 +213,12 @@ public final class a
         }
         AppMethodBeat.o(27742);
         return;
-        if (!ac.iOb) {
+        if (!ac.iQV) {
           break;
         }
         Toast.makeText(this.context, this.context.getString(2131759510, new Object[] { Integer.valueOf(1), Integer.valueOf(paramInt2) }), 3000).show();
         continue;
-        if (!ac.iOb) {
+        if (!ac.iQV) {
           break;
         }
         Toast.makeText(this.context, this.context.getString(2131759511, new Object[] { Integer.valueOf(2), Integer.valueOf(paramInt2) }), 3000).show();
@@ -227,22 +227,22 @@ public final class a
     label183:
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      paramString = g.dBT().auT(this.contact.field_username);
-      if ((paramString != null) && (bt.nullAsNil(paramString.getUsername()).length() > 0)) {
+      paramString = g.dFk().awi(this.contact.field_username);
+      if ((paramString != null) && (bu.nullAsNil(paramString.getUsername()).length() > 0)) {
         break label261;
       }
-      ad.e("MicroMsg.ContactWidgetQContact", "resetUpdateStatus: did not find this QContact, username = " + this.contact.field_username);
+      ae.e("MicroMsg.ContactWidgetQContact", "resetUpdateStatus: did not find this QContact, username = " + this.contact.field_username);
     }
     for (;;)
     {
-      cdo();
+      ceD();
       AppMethodBeat.o(27742);
       return;
       label261:
-      paramString.dDp = 8;
-      paramString.xad = 0;
-      if (!g.dBT().a(this.contact.field_username, paramString)) {
-        ad.e("MicroMsg.ContactWidgetQContact", "resetUpdateStatus: update Qcontact failed, username = " + this.contact.field_username);
+      paramString.dEu = 8;
+      paramString.xpU = 0;
+      if (!g.dFk().a(this.contact.field_username, paramString)) {
+        ae.e("MicroMsg.ContactWidgetQContact", "resetUpdateStatus: update Qcontact failed, username = " + this.contact.field_username);
       }
     }
   }
@@ -250,77 +250,77 @@ public final class a
   public final class a
   {
     private String country = "";
-    private String ePu = "";
-    private String ePv = "";
-    private String hWY = "";
-    private String xaq = "";
-    private String xar = "";
-    private String xas = "";
+    private String eRf = "";
+    private String eRg = "";
+    private String hZQ = "";
+    private String xqh = "";
+    private String xqi = "";
+    private String xqj = "";
     
     private a() {}
     
-    public final String dBW()
+    public final String dFn()
     {
-      if (this.xaq == null) {
+      if (this.xqh == null) {
         return "";
       }
-      return this.xaq;
+      return this.xqh;
     }
     
-    public final String dBX()
+    public final String dFo()
     {
-      if (this.xar == null) {
+      if (this.xqi == null) {
         return "";
       }
-      return this.xar;
+      return this.xqi;
     }
     
-    public final String dBY()
+    public final String dFp()
     {
-      if (this.hWY == null) {
+      if (this.hZQ == null) {
         return "";
       }
-      return this.hWY;
+      return this.hZQ;
     }
     
-    public final String dBZ()
+    public final String dFq()
     {
-      if (this.xas == null) {
+      if (this.xqj == null) {
         return "";
       }
-      return this.xas;
+      return this.xqj;
     }
     
     public final void parse(String paramString)
     {
       AppMethodBeat.i(27738);
-      if (bt.nullAsNil(paramString).length() <= 0)
+      if (bu.nullAsNil(paramString).length() <= 0)
       {
-        ad.e("MicroMsg.ContactWidgetQContact", "QExtInfoContent : parse xml, but xml is null");
+        ae.e("MicroMsg.ContactWidgetQContact", "QExtInfoContent : parse xml, but xml is null");
         AppMethodBeat.o(27738);
         return;
       }
-      paramString = bw.M(paramString, "extinfo");
+      paramString = bx.M(paramString, "extinfo");
       if (paramString != null)
       {
-        this.xaq = ((String)paramString.get(".extinfo.sex"));
-        this.xar = ((String)paramString.get(".extinfo.age"));
-        this.xas = ((String)paramString.get(".extinfo.bd"));
+        this.xqh = ((String)paramString.get(".extinfo.sex"));
+        this.xqi = ((String)paramString.get(".extinfo.age"));
+        this.xqj = ((String)paramString.get(".extinfo.bd"));
         this.country = ((String)paramString.get(".extinfo.country"));
-        this.ePu = ((String)paramString.get(".extinfo.province"));
-        this.ePv = ((String)paramString.get(".extinfo.city"));
+        this.eRf = ((String)paramString.get(".extinfo.province"));
+        this.eRg = ((String)paramString.get(".extinfo.city"));
       }
-      if ((this.xaq != null) && (this.xaq.equals("1"))) {}
-      for (this.xaq = a.this.context.getString(2131763533);; this.xaq = a.this.context.getString(2131763532))
+      if ((this.xqh != null) && (this.xqh.equals("1"))) {}
+      for (this.xqh = a.this.context.getString(2131763533);; this.xqh = a.this.context.getString(2131763532))
       {
         if (this.country != null) {
-          this.hWY = (this.hWY + this.country + " ");
+          this.hZQ = (this.hZQ + this.country + " ");
         }
-        if (this.ePu != null) {
-          this.hWY = (this.hWY + this.ePu + " ");
+        if (this.eRf != null) {
+          this.hZQ = (this.hZQ + this.eRf + " ");
         }
-        if (this.ePv != null) {
-          this.hWY += this.ePv;
+        if (this.eRg != null) {
+          this.hZQ += this.eRg;
         }
         AppMethodBeat.o(27738);
         return;

@@ -7,9 +7,9 @@ import com.google.b.a.e;
 public final class a$n
   extends e
 {
-  private static volatile n[] LGt;
-  public int Fpp = 0;
-  public String LGu = "";
+  private static volatile n[] Mdx;
+  public int FHN = 0;
+  public String Mdy = "";
   public String nickname = "";
   
   public a$n()
@@ -17,28 +17,28 @@ public final class a$n
     this.bQO = -1;
   }
   
-  public static n[] fSW()
+  public static n[] fXw()
   {
-    if (LGt == null) {}
+    if (Mdx == null) {}
     synchronized (c.bQN)
     {
-      if (LGt == null) {
-        LGt = new n[0];
+      if (Mdx == null) {
+        Mdx = new n[0];
       }
-      return LGt;
+      return Mdx;
     }
   }
   
   public final void a(b paramb)
   {
-    if (this.Fpp != 0) {
-      paramb.by(1, this.Fpp);
+    if (this.FHN != 0) {
+      paramb.by(1, this.FHN);
     }
     if (!this.nickname.equals("")) {
       paramb.d(2, this.nickname);
     }
-    if (!this.LGu.equals("")) {
-      paramb.d(3, this.LGu);
+    if (!this.Mdy.equals("")) {
+      paramb.d(3, this.Mdy);
     }
     super.a(paramb);
   }
@@ -47,16 +47,16 @@ public final class a$n
   {
     int j = super.zq();
     int i = j;
-    if (this.Fpp != 0) {
-      i = j + b.bA(1, this.Fpp);
+    if (this.FHN != 0) {
+      i = j + b.bA(1, this.FHN);
     }
     j = i;
     if (!this.nickname.equals("")) {
       j = i + b.e(2, this.nickname);
     }
     i = j;
-    if (!this.LGu.equals("")) {
-      i = j + b.e(3, this.LGu);
+    if (!this.Mdy.equals("")) {
+      i = j + b.e(3, this.Mdy);
     }
     return i;
   }

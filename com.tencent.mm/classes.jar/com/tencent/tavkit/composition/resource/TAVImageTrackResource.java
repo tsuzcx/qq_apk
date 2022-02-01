@@ -20,21 +20,21 @@ public class TAVImageTrackResource
   
   public TAVImageTrackResource(String paramString, CMTime paramCMTime, boolean paramBoolean)
   {
-    AppMethodBeat.i(219894);
+    AppMethodBeat.i(200925);
     this.path = paramString;
     this.emptyAudioTrack = paramBoolean;
     this.duration = paramCMTime;
     this.sourceTimeRange = new CMTimeRange(CMTime.CMTimeZero, paramCMTime);
-    AppMethodBeat.o(219894);
+    AppMethodBeat.o(200925);
   }
   
   public TAVImageTrackResource clone()
   {
-    AppMethodBeat.i(219896);
+    AppMethodBeat.i(200927);
     TAVImageTrackResource localTAVImageTrackResource = new TAVImageTrackResource(this.path, this.duration.clone());
     localTAVImageTrackResource.sourceTimeRange = this.sourceTimeRange.clone();
     localTAVImageTrackResource.scaledDuration = this.scaledDuration.clone();
-    AppMethodBeat.o(219896);
+    AppMethodBeat.o(200927);
     return localTAVImageTrackResource;
   }
   
@@ -50,10 +50,10 @@ public class TAVImageTrackResource
   
   public TrackInfo trackInfoForType(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(219895);
+    AppMethodBeat.i(200926);
     if ((paramInt1 != 1) && (!this.emptyAudioTrack))
     {
-      AppMethodBeat.o(219895);
+      AppMethodBeat.o(200926);
       return null;
     }
     if (paramInt1 == 1) {
@@ -66,7 +66,7 @@ public class TAVImageTrackResource
       localTrackInfo.setCompositionTrackSegment(localCompositionTrackSegment);
       localTrackInfo.setSelectedTimeRange(getSourceTimeRange());
       localTrackInfo.setScaleToDuration(getScaledDuration());
-      AppMethodBeat.o(219895);
+      AppMethodBeat.o(200926);
       return localTrackInfo;
     }
   }

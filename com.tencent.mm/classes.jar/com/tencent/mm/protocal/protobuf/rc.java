@@ -1,86 +1,80 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import f.a.a.b;
 
 public final class rc
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public String dDH;
-  public String title;
-  public String url;
+  public String Gfy;
+  public long Id;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(32152);
+    AppMethodBeat.i(117853);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.url != null) {
-        paramVarArgs.d(1, this.url);
+      if (this.Gfy == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: ObjectDesc");
+        AppMethodBeat.o(117853);
+        throw paramVarArgs;
       }
-      if (this.title != null) {
-        paramVarArgs.d(2, this.title);
+      paramVarArgs.aZ(1, this.Id);
+      if (this.Gfy != null) {
+        paramVarArgs.d(2, this.Gfy);
       }
-      if (this.dDH != null) {
-        paramVarArgs.d(3, this.dDH);
-      }
-      AppMethodBeat.o(32152);
+      AppMethodBeat.o(117853);
       return 0;
     }
-    if (paramInt == 1) {
-      if (this.url == null) {
-        break label343;
-      }
-    }
-    label343:
-    for (int i = f.a.a.b.b.a.e(1, this.url) + 0;; i = 0)
+    if (paramInt == 1)
     {
+      int i = f.a.a.b.b.a.p(1, this.Id) + 0;
       paramInt = i;
-      if (this.title != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.title);
+      if (this.Gfy != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.Gfy);
       }
-      i = paramInt;
-      if (this.dDH != null) {
-        i = paramInt + f.a.a.b.b.a.e(3, this.dDH);
-      }
-      AppMethodBeat.o(32152);
-      return i;
-      if (paramInt == 2)
-      {
-        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
-          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
-          }
-        }
-        AppMethodBeat.o(32152);
-        return 0;
-      }
-      if (paramInt == 3)
-      {
-        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
-        rc localrc = (rc)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
-        {
-        default: 
-          AppMethodBeat.o(32152);
-          return -1;
-        case 1: 
-          localrc.url = locala.NPN.readString();
-          AppMethodBeat.o(32152);
-          return 0;
-        case 2: 
-          localrc.title = locala.NPN.readString();
-          AppMethodBeat.o(32152);
-          return 0;
-        }
-        localrc.dDH = locala.NPN.readString();
-        AppMethodBeat.o(32152);
-        return 0;
-      }
-      AppMethodBeat.o(32152);
-      return -1;
+      AppMethodBeat.o(117853);
+      return paramInt;
     }
+    if (paramInt == 2)
+    {
+      paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.gCg();
+        }
+      }
+      if (this.Gfy == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: ObjectDesc");
+        AppMethodBeat.o(117853);
+        throw paramVarArgs;
+      }
+      AppMethodBeat.o(117853);
+      return 0;
+    }
+    if (paramInt == 3)
+    {
+      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+      rc localrc = (rc)paramVarArgs[1];
+      switch (((Integer)paramVarArgs[2]).intValue())
+      {
+      default: 
+        AppMethodBeat.o(117853);
+        return -1;
+      case 1: 
+        localrc.Id = locala.OmT.zd();
+        AppMethodBeat.o(117853);
+        return 0;
+      }
+      localrc.Gfy = locala.OmT.readString();
+      AppMethodBeat.o(117853);
+      return 0;
+    }
+    AppMethodBeat.o(117853);
+    return -1;
   }
 }
 

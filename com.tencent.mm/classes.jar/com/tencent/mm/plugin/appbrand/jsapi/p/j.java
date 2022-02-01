@@ -5,10 +5,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.widget.picker.AppBrandOptionsPicker;
 import com.tencent.mm.plugin.appbrand.widget.picker.AppBrandOptionsPickerV3;
 import com.tencent.mm.plugin.appbrand.widget.picker.a;
-import com.tencent.mm.plugin.appbrand.widget.picker.b;
 import com.tencent.mm.plugin.appbrand.widget.picker.c.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -29,9 +28,9 @@ final class j
     final int j = paramJSONObject.optInt("current", 0);
     if ((localJSONArray == null) || (localJSONArray.length() <= 0))
     {
-      ad.i("MicroMsg.AppBrand.JsApi.OptionsPickerHandler", "showPickerView as selector, empty range");
-      p("ok", null);
-      M(new Runnable()
+      ae.i("MicroMsg.AppBrand.JsApi.OptionsPickerHandler", "showPickerView as selector, empty range");
+      q("ok", null);
+      K(new Runnable()
       {
         public final void run()
         {
@@ -52,35 +51,20 @@ final class j
         paramJSONObject[i] = localJSONArray.getString(i);
         i += 1;
       }
-      M(new Runnable()
+      K(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(137603);
-          j localj = j.this;
-          String[] arrayOfString = paramJSONObject;
-          int i = j;
-          AppBrandOptionsPicker localAppBrandOptionsPicker = (AppBrandOptionsPicker)localj.aK(AppBrandOptionsPicker.class);
-          if (localAppBrandOptionsPicker == null)
-          {
-            localj.p("fail cant init view", null);
-            AppMethodBeat.o(137603);
-            return;
-          }
-          a locala = localj.nkl;
-          locala.post(new j.7(localj, locala));
-          localAppBrandOptionsPicker.setOptionsArray(arrayOfString);
-          localAppBrandOptionsPicker.setValue(i);
-          locala.setOnResultListener(new j.8(localj, locala, localAppBrandOptionsPicker));
-          locala.show();
+          j.a(j.this, paramJSONObject, j);
           AppMethodBeat.o(137603);
         }
       });
     }
     catch (Exception paramJSONObject)
     {
-      ad.e("MicroMsg.AppBrand.JsApi.OptionsPickerHandler", "opt data.array, exp = %s", new Object[] { bt.n(paramJSONObject) });
-      p("fail", null);
+      ae.e("MicroMsg.AppBrand.JsApi.OptionsPickerHandler", "opt data.array, exp = %s", new Object[] { bu.o(paramJSONObject) });
+      q("fail", null);
       AppMethodBeat.o(137611);
       return;
     }
@@ -94,9 +78,9 @@ final class j
     final int j = paramJSONObject.optInt("current", 0);
     if ((localJSONArray == null) || (localJSONArray.length() <= 0))
     {
-      ad.i("MicroMsg.AppBrand.JsApi.OptionsPickerHandler", "showPickerView as selector, empty range");
-      p("ok", null);
-      M(new Runnable()
+      ae.i("MicroMsg.AppBrand.JsApi.OptionsPickerHandler", "showPickerView as selector, empty range");
+      q("ok", null);
+      K(new Runnable()
       {
         public final void run()
         {
@@ -117,37 +101,20 @@ final class j
         paramJSONObject[i] = localJSONArray.getString(i);
         i += 1;
       }
-      M(new Runnable()
+      K(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(137605);
-          j localj = j.this;
-          String[] arrayOfString = paramJSONObject;
-          int i = j;
-          AppBrandOptionsPickerV3 localAppBrandOptionsPickerV3 = (AppBrandOptionsPickerV3)localj.aK(AppBrandOptionsPickerV3.class);
-          if (localAppBrandOptionsPickerV3 == null)
-          {
-            localj.p("fail cant init view", null);
-            AppMethodBeat.o(137605);
-            return;
-          }
-          a locala = localj.nkl;
-          locala.post(new j.5(localj, locala));
-          localAppBrandOptionsPickerV3.nkQ = i;
-          localAppBrandOptionsPickerV3.init();
-          localAppBrandOptionsPickerV3.setOptionsArray(arrayOfString);
-          locala.setOnResultListener(new j.6(localj, locala, localAppBrandOptionsPickerV3));
-          locala.setHeader(localj.ldM);
-          locala.show();
+          j.b(j.this, paramJSONObject, j);
           AppMethodBeat.o(137605);
         }
       });
     }
     catch (Exception paramJSONObject)
     {
-      ad.e("MicroMsg.AppBrand.JsApi.OptionsPickerHandler", "opt data.array, exp = %s", new Object[] { bt.n(paramJSONObject) });
-      p("fail", null);
+      ae.e("MicroMsg.AppBrand.JsApi.OptionsPickerHandler", "opt data.array, exp = %s", new Object[] { bu.o(paramJSONObject) });
+      q("fail", null);
       AppMethodBeat.o(137612);
       return;
     }

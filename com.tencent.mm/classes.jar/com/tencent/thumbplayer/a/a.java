@@ -11,9 +11,9 @@ public abstract interface a
   
   public abstract void a(p paramp);
   
-  public abstract b fWa();
+  public abstract j gaA();
   
-  public abstract j fWb();
+  public abstract b gaz();
   
   public abstract int getCurrentPlayClipNo();
   

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@drawable/gw" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ha" android:layout_marginRight="@dimen/ha">
+        <TextView android:textSize="15.0dip" android:textColor="@drawable/gu" android:ellipsize="end" android:layout_gravity="center_vertical" android:id="@id/i3k" android:paddingTop="@dimen/o" android:paddingBottom="@dimen/o" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_alignParentLeft="true" />
+        <RelativeLayout android:id="@id/i7u" android:paddingTop="@dimen/o" android:paddingBottom="@dimen/o" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="70.0dip">
+            <TextView android:textSize="15.0dip" android:textColor="@color/FG_2" android:ellipsize="end" android:layout_gravity="center_vertical" android:id="@id/g96" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_alignParentRight="true" />
+        </RelativeLayout>
+    </RelativeLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/h8f" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <View android:id="@id/gdl" android:layout_marginLeft="@dimen/ha" android:layout_marginRight="@dimen/ha" style="@style/hp" />
+    <RelativeLayout android:id="@id/dsp" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ha" android:layout_marginTop="@dimen/o" android:layout_marginRight="@dimen/ha" android:layout_marginBottom="@dimen/o">
+        <TextView android:textSize="14.0dip" android:textColor="@drawable/gu" android:ellipsize="end" android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="查看全部" android:singleLine="true" android:layout_alignParentLeft="true" />
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/ate" android:layout_width="20.0dip" android:layout_height="20.0dip" android:src="@raw/biz_item_more_icon" android:layout_alignParentRight="true" android:rotation="270.0" app:iconColor="@color/FG_0" />
+    </RelativeLayout>
+</LinearLayout>

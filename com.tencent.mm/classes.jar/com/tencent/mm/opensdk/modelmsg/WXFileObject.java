@@ -16,27 +16,27 @@ public class WXFileObject
   
   public WXFileObject()
   {
-    AppMethodBeat.i(196976);
+    AppMethodBeat.i(194088);
     this.contentLengthLimit = 10485760;
     this.fileData = null;
     this.filePath = null;
-    AppMethodBeat.o(196976);
+    AppMethodBeat.o(194088);
   }
   
   public WXFileObject(String paramString)
   {
-    AppMethodBeat.i(196978);
+    AppMethodBeat.i(194090);
     this.contentLengthLimit = 10485760;
     this.filePath = paramString;
-    AppMethodBeat.o(196978);
+    AppMethodBeat.o(194090);
   }
   
   public WXFileObject(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(196977);
+    AppMethodBeat.i(194089);
     this.contentLengthLimit = 10485760;
     this.fileData = paramArrayOfByte;
-    AppMethodBeat.o(196977);
+    AppMethodBeat.o(194089);
   }
   
   private int getFileSize(String paramString)

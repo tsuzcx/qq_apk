@@ -4,14 +4,14 @@ import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
-import com.tencent.mm.plugin.appbrand.q;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.plugin.appbrand.r;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.storage.c;
 import java.util.HashMap;
 import java.util.Map;
 
 public final class JsApiGetABTestConfig
-  extends y<q>
+  extends y<r>
 {
   public static final int CTRL_INDEX = 527;
   public static final String NAME = "getABTestConfig";
@@ -20,8 +20,8 @@ public final class JsApiGetABTestConfig
     extends MainProcessTask
   {
     public static final Parcelable.Creator<GetABTestConfigTask> CREATOR;
-    private String ksi;
-    private Map<String, String> ksj;
+    private String kvy;
+    private Map<String, String> kvz;
     
     static
     {
@@ -33,39 +33,39 @@ public final class JsApiGetABTestConfig
     GetABTestConfigTask(Parcel paramParcel)
     {
       AppMethodBeat.i(45475);
-      this.ksj = new HashMap();
+      this.kvz = new HashMap();
       e(paramParcel);
       AppMethodBeat.o(45475);
     }
     
-    public final void aOA()
+    public final void aOX()
     {
       AppMethodBeat.i(45476);
-      ad.i("MicroMsg.JsApiGetABTestConfig", "runInMainProcess");
-      c localc = com.tencent.mm.model.c.d.aDs().wz(this.ksi);
+      ae.i("MicroMsg.JsApiGetABTestConfig", "runInMainProcess");
+      c localc = com.tencent.mm.model.c.d.aDI().xi(this.kvy);
       if (localc.isValid()) {
-        this.ksj.putAll(localc.foF());
+        this.kvz.putAll(localc.fsy());
       }
-      bhX();
+      biG();
       AppMethodBeat.o(45476);
     }
     
-    public final void aOB() {}
+    public final void aOY() {}
     
     public final void e(Parcel paramParcel)
     {
       AppMethodBeat.i(45477);
-      this.ksj.clear();
-      this.ksj.putAll(paramParcel.readHashMap(HashMap.class.getClassLoader()));
-      this.ksi = paramParcel.readString();
+      this.kvz.clear();
+      this.kvz.putAll(paramParcel.readHashMap(HashMap.class.getClassLoader()));
+      this.kvy = paramParcel.readString();
       AppMethodBeat.o(45477);
     }
     
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
       AppMethodBeat.i(45478);
-      paramParcel.writeMap(this.ksj);
-      paramParcel.writeString(this.ksi);
+      paramParcel.writeMap(this.kvz);
+      paramParcel.writeString(this.kvy);
       AppMethodBeat.o(45478);
     }
   }

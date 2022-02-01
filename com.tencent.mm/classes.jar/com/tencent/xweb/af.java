@@ -4,7 +4,7 @@ public abstract class af
 {
   public abstract void a(int paramInt1, int paramInt2, String paramString, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7);
   
-  public abstract void aU(int paramInt1, int paramInt2, int paramInt3);
+  public abstract void aV(int paramInt1, int paramInt2, int paramInt3);
   
   public abstract void kvStat(int paramInt, String paramString);
   

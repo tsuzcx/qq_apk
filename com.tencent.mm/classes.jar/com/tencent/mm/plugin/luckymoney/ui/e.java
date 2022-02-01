@@ -12,7 +12,7 @@ public abstract class e
 {
   protected Context mContext;
   protected LayoutInflater mInflater;
-  protected List<t> vjL = new LinkedList();
+  protected List<t> vvQ = new LinkedList();
   
   public e(Context paramContext)
   {
@@ -20,20 +20,20 @@ public abstract class e
     this.mInflater = LayoutInflater.from(paramContext);
   }
   
-  public final t Js(int paramInt)
+  public final t JR(int paramInt)
   {
-    return (t)this.vjL.get(paramInt);
+    return (t)this.vvQ.get(paramInt);
   }
   
   public final void a(t paramt)
   {
-    this.vjL.remove(paramt);
+    this.vvQ.remove(paramt);
   }
   
-  public final void es(List<t> paramList)
+  public final void ew(List<t> paramList)
   {
     if (paramList == null) {}
-    for (this.vjL = new LinkedList();; this.vjL = paramList)
+    for (this.vvQ = new LinkedList();; this.vvQ = paramList)
     {
       notifyDataSetChanged();
       return;
@@ -42,7 +42,7 @@ public abstract class e
   
   public int getCount()
   {
-    return this.vjL.size();
+    return this.vvQ.size();
   }
   
   public long getItemId(int paramInt)

@@ -14,18 +14,18 @@ import java.util.List;
 public final class k
   implements g
 {
-  private final List<g> MVX;
+  private final List<g> Ntd;
   
   public k(List<? extends g> paramList)
   {
     AppMethodBeat.i(56968);
-    this.MVX = paramList;
+    this.Ntd = paramList;
     AppMethodBeat.o(56968);
   }
   
   public k(g... paramVarArgs)
   {
-    this(e.W(paramVarArgs));
+    this(e.V(paramVarArgs));
     AppMethodBeat.i(56969);
     AppMethodBeat.o(56969);
   }
@@ -34,7 +34,7 @@ public final class k
   {
     AppMethodBeat.i(56966);
     p.h(paramb, "fqName");
-    paramb = i.e(j.v((Iterable)this.MVX), (d.g.a.b)new a(paramb));
+    paramb = i.e(j.v((Iterable)this.Ntd), (d.g.a.b)new a(paramb));
     p.h(paramb, "$this$firstOrNull");
     paramb = paramb.iterator();
     if (!paramb.hasNext()) {}
@@ -50,7 +50,7 @@ public final class k
   {
     AppMethodBeat.i(56965);
     p.h(paramb, "fqName");
-    Iterator localIterator = j.v((Iterable)this.MVX).iterator();
+    Iterator localIterator = j.v((Iterable)this.Ntd).iterator();
     while (localIterator.hasNext()) {
       if (((g)localIterator.next()).h(paramb))
       {
@@ -65,7 +65,7 @@ public final class k
   public final boolean isEmpty()
   {
     AppMethodBeat.i(56964);
-    Object localObject = (Iterable)this.MVX;
+    Object localObject = (Iterable)this.Ntd;
     if ((!(localObject instanceof Collection)) || (!((Collection)localObject).isEmpty()))
     {
       localObject = ((Iterable)localObject).iterator();
@@ -84,7 +84,7 @@ public final class k
   public final Iterator<c> iterator()
   {
     AppMethodBeat.i(56967);
-    Iterator localIterator = i.c(j.v((Iterable)this.MVX), (d.g.a.b)b.MVZ).iterator();
+    Iterator localIterator = i.c(j.v((Iterable)this.Ntd), (d.g.a.b)b.Ntf).iterator();
     AppMethodBeat.o(56967);
     return localIterator;
   }
@@ -103,12 +103,12 @@ public final class k
     extends q
     implements d.g.a.b<g, h<? extends c>>
   {
-    public static final b MVZ;
+    public static final b Ntf;
     
     static
     {
       AppMethodBeat.i(56963);
-      MVZ = new b();
+      Ntf = new b();
       AppMethodBeat.o(56963);
     }
     

@@ -12,26 +12,26 @@ import java.nio.ByteBuffer;
 public class DartExecutor
   implements c
 {
-  private final a MCQ;
-  public final c MCR;
-  public boolean MCS;
-  public String MCT;
-  private c MCU;
-  private final c.a MCV;
-  private final FlutterJNI MCg;
+  private final a MZV;
+  public final c MZW;
+  public boolean MZX;
+  public String MZY;
+  private c MZZ;
+  private final FlutterJNI MZl;
+  private final c.a Naa;
   private final AssetManager aFl;
   
   public DartExecutor(FlutterJNI paramFlutterJNI, AssetManager paramAssetManager)
   {
     AppMethodBeat.i(10198);
-    this.MCS = false;
-    this.MCV = new c.a()
+    this.MZX = false;
+    this.Naa = new c.a()
     {
       public final void a(ByteBuffer paramAnonymousByteBuffer, c.b paramAnonymousb)
       {
         AppMethodBeat.i(10205);
         paramAnonymousb = DartExecutor.this;
-        p localp = p.MGc;
+        p localp = p.Ndi;
         DartExecutor.a(paramAnonymousb, p.P(paramAnonymousByteBuffer));
         if (DartExecutor.a(DartExecutor.this) != null)
         {
@@ -41,27 +41,27 @@ public class DartExecutor
         AppMethodBeat.o(10205);
       }
     };
-    this.MCg = paramFlutterJNI;
+    this.MZl = paramFlutterJNI;
     this.aFl = paramAssetManager;
-    this.MCQ = new a(paramFlutterJNI);
-    this.MCQ.a("flutter/isolate", this.MCV);
-    this.MCR = new b(this.MCQ, (byte)0);
+    this.MZV = new a(paramFlutterJNI);
+    this.MZV.a("flutter/isolate", this.Naa);
+    this.MZW = new b(this.MZV, (byte)0);
     AppMethodBeat.o(10198);
   }
   
-  public final void a(DartExecutor.a parama)
+  public final void a(a parama)
   {
     AppMethodBeat.i(10201);
-    if (this.MCS)
+    if (this.MZX)
     {
-      io.flutter.a.ged();
+      io.flutter.a.giG();
       AppMethodBeat.o(10201);
       return;
     }
     new StringBuilder("Executing Dart entrypoint: ").append(parama);
-    io.flutter.a.gea();
-    this.MCg.runBundleAndSnapshotFromLibrary(parama.MCX, parama.MCY, null, this.aFl);
-    this.MCS = true;
+    io.flutter.a.giD();
+    this.MZl.runBundleAndSnapshotFromLibrary(parama.Nac, parama.Nad, null, this.aFl);
+    this.MZX = true;
     AppMethodBeat.o(10201);
   }
   
@@ -69,7 +69,7 @@ public class DartExecutor
   public final void a(String paramString, c.a parama)
   {
     AppMethodBeat.i(10204);
-    this.MCR.a(paramString, parama);
+    this.MZW.a(paramString, parama);
     AppMethodBeat.o(10204);
   }
   
@@ -77,7 +77,7 @@ public class DartExecutor
   public final void a(String paramString, ByteBuffer paramByteBuffer)
   {
     AppMethodBeat.i(10202);
-    this.MCR.a(paramString, paramByteBuffer);
+    this.MZW.a(paramString, paramByteBuffer);
     AppMethodBeat.o(10202);
   }
   
@@ -85,60 +85,118 @@ public class DartExecutor
   public final void a(String paramString, ByteBuffer paramByteBuffer, c.b paramb)
   {
     AppMethodBeat.i(10203);
-    this.MCR.a(paramString, paramByteBuffer, paramb);
+    this.MZW.a(paramString, paramByteBuffer, paramb);
     AppMethodBeat.o(10203);
   }
   
-  public final boolean geP()
+  public final boolean gjr()
   {
-    return this.MCS;
+    return this.MZX;
   }
   
   public void onAttachedToJNI()
   {
     AppMethodBeat.i(10199);
-    io.flutter.a.gea();
-    this.MCg.setPlatformMessageHandler(this.MCQ);
+    io.flutter.a.giD();
+    this.MZl.setPlatformMessageHandler(this.MZV);
     AppMethodBeat.o(10199);
   }
   
   public void onDetachedFromJNI()
   {
     AppMethodBeat.i(10200);
-    io.flutter.a.gea();
-    this.MCg.setPlatformMessageHandler(null);
+    io.flutter.a.giD();
+    this.MZl.setPlatformMessageHandler(null);
     AppMethodBeat.o(10200);
+  }
+  
+  public static final class a
+  {
+    public final String Nac;
+    public final String Nad;
+    
+    public a(String paramString1, String paramString2)
+    {
+      this.Nac = paramString1;
+      this.Nad = paramString2;
+    }
+    
+    public a(String paramString1, String paramString2, byte paramByte)
+    {
+      this(paramString1, paramString2);
+    }
+    
+    public final boolean equals(Object paramObject)
+    {
+      AppMethodBeat.i(10213);
+      if (this == paramObject)
+      {
+        AppMethodBeat.o(10213);
+        return true;
+      }
+      if ((paramObject == null) || (getClass() != paramObject.getClass()))
+      {
+        AppMethodBeat.o(10213);
+        return false;
+      }
+      paramObject = (a)paramObject;
+      if (!this.Nac.equals(paramObject.Nac))
+      {
+        AppMethodBeat.o(10213);
+        return false;
+      }
+      boolean bool = this.Nad.equals(paramObject.Nad);
+      AppMethodBeat.o(10213);
+      return bool;
+    }
+    
+    public final int hashCode()
+    {
+      AppMethodBeat.i(10214);
+      int i = this.Nac.hashCode();
+      int j = this.Nad.hashCode();
+      AppMethodBeat.o(10214);
+      return i * 31 + j;
+    }
+    
+    public final String toString()
+    {
+      AppMethodBeat.i(10212);
+      String str = "DartEntrypoint( bundle path: " + this.Nac + ", function: " + this.Nad + " )";
+      AppMethodBeat.o(10212);
+      return str;
+    }
   }
   
   static final class b
     implements c
   {
-    private final a MCZ;
+    private final a Nae;
     
     private b(a parama)
     {
-      this.MCZ = parama;
+      this.Nae = parama;
     }
     
     public final void a(String paramString, c.a parama)
     {
-      AppMethodBeat.i(213259);
-      this.MCZ.a(paramString, parama);
-      AppMethodBeat.o(213259);
+      AppMethodBeat.i(197841);
+      this.Nae.a(paramString, parama);
+      AppMethodBeat.o(197841);
     }
     
     public final void a(String paramString, ByteBuffer paramByteBuffer)
     {
-      AppMethodBeat.i(213257);
-      this.MCZ.a(paramString, paramByteBuffer, null);
-      AppMethodBeat.o(213257);
+      AppMethodBeat.i(197839);
+      this.Nae.a(paramString, paramByteBuffer, null);
+      AppMethodBeat.o(197839);
     }
     
     public final void a(String paramString, ByteBuffer paramByteBuffer, c.b paramb)
     {
-      AppMethodBeat.i(213258);
-      this.MCZ.a(paramString, paramByteBuffer, paramb);
-      AppMethodBeat.o(213258);
+      AppMethodBeat.i(197840);
+      this.Nae.a(paramString, paramByteBuffer, paramb);
+      AppMethodBeat.o(197840);
     }
   }
   
@@ -146,7 +204,7 @@ public class DartExecutor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     io.flutter.embedding.engine.dart.DartExecutor
  * JD-Core Version:    0.7.0.1
  */

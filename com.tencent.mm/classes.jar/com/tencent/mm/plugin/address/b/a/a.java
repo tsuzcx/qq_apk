@@ -7,23 +7,23 @@ import java.util.LinkedList;
 
 public final class a
 {
-  public com.tencent.mm.plugin.j.a.a jrF;
+  public com.tencent.mm.plugin.j.a.a juy;
   
   public a()
   {
     AppMethodBeat.i(20762);
-    this.jrF = new com.tencent.mm.plugin.j.a.a();
+    this.juy = new com.tencent.mm.plugin.j.a.a();
     AppMethodBeat.o(20762);
   }
   
-  public final b rv(int paramInt)
+  public final b ry(int paramInt)
   {
     AppMethodBeat.i(20763);
-    Iterator localIterator = this.jrF.uJA.iterator();
+    Iterator localIterator = this.juy.uVn.iterator();
     while (localIterator.hasNext())
     {
       b localb = (b)localIterator.next();
-      if (localb.uJB == paramInt)
+      if (localb.uVo == paramInt)
       {
         AppMethodBeat.o(20763);
         return localb;
@@ -35,7 +35,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.address.b.a.a
  * JD-Core Version:    0.7.0.1
  */

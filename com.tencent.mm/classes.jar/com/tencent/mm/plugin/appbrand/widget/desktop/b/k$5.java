@@ -18,27 +18,27 @@ final class k$5
   public final void onAnimationEnd(Animator paramAnimator)
   {
     AppMethodBeat.i(49825);
-    this.naC.cuk.removeView(this.naC.mYs);
-    if (!this.naC.nax)
+    this.nfK.cuN.removeView(this.nfK.ndz);
+    if (!this.nfK.nfF)
     {
-      this.naF.auu.setVisibility(0);
+      this.nfN.auu.setVisibility(0);
       this.val$callback.run();
       AppMethodBeat.o(49825);
       return;
     }
-    if ((this.naG != null) && (this.naG.auu != null)) {
-      this.naG.auu.setVisibility(0);
+    if ((this.nfO != null) && (this.nfO.auu != null)) {
+      this.nfO.auu.setVisibility(0);
     }
-    if (this.naF != null)
+    if (this.nfN != null)
     {
-      this.naF.auu.setVisibility(0);
-      this.naF.auu.setScaleX(0.0F);
-      this.naF.auu.setScaleY(0.0F);
-      this.naF.auu.animate().scaleX(1.0F).scaleY(1.0F).alpha(1.0F).setDuration(300L).setListener(null).start();
+      this.nfN.auu.setVisibility(0);
+      this.nfN.auu.setScaleX(0.0F);
+      this.nfN.auu.setScaleY(0.0F);
+      this.nfN.auu.animate().scaleX(1.0F).scaleY(1.0F).alpha(1.0F).setDuration(300L).setListener(null).start();
     }
     this.val$callback.run();
-    this.naC.mYs.setScaleX(1.0F);
-    this.naC.mYs.setScaleY(1.0F);
+    this.nfK.ndz.setScaleX(1.0F);
+    this.nfK.ndz.setScaleY(1.0F);
     AppMethodBeat.o(49825);
   }
   

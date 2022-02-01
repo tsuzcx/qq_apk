@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cc.a;
+import com.tencent.mm.cb.a;
 import com.tencent.mm.pluginsdk.ui.applet.CdnImageView;
 import com.tencent.mm.ui.base.preference.Preference;
 import java.util.Iterator;
@@ -19,9 +19,9 @@ public class BizInfoPayInfoIconPreference
   extends Preference
 {
   private LayoutInflater mInflater;
-  private LinearLayout wPR;
-  private List<String> wPS;
-  private int wPT;
+  private LinearLayout xfI;
+  private List<String> xfJ;
+  private int xfK;
   
   public BizInfoPayInfoIconPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -32,51 +32,51 @@ public class BizInfoPayInfoIconPreference
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(26936);
-    this.wPT = -1;
+    this.xfK = -1;
     this.mInflater = ((LayoutInflater)paramContext.getSystemService("layout_inflater"));
     setLayoutResource(2131494804);
     AppMethodBeat.o(26936);
   }
   
-  private void MI(int paramInt)
+  private void No(int paramInt)
   {
     AppMethodBeat.i(26942);
     ImageView localImageView = (ImageView)this.mInflater.inflate(2131493604, null);
     LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(a.fromDPToPix(this.mContext, 20), a.fromDPToPix(this.mContext, 20));
     localLayoutParams.rightMargin = a.fromDPToPix(this.mContext, 6);
     localImageView.setImageResource(paramInt);
-    this.wPR.addView(localImageView, localLayoutParams);
+    this.xfI.addView(localImageView, localLayoutParams);
     AppMethodBeat.o(26942);
   }
   
-  private void auG(String paramString)
+  private void avV(String paramString)
   {
     AppMethodBeat.i(26943);
     CdnImageView localCdnImageView = new CdnImageView(this.mContext);
     localCdnImageView.setUrl(paramString);
     paramString = new LinearLayout.LayoutParams(a.fromDPToPix(this.mContext, 20), a.fromDPToPix(this.mContext, 20));
     paramString.rightMargin = a.fromDPToPix(this.mContext, 6);
-    this.wPR.addView(localCdnImageView, paramString);
+    this.xfI.addView(localCdnImageView, paramString);
     AppMethodBeat.o(26943);
   }
   
   private void updateView()
   {
     AppMethodBeat.i(26941);
-    if (this.wPR == null)
+    if (this.xfI == null)
     {
       AppMethodBeat.o(26941);
       return;
     }
-    this.wPR.removeAllViews();
-    if (this.wPT >= 0)
+    this.xfI.removeAllViews();
+    if (this.xfK >= 0)
     {
-      int i = this.wPT;
+      int i = this.xfK;
       int j = 0;
       if (j < 5)
       {
         if (i <= 0) {
-          MI(2131689766);
+          No(2131689766);
         }
         for (;;)
         {
@@ -84,12 +84,12 @@ public class BizInfoPayInfoIconPreference
           break;
           if (i <= 10)
           {
-            MI(2131689764);
+            No(2131689764);
             i -= 20;
           }
           else
           {
-            MI(2131689765);
+            No(2131689765);
             i -= 20;
           }
         }
@@ -97,33 +97,33 @@ public class BizInfoPayInfoIconPreference
       AppMethodBeat.o(26941);
       return;
     }
-    if (this.wPS != null)
+    if (this.xfJ != null)
     {
-      Iterator localIterator = this.wPS.iterator();
+      Iterator localIterator = this.xfJ.iterator();
       while (localIterator.hasNext()) {
-        auG((String)localIterator.next());
+        avV((String)localIterator.next());
       }
     }
     AppMethodBeat.o(26941);
   }
   
-  public final void MH(int paramInt)
+  public final void Nn(int paramInt)
   {
     AppMethodBeat.i(26939);
-    if (paramInt == this.wPT)
+    if (paramInt == this.xfK)
     {
       AppMethodBeat.o(26939);
       return;
     }
-    this.wPT = paramInt;
+    this.xfK = paramInt;
     updateView();
     AppMethodBeat.o(26939);
   }
   
-  public final void eO(List<String> paramList)
+  public final void eW(List<String> paramList)
   {
     AppMethodBeat.i(26940);
-    this.wPS = paramList;
+    this.xfJ = paramList;
     updateView();
     AppMethodBeat.o(26940);
   }
@@ -132,7 +132,7 @@ public class BizInfoPayInfoIconPreference
   {
     AppMethodBeat.i(26938);
     super.onBindView(paramView);
-    this.wPR = ((LinearLayout)paramView.findViewById(2131305546));
+    this.xfI = ((LinearLayout)paramView.findViewById(2131305546));
     updateView();
     AppMethodBeat.o(26938);
   }

@@ -10,8 +10,8 @@ import com.tencent.luggage.d.h;
 import com.tencent.luggage.d.s;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.webview.luggage.g;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.MMActivity.a;
 import java.util.HashMap;
@@ -31,7 +31,7 @@ public class d
     String str3 = ((g)paramb.chg).getUrl();
     String str4 = paramb.chh.cgn.optString("consumedCardId");
     ((g)paramb.chg).mParams.getString("KTemplateId");
-    ad.i("MicroMsg.JsApiBatchAddCard", "doBatchAddCard consumedCardId %s", new Object[] { str4 });
+    ae.i("MicroMsg.JsApiBatchAddCard", "doBatchAddCard consumedCardId %s", new Object[] { str4 });
     Intent localIntent = new Intent();
     localIntent.putExtra("key_in_card_list", str1);
     localIntent.putExtra("key_from_scene", 7);
@@ -48,11 +48,11 @@ public class d
         {
           localHashMap = new HashMap();
           if (paramAnonymousIntent != null) {
-            localHashMap.put("card_list", bt.bI(paramAnonymousIntent.getStringExtra("card_list"), ""));
+            localHashMap.put("card_list", bu.bI(paramAnonymousIntent.getStringExtra("card_list"), ""));
           }
           if (paramAnonymousInt2 == -1)
           {
-            paramb.d("", localHashMap);
+            paramb.e("", localHashMap);
             AppMethodBeat.o(175739);
             return;
           }
@@ -65,21 +65,21 @@ public class d
         {
           if (paramAnonymousInt1 == 2)
           {
-            paramb.d("fail", localHashMap);
+            paramb.e("fail", localHashMap);
             AppMethodBeat.o(175739);
             return;
           }
-          paramb.d("cancel", localHashMap);
+          paramb.e("cancel", localHashMap);
           AppMethodBeat.o(175739);
           return;
         }
       }
     });
-    com.tencent.mm.bs.d.a(((g)paramb.chg).mContext, "card", ".ui.CardAddEntranceUI", localIntent, hashCode() & 0xFFFF, false);
+    com.tencent.mm.br.d.a(((g)paramb.chg).mContext, "card", ".ui.CardAddEntranceUI", localIntent, hashCode() & 0xFFFF, false);
     AppMethodBeat.o(175740);
   }
   
-  public final int ccO()
+  public final int ced()
   {
     return 0;
   }

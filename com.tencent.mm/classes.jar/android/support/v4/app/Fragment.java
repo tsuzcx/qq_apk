@@ -1587,8 +1587,8 @@ public class Fragment
   public void startActivity(Intent paramIntent)
   {
     paramIntent = new com.tencent.mm.hellhoundlib.b.a().bc(null).bc(paramIntent);
-    com.tencent.mm.hellhoundlib.a.a.a(this, paramIntent.ahp(), "android/support/v4/app/Fragment", "startActivity", "(Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;Landroid/os/Bundle;)V");
-    startActivity((Intent)paramIntent.mq(0), (Bundle)paramIntent.mq(1));
+    com.tencent.mm.hellhoundlib.a.a.a(this, paramIntent.ahE(), "android/support/v4/app/Fragment", "startActivity", "(Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;Landroid/os/Bundle;)V");
+    startActivity((Intent)paramIntent.mt(0), (Bundle)paramIntent.mt(1));
     com.tencent.mm.hellhoundlib.a.a.a(this, "android/support/v4/app/Fragment", "startActivity", "(Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;Landroid/os/Bundle;)V");
   }
   

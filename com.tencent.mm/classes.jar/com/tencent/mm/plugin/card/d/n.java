@@ -12,44 +12,20 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aw.a.a;
-import com.tencent.mm.aw.a.a.c;
-import com.tencent.mm.aw.a.a.c.a;
-import com.tencent.mm.aw.a.c.h;
-import com.tencent.mm.aw.q;
+import com.tencent.mm.av.a.a;
+import com.tencent.mm.av.a.a.c;
+import com.tencent.mm.av.a.a.c.a;
+import com.tencent.mm.av.a.c.h;
+import com.tencent.mm.av.q;
 import com.tencent.mm.plugin.card.model.m;
-import com.tencent.mm.protocal.protobuf.ts;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.tu;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.MMActivity;
 
 public final class n
 {
-  public static String Zo(String paramString)
-  {
-    AppMethodBeat.i(113860);
-    if (bt.isNullOrNil(paramString))
-    {
-      ad.e("MicroMsg.CardViewUtil", "toApply is null");
-      AppMethodBeat.o(113860);
-      return "";
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    int i = 0;
-    while (i < paramString.length())
-    {
-      localStringBuilder.append(paramString.charAt(i));
-      if ((i + 1) % 4 == 0) {
-        localStringBuilder.append(" ");
-      }
-      i += 1;
-    }
-    paramString = localStringBuilder.toString();
-    AppMethodBeat.o(113860);
-    return paramString;
-  }
-  
   public static void a(final Context paramContext, ImageView paramImageView, String paramString, int paramInt1, final int paramInt2)
   {
     AppMethodBeat.i(113862);
@@ -61,45 +37,45 @@ public final class n
     if (!TextUtils.isEmpty(paramString))
     {
       Object localObject = new c.a();
-      ((c.a)localObject).prefixPath = com.tencent.mm.loader.j.b.arU();
-      q.aIK();
-      ((c.a)localObject).idJ = null;
-      ((c.a)localObject).hdP = m.Yt(paramString);
-      ((c.a)localObject).idr = true;
-      ((c.a)localObject).hfi = false;
-      ((c.a)localObject).idp = true;
-      ((c.a)localObject).hdS = paramInt1;
-      ((c.a)localObject).hdR = paramInt1;
-      ((c.a)localObject).idD = 2131231506;
-      localObject = ((c.a)localObject).aJc();
-      q.aIJ().a(paramString, paramImageView, (c)localObject, new h()
+      ((c.a)localObject).prefixPath = com.tencent.mm.loader.j.b.asj();
+      q.aJc();
+      ((c.a)localObject).igB = null;
+      ((c.a)localObject).hgD = m.Zk(paramString);
+      ((c.a)localObject).igk = true;
+      ((c.a)localObject).hhW = false;
+      ((c.a)localObject).igi = true;
+      ((c.a)localObject).hgG = paramInt1;
+      ((c.a)localObject).hgF = paramInt1;
+      ((c.a)localObject).igv = 2131231506;
+      localObject = ((c.a)localObject).aJu();
+      q.aJb().a(paramString, paramImageView, (c)localObject, new h()
       {
-        public final Bitmap a(String paramAnonymousString, View paramAnonymousView, com.tencent.mm.aw.a.d.b paramAnonymousb)
+        public final Bitmap a(String paramAnonymousString, View paramAnonymousView, com.tencent.mm.av.a.d.b paramAnonymousb)
         {
           return null;
         }
         
         public final void b(String paramAnonymousString, View paramAnonymousView) {}
         
-        public final void b(String paramAnonymousString, View paramAnonymousView, com.tencent.mm.aw.a.d.b paramAnonymousb)
+        public final void b(String paramAnonymousString, View paramAnonymousView, com.tencent.mm.av.a.d.b paramAnonymousb)
         {
           AppMethodBeat.i(113855);
           if (paramAnonymousb.bitmap != null)
           {
-            aq.f(new Runnable()
+            ar.f(new Runnable()
             {
               public final void run()
               {
                 AppMethodBeat.i(113854);
-                n.1.this.oPG.setImageBitmap(this.iUT);
-                n.1.this.oPG.setColorFilter(n.1.this.lYq, PorterDuff.Mode.SRC_IN);
+                n.1.this.oWi.setImageBitmap(this.iXM);
+                n.1.this.oWi.setColorFilter(n.1.this.mcX, PorterDuff.Mode.SRC_IN);
                 AppMethodBeat.o(113854);
               }
             });
             AppMethodBeat.o(113855);
             return;
           }
-          n.b(this.oPG, this.oPH, paramInt2);
+          n.b(this.oWi, this.oWj, paramInt2);
           AppMethodBeat.o(113855);
         }
       });
@@ -129,18 +105,18 @@ public final class n
     if (!TextUtils.isEmpty(paramString))
     {
       Object localObject = new c.a();
-      ((c.a)localObject).prefixPath = com.tencent.mm.loader.j.b.arU();
-      q.aIK();
-      ((c.a)localObject).idJ = null;
-      ((c.a)localObject).hdP = m.Yt(paramString);
-      ((c.a)localObject).idr = true;
-      ((c.a)localObject).hfi = paramBoolean;
-      ((c.a)localObject).idp = true;
-      ((c.a)localObject).hdS = paramInt1;
-      ((c.a)localObject).hdR = paramInt1;
-      ((c.a)localObject).idD = paramInt2;
-      localObject = ((c.a)localObject).aJc();
-      q.aIJ().a(paramString, paramImageView, (c)localObject);
+      ((c.a)localObject).prefixPath = com.tencent.mm.loader.j.b.asj();
+      q.aJc();
+      ((c.a)localObject).igB = null;
+      ((c.a)localObject).hgD = m.Zk(paramString);
+      ((c.a)localObject).igk = true;
+      ((c.a)localObject).hhW = paramBoolean;
+      ((c.a)localObject).igi = true;
+      ((c.a)localObject).hgG = paramInt1;
+      ((c.a)localObject).hgF = paramInt1;
+      ((c.a)localObject).igv = paramInt2;
+      localObject = ((c.a)localObject).aJu();
+      q.aJb().a(paramString, paramImageView, (c)localObject);
       AppMethodBeat.o(113861);
       return;
     }
@@ -151,20 +127,44 @@ public final class n
   public static void a(MMActivity paramMMActivity, com.tencent.mm.plugin.card.base.b paramb)
   {
     AppMethodBeat.i(113864);
-    paramMMActivity.setActionbarColor(l.Zh(paramb.bTN().hAD));
+    paramMMActivity.setActionbarColor(l.ZY(paramb.bVc().hDr));
     AppMethodBeat.o(113864);
+  }
+  
+  public static String aaf(String paramString)
+  {
+    AppMethodBeat.i(113860);
+    if (bu.isNullOrNil(paramString))
+    {
+      ae.e("MicroMsg.CardViewUtil", "toApply is null");
+      AppMethodBeat.o(113860);
+      return "";
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    int i = 0;
+    while (i < paramString.length())
+    {
+      localStringBuilder.append(paramString.charAt(i));
+      if ((i + 1) % 4 == 0) {
+        localStringBuilder.append(" ");
+      }
+      i += 1;
+    }
+    paramString = localStringBuilder.toString();
+    AppMethodBeat.o(113860);
+    return paramString;
   }
   
   public static void b(ImageView paramImageView, final int paramInt1, final int paramInt2)
   {
     AppMethodBeat.i(113863);
-    aq.f(new Runnable()
+    ar.f(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(113856);
-        this.oPG.setImageResource(paramInt1);
-        this.oPG.setColorFilter(paramInt2, PorterDuff.Mode.SRC_IN);
+        this.oWi.setImageResource(paramInt1);
+        this.oWi.setColorFilter(paramInt2, PorterDuff.Mode.SRC_IN);
         AppMethodBeat.o(113856);
       }
     });

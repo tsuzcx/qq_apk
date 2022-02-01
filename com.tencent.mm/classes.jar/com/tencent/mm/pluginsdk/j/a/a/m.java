@@ -1,14 +1,14 @@
 package com.tencent.mm.pluginsdk.j.a.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.c;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.c;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.cvo;
-import com.tencent.mm.protocal.protobuf.xs;
-import com.tencent.mm.protocal.protobuf.xt;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.cwi;
+import com.tencent.mm.protocal.protobuf.xv;
+import com.tencent.mm.protocal.protobuf.xw;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -20,27 +20,27 @@ public final class m
   public m(int paramInt)
   {
     AppMethodBeat.i(152000);
-    ad.i("MicroMsg.ResDownloader.CheckResUpdate.NetSceneCheckResUpdate", "NetSceneCheckResUpdate init, resType:%d", new Object[] { Integer.valueOf(paramInt) });
-    cvo localcvo = new cvo();
-    localcvo.nEf = paramInt;
-    this.EQn.clear();
-    this.EQn.add(localcvo);
+    ae.i("MicroMsg.ResDownloader.CheckResUpdate.NetSceneCheckResUpdate", "NetSceneCheckResUpdate init, resType:%d", new Object[] { Integer.valueOf(paramInt) });
+    cwi localcwi = new cwi();
+    localcwi.nJA = paramInt;
+    this.FiI.clear();
+    this.FiI.add(localcwi);
     AppMethodBeat.o(152000);
   }
   
-  protected final q faU()
+  protected final q feI()
   {
     AppMethodBeat.i(152001);
     Object localObject = new b.a();
-    xs localxs = new xs();
-    localxs.FXq.addAll(this.EQn);
-    ((b.a)localObject).hNM = localxs;
-    ((b.a)localObject).hNN = new xt();
+    xv localxv = new xv();
+    localxv.GpP.addAll(this.FiI);
+    ((b.a)localObject).hQF = localxv;
+    ((b.a)localObject).hQG = new xw();
     ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/checkresupdate";
     ((b.a)localObject).funcId = 721;
-    ((b.a)localObject).hNO = 0;
+    ((b.a)localObject).hQH = 0;
     ((b.a)localObject).respCmdId = 0;
-    localObject = ((b.a)localObject).aDC();
+    localObject = ((b.a)localObject).aDS();
     AppMethodBeat.o(152001);
     return localObject;
   }
@@ -55,9 +55,9 @@ public final class m
     return 721;
   }
   
-  protected final xt h(q paramq)
+  protected final xw h(q paramq)
   {
-    return (xt)((b)paramq).hNL.hNQ;
+    return (xw)((b)paramq).hQE.hQJ;
   }
 }
 

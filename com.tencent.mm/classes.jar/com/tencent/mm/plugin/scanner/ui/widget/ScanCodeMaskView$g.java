@@ -12,7 +12,7 @@ import d.l;
 import d.v;
 import java.util.Iterator;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "animation", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate", "com/tencent/mm/plugin/scanner/ui/widget/ScanCodeMaskView$runZoomAnimation$2$1"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "animation", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate", "com/tencent/mm/plugin/scanner/ui/widget/ScanCodeMaskView$runZoomAnimation$2$1"})
 final class ScanCodeMaskView$g
   implements ValueAnimator.AnimatorUpdateListener
 {
@@ -30,17 +30,17 @@ final class ScanCodeMaskView$g
       throw paramValueAnimator;
     }
     float f = ((Float)paramValueAnimator).floatValue();
-    paramValueAnimator = (Iterable)ScanCodeMaskView.e(this.yxL);
+    paramValueAnimator = (Iterable)ScanCodeMaskView.e(this.yNL);
     int i = 0;
     paramValueAnimator = paramValueAnimator.iterator();
     while (paramValueAnimator.hasNext())
     {
       Object localObject = paramValueAnimator.next();
       if (i < 0) {
-        j.gfB();
+        j.gkd();
       }
       localObject = (View)localObject;
-      if (i < ScanCodeMaskView.i(this.yxL))
+      if (i < ScanCodeMaskView.i(this.yNL))
       {
         ((View)localObject).setScaleX(f);
         ((View)localObject).setScaleY(f);

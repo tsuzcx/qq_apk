@@ -15,11 +15,11 @@ abstract class s<_Data, _ViewHolder extends RecyclerView.w>
   
   public abstract void c(_ViewHolder param_ViewHolder, _Data param_Data);
   
-  public abstract long cD(_Data param_Data);
+  public abstract long cE(_Data param_Data);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.recents.s
  * JD-Core Version:    0.7.0.1
  */

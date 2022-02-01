@@ -4,10 +4,10 @@ import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bs.d;
+import com.tencent.mm.br.d;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 final class BackupMoveRecoverUI$1$9
   implements View.OnClickListener
@@ -19,13 +19,13 @@ final class BackupMoveRecoverUI$1$9
     AppMethodBeat.i(21427);
     b localb = new b();
     localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/backup/backupmoveui/BackupMoveRecoverUI$1$17", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+    a.b("com/tencent/mm/plugin/backup/backupmoveui/BackupMoveRecoverUI$1$17", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
     paramView = new Intent();
-    paramView.putExtra("title", this.nwW.nwV.getString(2131756142));
-    paramView.putExtra("rawUrl", this.nwW.nwV.getString(2131756141, new Object[] { ac.fks() }));
+    paramView.putExtra("title", this.nCr.nCq.getString(2131756142));
+    paramView.putExtra("rawUrl", this.nCr.nCq.getString(2131756141, new Object[] { ad.fom() }));
     paramView.putExtra("showShare", false);
     paramView.putExtra("neverGetA8Key", true);
-    d.b(this.nwW.nwV, "webview", ".ui.tools.WebViewUI", paramView);
+    d.b(this.nCr.nCq, "webview", ".ui.tools.WebViewUI", paramView);
     a.a(this, "com/tencent/mm/plugin/backup/backupmoveui/BackupMoveRecoverUI$1$17", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(21427);
   }

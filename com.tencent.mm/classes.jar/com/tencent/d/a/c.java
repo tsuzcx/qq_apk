@@ -7,18 +7,18 @@ import java.util.List;
 
 public final class c
 {
-  private static com.tencent.d.b.a LLs = null;
+  private static com.tencent.d.b.a Mir = null;
   
   public static void a(Context paramContext, a parama)
   {
     AppMethodBeat.i(138305);
-    if (LLs == null) {
-      LLs = new com.tencent.d.b.a(paramContext);
+    if (Mir == null) {
+      Mir = new com.tencent.d.b.a(paramContext);
     }
-    paramContext = LLs;
+    paramContext = Mir;
     try
     {
-      List localList = com.tencent.d.f.a.kV(paramContext.mContext);
+      List localList = com.tencent.d.f.a.lc(paramContext.mContext);
       if (localList.size() == 0)
       {
         parama.g(-10, null);
@@ -26,25 +26,25 @@ public final class c
         return;
       }
       com.tencent.d.c.b.a locala = new com.tencent.d.c.b.a();
-      locala.LLY = com.tencent.d.b.a.fTI();
-      locala.LLW = new com.tencent.d.c.b.c();
-      locala.LLW.LMz = 6;
-      locala.LLW.LLR = 1;
-      locala.LLW.requestType = 0;
-      locala.LLW.LMA = 0;
-      locala.LLW.LMB = 0;
-      locala.LLW.LMC = null;
-      locala.LLW.LMD = 0;
-      locala.LLW.LMH = 1;
-      locala.LLX = new ArrayList();
+      locala.MiX = com.tencent.d.b.a.fYi();
+      locala.MiV = new com.tencent.d.c.b.c();
+      locala.MiV.Mjy = 6;
+      locala.MiV.MiQ = 1;
+      locala.MiV.requestType = 0;
+      locala.MiV.Mjz = 0;
+      locala.MiV.MjA = 0;
+      locala.MiV.MjB = null;
+      locala.MiV.MjC = 0;
+      locala.MiV.MjG = 1;
+      locala.MiW = new ArrayList();
       int i = 0;
       while (i < localList.size())
       {
         com.tencent.d.c.b.b localb = com.tencent.d.b.a.a(paramContext.mContext, (a)localList.get(i), i);
-        locala.LLX.add(localb);
+        locala.MiW.add(localb);
         i += 1;
       }
-      paramContext = paramContext.LLv.a(locala);
+      paramContext = paramContext.Miu.a(locala);
       if (paramContext == null)
       {
         parama.g(-20, null);

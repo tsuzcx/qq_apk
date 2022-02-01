@@ -12,11 +12,11 @@ public abstract interface m
   
   public abstract void k(long paramLong, String paramString);
   
-  public abstract void sL(long paramLong);
+  public abstract void sY(long paramLong);
   
-  public abstract void sM(long paramLong);
+  public abstract void sZ(long paramLong);
   
-  public abstract void sN(long paramLong);
+  public abstract void ta(long paramLong);
 }
 
 

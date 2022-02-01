@@ -7,8 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aq;
 import java.lang.reflect.Field;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
@@ -16,12 +16,12 @@ import junit.framework.Assert;
 
 public final class b
 {
-  private static b gEp;
-  public static a gEt;
-  private ConcurrentHashMap<String, c> gEo;
-  public String gEq;
-  public ap gEr;
-  public boolean gEs;
+  private static b gGW;
+  public static a gHa;
+  private ConcurrentHashMap<String, c> gGV;
+  public String gGX;
+  public aq gGY;
+  public boolean gGZ;
   public LayoutInflater mInflater;
   public boolean mInitialized;
   public int mMode;
@@ -29,32 +29,32 @@ public final class b
   static
   {
     AppMethodBeat.i(141007);
-    gEp = null;
-    gEp = new b();
+    gGW = null;
+    gGW = new b();
     AppMethodBeat.o(141007);
   }
   
   public b()
   {
     AppMethodBeat.i(141001);
-    this.gEo = new ConcurrentHashMap();
+    this.gGV = new ConcurrentHashMap();
     this.mInitialized = false;
     this.mMode = 2;
-    this.gEs = false;
+    this.gGZ = false;
     AppMethodBeat.o(141001);
   }
   
-  public static b akC()
+  public static b akR()
   {
-    return gEp;
+    return gGW;
   }
   
-  public static void akD()
+  public static void akS()
   {
     AppMethodBeat.i(141005);
-    if (gEt != null)
+    if (gHa != null)
     {
-      a locala = gEt;
+      a locala = gHa;
       try
       {
         boolean bool = locala.init();
@@ -91,9 +91,9 @@ public final class b
       AppMethodBeat.o(141004);
       return false;
     }
-    if (this.gEs)
+    if (this.gGZ)
     {
-      ad.i("KISS.InflateRecycler", "not support application inflate");
+      ae.i("KISS.InflateRecycler", "not support application inflate");
       AppMethodBeat.o(141004);
       return false;
     }
@@ -110,21 +110,21 @@ public final class b
     for (boolean bool = true;; bool = false)
     {
       Assert.assertTrue(bool);
-      if ((c)this.gEo.get(paramString) == null) {
+      if ((c)this.gGV.get(paramString) == null) {
         break;
       }
       AppMethodBeat.o(141004);
       return false;
     }
     c localc = new c();
-    this.gEo.put(paramString, localc);
-    localc.cYf = paramInt1;
-    localc.gEE = paramString;
+    this.gGV.put(paramString, localc);
+    localc.cZd = paramInt1;
+    localc.gHl = paramString;
     localc.UR = paramInt2;
-    localc.gEF = paramVarArgs;
-    localc.gEG = paramViewGroup;
-    localc.gEH = false;
-    this.gEr.sendMessage(this.gEr.obtainMessage(0, localc));
+    localc.gHm = paramVarArgs;
+    localc.gHn = paramViewGroup;
+    localc.gHo = false;
+    this.gGY.sendMessage(this.gGY.obtainMessage(0, localc));
     AppMethodBeat.o(141004);
     return true;
   }
@@ -139,21 +139,21 @@ public final class b
   
   public static final class a
   {
-    private boolean gEA;
-    Class gEv;
-    Field gEw;
-    Class gEx;
-    Field gEy;
-    private boolean gEz;
-    ap mHandler;
+    Class gHc;
+    Field gHd;
+    Class gHe;
+    Field gHf;
+    private boolean gHg;
+    private boolean gHh;
+    aq mHandler;
     
     public a(String paramString)
     {
       AppMethodBeat.i(182560);
-      this.gEy = null;
-      this.gEz = false;
-      this.gEA = false;
-      this.mHandler = new ap(paramString)
+      this.gHf = null;
+      this.gHg = false;
+      this.gHh = false;
+      this.mHandler = new aq(paramString)
       {
         public final void handleMessage(Message paramAnonymousMessage)
         {
@@ -164,7 +164,7 @@ public final class b
             paramAnonymousMessage = b.a.this;
             try
             {
-              localObject = (ThreadLocal)paramAnonymousMessage.gEw.get(null);
+              localObject = (ThreadLocal)paramAnonymousMessage.gHd.get(null);
               if (localObject != null)
               {
                 localObject = ((ThreadLocal)localObject).get();
@@ -177,7 +177,7 @@ public final class b
               {
                 Object localObject;
                 label74:
-                ad.printErrStackTrace("KISS.InflateRecycler", paramAnonymousMessage, "", new Object[0]);
+                ae.printErrStackTrace("KISS.InflateRecycler", paramAnonymousMessage, "", new Object[0]);
               }
             }
           }
@@ -188,17 +188,17 @@ public final class b
           }
           try
           {
-            paramAnonymousMessage = paramAnonymousMessage.gEy.get(localObject);
+            paramAnonymousMessage = paramAnonymousMessage.gHf.get(localObject);
             if ((paramAnonymousMessage != null) && ((paramAnonymousMessage instanceof List))) {
               ((List)paramAnonymousMessage).clear();
             }
           }
           catch (IllegalAccessException paramAnonymousMessage)
           {
-            ad.printErrStackTrace("KISS.InflateRecycler", paramAnonymousMessage, "", new Object[0]);
+            ae.printErrStackTrace("KISS.InflateRecycler", paramAnonymousMessage, "", new Object[0]);
             break label74;
           }
-          ad.i("KISS.InflateRecycler", "durtion %s", new Object[] { Long.valueOf(System.nanoTime() - l) });
+          ae.i("KISS.InflateRecycler", "durtion %s", new Object[] { Long.valueOf(System.nanoTime() - l) });
           AppMethodBeat.o(140998);
         }
       };
@@ -212,10 +212,10 @@ public final class b
       //   0: ldc 54
       //   2: invokestatic 32	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
       //   5: aload_0
-      //   6: getfield 36	com/tencent/mm/kiss/a/b$a:gEz	Z
+      //   6: getfield 36	com/tencent/mm/kiss/a/b$a:gHg	Z
       //   9: ifeq +15 -> 24
       //   12: aload_0
-      //   13: getfield 38	com/tencent/mm/kiss/a/b$a:gEA	Z
+      //   13: getfield 38	com/tencent/mm/kiss/a/b$a:gHh	Z
       //   16: istore_1
       //   17: ldc 54
       //   19: invokestatic 46	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -223,38 +223,38 @@ public final class b
       //   23: ireturn
       //   24: aload_0
       //   25: iconst_1
-      //   26: putfield 36	com/tencent/mm/kiss/a/b$a:gEz	Z
+      //   26: putfield 36	com/tencent/mm/kiss/a/b$a:gHg	Z
       //   29: aload_0
       //   30: ldc 56
       //   32: invokestatic 62	java/lang/Class:forName	(Ljava/lang/String;)Ljava/lang/Class;
-      //   35: putfield 64	com/tencent/mm/kiss/a/b$a:gEv	Ljava/lang/Class;
+      //   35: putfield 64	com/tencent/mm/kiss/a/b$a:gHc	Ljava/lang/Class;
       //   38: aload_0
       //   39: aload_0
-      //   40: getfield 64	com/tencent/mm/kiss/a/b$a:gEv	Ljava/lang/Class;
+      //   40: getfield 64	com/tencent/mm/kiss/a/b$a:gHc	Ljava/lang/Class;
       //   43: ldc 66
       //   45: invokevirtual 70	java/lang/Class:getDeclaredField	(Ljava/lang/String;)Ljava/lang/reflect/Field;
-      //   48: putfield 72	com/tencent/mm/kiss/a/b$a:gEw	Ljava/lang/reflect/Field;
+      //   48: putfield 72	com/tencent/mm/kiss/a/b$a:gHd	Ljava/lang/reflect/Field;
       //   51: aload_0
-      //   52: getfield 72	com/tencent/mm/kiss/a/b$a:gEw	Ljava/lang/reflect/Field;
+      //   52: getfield 72	com/tencent/mm/kiss/a/b$a:gHd	Ljava/lang/reflect/Field;
       //   55: iconst_1
       //   56: invokevirtual 78	java/lang/reflect/Field:setAccessible	(Z)V
       //   59: aload_0
       //   60: ldc 80
       //   62: invokestatic 62	java/lang/Class:forName	(Ljava/lang/String;)Ljava/lang/Class;
-      //   65: putfield 82	com/tencent/mm/kiss/a/b$a:gEx	Ljava/lang/Class;
+      //   65: putfield 82	com/tencent/mm/kiss/a/b$a:gHe	Ljava/lang/Class;
       //   68: aload_0
       //   69: aload_0
-      //   70: getfield 82	com/tencent/mm/kiss/a/b$a:gEx	Ljava/lang/Class;
+      //   70: getfield 82	com/tencent/mm/kiss/a/b$a:gHe	Ljava/lang/Class;
       //   73: ldc 84
       //   75: invokevirtual 70	java/lang/Class:getDeclaredField	(Ljava/lang/String;)Ljava/lang/reflect/Field;
-      //   78: putfield 34	com/tencent/mm/kiss/a/b$a:gEy	Ljava/lang/reflect/Field;
+      //   78: putfield 34	com/tencent/mm/kiss/a/b$a:gHf	Ljava/lang/reflect/Field;
       //   81: aload_0
-      //   82: getfield 34	com/tencent/mm/kiss/a/b$a:gEy	Ljava/lang/reflect/Field;
+      //   82: getfield 34	com/tencent/mm/kiss/a/b$a:gHf	Ljava/lang/reflect/Field;
       //   85: iconst_1
       //   86: invokevirtual 78	java/lang/reflect/Field:setAccessible	(Z)V
       //   89: aload_0
       //   90: iconst_1
-      //   91: putfield 38	com/tencent/mm/kiss/a/b$a:gEA	Z
+      //   91: putfield 38	com/tencent/mm/kiss/a/b$a:gHh	Z
       //   94: ldc 54
       //   96: invokestatic 46	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   99: iconst_1
@@ -265,7 +265,7 @@ public final class b
       //   105: ldc 88
       //   107: iconst_0
       //   108: anewarray 4	java/lang/Object
-      //   111: invokestatic 94	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+      //   111: invokestatic 94	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
       //   114: ldc 54
       //   116: invokestatic 46	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   119: iconst_0
@@ -276,7 +276,7 @@ public final class b
       //   125: ldc 88
       //   127: iconst_0
       //   128: anewarray 4	java/lang/Object
-      //   131: invokestatic 94	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+      //   131: invokestatic 94	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
       //   134: ldc 54
       //   136: invokestatic 46	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   139: iconst_0
@@ -287,7 +287,7 @@ public final class b
       //   145: ldc 88
       //   147: iconst_0
       //   148: anewarray 4	java/lang/Object
-      //   151: invokestatic 94	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+      //   151: invokestatic 94	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
       //   154: ldc 54
       //   156: invokestatic 46	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   159: iconst_0
@@ -298,7 +298,7 @@ public final class b
       //   165: ldc 88
       //   167: iconst_0
       //   168: anewarray 4	java/lang/Object
-      //   171: invokestatic 94	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+      //   171: invokestatic 94	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
       //   174: ldc 54
       //   176: invokestatic 46	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   179: iconst_0

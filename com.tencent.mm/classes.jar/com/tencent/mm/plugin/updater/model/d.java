@@ -3,28 +3,28 @@ package com.tencent.mm.plugin.updater.model;
 import android.content.Context;
 import android.content.SharedPreferences;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ak;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/updater/model/UpdaterConfig;", "", "()V", "UpdaterConfigName", "", "getUpdaterCacheFolder", "getUpdaterSharePreference", "Landroid/content/SharedPreferences;", "plugin-updater_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/updater/model/UpdaterConfig;", "", "()V", "UpdaterConfigName", "", "getUpdaterCacheFolder", "getUpdaterSharePreference", "Landroid/content/SharedPreferences;", "plugin-updater_release"})
 public final class d
 {
-  public static final d BEI;
+  public static final d BWg;
   
   static
   {
-    AppMethodBeat.i(214582);
-    BEI = new d();
-    AppMethodBeat.o(214582);
+    AppMethodBeat.i(197795);
+    BWg = new d();
+    AppMethodBeat.o(197795);
   }
   
-  public static SharedPreferences erO()
+  public static SharedPreferences evv()
   {
-    AppMethodBeat.i(214581);
-    SharedPreferences localSharedPreferences = aj.getContext().getSharedPreferences("UpdaterConfigSharedPreferences", 0);
+    AppMethodBeat.i(197794);
+    SharedPreferences localSharedPreferences = ak.getContext().getSharedPreferences("UpdaterConfigSharedPreferences", 0);
     p.g(localSharedPreferences, "MMApplicationContext.get…me, Context.MODE_PRIVATE)");
-    AppMethodBeat.o(214581);
+    AppMethodBeat.o(197794);
     return localSharedPreferences;
   }
 }

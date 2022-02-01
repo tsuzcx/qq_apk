@@ -7,22 +7,22 @@ import d.g.b.p;
 import d.l;
 import d.n.n;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/handoff/model/HandOffMP;", "Lcom/tencent/mm/plugin/handoff/model/HandOff;", "icon", "", "title", "appID", "appEntryPage", "appUserName", "handOffType", "", "from", "to", "key", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V", "source", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "getAppEntryPage", "()Ljava/lang/String;", "setAppEntryPage", "(Ljava/lang/String;)V", "getAppID", "setAppID", "getAppUserName", "setAppUserName", "getIcon", "setIcon", "getTitle", "setTitle", "body", "copy", "describeContents", "getDataType", "toString", "update", "", "newHandOff", "writeToParcel", "dest", "flags", "Companion", "api-handoff_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/handoff/model/HandOffMP;", "Lcom/tencent/mm/plugin/handoff/model/HandOff;", "icon", "", "title", "appID", "appEntryPage", "appUserName", "handOffType", "", "from", "to", "key", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V", "source", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "getAppEntryPage", "()Ljava/lang/String;", "setAppEntryPage", "(Ljava/lang/String;)V", "getAppID", "setAppID", "getAppUserName", "setAppUserName", "getIcon", "setIcon", "getTitle", "setTitle", "body", "copy", "describeContents", "getDataType", "toString", "update", "", "newHandOff", "writeToParcel", "dest", "flags", "Companion", "api-handoff_release"})
 public class HandOffMP
   extends HandOff
 {
   public static final Parcelable.Creator<HandOffMP> CREATOR;
-  public static final a uDU;
-  String dDH;
-  String dtE;
-  String kuy;
+  public static final a uPz;
+  String dEM;
+  String duJ;
+  String kxO;
   String title;
-  public String uDT;
+  String uPy;
   
   static
   {
     AppMethodBeat.i(121729);
-    uDU = new a((byte)0);
+    uPz = new a((byte)0);
     CREATOR = (Parcelable.Creator)new b();
     AppMethodBeat.o(121729);
   }
@@ -33,29 +33,29 @@ public class HandOffMP
     AppMethodBeat.i(121728);
     String str = paramParcel.readString();
     if (str == null) {
-      p.gfZ();
+      p.gkB();
     }
-    this.dDH = str;
+    this.dEM = str;
     str = paramParcel.readString();
     if (str == null) {
-      p.gfZ();
+      p.gkB();
     }
     this.title = str;
     str = paramParcel.readString();
     if (str == null) {
-      p.gfZ();
+      p.gkB();
     }
-    this.kuy = str;
+    this.kxO = str;
     str = paramParcel.readString();
     if (str == null) {
-      p.gfZ();
+      p.gkB();
     }
-    this.uDT = str;
+    this.uPy = str;
     paramParcel = paramParcel.readString();
     if (paramParcel == null) {
-      p.gfZ();
+      p.gkB();
     }
-    this.dtE = paramParcel;
+    this.duJ = paramParcel;
     AppMethodBeat.o(121728);
   }
   
@@ -63,26 +63,34 @@ public class HandOffMP
   {
     super(paramInt, paramString6, paramString7, paramString8);
     AppMethodBeat.i(121726);
-    this.dDH = paramString1;
+    this.dEM = paramString1;
     this.title = paramString2;
-    this.kuy = paramString3;
-    this.uDT = paramString4;
-    this.dtE = paramString5;
+    this.kxO = paramString3;
+    this.uPy = paramString4;
+    this.duJ = paramString5;
     AppMethodBeat.o(121726);
   }
   
-  protected final String dbM()
+  public final void aoi(String paramString)
+  {
+    AppMethodBeat.i(208175);
+    p.h(paramString, "<set-?>");
+    this.uPy = paramString;
+    AppMethodBeat.o(208175);
+  }
+  
+  protected final String deD()
   {
     AppMethodBeat.i(121722);
-    String str = n.bdc("\n        <icon>" + a.dl(this.dDH) + "</icon>\n        <title>" + a.dl(this.title) + "</title>\n        <appid>" + a.dl(this.kuy) + "</appid>\n        <appentrypage>" + a.dl(this.uDT) + "</appentrypage>\n        <appusername>" + a.dl(this.dtE) + "</appusername>\n    ");
+    String str = n.beG("\n        <icon>" + a.dm(this.dEM) + "</icon>\n        <title>" + a.dm(this.title) + "</title>\n        <appid>" + a.dm(this.kxO) + "</appid>\n        <appentrypage>" + a.dm(this.uPy) + "</appentrypage>\n        <appusername>" + a.dm(this.duJ) + "</appusername>\n    ");
     AppMethodBeat.o(121722);
     return str;
   }
   
-  public HandOff dbN()
+  public HandOff deE()
   {
     AppMethodBeat.i(121724);
-    Object localObject = new HandOffMP(this.dDH, this.title, this.kuy, this.uDT, this.dtE, this.uDJ, this.dET, this.hEw, this.key);
+    Object localObject = new HandOffMP(this.dEM, this.title, this.kxO, this.uPy, this.duJ, this.uPo, this.dFY, this.hHo, this.key);
     ((HandOffMP)localObject).setId(this.id);
     localObject = (HandOff)localObject;
     AppMethodBeat.o(121724);
@@ -99,18 +107,18 @@ public class HandOffMP
     return 3;
   }
   
-  public final void j(HandOff paramHandOff)
+  public final void k(HandOff paramHandOff)
   {
     AppMethodBeat.i(121721);
     p.h(paramHandOff, "newHandOff");
-    super.j(paramHandOff);
+    super.k(paramHandOff);
     if ((paramHandOff instanceof HandOffMP))
     {
-      this.dDH = ((HandOffMP)paramHandOff).dDH;
+      this.dEM = ((HandOffMP)paramHandOff).dEM;
       this.title = ((HandOffMP)paramHandOff).title;
-      this.kuy = ((HandOffMP)paramHandOff).kuy;
-      this.uDT = ((HandOffMP)paramHandOff).uDT;
-      this.dtE = ((HandOffMP)paramHandOff).dtE;
+      this.kxO = ((HandOffMP)paramHandOff).kxO;
+      this.uPy = ((HandOffMP)paramHandOff).uPy;
+      this.duJ = ((HandOffMP)paramHandOff).duJ;
     }
     AppMethodBeat.o(121721);
   }
@@ -118,7 +126,7 @@ public class HandOffMP
   public String toString()
   {
     AppMethodBeat.i(121725);
-    String str = "HandOffMP(key='" + this.key + "', id='" + this.id + "', createTime='" + this.createTime + ", icon='" + this.dDH + "', title='" + this.title + "', appID='" + this.kuy + "', appEntryPage='" + this.uDT + "', appUserName='" + this.dtE + "')";
+    String str = "HandOffMP(key='" + this.key + "', id='" + this.id + "', createTime='" + this.createTime + ", icon='" + this.dEM + "', title='" + this.title + "', appID='" + this.kxO + "', appEntryPage='" + this.uPy + "', appUserName='" + this.duJ + "')";
     AppMethodBeat.o(121725);
     return str;
   }
@@ -128,18 +136,18 @@ public class HandOffMP
     AppMethodBeat.i(121723);
     p.h(paramParcel, "dest");
     super.writeToParcel(paramParcel, paramInt);
-    paramParcel.writeString(this.dDH);
+    paramParcel.writeString(this.dEM);
     paramParcel.writeString(this.title);
-    paramParcel.writeString(this.kuy);
-    paramParcel.writeString(this.uDT);
-    paramParcel.writeString(this.dtE);
+    paramParcel.writeString(this.kxO);
+    paramParcel.writeString(this.uPy);
+    paramParcel.writeString(this.duJ);
     AppMethodBeat.o(121723);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/handoff/model/HandOffMP$Companion;", "", "()V", "CREATOR", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/handoff/model/HandOffMP;", "api-handoff_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/handoff/model/HandOffMP$Companion;", "", "()V", "CREATOR", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/handoff/model/HandOffMP;", "api-handoff_release"})
   public static final class a {}
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/handoff/model/HandOffMP$Companion$CREATOR$1", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/handoff/model/HandOffMP;", "createFromParcel", "source", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/mm/plugin/handoff/model/HandOffMP;", "api-handoff_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/handoff/model/HandOffMP$Companion$CREATOR$1", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/handoff/model/HandOffMP;", "createFromParcel", "source", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/mm/plugin/handoff/model/HandOffMP;", "api-handoff_release"})
   public static final class b
     implements Parcelable.Creator<HandOffMP>
   {}

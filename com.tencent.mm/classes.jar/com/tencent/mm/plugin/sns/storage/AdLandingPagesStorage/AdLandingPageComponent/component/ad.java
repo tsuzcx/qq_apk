@@ -1,323 +1,260 @@
 package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component;
 
-import android.app.Activity;
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnLongClickListener;
 import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.view.ViewGroup.MarginLayoutParams;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.data.g;
-import com.tencent.mm.plugin.sns.model.AdLandingPagesProxy;
-import com.tencent.mm.plugin.sns.model.AdLandingPagesProxy.e;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.a.d.a;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.z;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.s;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.f.a;
-import com.tencent.mm.protocal.protobuf.bgx;
-import com.tencent.mm.sdk.platformtools.aq;
-import java.lang.ref.WeakReference;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.vfs.o;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public final class ad
-  extends p
+  extends m
 {
-  com.tencent.mm.ui.base.p mCf = null;
-  private g zDx;
-  private z zGq;
-  String zGr = "";
-  String zGs = "";
-  String zGt = "";
-  volatile int zGu = -10;
+  private ImageView dtJ;
+  ProgressBar progressBar;
+  boolean zQJ;
+  com.tencent.mm.plugin.sns.data.h zUA;
+  boolean zUs = true;
+  String ztE;
   
-  public ad(Context paramContext, z paramz, ViewGroup paramViewGroup)
+  public ad(Context paramContext, s params, ViewGroup paramViewGroup)
   {
-    super(paramContext, paramz, paramViewGroup);
-    this.zGq = paramz;
+    super(paramContext, params, paramViewGroup);
   }
   
-  private void dXl()
+  public final boolean aQ(JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(197996);
-    Bundle localBundle;
-    if (this.zDx == null)
+    AppMethodBeat.i(96698);
+    if (!super.aQ(paramJSONObject))
     {
-      localBundle = new Bundle();
-      localObject = this.zGq;
-      if (localObject == null) {
-        break label68;
-      }
-    }
-    label68:
-    for (Object localObject = ((z)localObject).zzN;; localObject = "")
-    {
-      localBundle.putString("qrExtInfo", (String)localObject);
-      this.zDx = new g(this.context, dWZ(), 3, localBundle);
-      AppMethodBeat.o(197996);
-      return;
-    }
-  }
-  
-  public final void dRk()
-  {
-    AppMethodBeat.i(197993);
-    super.dRk();
-    dXl();
-    AppMethodBeat.o(197993);
-  }
-  
-  protected final void dRl()
-  {
-    AppMethodBeat.i(197994);
-    super.dRl();
-    String str;
-    if (this.zGq != null)
-    {
-      str = this.zGq.zAs;
-      com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.Sns.AdLandingPageQRCodeBtnComp", "the qr code img url: ".concat(String.valueOf(str)));
-      if (this.zGq.zAt != 1) {}
+      AppMethodBeat.o(96698);
+      return false;
     }
     try
     {
-      AdLandingPagesProxy.getInstance().doAdUpdateQrUrlScene("", this.zGq.zzN, "", new b(this));
-      this.zGu = 0;
-      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.Sns.AdLandingPageQRCodeBtnComp", "mNewQRStatus = " + this.zGu);
-      com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.h.a(str, dXf().zAh, new a(this, false));
-      AppMethodBeat.o(197994);
+      if (!this.zUs)
+      {
+        String str = aj.ej(((s)this.zUP).zQK);
+        JSONObject localJSONObject = new JSONObject();
+        localJSONObject.put("urlMd5", str);
+        localJSONObject.put("needDownload", 1);
+        paramJSONObject.put("imgUrlInfo", localJSONObject);
+      }
+      AppMethodBeat.o(96698);
+      return true;
+    }
+    catch (JSONException paramJSONObject)
+    {
+      ae.printErrStackTrace("AdLandingPagePureImageComponet", paramJSONObject, "", new Object[0]);
+      AppMethodBeat.o(96698);
+    }
+    return false;
+  }
+  
+  public final boolean an(Bitmap paramBitmap)
+  {
+    AppMethodBeat.i(96697);
+    if (paramBitmap == null)
+    {
+      ae.e("AdLandingPagePureImageComponet", "when set image the bmp is null!");
+      AppMethodBeat.o(96697);
+      return false;
+    }
+    if (this.dtJ == null)
+    {
+      ae.e("AdLandingPagePureImageComponet", "when set image the imageView is null!");
+      AppMethodBeat.o(96697);
+      return false;
+    }
+    if (paramBitmap.getWidth() == 0)
+    {
+      ae.e("AdLandingPagePureImageComponet", "when set image the bmp.getWidth is 0!");
+      AppMethodBeat.o(96697);
+      return false;
+    }
+    this.dtJ.setImageBitmap(paramBitmap);
+    this.progressBar.setVisibility(8);
+    AppMethodBeat.o(96697);
+    return true;
+  }
+  
+  public final void dUI()
+  {
+    AppMethodBeat.i(96693);
+    this.dtJ = ((ImageView)this.contentView.findViewById(2131304915));
+    this.progressBar = ((ProgressBar)this.contentView.findViewById(2131303535));
+    if (((s)this.zUP).zQL)
+    {
+      Bundle localBundle = new Bundle();
+      localBundle.putString("qrExtInfo", ((s)this.zUP).zQM);
+      this.zUA = new com.tencent.mm.plugin.sns.data.h(this.context, eaD(), 1, localBundle);
+      this.dtJ.setOnLongClickListener(new View.OnLongClickListener()
+      {
+        public final boolean onLongClick(View paramAnonymousView)
+        {
+          AppMethodBeat.i(176279);
+          b localb = new b();
+          localb.bd(paramAnonymousView);
+          a.b("com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/AdLandingPagePureImageComponet$2", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.ahF());
+          ae.i("AdLandingPagePureImageComponet", "onLongClick, filePath=" + ad.this.ztE);
+          boolean bool = ad.this.zUA.jl(ad.this.ztE, ad.a(ad.this).zQK);
+          a.a(bool, this, "com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/AdLandingPagePureImageComponet$2", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
+          AppMethodBeat.o(176279);
+          return bool;
+        }
+      });
+    }
+    AppMethodBeat.o(96693);
+  }
+  
+  protected final void dUJ()
+  {
+    AppMethodBeat.i(96695);
+    if ((this.contentView == null) || (this.dtJ == null) || (this.progressBar == null))
+    {
+      AppMethodBeat.o(96695);
       return;
     }
-    catch (Throwable localThrowable)
+    if ((s)this.zUP == null)
     {
-      for (;;)
-      {
-        com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.Sns.AdLandingPageQRCodeBtnComp", localThrowable.toString());
-      }
+      AppMethodBeat.o(96695);
+      return;
     }
-  }
-  
-  protected final void dWN()
-  {
-    AppMethodBeat.i(197995);
-    dXl();
-    try
+    String str = ((s)this.zUP).zQK;
+    Object localObject = ((s)this.zUP).zOW;
+    float f2 = ((s)this.zUP).height;
+    float f1 = ((s)this.zUP).width;
+    this.zQJ = ((s)this.zUP).zQJ;
+    int i;
+    if ((f2 != 0.0F) && (f1 != 0.0F) && (!this.zQJ))
     {
-      if (this.zGq.zAt == 1)
-      {
-        if ((this.mCf == null) && ((this.context instanceof Activity)) && (!((Activity)this.context).isFinishing())) {
-          this.mCf = com.tencent.mm.ui.base.h.b(this.context, "加载中", true, null);
-        }
-        if ((this.zGu == 3) && (!TextUtils.isEmpty(this.zGt)))
-        {
-          if (this.mCf != null)
-          {
-            this.mCf.dismiss();
-            this.mCf = null;
-          }
-          this.zEb.jB("qrUrl", this.zGs);
-          this.zDx.je(this.zGt, this.zGs);
-          AppMethodBeat.o(197995);
-          return;
-        }
-        if ((this.zGu == 0) || (this.zGu == 1) || (this.zGu == 2))
-        {
-          if (this.mCf != null) {
-            this.mCf.show();
-          }
-          AppMethodBeat.o(197995);
-          return;
-        }
-      }
-      if (this.mCf != null)
-      {
-        this.mCf.dismiss();
-        this.mCf = null;
-      }
+      i = this.lxZ - (int)((s)this.zUP).paddingLeft - (int)((s)this.zUP).paddingRight;
+      if (f1 >= i) {}
     }
-    catch (Throwable localThrowable1)
+    for (;;)
     {
-      for (;;)
-      {
-        try
-        {
-          this.zEb.jB("qrUrl", this.zGq.zAs);
-          this.zDx.je(this.zGr, this.zGq.zAs);
-          AppMethodBeat.o(197995);
-          return;
-        }
-        catch (Throwable localThrowable2)
-        {
-          com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.Sns.AdLandingPageQRCodeBtnComp", "the ad qr helper has something wrong. exception: ".concat(String.valueOf(localThrowable2)));
-        }
-        localThrowable1 = localThrowable1;
-        com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.Sns.AdLandingPageQRCodeBtnComp", localThrowable1.toString());
-      }
-      AppMethodBeat.o(197995);
-    }
-    if (!TextUtils.isEmpty(this.zGr)) {}
-  }
-  
-  public static final class a
-    implements f.a
-  {
-    WeakReference<ad> zGv;
-    private boolean zGw;
-    
-    a(ad paramad, boolean paramBoolean)
-    {
-      AppMethodBeat.i(197986);
-      this.zGw = false;
-      this.zGv = new WeakReference(paramad);
-      this.zGw = paramBoolean;
-      AppMethodBeat.o(197986);
-    }
-    
-    public final void axG(String paramString)
-    {
-      AppMethodBeat.i(197989);
-      com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.Sns.AdLandingPageQRCodeBtnComp", "download qr image completed");
-      ad localad = (ad)this.zGv.get();
-      if (localad != null)
-      {
-        if (this.zGw)
-        {
-          localad.zGt = paramString;
-          localad.zGu = 3;
-          com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.Sns.AdLandingPageQRCodeBtnComp", "mNewQRStatus = 3");
-          AppMethodBeat.o(197989);
-          return;
-        }
-        localad.zGr = paramString;
-        AppMethodBeat.o(197989);
-        return;
-      }
-      com.tencent.mm.sdk.platformtools.ad.w("MicroMsg.Sns.AdLandingPageQRCodeBtnComp", "qrCodeBtnComp is null in weak ref");
-      AppMethodBeat.o(197989);
-    }
-    
-    public final void dRW()
-    {
-      AppMethodBeat.i(197987);
-      ad localad = (ad)this.zGv.get();
-      if ((localad != null) && (this.zGw))
-      {
-        localad.zGu = 2;
-        com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.Sns.AdLandingPageQRCodeBtnComp", "mNewQRStatus = 2");
-      }
-      AppMethodBeat.o(197987);
-    }
-    
-    public final void dRX()
-    {
-      AppMethodBeat.i(197988);
-      com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.Sns.AdLandingPageQRCodeBtnComp", "there is something error happening when downloading qr image.");
-      final ad localad = (ad)this.zGv.get();
-      if ((localad != null) && (this.zGw))
-      {
-        aq.f(new Runnable()
-        {
-          public final void run()
-          {
-            AppMethodBeat.i(197985);
-            try
-            {
-              if (localad.mCf != null)
-              {
-                localad.mCf.dismiss();
-                localad.mCf = null;
-              }
-              AppMethodBeat.o(197985);
-              return;
-            }
-            catch (Throwable localThrowable)
-            {
-              com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.Sns.AdLandingPageQRCodeBtnComp", localThrowable.toString());
-              AppMethodBeat.o(197985);
-            }
-          }
-        });
-        localad.zGu = -2;
-        com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.Sns.AdLandingPageQRCodeBtnComp", "mNewQRStatus = -2");
-      }
-      AppMethodBeat.o(197988);
-    }
-  }
-  
-  public static final class b
-    implements AdLandingPagesProxy.e
-  {
-    private WeakReference<ad> zGv;
-    
-    b(ad paramad)
-    {
-      AppMethodBeat.i(197991);
-      this.zGv = new WeakReference(paramad);
-      AppMethodBeat.o(197991);
-    }
-    
-    public final void be(Object paramObject) {}
-    
-    public final void h(int paramInt1, int paramInt2, final Object paramObject)
-    {
-      AppMethodBeat.i(197992);
-      if ((paramInt1 == 0) && (paramInt2 == 0)) {}
+      f2 = f1 * ((s)this.zUP).height / ((s)this.zUP).width;
+      this.dtJ.setLayoutParams(new RelativeLayout.LayoutParams((int)f1, (int)f2));
+      label205:
+      if ((localObject != null) && (((String)localObject).length() > 0)) {}
       try
       {
-        if ((paramObject instanceof byte[]))
+        this.dtJ.setBackgroundColor(Color.parseColor((String)localObject));
+        label230:
+        if ((str == null) || (str.length() <= 0))
         {
-          bgx localbgx = new bgx();
-          localbgx.parseFrom((byte[])paramObject);
-          if (this.zGv != null)
+          ae.i("AdLandingPagePureImageComponet", "Pure image component fillItem without imageurl.");
+          AppMethodBeat.o(96695);
+          return;
+          f1 = i;
+          continue;
+          if ((this.zQJ) && (f2 != 0.0F) && (f1 != 0.0F))
           {
-            paramObject = (ad)this.zGv.get();
-            if (paramObject != null)
-            {
-              com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.Sns.AdLandingPageQRCodeBtnComp", "request new qr image imgUrl completed");
-              paramObject.zGs = localbgx.url;
-              paramObject.zGu = 1;
-              com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.Sns.AdLandingPageQRCodeBtnComp", "mNewQRStatus = 1");
-              com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.h.a(paramObject.zGs, paramObject.dXf().zAh, new ad.a(paramObject, true));
-            }
+            this.dtJ.setLayoutParams(new RelativeLayout.LayoutParams(this.lxZ, this.lya));
+            break label205;
           }
-          AppMethodBeat.o(197992);
+          this.dtJ.setLayoutParams(new RelativeLayout.LayoutParams(this.lxZ, this.lya));
+          break label205;
+        }
+        localObject = com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.h.jP("adId", str);
+        if ((localObject != null) && (an((Bitmap)localObject)))
+        {
+          ae.i("AdLandingPagePureImageComponet", "loaded cached image with  ".concat(String.valueOf(str)));
+          str = com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.h.jL("adId", str);
+          if ((!TextUtils.isEmpty(str)) && (o.fB(str))) {
+            this.ztE = str;
+          }
+          this.zUs = true;
+          AppMethodBeat.o(96695);
           return;
         }
-        if (this.zGv != null)
+        this.zUs = false;
+        startLoading();
+        com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.h.a(str, ((s)this.zUP).zRh, new f.a()
         {
-          paramObject = (ad)this.zGv.get();
-          if (paramObject != null)
+          public final void ayY(String paramAnonymousString)
           {
-            paramObject.zGu = -1;
-            aq.f(new Runnable()
+            AppMethodBeat.i(96685);
+            try
             {
-              public final void run()
-              {
-                AppMethodBeat.i(197990);
-                try
-                {
-                  if (paramObject.mCf != null)
-                  {
-                    paramObject.mCf.dismiss();
-                    paramObject.mCf = null;
-                  }
-                  AppMethodBeat.o(197990);
-                  return;
-                }
-                catch (Throwable localThrowable)
-                {
-                  com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.Sns.AdLandingPageQRCodeBtnComp", localThrowable.toString());
-                  AppMethodBeat.o(197990);
-                }
-              }
-            });
-            com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.Sns.AdLandingPageQRCodeBtnComp", "mNewQRStatus = -1");
+              Bitmap localBitmap = com.tencent.mm.sdk.platformtools.h.decodeFile(paramAnonymousString);
+              ad.this.an(localBitmap);
+              ad.this.ztE = paramAnonymousString;
+              AppMethodBeat.o(96685);
+              return;
+            }
+            catch (Exception paramAnonymousString)
+            {
+              ae.e("AdLandingPagePureImageComponet", "%s" + bu.o(paramAnonymousString));
+              AppMethodBeat.o(96685);
+            }
           }
-        }
-        AppMethodBeat.o(197992);
+          
+          public final void dVu()
+          {
+            AppMethodBeat.i(96683);
+            ad.this.startLoading();
+            AppMethodBeat.o(96683);
+          }
+          
+          public final void dVv()
+          {
+            AppMethodBeat.i(96684);
+            ad.this.progressBar.setVisibility(8);
+            AppMethodBeat.o(96684);
+          }
+        });
+        AppMethodBeat.o(96695);
         return;
       }
-      catch (Throwable paramObject)
+      catch (Exception localException)
       {
-        com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.Sns.AdLandingPageQRCodeBtnComp", paramObject.toString());
-        AppMethodBeat.o(197992);
+        break label230;
       }
     }
+  }
+  
+  protected final void eah()
+  {
+    AppMethodBeat.i(96694);
+    Object localObject = this.contentView.getLayoutParams();
+    if ((localObject instanceof ViewGroup.MarginLayoutParams))
+    {
+      localObject = (ViewGroup.MarginLayoutParams)localObject;
+      ((ViewGroup.MarginLayoutParams)localObject).setMargins((int)((s)this.zUP).paddingLeft, (int)((s)this.zUP).paddingTop, (int)((s)this.zUP).paddingRight, (int)((s)this.zUP).paddingBottom);
+      this.contentView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    }
+    AppMethodBeat.o(96694);
+  }
+  
+  protected final int getLayout()
+  {
+    return 2131495507;
+  }
+  
+  public final void startLoading()
+  {
+    AppMethodBeat.i(96696);
+    this.progressBar.setVisibility(0);
+    AppMethodBeat.o(96696);
   }
 }
 

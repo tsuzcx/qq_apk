@@ -12,59 +12,58 @@ import org.xwalk.core.XWalkUpdater.XWalkBackgroundUpdateListener;
 public final class e
   implements XWalkInitializer.XWalkInitListener, XWalkUpdater.XWalkBackgroundUpdateListener
 {
-  public static boolean Mzd = true;
-  private static boolean Mze = false;
-  private static e Mzf;
-  XWalkInitializer Mxx;
-  XWalkUpdater Mxy;
+  public static boolean MWi = true;
+  private static boolean MWj = false;
+  private static e MWk;
+  XWalkInitializer MUB;
+  XWalkUpdater MUC;
   Context mContext;
   
   private e(Context paramContext)
   {
     AppMethodBeat.i(154564);
     this.mContext = paramContext;
-    this.Mxx = new XWalkInitializer(this, paramContext);
-    this.Mxy = new XWalkUpdater(this, paramContext);
+    this.MUB = new XWalkInitializer(this, paramContext);
+    this.MUC = new XWalkUpdater(this, paramContext);
     AppMethodBeat.o(154564);
   }
   
   public static boolean isXWalkReady()
   {
     AppMethodBeat.i(154569);
-    if ((!Mze) || (Mzf == null))
+    if ((!MWj) || (MWk == null))
     {
       AppMethodBeat.o(154569);
       return false;
     }
-    boolean bool = Mzf.Mxx.isXWalkReady();
+    boolean bool = MWk.MUB.isXWalkReady();
     AppMethodBeat.o(154569);
     return bool;
   }
   
-  public static boolean lF(Context paramContext)
+  public static boolean lL(Context paramContext)
   {
     AppMethodBeat.i(154570);
-    if (Mze)
+    if (MWj)
     {
-      boolean bool = Mze;
+      boolean bool = MWj;
       AppMethodBeat.o(154570);
       return bool;
     }
-    Mze = true;
-    Mzf = new e(paramContext);
+    MWj = true;
+    MWk = new e(paramContext);
     XWalkEnvironment.init(paramContext);
     if (XWalkEnvironment.isDownloadMode())
     {
-      paramContext = Mzf;
-      if (!Mzd)
+      paramContext = MWk;
+      if (!MWi)
       {
         HashMap localHashMap = new HashMap();
         localHashMap.put("UpdaterCheckType", "0");
-        new f(paramContext.Mxy, localHashMap).execute(new String[0]);
+        new f(paramContext.MUC, localHashMap).execute(new String[0]);
       }
-      if (paramContext.Mxx.tryInitSync())
+      if (paramContext.MUB.tryInitSync())
       {
-        XWalkInitializer.addXWalkInitializeLog("initSync Sucsess");
         AppMethodBeat.o(154570);
         return true;
       }
@@ -86,22 +85,22 @@ public final class e
   public final void onXWalkUpdateCancelled()
   {
     AppMethodBeat.i(154566);
-    f.gdR();
+    f.git();
     AppMethodBeat.o(154566);
   }
   
-  public final void onXWalkUpdateCompleted()
+  public final void onXWalkUpdateCompleted(Scheduler paramScheduler)
   {
-    AppMethodBeat.i(154568);
-    f.gdS();
-    AppMethodBeat.o(154568);
+    AppMethodBeat.i(207624);
+    f.a(paramScheduler);
+    AppMethodBeat.o(207624);
   }
   
-  public final void onXWalkUpdateFailed(int paramInt)
+  public final void onXWalkUpdateFailed(int paramInt, Scheduler paramScheduler)
   {
-    AppMethodBeat.i(154567);
-    f.aiR(paramInt);
-    AppMethodBeat.o(154567);
+    AppMethodBeat.i(207623);
+    f.a(paramInt, paramScheduler);
+    AppMethodBeat.o(207623);
   }
   
   public final void onXWalkUpdateProgress(int paramInt) {}
@@ -109,7 +108,7 @@ public final class e
   public final void onXWalkUpdateStarted()
   {
     AppMethodBeat.i(154565);
-    f.gdQ();
+    f.gis();
     AppMethodBeat.o(154565);
   }
 }

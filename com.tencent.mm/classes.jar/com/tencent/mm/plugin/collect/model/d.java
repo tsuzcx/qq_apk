@@ -6,26 +6,26 @@ import java.util.List;
 
 public enum d
 {
-  public List<d.a> owv;
+  public List<d.a> oCX;
   
   static
   {
     AppMethodBeat.i(63779);
-    oZR = new d("INSTANCE");
-    oZS = new d[] { oZR };
+    pgv = new d("INSTANCE");
+    pgw = new d[] { pgv };
     AppMethodBeat.o(63779);
   }
   
   private d()
   {
     AppMethodBeat.i(63778);
-    this.owv = new LinkedList();
+    this.oCX = new LinkedList();
     AppMethodBeat.o(63778);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.collect.model.d
  * JD-Core Version:    0.7.0.1
  */

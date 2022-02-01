@@ -3,12 +3,12 @@ package com.tencent.mm.plugin.brandservice.ui;
 import android.content.Context;
 import android.util.SparseArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.crx;
-import com.tencent.mm.protocal.protobuf.cwt;
-import com.tencent.mm.protocal.protobuf.cys;
-import com.tencent.mm.protocal.protobuf.qr;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.csr;
+import com.tencent.mm.protocal.protobuf.cxn;
+import com.tencent.mm.protocal.protobuf.czm;
+import com.tencent.mm.protocal.protobuf.qt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -16,29 +16,29 @@ import java.util.List;
 public final class g
   extends c
 {
-  List<crx> nZp;
-  private SparseArray<com.tencent.mm.plugin.brandservice.ui.base.a> nZq;
-  private int nZr;
+  List<csr> oeY;
+  private SparseArray<com.tencent.mm.plugin.brandservice.ui.base.a> oeZ;
+  private int ofa;
   
   public g(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(5770);
-    this.nZp = null;
-    this.nZq = new SparseArray();
+    this.oeY = null;
+    this.oeZ = new SparseArray();
     setReporter(new c.b()
     {
       public final void a(c paramAnonymousc, com.tencent.mm.ui.base.sortview.a paramAnonymousa, int paramAnonymousInt1, String paramAnonymousString, int paramAnonymousInt2, int paramAnonymousInt3)
       {
         AppMethodBeat.i(5769);
-        qr localqr = g.this.zj(paramAnonymousInt3);
-        paramAnonymousa = new StringBuilder().append(bt.nullAsNil(g.this.nXu)).append(",").append(paramAnonymousInt1).append(",").append(bt.nullAsNil(paramAnonymousString)).append(",").append(paramAnonymousInt2).append(",").append(paramAnonymousc.nXC).append(",");
-        if (localqr == null) {}
-        for (paramAnonymousc = "";; paramAnonymousc = localqr.FMt + ",0")
+        qt localqt = g.this.zs(paramAnonymousInt3);
+        paramAnonymousa = new StringBuilder().append(bu.nullAsNil(g.this.odd)).append(",").append(paramAnonymousInt1).append(",").append(bu.nullAsNil(paramAnonymousString)).append(",").append(paramAnonymousInt2).append(",").append(paramAnonymousc.odl).append(",");
+        if (localqt == null) {}
+        for (paramAnonymousc = "";; paramAnonymousc = localqt.GeS + ",0")
         {
           paramAnonymousc = paramAnonymousc;
-          com.tencent.mm.plugin.report.service.g.yhR.kvStat(10866, paramAnonymousc);
-          ad.d("MicroMsg.SearchOrRecommendBizAdapter", "report : ".concat(String.valueOf(paramAnonymousc)));
+          com.tencent.mm.plugin.report.service.g.yxI.kvStat(10866, paramAnonymousc);
+          ae.d("MicroMsg.SearchOrRecommendBizAdapter", "report : ".concat(String.valueOf(paramAnonymousc)));
           AppMethodBeat.o(5769);
           return;
         }
@@ -47,20 +47,20 @@ public final class g
     AppMethodBeat.o(5770);
   }
   
-  public final void a(qr paramqr, boolean paramBoolean)
+  public final void a(qt paramqt, boolean paramBoolean)
   {
     AppMethodBeat.i(5772);
-    super.a(paramqr, paramBoolean);
-    if (this.nZr == 0) {
-      this.nZr = super.getCount();
+    super.a(paramqt, paramBoolean);
+    if (this.ofa == 0) {
+      this.ofa = super.getCount();
     }
     AppMethodBeat.o(5772);
   }
   
-  public final void bNS()
+  public final void bOP()
   {
     AppMethodBeat.i(5774);
-    super.bNS();
+    super.bOP();
     AppMethodBeat.o(5774);
   }
   
@@ -72,16 +72,16 @@ public final class g
     if (i == 0)
     {
       j = i;
-      if (this.nZp != null)
+      if (this.oeY != null)
       {
-        Iterator localIterator = this.nZp.iterator();
+        Iterator localIterator = this.oeY.iterator();
         if (localIterator.hasNext())
         {
-          crx localcrx = (crx)localIterator.next();
-          if ((localcrx == null) || (localcrx.Hkt == null)) {
+          csr localcsr = (csr)localIterator.next();
+          if ((localcsr == null) || (localcsr.HDT == null)) {
             break label93;
           }
-          i += localcrx.Hkt.size();
+          i += localcsr.HDT.size();
         }
       }
     }
@@ -95,23 +95,23 @@ public final class g
     }
   }
   
-  public final void l(String paramString, List<qr> paramList)
+  public final void l(String paramString, List<qt> paramList)
   {
     AppMethodBeat.i(5771);
     super.l(paramString, paramList);
-    this.nZr = super.getCount();
+    this.ofa = super.getCount();
     AppMethodBeat.o(5771);
   }
   
-  public final Object[] zl(int paramInt)
+  public final Object[] zu(int paramInt)
   {
     AppMethodBeat.i(5776);
-    Object localObject2 = zi(paramInt);
-    Object localObject1 = zj(paramInt);
+    Object localObject2 = zr(paramInt);
+    Object localObject1 = zs(paramInt);
     if (localObject2 != null)
     {
-      localObject2 = ((c.a)localObject2).nXF;
-      if (paramInt < this.nZr)
+      localObject2 = ((c.a)localObject2).odo;
+      if (paramInt < this.ofa)
       {
         paramInt = 39;
         if (localObject1 == null) {
@@ -119,7 +119,7 @@ public final class g
         }
       }
       label83:
-      for (localObject1 = ((qr)localObject1).FMt;; localObject1 = "")
+      for (localObject1 = ((qt)localObject1).GeS;; localObject1 = "")
       {
         AppMethodBeat.o(5776);
         return new Object[] { this, localObject2, Integer.valueOf(paramInt), localObject1 };
@@ -127,66 +127,66 @@ public final class g
         break;
       }
     }
-    localObject1 = super.zl(paramInt);
+    localObject1 = super.zu(paramInt);
     AppMethodBeat.o(5776);
     return localObject1;
   }
   
-  public final com.tencent.mm.ui.base.sortview.a zo(int paramInt)
+  public final com.tencent.mm.ui.base.sortview.a zx(int paramInt)
   {
     AppMethodBeat.i(5775);
     int i = super.getCount();
     if (i != 0)
     {
-      localObject1 = super.zo(paramInt);
+      localObject1 = super.zx(paramInt);
       AppMethodBeat.o(5775);
       return localObject1;
     }
-    Object localObject2 = (com.tencent.mm.plugin.brandservice.ui.base.a)this.nZq.get(paramInt);
+    Object localObject2 = (com.tencent.mm.plugin.brandservice.ui.base.a)this.oeZ.get(paramInt);
     Object localObject1 = localObject2;
     if (localObject2 == null)
     {
       localObject1 = localObject2;
-      if (this.nZp.size() > 0)
+      if (this.oeY.size() > 0)
       {
-        localObject1 = this.nZp.iterator();
+        localObject1 = this.oeY.iterator();
         if (!((Iterator)localObject1).hasNext()) {
           break label229;
         }
-        localObject2 = (crx)((Iterator)localObject1).next();
+        localObject2 = (csr)((Iterator)localObject1).next();
         if (i != paramInt) {
           break label180;
         }
-        if (((crx)localObject2).Hkr != null) {
+        if (((csr)localObject2).HDR != null) {
           break label168;
         }
         localObject1 = null;
         label110:
-        cys localcys = (cys)((crx)localObject2).Hkt.get(0);
+        czm localczm = (czm)((csr)localObject2).HDT.get(0);
         localObject2 = localObject1;
-        localObject1 = localcys;
+        localObject1 = localczm;
       }
     }
     for (;;)
     {
       localObject1 = new b(localObject1, (String)localObject2);
-      ((com.tencent.mm.plugin.brandservice.ui.base.a)localObject1).zp(paramInt);
+      ((com.tencent.mm.plugin.brandservice.ui.base.a)localObject1).zy(paramInt);
       ((com.tencent.mm.plugin.brandservice.ui.base.a)localObject1).setPosition(paramInt);
-      this.nZq.put(paramInt, localObject1);
+      this.oeZ.put(paramInt, localObject1);
       AppMethodBeat.o(5775);
       return localObject1;
       label168:
-      localObject1 = ((crx)localObject2).Hkr.toString();
+      localObject1 = ((csr)localObject2).HDR.toString();
       break label110;
       label180:
-      if (paramInt < ((crx)localObject2).Hkt.size() + i)
+      if (paramInt < ((csr)localObject2).HDT.size() + i)
       {
-        localObject1 = (cys)((crx)localObject2).Hkt.get(paramInt - i);
+        localObject1 = (czm)((csr)localObject2).HDT.get(paramInt - i);
         localObject2 = null;
       }
       else
       {
-        i = ((crx)localObject2).Hkt.size() + i;
+        i = ((csr)localObject2).HDT.size() + i;
         break;
         label229:
         localObject2 = null;
@@ -197,7 +197,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.ui.g
  * JD-Core Version:    0.7.0.1
  */

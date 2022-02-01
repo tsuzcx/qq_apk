@@ -2,20 +2,20 @@ package com.tencent.mm.plugin.label;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.ax;
-import com.tencent.mm.model.ba;
+import com.tencent.mm.model.az;
+import com.tencent.mm.model.bc;
 import com.tencent.mm.model.c;
-import com.tencent.mm.model.ca;
-import com.tencent.mm.storage.ar;
+import com.tencent.mm.model.cc;
+import com.tencent.mm.storage.as;
 import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
 
 public class e
-  implements ax
+  implements az
 {
   private static HashMap<Integer, h.b> baseDBFactories;
-  private ar uVZ;
-  private d uWa;
+  private as vhM;
+  private d vhN;
   
   static
   {
@@ -26,7 +26,7 @@ public class e
     {
       public final String[] getSQLs()
       {
-        return ar.SQL_CREATE;
+        return as.SQL_CREATE;
       }
     });
     baseDBFactories.put(Integer.valueOf("CONTACT_LABEL_CACHE_TABLE".hashCode()), new e.2());
@@ -36,15 +36,15 @@ public class e
   public e()
   {
     AppMethodBeat.i(26136);
-    this.uWa = new d();
+    this.vhN = new d();
     AppMethodBeat.o(26136);
   }
   
-  private static e dfm()
+  private static e die()
   {
     AppMethodBeat.i(26137);
-    ba.aBK();
-    e locale2 = (e)ca.By("plugin.label");
+    bc.aCa();
+    e locale2 = (e)cc.Ca("plugin.label");
     e locale1 = locale2;
     if (locale2 == null)
     {
@@ -54,7 +54,7 @@ public class e
     try
     {
       locale1 = new e();
-      ba.aBK().a("plugin.label", locale1);
+      bc.aCa().a("plugin.label", locale1);
       return locale1;
     }
     finally
@@ -63,17 +63,17 @@ public class e
     }
   }
   
-  public static ar dfn()
+  public static as dif()
   {
     AppMethodBeat.i(26140);
-    g.ajA().aiF();
-    if (dfm().uVZ == null)
+    g.ajP().aiU();
+    if (die().vhM == null)
     {
-      localObject = dfm();
-      ba.aBQ();
-      ((e)localObject).uVZ = new ar(c.getDataDB());
+      localObject = die();
+      bc.aCg();
+      ((e)localObject).vhM = new as(c.getDataDB());
     }
-    Object localObject = dfm().uVZ;
+    Object localObject = die().vhM;
     AppMethodBeat.o(26140);
     return localObject;
   }
@@ -89,17 +89,17 @@ public class e
   {
     AppMethodBeat.i(26138);
     b localb = new b();
-    com.tencent.mm.plugin.label.a.a.uWb = localb;
-    com.tencent.mm.ay.b.iep = localb;
-    com.tencent.mm.sdk.b.a.IbL.c(this.uWa);
+    com.tencent.mm.plugin.label.a.a.vhO = localb;
+    com.tencent.mm.ax.b.ihh = localb;
+    com.tencent.mm.sdk.b.a.IvT.c(this.vhN);
     AppMethodBeat.o(26138);
   }
   
   public void onAccountRelease()
   {
     AppMethodBeat.i(26139);
-    com.tencent.mm.plugin.label.a.a.uWb = null;
-    com.tencent.mm.sdk.b.a.IbL.d(this.uWa);
+    com.tencent.mm.plugin.label.a.a.vhO = null;
+    com.tencent.mm.sdk.b.a.IvT.d(this.vhN);
     AppMethodBeat.o(26139);
   }
   

@@ -6,11 +6,11 @@ import com.tencent.mm.plugin.appbrand.widget.recentview.b;
 
 public abstract interface a
 {
-  public abstract void bDt();
+  public abstract void bEl();
   
-  public abstract void bDu();
+  public abstract void bEm();
   
-  public abstract void bDv();
+  public abstract void bEn();
   
   public abstract void e(Configuration paramConfiguration);
   
@@ -30,18 +30,18 @@ public abstract interface a
   
   public abstract void setUsageRefreshListener(AppBrandRecentView.e parame);
   
-  public abstract void wj(int paramInt);
+  public abstract void wo(int paramInt);
   
   public static abstract interface a
   {
-    public abstract void ig(boolean paramBoolean);
+    public abstract void ie(boolean paramBoolean);
   }
   
   public static abstract interface b
   {
-    public abstract void bDF();
+    public abstract void bEx();
     
-    public abstract void bDG();
+    public abstract void bEy();
   }
 }
 

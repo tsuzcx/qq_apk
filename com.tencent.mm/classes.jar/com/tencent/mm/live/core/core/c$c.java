@@ -3,48 +3,48 @@ package com.tencent.mm.live.core.core;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/live/core/core/LiveCoreConstants$NetStatus;", "", "()V", "NET_BAD", "", "getNET_BAD", "()I", "NET_DISABLE", "getNET_DISABLE", "NET_GOOD", "getNET_GOOD", "NET_NORMAL", "getNET_NORMAL", "plugin-core_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/live/core/core/LiveCoreConstants$NetStatus;", "", "()V", "NET_BAD", "", "getNET_BAD", "()I", "NET_DISABLE", "getNET_DISABLE", "NET_GOOD", "getNET_GOOD", "NET_NORMAL", "getNET_NORMAL", "plugin-core_release"})
 public final class c$c
 {
-  private static final int gHe = 0;
-  private static final int gHf = 1;
-  private static final int gHg = 2;
-  private static final int gHh = 3;
-  public static final c gHi;
+  private static final int gJN = 0;
+  private static final int gJO = 1;
+  private static final int gJP = 2;
+  private static final int gJQ = 3;
+  public static final c gJR;
   
   static
   {
-    AppMethodBeat.i(216784);
-    gHi = new c();
-    gHf = 1;
-    gHg = 2;
-    gHh = 3;
-    AppMethodBeat.o(216784);
+    AppMethodBeat.i(196796);
+    gJR = new c();
+    gJO = 1;
+    gJP = 2;
+    gJQ = 3;
+    AppMethodBeat.o(196796);
   }
   
-  public static int alu()
+  public static int alJ()
   {
-    return gHe;
+    return gJN;
   }
   
-  public static int alv()
+  public static int alK()
   {
-    return gHf;
+    return gJO;
   }
   
-  public static int alw()
+  public static int alL()
   {
-    return gHg;
+    return gJP;
   }
   
-  public static int alx()
+  public static int alM()
   {
-    return gHh;
+    return gJQ;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.live.core.core.c.c
  * JD-Core Version:    0.7.0.1
  */

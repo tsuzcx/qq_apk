@@ -5,8 +5,8 @@ import com.tencent.mm.plugin.appbrand.jsapi.j;
 public class a
   implements j
 {
-  public boolean cmj = false;
-  public boolean cmk = false;
+  public boolean cml = false;
+  public boolean cmm = false;
 }
 
 

@@ -6,54 +6,54 @@ import com.tencent.mm.plugin.report.a;
 public final class br
   extends a
 {
-  private long dPl;
-  private long dYD;
+  private long dQB;
+  private long dZW;
   
-  public final String RD()
+  public final String RC()
   {
-    AppMethodBeat.i(209229);
+    AppMethodBeat.i(189264);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dYD);
+    ((StringBuffer)localObject).append(this.dZW);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dPl);
+    ((StringBuffer)localObject).append(this.dQB);
     localObject = ((StringBuffer)localObject).toString();
-    awz((String)localObject);
-    AppMethodBeat.o(209229);
+    axO((String)localObject);
+    AppMethodBeat.o(189264);
     return localObject;
   }
   
-  public final String RE()
+  public final String RD()
   {
-    AppMethodBeat.i(209230);
+    AppMethodBeat.i(189265);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("Type:").append(this.dYD);
+    ((StringBuffer)localObject).append("Type:").append(this.dZW);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("Action:").append(this.dPl);
+    ((StringBuffer)localObject).append("Action:").append(this.dQB);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(209230);
+    AppMethodBeat.o(189265);
     return localObject;
+  }
+  
+  public final br gA(long paramLong)
+  {
+    this.dZW = paramLong;
+    return this;
+  }
+  
+  public final br gB(long paramLong)
+  {
+    this.dQB = paramLong;
+    return this;
   }
   
   public final int getId()
   {
     return 19952;
   }
-  
-  public final br gx(long paramLong)
-  {
-    this.dYD = paramLong;
-    return this;
-  }
-  
-  public final br gy(long paramLong)
-  {
-    this.dPl = paramLong;
-    return this;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.g.b.a.br
  * JD-Core Version:    0.7.0.1
  */

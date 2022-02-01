@@ -5,18 +5,18 @@ import d.g.a.b;
 import d.g.b.q;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "", "invoke"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "", "invoke"})
 final class g$1
   extends q
   implements b<Object, String>
 {
-  public static final 1 kZc;
+  public static final 1 lcL;
   
   static
   {
-    AppMethodBeat.i(199681);
-    kZc = new 1();
-    AppMethodBeat.o(199681);
+    AppMethodBeat.i(208195);
+    lcL = new 1();
+    AppMethodBeat.o(208195);
   }
   
   g$1()

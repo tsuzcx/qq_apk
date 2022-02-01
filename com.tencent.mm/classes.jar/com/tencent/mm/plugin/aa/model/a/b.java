@@ -4,21 +4,21 @@ import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.e.e;
 import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public final class b
   extends j<a>
 {
   public static final String[] SQL_CREATE;
-  private static final String[] iTS;
+  private static final String[] iWL;
   private e db;
   
   static
   {
     AppMethodBeat.i(63422);
     SQL_CREATE = new String[] { j.getCreateSQLs(a.info, "AAPayRecord") };
-    iTS = new String[] { "*", "rowid" };
+    iWL = new String[] { "*", "rowid" };
     AppMethodBeat.o(63422);
   }
   
@@ -28,15 +28,15 @@ public final class b
     this.db = parame;
   }
   
-  public final a Jf(String paramString)
+  public final a JE(String paramString)
   {
     AppMethodBeat.i(63421);
-    if (bt.isNullOrNil(paramString))
+    if (bu.isNullOrNil(paramString))
     {
       AppMethodBeat.o(63421);
       return null;
     }
-    paramString = this.db.a("AAPayRecord", iTS, "payMsgId=?", new String[] { paramString }, null, null, null, 2);
+    paramString = this.db.a("AAPayRecord", iWL, "payMsgId=?", new String[] { paramString }, null, null, null, 2);
     try
     {
       if (paramString.moveToFirst())
@@ -53,7 +53,7 @@ public final class b
     {
       for (;;)
       {
-        ad.e("MicroMsg.AAPayRecordStorage", "getByPayMsgId error: %s", new Object[] { localException.getMessage() });
+        ae.e("MicroMsg.AAPayRecordStorage", "getByPayMsgId error: %s", new Object[] { localException.getMessage() });
         if (paramString != null) {
           paramString.close();
         }

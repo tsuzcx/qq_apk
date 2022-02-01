@@ -23,40 +23,42 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.on;
+import com.tencent.mm.g.a.oo;
 import com.tencent.mm.modelcontrol.VideoTransPara;
 import com.tencent.mm.platformtools.ac;
 import com.tencent.mm.plugin.expt.b.b.a;
-import com.tencent.mm.plugin.sns.model.ag;
-import com.tencent.mm.plugin.sns.model.ak;
-import com.tencent.mm.plugin.sns.model.an.a;
-import com.tencent.mm.plugin.sns.model.aw;
-import com.tencent.mm.plugin.sns.model.b.b;
-import com.tencent.mm.plugin.sns.model.bb;
-import com.tencent.mm.plugin.sns.model.bb.a;
-import com.tencent.mm.plugin.sns.model.f;
+import com.tencent.mm.plugin.sns.ad.e.j;
+import com.tencent.mm.plugin.sns.data.m;
+import com.tencent.mm.plugin.sns.data.r;
+import com.tencent.mm.plugin.sns.model.ah;
+import com.tencent.mm.plugin.sns.model.al;
+import com.tencent.mm.plugin.sns.model.ao.a;
+import com.tencent.mm.plugin.sns.model.ax;
+import com.tencent.mm.plugin.sns.model.bc;
+import com.tencent.mm.plugin.sns.model.bc.a;
+import com.tencent.mm.plugin.sns.model.c.b;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.widget.SphereImageView.SphereImageView;
 import com.tencent.mm.plugin.sns.storage.n;
 import com.tencent.mm.plugin.sns.storage.o;
 import com.tencent.mm.plugin.sns.storage.u;
-import com.tencent.mm.plugin.sns.ui.a.c;
 import com.tencent.mm.plugin.sns.ui.item.k.a;
 import com.tencent.mm.plugin.sns.ui.view.SnsStoryHeaderView;
 import com.tencent.mm.plugin.story.api.AbsStoryHeaderTipView;
 import com.tencent.mm.plugin.story.api.l.b;
 import com.tencent.mm.plugin.story.api.l.c;
 import com.tencent.mm.pluginsdk.ui.a.b;
+import com.tencent.mm.pluginsdk.ui.tools.q;
 import com.tencent.mm.protocal.protobuf.TimeLineObject;
-import com.tencent.mm.protocal.protobuf.dhk;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.al.a;
-import com.tencent.mm.storage.am;
-import com.tencent.mm.storage.bp;
+import com.tencent.mm.protocal.protobuf.die;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.aj;
+import com.tencent.mm.storage.am.a;
+import com.tencent.mm.storage.an;
+import com.tencent.mm.storage.bq;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.ao;
 import com.tencent.mm.ui.base.MMPullDownView;
@@ -76,86 +78,86 @@ import java.util.Map;
 import java.util.Set;
 
 public class SnsUIAction
-  implements b.b, bb.a
+  implements bc.a, c.b
 {
-  private static int AnT = 0;
-  private static int AnU = 1;
-  private static int AnV = 2;
-  private boolean AkA;
-  private int AkB;
-  private int Akq;
-  private String Akz;
-  protected LoadingMoreView AnM;
-  private int AnN;
-  private int AnO;
-  private boolean AnP;
-  public int AnQ;
-  a AnR;
-  private Toolbar.LayoutParams AnS;
-  private int AnW;
-  int AnX;
-  float AnY;
-  float AnZ;
-  float Aoa;
-  int Aob;
-  int Aoc;
-  int Aod;
-  boolean Aoe;
-  private com.tencent.e.i.b Aof;
-  ArrayList<k.a> Aog;
-  com.tencent.mm.modelsns.e Aoh;
+  private static int AFg = 0;
+  private static int AFh = 1;
+  private static int AFi = 2;
+  private int ABC;
+  private String ABL;
+  private boolean ABM;
+  private int ABN;
+  protected LoadingMoreView AEZ;
+  private int AFa;
+  private int AFb;
+  private boolean AFc;
+  public int AFd;
+  a AFe;
+  private Toolbar.LayoutParams AFf;
+  private int AFj;
+  int AFk;
+  float AFl;
+  float AFm;
+  float AFn;
+  int AFo;
+  int AFp;
+  int AFq;
+  boolean AFr;
+  private com.tencent.e.i.b AFs;
+  ArrayList<k.a> AFt;
+  com.tencent.mm.modelsns.e AFu;
+  private boolean Aiv;
+  boolean AmY;
   View actionbarView;
   private String cff;
+  protected View cpn;
   protected String filePath;
-  protected View gZU;
-  int gfU;
-  private String jqQ;
-  private String lEN;
+  int gim;
+  protected View hcH;
+  private String jtJ;
+  private String lJm;
   private int lastIndex;
   protected ListView list;
   private Activity mActivity;
-  protected boolean oKD;
-  protected View rxm;
+  protected boolean oRf;
   private String sessionId;
   int start;
-  private ArrayList<com.tencent.mm.plugin.sns.storage.p> tHo;
+  private ArrayList<com.tencent.mm.plugin.sns.storage.p> tSf;
   protected com.tencent.mm.ui.base.p tipDialog;
   protected String title;
-  int vFD;
-  protected MMPullDownView vHW;
-  public int yXO;
-  private boolean zRo;
-  boolean zVQ;
-  private boolean zdF;
-  protected SnsHeader zqQ;
-  String zsC;
+  int vRH;
+  protected MMPullDownView vUa;
+  protected SnsHeader zIf;
+  String zJR;
+  public int zop;
+  private boolean zuv;
   
   public SnsUIAction(Activity paramActivity)
   {
     AppMethodBeat.i(176361);
     this.tipDialog = null;
-    this.AnN = 0;
-    this.AnO = 0;
-    this.AnP = false;
-    this.oKD = false;
-    this.zdF = false;
-    this.yXO = 0;
-    this.AnQ = 0;
-    this.AnX = 0;
-    this.vFD = 0;
-    this.AnY = 1.0F;
-    this.AnZ = 1.0F;
-    this.Aoa = 1.0F;
-    this.Aob = AnT;
-    this.Aoc = AnT;
-    this.Aod = 0;
+    this.AFa = 0;
+    this.AFb = 0;
+    this.AFc = false;
+    this.oRf = false;
+    this.zuv = false;
+    this.zop = 0;
+    this.AFd = 0;
+    this.AFk = 0;
+    this.vRH = 0;
+    this.AFl = 1.0F;
+    this.AFm = 1.0F;
+    this.AFn = 1.0F;
+    this.AFo = AFg;
+    this.AFp = AFg;
+    this.AFq = 0;
     this.start = 0;
-    this.gfU = 0;
-    this.Aoe = false;
-    this.Akq = 800;
-    this.zVQ = false;
-    this.tHo = new ArrayList();
-    this.Aof = new com.tencent.e.i.b()
+    this.gim = 0;
+    this.AFr = false;
+    this.ABC = 800;
+    this.AmY = false;
+    this.tSf = new ArrayList();
+    this.AFs = new com.tencent.e.i.b()
     {
       public final String getKey()
       {
@@ -165,98 +167,98 @@ public class SnsUIAction
       public final void run()
       {
         AppMethodBeat.i(99475);
-        Object localObject2 = ag.dUc();
-        synchronized (((aw)localObject2).zmS)
+        Object localObject2 = ah.dXC();
+        synchronized (((ax)localObject2).zEh)
         {
-          ((aw)localObject2).zmS.clear();
+          ((ax)localObject2).zEh.clear();
           ??? = new ArrayList(SnsUIAction.k(SnsUIAction.this)).iterator();
           if (((Iterator)???).hasNext())
           {
             localObject2 = (com.tencent.mm.plugin.sns.storage.p)((Iterator)???).next();
-            ag.dUc().A((com.tencent.mm.plugin.sns.storage.p)localObject2);
+            ah.dXC().A((com.tencent.mm.plugin.sns.storage.p)localObject2);
           }
         }
         AppMethodBeat.o(99475);
       }
     };
-    this.Aog = null;
-    this.Aoh = null;
+    this.AFt = null;
+    this.AFu = null;
     this.mActivity = paramActivity;
     AppMethodBeat.o(176361);
   }
   
-  private void aP(Intent paramIntent)
+  private void aQ(Intent paramIntent)
   {
     AppMethodBeat.i(99484);
-    new ap(Looper.getMainLooper()).post(new Runnable()
+    new aq(Looper.getMainLooper()).post(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(176355);
-        com.tencent.mm.plugin.sns.c.a.iRH.MT();
+        com.tencent.mm.plugin.sns.c.a.iUA.MO();
         AppMethodBeat.o(176355);
       }
     });
-    ad.d("MicroMsg.SnsActivity", "onActivityResult CONTEXT_CHOSE_IMAGE_CONFIRM");
-    ad.d("MicroMsg.SnsActivity", "CONTEXT_CHOSE_IMAGE_CONFIRM filePath " + this.filePath);
+    com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.SnsActivity", "onActivityResult CONTEXT_CHOSE_IMAGE_CONFIRM");
+    com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.SnsActivity", "CONTEXT_CHOSE_IMAGE_CONFIRM filePath " + this.filePath);
     if (this.filePath == null)
     {
       AppMethodBeat.o(99484);
       return;
     }
-    Object localObject = com.tencent.mm.plugin.recordvideo.e.b.xRl;
-    com.tencent.mm.plugin.recordvideo.e.b.avU(this.filePath);
+    Object localObject = com.tencent.mm.plugin.recordvideo.e.b.yhe;
+    com.tencent.mm.plugin.recordvideo.e.b.axj(this.filePath);
     localObject = "pre_temp_sns_pic" + com.tencent.mm.b.g.getMessageDigest(new StringBuilder().append(this.filePath).append(System.currentTimeMillis()).toString().getBytes());
-    u.aG(ag.getAccSnsTmpPath(), this.filePath, (String)localObject);
-    com.tencent.mm.plugin.recordvideo.e.b localb = com.tencent.mm.plugin.recordvideo.e.b.xRl;
-    com.tencent.mm.plugin.recordvideo.e.b.avS(this.filePath);
-    this.filePath = (ag.getAccSnsTmpPath() + (String)localObject);
-    ad.d("MicroMsg.SnsActivity", "newPath " + this.filePath);
+    u.aG(ah.getAccSnsTmpPath(), this.filePath, (String)localObject);
+    com.tencent.mm.plugin.recordvideo.e.b localb = com.tencent.mm.plugin.recordvideo.e.b.yhe;
+    com.tencent.mm.plugin.recordvideo.e.b.axh(this.filePath);
+    this.filePath = (ah.getAccSnsTmpPath() + (String)localObject);
+    com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.SnsActivity", "newPath " + this.filePath);
     if (paramIntent != null) {}
     for (int i = paramIntent.getIntExtra("CropImage_filterId", 0);; i = 0)
     {
       localObject = new Intent(this.mActivity, SnsUploadUI.class);
       ((Intent)localObject).putExtra("KSnsPostManu", true);
-      ((Intent)localObject).putExtra("KTouchCameraTime", bt.aQJ());
-      if (this.Aoh != null)
+      ((Intent)localObject).putExtra("KTouchCameraTime", bu.aRi());
+      if (this.AFu != null)
       {
-        this.Aoh.b((Intent)localObject, "intent_key_StatisticsOplog");
-        this.Aoh = null;
+        this.AFu.b((Intent)localObject, "intent_key_StatisticsOplog");
+        this.AFu = null;
       }
       ((Intent)localObject).putExtra("sns_kemdia_path", this.filePath);
       ((Intent)localObject).putExtra("KFilterId", i);
-      if (this.zdF) {
+      if (this.zuv) {
         ((Intent)localObject).putExtra("Kis_take_photo", true);
       }
-      if (this.zRo) {
+      if (this.Aiv) {
         ((Intent)localObject).putExtra("Ksnsupload_source", 11);
       }
       ((Intent)localObject).putExtra("KSessionID", paramIntent.getStringExtra("KSessionID"));
       this.mActivity.startActivityForResult((Intent)localObject, 6);
-      this.zdF = false;
+      this.zuv = false;
       AppMethodBeat.o(99484);
       return;
     }
   }
   
-  protected final boolean Ru(int paramInt)
+  protected final boolean Sb(int paramInt)
   {
     int j = 3;
     boolean bool1 = false;
     AppMethodBeat.i(99485);
-    com.tencent.mm.kernel.g.ajD();
-    if (!com.tencent.mm.kernel.g.ajC().isSDCardAvailable())
+    com.tencent.mm.kernel.g.ajS();
+    if (!com.tencent.mm.kernel.g.ajR().isSDCardAvailable())
     {
       t.g(this.mActivity, null);
       AppMethodBeat.o(99485);
       return false;
     }
-    ad.d("MicroMsg.SnsActivity", "selectPhoto ".concat(String.valueOf(paramInt)));
+    com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.SnsActivity", "selectPhoto ".concat(String.valueOf(paramInt)));
     Intent localIntent;
     if (paramInt == 2)
     {
       localIntent = new Intent();
-      localIntent.putExtra("username", this.Akz);
+      localIntent.putExtra("username", this.ABL);
       localIntent.setClass(this.mActivity, SettingSnsBackgroundUI.class);
       this.mActivity.startActivityForResult(localIntent, 7);
       AppMethodBeat.o(99485);
@@ -264,19 +266,19 @@ public class SnsUIAction
     }
     if (paramInt == 1)
     {
-      com.tencent.mm.kernel.g.ajD();
-      i = bt.a((Integer)com.tencent.mm.kernel.g.ajC().ajl().get(68385, null), 0);
-      com.tencent.mm.kernel.g.ajD();
-      int k = bt.a((Integer)com.tencent.mm.kernel.g.ajC().ajl().get(68386, null), 0);
-      if ((!this.AnP) && (i < 3) && (k == 0))
+      com.tencent.mm.kernel.g.ajS();
+      i = bu.a((Integer)com.tencent.mm.kernel.g.ajR().ajA().get(68385, null), 0);
+      com.tencent.mm.kernel.g.ajS();
+      int k = bu.a((Integer)com.tencent.mm.kernel.g.ajR().ajA().get(68386, null), 0);
+      if ((!this.AFc) && (i < 3) && (k == 0))
       {
-        this.AnP = true;
+        this.AFc = true;
         bk.b(this.mActivity, new SnsUIAction.5(this, paramInt));
         AppMethodBeat.o(99485);
         return true;
       }
-      if (this.mActivity.getSharedPreferences(aj.fkC(), 0).getString("gallery", "1").equalsIgnoreCase("0")) {
-        com.tencent.mm.pluginsdk.ui.tools.q.c(this.mActivity, 2, null);
+      if (this.mActivity.getSharedPreferences(ak.fow(), 0).getString("gallery", "1").equalsIgnoreCase("0")) {
+        q.c(this.mActivity, 2, null);
       }
     }
     else
@@ -284,9 +286,9 @@ public class SnsUIAction
       AppMethodBeat.o(99485);
       return true;
     }
-    int i = com.tencent.mm.n.g.acA().getInt("SnsCanPickVideoFromAlbum", 1);
-    ad.i("MicroMsg.SnsActivity", "takeVideo %d", new Object[] { Integer.valueOf(i) });
-    if (ac.iPN) {
+    int i = com.tencent.mm.n.g.acL().getInt("SnsCanPickVideoFromAlbum", 1);
+    com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.SnsActivity", "takeVideo %d", new Object[] { Integer.valueOf(i) });
+    if (ac.iSG) {
       i = 0;
     }
     if (i == 1)
@@ -294,8 +296,8 @@ public class SnsUIAction
       paramInt = j;
       label310:
       localIntent = new Intent();
-      boolean bool2 = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qzh, false);
-      if ((com.tencent.mm.kernel.g.ajC().ajl().getInt(al.a.IDh, 0) != 1) && (!bool2)) {
+      boolean bool2 = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qGn, false);
+      if ((com.tencent.mm.kernel.g.ajR().ajA().getInt(am.a.IXH, 0) != 1) && (!bool2)) {
         break label449;
       }
       i = 1;
@@ -304,7 +306,7 @@ public class SnsUIAction
         bool1 = true;
       }
       localIntent.putExtra("key_can_select_video_and_pic", bool1);
-      localIntent.putExtra("key_edit_video_max_time_length", com.tencent.mm.modelcontrol.d.aGQ().aGT().duration);
+      localIntent.putExtra("key_edit_video_max_time_length", com.tencent.mm.modelcontrol.d.aHh().aHk().duration);
       if (!(this.mActivity instanceof SnsUserUI)) {
         break label454;
       }
@@ -312,7 +314,7 @@ public class SnsUIAction
     }
     for (;;)
     {
-      com.tencent.mm.pluginsdk.ui.tools.q.a(this.mActivity, 14, 9, 4, paramInt, localIntent);
+      q.a(this.mActivity, 14, 9, 4, paramInt, localIntent);
       break;
       paramInt = j;
       if (i != 0) {
@@ -330,58 +332,58 @@ public class SnsUIAction
   
   public final void a(String paramString1, String paramString2, String paramString3, String paramString4, boolean paramBoolean1, boolean paramBoolean2, int paramInt)
   {
-    this.Akz = paramString1;
-    this.lEN = paramString2;
-    this.jqQ = paramString3;
+    this.ABL = paramString1;
+    this.lJm = paramString2;
+    this.jtJ = paramString3;
     this.cff = paramString4;
-    this.AkA = paramBoolean1;
-    this.zRo = paramBoolean2;
-    this.AkB = paramInt;
+    this.ABM = paramBoolean1;
+    this.Aiv = paramBoolean2;
+    this.ABN = paramInt;
   }
   
-  protected final void aAI(String paramString)
+  protected final void aBZ(String paramString)
   {
     AppMethodBeat.i(99490);
-    ad.d("MicroMsg.SnsActivity", "snsactivty onIsRecent ");
-    this.AnM.aAI(paramString);
+    com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.SnsActivity", "snsactivty onIsRecent ");
+    this.AEZ.aBZ(paramString);
     AppMethodBeat.o(99490);
   }
   
-  protected final void aAU(String paramString)
-  {
-    AppMethodBeat.i(99488);
-    ad.d("MicroMsg.SnsActivity", "snsactivty onIsDownAll ");
-    this.AnM.aAI(paramString);
-    AppMethodBeat.o(99488);
-  }
-  
-  public final void ays(String paramString) {}
-  
-  public final void az(int paramInt, boolean paramBoolean)
+  public final void aC(int paramInt, boolean paramBoolean)
   {
     AppMethodBeat.i(99495);
-    this.AnR.az(paramInt, paramBoolean);
+    this.AFe.aC(paramInt, paramBoolean);
     AppMethodBeat.o(99495);
   }
   
-  public final void bM(String paramString, boolean paramBoolean)
+  protected final void aCl(String paramString)
+  {
+    AppMethodBeat.i(99488);
+    com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.SnsActivity", "snsactivty onIsDownAll ");
+    this.AEZ.aBZ(paramString);
+    AppMethodBeat.o(99488);
+  }
+  
+  public final void azJ(String paramString) {}
+  
+  public final void bQ(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(99497);
-    if ((this.AnR.getType() == 1) && (this.list != null) && (this.list.getAdapter() != null) && ((this.list.getAdapter() instanceof c))) {
-      ((c)this.list.getAdapter()).notifyDataSetChanged();
+    if ((this.AFe.getType() == 1) && (this.list != null) && (this.list.getAdapter() != null) && ((this.list.getAdapter() instanceof com.tencent.mm.plugin.sns.ui.a.c))) {
+      ((com.tencent.mm.plugin.sns.ui.a.c)this.list.getAdapter()).notifyDataSetChanged();
     }
     AppMethodBeat.o(99497);
   }
   
-  public final void bN(String paramString, boolean paramBoolean) {}
+  public final void bR(String paramString, boolean paramBoolean) {}
   
-  public final void bmJ()
+  public final void bns()
   {
     AppMethodBeat.i(99478);
-    this.Aof.cancel();
-    this.tHo.clear();
+    this.AFs.cancel();
+    this.tSf.clear();
     int i = this.list.getLastVisiblePosition();
-    ad.i("MicroMsg.SnsVideoService", "currentPosition :%d count:%d", new Object[] { Integer.valueOf(i), Integer.valueOf(this.list.getCount()) });
+    com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.SnsVideoService", "currentPosition :%d count:%d", new Object[] { Integer.valueOf(i), Integer.valueOf(this.list.getCount()) });
     int j = this.list.getCount();
     if (j - i > 15) {
       j = i + 15;
@@ -391,60 +393,60 @@ public class SnsUIAction
       if (i < j)
       {
         Object localObject = this.list.getItemAtPosition(i);
-        if (((localObject instanceof com.tencent.mm.plugin.sns.storage.p)) && (((com.tencent.mm.plugin.sns.storage.p)localObject).field_type == 15) && ((!((com.tencent.mm.plugin.sns.storage.p)localObject).QM(32)) || (com.tencent.mm.plugin.sns.ad.timeline.a.a.i((com.tencent.mm.plugin.sns.storage.p)localObject)))) {
-          this.tHo.add((com.tencent.mm.plugin.sns.storage.p)localObject);
+        if (((localObject instanceof com.tencent.mm.plugin.sns.storage.p)) && (((com.tencent.mm.plugin.sns.storage.p)localObject).field_type == 15) && ((!((com.tencent.mm.plugin.sns.storage.p)localObject).Rt(32)) || (com.tencent.mm.plugin.sns.ad.timeline.a.a.j((com.tencent.mm.plugin.sns.storage.p)localObject)))) {
+          this.tSf.add((com.tencent.mm.plugin.sns.storage.p)localObject);
         }
         i += 1;
       }
       else
       {
-        com.tencent.e.h.LTJ.aR(this.Aof);
+        com.tencent.e.h.MqF.aO(this.AFs);
         AppMethodBeat.o(99478);
         return;
       }
     }
   }
   
-  public final void dTb()
+  public final void dWB()
   {
     AppMethodBeat.i(99487);
-    this.zqQ.ebW();
+    this.zIf.efD();
     AppMethodBeat.o(99487);
   }
   
-  public final void dVf()
+  public final void dYG()
   {
     AppMethodBeat.i(99496);
-    if (this.zqQ != null) {
-      this.zqQ.ebW();
+    if (this.zIf != null) {
+      this.zIf.efD();
     }
     AppMethodBeat.o(99496);
   }
   
-  protected final void edn()
+  protected final void egU()
   {
     AppMethodBeat.i(160742);
-    this.AnM.FW();
+    this.AEZ.Gc();
     AppMethodBeat.o(160742);
   }
   
-  public final void edo()
+  public final void egV()
   {
     AppMethodBeat.i(99491);
-    if ((this.AnR != null) && (this.AnR.getType() == 2)) {
-      ag.dFL().post(new Runnable()
+    if ((this.AFe != null) && (this.AFe.getType() == 2)) {
+      ah.dJc().post(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(99466);
-          Object localObject2 = ag.dUi().aAg(SnsUIAction.d(SnsUIAction.this));
-          final com.tencent.mm.plugin.sns.data.l locall = new com.tencent.mm.plugin.sns.data.l();
+          Object localObject2 = ah.dXI().aBx(SnsUIAction.d(SnsUIAction.this));
+          final m localm = new m();
           ArrayList localArrayList;
           HashMap localHashMap;
           Object localObject1;
           String str;
           long l;
-          if (!bt.hj((List)localObject2))
+          if (!bu.ht((List)localObject2))
           {
             localArrayList = new ArrayList();
             localHashMap = new HashMap();
@@ -452,18 +454,18 @@ public class SnsUIAction
             Iterator localIterator = ((List)localObject2).iterator();
             if (localIterator.hasNext())
             {
-              dhk localdhk = (dhk)localIterator.next();
-              localObject2 = String.valueOf(localdhk.HvR);
-              str = String.valueOf(localdhk.HvS);
-              l = localdhk.HvT;
-              if (bt.lQ((String)localObject1, (String)localObject2)) {
+              die localdie = (die)localIterator.next();
+              localObject2 = String.valueOf(localdie.HPu);
+              str = String.valueOf(localdie.HPv);
+              l = localdie.HPw;
+              if (bu.lX((String)localObject1, (String)localObject2)) {
                 break label281;
               }
               localArrayList = new ArrayList();
               localHashMap = new HashMap();
-              locall.zdq.add(localObject2);
-              locall.zdr.add(localArrayList);
-              locall.map.put(localObject2, localHashMap);
+              localm.zug.add(localObject2);
+              localm.zuh.add(localArrayList);
+              localm.map.put(localObject2, localHashMap);
               localObject1 = localObject2;
             }
           }
@@ -473,18 +475,18 @@ public class SnsUIAction
             localArrayList.add(str);
             localHashMap.put(str, Long.valueOf(l));
             break;
-            Collections.reverse(locall.zdq);
-            Collections.reverse(locall.zdr);
-            localObject1 = locall.zdr.iterator();
+            Collections.reverse(localm.zug);
+            Collections.reverse(localm.zuh);
+            localObject1 = localm.zuh.iterator();
             while (((Iterator)localObject1).hasNext()) {
               Collections.reverse((List)((Iterator)localObject1).next());
             }
-            ag.cVf().post(new Runnable()
+            ah.cXK().post(new Runnable()
             {
               public final void run()
               {
                 AppMethodBeat.i(176357);
-                SnsUIAction.c(SnsUIAction.this).a(locall);
+                SnsUIAction.c(SnsUIAction.this).a(localm);
                 AppMethodBeat.o(176357);
               }
             });
@@ -497,7 +499,7 @@ public class SnsUIAction
     AppMethodBeat.o(99491);
   }
   
-  public final void edp()
+  public final void egW()
   {
     AppMethodBeat.i(99493);
     if (getSnsListView() != null) {
@@ -506,56 +508,56 @@ public class SnsUIAction
     AppMethodBeat.o(99493);
   }
   
-  public final void edq()
+  public final void egX()
   {
     AppMethodBeat.i(99494);
     com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/sns/ui/SnsUIAction", "com/tencent/mm/plugin/sns/ui/SnsUIAction", "resetStoryHeader", "()V", this);
-    if (this.zqQ != null)
+    if (this.zIf != null)
     {
-      SnsHeader localSnsHeader = this.zqQ;
-      if ((localSnsHeader.Ade != null) && (localSnsHeader.Ade.Adt != null) && (localSnsHeader.Adl)) {
-        localSnsHeader.Ade.Adt.edq();
+      SnsHeader localSnsHeader = this.zIf;
+      if ((localSnsHeader.Auq != null) && (localSnsHeader.Auq.AuF != null) && (localSnsHeader.Aux)) {
+        localSnsHeader.Auq.AuF.egX();
       }
     }
     com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/sns/ui/SnsUIAction", "com/tencent/mm/plugin/sns/ui/SnsUIAction", "resetStoryHeader", "()V");
     AppMethodBeat.o(99494);
   }
   
-  public final void edr()
+  public final void egY()
   {
-    AppMethodBeat.i(198472);
-    if (this.zqQ != null)
+    AppMethodBeat.i(220014);
+    if (this.zIf != null)
     {
-      SnsHeader localSnsHeader = this.zqQ;
-      if ((localSnsHeader.Ade != null) && (localSnsHeader.Ade.Adx != null) && (localSnsHeader.zSc != null))
+      SnsHeader localSnsHeader = this.zIf;
+      if ((localSnsHeader.Auq != null) && (localSnsHeader.Auq.AuJ != null) && (localSnsHeader.Ajj != null))
       {
-        localSnsHeader.zSc.cancel();
-        localSnsHeader.zSc.reset();
-        localSnsHeader.Ade.Adx.startAnimation(localSnsHeader.zSc);
+        localSnsHeader.Ajj.cancel();
+        localSnsHeader.Ajj.reset();
+        localSnsHeader.Auq.AuJ.startAnimation(localSnsHeader.Ajj);
       }
     }
-    AppMethodBeat.o(198472);
+    AppMethodBeat.o(220014);
   }
   
-  public final void eds()
+  public final void egZ()
   {
-    AppMethodBeat.i(198473);
-    if (this.AnM != null)
+    AppMethodBeat.i(220015);
+    if (this.AEZ != null)
     {
-      LoadingMoreView localLoadingMoreView = this.AnM;
-      localLoadingMoreView.zSc.cancel();
-      localLoadingMoreView.zSc.reset();
-      localLoadingMoreView.dwy.startAnimation(localLoadingMoreView.zSc);
+      LoadingMoreView localLoadingMoreView = this.AEZ;
+      localLoadingMoreView.Ajj.cancel();
+      localLoadingMoreView.Ajj.reset();
+      localLoadingMoreView.dxD.startAnimation(localLoadingMoreView.Ajj);
     }
-    AppMethodBeat.o(198473);
+    AppMethodBeat.o(220015);
   }
   
   public final int getHeaderHeight()
   {
     AppMethodBeat.i(179311);
-    if (this.zqQ != null)
+    if (this.zIf != null)
     {
-      int i = this.zqQ.getMeasuredHeight();
+      int i = this.zIf.getMeasuredHeight();
       AppMethodBeat.o(179311);
       return i;
     }
@@ -566,7 +568,7 @@ public class SnsUIAction
   public ListView getSnsListView()
   {
     AppMethodBeat.i(99498);
-    ListView localListView = this.AnR.getSnsListView();
+    ListView localListView = this.AFe.getSnsListView();
     AppMethodBeat.o(99498);
     return localListView;
   }
@@ -575,14 +577,14 @@ public class SnsUIAction
   protected final void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     // Byte code:
-    //   0: ldc_w 820
+    //   0: ldc_w 821
     //   3: invokestatic 128	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: ldc 214
-    //   8: ldc_w 822
+    //   8: ldc_w 823
     //   11: iload_1
     //   12: invokestatic 471	java/lang/String:valueOf	(I)Ljava/lang/String;
     //   15: invokevirtual 474	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   18: invokestatic 824	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   18: invokestatic 825	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   21: iload_2
     //   22: iconst_m1
     //   23: if_icmpeq +50 -> 73
@@ -595,94 +597,94 @@ public class SnsUIAction
     //   36: iload_1
     //   37: iconst_4
     //   38: if_icmpne +25 -> 63
-    //   41: new 198	com/tencent/mm/sdk/platformtools/ap
+    //   41: new 198	com/tencent/mm/sdk/platformtools/aq
     //   44: dup
     //   45: invokestatic 204	android/os/Looper:getMainLooper	()Landroid/os/Looper;
-    //   48: invokespecial 207	com/tencent/mm/sdk/platformtools/ap:<init>	(Landroid/os/Looper;)V
+    //   48: invokespecial 207	com/tencent/mm/sdk/platformtools/aq:<init>	(Landroid/os/Looper;)V
     //   51: new 22	com/tencent/mm/plugin/sns/ui/SnsUIAction$15
     //   54: dup
     //   55: aload_0
-    //   56: invokespecial 825	com/tencent/mm/plugin/sns/ui/SnsUIAction$15:<init>	(Lcom/tencent/mm/plugin/sns/ui/SnsUIAction;)V
-    //   59: invokevirtual 212	com/tencent/mm/sdk/platformtools/ap:post	(Ljava/lang/Runnable;)Z
+    //   56: invokespecial 826	com/tencent/mm/plugin/sns/ui/SnsUIAction$15:<init>	(Lcom/tencent/mm/plugin/sns/ui/SnsUIAction;)V
+    //   59: invokevirtual 212	com/tencent/mm/sdk/platformtools/aq:post	(Ljava/lang/Runnable;)Z
     //   62: pop
-    //   63: invokestatic 830	com/tencent/mm/plugin/sns/data/q:dSQ	()V
-    //   66: ldc_w 820
+    //   63: invokestatic 831	com/tencent/mm/plugin/sns/data/r:dWq	()V
+    //   66: ldc_w 821
     //   69: invokestatic 189	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   72: return
     //   73: iload_1
     //   74: tableswitch	default:+78 -> 152, 2:+512->586, 3:+78->152, 4:+1575->1649, 5:+391->465, 6:+1609->1683, 7:+1662->1736, 8:+1690->1764, 9:+1749->1823, 10:+1849->1923, 11:+78->152, 12:+2019->2093, 13:+2078->2152, 14:+643->717, 15:+2092->2166, 16:+78->152, 17:+93->167
     //   153: <illegal opcode>
-    //   154: ldc_w 832
-    //   157: invokestatic 834	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   160: ldc_w 820
+    //   154: ldc_w 833
+    //   157: invokestatic 835	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   160: ldc_w 821
     //   163: invokestatic 189	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   166: return
     //   167: aload_3
-    //   168: ldc_w 836
-    //   171: invokevirtual 840	android/content/Intent:getParcelableExtra	(Ljava/lang/String;)Landroid/os/Parcelable;
-    //   174: checkcast 842	com/tencent/mm/plugin/mmsight/SightCaptureResult
+    //   168: ldc_w 837
+    //   171: invokevirtual 841	android/content/Intent:getParcelableExtra	(Ljava/lang/String;)Landroid/os/Parcelable;
+    //   174: checkcast 843	com/tencent/mm/plugin/mmsight/SightCaptureResult
     //   177: astore 5
     //   179: aload 5
     //   181: ifnull +1992 -> 2173
     //   184: aload 5
-    //   186: getfield 845	com/tencent/mm/plugin/mmsight/SightCaptureResult:vMs	Z
+    //   186: getfield 846	com/tencent/mm/plugin/mmsight/SightCaptureResult:vYw	Z
     //   189: ifeq +39 -> 228
     //   192: aload_0
     //   193: aload 5
-    //   195: getfield 848	com/tencent/mm/plugin/mmsight/SightCaptureResult:vMA	Ljava/lang/String;
+    //   195: getfield 849	com/tencent/mm/plugin/mmsight/SightCaptureResult:vYE	Ljava/lang/String;
     //   198: putfield 231	com/tencent/mm/plugin/sns/ui/SnsUIAction:filePath	Ljava/lang/String;
     //   201: aload_0
     //   202: getfield 231	com/tencent/mm/plugin/sns/ui/SnsUIAction:filePath	Ljava/lang/String;
-    //   205: invokestatic 851	com/tencent/mm/sdk/platformtools/bt:isNullOrNil	(Ljava/lang/String;)Z
+    //   205: invokestatic 852	com/tencent/mm/sdk/platformtools/bu:isNullOrNil	(Ljava/lang/String;)Z
     //   208: ifne +1965 -> 2173
     //   211: aload_0
     //   212: iconst_1
-    //   213: putfield 140	com/tencent/mm/plugin/sns/ui/SnsUIAction:zdF	Z
+    //   213: putfield 140	com/tencent/mm/plugin/sns/ui/SnsUIAction:zuv	Z
     //   216: aload_0
     //   217: aload_3
-    //   218: invokespecial 853	com/tencent/mm/plugin/sns/ui/SnsUIAction:aP	(Landroid/content/Intent;)V
-    //   221: ldc_w 820
+    //   218: invokespecial 854	com/tencent/mm/plugin/sns/ui/SnsUIAction:aQ	(Landroid/content/Intent;)V
+    //   221: ldc_w 821
     //   224: invokestatic 189	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   227: return
     //   228: ldc 214
-    //   230: ldc_w 855
+    //   230: ldc_w 856
     //   233: iconst_2
     //   234: anewarray 4	java/lang/Object
     //   237: dup
     //   238: iconst_0
     //   239: aload 5
-    //   241: getfield 858	com/tencent/mm/plugin/mmsight/SightCaptureResult:vMu	Ljava/lang/String;
+    //   241: getfield 859	com/tencent/mm/plugin/mmsight/SightCaptureResult:vYy	Ljava/lang/String;
     //   244: aastore
     //   245: dup
     //   246: iconst_1
     //   247: aload 5
-    //   249: getfield 861	com/tencent/mm/plugin/mmsight/SightCaptureResult:vMv	Ljava/lang/String;
+    //   249: getfield 862	com/tencent/mm/plugin/mmsight/SightCaptureResult:vYz	Ljava/lang/String;
     //   252: aastore
-    //   253: invokestatic 563	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   253: invokestatic 563	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   256: new 292	android/content/Intent
     //   259: dup
     //   260: invokespecial 475	android/content/Intent:<init>	()V
     //   263: astore 4
     //   265: aload 4
-    //   267: ldc_w 863
+    //   267: ldc_w 864
     //   270: aload 5
-    //   272: getfield 858	com/tencent/mm/plugin/mmsight/SightCaptureResult:vMu	Ljava/lang/String;
+    //   272: getfield 859	com/tencent/mm/plugin/mmsight/SightCaptureResult:vYy	Ljava/lang/String;
     //   275: invokevirtual 330	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
     //   278: pop
     //   279: aload 4
-    //   281: ldc_w 865
+    //   281: ldc_w 866
     //   284: aload 5
-    //   286: getfield 861	com/tencent/mm/plugin/mmsight/SightCaptureResult:vMv	Ljava/lang/String;
+    //   286: getfield 862	com/tencent/mm/plugin/mmsight/SightCaptureResult:vYz	Ljava/lang/String;
     //   289: invokevirtual 330	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
     //   292: pop
     //   293: aload 5
-    //   295: getfield 868	com/tencent/mm/plugin/mmsight/SightCaptureResult:vMx	Ljava/lang/String;
-    //   298: invokestatic 851	com/tencent/mm/sdk/platformtools/bt:isNullOrNil	(Ljava/lang/String;)Z
+    //   295: getfield 869	com/tencent/mm/plugin/mmsight/SightCaptureResult:vYB	Ljava/lang/String;
+    //   298: invokestatic 852	com/tencent/mm/sdk/platformtools/bu:isNullOrNil	(Ljava/lang/String;)Z
     //   301: ifne +121 -> 422
     //   304: aload 4
-    //   306: ldc_w 870
+    //   306: ldc_w 871
     //   309: aload 5
-    //   311: getfield 868	com/tencent/mm/plugin/mmsight/SightCaptureResult:vMx	Ljava/lang/String;
+    //   311: getfield 869	com/tencent/mm/plugin/mmsight/SightCaptureResult:vYB	Ljava/lang/String;
     //   314: invokevirtual 330	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
     //   317: pop
     //   318: aload 4
@@ -692,11 +694,11 @@ public class SnsUIAction
     //   327: pop
     //   328: aload 4
     //   330: ldc_w 309
-    //   333: invokestatic 314	com/tencent/mm/sdk/platformtools/bt:aQJ	()J
+    //   333: invokestatic 314	com/tencent/mm/sdk/platformtools/bu:aRi	()J
     //   336: invokevirtual 317	android/content/Intent:putExtra	(Ljava/lang/String;J)Landroid/content/Intent;
     //   339: pop
     //   340: aload 4
-    //   342: ldc_w 872
+    //   342: ldc_w 873
     //   345: bipush 14
     //   347: invokevirtual 335	android/content/Intent:putExtra	(Ljava/lang/String;I)Landroid/content/Intent;
     //   350: pop
@@ -713,297 +715,297 @@ public class SnsUIAction
     //   373: invokevirtual 330	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
     //   376: pop
     //   377: aload 5
-    //   379: getfield 876	com/tencent/mm/plugin/mmsight/SightCaptureResult:vMz	Lcom/tencent/mm/protocal/protobuf/bxm;
-    //   382: invokevirtual 881	com/tencent/mm/protocal/protobuf/bxm:toByteArray	()[B
+    //   379: getfield 877	com/tencent/mm/plugin/mmsight/SightCaptureResult:vYD	Lcom/tencent/mm/protocal/protobuf/byg;
+    //   382: invokevirtual 882	com/tencent/mm/protocal/protobuf/byg:toByteArray	()[B
     //   385: astore_3
     //   386: aload_3
     //   387: ifnull +13 -> 400
     //   390: aload 4
-    //   392: ldc_w 883
+    //   392: ldc_w 884
     //   395: aload_3
-    //   396: invokevirtual 886	android/content/Intent:putExtra	(Ljava/lang/String;[B)Landroid/content/Intent;
+    //   396: invokevirtual 887	android/content/Intent:putExtra	(Ljava/lang/String;[B)Landroid/content/Intent;
     //   399: pop
     //   400: aload_0
     //   401: getfield 186	com/tencent/mm/plugin/sns/ui/SnsUIAction:mActivity	Landroid/app/Activity;
-    //   404: ldc_w 888
-    //   407: ldc_w 890
+    //   404: ldc_w 889
+    //   407: ldc_w 891
     //   410: aload 4
-    //   412: invokestatic 895	com/tencent/mm/bs/d:b	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Landroid/content/Intent;)V
-    //   415: ldc_w 820
+    //   412: invokestatic 896	com/tencent/mm/br/d:b	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Landroid/content/Intent;)V
+    //   415: ldc_w 821
     //   418: invokestatic 189	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   421: return
     //   422: aload 4
-    //   424: ldc_w 870
+    //   424: ldc_w 871
     //   427: aload 5
-    //   429: getfield 858	com/tencent/mm/plugin/mmsight/SightCaptureResult:vMu	Ljava/lang/String;
-    //   432: invokestatic 900	com/tencent/mm/vfs/i:aPK	(Ljava/lang/String;)Ljava/lang/String;
+    //   429: getfield 859	com/tencent/mm/plugin/mmsight/SightCaptureResult:vYy	Ljava/lang/String;
+    //   432: invokestatic 901	com/tencent/mm/vfs/o:aRh	(Ljava/lang/String;)Ljava/lang/String;
     //   435: invokevirtual 330	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
     //   438: pop
     //   439: goto -121 -> 318
     //   442: astore_3
     //   443: ldc 214
-    //   445: ldc_w 902
+    //   445: ldc_w 903
     //   448: iconst_1
     //   449: anewarray 4	java/lang/Object
     //   452: dup
     //   453: iconst_0
     //   454: aload_3
-    //   455: invokevirtual 905	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   455: invokevirtual 906	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   458: aastore
-    //   459: invokestatic 563	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   459: invokestatic 563	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   462: goto -62 -> 400
     //   465: aload_0
     //   466: aload_0
     //   467: getfield 186	com/tencent/mm/plugin/sns/ui/SnsUIAction:mActivity	Landroid/app/Activity;
-    //   470: invokevirtual 909	android/app/Activity:getApplicationContext	()Landroid/content/Context;
+    //   470: invokevirtual 910	android/app/Activity:getApplicationContext	()Landroid/content/Context;
     //   473: aload_3
-    //   474: invokestatic 277	com/tencent/mm/plugin/sns/model/ag:getAccSnsTmpPath	()Ljava/lang/String;
-    //   477: invokestatic 912	com/tencent/mm/pluginsdk/ui/tools/q:i	(Landroid/content/Context;Landroid/content/Intent;Ljava/lang/String;)Ljava/lang/String;
+    //   474: invokestatic 277	com/tencent/mm/plugin/sns/model/ah:getAccSnsTmpPath	()Ljava/lang/String;
+    //   477: invokestatic 913	com/tencent/mm/pluginsdk/ui/tools/q:i	(Landroid/content/Context;Landroid/content/Intent;Ljava/lang/String;)Ljava/lang/String;
     //   480: putfield 231	com/tencent/mm/plugin/sns/ui/SnsUIAction:filePath	Ljava/lang/String;
     //   483: ldc 214
     //   485: new 224	java/lang/StringBuilder
     //   488: dup
-    //   489: ldc_w 914
+    //   489: ldc_w 915
     //   492: invokespecial 229	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   495: aload_0
     //   496: getfield 231	com/tencent/mm/plugin/sns/ui/SnsUIAction:filePath	Ljava/lang/String;
     //   499: invokevirtual 235	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   502: invokevirtual 239	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   505: invokestatic 222	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   505: invokestatic 222	com/tencent/mm/sdk/platformtools/ae:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   508: aload_0
     //   509: getfield 231	com/tencent/mm/plugin/sns/ui/SnsUIAction:filePath	Ljava/lang/String;
     //   512: ifnonnull +10 -> 522
-    //   515: ldc_w 820
+    //   515: ldc_w 821
     //   518: invokestatic 189	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   521: return
-    //   522: invokestatic 452	com/tencent/mm/kernel/g:ajD	()Lcom/tencent/mm/kernel/g;
+    //   522: invokestatic 452	com/tencent/mm/kernel/g:ajS	()Lcom/tencent/mm/kernel/g;
     //   525: pop
-    //   526: invokestatic 456	com/tencent/mm/kernel/g:ajC	()Lcom/tencent/mm/kernel/e;
-    //   529: invokevirtual 489	com/tencent/mm/kernel/e:ajl	()Lcom/tencent/mm/storage/ai;
-    //   532: ldc_w 915
+    //   526: invokestatic 456	com/tencent/mm/kernel/g:ajR	()Lcom/tencent/mm/kernel/e;
+    //   529: invokevirtual 489	com/tencent/mm/kernel/e:ajA	()Lcom/tencent/mm/storage/aj;
+    //   532: ldc_w 916
     //   535: aconst_null
-    //   536: invokevirtual 496	com/tencent/mm/storage/ai:get	(ILjava/lang/Object;)Ljava/lang/Object;
+    //   536: invokevirtual 496	com/tencent/mm/storage/aj:get	(ILjava/lang/Object;)Ljava/lang/Object;
     //   539: checkcast 498	java/lang/Integer
     //   542: iconst_0
-    //   543: invokestatic 501	com/tencent/mm/sdk/platformtools/bt:a	(Ljava/lang/Integer;I)I
+    //   543: invokestatic 501	com/tencent/mm/sdk/platformtools/bu:a	(Ljava/lang/Integer;I)I
     //   546: istore_1
-    //   547: invokestatic 452	com/tencent/mm/kernel/g:ajD	()Lcom/tencent/mm/kernel/g;
+    //   547: invokestatic 452	com/tencent/mm/kernel/g:ajS	()Lcom/tencent/mm/kernel/g;
     //   550: pop
-    //   551: invokestatic 456	com/tencent/mm/kernel/g:ajC	()Lcom/tencent/mm/kernel/e;
-    //   554: invokevirtual 489	com/tencent/mm/kernel/e:ajl	()Lcom/tencent/mm/storage/ai;
-    //   557: ldc_w 915
+    //   551: invokestatic 456	com/tencent/mm/kernel/g:ajR	()Lcom/tencent/mm/kernel/e;
+    //   554: invokevirtual 489	com/tencent/mm/kernel/e:ajA	()Lcom/tencent/mm/storage/aj;
+    //   557: ldc_w 916
     //   560: iload_1
     //   561: iconst_1
     //   562: iadd
     //   563: invokestatic 560	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   566: invokevirtual 919	com/tencent/mm/storage/ai:set	(ILjava/lang/Object;)V
+    //   566: invokevirtual 920	com/tencent/mm/storage/aj:set	(ILjava/lang/Object;)V
     //   569: aload_0
     //   570: iconst_1
-    //   571: putfield 140	com/tencent/mm/plugin/sns/ui/SnsUIAction:zdF	Z
+    //   571: putfield 140	com/tencent/mm/plugin/sns/ui/SnsUIAction:zuv	Z
     //   574: aload_0
     //   575: aload_3
-    //   576: invokespecial 853	com/tencent/mm/plugin/sns/ui/SnsUIAction:aP	(Landroid/content/Intent;)V
-    //   579: ldc_w 820
+    //   576: invokespecial 854	com/tencent/mm/plugin/sns/ui/SnsUIAction:aQ	(Landroid/content/Intent;)V
+    //   579: ldc_w 821
     //   582: invokestatic 189	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   585: return
     //   586: aload_3
     //   587: ifnonnull +10 -> 597
-    //   590: ldc_w 820
+    //   590: ldc_w 821
     //   593: invokestatic 189	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   596: return
-    //   597: invokestatic 452	com/tencent/mm/kernel/g:ajD	()Lcom/tencent/mm/kernel/g;
+    //   597: invokestatic 452	com/tencent/mm/kernel/g:ajS	()Lcom/tencent/mm/kernel/g;
     //   600: pop
-    //   601: invokestatic 456	com/tencent/mm/kernel/g:ajC	()Lcom/tencent/mm/kernel/e;
-    //   604: invokevirtual 489	com/tencent/mm/kernel/e:ajl	()Lcom/tencent/mm/storage/ai;
-    //   607: ldc_w 920
+    //   601: invokestatic 456	com/tencent/mm/kernel/g:ajR	()Lcom/tencent/mm/kernel/e;
+    //   604: invokevirtual 489	com/tencent/mm/kernel/e:ajA	()Lcom/tencent/mm/storage/aj;
+    //   607: ldc_w 921
     //   610: aconst_null
-    //   611: invokevirtual 496	com/tencent/mm/storage/ai:get	(ILjava/lang/Object;)Ljava/lang/Object;
+    //   611: invokevirtual 496	com/tencent/mm/storage/aj:get	(ILjava/lang/Object;)Ljava/lang/Object;
     //   614: checkcast 498	java/lang/Integer
     //   617: iconst_0
-    //   618: invokestatic 501	com/tencent/mm/sdk/platformtools/bt:a	(Ljava/lang/Integer;I)I
+    //   618: invokestatic 501	com/tencent/mm/sdk/platformtools/bu:a	(Ljava/lang/Integer;I)I
     //   621: istore_1
-    //   622: invokestatic 452	com/tencent/mm/kernel/g:ajD	()Lcom/tencent/mm/kernel/g;
+    //   622: invokestatic 452	com/tencent/mm/kernel/g:ajS	()Lcom/tencent/mm/kernel/g;
     //   625: pop
-    //   626: invokestatic 456	com/tencent/mm/kernel/g:ajC	()Lcom/tencent/mm/kernel/e;
-    //   629: invokevirtual 489	com/tencent/mm/kernel/e:ajl	()Lcom/tencent/mm/storage/ai;
-    //   632: ldc_w 920
+    //   626: invokestatic 456	com/tencent/mm/kernel/g:ajR	()Lcom/tencent/mm/kernel/e;
+    //   629: invokevirtual 489	com/tencent/mm/kernel/e:ajA	()Lcom/tencent/mm/storage/aj;
+    //   632: ldc_w 921
     //   635: iload_1
     //   636: iconst_1
     //   637: iadd
     //   638: invokestatic 560	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   641: invokevirtual 919	com/tencent/mm/storage/ai:set	(ILjava/lang/Object;)V
+    //   641: invokevirtual 920	com/tencent/mm/storage/aj:set	(ILjava/lang/Object;)V
     //   644: new 292	android/content/Intent
     //   647: dup
     //   648: invokespecial 475	android/content/Intent:<init>	()V
     //   651: astore 4
     //   653: aload 4
-    //   655: ldc_w 922
+    //   655: ldc_w 923
     //   658: iconst_4
     //   659: invokevirtual 335	android/content/Intent:putExtra	(Ljava/lang/String;I)Landroid/content/Intent;
     //   662: pop
     //   663: aload 4
-    //   665: ldc_w 924
+    //   665: ldc_w 925
     //   668: iconst_1
     //   669: invokevirtual 307	android/content/Intent:putExtra	(Ljava/lang/String;Z)Landroid/content/Intent;
     //   672: pop
     //   673: aload 4
-    //   675: ldc_w 926
+    //   675: ldc_w 927
     //   678: iconst_1
     //   679: invokevirtual 307	android/content/Intent:putExtra	(Ljava/lang/String;Z)Landroid/content/Intent;
     //   682: pop
-    //   683: getstatic 932	com/tencent/mm/plugin/sns/c/a:iRG	Lcom/tencent/mm/pluginsdk/m;
+    //   683: getstatic 933	com/tencent/mm/plugin/sns/c/a:iUz	Lcom/tencent/mm/pluginsdk/m;
     //   686: aload_0
     //   687: getfield 186	com/tencent/mm/plugin/sns/ui/SnsUIAction:mActivity	Landroid/app/Activity;
     //   690: aload_3
     //   691: aload 4
-    //   693: invokestatic 277	com/tencent/mm/plugin/sns/model/ag:getAccSnsTmpPath	()Ljava/lang/String;
+    //   693: invokestatic 277	com/tencent/mm/plugin/sns/model/ah:getAccSnsTmpPath	()Ljava/lang/String;
     //   696: iconst_4
     //   697: new 24	com/tencent/mm/plugin/sns/ui/SnsUIAction$2
     //   700: dup
     //   701: aload_0
-    //   702: invokespecial 933	com/tencent/mm/plugin/sns/ui/SnsUIAction$2:<init>	(Lcom/tencent/mm/plugin/sns/ui/SnsUIAction;)V
-    //   705: invokeinterface 938 7 0
-    //   710: ldc_w 820
+    //   702: invokespecial 934	com/tencent/mm/plugin/sns/ui/SnsUIAction$2:<init>	(Lcom/tencent/mm/plugin/sns/ui/SnsUIAction;)V
+    //   705: invokeinterface 939 7 0
+    //   710: ldc_w 821
     //   713: invokestatic 189	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   716: return
-    //   717: new 198	com/tencent/mm/sdk/platformtools/ap
+    //   717: new 198	com/tencent/mm/sdk/platformtools/aq
     //   720: dup
     //   721: invokestatic 204	android/os/Looper:getMainLooper	()Landroid/os/Looper;
-    //   724: invokespecial 207	com/tencent/mm/sdk/platformtools/ap:<init>	(Landroid/os/Looper;)V
+    //   724: invokespecial 207	com/tencent/mm/sdk/platformtools/aq:<init>	(Landroid/os/Looper;)V
     //   727: new 26	com/tencent/mm/plugin/sns/ui/SnsUIAction$3
     //   730: dup
     //   731: aload_0
-    //   732: invokespecial 939	com/tencent/mm/plugin/sns/ui/SnsUIAction$3:<init>	(Lcom/tencent/mm/plugin/sns/ui/SnsUIAction;)V
-    //   735: invokevirtual 212	com/tencent/mm/sdk/platformtools/ap:post	(Ljava/lang/Runnable;)Z
+    //   732: invokespecial 940	com/tencent/mm/plugin/sns/ui/SnsUIAction$3:<init>	(Lcom/tencent/mm/plugin/sns/ui/SnsUIAction;)V
+    //   735: invokevirtual 212	com/tencent/mm/sdk/platformtools/aq:post	(Ljava/lang/Runnable;)Z
     //   738: pop
     //   739: aload_3
-    //   740: ldc_w 941
-    //   743: invokevirtual 945	android/content/Intent:getStringArrayListExtra	(Ljava/lang/String;)Ljava/util/ArrayList;
+    //   740: ldc_w 942
+    //   743: invokevirtual 946	android/content/Intent:getStringArrayListExtra	(Ljava/lang/String;)Ljava/util/ArrayList;
     //   746: astore 4
     //   748: aload_3
-    //   749: ldc_w 947
+    //   749: ldc_w 948
     //   752: invokevirtual 347	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
-    //   755: invokestatic 950	com/tencent/mm/plugin/sns/data/q:ayl	(Ljava/lang/String;)V
+    //   755: invokestatic 951	com/tencent/mm/plugin/sns/data/r:azC	(Ljava/lang/String;)V
     //   758: aload 4
     //   760: ifnull +11 -> 771
     //   763: aload 4
-    //   765: invokevirtual 953	java/util/ArrayList:size	()I
+    //   765: invokevirtual 954	java/util/ArrayList:size	()I
     //   768: ifgt +16 -> 784
     //   771: aload_3
-    //   772: ldc_w 955
+    //   772: ldc_w 956
     //   775: invokevirtual 347	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
-    //   778: invokestatic 851	com/tencent/mm/sdk/platformtools/bt:isNullOrNil	(Ljava/lang/String;)Z
+    //   778: invokestatic 852	com/tencent/mm/sdk/platformtools/bu:isNullOrNil	(Ljava/lang/String;)Z
     //   781: ifne +441 -> 1222
     //   784: aload 4
     //   786: ifnull +124 -> 910
     //   789: aload 4
-    //   791: invokevirtual 953	java/util/ArrayList:size	()I
+    //   791: invokevirtual 954	java/util/ArrayList:size	()I
     //   794: ifle +116 -> 910
     //   797: aload 4
     //   799: iconst_0
-    //   800: invokevirtual 957	java/util/ArrayList:get	(I)Ljava/lang/Object;
+    //   800: invokevirtual 958	java/util/ArrayList:get	(I)Ljava/lang/Object;
     //   803: checkcast 262	java/lang/String
     //   806: astore 4
     //   808: aload_3
-    //   809: ldc_w 959
+    //   809: ldc_w 960
     //   812: invokevirtual 347	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
     //   815: astore 5
     //   817: aload 5
-    //   819: invokestatic 851	com/tencent/mm/sdk/platformtools/bt:isNullOrNil	(Ljava/lang/String;)Z
+    //   819: invokestatic 852	com/tencent/mm/sdk/platformtools/bu:isNullOrNil	(Ljava/lang/String;)Z
     //   822: ifne +14 -> 836
     //   825: aload 5
     //   827: astore_3
     //   828: aload 5
-    //   830: invokestatic 962	com/tencent/mm/vfs/i:fv	(Ljava/lang/String;)Z
+    //   830: invokestatic 963	com/tencent/mm/vfs/o:fB	(Ljava/lang/String;)Z
     //   833: ifne +189 -> 1022
     //   836: new 224	java/lang/StringBuilder
     //   839: dup
     //   840: invokespecial 251	java/lang/StringBuilder:<init>	()V
-    //   843: invokestatic 277	com/tencent/mm/plugin/sns/model/ag:getAccSnsTmpPath	()Ljava/lang/String;
+    //   843: invokestatic 277	com/tencent/mm/plugin/sns/model/ah:getAccSnsTmpPath	()Ljava/lang/String;
     //   846: invokevirtual 235	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   849: aload 4
-    //   851: invokestatic 900	com/tencent/mm/vfs/i:aPK	(Ljava/lang/String;)Ljava/lang/String;
+    //   851: invokestatic 901	com/tencent/mm/vfs/o:aRh	(Ljava/lang/String;)Ljava/lang/String;
     //   854: invokevirtual 235	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   857: invokevirtual 239	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   860: astore_3
-    //   861: new 964	com/tencent/mm/compatible/h/d
+    //   861: new 965	com/tencent/mm/compatible/h/d
     //   864: dup
-    //   865: invokespecial 965	com/tencent/mm/compatible/h/d:<init>	()V
+    //   865: invokespecial 966	com/tencent/mm/compatible/h/d:<init>	()V
     //   868: astore 5
     //   870: aload 5
     //   872: aload 4
-    //   874: invokevirtual 970	android/media/MediaMetadataRetriever:setDataSource	(Ljava/lang/String;)V
+    //   874: invokevirtual 971	android/media/MediaMetadataRetriever:setDataSource	(Ljava/lang/String;)V
     //   877: aload 5
     //   879: lconst_0
-    //   880: invokevirtual 974	android/media/MediaMetadataRetriever:getFrameAtTime	(J)Landroid/graphics/Bitmap;
+    //   880: invokevirtual 975	android/media/MediaMetadataRetriever:getFrameAtTime	(J)Landroid/graphics/Bitmap;
     //   883: astore 6
     //   885: aload 6
     //   887: ifnonnull +43 -> 930
     //   890: ldc 214
-    //   892: ldc_w 976
-    //   895: invokestatic 834	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   892: ldc_w 977
+    //   895: invokestatic 835	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   898: aload 5
-    //   900: invokevirtual 979	android/media/MediaMetadataRetriever:release	()V
-    //   903: ldc_w 820
+    //   900: invokevirtual 980	android/media/MediaMetadataRetriever:release	()V
+    //   903: ldc_w 821
     //   906: invokestatic 189	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   909: return
     //   910: aload_3
-    //   911: ldc_w 955
+    //   911: ldc_w 956
     //   914: invokevirtual 347	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
     //   917: astore 4
     //   919: goto -111 -> 808
     //   922: astore_3
-    //   923: ldc_w 820
+    //   923: ldc_w 821
     //   926: invokestatic 189	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   929: return
     //   930: ldc 214
-    //   932: ldc_w 981
+    //   932: ldc_w 982
     //   935: iconst_2
     //   936: anewarray 4	java/lang/Object
     //   939: dup
     //   940: iconst_0
     //   941: aload 6
-    //   943: invokevirtual 986	android/graphics/Bitmap:getWidth	()I
+    //   943: invokevirtual 987	android/graphics/Bitmap:getWidth	()I
     //   946: invokestatic 560	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   949: aastore
     //   950: dup
     //   951: iconst_1
     //   952: aload 6
-    //   954: invokevirtual 989	android/graphics/Bitmap:getHeight	()I
+    //   954: invokevirtual 990	android/graphics/Bitmap:getHeight	()I
     //   957: invokestatic 560	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   960: aastore
-    //   961: invokestatic 563	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   961: invokestatic 563	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   964: aload 6
     //   966: bipush 80
-    //   968: getstatic 995	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
+    //   968: getstatic 996	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
     //   971: aload_3
     //   972: iconst_1
-    //   973: invokestatic 1000	com/tencent/mm/sdk/platformtools/g:a	(Landroid/graphics/Bitmap;ILandroid/graphics/Bitmap$CompressFormat;Ljava/lang/String;Z)Z
+    //   973: invokestatic 1001	com/tencent/mm/sdk/platformtools/h:a	(Landroid/graphics/Bitmap;ILandroid/graphics/Bitmap$CompressFormat;Ljava/lang/String;Z)Z
     //   976: pop
     //   977: aload_3
-    //   978: invokestatic 1004	com/tencent/mm/sdk/platformtools/g:aQc	(Ljava/lang/String;)Landroid/graphics/BitmapFactory$Options;
+    //   978: invokestatic 1005	com/tencent/mm/sdk/platformtools/h:aRz	(Ljava/lang/String;)Landroid/graphics/BitmapFactory$Options;
     //   981: astore 6
     //   983: ldc 214
-    //   985: ldc_w 1006
+    //   985: ldc_w 1007
     //   988: iconst_2
     //   989: anewarray 4	java/lang/Object
     //   992: dup
     //   993: iconst_0
     //   994: aload 6
-    //   996: getfield 1011	android/graphics/BitmapFactory$Options:outWidth	I
+    //   996: getfield 1012	android/graphics/BitmapFactory$Options:outWidth	I
     //   999: invokestatic 560	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   1002: aastore
     //   1003: dup
     //   1004: iconst_1
     //   1005: aload 6
-    //   1007: getfield 1014	android/graphics/BitmapFactory$Options:outHeight	I
+    //   1007: getfield 1015	android/graphics/BitmapFactory$Options:outHeight	I
     //   1010: invokestatic 560	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   1013: aastore
-    //   1014: invokestatic 563	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   1014: invokestatic 563	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   1017: aload 5
-    //   1019: invokevirtual 979	android/media/MediaMetadataRetriever:release	()V
+    //   1019: invokevirtual 980	android/media/MediaMetadataRetriever:release	()V
     //   1022: ldc 214
-    //   1024: ldc_w 1016
+    //   1024: ldc_w 1017
     //   1027: iconst_4
     //   1028: anewarray 4	java/lang/Object
     //   1031: dup
@@ -1017,34 +1019,34 @@ public class SnsUIAction
     //   1040: dup
     //   1041: iconst_2
     //   1042: aload 4
-    //   1044: invokestatic 1020	com/tencent/mm/vfs/i:aYo	(Ljava/lang/String;)J
-    //   1047: invokestatic 1025	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   1044: invokestatic 1021	com/tencent/mm/vfs/o:aZR	(Ljava/lang/String;)J
+    //   1047: invokestatic 1026	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   1050: aastore
     //   1051: dup
     //   1052: iconst_3
     //   1053: aload_3
-    //   1054: invokestatic 1020	com/tencent/mm/vfs/i:aYo	(Ljava/lang/String;)J
-    //   1057: invokestatic 1025	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   1054: invokestatic 1021	com/tencent/mm/vfs/o:aZR	(Ljava/lang/String;)J
+    //   1057: invokestatic 1026	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   1060: aastore
-    //   1061: invokestatic 563	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   1061: invokestatic 563	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   1064: new 292	android/content/Intent
     //   1067: dup
     //   1068: invokespecial 475	android/content/Intent:<init>	()V
     //   1071: astore 5
     //   1073: aload 5
-    //   1075: ldc_w 863
+    //   1075: ldc_w 864
     //   1078: aload 4
     //   1080: invokevirtual 330	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
     //   1083: pop
     //   1084: aload 5
-    //   1086: ldc_w 865
+    //   1086: ldc_w 866
     //   1089: aload_3
     //   1090: invokevirtual 330	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
     //   1093: pop
     //   1094: aload 5
-    //   1096: ldc_w 870
+    //   1096: ldc_w 871
     //   1099: aload 4
-    //   1101: invokestatic 900	com/tencent/mm/vfs/i:aPK	(Ljava/lang/String;)Ljava/lang/String;
+    //   1101: invokestatic 901	com/tencent/mm/vfs/o:aRh	(Ljava/lang/String;)Ljava/lang/String;
     //   1104: invokevirtual 330	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
     //   1107: pop
     //   1108: aload 5
@@ -1054,11 +1056,11 @@ public class SnsUIAction
     //   1117: pop
     //   1118: aload 5
     //   1120: ldc_w 309
-    //   1123: invokestatic 314	com/tencent/mm/sdk/platformtools/bt:aQJ	()J
+    //   1123: invokestatic 314	com/tencent/mm/sdk/platformtools/bu:aRi	()J
     //   1126: invokevirtual 317	android/content/Intent:putExtra	(Ljava/lang/String;J)Landroid/content/Intent;
     //   1129: pop
     //   1130: aload 5
-    //   1132: ldc_w 872
+    //   1132: ldc_w 873
     //   1135: bipush 14
     //   1137: invokevirtual 335	android/content/Intent:putExtra	(Ljava/lang/String;I)Landroid/content/Intent;
     //   1140: pop
@@ -1069,43 +1071,43 @@ public class SnsUIAction
     //   1150: pop
     //   1151: aload_0
     //   1152: getfield 186	com/tencent/mm/plugin/sns/ui/SnsUIAction:mActivity	Landroid/app/Activity;
-    //   1155: ldc_w 888
-    //   1158: ldc_w 890
+    //   1155: ldc_w 889
+    //   1158: ldc_w 891
     //   1161: aload 5
-    //   1163: invokestatic 895	com/tencent/mm/bs/d:b	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Landroid/content/Intent;)V
-    //   1166: ldc_w 820
+    //   1163: invokestatic 896	com/tencent/mm/br/d:b	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Landroid/content/Intent;)V
+    //   1166: ldc_w 821
     //   1169: invokestatic 189	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   1172: return
     //   1173: astore 6
     //   1175: ldc 214
-    //   1177: ldc_w 1027
+    //   1177: ldc_w 1028
     //   1180: iconst_1
     //   1181: anewarray 4	java/lang/Object
     //   1184: dup
     //   1185: iconst_0
     //   1186: aload 6
-    //   1188: invokevirtual 905	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   1188: invokevirtual 906	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   1191: aastore
-    //   1192: invokestatic 1029	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   1192: invokestatic 1030	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   1195: aload 5
-    //   1197: invokevirtual 979	android/media/MediaMetadataRetriever:release	()V
+    //   1197: invokevirtual 980	android/media/MediaMetadataRetriever:release	()V
     //   1200: goto -178 -> 1022
     //   1203: astore 5
     //   1205: goto -183 -> 1022
     //   1208: astore_3
     //   1209: aload 5
-    //   1211: invokevirtual 979	android/media/MediaMetadataRetriever:release	()V
-    //   1214: ldc_w 820
+    //   1211: invokevirtual 980	android/media/MediaMetadataRetriever:release	()V
+    //   1214: ldc_w 821
     //   1217: invokestatic 189	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   1220: aload_3
     //   1221: athrow
     //   1222: aload_3
-    //   1223: ldc_w 1031
-    //   1226: invokevirtual 1035	android/content/Intent:getBundleExtra	(Ljava/lang/String;)Landroid/os/Bundle;
+    //   1223: ldc_w 1032
+    //   1226: invokevirtual 1036	android/content/Intent:getBundleExtra	(Ljava/lang/String;)Landroid/os/Bundle;
     //   1229: ifnull +89 -> 1318
     //   1232: ldc 214
-    //   1234: ldc_w 1037
-    //   1237: invokestatic 824	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1234: ldc_w 1038
+    //   1237: invokestatic 825	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   1240: new 292	android/content/Intent
     //   1243: dup
     //   1244: invokespecial 475	android/content/Intent:<init>	()V
@@ -1121,39 +1123,39 @@ public class SnsUIAction
     //   1265: invokevirtual 307	android/content/Intent:putExtra	(Ljava/lang/String;Z)Landroid/content/Intent;
     //   1268: pop
     //   1269: aload 4
-    //   1271: ldc_w 872
+    //   1271: ldc_w 873
     //   1274: bipush 14
     //   1276: invokevirtual 335	android/content/Intent:putExtra	(Ljava/lang/String;I)Landroid/content/Intent;
     //   1279: pop
     //   1280: aload 4
-    //   1282: ldc_w 1031
+    //   1282: ldc_w 1032
     //   1285: aload_3
-    //   1286: ldc_w 1031
-    //   1289: invokevirtual 1035	android/content/Intent:getBundleExtra	(Ljava/lang/String;)Landroid/os/Bundle;
-    //   1292: invokevirtual 1040	android/content/Intent:putExtra	(Ljava/lang/String;Landroid/os/Bundle;)Landroid/content/Intent;
+    //   1286: ldc_w 1032
+    //   1289: invokevirtual 1036	android/content/Intent:getBundleExtra	(Ljava/lang/String;)Landroid/os/Bundle;
+    //   1292: invokevirtual 1041	android/content/Intent:putExtra	(Ljava/lang/String;Landroid/os/Bundle;)Landroid/content/Intent;
     //   1295: pop
     //   1296: aload_0
     //   1297: getfield 186	com/tencent/mm/plugin/sns/ui/SnsUIAction:mActivity	Landroid/app/Activity;
-    //   1300: ldc_w 888
-    //   1303: ldc_w 890
+    //   1300: ldc_w 889
+    //   1303: ldc_w 891
     //   1306: aload 4
-    //   1308: invokestatic 895	com/tencent/mm/bs/d:b	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Landroid/content/Intent;)V
-    //   1311: ldc_w 820
+    //   1308: invokestatic 896	com/tencent/mm/br/d:b	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Landroid/content/Intent;)V
+    //   1311: ldc_w 821
     //   1314: invokestatic 189	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   1317: return
     //   1318: aload_3
-    //   1319: ldc_w 1042
-    //   1322: invokevirtual 945	android/content/Intent:getStringArrayListExtra	(Ljava/lang/String;)Ljava/util/ArrayList;
+    //   1319: ldc_w 1043
+    //   1322: invokevirtual 946	android/content/Intent:getStringArrayListExtra	(Ljava/lang/String;)Ljava/util/ArrayList;
     //   1325: astore 4
     //   1327: aload 4
     //   1329: ifnull +11 -> 1340
     //   1332: aload 4
-    //   1334: invokevirtual 953	java/util/ArrayList:size	()I
+    //   1334: invokevirtual 954	java/util/ArrayList:size	()I
     //   1337: ifne +18 -> 1355
     //   1340: ldc 214
-    //   1342: ldc_w 1044
-    //   1345: invokestatic 824	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1348: ldc_w 820
+    //   1342: ldc_w 1045
+    //   1345: invokestatic 825	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1348: ldc_w 821
     //   1351: invokestatic 189	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   1354: return
     //   1355: new 172	java/util/ArrayList
@@ -1161,23 +1163,23 @@ public class SnsUIAction
     //   1359: invokespecial 173	java/util/ArrayList:<init>	()V
     //   1362: astore 5
     //   1364: aload 4
-    //   1366: invokevirtual 1048	java/util/ArrayList:iterator	()Ljava/util/Iterator;
+    //   1366: invokevirtual 1049	java/util/ArrayList:iterator	()Ljava/util/Iterator;
     //   1369: astore 6
     //   1371: aload 6
-    //   1373: invokeinterface 1053 1 0
+    //   1373: invokeinterface 1054 1 0
     //   1378: ifeq +76 -> 1454
     //   1381: aload 6
-    //   1383: invokeinterface 1057 1 0
+    //   1383: invokeinterface 1058 1 0
     //   1388: checkcast 262	java/lang/String
     //   1391: astore 7
     //   1393: aload 7
-    //   1395: invokestatic 1063	com/tencent/mm/compatible/util/Exif:fromFile	(Ljava/lang/String;)Lcom/tencent/mm/compatible/util/Exif;
-    //   1398: invokevirtual 1067	com/tencent/mm/compatible/util/Exif:getLocation	()Lcom/tencent/mm/compatible/util/Exif$a;
+    //   1395: invokestatic 1064	com/tencent/mm/compatible/util/Exif:fromFile	(Ljava/lang/String;)Lcom/tencent/mm/compatible/util/Exif;
+    //   1398: invokevirtual 1068	com/tencent/mm/compatible/util/Exif:getLocation	()Lcom/tencent/mm/compatible/util/Exif$a;
     //   1401: astore 8
     //   1403: aload 8
     //   1405: ifnull -34 -> 1371
     //   1408: aload 5
-    //   1410: ldc_w 1069
+    //   1410: ldc_w 1070
     //   1413: iconst_3
     //   1414: anewarray 4	java/lang/Object
     //   1417: dup
@@ -1187,25 +1189,25 @@ public class SnsUIAction
     //   1422: dup
     //   1423: iconst_1
     //   1424: aload 8
-    //   1426: getfield 1075	com/tencent/mm/compatible/util/Exif$a:latitude	D
-    //   1429: invokestatic 1080	java/lang/Double:valueOf	(D)Ljava/lang/Double;
+    //   1426: getfield 1076	com/tencent/mm/compatible/util/Exif$a:latitude	D
+    //   1429: invokestatic 1081	java/lang/Double:valueOf	(D)Ljava/lang/Double;
     //   1432: aastore
     //   1433: dup
     //   1434: iconst_2
     //   1435: aload 8
-    //   1437: getfield 1083	com/tencent/mm/compatible/util/Exif$a:longitude	D
-    //   1440: invokestatic 1080	java/lang/Double:valueOf	(D)Ljava/lang/Double;
+    //   1437: getfield 1084	com/tencent/mm/compatible/util/Exif$a:longitude	D
+    //   1440: invokestatic 1081	java/lang/Double:valueOf	(D)Ljava/lang/Double;
     //   1443: aastore
-    //   1444: invokestatic 1087	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   1447: invokevirtual 705	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   1444: invokestatic 1088	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   1447: invokevirtual 706	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   1450: pop
     //   1451: goto -80 -> 1371
     //   1454: aload_0
     //   1455: aload_3
-    //   1456: ldc_w 1089
+    //   1456: ldc_w 1090
     //   1459: iconst_0
-    //   1460: invokevirtual 1093	android/content/Intent:getBooleanExtra	(Ljava/lang/String;Z)Z
-    //   1463: putfield 140	com/tencent/mm/plugin/sns/ui/SnsUIAction:zdF	Z
+    //   1460: invokevirtual 1094	android/content/Intent:getBooleanExtra	(Ljava/lang/String;Z)Z
+    //   1463: putfield 140	com/tencent/mm/plugin/sns/ui/SnsUIAction:zuv	Z
     //   1466: new 292	android/content/Intent
     //   1469: dup
     //   1470: aload_0
@@ -1220,22 +1222,22 @@ public class SnsUIAction
     //   1491: pop
     //   1492: aload 6
     //   1494: ldc_w 309
-    //   1497: invokestatic 314	com/tencent/mm/sdk/platformtools/bt:aQJ	()J
+    //   1497: invokestatic 314	com/tencent/mm/sdk/platformtools/bu:aRi	()J
     //   1500: invokevirtual 317	android/content/Intent:putExtra	(Ljava/lang/String;J)Landroid/content/Intent;
     //   1503: pop
     //   1504: aload_0
-    //   1505: getfield 184	com/tencent/mm/plugin/sns/ui/SnsUIAction:Aoh	Lcom/tencent/mm/modelsns/e;
+    //   1505: getfield 184	com/tencent/mm/plugin/sns/ui/SnsUIAction:AFu	Lcom/tencent/mm/modelsns/e;
     //   1508: ifnull +20 -> 1528
     //   1511: aload_0
-    //   1512: getfield 184	com/tencent/mm/plugin/sns/ui/SnsUIAction:Aoh	Lcom/tencent/mm/modelsns/e;
+    //   1512: getfield 184	com/tencent/mm/plugin/sns/ui/SnsUIAction:AFu	Lcom/tencent/mm/modelsns/e;
     //   1515: aload 6
     //   1517: ldc_w 319
     //   1520: invokevirtual 325	com/tencent/mm/modelsns/e:b	(Landroid/content/Intent;Ljava/lang/String;)V
     //   1523: aload_0
     //   1524: aconst_null
-    //   1525: putfield 184	com/tencent/mm/plugin/sns/ui/SnsUIAction:Aoh	Lcom/tencent/mm/modelsns/e;
+    //   1525: putfield 184	com/tencent/mm/plugin/sns/ui/SnsUIAction:AFu	Lcom/tencent/mm/modelsns/e;
     //   1528: aload_0
-    //   1529: getfield 339	com/tencent/mm/plugin/sns/ui/SnsUIAction:zRo	Z
+    //   1529: getfield 339	com/tencent/mm/plugin/sns/ui/SnsUIAction:Aiv	Z
     //   1532: ifeq +14 -> 1546
     //   1535: aload 6
     //   1537: ldc_w 341
@@ -1248,9 +1250,9 @@ public class SnsUIAction
     //   1551: invokevirtual 296	android/content/Intent:getIntExtra	(Ljava/lang/String;I)I
     //   1554: istore_1
     //   1555: aload 6
-    //   1557: ldc_w 1095
+    //   1557: ldc_w 1096
     //   1560: aload 4
-    //   1562: invokevirtual 1098	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/io/Serializable;)Landroid/content/Intent;
+    //   1562: invokevirtual 1099	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/io/Serializable;)Landroid/content/Intent;
     //   1565: pop
     //   1566: aload 6
     //   1568: ldc_w 332
@@ -1258,7 +1260,7 @@ public class SnsUIAction
     //   1572: invokevirtual 335	android/content/Intent:putExtra	(Ljava/lang/String;I)Landroid/content/Intent;
     //   1575: pop
     //   1576: aload_0
-    //   1577: getfield 140	com/tencent/mm/plugin/sns/ui/SnsUIAction:zdF	Z
+    //   1577: getfield 140	com/tencent/mm/plugin/sns/ui/SnsUIAction:zuv	Z
     //   1580: ifeq +13 -> 1593
     //   1583: aload 6
     //   1585: ldc_w 337
@@ -1266,118 +1268,118 @@ public class SnsUIAction
     //   1589: invokevirtual 307	android/content/Intent:putExtra	(Ljava/lang/String;Z)Landroid/content/Intent;
     //   1592: pop
     //   1593: aload 6
-    //   1595: ldc_w 1100
+    //   1595: ldc_w 1101
     //   1598: aload 5
-    //   1600: invokevirtual 1104	android/content/Intent:putStringArrayListExtra	(Ljava/lang/String;Ljava/util/ArrayList;)Landroid/content/Intent;
+    //   1600: invokevirtual 1105	android/content/Intent:putStringArrayListExtra	(Ljava/lang/String;Ljava/util/ArrayList;)Landroid/content/Intent;
     //   1603: pop
     //   1604: ldc 214
-    //   1606: ldc_w 1106
+    //   1606: ldc_w 1107
     //   1609: iconst_1
     //   1610: anewarray 4	java/lang/Object
     //   1613: dup
     //   1614: iconst_0
     //   1615: aload 6
-    //   1617: ldc_w 872
+    //   1617: ldc_w 873
     //   1620: iconst_m1
     //   1621: invokevirtual 296	android/content/Intent:getIntExtra	(Ljava/lang/String;I)I
     //   1624: invokestatic 560	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   1627: aastore
-    //   1628: invokestatic 1108	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   1628: invokestatic 1109	com/tencent/mm/sdk/platformtools/ae:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   1631: aload_0
     //   1632: getfield 186	com/tencent/mm/plugin/sns/ui/SnsUIAction:mActivity	Landroid/app/Activity;
     //   1635: aload 6
     //   1637: bipush 6
     //   1639: invokevirtual 353	android/app/Activity:startActivityForResult	(Landroid/content/Intent;I)V
-    //   1642: ldc_w 820
+    //   1642: ldc_w 821
     //   1645: invokestatic 189	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   1648: return
     //   1649: aload_3
     //   1650: ifnonnull +10 -> 1660
-    //   1653: ldc_w 820
+    //   1653: ldc_w 821
     //   1656: invokestatic 189	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   1659: return
     //   1660: aload_0
     //   1661: aload_3
-    //   1662: ldc_w 1110
+    //   1662: ldc_w 1111
     //   1665: invokevirtual 347	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
     //   1668: putfield 231	com/tencent/mm/plugin/sns/ui/SnsUIAction:filePath	Ljava/lang/String;
     //   1671: aload_0
     //   1672: aload_3
-    //   1673: invokespecial 853	com/tencent/mm/plugin/sns/ui/SnsUIAction:aP	(Landroid/content/Intent;)V
-    //   1676: ldc_w 820
+    //   1673: invokespecial 854	com/tencent/mm/plugin/sns/ui/SnsUIAction:aQ	(Landroid/content/Intent;)V
+    //   1676: ldc_w 821
     //   1679: invokestatic 189	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   1682: return
     //   1683: ldc 214
-    //   1685: ldc_w 1112
-    //   1688: invokestatic 222	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1685: ldc_w 1113
+    //   1688: invokestatic 222	com/tencent/mm/sdk/platformtools/ae:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   1691: aload_3
     //   1692: ifnonnull +10 -> 1702
-    //   1695: ldc_w 820
+    //   1695: ldc_w 821
     //   1698: invokestatic 189	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   1701: return
     //   1702: aload_3
-    //   1703: ldc_w 1114
+    //   1703: ldc_w 1115
     //   1706: iconst_m1
     //   1707: invokevirtual 296	android/content/Intent:getIntExtra	(Ljava/lang/String;I)I
     //   1710: istore_1
     //   1711: aload_0
-    //   1712: getfield 363	com/tencent/mm/plugin/sns/ui/SnsUIAction:AnR	Lcom/tencent/mm/plugin/sns/ui/SnsUIAction$a;
+    //   1712: getfield 363	com/tencent/mm/plugin/sns/ui/SnsUIAction:AFe	Lcom/tencent/mm/plugin/sns/ui/SnsUIAction$a;
     //   1715: iload_1
     //   1716: aconst_null
     //   1717: aconst_null
-    //   1718: invokeinterface 1117 4 0
-    //   1723: invokestatic 1121	com/tencent/mm/plugin/sns/model/ag:dUa	()Lcom/tencent/mm/plugin/sns/model/bb;
-    //   1726: invokevirtual 1126	com/tencent/mm/plugin/sns/model/bb:dSE	()V
-    //   1729: ldc_w 820
+    //   1718: invokeinterface 1118 4 0
+    //   1723: invokestatic 1122	com/tencent/mm/plugin/sns/model/ah:dXA	()Lcom/tencent/mm/plugin/sns/model/bc;
+    //   1726: invokevirtual 1127	com/tencent/mm/plugin/sns/model/bc:dWc	()V
+    //   1729: ldc_w 821
     //   1732: invokestatic 189	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   1735: return
     //   1736: ldc 214
-    //   1738: ldc_w 1128
-    //   1741: invokestatic 222	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1738: ldc_w 1129
+    //   1741: invokestatic 222	com/tencent/mm/sdk/platformtools/ae:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   1744: aload_0
-    //   1745: getfield 721	com/tencent/mm/plugin/sns/ui/SnsUIAction:zqQ	Lcom/tencent/mm/plugin/sns/ui/SnsHeader;
-    //   1748: invokevirtual 726	com/tencent/mm/plugin/sns/ui/SnsHeader:ebW	()V
-    //   1751: invokestatic 1121	com/tencent/mm/plugin/sns/model/ag:dUa	()Lcom/tencent/mm/plugin/sns/model/bb;
-    //   1754: invokevirtual 1126	com/tencent/mm/plugin/sns/model/bb:dSE	()V
-    //   1757: ldc_w 820
+    //   1745: getfield 722	com/tencent/mm/plugin/sns/ui/SnsUIAction:zIf	Lcom/tencent/mm/plugin/sns/ui/SnsHeader;
+    //   1748: invokevirtual 727	com/tencent/mm/plugin/sns/ui/SnsHeader:efD	()V
+    //   1751: invokestatic 1122	com/tencent/mm/plugin/sns/model/ah:dXA	()Lcom/tencent/mm/plugin/sns/model/bc;
+    //   1754: invokevirtual 1127	com/tencent/mm/plugin/sns/model/bc:dWc	()V
+    //   1757: ldc_w 821
     //   1760: invokestatic 189	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   1763: return
     //   1764: aload_3
     //   1765: ifnonnull +10 -> 1775
-    //   1768: ldc_w 820
+    //   1768: ldc_w 821
     //   1771: invokestatic 189	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   1774: return
     //   1775: ldc 214
-    //   1777: ldc_w 1130
-    //   1780: invokestatic 222	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1777: ldc_w 1131
+    //   1780: invokestatic 222	com/tencent/mm/sdk/platformtools/ae:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   1783: aload_3
-    //   1784: ldc_w 1132
-    //   1787: invokevirtual 840	android/content/Intent:getParcelableExtra	(Ljava/lang/String;)Landroid/os/Parcelable;
-    //   1790: checkcast 1134	com/tencent/mm/plugin/sns/data/SnsCmdList
+    //   1784: ldc_w 1133
+    //   1787: invokevirtual 841	android/content/Intent:getParcelableExtra	(Ljava/lang/String;)Landroid/os/Parcelable;
+    //   1790: checkcast 1135	com/tencent/mm/plugin/sns/data/SnsCmdList
     //   1793: astore_3
     //   1794: aload_3
     //   1795: ifnull +378 -> 2173
     //   1798: aload_0
-    //   1799: getfield 363	com/tencent/mm/plugin/sns/ui/SnsUIAction:AnR	Lcom/tencent/mm/plugin/sns/ui/SnsUIAction$a;
+    //   1799: getfield 363	com/tencent/mm/plugin/sns/ui/SnsUIAction:AFe	Lcom/tencent/mm/plugin/sns/ui/SnsUIAction$a;
     //   1802: iconst_m1
     //   1803: aload_3
-    //   1804: getfield 1138	com/tencent/mm/plugin/sns/data/SnsCmdList:zdl	Ljava/util/List;
+    //   1804: getfield 1139	com/tencent/mm/plugin/sns/data/SnsCmdList:zub	Ljava/util/List;
     //   1807: aload_3
-    //   1808: getfield 1141	com/tencent/mm/plugin/sns/data/SnsCmdList:zdm	Ljava/util/List;
-    //   1811: invokeinterface 1117 4 0
-    //   1816: ldc_w 820
+    //   1808: getfield 1142	com/tencent/mm/plugin/sns/data/SnsCmdList:zuc	Ljava/util/List;
+    //   1811: invokeinterface 1118 4 0
+    //   1816: ldc_w 821
     //   1819: invokestatic 189	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   1822: return
-    //   1823: invokestatic 1121	com/tencent/mm/plugin/sns/model/ag:dUa	()Lcom/tencent/mm/plugin/sns/model/bb;
-    //   1826: invokevirtual 1126	com/tencent/mm/plugin/sns/model/bb:dSE	()V
+    //   1823: invokestatic 1122	com/tencent/mm/plugin/sns/model/ah:dXA	()Lcom/tencent/mm/plugin/sns/model/bc;
+    //   1826: invokevirtual 1127	com/tencent/mm/plugin/sns/model/bc:dWc	()V
     //   1829: aload_0
-    //   1830: getfield 653	com/tencent/mm/plugin/sns/ui/SnsUIAction:list	Landroid/widget/ListView;
+    //   1830: getfield 654	com/tencent/mm/plugin/sns/ui/SnsUIAction:list	Landroid/widget/ListView;
     //   1833: astore_3
-    //   1834: new 1143	com/tencent/mm/hellhoundlib/b/a
+    //   1834: new 1144	com/tencent/mm/hellhoundlib/b/a
     //   1837: dup
-    //   1838: invokespecial 1144	com/tencent/mm/hellhoundlib/b/a:<init>	()V
+    //   1838: invokespecial 1145	com/tencent/mm/hellhoundlib/b/a:<init>	()V
     //   1841: aload_3
-    //   1842: invokevirtual 1148	com/tencent/mm/hellhoundlib/b/a:bc	(Ljava/lang/Object;)Lcom/tencent/mm/hellhoundlib/b/a;
+    //   1842: invokevirtual 1149	com/tencent/mm/hellhoundlib/b/a:bc	(Ljava/lang/Object;)Lcom/tencent/mm/hellhoundlib/b/a;
     //   1845: astore_3
     //   1846: new 4	java/lang/Object
     //   1849: dup
@@ -1385,40 +1387,40 @@ public class SnsUIAction
     //   1853: astore 4
     //   1855: aload 4
     //   1857: aload_3
-    //   1858: invokevirtual 1152	com/tencent/mm/hellhoundlib/b/a:ahp	()[Ljava/lang/Object;
-    //   1861: ldc_w 752
-    //   1864: ldc_w 1153
-    //   1867: ldc_w 1154
-    //   1870: ldc_w 1156
-    //   1873: ldc_w 1158
-    //   1876: ldc_w 1160
-    //   1879: invokestatic 1163	com/tencent/mm/hellhoundlib/a/a:a	(Ljava/lang/Object;[Ljava/lang/Object;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   1858: invokevirtual 1153	com/tencent/mm/hellhoundlib/b/a:ahE	()[Ljava/lang/Object;
+    //   1861: ldc_w 753
+    //   1864: ldc_w 1154
+    //   1867: ldc_w 1155
+    //   1870: ldc_w 1157
+    //   1873: ldc_w 1159
+    //   1876: ldc_w 1161
+    //   1879: invokestatic 1164	com/tencent/mm/hellhoundlib/a/a:a	(Ljava/lang/Object;[Ljava/lang/Object;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
     //   1882: aload_3
     //   1883: iconst_0
-    //   1884: invokevirtual 1166	com/tencent/mm/hellhoundlib/b/a:mq	(I)Ljava/lang/Object;
-    //   1887: checkcast 655	android/widget/ListView
-    //   1890: invokestatic 1170	com/tencent/mm/sdk/platformtools/BackwardSupportUtil$c:b	(Landroid/widget/ListView;)V
+    //   1884: invokevirtual 1167	com/tencent/mm/hellhoundlib/b/a:mt	(I)Ljava/lang/Object;
+    //   1887: checkcast 656	android/widget/ListView
+    //   1890: invokestatic 1171	com/tencent/mm/sdk/platformtools/BackwardSupportUtil$c:b	(Landroid/widget/ListView;)V
     //   1893: aload 4
-    //   1895: ldc_w 752
-    //   1898: ldc_w 1153
-    //   1901: ldc_w 1154
-    //   1904: ldc_w 1156
-    //   1907: ldc_w 1158
-    //   1910: ldc_w 1160
-    //   1913: invokestatic 1173	com/tencent/mm/hellhoundlib/a/a:a	(Ljava/lang/Object;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-    //   1916: ldc_w 820
+    //   1895: ldc_w 753
+    //   1898: ldc_w 1154
+    //   1901: ldc_w 1155
+    //   1904: ldc_w 1157
+    //   1907: ldc_w 1159
+    //   1910: ldc_w 1161
+    //   1913: invokestatic 1174	com/tencent/mm/hellhoundlib/a/a:a	(Ljava/lang/Object;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   1916: ldc_w 821
     //   1919: invokestatic 189	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   1922: return
     //   1923: aload_3
     //   1924: ifnonnull +10 -> 1934
-    //   1927: ldc_w 820
+    //   1927: ldc_w 821
     //   1930: invokestatic 189	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   1933: return
     //   1934: iload_2
     //   1935: iconst_m1
     //   1936: if_icmpne +237 -> 2173
     //   1939: aload_3
-    //   1940: invokevirtual 1177	android/content/Intent:getData	()Landroid/net/Uri;
+    //   1940: invokevirtual 1178	android/content/Intent:getData	()Landroid/net/Uri;
     //   1943: astore_3
     //   1944: aload_0
     //   1945: getfield 186	com/tencent/mm/plugin/sns/ui/SnsUIAction:mActivity	Landroid/app/Activity;
@@ -1427,99 +1429,99 @@ public class SnsUIAction
     //   1950: aconst_null
     //   1951: aconst_null
     //   1952: aconst_null
-    //   1953: invokevirtual 1181	android/app/Activity:managedQuery	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   1953: invokevirtual 1182	android/app/Activity:managedQuery	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
     //   1956: astore_3
     //   1957: aload_3
-    //   1958: invokeinterface 1186 1 0
+    //   1958: invokeinterface 1187 1 0
     //   1963: ifeq +123 -> 2086
     //   1966: new 292	android/content/Intent
     //   1969: dup
-    //   1970: ldc_w 1188
-    //   1973: ldc_w 1190
+    //   1970: ldc_w 1189
+    //   1973: ldc_w 1191
     //   1976: aload_3
     //   1977: aload_3
-    //   1978: ldc_w 1192
-    //   1981: invokeinterface 1196 2 0
-    //   1986: invokeinterface 1198 2 0
-    //   1991: invokestatic 1201	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   1978: ldc_w 1193
+    //   1981: invokeinterface 1197 2 0
+    //   1986: invokeinterface 1199 2 0
+    //   1991: invokestatic 1202	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
     //   1994: invokevirtual 474	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   1997: invokestatic 1207	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
-    //   2000: invokespecial 1210	android/content/Intent:<init>	(Ljava/lang/String;Landroid/net/Uri;)V
+    //   1997: invokestatic 1208	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
+    //   2000: invokespecial 1211	android/content/Intent:<init>	(Ljava/lang/String;Landroid/net/Uri;)V
     //   2003: astore 4
     //   2005: aload_0
     //   2006: getfield 186	com/tencent/mm/plugin/sns/ui/SnsUIAction:mActivity	Landroid/app/Activity;
     //   2009: astore_3
-    //   2010: new 1143	com/tencent/mm/hellhoundlib/b/a
+    //   2010: new 1144	com/tencent/mm/hellhoundlib/b/a
     //   2013: dup
-    //   2014: invokespecial 1144	com/tencent/mm/hellhoundlib/b/a:<init>	()V
+    //   2014: invokespecial 1145	com/tencent/mm/hellhoundlib/b/a:<init>	()V
     //   2017: aload 4
-    //   2019: invokevirtual 1148	com/tencent/mm/hellhoundlib/b/a:bc	(Ljava/lang/Object;)Lcom/tencent/mm/hellhoundlib/b/a;
+    //   2019: invokevirtual 1149	com/tencent/mm/hellhoundlib/b/a:bc	(Ljava/lang/Object;)Lcom/tencent/mm/hellhoundlib/b/a;
     //   2022: astore 4
     //   2024: aload_3
     //   2025: aload 4
-    //   2027: invokevirtual 1152	com/tencent/mm/hellhoundlib/b/a:ahp	()[Ljava/lang/Object;
-    //   2030: ldc_w 752
-    //   2033: ldc_w 1153
-    //   2036: ldc_w 1154
-    //   2039: ldc_w 1212
-    //   2042: ldc_w 1214
-    //   2045: ldc_w 1215
-    //   2048: invokestatic 1163	com/tencent/mm/hellhoundlib/a/a:a	(Ljava/lang/Object;[Ljava/lang/Object;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   2027: invokevirtual 1153	com/tencent/mm/hellhoundlib/b/a:ahE	()[Ljava/lang/Object;
+    //   2030: ldc_w 753
+    //   2033: ldc_w 1154
+    //   2036: ldc_w 1155
+    //   2039: ldc_w 1213
+    //   2042: ldc_w 1215
+    //   2045: ldc_w 1216
+    //   2048: invokestatic 1164	com/tencent/mm/hellhoundlib/a/a:a	(Ljava/lang/Object;[Ljava/lang/Object;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
     //   2051: aload_3
     //   2052: aload 4
     //   2054: iconst_0
-    //   2055: invokevirtual 1166	com/tencent/mm/hellhoundlib/b/a:mq	(I)Ljava/lang/Object;
+    //   2055: invokevirtual 1167	com/tencent/mm/hellhoundlib/b/a:mt	(I)Ljava/lang/Object;
     //   2058: checkcast 292	android/content/Intent
-    //   2061: invokevirtual 1217	android/app/Activity:startActivity	(Landroid/content/Intent;)V
+    //   2061: invokevirtual 1218	android/app/Activity:startActivity	(Landroid/content/Intent;)V
     //   2064: aload_3
-    //   2065: ldc_w 752
-    //   2068: ldc_w 1153
-    //   2071: ldc_w 1154
-    //   2074: ldc_w 1212
-    //   2077: ldc_w 1214
-    //   2080: ldc_w 1215
-    //   2083: invokestatic 1173	com/tencent/mm/hellhoundlib/a/a:a	(Ljava/lang/Object;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-    //   2086: ldc_w 820
+    //   2065: ldc_w 753
+    //   2068: ldc_w 1154
+    //   2071: ldc_w 1155
+    //   2074: ldc_w 1213
+    //   2077: ldc_w 1215
+    //   2080: ldc_w 1216
+    //   2083: invokestatic 1174	com/tencent/mm/hellhoundlib/a/a:a	(Ljava/lang/Object;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   2086: ldc_w 821
     //   2089: invokestatic 189	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   2092: return
     //   2093: aload_3
-    //   2094: ldc_w 1219
+    //   2094: ldc_w 1220
     //   2097: iconst_m1
     //   2098: invokevirtual 296	android/content/Intent:getIntExtra	(Ljava/lang/String;I)I
     //   2101: istore_1
     //   2102: iload_1
     //   2103: ifle +70 -> 2173
     //   2106: ldc 214
-    //   2108: ldc_w 1221
-    //   2111: invokestatic 222	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   2114: new 1134	com/tencent/mm/plugin/sns/data/SnsCmdList
+    //   2108: ldc_w 1222
+    //   2111: invokestatic 222	com/tencent/mm/sdk/platformtools/ae:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   2114: new 1135	com/tencent/mm/plugin/sns/data/SnsCmdList
     //   2117: dup
-    //   2118: invokespecial 1222	com/tencent/mm/plugin/sns/data/SnsCmdList:<init>	()V
+    //   2118: invokespecial 1223	com/tencent/mm/plugin/sns/data/SnsCmdList:<init>	()V
     //   2121: astore_3
     //   2122: aload_3
     //   2123: iload_1
-    //   2124: invokevirtual 1225	com/tencent/mm/plugin/sns/data/SnsCmdList:PH	(I)V
+    //   2124: invokevirtual 1226	com/tencent/mm/plugin/sns/data/SnsCmdList:Qo	(I)V
     //   2127: aload_0
-    //   2128: getfield 363	com/tencent/mm/plugin/sns/ui/SnsUIAction:AnR	Lcom/tencent/mm/plugin/sns/ui/SnsUIAction$a;
+    //   2128: getfield 363	com/tencent/mm/plugin/sns/ui/SnsUIAction:AFe	Lcom/tencent/mm/plugin/sns/ui/SnsUIAction$a;
     //   2131: iconst_m1
     //   2132: aload_3
-    //   2133: getfield 1138	com/tencent/mm/plugin/sns/data/SnsCmdList:zdl	Ljava/util/List;
+    //   2133: getfield 1139	com/tencent/mm/plugin/sns/data/SnsCmdList:zub	Ljava/util/List;
     //   2136: aload_3
-    //   2137: getfield 1141	com/tencent/mm/plugin/sns/data/SnsCmdList:zdm	Ljava/util/List;
-    //   2140: invokeinterface 1117 4 0
-    //   2145: ldc_w 820
+    //   2137: getfield 1142	com/tencent/mm/plugin/sns/data/SnsCmdList:zuc	Ljava/util/List;
+    //   2140: invokeinterface 1118 4 0
+    //   2145: ldc_w 821
     //   2148: invokestatic 189	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   2151: return
-    //   2152: invokestatic 1229	com/tencent/mm/plugin/sns/model/ag:dUj	()Lcom/tencent/mm/plugin/sns/storage/k;
-    //   2155: invokevirtual 1234	com/tencent/mm/plugin/sns/storage/k:bUK	()Z
+    //   2152: invokestatic 1230	com/tencent/mm/plugin/sns/model/ah:dXJ	()Lcom/tencent/mm/plugin/sns/storage/k;
+    //   2155: invokevirtual 1235	com/tencent/mm/plugin/sns/storage/k:bVZ	()Z
     //   2158: pop
-    //   2159: ldc_w 820
+    //   2159: ldc_w 821
     //   2162: invokestatic 189	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   2165: return
-    //   2166: ldc_w 820
+    //   2166: ldc_w 821
     //   2169: invokestatic 189	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   2172: return
-    //   2173: ldc_w 820
+    //   2173: ldc_w 821
     //   2176: invokestatic 189	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   2179: return
     //   2180: astore 5
@@ -1563,13 +1565,13 @@ public class SnsUIAction
   public final void onCreate()
   {
     AppMethodBeat.i(99477);
-    this.yXO = this.mActivity.getWindowManager().getDefaultDisplay().getHeight();
-    this.Akq = ((int)(this.yXO * 0.4D));
-    ag.dUb().start();
+    this.zop = this.mActivity.getWindowManager().getDefaultDisplay().getHeight();
+    this.ABC = ((int)(this.zop * 0.4D));
+    ah.dXB().start();
     if (this.actionbarView != null) {
-      this.AnS = ((Toolbar.LayoutParams)this.actionbarView.getLayoutParams());
+      this.AFf = ((Toolbar.LayoutParams)this.actionbarView.getLayoutParams());
     }
-    this.list = this.AnR.getSnsListView();
+    this.list = this.AFe.getSnsListView();
     this.list.post(new Runnable()
     {
       public final void run()
@@ -1577,8 +1579,8 @@ public class SnsUIAction
         AppMethodBeat.i(99459);
         DisplayMetrics localDisplayMetrics = new DisplayMetrics();
         SnsUIAction.a(SnsUIAction.this).getWindowManager().getDefaultDisplay().getMetrics(localDisplayMetrics);
-        ag.dTT();
-        u.hL(localDisplayMetrics.widthPixels, localDisplayMetrics.heightPixels);
+        ah.dXt();
+        u.hO(localDisplayMetrics.widthPixels, localDisplayMetrics.heightPixels);
         AppMethodBeat.o(99459);
       }
     });
@@ -1593,62 +1595,62 @@ public class SnsUIAction
     if (this.list != null)
     {
       bool = true;
-      ad.i("MicroMsg.SnsActivity", bool);
+      com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.SnsActivity", bool);
       this.list.setScrollingCacheEnabled(false);
-      this.zqQ = new SnsHeader(this.mActivity);
-      this.zqQ.setSessionId(this.sessionId);
-      this.zqQ.setEnterObjectId(this.zsC);
-      this.zqQ.setBackClickListener(new SnsHeader.a()
+      this.zIf = new SnsHeader(this.mActivity);
+      this.zIf.setSessionId(this.sessionId);
+      this.zIf.setEnterObjectId(this.zJR);
+      this.zIf.setBackClickListener(new SnsHeader.a()
       {
-        public final boolean An(long paramAnonymousLong)
+        public final boolean AL(long paramAnonymousLong)
         {
           AppMethodBeat.i(99467);
           if ((SnsUIAction.b(SnsUIAction.this)) || (SnsUIAction.c(SnsUIAction.this).getType() == 1))
           {
-            SnsUIAction.this.Ru(2);
+            SnsUIAction.this.Sb(2);
             AppMethodBeat.o(99467);
             return false;
           }
           Object localObject1 = new com.tencent.mm.plugin.sns.storage.p();
           ((com.tencent.mm.plugin.sns.storage.p)localObject1).field_snsId = paramAnonymousLong;
           ((com.tencent.mm.plugin.sns.storage.p)localObject1).field_userName = SnsUIAction.d(SnsUIAction.this);
-          Object localObject2 = com.tencent.mm.modelsns.h.aLm();
-          ((TimeLineObject)localObject2).nDo = SnsUIAction.d(SnsUIAction.this);
+          Object localObject2 = com.tencent.mm.modelsns.h.aLJ();
+          ((TimeLineObject)localObject2).nIJ = SnsUIAction.d(SnsUIAction.this);
           ((com.tencent.mm.plugin.sns.storage.p)localObject1).f((TimeLineObject)localObject2);
-          localObject2 = ak.ayX(SnsUIAction.d(SnsUIAction.this));
-          ad.d("MicroMsg.SnsActivity", "friend like %s", new Object[] { SnsUIAction.d(SnsUIAction.this) });
+          localObject2 = al.aAo(SnsUIAction.d(SnsUIAction.this));
+          com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.SnsActivity", "friend like %s", new Object[] { SnsUIAction.d(SnsUIAction.this) });
           if (localObject2 == null) {
-            an.a.a((com.tencent.mm.plugin.sns.storage.p)localObject1, 1, "", 0);
+            ao.a.a((com.tencent.mm.plugin.sns.storage.p)localObject1, 1, "", 0);
           }
           for (;;)
           {
-            localObject1 = ag.dUi().aAf(SnsUIAction.d(SnsUIAction.this));
+            localObject1 = ah.dXI().aBw(SnsUIAction.d(SnsUIAction.this));
             ((n)localObject1).field_local_flag |= 0x2;
-            ag.dUi().c((n)localObject1);
+            ah.dXI().c((n)localObject1);
             SnsUIAction.e(SnsUIAction.this);
-            com.tencent.mm.plugin.sns.j.e.ztz.ztL.ekG = 1L;
+            com.tencent.mm.plugin.sns.j.e.zKO.zLc.emn = 1L;
             break;
-            if (((com.tencent.mm.plugin.sns.storage.p)localObject2).dYJ()) {
-              an.a.a((com.tencent.mm.plugin.sns.storage.p)localObject1, 1, "", 0);
+            if (((com.tencent.mm.plugin.sns.storage.p)localObject2).ecn()) {
+              ao.a.a((com.tencent.mm.plugin.sns.storage.p)localObject1, 1, "", 0);
             } else {
-              an.a.a((com.tencent.mm.plugin.sns.storage.p)localObject1, 5, "", 0);
+              ao.a.a((com.tencent.mm.plugin.sns.storage.p)localObject1, 5, "", 0);
             }
           }
         }
         
-        public final boolean ebY()
+        public final boolean efF()
         {
           AppMethodBeat.i(99468);
-          SnsUIAction.c(SnsUIAction.this).edc();
+          SnsUIAction.c(SnsUIAction.this).egJ();
           AppMethodBeat.o(99468);
           return false;
         }
       });
-      this.rxm = this.AnR.ecY();
-      this.gZU = this.AnR.getMaskView();
-      this.AnM = new LoadingMoreView(this.mActivity);
-      this.list.addHeaderView(this.zqQ);
-      this.list.addFooterView(this.AnM);
+      this.cpn = this.AFe.egF();
+      this.hcH = this.AFe.getMaskView();
+      this.AEZ = new LoadingMoreView(this.mActivity);
+      this.list.addHeaderView(this.zIf);
+      this.list.addFooterView(this.AEZ);
       this.list.setOnScrollListener(new AbsListView.OnScrollListener()
       {
         public final void onScroll(AbsListView paramAnonymousAbsListView, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3)
@@ -1656,20 +1658,20 @@ public class SnsUIAction
           AppMethodBeat.i(99470);
           Object localObject = new com.tencent.mm.hellhoundlib.b.b();
           ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramAnonymousAbsListView);
-          ((com.tencent.mm.hellhoundlib.b.b)localObject).mr(paramAnonymousInt1);
-          ((com.tencent.mm.hellhoundlib.b.b)localObject).mr(paramAnonymousInt2);
-          ((com.tencent.mm.hellhoundlib.b.b)localObject).mr(paramAnonymousInt3);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/sns/ui/SnsUIAction$3", "com/tencent/mm/plugin/sns/ui/SnsUIAction$android/widget/AbsListView$OnScrollListener", "onScroll", "(Landroid/widget/AbsListView;III)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahq());
+          ((com.tencent.mm.hellhoundlib.b.b)localObject).mu(paramAnonymousInt1);
+          ((com.tencent.mm.hellhoundlib.b.b)localObject).mu(paramAnonymousInt2);
+          ((com.tencent.mm.hellhoundlib.b.b)localObject).mu(paramAnonymousInt3);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/sns/ui/SnsUIAction$3", "com/tencent/mm/plugin/sns/ui/SnsUIAction$android/widget/AbsListView$OnScrollListener", "onScroll", "(Landroid/widget/AbsListView;III)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahF());
           System.currentTimeMillis();
-          localObject = SnsUIAction.this.zqQ;
-          if ((((SnsHeader)localObject).Ade != null) && (((SnsHeader)localObject).Ade.Adt != null) && (((SnsHeader)localObject).Adl)) {
-            ((SnsHeader)localObject).Ade.Adt.egL();
+          localObject = SnsUIAction.this.zIf;
+          if ((((SnsHeader)localObject).Auq != null) && (((SnsHeader)localObject).Auq.AuF != null) && (((SnsHeader)localObject).Aux)) {
+            ((SnsHeader)localObject).Auq.AuF.ekt();
           }
-          SnsUIAction.c(SnsUIAction.this).edd();
-          SnsUIAction.this.AnQ = (paramAnonymousInt1 + paramAnonymousInt2 - 1);
+          SnsUIAction.c(SnsUIAction.this).egK();
+          SnsUIAction.this.AFd = (paramAnonymousInt1 + paramAnonymousInt2 - 1);
           if ((SnsUIAction.this.list.getLastVisiblePosition() == SnsUIAction.this.list.getCount() - 3) && (SnsUIAction.this.list.getCount() != SnsUIAction.f(SnsUIAction.this)))
           {
-            ad.d("MicroMsg.SnsActivity", "now refresh count: %s", new Object[] { Integer.valueOf(SnsUIAction.this.list.getCount()) });
+            com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.SnsActivity", "now refresh count: %s", new Object[] { Integer.valueOf(SnsUIAction.this.list.getCount()) });
             SnsUIAction.a(SnsUIAction.this, SnsUIAction.this.list.getCount());
             SnsUIAction.g(SnsUIAction.this);
           }
@@ -1679,7 +1681,7 @@ public class SnsUIAction
             AppMethodBeat.o(99470);
             return;
           }
-          int k = com.tencent.mm.cc.a.fromDPToPix(SnsUIAction.a(SnsUIAction.this), 20);
+          int k = com.tencent.mm.cb.a.fromDPToPix(SnsUIAction.a(SnsUIAction.this), 20);
           paramAnonymousInt2 = 0;
           float f2 = 1.0F;
           float f1 = 1.0F;
@@ -1694,9 +1696,9 @@ public class SnsUIAction
           float f3;
           if ((SnsUIAction.a(SnsUIAction.this) instanceof SnsTimeLineUI))
           {
-            paramAnonymousInt3 = com.tencent.mm.cc.a.fromDPToPix(SnsUIAction.a(SnsUIAction.this), 245);
-            m = paramAnonymousInt3 - com.tencent.mm.cc.a.fromDPToPix(SnsUIAction.a(SnsUIAction.this), 30);
-            n = paramAnonymousInt3 - com.tencent.mm.cc.a.fromDPToPix(SnsUIAction.a(SnsUIAction.this), 10);
+            paramAnonymousInt3 = com.tencent.mm.cb.a.fromDPToPix(SnsUIAction.a(SnsUIAction.this), 245);
+            m = paramAnonymousInt3 - com.tencent.mm.cb.a.fromDPToPix(SnsUIAction.a(SnsUIAction.this), 30);
+            n = paramAnonymousInt3 - com.tencent.mm.cb.a.fromDPToPix(SnsUIAction.a(SnsUIAction.this), 10);
             paramAnonymousAbsListView = paramAnonymousAbsListView.getChildAt(0);
             if (paramAnonymousAbsListView != null) {
               break label929;
@@ -1705,25 +1707,25 @@ public class SnsUIAction
             if (paramAnonymousInt1 <= SnsUIAction.h(SnsUIAction.this)) {
               break label938;
             }
-            SnsUIAction.this.Aob = SnsUIAction.bIU();
+            SnsUIAction.this.AFo = SnsUIAction.bJS();
             if (paramAnonymousAbsListView != null)
             {
               localObject = SnsUIAction.this;
-              ((SnsUIAction)localObject).gfU += paramAnonymousAbsListView.getHeight();
+              ((SnsUIAction)localObject).gim += paramAnonymousAbsListView.getHeight();
             }
-            SnsUIAction.this.Aod = (-i + SnsUIAction.this.gfU);
+            SnsUIAction.this.AFq = (-i + SnsUIAction.this.gim);
             SnsUIAction.b(SnsUIAction.this, paramAnonymousInt1);
             SnsUIAction.c(SnsUIAction.this, i);
-            if (SnsUIAction.this.Aoc != SnsUIAction.this.Aob)
+            if (SnsUIAction.this.AFp != SnsUIAction.this.AFo)
             {
-              SnsUIAction.this.start = SnsUIAction.this.Aod;
-              SnsUIAction.this.Aoe = false;
+              SnsUIAction.this.start = SnsUIAction.this.AFq;
+              SnsUIAction.this.AFr = false;
             }
             if (paramAnonymousInt1 != 0) {
               break label1204;
             }
             i1 = -paramAnonymousAbsListView.getTop();
-            SnsUIAction.this.Aod = i1;
+            SnsUIAction.this.AFq = i1;
             if ((i1 < 0) || (i1 > m)) {
               break label1064;
             }
@@ -1739,17 +1741,17 @@ public class SnsUIAction
           }
           for (;;)
           {
-            if (SnsUIAction.this.gZU != null)
+            if (SnsUIAction.this.hcH != null)
             {
-              ad.d("MicroMsg.SnsActivity", "dancy text totalScrollY:%s, top:%s, viewHeight:%s ", new Object[] { Integer.valueOf(SnsUIAction.this.Aod), Integer.valueOf(i), Integer.valueOf(SnsUIAction.this.gfU) });
-              if ((SnsUIAction.this.Aod <= paramAnonymousInt3) && (!SnsUIAction.j(SnsUIAction.this))) {
+              com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.SnsActivity", "dancy text totalScrollY:%s, top:%s, viewHeight:%s ", new Object[] { Integer.valueOf(SnsUIAction.this.AFq), Integer.valueOf(i), Integer.valueOf(SnsUIAction.this.gim) });
+              if ((SnsUIAction.this.AFq <= paramAnonymousInt3) && (!SnsUIAction.j(SnsUIAction.this))) {
                 break label1216;
               }
-              SnsUIAction.this.gZU.setVisibility(8);
+              SnsUIAction.this.hcH.setVisibility(8);
             }
             label625:
-            SnsUIAction.this.AnX = SnsUIAction.this.Aod;
-            SnsUIAction.this.Aoc = SnsUIAction.this.Aob;
+            SnsUIAction.this.AFk = SnsUIAction.this.AFq;
+            SnsUIAction.this.AFp = SnsUIAction.this.AFo;
             if (!(SnsUIAction.a(SnsUIAction.this) instanceof SnsTimeLineUI)) {
               break label1230;
             }
@@ -1766,7 +1768,7 @@ public class SnsUIAction
                 f2 = 1.0F;
                 f1 = 1.0F;
               }
-              if (SnsUIAction.this.vFD != paramAnonymousInt2)
+              if (SnsUIAction.this.vRH != paramAnonymousInt2)
               {
                 if (paramAnonymousInt2 > 0) {
                   break label1257;
@@ -1782,14 +1784,14 @@ public class SnsUIAction
                 }
               }
               label770:
-              SnsUIAction.c(SnsUIAction.this).hT(paramAnonymousInt1, paramAnonymousInt2);
-              if (SnsUIAction.this.AnZ != f1) {
+              SnsUIAction.c(SnsUIAction.this).hW(paramAnonymousInt1, paramAnonymousInt2);
+              if (SnsUIAction.this.AFm != f1) {
                 paramAnonymousAbsListView.setTitleAlpha(f1);
               }
               f4 = f1;
               paramAnonymousInt3 = paramAnonymousInt2;
               f5 = f2;
-              if (SnsUIAction.this.AnY != f2)
+              if (SnsUIAction.this.AFl != f2)
               {
                 paramAnonymousAbsListView.setIconAlpha(f2);
                 f5 = f2;
@@ -1797,17 +1799,17 @@ public class SnsUIAction
                 f4 = f1;
               }
             }
-            SnsUIAction.this.vFD = paramAnonymousInt3;
-            SnsUIAction.this.AnY = f5;
-            SnsUIAction.this.AnZ = f4;
-            SnsUIAction.this.Aoa = f3;
+            SnsUIAction.this.vRH = paramAnonymousInt3;
+            SnsUIAction.this.AFl = f5;
+            SnsUIAction.this.AFm = f4;
+            SnsUIAction.this.AFn = f3;
             com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/sns/ui/SnsUIAction$3", "com/tencent/mm/plugin/sns/ui/SnsUIAction$android/widget/AbsListView$OnScrollListener", "onScroll", "(Landroid/widget/AbsListView;III)V");
             AppMethodBeat.o(99470);
             return;
             if (!(SnsUIAction.a(SnsUIAction.this) instanceof SnsUserUI)) {
               break;
             }
-            paramAnonymousInt3 = com.tencent.mm.cc.a.fromDPToPix(SnsUIAction.a(SnsUIAction.this), 199);
+            paramAnonymousInt3 = com.tencent.mm.cb.a.fromDPToPix(SnsUIAction.a(SnsUIAction.this), 199);
             break;
             label929:
             i = paramAnonymousAbsListView.getTop();
@@ -1815,12 +1817,12 @@ public class SnsUIAction
             label938:
             if (paramAnonymousInt1 < SnsUIAction.h(SnsUIAction.this))
             {
-              SnsUIAction.this.Aob = SnsUIAction.aNt();
-              if (SnsUIAction.this.gfU < paramAnonymousAbsListView.getHeight()) {
+              SnsUIAction.this.AFo = SnsUIAction.aNR();
+              if (SnsUIAction.this.gim < paramAnonymousAbsListView.getHeight()) {
                 break label402;
               }
               localObject = SnsUIAction.this;
-              ((SnsUIAction)localObject).gfU -= paramAnonymousAbsListView.getHeight();
+              ((SnsUIAction)localObject).gim -= paramAnonymousAbsListView.getHeight();
               break label402;
             }
             if (Math.abs(i - SnsUIAction.i(SnsUIAction.this)) <= 1) {
@@ -1828,13 +1830,13 @@ public class SnsUIAction
             }
             if (i < SnsUIAction.i(SnsUIAction.this))
             {
-              SnsUIAction.this.Aob = SnsUIAction.bIU();
+              SnsUIAction.this.AFo = SnsUIAction.bJS();
               break label402;
             }
             if (i <= SnsUIAction.i(SnsUIAction.this)) {
               break label402;
             }
-            SnsUIAction.this.Aob = SnsUIAction.aNt();
+            SnsUIAction.this.AFo = SnsUIAction.aNR();
             break label402;
             label1064:
             if (i1 <= n)
@@ -1871,7 +1873,7 @@ public class SnsUIAction
             f2 = 1.0F;
             break;
             label1216:
-            SnsUIAction.this.gZU.setVisibility(0);
+            SnsUIAction.this.hcH.setVisibility(0);
             break label625;
             label1230:
             if ((SnsUIAction.a(SnsUIAction.this) instanceof SnsUserUI))
@@ -1879,7 +1881,7 @@ public class SnsUIAction
               paramAnonymousAbsListView = (SnsUserUI)SnsUIAction.a(SnsUIAction.this);
               break label677;
               label1257:
-              paramAnonymousAbsListView.setActionbarColor(ao.eV(SnsUIAction.a(SnsUIAction.this).getResources().getColor(2131100705), paramAnonymousInt2));
+              paramAnonymousAbsListView.setActionbarColor(ao.eW(SnsUIAction.a(SnsUIAction.this).getResources().getColor(2131100705), paramAnonymousInt2));
               break label745;
               paramAnonymousAbsListView.updateOptionMenuIcon(0, 2131690361);
               break label770;
@@ -1895,19 +1897,19 @@ public class SnsUIAction
           AppMethodBeat.i(99469);
           Object localObject1 = new com.tencent.mm.hellhoundlib.b.b();
           ((com.tencent.mm.hellhoundlib.b.b)localObject1).bd(paramAnonymousAbsListView);
-          ((com.tencent.mm.hellhoundlib.b.b)localObject1).mr(paramAnonymousInt);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/sns/ui/SnsUIAction$3", "com/tencent/mm/plugin/sns/ui/SnsUIAction$android/widget/AbsListView$OnScrollListener", "onScrollStateChanged", "(Landroid/widget/AbsListView;I)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject1).ahq());
-          SnsUIAction.c(SnsUIAction.this).Rp(paramAnonymousInt);
+          ((com.tencent.mm.hellhoundlib.b.b)localObject1).mu(paramAnonymousInt);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/sns/ui/SnsUIAction$3", "com/tencent/mm/plugin/sns/ui/SnsUIAction$android/widget/AbsListView$OnScrollListener", "onScrollStateChanged", "(Landroid/widget/AbsListView;I)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject1).ahF());
+          SnsUIAction.c(SnsUIAction.this).RW(paramAnonymousInt);
           if (paramAnonymousInt == 0)
           {
-            if (((SnsUIAction.a(SnsUIAction.this) instanceof SnsTimeLineUI)) && (((SnsTimeLineUI)SnsUIAction.a(SnsUIAction.this)).Abd != null)) {
-              ((SnsTimeLineUI)SnsUIAction.a(SnsUIAction.this)).Abd.rj(true);
+            if (((SnsUIAction.a(SnsUIAction.this) instanceof SnsTimeLineUI)) && (((SnsTimeLineUI)SnsUIAction.a(SnsUIAction.this)).Asq != null)) {
+              ((SnsTimeLineUI)SnsUIAction.a(SnsUIAction.this)).Asq.rq(true);
             }
-            if (SnsUIAction.this.zqQ != null)
+            if (SnsUIAction.this.zIf != null)
             {
-              paramAnonymousAbsListView = SnsUIAction.this.zqQ;
-              if ((paramAnonymousAbsListView.Ade != null) && (paramAnonymousAbsListView.Ade.Adu != null) && (!paramAnonymousAbsListView.Adl)) {
-                paramAnonymousAbsListView.Ade.Adu.eeO();
+              paramAnonymousAbsListView = SnsUIAction.this.zIf;
+              if ((paramAnonymousAbsListView.Auq != null) && (paramAnonymousAbsListView.Auq.AuG != null) && (!paramAnonymousAbsListView.Aux)) {
+                paramAnonymousAbsListView.Auq.AuG.eiv();
               }
             }
             if ((SnsUIAction.a(SnsUIAction.this) instanceof SnsTimeLineUI))
@@ -1925,8 +1927,8 @@ public class SnsUIAction
             try
             {
               l1 = System.currentTimeMillis();
-              if (paramAnonymousAbsListView.Aog != null) {
-                paramAnonymousAbsListView.Aog.clear();
+              if (paramAnonymousAbsListView.AFt != null) {
+                paramAnonymousAbsListView.AFt.clear();
               }
               j = -1;
               i = -1;
@@ -1946,14 +1948,14 @@ public class SnsUIAction
                   break label752;
                 }
                 localObject3 = (k.a)localObject3;
-                if (!(((k.a)localObject3).AvW instanceof com.tencent.mm.plugin.sns.ui.item.k)) {
+                if (!(((k.a)localObject3).ANn instanceof com.tencent.mm.plugin.sns.ui.item.k)) {
                   break label752;
                 }
-                if (paramAnonymousAbsListView.Aog == null) {
-                  paramAnonymousAbsListView.Aog = new ArrayList();
+                if (paramAnonymousAbsListView.AFt == null) {
+                  paramAnonymousAbsListView.AFt = new ArrayList();
                 }
-                paramAnonymousAbsListView.Aog.add(localObject3);
-                ((k.a)localObject3).Axr.getGlobalVisibleRect((Rect)localObject2);
+                paramAnonymousAbsListView.AFt.add(localObject3);
+                ((k.a)localObject3).AOK.getGlobalVisibleRect((Rect)localObject2);
                 if (((Rect)localObject2).top < k) {
                   ((Rect)localObject2).top = k;
                 }
@@ -1970,34 +1972,34 @@ public class SnsUIAction
                 if (n < j) {
                   break label752;
                 }
-                i = paramAnonymousAbsListView.Aog.size() - 1;
+                i = paramAnonymousAbsListView.AFt.size() - 1;
                 j = n;
                 break label761;
               }
-              if ((paramAnonymousAbsListView.Aog != null) && (paramAnonymousAbsListView.Aog.size() > 0) && (i >= 0))
+              if ((paramAnonymousAbsListView.AFt != null) && (paramAnonymousAbsListView.AFt.size() > 0) && (i >= 0))
               {
                 j = 0;
-                if (j >= paramAnonymousAbsListView.Aog.size()) {
+                if (j >= paramAnonymousAbsListView.AFt.size()) {
                   break label662;
                 }
-                localObject1 = (k.a)paramAnonymousAbsListView.Aog.get(j);
-                localObject2 = (com.tencent.mm.plugin.sns.ui.item.k)((k.a)localObject1).AvW;
+                localObject1 = (k.a)paramAnonymousAbsListView.AFt.get(j);
+                localObject2 = (com.tencent.mm.plugin.sns.ui.item.k)((k.a)localObject1).ANn;
                 if (j == i) {
-                  ((com.tencent.mm.plugin.sns.ui.item.k)localObject2).a(((k.a)localObject1).Axr, false);
+                  ((com.tencent.mm.plugin.sns.ui.item.k)localObject2).a(((k.a)localObject1).AOK, false);
                 } else {
-                  ((com.tencent.mm.plugin.sns.ui.item.k)localObject2).a(((k.a)localObject1).Axr, true);
+                  ((com.tencent.mm.plugin.sns.ui.item.k)localObject2).a(((k.a)localObject1).AOK, true);
                 }
               }
             }
             catch (Throwable paramAnonymousAbsListView)
             {
-              ad.e("MicroMsg.SnsActivitySphereImageView", "checkSphereImageCompItem exp=" + paramAnonymousAbsListView.toString());
+              com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.SnsActivitySphereImageView", "checkSphereImageCompItem exp=" + paramAnonymousAbsListView.toString());
             }
-            SnsUIAction.this.bmJ();
+            SnsUIAction.this.bns();
             if (paramAnonymousInt == 2)
             {
-              com.tencent.mm.cj.d.fux().gt(SnsUIAction.class.getName() + SnsUIAction.c(SnsUIAction.this).getType() + ".Listview", 4);
-              SnsUIAction.this.rV(true);
+              com.tencent.mm.ci.d.fyy().gC(SnsUIAction.class.getName() + SnsUIAction.c(SnsUIAction.this).getType() + ".Listview", 4);
+              SnsUIAction.this.sc(true);
             }
             for (;;)
             {
@@ -2007,13 +2009,13 @@ public class SnsUIAction
               label662:
               long l2 = System.currentTimeMillis();
               localObject1 = new StringBuilder("checkSphereImageCompItem cost=").append(l2 - l1).append(", maxVisiableItemIdx=").append(i).append(", size=");
-              if (paramAnonymousAbsListView.Aog != null) {}
-              for (i = paramAnonymousAbsListView.Aog.size();; i = 0)
+              if (paramAnonymousAbsListView.AFt != null) {}
+              for (i = paramAnonymousAbsListView.AFt.size();; i = 0)
               {
-                ad.d("MicroMsg.SnsActivitySphereImageView", i);
+                com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.SnsActivitySphereImageView", i);
                 break;
               }
-              SnsUIAction.this.rV(false);
+              SnsUIAction.this.sc(false);
             }
             label752:
             break label761;
@@ -2027,28 +2029,28 @@ public class SnsUIAction
           }
         }
       });
-      this.vHW = this.AnR.ecZ();
+      this.vUa = this.AFe.egG();
       localObject = new StringBuilder("pullDownView is null ? ");
-      if (this.vHW == null) {
+      if (this.vUa == null) {
         break label579;
       }
       bool = true;
-      ad.i("MicroMsg.SnsActivity", bool);
-      this.vHW.setOnTopLoadDataListener(new MMPullDownView.g()
+      com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.SnsActivity", bool);
+      this.vUa.setOnTopLoadDataListener(new MMPullDownView.g()
       {
-        public final boolean cbd()
+        public final boolean ccs()
         {
           AppMethodBeat.i(99471);
-          SnsUIAction.c(SnsUIAction.this).edb();
+          SnsUIAction.c(SnsUIAction.this).egI();
           AppMethodBeat.o(99471);
           return true;
         }
       });
-      this.vHW.setTopViewVisible(false);
-      this.vHW.setIsTopShowAll(false);
-      this.vHW.setAtBottomCallBack(new MMPullDownView.c()
+      this.vUa.setTopViewVisible(false);
+      this.vUa.setIsTopShowAll(false);
+      this.vUa.setAtBottomCallBack(new MMPullDownView.c()
       {
-        public final boolean cbc()
+        public final boolean ccr()
         {
           AppMethodBeat.i(99472);
           View localView = SnsUIAction.this.list.getChildAt(SnsUIAction.this.list.getChildCount() - 1);
@@ -2061,9 +2063,9 @@ public class SnsUIAction
           return false;
         }
       });
-      this.vHW.setAtTopCallBack(new MMPullDownView.d()
+      this.vUa.setAtTopCallBack(new MMPullDownView.d()
       {
-        public final boolean cbb()
+        public final boolean ccq()
         {
           AppMethodBeat.i(99473);
           View localView = SnsUIAction.this.list.getChildAt(SnsUIAction.this.list.getFirstVisiblePosition());
@@ -2076,48 +2078,48 @@ public class SnsUIAction
           return false;
         }
       });
-      this.vHW.setIsBottomShowAll(false);
-      this.vHW.setOnBottomLoadDataListener(new MMPullDownView.e()
+      this.vUa.setIsBottomShowAll(false);
+      this.vUa.setOnBottomLoadDataListener(new MMPullDownView.e()
       {
-        public final boolean cba()
+        public final boolean ccp()
         {
           AppMethodBeat.i(99474);
-          ad.e("MicroMsg.SnsActivity", "bottomLoad  isAll:" + SnsUIAction.this.oKD);
-          if (!SnsUIAction.this.oKD) {
+          com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.SnsActivity", "bottomLoad  isAll:" + SnsUIAction.this.oRf);
+          if (!SnsUIAction.this.oRf) {
             SnsUIAction.g(SnsUIAction.this);
           }
           AppMethodBeat.o(99474);
           return true;
         }
       });
-      this.vHW.setShowBackground(true);
-      this.vHW.setBgColor(aj.getContext().getResources().getColor(2131099650));
+      this.vUa.setShowBackground(true);
+      this.vUa.setBgColor(ak.getContext().getResources().getColor(2131099650));
       this.title = this.mActivity.getIntent().getStringExtra("sns_title");
-      localSnsHeader = this.zqQ;
-      if (!bt.isNullOrNil(this.lEN)) {
+      localSnsHeader = this.zIf;
+      if (!bu.isNullOrNil(this.lJm)) {
         break label584;
       }
-      localObject = this.Akz;
-      str3 = this.Akz;
-      str2 = this.jqQ;
+      localObject = this.ABL;
+      str3 = this.ABL;
+      str2 = this.jtJ;
       str1 = this.cff;
       if ((localObject != null) && (str3 != null)) {
         break label592;
       }
-      ad.e("MicroMsg.SnsHeader", "userName or selfName is null ");
-      this.zqQ.setType(this.AnR.getType());
-      this.zqQ.ebW();
-      edo();
+      com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.SnsHeader", "userName or selfName is null ");
+      this.zIf.setType(this.AFe.getType());
+      this.zIf.efD();
+      egV();
       if (Build.VERSION.SDK_INT >= 11) {
         break label847;
       }
-      ad.d("MicroMsg.SnsActivity", "sdk not support dragdrop event");
+      com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.SnsActivity", "sdk not support dragdrop event");
     }
     for (;;)
     {
-      ag.dUa().cAT.add(this);
-      bb.zfC += 1;
-      ag.dTZ().a(this);
+      ah.dXA().cBA.add(this);
+      bc.zws += 1;
+      ah.dXz().a(this);
       AppMethodBeat.o(99477);
       return;
       bool = false;
@@ -2126,32 +2128,32 @@ public class SnsUIAction
       bool = false;
       break label299;
       label584:
-      localObject = this.lEN;
+      localObject = this.lJm;
       break label460;
       label592:
       localSnsHeader.userName = ((String)localObject).trim();
-      localSnsHeader.fFK = str3.trim();
-      localSnsHeader.drv = str3.equals(localObject);
-      ad.d("MicroMsg.SnsHeader", "userNamelen " + ((String)localObject).length() + "  " + (String)localObject);
-      localSnsHeader.Ade.nCw.setText((CharSequence)localObject);
-      if ((localSnsHeader.Ade == null) || (localSnsHeader.Ade.fRd == null)) {
+      localSnsHeader.fHO = str3.trim();
+      localSnsHeader.dsB = str3.equals(localObject);
+      com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.SnsHeader", "userNamelen " + ((String)localObject).length() + "  " + (String)localObject);
+      localSnsHeader.Auq.nHR.setText((CharSequence)localObject);
+      if ((localSnsHeader.Auq == null) || (localSnsHeader.Auq.fTj == null)) {
         label683:
         if ((localObject != null) && (((String)localObject).length() > 0))
         {
-          localObject = ((com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azp().Bf((String)localObject);
-          if ((localObject == null) || (bt.isNullOrNil(((am)localObject).adv()))) {
+          localObject = ((com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azF().BH((String)localObject);
+          if ((localObject == null) || (bu.isNullOrNil(((an)localObject).adG()))) {
             break label838;
           }
         }
       }
       label838:
-      for (localObject = ((am)localObject).adv();; localObject = com.tencent.mm.plugin.sns.data.q.O(str2))
+      for (localObject = ((an)localObject).adG();; localObject = r.N(str2))
       {
-        localSnsHeader.Ade.nCw.setText(com.tencent.mm.pluginsdk.ui.span.k.c(localSnsHeader.context, (CharSequence)localObject));
-        localSnsHeader.Ade.zOx.setText(com.tencent.mm.pluginsdk.ui.span.k.b(localSnsHeader.context, str1, localSnsHeader.Ade.zOx.getTextSize()));
-        localSnsHeader.Ade.fRd.setContentDescription(localSnsHeader.context.getString(2131763782, new Object[] { localSnsHeader.Ade.nCw.getText() }));
+        localSnsHeader.Auq.nHR.setText(com.tencent.mm.pluginsdk.ui.span.k.c(localSnsHeader.context, (CharSequence)localObject));
+        localSnsHeader.Auq.AfE.setText(com.tencent.mm.pluginsdk.ui.span.k.b(localSnsHeader.context, str1, localSnsHeader.Auq.AfE.getTextSize()));
+        localSnsHeader.Auq.fTj.setContentDescription(localSnsHeader.context.getString(2131763782, new Object[] { localSnsHeader.Auq.nHR.getText() }));
         break;
-        a.b.w(localSnsHeader.Ade.fRd, localSnsHeader.userName);
+        a.b.w(localSnsHeader.Auq.fTj, localSnsHeader.userName);
         break label683;
       }
       label847:
@@ -2162,66 +2164,66 @@ public class SnsUIAction
   public final void onDestroy()
   {
     AppMethodBeat.i(99486);
-    if (this.zqQ != null)
+    if (this.zIf != null)
     {
-      Object localObject = this.zqQ;
-      if ((((SnsHeader)localObject).Adk != null) && (!((SnsHeader)localObject).Adk.isRecycled())) {
-        ((SnsHeader)localObject).Adk.recycle();
+      Object localObject = this.zIf;
+      if ((((SnsHeader)localObject).Auw != null) && (!((SnsHeader)localObject).Auw.isRecycled())) {
+        ((SnsHeader)localObject).Auw.recycle();
       }
-      if ((((SnsHeader)localObject).Ade != null) && (((SnsHeader)localObject).Ade.Adt != null) && (((SnsHeader)localObject).Adl)) {
-        ((SnsHeader)localObject).Ade.Adt.onDestroyView();
+      if ((((SnsHeader)localObject).Auq != null) && (((SnsHeader)localObject).Auq.AuF != null) && (((SnsHeader)localObject).Aux)) {
+        ((SnsHeader)localObject).Auq.AuF.onDestroyView();
       }
-      if ((((SnsHeader)localObject).Ade != null) && (((SnsHeader)localObject).Ade.Adu != null) && (!((SnsHeader)localObject).Adl))
+      if ((((SnsHeader)localObject).Auq != null) && (((SnsHeader)localObject).Auq.AuG != null) && (!((SnsHeader)localObject).Aux))
       {
-        localObject = ((SnsHeader)localObject).Ade.Adu;
-        ad.i("MicroMsg.SnsStoryHeaderView", "destroy: ");
+        localObject = ((SnsHeader)localObject).Auq.AuG;
+        com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.SnsStoryHeaderView", "destroy: ");
         ((SnsStoryHeaderView)localObject).aMv = true;
         ((com.tencent.mm.plugin.story.api.e)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.story.api.e.class)).getContactFetcher().b((l.b)localObject);
       }
     }
-    com.tencent.mm.kernel.g.ajD();
-    if (com.tencent.mm.kernel.g.ajA().aiK())
+    com.tencent.mm.kernel.g.ajS();
+    if (com.tencent.mm.kernel.g.ajP().aiZ())
     {
-      ag.dUb().aD(this.mActivity);
-      ag.dTZ().b(this);
+      ah.dXB().aE(this.mActivity);
+      ah.dXz().b(this);
     }
     if (this.tipDialog != null)
     {
       this.tipDialog.dismiss();
       this.tipDialog = null;
     }
-    com.tencent.mm.kernel.g.ajD();
-    if (com.tencent.mm.kernel.g.ajA().aiK())
+    com.tencent.mm.kernel.g.ajS();
+    if (com.tencent.mm.kernel.g.ajP().aiZ())
     {
-      ag.dUa().cAT.remove(this);
-      bb.zfC -= 1;
+      ah.dXA().cBA.remove(this);
+      bc.zws -= 1;
     }
-    this.AnM.setVisibility(8);
-    ae.dZZ();
-    com.tencent.mm.kernel.g.ajD();
-    if (com.tencent.mm.kernel.g.ajA().aiK()) {
-      ag.dUb().start();
+    this.AEZ.setVisibility(8);
+    ae.edF();
+    com.tencent.mm.kernel.g.ajS();
+    if (com.tencent.mm.kernel.g.ajP().aiZ()) {
+      ah.dXB().start();
     }
     this.list.setAdapter(null);
-    com.tencent.mm.plugin.sns.data.q.ayl("");
+    r.azC("");
     AppMethodBeat.o(99486);
   }
   
   public final void onPause()
   {
     AppMethodBeat.i(99481);
-    Object localObject = new on();
-    ((on)localObject).dCu.dCv = false;
-    com.tencent.mm.sdk.b.a.IbL.a((com.tencent.mm.sdk.b.b)localObject, Looper.getMainLooper());
-    ad.d("MicroMsg.SnsActivity", "AppAttachDownloadUI cancel pause auto download logic");
-    if (this.zqQ != null)
+    Object localObject = new oo();
+    ((oo)localObject).dDz.dDA = false;
+    com.tencent.mm.sdk.b.a.IvT.a((com.tencent.mm.sdk.b.b)localObject, Looper.getMainLooper());
+    com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.SnsActivity", "AppAttachDownloadUI cancel pause auto download logic");
+    if (this.zIf != null)
     {
-      localObject = this.zqQ;
-      if ((((SnsHeader)localObject).Ade != null) && (((SnsHeader)localObject).Ade.Adu != null) && (!((SnsHeader)localObject).Adl))
+      localObject = this.zIf;
+      if ((((SnsHeader)localObject).Auq != null) && (((SnsHeader)localObject).Auq.AuG != null) && (!((SnsHeader)localObject).Aux))
       {
-        localObject = ((SnsHeader)localObject).Ade.Adu;
-        ((SnsStoryHeaderView)localObject).ABv = false;
-        ((SnsStoryHeaderView)localObject).dtm = true;
+        localObject = ((SnsHeader)localObject).Auq.AuG;
+        ((SnsStoryHeaderView)localObject).ASW = false;
+        ((SnsStoryHeaderView)localObject).dus = true;
       }
     }
     AppMethodBeat.o(99481);
@@ -2230,51 +2232,51 @@ public class SnsUIAction
   public final void onResume()
   {
     AppMethodBeat.i(99480);
-    ag.dTZ().aw(2, false);
-    com.tencent.mm.pluginsdk.wallet.h.Zx(7);
-    on localon = new on();
-    localon.dCu.dCv = true;
-    com.tencent.mm.sdk.b.a.IbL.a(localon, Looper.getMainLooper());
-    ad.d("MicroMsg.SnsActivity", "SnsActivity req pause auto download logic");
-    if (this.zqQ != null) {
-      this.zqQ.onResume();
+    ah.dXz().az(2, false);
+    com.tencent.mm.pluginsdk.wallet.h.aad(7);
+    oo localoo = new oo();
+    localoo.dDz.dDA = true;
+    com.tencent.mm.sdk.b.a.IvT.a(localoo, Looper.getMainLooper());
+    com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.SnsActivity", "SnsActivity req pause auto download logic");
+    if (this.zIf != null) {
+      this.zIf.onResume();
     }
     AppMethodBeat.o(99480);
   }
   
-  public final void rV(boolean paramBoolean)
+  public final void sc(boolean paramBoolean)
   {
     AppMethodBeat.i(99479);
-    this.AnR.rV(paramBoolean);
+    this.AFe.sc(paramBoolean);
     AppMethodBeat.o(99479);
   }
   
-  public final void rW(boolean paramBoolean)
+  public final void sd(boolean paramBoolean)
   {
     AppMethodBeat.i(179310);
-    this.zVQ = paramBoolean;
+    this.AmY = paramBoolean;
     if (paramBoolean)
     {
-      if (this.vHW != null) {
-        this.vHW.setEnableGesture(false);
+      if (this.vUa != null) {
+        this.vUa.setEnableGesture(false);
       }
-      localSnsHeader = this.zqQ;
-      if ((localSnsHeader.Ade != null) && (localSnsHeader.Ade.Adw != null) && (localSnsHeader.Ade.Adv != null))
+      localSnsHeader = this.zIf;
+      if ((localSnsHeader.Auq != null) && (localSnsHeader.Auq.AuI != null) && (localSnsHeader.Auq.AuH != null))
       {
-        localSnsHeader.Ade.Adw.setVisibility(0);
-        localSnsHeader.Ade.Adv.setVisibility(8);
+        localSnsHeader.Auq.AuI.setVisibility(0);
+        localSnsHeader.Auq.AuH.setVisibility(8);
       }
       AppMethodBeat.o(179310);
       return;
     }
-    if (this.vHW != null) {
-      this.vHW.setEnableGesture(true);
+    if (this.vUa != null) {
+      this.vUa.setEnableGesture(true);
     }
-    SnsHeader localSnsHeader = this.zqQ;
-    if ((localSnsHeader.Ade != null) && (localSnsHeader.Ade.Adw != null) && (localSnsHeader.Ade.Adv != null))
+    SnsHeader localSnsHeader = this.zIf;
+    if ((localSnsHeader.Auq != null) && (localSnsHeader.Auq.AuI != null) && (localSnsHeader.Auq.AuH != null))
     {
-      localSnsHeader.Ade.Adw.setVisibility(4);
-      localSnsHeader.Ade.Adv.setVisibility(0);
+      localSnsHeader.Auq.AuI.setVisibility(4);
+      localSnsHeader.Auq.AuH.setVisibility(0);
     }
     AppMethodBeat.o(179310);
   }
@@ -2283,35 +2285,35 @@ public class SnsUIAction
   {
     AppMethodBeat.i(99482);
     this.sessionId = paramString;
-    if (this.zqQ != null) {
-      this.zqQ.setSessionId(paramString);
+    if (this.zIf != null) {
+      this.zIf.setSessionId(paramString);
     }
     AppMethodBeat.o(99482);
   }
   
   public static abstract interface a
   {
-    public abstract void Rp(int paramInt);
+    public abstract void RW(int paramInt);
     
-    public abstract void a(com.tencent.mm.plugin.sns.data.l paraml);
+    public abstract void a(m paramm);
     
-    public abstract void az(int paramInt, boolean paramBoolean);
+    public abstract void aC(int paramInt, boolean paramBoolean);
     
     public abstract void e(int paramInt, List<Integer> paramList1, List<Integer> paramList2);
     
-    public abstract void ecX();
+    public abstract void egE();
     
-    public abstract View ecY();
+    public abstract View egF();
     
-    public abstract MMPullDownView ecZ();
+    public abstract MMPullDownView egG();
     
-    public abstract boolean eda();
+    public abstract boolean egH();
     
-    public abstract void edb();
+    public abstract void egI();
     
-    public abstract void edc();
+    public abstract void egJ();
     
-    public abstract void edd();
+    public abstract void egK();
     
     public abstract View getMaskView();
     
@@ -2319,9 +2321,9 @@ public class SnsUIAction
     
     public abstract int getType();
     
-    public abstract void hT(int paramInt1, int paramInt2);
+    public abstract void hW(int paramInt1, int paramInt2);
     
-    public abstract void rV(boolean paramBoolean);
+    public abstract void sc(boolean paramBoolean);
   }
 }
 

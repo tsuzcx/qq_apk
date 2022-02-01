@@ -22,43 +22,50 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.Scroller;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.x;
-import com.tencent.mm.al.x.a;
-import com.tencent.mm.bx.a;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.x;
+import com.tencent.mm.ak.x.a;
+import com.tencent.mm.bw.a;
 import com.tencent.mm.plugin.appbrand.widget.recyclerview.LoadMoreRecyclerView;
 import com.tencent.mm.plugin.appbrand.widget.recyclerview.LoadMoreRecyclerView.a;
-import com.tencent.mm.plugin.game.d.ab;
-import com.tencent.mm.plugin.game.d.ah;
-import com.tencent.mm.plugin.game.d.ax;
-import com.tencent.mm.plugin.game.d.be;
-import com.tencent.mm.plugin.game.d.bf;
+import com.tencent.mm.plugin.game.d.ag;
+import com.tencent.mm.plugin.game.d.an;
+import com.tencent.mm.plugin.game.d.bd;
+import com.tencent.mm.plugin.game.d.bl;
+import com.tencent.mm.plugin.game.d.bm;
+import com.tencent.mm.plugin.game.model.ad;
 import com.tencent.mm.plugin.game.model.d;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 public class GameIndexListView
   extends LoadMoreRecyclerView
 {
-  private static boolean uma = true;
-  private static boolean umd;
-  private static int umf = 0;
-  private static int upE = 0;
-  private static int upv = 0;
+  private static int uAR = 0;
+  private static int uBa = 0;
+  private static boolean uxA;
+  private static int uxC;
+  private static boolean uxx = true;
   private View agn;
   private Context mContext;
   private Scroller mScroller;
   private int rW;
-  private float umb;
-  private boolean ume;
-  private ImageView umg;
-  private ImageView umh;
-  b upB;
-  private bf upC;
-  private boolean upD = true;
+  b uAX;
+  private bm uAY;
+  private boolean uAZ = true;
+  private boolean uxB;
+  private ImageView uxD;
+  private ImageView uxE;
+  private float uxy;
+  
+  static
+  {
+    uxC = 0;
+  }
   
   public GameIndexListView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -66,35 +73,35 @@ public class GameIndexListView
     this.mContext = paramContext;
   }
   
-  private void cZX()
+  private void dcI()
   {
     AppMethodBeat.i(42165);
     Object localObject2 = new b.a();
-    Object localObject3 = new be();
-    if (this.upC != null)
+    Object localObject3 = new bl();
+    if (this.uAY != null)
     {
-      localObject1 = this.upC.uib;
-      ((be)localObject3).uhZ = ((com.tencent.mm.bx.b)localObject1);
-      ((b.a)localObject2).hNM = ((a)localObject3);
-      ((b.a)localObject2).hNN = new bf();
+      localObject1 = this.uAY.utB;
+      ((bl)localObject3).utz = ((com.tencent.mm.bw.b)localObject1);
+      ((b.a)localObject2).hQF = ((a)localObject3);
+      ((b.a)localObject2).hQG = new bm();
       ((b.a)localObject2).uri = "/cgi-bin/mmgame-bin/getgameindex4feedslist";
       ((b.a)localObject2).funcId = 2943;
-      ((b.a)localObject2).hNO = 0;
+      ((b.a)localObject2).hQH = 0;
       ((b.a)localObject2).respCmdId = 0;
-      localObject2 = ((b.a)localObject2).aDC();
+      localObject2 = ((b.a)localObject2).aDS();
       localObject3 = new x.a()
       {
-        public final int a(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, com.tencent.mm.al.b paramAnonymousb, n paramAnonymousn)
+        public final int a(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, com.tencent.mm.ak.b paramAnonymousb, n paramAnonymousn)
         {
           AppMethodBeat.i(42154);
-          com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.GameIndexListView", "doCgi, errType = %d, errCode = %d, errMsg = %s", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString });
+          ae.i("MicroMsg.GameIndexListView", "doCgi, errType = %d, errCode = %d, errMsg = %s", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString });
           boolean bool;
           if ((paramAnonymousInt1 == 0) && (paramAnonymousInt2 == 0))
           {
-            GameIndexListView.a(GameIndexListView.this, (bf)paramAnonymousb.hNL.hNQ);
+            GameIndexListView.a(GameIndexListView.this, (bm)paramAnonymousb.hQE.hQJ);
             paramAnonymousb = GameIndexListView.b(GameIndexListView.this);
             bool = GameIndexListView.c(GameIndexListView.this);
-            if ((paramAnonymousb != null) && (!bt.hj(paramAnonymousb.uia))) {
+            if ((paramAnonymousb != null) && (!bu.ht(paramAnonymousb.utA))) {
               break label177;
             }
             paramAnonymousString = null;
@@ -102,55 +109,55 @@ public class GameIndexListView
           for (;;)
           {
             GameIndexListView.d(GameIndexListView.this);
-            com.tencent.mm.plugin.game.model.ad.a(GameIndexListView.b(GameIndexListView.this));
-            if (!GameIndexListView.b(GameIndexListView.this).uic) {
+            ad.a(GameIndexListView.b(GameIndexListView.this));
+            if (!GameIndexListView.b(GameIndexListView.this).utC) {
               GameIndexListView.this.showLoading(false);
             }
-            if (!bt.hj(paramAnonymousString))
+            if (!bu.ht(paramAnonymousString))
             {
               paramAnonymousb = GameIndexListView.e(GameIndexListView.this);
-              paramAnonymousb.upG.addAll(paramAnonymousString);
+              paramAnonymousb.uBc.addAll(paramAnonymousString);
               paramAnonymousb.asY.notifyChanged();
             }
             AppMethodBeat.o(42154);
             return 0;
             label177:
             paramAnonymousString = new LinkedList();
-            if ((bool) && (!bt.isNullOrNil(paramAnonymousb.ufH)))
+            if ((bool) && (!bu.isNullOrNil(paramAnonymousb.urb)))
             {
               paramAnonymousn = new d();
               paramAnonymousn.type = 2000;
-              paramAnonymousn.uaV = paramAnonymousb.ufH;
+              paramAnonymousn.ulX = paramAnonymousb.urb;
               paramAnonymousString.add(paramAnonymousn);
             }
-            paramAnonymousb = paramAnonymousb.uia.iterator();
+            paramAnonymousb = paramAnonymousb.utA.iterator();
             while (paramAnonymousb.hasNext())
             {
-              paramAnonymousn = (ah)paramAnonymousb.next();
+              paramAnonymousn = (an)paramAnonymousb.next();
               Object localObject;
-              if (paramAnonymousn.ufL == 7)
+              if (paramAnonymousn.urf == 7)
               {
-                if ((paramAnonymousn.ugG != null) && (!bt.hj(paramAnonymousn.ugG.ufF)))
+                if ((paramAnonymousn.usd != null) && (!bu.ht(paramAnonymousn.usd.uqZ)))
                 {
-                  if (!bt.isNullOrNil(paramAnonymousn.ugG.Title))
+                  if (!bu.isNullOrNil(paramAnonymousn.usd.Title))
                   {
                     localObject = new d();
-                    ((d)localObject).uaW = paramAnonymousn;
+                    ((d)localObject).ulY = paramAnonymousn;
                     ((d)localObject).type = 1000;
                     paramAnonymousString.add(localObject);
                   }
-                  localObject = paramAnonymousn.ugG.ufF.iterator();
+                  localObject = paramAnonymousn.usd.uqZ.iterator();
                   while (((Iterator)localObject).hasNext())
                   {
-                    ab localab = (ab)((Iterator)localObject).next();
+                    ag localag = (ag)((Iterator)localObject).next();
                     d locald = new d();
-                    locald.uaW = paramAnonymousn;
+                    locald.ulY = paramAnonymousn;
                     locald.type = 1001;
-                    locald.uaX = paramAnonymousn.ugG.ufF.indexOf(localab);
+                    locald.ulZ = paramAnonymousn.usd.uqZ.indexOf(localag);
                     paramAnonymousString.add(locald);
                   }
                   localObject = new d();
-                  ((d)localObject).uaW = paramAnonymousn;
+                  ((d)localObject).ulY = paramAnonymousn;
                   ((d)localObject).type = 1002;
                   paramAnonymousString.add(localObject);
                 }
@@ -158,9 +165,9 @@ public class GameIndexListView
               else
               {
                 localObject = new d();
-                ((d)localObject).type = paramAnonymousn.ufL;
-                ((d)localObject).position = paramAnonymousn.ufI;
-                ((d)localObject).uaW = paramAnonymousn;
+                ((d)localObject).type = paramAnonymousn.urf;
+                ((d)localObject).position = paramAnonymousn.urc;
+                ((d)localObject).ulY = paramAnonymousn;
                 paramAnonymousString.add(localObject);
               }
             }
@@ -174,7 +181,7 @@ public class GameIndexListView
     label131:
     for (Object localObject1 = (com.tencent.mm.vending.e.b)this.mContext;; localObject1 = null)
     {
-      x.a((com.tencent.mm.al.b)localObject2, (x.a)localObject3, false, (com.tencent.mm.vending.e.b)localObject1);
+      x.a((com.tencent.mm.ak.b)localObject2, (x.a)localObject3, false, (com.tencent.mm.vending.e.b)localObject1);
       AppMethodBeat.o(42165);
       return;
       localObject1 = null;
@@ -184,28 +191,28 @@ public class GameIndexListView
   
   public static int getSourceScene()
   {
-    return upv;
+    return uAR;
   }
   
   public static void setCanPulldown(boolean paramBoolean)
   {
-    umd = paramBoolean;
+    uxA = paramBoolean;
   }
   
   public static void setDefaultPadding(int paramInt)
   {
-    umf = paramInt;
+    uxC = paramInt;
   }
   
   public static void setInitPadding(int paramInt)
   {
-    upE = paramInt;
-    uma = true;
+    uBa = paramInt;
+    uxx = true;
   }
   
   public static void setSourceScene(int paramInt)
   {
-    upv = paramInt;
+    uAR = paramInt;
   }
   
   public void computeScroll()
@@ -219,13 +226,13 @@ public class GameIndexListView
     if (this.mScroller.computeScrollOffset())
     {
       int i = this.mScroller.getCurrY();
-      com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.GameIndexListView", "computeScroll, currY = ".concat(String.valueOf(i)));
+      ae.d("MicroMsg.GameIndexListView", "computeScroll, currY = ".concat(String.valueOf(i)));
       this.agn.setPadding(0, i, 0, 0);
-      float f = (umf - i) / umf * 255.0F;
+      float f = (uxC - i) / uxC * 255.0F;
       i = (int)f;
       int j = (int)f;
-      this.umh.setAlpha(255 - i);
-      this.umg.setAlpha(j);
+      this.uxE.setAlpha(255 - i);
+      this.uxD.setAlpha(j);
       invalidate();
     }
     AppMethodBeat.o(42168);
@@ -235,7 +242,7 @@ public class GameIndexListView
   {
     AppMethodBeat.i(42167);
     boolean bool;
-    if ((!umd) || (this.agn == null))
+    if ((!uxA) || (this.agn == null))
     {
       bool = super.dispatchTouchEvent(paramMotionEvent);
       AppMethodBeat.o(42167);
@@ -255,35 +262,35 @@ public class GameIndexListView
           bool = super.dispatchTouchEvent(paramMotionEvent);
           AppMethodBeat.o(42167);
           return bool;
-          this.ume = false;
-          this.umb = paramMotionEvent.getRawY();
+          this.uxB = false;
+          this.uxy = paramMotionEvent.getRawY();
           continue;
           if ((((LinearLayoutManager)getLayoutManager()).km() == 0) && (this.agn != null) && (this.agn.getTop() == 0)) {}
           for (i = 1; i != 0; i = 0)
           {
-            if (!this.ume) {
+            if (!this.uxB) {
               break label144;
             }
             AppMethodBeat.o(42167);
             return true;
           }
         }
-        i = (int)(paramMotionEvent.getRawY() - this.umb);
-        if (this.agn.getPaddingTop() > umf + this.rW) {
+        i = (int)(paramMotionEvent.getRawY() - this.uxy);
+        if (this.agn.getPaddingTop() > uxC + this.rW) {
           break;
         }
       } while ((i <= 0) || (Math.abs(i) < this.rW));
-      this.ume = true;
+      this.uxB = true;
       this.mScroller.startScroll(0, this.agn.getPaddingTop(), 0, -this.agn.getPaddingTop(), 500);
-      this.umg.setClickable(true);
+      this.uxD.setClickable(true);
       invalidate();
       paramMotionEvent.setAction(3);
       super.dispatchTouchEvent(paramMotionEvent);
       AppMethodBeat.o(42167);
       return true;
     } while ((this.agn.getPaddingTop() < -this.rW) || (i >= 0) || (Math.abs(i) < this.rW));
-    this.ume = true;
-    this.mScroller.startScroll(0, 0, 0, umf, 500);
+    this.uxB = true;
+    this.mScroller.startScroll(0, 0, 0, uxC, 500);
     invalidate();
     paramMotionEvent.setAction(3);
     super.dispatchTouchEvent(paramMotionEvent);
@@ -295,18 +302,18 @@ public class GameIndexListView
   {
     AppMethodBeat.i(42164);
     super.onFinishInflate();
-    com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.GameIndexListView", "onFinishInflate");
+    ae.d("MicroMsg.GameIndexListView", "onFinishInflate");
     this.rW = ViewConfiguration.get(this.mContext).getScaledTouchSlop();
     this.mScroller = new Scroller(this.mContext);
     getContext();
     setLayoutManager(new LinearLayoutManager());
-    this.upB = new b();
-    setAdapter(this.upB);
+    this.uAX = new b();
+    setAdapter(this.uAX);
     a(new a(getResources()));
     setLoadingView(2131494300);
     setOnLoadingStateChangedListener(new LoadMoreRecyclerView.a()
     {
-      public final void bAF()
+      public final void bBz()
       {
         AppMethodBeat.i(42153);
         GameIndexListView.a(GameIndexListView.this);
@@ -314,25 +321,25 @@ public class GameIndexListView
       }
     });
     showLoading(true);
-    cZX();
+    dcI();
     AppMethodBeat.o(42164);
   }
   
   public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     AppMethodBeat.i(42166);
-    com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.GameIndexListView", "onLayout, changed = ".concat(String.valueOf(paramBoolean)));
+    ae.d("MicroMsg.GameIndexListView", "onLayout, changed = ".concat(String.valueOf(paramBoolean)));
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    if ((uma) || (this.agn == null) || (this.umh == null) || (this.umg == null))
+    if ((uxx) || (this.agn == null) || (this.uxE == null) || (this.uxD == null))
     {
       this.agn = getChildAt(0);
       if (this.agn != null)
       {
-        this.agn.setPadding(0, upE, 0, 0);
-        this.umh = ((ImageView)this.agn.findViewById(2131304853));
-        this.umg = ((ImageView)this.agn.findViewById(2131297217));
+        this.agn.setPadding(0, uBa, 0, 0);
+        this.uxE = ((ImageView)this.agn.findViewById(2131304853));
+        this.uxD = ((ImageView)this.agn.findViewById(2131297217));
       }
-      uma = false;
+      uxx = false;
     }
     AppMethodBeat.o(42166);
   }
@@ -392,19 +399,19 @@ public class GameIndexListView
   public final class b
     extends RecyclerView.a<a>
   {
-    LinkedList<d> upG;
+    LinkedList<d> uBc;
     
     public b()
     {
       AppMethodBeat.i(42159);
-      this.upG = new LinkedList();
+      this.uBc = new LinkedList();
       AppMethodBeat.o(42159);
     }
     
     public final int getItemCount()
     {
       AppMethodBeat.i(42161);
-      int i = this.upG.size();
+      int i = this.uBc.size();
       AppMethodBeat.o(42161);
       return i;
     }
@@ -412,7 +419,7 @@ public class GameIndexListView
     public final int getItemViewType(int paramInt)
     {
       AppMethodBeat.i(42160);
-      paramInt = ((d)this.upG.get(paramInt)).type;
+      paramInt = ((d)this.uBc.get(paramInt)).type;
       AppMethodBeat.o(42160);
       return paramInt;
     }
@@ -434,7 +441,7 @@ public class GameIndexListView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.GameIndexListView
  * JD-Core Version:    0.7.0.1
  */

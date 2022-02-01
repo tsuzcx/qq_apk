@@ -14,70 +14,72 @@ import android.os.Message;
 import android.os.Process;
 import android.system.OsConstants;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.vfs.q;
+import com.tencent.mm.b.e;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.vfs.k;
+import com.tencent.mm.vfs.w;
 import java.lang.reflect.Field;
 import java.util.Iterator;
 import java.util.List;
 
 public final class a
 {
-  private static String Ikn;
-  private static String Iko;
-  private static com.tencent.mm.vfs.e Ikp;
-  private static long Ikq;
+  private static k IEA;
+  private static long IEB;
   @SuppressLint({"HandlerLeak"})
-  private static Handler Ikr;
+  private static Handler IEC;
+  private static String IEy;
+  private static String IEz;
   
   static
   {
     AppMethodBeat.i(40605);
-    Ikr = new Handler(Looper.getMainLooper())
+    IEC = new Handler(Looper.getMainLooper())
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
         AppMethodBeat.i(40587);
         paramAnonymousMessage = (a.a)paramAnonymousMessage.obj;
         if (a.access$000()) {
-          if (a.Dk(a.Ikq))
+          if (a.DI(a.IEB))
           {
-            if (!a.ju(h.HUP))
+            if (!a.jA(h.IoX))
             {
-              h.fnx().idkey(675L, 25L, 1L);
-              paramAnonymousMessage.fnl();
+              h.frq().idkey(675L, 25L, 1L);
+              paramAnonymousMessage.fre();
               AppMethodBeat.o(40587);
               return;
             }
-            if (!a.fS(h.HUP)) {
-              h.fnx().idkey(675L, 18L, 1L);
+            if (!a.jF(h.IoX)) {
+              h.frq().idkey(675L, 18L, 1L);
             }
-            h.fnx().idkey(675L, 17L, 1L);
-            paramAnonymousMessage.fnm();
+            h.frq().idkey(675L, 17L, 1L);
+            paramAnonymousMessage.frf();
           }
         }
         for (;;)
         {
-          a.fnk();
+          a.frd();
           AppMethodBeat.o(40587);
           return;
           a.c(paramAnonymousMessage);
           AppMethodBeat.o(40587);
           return;
-          if (!a.Mv())
+          if (!a.cgB())
           {
-            h.fnx().idkey(675L, 15L, 1L);
-            paramAnonymousMessage.fnl();
+            h.frq().idkey(675L, 15L, 1L);
+            paramAnonymousMessage.fre();
           }
-          else if (!a.ju(h.HUP))
+          else if (!a.jA(h.IoX))
           {
-            h.fnx().idkey(675L, 26L, 1L);
-            h.fnx().idkey(675L, 15L, 1L);
-            paramAnonymousMessage.fnl();
+            h.frq().idkey(675L, 26L, 1L);
+            h.frq().idkey(675L, 15L, 1L);
+            paramAnonymousMessage.fre();
           }
           else
           {
-            h.fnx().idkey(675L, 16L, 1L);
-            paramAnonymousMessage.dTk();
+            h.frq().idkey(675L, 16L, 1L);
+            paramAnonymousMessage.dWK();
           }
         }
       }
@@ -92,22 +94,22 @@ public final class a
     AppMethodBeat.o(40596);
   }
   
-  private static void aRS(String paramString)
+  private static void aTp(String paramString)
   {
     try
     {
       AppMethodBeat.i(40593);
-      String str = fnh();
-      com.tencent.mm.vfs.e locale = new com.tencent.mm.vfs.e(str);
-      if (!locale.exists()) {
-        locale.mkdirs();
+      String str = fra();
+      k localk = new k(str);
+      if (!localk.exists()) {
+        localk.mkdirs();
       }
-      paramString = new com.tencent.mm.vfs.e(str + "/" + paramString);
+      paramString = new k(str + "/" + paramString);
       if (paramString.exists()) {
         paramString.delete();
       }
       paramString.createNewFile();
-      Ikp = paramString;
+      IEA = paramString;
       AppMethodBeat.o(40593);
       return;
     }
@@ -117,67 +119,67 @@ public final class a
   private static void b(a parama)
   {
     AppMethodBeat.i(40597);
-    if (Ikq == 0L) {
-      Ikq = System.currentTimeMillis();
+    if (IEB == 0L) {
+      IEB = System.currentTimeMillis();
     }
     Message localMessage = Message.obtain();
     localMessage.what = 0;
     localMessage.obj = parama;
-    Ikr.sendMessageDelayed(localMessage, 100L);
+    IEC.sendMessageDelayed(localMessage, 100L);
     AppMethodBeat.o(40597);
   }
   
-  public static String fnh()
+  public static String fra()
   {
     AppMethodBeat.i(40589);
-    if (Ikn == null)
+    if (IEy == null)
     {
       localObject = new IllegalStateException("data directory should not be null, give one.");
       AppMethodBeat.o(40589);
       throw ((Throwable)localObject);
     }
-    Object localObject = new com.tencent.mm.vfs.e(Ikn);
-    if ((!((com.tencent.mm.vfs.e)localObject).exists()) && (!((com.tencent.mm.vfs.e)localObject).mkdirs())) {
+    Object localObject = new k(IEy);
+    if ((!((k)localObject).exists()) && (!((k)localObject).mkdirs())) {
       h.b("WxSplash.DexOpt", "data directory create failed.", new Object[0]);
     }
-    localObject = Ikn;
+    localObject = IEy;
     AppMethodBeat.o(40589);
     return localObject;
   }
   
-  private static boolean fni()
+  private static boolean frb()
   {
     AppMethodBeat.i(40598);
-    if (Ikp == null)
+    if (IEA == null)
     {
       IllegalStateException localIllegalStateException = new IllegalStateException("tmp file field should not be null");
       AppMethodBeat.o(40598);
       throw localIllegalStateException;
     }
-    boolean bool = Ikp.exists();
+    boolean bool = IEA.exists();
     AppMethodBeat.o(40598);
     return bool;
   }
   
-  private static boolean fnj()
+  private static boolean frc()
   {
     AppMethodBeat.i(40599);
-    String str = fnh();
-    boolean bool = new com.tencent.mm.vfs.e(str + "/DexOpt_Failed").exists();
+    String str = fra();
+    boolean bool = new k(str + "/DexOpt_Failed").exists();
     AppMethodBeat.o(40599);
     return bool;
   }
   
-  public static boolean ju(Context paramContext)
+  public static boolean jA(Context paramContext)
   {
     AppMethodBeat.i(40590);
-    boolean bool = h.IkB.bv(paramContext);
+    boolean bool = h.IEM.bx(paramContext);
     h.b("WxSplash.DexOpt", "if need dexopt %s", new Object[] { Boolean.valueOf(bool) });
     AppMethodBeat.o(40590);
     return bool;
   }
   
-  public static void jv(Context paramContext)
+  public static void jB(Context paramContext)
   {
     AppMethodBeat.i(40591);
     if (g.zz)
@@ -185,15 +187,15 @@ public final class a
       AppMethodBeat.o(40591);
       return;
     }
-    h.fnx().idkey(675L, 22L, 1L);
+    h.frq().idkey(675L, 22L, 1L);
     try
     {
-      bool = h.IkB.bu(paramContext);
+      bool = h.IEM.bw(paramContext);
       h.b("WxSplash.DexOpt", "install multidex result %s", new Object[] { Boolean.valueOf(bool) });
       if (!bool)
       {
         h.b("WxSplash.DexOpt", "install multidex failed, kill self.", new Object[0]);
-        h.dyJ();
+        h.dCa();
       }
       AppMethodBeat.o(40591);
       return;
@@ -208,17 +210,17 @@ public final class a
     }
   }
   
-  public static void jw(Context paramContext)
+  public static void jC(Context paramContext)
   {
     AppMethodBeat.i(40592);
     h.b("WxSplash.DexOpt", "start dex opt service", new Object[0]);
-    String str = bt.getProcessNameByPid(paramContext, Process.myPid());
+    String str = bu.getProcessNameByPid(paramContext, Process.myPid());
     str.replace(':', '_');
-    Iko = "DexOpt_Request_".concat(String.valueOf(str));
-    h.fnx().idkey(675L, 14L, 1L);
+    IEz = "DexOpt_Request_".concat(String.valueOf(str));
+    h.frq().idkey(675L, 14L, 1L);
     try
     {
-      aRS(Iko);
+      aTp(IEz);
       paramContext.startService(new Intent(paramContext, DexOptService.class));
       AppMethodBeat.o(40592);
       return;
@@ -239,15 +241,15 @@ public final class a
         ((Field)localObject).setAccessible(true);
         if (((Integer)((Field)localObject).get(localException)).intValue() == OsConstants.ENOSPC)
         {
-          localObject = new com.tencent.mm.vfs.e(fnh());
-          if (((com.tencent.mm.vfs.e)localObject).exists()) {
+          localObject = new k(fra());
+          if (((k)localObject).exists()) {
             break label216;
           }
           i = 1;
           if (i == 0) {
             break label253;
           }
-          h.IkB.bw(paramContext);
+          h.IEM.by(paramContext);
         }
       }
       catch (Exception paramContext)
@@ -261,7 +263,7 @@ public final class a
         AppMethodBeat.o(40592);
         throw paramContext;
         label216:
-        i = ((com.tencent.mm.vfs.e)localObject).fOM().length;
+        i = ((k)localObject).fTj().length;
         h.b("WxSplash.DexOpt", "check dexopt directory size %s.", new Object[] { Integer.valueOf(i) });
         if (i >= 10000) {
           break label291;
@@ -270,9 +272,9 @@ public final class a
         break;
         label253:
         h.b("WxSplash.DexOpt", "check dexopt directory size not ok, clean it and throw exception.", new Object[0]);
-        paramContext = new com.tencent.mm.vfs.e(fnh());
+        paramContext = new k(fra());
         if (paramContext.exists()) {
-          com.tencent.mm.b.e.a(paramContext);
+          e.a(paramContext);
         }
       }
       label291:
@@ -280,7 +282,7 @@ public final class a
     }
   }
   
-  private static boolean jx(Context paramContext)
+  private static boolean jD(Context paramContext)
   {
     AppMethodBeat.i(40594);
     paramContext = (ActivityManager)paramContext.getSystemService("activity");
@@ -307,13 +309,13 @@ public final class a
     return false;
   }
   
-  public static boolean jy(Context paramContext)
+  public static boolean jE(Context paramContext)
   {
     AppMethodBeat.i(40595);
     long l1 = 0L;
     long l3 = System.currentTimeMillis();
     h.b("WxSplash.DexOpt", "block checking dex opt result.", new Object[0]);
-    while (fni())
+    while (frb())
     {
       long l2 = l1 + 1L;
       Thread.sleep(100L);
@@ -324,54 +326,54 @@ public final class a
         if (System.currentTimeMillis() - l3 > 180000L)
         {
           h.b("WxSplash.DexOpt", "block checking dex opt timeout.", new Object[0]);
-          if (!ju(paramContext))
+          if (!jA(paramContext))
           {
-            h.fnx().idkey(675L, 25L, 1L);
-            h.fnx().idkey(675L, 15L, 1L);
+            h.frq().idkey(675L, 25L, 1L);
+            h.frq().idkey(675L, 15L, 1L);
             AppMethodBeat.o(40595);
             return true;
           }
-          if (!jx(paramContext)) {
-            h.fnx().idkey(675L, 18L, 1L);
+          if (!jD(paramContext)) {
+            h.frq().idkey(675L, 18L, 1L);
           }
-          h.fnx().idkey(675L, 17L, 1L);
+          h.frq().idkey(675L, 17L, 1L);
           AppMethodBeat.o(40595);
           return false;
         }
       }
     }
-    if (!fnj())
+    if (!frc())
     {
-      h.fnx().idkey(675L, 15L, 1L);
+      h.frq().idkey(675L, 15L, 1L);
       AppMethodBeat.o(40595);
       return true;
     }
-    if (!ju(paramContext))
+    if (!jA(paramContext))
     {
-      h.fnx().idkey(675L, 26L, 1L);
-      h.fnx().idkey(675L, 15L, 1L);
+      h.frq().idkey(675L, 26L, 1L);
+      h.frq().idkey(675L, 15L, 1L);
       AppMethodBeat.o(40595);
       return true;
     }
-    h.fnx().idkey(675L, 16L, 1L);
+    h.frq().idkey(675L, 16L, 1L);
     AppMethodBeat.o(40595);
     return false;
   }
   
-  public static void n(Application paramApplication)
+  public static void p(Application paramApplication)
   {
     AppMethodBeat.i(40588);
-    Ikn = q.B(new com.tencent.mm.vfs.e(paramApplication.getFilesDir(), "dexopt_service").fOK());
+    IEy = w.B(new k(paramApplication.getFilesDir(), "dexopt_service").fTh());
     AppMethodBeat.o(40588);
   }
   
   public static abstract interface a
   {
-    public abstract void dTk();
+    public abstract void dWK();
     
-    public abstract void fnl();
+    public abstract void fre();
     
-    public abstract void fnm();
+    public abstract void frf();
   }
 }
 

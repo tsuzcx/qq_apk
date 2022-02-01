@@ -10,7 +10,7 @@ final class JsApiShowImageOperateSheet$BottomSheetLogicHelper$IPCSendToFriendEmo
   extends AppBrandProxyUIProcessTask.ProcessRequest
 {
   public static final Parcelable.Creator<IPCSendToFriendEmojiRequest> CREATOR;
-  private String kuH;
+  private String kxX;
   
   static
   {
@@ -24,11 +24,11 @@ final class JsApiShowImageOperateSheet$BottomSheetLogicHelper$IPCSendToFriendEmo
   protected JsApiShowImageOperateSheet$BottomSheetLogicHelper$IPCSendToFriendEmojiRequest(Parcel paramParcel)
   {
     AppMethodBeat.i(45687);
-    this.kuH = paramParcel.readString();
+    this.kxX = paramParcel.readString();
     AppMethodBeat.o(45687);
   }
   
-  public final Class<? extends AppBrandProxyUIProcessTask> bgN()
+  public final Class<? extends AppBrandProxyUIProcessTask> bhv()
   {
     return JsApiShowImageOperateSheet.BottomSheetLogicHelper.d.class;
   }
@@ -41,7 +41,7 @@ final class JsApiShowImageOperateSheet$BottomSheetLogicHelper$IPCSendToFriendEmo
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(45688);
-    paramParcel.writeString(this.kuH);
+    paramParcel.writeString(this.kxX);
     AppMethodBeat.o(45688);
   }
 }

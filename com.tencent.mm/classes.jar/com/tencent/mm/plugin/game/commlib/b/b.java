@@ -3,8 +3,8 @@ package com.tencent.mm.plugin.game.commlib.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.e.e;
 import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.io.IOException;
 
 public final class b
@@ -24,10 +24,10 @@ public final class b
     super(parame, a.info, "PBCache", null);
   }
   
-  public final byte[] all(String paramString)
+  public final byte[] amj(String paramString)
   {
     AppMethodBeat.i(89950);
-    if (bt.isNullOrNil(paramString))
+    if (bu.isNullOrNil(paramString))
     {
       AppMethodBeat.o(89950);
       return null;
@@ -44,7 +44,7 @@ public final class b
     return null;
   }
   
-  public final void alm(String paramString)
+  public final void amk(String paramString)
   {
     AppMethodBeat.i(184540);
     a locala = new a();
@@ -53,10 +53,10 @@ public final class b
     AppMethodBeat.o(184540);
   }
   
-  public final boolean b(String paramString, com.tencent.mm.bx.a parama)
+  public final boolean b(String paramString, com.tencent.mm.bw.a parama)
   {
     AppMethodBeat.i(89951);
-    if ((bt.isNullOrNil(paramString)) || (parama == null))
+    if ((bu.isNullOrNil(paramString)) || (parama == null))
     {
       AppMethodBeat.o(89951);
       return false;
@@ -70,7 +70,7 @@ public final class b
     }
     catch (IOException paramString)
     {
-      ad.e("MicroMsg.PBCacheStorage", "Saving Failed: %s", new Object[] { paramString.getMessage() });
+      ae.e("MicroMsg.PBCacheStorage", "Saving Failed: %s", new Object[] { paramString.getMessage() });
       AppMethodBeat.o(89951);
     }
     return false;
@@ -92,7 +92,7 @@ public final class b
     for (boolean bool = super.update(locala, new String[0]);; bool = super.insert(locala))
     {
       if (!bool) {
-        ad.e("MicroMsg.PBCacheStorage", "Saving cache failed (update or insert)");
+        ae.e("MicroMsg.PBCacheStorage", "Saving cache failed (update or insert)");
       }
       AppMethodBeat.o(184539);
       return bool;

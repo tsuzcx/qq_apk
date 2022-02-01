@@ -3,9 +3,9 @@ package com.tencent.mm.plugin.collect.model;
 public final class a
 {
   public String desc;
-  public int dnd;
-  public String oZN;
-  public String oZO;
+  public int dof;
+  public String pgr;
+  public String pgs;
   public long timestamp;
 }
 

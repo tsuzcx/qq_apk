@@ -1,10 +1,10 @@
 package com.tencent.mm.kernel;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.cg;
-import com.tencent.mm.model.cg.a;
+import com.tencent.mm.model.ci;
+import com.tencent.mm.model.ci.a;
 import com.tencent.mm.sdk.a.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.Iterator;
 import java.util.Set;
 
@@ -13,38 +13,38 @@ public final class b$6
 {
   public b$6(b paramb) {}
   
-  public final void wT(String paramString)
+  public final void xC(String paramString)
   {
     AppMethodBeat.i(132052);
-    ad.w("MMKernel.CoreNetwork", "CallbackForReset errorStack %s ", new Object[] { paramString });
-    g.ajD();
-    if (g.ajE() != null)
+    ae.w("MMKernel.CoreNetwork", "CallbackForReset errorStack %s ", new Object[] { paramString });
+    g.ajS();
+    if (g.ajT() != null)
     {
-      g.ajD();
-      cg localcg = g.ajE();
-      localcg.isRunning = true;
-      Iterator localIterator = localcg.hIv.iterator();
+      g.ajS();
+      ci localci = g.ajT();
+      localci.isRunning = true;
+      Iterator localIterator = localci.hLo.iterator();
       while (localIterator.hasNext())
       {
-        cg.a locala = (cg.a)localIterator.next();
+        ci.a locala = (ci.a)localIterator.next();
         if (locala != null) {
-          locala.aCO();
+          locala.aDe();
         }
       }
-      localcg.isRunning = false;
+      localci.isRunning = false;
     }
-    g.ajD();
-    if (g.ajC() != null)
+    g.ajS();
+    if (g.ajR() != null)
     {
-      g.ajD();
-      g.ajC().ua(paramString);
+      g.ajS();
+      g.ajR().uv(paramString);
     }
     AppMethodBeat.o(132052);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.kernel.b.6
  * JD-Core Version:    0.7.0.1
  */

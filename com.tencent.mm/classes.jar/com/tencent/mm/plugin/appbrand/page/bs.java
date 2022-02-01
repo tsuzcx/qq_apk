@@ -1,40 +1,31 @@
 package com.tencent.mm.plugin.appbrand.page;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.compatible.loader.a;
 
-public enum bs
+final class bs
 {
-  private final String type;
-  
-  static
+  static boolean b(br parambr)
   {
-    AppMethodBeat.i(135283);
-    mfL = new bs("APP_LAUNCH", 0, "appLaunch");
-    mfM = new bs("NAVIGATE_TO", 1, "navigateTo");
-    mfN = new bs("NAVIGATE_BACK", 2, "navigateBack");
-    mfO = new bs("REDIRECT_TO", 3, "redirectTo");
-    mfP = new bs("REWRITE_ROUTE", 4, "rewriteRoute");
-    mfQ = new bs("RE_LAUNCH", 5, "reLaunch");
-    mfR = new bs("AUTO_RE_LAUNCH", 6, "autoReLaunch");
-    mfS = new bs("SWITCH_TAB", 7, "switchTab");
-    mfT = new bs("DISMISS_PIP", 8, "dismissPip");
-    mfU = new bs[] { mfL, mfM, mfN, mfO, mfP, mfQ, mfR, mfS, mfT };
-    AppMethodBeat.o(135283);
+    return (parambr != br.mkg) && (parambr != br.mkn) && (parambr != br.mkj) && (parambr != br.mkk) && (parambr != br.mkl) && (parambr != br.mkm);
   }
   
-  private bs(String paramString)
+  static boolean c(br parambr)
   {
-    this.type = paramString;
+    return (parambr == br.mkj) || (parambr == br.mkk) || (parambr == br.mkn) || (parambr == br.mkl) || (parambr == br.mkm);
   }
   
-  public final String toString()
+  static boolean d(br parambr)
   {
-    return this.type;
+    AppMethodBeat.i(207860);
+    boolean bool = a.contains(new br[] { br.mkn, br.mkl, br.mkm }, parambr);
+    AppMethodBeat.o(207860);
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.page.bs
  * JD-Core Version:    0.7.0.1
  */

@@ -13,15 +13,15 @@ public class f
   
   public f(Context paramContext)
   {
-    AppMethodBeat.i(190449);
+    AppMethodBeat.i(210714);
     b = paramContext;
     n.a(paramContext).a();
-    AppMethodBeat.o(190449);
+    AppMethodBeat.o(210714);
   }
   
   public static f a(Context paramContext)
   {
-    AppMethodBeat.i(190450);
+    AppMethodBeat.i(210715);
     if (c == null) {}
     try
     {
@@ -29,12 +29,12 @@ public class f
         c = new f(paramContext);
       }
       paramContext = c;
-      AppMethodBeat.o(190450);
+      AppMethodBeat.o(210715);
       return paramContext;
     }
     finally
     {
-      AppMethodBeat.o(190450);
+      AppMethodBeat.o(210715);
     }
   }
   
@@ -44,18 +44,18 @@ public class f
     {
       try
       {
-        AppMethodBeat.i(190451);
+        AppMethodBeat.i(210716);
         Object localObject = a;
         if (localObject != null)
         {
-          AppMethodBeat.o(190451);
+          AppMethodBeat.o(210716);
           return localObject;
         }
         localObject = b;
         if (localObject == null)
         {
           localObject = null;
-          AppMethodBeat.o(190451);
+          AppMethodBeat.o(210716);
           continue;
         }
         d.a(localContext).b("load_sapp");
@@ -70,24 +70,24 @@ public class f
       b();
       d.a(b).c("load_sapp");
       localDexClassLoader = a;
-      AppMethodBeat.o(190451);
+      AppMethodBeat.o(210716);
     }
   }
   
   public void b()
   {
-    AppMethodBeat.i(190452);
+    AppMethodBeat.i(210717);
     try
     {
       Object localObject = b;
       localObject = q.e(q.a((Context)localObject, "__SP_Tencent_Loc_COMP_INFO__sapp_", ""));
       new Thread(new i(b, (List)localObject, false)).start();
-      AppMethodBeat.o(190452);
+      AppMethodBeat.o(210717);
       return;
     }
     catch (Throwable localThrowable)
     {
-      AppMethodBeat.o(190452);
+      AppMethodBeat.o(210717);
     }
   }
   

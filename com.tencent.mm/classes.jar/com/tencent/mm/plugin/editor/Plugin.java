@@ -1,6 +1,6 @@
 package com.tencent.mm.plugin.editor;
 
-import com.tencent.mm.model.ax;
+import com.tencent.mm.model.az;
 import com.tencent.mm.pluginsdk.b.c;
 import com.tencent.mm.pluginsdk.b.d;
 import com.tencent.mm.pluginsdk.n;
@@ -13,7 +13,7 @@ public class Plugin
     return null;
   }
   
-  public ax createSubCore()
+  public az createSubCore()
   {
     return null;
   }

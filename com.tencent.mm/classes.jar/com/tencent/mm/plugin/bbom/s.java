@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.bbom;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.oz;
+import com.tencent.mm.g.a.pa;
 import com.tencent.mm.sdk.b.c;
 
 public final class s
-  extends c<oz>
+  extends c<pa>
 {
   public s()
   {
     AppMethodBeat.i(161308);
-    this.__eventId = oz.class.getName().hashCode();
+    this.__eventId = pa.class.getName().hashCode();
     AppMethodBeat.o(161308);
   }
 }

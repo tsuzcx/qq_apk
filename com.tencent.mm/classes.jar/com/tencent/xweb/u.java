@@ -4,11 +4,11 @@ public abstract interface u
 {
   public abstract void G(double paramDouble);
   
-  public abstract void etk();
+  public abstract void ewR();
   
-  public abstract void gaG();
+  public abstract void gfi();
   
-  public abstract boolean gaH();
+  public abstract boolean gfj();
 }
 
 

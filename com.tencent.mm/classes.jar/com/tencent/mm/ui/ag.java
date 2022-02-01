@@ -17,12 +17,12 @@ import com.tencent.mm.hellhoundlib.b.b;
 public final class ag
   extends LinearLayout
 {
-  private a Jfu;
-  private ImageView gSx;
+  private a JAf;
+  private ImageView gVf;
   private String hint;
   private Context mContext;
-  private EditText mYa;
-  private ImageButton rEL;
+  private EditText ndh;
+  private ImageButton rMW;
   
   public ag(Context paramContext)
   {
@@ -30,15 +30,15 @@ public final class ag
     AppMethodBeat.i(159103);
     this.mContext = paramContext;
     ((LayoutInflater)this.mContext.getSystemService("layout_inflater")).inflate(2131492923, this, true);
-    this.gSx = ((ImageView)findViewById(2131296417));
-    this.gSx.setOnClickListener(new View.OnClickListener()
+    this.gVf = ((ImageView)findViewById(2131296417));
+    this.gVf.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(159100);
         b localb = new b();
         localb.bd(paramAnonymousView);
-        a.b("com/tencent/mm/ui/SearchBarView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        a.b("com/tencent/mm/ui/SearchBarView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
         if (ag.a(ag.this) != null) {
           ag.a(ag.this).onClickBackBtn(paramAnonymousView);
         }
@@ -46,23 +46,23 @@ public final class ag
         AppMethodBeat.o(159100);
       }
     });
-    this.mYa = ((EditText)findViewById(2131304413));
-    this.mYa.requestFocus();
-    this.rEL = ((ImageButton)findViewById(2131298348));
-    this.rEL.setOnClickListener(new View.OnClickListener()
+    this.ndh = ((EditText)findViewById(2131304413));
+    this.ndh.requestFocus();
+    this.rMW = ((ImageButton)findViewById(2131298348));
+    this.rMW.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(159101);
         b localb = new b();
         localb.bd(paramAnonymousView);
-        a.b("com/tencent/mm/ui/SearchBarView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        a.b("com/tencent/mm/ui/SearchBarView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
         ag.b(ag.this);
         a.a(this, "com/tencent/mm/ui/SearchBarView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(159101);
       }
     });
-    this.mYa.addTextChangedListener(new TextWatcher()
+    this.ndh.addTextChangedListener(new TextWatcher()
     {
       public final void afterTextChanged(Editable paramAnonymousEditable)
       {
@@ -86,7 +86,7 @@ public final class ag
   
   public final EditText getSearchEditText()
   {
-    return this.mYa;
+    return this.ndh;
   }
   
   public final void setHint(String paramString)
@@ -96,7 +96,7 @@ public final class ag
   
   public final void setSearchViewListener(a parama)
   {
-    this.Jfu = parama;
+    this.JAf = parama;
   }
   
   public static abstract interface a

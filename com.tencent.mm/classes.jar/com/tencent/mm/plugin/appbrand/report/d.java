@@ -3,62 +3,64 @@ package com.tencent.mm.plugin.appbrand.report;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.debugger.o;
 import com.tencent.mm.plugin.appbrand.jsruntime.c;
+import com.tencent.mm.plugin.appbrand.jsruntime.i;
 import com.tencent.mm.plugin.appbrand.jsruntime.x;
-import com.tencent.mm.plugin.appbrand.page.ar;
-import com.tencent.mm.plugin.appbrand.page.ay;
+import com.tencent.mm.plugin.appbrand.page.aq;
+import com.tencent.mm.plugin.appbrand.page.ax;
+import com.tencent.mm.sdk.platformtools.j;
 import com.tencent.xweb.WebView;
 
 public enum d
 {
-  public static final d[] mqV;
+  public static final d[] mvT;
   
   static
   {
     AppMethodBeat.i(48043);
-    mqL = new d("X5", 0);
-    mqM = new d("MMV8", 1);
-    mqN = new d("WebViewBased", 2);
-    mqO = new d("NativeScript", 3);
-    mqP = new d("NodeJS", 4);
-    mqQ = new d("J2V8", 5);
-    mqR = new d("WebViewX5", 6);
-    mqS = new d("WebViewXW", 7);
-    mqT = new d("WebViewSystem", 8);
-    mqU = new d("Invalid", 9);
-    mqW = new d[] { mqL, mqM, mqN, mqO, mqP, mqQ, mqR, mqS, mqT, mqU };
-    mqV = new d[] { mqM, mqQ, mqP };
+    mvJ = new d("X5", 0);
+    mvK = new d("MMV8", 1);
+    mvL = new d("WebViewBased", 2);
+    mvM = new d("NativeScript", 3);
+    mvN = new d("NodeJS", 4);
+    mvO = new d("J2V8", 5);
+    mvP = new d("WebViewX5", 6);
+    mvQ = new d("WebViewXW", 7);
+    mvR = new d("WebViewSystem", 8);
+    mvS = new d("Invalid", 9);
+    mvU = new d[] { mvJ, mvK, mvL, mvM, mvN, mvO, mvP, mvQ, mvR, mvS };
+    mvT = new d[] { mvK, mvO, mvN };
     AppMethodBeat.o(48043);
   }
   
   private d() {}
   
-  public static d d(com.tencent.mm.plugin.appbrand.jsruntime.i parami)
+  public static d d(i parami)
   {
     AppMethodBeat.i(48041);
     if ((parami instanceof c))
     {
-      parami = mqQ;
+      parami = mvO;
       AppMethodBeat.o(48041);
       return parami;
     }
     if ((parami instanceof x))
     {
-      parami = mqP;
+      parami = mvN;
       AppMethodBeat.o(48041);
       return parami;
     }
     if ((parami instanceof o))
     {
-      parami = mqU;
+      parami = mvS;
       AppMethodBeat.o(48041);
       return parami;
     }
-    if ((parami instanceof ay))
+    if ((parami instanceof ax))
     {
-      if (!(parami instanceof ar)) {
+      if (!(parami instanceof aq)) {
         break label221;
       }
-      parami = ((ar)parami).meh;
+      parami = ((aq)parami).miB;
     }
     label221:
     for (;;)
@@ -68,27 +70,27 @@ public enum d
         parami = (WebView)parami;
         if (parami.isSysKernel())
         {
-          parami = mqT;
+          parami = mvR;
           AppMethodBeat.o(48041);
           return parami;
         }
         if (parami.isXWalkKernel())
         {
-          parami = mqS;
+          parami = mvQ;
           AppMethodBeat.o(48041);
           return parami;
         }
         if (parami.getX5WebViewExtension() != null)
         {
-          parami = mqR;
+          parami = mvP;
           AppMethodBeat.o(48041);
           return parami;
         }
       }
-      parami = mqU;
+      parami = mvS;
       AppMethodBeat.o(48041);
       return parami;
-      if (com.tencent.mm.sdk.platformtools.i.DEBUG)
+      if (j.DEBUG)
       {
         if (parami == null) {}
         for (parami = "null";; parami = parami.getClass().getSimpleName())
@@ -98,13 +100,13 @@ public enum d
           throw parami;
         }
       }
-      parami = mqU;
+      parami = mvS;
       AppMethodBeat.o(48041);
       return parami;
     }
   }
   
-  public static String e(com.tencent.mm.plugin.appbrand.jsruntime.i parami)
+  public static String e(i parami)
   {
     AppMethodBeat.i(48042);
     String str2 = d(parami).name();
@@ -118,7 +120,7 @@ public enum d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.report.d
  * JD-Core Version:    0.7.0.1
  */

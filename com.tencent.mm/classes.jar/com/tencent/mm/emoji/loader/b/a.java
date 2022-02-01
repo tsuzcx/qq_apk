@@ -2,7 +2,7 @@ package com.tencent.mm.emoji.loader.b;
 
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/emoji/loader/decoder/AnimateDecoder;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "decode", "Landroid/graphics/drawable/Drawable;", "emojiInfo", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "sizeCallback", "Lkotlin/Function2;", "", "Lkotlin/ParameterName;", "name", "width", "height", "", "plugin-emojisdk_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/emoji/loader/decoder/AnimateDecoder;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "decode", "Landroid/graphics/drawable/Drawable;", "emojiInfo", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "sizeCallback", "Lkotlin/Function2;", "", "Lkotlin/ParameterName;", "name", "width", "height", "", "plugin-emojisdk_release"})
 public final class a
 {
   private final String TAG = "MicroMsg.EmojiLoader.AnimateDecoder";
@@ -20,15 +20,15 @@ public final class a
     //   11: invokestatic 57	d/g/b/p:h	(Ljava/lang/Object;Ljava/lang/String;)V
     //   14: aload_1
     //   15: invokevirtual 63	com/tencent/mm/storage/emotion/EmojiInfo:getGroup	()I
-    //   18: getstatic 69	com/tencent/mm/storage/emotion/EmojiGroupInfo:OeL	I
+    //   18: getstatic 69	com/tencent/mm/storage/emotion/EmojiGroupInfo:OzS	I
     //   21: if_icmpeq +23 -> 44
     //   24: aload_1
     //   25: invokevirtual 63	com/tencent/mm/storage/emotion/EmojiInfo:getGroup	()I
-    //   28: getstatic 72	com/tencent/mm/storage/emotion/EmojiInfo:OeS	I
+    //   28: getstatic 72	com/tencent/mm/storage/emotion/EmojiInfo:OzZ	I
     //   31: if_icmpeq +13 -> 44
     //   34: aload_1
     //   35: invokevirtual 63	com/tencent/mm/storage/emotion/EmojiInfo:getGroup	()I
-    //   38: getstatic 75	com/tencent/mm/storage/emotion/EmojiInfo:OeR	I
+    //   38: getstatic 75	com/tencent/mm/storage/emotion/EmojiInfo:OzY	I
     //   41: if_icmpne +147 -> 188
     //   44: aload_1
     //   45: invokevirtual 78	com/tencent/mm/storage/emotion/EmojiInfo:getName	()Ljava/lang/String;
@@ -58,8 +58,8 @@ public final class a
     //   96: iconst_0
     //   97: aload 7
     //   99: aastore
-    //   100: invokestatic 108	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   103: invokestatic 114	com/tencent/mm/sdk/platformtools/aj:getContext	()Landroid/content/Context;
+    //   100: invokestatic 108	com/tencent/mm/sdk/platformtools/ae:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   103: invokestatic 114	com/tencent/mm/sdk/platformtools/ak:getContext	()Landroid/content/Context;
     //   106: astore 8
     //   108: aload 8
     //   110: ldc 116
@@ -68,10 +68,10 @@ public final class a
     //   117: invokevirtual 122	android/content/Context:getResources	()Landroid/content/res/Resources;
     //   120: aload 7
     //   122: ldc 124
-    //   124: invokestatic 127	com/tencent/mm/sdk/platformtools/aj:getPackageName	()Ljava/lang/String;
+    //   124: invokestatic 127	com/tencent/mm/sdk/platformtools/ak:getPackageName	()Ljava/lang/String;
     //   127: invokevirtual 133	android/content/res/Resources:getIdentifier	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)I
     //   130: istore_3
-    //   131: invokestatic 114	com/tencent/mm/sdk/platformtools/aj:getContext	()Landroid/content/Context;
+    //   131: invokestatic 114	com/tencent/mm/sdk/platformtools/ak:getContext	()Landroid/content/Context;
     //   134: astore 7
     //   136: aload 7
     //   138: ldc 116
@@ -99,7 +99,7 @@ public final class a
     //   185: aload 7
     //   187: areturn
     //   188: aload_1
-    //   189: invokevirtual 156	com/tencent/mm/storage/emotion/EmojiInfo:fOy	()Z
+    //   189: invokevirtual 156	com/tencent/mm/storage/emotion/EmojiInfo:fxr	()Z
     //   192: ifeq +131 -> 323
     //   195: aload_1
     //   196: invokevirtual 78	com/tencent/mm/storage/emotion/EmojiInfo:getName	()Ljava/lang/String;
@@ -129,8 +129,8 @@ public final class a
     //   247: iconst_0
     //   248: aload 7
     //   250: aastore
-    //   251: invokestatic 108	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   254: invokestatic 114	com/tencent/mm/sdk/platformtools/aj:getContext	()Landroid/content/Context;
+    //   251: invokestatic 108	com/tencent/mm/sdk/platformtools/ae:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   254: invokestatic 114	com/tencent/mm/sdk/platformtools/ak:getContext	()Landroid/content/Context;
     //   257: astore 8
     //   259: aload 8
     //   261: ldc 116
@@ -139,10 +139,10 @@ public final class a
     //   268: invokevirtual 122	android/content/Context:getResources	()Landroid/content/res/Resources;
     //   271: aload 7
     //   273: ldc 124
-    //   275: invokestatic 127	com/tencent/mm/sdk/platformtools/aj:getPackageName	()Ljava/lang/String;
+    //   275: invokestatic 127	com/tencent/mm/sdk/platformtools/ak:getPackageName	()Ljava/lang/String;
     //   278: invokevirtual 133	android/content/res/Resources:getIdentifier	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)I
     //   281: istore_3
-    //   282: invokestatic 114	com/tencent/mm/sdk/platformtools/aj:getContext	()Landroid/content/Context;
+    //   282: invokestatic 114	com/tencent/mm/sdk/platformtools/ak:getContext	()Landroid/content/Context;
     //   285: astore 7
     //   287: aload 7
     //   289: ldc 116
@@ -162,7 +162,7 @@ public final class a
     //   318: istore 4
     //   320: goto -161 -> 159
     //   323: aload_1
-    //   324: invokevirtual 170	com/tencent/mm/storage/emotion/EmojiInfo:fOu	()Z
+    //   324: invokevirtual 170	com/tencent/mm/storage/emotion/EmojiInfo:fxn	()Z
     //   327: ifne +10 -> 337
     //   330: ldc 44
     //   332: invokestatic 152	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -181,7 +181,7 @@ public final class a
     //   362: invokeinterface 189 2 0
     //   367: astore 9
     //   369: aload 9
-    //   371: invokestatic 195	com/tencent/mm/sdk/platformtools/bt:cC	([B)Z
+    //   371: invokestatic 195	com/tencent/mm/sdk/platformtools/bu:cF	([B)Z
     //   374: ifeq +40 -> 414
     //   377: aload_0
     //   378: getfield 36	com/tencent/mm/emoji/loader/b/a:TAG	Ljava/lang/String;
@@ -190,24 +190,24 @@ public final class a
     //   385: ldc 199
     //   387: invokespecial 202	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   390: aload_1
-    //   391: invokevirtual 205	com/tencent/mm/storage/emotion/EmojiInfo:Lb	()Ljava/lang/String;
+    //   391: invokevirtual 205	com/tencent/mm/storage/emotion/EmojiInfo:Lj	()Ljava/lang/String;
     //   394: invokevirtual 209	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   397: invokevirtual 212	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   400: invokestatic 215	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   400: invokestatic 215	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   403: aload_1
-    //   404: invokevirtual 218	com/tencent/mm/storage/emotion/EmojiInfo:fOv	()V
+    //   404: invokevirtual 218	com/tencent/mm/storage/emotion/EmojiInfo:fxo	()V
     //   407: ldc 44
     //   409: invokestatic 152	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   412: aconst_null
     //   413: areturn
     //   414: aload 9
-    //   416: invokestatic 223	com/tencent/mm/sdk/platformtools/t:cv	([B)Z
+    //   416: invokestatic 223	com/tencent/mm/sdk/platformtools/u:cy	([B)Z
     //   419: ifeq +130 -> 549
     //   422: new 225	com/tencent/mm/plugin/gif/h
     //   425: dup
     //   426: aload 9
     //   428: aload_1
-    //   429: invokevirtual 205	com/tencent/mm/storage/emotion/EmojiInfo:Lb	()Ljava/lang/String;
+    //   429: invokevirtual 205	com/tencent/mm/storage/emotion/EmojiInfo:Lj	()Ljava/lang/String;
     //   432: invokespecial 228	com/tencent/mm/plugin/gif/h:<init>	([BLjava/lang/String;)V
     //   435: checkcast 167	android/graphics/drawable/Drawable
     //   438: astore 7
@@ -230,10 +230,10 @@ public final class a
     //   483: aload_0
     //   484: getfield 36	com/tencent/mm/emoji/loader/b/a:TAG	Ljava/lang/String;
     //   487: ldc 235
-    //   489: invokestatic 238	com/tencent/mm/sdk/platformtools/ad:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   489: invokestatic 238	com/tencent/mm/sdk/platformtools/ae:w	(Ljava/lang/String;Ljava/lang/String;)V
     //   492: aload_1
-    //   493: invokevirtual 218	com/tencent/mm/storage/emotion/EmojiInfo:fOv	()V
-    //   496: getstatic 244	com/tencent/mm/emoji/loader/e:giz	Lcom/tencent/mm/emoji/loader/e;
+    //   493: invokevirtual 218	com/tencent/mm/storage/emotion/EmojiInfo:fxo	()V
+    //   496: getstatic 244	com/tencent/mm/emoji/loader/e:gkR	Lcom/tencent/mm/emoji/loader/e;
     //   499: astore 8
     //   501: aload_1
     //   502: iconst_1
@@ -245,7 +245,7 @@ public final class a
     //   513: ifeq +57 -> 570
     //   516: aload 7
     //   518: checkcast 158	com/tencent/mm/plugin/gif/d
-    //   521: invokevirtual 250	com/tencent/mm/plugin/gif/d:daY	()I
+    //   521: invokevirtual 250	com/tencent/mm/plugin/gif/d:ddP	()I
     //   524: istore 4
     //   526: iload 4
     //   528: istore_3
@@ -253,7 +253,7 @@ public final class a
     //   531: istore 5
     //   533: aload 7
     //   535: checkcast 158	com/tencent/mm/plugin/gif/d
-    //   538: invokevirtual 253	com/tencent/mm/plugin/gif/d:daZ	()I
+    //   538: invokevirtual 253	com/tencent/mm/plugin/gif/d:ddQ	()I
     //   541: istore 6
     //   543: iload 6
     //   545: istore_3
@@ -262,14 +262,14 @@ public final class a
     //   552: dup
     //   553: aload 9
     //   555: aload_1
-    //   556: invokevirtual 205	com/tencent/mm/storage/emotion/EmojiInfo:Lb	()Ljava/lang/String;
+    //   556: invokevirtual 205	com/tencent/mm/storage/emotion/EmojiInfo:Lj	()Ljava/lang/String;
     //   559: invokespecial 254	com/tencent/mm/plugin/gif/d:<init>	([BLjava/lang/String;)V
     //   562: checkcast 167	android/graphics/drawable/Drawable
     //   565: astore 7
     //   567: goto -59 -> 508
     //   570: aload 7
     //   572: checkcast 225	com/tencent/mm/plugin/gif/h
-    //   575: invokevirtual 255	com/tencent/mm/plugin/gif/h:daY	()I
+    //   575: invokevirtual 255	com/tencent/mm/plugin/gif/h:ddP	()I
     //   578: istore 4
     //   580: iload 4
     //   582: istore_3
@@ -277,7 +277,7 @@ public final class a
     //   585: istore 5
     //   587: aload 7
     //   589: checkcast 225	com/tencent/mm/plugin/gif/h
-    //   592: invokevirtual 256	com/tencent/mm/plugin/gif/h:daZ	()I
+    //   592: invokevirtual 256	com/tencent/mm/plugin/gif/h:ddQ	()I
     //   595: istore 6
     //   597: iload 6
     //   599: istore_3
@@ -292,16 +292,16 @@ public final class a
     //   616: bipush 103
     //   618: if_icmpne +184 -> 802
     //   621: aload 9
-    //   623: invokestatic 265	com/tencent/mm/sdk/platformtools/g:cr	([B)Landroid/graphics/Bitmap;
+    //   623: invokestatic 265	com/tencent/mm/sdk/platformtools/h:cu	([B)Landroid/graphics/Bitmap;
     //   626: astore 8
     //   628: aload 8
     //   630: ifnonnull +24 -> 654
     //   633: aload_0
     //   634: getfield 36	com/tencent/mm/emoji/loader/b/a:TAG	Ljava/lang/String;
     //   637: ldc_w 267
-    //   640: invokestatic 215	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   640: invokestatic 215	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   643: aload_1
-    //   644: invokevirtual 218	com/tencent/mm/storage/emotion/EmojiInfo:fOv	()V
+    //   644: invokevirtual 218	com/tencent/mm/storage/emotion/EmojiInfo:fxo	()V
     //   647: ldc 44
     //   649: invokestatic 152	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   652: aconst_null
@@ -309,7 +309,7 @@ public final class a
     //   654: aload 8
     //   656: sipush 320
     //   659: invokevirtual 272	android/graphics/Bitmap:setDensity	(I)V
-    //   662: invokestatic 114	com/tencent/mm/sdk/platformtools/aj:getContext	()Landroid/content/Context;
+    //   662: invokestatic 114	com/tencent/mm/sdk/platformtools/ak:getContext	()Landroid/content/Context;
     //   665: astore 7
     //   667: aload 7
     //   669: ldc 116
@@ -343,12 +343,12 @@ public final class a
     //   731: ldc_w 286
     //   734: iconst_0
     //   735: anewarray 4	java/lang/Object
-    //   738: invokestatic 290	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   738: invokestatic 290	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   741: iconst_0
     //   742: istore_3
     //   743: goto -584 -> 159
     //   746: aload_1
-    //   747: invokevirtual 218	com/tencent/mm/storage/emotion/EmojiInfo:fOv	()V
+    //   747: invokevirtual 218	com/tencent/mm/storage/emotion/EmojiInfo:fxo	()V
     //   750: goto -570 -> 180
     //   753: astore 8
     //   755: iconst_0
@@ -419,7 +419,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.emoji.loader.b.a
  * JD-Core Version:    0.7.0.1
  */

@@ -10,13 +10,13 @@ import com.tencent.mm.ui.j.b;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/emoji/panel/EmojiPanelGroupView;", "Landroid/support/v7/widget/RecyclerView;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "(Landroid/content/Context;)V", "defStyle", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "TAG", "", "galleryScrollHelper", "Lcom/tencent/mm/ui/recyclerview/GalleryScrollHelper;", "scrollEnabled", "", "dispatchTouchEvent", "ev", "Landroid/view/MotionEvent;", "setScrollEnable", "", "enable", "plugin-emojisdk_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/emoji/panel/EmojiPanelGroupView;", "Landroid/support/v7/widget/RecyclerView;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "(Landroid/content/Context;)V", "defStyle", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "TAG", "", "galleryScrollHelper", "Lcom/tencent/mm/ui/recyclerview/GalleryScrollHelper;", "scrollEnabled", "", "dispatchTouchEvent", "ev", "Landroid/view/MotionEvent;", "setScrollEnable", "", "enable", "plugin-emojisdk_release"})
 public final class EmojiPanelGroupView
   extends RecyclerView
 {
   private final String TAG;
-  private final b gmC;
-  private boolean gmD;
+  private final b goY;
+  private boolean goZ;
   
   public EmojiPanelGroupView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -30,7 +30,7 @@ public final class EmojiPanelGroupView
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(105596);
     this.TAG = "MicroMsg.EmojiPanelGroupView";
-    this.gmC = new b(paramContext);
+    this.goY = new b(paramContext);
     setItemViewCacheSize(0);
     AppMethodBeat.o(105596);
   }
@@ -40,8 +40,8 @@ public final class EmojiPanelGroupView
     boolean bool = true;
     AppMethodBeat.i(105595);
     p.h(paramMotionEvent, "ev");
-    this.gmC.ag(paramMotionEvent);
-    int i = this.gmC.KCq;
+    this.goY.ae(paramMotionEvent);
+    int i = this.goY.KYK;
     Object localObject2 = getLayoutManager();
     Object localObject1 = localObject2;
     if (!(localObject2 instanceof EmojiPanelLayoutManager)) {
@@ -50,10 +50,10 @@ public final class EmojiPanelGroupView
     localObject1 = (EmojiPanelLayoutManager)localObject1;
     if (localObject1 != null)
     {
-      if (!this.gmD) {
+      if (!this.goZ) {
         break label116;
       }
-      localObject2 = b.KCu;
+      localObject2 = b.KYO;
       if (((i & 0x1) == 0) && ((i & 0x2) == 0)) {
         break label111;
       }
@@ -64,7 +64,7 @@ public final class EmojiPanelGroupView
     }
     for (;;)
     {
-      ((EmojiPanelLayoutManager)localObject1).gou = bool;
+      ((EmojiPanelLayoutManager)localObject1).gqP = bool;
       bool = super.dispatchTouchEvent(paramMotionEvent);
       AppMethodBeat.o(105595);
       return bool;
@@ -78,12 +78,12 @@ public final class EmojiPanelGroupView
   
   public final void setScrollEnable(boolean paramBoolean)
   {
-    this.gmD = paramBoolean;
+    this.goZ = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.emoji.panel.EmojiPanelGroupView
  * JD-Core Version:    0.7.0.1
  */

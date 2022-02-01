@@ -6,7 +6,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.a;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.storagebase.h;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -15,61 +15,61 @@ public final class c
   extends j<b>
 {
   public static final String[] SQL_CREATE;
-  public static Pair<String, Long> gRb;
-  private static c gRc;
+  public static Pair<String, Long> gTJ;
+  private static c gTK;
   public com.tencent.mm.sdk.e.e db;
-  public a gRd;
+  public a gTL;
   
   static
   {
-    AppMethodBeat.i(195651);
+    AppMethodBeat.i(220219);
     SQL_CREATE = new String[] { j.getCreateSQLs(b.info, "LiveTipsBar") };
-    AppMethodBeat.o(195651);
+    AppMethodBeat.o(220219);
   }
   
   private c(h paramh)
   {
     super(paramh, b.info, "LiveTipsBar", null);
-    AppMethodBeat.i(195641);
+    AppMethodBeat.i(220209);
     this.db = paramh;
     long l1 = System.currentTimeMillis();
-    long l2 = paramh.xO(Thread.currentThread().getId());
+    long l2 = paramh.yi(Thread.currentThread().getId());
     long l3 = System.currentTimeMillis();
-    ad.d("MicroMsg.LiveTipsBarStorage", "executeInitSQL:%s", new Object[] { "CREATE INDEX IF NOT EXISTS HostRoom ON LiveTipsBar ( hostRoomId )" });
+    ae.d("MicroMsg.LiveTipsBarStorage", "executeInitSQL:%s", new Object[] { "CREATE INDEX IF NOT EXISTS HostRoom ON LiveTipsBar ( hostRoomId )" });
     paramh.execSQL("LiveTipsBar", "CREATE INDEX IF NOT EXISTS HostRoom ON LiveTipsBar ( hostRoomId )");
-    ad.d("MicroMsg.LiveTipsBarStorage", "build new index last time[%d]", new Object[] { Long.valueOf(System.currentTimeMillis() - l3) });
-    paramh.sJ(l2);
-    ad.i("MicroMsg.LiveTipsBarStorage", "executeInitSQL last time[%d]", new Object[] { Long.valueOf(System.currentTimeMillis() - l1) });
-    AppMethodBeat.o(195641);
+    ae.d("MicroMsg.LiveTipsBarStorage", "build new index last time[%d]", new Object[] { Long.valueOf(System.currentTimeMillis() - l3) });
+    paramh.sW(l2);
+    ae.i("MicroMsg.LiveTipsBarStorage", "executeInitSQL last time[%d]", new Object[] { Long.valueOf(System.currentTimeMillis() - l1) });
+    AppMethodBeat.o(220209);
   }
   
   public static c getLiveTipsBarStorage()
   {
-    AppMethodBeat.i(195642);
-    g.ajD();
-    g.ajA().aiF();
-    if (gRc == null) {
-      gRc = new c(g.ajC().gBq);
+    AppMethodBeat.i(220210);
+    g.ajS();
+    g.ajP().aiU();
+    if (gTK == null) {
+      gTK = new c(g.ajR().gDX);
     }
-    c localc = gRc;
-    AppMethodBeat.o(195642);
+    c localc = gTK;
+    AppMethodBeat.o(220210);
     return localc;
   }
   
   public final boolean a(b paramb)
   {
-    AppMethodBeat.i(195644);
+    AppMethodBeat.i(220212);
     boolean bool = insert(paramb);
-    if (this.gRd != null) {
-      this.gRd.xS(paramb.field_hostRoomId);
+    if (this.gTL != null) {
+      this.gTL.yB(paramb.field_hostRoomId);
     }
-    AppMethodBeat.o(195644);
+    AppMethodBeat.o(220212);
     return bool;
   }
   
   public final boolean a(LinkedList<b> paramLinkedList, String paramString)
   {
-    AppMethodBeat.i(195645);
+    AppMethodBeat.i(220213);
     paramLinkedList = paramLinkedList.iterator();
     boolean bool = true;
     if (paramLinkedList.hasNext())
@@ -83,28 +83,28 @@ public final class c
     for (;;)
     {
       break;
-      if (this.gRd != null) {
-        this.gRd.xS(paramString);
+      if (this.gTL != null) {
+        this.gTL.yB(paramString);
       }
-      AppMethodBeat.o(195645);
+      AppMethodBeat.o(220213);
       return bool;
     }
   }
   
-  public final boolean aoy()
+  public final boolean aoN()
   {
-    AppMethodBeat.i(195650);
+    AppMethodBeat.i(220218);
     boolean bool = this.db.execSQL("LiveTipsBar", "delete from LiveTipsBar");
-    ad.i("MicroMsg.LiveTipsBarStorage", "deleteAllData, result:%b", new Object[] { Boolean.valueOf(bool) });
-    AppMethodBeat.o(195650);
+    ae.i("MicroMsg.LiveTipsBarStorage", "deleteAllData, result:%b", new Object[] { Boolean.valueOf(bool) });
+    AppMethodBeat.o(220218);
     return bool;
   }
   
-  public final void rn(long paramLong)
+  public final void rA(long paramLong)
   {
-    AppMethodBeat.i(195646);
+    AppMethodBeat.i(220214);
     Object localObject1 = "SELECT * FROM LiveTipsBar WHERE liveId = '" + paramLong + "'";
-    ad.d("MicroMsg.LiveTipsBarStorage", "deleteByLiveId, liveId:%d, sql:%s", new Object[] { Long.valueOf(paramLong), localObject1 });
+    ae.d("MicroMsg.LiveTipsBarStorage", "deleteByLiveId, liveId:%d, sql:%s", new Object[] { Long.valueOf(paramLong), localObject1 });
     Object localObject2 = this.db.rawQuery((String)localObject1, null);
     if (localObject2 != null) {
       if (((Cursor)localObject2).moveToFirst())
@@ -118,30 +118,30 @@ public final class c
     for (;;)
     {
       int i = this.db.delete("LiveTipsBar", "liveId= ? ", new String[] { String.valueOf(paramLong) });
-      if ((gRb != null) && (((Long)gRb.second).longValue() == paramLong)) {
-        gRb = null;
+      if ((gTJ != null) && (((Long)gTJ.second).longValue() == paramLong)) {
+        gTJ = null;
       }
       if (i < 0)
       {
-        ad.e("MicroMsg.LiveTipsBarStorage", "deleteByLiveId failed, result:%d", new Object[] { Integer.valueOf(i) });
-        if ((localObject1 != null) && (this.gRd != null)) {
-          this.gRd.xS((String)localObject1);
+        ae.e("MicroMsg.LiveTipsBarStorage", "deleteByLiveId failed, result:%d", new Object[] { Integer.valueOf(i) });
+        if ((localObject1 != null) && (this.gTL != null)) {
+          this.gTL.yB((String)localObject1);
         }
-        AppMethodBeat.o(195646);
+        AppMethodBeat.o(220214);
         return;
       }
       if (localObject1 == null)
       {
         localObject2 = "";
         label224:
-        if (this.gRd != null) {
+        if (this.gTL != null) {
           break label276;
         }
       }
       label276:
       for (boolean bool = true;; bool = false)
       {
-        ad.i("MicroMsg.LiveTipsBarStorage", "deleteByLiveId success, liveId:%d, hostRoomId:%s, liveTipsBarNotify null:%b", new Object[] { Long.valueOf(paramLong), localObject2, Boolean.valueOf(bool) });
+        ae.i("MicroMsg.LiveTipsBarStorage", "deleteByLiveId success, liveId:%d, hostRoomId:%s, liveTipsBarNotify null:%b", new Object[] { Long.valueOf(paramLong), localObject2, Boolean.valueOf(bool) });
         break;
         localObject2 = localObject1;
         break label224;
@@ -154,29 +154,46 @@ public final class c
   
   public final void v(String paramString, long paramLong)
   {
-    AppMethodBeat.i(195647);
-    ad.i("MicroMsg.LiveTipsBarStorage", "setVisitingLive, liveId:%d", new Object[] { Long.valueOf(paramLong) });
-    gRb = new Pair(paramString, Long.valueOf(paramLong));
-    if (this.gRd != null) {
-      this.gRd.xS(paramString);
+    AppMethodBeat.i(220215);
+    ae.i("MicroMsg.LiveTipsBarStorage", "setVisitingLive, liveId:%d", new Object[] { Long.valueOf(paramLong) });
+    gTJ = new Pair(paramString, Long.valueOf(paramLong));
+    if (this.gTL != null) {
+      this.gTL.yB(paramString);
     }
-    AppMethodBeat.o(195647);
+    AppMethodBeat.o(220215);
   }
   
-  public final LinkedList<b> xP(String paramString)
+  public final void yA(String paramString)
   {
-    AppMethodBeat.i(195643);
-    LinkedList localLinkedList = new LinkedList();
-    if ((gRb != null) && (((String)gRb.first).equals(paramString))) {}
-    for (Object localObject = "SELECT * FROM LiveTipsBar WHERE hostRoomId = '" + paramString + "' AND liveId != '" + gRb.second + "' ORDER BY timeStamp";; localObject = "SELECT * FROM LiveTipsBar WHERE hostRoomId = '" + paramString + "' ORDER BY timeStamp")
+    AppMethodBeat.i(220217);
+    if ((gTJ != null) && (((String)gTJ.first).equals(paramString))) {
+      gTJ = null;
+    }
+    int i = this.db.delete("LiveTipsBar", "hostRoomId= ? ", new String[] { paramString });
+    if (i < 0)
     {
-      ad.d("MicroMsg.LiveTipsBarStorage", "getTipsBarDataByHostRoomId:%s", new Object[] { localObject });
+      ae.e("MicroMsg.LiveTipsBarStorage", "deleteByHostRoomId failed, hostRoomId:%s, result%d", new Object[] { paramString, Integer.valueOf(i) });
+      AppMethodBeat.o(220217);
+      return;
+    }
+    ae.i("MicroMsg.LiveTipsBarStorage", "deleteByHostRoomId, hostRoomId:%s, result%d", new Object[] { paramString, Integer.valueOf(i) });
+    AppMethodBeat.o(220217);
+  }
+  
+  public final LinkedList<b> yy(String paramString)
+  {
+    AppMethodBeat.i(220211);
+    LinkedList localLinkedList = new LinkedList();
+    if ((gTJ != null) && (((String)gTJ.first).equals(paramString))) {}
+    for (Object localObject = "SELECT * FROM LiveTipsBar WHERE hostRoomId = '" + paramString + "' AND liveId != '" + gTJ.second + "' ORDER BY timeStamp";; localObject = "SELECT * FROM LiveTipsBar WHERE hostRoomId = '" + paramString + "' ORDER BY timeStamp")
+    {
+      ae.d("MicroMsg.LiveTipsBarStorage", "getTipsBarDataByHostRoomId:%s", new Object[] { localObject });
       localObject = this.db.rawQuery((String)localObject, null);
       if (localObject != null) {
         break;
       }
-      ad.e("MicroMsg.LiveTipsBarStorage", "getTipsBarDataByHostRoomId failed, hostRoomId:%s", new Object[] { paramString });
-      AppMethodBeat.o(195643);
+      ae.e("MicroMsg.LiveTipsBarStorage", "getTipsBarDataByHostRoomId failed, hostRoomId:%s", new Object[] { paramString });
+      AppMethodBeat.o(220211);
       return localLinkedList;
     }
     while (((Cursor)localObject).moveToNext())
@@ -186,43 +203,26 @@ public final class c
       localLinkedList.add(paramString);
     }
     ((Cursor)localObject).close();
-    AppMethodBeat.o(195643);
+    AppMethodBeat.o(220211);
     return localLinkedList;
   }
   
-  public final void xQ(String paramString)
+  public final void yz(String paramString)
   {
-    AppMethodBeat.i(195648);
-    ad.i("MicroMsg.LiveTipsBarStorage", "resetVisitingLive");
-    if ((gRb != null) && (((String)gRb.first).equals(paramString))) {
-      gRb = null;
+    AppMethodBeat.i(220216);
+    ae.i("MicroMsg.LiveTipsBarStorage", "resetVisitingLive");
+    if ((gTJ != null) && (((String)gTJ.first).equals(paramString))) {
+      gTJ = null;
     }
-    if (this.gRd != null) {
-      this.gRd.xS(paramString);
+    if (this.gTL != null) {
+      this.gTL.yB(paramString);
     }
-    AppMethodBeat.o(195648);
-  }
-  
-  public final void xR(String paramString)
-  {
-    AppMethodBeat.i(195649);
-    if ((gRb != null) && (((String)gRb.first).equals(paramString))) {
-      gRb = null;
-    }
-    int i = this.db.delete("LiveTipsBar", "hostRoomId= ? ", new String[] { paramString });
-    if (i < 0)
-    {
-      ad.e("MicroMsg.LiveTipsBarStorage", "deleteByHostRoomId failed, hostRoomId:%s, result%d", new Object[] { paramString, Integer.valueOf(i) });
-      AppMethodBeat.o(195649);
-      return;
-    }
-    ad.i("MicroMsg.LiveTipsBarStorage", "deleteByHostRoomId, hostRoomId:%s, result%d", new Object[] { paramString, Integer.valueOf(i) });
-    AppMethodBeat.o(195649);
+    AppMethodBeat.o(220216);
   }
   
   public static abstract interface a
   {
-    public abstract void xS(String paramString);
+    public abstract void yB(String paramString);
   }
 }
 

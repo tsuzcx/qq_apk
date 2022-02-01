@@ -6,15 +6,15 @@ public abstract interface a
 {
   public abstract void a(h paramh);
   
-  public abstract Point aNh();
+  public abstract Point aNF();
   
-  public abstract int aNi();
+  public abstract int aNG();
   
-  public abstract void dny();
+  public abstract void dqw();
   
   public abstract int e(String paramString, long paramLong1, long paramLong2, int paramInt);
   
-  public abstract void qm(int paramInt);
+  public abstract void qp(int paramInt);
 }
 
 

@@ -11,26 +11,26 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class c
 {
-  private static volatile c gxW;
-  Map<String, List<e>> gxX;
+  private static volatile c gAD;
+  Map<String, List<e>> gAE;
   
   private c()
   {
     AppMethodBeat.i(158785);
-    this.gxX = new ConcurrentHashMap();
+    this.gAE = new ConcurrentHashMap();
     AppMethodBeat.o(158785);
   }
   
-  public static c ahF()
+  public static c ahU()
   {
     AppMethodBeat.i(158784);
-    if (gxW == null) {}
+    if (gAD == null) {}
     try
     {
-      if (gxW == null) {
-        gxW = new c();
+      if (gAD == null) {
+        gAD = new c();
       }
-      c localc = gxW;
+      c localc = gAD;
       AppMethodBeat.o(158784);
       return localc;
     }
@@ -48,12 +48,12 @@ public class c
       AppMethodBeat.o(158787);
       return false;
     }
-    List localList = (List)this.gxX.get(paramString);
+    List localList = (List)this.gAE.get(paramString);
     Object localObject = localList;
     if (localList == null)
     {
       localObject = new LinkedList();
-      this.gxX.put(paramString, localObject);
+      this.gAE.put(paramString, localObject);
     }
     if (((List)localObject).contains(parame))
     {
@@ -79,7 +79,7 @@ public class c
       AppMethodBeat.o(158788);
       return false;
     }
-    List localList = (List)this.gxX.get(paramString);
+    List localList = (List)this.gAE.get(paramString);
     if (localList != null) {}
     for (;;)
     {
@@ -87,7 +87,7 @@ public class c
       {
         bool = localList.remove(parame);
         if (localList.isEmpty()) {
-          this.gxX.remove(paramString);
+          this.gAE.remove(paramString);
         }
         AppMethodBeat.o(158788);
         return bool;
@@ -108,7 +108,7 @@ public class c
       AppMethodBeat.o(158786);
       return false;
     }
-    paramString = (List)this.gxX.get(paramString);
+    paramString = (List)this.gAE.get(paramString);
     if ((paramString == null) || (paramString.isEmpty()))
     {
       AppMethodBeat.o(158786);

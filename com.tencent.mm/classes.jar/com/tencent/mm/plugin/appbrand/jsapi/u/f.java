@@ -6,8 +6,8 @@ import com.tencent.mm.plugin.appbrand.config.k;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
 import com.tencent.mm.plugin.appbrand.jsapi.m;
 import com.tencent.mm.plugin.appbrand.report.quality.QualitySessionRuntime;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.regex.Pattern;
 import org.apache.commons.b.g;
 import org.json.JSONArray;
@@ -33,7 +33,7 @@ public class f
     k localk = (k)paramc.ar(k.class);
     if (localk == null)
     {
-      ad.e("MicroMsg.JsApiReportKeyValue", "config is Null!");
+      ae.e("MicroMsg.JsApiReportKeyValue", "config is Null!");
       paramc.h(paramInt, e("fail:interrupted", null));
       AppMethodBeat.o(46750);
       return;
@@ -53,7 +53,7 @@ public class f
         paramJSONObject = paramJSONObject.optString("value");
         if (n > 0)
         {
-          boolean bool = bt.isNullOrNil(paramJSONObject);
+          boolean bool = bu.isNullOrNil(paramJSONObject);
           if (!bool)
           {
             Object localObject1 = paramJSONObject;
@@ -67,7 +67,7 @@ public class f
               {
                 int i1 = new int[] { 17, 11, 9, 2 }[j];
                 localObject2 = localObject1[i1];
-                if (bt.nullAsNil((String)localObject2).length() <= 1024) {
+                if (bu.nullAsNil((String)localObject2).length() <= 1024) {
                   break label634;
                 }
                 localObject1[i1] = ((String)localObject2).substring(0, 1024);
@@ -83,14 +83,14 @@ public class f
             }
             catch (Exception localException)
             {
-              ad.e("MicroMsg.JsApiReportKeyValue", "modify 15496 too large string-fields, e=%s", new Object[] { localException });
+              ae.e("MicroMsg.JsApiReportKeyValue", "modify 15496 too large string-fields, e=%s", new Object[] { localException });
               localJSONObject = paramJSONObject;
               continue;
             }
             if (m < 2) {
               break label488;
             }
-            paramJSONObject = com.tencent.mm.plugin.appbrand.report.quality.a.Ut(paramc.getAppId());
+            paramJSONObject = com.tencent.mm.plugin.appbrand.report.quality.a.Ve(paramc.getAppId());
             if (paramJSONObject != null) {
               break label358;
             }
@@ -102,21 +102,21 @@ public class f
       }
       catch (Exception paramJSONObject)
       {
-        ad.e("MicroMsg.JsApiReportKeyValue", "AppBrandComponent parse report value failed : %s", new Object[] { paramJSONObject.getMessage() });
+        ae.e("MicroMsg.JsApiReportKeyValue", "AppBrandComponent parse report value failed : %s", new Object[] { paramJSONObject.getMessage() });
       }
       for (;;)
       {
         i += 1;
         break;
         label358:
-        ad.i("MicroMsg.JsApiReportKeyValue", "report kv_%d{appId='%s',pkgVersion=%d,pkgDebugType=%d,value='%s'}", new Object[] { Integer.valueOf(n), paramc.getAppId(), Integer.valueOf(localk.jYh.pkgVersion), Integer.valueOf(localk.jYh.jIU + 1), localJSONObject });
-        localObject2 = com.tencent.mm.plugin.appbrand.report.a.mqo;
-        com.tencent.mm.plugin.appbrand.report.a.f(n, new Object[] { paramJSONObject.lEv, paramJSONObject.appId, Integer.valueOf(paramJSONObject.mvi), Integer.valueOf(paramJSONObject.mtG), Integer.valueOf(paramJSONObject.apptype), localJSONObject });
+        ae.i("MicroMsg.JsApiReportKeyValue", "report kv_%d{appId='%s',pkgVersion=%d,pkgDebugType=%d,value='%s'}", new Object[] { Integer.valueOf(n), paramc.getAppId(), Integer.valueOf(localk.kbw.pkgVersion), Integer.valueOf(localk.kbw.jLV + 1), localJSONObject });
+        localObject2 = com.tencent.mm.plugin.appbrand.report.a.mvm;
+        com.tencent.mm.plugin.appbrand.report.a.f(n, new Object[] { paramJSONObject.lIU, paramJSONObject.appId, Integer.valueOf(paramJSONObject.mAf), Integer.valueOf(paramJSONObject.myD), Integer.valueOf(paramJSONObject.apptype), localJSONObject });
         continue;
         label488:
-        ad.i("MicroMsg.JsApiReportKeyValue", "report kv_%d{appId='%s',pkgVersion=%d,pkgDebugType=%d,value='%s'}", new Object[] { Integer.valueOf(n), paramc.getAppId(), Integer.valueOf(localk.jYh.pkgVersion), Integer.valueOf(localk.jYh.jIU + 1), localJSONObject });
-        paramJSONObject = com.tencent.mm.plugin.appbrand.report.a.mqo;
-        com.tencent.mm.plugin.appbrand.report.a.f(n, new Object[] { paramc.getAppId(), Integer.valueOf(localk.jYh.pkgVersion), Integer.valueOf(localk.jYh.jIU + 1), localJSONObject });
+        ae.i("MicroMsg.JsApiReportKeyValue", "report kv_%d{appId='%s',pkgVersion=%d,pkgDebugType=%d,value='%s'}", new Object[] { Integer.valueOf(n), paramc.getAppId(), Integer.valueOf(localk.kbw.pkgVersion), Integer.valueOf(localk.kbw.jLV + 1), localJSONObject });
+        paramJSONObject = com.tencent.mm.plugin.appbrand.report.a.mvm;
+        com.tencent.mm.plugin.appbrand.report.a.f(n, new Object[] { paramc.getAppId(), Integer.valueOf(localk.kbw.pkgVersion), Integer.valueOf(localk.kbw.jLV + 1), localJSONObject });
       }
       paramc.h(paramInt, e("ok", null));
       AppMethodBeat.o(46750);

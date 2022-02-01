@@ -7,10 +7,10 @@ import junit.framework.Assert;
 public final class b<_Callback>
   implements com.tencent.mm.vending.e.a
 {
-  private a LhK;
-  public _Callback LhL;
-  private int LhM;
-  public d cTQ;
+  private a LEm;
+  public _Callback LEn;
+  private int LEo;
+  public d cUP;
   private int mPriority;
   
   public b(_Callback param_Callback, a parama)
@@ -18,24 +18,24 @@ public final class b<_Callback>
     AppMethodBeat.i(74905);
     this.mPriority = -1;
     Assert.assertNotNull("Callback should not be null!", param_Callback);
-    this.LhM = param_Callback.hashCode();
-    this.LhL = param_Callback;
-    this.LhK = parama;
+    this.LEo = param_Callback.hashCode();
+    this.LEn = param_Callback;
+    this.LEm = parama;
     AppMethodBeat.o(74905);
   }
   
   public final void dead()
   {
     AppMethodBeat.i(74907);
-    Assert.assertNotNull(this.LhK);
-    this.LhK.b(this);
+    Assert.assertNotNull(this.LEm);
+    this.LEm.b(this);
     AppMethodBeat.o(74907);
   }
   
   public final boolean equals(Object paramObject)
   {
     AppMethodBeat.i(74906);
-    if ((paramObject != null) && (paramObject.hashCode() == this.LhM))
+    if ((paramObject != null) && (paramObject.hashCode() == this.LEo))
     {
       AppMethodBeat.o(74906);
       return true;
@@ -46,7 +46,7 @@ public final class b<_Callback>
   
   public final int hashCode()
   {
-    return this.LhM;
+    return this.LEo;
   }
 }
 

@@ -6,9 +6,9 @@ import java.util.Map;
 
 public abstract interface c
 {
-  public abstract Map<String, Integer> fVt();
+  public abstract Map<String, Integer> fZS();
   
-  public abstract Map<String, List<Pair<String, Integer>>> fVu();
+  public abstract Map<String, List<Pair<String, Integer>>> fZT();
 }
 
 

@@ -2,34 +2,34 @@ package com.tencent.mm.plugin.appbrand.report;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.q;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public final class p
 {
-  private static String Ul(String paramString)
+  private static String UW(String paramString)
   {
     AppMethodBeat.i(48072);
-    if (bt.isNullOrNil(paramString))
+    if (bu.isNullOrNil(paramString))
     {
       AppMethodBeat.o(48072);
       return "";
     }
     try
     {
-      String str = bt.nullAsNil(q.encode(paramString));
+      String str = bu.nullAsNil(q.encode(paramString));
       AppMethodBeat.o(48072);
       return str;
     }
     catch (Exception localException)
     {
-      ad.e("MicroMsg.AppBrand.ReportUtil", "safeEncode, given %s, e %s", new Object[] { paramString, localException });
+      ae.e("MicroMsg.AppBrand.ReportUtil", "safeEncode, given %s, e %s", new Object[] { paramString, localException });
       AppMethodBeat.o(48072);
     }
     return "";
   }
   
-  public static Object[] l(Object... paramVarArgs)
+  public static Object[] k(Object... paramVarArgs)
   {
     AppMethodBeat.i(48073);
     if ((paramVarArgs == null) || (paramVarArgs.length <= 0))
@@ -59,7 +59,7 @@ public final class p
         {
           localObject1 = localObject2;
           if (((String)localObject2).contains(",")) {
-            localObject1 = Ul((String)localObject2);
+            localObject1 = UW((String)localObject2);
           }
         }
       }

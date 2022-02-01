@@ -8,22 +8,22 @@ import android.util.AttributeSet;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.i;
 import com.tencent.mm.plugin.editor.model.nativenote.manager.j;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
 
 public class CollectEditorLinearLayoutManager
   extends LinearLayoutManager
 {
-  private final int nGK;
-  public int psl;
-  public boolean psm;
+  private final int nMm;
+  public int pyR;
+  public boolean pyS;
   
   public CollectEditorLinearLayoutManager()
   {
     AppMethodBeat.i(181634);
-    this.nGK = i.iG(aj.getContext());
-    this.psl = -1;
-    this.psm = false;
+    this.nMm = i.iL(ak.getContext());
+    this.pyR = -1;
+    this.pyS = false;
     AppMethodBeat.o(181634);
   }
   
@@ -31,9 +31,9 @@ public class CollectEditorLinearLayoutManager
   {
     super(paramContext, paramAttributeSet, paramInt1, paramInt2);
     AppMethodBeat.i(181635);
-    this.nGK = i.iG(aj.getContext());
-    this.psl = -1;
-    this.psm = false;
+    this.nMm = i.iL(ak.getContext());
+    this.pyR = -1;
+    this.pyS = false;
     AppMethodBeat.o(181635);
   }
   
@@ -41,7 +41,7 @@ public class CollectEditorLinearLayoutManager
   {
     int j = 1;
     AppMethodBeat.i(181636);
-    if (!this.psm)
+    if (!this.pyS)
     {
       paramInt = super.b(paramInt, paramo, paramt);
       AppMethodBeat.o(181636);
@@ -56,13 +56,13 @@ public class CollectEditorLinearLayoutManager
     for (;;)
     {
       if (paramInt > 0) {
-        if (this.nGK + j.aX(49.0F) < paramInt) {
+        if (this.nMm + j.aX(49.0F) < paramInt) {
           i = j;
         }
       }
       for (;;)
       {
-        if ((i != 0) && (this.psm))
+        if ((i != 0) && (this.pyS))
         {
           AppMethodBeat.o(181636);
           return 0;
@@ -89,8 +89,8 @@ public class CollectEditorLinearLayoutManager
   
   public final int c(RecyclerView.t paramt)
   {
-    if (this.psl > 0) {
-      return this.psl;
+    if (this.pyR > 0) {
+      return this.pyR;
     }
     return 900;
   }
@@ -106,7 +106,7 @@ public class CollectEditorLinearLayoutManager
     }
     catch (Exception paramo)
     {
-      ad.printErrStackTrace("MicroMsg.CollectEditorLinearLayoutManager", paramo, "", new Object[0]);
+      ae.printErrStackTrace("MicroMsg.CollectEditorLinearLayoutManager", paramo, "", new Object[0]);
       AppMethodBeat.o(181637);
     }
   }

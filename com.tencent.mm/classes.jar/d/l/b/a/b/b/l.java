@@ -7,13 +7,13 @@ public abstract interface l
 {
   public abstract <R, D> R a(n<R, D> paramn, D paramD);
   
-  public abstract l ghs();
+  public abstract l glU();
   
-  public abstract l giA();
+  public abstract l gnc();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.b.l
  * JD-Core Version:    0.7.0.1
  */

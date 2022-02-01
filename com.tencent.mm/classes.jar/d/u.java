@@ -2,10 +2,10 @@ package d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"to", "Lkotlin/Pair;", "A", "B", "that", "(Ljava/lang/Object;Ljava/lang/Object;)Lkotlin/Pair;", "toList", "", "T", "Lkotlin/Triple;", "kotlin-stdlib"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"to", "Lkotlin/Pair;", "A", "B", "that", "(Ljava/lang/Object;Ljava/lang/Object;)Lkotlin/Pair;", "toList", "", "T", "Lkotlin/Triple;", "kotlin-stdlib"})
 public final class u
 {
-  public static final <A, B> o<A, B> S(A paramA, B paramB)
+  public static final <A, B> o<A, B> R(A paramA, B paramB)
   {
     AppMethodBeat.i(129242);
     paramA = new o(paramA, paramB);

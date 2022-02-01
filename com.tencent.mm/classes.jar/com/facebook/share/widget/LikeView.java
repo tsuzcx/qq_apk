@@ -88,7 +88,7 @@ public class LikeView
     AppMethodBeat.i(8691);
     this.likeActionController = paramLikeActionController;
     this.broadcastReceiver = new LikeControllerBroadcastReceiver(null);
-    paramLikeActionController = d.U(getContext());
+    paramLikeActionController = d.V(getContext());
     IntentFilter localIntentFilter = new IntentFilter();
     localIntentFilter.addAction("com.facebook.sdk.LikeActionController.UPDATED");
     localIntentFilter.addAction("com.facebook.sdk.LikeActionController.DID_ERROR");
@@ -259,7 +259,7 @@ public class LikeView
     AppMethodBeat.i(8692);
     if (this.broadcastReceiver != null)
     {
-      d.U(getContext()).unregisterReceiver(this.broadcastReceiver);
+      d.V(getContext()).unregisterReceiver(this.broadcastReceiver);
       this.broadcastReceiver = null;
     }
     if (this.creationCallback != null)

@@ -3,7 +3,6 @@ package com.tencent.mm.ui.base;
 import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
 import android.os.Bundle;
 import android.os.Looper;
 import android.os.Message;
@@ -13,17 +12,17 @@ import android.widget.ImageView;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aq;
 
 public final class s
   extends i
   implements DialogInterface
 {
-  private ImageView Joh;
-  private View iCR;
+  private ImageView JIW;
+  private View iFK;
   private Context mContext;
-  private TextView nmC;
+  private TextView nrM;
   private int style;
   
   private s(Context paramContext)
@@ -38,24 +37,24 @@ public final class s
     }
     for (i = j;; i = 2131494909)
     {
-      this.iCR = View.inflate(this.mContext, i, null);
-      this.nmC = ((TextView)this.iCR.findViewById(2131302519));
-      this.Joh = ((ImageView)this.iCR.findViewById(2131300874));
+      this.iFK = View.inflate(this.mContext, i, null);
+      this.nrM = ((TextView)this.iFK.findViewById(2131302519));
+      this.JIW = ((ImageView)this.iFK.findViewById(2131300874));
       setCanceledOnTouchOutside(true);
       AppMethodBeat.o(142226);
       return;
     }
   }
   
-  public static s a(CharSequence paramCharSequence, final Context paramContext, DialogInterface.OnDismissListener paramOnDismissListener)
+  public static s a(CharSequence paramCharSequence, final Context paramContext)
   {
-    AppMethodBeat.i(142228);
+    AppMethodBeat.i(193727);
     final s locals = new s(paramContext);
-    locals.nmC.setText(paramCharSequence);
+    locals.nrM.setText(paramCharSequence);
     locals.setCanceledOnTouchOutside(true);
     locals.show();
-    locals.setOnDismissListener(paramOnDismissListener);
-    new ap(Looper.getMainLooper())
+    locals.setOnDismissListener(null);
+    new aq(Looper.getMainLooper())
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
@@ -69,7 +68,7 @@ public final class s
         AppMethodBeat.o(142225);
       }
     }.sendEmptyMessageDelayed(0, 1000L);
-    AppMethodBeat.o(142228);
+    AppMethodBeat.o(193727);
     return locals;
   }
   
@@ -84,7 +83,7 @@ public final class s
     }
     catch (Exception localException)
     {
-      ad.e("MicroMsg.MMTipsDialog", "dismiss exception, e = " + localException.getMessage());
+      ae.e("MicroMsg.MMTipsDialog", "dismiss exception, e = " + localException.getMessage());
       AppMethodBeat.o(142229);
     }
   }
@@ -93,7 +92,7 @@ public final class s
   {
     AppMethodBeat.i(142227);
     super.onCreate(paramBundle);
-    setContentView(this.iCR, new LinearLayout.LayoutParams(-1, -1));
+    setContentView(this.iFK, new LinearLayout.LayoutParams(-1, -1));
     paramBundle = getWindow().getAttributes();
     paramBundle.width = -1;
     paramBundle.height = -2;
@@ -103,7 +102,7 @@ public final class s
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.base.s
  * JD-Core Version:    0.7.0.1
  */

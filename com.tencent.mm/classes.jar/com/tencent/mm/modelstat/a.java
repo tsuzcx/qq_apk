@@ -1,66 +1,66 @@
 package com.tencent.mm.modelstat;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.k.b;
+import com.tencent.mm.ah.k.b;
 import com.tencent.mm.g.c.ei;
-import com.tencent.mm.model.bj;
-import com.tencent.mm.model.u;
-import com.tencent.mm.model.w;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.bu;
+import com.tencent.mm.model.bl;
+import com.tencent.mm.model.v;
+import com.tencent.mm.model.x;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.bv;
 
 public final class a
 {
-  public static void a(bu parambu, a parama)
+  public static void a(bv parambv, a parama)
   {
     AppMethodBeat.i(20656);
-    if (bt.isNullOrNil(parambu.fkz))
+    if (bu.isNullOrNil(parambv.fmw))
     {
       AppMethodBeat.o(20656);
       return;
     }
     com.tencent.mm.modelsns.g localg = new com.tencent.mm.modelsns.g();
-    localg.m("20ExpIdStr", parambu.fkz + ",");
+    localg.m("20ExpIdStr", parambv.fmw + ",");
     localg.m("21OpType", parama.value + ",");
-    localg.m("22msgId", parambu.field_msgSvrId + ",");
-    localg.m("23MessageType", parambu.getType() + ",");
+    localg.m("22msgId", parambv.field_msgSvrId + ",");
+    localg.m("23MessageType", parambv.getType() + ",");
     int i;
-    if (parambu.cTc())
+    if (parambv.cVH())
     {
-      parama = k.b.aA(parambu.field_content, parambu.field_reserved);
+      parama = k.b.aB(parambv.field_content, parambv.field_reserved);
       if (parama == null) {
         i = 0;
       }
     }
     for (;;)
     {
-      parama = parambu.field_talker;
+      parama = parambv.field_talker;
       localg.m("24AppMsgInnerType", i + ",");
       localg.m("25curUsername", parama + ",");
       String str = "";
-      if (parambu.field_isSend == 1) {
-        parama = u.aAm();
+      if (parambv.field_isSend == 1) {
+        parama = v.aAC();
       }
       for (;;)
       {
         localg.m("26msgPostUserName", parama + ",");
-        localg.m("27MediaState", parambu.fkA + ",");
-        ad.v("MicroMsg.ChattingExpUtil", "report logbuffer(13564): [chatting_exp]" + localg.RE());
-        com.tencent.mm.plugin.report.service.g.yhR.f(13564, new Object[] { localg });
+        localg.m("27MediaState", parambv.fmx + ",");
+        ae.v("MicroMsg.ChattingExpUtil", "report logbuffer(13564): [chatting_exp]" + localg.RD());
+        com.tencent.mm.plugin.report.service.g.yxI.f(13564, new Object[] { localg });
         AppMethodBeat.o(20656);
         return;
         i = parama.type;
         break;
-        if ((parama != null) && (w.vF(parama)))
+        if ((parama != null) && (x.wb(parama)))
         {
           parama = str;
-          if (parambu.field_content != null)
+          if (parambv.field_content != null)
           {
-            i = bj.Bh(parambu.field_content);
+            i = bl.BJ(parambv.field_content);
             parama = str;
             if (i != -1) {
-              parama = parambu.field_content.substring(0, i).trim();
+              parama = parambv.field_content.substring(0, i).trim();
             }
           }
         }
@@ -76,9 +76,9 @@ public final class a
     static
     {
       AppMethodBeat.i(20655);
-      inV = new a("Expose", 0, 1);
-      inW = new a("Click", 1, 2);
-      inX = new a[] { inV, inW };
+      iqP = new a("Expose", 0, 1);
+      iqQ = new a("Click", 1, 2);
+      iqR = new a[] { iqP, iqQ };
       AppMethodBeat.o(20655);
     }
     
@@ -90,7 +90,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.modelstat.a
  * JD-Core Version:    0.7.0.1
  */

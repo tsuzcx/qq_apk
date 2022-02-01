@@ -5,84 +5,84 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class k
   implements com.tencent.mapsdk.raster.model.TileOverlay
 {
-  private com.tencent.tencentmap.mapsdk.maps.model.TileOverlay MAd;
+  private com.tencent.tencentmap.mapsdk.maps.model.TileOverlay MXk;
   
   public k(com.tencent.tencentmap.mapsdk.maps.model.TileOverlay paramTileOverlay)
   {
-    this.MAd = paramTileOverlay;
+    this.MXk = paramTileOverlay;
   }
   
   public final void clearTileCache()
   {
-    AppMethodBeat.i(200181);
-    if (this.MAd == null)
+    AppMethodBeat.i(212875);
+    if (this.MXk == null)
     {
-      AppMethodBeat.o(200181);
+      AppMethodBeat.o(212875);
       return;
     }
-    this.MAd.clearTileCache();
-    AppMethodBeat.o(200181);
+    this.MXk.clearTileCache();
+    AppMethodBeat.o(212875);
   }
   
   public final String getId()
   {
-    AppMethodBeat.i(200182);
-    if (this.MAd == null)
+    AppMethodBeat.i(212876);
+    if (this.MXk == null)
     {
-      AppMethodBeat.o(200182);
+      AppMethodBeat.o(212876);
       return null;
     }
-    String str = this.MAd.getId();
-    AppMethodBeat.o(200182);
+    String str = this.MXk.getId();
+    AppMethodBeat.o(212876);
     return str;
   }
   
   public final void reload()
   {
-    AppMethodBeat.i(200177);
-    if (this.MAd == null)
+    AppMethodBeat.i(212871);
+    if (this.MXk == null)
     {
-      AppMethodBeat.o(200177);
+      AppMethodBeat.o(212871);
       return;
     }
-    this.MAd.reload();
-    AppMethodBeat.o(200177);
+    this.MXk.reload();
+    AppMethodBeat.o(212871);
   }
   
   public final void remove()
   {
-    AppMethodBeat.i(200178);
-    if (this.MAd == null)
+    AppMethodBeat.i(212872);
+    if (this.MXk == null)
     {
-      AppMethodBeat.o(200178);
+      AppMethodBeat.o(212872);
       return;
     }
-    this.MAd.remove();
-    AppMethodBeat.o(200178);
+    this.MXk.remove();
+    AppMethodBeat.o(212872);
   }
   
   public final void setDiskCacheDir(String paramString)
   {
-    AppMethodBeat.i(200179);
-    if (this.MAd == null)
+    AppMethodBeat.i(212873);
+    if (this.MXk == null)
     {
-      AppMethodBeat.o(200179);
+      AppMethodBeat.o(212873);
       return;
     }
-    this.MAd.setDiskCacheDir(paramString);
-    AppMethodBeat.o(200179);
+    this.MXk.setDiskCacheDir(paramString);
+    AppMethodBeat.o(212873);
   }
   
   public final void setZindex(int paramInt)
   {
-    AppMethodBeat.i(200180);
-    if (this.MAd == null)
+    AppMethodBeat.i(212874);
+    if (this.MXk == null)
     {
-      AppMethodBeat.o(200180);
+      AppMethodBeat.o(212874);
       return;
     }
-    this.MAd.setZindex(paramInt);
-    AppMethodBeat.o(200180);
+    this.MXk.setZindex(paramInt);
+    AppMethodBeat.o(212874);
   }
 }
 

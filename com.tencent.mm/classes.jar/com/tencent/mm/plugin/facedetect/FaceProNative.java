@@ -8,9 +8,11 @@ import android.support.annotation.Keep;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.n.e;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.plugin.facedetect.model.p;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.vfs.o;
 import java.util.ArrayList;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -60,8 +62,27 @@ public class FaceProNative
     AppMethodBeat.i(103566);
     try
     {
-      ad.m("MicroMsg.FaceProNative", "checkInitDetectFace, hasDetectInit: %s", new Object[] { Boolean.valueOf(hasDetectInit) });
-      aq.f(new FaceProNative.1());
+      ae.m("MicroMsg.FaceProNative", "checkInitDetectFace, hasDetectInit: %s", new Object[] { Boolean.valueOf(hasDetectInit) });
+      ar.f(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(103548);
+          if ((!FaceProNative.hasDetectInit) && (PluginFace.isEnabled()))
+          {
+            int i = FaceProNative.nativeFacedetectInitBin(o.bb(p.cuQ(), 0, -1));
+            if (i == -1)
+            {
+              ae.w("MicroMsg.FaceProNative", "detectFaceCnt init failed: %s", new Object[] { p.cuQ() });
+              AppMethodBeat.o(103548);
+              return;
+            }
+            ae.i("MicroMsg.FaceProNative", "detectFaceCnt init:%d, %s", new Object[] { Integer.valueOf(i), p.cuQ() });
+            FaceProNative.hasDetectInit = true;
+          }
+          AppMethodBeat.o(103548);
+        }
+      });
       return;
     }
     finally
@@ -84,8 +105,8 @@ public class FaceProNative
     if (System.currentTimeMillis() - lastCheckTime >= 3600000L)
     {
       lastCheckTime = System.currentTimeMillis();
-      paramString = ((com.tencent.mm.plugin.zero.b.a)g.ab(com.tencent.mm.plugin.zero.b.a.class)).acA().getValue(paramString);
-      if (bt.isNullOrNil(paramString)) {}
+      paramString = ((com.tencent.mm.plugin.zero.b.a)g.ab(com.tencent.mm.plugin.zero.b.a.class)).acL().getValue(paramString);
+      if (bu.isNullOrNil(paramString)) {}
     }
     try
     {
@@ -105,7 +126,7 @@ public class FaceProNative
     {
       for (;;)
       {
-        ad.printErrStackTrace("MicroMsg.FaceProNative", paramString, "hy: array resolve failed", new Object[0]);
+        ae.printErrStackTrace("MicroMsg.FaceProNative", paramString, "hy: array resolve failed", new Object[0]);
       }
     }
     paramString = cachedStr;
@@ -126,9 +147,9 @@ public class FaceProNative
     AppMethodBeat.i(103567);
     if (PluginFace.isEnabled())
     {
-      com.tencent.mm.plugin.expansions.a.ada("FacePro");
-      com.tencent.mm.plugin.expansions.a.ada("wechatvoicereco");
-      com.tencent.mm.plugin.expansions.a.ada("wechatxlog");
+      com.tencent.mm.plugin.expansions.a.adR("FacePro");
+      com.tencent.mm.plugin.expansions.a.adR("wechatvoicereco");
+      com.tencent.mm.plugin.expansions.a.adR("wechatxlog");
       nativeInit();
     }
     AppMethodBeat.o(103567);
@@ -161,7 +182,7 @@ public class FaceProNative
   
   public native int engineReleaseCurrMotion();
   
-  public native FaceProNative.FaceResult engineReleaseOut();
+  public native FaceResult engineReleaseOut();
   
   public native int engineSetVoiceData(byte[] paramArrayOfByte);
   
@@ -175,6 +196,85 @@ public class FaceProNative
       NativeDestructor();
     }
     AppMethodBeat.o(103565);
+  }
+  
+  public static class FaceResult
+    implements Parcelable
+  {
+    public static final Parcelable.Creator<FaceResult> CREATOR;
+    public byte[] data;
+    public int result;
+    public byte[] sidedata;
+    
+    static
+    {
+      AppMethodBeat.i(103555);
+      CREATOR = new Parcelable.Creator()
+      {
+        public final FaceProNative.FaceResult createFromParcel(Parcel paramAnonymousParcel)
+        {
+          AppMethodBeat.i(103549);
+          paramAnonymousParcel = new FaceProNative.FaceResult(paramAnonymousParcel);
+          AppMethodBeat.o(103549);
+          return paramAnonymousParcel;
+        }
+        
+        public final FaceProNative.FaceResult[] newArray(int paramAnonymousInt)
+        {
+          return new FaceProNative.FaceResult[paramAnonymousInt];
+        }
+      };
+      AppMethodBeat.o(103555);
+    }
+    
+    public FaceResult() {}
+    
+    protected FaceResult(Parcel paramParcel)
+    {
+      AppMethodBeat.i(103552);
+      this.result = paramParcel.readInt();
+      this.data = paramParcel.createByteArray();
+      this.sidedata = paramParcel.createByteArray();
+      AppMethodBeat.o(103552);
+    }
+    
+    public int describeContents()
+    {
+      return 0;
+    }
+    
+    public String toString()
+    {
+      int j = 0;
+      AppMethodBeat.i(103554);
+      Object localObject = new StringBuilder("FaceResult{result=").append(this.result).append(", sidedataLen=");
+      if (this.sidedata == null)
+      {
+        i = 0;
+        localObject = ((StringBuilder)localObject).append(i).append(", dataLen=");
+        if (this.data != null) {
+          break label88;
+        }
+      }
+      label88:
+      for (int i = j;; i = this.data.length)
+      {
+        localObject = i + '}';
+        AppMethodBeat.o(103554);
+        return localObject;
+        i = this.sidedata.length;
+        break;
+      }
+    }
+    
+    public void writeToParcel(Parcel paramParcel, int paramInt)
+    {
+      AppMethodBeat.i(103553);
+      paramParcel.writeInt(this.result);
+      paramParcel.writeByteArray(this.data);
+      paramParcel.writeByteArray(this.sidedata);
+      AppMethodBeat.o(103553);
+    }
   }
   
   public static class FaceStatus
@@ -251,7 +351,7 @@ public class FaceProNative
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetect.FaceProNative
  * JD-Core Version:    0.7.0.1
  */

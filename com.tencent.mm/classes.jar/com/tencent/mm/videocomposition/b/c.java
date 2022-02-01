@@ -5,41 +5,41 @@ import com.tencent.tavkit.composition.video.TAVVideoMixEffect;
 import com.tencent.tavkit.composition.video.TAVVideoMixEffect.Filter;
 import d.l;
 
-@l(gfx={1, 1, 15}, gfy={""}, gfz={"Lcom/tencent/mm/videocomposition/render/CompositionMixEffect;", "Lcom/tencent/tavkit/composition/video/TAVVideoMixEffect;", "filter", "Lcom/tencent/mm/videocomposition/render/BaseMultiVideoCompositionEffect;", "(Lcom/tencent/mm/videocomposition/render/BaseMultiVideoCompositionEffect;)V", "createFilter", "Lcom/tencent/tavkit/composition/video/TAVVideoMixEffect$Filter;", "effectId", "", "getFilter", "renderContext", "Landroid/opengl/EGLContext;", "setFrameRenderCallback", "", "callback", "Lkotlin/Function0;", "updateRenderSize", "width", "", "height", "Companion", "video_composition_release"})
+@l(gjZ={1, 1, 15}, gka={""}, gkb={"Lcom/tencent/mm/videocomposition/render/CompositionMixEffect;", "Lcom/tencent/tavkit/composition/video/TAVVideoMixEffect;", "filter", "Lcom/tencent/mm/videocomposition/render/BaseMultiVideoCompositionEffect;", "(Lcom/tencent/mm/videocomposition/render/BaseMultiVideoCompositionEffect;)V", "createFilter", "Lcom/tencent/tavkit/composition/video/TAVVideoMixEffect$Filter;", "effectId", "", "getFilter", "renderContext", "Landroid/opengl/EGLContext;", "setFrameRenderCallback", "", "callback", "Lkotlin/Function0;", "updateRenderSize", "width", "", "height", "Companion", "video_composition_release"})
 public final class c
   implements TAVVideoMixEffect
 {
-  public static final a Lnu;
-  private final a Lnt;
+  public static final a LKf;
+  private final a LKe;
   
   static
   {
-    AppMethodBeat.i(220905);
-    Lnu = new a((byte)0);
-    AppMethodBeat.o(220905);
+    AppMethodBeat.i(195040);
+    LKf = new a((byte)0);
+    AppMethodBeat.o(195040);
   }
   
   public c(a parama)
   {
-    AppMethodBeat.i(220904);
-    this.Lnt = parama;
-    AppMethodBeat.o(220904);
+    AppMethodBeat.i(195039);
+    this.LKe = parama;
+    AppMethodBeat.o(195039);
   }
   
   public final TAVVideoMixEffect.Filter createFilter()
   {
-    return (TAVVideoMixEffect.Filter)this.Lnt;
+    return (TAVVideoMixEffect.Filter)this.LKe;
   }
   
   public final String effectId()
   {
-    AppMethodBeat.i(220903);
+    AppMethodBeat.i(195038);
     String str = "CompositionMixEffect_" + hashCode();
-    AppMethodBeat.o(220903);
+    AppMethodBeat.o(195038);
     return str;
   }
   
-  @l(gfx={1, 1, 15}, gfy={""}, gfz={"Lcom/tencent/mm/videocomposition/render/CompositionMixEffect$Companion;", "", "()V", "TAG", "", "video_composition_release"})
+  @l(gjZ={1, 1, 15}, gka={""}, gkb={"Lcom/tencent/mm/videocomposition/render/CompositionMixEffect$Companion;", "", "()V", "TAG", "", "video_composition_release"})
   public static final class a {}
 }
 

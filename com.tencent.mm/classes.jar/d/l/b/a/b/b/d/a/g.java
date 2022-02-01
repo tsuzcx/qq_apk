@@ -10,22 +10,22 @@ import java.io.InputStream;
 public final class g
   implements d.l.b.a.b.d.b.n
 {
-  private final ClassLoader MZU;
+  private final ClassLoader Nxa;
   
   public g(ClassLoader paramClassLoader)
   {
     AppMethodBeat.i(57377);
-    this.MZU = paramClassLoader;
+    this.Nxa = paramClassLoader;
     AppMethodBeat.o(57377);
   }
   
-  private final n.a bcm(String paramString)
+  private final n.a bdQ(String paramString)
   {
     AppMethodBeat.i(57373);
-    paramString = e.a(this.MZU, paramString);
+    paramString = e.a(this.Nxa, paramString);
     if (paramString != null)
     {
-      f.a locala = f.MZX;
+      f.a locala = f.Nxd;
       paramString = f.a.bw(paramString);
       if (paramString == null) {}
     }
@@ -41,7 +41,7 @@ public final class g
   {
     AppMethodBeat.i(57375);
     d.g.b.p.h(paramg, "javaClass");
-    paramg = paramg.gjg();
+    paramg = paramg.gnI();
     if (paramg != null)
     {
       paramg = paramg.sD();
@@ -52,7 +52,7 @@ public final class g
       AppMethodBeat.o(57375);
       return null;
     }
-    paramg = bcm(paramg);
+    paramg = bdQ(paramg);
     AppMethodBeat.o(57375);
     return paramg;
   }
@@ -61,15 +61,15 @@ public final class g
   {
     AppMethodBeat.i(57374);
     d.g.b.p.h(parama, "classId");
-    String str = parama.gra().sD();
+    String str = parama.gvC().sD();
     d.g.b.p.g(str, "relativeClassName.asString()");
     str = d.n.n.a(str, '.', '$');
-    b localb = parama.gqZ();
+    b localb = parama.gvB();
     d.g.b.p.g(localb, "packageFqName");
-    if (localb.Nqg.Nql.isEmpty()) {}
-    for (parama = str;; parama = parama.gqZ() + '.' + str)
+    if (localb.NNm.NNr.isEmpty()) {}
+    for (parama = str;; parama = parama.gvB() + '.' + str)
     {
-      parama = bcm(parama);
+      parama = bdQ(parama);
       AppMethodBeat.o(57374);
       return parama;
     }
@@ -79,13 +79,13 @@ public final class g
   {
     AppMethodBeat.i(57376);
     d.g.b.p.h(paramb, "packageFqName");
-    if (!paramb.q(d.l.b.a.b.a.g.MPP))
+    if (!paramb.q(d.l.b.a.b.a.g.NmU))
     {
       AppMethodBeat.o(57376);
       return null;
     }
-    ClassLoader localClassLoader = this.MZU;
-    Object localObject = d.l.b.a.b.k.a.a.a.NzQ;
+    ClassLoader localClassLoader = this.Nxa;
+    Object localObject = d.l.b.a.b.k.a.a.a.NWX;
     d.g.b.p.h(paramb, "fqName");
     localObject = new StringBuilder();
     String str = paramb.sD();
@@ -99,7 +99,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.b.d.a.g
  * JD-Core Version:    0.7.0.1
  */

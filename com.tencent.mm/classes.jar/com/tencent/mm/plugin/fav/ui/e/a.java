@@ -10,127 +10,127 @@ import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.config.AppBrandLaunchReferrer;
 import com.tencent.mm.plugin.appbrand.config.WxaAttributes;
-import com.tencent.mm.plugin.appbrand.service.n;
-import com.tencent.mm.protocal.protobuf.ajl;
-import com.tencent.mm.protocal.protobuf.ajn;
-import com.tencent.mm.protocal.protobuf.akd;
-import com.tencent.mm.protocal.protobuf.akf;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.plugin.appbrand.service.p;
+import com.tencent.mm.protocal.protobuf.ajv;
+import com.tencent.mm.protocal.protobuf.ajx;
+import com.tencent.mm.protocal.protobuf.akn;
+import com.tencent.mm.protocal.protobuf.akp;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.widget.imageview.WeImageView;
 
 public final class a
   extends b
 {
-  private final int rDf;
+  private final int rLq;
   
   public a(com.tencent.mm.plugin.fav.ui.o paramo)
   {
     super(paramo);
-    AppMethodBeat.i(218827);
-    this.rDf = com.tencent.mm.cc.a.ax(paramo.context, 2131165358);
-    AppMethodBeat.o(218827);
+    AppMethodBeat.i(191102);
+    this.rLq = com.tencent.mm.cb.a.ax(paramo.context, 2131165358);
+    AppMethodBeat.o(191102);
   }
   
   public final View a(View paramView, ViewGroup paramViewGroup, com.tencent.mm.plugin.fav.a.g paramg)
   {
-    AppMethodBeat.i(218828);
+    AppMethodBeat.i(191103);
     Context localContext = paramViewGroup.getContext();
-    ajn localajn;
+    ajx localajx;
     if (paramView == null)
     {
       paramViewGroup = new a();
       paramView = a(View.inflate(localContext, 2131496152, null), paramViewGroup, paramg);
-      paramViewGroup.lZa = ((ImageView)paramView.findViewById(2131299794));
-      paramViewGroup.rDg = ((ImageView)paramView.findViewById(2131299800));
-      paramViewGroup.iVq = ((TextView)paramView.findViewById(2131299848));
+      paramViewGroup.mdt = ((ImageView)paramView.findViewById(2131299794));
+      paramViewGroup.rLr = ((ImageView)paramView.findViewById(2131299800));
+      paramViewGroup.iYj = ((TextView)paramView.findViewById(2131299848));
       a(paramViewGroup, paramg);
-      localajn = com.tencent.mm.plugin.fav.a.b.c(paramg);
+      localajx = com.tencent.mm.plugin.fav.a.b.c(paramg);
       String str = paramg.field_favProto.title;
       localObject = str;
-      if (bt.isNullOrNil(str)) {
-        localObject = localajn.title;
+      if (bu.isNullOrNil(str)) {
+        localObject = localajx.title;
       }
-      paramViewGroup.iVq.setText((CharSequence)localObject);
-      paramViewGroup.rDl.setImageResource(2131690597);
-      paramViewGroup.rDl.setIconColor(localContext.getResources().getColor(2131099660));
-      paramViewGroup.rDl.setAlpha(0.3F);
-      paramViewGroup.rDl.setVisibility(0);
-      if ((paramg.field_favProto.GiJ == null) || (paramg.field_favProto.GiJ.subType != 1)) {
+      paramViewGroup.iYj.setText((CharSequence)localObject);
+      paramViewGroup.rLw.setImageResource(2131690597);
+      paramViewGroup.rLw.setIconColor(localContext.getResources().getColor(2131099660));
+      paramViewGroup.rLw.setAlpha(0.3F);
+      paramViewGroup.rLw.setVisibility(0);
+      if ((paramg.field_favProto.GBs == null) || (paramg.field_favProto.GBs.subType != 1)) {
         break label311;
       }
-      paramViewGroup.rDg.setVisibility(0);
+      paramViewGroup.rLr.setVisibility(0);
       label201:
-      if (paramg.field_favProto.GiJ == null) {
+      if (paramg.field_favProto.GBs == null) {
         break label367;
       }
     }
     label311:
     label367:
-    for (Object localObject = ((com.tencent.mm.plugin.appbrand.service.f)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.appbrand.service.f.class)).rO(paramg.field_favProto.GiJ.dtF);; localObject = null)
+    for (Object localObject = ((com.tencent.mm.plugin.appbrand.service.f)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.appbrand.service.f.class)).rR(paramg.field_favProto.GBs.duK);; localObject = null)
     {
-      if ((localObject == null) || (bt.isNullOrNil((String)((Pair)localObject).first)))
+      if ((localObject == null) || (bu.isNullOrNil((String)((Pair)localObject).first)))
       {
-        paramViewGroup.rDm.setText(null);
-        paramViewGroup.rDm.setVisibility(8);
+        paramViewGroup.rLx.setText(null);
+        paramViewGroup.rLx.setVisibility(8);
       }
       for (;;)
       {
-        com.tencent.mm.plugin.fav.ui.o.a(paramViewGroup.lZa, 2131691463, localajn, paramg, false, this.rDf, this.rDf);
-        AppMethodBeat.o(218828);
+        com.tencent.mm.plugin.fav.ui.o.a(paramViewGroup.mdt, 2131691463, localajx, paramg, false, this.rLq, this.rLq);
+        AppMethodBeat.o(191103);
         return paramView;
         paramViewGroup = (a)paramView.getTag();
         break;
-        paramViewGroup.rDg.setVisibility(8);
+        paramViewGroup.rLr.setVisibility(8);
         break label201;
-        paramViewGroup.rDm.setText((CharSequence)((Pair)localObject).first);
-        paramViewGroup.rDm.setBackgroundResource(((Integer)((Pair)localObject).second).intValue());
-        paramViewGroup.rDm.setVisibility(0);
+        paramViewGroup.rLx.setText((CharSequence)((Pair)localObject).first);
+        paramViewGroup.rLx.setBackgroundResource(((Integer)((Pair)localObject).second).intValue());
+        paramViewGroup.rLx.setVisibility(0);
       }
     }
   }
   
-  public final void a(View paramView, akf paramakf)
+  public final void a(View paramView, akp paramakp)
   {
-    AppMethodBeat.i(218829);
-    paramakf = ((b.b)paramView.getTag()).rtA.field_favProto.GiJ;
-    if (paramakf == null)
+    AppMethodBeat.i(191104);
+    paramakp = ((b.b)paramView.getTag()).rBM.field_favProto.GBs;
+    if (paramakp == null)
     {
-      ad.e("MicroMsg.FavAppBrandListItem", "onListItemClick appBrandItem null");
-      AppMethodBeat.o(218829);
+      ae.e("MicroMsg.FavAppBrandListItem", "onListItemClick appBrandItem null");
+      AppMethodBeat.o(191104);
       return;
     }
     com.tencent.mm.plugin.appbrand.api.f localf = new com.tencent.mm.plugin.appbrand.api.f();
-    localf.username = paramakf.username;
-    localf.appId = paramakf.appId;
-    localf.hQh = paramakf.dtF;
-    localf.version = paramakf.version;
-    localf.jCN = paramakf.dki;
+    localf.username = paramakp.username;
+    localf.appId = paramakp.appId;
+    localf.hSZ = paramakp.duK;
+    localf.version = paramakp.version;
+    localf.jFL = paramakp.dlk;
     localf.scene = 1010;
-    localf.jCW = new AppBrandLaunchReferrer();
-    localf.jCW.dJW = paramakf.dJW;
-    localf.jCW.jXR = 6;
-    ((com.tencent.mm.plugin.appbrand.service.o)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.appbrand.service.o.class)).a(paramView.getContext(), localf);
-    AppMethodBeat.o(218829);
+    localf.jFU = new AppBrandLaunchReferrer();
+    localf.jFU.dLl = paramakp.dLl;
+    localf.jFU.kbg = 6;
+    ((p)com.tencent.mm.kernel.g.ab(p.class)).a(paramView.getContext(), localf);
+    AppMethodBeat.o(191104);
   }
   
   protected final void a(b.b paramb)
   {
-    AppMethodBeat.i(218830);
-    Object localObject = paramb.jfJ.getContext().getString(2131755945);
-    if (paramb.rtA.field_favProto.GiJ != null)
+    AppMethodBeat.i(191105);
+    Object localObject = paramb.jiC.getContext().getString(2131755945);
+    if (paramb.rBM.field_favProto.GBs != null)
     {
-      localObject = paramb.rtA.field_favProto.GiJ.username;
-      localObject = ((n)com.tencent.mm.kernel.g.ab(n.class)).Nt((String)localObject);
+      localObject = paramb.rBM.field_favProto.GBs.username;
+      localObject = ((com.tencent.mm.plugin.appbrand.service.o)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.appbrand.service.o.class)).Ob((String)localObject);
       if (localObject == null) {
         break label87;
       }
     }
     label87:
-    for (localObject = ((WxaAttributes)localObject).field_nickname;; localObject = paramb.jfJ.getContext().getString(2131755945))
+    for (localObject = ((WxaAttributes)localObject).field_nickname;; localObject = paramb.jiC.getContext().getString(2131755945))
     {
-      paramb.jfJ.setText((CharSequence)localObject);
-      AppMethodBeat.o(218830);
+      paramb.jiC.setText((CharSequence)localObject);
+      AppMethodBeat.o(191105);
       return;
     }
   }
@@ -138,9 +138,9 @@ public final class a
   public static final class a
     extends b.b
   {
-    TextView iVq;
-    ImageView lZa;
-    ImageView rDg;
+    TextView iYj;
+    ImageView mdt;
+    ImageView rLr;
   }
 }
 

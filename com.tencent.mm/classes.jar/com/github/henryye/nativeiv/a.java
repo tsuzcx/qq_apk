@@ -25,7 +25,7 @@ public class a
   
   public a()
   {
-    AppMethodBeat.i(194919);
+    AppMethodBeat.i(209404);
     this.mMaxWidth = 2048;
     this.mMaxHeight = 2048;
     this.bau = new b();
@@ -33,12 +33,12 @@ public class a
     BitmapType localBitmapType = BitmapType.Native;
     com.github.henryye.nativeiv.comm.a locala = new com.github.henryye.nativeiv.comm.a();
     localb.bax.put(localBitmapType, locala);
-    AppMethodBeat.o(194919);
+    AppMethodBeat.o(209404);
   }
   
   public final IBitmap a(String paramString, Object paramObject, com.github.henryye.nativeiv.b.b paramb, ImageDecodeConfig paramImageDecodeConfig)
   {
-    AppMethodBeat.i(194921);
+    AppMethodBeat.i(209406);
     com.github.henryye.nativeiv.api.a locala = new com.github.henryye.nativeiv.api.a();
     i = this.mMaxWidth;
     locala.mMaxHeight = this.mMaxHeight;
@@ -50,7 +50,7 @@ public class a
     {
       locala.baT = paramObject.errorMsg;
       this.baw.a(paramString, IImageDecodeService.b.a.baV, locala);
-      AppMethodBeat.o(194921);
+      AppMethodBeat.o(209406);
       return null;
     }
     localInputStream = paramObject.inputStream;
@@ -61,13 +61,13 @@ public class a
     if (locald == null)
     {
       this.baw.a(paramString, IImageDecodeService.b.a.baW, locala);
-      AppMethodBeat.o(194921);
+      AppMethodBeat.o(209406);
       return null;
     }
     if (locald.bbr == com.github.henryye.nativeiv.bitmap.c.bbp)
     {
       this.baw.a(paramString, IImageDecodeService.b.a.baY, locala);
-      AppMethodBeat.o(194921);
+      AppMethodBeat.o(209406);
       return null;
     }
     localc1 = locald.bbr;
@@ -175,7 +175,7 @@ public class a
             continue;
           }
           paramString = localc.baB;
-          AppMethodBeat.o(194921);
+          AppMethodBeat.o(209406);
           return paramString;
         }
         catch (IllegalStateException paramObject)
@@ -193,7 +193,7 @@ public class a
         continue;
       }
       this.baw.a(paramString, IImageDecodeService.b.a.baZ, locala);
-      AppMethodBeat.o(194921);
+      AppMethodBeat.o(209406);
       return null;
       if (paramObject.bax.get(paramb) != null)
       {
@@ -221,9 +221,9 @@ public class a
   
   protected c a(b paramb, com.github.henryye.nativeiv.api.a parama)
   {
-    AppMethodBeat.i(194922);
+    AppMethodBeat.i(209407);
     paramb = new c(paramb, parama);
-    AppMethodBeat.o(194922);
+    AppMethodBeat.o(209407);
     return paramb;
   }
   
@@ -240,7 +240,7 @@ public class a
   
   public final void destroy()
   {
-    AppMethodBeat.i(194920);
+    AppMethodBeat.i(209405);
     b localb = this.bau;
     int i = 0;
     while (i < localb.bay.size())
@@ -250,7 +250,7 @@ public class a
       i += 1;
     }
     b.b(localb.bax);
-    AppMethodBeat.o(194920);
+    AppMethodBeat.o(209405);
   }
   
   public final void forceSetUseType(BitmapType paramBitmapType)

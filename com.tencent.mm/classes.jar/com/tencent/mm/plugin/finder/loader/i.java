@@ -9,130 +9,139 @@ import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.loader.c.e.a;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.loader.f.g;
+import com.tencent.mm.sdk.platformtools.ak;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/loader/FinderLoader;", "", "()V", "avatar", "Lcom/tencent/mm/loader/Loader;", "Lcom/tencent/mm/plugin/finder/loader/FinderLoaderData;", "getAvatar", "()Lcom/tencent/mm/loader/Loader;", "avatarLoaderConfiguration", "Lcom/tencent/mm/loader/cfg/ILoaderConfiguration;", "Landroid/graphics/Bitmap;", "avatarOption", "Lcom/tencent/mm/loader/cfg/ImageLoaderOptions;", "avatarWithoutDefaultOption", "bigAvatarOption", "coverOption", "defaultAvatar", "kotlin.jvm.PlatformType", "getDefaultAvatar", "()Landroid/graphics/Bitmap;", "defaultOption", "defaultRoundAvatar", "getDefaultRoundAvatar", "imageLoaderConfiguration", "instance", "getInstance", "msgThumbOption", "previewAvatar", "getPreviewAvatar", "previewAvatarConfiguration", "getPreviewAvatarConfiguration", "()Lcom/tencent/mm/loader/cfg/ILoaderConfiguration;", "rectAvatar", "getRectAvatar", "rectAvatarConfiguration", "timelineOption", "wxAvatar", "getWxAvatar", "wxAvatarLoaderConfiguration", "wxAvatarOption", "getOption", "type", "Lcom/tencent/mm/plugin/finder/loader/FinderLoader$LoaderType;", "LoaderType", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/loader/FinderLoader;", "", "()V", "avatar", "Lcom/tencent/mm/loader/Loader;", "Lcom/tencent/mm/plugin/finder/loader/FinderLoaderData;", "getAvatar", "()Lcom/tencent/mm/loader/Loader;", "avatarLoaderConfiguration", "Lcom/tencent/mm/loader/cfg/ILoaderConfiguration;", "Landroid/graphics/Bitmap;", "avatarOption", "Lcom/tencent/mm/loader/cfg/ImageLoaderOptions;", "avatarWithoutDefaultOption", "bigAvatarOption", "coverOption", "defaultAvatar", "kotlin.jvm.PlatformType", "getDefaultAvatar", "()Landroid/graphics/Bitmap;", "defaultOption", "defaultRoundAvatar", "getDefaultRoundAvatar", "imageLoaderConfiguration", "instance", "getInstance", "msgThumbOption", "previewAvatar", "getPreviewAvatar", "previewAvatarConfiguration", "getPreviewAvatarConfiguration", "()Lcom/tencent/mm/loader/cfg/ILoaderConfiguration;", "rectAvatar", "getRectAvatar", "rectAvatarConfiguration", "rectAvatarOption", "timelineOption", "wxAvatar", "getWxAvatar", "wxAvatarLoaderConfiguration", "wxAvatarOption", "getOption", "type", "Lcom/tencent/mm/plugin/finder/loader/FinderLoader$LoaderType;", "LoaderType", "plugin-finder_release"})
 public final class i
 {
-  private static final Bitmap nZT;
-  private static final com.tencent.mm.loader.c.e siH;
-  private static final com.tencent.mm.loader.c.e siI;
-  private static final com.tencent.mm.loader.c.e siJ;
-  private static final com.tencent.mm.loader.c.e siK;
-  private static final com.tencent.mm.loader.c.e siL;
-  private static final Bitmap siM;
-  private static final com.tencent.mm.loader.c.e siN;
-  private static final com.tencent.mm.loader.c.e siO;
-  private static final com.tencent.mm.loader.c.e siP;
-  private static final com.tencent.mm.loader.c.d<k, Bitmap> siQ;
-  private static final com.tencent.mm.loader.c.d<k, Bitmap> siR;
-  private static final com.tencent.mm.loader.c.d<k, Bitmap> siS;
-  private static final com.tencent.mm.loader.c.d<k, Bitmap> siT;
-  private static final com.tencent.mm.loader.c.d<k, Bitmap> siU;
-  private static final com.tencent.mm.loader.d<k> siV;
-  private static final com.tencent.mm.loader.d<k> siW;
-  private static final com.tencent.mm.loader.d<k> siX;
-  private static final com.tencent.mm.loader.d<k> siY;
-  private static final com.tencent.mm.loader.d<k> siZ;
-  public static final i sja;
+  private static final Bitmap ofD;
+  private static final com.tencent.mm.loader.c.e srC;
+  private static final com.tencent.mm.loader.c.e srD;
+  private static final com.tencent.mm.loader.c.e srE;
+  private static final com.tencent.mm.loader.c.e srF;
+  private static final com.tencent.mm.loader.c.e srG;
+  private static final Bitmap srH;
+  private static final com.tencent.mm.loader.c.e srI;
+  private static final com.tencent.mm.loader.c.e srJ;
+  private static final com.tencent.mm.loader.c.e srK;
+  private static final com.tencent.mm.loader.c.e srL;
+  private static final com.tencent.mm.loader.c.d<k, Bitmap> srM;
+  private static final com.tencent.mm.loader.c.d<k, Bitmap> srN;
+  private static final com.tencent.mm.loader.c.d<k, Bitmap> srO;
+  private static final com.tencent.mm.loader.c.d<k, Bitmap> srP;
+  private static final com.tencent.mm.loader.c.d<k, Bitmap> srQ;
+  private static final com.tencent.mm.loader.d<k> srR;
+  private static final com.tencent.mm.loader.d<k> srS;
+  private static final com.tencent.mm.loader.d<k> srT;
+  private static final com.tencent.mm.loader.d<k> srU;
+  private static final com.tencent.mm.loader.d<k> srV;
+  public static final i srW;
   
   static
   {
     AppMethodBeat.i(166329);
-    sja = new i();
+    srW = new i();
     Object localObject1 = new e.a();
-    ((e.a)localObject1).heb = true;
-    ((e.a)localObject1).hea = true;
-    siH = ((e.a)localObject1).arf();
+    ((e.a)localObject1).hgP = true;
+    ((e.a)localObject1).hgO = true;
+    srC = ((e.a)localObject1).aru();
     localObject1 = new e.a();
-    ((e.a)localObject1).heb = true;
-    ((e.a)localObject1).hea = true;
-    ((e.a)localObject1).hej = 2131099682;
-    Object localObject2 = com.tencent.mm.plugin.finder.storage.b.sxa;
-    ((e.a)localObject1).hef = com.tencent.mm.plugin.finder.storage.b.cFh();
-    localObject2 = com.tencent.mm.plugin.finder.storage.b.sxa;
-    ((e.a)localObject1).hee = com.tencent.mm.plugin.finder.storage.b.cFi();
+    ((e.a)localObject1).hgP = true;
+    ((e.a)localObject1).hgO = true;
+    ((e.a)localObject1).hgX = 2131099682;
+    Object localObject2 = com.tencent.mm.plugin.finder.storage.b.sHP;
+    ((e.a)localObject1).hgT = com.tencent.mm.plugin.finder.storage.b.cHe();
+    localObject2 = com.tencent.mm.plugin.finder.storage.b.sHP;
+    ((e.a)localObject1).hgS = com.tencent.mm.plugin.finder.storage.b.cHf();
     localObject2 = (Animation)new AlphaAnimation(0.0F, 1.0F);
     p.h(localObject2, "animation");
-    ((e.a)localObject1).hem = ((Animation)localObject2);
-    siI = ((e.a)localObject1).arf();
+    ((e.a)localObject1).hha = ((Animation)localObject2);
+    srD = ((e.a)localObject1).aru();
     localObject1 = new e.a();
-    ((e.a)localObject1).heb = true;
-    ((e.a)localObject1).hea = true;
-    ((e.a)localObject1).hej = 2131099682;
-    localObject2 = com.tencent.mm.plugin.finder.storage.b.sxa;
-    ((e.a)localObject1).hef = com.tencent.mm.plugin.finder.storage.b.cFl();
-    localObject2 = com.tencent.mm.plugin.finder.storage.b.sxa;
-    ((e.a)localObject1).hee = com.tencent.mm.plugin.finder.storage.b.cFm();
-    siJ = ((e.a)localObject1).arf();
+    ((e.a)localObject1).hgP = true;
+    ((e.a)localObject1).hgO = true;
+    ((e.a)localObject1).hgX = 2131099682;
+    localObject2 = com.tencent.mm.plugin.finder.storage.b.sHP;
+    ((e.a)localObject1).hgT = com.tencent.mm.plugin.finder.storage.b.cHi();
+    localObject2 = com.tencent.mm.plugin.finder.storage.b.sHP;
+    ((e.a)localObject1).hgS = com.tencent.mm.plugin.finder.storage.b.cHj();
+    srE = ((e.a)localObject1).aru();
     localObject1 = new e.a();
-    ((e.a)localObject1).heb = true;
-    ((e.a)localObject1).hea = true;
-    ((e.a)localObject1).hej = 2131099682;
-    localObject2 = com.tencent.mm.plugin.finder.storage.b.sxa;
-    ((e.a)localObject1).hef = com.tencent.mm.plugin.finder.storage.b.cFo();
-    localObject2 = com.tencent.mm.plugin.finder.storage.b.sxa;
-    ((e.a)localObject1).hee = com.tencent.mm.plugin.finder.storage.b.cFp();
-    siK = ((e.a)localObject1).arf();
+    ((e.a)localObject1).hgP = true;
+    ((e.a)localObject1).hgO = true;
+    ((e.a)localObject1).hgX = 2131099682;
+    localObject2 = com.tencent.mm.plugin.finder.storage.b.sHP;
+    ((e.a)localObject1).hgT = com.tencent.mm.plugin.finder.storage.b.cHl();
+    localObject2 = com.tencent.mm.plugin.finder.storage.b.sHP;
+    ((e.a)localObject1).hgS = com.tencent.mm.plugin.finder.storage.b.cHm();
+    srF = ((e.a)localObject1).aru();
     localObject1 = new e.a();
-    ((e.a)localObject1).heb = true;
-    ((e.a)localObject1).hea = true;
-    ((e.a)localObject1).hej = 2131099682;
-    localObject2 = aj.getContext();
+    ((e.a)localObject1).hgP = true;
+    ((e.a)localObject1).hgO = true;
+    ((e.a)localObject1).hgX = 2131099682;
+    localObject2 = ak.getContext();
     p.g(localObject2, "MMApplicationContext.getContext()");
     localObject2 = ((Context)localObject2).getResources();
     if (localObject2 == null) {
-      p.gfZ();
+      p.gkB();
     }
-    ((e.a)localObject1).hee = ((Resources)localObject2).getDimensionPixelSize(2131165302);
-    localObject2 = aj.getContext();
+    ((e.a)localObject1).hgS = ((Resources)localObject2).getDimensionPixelSize(2131165302);
+    localObject2 = ak.getContext();
     p.g(localObject2, "MMApplicationContext.getContext()");
     localObject2 = ((Context)localObject2).getResources();
     if (localObject2 == null) {
-      p.gfZ();
+      p.gkB();
     }
-    ((e.a)localObject1).hef = ((Resources)localObject2).getDimensionPixelSize(2131165302);
-    siL = ((e.a)localObject1).arf();
-    localObject1 = com.tencent.mm.compatible.e.a.decodeResource(aj.getContext().getResources(), 2131690013);
-    nZT = (Bitmap)localObject1;
-    siM = com.tencent.mm.sdk.platformtools.g.a((Bitmap)localObject1, false, nZT.getWidth() * 0.5F);
+    ((e.a)localObject1).hgT = ((Resources)localObject2).getDimensionPixelSize(2131165302);
+    srG = ((e.a)localObject1).aru();
+    localObject1 = com.tencent.mm.compatible.e.a.decodeResource(ak.getContext().getResources(), 2131690013);
+    ofD = (Bitmap)localObject1;
+    srH = com.tencent.mm.sdk.platformtools.h.a((Bitmap)localObject1, false, ofD.getWidth() * 0.5F);
     localObject1 = new e.a();
-    ((e.a)localObject1).heb = true;
-    ((e.a)localObject1).hea = true;
-    localObject1 = ((e.a)localObject1).w((Drawable)new BitmapDrawable(siM));
-    ((e.a)localObject1).hef = 132;
-    ((e.a)localObject1).hee = 132;
-    siN = ((e.a)localObject1).arf();
+    ((e.a)localObject1).hgP = true;
+    ((e.a)localObject1).hgO = true;
+    localObject1 = ((e.a)localObject1).w((Drawable)new BitmapDrawable(srH));
+    ((e.a)localObject1).hgT = 132;
+    ((e.a)localObject1).hgS = 132;
+    srI = ((e.a)localObject1).aru();
     localObject1 = new e.a();
-    ((e.a)localObject1).heb = true;
-    ((e.a)localObject1).hea = true;
-    localObject2 = aj.getContext().getResources().getDrawable(2131231875);
+    ((e.a)localObject1).hgP = true;
+    ((e.a)localObject1).hgO = true;
+    localObject1 = ((e.a)localObject1).w((Drawable)new BitmapDrawable(ofD));
+    ((e.a)localObject1).hgT = 132;
+    ((e.a)localObject1).hgS = 132;
+    srJ = ((e.a)localObject1).aru();
+    localObject1 = new e.a();
+    ((e.a)localObject1).hgP = true;
+    ((e.a)localObject1).hgO = true;
+    localObject2 = ak.getContext().getResources().getDrawable(2131231875);
     p.g(localObject2, "MMApplicationContext.get….drawable.default_avatar)");
-    siO = ((e.a)localObject1).w((Drawable)localObject2).arf();
+    srK = ((e.a)localObject1).w((Drawable)localObject2).aru();
     localObject1 = new e.a();
-    ((e.a)localObject1).heb = true;
-    ((e.a)localObject1).hea = true;
-    ((e.a)localObject1).hej = 2131099682;
-    ((e.a)localObject1).hef = 132;
-    ((e.a)localObject1).hee = 132;
-    siP = ((e.a)localObject1).arf();
-    siQ = new com.tencent.mm.loader.c.a().a((com.tencent.mm.loader.b.a.d)new f()).a((com.tencent.mm.loader.d.b)new d()).a((com.tencent.mm.loader.f.g)new com.tencent.mm.loader.e.a()).a((com.tencent.mm.loader.b.b.e)new com.tencent.mm.loader.b.b.a()).b((com.tencent.mm.loader.d.d)new c()).b(siH).aqQ();
-    siR = new com.tencent.mm.loader.c.a().a((com.tencent.mm.loader.b.a.d)new f()).a((com.tencent.mm.loader.d.b)new h()).a((com.tencent.mm.loader.f.g)new com.tencent.mm.loader.e.a()).a((com.tencent.mm.loader.b.b.e)new com.tencent.mm.loader.b.b.a()).b(siN).b((com.tencent.mm.loader.d.d)new c()).b(new com.tencent.mm.loader.e.c.c(0.5F).ark()).aqQ();
-    siS = new com.tencent.mm.loader.c.a().a((com.tencent.mm.loader.b.a.d)new f()).a((com.tencent.mm.loader.d.b)new h()).a((com.tencent.mm.loader.f.g)new com.tencent.mm.loader.e.a()).a((com.tencent.mm.loader.b.b.e)new com.tencent.mm.loader.b.b.a()).b(siO).b(new com.tencent.mm.loader.e.c.c(0.1F).ark()).aqQ();
-    siT = new com.tencent.mm.loader.c.a().a((com.tencent.mm.loader.b.a.d)new f()).a((com.tencent.mm.loader.d.b)new h()).a((com.tencent.mm.loader.f.g)new com.tencent.mm.loader.e.a()).a((com.tencent.mm.loader.b.b.e)new com.tencent.mm.loader.b.b.a()).b(siN).aqQ();
-    siU = new com.tencent.mm.loader.c.a().a((com.tencent.mm.loader.b.a.d)new f()).a((com.tencent.mm.loader.d.b)new h()).a((com.tencent.mm.loader.f.g)new com.tencent.mm.loader.e.a()).a((com.tencent.mm.loader.b.b.e)new com.tencent.mm.loader.b.b.a()).b((com.tencent.mm.loader.d.d)new c()).b(siH).aqQ();
-    localObject1 = com.tencent.mm.loader.e.hcm;
-    siV = com.tencent.mm.loader.e.a(siQ);
-    localObject1 = com.tencent.mm.loader.e.hcm;
-    siW = com.tencent.mm.loader.e.a(siR);
-    localObject1 = com.tencent.mm.loader.e.hcm;
-    siX = com.tencent.mm.loader.e.a(siS);
-    localObject1 = com.tencent.mm.loader.e.hcm;
-    siY = com.tencent.mm.loader.e.a(siT);
-    localObject1 = com.tencent.mm.loader.e.hcm;
-    siZ = com.tencent.mm.loader.e.a(siU);
+    ((e.a)localObject1).hgP = true;
+    ((e.a)localObject1).hgO = true;
+    ((e.a)localObject1).hgX = 2131099682;
+    ((e.a)localObject1).hgT = 132;
+    ((e.a)localObject1).hgS = 132;
+    srL = ((e.a)localObject1).aru();
+    srM = new com.tencent.mm.loader.c.a().a((com.tencent.mm.loader.b.a.d)new f()).a((com.tencent.mm.loader.d.b)new d()).a((g)new com.tencent.mm.loader.e.a()).a((com.tencent.mm.loader.b.b.e)new com.tencent.mm.loader.b.b.a()).b((com.tencent.mm.loader.d.d)new c()).b(srC).arf();
+    srN = new com.tencent.mm.loader.c.a().a((com.tencent.mm.loader.b.a.d)new f()).a((com.tencent.mm.loader.d.b)new h()).a((g)new com.tencent.mm.loader.e.a()).a((com.tencent.mm.loader.b.b.e)new com.tencent.mm.loader.b.b.a()).b(srI).b((com.tencent.mm.loader.d.d)new c()).b(new com.tencent.mm.loader.e.c.c(0.5F).arz()).arf();
+    srO = new com.tencent.mm.loader.c.a().a((com.tencent.mm.loader.b.a.d)new f()).a((com.tencent.mm.loader.d.b)new h()).a((g)new com.tencent.mm.loader.e.a()).a((com.tencent.mm.loader.b.b.e)new com.tencent.mm.loader.b.b.a()).b(srK).b(new com.tencent.mm.loader.e.c.c(0.1F).arz()).arf();
+    srP = new com.tencent.mm.loader.c.a().a((com.tencent.mm.loader.b.a.d)new f()).a((com.tencent.mm.loader.d.b)new h()).a((g)new com.tencent.mm.loader.e.a()).a((com.tencent.mm.loader.b.b.e)new com.tencent.mm.loader.b.b.a()).b(srI).b((com.tencent.mm.loader.d.d)new c()).arf();
+    srQ = new com.tencent.mm.loader.c.a().a((com.tencent.mm.loader.b.a.d)new f()).a((com.tencent.mm.loader.d.b)new h()).a((g)new com.tencent.mm.loader.e.a()).a((com.tencent.mm.loader.b.b.e)new com.tencent.mm.loader.b.b.a()).b((com.tencent.mm.loader.d.d)new c()).b(srC).arf();
+    localObject1 = com.tencent.mm.loader.e.hfa;
+    srR = com.tencent.mm.loader.e.a(srM);
+    localObject1 = com.tencent.mm.loader.e.hfa;
+    srS = com.tencent.mm.loader.e.a(srN);
+    localObject1 = com.tencent.mm.loader.e.hfa;
+    srT = com.tencent.mm.loader.e.a(srO);
+    localObject1 = com.tencent.mm.loader.e.hfa;
+    srU = com.tencent.mm.loader.e.a(srP);
+    localObject1 = com.tencent.mm.loader.e.hfa;
+    srV = com.tencent.mm.loader.e.a(srQ);
     AppMethodBeat.o(166329);
   }
   
@@ -140,91 +149,102 @@ public final class i
   {
     AppMethodBeat.i(166328);
     p.h(parama, "type");
-    switch (j.cpQ[parama.ordinal()])
+    switch (j.cqt[parama.ordinal()])
     {
     default: 
-      parama = siH;
+      parama = srC;
       AppMethodBeat.o(166328);
       return parama;
     case 1: 
-      parama = siI;
+      parama = srD;
       AppMethodBeat.o(166328);
       return parama;
     case 2: 
-      parama = siI;
+      parama = srD;
       AppMethodBeat.o(166328);
       return parama;
     case 3: 
-      parama = siN;
+      parama = srI;
       AppMethodBeat.o(166328);
       return parama;
     case 4: 
-      parama = siP;
+      parama = srJ;
       AppMethodBeat.o(166328);
       return parama;
     case 5: 
-      parama = siL;
+      parama = srL;
       AppMethodBeat.o(166328);
       return parama;
     case 6: 
-      parama = siJ;
+      parama = srG;
       AppMethodBeat.o(166328);
       return parama;
     case 7: 
-      parama = siK;
+      parama = srE;
+      AppMethodBeat.o(166328);
+      return parama;
+    case 8: 
+      parama = srF;
       AppMethodBeat.o(166328);
       return parama;
     }
-    parama = siO;
+    parama = srK;
     AppMethodBeat.o(166328);
     return parama;
   }
   
-  public static com.tencent.mm.loader.d<k> cCB()
+  public static com.tencent.mm.loader.d<k> cEn()
   {
-    return siV;
+    return srR;
   }
   
-  public static com.tencent.mm.loader.d<k> cCC()
+  public static com.tencent.mm.loader.d<k> cEo()
   {
-    return siW;
+    return srS;
   }
   
-  public static com.tencent.mm.loader.d<k> cCD()
+  public static com.tencent.mm.loader.d<k> cEp()
   {
-    return siX;
+    return srT;
   }
   
-  public static com.tencent.mm.loader.d<k> cCE()
+  public static com.tencent.mm.loader.d<k> cEq()
   {
-    return siZ;
+    return srU;
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/loader/FinderLoader$LoaderType;", "", "(Ljava/lang/String;I)V", "TIMELINE", "FEED_DETAIL", "AVATAR", "WX_AVATAR", "AVATAR_WITHOUT_DEFAULT", "MSG_THUMB", "DEFAULT", "BIG_AVATAR", "PROFILE_COVER", "plugin-finder_release"})
+  public static com.tencent.mm.loader.d<k> cEr()
+  {
+    return srV;
+  }
+  
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/loader/FinderLoader$LoaderType;", "", "(Ljava/lang/String;I)V", "TIMELINE", "FEED_DETAIL", "AVATAR", "RECT_AVATAR", "WX_AVATAR", "AVATAR_WITHOUT_DEFAULT", "MSG_THUMB", "DEFAULT", "BIG_AVATAR", "PROFILE_COVER", "plugin-finder_release"})
   public static enum a
   {
     static
     {
       AppMethodBeat.i(166324);
       a locala1 = new a("TIMELINE", 0);
-      sjb = locala1;
+      srX = locala1;
       a locala2 = new a("FEED_DETAIL", 1);
-      sjc = locala2;
+      srY = locala2;
       a locala3 = new a("AVATAR", 2);
-      sjd = locala3;
-      a locala4 = new a("WX_AVATAR", 3);
-      sje = locala4;
-      a locala5 = new a("AVATAR_WITHOUT_DEFAULT", 4);
-      sjf = locala5;
-      a locala6 = new a("MSG_THUMB", 5);
-      sjg = locala6;
-      a locala7 = new a("DEFAULT", 6);
-      sjh = locala7;
-      a locala8 = new a("BIG_AVATAR", 7);
-      sji = locala8;
-      a locala9 = new a("PROFILE_COVER", 8);
-      sjj = locala9;
-      sjk = new a[] { locala1, locala2, locala3, locala4, locala5, locala6, locala7, locala8, locala9 };
+      srZ = locala3;
+      a locala4 = new a("RECT_AVATAR", 3);
+      ssa = locala4;
+      a locala5 = new a("WX_AVATAR", 4);
+      ssb = locala5;
+      a locala6 = new a("AVATAR_WITHOUT_DEFAULT", 5);
+      ssc = locala6;
+      a locala7 = new a("MSG_THUMB", 6);
+      ssd = locala7;
+      a locala8 = new a("DEFAULT", 7);
+      sse = locala8;
+      a locala9 = new a("BIG_AVATAR", 8);
+      ssf = locala9;
+      a locala10 = new a("PROFILE_COVER", 9);
+      ssg = locala10;
+      ssh = new a[] { locala1, locala2, locala3, locala4, locala5, locala6, locala7, locala8, locala9, locala10 };
       AppMethodBeat.o(166324);
     }
     

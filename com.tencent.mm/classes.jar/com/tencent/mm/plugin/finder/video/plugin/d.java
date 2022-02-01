@@ -6,35 +6,37 @@ import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.plugin.finder.report.u;
 import com.tencent.mm.plugin.finder.video.plugin.view.SubRecordFinishView;
 import com.tencent.mm.plugin.recordvideo.plugin.parent.d.b;
 import com.tencent.mm.plugin.recordvideo.plugin.parent.d.c;
+import com.tencent.mm.plugin.recordvideo.plugin.t;
 import com.tencent.mm.plugin.recordvideo.plugin.t.a;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/video/plugin/FinderSubRecordFinishPlugin;", "Landroid/view/View$OnClickListener;", "Lcom/tencent/mm/plugin/recordvideo/plugin/IBaseRecordPlugin;", "view", "Lcom/tencent/mm/plugin/finder/video/plugin/view/SubRecordFinishView;", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "(Lcom/tencent/mm/plugin/finder/video/plugin/view/SubRecordFinishView;Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "getStatus", "()Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "setStatus", "(Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "getView", "()Lcom/tencent/mm/plugin/finder/video/plugin/view/SubRecordFinishView;", "setView", "(Lcom/tencent/mm/plugin/finder/video/plugin/view/SubRecordFinishView;)V", "onClick", "", "v", "Landroid/view/View;", "setVisibility", "visibility", "", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/video/plugin/FinderSubRecordFinishPlugin;", "Landroid/view/View$OnClickListener;", "Lcom/tencent/mm/plugin/recordvideo/plugin/IBaseRecordPlugin;", "view", "Lcom/tencent/mm/plugin/finder/video/plugin/view/SubRecordFinishView;", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "(Lcom/tencent/mm/plugin/finder/video/plugin/view/SubRecordFinishView;Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "getStatus", "()Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "setStatus", "(Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "getView", "()Lcom/tencent/mm/plugin/finder/video/plugin/view/SubRecordFinishView;", "setView", "(Lcom/tencent/mm/plugin/finder/video/plugin/view/SubRecordFinishView;)V", "onClick", "", "v", "Landroid/view/View;", "setVisibility", "visibility", "", "plugin-finder_release"})
 public final class d
-  implements View.OnClickListener, com.tencent.mm.plugin.recordvideo.plugin.t
+  implements View.OnClickListener, t
 {
-  private com.tencent.mm.plugin.recordvideo.plugin.parent.d sQE;
-  private SubRecordFinishView sQM;
+  private com.tencent.mm.plugin.recordvideo.plugin.parent.d tbP;
+  private SubRecordFinishView tbX;
   
   public d(SubRecordFinishView paramSubRecordFinishView, com.tencent.mm.plugin.recordvideo.plugin.parent.d paramd)
   {
-    AppMethodBeat.i(204938);
-    this.sQM = paramSubRecordFinishView;
-    this.sQE = paramd;
-    this.sQM.setOnClickListener((View.OnClickListener)this);
-    AppMethodBeat.o(204938);
+    AppMethodBeat.i(205563);
+    this.tbX = paramSubRecordFinishView;
+    this.tbP = paramd;
+    this.tbX.setOnClickListener((View.OnClickListener)this);
+    AppMethodBeat.o(205563);
   }
   
-  public final boolean aoB()
+  public final boolean aoQ()
   {
     return false;
   }
   
-  public final void ayX() {}
+  public final void azm() {}
   
   public final String name()
   {
@@ -45,15 +47,15 @@ public final class d
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(204936);
+    AppMethodBeat.i(205561);
     b localb = new b();
     localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/finder/video/plugin/FinderSubRecordFinishPlugin", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-    paramView = com.tencent.mm.plugin.finder.report.t.ssb;
-    com.tencent.mm.plugin.finder.report.t.wH(190L);
-    d.b.a(this.sQE, d.c.xEd);
+    a.b("com/tencent/mm/plugin/finder/video/plugin/FinderSubRecordFinishPlugin", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+    paramView = u.sCl;
+    u.wY(190L);
+    d.b.a(this.tbP, d.c.xTY);
     a.a(this, "com/tencent/mm/plugin/finder/video/plugin/FinderSubRecordFinishPlugin", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-    AppMethodBeat.o(204936);
+    AppMethodBeat.o(205561);
   }
   
   public final void onDetach() {}
@@ -62,11 +64,11 @@ public final class d
   
   public final void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    AppMethodBeat.i(204939);
+    AppMethodBeat.i(205564);
     p.h(paramArrayOfString, "permissions");
     p.h(paramArrayOfInt, "grantResults");
     t.a.a(paramArrayOfString, paramArrayOfInt);
-    AppMethodBeat.o(204939);
+    AppMethodBeat.o(205564);
   }
   
   public final void onResume() {}
@@ -77,9 +79,9 @@ public final class d
   
   public final void setVisibility(int paramInt)
   {
-    AppMethodBeat.i(204937);
-    this.sQM.setVisibility(paramInt);
-    AppMethodBeat.o(204937);
+    AppMethodBeat.i(205562);
+    this.tbX.setVisibility(paramInt);
+    AppMethodBeat.o(205562);
   }
 }
 

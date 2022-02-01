@@ -1,17 +1,17 @@
 package com.tencent.mm.openim.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.bqd;
-import com.tencent.mm.protocal.protobuf.bqe;
-import com.tencent.mm.protocal.protobuf.ces;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.bqx;
+import com.tencent.mm.protocal.protobuf.bqy;
+import com.tencent.mm.protocal.protobuf.cfm;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.LinkedList;
 
 public final class k
@@ -19,23 +19,23 @@ public final class k
   implements com.tencent.mm.network.k
 {
   private f callback;
-  private String dvs;
+  private String dwx;
   private final b rr;
   
-  public k(String paramString, LinkedList<ces> paramLinkedList)
+  public k(String paramString, LinkedList<cfm> paramLinkedList)
   {
     AppMethodBeat.i(151209);
     Object localObject = new b.a();
-    ((b.a)localObject).hNM = new bqd();
-    ((b.a)localObject).hNN = new bqe();
+    ((b.a)localObject).hQF = new bqx();
+    ((b.a)localObject).hQG = new bqy();
     ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/inviteopenimchatroommember";
     ((b.a)localObject).funcId = 887;
-    this.rr = ((b.a)localObject).aDC();
-    this.dvs = paramString;
-    localObject = (bqd)this.rr.hNK.hNQ;
-    ((bqd)localObject).iHB = paramString;
-    ((bqd)localObject).Fvu = paramLinkedList;
-    ad.i("MicroMsg.Openim.NetSceneInviteOpenIMChatRoomMember", "roomname: %s, size:%d", new Object[] { paramString, Integer.valueOf(paramLinkedList.size()) });
+    this.rr = ((b.a)localObject).aDS();
+    this.dwx = paramString;
+    localObject = (bqx)this.rr.hQD.hQJ;
+    ((bqx)localObject).iKu = paramString;
+    ((bqx)localObject).FNS = paramLinkedList;
+    ae.i("MicroMsg.Openim.NetSceneInviteOpenIMChatRoomMember", "roomname: %s, size:%d", new Object[] { paramString, Integer.valueOf(paramLinkedList.size()) });
     AppMethodBeat.o(151209);
   }
   
@@ -56,7 +56,7 @@ public final class k
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(151210);
-    ad.i("MicroMsg.Openim.NetSceneInviteOpenIMChatRoomMember", "onGYNetEnd : errType : %d, errCode : %d, errMsg : %s, roomname = %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString, this.dvs });
+    ae.i("MicroMsg.Openim.NetSceneInviteOpenIMChatRoomMember", "onGYNetEnd : errType : %d, errCode : %d, errMsg : %s, roomname = %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString, this.dwx });
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }

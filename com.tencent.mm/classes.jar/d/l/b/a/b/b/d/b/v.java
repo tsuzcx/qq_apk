@@ -10,33 +10,33 @@ public final class v
   extends w
   implements u
 {
-  private final Class<?> NaF;
+  private final Class<?> NxL;
   
   public v(Class<?> paramClass)
   {
     AppMethodBeat.i(57503);
-    this.NaF = paramClass;
+    this.NxL = paramClass;
     AppMethodBeat.o(57503);
   }
   
-  public final h gld()
+  public final h gpF()
   {
     AppMethodBeat.i(57502);
-    if (p.i(this.NaF, Void.TYPE))
+    if (p.i(this.NxL, Void.TYPE))
     {
       AppMethodBeat.o(57502);
       return null;
     }
-    Object localObject = d.bcR(this.NaF.getName());
+    Object localObject = d.bev(this.NxL.getName());
     p.g(localObject, "JvmPrimitiveType.get(reflectType.name)");
-    localObject = ((d)localObject).gte();
+    localObject = ((d)localObject).gxG();
     AppMethodBeat.o(57502);
     return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.b.d.b.v
  * JD-Core Version:    0.7.0.1
  */

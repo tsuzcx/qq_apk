@@ -18,7 +18,7 @@ final class FavFilterUI$8
     b localb = new b();
     localb.bd(paramView);
     localb.bd(paramMotionEvent);
-    a.b("com/tencent/mm/plugin/fav/ui/FavFilterUI$5", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahq());
+    a.b("com/tencent/mm/plugin/fav/ui/FavFilterUI$5", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahF());
     switch (paramMotionEvent.getAction())
     {
     }
@@ -27,9 +27,9 @@ final class FavFilterUI$8
       a.a(false, this, "com/tencent/mm/plugin/fav/ui/FavFilterUI$5", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
       AppMethodBeat.o(106704);
       return false;
-      this.rwt.hideVKB();
-      FavFilterUI.c(this.rwt)[0] = ((int)paramMotionEvent.getRawX());
-      FavFilterUI.c(this.rwt)[1] = ((int)paramMotionEvent.getRawY());
+      this.rEF.hideVKB();
+      FavFilterUI.c(this.rEF)[0] = ((int)paramMotionEvent.getRawX());
+      FavFilterUI.c(this.rEF)[1] = ((int)paramMotionEvent.getRawY());
     }
   }
 }

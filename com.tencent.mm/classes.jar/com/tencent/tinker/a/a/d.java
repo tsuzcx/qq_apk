@@ -6,71 +6,71 @@ import com.tencent.tinker.a.a.b.e;
 public final class d
   extends s.a.a<d>
 {
-  public int McB;
-  public int[][] McC;
-  public int[][] McD;
-  public int[][] McE;
+  public int Mzw;
+  public int[][] Mzx;
+  public int[][] Mzy;
+  public int[][] Mzz;
   
   public d(int paramInt1, int paramInt2, int[][] paramArrayOfInt1, int[][] paramArrayOfInt2, int[][] paramArrayOfInt3)
   {
     super(paramInt1);
-    this.McB = paramInt2;
-    this.McC = paramArrayOfInt1;
-    this.McD = paramArrayOfInt2;
-    this.McE = paramArrayOfInt3;
+    this.Mzw = paramInt2;
+    this.Mzx = paramArrayOfInt1;
+    this.Mzy = paramArrayOfInt2;
+    this.Mzz = paramArrayOfInt3;
   }
   
   private int a(d paramd)
   {
     int k = 0;
-    if (this.McB != paramd.McB)
+    if (this.Mzw != paramd.Mzw)
     {
-      j = c.kY(this.McB, paramd.McB);
+      j = c.lf(this.Mzw, paramd.Mzw);
       return j;
     }
-    int n = this.McC.length;
-    int j = this.McD.length;
-    int m = this.McE.length;
-    int i = paramd.McC.length;
-    int i1 = paramd.McD.length;
-    int i2 = paramd.McE.length;
+    int n = this.Mzx.length;
+    int j = this.Mzy.length;
+    int m = this.Mzz.length;
+    int i = paramd.Mzx.length;
+    int i1 = paramd.Mzy.length;
+    int i2 = paramd.Mzz.length;
     if (n != i) {
-      return c.kZ(n, i);
+      return c.lg(n, i);
     }
     if (j != i1) {
-      return c.kZ(j, i1);
+      return c.lg(j, i1);
     }
     if (m != i2) {
-      return c.kZ(m, i2);
+      return c.lg(m, i2);
     }
     i = 0;
     int i3;
     while (i < n)
     {
-      i1 = this.McC[i][0];
-      i2 = this.McC[i][1];
-      i3 = paramd.McC[i][0];
-      int i4 = paramd.McC[i][1];
+      i1 = this.Mzx[i][0];
+      i2 = this.Mzx[i][1];
+      i3 = paramd.Mzx[i][0];
+      int i4 = paramd.Mzx[i][1];
       if (i1 != i3) {
-        return c.kY(i1, i3);
+        return c.lf(i1, i3);
       }
       if (i2 != i4) {
-        return c.kZ(i2, i4);
+        return c.lg(i2, i4);
       }
       i += 1;
     }
     i = 0;
     while (i < j)
     {
-      n = this.McD[i][0];
-      i1 = this.McD[i][1];
-      i2 = paramd.McD[i][0];
-      i3 = paramd.McD[i][1];
+      n = this.Mzy[i][0];
+      i1 = this.Mzy[i][1];
+      i2 = paramd.Mzy[i][0];
+      i3 = paramd.Mzy[i][1];
       if (n != i2) {
-        return c.kY(n, i2);
+        return c.lf(n, i2);
       }
       if (i1 != i3) {
-        return c.kZ(i1, i3);
+        return c.lg(i1, i3);
       }
       i += 1;
     }
@@ -81,15 +81,15 @@ public final class d
       if (i >= m) {
         break;
       }
-      j = this.McE[i][0];
-      n = this.McE[i][1];
-      i1 = paramd.McE[i][0];
-      i2 = paramd.McE[i][1];
+      j = this.Mzz[i][0];
+      n = this.Mzz[i][1];
+      i1 = paramd.Mzz[i][0];
+      i2 = paramd.Mzz[i][1];
       if (j != i1) {
-        return c.kY(j, i1);
+        return c.lf(j, i1);
       }
       if (n != i2) {
-        return c.kZ(n, i2);
+        return c.lg(n, i2);
       }
       i += 1;
     }
@@ -106,7 +106,7 @@ public final class d
   
   public final int hashCode()
   {
-    return e.hash(new Object[] { Integer.valueOf(this.McB), this.McC, this.McD, this.McE });
+    return e.hash(new Object[] { Integer.valueOf(this.Mzw), this.Mzx, this.Mzy, this.Mzz });
   }
 }
 

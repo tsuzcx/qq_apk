@@ -13,7 +13,7 @@ public abstract class SearchBarUI
   extends BaseActivity
   implements ag.a
 {
-  ag Jfs;
+  ag JAd;
   
   public void onClickBackBtn(View paramView)
   {
@@ -23,7 +23,7 @@ public abstract class SearchBarUI
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    paramBundle = BaseActivity.c.ITN;
+    paramBundle = BaseActivity.c.Jov;
     a("", new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -31,10 +31,10 @@ public abstract class SearchBarUI
         AppMethodBeat.i(159098);
         paramAnonymousMenuItem = SearchBarUI.this;
         paramAnonymousMenuItem.removeAllOptionMenu();
-        paramAnonymousMenuItem.Jfs = new ag(paramAnonymousMenuItem);
-        paramAnonymousMenuItem.Jfs.setSearchViewListener(paramAnonymousMenuItem);
-        paramAnonymousMenuItem.Jfs.setHint(paramAnonymousMenuItem.getResources().getString(2131764545));
-        paramAnonymousMenuItem.getSupportActionBar().setCustomView(paramAnonymousMenuItem.Jfs);
+        paramAnonymousMenuItem.JAd = new ag(paramAnonymousMenuItem);
+        paramAnonymousMenuItem.JAd.setSearchViewListener(paramAnonymousMenuItem);
+        paramAnonymousMenuItem.JAd.setHint(paramAnonymousMenuItem.getResources().getString(2131764545));
+        paramAnonymousMenuItem.getSupportActionBar().setCustomView(paramAnonymousMenuItem.JAd);
         SearchBarUI.showVKB(paramAnonymousMenuItem);
         AppMethodBeat.o(159098);
         return false;

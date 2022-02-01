@@ -3,10 +3,10 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class fv
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public int Fye;
-  public String Fyf;
+  public int FQC;
+  public String FQD;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -14,19 +14,19 @@ public final class fv
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aS(1, this.Fye);
-      if (this.Fyf != null) {
-        paramVarArgs.d(2, this.Fyf);
+      paramVarArgs.aS(1, this.FQC);
+      if (this.FQD != null) {
+        paramVarArgs.d(2, this.FQD);
       }
       AppMethodBeat.o(123542);
       return 0;
     }
     if (paramInt == 1)
     {
-      int i = f.a.a.b.b.a.bz(1, this.Fye) + 0;
+      int i = f.a.a.b.b.a.bz(1, this.FQC) + 0;
       paramInt = i;
-      if (this.Fyf != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.Fyf);
+      if (this.FQD != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.FQD);
       }
       AppMethodBeat.o(123542);
       return paramInt;
@@ -34,9 +34,9 @@ public final class fv
     if (paramInt == 2)
     {
       paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gxE();
+          paramVarArgs.gCg();
         }
       }
       AppMethodBeat.o(123542);
@@ -52,11 +52,11 @@ public final class fv
         AppMethodBeat.o(123542);
         return -1;
       case 1: 
-        localfv.Fye = locala.NPN.zc();
+        localfv.FQC = locala.OmT.zc();
         AppMethodBeat.o(123542);
         return 0;
       }
-      localfv.Fyf = locala.NPN.readString();
+      localfv.FQD = locala.OmT.readString();
       AppMethodBeat.o(123542);
       return 0;
     }

@@ -2,12 +2,12 @@ package com.tencent.mm.plugin.wenote.model.a;
 
 public final class r
 {
-  public String EzP;
-  public String EzQ;
-  public String EzR;
-  public int dyB;
-  public float dyz;
-  public float ibC;
+  public String ESl;
+  public String ESm;
+  public String ESn;
+  public float dzE;
+  public int dzG;
+  public float iev;
 }
 
 

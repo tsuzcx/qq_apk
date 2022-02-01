@@ -1,26 +1,26 @@
 package com.tencent.mm.plugin.messenger.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.j;
-import com.tencent.mm.ak.p;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.n;
+import com.tencent.mm.aj.i;
+import com.tencent.mm.aj.j;
+import com.tencent.mm.aj.p;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
 import com.tencent.mm.platformtools.z;
 import com.tencent.mm.plugin.c.a;
-import com.tencent.mm.protocal.protobuf.cwt;
-import com.tencent.mm.protocal.protobuf.cya;
-import com.tencent.mm.protocal.protobuf.cyb;
-import com.tencent.mm.protocal.protobuf.cyc;
-import com.tencent.mm.protocal.protobuf.cyp;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.cxn;
+import com.tencent.mm.protocal.protobuf.cyu;
+import com.tencent.mm.protocal.protobuf.cyv;
+import com.tencent.mm.protocal.protobuf.cyw;
+import com.tencent.mm.protocal.protobuf.czj;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.storage.g;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -29,9 +29,9 @@ public final class f
   extends n
   implements k
 {
-  private com.tencent.mm.al.f callback;
+  private com.tencent.mm.ak.f callback;
   public final b rr;
-  public final boolean vJe;
+  public final boolean vVi;
   
   public f(String paramString)
   {
@@ -51,41 +51,41 @@ public final class f
   public f(String paramString, int paramInt1, int paramInt2, boolean paramBoolean)
   {
     AppMethodBeat.i(94802);
-    this.vJe = paramBoolean;
+    this.vVi = paramBoolean;
     Object localObject = new b.a();
-    ((b.a)localObject).hNM = new cyb();
-    ((b.a)localObject).hNN = new cyc();
+    ((b.a)localObject).hQF = new cyv();
+    ((b.a)localObject).hQG = new cyw();
     ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/searchcontact";
     ((b.a)localObject).funcId = 106;
-    ((b.a)localObject).hNO = 34;
+    ((b.a)localObject).hQH = 34;
     ((b.a)localObject).respCmdId = 1000000034;
-    this.rr = ((b.a)localObject).aDC();
-    ad.d("MicroMsg.NetSceneSearchContact", "search username [%s], scene [%s]", new Object[] { paramString, Integer.valueOf(paramInt2) });
-    localObject = (cyb)this.rr.hNK.hNQ;
-    ((cyb)localObject).GbY = new cwt().aPy(paramString);
-    ((cyb)localObject).Hfd = paramInt1;
-    ((cyb)localObject).Hpo = paramInt2;
+    this.rr = ((b.a)localObject).aDS();
+    ae.d("MicroMsg.NetSceneSearchContact", "search username [%s], scene [%s]", new Object[] { paramString, Integer.valueOf(paramInt2) });
+    localObject = (cyv)this.rr.hQD.hQJ;
+    ((cyv)localObject).GuF = new cxn().aQV(paramString);
+    ((cyv)localObject).HyD = paramInt1;
+    ((cyv)localObject).HIQ = paramInt2;
     AppMethodBeat.o(94802);
   }
   
-  public final cyc dlC()
+  public final cyw doB()
   {
     AppMethodBeat.i(94805);
-    cyc localcyc = (cyc)this.rr.hNL.hNQ;
-    if (localcyc != null)
+    cyw localcyw = (cyw)this.rr.hQE.hQJ;
+    if (localcyw != null)
     {
-      Iterator localIterator = localcyc.GwV.iterator();
+      Iterator localIterator = localcyw.GQv.iterator();
       while (localIterator.hasNext())
       {
-        cya localcya = (cya)localIterator.next();
-        a.aVi().azR().lU(localcya.GbY.HoB, localcya.Guj);
+        cyu localcyu = (cyu)localIterator.next();
+        a.aVH().aAh().mb(localcyu.GuF.HId, localcyu.GNI);
       }
     }
     AppMethodBeat.o(94805);
-    return localcyc;
+    return localcyw;
   }
   
-  public final int doScene(e parame, com.tencent.mm.al.f paramf)
+  public final int doScene(e parame, com.tencent.mm.ak.f paramf)
   {
     AppMethodBeat.i(94803);
     this.callback = paramf;
@@ -102,54 +102,54 @@ public final class f
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(94804);
-    paramq = (cyc)this.rr.hNL.hNQ;
-    if ((paramq != null) && (paramq.GwU > 0)) {
-      paramArrayOfByte = paramq.GwV.iterator();
+    paramq = (cyw)this.rr.hQE.hQJ;
+    if ((paramq != null) && (paramq.GQu > 0)) {
+      paramArrayOfByte = paramq.GQv.iterator();
     }
     Object localObject;
     while (paramArrayOfByte.hasNext())
     {
-      localObject = (cya)paramArrayOfByte.next();
-      ad.d("MicroMsg.NetSceneSearchContact", "search RES username [%s]", new Object[] { ((cya)localObject).GbY });
+      localObject = (cyu)paramArrayOfByte.next();
+      ae.d("MicroMsg.NetSceneSearchContact", "search RES username [%s]", new Object[] { ((cyu)localObject).GuF });
       i locali = new i();
-      locali.username = z.a(((cya)localObject).GbY);
-      locali.hMX = ((cya)localObject).FVo;
-      locali.hMW = ((cya)localObject).FVp;
-      locali.dDp = -1;
-      ad.d("MicroMsg.NetSceneSearchContact", "dkhurl search %s b[%s] s[%s]", new Object[] { locali.getUsername(), locali.aEq(), locali.aEr() });
-      locali.ePj = 3;
-      locali.eB(true);
-      p.aEx().b(locali);
+      locali.username = z.a(((cyu)localObject).GuF);
+      locali.hPQ = ((cyu)localObject).GnN;
+      locali.hPP = ((cyu)localObject).GnO;
+      locali.dEu = -1;
+      ae.d("MicroMsg.NetSceneSearchContact", "dkhurl search %s b[%s] s[%s]", new Object[] { locali.getUsername(), locali.aEG(), locali.aEH() });
+      locali.eQU = 3;
+      locali.eD(true);
+      p.aEN().b(locali);
       continue;
-      if ((paramq != null) && (!bt.isNullOrNil(z.a(paramq.GbY))))
+      if ((paramq != null) && (!bu.isNullOrNil(z.a(paramq.GuF))))
       {
-        paramArrayOfByte = z.a(paramq.GbY);
+        paramArrayOfByte = z.a(paramq.GuF);
         localObject = new i();
         ((i)localObject).username = paramArrayOfByte;
-        ((i)localObject).hMX = paramq.FVo;
-        ((i)localObject).hMW = paramq.FVp;
-        ((i)localObject).dDp = -1;
-        ad.d("MicroMsg.NetSceneSearchContact", "dkhurl search %s b[%s] s[%s]", new Object[] { ((i)localObject).getUsername(), ((i)localObject).aEq(), ((i)localObject).aEr() });
-        ((i)localObject).ePj = 3;
-        ((i)localObject).eB(true);
-        p.aEx().b((i)localObject);
+        ((i)localObject).hPQ = paramq.GnN;
+        ((i)localObject).hPP = paramq.GnO;
+        ((i)localObject).dEu = -1;
+        ae.d("MicroMsg.NetSceneSearchContact", "dkhurl search %s b[%s] s[%s]", new Object[] { ((i)localObject).getUsername(), ((i)localObject).aEG(), ((i)localObject).aEH() });
+        ((i)localObject).eQU = 3;
+        ((i)localObject).eD(true);
+        p.aEN().b((i)localObject);
       }
     }
     if (paramq != null)
     {
-      paramq = paramq.Hpt.iterator();
+      paramq = paramq.HIV.iterator();
       while (paramq.hasNext())
       {
-        paramArrayOfByte = (cyp)paramq.next();
+        paramArrayOfByte = (czj)paramq.next();
         localObject = new i();
-        ((i)localObject).username = paramArrayOfByte.nDo;
-        ((i)localObject).hMX = paramArrayOfByte.FVo;
-        ((i)localObject).hMW = paramArrayOfByte.FVp;
-        ((i)localObject).dDp = -1;
-        ad.d("MicroMsg.NetSceneSearchContact", "dkhurl search %s b[%s] s[%s]", new Object[] { ((i)localObject).getUsername(), ((i)localObject).aEq(), ((i)localObject).aEr() });
-        ((i)localObject).ePj = 3;
-        ((i)localObject).eB(true);
-        p.aEx().b((i)localObject);
+        ((i)localObject).username = paramArrayOfByte.nIJ;
+        ((i)localObject).hPQ = paramArrayOfByte.GnN;
+        ((i)localObject).hPP = paramArrayOfByte.GnO;
+        ((i)localObject).dEu = -1;
+        ae.d("MicroMsg.NetSceneSearchContact", "dkhurl search %s b[%s] s[%s]", new Object[] { ((i)localObject).getUsername(), ((i)localObject).aEG(), ((i)localObject).aEH() });
+        ((i)localObject).eQU = 3;
+        ((i)localObject).eD(true);
+        p.aEN().b((i)localObject);
       }
     }
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);

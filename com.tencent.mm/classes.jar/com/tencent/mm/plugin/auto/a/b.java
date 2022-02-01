@@ -1,49 +1,29 @@
 package com.tencent.mm.plugin.auto.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.ax;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.storagebase.h.b;
-import java.util.HashMap;
+import com.tencent.mm.plugin.report.e;
+import d.l;
 
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/auto/model/AutoReportLogic;", "", "()V", "IDKey", "", "getIDKey", "()J", "reportIdKey", "", "action", "app_release"})
 public final class b
-  implements ax
 {
-  private a nso;
+  private static final long nxH = 1496L;
+  public static final b nxI;
   
-  public b()
+  static
   {
-    AppMethodBeat.i(21158);
-    this.nso = new a();
-    AppMethodBeat.o(21158);
+    AppMethodBeat.i(188243);
+    nxI = new b();
+    nxH = 1496L;
+    AppMethodBeat.o(188243);
   }
   
-  public final void clearPluginData(int paramInt) {}
-  
-  public final HashMap<Integer, h.b> getBaseDBFactories()
+  public static void tn(long paramLong)
   {
-    return null;
+    AppMethodBeat.i(188242);
+    e.ywz.idkeyStat(nxH, paramLong, 1L, false);
+    AppMethodBeat.o(188242);
   }
-  
-  public final void onAccountPostReset(boolean paramBoolean)
-  {
-    AppMethodBeat.i(21159);
-    ad.i("MicroMsg.auto.SubCoreAuto", "onAccountPostReset");
-    a locala = this.nso;
-    com.tencent.mm.sdk.b.a.IbL.c(locala.nsm);
-    AppMethodBeat.o(21159);
-  }
-  
-  public final void onAccountRelease()
-  {
-    AppMethodBeat.i(21160);
-    ad.i("MicroMsg.auto.SubCoreAuto", "onAccountRelease");
-    a locala = this.nso;
-    com.tencent.mm.sdk.b.a.IbL.d(locala.nsm);
-    AppMethodBeat.o(21160);
-  }
-  
-  public final void onSdcardMount(boolean paramBoolean) {}
 }
 
 

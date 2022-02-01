@@ -15,7 +15,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.MeasureSpec;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.security.InvalidParameterException;
 import java.text.DateFormatSymbols;
 import java.util.ArrayList;
@@ -28,51 +28,51 @@ import java.util.Locale;
 public final class c
   extends View
 {
-  protected static int fTQ = 32;
-  protected static int fTR;
-  protected static int fTS = 1;
-  protected static int fTT;
-  protected static int fTU = 10;
-  protected static int fTV;
-  protected static int fTW;
-  protected static int fTX;
-  Collection<com.tencent.mm.chatroom.d.a> fNH;
-  protected Paint fTY;
-  protected Paint fTZ;
-  protected Boolean fUA;
-  protected int fUB;
-  protected int fUC;
-  final Time fUD;
-  private final Calendar fUE;
-  private final Boolean fUF;
-  private DateFormatSymbols fUG;
-  private a fUH;
-  protected Paint fUa;
-  protected Paint fUb;
-  protected Paint fUc;
-  protected int fUd;
-  protected int fUe;
-  protected int fUf;
-  protected int fUg;
-  protected int fUh;
-  protected int fUi;
-  protected int fUj;
-  protected int fUk;
-  protected int fUl;
-  private final StringBuilder fUm;
-  protected boolean fUn;
-  protected boolean fUo;
-  protected int fUp;
-  protected int fUq;
-  protected int fUr;
-  protected int fUs;
-  protected int fUt;
-  protected int fUu;
-  protected int fUv;
-  protected int fUw;
-  protected int fUx;
-  protected int fUy;
-  private int fUz;
+  protected static int fVW = 32;
+  protected static int fVX;
+  protected static int fVY = 1;
+  protected static int fVZ;
+  protected static int fWa = 10;
+  protected static int fWb;
+  protected static int fWc;
+  protected static int fWd;
+  Collection<com.tencent.mm.chatroom.d.a> fPO;
+  protected int fWA;
+  protected int fWB;
+  protected int fWC;
+  protected int fWD;
+  protected int fWE;
+  private int fWF;
+  protected Boolean fWG;
+  protected int fWH;
+  protected int fWI;
+  final Time fWJ;
+  private final Calendar fWK;
+  private final Boolean fWL;
+  private DateFormatSymbols fWM;
+  private a fWN;
+  protected Paint fWe;
+  protected Paint fWf;
+  protected Paint fWg;
+  protected Paint fWh;
+  protected Paint fWi;
+  protected int fWj;
+  protected int fWk;
+  protected int fWl;
+  protected int fWm;
+  protected int fWn;
+  protected int fWo;
+  protected int fWp;
+  protected int fWq;
+  protected int fWr;
+  private final StringBuilder fWs;
+  protected boolean fWt;
+  protected boolean fWu;
+  protected int fWv;
+  protected int fWw;
+  protected int fWx;
+  protected int fWy;
+  protected int fWz;
   private final Calendar mCalendar;
   private Context mContext;
   protected int mMonth;
@@ -86,90 +86,90 @@ public final class c
     super(paramContext);
     AppMethodBeat.i(12992);
     this.mPadding = 80;
-    this.fUn = false;
-    this.fUo = false;
-    this.fUp = -1;
-    this.fUq = -1;
-    this.fUr = -1;
-    this.fUs = -1;
-    this.fUt = -1;
-    this.fUu = -1;
-    this.fUv = -1;
-    this.fUw = 1;
-    this.fUx = 7;
-    this.fUy = this.fUx;
-    this.fUz = 0;
-    this.fUB = fTQ;
-    this.fUC = 0;
+    this.fWt = false;
+    this.fWu = false;
+    this.fWv = -1;
+    this.fWw = -1;
+    this.fWx = -1;
+    this.fWy = -1;
+    this.fWz = -1;
+    this.fWA = -1;
+    this.fWB = -1;
+    this.fWC = 1;
+    this.fWD = 7;
+    this.fWE = this.fWD;
+    this.fWF = 0;
+    this.fWH = fVW;
+    this.fWI = 0;
     this.mNumRows = 6;
-    this.fUG = new DateFormatSymbols();
-    this.fNH = new ArrayList();
+    this.fWM = new DateFormatSymbols();
+    this.fPO = new ArrayList();
     this.mContext = paramContext;
     paramContext = paramContext.getResources();
-    this.fUE = Calendar.getInstance();
+    this.fWK = Calendar.getInstance();
     this.mCalendar = Calendar.getInstance();
-    this.fUD = new Time(Time.getCurrentTimezone());
-    this.fUD.setToNow();
-    this.fUd = paramTypedArray.getColor(2, paramContext.getColor(2131100708));
-    this.fUe = paramTypedArray.getColor(5, paramContext.getColor(2131100708));
-    this.fUf = paramTypedArray.getColor(3, paramContext.getColor(2131100708));
-    this.fUg = paramTypedArray.getColor(3, paramContext.getColor(2131100709));
-    this.fUh = paramTypedArray.getColor(6, paramContext.getColor(2131100708));
-    this.fUj = paramTypedArray.getColor(7, paramContext.getColor(2131100708));
-    this.fUk = paramTypedArray.getColor(4, paramContext.getColor(2131100618));
-    this.fUl = paramTypedArray.getColor(8, paramContext.getColor(2131100847));
-    this.fUi = paramTypedArray.getColor(9, paramContext.getColor(2131100848));
-    this.fUA = Boolean.valueOf(paramTypedArray.getBoolean(11, false));
-    this.fUm = new StringBuilder(50);
-    fTT = paramTypedArray.getDimensionPixelSize(18, paramContext.getDimensionPixelSize(2131166909));
-    fTX = paramTypedArray.getDimensionPixelSize(20, paramContext.getDimensionPixelSize(2131166911));
-    fTV = paramTypedArray.getDimensionPixelSize(19, paramContext.getDimensionPixelSize(2131166910));
-    fTW = paramTypedArray.getDimensionPixelOffset(14, paramContext.getDimensionPixelOffset(2131166415));
-    fTR = paramTypedArray.getDimensionPixelSize(17, paramContext.getDimensionPixelOffset(2131166779));
-    this.fUB = ((paramTypedArray.getDimensionPixelSize(0, paramContext.getDimensionPixelOffset(2131165948)) - fTW) / 6);
-    this.fUC = paramTypedArray.getDimensionPixelSize(1, paramContext.getDimensionPixelOffset(2131166005));
-    this.fUF = Boolean.valueOf(paramTypedArray.getBoolean(12, true));
-    this.fUb = new Paint();
-    this.fUb.setAntiAlias(true);
-    this.fUb.setTextSize(fTX);
-    this.fUb.setTypeface(Typeface.create(Typeface.SANS_SERIF, 0));
-    this.fUb.setColor(this.fUg);
-    this.fUb.setTextAlign(Paint.Align.LEFT);
-    this.fUb.setStyle(Paint.Style.FILL);
-    this.fUa = new Paint();
-    this.fUa.setFakeBoldText(true);
-    this.fUa.setAntiAlias(true);
-    this.fUa.setColor(this.fUi);
-    this.fUa.setTextAlign(Paint.Align.CENTER);
-    this.fUa.setStyle(Paint.Style.FILL);
-    this.fUc = new Paint();
-    this.fUc.setFakeBoldText(true);
-    this.fUc.setAntiAlias(true);
-    this.fUc.setColor(this.fUl);
-    this.fUc.setTextAlign(Paint.Align.CENTER);
-    this.fUc.setStyle(Paint.Style.FILL);
-    this.fTY = new Paint();
-    this.fTY.setAntiAlias(true);
-    this.fTY.setTextSize(fTV);
-    this.fTY.setColor(this.fUg);
-    this.fTY.setTypeface(Typeface.create(Typeface.SANS_SERIF, 0));
-    this.fTY.setStyle(Paint.Style.FILL);
-    this.fTY.setTextAlign(Paint.Align.CENTER);
-    this.fTY.setFakeBoldText(true);
-    this.fTZ = new Paint();
-    this.fTZ.setAntiAlias(true);
-    this.fTZ.setTextSize(fTT);
-    this.fTZ.setStyle(Paint.Style.FILL);
-    this.fTZ.setTextAlign(Paint.Align.CENTER);
-    this.fTZ.setFakeBoldText(false);
+    this.fWJ = new Time(Time.getCurrentTimezone());
+    this.fWJ.setToNow();
+    this.fWj = paramTypedArray.getColor(2, paramContext.getColor(2131100708));
+    this.fWk = paramTypedArray.getColor(5, paramContext.getColor(2131100708));
+    this.fWl = paramTypedArray.getColor(3, paramContext.getColor(2131100708));
+    this.fWm = paramTypedArray.getColor(3, paramContext.getColor(2131100709));
+    this.fWn = paramTypedArray.getColor(6, paramContext.getColor(2131100708));
+    this.fWp = paramTypedArray.getColor(7, paramContext.getColor(2131100708));
+    this.fWq = paramTypedArray.getColor(4, paramContext.getColor(2131100618));
+    this.fWr = paramTypedArray.getColor(8, paramContext.getColor(2131100847));
+    this.fWo = paramTypedArray.getColor(9, paramContext.getColor(2131100848));
+    this.fWG = Boolean.valueOf(paramTypedArray.getBoolean(11, false));
+    this.fWs = new StringBuilder(50);
+    fVZ = paramTypedArray.getDimensionPixelSize(18, paramContext.getDimensionPixelSize(2131166909));
+    fWd = paramTypedArray.getDimensionPixelSize(20, paramContext.getDimensionPixelSize(2131166911));
+    fWb = paramTypedArray.getDimensionPixelSize(19, paramContext.getDimensionPixelSize(2131166910));
+    fWc = paramTypedArray.getDimensionPixelOffset(14, paramContext.getDimensionPixelOffset(2131166415));
+    fVX = paramTypedArray.getDimensionPixelSize(17, paramContext.getDimensionPixelOffset(2131166779));
+    this.fWH = ((paramTypedArray.getDimensionPixelSize(0, paramContext.getDimensionPixelOffset(2131165948)) - fWc) / 6);
+    this.fWI = paramTypedArray.getDimensionPixelSize(1, paramContext.getDimensionPixelOffset(2131166005));
+    this.fWL = Boolean.valueOf(paramTypedArray.getBoolean(12, true));
+    this.fWh = new Paint();
+    this.fWh.setAntiAlias(true);
+    this.fWh.setTextSize(fWd);
+    this.fWh.setTypeface(Typeface.create(Typeface.SANS_SERIF, 0));
+    this.fWh.setColor(this.fWm);
+    this.fWh.setTextAlign(Paint.Align.LEFT);
+    this.fWh.setStyle(Paint.Style.FILL);
+    this.fWg = new Paint();
+    this.fWg.setFakeBoldText(true);
+    this.fWg.setAntiAlias(true);
+    this.fWg.setColor(this.fWo);
+    this.fWg.setTextAlign(Paint.Align.CENTER);
+    this.fWg.setStyle(Paint.Style.FILL);
+    this.fWi = new Paint();
+    this.fWi.setFakeBoldText(true);
+    this.fWi.setAntiAlias(true);
+    this.fWi.setColor(this.fWr);
+    this.fWi.setTextAlign(Paint.Align.CENTER);
+    this.fWi.setStyle(Paint.Style.FILL);
+    this.fWe = new Paint();
+    this.fWe.setAntiAlias(true);
+    this.fWe.setTextSize(fWb);
+    this.fWe.setColor(this.fWm);
+    this.fWe.setTypeface(Typeface.create(Typeface.SANS_SERIF, 0));
+    this.fWe.setStyle(Paint.Style.FILL);
+    this.fWe.setTextAlign(Paint.Align.CENTER);
+    this.fWe.setFakeBoldText(true);
+    this.fWf = new Paint();
+    this.fWf.setAntiAlias(true);
+    this.fWf.setTextSize(fVZ);
+    this.fWf.setStyle(Paint.Style.FILL);
+    this.fWf.setTextAlign(Paint.Align.CENTER);
+    this.fWf.setFakeBoldText(false);
     AppMethodBeat.o(12992);
   }
   
-  private int Zw()
+  private int ZF()
   {
-    if (this.fUz < this.fUw) {}
-    for (int i = this.fUz + this.fUx;; i = this.fUz) {
-      return i - this.fUw;
+    if (this.fWF < this.fWC) {}
+    for (int i = this.fWF + this.fWD;; i = this.fWF) {
+      return i - this.fWC;
     }
   }
   
@@ -181,17 +181,17 @@ public final class c
   private void f(Canvas paramCanvas)
   {
     AppMethodBeat.i(12993);
-    int j = fTW;
-    int k = fTV / 2;
-    int m = (this.mWidth - this.mPadding * 2) / (this.fUx * 2);
+    int j = fWc;
+    int k = fWb / 2;
+    int m = (this.mWidth - this.mPadding * 2) / (this.fWD * 2);
     int i = 0;
-    while (i < this.fUx)
+    while (i < this.fWD)
     {
-      int n = this.fUw;
-      int i1 = this.fUx;
+      int n = this.fWC;
+      int i1 = this.fWD;
       int i2 = this.mPadding;
-      this.fUE.set(7, (n + i) % i1);
-      paramCanvas.drawText(this.fUG.getShortWeekdays()[this.fUE.get(7)].toUpperCase(Locale.getDefault()), (i * 2 + 1) * m + i2, j - k, this.fTY);
+      this.fWK.set(7, (n + i) % i1);
+      paramCanvas.drawText(this.fWM.getShortWeekdays()[this.fWK.get(7)].toUpperCase(Locale.getDefault()), (i * 2 + 1) * m + i2, j - k, this.fWe);
       i += 1;
     }
     AppMethodBeat.o(12993);
@@ -200,81 +200,81 @@ public final class c
   private void g(Canvas paramCanvas)
   {
     AppMethodBeat.i(12995);
-    int j = (this.fUB + fTT) / 2 - fTS + fTW;
-    int i1 = (this.mWidth - this.mPadding * 2) / (this.fUx * 2);
-    int i = Zw();
+    int j = (this.fWH + fVZ) / 2 - fVY + fWc;
+    int i1 = (this.mWidth - this.mPadding * 2) / (this.fWD * 2);
+    int i = ZF();
     int k = 1;
-    while ((k <= this.fUy) && ((k <= this.fUv) || (-1 == this.fUv)))
+    while ((k <= this.fWE) && ((k <= this.fWB) || (-1 == this.fWB)))
     {
       int m = this.mPadding + (i * 2 + 1) * i1;
-      if (((this.mMonth == this.fUr) && (this.fUp == k) && (this.fUt == this.mYear)) || ((this.mMonth == this.fUs) && (this.fUq == k) && (this.fUu == this.mYear)) || ((this.fUn) && (this.fUv == k) && (this.fUp == -1)))
+      if (((this.mMonth == this.fWx) && (this.fWv == k) && (this.fWz == this.mYear)) || ((this.mMonth == this.fWy) && (this.fWw == k) && (this.fWA == this.mYear)) || ((this.fWt) && (this.fWB == k) && (this.fWv == -1)))
       {
-        if (!this.fUA.booleanValue()) {
+        if (!this.fWG.booleanValue()) {
           break label1369;
         }
-        paramCanvas.drawRoundRect(new RectF(m - fTR, j - fTT / 3 - fTR, fTR + m, j - fTT / 3 + fTR), 10.0F, 10.0F, this.fUc);
+        paramCanvas.drawRoundRect(new RectF(m - fVX, j - fVZ / 3 - fVX, fVX + m, j - fVZ / 3 + fVX), 10.0F, 10.0F, this.fWi);
       }
       for (;;)
       {
-        if ((this.fUn) && (this.fUv == k) && (this.fUp == -1))
+        if ((this.fWt) && (this.fWB == k) && (this.fWv == -1))
         {
-          this.fTZ.setColor(this.fUl);
-          this.fTZ.setTypeface(Typeface.defaultFromStyle(0));
-          this.fTZ.setTextSize(30.0F);
-          paramCanvas.drawText(this.mContext.getResources().getString(2131764448), m, j + 12 + fTR, this.fTZ);
+          this.fWf.setColor(this.fWr);
+          this.fWf.setTypeface(Typeface.defaultFromStyle(0));
+          this.fWf.setTextSize(30.0F);
+          paramCanvas.drawText(this.mContext.getResources().getString(2131764448), m, j + 12 + fVX, this.fWf);
         }
-        this.fTZ.setTextSize(fTT);
-        if ((!this.fUn) || (this.fUv != k))
+        this.fWf.setTextSize(fVZ);
+        if ((!this.fWt) || (this.fWB != k))
         {
-          this.fTZ.setColor(this.fUh);
-          this.fTZ.setTypeface(Typeface.defaultFromStyle(0));
+          this.fWf.setColor(this.fWn);
+          this.fWf.setTypeface(Typeface.defaultFromStyle(0));
         }
-        if ((this.fUp != -1) && (this.fUq != -1) && (this.fUt == this.fUu) && (this.fUr == this.fUs) && (this.fUp == this.fUq) && (k == this.fUp) && (this.mMonth == this.fUr) && (this.mYear == this.fUt)) {
-          this.fTZ.setColor(this.fUl);
+        if ((this.fWv != -1) && (this.fWw != -1) && (this.fWz == this.fWA) && (this.fWx == this.fWy) && (this.fWv == this.fWw) && (k == this.fWv) && (this.mMonth == this.fWx) && (this.mYear == this.fWz)) {
+          this.fWf.setColor(this.fWr);
         }
-        if ((this.fUp != -1) && (this.fUq != -1) && (this.fUt == this.fUu) && (this.fUt == this.mYear) && (((this.mMonth == this.fUr) && (this.fUs == this.fUr) && (((this.fUp < this.fUq) && (k > this.fUp) && (k < this.fUq)) || ((this.fUp > this.fUq) && (k < this.fUp) && (k > this.fUq)))) || ((this.fUr < this.fUs) && (this.mMonth == this.fUr) && (k > this.fUp)) || ((this.fUr < this.fUs) && (this.mMonth == this.fUs) && (k < this.fUq)) || ((this.fUr > this.fUs) && (this.mMonth == this.fUr) && (k < this.fUp)) || ((this.fUr > this.fUs) && (this.mMonth == this.fUs) && (k > this.fUq)))) {
-          this.fTZ.setColor(this.fUl);
+        if ((this.fWv != -1) && (this.fWw != -1) && (this.fWz == this.fWA) && (this.fWz == this.mYear) && (((this.mMonth == this.fWx) && (this.fWy == this.fWx) && (((this.fWv < this.fWw) && (k > this.fWv) && (k < this.fWw)) || ((this.fWv > this.fWw) && (k < this.fWv) && (k > this.fWw)))) || ((this.fWx < this.fWy) && (this.mMonth == this.fWx) && (k > this.fWv)) || ((this.fWx < this.fWy) && (this.mMonth == this.fWy) && (k < this.fWw)) || ((this.fWx > this.fWy) && (this.mMonth == this.fWx) && (k < this.fWv)) || ((this.fWx > this.fWy) && (this.mMonth == this.fWy) && (k > this.fWw)))) {
+          this.fWf.setColor(this.fWr);
         }
-        if ((this.fUp != -1) && (this.fUq != -1) && (this.fUt != this.fUu) && (((this.fUt == this.mYear) && (this.mMonth == this.fUr)) || ((this.fUu == this.mYear) && (this.mMonth == this.fUs) && (((this.fUr < this.fUs) && (this.mMonth == this.fUr) && (k < this.fUp)) || ((this.fUr < this.fUs) && (this.mMonth == this.fUs) && (k > this.fUq)) || ((this.fUr > this.fUs) && (this.mMonth == this.fUr) && (k > this.fUp)) || ((this.fUr > this.fUs) && (this.mMonth == this.fUs) && (k < this.fUq)))))) {
-          this.fTZ.setColor(this.fUl);
+        if ((this.fWv != -1) && (this.fWw != -1) && (this.fWz != this.fWA) && (((this.fWz == this.mYear) && (this.mMonth == this.fWx)) || ((this.fWA == this.mYear) && (this.mMonth == this.fWy) && (((this.fWx < this.fWy) && (this.mMonth == this.fWx) && (k < this.fWv)) || ((this.fWx < this.fWy) && (this.mMonth == this.fWy) && (k > this.fWw)) || ((this.fWx > this.fWy) && (this.mMonth == this.fWx) && (k > this.fWv)) || ((this.fWx > this.fWy) && (this.mMonth == this.fWy) && (k < this.fWw)))))) {
+          this.fWf.setColor(this.fWr);
         }
-        if ((this.fUp != -1) && (this.fUq != -1) && (this.fUt == this.fUu) && (this.mYear == this.fUt) && (((this.mMonth > this.fUr) && (this.mMonth < this.fUs) && (this.fUr < this.fUs)) || ((this.mMonth < this.fUr) && (this.mMonth > this.fUs) && (this.fUr > this.fUs)))) {
-          this.fTZ.setColor(this.fUl);
+        if ((this.fWv != -1) && (this.fWw != -1) && (this.fWz == this.fWA) && (this.mYear == this.fWz) && (((this.mMonth > this.fWx) && (this.mMonth < this.fWy) && (this.fWx < this.fWy)) || ((this.mMonth < this.fWx) && (this.mMonth > this.fWy) && (this.fWx > this.fWy)))) {
+          this.fWf.setColor(this.fWr);
         }
-        if ((this.fUp != -1) && (this.fUq != -1) && (this.fUt != this.fUu) && (((this.fUt < this.fUu) && (((this.mMonth > this.fUr) && (this.mYear == this.fUt)) || ((this.mMonth < this.fUs) && (this.mYear == this.fUu)))) || ((this.fUt > this.fUu) && (((this.mMonth < this.fUr) && (this.mYear == this.fUt)) || ((this.mMonth > this.fUs) && (this.mYear == this.fUu)))))) {
-          this.fTZ.setColor(this.fUl);
+        if ((this.fWv != -1) && (this.fWw != -1) && (this.fWz != this.fWA) && (((this.fWz < this.fWA) && (((this.mMonth > this.fWx) && (this.mYear == this.fWz)) || ((this.mMonth < this.fWy) && (this.mYear == this.fWA)))) || ((this.fWz > this.fWA) && (((this.mMonth < this.fWx) && (this.mYear == this.fWz)) || ((this.mMonth > this.fWy) && (this.mYear == this.fWA)))))) {
+          this.fWf.setColor(this.fWr);
         }
-        if ((!this.fUF.booleanValue()) && (a(k, this.fUD)) && (this.fUD.month == this.mMonth) && (this.fUD.year == this.mYear))
+        if ((!this.fWL.booleanValue()) && (a(k, this.fWJ)) && (this.fWJ.month == this.mMonth) && (this.fWJ.year == this.mYear))
         {
-          this.fTZ.setColor(this.fUj);
-          this.fTZ.setTypeface(Typeface.defaultFromStyle(2));
+          this.fWf.setColor(this.fWp);
+          this.fWf.setTypeface(Typeface.defaultFromStyle(2));
         }
-        Iterator localIterator = this.fNH.iterator();
+        Iterator localIterator = this.fPO.iterator();
         while (localIterator.hasNext())
         {
           com.tencent.mm.chatroom.d.a locala = (com.tencent.mm.chatroom.d.a)localIterator.next();
-          if ((locala.fKG == k) && (locala.month == this.mMonth) && (locala.year == this.mYear))
+          if ((locala.fMJ == k) && (locala.month == this.mMonth) && (locala.year == this.mYear))
           {
-            this.fTZ.setColor(this.fUk);
-            this.fTZ.setTypeface(Typeface.defaultFromStyle(0));
+            this.fWf.setColor(this.fWq);
+            this.fWf.setTypeface(Typeface.defaultFromStyle(0));
           }
         }
         label1369:
-        paramCanvas.drawCircle(m, j - fTT / 3, fTR, this.fUc);
+        paramCanvas.drawCircle(m, j - fVZ / 3, fVX, this.fWi);
       }
-      if (((this.mMonth == this.fUr) && (this.fUp == k) && (this.fUt == this.mYear)) || ((this.mMonth == this.fUs) && (this.fUq == k) && (this.fUu == this.mYear)) || ((this.fUn) && (this.fUv == k) && (this.fUp == -1)))
+      if (((this.mMonth == this.fWx) && (this.fWv == k) && (this.fWz == this.mYear)) || ((this.mMonth == this.fWy) && (this.fWw == k) && (this.fWA == this.mYear)) || ((this.fWt) && (this.fWB == k) && (this.fWv == -1)))
       {
-        this.fTZ.setTypeface(Typeface.defaultFromStyle(0));
-        this.fTZ.setColor(-1);
+        this.fWf.setTypeface(Typeface.defaultFromStyle(0));
+        this.fWf.setColor(-1);
       }
-      paramCanvas.drawText(String.format("%d", new Object[] { Integer.valueOf(k) }), m, j, this.fTZ);
+      paramCanvas.drawText(String.format("%d", new Object[] { Integer.valueOf(k) }), m, j, this.fWf);
       int n = i + 1;
       i = n;
       m = j;
-      if (n == this.fUx)
+      if (n == this.fWD)
       {
         i = 0;
-        m = j + this.fUB;
+        m = j + this.fWH;
       }
       k += 1;
       j = m;
@@ -285,7 +285,7 @@ public final class c
   private String getMonthAndYearString()
   {
     AppMethodBeat.i(12994);
-    this.fUm.setLength(0);
+    this.fWs.setLength(0);
     long l = this.mCalendar.getTimeInMillis();
     String str = DateUtils.formatDateRange(getContext(), l, l, 52);
     AppMethodBeat.o(12994);
@@ -295,15 +295,15 @@ public final class c
   protected final void onDraw(Canvas paramCanvas)
   {
     AppMethodBeat.i(12996);
-    int i = (this.mWidth - this.mPadding * 2) / (this.fUx * 2);
+    int i = (this.mWidth - this.mPadding * 2) / (this.fWD * 2);
     int j = this.mPadding;
-    int k = fTX / 2;
-    int m = (fTW - fTX) / 2;
-    int n = fTX;
+    int k = fWd / 2;
+    int m = (fWc - fWd) / 2;
+    int n = fWd;
     StringBuilder localStringBuilder = new StringBuilder(getMonthAndYearString().toLowerCase());
     localStringBuilder.setCharAt(0, Character.toUpperCase(localStringBuilder.charAt(0)));
-    paramCanvas.drawText(localStringBuilder.toString(), i + j - k, m + n, this.fUb);
-    paramCanvas.drawLine(0.0F, fTW, this.mWidth, fTW + 1, this.fUb);
+    paramCanvas.drawText(localStringBuilder.toString(), i + j - k, m + n, this.fWh);
+    paramCanvas.drawLine(0.0F, fWc, this.mWidth, fWc + 1, this.fWh);
     f(paramCanvas);
     g(paramCanvas);
     AppMethodBeat.o(12996);
@@ -312,7 +312,7 @@ public final class c
   protected final void onMeasure(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(12997);
-    setMeasuredDimension(View.MeasureSpec.getSize(paramInt1), this.fUB * this.mNumRows + fTW + this.fUC);
+    setMeasuredDimension(View.MeasureSpec.getSize(paramInt1), this.fWH * this.mNumRows + fWc + this.fWI);
     AppMethodBeat.o(12997);
   }
   
@@ -339,14 +339,14 @@ public final class c
     }
     for (;;)
     {
-      if ((paramMotionEvent != null) && (this.fUH != null) && ((this.fUF.booleanValue()) || (paramMotionEvent.month != this.fUD.month) || (paramMotionEvent.year != this.fUD.year) || (paramMotionEvent.fKG >= this.fUD.monthDay))) {
-        this.fUH.b(paramMotionEvent);
+      if ((paramMotionEvent != null) && (this.fWN != null) && ((this.fWL.booleanValue()) || (paramMotionEvent.month != this.fWJ.month) || (paramMotionEvent.year != this.fWJ.year) || (paramMotionEvent.fMJ >= this.fWJ.monthDay))) {
+        this.fWN.b(paramMotionEvent);
       }
       AppMethodBeat.o(12998);
       return true;
       label136:
-      int j = (int)(f2 - fTW) / this.fUB;
-      i = (int)((f1 - i) * this.fUx / (this.mWidth - i - this.mPadding)) - Zw() + 1 + j * this.fUx;
+      int j = (int)(f2 - fWc) / this.fWH;
+      i = (int)((f1 - i) * this.fWD / (this.mWidth - i - this.mPadding)) - ZF() + 1 + j * this.fWD;
       if ((this.mMonth > 11) || (this.mMonth < 0) || (com.tencent.mm.chatroom.h.a.cp(this.mMonth, this.mYear) < i) || (i <= 0))
       {
         paramMotionEvent = null;
@@ -354,7 +354,7 @@ public final class c
       else
       {
         com.tencent.mm.chatroom.d.a locala = new com.tencent.mm.chatroom.d.a(this.mYear, this.mMonth, i);
-        Iterator localIterator = this.fNH.iterator();
+        Iterator localIterator = this.fPO.iterator();
         for (;;)
         {
           if (localIterator.hasNext())
@@ -375,11 +375,11 @@ public final class c
     AppMethodBeat.i(12999);
     if (paramCollection != null)
     {
-      this.fNH = paramCollection;
+      this.fPO = paramCollection;
       AppMethodBeat.o(12999);
       return;
     }
-    ad.e("MicroMsg.SimpleMonthView", "markDateList is null");
+    ae.e("MicroMsg.SimpleMonthView", "markDateList is null");
     AppMethodBeat.o(12999);
   }
   
@@ -396,48 +396,48 @@ public final class c
     setTag(paramHashMap);
     if (paramHashMap.containsKey("height"))
     {
-      this.fUB = ((Integer)paramHashMap.get("height")).intValue();
-      if (this.fUB < fTU) {
-        this.fUB = fTU;
+      this.fWH = ((Integer)paramHashMap.get("height")).intValue();
+      if (this.fWH < fWa) {
+        this.fWH = fWa;
       }
     }
     if (paramHashMap.containsKey("selected_begin_day")) {
-      this.fUp = ((Integer)paramHashMap.get("selected_begin_day")).intValue();
+      this.fWv = ((Integer)paramHashMap.get("selected_begin_day")).intValue();
     }
     if (paramHashMap.containsKey("selected_last_day")) {
-      this.fUq = ((Integer)paramHashMap.get("selected_last_day")).intValue();
+      this.fWw = ((Integer)paramHashMap.get("selected_last_day")).intValue();
     }
     if (paramHashMap.containsKey("selected_begin_month")) {
-      this.fUr = ((Integer)paramHashMap.get("selected_begin_month")).intValue();
+      this.fWx = ((Integer)paramHashMap.get("selected_begin_month")).intValue();
     }
     if (paramHashMap.containsKey("selected_last_month")) {
-      this.fUs = ((Integer)paramHashMap.get("selected_last_month")).intValue();
+      this.fWy = ((Integer)paramHashMap.get("selected_last_month")).intValue();
     }
     if (paramHashMap.containsKey("selected_begin_year")) {
-      this.fUt = ((Integer)paramHashMap.get("selected_begin_year")).intValue();
+      this.fWz = ((Integer)paramHashMap.get("selected_begin_year")).intValue();
     }
     if (paramHashMap.containsKey("selected_last_year")) {
-      this.fUu = ((Integer)paramHashMap.get("selected_last_year")).intValue();
+      this.fWA = ((Integer)paramHashMap.get("selected_last_year")).intValue();
     }
     this.mMonth = ((Integer)paramHashMap.get("month")).intValue();
     this.mYear = ((Integer)paramHashMap.get("year")).intValue();
-    this.fUn = false;
-    this.fUv = -1;
+    this.fWt = false;
+    this.fWB = -1;
     this.mCalendar.set(2, this.mMonth);
     this.mCalendar.set(1, this.mYear);
     this.mCalendar.set(5, 1);
-    this.fUz = this.mCalendar.get(7);
+    this.fWF = this.mCalendar.get(7);
     if (paramHashMap.containsKey("week_start"))
     {
-      this.fUw = ((Integer)paramHashMap.get("week_start")).intValue();
-      this.fUy = com.tencent.mm.chatroom.h.a.cp(this.mMonth, this.mYear);
+      this.fWC = ((Integer)paramHashMap.get("week_start")).intValue();
+      this.fWE = com.tencent.mm.chatroom.h.a.cp(this.mMonth, this.mYear);
       i = 0;
       label393:
-      if (i >= this.fUy) {
+      if (i >= this.fWE) {
         break label499;
       }
       m = i + 1;
-      paramHashMap = this.fUD;
+      paramHashMap = this.fWJ;
       if ((this.mYear != paramHashMap.year) || (this.mMonth != paramHashMap.month) || (m != paramHashMap.monthDay)) {
         break label494;
       }
@@ -447,20 +447,20 @@ public final class c
     {
       if (j != 0)
       {
-        this.fUn = true;
-        this.fUv = m;
+        this.fWt = true;
+        this.fWB = m;
       }
-      this.fUo = a(m, this.fUD);
+      this.fWu = a(m, this.fWJ);
       i += 1;
       break label393;
-      this.fUw = this.mCalendar.getFirstDayOfWeek();
+      this.fWC = this.mCalendar.getFirstDayOfWeek();
       break;
     }
     label499:
-    int m = Zw();
-    j = (this.fUy + m) / this.fUx;
+    int m = ZF();
+    j = (this.fWE + m) / this.fWD;
     int i = k;
-    if ((m + this.fUy) % this.fUx > 0) {
+    if ((m + this.fWE) % this.fWD > 0) {
       i = 1;
     }
     this.mNumRows = (j + i);
@@ -469,7 +469,7 @@ public final class c
   
   public final void setOnDayClickListener(a parama)
   {
-    this.fUH = parama;
+    this.fWN = parama;
   }
   
   public static abstract interface a

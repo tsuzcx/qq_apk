@@ -8,8 +8,8 @@ public final class c<E>
   extends a<E>
 {
   private static final Integer MAX_LOOK_AHEAD_STEP;
-  final AtomicLong OaL;
-  final AtomicLong OaM;
+  final AtomicLong OxQ;
+  final AtomicLong OxR;
   final int lookAheadStep;
   long producerLookAhead;
   
@@ -24,8 +24,8 @@ public final class c<E>
   {
     super(paramInt);
     AppMethodBeat.i(90185);
-    this.OaL = new AtomicLong();
-    this.OaM = new AtomicLong();
+    this.OxQ = new AtomicLong();
+    this.OxR = new AtomicLong();
     this.lookAheadStep = Math.min(paramInt / 4, MAX_LOOK_AHEAD_STEP.intValue());
     AppMethodBeat.o(90185);
   }
@@ -33,7 +33,7 @@ public final class c<E>
   public final boolean isEmpty()
   {
     AppMethodBeat.i(90190);
-    if (this.OaL.get() == this.OaM.get())
+    if (this.OxQ.get() == this.OxR.get())
     {
       AppMethodBeat.o(90190);
       return true;
@@ -51,9 +51,9 @@ public final class c<E>
       AppMethodBeat.o(90186);
       throw paramE;
     }
-    AtomicReferenceArray localAtomicReferenceArray = this.NLd;
+    AtomicReferenceArray localAtomicReferenceArray = this.Oij;
     int i = this.mask;
-    long l = this.OaL.get();
+    long l = this.OxQ.get();
     int j = (int)l & i;
     if (l >= this.producerLookAhead)
     {
@@ -67,7 +67,7 @@ public final class c<E>
     while (localAtomicReferenceArray.get(j) == null)
     {
       localAtomicReferenceArray.lazySet(j, paramE);
-      this.OaL.lazySet(1L + l);
+      this.OxQ.lazySet(1L + l);
       AppMethodBeat.o(90186);
       return true;
     }
@@ -78,7 +78,7 @@ public final class c<E>
   public final E peek()
   {
     AppMethodBeat.i(90188);
-    Object localObject = ama(FP(this.OaM.get()));
+    Object localObject = amK(Gr(this.OxR.get()));
     AppMethodBeat.o(90188);
     return localObject;
   }
@@ -86,9 +86,9 @@ public final class c<E>
   public final E poll()
   {
     AppMethodBeat.i(90187);
-    long l = this.OaM.get();
-    int i = FP(l);
-    AtomicReferenceArray localAtomicReferenceArray = this.NLd;
+    long l = this.OxR.get();
+    int i = Gr(l);
+    AtomicReferenceArray localAtomicReferenceArray = this.Oij;
     Object localObject = localAtomicReferenceArray.get(i);
     if (localObject == null)
     {
@@ -96,7 +96,7 @@ public final class c<E>
       return null;
     }
     localAtomicReferenceArray.lazySet(i, null);
-    this.OaM.lazySet(l + 1L);
+    this.OxR.lazySet(l + 1L);
     AppMethodBeat.o(90187);
     return localObject;
   }
@@ -105,10 +105,10 @@ public final class c<E>
   {
     AppMethodBeat.i(90189);
     long l2;
-    for (long l1 = this.OaM.get();; l1 = l2)
+    for (long l1 = this.OxR.get();; l1 = l2)
     {
-      long l3 = this.OaL.get();
-      l2 = this.OaM.get();
+      long l3 = this.OxQ.get();
+      l2 = this.OxR.get();
       if (l1 == l2)
       {
         int i = (int)(l3 - l2);

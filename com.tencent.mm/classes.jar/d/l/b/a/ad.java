@@ -7,7 +7,7 @@ import d.g.b.q;
 import d.l;
 import java.lang.reflect.Method;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"signature", "", "Ljava/lang/reflect/Method;", "getSignature", "(Ljava/lang/reflect/Method;)Ljava/lang/String;", "kotlin-reflection"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"signature", "", "Ljava/lang/reflect/Method;", "getSignature", "(Ljava/lang/reflect/Method;)Ljava/lang/String;", "kotlin-reflection"})
 public final class ad
 {
   static final String c(Method paramMethod)
@@ -16,7 +16,7 @@ public final class ad
     StringBuilder localStringBuilder = new StringBuilder().append(paramMethod.getName());
     Class[] arrayOfClass = paramMethod.getParameterTypes();
     p.g(arrayOfClass, "parameterTypes");
-    localStringBuilder = localStringBuilder.append(e.a(arrayOfClass, (CharSequence)"", (CharSequence)"(", (CharSequence)")", 0, null, (d.g.a.b)a.MOX, 24));
+    localStringBuilder = localStringBuilder.append(e.a(arrayOfClass, (CharSequence)"", (CharSequence)"(", (CharSequence)")", 0, null, (d.g.a.b)a.Nmc, 24));
     paramMethod = paramMethod.getReturnType();
     p.g(paramMethod, "returnType");
     paramMethod = d.l.b.a.b.b.d.b.b.bC(paramMethod);
@@ -24,17 +24,17 @@ public final class ad
     return paramMethod;
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Ljava/lang/Class;", "kotlin.jvm.PlatformType", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Ljava/lang/Class;", "kotlin.jvm.PlatformType", "invoke"})
   static final class a
     extends q
     implements d.g.a.b<Class<?>, String>
   {
-    public static final a MOX;
+    public static final a Nmc;
     
     static
     {
       AppMethodBeat.i(56552);
-      MOX = new a();
+      Nmc = new a();
       AppMethodBeat.o(56552);
     }
     
@@ -46,7 +46,7 @@ public final class ad
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.ad
  * JD-Core Version:    0.7.0.1
  */

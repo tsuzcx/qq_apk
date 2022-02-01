@@ -1,81 +1,76 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.LinkedList;
 
 public final class cio
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public long Hcv;
-  public String url;
-  public String xbO;
+  public LinkedList<cin> HuV;
+  
+  public cio()
+  {
+    AppMethodBeat.i(104826);
+    this.HuV = new LinkedList();
+    AppMethodBeat.o(104826);
+  }
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(72541);
+    AppMethodBeat.i(104827);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.xbO != null) {
-        paramVarArgs.d(1, this.xbO);
-      }
-      paramVarArgs.aY(2, this.Hcv);
-      if (this.url != null) {
-        paramVarArgs.d(3, this.url);
-      }
-      AppMethodBeat.o(72541);
+      ((f.a.a.c.a)paramVarArgs[0]).e(1, 8, this.HuV);
+      AppMethodBeat.o(104827);
       return 0;
     }
-    if (paramInt == 1) {
-      if (this.xbO == null) {
-        break label318;
-      }
-    }
-    label318:
-    for (paramInt = f.a.a.b.b.a.e(1, this.xbO) + 0;; paramInt = 0)
+    if (paramInt == 1)
     {
-      int i = paramInt + f.a.a.b.b.a.p(2, this.Hcv);
-      paramInt = i;
-      if (this.url != null) {
-        paramInt = i + f.a.a.b.b.a.e(3, this.url);
-      }
-      AppMethodBeat.o(72541);
-      return paramInt;
-      if (paramInt == 2)
-      {
-        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
-          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
-          }
-        }
-        AppMethodBeat.o(72541);
-        return 0;
-      }
-      if (paramInt == 3)
-      {
-        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
-        cio localcio = (cio)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
-        {
-        default: 
-          AppMethodBeat.o(72541);
-          return -1;
-        case 1: 
-          localcio.xbO = locala.NPN.readString();
-          AppMethodBeat.o(72541);
-          return 0;
-        case 2: 
-          localcio.Hcv = locala.NPN.zd();
-          AppMethodBeat.o(72541);
-          return 0;
-        }
-        localcio.url = locala.NPN.readString();
-        AppMethodBeat.o(72541);
-        return 0;
-      }
-      AppMethodBeat.o(72541);
-      return -1;
+      paramInt = f.a.a.a.c(1, 8, this.HuV);
+      AppMethodBeat.o(104827);
+      return paramInt + 0;
     }
+    if (paramInt == 2)
+    {
+      paramVarArgs = (byte[])paramVarArgs[0];
+      this.HuV.clear();
+      paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.gCg();
+        }
+      }
+      AppMethodBeat.o(104827);
+      return 0;
+    }
+    if (paramInt == 3)
+    {
+      Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
+      cio localcio = (cio)paramVarArgs[1];
+      paramInt = ((Integer)paramVarArgs[2]).intValue();
+      switch (paramInt)
+      {
+      default: 
+        AppMethodBeat.o(104827);
+        return -1;
+      }
+      paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
+      int i = paramVarArgs.size();
+      paramInt = 0;
+      while (paramInt < i)
+      {
+        Object localObject2 = (byte[])paramVarArgs.get(paramInt);
+        localObject1 = new cin();
+        localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
+        for (boolean bool = true; bool; bool = ((cin)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+        localcio.HuV.add(localObject1);
+        paramInt += 1;
+      }
+      AppMethodBeat.o(104827);
+      return 0;
+    }
+    AppMethodBeat.o(104827);
+    return -1;
   }
 }
 

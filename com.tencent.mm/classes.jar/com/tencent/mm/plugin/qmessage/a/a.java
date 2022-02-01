@@ -1,14 +1,14 @@
 package com.tencent.mm.plugin.qmessage.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bb.l;
+import com.tencent.mm.ba.l;
 import com.tencent.mm.g.a.ak;
 import com.tencent.mm.g.a.ak.a;
-import com.tencent.mm.model.ba;
-import com.tencent.mm.model.u;
+import com.tencent.mm.model.bc;
+import com.tencent.mm.model.v;
 import com.tencent.mm.plugin.messenger.foundation.a.a.j;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.storage.ai;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.storage.aj;
 
 final class a
   extends com.tencent.mm.sdk.b.c<ak>
@@ -25,20 +25,20 @@ final class a
     AppMethodBeat.i(27710);
     if (!(paramak instanceof ak))
     {
-      ad.f("MicroMsg.QMsg.EventListener", "not bind qq event");
+      ae.f("MicroMsg.QMsg.EventListener", "not bind qq event");
       AppMethodBeat.o(27710);
       return false;
     }
-    if (paramak.dkW.dkY == 0) {}
+    if (paramak.dlY.dma == 0) {}
     try
     {
-      int i = u.aAy() | 0x20;
-      ba.aBQ();
-      com.tencent.mm.model.c.ajl().set(34, Integer.valueOf(i));
-      ba.aBQ();
-      com.tencent.mm.model.c.azo().c(new l("", "", "", "", "", "", "", "", i, "", ""));
-      g.dBV();
-      ad.d("MicroMsg.QMsg.EventListener", "doClearQQOffLineMessageHelper succ ");
+      int i = v.aAO() | 0x20;
+      bc.aCg();
+      com.tencent.mm.model.c.ajA().set(34, Integer.valueOf(i));
+      bc.aCg();
+      com.tencent.mm.model.c.azE().d(new l("", "", "", "", "", "", "", "", i, "", ""));
+      g.dFm();
+      ae.d("MicroMsg.QMsg.EventListener", "doClearQQOffLineMessageHelper succ ");
       AppMethodBeat.o(27710);
       return false;
     }
@@ -46,7 +46,7 @@ final class a
     {
       for (;;)
       {
-        ad.printErrStackTrace("MicroMsg.QMsg.EventListener", paramak, "", new Object[0]);
+        ae.printErrStackTrace("MicroMsg.QMsg.EventListener", paramak, "", new Object[0]);
       }
     }
   }

@@ -8,47 +8,47 @@ import com.tencent.mm.pluginsdk.o.b;
 public final class h
   implements o.b
 {
-  public final int dOH()
+  public final int dSe()
   {
     AppMethodBeat.i(28136);
-    int i = m.dOP().bUJ();
+    int i = m.dSm().bVY();
     AppMethodBeat.o(28136);
     return i;
   }
   
-  public final void dOI()
+  public final void dSf()
   {
     AppMethodBeat.i(28137);
-    a.dOI();
+    a.dSf();
     AppMethodBeat.o(28137);
   }
   
-  public final boolean dOJ()
+  public final boolean dSg()
   {
     AppMethodBeat.i(28138);
-    boolean bool = a.dOJ();
+    boolean bool = a.dSg();
     AppMethodBeat.o(28138);
     return bool;
   }
   
-  public final void dOK()
+  public final void dSh()
   {
     AppMethodBeat.i(28139);
-    a.dOK();
+    a.dSh();
     AppMethodBeat.o(28139);
   }
   
-  public final void dOL()
+  public final void dSi()
   {
     AppMethodBeat.i(28140);
-    a.dOL();
+    a.dSi();
     AppMethodBeat.o(28140);
   }
   
-  public final boolean dOM()
+  public final boolean dSj()
   {
     AppMethodBeat.i(28141);
-    boolean bool = k.dOM();
+    boolean bool = k.dSj();
     AppMethodBeat.o(28141);
     return bool;
   }

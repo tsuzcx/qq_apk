@@ -4,7 +4,7 @@ import com.tencent.thumbplayer.b.k;
 
 final class d$e
 {
-  k[] Mcc;
+  k[] MyX;
 }
 
 

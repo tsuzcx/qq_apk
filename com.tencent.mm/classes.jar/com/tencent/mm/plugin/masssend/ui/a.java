@@ -7,21 +7,21 @@ import android.content.Intent;
 import android.os.Message;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.g.c.aw;
-import com.tencent.mm.model.ba;
+import com.tencent.mm.model.bc;
 import com.tencent.mm.model.c;
-import com.tencent.mm.model.u;
-import com.tencent.mm.model.w;
+import com.tencent.mm.model.v;
+import com.tencent.mm.model.x;
 import com.tencent.mm.plugin.masssend.a.b;
 import com.tencent.mm.plugin.messenger.foundation.a.a.j;
 import com.tencent.mm.pluginsdk.ui.preference.HelperHeaderPreference;
 import com.tencent.mm.sdk.e.n;
 import com.tencent.mm.sdk.e.n.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.am;
-import com.tencent.mm.storage.bq;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.aj;
+import com.tencent.mm.storage.an;
+import com.tencent.mm.storage.br;
 import com.tencent.mm.ui.base.p;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.base.preference.f;
@@ -35,46 +35,46 @@ import junit.framework.Assert;
 public final class a
   implements com.tencent.mm.pluginsdk.b.a, n.b
 {
-  private am contact;
+  private an contact;
   Context context;
-  private Map<String, Preference> jjH;
+  private Map<String, Preference> jmA;
   private f screen;
   
   public a(Context paramContext)
   {
     AppMethodBeat.i(26378);
-    this.jjH = new HashMap();
+    this.jmA = new HashMap();
     this.context = paramContext;
     AppMethodBeat.o(26378);
   }
   
-  private void cdo()
+  private void ceD()
   {
     boolean bool2 = true;
     AppMethodBeat.i(26382);
     boolean bool3 = isOpen();
-    Object localObject = (HelperHeaderPreference)this.screen.aVD("contact_info_masssend_header_helper");
-    ((HelperHeaderPreference)localObject).aZ(this.contact.field_username, this.contact.adv(), this.context.getString(2131757722));
+    Object localObject = (HelperHeaderPreference)this.screen.aXe("contact_info_masssend_header_helper");
+    ((HelperHeaderPreference)localObject).ba(this.contact.field_username, this.contact.adG(), this.context.getString(2131757722));
     int i;
     if (bool3)
     {
       i = 1;
       ((HelperHeaderPreference)localObject).updateStatus(i);
-      this.screen.cP("contact_info_masssend_install", bool3);
+      this.screen.cT("contact_info_masssend_install", bool3);
       localObject = this.screen;
       if (bool3) {
         break label168;
       }
       bool1 = true;
       label97:
-      ((f)localObject).cP("contact_info_masssend_view", bool1);
+      ((f)localObject).cT("contact_info_masssend_view", bool1);
       localObject = this.screen;
       if (bool3) {
         break label173;
       }
       bool1 = true;
       label121:
-      ((f)localObject).cP("contact_info_masssend_clear_data", bool1);
+      ((f)localObject).cT("contact_info_masssend_clear_data", bool1);
       localObject = this.screen;
       if (bool3) {
         break label178;
@@ -85,7 +85,7 @@ public final class a
     label178:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      ((f)localObject).cP("contact_info_masssend_uninstall", bool1);
+      ((f)localObject).cT("contact_info_masssend_uninstall", bool1);
       AppMethodBeat.o(26382);
       return;
       i = 0;
@@ -100,19 +100,19 @@ public final class a
   public static void clearData()
   {
     AppMethodBeat.i(26384);
-    b localb = com.tencent.mm.plugin.masssend.a.h.dkT();
-    if (localb.hHS.execSQL("massendinfo", "delete from massendinfo")) {
+    b localb = com.tencent.mm.plugin.masssend.a.h.dnT();
+    if (localb.hKK.execSQL("massendinfo", "delete from massendinfo")) {
       localb.doNotify();
     }
-    ba.aBQ();
-    c.azv().aTx("masssendapp");
+    bc.aCg();
+    c.azL().aUY("masssendapp");
     AppMethodBeat.o(26384);
   }
   
   private static boolean isOpen()
   {
     AppMethodBeat.i(26380);
-    if ((u.aAy() & 0x10000) == 0)
+    if ((v.aAO() & 0x10000) == 0)
     {
       AppMethodBeat.o(26380);
       return true;
@@ -129,26 +129,26 @@ public final class a
     {
       paramContext.getString(2131755906);
       paramContext = com.tencent.mm.ui.base.h.b(paramContext, (String)localObject, true, null);
-      localObject = new ap()
+      localObject = new aq()
       {
         public final void handleMessage(Message paramAnonymousMessage)
         {
           AppMethodBeat.i(26376);
-          int i = u.aAy();
-          if (this.prx) {
+          int i = v.aAO();
+          if (this.pyd) {
             i &= 0xFFFEFFFF;
           }
           for (;;)
           {
-            ba.aBQ();
-            c.ajl().set(34, Integer.valueOf(i));
-            ba.aBQ();
-            c.azo().c(new com.tencent.mm.bb.l("", "", "", "", "", "", "", "", i, "", ""));
-            if (!this.prx) {
+            bc.aCg();
+            c.ajA().set(34, Integer.valueOf(i));
+            bc.aCg();
+            c.azE().d(new com.tencent.mm.ba.l("", "", "", "", "", "", "", "", i, "", ""));
+            if (!this.pyd) {
               a.clearData();
             }
-            if (this.vHr != null) {
-              this.vHr.a(null, null);
+            if (this.vTv != null) {
+              this.vTv.a(null, null);
             }
             AppMethodBeat.o(26376);
             return;
@@ -161,10 +161,10 @@ public final class a
         public final void run()
         {
           AppMethodBeat.i(26377);
-          if (this.pgW != null)
+          if (this.pnC != null)
           {
-            this.pgW.dismiss();
-            this.uDu.sendEmptyMessage(0);
+            this.pnC.dismiss();
+            this.uOZ.sendEmptyMessage(0);
           }
           AppMethodBeat.o(26377);
         }
@@ -177,12 +177,12 @@ public final class a
   public final void a(int paramInt, n paramn, Object paramObject)
   {
     AppMethodBeat.i(26386);
-    int i = bt.m(paramObject, 0);
-    ad.d("MicroMsg.ContactWidgetMassSend", "onNotifyChange event:%d obj:%d stg:%s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i), paramn });
-    ba.aBQ();
-    if ((paramn != c.ajl()) || (i <= 0))
+    int i = bu.m(paramObject, 0);
+    ae.d("MicroMsg.ContactWidgetMassSend", "onNotifyChange event:%d obj:%d stg:%s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i), paramn });
+    bc.aCg();
+    if ((paramn != c.ajA()) || (i <= 0))
     {
-      ad.e("MicroMsg.ContactWidgetMassSend", "onNotifyChange error obj:%d stg:%s", new Object[] { Integer.valueOf(i), paramn });
+      ae.e("MicroMsg.ContactWidgetMassSend", "onNotifyChange error obj:%d stg:%s", new Object[] { Integer.valueOf(i), paramn });
       AppMethodBeat.o(26386);
       return;
     }
@@ -191,11 +191,11 @@ public final class a
       AppMethodBeat.o(26386);
       return;
     }
-    cdo();
+    ceD();
     AppMethodBeat.o(26386);
   }
   
-  public final boolean a(f paramf, am paramam, boolean paramBoolean, int paramInt)
+  public final boolean a(f paramf, an paraman, boolean paramBoolean, int paramInt)
   {
     boolean bool = false;
     AppMethodBeat.i(26381);
@@ -204,27 +204,27 @@ public final class a
     {
       Assert.assertTrue(paramBoolean);
       paramBoolean = bool;
-      if (paramam != null) {
+      if (paraman != null) {
         paramBoolean = true;
       }
       Assert.assertTrue(paramBoolean);
-      Assert.assertTrue(w.zN(paramam.field_username));
-      ba.aBQ();
-      c.ajl().a(this);
-      this.contact = paramam;
+      Assert.assertTrue(x.Ax(paraman.field_username));
+      bc.aCg();
+      c.ajA().a(this);
+      this.contact = paraman;
       this.screen = paramf;
       paramf.addPreferencesFromResource(2131951645);
-      cdo();
+      ceD();
       AppMethodBeat.o(26381);
       return true;
     }
   }
   
-  public final boolean aaG(String paramString)
+  public final boolean abx(String paramString)
   {
     AppMethodBeat.i(26379);
-    ad.d("MicroMsg.ContactWidgetMassSend", "handleEvent : key = ".concat(String.valueOf(paramString)));
-    if (bt.nullAsNil(paramString).length() <= 0)
+    ae.d("MicroMsg.ContactWidgetMassSend", "handleEvent : key = ".concat(String.valueOf(paramString)));
+    if (bu.nullAsNil(paramString).length() <= 0)
     {
       AppMethodBeat.o(26379);
       return false;
@@ -234,8 +234,8 @@ public final class a
       Object localObject = new Intent(this.context, MassSendHistoryUI.class);
       paramString = this.context;
       localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
-      com.tencent.mm.hellhoundlib.a.a.a(paramString, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahp(), "com/tencent/mm/plugin/masssend/ui/ContactWidgetMassSend", "handleEvent", "(Ljava/lang/String;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramString.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mq(0));
+      com.tencent.mm.hellhoundlib.a.a.a(paramString, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahE(), "com/tencent/mm/plugin/masssend/ui/ContactWidgetMassSend", "handleEvent", "(Ljava/lang/String;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramString.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mt(0));
       com.tencent.mm.hellhoundlib.a.a.a(paramString, "com/tencent/mm/plugin/masssend/ui/ContactWidgetMassSend", "handleEvent", "(Ljava/lang/String;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       AppMethodBeat.o(26379);
       return true;
@@ -274,17 +274,17 @@ public final class a
       AppMethodBeat.o(26379);
       return true;
     }
-    ad.e("MicroMsg.ContactWidgetMassSend", "handleEvent : unExpected key = ".concat(String.valueOf(paramString)));
+    ae.e("MicroMsg.ContactWidgetMassSend", "handleEvent : unExpected key = ".concat(String.valueOf(paramString)));
     AppMethodBeat.o(26379);
     return false;
   }
   
-  public final boolean cdn()
+  public final boolean ceC()
   {
     AppMethodBeat.i(26385);
-    ba.aBQ();
-    c.ajl().b(this);
-    com.tencent.mm.plugin.masssend.a.iRH.MR();
+    bc.aCg();
+    c.ajA().b(this);
+    com.tencent.mm.plugin.masssend.a.iUA.MM();
     AppMethodBeat.o(26385);
     return true;
   }

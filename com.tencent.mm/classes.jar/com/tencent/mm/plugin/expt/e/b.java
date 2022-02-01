@@ -6,30 +6,30 @@ import java.util.Date;
 
 public final class b
 {
-  public long raj;
-  public long rak;
-  public String ral;
-  public boolean ram;
+  public long rip;
+  public long riq;
+  public String rir;
+  public boolean ris;
   public String value;
   
   public b() {}
   
   public b(long paramLong1, String paramString, long paramLong2, boolean paramBoolean)
   {
-    AppMethodBeat.i(210518);
-    this.raj = paramLong1;
+    AppMethodBeat.i(196185);
+    this.rip = paramLong1;
     this.value = paramString;
-    this.rak = paramLong2;
-    this.ram = paramBoolean;
-    this.ral = new SimpleDateFormat("[yy-MM-dd HH:mm:ss:SSS]").format(new Date(paramLong2));
-    AppMethodBeat.o(210518);
+    this.riq = paramLong2;
+    this.ris = paramBoolean;
+    this.rir = new SimpleDateFormat("[yy-MM-dd HH:mm:ss:SSS]").format(new Date(paramLong2));
+    AppMethodBeat.o(196185);
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(210519);
-    String str = this.ral + ":" + this.value;
-    AppMethodBeat.o(210519);
+    AppMethodBeat.i(196186);
+    String str = this.rir + ":" + this.value;
+    AppMethodBeat.o(196186);
     return str;
   }
 }

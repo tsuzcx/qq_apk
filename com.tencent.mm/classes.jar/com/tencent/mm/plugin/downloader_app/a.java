@@ -8,7 +8,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.permission.RequestFloatWindowPermissionDialog;
 import com.tencent.mm.pluginsdk.permission.RequestFloatWindowPermissionDialog.a;
 import com.tencent.mm.pointers.PBool;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ak;
 import com.tencent.mm.ui.widget.a.d;
 import com.tencent.mm.ui.widget.a.d.a;
 
@@ -20,9 +20,9 @@ public final class a
     AppMethodBeat.i(8767);
     final PBool localPBool = new PBool();
     paramContext = new d.a(paramContext);
-    paramContext.afe(2131761008);
-    paramContext.afi(2131761006);
-    paramContext.afl(2131761009);
+    paramContext.afN(2131761008);
+    paramContext.afR(2131761006);
+    paramContext.afU(2131761009);
     paramContext.c(new DialogInterface.OnClickListener()
     {
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
@@ -36,7 +36,7 @@ public final class a
         AppMethodBeat.o(8761);
       }
     });
-    paramContext.afm(2131761005);
+    paramContext.afV(2131761005);
     paramContext.d(new DialogInterface.OnClickListener()
     {
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
@@ -47,37 +47,37 @@ public final class a
         }
         localPBool.value = true;
         com.tencent.mm.plugin.downloader_app.b.a.a(15, 1501, 1, 3, paramString, "", "");
-        if (!com.tencent.mm.compatible.d.b.ca(aj.getContext()))
+        if (!com.tencent.mm.compatible.d.b.cc(ak.getContext()))
         {
           paramAnonymousDialogInterface = new RequestFloatWindowPermissionDialog.a()
           {
             public final void a(RequestFloatWindowPermissionDialog paramAnonymous2RequestFloatWindowPermissionDialog)
             {
-              AppMethodBeat.i(206774);
+              AppMethodBeat.i(195253);
               paramAnonymous2RequestFloatWindowPermissionDialog.finish();
-              AppMethodBeat.o(206774);
+              AppMethodBeat.o(195253);
             }
             
             public final void b(RequestFloatWindowPermissionDialog paramAnonymous2RequestFloatWindowPermissionDialog)
             {
-              AppMethodBeat.i(206775);
+              AppMethodBeat.i(195254);
               paramAnonymous2RequestFloatWindowPermissionDialog.finish();
-              AppMethodBeat.o(206775);
+              AppMethodBeat.o(195254);
             }
             
             public final void c(RequestFloatWindowPermissionDialog paramAnonymous2RequestFloatWindowPermissionDialog)
             {
-              AppMethodBeat.i(206776);
+              AppMethodBeat.i(195255);
               paramAnonymous2RequestFloatWindowPermissionDialog.finish();
-              AppMethodBeat.o(206776);
+              AppMethodBeat.o(195255);
             }
           };
-          RequestFloatWindowPermissionDialog.a(aj.getContext(), aj.getContext().getString(2131759453), paramAnonymousDialogInterface, true, com.tencent.mm.br.a.abB());
+          RequestFloatWindowPermissionDialog.a(ak.getContext(), ak.getContext().getString(2131759453), paramAnonymousDialogInterface, true, com.tencent.mm.bq.a.abK());
         }
         AppMethodBeat.o(8762);
       }
     });
-    paramContext.yR(true);
+    paramContext.zf(true);
     paramContext.e(new DialogInterface.OnCancelListener()
     {
       public final void onCancel(DialogInterface paramAnonymousDialogInterface)
@@ -92,7 +92,7 @@ public final class a
         AppMethodBeat.o(8763);
       }
     });
-    paramContext.fMb().show();
+    paramContext.fQv().show();
     com.tencent.mm.plugin.downloader_app.b.a.a(15, 1501, 1, 1, paramString, "", "");
     AppMethodBeat.o(8767);
   }
@@ -102,9 +102,9 @@ public final class a
     AppMethodBeat.i(8768);
     final PBool localPBool = new PBool();
     paramContext = new d.a(paramContext);
-    paramContext.afe(2131761010);
-    paramContext.afi(2131761011);
-    paramContext.afl(2131761009);
+    paramContext.afN(2131761010);
+    paramContext.afR(2131761011);
+    paramContext.afU(2131761009);
     paramContext.c(new DialogInterface.OnClickListener()
     {
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
@@ -119,7 +119,7 @@ public final class a
         AppMethodBeat.o(8764);
       }
     });
-    paramContext.afm(2131761007);
+    paramContext.afV(2131761007);
     paramContext.d(new DialogInterface.OnClickListener()
     {
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
@@ -133,7 +133,7 @@ public final class a
         AppMethodBeat.o(8765);
       }
     });
-    paramContext.yR(true);
+    paramContext.zf(true);
     paramContext.e(new DialogInterface.OnCancelListener()
     {
       public final void onCancel(DialogInterface paramAnonymousDialogInterface)
@@ -148,14 +148,14 @@ public final class a
         AppMethodBeat.o(8766);
       }
     });
-    paramContext.fMb().show();
+    paramContext.fQv().show();
     com.tencent.mm.plugin.downloader_app.b.a.a(15, 1502, 1, 1, paramString, "", "");
     AppMethodBeat.o(8768);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.downloader_app.a
  * JD-Core Version:    0.7.0.1
  */

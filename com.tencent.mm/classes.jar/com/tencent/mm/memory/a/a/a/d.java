@@ -4,9 +4,9 @@ public abstract interface d<T, V>
 {
   public abstract boolean A(T paramT1, T paramT2);
   
-  public abstract void ahi();
+  public abstract void ahx();
   
-  public abstract void ayV();
+  public abstract void azk();
   
   public abstract void f(T paramT1, T paramT2, V paramV);
   
@@ -26,7 +26,7 @@ public abstract interface d<T, V>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.memory.a.a.a.d
  * JD-Core Version:    0.7.0.1
  */

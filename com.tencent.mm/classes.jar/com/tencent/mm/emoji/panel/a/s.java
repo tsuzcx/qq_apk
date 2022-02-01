@@ -3,24 +3,26 @@ package com.tencent.mm.emoji.panel.a;
 import android.view.View;
 import android.view.ViewGroup;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.emoji.a.a.ac;
+import com.tencent.mm.emoji.a.b.ac;
+import com.tencent.mm.emoji.a.b.h;
 import d.a.ab;
 import d.g.b.p;
+import d.k.j;
 import d.l;
 import d.v;
 import java.util.Iterator;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/emoji/panel/adapter/SimilarEmojiFullPageViewHolder;", "Lcom/tencent/mm/emoji/panel/adapter/PanelViewHolder;", "Lcom/tencent/mm/emoji/model/panel/EmojiItem;", "itemView", "Landroid/view/View;", "showId", "", "(Landroid/view/View;I)V", "getShowId", "()I", "setShowId", "(I)V", "onBind", "", "item", "Lcom/tencent/mm/emoji/model/panel/PanelItem;", "plugin-emojisdk_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/emoji/panel/adapter/SimilarEmojiFullPageViewHolder;", "Lcom/tencent/mm/emoji/panel/adapter/PanelViewHolder;", "Lcom/tencent/mm/emoji/model/panel/EmojiItem;", "itemView", "Landroid/view/View;", "showId", "", "(Landroid/view/View;I)V", "getShowId", "()I", "setShowId", "(I)V", "onBind", "", "item", "Lcom/tencent/mm/emoji/model/panel/PanelItem;", "plugin-emojisdk_release"})
 public final class s
-  extends q<com.tencent.mm.emoji.a.a.h>
+  extends q<h>
 {
-  private int gnV;
+  private int gqr;
   
   public s(View paramView, int paramInt)
   {
     super(paramView, null);
     AppMethodBeat.i(105682);
-    this.gnV = paramInt;
+    this.gqr = paramInt;
     AppMethodBeat.o(105682);
   }
   
@@ -36,7 +38,7 @@ public final class s
       AppMethodBeat.o(105681);
       throw paramac;
     }
-    paramac = ((Iterable)d.k.h.lo(0, ((ViewGroup)paramac).getChildCount())).iterator();
+    paramac = ((Iterable)j.lv(0, ((ViewGroup)paramac).getChildCount())).iterator();
     while (paramac.hasNext())
     {
       int i = ((ab)paramac).nextInt();
@@ -44,7 +46,7 @@ public final class s
       p.g(localView, "itemView.getChildAt(it)");
       localView.setVisibility(8);
     }
-    paramac = this.auu.findViewById(this.gnV);
+    paramac = this.auu.findViewById(this.gqr);
     p.g(paramac, "itemView.findViewById<View>(showId)");
     paramac.setVisibility(0);
     AppMethodBeat.o(105681);
@@ -52,7 +54,7 @@ public final class s
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.emoji.panel.a.s
  * JD-Core Version:    0.7.0.1
  */

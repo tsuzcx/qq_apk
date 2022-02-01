@@ -5,13 +5,13 @@ import java.util.List;
 public abstract interface o
   extends t
 {
-  public abstract d alg(int paramInt);
+  public abstract d alQ(int paramInt);
   
   public abstract void f(d paramd);
   
-  public abstract List<?> grY();
+  public abstract List<?> gwA();
   
-  public abstract o grZ();
+  public abstract o gwB();
 }
 
 

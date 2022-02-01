@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.account.friend.a;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
@@ -9,12 +10,14 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.q;
+import com.tencent.mm.aj.c;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.pluginsdk.ui.a.b;
-import com.tencent.mm.protocal.protobuf.buj;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.bvd;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.ui.applet.b.a;
 import com.tencent.mm.ui.applet.b.b;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -25,71 +28,80 @@ public final class i
   extends BaseAdapter
 {
   public Context context;
-  int dlp;
-  public List<String[]> jaX;
-  private a jdA;
-  public com.tencent.mm.ui.applet.b jdB;
-  private b.b jdC;
-  public LinkedList<buj> jdx;
-  private LinkedList<buj> jdy;
-  private List<String[]> jdz;
+  int dmr;
+  public List<String[]> jdQ;
+  public LinkedList<bvd> jgq;
+  private LinkedList<bvd> jgr;
+  private List<String[]> jgs;
+  private a jgt;
+  public com.tencent.mm.ui.applet.b jgu;
+  private b.b jgv;
   public int[] pq;
   
   public i(Context paramContext, a parama, int paramInt)
   {
     AppMethodBeat.i(131005);
-    this.jdx = new LinkedList();
-    this.jdy = new LinkedList();
-    this.jdz = new LinkedList();
-    this.dlp = 1;
-    this.jdB = new com.tencent.mm.ui.applet.b(new i.1(this));
-    this.jdC = null;
+    this.jgq = new LinkedList();
+    this.jgr = new LinkedList();
+    this.jgs = new LinkedList();
+    this.dmr = 1;
+    this.jgu = new com.tencent.mm.ui.applet.b(new b.a()
+    {
+      public final Bitmap Kc(String paramAnonymousString)
+      {
+        AppMethodBeat.i(130999);
+        paramAnonymousString = c.a(paramAnonymousString, false, -1, null);
+        AppMethodBeat.o(130999);
+        return paramAnonymousString;
+      }
+    });
+    this.jgv = null;
     this.context = paramContext;
-    this.dlp = paramInt;
-    this.jdA = parama;
-    this.pq = new int[this.jdx.size()];
+    this.dmr = paramInt;
+    this.jgt = parama;
+    this.pq = new int[this.jgq.size()];
     AppMethodBeat.o(131005);
   }
   
-  private void a(buj parambuj, String[] paramArrayOfString)
+  private void a(bvd parambvd, String[] paramArrayOfString)
   {
     AppMethodBeat.i(131010);
-    Iterator localIterator = this.jdy.iterator();
+    Iterator localIterator = this.jgr.iterator();
     while (localIterator.hasNext())
     {
-      buj localbuj = (buj)localIterator.next();
-      if ((localbuj.yhw != null) && (parambuj.yhw != null) && (localbuj.yhw.equals(parambuj.yhw)))
+      bvd localbvd = (bvd)localIterator.next();
+      if ((localbvd.yxn != null) && (parambvd.yxn != null) && (localbvd.yxn.equals(parambvd.yxn)))
       {
-        ad.d("MicroMsg.FriendAdapter", "tigerreg mobile already added");
+        ae.d("MicroMsg.FriendAdapter", "tigerreg mobile already added");
         AppMethodBeat.o(131010);
         return;
       }
     }
-    this.jdy.add(parambuj);
-    parambuj = paramArrayOfString[2];
+    this.jgr.add(parambvd);
+    parambvd = paramArrayOfString[2];
     paramArrayOfString = paramArrayOfString[1];
-    this.jdz.add(new String[] { parambuj, paramArrayOfString });
+    this.jgs.add(new String[] { parambvd, paramArrayOfString });
     AppMethodBeat.o(131010);
   }
   
-  public final void JC(String paramString)
+  public final void Kb(String paramString)
   {
     AppMethodBeat.i(131015);
     ArrayList localArrayList = new ArrayList();
     int i = 0;
-    while (i < this.jdz.size())
+    while (i < this.jgs.size())
     {
       if (this.pq[i] == 2) {
-        localArrayList.add(((String[])this.jdz.get(i))[0]);
+        localArrayList.add(((String[])this.jgs.get(i))[0]);
       }
       i += 1;
     }
     paramString = new al(paramString, localArrayList);
-    com.tencent.mm.kernel.g.aiU().a(paramString, 0);
+    com.tencent.mm.kernel.g.ajj().a(paramString, 0);
     AppMethodBeat.o(131015);
   }
   
-  public final boolean aSK()
+  public final boolean aTj()
   {
     if ((this.pq == null) || (this.pq.length == 0)) {}
     int i;
@@ -102,11 +114,11 @@ public final class i
         break label68;
       }
       j = this.pq[i];
-      if (this.dlp != 1) {
+      if (this.dmr != 1) {
         break;
       }
     } while (j == 0);
-    while ((this.dlp != 2) || (j != 0))
+    while ((this.dmr != 2) || (j != 0))
     {
       i += 1;
       break;
@@ -116,13 +128,13 @@ public final class i
     return true;
   }
   
-  public final void fq(boolean paramBoolean)
+  public final void fr(boolean paramBoolean)
   {
     AppMethodBeat.i(131007);
     int i;
     int[] arrayOfInt;
     int j;
-    if (this.dlp == 1)
+    if (this.dmr == 1)
     {
       i = 0;
       if (i < this.pq.length)
@@ -137,7 +149,7 @@ public final class i
         }
       }
     }
-    else if (this.dlp == 2)
+    else if (this.dmr == 2)
     {
       i = 0;
       if (i < this.pq.length)
@@ -159,7 +171,7 @@ public final class i
   public final int getCount()
   {
     AppMethodBeat.i(131011);
-    int i = this.jdx.size();
+    int i = this.jgq.size();
     AppMethodBeat.o(131011);
     return i;
   }
@@ -167,7 +179,7 @@ public final class i
   public final long getItemId(int paramInt)
   {
     AppMethodBeat.i(131013);
-    long l = ((buj)this.jdx.get(paramInt)).hashCode();
+    long l = ((bvd)this.jgq.get(paramInt)).hashCode();
     AppMethodBeat.o(131013);
     return l;
   }
@@ -182,7 +194,7 @@ public final class i
     {
       int n = arrayOfInt[j];
       int i;
-      if (this.dlp == 1)
+      if (this.dmr == 1)
       {
         i = k;
         if (n == 1) {
@@ -195,7 +207,7 @@ public final class i
         k = i;
         break;
         i = k;
-        if (this.dlp == 2)
+        if (this.dmr == 2)
         {
           i = k;
           if (n == 2) {
@@ -210,12 +222,12 @@ public final class i
   public final View getView(final int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(131014);
-    if (this.dlp == 1)
+    if (this.dmr == 1)
     {
-      if (this.jdC == null) {
-        this.jdC = new b.b()
+      if (this.jgv == null) {
+        this.jgv = new b.b()
         {
-          public final int aSL()
+          public final int aTk()
           {
             AppMethodBeat.i(131001);
             int i = i.this.getCount();
@@ -223,59 +235,59 @@ public final class i
             return i;
           }
           
-          public final String rn(int paramAnonymousInt)
+          public final String rq(int paramAnonymousInt)
           {
             AppMethodBeat.i(131000);
             if ((paramAnonymousInt < 0) || (paramAnonymousInt >= i.this.getCount()))
             {
-              ad.e("MicroMsg.FriendAdapter", "pos is invalid");
+              ae.e("MicroMsg.FriendAdapter", "pos is invalid");
               AppMethodBeat.o(131000);
               return null;
             }
-            Object localObject = i.this.rm(paramAnonymousInt);
+            Object localObject = i.this.rp(paramAnonymousInt);
             if (localObject == null)
             {
               AppMethodBeat.o(131000);
               return null;
             }
-            localObject = ((buj)localObject).nDo;
+            localObject = ((bvd)localObject).nIJ;
             AppMethodBeat.o(131000);
             return localObject;
           }
         };
       }
-      if (this.jdB != null) {
-        this.jdB.a(paramInt, this.jdC);
+      if (this.jgu != null) {
+        this.jgu.a(paramInt, this.jgv);
       }
     }
-    buj localbuj = (buj)this.jdx.get(paramInt);
+    bvd localbvd = (bvd)this.jgq.get(paramInt);
     b localb;
     if (paramView == null)
     {
       localb = new b();
-      if (this.dlp == 1)
+      if (this.dmr == 1)
       {
         paramView = View.inflate(this.context, 2131494006, null);
-        localb.jbW = ((TextView)paramView.findViewById(2131302355));
-        localb.jdG = ((TextView)paramView.findViewById(2131302348));
-        localb.jdH = ((Button)paramView.findViewById(2131302349));
-        localb.jdI = ((Button)paramView.findViewById(2131302351));
-        localb.jdF = ((ImageView)paramView.findViewById(2131300291));
-        localb.jdJ = ((TextView)paramView.findViewById(2131302356));
-        localb.jdK = ((TextView)paramView.findViewById(2131302359));
+        localb.jeP = ((TextView)paramView.findViewById(2131302355));
+        localb.jgz = ((TextView)paramView.findViewById(2131302348));
+        localb.jgA = ((Button)paramView.findViewById(2131302349));
+        localb.jgB = ((Button)paramView.findViewById(2131302351));
+        localb.jgy = ((ImageView)paramView.findViewById(2131300291));
+        localb.jgC = ((TextView)paramView.findViewById(2131302356));
+        localb.jgD = ((TextView)paramView.findViewById(2131302359));
         paramView.setTag(localb);
         paramViewGroup = localb;
-        paramViewGroup.jdK.setOnClickListener(new View.OnClickListener()
+        paramViewGroup.jgD.setOnClickListener(new View.OnClickListener()
         {
           public final void onClick(View paramAnonymousView)
           {
             AppMethodBeat.i(131002);
             com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
             localb.bd(paramAnonymousView);
-            a.b("com/tencent/mm/plugin/account/friend/model/FriendAdapter$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+            a.b("com/tencent/mm/plugin/account/friend/model/FriendAdapter$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
             paramAnonymousView = i.this;
             int i = paramInt;
-            if (paramAnonymousView.dlp == 1) {
+            if (paramAnonymousView.dmr == 1) {
               paramAnonymousView.pq[i] = 0;
             }
             for (;;)
@@ -284,34 +296,34 @@ public final class i
               a.a(this, "com/tencent/mm/plugin/account/friend/model/FriendAdapter$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
               AppMethodBeat.o(131002);
               return;
-              if (paramAnonymousView.dlp == 2) {
+              if (paramAnonymousView.dmr == 2) {
                 paramAnonymousView.pq[i] = 0;
               }
             }
           }
         });
-        if (this.dlp != 1) {
+        if (this.dmr != 1) {
           break label514;
         }
-        if (bt.isNullOrNil(((String[])this.jdz.get(paramInt))[1])) {
+        if (bu.isNullOrNil(((String[])this.jgs.get(paramInt))[1])) {
           break label473;
         }
-        paramViewGroup.jbW.setText(((String[])this.jdz.get(paramInt))[1]);
+        paramViewGroup.jeP.setText(((String[])this.jgs.get(paramInt))[1]);
         label270:
-        paramViewGroup.jdH.setOnClickListener(new View.OnClickListener()
+        paramViewGroup.jgA.setOnClickListener(new View.OnClickListener()
         {
           public final void onClick(View paramAnonymousView)
           {
             AppMethodBeat.i(131003);
             com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
             localb.bd(paramAnonymousView);
-            a.b("com/tencent/mm/plugin/account/friend/model/FriendAdapter$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+            a.b("com/tencent/mm/plugin/account/friend/model/FriendAdapter$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
             i.this.select(paramInt);
             a.a(this, "com/tencent/mm/plugin/account/friend/model/FriendAdapter$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
             AppMethodBeat.o(131003);
           }
         });
-        a.b.c(paramViewGroup.jdF, localbuj.nDo);
+        a.b.c(paramViewGroup.jgy, localbvd.nIJ);
         label298:
         switch (this.pq[paramInt])
         {
@@ -323,79 +335,79 @@ public final class i
       AppMethodBeat.o(131014);
       return paramView;
       paramViewGroup = localb;
-      if (this.dlp != 2) {
+      if (this.dmr != 2) {
         break;
       }
       paramView = View.inflate(this.context, 2131494007, null);
-      localb.jbW = ((TextView)paramView.findViewById(2131302355));
-      localb.jdG = ((TextView)paramView.findViewById(2131302348));
-      localb.jdH = ((Button)paramView.findViewById(2131302349));
-      localb.jdI = ((Button)paramView.findViewById(2131302351));
-      localb.jdJ = ((TextView)paramView.findViewById(2131302356));
-      localb.jdK = ((TextView)paramView.findViewById(2131302359));
+      localb.jeP = ((TextView)paramView.findViewById(2131302355));
+      localb.jgz = ((TextView)paramView.findViewById(2131302348));
+      localb.jgA = ((Button)paramView.findViewById(2131302349));
+      localb.jgB = ((Button)paramView.findViewById(2131302351));
+      localb.jgC = ((TextView)paramView.findViewById(2131302356));
+      localb.jgD = ((TextView)paramView.findViewById(2131302359));
       paramView.setTag(localb);
       paramViewGroup = localb;
       break;
       paramViewGroup = (b)paramView.getTag();
       break;
       label473:
-      if (bt.isNullOrNil(localbuj.nEt))
+      if (bu.isNullOrNil(localbvd.nJO))
       {
-        paramViewGroup.jbW.setText(localbuj.nDo);
+        paramViewGroup.jeP.setText(localbvd.nIJ);
         break label270;
       }
-      paramViewGroup.jbW.setText(localbuj.nEt);
+      paramViewGroup.jeP.setText(localbvd.nJO);
       break label270;
       label514:
-      if (this.dlp != 2) {
+      if (this.dmr != 2) {
         break label298;
       }
-      paramViewGroup.jbW.setText(((String[])this.jdz.get(paramInt))[1]);
-      paramViewGroup.jdI.setOnClickListener(new View.OnClickListener()
+      paramViewGroup.jeP.setText(((String[])this.jgs.get(paramInt))[1]);
+      paramViewGroup.jgB.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(131004);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
           localb.bd(paramAnonymousView);
-          a.b("com/tencent/mm/plugin/account/friend/model/FriendAdapter$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+          a.b("com/tencent/mm/plugin/account/friend/model/FriendAdapter$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
           i.this.select(paramInt);
           a.a(this, "com/tencent/mm/plugin/account/friend/model/FriendAdapter$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(131004);
         }
       });
       break label298;
-      paramViewGroup.jdH.setVisibility(8);
-      paramViewGroup.jdG.setVisibility(0);
-      paramViewGroup.jdJ.setVisibility(0);
-      paramViewGroup.jdK.setVisibility(0);
+      paramViewGroup.jgA.setVisibility(8);
+      paramViewGroup.jgz.setVisibility(0);
+      paramViewGroup.jgC.setVisibility(0);
+      paramViewGroup.jgD.setVisibility(0);
       continue;
-      paramViewGroup.jdH.setVisibility(8);
-      paramViewGroup.jdG.setVisibility(0);
-      paramViewGroup.jdJ.setVisibility(0);
-      paramViewGroup.jdK.setVisibility(0);
+      paramViewGroup.jgA.setVisibility(8);
+      paramViewGroup.jgz.setVisibility(0);
+      paramViewGroup.jgC.setVisibility(0);
+      paramViewGroup.jgD.setVisibility(0);
       continue;
-      paramViewGroup.jdH.setVisibility(8);
-      paramViewGroup.jdI.setVisibility(8);
-      paramViewGroup.jdG.setVisibility(0);
-      paramViewGroup.jdJ.setVisibility(0);
-      paramViewGroup.jdK.setVisibility(0);
+      paramViewGroup.jgA.setVisibility(8);
+      paramViewGroup.jgB.setVisibility(8);
+      paramViewGroup.jgz.setVisibility(0);
+      paramViewGroup.jgC.setVisibility(0);
+      paramViewGroup.jgD.setVisibility(0);
       continue;
-      if (this.dlp == 1)
+      if (this.dmr == 1)
       {
-        paramViewGroup.jdG.setVisibility(8);
-        paramViewGroup.jdH.setVisibility(0);
-        paramViewGroup.jdI.setVisibility(8);
-        paramViewGroup.jdJ.setVisibility(8);
-        paramViewGroup.jdK.setVisibility(8);
+        paramViewGroup.jgz.setVisibility(8);
+        paramViewGroup.jgA.setVisibility(0);
+        paramViewGroup.jgB.setVisibility(8);
+        paramViewGroup.jgC.setVisibility(8);
+        paramViewGroup.jgD.setVisibility(8);
       }
-      else if (this.dlp == 2)
+      else if (this.dmr == 2)
       {
-        paramViewGroup.jdG.setVisibility(8);
-        paramViewGroup.jdH.setVisibility(8);
-        paramViewGroup.jdI.setVisibility(0);
-        paramViewGroup.jdJ.setVisibility(8);
-        paramViewGroup.jdK.setVisibility(8);
+        paramViewGroup.jgz.setVisibility(8);
+        paramViewGroup.jgA.setVisibility(8);
+        paramViewGroup.jgB.setVisibility(0);
+        paramViewGroup.jgC.setVisibility(8);
+        paramViewGroup.jgD.setVisibility(8);
       }
     }
   }
@@ -404,58 +416,58 @@ public final class i
   {
     AppMethodBeat.i(131008);
     super.notifyDataSetChanged();
-    if (this.jdA != null) {
-      this.jdA.notifyDataSetChanged();
+    if (this.jgt != null) {
+      this.jgt.notifyDataSetChanged();
     }
     AppMethodBeat.o(131008);
   }
   
-  public final buj rm(int paramInt)
+  public final bvd rp(int paramInt)
   {
     AppMethodBeat.i(131012);
-    buj localbuj = (buj)this.jdx.get(paramInt);
+    bvd localbvd = (bvd)this.jgq.get(paramInt);
     AppMethodBeat.o(131012);
-    return localbuj;
+    return localbvd;
   }
   
-  public final void s(LinkedList<buj> paramLinkedList)
+  public final void s(LinkedList<bvd> paramLinkedList)
   {
     AppMethodBeat.i(131009);
     if (paramLinkedList != null)
     {
-      this.jdy.clear();
-      this.jdx.clear();
-      this.jdz.clear();
-      Iterator localIterator1 = this.jaX.iterator();
+      this.jgr.clear();
+      this.jgq.clear();
+      this.jgs.clear();
+      Iterator localIterator1 = this.jdQ.iterator();
       while (localIterator1.hasNext())
       {
         String[] arrayOfString = (String[])localIterator1.next();
         Iterator localIterator2 = paramLinkedList.iterator();
         while (localIterator2.hasNext())
         {
-          buj localbuj = (buj)localIterator2.next();
-          if (this.dlp == 1)
+          bvd localbvd = (bvd)localIterator2.next();
+          if (this.dmr == 1)
           {
-            if (((localbuj.nDG == 1) || (localbuj.nDG == 0)) && (!bt.isNullOrNil(arrayOfString[2])) && (localbuj.yhw.equals(com.tencent.mm.b.g.getMessageDigest(arrayOfString[2].getBytes())))) {
-              a(localbuj, arrayOfString);
+            if (((localbvd.nJb == 1) || (localbvd.nJb == 0)) && (!bu.isNullOrNil(arrayOfString[2])) && (localbvd.yxn.equals(com.tencent.mm.b.g.getMessageDigest(arrayOfString[2].getBytes())))) {
+              a(localbvd, arrayOfString);
             }
           }
-          else if ((this.dlp == 2) && (localbuj.nDG == 2) && (!bt.isNullOrNil(arrayOfString[2])) && (localbuj.yhw.equals(com.tencent.mm.b.g.getMessageDigest(arrayOfString[2].getBytes())))) {
-            a(localbuj, arrayOfString);
+          else if ((this.dmr == 2) && (localbvd.nJb == 2) && (!bu.isNullOrNil(arrayOfString[2])) && (localbvd.yxn.equals(com.tencent.mm.b.g.getMessageDigest(arrayOfString[2].getBytes())))) {
+            a(localbvd, arrayOfString);
           }
         }
       }
     }
-    this.pq = new int[this.jdy.size()];
-    this.jdx.addAll(this.jdy);
-    this.jdy.clear();
+    this.pq = new int[this.jgr.size()];
+    this.jgq.addAll(this.jgr);
+    this.jgr.clear();
     AppMethodBeat.o(131009);
   }
   
   public final void select(int paramInt)
   {
     AppMethodBeat.i(131006);
-    if (this.dlp == 1) {
+    if (this.dmr == 1) {
       this.pq[paramInt] = 1;
     }
     for (;;)
@@ -463,7 +475,7 @@ public final class i
       notifyDataSetChanged();
       AppMethodBeat.o(131006);
       return;
-      if (this.dlp == 2) {
+      if (this.dmr == 2) {
         this.pq[paramInt] = 2;
       }
     }
@@ -476,18 +488,18 @@ public final class i
   
   static final class b
   {
-    TextView jbW;
-    ImageView jdF;
-    TextView jdG;
-    Button jdH;
-    Button jdI;
-    TextView jdJ;
-    TextView jdK;
+    TextView jeP;
+    Button jgA;
+    Button jgB;
+    TextView jgC;
+    TextView jgD;
+    ImageView jgy;
+    TextView jgz;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.account.friend.a.i
  * JD-Core Version:    0.7.0.1
  */

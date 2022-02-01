@@ -1,47 +1,47 @@
 package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.vfs.i;
+import com.tencent.mm.vfs.o;
 
 public final class c
   extends b
 {
+  private final String AcA;
+  private final a AcB;
+  private final int AcC;
+  private boolean Acx;
+  private int Acy;
+  private final String Acz;
   private final String filePath;
   private int scene;
-  private boolean zLq;
-  private int zLr;
-  private final String zLs;
-  private final String zLt;
-  private final a zLu;
-  private final int zLv;
   
   public c(String paramString1, String paramString2, int paramInt, a parama)
   {
     AppMethodBeat.i(97279);
-    i.aYg(paramString1);
+    o.aZI(paramString1);
     this.filePath = (paramString1 + "/" + paramString2);
-    this.zLq = true;
-    this.zLr = paramInt;
+    this.Acx = true;
+    this.Acy = paramInt;
     this.scene = 0;
-    this.zLt = "temp_".concat(String.valueOf(paramString2));
-    this.zLs = (paramString1 + "/" + this.zLt);
-    this.zLv = 409600;
-    this.zLu = parama;
+    this.AcA = "temp_".concat(String.valueOf(paramString2));
+    this.Acz = (paramString1 + "/" + this.AcA);
+    this.AcC = 409600;
+    this.AcB = parama;
     AppMethodBeat.o(97279);
   }
   
   /* Error */
-  private String dYa()
+  private String ebE()
   {
     // Byte code:
     //   0: ldc 89
     //   2: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: aload_0
     //   6: getfield 52	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/c:filePath	Ljava/lang/String;
-    //   9: invokestatic 92	com/tencent/mm/vfs/i:fv	(Ljava/lang/String;)Z
+    //   9: invokestatic 92	com/tencent/mm/vfs/o:fB	(Ljava/lang/String;)Z
     //   12: ifeq +23 -> 35
     //   15: aload_0
-    //   16: getfield 79	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/c:zLu	Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/c$a;
+    //   16: getfield 79	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/c:AcB	Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/c$a;
     //   19: aload_0
     //   20: getfield 52	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/c:filePath	Ljava/lang/String;
     //   23: invokeinterface 96 2 0
@@ -49,7 +49,7 @@ public final class c
     //   30: invokestatic 82	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   33: aconst_null
     //   34: areturn
-    //   35: invokestatic 102	com/tencent/mm/sdk/platformtools/bt:flT	()J
+    //   35: invokestatic 102	com/tencent/mm/sdk/platformtools/bu:fpO	()J
     //   38: lstore 7
     //   40: iconst_0
     //   41: istore_2
@@ -94,8 +94,8 @@ public final class c
     //   102: iload_2
     //   103: istore_3
     //   104: aload_0
-    //   105: getfield 74	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/c:zLs	Ljava/lang/String;
-    //   108: invokestatic 92	com/tencent/mm/vfs/i:fv	(Ljava/lang/String;)Z
+    //   105: getfield 74	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/c:Acz	Ljava/lang/String;
+    //   108: invokestatic 92	com/tencent/mm/vfs/o:fB	(Ljava/lang/String;)Z
     //   111: ifeq +28 -> 139
     //   114: aload 23
     //   116: astore 12
@@ -108,8 +108,8 @@ public final class c
     //   129: iload_2
     //   130: istore_3
     //   131: aload_0
-    //   132: getfield 74	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/c:zLs	Ljava/lang/String;
-    //   135: invokestatic 105	com/tencent/mm/vfs/i:deleteFile	(Ljava/lang/String;)Z
+    //   132: getfield 74	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/c:Acz	Ljava/lang/String;
+    //   135: invokestatic 105	com/tencent/mm/vfs/o:deleteFile	(Ljava/lang/String;)Z
     //   138: pop
     //   139: aload 23
     //   141: astore 12
@@ -176,13 +176,13 @@ public final class c
     //   275: invokevirtual 148	java/net/HttpURLConnection:disconnect	()V
     //   278: aload_0
     //   279: getfield 110	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/c:url	Ljava/lang/String;
-    //   282: invokestatic 153	com/tencent/mm/sdk/platformtools/ai:ee	(Ljava/lang/String;)Ljava/lang/String;
+    //   282: invokestatic 153	com/tencent/mm/sdk/platformtools/aj:ej	(Ljava/lang/String;)Ljava/lang/String;
     //   285: astore 11
     //   287: aload_0
     //   288: invokespecial 156	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/c:getMediaType	()I
     //   291: istore_1
     //   292: lload 7
-    //   294: invokestatic 160	com/tencent/mm/sdk/platformtools/bt:Df	(J)J
+    //   294: invokestatic 160	com/tencent/mm/sdk/platformtools/bu:DD	(J)J
     //   297: l2i
     //   298: istore_3
     //   299: new 162	com/tencent/mm/modelsns/g
@@ -216,7 +216,7 @@ public final class c
     //   365: invokespecial 40	java/lang/StringBuilder:<init>	()V
     //   368: astore 11
     //   370: aload_0
-    //   371: getfield 54	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/c:zLq	Z
+    //   371: getfield 54	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/c:Acx	Z
     //   374: ifeq +213 -> 587
     //   377: iconst_1
     //   378: istore_1
@@ -286,11 +286,11 @@ public final class c
     //   527: ldc 196
     //   529: invokespecial 128	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   532: aload 9
-    //   534: invokevirtual 199	com/tencent/mm/modelsns/g:RE	()Ljava/lang/String;
+    //   534: invokevirtual 199	com/tencent/mm/modelsns/g:RD	()Ljava/lang/String;
     //   537: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   540: invokevirtual 50	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   543: invokestatic 204	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   546: getstatic 210	com/tencent/mm/plugin/report/service/g:yhR	Lcom/tencent/mm/plugin/report/service/g;
+    //   543: invokestatic 204	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   546: getstatic 210	com/tencent/mm/plugin/report/service/g:yxI	Lcom/tencent/mm/plugin/report/service/g;
     //   549: sipush 13572
     //   552: iconst_1
     //   553: anewarray 212	java/lang/Object
@@ -307,7 +307,7 @@ public final class c
     //   574: ldc 194
     //   576: aload 11
     //   578: invokevirtual 219	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   581: invokestatic 222	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   581: invokestatic 222	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   584: goto -311 -> 273
     //   587: iconst_0
     //   588: istore_1
@@ -343,9 +343,9 @@ public final class c
     //   649: aload 10
     //   651: astore 12
     //   653: aload_0
-    //   654: getfield 74	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/c:zLs	Ljava/lang/String;
+    //   654: getfield 74	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/c:Acz	Ljava/lang/String;
     //   657: iconst_0
-    //   658: invokestatic 229	com/tencent/mm/vfs/i:cX	(Ljava/lang/String;Z)Ljava/io/OutputStream;
+    //   658: invokestatic 229	com/tencent/mm/vfs/o:db	(Ljava/lang/String;Z)Ljava/io/OutputStream;
     //   661: astore 11
     //   663: aload 11
     //   665: astore 15
@@ -403,7 +403,7 @@ public final class c
     //   764: aload 10
     //   766: astore 12
     //   768: aload_0
-    //   769: getfield 77	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/c:zLv	I
+    //   769: getfield 77	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/c:AcC	I
     //   772: ifeq +1314 -> 2086
     //   775: aload 11
     //   777: astore 15
@@ -417,7 +417,7 @@ public final class c
     //   792: iload_3
     //   793: isub
     //   794: aload_0
-    //   795: getfield 77	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/c:zLv	I
+    //   795: getfield 77	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/c:AcC	I
     //   798: if_icmplt +1288 -> 2086
     //   801: aload 11
     //   803: astore 15
@@ -428,19 +428,19 @@ public final class c
     //   813: aload 10
     //   815: astore 12
     //   817: aload_0
-    //   818: getfield 79	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/c:zLu	Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/c$a;
+    //   818: getfield 79	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/c:AcB	Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/c$a;
     //   821: aload_0
-    //   822: getfield 74	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/c:zLs	Ljava/lang/String;
+    //   822: getfield 74	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/c:Acz	Ljava/lang/String;
     //   825: iload_1
     //   826: invokeinterface 243 3 0
     //   831: iload_1
     //   832: istore_3
     //   833: goto -143 -> 690
     //   836: aload_0
-    //   837: getfield 74	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/c:zLs	Ljava/lang/String;
+    //   837: getfield 74	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/c:Acz	Ljava/lang/String;
     //   840: aload_0
     //   841: getfield 52	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/c:filePath	Ljava/lang/String;
-    //   844: invokestatic 247	com/tencent/mm/vfs/i:mA	(Ljava/lang/String;Ljava/lang/String;)Z
+    //   844: invokestatic 247	com/tencent/mm/vfs/o:mG	(Ljava/lang/String;Ljava/lang/String;)Z
     //   847: pop
     //   848: aload 11
     //   850: ifnull +8 -> 858
@@ -459,13 +459,13 @@ public final class c
     //   883: invokevirtual 148	java/net/HttpURLConnection:disconnect	()V
     //   886: aload_0
     //   887: getfield 110	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/c:url	Ljava/lang/String;
-    //   890: invokestatic 153	com/tencent/mm/sdk/platformtools/ai:ee	(Ljava/lang/String;)Ljava/lang/String;
+    //   890: invokestatic 153	com/tencent/mm/sdk/platformtools/aj:ej	(Ljava/lang/String;)Ljava/lang/String;
     //   893: astore 10
     //   895: aload_0
     //   896: invokespecial 156	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/c:getMediaType	()I
     //   899: istore_3
     //   900: lload 7
-    //   902: invokestatic 160	com/tencent/mm/sdk/platformtools/bt:Df	(J)J
+    //   902: invokestatic 160	com/tencent/mm/sdk/platformtools/bu:DD	(J)J
     //   905: l2i
     //   906: istore 4
     //   908: new 162	com/tencent/mm/modelsns/g
@@ -499,7 +499,7 @@ public final class c
     //   974: invokespecial 40	java/lang/StringBuilder:<init>	()V
     //   977: astore 10
     //   979: aload_0
-    //   980: getfield 54	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/c:zLq	Z
+    //   980: getfield 54	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/c:Acx	Z
     //   983: ifeq +230 -> 1213
     //   986: iconst_1
     //   987: istore_3
@@ -576,11 +576,11 @@ public final class c
     //   1154: ldc 196
     //   1156: invokespecial 128	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   1159: aload 9
-    //   1161: invokevirtual 199	com/tencent/mm/modelsns/g:RE	()Ljava/lang/String;
+    //   1161: invokevirtual 199	com/tencent/mm/modelsns/g:RD	()Ljava/lang/String;
     //   1164: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1167: invokevirtual 50	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1170: invokestatic 204	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1173: getstatic 210	com/tencent/mm/plugin/report/service/g:yhR	Lcom/tencent/mm/plugin/report/service/g;
+    //   1170: invokestatic 204	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1173: getstatic 210	com/tencent/mm/plugin/report/service/g:yxI	Lcom/tencent/mm/plugin/report/service/g;
     //   1176: sipush 13572
     //   1179: iconst_1
     //   1180: anewarray 212	java/lang/Object
@@ -597,7 +597,7 @@ public final class c
     //   1200: ldc 194
     //   1202: aload 10
     //   1204: invokevirtual 219	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   1207: invokestatic 222	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1207: invokestatic 222	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   1210: goto -329 -> 881
     //   1213: iconst_0
     //   1214: istore_3
@@ -641,13 +641,13 @@ public final class c
     //   1293: invokevirtual 148	java/net/HttpURLConnection:disconnect	()V
     //   1296: aload_0
     //   1297: getfield 110	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/c:url	Ljava/lang/String;
-    //   1300: invokestatic 153	com/tencent/mm/sdk/platformtools/ai:ee	(Ljava/lang/String;)Ljava/lang/String;
+    //   1300: invokestatic 153	com/tencent/mm/sdk/platformtools/aj:ej	(Ljava/lang/String;)Ljava/lang/String;
     //   1303: astore 10
     //   1305: aload_0
     //   1306: invokespecial 156	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/c:getMediaType	()I
     //   1309: istore_1
     //   1310: lload 7
-    //   1312: invokestatic 160	com/tencent/mm/sdk/platformtools/bt:Df	(J)J
+    //   1312: invokestatic 160	com/tencent/mm/sdk/platformtools/bu:DD	(J)J
     //   1315: l2i
     //   1316: istore_3
     //   1317: new 162	com/tencent/mm/modelsns/g
@@ -681,7 +681,7 @@ public final class c
     //   1383: invokespecial 40	java/lang/StringBuilder:<init>	()V
     //   1386: astore 10
     //   1388: aload_0
-    //   1389: getfield 54	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/c:zLq	Z
+    //   1389: getfield 54	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/c:Acx	Z
     //   1392: ifeq +213 -> 1605
     //   1395: iconst_1
     //   1396: istore_1
@@ -751,11 +751,11 @@ public final class c
     //   1545: ldc 196
     //   1547: invokespecial 128	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   1550: aload 9
-    //   1552: invokevirtual 199	com/tencent/mm/modelsns/g:RE	()Ljava/lang/String;
+    //   1552: invokevirtual 199	com/tencent/mm/modelsns/g:RD	()Ljava/lang/String;
     //   1555: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1558: invokevirtual 50	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1561: invokestatic 204	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1564: getstatic 210	com/tencent/mm/plugin/report/service/g:yhR	Lcom/tencent/mm/plugin/report/service/g;
+    //   1561: invokestatic 204	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1564: getstatic 210	com/tencent/mm/plugin/report/service/g:yxI	Lcom/tencent/mm/plugin/report/service/g;
     //   1567: sipush 13572
     //   1570: iconst_1
     //   1571: anewarray 212	java/lang/Object
@@ -772,7 +772,7 @@ public final class c
     //   1592: ldc 194
     //   1594: aload 10
     //   1596: invokevirtual 219	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   1599: invokestatic 222	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1599: invokestatic 222	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   1602: goto -311 -> 1291
     //   1605: iconst_0
     //   1606: istore_1
@@ -801,13 +801,13 @@ public final class c
     //   1657: invokevirtual 148	java/net/HttpURLConnection:disconnect	()V
     //   1660: aload_0
     //   1661: getfield 110	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/c:url	Ljava/lang/String;
-    //   1664: invokestatic 153	com/tencent/mm/sdk/platformtools/ai:ee	(Ljava/lang/String;)Ljava/lang/String;
+    //   1664: invokestatic 153	com/tencent/mm/sdk/platformtools/aj:ej	(Ljava/lang/String;)Ljava/lang/String;
     //   1667: astore 11
     //   1669: aload_0
     //   1670: invokespecial 156	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/c:getMediaType	()I
     //   1673: istore_3
     //   1674: lload 7
-    //   1676: invokestatic 160	com/tencent/mm/sdk/platformtools/bt:Df	(J)J
+    //   1676: invokestatic 160	com/tencent/mm/sdk/platformtools/bu:DD	(J)J
     //   1679: l2i
     //   1680: istore 4
     //   1682: new 162	com/tencent/mm/modelsns/g
@@ -841,7 +841,7 @@ public final class c
     //   1748: invokespecial 40	java/lang/StringBuilder:<init>	()V
     //   1751: astore 11
     //   1753: aload_0
-    //   1754: getfield 54	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/c:zLq	Z
+    //   1754: getfield 54	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/c:Acx	Z
     //   1757: ifeq +231 -> 1988
     //   1760: iconst_1
     //   1761: istore_3
@@ -918,11 +918,11 @@ public final class c
     //   1928: ldc 196
     //   1930: invokespecial 128	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   1933: aload 10
-    //   1935: invokevirtual 199	com/tencent/mm/modelsns/g:RE	()Ljava/lang/String;
+    //   1935: invokevirtual 199	com/tencent/mm/modelsns/g:RD	()Ljava/lang/String;
     //   1938: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1941: invokevirtual 50	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1944: invokestatic 204	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1947: getstatic 210	com/tencent/mm/plugin/report/service/g:yhR	Lcom/tencent/mm/plugin/report/service/g;
+    //   1944: invokestatic 204	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1947: getstatic 210	com/tencent/mm/plugin/report/service/g:yxI	Lcom/tencent/mm/plugin/report/service/g;
     //   1950: sipush 13572
     //   1953: iconst_1
     //   1954: anewarray 212	java/lang/Object
@@ -939,7 +939,7 @@ public final class c
     //   1975: ldc 194
     //   1977: aload 10
     //   1979: invokevirtual 219	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   1982: invokestatic 222	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1982: invokestatic 222	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   1985: goto -330 -> 1655
     //   1988: iconst_0
     //   1989: istore_3
@@ -1087,7 +1087,7 @@ public final class c
   private int getMediaType()
   {
     int i = 1;
-    switch (this.zLr)
+    switch (this.Acy)
     {
     default: 
       i = 0;
@@ -1105,11 +1105,11 @@ public final class c
   
   public static abstract interface a
   {
-    public abstract void Qi(String paramString);
+    public abstract void QR(String paramString);
     
-    public abstract void dk(String paramString, int paramInt);
+    public abstract void dp(String paramString, int paramInt);
     
-    public abstract void ye(String paramString);
+    public abstract void yO(String paramString);
   }
 }
 

@@ -3,109 +3,109 @@ package com.tencent.mm.sdk.h;
 import android.content.Context;
 import android.os.Build;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 public final class a
 {
-  private static Boolean IhW = null;
-  private static String IhX = null;
+  private static Boolean ICh = null;
+  private static String ICi = null;
   
-  public static boolean fmo()
+  public static boolean fqj()
   {
     AppMethodBeat.i(153473);
     String str;
-    if (IhW == null)
+    if (ICh == null)
     {
       str = Build.BRAND;
-      ad.i("MicroMsg.Vendor.Huawei", "Build.BRAND = %s", new Object[] { str });
+      ae.i("MicroMsg.Vendor.Huawei", "Build.BRAND = %s", new Object[] { str });
       if (!"HONOR".equalsIgnoreCase(str)) {
         break label59;
       }
-      IhW = Boolean.TRUE;
+      ICh = Boolean.TRUE;
     }
     for (;;)
     {
-      boolean bool = IhW.booleanValue();
+      boolean bool = ICh.booleanValue();
       AppMethodBeat.o(153473);
       return bool;
       label59:
       if ("HUAWEI".equalsIgnoreCase(str)) {
-        IhW = Boolean.TRUE;
+        ICh = Boolean.TRUE;
       } else {
-        IhW = Boolean.FALSE;
+        ICh = Boolean.FALSE;
       }
     }
   }
   
-  public static boolean fmp()
+  public static boolean fqk()
   {
-    AppMethodBeat.i(213162);
-    if (fms().startsWith("EmotionUI_8".toLowerCase()))
+    AppMethodBeat.i(216753);
+    if (fqn().startsWith("EmotionUI_8".toLowerCase()))
     {
-      AppMethodBeat.o(213162);
+      AppMethodBeat.o(216753);
       return true;
     }
-    AppMethodBeat.o(213162);
+    AppMethodBeat.o(216753);
     return false;
   }
   
-  public static boolean fmq()
+  public static boolean fql()
   {
-    AppMethodBeat.i(213163);
-    if (fms().startsWith("EmotionUI_9".toLowerCase()))
+    AppMethodBeat.i(216754);
+    if (fqn().startsWith("EmotionUI_9".toLowerCase()))
     {
-      AppMethodBeat.o(213163);
+      AppMethodBeat.o(216754);
       return true;
     }
-    AppMethodBeat.o(213163);
+    AppMethodBeat.o(216754);
     return false;
   }
   
-  public static boolean fmr()
+  public static boolean fqm()
   {
-    AppMethodBeat.i(213164);
-    if (fms().startsWith("EmotionUI_1".toLowerCase()))
+    AppMethodBeat.i(216755);
+    if (fqn().startsWith("EmotionUI_1".toLowerCase()))
     {
-      AppMethodBeat.o(213164);
+      AppMethodBeat.o(216755);
       return true;
     }
-    AppMethodBeat.o(213164);
+    AppMethodBeat.o(216755);
     return false;
   }
   
-  private static String fms()
+  private static String fqn()
   {
-    AppMethodBeat.i(213165);
+    AppMethodBeat.i(216756);
     Object localObject;
-    if (!bt.isNullOrNil(IhX))
+    if (!bu.isNullOrNil(ICi))
     {
-      localObject = IhX;
-      AppMethodBeat.o(213165);
+      localObject = ICi;
+      AppMethodBeat.o(216756);
       return localObject;
     }
     try
     {
       localObject = Class.forName("android.os.SystemProperties");
       localObject = (String)((Class)localObject).getMethod("get", new Class[] { String.class, String.class }).invoke(localObject, new Object[] { "ro.build.version.emui", "unknown" });
-      localObject = bt.bI((String)localObject, "").toLowerCase();
-      IhX = (String)localObject;
-      AppMethodBeat.o(213165);
+      localObject = bu.bI((String)localObject, "").toLowerCase();
+      ICi = (String)localObject;
+      AppMethodBeat.o(216756);
       return localObject;
     }
     catch (Exception localException)
     {
       for (;;)
       {
-        ad.e("MicroMsg.Vendor.Huawei", "getProperty() Exception:%s", new Object[] { localException.getMessage() });
+        ae.e("MicroMsg.Vendor.Huawei", "getProperty() Exception:%s", new Object[] { localException.getMessage() });
         String str = "unknown";
       }
     }
   }
   
-  public static boolean jr(Context paramContext)
+  public static boolean jx(Context paramContext)
   {
     AppMethodBeat.i(153472);
     if (paramContext == null)
@@ -117,33 +117,33 @@ public final class a
     {
       paramContext = paramContext.getClassLoader().loadClass("com.huawei.android.util.HwNotchSizeUtil");
       boolean bool = ((Boolean)paramContext.getMethod("hasNotchInScreen", new Class[0]).invoke(paramContext, new Object[0])).booleanValue();
-      ad.d("MicroMsg.Vendor.Huawei", "huawei hasCutOut: %s", new Object[] { Boolean.valueOf(bool) });
+      ae.d("MicroMsg.Vendor.Huawei", "huawei hasCutOut: %s", new Object[] { Boolean.valueOf(bool) });
       AppMethodBeat.o(153472);
       return bool;
     }
     catch (ClassNotFoundException paramContext)
     {
-      ad.e("MicroMsg.Vendor.Huawei", "hasCutOut, ClassNotFoundException!!");
+      ae.e("MicroMsg.Vendor.Huawei", "hasCutOut, ClassNotFoundException!!");
       return false;
     }
     catch (NoSuchMethodException paramContext)
     {
-      ad.e("MicroMsg.Vendor.Huawei", "hasCutOut, NoSuchMethodException!!");
+      ae.e("MicroMsg.Vendor.Huawei", "hasCutOut, NoSuchMethodException!!");
       return false;
     }
     catch (IllegalAccessException paramContext)
     {
-      ad.e("MicroMsg.Vendor.Huawei", "hasCutOut, IllegalAccessException!!");
+      ae.e("MicroMsg.Vendor.Huawei", "hasCutOut, IllegalAccessException!!");
       return false;
     }
     catch (InvocationTargetException paramContext)
     {
-      ad.e("MicroMsg.Vendor.Huawei", "hasCutOut, InvocationTargetException!!");
+      ae.e("MicroMsg.Vendor.Huawei", "hasCutOut, InvocationTargetException!!");
       return false;
     }
     finally
     {
-      ad.d("MicroMsg.Vendor.Huawei", "huawei hasCutOut: %s", new Object[] { Boolean.FALSE });
+      ae.d("MicroMsg.Vendor.Huawei", "huawei hasCutOut: %s", new Object[] { Boolean.FALSE });
       AppMethodBeat.o(153472);
     }
     return false;

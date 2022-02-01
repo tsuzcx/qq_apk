@@ -7,15 +7,15 @@ import java.util.NoSuchElementException;
 public final class a<E>
   implements Iterable<E>
 {
-  private static final a<Object> NGi;
-  public final a<E> NGj;
+  private static final a<Object> Odo;
+  public final a<E> Odp;
   public final E first;
   public final int size;
   
   static
   {
     AppMethodBeat.i(61423);
-    NGi = new a();
+    Odo = new a();
     AppMethodBeat.o(61423);
   }
   
@@ -23,27 +23,27 @@ public final class a<E>
   {
     this.size = 0;
     this.first = null;
-    this.NGj = null;
+    this.Odp = null;
   }
   
   private a(E paramE, a<E> parama)
   {
     AppMethodBeat.i(61415);
     this.first = paramE;
-    this.NGj = parama;
+    this.Odp = parama;
     parama.size += 1;
     AppMethodBeat.o(61415);
   }
   
-  private Iterator<E> alu(int paramInt)
+  private Iterator<E> ame(int paramInt)
   {
     AppMethodBeat.i(61418);
-    a locala = new a(alw(paramInt));
+    a locala = new a(amg(paramInt));
     AppMethodBeat.o(61418);
     return locala;
   }
   
-  private a<E> alw(int paramInt)
+  private a<E> amg(int paramInt)
   {
     AppMethodBeat.i(61422);
     Object localObject = this;
@@ -60,12 +60,12 @@ public final class a<E>
         AppMethodBeat.o(61422);
         return localObject;
       }
-      localObject = ((a)localObject).NGj;
+      localObject = ((a)localObject).Odp;
       paramInt -= 1;
     }
   }
   
-  private a<E> fE(Object paramObject)
+  private a<E> fH(Object paramObject)
   {
     AppMethodBeat.i(61420);
     if (this.size == 0)
@@ -75,12 +75,12 @@ public final class a<E>
     }
     if (this.first.equals(paramObject))
     {
-      paramObject = this.NGj;
+      paramObject = this.Odp;
       AppMethodBeat.o(61420);
       return paramObject;
     }
-    paramObject = this.NGj.fE(paramObject);
-    if (paramObject == this.NGj)
+    paramObject = this.Odp.fH(paramObject);
+    if (paramObject == this.Odp)
     {
       AppMethodBeat.o(61420);
       return this;
@@ -102,7 +102,7 @@ public final class a<E>
     }
     try
     {
-      localObject = alu(paramInt).next();
+      localObject = ame(paramInt).next();
       AppMethodBeat.o(61416);
       return localObject;
     }
@@ -114,20 +114,20 @@ public final class a<E>
     }
   }
   
-  public static <E> a<E> guv()
+  public static <E> a<E> gyX()
   {
-    return NGi;
+    return Odo;
   }
   
-  public final a<E> alv(int paramInt)
+  public final a<E> amf(int paramInt)
   {
     AppMethodBeat.i(61421);
-    a locala = fE(get(paramInt));
+    a locala = fH(get(paramInt));
     AppMethodBeat.o(61421);
     return locala;
   }
   
-  public final a<E> fD(E paramE)
+  public final a<E> fG(E paramE)
   {
     AppMethodBeat.i(61419);
     paramE = new a(paramE, this);
@@ -138,7 +138,7 @@ public final class a<E>
   public final Iterator<E> iterator()
   {
     AppMethodBeat.i(61417);
-    Iterator localIterator = alu(0);
+    Iterator localIterator = ame(0);
     AppMethodBeat.o(61417);
     return localIterator;
   }
@@ -146,17 +146,17 @@ public final class a<E>
   static final class a<E>
     implements Iterator<E>
   {
-    private a<E> NGk;
+    private a<E> Odq;
     
     public a(a<E> parama)
     {
-      this.NGk = parama;
+      this.Odq = parama;
     }
     
     public final boolean hasNext()
     {
       AppMethodBeat.i(61413);
-      if (a.a(this.NGk) > 0)
+      if (a.a(this.Odq) > 0)
       {
         AppMethodBeat.o(61413);
         return true;
@@ -167,8 +167,8 @@ public final class a<E>
     
     public final E next()
     {
-      Object localObject = this.NGk.first;
-      this.NGk = this.NGk.NGj;
+      Object localObject = this.Odq.first;
+      this.Odq = this.Odq.Odp;
       return localObject;
     }
     
@@ -183,7 +183,7 @@ public final class a<E>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.c.a
  * JD-Core Version:    0.7.0.1
  */

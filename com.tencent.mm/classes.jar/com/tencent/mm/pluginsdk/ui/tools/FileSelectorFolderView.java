@@ -19,27 +19,27 @@ import android.widget.ListView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public class FileSelectorFolderView
   extends LinearLayout
   implements AdapterView.OnItemClickListener
 {
-  private a FjK;
-  private FileSelectorFolderView.b FjL;
+  private a FCj;
+  private FileSelectorFolderView.b FCk;
   boolean jR;
-  private FrameLayout tNO;
-  private View tNP;
-  private ListView tNQ;
-  private boolean tNS;
+  private FrameLayout tYF;
+  private View tYG;
+  private ListView tYH;
+  private boolean tYJ;
   
   public FileSelectorFolderView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(31954);
-    this.FjK = null;
+    this.FCj = null;
     this.jR = false;
-    this.tNS = false;
+    this.tYJ = false;
     init();
     AppMethodBeat.o(31954);
   }
@@ -48,9 +48,9 @@ public class FileSelectorFolderView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(31955);
-    this.FjK = null;
+    this.FCj = null;
     this.jR = false;
-    this.tNS = false;
+    this.tYJ = false;
     init();
     AppMethodBeat.o(31955);
   }
@@ -59,61 +59,61 @@ public class FileSelectorFolderView
   {
     AppMethodBeat.i(31957);
     setOrientation(1);
-    this.tNO = new FrameLayout(getContext());
+    this.tYF = new FrameLayout(getContext());
     Object localObject = new LinearLayout.LayoutParams(-1, -1);
-    this.tNO.setVisibility(8);
-    addView(this.tNO, (ViewGroup.LayoutParams)localObject);
-    this.tNP = new View(getContext());
-    this.tNP.setBackgroundColor(-872415232);
-    this.tNP.setOnClickListener(new View.OnClickListener()
+    this.tYF.setVisibility(8);
+    addView(this.tYF, (ViewGroup.LayoutParams)localObject);
+    this.tYG = new View(getContext());
+    this.tYG.setBackgroundColor(-872415232);
+    this.tYG.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(31950);
         b localb = new b();
         localb.bd(paramAnonymousView);
-        a.b("com/tencent/mm/pluginsdk/ui/tools/FileSelectorFolderView$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        a.b("com/tencent/mm/pluginsdk/ui/tools/FileSelectorFolderView$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
         FileSelectorFolderView.c(FileSelectorFolderView.this);
         a.a(this, "com/tencent/mm/pluginsdk/ui/tools/FileSelectorFolderView$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(31950);
       }
     });
     localObject = new FrameLayout.LayoutParams(-1, -1);
-    this.tNO.addView(this.tNP, (ViewGroup.LayoutParams)localObject);
-    this.tNQ = new ListView(getContext());
-    this.tNQ.setCacheColorHint(0);
-    this.tNQ.setBackgroundColor(getContext().getResources().getColor(2131099653));
-    this.tNQ.setSelector(2131233299);
-    this.tNQ.setOnItemClickListener(this);
+    this.tYF.addView(this.tYG, (ViewGroup.LayoutParams)localObject);
+    this.tYH = new ListView(getContext());
+    this.tYH.setCacheColorHint(0);
+    this.tYH.setBackgroundColor(getContext().getResources().getColor(2131099653));
+    this.tYH.setSelector(2131233299);
+    this.tYH.setOnItemClickListener(this);
     int i = getResources().getDimensionPixelSize(2131165516);
-    this.tNQ.setPadding(i, i / 3, i, 0);
+    this.tYH.setPadding(i, i / 3, i, 0);
     localObject = new FrameLayout.LayoutParams(-1, -2);
     ((FrameLayout.LayoutParams)localObject).topMargin = getResources().getDimensionPixelSize(2131165252);
     ((FrameLayout.LayoutParams)localObject).gravity = 80;
-    this.tNO.addView(this.tNQ, (ViewGroup.LayoutParams)localObject);
-    this.FjL = new FileSelectorFolderView.b(getContext());
-    this.tNQ.setAdapter(this.FjL);
+    this.tYF.addView(this.tYH, (ViewGroup.LayoutParams)localObject);
+    this.FCk = new FileSelectorFolderView.b(getContext());
+    this.tYH.setAdapter(this.FCk);
     AppMethodBeat.o(31957);
   }
   
-  final void mS(boolean paramBoolean)
+  final void mW(boolean paramBoolean)
   {
     AppMethodBeat.i(31956);
     if (this.jR == paramBoolean)
     {
-      ad.d("MicroMsg.FileSelectorFolderView", "want to expand, but same status, expanded %B", new Object[] { Boolean.valueOf(this.jR) });
+      ae.d("MicroMsg.FileSelectorFolderView", "want to expand, but same status, expanded %B", new Object[] { Boolean.valueOf(this.jR) });
       AppMethodBeat.o(31956);
       return;
     }
-    if (this.tNS)
+    if (this.tYJ)
     {
-      ad.d("MicroMsg.FileSelectorFolderView", "want to expand[%B], but now in animation", new Object[] { Boolean.valueOf(paramBoolean) });
+      ae.d("MicroMsg.FileSelectorFolderView", "want to expand[%B], but now in animation", new Object[] { Boolean.valueOf(paramBoolean) });
       AppMethodBeat.o(31956);
       return;
     }
     if (this.jR)
     {
-      this.tNS = true;
+      this.tYJ = true;
       localAnimation = AnimationUtils.loadAnimation(getContext(), 2130772106);
       localAnimation.setAnimationListener(new Animation.AnimationListener()
       {
@@ -130,16 +130,16 @@ public class FileSelectorFolderView
         
         public final void onAnimationStart(Animation paramAnonymousAnimation) {}
       });
-      this.tNQ.startAnimation(localAnimation);
+      this.tYH.startAnimation(localAnimation);
       localAnimation = AnimationUtils.loadAnimation(getContext(), 2130772048);
-      this.tNP.startAnimation(localAnimation);
+      this.tYG.startAnimation(localAnimation);
       AppMethodBeat.o(31956);
       return;
     }
-    this.tNS = true;
-    this.tNO.setVisibility(0);
+    this.tYJ = true;
+    this.tYF.setVisibility(0);
     Animation localAnimation = AnimationUtils.loadAnimation(getContext(), 2130772047);
-    this.tNP.startAnimation(localAnimation);
+    this.tYG.startAnimation(localAnimation);
     localAnimation = AnimationUtils.loadAnimation(getContext(), 2130772108);
     localAnimation.setAnimationListener(new Animation.AnimationListener()
     {
@@ -155,7 +155,7 @@ public class FileSelectorFolderView
       
       public final void onAnimationStart(Animation paramAnonymousAnimation) {}
     });
-    this.tNQ.startAnimation(localAnimation);
+    this.tYH.startAnimation(localAnimation);
     AppMethodBeat.o(31956);
   }
   
@@ -165,25 +165,25 @@ public class FileSelectorFolderView
     b localb = new b();
     localb.bd(paramAdapterView);
     localb.bd(paramView);
-    localb.mr(paramInt);
-    localb.qY(paramLong);
-    a.b("com/tencent/mm/pluginsdk/ui/tools/FileSelectorFolderView", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.ahq());
-    if (this.FjK != null) {
-      this.FjK.Zv(paramInt);
+    localb.mu(paramInt);
+    localb.rl(paramLong);
+    a.b("com/tencent/mm/pluginsdk/ui/tools/FileSelectorFolderView", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.ahF());
+    if (this.FCj != null) {
+      this.FCj.aab(paramInt);
     }
-    this.tNP.performClick();
+    this.tYG.performClick();
     a.a(this, "com/tencent/mm/pluginsdk/ui/tools/FileSelectorFolderView", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
     AppMethodBeat.o(31958);
   }
   
   public void setListener(a parama)
   {
-    this.FjK = parama;
+    this.FCj = parama;
   }
   
   public static abstract interface a
   {
-    public abstract void Zv(int paramInt);
+    public abstract void aab(int paramInt);
   }
 }
 

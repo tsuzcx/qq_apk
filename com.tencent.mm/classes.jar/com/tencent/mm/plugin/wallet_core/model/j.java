@@ -8,8 +8,8 @@ import org.json.JSONObject;
 
 public final class j
 {
-  public String CWR;
-  public List<j.a> CWS;
+  public String Dow;
+  public List<j.a> Dox;
   public String content;
   public String title;
   
@@ -24,8 +24,8 @@ public final class j
     j localj = new j();
     localj.title = paramJSONObject.optString("title");
     localj.content = paramJSONObject.optString("content");
-    localj.CWR = paramJSONObject.optString("content_not_enough");
-    localj.CWS = new ArrayList();
+    localj.Dow = paramJSONObject.optString("content_not_enough");
+    localj.Dox = new ArrayList();
     paramJSONObject = paramJSONObject.optJSONArray("show_infos");
     if (paramJSONObject != null)
     {
@@ -34,7 +34,7 @@ public final class j
       {
         j.a locala = j.a.bi(paramJSONObject.optJSONObject(i));
         if (locala != null) {
-          localj.CWS.add(locala);
+          localj.Dox.add(locala);
         }
         i += 1;
       }

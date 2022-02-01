@@ -14,7 +14,7 @@ final class WalletPayUI$25
   public final void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
     AppMethodBeat.i(69414);
-    paramCompoundButton = this.CKp.getButton(-2);
+    paramCompoundButton = this.DbV.getButton(-2);
     if (paramBoolean)
     {
       paramCompoundButton.setEnabled(false);

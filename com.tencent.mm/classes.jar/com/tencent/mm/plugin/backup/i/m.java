@@ -4,15 +4,15 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import f.a.a.b;
 
 public final class m
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public String nDr;
-  public String nDs;
-  public String nDt;
-  public String nDu;
-  public String nDv;
-  public int nDw;
-  public long nDx;
+  public String nIM;
+  public String nIN;
+  public String nIO;
+  public String nIP;
+  public String nIQ;
+  public int nIR;
+  public long nIS;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -20,117 +20,117 @@ public final class m
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.nDr == null)
+      if (this.nIM == null)
       {
         paramVarArgs = new b("Not all required fields were included: DeviceID");
         AppMethodBeat.o(22117);
         throw paramVarArgs;
       }
-      if (this.nDs == null)
+      if (this.nIN == null)
       {
         paramVarArgs = new b("Not all required fields were included: DeviceName");
         AppMethodBeat.o(22117);
         throw paramVarArgs;
       }
-      if (this.nDt == null)
+      if (this.nIO == null)
       {
         paramVarArgs = new b("Not all required fields were included: Model");
         AppMethodBeat.o(22117);
         throw paramVarArgs;
       }
-      if (this.nDu == null)
+      if (this.nIP == null)
       {
         paramVarArgs = new b("Not all required fields were included: SystemName");
         AppMethodBeat.o(22117);
         throw paramVarArgs;
       }
-      if (this.nDv == null)
+      if (this.nIQ == null)
       {
         paramVarArgs = new b("Not all required fields were included: SystemVersion");
         AppMethodBeat.o(22117);
         throw paramVarArgs;
       }
-      if (this.nDr != null) {
-        paramVarArgs.d(1, this.nDr);
+      if (this.nIM != null) {
+        paramVarArgs.d(1, this.nIM);
       }
-      if (this.nDs != null) {
-        paramVarArgs.d(2, this.nDs);
+      if (this.nIN != null) {
+        paramVarArgs.d(2, this.nIN);
       }
-      if (this.nDt != null) {
-        paramVarArgs.d(3, this.nDt);
+      if (this.nIO != null) {
+        paramVarArgs.d(3, this.nIO);
       }
-      if (this.nDu != null) {
-        paramVarArgs.d(4, this.nDu);
+      if (this.nIP != null) {
+        paramVarArgs.d(4, this.nIP);
       }
-      if (this.nDv != null) {
-        paramVarArgs.d(5, this.nDv);
+      if (this.nIQ != null) {
+        paramVarArgs.d(5, this.nIQ);
       }
-      paramVarArgs.aS(6, this.nDw);
-      paramVarArgs.aY(7, this.nDx);
+      paramVarArgs.aS(6, this.nIR);
+      paramVarArgs.aZ(7, this.nIS);
       AppMethodBeat.o(22117);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.nDr == null) {
+      if (this.nIM == null) {
         break label811;
       }
     }
     label811:
-    for (int i = f.a.a.b.b.a.e(1, this.nDr) + 0;; i = 0)
+    for (int i = f.a.a.b.b.a.e(1, this.nIM) + 0;; i = 0)
     {
       paramInt = i;
-      if (this.nDs != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.nDs);
+      if (this.nIN != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.nIN);
       }
       i = paramInt;
-      if (this.nDt != null) {
-        i = paramInt + f.a.a.b.b.a.e(3, this.nDt);
+      if (this.nIO != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.nIO);
       }
       paramInt = i;
-      if (this.nDu != null) {
-        paramInt = i + f.a.a.b.b.a.e(4, this.nDu);
+      if (this.nIP != null) {
+        paramInt = i + f.a.a.b.b.a.e(4, this.nIP);
       }
       i = paramInt;
-      if (this.nDv != null) {
-        i = paramInt + f.a.a.b.b.a.e(5, this.nDv);
+      if (this.nIQ != null) {
+        i = paramInt + f.a.a.b.b.a.e(5, this.nIQ);
       }
-      paramInt = f.a.a.b.b.a.bz(6, this.nDw);
-      int j = f.a.a.b.b.a.p(7, this.nDx);
+      paramInt = f.a.a.b.b.a.bz(6, this.nIR);
+      int j = f.a.a.b.b.a.p(7, this.nIS);
       AppMethodBeat.o(22117);
       return i + paramInt + j;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
-        if (this.nDr == null)
+        if (this.nIM == null)
         {
           paramVarArgs = new b("Not all required fields were included: DeviceID");
           AppMethodBeat.o(22117);
           throw paramVarArgs;
         }
-        if (this.nDs == null)
+        if (this.nIN == null)
         {
           paramVarArgs = new b("Not all required fields were included: DeviceName");
           AppMethodBeat.o(22117);
           throw paramVarArgs;
         }
-        if (this.nDt == null)
+        if (this.nIO == null)
         {
           paramVarArgs = new b("Not all required fields were included: Model");
           AppMethodBeat.o(22117);
           throw paramVarArgs;
         }
-        if (this.nDu == null)
+        if (this.nIP == null)
         {
           paramVarArgs = new b("Not all required fields were included: SystemName");
           AppMethodBeat.o(22117);
           throw paramVarArgs;
         }
-        if (this.nDv == null)
+        if (this.nIQ == null)
         {
           paramVarArgs = new b("Not all required fields were included: SystemVersion");
           AppMethodBeat.o(22117);
@@ -149,31 +149,31 @@ public final class m
           AppMethodBeat.o(22117);
           return -1;
         case 1: 
-          localm.nDr = locala.NPN.readString();
+          localm.nIM = locala.OmT.readString();
           AppMethodBeat.o(22117);
           return 0;
         case 2: 
-          localm.nDs = locala.NPN.readString();
+          localm.nIN = locala.OmT.readString();
           AppMethodBeat.o(22117);
           return 0;
         case 3: 
-          localm.nDt = locala.NPN.readString();
+          localm.nIO = locala.OmT.readString();
           AppMethodBeat.o(22117);
           return 0;
         case 4: 
-          localm.nDu = locala.NPN.readString();
+          localm.nIP = locala.OmT.readString();
           AppMethodBeat.o(22117);
           return 0;
         case 5: 
-          localm.nDv = locala.NPN.readString();
+          localm.nIQ = locala.OmT.readString();
           AppMethodBeat.o(22117);
           return 0;
         case 6: 
-          localm.nDw = locala.NPN.zc();
+          localm.nIR = locala.OmT.zc();
           AppMethodBeat.o(22117);
           return 0;
         }
-        localm.nDx = locala.NPN.zd();
+        localm.nIS = locala.OmT.zd();
         AppMethodBeat.o(22117);
         return 0;
       }

@@ -15,10 +15,11 @@ import android.view.Window;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bs.d;
+import com.tencent.mm.br.d;
 import com.tencent.mm.compatible.util.n;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.plugin.appbrand.ab;
+import com.tencent.mm.plugin.websearch.api.ad;
 import com.tencent.mm.plugin.webview.c.f;
 import com.tencent.mm.plugin.webview.c.f.57;
 import com.tencent.mm.plugin.webview.c.l.a;
@@ -26,9 +27,10 @@ import com.tencent.mm.plugin.webview.stub.e;
 import com.tencent.mm.plugin.webview.ui.tools.WebViewUI;
 import com.tencent.mm.plugin.webview.ui.tools.fts.FTSBaseWebViewUI;
 import com.tencent.mm.plugin.webview.ui.tools.fts.FTSSearchTabWebViewUI;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.al;
 import com.tencent.mm.ui.search.FTSEditTextView;
 import com.tencent.mm.ui.search.FTSEditTextView.b;
@@ -42,18 +44,18 @@ import junit.framework.Assert;
 public class AppBrandSearchUI
   extends FTSSearchTabWebViewUI
 {
-  private View mEu;
-  private String mEv;
-  private String mEw;
+  private String mJA;
+  private String mJB;
+  private View mJz;
   private int scene;
   
   public final void a(String paramString1, String paramString2, List<a.c> paramList, FTSEditTextView.b paramb)
   {
     AppMethodBeat.i(163181);
-    if ((!TextUtils.isEmpty(paramString2)) && (this.mEu != null)) {
-      this.mEu.setVisibility(8);
+    if ((!TextUtils.isEmpty(paramString2)) && (this.mJz != null)) {
+      this.mJz.setVisibility(8);
     }
-    if (this.lvv == null) {
+    if (this.lzT == null) {
       if ((!isFinishing()) && (!isDestroyed())) {
         Assert.fail("invoker is NULL");
       }
@@ -65,32 +67,32 @@ public class AppBrandSearchUI
       return;
       try
       {
-        this.lvv.k(10001, null);
+        this.lzT.k(10001, null);
       }
       catch (RemoteException localRemoteException)
       {
-        com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.AppBrandSearchUI", "refresh keyword id error : %s", new Object[] { localRemoteException });
+        ae.e("MicroMsg.AppBrandSearchUI", "refresh keyword id error : %s", new Object[] { localRemoteException });
       }
     }
   }
   
-  public final void bzn()
+  public final void bAi()
   {
     AppMethodBeat.i(21138);
-    super.bzn();
-    if ((this.EgI != null) && (!bt.isNullOrNil(this.query)))
+    super.bAi();
+    if ((this.EyL != null) && (!bu.isNullOrNil(this.query)))
     {
-      this.EgI.getFtsEditText().H(this.query, null);
-      this.EgI.getFtsEditText().vr.clearFocus();
+      this.EyL.getFtsEditText().I(this.query, null);
+      this.EyL.getFtsEditText().vr.clearFocus();
       hideVKB();
     }
     AppMethodBeat.o(21138);
   }
   
-  public final int bzo()
+  public final int bAj()
   {
     AppMethodBeat.i(21140);
-    if ((Build.VERSION.SDK_INT >= 23) && ((!com.tencent.mm.compatible.util.g.abk()) || (!AppBrandNearbyWebViewUI.abl())))
+    if ((Build.VERSION.SDK_INT >= 23) && ((!com.tencent.mm.compatible.util.g.abt()) || (!AppBrandNearbyWebViewUI.abu())))
     {
       al.d(getWindow());
       AppMethodBeat.o(21140);
@@ -98,20 +100,20 @@ public class AppBrandSearchUI
     }
     if (Build.VERSION.SDK_INT >= 21)
     {
-      i = ab.jAT;
+      i = ab.jDE;
       AppMethodBeat.o(21140);
       return i;
     }
-    int i = super.bzo();
+    int i = super.bAj();
     AppMethodBeat.o(21140);
     return i;
   }
   
-  public final boolean bzz()
+  public final boolean bAu()
   {
     AppMethodBeat.i(21142);
-    this.mEu.setVisibility(8);
-    boolean bool = super.bzz();
+    this.mJz.setVisibility(8);
+    boolean bool = super.bAu();
     AppMethodBeat.o(21142);
     return bool;
   }
@@ -120,10 +122,10 @@ public class AppBrandSearchUI
   {
     AppMethodBeat.i(21144);
     super.dealContentView(paramView);
-    this.mEv = getIntent().getStringExtra("key_nearby_url");
+    this.mJA = getIntent().getStringExtra("key_nearby_url");
     getIntent().getStringExtra("key_nearby_list_id");
-    this.mEu = getLayoutInflater().inflate(2131493053, (ViewGroup)paramView, false);
-    View localView1 = this.mEu.findViewById(2131302682);
+    this.mJz = getLayoutInflater().inflate(2131493053, (ViewGroup)paramView, false);
+    View localView1 = this.mJz.findViewById(2131302682);
     localView1.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
@@ -131,7 +133,7 @@ public class AppBrandSearchUI
         AppMethodBeat.i(21132);
         Object localObject = new com.tencent.mm.hellhoundlib.b.b();
         ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramAnonymousView);
-        a.b("com/tencent/mm/plugin/appbrand/ui/AppBrandSearchUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahq());
+        a.b("com/tencent/mm/plugin/appbrand/ui/AppBrandSearchUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahF());
         if (TextUtils.isEmpty(AppBrandSearchUI.a(AppBrandSearchUI.this)))
         {
           a.a(this, "com/tencent/mm/plugin/appbrand/ui/AppBrandSearchUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
@@ -148,18 +150,18 @@ public class AppBrandSearchUI
         AppMethodBeat.o(21132);
       }
     });
-    if (TextUtils.isEmpty(this.mEv))
+    if (TextUtils.isEmpty(this.mJA))
     {
       localView1.setVisibility(8);
-      this.mEu.setVisibility(8);
+      this.mJz.setVisibility(8);
     }
     while ((paramView instanceof FrameLayout))
     {
-      ((FrameLayout)paramView).addView(this.mEu);
+      ((FrameLayout)paramView).addView(this.mJz);
       AppMethodBeat.o(21144);
       return;
       localView1.setVisibility(0);
-      this.mEu.setVisibility(0);
+      this.mJz.setVisibility(0);
     }
     paramView = paramView.getLayoutParams();
     int k;
@@ -167,8 +169,8 @@ public class AppBrandSearchUI
     int i;
     if (getWindow().hasFeature(9))
     {
-      localView1 = this.mEu;
-      k = this.mEu.getPaddingLeft();
+      localView1 = this.mJz;
+      k = this.mJz.getPaddingLeft();
       localRect = new Rect();
       int j = getActionBarHeight();
       View localView2 = getWindow().getDecorView();
@@ -187,8 +189,8 @@ public class AppBrandSearchUI
     }
     for (;;)
     {
-      localView1.setPadding(k, i + this.mEu.getPaddingTop(), this.mEu.getPaddingRight(), this.mEu.getPaddingBottom());
-      addContentView(this.mEu, paramView);
+      localView1.setPadding(k, i + this.mJz.getPaddingTop(), this.mJz.getPaddingRight(), this.mJz.getPaddingBottom());
+      addContentView(this.mJz, paramView);
       AppMethodBeat.o(21144);
       return;
       label321:
@@ -230,26 +232,26 @@ public class AppBrandSearchUI
         public final void run()
         {
           AppMethodBeat.i(21133);
-          if (AppBrandSearchUI.this.DzP != null)
+          if (AppBrandSearchUI.this.DRx != null)
           {
-            f localf = AppBrandSearchUI.this.DzP;
+            f localf = AppBrandSearchUI.this.DRx;
             String str = str;
             int i = paramInt;
             int j = i;
             int k = j;
-            if (!localf.BHY)
+            if (!localf.BZx)
             {
-              com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.JsApiHandler", "onSearchGuideDataReady fail, not ready");
+              ae.e("MicroMsg.JsApiHandler", "onSearchGuideDataReady fail, not ready");
               AppMethodBeat.o(21133);
               return;
             }
-            com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.JsApiHandler", "onSearchGuideDataReady success, ready");
+            ae.i("MicroMsg.JsApiHandler", "onSearchGuideDataReady success, ready");
             HashMap localHashMap = new HashMap();
             localHashMap.put("json", str);
             localHashMap.put("isCacheData", Integer.valueOf(i));
             localHashMap.put("isExpired", Integer.valueOf(j));
             localHashMap.put("isPreload", Integer.valueOf(k));
-            aq.f(new f.57(localf, l.a.b("onSearchGuideDataReady", localHashMap, localf.DMD, localf.vJP)));
+            ar.f(new f.57(localf, l.a.b("onSearchGuideDataReady", localHashMap, localf.EeC, localf.vVT)));
           }
           AppMethodBeat.o(21133);
         }
@@ -261,24 +263,15 @@ public class AppBrandSearchUI
   {
     AppMethodBeat.i(21134);
     super.onCreate(paramBundle);
-    if (getIntent() == null)
-    {
-      finish();
-      AppMethodBeat.o(21134);
-      return;
-    }
-    com.tencent.mm.plugin.websearch.api.ad.Wf(com.tencent.mm.plugin.websearch.api.ad.We(3));
-    this.mEw = getIntent().getStringExtra("key_session_id");
+    ad.WM(ad.WL(3));
+    this.mJB = getIntent().getStringExtra("key_session_id");
     this.scene = getIntent().getIntExtra("ftsbizscene", 0);
-    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.AppBrandSearchUI", "onCreate oreh report weAppSearchClickStream(13929) statSessionId:%s", new Object[] { this.mEw });
-    com.tencent.mm.plugin.report.service.g.yhR.f(13929, new Object[] { this.mEw, "", Integer.valueOf(1), Integer.valueOf(this.scene) });
+    ae.i("MicroMsg.AppBrandSearchUI", "onCreate oreh report weAppSearchClickStream(13929) statSessionId:%s", new Object[] { this.mJB });
+    com.tencent.mm.plugin.report.service.g.yxI.f(13929, new Object[] { this.mJB, "", Integer.valueOf(1), Integer.valueOf(this.scene) });
     paramBundle = new Intent();
-    paramBundle.putExtra("key_session_id", this.mEw);
+    paramBundle.putExtra("key_session_id", this.mJB);
     paramBundle.putExtra("ftsbizscene", this.scene);
     setResult(-1, paramBundle);
-    if (getIntent().getBooleanExtra("key_alpha_in", false)) {
-      overridePendingTransition(2130771981, 2130771986);
-    }
     AppMethodBeat.o(21134);
   }
   
@@ -286,7 +279,7 @@ public class AppBrandSearchUI
   {
     AppMethodBeat.i(21141);
     if ((this.scene == 3) || (this.scene == 16)) {
-      com.tencent.mm.plugin.report.service.g.yhR.f(13929, new Object[] { this.mEw, com.tencent.mm.modelappbrand.b.hKo, Integer.valueOf(2), Integer.valueOf(this.scene) });
+      com.tencent.mm.plugin.report.service.g.yxI.f(13929, new Object[] { this.mJB, com.tencent.mm.modelappbrand.b.hNh, Integer.valueOf(2), Integer.valueOf(this.scene) });
     }
     super.onDestroy();
     AppMethodBeat.o(21141);

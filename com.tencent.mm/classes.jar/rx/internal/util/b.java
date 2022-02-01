@@ -8,17 +8,17 @@ public final class b
   extends AtomicLong
   implements f
 {
-  Throwable MKf;
-  boolean NXA;
-  final a Oae;
+  Throwable Nhi;
+  boolean OuF;
+  final a Oxj;
   public volatile boolean terminated;
   
   public b(a parama)
   {
-    this.Oae = parama;
+    this.Oxj = parama;
   }
   
-  public final void FO(long paramLong)
+  public final void Gq(long paramLong)
   {
     AppMethodBeat.i(90200);
     if (paramLong == 0L)
@@ -69,12 +69,12 @@ public final class b
     }
   }
   
-  public final void P(Throwable paramThrowable)
+  public final void Q(Throwable paramThrowable)
   {
     AppMethodBeat.i(90199);
     if (!this.terminated)
     {
-      this.MKf = paramThrowable;
+      this.Nhi = paramThrowable;
       this.terminated = true;
       drain();
     }
@@ -87,10 +87,10 @@ public final class b
     int k;
     try
     {
-      if (this.NXA) {
+      if (this.OuF) {
         return;
       }
-      this.NXA = true;
+      this.OuF = true;
       bool1 = this.terminated;
       l1 = get();
       k = 0;
@@ -104,7 +104,7 @@ public final class b
     }
     try
     {
-      locala = this.Oae;
+      locala = this.Oxj;
     }
     finally
     {
@@ -126,7 +126,7 @@ public final class b
       if (locala.peek() == null)
       {
         i = 1;
-        locala.N(this.MKf);
+        locala.O(this.Nhi);
         AppMethodBeat.o(90201);
         return;
       }
@@ -176,7 +176,7 @@ public final class b
       }
       try
       {
-        this.NXA = false;
+        this.OuF = false;
         i = j;
         AppMethodBeat.o(90201);
         return;
@@ -209,7 +209,7 @@ public final class b
         if (i == 0) {}
         try
         {
-          this.NXA = false;
+          this.OuF = false;
           throw localObject3;
         }
         finally
@@ -231,14 +231,14 @@ public final class b
     } while (i == 0);
     j = 1;
     i = j;
-    this.NXA = false;
+    this.OuF = false;
     i = j;
     AppMethodBeat.o(90201);
   }
   
   public static abstract interface a
   {
-    public abstract void N(Throwable paramThrowable);
+    public abstract void O(Throwable paramThrowable);
     
     public abstract boolean accept(Object paramObject);
     
@@ -249,7 +249,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     rx.internal.util.b
  * JD-Core Version:    0.7.0.1
  */

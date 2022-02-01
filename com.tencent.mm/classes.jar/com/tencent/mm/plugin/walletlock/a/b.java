@@ -7,13 +7,13 @@ import com.tencent.mm.kernel.c.a;
 public abstract interface b
   extends a
 {
-  public abstract void VM(int paramInt);
+  public abstract void Wt(int paramInt);
   
-  public abstract void a(Activity paramActivity, b paramb, b.a parama);
+  public abstract void a(Activity paramActivity, b paramb, a parama);
   
   public abstract boolean a(Activity paramActivity, b paramb);
   
-  public abstract void aJ(Activity paramActivity);
+  public abstract void aK(Activity paramActivity);
   
   public abstract void b(Activity paramActivity, int paramInt1, int paramInt2);
   
@@ -21,11 +21,11 @@ public abstract interface b
   
   public abstract void e(Activity paramActivity, Intent paramIntent);
   
-  public abstract b eJn();
+  public abstract b eMV();
   
-  public abstract boolean eJo();
+  public abstract boolean eMW();
   
-  public abstract boolean eJp();
+  public abstract boolean eMX();
   
   public abstract void init();
   
@@ -33,14 +33,16 @@ public abstract interface b
   
   public abstract void m(Activity paramActivity, int paramInt);
   
+  public static abstract interface a {}
+  
   public static abstract interface b
   {
-    public abstract boolean aK(Activity paramActivity);
+    public abstract boolean aL(Activity paramActivity);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.walletlock.a.b
  * JD-Core Version:    0.7.0.1
  */

@@ -5,10 +5,10 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.platformtools.z;
 import com.tencent.mm.plugin.webview.core.BaseWebViewController;
 import com.tencent.mm.plugin.webview.core.j.a;
-import com.tencent.mm.protocal.protobuf.avj;
-import com.tencent.mm.protocal.protobuf.bqx;
-import com.tencent.mm.protocal.protobuf.eeb;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.avz;
+import com.tencent.mm.protocal.protobuf.brr;
+import com.tencent.mm.protocal.protobuf.efs;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.xweb.WebResourceRequest;
 import com.tencent.xweb.WebResourceResponse;
 import com.tencent.xweb.WebView;
@@ -21,41 +21,41 @@ import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.util.List;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/webview/webcompt/WebComponentInterceptor;", "Lcom/tencent/mm/plugin/webview/core/WebViewInterceptor;", "()V", "TAG", "", "intercept", "Lcom/tencent/xweb/WebResourceResponse;", "webview", "Lcom/tencent/xweb/WebView;", "request", "Lcom/tencent/xweb/WebResourceRequest;", "overrideGetA8Key", "", "url", "force", "reason", "", "overrideProcessResult", "reqUrl", "resp", "Lcom/tencent/mm/protocal/protobuf/GetA8KeyResp;", "overrideUrl", "Lcom/tencent/mm/plugin/webview/core/WebViewInterceptor$OverrideUrlResult;", "webView", "webview-sdk_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/webview/webcompt/WebComponentInterceptor;", "Lcom/tencent/mm/plugin/webview/core/WebViewInterceptor;", "()V", "TAG", "", "intercept", "Lcom/tencent/xweb/WebResourceResponse;", "webview", "Lcom/tencent/xweb/WebView;", "request", "Lcom/tencent/xweb/WebResourceRequest;", "overrideGetA8Key", "", "url", "force", "reason", "", "overrideProcessResult", "reqUrl", "resp", "Lcom/tencent/mm/protocal/protobuf/GetA8KeyResp;", "overrideUrl", "Lcom/tencent/mm/plugin/webview/core/WebViewInterceptor$OverrideUrlResult;", "webView", "webview-sdk_release"})
 public final class e
   extends com.tencent.mm.plugin.webview.core.j
 {
   private final String TAG = "MicroMsg.WebComponentInterceptor";
   
-  public final boolean aGv(String paramString)
+  public final boolean aHP(String paramString)
   {
-    AppMethodBeat.i(214408);
+    AppMethodBeat.i(214249);
     p.h(paramString, "url");
-    c.b localb = c.EuR;
-    if (n.nz(paramString, c.eVX()))
+    c.b localb = c.ENl;
+    if (n.nF(paramString, c.eZJ()))
     {
-      AppMethodBeat.o(214408);
+      AppMethodBeat.o(214249);
       return true;
     }
-    AppMethodBeat.o(214408);
+    AppMethodBeat.o(214249);
     return false;
   }
   
   public final WebResourceResponse b(WebView paramWebView, WebResourceRequest paramWebResourceRequest)
   {
-    AppMethodBeat.i(214410);
+    AppMethodBeat.i(214251);
     p.h(paramWebView, "webview");
     p.h(paramWebResourceRequest, "request");
     paramWebView = paramWebResourceRequest.getUrl().toString();
     p.g(paramWebView, "request.url.toString()");
-    Object localObject1 = c.EuR;
-    if (n.nz(paramWebView, c.eVX()))
+    Object localObject1 = c.ENl;
+    if (n.nF(paramWebView, c.eZJ()))
     {
-      paramWebView = getController().getJsapi().eOJ();
+      paramWebView = getController().getJsapi().eSu();
       p.h(paramWebResourceRequest, "request");
-      localObject1 = paramWebView.Ewx;
+      localObject1 = paramWebView.EOT;
       p.h(paramWebResourceRequest, "request");
-      paramWebView = c.w.Ewo;
+      paramWebView = c.w.EOK;
       paramWebResourceRequest = paramWebResourceRequest.getUrl();
       p.g(paramWebResourceRequest, "url");
       paramWebView = paramWebResourceRequest.getHost();
@@ -67,67 +67,67 @@ public final class e
     label559:
     for (;;)
     {
-      ad.i(c.TAG, "getInterceptResponse ".concat(String.valueOf(paramWebResourceRequest)));
-      ((c)localObject1).EuF.a(b.Eur);
-      c.l.a locala = (c.l.a)((c)localObject1).eVS().get(paramWebView);
+      ae.i(c.TAG, "getInterceptResponse ".concat(String.valueOf(paramWebResourceRequest)));
+      ((c)localObject1).EMZ.a(b.EML);
+      c.l.a locala = (c.l.a)((c)localObject1).eZE().get(paramWebView);
       if (locala != null)
       {
         paramWebView = new StringBuilder("['");
-        Object localObject2 = c.w.Ewo;
-        localObject2 = c.EuR;
-        localObject2 = c.EuJ;
-        Object localObject3 = c.EuR;
-        paramWebView = d.a.j.a((Iterable)c.w.gX((List)((d.f)localObject2).getValue()), (CharSequence)"','", null, null, 0, null, null, 62) + "']";
-        ad.i(c.TAG, "buildMatrix " + paramWebView + ", " + paramWebResourceRequest);
-        localObject2 = c.EuR;
-        localObject2 = c.EuK;
-        localObject3 = c.EuR;
-        localObject2 = n.bp((String)((d.f)localObject2).getValue(), "$__IFRAME_MATRIX__$", paramWebView);
-        localObject3 = locala.EvN.name;
+        Object localObject2 = c.w.EOK;
+        localObject2 = c.ENl;
+        localObject2 = c.ENd;
+        Object localObject3 = c.ENl;
+        paramWebView = d.a.j.a((Iterable)c.w.hh((List)((d.f)localObject2).getValue()), (CharSequence)"','", null, null, 0, null, null, 62) + "']";
+        ae.i(c.TAG, "buildMatrix " + paramWebView + ", " + paramWebResourceRequest);
+        localObject2 = c.ENl;
+        localObject2 = c.ENe;
+        localObject3 = c.ENl;
+        localObject2 = n.bq((String)((d.f)localObject2).getValue(), "$__IFRAME_MATRIX__$", paramWebView);
+        localObject3 = locala.EOi.name;
         p.g(localObject3, "worker.webComptInfo.name");
-        localObject2 = n.bp((String)localObject2, "$__WEB_COMPT_NAME__$", (String)localObject3);
-        c.c(locala.eWh(), "WeixinWebCompt.onBind.apply(WeixinWebCompt, " + paramWebView + ')');
-        ad.i(c.TAG, "ready to response ".concat(String.valueOf(paramWebResourceRequest)));
+        localObject2 = n.bq((String)localObject2, "$__WEB_COMPT_NAME__$", (String)localObject3);
+        c.c(locala.eZT(), "WeixinWebCompt.onBind.apply(WeixinWebCompt, " + paramWebView + ')');
+        ae.i(c.TAG, "ready to response ".concat(String.valueOf(paramWebResourceRequest)));
         paramWebView = d.UTF_8;
         if (localObject2 == null)
         {
           paramWebView = new v("null cannot be cast to non-null type java.lang.String");
-          AppMethodBeat.o(214410);
+          AppMethodBeat.o(214251);
           throw paramWebView;
         }
         paramWebView = ((String)localObject2).getBytes(paramWebView);
         p.g(paramWebView, "(this as java.lang.String).getBytes(charset)");
         paramWebView = new WebResourceResponse("text/html", "utf8", (InputStream)new ByteArrayInputStream(paramWebView));
         locala.used = true;
-        ((c)localObject1).EuF.a(b.Eus);
-        AppMethodBeat.o(214410);
+        ((c)localObject1).EMZ.a(b.EMM);
+        AppMethodBeat.o(214251);
         return paramWebView;
       }
-      ((c)localObject1).EuF.a(b.Eut);
+      ((c)localObject1).EMZ.a(b.EMN);
       paramWebView = "webCompt: " + paramWebView + " not found";
       paramWebResourceRequest = d.UTF_8;
       if (paramWebView == null)
       {
         paramWebView = new v("null cannot be cast to non-null type java.lang.String");
-        AppMethodBeat.o(214410);
+        AppMethodBeat.o(214251);
         throw paramWebView;
       }
       paramWebView = paramWebView.getBytes(paramWebResourceRequest);
       p.g(paramWebView, "(this as java.lang.String).getBytes(charset)");
       paramWebView = new WebResourceResponse("text/html", "utf8", (InputStream)new ByteArrayInputStream(paramWebView));
-      AppMethodBeat.o(214410);
+      AppMethodBeat.o(214251);
       return paramWebView;
-      AppMethodBeat.o(214410);
+      AppMethodBeat.o(214251);
       return null;
     }
   }
   
-  public final boolean d(String paramString, avj paramavj)
+  public final boolean d(String paramString, avz paramavz)
   {
-    AppMethodBeat.i(214411);
+    AppMethodBeat.i(214252);
     p.h(paramString, "reqUrl");
-    p.h(paramavj, "resp");
-    paramString = paramavj.Guo;
+    p.h(paramavz, "resp");
+    paramString = paramavz.GNN;
     byte[] arrayOfByte;
     if (paramString != null)
     {
@@ -136,37 +136,37 @@ public final class e
     }
     try
     {
-      paramString = new eeb();
+      paramString = new efs();
       paramString.parseFrom(arrayOfByte);
-      paramavj = paramavj.Guc;
-      p.g(paramavj, "resp.FullURL");
-      f.g(paramavj, paramString.GLj);
-      AppMethodBeat.o(214411);
+      paramavz = paramavz.GNB;
+      p.g(paramavz, "resp.FullURL");
+      f.g(paramavz, paramString.HeK);
+      AppMethodBeat.o(214252);
       return false;
     }
     catch (Exception paramString)
     {
       for (;;)
       {
-        ad.printErrStackTrace(this.TAG, (Throwable)paramString, "parse WebComponentInfo", new Object[0]);
+        ae.printErrStackTrace(this.TAG, (Throwable)paramString, "parse WebComponentInfo", new Object[0]);
       }
     }
   }
   
-  public final j.a m(WebView paramWebView, String paramString)
+  public final j.a n(WebView paramWebView, String paramString)
   {
-    AppMethodBeat.i(214409);
+    AppMethodBeat.i(214250);
     p.h(paramWebView, "webView");
     p.h(paramString, "url");
-    c.b localb = c.EuR;
-    if (n.nz(paramString, c.eVX()))
+    c.b localb = c.ENl;
+    if (n.nF(paramString, c.eZJ()))
     {
       paramWebView = new j.a(true, false);
-      AppMethodBeat.o(214409);
+      AppMethodBeat.o(214250);
       return paramWebView;
     }
-    paramWebView = super.m(paramWebView, paramString);
-    AppMethodBeat.o(214409);
+    paramWebView = super.n(paramWebView, paramString);
+    AppMethodBeat.o(214250);
     return paramWebView;
   }
 }

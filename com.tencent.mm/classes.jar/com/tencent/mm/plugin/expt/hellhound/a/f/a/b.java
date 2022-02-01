@@ -4,42 +4,42 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.expt.hellhound.core.stack.d;
 import com.tencent.mm.plugin.expt.hellhound.core.stack.e;
 import com.tencent.mm.protocal.protobuf.bj;
-import com.tencent.mm.protocal.protobuf.boc;
-import com.tencent.mm.protocal.protobuf.chk;
-import com.tencent.mm.protocal.protobuf.dno;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.bou;
+import com.tencent.mm.protocal.protobuf.cie;
+import com.tencent.mm.protocal.protobuf.dol;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class b
 {
-  public static com.tencent.mm.vending.j.c<boc, Integer> cpJ()
+  public static com.tencent.mm.vending.j.c<bou, Integer> crl()
   {
     AppMethodBeat.i(122090);
-    if (com.tencent.mm.plugin.expt.hellhound.a.f.b.b.cpN())
+    if (com.tencent.mm.plugin.expt.hellhound.a.f.b.b.crp())
     {
-      ad.w("HABBYGE-MALI.BaseBizCollector", "BaseBizCollector, getCurPageFlowItem, doNotNeedSessionMonitor: TRUE");
+      ae.w("HABBYGE-MALI.BaseBizCollector", "BaseBizCollector, getCurPageFlowItem, doNotNeedSessionMonitor: TRUE");
       AppMethodBeat.o(122090);
       return null;
     }
-    Object localObject = com.tencent.mm.plugin.expt.hellhound.a.f.c.c.cqe();
+    Object localObject = com.tencent.mm.plugin.expt.hellhound.a.f.c.c.crG();
     if (localObject == null)
     {
-      ad.e("HABBYGE-MALI.BaseBizCollector", "BaseBizCollector, curSession is NULL");
+      ae.e("HABBYGE-MALI.BaseBizCollector", "BaseBizCollector, curSession is NULL");
       AppMethodBeat.o(122090);
       return null;
     }
-    ad.i("HABBYGE-MALI.BaseBizCollector", "BaseBizCollector, curSession: %s", new Object[] { ((chk)localObject).sessionId });
-    d.cnR();
-    bj localbj = e.cnW();
+    ae.i("HABBYGE-MALI.BaseBizCollector", "BaseBizCollector, curSession: %s", new Object[] { ((cie)localObject).sessionId });
+    d.cpt();
+    bj localbj = e.cpy();
     if (localbj == null)
     {
-      ad.e("HABBYGE-MALI.BaseBizCollector", "BaseBizCollector, curAR is NULL");
+      ae.e("HABBYGE-MALI.BaseBizCollector", "BaseBizCollector, curAR is NULL");
       AppMethodBeat.o(122090);
       return null;
     }
-    localObject = com.tencent.mm.plugin.expt.hellhound.a.f.d.b.fX(((chk)localObject).sessionId, localbj.Fti.activityName);
+    localObject = com.tencent.mm.plugin.expt.hellhound.a.f.d.b.gc(((cie)localObject).sessionId, localbj.FLG.activityName);
     if (localObject == null)
     {
-      ad.e("HABBYGE-MALI.BaseBizCollector", "BaseBizCollector, getPageFlowItemOfCurSession is NULL");
+      ae.e("HABBYGE-MALI.BaseBizCollector", "BaseBizCollector, getPageFlowItemOfCurSession is NULL");
       AppMethodBeat.o(122090);
       return null;
     }
@@ -50,7 +50,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.hellhound.a.f.a.b
  * JD-Core Version:    0.7.0.1
  */

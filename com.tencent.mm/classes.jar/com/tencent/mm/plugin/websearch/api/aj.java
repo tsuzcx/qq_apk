@@ -10,8 +10,8 @@ import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.loader.j.b;
 import com.tencent.mm.pluginsdk.ui.tools.x;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.widget.MMWebView;
 import com.tencent.mm.ui.widget.MMWebView.a;
 import com.tencent.xweb.WebView;
@@ -31,34 +31,34 @@ import org.json.JSONObject;
 
 public final class aj
 {
-  int DCj;
-  public AtomicBoolean DCk;
-  public List<ak> DCl;
-  long DCm;
+  int DUg;
+  public AtomicBoolean DUh;
+  public List<ak> DUi;
+  long DUj;
   public String TAG;
   
   public aj(int paramInt)
   {
     AppMethodBeat.i(117750);
     this.TAG = "MicroMsg.WebSearch.WebSearchPreloadMgr";
-    this.DCk = new AtomicBoolean(false);
-    this.DCl = new LinkedList();
-    this.DCj = paramInt;
+    this.DUh = new AtomicBoolean(false);
+    this.DUi = new LinkedList();
+    this.DUg = paramInt;
     this.TAG = (this.TAG + "_" + paramInt);
     AppMethodBeat.o(117750);
   }
   
   final boolean a(final MMWebView paramMMWebView, final ak paramak)
   {
-    AppMethodBeat.i(217648);
-    ad.i(this.TAG, "begin jsapi init,wv %s", new Object[] { paramMMWebView.toString() });
+    AppMethodBeat.i(188478);
+    ae.i(this.TAG, "begin jsapi init,wv %s", new Object[] { paramMMWebView.toString() });
     try
     {
-      String str = bt.convertStreamToString(paramMMWebView.getContext().getAssets().open("jsapi/wxjs.js"));
+      String str = bu.convertStreamToString(paramMMWebView.getContext().getAssets().open("jsapi/wxjs.js"));
       if (str == null)
       {
-        ad.e(this.TAG, "loadJavaScript fail, jsContent is null");
-        AppMethodBeat.o(217648);
+        ae.e(this.TAG, "loadJavaScript fail, jsContent is null");
+        AppMethodBeat.o(188478);
         return false;
       }
     }
@@ -66,13 +66,13 @@ public final class aj
     {
       for (;;)
       {
-        ad.printErrStackTrace(this.TAG, localException, "", new Object[0]);
+        ae.printErrStackTrace(this.TAG, localException, "", new Object[0]);
         localObject = null;
       }
       if (paramMMWebView == null)
       {
-        ad.e(this.TAG, "loadJavaScript, viewWV is null");
-        AppMethodBeat.o(217648);
+        ae.e(this.TAG, "loadJavaScript, viewWV is null");
+        AppMethodBeat.o(188478);
         return false;
       }
       paramMMWebView.evaluateJavascript("javascript:".concat(String.valueOf(localObject)), new ValueCallback() {});
@@ -169,73 +169,73 @@ public final class aj
       localLinkedList.add("onUiInit");
       localLinkedList.add("onNetWorkChange");
       localLinkedList.add("onBackgroundAudioStateChange");
-      if (!bt.hj(null)) {
+      if (!bu.ht(null)) {
         localLinkedList.addAll(null);
       }
       localHashMap.put("__runOn3rd_apis", new JSONArray(localLinkedList));
       paramMMWebView.getRandomStr();
       paramMMWebView.evaluateJavascript(a.j("event", "sys:attach_runOn3rd_apis", localHashMap) + ")", new ValueCallback() {});
-      ad.i(this.TAG, "jsapi init done");
-      AppMethodBeat.o(217648);
+      ae.i(this.TAG, "jsapi init done");
+      AppMethodBeat.o(188478);
     }
     return true;
   }
   
-  public final void aFT(final String paramString)
+  public final void aHn(final String paramString)
   {
     AppMethodBeat.i(117751);
-    if (!com.tencent.mm.sdk.platformtools.aj.fkJ())
+    if (!com.tencent.mm.sdk.platformtools.ak.foD())
     {
-      ad.i(this.TAG, "preload please call from toolsmp proc");
+      ae.i(this.TAG, "preload please call from toolsmp proc");
       AppMethodBeat.o(117751);
       return;
     }
-    if (this.DCk.get())
+    if (this.DUh.get())
     {
-      ad.i(this.TAG, "preloading webview %s", new Object[] { Integer.valueOf(this.DCj) });
+      ae.i(this.TAG, "preloading webview %s", new Object[] { Integer.valueOf(this.DUg) });
       AppMethodBeat.o(117751);
       return;
     }
-    if (this.DCl.size() > 0)
+    if (this.DUi.size() > 0)
     {
-      ad.i(this.TAG, "already preload webview %s", new Object[] { Integer.valueOf(this.DCj) });
+      ae.i(this.TAG, "already preload webview %s", new Object[] { Integer.valueOf(this.DUg) });
       AppMethodBeat.o(117751);
       return;
     }
-    this.DCk.set(true);
-    ad.i(this.TAG, "start to preload webview %d", new Object[] { Integer.valueOf(this.DCj) });
-    h.LTJ.aP(new Runnable()
+    this.DUh.set(true);
+    ae.i(this.TAG, "start to preload webview %d", new Object[] { Integer.valueOf(this.DUg) });
+    h.MqF.aM(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(117739);
         aj localaj = aj.this;
         String str1 = paramString;
-        ad.i(localaj.TAG, "real start preloadWebView cached webview preloadBiz %d", new Object[] { Integer.valueOf(localaj.DCj) });
-        localaj.DCm = System.currentTimeMillis();
-        MMWebView localMMWebView = MMWebView.a.kH(com.tencent.mm.sdk.platformtools.aj.getContext());
-        ad.i(localaj.TAG, "Create MMWebView %s", new Object[] { localMMWebView.getWebCoreType() });
+        ae.i(localaj.TAG, "real start preloadWebView cached webview preloadBiz %d", new Object[] { Integer.valueOf(localaj.DUg) });
+        localaj.DUj = System.currentTimeMillis();
+        MMWebView localMMWebView = MMWebView.a.kO(com.tencent.mm.sdk.platformtools.ak.getContext());
+        ae.i(localaj.TAG, "Create MMWebView %s", new Object[] { localMMWebView.getWebCoreType() });
         localMMWebView.setPreload(true);
-        localMMWebView.setRandomStr(bt.aaz(16));
+        localMMWebView.setRandomStr(bu.abf(16));
         localMMWebView.getSettings().setJavaScriptEnabled(true);
         localMMWebView.getSettings().setPluginsEnabled(true);
-        localMMWebView.getSettings().gbb();
+        localMMWebView.getSettings().gfD();
         localMMWebView.getSettings().setBuiltInZoomControls(false);
         localMMWebView.getSettings().setUseWideViewPort(true);
         localMMWebView.getSettings().setLoadWithOverviewMode(true);
-        localMMWebView.getSettings().gaU();
-        localMMWebView.getSettings().gaT();
+        localMMWebView.getSettings().gfw();
+        localMMWebView.getSettings().gfv();
         localMMWebView.getSettings().setGeolocationEnabled(true);
         localMMWebView.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
-        localMMWebView.getSettings().gbd();
-        localMMWebView.getSettings().gaZ();
+        localMMWebView.getSettings().gfF();
+        localMMWebView.getSettings().gfB();
         localMMWebView.getSettings().setAppCachePath(localMMWebView.getContext().getDir("webviewcache", 0).getAbsolutePath());
-        localMMWebView.getSettings().gaY();
-        localMMWebView.getSettings().gba();
-        localMMWebView.getSettings().setDatabasePath(b.arL() + "databases/");
-        c.gaw().gax();
-        c.gaw().e(localMMWebView);
-        Object localObject = x.bW(localMMWebView.getContext(), localMMWebView.getSettings().getUserAgentString());
+        localMMWebView.getSettings().gfA();
+        localMMWebView.getSettings().gfC();
+        localMMWebView.getSettings().setDatabasePath(b.asa() + "databases/");
+        c.geY().geZ();
+        c.geY().e(localMMWebView);
+        Object localObject = x.bX(localMMWebView.getContext(), localMMWebView.getSettings().getUserAgentString());
         localMMWebView.getSettings().setUserAgentString((String)localObject);
         localObject = new com.tencent.mm.plugin.webview.c.g();
         localMMWebView.addJavascriptInterface(localObject, "__wx");
@@ -247,7 +247,7 @@ public final class aj
         {
           i = Integer.valueOf(localUri.getQueryParameter("scene")).intValue();
           localMMWebView.setWebViewClient(new aj.2(localaj, localMMWebView, new ak(localMMWebView, str1, str2, (com.tencent.mm.plugin.webview.c.g)localObject, i)));
-          com.tencent.mm.plugin.report.service.g.yhR.f(15005, new Object[] { Integer.valueOf(localaj.DCj), Integer.valueOf(1), Integer.valueOf(0) });
+          com.tencent.mm.plugin.report.service.g.yxI.f(15005, new Object[] { Integer.valueOf(localaj.DUg), Integer.valueOf(1), Integer.valueOf(0) });
           AppMethodBeat.o(117739);
           return;
         }
@@ -265,7 +265,7 @@ public final class aj
   
   public static final class a
   {
-    private static JSONObject aZ(Map<String, Object> paramMap)
+    private static JSONObject bf(Map<String, Object> paramMap)
     {
       AppMethodBeat.i(117749);
       if ((paramMap == null) || (paramMap.size() == 0))
@@ -290,7 +290,7 @@ public final class aj
       }
       catch (Exception paramMap)
       {
-        ad.e("MicroMsg.WebViewPreLoadMgr.Builder", "convertMapToJSON fail, exception = " + paramMap.getMessage());
+        ae.e("MicroMsg.WebViewPreLoadMgr.Builder", "convertMapToJSON fail, exception = " + paramMap.getMessage());
         AppMethodBeat.o(117749);
         return null;
       }
@@ -307,14 +307,14 @@ public final class aj
         if (paramString1.equals("event")) {
           localJSONObject.put("__event_id", paramString2);
         }
-        localJSONObject.put("__params", aZ(paramMap));
+        localJSONObject.put("__params", bf(paramMap));
         paramString1 = localJSONObject.toString();
         AppMethodBeat.o(117748);
         return paramString1;
       }
       catch (Exception paramString1)
       {
-        ad.e("MicroMsg.WebViewPreLoadMgr.Builder", "build fail, exception = " + paramString1.getMessage());
+        ae.e("MicroMsg.WebViewPreLoadMgr.Builder", "build fail, exception = " + paramString1.getMessage());
         AppMethodBeat.o(117748);
       }
       return null;

@@ -15,7 +15,7 @@ public class CycleProgressView
 {
   private Paint paint;
   private int progress;
-  private float tWs;
+  private float uhq;
   
   public CycleProgressView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -52,16 +52,16 @@ public class CycleProgressView
     AppMethodBeat.i(40888);
     super.onDraw(paramCanvas);
     int i = getWidth() / 2;
-    if (this.tWs == 0.0F) {
-      this.tWs = ((int)(getWidth() / 2 * 0.167D));
+    if (this.uhq == 0.0F) {
+      this.uhq = ((int)(getWidth() / 2 * 0.167D));
     }
-    int j = (int)(i - this.tWs / 2.0F);
-    this.paint.setStrokeWidth(this.tWs);
+    int j = (int)(i - this.uhq / 2.0F);
+    this.paint.setStrokeWidth(this.uhq);
     this.paint.setColor(b.n(getContext(), 2131099656));
     this.paint.setAntiAlias(true);
     this.paint.setStyle(Paint.Style.STROKE);
     paramCanvas.drawCircle(i, i, j, this.paint);
-    this.paint.setStrokeWidth(this.tWs);
+    this.paint.setStrokeWidth(this.uhq);
     this.paint.setColor(b.n(getContext(), 2131101179));
     paramCanvas.drawArc(new RectF(i - j, i - j, i + j, i + j), -90.0F, this.progress * 360 / 100, false, this.paint);
     this.paint.setStrokeWidth(0.0F);

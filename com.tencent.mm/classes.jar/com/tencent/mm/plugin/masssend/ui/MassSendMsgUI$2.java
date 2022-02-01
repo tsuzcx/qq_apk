@@ -5,8 +5,8 @@ import com.tencent.mm.modelcontrol.VideoTransPara;
 import com.tencent.mm.modelcontrol.d;
 import com.tencent.mm.plugin.mmsight.model.e;
 import com.tencent.mm.plugin.mmsight.model.m;
-import com.tencent.mm.protocal.protobuf.bxm;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.protocal.protobuf.byg;
+import com.tencent.mm.sdk.platformtools.ar;
 
 final class MassSendMsgUI$2
   implements Runnable
@@ -16,30 +16,30 @@ final class MassSendMsgUI$2
   public final void run()
   {
     AppMethodBeat.i(26448);
-    VideoTransPara localVideoTransPara = d.aGQ().aGR();
-    bxm localbxm = new bxm();
-    localbxm.GRA = true;
-    if (m.a(this.rFp, localVideoTransPara, localbxm, new e()
+    VideoTransPara localVideoTransPara = d.aHh().aHi();
+    byg localbyg = new byg();
+    localbyg.Hlb = true;
+    if (m.a(this.rNA, localVideoTransPara, localbyg, new e()
     {
-      public final boolean dlg()
+      public final boolean dog()
       {
         return false;
       }
     })) {
-      m.b(this.rFp, localVideoTransPara, localbxm, new e()
+      m.b(this.rNA, localVideoTransPara, localbyg, new e()
       {
-        public final boolean dlg()
+        public final boolean dog()
         {
           return false;
         }
       });
     }
-    aq.f(new Runnable()
+    ar.f(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(26447);
-        MassSendMsgUI.a(MassSendMsgUI.2.this.vIe, MassSendMsgUI.2.this.rFp, MassSendMsgUI.2.this.leQ);
+        MassSendMsgUI.a(MassSendMsgUI.2.this.vUi, MassSendMsgUI.2.this.rNA, MassSendMsgUI.2.this.liC);
         AppMethodBeat.o(26447);
       }
     });
@@ -48,7 +48,7 @@ final class MassSendMsgUI$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.masssend.ui.MassSendMsgUI.2
  * JD-Core Version:    0.7.0.1
  */

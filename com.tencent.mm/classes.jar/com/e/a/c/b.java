@@ -26,20 +26,20 @@ public abstract class b
     this.cfF = 0;
   }
   
-  public final void By()
-  {
-    if (this.cfF < 0) {
-      throw new IllegalStateException("Unpaired stop/startCompactingOnRemove");
-    }
-    this.cfF -= capacity();
-  }
-  
-  public final void Bz()
+  public final void BA()
   {
     if (this.cfF >= 0) {
       throw new IllegalStateException("Unpaired stop/startCompactingOnRemove");
     }
     this.cfF += capacity();
+  }
+  
+  public final void Bz()
+  {
+    if (this.cfF < 0) {
+      throw new IllegalStateException("Unpaired stop/startCompactingOnRemove");
+    }
+    this.cfF -= capacity();
   }
   
   protected final void bo(boolean paramBoolean)

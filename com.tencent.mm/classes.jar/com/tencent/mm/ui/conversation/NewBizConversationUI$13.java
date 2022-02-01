@@ -1,15 +1,15 @@
 package com.tencent.mm.ui.conversation;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.x.a;
-import com.tencent.mm.protocal.protobuf.cjp;
-import com.tencent.mm.protocal.protobuf.pe;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ax;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.x.a;
+import com.tencent.mm.protocal.protobuf.ckj;
+import com.tencent.mm.protocal.protobuf.pg;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.sdk.platformtools.bu;
 
 final class NewBizConversationUI$13
   implements x.a
@@ -19,21 +19,21 @@ final class NewBizConversationUI$13
   public final int a(int paramInt1, int paramInt2, String paramString, b paramb, n paramn)
   {
     AppMethodBeat.i(38676);
-    ad.i("MicroMsg.NewBizConversationUI", "doBizStrategy callback %d/%d %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    ae.i("MicroMsg.NewBizConversationUI", "doBizStrategy callback %d/%d %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
     if ((paramInt1 != 0) && (paramInt2 != 0))
     {
       AppMethodBeat.o(38676);
       return 0;
     }
-    paramString = (pe)paramb.hNL.hNQ;
-    if ((paramString.FKr != null) && (!bt.isNullOrNil(paramString.FKr.Hdt)))
+    paramString = (pg)paramb.hQE.hQJ;
+    if ((paramString.GcQ != null) && (!bu.isNullOrNil(paramString.GcQ.HwT)))
     {
-      paramb = ax.aQA("brandService");
-      paramInt1 = paramb.decodeInt(NewBizConversationUI.fJu(), 0);
-      paramb.encode("PaySubscribeEntryUrl", paramString.FKr.Hdt);
-      paramb.encode(NewBizConversationUI.fJu(), paramString.FKr.Hds);
-      if (paramInt1 != paramString.FKr.Hds) {
-        NewBizConversationUI.a(this.Kxj);
+      paramb = ay.aRX("brandService");
+      paramInt1 = paramb.decodeInt(NewBizConversationUI.fNL(), 0);
+      paramb.encode("PaySubscribeEntryUrl", paramString.GcQ.HwT);
+      paramb.encode(NewBizConversationUI.fNL(), paramString.GcQ.HwS);
+      if (paramInt1 != paramString.GcQ.HwS) {
+        NewBizConversationUI.a(this.KTD);
       }
     }
     AppMethodBeat.o(38676);

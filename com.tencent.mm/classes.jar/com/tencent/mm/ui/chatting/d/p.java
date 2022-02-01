@@ -14,20 +14,20 @@ public final class p
   extends k
   implements n
 {
-  private HashSet<k> jSp;
+  private HashSet<k> jVG;
   
   public p()
   {
     AppMethodBeat.i(35256);
-    this.jSp = new HashSet();
+    this.jVG = new HashSet();
     AppMethodBeat.o(35256);
   }
   
   public final void a(k paramk)
   {
     AppMethodBeat.i(35257);
-    if (!this.jSp.contains(paramk)) {
-      this.jSp.add(paramk);
+    if (!this.jVG.contains(paramk)) {
+      this.jVG.add(paramk);
     }
     AppMethodBeat.o(35257);
   }
@@ -35,14 +35,14 @@ public final class p
   public final void b(k paramk)
   {
     AppMethodBeat.i(35258);
-    this.jSp.remove(paramk);
+    this.jVG.remove(paramk);
     AppMethodBeat.o(35258);
   }
   
   public final void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     AppMethodBeat.i(35259);
-    Iterator localIterator = this.jSp.iterator();
+    Iterator localIterator = this.jVG.iterator();
     while (localIterator.hasNext()) {
       ((k)localIterator.next()).onActivityResult(paramInt1, paramInt2, paramIntent);
     }
@@ -53,7 +53,7 @@ public final class p
   {
     AppMethodBeat.i(35262);
     super.onConfigurationChanged(paramConfiguration);
-    Iterator localIterator = this.jSp.iterator();
+    Iterator localIterator = this.jVG.iterator();
     while (localIterator.hasNext()) {
       ((k)localIterator.next()).onConfigurationChanged(paramConfiguration);
     }
@@ -62,19 +62,19 @@ public final class p
   
   public final void onFinish()
   {
-    AppMethodBeat.i(194016);
+    AppMethodBeat.i(187328);
     super.onFinish();
-    Iterator localIterator = this.jSp.iterator();
+    Iterator localIterator = this.jVG.iterator();
     while (localIterator.hasNext()) {
       ((k)localIterator.next()).onFinish();
     }
-    AppMethodBeat.o(194016);
+    AppMethodBeat.o(187328);
   }
   
   public final boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
     AppMethodBeat.i(35260);
-    Iterator localIterator = this.jSp.iterator();
+    Iterator localIterator = this.jVG.iterator();
     while (localIterator.hasNext()) {
       if (((k)localIterator.next()).onKeyDown(paramInt, paramKeyEvent))
       {
@@ -90,7 +90,7 @@ public final class p
   {
     AppMethodBeat.i(35261);
     super.onRequestPermissionsResult(paramInt, paramArrayOfString, paramArrayOfInt);
-    Iterator localIterator = this.jSp.iterator();
+    Iterator localIterator = this.jVG.iterator();
     while (localIterator.hasNext()) {
       ((k)localIterator.next()).onRequestPermissionsResult(paramInt, paramArrayOfString, paramArrayOfInt);
     }
@@ -101,7 +101,7 @@ public final class p
   {
     AppMethodBeat.i(35263);
     super.onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
-    Iterator localIterator = this.jSp.iterator();
+    Iterator localIterator = this.jVG.iterator();
     while (localIterator.hasNext()) {
       ((k)localIterator.next()).onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
     }
@@ -112,7 +112,7 @@ public final class p
   {
     AppMethodBeat.i(35264);
     super.onScrollStateChanged(paramAbsListView, paramInt);
-    Iterator localIterator = this.jSp.iterator();
+    Iterator localIterator = this.jVG.iterator();
     while (localIterator.hasNext()) {
       ((k)localIterator.next()).onScrollStateChanged(paramAbsListView, paramInt);
     }

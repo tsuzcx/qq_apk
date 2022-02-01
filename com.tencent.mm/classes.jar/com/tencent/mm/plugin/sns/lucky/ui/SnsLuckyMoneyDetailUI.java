@@ -12,7 +12,7 @@ import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
 import android.widget.ListView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.plugin.l.a;
 import com.tencent.mm.plugin.luckymoney.ui.LuckyMoneyBaseUI;
 import java.util.LinkedList;
@@ -21,25 +21,25 @@ import java.util.List;
 public class SnsLuckyMoneyDetailUI
   extends LuckyMoneyBaseUI
 {
-  private ListView vjZ;
-  AbsListView.OnScrollListener vkg;
-  private final int vwY;
-  private final int vwZ;
-  private b zfd;
+  private final int vJc;
+  private final int vJd;
+  private ListView vwe;
+  AbsListView.OnScrollListener vwl;
+  private b zvS;
   
   public SnsLuckyMoneyDetailUI()
   {
     AppMethodBeat.i(68357);
-    this.vkg = new AbsListView.OnScrollListener()
+    this.vwl = new AbsListView.OnScrollListener()
     {
-      private boolean vkh = false;
-      private boolean vki;
+      private boolean vwm = false;
+      private boolean vwn;
       
       public final void onScroll(AbsListView paramAnonymousAbsListView, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3)
       {
         boolean bool = true;
         AppMethodBeat.i(68355);
-        if ((paramAnonymousInt3 == 0) || (!this.vkh))
+        if ((paramAnonymousInt3 == 0) || (!this.vwm))
         {
           AppMethodBeat.o(68355);
           return;
@@ -50,13 +50,13 @@ public class SnsLuckyMoneyDetailUI
         label110:
         for (;;)
         {
-          if (this.vki != bool)
+          if (this.vwn != bool)
           {
             if (bool)
             {
               SnsLuckyMoneyDetailUI.this.getResources().getDrawable(2131100918);
-              SnsLuckyMoneyDetailUI.dTf();
-              this.vki = bool;
+              SnsLuckyMoneyDetailUI.dWF();
+              this.vwn = bool;
             }
           }
           else
@@ -75,7 +75,7 @@ public class SnsLuckyMoneyDetailUI
             }
             bool = false;
             break;
-            SnsLuckyMoneyDetailUI.dTg();
+            SnsLuckyMoneyDetailUI.dWG();
             break label60;
           }
         }
@@ -96,15 +96,15 @@ public class SnsLuckyMoneyDetailUI
         {
           AppMethodBeat.o(68354);
           return;
-          this.vkh = false;
+          this.vwm = false;
           AppMethodBeat.o(68354);
           return;
-          this.vkh = true;
+          this.vwm = true;
         }
       }
     };
-    this.vwY = 750;
-    this.vwZ = 240;
+    this.vJc = 750;
+    this.vJd = 240;
     AppMethodBeat.o(68357);
   }
   
@@ -127,11 +127,11 @@ public class SnsLuckyMoneyDetailUI
     getResources().getDrawable(2131232950);
     setMMTitle(2131763892);
     setBackBtn(new SnsLuckyMoneyDetailUI.2(this));
-    this.vjZ = ((ListView)findViewById(2131301770));
-    this.zfd = new b(getContext());
-    this.vjZ.setAdapter(this.zfd);
-    this.vjZ.setOnScrollListener(this.vkg);
-    this.vjZ.setOnItemClickListener(new SnsLuckyMoneyDetailUI.3(this));
+    this.vwe = ((ListView)findViewById(2131301770));
+    this.zvS = new b(getContext());
+    this.vwe.setAdapter(this.zvS);
+    this.vwe.setOnScrollListener(this.vwl);
+    this.vwe.setOnItemClickListener(new SnsLuckyMoneyDetailUI.3(this));
     AppMethodBeat.o(68359);
   }
   
@@ -140,7 +140,7 @@ public class SnsLuckyMoneyDetailUI
     AppMethodBeat.i(68358);
     super.onCreate(paramBundle);
     initView();
-    paramBundle = a.aoO(getIntent().getStringExtra("key_feedid"));
+    paramBundle = a.apT(getIntent().getStringExtra("key_feedid"));
     if ((paramBundle == null) || (paramBundle.size() == 0))
     {
       if (Build.VERSION.SDK_INT >= 21)
@@ -152,7 +152,7 @@ public class SnsLuckyMoneyDetailUI
       AppMethodBeat.o(68358);
       return;
     }
-    b localb = this.zfd;
+    b localb = this.zvS;
     if (paramBundle == null) {
       new LinkedList();
     }
@@ -160,7 +160,7 @@ public class SnsLuckyMoneyDetailUI
     {
       localb.notifyDataSetChanged();
       break;
-      localb.vjL = paramBundle;
+      localb.vvQ = paramBundle;
     }
   }
   
@@ -184,7 +184,7 @@ public class SnsLuckyMoneyDetailUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.lucky.ui.SnsLuckyMoneyDetailUI
  * JD-Core Version:    0.7.0.1
  */

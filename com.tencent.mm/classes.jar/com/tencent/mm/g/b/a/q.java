@@ -6,78 +6,78 @@ import com.tencent.mm.plugin.report.a;
 public final class q
   extends a
 {
-  public long dPH;
-  public long dSB;
-  public long dSC = 0L;
-  public String dSD = "";
-  public String dSE = "";
-  public long dSF = 0L;
-  public String dSG = "";
-  public String dSH = "";
-  private String dSw = "";
-  public long dSy = 0L;
+  public long dQX;
+  private String dTM = "";
+  public long dTO = 0L;
+  public long dTR;
+  public long dTS = 0L;
+  public String dTT = "";
+  public String dTU = "";
+  public long dTV = 0L;
+  public String dTW = "";
+  public String dTX = "";
   
-  public final String RD()
+  public final String RC()
   {
     AppMethodBeat.i(184765);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dSw);
+    ((StringBuffer)localObject).append(this.dTM);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dPH);
+    ((StringBuffer)localObject).append(this.dQX);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dSB);
+    ((StringBuffer)localObject).append(this.dTR);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dSC);
+    ((StringBuffer)localObject).append(this.dTS);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dSy);
+    ((StringBuffer)localObject).append(this.dTO);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dSD);
+    ((StringBuffer)localObject).append(this.dTT);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dSE);
+    ((StringBuffer)localObject).append(this.dTU);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dSF);
+    ((StringBuffer)localObject).append(this.dTV);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dSG);
+    ((StringBuffer)localObject).append(this.dTW);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dSH);
+    ((StringBuffer)localObject).append(this.dTX);
     localObject = ((StringBuffer)localObject).toString();
-    awz((String)localObject);
+    axO((String)localObject);
     AppMethodBeat.o(184765);
     return localObject;
   }
   
-  public final String RE()
+  public final String RD()
   {
     AppMethodBeat.i(184766);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("roomusrname:").append(this.dSw);
+    ((StringBuffer)localObject).append("roomusrname:").append(this.dTM);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("action:").append(this.dPH);
+    ((StringBuffer)localObject).append("action:").append(this.dQX);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("topCount:").append(this.dSB);
+    ((StringBuffer)localObject).append("topCount:").append(this.dTR);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("usedCount:").append(this.dSC);
+    ((StringBuffer)localObject).append("usedCount:").append(this.dTS);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("role:").append(this.dSy);
+    ((StringBuffer)localObject).append("role:").append(this.dTO);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("appid:").append(this.dSD);
+    ((StringBuffer)localObject).append("appid:").append(this.dTT);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("appname:").append(this.dSE);
+    ((StringBuffer)localObject).append("appname:").append(this.dTU);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("isTop:").append(this.dSF);
+    ((StringBuffer)localObject).append("isTop:").append(this.dTV);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("topAppList:").append(this.dSG);
+    ((StringBuffer)localObject).append("topAppList:").append(this.dTW);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("usedAppList:").append(this.dSH);
+    ((StringBuffer)localObject).append("usedAppList:").append(this.dTX);
     localObject = ((StringBuffer)localObject).toString();
     AppMethodBeat.o(184766);
     return localObject;
   }
   
-  public final q gN(String paramString)
+  public final q gT(String paramString)
   {
     AppMethodBeat.i(184764);
-    this.dSw = t("roomusrname", paramString, true);
+    this.dTM = t("roomusrname", paramString, true);
     AppMethodBeat.o(184764);
     return this;
   }

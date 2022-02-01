@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.webview.ui.tools;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 final class SDKOAuthUI$4
   implements DialogInterface.OnCancelListener
@@ -21,7 +21,7 @@ final class SDKOAuthUI$4
     }
     catch (Exception paramDialogInterface)
     {
-      ad.e("MicroMsg.SdkOAuthUI", "showProgressDlg onCancel exp: %s ", new Object[] { paramDialogInterface.getLocalizedMessage() });
+      ae.e("MicroMsg.SdkOAuthUI", "showProgressDlg onCancel exp: %s ", new Object[] { paramDialogInterface.getLocalizedMessage() });
       AppMethodBeat.o(79735);
     }
   }

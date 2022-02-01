@@ -1,184 +1,210 @@
 package com.tencent.mm.plugin.appbrand.page;
 
-import android.util.ArrayMap;
-import com.tencent.luggage.sdk.b.a.c;
+import android.util.Base64;
 import com.tencent.luggage.sdk.config.AppBrandSysConfigLU;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
 import com.tencent.mm.plugin.appbrand.appcache.WxaPkgWrappingInfo;
-import com.tencent.mm.plugin.appbrand.appcache.WxaPluginPkgInfo;
-import com.tencent.mm.plugin.appbrand.appcache.WxaRuntimeModulePluginListMap;
-import com.tencent.mm.plugin.appbrand.appcache.bm;
-import com.tencent.mm.plugin.appbrand.appcache.bm.a;
-import com.tencent.mm.plugin.appbrand.launching.params.LaunchParcel;
-import com.tencent.mm.sdk.platformtools.ad;
-import d.f;
-import d.g;
+import com.tencent.mm.plugin.appbrand.appcache.bg;
+import com.tencent.mm.plugin.appbrand.appstorage.ICommLibReader;
+import com.tencent.mm.plugin.appbrand.utils.r;
+import com.tencent.mm.sdk.platformtools.ae;
+import d.a.e;
+import d.g.b.ad;
 import d.g.b.p;
 import d.l;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
+import d.v;
+import java.nio.charset.Charset;
+import java.util.Arrays;
+import java.util.Locale;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/page/IWxaPageSeparatedPluginsInjectHelper;", "", "injectPlugins", "", "moduleName", "", "useLazyCodeLoading", "", "onReloadURL", "Factory", "luggage-wechat-full-sdk_release"})
-public abstract interface be
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/page/MPPageScriptProviderDefaultImpl;", "Lcom/tencent/mm/plugin/appbrand/page/IMPPageScriptProvider;", "renderer", "Lcom/tencent/mm/plugin/appbrand/page/AbstractMPPageViewRenderer;", "(Lcom/tencent/mm/plugin/appbrand/page/AbstractMPPageViewRenderer;)V", "runtime", "Lcom/tencent/luggage/sdk/runtime/AppBrandRuntimeLU;", "getRuntime", "()Lcom/tencent/luggage/sdk/runtime/AppBrandRuntimeLU;", "provideScript", "", "resourceName", "Companion", "luggage-wechat-full-sdk_release"})
+public class be
+  implements ba
 {
-  public static final a mew = a.mex;
+  @Deprecated
+  public static final a miX;
+  private final a<?> miU;
   
-  public abstract void ax(String paramString, boolean paramBoolean);
-  
-  public abstract void bvm();
-  
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/page/IWxaPageSeparatedPluginsInjectHelper$Factory;", "", "()V", "createInjector", "Lcom/tencent/mm/plugin/appbrand/page/IWxaPageSeparatedPluginsInjectHelper;", "renderer", "Lcom/tencent/mm/plugin/appbrand/page/AbstractMPPageViewRenderer;", "IMPL", "luggage-wechat-full-sdk_release"})
-  public static final class a
+  static
   {
-    static
+    AppMethodBeat.i(147977);
+    miX = new a((byte)0);
+    AppMethodBeat.o(147977);
+  }
+  
+  public be(a<?> parama)
+  {
+    AppMethodBeat.i(147976);
+    this.miU = parama;
+    AppMethodBeat.o(147976);
+  }
+  
+  public String SR(String paramString)
+  {
+    AppMethodBeat.i(147975);
+    Object localObject1 = (CharSequence)paramString;
+    if ((localObject1 == null) || (((CharSequence)localObject1).length() == 0)) {}
+    for (int i = 1; i != 0; i = 0)
     {
-      AppMethodBeat.i(183070);
-      mex = new a();
-      AppMethodBeat.o(183070);
+      AppMethodBeat.o(147975);
+      return null;
     }
-    
-    public static be d(a<?> parama)
+    localObject1 = com.tencent.luggage.sdk.b.a.d.cnw;
+    p.g(localObject1, "IAppBrandComponentWxaSha…U.SCRIPTS_LIB_FOR_WEBVIEW");
+    Object localObject2;
+    label116:
+    Object localObject3;
+    if (e.contains((Object[])localObject1, paramString))
     {
-      AppMethodBeat.i(183069);
-      p.h(parama, "renderer");
-      Object localObject = (c)parama.El();
-      if (localObject == null) {
-        p.gfZ();
+      localObject1 = this.miU.Q(ICommLibReader.class);
+      if (localObject1 == null) {
+        p.gkB();
       }
-      localObject = ((AppBrandSysConfigLU)((c)localObject).ar(AppBrandSysConfigLU.class)).jYh;
-      WxaRuntimeModulePluginListMap localWxaRuntimeModulePluginListMap;
-      if (localObject != null)
-      {
-        localWxaRuntimeModulePluginListMap = ((WxaPkgWrappingInfo)localObject).jIZ;
-        if (localWxaRuntimeModulePluginListMap == null) {}
+      localObject1 = ((ICommLibReader)localObject1).LD(paramString);
+      localObject2 = new StringBuilder("provideScript name[").append(paramString).append("] source.length[");
+      if (localObject1 == null) {
+        break label624;
       }
-      for (int i = localWxaRuntimeModulePluginListMap.jJf.size(); i > 0; i = 0)
+      i = ((String)localObject1).length();
+      ae.i("Luggage.WXA.MPPageScriptProviderDefaultImpl", i + ']');
+      localObject2 = (CharSequence)localObject1;
+      if ((localObject2 != null) && (((CharSequence)localObject2).length() != 0)) {
+        break label629;
+      }
+      i = 1;
+      label158:
+      if (i != 0) {
+        break label761;
+      }
+      localObject2 = (be)this;
+      localObject3 = com.tencent.luggage.sdk.b.a.d.cnw;
+      p.g(localObject3, "SCRIPTS_LIB_FOR_WEBVIEW");
+      if (!e.contains((Object[])localObject3, paramString))
       {
-        localObject = ((WxaPkgWrappingInfo)localObject).jIZ;
-        if (localObject == null) {
-          p.gfZ();
+        localObject3 = ((be)localObject2).miU.Eq();
+        if (localObject3 == null) {
+          break label714;
         }
-        p.g(localObject, "wrappingInfo.separatedPlugins!!");
-        parama = (be)new a(parama, (WxaRuntimeModulePluginListMap)localObject);
-        AppMethodBeat.o(183069);
-        return parama;
+        localObject3 = ((com.tencent.luggage.sdk.d.d)localObject3).Ff();
+        if ((localObject3 == null) || (((AppBrandSysConfigLU)localObject3).cmG != true)) {
+          break label714;
+        }
       }
-      parama = (be)new b();
-      AppMethodBeat.o(183069);
-      return parama;
+      localObject3 = new StringBuilder("https://servicewechat.com/");
+      if (((be)localObject2).miU.Eq() != null) {
+        break label634;
+      }
+      ((StringBuilder)localObject3).append("preload/");
+      label255:
+      paramString = paramString;
+      p.g(paramString, "builder.append(resourceName).toString()");
+      label271:
+      p.g(paramString, "run makeSourceURL@{\n    …      }\n                }");
+      if (((CharSequence)paramString).length() != 0) {
+        break label721;
+      }
     }
-    
-    @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/page/IWxaPageSeparatedPluginsInjectHelper$Factory$IMPL;", "Lcom/tencent/mm/plugin/appbrand/page/IWxaPageSeparatedPluginsInjectHelper;", "renderer", "Lcom/tencent/mm/plugin/appbrand/page/AbstractMPPageViewRenderer;", "separatedPluginsMap", "Lcom/tencent/mm/plugin/appbrand/appcache/WxaRuntimeModulePluginListMap;", "(Lcom/tencent/mm/plugin/appbrand/page/AbstractMPPageViewRenderer;Lcom/tencent/mm/plugin/appbrand/appcache/WxaRuntimeModulePluginListMap;)V", "TAG", "", "injectedScriptNames", "Ljava/util/HashSet;", "Lkotlin/collections/HashSet;", "pkgReader", "Lcom/tencent/mm/plugin/appbrand/appcache/IWxaPkgRuntimeReader;", "getPkgReader", "()Lcom/tencent/mm/plugin/appbrand/appcache/IWxaPkgRuntimeReader;", "pkgReader$delegate", "Lkotlin/Lazy;", "injectPlugins", "", "moduleName", "useLazyCodeLoading", "", "onReloadURL", "evaluateScriptFile", "fileName", "luggage-wechat-full-sdk_release"})
-    static final class a
-      implements be
+    label714:
+    label721:
+    for (i = 1;; i = 0)
     {
-      private final String TAG;
-      private final a<?> meA;
-      private final WxaRuntimeModulePluginListMap meB;
-      private final f mey;
-      private final HashSet<String> mez;
-      
-      public a(a<?> parama, WxaRuntimeModulePluginListMap paramWxaRuntimeModulePluginListMap)
-      {
-        AppMethodBeat.i(183067);
-        this.meA = parama;
-        this.meB = paramWxaRuntimeModulePluginListMap;
-        this.TAG = "Luggage.FULL.IWxaPageSeparatedPluginsInjectHelper.IMPL";
-        this.mey = g.O((d.g.a.a)new a(this));
-        this.mez = new HashSet();
-        AppMethodBeat.o(183067);
+      if (i == 0) {
+        break label726;
       }
-      
-      private final void a(a<?> parama, String paramString)
+      AppMethodBeat.o(147975);
+      return localObject1;
+      if (p.i(paramString, "app-wxss.js"))
       {
-        AppMethodBeat.i(183064);
-        if (this.mez.contains(paramString))
-        {
-          AppMethodBeat.o(183064);
-          return;
+        localObject1 = this.miU.Eq();
+        if (localObject1 == null) {
+          p.gkB();
         }
-        ad.i(this.TAG, "inner evaluateScriptFile fileName(" + paramString + ") hash(" + hashCode() + ')');
-        parama.eh(paramString, parama.btJ().Si(paramString));
-        this.mez.add(paramString);
-        AppMethodBeat.o(183064);
+        localObject1 = bg.d((AppBrandRuntime)localObject1, "app-wxss.js");
+        break;
       }
-      
-      public final void ax(String paramString, boolean paramBoolean)
+      if (p.i(paramString, "page-frame.html"))
       {
-        AppMethodBeat.i(183065);
-        p.h(paramString, "moduleName");
-        ad.i(this.TAG, "injectPlugins moduleName(" + paramString + ") useLazyCodeLoading(" + paramBoolean + ") hash(" + hashCode() + ')');
-        Object localObject2 = this.meB.LN(paramString);
-        Object localObject1 = localObject2;
+        localObject1 = this.miU.Eq();
+        if (localObject1 == null) {
+          p.gkB();
+        }
+        localObject1 = aa.Uc(bg.d((AppBrandRuntime)localObject1, "page-frame.html"));
+        break;
+      }
+      if (p.i(paramString, this.miU.getURL()))
+      {
+        localObject1 = this.miU.Eq();
+        if (localObject1 == null) {
+          p.gkB();
+        }
+        localObject1 = bg.d((AppBrandRuntime)localObject1, paramString);
+        localObject2 = aa.Ub((String)localObject1);
+        p.g(localObject2, "extractStyle(pageHtml)");
+        localObject3 = d.n.d.UTF_8;
         if (localObject2 == null)
         {
-          localObject1 = LaunchParcel.Mq(paramString);
-          if (!p.i(localObject1, paramString)) {
-            break label140;
-          }
+          paramString = new v("null cannot be cast to non-null type java.lang.String");
+          AppMethodBeat.o(147975);
+          throw paramString;
         }
-        for (localObject1 = null; (localObject1 == null) || (((List)localObject1).isEmpty()); localObject1 = ((WxaRuntimeModulePluginListMap)localObject2).LN((String)localObject1))
+        localObject2 = ((String)localObject2).getBytes((Charset)localObject3);
+        p.g(localObject2, "(this as java.lang.String).getBytes(charset)");
+        localObject2 = Base64.encodeToString((byte[])localObject2, 2);
+        localObject3 = aa.Ua((String)localObject1);
+        p.g(localObject3, "extractPage(pageHtml)");
+        localObject4 = d.n.d.UTF_8;
+        if (localObject3 == null)
         {
-          ad.i(this.TAG, "injectPlugins, try with module(" + paramString + "), get empty pluginList");
-          AppMethodBeat.o(183065);
-          return;
-          label140:
-          localObject2 = this.meB;
-          p.g(localObject1, "fixedName");
+          paramString = new v("null cannot be cast to non-null type java.lang.String");
+          AppMethodBeat.o(147975);
+          throw paramString;
         }
-        localObject1 = ((List)localObject1).iterator();
-        while (((Iterator)localObject1).hasNext())
-        {
-          localObject2 = (WxaPluginPkgInfo)((Iterator)localObject1).next();
-          bm.a locala = bm.jJo;
-          localObject2 = bm.a.a(paramString, (WxaPluginPkgInfo)localObject2);
-          if ((!paramBoolean) || (!((com.tencent.mm.plugin.appbrand.appcache.q)this.mey.getValue()).Lm((String)localObject2 + "/common.app.js")))
-          {
-            a(this.meA, (String)localObject2 + "/pageframe.js");
-          }
-          else
-          {
-            a(this.meA, (String)localObject2 + "/common.app.js");
-            a(this.meA, (String)localObject2 + "/webview.app.js");
-          }
-        }
-        AppMethodBeat.o(183065);
+        localObject3 = ((String)localObject3).getBytes((Charset)localObject4);
+        p.g(localObject3, "(this as java.lang.String).getBytes(charset)");
+        localObject3 = Base64.encodeToString((byte[])localObject3, 2);
+        localObject1 = aa.Uc((String)localObject1);
+        localObject4 = ad.Njc;
+        localObject4 = Locale.ENGLISH;
+        p.g(localObject4, "Locale.ENGLISH");
+        localObject1 = String.format((Locale)localObject4, "var style = document.createElement('style');style.innerHTML = atob(\"%s\");document.head.appendChild(style);var page = document.createElement('page');page.innerHTML = atob(\"%s\");document.body.appendChild(page);%s;", Arrays.copyOf(new Object[] { localObject2, localObject3, localObject1 }, 3));
+        p.g(localObject1, "java.lang.String.format(locale, format, *args)");
+        break;
       }
-      
-      public final void bvm()
-      {
-        AppMethodBeat.i(183066);
-        this.mez.clear();
-        AppMethodBeat.o(183066);
+      localObject1 = bg.d((AppBrandRuntime)this.miU.Eq(), paramString);
+      break;
+      label624:
+      i = -1;
+      break label116;
+      label629:
+      i = 0;
+      break label158;
+      label634:
+      Object localObject4 = ((be)localObject2).miU.Eq();
+      if (localObject4 == null) {
+        p.gkB();
       }
-      
-      @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "Lcom/tencent/mm/plugin/appbrand/appcache/IWxaPkgRuntimeReader;", "invoke"})
-      static final class a
-        extends d.g.b.q
-        implements d.g.a.a<com.tencent.mm.plugin.appbrand.appcache.q>
-      {
-        a(be.a.a parama)
-        {
-          super();
-        }
+      localObject4 = ((StringBuilder)localObject3).append(((com.tencent.luggage.sdk.d.d)localObject4).getAppId()).append("/");
+      localObject2 = ((be)localObject2).miU.Eq();
+      if (localObject2 == null) {
+        p.gkB();
       }
+      ((StringBuilder)localObject4).append(((com.tencent.luggage.sdk.d.d)localObject2).Ff().kbw.pkgVersion()).append("/");
+      break label255;
+      paramString = "";
+      break label271;
     }
-    
-    @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/appbrand/page/IWxaPageSeparatedPluginsInjectHelper$Factory$createInjector$1", "Lcom/tencent/mm/plugin/appbrand/page/IWxaPageSeparatedPluginsInjectHelper;", "injectPlugins", "", "moduleName", "", "useLazyCodeLoading", "", "onReloadURL", "luggage-wechat-full-sdk_release"})
-    public static final class b
-      implements be
-    {
-      public final void ax(String paramString, boolean paramBoolean)
-      {
-        AppMethodBeat.i(183068);
-        p.h(paramString, "moduleName");
-        AppMethodBeat.o(183068);
-      }
-      
-      public final void bvm() {}
-    }
+    label726:
+    paramString = (String)localObject1 + "\n//# sourceURL=" + r.VN(paramString);
+    AppMethodBeat.o(147975);
+    return paramString;
+    label761:
+    AppMethodBeat.o(147975);
+    return null;
   }
+  
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/page/MPPageScriptProviderDefaultImpl$Companion;", "", "()V", "TAG", "", "luggage-wechat-full-sdk_release"})
+  static final class a {}
 }
 
 

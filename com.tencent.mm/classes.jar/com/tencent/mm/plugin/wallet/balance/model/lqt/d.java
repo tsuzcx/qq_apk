@@ -1,31 +1,30 @@
 package com.tencent.mm.plugin.wallet.balance.model.lqt;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.a;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.protocal.protobuf.cfw;
-import com.tencent.mm.protocal.protobuf.cfx;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.ak.a;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.protocal.protobuf.cgq;
+import com.tencent.mm.protocal.protobuf.cgr;
 
 public final class d
-  extends a<cfx>
+  extends a<cgr>
 {
   public d(String paramString)
   {
     AppMethodBeat.i(68401);
-    cfw localcfw = new cfw();
-    localcfw.time_stamp = ((int)System.currentTimeMillis());
-    localcfw.FYP = paramString;
-    localcfw.Cyu = ae.eCl();
+    cgq localcgq = new cgq();
+    localcgq.time_stamp = ((int)System.currentTimeMillis());
+    localcgq.Gro = paramString;
+    localcgq.CPZ = ae.eFT();
     b.a locala = new b.a();
-    locala.hNM = localcfw;
-    locala.hNN = new cfx();
+    locala.hQF = localcgq;
+    locala.hQG = new cgr();
     locala.funcId = 2896;
     locala.uri = "/cgi-bin/mmpay-bin/lqtlqautoin/openlqautotrans";
-    locala.hNO = 0;
+    locala.hQH = 0;
     locala.respCmdId = 0;
-    c(locala.aDC());
-    ad.d("MicroMsg.CgiLqtAutoChargeOpen", "pwd: %s", new Object[] { paramString });
+    c(locala.aDS());
+    com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.CgiLqtAutoChargeOpen", "pwd: %s", new Object[] { paramString });
     AppMethodBeat.o(68401);
   }
 }

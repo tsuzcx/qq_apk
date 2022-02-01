@@ -17,40 +17,40 @@ import com.tencent.mm.plugin.fts.a.d.a.a.b;
 import com.tencent.mm.plugin.fts.a.f;
 import com.tencent.mm.plugin.fts.ui.b.c;
 import com.tencent.mm.plugin.fts.ui.n;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public final class i
   extends a
 {
-  public boolean tBn;
-  public CharSequence tBo;
-  private b tBp;
-  private a tBq;
-  public String tvc;
+  public String tFT;
+  public boolean tMe;
+  public CharSequence tMf;
+  private b tMg;
+  private a tMh;
   
   public i(int paramInt)
   {
     super(12, paramInt);
     AppMethodBeat.i(112082);
-    this.tBp = new b();
-    this.tBq = new a();
-    this.tvU = false;
+    this.tMg = new b();
+    this.tMh = new a();
+    this.tGL = false;
     AppMethodBeat.o(112082);
   }
   
   public final void a(Context paramContext, a.a parama, Object... paramVarArgs)
   {
     AppMethodBeat.i(112083);
-    parama = TextUtils.ellipsize(this.tun.tuO[0], b.c.tyi, 200.0F, TextUtils.TruncateAt.MIDDLE);
-    paramVarArgs = TextUtils.ellipsize(this.tun.tuO[1], b.c.tyi, 400.0F, TextUtils.TruncateAt.MIDDLE);
-    if (bt.isNullOrNil(this.tvc))
+    parama = TextUtils.ellipsize(this.tFe.tFF[0], b.c.tIZ, 200.0F, TextUtils.TruncateAt.MIDDLE);
+    paramVarArgs = TextUtils.ellipsize(this.tFe.tFF[1], b.c.tIZ, 400.0F, TextUtils.TruncateAt.MIDDLE);
+    if (bu.isNullOrNil(this.tFT))
     {
       str1 = paramContext.getString(2131762966);
       str2 = paramContext.getString(2131762967);
       paramContext = paramContext.getString(2131762968);
       i = str1.length();
       j = str1.length() + parama.length() + str2.length();
-      this.tBo = f.f(f.f(str1 + parama + str2 + paramVarArgs + paramContext, i, parama.length() + i), j, paramVarArgs.length() + j);
+      this.tMf = f.f(f.f(str1 + parama + str2 + paramVarArgs + paramContext, i, parama.length() + i), j, paramVarArgs.length() + j);
       AppMethodBeat.o(112083);
       return;
     }
@@ -59,22 +59,22 @@ public final class i
     paramContext = paramContext.getString(2131762968);
     int i = str1.length();
     int j = str1.length() + parama.length() + str2.length();
-    this.tBo = f.f(f.f(str1 + parama + str2 + paramVarArgs + paramContext, i, parama.length() + i), j, paramVarArgs.length() + j);
+    this.tMf = f.f(f.f(str1 + parama + str2 + paramVarArgs + paramContext, i, parama.length() + i), j, paramVarArgs.length() + j);
     AppMethodBeat.o(112083);
   }
   
-  public final a.b agC()
+  public final a.b agQ()
   {
-    return this.tBp;
+    return this.tMg;
   }
   
   public final class a
     extends a.a
   {
     public View contentView;
-    public ImageView lZa;
-    public TextView tAA;
-    public View tAS;
+    public ImageView mdt;
+    public View tLJ;
+    public TextView tLr;
     
     public a()
     {
@@ -95,9 +95,9 @@ public final class i
       AppMethodBeat.i(112079);
       paramContext = LayoutInflater.from(paramContext).inflate(2131494196, paramViewGroup, false);
       paramViewGroup = new i.a(i.this);
-      paramViewGroup.tAA = ((TextView)paramContext.findViewById(2131305880));
-      paramViewGroup.lZa = ((ImageView)paramContext.findViewById(2131300891));
-      paramViewGroup.tAS = paramContext.findViewById(2131303131);
+      paramViewGroup.tLr = ((TextView)paramContext.findViewById(2131305880));
+      paramViewGroup.mdt = ((ImageView)paramContext.findViewById(2131300891));
+      paramViewGroup.tLJ = paramContext.findViewById(2131303131);
       paramViewGroup.contentView = paramContext.findViewById(2131304428);
       paramContext.setTag(paramViewGroup);
       AppMethodBeat.o(112079);
@@ -109,16 +109,16 @@ public final class i
       AppMethodBeat.i(112080);
       paramContext = (i.a)parama;
       parama = (i)parama1;
-      n.q(paramContext.contentView, i.this.tvU);
-      paramContext.tAA.setText(parama.tBo);
-      paramContext.lZa.setImageResource(2131690258);
-      if ((i.this.position != 0) && (i.this.tBn))
+      n.q(paramContext.contentView, i.this.tGL);
+      paramContext.tLr.setText(parama.tMf);
+      paramContext.mdt.setImageResource(2131690258);
+      if ((i.this.position != 0) && (i.this.tMe))
       {
-        paramContext.tAS.setVisibility(0);
+        paramContext.tLJ.setVisibility(0);
         AppMethodBeat.o(112080);
         return;
       }
-      paramContext.tAS.setVisibility(8);
+      paramContext.tLJ.setVisibility(8);
       AppMethodBeat.o(112080);
     }
     
@@ -126,12 +126,12 @@ public final class i
     {
       AppMethodBeat.i(112081);
       paramVarArgs = new Intent();
-      paramVarArgs.putExtra("key_talker_query", i.this.tun.tuO[0]);
-      paramVarArgs.putExtra("key_query", i.this.tun.tuO[1]);
-      paramVarArgs.putExtra("Search_Scene", i.this.ljZ);
-      if (!bt.isNullOrNil(i.this.tvc))
+      paramVarArgs.putExtra("key_talker_query", i.this.tFe.tFF[0]);
+      paramVarArgs.putExtra("key_query", i.this.tFe.tFF[1]);
+      paramVarArgs.putExtra("Search_Scene", i.this.lox);
+      if (!bu.isNullOrNil(i.this.tFT))
       {
-        paramVarArgs.putExtra("key_conv", i.this.tvc);
+        paramVarArgs.putExtra("key_conv", i.this.tFT);
         paramVarArgs.putExtra("detail_type", 1);
         d.d(paramContext, ".ui.FTSConvTalkerMessageUI", paramVarArgs);
       }
@@ -146,7 +146,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.ui.a.i
  * JD-Core Version:    0.7.0.1
  */

@@ -23,9 +23,9 @@ import org.apache.http.util.EntityUtils;
 
 public final class i
 {
-  static i kei;
-  MulticastSocket kej;
-  InetAddress kek;
+  static i khz;
+  MulticastSocket khA;
+  InetAddress khB;
   int port;
   
   i(boolean paramBoolean)
@@ -34,12 +34,12 @@ public final class i
     this.port = -1;
     try
     {
-      this.kek = InetAddress.getByName("239.255.255.250");
+      this.khB = InetAddress.getByName("239.255.255.250");
       if (paramBoolean)
       {
-        this.kej = new MulticastSocket();
-        this.kej.setBroadcast(true);
-        this.port = this.kej.getLocalPort();
+        this.khA = new MulticastSocket();
+        this.khA.setBroadcast(true);
+        this.port = this.khA.getLocalPort();
       }
       AppMethodBeat.o(159011);
       return;
@@ -60,8 +60,8 @@ public final class i
       localObject1 = AndroidHttpClient.newInstance("");
       try
       {
-        localObject2 = new a(parame.getUrl(), parame.bfi());
-        localObject3 = parame.bfj();
+        localObject2 = new a(parame.getUrl(), parame.bfQ());
+        localObject3 = parame.bfR();
         if ((localObject3 == null) || (((Map)localObject3).isEmpty())) {
           break label141;
         }
@@ -94,7 +94,7 @@ public final class i
     AppMethodBeat.o(159013);
     throw parame;
     label141:
-    parame = parame.bfg();
+    parame = parame.bfO();
     if (!TextUtils.isEmpty(parame))
     {
       parame = new StringEntity(parame, "utf-8");
@@ -104,33 +104,33 @@ public final class i
     parame = ((AndroidHttpClient)localObject1).execute((HttpUriRequest)localObject2);
     ((AndroidHttpClient)localObject1).close();
     localObject2 = new com.tencent.mm.plugin.appbrand.g.c.b.e();
-    ((com.tencent.mm.plugin.appbrand.g.c.b.e)localObject2).kep = new b();
+    ((com.tencent.mm.plugin.appbrand.g.c.b.e)localObject2).khG = new b();
     localObject3 = parame.getAllHeaders();
     j = localObject3.length;
     i = 0;
     while (i < j)
     {
       localEntry = localObject3[i];
-      ((com.tencent.mm.plugin.appbrand.g.c.b.e)localObject2).kep.put(localEntry.getName(), localEntry.getValue());
+      ((com.tencent.mm.plugin.appbrand.g.c.b.e)localObject2).khG.put(localEntry.getName(), localEntry.getValue());
       i += 1;
     }
     localObject3 = EntityUtils.toString(parame.getEntity(), "utf-8").replaceAll("&(?!amp;)", "&amp;");
-    ((com.tencent.mm.plugin.appbrand.g.c.b.e)localObject2).keq = j.bfD().Om((String)localObject3);
+    ((com.tencent.mm.plugin.appbrand.g.c.b.e)localObject2).khH = j.bgl().OU((String)localObject3);
     ((com.tencent.mm.plugin.appbrand.g.c.b.e)localObject2).responseCode = parame.getStatusLine().getStatusCode();
     AppMethodBeat.o(159013);
     return localObject2;
   }
   
-  public static i bfC()
+  public static i bgk()
   {
     AppMethodBeat.i(159012);
-    if (kei == null) {}
+    if (khz == null) {}
     try
     {
-      if (kei == null) {
-        kei = new i(true);
+      if (khz == null) {
+        khz = new i(true);
       }
-      i locali = kei;
+      i locali = khz;
       AppMethodBeat.o(159012);
       return locali;
     }
@@ -143,8 +143,8 @@ public final class i
   protected final void finalize()
   {
     AppMethodBeat.i(159014);
-    if (this == kei) {
-      this.kej.close();
+    if (this == khz) {
+      this.khA.close();
     }
     super.finalize();
     AppMethodBeat.o(159014);
@@ -153,18 +153,18 @@ public final class i
   public static final class a
     extends HttpPost
   {
-    private e.a kcv;
+    private e.a kfM;
     
     public a(String paramString, e.a parama)
     {
       super();
-      this.kcv = parama;
+      this.kfM = parama;
     }
     
     public final String getMethod()
     {
       AppMethodBeat.i(159010);
-      String str = this.kcv.name();
+      String str = this.kfM.name();
       AppMethodBeat.o(159010);
       return str;
     }

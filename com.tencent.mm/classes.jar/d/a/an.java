@@ -8,20 +8,20 @@ import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-@l(gfA=1, gfx={1, 1, 16}, gfy={""}, gfz={"minus", "", "T", "element", "(Ljava/util/Set;Ljava/lang/Object;)Ljava/util/Set;", "elements", "", "(Ljava/util/Set;[Ljava/lang/Object;)Ljava/util/Set;", "", "Lkotlin/sequences/Sequence;", "minusElement", "plus", "plusElement", "kotlin-stdlib"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"minus", "", "T", "element", "(Ljava/util/Set;Ljava/lang/Object;)Ljava/util/Set;", "elements", "", "(Ljava/util/Set;[Ljava/lang/Object;)Ljava/util/Set;", "", "Lkotlin/sequences/Sequence;", "minusElement", "plus", "plusElement", "kotlin-stdlib"}, gkc=1)
 public class an
   extends am
 {
   public static final <T> Set<T> a(Set<? extends T> paramSet, Iterable<? extends T> paramIterable)
   {
-    AppMethodBeat.i(199611);
+    AppMethodBeat.i(188703);
     p.h(paramSet, "$this$minus");
     p.h(paramIterable, "elements");
     paramIterable = j.a(paramIterable, (Iterable)paramSet);
     if (paramIterable.isEmpty())
     {
       paramSet = j.n((Iterable)paramSet);
-      AppMethodBeat.o(199611);
+      AppMethodBeat.o(188703);
       return paramSet;
     }
     if ((paramIterable instanceof Set))
@@ -37,13 +37,13 @@ public class an
         }
       }
       paramSet = (Set)paramSet;
-      AppMethodBeat.o(199611);
+      AppMethodBeat.o(188703);
       return paramSet;
     }
     paramSet = new LinkedHashSet((Collection)paramSet);
     paramSet.removeAll(paramIterable);
     paramSet = (Set)paramSet;
-    AppMethodBeat.o(199611);
+    AppMethodBeat.o(188703);
     return paramSet;
   }
   
@@ -64,7 +64,7 @@ public class an
     label109:
     for (int i = ((Number)localObject).intValue() + paramSet.size();; i = paramSet.size() * 2)
     {
-      localObject = new LinkedHashSet(ae.aji(i));
+      localObject = new LinkedHashSet(ae.ajS(i));
       ((LinkedHashSet)localObject).addAll((Collection)paramSet);
       j.a((Collection)localObject, paramIterable);
       paramSet = (Set)localObject;
@@ -79,7 +79,7 @@ public class an
   {
     AppMethodBeat.i(129004);
     p.h(paramSet, "$this$plus");
-    LinkedHashSet localLinkedHashSet = new LinkedHashSet(ae.aji(paramSet.size() + 1));
+    LinkedHashSet localLinkedHashSet = new LinkedHashSet(ae.ajS(paramSet.size() + 1));
     localLinkedHashSet.addAll((Collection)paramSet);
     localLinkedHashSet.add(paramT);
     paramSet = (Set)localLinkedHashSet;

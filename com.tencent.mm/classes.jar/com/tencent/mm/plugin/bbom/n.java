@@ -1,15 +1,15 @@
 package com.tencent.mm.plugin.bbom;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.mn;
-import com.tencent.mm.model.as.b.a;
-import com.tencent.mm.plugin.messenger.foundation.a.x;
+import com.tencent.mm.g.a.mo;
+import com.tencent.mm.model.au.b.a;
+import com.tencent.mm.plugin.messenger.foundation.a.y;
 import com.tencent.mm.protocal.protobuf.cv;
 import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.storage.ab;
+import com.tencent.mm.storage.ac;
 
 public final class n
-  implements x<cv>
+  implements y<cv>
 {}
 
 

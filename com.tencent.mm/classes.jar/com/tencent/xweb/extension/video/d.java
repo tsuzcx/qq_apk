@@ -53,54 +53,54 @@ import org.xwalk.core.ReflectMethod;
 public final class d
   implements GestureDetector.OnGestureListener, ScaleGestureDetector.OnScaleGestureListener, b, u
 {
-  WebView DFI;
-  private int Eon = -3;
-  ScaleGestureDetector Lpr;
-  private long MrA;
-  private double MrB;
-  private double MrC;
-  private final int MrD = 0;
-  private final int MrE = 1;
-  private final int MrF = 2;
-  private final int MrG = 3;
-  private boolean MrH = false;
-  private v MrI;
-  private int MrJ = 0;
-  private double MrK = 0.0D;
-  private float MrL = 0.0F;
-  private float MrM = 0.0F;
-  private a MrN;
-  String MrO;
-  private Timer MrP;
-  private boolean MrQ;
-  private int MrR = 0;
-  private double MrS;
-  private int MrT = 200;
-  private Drawable MrU;
-  private boolean MrV;
-  private boolean MrW;
-  private boolean MrX = false;
-  private int MrY;
-  private ViewGroup Mrk;
-  SurfaceView Mrl;
-  private View Mrm;
-  ViewGroup Mrn;
-  VideoStatusLayout Mro;
-  ProgressBar Mrp;
-  TextView Mrq;
-  TextView Mrr;
-  ClickableFrameLayout Mrs;
-  LinearLayout Mrt;
-  ImageView Mru;
-  ImageView Mrv;
-  ImageView Mrw;
-  c Mrx;
-  private WebChromeClient.CustomViewCallback Mry;
-  private boolean Mrz;
+  WebView DXF;
+  private int EGr = -3;
+  ScaleGestureDetector LMc;
+  ImageView MOA;
+  c MOB;
+  private WebChromeClient.CustomViewCallback MOC;
+  private boolean MOD;
+  private long MOE;
+  private double MOF;
+  private double MOG;
+  private final int MOH = 0;
+  private final int MOI = 1;
+  private final int MOJ = 2;
+  private final int MOK = 3;
+  private boolean MOL = false;
+  private v MOM;
+  private int MON = 0;
+  private double MOO = 0.0D;
+  private float MOP = 0.0F;
+  private float MOQ = 0.0F;
+  private a MOR;
+  String MOS;
+  private Timer MOT;
+  private boolean MOU;
+  private int MOV = 0;
+  private double MOW;
+  private int MOX = 200;
+  private Drawable MOY;
+  private boolean MOZ;
+  private ViewGroup MOo;
+  SurfaceView MOp;
+  private View MOq;
+  ViewGroup MOr;
+  VideoStatusLayout MOs;
+  ProgressBar MOt;
+  TextView MOu;
+  TextView MOv;
+  ClickableFrameLayout MOw;
+  LinearLayout MOx;
+  ImageView MOy;
+  ImageView MOz;
+  private boolean MPa;
+  private boolean MPb = false;
+  private int MPc;
   GestureDetector PC;
   private Window WM;
   private WindowManager.LayoutParams azK;
-  private double lyY;
+  private double lDw;
   Activity mActivity;
   private AudioManager mAudioManager;
   private float mBrightness = 1.0F;
@@ -108,26 +108,26 @@ public final class d
   private int mMode = 0;
   FrameLayout mRootView;
   
-  private void au(Runnable paramRunnable)
+  private void as(Runnable paramRunnable)
   {
     AppMethodBeat.i(153601);
-    if (this.MrH)
+    if (this.MOL)
     {
       AppMethodBeat.o(153601);
       return;
     }
-    Activity localActivity = gbq();
+    Activity localActivity = gfS();
     if (localActivity != null)
     {
       localActivity.runOnUiThread(paramRunnable);
       AppMethodBeat.o(153601);
       return;
     }
-    this.DFI.getView().post(paramRunnable);
+    this.DXF.getView().post(paramRunnable);
     AppMethodBeat.o(153601);
   }
   
-  private Activity gbq()
+  private Activity gfS()
   {
     AppMethodBeat.i(153593);
     if (this.mActivity != null)
@@ -136,7 +136,7 @@ public final class d
       AppMethodBeat.o(153593);
       return localObject;
     }
-    Object localObject = this.DFI.getContext();
+    Object localObject = this.DXF.getContext();
     if ((localObject instanceof Activity))
     {
       localObject = (Activity)localObject;
@@ -169,30 +169,30 @@ public final class d
   }
   
   /* Error */
-  public static String gbr()
+  public static String gfT()
   {
     // Byte code:
     //   0: ldc_w 275
     //   3: invokestatic 197	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: ldc_w 277
-    //   9: invokestatic 283	com/tencent/xweb/xwalk/a/g:baM	(Ljava/lang/String;)Lcom/tencent/xweb/xwalk/a/f;
+    //   9: invokestatic 283	com/tencent/xweb/xwalk/a/g:bcp	(Ljava/lang/String;)Lcom/tencent/xweb/xwalk/a/f;
     //   12: astore_1
     //   13: aload_1
     //   14: ifnull +436 -> 450
     //   17: aload_1
-    //   18: getfield 288	com/tencent/xweb/xwalk/a/f:MxJ	I
+    //   18: getfield 288	com/tencent/xweb/xwalk/a/f:MUN	I
     //   21: iconst_m1
     //   22: if_icmpeq +428 -> 450
     //   25: aload_1
-    //   26: getfield 288	com/tencent/xweb/xwalk/a/f:MxJ	I
+    //   26: getfield 288	com/tencent/xweb/xwalk/a/f:MUN	I
     //   29: istore_0
     //   30: new 290	java/io/File
     //   33: dup
     //   34: aload_1
     //   35: aload_1
-    //   36: getfield 288	com/tencent/xweb/xwalk/a/f:MxJ	I
+    //   36: getfield 288	com/tencent/xweb/xwalk/a/f:MUN	I
     //   39: iconst_0
-    //   40: invokevirtual 294	com/tencent/xweb/xwalk/a/f:bq	(IZ)Ljava/lang/String;
+    //   40: invokevirtual 294	com/tencent/xweb/xwalk/a/f:bz	(IZ)Ljava/lang/String;
     //   43: invokespecial 297	java/io/File:<init>	(Ljava/lang/String;)V
     //   46: astore_2
     //   47: aload_2
@@ -293,7 +293,7 @@ public final class d
     //   240: invokestatic 365	org/xwalk/core/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   243: ldc_w 367
     //   246: astore_1
-    //   247: invokestatic 372	com/tencent/xweb/util/g:gcH	()V
+    //   247: invokestatic 372	com/tencent/xweb/util/g:ghj	()V
     //   250: ldc_w 275
     //   253: invokestatic 204	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   256: aload_1
@@ -314,7 +314,7 @@ public final class d
     //   287: goto -217 -> 70
     //   290: aload_1
     //   291: iconst_m1
-    //   292: invokevirtual 379	com/tencent/xweb/xwalk/a/f:aiJ	(I)Z
+    //   292: invokevirtual 379	com/tencent/xweb/xwalk/a/f:ajt	(I)Z
     //   295: pop
     //   296: aconst_null
     //   297: astore_1
@@ -372,7 +372,7 @@ public final class d
     //   396: invokestatic 386	java/lang/String:valueOf	(I)Ljava/lang/String;
     //   399: invokevirtual 390	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
     //   402: invokestatic 365	org/xwalk/core/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   405: invokestatic 393	com/tencent/xweb/util/g:gcG	()V
+    //   405: invokestatic 393	com/tencent/xweb/util/g:ghi	()V
     //   408: goto -158 -> 250
     //   411: astore_1
     //   412: goto -31 -> 381
@@ -456,7 +456,7 @@ public final class d
     //   86	95	438	java/io/IOException
   }
   
-  private SurfaceView hs(View paramView)
+  private SurfaceView hx(View paramView)
   {
     AppMethodBeat.i(153631);
     if ((paramView instanceof SurfaceView))
@@ -471,7 +471,7 @@ public final class d
       int i = 0;
       while (i < paramView.getChildCount())
       {
-        SurfaceView localSurfaceView = hs(paramView.getChildAt(i));
+        SurfaceView localSurfaceView = hx(paramView.getChildAt(i));
         if (localSurfaceView != null)
         {
           AppMethodBeat.o(153631);
@@ -502,16 +502,16 @@ public final class d
   {
     AppMethodBeat.i(153597);
     if (this.mAudioManager == null) {
-      this.mAudioManager = ((AudioManager)this.DFI.getContext().getSystemService("audio"));
+      this.mAudioManager = ((AudioManager)this.DXF.getContext().getSystemService("audio"));
     }
-    this.MrJ = this.mAudioManager.getStreamMaxVolume(3);
-    this.MrK = this.mAudioManager.getStreamVolume(3);
-    if (this.MrN == null) {
-      this.MrN = new a(this.DFI.getContext());
+    this.MON = this.mAudioManager.getStreamMaxVolume(3);
+    this.MOO = this.mAudioManager.getStreamVolume(3);
+    if (this.MOR == null) {
+      this.MOR = new a(this.DXF.getContext());
     }
     if (this.WM == null)
     {
-      Activity localActivity = gbq();
+      Activity localActivity = gfS();
       if (localActivity != null) {
         this.WM = localActivity.getWindow();
       }
@@ -525,7 +525,7 @@ public final class d
       if (this.mBrightness == -1.0F) {
         try
         {
-          this.mBrightness = ((float)(Settings.System.getInt(this.DFI.getContext().getContentResolver(), "screen_brightness") / 256.0D));
+          this.mBrightness = ((float)(Settings.System.getInt(this.DXF.getContext().getContentResolver(), "screen_brightness") / 256.0D));
           AppMethodBeat.o(153597);
           return;
         }
@@ -540,23 +540,23 @@ public final class d
   
   private void u(Activity paramActivity, int paramInt)
   {
-    AppMethodBeat.i(195504);
-    if ((this.MrI != null) && (this.MrI.tG(paramInt)))
+    AppMethodBeat.i(207520);
+    if ((this.MOM != null) && (this.MOM.tL(paramInt)))
     {
       Log.i("XWebNativeInterface", "setRequestedOrientation by wechat client");
-      AppMethodBeat.o(195504);
+      AppMethodBeat.o(207520);
       return;
     }
     if (paramActivity != null) {
       paramActivity.setRequestedOrientation(paramInt);
     }
-    AppMethodBeat.o(195504);
+    AppMethodBeat.o(207520);
   }
   
-  private void zK(final boolean paramBoolean)
+  private void zX(final boolean paramBoolean)
   {
     AppMethodBeat.i(153609);
-    au(new Runnable()
+    as(new Runnable()
     {
       public final void run()
       {
@@ -574,10 +574,10 @@ public final class d
     AppMethodBeat.o(153609);
   }
   
-  private void zL(boolean paramBoolean)
+  private void zY(boolean paramBoolean)
   {
     AppMethodBeat.i(153632);
-    Activity localActivity = gbq();
+    Activity localActivity = gfS();
     if (localActivity == null)
     {
       AppMethodBeat.o(153632);
@@ -587,39 +587,39 @@ public final class d
     {
       if ((localActivity.getWindow().getAttributes().flags & 0x800) != 0)
       {
-        this.MrW = true;
+        this.MPa = true;
         localActivity.getWindow().clearFlags(2048);
-        if (this.MrX) {
+        if (this.MPb) {
           break label174;
         }
         if ((localActivity.getWindow().getAttributes().flags & 0x400) == 0) {
           break label107;
         }
-        this.MrV = true;
+        this.MOZ = true;
       }
       for (;;)
       {
-        this.MrX = true;
+        this.MPb = true;
         AppMethodBeat.o(153632);
         return;
-        this.MrW = false;
+        this.MPa = false;
         break;
         label107:
-        this.MrV = false;
+        this.MOZ = false;
         localActivity.getWindow().addFlags(1024);
       }
     }
     else
     {
-      if (this.MrW) {
+      if (this.MPa) {
         localActivity.getWindow().addFlags(2048);
       }
-      if (!this.MrV) {
+      if (!this.MOZ) {
         localActivity.getWindow().clearFlags(1024);
       }
-      this.MrY = 0;
-      this.MrX = false;
-      this.Mrz = false;
+      this.MPc = 0;
+      this.MPb = false;
+      this.MOD = false;
     }
     label174:
     AppMethodBeat.o(153632);
@@ -628,23 +628,23 @@ public final class d
   public final void G(double paramDouble)
   {
     AppMethodBeat.i(153614);
-    this.DFI.evaluateJavascript(String.format("xwebVideoBridge.xwebToJS_Video_Seek(%f);", new Object[] { Double.valueOf(paramDouble) }), new ValueCallback() {});
+    this.DXF.evaluateJavascript(String.format("xwebVideoBridge.xwebToJS_Video_Seek(%f);", new Object[] { Double.valueOf(paramDouble) }), new ValueCallback() {});
     AppMethodBeat.o(153614);
   }
   
-  public final void bb(boolean paramBoolean1, boolean paramBoolean2)
+  public final void ba(boolean paramBoolean1, boolean paramBoolean2)
   {
     AppMethodBeat.i(153595);
-    if ((this.DFI != null) && (paramBoolean2) && (this.MrO != null))
+    if ((this.DXF != null) && (paramBoolean2) && (this.MOS != null))
     {
       Log.i("XWebNativeInterface", "evaluteJavascript:".concat(String.valueOf(paramBoolean1)));
-      String str = this.MrO;
+      String str = this.MOS;
       if (paramBoolean1)
       {
-        str = this.MrO;
+        str = this.MOS;
         str = "window.addEventListener('DOMContentLoaded', function() {" + str + "});this.xwebReturn = function (){return \"1\";};this.xwebReturn()";
       }
-      this.DFI.evaluateJavascript(str, new ValueCallback() {});
+      this.DXF.evaluateJavascript(str, new ValueCallback() {});
     }
     AppMethodBeat.o(153595);
   }
@@ -652,7 +652,7 @@ public final class d
   public final void e(final double paramDouble, final boolean paramBoolean)
   {
     AppMethodBeat.i(153610);
-    au(new Runnable()
+    as(new Runnable()
     {
       public final void run()
       {
@@ -668,93 +668,81 @@ public final class d
     AppMethodBeat.o(153610);
   }
   
-  public final void eA(Object paramObject)
+  public final void eD(Object paramObject)
   {
     AppMethodBeat.i(153594);
     new ReflectMethod(paramObject, "addJavascriptInterface", new Class[] { Object.class, String.class }).invoke(new Object[] { this, "xwebToNative" });
     AppMethodBeat.o(153594);
   }
   
-  public final boolean eB(Object paramObject)
+  public final boolean eE(Object paramObject)
   {
-    this.MrI = ((v)paramObject);
+    this.MOM = ((v)paramObject);
     return true;
   }
   
-  public final void etk()
+  public final void ewR()
   {
     AppMethodBeat.i(153613);
-    this.DFI.evaluateJavascript(String.format("xwebVideoBridge.xwebToJS_Video_NewPause();", new Object[0]), new ValueCallback() {});
+    this.DXF.evaluateJavascript(String.format("xwebVideoBridge.xwebToJS_Video_NewPause();", new Object[0]), new ValueCallback() {});
     AppMethodBeat.o(153613);
   }
   
-  public final void gaG()
-  {
-    AppMethodBeat.i(153612);
-    this.DFI.evaluateJavascript(String.format("xwebVideoBridge.xwebToJS_Video_NewPlay();", new Object[0]), new ValueCallback() {});
-    AppMethodBeat.o(153612);
-  }
-  
-  public final boolean gaH()
-  {
-    return true;
-  }
-  
-  public final void gbs()
+  public final void gfU()
   {
     AppMethodBeat.i(153602);
-    if (this.MrP != null)
+    if (this.MOT != null)
     {
-      this.MrP.cancel();
-      this.MrP.purge();
-      this.MrP = null;
+      this.MOT.cancel();
+      this.MOT.purge();
+      this.MOT = null;
     }
-    this.MrP = new Timer();
-    this.MrP.schedule(new TimerTask()
+    this.MOT = new Timer();
+    this.MOT.schedule(new TimerTask()
     {
       public final void run()
       {
         AppMethodBeat.i(153590);
-        d.this.gbv();
+        d.this.gfX();
         AppMethodBeat.o(153590);
       }
     }, 4000L);
     AppMethodBeat.o(153602);
   }
   
-  public final void gbt()
+  public final void gfV()
   {
     AppMethodBeat.i(153603);
-    if (this.MrP != null)
+    if (this.MOT != null)
     {
-      this.MrP.cancel();
-      this.MrP.purge();
-      this.MrP = null;
+      this.MOT.cancel();
+      this.MOT.purge();
+      this.MOT = null;
     }
     AppMethodBeat.o(153603);
   }
   
-  public final void gbu()
+  public final void gfW()
   {
     AppMethodBeat.i(153607);
-    au(new Runnable()
+    as(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(153591);
         d.a(d.this, true);
         d.j(d.this).setVisibility(0);
-        d.this.gbs();
+        d.this.gfU();
         AppMethodBeat.o(153591);
       }
     });
     AppMethodBeat.o(153607);
   }
   
-  public final void gbv()
+  public final void gfX()
   {
     AppMethodBeat.i(153608);
-    au(new Runnable()
+    as(new Runnable()
     {
       public final void run()
       {
@@ -767,17 +755,29 @@ public final class d
     AppMethodBeat.o(153608);
   }
   
-  public final void lg(int paramInt1, int paramInt2)
+  public final void gfi()
+  {
+    AppMethodBeat.i(153612);
+    this.DXF.evaluateJavascript(String.format("xwebVideoBridge.xwebToJS_Video_NewPlay();", new Object[0]), new ValueCallback() {});
+    AppMethodBeat.o(153612);
+  }
+  
+  public final boolean gfj()
+  {
+    return true;
+  }
+  
+  public final void ln(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(153633);
-    Object localObject = gbq();
+    Object localObject = gfS();
     if (localObject == null)
     {
       AppMethodBeat.o(153633);
       return;
     }
-    if ((this.Eon == -3) && (localObject != null)) {
-      this.Eon = ((Activity)localObject).getRequestedOrientation();
+    if ((this.EGr == -3) && (localObject != null)) {
+      this.EGr = ((Activity)localObject).getRequestedOrientation();
     }
     int i;
     Point localPoint;
@@ -789,10 +789,10 @@ public final class d
       u((Activity)localObject, 1);
       i = 1;
       this.mCurrentOrientation = i;
-      if (this.Mrm != null)
+      if (this.MOq != null)
       {
-        localObject = this.Mrm;
-        Display localDisplay = ((WindowManager)this.DFI.getContext().getSystemService("window")).getDefaultDisplay();
+        localObject = this.MOq;
+        Display localDisplay = ((WindowManager)this.DXF.getContext().getSystemService("window")).getDefaultDisplay();
         localPoint = new Point(0, 0);
         localDisplay.getSize(localPoint);
         if (i != 0) {
@@ -827,7 +827,7 @@ public final class d
   
   public final boolean onDown(MotionEvent paramMotionEvent)
   {
-    this.MrR = 0;
+    this.MOV = 0;
     return true;
   }
   
@@ -839,23 +839,23 @@ public final class d
   public final void onHideCustomView()
   {
     AppMethodBeat.i(153599);
-    if (this.Mry != null) {
-      this.Mry.onCustomViewHidden();
+    if (this.MOC != null) {
+      this.MOC.onCustomViewHidden();
     }
     Log.i("XWebNativeInterface", "detach");
-    if (!this.MrX)
+    if (!this.MPb)
     {
       Log.i("XWebNativeInterface", "detach has exited fullscreen");
       AppMethodBeat.o(153599);
       return;
     }
-    Activity localActivity = gbq();
+    Activity localActivity = gfS();
     if (localActivity != null)
     {
-      if (this.MrU != null)
+      if (this.MOY != null)
       {
-        this.DFI.getView().setBackground(this.MrU);
-        this.MrU = null;
+        this.DXF.getView().setBackground(this.MOY);
+        this.MOY = null;
       }
       for (;;)
       {
@@ -865,24 +865,24 @@ public final class d
         }
         AppMethodBeat.o(153599);
         return;
-        this.DFI.getView().setBackground(new ColorDrawable(0));
+        this.DXF.getView().setBackground(new ColorDrawable(0));
       }
-      if (this.DFI.isXWalkKernel())
+      if (this.DXF.isXWalkKernel())
       {
-        this.mRootView.removeView(this.DFI);
-        this.Mrk.addView(this.DFI, 0);
+        this.mRootView.removeView(this.DXF);
+        this.MOo.addView(this.DXF, 0);
       }
-      if (this.Mrm != null) {
-        this.mRootView.removeView(this.Mrm);
+      if (this.MOq != null) {
+        this.mRootView.removeView(this.MOq);
       }
-      this.mRootView.removeView(this.Mrn);
-      this.Mrn.setVisibility(8);
-      if (this.Eon != -3)
+      this.mRootView.removeView(this.MOr);
+      this.MOr.setVisibility(8);
+      if (this.EGr != -3)
       {
-        u(localActivity, this.Eon);
-        this.Eon = -3;
+        u(localActivity, this.EGr);
+        this.EGr = -3;
       }
-      zL(false);
+      zY(false);
       if ((this.mRootView.getParent() instanceof ViewGroup)) {
         ((ViewGroup)this.mRootView.getParent()).removeView(this.mRootView);
       }
@@ -892,31 +892,31 @@ public final class d
   
   public final void onLongPress(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(195503);
+    AppMethodBeat.i(207519);
     com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
     localb.bd(paramMotionEvent);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/xweb/extension/video/XWebNativeInterface", "android/view/GestureDetector$OnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V", this, localb.ahq());
+    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/xweb/extension/video/XWebNativeInterface", "android/view/GestureDetector$OnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V", this, localb.ahF());
     com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/xweb/extension/video/XWebNativeInterface", "android/view/GestureDetector$OnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V");
-    AppMethodBeat.o(195503);
+    AppMethodBeat.o(207519);
   }
   
   public final boolean onScale(ScaleGestureDetector paramScaleGestureDetector)
   {
     AppMethodBeat.i(153606);
-    if ((this.mMode == 1) && (this.Mrm != null))
+    if ((this.mMode == 1) && (this.MOq != null))
     {
       float f = paramScaleGestureDetector.getScaleFactor();
-      this.Mrm.getLeft();
-      this.Mrm.getTop();
-      this.Mrm.getBottom();
-      this.Mrm.getRight();
-      int i = (int)(this.Mrm.getWidth() * f);
-      int j = (int)(f * this.Mrm.getHeight());
+      this.MOq.getLeft();
+      this.MOq.getTop();
+      this.MOq.getBottom();
+      this.MOq.getRight();
+      int i = (int)(this.MOq.getWidth() * f);
+      int j = (int)(f * this.MOq.getHeight());
       paramScaleGestureDetector = new FrameLayout.LayoutParams(-2, -2, 17);
       paramScaleGestureDetector.width = i;
       paramScaleGestureDetector.height = j;
-      if (this.Mrm != null) {
-        this.Mrm.setLayoutParams(paramScaleGestureDetector);
+      if (this.MOq != null) {
+        this.MOq.setLayoutParams(paramScaleGestureDetector);
       }
       AppMethodBeat.o(153606);
       return true;
@@ -943,13 +943,13 @@ public final class d
     float f1 = paramMotionEvent2.getX();
     float f2 = paramMotionEvent1.getX();
     float f3 = paramMotionEvent2.getY() - paramMotionEvent1.getY();
-    if (this.Mrn.getHeight() > this.Mrn.getWidth())
+    if (this.MOr.getHeight() > this.MOr.getWidth())
     {
-      paramFloat2 = this.Mrn.getWidth();
-      paramFloat1 = this.Mrn.getHeight();
+      paramFloat2 = this.MOr.getWidth();
+      paramFloat1 = this.MOr.getHeight();
     }
     double d1;
-    switch (this.MrR)
+    switch (this.MOV)
     {
     default: 
     case 0: 
@@ -957,29 +957,29 @@ public final class d
       {
         AppMethodBeat.o(153605);
         return true;
-        paramFloat2 = this.Mrn.getHeight();
-        paramFloat1 = this.Mrn.getWidth();
+        paramFloat2 = this.MOr.getHeight();
+        paramFloat1 = this.MOr.getWidth();
         break;
         if (Math.abs(f1 - f2) - Math.abs(f3) > 1.0F)
         {
-          this.MrR = 3;
+          this.MOV = 3;
         }
         else
         {
           reset();
-          d1 = Math.ceil(25.0F * this.DFI.getContext().getResources().getDisplayMetrics().density);
-          if ((paramMotionEvent1.getY() < 2.0D * d1) || (paramMotionEvent1.getY() > this.Mrn.getHeight() - d1 * 2.0D)) {
-            this.MrR = 0;
-          } else if (paramMotionEvent1.getX() < this.Mrn.getWidth() / 2.0F) {
-            this.MrR = 2;
+          d1 = Math.ceil(25.0F * this.DXF.getContext().getResources().getDisplayMetrics().density);
+          if ((paramMotionEvent1.getY() < 2.0D * d1) || (paramMotionEvent1.getY() > this.MOr.getHeight() - d1 * 2.0D)) {
+            this.MOV = 0;
+          } else if (paramMotionEvent1.getX() < this.MOr.getWidth() / 2.0F) {
+            this.MOV = 2;
           } else {
-            this.MrR = 1;
+            this.MOV = 1;
           }
         }
       }
     case 1: 
       paramFloat1 = f3 * -1.0F;
-      d1 = this.MrJ * paramFloat1 / paramFloat2 * 1.2F;
+      d1 = this.MON * paramFloat1 / paramFloat2 * 1.2F;
       int j = (int)d1;
       int i = j;
       if (j == 0)
@@ -993,17 +993,17 @@ public final class d
           i = 1;
         }
       }
-      d1 = this.MrK;
+      d1 = this.MOO;
       double d2 = i + d1;
-      if (d2 > this.MrJ) {
-        d1 = this.MrJ;
+      if (d2 > this.MON) {
+        d1 = this.MON;
       }
       for (;;)
       {
         this.mAudioManager.setStreamVolume(3, (int)d1, 4);
-        i = (int)(d1 / this.MrJ * 100.0D);
-        this.Mro.setVolumnProgress(i);
-        this.Mro.show();
+        i = (int)(d1 / this.MON * 100.0D);
+        this.MOs.setVolumnProgress(i);
+        this.MOs.show();
         break;
         i = j;
         if (paramFloat1 >= 0.0F) {
@@ -1027,8 +1027,8 @@ public final class d
       {
         this.azK.screenBrightness = paramFloat1;
         this.WM.setAttributes(this.azK);
-        this.Mro.setBrightProgress((int)(paramFloat1 * 100.0F));
-        this.Mro.show();
+        this.MOs.setBrightProgress((int)(paramFloat1 * 100.0F));
+        this.MOs.show();
         break;
         paramFloat1 = paramFloat2;
         if (paramFloat2 > 1.0F) {
@@ -1037,26 +1037,26 @@ public final class d
       }
     }
     paramFloat2 = paramMotionEvent2.getX() - paramMotionEvent1.getX();
-    this.MrM = this.Mrx.mProgress;
+    this.MOQ = this.MOB.mProgress;
     if (paramFloat2 > 0.0F)
     {
-      f1 = this.MrM;
-      this.MrL = ((int)(paramFloat2 / paramFloat1 * 100.0F + f1));
-      if (this.MrL > 100.0F) {
-        this.MrL = 100.0F;
+      f1 = this.MOQ;
+      this.MOP = ((int)(paramFloat2 / paramFloat1 * 100.0F + f1));
+      if (this.MOP > 100.0F) {
+        this.MOP = 100.0F;
       }
     }
     for (;;)
     {
-      d1 = this.lyY * this.MrL / 100.0D;
-      this.Mro.setVideoTimeProgress(q(d1, this.lyY) + "/" + q(this.lyY, this.lyY));
-      this.Mro.show();
-      this.MrS = d1;
+      d1 = this.lDw * this.MOP / 100.0D;
+      this.MOs.setVideoTimeProgress(q(d1, this.lDw) + "/" + q(this.lDw, this.lDw));
+      this.MOs.show();
+      this.MOW = d1;
       break;
-      f1 = this.MrM;
-      this.MrL = ((int)(paramFloat2 / paramFloat1 * 100.0F + f1));
-      if (this.MrL < 0.0F) {
-        this.MrL = 0.0F;
+      f1 = this.MOQ;
+      this.MOP = ((int)(paramFloat2 / paramFloat1 * 100.0F + f1));
+      if (this.MOP < 0.0F) {
+        this.MOP = 0.0F;
       }
     }
   }
@@ -1065,72 +1065,72 @@ public final class d
   {
     AppMethodBeat.i(153598);
     Log.i("XWebNativeInterface", "onShowCustomView");
-    this.Mrm = paramView;
-    this.Mry = paramCustomViewCallback;
-    if ((this.Mrm != null) || (this.DFI.isXWalkKernel()))
+    this.MOq = paramView;
+    this.MOC = paramCustomViewCallback;
+    if ((this.MOq != null) || (this.DXF.isXWalkKernel()))
     {
-      if (!this.DFI.isXWalkKernel()) {
+      if (!this.DXF.isXWalkKernel()) {
         break label95;
       }
-      g.gcj();
+      g.ggL();
       Log.i("XWebNativeInterface", "attach");
-      if (!this.MrX) {
+      if (!this.MPb) {
         break label111;
       }
       Log.i("XWebNativeInterface", "attach has entered fullscreen");
     }
     for (;;)
     {
-      this.DFI.requestFocus();
+      this.DXF.requestFocus();
       AppMethodBeat.o(153598);
       return;
       label95:
-      if (!this.DFI.isSysKernel()) {
+      if (!this.DXF.isSysKernel()) {
         break;
       }
-      g.gcn();
+      g.ggP();
       break;
       label111:
-      paramView = gbq();
+      paramView = gfS();
       if (paramView != null)
       {
         reset();
-        zL(true);
+        zY(true);
         paramView = (FrameLayout)paramView.getWindow().getDecorView();
-        if ((this.DFI.isXWalkKernel()) && (this.mRootView.getParent() == paramView) && (this.Mrm != null))
+        if ((this.DXF.isXWalkKernel()) && (this.mRootView.getParent() == paramView) && (this.MOq != null))
         {
-          this.mRootView.addView(this.Mrm, 0, new FrameLayout.LayoutParams(-1, -1, 17));
+          this.mRootView.addView(this.MOq, 0, new FrameLayout.LayoutParams(-1, -1, 17));
         }
         else if (this.mRootView.getParent() != paramView)
         {
           paramView.addView(this.mRootView, new FrameLayout.LayoutParams(-1, -1, 17));
-          if (this.Mrm != null)
+          if (this.MOq != null)
           {
-            this.mRootView.addView(this.Mrm, this.mRootView.getChildCount(), new FrameLayout.LayoutParams(-1, -1, 17));
-            if (this.DFI.isSysKernel()) {
-              this.Mrm.setVisibility(4);
+            this.mRootView.addView(this.MOq, this.mRootView.getChildCount(), new FrameLayout.LayoutParams(-1, -1, 17));
+            if (this.DXF.isSysKernel()) {
+              this.MOq.setVisibility(4);
             }
           }
-          if (this.DFI.isSysKernel())
+          if (this.DXF.isSysKernel())
           {
-            paramView = hs(this.Mrm);
+            paramView = hx(this.MOq);
             if (paramView != null) {
               paramView.setZOrderMediaOverlay(true);
             }
           }
-          if (this.DFI.isXWalkKernel())
+          if (this.DXF.isXWalkKernel())
           {
-            this.Mrk = ((ViewGroup)this.DFI.getParent());
-            this.Mrk.removeView(this.DFI);
-            this.mRootView.addView(this.DFI, this.mRootView.getChildCount());
+            this.MOo = ((ViewGroup)this.DXF.getParent());
+            this.MOo.removeView(this.DXF);
+            this.mRootView.addView(this.DXF, this.mRootView.getChildCount());
           }
-          this.mRootView.addView(this.Mrn, this.mRootView.getChildCount(), new FrameLayout.LayoutParams(-1, -1, 17));
-          this.MrU = this.DFI.getView().getBackground();
-          if (this.MrU != null) {
-            this.MrU = this.MrU.getConstantState().newDrawable().mutate();
+          this.mRootView.addView(this.MOr, this.mRootView.getChildCount(), new FrameLayout.LayoutParams(-1, -1, 17));
+          this.MOY = this.DXF.getView().getBackground();
+          if (this.MOY != null) {
+            this.MOY = this.MOY.getConstantState().newDrawable().mutate();
           }
-          this.DFI.getView().setBackground(new ColorDrawable(-16777216));
-          if (this.DFI.isSysKernel()) {
+          this.DXF.getView().setBackground(new ColorDrawable(-16777216));
+          if (this.DXF.isSysKernel()) {
             this.mRootView.postDelayed(new Runnable()
             {
               public final void run()
@@ -1141,7 +1141,7 @@ public final class d
                 }
                 AppMethodBeat.o(153585);
               }
-            }, this.MrT);
+            }, this.MOX);
           }
         }
       }
@@ -1155,17 +1155,17 @@ public final class d
     AppMethodBeat.i(153604);
     com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
     localb.bd(paramMotionEvent);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/xweb/extension/video/XWebNativeInterface", "android/view/GestureDetector$OnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z", this, localb.ahq());
-    gbt();
-    if (this.MrQ) {
-      gbv();
+    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/xweb/extension/video/XWebNativeInterface", "android/view/GestureDetector$OnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z", this, localb.ahF());
+    gfV();
+    if (this.MOU) {
+      gfX();
     }
     for (;;)
     {
       com.tencent.mm.hellhoundlib.a.a.a(true, this, "com/tencent/xweb/extension/video/XWebNativeInterface", "android/view/GestureDetector$OnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z");
       AppMethodBeat.o(153604);
       return true;
-      gbu();
+      gfW();
     }
   }
   
@@ -1175,7 +1175,7 @@ public final class d
   {
     AppMethodBeat.i(153629);
     Log.i("XWebNativeInterface", "onSpecialVideoEnterFullscreen:".concat(String.valueOf(paramInt)));
-    g.bo(paramInt, this.DFI.isXWalkKernel());
+    g.bx(paramInt, this.DXF.isXWalkKernel());
     AppMethodBeat.o(153629);
   }
   
@@ -1185,7 +1185,7 @@ public final class d
   {
     AppMethodBeat.i(153630);
     Log.i("XWebNativeInterface", "onSpecialVideoHook:".concat(String.valueOf(paramInt)));
-    g.bp(paramInt, this.DFI.isXWalkKernel());
+    g.by(paramInt, this.DXF.isXWalkKernel());
     AppMethodBeat.o(153630);
   }
   
@@ -1194,9 +1194,9 @@ public final class d
   {
     AppMethodBeat.i(153623);
     Log.i("XWebNativeInterface", "onVideoEmptied");
-    if (this.MrI != null)
+    if (this.MOM != null)
     {
-      this.MrI.bph();
+      this.MOM.bpR();
       AppMethodBeat.o(153623);
       return true;
     }
@@ -1209,8 +1209,8 @@ public final class d
   {
     AppMethodBeat.i(153622);
     Log.i("XWebNativeInterface", "onVideoEnded");
-    if (this.MrI != null) {
-      this.MrI.onVideoEnded();
+    if (this.MOM != null) {
+      this.MOM.onVideoEnded();
     }
     AppMethodBeat.o(153622);
   }
@@ -1221,25 +1221,25 @@ public final class d
   {
     AppMethodBeat.i(153625);
     Log.i("XWebNativeInterface", "onVideoEnterFullscreen:isVideoTag:" + paramBoolean1 + ",width:" + paramDouble1 + ",height:" + paramDouble2 + ",pause:" + paramBoolean2 + ",seeking:" + paramBoolean3 + ",currentTime:" + paramDouble3 + ",duration:" + paramDouble4);
-    if (this.MrI != null) {
-      this.MrI.onVideoEnterFullscreen(paramBoolean1, paramLong, paramDouble1, paramDouble2, paramBoolean2, paramBoolean3, paramDouble3, paramDouble4, paramArrayOfDouble);
+    if (this.MOM != null) {
+      this.MOM.onVideoEnterFullscreen(paramBoolean1, paramLong, paramDouble1, paramDouble2, paramBoolean2, paramBoolean3, paramDouble3, paramDouble4, paramArrayOfDouble);
     }
-    if (this.DFI.isXWalkKernel())
+    if (this.DXF.isXWalkKernel())
     {
-      g.gck();
+      g.ggM();
       if (paramBoolean1)
       {
-        if (!this.DFI.isXWalkKernel()) {
+        if (!this.DXF.isXWalkKernel()) {
           break label250;
         }
-        g.gcl();
+        g.ggN();
         label157:
-        this.Mrz = true;
+        this.MOD = true;
       }
-      this.MrA = paramLong;
-      this.lyY = paramDouble4;
-      this.MrB = paramDouble1;
-      this.MrC = paramDouble2;
+      this.MOE = paramLong;
+      this.lDw = paramDouble4;
+      this.MOF = paramDouble1;
+      this.MOG = paramDouble2;
       if (!paramBoolean3) {
         break label266;
       }
@@ -1247,7 +1247,7 @@ public final class d
     }
     for (;;)
     {
-      au(new Runnable()
+      as(new Runnable()
       {
         public final void run()
         {
@@ -1255,24 +1255,24 @@ public final class d
           if (paramBoolean1) {
             d.q(d.this).setVisibility(0);
           }
-          d.this.lg((int)paramDouble1, (int)this.Msi);
+          d.this.ln((int)paramDouble1, (int)this.MPm);
           AppMethodBeat.o(153582);
         }
       });
       onVideoTimeUpdate(paramDouble3, paramDouble4, paramArrayOfDouble);
-      zK(paramBoolean2);
+      zX(paramBoolean2);
       AppMethodBeat.o(153625);
       return;
-      if (!this.DFI.isSysKernel()) {
+      if (!this.DXF.isSysKernel()) {
         break;
       }
-      g.gco();
+      g.ggQ();
       break;
       label250:
-      if (!this.DFI.isSysKernel()) {
+      if (!this.DXF.isSysKernel()) {
         break label157;
       }
-      g.gcp();
+      g.ggR();
       break label157;
       label266:
       onVideoSeeked();
@@ -1284,8 +1284,8 @@ public final class d
   {
     AppMethodBeat.i(153624);
     Log.i("XWebNativeInterface", "onVideoError");
-    if (this.MrI != null) {
-      this.MrI.onVideoError(paramInt, paramString);
+    if (this.MOM != null) {
+      this.MOM.onVideoError(paramInt, paramString);
     }
     AppMethodBeat.o(153624);
   }
@@ -1296,11 +1296,11 @@ public final class d
   {
     AppMethodBeat.i(153626);
     Log.i("XWebNativeInterface", "onVideoExitFullscreen");
-    if (this.MrI != null) {
-      this.MrI.onVideoExitFullscreen();
+    if (this.MOM != null) {
+      this.MOM.onVideoExitFullscreen();
     }
-    this.Mrz = false;
-    au(new Runnable()
+    this.MOD = false;
+    as(new Runnable()
     {
       public final void run()
       {
@@ -1317,12 +1317,12 @@ public final class d
   public final void onVideoGetFrame(long paramLong, double paramDouble, String paramString)
   {
     AppMethodBeat.i(153615);
-    if ((paramLong == this.MrA) && (this.MrS == paramDouble) && (paramString != null) && (paramString.startsWith("data:image/png;base64,")))
+    if ((paramLong == this.MOE) && (this.MOW == paramDouble) && (paramString != null) && (paramString.startsWith("data:image/png;base64,")))
     {
       paramString = Base64.decode(paramString.substring(22), 0);
       paramString = BitmapFactory.decodeByteArray(paramString, 0, paramString.length);
-      this.Mru.setImageBitmap(paramString);
-      this.Mru.setVisibility(0);
+      this.MOy.setImageBitmap(paramString);
+      this.MOy.setVisibility(0);
     }
     AppMethodBeat.o(153615);
   }
@@ -1333,10 +1333,10 @@ public final class d
   {
     AppMethodBeat.i(153621);
     Log.i("XWebNativeInterface", "onVideoPause");
-    if (this.MrI != null) {
-      this.MrI.onVideoPause();
+    if (this.MOM != null) {
+      this.MOM.onVideoPause();
     }
-    zK(true);
+    zX(true);
     AppMethodBeat.o(153621);
   }
   
@@ -1346,10 +1346,10 @@ public final class d
   {
     AppMethodBeat.i(153620);
     Log.i("XWebNativeInterface", "onVideoPlay");
-    if (this.MrI != null) {
-      this.MrI.onVideoPlay();
+    if (this.MOM != null) {
+      this.MOM.onVideoPlay();
     }
-    zK(false);
+    zX(false);
     AppMethodBeat.o(153620);
   }
   
@@ -1359,10 +1359,10 @@ public final class d
   {
     AppMethodBeat.i(153616);
     Log.i("XWebNativeInterface", "onVideoPlaying");
-    if (this.MrI != null) {
-      this.MrI.onVideoPlaying();
+    if (this.MOM != null) {
+      this.MOM.onVideoPlaying();
     }
-    au(new Runnable()
+    as(new Runnable()
     {
       public final void run()
       {
@@ -1380,10 +1380,10 @@ public final class d
   {
     AppMethodBeat.i(153619);
     Log.i("XWebNativeInterface", "onVideoSeeked");
-    if (this.MrI != null) {
-      this.MrI.onVideoSeeked();
+    if (this.MOM != null) {
+      this.MOM.onVideoSeeked();
     }
-    au(new Runnable()
+    as(new Runnable()
     {
       public final void run()
       {
@@ -1401,10 +1401,10 @@ public final class d
   {
     AppMethodBeat.i(153618);
     Log.i("XWebNativeInterface", "onVideoSeeking");
-    if (this.MrI != null) {
-      this.MrI.onVideoSeeking();
+    if (this.MOM != null) {
+      this.MOM.onVideoSeeking();
     }
-    au(new Runnable()
+    as(new Runnable()
     {
       public final void run()
       {
@@ -1421,20 +1421,20 @@ public final class d
   public final void onVideoSizeUpdate(final double paramDouble1, double paramDouble2)
   {
     AppMethodBeat.i(153628);
-    if (this.MrI != null) {
-      this.MrI.onVideoSizeUpdate(paramDouble1, paramDouble2);
+    if (this.MOM != null) {
+      this.MOM.onVideoSizeUpdate(paramDouble1, paramDouble2);
     }
-    if ((this.MrC != paramDouble2) || (this.MrB != paramDouble1))
+    if ((this.MOG != paramDouble2) || (this.MOF != paramDouble1))
     {
-      this.MrB = paramDouble1;
-      this.MrC = paramDouble2;
+      this.MOF = paramDouble1;
+      this.MOG = paramDouble2;
       Log.i("XWebNativeInterface", "onVideoSizeUpdate width:" + paramDouble1 + ", height:" + paramDouble2);
-      au(new Runnable()
+      as(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(153584);
-          d.this.lg((int)paramDouble1, (int)this.Msi);
+          d.this.ln((int)paramDouble1, (int)this.MPm);
           AppMethodBeat.o(153584);
         }
       });
@@ -1447,19 +1447,19 @@ public final class d
   public final void onVideoTimeUpdate(double paramDouble1, final double paramDouble2, double[] paramArrayOfDouble)
   {
     AppMethodBeat.i(153627);
-    if (this.MrI != null) {
-      this.MrI.onVideoTimeUpdate(paramDouble1, paramDouble2, paramArrayOfDouble);
+    if (this.MOM != null) {
+      this.MOM.onVideoTimeUpdate(paramDouble1, paramDouble2, paramArrayOfDouble);
     }
-    this.lyY = paramDouble2;
+    this.lDw = paramDouble2;
     e(paramDouble1, true);
-    au(new Runnable()
+    as(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(153575);
         c localc = d.l(d.this);
         double d3 = paramDouble2;
-        Object localObject = this.Mse;
+        Object localObject = this.MPi;
         double d1 = 0.0D;
         int i = 0;
         while (i < localObject.length)
@@ -1479,10 +1479,10 @@ public final class d
           i += 2;
           d1 = d2;
         }
-        localObject = (FrameLayout.LayoutParams)localc.lrJ.getLayoutParams();
-        ((FrameLayout.LayoutParams)localObject).width = ((int)(d1 / 100.0D * localc.lrs.getWidth()));
-        localc.lrJ.setLayoutParams((ViewGroup.LayoutParams)localObject);
-        localc.lrJ.requestLayout();
+        localObject = (FrameLayout.LayoutParams)localc.lwj.getLayoutParams();
+        ((FrameLayout.LayoutParams)localObject).width = ((int)(d1 / 100.0D * localc.lvS.getWidth()));
+        localc.lwj.setLayoutParams((ViewGroup.LayoutParams)localObject);
+        localc.lwj.requestLayout();
         AppMethodBeat.o(153575);
       }
     });
@@ -1495,10 +1495,10 @@ public final class d
   {
     AppMethodBeat.i(153617);
     Log.i("XWebNativeInterface", "onVideoWaiting");
-    if (this.MrI != null) {
-      this.MrI.onVideoWaiting();
+    if (this.MOM != null) {
+      this.MOM.onVideoWaiting();
     }
-    au(new Runnable()
+    as(new Runnable()
     {
       public final void run()
       {
@@ -1510,11 +1510,11 @@ public final class d
     AppMethodBeat.o(153617);
   }
   
-  public final void zJ(boolean paramBoolean)
+  public final void zW(boolean paramBoolean)
   {
     AppMethodBeat.i(153600);
     Log.i("XWebNativeInterface", "disableJsCallback:".concat(String.valueOf(paramBoolean)));
-    this.MrH = paramBoolean;
+    this.MOL = paramBoolean;
     AppMethodBeat.o(153600);
   }
 }

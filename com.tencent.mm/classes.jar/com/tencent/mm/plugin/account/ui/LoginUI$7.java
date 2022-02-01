@@ -16,19 +16,19 @@ final class LoginUI$7
     AppMethodBeat.i(128208);
     Object localObject = new b();
     ((b)localObject).bd(paramView);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/account/ui/LoginUI$15", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahq());
-    paramView = new Intent(this.jlW, MobileInputUI.class);
+    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/account/ui/LoginUI$15", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahF());
+    paramView = new Intent(this.joQ, MobileInputUI.class);
     localObject = new int[5];
     localObject[0] = 2;
     paramView.putExtra("mobile_input_purpose", 1);
     paramView.putExtra("kv_report_login_method_data", (int[])localObject);
-    paramView.putExtra("from_switch_account", LoginUI.f(this.jlW));
-    localObject = this.jlW;
+    paramView.putExtra("from_switch_account", LoginUI.f(this.joQ));
+    localObject = this.joQ;
     paramView = new com.tencent.mm.hellhoundlib.b.a().bc(paramView);
-    com.tencent.mm.hellhoundlib.a.a.a(localObject, paramView.ahp(), "com/tencent/mm/plugin/account/ui/LoginUI$15", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    ((LoginUI)localObject).startActivity((Intent)paramView.mq(0));
+    com.tencent.mm.hellhoundlib.a.a.a(localObject, paramView.ahE(), "com/tencent/mm/plugin/account/ui/LoginUI$15", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    ((LoginUI)localObject).startActivity((Intent)paramView.mt(0));
     com.tencent.mm.hellhoundlib.a.a.a(localObject, "com/tencent/mm/plugin/account/ui/LoginUI$15", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    this.jlW.finish();
+    this.joQ.finish();
     com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/account/ui/LoginUI$15", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(128208);
   }

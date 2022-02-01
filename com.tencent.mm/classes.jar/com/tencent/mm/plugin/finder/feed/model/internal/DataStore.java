@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.finder.feed.model.internal;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import d.a.j;
 import d.g.b.p;
 import d.l;
@@ -10,7 +10,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/feed/model/internal/DataStore;", "T", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "setTAG", "(Ljava/lang/String;)V", "dataList", "Lcom/tencent/mm/plugin/finder/feed/model/internal/DataBuffer;", "getDataList", "()Lcom/tencent/mm/plugin/finder/feed/model/internal/DataBuffer;", "setDataList", "(Lcom/tencent/mm/plugin/finder/feed/model/internal/DataBuffer;)V", "get", "index", "", "(I)Ljava/lang/Object;", "getDataListJustForAdapter", "getLast", "()Ljava/lang/Object;", "getLastItemOfType", "E", "clazz", "Ljava/lang/Class;", "(Ljava/lang/Class;)Ljava/lang/Object;", "getListInfo", "getListOfType", "", "getSize", "isEmpty", "", "safeGet", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/feed/model/internal/DataStore;", "T", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "setTAG", "(Ljava/lang/String;)V", "dataList", "Lcom/tencent/mm/plugin/finder/feed/model/internal/DataBuffer;", "getDataList", "()Lcom/tencent/mm/plugin/finder/feed/model/internal/DataBuffer;", "setDataList", "(Lcom/tencent/mm/plugin/finder/feed/model/internal/DataBuffer;)V", "get", "index", "", "(I)Ljava/lang/Object;", "getDataListJustForAdapter", "getLast", "()Ljava/lang/Object;", "getLastItemOfType", "E", "clazz", "Ljava/lang/Class;", "(Ljava/lang/Class;)Ljava/lang/Object;", "getListInfo", "getListOfType", "", "getSize", "isEmpty", "", "safeGet", "plugin-finder_release"})
 public class DataStore<T>
 {
   private String TAG;
@@ -45,14 +45,14 @@ public class DataStore<T>
   public final T getLast()
   {
     AppMethodBeat.i(166100);
-    Object localObject = j.jf((List)this.dataList);
+    Object localObject = j.jo((List)this.dataList);
     AppMethodBeat.o(166100);
     return localObject;
   }
   
   public final <E> E getLastItemOfType(Class<E> paramClass)
   {
-    AppMethodBeat.i(202566);
+    AppMethodBeat.i(203042);
     p.h(paramClass, "clazz");
     Object localObject = (List)this.dataList;
     ListIterator localListIterator = ((List)localObject).listIterator(((List)localObject).size());
@@ -65,36 +65,36 @@ public class DataStore<T>
     } while (!paramClass.isInstance(localObject));
     for (paramClass = (Class<E>)localObject; paramClass != null; paramClass = null)
     {
-      AppMethodBeat.o(202566);
+      AppMethodBeat.o(203042);
       return paramClass;
     }
-    AppMethodBeat.o(202566);
+    AppMethodBeat.o(203042);
     return null;
   }
   
   public final String getListInfo()
   {
-    AppMethodBeat.i(202564);
+    AppMethodBeat.i(203040);
     String str = "DataStore: info count: " + this.dataList.size();
-    ad.i(getTAG(), str);
+    ae.i(getTAG(), str);
     Iterator localIterator = ((Iterable)this.dataList).iterator();
     int i = 0;
     while (localIterator.hasNext())
     {
       Object localObject = localIterator.next();
       if (i < 0) {
-        j.gfB();
+        j.gkd();
       }
-      ad.i(getTAG(), "DataStore:index " + i + " obj:" + String.valueOf(localObject));
+      ae.i(getTAG(), "DataStore:index " + i + " obj:" + String.valueOf(localObject));
       i += 1;
     }
-    AppMethodBeat.o(202564);
+    AppMethodBeat.o(203040);
     return str;
   }
   
   public final <E> List<E> getListOfType(Class<E> paramClass)
   {
-    AppMethodBeat.i(202565);
+    AppMethodBeat.i(203041);
     p.h(paramClass, "clazz");
     List localList = (List)new ArrayList();
     Iterator localIterator = ((Iterable)this.dataList).iterator();
@@ -105,15 +105,15 @@ public class DataStore<T>
         localList.add(localObject);
       }
     }
-    AppMethodBeat.o(202565);
+    AppMethodBeat.o(203041);
     return localList;
   }
   
   public final int getSize()
   {
-    AppMethodBeat.i(202563);
+    AppMethodBeat.i(203039);
     int i = this.dataList.size();
-    AppMethodBeat.o(202563);
+    AppMethodBeat.o(203039);
     return i;
   }
   
@@ -124,9 +124,9 @@ public class DataStore<T>
   
   public final boolean isEmpty()
   {
-    AppMethodBeat.i(202562);
+    AppMethodBeat.i(203038);
     boolean bool = this.dataList.isEmpty();
-    AppMethodBeat.o(202562);
+    AppMethodBeat.o(203038);
     return bool;
   }
   
@@ -145,10 +145,10 @@ public class DataStore<T>
   
   public final void setDataList(DataBuffer<T> paramDataBuffer)
   {
-    AppMethodBeat.i(202561);
+    AppMethodBeat.i(203037);
     p.h(paramDataBuffer, "<set-?>");
     this.dataList = paramDataBuffer;
-    AppMethodBeat.o(202561);
+    AppMethodBeat.o(203037);
   }
   
   public void setTAG(String paramString)

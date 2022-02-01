@@ -1,13 +1,13 @@
 package com.tencent.mm.plugin.webview.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.hc;
+import com.tencent.mm.g.c.hd;
 import com.tencent.mm.sdk.e.c.a;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class d
-  extends hc
+  extends hd
 {
   protected static c.a info;
   
@@ -15,32 +15,32 @@ public final class d
   {
     AppMethodBeat.i(77856);
     c.a locala = new c.a();
-    locala.IhA = new Field[6];
+    locala.IBL = new Field[6];
     locala.columns = new String[7];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "recordId";
-    locala.IhC.put("recordId", "TEXT PRIMARY KEY ");
+    locala.IBN.put("recordId", "TEXT PRIMARY KEY ");
     localStringBuilder.append(" recordId TEXT PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.IhB = "recordId";
+    locala.IBM = "recordId";
     locala.columns[1] = "link";
-    locala.IhC.put("link", "TEXT");
+    locala.IBN.put("link", "TEXT");
     localStringBuilder.append(" link TEXT");
     localStringBuilder.append(", ");
     locala.columns[2] = "title";
-    locala.IhC.put("title", "TEXT");
+    locala.IBN.put("title", "TEXT");
     localStringBuilder.append(" title TEXT");
     localStringBuilder.append(", ");
     locala.columns[3] = "source";
-    locala.IhC.put("source", "TEXT");
+    locala.IBN.put("source", "TEXT");
     localStringBuilder.append(" source TEXT");
     localStringBuilder.append(", ");
     locala.columns[4] = "imgUrl";
-    locala.IhC.put("imgUrl", "TEXT");
+    locala.IBN.put("imgUrl", "TEXT");
     localStringBuilder.append(" imgUrl TEXT");
     localStringBuilder.append(", ");
     locala.columns[5] = "timeStamp";
-    locala.IhC.put("timeStamp", "LONG");
+    locala.IBN.put("timeStamp", "LONG");
     localStringBuilder.append(" timeStamp LONG");
     locala.columns[6] = "rowid";
     locala.sql = localStringBuilder.toString();

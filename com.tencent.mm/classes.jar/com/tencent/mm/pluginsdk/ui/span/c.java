@@ -11,7 +11,7 @@ public abstract interface c
   
   public static final class a
   {
-    public static c Fhd;
+    public static c FzB;
   }
 }
 

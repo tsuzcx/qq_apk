@@ -1,24 +1,24 @@
 package com.tencent.mm.plugin.walletlock.fingerprint.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.al.a;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.aj;
+import com.tencent.mm.storage.am.a;
 import java.util.HashSet;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 public final class a
 {
-  private static long Dug = -1L;
+  private static long DLL = -1L;
   
-  public static void Ci(long paramLong)
+  public static void CG(long paramLong)
   {
-    Dug = paramLong;
+    DLL = paramLong;
   }
   
-  private static HashSet<String> M(JSONArray paramJSONArray)
+  private static HashSet<String> N(JSONArray paramJSONArray)
   {
     AppMethodBeat.i(129657);
     if (paramJSONArray == null)
@@ -40,13 +40,13 @@ public final class a
     }
     catch (Exception paramJSONArray)
     {
-      ad.printErrStackTrace("MicroMsg.FingerprintInfoStorage", paramJSONArray, "", new Object[0]);
+      ae.printErrStackTrace("MicroMsg.FingerprintInfoStorage", paramJSONArray, "", new Object[0]);
       AppMethodBeat.o(129657);
     }
     return null;
   }
   
-  private static JSONArray aFj(String paramString)
+  private static JSONArray aGD(String paramString)
   {
     AppMethodBeat.i(129656);
     if (paramString == null)
@@ -62,60 +62,60 @@ public final class a
     }
     catch (Exception paramString)
     {
-      ad.printErrStackTrace("MicroMsg.FingerprintInfoStorage", paramString, "", new Object[0]);
+      ae.printErrStackTrace("MicroMsg.FingerprintInfoStorage", paramString, "", new Object[0]);
       AppMethodBeat.o(129656);
     }
     return null;
   }
   
-  public static boolean aFk(String paramString)
+  public static boolean aGE(String paramString)
   {
     AppMethodBeat.i(129659);
-    ad.i("MicroMsg.FingerprintInfoStorage", "alvinluo add fid to local: %s", new Object[] { paramString });
+    ae.i("MicroMsg.FingerprintInfoStorage", "alvinluo add fid to local: %s", new Object[] { paramString });
     try
     {
-      Object localObject2 = aFj(eJq());
-      HashSet localHashSet = M((JSONArray)localObject2);
+      Object localObject2 = aGD(eMY());
+      HashSet localHashSet = N((JSONArray)localObject2);
       Object localObject1 = localObject2;
       if (localObject2 == null)
       {
-        ad.w("MicroMsg.FingerprintInfoStorage", "alvinluo list is null");
+        ae.w("MicroMsg.FingerprintInfoStorage", "alvinluo list is null");
         localObject1 = new JSONArray();
       }
       localObject2 = localHashSet;
       if (localHashSet == null)
       {
-        ad.w("MicroMsg.FingerprintInfoStorage", "alvinluo fidSet is null");
+        ae.w("MicroMsg.FingerprintInfoStorage", "alvinluo fidSet is null");
         localObject2 = new HashSet();
       }
-      ad.i("MicroMsg.FingerprintInfoStorage", "alvinluo fidList: %s before add fid", new Object[] { ((JSONArray)localObject1).toString() });
+      ae.i("MicroMsg.FingerprintInfoStorage", "alvinluo fidList: %s before add fid", new Object[] { ((JSONArray)localObject1).toString() });
       if (!((HashSet)localObject2).contains(paramString))
       {
-        ad.w("MicroMsg.FingerprintInfoStorage", "alvinluo fidSet contains fid %s: %b", new Object[] { paramString, Boolean.FALSE });
+        ae.w("MicroMsg.FingerprintInfoStorage", "alvinluo fidSet contains fid %s: %b", new Object[] { paramString, Boolean.FALSE });
         localObject2 = new JSONObject();
         ((JSONObject)localObject2).put("fid", paramString);
         ((JSONArray)localObject1).put(localObject2);
-        ad.i("MicroMsg.FingerprintInfoStorage", "alvinluo list: %s", new Object[] { ((JSONArray)localObject1).toString() });
-        com.tencent.mm.kernel.g.ajC().ajl().set(al.a.IBf, ((JSONArray)localObject1).toString());
-        com.tencent.mm.kernel.g.ajC().ajl().fqc();
+        ae.i("MicroMsg.FingerprintInfoStorage", "alvinluo list: %s", new Object[] { ((JSONArray)localObject1).toString() });
+        com.tencent.mm.kernel.g.ajR().ajA().set(am.a.IVE, ((JSONArray)localObject1).toString());
+        com.tencent.mm.kernel.g.ajR().ajA().fuc();
         AppMethodBeat.o(129659);
         return true;
       }
     }
     catch (Exception paramString)
     {
-      ad.printErrStackTrace("MicroMsg.FingerprintInfoStorage", paramString, "", new Object[0]);
+      ae.printErrStackTrace("MicroMsg.FingerprintInfoStorage", paramString, "", new Object[0]);
       AppMethodBeat.o(129659);
     }
     return false;
   }
   
-  public static boolean aFl(String paramString)
+  public static boolean aGF(String paramString)
   {
     AppMethodBeat.i(129660);
-    Object localObject = eJq();
-    ad.i("MicroMsg.FingerprintInfoStorage", "alvinluo fid: %s, fidInfoList: %s", new Object[] { paramString, localObject });
-    localObject = M(aFj((String)localObject));
+    Object localObject = eMY();
+    ae.i("MicroMsg.FingerprintInfoStorage", "alvinluo fid: %s, fidInfoList: %s", new Object[] { paramString, localObject });
+    localObject = N(aGD((String)localObject));
     if ((localObject != null) && (((HashSet)localObject).contains(paramString)))
     {
       AppMethodBeat.o(129660);
@@ -125,83 +125,83 @@ public final class a
     return false;
   }
   
-  public static void av(long paramLong1, long paramLong2)
+  public static void au(long paramLong1, long paramLong2)
   {
     AppMethodBeat.i(129667);
-    ai localai = com.tencent.mm.kernel.g.ajC().ajl();
-    if (localai != null)
+    aj localaj = com.tencent.mm.kernel.g.ajR().ajA();
+    if (localaj != null)
     {
       com.tencent.mm.plugin.walletlock.gesture.a.g localg = new com.tencent.mm.plugin.walletlock.gesture.a.g();
-      localg.DuH = paramLong1;
-      localg.DuI = paramLong2;
-      localai.set(al.a.IBi, com.tencent.mm.plugin.walletlock.gesture.a.e.bZ(localg.toByteArray()));
-      localai.fqc();
+      localg.DMm = paramLong1;
+      localg.DMn = paramLong2;
+      localaj.set(am.a.IVH, com.tencent.mm.plugin.walletlock.gesture.a.e.cc(localg.toByteArray()));
+      localaj.fuc();
     }
     AppMethodBeat.o(129667);
   }
   
-  private static String eJq()
+  private static String eMY()
   {
     AppMethodBeat.i(129658);
-    String str = (String)com.tencent.mm.kernel.g.ajC().ajl().get(al.a.IBf, null);
+    String str = (String)com.tencent.mm.kernel.g.ajR().ajA().get(am.a.IVE, null);
     AppMethodBeat.o(129658);
     return str;
   }
   
-  public static void eJr()
+  public static void eMZ()
   {
     AppMethodBeat.i(129661);
-    ad.i("MicroMsg.FingerprintInfoStorage", "alvinluo clear local fids, stack: %s", new Object[] { bt.flS() });
-    com.tencent.mm.kernel.g.ajC().ajl().set(al.a.IBf, null);
-    com.tencent.mm.kernel.g.ajC().ajl().fqc();
+    ae.i("MicroMsg.FingerprintInfoStorage", "alvinluo clear local fids, stack: %s", new Object[] { bu.fpN() });
+    com.tencent.mm.kernel.g.ajR().ajA().set(am.a.IVE, null);
+    com.tencent.mm.kernel.g.ajR().ajA().fuc();
     AppMethodBeat.o(129661);
   }
   
-  public static boolean eJs()
+  public static boolean eNa()
   {
     AppMethodBeat.i(129662);
-    boolean bool = ((Boolean)com.tencent.mm.kernel.g.ajC().ajl().get(al.a.IBe, Boolean.FALSE)).booleanValue();
+    boolean bool = ((Boolean)com.tencent.mm.kernel.g.ajR().ajA().get(am.a.IVD, Boolean.FALSE)).booleanValue();
     AppMethodBeat.o(129662);
     return bool;
   }
   
-  public static boolean eJt()
+  public static boolean eNb()
   {
     AppMethodBeat.i(129664);
-    boolean bool = ((Boolean)com.tencent.mm.kernel.g.ajC().ajl().get(al.a.IBk, Boolean.FALSE)).booleanValue();
+    boolean bool = ((Boolean)com.tencent.mm.kernel.g.ajR().ajA().get(am.a.IVJ, Boolean.FALSE)).booleanValue();
     AppMethodBeat.o(129664);
     return bool;
   }
   
-  public static boolean eJu()
+  public static boolean eNc()
   {
     AppMethodBeat.i(129666);
-    Object localObject = com.tencent.mm.kernel.g.ajC().ajl();
+    Object localObject = com.tencent.mm.kernel.g.ajR().ajA();
     if (localObject == null) {
       localObject = new com.tencent.mm.plugin.walletlock.gesture.a.g();
     }
-    while (((com.tencent.mm.plugin.walletlock.gesture.a.g)localObject).DuH != -1L)
+    while (((com.tencent.mm.plugin.walletlock.gesture.a.g)localObject).DMm != -1L)
     {
       com.tencent.mm.plugin.walletlock.gesture.a.e.a((com.tencent.mm.plugin.walletlock.gesture.a.g)localObject);
-      if (((com.tencent.mm.plugin.walletlock.gesture.a.g)localObject).DuI / 1000L < 30L)
+      if (((com.tencent.mm.plugin.walletlock.gesture.a.g)localObject).DMn / 1000L < 30L)
       {
-        av(((com.tencent.mm.plugin.walletlock.gesture.a.g)localObject).DuH, ((com.tencent.mm.plugin.walletlock.gesture.a.g)localObject).DuI);
+        au(((com.tencent.mm.plugin.walletlock.gesture.a.g)localObject).DMm, ((com.tencent.mm.plugin.walletlock.gesture.a.g)localObject).DMn);
         AppMethodBeat.o(129666);
         return true;
-        localObject = (String)((ai)localObject).get(al.a.IBi, null);
+        localObject = (String)((aj)localObject).get(am.a.IVH, null);
         if (localObject == null) {
           localObject = new com.tencent.mm.plugin.walletlock.gesture.a.g();
         } else {
-          localObject = new com.tencent.mm.plugin.walletlock.gesture.a.g().ca(com.tencent.mm.plugin.walletlock.gesture.a.e.stringToBytes((String)localObject));
+          localObject = new com.tencent.mm.plugin.walletlock.gesture.a.g().cd(com.tencent.mm.plugin.walletlock.gesture.a.e.stringToBytes((String)localObject));
         }
       }
       else
       {
-        localObject = com.tencent.mm.kernel.g.ajC().ajl();
+        localObject = com.tencent.mm.kernel.g.ajR().ajA();
         if (localObject != null)
         {
-          ((ai)localObject).set(al.a.IBi, null);
-          ((ai)localObject).fqc();
+          ((aj)localObject).set(am.a.IVH, null);
+          ((aj)localObject).fuc();
         }
         AppMethodBeat.o(129666);
         return false;
@@ -211,37 +211,37 @@ public final class a
     return false;
   }
   
-  public static void eJv()
+  public static void eNd()
   {
-    Dug = -1L;
+    DLL = -1L;
   }
   
-  public static long eJw()
+  public static long eNe()
   {
-    return Dug;
+    return DLL;
   }
   
-  public static void uD(boolean paramBoolean)
+  public static void uL(boolean paramBoolean)
   {
     AppMethodBeat.i(129663);
-    ad.i("MicroMsg.FingerprintInfoStorage", "alvinluo set fingerprint lock status isOpened: %b", new Object[] { Boolean.valueOf(paramBoolean) });
-    com.tencent.mm.kernel.g.ajC().ajl().set(al.a.IBe, Boolean.valueOf(paramBoolean));
-    com.tencent.mm.kernel.g.ajC().ajl().fqc();
+    ae.i("MicroMsg.FingerprintInfoStorage", "alvinluo set fingerprint lock status isOpened: %b", new Object[] { Boolean.valueOf(paramBoolean) });
+    com.tencent.mm.kernel.g.ajR().ajA().set(am.a.IVD, Boolean.valueOf(paramBoolean));
+    com.tencent.mm.kernel.g.ajR().ajA().fuc();
     AppMethodBeat.o(129663);
   }
   
-  public static void uE(boolean paramBoolean)
+  public static void uM(boolean paramBoolean)
   {
     AppMethodBeat.i(129665);
-    ad.i("MicroMsg.FingerprintInfoStorage", "set user face id lock: %s", new Object[] { Boolean.valueOf(paramBoolean) });
-    com.tencent.mm.kernel.g.ajC().ajl().set(al.a.IBk, Boolean.valueOf(paramBoolean));
-    com.tencent.mm.kernel.g.ajC().ajl().fqc();
+    ae.i("MicroMsg.FingerprintInfoStorage", "set user face id lock: %s", new Object[] { Boolean.valueOf(paramBoolean) });
+    com.tencent.mm.kernel.g.ajR().ajA().set(am.a.IVJ, Boolean.valueOf(paramBoolean));
+    com.tencent.mm.kernel.g.ajR().ajA().fuc();
     AppMethodBeat.o(129665);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.walletlock.fingerprint.a.a
  * JD-Core Version:    0.7.0.1
  */

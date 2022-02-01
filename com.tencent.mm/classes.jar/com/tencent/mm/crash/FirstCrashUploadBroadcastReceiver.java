@@ -4,7 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.service.c;
 
 public class FirstCrashUploadBroadcastReceiver
@@ -12,11 +12,11 @@ public class FirstCrashUploadBroadcastReceiver
 {
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    AppMethodBeat.i(191537);
-    ad.i("MicroMsg.FirstCrashUploadBroadcastReceiver", "onReceive()");
+    AppMethodBeat.i(194030);
+    ae.i("MicroMsg.FirstCrashUploadBroadcastReceiver", "onReceive()");
     paramIntent.setClassName(paramContext, paramContext.getPackageName() + ".crash.CrashUploaderService");
     c.a(paramIntent, "cuploader", true, new Intent().setClassName(paramContext, paramContext.getPackageName() + ".crash.CuploaderProcessServicer"));
-    AppMethodBeat.o(191537);
+    AppMethodBeat.o(194030);
   }
 }
 

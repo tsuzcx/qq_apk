@@ -11,7 +11,7 @@ public class AppBrandLocalVideoObject
   public static final Parcelable.Creator<AppBrandLocalVideoObject> CREATOR;
   public int duration;
   public int height;
-  public int size;
+  public long size;
   public int width;
   
   static
@@ -28,7 +28,7 @@ public class AppBrandLocalVideoObject
     super(paramParcel);
     AppMethodBeat.i(134324);
     this.duration = paramParcel.readInt();
-    this.size = paramParcel.readInt();
+    this.size = paramParcel.readLong();
     this.width = paramParcel.readInt();
     this.height = paramParcel.readInt();
     AppMethodBeat.o(134324);
@@ -52,7 +52,7 @@ public class AppBrandLocalVideoObject
     AppMethodBeat.i(134323);
     super.writeToParcel(paramParcel, paramInt);
     paramParcel.writeInt(this.duration);
-    paramParcel.writeInt(this.size);
+    paramParcel.writeLong(this.size);
     paramParcel.writeInt(this.width);
     paramParcel.writeInt(this.height);
     AppMethodBeat.o(134323);

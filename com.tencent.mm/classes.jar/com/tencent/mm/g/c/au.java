@@ -4,26 +4,26 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import com.tencent.mm.k.a.a.d;
 import com.tencent.mm.sdk.e.c;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.io.IOException;
 
 public abstract class au
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eFp = "username".hashCode();
-  private static final int eOm = "lastPushSeq".hashCode();
-  private static final int eOn = "lastLocalSeq".hashCode();
-  private static final int eOo = "lastPushCreateTime".hashCode();
-  private static final int eOp = "lastLocalCreateTime".hashCode();
-  private static final int eOq = "seqBlockInfo".hashCode();
+  private static final int eGY = "username".hashCode();
+  private static final int ePX = "lastPushSeq".hashCode();
+  private static final int ePY = "lastLocalSeq".hashCode();
+  private static final int ePZ = "lastPushCreateTime".hashCode();
+  private static final int eQa = "lastLocalCreateTime".hashCode();
+  private static final int eQb = "seqBlockInfo".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eFm = true;
-  private boolean eOh = true;
-  private boolean eOi = true;
-  private boolean eOj = true;
-  private boolean eOk = true;
-  private boolean eOl = true;
+  private boolean eGV = true;
+  private boolean ePS = true;
+  private boolean ePT = true;
+  private boolean ePU = true;
+  private boolean ePV = true;
+  private boolean ePW = true;
   public long field_lastLocalCreateTime;
   public long field_lastLocalSeq;
   public long field_lastPushCreateTime;
@@ -44,11 +44,11 @@ public abstract class au
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eFp != k) {
+      if (eGY != k) {
         break label65;
       }
       this.field_username = paramCursor.getString(i);
-      this.eFm = true;
+      this.eGV = true;
     }
     for (;;)
     {
@@ -56,15 +56,15 @@ public abstract class au
       break label20;
       break;
       label65:
-      if (eOm == k) {
+      if (ePX == k) {
         this.field_lastPushSeq = paramCursor.getLong(i);
-      } else if (eOn == k) {
+      } else if (ePY == k) {
         this.field_lastLocalSeq = paramCursor.getLong(i);
-      } else if (eOo == k) {
+      } else if (ePZ == k) {
         this.field_lastPushCreateTime = paramCursor.getLong(i);
-      } else if (eOp == k) {
+      } else if (eQa == k) {
         this.field_lastLocalCreateTime = paramCursor.getLong(i);
-      } else if (eOq == k) {
+      } else if (eQb == k) {
         try
         {
           byte[] arrayOfByte = paramCursor.getBlob(i);
@@ -75,7 +75,7 @@ public abstract class au
         }
         catch (IOException localIOException)
         {
-          ad.e("MicroMsg.SDK.BaseChatroomMsgSeq", localIOException.getMessage());
+          ae.e("MicroMsg.SDK.BaseChatroomMsgSeq", localIOException.getMessage());
         }
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
@@ -89,22 +89,22 @@ public abstract class au
     if (this.field_username == null) {
       this.field_username = "";
     }
-    if (this.eFm) {
+    if (this.eGV) {
       localContentValues.put("username", this.field_username);
     }
-    if (this.eOh) {
+    if (this.ePS) {
       localContentValues.put("lastPushSeq", Long.valueOf(this.field_lastPushSeq));
     }
-    if (this.eOi) {
+    if (this.ePT) {
       localContentValues.put("lastLocalSeq", Long.valueOf(this.field_lastLocalSeq));
     }
-    if (this.eOj) {
+    if (this.ePU) {
       localContentValues.put("lastPushCreateTime", Long.valueOf(this.field_lastPushCreateTime));
     }
-    if (this.eOk) {
+    if (this.ePV) {
       localContentValues.put("lastLocalCreateTime", Long.valueOf(this.field_lastLocalCreateTime));
     }
-    if ((this.eOl) && (this.field_seqBlockInfo != null)) {}
+    if ((this.ePW) && (this.field_seqBlockInfo != null)) {}
     try
     {
       localContentValues.put("seqBlockInfo", this.field_seqBlockInfo.toByteArray());
@@ -117,7 +117,7 @@ public abstract class au
     {
       for (;;)
       {
-        ad.e("MicroMsg.SDK.BaseChatroomMsgSeq", localIOException.getMessage());
+        ae.e("MicroMsg.SDK.BaseChatroomMsgSeq", localIOException.getMessage());
       }
     }
   }

@@ -1,18 +1,18 @@
 package com.tencent.mm.plugin.appbrand.debugger;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.e.a;
+import com.tencent.mm.ak.e.a;
 import com.tencent.mm.modelappbrand.LaunchParamsOptional;
 import com.tencent.mm.plugin.appbrand.app.j;
-import com.tencent.mm.plugin.appbrand.appcache.bg;
+import com.tencent.mm.plugin.appbrand.appcache.bh;
 import com.tencent.mm.plugin.appbrand.launching.AppBrandLaunchProxyUI;
 import com.tencent.mm.plugin.appbrand.launching.t;
 import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
 import com.tencent.mm.plugin.appbrand.task.f;
 import com.tencent.mm.plugin.messenger.foundation.a.q;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.Map;
 
 public final class k
@@ -29,23 +29,23 @@ public final class k
       Object localObject = (String)paramMap.get(".sysmsg.DebugAppCodeUpdated.OpenAppInfo.URL");
       String str2 = (String)paramMap.get(".sysmsg.DebugAppCodeUpdated.OpenAppInfo.MD5");
       paramMap = (String)paramMap.get(".sysmsg.DebugAppCodeUpdated.OpenAppInfo.ExtInfo");
-      ad.i("MicroMsg.RemoteDebugCodeUpdateSysCmdMsgListener", "onNewXmlReceived appId %s, userName %s, path %s, url %s, md5 %s, extInfo %s", new Object[] { paramString, parama, str1, localObject, str2, paramMap });
-      if ((bt.isNullOrNil(paramString)) || (bt.isNullOrNil(parama)) || (bt.isNullOrNil((String)localObject)))
+      ae.i("MicroMsg.RemoteDebugCodeUpdateSysCmdMsgListener", "onNewXmlReceived appId %s, userName %s, path %s, url %s, md5 %s, extInfo %s", new Object[] { paramString, parama, str1, localObject, str2, paramMap });
+      if ((bu.isNullOrNil(paramString)) || (bu.isNullOrNil(parama)) || (bu.isNullOrNil((String)localObject)))
       {
-        ad.i("MicroMsg.RemoteDebugCodeUpdateSysCmdMsgListener", "appId = %s, username = %s, codeURL = %s, invalid, return", new Object[] { paramString, parama, localObject });
+        ae.i("MicroMsg.RemoteDebugCodeUpdateSysCmdMsgListener", "appId = %s, username = %s, codeURL = %s, invalid, return", new Object[] { paramString, parama, localObject });
         AppMethodBeat.o(44951);
         return;
       }
-      if (j.aYX().a(paramString, 1, (String)localObject, str2, 0L, bt.aQJ() + 7200L)) {
-        f.bY(paramString, 1);
+      if (j.aZu().a(paramString, 1, (String)localObject, str2, 0L, bu.aRi() + 7200L)) {
+        f.cc(paramString, 1);
       }
       localObject = new LaunchParamsOptional();
-      ((LaunchParamsOptional)localObject).hKu = paramMap;
-      ((t)j.T(t.class)).t(paramString, 1, paramMap);
+      ((LaunchParamsOptional)localObject).hNn = paramMap;
+      ((t)j.T(t.class)).v(paramString, 1, paramMap);
       paramMap = new AppBrandStatObject();
       paramMap.scene = 1101;
-      paramMap.dkh = (paramString + ":" + parama);
-      AppBrandLaunchProxyUI.a(aj.getContext(), parama, str1, 1, -1, paramMap, (LaunchParamsOptional)localObject);
+      paramMap.dlj = (paramString + ":" + parama);
+      AppBrandLaunchProxyUI.a(ak.getContext(), parama, str1, 1, -1, paramMap, (LaunchParamsOptional)localObject);
     }
     AppMethodBeat.o(44951);
   }

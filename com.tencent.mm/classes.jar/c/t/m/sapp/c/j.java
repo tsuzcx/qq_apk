@@ -10,12 +10,12 @@ public class j
   
   public static void a(int paramInt, String paramString, Throwable paramThrowable)
   {
-    AppMethodBeat.i(190471);
+    AppMethodBeat.i(210736);
     LocationLogCallback localLocationLogCallback = b;
     if (localLocationLogCallback != null) {
       localLocationLogCallback.onLog(paramInt, "TencentLocationComp_sapp", paramString, paramThrowable);
     }
-    AppMethodBeat.o(190471);
+    AppMethodBeat.o(210736);
   }
   
   public static void a(LocationLogCallback paramLocationLogCallback)
@@ -25,16 +25,16 @@ public class j
   
   public static void a(String paramString)
   {
-    AppMethodBeat.i(190472);
+    AppMethodBeat.i(210737);
     a(4, paramString, null);
-    AppMethodBeat.o(190472);
+    AppMethodBeat.o(210737);
   }
   
   public static void a(String paramString, Throwable paramThrowable)
   {
-    AppMethodBeat.i(190473);
+    AppMethodBeat.i(210738);
     a(6, paramString, paramThrowable);
-    AppMethodBeat.o(190473);
+    AppMethodBeat.o(210738);
   }
 }
 

@@ -4,7 +4,7 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bs.d;
+import com.tencent.mm.br.d;
 
 final class IPCallRechargeUI$4
   implements DialogInterface.OnClickListener
@@ -14,11 +14,11 @@ final class IPCallRechargeUI$4
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     AppMethodBeat.i(25874);
-    this.uTj.finish();
+    this.veW.finish();
     paramDialogInterface = new Intent();
-    paramDialogInterface.putExtra("rawUrl", this.uTj.getString(2131760446));
+    paramDialogInterface.putExtra("rawUrl", this.veW.getString(2131760446));
     paramDialogInterface.putExtra("showShare", false);
-    d.b(this.uTj, "webview", ".ui.tools.WebViewUI", paramDialogInterface);
+    d.b(this.veW, "webview", ".ui.tools.WebViewUI", paramDialogInterface);
     AppMethodBeat.o(25874);
   }
 }

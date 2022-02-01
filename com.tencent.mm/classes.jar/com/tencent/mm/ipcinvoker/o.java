@@ -8,12 +8,12 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public final class o
 {
-  private static final Map<String, e> gxT;
+  private static final Map<String, e> gAA;
   
   static
   {
     AppMethodBeat.i(158758);
-    gxT = new ConcurrentHashMap();
+    gAA = new ConcurrentHashMap();
     AppMethodBeat.o(158758);
   }
   
@@ -31,12 +31,12 @@ public final class o
       }
       if (localClass.isAnnotationPresent(a.class))
       {
-        e locale = (e)gxT.get(paramString);
+        e locale = (e)gAA.get(paramString);
         paramClass = locale;
         if (locale == null)
         {
           paramClass = new e(localClass);
-          gxT.put(paramString, paramClass);
+          gAA.put(paramString, paramClass);
         }
         paramString = paramClass.get();
         AppMethodBeat.o(158755);
@@ -75,12 +75,12 @@ public final class o
       if (paramClass1.isAnnotationPresent(a.class))
       {
         String str = paramClass1.getName();
-        e locale = (e)gxT.get(str);
+        e locale = (e)gAA.get(str);
         paramClass2 = locale;
         if (locale == null)
         {
           paramClass2 = new e(paramClass1);
-          gxT.put(str, paramClass2);
+          gAA.put(str, paramClass2);
         }
         paramClass1 = paramClass2.get();
         AppMethodBeat.o(158756);

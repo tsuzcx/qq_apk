@@ -9,7 +9,7 @@ public class MediaCodecProxyUtils$MediaCodecRetryInfo
   implements Parcelable
 {
   public static final Parcelable.Creator<MediaCodecRetryInfo> CREATOR;
-  int gcp;
+  int gex;
   
   static
   {
@@ -21,7 +21,7 @@ public class MediaCodecProxyUtils$MediaCodecRetryInfo
   protected MediaCodecProxyUtils$MediaCodecRetryInfo(Parcel paramParcel)
   {
     AppMethodBeat.i(155803);
-    this.gcp = paramParcel.readInt();
+    this.gex = paramParcel.readInt();
     AppMethodBeat.o(155803);
   }
   
@@ -33,7 +33,7 @@ public class MediaCodecProxyUtils$MediaCodecRetryInfo
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(155804);
-    paramParcel.writeInt(this.gcp);
+    paramParcel.writeInt(this.gex);
     AppMethodBeat.o(155804);
   }
 }

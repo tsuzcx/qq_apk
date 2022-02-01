@@ -9,48 +9,48 @@ import android.graphics.Paint.Style;
 import android.graphics.Path;
 import android.graphics.PointF;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class b
 {
   ValueAnimator animator;
   float progress;
-  a vXM;
-  a vXN;
-  boolean vXO;
-  public a vXP;
-  PointF vXQ;
-  PointF vXR;
-  PointF vXS;
-  PointF vXT;
-  PointF vXU;
-  PointF vXV;
-  float vXW;
-  float vXX;
-  float vXY;
-  float vXZ;
-  Path vYa;
-  private Paint vYb;
+  a wjQ;
+  a wjR;
+  boolean wjS;
+  public a wjT;
+  PointF wjU;
+  PointF wjV;
+  PointF wjW;
+  PointF wjX;
+  PointF wjY;
+  PointF wjZ;
+  float wka;
+  float wkb;
+  float wkc;
+  float wkd;
+  Path wke;
+  private Paint wkf;
   
   public b(a parama1, a parama2, a parama)
   {
     AppMethodBeat.i(94797);
     this.progress = 0.0F;
-    this.vXO = false;
-    this.vXW = 0.0F;
-    this.vXX = 0.0F;
-    this.vXY = 0.0F;
-    this.vXZ = 0.0F;
-    this.vYb = null;
-    this.vXM = parama1;
-    this.vXN = parama2;
-    this.vXP = parama;
-    this.vXX = (MMSightProgressBar.qnC * 2.0F);
-    this.vXY = (-MMSightProgressBar.qnC * 0.5F);
-    this.vYa = new Path();
-    this.vYb = new Paint();
-    this.vYb.setAntiAlias(true);
-    this.vYb.setStyle(Paint.Style.FILL);
+    this.wjS = false;
+    this.wka = 0.0F;
+    this.wkb = 0.0F;
+    this.wkc = 0.0F;
+    this.wkd = 0.0F;
+    this.wkf = null;
+    this.wjQ = parama1;
+    this.wjR = parama2;
+    this.wjT = parama;
+    this.wkb = (MMSightProgressBar.qui * 2.0F);
+    this.wkc = (-MMSightProgressBar.qui * 0.5F);
+    this.wke = new Path();
+    this.wkf = new Paint();
+    this.wkf.setAntiAlias(true);
+    this.wkf.setStyle(Paint.Style.FILL);
     AppMethodBeat.o(94797);
   }
   
@@ -58,7 +58,7 @@ public final class b
   {
     public abstract void a(a parama);
     
-    public abstract void don();
+    public abstract void drl();
   }
 }
 

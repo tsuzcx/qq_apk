@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.appbrand.widget.tabbar;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public class c
 {
   public void a(String paramString, d paramd)
   {
     AppMethodBeat.i(135542);
-    ad.d("IconLoadErrorHandler ", "setTabBarFail: ".concat(String.valueOf(paramString)));
-    if (paramd.npS != null) {
-      paramd.npS.destroy(paramd.index);
+    ae.d("IconLoadErrorHandler ", "setTabBarFail: ".concat(String.valueOf(paramString)));
+    if (paramd.nvc != null) {
+      paramd.nvc.destroy(paramd.index);
     }
     AppMethodBeat.o(135542);
   }

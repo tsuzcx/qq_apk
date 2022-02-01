@@ -14,21 +14,21 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.ListView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.a.a;
-import com.tencent.mm.al.n;
-import com.tencent.mm.cn.f;
+import com.tencent.mm.ak.a.a;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.cm.f;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.expt.b.b.a;
 import com.tencent.mm.pluginsdk.ui.applet.CdnImageView;
-import com.tencent.mm.protocal.protobuf.bfv;
-import com.tencent.mm.protocal.protobuf.cir;
+import com.tencent.mm.protocal.protobuf.bgl;
+import com.tencent.mm.protocal.protobuf.cjl;
 import com.tencent.mm.protocal.protobuf.jo;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.al.a;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.aj;
+import com.tencent.mm.storage.am.a;
 import com.tencent.mm.ui.al;
 import com.tencent.mm.ui.widget.MMSwitchBtn;
 import com.tencent.mm.ui.widget.MMSwitchBtn.a;
@@ -40,20 +40,20 @@ import java.util.List;
 public class MallFunctionSettingsUI
   extends WalletBaseUI
 {
-  int dMx;
-  private ListView vEI;
-  private final int vEJ;
-  private TextView vEK;
-  private TextView vEL;
-  private a vEM;
-  private List<b> vEN;
-  private com.tencent.mm.plugin.mall.a.b vEO;
+  int dNN;
+  private ListView vQM;
+  private final int vQN;
+  private TextView vQO;
+  private TextView vQP;
+  private a vQQ;
+  private List<b> vQR;
+  private com.tencent.mm.plugin.mall.a.b vQS;
   
   public MallFunctionSettingsUI()
   {
     AppMethodBeat.i(66057);
-    this.vEJ = com.tencent.mm.cc.a.fromDPToPix(aj.getContext(), 40);
-    this.vEN = new ArrayList();
+    this.vQN = com.tencent.mm.cb.a.fromDPToPix(ak.getContext(), 40);
+    this.vQR = new ArrayList();
     AppMethodBeat.o(66057);
   }
   
@@ -65,16 +65,16 @@ public class MallFunctionSettingsUI
   public void initView()
   {
     AppMethodBeat.i(66059);
-    this.vEI = ((ListView)findViewById(2131302268));
-    this.vEM = new a((byte)0);
+    this.vQM = ((ListView)findViewById(2131302268));
+    this.vQQ = new a((byte)0);
     ViewGroup localViewGroup = (ViewGroup)View.inflate(this, 2131494688, null);
-    this.vEI.addHeaderView(localViewGroup, null, false);
+    this.vQM.addHeaderView(localViewGroup, null, false);
     LinearLayout localLinearLayout = new LinearLayout(getContext());
-    localLinearLayout.setMinimumHeight(com.tencent.mm.cc.a.fromDPToPix(getContext(), 80));
-    this.vEI.addFooterView(localLinearLayout, null, false);
-    this.vEI.setAdapter(this.vEM);
-    this.vEK = ((TextView)localViewGroup.findViewById(2131302260));
-    this.vEL = ((TextView)localViewGroup.findViewById(2131302259));
+    localLinearLayout.setMinimumHeight(com.tencent.mm.cb.a.fromDPToPix(getContext(), 80));
+    this.vQM.addFooterView(localLinearLayout, null, false);
+    this.vQM.setAdapter(this.vQQ);
+    this.vQO = ((TextView)localViewGroup.findViewById(2131302260));
+    this.vQP = ((TextView)localViewGroup.findViewById(2131302259));
     AppMethodBeat.o(66059);
   }
   
@@ -84,18 +84,18 @@ public class MallFunctionSettingsUI
     super.onCreate(paramBundle);
     setActionbarColor(getResources().getColor(2131101179));
     hideActionbarLine();
-    this.dMx = ((Integer)g.ajC().ajl().get(al.a.Ivh, Integer.valueOf(0))).intValue();
-    ad.i("MicroMsg.MallFunctionSettingsUI", "wallet region: %s", new Object[] { Integer.valueOf(this.dMx) });
+    this.dNN = ((Integer)g.ajR().ajA().get(am.a.IPF, Integer.valueOf(0))).intValue();
+    ae.i("MicroMsg.MallFunctionSettingsUI", "wallet region: %s", new Object[] { Integer.valueOf(this.dNN) });
     initView();
     setMMTitle("");
-    ad.i("MicroMsg.MallFunctionSettingsUI", "do get function list");
-    boolean bool = ((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qzF, false);
-    ad.i("MicroMsg.MallFunctionSettingsUI", " walletMallV2 is ：%s", new Object[] { Boolean.valueOf(bool) });
+    ae.i("MicroMsg.MallFunctionSettingsUI", "do get function list");
+    boolean bool = ((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qGM, false);
+    ae.i("MicroMsg.MallFunctionSettingsUI", " walletMallV2 is ：%s", new Object[] { Boolean.valueOf(bool) });
     if (bool) {}
     for (int i = 1;; i = 0)
     {
-      this.vEO = new com.tencent.mm.plugin.mall.a.b(this.dMx, i);
-      this.vEO.aED().b(new com.tencent.mm.vending.c.a() {});
+      this.vQS = new com.tencent.mm.plugin.mall.a.b(this.dNN, i);
+      this.vQS.aET().b(new com.tencent.mm.vending.c.a() {});
       AppMethodBeat.o(66058);
       return;
     }
@@ -105,7 +105,7 @@ public class MallFunctionSettingsUI
   {
     AppMethodBeat.i(66060);
     super.onDestroy();
-    this.vEO.cancel();
+    this.vQS.cancel();
     AppMethodBeat.o(66060);
   }
   
@@ -125,7 +125,7 @@ public class MallFunctionSettingsUI
   {
     private a() {}
     
-    private MallFunctionSettingsUI.b JG(int paramInt)
+    private MallFunctionSettingsUI.b Kf(int paramInt)
     {
       AppMethodBeat.i(66052);
       MallFunctionSettingsUI.b localb = (MallFunctionSettingsUI.b)MallFunctionSettingsUI.b(MallFunctionSettingsUI.this).get(paramInt);
@@ -166,105 +166,105 @@ public class MallFunctionSettingsUI
         if (i == 1)
         {
           paramView = LayoutInflater.from(MallFunctionSettingsUI.this.getContext()).inflate(2131494689, paramViewGroup, false);
-          ((MallFunctionSettingsUI.c)localObject1).uHR = ((CdnImageView)paramView.findViewById(2131302264));
-          ((MallFunctionSettingsUI.c)localObject1).lCL = ((TextView)paramView.findViewById(2131302266));
-          ((MallFunctionSettingsUI.c)localObject1).lDu = ((TextView)paramView.findViewById(2131302262));
-          ((MallFunctionSettingsUI.c)localObject1).iCB = ((MMSwitchBtn)paramView.findViewById(2131302265));
-          ((MallFunctionSettingsUI.c)localObject1).qkV = paramView.findViewById(2131302263);
-          ((MallFunctionSettingsUI.c)localObject1).vET = paramView.findViewById(2131302261);
-          ((MallFunctionSettingsUI.c)localObject1).mJu = ((ViewGroup)paramView);
-          ((MallFunctionSettingsUI.c)localObject1).uHR.setUseSdcardCache(true);
+          ((MallFunctionSettingsUI.c)localObject1).uTE = ((CdnImageView)paramView.findViewById(2131302264));
+          ((MallFunctionSettingsUI.c)localObject1).lHk = ((TextView)paramView.findViewById(2131302266));
+          ((MallFunctionSettingsUI.c)localObject1).lHT = ((TextView)paramView.findViewById(2131302262));
+          ((MallFunctionSettingsUI.c)localObject1).iFu = ((MMSwitchBtn)paramView.findViewById(2131302265));
+          ((MallFunctionSettingsUI.c)localObject1).qrA = paramView.findViewById(2131302263);
+          ((MallFunctionSettingsUI.c)localObject1).vQX = paramView.findViewById(2131302261);
+          ((MallFunctionSettingsUI.c)localObject1).mOw = ((ViewGroup)paramView);
+          ((MallFunctionSettingsUI.c)localObject1).uTE.setUseSdcardCache(true);
           paramView.setTag(localObject1);
           localObject1 = paramView;
         }
       }
       else
       {
-        paramView = JG(paramInt);
+        paramView = Kf(paramInt);
         paramViewGroup = (MallFunctionSettingsUI.c)((View)localObject1).getTag();
         if (paramView.type != 1) {
           break label602;
         }
-        localObject2 = paramView.vER;
+        localObject2 = paramView.vQV;
         if (!al.isDarkMode()) {
           break label457;
         }
-        if (((cir)localObject2).HcC == null) {
+        if (((cjl)localObject2).Hwc == null) {
           break label434;
         }
-        paramViewGroup.uHR.setUrl(((cir)localObject2).HcC);
+        paramViewGroup.uTE.setUrl(((cjl)localObject2).Hwc);
         label217:
-        if (((cir)localObject2).Hcy != null) {
-          paramViewGroup.lCL.setText(((cir)localObject2).Hcy);
+        if (((cjl)localObject2).HvY != null) {
+          paramViewGroup.lHk.setText(((cjl)localObject2).HvY);
         }
-        if ((((cir)localObject2).HcA == null) || (bt.isNullOrNil(((cir)localObject2).HcA))) {
+        if ((((cjl)localObject2).Hwa == null) || (bu.isNullOrNil(((cjl)localObject2).Hwa))) {
           break label480;
         }
-        paramViewGroup.lDu.setText(((cir)localObject2).HcA);
-        paramViewGroup.lDu.setVisibility(0);
+        paramViewGroup.lHT.setText(((cjl)localObject2).Hwa);
+        paramViewGroup.lHT.setVisibility(0);
         label276:
-        if (((cir)localObject2).nDG != 0) {
+        if (((cjl)localObject2).nJb != 0) {
           break label492;
         }
-        paramViewGroup.iCB.setCheck(true);
-        paramViewGroup.iCB.setEnabled(true);
-        paramViewGroup.lCL.setTextColor(paramViewGroup.vEP.getContext().getResources().getColor(2131100020));
-        paramViewGroup.vET.setVisibility(8);
+        paramViewGroup.iFu.setCheck(true);
+        paramViewGroup.iFu.setEnabled(true);
+        paramViewGroup.lHk.setTextColor(paramViewGroup.vQT.getContext().getResources().getColor(2131100020));
+        paramViewGroup.vQX.setVisibility(8);
         label331:
-        paramViewGroup.iCB.setSwitchListener(new MallFunctionSettingsUI.c.1(paramViewGroup, (cir)localObject2));
-        localObject2 = (LinearLayout.LayoutParams)paramViewGroup.qkV.getLayoutParams();
-        if (!paramView.vES) {
+        paramViewGroup.iFu.setSwitchListener(new MallFunctionSettingsUI.c.1(paramViewGroup, (cjl)localObject2));
+        localObject2 = (LinearLayout.LayoutParams)paramViewGroup.qrA.getLayoutParams();
+        if (!paramView.vQW) {
           break label587;
         }
         ((LinearLayout.LayoutParams)localObject2).leftMargin = 0;
         label373:
-        paramViewGroup.qkV.setLayoutParams((ViewGroup.LayoutParams)localObject2);
+        paramViewGroup.qrA.setLayoutParams((ViewGroup.LayoutParams)localObject2);
       }
       for (;;)
       {
         AppMethodBeat.o(66054);
         return localObject1;
         paramView = LayoutInflater.from(MallFunctionSettingsUI.this.getContext()).inflate(2131494690, paramViewGroup, false);
-        ((MallFunctionSettingsUI.c)localObject1).lCL = ((TextView)paramView.findViewById(2131302267));
-        ((MallFunctionSettingsUI.c)localObject1).mJu = ((ViewGroup)paramView);
+        ((MallFunctionSettingsUI.c)localObject1).lHk = ((TextView)paramView.findViewById(2131302267));
+        ((MallFunctionSettingsUI.c)localObject1).mOw = ((ViewGroup)paramView);
         break;
         label434:
-        if (((cir)localObject2).Hcz == null) {
+        if (((cjl)localObject2).HvZ == null) {
           break label217;
         }
-        paramViewGroup.uHR.setUrl(((cir)localObject2).Hcz);
+        paramViewGroup.uTE.setUrl(((cjl)localObject2).HvZ);
         break label217;
         label457:
-        if (((cir)localObject2).Hcz == null) {
+        if (((cjl)localObject2).HvZ == null) {
           break label217;
         }
-        paramViewGroup.uHR.setUrl(((cir)localObject2).Hcz);
+        paramViewGroup.uTE.setUrl(((cjl)localObject2).HvZ);
         break label217;
         label480:
-        paramViewGroup.lDu.setVisibility(8);
+        paramViewGroup.lHT.setVisibility(8);
         break label276;
         label492:
-        if (((cir)localObject2).nDG == 1)
+        if (((cjl)localObject2).nJb == 1)
         {
-          paramViewGroup.iCB.setCheck(false);
-          paramViewGroup.iCB.setEnabled(true);
-          paramViewGroup.lCL.setTextColor(paramViewGroup.vEP.getContext().getResources().getColor(2131100020));
-          paramViewGroup.vET.setVisibility(8);
+          paramViewGroup.iFu.setCheck(false);
+          paramViewGroup.iFu.setEnabled(true);
+          paramViewGroup.lHk.setTextColor(paramViewGroup.vQT.getContext().getResources().getColor(2131100020));
+          paramViewGroup.vQX.setVisibility(8);
           break label331;
         }
-        if (((cir)localObject2).nDG != 2) {
+        if (((cjl)localObject2).nJb != 2) {
           break label331;
         }
-        paramViewGroup.iCB.setCheck(false);
-        paramViewGroup.iCB.setEnabled(false);
-        paramViewGroup.vET.setVisibility(0);
+        paramViewGroup.iFu.setCheck(false);
+        paramViewGroup.iFu.setEnabled(false);
+        paramViewGroup.vQX.setVisibility(0);
         break label331;
         label587:
-        ((LinearLayout.LayoutParams)localObject2).leftMargin = MallFunctionSettingsUI.c(paramViewGroup.vEP);
+        ((LinearLayout.LayoutParams)localObject2).leftMargin = MallFunctionSettingsUI.c(paramViewGroup.vQT);
         break label373;
         label602:
         if (paramView.type == 0) {
-          paramViewGroup.lCL.setText(paramView.title);
+          paramViewGroup.lHk.setText(paramView.title);
         }
       }
     }
@@ -279,19 +279,19 @@ public class MallFunctionSettingsUI
   {
     String title;
     int type;
-    cir vER;
-    boolean vES = false;
+    cjl vQV;
+    boolean vQW = false;
   }
   
   final class c
   {
-    MMSwitchBtn iCB;
-    TextView lCL;
-    TextView lDu;
-    ViewGroup mJu;
-    View qkV;
-    CdnImageView uHR;
-    View vET;
+    MMSwitchBtn iFu;
+    TextView lHT;
+    TextView lHk;
+    ViewGroup mOw;
+    View qrA;
+    CdnImageView uTE;
+    View vQX;
     
     private c() {}
   }

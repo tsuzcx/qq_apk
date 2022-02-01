@@ -8,8 +8,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.a;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
 import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import org.json.JSONObject;
 
 public final class q
@@ -21,12 +21,12 @@ public final class q
   public final void a(c paramc, JSONObject paramJSONObject, int paramInt)
   {
     AppMethodBeat.i(137690);
-    ad.d("MicroMsg.JsApiVibrateShort", "JsApiVibrateShort services!");
+    ae.d("MicroMsg.JsApiVibrateShort", "JsApiVibrateShort services!");
     int i;
     if (paramJSONObject == null)
     {
       i = -1;
-      ad.d("MicroMsg.JsApiVibrateShort", "vibrationIntensity: ".concat(String.valueOf(i)));
+      ae.d("MicroMsg.JsApiVibrateShort", "vibrationIntensity: ".concat(String.valueOf(i)));
     }
     for (;;)
     {
@@ -44,7 +44,7 @@ public final class q
             break;
           }
           paramJSONObject = paramJSONObject.optString("style");
-          if (!bt.isNullOrNil(paramJSONObject)) {}
+          if (!bu.isNullOrNil(paramJSONObject)) {}
           switch (paramJSONObject.hashCode())
           {
           default: 
@@ -97,7 +97,7 @@ public final class q
         }
         if ((Build.VERSION.SDK_INT >= 26) && (paramJSONObject.hasAmplitudeControl()))
         {
-          ad.d("MicroMsg.JsApiVibrateShort", "vibrateSupportAmplitude");
+          ae.d("MicroMsg.JsApiVibrateShort", "vibrateSupportAmplitude");
           switch (i)
           {
           default: 
@@ -112,7 +112,7 @@ public final class q
       }
       catch (Exception paramJSONObject)
       {
-        ad.w("MicroMsg.JsApiVibrateShort", "vibrateShort exception %s", new Object[] { paramJSONObject.getMessage() });
+        ae.w("MicroMsg.JsApiVibrateShort", "vibrateShort exception %s", new Object[] { paramJSONObject.getMessage() });
         paramc.h(paramInt, e("fail: system internal error", null));
         AppMethodBeat.o(137690);
         return;
@@ -134,7 +134,7 @@ public final class q
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.x.q
  * JD-Core Version:    0.7.0.1
  */

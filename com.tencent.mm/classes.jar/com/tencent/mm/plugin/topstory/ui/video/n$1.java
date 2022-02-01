@@ -2,22 +2,22 @@ package com.tencent.mm.plugin.topstory.ui.video;
 
 import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.q;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.topstory.a.c.e;
-import com.tencent.mm.protocal.protobuf.abe;
-import com.tencent.mm.protocal.protobuf.crw;
-import com.tencent.mm.protocal.protobuf.dod;
-import com.tencent.mm.protocal.protobuf.dof;
-import com.tencent.mm.protocal.protobuf.dto;
-import com.tencent.mm.protocal.protobuf.dvl;
-import com.tencent.mm.protocal.protobuf.dvy;
-import com.tencent.mm.protocal.protobuf.dvz;
-import com.tencent.mm.protocal.protobuf.tz;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.abn;
+import com.tencent.mm.protocal.protobuf.csq;
+import com.tencent.mm.protocal.protobuf.dpa;
+import com.tencent.mm.protocal.protobuf.dpc;
+import com.tencent.mm.protocal.protobuf.dul;
+import com.tencent.mm.protocal.protobuf.dwi;
+import com.tencent.mm.protocal.protobuf.dwt;
+import com.tencent.mm.protocal.protobuf.dwu;
+import com.tencent.mm.protocal.protobuf.ub;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -28,20 +28,20 @@ final class n$1
 {
   n$1(n paramn, e parame) {}
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, final String paramString, com.tencent.mm.al.n paramn)
+  public final void onSceneEnd(int paramInt1, int paramInt2, final String paramString, com.tencent.mm.ak.n paramn)
   {
     AppMethodBeat.i(126121);
-    if (((paramn instanceof e)) && (paramn.equals(this.BvG)))
+    if (((paramn instanceof e)) && (paramn.equals(this.BNe)))
     {
-      g.aiU().b(this.BvG.getType(), this);
+      g.ajj().b(this.BNe.getType(), this);
       if ((paramInt1 != 0) || (paramInt2 != 0))
       {
-        ad.e("MicroMsg.TopStory.TopStoryVideoDataMgr", "fetch videourl failed!, errType %s, errCode %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+        ae.e("MicroMsg.TopStory.TopStoryVideoDataMgr", "fetch videourl failed!, errType %s, errCode %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
         AppMethodBeat.o(126121);
         return;
       }
-      paramString = (crw)((e)paramn).rr.hNL.hNQ;
-      com.tencent.e.h.LTJ.aR(new com.tencent.e.i.h()
+      paramString = (csq)((e)paramn).rr.hQE.hQJ;
+      com.tencent.e.h.MqF.aO(new com.tencent.e.i.h()
       {
         public final String getKey()
         {
@@ -52,38 +52,38 @@ final class n$1
         {
           AppMethodBeat.i(126120);
           ArrayList localArrayList = new ArrayList();
-          ??? = paramString.Hkq.Fys.iterator();
+          ??? = paramString.HDQ.FQQ.iterator();
           Object localObject4;
           Object localObject3;
           Object localObject5;
           Object localObject6;
           while (((Iterator)???).hasNext())
           {
-            localObject4 = (dvz)((Iterator)???).next();
-            localObject3 = new dod();
-            if (!bt.isNullOrNil(((dvz)localObject4).HIh.orq))
+            localObject4 = (dwu)((Iterator)???).next();
+            localObject3 = new dpa();
+            if (!bu.isNullOrNil(((dwu)localObject4).IbT.oxM))
             {
-              ((dod)localObject3).tSk = ((dvz)localObject4).HIh.orq;
-              if ((((dvz)localObject4).HIj != null) && (((dvz)localObject4).HIj.HHN == 1)) {
-                if ((((dvz)localObject4).HIj.HHP != null) && (!bt.hj(((dvz)localObject4).HIj.HHP.FSx)))
+              ((dpa)localObject3).udb = ((dwu)localObject4).IbT.oxM;
+              if ((((dwu)localObject4).IbV != null) && (((dwu)localObject4).IbV.IbA == 1)) {
+                if ((((dwu)localObject4).IbV.IbC != null) && (!bu.ht(((dwu)localObject4).IbV.IbC.GkW)))
                 {
-                  ((dod)localObject3).HCC.clear();
-                  ((dod)localObject3).HCH = ((dvz)localObject4).HIj.HHQ;
-                  localObject4 = ((dvz)localObject4).HIj.HHP.FSx.iterator();
+                  ((dpa)localObject3).HWp.clear();
+                  ((dpa)localObject3).HWu = ((dwu)localObject4).IbV.IbD;
+                  localObject4 = ((dwu)localObject4).IbV.IbC.GkW.iterator();
                   while (((Iterator)localObject4).hasNext())
                   {
-                    localObject5 = (dto)((Iterator)localObject4).next();
-                    localObject6 = new dof();
-                    ((dof)localObject6).url = ((dto)localObject5).HGn.ffY();
-                    ((dof)localObject6).HCL = 0;
-                    ((dod)localObject3).HCC.add(localObject6);
-                    ((dod)localObject3).HCB = ((dto)localObject5).HGp;
+                    localObject5 = (dul)((Iterator)localObject4).next();
+                    localObject6 = new dpc();
+                    ((dpc)localObject6).url = ((dul)localObject5).Iaa.fjO();
+                    ((dpc)localObject6).HWy = 0;
+                    ((dpa)localObject3).HWp.add(localObject6);
+                    ((dpa)localObject3).HWo = ((dul)localObject5).Iac;
                   }
-                  localObject4 = com.tencent.mm.plugin.topstory.a.h.gy(((dod)localObject3).HCC);
+                  localObject4 = com.tencent.mm.plugin.topstory.a.h.gH(((dpa)localObject3).HWp);
                   if (localObject4 != null)
                   {
-                    ((dod)localObject3).videoUrl = ((dof)localObject4).url;
-                    ((dod)localObject3).HCL = ((dof)localObject4).HCL;
+                    ((dpa)localObject3).videoUrl = ((dpc)localObject4).url;
+                    ((dpa)localObject3).HWy = ((dpc)localObject4).HWy;
                   }
                 }
               }
@@ -91,41 +91,41 @@ final class n$1
               {
                 localArrayList.add(localObject3);
                 break;
-                if ((((dvz)localObject4).HIj != null) && (((dvz)localObject4).HIj.HHN == 2))
+                if ((((dwu)localObject4).IbV != null) && (((dwu)localObject4).IbV.IbA == 2))
                 {
-                  if ((((dvz)localObject4).HIj.HHO != null) && (!bt.hj(((dvz)localObject4).HIj.HHO.FSx)))
+                  if ((((dwu)localObject4).IbV.IbB != null) && (!bu.ht(((dwu)localObject4).IbV.IbB.GkW)))
                   {
-                    ((dod)localObject3).HCC.clear();
-                    ((dod)localObject3).HCH = ((dvz)localObject4).HIj.HHQ;
-                    localObject4 = ((dvz)localObject4).HIj.HHO.FSx.iterator();
+                    ((dpa)localObject3).HWp.clear();
+                    ((dpa)localObject3).HWu = ((dwu)localObject4).IbV.IbD;
+                    localObject4 = ((dwu)localObject4).IbV.IbB.GkW.iterator();
                     while (((Iterator)localObject4).hasNext())
                     {
-                      localObject5 = (dto)((Iterator)localObject4).next();
-                      localObject6 = new dof();
-                      ((dof)localObject6).url = ((dto)localObject5).HGn.ffY();
-                      ((dof)localObject6).HCL = 0;
-                      ((dod)localObject3).HCC.add(localObject6);
-                      ((dod)localObject3).HCB = ((dto)localObject5).HGp;
+                      localObject5 = (dul)((Iterator)localObject4).next();
+                      localObject6 = new dpc();
+                      ((dpc)localObject6).url = ((dul)localObject5).Iaa.fjO();
+                      ((dpc)localObject6).HWy = 0;
+                      ((dpa)localObject3).HWp.add(localObject6);
+                      ((dpa)localObject3).HWo = ((dul)localObject5).Iac;
                     }
-                    localObject4 = com.tencent.mm.plugin.topstory.a.h.gy(((dod)localObject3).HCC);
+                    localObject4 = com.tencent.mm.plugin.topstory.a.h.gH(((dpa)localObject3).HWp);
                     if (localObject4 != null)
                     {
-                      ((dod)localObject3).videoUrl = ((dof)localObject4).url;
-                      ((dod)localObject3).HCL = ((dof)localObject4).HCL;
+                      ((dpa)localObject3).videoUrl = ((dpc)localObject4).url;
+                      ((dpa)localObject3).HWy = ((dpc)localObject4).HWy;
                     }
                   }
                 }
-                else if (!bt.isNullOrNil(((dvz)localObject4).HIk))
+                else if (!bu.isNullOrNil(((dwu)localObject4).IbW))
                 {
-                  ((dod)localObject3).HCC.clear();
-                  n.b((dod)localObject3, ((dvz)localObject4).HIk, "");
-                  localObject5 = com.tencent.mm.plugin.topstory.a.h.gy(((dod)localObject3).HCC);
+                  ((dpa)localObject3).HWp.clear();
+                  n.b((dpa)localObject3, ((dwu)localObject4).IbW, "");
+                  localObject5 = com.tencent.mm.plugin.topstory.a.h.gH(((dpa)localObject3).HWp);
                   if (localObject5 != null)
                   {
-                    ((dod)localObject3).videoUrl = ((dof)localObject5).url;
-                    ((dod)localObject3).HCL = ((dof)localObject5).HCL;
-                    if (((dvz)localObject4).HIj != null) {
-                      ((dod)localObject3).HCH = ((dvz)localObject4).HIj.HHQ;
+                    ((dpa)localObject3).videoUrl = ((dpc)localObject5).url;
+                    ((dpa)localObject3).HWy = ((dpc)localObject5).HWy;
+                    if (((dwu)localObject4).IbV != null) {
+                      ((dpa)localObject3).HWu = ((dwu)localObject4).IbV.IbD;
                     }
                   }
                 }
@@ -135,10 +135,10 @@ final class n$1
           for (;;)
           {
             int i;
-            synchronized (n.1.this.BvH)
+            synchronized (n.1.this.BNf)
             {
-              localObject3 = n.1.this.BvH.cNm();
-              if (bt.hj((List)localObject3))
+              localObject3 = n.1.this.BNf.cPU();
+              if (bu.ht((List)localObject3))
               {
                 AppMethodBeat.o(126120);
                 return;
@@ -147,19 +147,19 @@ final class n$1
               if (i >= ((List)localObject3).size()) {
                 break;
               }
-              localObject4 = (dod)((List)localObject3).get(i);
+              localObject4 = (dpa)((List)localObject3).get(i);
               localObject5 = localArrayList.iterator();
               if (((Iterator)localObject5).hasNext())
               {
-                localObject6 = (dod)((Iterator)localObject5).next();
-                if (!((dod)localObject4).tSk.equals(((dod)localObject6).tSk)) {
+                localObject6 = (dpa)((Iterator)localObject5).next();
+                if (!((dpa)localObject4).udb.equals(((dpa)localObject6).udb)) {
                   continue;
                 }
-                ((dod)localObject4).HCC = ((dod)localObject6).HCC;
-                ((dod)localObject4).HCB = ((dod)localObject6).HCB;
-                ((dod)localObject4).videoUrl = ((dod)localObject6).videoUrl;
-                ((dod)localObject4).HCH = ((dod)localObject6).HCH;
-                ad.d("MicroMsg.TopStory.TopStoryVideoDataMgr", "item title:%s, after url:%s", new Object[] { ((dod)localObject4).title, ((dod)localObject4).videoUrl });
+                ((dpa)localObject4).HWp = ((dpa)localObject6).HWp;
+                ((dpa)localObject4).HWo = ((dpa)localObject6).HWo;
+                ((dpa)localObject4).videoUrl = ((dpa)localObject6).videoUrl;
+                ((dpa)localObject4).HWu = ((dpa)localObject6).HWu;
+                ae.d("MicroMsg.TopStory.TopStoryVideoDataMgr", "item title:%s, after url:%s", new Object[] { ((dpa)localObject4).title, ((dpa)localObject4).videoUrl });
               }
             }
             i += 1;

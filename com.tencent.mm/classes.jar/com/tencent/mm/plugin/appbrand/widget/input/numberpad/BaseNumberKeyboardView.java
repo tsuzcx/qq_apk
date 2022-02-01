@@ -35,7 +35,7 @@ public class BaseNumberKeyboardView
   private Button mKey9;
   private Button mKeyX;
   private int mXMode;
-  private ImageButton nhX;
+  private ImageButton nnf;
   
   public BaseNumberKeyboardView(Context paramContext)
   {
@@ -71,7 +71,7 @@ public class BaseNumberKeyboardView
     this.mKey9 = ((Button)paramContext.findViewById(getId("tenpay_keyboard_9")));
     this.mKeyX = ((Button)paramContext.findViewById(getId("tenpay_keyboard_x")));
     this.mKey0 = ((Button)paramContext.findViewById(getId("tenpay_keyboard_0")));
-    this.nhX = ((ImageButton)paramContext.findViewById(getId("tenpay_keyboard_d")));
+    this.nnf = ((ImageButton)paramContext.findViewById(getId("tenpay_keyboard_d")));
     paramContext = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
@@ -79,7 +79,7 @@ public class BaseNumberKeyboardView
         AppMethodBeat.i(136678);
         b localb = new b();
         localb.bd(paramAnonymousView);
-        a.b("com/tencent/mm/plugin/appbrand/widget/input/numberpad/BaseNumberKeyboardView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        a.b("com/tencent/mm/plugin/appbrand/widget/input/numberpad/BaseNumberKeyboardView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
         if (BaseNumberKeyboardView.a(BaseNumberKeyboardView.this) == null)
         {
           a.a(this, "com/tencent/mm/plugin/appbrand/widget/input/numberpad/BaseNumberKeyboardView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
@@ -153,7 +153,7 @@ public class BaseNumberKeyboardView
       this.mKey9.setContentDescription("9");
       this.mKey0.setContentDescription("0");
       this.mKeyX.setContentDescription("字母X");
-      this.nhX.setContentDescription("删除");
+      this.nnf.setContentDescription("删除");
     }
     this.mKey1.setOnClickListener(paramContext);
     this.mKey2.setOnClickListener(paramContext);
@@ -166,7 +166,7 @@ public class BaseNumberKeyboardView
     this.mKey9.setOnClickListener(paramContext);
     this.mKeyX.setOnClickListener(paramContext);
     this.mKey0.setOnClickListener(paramContext);
-    this.nhX.setOnClickListener(paramContext);
+    this.nnf.setOnClickListener(paramContext);
     AppMethodBeat.o(136681);
   }
   
@@ -225,7 +225,7 @@ public class BaseNumberKeyboardView
     this.mKey8.setAccessibilityDelegate(paramAccessibilityDelegate);
     this.mKey9.setAccessibilityDelegate(paramAccessibilityDelegate);
     this.mKeyX.setAccessibilityDelegate(paramAccessibilityDelegate);
-    this.nhX.setAccessibilityDelegate(paramAccessibilityDelegate);
+    this.nnf.setAccessibilityDelegate(paramAccessibilityDelegate);
     AppMethodBeat.o(136682);
   }
   
@@ -257,7 +257,7 @@ public class BaseNumberKeyboardView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.numberpad.BaseNumberKeyboardView
  * JD-Core Version:    0.7.0.1
  */

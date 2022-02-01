@@ -23,8 +23,8 @@ import com.google.android.exoplayer2.r;
 import com.google.android.exoplayer2.source.i;
 import com.google.android.exoplayer2.source.q;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -38,25 +38,27 @@ public class c
   Context IR;
   protected int bDT;
   protected float bDX;
-  private final AtomicBoolean jLd;
-  volatile boolean lpV;
-  com.google.android.exoplayer2.f lqP;
-  private boolean lqQ;
-  private e lqR;
-  private i lqS;
-  private List<r> lqT;
-  private f.a lqU;
-  private b lqV;
-  private f lqW;
-  int lqX;
-  private boolean lqY;
-  private boolean lqZ;
-  protected int lra;
-  protected int lrb;
-  protected int lrc;
-  protected int lrd;
-  protected int lre;
-  protected int lrf;
+  private final AtomicBoolean jOp;
+  volatile boolean lus;
+  protected int lvA;
+  protected int lvB;
+  protected int lvC;
+  protected int lvD;
+  protected int lvE;
+  private int lvF;
+  com.google.android.exoplayer2.f lvn;
+  private boolean lvo;
+  private e lvp;
+  private i lvq;
+  private List<r> lvr;
+  private f.a lvs;
+  private b lvt;
+  private f lvu;
+  int lvv;
+  private boolean lvw;
+  private boolean lvx;
+  private final AtomicBoolean lvy;
+  protected int lvz;
   private HandlerThread mHandlerThread;
   private Handler mMainHandler;
   private Surface mSurface;
@@ -85,27 +87,29 @@ public class c
   
   private c(Handler paramHandler, int paramInt1, float paramFloat, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
   {
-    AppMethodBeat.i(206304);
-    this.jLd = new AtomicBoolean();
+    AppMethodBeat.i(211332);
+    this.jOp = new AtomicBoolean();
+    this.lvy = new AtomicBoolean(false);
     this.bDT = 0;
     this.bDX = 0.75F;
-    this.lra = 10000;
-    this.lrb = 25000;
-    this.lrc = 15000;
-    this.lrd = 30000;
-    this.lre = 2500;
-    this.lrf = 5000;
-    ad.i("MicroMsg.SameLayer.ExoMediaPlayer", "ExoMediaPlayer, handler = %s, maxInitBitrate = %s, bandFraction = %s, minDur = %s, maxDur = %s, minBuffer = %s, maxBuffer = %s, bufferForPlaybackMs:%s, bufferForPlaybackAfterRebufferMs:%s", new Object[] { paramHandler, Integer.valueOf(paramInt1), Float.valueOf(paramFloat), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4), Integer.valueOf(paramInt5), Integer.valueOf(paramInt6), Integer.valueOf(5000) });
+    this.lvz = 10000;
+    this.lvA = 25000;
+    this.lvB = 15000;
+    this.lvC = 30000;
+    this.lvD = 2500;
+    this.lvE = 5000;
+    this.lvF = 0;
+    ae.i("MicroMsg.SameLayer.ExoMediaPlayer", "ExoMediaPlayer, handler = %s, maxInitBitrate = %s, bandFraction = %s, minDur = %s, maxDur = %s, minBuffer = %s, maxBuffer = %s, bufferForPlaybackMs:%s, bufferForPlaybackAfterRebufferMs:%s", new Object[] { paramHandler, Integer.valueOf(paramInt1), Float.valueOf(paramFloat), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4), Integer.valueOf(paramInt5), Integer.valueOf(paramInt6), Integer.valueOf(5000) });
     this.bDT = 0;
     this.bDX = paramFloat;
-    this.lra = paramInt2;
-    this.lrb = paramInt3;
-    this.lrc = paramInt4;
-    this.lrd = paramInt5;
-    this.lre = paramInt6;
-    this.lrf = 5000;
+    this.lvz = paramInt2;
+    this.lvA = paramInt3;
+    this.lvB = paramInt4;
+    this.lvC = paramInt5;
+    this.lvD = paramInt6;
+    this.lvE = 5000;
     c(paramHandler);
-    AppMethodBeat.o(206304);
+    AppMethodBeat.o(211332);
   }
   
   public c(Handler paramHandler, int paramInt1, int paramInt2, int paramInt3)
@@ -113,38 +117,38 @@ public class c
     this(paramHandler, 0, 0.75F, 10000, 25000, paramInt1, paramInt2, paramInt3);
   }
   
-  private com.google.android.exoplayer2.h.g.a L(Map<String, String> paramMap)
+  private com.google.android.exoplayer2.h.g.a S(Map<String, String> paramMap)
   {
-    AppMethodBeat.i(206313);
-    if ((paramMap == null) && (!com.tencent.mm.plugin.appbrand.jsapi.video.j.bnr().llS))
+    AppMethodBeat.i(211341);
+    if ((paramMap == null) && (!com.tencent.mm.plugin.appbrand.jsapi.video.j.bob().lqs))
     {
       com.google.android.exoplayer2.h.g.a locala = null;
       if (com.tencent.luggage.a.e.K(com.tencent.mm.plugin.appbrand.jsapi.video.g.class) != null) {
-        locala = ((com.tencent.mm.plugin.appbrand.jsapi.video.g)com.tencent.luggage.a.e.K(com.tencent.mm.plugin.appbrand.jsapi.video.g.class)).bne();
+        locala = ((com.tencent.mm.plugin.appbrand.jsapi.video.g)com.tencent.luggage.a.e.K(com.tencent.mm.plugin.appbrand.jsapi.video.g.class)).bnO();
       }
       if (locala != null)
       {
-        ad.i("MicroMsg.SameLayer.ExoMediaPlayer", "getDataSourceFactory, return customized data source factory");
-        AppMethodBeat.o(206313);
+        ae.i("MicroMsg.SameLayer.ExoMediaPlayer", "getDataSourceFactory, return customized data source factory");
+        AppMethodBeat.o(211341);
         return locala;
       }
     }
-    ad.i("MicroMsg.SameLayer.ExoMediaPlayer", "getDataSourceFactory, return default data source factory");
+    ae.i("MicroMsg.SameLayer.ExoMediaPlayer", "getDataSourceFactory, return default data source factory");
     paramMap = d.a(this.IR, paramMap);
-    AppMethodBeat.o(206313);
+    AppMethodBeat.o(211341);
     return paramMap;
   }
   
   private void a(int paramInt1, int paramInt2, Object paramObject, boolean paramBoolean)
   {
-    AppMethodBeat.i(206332);
-    if (this.lqT.isEmpty())
+    AppMethodBeat.i(211361);
+    if (this.lvr.isEmpty())
     {
-      AppMethodBeat.o(206332);
+      AppMethodBeat.o(211361);
       return;
     }
     ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = this.lqT.iterator();
+    Iterator localIterator = this.lvr.iterator();
     while (localIterator.hasNext())
     {
       r localr = (r)localIterator.next();
@@ -154,82 +158,82 @@ public class c
     }
     if (paramBoolean)
     {
-      this.lqP.b((f.c[])localArrayList.toArray(new f.c[localArrayList.size()]));
-      AppMethodBeat.o(206332);
+      this.lvn.b((f.c[])localArrayList.toArray(new f.c[localArrayList.size()]));
+      AppMethodBeat.o(211361);
       return;
     }
-    this.lqP.a((f.c[])localArrayList.toArray(new f.c[localArrayList.size()]));
-    AppMethodBeat.o(206332);
+    this.lvn.a((f.c[])localArrayList.toArray(new f.c[localArrayList.size()]));
+    AppMethodBeat.o(211361);
   }
   
   private i b(Uri paramUri, String paramString)
   {
-    AppMethodBeat.i(206310);
+    AppMethodBeat.i(211338);
     int i = q(paramUri);
-    paramString = com.tencent.mm.plugin.appbrand.jsapi.s.d.Qv(paramString);
+    paramString = com.tencent.mm.plugin.appbrand.jsapi.s.d.Re(paramString);
     switch (i)
     {
     default: 
-      ad.e("MicroMsg.SameLayer.ExoMediaPlayer", "buildMediaSource, unsupported type:" + i + ", url:" + paramUri);
-      AppMethodBeat.o(206310);
+      ae.e("MicroMsg.SameLayer.ExoMediaPlayer", "buildMediaSource, unsupported type:" + i + ", url:" + paramUri);
+      AppMethodBeat.o(211338);
       return null;
     case 2: 
-      ad.i("MicroMsg.SameLayer.ExoMediaPlayer", "buildMediaSource, type:HLS, url:%s", new Object[] { paramUri });
-      paramUri = new com.google.android.exoplayer2.source.b.h(paramUri, d.a(this.IR, paramString), this.mMainHandler, this.lqV);
-      AppMethodBeat.o(206310);
+      ae.i("MicroMsg.SameLayer.ExoMediaPlayer", "buildMediaSource, type:HLS, url:%s", new Object[] { paramUri });
+      paramUri = new com.google.android.exoplayer2.source.b.h(paramUri, d.a(this.IR, paramString), this.mMainHandler, this.lvt);
+      AppMethodBeat.o(211338);
       return paramUri;
     }
-    ad.i("MicroMsg.SameLayer.ExoMediaPlayer", "buildMediaSource, type:other, url:%s", new Object[] { paramUri });
-    paramUri = new com.google.android.exoplayer2.source.g(paramUri, L(paramString), bos(), this.mMainHandler, this.lqV);
-    AppMethodBeat.o(206310);
+    ae.i("MicroMsg.SameLayer.ExoMediaPlayer", "buildMediaSource, type:other, url:%s", new Object[] { paramUri });
+    paramUri = new com.google.android.exoplayer2.source.g(paramUri, S(paramString), bpc(), this.mMainHandler, this.lvt);
+    AppMethodBeat.o(211338);
     return paramUri;
   }
   
-  private void boo()
+  private void boY()
   {
-    AppMethodBeat.i(206306);
-    ad.i("MicroMsg.SameLayer.ExoMediaPlayer", "iniMediaPlayer");
-    com.google.android.exoplayer2.g.c localc = new com.google.android.exoplayer2.g.c(new com.tencent.mm.plugin.appbrand.jsapi.video.e.a.c.b(d.bov(), this.bDT, this.lra, this.lrb, this.bDX));
-    com.google.android.exoplayer2.c localc1 = new com.google.android.exoplayer2.c(new k(), this.lrc, this.lrd, this.lre, this.lrf);
-    this.lqP = com.google.android.exoplayer2.g.a((r[])this.lqT.toArray(new r[this.lqT.size()]), localc, localc1);
-    this.lqP.a(this.lqU);
-    AppMethodBeat.o(206306);
+    AppMethodBeat.i(211334);
+    ae.i("MicroMsg.SameLayer.ExoMediaPlayer", "iniMediaPlayer");
+    com.google.android.exoplayer2.g.c localc = new com.google.android.exoplayer2.g.c(new com.tencent.mm.plugin.appbrand.jsapi.video.e.a.c.b(d.bpf(), this.bDT, this.lvz, this.lvA, this.bDX));
+    com.google.android.exoplayer2.c localc1 = new com.google.android.exoplayer2.c(new k(), this.lvB, this.lvC, this.lvD, this.lvE);
+    this.lvn = com.google.android.exoplayer2.g.a((r[])this.lvr.toArray(new r[this.lvr.size()]), localc, localc1);
+    this.lvn.a(this.lvs);
+    AppMethodBeat.o(211334);
   }
   
   private void c(Handler paramHandler)
   {
-    AppMethodBeat.i(206305);
-    this.IR = aj.getContext();
-    this.lqR = new e((byte)0);
+    AppMethodBeat.i(211333);
+    this.IR = ak.getContext();
+    this.lvp = new e((byte)0);
     if (paramHandler != null) {}
     for (this.mMainHandler = paramHandler;; this.mMainHandler = new Handler(this.mHandlerThread.getLooper()))
     {
-      this.lqU = new c((byte)0);
-      this.lqV = new b((byte)0);
-      this.lqW = new f(this.mMainHandler);
-      this.lqW.lrl = 1000;
-      this.lqW.lrn = new a((byte)0);
+      this.lvs = new c((byte)0);
+      this.lvt = new b((byte)0);
+      this.lvu = new f(this.mMainHandler);
+      this.lvu.lvL = 1000;
+      this.lvu.lvN = new a((byte)0);
       d locald = new d((byte)0);
-      this.lqT = new a(this.IR, this.mMainHandler, locald, locald, locald, locald).bon();
+      this.lvr = new a(this.IR, this.mMainHandler, locald, locald, locald, locald).boX();
       if ((paramHandler == null) || (paramHandler.getLooper() != Looper.myLooper())) {
         break;
       }
-      boo();
-      AppMethodBeat.o(206305);
+      boY();
+      AppMethodBeat.o(211333);
       return;
-      this.mHandlerThread = com.tencent.e.c.d.gX("ExoMediaPlayer_HandlerThread", 5);
+      this.mHandlerThread = com.tencent.e.c.d.hg("ExoMediaPlayer_HandlerThread", 5);
       this.mHandlerThread.start();
     }
     this.mMainHandler.post(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(206269);
+        AppMethodBeat.i(211297);
         synchronized (c.this)
         {
           c.a(c.this);
           c.this.notifyAll();
-          AppMethodBeat.o(206269);
+          AppMethodBeat.o(211297);
           return;
         }
       }
@@ -238,7 +242,7 @@ public class c
     {
       for (;;)
       {
-        paramHandler = this.lqP;
+        paramHandler = this.lvn;
         if (paramHandler != null) {
           break;
         }
@@ -254,218 +258,235 @@ public class c
     }
     finally
     {
-      AppMethodBeat.o(206305);
+      AppMethodBeat.o(211333);
     }
-    AppMethodBeat.o(206305);
+    AppMethodBeat.o(211333);
   }
   
-  private void cz(Object paramObject)
+  private void cA(Object paramObject)
   {
-    AppMethodBeat.i(206331);
+    AppMethodBeat.i(211360);
     a(1, 2, paramObject, false);
-    AppMethodBeat.o(206331);
+    AppMethodBeat.o(211360);
   }
   
   private void gT(boolean paramBoolean)
   {
-    AppMethodBeat.i(206329);
-    ad.d("MicroMsg.SameLayer.ExoMediaPlayer", "setBufferRepeaterStarted ".concat(String.valueOf(paramBoolean)));
-    if ((paramBoolean) && (this.lqb != null))
+    AppMethodBeat.i(211357);
+    ae.d("MicroMsg.SameLayer.ExoMediaPlayer", "setBufferRepeaterStarted ".concat(String.valueOf(paramBoolean)));
+    if ((paramBoolean) && (this.luz != null))
     {
-      this.lqW.start();
-      AppMethodBeat.o(206329);
+      this.lvu.start();
+      AppMethodBeat.o(211357);
       return;
     }
-    this.lqW.lrk = false;
-    AppMethodBeat.o(206329);
+    this.lvu.lvK = false;
+    AppMethodBeat.o(211357);
   }
   
   private static int q(Uri paramUri)
   {
-    AppMethodBeat.i(206311);
-    if ((paramUri != null) && (com.tencent.mm.plugin.appbrand.jsapi.video.b.e.h.QY(paramUri.toString())))
+    AppMethodBeat.i(211339);
+    if ((paramUri != null) && (com.tencent.mm.plugin.appbrand.jsapi.video.b.e.h.RH(paramUri.toString())))
     {
-      AppMethodBeat.o(206311);
+      AppMethodBeat.o(211339);
       return 2;
     }
-    AppMethodBeat.o(206311);
+    AppMethodBeat.o(211339);
     return 3;
   }
   
   public final boolean aF(float paramFloat)
   {
-    AppMethodBeat.i(206315);
+    AppMethodBeat.i(211343);
     if (available())
     {
       p localp = new p(paramFloat, 1.0F);
-      this.lqP.a(localp);
-      AppMethodBeat.o(206315);
+      this.lvn.a(localp);
+      AppMethodBeat.o(211343);
       return true;
     }
-    AppMethodBeat.o(206315);
+    AppMethodBeat.o(211343);
     return false;
   }
   
   final boolean available()
   {
-    return this.lqP != null;
+    return this.lvn != null;
   }
   
-  public final int bop()
+  public final int boZ()
   {
-    return this.lrc;
+    return this.lvB;
   }
   
-  public final int boq()
+  public final int bpa()
   {
-    return this.lrd;
+    return this.lvC;
   }
   
-  public final int bor()
+  public final int bpb()
   {
-    return this.lre;
+    return this.lvD;
   }
   
-  protected com.google.android.exoplayer2.c.h bos()
+  protected com.google.android.exoplayer2.c.h bpc()
   {
-    AppMethodBeat.i(206312);
+    AppMethodBeat.i(211340);
     b localb = new b();
-    AppMethodBeat.o(206312);
+    AppMethodBeat.o(211340);
     return localb;
   }
   
-  final void bot()
+  final void bpd()
   {
     for (;;)
     {
       int j;
       try
       {
-        AppMethodBeat.i(206330);
-        if ((this.lqP == null) || (this.lpV))
+        AppMethodBeat.i(211359);
+        if ((this.lvn == null) || (this.lus))
         {
-          AppMethodBeat.o(206330);
+          AppMethodBeat.o(211359);
           return;
         }
-        int i = this.lqP.td();
-        boolean bool = this.lqP.te();
-        j = e.r(bool, i);
-        if (j == this.lqR.lri[3]) {
-          break label478;
+        int i = this.lvn.td();
+        boolean bool = this.lvn.te();
+        j = e.s(bool, i);
+        if (j == this.lvp.lvI[3]) {
+          break label537;
         }
-        ad.i("MicroMsg.SameLayer.ExoMediaPlayer", "reportPlayerState, set new recent state [" + bool + "," + i + "]");
-        this.lqR.q(bool, i);
+        ae.i("MicroMsg.SameLayer.ExoMediaPlayer", "reportPlayerState, set new recent state [" + bool + "," + i + "]");
+        this.lvp.r(bool, i);
         if (j == 3)
         {
           gT(true);
-          if (j != e.r(true, 4)) {
-            break label214;
+          if (j != e.s(true, 4)) {
+            break label271;
           }
-          if (!this.lqY) {
-            break label195;
+          ae.i("MicroMsg.SameLayer.ExoMediaPlayer", "reportPlayerState, isSeeking: %b, loopingPlaySeek: %b", new Object[] { Boolean.valueOf(this.lvy.get()), Boolean.valueOf(this.lvx) });
+          if ((this.lvy.getAndSet(false)) && (!this.lvx)) {
+            boW();
           }
-          ad.i("MicroMsg.SameLayer.ExoMediaPlayer", "looping play start");
-          this.lqZ = true;
+          if (!this.lvw) {
+            break label252;
+          }
+          ae.i("MicroMsg.SameLayer.ExoMediaPlayer", "looping play start");
+          this.lvx = true;
           seekTo(0L);
-          AppMethodBeat.o(206330);
+          AppMethodBeat.o(211359);
           continue;
         }
         if (j == 1) {
-          break label187;
+          break label244;
         }
       }
       finally {}
       if (j == 4)
       {
-        label187:
+        label244:
         gT(false);
         continue;
-        label195:
-        this.lpU = 6;
-        bol();
-        AppMethodBeat.o(206330);
+        label252:
+        this.lur = 6;
+        boV();
+        AppMethodBeat.o(211359);
         continue;
-        label214:
-        if (this.lqR.a(new int[] { e.r(false, 1), e.r(false, 2), e.r(false, 3) }, false))
+        label271:
+        if (this.lvp.a(new int[] { e.s(false, 1), e.s(false, 2), e.s(false, 3) }, false))
         {
-          this.lpU = 2;
-          bok();
-          AppMethodBeat.o(206330);
-        }
-        else if ((this.lqR.a(new int[] { 100, 2, 3 }, true) | this.lqR.a(new int[] { 2, 100, 3 }, true) | this.lqR.a(new int[] { 100, 3, 2, 3 }, true)))
-        {
-          if (!this.lqZ)
-          {
-            bom();
-            AppMethodBeat.o(206330);
-          }
-          else
-          {
-            this.lqZ = false;
-            AppMethodBeat.o(206330);
-          }
-        }
-        else if (this.lqR.a(new int[] { e.r(true, 3), e.r(true, 2) }, false))
-        {
-          dY(701, getBufferedPercentage());
-          AppMethodBeat.o(206330);
+          this.lur = 2;
+          boU();
+          AppMethodBeat.o(211359);
         }
         else
         {
-          if (this.lqR.a(new int[] { e.r(true, 2), e.r(true, 3) }, false)) {
-            dY(702, getBufferedPercentage());
+          if ((this.lvp.a(new int[] { 100, 2, 3 }, true) | this.lvp.a(new int[] { 2, 100, 3 }, true) | this.lvp.a(new int[] { 100, 3, 2, 3 }, true)))
+          {
+            if (!this.lvx) {
+              boW();
+            }
+            for (;;)
+            {
+              this.lvy.set(false);
+              AppMethodBeat.o(211359);
+              break;
+              this.lvx = false;
+            }
           }
-          label478:
-          AppMethodBeat.o(206330);
+          if (this.lvp.a(new int[] { e.s(true, 3), e.s(true, 2) }, false))
+          {
+            dY(701, getBufferedPercentage());
+            AppMethodBeat.o(211359);
+          }
+          else
+          {
+            if (this.lvp.a(new int[] { e.s(true, 2), e.s(true, 3) }, false)) {
+              dY(702, getBufferedPercentage());
+            }
+            label537:
+            AppMethodBeat.o(211359);
+          }
         }
       }
     }
   }
   
-  public final void dD(String paramString1, String paramString2)
+  public final void dF(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(206309);
-    this.lqS = b(Uri.parse(paramString1), paramString2);
-    this.lpU = 1;
-    AppMethodBeat.o(206309);
+    AppMethodBeat.i(211337);
+    this.lvq = b(Uri.parse(paramString1), paramString2);
+    this.lvF = 0;
+    this.lur = 1;
+    AppMethodBeat.o(211337);
+  }
+  
+  public final boolean dX(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(211358);
+    boolean bool = super.dX(paramInt1, paramInt2);
+    this.lvF = 0;
+    AppMethodBeat.o(211358);
+    return bool;
   }
   
   final int getBufferedPercentage()
   {
-    AppMethodBeat.i(206328);
+    AppMethodBeat.i(211356);
     if (available())
     {
-      int i = this.lqP.getBufferedPercentage();
-      AppMethodBeat.o(206328);
+      int i = this.lvn.getBufferedPercentage();
+      AppMethodBeat.o(211356);
       return i;
     }
-    AppMethodBeat.o(206328);
+    AppMethodBeat.o(211356);
     return 0;
   }
   
   public final int getCurrentPosition()
   {
-    AppMethodBeat.i(206319);
+    AppMethodBeat.i(211347);
     if (available())
     {
-      int i = (int)this.lqP.getCurrentPosition();
-      AppMethodBeat.o(206319);
+      int i = (int)this.lvn.getCurrentPosition();
+      AppMethodBeat.o(211347);
       return i;
     }
-    AppMethodBeat.o(206319);
+    AppMethodBeat.o(211347);
     return 0;
   }
   
   public final int getDuration()
   {
-    AppMethodBeat.i(206318);
+    AppMethodBeat.i(211346);
     if (available())
     {
-      int i = (int)this.lqP.getDuration();
-      AppMethodBeat.o(206318);
+      int i = (int)this.lvn.getDuration();
+      AppMethodBeat.o(211346);
       return i;
     }
-    AppMethodBeat.o(206318);
+    AppMethodBeat.o(211346);
     return 0;
   }
   
@@ -481,82 +502,82 @@ public class c
   
   public final boolean isPlaying()
   {
-    AppMethodBeat.i(206307);
+    AppMethodBeat.i(211335);
     if (available())
     {
-      switch (this.lqP.td())
+      switch (this.lvn.td())
       {
       }
       do
       {
-        AppMethodBeat.o(206307);
+        AppMethodBeat.o(211335);
         return false;
-        boolean bool = this.lqP.te();
-        AppMethodBeat.o(206307);
+        boolean bool = this.lvn.te();
+        AppMethodBeat.o(211335);
         return bool;
-      } while (!this.lqY);
-      AppMethodBeat.o(206307);
+      } while (!this.lvw);
+      AppMethodBeat.o(211335);
       return true;
     }
-    AppMethodBeat.o(206307);
+    AppMethodBeat.o(211335);
     return false;
   }
   
   public final void k(long paramLong, boolean paramBoolean)
   {
-    AppMethodBeat.i(206324);
+    AppMethodBeat.i(211352);
     if (available())
     {
-      this.lqP.seekTo(paramLong);
-      this.lqR.q(paramBoolean, 100);
+      this.lvn.seekTo(paramLong);
+      this.lvp.r(paramBoolean, 100);
     }
-    AppMethodBeat.o(206324);
+    AppMethodBeat.o(211352);
   }
   
   public final void pause()
   {
-    AppMethodBeat.i(206322);
+    AppMethodBeat.i(211350);
     if (available())
     {
-      this.lqP.aP(false);
-      this.lpU = 3;
+      this.lvn.aP(false);
+      this.lur = 3;
     }
-    AppMethodBeat.o(206322);
+    AppMethodBeat.o(211350);
   }
   
   public final void prepareAsync()
   {
-    AppMethodBeat.i(206320);
-    if (this.lqS == null)
+    AppMethodBeat.i(211348);
+    if (this.lvq == null)
     {
-      ad.w("MicroMsg.SameLayer.ExoMediaPlayer", "prepareAsync, media source is null");
-      AppMethodBeat.o(206320);
+      ae.w("MicroMsg.SameLayer.ExoMediaPlayer", "prepareAsync, media source is null");
+      AppMethodBeat.o(211348);
       return;
     }
     if (available())
     {
-      this.lqP.aP(false);
-      this.lqP.a(this.lqS);
+      this.lvn.aP(false);
+      this.lvn.a(this.lvq);
     }
-    AppMethodBeat.o(206320);
+    AppMethodBeat.o(211348);
   }
   
   public final void release()
   {
-    AppMethodBeat.i(206327);
-    this.lpV = true;
+    AppMethodBeat.i(211355);
+    this.lus = true;
     if (available())
     {
       gT(false);
       if (available())
       {
-        this.lqP.release();
-        this.lqP.b(this.lqU);
-        this.lqP = null;
+        this.lvn.release();
+        this.lvn.b(this.lvs);
+        this.lvn = null;
       }
       this.mVideoWidth = 0;
       this.mVideoHeight = 0;
-      this.lqX = 0;
+      this.lvv = 0;
     }
     if (this.mHandlerThread != null)
     {
@@ -565,114 +586,115 @@ public class c
     }
     if (this.mSurface != null)
     {
-      if (this.lqQ) {
+      if (this.lvo) {
         this.mSurface.release();
       }
       this.mSurface = null;
     }
-    this.lpW = null;
-    this.lpX = null;
-    this.lpY = null;
-    this.lpZ = null;
-    this.lqa = null;
-    this.lqb = null;
-    this.lqc = null;
-    this.lpU = -2;
+    this.lut = null;
+    this.luu = null;
+    this.luv = null;
+    this.luw = null;
+    this.luy = null;
+    this.luz = null;
+    this.luA = null;
+    this.lur = -2;
     super.release();
-    AppMethodBeat.o(206327);
+    AppMethodBeat.o(211355);
   }
   
   public final void reset()
   {
-    AppMethodBeat.i(206326);
+    AppMethodBeat.i(211354);
     if (available())
     {
       gT(false);
       if (available())
       {
-        this.lqP.aP(false);
-        this.lqP.stop();
+        this.lvn.aP(false);
+        this.lvn.stop();
       }
-      this.lqY = false;
-      this.lqX = 0;
-      this.lqR.lri = new int[] { 1, 1, 1, 1 };
-      this.lpU = 0;
+      this.lvw = false;
+      this.lvv = 0;
+      this.lvp.lvI = new int[] { 1, 1, 1, 1 };
+      this.lur = 0;
     }
-    AppMethodBeat.o(206326);
+    AppMethodBeat.o(211354);
   }
   
   public final void seekTo(long paramLong)
   {
-    AppMethodBeat.i(206323);
+    AppMethodBeat.i(211351);
     e locale;
     if (available())
     {
-      this.lqP.seekTo(paramLong);
-      locale = this.lqR;
-      if ((this.lqR.lri[3] & 0xF0000000) == 0) {
-        break label62;
+      this.lvn.seekTo(paramLong);
+      locale = this.lvp;
+      if ((this.lvp.lvI[3] & 0xF0000000) == 0) {
+        break label70;
       }
     }
-    label62:
+    label70:
     for (boolean bool = true;; bool = false)
     {
-      locale.q(bool, 100);
-      AppMethodBeat.o(206323);
+      locale.r(bool, 100);
+      this.lvy.set(true);
+      AppMethodBeat.o(211351);
       return;
     }
   }
   
   public final void setDataSource(String paramString)
   {
-    AppMethodBeat.i(206308);
-    dD(paramString, null);
-    AppMethodBeat.o(206308);
+    AppMethodBeat.i(211336);
+    dF(paramString, null);
+    AppMethodBeat.o(211336);
   }
   
   public final void setLooping(boolean paramBoolean)
   {
-    this.lqY = paramBoolean;
+    this.lvw = paramBoolean;
   }
   
   public final void setMute(boolean paramBoolean)
   {
-    AppMethodBeat.i(206316);
+    AppMethodBeat.i(211344);
     if (available())
     {
       if (paramBoolean)
       {
         setVolume(0.0F, 0.0F);
-        AppMethodBeat.o(206316);
+        AppMethodBeat.o(211344);
         return;
       }
       setVolume(1.0F, 1.0F);
     }
-    AppMethodBeat.o(206316);
+    AppMethodBeat.o(211344);
   }
   
   public final void setSurface(Surface paramSurface)
   {
-    AppMethodBeat.i(206314);
+    AppMethodBeat.i(211342);
     if ((available()) && (available()))
     {
       if ((this.mSurface == null) || (this.mSurface == paramSurface) || (paramSurface == null)) {
         break label116;
       }
-      if (this.lqQ) {
+      if (this.lvo) {
         this.mSurface.release();
       }
       a(2, 1, paramSurface, true);
-      final long l = this.lqP.getCurrentPosition();
+      final long l = this.lvn.getCurrentPosition();
       if (x.SDK_INT < 23) {
         this.mMainHandler.postDelayed(new Runnable()
         {
           public final void run()
           {
-            AppMethodBeat.i(206270);
+            AppMethodBeat.i(211298);
             if (c.this.available()) {
-              c.this.lqP.seekTo(l);
+              c.this.lvn.seekTo(l);
             }
-            AppMethodBeat.o(206270);
+            AppMethodBeat.o(211298);
           }
         }, 200L);
       }
@@ -680,8 +702,8 @@ public class c
     for (;;)
     {
       this.mSurface = paramSurface;
-      this.lqQ = false;
-      AppMethodBeat.o(206314);
+      this.lvo = false;
+      AppMethodBeat.o(211342);
       return;
       label116:
       a(2, 1, paramSurface, false);
@@ -690,36 +712,36 @@ public class c
   
   public final void setVolume(float paramFloat1, float paramFloat2)
   {
-    AppMethodBeat.i(206317);
-    cz(Float.valueOf(paramFloat1));
-    AppMethodBeat.o(206317);
+    AppMethodBeat.i(211345);
+    cA(Float.valueOf(paramFloat1));
+    AppMethodBeat.o(211345);
   }
   
   public final void start()
   {
-    AppMethodBeat.i(206321);
+    AppMethodBeat.i(211349);
     if (available())
     {
-      if (this.lqP.td() == 4) {
-        this.lqP.seekTo(0L);
+      if (this.lvn.td() == 4) {
+        this.lvn.seekTo(0L);
       }
-      this.lqP.aP(true);
-      this.lpU = 3;
-      this.jLd.set(false);
+      this.lvn.aP(true);
+      this.lur = 3;
+      this.jOp.set(false);
     }
-    AppMethodBeat.o(206321);
+    AppMethodBeat.o(211349);
   }
   
   public final void stop()
   {
-    AppMethodBeat.i(206325);
-    if ((available()) && (!this.jLd.getAndSet(true)))
+    AppMethodBeat.i(211353);
+    if ((available()) && (!this.jOp.getAndSet(true)))
     {
-      this.lqP.aP(false);
-      this.lqP.stop();
-      this.lpU = 5;
+      this.lvn.aP(false);
+      this.lvn.stop();
+      this.lur = 5;
     }
-    AppMethodBeat.o(206325);
+    AppMethodBeat.o(211353);
   }
   
   final class a
@@ -727,33 +749,33 @@ public class c
   {
     private a() {}
     
-    public final void agl()
+    public final void agz()
     {
-      AppMethodBeat.i(206271);
+      AppMethodBeat.i(211299);
       for (;;)
       {
         synchronized (c.this)
         {
-          if (c.this.lpV)
+          if (c.this.lus)
           {
-            AppMethodBeat.o(206271);
+            AppMethodBeat.o(211299);
             return;
           }
           if (c.this.available()) {}
-          switch (c.this.lqP.td())
+          switch (c.this.lvn.td())
           {
           case 1: 
-            AppMethodBeat.o(206271);
+            AppMethodBeat.o(211299);
             return;
           case 4: 
             c.a(c.this, false);
           }
         }
         int i = c.this.getBufferedPercentage();
-        if (i != c.this.lqX)
+        if (i != c.this.lvv)
         {
-          c.this.tC(i);
-          c.this.lqX = i;
+          c.this.tH(i);
+          c.this.lvv = i;
         }
       }
     }
@@ -766,52 +788,54 @@ public class c
     
     public final void a(int paramInt, Format paramFormat, long paramLong)
     {
-      AppMethodBeat.i(206276);
-      ad.i("MicroMsg.SameLayer.ExoMediaPlayer", "[TRACE_ADAPTIVE] onDownstreamFormatChanged, trackType:%s, trackFormat:%s, mediaTimeMs:%s", new Object[] { Integer.valueOf(paramInt), paramFormat, Long.valueOf(paramLong) });
-      c.this.Rf(paramFormat.id);
-      AppMethodBeat.o(206276);
+      AppMethodBeat.i(211304);
+      ae.i("MicroMsg.SameLayer.ExoMediaPlayer", "[TRACE_ADAPTIVE] onDownstreamFormatChanged, trackType:%s, trackFormat:%s, mediaTimeMs:%s", new Object[] { Integer.valueOf(paramInt), paramFormat, Long.valueOf(paramLong) });
+      c.this.RO(paramFormat.id);
+      AppMethodBeat.o(211304);
     }
     
     public final void a(com.google.android.exoplayer2.h.j paramj, int paramInt, Format paramFormat, long paramLong1, long paramLong2, long paramLong3)
     {
-      AppMethodBeat.i(206272);
-      ad.d("MicroMsg.SameLayer.ExoMediaPlayer", "onLoadStarted, dataSpec:%s, trackType:%s, trackFormat:%s, mediaStartTimeMs:%s, mediaEndTimeMs:%s, elapsedRealtimeMs:%s", new Object[] { paramj, Integer.valueOf(paramInt), paramFormat, Long.valueOf(paramLong1), Long.valueOf(paramLong2), Long.valueOf(paramLong3) });
-      AppMethodBeat.o(206272);
+      AppMethodBeat.i(211300);
+      ae.d("MicroMsg.SameLayer.ExoMediaPlayer", "onLoadStarted, dataSpec:%s, trackType:%s, trackFormat:%s, mediaStartTimeMs:%s, mediaEndTimeMs:%s, elapsedRealtimeMs:%s", new Object[] { paramj, Integer.valueOf(paramInt), paramFormat, Long.valueOf(paramLong1), Long.valueOf(paramLong2), Long.valueOf(paramLong3) });
+      AppMethodBeat.o(211300);
     }
     
     public final void a(com.google.android.exoplayer2.h.j paramj, int paramInt, Format paramFormat, long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5, IOException paramIOException, boolean paramBoolean)
     {
-      AppMethodBeat.i(206275);
-      ad.printErrStackTrace("MicroMsg.SameLayer.ExoMediaPlayer", paramIOException, "onLoadError1, IOException, dataSpec:%s, trackType:%s, trackFormat:%s, mediaStartTimeMs:%s, mediaEndTimeMs:%s, elapsedRealtimeMs:%s, loadDurationMs:%s, bytesLoaded:%s, wasCanceled:%s", new Object[] { paramj, Integer.valueOf(paramInt), paramFormat, Long.valueOf(paramLong1), Long.valueOf(paramLong2), Long.valueOf(paramLong3), Long.valueOf(paramLong4), Long.valueOf(paramLong5), Boolean.valueOf(paramBoolean) });
-      AppMethodBeat.o(206275);
+      AppMethodBeat.i(211303);
+      ae.printErrStackTrace("MicroMsg.SameLayer.ExoMediaPlayer", paramIOException, "onLoadError1, IOException, dataSpec:%s, trackType:%s, trackFormat:%s, mediaStartTimeMs:%s, mediaEndTimeMs:%s, elapsedRealtimeMs:%s, loadDurationMs:%s, bytesLoaded:%s, wasCanceled:%s", new Object[] { paramj, Integer.valueOf(paramInt), paramFormat, Long.valueOf(paramLong1), Long.valueOf(paramLong2), Long.valueOf(paramLong3), Long.valueOf(paramLong4), Long.valueOf(paramLong5), Boolean.valueOf(paramBoolean) });
+      c.b(c.this);
+      AppMethodBeat.o(211303);
     }
     
     public final void b(com.google.android.exoplayer2.h.j paramj, int paramInt, Format paramFormat, long paramLong1, long paramLong2, long paramLong3)
     {
-      AppMethodBeat.i(206273);
-      ad.d("MicroMsg.SameLayer.ExoMediaPlayer", "onLoadCompleted, dataSpec:%s, trackType:%s, trackFormat:%s, mediaStartTimeMs:%s, mediaEndTimeMs:%s, elapsedRealtimeMs:%s", new Object[] { paramj, Integer.valueOf(paramInt), paramFormat, Long.valueOf(paramLong1), Long.valueOf(paramLong2), Long.valueOf(paramLong3) });
-      AppMethodBeat.o(206273);
+      AppMethodBeat.i(211301);
+      ae.d("MicroMsg.SameLayer.ExoMediaPlayer", "onLoadCompleted, dataSpec:%s, trackType:%s, trackFormat:%s, mediaStartTimeMs:%s, mediaEndTimeMs:%s, elapsedRealtimeMs:%s", new Object[] { paramj, Integer.valueOf(paramInt), paramFormat, Long.valueOf(paramLong1), Long.valueOf(paramLong2), Long.valueOf(paramLong3) });
+      AppMethodBeat.o(211301);
     }
     
     public final void c(com.google.android.exoplayer2.h.j paramj, int paramInt, Format paramFormat, long paramLong1, long paramLong2, long paramLong3)
     {
-      AppMethodBeat.i(206274);
-      ad.d("MicroMsg.SameLayer.ExoMediaPlayer", "onLoadCanceled, dataSpec:%s, trackType:%s, trackFormat:%s, mediaStartTimeMs:%s, mediaEndTimeMs:%s, elapsedRealtimeMs:%s", new Object[] { paramj, Integer.valueOf(paramInt), paramFormat, Long.valueOf(paramLong1), Long.valueOf(paramLong2), Long.valueOf(paramLong3) });
-      AppMethodBeat.o(206274);
+      AppMethodBeat.i(211302);
+      ae.d("MicroMsg.SameLayer.ExoMediaPlayer", "onLoadCanceled, dataSpec:%s, trackType:%s, trackFormat:%s, mediaStartTimeMs:%s, mediaEndTimeMs:%s, elapsedRealtimeMs:%s", new Object[] { paramj, Integer.valueOf(paramInt), paramFormat, Long.valueOf(paramLong1), Long.valueOf(paramLong2), Long.valueOf(paramLong3) });
+      AppMethodBeat.o(211302);
     }
     
     public final void onLoadError(IOException paramIOException)
     {
-      AppMethodBeat.i(206278);
-      ad.printErrStackTrace("MicroMsg.SameLayer.ExoMediaPlayer", paramIOException, "onLoadError2, IOException", new Object[0]);
-      AppMethodBeat.o(206278);
+      AppMethodBeat.i(211306);
+      ae.printErrStackTrace("MicroMsg.SameLayer.ExoMediaPlayer", paramIOException, "onLoadError2, IOException", new Object[0]);
+      c.b(c.this);
+      AppMethodBeat.o(211306);
     }
     
     public final void vf()
     {
-      AppMethodBeat.i(206277);
-      ad.d("MicroMsg.SameLayer.ExoMediaPlayer", "onHasEndTag");
-      AppMethodBeat.o(206277);
+      AppMethodBeat.i(211305);
+      ae.d("MicroMsg.SameLayer.ExoMediaPlayer", "onHasEndTag");
+      AppMethodBeat.o(211305);
     }
   }
   
@@ -823,152 +847,153 @@ public class c
     public final void a(com.google.android.exoplayer2.e parame)
     {
       int i = -4000;
-      AppMethodBeat.i(206286);
-      ad.printErrStackTrace("MicroMsg.SameLayer.ExoMediaPlayer", parame, "onPlayError, ExoPlaybackException", new Object[0]);
+      AppMethodBeat.i(211314);
+      ae.printErrStackTrace("MicroMsg.SameLayer.ExoMediaPlayer", parame, "onPlayError, ExoPlaybackException", new Object[0]);
       if (c.this.available()) {
         c.a(c.this, false);
       }
       if (parame != null)
       {
-        parame = parame.getCause();
-        if (parame != null)
+        Throwable localThrowable = parame.getCause();
+        if (localThrowable != null)
         {
-          if ((parame instanceof s.c))
+          if ((localThrowable instanceof s.c))
           {
-            if (parame.toString().contains("Unable to connect"))
+            if (localThrowable.toString().contains("Unable to connect"))
             {
               boolean bool = d.isNetworkAvailable(c.this.IR);
-              ad.printErrStackTrace("MicroMsg.SameLayer.ExoMediaPlayer", parame, "ExoPlaybackException hasNetwork=".concat(String.valueOf(bool)), new Object[0]);
+              ae.printErrStackTrace("MicroMsg.SameLayer.ExoMediaPlayer", localThrowable, "ExoPlaybackException hasNetwork=".concat(String.valueOf(bool)), new Object[0]);
               if (!bool)
               {
                 c.this.dX(-4000, -2);
-                AppMethodBeat.o(206286);
+                AppMethodBeat.o(211314);
                 return;
               }
               c.this.dX(-4000, -3);
-              AppMethodBeat.o(206286);
+              AppMethodBeat.o(211314);
               return;
             }
-            if (!(parame instanceof s.e)) {
-              break label422;
+            if (!(localThrowable instanceof s.e)) {
+              break label457;
             }
-            parame = parame.toString();
+            parame = localThrowable.toString();
             if (parame.contains("403"))
             {
               c.this.dX(-4000, -10);
-              AppMethodBeat.o(206286);
+              AppMethodBeat.o(211314);
               return;
             }
             if (parame.contains("404"))
             {
               c.this.dX(-4000, -11);
-              AppMethodBeat.o(206286);
+              AppMethodBeat.o(211314);
               return;
             }
             if (parame.contains("500"))
             {
               c.this.dX(-4000, -12);
-              AppMethodBeat.o(206286);
+              AppMethodBeat.o(211314);
               return;
             }
             if (parame.contains("502"))
             {
               c.this.dX(-4000, -13);
-              AppMethodBeat.o(206286);
+              AppMethodBeat.o(211314);
               return;
             }
             c.this.dX(-4000, -30);
-            AppMethodBeat.o(206286);
+            AppMethodBeat.o(211314);
             return;
           }
-          if ((parame instanceof q))
+          if ((localThrowable instanceof q))
           {
-            ad.e("MicroMsg.SameLayer.ExoMediaPlayer", d.bou());
+            ae.e("MicroMsg.SameLayer.ExoMediaPlayer", d.bpe());
             c.this.dX(-4001, -1);
-            AppMethodBeat.o(206286);
+            AppMethodBeat.o(211314);
             return;
           }
-          if ((parame instanceof IllegalStateException))
+          if ((localThrowable instanceof IllegalStateException))
           {
-            ad.e("MicroMsg.SameLayer.ExoMediaPlayer", d.bou());
+            ae.e("MicroMsg.SameLayer.ExoMediaPlayer", d.bpe());
             c.this.dX(-4002, -1);
-            AppMethodBeat.o(206286);
+            AppMethodBeat.o(211314);
             return;
           }
-          if ((parame instanceof b.a))
+          if ((localThrowable instanceof b.a))
           {
-            ad.e("MicroMsg.SameLayer.ExoMediaPlayer", d.bou());
+            ae.w("MicroMsg.SameLayer.ExoMediaPlayer", "onPlayError, error: " + d.V(parame));
+            ae.e("MicroMsg.SameLayer.ExoMediaPlayer", d.bpe());
             c.this.dX(-4003, -1);
-            AppMethodBeat.o(206286);
+            AppMethodBeat.o(211314);
             return;
           }
-          if ((parame instanceof t.f))
+          if ((localThrowable instanceof t.f))
           {
-            ad.e("MicroMsg.SameLayer.ExoMediaPlayer", d.bou());
+            ae.e("MicroMsg.SameLayer.ExoMediaPlayer", d.bpe());
             c.this.dX(-4004, -1);
-            AppMethodBeat.o(206286);
+            AppMethodBeat.o(211314);
             return;
           }
         }
       }
       i = -4999;
-      label422:
-      ad.e("MicroMsg.SameLayer.ExoMediaPlayer", d.tE(30));
+      label457:
+      ae.e("MicroMsg.SameLayer.ExoMediaPlayer", d.tJ(30));
       c.this.dX(i, -1);
-      AppMethodBeat.o(206286);
+      AppMethodBeat.o(211314);
     }
     
     public final void aA(int paramInt)
     {
-      AppMethodBeat.i(206283);
-      ad.d("MicroMsg.SameLayer.ExoMediaPlayer", "onRepeatModeChanged, repeatMode=".concat(String.valueOf(paramInt)));
-      AppMethodBeat.o(206283);
+      AppMethodBeat.i(211311);
+      ae.d("MicroMsg.SameLayer.ExoMediaPlayer", "onRepeatModeChanged, repeatMode=".concat(String.valueOf(paramInt)));
+      AppMethodBeat.o(211311);
     }
     
     public final void aS(boolean paramBoolean)
     {
-      AppMethodBeat.i(206284);
-      ad.d("MicroMsg.SameLayer.ExoMediaPlayer", "onLoadingChanged, isLoading=".concat(String.valueOf(paramBoolean)));
+      AppMethodBeat.i(211312);
+      ae.d("MicroMsg.SameLayer.ExoMediaPlayer", "onLoadingChanged, isLoading=".concat(String.valueOf(paramBoolean)));
       if (paramBoolean) {
         c.a(c.this, true);
       }
-      AppMethodBeat.o(206284);
+      AppMethodBeat.o(211312);
     }
     
     public final void b(p paramp)
     {
-      AppMethodBeat.i(206282);
-      ad.d("MicroMsg.SameLayer.ExoMediaPlayer", "onPlaybackParametersChanged, params=[" + paramp.bdQ + ", " + paramp.pitch + "]");
-      AppMethodBeat.o(206282);
+      AppMethodBeat.i(211310);
+      ae.d("MicroMsg.SameLayer.ExoMediaPlayer", "onPlaybackParametersChanged, params=[" + paramp.bdQ + ", " + paramp.pitch + "]");
+      AppMethodBeat.o(211310);
     }
     
     public final void e(boolean paramBoolean, int paramInt)
     {
-      AppMethodBeat.i(206285);
-      ad.i("MicroMsg.SameLayer.ExoMediaPlayer", "onPlayerStateChanged, playWhenReady=" + paramBoolean + ", playbackState=" + paramInt);
-      c.this.bot();
-      AppMethodBeat.o(206285);
+      AppMethodBeat.i(211313);
+      ae.i("MicroMsg.SameLayer.ExoMediaPlayer", "onPlayerStateChanged, playWhenReady=" + paramBoolean + ", playbackState=" + paramInt);
+      c.this.bpd();
+      AppMethodBeat.o(211313);
     }
     
     public final void tt()
     {
-      AppMethodBeat.i(206279);
-      ad.d("MicroMsg.SameLayer.ExoMediaPlayer", "onTimelineChanged");
-      AppMethodBeat.o(206279);
+      AppMethodBeat.i(211307);
+      ae.d("MicroMsg.SameLayer.ExoMediaPlayer", "onTimelineChanged");
+      AppMethodBeat.o(211307);
     }
     
     public final void tu()
     {
-      AppMethodBeat.i(206281);
-      ad.d("MicroMsg.SameLayer.ExoMediaPlayer", "onTracksChanged");
-      AppMethodBeat.o(206281);
+      AppMethodBeat.i(211309);
+      ae.d("MicroMsg.SameLayer.ExoMediaPlayer", "onTracksChanged");
+      AppMethodBeat.o(211309);
     }
     
     public final void tv()
     {
-      AppMethodBeat.i(206280);
-      ad.d("MicroMsg.SameLayer.ExoMediaPlayer", "onPositionDiscontinuity");
-      AppMethodBeat.o(206280);
+      AppMethodBeat.i(211308);
+      ae.d("MicroMsg.SameLayer.ExoMediaPlayer", "onPositionDiscontinuity");
+      AppMethodBeat.o(211308);
     }
   }
   
@@ -979,126 +1004,126 @@ public class c
     
     public final void a(int paramInt1, int paramInt2, int paramInt3, float paramFloat)
     {
-      AppMethodBeat.i(206301);
-      ad.i("MicroMsg.SameLayer.ExoMediaPlayer", "onVideoSizeChanged, width:%d, height:%d, rotationDegrees:%d, ratio:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Float.valueOf(paramFloat) });
+      AppMethodBeat.i(211329);
+      ae.i("MicroMsg.SameLayer.ExoMediaPlayer", "onVideoSizeChanged, width:%d, height:%d, rotationDegrees:%d, ratio:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Float.valueOf(paramFloat) });
       c.this.mVideoWidth = paramInt1;
       c.this.mVideoHeight = paramInt2;
       c.this.dW(paramInt1, paramInt2);
-      AppMethodBeat.o(206301);
+      AppMethodBeat.o(211329);
     }
     
     public final void a(com.google.android.exoplayer2.b.d paramd)
     {
-      AppMethodBeat.i(206295);
-      ad.d("MicroMsg.SameLayer.ExoMediaPlayer", "onVideoEnabled");
-      AppMethodBeat.o(206295);
+      AppMethodBeat.i(211323);
+      ae.d("MicroMsg.SameLayer.ExoMediaPlayer", "onVideoEnabled");
+      AppMethodBeat.o(211323);
     }
     
     public final void b(com.google.android.exoplayer2.b.d paramd)
     {
-      AppMethodBeat.i(206296);
-      ad.d("MicroMsg.SameLayer.ExoMediaPlayer", "onVideoDisabled");
-      AppMethodBeat.o(206296);
+      AppMethodBeat.i(211324);
+      ae.d("MicroMsg.SameLayer.ExoMediaPlayer", "onVideoDisabled");
+      AppMethodBeat.o(211324);
     }
     
     public final void b(Metadata paramMetadata)
     {
-      AppMethodBeat.i(206293);
-      ad.d("MicroMsg.SameLayer.ExoMediaPlayer", "onMetadata");
-      AppMethodBeat.o(206293);
+      AppMethodBeat.i(211321);
+      ae.d("MicroMsg.SameLayer.ExoMediaPlayer", "onMetadata");
+      AppMethodBeat.o(211321);
     }
     
     public final void b(String paramString, long paramLong1, long paramLong2)
     {
-      AppMethodBeat.i(206297);
-      ad.d("MicroMsg.SameLayer.ExoMediaPlayer", "onVideoDecoderInitialized");
-      AppMethodBeat.o(206297);
+      AppMethodBeat.i(211325);
+      ae.d("MicroMsg.SameLayer.ExoMediaPlayer", "onVideoDecoderInitialized");
+      AppMethodBeat.o(211325);
     }
     
     public final void c(int paramInt, long paramLong1, long paramLong2)
     {
-      AppMethodBeat.i(206291);
-      ad.d("MicroMsg.SameLayer.ExoMediaPlayer", "onAudioTrackUnderrun");
-      AppMethodBeat.o(206291);
+      AppMethodBeat.i(211319);
+      ae.d("MicroMsg.SameLayer.ExoMediaPlayer", "onAudioTrackUnderrun");
+      AppMethodBeat.o(211319);
     }
     
     public final void c(Surface paramSurface)
     {
-      AppMethodBeat.i(206300);
-      ad.i("MicroMsg.SameLayer.ExoMediaPlayer", "onRenderedFirstFrame");
+      AppMethodBeat.i(211328);
+      ae.i("MicroMsg.SameLayer.ExoMediaPlayer", "onRenderedFirstFrame");
       c.this.dY(3, 0);
-      AppMethodBeat.o(206300);
+      AppMethodBeat.o(211328);
     }
     
     public final void c(Format paramFormat)
     {
-      AppMethodBeat.i(206298);
-      ad.d("MicroMsg.SameLayer.ExoMediaPlayer", "onVideoInputFormatChanged");
-      AppMethodBeat.o(206298);
+      AppMethodBeat.i(211326);
+      ae.d("MicroMsg.SameLayer.ExoMediaPlayer", "onVideoInputFormatChanged");
+      AppMethodBeat.o(211326);
     }
     
     public final void c(com.google.android.exoplayer2.b.d paramd)
     {
-      AppMethodBeat.i(206287);
-      ad.d("MicroMsg.SameLayer.ExoMediaPlayer", "onAudioEnabled");
-      AppMethodBeat.o(206287);
+      AppMethodBeat.i(211315);
+      ae.d("MicroMsg.SameLayer.ExoMediaPlayer", "onAudioEnabled");
+      AppMethodBeat.o(211315);
     }
     
     public final void c(String paramString, long paramLong1, long paramLong2)
     {
-      AppMethodBeat.i(206289);
-      ad.d("MicroMsg.SameLayer.ExoMediaPlayer", "onAudioDecoderInitialized");
-      AppMethodBeat.o(206289);
+      AppMethodBeat.i(211317);
+      ae.d("MicroMsg.SameLayer.ExoMediaPlayer", "onAudioDecoderInitialized");
+      AppMethodBeat.o(211317);
     }
     
     public final void d(Format paramFormat)
     {
-      AppMethodBeat.i(206290);
-      ad.d("MicroMsg.SameLayer.ExoMediaPlayer", "onAudioInputFormatChanged");
-      AppMethodBeat.o(206290);
+      AppMethodBeat.i(211318);
+      ae.d("MicroMsg.SameLayer.ExoMediaPlayer", "onAudioInputFormatChanged");
+      AppMethodBeat.o(211318);
     }
     
     public final void d(com.google.android.exoplayer2.b.d paramd)
     {
-      AppMethodBeat.i(206292);
-      ad.d("MicroMsg.SameLayer.ExoMediaPlayer", "onAudioDisabled");
-      AppMethodBeat.o(206292);
+      AppMethodBeat.i(211320);
+      ae.d("MicroMsg.SameLayer.ExoMediaPlayer", "onAudioDisabled");
+      AppMethodBeat.o(211320);
     }
     
     public final void dL(int paramInt)
     {
-      AppMethodBeat.i(206288);
-      ad.d("MicroMsg.SameLayer.ExoMediaPlayer", "onAudioSessionId");
-      AppMethodBeat.o(206288);
+      AppMethodBeat.i(211316);
+      ae.d("MicroMsg.SameLayer.ExoMediaPlayer", "onAudioSessionId");
+      AppMethodBeat.o(211316);
     }
     
     public final void h(int paramInt, long paramLong)
     {
-      AppMethodBeat.i(206299);
-      ad.d("MicroMsg.SameLayer.ExoMediaPlayer", "onDroppedFrames");
-      AppMethodBeat.o(206299);
+      AppMethodBeat.i(211327);
+      ae.d("MicroMsg.SameLayer.ExoMediaPlayer", "onDroppedFrames");
+      AppMethodBeat.o(211327);
     }
     
     public final void s(List<com.google.android.exoplayer2.f.a> paramList)
     {
-      AppMethodBeat.i(206294);
-      ad.d("MicroMsg.SameLayer.ExoMediaPlayer", "onCues");
-      AppMethodBeat.o(206294);
+      AppMethodBeat.i(211322);
+      ae.d("MicroMsg.SameLayer.ExoMediaPlayer", "onCues");
+      AppMethodBeat.o(211322);
     }
   }
   
   static final class e
   {
-    int[] lri;
+    int[] lvI;
     
     private e()
     {
-      AppMethodBeat.i(206302);
-      this.lri = new int[] { 1, 1, 1, 1 };
-      AppMethodBeat.o(206302);
+      AppMethodBeat.i(211330);
+      this.lvI = new int[] { 1, 1, 1, 1 };
+      AppMethodBeat.o(211330);
     }
     
-    static int r(boolean paramBoolean, int paramInt)
+    static int s(boolean paramBoolean, int paramInt)
     {
       if (paramBoolean) {}
       for (int i = -268435456;; i = 0) {
@@ -1113,14 +1138,14 @@ public class c
       if (paramBoolean)
       {
         i = 268435455;
-        int k = this.lri.length - paramArrayOfInt.length;
+        int k = this.lvI.length - paramArrayOfInt.length;
         j = k;
         paramBoolean = true;
         label23:
-        if (j >= this.lri.length) {
+        if (j >= this.lvI.length) {
           return paramBoolean;
         }
-        if ((this.lri[j] & i) != (paramArrayOfInt[(j - k)] & i)) {
+        if ((this.lvI[j] & i) != (paramArrayOfInt[(j - k)] & i)) {
           break label76;
         }
       }
@@ -1136,22 +1161,22 @@ public class c
       return paramBoolean;
     }
     
-    final void q(boolean paramBoolean, int paramInt)
+    final void r(boolean paramBoolean, int paramInt)
     {
-      AppMethodBeat.i(206303);
-      int i = r(paramBoolean, paramInt);
-      ad.i("MicroMsg.SameLayer.ExoMediaPlayer", "request setMostRecentState [" + paramBoolean + "," + paramInt + "], lastState=" + this.lri[3] + ", newState=" + i);
-      if (this.lri[3] == i)
+      AppMethodBeat.i(211331);
+      int i = s(paramBoolean, paramInt);
+      ae.i("MicroMsg.SameLayer.ExoMediaPlayer", "request setMostRecentState [" + paramBoolean + "," + paramInt + "], lastState=" + this.lvI[3] + ", newState=" + i);
+      if (this.lvI[3] == i)
       {
-        AppMethodBeat.o(206303);
+        AppMethodBeat.o(211331);
         return;
       }
-      this.lri[0] = this.lri[1];
-      this.lri[1] = this.lri[2];
-      this.lri[2] = this.lri[3];
-      this.lri[3] = i;
-      ad.i("MicroMsg.SameLayer.ExoMediaPlayer", "new MostRecentState [" + this.lri[0] + "," + this.lri[1] + "," + this.lri[2] + "," + this.lri[3] + "]");
-      AppMethodBeat.o(206303);
+      this.lvI[0] = this.lvI[1];
+      this.lvI[1] = this.lvI[2];
+      this.lvI[2] = this.lvI[3];
+      this.lvI[3] = i;
+      ae.i("MicroMsg.SameLayer.ExoMediaPlayer", "new MostRecentState [" + this.lvI[0] + "," + this.lvI[1] + "," + this.lvI[2] + "," + this.lvI[3] + "]");
+      AppMethodBeat.o(211331);
     }
   }
 }

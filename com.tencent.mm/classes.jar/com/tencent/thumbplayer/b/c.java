@@ -2,8 +2,8 @@ package com.tencent.thumbplayer.b;
 
 public final class c
 {
-  public int[] LYK;
-  public long LYL;
+  public int[] MvF;
+  public long MvG;
   public long channelLayout;
   public byte[][] data;
   public int sampleRate;

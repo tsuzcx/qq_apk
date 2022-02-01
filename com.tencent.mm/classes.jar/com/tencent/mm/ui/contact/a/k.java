@@ -11,23 +11,23 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class k
   extends a
 {
-  private a Krt;
-  b Kru;
+  private a KNN;
+  b KNO;
   
   public k(int paramInt)
   {
     super(7, paramInt);
     AppMethodBeat.i(102970);
-    this.Krt = new a();
-    this.Kru = new b();
+    this.KNN = new a();
+    this.KNO = new b();
     AppMethodBeat.o(102970);
   }
   
   public final void a(Context paramContext, a.a parama) {}
   
-  public final a.b aRs()
+  public final a.b aRR()
   {
-    return this.Krt;
+    return this.KNN;
   }
   
   public final class a
@@ -42,10 +42,10 @@ public final class k
     {
       AppMethodBeat.i(102968);
       paramContext = LayoutInflater.from(paramContext).inflate(2131495365, paramViewGroup, false);
-      paramViewGroup = (k.b)k.this.Kru;
-      paramViewGroup.iVq = ((TextView)paramContext.findViewById(2131305948));
+      paramViewGroup = (k.b)k.this.KNO;
+      paramViewGroup.iYj = ((TextView)paramContext.findViewById(2131305948));
       paramViewGroup.contentView = paramContext.findViewById(2131304518);
-      paramViewGroup.Krw = ((ImageView)paramContext.findViewById(2131304538));
+      paramViewGroup.KNQ = ((ImageView)paramContext.findViewById(2131304538));
       paramContext.setTag(paramViewGroup);
       AppMethodBeat.o(102968);
       return paramContext;
@@ -55,20 +55,20 @@ public final class k
     {
       AppMethodBeat.i(102969);
       paramContext = (k.b)parama;
-      paramContext.iVq.setText(2131762992);
+      paramContext.iYj.setText(2131762992);
       if (paramBoolean2) {
-        paramContext.Krw.setVisibility(0);
+        paramContext.KNQ.setVisibility(0);
       }
       for (;;)
       {
         paramContext.contentView.setBackgroundResource(2131231820);
         AppMethodBeat.o(102969);
         return;
-        paramContext.Krw.setVisibility(8);
+        paramContext.KNQ.setVisibility(8);
       }
     }
     
-    public final boolean aRt()
+    public final boolean aRS()
     {
       return false;
     }
@@ -77,9 +77,9 @@ public final class k
   public final class b
     extends a.a
   {
-    public ImageView Krw;
+    public ImageView KNQ;
     public View contentView;
-    public TextView iVq;
+    public TextView iYj;
     
     public b()
     {

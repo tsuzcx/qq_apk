@@ -6,70 +6,52 @@ import com.tencent.mm.plugin.report.a;
 public final class jk
   extends a
 {
-  private long eAr;
-  public long eAs = 0L;
-  public long eAt = 0L;
-  private long eAu = 0L;
-  private String eAv;
-  private long eca = 0L;
+  public String dTT = "";
+  public long eBP = 0L;
+  public long ejD = 0L;
+  private String ejP = "";
   
-  public final String RD()
+  public final String RC()
   {
-    AppMethodBeat.i(94859);
+    AppMethodBeat.i(116494);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.eAr);
+    ((StringBuffer)localObject).append(this.dTT);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eAs);
+    ((StringBuffer)localObject).append(this.ejP);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eAt);
+    ((StringBuffer)localObject).append(this.eBP);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eca);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eAu);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eAv);
+    ((StringBuffer)localObject).append(this.ejD);
     localObject = ((StringBuffer)localObject).toString();
-    awz((String)localObject);
-    AppMethodBeat.o(94859);
+    axO((String)localObject);
+    AppMethodBeat.o(116494);
     return localObject;
   }
   
-  public final String RE()
+  public final String RD()
   {
-    AppMethodBeat.i(94860);
+    AppMethodBeat.i(116495);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("OpenimUin:").append(this.eAr);
+    ((StringBuffer)localObject).append("appid:").append(this.dTT);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("OptionType:").append(this.eAs);
+    ((StringBuffer)localObject).append("query:").append(this.ejP);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("OptionResult:").append(this.eAt);
+    ((StringBuffer)localObject).append("timecost:").append(this.eBP);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("Source:").append(this.eca);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ClickAction:").append(this.eAu);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("OpenimUsername:").append(this.eAv);
+    ((StringBuffer)localObject).append("hasInitData:").append(this.ejD);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(94860);
+    AppMethodBeat.o(116495);
     return localObject;
   }
   
   public final int getId()
   {
-    return 18337;
-  }
-  
-  public final jk rT(String paramString)
-  {
-    AppMethodBeat.i(94858);
-    this.eAv = t("OpenimUsername", paramString, true);
-    AppMethodBeat.o(94858);
-    return this;
+    return 15831;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.g.b.a.jk
  * JD-Core Version:    0.7.0.1
  */

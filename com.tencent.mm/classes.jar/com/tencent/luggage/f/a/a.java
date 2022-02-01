@@ -12,12 +12,12 @@ import com.tencent.map.geolocation.sapp.TencentLocationRequest;
 import com.tencent.map.geolocation.sapp.internal.LocationLogCallback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.utils.b.a.b;
-import com.tencent.mm.plugin.appbrand.z.m;
-import com.tencent.mm.plugin.appbrand.z.m.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.plugin.appbrand.y.m;
+import com.tencent.mm.plugin.appbrand.y.m.a;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
@@ -27,48 +27,48 @@ import java.util.concurrent.CopyOnWriteArrayList;
 public class a
   implements com.tencent.mm.plugin.appbrand.utils.b.a
 {
-  private volatile TencentLocationManager cpS;
+  TencentLocationListener cqA;
+  private Set<String> cqB;
+  private Runnable cqC;
+  private volatile TencentLocationManager cqv;
   @SuppressLint({"NewApi"})
-  private final List<a.b> cpT;
+  private final List<a.b> cqw;
   @SuppressLint({"NewApi"})
-  private final List<a.b> cpU;
+  private final List<a.b> cqx;
   @SuppressLint({"NewApi"})
-  private final List<a.b> cpV;
+  private final List<a.b> cqy;
   @SuppressLint({"NewApi"})
-  private final List<a.b> cpW;
-  TencentLocationListener cpX;
-  private Set<String> cpY;
-  private Runnable cpZ;
+  private final List<a.b> cqz;
   
   public a()
   {
     AppMethodBeat.i(146447);
-    this.cpT = new CopyOnWriteArrayList();
-    this.cpU = new CopyOnWriteArrayList();
-    this.cpV = new CopyOnWriteArrayList();
-    this.cpW = new CopyOnWriteArrayList();
-    this.cpX = new TencentLocationListener()
+    this.cqw = new CopyOnWriteArrayList();
+    this.cqx = new CopyOnWriteArrayList();
+    this.cqy = new CopyOnWriteArrayList();
+    this.cqz = new CopyOnWriteArrayList();
+    this.cqA = new TencentLocationListener()
     {
       public final void onLocationChanged(final TencentLocation paramAnonymousTencentLocation, final int paramAnonymousInt, final String paramAnonymousString)
       {
-        AppMethodBeat.i(199825);
-        if (aq.isMainThread())
+        AppMethodBeat.i(212514);
+        if (ar.isMainThread())
         {
-          h.LTJ.f(new Runnable()
+          h.MqF.f(new Runnable()
           {
             public final void run()
             {
-              AppMethodBeat.i(199824);
+              AppMethodBeat.i(212513);
               jdField_this.onLocationChanged(paramAnonymousTencentLocation, paramAnonymousInt, paramAnonymousString);
-              AppMethodBeat.o(199824);
+              AppMethodBeat.o(212513);
             }
           }, "MicroMsg.DefaultTencentLocationManager");
-          AppMethodBeat.o(199825);
+          AppMethodBeat.o(212514);
           return;
         }
-        ad.v("MicroMsg.DefaultTencentLocationManager", "[mlocationListener]error:%d, reason:%s", new Object[] { Integer.valueOf(paramAnonymousInt), paramAnonymousString });
+        ae.v("MicroMsg.DefaultTencentLocationManager", "[mlocationListener]error:%d, reason:%s", new Object[] { Integer.valueOf(paramAnonymousInt), paramAnonymousString });
         if (paramAnonymousInt != 0) {
-          ad.e("MicroMsg.DefaultTencentLocationManager", "[mlocationListener]error:%d, reason:%s", new Object[] { Integer.valueOf(paramAnonymousInt), paramAnonymousString });
+          ae.e("MicroMsg.DefaultTencentLocationManager", "[mlocationListener]error:%d, reason:%s", new Object[] { Integer.valueOf(paramAnonymousInt), paramAnonymousString });
         }
         if ((a.a(a.this) != null) && (a.a(a.this).size() > 0))
         {
@@ -87,18 +87,18 @@ public class a
           a.a(a.d(a.this), paramAnonymousInt, paramAnonymousString, a.a(paramAnonymousTencentLocation, true));
         }
         a.e(a.this);
-        AppMethodBeat.o(199825);
+        AppMethodBeat.o(212514);
       }
       
       public final void onStatusUpdate(String paramAnonymousString1, int paramAnonymousInt, String paramAnonymousString2)
       {
         AppMethodBeat.i(146445);
-        ad.i("MicroMsg.DefaultTencentLocationManager", "[mlocationListener]name:%s, status:%d, desc:%s", new Object[] { paramAnonymousString1, Integer.valueOf(paramAnonymousInt), paramAnonymousString2 });
+        ae.i("MicroMsg.DefaultTencentLocationManager", "[mlocationListener]name:%s, status:%d, desc:%s", new Object[] { paramAnonymousString1, Integer.valueOf(paramAnonymousInt), paramAnonymousString2 });
         AppMethodBeat.o(146445);
       }
     };
-    this.cpY = new HashSet();
-    this.cpZ = new Runnable()
+    this.cqB = new HashSet();
+    this.cqC = new Runnable()
     {
       public final void run()
       {
@@ -112,38 +112,38 @@ public class a
         AppMethodBeat.o(146446);
       }
     };
-    ad.i("MicroMsg.DefaultTencentLocationManager", "DefaultTencentLocationManager() construct in process %s", new Object[] { aj.getProcessName() });
+    ae.i("MicroMsg.DefaultTencentLocationManager", "DefaultTencentLocationManager() construct in process %s", new Object[] { ak.getProcessName() });
     AppMethodBeat.o(146447);
   }
   
   /* Error */
-  private TencentLocationManager Fo()
+  private TencentLocationManager Ft()
   {
     // Byte code:
     //   0: ldc 91
     //   2: invokestatic 43	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: aload_0
-    //   6: getfield 93	com/tencent/luggage/f/a/a:cpS	Lcom/tencent/map/geolocation/sapp/TencentLocationManager;
+    //   6: getfield 93	com/tencent/luggage/f/a/a:cqv	Lcom/tencent/map/geolocation/sapp/TencentLocationManager;
     //   9: ifnonnull +166 -> 175
     //   12: aload_0
     //   13: monitorenter
     //   14: aload_0
-    //   15: getfield 93	com/tencent/luggage/f/a/a:cpS	Lcom/tencent/map/geolocation/sapp/TencentLocationManager;
+    //   15: getfield 93	com/tencent/luggage/f/a/a:cqv	Lcom/tencent/map/geolocation/sapp/TencentLocationManager;
     //   18: ifnonnull +155 -> 173
     //   21: aload_0
-    //   22: invokevirtual 97	com/tencent/luggage/f/a/a:Fp	()Z
+    //   22: invokevirtual 97	com/tencent/luggage/f/a/a:Fu	()Z
     //   25: ifeq +77 -> 102
-    //   28: new 99	com/tencent/mm/vfs/e
+    //   28: new 99	com/tencent/mm/vfs/k
     //   31: dup
     //   32: new 101	java/lang/StringBuilder
     //   35: dup
     //   36: invokespecial 102	java/lang/StringBuilder:<init>	()V
-    //   39: invokestatic 107	com/tencent/mm/loader/j/b:arU	()Ljava/lang/String;
+    //   39: invokestatic 107	com/tencent/mm/loader/j/b:asj	()Ljava/lang/String;
     //   42: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   45: ldc 113
     //   47: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   50: invokestatic 77	com/tencent/mm/sdk/platformtools/aj:getProcessName	()Ljava/lang/String;
-    //   53: invokestatic 116	com/tencent/mm/sdk/platformtools/aj:getPackageName	()Ljava/lang/String;
+    //   50: invokestatic 77	com/tencent/mm/sdk/platformtools/ak:getProcessName	()Ljava/lang/String;
+    //   53: invokestatic 116	com/tencent/mm/sdk/platformtools/ak:getPackageName	()Ljava/lang/String;
     //   56: invokevirtual 122	java/lang/String:length	()I
     //   59: iconst_1
     //   60: iadd
@@ -151,37 +151,37 @@ public class a
     //   64: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   67: invokevirtual 129	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   70: iconst_1
-    //   71: invokestatic 135	com/tencent/mm/vfs/i:k	(Ljava/lang/String;Z)Ljava/lang/String;
-    //   74: invokespecial 138	com/tencent/mm/vfs/e:<init>	(Ljava/lang/String;)V
+    //   71: invokestatic 135	com/tencent/mm/vfs/o:k	(Ljava/lang/String;Z)Ljava/lang/String;
+    //   74: invokespecial 138	com/tencent/mm/vfs/k:<init>	(Ljava/lang/String;)V
     //   77: astore_1
-    //   78: invokestatic 142	com/tencent/mm/sdk/platformtools/aj:getContext	()Landroid/content/Context;
+    //   78: invokestatic 142	com/tencent/mm/sdk/platformtools/ak:getContext	()Landroid/content/Context;
     //   81: new 144	java/io/File
     //   84: dup
     //   85: aload_1
-    //   86: getfield 148	com/tencent/mm/vfs/e:mUri	Landroid/net/Uri;
-    //   89: invokestatic 154	com/tencent/mm/vfs/q:B	(Landroid/net/Uri;)Ljava/lang/String;
+    //   86: getfield 148	com/tencent/mm/vfs/k:mUri	Landroid/net/Uri;
+    //   89: invokestatic 154	com/tencent/mm/vfs/w:B	(Landroid/net/Uri;)Ljava/lang/String;
     //   92: iconst_1
-    //   93: invokestatic 135	com/tencent/mm/vfs/i:k	(Ljava/lang/String;Z)Ljava/lang/String;
+    //   93: invokestatic 135	com/tencent/mm/vfs/o:k	(Ljava/lang/String;Z)Ljava/lang/String;
     //   96: invokespecial 155	java/io/File:<init>	(Ljava/lang/String;)V
     //   99: invokestatic 161	com/tencent/map/geolocation/sapp/internal/TencentExtraKeys:setTencentLog	(Landroid/content/Context;Ljava/io/File;)V
-    //   102: invokestatic 142	com/tencent/mm/sdk/platformtools/aj:getContext	()Landroid/content/Context;
+    //   102: invokestatic 142	com/tencent/mm/sdk/platformtools/ak:getContext	()Landroid/content/Context;
     //   105: invokestatic 165	com/tencent/map/geolocation/sapp/internal/TencentExtraKeys:setContext	(Landroid/content/Context;)V
     //   108: new 8	com/tencent/luggage/f/a/a$1
     //   111: dup
     //   112: aload_0
     //   113: invokespecial 166	com/tencent/luggage/f/a/a$1:<init>	(Lcom/tencent/luggage/f/a/a;)V
     //   116: invokestatic 170	com/tencent/map/geolocation/sapp/internal/TencentExtraKeys:setTencentLogCallback	(Lcom/tencent/map/geolocation/sapp/internal/LocationLogCallback;)V
-    //   119: invokestatic 175	com/tencent/mm/compatible/deviceinfo/q:aaC	()Ljava/lang/String;
+    //   119: invokestatic 175	com/tencent/mm/compatible/deviceinfo/q:aaL	()Ljava/lang/String;
     //   122: astore_1
     //   123: aload_1
     //   124: invokestatic 181	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   127: ifeq +108 -> 235
     //   130: aload_0
-    //   131: invokestatic 142	com/tencent/mm/sdk/platformtools/aj:getContext	()Landroid/content/Context;
+    //   131: invokestatic 142	com/tencent/mm/sdk/platformtools/ak:getContext	()Landroid/content/Context;
     //   134: invokestatic 187	com/tencent/map/geolocation/sapp/TencentLocationManager:getInstance	(Landroid/content/Context;)Lcom/tencent/map/geolocation/sapp/TencentLocationManager;
-    //   137: putfield 93	com/tencent/luggage/f/a/a:cpS	Lcom/tencent/map/geolocation/sapp/TencentLocationManager;
+    //   137: putfield 93	com/tencent/luggage/f/a/a:cqv	Lcom/tencent/map/geolocation/sapp/TencentLocationManager;
     //   140: aload_0
-    //   141: getfield 93	com/tencent/luggage/f/a/a:cpS	Lcom/tencent/map/geolocation/sapp/TencentLocationManager;
+    //   141: getfield 93	com/tencent/luggage/f/a/a:cqv	Lcom/tencent/map/geolocation/sapp/TencentLocationManager;
     //   144: iconst_0
     //   145: invokevirtual 190	com/tencent/map/geolocation/sapp/TencentLocationManager:setCoordinateType	(I)V
     //   148: ldc 69
@@ -195,14 +195,14 @@ public class a
     //   160: dup
     //   161: iconst_1
     //   162: aload_0
-    //   163: getfield 93	com/tencent/luggage/f/a/a:cpS	Lcom/tencent/map/geolocation/sapp/TencentLocationManager;
+    //   163: getfield 93	com/tencent/luggage/f/a/a:cqv	Lcom/tencent/map/geolocation/sapp/TencentLocationManager;
     //   166: invokevirtual 195	com/tencent/map/geolocation/sapp/TencentLocationManager:getVersion	()Ljava/lang/String;
     //   169: aastore
-    //   170: invokestatic 82	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   170: invokestatic 82	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   173: aload_0
     //   174: monitorexit
     //   175: aload_0
-    //   176: getfield 93	com/tencent/luggage/f/a/a:cpS	Lcom/tencent/map/geolocation/sapp/TencentLocationManager;
+    //   176: getfield 93	com/tencent/luggage/f/a/a:cqv	Lcom/tencent/map/geolocation/sapp/TencentLocationManager;
     //   179: astore_1
     //   180: ldc 91
     //   182: invokestatic 85	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -217,7 +217,7 @@ public class a
     //   197: iconst_0
     //   198: aload_1
     //   199: aastore
-    //   200: invokestatic 200	com/tencent/mm/sdk/platformtools/ad:m	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   200: invokestatic 200	com/tencent/mm/sdk/platformtools/ae:m	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   203: goto -101 -> 102
     //   206: astore_1
     //   207: aload_0
@@ -235,17 +235,17 @@ public class a
     //   226: iconst_0
     //   227: aload_1
     //   228: aastore
-    //   229: invokestatic 200	com/tencent/mm/sdk/platformtools/ad:m	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   229: invokestatic 200	com/tencent/mm/sdk/platformtools/ae:m	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   232: goto -113 -> 119
     //   235: aload_0
-    //   236: invokestatic 142	com/tencent/mm/sdk/platformtools/aj:getContext	()Landroid/content/Context;
+    //   236: invokestatic 142	com/tencent/mm/sdk/platformtools/ak:getContext	()Landroid/content/Context;
     //   239: new 202	android/util/Pair
     //   242: dup
     //   243: ldc 204
     //   245: aload_1
     //   246: invokespecial 207	android/util/Pair:<init>	(Ljava/lang/Object;Ljava/lang/Object;)V
     //   249: invokestatic 210	com/tencent/map/geolocation/sapp/TencentLocationManager:getInstance	(Landroid/content/Context;Landroid/util/Pair;)Lcom/tencent/map/geolocation/sapp/TencentLocationManager;
-    //   252: putfield 93	com/tencent/luggage/f/a/a:cpS	Lcom/tencent/map/geolocation/sapp/TencentLocationManager;
+    //   252: putfield 93	com/tencent/luggage/f/a/a:cqv	Lcom/tencent/map/geolocation/sapp/TencentLocationManager;
     //   255: goto -115 -> 140
     // Local variable table:
     //   start	length	slot	name	signature
@@ -271,18 +271,18 @@ public class a
     //   108	119	216	java/lang/Exception
   }
   
-  private void Fq()
+  private void Fv()
   {
     AppMethodBeat.i(146452);
-    if ((this.cpU.size() <= 0) && (this.cpT.size() <= 0) && (this.cpV.size() <= 0) && (this.cpW.size() <= 0))
+    if ((this.cqx.size() <= 0) && (this.cqw.size() <= 0) && (this.cqy.size() <= 0) && (this.cqz.size() <= 0))
     {
-      ad.i("MicroMsg.DefaultTencentLocationManager", "releaseLocationManager");
-      Fo().removeUpdates(null);
+      ae.i("MicroMsg.DefaultTencentLocationManager", "releaseLocationManager");
+      Ft().removeUpdates(null);
     }
     AppMethodBeat.o(146452);
   }
   
-  protected boolean Fp()
+  protected boolean Fu()
   {
     return false;
   }
@@ -291,12 +291,12 @@ public class a
   {
     AppMethodBeat.i(146449);
     if ("wgs84".equals(paramString)) {
-      this.cpT.add(paramb);
+      this.cqw.add(paramb);
     }
     for (;;)
     {
-      m.bBp().removeCallbacks(this.cpZ);
-      m.bBp().k(this.cpZ, 20000L);
+      m.bCj().removeCallbacks(this.cqC);
+      m.bCj().k(this.cqC, 20000L);
       boolean bool1 = paramBundle.getBoolean("enableIndoor");
       boolean bool2 = paramBundle.getBoolean("isHighAccuracy", false);
       int i = paramBundle.getInt("highAccuracyExpireTime", 3000);
@@ -305,12 +305,12 @@ public class a
       paramString.setIndoorLocationMode(bool1);
       paramString.setSmallAppKey(paramBundle.getString("smallAppKey"));
       paramString.setmExpirationTime(i);
-      i = Fo().requestSingleFreshLocation(paramString, this.cpX, Looper.getMainLooper(), bool2);
-      ad.d("MicroMsg.DefaultTencentLocationManager", "MapReport:%s getLocation", new Object[] { paramBundle.getString("smallAppKey") });
-      ad.i("MicroMsg.DefaultTencentLocationManager", "requestCode %d", new Object[] { Integer.valueOf(i) });
+      i = Ft().requestSingleFreshLocation(paramString, this.cqA, Looper.getMainLooper(), bool2);
+      ae.d("MicroMsg.DefaultTencentLocationManager", "MapReport:%s getLocation", new Object[] { paramBundle.getString("smallAppKey") });
+      ae.i("MicroMsg.DefaultTencentLocationManager", "requestCode %d", new Object[] { Integer.valueOf(i) });
       AppMethodBeat.o(146449);
       return;
-      this.cpU.add(paramb);
+      this.cqx.add(paramb);
     }
   }
   
@@ -323,34 +323,34 @@ public class a
     try
     {
       AppMethodBeat.i(146450);
-      ad.i("MicroMsg.DefaultTencentLocationManager", "[registerLocation]type:%s", new Object[] { paramString });
+      ae.i("MicroMsg.DefaultTencentLocationManager", "[registerLocation]type:%s", new Object[] { paramString });
       if (!"wgs84".equals(paramString)) {
         break label260;
       }
-      paramString = this.cpV.iterator();
+      paramString = this.cqy.iterator();
       while (paramString.hasNext())
       {
         localb = (a.b)paramString.next();
         if ((localb != null) && (localb.equals(paramb)))
         {
-          ad.w("MicroMsg.DefaultTencentLocationManager", "already register");
+          ae.w("MicroMsg.DefaultTencentLocationManager", "already register");
           AppMethodBeat.o(146450);
           return false;
         }
       }
-      this.cpV.add(paramb);
+      this.cqy.add(paramb);
       if (paramBundle != null)
       {
         paramString = paramBundle.getString("smallAppKey");
-        if (!bt.isNullOrNil(paramString)) {
-          this.cpY.add(paramString);
+        if (!bu.isNullOrNil(paramString)) {
+          this.cqB.add(paramString);
         }
       }
       if ((paramBundle == null) || (!paramBundle.getBoolean("enableIndoor"))) {
         break label418;
       }
       bool = true;
-      if (this.cpV.size() + this.cpW.size() != 1) {
+      if (this.cqy.size() + this.cqz.size() != 1) {
         break label424;
       }
       i = 1;
@@ -363,7 +363,7 @@ public class a
     {
       paramString.setInterval(l);
       paramb = new StringBuilder();
-      paramBundle = this.cpY.iterator();
+      paramBundle = this.cqB.iterator();
       for (;;)
       {
         if (paramBundle.hasNext())
@@ -371,7 +371,7 @@ public class a
           paramb.append((String)paramBundle.next());
           continue;
           label260:
-          paramString = this.cpW.iterator();
+          paramString = this.cqz.iterator();
           for (;;)
           {
             if (paramString.hasNext())
@@ -379,19 +379,19 @@ public class a
               localb = (a.b)paramString.next();
               if ((localb != null) && (localb.equals(paramb)))
               {
-                ad.w("MicroMsg.DefaultTencentLocationManager", "already register");
+                ae.w("MicroMsg.DefaultTencentLocationManager", "already register");
                 AppMethodBeat.o(146450);
                 break;
               }
             }
           }
-          this.cpW.add(paramb);
+          this.cqz.add(paramb);
           break;
         }
       }
-      ad.d("MicroMsg.DefaultTencentLocationManager", "MapReport reportMsg:%s", new Object[] { paramb.toString() });
+      ae.d("MicroMsg.DefaultTencentLocationManager", "MapReport reportMsg:%s", new Object[] { paramb.toString() });
       paramString.setSmallAppKey(paramb.toString());
-      ad.i("MicroMsg.DefaultTencentLocationManager", "requestCode %d", new Object[] { Integer.valueOf(Fo().requestLocationUpdates(paramString, this.cpX, Looper.getMainLooper())) });
+      ae.i("MicroMsg.DefaultTencentLocationManager", "requestCode %d", new Object[] { Integer.valueOf(Ft().requestLocationUpdates(paramString, this.cqA, Looper.getMainLooper())) });
       label396:
       AppMethodBeat.o(146450);
       break;
@@ -431,13 +431,13 @@ public class a
     //   18: iconst_0
     //   19: aload_1
     //   20: aastore
-    //   21: invokestatic 82	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   21: invokestatic 82	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   24: ldc_w 380
     //   27: aload_1
     //   28: invokevirtual 259	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   31: ifeq +51 -> 82
     //   34: aload_0
-    //   35: getfield 52	com/tencent/luggage/f/a/a:cpV	Ljava/util/List;
+    //   35: getfield 52	com/tencent/luggage/f/a/a:cqy	Ljava/util/List;
     //   38: aload_2
     //   39: invokeinterface 495 2 0
     //   44: pop
@@ -448,12 +448,12 @@ public class a
     //   53: invokevirtual 438	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   56: astore_1
     //   57: aload_0
-    //   58: getfield 64	com/tencent/luggage/f/a/a:cpY	Ljava/util/Set;
+    //   58: getfield 64	com/tencent/luggage/f/a/a:cqB	Ljava/util/Set;
     //   61: aload_1
     //   62: invokeinterface 496 2 0
     //   67: pop
     //   68: aload_0
-    //   69: invokespecial 376	com/tencent/luggage/f/a/a:Fq	()V
+    //   69: invokespecial 376	com/tencent/luggage/f/a/a:Fv	()V
     //   72: ldc_w 490
     //   75: invokestatic 85	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   78: aload_0
@@ -461,7 +461,7 @@ public class a
     //   80: iconst_0
     //   81: ireturn
     //   82: aload_0
-    //   83: getfield 54	com/tencent/luggage/f/a/a:cpW	Ljava/util/List;
+    //   83: getfield 54	com/tencent/luggage/f/a/a:cqz	Ljava/util/List;
     //   86: aload_2
     //   87: invokeinterface 495 2 0
     //   92: pop

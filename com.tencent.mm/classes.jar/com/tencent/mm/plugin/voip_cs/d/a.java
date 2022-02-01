@@ -5,7 +5,7 @@ import android.hardware.Camera.Size;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.voip_cs.c.c;
 import com.tencent.mm.plugin.voip_cs.c.d;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class a
   extends com.tencent.mm.plugin.voip.video.a
@@ -15,35 +15,35 @@ public final class a
     super(640, 480);
   }
   
-  public final void eCa()
+  public final void eFI()
   {
     AppMethodBeat.i(125487);
     try
     {
       Camera.Size localSize;
       d locald;
-      if (this.ClY != null)
+      if (this.CDC != null)
       {
-        localSize = this.ClY.getPreviewSize();
-        locald = c.eBD();
-        if (!this.Cmb) {
+        localSize = this.CDC.getPreviewSize();
+        locald = c.eFl();
+        if (!this.CDF) {
           break label112;
         }
       }
       label112:
       for (int i = 1;; i = 0)
       {
-        this.ClY.getPreviewFrameRate();
-        int j = this.Cmo;
-        int k = this.Cmp;
+        this.CDC.getPreviewFrameRate();
+        int j = this.CDS;
+        int k = this.CDT;
         int m = localSize.width;
         int n = localSize.height;
-        ad.d("MicroMsg.VoipCSReportHelper", "setCameraInfo");
-        locald.CuC = i;
-        locald.Cuy = j;
-        locald.Cuz = k;
-        locald.CuA = m;
-        locald.CuB = n;
+        ae.d("MicroMsg.VoipCSReportHelper", "setCameraInfo");
+        locald.CMh = i;
+        locald.CMd = j;
+        locald.CMe = k;
+        locald.CMf = m;
+        locald.CMg = n;
         AppMethodBeat.o(125487);
         return;
       }
@@ -51,7 +51,7 @@ public final class a
     }
     catch (Exception localException)
     {
-      ad.e("MicroMsg.CSCaptureRender", "getCameraDataForVoipCS failed" + localException.getMessage());
+      ae.e("MicroMsg.CSCaptureRender", "getCameraDataForVoipCS failed" + localException.getMessage());
       AppMethodBeat.o(125487);
     }
   }

@@ -6,7 +6,8 @@ import com.tencent.mm.sdk.b.b;
 public final class vo
   extends b
 {
-  public a dKa;
+  public a dKN;
+  public b dKO;
   
   public vo()
   {
@@ -15,24 +16,30 @@ public final class vo
   
   private vo(byte paramByte)
   {
-    AppMethodBeat.i(19837);
-    this.dKa = new a();
-    this.IbR = false;
+    AppMethodBeat.i(127410);
+    this.dKN = new a();
+    this.dKO = new b();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(19837);
+    AppMethodBeat.o(127410);
   }
   
   public static final class a
   {
-    public String bVF;
-    public String dIm;
-    public String dKb;
-    public int dKc;
+    public boolean dKP;
+    public String dKQ;
+    public cw dKR;
+    public String url;
+  }
+  
+  public static final class b
+  {
+    public boolean doq = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.a.vo
  * JD-Core Version:    0.7.0.1
  */

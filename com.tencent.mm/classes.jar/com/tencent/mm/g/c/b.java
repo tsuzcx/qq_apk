@@ -8,15 +8,15 @@ public abstract class b
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eCU = "insertmsg".hashCode();
-  private static final int eDa = "billNo".hashCode();
-  private static final int eDb = "localMsgId".hashCode();
-  private static final int eDc = "status".hashCode();
+  private static final int eED = "insertmsg".hashCode();
+  private static final int eEJ = "billNo".hashCode();
+  private static final int eEK = "localMsgId".hashCode();
+  private static final int eEL = "status".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eCQ = true;
-  private boolean eCX = true;
-  private boolean eCY = true;
-  private boolean eCZ = true;
+  private boolean eEG = true;
+  private boolean eEH = true;
+  private boolean eEI = true;
+  private boolean eEz = true;
   public String field_billNo;
   public boolean field_insertmsg;
   public long field_localMsgId;
@@ -35,11 +35,11 @@ public abstract class b
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eDa != k) {
+      if (eEJ != k) {
         break label65;
       }
       this.field_billNo = paramCursor.getString(i);
-      this.eCX = true;
+      this.eEG = true;
     }
     for (;;)
     {
@@ -47,7 +47,7 @@ public abstract class b
       break label20;
       break;
       label65:
-      if (eCU == k)
+      if (eED == k)
       {
         if (paramCursor.getInt(i) != 0) {}
         for (boolean bool = true;; bool = false)
@@ -56,9 +56,9 @@ public abstract class b
           break;
         }
       }
-      if (eDb == k) {
+      if (eEK == k) {
         this.field_localMsgId = paramCursor.getLong(i);
-      } else if (eDc == k) {
+      } else if (eEL == k) {
         this.field_status = paramCursor.getInt(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
@@ -69,16 +69,16 @@ public abstract class b
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eCX) {
+    if (this.eEG) {
       localContentValues.put("billNo", this.field_billNo);
     }
-    if (this.eCQ) {
+    if (this.eEz) {
       localContentValues.put("insertmsg", Boolean.valueOf(this.field_insertmsg));
     }
-    if (this.eCY) {
+    if (this.eEH) {
       localContentValues.put("localMsgId", Long.valueOf(this.field_localMsgId));
     }
-    if (this.eCZ) {
+    if (this.eEI) {
       localContentValues.put("status", Integer.valueOf(this.field_status));
     }
     if (this.systemRowid > 0L) {

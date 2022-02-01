@@ -4,82 +4,63 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 public final class bra
-  extends cvc
+  extends com.tencent.mm.bw.a
 {
-  public LinkedList<String> GLo;
-  public int GLq;
-  public egx GLr;
-  public String GLu;
-  public String iht;
+  public dnl FLn;
+  public String FUn;
+  public LinkedList<dnl> hFT;
   
   public bra()
   {
-    AppMethodBeat.i(123607);
-    this.GLo = new LinkedList();
-    AppMethodBeat.o(123607);
+    AppMethodBeat.i(91524);
+    this.hFT = new LinkedList();
+    AppMethodBeat.o(91524);
   }
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(123608);
+    AppMethodBeat.i(91525);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.BaseRequest != null)
+      if (this.FLn != null)
       {
-        paramVarArgs.lC(1, this.BaseRequest.computeSize());
-        this.BaseRequest.writeFields(paramVarArgs);
+        paramVarArgs.lJ(1, this.FLn.computeSize());
+        this.FLn.writeFields(paramVarArgs);
       }
-      if (this.iht != null) {
-        paramVarArgs.d(2, this.iht);
+      paramVarArgs.e(2, 8, this.hFT);
+      if (this.FUn != null) {
+        paramVarArgs.d(3, this.FUn);
       }
-      paramVarArgs.e(3, 1, this.GLo);
-      paramVarArgs.aS(4, this.GLq);
-      if (this.GLr != null)
-      {
-        paramVarArgs.lC(5, this.GLr.computeSize());
-        this.GLr.writeFields(paramVarArgs);
-      }
-      if (this.GLu != null) {
-        paramVarArgs.d(6, this.GLu);
-      }
-      AppMethodBeat.o(123608);
+      AppMethodBeat.o(91525);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.BaseRequest == null) {
-        break label686;
+      if (this.FLn == null) {
+        break label510;
       }
     }
-    label686:
-    for (paramInt = f.a.a.a.lB(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
+    label510:
+    for (paramInt = f.a.a.a.lI(1, this.FLn.computeSize()) + 0;; paramInt = 0)
     {
-      int i = paramInt;
-      if (this.iht != null) {
-        i = paramInt + f.a.a.b.b.a.e(2, this.iht);
-      }
-      i = i + f.a.a.a.c(3, 1, this.GLo) + f.a.a.b.b.a.bz(4, this.GLq);
+      int i = paramInt + f.a.a.a.c(2, 8, this.hFT);
       paramInt = i;
-      if (this.GLr != null) {
-        paramInt = i + f.a.a.a.lB(5, this.GLr.computeSize());
+      if (this.FUn != null) {
+        paramInt = i + f.a.a.b.b.a.e(3, this.FUn);
       }
-      i = paramInt;
-      if (this.GLu != null) {
-        i = paramInt + f.a.a.b.b.a.e(6, this.GLu);
-      }
-      AppMethodBeat.o(123608);
-      return i;
+      AppMethodBeat.o(91525);
+      return paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = (byte[])paramVarArgs[0];
-        this.GLo.clear();
+        this.hFT.clear();
         paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
-        for (paramInt = cvc.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cvc.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
-        AppMethodBeat.o(123608);
+        AppMethodBeat.o(91525);
         return 0;
       }
       if (paramInt == 3)
@@ -92,63 +73,51 @@ public final class bra
         switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(123608);
+          AppMethodBeat.o(91525);
           return -1;
         case 1: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
+          paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
             localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new jc();
+            localObject1 = new dnl();
             localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (bool = true; bool; bool = ((jc)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, cvc.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-            localbra.BaseRequest = ((jc)localObject1);
+            for (bool = true; bool; bool = ((dnl)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            localbra.FLn = ((dnl)localObject1);
             paramInt += 1;
           }
-          AppMethodBeat.o(123608);
+          AppMethodBeat.o(91525);
           return 0;
         case 2: 
-          localbra.iht = ((f.a.a.a.a)localObject1).NPN.readString();
-          AppMethodBeat.o(123608);
-          return 0;
-        case 3: 
-          localbra.GLo.add(((f.a.a.a.a)localObject1).NPN.readString());
-          AppMethodBeat.o(123608);
-          return 0;
-        case 4: 
-          localbra.GLq = ((f.a.a.a.a)localObject1).NPN.zc();
-          AppMethodBeat.o(123608);
-          return 0;
-        case 5: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
+          paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
             localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new egx();
+            localObject1 = new dnl();
             localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (bool = true; bool; bool = ((egx)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, cvc.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-            localbra.GLr = ((egx)localObject1);
+            for (bool = true; bool; bool = ((dnl)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            localbra.hFT.add(localObject1);
             paramInt += 1;
           }
-          AppMethodBeat.o(123608);
+          AppMethodBeat.o(91525);
           return 0;
         }
-        localbra.GLu = ((f.a.a.a.a)localObject1).NPN.readString();
-        AppMethodBeat.o(123608);
+        localbra.FUn = ((f.a.a.a.a)localObject1).OmT.readString();
+        AppMethodBeat.o(91525);
         return 0;
       }
-      AppMethodBeat.o(123608);
+      AppMethodBeat.o(91525);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.bra
  * JD-Core Version:    0.7.0.1
  */

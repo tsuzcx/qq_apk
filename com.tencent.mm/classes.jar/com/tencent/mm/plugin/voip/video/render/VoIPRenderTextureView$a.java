@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.voip.video.render;
 
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/voip/video/render/VoIPRenderTextureView$Companion;", "", "()V", "TAG", "", "plugin-voip_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/voip/video/render/VoIPRenderTextureView$Companion;", "", "()V", "TAG", "", "plugin-voip_release"})
 public final class VoIPRenderTextureView$a {}
 
 

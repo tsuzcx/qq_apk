@@ -5,23 +5,23 @@ import d.l.b.a.b.f.b;
 
 public final class d
 {
-  private static final b MXe;
+  private static final b Nuk;
   
   static
   {
     AppMethodBeat.i(56991);
-    MXe = new b("kotlin.internal.PlatformDependent");
+    Nuk = new b("kotlin.internal.PlatformDependent");
     AppMethodBeat.o(56991);
   }
   
-  public static final b gjM()
+  public static final b goo()
   {
-    return MXe;
+    return Nuk;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.b.b.d
  * JD-Core Version:    0.7.0.1
  */

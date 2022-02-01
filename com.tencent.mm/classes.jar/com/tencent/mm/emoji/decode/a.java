@@ -4,18 +4,18 @@ import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.jniinterface.AesEcb;
 import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.sdk.platformtools.t;
-import com.tencent.mm.storage.bd;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.u;
+import com.tencent.mm.storage.be;
 import com.tencent.mm.storage.emotion.EmojiInfo;
 import com.tencent.mm.storage.emotion.f;
-import com.tencent.mm.vfs.i;
+import com.tencent.mm.vfs.o;
 
 public class a
 {
-  public static a gia;
+  public static a gks;
   private boolean isRunning = false;
   private String key;
   
@@ -23,7 +23,7 @@ public class a
   {
     AppMethodBeat.i(104439);
     String str1;
-    if (t.cv(paramArrayOfByte))
+    if (u.cy(paramArrayOfByte))
     {
       String str2 = paramEmojiInfo.field_externMd5;
       str1 = str2;
@@ -37,28 +37,28 @@ public class a
     {
       str1 = paramEmojiInfo.field_md5;
     }
-    paramArrayOfByte = ai.B(paramArrayOfByte);
-    if ((!bt.isNullOrNil(str1)) && (!bt.isNullOrNil(paramArrayOfByte)) && (bt.lQ(str1, paramArrayOfByte))) {}
+    paramArrayOfByte = aj.B(paramArrayOfByte);
+    if ((!bu.isNullOrNil(str1)) && (!bu.isNullOrNil(paramArrayOfByte)) && (bu.lX(str1, paramArrayOfByte))) {}
     for (boolean bool = true;; bool = false)
     {
       if (!bool)
       {
-        paramEmojiInfo.fOv();
-        ad.w("MicroMsg.emoji.EmojiFileEncryptMgr", "checkFileMd5: %s", new Object[] { paramEmojiInfo.field_md5 });
+        paramEmojiInfo.fxo();
+        ae.w("MicroMsg.emoji.EmojiFileEncryptMgr", "checkFileMd5: %s", new Object[] { paramEmojiInfo.field_md5 });
       }
       AppMethodBeat.o(104439);
       return bool;
     }
   }
   
-  public static a aes()
+  public static a aeE()
   {
     AppMethodBeat.i(104434);
-    if (gia == null) {}
+    if (gks == null) {}
     try
     {
-      gia = new a();
-      a locala = gia;
+      gks = new a();
+      a locala = gks;
       AppMethodBeat.o(104434);
       return locala;
     }
@@ -73,24 +73,24 @@ public class a
     AppMethodBeat.i(104437);
     if (paramEmojiInfo == null)
     {
-      ad.w("MicroMsg.emoji.EmojiFileEncryptMgr", "encodeEmojiFile failed. emoji is null.");
+      ae.w("MicroMsg.emoji.EmojiFileEncryptMgr", "encodeEmojiFile failed. emoji is null.");
       AppMethodBeat.o(104437);
       return false;
     }
-    if (bt.isNullOrNil(aet())) {}
+    if (bu.isNullOrNil(aeF())) {}
     for (int i = 0; i == 0; i = 1)
     {
-      ad.i("MicroMsg.emoji.EmojiFileEncryptMgr", "disable encrypt");
+      ae.i("MicroMsg.emoji.EmojiFileEncryptMgr", "disable encrypt");
       AppMethodBeat.o(104437);
       return false;
     }
-    String str = paramEmojiInfo.gzQ();
+    String str = paramEmojiInfo.fSQ();
     Object localObject;
     boolean bool1;
-    if (i.fv(str))
+    if (o.fB(str))
     {
       boolean bool2 = false;
-      localObject = i.aY(str, 0, 10);
+      localObject = o.bb(str, 0, 10);
       bool1 = bool2;
       if (localObject != null) {
         bool1 = bool2;
@@ -101,32 +101,32 @@ public class a
       try
       {
         if (localObject.length >= 10) {
-          bool1 = t.cu((byte[])localObject);
+          bool1 = u.cx((byte[])localObject);
         }
         if ((paramBoolean) || (bool1))
         {
           long l = System.currentTimeMillis();
-          j = (int)i.aYo(str);
+          j = (int)o.aZR(str);
           byte[] arrayOfByte2;
           byte[] arrayOfByte1;
           if (j > 1024)
           {
             i = 1024;
-            arrayOfByte2 = i.aY(str, 0, j);
-            arrayOfByte1 = i.aY(str, 0, i);
+            arrayOfByte2 = o.bb(str, 0, j);
+            arrayOfByte1 = o.bb(str, 0, i);
             localObject = new byte[0];
           }
           try
           {
-            arrayOfByte1 = AesEcb.aesCryptEcb(arrayOfByte1, aet().getBytes(), true, false);
+            arrayOfByte1 = AesEcb.aesCryptEcb(arrayOfByte1, aeF().getBytes(), true, false);
             localObject = arrayOfByte1;
           }
           catch (Throwable localThrowable2)
           {
-            ad.printErrStackTrace("MicroMsg.emoji.EmojiFileEncryptMgr", localThrowable2, "", new Object[0]);
+            ae.printErrStackTrace("MicroMsg.emoji.EmojiFileEncryptMgr", localThrowable2, "", new Object[0]);
             continue;
-            ad.w("MicroMsg.emoji.EmojiFileEncryptMgr", "encodeEmojiFile failed. write file failed.");
-            g.yhR.idkeyStat(252L, 3L, 1L, false);
+            ae.w("MicroMsg.emoji.EmojiFileEncryptMgr", "encodeEmojiFile failed. write file failed.");
+            g.yxI.idkeyStat(252L, 3L, 1L, false);
             AppMethodBeat.o(104437);
             return false;
           }
@@ -134,16 +134,16 @@ public class a
             break label465;
           }
           System.arraycopy(localObject, 0, arrayOfByte2, 0, i);
-          i = i.f(str, arrayOfByte2, arrayOfByte2.length);
+          i = o.f(str, arrayOfByte2, arrayOfByte2.length);
           if (i == 0)
           {
             l = System.currentTimeMillis() - l;
-            g.yhR.idkeyStat(252L, 1L, l, false);
-            g.yhR.idkeyStat(252L, 6L, 1L, false);
-            paramEmojiInfo.field_reserved4 |= EmojiInfo.Ofi;
+            g.yxI.idkeyStat(252L, 1L, l, false);
+            g.yxI.idkeyStat(252L, 6L, 1L, false);
+            paramEmojiInfo.field_reserved4 |= EmojiInfo.OAp;
             paramEmojiInfo.field_size = j;
-            bd.frc().ILn.L(paramEmojiInfo);
-            ad.i("MicroMsg.emoji.EmojiFileEncryptMgr", "encode emoji file length:%d use time:%d", new Object[] { Integer.valueOf(arrayOfByte2.length), Long.valueOf(l) });
+            be.fvc().JfU.L(paramEmojiInfo);
+            ae.i("MicroMsg.emoji.EmojiFileEncryptMgr", "encode emoji file length:%d use time:%d", new Object[] { Integer.valueOf(arrayOfByte2.length), Long.valueOf(l) });
             AppMethodBeat.o(104437);
             return true;
           }
@@ -152,18 +152,18 @@ public class a
       catch (Throwable localThrowable1)
       {
         int j;
-        ad.printErrStackTrace("MicroMsg.emoji.EmojiFileEncryptMgr", localThrowable1, "", new Object[0]);
+        ae.printErrStackTrace("MicroMsg.emoji.EmojiFileEncryptMgr", localThrowable1, "", new Object[0]);
         bool1 = false;
         continue;
         i = j;
         continue;
       }
-      ad.i("MicroMsg.emoji.EmojiFileEncryptMgr", "encodeEmojiFile file had encrypt.");
+      ae.i("MicroMsg.emoji.EmojiFileEncryptMgr", "encodeEmojiFile file had encrypt.");
       AppMethodBeat.o(104437);
       return true;
-      ad.w("MicroMsg.emoji.EmojiFileEncryptMgr", "encodeEmojiFile failed. file not exist. path%s", new Object[] { str });
+      ae.w("MicroMsg.emoji.EmojiFileEncryptMgr", "encodeEmojiFile failed. file not exist. path%s", new Object[] { str });
       paramEmojiInfo.field_reserved4 = 0;
-      bd.frc().ILn.L(paramEmojiInfo);
+      be.fvc().JfU.L(paramEmojiInfo);
       AppMethodBeat.o(104437);
       return false;
       label465:
@@ -176,38 +176,38 @@ public class a
     AppMethodBeat.i(104438);
     if (paramEmojiInfo == null)
     {
-      ad.w("MicroMsg.emoji.EmojiFileEncryptMgr", "decodeEmojiData failed. emoji is null.");
+      ae.w("MicroMsg.emoji.EmojiFileEncryptMgr", "decodeEmojiData failed. emoji is null.");
       AppMethodBeat.o(104438);
       return null;
     }
-    String str = paramEmojiInfo.gzQ();
-    byte[] arrayOfByte1 = i.aY(str, 0, -1);
-    if ((i.aYo(str) > 0L) && (arrayOfByte1 != null) && (arrayOfByte1.length >= 10))
+    String str = paramEmojiInfo.fSQ();
+    byte[] arrayOfByte1 = o.bb(str, 0, -1);
+    if ((o.aZR(str) > 0L) && (arrayOfByte1 != null) && (arrayOfByte1.length >= 10))
     {
       Object localObject1 = new byte[10];
       System.arraycopy(arrayOfByte1, 0, localObject1, 0, 10);
-      if (((paramEmojiInfo.field_reserved4 & EmojiInfo.Ofi) == EmojiInfo.Ofi) || (!t.cu((byte[])localObject1)))
+      if (((paramEmojiInfo.field_reserved4 & EmojiInfo.OAp) == EmojiInfo.OAp) || (!u.cx((byte[])localObject1)))
       {
         long l = System.currentTimeMillis();
-        int j = (int)i.aYo(str);
+        int j = (int)o.aZR(str);
         int i = j;
         if (j > 1024) {
           i = 1024;
         }
-        byte[] arrayOfByte2 = i.aY(str, 0, i);
+        byte[] arrayOfByte2 = o.bb(str, 0, i);
         Object localObject3 = null;
         localObject1 = localObject3;
-        if (!bt.isNullOrNil(aet())) {}
+        if (!bu.isNullOrNil(aeF())) {}
         try
         {
-          localObject1 = AesEcb.aesCryptEcb(arrayOfByte2, aet().getBytes(), false, false);
-          if ((!bt.cC((byte[])localObject1)) && (!bt.cC(arrayOfByte1)))
+          localObject1 = AesEcb.aesCryptEcb(arrayOfByte2, aeF().getBytes(), false, false);
+          if ((!bu.cF((byte[])localObject1)) && (!bu.cF(arrayOfByte1)))
           {
             System.arraycopy(localObject1, 0, arrayOfByte1, 0, i);
             l = System.currentTimeMillis() - l;
-            g.yhR.idkeyStat(252L, 0L, l, false);
-            g.yhR.idkeyStat(252L, 5L, 1L, false);
-            ad.d("MicroMsg.emoji.EmojiFileEncryptMgr", "decode emoji file length:%d use time:%d", new Object[] { Integer.valueOf(arrayOfByte1.length), Long.valueOf(l) });
+            g.yxI.idkeyStat(252L, 0L, l, false);
+            g.yxI.idkeyStat(252L, 5L, 1L, false);
+            ae.d("MicroMsg.emoji.EmojiFileEncryptMgr", "decode emoji file length:%d use time:%d", new Object[] { Integer.valueOf(arrayOfByte1.length), Long.valueOf(l) });
             if (!a(paramEmojiInfo, arrayOfByte1)) {
               break label382;
             }
@@ -219,11 +219,11 @@ public class a
         {
           for (;;)
           {
-            ad.printErrStackTrace("MicroMsg.emoji.EmojiFileEncryptMgr", localThrowable, "", new Object[0]);
+            ae.printErrStackTrace("MicroMsg.emoji.EmojiFileEncryptMgr", localThrowable, "", new Object[0]);
             Object localObject2 = localObject3;
           }
-          g.yhR.idkeyStat(252L, 2L, 1L, false);
-          ad.i("MicroMsg.emoji.EmojiFileEncryptMgr", "decode emoji file failed. path:%s return original ", new Object[] { str });
+          g.yxI.idkeyStat(252L, 2L, 1L, false);
+          ae.i("MicroMsg.emoji.EmojiFileEncryptMgr", "decode emoji file failed. path:%s return original ", new Object[] { str });
           if (!a(paramEmojiInfo, arrayOfByte1)) {
             break label382;
           }
@@ -239,7 +239,7 @@ public class a
     }
     else
     {
-      ad.i("MicroMsg.emoji.EmojiFileEncryptMgr", "decode emoji file failed. path is no exist :%s ", new Object[] { str });
+      ae.i("MicroMsg.emoji.EmojiFileEncryptMgr", "decode emoji file failed. path is no exist :%s ", new Object[] { str });
       AppMethodBeat.o(104438);
       return null;
     }
@@ -248,11 +248,11 @@ public class a
     return null;
   }
   
-  public final String aet()
+  public final String aeF()
   {
     AppMethodBeat.i(104435);
-    if (bt.isNullOrNil(this.key)) {
-      this.key = bd.frc().ILn.getKey();
+    if (bu.isNullOrNil(this.key)) {
+      this.key = be.fvc().JfU.getKey();
     }
     String str = this.key;
     AppMethodBeat.o(104435);
@@ -265,23 +265,23 @@ public class a
     AppMethodBeat.i(104440);
     if (paramEmojiInfo == null)
     {
-      ad.w("MicroMsg.emoji.EmojiFileEncryptMgr", "decodeEmojiData failed. emoji is null.");
+      ae.w("MicroMsg.emoji.EmojiFileEncryptMgr", "decodeEmojiData failed. emoji is null.");
       AppMethodBeat.o(104440);
       return false;
     }
     long l = System.currentTimeMillis();
-    Object localObject = paramEmojiInfo.gzQ();
-    int j = (int)i.aYo((String)localObject);
+    Object localObject = paramEmojiInfo.fSQ();
+    int j = (int)o.aZR((String)localObject);
     byte[] arrayOfByte;
     if (j > 1024)
     {
-      arrayOfByte = i.aY((String)localObject, 0, i);
-      if ((i.aYo((String)localObject) <= 0L) || (arrayOfByte == null) || (arrayOfByte.length < 10)) {
+      arrayOfByte = o.bb((String)localObject, 0, i);
+      if ((o.aZR((String)localObject) <= 0L) || (arrayOfByte == null) || (arrayOfByte.length < 10)) {
         break label240;
       }
       localObject = new byte[10];
       System.arraycopy(arrayOfByte, 0, localObject, 0, 10);
-      if (!t.cu((byte[])localObject)) {
+      if (!u.cx((byte[])localObject)) {
         break label156;
       }
     }
@@ -290,20 +290,20 @@ public class a
     for (boolean bool = true;; bool = false) {
       for (;;)
       {
-        ad.d("MicroMsg.emoji.EmojiFileEncryptMgr", "checkout use time:%s result:%b", new Object[] { Long.valueOf(System.currentTimeMillis() - l), Boolean.valueOf(bool) });
+        ae.d("MicroMsg.emoji.EmojiFileEncryptMgr", "checkout use time:%s result:%b", new Object[] { Long.valueOf(System.currentTimeMillis() - l), Boolean.valueOf(bool) });
         AppMethodBeat.o(104440);
         return bool;
         i = j;
         break;
-        if ((paramEmojiInfo.field_reserved4 & EmojiInfo.Ofi) == EmojiInfo.Ofi)
+        if ((paramEmojiInfo.field_reserved4 & EmojiInfo.OAp) == EmojiInfo.OAp)
         {
           localObject = null;
           paramEmojiInfo = (EmojiInfo)localObject;
-          if (!bt.isNullOrNil(aet())) {}
+          if (!bu.isNullOrNil(aeF())) {}
           try
           {
-            paramEmojiInfo = AesEcb.aesCryptEcb(arrayOfByte, aet().getBytes(), false, false);
-            if ((!bt.cC(paramEmojiInfo)) && (t.cu(paramEmojiInfo))) {
+            paramEmojiInfo = AesEcb.aesCryptEcb(arrayOfByte, aeF().getBytes(), false, false);
+            if ((!bu.cF(paramEmojiInfo)) && (u.cx(paramEmojiInfo))) {
               bool = true;
             }
           }
@@ -311,7 +311,7 @@ public class a
           {
             for (;;)
             {
-              ad.printErrStackTrace("MicroMsg.emoji.EmojiFileEncryptMgr", paramEmojiInfo, "", new Object[0]);
+              ae.printErrStackTrace("MicroMsg.emoji.EmojiFileEncryptMgr", paramEmojiInfo, "", new Object[0]);
               paramEmojiInfo = (EmojiInfo)localObject;
             }
           }
@@ -322,7 +322,7 @@ public class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.emoji.decode.a
  * JD-Core Version:    0.7.0.1
  */

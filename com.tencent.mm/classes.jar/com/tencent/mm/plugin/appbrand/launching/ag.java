@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.appbrand.launching;
 import android.util.Log;
 import com.tencent.luggage.h.k;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ad.c;
+import com.tencent.mm.ac.c;
 import com.tencent.mm.plugin.appbrand.appcache.IPkgInfo;
 import com.tencent.mm.plugin.appbrand.appcache.ModulePkgInfo;
 import com.tencent.mm.plugin.appbrand.appcache.WxaPkgLoadProgress;
@@ -20,8 +20,7 @@ import com.tencent.mm.plugin.appbrand.config.WxaAttributes.WxaWidgetInfo;
 import com.tencent.mm.plugin.appbrand.launching.params.LaunchParcel;
 import com.tencent.mm.plugin.appbrand.m.h;
 import com.tencent.mm.plugin.appbrand.report.quality.QualitySession;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 import d.g.a.a;
 import d.g.a.b;
 import d.g.a.m;
@@ -39,27 +38,27 @@ import java.util.Set;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.atomic.AtomicReference;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/launching/LaunchCheckPkgHandlerSeparatedPluginsCompatible;", "Lcom/tencent/mm/plugin/appbrand/launching/ICheckAppHandler;", "Lcom/tencent/mm/plugin/appbrand/launching/ICheckAppHandler$ICheckAppHandlerErrorPromptDelegate;", "appId", "", "versionType", "", "isGame", "", "enterPath", "versionInfo", "Lcom/tencent/mm/plugin/appbrand/config/WxaAttributes$WxaVersionInfo;", "acceptedLibReader", "Lcom/tencent/mm/plugin/appbrand/appstorage/ICommLibReader;", "reportQualitySession", "Lcom/tencent/mm/plugin/appbrand/report/quality/QualitySession;", "(Ljava/lang/String;IZLjava/lang/String;Lcom/tencent/mm/plugin/appbrand/config/WxaAttributes$WxaVersionInfo;Lcom/tencent/mm/plugin/appbrand/appstorage/ICommLibReader;Lcom/tencent/mm/plugin/appbrand/report/quality/QualitySession;)V", "canShowErrorPrompt", "isFromRemoteDebug", "()Z", "setFromRemoteDebug", "(Z)V", "preDownloadCalled", "call", "Lcom/tencent/mm/plugin/appbrand/appcache/WxaPkgWrappingInfo;", "callPreDownload", "", "onDownloadProgress", "progress", "postDownload", "preDownload", "setCanShowErrorPrompt", "can", "showDevPkgNoRecordPrompt", "toast", "resId", "error", "fillReadyPkgList", "pkgList", "", "Lcom/tencent/mm/plugin/appbrand/appcache/IPkgInfo;", "Companion", "plugin-appbrand-integration_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/launching/LaunchCheckPkgHandlerSeparatedPluginsCompatible;", "Lcom/tencent/mm/plugin/appbrand/launching/ICheckAppHandler;", "Lcom/tencent/mm/plugin/appbrand/launching/ICheckAppHandler$ICheckAppHandlerErrorPromptDelegate;", "appId", "", "versionType", "", "isGame", "", "enterPath", "versionInfo", "Lcom/tencent/mm/plugin/appbrand/config/WxaAttributes$WxaVersionInfo;", "acceptedLibReader", "Lcom/tencent/mm/plugin/appbrand/appstorage/ICommLibReader;", "reportQualitySession", "Lcom/tencent/mm/plugin/appbrand/report/quality/QualitySession;", "(Ljava/lang/String;IZLjava/lang/String;Lcom/tencent/mm/plugin/appbrand/config/WxaAttributes$WxaVersionInfo;Lcom/tencent/mm/plugin/appbrand/appstorage/ICommLibReader;Lcom/tencent/mm/plugin/appbrand/report/quality/QualitySession;)V", "canShowErrorPrompt", "isFromRemoteDebug", "()Z", "setFromRemoteDebug", "(Z)V", "preDownloadCalled", "call", "Lcom/tencent/mm/plugin/appbrand/appcache/WxaPkgWrappingInfo;", "callPreDownload", "", "onDownloadProgress", "progress", "postDownload", "preDownload", "setCanShowErrorPrompt", "can", "showDevPkgNoRecordPrompt", "toast", "resId", "error", "fillReadyPkgList", "pkgList", "", "Lcom/tencent/mm/plugin/appbrand/appcache/IPkgInfo;", "Companion", "plugin-appbrand-integration_release"})
 public class ag
   implements x, x.b
 {
   @Deprecated
-  public static final a lJd;
+  public static final a lND;
   private final String appId;
-  private final boolean ciC;
-  private final int hQh;
-  private final String jCN;
-  private final ICommLibReader jYp;
-  private WxaAttributes.WxaVersionInfo jZu;
-  boolean lFM;
-  private boolean lJa;
-  private boolean lJb;
-  private final QualitySession lJc;
+  private final boolean ciE;
+  private final int hSZ;
+  private final String jFL;
+  private final ICommLibReader kbE;
+  private WxaAttributes.WxaVersionInfo kcL;
+  boolean lKl;
+  private boolean lNA;
+  private boolean lNB;
+  private final QualitySession lNC;
   
   static
   {
     AppMethodBeat.i(180616);
-    lJd = new a((byte)0);
+    lND = new a((byte)0);
     AppMethodBeat.o(180616);
   }
   
@@ -67,26 +66,26 @@ public class ag
   {
     AppMethodBeat.i(180615);
     this.appId = paramString1;
-    this.hQh = paramInt;
-    this.ciC = paramBoolean;
-    this.jCN = paramString2;
-    this.jZu = paramWxaVersionInfo;
-    this.jYp = paramICommLibReader;
-    this.lJc = paramQualitySession;
-    this.lJa = true;
+    this.hSZ = paramInt;
+    this.ciE = paramBoolean;
+    this.jFL = paramString2;
+    this.kcL = paramWxaVersionInfo;
+    this.kbE = paramICommLibReader;
+    this.lNC = paramQualitySession;
+    this.lNA = true;
     AppMethodBeat.o(180615);
   }
   
-  private WxaPkgWrappingInfo bgh()
+  private WxaPkgWrappingInfo bgP()
   {
     Object localObject2 = null;
     AppMethodBeat.i(180613);
-    if ((j.a.oN(this.hQh)) && (this.jZu.aDD != 0))
+    if ((j.a.oQ(this.hSZ)) && (this.kcL.aDD != 0))
     {
-      localObject1 = ((t)com.tencent.mm.plugin.appbrand.app.j.T(t.class)).bN(this.appId, this.hQh);
+      localObject1 = ((t)com.tencent.mm.plugin.appbrand.app.j.T(t.class)).bQ(this.appId, this.hSZ);
       if (localObject1 != null)
       {
-        localObject1 = com.tencent.mm.plugin.appbrand.config.z.NU((String)localObject1);
+        localObject1 = com.tencent.mm.plugin.appbrand.config.z.OB((String)localObject1);
         if (localObject1 != null) {}
       }
       else
@@ -95,18 +94,18 @@ public class ag
         AppMethodBeat.o(180613);
         return localObject1;
       }
-      this.jZu = ((WxaAttributes.WxaVersionInfo)localObject1);
+      this.kcL = ((WxaAttributes.WxaVersionInfo)localObject1);
     }
     final WxaPkgWrappingInfo localWxaPkgWrappingInfo = new WxaPkgWrappingInfo();
-    localWxaPkgWrappingInfo.pkgVersion = this.jZu.aDD;
-    localWxaPkgWrappingInfo.jIU = this.hQh;
-    localWxaPkgWrappingInfo.md5 = this.jZu.jZW;
-    localWxaPkgWrappingInfo.jIZ = new WxaRuntimeModulePluginListMap();
-    Object localObject1 = ae.lIL;
-    localObject1 = this.jZu;
+    localWxaPkgWrappingInfo.pkgVersion = this.kcL.aDD;
+    localWxaPkgWrappingInfo.jLV = this.hSZ;
+    localWxaPkgWrappingInfo.md5 = this.kcL.kdn;
+    localWxaPkgWrappingInfo.jMa = new WxaRuntimeModulePluginListMap();
+    Object localObject1 = ae.lNl;
+    localObject1 = this.kcL;
     Object localObject3 = this.appId;
-    Object localObject4 = ae.lIL;
-    localObject3 = ae.a((WxaAttributes.WxaVersionInfo)localObject1, (String)localObject3, ae.a(this.appId, this.hQh, this.jZu.aDD, this.ciC, this.jYp));
+    Object localObject4 = ae.lNl;
+    localObject3 = ae.a((WxaAttributes.WxaVersionInfo)localObject1, (String)localObject3, ae.a(this.appId, this.hSZ, this.kcL.aDD, this.ciE, this.kbE));
     localObject4 = ((Map)localObject3).entrySet().iterator();
     Object localObject5;
     label341:
@@ -121,9 +120,9 @@ public class ag
       Object localObject9;
       if ((p.i("__APP__", localObject5) ^ true))
       {
-        localObject7 = localWxaPkgWrappingInfo.jIX;
+        localObject7 = localWxaPkgWrappingInfo.jLY;
         localObject8 = new ModulePkgInfo();
-        localObject1 = this.jZu.moduleList;
+        localObject1 = this.kcL.moduleList;
         p.g(localObject1, "versionInfo.moduleList");
         localObject9 = ((Iterable)localObject1).iterator();
         do
@@ -134,17 +133,17 @@ public class ag
           localObject1 = ((Iterator)localObject9).next();
         } while (!p.i(localObject5, ((WxaAttributes.WxaVersionModuleInfo)localObject1).name));
         if (localObject1 == null) {
-          p.gfZ();
+          p.gkB();
         }
         localObject1 = (WxaAttributes.WxaVersionModuleInfo)localObject1;
         ((ModulePkgInfo)localObject8).name = ((String)localObject5);
-        ((ModulePkgInfo)localObject8).md5 = ((WxaAttributes.WxaWidgetInfo)localObject6).kan;
+        ((ModulePkgInfo)localObject8).md5 = ((WxaAttributes.WxaWidgetInfo)localObject6).kdE;
         ((ModulePkgInfo)localObject8).independent = ((WxaAttributes.WxaVersionModuleInfo)localObject1).independent;
         ((ModulePkgInfo)localObject8).aliases = ((WxaAttributes.WxaVersionModuleInfo)localObject1).aliases;
-        ((ModulePkgInfo)localObject8).pkgVersion = this.jZu.aDD;
+        ((ModulePkgInfo)localObject8).pkgVersion = this.kcL.aDD;
         ((LinkedList)localObject7).add(localObject8);
       }
-      localObject1 = (Collection)((WxaAttributes.WxaWidgetInfo)localObject6).kao;
+      localObject1 = (Collection)((WxaAttributes.WxaWidgetInfo)localObject6).kdF;
       if ((localObject1 == null) || (((Collection)localObject1).isEmpty()))
       {
         i = 1;
@@ -152,11 +151,11 @@ public class ag
         if (i != 0) {
           break label542;
         }
-        localObject7 = localWxaPkgWrappingInfo.jIZ;
+        localObject7 = localWxaPkgWrappingInfo.jMa;
         if (localObject7 == null) {
-          p.gfZ();
+          p.gkB();
         }
-        localObject1 = ((WxaAttributes.WxaWidgetInfo)localObject6).kao;
+        localObject1 = ((WxaAttributes.WxaWidgetInfo)localObject6).kdF;
         localObject6 = (Collection)localObject1;
         if ((localObject6 != null) && (!((Collection)localObject6).isEmpty())) {
           break label544;
@@ -173,7 +172,7 @@ public class ag
         if ((localObject1 == null) || (((List)localObject1).isEmpty())) {
           break;
         }
-        ((Map)((WxaRuntimeModulePluginListMap)localObject7).jJf).put(new WxaRuntimeModulePluginListMap.c.a((String)localObject5), localObject1);
+        ((Map)((WxaRuntimeModulePluginListMap)localObject7).jMg).put(new WxaRuntimeModulePluginListMap.c.a((String)localObject5), localObject1);
         break;
         localObject1 = null;
         break label341;
@@ -202,19 +201,19 @@ public class ag
         }
       }
     }
-    localObject1 = localWxaPkgWrappingInfo.jIZ;
+    localObject1 = localWxaPkgWrappingInfo.jMa;
     if (localObject1 != null) {
-      ((WxaRuntimeModulePluginListMap)localObject1).baP();
+      ((WxaRuntimeModulePluginListMap)localObject1).bbo();
     }
-    if ((this.ciC) && (com.tencent.mm.plugin.appbrand.ae.KL(this.jCN)))
+    if ((this.ciE) && (com.tencent.mm.plugin.appbrand.ae.Ll(this.jFL)))
     {
       AppMethodBeat.o(180613);
       return localWxaPkgWrappingInfo;
     }
-    if ((this.jZu.kab) && (!bt.hj(this.jZu.moduleList)))
+    if ((this.kcL.kds) && (!bu.ht(this.kcL.moduleList)))
     {
       localObject4 = new LinkedList();
-      localObject1 = k.dr(LaunchParcel.Mq(this.jCN));
+      localObject1 = k.dt(LaunchParcel.MW(this.jFL));
       localObject5 = (CharSequence)localObject1;
       if ((localObject5 == null) || (((CharSequence)localObject5).length() == 0)) {
         i = 1;
@@ -224,7 +223,7 @@ public class ag
     {
       if (i != 0)
       {
-        localObject1 = (CharSequence)this.jZu.kac;
+        localObject1 = (CharSequence)this.kcL.kdt;
         if ((localObject1 == null) || (((CharSequence)localObject1).length() == 0))
         {
           i = 1;
@@ -243,7 +242,7 @@ public class ag
           localObject1 = (List)localObject4;
           localObject4 = new CountDownLatch(1);
           localObject2 = new AtomicReference();
-          c.b("MicroMsg.LaunchCheckPkgHandlerSeparatedPluginsCompatible[" + this.appId + '|' + this.hQh + ']', (a)new c(this, (List)localObject1, (Map)localObject3, localWxaPkgWrappingInfo, (AtomicReference)localObject2, (CountDownLatch)localObject4));
+          c.b("MicroMsg.LaunchCheckPkgHandlerSeparatedPluginsCompatible[" + this.appId + '|' + this.hSZ + ']', (a)new c(this, (List)localObject1, (Map)localObject3, localWxaPkgWrappingInfo, (AtomicReference)localObject2, (CountDownLatch)localObject4));
         }
       }
       try
@@ -257,7 +256,7 @@ public class ag
         i = 0;
         break label826;
         label994:
-        localObject5 = this.jZu.moduleList.iterator();
+        localObject5 = this.kcL.moduleList.iterator();
         do
         {
           localObject1 = localObject2;
@@ -265,50 +264,50 @@ public class ag
             break;
           }
           localObject1 = (WxaAttributes.WxaVersionModuleInfo)((Iterator)localObject5).next();
-        } while (!p.i(this.jZu.kac, ((WxaAttributes.WxaVersionModuleInfo)localObject1).name));
+        } while (!p.i(this.kcL.kdt, ((WxaAttributes.WxaVersionModuleInfo)localObject1).name));
         break label832;
-        localObject2 = this.jZu.moduleList;
+        localObject2 = this.kcL.moduleList;
         p.g(localObject2, "versionInfo.moduleList");
-        localObject1 = (WxaAttributes.WxaVersionModuleInfo)h.d((List)localObject2, (String)localObject1, "LaunchCheckPkgHandlerSeparatedPluginsCompatible  appId:" + this.appId + " versionType:" + this.hQh);
+        localObject1 = (WxaAttributes.WxaVersionModuleInfo)h.d((List)localObject2, (String)localObject1, "LaunchCheckPkgHandlerSeparatedPluginsCompatible  appId:" + this.appId + " versionType:" + this.hSZ);
         break label832;
-        localObject1 = (List)d.a.j.ac(new String[] { "__APP__" });
+        localObject1 = (List)d.a.j.ab(new String[] { "__APP__" });
       }
       catch (Throwable localThrowable)
       {
         for (;;)
         {
-          ad.e("MicroMsg.LaunchCheckPkgHandlerSeparatedPluginsCompatible", "await semaphore failed with appId(" + this.appId + ") versionType(" + this.hQh + ')');
+          com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.LaunchCheckPkgHandlerSeparatedPluginsCompatible", "await semaphore failed with appId(" + this.appId + ") versionType(" + this.hSZ + ')');
         }
       }
     }
   }
   
-  public final void RO(String paramString)
+  public final void Sx(String paramString)
   {
     AppMethodBeat.i(180612);
-    if (this.lJa)
+    if (this.lNA)
     {
-      bf.RO(paramString);
+      bf.Sx(paramString);
       AppMethodBeat.o(180612);
       return;
     }
-    ad.e("MicroMsg.LaunchCheckPkgHandlerSeparatedPluginsCompatible", "silent toast:error=" + paramString + ", stack=" + Log.getStackTraceString(new Throwable()));
+    com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.LaunchCheckPkgHandlerSeparatedPluginsCompatible", "silent toast:error=" + paramString + ", stack=" + Log.getStackTraceString(new Throwable()));
     AppMethodBeat.o(180612);
   }
   
-  public void bqN() {}
+  public void brx() {}
   
   public final void gZ(boolean paramBoolean)
   {
-    this.lJa = paramBoolean;
+    this.lNA = paramBoolean;
   }
   
   public void onDownloadProgress(int paramInt) {}
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/launching/LaunchCheckPkgHandlerSeparatedPluginsCompatible$Companion;", "", "()V", "TAG", "", "plugin-appbrand-integration_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/launching/LaunchCheckPkgHandlerSeparatedPluginsCompatible$Companion;", "", "()V", "TAG", "", "plugin-appbrand-integration_release"})
   static final class a {}
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
   static final class b
     extends q
     implements a
@@ -319,7 +318,7 @@ public class ag
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
   static final class c
     extends q
     implements a<d.z>

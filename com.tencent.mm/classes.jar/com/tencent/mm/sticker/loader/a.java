@@ -2,25 +2,25 @@ package com.tencent.mm.sticker.loader;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.loader.h.a.c;
-import com.tencent.mm.protocal.protobuf.bty;
+import com.tencent.mm.protocal.protobuf.bus;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/sticker/loader/LensIconData;", "Lcom/tencent/mm/loader/model/data/ILoaderData;", "lensInfo", "Lcom/tencent/mm/protocal/protobuf/LensInfo;", "(Lcom/tencent/mm/protocal/protobuf/LensInfo;)V", "getLensInfo", "()Lcom/tencent/mm/protocal/protobuf/LensInfo;", "isLegal", "", "uniqueValue", "", "plugin-sticker_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/sticker/loader/LensIconData;", "Lcom/tencent/mm/loader/model/data/ILoaderData;", "lensInfo", "Lcom/tencent/mm/protocal/protobuf/LensInfo;", "(Lcom/tencent/mm/protocal/protobuf/LensInfo;)V", "getLensInfo", "()Lcom/tencent/mm/protocal/protobuf/LensInfo;", "isLegal", "", "uniqueValue", "", "plugin-sticker_release"})
 public final class a
   implements c
 {
-  final bty IlG;
+  final bus IFR;
   
-  public a(bty parambty)
+  public a(bus parambus)
   {
     AppMethodBeat.i(105912);
-    this.IlG = parambty;
+    this.IFR = parambus;
     AppMethodBeat.o(105912);
   }
   
-  public final String aeA()
+  public final String aeM()
   {
-    String str2 = this.IlG.Geb;
+    String str2 = this.IFR.GwI;
     String str1 = str2;
     if (str2 == null) {
       str1 = "";
@@ -30,7 +30,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.sticker.loader.a
  * JD-Core Version:    0.7.0.1
  */

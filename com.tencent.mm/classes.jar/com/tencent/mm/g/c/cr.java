@@ -8,39 +8,39 @@ public abstract class cr
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eEX;
-  private static final int eFM = "size".hashCode();
-  private static final int eNc;
-  private static final int eTj;
-  private static final int eTk;
-  private static final int eVj = "localId".hashCode();
-  private static final int eZK;
-  private static final int eZm;
-  private static final int fbR;
-  private static final int fbS;
-  private static final int fbT = "isGif".hashCode();
-  private static final int fbU = "mediaUrl".hashCode();
-  private static final int fbV = "thumbPicUrl".hashCode();
-  private static final int fbW = "uploadState".hashCode();
-  private static final int fbX = "hostTaskId".hashCode();
-  private static final int fbY = "editFlag".hashCode();
+  private static final int eGG;
+  private static final int eHv = "size".hashCode();
+  private static final int eON;
+  private static final int eUU;
+  private static final int eUV;
+  private static final int eWU = "localId".hashCode();
+  private static final int faZ;
+  private static final int fby;
+  private static final int fdG;
+  private static final int fdH;
+  private static final int fdI = "isGif".hashCode();
+  private static final int fdJ = "mediaUrl".hashCode();
+  private static final int fdK = "thumbPicUrl".hashCode();
+  private static final int fdL = "uploadState".hashCode();
+  private static final int fdM = "hostTaskId".hashCode();
+  private static final int fdN = "editFlag".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eEG = true;
-  private boolean eFK = true;
-  private boolean eMU = true;
-  private boolean eSx = true;
-  private boolean eSy = true;
-  private boolean eVh = true;
-  private boolean eZa = true;
-  private boolean eZv = true;
-  private boolean fbJ = true;
-  private boolean fbK = true;
-  private boolean fbL = true;
-  private boolean fbM = true;
-  private boolean fbN = true;
-  private boolean fbO = true;
-  private boolean fbP = true;
-  private boolean fbQ = true;
+  private boolean eGp = true;
+  private boolean eHt = true;
+  private boolean eOF = true;
+  private boolean eUi = true;
+  private boolean eUj = true;
+  private boolean eWS = true;
+  private boolean faN = true;
+  private boolean fbi = true;
+  private boolean fdA = true;
+  private boolean fdB = true;
+  private boolean fdC = true;
+  private boolean fdD = true;
+  private boolean fdE = true;
+  private boolean fdF = true;
+  private boolean fdy = true;
+  private boolean fdz = true;
   public String field_compressPath;
   public int field_duration;
   public int field_editFlag;
@@ -60,14 +60,14 @@ public abstract class cr
   
   static
   {
-    eEX = "mediaId".hashCode();
-    eZK = "mediaType".hashCode();
-    eNc = "filePath".hashCode();
-    fbR = "compressPath".hashCode();
-    fbS = "thumbPath".hashCode();
-    eTj = "width".hashCode();
-    eTk = "height".hashCode();
-    eZm = "duration".hashCode();
+    eGG = "mediaId".hashCode();
+    fby = "mediaType".hashCode();
+    eON = "filePath".hashCode();
+    fdG = "compressPath".hashCode();
+    fdH = "thumbPath".hashCode();
+    eUU = "width".hashCode();
+    eUV = "height".hashCode();
+    faZ = "duration".hashCode();
   }
   
   public void convertFrom(Cursor paramCursor)
@@ -83,11 +83,11 @@ public abstract class cr
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eVj != k) {
+      if (eWU != k) {
         break label65;
       }
       this.field_localId = paramCursor.getString(i);
-      this.eVh = true;
+      this.eWS = true;
     }
     for (;;)
     {
@@ -95,45 +95,45 @@ public abstract class cr
       break label20;
       break;
       label65:
-      if (eEX == k)
+      if (eGG == k)
       {
         this.field_mediaId = paramCursor.getString(i);
       }
-      else if (eZK == k)
+      else if (fby == k)
       {
         this.field_mediaType = paramCursor.getInt(i);
       }
-      else if (eNc == k)
+      else if (eON == k)
       {
         this.field_filePath = paramCursor.getString(i);
       }
-      else if (fbR == k)
+      else if (fdG == k)
       {
         this.field_compressPath = paramCursor.getString(i);
       }
-      else if (fbS == k)
+      else if (fdH == k)
       {
         this.field_thumbPath = paramCursor.getString(i);
       }
-      else if (eTj == k)
+      else if (eUU == k)
       {
         this.field_width = paramCursor.getInt(i);
       }
-      else if (eTk == k)
+      else if (eUV == k)
       {
         this.field_height = paramCursor.getInt(i);
       }
-      else if (eZm == k)
+      else if (faZ == k)
       {
         this.field_duration = paramCursor.getInt(i);
       }
-      else if (eFM == k)
+      else if (eHv == k)
       {
         this.field_size = paramCursor.getLong(i);
       }
       else
       {
-        if (fbT == k)
+        if (fdI == k)
         {
           if (paramCursor.getInt(i) != 0) {}
           for (boolean bool = true;; bool = false)
@@ -142,15 +142,15 @@ public abstract class cr
             break;
           }
         }
-        if (fbU == k) {
+        if (fdJ == k) {
           this.field_mediaUrl = paramCursor.getString(i);
-        } else if (fbV == k) {
+        } else if (fdK == k) {
           this.field_thumbPicUrl = paramCursor.getString(i);
-        } else if (fbW == k) {
+        } else if (fdL == k) {
           this.field_uploadState = paramCursor.getInt(i);
-        } else if (fbX == k) {
+        } else if (fdM == k) {
           this.field_hostTaskId = paramCursor.getString(i);
-        } else if (fbY == k) {
+        } else if (fdN == k) {
           this.field_editFlag = paramCursor.getInt(i);
         } else if (rowid_HASHCODE == k) {
           this.systemRowid = paramCursor.getLong(i);
@@ -162,52 +162,52 @@ public abstract class cr
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eVh) {
+    if (this.eWS) {
       localContentValues.put("localId", this.field_localId);
     }
-    if (this.eEG) {
+    if (this.eGp) {
       localContentValues.put("mediaId", this.field_mediaId);
     }
-    if (this.eZv) {
+    if (this.fbi) {
       localContentValues.put("mediaType", Integer.valueOf(this.field_mediaType));
     }
-    if (this.eMU) {
+    if (this.eOF) {
       localContentValues.put("filePath", this.field_filePath);
     }
-    if (this.fbJ) {
+    if (this.fdy) {
       localContentValues.put("compressPath", this.field_compressPath);
     }
-    if (this.fbK) {
+    if (this.fdz) {
       localContentValues.put("thumbPath", this.field_thumbPath);
     }
-    if (this.eSx) {
+    if (this.eUi) {
       localContentValues.put("width", Integer.valueOf(this.field_width));
     }
-    if (this.eSy) {
+    if (this.eUj) {
       localContentValues.put("height", Integer.valueOf(this.field_height));
     }
-    if (this.eZa) {
+    if (this.faN) {
       localContentValues.put("duration", Integer.valueOf(this.field_duration));
     }
-    if (this.eFK) {
+    if (this.eHt) {
       localContentValues.put("size", Long.valueOf(this.field_size));
     }
-    if (this.fbL) {
+    if (this.fdA) {
       localContentValues.put("isGif", Boolean.valueOf(this.field_isGif));
     }
-    if (this.fbM) {
+    if (this.fdB) {
       localContentValues.put("mediaUrl", this.field_mediaUrl);
     }
-    if (this.fbN) {
+    if (this.fdC) {
       localContentValues.put("thumbPicUrl", this.field_thumbPicUrl);
     }
-    if (this.fbO) {
+    if (this.fdD) {
       localContentValues.put("uploadState", Integer.valueOf(this.field_uploadState));
     }
-    if (this.fbP) {
+    if (this.fdE) {
       localContentValues.put("hostTaskId", this.field_hostTaskId);
     }
-    if (this.fbQ) {
+    if (this.fdF) {
       localContentValues.put("editFlag", Integer.valueOf(this.field_editFlag));
     }
     if (this.systemRowid > 0L) {
@@ -218,7 +218,7 @@ public abstract class cr
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.c.cr
  * JD-Core Version:    0.7.0.1
  */

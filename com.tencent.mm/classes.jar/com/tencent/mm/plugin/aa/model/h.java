@@ -7,8 +7,8 @@ import com.tencent.mm.vending.j.c;
 public final class h
   implements b<g>
 {
-  protected g iSO;
-  public final a iSP;
+  protected g iVH;
+  public final a iVI;
   
   public h()
   {
@@ -20,14 +20,14 @@ public final class h
   private h(g paramg)
   {
     AppMethodBeat.i(63337);
-    this.iSP = new a();
-    this.iSO = paramg;
+    this.iVI = new a();
+    this.iVH = paramg;
     AppMethodBeat.o(63337);
   }
   
-  public final g aRg()
+  public final g aRF()
   {
-    return this.iSO;
+    return this.iVH;
   }
   
   public final class a
@@ -35,7 +35,7 @@ public final class h
   {
     public a() {}
     
-    public final String Wr()
+    public final String Wz()
     {
       return "Vending.LOGIC";
     }

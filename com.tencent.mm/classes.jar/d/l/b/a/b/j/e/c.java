@@ -6,21 +6,21 @@ import d.l.b.a.b.f.b;
 
 public final class c
 {
-  private b MVU;
-  public final String NiZ;
+  public final String NGf;
+  private b Nta;
   
   private c(String paramString)
   {
     AppMethodBeat.i(60168);
-    this.NiZ = paramString;
+    this.NGf = paramString;
     AppMethodBeat.o(60168);
   }
   
-  public static c bcQ(String paramString)
+  public static c beu(String paramString)
   {
     AppMethodBeat.i(60165);
     if (paramString == null) {
-      ajm(0);
+      ajW(0);
     }
     paramString = new c(paramString);
     AppMethodBeat.o(60165);
@@ -31,10 +31,10 @@ public final class c
   {
     AppMethodBeat.i(60166);
     if (parama == null) {
-      ajm(1);
+      ajW(1);
     }
-    b localb = parama.gqZ();
-    parama = parama.gra().sD().replace('.', '$');
+    b localb = parama.gvB();
+    parama = parama.gvC().sD().replace('.', '$');
     if (localb.isRoot())
     {
       parama = new c(parama);
@@ -50,10 +50,10 @@ public final class c
   {
     AppMethodBeat.i(60167);
     if (paramb == null) {
-      ajm(2);
+      ajW(2);
     }
     c localc = new c(paramb.sD().replace('.', '/'));
-    localc.MVU = paramb;
+    localc.Nta = paramb;
     AppMethodBeat.o(60167);
     return localc;
   }
@@ -71,35 +71,35 @@ public final class c
       AppMethodBeat.o(60172);
       return false;
     }
-    boolean bool = this.NiZ.equals(((c)paramObject).NiZ);
+    boolean bool = this.NGf.equals(((c)paramObject).NGf);
     AppMethodBeat.o(60172);
     return bool;
   }
   
-  public final b gqZ()
+  public final b gvB()
   {
     AppMethodBeat.i(60170);
-    int i = this.NiZ.lastIndexOf("/");
+    int i = this.NGf.lastIndexOf("/");
     if (i == -1)
     {
-      localb = b.Nqf;
+      localb = b.NNl;
       if (localb == null) {
-        ajm(7);
+        ajW(7);
       }
       AppMethodBeat.o(60170);
       return localb;
     }
-    b localb = new b(this.NiZ.substring(0, i).replace('/', '.'));
+    b localb = new b(this.NGf.substring(0, i).replace('/', '.'));
     AppMethodBeat.o(60170);
     return localb;
   }
   
-  public final String gtd()
+  public final String gxF()
   {
     AppMethodBeat.i(60171);
-    String str = this.NiZ;
+    String str = this.NGf;
     if (str == null) {
-      ajm(8);
+      ajW(8);
     }
     AppMethodBeat.o(60171);
     return str;
@@ -108,19 +108,19 @@ public final class c
   public final int hashCode()
   {
     AppMethodBeat.i(60173);
-    int i = this.NiZ.hashCode();
+    int i = this.NGf.hashCode();
     AppMethodBeat.o(60173);
     return i;
   }
   
   public final String toString()
   {
-    return this.NiZ;
+    return this.NGf;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.j.e.c
  * JD-Core Version:    0.7.0.1
  */

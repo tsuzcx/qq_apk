@@ -6,7 +6,7 @@ import android.widget.CompoundButton.OnCheckedChangeListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "<anonymous parameter 0>", "Landroid/widget/CompoundButton;", "kotlin.jvm.PlatformType", "isChecked", "", "onCheckedChanged"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "<anonymous parameter 0>", "Landroid/widget/CompoundButton;", "kotlin.jvm.PlatformType", "isChecked", "", "onCheckedChanged"})
 final class a$4
   implements CompoundButton.OnCheckedChangeListener
 {
@@ -15,7 +15,7 @@ final class a$4
   public final void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
     AppMethodBeat.i(50460);
-    a.e(this.kBH).setEnabled(paramBoolean);
+    a.e(this.kEW).setEnabled(paramBoolean);
     AppMethodBeat.o(50460);
   }
 }

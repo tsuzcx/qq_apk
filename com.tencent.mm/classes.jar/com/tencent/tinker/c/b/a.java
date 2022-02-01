@@ -23,7 +23,7 @@ public final class a
     return localCRC32.getValue();
   }
   
-  public static long ab(File paramFile)
+  public static long aa(File paramFile)
   {
     try
     {

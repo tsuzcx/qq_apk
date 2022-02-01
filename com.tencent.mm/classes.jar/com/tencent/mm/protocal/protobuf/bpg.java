@@ -1,79 +1,129 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import f.a.a.b;
+import java.util.LinkedList;
 
 public final class bpg
-  extends com.tencent.mm.bx.a
+  extends cvw
 {
-  public int FWG;
-  public String ufM;
-  public String wMs;
+  public int HcN;
+  public int HcO;
+  public SKBuiltinBuffer_t HcP;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(32332);
+    AppMethodBeat.i(116329);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aS(1, this.FWG);
-      if (this.wMs != null) {
-        paramVarArgs.d(2, this.wMs);
-      }
-      if (this.ufM != null) {
-        paramVarArgs.d(3, this.ufM);
-      }
-      AppMethodBeat.o(32332);
-      return 0;
-    }
-    if (paramInt == 1)
-    {
-      int i = f.a.a.b.b.a.bz(1, this.FWG) + 0;
-      paramInt = i;
-      if (this.wMs != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.wMs);
-      }
-      i = paramInt;
-      if (this.ufM != null) {
-        i = paramInt + f.a.a.b.b.a.e(3, this.ufM);
-      }
-      AppMethodBeat.o(32332);
-      return i;
-    }
-    if (paramInt == 2)
-    {
-      paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gxE();
-        }
-      }
-      AppMethodBeat.o(32332);
-      return 0;
-    }
-    if (paramInt == 3)
-    {
-      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
-      bpg localbpg = (bpg)paramVarArgs[1];
-      switch (((Integer)paramVarArgs[2]).intValue())
+      if (this.HcP == null)
       {
-      default: 
-        AppMethodBeat.o(32332);
-        return -1;
-      case 1: 
-        localbpg.FWG = locala.NPN.zc();
-        AppMethodBeat.o(32332);
-        return 0;
-      case 2: 
-        localbpg.wMs = locala.NPN.readString();
-        AppMethodBeat.o(32332);
-        return 0;
+        paramVarArgs = new b("Not all required fields were included: ReqText");
+        AppMethodBeat.o(116329);
+        throw paramVarArgs;
       }
-      localbpg.ufM = locala.NPN.readString();
-      AppMethodBeat.o(32332);
+      if (this.BaseRequest != null)
+      {
+        paramVarArgs.lJ(1, this.BaseRequest.computeSize());
+        this.BaseRequest.writeFields(paramVarArgs);
+      }
+      paramVarArgs.aS(2, this.HcN);
+      paramVarArgs.aS(3, this.HcO);
+      if (this.HcP != null)
+      {
+        paramVarArgs.lJ(4, this.HcP.computeSize());
+        this.HcP.writeFields(paramVarArgs);
+      }
+      AppMethodBeat.o(116329);
       return 0;
     }
-    AppMethodBeat.o(32332);
-    return -1;
+    if (paramInt == 1) {
+      if (this.BaseRequest == null) {
+        break label598;
+      }
+    }
+    label598:
+    for (paramInt = f.a.a.a.lI(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
+    {
+      int i = paramInt + f.a.a.b.b.a.bz(2, this.HcN) + f.a.a.b.b.a.bz(3, this.HcO);
+      paramInt = i;
+      if (this.HcP != null) {
+        paramInt = i + f.a.a.a.lI(4, this.HcP.computeSize());
+      }
+      AppMethodBeat.o(116329);
+      return paramInt;
+      if (paramInt == 2)
+      {
+        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = cvw.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cvw.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.gCg();
+          }
+        }
+        if (this.HcP == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: ReqText");
+          AppMethodBeat.o(116329);
+          throw paramVarArgs;
+        }
+        AppMethodBeat.o(116329);
+        return 0;
+      }
+      if (paramInt == 3)
+      {
+        Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
+        bpg localbpg = (bpg)paramVarArgs[1];
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        Object localObject2;
+        boolean bool;
+        switch (paramInt)
+        {
+        default: 
+          AppMethodBeat.o(116329);
+          return -1;
+        case 1: 
+          paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject2 = (byte[])paramVarArgs.get(paramInt);
+            localObject1 = new jc();
+            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
+            for (bool = true; bool; bool = ((jc)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cvw.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            localbpg.BaseRequest = ((jc)localObject1);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(116329);
+          return 0;
+        case 2: 
+          localbpg.HcN = ((f.a.a.a.a)localObject1).OmT.zc();
+          AppMethodBeat.o(116329);
+          return 0;
+        case 3: 
+          localbpg.HcO = ((f.a.a.a.a)localObject1).OmT.zc();
+          AppMethodBeat.o(116329);
+          return 0;
+        }
+        paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
+        i = paramVarArgs.size();
+        paramInt = 0;
+        while (paramInt < i)
+        {
+          localObject2 = (byte[])paramVarArgs.get(paramInt);
+          localObject1 = new SKBuiltinBuffer_t();
+          localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
+          for (bool = true; bool; bool = ((SKBuiltinBuffer_t)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cvw.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+          localbpg.HcP = ((SKBuiltinBuffer_t)localObject1);
+          paramInt += 1;
+        }
+        AppMethodBeat.o(116329);
+        return 0;
+      }
+      AppMethodBeat.o(116329);
+      return -1;
+    }
   }
 }
 

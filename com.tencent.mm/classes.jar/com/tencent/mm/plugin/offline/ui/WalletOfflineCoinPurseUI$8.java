@@ -16,15 +16,15 @@ final class WalletOfflineCoinPurseUI$8
     AppMethodBeat.i(66409);
     b localb = new b();
     localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/offline/ui/WalletOfflineCoinPurseUI$16", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-    WalletOfflineCoinPurseUI.m(this.wAR);
+    a.b("com/tencent/mm/plugin/offline/ui/WalletOfflineCoinPurseUI$16", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+    WalletOfflineCoinPurseUI.m(this.wQC);
     a.a(this, "com/tencent/mm/plugin/offline/ui/WalletOfflineCoinPurseUI$16", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(66409);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.offline.ui.WalletOfflineCoinPurseUI.8
  * JD-Core Version:    0.7.0.1
  */

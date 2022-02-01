@@ -19,31 +19,31 @@ public final class b
   implements c.a
 {
   private final Calendar calendar;
-  private final TypedArray fJW;
-  private final a fJX;
-  public final a<com.tencent.mm.chatroom.d.a> fJY;
-  private final Collection<com.tencent.mm.chatroom.d.a> fJZ;
-  private final Integer fKa;
-  private final Integer fKb;
-  private final boolean fKc;
+  private final TypedArray fLZ;
+  private final a fMa;
+  public final a<com.tencent.mm.chatroom.d.a> fMb;
+  private final Collection<com.tencent.mm.chatroom.d.a> fMc;
+  private final Integer fMd;
+  private final Integer fMe;
+  private final boolean fMf;
   private final Context mContext;
   
   public b(Context paramContext, a parama, TypedArray paramTypedArray, long paramLong, Collection<com.tencent.mm.chatroom.d.a> paramCollection)
   {
     AppMethodBeat.i(12437);
-    this.fJW = paramTypedArray;
+    this.fLZ = paramTypedArray;
     this.calendar = Calendar.getInstance();
-    this.fKb = Integer.valueOf(paramTypedArray.getInt(15, this.calendar.get(2) % 12));
+    this.fMe = Integer.valueOf(paramTypedArray.getInt(15, this.calendar.get(2) % 12));
     if (-1L != paramLong) {
       this.calendar.setTimeInMillis(paramLong);
     }
-    this.fKa = Integer.valueOf(paramTypedArray.getInt(13, this.calendar.get(2)));
-    this.fKc = paramTypedArray.getBoolean(16, false);
-    this.fJY = new a();
-    this.fJZ = paramCollection;
+    this.fMd = Integer.valueOf(paramTypedArray.getInt(13, this.calendar.get(2)));
+    this.fMf = paramTypedArray.getBoolean(16, false);
+    this.fMb = new a();
+    this.fMc = paramCollection;
     this.mContext = paramContext;
-    this.fJX = parama;
-    if (this.fJW.getBoolean(10, false)) {
+    this.fMa = parama;
+    if (this.fLZ.getBoolean(10, false)) {
       c(new com.tencent.mm.chatroom.d.a(System.currentTimeMillis()));
     }
     AppMethodBeat.o(12437);
@@ -52,7 +52,7 @@ public final class b
   private void c(com.tencent.mm.chatroom.d.a parama)
   {
     AppMethodBeat.i(12440);
-    this.fJX.a(parama);
+    this.fMa.a(parama);
     d(parama);
     AppMethodBeat.o(12440);
   }
@@ -60,28 +60,28 @@ public final class b
   private void d(com.tencent.mm.chatroom.d.a parama)
   {
     AppMethodBeat.i(12441);
-    if (this.fKc)
+    if (this.fMf)
     {
       int i;
-      if ((this.fJY.first != null) && (this.fJY.fKd == null))
+      if ((this.fMb.first != null) && (this.fMb.fMg == null))
       {
-        this.fJY.fKd = parama;
-        if (((com.tencent.mm.chatroom.d.a)this.fJY.first).month < parama.month) {
+        this.fMb.fMg = parama;
+        if (((com.tencent.mm.chatroom.d.a)this.fMb.first).month < parama.month) {
           i = 0;
         }
       }
       else
       {
-        while (i < ((com.tencent.mm.chatroom.d.a)this.fJY.first).month - parama.month - 1)
+        while (i < ((com.tencent.mm.chatroom.d.a)this.fMb.first).month - parama.month - 1)
         {
-          this.fJX.a(parama);
+          this.fMa.a(parama);
           i += 1;
           continue;
-          if (this.fJY.fKd == null) {
+          if (this.fMb.fMg == null) {
             break label144;
           }
-          this.fJY.first = parama;
-          this.fJY.fKd = null;
+          this.fMb.first = parama;
+          this.fMb.fMg = null;
         }
       }
     }
@@ -91,9 +91,9 @@ public final class b
       AppMethodBeat.o(12441);
       return;
       label144:
-      this.fJY.first = parama;
+      this.fMb.first = parama;
       continue;
-      this.fJY.first = parama;
+      this.fMb.first = parama;
     }
   }
   
@@ -109,14 +109,14 @@ public final class b
   public final int getItemCount()
   {
     AppMethodBeat.i(12438);
-    int j = (new com.tencent.mm.chatroom.d.a(this.fJX.Yc()).year - this.calendar.get(1) + 1) * 12;
+    int j = (new com.tencent.mm.chatroom.d.a(this.fMa.Ym()).year - this.calendar.get(1) + 1) * 12;
     int i = j;
-    if (this.fKa.intValue() != -1) {
-      i = j - this.fKa.intValue();
+    if (this.fMd.intValue() != -1) {
+      i = j - this.fMd.intValue();
     }
     j = i;
-    if (this.fKb.intValue() != -1) {
-      j = i - (12 - this.fKb.intValue() - 1);
+    if (this.fMe.intValue() != -1) {
+      j = i - (12 - this.fMe.intValue() - 1);
     }
     AppMethodBeat.o(12438);
     return j;
@@ -130,23 +130,23 @@ public final class b
   public static final class a<K>
     implements Serializable
   {
-    K fKd;
+    K fMg;
     K first;
   }
   
   public static final class b
     extends RecyclerView.w
   {
-    final c fKe;
+    final c fMh;
     
     public b(View paramView, c.a parama)
     {
       super();
       AppMethodBeat.i(12436);
-      this.fKe = ((c)paramView);
-      this.fKe.setLayoutParams(new AbsListView.LayoutParams(-1, -1));
-      this.fKe.setClickable(true);
-      this.fKe.setOnDayClickListener(parama);
+      this.fMh = ((c)paramView);
+      this.fMh.setLayoutParams(new AbsListView.LayoutParams(-1, -1));
+      this.fMh.setClickable(true);
+      this.fMh.setOnDayClickListener(parama);
       AppMethodBeat.o(12436);
     }
   }

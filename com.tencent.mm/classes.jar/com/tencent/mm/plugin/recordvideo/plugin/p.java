@@ -4,30 +4,30 @@ import android.content.Intent;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.recordvideo.plugin.parent.d;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/recordvideo/plugin/EditVideoAddonTextPlugin;", "Lcom/tencent/mm/plugin/recordvideo/plugin/IBaseRecordPlugin;", "view", "Landroid/widget/TextView;", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "(Landroid/widget/TextView;Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "getStatus", "()Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "setStatus", "(Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "getView", "()Landroid/widget/TextView;", "setView", "(Landroid/widget/TextView;)V", "setText", "", "wording", "", "plugin-recordvideo_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/recordvideo/plugin/EditVideoAddonTextPlugin;", "Lcom/tencent/mm/plugin/recordvideo/plugin/IBaseRecordPlugin;", "view", "Landroid/widget/TextView;", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "(Landroid/widget/TextView;Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "getStatus", "()Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "setStatus", "(Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "getView", "()Landroid/widget/TextView;", "setView", "(Landroid/widget/TextView;)V", "setText", "", "wording", "", "plugin-recordvideo_release"})
 public final class p
   implements t
 {
-  private d sQE;
-  private TextView xBa;
+  private d tbP;
+  private TextView xQV;
   
   public p(TextView paramTextView, d paramd)
   {
     AppMethodBeat.i(75575);
-    this.xBa = paramTextView;
-    this.sQE = paramd;
+    this.xQV = paramTextView;
+    this.tbP = paramd;
     AppMethodBeat.o(75575);
   }
   
-  public final boolean aoB()
+  public final boolean aoQ()
   {
     return false;
   }
   
-  public final void ayX() {}
+  public final void azm() {}
   
   public final String name()
   {
@@ -42,11 +42,11 @@ public final class p
   
   public final void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    AppMethodBeat.i(200320);
+    AppMethodBeat.i(206581);
     d.g.b.p.h(paramArrayOfString, "permissions");
     d.g.b.p.h(paramArrayOfInt, "grantResults");
     t.a.a(paramArrayOfString, paramArrayOfInt);
-    AppMethodBeat.o(200320);
+    AppMethodBeat.o(206581);
   }
   
   public final void onResume() {}
@@ -58,14 +58,14 @@ public final class p
   public final void setText(String paramString)
   {
     AppMethodBeat.i(75574);
-    if (bt.isNullOrNil(paramString))
+    if (bu.isNullOrNil(paramString))
     {
-      this.xBa.setVisibility(8);
+      this.xQV.setVisibility(8);
       AppMethodBeat.o(75574);
       return;
     }
-    this.xBa.setVisibility(0);
-    this.xBa.setText((CharSequence)paramString);
+    this.xQV.setVisibility(0);
+    this.xQV.setText((CharSequence)paramString);
     AppMethodBeat.o(75574);
   }
   
@@ -73,7 +73,7 @@ public final class p
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.plugin.p
  * JD-Core Version:    0.7.0.1
  */

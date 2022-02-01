@@ -18,22 +18,22 @@ import com.tencent.mm.ui.base.preference.Preference;
 public final class f
   extends Preference
 {
-  private View.OnClickListener gMe;
+  private View.OnClickListener gON;
   private boolean mClickable;
   private String mContent;
   private View mView;
-  private int wET;
-  private int wEU;
-  private int wEV;
+  private int wUE;
+  private int wUF;
+  private int wUG;
   
   public f(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(66815);
     this.mView = null;
-    this.wET = 2147483647;
-    this.wEU = -1;
-    this.wEV = -1;
+    this.wUE = 2147483647;
+    this.wUF = -1;
+    this.wUG = -1;
     setLayoutResource(2131494709);
     AppMethodBeat.o(66815);
   }
@@ -42,23 +42,23 @@ public final class f
   {
     this.mContent = paramString;
     this.mClickable = true;
-    this.wEU = paramInt1;
-    this.wEV = paramInt2;
-    this.gMe = paramOnClickListener;
+    this.wUF = paramInt1;
+    this.wUG = paramInt2;
+    this.gON = paramOnClickListener;
   }
   
-  public final void aue(String paramString)
+  public final void avt(String paramString)
   {
     AppMethodBeat.i(66818);
     try
     {
-      this.wET = g.cl(paramString, true);
+      this.wUE = g.cp(paramString, true);
       AppMethodBeat.o(66818);
       return;
     }
     catch (Exception paramString)
     {
-      this.wET = 2147483647;
+      this.wUE = 2147483647;
       AppMethodBeat.o(66818);
     }
   }
@@ -82,16 +82,16 @@ public final class f
     Object localObject = (TextView)paramView.findViewById(2131302033);
     paramView = (TextView)paramView.findViewById(2131302032);
     ((TextView)localObject).setText(getTitle());
-    if (this.wET != 2147483647) {
-      paramView.setTextColor(this.wET);
+    if (this.wUE != 2147483647) {
+      paramView.setTextColor(this.wUE);
     }
     if (this.mClickable)
     {
-      if ((this.wEU >= 0) && (this.wEV > 0))
+      if ((this.wUF >= 0) && (this.wUG > 0))
       {
         localObject = new a(this.mContext);
         SpannableString localSpannableString = new SpannableString(this.mContent);
-        ((a)localObject).wFm = new a.a()
+        ((a)localObject).wUX = new a.a()
         {
           public final void onClick(View paramAnonymousView)
           {
@@ -103,13 +103,13 @@ public final class f
           }
         };
         paramView.setMovementMethod(LinkMovementMethod.getInstance());
-        localSpannableString.setSpan(localObject, this.wEU, this.wEV, 33);
+        localSpannableString.setSpan(localObject, this.wUF, this.wUG, 33);
         paramView.setText(localSpannableString);
         AppMethodBeat.o(66817);
         return;
       }
       paramView.setTextColor(this.mContext.getResources().getColor(2131100607));
-      paramView.setOnClickListener(this.gMe);
+      paramView.setOnClickListener(this.gON);
       paramView.setText(k.b(this.mContext, this.mContent, paramView.getTextSize()));
       AppMethodBeat.o(66817);
       return;
@@ -127,7 +127,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.order.ui.a.f
  * JD-Core Version:    0.7.0.1
  */

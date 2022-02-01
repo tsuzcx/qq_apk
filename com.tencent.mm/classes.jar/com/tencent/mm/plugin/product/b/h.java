@@ -1,47 +1,47 @@
 package com.tencent.mm.plugin.product.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.f;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.f;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.bgi;
-import com.tencent.mm.protocal.protobuf.bgj;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.bgy;
+import com.tencent.mm.protocal.protobuf.bgz;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.List;
 
 public final class h
-  extends com.tencent.mm.al.n
+  extends com.tencent.mm.ak.n
   implements k
 {
   private f callback;
   private b rr;
-  public String wMc;
-  public m wMd;
-  public List<n> wMe;
+  public String xbQ;
+  public m xbR;
+  public List<n> xbS;
   
   public h(m paramm, String paramString)
   {
     AppMethodBeat.i(66894);
     Object localObject = new b.a();
-    ((b.a)localObject).hNM = new bgi();
-    ((b.a)localObject).hNN = new bgj();
+    ((b.a)localObject).hQF = new bgy();
+    ((b.a)localObject).hQG = new bgz();
     ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/getproductdetail";
     ((b.a)localObject).funcId = 553;
-    ((b.a)localObject).hNO = 0;
+    ((b.a)localObject).hQH = 0;
     ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).aDC();
-    localObject = (bgi)this.rr.hNK.hNQ;
-    this.wMc = paramString;
-    ((bgi)localObject).GBF = paramString;
-    ad.d("MicroMsg.NetSceneMallGetProductDetail", "pid ".concat(String.valueOf(paramString)));
-    ((bgi)localObject).Version = 0;
-    this.wMd = paramm;
+    this.rr = ((b.a)localObject).aDS();
+    localObject = (bgy)this.rr.hQD.hQJ;
+    this.xbQ = paramString;
+    ((bgy)localObject).GVf = paramString;
+    ae.d("MicroMsg.NetSceneMallGetProductDetail", "pid ".concat(String.valueOf(paramString)));
+    ((bgy)localObject).Version = 0;
+    this.xbR = paramm;
     AppMethodBeat.o(66894);
   }
   
@@ -62,11 +62,11 @@ public final class h
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(66895);
-    paramArrayOfByte = (bgj)((b)paramq).hNL.hNQ;
-    if (!bt.isNullOrNil(paramArrayOfByte.GBH))
+    paramArrayOfByte = (bgz)((b)paramq).hQE.hQJ;
+    if (!bu.isNullOrNil(paramArrayOfByte.GVh))
     {
-      ad.d("MicroMsg.NetSceneMallGetProductDetail", "resp.ProductInfo " + paramArrayOfByte.GBH);
-      this.wMd = m.a(this.wMd, paramArrayOfByte.GBH);
+      ae.d("MicroMsg.NetSceneMallGetProductDetail", "resp.ProductInfo " + paramArrayOfByte.GVh);
+      this.xbR = m.a(this.xbR, paramArrayOfByte.GVh);
     }
     paramInt1 = paramInt3;
     paramq = paramString;
@@ -74,18 +74,18 @@ public final class h
     {
       paramInt1 = paramInt3;
       paramq = paramString;
-      if (paramArrayOfByte.FCq != 0)
+      if (paramArrayOfByte.FUL != 0)
       {
-        paramInt1 = paramArrayOfByte.FCq;
-        paramq = paramArrayOfByte.FCr;
+        paramInt1 = paramArrayOfByte.FUL;
+        paramq = paramArrayOfByte.FUM;
       }
     }
-    if (!bt.isNullOrNil(paramArrayOfByte.GBI))
+    if (!bu.isNullOrNil(paramArrayOfByte.GVi))
     {
-      ad.d("MicroMsg.NetSceneMallGetProductDetail", "resp.RecommendInfo " + paramArrayOfByte.GBI);
-      this.wMe = n.parse(paramArrayOfByte.GBI);
+      ae.d("MicroMsg.NetSceneMallGetProductDetail", "resp.RecommendInfo " + paramArrayOfByte.GVi);
+      this.xbS = n.parse(paramArrayOfByte.GVi);
     }
-    ad.d("MicroMsg.NetSceneMallGetProductDetail", "errCode " + paramInt1 + ", errMsg " + paramq);
+    ae.d("MicroMsg.NetSceneMallGetProductDetail", "errCode " + paramInt1 + ", errMsg " + paramq);
     this.callback.onSceneEnd(paramInt2, paramInt1, paramq, this);
     AppMethodBeat.o(66895);
   }

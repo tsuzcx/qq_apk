@@ -10,15 +10,15 @@ public class TotalCountLruDiskUsage
   
   public TotalCountLruDiskUsage(int paramInt)
   {
-    AppMethodBeat.i(215903);
+    AppMethodBeat.i(195187);
     if (paramInt <= 0)
     {
       IllegalArgumentException localIllegalArgumentException = new IllegalArgumentException("Max count must be positive number!");
-      AppMethodBeat.o(215903);
+      AppMethodBeat.o(195187);
       throw localIllegalArgumentException;
     }
     this.maxCount = paramInt;
-    AppMethodBeat.o(215903);
+    AppMethodBeat.o(195187);
   }
   
   protected boolean accept(File paramFile, long paramLong, int paramInt)

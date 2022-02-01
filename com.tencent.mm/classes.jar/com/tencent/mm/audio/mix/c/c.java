@@ -7,103 +7,103 @@ import java.lang.reflect.Array;
 public class c
   implements g
 {
-  protected static long dcI;
-  protected static long dcJ;
-  protected static Object dcK;
-  protected int dcA;
-  protected int dcB;
-  protected int dcC;
-  protected boolean dcD;
-  protected boolean dcE;
-  protected boolean dcF;
-  protected String dcG;
-  protected String dcH;
-  protected byte[][] dcL;
-  protected h dcM;
-  protected h dcw;
-  protected int dcx;
-  protected int dcy;
-  protected int dcz;
+  protected static long ddK;
+  protected static long ddL;
+  protected static Object ddM;
+  protected int ddA;
+  protected int ddB;
+  protected int ddC;
+  protected int ddD;
+  protected int ddE;
+  protected boolean ddF;
+  protected boolean ddG;
+  protected boolean ddH;
+  protected String ddI;
+  protected String ddJ;
+  protected byte[][] ddN;
+  protected h ddO;
+  protected h ddy;
+  protected int ddz;
   
   static
   {
     AppMethodBeat.i(136766);
-    dcI = 0L;
-    dcJ = 0L;
-    dcK = new Object();
+    ddK = 0L;
+    ddL = 0L;
+    ddM = new Object();
     AppMethodBeat.o(136766);
   }
   
   public c()
   {
     AppMethodBeat.i(136761);
-    this.dcx = 0;
-    this.dcy = 0;
-    this.dcz = 0;
-    this.dcA = 44100;
-    this.dcB = 2;
-    this.dcC = 2;
-    this.dcD = false;
-    this.dcE = false;
-    this.dcF = false;
-    this.dcL = new byte[2][];
+    this.ddz = 0;
+    this.ddA = 0;
+    this.ddB = 0;
+    this.ddC = 44100;
+    this.ddD = 2;
+    this.ddE = 2;
+    this.ddF = false;
+    this.ddG = false;
+    this.ddH = false;
+    this.ddN = new byte[2][];
     AppMethodBeat.o(136761);
   }
   
   public final void G(int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(136763);
-    int i = this.dcx;
-    this.dcx = paramInt1;
-    this.dcy = paramInt2;
-    this.dcz = paramInt3;
-    if (this.dcA != this.dcx) {
-      if (this.dcw == null)
+    int i = this.ddz;
+    this.ddz = paramInt1;
+    this.ddA = paramInt2;
+    this.ddB = paramInt3;
+    if (this.ddC != this.ddz) {
+      if (this.ddy == null)
       {
-        this.dcw = Oz();
-        this.dcw.l(this.dcH, this.dcx, this.dcA);
-        if ((this.dcy == 2) && (this.dcB == 2))
+        this.ddy = Ox();
+        this.ddy.l(this.ddJ, this.ddz, this.ddC);
+        if ((this.ddA == 2) && (this.ddD == 2))
         {
-          if (this.dcM != null) {
+          if (this.ddO != null) {
             break label247;
           }
-          this.dcM = Oz();
-          this.dcM.l(this.dcH + "RResample", this.dcx, this.dcA);
+          this.ddO = Ox();
+          this.ddO.l(this.ddJ + "RResample", this.ddz, this.ddC);
         }
         label145:
-        this.dcF = true;
+        this.ddH = true;
       }
     }
     for (;;)
     {
-      if (this.dcC != this.dcz) {
-        this.dcE = true;
+      if (this.ddE != this.ddB) {
+        this.ddG = true;
       }
-      if (this.dcB != this.dcy) {
-        this.dcD = true;
+      if (this.ddD != this.ddA) {
+        this.ddF = true;
       }
       AppMethodBeat.o(136763);
       return;
-      if ((this.dcw == null) || (i == this.dcx)) {
+      if ((this.ddy == null) || (i == this.ddz)) {
         break;
       }
-      this.dcw.release();
-      this.dcw = Oz();
-      this.dcw.l(this.dcH, this.dcx, this.dcA);
+      this.ddy.release();
+      this.ddy = Ox();
+      this.ddy.l(this.ddJ, this.ddz, this.ddC);
       break;
       label247:
-      if ((this.dcM == null) || (i == this.dcx)) {
+      if ((this.ddO == null) || (i == this.ddz)) {
         break label145;
       }
-      this.dcM.release();
-      this.dcM = Oz();
-      this.dcM.l(this.dcH + "RResample", this.dcx, this.dcA);
+      this.ddO.release();
+      this.ddO = Ox();
+      this.ddO.l(this.ddJ + "RResample", this.ddz, this.ddC);
       break label145;
-      this.dcF = false;
-      if (this.dcw != null)
+      this.ddH = false;
+      if (this.ddy != null)
       {
-        this.dcw.release();
-        this.dcw = null;
+        this.ddy.release();
+        this.ddy = null;
       }
     }
   }
@@ -116,9 +116,9 @@ public class c
       AppMethodBeat.o(136764);
       return paramArrayOfByte;
     }
-    if (this.dcE)
+    if (this.ddG)
     {
-      ??? = b.a(this.dcz, this.dcC, paramArrayOfByte);
+      ??? = b.a(this.ddB, this.ddE, paramArrayOfByte);
       if (??? == null) {}
     }
     for (;;)
@@ -128,13 +128,13 @@ public class c
       }
       for (;;)
       {
-        if ((this.dcy == 1) && (this.dcB == 2) && (this.dcF))
+        if ((this.ddA == 1) && (this.ddD == 2) && (this.ddH))
         {
-          paramArrayOfByte = this.dcw.J((byte[])???);
+          paramArrayOfByte = this.ddy.J((byte[])???);
           if (paramArrayOfByte != null) {
             ??? = paramArrayOfByte;
           }
-          paramArrayOfByte = b.b(this.dcy, this.dcB, this.dcC, (byte[])???);
+          paramArrayOfByte = b.b(this.ddA, this.ddD, this.ddE, (byte[])???);
           if (paramArrayOfByte != null) {
             ??? = paramArrayOfByte;
           }
@@ -142,18 +142,18 @@ public class c
           return ???;
         }
         byte[] arrayOfByte;
-        if ((this.dcy == 2) && (this.dcB == 2) && (this.dcF))
+        if ((this.ddA == 2) && (this.ddD == 2) && (this.ddH))
         {
-          if ((this.dcw instanceof i)) {
-            if (this.dcB == 2)
+          if ((this.ddy instanceof i)) {
+            if (this.ddD == 2)
             {
               int i = ???.length / 2;
-              if ((this.dcL == null) || (i != this.dcL.length)) {
-                this.dcL = ((byte[][])Array.newInstance(Byte.TYPE, new int[] { 2, i }));
+              if ((this.ddN == null) || (i != this.ddN.length)) {
+                this.ddN = ((byte[][])Array.newInstance(Byte.TYPE, new int[] { 2, i }));
               }
-              b.a(this.dcC, (byte[])???, this.dcL);
-              paramArrayOfByte = this.dcw.J(this.dcL[0]);
-              arrayOfByte = this.dcM.J(this.dcL[1]);
+              b.a(this.ddE, (byte[])???, this.ddN);
+              paramArrayOfByte = this.ddy.J(this.ddN[0]);
+              arrayOfByte = this.ddO.J(this.ddN[1]);
               if ((paramArrayOfByte == null) || (arrayOfByte == null)) {
                 paramArrayOfByte = (byte[])???;
               }
@@ -166,16 +166,16 @@ public class c
             }
             AppMethodBeat.o(136764);
             return ???;
-            paramArrayOfByte = b.a(this.dcC, paramArrayOfByte, arrayOfByte);
+            paramArrayOfByte = b.a(this.ddE, paramArrayOfByte, arrayOfByte);
             continue;
-            paramArrayOfByte = this.dcw.J((byte[])???);
+            paramArrayOfByte = this.ddy.J((byte[])???);
             continue;
-            paramArrayOfByte = this.dcw.J((byte[])???);
+            paramArrayOfByte = this.ddy.J((byte[])???);
           }
         }
-        if (this.dcD)
+        if (this.ddF)
         {
-          arrayOfByte = b.b(this.dcy, this.dcB, this.dcC, (byte[])???);
+          arrayOfByte = b.b(this.ddA, this.ddD, this.ddE, (byte[])???);
           if (arrayOfByte != null) {
             ??? = arrayOfByte;
           }
@@ -186,16 +186,16 @@ public class c
           for (;;)
           {
             ??? = paramArrayOfByte;
-            if (this.dcF) {}
-            synchronized (dcK)
+            if (this.ddH) {}
+            synchronized (ddM)
             {
-              dcI += 1L;
+              ddK += 1L;
               System.nanoTime();
-              ??? = this.dcw.J(paramArrayOfByte);
+              ??? = this.ddy.J(paramArrayOfByte);
               if (??? != null) {
                 paramArrayOfByte = (byte[])???;
               }
-              synchronized (dcK)
+              synchronized (ddM)
               {
                 ??? = paramArrayOfByte;
               }
@@ -211,14 +211,7 @@ public class c
     }
   }
   
-  public void OA() {}
-  
-  public e OB()
-  {
-    return null;
-  }
-  
-  public h Oz()
+  public h Ox()
   {
     AppMethodBeat.i(136762);
     i locali = new i();
@@ -226,27 +219,34 @@ public class c
     return locali;
   }
   
+  public void Oy() {}
+  
+  public e Oz()
+  {
+    return null;
+  }
+  
   public void flushCache() {}
   
   public void release()
   {
     AppMethodBeat.i(136765);
-    if (this.dcw != null)
+    if (this.ddy != null)
     {
-      this.dcw.release();
-      this.dcw = null;
+      this.ddy.release();
+      this.ddy = null;
     }
-    if (this.dcM != null)
+    if (this.ddO != null)
     {
-      this.dcM.release();
-      this.dcM = null;
+      this.ddO.release();
+      this.ddO = null;
     }
     AppMethodBeat.o(136765);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.audio.mix.c.c
  * JD-Core Version:    0.7.0.1
  */

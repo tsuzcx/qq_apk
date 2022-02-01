@@ -11,12 +11,12 @@ abstract class r
     super.setHorizontallyScrolling(true);
   }
   
-  public final boolean bEq()
+  public final boolean bFi()
   {
     return false;
   }
   
-  public boolean bEu()
+  public boolean bFm()
   {
     return false;
   }

@@ -1,153 +1,152 @@
 package com.tencent.mm.plugin.appbrand.utils;
 
 import android.content.Context;
-import android.content.res.Resources;
-import android.os.Build;
-import android.util.DisplayMetrics;
-import com.tencent.luggage.h.j;
+import android.webkit.ValueCallback;
+import com.eclipsesource.v8.ScriptPartObject;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.ui.al;
-import d.g.b.p;
-import d.l;
-import d.n.n;
+import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
+import com.tencent.mm.plugin.appbrand.appcache.q.a;
+import com.tencent.mm.plugin.appbrand.appstorage.n;
+import com.tencent.mm.plugin.appbrand.ar;
+import com.tencent.mm.plugin.appbrand.jsruntime.i;
+import com.tencent.mm.plugin.appbrand.launching.params.LaunchParcel;
+import com.tencent.mm.plugin.appbrand.r;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
+import java.io.File;
+import java.util.ArrayList;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/utils/LuggageUIUtilsBridge;", "Lcom/tencent/luggage/util/UIUtilsInterface;", "()V", "TAG", "", "getCutOutHeight", "", "context", "Landroid/content/Context;", "getDarkModeColor", "originalColor", "getStableStatusBarHeight", "hasCutOut", "", "hasHuaweiMagicWindowFeature", "huaweiSpecial", "isDarkMode", "isHuaweiFold", "plugin-luggage-wechat-impl_release"})
 public final class t
-  implements j
 {
-  public static final t mPd;
+  private static String mUa;
   
-  static
+  public static String a(r paramr, a parama)
   {
-    AppMethodBeat.i(174557);
-    mPd = new t();
-    AppMethodBeat.o(174557);
-  }
-  
-  public final boolean Ft()
-  {
-    AppMethodBeat.i(217222);
-    boolean bool = al.Ft();
-    AppMethodBeat.o(217222);
-    return bool;
-  }
-  
-  public final boolean Fu()
-  {
-    boolean bool2 = true;
-    AppMethodBeat.i(217224);
-    if (n.H("HUAWEI", Build.BRAND, true))
-    {
-      bool1 = bool2;
-      if (!n.H("unknownRLI", Build.DEVICE, true))
-      {
-        bool1 = bool2;
-        if (!n.H("HWTAH", Build.DEVICE, true))
-        {
-          bool1 = bool2;
-          if (!n.H("HWTAH-C", Build.DEVICE, true))
-          {
-            bool1 = bool2;
-            if (!n.H("unknownRHA", Build.DEVICE, true))
-            {
-              bool1 = bool2;
-              if (!n.H("HWTET", Build.DEVICE, true)) {
-                if (!n.H("unknownTXL", Build.DEVICE, true)) {
-                  break label124;
-                }
-              }
-            }
-          }
-        }
-      }
+    AppMethodBeat.i(147726);
+    String str = "";
+    if (parama == a.mUb) {
+      str = paramr.ES();
     }
-    label124:
-    for (boolean bool1 = bool2;; bool1 = false)
+    for (;;)
     {
-      ad.i("MicroMsg.LuggageUIUtilsBridge", "isHuaweiFold: ".concat(String.valueOf(bool1)));
-      AppMethodBeat.o(217224);
-      return bool1;
-    }
-  }
-  
-  public final boolean Fv()
-  {
-    AppMethodBeat.i(217223);
-    boolean bool1 = false;
-    try
-    {
-      boolean bool2 = u.Fv();
-      bool1 = bool2;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        ad.e("MicroMsg.LuggageUIUtilsBridge", "hasHuaweiMagicWindowFeature" + localException.getMessage());
-      }
-    }
-    ad.i("MicroMsg.LuggageUIUtilsBridge", "hasHuaweiMagicWindowFeature: ".concat(String.valueOf(bool1)));
-    AppMethodBeat.o(217223);
-    return bool1;
-  }
-  
-  public final int aF(Context paramContext)
-  {
-    AppMethodBeat.i(174555);
-    int i = al.aF(paramContext);
-    AppMethodBeat.o(174555);
-    return i;
-  }
-  
-  public final boolean aG(Context paramContext)
-  {
-    AppMethodBeat.i(174556);
-    boolean bool = al.aG(paramContext);
-    AppMethodBeat.o(174556);
-    return bool;
-  }
-  
-  public final int aH(Context paramContext)
-  {
-    AppMethodBeat.i(182443);
-    p.h(paramContext, "context");
-    try
-    {
-      paramContext = paramContext.getApplicationContext();
-      p.g(paramContext, "context.applicationContext");
-      paramContext = paramContext.getResources();
-      p.g(paramContext, "resources");
-      float f = paramContext.getDisplayMetrics().density;
-      f = com.tencent.mm.cd.a.fhL() / f;
-      i = d.h.a.co(paramContext.getDimensionPixelSize(paramContext.getIdentifier("status_bar_height", "dimen", "android")) * f);
-      AppMethodBeat.o(182443);
-      return i;
-    }
-    catch (Throwable paramContext)
-    {
-      for (;;)
-      {
-        ad.e("MicroMsg.LuggageUIUtilsBridge", "getStableStatusBarHeight e=".concat(String.valueOf(paramContext)));
-        int i = 0;
+      AppMethodBeat.o(147726);
+      return str;
+      if (parama == a.mUc) {
+        str = paramr.ER();
       }
     }
   }
   
-  public final int gD(int paramInt)
+  public static void a(AppBrandRuntime paramAppBrandRuntime, i parami, String paramString, q.a parama, s.a parama1)
   {
-    AppMethodBeat.i(174553);
-    paramInt = al.gD(paramInt);
-    AppMethodBeat.o(174553);
-    return paramInt;
+    AppMethodBeat.i(220901);
+    if ((paramAppBrandRuntime == null) || (paramAppBrandRuntime.Ey() == null))
+    {
+      ae.e("MicroMsg.JsValidationInjectorWC", "injectWxaScriptWithSourceMapUsingFileEntry: virtualAccessScriptPath[%s] runtime or service is null!", new Object[] { paramString });
+      AppMethodBeat.o(220901);
+      return;
+    }
+    String str2 = LaunchParcel.MW(parama.fileName).replace('/', '_') + "_" + parama.jIJ;
+    String str3 = parama.jIK;
+    Object localObject = a.mUc;
+    String str1 = a(paramAppBrandRuntime.Ey(), (a)localObject);
+    localObject = str1;
+    if (str1.endsWith("/")) {
+      localObject = str1.substring(0, str1.length() - 1);
+    }
+    localObject = (String)localObject + n.MV(paramString);
+    if (ar.c(paramAppBrandRuntime, paramString))
+    {
+      ae.i("MicroMsg.JsValidationInjectorWC", "injectWxaScriptWithSourceMapUsingFileEntry: inject sourceMap appId[%s] virtualAccessScriptPath[%s]", new Object[] { paramAppBrandRuntime.mAppId, paramString });
+      s.a(parami, ar.g(parama.jIM, parama.fileName + ".map", bCp(), (String)localObject), null, null, null, null);
+    }
+    ae.i("MicroMsg.JsValidationInjectorWC", "injectWxaScriptWithSourceMapUsingFileEntry: inject wxa script with appId:%s, virtualPath:%s, fileEntry.name:%s, sourceURL:%s, cacheCategory:%s, cacheKey:%s", new Object[] { paramAppBrandRuntime.mAppId, paramString, parama.fileName, localObject, str2, str3 });
+    paramAppBrandRuntime = new ScriptPartObject();
+    paramAppBrandRuntime.type = 2;
+    paramAppBrandRuntime.wxaPkgPath = parama.jIM;
+    paramAppBrandRuntime.wxaFileName = parama.fileName;
+    paramAppBrandRuntime.wxaPkgKeyFilePath = bCp();
+    paramString = new ArrayList(2);
+    paramString.add(paramAppBrandRuntime);
+    s.a(parami, paramString, (String)localObject, str2, str3, parama1);
+    AppMethodBeat.o(220901);
   }
   
-  public final boolean isDarkMode()
+  public static void a(AppBrandRuntime paramAppBrandRuntime, i parami, String paramString1, String paramString2, String paramString3, String paramString4, a parama, s.a parama1)
   {
-    AppMethodBeat.i(174554);
-    boolean bool = al.isDarkMode();
-    AppMethodBeat.o(174554);
-    return bool;
+    AppMethodBeat.i(169540);
+    if ((paramAppBrandRuntime == null) || (paramAppBrandRuntime.Ey() == null))
+    {
+      ae.i("MicroMsg.JsValidationInjectorWC", "hy: runtime or service is null!");
+      AppMethodBeat.o(169540);
+      return;
+    }
+    String str = n.MV(paramString2);
+    if (str.startsWith("/__APP__")) {
+      str = n.MV(str.substring(8));
+    }
+    for (;;)
+    {
+      parama = a(paramAppBrandRuntime.Ey(), parama);
+      if (ar.c(paramAppBrandRuntime, paramString2))
+      {
+        ae.i("MicroMsg.JsValidationInjectorWC", "inject sourceMap appId[%s] filePath[%s]", new Object[] { paramAppBrandRuntime.mAppId, paramString2 });
+        s.a(parami, ar.g(paramString1, str + ".map", bCp(), parama + paramString2), parama + paramString2, paramString3, paramString4, parama1);
+      }
+      paramAppBrandRuntime = new ScriptPartObject();
+      paramAppBrandRuntime.type = 2;
+      paramAppBrandRuntime.wxaPkgPath = paramString1;
+      paramAppBrandRuntime.wxaFileName = str;
+      paramAppBrandRuntime.wxaPkgKeyFilePath = bCp();
+      paramString1 = new ArrayList(2);
+      paramString1.add(paramAppBrandRuntime);
+      s.a(parami, paramString1, parama + paramString2, paramString3, paramString4, parama1);
+      AppMethodBeat.o(169540);
+      return;
+    }
+  }
+  
+  public static void a(r paramr, i parami, String paramString1, String paramString2, String paramString3, int paramInt, String paramString4, a parama, s.a parama1)
+  {
+    AppMethodBeat.i(147723);
+    if (paramr == null)
+    {
+      ae.w("MicroMsg.JsValidationInjectorWC", "hy: service is null! abort");
+      AppMethodBeat.o(147723);
+      return;
+    }
+    parama = a(paramr, parama);
+    paramr = paramr.jdMethod_do(paramString1);
+    s.a(parami, parama + paramString1, paramString2, paramString3, paramInt, paramString4, paramr, parama1);
+    AppMethodBeat.o(147723);
+  }
+  
+  private static String bCp()
+  {
+    AppMethodBeat.i(182997);
+    if (bu.isNullOrNil(mUa))
+    {
+      localObject = ak.getContext();
+      mUa = ((Context)localObject).getFilesDir().getAbsolutePath() + "/wasae.dat";
+    }
+    Object localObject = mUa;
+    AppMethodBeat.o(182997);
+    return localObject;
+  }
+  
+  public static enum a
+  {
+    static
+    {
+      AppMethodBeat.i(147722);
+      mUb = new a("LIB", 0);
+      mUc = new a("USR", 1);
+      mUd = new a[] { mUb, mUc };
+      AppMethodBeat.o(147722);
+    }
+    
+    private a() {}
   }
 }
 

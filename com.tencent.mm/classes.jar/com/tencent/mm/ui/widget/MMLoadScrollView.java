@@ -8,7 +8,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class MMLoadScrollView
   extends ScrollView
 {
-  private a KRk;
+  private a LnI;
   
   public MMLoadScrollView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -23,8 +23,8 @@ public class MMLoadScrollView
   protected void onOverScrolled(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2)
   {
     AppMethodBeat.i(143362);
-    if ((paramBoolean2) && (paramInt2 > 0) && (this.KRk != null)) {
-      this.KRk.ciN();
+    if ((paramBoolean2) && (paramInt2 > 0) && (this.LnI != null)) {
+      this.LnI.ckd();
     }
     super.onOverScrolled(paramInt1, paramInt2, paramBoolean1, paramBoolean2);
     AppMethodBeat.o(143362);
@@ -32,12 +32,12 @@ public class MMLoadScrollView
   
   public void setOnTopOrBottomListerner(a parama)
   {
-    this.KRk = parama;
+    this.LnI = parama;
   }
   
   public static abstract interface a
   {
-    public abstract void ciN();
+    public abstract void ckd();
   }
 }
 

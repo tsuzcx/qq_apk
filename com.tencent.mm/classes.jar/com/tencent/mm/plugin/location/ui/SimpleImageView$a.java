@@ -2,25 +2,25 @@ package com.tencent.mm.plugin.location.ui;
 
 import android.os.Message;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public final class SimpleImageView$a
   implements Runnable
 {
-  private ap handler;
+  private aq handler;
   private String url;
   
-  public SimpleImageView$a(String paramString, ap paramap)
+  public SimpleImageView$a(String paramString, aq paramaq)
   {
     this.url = paramString;
-    this.handler = paramap;
+    this.handler = paramaq;
   }
   
   public final void run()
   {
     AppMethodBeat.i(55929);
-    byte[] arrayOfByte = bt.aRi(this.url);
+    byte[] arrayOfByte = bu.aSF(this.url);
     Message localMessage = Message.obtain();
     localMessage.obj = arrayOfByte;
     this.handler.sendMessage(localMessage);

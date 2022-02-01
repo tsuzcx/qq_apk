@@ -13,25 +13,26 @@ import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.ViewGroup;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.contact.c;
 import com.tencent.mm.g.c.aw;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.u;
+import com.tencent.mm.model.v;
 import com.tencent.mm.plugin.messenger.foundation.a.l;
 import com.tencent.mm.plugin.topstory.a.c.i;
 import com.tencent.mm.pluginsdk.ui.applet.ContactListExpandPreference;
 import com.tencent.mm.pluginsdk.ui.applet.ContactListExpandPreference.a;
 import com.tencent.mm.protocal.protobuf.BaseResponse;
-import com.tencent.mm.protocal.protobuf.aaa;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ay;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.bp;
+import com.tencent.mm.protocal.protobuf.aad;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.az;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.aj;
+import com.tencent.mm.storage.bq;
 import com.tencent.mm.ui.base.p;
 import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.ui.base.preference.Preference;
@@ -46,66 +47,66 @@ import java.util.Set;
 @com.tencent.mm.ui.base.a(3)
 public class TopStorySettingVisibilityDetailUI
   extends MMPreference
-  implements com.tencent.mm.al.f
+  implements com.tencent.mm.ak.f
 {
-  protected String Ajp;
-  protected ContactListExpandPreference.a Ajr;
-  protected Preference Btj;
-  protected Preference Btk;
-  protected List<String> Btl;
-  protected List<String> Btm;
-  private Set<i> Btn;
-  protected ContactListExpandPreference fMC;
+  protected String AAA;
+  protected ContactListExpandPreference.a AAD;
+  protected Preference BKH;
+  protected Preference BKI;
+  protected List<String> BKJ;
+  protected List<String> BKK;
+  private Set<i> BKL;
+  protected ContactListExpandPreference fOK;
   protected String md5;
-  protected List<String> ppT;
+  protected List<String> pwz;
   protected com.tencent.mm.ui.base.preference.f screen;
   protected p tipDialog;
-  protected long zid;
+  protected long zyS;
   
   public TopStorySettingVisibilityDetailUI()
   {
     AppMethodBeat.i(126003);
-    this.ppT = new ArrayList();
-    this.Btl = new ArrayList();
-    this.Btm = new ArrayList();
-    this.Ajp = "";
+    this.pwz = new ArrayList();
+    this.BKJ = new ArrayList();
+    this.BKK = new ArrayList();
+    this.AAA = "";
     this.md5 = "";
     this.tipDialog = null;
-    this.Ajr = new ContactListExpandPreference.a()
+    this.AAD = new ContactListExpandPreference.a()
     {
-      public final void YJ()
+      public final void YS()
       {
         AppMethodBeat.i(126001);
-        if (TopStorySettingVisibilityDetailUI.this.fMC != null) {
-          TopStorySettingVisibilityDetailUI.this.fMC.fcH();
+        if (TopStorySettingVisibilityDetailUI.this.fOK != null) {
+          TopStorySettingVisibilityDetailUI.this.fOK.fgv();
         }
         AppMethodBeat.o(126001);
       }
       
       public final void e(ViewGroup paramAnonymousViewGroup, int paramAnonymousInt)
       {
-        AppMethodBeat.i(199593);
-        paramAnonymousViewGroup = TopStorySettingVisibilityDetailUI.this.fMC.YX(paramAnonymousInt);
+        AppMethodBeat.i(220237);
+        paramAnonymousViewGroup = TopStorySettingVisibilityDetailUI.this.fOK.ZD(paramAnonymousInt);
         Intent localIntent = new Intent();
         localIntent.putExtra("Contact_User", paramAnonymousViewGroup);
-        com.tencent.mm.bs.d.b(TopStorySettingVisibilityDetailUI.this, "profile", ".ui.ContactInfoUI", localIntent);
-        AppMethodBeat.o(199593);
+        com.tencent.mm.br.d.b(TopStorySettingVisibilityDetailUI.this, "profile", ".ui.ContactInfoUI", localIntent);
+        AppMethodBeat.o(220237);
       }
       
-      public final void lc(int paramAnonymousInt)
+      public final void le(int paramAnonymousInt)
       {
         AppMethodBeat.i(125998);
-        String str = TopStorySettingVisibilityDetailUI.this.fMC.YX(paramAnonymousInt);
-        ad.i("MicroMsg.TopStory.TopStorySettingVisibilityDetailUI", "roomPref del " + paramAnonymousInt + " userName : " + str);
-        g.ajD();
-        if (bt.bI((String)g.ajC().ajl().get(2, null), "").equals(str))
+        String str = TopStorySettingVisibilityDetailUI.this.fOK.ZD(paramAnonymousInt);
+        ae.i("MicroMsg.TopStory.TopStorySettingVisibilityDetailUI", "roomPref del " + paramAnonymousInt + " userName : " + str);
+        g.ajS();
+        if (bu.bI((String)g.ajR().ajA().get(2, null), "").equals(str))
         {
           com.tencent.mm.ui.base.h.c(TopStorySettingVisibilityDetailUI.this.getContext(), TopStorySettingVisibilityDetailUI.this.getString(2131762613), "", true);
           AppMethodBeat.o(125998);
           return;
         }
-        TopStorySettingVisibilityDetailUI.this.uZ(str);
-        if (((TopStorySettingVisibilityDetailUI.this.Ajp + " " + bt.m(TopStorySettingVisibilityDetailUI.this.ppT, ",")).equals(TopStorySettingVisibilityDetailUI.this.md5)) && (TopStorySettingVisibilityDetailUI.this.zid != 0L))
+        TopStorySettingVisibilityDetailUI.this.vv(str);
+        if (((TopStorySettingVisibilityDetailUI.this.AAA + " " + bu.m(TopStorySettingVisibilityDetailUI.this.pwz, ",")).equals(TopStorySettingVisibilityDetailUI.this.md5)) && (TopStorySettingVisibilityDetailUI.this.zyS != 0L))
         {
           TopStorySettingVisibilityDetailUI.this.enableOptionMenu(false);
           AppMethodBeat.o(125998);
@@ -115,22 +116,22 @@ public class TopStorySettingVisibilityDetailUI
         AppMethodBeat.o(125998);
       }
       
-      public final void ld(int paramAnonymousInt)
+      public final void lf(int paramAnonymousInt)
       {
         AppMethodBeat.i(125999);
-        ad.d("MicroMsg.TopStory.TopStorySettingVisibilityDetailUI", "roomPref add ".concat(String.valueOf(paramAnonymousInt)));
+        ae.d("MicroMsg.TopStory.TopStorySettingVisibilityDetailUI", "roomPref add ".concat(String.valueOf(paramAnonymousInt)));
         TopStorySettingVisibilityDetailUI.c(TopStorySettingVisibilityDetailUI.this);
         AppMethodBeat.o(125999);
       }
     };
-    this.Btn = new HashSet();
+    this.BKL = new HashSet();
     AppMethodBeat.o(126003);
   }
   
-  private boolean epo()
+  private boolean esV()
   {
     AppMethodBeat.i(126008);
-    if ((this.Ajp + " " + bt.m(this.ppT, ",")).equals(this.md5))
+    if ((this.AAA + " " + bu.m(this.pwz, ",")).equals(this.md5))
     {
       finish();
       AppMethodBeat.o(126008);
@@ -154,17 +155,17 @@ public class TopStorySettingVisibilityDetailUI
   }
   
   @SuppressLint({"StringFormatMatches"})
-  private void epp()
+  private void esW()
   {
     AppMethodBeat.i(126011);
-    if (this.Btm.isEmpty())
+    if (this.BKK.isEmpty())
     {
-      this.screen.cP("revert_pref", true);
+      this.screen.cT("revert_pref", true);
       AppMethodBeat.o(126011);
       return;
     }
-    this.screen.cP("revert_pref", false);
-    this.Btk.setTitle(getString(2131764496, new Object[] { Integer.valueOf(this.Btm.size()) }));
+    this.screen.cT("revert_pref", false);
+    this.BKI.setTitle(getString(2131764496, new Object[] { Integer.valueOf(this.BKK.size()) }));
     AppMethodBeat.o(126011);
   }
   
@@ -174,46 +175,60 @@ public class TopStorySettingVisibilityDetailUI
     if (paramList == null) {}
     for (int i = -1;; i = paramList.size())
     {
-      ad.i("MicroMsg.TopStory.TopStorySettingVisibilityDetailUI", "dealOnAddContact %s", new Object[] { Integer.valueOf(i) });
-      g.ajD();
-      bp localbp = ((l)g.ab(l.class)).azp();
-      String str1 = u.aAm();
+      ae.i("MicroMsg.TopStory.TopStorySettingVisibilityDetailUI", "dealOnAddContact %s", new Object[] { Integer.valueOf(i) });
+      g.ajS();
+      bq localbq = ((l)g.ab(l.class)).azF();
+      String str1 = v.aAC();
       paramList = paramList.iterator();
       while (paramList.hasNext())
       {
         String str2 = (String)paramList.next();
-        if ((!this.ppT.contains(str2)) && (!str1.equals(str2)) && ((com.tencent.mm.o.b.lM(localbp.Bf(str2).field_type)) || (!paramBoolean)))
+        if ((!this.pwz.contains(str2)) && (!str1.equals(str2)) && ((c.lO(localbq.BH(str2).field_type)) || (!paramBoolean)))
         {
-          this.ppT.add(str2);
-          this.Btm.add(str2);
+          this.pwz.add(str2);
+          this.BKK.add(str2);
         }
       }
     }
-    if (this.fMC != null)
+    if (this.fOK != null)
     {
-      this.fMC.eo(this.ppT);
-      this.fMC.notifyChanged();
+      this.fOK.es(this.pwz);
+      this.fOK.notifyChanged();
     }
-    if (this.ppT.size() > 0) {
-      this.fMC.vO(true).vP(true);
+    if (this.pwz.size() > 0) {
+      this.fOK.vW(true).vX(true);
     }
     for (;;)
     {
-      epp();
+      esW();
       updateTitle();
       AppMethodBeat.o(126014);
       return;
-      this.fMC.vO(true).vP(false);
+      this.fOK.vW(true).vX(false);
     }
   }
   
-  protected final void dgV()
+  public boolean dispatchKeyEvent(KeyEvent paramKeyEvent)
+  {
+    AppMethodBeat.i(126009);
+    if ((paramKeyEvent.getKeyCode() == 4) && (paramKeyEvent.getAction() == 0))
+    {
+      esV();
+      AppMethodBeat.o(126009);
+      return true;
+    }
+    boolean bool = super.dispatchKeyEvent(paramKeyEvent);
+    AppMethodBeat.o(126009);
+    return bool;
+  }
+  
+  protected final void djU()
   {
     AppMethodBeat.i(126015);
     int i;
-    if (((com.tencent.mm.kernel.b.h)g.ajz().ajb()).akw())
+    if (((com.tencent.mm.kernel.b.h)g.ajO().ajq()).akL())
     {
-      i = g.aiU().aEN();
+      i = g.ajj().aFd();
       if ((i == 4) || (i == 6)) {
         i = 1;
       }
@@ -225,7 +240,7 @@ public class TopStorySettingVisibilityDetailUI
       return;
       i = 0;
       continue;
-      if (ay.isConnected(aj.getContext())) {}
+      if (az.isConnected(ak.getContext())) {}
       for (i = 6;; i = 0)
       {
         if (i != 6) {
@@ -237,21 +252,21 @@ public class TopStorySettingVisibilityDetailUI
       label96:
       i = 0;
     }
-    if (((this.Ajp + " " + bt.m(this.ppT, ",")).equals(this.md5)) && (this.zid != 0L))
+    if (((this.AAA + " " + bu.m(this.pwz, ",")).equals(this.md5)) && (this.zyS != 0L))
     {
       finish();
       AppMethodBeat.o(126015);
       return;
     }
     Object localObject2;
-    if (this.zid == 1L)
+    if (this.zyS == 1L)
     {
-      com.tencent.mm.plugin.topstory.a.b.a.eoQ().BqV.clear();
-      com.tencent.mm.plugin.topstory.a.b.a.eoQ().BqV.addAll(this.ppT);
-      com.tencent.mm.plugin.topstory.a.b.a.eoQ().eoS();
+      com.tencent.mm.plugin.topstory.a.b.a.esx().BIu.clear();
+      com.tencent.mm.plugin.topstory.a.b.a.esx().BIu.addAll(this.pwz);
+      com.tencent.mm.plugin.topstory.a.b.a.esx().esz();
       localObject1 = new ArrayList();
       localObject2 = new ArrayList();
-      localObject3 = this.ppT.iterator();
+      localObject3 = this.pwz.iterator();
     }
     for (;;)
     {
@@ -259,30 +274,30 @@ public class TopStorySettingVisibilityDetailUI
         break label355;
       }
       localObject4 = (String)((Iterator)localObject3).next();
-      if (!this.Btl.contains(localObject4))
+      if (!this.BKJ.contains(localObject4))
       {
         ((List)localObject1).add(localObject4);
-        if (this.zid == 1L)
+        if (this.zyS == 1L)
         {
           ((List)localObject2).add(Integer.valueOf(3));
           continue;
-          com.tencent.mm.plugin.topstory.a.b.a.eoQ().AHn.clear();
-          com.tencent.mm.plugin.topstory.a.b.a.eoQ().AHn.addAll(this.ppT);
-          com.tencent.mm.plugin.topstory.a.b.a.eoQ().eoR();
+          com.tencent.mm.plugin.topstory.a.b.a.esx().AYQ.clear();
+          com.tencent.mm.plugin.topstory.a.b.a.esx().AYQ.addAll(this.pwz);
+          com.tencent.mm.plugin.topstory.a.b.a.esx().esy();
           break;
         }
         ((List)localObject2).add(Integer.valueOf(1));
       }
     }
     label355:
-    Object localObject3 = this.Btl.iterator();
+    Object localObject3 = this.BKJ.iterator();
     while (((Iterator)localObject3).hasNext())
     {
       localObject4 = (String)((Iterator)localObject3).next();
-      if (!this.ppT.contains(localObject4))
+      if (!this.pwz.contains(localObject4))
       {
         ((List)localObject1).add(localObject4);
-        if (this.zid == 1L) {
+        if (this.zyS == 1L) {
           ((List)localObject2).add(Integer.valueOf(4));
         } else {
           ((List)localObject2).add(Integer.valueOf(2));
@@ -299,12 +314,12 @@ public class TopStorySettingVisibilityDetailUI
         while (paramAnonymousDialogInterface.hasNext())
         {
           i locali = (i)paramAnonymousDialogInterface.next();
-          g.ajB().gAO.a(locali);
+          g.ajQ().gDv.a(locali);
         }
         AppMethodBeat.o(126002);
       }
     });
-    this.Btn.clear();
+    this.BKL.clear();
     localObject3 = new ArrayList();
     Object localObject4 = new ArrayList();
     int j = 0;
@@ -321,30 +336,16 @@ public class TopStorySettingVisibilityDetailUI
         i += 1;
       }
       i locali = new i((List)localObject3, (List)localObject4);
-      this.Btn.add(locali);
+      this.BKL.add(locali);
     }
-    ad.i("MicroMsg.TopStory.TopStorySettingVisibilityDetailUI", "batch doNetscene, size: %s", new Object[] { Integer.valueOf(this.Btn.size()) });
-    Object localObject1 = this.Btn.iterator();
+    ae.i("MicroMsg.TopStory.TopStorySettingVisibilityDetailUI", "batch doNetscene, size: %s", new Object[] { Integer.valueOf(this.BKL.size()) });
+    Object localObject1 = this.BKL.iterator();
     while (((Iterator)localObject1).hasNext())
     {
       localObject2 = (i)((Iterator)localObject1).next();
-      g.ajB().gAO.a((n)localObject2, 0);
+      g.ajQ().gDv.a((n)localObject2, 0);
     }
     AppMethodBeat.o(126015);
-  }
-  
-  public boolean dispatchKeyEvent(KeyEvent paramKeyEvent)
-  {
-    AppMethodBeat.i(126009);
-    if ((paramKeyEvent.getKeyCode() == 4) && (paramKeyEvent.getAction() == 0))
-    {
-      epo();
-      AppMethodBeat.o(126009);
-      return true;
-    }
-    boolean bool = super.dispatchKeyEvent(paramKeyEvent);
-    AppMethodBeat.o(126009);
-    return bool;
   }
   
   public int getResourceId()
@@ -356,29 +357,29 @@ public class TopStorySettingVisibilityDetailUI
   {
     AppMethodBeat.i(126007);
     this.screen = getPreferenceScreen();
-    this.fMC = ((ContactListExpandPreference)this.screen.aVD("roominfo_contact_anchor"));
-    if (this.fMC != null)
+    this.fOK = ((ContactListExpandPreference)this.screen.aXe("roominfo_contact_anchor"));
+    if (this.fOK != null)
     {
-      this.fMC.a(this.screen, this.fMC.mKey);
-      this.fMC.vO(true).vP(true);
-      this.fMC.A(null, this.ppT);
-      this.fMC.a(new com.tencent.mm.pluginsdk.ui.applet.s.b()
+      this.fOK.a(this.screen, this.fOK.mKey);
+      this.fOK.vW(true).vX(true);
+      this.fOK.B(null, this.pwz);
+      this.fOK.a(new com.tencent.mm.pluginsdk.ui.applet.s.b()
       {
-        public final boolean le(int paramAnonymousInt)
+        public final boolean lg(int paramAnonymousInt)
         {
           AppMethodBeat.i(125997);
-          if (!TopStorySettingVisibilityDetailUI.this.fMC.YU(paramAnonymousInt)) {
-            ad.d("MicroMsg.TopStory.TopStorySettingVisibilityDetailUI", "onItemLongClick ".concat(String.valueOf(paramAnonymousInt)));
+          if (!TopStorySettingVisibilityDetailUI.this.fOK.ZA(paramAnonymousInt)) {
+            ae.d("MicroMsg.TopStory.TopStorySettingVisibilityDetailUI", "onItemLongClick ".concat(String.valueOf(paramAnonymousInt)));
           }
           AppMethodBeat.o(125997);
           return true;
         }
       });
-      this.fMC.a(this.Ajr);
+      this.fOK.a(this.AAD);
     }
-    this.Btj = this.screen.aVD("desc");
-    this.Btk = this.screen.aVD("revert_pref");
-    this.screen.cP("revert_pref", true);
+    this.BKH = this.screen.aXe("desc");
+    this.BKI = this.screen.aXe("revert_pref");
+    this.screen.cT("revert_pref", true);
     getIntent().getIntExtra("k_sns_from_settings_about_sns", 0);
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
@@ -395,11 +396,11 @@ public class TopStorySettingVisibilityDetailUI
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
         AppMethodBeat.i(125995);
-        TopStorySettingVisibilityDetailUI.this.dgV();
+        TopStorySettingVisibilityDetailUI.this.djU();
         AppMethodBeat.o(125995);
         return true;
       }
-    }, null, com.tencent.mm.ui.s.b.JbS);
+    }, null, com.tencent.mm.ui.s.b.JwA);
     AppMethodBeat.o(126007);
   }
   
@@ -424,8 +425,8 @@ public class TopStorySettingVisibilityDetailUI
       return;
     }
     Object localObject = paramIntent.getStringExtra("Select_Contact");
-    ad.i("MicroMsg.TopStory.TopStorySettingVisibilityDetailUI", "onActivityResult %s", new Object[] { localObject });
-    if (bt.nullAsNil(u.aAm()).equals(localObject)) {
+    ae.i("MicroMsg.TopStory.TopStorySettingVisibilityDetailUI", "onActivityResult %s", new Object[] { localObject });
+    if (bu.nullAsNil(v.aAC()).equals(localObject)) {
       paramInt2 = 1;
     }
     while (paramInt2 != 0)
@@ -433,13 +434,13 @@ public class TopStorySettingVisibilityDetailUI
       com.tencent.mm.ui.base.h.c(this, getString(2131755154), "", true);
       AppMethodBeat.o(126013);
       return;
-      if (this.ppT == null)
+      if (this.pwz == null)
       {
         paramInt2 = 0;
       }
       else
       {
-        Iterator localIterator = this.ppT.iterator();
+        Iterator localIterator = this.pwz.iterator();
         paramInt1 = 0;
         paramInt2 = paramInt1;
         if (localIterator.hasNext())
@@ -455,17 +456,17 @@ public class TopStorySettingVisibilityDetailUI
     for (;;)
     {
       break;
-      localObject = bt.U(((String)localObject).split(","));
+      localObject = bu.U(((String)localObject).split(","));
       if (localObject == null)
       {
         AppMethodBeat.o(126013);
         return;
       }
       paramIntent = paramIntent.getStringExtra("App_MsgId");
-      if ((!bt.isNullOrNil(paramIntent)) && (paramIntent.equals("fromSns"))) {
+      if ((!bu.isNullOrNil(paramIntent)) && (paramIntent.equals("fromSns"))) {
         m((List)localObject, false);
       }
-      while (((this.Ajp + " " + bt.m(this.ppT, ",")).equals(this.md5)) && (this.zid != 0L))
+      while (((this.AAA + " " + bu.m(this.pwz, ",")).equals(this.md5)) && (this.zyS != 0L))
       {
         enableOptionMenu(false);
         AppMethodBeat.o(126013);
@@ -483,35 +484,35 @@ public class TopStorySettingVisibilityDetailUI
     AppMethodBeat.i(126005);
     super.onCreate(paramBundle);
     paramBundle = getIntent().getStringExtra("k_topstory_user_list");
-    if (!bt.isNullOrNil(paramBundle))
+    if (!bu.isNullOrNil(paramBundle))
     {
-      this.Btl = Arrays.asList(paramBundle.split(","));
-      paramBundle = this.Btl.iterator();
+      this.BKJ = Arrays.asList(paramBundle.split(","));
+      paramBundle = this.BKJ.iterator();
       while (paramBundle.hasNext())
       {
         String str = (String)paramBundle.next();
-        if (!bt.isNullOrNil(str)) {
-          this.ppT.add(str);
+        if (!bu.isNullOrNil(str)) {
+          this.pwz.add(str);
         }
       }
     }
     initView();
-    this.zid = getIntent().getIntExtra("k_topstory_type", 0);
-    if (this.zid == 1L)
+    this.zyS = getIntent().getIntExtra("k_topstory_type", 0);
+    if (this.zyS == 1L)
     {
-      this.Ajp = getString(2131764502);
-      this.Btj.setTitle(2131764503);
+      this.AAA = getString(2131764502);
+      this.BKH.setTitle(2131764503);
     }
     for (;;)
     {
-      g.aiU().a(2859, this);
+      g.ajj().a(2859, this);
       enableOptionMenu(false);
       updateTitle();
-      this.md5 = (this.Ajp + " " + bt.m(this.ppT, ","));
+      this.md5 = (this.AAA + " " + bu.m(this.pwz, ","));
       AppMethodBeat.o(126005);
       return;
-      this.Ajp = getString(2131764491);
-      this.Btj.setTitle(2131764492);
+      this.AAA = getString(2131764491);
+      this.BKH.setTitle(2131764492);
     }
   }
   
@@ -521,7 +522,7 @@ public class TopStorySettingVisibilityDetailUI
     if (this.tipDialog != null) {
       this.tipDialog.dismiss();
     }
-    g.aiU().b(2859, this);
+    g.ajj().b(2859, this);
     super.onDestroy();
     AppMethodBeat.o(126006);
   }
@@ -535,18 +536,18 @@ public class TopStorySettingVisibilityDetailUI
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
           AppMethodBeat.i(125993);
-          paramAnonymousDialogInterface = TopStorySettingVisibilityDetailUI.this.Btm.iterator();
+          paramAnonymousDialogInterface = TopStorySettingVisibilityDetailUI.this.BKK.iterator();
           while (paramAnonymousDialogInterface.hasNext())
           {
             String str = (String)paramAnonymousDialogInterface.next();
-            TopStorySettingVisibilityDetailUI.this.ppT.remove(str);
+            TopStorySettingVisibilityDetailUI.this.pwz.remove(str);
           }
-          if (TopStorySettingVisibilityDetailUI.this.fMC != null)
+          if (TopStorySettingVisibilityDetailUI.this.fOK != null)
           {
-            TopStorySettingVisibilityDetailUI.this.fMC.eo(TopStorySettingVisibilityDetailUI.this.ppT);
-            TopStorySettingVisibilityDetailUI.this.fMC.notifyChanged();
+            TopStorySettingVisibilityDetailUI.this.fOK.es(TopStorySettingVisibilityDetailUI.this.pwz);
+            TopStorySettingVisibilityDetailUI.this.fOK.notifyChanged();
           }
-          TopStorySettingVisibilityDetailUI.this.Btm.clear();
+          TopStorySettingVisibilityDetailUI.this.BKK.clear();
           TopStorySettingVisibilityDetailUI.a(TopStorySettingVisibilityDetailUI.this);
           TopStorySettingVisibilityDetailUI.this.updateTitle();
           AppMethodBeat.o(125993);
@@ -560,7 +561,7 @@ public class TopStorySettingVisibilityDetailUI
   public void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     AppMethodBeat.i(126016);
-    ad.i("MicroMsg.TopStory.TopStorySettingVisibilityDetailUI", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString);
+    ae.i("MicroMsg.TopStory.TopStorySettingVisibilityDetailUI", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString);
     boolean bool;
     if ((paramn instanceof i))
     {
@@ -572,33 +573,33 @@ public class TopStorySettingVisibilityDetailUI
       if (!bool) {
         break label300;
       }
-      paramInt1 = ((aaa)paramString.rr.hNL.hNQ).BaseResponse.Ret;
+      paramInt1 = ((aad)paramString.rr.hQE.hQJ).BaseResponse.Ret;
       if (paramInt1 == 0) {
         break label300;
       }
-      ad.i("MicroMsg.TopStory.TopStorySettingVisibilityDetailUI", "onSceneEnd ret:%s", new Object[] { Integer.valueOf(paramInt1) });
+      ae.i("MicroMsg.TopStory.TopStorySettingVisibilityDetailUI", "onSceneEnd ret:%s", new Object[] { Integer.valueOf(paramInt1) });
       bool = false;
     }
     label294:
     label300:
     for (;;)
     {
-      ad.i("MicroMsg.TopStory.TopStorySettingVisibilityDetailUI", "onSceneEnd succ:%s", new Object[] { Boolean.valueOf(bool) });
+      ae.i("MicroMsg.TopStory.TopStorySettingVisibilityDetailUI", "onSceneEnd succ:%s", new Object[] { Boolean.valueOf(bool) });
       if (!bool)
       {
-        paramString.iiN += 1;
-        if (paramString.iiN < 2)
+        paramString.ilG += 1;
+        if (paramString.ilG < 2)
         {
           paramString = new i(paramString);
-          g.ajB().gAO.a(paramString, 0);
-          this.Btn.add(paramString);
+          g.ajQ().gDv.a(paramString, 0);
+          this.BKL.add(paramString);
         }
       }
-      if (this.Btn.contains(paramn))
+      if (this.BKL.contains(paramn))
       {
-        this.Btn.remove(paramn);
-        ad.i("MicroMsg.TopStory.TopStorySettingVisibilityDetailUI", "onSceneEnd netSceneSet remove, size:%s", new Object[] { Integer.valueOf(this.Btn.size()) });
-        if (this.Btn.isEmpty())
+        this.BKL.remove(paramn);
+        ae.i("MicroMsg.TopStory.TopStorySettingVisibilityDetailUI", "onSceneEnd netSceneSet remove, size:%s", new Object[] { Integer.valueOf(this.BKL.size()) });
+        if (this.BKL.isEmpty())
         {
           if (this.tipDialog != null)
           {
@@ -621,45 +622,45 @@ public class TopStorySettingVisibilityDetailUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  protected final void uZ(String paramString)
+  protected final void updateTitle()
+  {
+    AppMethodBeat.i(126010);
+    setMMTitle(this.AAA + "(" + this.pwz.size() + ")");
+    AppMethodBeat.o(126010);
+  }
+  
+  protected final void vv(String paramString)
   {
     AppMethodBeat.i(126012);
-    ad.i("MicroMsg.TopStory.TopStorySettingVisibilityDetailUI", "dealDelChatRoomMember");
+    ae.i("MicroMsg.TopStory.TopStorySettingVisibilityDetailUI", "dealDelChatRoomMember");
     if ((paramString == null) || (paramString.equals("")))
     {
       AppMethodBeat.o(126012);
       return;
     }
-    this.ppT.remove(paramString);
-    if (this.fMC != null)
+    this.pwz.remove(paramString);
+    if (this.fOK != null)
     {
-      this.fMC.eo(this.ppT);
-      this.fMC.notifyChanged();
+      this.fOK.es(this.pwz);
+      this.fOK.notifyChanged();
     }
-    if ((this.ppT.size() == 0) && (this.fMC != null))
+    if ((this.pwz.size() == 0) && (this.fOK != null))
     {
-      this.fMC.fcH();
-      this.fMC.vO(true).vP(false);
+      this.fOK.fgv();
+      this.fOK.vW(true).vX(false);
       this.screen.notifyDataSetChanged();
     }
     for (;;)
     {
-      this.Btm.clear();
-      epp();
+      this.BKK.clear();
+      esW();
       updateTitle();
       AppMethodBeat.o(126012);
       return;
-      if (this.fMC != null) {
-        this.fMC.vO(true).vP(true);
+      if (this.fOK != null) {
+        this.fOK.vW(true).vX(true);
       }
     }
-  }
-  
-  protected final void updateTitle()
-  {
-    AppMethodBeat.i(126010);
-    setMMTitle(this.Ajp + "(" + this.ppT.size() + ")");
-    AppMethodBeat.o(126010);
   }
 }
 

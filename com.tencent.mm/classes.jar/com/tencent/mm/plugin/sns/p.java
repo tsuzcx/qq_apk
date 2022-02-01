@@ -5,18 +5,18 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class p
   implements com.tencent.mm.plugin.sns.b.p
 {
-  private static volatile p yVV = null;
+  private static volatile p zmf = null;
   
-  public static p dQW()
+  public static p dUt()
   {
     AppMethodBeat.i(94916);
-    if (yVV == null) {}
+    if (zmf == null) {}
     try
     {
-      if (yVV == null) {
-        yVV = new p();
+      if (zmf == null) {
+        zmf = new p();
       }
-      p localp = yVV;
+      p localp = zmf;
       AppMethodBeat.o(94916);
       return localp;
     }
@@ -28,7 +28,7 @@ public class p
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.p
  * JD-Core Version:    0.7.0.1
  */

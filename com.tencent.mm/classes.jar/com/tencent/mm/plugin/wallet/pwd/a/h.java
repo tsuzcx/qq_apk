@@ -1,24 +1,24 @@
 package com.tencent.mm.plugin.wallet.pwd.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.dpi;
-import com.tencent.mm.protocal.protobuf.dpj;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.dqf;
+import com.tencent.mm.protocal.protobuf.dqg;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class h
   extends n
   implements k
 {
-  public dpj CKP;
-  public h.a CKQ;
+  public dqg Dcv;
+  public h.a Dcw;
   private f callback;
   private final b rr;
   
@@ -26,13 +26,13 @@ public final class h
   {
     AppMethodBeat.i(182519);
     b.a locala = new b.a();
-    dpi localdpi = new dpi();
-    localdpi.HDg = paramInt;
-    locala.hNM = localdpi;
-    locala.hNN = new dpj();
+    dqf localdqf = new dqf();
+    localdqf.HWT = paramInt;
+    locala.hQF = localdqf;
+    locala.hQG = new dqg();
     locala.uri = "/cgi-bin/mmpay-bin/transferphonegetswitch";
     locala.funcId = 1813;
-    this.rr = locala.aDC();
+    this.rr = locala.aDS();
     AppMethodBeat.o(182519);
   }
   
@@ -53,9 +53,9 @@ public final class h
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(69546);
-    ad.w("MicroMsg.mobileRemit.NetSceneMobileRemitGetSwitch", "errType = %s errCode = %s errMsg = %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    ae.w("MicroMsg.mobileRemit.NetSceneMobileRemitGetSwitch", "errType = %s errCode = %s errMsg = %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
     if ((paramInt2 == 0) && (paramInt3 == 0)) {
-      this.CKP = ((dpj)((b)paramq).hNL.hNQ);
+      this.Dcv = ((dqg)((b)paramq).hQE.hQJ);
     }
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(69546);

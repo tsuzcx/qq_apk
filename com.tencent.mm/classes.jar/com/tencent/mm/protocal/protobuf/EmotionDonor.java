@@ -4,7 +4,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import f.a.a.b;
 
 public class EmotionDonor
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
   public String HeadUrl;
   
@@ -39,9 +39,9 @@ public class EmotionDonor
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
         if (this.HeadUrl == null)
@@ -63,7 +63,7 @@ public class EmotionDonor
           AppMethodBeat.o(104778);
           return -1;
         }
-        localEmotionDonor.HeadUrl = locala.NPN.readString();
+        localEmotionDonor.HeadUrl = locala.OmT.readString();
         AppMethodBeat.o(104778);
         return 0;
       }

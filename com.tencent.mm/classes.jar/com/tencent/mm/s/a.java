@@ -1,226 +1,138 @@
 package com.tencent.mm.s;
 
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.le;
-import com.tencent.mm.g.a.le.a;
-import com.tencent.mm.g.a.mc;
-import com.tencent.mm.g.a.mc.b;
-import com.tencent.mm.g.a.r;
-import com.tencent.mm.g.a.r.a;
-import com.tencent.mm.g.a.ya;
-import com.tencent.mm.g.a.ya.a;
-import com.tencent.mm.model.ai;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.ui.base.h;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.e;
+import com.tencent.mm.ak.e.a;
+import com.tencent.mm.ak.e.c;
+import com.tencent.mm.ak.e.d;
+import com.tencent.mm.api.h;
+import com.tencent.mm.api.q;
+import com.tencent.mm.model.ch;
+import com.tencent.mm.platformtools.z;
+import com.tencent.mm.protocal.protobuf.cv;
+import com.tencent.mm.protocal.protobuf.qw;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.bn;
 
 public final class a
+  implements q
 {
-  private static ai cVN;
-  
-  public static ai Nb()
+  private static cv b(cv paramcv)
   {
-    AppMethodBeat.i(150036);
-    if (cVN == null) {
-      cVN = com.tencent.mm.booter.a.Wt();
-    }
-    ai localai = cVN;
-    AppMethodBeat.o(150036);
-    return localai;
-  }
-  
-  public static boolean adC()
-  {
-    AppMethodBeat.i(150032);
-    mc localmc = new mc();
-    localmc.dzy.action = 1;
-    com.tencent.mm.sdk.b.a.IbL.l(localmc);
-    boolean bool = localmc.dzz.isStart;
-    AppMethodBeat.o(150032);
-    return bool;
-  }
-  
-  public static boolean adD()
-  {
-    AppMethodBeat.i(195198);
-    le localle = new le();
-    com.tencent.mm.sdk.b.a.IbL.l(localle);
-    ad.i("MicroMsg.DeviceOccupy", "isLiving %b isAnchor %b", new Object[] { Boolean.valueOf(localle.dyt.isStart), Boolean.valueOf(localle.dyt.dyu) });
-    if ((localle.dyt.isStart) && (localle.dyt.dyu))
+    boolean bool = true;
+    AppMethodBeat.i(114095);
+    if (paramcv == null)
     {
-      AppMethodBeat.o(195198);
-      return true;
+      AppMethodBeat.o(114095);
+      return null;
     }
-    AppMethodBeat.o(195198);
-    return false;
-  }
-  
-  public static boolean adE()
-  {
-    AppMethodBeat.i(195202);
-    r localr = new r();
-    com.tencent.mm.sdk.b.a.IbL.l(localr);
-    ad.i("MicroMsg.DeviceOccupy", "checkAppBrandVoiceUsing isVoiceUsing:%b, isCameraUsing:%b", new Object[] { Boolean.valueOf(localr.dko.dkq), Boolean.valueOf(localr.dko.dkp) });
-    if (localr.dko.dkq) {
-      ad.i("MicroMsg.DeviceOccupy", "app brand voip voice using");
-    }
-    boolean bool = localr.dko.dkq;
-    AppMethodBeat.o(195202);
-    return bool;
-  }
-  
-  public static boolean adF()
-  {
-    AppMethodBeat.i(195203);
-    r localr = new r();
-    com.tencent.mm.sdk.b.a.IbL.l(localr);
-    ad.i("MicroMsg.DeviceOccupy", "checkAppBrandCameraUsing isVoiceUsing:%b, isCameraUsing:%b", new Object[] { Boolean.valueOf(localr.dko.dkq), Boolean.valueOf(localr.dko.dkp) });
-    if (localr.dko.dkp) {
-      ad.i("MicroMsg.DeviceOccupy", "app brand voip camera using");
-    }
-    boolean bool = localr.dko.dkp;
-    AppMethodBeat.o(195203);
-    return bool;
-  }
-  
-  public static boolean cd(Context paramContext)
-  {
-    AppMethodBeat.i(150031);
-    if (adC())
+    Object localObject = paramcv.FNG;
+    int i = paramcv.urJ;
+    if (paramcv.FNI == null) {}
+    for (;;)
     {
-      ad.i("MicroMsg.DeviceOccupy", "isMultiTalking");
-      h.a(paramContext, "", paramContext.getString(2131761414), paramContext.getString(2131755792), new DialogInterface.OnClickListener()
+      ae.i("FunctionMsg.FunctionMsgDispatcher", "processAddMsg, fromUser: %s, msgType: %s, content==null: %s", new Object[] { localObject, Integer.valueOf(i), Boolean.valueOf(bool) });
+      localObject = bu.nullAsNil(z.a(paramcv.FNG));
+      if ("readerapp".equals(localObject))
       {
-        public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt) {}
-      });
-      AppMethodBeat.o(150031);
-      return true;
-    }
-    AppMethodBeat.o(150031);
-    return false;
-  }
-  
-  public static boolean ce(Context paramContext)
-  {
-    AppMethodBeat.i(195197);
-    le localle = new le();
-    com.tencent.mm.sdk.b.a.IbL.l(localle);
-    ad.i("MicroMsg.DeviceOccupy", "isLiving %b isAnchor %b", new Object[] { Boolean.valueOf(localle.dyt.isStart), Boolean.valueOf(localle.dyt.dyu) });
-    boolean bool = localle.dyt.isStart;
-    if (bool) {
-      h.a(paramContext, "", paramContext.getString(2131766655), paramContext.getString(2131755792), new DialogInterface.OnClickListener()
-      {
-        public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt) {}
-      });
-    }
-    AppMethodBeat.o(195197);
-    return bool;
-  }
-  
-  public static boolean cf(Context paramContext)
-  {
-    AppMethodBeat.i(150034);
-    ya localya = new ya();
-    com.tencent.mm.sdk.b.a.IbL.l(localya);
-    if (localya.dMm.dkq)
-    {
-      ad.i("MicroMsg.DeviceOccupy", "isVoiceUsing");
-      h.a(paramContext, "", o(paramContext, localya.dMm.dMn), paramContext.getString(2131755792), new DialogInterface.OnClickListener()
-      {
-        public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt) {}
-      });
-      bool = localya.dMm.dkq;
-      AppMethodBeat.o(150034);
-      return bool;
-    }
-    boolean bool = ce(paramContext);
-    AppMethodBeat.o(150034);
-    return bool;
-  }
-  
-  public static boolean cg(Context paramContext)
-  {
-    AppMethodBeat.i(195199);
-    boolean bool = p(paramContext, true);
-    AppMethodBeat.o(195199);
-    return bool;
-  }
-  
-  public static boolean ch(Context paramContext)
-  {
-    AppMethodBeat.i(195201);
-    r localr = new r();
-    com.tencent.mm.sdk.b.a.IbL.l(localr);
-    ad.i("MicroMsg.DeviceOccupy", "checkAppBrandVoiceUsingAndShowToast isVoiceUsing:%b, isCameraUsing:%b", new Object[] { Boolean.valueOf(localr.dko.dkq), Boolean.valueOf(localr.dko.dkp) });
-    if (localr.dko.dkq)
-    {
-      ad.i("MicroMsg.DeviceOccupy", "app brand voip voice using");
-      h.a(paramContext, "", o(paramContext, localr.dko.dkp), paramContext.getString(2131755792), new DialogInterface.OnClickListener()
-      {
-        public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt) {}
-      });
-    }
-    boolean bool = localr.dko.dkq;
-    AppMethodBeat.o(195201);
-    return bool;
-  }
-  
-  public static boolean n(Context paramContext, boolean paramBoolean)
-  {
-    AppMethodBeat.i(195196);
-    ya localya = new ya();
-    com.tencent.mm.sdk.b.a.IbL.l(localya);
-    if (localya.dMm.dkp)
-    {
-      ad.i("MicroMsg.DeviceOccupy", "isCameraUsing");
-      if (paramBoolean) {
-        h.a(paramContext, "", o(paramContext, localya.dMm.dMn), paramContext.getString(2131755792), new DialogInterface.OnClickListener()
-        {
-          public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt) {}
-        });
+        paramcv.FNG = z.Jw("newsapp");
+        paramcv.urJ = 12399999;
       }
-      paramBoolean = localya.dMm.dkp;
-      AppMethodBeat.o(195196);
-      return paramBoolean;
+      if (("blogapp".equals(localObject)) || ("newsapp".equals(localObject))) {
+        paramcv.urJ = 12399999;
+      }
+      AppMethodBeat.o(114095);
+      return paramcv;
+      bool = false;
     }
-    paramBoolean = ce(paramContext);
-    AppMethodBeat.o(195196);
-    return paramBoolean;
   }
   
-  private static String o(Context paramContext, boolean paramBoolean)
+  public final void a(String paramString, h paramh, cv paramcv)
   {
-    AppMethodBeat.i(150035);
-    if (paramBoolean)
+    boolean bool2 = false;
+    AppMethodBeat.i(114096);
+    if ((paramh == null) || (paramcv == null))
     {
-      paramContext = paramContext.getString(2131756776);
-      AppMethodBeat.o(150035);
-      return paramContext;
-    }
-    paramContext = paramContext.getString(2131756777);
-    AppMethodBeat.o(150035);
-    return paramContext;
-  }
-  
-  public static boolean p(Context paramContext, boolean paramBoolean)
-  {
-    AppMethodBeat.i(195200);
-    r localr = new r();
-    com.tencent.mm.sdk.b.a.IbL.l(localr);
-    ad.i("MicroMsg.DeviceOccupy", "checkAppBrandCameraUsingAndShowToast isVoiceUsing:%b, isCameraUsing:%b", new Object[] { Boolean.valueOf(localr.dko.dkq), Boolean.valueOf(localr.dko.dkp) });
-    if (localr.dko.dkp)
-    {
-      ad.i("MicroMsg.DeviceOccupy", "app brand voip camera using");
-      if (paramBoolean) {
-        Toast.makeText(paramContext, o(paramContext, localr.dko.dkp), 0).show();
+      if (paramh == null) {}
+      for (boolean bool1 = true;; bool1 = false)
+      {
+        if (paramcv == null) {
+          bool2 = true;
+        }
+        ae.e("FunctionMsg.FunctionMsgDispatcher", "[onFunctionMsgAdd] null == item?%s null == addMsg?%s MsgType:%s", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2), Integer.valueOf(paramcv.urJ) });
+        AppMethodBeat.o(114096);
+        return;
       }
     }
-    paramBoolean = localr.dko.dkp;
-    AppMethodBeat.o(195200);
-    return paramBoolean;
+    b(paramcv);
+    try
+    {
+      d.b localb = new d.b();
+      localb.hQL = paramh.field_businessInfo;
+      localb.hQM = paramh.field_functionmsgid;
+      if (paramh.field_actionTime == 0L) {}
+      for (long l = ch.aDa() / 1000L;; l = paramh.field_actionTime)
+      {
+        paramcv.CreateTime = ((int)l);
+        paramh.field_status = 100;
+        paramh.a(paramcv);
+        bn localbn = bn.JgJ;
+        bn.a(paramString, paramh);
+        ae.i("FunctionMsg.FunctionMsgDispatcher", "[onFunctionMsgAdd] item:%s CreateTime:%s", new Object[] { paramh, Integer.valueOf(paramcv.CreateTime) });
+        e.d.ca(Integer.valueOf(paramcv.urJ)).b(new e.a(paramcv, localb));
+        AppMethodBeat.o(114096);
+        return;
+      }
+      return;
+    }
+    catch (Exception paramString)
+    {
+      ae.printErrStackTrace("FunctionMsg.FunctionMsgDispatcher", paramString, "", new Object[0]);
+      AppMethodBeat.o(114096);
+    }
+  }
+  
+  public final void b(qw paramqw)
+  {
+    AppMethodBeat.i(114098);
+    try
+    {
+      new d.b();
+      d.a.bZ(Long.valueOf(paramqw.GeW));
+      AppMethodBeat.o(114098);
+      return;
+    }
+    catch (Exception paramqw)
+    {
+      ae.printErrStackTrace("FunctionMsg.FunctionMsgDispatcher", paramqw, "", new Object[0]);
+      AppMethodBeat.o(114098);
+    }
+  }
+  
+  public final void b(String paramString, h paramh, cv paramcv)
+  {
+    AppMethodBeat.i(114097);
+    ae.i("FunctionMsg.FunctionMsgDispatcher", "[onFunctionMsgDelete] item:%s", new Object[] { paramh });
+    try
+    {
+      b(paramcv);
+      paramcv.CreateTime = ((int)paramh.field_actionTime);
+      paramh.a(paramcv);
+      paramh.field_status = 100;
+      bn localbn = bn.JgJ;
+      bn.a(paramString, paramh);
+      e.d.ca(Integer.valueOf(paramcv.urJ)).b(new e.c(paramcv, paramString, paramh));
+      AppMethodBeat.o(114097);
+      return;
+    }
+    catch (Exception paramString)
+    {
+      ae.printErrStackTrace("FunctionMsg.FunctionMsgDispatcher", paramString, "", new Object[0]);
+      AppMethodBeat.o(114097);
+    }
   }
 }
 

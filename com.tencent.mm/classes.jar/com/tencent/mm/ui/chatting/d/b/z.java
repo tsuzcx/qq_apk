@@ -5,17 +5,17 @@ import com.tencent.mm.ui.chatting.d.ad;
 public abstract interface z
   extends ad
 {
-  public abstract void adk(int paramInt);
+  public abstract void adR(int paramInt);
   
-  public abstract int fEl();
+  public abstract int fIp();
   
-  public abstract void fEm();
+  public abstract void fIq();
   
-  public abstract void fEn();
+  public abstract void fIr();
   
-  public abstract void fEo();
+  public abstract void fIs();
   
-  public abstract int fEp();
+  public abstract int fIt();
 }
 
 

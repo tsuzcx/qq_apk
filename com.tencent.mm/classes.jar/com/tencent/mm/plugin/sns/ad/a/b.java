@@ -13,29 +13,29 @@ public final class b
   private FileLock fileLock;
   private String filename;
   private RandomAccessFile randomAccessFile;
-  private String yWW;
+  private String znf;
   
   public b(String paramString1, String paramString2)
   {
-    this.yWW = paramString1;
+    this.znf = paramString1;
     this.filename = paramString2;
   }
   
   private boolean isValid()
   {
-    AppMethodBeat.i(213126);
-    if ((!TextUtils.isEmpty(this.yWW)) && (!TextUtils.isEmpty(this.filename)))
+    AppMethodBeat.i(218279);
+    if ((!TextUtils.isEmpty(this.znf)) && (!TextUtils.isEmpty(this.filename)))
     {
-      AppMethodBeat.o(213126);
+      AppMethodBeat.o(218279);
       return true;
     }
-    AppMethodBeat.o(213126);
+    AppMethodBeat.o(218279);
     return false;
   }
   
   public final void close()
   {
-    AppMethodBeat.i(213128);
+    AppMethodBeat.i(218281);
     try
     {
       if (this.fileLock != null)
@@ -51,12 +51,12 @@ public final class b
           this.randomAccessFile.close();
           this.randomAccessFile = null;
         }
-        AppMethodBeat.o(213128);
+        AppMethodBeat.o(218281);
         return;
       }
       catch (Throwable localThrowable1)
       {
-        AppMethodBeat.o(213128);
+        AppMethodBeat.o(218281);
         return;
       }
     }
@@ -66,17 +66,17 @@ public final class b
     }
   }
   
-  public final String dRi()
+  public final String dUF()
   {
-    AppMethodBeat.i(213129);
+    AppMethodBeat.i(218282);
     if (!isValid())
     {
-      AppMethodBeat.o(213129);
+      AppMethodBeat.o(218282);
       return null;
     }
     if ((this.randomAccessFile == null) || (this.fileLock == null))
     {
-      AppMethodBeat.o(213129);
+      AppMethodBeat.o(218282);
       return null;
     }
     for (;;)
@@ -88,23 +88,23 @@ public final class b
           i = Long.valueOf(this.randomAccessFile.length()).intValue();
           if (i <= 0)
           {
-            AppMethodBeat.o(213129);
+            AppMethodBeat.o(218282);
             return null;
           }
           Object localObject = new byte[i];
           if (this.randomAccessFile.read((byte[])localObject, 0, i) == i)
           {
             localObject = new String((byte[])localObject, 0, i, "UTF-8");
-            AppMethodBeat.o(213129);
+            AppMethodBeat.o(218282);
             return localObject;
           }
-          AppMethodBeat.o(213129);
+          AppMethodBeat.o(218282);
           return null;
         }
       }
       catch (Throwable localThrowable)
       {
-        AppMethodBeat.o(213129);
+        AppMethodBeat.o(218282);
         return null;
       }
       int i = 10240;
@@ -113,27 +113,27 @@ public final class b
   
   public final boolean open()
   {
-    AppMethodBeat.i(213127);
+    AppMethodBeat.i(218280);
     if (!isValid())
     {
-      AppMethodBeat.o(213127);
+      AppMethodBeat.o(218280);
       return false;
     }
     if ((this.randomAccessFile != null) || (this.fileLock != null))
     {
-      AppMethodBeat.o(213127);
+      AppMethodBeat.o(218280);
       return false;
     }
     try
     {
-      File localFile1 = new File(Environment.getExternalStorageDirectory(), this.yWW);
+      File localFile1 = new File(Environment.getExternalStorageDirectory(), this.znf);
       File localFile2 = new File(localFile1, this.filename);
       if (!localFile1.exists())
       {
         boolean bool = localFile1.mkdirs();
         if (!bool)
         {
-          AppMethodBeat.o(213127);
+          AppMethodBeat.o(218280);
           return false;
         }
       }
@@ -142,16 +142,16 @@ public final class b
       if (!localFile2.isFile())
       {
         close();
-        AppMethodBeat.o(213127);
+        AppMethodBeat.o(218280);
         return false;
       }
-      AppMethodBeat.o(213127);
+      AppMethodBeat.o(218280);
       return true;
     }
     catch (Throwable localThrowable)
     {
       close();
-      AppMethodBeat.o(213127);
+      AppMethodBeat.o(218280);
     }
     return false;
   }

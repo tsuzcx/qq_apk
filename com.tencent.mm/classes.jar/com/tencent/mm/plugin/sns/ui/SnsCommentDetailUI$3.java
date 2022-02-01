@@ -5,7 +5,7 @@ import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 final class SnsCommentDetailUI$3
   implements View.OnClickListener
@@ -17,9 +17,9 @@ final class SnsCommentDetailUI$3
     AppMethodBeat.i(163081);
     b localb = new b();
     localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/sns/ui/SnsCommentDetailUI$11", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-    ad.e("MicroMsg.SnsCommentDetailUI", "scrollTopClickListener");
-    SnsCommentDetailUI.a(this.AbL, paramView);
+    a.b("com/tencent/mm/plugin/sns/ui/SnsCommentDetailUI$11", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+    ae.e("MicroMsg.SnsCommentDetailUI", "scrollTopClickListener");
+    SnsCommentDetailUI.a(this.AsY, paramView);
     a.a(this, "com/tencent/mm/plugin/sns/ui/SnsCommentDetailUI$11", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(163081);
   }

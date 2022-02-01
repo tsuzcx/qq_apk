@@ -21,19 +21,19 @@ public class Reporter
   
   static
   {
-    AppMethodBeat.i(220310);
+    AppMethodBeat.i(217064);
     TAG = Reporter.class.getSimpleName() + "-" + Integer.toHexString(Reporter.class.hashCode());
-    AppMethodBeat.o(220310);
+    AppMethodBeat.o(217064);
   }
   
   public Reporter(File paramFile, Boolean paramBoolean, Looper paramLooper)
   {
-    AppMethodBeat.i(220304);
+    AppMethodBeat.i(217058);
     this.uploadRunnable = new Runnable()
     {
       public void run()
       {
-        AppMethodBeat.i(220303);
+        AppMethodBeat.i(217057);
         for (;;)
         {
           int i;
@@ -67,7 +67,7 @@ public class Reporter
           catch (Throwable localThrowable)
           {
             Reporter.access$200(Reporter.this);
-            AppMethodBeat.o(220303);
+            AppMethodBeat.o(217057);
             return;
           }
           localStringBuilder.append(new String(arrayOfByte, 0, m));
@@ -100,12 +100,12 @@ public class Reporter
     }
     this.ioHandler = new Handler(paramFile);
     schedule();
-    AppMethodBeat.o(220304);
+    AppMethodBeat.o(217058);
   }
   
   private void report(String paramString)
   {
-    AppMethodBeat.i(220306);
+    AppMethodBeat.i(217060);
     try
     {
       HttpURLConnection localHttpURLConnection = (HttpURLConnection)new URL("https://h.trace.qq.com/kv").openConnection();
@@ -118,33 +118,33 @@ public class Reporter
       localBufferedWriter.flush();
       localBufferedWriter.close();
       localHttpURLConnection.disconnect();
-      AppMethodBeat.o(220306);
+      AppMethodBeat.o(217060);
       return;
     }
     catch (Exception paramString)
     {
-      AppMethodBeat.o(220306);
+      AppMethodBeat.o(217060);
     }
   }
   
   private void schedule()
   {
-    AppMethodBeat.i(220305);
+    AppMethodBeat.i(217059);
     if ((this.auto.booleanValue()) && (this.ioHandler != null)) {
       this.ioHandler.postDelayed(this.uploadRunnable, 30000L);
     }
-    AppMethodBeat.o(220305);
+    AppMethodBeat.o(217059);
   }
   
   public void flush()
   {
-    AppMethodBeat.i(220307);
+    AppMethodBeat.i(217061);
     if (this.ioHandler != null)
     {
       this.ioHandler.removeCallbacks(this.uploadRunnable);
       this.ioHandler.post(this.uploadRunnable);
     }
-    AppMethodBeat.o(220307);
+    AppMethodBeat.o(217061);
   }
 }
 

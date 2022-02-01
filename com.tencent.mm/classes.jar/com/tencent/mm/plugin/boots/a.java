@@ -13,33 +13,33 @@ public final class a
 {
   public final void a(String paramString1, String paramString2, String paramString3, f paramf)
   {
-    AppMethodBeat.i(218893);
+    AppMethodBeat.i(196760);
     ((d)g.ad(d.class)).getTinkerLogic().a(paramString1, paramString2, paramString3, paramf);
-    AppMethodBeat.o(218893);
+    AppMethodBeat.o(196760);
   }
   
-  public final List<com.tencent.mm.plugin.boots.a.a> bMT()
+  public final List<com.tencent.mm.plugin.boots.a.a> bNR()
   {
     AppMethodBeat.i(117358);
-    List localList = ((d)g.ad(d.class)).getTinkerLogic().bMT();
+    List localList = ((d)g.ad(d.class)).getTinkerLogic().bNR();
     AppMethodBeat.o(117358);
     return localList;
   }
   
-  public final void eN(int paramInt1, int paramInt2)
+  public final void eO(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(117357);
     if (((d)g.ad(d.class)).getTinkerLogic() != null) {
-      ((d)g.ad(d.class)).getTinkerLogic().eN(paramInt1, paramInt2);
+      ((d)g.ad(d.class)).getTinkerLogic().eO(paramInt1, paramInt2);
     }
     AppMethodBeat.o(117357);
   }
   
-  public final void yY(int paramInt)
+  public final void zh(int paramInt)
   {
     AppMethodBeat.i(117356);
     if (((d)g.ad(d.class)).getTinkerLogic() != null) {
-      ((d)g.ad(d.class)).getTinkerLogic().yY(paramInt);
+      ((d)g.ad(d.class)).getTinkerLogic().zh(paramInt);
     }
     AppMethodBeat.o(117356);
   }

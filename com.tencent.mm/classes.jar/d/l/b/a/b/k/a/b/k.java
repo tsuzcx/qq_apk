@@ -25,12 +25,12 @@ public final class k
   extends ae
   implements c
 {
-  private final d.l.b.a.b.e.b.c MMU;
-  private final h MMV;
-  private final a.h NAE;
-  private final i NyX;
-  private final f NyY;
-  private g.a NzU;
+  private final i NWe;
+  private final f NWf;
+  private final a.h NXL;
+  private g.a NXb;
+  private final d.l.b.a.b.e.b.c NjZ;
+  private final h Nka;
   
   private k(l paraml, am paramam, g paramg, d.l.b.a.b.f.f paramf, b.a parama, a.h paramh, d.l.b.a.b.e.b.c paramc, h paramh1, i parami, f paramf1, an paraman) {}
   
@@ -43,7 +43,7 @@ public final class k
     d.g.b.p.h(paramMap, "userDataMap");
     d.g.b.p.h(parama, "isExperimentalCoroutineInReleaseEnvironment");
     paramak1 = super.a(paramak1, paramak2, paramList, paramList1, paramab, paramw, paramba, paramMap);
-    this.NzU = parama;
+    this.NXb = parama;
     d.g.b.p.g(paramak1, "super.initialize(\n      …easeEnvironment\n        }");
     AppMethodBeat.o(60478);
     return paramak1;
@@ -59,13 +59,13 @@ public final class k
     am localam = (am)paramt;
     if (paramf == null)
     {
-      paramt = giD();
+      paramt = gnf();
       d.g.b.p.g(paramt, "name");
     }
     for (;;)
     {
-      paraml = new k(paraml, localam, paramg, paramt, parama, this.NAE, this.MMU, this.MMV, this.NyX, this.NyY, paraman);
-      paraml.NzU = this.NzU;
+      paraml = new k(paraml, localam, paramg, paramt, parama, this.NXL, this.NjZ, this.Nka, this.NWe, this.NWf, paraman);
+      paraml.NXb = this.NXb;
       paraml = (d.l.b.a.b.b.c.p)paraml;
       AppMethodBeat.o(60479);
       return paraml;
@@ -73,19 +73,19 @@ public final class k
     }
   }
   
-  public final d.l.b.a.b.e.b.c gtE()
+  public final d.l.b.a.b.e.b.c gyg()
   {
-    return this.MMU;
+    return this.NjZ;
   }
   
-  public final h gtF()
+  public final h gyh()
   {
-    return this.MMV;
+    return this.Nka;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.k.a.b.k
  * JD-Core Version:    0.7.0.1
  */

@@ -17,9 +17,9 @@ public class TAVAudioConfigurationSegment
   
   public String toString()
   {
-    AppMethodBeat.i(219795);
+    AppMethodBeat.i(200826);
     String str = "TAVAudioConfigurationSegment{compositionTimeRange=" + this.compositionTimeRange.toSimpleString() + ", audioConfiguration=" + this.audioConfiguration + '}';
-    AppMethodBeat.o(219795);
+    AppMethodBeat.o(200826);
     return str;
   }
 }

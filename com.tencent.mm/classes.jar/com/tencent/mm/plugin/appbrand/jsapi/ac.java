@@ -2,12 +2,12 @@ package com.tencent.mm.plugin.appbrand.jsapi;
 
 import android.content.Context;
 import com.tencent.luggage.a.b;
-import com.tencent.mm.protocal.protobuf.dep;
+import com.tencent.mm.protocal.protobuf.dfj;
 
 public abstract interface ac
   extends b
 {
-  public abstract void a(Context paramContext, String paramString, dep paramdep);
+  public abstract void a(Context paramContext, String paramString, dfj paramdfj);
 }
 
 

@@ -8,10 +8,10 @@ public final class aj
 {
   public aj()
   {
-    this.NQs = 327;
+    this.Ony = 327;
   }
   
-  private static int jdMethod_do(byte[] paramArrayOfByte)
+  private static int dr(byte[] paramArrayOfByte)
   {
     if (paramArrayOfByte != null)
     {
@@ -23,22 +23,22 @@ public final class aj
     return 0;
   }
   
-  public final byte[] q(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
+  public final byte[] r(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
     AppMethodBeat.i(88139);
-    int j = jdMethod_do(paramArrayOfByte1);
-    int i = jdMethod_do(paramArrayOfByte2);
+    int j = dr(paramArrayOfByte1);
+    int i = dr(paramArrayOfByte2);
     byte[] arrayOfByte = new byte[j + 6 + 2 + i];
     util.d(arrayOfByte, 0, 522017402L);
-    util.W(arrayOfByte, 4, j);
+    util.X(arrayOfByte, 4, j);
     System.arraycopy(paramArrayOfByte1, 0, arrayOfByte, 6, j);
     j += 6;
-    util.W(arrayOfByte, j, i);
+    util.X(arrayOfByte, j, i);
     System.arraycopy(paramArrayOfByte2, 0, arrayOfByte, j + 2, i);
-    super.alW(this.NQs);
-    super.af(arrayOfByte, arrayOfByte.length);
-    super.gxV();
-    paramArrayOfByte1 = super.gxR();
+    super.amG(this.Ony);
+    super.aj(arrayOfByte, arrayOfByte.length);
+    super.gCx();
+    paramArrayOfByte1 = super.gCt();
     AppMethodBeat.o(88139);
     return paramArrayOfByte1;
   }

@@ -7,65 +7,76 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.ui.as;
 
 public final class FloatJumpCompHelper
   extends FloatCompHelperWithLifecycle<com.tencent.mm.plugin.sns.ad.landingpage.component.b.a, com.tencent.mm.plugin.sns.ad.landingpage.component.a.a>
 {
+  public int znQ = -1;
+  
   public FloatJumpCompHelper(com.tencent.mm.plugin.sns.ad.landingpage.component.b.a parama, ViewGroup paramViewGroup)
   {
     super(parama, paramViewGroup);
   }
   
-  private int dRt()
+  private int dUR()
   {
     int i = 1;
-    AppMethodBeat.i(197576);
-    try
+    AppMethodBeat.i(219037);
+    for (;;)
     {
-      Context localContext = this.mContext;
-      if (localContext != null)
+      try
       {
-        int j;
-        int k;
+        Context localContext = this.mContext;
         if (localContext != null)
         {
-          DisplayMetrics localDisplayMetrics = localContext.getResources().getDisplayMetrics();
-          j = Math.max(localDisplayMetrics.widthPixels, localDisplayMetrics.heightPixels);
-          k = Math.min(localDisplayMetrics.widthPixels, localDisplayMetrics.heightPixels);
-          if (k == 0) {
-            ad.w("SnsAd.FloatJumpCompHelper", "the width is zero!!!");
+          if (localContext == null) {
+            break label159;
           }
-        }
-        while (i != 0)
-        {
-          i = as.ej(localContext);
-          AppMethodBeat.o(197576);
-          return i;
-          float f = j / k;
-          j = Float.compare(f, 1.777778F);
-          ad.d("SnsAd.FloatJumpCompHelper", "shouldMindDeviceNavigationBar value is ".concat(String.valueOf(j)));
-          if (j <= 0)
+          DisplayMetrics localDisplayMetrics = localContext.getResources().getDisplayMetrics();
+          int j = Math.max(localDisplayMetrics.widthPixels, localDisplayMetrics.heightPixels);
+          int k = Math.min(localDisplayMetrics.widthPixels, localDisplayMetrics.heightPixels);
+          if (k == 0)
           {
+            ae.w("SnsAd.FloatJumpCompHelper", "the width is zero!!!");
+            if (i != 0)
+            {
+              i = as.en(localContext);
+              AppMethodBeat.o(219037);
+              return i;
+            }
+          }
+          else
+          {
+            float f = j / k;
+            j = Float.compare(f, 1.777778F);
+            ae.d("SnsAd.FloatJumpCompHelper", "shouldMindDeviceNavigationBar value is ".concat(String.valueOf(j)));
+            if (j > 0) {
+              continue;
+            }
             i = 0;
             continue;
-            i = 0;
           }
+          i = com.tencent.mm.cb.a.fromDPToPix(localContext, 12);
+          AppMethodBeat.o(219037);
+          return i;
         }
       }
-      return 0;
-    }
-    catch (Throwable localThrowable)
-    {
-      ad.e("SnsAd.FloatJumpCompHelper", "the getNavigationBarHeight has something wrong!!");
-      AppMethodBeat.o(197576);
+      catch (Throwable localThrowable)
+      {
+        ae.e("SnsAd.FloatJumpCompHelper", "the getNavigationBarHeight has something wrong!!");
+        AppMethodBeat.o(219037);
+        return 0;
+      }
+      label159:
+      i = 0;
     }
   }
   
   protected final void eL(View paramView)
   {
-    AppMethodBeat.i(197575);
+    AppMethodBeat.i(219036);
     try
     {
       paramView = paramView.getLayoutParams();
@@ -74,14 +85,14 @@ public final class FloatJumpCompHelper
         paramView = (RelativeLayout.LayoutParams)paramView;
         paramView.addRule(12);
         paramView.addRule(14);
-        paramView.bottomMargin += dRt();
+        paramView.bottomMargin += dUR();
       }
-      AppMethodBeat.o(197575);
+      AppMethodBeat.o(219036);
       return;
     }
     catch (Throwable paramView)
     {
-      AppMethodBeat.o(197575);
+      AppMethodBeat.o(219036);
     }
   }
 }

@@ -7,17 +7,17 @@ import com.tencent.smtt.export.external.interfaces.IX5WebChromeClient.CustomView
 public final class g$c
   implements WebChromeClient.CustomViewCallback
 {
-  IX5WebChromeClient.CustomViewCallback MuT;
+  IX5WebChromeClient.CustomViewCallback MRX;
   
   g$c(IX5WebChromeClient.CustomViewCallback paramCustomViewCallback)
   {
-    this.MuT = paramCustomViewCallback;
+    this.MRX = paramCustomViewCallback;
   }
   
   public final void onCustomViewHidden()
   {
     AppMethodBeat.i(153849);
-    this.MuT.onCustomViewHidden();
+    this.MRX.onCustomViewHidden();
     AppMethodBeat.o(153849);
   }
 }

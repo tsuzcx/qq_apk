@@ -7,27 +7,27 @@ import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
 final class z$4
   implements View.OnClickListener
 {
-  public static final 4 gVw;
+  public static final 4 gYf;
   
   static
   {
-    AppMethodBeat.i(212466);
-    gVw = new 4();
-    AppMethodBeat.o(212466);
+    AppMethodBeat.i(216086);
+    gYf = new 4();
+    AppMethodBeat.o(216086);
   }
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(212465);
+    AppMethodBeat.i(216085);
     b localb = new b();
     localb.bd(paramView);
-    a.b("com/tencent/mm/live/plugin/LiveInputPlugin$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+    a.b("com/tencent/mm/live/plugin/LiveInputPlugin$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
     a.a(this, "com/tencent/mm/live/plugin/LiveInputPlugin$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-    AppMethodBeat.o(212465);
+    AppMethodBeat.o(216085);
   }
 }
 

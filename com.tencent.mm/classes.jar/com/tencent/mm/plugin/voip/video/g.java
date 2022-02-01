@@ -4,27 +4,27 @@ import android.graphics.Point;
 
 public final class g
 {
-  private String CmS = null;
-  int CmT = 30;
-  boolean CmU = false;
-  boolean CmV = true;
-  int CmW = 0;
-  int CmX;
-  Point CmY;
-  Point CmZ;
-  int fYa = 1;
+  int CEA = 0;
+  int CEB;
+  Point CEC;
+  Point CED;
+  private String CEw = null;
+  int CEx = 30;
+  boolean CEy = false;
+  boolean CEz = true;
+  int gag = 1;
   
   public g(String paramString)
   {
-    this.CmS = paramString;
-    this.CmT = 15;
-    this.fYa = 1;
-    this.CmU = false;
-    this.CmV = true;
-    this.CmW = 0;
-    this.CmX = 0;
-    this.CmY = null;
-    this.CmZ = null;
+    this.CEw = paramString;
+    this.CEx = 15;
+    this.gag = 1;
+    this.CEy = false;
+    this.CEz = true;
+    this.CEA = 0;
+    this.CEB = 0;
+    this.CEC = null;
+    this.CED = null;
   }
 }
 

@@ -8,7 +8,8 @@ import com.tencent.mm.i.g.a;
 import com.tencent.mm.i.g.b;
 import com.tencent.mm.i.h;
 import com.tencent.mm.i.h.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.vfs.k;
 import d.g.b.p;
 import d.l;
 import d.n.n;
@@ -18,98 +19,98 @@ import java.nio.charset.Charset;
 import java.util.HashMap;
 import java.util.Map;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/flutter/video/FlutterCdnDownloadMgr;", "Lcom/tencent/mm/cdn/keep_VideoTaskInfo$IVideoCdnCallback;", "Lcom/tencent/mm/cdn/keep_TaskInfo$TaskCallback;", "Lcom/tencent/mm/cdn/keep_TaskInfo$TaskPreloadCallback;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "TAG", "", "getTAG", "()Ljava/lang/String;", "lastPlayMediaId", "getLastPlayMediaId", "setLastPlayMediaId", "(Ljava/lang/String;)V", "preLoadTaskUrl", "getPreLoadTaskUrl", "setPreLoadTaskUrl", "root", "getRoot", "setRoot", "videoTaskInfoMap", "Ljava/util/HashMap;", "Lcom/tencent/mm/plugin/flutter/video/FlutterCdnDownloadMgr$FTVideoTaskInfo;", "Lkotlin/collections/HashMap;", "getVideoTaskInfoMap", "()Ljava/util/HashMap;", "setVideoTaskInfoMap", "(Ljava/util/HashMap;)V", "callback", "", "mediaId", "startRet", "progressInfo", "Lcom/tencent/mm/cdn/keep_ProgressInfo;", "sceneResult", "Lcom/tencent/mm/cdn/keep_SceneResult;", "onlyCheckExist", "", "checkTask", "decodePrepareResponse", "", "inbuf", "doPreLoadTask", "minLength", "", "(Ljava/lang/Long;)I", "dumpTaskDoing", "", "getCdnAuthInfo", "buff", "Ljava/io/ByteArrayOutputStream;", "getTaskInfo", "onDataAvailable", "offset", "length", "onFinish", "ret", "onMoovReady", "svrFlag", "onPreloadCompleted", "onProgress", "finished", "total", "preloadTask", "url", "(Ljava/lang/String;Ljava/lang/Long;)V", "queryDate", "offest", "retryStartTask", "isPlayMode", "(ZLjava/lang/String;Ljava/lang/String;Ljava/lang/Long;)V", "startTask", "stopTask", "FTVideoTaskInfo", "plugin-flutter_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/flutter/video/FlutterCdnDownloadMgr;", "Lcom/tencent/mm/cdn/keep_VideoTaskInfo$IVideoCdnCallback;", "Lcom/tencent/mm/cdn/keep_TaskInfo$TaskCallback;", "Lcom/tencent/mm/cdn/keep_TaskInfo$TaskPreloadCallback;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "TAG", "", "getTAG", "()Ljava/lang/String;", "lastPlayMediaId", "getLastPlayMediaId", "setLastPlayMediaId", "(Ljava/lang/String;)V", "preLoadTaskUrl", "getPreLoadTaskUrl", "setPreLoadTaskUrl", "root", "getRoot", "setRoot", "videoTaskInfoMap", "Ljava/util/HashMap;", "Lcom/tencent/mm/plugin/flutter/video/FlutterCdnDownloadMgr$FTVideoTaskInfo;", "Lkotlin/collections/HashMap;", "getVideoTaskInfoMap", "()Ljava/util/HashMap;", "setVideoTaskInfoMap", "(Ljava/util/HashMap;)V", "callback", "", "mediaId", "startRet", "progressInfo", "Lcom/tencent/mm/cdn/keep_ProgressInfo;", "sceneResult", "Lcom/tencent/mm/cdn/keep_SceneResult;", "onlyCheckExist", "", "checkTask", "decodePrepareResponse", "", "inbuf", "doPreLoadTask", "minLength", "", "(Ljava/lang/Long;)I", "dumpTaskDoing", "", "getCdnAuthInfo", "buff", "Ljava/io/ByteArrayOutputStream;", "getTaskInfo", "onDataAvailable", "offset", "length", "onFinish", "ret", "onMoovReady", "svrFlag", "onPreloadCompleted", "onProgress", "finished", "total", "preloadTask", "url", "(Ljava/lang/String;Ljava/lang/Long;)V", "queryDate", "offest", "retryStartTask", "isPlayMode", "(ZLjava/lang/String;Ljava/lang/String;Ljava/lang/Long;)V", "startTask", "stopTask", "FTVideoTaskInfo", "plugin-flutter_release"})
 public final class b
   implements g.a, g.b, h.a
 {
   private final String TAG;
-  private String tiJ;
-  private String tiK;
-  private HashMap<String, a> tiL;
-  private String tiM;
+  private String ttB;
+  private String ttC;
+  private HashMap<String, a> ttD;
+  private String ttE;
   
   public b(Context paramContext)
   {
-    AppMethodBeat.i(219145);
+    AppMethodBeat.i(213474);
     this.TAG = "MicroMsg.FlutterVideoPlayerMgr";
-    this.tiL = new HashMap();
-    this.tiJ = (paramContext.getCacheDir() + "/flutter/FTVideo/");
-    AppMethodBeat.o(219145);
+    this.ttD = new HashMap();
+    this.ttB = (paramContext.getCacheDir() + "/flutter/FTVideo/");
+    AppMethodBeat.o(213474);
   }
   
   public final int a(String paramString, int paramInt, com.tencent.mm.i.c paramc, com.tencent.mm.i.d paramd, boolean paramBoolean)
   {
-    AppMethodBeat.i(219142);
-    ad.d(this.TAG, "FVPlayer callback mediaId:" + paramString + ' ');
-    AppMethodBeat.o(219142);
+    AppMethodBeat.i(213471);
+    ae.d(this.TAG, "FVPlayer callback mediaId:" + paramString + ' ');
+    AppMethodBeat.o(213471);
     return 0;
   }
   
   public final void a(String paramString, int paramInt, com.tencent.mm.i.d paramd)
   {
-    AppMethodBeat.i(219141);
+    AppMethodBeat.i(213470);
     Object localObject;
     if ((paramString != null) && (paramd != null)) {
-      if (this.tiL.get(paramString) == null)
+      if (this.ttD.get(paramString) == null)
       {
         localObject = new a();
-        ad.d(this.TAG, "cdntask end id:" + paramString + ", isplaymode:" + ((a)localObject).tiP);
+        ae.d(this.TAG, "cdntask end id:" + paramString + ", isplaymode:" + ((a)localObject).ttH);
         ((a)localObject).cacheSize = paramd.field_fileLength;
-        ((a)localObject).nsQ = paramd.field_fileLength;
+        ((a)localObject).nyl = paramd.field_fileLength;
         ((a)localObject).brw = true;
-        ((Map)this.tiL).put(paramString, localObject);
-        this.tiK = null;
+        ((Map)this.ttD).put(paramString, localObject);
+        this.ttC = null;
       }
     }
     for (;;)
     {
-      paramString = (a)((Map)this.tiL).get(paramString);
+      paramString = (a)((Map)this.ttD).get(paramString);
       if (paramString == null) {
         break label207;
       }
-      paramString.tiO = false;
-      AppMethodBeat.o(219141);
+      paramString.ttG = false;
+      AppMethodBeat.o(213470);
       return;
-      localObject = this.tiL.get(paramString);
+      localObject = this.ttD.get(paramString);
       if (localObject == null)
       {
         paramString = new v("null cannot be cast to non-null type com.tencent.mm.plugin.flutter.video.FlutterCdnDownloadMgr.FTVideoTaskInfo");
-        AppMethodBeat.o(219141);
+        AppMethodBeat.o(213470);
         throw paramString;
       }
       localObject = (a)localObject;
       break;
-      ad.e(this.TAG, "onfinish but id not found:".concat(String.valueOf(paramString)));
+      ae.e(this.TAG, "onfinish but id not found:".concat(String.valueOf(paramString)));
     }
     label207:
-    AppMethodBeat.o(219141);
+    AppMethodBeat.o(213470);
   }
   
   public final void a(String paramString1, long paramLong1, long paramLong2, String paramString2)
   {
-    AppMethodBeat.i(219137);
+    AppMethodBeat.i(213466);
     p.h(paramString2, "svrFlag");
-    AppMethodBeat.o(219137);
+    AppMethodBeat.o(213466);
   }
   
   public final void a(String paramString, ByteArrayOutputStream paramByteArrayOutputStream)
   {
-    AppMethodBeat.i(219143);
-    ad.d(this.TAG, "FVPlayer getCdnAuthInfo mediaId:".concat(String.valueOf(paramString)));
-    AppMethodBeat.o(219143);
+    AppMethodBeat.i(213472);
+    ae.d(this.TAG, "FVPlayer getCdnAuthInfo mediaId:".concat(String.valueOf(paramString)));
+    AppMethodBeat.o(213472);
   }
   
   public final void a(String paramString, Long paramLong)
   {
-    AppMethodBeat.i(219132);
-    this.tiM = paramString;
-    if (this.tiM == null)
+    AppMethodBeat.i(213461);
+    this.ttE = paramString;
+    if (this.ttE == null)
     {
-      ad.d(this.TAG, "FVPlayer preLoadTask empty preload task");
-      AppMethodBeat.o(219132);
+      ae.d(this.TAG, "FVPlayer preLoadTask empty preload task");
+      AppMethodBeat.o(213461);
       return;
     }
-    paramString = this.tiM;
+    paramString = this.ttE;
     Object localObject;
     String str;
     if (paramString != null)
@@ -118,14 +119,14 @@ public final class b
       if (paramString == null)
       {
         paramString = new v("null cannot be cast to non-null type java.lang.String");
-        AppMethodBeat.o(219132);
+        AppMethodBeat.o(213461);
         throw paramString;
       }
       paramString = paramString.getBytes((Charset)localObject);
       p.g(paramString, "(this as java.lang.String).getBytes(charset)");
       localObject = g.getMessageDigest(paramString);
-      paramString = new StringBuilder().append(this.tiJ).append('-');
-      str = this.tiM;
+      paramString = new StringBuilder().append(this.ttB).append('-');
+      str = this.ttE;
       if (str == null) {
         break label201;
       }
@@ -133,77 +134,77 @@ public final class b
     label201:
     for (int i = str.hashCode();; i = 0)
     {
-      str = new com.tencent.mm.vfs.e(i + ".mp4").getAbsolutePath();
-      if (!n.H((String)localObject, this.tiK, true)) {
+      str = new k(i + ".mp4").getAbsolutePath();
+      if (!n.H((String)localObject, this.ttC, true)) {
         break label206;
       }
-      ad.d(this.TAG, "FVPlayer preLoadTask can not preload playing task lastPlayMediaId:" + this.tiK);
-      AppMethodBeat.o(219132);
+      ae.d(this.TAG, "FVPlayer preLoadTask can not preload playing task lastPlayMediaId:" + this.ttC);
+      AppMethodBeat.o(213461);
       return;
       paramString = null;
       break;
     }
     label206:
-    ad.d(this.TAG, "FVPlayer preLoadTask mediaId:" + (String)localObject + " url:" + this.tiM + " path:" + str);
-    if (this.tiL.get(localObject) == null)
+    ae.d(this.TAG, "FVPlayer preLoadTask mediaId:" + (String)localObject + " url:" + this.ttE + " path:" + str);
+    if (this.ttD.get(localObject) == null)
     {
       paramString = new a();
-      if ((paramString.tiQ) && (paramLong != null) && (paramLong.longValue() != 0L) && (paramString.cacheSize < paramLong.longValue())) {
-        paramString.tiQ = false;
+      if ((paramString.ttI) && (paramLong != null) && (paramLong.longValue() != 0L) && (paramString.cacheSize < paramLong.longValue())) {
+        paramString.ttI = false;
       }
-      if ((paramString.brw) || (paramString.tiQ) || (paramString.tiO)) {
+      if ((paramString.brw) || (paramString.ttI) || (paramString.ttG)) {
         break label656;
       }
       h localh = new h();
-      localh.fJi = "task_FlutterCdnDownloadMgr_1";
+      localh.fLl = "task_FlutterCdnDownloadMgr_1";
       localh.field_mediaId = ((String)localObject);
-      localh.url = this.tiM;
-      localh.fJn = 60;
-      localh.fJo = 60;
-      localh.fJz = 2;
-      localh.fJF = 2;
-      localh.fJA = 3;
+      localh.url = this.ttE;
+      localh.fLq = 60;
+      localh.fLr = 60;
+      localh.fLC = 2;
+      localh.fLI = 2;
+      localh.fLD = 3;
       localh.field_requestVideoFormat = 0;
       localh.field_fullpath = str;
       localh.concurrentCount = 8;
       localh.connectionCount = 1;
-      localh.fJN = ((h.a)this);
-      localh.fJj = ((g.a)this);
-      localh.fJB = ((g.b)this);
+      localh.fLQ = ((h.a)this);
+      localh.fLm = ((g.a)this);
+      localh.fLE = ((g.b)this);
       if ((paramLong != null) && (paramLong.longValue() != 0L)) {
         localh.preloadMinSize = paramLong.longValue();
       }
       if (CdnLogic.taskExist((String)localObject)) {
         break label622;
       }
-      e.tjm.cQu().tjk.c(localh);
-      paramString.tiO = true;
-      paramString.tiP = false;
-      ad.d(this.TAG, "cdntaskaction adddownload FVPlayer preLoadTask mediaId:" + (String)localObject + " .");
+      e.tue.cSZ().tuc.c(localh);
+      paramString.ttG = true;
+      paramString.ttH = false;
+      ae.d(this.TAG, "cdntaskaction adddownload FVPlayer preLoadTask mediaId:" + (String)localObject + " .");
     }
     for (;;)
     {
       p.g(str, "filePath");
       paramString.setPath(str);
-      paramLong = (Map)this.tiL;
+      paramLong = (Map)this.ttD;
       p.g(localObject, "mediaId");
       paramLong.put(localObject, paramString);
-      AppMethodBeat.o(219132);
+      AppMethodBeat.o(213461);
       return;
-      paramString = this.tiL.get(localObject);
+      paramString = this.ttD.get(localObject);
       if (paramString == null)
       {
         paramString = new v("null cannot be cast to non-null type com.tencent.mm.plugin.flutter.video.FlutterCdnDownloadMgr.FTVideoTaskInfo");
-        AppMethodBeat.o(219132);
+        AppMethodBeat.o(213461);
         throw paramString;
       }
       paramString = (a)paramString;
       break;
       label622:
-      ad.d(this.TAG, "FVPlayer preLoadTask task exist mediaId:" + (String)localObject + " .");
+      ae.d(this.TAG, "FVPlayer preLoadTask task exist mediaId:" + (String)localObject + " .");
       continue;
       label656:
-      ad.d(this.TAG, "FVPlayer preLoadTask mediaId:" + (String)localObject + " has downloaded or isDoing:" + paramString.brw + ", " + paramString.tiQ + ", " + paramString.tiO + '.');
+      ae.d(this.TAG, "FVPlayer preLoadTask mediaId:" + (String)localObject + " has downloaded or isDoing:" + paramString.brw + ", " + paramString.ttI + ", " + paramString.ttG + '.');
     }
   }
   
@@ -211,14 +212,14 @@ public final class b
   {
     Object localObject1 = null;
     Object localObject2 = null;
-    AppMethodBeat.i(219134);
-    ad.d(this.TAG, "FVPlayer retryStartTask mediaId:" + paramString2 + " url:" + paramString1);
-    a locala = ajv(paramString2);
+    AppMethodBeat.i(213463);
+    ae.d(this.TAG, "FVPlayer retryStartTask mediaId:" + paramString2 + " url:" + paramString1);
+    a locala = akt(paramString2);
     if (locala != null) {}
-    for (paramString2 = Boolean.valueOf(locala.tiO);; paramString2 = null)
+    for (paramString2 = Boolean.valueOf(locala.ttG);; paramString2 = null)
     {
       if (paramString2 == null) {
-        p.gfZ();
+        p.gkB();
       }
       if (!paramString2.booleanValue()) {
         break;
@@ -227,121 +228,121 @@ public final class b
       paramLong = new StringBuilder("is already downloading, isPlayMode:false, curMode:");
       paramString1 = localObject2;
       if (locala != null) {
-        paramString1 = Boolean.valueOf(locala.tiP);
+        paramString1 = Boolean.valueOf(locala.ttH);
       }
-      ad.d(paramString2, paramString1.booleanValue());
-      AppMethodBeat.o(219134);
+      ae.d(paramString2, paramString1.booleanValue());
+      AppMethodBeat.o(213463);
       return;
     }
     if (locala != null) {}
-    for (paramString2 = Boolean.valueOf(locala.tiQ); paramString2.booleanValue(); paramString2 = null)
+    for (paramString2 = Boolean.valueOf(locala.ttI); paramString2.booleanValue(); paramString2 = null)
     {
       if ((paramLong != null) && (paramLong.longValue() != 0L))
       {
         paramString2 = localObject1;
         if (locala != null) {
-          paramString2 = Long.valueOf(locala.tiN);
+          paramString2 = Long.valueOf(locala.ttF);
         }
         if (paramString2.longValue() < paramLong.longValue()) {
           break;
         }
       }
-      ad.d(this.TAG, "preload already done");
-      AppMethodBeat.o(219134);
+      ae.d(this.TAG, "preload already done");
+      AppMethodBeat.o(213463);
       return;
     }
     a(paramString1, paramLong);
-    AppMethodBeat.o(219134);
+    AppMethodBeat.o(213463);
   }
   
-  public final int aju(String paramString)
+  public final int aks(String paramString)
   {
-    AppMethodBeat.i(219135);
-    ad.d(this.TAG, "cdntaskaction cancel FVPlayer stopTask mediaId:" + paramString + ' ');
-    int i = e.tjm.cQu().tjk.ajw(paramString);
-    a locala = (a)((Map)this.tiL).get(paramString);
+    AppMethodBeat.i(213464);
+    ae.d(this.TAG, "cdntaskaction cancel FVPlayer stopTask mediaId:" + paramString + ' ');
+    int i = e.tue.cSZ().tuc.aku(paramString);
+    a locala = (a)((Map)this.ttD).get(paramString);
     if (locala != null) {
-      locala.tiO = false;
+      locala.ttG = false;
     }
-    if (n.H(this.tiK, paramString, true)) {
-      this.tiK = null;
+    if (n.H(this.ttC, paramString, true)) {
+      this.ttC = null;
     }
-    AppMethodBeat.o(219135);
+    AppMethodBeat.o(213464);
     return i;
   }
   
-  public final a ajv(String paramString)
+  public final a akt(String paramString)
   {
-    AppMethodBeat.i(219136);
-    if (((Map)this.tiL).get(paramString) == null)
+    AppMethodBeat.i(213465);
+    if (((Map)this.ttD).get(paramString) == null)
     {
       paramString = new a();
-      AppMethodBeat.o(219136);
+      AppMethodBeat.o(213465);
       return paramString;
     }
-    paramString = ((Map)this.tiL).get(paramString);
+    paramString = ((Map)this.ttD).get(paramString);
     if (paramString == null)
     {
       paramString = new v("null cannot be cast to non-null type com.tencent.mm.plugin.flutter.video.FlutterCdnDownloadMgr.FTVideoTaskInfo");
-      AppMethodBeat.o(219136);
+      AppMethodBeat.o(213465);
       throw paramString;
     }
     paramString = (a)paramString;
-    AppMethodBeat.o(219136);
+    AppMethodBeat.o(213465);
     return paramString;
   }
   
   public final void b(String paramString, com.tencent.mm.i.d paramd)
   {
-    AppMethodBeat.i(219140);
+    AppMethodBeat.i(213469);
     if ((paramString != null) && (paramd != null))
     {
-      if (this.tiL.get(paramString) == null)
+      if (this.ttD.get(paramString) == null)
       {
-        ad.e(this.TAG, "preload completed, but task not found, mediaId:".concat(String.valueOf(paramString)));
-        AppMethodBeat.o(219140);
+        ae.e(this.TAG, "preload completed, but task not found, mediaId:".concat(String.valueOf(paramString)));
+        AppMethodBeat.o(213469);
         return;
       }
-      Object localObject = this.tiL.get(paramString);
+      Object localObject = this.ttD.get(paramString);
       if (localObject == null)
       {
         paramString = new v("null cannot be cast to non-null type com.tencent.mm.plugin.flutter.video.FlutterCdnDownloadMgr.FTVideoTaskInfo");
-        AppMethodBeat.o(219140);
+        AppMethodBeat.o(213469);
         throw paramString;
       }
       localObject = (a)localObject;
-      ad.d(this.TAG, "cdntask end preload id:" + paramString + ", isplaymode:" + ((a)localObject).tiP);
-      ((a)localObject).nsQ = paramd.field_fileLength;
-      ((a)localObject).tiN = paramd.field_recvedBytes;
-      ((a)localObject).tiQ = true;
-      ((a)localObject).tiO = false;
-      ((Map)this.tiL).put(paramString, localObject);
-      ad.i(this.TAG, "preload completed mediaId:".concat(String.valueOf(paramString)));
+      ae.d(this.TAG, "cdntask end preload id:" + paramString + ", isplaymode:" + ((a)localObject).ttH);
+      ((a)localObject).nyl = paramd.field_fileLength;
+      ((a)localObject).ttF = paramd.field_recvedBytes;
+      ((a)localObject).ttI = true;
+      ((a)localObject).ttG = false;
+      ((Map)this.ttD).put(paramString, localObject);
+      ae.i(this.TAG, "preload completed mediaId:".concat(String.valueOf(paramString)));
     }
-    AppMethodBeat.o(219140);
+    AppMethodBeat.o(213469);
   }
   
   public final byte[] f(String paramString, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(219144);
-    ad.d(this.TAG, "FVPlayer decodePrepareResponse mediaId:" + paramString + ' ');
-    AppMethodBeat.o(219144);
+    AppMethodBeat.i(213473);
+    ae.d(this.TAG, "FVPlayer decodePrepareResponse mediaId:" + paramString + ' ');
+    AppMethodBeat.o(213473);
     return new byte[0];
   }
   
-  public final void gE(String paramString1, String paramString2)
+  public final void gJ(String paramString1, String paramString2)
   {
     Object localObject = null;
-    AppMethodBeat.i(219133);
-    ad.d(this.TAG, "FVPlayer startTask mediaId:" + paramString2 + " url:" + paramString1);
+    AppMethodBeat.i(213462);
+    ae.d(this.TAG, "FVPlayer startTask mediaId:" + paramString2 + " url:" + paramString1);
     boolean bool;
     if (!CdnLogic.taskExist(paramString2))
     {
-      if (((Map)this.tiL).get(paramString2) != null) {
+      if (((Map)this.ttD).get(paramString2) != null) {
         break label163;
       }
       bool = true;
-      paramString2 = (a)((Map)this.tiL).get(paramString2);
+      paramString2 = (a)((Map)this.ttD).get(paramString2);
       if (paramString2 == null) {
         break label169;
       }
@@ -350,7 +351,7 @@ public final class b
     label169:
     for (paramString2 = Boolean.valueOf(paramString2.brw);; paramString2 = null)
     {
-      ad.e(this.TAG, "testtest task not in preload, in info cache:" + bool + ", completed:" + paramString2);
+      ae.e(this.TAG, "testtest task not in preload, in info cache:" + bool + ", completed:" + paramString2);
       if (paramString1 == null) {
         break label320;
       }
@@ -359,7 +360,7 @@ public final class b
         break label174;
       }
       paramString1 = new v("null cannot be cast to non-null type java.lang.String");
-      AppMethodBeat.o(219133);
+      AppMethodBeat.o(213462);
       throw paramString1;
       bool = false;
       break;
@@ -368,25 +369,25 @@ public final class b
     paramString2 = paramString1.getBytes(paramString2);
     p.g(paramString2, "(this as java.lang.String).getBytes(charset)");
     String str1 = g.getMessageDigest(paramString2);
-    paramString2 = new StringBuilder().append(this.tiJ).append('-');
+    paramString2 = new StringBuilder().append(this.ttB).append('-');
     int i;
     label222:
     String str2;
     if (paramString1 != null)
     {
       i = paramString1.hashCode();
-      str2 = new com.tencent.mm.vfs.e(i + ".mp4").getAbsolutePath();
-      if (this.tiL.get(str1) != null) {
+      str2 = new k(i + ".mp4").getAbsolutePath();
+      if (this.ttD.get(str1) != null) {
         break label330;
       }
     }
     for (paramString2 = new a();; paramString2 = (a)paramString2)
     {
-      if ((!n.H(this.tiK, str1, false)) || (!paramString2.tiO) || (!paramString2.tiP)) {
+      if ((!n.H(this.ttC, str1, false)) || (!paramString2.ttG) || (!paramString2.ttH)) {
         break label370;
       }
-      ad.i(this.TAG, "playmode is downloading:".concat(String.valueOf(str1)));
-      AppMethodBeat.o(219133);
+      ae.i(this.TAG, "playmode is downloading:".concat(String.valueOf(str1)));
+      AppMethodBeat.o(213462);
       return;
       label320:
       paramString2 = null;
@@ -394,11 +395,11 @@ public final class b
       i = 0;
       break label222;
       label330:
-      paramString2 = this.tiL.get(str1);
+      paramString2 = this.ttD.get(str1);
       if (paramString2 == null)
       {
         paramString1 = new v("null cannot be cast to non-null type com.tencent.mm.plugin.flutter.video.FlutterCdnDownloadMgr.FTVideoTaskInfo");
-        AppMethodBeat.o(219133);
+        AppMethodBeat.o(213462);
         throw paramString1;
       }
     }
@@ -406,91 +407,91 @@ public final class b
     if (!paramString2.brw)
     {
       h localh = new h();
-      localh.fJi = "task_FlutterCdnDownloadMgr_2";
+      localh.fLl = "task_FlutterCdnDownloadMgr_2";
       localh.field_mediaId = str1;
       localh.url = paramString1;
-      localh.fJn = 60;
-      localh.fJo = 60;
-      localh.fJz = 1;
-      localh.fJF = 1;
-      localh.fJA = 3;
+      localh.fLq = 60;
+      localh.fLr = 60;
+      localh.fLC = 1;
+      localh.fLI = 1;
+      localh.fLD = 3;
       localh.field_requestVideoFormat = 0;
       localh.field_fullpath = str2;
       localh.concurrentCount = 8;
-      localh.fJN = ((h.a)this);
-      if ((this.tiK != null) && (!n.H(this.tiK, str1, false)) && (CdnLogic.taskExist(this.tiK)))
+      localh.fLQ = ((h.a)this);
+      if ((this.ttC != null) && (!n.H(this.ttC, str1, false)) && (CdnLogic.taskExist(this.ttC)))
       {
-        i = e.tjm.cQu().tjk.ajw(this.tiK);
+        i = e.tue.cSZ().tuc.aku(this.ttC);
         if (paramString2 != null) {
-          paramString2.tiO = false;
+          paramString2.ttG = false;
         }
-        ad.d(this.TAG, "cdntaskaction cancel FVPlayer startTask cancelDownloadTask lastPlayMediaId:" + this.tiK + ' ' + i);
+        ae.d(this.TAG, "cdntaskaction cancel FVPlayer startTask cancelDownloadTask lastPlayMediaId:" + this.ttC + ' ' + i);
       }
       if (CdnLogic.taskExist(str1))
       {
         paramString1 = localObject;
         if (paramString2 != null) {
-          paramString1 = Boolean.valueOf(paramString2.tiP);
+          paramString1 = Boolean.valueOf(paramString2.ttH);
         }
         if (!paramString1.booleanValue())
         {
-          i = e.tjm.cQu().tjk.ajw(str1);
+          i = e.tue.cSZ().tuc.aku(str1);
           if (paramString2 != null) {
-            paramString2.tiO = false;
+            paramString2.ttG = false;
           }
-          ad.d(this.TAG, "cdntaskaction cancel FVPlayer startTask cancelDownloadTask lastPlayMediaId:" + this.tiK + " mediaId:" + str1 + ' ' + i);
+          ae.d(this.TAG, "cdntaskaction cancel FVPlayer startTask cancelDownloadTask lastPlayMediaId:" + this.ttC + " mediaId:" + str1 + ' ' + i);
         }
       }
-      i = e.tjm.cQu().tjk.c(localh);
+      i = e.tue.cSZ().tuc.c(localh);
       if (paramString2 != null) {
-        paramString2.tiO = true;
+        paramString2.ttG = true;
       }
       if (paramString2 != null) {
-        paramString2.tiP = true;
+        paramString2.ttH = true;
       }
-      ad.d(this.TAG, "cdntaskaction adddownload FVPlayer startTask addDownloadTaskNotCancelInMainThread mediaId:" + str1 + ' ' + i + " playmode:true path: " + str2);
+      ae.d(this.TAG, "cdntaskaction adddownload FVPlayer startTask addDownloadTaskNotCancelInMainThread mediaId:" + str1 + ' ' + i + " playmode:true path: " + str2);
     }
     for (;;)
     {
-      this.tiK = str1;
+      this.ttC = str1;
       p.g(str2, "filePath");
       paramString2.setPath(str2);
-      paramString1 = (Map)this.tiL;
+      paramString1 = (Map)this.ttD;
       p.g(str1, "mediaId");
       paramString1.put(str1, paramString2);
-      AppMethodBeat.o(219133);
+      AppMethodBeat.o(213462);
       return;
-      ad.d(this.TAG, "FVPlayer startTask mediaId:" + str1 + " has downloaded.");
+      ae.d(this.TAG, "FVPlayer startTask mediaId:" + str1 + " has downloaded.");
     }
   }
   
   public final void i(String paramString, long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(219139);
-    ad.d(this.TAG, "onProgress mediaId:" + paramString + ", finish:" + paramLong1 + ", length:" + paramLong2);
+    AppMethodBeat.i(213468);
+    ae.d(this.TAG, "onProgress mediaId:" + paramString + ", finish:" + paramLong1 + ", length:" + paramLong2);
     if (paramString != null) {
-      if (this.tiL.get(paramString) != null) {
+      if (this.ttD.get(paramString) != null) {
         break label141;
       }
     }
     for (Object localObject = new a();; localObject = (a)localObject)
     {
       ((a)localObject).cacheSize = paramLong1;
-      ((a)localObject).nsQ = paramLong2;
-      ((Map)this.tiL).put(paramString, localObject);
+      ((a)localObject).nyl = paramLong2;
+      ((Map)this.ttD).put(paramString, localObject);
       if (paramLong1 == paramLong2)
       {
-        ad.i(this.TAG, "onprogress cdntask end id:".concat(String.valueOf(paramString)));
+        ae.i(this.TAG, "onprogress cdntask end id:".concat(String.valueOf(paramString)));
         ((a)localObject).brw = true;
       }
-      AppMethodBeat.o(219139);
+      AppMethodBeat.o(213468);
       return;
       label141:
-      localObject = this.tiL.get(paramString);
+      localObject = this.ttD.get(paramString);
       if (localObject == null)
       {
         paramString = new v("null cannot be cast to non-null type com.tencent.mm.plugin.flutter.video.FlutterCdnDownloadMgr.FTVideoTaskInfo");
-        AppMethodBeat.o(219139);
+        AppMethodBeat.o(213468);
         throw paramString;
       }
     }
@@ -498,35 +499,35 @@ public final class b
   
   public final void onDataAvailable(String paramString, long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(219138);
-    ad.d(this.TAG, "onDataAvailable mediaId:" + paramString + ", offset:" + paramLong1 + ", length:" + paramLong2);
-    AppMethodBeat.o(219138);
+    AppMethodBeat.i(213467);
+    ae.d(this.TAG, "onDataAvailable mediaId:" + paramString + ", offset:" + paramLong1 + ", length:" + paramLong2);
+    AppMethodBeat.o(213467);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/flutter/video/FlutterCdnDownloadMgr$FTVideoTaskInfo;", "", "()V", "cacheSize", "", "getCacheSize", "()J", "setCacheSize", "(J)V", "isComplete", "", "()Z", "setComplete", "(Z)V", "isDoing", "setDoing", "isPlayMode", "setPlayMode", "isPreloadComplete", "setPreloadComplete", "path", "", "getPath", "()Ljava/lang/String;", "setPath", "(Ljava/lang/String;)V", "preloadedSize", "getPreloadedSize", "setPreloadedSize", "totalSize", "getTotalSize", "setTotalSize", "plugin-flutter_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/flutter/video/FlutterCdnDownloadMgr$FTVideoTaskInfo;", "", "()V", "cacheSize", "", "getCacheSize", "()J", "setCacheSize", "(J)V", "isComplete", "", "()Z", "setComplete", "(Z)V", "isDoing", "setDoing", "isPlayMode", "setPlayMode", "isPreloadComplete", "setPreloadComplete", "path", "", "getPath", "()Ljava/lang/String;", "setPath", "(Ljava/lang/String;)V", "preloadedSize", "getPreloadedSize", "setPreloadedSize", "totalSize", "getTotalSize", "setTotalSize", "plugin-flutter_release"})
   public static final class a
   {
     boolean brw;
     long cacheSize;
-    long nsQ;
+    long nyl;
     String path = "";
-    long tiN;
-    boolean tiO;
-    boolean tiP;
-    boolean tiQ;
+    long ttF;
+    boolean ttG;
+    boolean ttH;
+    boolean ttI;
     
     public final void setPath(String paramString)
     {
-      AppMethodBeat.i(219131);
+      AppMethodBeat.i(213460);
       p.h(paramString, "<set-?>");
       this.path = paramString;
-      AppMethodBeat.o(219131);
+      AppMethodBeat.o(213460);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.flutter.e.b
  * JD-Core Version:    0.7.0.1
  */

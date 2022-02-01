@@ -7,37 +7,37 @@ import android.view.ViewTreeObserver;
 import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.aq;
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
 
 public class IPCallDynamicTextView
   extends TextView
 {
-  private ap mHandler;
+  private aq mHandler;
   private int mHeight;
   private String mValue;
-  private int uRm;
-  private double uRn;
-  private double uRo;
-  private double uRp;
-  private boolean uRq;
-  private int uRr;
-  private int uRs;
-  DecimalFormat uRt;
-  private String uRu;
-  private String uRv;
+  private int vcY;
+  private double vcZ;
+  private double vda;
+  private double vdb;
+  private boolean vdc;
+  private int vdd;
+  private int vde;
+  DecimalFormat vdf;
+  private String vdg;
+  private String vdh;
   
   public IPCallDynamicTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(25761);
-    this.uRr = 4000;
-    this.uRs = 50;
-    this.uRt = new DecimalFormat("0.00");
-    this.uRu = "";
-    this.uRv = "";
-    this.mHandler = new ap()
+    this.vdd = 4000;
+    this.vde = 50;
+    this.vdf = new DecimalFormat("0.00");
+    this.vdg = "";
+    this.vdh = "";
+    this.mHandler = new aq()
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
@@ -71,12 +71,12 @@ public class IPCallDynamicTextView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(25762);
-    this.uRr = 4000;
-    this.uRs = 50;
-    this.uRt = new DecimalFormat("0.00");
-    this.uRu = "";
-    this.uRv = "";
-    this.mHandler = new ap()
+    this.vdd = 4000;
+    this.vde = 50;
+    this.vdf = new DecimalFormat("0.00");
+    this.vdg = "";
+    this.vdh = "";
+    this.mHandler = new aq()
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
@@ -106,7 +106,7 @@ public class IPCallDynamicTextView
     AppMethodBeat.o(25762);
   }
   
-  public static String anP(String paramString)
+  public static String aoR(String paramString)
   {
     AppMethodBeat.i(25765);
     String str1 = "";
@@ -155,7 +155,7 @@ public class IPCallDynamicTextView
   
   public void setLocHeight(int paramInt)
   {
-    this.uRm = paramInt;
+    this.vcY = paramInt;
   }
   
   public final void setValue(String paramString1, String paramString2)
@@ -169,15 +169,15 @@ public class IPCallDynamicTextView
     }
     try
     {
-      this.uRo = Double.parseDouble(anP(paramString1));
-      this.uRu = "";
+      this.vda = Double.parseDouble(aoR(paramString1));
+      this.vdg = "";
       i = 0;
       while ((i < paramString2.length()) && (!Character.isDigit(paramString2.charAt(i))))
       {
-        this.uRu += paramString2.charAt(i);
+        this.vdg += paramString2.charAt(i);
         i += 1;
       }
-      this.uRv = "";
+      this.vdh = "";
     }
     catch (NumberFormatException paramString1)
     {
@@ -188,16 +188,16 @@ public class IPCallDynamicTextView
     int i = paramString2.length() - 1;
     while ((i > 0) && (!Character.isDigit(paramString2.charAt(i))))
     {
-      this.uRv += paramString2.charAt(i);
+      this.vdh += paramString2.charAt(i);
       i -= 1;
     }
-    paramString1 = paramString2.substring(this.uRu.length(), paramString2.length() - this.uRv.length());
+    paramString1 = paramString2.substring(this.vdg.length(), paramString2.length() - this.vdh.length());
     try
     {
-      this.uRp = Double.parseDouble(paramString1);
+      this.vdb = Double.parseDouble(paramString1);
       this.mValue = paramString2;
-      this.uRn = ((this.uRp - this.uRo) / (this.uRr / this.uRs));
-      if (this.uRn == 0.0D)
+      this.vcZ = ((this.vdb - this.vda) / (this.vdd / this.vde));
+      if (this.vcZ == 0.0D)
       {
         setText(paramString2);
         AppMethodBeat.o(25764);
@@ -210,7 +210,7 @@ public class IPCallDynamicTextView
       AppMethodBeat.o(25764);
       return;
     }
-    this.uRn = new BigDecimal(this.uRn).setScale(2, 4).doubleValue();
+    this.vcZ = new BigDecimal(this.vcZ).setScale(2, 4).doubleValue();
     if (isShown()) {
       this.mHandler.sendEmptyMessage(1);
     }

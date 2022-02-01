@@ -1,83 +1,100 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bw.b;
 
 public final class aqi
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public float Goq;
-  public float Gor;
-  public int Gos;
-  public float dAp;
-  public float dyz;
+  public int GHf;
+  public int GHg;
+  public b GHh;
+  public String cUB;
+  public String sessionId;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(169035);
+    AppMethodBeat.i(195196);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.z(8, this.dAp);
-      paramVarArgs.z(9, this.dyz);
-      paramVarArgs.z(10, this.Goq);
-      paramVarArgs.z(11, this.Gor);
-      paramVarArgs.aS(12, this.Gos);
-      AppMethodBeat.o(169035);
-      return 0;
-    }
-    if (paramInt == 1)
-    {
-      paramInt = f.a.a.b.b.a.alU(8);
-      int i = f.a.a.b.b.a.alU(9);
-      int j = f.a.a.b.b.a.alU(10);
-      int k = f.a.a.b.b.a.alU(11);
-      int m = f.a.a.b.b.a.bz(12, this.Gos);
-      AppMethodBeat.o(169035);
-      return paramInt + 0 + i + j + k + m;
-    }
-    if (paramInt == 2)
-    {
-      paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gxE();
-        }
+      if (this.cUB != null) {
+        paramVarArgs.d(1, this.cUB);
       }
-      AppMethodBeat.o(169035);
+      if (this.sessionId != null) {
+        paramVarArgs.d(2, this.sessionId);
+      }
+      paramVarArgs.aS(3, this.GHf);
+      paramVarArgs.aS(4, this.GHg);
+      if (this.GHh != null) {
+        paramVarArgs.c(5, this.GHh);
+      }
+      AppMethodBeat.o(195196);
       return 0;
     }
-    if (paramInt == 3)
+    if (paramInt == 1) {
+      if (this.cUB == null) {
+        break label422;
+      }
+    }
+    label422:
+    for (paramInt = f.a.a.b.b.a.e(1, this.cUB) + 0;; paramInt = 0)
     {
-      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
-      aqi localaqi = (aqi)paramVarArgs[1];
-      switch (((Integer)paramVarArgs[2]).intValue())
+      int i = paramInt;
+      if (this.sessionId != null) {
+        i = paramInt + f.a.a.b.b.a.e(2, this.sessionId);
+      }
+      i = i + f.a.a.b.b.a.bz(3, this.GHf) + f.a.a.b.b.a.bz(4, this.GHg);
+      paramInt = i;
+      if (this.GHh != null) {
+        paramInt = i + f.a.a.b.b.a.b(5, this.GHh);
+      }
+      AppMethodBeat.o(195196);
+      return paramInt;
+      if (paramInt == 2)
       {
-      default: 
-        AppMethodBeat.o(169035);
-        return -1;
-      case 8: 
-        localaqi.dAp = Float.intBitsToFloat(locala.NPN.grz());
-        AppMethodBeat.o(169035);
-        return 0;
-      case 9: 
-        localaqi.dyz = Float.intBitsToFloat(locala.NPN.grz());
-        AppMethodBeat.o(169035);
-        return 0;
-      case 10: 
-        localaqi.Goq = Float.intBitsToFloat(locala.NPN.grz());
-        AppMethodBeat.o(169035);
-        return 0;
-      case 11: 
-        localaqi.Gor = Float.intBitsToFloat(locala.NPN.grz());
-        AppMethodBeat.o(169035);
+        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.gCg();
+          }
+        }
+        AppMethodBeat.o(195196);
         return 0;
       }
-      localaqi.Gos = locala.NPN.zc();
-      AppMethodBeat.o(169035);
-      return 0;
+      if (paramInt == 3)
+      {
+        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+        aqi localaqi = (aqi)paramVarArgs[1];
+        switch (((Integer)paramVarArgs[2]).intValue())
+        {
+        default: 
+          AppMethodBeat.o(195196);
+          return -1;
+        case 1: 
+          localaqi.cUB = locala.OmT.readString();
+          AppMethodBeat.o(195196);
+          return 0;
+        case 2: 
+          localaqi.sessionId = locala.OmT.readString();
+          AppMethodBeat.o(195196);
+          return 0;
+        case 3: 
+          localaqi.GHf = locala.OmT.zc();
+          AppMethodBeat.o(195196);
+          return 0;
+        case 4: 
+          localaqi.GHg = locala.OmT.zc();
+          AppMethodBeat.o(195196);
+          return 0;
+        }
+        localaqi.GHh = locala.OmT.gCk();
+        AppMethodBeat.o(195196);
+        return 0;
+      }
+      AppMethodBeat.o(195196);
+      return -1;
     }
-    AppMethodBeat.o(169035);
-    return -1;
   }
 }
 

@@ -2,7 +2,7 @@ package com.tencent.smtt.utils;
 
 import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.smtt.sdk.b.a;
+import com.tencent.smtt.sdk.c.a;
 import java.security.KeyFactory;
 import java.security.Provider;
 import java.security.Security;

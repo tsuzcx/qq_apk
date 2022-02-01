@@ -19,12 +19,12 @@ import com.tencent.tencentmap.mapsdk.maps.model.MarkerOptions;
 public final class j
   implements IMapView
 {
-  private TextureMapView MAc;
+  private TextureMapView MXj;
   private com.tencent.tencentmap.mapsdk.map.TencentMap mTencentMap;
   
   public j(Context paramContext, com.tencent.tencentmap.mapsdk.map.TencentMapOptions paramTencentMapOptions)
   {
-    AppMethodBeat.i(200162);
+    AppMethodBeat.i(212856);
     LogHelper.v("vector MapView construct function start");
     if (paramTencentMapOptions != null)
     {
@@ -40,10 +40,10 @@ public final class j
     }
     for (;;)
     {
-      this.MAc = new TextureMapView(paramContext, paramTencentMapOptions);
-      this.mTencentMap = new i(this.MAc.getMap());
-      this.MAc.getMap().getUiSettings().setZoomControlsEnabled(false);
-      AppMethodBeat.o(200162);
+      this.MXj = new TextureMapView(paramContext, paramTencentMapOptions);
+      this.mTencentMap = new i(this.MXj.getMap());
+      this.MXj.getMap().getUiSettings().setZoomControlsEnabled(false);
+      AppMethodBeat.o(212856);
       return;
       paramTencentMapOptions = new com.tencent.tencentmap.mapsdk.maps.TencentMapOptions();
       paramTencentMapOptions.setCustomCacheRootPath(MapProvider.getMapSdkPath());
@@ -52,27 +52,27 @@ public final class j
   
   public final void addView(View paramView, MapView.LayoutParams paramLayoutParams)
   {
-    AppMethodBeat.i(200165);
-    if (this.MAc.getMap() != null) {
-      this.MAc.getMap().addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromView(paramView)).position(l.c(paramLayoutParams.point)));
+    AppMethodBeat.i(212859);
+    if (this.MXj.getMap() != null) {
+      this.MXj.getMap().addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromView(paramView)).position(l.c(paramLayoutParams.point)));
     }
-    AppMethodBeat.o(200165);
+    AppMethodBeat.o(212859);
   }
   
   public final boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(200174);
-    if (this.MAc == null)
+    AppMethodBeat.i(212868);
+    if (this.MXj == null)
     {
-      AppMethodBeat.o(200174);
+      AppMethodBeat.o(212868);
       return false;
     }
-    if ((this.MAc.dispatchTouchEvent(paramMotionEvent)) || (this.MAc.onTouchEvent(paramMotionEvent)))
+    if ((this.MXj.dispatchTouchEvent(paramMotionEvent)) || (this.MXj.onTouchEvent(paramMotionEvent)))
     {
-      AppMethodBeat.o(200174);
+      AppMethodBeat.o(212868);
       return true;
     }
-    AppMethodBeat.o(200174);
+    AppMethodBeat.o(212868);
     return false;
   }
   
@@ -88,32 +88,32 @@ public final class j
   
   public final View getMapView()
   {
-    return this.MAc;
+    return this.MXj;
   }
   
   public final Projection getProjection()
   {
-    AppMethodBeat.i(200164);
+    AppMethodBeat.i(212858);
     if (getMap() != null)
     {
       Projection localProjection = getMap().getProjection();
-      AppMethodBeat.o(200164);
+      AppMethodBeat.o(212858);
       return localProjection;
     }
-    AppMethodBeat.o(200164);
+    AppMethodBeat.o(212858);
     return null;
   }
   
   public final com.tencent.tencentmap.mapsdk.map.UiSettings getUiSettings()
   {
-    AppMethodBeat.i(200163);
-    if (this.MAc.getMap() != null)
+    AppMethodBeat.i(212857);
+    if (this.MXj.getMap() != null)
     {
-      m localm = new m(this.MAc.getMap().getUiSettings());
-      AppMethodBeat.o(200163);
+      m localm = new m(this.MXj.getMap().getUiSettings());
+      AppMethodBeat.o(212857);
       return localm;
     }
-    AppMethodBeat.o(200163);
+    AppMethodBeat.o(212857);
     return null;
   }
   
@@ -121,9 +121,9 @@ public final class j
   
   public final void onDestroy()
   {
-    AppMethodBeat.i(200172);
-    this.MAc.onDestroy();
-    AppMethodBeat.o(200172);
+    AppMethodBeat.i(212866);
+    this.MXj.onDestroy();
+    AppMethodBeat.o(212866);
   }
   
   public final void onDestroyView() {}
@@ -132,78 +132,78 @@ public final class j
   
   public final void onPause()
   {
-    AppMethodBeat.i(200169);
-    this.MAc.onPause();
-    AppMethodBeat.o(200169);
+    AppMethodBeat.i(212863);
+    this.MXj.onPause();
+    AppMethodBeat.o(212863);
   }
   
   public final void onRestart()
   {
-    AppMethodBeat.i(200171);
-    this.MAc.onRestart();
-    AppMethodBeat.o(200171);
+    AppMethodBeat.i(212865);
+    this.MXj.onRestart();
+    AppMethodBeat.o(212865);
   }
   
   public final void onResume()
   {
-    AppMethodBeat.i(200168);
-    this.MAc.onResume();
-    AppMethodBeat.o(200168);
+    AppMethodBeat.i(212862);
+    this.MXj.onResume();
+    AppMethodBeat.o(212862);
   }
   
   public final void onSaveInstanceState(Bundle paramBundle) {}
   
   public final void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(200175);
-    if (this.MAc != null) {
-      this.MAc.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
+    AppMethodBeat.i(212869);
+    if (this.MXj != null) {
+      this.MXj.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     }
-    AppMethodBeat.o(200175);
+    AppMethodBeat.o(212869);
   }
   
   public final void onStart()
   {
-    AppMethodBeat.i(200167);
-    this.MAc.onStart();
-    AppMethodBeat.o(200167);
+    AppMethodBeat.i(212861);
+    this.MXj.onStart();
+    AppMethodBeat.o(212861);
   }
   
   public final void onStop()
   {
-    AppMethodBeat.i(200170);
-    this.MAc.onStop();
-    AppMethodBeat.o(200170);
+    AppMethodBeat.i(212864);
+    this.MXj.onStop();
+    AppMethodBeat.o(212864);
   }
   
   public final void onSurfaceChanged(Object paramObject, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(200176);
-    if (this.MAc != null) {
-      this.MAc.onSurfaceChanged(paramObject, paramInt1, paramInt2);
+    AppMethodBeat.i(212870);
+    if (this.MXj != null) {
+      this.MXj.onSurfaceChanged(paramObject, paramInt1, paramInt2);
     }
-    AppMethodBeat.o(200176);
+    AppMethodBeat.o(212870);
   }
   
   public final boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(200173);
+    AppMethodBeat.i(212867);
     if (paramMotionEvent.getAction() == 0)
     {
-      AppMethodBeat.o(200173);
+      AppMethodBeat.o(212867);
       return true;
     }
-    AppMethodBeat.o(200173);
+    AppMethodBeat.o(212867);
     return false;
   }
   
   public final void updateViewLayout(View paramView, ViewGroup.LayoutParams paramLayoutParams)
   {
-    AppMethodBeat.i(200166);
-    if (this.MAc != null) {
-      this.MAc.updateViewLayout(paramView, paramLayoutParams);
+    AppMethodBeat.i(212860);
+    if (this.MXj != null) {
+      this.MXj.updateViewLayout(paramView, paramLayoutParams);
     }
-    AppMethodBeat.o(200166);
+    AppMethodBeat.o(212860);
   }
 }
 

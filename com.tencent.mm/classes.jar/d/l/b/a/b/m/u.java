@@ -5,6 +5,7 @@ import d.a.v;
 import d.l.b.a.b.b.a.g.a;
 import d.l.b.a.b.b.ad;
 import d.l.b.a.b.b.ah;
+import d.l.b.a.b.b.am;
 import d.l.b.a.b.b.an;
 import d.l.b.a.b.b.as;
 import d.l.b.a.b.b.az;
@@ -24,23 +25,23 @@ import java.util.Set;
 
 public final class u
 {
-  private static final y NBL;
-  private static final a NBM;
-  public static final aj NBN;
-  private static final ab NBO;
-  private static final ah NBP;
-  private static final Set<ah> NBQ;
+  private static final y NYS;
+  private static final a NYT;
+  public static final aj NYU;
+  private static final ab NYV;
+  private static final ah NYW;
+  private static final Set<ah> NYX;
   
   static
   {
     AppMethodBeat.i(60726);
-    NBL = new y()
+    NYS = new y()
     {
       public final <R, D> R a(n<R, D> paramAnonymousn, D paramAnonymousD)
       {
         AppMethodBeat.i(60672);
         if (paramAnonymousn == null) {
-          ajm(10);
+          ajW(10);
         }
         AppMethodBeat.o(60672);
         return null;
@@ -50,7 +51,7 @@ public final class u
       {
         AppMethodBeat.i(60666);
         if (paramAnonymousa == null) {
-          ajm(0);
+          ajW(0);
         }
         AppMethodBeat.o(60666);
         return null;
@@ -60,14 +61,14 @@ public final class u
       {
         AppMethodBeat.i(60668);
         if (paramAnonymousb == null) {
-          ajm(2);
+          ajW(2);
         }
         if (paramAnonymousb1 == null) {
-          ajm(3);
+          ajW(3);
         }
-        paramAnonymousb = (List)v.MKE;
+        paramAnonymousb = (List)v.NhH;
         if (paramAnonymousb == null) {
-          ajm(4);
+          ajW(4);
         }
         AppMethodBeat.o(60668);
         return paramAnonymousb;
@@ -77,7 +78,7 @@ public final class u
       {
         AppMethodBeat.i(60673);
         if (paramAnonymousy == null) {
-          ajm(11);
+          ajW(11);
         }
         AppMethodBeat.o(60673);
         return false;
@@ -87,92 +88,92 @@ public final class u
       {
         AppMethodBeat.i(60670);
         if (paramAnonymousb == null) {
-          ajm(7);
+          ajW(7);
         }
         paramAnonymousb = new IllegalStateException("Should not be called!");
         AppMethodBeat.o(60670);
         throw paramAnonymousb;
       }
       
-      public final d.l.b.a.b.b.a.g ghH()
+      public final l glU()
+      {
+        return null;
+      }
+      
+      public final d.l.b.a.b.b.a.g gmj()
       {
         AppMethodBeat.i(60667);
-        Object localObject = d.l.b.a.b.b.a.g.MVP;
-        localObject = g.a.gjL();
+        Object localObject = d.l.b.a.b.b.a.g.NsU;
+        localObject = g.a.gon();
         if (localObject == null) {
-          ajm(1);
+          ajW(1);
         }
         AppMethodBeat.o(60667);
         return localObject;
       }
       
-      public final l ghs()
-      {
-        return null;
-      }
-      
-      public final l giA()
-      {
-        AppMethodBeat.i(60674);
-        if (this == null) {
-          ajm(12);
-        }
-        AppMethodBeat.o(60674);
-        return this;
-      }
-      
-      public final d.l.b.a.b.f.f giD()
-      {
-        AppMethodBeat.i(60669);
-        d.l.b.a.b.f.f localf = d.l.b.a.b.f.f.bcG("<ERROR MODULE>");
-        AppMethodBeat.o(60669);
-        return localf;
-      }
-      
-      public final d.l.b.a.b.a.g gjd()
+      public final d.l.b.a.b.a.g gnF()
       {
         AppMethodBeat.i(60675);
-        d.l.b.a.b.a.d locald = d.l.b.a.b.a.d.ggW();
+        d.l.b.a.b.a.d locald = d.l.b.a.b.a.d.gly();
         if (locald == null) {
-          ajm(13);
+          ajW(13);
         }
         AppMethodBeat.o(60675);
         return locald;
       }
       
-      public final List<y> gje()
+      public final List<y> gnG()
       {
         AppMethodBeat.i(60671);
-        List localList = (List)v.MKE;
+        List localList = (List)v.NhH;
         if (localList == null) {
-          ajm(9);
+          ajW(9);
         }
         AppMethodBeat.o(60671);
         return localList;
       }
+      
+      public final l gnc()
+      {
+        AppMethodBeat.i(60674);
+        if (this == null) {
+          ajW(12);
+        }
+        AppMethodBeat.o(60674);
+        return this;
+      }
+      
+      public final d.l.b.a.b.f.f gnf()
+      {
+        AppMethodBeat.i(60669);
+        d.l.b.a.b.f.f localf = d.l.b.a.b.f.f.bek("<ERROR MODULE>");
+        AppMethodBeat.o(60669);
+        return localf;
+      }
     };
-    NBM = new a(d.l.b.a.b.f.f.bcG("<ERROR CLASS>"));
-    NBN = bcU("<LOOP IN SUPERTYPES>");
-    NBO = bcU("<ERROR PROPERTY TYPE>");
-    Object localObject = NBM;
-    g.a locala = d.l.b.a.b.b.a.g.MVP;
-    localObject = aa.a((l)localObject, g.a.gjL(), w.MUD, az.MVh, d.l.b.a.b.f.f.bcG("<ERROR PROPERTY>"), b.a.MUj, an.MUX);
-    ((aa)localObject).a(NBO, Collections.emptyList(), null, null);
-    NBP = (ah)localObject;
-    NBQ = Collections.singleton(localObject);
+    NYT = new a(d.l.b.a.b.f.f.bek("<ERROR CLASS>"));
+    NYU = bey("<LOOP IN SUPERTYPES>");
+    NYV = bey("<ERROR PROPERTY TYPE>");
+    Object localObject = NYT;
+    g.a locala = d.l.b.a.b.b.a.g.NsU;
+    localObject = aa.a((l)localObject, g.a.gon(), w.NrI, az.Nsm, d.l.b.a.b.f.f.bek("<ERROR PROPERTY>"), b.a.Nro, an.Nsc);
+    ((aa)localObject).a(NYV, Collections.emptyList(), null, null);
+    NYW = (ah)localObject;
+    NYX = Collections.singleton(localObject);
     AppMethodBeat.o(60726);
   }
   
-  public static aj K(String paramString, List<av> paramList)
+  public static aj L(String paramString, List<av> paramList)
   {
     AppMethodBeat.i(60718);
     if (paramString == null) {
-      ajm(11);
+      ajW(11);
     }
     if (paramList == null) {
-      ajm(12);
+      ajW(12);
     }
-    paramString = new t(bcW(paramString), bcT(paramString), paramList);
+    paramString = new t(beA(paramString), bex(paramString), paramList);
     AppMethodBeat.o(60718);
     return paramString;
   }
@@ -185,7 +186,7 @@ public final class u
       AppMethodBeat.o(60721);
       return false;
     }
-    if (((paraml instanceof a)) || ((paraml.ghs() instanceof a)) || (paraml == NBL))
+    if (((paraml instanceof a)) || ((paraml.glU() instanceof a)) || (paraml == NYS))
     {
       AppMethodBeat.o(60721);
       return true;
@@ -198,12 +199,12 @@ public final class u
   {
     AppMethodBeat.i(60717);
     if (paramString == null) {
-      ajm(9);
+      ajW(9);
     }
     if (paramat == null) {
-      ajm(10);
+      ajW(10);
     }
-    paramString = new t(paramat, bcT(paramString));
+    paramString = new t(paramat, bex(paramString));
     AppMethodBeat.o(60717);
     return paramString;
   }
@@ -212,54 +213,54 @@ public final class u
   {
     AppMethodBeat.i(60720);
     if (paramString == null) {
-      ajm(17);
+      ajW(17);
     }
     if (parama == null) {
-      ajm(18);
+      ajW(18);
     }
     paramString = new at()
     {
       public final List<as> getParameters()
       {
         AppMethodBeat.i(60677);
-        List localList = (List)v.MKE;
+        List localList = (List)v.NhH;
         if (localList == null) {
-          ajm(0);
+          ajW(0);
         }
         AppMethodBeat.o(60677);
         return localList;
       }
       
-      public final d.l.b.a.b.b.h ghO()
+      public final d.l.b.a.b.b.h gmq()
       {
-        return this.NBR;
+        return this.NYY;
       }
       
-      public final boolean ghQ()
+      public final boolean gms()
       {
         return false;
       }
       
-      public final Collection<ab> gjR()
-      {
-        AppMethodBeat.i(60678);
-        List localList = (List)v.MKE;
-        if (localList == null) {
-          ajm(1);
-        }
-        AppMethodBeat.o(60678);
-        return localList;
-      }
-      
-      public final d.l.b.a.b.a.g gjd()
+      public final d.l.b.a.b.a.g gnF()
       {
         AppMethodBeat.i(60679);
-        d.l.b.a.b.a.d locald = d.l.b.a.b.a.d.ggW();
+        d.l.b.a.b.a.d locald = d.l.b.a.b.a.d.gly();
         if (locald == null) {
-          ajm(2);
+          ajW(2);
         }
         AppMethodBeat.o(60679);
         return locald;
+      }
+      
+      public final Collection<ab> got()
+      {
+        AppMethodBeat.i(60678);
+        List localList = (List)v.NhH;
+        if (localList == null) {
+          ajW(1);
+        }
+        AppMethodBeat.o(60678);
+        return localList;
       }
       
       public final String toString()
@@ -274,7 +275,7 @@ public final class u
   public static boolean al(ab paramab)
   {
     AppMethodBeat.i(60723);
-    if ((paramab != null) && ((paramab.gsZ() instanceof d)))
+    if ((paramab != null) && ((paramab.gxB() instanceof d)))
     {
       AppMethodBeat.o(60723);
       return true;
@@ -283,67 +284,67 @@ public final class u
     return false;
   }
   
-  public static e bcS(String paramString)
-  {
-    AppMethodBeat.i(60712);
-    if (paramString == null) {
-      ajm(1);
-    }
-    paramString = new a(d.l.b.a.b.f.f.bcG("<ERROR CLASS: " + paramString + ">"));
-    AppMethodBeat.o(60712);
-    return paramString;
-  }
-  
-  public static d.l.b.a.b.j.f.h bcT(String paramString)
-  {
-    AppMethodBeat.i(60713);
-    if (paramString == null) {
-      ajm(2);
-    }
-    paramString = dv(paramString, false);
-    AppMethodBeat.o(60713);
-    return paramString;
-  }
-  
-  public static aj bcU(String paramString)
-  {
-    AppMethodBeat.i(60715);
-    if (paramString == null) {
-      ajm(7);
-    }
-    paramString = K(paramString, Collections.emptyList());
-    AppMethodBeat.o(60715);
-    return paramString;
-  }
-  
-  public static aj bcV(String paramString)
-  {
-    AppMethodBeat.i(60716);
-    paramString = a(paramString, a(paramString, NBM));
-    AppMethodBeat.o(60716);
-    return paramString;
-  }
-  
-  public static at bcW(String paramString)
+  public static at beA(String paramString)
   {
     AppMethodBeat.i(60719);
     if (paramString == null) {
-      ajm(15);
+      ajW(15);
     }
-    paramString = a("[ERROR : " + paramString + "]", NBM);
+    paramString = a("[ERROR : " + paramString + "]", NYT);
     AppMethodBeat.o(60719);
     return paramString;
   }
   
-  public static d.l.b.a.b.j.f.h dv(String paramString, boolean paramBoolean)
+  public static e bew(String paramString)
+  {
+    AppMethodBeat.i(60712);
+    if (paramString == null) {
+      ajW(1);
+    }
+    paramString = new a(d.l.b.a.b.f.f.bek("<ERROR CLASS: " + paramString + ">"));
+    AppMethodBeat.o(60712);
+    return paramString;
+  }
+  
+  public static d.l.b.a.b.j.f.h bex(String paramString)
+  {
+    AppMethodBeat.i(60713);
+    if (paramString == null) {
+      ajW(2);
+    }
+    paramString = dy(paramString, false);
+    AppMethodBeat.o(60713);
+    return paramString;
+  }
+  
+  public static aj bey(String paramString)
+  {
+    AppMethodBeat.i(60715);
+    if (paramString == null) {
+      ajW(7);
+    }
+    paramString = L(paramString, Collections.emptyList());
+    AppMethodBeat.o(60715);
+    return paramString;
+  }
+  
+  public static aj bez(String paramString)
+  {
+    AppMethodBeat.i(60716);
+    paramString = a(paramString, a(paramString, NYT));
+    AppMethodBeat.o(60716);
+    return paramString;
+  }
+  
+  public static d.l.b.a.b.j.f.h dy(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(60714);
     if (paramString == null) {
-      ajm(3);
+      ajW(3);
     }
     if (paramBoolean)
     {
-      paramString = new u.c(paramString, (byte)0);
+      paramString = new c(paramString, (byte)0);
       AppMethodBeat.o(60714);
       return paramString;
     }
@@ -352,12 +353,12 @@ public final class u
     return paramString;
   }
   
-  public static y gtV()
+  public static y gyx()
   {
     AppMethodBeat.i(60722);
-    y localy = NBL;
+    y localy = NYS;
     if (localy == null) {
-      ajm(19);
+      ajW(19);
     }
     AppMethodBeat.o(60722);
     return localy;
@@ -368,12 +369,12 @@ public final class u
   {
     public a(d.l.b.a.b.f.f paramf)
     {
-      super(paramf, w.MUD, d.l.b.a.b.b.f.MUr, Collections.emptyList(), an.MUX, d.l.b.a.b.l.b.NAN);
+      super(paramf, w.NrI, d.l.b.a.b.b.f.Nrw, Collections.emptyList(), an.Nsc, d.l.b.a.b.l.b.NXU);
       AppMethodBeat.i(60681);
-      paramf = d.l.b.a.b.b.a.g.MVP;
-      paramf = d.l.b.a.b.b.c.f.a(this, g.a.gjL(), an.MUX);
-      paramf.a(Collections.emptyList(), az.MVg);
-      d.l.b.a.b.j.f.h localh = u.bcT(giD().sD());
+      paramf = d.l.b.a.b.b.a.g.NsU;
+      paramf = d.l.b.a.b.b.c.f.a(this, g.a.gon(), an.Nsc);
+      paramf.a(Collections.emptyList(), az.Nsl);
+      d.l.b.a.b.j.f.h localh = u.bex(gnf().sD());
       paramf.J(new t(u.b("<ERROR>", this), localh));
       a(localh, Collections.singleton(paramf), paramf);
       AppMethodBeat.o(60681);
@@ -383,14 +384,14 @@ public final class u
     {
       AppMethodBeat.i(60684);
       if (paramay == null) {
-        ajm(6);
+        ajW(6);
       }
       if (parami == null) {
-        ajm(7);
+        ajW(7);
       }
-      paramay = u.bcT("Error scope for class " + giD() + " with arguments: " + paramay);
+      paramay = u.bex("Error scope for class " + gnf() + " with arguments: " + paramay);
       if (paramay == null) {
-        ajm(8);
+        ajW(8);
       }
       AppMethodBeat.o(60684);
       return paramay;
@@ -400,7 +401,7 @@ public final class u
     {
       AppMethodBeat.i(60682);
       if (paramba == null) {
-        ajm(1);
+        ajW(1);
       }
       AppMethodBeat.o(60682);
       return this;
@@ -409,7 +410,7 @@ public final class u
     public final String toString()
     {
       AppMethodBeat.i(60683);
-      String str = giD().sD();
+      String str = gnf().sD();
       AppMethodBeat.o(60683);
       return str;
     }
@@ -431,14 +432,14 @@ public final class u
     {
       AppMethodBeat.i(60691);
       if (paramd == null) {
-        ajm(16);
+        ajW(16);
       }
       if (paramb == null) {
-        ajm(17);
+        ajW(17);
       }
       paramd = Collections.emptyList();
       if (paramd == null) {
-        ajm(18);
+        ajW(18);
       }
       AppMethodBeat.o(60691);
       return paramd;
@@ -448,33 +449,33 @@ public final class u
     {
       AppMethodBeat.i(60688);
       if (paramf == null) {
-        ajm(1);
+        ajW(1);
       }
       if (parama == null) {
-        ajm(2);
+        ajW(2);
       }
-      paramf = u.bcS(paramf.sD());
+      paramf = u.bew(paramf.sD());
       AppMethodBeat.o(60688);
       return paramf;
     }
     
-    public final Set<d.l.b.a.b.f.f> gjW()
+    public final Set<d.l.b.a.b.f.f> goy()
     {
       AppMethodBeat.i(60689);
       Set localSet = Collections.emptySet();
       if (localSet == null) {
-        ajm(11);
+        ajW(11);
       }
       AppMethodBeat.o(60689);
       return localSet;
     }
     
-    public final Set<d.l.b.a.b.f.f> gjX()
+    public final Set<d.l.b.a.b.f.f> goz()
     {
       AppMethodBeat.i(60690);
       Set localSet = Collections.emptySet();
       if (localSet == null) {
-        ajm(12);
+        ajW(12);
       }
       AppMethodBeat.o(60690);
       return localSet;
@@ -489,67 +490,160 @@ public final class u
     }
   }
   
+  static final class c
+    implements d.l.b.a.b.j.f.h
+  {
+    private final String debugMessage;
+    
+    private c(String paramString)
+    {
+      AppMethodBeat.i(60696);
+      this.debugMessage = paramString;
+      AppMethodBeat.o(60696);
+    }
+    
+    public final Collection<? extends ah> a(d.l.b.a.b.f.f paramf, d.l.b.a.b.c.a.a parama)
+    {
+      AppMethodBeat.i(60698);
+      if (paramf == null) {
+        ajW(5);
+      }
+      if (parama == null) {
+        ajW(6);
+      }
+      paramf = new IllegalStateException(this.debugMessage + ", required name: " + paramf);
+      AppMethodBeat.o(60698);
+      throw paramf;
+    }
+    
+    public final Collection<l> a(d.l.b.a.b.j.f.d paramd, d.g.a.b<? super d.l.b.a.b.f.f, Boolean> paramb)
+    {
+      AppMethodBeat.i(60700);
+      if (paramd == null) {
+        ajW(9);
+      }
+      if (paramb == null) {
+        ajW(10);
+      }
+      paramd = new IllegalStateException(this.debugMessage);
+      AppMethodBeat.o(60700);
+      throw paramd;
+    }
+    
+    public final Collection<? extends am> b(d.l.b.a.b.f.f paramf, d.l.b.a.b.c.a.a parama)
+    {
+      AppMethodBeat.i(60699);
+      if (paramf == null) {
+        ajW(7);
+      }
+      if (parama == null) {
+        ajW(8);
+      }
+      paramf = new IllegalStateException(this.debugMessage + ", required name: " + paramf);
+      AppMethodBeat.o(60699);
+      throw paramf;
+    }
+    
+    public final d.l.b.a.b.b.h c(d.l.b.a.b.f.f paramf, d.l.b.a.b.c.a.a parama)
+    {
+      AppMethodBeat.i(60697);
+      if (paramf == null) {
+        ajW(1);
+      }
+      if (parama == null) {
+        ajW(2);
+      }
+      paramf = new IllegalStateException(this.debugMessage + ", required name: " + paramf);
+      AppMethodBeat.o(60697);
+      throw paramf;
+    }
+    
+    public final Set<d.l.b.a.b.f.f> goy()
+    {
+      AppMethodBeat.i(60701);
+      IllegalStateException localIllegalStateException = new IllegalStateException();
+      AppMethodBeat.o(60701);
+      throw localIllegalStateException;
+    }
+    
+    public final Set<d.l.b.a.b.f.f> goz()
+    {
+      AppMethodBeat.i(60702);
+      IllegalStateException localIllegalStateException = new IllegalStateException();
+      AppMethodBeat.o(60702);
+      throw localIllegalStateException;
+    }
+    
+    public final String toString()
+    {
+      AppMethodBeat.i(60703);
+      String str = "ThrowingScope{" + this.debugMessage + '}';
+      AppMethodBeat.o(60703);
+      return str;
+    }
+  }
+  
   public static final class d
     implements at
   {
-    private final as NBT;
-    private final at NBU;
+    private final as NZa;
+    private final at NZb;
     
     public final List<as> getParameters()
     {
       AppMethodBeat.i(60706);
-      List localList = this.NBU.getParameters();
+      List localList = this.NZb.getParameters();
       if (localList == null) {
-        ajm(2);
+        ajW(2);
       }
       AppMethodBeat.o(60706);
       return localList;
     }
     
-    public final d.l.b.a.b.b.h ghO()
+    public final d.l.b.a.b.b.h gmq()
     {
       AppMethodBeat.i(60709);
-      d.l.b.a.b.b.h localh = this.NBU.ghO();
+      d.l.b.a.b.b.h localh = this.NZb.gmq();
       AppMethodBeat.o(60709);
       return localh;
     }
     
-    public final boolean ghQ()
+    public final boolean gms()
     {
       AppMethodBeat.i(60708);
-      boolean bool = this.NBU.ghQ();
+      boolean bool = this.NZb.gms();
       AppMethodBeat.o(60708);
       return bool;
     }
     
-    public final Collection<ab> gjR()
-    {
-      AppMethodBeat.i(60707);
-      Collection localCollection = this.NBU.gjR();
-      if (localCollection == null) {
-        ajm(3);
-      }
-      AppMethodBeat.o(60707);
-      return localCollection;
-    }
-    
-    public final d.l.b.a.b.a.g gjd()
+    public final d.l.b.a.b.a.g gnF()
     {
       AppMethodBeat.i(60710);
-      d.l.b.a.b.a.g localg = d.l.b.a.b.j.d.a.G(this.NBT);
+      d.l.b.a.b.a.g localg = d.l.b.a.b.j.d.a.G(this.NZa);
       if (localg == null) {
-        ajm(4);
+        ajW(4);
       }
       AppMethodBeat.o(60710);
       return localg;
     }
     
-    public final as gtW()
+    public final Collection<ab> got()
+    {
+      AppMethodBeat.i(60707);
+      Collection localCollection = this.NZb.got();
+      if (localCollection == null) {
+        ajW(3);
+      }
+      AppMethodBeat.o(60707);
+      return localCollection;
+    }
+    
+    public final as gyy()
     {
       AppMethodBeat.i(60705);
-      as localas = this.NBT;
+      as localas = this.NZa;
       if (localas == null) {
-        ajm(1);
+        ajW(1);
       }
       AppMethodBeat.o(60705);
       return localas;
@@ -558,7 +652,7 @@ public final class u
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.m.u
  * JD-Core Version:    0.7.0.1
  */

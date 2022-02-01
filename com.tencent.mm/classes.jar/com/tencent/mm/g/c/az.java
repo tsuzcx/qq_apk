@@ -8,11 +8,11 @@ public abstract class az
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eQf = "labelId".hashCode();
-  private static final int eQg = "contactName".hashCode();
+  private static final int eRQ = "labelId".hashCode();
+  private static final int eRR = "contactName".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eQd;
-  private boolean eQe;
+  private boolean eRO;
+  private boolean eRP;
   public String field_contactName;
   public String field_labelId;
   
@@ -29,7 +29,7 @@ public abstract class az
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eQf != k) {
+      if (eRQ != k) {
         break label60;
       }
       this.field_labelId = paramCursor.getString(i);
@@ -40,7 +40,7 @@ public abstract class az
       break label20;
       break;
       label60:
-      if (eQg == k) {
+      if (eRR == k) {
         this.field_contactName = paramCursor.getString(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
@@ -51,10 +51,10 @@ public abstract class az
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eQd) {
+    if (this.eRO) {
       localContentValues.put("labelId", this.field_labelId);
     }
-    if (this.eQe) {
+    if (this.eRP) {
       localContentValues.put("contactName", this.field_contactName);
     }
     if (this.systemRowid > 0L) {

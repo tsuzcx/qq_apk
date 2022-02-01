@@ -14,7 +14,7 @@ public final class a
     super(paramActivity);
     AppMethodBeat.i(8785);
     this.chq = b.class;
-    this.cht.A(d.ccP());
+    this.cht.A(d.cee());
     AppMethodBeat.o(8785);
   }
 }

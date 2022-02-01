@@ -4,29 +4,29 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.config.v;
 import com.tencent.mm.sdk.e.e;
 import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public class d
   extends j<c>
 {
-  public static final String[] hEf;
+  public static final String[] hGX;
   
   static
   {
     AppMethodBeat.i(44709);
-    hEf = new String[] { j.getCreateSQLs(c.jRC, "AppBrandBackgroundFetchData") };
+    hGX = new String[] { j.getCreateSQLs(c.jUU, "AppBrandBackgroundFetchData") };
     AppMethodBeat.o(44709);
   }
   
   public d(e parame)
   {
-    super(parame, c.jRC, "AppBrandBackgroundFetchData", null);
+    super(parame, c.jUU, "AppBrandBackgroundFetchData", null);
   }
   
-  private AppBrandBackgroundFetchDataParcel bl(String paramString, int paramInt)
+  private AppBrandBackgroundFetchDataParcel bo(String paramString, int paramInt)
   {
     AppMethodBeat.i(44706);
-    if (bt.isNullOrNil(paramString))
+    if (bu.isNullOrNil(paramString))
     {
       AppMethodBeat.o(44706);
       return null;
@@ -38,12 +38,12 @@ public class d
     {
       paramString = new AppBrandBackgroundFetchDataParcel();
       paramString.username = localc.field_username;
-      paramString.jRB = localc.field_fetchType;
+      paramString.jUT = localc.field_fetchType;
       paramString.path = localc.field_path;
       paramString.query = localc.field_query;
       paramString.data = localc.field_data;
       paramString.scene = localc.field_scene;
-      paramString.fMf = localc.field_updateTime;
+      paramString.fOl = localc.field_updateTime;
       AppMethodBeat.o(44706);
       return paramString;
     }
@@ -54,7 +54,7 @@ public class d
   public final boolean a(String paramString1, int paramInt1, String paramString2, String paramString3, String paramString4, int paramInt2, long paramLong)
   {
     AppMethodBeat.i(44705);
-    if (bt.isNullOrNil(paramString1))
+    if (bu.isNullOrNil(paramString1))
     {
       AppMethodBeat.o(44705);
       return true;
@@ -67,7 +67,7 @@ public class d
     localc.field_query = paramString4;
     localc.field_scene = paramInt2;
     localc.field_updateTime = paramLong;
-    if (!bt.isNullOrNil(paramString1))
+    if (!bu.isNullOrNil(paramString1))
     {
       paramString2 = new c();
       paramString2.field_username = paramString1;
@@ -85,13 +85,13 @@ public class d
     return bool;
   }
   
-  public final long bm(String paramString, int paramInt)
+  public final long bp(String paramString, int paramInt)
   {
     AppMethodBeat.i(44707);
-    paramString = bl(paramString, paramInt);
+    paramString = bo(paramString, paramInt);
     if (paramString != null)
     {
-      long l = paramString.fMf;
+      long l = paramString.fOl;
       AppMethodBeat.o(44707);
       return l;
     }
@@ -99,15 +99,15 @@ public class d
     return 0L;
   }
   
-  public final AppBrandBackgroundFetchDataParcel bn(String paramString, int paramInt)
+  public final AppBrandBackgroundFetchDataParcel bq(String paramString, int paramInt)
   {
     AppMethodBeat.i(44708);
-    if (bt.isNullOrNil(paramString))
+    if (bu.isNullOrNil(paramString))
     {
       AppMethodBeat.o(44708);
       return null;
     }
-    paramString = bl(v.NG(paramString), paramInt);
+    paramString = bo(v.Oo(paramString), paramInt);
     AppMethodBeat.o(44708);
     return paramString;
   }

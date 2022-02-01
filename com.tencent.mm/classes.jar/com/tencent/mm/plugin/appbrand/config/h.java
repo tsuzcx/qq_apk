@@ -6,15 +6,15 @@ import com.tencent.mm.plugin.appbrand.launching.params.LaunchParcel;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfigUtils;", "", "()V", "versionType", "", "Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfigWC;", "getVersionType", "(Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfigWC;)I", "toLaunchParcel", "Lcom/tencent/mm/plugin/appbrand/launching/params/LaunchParcel;", "plugin-appbrand-integration_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfigUtils;", "", "()V", "versionType", "", "Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfigWC;", "getVersionType", "(Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfigWC;)I", "toLaunchParcel", "Lcom/tencent/mm/plugin/appbrand/launching/params/LaunchParcel;", "plugin-appbrand-integration_release"})
 public final class h
 {
-  public static final h jXt;
+  public static final h kaI;
   
   static
   {
     AppMethodBeat.i(50334);
-    jXt = new h();
+    kaI = new h();
     AppMethodBeat.o(50334);
   }
   
@@ -27,18 +27,18 @@ public final class h
     localLaunchParcel.appId = paramAppBrandInitConfigWC.appId;
     localLaunchParcel.version = paramAppBrandInitConfigWC.aDD;
     p.h(paramAppBrandInitConfigWC, "$this$versionType");
-    localLaunchParcel.hQh = paramAppBrandInitConfigWC.dPf;
-    localLaunchParcel.jCN = paramAppBrandInitConfigWC.jCN;
-    localLaunchParcel.lMZ = paramAppBrandInitConfigWC.Ea();
-    localLaunchParcel.cmv = paramAppBrandInitConfigWC.cmv;
+    localLaunchParcel.hSZ = paramAppBrandInitConfigWC.dQv;
+    localLaunchParcel.jFL = paramAppBrandInitConfigWC.jFL;
+    localLaunchParcel.lRA = paramAppBrandInitConfigWC.Ed();
+    localLaunchParcel.cmx = paramAppBrandInitConfigWC.cmx;
     LaunchParamsOptional localLaunchParamsOptional = new LaunchParamsOptional();
-    localLaunchParamsOptional.cmu = paramAppBrandInitConfigWC.cmu;
-    localLaunchParamsOptional.cmt = paramAppBrandInitConfigWC.cmt;
     localLaunchParamsOptional.cmw = paramAppBrandInitConfigWC.cmw;
-    localLaunchParcel.lNa = localLaunchParamsOptional;
-    localLaunchParcel.jXy = paramAppBrandInitConfigWC.jXy;
-    localLaunchParcel.jXx = paramAppBrandInitConfigWC.jXx;
-    localLaunchParcel.jCZ = paramAppBrandInitConfigWC.jCZ;
+    localLaunchParamsOptional.cmv = paramAppBrandInitConfigWC.cmv;
+    localLaunchParamsOptional.cmy = paramAppBrandInitConfigWC.cmy;
+    localLaunchParcel.lRB = localLaunchParamsOptional;
+    localLaunchParcel.kaN = paramAppBrandInitConfigWC.kaN;
+    localLaunchParcel.kaM = paramAppBrandInitConfigWC.kaM;
+    localLaunchParcel.jFX = paramAppBrandInitConfigWC.jFX;
     AppMethodBeat.o(50333);
     return localLaunchParcel;
   }

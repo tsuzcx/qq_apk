@@ -9,56 +9,60 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aw.a.a.c.a;
+import com.tencent.mm.av.a.a.c.a;
+import com.tencent.mm.av.q;
 import com.tencent.mm.b.f;
+import com.tencent.mm.b.g;
 import com.tencent.mm.plugin.game.commlib.util.b.a;
 import com.tencent.mm.pluginsdk.model.app.j;
 import com.tencent.mm.sdk.e.k.a;
 import com.tencent.mm.sdk.e.m;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.vfs.k;
+import com.tencent.mm.vfs.w;
 import java.lang.ref.WeakReference;
 
 public class e
 {
-  private static final String uvt;
-  private static e uvu;
-  private f<String, Bitmap> ukE;
-  private f<String, Bitmap> urk;
-  private ColorDrawable uvv;
-  private Bitmap uvw;
-  private Bitmap uvx;
+  private static final String uGS;
+  private static e uGT;
+  private f<String, Bitmap> uCE;
+  private ColorDrawable uGU;
+  private Bitmap uGV;
+  private Bitmap uGW;
+  private f<String, Bitmap> uwb;
   
   static
   {
     AppMethodBeat.i(42557);
-    uvt = com.tencent.mm.plugin.game.commlib.util.b.c(b.a.tTe) + "image/";
+    uGS = com.tencent.mm.plugin.game.commlib.util.b.c(b.a.udV) + "image/";
     AppMethodBeat.o(42557);
   }
   
   private e()
   {
     AppMethodBeat.i(42540);
-    this.ukE = new com.tencent.mm.memory.a.b(6, getClass());
-    this.urk = new com.tencent.mm.memory.a.b(15, getClass());
-    this.uvv = new ColorDrawable(android.support.v4.content.b.n(aj.getContext(), 2131100404));
+    this.uwb = new com.tencent.mm.memory.a.b(6, getClass());
+    this.uCE = new com.tencent.mm.memory.a.b(15, getClass());
+    this.uGU = new ColorDrawable(android.support.v4.content.b.n(ak.getContext(), 2131100404));
     try
     {
-      this.uvw = BackwardSupportUtil.b.b(aj.getContext().getAssets().open("avatar/default_nor_avatar.png"), com.tencent.mm.cc.a.getDensity(null));
-      if ((this.uvw != null) && (!this.uvw.isRecycled())) {
-        this.uvx = com.tencent.mm.sdk.platformtools.g.a(this.uvw, false, 0.5F * this.uvw.getWidth());
+      this.uGV = BackwardSupportUtil.b.b(ak.getContext().getAssets().open("avatar/default_nor_avatar.png"), com.tencent.mm.cb.a.getDensity(null));
+      if ((this.uGV != null) && (!this.uGV.isRecycled())) {
+        this.uGW = com.tencent.mm.sdk.platformtools.h.a(this.uGV, false, 0.5F * this.uGV.getWidth());
       }
-      com.tencent.mm.plugin.s.a.dxQ().add(new k.a()
+      com.tencent.mm.plugin.s.a.dBg().add(new k.a()
       {
         public final void a(String paramAnonymousString, m paramAnonymousm)
         {
           AppMethodBeat.i(42530);
           if (e.a(e.this).aM(paramAnonymousString))
           {
-            paramAnonymousm = com.tencent.mm.pluginsdk.model.app.h.c(paramAnonymousString, 1, com.tencent.mm.cc.a.getDensity(null));
+            paramAnonymousm = com.tencent.mm.pluginsdk.model.app.h.c(paramAnonymousString, 1, com.tencent.mm.cb.a.getDensity(null));
             e.a(e.this).q(paramAnonymousString, paramAnonymousm);
           }
           AppMethodBeat.o(42530);
@@ -71,7 +75,7 @@ public class e
     {
       for (;;)
       {
-        ad.i("MicroMsg.GameImageUtil", localException.getMessage());
+        ae.i("MicroMsg.GameImageUtil", localException.getMessage());
       }
     }
   }
@@ -79,15 +83,15 @@ public class e
   private void a(ImageView paramImageView, a parama)
   {
     AppMethodBeat.i(42547);
-    if ((paramImageView != null) && (parama.uvJ))
+    if ((paramImageView != null) && (parama.uHi))
     {
-      if (parama.hdT == 0)
+      if (parama.hgH == 0)
       {
-        paramImageView.setImageDrawable(this.uvv);
+        paramImageView.setImageDrawable(this.uGU);
         AppMethodBeat.o(42547);
         return;
       }
-      paramImageView.setImageResource(parama.hdT);
+      paramImageView.setImageResource(parama.hgH);
     }
     AppMethodBeat.o(42547);
   }
@@ -95,27 +99,27 @@ public class e
   private void a(final String paramString, final int paramInt1, final int paramInt2, final b paramb)
   {
     AppMethodBeat.i(42550);
-    ad.d("MicroMsg.GameImageUtil", "getBitmapWithWH, start");
-    Bitmap localBitmap = (Bitmap)this.urk.aL(paramString);
+    ae.d("MicroMsg.GameImageUtil", "getBitmapWithWH, start");
+    Bitmap localBitmap = (Bitmap)this.uCE.aL(paramString);
     if ((localBitmap != null) && (!localBitmap.isRecycled()))
     {
       paramb.a(null, localBitmap);
       AppMethodBeat.o(42550);
       return;
     }
-    c(null, paramString, new e.a.a().daw(), new b()
+    c(null, paramString, new e.a.a().ddi(), new b()
     {
       public final void a(View paramAnonymousView, Bitmap paramAnonymousBitmap)
       {
         AppMethodBeat.i(42536);
-        ad.d("MicroMsg.GameImageUtil", "getBitmapWithWH, onFinish");
+        ae.d("MicroMsg.GameImageUtil", "getBitmapWithWH, onFinish");
         if ((paramAnonymousBitmap != null) && (!paramAnonymousBitmap.isRecycled()))
         {
           Bitmap localBitmap = e.d(paramAnonymousBitmap, paramInt1, paramInt2);
-          ad.d("MicroMsg.GameImageUtil", "getBitmapWithWH, resizeBitmap end");
+          ae.d("MicroMsg.GameImageUtil", "getBitmapWithWH, resizeBitmap end");
           paramAnonymousBitmap = localBitmap;
-          if (this.uvG != 0) {
-            paramAnonymousBitmap = com.tencent.mm.sdk.platformtools.g.a(localBitmap, true, this.uvG);
+          if (this.uHf != 0) {
+            paramAnonymousBitmap = com.tencent.mm.sdk.platformtools.h.a(localBitmap, true, this.uHf);
           }
           e.b(e.this).q(paramString, paramAnonymousBitmap);
           if (paramb != null) {
@@ -128,31 +132,31 @@ public class e
     AppMethodBeat.o(42550);
   }
   
-  private static boolean amx(String paramString)
+  private static boolean anv(String paramString)
   {
     AppMethodBeat.i(42554);
-    com.tencent.mm.vfs.e locale1 = new com.tencent.mm.vfs.e(paramString);
-    if (!locale1.exists())
+    k localk1 = new k(paramString);
+    if (!localk1.exists())
     {
-      com.tencent.mm.vfs.e locale2;
-      if (!locale1.fOJ().exists())
+      k localk2;
+      if (!localk1.fTg().exists())
       {
-        locale2 = locale1.fOJ();
-        com.tencent.mm.vfs.e locale3 = new com.tencent.mm.vfs.e(com.tencent.mm.vfs.q.B(locale2.fOK()) + System.currentTimeMillis());
-        if (locale3.mkdirs()) {
-          locale3.ag(locale2);
+        localk2 = localk1.fTg();
+        k localk3 = new k(w.B(localk2.fTh()) + System.currentTimeMillis());
+        if (localk3.mkdirs()) {
+          localk3.ag(localk2);
         }
       }
       else
       {
-        if ((locale1.mkdirs()) && (locale1.isDirectory())) {
+        if ((localk1.mkdirs()) && (localk1.isDirectory())) {
           break label149;
         }
-        ad.e("MicroMsg.GameImageUtil", "mkdir error. %s", new Object[] { paramString });
+        ae.e("MicroMsg.GameImageUtil", "mkdir error. %s", new Object[] { paramString });
         AppMethodBeat.o(42554);
         return false;
       }
-      ad.e("MicroMsg.GameImageUtil", "mkdir error, %s", new Object[] { com.tencent.mm.vfs.q.B(locale2.fOK()) });
+      ae.e("MicroMsg.GameImageUtil", "mkdir error, %s", new Object[] { w.B(localk2.fTh()) });
       AppMethodBeat.o(42554);
       return false;
     }
@@ -170,18 +174,18 @@ public class e
       {
         AppMethodBeat.i(42535);
         if ((paramAnonymousBitmap != null) && (!paramAnonymousBitmap.isRecycled())) {
-          aq.f(new Runnable()
+          ar.f(new Runnable()
           {
             public final void run()
             {
               AppMethodBeat.i(42534);
-              e.3.this.qeK.setImageBitmap(paramAnonymousBitmap);
-              ViewGroup.LayoutParams localLayoutParams = e.3.this.qeK.getLayoutParams();
+              e.3.this.qlp.setImageBitmap(paramAnonymousBitmap);
+              ViewGroup.LayoutParams localLayoutParams = e.3.this.qlp.getLayoutParams();
               float f = e.3.this.val$height / e.3.this.val$width;
-              localLayoutParams.width = e.3.this.uvD;
-              localLayoutParams.height = ((int)(f * e.3.this.uvD));
-              e.3.this.qeK.setLayoutParams(localLayoutParams);
-              e.3.this.qeK.setScaleType(ImageView.ScaleType.FIT_XY);
+              localLayoutParams.width = e.3.this.uHc;
+              localLayoutParams.height = ((int)(f * e.3.this.uHc));
+              e.3.this.qlp.setLayoutParams(localLayoutParams);
+              e.3.this.qlp.setScaleType(ImageView.ScaleType.FIT_XY);
               AppMethodBeat.o(42534);
             }
           });
@@ -195,17 +199,17 @@ public class e
   private boolean b(ImageView paramImageView, String paramString, a parama, b paramb)
   {
     AppMethodBeat.i(42545);
-    if ((!parama.idp) || (parama.uvK))
+    if ((!parama.igi) || (parama.uHj))
     {
       AppMethodBeat.o(42545);
       return false;
     }
-    if (!this.urk.aM(paramString))
+    if (!this.uCE.aM(paramString))
     {
       AppMethodBeat.o(42545);
       return false;
     }
-    paramString = (Bitmap)this.urk.aL(paramString);
+    paramString = (Bitmap)this.uCE.aL(paramString);
     if ((paramString != null) && (!paramString.isRecycled()))
     {
       if (paramImageView != null) {
@@ -240,7 +244,7 @@ public class e
       {
         localBitmap = Bitmap.createBitmap(paramBitmap, (i - paramInt2) / 2, 0, paramInt2, j);
         paramInt1 = j;
-        ad.i("MicroMsg.GameImageUtil", "resizeBitmap, bitmapW = %d, bitmapH = %d, newWidth = %d, newHeight = %d", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(paramInt2), Integer.valueOf(paramInt1) });
+        ae.i("MicroMsg.GameImageUtil", "resizeBitmap, bitmapW = %d, bitmapH = %d, newWidth = %d, newHeight = %d", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(paramInt2), Integer.valueOf(paramInt1) });
         AppMethodBeat.o(42551);
         return localBitmap;
       }
@@ -261,27 +265,27 @@ public class e
     Object localObject = new c.a();
     boolean bool;
     String str;
-    if (!parama.uvK)
+    if (!parama.uHj)
     {
       bool = true;
-      ((c.a)localObject).idp = bool;
-      amx(uvt);
-      str = uvt + com.tencent.mm.b.g.getMessageDigest(paramString.getBytes());
-      ((c.a)localObject).idr = parama.idr;
-      if (parama.uvK) {
+      ((c.a)localObject).igi = bool;
+      anv(uGS);
+      str = uGS + g.getMessageDigest(paramString.getBytes());
+      ((c.a)localObject).igk = parama.igk;
+      if (parama.uHj) {
         break label153;
       }
-      ((c.a)localObject).hdP = str;
+      ((c.a)localObject).hgD = str;
     }
     for (;;)
     {
-      ((c.a)localObject).hfi = parama.hfi;
-      ((c.a)localObject).hdX = false;
+      ((c.a)localObject).hhW = parama.hhW;
+      ((c.a)localObject).hgL = false;
       a(paramImageView, parama);
-      localObject = ((c.a)localObject).aJc();
-      com.tencent.mm.aw.q.aIJ().a(paramString, null, (com.tencent.mm.aw.a.a.c)localObject, new com.tencent.mm.aw.a.c.h()
+      localObject = ((c.a)localObject).aJu();
+      q.aJb().a(paramString, null, (com.tencent.mm.av.a.a.c)localObject, new com.tencent.mm.av.a.c.h()
       {
-        public final Bitmap a(String paramAnonymousString, View paramAnonymousView, com.tencent.mm.aw.a.d.b paramAnonymousb)
+        public final Bitmap a(String paramAnonymousString, View paramAnonymousView, com.tencent.mm.av.a.d.b paramAnonymousb)
         {
           return null;
         }
@@ -289,39 +293,39 @@ public class e
         public final void b(String paramAnonymousString, View paramAnonymousView)
         {
           AppMethodBeat.i(42532);
-          ad.d("MicroMsg.GameImageUtil", "onImageLoadStart, url: ".concat(String.valueOf(paramAnonymousString)));
+          ae.d("MicroMsg.GameImageUtil", "onImageLoadStart, url: ".concat(String.valueOf(paramAnonymousString)));
           AppMethodBeat.o(42532);
         }
         
-        public final void b(String paramAnonymousString, View paramAnonymousView, final com.tencent.mm.aw.a.d.b paramAnonymousb)
+        public final void b(String paramAnonymousString, View paramAnonymousView, final com.tencent.mm.av.a.d.b paramAnonymousb)
         {
           AppMethodBeat.i(42533);
-          ad.d("MicroMsg.GameImageUtil", "onImageLoadFinish, url: ".concat(String.valueOf(paramAnonymousString)));
+          ae.d("MicroMsg.GameImageUtil", "onImageLoadFinish, url: ".concat(String.valueOf(paramAnonymousString)));
           if ((paramAnonymousb != null) && (paramAnonymousb.bitmap != null))
           {
             Object localObject = paramAnonymousb.bitmap;
-            paramAnonymousb = (com.tencent.mm.aw.a.d.b)localObject;
-            if (parama.uvI) {
-              paramAnonymousb = e.Y((Bitmap)localObject);
+            paramAnonymousb = (com.tencent.mm.av.a.d.b)localObject;
+            if (parama.uHh) {
+              paramAnonymousb = e.Z((Bitmap)localObject);
             }
             localObject = paramAnonymousb;
-            if (parama.mNb != 0) {
-              localObject = com.tencent.mm.sdk.platformtools.g.a(paramAnonymousb, false, parama.mNb);
+            if (parama.mSe != 0) {
+              localObject = com.tencent.mm.sdk.platformtools.h.a(paramAnonymousb, false, parama.mSe);
             }
-            paramAnonymousb = (com.tencent.mm.aw.a.d.b)localObject;
-            if (parama.uvL > 0.0F) {
-              paramAnonymousb = com.tencent.mm.sdk.platformtools.g.a((Bitmap)localObject, false, ((Bitmap)localObject).getWidth() * parama.uvL);
+            paramAnonymousb = (com.tencent.mm.av.a.d.b)localObject;
+            if (parama.uHk > 0.0F) {
+              paramAnonymousb = com.tencent.mm.sdk.platformtools.h.a((Bitmap)localObject, false, ((Bitmap)localObject).getWidth() * parama.uHk);
             }
-            if (parama.idp) {
+            if (parama.igi) {
               e.b(e.this).q(paramAnonymousString, paramAnonymousb);
             }
-            aq.f(new Runnable()
+            ar.f(new Runnable()
             {
               public final void run()
               {
                 AppMethodBeat.i(42531);
-                if (e.2.this.trI != null) {
-                  e.2.this.trI.setImageBitmap(paramAnonymousb);
+                if (e.2.this.tCz != null) {
+                  e.2.this.tCz.setImageBitmap(paramAnonymousb);
                 }
                 AppMethodBeat.o(42531);
               }
@@ -338,21 +342,21 @@ public class e
       bool = false;
       break;
       label153:
-      ((c.a)localObject).idr = false;
-      com.tencent.mm.pluginsdk.j.a.d.a.aMl(str);
+      ((c.a)localObject).igk = false;
+      com.tencent.mm.pluginsdk.j.a.d.a.aNH(str);
     }
   }
   
-  public static e dav()
+  public static e ddh()
   {
     AppMethodBeat.i(42539);
-    if (uvu == null) {}
+    if (uGT == null) {}
     try
     {
-      if (uvu == null) {
-        uvu = new e();
+      if (uGT == null) {
+        uGT = new e();
       }
-      e locale = uvu;
+      e locale = uGT;
       AppMethodBeat.o(42539);
       return locale;
     }
@@ -379,14 +383,14 @@ public class e
   public final void a(ImageView paramImageView, String paramString, a parama, b paramb)
   {
     AppMethodBeat.i(42544);
-    if (bt.isNullOrNil(paramString))
+    if (bu.isNullOrNil(paramString))
     {
       AppMethodBeat.o(42544);
       return;
     }
     a locala = parama;
     if (parama == null) {
-      locala = new e.a.a().daw();
+      locala = new e.a.a().ddi();
     }
     if (b(paramImageView, paramString, locala, paramb))
     {
@@ -400,14 +404,14 @@ public class e
   public final void c(final ImageView paramImageView, final String paramString, final float paramFloat)
   {
     AppMethodBeat.i(42553);
-    if ((paramImageView == null) || (bt.isNullOrNil(paramString)))
+    if ((paramImageView == null) || (bu.isNullOrNil(paramString)))
     {
       AppMethodBeat.o(42553);
       return;
     }
-    if (this.ukE.aM(paramString))
+    if (this.uwb.aM(paramString))
     {
-      localBitmap = (Bitmap)this.ukE.aL(paramString);
+      localBitmap = (Bitmap)this.uwb.aL(paramString);
       if ((localBitmap != null) && (!localBitmap.isRecycled()))
       {
         paramImageView.setImageBitmap(localBitmap);
@@ -419,13 +423,13 @@ public class e
     if ((localBitmap != null) && (!localBitmap.isRecycled()))
     {
       paramImageView.setImageBitmap(localBitmap);
-      this.ukE.put(paramString, localBitmap);
+      this.uwb.put(paramString, localBitmap);
       AppMethodBeat.o(42553);
       return;
     }
     paramImageView.setImageResource(2131232498);
     paramImageView = new WeakReference(paramImageView);
-    com.tencent.mm.plugin.s.a.dxQ().add(new k.a()
+    com.tencent.mm.plugin.s.a.dBg().add(new k.a()
     {
       public final void a(String paramAnonymousString, m paramAnonymousm)
       {
@@ -439,7 +443,7 @@ public class e
               ((ImageView)paramImageView.get()).setImageBitmap(paramAnonymousString);
             }
             e.a(e.this).put(paramString, paramAnonymousString);
-            com.tencent.mm.plugin.s.a.dxQ().remove(this);
+            com.tencent.mm.plugin.s.a.dBg().remove(this);
           }
         }
         AppMethodBeat.o(42537);
@@ -459,24 +463,24 @@ public class e
   {
     AppMethodBeat.i(42543);
     e.a.a locala = new e.a.a();
-    locala.hfi = true;
-    a(paramImageView, paramString, locala.daw(), null);
+    locala.hhW = true;
+    a(paramImageView, paramString, locala.ddi(), null);
     AppMethodBeat.o(42543);
   }
   
   public final Bitmap n(ImageView paramImageView, String paramString)
   {
     AppMethodBeat.i(42552);
-    paramString = com.tencent.mm.ak.c.a(paramString, false, -1, null);
-    if (((paramString != null) && (!paramString.isRecycled())) || ((this.uvw == null) || (this.uvw.isRecycled()))) {}
+    paramString = com.tencent.mm.aj.c.a(paramString, false, -1, null);
+    if (((paramString != null) && (!paramString.isRecycled())) || ((this.uGV == null) || (this.uGV.isRecycled()))) {}
     try
     {
-      this.uvw = BackwardSupportUtil.b.b(aj.getContext().getAssets().open("avatar/default_nor_avatar.png"), com.tencent.mm.cc.a.getDensity(null));
+      this.uGV = BackwardSupportUtil.b.b(ak.getContext().getAssets().open("avatar/default_nor_avatar.png"), com.tencent.mm.cb.a.getDensity(null));
       label64:
-      if ((this.uvw != null) && (!this.uvw.isRecycled()) && (paramImageView != null)) {
-        paramImageView.setImageBitmap(this.uvw);
+      if ((this.uGV != null) && (!this.uGV.isRecycled()) && (paramImageView != null)) {
+        paramImageView.setImageBitmap(this.uGV);
       }
-      paramImageView = this.uvw;
+      paramImageView = this.uGV;
       AppMethodBeat.o(42552);
       return paramImageView;
       if (paramImageView != null) {
@@ -493,42 +497,42 @@ public class e
   
   public static final class a
   {
-    final int hdT;
-    final boolean hfi;
-    final boolean idp;
-    final boolean idr;
-    final int mNb;
-    final boolean uvI;
-    final boolean uvJ;
-    final boolean uvK;
-    final float uvL;
+    final int hgH;
+    final boolean hhW;
+    final boolean igi;
+    final boolean igk;
+    final int mSe;
+    final boolean uHh;
+    final boolean uHi;
+    final boolean uHj;
+    final float uHk;
     
     private a(a parama)
     {
-      this.idp = parama.idp;
-      this.idr = parama.idr;
-      this.hfi = parama.hfi;
-      this.uvI = parama.uvI;
-      this.uvJ = parama.uvJ;
-      this.uvK = parama.uvK;
-      this.hdT = parama.hdT;
-      this.mNb = parama.mNb;
-      this.uvL = parama.uvL;
+      this.igi = parama.igi;
+      this.igk = parama.igk;
+      this.hhW = parama.hhW;
+      this.uHh = parama.uHh;
+      this.uHi = parama.uHi;
+      this.uHj = parama.uHj;
+      this.hgH = parama.hgH;
+      this.mSe = parama.mSe;
+      this.uHk = parama.uHk;
     }
     
     public static final class a
     {
-      public int hdT = 0;
-      public boolean hfi = false;
-      public boolean idp = true;
-      public boolean idr = true;
-      int mNb = 0;
-      public boolean uvI = false;
-      boolean uvJ = true;
-      boolean uvK = false;
-      public float uvL = 0.0F;
+      public int hgH = 0;
+      public boolean hhW = false;
+      public boolean igi = true;
+      public boolean igk = true;
+      int mSe = 0;
+      public boolean uHh = false;
+      boolean uHi = true;
+      boolean uHj = false;
+      public float uHk = 0.0F;
       
-      public final e.a daw()
+      public final e.a ddi()
       {
         AppMethodBeat.i(42538);
         e.a locala = new e.a(this, (byte)0);
@@ -545,7 +549,7 @@ public class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.game.f.e
  * JD-Core Version:    0.7.0.1
  */

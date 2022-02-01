@@ -4,17 +4,17 @@ import android.os.Looper;
 import android.os.Message;
 import android.text.Selection;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.aq;
 
 public final class a
 {
-  private final ap lEc;
-  public volatile c nhV;
+  private final aq lIB;
+  public volatile c nnd;
   
   public a()
   {
     AppMethodBeat.i(131519);
-    this.lEc = new ap(Looper.getMainLooper())
+    this.lIB = new aq(Looper.getMainLooper())
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
@@ -23,8 +23,8 @@ public final class a
         {
           String str = (String)paramAnonymousMessage.obj;
           int i = paramAnonymousMessage.arg1;
-          if (a.this.nhV != null) {
-            a.this.nhV.bD(str, i);
+          if (a.this.nnd != null) {
+            a.this.nnd.bG(str, i);
           }
         }
         AppMethodBeat.o(131518);
@@ -41,13 +41,13 @@ public final class a
       AppMethodBeat.o(131520);
       return;
     }
-    paramCharSequence = this.lEc.obtainMessage(1000, Selection.getSelectionEnd(paramCharSequence), 0, paramCharSequence.toString());
-    this.lEc.removeMessages(1000);
-    ap localap = this.lEc;
+    paramCharSequence = this.lIB.obtainMessage(1000, Selection.getSelectionEnd(paramCharSequence), 0, paramCharSequence.toString());
+    this.lIB.removeMessages(1000);
+    aq localaq = this.lIB;
     if (paramBoolean) {}
     for (long l = 150L;; l = 0L)
     {
-      localap.sendMessageDelayed(paramCharSequence, l);
+      localaq.sendMessageDelayed(paramCharSequence, l);
       AppMethodBeat.o(131520);
       return;
     }

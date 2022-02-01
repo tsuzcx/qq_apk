@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.wallet.balance.ui.lqt;
 import android.app.Activity;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.vending.app.a;
 import com.tencent.mm.vending.app.c;
 import com.tencent.mm.vending.c.b;
@@ -12,16 +12,16 @@ import com.tencent.mm.wallet_core.ui.WalletBaseUI;
 public abstract class WalletLqtBasePresenterUI
   extends WalletBaseUI
 {
-  private c gEm = new c();
+  private c gGT = new c();
   
   public final <T extends b<? extends a>> T am(Class<? extends b<? extends a>> paramClass)
   {
-    return this.gEm.a(this, paramClass);
+    return this.gGT.a(this, paramClass);
   }
   
   public final <T extends a> T aq(Class<? extends a> paramClass)
   {
-    return this.gEm.b(this, paramClass);
+    return this.gGT.b(this, paramClass);
   }
   
   public int getForceOrientation()
@@ -37,26 +37,26 @@ public abstract class WalletLqtBasePresenterUI
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    this.gEm.B(getIntent(), this);
+    this.gGT.B(getIntent(), this);
     this.isVKBFirstTimeShown = true;
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    this.gEm.onDestroy();
+    this.gGT.onDestroy();
   }
   
   public void onPause()
   {
     super.onPause();
-    this.gEm.afP(3);
+    this.gGT.agy(3);
   }
   
   public void onResume()
   {
     super.onResume();
-    this.gEm.afP(2);
+    this.gGT.agy(2);
   }
   
   public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
@@ -72,7 +72,7 @@ public abstract class WalletLqtBasePresenterUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.balance.ui.lqt.WalletLqtBasePresenterUI
  * JD-Core Version:    0.7.0.1
  */

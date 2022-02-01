@@ -13,95 +13,95 @@ import java.util.Set;
 final class j
   implements Handler.Callback
 {
-  public static int IkZ = 113;
-  public static int Ila = 114;
-  public static int Ilb = 115;
-  public static int Ilc = 116;
-  public static int Ild = 121;
-  public static int Ile = 122;
-  public static int Ilf = 126;
-  public static int Ilg = 145;
-  private static boolean Ilh = false;
-  private static Runnable Ili;
-  private static boolean Ilk = false;
+  public static int IFk = 113;
+  public static int IFl = 114;
+  public static int IFm = 115;
+  public static int IFn = 116;
+  public static int IFo = 121;
+  public static int IFp = 122;
+  public static int IFq = 126;
+  public static int IFr = 145;
+  private static boolean IFs = false;
+  private static Runnable IFt;
+  private static boolean IFv = false;
   public static int LAUNCH_ACTIVITY = 100;
-  private boolean Ilj = false;
+  private boolean IFu = false;
   private Context mContext;
-  Handler.Callback wuG;
+  Handler.Callback wKq;
   
   public j(Context paramContext, Handler.Callback paramCallback)
   {
     this.mContext = paramContext;
-    this.wuG = paramCallback;
+    this.wKq = paramCallback;
   }
   
-  public static void aE(Runnable paramRunnable)
+  public static void aC(Runnable paramRunnable)
   {
-    Ilh = true;
-    Ili = paramRunnable;
+    IFs = true;
+    IFt = paramRunnable;
   }
   
-  public static boolean fnD()
+  public static boolean frw()
   {
-    return Ilk;
+    return IFv;
   }
   
   public final boolean handleMessage(Message paramMessage)
   {
     AppMethodBeat.i(40678);
-    if (this.Ilj)
+    if (this.IFu)
     {
       h.b("WxSplash.SplashHackHandlerCallback", "found a infinite call loop", new Object[0]);
       AppMethodBeat.o(40678);
       return false;
     }
-    Ilk = false;
-    h.b("WxSplash.SplashHackHandlerCallback", "before handleMessage %s, splash %s, pending early %s", new Object[] { Integer.valueOf(paramMessage.what), Boolean.valueOf(h.fnq()), Boolean.valueOf(h.fnr()) });
-    if ((Ilh) && (paramMessage.what == 987654321))
+    IFv = false;
+    h.b("WxSplash.SplashHackHandlerCallback", "before handleMessage %s, splash %s, pending early %s", new Object[] { Integer.valueOf(paramMessage.what), Boolean.valueOf(h.frj()), Boolean.valueOf(h.frk()) });
+    if ((IFs) && (paramMessage.what == 987654321))
     {
-      if (Ili != null)
+      if (IFt != null)
       {
         h.b("WxSplash.SplashHackHandlerCallback", "verify hack received.", new Object[0]);
-        Ili.run();
+        IFt.run();
       }
       AppMethodBeat.o(40678);
       return true;
     }
     Object localObject;
-    if ((h.fnq()) && (!h.fnr()))
+    if ((h.frj()) && (!h.frk()))
     {
-      h.b("WxSplash.SplashHackHandlerCallback", "handleMessage %s, splash %s", new Object[] { Integer.valueOf(paramMessage.what), Boolean.valueOf(h.fnq()) });
-      if ((paramMessage.what == IkZ) || (paramMessage.what == Ila) || (paramMessage.what == Ilb) || (paramMessage.what == Ilc) || (paramMessage.what == Ild) || (paramMessage.what == Ile) || (paramMessage.what == Ilg))
+      h.b("WxSplash.SplashHackHandlerCallback", "handleMessage %s, splash %s", new Object[] { Integer.valueOf(paramMessage.what), Boolean.valueOf(h.frj()) });
+      if ((paramMessage.what == IFk) || (paramMessage.what == IFl) || (paramMessage.what == IFm) || (paramMessage.what == IFn) || (paramMessage.what == IFo) || (paramMessage.what == IFp) || (paramMessage.what == IFr))
       {
         localObject = Message.obtain();
         ((Message)localObject).copyFrom(paramMessage);
-        h.Iky.add(localObject);
-        if (h.IkC != null) {
-          h.IkC.MM();
+        h.IEJ.add(localObject);
+        if (h.IEN != null) {
+          h.IEN.MH();
         }
         AppMethodBeat.o(40678);
         return true;
       }
     }
-    if ((paramMessage.what == Ilf) || ((Build.VERSION.SDK_INT == 28) && (paramMessage.what == 160)))
+    if ((paramMessage.what == IFq) || ((Build.VERSION.SDK_INT == 28) && (paramMessage.what == 160)))
     {
-      if (h.IkD.size() > 0) {
-        Ilk = true;
+      if (h.IEO.size() > 0) {
+        IFv = true;
       }
-      h.b("WxSplash.SplashHackHandlerCallback", "received a RELAUNCH_ACTIVITY message, with %s splash activity", new Object[] { Integer.valueOf(h.IkD.size()) });
+      h.b("WxSplash.SplashHackHandlerCallback", "received a RELAUNCH_ACTIVITY message, with %s splash activity", new Object[] { Integer.valueOf(h.IEO.size()) });
       localObject = paramMessage.obj;
-      if (!d.lA(25)) {}
+      if (!d.lC(25)) {}
     }
     try
     {
-      if (l.Ilt == null)
+      if (l.IFE == null)
       {
         Field localField = Class.forName("android.app.ActivityThread$ActivityClientRecord").getDeclaredField("mPreserveWindow");
         localField.setAccessible(true);
-        l.Ilt = localField;
+        l.IFE = localField;
       }
-      h.b("WxSplash.SplashHackHandlerCallback", "preserveWindow is %s, will set false", new Object[] { Boolean.valueOf(((Boolean)l.Ilt.get(localObject)).booleanValue()) });
-      l.Ilt.set(localObject, Boolean.FALSE);
+      h.b("WxSplash.SplashHackHandlerCallback", "preserveWindow is %s, will set false", new Object[] { Boolean.valueOf(((Boolean)l.IFE.get(localObject)).booleanValue()) });
+      l.IFE.set(localObject, Boolean.FALSE);
     }
     catch (Exception localException)
     {
@@ -112,11 +112,11 @@ final class j
       }
       AppMethodBeat.o(40678);
     }
-    if (this.wuG != null)
+    if (this.wKq != null)
     {
-      this.Ilj = true;
-      bool = this.wuG.handleMessage(paramMessage);
-      this.Ilj = false;
+      this.IFu = true;
+      bool = this.wKq.handleMessage(paramMessage);
+      this.IFu = false;
       AppMethodBeat.o(40678);
       return bool;
     }

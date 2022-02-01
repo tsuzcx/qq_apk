@@ -2,106 +2,117 @@ package com.tencent.mm.plugin.finder.storage.data;
 
 import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.kernel.e;
-import com.tencent.mm.model.u;
-import com.tencent.mm.plugin.finder.cgi.aq;
-import com.tencent.mm.plugin.finder.cgi.y;
+import com.tencent.mm.plugin.finder.cgi.ar;
+import com.tencent.mm.plugin.finder.cgi.z;
 import com.tencent.mm.protocal.protobuf.FinderContact;
-import com.tencent.mm.protocal.protobuf.aom;
-import com.tencent.mm.protocal.protobuf.asa;
-import com.tencent.mm.protocal.protobuf.bzq;
-import com.tencent.mm.protocal.protobuf.bzr;
+import com.tencent.mm.protocal.protobuf.aoz;
+import com.tencent.mm.protocal.protobuf.asp;
+import com.tencent.mm.protocal.protobuf.cak;
+import com.tencent.mm.protocal.protobuf.cal;
 import com.tencent.mm.protocal.protobuf.kg;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.vfs.i;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.vfs.o;
 import d.g.a.a;
 import d.g.b.p;
 import d.k;
 import d.l;
 import d.n.d;
-import d.v;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.LinkedList<Lcom.tencent.mm.protocal.protobuf.asp;>;
 import java.util.List;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/storage/data/FinderBlackListCache;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "()V", "blackList", "Ljava/util/ArrayList;", "", "Lkotlin/collections/ArrayList;", "getBlackList", "()Ljava/util/ArrayList;", "setBlackList", "(Ljava/util/ArrayList;)V", "getBaseCachePath", "getCacheFilePath", "name", "getFileName", "onAlive", "", "onDetach", "onSceneEnd", "errType", "", "errCode", "errMsg", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "readCache", "refreshByBatchSetBlackList", "data", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/ModContactTypeResInfo;", "refreshByGetTagContact", "Lcom/tencent/mm/protocal/protobuf/FinderTagContact;", "refreshDataFromNet", "saveCache", "Companion", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/storage/data/FinderBlackListCache;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "()V", "blackList", "Ljava/util/ArrayList;", "", "Lkotlin/collections/ArrayList;", "getBlackList", "()Ljava/util/ArrayList;", "setBlackList", "(Ljava/util/ArrayList;)V", "getBaseCachePath", "getCacheFilePath", "name", "getFileName", "onAlive", "", "onDetach", "onSceneEnd", "errType", "", "errCode", "errMsg", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "readCache", "refreshByBatchSetBlackList", "data", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/ModContactTypeResInfo;", "refreshByGetTagContact", "Lcom/tencent/mm/protocal/protobuf/FinderTagContact;", "refreshDataFromNet", "saveCache", "Companion", "plugin-finder_release"})
 public final class c
-  implements com.tencent.mm.al.f
+  implements com.tencent.mm.ak.f
 {
   private static final String TAG = "Finder.FinderBlackListCache";
-  private static final d.f heM;
-  public static final a szF;
-  private ArrayList<String> jXb;
+  private static final d.f hhA;
+  public static final a sKz;
+  private ArrayList<String> kaq;
   
   static
   {
-    AppMethodBeat.i(203798);
-    szF = new a((byte)0);
-    heM = d.g.a(k.MKa, (a)b.szG);
+    AppMethodBeat.i(204382);
+    sKz = new a((byte)0);
+    hhA = d.g.a(k.Nhd, (a)b.sKA);
     TAG = "Finder.FinderBlackListCache";
-    AppMethodBeat.o(203798);
+    AppMethodBeat.o(204382);
   }
   
   private c()
   {
-    AppMethodBeat.i(203797);
-    this.jXb = new ArrayList();
-    AppMethodBeat.o(203797);
+    AppMethodBeat.i(204381);
+    this.kaq = new ArrayList();
+    AppMethodBeat.o(204381);
   }
   
-  private static String TH(String paramString)
+  private static String Uq(String paramString)
   {
-    AppMethodBeat.i(203788);
+    AppMethodBeat.i(204372);
     StringBuilder localStringBuilder1 = new StringBuilder();
     StringBuilder localStringBuilder2 = new StringBuilder();
-    e locale = com.tencent.mm.kernel.g.ajC();
+    e locale = com.tencent.mm.kernel.g.ajR();
     p.g(locale, "MMKernel.storage()");
-    paramString = localStringBuilder2.append(locale.ajh()).append("finder/black_list/").toString() + paramString;
-    AppMethodBeat.o(203788);
+    paramString = localStringBuilder2.append(locale.ajw()).append("finder/black_list/").toString() + paramString;
+    AppMethodBeat.o(204372);
     return paramString;
   }
   
-  private final void ah(LinkedList<asa> paramLinkedList)
+  private final void ah(LinkedList<asp> paramLinkedList)
   {
-    AppMethodBeat.i(203793);
-    String str = TAG;
-    StringBuilder localStringBuilder = new StringBuilder("refreshByGetTagContact size ");
+    AppMethodBeat.i(204377);
+    Object localObject2 = TAG;
+    Object localObject3 = new StringBuilder("refreshByGetTagContact size ");
     if (paramLinkedList != null) {}
-    for (Object localObject = Integer.valueOf(paramLinkedList.size());; localObject = null)
+    for (Object localObject1 = Integer.valueOf(paramLinkedList.size());; localObject1 = null)
     {
-      ad.d(str, localObject);
-      this.jXb.clear();
+      ae.d((String)localObject2, localObject1);
+      this.kaq.clear();
       if (paramLinkedList == null) {
-        break label114;
+        break label135;
       }
-      paramLinkedList = ((Iterable)paramLinkedList).iterator();
-      while (paramLinkedList.hasNext())
+      localObject2 = ((Iterable)paramLinkedList).iterator();
+      while (((Iterator)localObject2).hasNext())
       {
-        localObject = (asa)paramLinkedList.next();
-        this.jXb.add(((asa)localObject).contact.username);
+        paramLinkedList = (asp)((Iterator)localObject2).next();
+        localObject3 = this.kaq;
+        paramLinkedList = paramLinkedList.contact;
+        if (paramLinkedList != null)
+        {
+          localObject1 = paramLinkedList.username;
+          paramLinkedList = (LinkedList<asp>)localObject1;
+          if (localObject1 != null) {}
+        }
+        else
+        {
+          paramLinkedList = "";
+        }
+        ((ArrayList)localObject3).add(paramLinkedList);
       }
     }
-    AppMethodBeat.o(203793);
+    AppMethodBeat.o(204377);
     return;
-    label114:
-    AppMethodBeat.o(203793);
+    label135:
+    AppMethodBeat.o(204377);
   }
   
-  private final void ai(LinkedList<bzr> paramLinkedList)
+  private final void ai(LinkedList<cal> paramLinkedList)
   {
-    AppMethodBeat.i(203794);
+    AppMethodBeat.i(204378);
     String str = TAG;
     StringBuilder localStringBuilder = new StringBuilder("refreshByBatchSetBlackList size ");
     Object localObject;
     if (paramLinkedList != null)
     {
       localObject = Integer.valueOf(paramLinkedList.size());
-      ad.d(str, localObject);
+      ae.d(str, localObject);
       if (paramLinkedList != null) {
         paramLinkedList = ((Iterable)paramLinkedList).iterator();
       }
@@ -113,193 +124,193 @@ public final class c
         if (!paramLinkedList.hasNext()) {
           break label242;
         }
-        localObject = (bzr)paramLinkedList.next();
-        switch (((bzr)localObject).GUI.GUH)
+        localObject = (cal)paramLinkedList.next();
+        switch (((cal)localObject).Hoj.Hoi)
         {
         default: 
           break;
         case 1: 
-          if (!this.jXb.contains(((bzr)localObject).GUI.nDo))
+          if (!this.kaq.contains(((cal)localObject).Hoj.nIJ))
           {
-            ad.d(TAG, "refreshByBatchSetBlackList add " + ((bzr)localObject).GUI.nDo);
-            this.jXb.add(((bzr)localObject).GUI.nDo);
+            ae.d(TAG, "refreshByBatchSetBlackList add " + ((cal)localObject).Hoj.nIJ);
+            this.kaq.add(((cal)localObject).Hoj.nIJ);
             continue;
             localObject = null;
           }
           break;
         case 2: 
-          if (this.jXb.contains(((bzr)localObject).GUI.nDo))
+          if (this.kaq.contains(((cal)localObject).Hoj.nIJ))
           {
-            ad.d(TAG, "refreshByBatchSetBlackList del " + ((bzr)localObject).GUI.nDo);
-            this.jXb.remove(((bzr)localObject).GUI.nDo);
+            ae.d(TAG, "refreshByBatchSetBlackList del " + ((cal)localObject).Hoj.nIJ);
+            this.kaq.remove(((cal)localObject).Hoj.nIJ);
           }
           break;
         }
       }
       label242:
-      AppMethodBeat.o(203794);
+      AppMethodBeat.o(204378);
       return;
     }
-    AppMethodBeat.o(203794);
+    AppMethodBeat.o(204378);
   }
   
-  public static void cJa()
+  public static void cLC()
   {
-    AppMethodBeat.i(203792);
-    Object localObject = aq.rJy;
-    localObject = new aq(aq.cyu());
-    com.tencent.mm.kernel.g.aiU().b((n)localObject);
-    AppMethodBeat.o(203792);
+    AppMethodBeat.i(204376);
+    Object localObject = ar.rRM;
+    localObject = new ar(ar.czV());
+    com.tencent.mm.kernel.g.ajj().b((n)localObject);
+    AppMethodBeat.o(204376);
   }
   
   private static String getFileName()
   {
-    AppMethodBeat.i(203789);
-    Object localObject = u.aAu();
+    AppMethodBeat.i(204373);
+    Object localObject = com.tencent.mm.model.v.aAK();
     p.g(localObject, "finderUserName");
     Charset localCharset = d.UTF_8;
     if (localObject == null)
     {
-      localObject = new v("null cannot be cast to non-null type java.lang.String");
-      AppMethodBeat.o(203789);
+      localObject = new d.v("null cannot be cast to non-null type java.lang.String");
+      AppMethodBeat.o(204373);
       throw ((Throwable)localObject);
     }
     localObject = ((String)localObject).getBytes(localCharset);
     p.g(localObject, "(this as java.lang.String).getBytes(charset)");
     localObject = Base64.encodeToString((byte[])localObject, 0);
     p.g(localObject, "Base64.encodeToString(fi…eArray(), Base64.DEFAULT)");
-    AppMethodBeat.o(203789);
+    AppMethodBeat.o(204373);
     return localObject;
   }
   
-  public final ArrayList<String> cJb()
+  public final ArrayList<String> cLD()
   {
-    AppMethodBeat.i(203795);
-    if (this.jXb.isEmpty())
+    AppMethodBeat.i(204379);
+    if (this.kaq.isEmpty())
     {
-      Object localObject = TH(getFileName());
-      if (i.fv((String)localObject)) {
+      Object localObject = Uq(getFileName());
+      if (o.fB((String)localObject)) {
         try
         {
-          localObject = bt.lO(i.aYq((String)localObject), ",");
+          localObject = bu.lV(o.aZT((String)localObject), ",");
           p.g(localObject, "Util.stringToList(content, \",\")");
           localObject = ((Iterable)localObject).iterator();
           while (((Iterator)localObject).hasNext())
           {
             String str = (String)((Iterator)localObject).next();
-            ad.d(TAG, "read cahe:".concat(String.valueOf(str)));
-            this.jXb.clear();
-            this.jXb.add(str);
+            ae.d(TAG, "read cahe:".concat(String.valueOf(str)));
+            this.kaq.clear();
+            this.kaq.add(str);
           }
-          localArrayList = this.jXb;
+          localArrayList = this.kaq;
         }
         catch (Exception localException)
         {
-          ad.printErrStackTrace(TAG, (Throwable)localException, "read unlike cache file", new Object[0]);
+          ae.printErrStackTrace(TAG, (Throwable)localException, "read unlike cache file", new Object[0]);
         }
       }
     }
     ArrayList localArrayList;
-    AppMethodBeat.o(203795);
+    AppMethodBeat.o(204379);
     return localArrayList;
   }
   
   public final void onAlive()
   {
-    AppMethodBeat.i(203790);
-    com.tencent.mm.kernel.g.aiU().a(3528, (com.tencent.mm.al.f)this);
-    com.tencent.mm.kernel.g.aiU().a(3990, (com.tencent.mm.al.f)this);
-    AppMethodBeat.o(203790);
+    AppMethodBeat.i(204374);
+    com.tencent.mm.kernel.g.ajj().a(3528, (com.tencent.mm.ak.f)this);
+    com.tencent.mm.kernel.g.ajj().a(3990, (com.tencent.mm.ak.f)this);
+    AppMethodBeat.o(204374);
   }
   
   public final void onDetach()
   {
-    AppMethodBeat.i(203791);
-    com.tencent.mm.kernel.g.aiU().b(3528, (com.tencent.mm.al.f)this);
-    com.tencent.mm.kernel.g.aiU().b(3990, (com.tencent.mm.al.f)this);
-    AppMethodBeat.o(203791);
+    AppMethodBeat.i(204375);
+    com.tencent.mm.kernel.g.ajj().b(3528, (com.tencent.mm.ak.f)this);
+    com.tencent.mm.kernel.g.ajj().b(3990, (com.tencent.mm.ak.f)this);
+    AppMethodBeat.o(204375);
   }
   
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
-    AppMethodBeat.i(203796);
-    if ((paramn instanceof aq))
+    AppMethodBeat.i(204380);
+    if ((paramn instanceof ar))
     {
-      ad.i(TAG, "NetSceneFinderGetTagContact errType " + paramInt1 + ", errCode " + paramInt2 + ", errMsg " + paramString);
+      ae.i(TAG, "NetSceneFinderGetTagContact errType " + paramInt1 + ", errCode " + paramInt2 + ", errMsg " + paramString);
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        paramString = ((aq)paramn).rr.aEF();
+        paramString = ((ar)paramn).rr.aEV();
         if (paramString == null)
         {
-          paramString = new v("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.FinderGetTagContactResp");
-          AppMethodBeat.o(203796);
+          paramString = new d.v("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.FinderGetTagContactResp");
+          AppMethodBeat.o(204380);
           throw paramString;
         }
-        ah(((aom)paramString).Gne);
+        ah(((aoz)paramString).GGk);
       }
     }
     Charset localCharset;
     for (;;)
     {
-      ad.d(TAG, "saveCache,size = " + this.jXb.size());
-      paramn = bt.m((List)this.jXb, ",");
-      paramString = TH(getFileName());
+      ae.d(TAG, "saveCache,size = " + this.kaq.size());
+      paramn = bu.m((List)this.kaq, ",");
+      paramString = Uq(getFileName());
       p.g(paramn, "content");
       localCharset = d.UTF_8;
       if (paramn != null) {
         break;
       }
-      paramString = new v("null cannot be cast to non-null type java.lang.String");
-      AppMethodBeat.o(203796);
+      paramString = new d.v("null cannot be cast to non-null type java.lang.String");
+      AppMethodBeat.o(204380);
       throw paramString;
-      if ((paramn instanceof y))
+      if ((paramn instanceof z))
       {
-        ad.i(TAG, "NetSceneBatchSetBlackList errType " + paramInt1 + ", errCode " + paramInt2 + ", errMsg " + paramString);
+        ae.i(TAG, "NetSceneBatchSetBlackList errType " + paramInt1 + ", errCode " + paramInt2 + ", errMsg " + paramString);
         if ((paramInt1 == 0) && (paramInt2 == 0))
         {
-          paramString = ((y)paramn).rr.aEF();
+          paramString = ((z)paramn).rr.aEV();
           if (paramString == null)
           {
-            paramString = new v("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.BatchModContactTypeResponse");
-            AppMethodBeat.o(203796);
+            paramString = new d.v("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.BatchModContactTypeResponse");
+            AppMethodBeat.o(204380);
             throw paramString;
           }
-          ai(((kg)paramString).FCJ);
+          ai(((kg)paramString).FVe);
         }
       }
     }
     paramn = paramn.getBytes(localCharset);
     p.g(paramn, "(this as java.lang.String).getBytes(charset)");
-    i.C(paramString, paramn);
-    AppMethodBeat.o(203796);
+    o.C(paramString, paramn);
+    AppMethodBeat.o(204380);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/storage/data/FinderBlackListCache$Companion;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "instance", "Lcom/tencent/mm/plugin/finder/storage/data/FinderBlackListCache;", "getInstance", "()Lcom/tencent/mm/plugin/finder/storage/data/FinderBlackListCache;", "instance$delegate", "Lkotlin/Lazy;", "plugin-finder_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/storage/data/FinderBlackListCache$Companion;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "instance", "Lcom/tencent/mm/plugin/finder/storage/data/FinderBlackListCache;", "getInstance", "()Lcom/tencent/mm/plugin/finder/storage/data/FinderBlackListCache;", "instance$delegate", "Lkotlin/Lazy;", "plugin-finder_release"})
   public static final class a
   {
-    public static c cJc()
+    public static c cLE()
     {
-      AppMethodBeat.i(203787);
-      Object localObject = c.ari();
-      a locala = c.szF;
+      AppMethodBeat.i(204371);
+      Object localObject = c.arx();
+      a locala = c.sKz;
       localObject = (c)((d.f)localObject).getValue();
-      AppMethodBeat.o(203787);
+      AppMethodBeat.o(204371);
       return localObject;
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "Lcom/tencent/mm/plugin/finder/storage/data/FinderBlackListCache;", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "Lcom/tencent/mm/plugin/finder/storage/data/FinderBlackListCache;", "invoke"})
   static final class b
     extends d.g.b.q
     implements a<c>
   {
-    public static final b szG;
+    public static final b sKA;
     
     static
     {
-      AppMethodBeat.i(203786);
-      szG = new b();
-      AppMethodBeat.o(203786);
+      AppMethodBeat.i(204370);
+      sKA = new b();
+      AppMethodBeat.o(204370);
     }
     
     b()

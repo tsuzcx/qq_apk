@@ -1,15 +1,14 @@
 package com.tencent.mm.model;
 
-import com.tencent.mm.kernel.c.a;
-
-public abstract interface ao
-  extends a
+public abstract class ao
 {
-  public abstract void aBz();
+  public long hIF = 0L;
   
-  public abstract void rH(long paramLong);
+  public abstract String getTag();
   
-  public abstract void z(String paramString, long paramLong);
+  public abstract boolean os(int paramInt);
+  
+  public abstract void transfer(int paramInt);
 }
 
 

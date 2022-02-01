@@ -7,9 +7,9 @@ public abstract interface b
 {
   public abstract void a(Class paramClass, Intent paramIntent, d.a parama);
   
-  public abstract MMActivity dhO();
+  public abstract MMActivity dkN();
   
-  public abstract void dhP();
+  public abstract void dkO();
   
   public abstract void error(String paramString);
   

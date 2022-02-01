@@ -5,30 +5,30 @@ import com.tencent.mm.sdk.e.e;
 import com.tencent.mm.sdk.e.f;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/page/web_renderingcache/WebRenderingCacheAccessStatsStorage;", "Lcom/tencent/mm/plugin/appbrand/storage/MAutoStorageWithMultiKey;", "Lcom/tencent/mm/plugin/appbrand/page/web_renderingcache/WebRenderingCacheAccessRecord;", "db", "Lcom/tencent/mm/sdk/storage/ISQLiteDatabaseEx;", "(Lcom/tencent/mm/sdk/storage/ISQLiteDatabaseEx;)V", "getDb$plugin_appbrand_integration_release", "()Lcom/tencent/mm/sdk/storage/ISQLiteDatabaseEx;", "Companion", "plugin-appbrand-integration_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/page/web_renderingcache/WebRenderingCacheAccessStatsStorage;", "Lcom/tencent/mm/plugin/appbrand/storage/MAutoStorageWithMultiKey;", "Lcom/tencent/mm/plugin/appbrand/page/web_renderingcache/WebRenderingCacheAccessRecord;", "db", "Lcom/tencent/mm/sdk/storage/ISQLiteDatabaseEx;", "(Lcom/tencent/mm/sdk/storage/ISQLiteDatabaseEx;)V", "getDb$plugin_appbrand_integration_release", "()Lcom/tencent/mm/sdk/storage/ISQLiteDatabaseEx;", "Companion", "plugin-appbrand-integration_release"})
 public final class c
-  extends com.tencent.mm.plugin.appbrand.y.c<b>
+  extends com.tencent.mm.plugin.appbrand.x.c<b>
 {
   @Deprecated
-  public static final a mgF;
-  final f jYQ;
+  public static final a mlE;
+  final f kch;
   
   static
   {
     AppMethodBeat.i(50954);
-    mgF = new a((byte)0);
+    mlE = new a((byte)0);
     AppMethodBeat.o(50954);
   }
   
   public c(f paramf)
   {
-    super((e)paramf, b.hEe, "WxaAppWebRenderingCacheAccessStatsTable", null);
+    super((e)paramf, b.hGW, "WxaAppWebRenderingCacheAccessStatsTable", null);
     AppMethodBeat.i(50953);
-    this.jYQ = paramf;
+    this.kch = paramf;
     AppMethodBeat.o(50953);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/page/web_renderingcache/WebRenderingCacheAccessStatsStorage$Companion;", "", "()V", "TAG", "", "plugin-appbrand-integration_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/page/web_renderingcache/WebRenderingCacheAccessStatsStorage$Companion;", "", "()V", "TAG", "", "plugin-appbrand-integration_release"})
   static final class a {}
 }
 

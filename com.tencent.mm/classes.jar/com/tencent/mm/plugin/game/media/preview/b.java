@@ -22,11 +22,11 @@ public final class b
   
   public final void setVideoTotalTime(int paramInt) {}
   
-  public final void tt(int paramInt) {}
+  public final void tx(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.game.media.preview.b
  * JD-Core Version:    0.7.0.1
  */

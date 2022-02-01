@@ -11,7 +11,7 @@ public final class i
   i(m paramm)
   {
     AppMethodBeat.i(140324);
-    paramm = paramm.BH();
+    paramm = paramm.BI();
     this.cgC = paramm.getString("event");
     this.cgD = paramm.optJSONObject("data");
     if (this.cgD == null) {

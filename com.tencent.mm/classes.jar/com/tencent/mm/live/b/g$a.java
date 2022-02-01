@@ -3,13 +3,13 @@ package com.tencent.mm.live.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/live/model/LiveDataManager$LiveDynamicConfig;", "", "enableLandscape", "", "enableCheckPhoneNum", "enableVisitorPolicyPage", "enableVerifyPage", "(ZZZZ)V", "getEnableCheckPhoneNum", "()Z", "setEnableCheckPhoneNum", "(Z)V", "getEnableLandscape", "setEnableLandscape", "getEnableVerifyPage", "setEnableVerifyPage", "getEnableVisitorPolicyPage", "setEnableVisitorPolicyPage", "component1", "component2", "component3", "component4", "copy", "equals", "other", "hashCode", "", "toString", "", "plugin-logic_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/live/model/LiveDataManager$LiveDynamicConfig;", "", "enableLandscape", "", "enableCheckPhoneNum", "enableVisitorPolicyPage", "enableVerifyPage", "(ZZZZ)V", "getEnableCheckPhoneNum", "()Z", "setEnableCheckPhoneNum", "(Z)V", "getEnableLandscape", "setEnableLandscape", "getEnableVerifyPage", "setEnableVerifyPage", "getEnableVisitorPolicyPage", "setEnableVisitorPolicyPage", "component1", "component2", "component3", "component4", "copy", "equals", "other", "hashCode", "", "toString", "", "plugin-logic_release"})
 public final class g$a
 {
-  public boolean gOs = true;
-  boolean gOt = true;
-  boolean gOu = true;
-  boolean gOv = true;
+  public boolean gRa = true;
+  boolean gRb = true;
+  boolean gRc = true;
+  boolean gRd = true;
   
   public final boolean equals(Object paramObject)
   {
@@ -18,7 +18,7 @@ public final class g$a
       if ((paramObject instanceof a))
       {
         paramObject = (a)paramObject;
-        if ((this.gOs != paramObject.gOs) || (this.gOt != paramObject.gOt) || (this.gOu != paramObject.gOu) || (this.gOv != paramObject.gOv)) {}
+        if ((this.gRa != paramObject.gRa) || (this.gRb != paramObject.gRb) || (this.gRc != paramObject.gRc) || (this.gRd != paramObject.gRd)) {}
       }
     }
     else {
@@ -34,9 +34,9 @@ public final class g$a
   
   public final String toString()
   {
-    AppMethodBeat.i(212050);
-    String str = "LiveDynamicConfig(enableLandscape=" + this.gOs + ", enableCheckPhoneNum=" + this.gOt + ", enableVisitorPolicyPage=" + this.gOu + ", enableVerifyPage=" + this.gOv + ")";
-    AppMethodBeat.o(212050);
+    AppMethodBeat.i(215669);
+    String str = "LiveDynamicConfig(enableLandscape=" + this.gRa + ", enableCheckPhoneNum=" + this.gRb + ", enableVisitorPolicyPage=" + this.gRc + ", enableVerifyPage=" + this.gRd + ")";
+    AppMethodBeat.o(215669);
     return str;
   }
 }

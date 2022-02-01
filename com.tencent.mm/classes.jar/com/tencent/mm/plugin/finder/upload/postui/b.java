@@ -6,159 +6,159 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bs.d;
+import com.tencent.mm.br.d;
 import com.tencent.mm.plugin.finder.widget.post.a;
 import com.tencent.mm.pluginsdk.location.LocationView;
 import com.tencent.mm.pluginsdk.location.LocationView.a;
-import com.tencent.mm.protocal.protobuf.aoy;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.apl;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.MMActivity;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/upload/postui/FinderLocationWidget;", "Lcom/tencent/mm/plugin/finder/upload/postui/IFinderPostWidget;", "activity", "Lcom/tencent/mm/ui/MMActivity;", "locationView", "Lcom/tencent/mm/pluginsdk/location/LocationView;", "poiTipsLayout", "Landroid/view/View;", "poiTipsTv", "Landroid/widget/TextView;", "reqCode", "", "(Lcom/tencent/mm/ui/MMActivity;Lcom/tencent/mm/pluginsdk/location/LocationView;Landroid/view/View;Landroid/widget/TextView;I)V", "TAG", "", "getActivity", "()Lcom/tencent/mm/ui/MMActivity;", "finderLocation", "Lcom/tencent/mm/protocal/protobuf/FinderLocation;", "getFinderLocation", "()Lcom/tencent/mm/protocal/protobuf/FinderLocation;", "setFinderLocation", "(Lcom/tencent/mm/protocal/protobuf/FinderLocation;)V", "hasSet", "", "getHasSet", "()Z", "setHasSet", "(Z)V", "intent", "Landroid/content/Intent;", "isLoading", "setLoading", "getLocationView", "()Lcom/tencent/mm/pluginsdk/location/LocationView;", "getPoiTipsLayout", "()Landroid/view/View;", "getPoiTipsTv", "()Landroid/widget/TextView;", "postData", "Landroid/os/Bundle;", "getReqCode", "()I", "canPost", "hidePoiTips", "", "onCreate", "onDestroy", "onPause", "onResume", "refreshLocationView", "saveLocationData", "i", "setDefaultState", "setLoadingState", "shouldInterceptBackPress", "showPoiTips", "trySuggestLocation", "city", "lbsLife", "Lcom/tencent/mm/protocal/protobuf/LbsLife;", "geoDegree", "Lcom/tencent/mm/plugin/finder/utils/GeoDegree;", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/upload/postui/FinderLocationWidget;", "Lcom/tencent/mm/plugin/finder/upload/postui/IFinderPostWidget;", "activity", "Lcom/tencent/mm/ui/MMActivity;", "locationView", "Lcom/tencent/mm/pluginsdk/location/LocationView;", "poiTipsLayout", "Landroid/view/View;", "poiTipsTv", "Landroid/widget/TextView;", "reqCode", "", "(Lcom/tencent/mm/ui/MMActivity;Lcom/tencent/mm/pluginsdk/location/LocationView;Landroid/view/View;Landroid/widget/TextView;I)V", "TAG", "", "getActivity", "()Lcom/tencent/mm/ui/MMActivity;", "finderLocation", "Lcom/tencent/mm/protocal/protobuf/FinderLocation;", "getFinderLocation", "()Lcom/tencent/mm/protocal/protobuf/FinderLocation;", "setFinderLocation", "(Lcom/tencent/mm/protocal/protobuf/FinderLocation;)V", "hasSet", "", "getHasSet", "()Z", "setHasSet", "(Z)V", "intent", "Landroid/content/Intent;", "isLoading", "setLoading", "getLocationView", "()Lcom/tencent/mm/pluginsdk/location/LocationView;", "getPoiTipsLayout", "()Landroid/view/View;", "getPoiTipsTv", "()Landroid/widget/TextView;", "postData", "Landroid/os/Bundle;", "getReqCode", "()I", "canPost", "hidePoiTips", "", "onCreate", "onDestroy", "onPause", "onResume", "refreshLocationView", "saveLocationData", "i", "setDefaultState", "setLoadingState", "shouldInterceptBackPress", "showPoiTips", "trySuggestLocation", "city", "lbsLife", "Lcom/tencent/mm/protocal/protobuf/LbsLife;", "geoDegree", "Lcom/tencent/mm/plugin/finder/utils/GeoDegree;", "plugin-finder_release"})
 public final class b
 {
   private final String TAG;
   public final MMActivity activity;
   public Intent intent;
   public boolean isLoading;
-  final int kqK;
-  private final TextView sKA;
-  public Bundle sKs;
-  public aoy sKw;
-  public boolean sKx;
-  public final LocationView sKy;
-  public final View sKz;
+  final int ktZ;
+  public Bundle sVF;
+  public apl sVJ;
+  public boolean sVK;
+  public final LocationView sVL;
+  public final View sVM;
+  private final TextView sVN;
   
   public b(MMActivity paramMMActivity, LocationView paramLocationView, View paramView, TextView paramTextView, int paramInt)
   {
-    AppMethodBeat.i(204393);
+    AppMethodBeat.i(205011);
     this.activity = paramMMActivity;
-    this.sKy = paramLocationView;
-    this.sKz = paramView;
-    this.sKA = paramTextView;
-    this.kqK = paramInt;
+    this.sVL = paramLocationView;
+    this.sVM = paramView;
+    this.sVN = paramTextView;
+    this.ktZ = paramInt;
     this.TAG = "Finder.FinderLocationWidget";
-    AppMethodBeat.o(204393);
+    AppMethodBeat.o(205011);
   }
   
-  private void cKX()
+  private void cNB()
   {
-    AppMethodBeat.i(204392);
-    this.sKz.setVisibility(8);
-    AppMethodBeat.o(204392);
+    AppMethodBeat.i(205010);
+    this.sVM.setVisibility(8);
+    AppMethodBeat.o(205010);
   }
   
-  public final void cKW()
+  public final void cNA()
   {
-    AppMethodBeat.i(204391);
+    AppMethodBeat.i(205009);
     Object localObject1 = this.intent;
     if (localObject1 == null) {
-      p.bcb("intent");
+      p.bdF("intent");
     }
     if (!((Intent)localObject1).getBooleanExtra("saveLocation", false))
     {
-      ad.i(this.TAG, "refreshLocationView no location data, return");
-      AppMethodBeat.o(204391);
+      ae.i(this.TAG, "refreshLocationView no location data, return");
+      AppMethodBeat.o(205009);
       return;
     }
     this.isLoading = false;
-    cKX();
-    localObject1 = new aoy();
+    cNB();
+    localObject1 = new apl();
     Object localObject2 = this.intent;
     if (localObject2 == null) {
-      p.bcb("intent");
+      p.bdF("intent");
     }
-    ((aoy)localObject1).jDf = bt.bI(((Intent)localObject2).getStringExtra("get_poi_name"), "");
+    ((apl)localObject1).jGd = bu.bI(((Intent)localObject2).getStringExtra("get_poi_name"), "");
     localObject2 = this.intent;
     if (localObject2 == null) {
-      p.bcb("intent");
+      p.bdF("intent");
     }
-    ((aoy)localObject1).ePv = bt.bI(((Intent)localObject2).getStringExtra("get_city"), "");
+    ((apl)localObject1).eRg = bu.bI(((Intent)localObject2).getStringExtra("get_city"), "");
     localObject2 = this.intent;
     if (localObject2 == null) {
-      p.bcb("intent");
+      p.bdF("intent");
     }
-    ((aoy)localObject1).dyz = ((Intent)localObject2).getFloatExtra("get_lat", -85.0F);
+    ((apl)localObject1).dzE = ((Intent)localObject2).getFloatExtra("get_lat", -85.0F);
     localObject2 = this.intent;
     if (localObject2 == null) {
-      p.bcb("intent");
+      p.bdF("intent");
     }
-    ((aoy)localObject1).dAp = ((Intent)localObject2).getFloatExtra("get_lng", -1000.0F);
+    ((apl)localObject1).dBu = ((Intent)localObject2).getFloatExtra("get_lng", -1000.0F);
     localObject2 = this.intent;
     if (localObject2 == null) {
-      p.bcb("intent");
+      p.bdF("intent");
     }
-    ((aoy)localObject1).zSk = bt.nullAsNil(((Intent)localObject2).getStringExtra("get_poi_address"));
+    ((apl)localObject1).Ajr = bu.nullAsNil(((Intent)localObject2).getStringExtra("get_poi_address"));
     localObject2 = this.intent;
     if (localObject2 == null) {
-      p.bcb("intent");
+      p.bdF("intent");
     }
-    ((aoy)localObject1).Gnu = bt.nullAsNil(((Intent)localObject2).getStringExtra("get_poi_classify_id"));
-    this.sKw = ((aoy)localObject1);
-    Object localObject3 = this.sKw;
+    ((apl)localObject1).GGA = bu.nullAsNil(((Intent)localObject2).getStringExtra("get_poi_classify_id"));
+    this.sVJ = ((apl)localObject1);
+    Object localObject3 = this.sVJ;
     if (localObject3 != null)
     {
-      localObject1 = this.sKs;
+      localObject1 = this.sVF;
       if (localObject1 == null) {
-        p.bcb("postData");
+        p.bdF("postData");
       }
-      localObject2 = a.tez;
-      ((Bundle)localObject1).putByteArray(a.cOH(), ((aoy)localObject3).toByteArray());
-      if ((!bt.isNullOrNil(((aoy)localObject3).jDf)) || (!bt.isNullOrNil(((aoy)localObject3).ePv)))
+      localObject2 = a.tps;
+      ((Bundle)localObject1).putByteArray(a.cRm(), ((apl)localObject3).toByteArray());
+      if ((!bu.isNullOrNil(((apl)localObject3).jGd)) || (!bu.isNullOrNil(((apl)localObject3).eRg)))
       {
-        LocationView localLocationView = this.sKy;
-        localObject2 = ((aoy)localObject3).ePv;
+        LocationView localLocationView = this.sVL;
+        localObject2 = ((apl)localObject3).eRg;
         localObject1 = localObject2;
         if (localObject2 == null) {
           localObject1 = "";
         }
-        localObject3 = ((aoy)localObject3).jDf;
+        localObject3 = ((apl)localObject3).jGd;
         localObject2 = localObject3;
         if (localObject3 == null) {
           localObject2 = "";
         }
-        localLocationView.lq((String)localObject1, (String)localObject2);
-        AppMethodBeat.o(204391);
+        localLocationView.lx((String)localObject1, (String)localObject2);
+        AppMethodBeat.o(205009);
         return;
       }
-      this.sKy.eZe();
-      AppMethodBeat.o(204391);
+      this.sVL.fcS();
+      AppMethodBeat.o(205009);
       return;
     }
-    AppMethodBeat.o(204391);
+    AppMethodBeat.o(205009);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "onClickLocationView"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "onClickLocationView"})
   public static final class a
     implements LocationView.a
   {
     public a(b paramb) {}
     
-    public final void cKY()
+    public final void cNC()
     {
       float f2 = 0.0F;
-      AppMethodBeat.i(204390);
+      AppMethodBeat.i(205008);
       Intent localIntent = new Intent();
       localIntent.putExtra("near_life_scene", 6);
-      Object localObject = this.sKB.sKw;
+      Object localObject = this.sVO.sVJ;
       if (localObject != null) {}
-      for (float f1 = ((aoy)localObject).dyz;; f1 = 0.0F)
+      for (float f1 = ((apl)localObject).dzE;; f1 = 0.0F)
       {
         localIntent.putExtra("get_lat", f1);
-        localObject = this.sKB.sKw;
+        localObject = this.sVO.sVJ;
         f1 = f2;
         if (localObject != null) {
-          f1 = ((aoy)localObject).dAp;
+          f1 = ((apl)localObject).dBu;
         }
         localIntent.putExtra("get_lng", f1);
-        localObject = this.sKB.sKw;
+        localObject = this.sVO.sVJ;
         String str;
         if (localObject != null)
         {
-          str = ((aoy)localObject).Gnu;
+          str = ((apl)localObject).GGA;
           localObject = str;
           if (str != null) {}
         }
@@ -167,10 +167,10 @@ public final class b
           localObject = "";
         }
         localIntent.putExtra("get_poi_classify_id", (String)localObject);
-        localObject = this.sKB.sKw;
+        localObject = this.sVO.sVJ;
         if (localObject != null)
         {
-          str = ((aoy)localObject).ePv;
+          str = ((apl)localObject).eRg;
           localObject = str;
           if (str != null) {}
         }
@@ -179,8 +179,8 @@ public final class b
           localObject = "";
         }
         localIntent.putExtra("get_city", (String)localObject);
-        d.b((Context)this.sKB.activity, "nearlife", "com.tencent.mm.plugin.nearlife.ui.CheckInLifeUI", localIntent, this.sKB.kqK);
-        AppMethodBeat.o(204390);
+        d.b((Context)this.sVO.activity, "nearlife", "com.tencent.mm.plugin.nearlife.ui.CheckInLifeUI", localIntent, this.sVO.ktZ);
+        AppMethodBeat.o(205008);
         return;
       }
     }

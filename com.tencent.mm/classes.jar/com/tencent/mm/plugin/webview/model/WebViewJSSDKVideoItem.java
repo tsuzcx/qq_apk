@@ -49,10 +49,10 @@ public class WebViewJSSDKVideoItem
     return 0;
   }
   
-  public final JSONObject ftr()
+  public final JSONObject eUc()
   {
     AppMethodBeat.i(182698);
-    JSONObject localJSONObject = super.ftr();
+    JSONObject localJSONObject = super.eUc();
     try
     {
       localJSONObject.put("duration", this.duration);
@@ -66,20 +66,20 @@ public class WebViewJSSDKVideoItem
     }
   }
   
-  public final WebViewJSSDKFileItem fts()
+  public final WebViewJSSDKFileItem eUd()
   {
     AppMethodBeat.i(79021);
-    this.drH = ax.aHA(this.jUC);
+    this.dsN = ax.aIT(this.jXT);
     AppMethodBeat.o(79021);
     return this;
   }
   
-  public final String ftt()
+  public final String eUf()
   {
     return "mp4";
   }
   
-  public final String ftu()
+  public final String fwN()
   {
     return "video";
   }
@@ -94,7 +94,7 @@ public class WebViewJSSDKVideoItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.model.WebViewJSSDKVideoItem
  * JD-Core Version:    0.7.0.1
  */

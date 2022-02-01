@@ -1,10 +1,10 @@
 package com.tencent.mm.pluginsdk.f;
 
-import com.tencent.mm.protocal.protobuf.chw;
+import com.tencent.mm.protocal.protobuf.ciq;
 
 public abstract interface h
 {
-  public abstract void a(f paramf, chw paramchw);
+  public abstract void a(f paramf, ciq paramciq);
   
   public abstract void a(f paramf, boolean paramBoolean, int paramInt);
 }

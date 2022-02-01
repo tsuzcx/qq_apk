@@ -1,12 +1,11 @@
 package com.tencent.mm.plugin.appbrand.appstorage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ax;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.sdk.platformtools.bu;
 import d.g.a.b;
 import d.g.a.m;
-import d.g.b.p;
 import d.g.b.q;
 import d.g.b.y.d;
 import d.l;
@@ -20,56 +19,56 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/appstorage/AppBrandMMKVStorage;", "Lcom/tencent/mm/plugin/appbrand/appstorage/IAppBrandKVStorage;", "uin", "", "(J)V", "MMKV", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "getter", "Lkotlin/Function1;", "", "setter", "Lkotlin/Function2;", "", "appendTotalDataSize", "", "storageId", "appId", "size", "clear", "clearAll", "generateValue", "data", "dataType", "get", "", "", "key", "(ILjava/lang/String;Ljava/lang/String;)[Ljava/lang/Object;", "getAllStorageId", "", "getDataSize", "recordKey", "getQuota", "getTotalDataSize", "getTotalDataSizeAll", "info", "(ILjava/lang/String;)[Ljava/lang/Object;", "keys", "block", "keysSize", "remove", "Lcom/tencent/mm/plugin/appbrand/appstorage/IAppBrandKVStorage$ErrorType;", "set", "setTotalDataSize", "splitValue", "Lcom/tencent/mm/plugin/appbrand/appstorage/AppBrandMMKVStorage$StorageInfo;", "str", "willReachQuota", "", "Companion", "StorageInfo", "luggage-wechat-full-sdk_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/appstorage/AppBrandMMKVStorage;", "Lcom/tencent/mm/plugin/appbrand/appstorage/IAppBrandKVStorage;", "uin", "", "(J)V", "MMKV", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "getter", "Lkotlin/Function1;", "", "setter", "Lkotlin/Function2;", "", "appendTotalDataSize", "", "storageId", "appId", "size", "clear", "clearAll", "generateValue", "data", "dataType", "get", "", "", "key", "(ILjava/lang/String;Ljava/lang/String;)[Ljava/lang/Object;", "getAllStorageId", "", "getDataSize", "recordKey", "getQuota", "getTotalDataSize", "getTotalDataSizeAll", "info", "(ILjava/lang/String;)[Ljava/lang/Object;", "keys", "block", "keysSize", "remove", "Lcom/tencent/mm/plugin/appbrand/appstorage/IAppBrandKVStorage$ErrorType;", "set", "setTotalDataSize", "splitValue", "Lcom/tencent/mm/plugin/appbrand/appstorage/AppBrandMMKVStorage$StorageInfo;", "str", "willReachQuota", "", "Companion", "StorageInfo", "luggage-wechat-full-sdk_release"})
 public final class h
-  implements o
+  implements p
 {
-  private static final Map<Long, h> jMq;
-  public static final a jMr;
-  private final b<String, String> jLP;
-  private final m<String, String, z> jLQ;
-  private ax jMp;
+  private static final Map<Long, h> jPC;
+  public static final a jPD;
+  private ay jPB;
+  private final b<String, String> jPb;
+  private final m<String, String, z> jPc;
   
   static
   {
     AppMethodBeat.i(147886);
-    jMr = new a((byte)0);
-    jMq = (Map)new LinkedHashMap();
+    jPD = new a((byte)0);
+    jPC = (Map)new LinkedHashMap();
     AppMethodBeat.o(147886);
   }
   
   private h(long paramLong)
   {
     AppMethodBeat.i(147885);
-    ad.i("AppBrandMMKVStorage", "getMMKV uin:".concat(String.valueOf(paramLong)));
-    ax localax = ax.aQz("AppBrandMMKVStorage".concat(String.valueOf(paramLong)));
-    p.g(localax, "MultiProcessMMKV.getMMKV(NAME + uin)");
-    this.jMp = localax;
-    this.jLP = ((b)new d(this));
-    this.jLQ = ((m)new f(this));
+    ae.i("AppBrandMMKVStorage", "getMMKV uin:".concat(String.valueOf(paramLong)));
+    ay localay = ay.aRW("AppBrandMMKVStorage".concat(String.valueOf(paramLong)));
+    d.g.b.p.g(localay, "MultiProcessMMKV.getMMKV(NAME + uin)");
+    this.jPB = localay;
+    this.jPb = ((b)new d(this));
+    this.jPc = ((m)new f(this));
     AppMethodBeat.o(147885);
   }
   
-  private int[] LX(String paramString)
+  private int[] MB(String paramString)
   {
     AppMethodBeat.i(147884);
-    p.h(paramString, "appId");
-    paramString = s.a(paramString, this.jLP, this.jLQ);
+    d.g.b.p.h(paramString, "appId");
+    paramString = t.a(paramString, this.jPb, this.jPc);
     AppMethodBeat.o(147884);
     return paramString;
   }
   
-  private final int LZ(String paramString)
+  private final int MD(String paramString)
   {
     AppMethodBeat.i(147872);
-    String str = this.jMp.getString(paramString, "");
+    String str = this.jPB.getString(paramString, "");
     paramString = str;
     if (str == null) {
       paramString = "";
     }
     try
     {
-      i = Integer.parseInt(Mg(paramString).jMs);
+      i = Integer.parseInt(MK(paramString).jPE);
       AppMethodBeat.o(147872);
       return i;
     }
@@ -82,7 +81,7 @@ public final class h
     }
   }
   
-  private static b Mg(String paramString)
+  private static b MK(String paramString)
   {
     AppMethodBeat.i(147874);
     paramString = (CharSequence)paramString;
@@ -108,8 +107,8 @@ public final class h
   private final int W(int paramInt, String paramString)
   {
     AppMethodBeat.i(147879);
-    paramString = s.c(paramInt, paramString, "@@@TOTAL@DATA@SIZE@@@", "++");
-    paramInt = bt.getInt(this.jMp.getString(paramString, ""), 0);
+    paramString = t.c(paramInt, paramString, "@@@TOTAL@DATA@SIZE@@@", "++");
+    paramInt = bu.getInt(this.jPB.getString(paramString, ""), 0);
     AppMethodBeat.o(147879);
     return paramInt;
   }
@@ -117,10 +116,10 @@ public final class h
   private void d(String paramString, b<? super String, z> paramb)
   {
     AppMethodBeat.i(147880);
-    p.h(paramString, "appId");
-    p.h(paramb, "block");
+    d.g.b.p.h(paramString, "appId");
+    d.g.b.p.h(paramb, "block");
     k localk = new k("^([1-9]\\d*__)?" + paramString + "__.+$");
-    paramString = this.jMp.allKeys();
+    paramString = this.jPB.allKeys();
     if (paramString == null) {
       paramString = new String[0];
     }
@@ -131,8 +130,8 @@ public final class h
       while (i < j)
       {
         Object localObject = paramString[i];
-        p.g(localObject, "key");
-        if (localk.aC((CharSequence)localObject)) {
+        d.g.b.p.g(localObject, "key");
+        if (localk.aB((CharSequence)localObject)) {
           paramb.invoke(localObject);
         }
         i += 1;
@@ -145,8 +144,8 @@ public final class h
   private final void g(int paramInt1, String paramString, int paramInt2)
   {
     AppMethodBeat.i(147870);
-    paramString = s.c(paramInt1, paramString, "@@@TOTAL@DATA@SIZE@@@", "++");
-    this.jMp.putString(paramString, String.valueOf(paramInt2));
+    paramString = t.c(paramInt1, paramString, "@@@TOTAL@DATA@SIZE@@@", "++");
+    this.jPB.putString(paramString, String.valueOf(paramInt2));
     AppMethodBeat.o(147870);
   }
   
@@ -162,7 +161,7 @@ public final class h
   private final boolean i(int paramInt1, String paramString, int paramInt2)
   {
     AppMethodBeat.i(147883);
-    if (W(paramInt1, paramString) + paramInt2 >= s.X(paramInt1, paramString))
+    if (W(paramInt1, paramString) + paramInt2 >= t.X(paramInt1, paramString))
     {
       AppMethodBeat.o(147883);
       return true;
@@ -179,18 +178,18 @@ public final class h
     return paramString1;
   }
   
-  public final void LW(String paramString)
+  public final void MA(String paramString)
   {
     AppMethodBeat.i(147877);
-    if (bt.isNullOrNil(paramString))
+    if (bu.isNullOrNil(paramString))
     {
       AppMethodBeat.o(147877);
       return;
     }
     if (paramString == null) {
-      p.gfZ();
+      d.g.b.p.gkB();
     }
-    int[] arrayOfInt = LX(paramString);
+    int[] arrayOfInt = MB(paramString);
     int j = arrayOfInt.length;
     int i = 0;
     while (i < j)
@@ -199,15 +198,15 @@ public final class h
       i += 1;
     }
     d(paramString, (b)new c(this));
-    s.b(paramString, this.jLP, this.jLQ);
+    t.b(paramString, this.jPb, this.jPc);
     AppMethodBeat.o(147877);
   }
   
-  public final int LY(String paramString)
+  public final int MC(String paramString)
   {
     AppMethodBeat.i(147882);
-    p.h(paramString, "appId");
-    int[] arrayOfInt = s.a(paramString, this.jLP, this.jLQ);
+    d.g.b.p.h(paramString, "appId");
+    int[] arrayOfInt = t.a(paramString, this.jPb, this.jPc);
     int k = arrayOfInt.length;
     int j = 0;
     int m;
@@ -220,14 +219,14 @@ public final class h
     return i;
   }
   
-  public final int Mh(String paramString)
+  public final int ML(String paramString)
   {
     AppMethodBeat.i(147881);
-    p.h(paramString, "appId");
+    d.g.b.p.h(paramString, "appId");
     y.d locald = new y.d();
-    locald.MLT = 0;
+    locald.NiW = 0;
     d(paramString, (b)new e(locald));
-    int i = locald.MLT;
+    int i = locald.NiW;
     AppMethodBeat.o(147881);
     return i;
   }
@@ -235,15 +234,15 @@ public final class h
   public final void U(int paramInt, String paramString)
   {
     AppMethodBeat.i(147876);
-    if (bt.isNullOrNil(paramString))
+    if (bu.isNullOrNil(paramString))
     {
       AppMethodBeat.o(147876);
       return;
     }
     if (paramInt == 0) {}
-    for (String str = p.C(paramString, "__");; str = String.valueOf(paramInt) + "__" + paramString + "__")
+    for (String str = d.g.b.p.C(paramString, "__");; str = String.valueOf(paramInt) + "__" + paramString + "__")
     {
-      String[] arrayOfString2 = this.jMp.allKeys();
+      String[] arrayOfString2 = this.jPB.allKeys();
       String[] arrayOfString1 = arrayOfString2;
       if (arrayOfString2 == null) {
         arrayOfString1 = new String[0];
@@ -253,18 +252,18 @@ public final class h
       while (i < j)
       {
         arrayOfString2 = arrayOfString1[i];
-        p.g(arrayOfString2, "key");
-        if (n.nz(arrayOfString2, str)) {
-          this.jMp.remove(arrayOfString2);
+        d.g.b.p.g(arrayOfString2, "key");
+        if (n.nF(arrayOfString2, str)) {
+          this.jPB.remove(arrayOfString2);
         }
         i += 1;
       }
     }
     if (paramString == null) {
-      p.gfZ();
+      d.g.b.p.gkB();
     }
     g(paramInt, paramString, 0);
-    s.b(paramString, paramInt, this.jLP, this.jLQ);
+    t.b(paramString, paramInt, this.jPb, this.jPc);
     AppMethodBeat.o(147876);
   }
   
@@ -273,7 +272,7 @@ public final class h
     AppMethodBeat.i(147878);
     if (paramString == null)
     {
-      paramString = (List)d.a.v.MKE;
+      paramString = (List)d.a.v.NhH;
       AppMethodBeat.o(147878);
       return new Object[] { paramString, Integer.valueOf(0), Integer.valueOf(0) };
     }
@@ -281,7 +280,7 @@ public final class h
     if (paramInt == 0) {}
     for (String str = paramString + "__";; str = String.valueOf(paramInt) + "__" + paramString + "__")
     {
-      String[] arrayOfString2 = this.jMp.allKeys();
+      String[] arrayOfString2 = this.jPB.allKeys();
       String[] arrayOfString1 = arrayOfString2;
       if (arrayOfString2 == null) {
         arrayOfString1 = new String[0];
@@ -291,49 +290,49 @@ public final class h
       while (i < j)
       {
         arrayOfString2 = arrayOfString1[i];
-        p.g(arrayOfString2, "key");
-        if (n.nz(arrayOfString2, str)) {
+        d.g.b.p.g(arrayOfString2, "key");
+        if (n.nF(arrayOfString2, str)) {
           localList.add(n.h(arrayOfString2, str, "", false));
         }
         i += 1;
       }
     }
     int i = W(paramInt, paramString);
-    paramInt = s.X(paramInt, paramString);
+    paramInt = t.X(paramInt, paramString);
     AppMethodBeat.o(147878);
     return new Object[] { localList, Integer.valueOf(i), Integer.valueOf(paramInt) };
   }
   
-  public final o.a c(int paramInt, String paramString1, String paramString2, String paramString3, String paramString4)
+  public final p.a c(int paramInt, String paramString1, String paramString2, String paramString3, String paramString4)
   {
     AppMethodBeat.i(147869);
-    p.h(paramString4, "dataType");
-    if ((bt.isNullOrNil(paramString1)) || (bt.isNullOrNil(paramString2)))
+    d.g.b.p.h(paramString4, "dataType");
+    if ((bu.isNullOrNil(paramString1)) || (bu.isNullOrNil(paramString2)))
     {
-      paramString1 = o.a.jMV;
+      paramString1 = p.a.jQi;
       AppMethodBeat.o(147869);
       return paramString1;
     }
     if (paramString1 == null) {
-      p.gfZ();
+      d.g.b.p.gkB();
     }
     if (paramString2 == null) {
-      p.gfZ();
+      d.g.b.p.gkB();
     }
-    String str = s.c(paramInt, paramString1, paramString2, "__");
-    int j = LZ(str);
-    int i = s.cq(paramString2, paramString3);
+    String str = t.c(paramInt, paramString1, paramString2, "__");
+    int j = MD(str);
+    int i = t.cr(paramString2, paramString3);
     j = i - j;
     if (i(paramInt, paramString1, j))
     {
-      paramString1 = o.a.jMX;
+      paramString1 = p.a.jQk;
       AppMethodBeat.o(147869);
       return paramString1;
     }
-    this.jMp.putString(str, t(paramString3, paramString4, i));
+    this.jPB.putString(str, t(paramString3, paramString4, i));
     h(paramInt, paramString1, j);
-    s.a(paramString1, paramInt, this.jLP, this.jLQ);
-    paramString1 = o.a.jMT;
+    t.a(paramString1, paramInt, this.jPb, this.jPc);
+    paramString1 = p.a.jQg;
     AppMethodBeat.o(147869);
     return paramString1;
   }
@@ -341,25 +340,25 @@ public final class h
   public final Object[] k(int paramInt, String paramString1, String paramString2)
   {
     AppMethodBeat.i(147868);
-    if ((bt.isNullOrNil(paramString1)) || (bt.isNullOrNil(paramString2)))
+    if ((bu.isNullOrNil(paramString1)) || (bu.isNullOrNil(paramString2)))
     {
-      paramString1 = o.a.jMV;
+      paramString1 = p.a.jQi;
       AppMethodBeat.o(147868);
       return new Object[] { paramString1 };
     }
     if (paramString1 == null) {
-      p.gfZ();
+      d.g.b.p.gkB();
     }
     if (paramString2 == null) {
-      p.gfZ();
+      d.g.b.p.gkB();
     }
-    paramString1 = s.c(paramInt, paramString1, paramString2, "__");
-    paramString2 = this.jMp.getString(paramString1, "");
+    paramString1 = t.c(paramInt, paramString1, paramString2, "__");
+    paramString2 = this.jPB.getString(paramString1, "");
     paramString1 = paramString2;
     if (paramString2 == null) {
       paramString1 = "";
     }
-    Object localObject = Mg(paramString1);
+    Object localObject = MK(paramString1);
     if (((CharSequence)((b)localObject).data).length() == 0)
     {
       paramInt = 1;
@@ -374,7 +373,7 @@ public final class h
       if (paramInt == 0) {
         break label217;
       }
-      if (((CharSequence)((b)localObject).jMs).length() != 0) {
+      if (((CharSequence)((b)localObject).jPE).length() != 0) {
         break label212;
       }
       paramInt = 1;
@@ -391,7 +390,7 @@ public final class h
       if (paramInt != 0) {
         break label222;
       }
-      paramString1 = o.a.jMT;
+      paramString1 = p.a.jQg;
       paramString2 = ((b)localObject).data;
       localObject = ((b)localObject).type;
       AppMethodBeat.o(147868);
@@ -404,52 +403,52 @@ public final class h
       break label151;
     }
     label222:
-    paramString1 = s.jNa;
+    paramString1 = t.jQn;
     AppMethodBeat.o(147868);
     return paramString1;
   }
   
-  public final o.a l(int paramInt, String paramString1, String paramString2)
+  public final p.a l(int paramInt, String paramString1, String paramString2)
   {
     AppMethodBeat.i(147875);
-    if ((bt.isNullOrNil(paramString1)) || (bt.isNullOrNil(paramString2)))
+    if ((bu.isNullOrNil(paramString1)) || (bu.isNullOrNil(paramString2)))
     {
-      paramString1 = o.a.jMV;
+      paramString1 = p.a.jQi;
       AppMethodBeat.o(147875);
       return paramString1;
     }
     if (paramString1 == null) {
-      p.gfZ();
+      d.g.b.p.gkB();
     }
     if (paramString2 == null) {
-      p.gfZ();
+      d.g.b.p.gkB();
     }
-    paramString2 = s.c(paramInt, paramString1, paramString2, "__");
-    int i = h(paramInt, paramString1, -LZ(paramString2));
-    this.jMp.remove(paramString2);
+    paramString2 = t.c(paramInt, paramString1, paramString2, "__");
+    int i = h(paramInt, paramString1, -MD(paramString2));
+    this.jPB.remove(paramString2);
     if (i <= 0) {
-      s.b(paramString1, paramInt, this.jLP, this.jLQ);
+      t.b(paramString1, paramInt, this.jPb, this.jPc);
     }
-    paramString1 = o.a.jMT;
+    paramString1 = p.a.jQg;
     AppMethodBeat.o(147875);
     return paramString1;
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/appstorage/AppBrandMMKVStorage$Companion;", "", "()V", "CACHE", "", "", "Lcom/tencent/mm/plugin/appbrand/appstorage/AppBrandMMKVStorage;", "NAME", "", "NORMAL_VALUE_TYPE_SEPARATOR", "TAG", "obtain", "uin", "onAccountRelease", "", "luggage-wechat-full-sdk_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/appstorage/AppBrandMMKVStorage$Companion;", "", "()V", "CACHE", "", "", "Lcom/tencent/mm/plugin/appbrand/appstorage/AppBrandMMKVStorage;", "NAME", "", "NORMAL_VALUE_TYPE_SEPARATOR", "TAG", "obtain", "uin", "onAccountRelease", "", "luggage-wechat-full-sdk_release"})
   public static final class a
   {
-    public static h sF(long paramLong)
+    public static h sS(long paramLong)
     {
       AppMethodBeat.i(147862);
-      synchronized (h.bby())
+      synchronized (h.bca())
       {
-        if (!h.bby().keySet().contains(Long.valueOf(paramLong))) {
-          h.bby().put(Long.valueOf(paramLong), new h(paramLong, (byte)0));
+        if (!h.bca().keySet().contains(Long.valueOf(paramLong))) {
+          h.bca().put(Long.valueOf(paramLong), new h(paramLong, (byte)0));
         }
-        z localz = z.MKo;
-        ??? = h.bby().get(Long.valueOf(paramLong));
+        z localz = z.Nhr;
+        ??? = h.bca().get(Long.valueOf(paramLong));
         if (??? == null) {
-          p.gfZ();
+          d.g.b.p.gkB();
         }
         ??? = (h)???;
         AppMethodBeat.o(147862);
@@ -458,11 +457,11 @@ public final class h
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/appstorage/AppBrandMMKVStorage$StorageInfo;", "", "data", "", "type", "size", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V", "getData", "()Ljava/lang/String;", "getSize", "getType", "isEmpty", "", "luggage-wechat-full-sdk_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/appstorage/AppBrandMMKVStorage$StorageInfo;", "", "data", "", "type", "size", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V", "getData", "()Ljava/lang/String;", "getSize", "getType", "isEmpty", "", "luggage-wechat-full-sdk_release"})
   public static final class b
   {
     final String data;
-    final String jMs;
+    final String jPE;
     final String type;
     
     public b(String paramString1, String paramString2, String paramString3)
@@ -470,12 +469,12 @@ public final class h
       AppMethodBeat.i(147863);
       this.data = paramString1;
       this.type = paramString2;
-      this.jMs = paramString3;
+      this.jPE = paramString3;
       AppMethodBeat.o(147863);
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "key", "", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "key", "", "invoke"})
   static final class c
     extends q
     implements b<String, z>
@@ -486,7 +485,7 @@ public final class h
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "key", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "key", "invoke"})
   static final class d
     extends q
     implements b<String, String>
@@ -497,7 +496,7 @@ public final class h
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "", "invoke"})
   static final class e
     extends q
     implements b<String, z>
@@ -508,7 +507,7 @@ public final class h
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<no name provided>", "", "key", "", "value", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<no name provided>", "", "key", "", "value", "invoke"})
   static final class f
     extends q
     implements m<String, String, z>

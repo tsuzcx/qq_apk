@@ -2,7 +2,7 @@ package com.tencent.luggage.xweb_ext.extendplugin.component.a;
 
 public final class a
 {
-  public String crF = "Success";
+  public String csi = "Success";
   public int errorCode = 0;
   
   public a() {}
@@ -10,7 +10,7 @@ public final class a
   public a(int paramInt, String paramString)
   {
     this.errorCode = paramInt;
-    this.crF = paramString;
+    this.csi = paramString;
   }
 }
 

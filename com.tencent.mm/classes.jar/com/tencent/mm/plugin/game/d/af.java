@@ -3,49 +3,49 @@ package com.tencent.mm.plugin.game.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class af
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public String ugx;
-  public String ugy;
+  public String Name;
+  public String urn;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(41731);
+    AppMethodBeat.i(41726);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.ugx != null) {
-        paramVarArgs.d(1, this.ugx);
+      if (this.urn != null) {
+        paramVarArgs.d(1, this.urn);
       }
-      if (this.ugy != null) {
-        paramVarArgs.d(2, this.ugy);
+      if (this.Name != null) {
+        paramVarArgs.d(2, this.Name);
       }
-      AppMethodBeat.o(41731);
+      AppMethodBeat.o(41726);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.ugx == null) {
+      if (this.urn == null) {
         break label274;
       }
     }
     label274:
-    for (paramInt = f.a.a.b.b.a.e(1, this.ugx) + 0;; paramInt = 0)
+    for (paramInt = f.a.a.b.b.a.e(1, this.urn) + 0;; paramInt = 0)
     {
       int i = paramInt;
-      if (this.ugy != null) {
-        i = paramInt + f.a.a.b.b.a.e(2, this.ugy);
+      if (this.Name != null) {
+        i = paramInt + f.a.a.b.b.a.e(2, this.Name);
       }
-      AppMethodBeat.o(41731);
+      AppMethodBeat.o(41726);
       return i;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
-        AppMethodBeat.o(41731);
+        AppMethodBeat.o(41726);
         return 0;
       }
       if (paramInt == 3)
@@ -55,18 +55,18 @@ public final class af
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(41731);
+          AppMethodBeat.o(41726);
           return -1;
         case 1: 
-          localaf.ugx = locala.NPN.readString();
-          AppMethodBeat.o(41731);
+          localaf.urn = locala.OmT.readString();
+          AppMethodBeat.o(41726);
           return 0;
         }
-        localaf.ugy = locala.NPN.readString();
-        AppMethodBeat.o(41731);
+        localaf.Name = locala.OmT.readString();
+        AppMethodBeat.o(41726);
         return 0;
       }
-      AppMethodBeat.o(41731);
+      AppMethodBeat.o(41726);
       return -1;
     }
   }

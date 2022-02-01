@@ -9,7 +9,7 @@ public final class as
   {
     AppMethodBeat.i(60826);
     p.h(paramab, "$this$isCustomTypeVariable");
-    bg localbg = paramab.gua();
+    bg localbg = paramab.gyC();
     paramab = localbg;
     if (!(localbg instanceof k)) {
       paramab = null;
@@ -17,7 +17,7 @@ public final class as
     paramab = (k)paramab;
     if (paramab != null)
     {
-      boolean bool = paramab.glV();
+      boolean bool = paramab.gqx();
       AppMethodBeat.o(60826);
       return bool;
     }
@@ -29,7 +29,7 @@ public final class as
   {
     AppMethodBeat.i(60827);
     p.h(paramab, "$this$getCustomTypeVariable");
-    bg localbg = paramab.gua();
+    bg localbg = paramab.gyC();
     paramab = localbg;
     if (!(localbg instanceof k)) {
       paramab = null;
@@ -37,7 +37,7 @@ public final class as
     paramab = (k)paramab;
     if (paramab != null)
     {
-      if (paramab.glV())
+      if (paramab.gqx())
       {
         AppMethodBeat.o(60827);
         return paramab;
@@ -53,7 +53,7 @@ public final class as
   {
     AppMethodBeat.i(60828);
     p.h(paramab, "$this$getSubtypeRepresentative");
-    Object localObject2 = paramab.gua();
+    Object localObject2 = paramab.gyC();
     Object localObject1 = localObject2;
     if (!(localObject2 instanceof ar)) {
       localObject1 = null;
@@ -62,7 +62,7 @@ public final class as
     localObject1 = paramab;
     if (localObject2 != null)
     {
-      localObject1 = ((ar)localObject2).gsX();
+      localObject1 = ((ar)localObject2).gxz();
       if (localObject1 != null) {
         break label58;
       }
@@ -80,7 +80,7 @@ public final class as
   {
     AppMethodBeat.i(60829);
     p.h(paramab, "$this$getSupertypeRepresentative");
-    Object localObject2 = paramab.gua();
+    Object localObject2 = paramab.gyC();
     Object localObject1 = localObject2;
     if (!(localObject2 instanceof ar)) {
       localObject1 = null;
@@ -89,7 +89,7 @@ public final class as
     localObject1 = paramab;
     if (localObject2 != null)
     {
-      localObject1 = ((ar)localObject2).gsY();
+      localObject1 = ((ar)localObject2).gxA();
       if (localObject1 != null) {
         break label58;
       }
@@ -108,7 +108,7 @@ public final class as
     AppMethodBeat.i(60830);
     p.h(paramab1, "first");
     p.h(paramab2, "second");
-    bg localbg = paramab1.gua();
+    bg localbg = paramab1.gyC();
     Object localObject = localbg;
     if (!(localbg instanceof ar)) {
       localObject = null;
@@ -119,7 +119,7 @@ public final class as
       bool = ((ar)localObject).ad(paramab2);
       if (!bool)
       {
-        localObject = paramab2.gua();
+        localObject = paramab2.gyC();
         paramab2 = (ab)localObject;
         if (!(localObject instanceof ar)) {
           paramab2 = null;
@@ -148,7 +148,7 @@ public final class as
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.m.as
  * JD-Core Version:    0.7.0.1
  */

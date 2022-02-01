@@ -3,10 +3,10 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class dx
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public String FvV;
-  public String FvW;
+  public String FOt;
+  public String FOu;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -14,35 +14,35 @@ public final class dx
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.FvV != null) {
-        paramVarArgs.d(1, this.FvV);
+      if (this.FOt != null) {
+        paramVarArgs.d(1, this.FOt);
       }
-      if (this.FvW != null) {
-        paramVarArgs.d(2, this.FvW);
+      if (this.FOu != null) {
+        paramVarArgs.d(2, this.FOu);
       }
       AppMethodBeat.o(32115);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.FvV == null) {
+      if (this.FOt == null) {
         break label282;
       }
     }
     label282:
-    for (paramInt = f.a.a.b.b.a.e(1, this.FvV) + 0;; paramInt = 0)
+    for (paramInt = f.a.a.b.b.a.e(1, this.FOt) + 0;; paramInt = 0)
     {
       int i = paramInt;
-      if (this.FvW != null) {
-        i = paramInt + f.a.a.b.b.a.e(2, this.FvW);
+      if (this.FOu != null) {
+        i = paramInt + f.a.a.b.b.a.e(2, this.FOu);
       }
       AppMethodBeat.o(32115);
       return i;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
         AppMethodBeat.o(32115);
@@ -58,11 +58,11 @@ public final class dx
           AppMethodBeat.o(32115);
           return -1;
         case 1: 
-          localdx.FvV = locala.NPN.readString();
+          localdx.FOt = locala.OmT.readString();
           AppMethodBeat.o(32115);
           return 0;
         }
-        localdx.FvW = locala.NPN.readString();
+        localdx.FOu = locala.OmT.readString();
         AppMethodBeat.o(32115);
         return 0;
       }

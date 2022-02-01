@@ -13,12 +13,12 @@ public abstract interface f
   public static final class a
     implements f
   {
-    public static final a Ndy;
+    public static final a NAD;
     
     static
     {
       AppMethodBeat.i(57672);
-      Ndy = new a();
+      NAD = new a();
       AppMethodBeat.o(57672);
     }
     
@@ -34,7 +34,7 @@ public abstract interface f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.d.a.a.f
  * JD-Core Version:    0.7.0.1
  */

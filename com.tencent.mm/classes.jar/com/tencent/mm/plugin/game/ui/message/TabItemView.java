@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.cb.a;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.game.api.e;
 import com.tencent.mm.plugin.game.api.f;
@@ -20,10 +21,10 @@ import com.tencent.mm.plugin.game.model.s;
 public class TabItemView
   extends LinearLayout
 {
-  private int dlp;
-  private TextView uva;
-  private TextView uvb;
-  private View uvc;
+  private int dmr;
+  private TextView uGA;
+  private View uGB;
+  private TextView uGz;
   
   public TabItemView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -48,10 +49,15 @@ public class TabItemView
     String str = paramAttributeSet.getString(0);
     paramAttributeSet.recycle();
     LayoutInflater.from(paramContext).inflate(2131494353, this, true);
-    this.uva = ((TextView)findViewById(2131305601));
-    this.uvb = ((TextView)findViewById(2131305600));
-    this.uvc = findViewById(2131305599);
-    this.uva.setText(str);
+    this.uGz = ((TextView)findViewById(2131305601));
+    this.uGA = ((TextView)findViewById(2131305600));
+    this.uGB = findViewById(2131305599);
+    this.uGz.setText(str);
+    if (a.ir(getContext()))
+    {
+      this.uGz.setTextSize(0, a.ay(getContext(), 2131165414) * a.ip(getContext()));
+      this.uGA.setTextSize(0, a.ay(getContext(), 2131165441) * a.ip(getContext()));
+    }
     AppMethodBeat.o(183910);
   }
   
@@ -60,27 +66,27 @@ public class TabItemView
     AppMethodBeat.i(183909);
     if (paramBoolean)
     {
-      this.uva.setTextColor(getResources().getColor(2131100711));
-      this.uvc.setVisibility(0);
-      this.uvb.setVisibility(8);
-      ((f)g.ab(f.class)).cWH().execSQL("GameRawMessage", "update GameRawMessage set isRead=1 where showType=".concat(String.valueOf(this.dlp)));
-      ((e)g.ab(e.class)).cWG();
-      int i = this.dlp;
-      o localo = r.cZb();
+      this.uGz.setTextColor(getResources().getColor(2131100711));
+      this.uGB.setVisibility(0);
+      this.uGA.setVisibility(8);
+      ((f)g.ab(f.class)).cZl().execSQL("GameRawMessage", "update GameRawMessage set isRead=1 where showType=".concat(String.valueOf(this.dmr)));
+      ((e)g.ab(e.class)).cZk();
+      int i = this.dmr;
+      o localo = r.dbL();
       if ((localo != null) && (localo.field_showType == i)) {
-        r.cZc();
+        r.dbM();
       }
       AppMethodBeat.o(183909);
       return;
     }
-    this.uva.setTextColor(getResources().getColor(2131100212));
-    this.uvc.setVisibility(8);
+    this.uGz.setTextColor(getResources().getColor(2131100212));
+    this.uGB.setVisibility(8);
     AppMethodBeat.o(183909);
   }
   
   public void setShowType(int paramInt)
   {
-    this.dlp = paramInt;
+    this.dmr = paramInt;
   }
   
   public void setUnreadCount(int paramInt)
@@ -88,24 +94,24 @@ public class TabItemView
     AppMethodBeat.i(183908);
     if (paramInt > 0)
     {
-      this.uvb.setVisibility(0);
+      this.uGA.setVisibility(0);
       if (paramInt < 100)
       {
-        this.uvb.setText(String.valueOf(paramInt));
+        this.uGA.setText(String.valueOf(paramInt));
         AppMethodBeat.o(183908);
         return;
       }
-      this.uvb.setText(2131759956);
+      this.uGA.setText(2131759956);
       AppMethodBeat.o(183908);
       return;
     }
-    this.uvb.setVisibility(8);
+    this.uGA.setVisibility(8);
     AppMethodBeat.o(183908);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.message.TabItemView
  * JD-Core Version:    0.7.0.1
  */

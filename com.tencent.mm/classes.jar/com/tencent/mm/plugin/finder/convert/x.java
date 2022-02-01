@@ -13,15 +13,15 @@ import com.tencent.mm.plugin.finder.loader.i.a;
 import com.tencent.mm.plugin.finder.loader.n;
 import com.tencent.mm.plugin.finder.model.BaseFinderFeed;
 import com.tencent.mm.plugin.finder.storage.FinderItem;
-import com.tencent.mm.protocal.protobuf.bvf;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.bvz;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.view.recyclerview.e;
 import d.a.j;
 import d.g.b.p;
 import d.l;
 import java.util.List;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/convert/FinderFeedVideoRoundCornerConvert;", "Lcom/tencent/mm/plugin/finder/convert/FinderFeedRoundCornerConvert;", "()V", "onBindViewHolder", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "position", "", "type", "isHotPatch", "", "payloads", "", "", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/convert/FinderFeedVideoRoundCornerConvert;", "Lcom/tencent/mm/plugin/finder/convert/FinderFeedRoundCornerConvert;", "()V", "onBindViewHolder", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "position", "", "type", "isHotPatch", "", "payloads", "", "", "plugin-finder_release"})
 public class x
   extends r
 {
@@ -36,11 +36,11 @@ public class x
     p.h(parame, "holder");
     p.h(paramBaseFinderFeed, "item");
     super.a(parame, paramBaseFinderFeed, paramInt1, paramInt2, paramBoolean, paramList);
-    paramList = (ImageView)parame.Gd(2131302222);
+    paramList = (ImageView)parame.GD(2131302222);
     p.g(paramList, "mediaIcon");
     paramList.setVisibility(8);
-    paramList = (bvf)j.jc((List)paramBaseFinderFeed.feedObject.getMediaList());
-    paramBaseFinderFeed = (ImageView)parame.Gd(2131305798);
+    paramList = (bvz)j.jl((List)paramBaseFinderFeed.feedObject.getMediaList());
+    paramBaseFinderFeed = (ImageView)parame.GD(2131305798);
     p.g(paramBaseFinderFeed, "thumbIv");
     Object localObject1 = paramBaseFinderFeed.getLayoutParams();
     Object localObject2 = parame.getContext();
@@ -62,27 +62,27 @@ public class x
       ((ViewGroup.LayoutParams)localObject1).height = paramInt1;
       paramBaseFinderFeed.setLayoutParams((ViewGroup.LayoutParams)localObject1);
     }
-    if (bt.isNullOrNil(paramList.coverUrl))
+    if (bu.isNullOrNil(paramList.coverUrl))
     {
-      parame = new g(paramList, com.tencent.mm.plugin.finder.storage.r.syE);
-      paramList = i.sja;
-      paramList = i.cCB();
-      localObject1 = i.sja;
-      paramList.a(parame, paramBaseFinderFeed, i.a(i.a.sjb));
+      parame = new g(paramList, com.tencent.mm.plugin.finder.storage.r.sJv);
+      paramList = i.srW;
+      paramList = i.cEn();
+      localObject1 = i.srW;
+      paramList.a(parame, paramBaseFinderFeed, i.a(i.a.srX));
       AppMethodBeat.o(165436);
       return;
     }
-    parame = new n(paramList, com.tencent.mm.plugin.finder.storage.r.syD);
-    paramList = i.sja;
-    paramList = i.cCB();
-    localObject1 = i.sja;
-    paramList.a(parame, paramBaseFinderFeed, i.a(i.a.sjb));
+    parame = new n(paramList, com.tencent.mm.plugin.finder.storage.r.sJu);
+    paramList = i.srW;
+    paramList = i.cEn();
+    localObject1 = i.srW;
+    paramList.a(parame, paramBaseFinderFeed, i.a(i.a.srX));
     AppMethodBeat.o(165436);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.convert.x
  * JD-Core Version:    0.7.0.1
  */

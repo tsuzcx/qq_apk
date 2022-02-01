@@ -7,13 +7,13 @@ final class c
 {
   public static final class q
   {
-    private static volatile a iHh = null;
+    private static volatile a iKa = null;
     
     public static void c0(a parama)
     {
       try
       {
-        iHh = parama;
+        iKa = parama;
         return;
       }
       finally
@@ -31,9 +31,9 @@ final class c
       //   2: monitorenter
       //   3: ldc 22
       //   5: invokestatic 28	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-      //   8: getstatic 13	com/tencent/mm/normsg/c$q:iHh	Lcom/tencent/mm/normsg/a;
+      //   8: getstatic 13	com/tencent/mm/normsg/c$q:iKa	Lcom/tencent/mm/normsg/a;
       //   11: ifnull +22 -> 33
-      //   14: getstatic 13	com/tencent/mm/normsg/c$q:iHh	Lcom/tencent/mm/normsg/a;
+      //   14: getstatic 13	com/tencent/mm/normsg/c$q:iKa	Lcom/tencent/mm/normsg/a;
       //   17: invokeinterface 33 1 0
       //   22: astore_0
       //   23: ldc 22
@@ -65,9 +65,9 @@ final class c
     private static String c10()
     {
       AppMethodBeat.i(62435);
-      if (iHh != null)
+      if (iKa != null)
       {
-        String str = iHh.getDeviceId();
+        String str = iKa.getDeviceId();
         AppMethodBeat.o(62435);
         return str;
       }
@@ -78,9 +78,9 @@ final class c
     private static boolean c11(String paramString, byte[] paramArrayOfByte)
     {
       AppMethodBeat.i(62436);
-      if (iHh != null)
+      if (iKa != null)
       {
-        boolean bool = iHh.k(paramString, paramArrayOfByte);
+        boolean bool = iKa.k(paramString, paramArrayOfByte);
         AppMethodBeat.o(62436);
         return bool;
       }
@@ -91,9 +91,9 @@ final class c
     private static byte[] c12(String paramString)
     {
       AppMethodBeat.i(62437);
-      if (iHh != null)
+      if (iKa != null)
       {
-        paramString = iHh.Ix(paramString);
+        paramString = iKa.IZ(paramString);
         AppMethodBeat.o(62437);
         return paramString;
       }
@@ -104,8 +104,8 @@ final class c
     private static void c13(String paramString)
     {
       AppMethodBeat.i(62438);
-      if (iHh != null) {
-        iHh.Iy(paramString);
+      if (iKa != null) {
+        iKa.Ja(paramString);
       }
       AppMethodBeat.o(62438);
     }
@@ -113,9 +113,9 @@ final class c
     private static String c14()
     {
       AppMethodBeat.i(62439);
-      if (iHh != null)
+      if (iKa != null)
       {
-        String str = iHh.aaC();
+        String str = iKa.aaL();
         AppMethodBeat.o(62439);
         return str;
       }
@@ -126,9 +126,9 @@ final class c
     private static String c15(Context paramContext, String paramString)
     {
       AppMethodBeat.i(62440);
-      if (iHh != null)
+      if (iKa != null)
       {
-        paramContext = iHh.G(paramContext, paramString);
+        paramContext = iKa.H(paramContext, paramString);
         AppMethodBeat.o(62440);
         return paramContext;
       }
@@ -138,14 +138,27 @@ final class c
     
     private static boolean c16(Context paramContext)
     {
-      AppMethodBeat.i(192506);
-      if (iHh != null)
+      AppMethodBeat.i(194033);
+      if (iKa != null)
       {
-        boolean bool = iHh.cQ(paramContext);
-        AppMethodBeat.o(192506);
+        boolean bool = iKa.cS(paramContext);
+        AppMethodBeat.o(194033);
         return bool;
       }
-      AppMethodBeat.o(192506);
+      AppMethodBeat.o(194033);
+      return false;
+    }
+    
+    private static boolean c17()
+    {
+      AppMethodBeat.i(194034);
+      if (iKa != null)
+      {
+        boolean bool = iKa.aPY();
+        AppMethodBeat.o(194034);
+        return bool;
+      }
+      AppMethodBeat.o(194034);
       return false;
     }
     
@@ -155,14 +168,14 @@ final class c
       // Byte code:
       //   0: ldc 2
       //   2: monitorenter
-      //   3: ldc 81
+      //   3: ldc 87
       //   5: invokestatic 28	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-      //   8: getstatic 13	com/tencent/mm/normsg/c$q:iHh	Lcom/tencent/mm/normsg/a;
+      //   8: getstatic 13	com/tencent/mm/normsg/c$q:iKa	Lcom/tencent/mm/normsg/a;
       //   11: ifnull +22 -> 33
-      //   14: getstatic 13	com/tencent/mm/normsg/c$q:iHh	Lcom/tencent/mm/normsg/a;
-      //   17: invokeinterface 84 1 0
+      //   14: getstatic 13	com/tencent/mm/normsg/c$q:iKa	Lcom/tencent/mm/normsg/a;
+      //   17: invokeinterface 90 1 0
       //   22: lstore_0
-      //   23: ldc 81
+      //   23: ldc 87
       //   25: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   28: ldc 2
       //   30: monitorexit
@@ -170,7 +183,7 @@ final class c
       //   32: lreturn
       //   33: lconst_0
       //   34: lstore_0
-      //   35: ldc 81
+      //   35: ldc 87
       //   37: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   40: goto -12 -> 28
       //   43: astore_2
@@ -193,8 +206,8 @@ final class c
       try
       {
         AppMethodBeat.i(62429);
-        if (iHh != null) {
-          iHh.O(paramInt, paramString);
+        if (iKa != null) {
+          iKa.O(paramInt, paramString);
         }
         AppMethodBeat.o(62429);
         return;
@@ -207,8 +220,8 @@ final class c
       try
       {
         AppMethodBeat.i(62430);
-        if (iHh != null) {
-          iHh.N(paramInt1, paramInt2, paramInt3);
+        if (iKa != null) {
+          iKa.N(paramInt1, paramInt2, paramInt3);
         }
         AppMethodBeat.o(62430);
         return;
@@ -221,8 +234,8 @@ final class c
       try
       {
         AppMethodBeat.i(62431);
-        if (iHh != null) {
-          iHh.w(paramInt1, paramInt2, paramInt3, paramInt4);
+        if (iKa != null) {
+          iKa.w(paramInt1, paramInt2, paramInt3, paramInt4);
         }
         AppMethodBeat.o(62431);
         return;
@@ -241,14 +254,14 @@ final class c
       // Byte code:
       //   0: ldc 2
       //   2: monitorenter
-      //   3: ldc 105
+      //   3: ldc 111
       //   5: invokestatic 28	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-      //   8: getstatic 13	com/tencent/mm/normsg/c$q:iHh	Lcom/tencent/mm/normsg/a;
+      //   8: getstatic 13	com/tencent/mm/normsg/c$q:iKa	Lcom/tencent/mm/normsg/a;
       //   11: ifnull +22 -> 33
-      //   14: getstatic 13	com/tencent/mm/normsg/c$q:iHh	Lcom/tencent/mm/normsg/a;
-      //   17: invokeinterface 108 1 0
+      //   14: getstatic 13	com/tencent/mm/normsg/c$q:iKa	Lcom/tencent/mm/normsg/a;
+      //   17: invokeinterface 114 1 0
       //   22: astore_0
-      //   23: ldc 105
+      //   23: ldc 111
       //   25: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   28: ldc 2
       //   30: monitorexit
@@ -256,7 +269,7 @@ final class c
       //   32: areturn
       //   33: ldc 38
       //   35: astore_0
-      //   36: ldc 105
+      //   36: ldc 111
       //   38: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   41: goto -13 -> 28
       //   44: astore_0
@@ -277,9 +290,9 @@ final class c
     private static boolean c8()
     {
       AppMethodBeat.i(62433);
-      if (iHh != null)
+      if (iKa != null)
       {
-        boolean bool = iHh.aPy();
+        boolean bool = iKa.aPW();
         AppMethodBeat.o(62433);
         return bool;
       }
@@ -290,9 +303,9 @@ final class c
     private static String c9()
     {
       AppMethodBeat.i(62434);
-      if (iHh != null)
+      if (iKa != null)
       {
-        String str = iHh.aPz();
+        String str = iKa.aPX();
         AppMethodBeat.o(62434);
         return str;
       }

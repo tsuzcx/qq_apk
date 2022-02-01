@@ -5,28 +5,28 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cc.a;
+import com.tencent.mm.cb.a;
 import com.tencent.mm.plugin.fav.a.y;
 import com.tencent.mm.plugin.fav.ui.o;
-import com.tencent.mm.protocal.protobuf.akd;
-import com.tencent.mm.protocal.protobuf.akf;
-import com.tencent.mm.protocal.protobuf.akj;
-import com.tencent.mm.protocal.protobuf.akm;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.akn;
+import com.tencent.mm.protocal.protobuf.akp;
+import com.tencent.mm.protocal.protobuf.akt;
+import com.tencent.mm.protocal.protobuf.akw;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.MMImageView;
 
 public final class n
   extends b
 {
-  private final String rDO;
-  private final int rDf;
+  private final String rLZ;
+  private final int rLq;
   
   public n(o paramo)
   {
     super(paramo);
     AppMethodBeat.i(107486);
-    this.rDf = a.ax(paramo.context, 2131165358);
-    this.rDO = "";
+    this.rLq = a.ax(paramo.context, 2131165358);
+    this.rLZ = "";
     AppMethodBeat.o(107486);
   }
   
@@ -38,49 +38,49 @@ public final class n
     {
       paramViewGroup = new a();
       paramView = a(View.inflate(localContext, 2131493955, null), paramViewGroup, paramg);
-      paramViewGroup.rzS = ((MMImageView)paramView.findViewById(2131299794));
-      paramViewGroup.iVq = ((TextView)paramView.findViewById(2131299848));
-      paramViewGroup.iCV = ((TextView)paramView.findViewById(2131299778));
-      paramViewGroup.rDq = ((TextView)paramView.findViewById(2131299825));
-      paramViewGroup.rDq.setVisibility(0);
+      paramViewGroup.rId = ((MMImageView)paramView.findViewById(2131299794));
+      paramViewGroup.iYj = ((TextView)paramView.findViewById(2131299848));
+      paramViewGroup.iFO = ((TextView)paramView.findViewById(2131299778));
+      paramViewGroup.rLB = ((TextView)paramView.findViewById(2131299825));
+      paramViewGroup.rLB.setVisibility(0);
       a(paramViewGroup, paramg);
-      akm localakm = paramg.field_favProto.GiA;
-      if (localakm == null) {
+      akw localakw = paramg.field_favProto.GBj;
+      if (localakw == null) {
         break label218;
       }
-      paramViewGroup.iVq.setText(bt.nullAsNil(localakm.title));
-      paramViewGroup.iCV.setText(bt.nullAsNil(localakm.desc));
+      paramViewGroup.iYj.setText(bu.nullAsNil(localakw.title));
+      paramViewGroup.iFO.setText(bu.nullAsNil(localakw.desc));
     }
     for (;;)
     {
-      paramViewGroup.rDq.setText(bt.bI(com.tencent.mm.plugin.fav.a.b.getAppName(localContext, paramg.field_favProto.Gjv.appId), this.rDO));
-      this.rvp.a(paramViewGroup.rzS, null, paramg, 2131689577, this.rDf, this.rDf);
+      paramViewGroup.rLB.setText(bu.bI(com.tencent.mm.plugin.fav.a.b.getAppName(localContext, paramg.field_favProto.GCe.appId), this.rLZ));
+      this.rDB.a(paramViewGroup.rId, null, paramg, 2131689577, this.rLq, this.rLq);
       AppMethodBeat.o(107487);
       return paramView;
       paramViewGroup = (a)paramView.getTag();
       break;
       label218:
-      paramViewGroup.iVq.setText("");
-      paramViewGroup.iCV.setText("");
+      paramViewGroup.iYj.setText("");
+      paramViewGroup.iFO.setText("");
     }
   }
   
-  public final void a(View paramView, akf paramakf)
+  public final void a(View paramView, akp paramakp)
   {
     AppMethodBeat.i(107488);
     a locala = (a)paramView.getTag();
     paramView = paramView.getContext();
-    ((y)com.tencent.mm.kernel.g.ab(y.class)).a(paramView, locala.rtA, paramakf);
+    ((y)com.tencent.mm.kernel.g.ab(y.class)).a(paramView, locala.rBM, paramakp);
     AppMethodBeat.o(107488);
   }
   
   public static final class a
     extends b.b
   {
-    TextView iCV;
-    TextView iVq;
-    TextView rDq;
-    MMImageView rzS;
+    TextView iFO;
+    TextView iYj;
+    MMImageView rId;
+    TextView rLB;
   }
 }
 

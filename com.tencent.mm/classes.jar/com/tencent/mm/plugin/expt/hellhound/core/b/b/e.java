@@ -6,7 +6,7 @@ import com.tencent.mm.hellhoundlib.a.c;
 import com.tencent.mm.plugin.expt.hellhound.core.a.b.a;
 import com.tencent.mm.plugin.expt.hellhound.core.a.b.a.a;
 import com.tencent.mm.plugin.expt.hellhound.core.d;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.ui.MMFragmentActivity;
 import d.g.b.p;
 import d.l;
@@ -17,43 +17,43 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/expt/hellhound/core/v2/fragment/FragmentLauncherUIMonitor;", "", "callback", "Lcom/tencent/mm/plugin/expt/hellhound/core/IFragmentLifecycleCallback;", "(Lcom/tencent/mm/plugin/expt/hellhound/core/IFragmentLifecycleCallback;)V", "launcherUIClass", "Ljava/lang/Class;", "mActivityRef", "Ljava/lang/ref/WeakReference;", "Lcom/tencent/mm/ui/MMFragmentActivity;", "mCallback", "mChatProxy", "Lcom/tencent/mm/plugin/expt/hellhound/core/v2/fragment/ChatUIFragmentProxy;", "mHasScrollChanged", "", "mLastFragmentIndex", "", "mListener", "Lcom/tencent/mm/hellhoundlib/method/IHellMethodMonitorCallback;", "methodInfoMap", "Ljava/util/HashMap;", "", "", "", "Landroid/util/Pair;", "callbackMMFragmentActivityWhenResume", "", "mmfActivity", "timestamp", "", "doMonitor4MMFragmentActivity", "mmfa", "doMonitorViewPagerEvent", "fragmentPauseCallback", "fa", "Landroid/support/v4/app/FragmentActivity;", "monitor", "launcherUI", "onChatAction", "msgType", "onPageScrollStateChanged", "state", "onPageSelected", "position", "onSwipEvent", "lf", "Landroid/support/v4/app/Fragment;", "unmonitor", "Companion", "MethodListener", "plugin-expt_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/expt/hellhound/core/v2/fragment/FragmentLauncherUIMonitor;", "", "callback", "Lcom/tencent/mm/plugin/expt/hellhound/core/IFragmentLifecycleCallback;", "(Lcom/tencent/mm/plugin/expt/hellhound/core/IFragmentLifecycleCallback;)V", "launcherUIClass", "Ljava/lang/Class;", "mActivityRef", "Ljava/lang/ref/WeakReference;", "Lcom/tencent/mm/ui/MMFragmentActivity;", "mCallback", "mChatProxy", "Lcom/tencent/mm/plugin/expt/hellhound/core/v2/fragment/ChatUIFragmentProxy;", "mHasScrollChanged", "", "mLastFragmentIndex", "", "mListener", "Lcom/tencent/mm/hellhoundlib/method/IHellMethodMonitorCallback;", "methodInfoMap", "Ljava/util/HashMap;", "", "", "", "Landroid/util/Pair;", "callbackMMFragmentActivityWhenResume", "", "mmfActivity", "timestamp", "", "doMonitor4MMFragmentActivity", "mmfa", "doMonitorViewPagerEvent", "fragmentPauseCallback", "fa", "Landroid/support/v4/app/FragmentActivity;", "monitor", "launcherUI", "onChatAction", "msgType", "onPageScrollStateChanged", "state", "onPageSelected", "position", "onSwipEvent", "lf", "Landroid/support/v4/app/Fragment;", "unmonitor", "Companion", "MethodListener", "plugin-expt_release"})
 public final class e
 {
-  public static final e.a qRR;
+  public static final e.a qZP;
   WeakReference<MMFragmentActivity> mActivityRef;
-  d qRK;
-  Class<?> qRL;
-  b qRM;
-  private int qRN;
-  c qRO;
-  final HashMap<String, Map<String, List<Pair<String, String>>>> qRP;
-  private boolean qRQ;
+  d qZI;
+  Class<?> qZJ;
+  b qZK;
+  private int qZL;
+  c qZM;
+  final HashMap<String, Map<String, List<Pair<String, String>>>> qZN;
+  private boolean qZO;
   
   static
   {
     AppMethodBeat.i(122562);
-    qRR = new e.a((byte)0);
+    qZP = new e.a((byte)0);
     AppMethodBeat.o(122562);
   }
   
   public e(d paramd)
   {
     AppMethodBeat.i(122561);
-    this.qRP = new HashMap();
-    this.qRK = paramd;
-    this.qRO = ((c)new b());
+    this.qZN = new HashMap();
+    this.qZI = paramd;
+    this.qZM = ((c)new b());
     try
     {
-      paramd = a.qRc;
-      this.qRL = a.a.getClass("com.tencent.mm.ui.LauncherUI");
-      this.qRM = new b(this.qRK);
+      paramd = a.qZa;
+      this.qZJ = a.a.getClass("com.tencent.mm.ui.LauncherUI");
+      this.qZK = new b(this.qZI);
       paramd = new ArrayList();
       paramd.add(Pair.create("onPageSelected", "(I)V"));
       paramd.add(Pair.create("onPageScrollStateChanged", "(I)V"));
       HashMap localHashMap = new HashMap();
       ((Map)localHashMap).put("android/support/v4/view/ViewPager$OnPageChangeListener", paramd);
-      ((Map)this.qRP).put("com/tencent/mm/ui/MainTabUI$TabsAdapter", localHashMap);
+      ((Map)this.qZN).put("com/tencent/mm/ui/MainTabUI$TabsAdapter", localHashMap);
       AppMethodBeat.o(122561);
       return;
     }
@@ -61,12 +61,12 @@ public final class e
     {
       for (;;)
       {
-        ad.printErrStackTrace("HABBYGE-MALI.FragmentLauncherUIMonitor", (Throwable)paramd, "FragmentLauncherUIMonitor", new Object[0]);
+        ae.printErrStackTrace("HABBYGE-MALI.FragmentLauncherUIMonitor", (Throwable)paramd, "FragmentLauncherUIMonitor", new Object[0]);
       }
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/expt/hellhound/core/v2/fragment/FragmentLauncherUIMonitor$MethodListener;", "Lcom/tencent/mm/hellhoundlib/method/IHellMethodMonitorCallback;", "(Lcom/tencent/mm/plugin/expt/hellhound/core/v2/fragment/FragmentLauncherUIMonitor;)V", "runOnEnter", "", "className", "", "methodName", "methodDec", "caller", "", "args", "", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V", "runOnExit", "retVal", "plugin-expt_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/expt/hellhound/core/v2/fragment/FragmentLauncherUIMonitor$MethodListener;", "Lcom/tencent/mm/hellhoundlib/method/IHellMethodMonitorCallback;", "(Lcom/tencent/mm/plugin/expt/hellhound/core/v2/fragment/FragmentLauncherUIMonitor;)V", "runOnEnter", "", "className", "", "methodName", "methodDec", "caller", "", "args", "", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V", "runOnExit", "retVal", "plugin-expt_release"})
   final class b
     implements c
   {
@@ -93,7 +93,7 @@ public final class e
           {
             if (p.i(paramString2, "onPageSelected"))
             {
-              paramString1 = this.qRS;
+              paramString1 = this.qZQ;
               paramString2 = paramArrayOfObject[0];
               if (paramString2 == null)
               {
@@ -112,7 +112,7 @@ public final class e
             }
             if (p.i(paramString2, "onPageScrollStateChanged"))
             {
-              paramString1 = this.qRS;
+              paramString1 = this.qZQ;
               paramString2 = paramArrayOfObject[0];
               if (paramString2 == null)
               {
@@ -131,7 +131,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.hellhound.core.b.b.e
  * JD-Core Version:    0.7.0.1
  */

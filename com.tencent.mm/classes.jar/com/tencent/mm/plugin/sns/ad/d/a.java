@@ -1,10 +1,12 @@
 package com.tencent.mm.plugin.sns.ad.d;
 
-public final class a
+public abstract interface a
 {
-  public int yXB;
-  public int yXC;
-  public int yXD;
+  public abstract int dHw();
+  
+  public abstract void f(int paramInt, Object... paramVarArgs);
+  
+  public abstract void v(Object... paramVarArgs);
 }
 
 

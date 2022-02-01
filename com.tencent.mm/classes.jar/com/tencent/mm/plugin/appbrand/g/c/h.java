@@ -16,49 +16,79 @@ public class h
 {
   private static final String TAG;
   private boolean enabled;
-  private rx.f.b kea;
-  private ReentrantReadWriteLock keb;
-  private Lock kec;
-  private e ked;
-  private Pattern kee;
-  private Set<String> kef;
+  private rx.f.b khr;
+  private ReentrantReadWriteLock khs;
+  private Lock kht;
+  private e khu;
+  private Pattern khv;
+  private Set<String> khw;
   private int port;
   
   static
   {
     AppMethodBeat.i(159009);
-    TAG = h.class.getSimpleName();
-    AppMethodBeat.o(159009);
+    if (!h.class.desiredAssertionStatus()) {}
+    for (boolean bool = true;; bool = false)
+    {
+      $assertionsDisabled = bool;
+      TAG = h.class.getSimpleName();
+      AppMethodBeat.o(159009);
+      return;
+    }
   }
   
   private h()
   {
     AppMethodBeat.i(158998);
-    this.kea = new rx.f.b();
-    this.keb = new ReentrantReadWriteLock(true);
-    this.kec = this.keb.writeLock();
+    this.khr = new rx.f.b();
+    this.khs = new ReentrantReadWriteLock(true);
+    this.kht = this.khs.writeLock();
     this.enabled = false;
     this.port = -1;
-    this.kef = new HashSet();
-    this.kee = Pattern.compile("uuid:([a-fA-F\\d]{8}(-[a-fA-F\\d]{4}){3}-[a-fA-F\\d]{12})");
+    this.khw = new HashSet();
+    this.khv = Pattern.compile("uuid:([a-fA-F\\d]{8}(-[a-fA-F\\d]{4}){3}-[a-fA-F\\d]{12})");
     AppMethodBeat.o(158998);
   }
   
-  private String Bt(String paramString)
+  private String BV(String paramString)
   {
-    Object localObject = null;
+    String str = null;
     AppMethodBeat.i(159006);
     if (TextUtils.isEmpty(paramString))
     {
       AppMethodBeat.o(159006);
       return null;
     }
-    Matcher localMatcher = this.kee.matcher(paramString);
-    paramString = localObject;
-    if (localMatcher.find()) {
-      paramString = localMatcher.group(1);
+    Object localObject = this.khv.matcher(paramString);
+    if (((Matcher)localObject).find()) {
+      str = ((Matcher)localObject).group(1);
+    }
+    localObject = str;
+    if (str == null)
+    {
+      if ((!$assertionsDisabled) && (paramString == null))
+      {
+        paramString = new AssertionError();
+        AppMethodBeat.o(159006);
+        throw paramString;
+      }
+      localObject = OS(paramString);
     }
     AppMethodBeat.o(159006);
+    return localObject;
+  }
+  
+  private static String OS(String paramString)
+  {
+    AppMethodBeat.i(208242);
+    com.tencent.mm.plugin.appbrand.g.a.e(TAG, "fallbackGetUuid: ".concat(String.valueOf(paramString)));
+    if (paramString.startsWith("uuid:"))
+    {
+      paramString = paramString.substring(5);
+      AppMethodBeat.o(208242);
+      return paramString;
+    }
+    AppMethodBeat.o(208242);
     return paramString;
   }
   
@@ -96,27 +126,27 @@ public class h
       AppMethodBeat.o(159005);
       return false;
     }
-    if ((this.kef.size() > 0) && (this.kef.contains(paramb)))
+    if ((this.khw.size() > 0) && (this.khw.contains(paramb)))
     {
       AppMethodBeat.o(159005);
       return false;
     }
-    str1 = Bt(str2);
+    str1 = BV(str2);
     if (TextUtils.isEmpty(str1))
     {
       AppMethodBeat.o(159005);
       return false;
     }
-    localObject2 = com.tencent.mm.plugin.appbrand.g.b.a.bfk();
+    localObject2 = com.tencent.mm.plugin.appbrand.g.b.a.bfS();
     if ("ssdp:alive".equals(localObject1))
     {
-      localObject1 = ((com.tencent.mm.plugin.appbrand.g.b.a)localObject2).Oj(str1);
+      localObject1 = ((com.tencent.mm.plugin.appbrand.g.b.a)localObject2).OQ(str1);
       if (localObject1 != null)
       {
-        if (!((c)localObject1).bfn().kcO.equals(paramb))
+        if (!((c)localObject1).bfV().kgf.equals(paramb))
         {
           ((com.tencent.mm.plugin.appbrand.g.b.a)localObject2).remove(str1);
-          this.kef.add(paramb);
+          this.khw.add(paramb);
           AppMethodBeat.o(159005);
           return true;
         }
@@ -125,7 +155,7 @@ public class h
       }
       if (!TextUtils.isEmpty(paramb))
       {
-        this.kef.add(paramb);
+        this.khw.add(paramb);
         AppMethodBeat.o(159005);
         return true;
       }
@@ -155,10 +185,10 @@ public class h
     return false;
   }
   
-  public static h bfA()
+  public static h bgi()
   {
     AppMethodBeat.i(158999);
-    h localh = a.bfB();
+    h localh = a.bgj();
     AppMethodBeat.o(158999);
     return localh;
   }
@@ -172,35 +202,95 @@ public class h
       AppMethodBeat.o(159003);
       return;
     }
-    this.kea.b(new b.b(parame).bfu().a(new rx.b.b()new rx.b.b {}, new rx.b.b() {}));
+    this.khr.b(new b.b(parame).bgc().a(new rx.b.b()new rx.b.b {}, new rx.b.b() {}));
     AppMethodBeat.o(159003);
   }
   
+  /* Error */
   public final void a(final com.tencent.mm.plugin.appbrand.g.c.b.b paramb)
   {
-    AppMethodBeat.i(159004);
-    try
-    {
-      a(this.kec);
-      boolean bool = this.enabled;
-      if (!bool) {
-        return;
-      }
-      if (b(paramb)) {
-        this.kea.b(new b.a(paramb).bfu().a(new rx.b.b()new rx.b.b {}, new rx.b.b() {}));
-      }
-      return;
-    }
-    catch (Exception paramb)
-    {
-      com.tencent.mm.plugin.appbrand.g.a.b(TAG, paramb, "");
-      return;
-    }
-    finally
-    {
-      this.kec.unlock();
-      AppMethodBeat.o(159004);
-    }
+    // Byte code:
+    //   0: ldc_w 319
+    //   3: invokestatic 48	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   6: aload_0
+    //   7: getfield 88	com/tencent/mm/plugin/appbrand/g/c/h:kht	Ljava/util/concurrent/locks/Lock;
+    //   10: invokestatic 321	com/tencent/mm/plugin/appbrand/g/c/h:a	(Ljava/util/concurrent/locks/Lock;)V
+    //   13: aload_0
+    //   14: getfield 90	com/tencent/mm/plugin/appbrand/g/c/h:enabled	Z
+    //   17: istore_2
+    //   18: iload_2
+    //   19: ifne +19 -> 38
+    //   22: aload_0
+    //   23: getfield 88	com/tencent/mm/plugin/appbrand/g/c/h:kht	Ljava/util/concurrent/locks/Lock;
+    //   26: invokeinterface 324 1 0
+    //   31: ldc_w 319
+    //   34: invokestatic 65	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   37: return
+    //   38: aload_0
+    //   39: aload_1
+    //   40: invokespecial 326	com/tencent/mm/plugin/appbrand/g/c/h:b	(Lcom/tencent/mm/plugin/appbrand/g/c/b/b;)Z
+    //   43: ifeq +57 -> 100
+    //   46: aload_0
+    //   47: getfield 75	com/tencent/mm/plugin/appbrand/g/c/h:khr	Lrx/f/b;
+    //   50: new 328	com/tencent/mm/plugin/appbrand/g/c/b$a
+    //   53: dup
+    //   54: aload_1
+    //   55: invokespecial 330	com/tencent/mm/plugin/appbrand/g/c/b$a:<init>	(Lcom/tencent/mm/plugin/appbrand/g/c/b/b;)V
+    //   58: invokevirtual 331	com/tencent/mm/plugin/appbrand/g/c/b$a:bgc	()Lrx/d;
+    //   61: new 14	com/tencent/mm/plugin/appbrand/g/c/h$5
+    //   64: dup
+    //   65: aload_0
+    //   66: aload_1
+    //   67: invokespecial 334	com/tencent/mm/plugin/appbrand/g/c/h$5:<init>	(Lcom/tencent/mm/plugin/appbrand/g/c/h;Lcom/tencent/mm/plugin/appbrand/g/c/b/b;)V
+    //   70: new 16	com/tencent/mm/plugin/appbrand/g/c/h$6
+    //   73: dup
+    //   74: aload_0
+    //   75: invokespecial 337	com/tencent/mm/plugin/appbrand/g/c/h$6:<init>	(Lcom/tencent/mm/plugin/appbrand/g/c/h;)V
+    //   78: invokevirtual 312	rx/d:a	(Lrx/b/b;Lrx/b/b;)Lrx/j;
+    //   81: invokevirtual 315	rx/f/b:b	(Lrx/j;)V
+    //   84: aload_0
+    //   85: getfield 88	com/tencent/mm/plugin/appbrand/g/c/h:kht	Ljava/util/concurrent/locks/Lock;
+    //   88: invokeinterface 324 1 0
+    //   93: ldc_w 319
+    //   96: invokestatic 65	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   99: return
+    //   100: getstatic 62	com/tencent/mm/plugin/appbrand/g/c/h:TAG	Ljava/lang/String;
+    //   103: ldc_w 339
+    //   106: invokestatic 341	com/tencent/mm/plugin/appbrand/g/a:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   109: goto -25 -> 84
+    //   112: astore_1
+    //   113: getstatic 62	com/tencent/mm/plugin/appbrand/g/c/h:TAG	Ljava/lang/String;
+    //   116: aload_1
+    //   117: ldc_w 343
+    //   120: invokestatic 346	com/tencent/mm/plugin/appbrand/g/a:b	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;)V
+    //   123: aload_0
+    //   124: getfield 88	com/tencent/mm/plugin/appbrand/g/c/h:kht	Ljava/util/concurrent/locks/Lock;
+    //   127: invokeinterface 324 1 0
+    //   132: ldc_w 319
+    //   135: invokestatic 65	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   138: return
+    //   139: astore_1
+    //   140: aload_0
+    //   141: getfield 88	com/tencent/mm/plugin/appbrand/g/c/h:kht	Ljava/util/concurrent/locks/Lock;
+    //   144: invokeinterface 324 1 0
+    //   149: ldc_w 319
+    //   152: invokestatic 65	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   155: aload_1
+    //   156: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	157	0	this	h
+    //   0	157	1	paramb	com.tencent.mm.plugin.appbrand.g.c.b.b
+    //   17	2	2	bool	boolean
+    // Exception table:
+    //   from	to	target	type
+    //   6	18	112	java/lang/Exception
+    //   38	84	112	java/lang/Exception
+    //   100	109	112	java/lang/Exception
+    //   6	18	139	finally
+    //   38	84	139	finally
+    //   100	109	139	finally
+    //   113	123	139	finally
   }
   
   public final boolean disable()
@@ -209,9 +299,9 @@ public class h
     com.tencent.mm.plugin.appbrand.g.a.i(TAG, "mRouter is shutting down...");
     if (this.enabled)
     {
-      this.kef.clear();
-      this.ked.close();
-      this.kea.clear();
+      this.khw.clear();
+      this.khu.close();
+      this.khr.clear();
       this.enabled = false;
       AppMethodBeat.o(159001);
       return true;
@@ -224,14 +314,14 @@ public class h
   {
     AppMethodBeat.i(159000);
     com.tencent.mm.plugin.appbrand.g.a.i(TAG, "mRouter is starting ...");
-    this.port = i.bfC().port;
+    this.port = i.bgk().port;
     try
     {
       if (!this.enabled)
       {
-        List localList = g.bfy();
-        this.ked = new e(new f("239.255.255.250"), localList, this, this.port);
-        this.ked.start();
+        List localList = g.bgg();
+        this.khu = new e(new f("239.255.255.250"), localList, this, this.port);
+        this.khu.start();
         this.enabled = true;
         AppMethodBeat.o(159000);
         return true;
@@ -247,37 +337,37 @@ public class h
     return false;
   }
   
-  public final void gd(boolean paramBoolean)
+  public final void gc(boolean paramBoolean)
   {
-    AppMethodBeat.i(192862);
+    AppMethodBeat.i(208241);
     Object localObject = new com.tencent.mm.plugin.appbrand.g.a.h(paramBoolean);
     if (!this.enabled)
     {
       com.tencent.mm.plugin.appbrand.g.a.e(TAG, "DLNA Router is not enable");
-      AppMethodBeat.o(192862);
+      AppMethodBeat.o(208241);
       return;
     }
-    rx.f.b localb = this.kea;
+    rx.f.b localb = this.khr;
     localObject = new b.c((com.tencent.mm.plugin.appbrand.g.a.d)localObject);
-    localb.b(rx.d.a(new a.2(((b.c)localObject).kdB, ((b.c)localObject).kdA)).a(((com.tencent.mm.plugin.appbrand.g.d.b)localObject).ket).a(new rx.b.b()new rx.b.b {}, new rx.b.b() {}));
-    AppMethodBeat.o(192862);
+    localb.b(rx.d.a(new a.2(((b.c)localObject).kgS, ((b.c)localObject).kgR)).a(((com.tencent.mm.plugin.appbrand.g.d.b)localObject).khK).a(new rx.b.b()new rx.b.b {}, new rx.b.b() {}));
+    AppMethodBeat.o(208241);
   }
   
   static final class a
   {
-    private static h keh;
+    private static h khy;
     
     static
     {
       AppMethodBeat.i(158997);
-      keh = new h((byte)0);
+      khy = new h((byte)0);
       AppMethodBeat.o(158997);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.g.c.h
  * JD-Core Version:    0.7.0.1
  */

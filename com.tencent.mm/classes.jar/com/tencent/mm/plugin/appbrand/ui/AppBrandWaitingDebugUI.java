@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.ui.MMActivity;
 
 public class AppBrandWaitingDebugUI
@@ -26,7 +26,7 @@ public class AppBrandWaitingDebugUI
     super.onCreate(paramBundle);
     paramBundle = getIntent();
     final String str = paramBundle.getStringExtra("fromClass");
-    ad.i("MicroMsg.AppBrandWaitingDebugUI", "hy: from class: %s", new Object[] { str });
+    ae.i("MicroMsg.AppBrandWaitingDebugUI", "hy: from class: %s", new Object[] { str });
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -44,7 +44,7 @@ public class AppBrandWaitingDebugUI
         AppMethodBeat.i(48888);
         Object localObject = new b();
         ((b)localObject).bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/appbrand/ui/AppBrandWaitingDebugUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahq());
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/appbrand/ui/AppBrandWaitingDebugUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahF());
         try
         {
           paramAnonymousView = Class.forName(str);
@@ -52,8 +52,8 @@ public class AppBrandWaitingDebugUI
           paramAnonymousView = AppBrandWaitingDebugUI.this;
           localObject = paramBundle;
           localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
-          com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahp(), "com/tencent/mm/plugin/appbrand/ui/AppBrandWaitingDebugUI$2", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mq(0));
+          com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahE(), "com/tencent/mm/plugin/appbrand/ui/AppBrandWaitingDebugUI$2", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mt(0));
           com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, "com/tencent/mm/plugin/appbrand/ui/AppBrandWaitingDebugUI$2", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
           AppBrandWaitingDebugUI.this.finish();
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/appbrand/ui/AppBrandWaitingDebugUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
@@ -64,7 +64,7 @@ public class AppBrandWaitingDebugUI
         {
           for (;;)
           {
-            ad.printErrStackTrace("MicroMsg.AppBrandWaitingDebugUI", paramAnonymousView, "hy: not found class! %s", new Object[] { str });
+            ae.printErrStackTrace("MicroMsg.AppBrandWaitingDebugUI", paramAnonymousView, "hy: not found class! %s", new Object[] { str });
           }
         }
       }

@@ -17,12 +17,12 @@ final class SnsUploadUI$2
   public final void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(176363);
-    if (this.Apf[0] != 0)
+    if (this.AGs[0] != 0)
     {
-      this.Apf[0] = false;
-      b.wtJ.atp("ie_sns_upload");
+      this.AGs[0] = false;
+      b.wJt.auC("ie_sns_upload");
     }
-    b.wtJ.atq("ie_sns_upload");
+    b.wJt.auD("ie_sns_upload");
     AppMethodBeat.o(176363);
   }
 }

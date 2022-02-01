@@ -14,8 +14,8 @@ import com.tencent.mm.svg.c;
 public final class aho
   extends c
 {
-  private final int height = 32;
-  private final int width = 32;
+  private final int height = 24;
+  private final int width = 24;
   
   public final int a(int paramInt, Object... paramVarArgs)
   {
@@ -25,8 +25,8 @@ public final class aho
     for (;;)
     {
       return 0;
-      return 32;
-      return 32;
+      return 24;
+      return 24;
       Canvas localCanvas = (Canvas)paramVarArgs[0];
       paramVarArgs = (Looper)paramVarArgs[1];
       Object localObject1 = c.j(paramVarArgs);
@@ -44,42 +44,30 @@ public final class aho
       localPaint2.setStrokeMiter(4.0F);
       localPaint2.setPathEffect(null);
       c.a(localPaint2, paramVarArgs).setStrokeWidth(1.0F);
-      localCanvas.saveLayerAlpha(null, 204, 31);
       localCanvas.save();
       localPaint1 = c.a(localPaint1, paramVarArgs);
-      localPaint1.setColor(-1);
-      localObject2 = c.a((float[])localObject2, 6.123234E-017F, -1.0F, 32.0F, -1.0F, -6.123234E-017F, 32.0F);
-      ((Matrix)localObject1).reset();
-      ((Matrix)localObject1).setValues((float[])localObject2);
-      localCanvas.concat((Matrix)localObject1);
-      localCanvas.save();
-      localObject2 = c.a((float[])localObject2, 1.0F, 0.0F, 2.666667F, 0.0F, 1.0F, 2.666667F);
+      localPaint1.setColor(-436207616);
+      localObject2 = c.a((float[])localObject2, 1.0F, 0.0F, 2.757333F, 0.0F, 1.0F, 5.0F);
       ((Matrix)localObject1).reset();
       ((Matrix)localObject1).setValues((float[])localObject2);
       localCanvas.concat((Matrix)localObject1);
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
       localObject2 = c.n(paramVarArgs);
-      ((Path)localObject2).moveTo(13.333333F, 0.0F);
-      ((Path)localObject2).cubicTo(20.69713F, 0.0F, 26.666666F, 5.969537F, 26.666666F, 13.333333F);
-      ((Path)localObject2).cubicTo(26.666666F, 20.69713F, 20.69713F, 26.666666F, 13.333333F, 26.666666F);
-      ((Path)localObject2).cubicTo(5.969537F, 26.666666F, 0.0F, 20.69713F, 0.0F, 13.333333F);
-      ((Path)localObject2).cubicTo(0.0F, 5.969537F, 5.969537F, 0.0F, 13.333333F, 0.0F);
-      ((Path)localObject2).close();
-      ((Path)localObject2).moveTo(14.604089F, 7.333334F);
-      ((Path)localObject2).lineTo(9.476052F, 12.621493F);
-      ((Path)localObject2).cubicTo(9.098584F, 13.010747F, 9.094818F, 13.652035F, 9.476052F, 14.045174F);
-      ((Path)localObject2).lineTo(9.476052F, 14.045174F);
-      ((Path)localObject2).lineTo(14.604089F, 19.333334F);
-      ((Path)localObject2).lineTo(15.998045F, 17.916666F);
-      ((Path)localObject2).lineTo(11.57368F, 13.333333F);
-      ((Path)localObject2).lineTo(15.998045F, 8.75F);
-      ((Path)localObject2).lineTo(14.604089F, 7.333334F);
+      ((Path)localObject2).moveTo(1.464519F, 1.464466F);
+      ((Path)localObject2).cubicTo(3.41714F, -0.4881554F, 6.582965F, -0.4881554F, 8.535586F, 1.464466F);
+      ((Path)localObject2).cubicTo(8.718393F, 1.647273F, 8.954096F, 1.874633F, 9.242693F, 2.146546F);
+      ((Path)localObject2).cubicTo(9.531291F, 1.874633F, 9.766994F, 1.647273F, 9.949801F, 1.464466F);
+      ((Path)localObject2).cubicTo(11.902422F, -0.4881554F, 15.068247F, -0.4881554F, 17.020868F, 1.464466F);
+      ((Path)localObject2).cubicTo(18.955326F, 3.398924F, 18.97332F, 6.52412F, 17.07485F, 8.480731F);
+      ((Path)localObject2).lineTo(9.949763F, 15.606565F);
+      ((Path)localObject2).cubicTo(9.559297F, 15.997147F, 8.926131F, 15.99718F, 8.535586F, 15.606676F);
+      ((Path)localObject2).cubicTo(8.535574F, 15.606664F, 8.535562F, 15.606651F, 8.535586F, 15.606602F);
+      ((Path)localObject2).lineTo(1.410126F, 8.481141F);
+      ((Path)localObject2).cubicTo(-0.487934F, 6.52412F, -0.4699394F, 3.398924F, 1.464519F, 1.464466F);
       ((Path)localObject2).close();
       WeChatSVGRenderC2Java.setFillType((Path)localObject2, 2);
       localCanvas.drawPath((Path)localObject2, (Paint)localObject1);
-      localCanvas.restore();
-      localCanvas.restore();
       localCanvas.restore();
       localCanvas.restore();
       c.l(paramVarArgs);

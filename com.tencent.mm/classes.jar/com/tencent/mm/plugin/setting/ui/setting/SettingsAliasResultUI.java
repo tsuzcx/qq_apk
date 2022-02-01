@@ -16,18 +16,18 @@ import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.account.ui.RegByMobileSetPwdUI;
-import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.aj;
 import com.tencent.mm.ui.MMActivity;
 
 public class SettingsAliasResultUI
   extends MMActivity
 {
-  private String ffB;
-  private TextView iCV;
-  private TextView yGn;
-  private Button yGo;
-  private ImageView yGp;
-  private boolean yGq;
+  private String fhy;
+  private TextView iFO;
+  private TextView yWw;
+  private Button yWx;
+  private ImageView yWy;
+  private boolean yWz;
   
   public int getLayoutId()
   {
@@ -38,10 +38,10 @@ public class SettingsAliasResultUI
   {
     AppMethodBeat.i(74112);
     setMMTitle(2131761319);
-    this.iCV = ((TextView)findViewById(2131299008));
-    this.yGn = ((TextView)findViewById(2131296639));
-    this.yGo = ((Button)findViewById(2131304612));
-    this.yGp = ((ImageView)findViewById(2131303000));
+    this.iFO = ((TextView)findViewById(2131299008));
+    this.yWw = ((TextView)findViewById(2131296639));
+    this.yWx = ((Button)findViewById(2131304612));
+    this.yWy = ((ImageView)findViewById(2131303000));
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -52,22 +52,22 @@ public class SettingsAliasResultUI
         return true;
       }
     });
-    this.yGn.setText(this.ffB);
-    if (!this.yGq)
+    this.yWw.setText(this.fhy);
+    if (!this.yWz)
     {
-      this.yGo.setVisibility(0);
-      this.iCV.setText(getString(2131761324));
+      this.yWx.setVisibility(0);
+      this.iFO.setText(getString(2131761324));
     }
     for (;;)
     {
-      this.yGo.setOnClickListener(new View.OnClickListener()
+      this.yWx.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(74108);
           b localb = new b();
           localb.bd(paramAnonymousView);
-          a.b("com/tencent/mm/plugin/setting/ui/setting/SettingsAliasResultUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+          a.b("com/tencent/mm/plugin/setting/ui/setting/SettingsAliasResultUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
           paramAnonymousView = new Intent(SettingsAliasResultUI.this.getContext(), RegByMobileSetPwdUI.class);
           paramAnonymousView.putExtra("kintent_hint", SettingsAliasResultUI.this.getString(2131762358));
           SettingsAliasResultUI.this.startActivityForResult(paramAnonymousView, 0);
@@ -77,8 +77,8 @@ public class SettingsAliasResultUI
       });
       AppMethodBeat.o(74112);
       return;
-      this.yGo.setVisibility(8);
-      this.iCV.setText(getString(2131761325));
+      this.yWx.setVisibility(8);
+      this.iFO.setText(getString(2131761325));
     }
   }
   
@@ -96,8 +96,8 @@ public class SettingsAliasResultUI
   {
     AppMethodBeat.i(74109);
     super.onCreate(paramBundle);
-    this.ffB = ((String)g.ajC().ajl().get(42, null));
-    this.yGq = getIntent().getBooleanExtra("has_pwd", true);
+    this.fhy = ((String)g.ajR().ajA().get(42, null));
+    this.yWz = getIntent().getBooleanExtra("has_pwd", true);
     initView();
     AppMethodBeat.o(74109);
   }

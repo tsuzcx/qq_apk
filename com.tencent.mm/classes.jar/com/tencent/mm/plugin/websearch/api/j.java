@@ -5,17 +5,17 @@ import com.tencent.mm.kernel.c.a;
 public abstract interface j
   extends a
 {
-  public abstract void VY(int paramInt);
+  public abstract void WF(int paramInt);
   
-  public abstract String aFI(String paramString);
+  public abstract String aHc(String paramString);
   
   public abstract void ct(int paramInt, String paramString);
   
-  public abstract int eLI();
+  public abstract int ePr();
   
-  public abstract String eLJ();
+  public abstract String ePs();
   
-  public abstract void kC(String paramString1, String paramString2);
+  public abstract void kJ(String paramString1, String paramString2);
 }
 
 

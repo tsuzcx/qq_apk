@@ -1,7 +1,16 @@
 package com.tencent.wxperf.jni.test;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public class UnwindBenckmarkTest
 {
+  static
+  {
+    AppMethodBeat.i(195231);
+    System.loadLibrary("wxperf-jni");
+    AppMethodBeat.o(195231);
+  }
+  
   public static native void benchmarkInitNative();
   
   public static native void benchmarkNative();

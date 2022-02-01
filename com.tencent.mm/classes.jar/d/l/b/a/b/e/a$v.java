@@ -16,26 +16,26 @@ public final class a$v
   extends i
   implements y
 {
-  public static s<v> NjZ;
-  private static final v NnI;
-  private final d NjY;
-  private byte Nkd = -1;
-  private int Nke = -1;
-  public List<a.u> NnJ;
+  public static s<v> NHf;
+  private static final v NKO;
+  private final d NHe;
+  private byte NHj = -1;
+  private int NHk = -1;
+  public List<a.u> NKP;
   
   static
   {
     AppMethodBeat.i(59041);
-    NjZ = new b() {};
+    NHf = new b() {};
     v localv = new v();
-    NnI = localv;
-    localv.NnJ = Collections.emptyList();
+    NKO = localv;
+    localv.NKP = Collections.emptyList();
     AppMethodBeat.o(59041);
   }
   
   private a$v()
   {
-    this.NjY = d.NqI;
+    this.NHe = d.NNO;
   }
   
   /* Error */
@@ -48,14 +48,14 @@ public final class a$v
     //   6: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   9: aload_0
     //   10: iconst_m1
-    //   11: putfield 60	d/l/b/a/b/e/a$v:Nkd	B
+    //   11: putfield 60	d/l/b/a/b/e/a$v:NHj	B
     //   14: aload_0
     //   15: iconst_m1
-    //   16: putfield 62	d/l/b/a/b/e/a$v:Nke	I
+    //   16: putfield 62	d/l/b/a/b/e/a$v:NHk	I
     //   19: aload_0
     //   20: invokestatic 51	java/util/Collections:emptyList	()Ljava/util/List;
-    //   23: putfield 53	d/l/b/a/b/e/a$v:NnJ	Ljava/util/List;
-    //   26: invokestatic 79	d/l/b/a/b/h/d:grr	()Ld/l/b/a/b/h/d$b;
+    //   23: putfield 53	d/l/b/a/b/e/a$v:NKP	Ljava/util/List;
+    //   26: invokestatic 79	d/l/b/a/b/h/d:gvT	()Ld/l/b/a/b/h/d$b;
     //   29: astore 9
     //   31: aload 9
     //   33: iconst_1
@@ -110,7 +110,7 @@ public final class a$v
     //   140: new 96	java/util/ArrayList
     //   143: dup
     //   144: invokespecial 97	java/util/ArrayList:<init>	()V
-    //   147: putfield 53	d/l/b/a/b/e/a$v:NnJ	Ljava/util/List;
+    //   147: putfield 53	d/l/b/a/b/e/a$v:NKP	Ljava/util/List;
     //   150: iload_3
     //   151: iconst_1
     //   152: ior
@@ -122,9 +122,9 @@ public final class a$v
     //   163: iload 4
     //   165: istore 8
     //   167: aload_0
-    //   168: getfield 53	d/l/b/a/b/e/a$v:NnJ	Ljava/util/List;
+    //   168: getfield 53	d/l/b/a/b/e/a$v:NKP	Ljava/util/List;
     //   171: aload_1
-    //   172: getstatic 100	d/l/b/a/b/e/a$u:NjZ	Ld/l/b/a/b/h/s;
+    //   172: getstatic 100	d/l/b/a/b/e/a$u:NHf	Ld/l/b/a/b/h/s;
     //   175: aload_2
     //   176: invokevirtual 103	d/l/b/a/b/h/e:a	(Ld/l/b/a/b/h/s;Ld/l/b/a/b/h/g;)Ld/l/b/a/b/h/q;
     //   179: invokeinterface 109 2 0
@@ -137,7 +137,7 @@ public final class a$v
     //   194: istore 5
     //   196: aload_1
     //   197: aload_0
-    //   198: putfield 113	d/l/b/a/b/h/k:Nrq	Ld/l/b/a/b/h/q;
+    //   198: putfield 113	d/l/b/a/b/h/k:NOw	Ld/l/b/a/b/h/q;
     //   201: iload 7
     //   203: istore 5
     //   205: ldc 75
@@ -154,17 +154,17 @@ public final class a$v
     //   222: if_icmpne +14 -> 236
     //   225: aload_0
     //   226: aload_0
-    //   227: getfield 53	d/l/b/a/b/e/a$v:NnJ	Ljava/util/List;
+    //   227: getfield 53	d/l/b/a/b/e/a$v:NKP	Ljava/util/List;
     //   230: invokestatic 117	java/util/Collections:unmodifiableList	(Ljava/util/List;)Ljava/util/List;
-    //   233: putfield 53	d/l/b/a/b/e/a$v:NnJ	Ljava/util/List;
+    //   233: putfield 53	d/l/b/a/b/e/a$v:NKP	Ljava/util/List;
     //   236: aload 10
     //   238: invokevirtual 120	d/l/b/a/b/h/f:flush	()V
     //   241: aload_0
     //   242: aload 9
-    //   244: invokevirtual 126	d/l/b/a/b/h/d$b:grv	()Ld/l/b/a/b/h/d;
-    //   247: putfield 69	d/l/b/a/b/e/a$v:NjY	Ld/l/b/a/b/h/d;
+    //   244: invokevirtual 126	d/l/b/a/b/h/d$b:gvX	()Ld/l/b/a/b/h/d;
+    //   247: putfield 69	d/l/b/a/b/e/a$v:NHe	Ld/l/b/a/b/h/d;
     //   250: aload_0
-    //   251: invokevirtual 129	d/l/b/a/b/e/a$v:grN	()V
+    //   251: invokevirtual 129	d/l/b/a/b/e/a$v:gwp	()V
     //   254: ldc 75
     //   256: invokestatic 56	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   259: aload_1
@@ -176,31 +176,31 @@ public final class a$v
     //   265: if_icmpne +14 -> 279
     //   268: aload_0
     //   269: aload_0
-    //   270: getfield 53	d/l/b/a/b/e/a$v:NnJ	Ljava/util/List;
+    //   270: getfield 53	d/l/b/a/b/e/a$v:NKP	Ljava/util/List;
     //   273: invokestatic 117	java/util/Collections:unmodifiableList	(Ljava/util/List;)Ljava/util/List;
-    //   276: putfield 53	d/l/b/a/b/e/a$v:NnJ	Ljava/util/List;
+    //   276: putfield 53	d/l/b/a/b/e/a$v:NKP	Ljava/util/List;
     //   279: aload 10
     //   281: invokevirtual 120	d/l/b/a/b/h/f:flush	()V
     //   284: aload_0
     //   285: aload 9
-    //   287: invokevirtual 126	d/l/b/a/b/h/d$b:grv	()Ld/l/b/a/b/h/d;
-    //   290: putfield 69	d/l/b/a/b/e/a$v:NjY	Ld/l/b/a/b/h/d;
+    //   287: invokevirtual 126	d/l/b/a/b/h/d$b:gvX	()Ld/l/b/a/b/h/d;
+    //   290: putfield 69	d/l/b/a/b/e/a$v:NHe	Ld/l/b/a/b/h/d;
     //   293: aload_0
-    //   294: invokevirtual 129	d/l/b/a/b/e/a$v:grN	()V
+    //   294: invokevirtual 129	d/l/b/a/b/e/a$v:gwp	()V
     //   297: ldc 75
     //   299: invokestatic 56	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   302: return
     //   303: astore_1
     //   304: aload_0
     //   305: aload 9
-    //   307: invokevirtual 126	d/l/b/a/b/h/d$b:grv	()Ld/l/b/a/b/h/d;
-    //   310: putfield 69	d/l/b/a/b/e/a$v:NjY	Ld/l/b/a/b/h/d;
+    //   307: invokevirtual 126	d/l/b/a/b/h/d$b:gvX	()Ld/l/b/a/b/h/d;
+    //   310: putfield 69	d/l/b/a/b/e/a$v:NHe	Ld/l/b/a/b/h/d;
     //   313: goto -20 -> 293
     //   316: astore_1
     //   317: aload_0
     //   318: aload 9
-    //   320: invokevirtual 126	d/l/b/a/b/h/d$b:grv	()Ld/l/b/a/b/h/d;
-    //   323: putfield 69	d/l/b/a/b/e/a$v:NjY	Ld/l/b/a/b/h/d;
+    //   320: invokevirtual 126	d/l/b/a/b/h/d$b:gvX	()Ld/l/b/a/b/h/d;
+    //   323: putfield 69	d/l/b/a/b/e/a$v:NHe	Ld/l/b/a/b/h/d;
     //   326: ldc 75
     //   328: invokestatic 56	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   331: aload_1
@@ -218,7 +218,7 @@ public final class a$v
     //   352: istore 5
     //   354: aload_1
     //   355: aload_0
-    //   356: putfield 113	d/l/b/a/b/h/k:Nrq	Ld/l/b/a/b/h/q;
+    //   356: putfield 113	d/l/b/a/b/h/k:NOw	Ld/l/b/a/b/h/q;
     //   359: iload 8
     //   361: istore 5
     //   363: ldc 75
@@ -230,14 +230,14 @@ public final class a$v
     //   374: astore_2
     //   375: aload_0
     //   376: aload 9
-    //   378: invokevirtual 126	d/l/b/a/b/h/d$b:grv	()Ld/l/b/a/b/h/d;
-    //   381: putfield 69	d/l/b/a/b/e/a$v:NjY	Ld/l/b/a/b/h/d;
+    //   378: invokevirtual 126	d/l/b/a/b/h/d$b:gvX	()Ld/l/b/a/b/h/d;
+    //   381: putfield 69	d/l/b/a/b/e/a$v:NHe	Ld/l/b/a/b/h/d;
     //   384: goto -134 -> 250
     //   387: astore_1
     //   388: aload_0
     //   389: aload 9
-    //   391: invokevirtual 126	d/l/b/a/b/h/d$b:grv	()Ld/l/b/a/b/h/d;
-    //   394: putfield 69	d/l/b/a/b/e/a$v:NjY	Ld/l/b/a/b/h/d;
+    //   391: invokevirtual 126	d/l/b/a/b/h/d$b:gvX	()Ld/l/b/a/b/h/d;
+    //   394: putfield 69	d/l/b/a/b/e/a$v:NHe	Ld/l/b/a/b/h/d;
     //   397: ldc 75
     //   399: invokestatic 56	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   402: aload_1
@@ -289,20 +289,20 @@ public final class a$v
   private a$v(i.a parama)
   {
     super((byte)0);
-    this.NjY = parama.NjY;
+    this.NHe = parama.NHe;
   }
   
   public static a c(v paramv)
   {
     AppMethodBeat.i(59038);
-    paramv = a.gqi().f(paramv);
+    paramv = a.guK().f(paramv);
     AppMethodBeat.o(59038);
     return paramv;
   }
   
-  public static v gqe()
+  public static v guG()
   {
-    return NnI;
+    return NKO;
   }
   
   public final void a(f paramf)
@@ -310,37 +310,37 @@ public final class a$v
     AppMethodBeat.i(59036);
     zp();
     int i = 0;
-    while (i < this.NnJ.size())
+    while (i < this.NKP.size())
     {
-      paramf.a(1, (q)this.NnJ.get(i));
+      paramf.a(1, (q)this.NKP.get(i));
       i += 1;
     }
-    paramf.e(this.NjY);
+    paramf.e(this.NHe);
     AppMethodBeat.o(59036);
   }
   
-  public final s<v> gmo()
+  public final s<v> gqQ()
   {
-    return NjZ;
+    return NHf;
   }
   
   public final boolean isInitialized()
   {
-    int i = this.Nkd;
+    int i = this.NHj;
     if (i == 1) {
       return true;
     }
     if (i == 0) {
       return false;
     }
-    this.Nkd = 1;
+    this.NHj = 1;
     return true;
   }
   
   public final int zp()
   {
     AppMethodBeat.i(59037);
-    int i = this.Nke;
+    int i = this.NHk;
     if (i != -1)
     {
       AppMethodBeat.o(59037);
@@ -348,13 +348,13 @@ public final class a$v
     }
     i = 0;
     int j = 0;
-    while (i < this.NnJ.size())
+    while (i < this.NKP.size())
     {
-      j += f.c(1, (q)this.NnJ.get(i));
+      j += f.c(1, (q)this.NKP.get(i));
       i += 1;
     }
-    i = this.NjY.size() + j;
-    this.Nke = i;
+    i = this.NHe.size() + j;
+    this.NHk = i;
     AppMethodBeat.o(59037);
     return i;
   }
@@ -363,13 +363,13 @@ public final class a$v
     extends i.a<a.v, a>
     implements y
   {
-    private int Nka;
-    private List<a.u> NnJ;
+    private int NHg;
+    private List<a.u> NKP;
     
     private a()
     {
       AppMethodBeat.i(59019);
-      this.NnJ = Collections.emptyList();
+      this.NKP = Collections.emptyList();
       AppMethodBeat.o(59019);
     }
     
@@ -381,7 +381,7 @@ public final class a$v
       //   2: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
       //   5: aconst_null
       //   6: astore_3
-      //   7: getstatic 50	d/l/b/a/b/e/a$v:NjZ	Ld/l/b/a/b/h/s;
+      //   7: getstatic 50	d/l/b/a/b/e/a$v:NHf	Ld/l/b/a/b/h/s;
       //   10: aload_1
       //   11: aload_2
       //   12: invokeinterface 55 3 0
@@ -397,7 +397,7 @@ public final class a$v
       //   33: areturn
       //   34: astore_1
       //   35: aload_1
-      //   36: getfield 63	d/l/b/a/b/h/k:Nrq	Ld/l/b/a/b/h/q;
+      //   36: getfield 63	d/l/b/a/b/h/k:NOw	Ld/l/b/a/b/h/q;
       //   39: checkcast 9	d/l/b/a/b/e/a$v
       //   42: astore_2
       //   43: ldc 46
@@ -433,21 +433,21 @@ public final class a$v
       //   35	43	68	finally
     }
     
-    private a gqf()
+    private a guH()
     {
       AppMethodBeat.i(59020);
-      a locala = new a().f(gqg());
+      a locala = new a().f(guI());
       AppMethodBeat.o(59020);
       return locala;
     }
     
-    private void gqh()
+    private void guJ()
     {
       AppMethodBeat.i(59024);
-      if ((this.Nka & 0x1) != 1)
+      if ((this.NHg & 0x1) != 1)
       {
-        this.NnJ = new ArrayList(this.NnJ);
-        this.Nka |= 0x1;
+        this.NKP = new ArrayList(this.NKP);
+        this.NHg |= 0x1;
       }
       AppMethodBeat.o(59024);
     }
@@ -455,40 +455,40 @@ public final class a$v
     public final a f(a.v paramv)
     {
       AppMethodBeat.i(59022);
-      if (paramv == a.v.gqe())
+      if (paramv == a.v.guG())
       {
         AppMethodBeat.o(59022);
         return this;
       }
       if (!a.v.d(paramv).isEmpty())
       {
-        if (!this.NnJ.isEmpty()) {
+        if (!this.NKP.isEmpty()) {
           break label84;
         }
-        this.NnJ = a.v.d(paramv);
-        this.Nka &= 0xFFFFFFFE;
+        this.NKP = a.v.d(paramv);
+        this.NHg &= 0xFFFFFFFE;
       }
       for (;;)
       {
-        this.NjY = this.NjY.a(a.v.e(paramv));
+        this.NHe = this.NHe.a(a.v.e(paramv));
         AppMethodBeat.o(59022);
         return this;
         label84:
-        gqh();
-        this.NnJ.addAll(a.v.d(paramv));
+        guJ();
+        this.NKP.addAll(a.v.d(paramv));
       }
     }
     
-    public final a.v gqg()
+    public final a.v guI()
     {
       AppMethodBeat.i(59021);
       a.v localv = new a.v(this, (byte)0);
-      if ((this.Nka & 0x1) == 1)
+      if ((this.NHg & 0x1) == 1)
       {
-        this.NnJ = Collections.unmodifiableList(this.NnJ);
-        this.Nka &= 0xFFFFFFFE;
+        this.NKP = Collections.unmodifiableList(this.NKP);
+        this.NHg &= 0xFFFFFFFE;
       }
-      a.v.a(localv, this.NnJ);
+      a.v.a(localv, this.NKP);
       AppMethodBeat.o(59021);
       return localv;
     }
@@ -501,7 +501,7 @@ public final class a$v
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     d.l.b.a.b.e.a.v
  * JD-Core Version:    0.7.0.1
  */

@@ -17,47 +17,46 @@ import android.text.TextUtils;
 import com.tencent.e.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.Exif;
+import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.sight.base.AdaptiveAdjustBitrate;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.vfs.i;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.h;
 import d.a.j;
 import d.g.a.m;
 import d.g.b.p;
 import d.g.b.q;
 import d.l;
 import d.n.n;
-import d.o;
 import d.z;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/gallery/picker/generator/MediaTailor;", "", "config", "Lcom/tencent/mm/plugin/gallery/picker/generator/MediaTailor$Config;", "(Lcom/tencent/mm/plugin/gallery/picker/generator/MediaTailor$Config;)V", "imageTailor", "Lcom/tencent/mm/plugin/gallery/picker/generator/IMediaGenerate;", "", "Lcom/tencent/mm/plugin/gallery/picker/generator/MediaTailor$Result;", "getImageTailor", "()Lcom/tencent/mm/plugin/gallery/picker/generator/IMediaGenerate;", "setImageTailor", "(Lcom/tencent/mm/plugin/gallery/picker/generator/IMediaGenerate;)V", "videoTailor", "getVideoTailor", "setVideoTailor", "vlogTailor", "getVlogTailor", "setVlogTailor", "worker", "Lcom/tencent/threadpool/ForkThreadPoolExecutor;", "destroy", "", "post", "input", "mediaType", "", "matrix", "Landroid/graphics/Matrix;", "clipRect", "Landroid/graphics/Rect;", "contentRect", "viewRect", "token", "isVLogMode", "", "callback", "Lkotlin/Function2;", "Lkotlin/ParameterName;", "name", "isSuccessfully", "result", "Companion", "Config", "DefaultVideoMediaGenerateImpl", "GenerateTask", "ImageMediaGenerateImpl", "Result", "plugin-gallery_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/gallery/picker/generator/MediaTailor;", "", "config", "Lcom/tencent/mm/plugin/gallery/picker/generator/MediaTailor$Config;", "(Lcom/tencent/mm/plugin/gallery/picker/generator/MediaTailor$Config;)V", "imageTailor", "Lcom/tencent/mm/plugin/gallery/picker/generator/IMediaGenerate;", "", "Lcom/tencent/mm/plugin/gallery/picker/generator/MediaTailor$Result;", "getImageTailor", "()Lcom/tencent/mm/plugin/gallery/picker/generator/IMediaGenerate;", "setImageTailor", "(Lcom/tencent/mm/plugin/gallery/picker/generator/IMediaGenerate;)V", "videoTailor", "getVideoTailor", "setVideoTailor", "vlogTailor", "getVlogTailor", "setVlogTailor", "worker", "Lcom/tencent/threadpool/ForkThreadPoolExecutor;", "destroy", "", "post", "input", "mediaType", "", "matrix", "Landroid/graphics/Matrix;", "clipRect", "Landroid/graphics/Rect;", "contentRect", "viewRect", "token", "isVLogMode", "", "callback", "Lkotlin/Function2;", "Lkotlin/ParameterName;", "name", "isSuccessfully", "result", "Companion", "Config", "DefaultVideoMediaGenerateImpl", "GenerateTask", "ImageMediaGenerateImpl", "Result", "plugin-gallery_release"})
 public final class b
 {
-  public static final a tIT;
-  private a<String, f> tIP;
-  private a<String, f> tIQ;
-  public a<String, f> tIR;
-  private final com.tencent.e.b tIS;
+  public static final b.a tTK;
+  private a<String, f> tTG;
+  private a<String, f> tTH;
+  public a<String, f> tTI;
+  private final com.tencent.e.b tTJ;
   
   static
   {
     AppMethodBeat.i(164890);
-    tIT = new a((byte)0);
+    tTK = new b.a((byte)0);
     AppMethodBeat.o(164890);
   }
   
   public b(b paramb)
   {
     AppMethodBeat.i(164889);
-    this.tIP = ((a)new e(paramb));
-    this.tIQ = ((a)new b.c(paramb));
-    this.tIR = ((a)new b.c(paramb));
-    this.tIS = new com.tencent.e.b("MediaTailor", 3, 3, (BlockingQueue)new LinkedBlockingQueue(), (e)g.tJg);
+    this.tTG = ((a)new e(paramb));
+    this.tTH = ((a)new c(paramb));
+    this.tTI = ((a)new c(paramb));
+    this.tTJ = new com.tencent.e.b("MediaTailor", 3, 3, (BlockingQueue)new LinkedBlockingQueue(), (e)b.g.tTX);
     AppMethodBeat.o(164889);
   }
   
@@ -65,167 +64,90 @@ public final class b
   {
     AppMethodBeat.i(164887);
     p.h(parama, "<set-?>");
-    this.tIQ = parama;
+    this.tTH = parama;
     AppMethodBeat.o(164887);
   }
   
   public final void destroy()
   {
-    AppMethodBeat.i(198801);
-    this.tIS.shutdownNow();
-    AppMethodBeat.o(198801);
+    AppMethodBeat.i(186211);
+    this.tTJ.shutdownNow();
+    AppMethodBeat.o(186211);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/gallery/picker/generator/MediaTailor$Companion;", "", "()V", "TAG", "", "decodeBitmap", "Landroid/graphics/Bitmap;", "inputStream", "Ljava/io/InputStream;", "limitW", "", "limitH", "isRotate", "", "isClose", "inputPath", "plugin-gallery_release"})
-  public static final class a
-  {
-    public static Bitmap a(InputStream paramInputStream, int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2)
-    {
-      AppMethodBeat.i(164869);
-      p.h(paramInputStream, "inputStream");
-      if (paramInt1 > paramInt2) {}
-      for (;;)
-      {
-        BitmapFactory.Options localOptions = com.tencent.mm.sdk.platformtools.g.c(paramInputStream, false);
-        float f1;
-        float f2;
-        Object localObject1;
-        if (localOptions.outWidth <= localOptions.outHeight)
-        {
-          f1 = 1.0F * paramInt2 / localOptions.outWidth;
-          f2 = 1.0F * paramInt1 / localOptions.outHeight;
-          if (f1 > f2)
-          {
-            f1 = f2;
-            f1 = Math.min(1.0F, f1);
-            i = (int)(localOptions.outWidth * f1);
-            int j = (int)(localOptions.outHeight * f1);
-            paramInputStream.reset();
-            Object localObject2 = com.tencent.mm.sdk.platformtools.g.a(paramInputStream, 0.0F, i, j);
-            localObject1 = localObject2;
-            if (paramBoolean1)
-            {
-              paramInputStream.reset();
-              localObject1 = Exif.fromStream(paramInputStream);
-              p.g(localObject1, "Exif.fromStream(inputStream)");
-              i = ((Exif)localObject1).getOrientationInDegree();
-              ad.i("MediaTailor", "read exif rotate degree %d", new Object[] { Integer.valueOf(i) });
-              localObject1 = com.tencent.mm.sdk.platformtools.g.a((Bitmap)localObject2, i * 1.0F);
-            }
-            if (paramBoolean2) {
-              paramInputStream.close();
-            }
-            localObject2 = new StringBuilder("[decodeBitmap] [").append(localOptions.outWidth).append(':').append(localOptions.outHeight).append("]->[");
-            if (localObject1 == null) {
-              break label423;
-            }
-            paramInputStream = Integer.valueOf(((Bitmap)localObject1).getWidth());
-            label244:
-            localObject2 = ((StringBuilder)localObject2).append(paramInputStream).append(':');
-            if (localObject1 == null) {
-              break label428;
-            }
-            paramInputStream = Integer.valueOf(((Bitmap)localObject1).getHeight());
-            label271:
-            ad.i("MediaTailor", paramInputStream + "] scale=" + f1 + " limit[" + paramInt2 + ':' + paramInt1 + "] decode bitmap done!");
-            if (localObject1 != null) {
-              break label433;
-            }
-            paramInputStream = com.tencent.mm.sdk.platformtools.g.createBitmap(1, 1, Bitmap.Config.ARGB_8888);
-            ad.e("MediaTailor", "bitmap is null. " + bt.flS());
-          }
-        }
-        for (;;)
-        {
-          p.g(paramInputStream, "bitmap");
-          AppMethodBeat.o(164869);
-          return paramInputStream;
-          break;
-          f1 = 1.0F * paramInt2 / localOptions.outHeight;
-          f2 = 1.0F * paramInt1 / localOptions.outWidth;
-          if (f1 > f2) {
-            f1 = f2;
-          }
-          for (;;)
-          {
-            f1 = Math.min(1.0F, f1);
-            break;
-          }
-          label423:
-          paramInputStream = null;
-          break label244;
-          label428:
-          paramInputStream = null;
-          break label271;
-          label433:
-          paramInputStream = (InputStream)localObject1;
-        }
-        int i = paramInt1;
-        paramInt1 = paramInt2;
-        paramInt2 = i;
-      }
-    }
-  }
-  
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/gallery/picker/generator/MediaTailor$Config;", "", "()V", "compressQuality", "", "getCompressQuality", "()I", "setCompressQuality", "(I)V", "filePath", "", "getFilePath", "()Ljava/lang/String;", "setFilePath", "(Ljava/lang/String;)V", "filename", "getFilename", "setFilename", "isCircle", "", "()Z", "setCircle", "(Z)V", "maxFileLength", "getMaxFileLength", "setMaxFileLength", "maxHeight", "getMaxHeight", "setMaxHeight", "maxWidth", "getMaxWidth", "setMaxWidth", "value", "outputDir", "getOutputDir", "setOutputDir", "thumbSize", "getThumbSize", "setThumbSize", "plugin-gallery_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/gallery/picker/generator/MediaTailor$Config;", "", "()V", "compressQuality", "", "getCompressQuality", "()I", "setCompressQuality", "(I)V", "filePath", "", "getFilePath", "()Ljava/lang/String;", "setFilePath", "(Ljava/lang/String;)V", "filename", "getFilename", "setFilename", "isCircle", "", "()Z", "setCircle", "(Z)V", "maxFileLength", "getMaxFileLength", "setMaxFileLength", "maxHeight", "getMaxHeight", "setMaxHeight", "maxWidth", "getMaxWidth", "setMaxWidth", "value", "outputDir", "getOutputDir", "setOutputDir", "thumbSize", "getThumbSize", "setThumbSize", "plugin-gallery_release"})
   public static final class b
   {
     public String filePath;
     public String filename;
-    int hVp;
+    int hYh;
     public int maxHeight;
     public int maxWidth;
-    public String tIU;
-    public int tIV;
-    public int tIW;
-    boolean tIX;
+    public String tTL;
+    public int tTM;
+    public int tTN;
+    boolean tTO;
     
     public b()
     {
       AppMethodBeat.i(164871);
-      this.tIU = "";
-      this.hVp = 480;
-      this.maxHeight = ((int)aj.getResources().getDimension(2131166395));
+      this.tTL = "";
+      this.hYh = 480;
+      this.maxHeight = ((int)ak.getResources().getDimension(2131166395));
       this.maxWidth = this.maxHeight;
-      this.tIV = 80;
+      this.tTM = 80;
       AppMethodBeat.o(164871);
     }
     
-    public final void akS(String paramString)
+    public final void alQ(String paramString)
     {
       AppMethodBeat.i(164870);
       p.h(paramString, "value");
       String str = paramString;
-      if (n.aL((CharSequence)paramString) != '/') {
+      if (n.aK((CharSequence)paramString) != '/') {
         str = paramString + '/';
       }
-      this.tIU = str;
+      this.tTL = str;
       AppMethodBeat.o(164870);
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/gallery/picker/generator/MediaTailor$GenerateTask;", "Ljava/lang/Runnable;", "generate", "Lcom/tencent/mm/plugin/gallery/picker/generator/IMediaGenerate;", "", "Lcom/tencent/mm/plugin/gallery/picker/generator/MediaTailor$Result;", "token", "", "callback", "Lkotlin/Function2;", "", "Lkotlin/ParameterName;", "name", "isSuccessfully", "result", "", "(Lcom/tencent/mm/plugin/gallery/picker/generator/MediaTailor;Lcom/tencent/mm/plugin/gallery/picker/generator/IMediaGenerate;ILkotlin/jvm/functions/Function2;)V", "clipRect", "Landroid/graphics/Rect;", "getClipRect", "()Landroid/graphics/Rect;", "setClipRect", "(Landroid/graphics/Rect;)V", "contentRect", "getContentRect", "setContentRect", "input", "getInput", "()Ljava/lang/String;", "setInput", "(Ljava/lang/String;)V", "matrix", "Landroid/graphics/Matrix;", "getMatrix", "()Landroid/graphics/Matrix;", "setMatrix", "(Landroid/graphics/Matrix;)V", "mediaType", "getMediaType", "()I", "setMediaType", "(I)V", "getResult", "()Lcom/tencent/mm/plugin/gallery/picker/generator/MediaTailor$Result;", "setResult", "(Lcom/tencent/mm/plugin/gallery/picker/generator/MediaTailor$Result;)V", "viewRect", "getViewRect", "setViewRect", "run", "plugin-gallery_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/gallery/picker/generator/MediaTailor$DefaultVideoMediaGenerateImpl;", "Lcom/tencent/mm/plugin/gallery/picker/generator/IMediaGenerate;", "", "Lcom/tencent/mm/plugin/gallery/picker/generator/MediaTailor$Result;", "config", "Lcom/tencent/mm/plugin/gallery/picker/generator/MediaTailor$Config;", "(Lcom/tencent/mm/plugin/gallery/picker/generator/MediaTailor$Config;)V", "getConfig", "()Lcom/tencent/mm/plugin/gallery/picker/generator/MediaTailor$Config;", "onInput", "input", "mediaType", "", "matrix", "Landroid/graphics/Matrix;", "clipRect", "Landroid/graphics/Rect;", "contentRect", "viewRect", "plugin-gallery_release"})
+  public static final class c
+    implements a<String, b.f>
+  {
+    private final b.b sZV;
+    
+    public c(b.b paramb)
+    {
+      AppMethodBeat.i(164873);
+      this.sZV = paramb;
+      AppMethodBeat.o(164873);
+    }
+  }
+  
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/gallery/picker/generator/MediaTailor$GenerateTask;", "Ljava/lang/Runnable;", "generate", "Lcom/tencent/mm/plugin/gallery/picker/generator/IMediaGenerate;", "", "Lcom/tencent/mm/plugin/gallery/picker/generator/MediaTailor$Result;", "token", "", "callback", "Lkotlin/Function2;", "", "Lkotlin/ParameterName;", "name", "isSuccessfully", "result", "", "(Lcom/tencent/mm/plugin/gallery/picker/generator/MediaTailor;Lcom/tencent/mm/plugin/gallery/picker/generator/IMediaGenerate;ILkotlin/jvm/functions/Function2;)V", "clipRect", "Landroid/graphics/Rect;", "getClipRect", "()Landroid/graphics/Rect;", "setClipRect", "(Landroid/graphics/Rect;)V", "contentRect", "getContentRect", "setContentRect", "input", "getInput", "()Ljava/lang/String;", "setInput", "(Ljava/lang/String;)V", "matrix", "Landroid/graphics/Matrix;", "getMatrix", "()Landroid/graphics/Matrix;", "setMatrix", "(Landroid/graphics/Matrix;)V", "mediaType", "getMediaType", "()I", "setMediaType", "(I)V", "getResult", "()Lcom/tencent/mm/plugin/gallery/picker/generator/MediaTailor$Result;", "setResult", "(Lcom/tencent/mm/plugin/gallery/picker/generator/MediaTailor$Result;)V", "viewRect", "getViewRect", "setViewRect", "run", "plugin-gallery_release"})
   public final class d
     implements Runnable
   {
     public String aWG;
     public Matrix gR;
-    private final m<Boolean, b.f, z> gjf;
+    private final m<Boolean, b.f, z> glx;
     int mediaType;
-    public Rect pZj;
-    public Rect tIY;
-    b.f tIZ;
-    private final a<String, b.f> tJa;
+    public Rect qfO;
+    public Rect tTP;
+    b.f tTQ;
+    private final a<String, b.f> tTR;
     private final int token;
     public Rect viewRect;
     
     public d(int paramInt, m<? super Boolean, ? super b.f, z> paramm)
     {
       AppMethodBeat.i(164881);
-      this.tJa = paramInt;
+      this.tTR = paramInt;
       this.token = paramm;
-      this.gjf = localObject;
-      this.tIZ = new b.f(0);
+      this.glx = localObject;
+      this.tTQ = new b.f(0);
       AppMethodBeat.o(164881);
     }
     
@@ -235,53 +157,53 @@ public final class b
       try
       {
         long l = System.currentTimeMillis();
-        a locala = this.tJa;
+        a locala = this.tTR;
         String str = this.aWG;
         if (str == null) {
-          p.bcb("input");
+          p.bdF("input");
         }
         int i = this.mediaType;
         Matrix localMatrix = this.gR;
         if (localMatrix == null) {
-          p.bcb("matrix");
+          p.bdF("matrix");
         }
-        Rect localRect1 = this.tIY;
+        Rect localRect1 = this.tTP;
         if (localRect1 == null) {
-          p.bcb("clipRect");
+          p.bdF("clipRect");
         }
-        Rect localRect2 = this.pZj;
+        Rect localRect2 = this.qfO;
         if (localRect2 == null) {
-          p.bcb("contentRect");
+          p.bdF("contentRect");
         }
         Rect localRect3 = this.viewRect;
         if (localRect3 == null) {
-          p.bcb("viewRect");
+          p.bdF("viewRect");
         }
-        this.tIZ = ((b.f)locala.a(str, i, localMatrix, localRect1, localRect2, localRect3));
-        ad.i("MediaTailor", "generate image cost: " + (System.currentTimeMillis() - l));
+        this.tTQ = ((b.f)locala.a(str, i, localMatrix, localRect1, localRect2, localRect3));
+        ae.i("MediaTailor", "generate image cost: " + (System.currentTimeMillis() - l));
         return;
       }
       catch (Exception localException)
       {
-        this.tIZ.ret = -1;
-        ad.printErrStackTrace("MediaTailor", (Throwable)localException, "", new Object[0]);
+        this.tTQ.ret = -1;
+        ae.printErrStackTrace("MediaTailor", (Throwable)localException, "", new Object[0]);
         return;
       }
       catch (Error localError)
       {
-        this.tIZ.ret = -1;
-        ad.printErrStackTrace("MediaTailor", (Throwable)localError, "", new Object[0]);
+        this.tTQ.ret = -1;
+        ae.printErrStackTrace("MediaTailor", (Throwable)localError, "", new Object[0]);
         return;
       }
       finally
       {
-        this.tIZ.token = this.token;
-        com.tencent.mm.ad.c.g((d.g.a.a)new a(this));
+        this.tTQ.token = this.token;
+        com.tencent.mm.ac.c.h((d.g.a.a)new a(this));
         AppMethodBeat.o(164880);
       }
     }
     
-    @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
+    @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
     static final class a
       extends q
       implements d.g.a.a<z>
@@ -293,24 +215,24 @@ public final class b
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/gallery/picker/generator/MediaTailor$ImageMediaGenerateImpl;", "Lcom/tencent/mm/plugin/gallery/picker/generator/IMediaGenerate;", "", "Lcom/tencent/mm/plugin/gallery/picker/generator/MediaTailor$Result;", "config", "Lcom/tencent/mm/plugin/gallery/picker/generator/MediaTailor$Config;", "(Lcom/tencent/mm/plugin/gallery/picker/generator/MediaTailor$Config;)V", "getConfig", "()Lcom/tencent/mm/plugin/gallery/picker/generator/MediaTailor$Config;", "originHeight", "", "originWidth", "calculateInSampleSize", "reqWidth", "reqHeight", "getClipBitmap", "Landroid/graphics/Bitmap;", "input", "matrix", "Landroid/graphics/Matrix;", "clipRect", "Landroid/graphics/Rect;", "contentRect", "getClipBitmapOtherFormat", "getRotation", "", "values", "", "getSafeClipRect", "width", "height", "onInput", "mediaType", "viewRect", "pointRotate", "Lkotlin/Pair;", "x", "y", "degree", "Landroid/graphics/Point;", "plugin-gallery_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/gallery/picker/generator/MediaTailor$ImageMediaGenerateImpl;", "Lcom/tencent/mm/plugin/gallery/picker/generator/IMediaGenerate;", "", "Lcom/tencent/mm/plugin/gallery/picker/generator/MediaTailor$Result;", "config", "Lcom/tencent/mm/plugin/gallery/picker/generator/MediaTailor$Config;", "(Lcom/tencent/mm/plugin/gallery/picker/generator/MediaTailor$Config;)V", "getConfig", "()Lcom/tencent/mm/plugin/gallery/picker/generator/MediaTailor$Config;", "originHeight", "", "originWidth", "calculateInSampleSize", "reqWidth", "reqHeight", "getClipBitmap", "Landroid/graphics/Bitmap;", "input", "matrix", "Landroid/graphics/Matrix;", "clipRect", "Landroid/graphics/Rect;", "contentRect", "getClipBitmapOtherFormat", "getRotation", "", "values", "", "getSafeClipRect", "width", "height", "onInput", "mediaType", "viewRect", "pointRotate", "Lkotlin/Pair;", "x", "y", "degree", "Landroid/graphics/Point;", "plugin-gallery_release"})
   public static final class e
     implements a<String, b.f>
   {
-    private final b.b sOK;
-    private int tJd;
-    private int tJe;
+    private final b.b sZV;
+    private int tTU;
+    private int tTV;
     
     public e(b.b paramb)
     {
       AppMethodBeat.i(164883);
-      this.sOK = paramb;
+      this.sZV = paramb;
       AppMethodBeat.o(164883);
     }
     
     private final Bitmap a(String paramString, Matrix paramMatrix, Rect paramRect1, Rect paramRect2)
     {
-      AppMethodBeat.i(198799);
+      AppMethodBeat.i(186209);
       Object localObject1 = new float[9];
       paramMatrix.getValues((float[])localObject1);
       label1207:
@@ -318,7 +240,7 @@ public final class b
       {
         try
         {
-          Object localObject2 = i.k(paramString, false);
+          Object localObject2 = com.tencent.mm.vfs.o.k(paramString, false);
           BitmapRegionDecoder localBitmapRegionDecoder = BitmapRegionDecoder.newInstance((String)localObject2, false);
           localObject2 = Exif.fromFile((String)localObject2);
           p.g(localObject2, "Exif.fromFile(vfsPath)");
@@ -346,14 +268,14 @@ public final class b
             localObject1 = a(f5, f6, i, j, f3);
             localObject2 = a(f7, f4, i, j, f3);
             localObject1 = new Rect(Math.min(((Point)localObject1).x, ((Point)localObject2).x), Math.min(((Point)localObject1).y, ((Point)localObject2).y), Math.max(((Point)localObject1).x, ((Point)localObject2).x), Math.max(((Point)localObject1).y, ((Point)localObject2).y));
-            this.tJd = ((Rect)localObject1).width();
-            this.tJe = ((Rect)localObject1).height();
+            this.tTU = ((Rect)localObject1).width();
+            this.tTV = ((Rect)localObject1).height();
             localObject1 = c(localBitmapRegionDecoder.getWidth(), localBitmapRegionDecoder.getHeight(), (Rect)localObject1);
             localObject2 = new BitmapFactory.Options();
             i = (int)(f7 - f5);
             j = (int)(f4 - f6);
-            int k = this.sOK.maxWidth;
-            int m = this.sOK.maxHeight;
+            int k = this.sZV.maxWidth;
+            int m = this.sZV.maxHeight;
             f3 = Math.max(i / k, j / m);
             if (f3 <= 1.0F) {
               break label1207;
@@ -365,19 +287,19 @@ public final class b
               continue;
             }
             f3 = ((Bitmap)localObject2).getHeight() / ((Bitmap)localObject2).getWidth();
-            f4 = this.sOK.maxHeight / this.sOK.maxWidth;
-            if ((f3 >= f4) && (((Bitmap)localObject2).getHeight() > this.sOK.maxHeight))
+            f4 = this.sZV.maxHeight / this.sZV.maxWidth;
+            if ((f3 >= f4) && (((Bitmap)localObject2).getHeight() > this.sZV.maxHeight))
             {
-              localObject1 = Bitmap.createScaledBitmap((Bitmap)localObject2, d.h.a.co(this.sOK.maxHeight / f3), this.sOK.maxHeight, false);
+              localObject1 = Bitmap.createScaledBitmap((Bitmap)localObject2, d.h.a.cm(this.sZV.maxHeight / f3), this.sZV.maxHeight, false);
               if (localObject1 == null) {
                 continue;
               }
               localObject2 = localObject1;
               if (f1 - f2 != 0.0F) {
-                localObject2 = com.tencent.mm.sdk.platformtools.g.a((Bitmap)localObject1, f1 - f2);
+                localObject2 = h.a((Bitmap)localObject1, f1 - f2);
               }
               localBitmapRegionDecoder.recycle();
-              AppMethodBeat.o(198799);
+              AppMethodBeat.o(186209);
               return localObject2;
             }
           }
@@ -392,10 +314,10 @@ public final class b
           if (f3 <= f4)
           {
             localObject1 = localObject2;
-            if (((Bitmap)localObject2).getWidth() > this.sOK.maxWidth)
+            if (((Bitmap)localObject2).getWidth() > this.sZV.maxWidth)
             {
-              f4 = this.sOK.maxWidth;
-              localObject1 = Bitmap.createScaledBitmap((Bitmap)localObject2, this.sOK.maxWidth, d.h.a.co(f3 * f4), false);
+              f4 = this.sZV.maxWidth;
+              localObject1 = Bitmap.createScaledBitmap((Bitmap)localObject2, this.sZV.maxWidth, d.h.a.cm(f3 * f4), false);
               continue;
               localObject2 = null;
               continue;
@@ -406,12 +328,12 @@ public final class b
         }
         catch (IOException localIOException)
         {
-          ad.i("MediaTailor", localIOException.getMessage());
+          ae.i("MediaTailor", localIOException.getMessage());
           localObject2 = new float[9];
           paramMatrix.getValues((float[])localObject2);
           localOptions = new BitmapFactory.Options();
           localOptions.inJustDecodeBounds = true;
-          com.tencent.mm.sdk.platformtools.g.decodeFile(paramString, localOptions);
+          h.decodeFile(paramString, localOptions);
           paramMatrix.getValues((float[])localObject2);
           f1 = (float)Math.round(Math.atan2(localObject2[1], localObject2[0]) * 57.295779513082323D);
           paramMatrix = Exif.fromFile(paramString);
@@ -423,18 +345,18 @@ public final class b
             localOptions.outHeight = localOptions.outWidth;
             localOptions.outWidth = i;
           }
-          paramMatrix = b.tIT;
-          i = this.sOK.maxWidth;
-          j = this.sOK.maxHeight;
+          paramMatrix = b.tTK;
+          i = this.sZV.maxWidth;
+          j = this.sZV.maxHeight;
           p.h(paramString, "inputPath");
-          paramString = i.openRead(paramString);
+          paramString = com.tencent.mm.vfs.o.openRead(paramString);
           p.g(paramString, "VFSFileOp.openRead(inputPath)");
           paramMatrix = b.a.a(paramString, i, j, false, true);
-          ad.i("MediaTailor", "rawRotate=" + f2 + " cropRotation=" + f1 + " clipRect=" + paramRect1);
+          ae.i("MediaTailor", "rawRotate=" + f2 + " cropRotation=" + f1 + " clipRect=" + paramRect1);
           paramString = paramMatrix;
           if (f2 - f1 != 0.0F)
           {
-            paramString = com.tencent.mm.sdk.platformtools.g.a(paramMatrix, f2 - f1);
+            paramString = h.a(paramMatrix, f2 - f1);
             p.g(paramString, "BitmapUtil.rotate(source…rawRotate - cropRotation)");
           }
           f3 = 1.0F * paramString.getHeight() / paramRect2.height();
@@ -444,10 +366,10 @@ public final class b
           f5 *= 1.0F * paramString.getHeight();
           f6 = paramRect1.width();
           f7 = paramRect1.height();
-          paramMatrix = c(paramString.getWidth(), paramString.getHeight(), new Rect(d.h.a.co(f4), d.h.a.co(f5), d.h.a.co(f6 * f3 + f4), d.h.a.co(f7 * f3 + f5)));
-          ad.i("MediaTailor", "clipScale=" + f3 + " clipRect=[" + paramMatrix + " -> " + paramRect1 + "] raw=[" + localOptions.outWidth + ':' + localOptions.outHeight + "] source=[" + paramString.getWidth() + ':' + paramString.getHeight() + "] rotate=" + (f2 - f1));
+          paramMatrix = c(paramString.getWidth(), paramString.getHeight(), new Rect(d.h.a.cm(f4), d.h.a.cm(f5), d.h.a.cm(f6 * f3 + f4), d.h.a.cm(f7 * f3 + f5)));
+          ae.i("MediaTailor", "clipScale=" + f3 + " clipRect=[" + paramMatrix + " -> " + paramRect1 + "] raw=[" + localOptions.outWidth + ':' + localOptions.outHeight + "] source=[" + paramString.getWidth() + ':' + paramString.getHeight() + "] rotate=" + (f2 - f1));
           paramString = Bitmap.createBitmap(paramString, paramMatrix.left, paramMatrix.top, paramMatrix.width(), paramMatrix.height());
-          AppMethodBeat.o(198799);
+          AppMethodBeat.o(186209);
           return paramString;
         }
       }
@@ -455,22 +377,22 @@ public final class b
     
     private static Point a(float paramFloat1, float paramFloat2, int paramInt1, int paramInt2, float paramFloat3)
     {
-      AppMethodBeat.i(198798);
+      AppMethodBeat.i(186208);
       paramFloat1 -= paramInt1 / 2.0F;
       paramFloat2 -= paramInt2 / 2.0F;
       double d1 = Math.sin(paramFloat3 / 180.0F * 3.141592653589793D);
       double d2 = Math.cos(paramFloat3 / 180.0F * 3.141592653589793D);
       float f = (float)(paramFloat1 * d2 - paramFloat2 * d1);
       double d3 = paramFloat1;
-      Object localObject = new o(Float.valueOf(f), Float.valueOf((float)(paramFloat2 * d2 + d1 * d3)));
+      Object localObject = new d.o(Float.valueOf(f), Float.valueOf((float)(paramFloat2 * d2 + d1 * d3)));
       if (paramFloat3 % 180.0F != 0.0F)
       {
-        localObject = new Point(d.h.a.co(((Number)((o)localObject).first).floatValue() + paramInt2 / 2.0F), d.h.a.co(((Number)((o)localObject).second).floatValue() + paramInt1 / 2.0F));
-        AppMethodBeat.o(198798);
+        localObject = new Point(d.h.a.cm(((Number)((d.o)localObject).first).floatValue() + paramInt2 / 2.0F), d.h.a.cm(((Number)((d.o)localObject).second).floatValue() + paramInt1 / 2.0F));
+        AppMethodBeat.o(186208);
         return localObject;
       }
-      localObject = new Point(d.h.a.co(((Number)((o)localObject).first).floatValue() + paramInt1 / 2.0F), d.h.a.co(((Number)((o)localObject).second).floatValue() + paramInt2 / 2.0F));
-      AppMethodBeat.o(198798);
+      localObject = new Point(d.h.a.cm(((Number)((d.o)localObject).first).floatValue() + paramInt1 / 2.0F), d.h.a.cm(((Number)((d.o)localObject).second).floatValue() + paramInt2 / 2.0F));
+      AppMethodBeat.o(186208);
       return localObject;
     }
     
@@ -499,27 +421,27 @@ public final class b
     
     public final b.f a(String paramString, Matrix paramMatrix, Rect paramRect1, Rect paramRect2, Rect paramRect3)
     {
-      AppMethodBeat.i(198796);
+      AppMethodBeat.i(186206);
       p.h(paramString, "input");
       p.h(paramMatrix, "matrix");
       p.h(paramRect1, "clipRect");
       p.h(paramRect2, "contentRect");
       p.h(paramRect3, "viewRect");
-      new com.tencent.mm.ad.b("MediaTailor");
+      new com.tencent.mm.ac.b("MediaTailor");
       if ((paramRect2.width() == 0) || (paramRect2.height() == 0) || (paramRect1.width() == 0) || (paramRect1.height() == 0))
       {
-        ad.e("MediaTailor", "Rect width or height contains zero. contentRect: " + paramRect2 + " clipRect: " + paramRect1);
+        ae.e("MediaTailor", "Rect width or height contains zero. contentRect: " + paramRect2 + " clipRect: " + paramRect1);
         paramString = new b.f(-1);
-        paramString.akT("");
-        AppMethodBeat.o(198796);
+        paramString.alR("");
+        AppMethodBeat.o(186206);
         return paramString;
       }
       paramRect3 = a(paramString, paramMatrix, paramRect1, paramRect2);
-      String str1 = (String)j.je(n.b((CharSequence)paramString, new String[] { "/" }));
+      String str1 = (String)j.jn(n.b((CharSequence)paramString, new String[] { "/" }));
       b.f localf = new b.f(0);
       Object localObject1;
       if (paramRect3 != null) {
-        if (this.sOK.tIX)
+        if (this.sZV.tTO)
         {
           paramRect2 = Bitmap.createBitmap(paramRect3.getWidth(), paramRect3.getHeight(), Bitmap.Config.ARGB_8888);
           paramMatrix = new Canvas(paramRect2);
@@ -535,12 +457,12 @@ public final class b
           if (((p.i(paramRect2, paramRect3) ^ true)) && (!paramRect3.isRecycled())) {
             paramRect3.recycle();
           }
-          paramMatrix = this.sOK.filePath;
+          paramMatrix = this.sZV.filePath;
           if (paramMatrix != null) {
             break label1206;
           }
-          localObject1 = new StringBuilder().append(this.sOK.tIU);
-          if (this.sOK.filename != null) {
+          localObject1 = new StringBuilder().append(this.sZV.tTL);
+          if (this.sZV.filename != null) {
             break label496;
           }
           paramMatrix = SystemClock.currentThreadTimeMillis() + '_' + str1;
@@ -554,37 +476,37 @@ public final class b
       label1206:
       for (;;)
       {
-        int j = this.sOK.tIV;
-        boolean bool = com.tencent.mm.sdk.platformtools.g.a(paramRect2, j, Bitmap.CompressFormat.JPEG, paramMatrix, false);
+        int j = this.sZV.tTM;
+        boolean bool = h.a(paramRect2, j, Bitmap.CompressFormat.JPEG, paramMatrix, false);
         int i = 0;
         for (;;)
         {
-          if ((this.sOK.tIW > 0) && (i.aYo(paramMatrix) > this.sOK.tIW) && (j > 0))
+          if ((this.sZV.tTN > 0) && (com.tencent.mm.vfs.o.aZR(paramMatrix) > this.sZV.tTN) && (j > 0))
           {
             j -= 5;
-            bool = com.tencent.mm.sdk.platformtools.g.a(paramRect2, j, Bitmap.CompressFormat.JPEG, paramMatrix, false);
+            bool = h.a(paramRect2, j, Bitmap.CompressFormat.JPEG, paramMatrix, false);
             i += 1;
             continue;
             paramRect2 = paramRect3;
             break;
             label496:
-            paramMatrix = this.sOK.filename;
+            paramMatrix = this.sZV.filename;
             break label393;
           }
         }
-        ad.i("MediaTailor", "save bitmap ret=" + bool + " dest[" + paramRect2.getWidth() + ':' + paramRect2.getHeight() + "] maxFileLength=" + this.sOK.tIW + " tryCount=" + i + ' ' + "compressQuality=" + j + " isCircle=" + this.sOK.tIX + " size=" + bt.sy(i.aYo(paramMatrix)));
-        if ((this.tJd == 0) || (this.tJe == 0))
+        ae.i("MediaTailor", "save bitmap ret=" + bool + " dest[" + paramRect2.getWidth() + ':' + paramRect2.getHeight() + "] maxFileLength=" + this.sZV.tTN + " tryCount=" + i + ' ' + "compressQuality=" + j + " isCircle=" + this.sZV.tTO + " size=" + bu.sL(com.tencent.mm.vfs.o.aZR(paramMatrix)));
+        if ((this.tTU == 0) || (this.tTV == 0))
         {
-          this.tJd = paramRect3.getWidth();
-          this.tJe = paramRect3.getHeight();
+          this.tTU = paramRect3.getWidth();
+          this.tTV = paramRect3.getHeight();
         }
         label741:
         label748:
         label767:
         float f;
-        if (((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(com.tencent.mm.plugin.expt.b.b.a.qBb, 1) == 1)
+        if (((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(com.tencent.mm.plugin.expt.b.b.a.qIn, 1) == 1)
         {
-          i = AdaptiveAdjustBitrate.getOrignalImageQuality(this.tJd, this.tJe, paramRect2.getWidth(), paramRect2.getHeight(), j / 100.0F);
+          i = AdaptiveAdjustBitrate.getOrignalImageQuality(this.tTU, this.tTV, paramRect2.getWidth(), paramRect2.getHeight(), j / 100.0F);
           localf.quality = i;
           if (!paramRect2.isRecycled()) {
             paramRect2.recycle();
@@ -601,19 +523,19 @@ public final class b
           }
           i = 0;
           localf.ret = i;
-          paramMatrix = com.tencent.mm.plugin.recordvideo.d.c.xHa;
-          com.tencent.mm.plugin.recordvideo.d.c.eL("KEY_IMAGE_QUALITY_INT_ARRAY", localf.quality);
-          localf.akT(paramRect2);
+          paramMatrix = com.tencent.mm.plugin.recordvideo.d.c.xWV;
+          com.tencent.mm.plugin.recordvideo.d.c.eT("KEY_IMAGE_QUALITY_INT_ARRAY", localf.quality);
+          localf.alR(paramRect2);
           if (localf.ret == 0)
           {
-            Object localObject2 = new androidx.a.a.a(i.k(paramString, false));
+            Object localObject2 = new androidx.a.a.a(com.tencent.mm.vfs.o.k(paramString, false));
             paramString = ((androidx.a.a.a)localObject2).getAttribute("GPSLongitude");
             paramMatrix = ((androidx.a.a.a)localObject2).getAttribute("GPSLatitude");
             paramRect3 = ((androidx.a.a.a)localObject2).getAttribute("GPSLongitudeRef");
             localObject1 = ((androidx.a.a.a)localObject2).getAttribute("GPSLatitudeRef");
             String str2 = ((androidx.a.a.a)localObject2).getAttribute("GPSDestLongitude");
             localObject2 = ((androidx.a.a.a)localObject2).getAttribute("GPSDestLongitudeRef");
-            androidx.a.a.a locala = new androidx.a.a.a(i.k(paramRect2, false));
+            androidx.a.a.a locala = new androidx.a.a.a(com.tencent.mm.vfs.o.k(paramRect2, false));
             locala.setAttribute("GPSLongitude", paramString);
             locala.setAttribute("GPSLatitude", paramMatrix);
             locala.setAttribute("GPSLongitudeRef", paramRect3);
@@ -621,20 +543,20 @@ public final class b
             locala.setAttribute("GPSDestLongitude", str2);
             locala.setAttribute("GPSDestLongitudeRef", (String)localObject2);
             locala.saveAttributes();
-            f = Math.max(1.0F * this.sOK.hVp / paramRect1.height(), 1.0F * this.sOK.hVp / paramRect1.width());
-            paramMatrix = new StringBuilder().append(this.sOK.tIU);
-            if (this.sOK.filename != null) {
+            f = Math.max(1.0F * this.sZV.hYh / paramRect1.height(), 1.0F * this.sZV.hYh / paramRect1.width());
+            paramMatrix = new StringBuilder().append(this.sZV.tTL);
+            if (this.sZV.filename != null) {
               break label1179;
             }
           }
         }
-        for (paramString = SystemClock.currentThreadTimeMillis() + "_thumb_" + str1;; paramString = "thumb_" + this.sOK.filename)
+        for (paramString = SystemClock.currentThreadTimeMillis() + "_thumb_" + str1;; paramString = "thumb_" + this.sZV.filename)
         {
           paramString = paramString;
-          localf.yo(paramString);
-          com.tencent.mm.sdk.platformtools.g.a(paramRect2, d.h.a.co(paramRect1.height() * f), d.h.a.co(paramRect1.width() * f), Bitmap.CompressFormat.JPEG, this.sOK.tIV, paramString);
-          ad.i("MediaTailor", "createThumbNail: " + d.h.a.co(paramRect1.height() * f) + ", " + d.h.a.co(paramRect1.width() * f));
-          AppMethodBeat.o(198796);
+          localf.yY(paramString);
+          h.a(paramRect2, d.h.a.cm(paramRect1.height() * f), d.h.a.cm(paramRect1.width() * f), Bitmap.CompressFormat.JPEG, this.sZV.tTM, paramString);
+          ae.i("MediaTailor", "createThumbNail: " + d.h.a.cm(paramRect1.height() * f) + ", " + d.h.a.cm(paramRect1.width() * f));
+          AppMethodBeat.o(186206);
           return localf;
           i = 0;
           break;
@@ -647,31 +569,31 @@ public final class b
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/gallery/picker/generator/MediaTailor$Result;", "", "ret", "", "(I)V", "outPath", "", "getOutPath", "()Ljava/lang/String;", "setOutPath", "(Ljava/lang/String;)V", "quality", "getQuality", "()I", "setQuality", "getRet", "setRet", "thumbPath", "getThumbPath", "setThumbPath", "token", "getToken", "setToken", "plugin-gallery_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/gallery/picker/generator/MediaTailor$Result;", "", "ret", "", "(I)V", "outPath", "", "getOutPath", "()Ljava/lang/String;", "setOutPath", "(Ljava/lang/String;)V", "quality", "getQuality", "()I", "setQuality", "getRet", "setRet", "thumbPath", "getThumbPath", "setThumbPath", "token", "getToken", "setToken", "plugin-gallery_release"})
   public static class f
   {
     int quality;
     public int ret;
-    public String tJf;
+    public String tTW;
     public String thumbPath;
     public int token;
     
     public f(int paramInt)
     {
       this.ret = paramInt;
-      this.tJf = "";
+      this.tTW = "";
       this.thumbPath = "";
     }
     
-    public final void akT(String paramString)
+    public final void alR(String paramString)
     {
       AppMethodBeat.i(164884);
       p.h(paramString, "<set-?>");
-      this.tJf = paramString;
+      this.tTW = paramString;
       AppMethodBeat.o(164884);
     }
     
-    public final void yo(String paramString)
+    public final void yY(String paramString)
     {
       AppMethodBeat.i(164885);
       p.h(paramString, "<set-?>");
@@ -679,26 +601,10 @@ public final class b
       AppMethodBeat.o(164885);
     }
   }
-  
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "command", "Ljava/lang/Runnable;", "kotlin.jvm.PlatformType", "threadPool", "Lcom/tencent/threadpool/ForkThreadPoolExecutor;", "rejectedExecution"})
-  static final class g
-    implements e
-  {
-    public static final g tJg;
-    
-    static
-    {
-      AppMethodBeat.i(164886);
-      tJg = new g();
-      AppMethodBeat.o(164886);
-    }
-    
-    public final void a(Runnable paramRunnable, com.tencent.e.b paramb) {}
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.gallery.picker.b.b
  * JD-Core Version:    0.7.0.1
  */

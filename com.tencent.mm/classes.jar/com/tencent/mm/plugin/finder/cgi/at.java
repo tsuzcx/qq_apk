@@ -1,157 +1,448 @@
 package com.tencent.mm.plugin.finder.cgi;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
-import com.tencent.mm.network.e;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.bw.a;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.alo;
-import com.tencent.mm.protocal.protobuf.alp;
-import com.tencent.mm.protocal.protobuf.aqc;
-import com.tencent.mm.protocal.protobuf.aqd;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.platformtools.z;
+import com.tencent.mm.plugin.finder.PluginFinder;
+import com.tencent.mm.plugin.finder.api.c;
+import com.tencent.mm.plugin.finder.api.c.a;
+import com.tencent.mm.protocal.protobuf.FinderAuthInfo;
+import com.tencent.mm.protocal.protobuf.FinderContact;
+import com.tencent.mm.protocal.protobuf.ama;
+import com.tencent.mm.protocal.protobuf.anc;
+import com.tencent.mm.protocal.protobuf.anl;
+import com.tencent.mm.protocal.protobuf.ape;
+import com.tencent.mm.protocal.protobuf.apf;
+import com.tencent.mm.protocal.protobuf.aqt;
+import com.tencent.mm.protocal.protobuf.asm;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.aj;
+import com.tencent.mm.storage.am.a;
 import d.g.b.p;
 import d.l;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedList;
-import java.util.List;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/cgi/NetSceneFinderOplog;", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Lcom/tencent/mm/network/IOnGYNetEnd;", "username", "", "cmdList", "", "Lcom/tencent/mm/protocal/protobuf/FinderCmdItem;", "(Ljava/lang/String;Ljava/util/List;)V", "TAG", "callback", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "rr", "Lcom/tencent/mm/modelbase/CommReqResp;", "doScene", "", "dispatcher", "Lcom/tencent/mm/network/IDispatcher;", "getCmdItemList", "getCmdRetList", "Lcom/tencent/mm/protocal/protobuf/FinderCmdRet;", "getType", "onGYNetEnd", "", "netId", "errType", "errCode", "errMsg", "Lcom/tencent/mm/network/IReqResp;", "cookie", "", "Companion", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/cgi/NetSceneFinderInit;", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Lcom/tencent/mm/network/IOnGYNetEnd;", "()V", "TAG", "", "callback", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "comRR", "Lcom/tencent/mm/modelbase/CommReqResp;", "response", "Lcom/tencent/mm/protocal/protobuf/FinderInitResponse;", "doScene", "", "dispatcher", "Lcom/tencent/mm/network/IDispatcher;", "getResponse", "getType", "handleFinderCmd", "", "cmdItem", "Lcom/tencent/mm/protocal/protobuf/FinderCmdItem;", "onGYNetEnd", "netId", "errType", "errCode", "errMsg", "rr", "Lcom/tencent/mm/network/IReqResp;", "cookie", "", "plugin-finder_release"})
 public final class at
   extends n
   implements k
 {
-  private static final int rJC = 1;
-  private static final int rJD = 3;
-  private static final int rJE = 4;
-  private static final int rJF = 5;
-  private static final int rJG = 7;
-  private static final int rJH = 8;
-  private static final int rJI = 9;
-  private static final int rJJ = 10;
-  public static final a rJK;
   private final String TAG;
   private f callback;
-  private b rr;
+  private com.tencent.mm.ak.b rRO;
+  public apf rRP;
   
-  static
+  public at()
   {
-    AppMethodBeat.i(165249);
-    rJK = new a((byte)0);
-    rJC = 1;
-    rJD = 3;
-    rJE = 4;
-    rJF = 5;
-    rJG = 7;
-    rJH = 8;
-    rJI = 9;
-    rJJ = 10;
-    AppMethodBeat.o(165249);
-  }
-  
-  public at(String paramString, List<? extends alo> paramList)
-  {
-    AppMethodBeat.i(165248);
-    this.TAG = "Finder.NetSceneFinderOplog";
-    b.a locala = new b.a();
-    locala.oP(getType());
-    locala.Dl("/cgi-bin/micromsg-bin/finderoplog");
-    aqc localaqc = new aqc();
-    localaqc.username = paramString;
-    localaqc.rbl.addAll((Collection)paramList);
-    paramString = v.rIR;
-    localaqc.Glv = v.cxY();
-    locala.c((com.tencent.mm.bx.a)localaqc);
-    locala.d((com.tencent.mm.bx.a)new aqd());
-    paramString = locala.aDC();
-    p.g(paramString, "builder.buildInstance()");
-    this.rr = paramString;
-    ad.i(this.TAG, "NetSceneFinderOplog init ");
-    AppMethodBeat.o(165248);
-  }
-  
-  public final List<alo> cyx()
-  {
-    AppMethodBeat.i(165246);
-    Object localObject = this.rr;
-    if (localObject == null) {
-      p.gfZ();
-    }
-    localObject = ((b)localObject).aEE();
-    if (localObject == null)
+    AppMethodBeat.i(165243);
+    this.TAG = "Finder.NetSceneFinderInit";
+    ae.i(this.TAG, "NetSceneFinderInit");
+    Object localObject1 = new b.a();
+    ape localape = new ape();
+    Object localObject2 = com.tencent.mm.kernel.g.ajR();
+    p.g(localObject2, "MMKernel.storage()");
+    localObject2 = ((com.tencent.mm.kernel.e)localObject2).ajA().get(am.a.JbA, "");
+    if (localObject2 == null)
     {
-      localObject = new d.v("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.FinderOplogRequest");
-      AppMethodBeat.o(165246);
-      throw ((Throwable)localObject);
+      localObject1 = new d.v("null cannot be cast to non-null type kotlin.String");
+      AppMethodBeat.o(165243);
+      throw ((Throwable)localObject1);
     }
-    localObject = ((aqc)localObject).rbl;
-    p.g(localObject, "(rr!!.requestProtoBuf as…nderOplogRequest).cmdList");
-    localObject = (List)localObject;
-    AppMethodBeat.o(165246);
-    return localObject;
+    localape.GjQ = z.al(bu.aSx((String)localObject2));
+    localObject2 = v.rRb;
+    localape.GDR = v.czz();
+    ((b.a)localObject1).oS(getType());
+    ((b.a)localObject1).DN("/cgi-bin/micromsg-bin/finderinit");
+    ((b.a)localObject1).c((a)localape);
+    ((b.a)localObject1).d((a)new apf());
+    this.rRO = ((b.a)localObject1).aDS();
+    com.tencent.mm.plugin.report.service.g.yxI.n(1279L, 23L, 1L);
+    AppMethodBeat.o(165243);
   }
   
-  public final List<alp> cyy()
+  public final int doScene(com.tencent.mm.network.e parame, f paramf)
   {
-    AppMethodBeat.i(165247);
-    Object localObject = this.rr;
-    if (localObject == null) {
-      p.gfZ();
-    }
-    localObject = ((b)localObject).aEF();
-    if (localObject == null)
-    {
-      localObject = new d.v("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.FinderOplogResponse");
-      AppMethodBeat.o(165247);
-      throw ((Throwable)localObject);
-    }
-    localObject = ((aqd)localObject).ozW;
-    p.g(localObject, "(rr!!.responseProtoBuf a…derOplogResponse).retList");
-    localObject = (List)localObject;
-    AppMethodBeat.o(165247);
-    return localObject;
-  }
-  
-  public final int doScene(e parame, f paramf)
-  {
-    AppMethodBeat.i(165244);
+    AppMethodBeat.i(165241);
     this.callback = paramf;
-    int i = dispatch(parame, (q)this.rr, (k)this);
-    AppMethodBeat.o(165244);
+    int i = dispatch(parame, (q)this.rRO, (k)this);
+    AppMethodBeat.o(165241);
     return i;
   }
   
   public final int getType()
   {
-    return 3870;
+    return 3930;
   }
   
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(165245);
-    ad.i(this.TAG, "errType " + paramInt2 + ", errCode " + paramInt3 + ", errMsg " + paramString);
-    ad.i(this.TAG, "retList " + cyy().size());
-    paramq = this.callback;
-    if (paramq != null) {
-      paramq.onSceneEnd(paramInt2, paramInt3, paramString, (n)this);
-    }
-    paramString = cyy().iterator();
-    while (paramString.hasNext())
+    AppMethodBeat.i(165242);
+    ae.i(this.TAG, "errType " + paramInt2 + ", errCode " + paramInt3 + ", errMsg " + paramString);
+    label126:
+    Object localObject1;
+    if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      paramq = (alp)paramString.next();
-      ad.i(this.TAG, "retCode " + paramq.retCode + " retMsg " + paramq.krz);
-      paramArrayOfByte = com.tencent.mm.plugin.finder.spam.a.suA;
-      com.tencent.mm.plugin.finder.spam.a.aZ(paramq.retCode, paramq.krz);
+      paramq = this.rRO;
+      apf localapf;
+      if (paramq != null)
+      {
+        paramq = paramq.aEV();
+        paramArrayOfByte = paramq;
+        if (!(paramq instanceof apf)) {
+          paramArrayOfByte = null;
+        }
+        this.rRP = ((apf)paramArrayOfByte);
+        localapf = this.rRP;
+        if (localapf == null) {
+          break label1813;
+        }
+        paramq = this.rRP;
+        if (paramq == null) {
+          break label335;
+        }
+        paramq = paramq.GGr;
+        if (paramq == null) {
+          break label1491;
+        }
+        if (((Collection)paramq).isEmpty()) {
+          break label341;
+        }
+        paramInt1 = 1;
+        label146:
+        if (paramInt1 == 0) {
+          break label346;
+        }
+        paramArrayOfByte = paramq;
+      }
+      for (;;)
+      {
+        if ((paramArrayOfByte != null) && (!bu.isNullOrNil(((FinderContact)paramq.get(0)).username)))
+        {
+          paramArrayOfByte = com.tencent.mm.kernel.g.ajR();
+          p.g(paramArrayOfByte, "MMKernel.storage()");
+          paramArrayOfByte.ajA().set(am.a.JaW, ((FinderContact)paramq.get(0)).username);
+          paramArrayOfByte = c.rPy;
+          paramArrayOfByte = paramq.get(0);
+          p.g(paramArrayOfByte, "self[0]");
+          c.a.a((FinderContact)paramArrayOfByte);
+          paramArrayOfByte = ((PluginFinder)com.tencent.mm.kernel.g.ad(PluginFinder.class)).getFinderSyncExtension();
+          localObject1 = this.rRP;
+          if (localObject1 == null) {
+            p.gkB();
+          }
+          paramArrayOfByte.fG(((apf)localObject1).continueFlag, 5);
+          paramArrayOfByte = this.rRO;
+          if (paramArrayOfByte == null) {
+            p.gkB();
+          }
+          paramArrayOfByte = paramArrayOfByte.aEV();
+          if (paramArrayOfByte == null)
+          {
+            paramString = new d.v("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.FinderInitResponse");
+            AppMethodBeat.o(165242);
+            throw paramString;
+            paramq = null;
+            break;
+            label335:
+            paramq = null;
+            break label126;
+            label341:
+            paramInt1 = 0;
+            break label146;
+            label346:
+            paramArrayOfByte = null;
+            continue;
+          }
+          paramArrayOfByte = ((apf)paramArrayOfByte).rjr;
+          if (paramArrayOfByte != null)
+          {
+            localObject2 = ((Iterable)paramArrayOfByte).iterator();
+            for (;;)
+            {
+              if (((Iterator)localObject2).hasNext())
+              {
+                paramArrayOfByte = (ama)((Iterator)localObject2).next();
+                p.g(paramArrayOfByte, "it");
+                Object localObject3;
+                Object localObject4;
+                switch (paramArrayOfByte.cmdId)
+                {
+                default: 
+                  break;
+                case 105: 
+                  localObject1 = (a)new anl();
+                  paramArrayOfByte = paramArrayOfByte.GEu;
+                  if (paramArrayOfByte != null) {}
+                  for (paramArrayOfByte = paramArrayOfByte.toByteArray();; paramArrayOfByte = null)
+                  {
+                    try
+                    {
+                      ((a)localObject1).parseFrom(paramArrayOfByte);
+                      paramArrayOfByte = (byte[])localObject1;
+                    }
+                    catch (Exception paramArrayOfByte)
+                    {
+                      for (;;)
+                      {
+                        ae.l("safeParser", "", new Object[] { paramArrayOfByte });
+                        paramArrayOfByte = null;
+                        continue;
+                        paramArrayOfByte = null;
+                        continue;
+                        paramArrayOfByte = null;
+                      }
+                    }
+                    localObject1 = (anl)paramArrayOfByte;
+                    paramArrayOfByte = c.rPy;
+                    if (c.a.ahT(com.tencent.mm.model.v.aAK()) == null) {
+                      break;
+                    }
+                    localObject3 = this.TAG;
+                    localObject4 = new StringBuilder("save follow count ");
+                    if (localObject1 == null) {
+                      break label633;
+                    }
+                    paramArrayOfByte = Integer.valueOf(((anl)localObject1).GEO);
+                    ae.i((String)localObject3, paramArrayOfByte);
+                    paramArrayOfByte = com.tencent.mm.kernel.g.ajR();
+                    p.g(paramArrayOfByte, "MMKernel.storage()");
+                    localObject3 = paramArrayOfByte.ajA();
+                    localObject4 = am.a.Jcx;
+                    if (localObject1 == null) {
+                      break label639;
+                    }
+                    paramArrayOfByte = Integer.valueOf(((anl)localObject1).GEO);
+                    ((aj)localObject3).set((am.a)localObject4, paramArrayOfByte);
+                    break;
+                  }
+                case 106: 
+                  label633:
+                  label639:
+                  localObject1 = (a)new anc();
+                  paramArrayOfByte = paramArrayOfByte.GEu;
+                  if (paramArrayOfByte != null) {}
+                  for (paramArrayOfByte = paramArrayOfByte.toByteArray();; paramArrayOfByte = null)
+                  {
+                    try
+                    {
+                      ((a)localObject1).parseFrom(paramArrayOfByte);
+                      paramArrayOfByte = (byte[])localObject1;
+                    }
+                    catch (Exception paramArrayOfByte)
+                    {
+                      for (;;)
+                      {
+                        ae.l("safeParser", "", new Object[] { paramArrayOfByte });
+                        paramArrayOfByte = null;
+                        continue;
+                        paramArrayOfByte = null;
+                        continue;
+                        paramArrayOfByte = null;
+                      }
+                    }
+                    localObject1 = (anc)paramArrayOfByte;
+                    paramArrayOfByte = c.rPy;
+                    if (c.a.ahT(com.tencent.mm.model.v.aAK()) == null) {
+                      break;
+                    }
+                    localObject3 = this.TAG;
+                    localObject4 = new StringBuilder("save fans count ");
+                    if (localObject1 == null) {
+                      break label839;
+                    }
+                    paramArrayOfByte = Integer.valueOf(((anc)localObject1).GDY);
+                    ae.i((String)localObject3, paramArrayOfByte);
+                    paramArrayOfByte = com.tencent.mm.kernel.g.ajR();
+                    p.g(paramArrayOfByte, "MMKernel.storage()");
+                    localObject3 = paramArrayOfByte.ajA();
+                    localObject4 = am.a.Jcy;
+                    if (localObject1 == null) {
+                      break label845;
+                    }
+                    paramArrayOfByte = Integer.valueOf(((anc)localObject1).GDY);
+                    ((aj)localObject3).set((am.a)localObject4, paramArrayOfByte);
+                    break;
+                  }
+                }
+              }
+            }
+          }
+          label839:
+          label845:
+          paramArrayOfByte = com.tencent.mm.kernel.g.ajR();
+          p.g(paramArrayOfByte, "MMKernel.storage()");
+          paramArrayOfByte = paramArrayOfByte.ajA();
+          localObject1 = am.a.JbA;
+          Object localObject2 = this.rRP;
+          if (localObject2 == null) {
+            p.gkB();
+          }
+          paramArrayOfByte.set((am.a)localObject1, bu.cH(z.a(((apf)localObject2).GjQ)));
+          paramArrayOfByte = com.tencent.mm.kernel.g.ajR();
+          p.g(paramArrayOfByte, "MMKernel.storage()");
+          paramArrayOfByte.ajA().set(am.a.JaX, ((FinderContact)paramq.get(0)).nickname);
+          paramArrayOfByte = com.tencent.mm.kernel.g.ajR();
+          p.g(paramArrayOfByte, "MMKernel.storage()");
+          paramArrayOfByte.ajA().set(am.a.JaY, ((FinderContact)paramq.get(0)).signature);
+          paramArrayOfByte = com.tencent.mm.kernel.g.ajR();
+          p.g(paramArrayOfByte, "MMKernel.storage()");
+          paramArrayOfByte.ajA().set(am.a.JaZ, ((FinderContact)paramq.get(0)).headUrl);
+          paramArrayOfByte = com.tencent.mm.kernel.g.ajR();
+          p.g(paramArrayOfByte, "MMKernel.storage()");
+          paramArrayOfByte.ajA().set(am.a.Jbx, Integer.valueOf(((FinderContact)paramq.get(0)).extFlag));
+          paramArrayOfByte = com.tencent.mm.kernel.g.ajR();
+          p.g(paramArrayOfByte, "MMKernel.storage()");
+          paramArrayOfByte.ajA().set(am.a.Jbe, Integer.valueOf(((FinderContact)paramq.get(0)).originalFlag));
+          paramArrayOfByte = com.tencent.mm.kernel.g.ajR();
+          p.g(paramArrayOfByte, "MMKernel.storage()");
+          paramArrayOfByte.ajA().set(am.a.Jbj, Integer.valueOf(((FinderContact)paramq.get(0)).originalEntranceFlag));
+          if (((FinderContact)paramq.get(0)).originalInfo != null)
+          {
+            paramArrayOfByte = com.tencent.mm.kernel.g.ajR();
+            p.g(paramArrayOfByte, "MMKernel.storage()");
+            localObject1 = paramArrayOfByte.ajA();
+            localObject2 = am.a.Jbf;
+            paramArrayOfByte = ((FinderContact)paramq.get(0)).originalInfo;
+            if (paramArrayOfByte == null) {
+              break label1619;
+            }
+            paramArrayOfByte = Integer.valueOf(paramArrayOfByte.GHB);
+            ((aj)localObject1).set((am.a)localObject2, paramArrayOfByte);
+            paramArrayOfByte = com.tencent.mm.kernel.g.ajR();
+            p.g(paramArrayOfByte, "MMKernel.storage()");
+            localObject1 = paramArrayOfByte.ajA();
+            localObject2 = am.a.Jbg;
+            paramArrayOfByte = ((FinderContact)paramq.get(0)).originalInfo;
+            if (paramArrayOfByte == null) {
+              break label1625;
+            }
+            paramArrayOfByte = Integer.valueOf(paramArrayOfByte.GHC);
+            label1256:
+            ((aj)localObject1).set((am.a)localObject2, paramArrayOfByte);
+            paramArrayOfByte = com.tencent.mm.kernel.g.ajR();
+            p.g(paramArrayOfByte, "MMKernel.storage()");
+            localObject1 = paramArrayOfByte.ajA();
+            localObject2 = am.a.Jbh;
+            paramArrayOfByte = ((FinderContact)paramq.get(0)).originalInfo;
+            if (paramArrayOfByte == null) {
+              break label1631;
+            }
+            paramArrayOfByte = Integer.valueOf(paramArrayOfByte.GHD);
+            label1318:
+            ((aj)localObject1).set((am.a)localObject2, paramArrayOfByte);
+            paramArrayOfByte = com.tencent.mm.kernel.g.ajR();
+            p.g(paramArrayOfByte, "MMKernel.storage()");
+            localObject1 = paramArrayOfByte.ajA();
+            localObject2 = am.a.Jbi;
+            paramArrayOfByte = ((FinderContact)paramq.get(0)).originalInfo;
+            if (paramArrayOfByte == null) {
+              break label1637;
+            }
+            paramArrayOfByte = Integer.valueOf(paramArrayOfByte.GHE);
+            label1380:
+            ((aj)localObject1).set((am.a)localObject2, paramArrayOfByte);
+            paramArrayOfByte = com.tencent.mm.kernel.g.ajR();
+            p.g(paramArrayOfByte, "MMKernel.storage()");
+            localObject1 = paramArrayOfByte.ajA();
+            localObject2 = am.a.Jbl;
+            paramArrayOfByte = ((FinderContact)paramq.get(0)).originalInfo;
+            if (paramArrayOfByte == null) {
+              break label1643;
+            }
+            paramArrayOfByte = Integer.valueOf(paramArrayOfByte.GHF);
+            label1442:
+            ((aj)localObject1).set((am.a)localObject2, paramArrayOfByte);
+          }
+          if (((FinderContact)paramq.get(0)).authInfo != null) {
+            break label1649;
+          }
+          paramq = com.tencent.mm.kernel.g.ajR();
+          p.g(paramq, "MMKernel.storage()");
+          paramq.ajA().set(am.a.Jba, "");
+        }
+      }
+      label1491:
+      paramq = localapf.GGs;
+      p.g(paramq, "it.tabInfos");
+      paramq = ((Iterable)paramq).iterator();
     }
-    AppMethodBeat.o(165245);
+    else
+    {
+      for (;;)
+      {
+        if (paramq.hasNext())
+        {
+          paramArrayOfByte = (asm)paramq.next();
+          ae.i(this.TAG, paramArrayOfByte.GEB + " => " + paramArrayOfByte.GJE);
+          if (paramArrayOfByte.GEB == 4)
+          {
+            localObject1 = com.tencent.mm.kernel.g.ajR();
+            p.g(localObject1, "MMKernel.storage()");
+            ((com.tencent.mm.kernel.e)localObject1).ajA().set(am.a.JbN, paramArrayOfByte.GJE);
+            continue;
+            label1619:
+            paramArrayOfByte = null;
+            break;
+            label1625:
+            paramArrayOfByte = null;
+            break label1256;
+            label1631:
+            paramArrayOfByte = null;
+            break label1318;
+            label1637:
+            paramArrayOfByte = null;
+            break label1380;
+            label1643:
+            paramArrayOfByte = null;
+            break label1442;
+            label1649:
+            paramArrayOfByte = com.tencent.mm.kernel.g.ajR();
+            p.g(paramArrayOfByte, "MMKernel.storage()");
+            paramArrayOfByte = paramArrayOfByte.ajA();
+            localObject1 = am.a.Jba;
+            paramq = ((FinderContact)paramq.get(0)).authInfo;
+            if (paramq != null) {}
+            for (paramq = paramq.toByteArray();; paramq = null)
+            {
+              paramArrayOfByte.set((am.a)localObject1, bu.cH(paramq));
+              break;
+            }
+          }
+          if (paramArrayOfByte.GEB == 3)
+          {
+            localObject1 = com.tencent.mm.kernel.g.ajR();
+            p.g(localObject1, "MMKernel.storage()");
+            ((com.tencent.mm.kernel.e)localObject1).ajA().set(am.a.JbO, paramArrayOfByte.GJE);
+          }
+          else if (paramArrayOfByte.GEB == 1)
+          {
+            localObject1 = com.tencent.mm.kernel.g.ajR();
+            p.g(localObject1, "MMKernel.storage()");
+            ((com.tencent.mm.kernel.e)localObject1).ajA().set(am.a.JbM, paramArrayOfByte.GJE);
+            continue;
+            com.tencent.mm.plugin.report.service.g.yxI.n(1279L, 24L, 1L);
+          }
+        }
+      }
+    }
+    label1813:
+    paramq = this.callback;
+    if (paramq != null)
+    {
+      paramq.onSceneEnd(paramInt2, paramInt3, paramString, (n)this);
+      AppMethodBeat.o(165242);
+      return;
+    }
+    AppMethodBeat.o(165242);
   }
-  
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/cgi/NetSceneFinderOplog$Companion;", "", "()V", "CmdIdModFeedReproduction", "", "getCmdIdModFeedReproduction", "()I", "CmdIdModMsgMuteSetting", "getCmdIdModMsgMuteSetting", "CmdModBlackList", "getCmdModBlackList", "CmdModFeedSetting", "getCmdModFeedSetting", "CmdModMsgSessionMuteSetting", "getCmdModMsgSessionMuteSetting", "CmdModRecommendSetting", "getCmdModRecommendSetting", "CmdModUserInfo", "getCmdModUserInfo", "CmdModWxMsgSessionMuteSetting", "getCmdModWxMsgSessionMuteSetting", "plugin-finder_release"})
-  public static final class a {}
 }
 
 

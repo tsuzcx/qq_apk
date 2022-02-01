@@ -6,18 +6,18 @@ import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.i.f;
 import com.tencent.mm.pluginsdk.i.f.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
 
 public class SuicideListener
   extends BroadcastReceiver
 {
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    AppMethodBeat.i(214537);
-    ad.i("Tinker.TinkerResponseProcessor", "do suicide");
-    f.EOZ.by(aj.getContext());
-    AppMethodBeat.o(214537);
+    AppMethodBeat.i(197750);
+    ae.i("Tinker.TinkerResponseProcessor", "do suicide");
+    f.Fhu.bA(ak.getContext());
+    AppMethodBeat.o(197750);
   }
 }
 

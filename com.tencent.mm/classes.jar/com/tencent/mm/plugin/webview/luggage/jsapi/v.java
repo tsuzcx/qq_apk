@@ -8,8 +8,8 @@ import com.tencent.mm.ipcinvoker.d;
 import com.tencent.mm.ipcinvoker.h;
 import com.tencent.mm.ipcinvoker.type.IPCString;
 import com.tencent.mm.plugin.webview.luggage.g;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import org.json.JSONObject;
 
 public class v
@@ -19,22 +19,22 @@ public class v
   
   public final void b(final com.tencent.luggage.d.b<g>.a paramb)
   {
-    AppMethodBeat.i(207906);
+    AppMethodBeat.i(198086);
     String str = paramb.chh.cgn.optString("localId");
-    if (bt.isNullOrNil(str))
+    if (bu.isNullOrNil(str))
     {
-      ad.e("MicroMsg.JsApiGetLocalImgData", "localId is nil");
+      ae.e("MicroMsg.JsApiGetLocalImgData", "localId is nil");
       paramb.a("invaild_localid", null);
-      AppMethodBeat.o(207906);
+      AppMethodBeat.o(198086);
       return;
     }
     IPCString localIPCString = new IPCString();
     localIPCString.value = str;
     h.a("com.tencent.mm", localIPCString, a.class, new d() {});
-    AppMethodBeat.o(207906);
+    AppMethodBeat.o(198086);
   }
   
-  public final int ccO()
+  public final int ced()
   {
     return 0;
   }

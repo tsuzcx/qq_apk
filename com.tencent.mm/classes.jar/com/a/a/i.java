@@ -70,21 +70,21 @@ final class i
   
   private float a(h.ay paramay)
   {
-    AppMethodBeat.i(214876);
+    AppMethodBeat.i(213107);
     j localj = new j((byte)0);
     a(paramay, localj);
     float f = localj.x;
-    AppMethodBeat.o(214876);
+    AppMethodBeat.o(213107);
     return f;
   }
   
   private static Matrix a(h.b paramb1, h.b paramb2, f paramf)
   {
-    AppMethodBeat.i(214882);
+    AppMethodBeat.i(213113);
     Matrix localMatrix = new Matrix();
     if ((paramf == null) || (paramf.aPG == null))
     {
-      AppMethodBeat.o(214882);
+      AppMethodBeat.o(213113);
       return localMatrix;
     }
     float f2 = paramb1.width / paramb2.width;
@@ -96,7 +96,7 @@ final class i
       localMatrix.preTranslate(paramb1.minX, paramb1.minY);
       localMatrix.preScale(f2, f3);
       localMatrix.preTranslate(f1, f4);
-      AppMethodBeat.o(214882);
+      AppMethodBeat.o(213113);
       return localMatrix;
     }
     float f5;
@@ -123,7 +123,7 @@ final class i
       localMatrix.preTranslate(paramb1.minX, paramb1.minY);
       localMatrix.preScale(f3, f3);
       localMatrix.preTranslate(f1, f2);
-      AppMethodBeat.o(214882);
+      AppMethodBeat.o(213113);
       return localMatrix;
       f3 = Math.min(f2, f3);
       break;
@@ -139,7 +139,7 @@ final class i
   
   private Path a(h.ab paramab)
   {
-    AppMethodBeat.i(214911);
+    AppMethodBeat.i(213142);
     float f1;
     float f2;
     float f3;
@@ -182,7 +182,7 @@ final class i
     for (;;)
     {
       paramab.close();
-      AppMethodBeat.o(214911);
+      AppMethodBeat.o(213142);
       return paramab;
       if (paramab.aQF == null)
       {
@@ -223,14 +223,14 @@ final class i
   @TargetApi(19)
   private Path a(h.ak paramak, boolean paramBoolean)
   {
-    AppMethodBeat.i(214902);
+    AppMethodBeat.i(213133);
     this.aTt.push(this.aTs);
     this.aTs = new g(this.aTs);
     a(this.aTs, paramak);
     if ((!ri()) || (!visible()))
     {
       this.aTs = ((g)this.aTt.pop());
-      AppMethodBeat.o(214902);
+      AppMethodBeat.o(213133);
       return null;
     }
     Object localObject3;
@@ -247,19 +247,19 @@ final class i
       {
         String.format("Use reference '%s' not found", new Object[] { ((h.be)localObject3).aQs });
         this.aTs = ((g)this.aTt.pop());
-        AppMethodBeat.o(214902);
+        AppMethodBeat.o(213133);
         return null;
       }
       if (!(localObject1 instanceof h.ak))
       {
         this.aTs = ((g)this.aTt.pop());
-        AppMethodBeat.o(214902);
+        AppMethodBeat.o(213133);
         return null;
       }
       localObject2 = a((h.ak)localObject1, false);
       if (localObject2 == null)
       {
-        AppMethodBeat.o(214902);
+        AppMethodBeat.o(213133);
         return null;
       }
       if (((h.be)localObject3).aSS == null) {
@@ -279,7 +279,7 @@ final class i
         }
       }
       this.aTs = ((g)this.aTt.pop());
-      AppMethodBeat.o(214902);
+      AppMethodBeat.o(213133);
       return localObject1;
     }
     if ((paramak instanceof h.l))
@@ -300,7 +300,7 @@ final class i
     {
       if (localObject1 == null)
       {
-        AppMethodBeat.o(214902);
+        AppMethodBeat.o(213133);
         return null;
         if ((paramak instanceof h.ab))
         {
@@ -342,7 +342,7 @@ final class i
           break;
         }
         String.format("Invalid %s element found in clipPath definition", new Object[] { paramak.getNodeName() });
-        AppMethodBeat.o(214902);
+        AppMethodBeat.o(213133);
         return null;
       }
       localObject1 = null;
@@ -352,7 +352,7 @@ final class i
   private Path a(h.aw paramaw)
   {
     float f2 = 0.0F;
-    AppMethodBeat.i(214915);
+    AppMethodBeat.i(213146);
     float f1;
     float f3;
     label51:
@@ -402,7 +402,7 @@ final class i
       }
       Object localObject = new Path();
       a(paramaw, new f(f2 + f4, f5 + f3, (Path)localObject));
-      AppMethodBeat.o(214915);
+      AppMethodBeat.o(213146);
       return localObject;
       f1 = ((h.p)paramaw.aTc.get(0)).a(this);
       break;
@@ -417,7 +417,7 @@ final class i
   
   private Path a(h.d paramd)
   {
-    AppMethodBeat.i(214912);
+    AppMethodBeat.i(213143);
     float f1;
     if (paramd.aQx != null)
     {
@@ -445,7 +445,7 @@ final class i
       paramd.cubicTo(f1 - f7, f6, f3, f2 + f7, f3, f2);
       paramd.cubicTo(f3, f2 - f7, f1 - f7, f4, f1, f4);
       paramd.close();
-      AppMethodBeat.o(214912);
+      AppMethodBeat.o(213143);
       return paramd;
       f1 = 0.0F;
       break;
@@ -454,7 +454,7 @@ final class i
   
   private Path a(h.i parami)
   {
-    AppMethodBeat.i(214913);
+    AppMethodBeat.i(213144);
     float f1;
     if (parami.aQx != null)
     {
@@ -484,7 +484,7 @@ final class i
       parami.cubicTo(f1 - f8, f6, f3, f2 + f7, f3, f2);
       parami.cubicTo(f3, f2 - f7, f1 - f8, f4, f1, f4);
       parami.close();
-      AppMethodBeat.o(214913);
+      AppMethodBeat.o(213144);
       return parami;
       f1 = 0.0F;
       break;
@@ -494,7 +494,7 @@ final class i
   private static Typeface a(String paramString, Integer paramInteger, h.ae.b paramb)
   {
     int k = 0;
-    AppMethodBeat.i(214885);
+    AppMethodBeat.i(213116);
     int i;
     int j;
     if (paramb == h.ae.b.aSi)
@@ -524,7 +524,7 @@ final class i
     }
     for (;;)
     {
-      AppMethodBeat.o(214885);
+      AppMethodBeat.o(213116);
       return paramString;
       i = 0;
       break;
@@ -579,7 +579,7 @@ final class i
   private h.b a(h.p paramp1, h.p paramp2, h.p paramp3, h.p paramp4)
   {
     float f2 = 0.0F;
-    AppMethodBeat.i(214866);
+    AppMethodBeat.i(213097);
     float f1;
     float f3;
     if (paramp1 != null)
@@ -603,7 +603,7 @@ final class i
     for (float f4 = paramp4.b(this);; f4 = paramp1.height)
     {
       paramp1 = new h.b(f1, f2, f3, f4);
-      AppMethodBeat.o(214866);
+      AppMethodBeat.o(213097);
       return paramp1;
       f1 = 0.0F;
       break;
@@ -614,7 +614,7 @@ final class i
   
   private g a(h.an paraman, g paramg)
   {
-    AppMethodBeat.i(214892);
+    AppMethodBeat.i(213123);
     ArrayList localArrayList = new ArrayList();
     for (;;)
     {
@@ -632,17 +632,17 @@ final class i
     }
     paramg.aQi = this.aTs.aQi;
     paramg.aQk = this.aTs.aQk;
-    AppMethodBeat.o(214892);
+    AppMethodBeat.o(213123);
     return paramg;
   }
   
   private String a(String paramString, boolean paramBoolean1, boolean paramBoolean2)
   {
-    AppMethodBeat.i(214878);
+    AppMethodBeat.i(213109);
     if (this.aTs.aTS)
     {
       paramString = paramString.replaceAll("[\\n\\t]", " ");
-      AppMethodBeat.o(214878);
+      AppMethodBeat.o(213109);
       return paramString;
     }
     String str = paramString.replaceAll("\\n", "").replaceAll("\\t", " ");
@@ -655,18 +655,18 @@ final class i
       str = paramString.replaceAll("\\s+$", "");
     }
     paramString = str.replaceAll("\\s{2,}", " ");
-    AppMethodBeat.o(214878);
+    AppMethodBeat.o(213109);
     return paramString;
   }
   
   private List<b> a(h.z paramz)
   {
     int i = 2;
-    AppMethodBeat.i(214874);
+    AppMethodBeat.i(213105);
     int j = paramz.points.length;
     if (j < 2)
     {
-      AppMethodBeat.o(214874);
+      AppMethodBeat.o(213105);
       return null;
     }
     ArrayList localArrayList = new ArrayList();
@@ -697,7 +697,7 @@ final class i
     }
     for (;;)
     {
-      AppMethodBeat.o(214874);
+      AppMethodBeat.o(213105);
       return localArrayList;
       localArrayList.add(localb);
     }
@@ -705,10 +705,10 @@ final class i
   
   private void a(h.af paramaf, h.b paramb1, h.b paramb2, f paramf)
   {
-    AppMethodBeat.i(214865);
+    AppMethodBeat.i(213096);
     if ((paramb1.width == 0.0F) || (paramb1.height == 0.0F))
     {
-      AppMethodBeat.o(214865);
+      AppMethodBeat.o(213096);
       return;
     }
     if (paramf == null) {
@@ -721,7 +721,7 @@ final class i
       a(this.aTs, paramaf);
       if (!ri())
       {
-        AppMethodBeat.o(214865);
+        AppMethodBeat.o(213096);
         return;
         paramf = f.aPK;
       }
@@ -746,7 +746,7 @@ final class i
             b(paramaf);
           }
           a(paramaf);
-          AppMethodBeat.o(214865);
+          AppMethodBeat.o(213096);
           return;
           this.aTq.translate(this.aTs.aQk.minX, this.aTs.aQk.minY);
         }
@@ -756,15 +756,15 @@ final class i
   
   private void a(h.aj paramaj)
   {
-    AppMethodBeat.i(214859);
+    AppMethodBeat.i(213090);
     this.aTu.push(paramaj);
     this.aTv.push(this.aTq.getMatrix());
-    AppMethodBeat.o(214859);
+    AppMethodBeat.o(213090);
   }
   
   private void a(h.aj paramaj, boolean paramBoolean)
   {
-    AppMethodBeat.i(214856);
+    AppMethodBeat.i(213087);
     if (paramBoolean) {
       a(paramaj);
     }
@@ -775,20 +775,20 @@ final class i
     if (paramBoolean) {
       rd();
     }
-    AppMethodBeat.o(214856);
+    AppMethodBeat.o(213087);
   }
   
   private void a(h.ak paramak)
   {
-    AppMethodBeat.i(214867);
+    AppMethodBeat.i(213098);
     if (paramak.aSX == null)
     {
-      AppMethodBeat.o(214867);
+      AppMethodBeat.o(213098);
       return;
     }
     if (paramak.aSS == null)
     {
-      AppMethodBeat.o(214867);
+      AppMethodBeat.o(213098);
       return;
     }
     Matrix localMatrix = new Matrix();
@@ -827,34 +827,34 @@ final class i
       if (((h.ak)localObject).aSS == null)
       {
         ((h.ak)localObject).aSS = h.b.i(paramak.left, paramak.top, paramak.right, paramak.bottom);
-        AppMethodBeat.o(214867);
+        AppMethodBeat.o(213098);
         return;
       }
       ((h.ak)localObject).aSS.a(h.b.i(paramak.left, paramak.top, paramak.right, paramak.bottom));
     }
-    AppMethodBeat.o(214867);
+    AppMethodBeat.o(213098);
   }
   
   private void a(h.ak paramak, Path paramPath)
   {
-    AppMethodBeat.i(214863);
+    AppMethodBeat.i(213094);
     if ((this.aTs.aPr.aRs instanceof h.u))
     {
       h.an localan = this.aSW.Y(((h.u)this.aTs.aPr.aRs).aQs);
       if ((localan instanceof h.y))
       {
         a(paramak, paramPath, (h.y)localan);
-        AppMethodBeat.o(214863);
+        AppMethodBeat.o(213094);
         return;
       }
     }
     this.aTq.drawPath(paramPath, this.aTs.aTQ);
-    AppMethodBeat.o(214863);
+    AppMethodBeat.o(213094);
   }
   
   private void a(h.ak paramak, Path paramPath, h.y paramy)
   {
-    AppMethodBeat.i(214916);
+    AppMethodBeat.i(213147);
     int i;
     float f1;
     label63:
@@ -902,7 +902,7 @@ final class i
       if ((f2 != 0.0F) && (f1 != 0.0F)) {
         break label384;
       }
-      AppMethodBeat.o(214916);
+      AppMethodBeat.o(213147);
       return;
       i = 0;
       break;
@@ -1050,12 +1050,12 @@ final class i
       b(paramy);
     }
     rc();
-    AppMethodBeat.o(214916);
+    AppMethodBeat.o(213147);
   }
   
   private void a(h.ak paramak, h.b paramb)
   {
-    AppMethodBeat.i(214870);
+    AppMethodBeat.i(213101);
     if (this.aTs.aPr.aRX != null)
     {
       Object localObject = new Paint();
@@ -1075,7 +1075,7 @@ final class i
       this.aTq.restore();
     }
     rc();
-    AppMethodBeat.o(214870);
+    AppMethodBeat.o(213101);
   }
   
   private static void a(h.am paramam1, h.am paramam2)
@@ -1096,10 +1096,10 @@ final class i
   
   private void a(h.an paraman, boolean paramBoolean, Path paramPath, Matrix paramMatrix)
   {
-    AppMethodBeat.i(214904);
+    AppMethodBeat.i(213135);
     if (!ri())
     {
-      AppMethodBeat.o(214904);
+      AppMethodBeat.o(213135);
       return;
     }
     rl();
@@ -1111,7 +1111,7 @@ final class i
     for (;;)
     {
       rm();
-      AppMethodBeat.o(214904);
+      AppMethodBeat.o(213135);
       return;
       String.format("<use> elements inside a <clipPath> cannot reference another <use>", new Object[0]);
       continue;
@@ -1149,11 +1149,11 @@ final class i
   private void a(h.aw paramaw, Path paramPath, Matrix paramMatrix)
   {
     float f2 = 0.0F;
-    AppMethodBeat.i(214910);
+    AppMethodBeat.i(213141);
     a(this.aTs, paramaw);
     if (!ri())
     {
-      AppMethodBeat.o(214910);
+      AppMethodBeat.o(213141);
       return;
     }
     if (paramaw.transform != null) {
@@ -1209,7 +1209,7 @@ final class i
       a(paramaw, new f(f2 + f4, f5 + f3, (Path)localObject));
       paramPath.setFillType(rn());
       paramPath.addPath((Path)localObject, paramMatrix);
-      AppMethodBeat.o(214910);
+      AppMethodBeat.o(213141);
       return;
       f1 = ((h.p)paramaw.aTc.get(0)).a(this);
       break;
@@ -1226,10 +1226,10 @@ final class i
   
   private void a(h.ay paramay, i parami)
   {
-    AppMethodBeat.i(214875);
+    AppMethodBeat.i(213106);
     if (!ri())
     {
-      AppMethodBeat.o(214875);
+      AppMethodBeat.o(213106);
       return;
     }
     paramay = paramay.aQH.iterator();
@@ -1429,7 +1429,7 @@ final class i
           }
           String.format("Tref reference '%s' not found", new Object[] { ((h.au)localObject1).aQs });
           break label203;
-          AppMethodBeat.o(214875);
+          AppMethodBeat.o(213106);
           return;
         }
       }
@@ -1438,7 +1438,7 @@ final class i
   
   private void a(h.ay paramay, StringBuilder paramStringBuilder)
   {
-    AppMethodBeat.i(214877);
+    AppMethodBeat.i(213108);
     paramay = paramay.aQH.iterator();
     boolean bool1 = true;
     if (paramay.hasNext())
@@ -1460,21 +1460,21 @@ final class i
         break;
       }
     }
-    AppMethodBeat.o(214877);
+    AppMethodBeat.o(213108);
   }
   
   private void a(h.be parambe, Path paramPath, Matrix paramMatrix)
   {
-    AppMethodBeat.i(214909);
+    AppMethodBeat.i(213140);
     a(this.aTs, parambe);
     if (!ri())
     {
-      AppMethodBeat.o(214909);
+      AppMethodBeat.o(213140);
       return;
     }
     if (!visible())
     {
-      AppMethodBeat.o(214909);
+      AppMethodBeat.o(213140);
       return;
     }
     if (parambe.transform != null) {
@@ -1484,36 +1484,36 @@ final class i
     if (localan == null)
     {
       String.format("Use reference '%s' not found", new Object[] { parambe.aQs });
-      AppMethodBeat.o(214909);
+      AppMethodBeat.o(213140);
       return;
     }
     d(parambe);
     a(localan, false, paramPath, paramMatrix);
-    AppMethodBeat.o(214909);
+    AppMethodBeat.o(213140);
   }
   
   private static void a(h.j paramj, String paramString)
   {
-    AppMethodBeat.i(214897);
+    AppMethodBeat.i(213128);
     for (;;)
     {
       h.an localan = paramj.aSW.Y(paramString);
       if (localan == null)
       {
         String.format("Gradient reference '%s' not found", new Object[] { paramString });
-        AppMethodBeat.o(214897);
+        AppMethodBeat.o(213128);
         return;
       }
       if (!(localan instanceof h.j))
       {
         String.format("Gradient href attributes must point to other gradient elements", new Object[0]);
-        AppMethodBeat.o(214897);
+        AppMethodBeat.o(213128);
         return;
       }
       if (localan == paramj)
       {
         String.format("Circular reference in gradient href attribute '%s'", new Object[] { paramString });
-        AppMethodBeat.o(214897);
+        AppMethodBeat.o(213128);
         return;
       }
       paramString = (h.j)localan;
@@ -1549,17 +1549,17 @@ final class i
       {
         break label181;
         label214:
-        AppMethodBeat.o(214897);
+        AppMethodBeat.o(213128);
       }
     }
   }
   
   private void a(h.l paraml)
   {
-    AppMethodBeat.i(214889);
+    AppMethodBeat.i(213120);
     if ((this.aTs.aPr.aRO == null) && (this.aTs.aPr.aRP == null) && (this.aTs.aPr.aRQ == null))
     {
-      AppMethodBeat.o(214889);
+      AppMethodBeat.o(213120);
       return;
     }
     Object localObject1;
@@ -1608,7 +1608,7 @@ final class i
       if (paraml != null) {
         break label487;
       }
-      AppMethodBeat.o(214889);
+      AppMethodBeat.o(213120);
       return;
       String.format("Marker reference '%s' not found", new Object[] { this.aTs.aPr.aRO });
       localObject1 = null;
@@ -1663,7 +1663,7 @@ final class i
     int j = paraml.size();
     if (j == 0)
     {
-      AppMethodBeat.o(214889);
+      AppMethodBeat.o(213120);
       return;
     }
     Object localObject4 = this.aTs.aPr;
@@ -1717,7 +1717,7 @@ final class i
         if (localObject3 != null) {
           a((h.r)localObject3, (b)paraml.get(j - 1));
         }
-        AppMethodBeat.o(214889);
+        AppMethodBeat.o(213120);
         return;
       }
     }
@@ -1725,16 +1725,16 @@ final class i
   
   private void a(h.l paraml, Path paramPath, Matrix paramMatrix)
   {
-    AppMethodBeat.i(214908);
+    AppMethodBeat.i(213139);
     a(this.aTs, paraml);
     if (!ri())
     {
-      AppMethodBeat.o(214908);
+      AppMethodBeat.o(213139);
       return;
     }
     if (!visible())
     {
-      AppMethodBeat.o(214908);
+      AppMethodBeat.o(213139);
       return;
     }
     if (paraml.transform != null) {
@@ -1749,7 +1749,7 @@ final class i
       d(paraml);
       paramPath.setFillType(rn());
       paramPath.addPath(localPath, paramMatrix);
-      AppMethodBeat.o(214908);
+      AppMethodBeat.o(213139);
       return;
       if ((paraml instanceof h.d))
       {
@@ -1767,14 +1767,14 @@ final class i
         localPath = b((h.z)paraml);
       }
     }
-    AppMethodBeat.o(214908);
+    AppMethodBeat.o(213139);
   }
   
   private void a(h.r paramr, b paramb)
   {
     float f4 = 3.0F;
     float f8 = 0.0F;
-    AppMethodBeat.i(214890);
+    AppMethodBeat.i(213121);
     rb();
     float f1;
     if (paramr.aRd != null) {
@@ -1880,7 +1880,7 @@ final class i
             b(paramr);
           }
           rc();
-          AppMethodBeat.o(214890);
+          AppMethodBeat.o(213121);
           return;
           f1 = paramr.aRd.floatValue();
           break;
@@ -1923,7 +1923,7 @@ final class i
   private void a(h.s params, h.ak paramak, h.b paramb)
   {
     float f2 = 1.2F;
-    AppMethodBeat.i(214918);
+    AppMethodBeat.i(213149);
     if ((params.aRe != null) && (params.aRe.booleanValue()))
     {
       i = 1;
@@ -1946,7 +1946,7 @@ final class i
       if ((f1 != 0.0F) && (f2 != 0.0F)) {
         break label180;
       }
-      AppMethodBeat.o(214918);
+      AppMethodBeat.o(213149);
       return;
       i = 0;
       break;
@@ -1984,23 +1984,23 @@ final class i
         a(paramak, paramb);
       }
       rc();
-      AppMethodBeat.o(214918);
+      AppMethodBeat.o(213149);
       return;
     }
   }
   
   private void a(h.v paramv, Path paramPath, Matrix paramMatrix)
   {
-    AppMethodBeat.i(214907);
+    AppMethodBeat.i(213138);
     a(this.aTs, paramv);
     if (!ri())
     {
-      AppMethodBeat.o(214907);
+      AppMethodBeat.o(213138);
       return;
     }
     if (!visible())
     {
-      AppMethodBeat.o(214907);
+      AppMethodBeat.o(213138);
       return;
     }
     if (paramv.transform != null) {
@@ -2013,31 +2013,31 @@ final class i
     d(paramv);
     paramPath.setFillType(rn());
     paramPath.addPath(localPath, paramMatrix);
-    AppMethodBeat.o(214907);
+    AppMethodBeat.o(213138);
   }
   
   private static void a(h.y paramy, String paramString)
   {
-    AppMethodBeat.i(214917);
+    AppMethodBeat.i(213148);
     for (;;)
     {
       h.an localan = paramy.aSW.Y(paramString);
       if (localan == null)
       {
         String.format("Pattern reference '%s' not found", new Object[] { paramString });
-        AppMethodBeat.o(214917);
+        AppMethodBeat.o(213148);
         return;
       }
       if (!(localan instanceof h.y))
       {
         String.format("Pattern href attributes must point to other pattern elements", new Object[0]);
-        AppMethodBeat.o(214917);
+        AppMethodBeat.o(213148);
         return;
       }
       if (localan == paramy)
       {
         String.format("Circular reference in pattern href attribute '%s'", new Object[] { paramString });
-        AppMethodBeat.o(214917);
+        AppMethodBeat.o(213148);
         return;
       }
       paramString = (h.y)localan;
@@ -2076,13 +2076,13 @@ final class i
       }
       paramString = paramString.aQs;
     }
-    AppMethodBeat.o(214917);
+    AppMethodBeat.o(213148);
   }
   
   private void a(g paramg, h.ae paramae)
   {
     boolean bool2 = true;
-    AppMethodBeat.i(214883);
+    AppMethodBeat.i(213114);
     if (a(paramae, 4096L)) {
       paramg.aPr.aRE = paramae.aRE;
     }
@@ -2326,7 +2326,7 @@ final class i
         if (a(paramae, 137438953472L)) {
           paramg.aPr.aSd = paramae.aSd;
         }
-        AppMethodBeat.o(214883);
+        AppMethodBeat.o(213114);
         return;
         bool1 = false;
         break;
@@ -2394,7 +2394,7 @@ final class i
   
   private void a(g paramg, h.al paramal)
   {
-    AppMethodBeat.i(214861);
+    AppMethodBeat.i(213092);
     if (paramal.aSX == null) {}
     for (boolean bool = true;; bool = false)
     {
@@ -2417,12 +2417,12 @@ final class i
     if (paramal.aPr != null) {
       a(paramg, paramal.aPr);
     }
-    AppMethodBeat.o(214861);
+    AppMethodBeat.o(213092);
   }
   
   private static void a(g paramg, boolean paramBoolean, h.ao paramao)
   {
-    AppMethodBeat.i(214884);
+    AppMethodBeat.i(213115);
     Float localFloat;
     float f;
     if (paramBoolean)
@@ -2440,7 +2440,7 @@ final class i
         break label110;
       }
       paramg.aTQ.setColor(i);
-      AppMethodBeat.o(214884);
+      AppMethodBeat.o(213115);
       return;
       localFloat = paramg.aPr.aRw;
       break;
@@ -2450,18 +2450,18 @@ final class i
       }
     }
     label103:
-    AppMethodBeat.o(214884);
+    AppMethodBeat.o(213115);
     return;
     label110:
     paramg.aTR.setColor(i);
-    AppMethodBeat.o(214884);
+    AppMethodBeat.o(213115);
   }
   
   private void a(boolean paramBoolean, h.ac paramac)
   {
     boolean bool2 = true;
     boolean bool1 = true;
-    AppMethodBeat.i(214898);
+    AppMethodBeat.i(213129);
     g localg;
     if (paramBoolean)
     {
@@ -2484,7 +2484,7 @@ final class i
         }
         paramac = this.aTs;
         a(paramac, paramBoolean, paramac.aPr.aRs);
-        AppMethodBeat.o(214898);
+        AppMethodBeat.o(213129);
         return;
         label134:
         bool1 = false;
@@ -2510,14 +2510,14 @@ final class i
         paramac = this.aTs;
         a(paramac, paramBoolean, paramac.aPr.aRv);
       }
-      AppMethodBeat.o(214898);
+      AppMethodBeat.o(213129);
       return;
     }
   }
   
   private void a(boolean paramBoolean, h.b paramb, h.am paramam)
   {
-    AppMethodBeat.i(214895);
+    AppMethodBeat.i(213126);
     if (paramam.aQs != null) {
       a(paramam, paramam.aQs);
     }
@@ -2588,7 +2588,7 @@ final class i
         break label401;
       }
       this.aTs.aTO = false;
-      AppMethodBeat.o(214895);
+      AppMethodBeat.o(213126);
       return;
       i = 0;
       break;
@@ -2636,7 +2636,7 @@ final class i
     }
     label401:
     this.aTs.aTP = false;
-    AppMethodBeat.o(214895);
+    AppMethodBeat.o(213126);
     return;
     label416:
     int[] arrayOfInt = new int[j];
@@ -2681,7 +2681,7 @@ final class i
     {
       rc();
       localPaint.setColor(arrayOfInt[(j - 1)]);
-      AppMethodBeat.o(214895);
+      AppMethodBeat.o(213126);
       return;
     }
     Object localObject = Shader.TileMode.CLAMP;
@@ -2700,7 +2700,7 @@ final class i
       paramb.setLocalMatrix(localMatrix);
       localPaint.setShader(paramb);
       localPaint.setAlpha(T(this.aTs.aPr.aRu.floatValue()));
-      AppMethodBeat.o(214895);
+      AppMethodBeat.o(213126);
       return;
       label749:
       paramb = (h.b)localObject;
@@ -2712,7 +2712,7 @@ final class i
   
   private void a(boolean paramBoolean, h.b paramb, h.aq paramaq)
   {
-    AppMethodBeat.i(214896);
+    AppMethodBeat.i(213127);
     if (paramaq.aQs != null) {
       a(paramaq, paramaq.aQs);
     }
@@ -2774,7 +2774,7 @@ final class i
         break label376;
       }
       this.aTs.aTO = false;
-      AppMethodBeat.o(214896);
+      AppMethodBeat.o(213127);
       return;
       i = 0;
       break;
@@ -2813,7 +2813,7 @@ final class i
     }
     label376:
     this.aTs.aTP = false;
-    AppMethodBeat.o(214896);
+    AppMethodBeat.o(213127);
     return;
     label391:
     int[] arrayOfInt = new int[j];
@@ -2858,7 +2858,7 @@ final class i
     {
       rc();
       localPaint.setColor(arrayOfInt[(j - 1)]);
-      AppMethodBeat.o(214896);
+      AppMethodBeat.o(213127);
       return;
     }
     Object localObject = Shader.TileMode.CLAMP;
@@ -2877,7 +2877,7 @@ final class i
       paramb.setLocalMatrix(localMatrix);
       localPaint.setShader(paramb);
       localPaint.setAlpha(T(this.aTs.aPr.aRu.floatValue()));
-      AppMethodBeat.o(214896);
+      AppMethodBeat.o(213127);
       return;
       label713:
       paramb = (h.b)localObject;
@@ -2889,7 +2889,7 @@ final class i
   
   private void a(boolean paramBoolean, h.b paramb, h.u paramu)
   {
-    AppMethodBeat.i(214894);
+    AppMethodBeat.i(213125);
     h.an localan = this.aSW.Y(paramu.aQs);
     if (localan == null)
     {
@@ -2901,35 +2901,35 @@ final class i
           break;
         }
         a(this.aTs, paramBoolean, paramu.aRg);
-        AppMethodBeat.o(214894);
+        AppMethodBeat.o(213125);
         return;
       }
       if (paramBoolean)
       {
         this.aTs.aTO = false;
-        AppMethodBeat.o(214894);
+        AppMethodBeat.o(213125);
         return;
       }
       this.aTs.aTP = false;
-      AppMethodBeat.o(214894);
+      AppMethodBeat.o(213125);
       return;
     }
     if ((localan instanceof h.am))
     {
       a(paramBoolean, paramb, (h.am)localan);
-      AppMethodBeat.o(214894);
+      AppMethodBeat.o(213125);
       return;
     }
     if ((localan instanceof h.aq))
     {
       a(paramBoolean, paramb, (h.aq)localan);
-      AppMethodBeat.o(214894);
+      AppMethodBeat.o(213125);
       return;
     }
     if ((localan instanceof h.ac)) {
       a(paramBoolean, (h.ac)localan);
     }
-    AppMethodBeat.o(214894);
+    AppMethodBeat.o(213125);
   }
   
   private static boolean a(h.ae paramae, long paramLong)
@@ -2939,7 +2939,7 @@ final class i
   
   private static Path b(h.z paramz)
   {
-    AppMethodBeat.i(214914);
+    AppMethodBeat.i(213145);
     Path localPath = new Path();
     localPath.moveTo(paramz.points[0], paramz.points[1]);
     int i = 2;
@@ -2954,23 +2954,23 @@ final class i
     if (paramz.aSS == null) {
       paramz.aSS = e(localPath);
     }
-    AppMethodBeat.o(214914);
+    AppMethodBeat.o(213145);
     return localPath;
   }
   
   private void b(h.ak paramak)
   {
-    AppMethodBeat.i(214869);
+    AppMethodBeat.i(213100);
     a(paramak, paramak.aSS);
-    AppMethodBeat.o(214869);
+    AppMethodBeat.o(213100);
   }
   
   private void b(h.ak paramak, h.b paramb)
   {
-    AppMethodBeat.i(214900);
+    AppMethodBeat.i(213131);
     if (this.aTs.aPr.aRV == null)
     {
-      AppMethodBeat.o(214900);
+      AppMethodBeat.o(213131);
       return;
     }
     if (Build.VERSION.SDK_INT >= 19)
@@ -2979,11 +2979,11 @@ final class i
       if (paramak != null) {
         this.aTq.clipPath(paramak);
       }
-      AppMethodBeat.o(214900);
+      AppMethodBeat.o(213131);
       return;
     }
     d(paramak, paramb);
-    AppMethodBeat.o(214900);
+    AppMethodBeat.o(213131);
   }
   
   private void b(h.an paraman)
@@ -2991,10 +2991,10 @@ final class i
     Object localObject1 = null;
     float f2 = 0.0F;
     float f4 = 0.0F;
-    AppMethodBeat.i(214855);
+    AppMethodBeat.i(213086);
     if ((paraman instanceof h.t))
     {
-      AppMethodBeat.o(214855);
+      AppMethodBeat.o(213086);
       return;
     }
     rb();
@@ -3020,7 +3020,7 @@ final class i
         for (;;)
         {
           rc();
-          AppMethodBeat.o(214855);
+          AppMethodBeat.o(213086);
           return;
           if ((paraman instanceof h.be))
           {
@@ -3641,12 +3641,12 @@ final class i
   private Path c(h.ak paramak, h.b paramb)
   {
     int i = 0;
-    AppMethodBeat.i(214901);
+    AppMethodBeat.i(213132);
     paramak = paramak.aSW.Y(this.aTs.aPr.aRV);
     if (paramak == null)
     {
       String.format("ClipPath reference '%s' not found", new Object[] { this.aTs.aPr.aRV });
-      AppMethodBeat.o(214901);
+      AppMethodBeat.o(213132);
       return null;
     }
     Object localObject1 = (h.e)paramak;
@@ -3689,88 +3689,88 @@ final class i
     }
     paramb.transform(paramak);
     this.aTs = ((g)this.aTt.pop());
-    AppMethodBeat.o(214901);
+    AppMethodBeat.o(213132);
     return paramb;
   }
   
   private void c(h.ak paramak)
   {
-    AppMethodBeat.i(214893);
+    AppMethodBeat.i(213124);
     if ((this.aTs.aPr.aRs instanceof h.u)) {
       a(true, paramak.aSS, (h.u)this.aTs.aPr.aRs);
     }
     if ((this.aTs.aPr.aRv instanceof h.u)) {
       a(false, paramak.aSS, (h.u)this.aTs.aPr.aRv);
     }
-    AppMethodBeat.o(214893);
+    AppMethodBeat.o(213124);
   }
   
   private void c(h.an paraman)
   {
-    AppMethodBeat.i(214862);
+    AppMethodBeat.i(213093);
     if (!(paraman instanceof h.al))
     {
-      AppMethodBeat.o(214862);
+      AppMethodBeat.o(213093);
       return;
     }
     paraman = (h.al)paraman;
     if (paraman.aST != null) {
       this.aTs.aTS = paraman.aST.booleanValue();
     }
-    AppMethodBeat.o(214862);
+    AppMethodBeat.o(213093);
   }
   
   private static Bitmap checkForImageDataURL(String paramString)
   {
-    AppMethodBeat.i(214879);
+    AppMethodBeat.i(213110);
     if (!paramString.startsWith("data:"))
     {
-      AppMethodBeat.o(214879);
+      AppMethodBeat.o(213110);
       return null;
     }
     if (paramString.length() < 14)
     {
-      AppMethodBeat.o(214879);
+      AppMethodBeat.o(213110);
       return null;
     }
     int i = paramString.indexOf(',');
     if (i < 12)
     {
-      AppMethodBeat.o(214879);
+      AppMethodBeat.o(213110);
       return null;
     }
     if (!";base64".equals(paramString.substring(i - 7, i)))
     {
-      AppMethodBeat.o(214879);
+      AppMethodBeat.o(213110);
       return null;
     }
     try
     {
       paramString = Base64.decode(paramString.substring(i + 1), 0);
       paramString = BitmapFactory.decodeByteArray(paramString, 0, paramString.length);
-      AppMethodBeat.o(214879);
+      AppMethodBeat.o(213110);
       return paramString;
     }
     catch (Exception paramString)
     {
-      AppMethodBeat.o(214879);
+      AppMethodBeat.o(213110);
     }
     return null;
   }
   
   private g d(h.an paraman)
   {
-    AppMethodBeat.i(214891);
+    AppMethodBeat.i(213122);
     g localg = new g();
     a(localg, h.ae.qR());
     paraman = a(paraman, localg);
-    AppMethodBeat.o(214891);
+    AppMethodBeat.o(213122);
     return paraman;
   }
   
   private void d(Path paramPath)
   {
-    AppMethodBeat.i(214864);
+    AppMethodBeat.i(213095);
     if (this.aTs.aPr.aSc == h.ae.i.aSL)
     {
       Matrix localMatrix1 = this.aTq.getMatrix();
@@ -3791,42 +3791,42 @@ final class i
       if (paramPath != null) {
         paramPath.setLocalMatrix(localMatrix2);
       }
-      AppMethodBeat.o(214864);
+      AppMethodBeat.o(213095);
       return;
     }
     this.aTq.drawPath(paramPath, this.aTs.aTR);
-    AppMethodBeat.o(214864);
+    AppMethodBeat.o(213095);
   }
   
   private void d(h.ak paramak)
   {
-    AppMethodBeat.i(214899);
+    AppMethodBeat.i(213130);
     b(paramak, paramak.aSS);
-    AppMethodBeat.o(214899);
+    AppMethodBeat.o(213130);
   }
   
   private void d(h.ak paramak, h.b paramb)
   {
-    AppMethodBeat.i(214903);
+    AppMethodBeat.i(213134);
     Object localObject = paramak.aSW.Y(this.aTs.aPr.aRV);
     if (localObject == null)
     {
       String.format("ClipPath reference '%s' not found", new Object[] { this.aTs.aPr.aRV });
-      AppMethodBeat.o(214903);
+      AppMethodBeat.o(213134);
       return;
     }
     localObject = (h.e)localObject;
     if (((h.e)localObject).aQH.isEmpty())
     {
       this.aTq.clipRect(0, 0, 0, 0);
-      AppMethodBeat.o(214903);
+      AppMethodBeat.o(213134);
       return;
     }
     if ((((h.e)localObject).aQA == null) || (((h.e)localObject).aQA.booleanValue())) {}
     for (int i = 1; ((paramak instanceof h.m)) && (i == 0); i = 0)
     {
       String.format("<clipPath clipPathUnits=\"objectBoundingBox\"> is not supported when referenced from container elements (like %s)", new Object[] { paramak.getNodeName() });
-      AppMethodBeat.o(214903);
+      AppMethodBeat.o(213134);
       return;
     }
     rl();
@@ -3849,30 +3849,30 @@ final class i
     }
     this.aTq.clipPath(paramak);
     rm();
-    AppMethodBeat.o(214903);
+    AppMethodBeat.o(213134);
   }
   
   private static h.b e(Path paramPath)
   {
-    AppMethodBeat.i(214873);
+    AppMethodBeat.i(213104);
     RectF localRectF = new RectF();
     paramPath.computeBounds(localRectF, true);
     paramPath = new h.b(localRectF.left, localRectF.top, localRectF.width(), localRectF.height());
-    AppMethodBeat.o(214873);
+    AppMethodBeat.o(213104);
     return paramPath;
   }
   
   private static int h(int paramInt, float paramFloat)
   {
     int i = 255;
-    AppMethodBeat.i(214886);
+    AppMethodBeat.i(213117);
     int j = Math.round((paramInt >> 24 & 0xFF) * paramFloat);
     if (j < 0) {
       i = 0;
     }
     for (;;)
     {
-      AppMethodBeat.o(214886);
+      AppMethodBeat.o(213117);
       return i << 24 | 0xFFFFFF & paramInt;
       if (j <= 255) {
         i = j;
@@ -3882,7 +3882,7 @@ final class i
   
   private void j(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
-    AppMethodBeat.i(214887);
+    AppMethodBeat.i(213118);
     float f3 = paramFloat1 + paramFloat3;
     float f4 = paramFloat2 + paramFloat4;
     float f2 = f4;
@@ -3897,12 +3897,12 @@ final class i
       f2 = f4 - this.aTs.aPr.aRN.aQv.b(this);
     }
     this.aTq.clipRect(paramFloat4, paramFloat3, f1, f2);
-    AppMethodBeat.o(214887);
+    AppMethodBeat.o(213118);
   }
   
   private void qY()
   {
-    AppMethodBeat.i(214852);
+    AppMethodBeat.i(213083);
     this.aTs = new g();
     this.aTt = new Stack();
     a(this.aTs, h.ae.qR());
@@ -3911,40 +3911,40 @@ final class i
     this.aTt.push(new g(this.aTs));
     this.aTv = new Stack();
     this.aTu = new Stack();
-    AppMethodBeat.o(214852);
+    AppMethodBeat.o(213083);
   }
   
   private void rb()
   {
-    AppMethodBeat.i(214857);
+    AppMethodBeat.i(213088);
     this.aTq.save();
     this.aTt.push(this.aTs);
     this.aTs = new g(this.aTs);
-    AppMethodBeat.o(214857);
+    AppMethodBeat.o(213088);
   }
   
   private void rc()
   {
-    AppMethodBeat.i(214858);
+    AppMethodBeat.i(213089);
     this.aTq.restore();
     this.aTs = ((g)this.aTt.pop());
-    AppMethodBeat.o(214858);
+    AppMethodBeat.o(213089);
   }
   
   private void rd()
   {
-    AppMethodBeat.i(214860);
+    AppMethodBeat.i(213091);
     this.aTu.pop();
     this.aTv.pop();
-    AppMethodBeat.o(214860);
+    AppMethodBeat.o(213091);
   }
   
   private boolean re()
   {
-    AppMethodBeat.i(214868);
+    AppMethodBeat.i(213099);
     if (!rf())
     {
-      AppMethodBeat.o(214868);
+      AppMethodBeat.o(213099);
       return false;
     }
     this.aTq.saveLayerAlpha(null, T(this.aTs.aPr.aRD.floatValue()), 31);
@@ -3957,23 +3957,23 @@ final class i
       {
         String.format("Mask reference '%s' not found", new Object[] { this.aTs.aPr.aRX });
         this.aTs.aPr.aRX = null;
-        AppMethodBeat.o(214868);
+        AppMethodBeat.o(213099);
         return true;
       }
     }
-    AppMethodBeat.o(214868);
+    AppMethodBeat.o(213099);
     return true;
   }
   
   private boolean rf()
   {
-    AppMethodBeat.i(214871);
+    AppMethodBeat.i(213102);
     if ((this.aTs.aPr.aRD.floatValue() < 1.0F) || (this.aTs.aPr.aRX != null))
     {
-      AppMethodBeat.o(214871);
+      AppMethodBeat.o(213102);
       return true;
     }
-    AppMethodBeat.o(214871);
+    AppMethodBeat.o(213102);
     return false;
   }
   
@@ -3981,7 +3981,7 @@ final class i
   {
     try
     {
-      AppMethodBeat.i(214872);
+      AppMethodBeat.i(213103);
       HashSet localHashSet = new HashSet();
       aTw = localHashSet;
       localHashSet.add("Structure");
@@ -4003,7 +4003,7 @@ final class i
       aTw.add("BasicClip");
       aTw.add("Mask");
       aTw.add("View");
-      AppMethodBeat.o(214872);
+      AppMethodBeat.o(213103);
       return;
     }
     finally
@@ -4026,14 +4026,14 @@ final class i
   
   private boolean ri()
   {
-    AppMethodBeat.i(214880);
+    AppMethodBeat.i(213111);
     if (this.aTs.aPr.aRR != null)
     {
       boolean bool = this.aTs.aPr.aRR.booleanValue();
-      AppMethodBeat.o(214880);
+      AppMethodBeat.o(213111);
       return bool;
     }
-    AppMethodBeat.o(214880);
+    AppMethodBeat.o(213111);
     return true;
   }
   
@@ -4047,7 +4047,7 @@ final class i
   
   private void rk()
   {
-    AppMethodBeat.i(214888);
+    AppMethodBeat.i(213119);
     if ((this.aTs.aPr.aSa instanceof h.f)) {}
     for (int i = ((h.f)this.aTs.aPr.aSa).aQB;; i = this.aTs.aPr.aRE.aQB)
     {
@@ -4056,30 +4056,30 @@ final class i
         j = h(i, this.aTs.aPr.aSb.floatValue());
       }
       this.aTq.drawColor(j);
-      AppMethodBeat.o(214888);
+      AppMethodBeat.o(213119);
       return;
       if (!(this.aTs.aPr.aSa instanceof h.g)) {
         break;
       }
     }
-    AppMethodBeat.o(214888);
+    AppMethodBeat.o(213119);
   }
   
   private void rl()
   {
-    AppMethodBeat.i(214905);
+    AppMethodBeat.i(213136);
     c.c(this.aTq, c.aPC);
     this.aTt.push(this.aTs);
     this.aTs = new g(this.aTs);
-    AppMethodBeat.o(214905);
+    AppMethodBeat.o(213136);
   }
   
   private void rm()
   {
-    AppMethodBeat.i(214906);
+    AppMethodBeat.i(213137);
     this.aTq.restore();
     this.aTs = ((g)this.aTt.pop());
-    AppMethodBeat.o(214906);
+    AppMethodBeat.o(213137);
   }
   
   private Path.FillType rn()
@@ -4092,26 +4092,26 @@ final class i
   
   private boolean visible()
   {
-    AppMethodBeat.i(214881);
+    AppMethodBeat.i(213112);
     if (this.aTs.aPr.aRS != null)
     {
       boolean bool = this.aTs.aPr.aRS.booleanValue();
-      AppMethodBeat.o(214881);
+      AppMethodBeat.o(213112);
       return bool;
     }
-    AppMethodBeat.o(214881);
+    AppMethodBeat.o(213112);
     return true;
   }
   
   final void a(h paramh, g paramg)
   {
-    AppMethodBeat.i(214854);
+    AppMethodBeat.i(213085);
     this.aSW = paramh;
     h.af localaf = paramh.aQn;
     if (localaf == null)
     {
       String.format("Nothing to render. Document is empty.", new Object[0]);
-      AppMethodBeat.o(214854);
+      AppMethodBeat.o(213085);
       return;
     }
     Object localObject1;
@@ -4122,14 +4122,14 @@ final class i
       if ((localObject1 == null) || (!(localObject1 instanceof h.bf)))
       {
         String.format("View element with id \"%s\" not found.", new Object[] { paramg.aQj });
-        AppMethodBeat.o(214854);
+        AppMethodBeat.o(213085);
         return;
       }
       localObject1 = (h.bf)localObject1;
       if (((h.bf)localObject1).aQi == null)
       {
         String.format("View element with id \"%s\" is missing a viewBox attribute.", new Object[] { paramg.aQj });
-        AppMethodBeat.o(214854);
+        AppMethodBeat.o(213085);
         return;
       }
       localObject2 = ((h.bf)localObject1).aQi;
@@ -4160,7 +4160,7 @@ final class i
       if (paramg.qD()) {
         paramh.qM();
       }
-      AppMethodBeat.o(214854);
+      AppMethodBeat.o(213085);
       return;
       if (paramg.qG()) {}
       for (localObject1 = paramg.aQi;; localObject1 = localaf.aQi)
@@ -4182,9 +4182,9 @@ final class i
   
   final float qZ()
   {
-    AppMethodBeat.i(214853);
+    AppMethodBeat.i(213084);
     float f = this.aTs.aTQ.getTextSize();
-    AppMethodBeat.o(214853);
+    AppMethodBeat.o(213084);
     return f;
   }
   
@@ -4210,7 +4210,7 @@ final class i
     
     a(h.w paramw)
     {
-      AppMethodBeat.i(214825);
+      AppMethodBeat.i(213056);
       this.aTB = new ArrayList();
       this.aTC = null;
       this.aTD = false;
@@ -4218,7 +4218,7 @@ final class i
       this.aTF = -1;
       if (paramw == null)
       {
-        AppMethodBeat.o(214825);
+        AppMethodBeat.o(213056);
         return;
       }
       paramw.a(this);
@@ -4231,32 +4231,32 @@ final class i
       if (this.aTC != null) {
         this.aTB.add(this.aTC);
       }
-      AppMethodBeat.o(214825);
+      AppMethodBeat.o(213056);
     }
     
     public final void a(float paramFloat1, float paramFloat2, float paramFloat3, boolean paramBoolean1, boolean paramBoolean2, float paramFloat4, float paramFloat5)
     {
-      AppMethodBeat.i(214830);
+      AppMethodBeat.i(213061);
       this.aTD = true;
       this.aTE = false;
       i.a(this.aTC.x, this.aTC.y, paramFloat1, paramFloat2, paramFloat3, paramBoolean1, paramBoolean2, paramFloat4, paramFloat5, this);
       this.aTE = true;
       this.aTG = false;
-      AppMethodBeat.o(214830);
+      AppMethodBeat.o(213061);
     }
     
     public final void close()
     {
-      AppMethodBeat.i(214831);
+      AppMethodBeat.i(213062);
       this.aTB.add(this.aTC);
       lineTo(this.mc, this.md);
       this.aTG = true;
-      AppMethodBeat.o(214831);
+      AppMethodBeat.o(213062);
     }
     
     public final void cubicTo(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6)
     {
-      AppMethodBeat.i(214828);
+      AppMethodBeat.i(213059);
       if ((this.aTE) || (this.aTD))
       {
         this.aTC.q(paramFloat1, paramFloat2);
@@ -4265,22 +4265,22 @@ final class i
       }
       this.aTC = new i.b(i.this, paramFloat5, paramFloat6, paramFloat5 - paramFloat3, paramFloat6 - paramFloat4);
       this.aTG = false;
-      AppMethodBeat.o(214828);
+      AppMethodBeat.o(213059);
     }
     
     public final void lineTo(float paramFloat1, float paramFloat2)
     {
-      AppMethodBeat.i(214827);
+      AppMethodBeat.i(213058);
       this.aTC.q(paramFloat1, paramFloat2);
       this.aTB.add(this.aTC);
       this.aTC = new i.b(i.this, paramFloat1, paramFloat2, paramFloat1 - this.aTC.x, paramFloat2 - this.aTC.y);
       this.aTG = false;
-      AppMethodBeat.o(214827);
+      AppMethodBeat.o(213058);
     }
     
     public final void moveTo(float paramFloat1, float paramFloat2)
     {
-      AppMethodBeat.i(214826);
+      AppMethodBeat.i(213057);
       if (this.aTG)
       {
         this.aTC.a((i.b)this.aTB.get(this.aTF));
@@ -4294,17 +4294,17 @@ final class i
       this.md = paramFloat2;
       this.aTC = new i.b(i.this, paramFloat1, paramFloat2, 0.0F, 0.0F);
       this.aTF = this.aTB.size();
-      AppMethodBeat.o(214826);
+      AppMethodBeat.o(213057);
     }
     
     public final void quadTo(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
     {
-      AppMethodBeat.i(214829);
+      AppMethodBeat.i(213060);
       this.aTC.q(paramFloat1, paramFloat2);
       this.aTB.add(this.aTC);
       this.aTC = new i.b(i.this, paramFloat3, paramFloat4, paramFloat3 - paramFloat1, paramFloat4 - paramFloat2);
       this.aTG = false;
-      AppMethodBeat.o(214829);
+      AppMethodBeat.o(213060);
     }
   }
   
@@ -4318,7 +4318,7 @@ final class i
     
     b(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
     {
-      AppMethodBeat.i(214832);
+      AppMethodBeat.i(213063);
       this.aTI = 0.0F;
       this.aTJ = 0.0F;
       this.aTK = false;
@@ -4330,7 +4330,7 @@ final class i
         this.aTI = ((float)(paramFloat3 / d));
         this.aTJ = ((float)(paramFloat4 / d));
       }
-      AppMethodBeat.o(214832);
+      AppMethodBeat.o(213063);
     }
     
     final void a(b paramb)
@@ -4348,7 +4348,7 @@ final class i
     
     final void q(float paramFloat1, float paramFloat2)
     {
-      AppMethodBeat.i(214833);
+      AppMethodBeat.i(213064);
       float f1 = paramFloat1 - this.x;
       float f2 = paramFloat2 - this.y;
       double d = Math.sqrt(f1 * f1 + f2 * f2);
@@ -4364,19 +4364,19 @@ final class i
         this.aTK = true;
         this.aTI = (-paramFloat2);
         this.aTJ = paramFloat1;
-        AppMethodBeat.o(214833);
+        AppMethodBeat.o(213064);
         return;
       }
       this.aTI = (paramFloat1 + this.aTI);
       this.aTJ = (paramFloat2 + this.aTJ);
-      AppMethodBeat.o(214833);
+      AppMethodBeat.o(213064);
     }
     
     public final String toString()
     {
-      AppMethodBeat.i(214834);
+      AppMethodBeat.i(213065);
       String str = "(" + this.x + "," + this.y + " " + this.aTI + "," + this.aTJ + ")";
-      AppMethodBeat.o(214834);
+      AppMethodBeat.o(213065);
       return str;
     }
   }
@@ -4390,67 +4390,67 @@ final class i
     
     c(h.w paramw)
     {
-      AppMethodBeat.i(214835);
+      AppMethodBeat.i(213066);
       this.lP = new Path();
       if (paramw == null)
       {
-        AppMethodBeat.o(214835);
+        AppMethodBeat.o(213066);
         return;
       }
       paramw.a(this);
-      AppMethodBeat.o(214835);
+      AppMethodBeat.o(213066);
     }
     
     public final void a(float paramFloat1, float paramFloat2, float paramFloat3, boolean paramBoolean1, boolean paramBoolean2, float paramFloat4, float paramFloat5)
     {
-      AppMethodBeat.i(214840);
+      AppMethodBeat.i(213071);
       i.a(this.aTL, this.aTM, paramFloat1, paramFloat2, paramFloat3, paramBoolean1, paramBoolean2, paramFloat4, paramFloat5, this);
       this.aTL = paramFloat4;
       this.aTM = paramFloat5;
-      AppMethodBeat.o(214840);
+      AppMethodBeat.o(213071);
     }
     
     public final void close()
     {
-      AppMethodBeat.i(214841);
+      AppMethodBeat.i(213072);
       this.lP.close();
-      AppMethodBeat.o(214841);
+      AppMethodBeat.o(213072);
     }
     
     public final void cubicTo(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6)
     {
-      AppMethodBeat.i(214838);
+      AppMethodBeat.i(213069);
       this.lP.cubicTo(paramFloat1, paramFloat2, paramFloat3, paramFloat4, paramFloat5, paramFloat6);
       this.aTL = paramFloat5;
       this.aTM = paramFloat6;
-      AppMethodBeat.o(214838);
+      AppMethodBeat.o(213069);
     }
     
     public final void lineTo(float paramFloat1, float paramFloat2)
     {
-      AppMethodBeat.i(214837);
+      AppMethodBeat.i(213068);
       this.lP.lineTo(paramFloat1, paramFloat2);
       this.aTL = paramFloat1;
       this.aTM = paramFloat2;
-      AppMethodBeat.o(214837);
+      AppMethodBeat.o(213068);
     }
     
     public final void moveTo(float paramFloat1, float paramFloat2)
     {
-      AppMethodBeat.i(214836);
+      AppMethodBeat.i(213067);
       this.lP.moveTo(paramFloat1, paramFloat2);
       this.aTL = paramFloat1;
       this.aTM = paramFloat2;
-      AppMethodBeat.o(214836);
+      AppMethodBeat.o(213067);
     }
     
     public final void quadTo(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
     {
-      AppMethodBeat.i(214839);
+      AppMethodBeat.i(213070);
       this.lP.quadTo(paramFloat1, paramFloat2, paramFloat3, paramFloat4);
       this.aTL = paramFloat3;
       this.aTM = paramFloat4;
-      AppMethodBeat.o(214839);
+      AppMethodBeat.o(213070);
     }
   }
   
@@ -4467,7 +4467,7 @@ final class i
     
     public final void ab(String paramString)
     {
-      AppMethodBeat.i(214842);
+      AppMethodBeat.i(213073);
       if (i.d(i.this))
       {
         if (i.e(i.this).aTO) {
@@ -4478,7 +4478,7 @@ final class i
         }
       }
       this.x += i.e(i.this).aTQ.measureText(paramString);
-      AppMethodBeat.o(214842);
+      AppMethodBeat.o(213073);
     }
   }
   
@@ -4497,7 +4497,7 @@ final class i
     
     public void ab(String paramString)
     {
-      AppMethodBeat.i(214843);
+      AppMethodBeat.i(213074);
       i.ro();
       if (i.d(i.this))
       {
@@ -4509,7 +4509,7 @@ final class i
         }
       }
       this.x += i.e(i.this).aTQ.measureText(paramString);
-      AppMethodBeat.o(214843);
+      AppMethodBeat.o(213074);
     }
   }
   
@@ -4530,7 +4530,7 @@ final class i
     
     public final void ab(String paramString)
     {
-      AppMethodBeat.i(214845);
+      AppMethodBeat.i(213076);
       if (i.d(i.this))
       {
         Path localPath = new Path();
@@ -4538,19 +4538,19 @@ final class i
         this.aTN.addPath(localPath);
       }
       this.x += i.e(i.this).aTQ.measureText(paramString);
-      AppMethodBeat.o(214845);
+      AppMethodBeat.o(213076);
     }
     
     public final boolean b(h.ay paramay)
     {
-      AppMethodBeat.i(214844);
+      AppMethodBeat.i(213075);
       if ((paramay instanceof h.az))
       {
         i.g("Using <textPath> elements in a clip path is not supported.", new Object[0]);
-        AppMethodBeat.o(214844);
+        AppMethodBeat.o(213075);
         return false;
       }
-      AppMethodBeat.o(214844);
+      AppMethodBeat.o(213075);
       return true;
     }
   }
@@ -4568,7 +4568,7 @@ final class i
     
     g()
     {
-      AppMethodBeat.i(214846);
+      AppMethodBeat.i(213077);
       this.aTQ = new Paint();
       this.aTQ.setFlags(193);
       if (Build.VERSION.SDK_INT >= 14) {
@@ -4584,12 +4584,12 @@ final class i
       this.aTR.setStyle(Paint.Style.STROKE);
       this.aTR.setTypeface(Typeface.DEFAULT);
       this.aPr = h.ae.qR();
-      AppMethodBeat.o(214846);
+      AppMethodBeat.o(213077);
     }
     
     g(g paramg)
     {
-      AppMethodBeat.i(214847);
+      AppMethodBeat.i(213078);
       this.aTO = paramg.aTO;
       this.aTP = paramg.aTP;
       this.aTQ = new Paint(paramg.aTQ);
@@ -4604,13 +4604,13 @@ final class i
       try
       {
         this.aPr = ((h.ae)paramg.aPr.clone());
-        AppMethodBeat.o(214847);
+        AppMethodBeat.o(213078);
         return;
       }
       catch (CloneNotSupportedException this$1)
       {
         this.aPr = h.ae.qR();
-        AppMethodBeat.o(214847);
+        AppMethodBeat.o(213078);
       }
     }
   }
@@ -4625,16 +4625,16 @@ final class i
     h(float paramFloat1, float paramFloat2)
     {
       super((byte)0);
-      AppMethodBeat.i(214848);
+      AppMethodBeat.i(213079);
       this.aTT = new RectF();
       this.x = paramFloat1;
       this.y = paramFloat2;
-      AppMethodBeat.o(214848);
+      AppMethodBeat.o(213079);
     }
     
     public final void ab(String paramString)
     {
-      AppMethodBeat.i(214850);
+      AppMethodBeat.i(213081);
       if (i.d(i.this))
       {
         Object localObject = new Rect();
@@ -4644,12 +4644,12 @@ final class i
         this.aTT.union((RectF)localObject);
       }
       this.x += i.e(i.this).aTQ.measureText(paramString);
-      AppMethodBeat.o(214850);
+      AppMethodBeat.o(213081);
     }
     
     public final boolean b(h.ay paramay)
     {
-      AppMethodBeat.i(214849);
+      AppMethodBeat.i(213080);
       if ((paramay instanceof h.az))
       {
         Object localObject = (h.az)paramay;
@@ -4657,7 +4657,7 @@ final class i
         if (paramay == null)
         {
           i.f("TextPath path reference '%s' not found", new Object[] { ((h.az)localObject).aQs });
-          AppMethodBeat.o(214849);
+          AppMethodBeat.o(213080);
           return false;
         }
         localObject = (h.v)paramay;
@@ -4668,10 +4668,10 @@ final class i
         localObject = new RectF();
         paramay.computeBounds((RectF)localObject, true);
         this.aTT.union((RectF)localObject);
-        AppMethodBeat.o(214849);
+        AppMethodBeat.o(213080);
         return false;
       }
-      AppMethodBeat.o(214849);
+      AppMethodBeat.o(213080);
       return true;
     }
   }
@@ -4700,15 +4700,15 @@ final class i
     
     public final void ab(String paramString)
     {
-      AppMethodBeat.i(214851);
+      AppMethodBeat.i(213082);
       this.x += i.e(i.this).aTQ.measureText(paramString);
-      AppMethodBeat.o(214851);
+      AppMethodBeat.o(213082);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.a.a.i
  * JD-Core Version:    0.7.0.1
  */

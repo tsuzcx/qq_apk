@@ -17,12 +17,12 @@ import com.tencent.mm.plugin.appbrand.ui.AppBrandLauncherUI.Fragment;
 import com.tencent.mm.plugin.appbrand.ui.launcher.FolderActivityContextWithLifecycle;
 import com.tencent.mm.sdk.e.k.a;
 import com.tencent.mm.sdk.e.m;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.ui.MMActivity;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/ui/collection/CollectionFolderActivityContext;", "Lcom/tencent/mm/plugin/appbrand/ui/launcher/FolderActivityContextWithLifecycle;", "Lcom/tencent/mm/sdk/storage/MStorage$IOnStorageChange;", "activity", "Lcom/tencent/mm/ui/MMActivity;", "(Lcom/tencent/mm/ui/MMActivity;)V", "TAG", "", "onActivityDidCreate", "", "intent", "Landroid/content/Intent;", "onActivityDidResume", "onActivityWillDestroy", "onNotifyChange", "event", "eventData", "Lcom/tencent/mm/sdk/storage/MStorageEventData;", "showListPage", "showList", "", "plugin-appbrand-integration_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/ui/collection/CollectionFolderActivityContext;", "Lcom/tencent/mm/plugin/appbrand/ui/launcher/FolderActivityContextWithLifecycle;", "Lcom/tencent/mm/sdk/storage/MStorage$IOnStorageChange;", "activity", "Lcom/tencent/mm/ui/MMActivity;", "(Lcom/tencent/mm/ui/MMActivity;)V", "TAG", "", "onActivityDidCreate", "", "intent", "Landroid/content/Intent;", "onActivityDidResume", "onActivityWillDestroy", "onNotifyChange", "event", "eventData", "Lcom/tencent/mm/sdk/storage/MStorageEventData;", "showListPage", "showList", "", "plugin-appbrand-integration_release"})
 public final class CollectionFolderActivityContext
   extends FolderActivityContextWithLifecycle
   implements k.a
@@ -44,12 +44,12 @@ public final class CollectionFolderActivityContext
     if (localView != null) {
       localView.setBackgroundColor(-855310);
     }
-    hE(true);
+    hF(true);
     if (paramIntent != null)
     {
       int i = paramIntent.getIntExtra("extra_get_usage_reason", 7);
       int j = paramIntent.getIntExtra("extra_get_usage_prescene", 0);
-      paramIntent = ag.jPR;
+      paramIntent = ag.jTj;
       ag.a.a(i, j, null, 4);
       AppMethodBeat.o(51260);
       return;
@@ -68,7 +68,7 @@ public final class CollectionFolderActivityContext
     AppMethodBeat.o(51258);
   }
   
-  public final void hE(boolean paramBoolean)
+  public final void hF(boolean paramBoolean)
   {
     AppMethodBeat.i(51259);
     Object localObject1 = getActivity();
@@ -128,7 +128,7 @@ public final class CollectionFolderActivityContext
         if (localObject2 != null)
         {
           i = ((Intent)localObject2).getIntExtra("extra_enter_scene", -1);
-          ad.i(this.TAG, "EnterScene = ".concat(String.valueOf(i)));
+          ae.i(this.TAG, "EnterScene = ".concat(String.valueOf(i)));
         }
       }
       switch (i)
@@ -146,17 +146,17 @@ public final class CollectionFolderActivityContext
     {
       if (paramBoolean)
       {
-        f.a(e.myg, d.a.mzd);
-        f.a(e.myh, d.a.mzd);
+        f.a(e.mDe, d.a.mEe);
+        f.a(e.mDf, d.a.mEe);
       }
       AppMethodBeat.o(51259);
       return;
       getActivity().hideActionbarLine();
       break;
       label347:
-      localObject1 = (AppBrandLauncherUI.Fragment)AppBrandLauncherBlankPage.eo(getActivity().getString(2131755614), getActivity().getString(2131755362));
+      localObject1 = (AppBrandLauncherUI.Fragment)AppBrandLauncherBlankPage.er(getActivity().getString(2131755614), getActivity().getString(2131755362));
       break label131;
-      h.aq(i, (String)localObject1);
+      h.ap(i, (String)localObject1);
       break label272;
       localah.remove((k.a)this);
     }
@@ -177,7 +177,7 @@ public final class CollectionFolderActivityContext
     AppMethodBeat.o(51262);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
   static final class a
     implements Runnable
   {
@@ -186,14 +186,14 @@ public final class CollectionFolderActivityContext
     public final void run()
     {
       AppMethodBeat.i(51257);
-      this.mIV.hE(true);
+      this.mNX.hF(true);
       AppMethodBeat.o(51257);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.collection.CollectionFolderActivityContext
  * JD-Core Version:    0.7.0.1
  */

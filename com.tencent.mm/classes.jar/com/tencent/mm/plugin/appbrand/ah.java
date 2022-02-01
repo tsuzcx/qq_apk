@@ -4,7 +4,7 @@ import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
 
 public abstract interface ah
 {
-  public static final ah jBb = new ah()
+  public static final ah jDM = new ah()
   {
     public final Boolean b(AppBrandInitConfigWC paramAnonymousAppBrandInitConfigWC)
     {

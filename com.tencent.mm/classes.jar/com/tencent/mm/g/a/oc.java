@@ -2,11 +2,12 @@ package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
+import java.lang.ref.WeakReference;
 
 public final class oc
   extends b
 {
-  public a dBV;
+  public a dCZ;
   
   public oc()
   {
@@ -15,21 +16,22 @@ public final class oc
   
   private oc(byte paramByte)
   {
-    AppMethodBeat.i(130928);
-    this.dBV = new a();
-    this.IbR = false;
+    AppMethodBeat.i(130927);
+    this.dCZ = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(130928);
+    AppMethodBeat.o(130927);
   }
   
   public static final class a
   {
-    public int retCode;
+    public WeakReference aWN;
+    public int scene;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.a.oc
  * JD-Core Version:    0.7.0.1
  */

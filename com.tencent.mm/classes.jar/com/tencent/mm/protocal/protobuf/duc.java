@@ -1,139 +1,116 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.LinkedList;
 
 public final class duc
-  extends com.tencent.mm.bx.a
+  extends cvw
 {
-  public String FzJ;
-  public String GHw;
-  public String Gax;
-  public long HGX;
-  public String Hcq;
-  public String IconUrl;
-  public String nDs;
-  public String uiR;
+  public double HZG;
+  public double HZH;
+  public double altitude;
+  public int bZk;
+  public double latitude;
+  public double longitude;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(32491);
+    AppMethodBeat.i(123668);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.Gax != null) {
-        paramVarArgs.d(1, this.Gax);
+      if (this.BaseRequest != null)
+      {
+        paramVarArgs.lJ(1, this.BaseRequest.computeSize());
+        this.BaseRequest.writeFields(paramVarArgs);
       }
-      if (this.FzJ != null) {
-        paramVarArgs.d(2, this.FzJ);
-      }
-      if (this.Hcq != null) {
-        paramVarArgs.d(3, this.Hcq);
-      }
-      if (this.uiR != null) {
-        paramVarArgs.d(4, this.uiR);
-      }
-      if (this.nDs != null) {
-        paramVarArgs.d(5, this.nDs);
-      }
-      if (this.IconUrl != null) {
-        paramVarArgs.d(6, this.IconUrl);
-      }
-      if (this.GHw != null) {
-        paramVarArgs.d(7, this.GHw);
-      }
-      paramVarArgs.aY(8, this.HGX);
-      AppMethodBeat.o(32491);
+      paramVarArgs.e(2, this.latitude);
+      paramVarArgs.e(3, this.longitude);
+      paramVarArgs.e(4, this.altitude);
+      paramVarArgs.e(5, this.HZG);
+      paramVarArgs.e(6, this.HZH);
+      paramVarArgs.aS(7, this.bZk);
+      AppMethodBeat.o(123668);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.Gax == null) {
-        break label640;
+      if (this.BaseRequest == null) {
+        break label585;
       }
     }
-    label640:
-    for (int i = f.a.a.b.b.a.e(1, this.Gax) + 0;; i = 0)
+    label585:
+    for (paramInt = f.a.a.a.lI(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
     {
-      paramInt = i;
-      if (this.FzJ != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.FzJ);
-      }
-      i = paramInt;
-      if (this.Hcq != null) {
-        i = paramInt + f.a.a.b.b.a.e(3, this.Hcq);
-      }
-      paramInt = i;
-      if (this.uiR != null) {
-        paramInt = i + f.a.a.b.b.a.e(4, this.uiR);
-      }
-      i = paramInt;
-      if (this.nDs != null) {
-        i = paramInt + f.a.a.b.b.a.e(5, this.nDs);
-      }
-      paramInt = i;
-      if (this.IconUrl != null) {
-        paramInt = i + f.a.a.b.b.a.e(6, this.IconUrl);
-      }
-      i = paramInt;
-      if (this.GHw != null) {
-        i = paramInt + f.a.a.b.b.a.e(7, this.GHw);
-      }
-      paramInt = f.a.a.b.b.a.p(8, this.HGX);
-      AppMethodBeat.o(32491);
-      return i + paramInt;
+      int i = f.a.a.b.b.a.amD(2);
+      int j = f.a.a.b.b.a.amD(3);
+      int k = f.a.a.b.b.a.amD(4);
+      int m = f.a.a.b.b.a.amD(5);
+      int n = f.a.a.b.b.a.amD(6);
+      int i1 = f.a.a.b.b.a.bz(7, this.bZk);
+      AppMethodBeat.o(123668);
+      return paramInt + i + j + k + m + n + i1;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = cvw.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cvw.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
-        AppMethodBeat.o(32491);
+        AppMethodBeat.o(123668);
         return 0;
       }
       if (paramInt == 3)
       {
-        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+        Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
         duc localduc = (duc)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(32491);
+          AppMethodBeat.o(123668);
           return -1;
         case 1: 
-          localduc.Gax = locala.NPN.readString();
-          AppMethodBeat.o(32491);
+          paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            Object localObject2 = (byte[])paramVarArgs.get(paramInt);
+            localObject1 = new jc();
+            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
+            for (boolean bool = true; bool; bool = ((jc)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cvw.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            localduc.BaseRequest = ((jc)localObject1);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(123668);
           return 0;
         case 2: 
-          localduc.FzJ = locala.NPN.readString();
-          AppMethodBeat.o(32491);
+          localduc.latitude = Double.longBitsToDouble(((f.a.a.a.a)localObject1).OmT.gwc());
+          AppMethodBeat.o(123668);
           return 0;
         case 3: 
-          localduc.Hcq = locala.NPN.readString();
-          AppMethodBeat.o(32491);
+          localduc.longitude = Double.longBitsToDouble(((f.a.a.a.a)localObject1).OmT.gwc());
+          AppMethodBeat.o(123668);
           return 0;
         case 4: 
-          localduc.uiR = locala.NPN.readString();
-          AppMethodBeat.o(32491);
+          localduc.altitude = Double.longBitsToDouble(((f.a.a.a.a)localObject1).OmT.gwc());
+          AppMethodBeat.o(123668);
           return 0;
         case 5: 
-          localduc.nDs = locala.NPN.readString();
-          AppMethodBeat.o(32491);
+          localduc.HZG = Double.longBitsToDouble(((f.a.a.a.a)localObject1).OmT.gwc());
+          AppMethodBeat.o(123668);
           return 0;
         case 6: 
-          localduc.IconUrl = locala.NPN.readString();
-          AppMethodBeat.o(32491);
-          return 0;
-        case 7: 
-          localduc.GHw = locala.NPN.readString();
-          AppMethodBeat.o(32491);
+          localduc.HZH = Double.longBitsToDouble(((f.a.a.a.a)localObject1).OmT.gwc());
+          AppMethodBeat.o(123668);
           return 0;
         }
-        localduc.HGX = locala.NPN.zd();
-        AppMethodBeat.o(32491);
+        localduc.bZk = ((f.a.a.a.a)localObject1).OmT.zc();
+        AppMethodBeat.o(123668);
         return 0;
       }
-      AppMethodBeat.o(32491);
+      AppMethodBeat.o(123668);
       return -1;
     }
   }

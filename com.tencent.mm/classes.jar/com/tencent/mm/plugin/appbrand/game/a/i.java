@@ -8,21 +8,21 @@ import d.n.n;
 import java.util.HashMap;
 import java.util.Map;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/game/config/WAGameConfigSimple;", "Lcom/tencent/mm/plugin/appbrand/game/config/WAGameDynamicConfig;", "", "kv", "", "defaultValue", "askRestart", "(Ljava/lang/String;ZZ)V", "enableAlert", "enableKv", "getConfigDefaultValue", "()Ljava/lang/Boolean;", "onProcessConfig", "input", "(Ljava/lang/String;)Ljava/lang/Boolean;", "Companion", "plugin-appbrand-integration_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/game/config/WAGameConfigSimple;", "Lcom/tencent/mm/plugin/appbrand/game/config/WAGameDynamicConfig;", "", "kv", "", "defaultValue", "askRestart", "(Ljava/lang/String;ZZ)V", "enableAlert", "enableKv", "getConfigDefaultValue", "()Ljava/lang/Boolean;", "onProcessConfig", "input", "(Ljava/lang/String;)Ljava/lang/Boolean;", "Companion", "plugin-appbrand-integration_release"})
 public final class i
   extends t<Boolean>
 {
-  private static final HashMap<String, i> kkM;
-  public static final a kkN;
-  final String kkJ;
-  private final boolean kkK;
-  private final boolean kkL;
+  private static final HashMap<String, i> koc;
+  public static final a kod;
+  final String knZ;
+  private final boolean koa;
+  private final boolean kob;
   
   static
   {
     AppMethodBeat.i(50378);
-    kkN = new a((byte)0);
-    kkM = new HashMap();
+    kod = new a((byte)0);
+    koc = new HashMap();
     a.a(new i("localso", (byte)0));
     a.a(new i("renderprofiler", (byte)0));
     a.a(new i("debugNode", (byte)0));
@@ -33,11 +33,11 @@ public final class i
   private i(String paramString)
   {
     AppMethodBeat.i(50377);
-    this.kkJ = paramString;
-    this.kkK = false;
-    this.kkL = true;
-    if (!n.aE((CharSequence)this.kkJ)) {}
-    for (int i = 1; (ac.MKp) && (i == 0); i = 0)
+    this.knZ = paramString;
+    this.koa = false;
+    this.kob = true;
+    if (!n.aD((CharSequence)this.knZ)) {}
+    for (int i = 1; (ac.Nhs) && (i == 0); i = 0)
     {
       paramString = (Throwable)new AssertionError("Assertion failed");
       AppMethodBeat.o(50377);
@@ -46,39 +46,39 @@ public final class i
     AppMethodBeat.o(50377);
   }
   
-  public static final i OP(String paramString)
+  public static final i Px(String paramString)
   {
     AppMethodBeat.i(50379);
     p.h(paramString, "kv_name");
-    paramString = kkM.get(paramString);
+    paramString = koc.get(paramString);
     if (paramString == null) {
-      p.gfZ();
+      p.gkB();
     }
     paramString = (i)paramString;
     AppMethodBeat.o(50379);
     return paramString;
   }
   
-  protected final String bhb()
+  protected final String bhJ()
   {
-    return this.kkJ;
+    return this.knZ;
   }
   
-  protected final boolean bhd()
+  protected final boolean bhL()
   {
-    return this.kkL;
+    return this.kob;
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/game/config/WAGameConfigSimple$Companion;", "", "()V", "registry", "Ljava/util/HashMap;", "", "Lcom/tencent/mm/plugin/appbrand/game/config/WAGameConfigSimple;", "Lkotlin/collections/HashMap;", "get", "kv_name", "getAll", "", "register", "", "config", "plugin-appbrand-integration_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/game/config/WAGameConfigSimple$Companion;", "", "()V", "registry", "Ljava/util/HashMap;", "", "Lcom/tencent/mm/plugin/appbrand/game/config/WAGameConfigSimple;", "Lkotlin/collections/HashMap;", "get", "kv_name", "getAll", "", "register", "", "config", "plugin-appbrand-integration_release"})
   public static final class a
   {
     static void a(i parami)
     {
       AppMethodBeat.i(50374);
-      Map localMap = (Map)i.bhg();
-      String str = parami.kkJ;
+      Map localMap = (Map)i.bhO();
+      String str = parami.knZ;
       if (str == null) {
-        p.gfZ();
+        p.gkB();
       }
       localMap.put(str, parami);
       AppMethodBeat.o(50374);
@@ -87,7 +87,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.game.a.i
  * JD-Core Version:    0.7.0.1
  */

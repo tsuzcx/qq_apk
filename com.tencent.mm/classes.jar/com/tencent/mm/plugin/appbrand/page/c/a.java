@@ -1,71 +1,121 @@
 package com.tencent.mm.plugin.appbrand.page.c;
 
+import android.annotation.TargetApi;
+import android.app.Activity;
+import android.os.Build.VERSION;
+import android.view.View;
+import android.view.Window;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.o;
-import com.tencent.mm.plugin.appbrand.page.r;
-import com.tencent.mm.plugin.appbrand.page.v;
-import com.tencent.mm.plugin.report.service.g;
-import d.g.b.p;
-import d.l;
+import com.tencent.mm.plugin.appbrand.page.z;
+import java.util.concurrent.atomic.AtomicReference;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/page/navigation/AppBrandPageConfirmNavigateBackInterceptorWC;", "Lcom/tencent/mm/plugin/appbrand/page/navigation/BaseAppBrandPageConfirmNavigateBackInterceptor;", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntimeWC;", "()V", "onClickDialogLeaveButton", "", "runtime", "onClickDialogStayButton", "onCustomIntercept", "", "scene", "", "onInterceptionDialogShown", "reportEvent", "eventId", "", "Companion", "plugin-appbrand-integration_release"})
-public final class a
-  extends c<o>
+@TargetApi(21)
+public class a
+  extends b
 {
-  public static final a mgk;
+  private int gQT = 0;
   
-  static
+  protected a(z paramz)
   {
-    AppMethodBeat.i(189558);
-    mgk = new a((byte)0);
-    AppMethodBeat.o(189558);
+    super(paramz);
   }
   
-  private static void a(o paramo, int paramInt)
+  private void bwx()
   {
-    AppMethodBeat.i(189557);
-    Object localObject = paramo.aXd();
-    p.g(localObject, "runtime.pageContainer");
-    localObject = ((v)localObject).getCurrentPage();
-    if (localObject != null)
+    AppMethodBeat.i(135310);
+    this.mlA.set(c.b.mlB);
+    if ((this.cls.getContext() instanceof Activity))
     {
-      f localf = ((r)localObject).a(h.mgz);
-      if (localf != null)
+      Window localWindow = ((Activity)this.cls.getContext()).getWindow();
+      if (localWindow == null)
       {
-        g localg = g.yhR;
-        String str = paramo.getAppId();
-        long l = System.currentTimeMillis();
-        paramo = paramo.aXd();
-        p.g(paramo, "runtime.pageContainer");
-        paramo = paramo.getCurrentPage();
-        if (paramo != null)
-        {
-          localObject = paramo.getCurrentUrl();
-          paramo = (o)localObject;
-          if (localObject != null) {}
-        }
-        else
-        {
-          paramo = "";
-        }
-        if (paramInt == 1) {}
-        for (localObject = localf.mgu;; localObject = "")
-        {
-          localg.f(19169, new Object[] { str, Long.valueOf(l), paramo, Integer.valueOf(paramInt), localObject });
-          AppMethodBeat.o(189557);
-          return;
-        }
+        AppMethodBeat.o(135310);
+        return;
       }
+      View localView = localWindow.getDecorView();
+      localWindow.clearFlags(1024);
+      localView.setSystemUiVisibility(localView.getSystemUiVisibility() & 0xFFFFFFFB);
     }
-    AppMethodBeat.o(189557);
+    AppMethodBeat.o(135310);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/page/navigation/AppBrandPageConfirmNavigateBackInterceptorWC$Companion;", "", "()V", "REPORT_EVENT_CLICK_LEAVE_BUTTON", "", "REPORT_EVENT_CLICK_STAY_BUTTON", "REPORT_EVENT_SHOW_DIALOG", "TAG", "", "plugin-appbrand-integration_release"})
-  public static final class a {}
+  public void DN()
+  {
+    AppMethodBeat.i(135309);
+    bwx();
+    AppMethodBeat.o(135309);
+  }
+  
+  public void DO()
+  {
+    AppMethodBeat.i(135311);
+    this.mlA.set(c.b.mlC);
+    Object localObject = com.tencent.mm.sdk.f.a.jw(this.cls.getContext());
+    if ((localObject != null) && (!((Activity)localObject).isFinishing()) && (!((Activity)localObject).isDestroyed()))
+    {
+      localObject = ((Activity)localObject).getWindow();
+      if (localObject == null)
+      {
+        AppMethodBeat.o(135311);
+        return;
+      }
+      ((Window)localObject).addFlags(1024);
+      localObject = ((Window)localObject).getDecorView();
+      ((View)localObject).setSystemUiVisibility(((View)localObject).getSystemUiVisibility() | 0x4 | 0x100);
+    }
+    AppMethodBeat.o(135311);
+  }
+  
+  public void Dy()
+  {
+    AppMethodBeat.i(135312);
+    super.Dy();
+    switch (1.clu[((c.b)this.mlA.get()).ordinal()])
+    {
+    default: 
+      AppMethodBeat.o(135312);
+      return;
+    case 1: 
+      bwx();
+      AppMethodBeat.o(135312);
+      return;
+    }
+    DO();
+    AppMethodBeat.o(135312);
+  }
+  
+  public void u(boolean paramBoolean, int paramInt)
+  {
+    AppMethodBeat.i(207887);
+    if (paramInt != this.gQT) {}
+    for (int i = 1;; i = 0)
+    {
+      this.gQT = paramInt;
+      if (2 != paramInt) {
+        break label89;
+      }
+      Activity localActivity = this.cls.getActivity();
+      if ((localActivity == null) || (Build.VERSION.SDK_INT < 24) || (!localActivity.isInMultiWindowMode()) || (localActivity.getRequestedOrientation() != 1)) {
+        break;
+      }
+      AppMethodBeat.o(207887);
+      return;
+    }
+    if (!paramBoolean) {
+      DO();
+    }
+    AppMethodBeat.o(207887);
+    return;
+    label89:
+    if (((i != 0) || (this.mlA.get() == c.b.mlB)) && (!paramBoolean)) {
+      DN();
+    }
+    AppMethodBeat.o(207887);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.page.c.a
  * JD-Core Version:    0.7.0.1
  */

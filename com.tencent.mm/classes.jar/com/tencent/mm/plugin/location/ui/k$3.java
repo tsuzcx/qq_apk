@@ -16,10 +16,10 @@ final class k$3
     AppMethodBeat.i(55965);
     Object localObject = new b();
     ((b)localObject).bd(paramView);
-    a.b("com/tencent/mm/plugin/location/ui/TrackPointViewMgrImpl$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahq());
+    a.b("com/tencent/mm/plugin/location/ui/TrackPointViewMgrImpl$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahF());
     localObject = new int[2];
     paramView.getLocationInWindow((int[])localObject);
-    k.a(this.vep, localObject[0], localObject[1]);
+    k.a(this.vqA, localObject[0], localObject[1]);
     a.a(this, "com/tencent/mm/plugin/location/ui/TrackPointViewMgrImpl$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(55965);
   }

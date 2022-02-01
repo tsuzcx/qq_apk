@@ -2,7 +2,7 @@ package com.tencent.luggage.game.d.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.p;
-import com.tencent.mm.plugin.appbrand.q;
+import com.tencent.mm.plugin.appbrand.r;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -12,13 +12,13 @@ public final class b
   static final int CTRL_INDEX = -2;
   static final String NAME = "onKeyboardConfirm";
   
-  public final void a(String paramString, q paramq)
+  public final void a(String paramString, r paramr)
   {
     AppMethodBeat.i(130607);
     HashMap localHashMap = new HashMap(2);
     localHashMap.put("errMsg", "ok");
     localHashMap.put("value", paramString);
-    A(localHashMap).g(paramq).bir();
+    H(localHashMap).g(paramr).bja();
     AppMethodBeat.o(130607);
   }
 }

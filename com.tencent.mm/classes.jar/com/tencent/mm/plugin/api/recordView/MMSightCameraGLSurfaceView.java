@@ -2,30 +2,34 @@ package com.tencent.mm.plugin.api.recordView;
 
 import android.content.Context;
 import android.opengl.EGL14;
-import android.opengl.EGLContext;
 import android.opengl.GLSurfaceView;
+import android.opengl.GLSurfaceView.EGLConfigChooser;
+import android.opengl.GLSurfaceView.EGLContextFactory;
 import android.util.AttributeSet;
 import android.view.SurfaceHolder;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
+import javax.microedition.khronos.egl.EGL10;
+import javax.microedition.khronos.egl.EGLConfig;
+import javax.microedition.khronos.egl.EGLDisplay;
 
 public class MMSightCameraGLSurfaceView
   extends GLSurfaceView
 {
-  private EGLContext hoR;
-  int huh;
-  a juC;
-  private int juD;
-  private c juE;
-  int jus;
-  int jut;
+  private android.opengl.EGLContext hrF;
+  int hwV;
+  int jxn;
+  int jxo;
+  a jxx;
+  private int jxy;
+  private c jxz;
   
   public MMSightCameraGLSurfaceView(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(89201);
-    this.juC = null;
-    this.juD = 0;
+    this.jxx = null;
+    this.jxy = 0;
     init();
     AppMethodBeat.o(89201);
   }
@@ -34,8 +38,8 @@ public class MMSightCameraGLSurfaceView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(89202);
-    this.juC = null;
-    this.juD = 0;
+    this.jxx = null;
+    this.jxy = 0;
     init();
     AppMethodBeat.o(89202);
   }
@@ -47,10 +51,10 @@ public class MMSightCameraGLSurfaceView
     try
     {
       getHolder().setType(2);
-      setEGLContextFactory(new MMSightCameraGLSurfaceView.b(this));
-      setEGLConfigChooser(new MMSightCameraGLSurfaceView.a(this));
-      this.juC = new a();
-      setRenderer(this.juC);
+      setEGLContextFactory(new b());
+      setEGLConfigChooser(new a());
+      this.jxx = new a();
+      setRenderer(this.jxx);
       setRenderMode(0);
       AppMethodBeat.o(89203);
       return;
@@ -75,36 +79,36 @@ public class MMSightCameraGLSurfaceView
     }
   }
   
-  public EGLContext getEglContext()
+  public android.opengl.EGLContext getEglContext()
   {
-    return this.hoR;
+    return this.hrF;
   }
   
   public int getFrameHeight()
   {
-    return this.jut;
+    return this.jxo;
   }
   
   public int getFrameRotate()
   {
-    return this.huh;
+    return this.hwV;
   }
   
   public int getFrameWidth()
   {
-    return this.jus;
+    return this.jxn;
   }
   
   public void setOnEglEnableListener(c paramc)
   {
-    this.juE = paramc;
+    this.jxz = paramc;
   }
   
   public void surfaceChanged(SurfaceHolder paramSurfaceHolder, int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(89206);
     super.surfaceChanged(paramSurfaceHolder, paramInt1, paramInt2, paramInt3);
-    ad.i("MicroMsg.MMSightCameraGLSurfaceView", "surfaceChanged, format: %s, w: %s, h: %s this: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), this });
+    ae.i("MicroMsg.MMSightCameraGLSurfaceView", "surfaceChanged, format: %s, w: %s, h: %s this: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), this });
     AppMethodBeat.o(89206);
   }
   
@@ -112,10 +116,10 @@ public class MMSightCameraGLSurfaceView
   {
     AppMethodBeat.i(89204);
     super.surfaceCreated(paramSurfaceHolder);
-    ad.i("MicroMsg.MMSightCameraGLSurfaceView", "surfaceCreated: %s this: %s %s", new Object[] { paramSurfaceHolder, this, Integer.valueOf(getId()) });
-    this.hoR = EGL14.eglGetCurrentContext();
-    if (this.juE != null) {
-      this.juE.enable();
+    ae.i("MicroMsg.MMSightCameraGLSurfaceView", "surfaceCreated: %s this: %s %s", new Object[] { paramSurfaceHolder, this, Integer.valueOf(getId()) });
+    this.hrF = EGL14.eglGetCurrentContext();
+    if (this.jxz != null) {
+      this.jxz.enable();
     }
     AppMethodBeat.o(89204);
   }
@@ -124,8 +128,145 @@ public class MMSightCameraGLSurfaceView
   {
     AppMethodBeat.i(89205);
     super.surfaceDestroyed(paramSurfaceHolder);
-    ad.i("MicroMsg.MMSightCameraGLSurfaceView", "surfaceDestroyed: %s this: %s", new Object[] { paramSurfaceHolder, this });
+    ae.i("MicroMsg.MMSightCameraGLSurfaceView", "surfaceDestroyed: %s this: %s", new Object[] { paramSurfaceHolder, this });
     AppMethodBeat.o(89205);
+  }
+  
+  final class a
+    implements GLSurfaceView.EGLConfigChooser
+  {
+    private int EGL_OPENGL_ES2_BIT;
+    private int[] giU;
+    protected int giV;
+    protected int giW;
+    protected int giX;
+    protected int giY;
+    protected int giZ;
+    protected int gja;
+    private int[] hqg;
+    
+    public a()
+    {
+      AppMethodBeat.i(89194);
+      this.EGL_OPENGL_ES2_BIT = 4;
+      this.hqg = new int[] { 12324, 4, 12323, 4, 12322, 4, 12352, this.EGL_OPENGL_ES2_BIT, 12344 };
+      this.giU = new int[1];
+      this.giV = 5;
+      this.giW = 6;
+      this.giX = 5;
+      this.giY = 0;
+      this.giZ = 0;
+      this.gja = 0;
+      AppMethodBeat.o(89194);
+    }
+    
+    private int a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig, int paramInt)
+    {
+      AppMethodBeat.i(89197);
+      if (paramEGL10.eglGetConfigAttrib(paramEGLDisplay, paramEGLConfig, paramInt, this.giU))
+      {
+        paramInt = this.giU[0];
+        AppMethodBeat.o(89197);
+        return paramInt;
+      }
+      AppMethodBeat.o(89197);
+      return 0;
+    }
+    
+    private EGLConfig b(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig[] paramArrayOfEGLConfig)
+    {
+      AppMethodBeat.i(89196);
+      int j = paramArrayOfEGLConfig.length;
+      int i = 0;
+      while (i < j)
+      {
+        EGLConfig localEGLConfig = paramArrayOfEGLConfig[i];
+        int k = a(paramEGL10, paramEGLDisplay, localEGLConfig, 12325);
+        int m = a(paramEGL10, paramEGLDisplay, localEGLConfig, 12326);
+        if ((k >= this.giZ) && (m >= this.gja))
+        {
+          k = a(paramEGL10, paramEGLDisplay, localEGLConfig, 12324);
+          m = a(paramEGL10, paramEGLDisplay, localEGLConfig, 12323);
+          int n = a(paramEGL10, paramEGLDisplay, localEGLConfig, 12322);
+          int i1 = a(paramEGL10, paramEGLDisplay, localEGLConfig, 12321);
+          if ((k == this.giV) && (m == this.giW) && (n == this.giX) && (i1 == this.giY))
+          {
+            AppMethodBeat.o(89196);
+            return localEGLConfig;
+          }
+        }
+        i += 1;
+      }
+      AppMethodBeat.o(89196);
+      return null;
+    }
+    
+    private static void c(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig[] paramArrayOfEGLConfig)
+    {
+      AppMethodBeat.i(89198);
+      int k = paramArrayOfEGLConfig.length;
+      ae.i("GLConfigChooser", String.format("%d configurations", new Object[] { Integer.valueOf(k) }));
+      int i = 0;
+      while (i < k)
+      {
+        ae.i("GLConfigChooser", String.format("Configuration %d:\n", new Object[] { Integer.valueOf(i) }));
+        EGLConfig localEGLConfig = paramArrayOfEGLConfig[i];
+        int[] arrayOfInt = new int[1];
+        int j = 0;
+        while (j < 33)
+        {
+          paramEGL10.eglGetConfigAttrib(paramEGLDisplay, localEGLConfig, new int[] { 12320, 12321, 12322, 12323, 12324, 12325, 12326, 12327, 12328, 12329, 12330, 12331, 12332, 12333, 12334, 12335, 12336, 12337, 12338, 12339, 12340, 12343, 12342, 12341, 12345, 12346, 12347, 12348, 12349, 12350, 12351, 12352, 12354 }[j], arrayOfInt);
+          j += 1;
+        }
+        i += 1;
+      }
+      AppMethodBeat.o(89198);
+    }
+    
+    public final EGLConfig chooseConfig(EGL10 paramEGL10, EGLDisplay paramEGLDisplay)
+    {
+      AppMethodBeat.i(89195);
+      int[] arrayOfInt = new int[1];
+      paramEGL10.eglChooseConfig(paramEGLDisplay, this.hqg, null, 0, arrayOfInt);
+      int i = arrayOfInt[0];
+      if (i <= 0)
+      {
+        paramEGL10 = new IllegalArgumentException("No configs match configSpec");
+        AppMethodBeat.o(89195);
+        throw paramEGL10;
+      }
+      EGLConfig[] arrayOfEGLConfig = new EGLConfig[i];
+      paramEGL10.eglChooseConfig(paramEGLDisplay, this.hqg, arrayOfEGLConfig, i, arrayOfInt);
+      c(paramEGL10, paramEGLDisplay, arrayOfEGLConfig);
+      paramEGL10 = b(paramEGL10, paramEGLDisplay, arrayOfEGLConfig);
+      AppMethodBeat.o(89195);
+      return paramEGL10;
+    }
+  }
+  
+  final class b
+    implements GLSurfaceView.EGLContextFactory
+  {
+    private int EGL_CONTEXT_CLIENT_VERSION = 12440;
+    
+    b() {}
+    
+    public final javax.microedition.khronos.egl.EGLContext createContext(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig)
+    {
+      AppMethodBeat.i(89199);
+      ae.w("MicroMsg.MMSightCameraGLSurfaceView", "creating OpenGL ES 2.0 context");
+      int i = this.EGL_CONTEXT_CLIENT_VERSION;
+      paramEGL10 = paramEGL10.eglCreateContext(paramEGLDisplay, paramEGLConfig, EGL10.EGL_NO_CONTEXT, new int[] { i, 2, 12344 });
+      AppMethodBeat.o(89199);
+      return paramEGL10;
+    }
+    
+    public final void destroyContext(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, javax.microedition.khronos.egl.EGLContext paramEGLContext)
+    {
+      AppMethodBeat.i(89200);
+      paramEGL10.eglDestroyContext(paramEGLDisplay, paramEGLContext);
+      AppMethodBeat.o(89200);
+    }
   }
   
   public static abstract interface c

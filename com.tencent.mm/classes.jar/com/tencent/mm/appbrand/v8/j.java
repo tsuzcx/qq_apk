@@ -3,7 +3,7 @@ package com.tencent.mm.appbrand.v8;
 import com.eclipsesource.v8.SharedV8ArrayBuffer;
 import com.eclipsesource.v8.V8Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.nio.ByteBuffer;
 import java.util.HashMap;
 import java.util.Map;
@@ -12,42 +12,42 @@ import java.util.concurrent.atomic.AtomicInteger;
 public final class j
   implements d
 {
-  private final AtomicInteger cYc;
-  private final Map<Integer, a> cYd;
-  private final m cYe;
+  private final AtomicInteger cZa;
+  private final Map<Integer, a> cZb;
+  private final m cZc;
   
   public j(m paramm)
   {
     AppMethodBeat.i(144037);
-    this.cYe = paramm;
-    this.cYc = new AtomicInteger(0);
-    this.cYd = new HashMap();
+    this.cZc = paramm;
+    this.cZa = new AtomicInteger(0);
+    this.cZb = new HashMap();
     AppMethodBeat.o(144037);
   }
   
   public final void destroy(int paramInt)
   {
     AppMethodBeat.i(144041);
-    if (!this.cYd.containsKey(Integer.valueOf(paramInt)))
+    if (!this.cZb.containsKey(Integer.valueOf(paramInt)))
     {
-      ad.w("MicroMsg.SharedV8ArrayBufferMgr", "destroy: id %d not exist", new Object[] { Integer.valueOf(paramInt) });
+      ae.w("MicroMsg.SharedV8ArrayBufferMgr", "destroy: id %d not exist", new Object[] { Integer.valueOf(paramInt) });
       AppMethodBeat.o(144041);
       return;
     }
-    ad.i("MicroMsg.SharedV8ArrayBufferMgr", "destroy id:%d", new Object[] { Integer.valueOf(paramInt) });
-    a locala = (a)this.cYd.get(Integer.valueOf(paramInt));
-    locala.cYe.cYn.r(new j.a.1(locala));
-    this.cYd.remove(Integer.valueOf(paramInt));
+    ae.i("MicroMsg.SharedV8ArrayBufferMgr", "destroy id:%d", new Object[] { Integer.valueOf(paramInt) });
+    a locala = (a)this.cZb.get(Integer.valueOf(paramInt));
+    locala.cZc.cZl.r(new j.a.1(locala));
+    this.cZb.remove(Integer.valueOf(paramInt));
     AppMethodBeat.o(144041);
   }
   
   public final int hw(int paramInt)
   {
     AppMethodBeat.i(144038);
-    int i = this.cYc.addAndGet(1);
-    a locala = new a(paramInt, this.cYe);
-    this.cYd.put(Integer.valueOf(i), locala);
-    ad.i("MicroMsg.SharedV8ArrayBufferMgr", "create capacity:%d, id:%d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i) });
+    int i = this.cZa.addAndGet(1);
+    a locala = new a(paramInt, this.cZc);
+    this.cZb.put(Integer.valueOf(i), locala);
+    ae.i("MicroMsg.SharedV8ArrayBufferMgr", "create capacity:%d, id:%d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i) });
     AppMethodBeat.o(144038);
     return i;
   }
@@ -55,17 +55,17 @@ public final class j
   public final SharedV8ArrayBuffer hx(int paramInt)
   {
     AppMethodBeat.i(144039);
-    if (!this.cYd.containsKey(Integer.valueOf(paramInt)))
+    if (!this.cZb.containsKey(Integer.valueOf(paramInt)))
     {
-      ad.w("MicroMsg.SharedV8ArrayBufferMgr", "get: id %d not exist", new Object[] { Integer.valueOf(paramInt) });
+      ae.w("MicroMsg.SharedV8ArrayBufferMgr", "get: id %d not exist", new Object[] { Integer.valueOf(paramInt) });
       AppMethodBeat.o(144039);
       return null;
     }
-    Object localObject = (a)this.cYd.get(Integer.valueOf(paramInt));
-    if (((a)localObject).cYh == null) {
-      ((a)localObject).cYh = ((a)localObject).cYe.NA().newSharedV8ArrayBuffer(((a)localObject).cYg);
+    Object localObject = (a)this.cZb.get(Integer.valueOf(paramInt));
+    if (((a)localObject).cZf == null) {
+      ((a)localObject).cZf = ((a)localObject).cZc.Ny().newSharedV8ArrayBuffer(((a)localObject).cZe);
     }
-    localObject = ((a)localObject).cYh;
+    localObject = ((a)localObject).cZf;
     AppMethodBeat.o(144039);
     return localObject;
   }
@@ -73,38 +73,38 @@ public final class j
   public final ByteBuffer hy(int paramInt)
   {
     AppMethodBeat.i(144040);
-    if (!this.cYd.containsKey(Integer.valueOf(paramInt)))
+    if (!this.cZb.containsKey(Integer.valueOf(paramInt)))
     {
-      ad.w("MicroMsg.SharedV8ArrayBufferMgr", "getBackingStore: id %d not exist", new Object[] { Integer.valueOf(paramInt) });
+      ae.w("MicroMsg.SharedV8ArrayBufferMgr", "getBackingStore: id %d not exist", new Object[] { Integer.valueOf(paramInt) });
       AppMethodBeat.o(144040);
       return null;
     }
-    ByteBuffer localByteBuffer = ((a)this.cYd.get(Integer.valueOf(paramInt))).cYg;
+    ByteBuffer localByteBuffer = ((a)this.cZb.get(Integer.valueOf(paramInt))).cZe;
     AppMethodBeat.o(144040);
     return localByteBuffer;
   }
   
   static final class a
   {
-    final m cYe;
-    private final int cYf;
-    ByteBuffer cYg;
-    SharedV8ArrayBuffer cYh;
+    final m cZc;
+    private final int cZd;
+    ByteBuffer cZe;
+    SharedV8ArrayBuffer cZf;
     
     a(int paramInt, m paramm)
     {
       AppMethodBeat.i(144036);
-      this.cYe = paramm;
-      this.cYf = paramInt;
-      this.cYg = ByteBuffer.allocateDirect(this.cYf);
-      this.cYh = null;
+      this.cZc = paramm;
+      this.cZd = paramInt;
+      this.cZe = ByteBuffer.allocateDirect(this.cZd);
+      this.cZf = null;
       AppMethodBeat.o(144036);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.appbrand.v8.j
  * JD-Core Version:    0.7.0.1
  */

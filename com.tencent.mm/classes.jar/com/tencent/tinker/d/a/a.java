@@ -15,16 +15,16 @@ public final class a
   extends DeflaterOutputStream
 {
   private static final byte[] EMPTY_BYTE_ARRAY = new byte[0];
-  private static final byte[] MhC = { 0 };
-  private byte[] MhD = EMPTY_BYTE_ARRAY;
-  private final HashSet<String> MhE = new HashSet();
-  private int MhF = 8;
-  private ByteArrayOutputStream MhG = new ByteArrayOutputStream();
-  private ZipEntry MhH;
-  private long MhI = 0L;
-  private int MhJ;
-  private byte[] MhK;
-  private final int MhL = 4;
+  private static final byte[] MEz = { 0 };
+  private byte[] MEA = EMPTY_BYTE_ARRAY;
+  private final HashSet<String> MEB = new HashSet();
+  private int MEC = 8;
+  private ByteArrayOutputStream MED = new ByteArrayOutputStream();
+  private ZipEntry MEE;
+  private long MEF = 0L;
+  private int MEG;
+  private byte[] MEH;
+  private final int MEI = 4;
   private boolean bWS = false;
   private boolean closed = false;
   private int compressionLevel = -1;
@@ -76,7 +76,7 @@ public final class a
     return paramInt;
   }
   
-  private void fYD()
+  private void gdc()
   {
     if (this.closed) {
       throw new IOException("Stream is closed");
@@ -97,135 +97,135 @@ public final class a
   
   public final void closeEntry()
   {
-    fYD();
-    if (this.MhH == null) {
+    gdc();
+    if (this.MEE == null) {
       return;
     }
-    if (this.MhH.getMethod() == 8) {
+    if (this.MEE.getMethod() == 8) {
       super.finish();
     }
-    if (this.MhH.getMethod() == 0)
+    if (this.MEE.getMethod() == 0)
     {
-      if (this.crc.getValue() != this.MhH.getCrc()) {
+      if (this.crc.getValue() != this.MEE.getCrc()) {
         throw new ZipException("CRC mismatch");
       }
-      if (this.MhH.getSize() != this.MhI) {
+      if (this.MEE.getSize() != this.MEF) {
         throw new ZipException("Size mismatch");
       }
     }
     int i = 30;
-    if (this.MhH.getMethod() != 0)
+    if (this.MEE.getMethod() != 0)
     {
       i = 46;
       c(this.out, 134695760L);
-      this.MhH.setCrc(this.crc.getValue());
-      c(this.out, this.MhH.getCrc());
-      this.MhH.setCompressedSize(this.def.getTotalOut());
-      c(this.out, this.MhH.getCompressedSize());
-      this.MhH.setSize(this.def.getTotalIn());
-      c(this.out, this.MhH.getSize());
+      this.MEE.setCrc(this.crc.getValue());
+      c(this.out, this.MEE.getCrc());
+      this.MEE.setCompressedSize(this.def.getTotalOut());
+      c(this.out, this.MEE.getCompressedSize());
+      this.MEE.setSize(this.def.getTotalIn());
+      c(this.out, this.MEE.getSize());
     }
     int j;
-    if (this.MhH.getMethod() == 0)
+    if (this.MEE.getMethod() == 0)
     {
       j = 0;
-      c(this.MhG, 33639248L);
-      d(this.MhG, 20);
-      d(this.MhG, 20);
-      d(this.MhG, j | 0x800);
-      d(this.MhG, this.MhH.getMethod());
-      d(this.MhG, 0);
-      d(this.MhG, 33);
-      c(this.MhG, this.crc.getValue());
-      if (this.MhH.getMethod() != 8) {
+      c(this.MED, 33639248L);
+      d(this.MED, 20);
+      d(this.MED, 20);
+      d(this.MED, j | 0x800);
+      d(this.MED, this.MEE.getMethod());
+      d(this.MED, 0);
+      d(this.MED, 33);
+      c(this.MED, this.crc.getValue());
+      if (this.MEE.getMethod() != 8) {
         break label587;
       }
-      i = (int)(i + c(this.MhG, this.def.getTotalOut()));
-      c(this.MhG, this.def.getTotalIn());
+      i = (int)(i + c(this.MED, this.def.getTotalOut()));
+      c(this.MED, this.def.getTotalIn());
       label360:
-      i += d(this.MhG, this.MhJ);
-      if (this.MhH.getExtra() == null) {
+      i += d(this.MED, this.MEG);
+      if (this.MEE.getExtra() == null) {
         break label618;
       }
-      i += d(this.MhG, this.MhH.getExtra().length);
+      i += d(this.MED, this.MEE.getExtra().length);
     }
     for (;;)
     {
-      String str = this.MhH.getComment();
+      String str = this.MEE.getComment();
       byte[] arrayOfByte = EMPTY_BYTE_ARRAY;
       if (str != null) {
         arrayOfByte = str.getBytes(Charset.forName("UTF-8"));
       }
-      d(this.MhG, arrayOfByte.length);
-      d(this.MhG, 0);
-      d(this.MhG, 0);
-      c(this.MhG, 0L);
-      c(this.MhG, this.offset);
-      this.MhG.write(this.MhK);
-      this.MhK = null;
-      if (this.MhH.getExtra() != null) {
-        this.MhG.write(this.MhH.getExtra());
+      d(this.MED, arrayOfByte.length);
+      d(this.MED, 0);
+      d(this.MED, 0);
+      c(this.MED, 0L);
+      c(this.MED, this.offset);
+      this.MED.write(this.MEH);
+      this.MEH = null;
+      if (this.MEE.getExtra() != null) {
+        this.MED.write(this.MEE.getExtra());
       }
       j = this.offset;
       this.offset = (i + this.padding + j);
       this.padding = 0;
       if (arrayOfByte.length > 0) {
-        this.MhG.write(arrayOfByte);
+        this.MED.write(arrayOfByte);
       }
-      this.MhH = null;
+      this.MEE = null;
       this.crc.reset();
-      this.MhI = 0L;
+      this.MEF = 0L;
       this.def.reset();
       return;
       j = 8;
       break;
       label587:
-      i = (int)(i + c(this.MhG, this.MhI));
-      c(this.MhG, this.MhI);
+      i = (int)(i + c(this.MED, this.MEF));
+      c(this.MED, this.MEF);
       break label360;
       label618:
-      d(this.MhG, 0);
+      d(this.MED, 0);
     }
   }
   
   public final void finish()
   {
-    fYD();
+    gdc();
     if (this.bWS) {
       return;
     }
-    if (this.MhE.isEmpty()) {
+    if (this.MEB.isEmpty()) {
       throw new ZipException("No entries");
     }
-    if (this.MhH != null) {
+    if (this.MEE != null) {
       closeEntry();
     }
-    int i = this.MhG.size();
-    c(this.MhG, 101010256L);
-    d(this.MhG, 0);
-    d(this.MhG, 0);
-    d(this.MhG, this.MhE.size());
-    d(this.MhG, this.MhE.size());
-    c(this.MhG, i);
-    c(this.MhG, this.offset + this.padding);
-    d(this.MhG, this.MhD.length);
-    if (this.MhD.length > 0) {
-      this.MhG.write(this.MhD);
+    int i = this.MED.size();
+    c(this.MED, 101010256L);
+    d(this.MED, 0);
+    d(this.MED, 0);
+    d(this.MED, this.MEB.size());
+    d(this.MED, this.MEB.size());
+    c(this.MED, i);
+    c(this.MED, this.offset + this.padding);
+    d(this.MED, this.MEA.length);
+    if (this.MEA.length > 0) {
+      this.MED.write(this.MEA);
     }
-    this.MhG.writeTo(this.out);
-    this.MhG = null;
+    this.MED.writeTo(this.out);
+    this.MED = null;
     this.bWS = true;
   }
   
   public final void putNextEntry(ZipEntry paramZipEntry)
   {
     int k = 0;
-    if (this.MhH != null) {
+    if (this.MEE != null) {
       closeEntry();
     }
     int i = paramZipEntry.getMethod();
     if (i == -1) {
-      i = this.MhF;
+      i = this.MEC;
     }
     for (;;)
     {
@@ -248,22 +248,22 @@ public final class a
           throw new ZipException("STORED entry size/compressed size mismatch");
         }
       }
-      fYD();
-      if (this.MhE.contains(paramZipEntry.getName())) {
+      gdc();
+      if (this.MEB.contains(paramZipEntry.getName())) {
         throw new ZipException("Entry already exists: " + paramZipEntry.getName());
       }
-      if (this.MhE.size() == 65535) {
+      if (this.MEB.size() == 65535) {
         throw new ZipException("Too many entries for the zip file format's 16-bit entry count");
       }
-      this.MhK = paramZipEntry.getName().getBytes(Charset.forName("UTF-8"));
-      this.MhJ = this.MhK.length;
-      if (this.MhJ > 65535) {
-        throw new IllegalArgumentException("Name too long: " + this.MhJ + " UTF-8 bytes");
+      this.MEH = paramZipEntry.getName().getBytes(Charset.forName("UTF-8"));
+      this.MEG = this.MEH.length;
+      if (this.MEG > 65535) {
+        throw new IllegalArgumentException("Name too long: " + this.MEG + " UTF-8 bytes");
       }
       this.def.setLevel(this.compressionLevel);
       paramZipEntry.setMethod(i);
-      this.MhH = paramZipEntry;
-      this.MhE.add(this.MhH.getName());
+      this.MEE = paramZipEntry;
+      this.MEB.add(this.MEE.getName());
       int j;
       label454:
       int m;
@@ -275,45 +275,45 @@ public final class a
         d(this.out, 20);
         d(this.out, j | 0x800);
         d(this.out, i);
-        if (this.MhH.getTime() == -1L) {
-          this.MhH.setTime(System.currentTimeMillis());
+        if (this.MEE.getTime() == -1L) {
+          this.MEE.setTime(System.currentTimeMillis());
         }
         d(this.out, 0);
         d(this.out, 33);
         if (i != 0) {
           break label609;
         }
-        c(this.out, this.MhH.getCrc());
-        c(this.out, this.MhH.getSize());
-        c(this.out, this.MhH.getSize());
-        d(this.out, this.MhJ);
+        c(this.out, this.MEE.getCrc());
+        c(this.out, this.MEE.getSize());
+        c(this.out, this.MEE.getSize());
+        d(this.out, this.MEG);
         m = this.offset;
-        n = this.MhJ;
-        if (this.MhH.getExtra() == null) {
+        n = this.MEG;
+        if (this.MEE.getExtra() == null) {
           break label639;
         }
-        i = this.MhH.getExtra().length;
+        i = this.MEE.getExtra().length;
         label497:
         j = k;
-        if (this.MhH.getMethod() == 0)
+        if (this.MEE.getMethod() == 0)
         {
-          if (this.MhL != 0) {
+          if (this.MEI != 0) {
             break label644;
           }
           j = k;
         }
         label520:
         this.padding = j;
-        if (this.MhH.getExtra() == null) {
+        if (this.MEE.getExtra() == null) {
           break label672;
         }
-        d(this.out, this.MhH.getExtra().length + this.padding);
+        d(this.out, this.MEE.getExtra().length + this.padding);
       }
       for (;;)
       {
-        this.out.write(this.MhK);
-        if (this.MhH.getExtra() != null) {
-          this.out.write(this.MhH.getExtra());
+        this.out.write(this.MEH);
+        if (this.MEE.getExtra() != null) {
+          this.out.write(this.MEE.getExtra());
         }
         c(this.out, this.padding);
         return;
@@ -328,8 +328,8 @@ public final class a
         i = 0;
         break label497;
         label644:
-        j = this.MhL;
-        j = (j - (i + (n + (m + 30))) % j) % this.MhL;
+        j = this.MEI;
+        j = (j - (i + (n + (m + 30))) % j) % this.MEI;
         break label520;
         label672:
         d(this.out, this.padding);
@@ -339,7 +339,7 @@ public final class a
   
   public final void write(int paramInt)
   {
-    byte[] arrayOfByte = MhC;
+    byte[] arrayOfByte = MEz;
     arrayOfByte[0] = ((byte)(paramInt & 0xFF));
     write(arrayOfByte, 0, 1);
   }
@@ -350,16 +350,16 @@ public final class a
     if (((paramInt1 | paramInt2) < 0) || (paramInt1 > i) || (i - paramInt1 < paramInt2)) {
       throw new ArrayIndexOutOfBoundsException("length=" + i + "; regionStart=" + paramInt1 + "; regionLength=" + paramInt2);
     }
-    if (this.MhH == null) {
+    if (this.MEE == null) {
       throw new ZipException("No active entry");
     }
-    if (this.MhH.getMethod() == 0) {
+    if (this.MEE.getMethod() == 0) {
       this.out.write(paramArrayOfByte, paramInt1, paramInt2);
     }
     for (;;)
     {
       this.crc.update(paramArrayOfByte, paramInt1, paramInt2);
-      this.MhI += paramInt2;
+      this.MEF += paramInt2;
       return;
       super.write(paramArrayOfByte, paramInt1, paramInt2);
     }

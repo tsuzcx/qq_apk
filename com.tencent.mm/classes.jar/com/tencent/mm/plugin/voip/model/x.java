@@ -2,38 +2,38 @@ package com.tencent.mm.plugin.voip.model;
 
 public abstract interface x
 {
-  public static final x CeH = new x()
+  public static final x Cwi = new x()
   {
-    public final void TQ(int paramAnonymousInt) {}
+    public final void Ux(int paramAnonymousInt) {}
     
-    public final void TR(int paramAnonymousInt) {}
+    public final void Uy(int paramAnonymousInt) {}
     
-    public final void TS(int paramAnonymousInt) {}
+    public final void Uz(int paramAnonymousInt) {}
     
-    public final void aDD(String paramAnonymousString) {}
+    public final void aEW(String paramAnonymousString) {}
     
-    public final void d(int paramAnonymousInt1, int paramAnonymousInt2, byte[] paramAnonymousArrayOfByte) {}
+    public final void dfQ() {}
     
-    public final void dcY() {}
+    public final void dtu() {}
     
-    public final void dqh() {}
+    public final void e(int paramAnonymousInt1, int paramAnonymousInt2, byte[] paramAnonymousArrayOfByte) {}
     
-    public final void evr() {}
+    public final void eyY() {}
     
-    public final void evu() {}
+    public final void ezb() {}
     
-    public final void evv() {}
+    public final void ezc() {}
     
-    public final void evw() {}
+    public final void ezd() {}
     
-    public final void evx() {}
+    public final void eze() {}
     
-    public final long evy()
+    public final long ezf()
     {
       return 0L;
     }
     
-    public final void ir(int paramAnonymousInt1, int paramAnonymousInt2) {}
+    public final void iv(int paramAnonymousInt1, int paramAnonymousInt2) {}
     
     public final void onConnected() {}
     
@@ -46,33 +46,33 @@ public abstract interface x
     public final void setVoipBeauty(int paramAnonymousInt) {}
   };
   
-  public abstract void TQ(int paramInt);
+  public abstract void Ux(int paramInt);
   
-  public abstract void TR(int paramInt);
+  public abstract void Uy(int paramInt);
   
-  public abstract void TS(int paramInt);
+  public abstract void Uz(int paramInt);
   
-  public abstract void aDD(String paramString);
+  public abstract void aEW(String paramString);
   
-  public abstract void d(int paramInt1, int paramInt2, byte[] paramArrayOfByte);
+  public abstract void dfQ();
   
-  public abstract void dcY();
+  public abstract void dtu();
   
-  public abstract void dqh();
+  public abstract void e(int paramInt1, int paramInt2, byte[] paramArrayOfByte);
   
-  public abstract void evr();
+  public abstract void eyY();
   
-  public abstract void evu();
+  public abstract void ezb();
   
-  public abstract void evv();
+  public abstract void ezc();
   
-  public abstract void evw();
+  public abstract void ezd();
   
-  public abstract void evx();
+  public abstract void eze();
   
-  public abstract long evy();
+  public abstract long ezf();
   
-  public abstract void ir(int paramInt1, int paramInt2);
+  public abstract void iv(int paramInt1, int paramInt2);
   
   public abstract void onConnected();
   
@@ -86,7 +86,7 @@ public abstract interface x
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.model.x
  * JD-Core Version:    0.7.0.1
  */

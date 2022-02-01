@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.scanner.ui.widget;
 
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/scanner/ui/widget/ScanCodeMaskView$Companion;", "", "()V", "MULTI_CODE_TIPS_DEFAULT_BOTTOM_MARGIN_DP", "", "MULTI_CODE_TIPS_MIN_BOTTOM_MARGIN_DP", "SCALE_ANIMATION_DELAY", "", "SCALE_ANIMATION_DURATION", "SCALE_ANIMATION_MAX_SCALE", "", "SCALE_ANIMATION_MIN_SCALE", "SCALE_ANIMATION_PERIOD", "SCAN_LINE_ANIMATION_DURATION", "TAG", "", "plugin-scan_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/scanner/ui/widget/ScanCodeMaskView$Companion;", "", "()V", "MULTI_CODE_TIPS_DEFAULT_BOTTOM_MARGIN_DP", "", "MULTI_CODE_TIPS_MIN_BOTTOM_MARGIN_DP", "SCALE_ANIMATION_DELAY", "", "SCALE_ANIMATION_DURATION", "SCALE_ANIMATION_MAX_SCALE", "", "SCALE_ANIMATION_MIN_SCALE", "SCALE_ANIMATION_PERIOD", "SCAN_LINE_ANIMATION_DURATION", "TAG", "", "plugin-scan_release"})
 public final class ScanCodeMaskView$a {}
 
 

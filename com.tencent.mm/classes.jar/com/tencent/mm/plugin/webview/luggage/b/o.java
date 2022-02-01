@@ -1,25 +1,25 @@
 package com.tencent.mm.plugin.webview.luggage.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.y.b;
+import com.tencent.mm.model.z.b;
 
 public final class o
 {
-  boolean DSg;
-  boolean DSh;
+  boolean Ekg;
+  boolean Ekh;
   int id;
-  private final y.b kwA;
+  private final z.b kzP;
   String name;
-  boolean nmR;
+  boolean nsb;
   
   public o(int paramInt, String paramString, boolean paramBoolean1, boolean paramBoolean2)
   {
     AppMethodBeat.i(78722);
-    this.kwA = new y.b();
+    this.kzP = new z.b();
     this.id = paramInt;
     this.name = paramString;
-    this.DSg = paramBoolean1;
-    this.DSh = paramBoolean2;
+    this.Ekg = paramBoolean1;
+    this.Ekh = paramBoolean2;
     AppMethodBeat.o(78722);
   }
 }

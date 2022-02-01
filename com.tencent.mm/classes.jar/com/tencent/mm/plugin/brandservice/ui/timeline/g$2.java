@@ -1,10 +1,12 @@
 package com.tencent.mm.plugin.brandservice.ui.timeline;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.q;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.kernel.b;
 import com.tencent.mm.plugin.brandservice.b.k;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.plugin.brandservice.ui.timeline.video.MPVideoPreviewMgr;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -20,18 +22,25 @@ final class g$2
   {
     AppMethodBeat.i(5931);
     LinkedList localLinkedList = new LinkedList();
-    Iterator localIterator = this.obo.obm.entrySet().iterator();
+    Iterator localIterator = this.ohe.ohc.entrySet().iterator();
     StringBuilder localStringBuilder = new StringBuilder();
     while (localIterator.hasNext())
     {
       g.a locala = (g.a)((Map.Entry)localIterator.next()).getValue();
+      if (!bu.isNullOrNil(locala.udb))
+      {
+        MPVideoPreviewMgr localMPVideoPreviewMgr = MPVideoPreviewMgr.ovZ;
+        locala.Gbq = MPVideoPreviewMgr.aIK(locala.udb);
+        localMPVideoPreviewMgr = MPVideoPreviewMgr.ovZ;
+        locala.Gbr = MPVideoPreviewMgr.aJf(locala.udb);
+      }
       localLinkedList.add(locala);
-      if (locala.FIB == 0) {
-        localStringBuilder.append(locala.fkx).append(",").append(locala.FIG).append(" ");
+      if (locala.GaY == 0) {
+        localStringBuilder.append(locala.fmu).append(",").append(locala.Gbd).append(" ");
       }
     }
-    ad.i("MicroMsg.BizTimeLineReport", "reportExpose %s.", new Object[] { localStringBuilder.toString() });
-    com.tencent.mm.kernel.g.ajB().gAO.a(new k(localLinkedList, this.obo.obk, this.obo.obl, this.obo.dlK), 0);
+    ae.i("MicroMsg.BizTimeLineReport", "reportExpose %s.", new Object[] { localStringBuilder.toString() });
+    com.tencent.mm.kernel.g.ajQ().gDv.a(new k(localLinkedList, this.ohe.oha, this.ohe.ohb, this.ohe.dmM), 0);
     AppMethodBeat.o(5931);
   }
 }

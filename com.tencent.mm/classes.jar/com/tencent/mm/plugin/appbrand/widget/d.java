@@ -5,11 +5,14 @@ import android.graphics.Canvas;
 import android.util.Log;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.FrameLayout.LayoutParams;
 import com.tencent.e.h;
 import com.tencent.e.i;
 import com.tencent.luggage.a.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.t.a;
+import com.tencent.mm.plugin.appbrand.s.a;
+import com.tencent.mm.plugin.appbrand.utils.ag;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
@@ -17,20 +20,20 @@ import java.util.Set;
 public final class d
   extends FrameLayout
 {
-  private final Set<Runnable> lZX;
-  private final a mSO;
+  private final a mXX;
+  private final Set<Runnable> mer;
   
   public d(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(135389);
-    this.lZX = new HashSet();
+    this.mer = new HashSet();
     setWillNotDraw(false);
-    this.mSO = ((a)e.M(a.class));
+    this.mXX = ((a)e.M(a.class));
     AppMethodBeat.o(135389);
   }
   
-  public final void aa(final Runnable paramRunnable)
+  public final void Y(final Runnable paramRunnable)
   {
     AppMethodBeat.i(135391);
     if (paramRunnable == null)
@@ -38,14 +41,14 @@ public final class d
       AppMethodBeat.o(135391);
       return;
     }
-    if (!com.tencent.mm.plugin.appbrand.utils.ad.Ch())
+    if (!ag.Ck())
     {
-      h.LTJ.aP(new Runnable()
+      h.MqF.aM(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(135388);
-          d.this.aa(paramRunnable);
+          d.this.Y(paramRunnable);
           AppMethodBeat.o(135388);
         }
       });
@@ -58,7 +61,7 @@ public final class d
       AppMethodBeat.o(135391);
       return;
     }
-    this.lZX.add(paramRunnable);
+    this.mer.add(paramRunnable);
     AppMethodBeat.o(135391);
   }
   
@@ -78,30 +81,38 @@ public final class d
     }
     catch (Exception paramCanvas)
     {
-      com.tencent.mm.sdk.platformtools.ad.printErrStackTrace("Luggage.WXA.AppBrandRuntimeFrameLayout", paramCanvas, "", new Object[0]);
+      ae.printErrStackTrace("Luggage.WXA.AppBrandRuntimeFrameLayout", paramCanvas, "", new Object[0]);
       if (!(paramCanvas instanceof NullPointerException)) {
         break label71;
       }
     }
-    this.mSO.idkeyStat(1088L, 0L, 1L, false);
+    this.mXX.idkeyStat(1088L, 0L, 1L, false);
     for (;;)
     {
       AppMethodBeat.o(135390);
       throw paramCanvas;
       label71:
-      this.mSO.idkeyStat(1088L, 1L, 1L, false);
+      this.mXX.idkeyStat(1088L, 1L, 1L, false);
     }
+  }
+  
+  protected final FrameLayout.LayoutParams generateDefaultLayoutParams()
+  {
+    AppMethodBeat.i(208007);
+    FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-1, -1);
+    AppMethodBeat.o(208007);
+    return localLayoutParams;
   }
   
   protected final void onAnimationEnd()
   {
     AppMethodBeat.i(135392);
     super.onAnimationEnd();
-    Iterator localIterator = this.lZX.iterator();
+    Iterator localIterator = this.mer.iterator();
     while (localIterator.hasNext()) {
       ((Runnable)localIterator.next()).run();
     }
-    this.lZX.clear();
+    this.mer.clear();
     AppMethodBeat.o(135392);
   }
   
@@ -109,21 +120,21 @@ public final class d
   {
     AppMethodBeat.i(135393);
     super.onViewRemoved(paramView);
-    com.tencent.mm.sdk.platformtools.ad.i("Luggage.WXA.AppBrandRuntimeFrameLayout", "onViewRemoved %s", new Object[] { paramView });
+    ae.i("Luggage.WXA.AppBrandRuntimeFrameLayout", "onViewRemoved %s", new Object[] { paramView });
     AppMethodBeat.o(135393);
   }
   
   public final void removeAllViews()
   {
     AppMethodBeat.i(135394);
-    com.tencent.mm.sdk.platformtools.ad.d("Luggage.WXA.AppBrandRuntimeFrameLayout", "removeAllViews stack = %s", new Object[] { Log.getStackTraceString(new Throwable()) });
+    ae.d("Luggage.WXA.AppBrandRuntimeFrameLayout", "removeAllViews stack = %s", new Object[] { Log.getStackTraceString(new Throwable()) });
     super.removeAllViews();
     AppMethodBeat.o(135394);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.d
  * JD-Core Version:    0.7.0.1
  */

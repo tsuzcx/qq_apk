@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class qm
   extends b
 {
-  public a dFi;
+  public a dGl;
   
   public qm()
   {
@@ -15,21 +15,21 @@ public final class qm
   
   private qm(byte paramByte)
   {
-    AppMethodBeat.i(114406);
-    this.dFi = new a();
-    this.IbR = false;
+    AppMethodBeat.i(168780);
+    this.dGl = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(114406);
+    AppMethodBeat.o(168780);
   }
   
   public static final class a
   {
-    public int type = 0;
+    public boolean dGm = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.a.qm
  * JD-Core Version:    0.7.0.1
  */

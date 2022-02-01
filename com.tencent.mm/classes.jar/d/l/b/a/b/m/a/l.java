@@ -16,26 +16,26 @@ import java.util.List;
 public final class l
   implements b
 {
-  final as NCv;
-  private final f NDj;
-  d.g.a.a<? extends List<? extends bg>> NDk;
-  final l NDl;
-  final av Nwm;
+  final av NTs;
+  final as NZC;
+  private final f Oaq;
+  d.g.a.a<? extends List<? extends bg>> Oar;
+  final l Oas;
   
   l(av paramav, d.g.a.a<? extends List<? extends bg>> parama, l paraml, as paramas)
   {
-    AppMethodBeat.i(187797);
-    this.Nwm = paramav;
-    this.NDk = parama;
-    this.NDl = paraml;
-    this.NCv = paramas;
-    this.NDj = d.g.a(k.MKb, (d.g.a.a)new a(this));
-    AppMethodBeat.o(187797);
+    AppMethodBeat.i(193321);
+    this.NTs = paramav;
+    this.Oar = parama;
+    this.Oas = paraml;
+    this.NZC = paramas;
+    this.Oaq = d.g.a(k.Nhe, (d.g.a.a)new a(this));
+    AppMethodBeat.o(193321);
   }
   
   private l(av paramav, List<? extends bg> paramList)
   {
-    this(paramav, (d.g.a.a)new l.1(paramList), null, 8);
+    this(paramav, (d.g.a.a)new q(paramList) {}, null, 8);
     AppMethodBeat.i(61082);
     AppMethodBeat.o(61082);
   }
@@ -61,13 +61,13 @@ public final class l
       AppMethodBeat.o(61078);
       throw paramObject;
     }
-    localObject1 = this.NDl;
+    localObject1 = this.Oas;
     if (localObject1 == null) {
       localObject1 = this;
     }
     for (;;)
     {
-      localObject2 = ((l)paramObject).NDl;
+      localObject2 = ((l)paramObject).Oas;
       if (localObject2 == null) {}
       for (paramObject = (l)paramObject;; paramObject = localObject2)
       {
@@ -84,44 +84,44 @@ public final class l
   
   public final List<as> getParameters()
   {
-    return (List)d.a.v.MKE;
+    return (List)d.a.v.NhH;
   }
   
-  public final h ghO()
+  public final h gmq()
   {
     return null;
   }
   
-  public final boolean ghQ()
+  public final boolean gms()
   {
     return false;
   }
   
-  public final d.l.b.a.b.a.g gjd()
+  public final d.l.b.a.b.a.g gnF()
   {
     AppMethodBeat.i(61077);
-    Object localObject = this.Nwm.gju();
+    Object localObject = this.NTs.gnW();
     p.g(localObject, "projection.type");
     localObject = d.l.b.a.b.m.d.a.aN((ab)localObject);
     AppMethodBeat.o(61077);
     return localObject;
   }
   
-  public final List<bg> gtS()
+  public final av gxC()
+  {
+    return this.NTs;
+  }
+  
+  public final List<bg> gyu()
   {
     AppMethodBeat.i(61075);
-    List localList2 = (List)this.NDj.getValue();
+    List localList2 = (List)this.Oaq.getValue();
     List localList1 = localList2;
     if (localList2 == null) {
-      localList1 = (List)d.a.v.MKE;
+      localList1 = (List)d.a.v.NhH;
     }
     AppMethodBeat.o(61075);
     return localList1;
-  }
-  
-  public final av gta()
-  {
-    return this.Nwm;
   }
   
   public final int hashCode()
@@ -130,7 +130,7 @@ public final class l
     l locall;
     for (Object localObject = this;; localObject = locall)
     {
-      locall = ((l)localObject).NDl;
+      locall = ((l)localObject).Oas;
       if (locall == null) {
         break;
       }
@@ -143,7 +143,7 @@ public final class l
   public final String toString()
   {
     AppMethodBeat.i(61080);
-    String str = "CapturedType(" + this.Nwm + ')';
+    String str = "CapturedType(" + this.NTs + ')';
     AppMethodBeat.o(61080);
     return str;
   }
@@ -153,6 +153,16 @@ public final class l
     implements d.g.a.a<List<? extends bg>>
   {
     a(l paraml)
+    {
+      super();
+    }
+  }
+  
+  static final class b
+    extends q
+    implements d.g.a.a<List<? extends bg>>
+  {
+    b(List paramList)
     {
       super();
     }
@@ -170,7 +180,7 @@ public final class l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.m.a.l
  * JD-Core Version:    0.7.0.1
  */

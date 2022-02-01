@@ -3,23 +3,23 @@ package com.tencent.mm.plugin.emojicapture.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/emojicapture/presenter/CapturePresenter$RecordState;", "", "(Ljava/lang/String;I)V", "RECORD_STATE_IDLE", "RECORD_STATE_PREVIEW", "RECORD_STATE_PREVIEW_PAUSED", "RECORD_STATE_STARTED", "RECORD_STATE_STOP", "plugin-emojicapture_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/emojicapture/presenter/CapturePresenter$RecordState;", "", "(Ljava/lang/String;I)V", "RECORD_STATE_IDLE", "RECORD_STATE_PREVIEW", "RECORD_STATE_PREVIEW_PAUSED", "RECORD_STATE_STARTED", "RECORD_STATE_STOP", "plugin-emojicapture_release"})
 public enum a$b
 {
   static
   {
     AppMethodBeat.i(317);
     b localb1 = new b("RECORD_STATE_IDLE", 0);
-    pTk = localb1;
+    pZP = localb1;
     b localb2 = new b("RECORD_STATE_PREVIEW", 1);
-    pTl = localb2;
+    pZQ = localb2;
     b localb3 = new b("RECORD_STATE_PREVIEW_PAUSED", 2);
-    pTm = localb3;
+    pZR = localb3;
     b localb4 = new b("RECORD_STATE_STARTED", 3);
-    pTn = localb4;
+    pZS = localb4;
     b localb5 = new b("RECORD_STATE_STOP", 4);
-    pTo = localb5;
-    pTp = new b[] { localb1, localb2, localb3, localb4, localb5 };
+    pZT = localb5;
+    pZU = new b[] { localb1, localb2, localb3, localb4, localb5 };
     AppMethodBeat.o(317);
   }
   

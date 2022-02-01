@@ -4,29 +4,29 @@ import android.os.Build.VERSION;
 import android.webkit.WebResourceResponse;
 import com.tencent.luggage.webview.a.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.z.d;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.plugin.appbrand.y.d;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.io.ByteArrayInputStream;
 import java.util.HashMap;
 
 public final class e
   implements c
 {
-  private String DOn = "";
+  private String Egn = "";
   
   public e() {}
   
   public e(String paramString)
   {
-    this.DOn = paramString;
+    this.Egn = paramString;
   }
   
-  public final String Fw()
+  public final String FC()
   {
     return "weixin://bridge.js";
   }
   
-  public final WebResourceResponse cF(String paramString)
+  public final WebResourceResponse cG(String paramString)
   {
     AppMethodBeat.i(78212);
     if (Build.VERSION.SDK_INT < 21)
@@ -34,8 +34,8 @@ public final class e
       AppMethodBeat.o(78212);
       return null;
     }
-    paramString = d.UT("LuggageBridge.js");
-    paramString = paramString + this.DOn;
+    paramString = d.VE("LuggageBridge.js");
+    paramString = paramString + this.Egn;
     try
     {
       paramString = new WebResourceResponse("application/javascript", "utf-8", new ByteArrayInputStream(paramString.getBytes("UTF-8")));
@@ -49,7 +49,7 @@ public final class e
     }
     catch (Exception paramString)
     {
-      ad.l("MicroMsg.LuggageMMJsBridgeResourceProvider", "", new Object[] { paramString });
+      ae.l("MicroMsg.LuggageMMJsBridgeResourceProvider", "", new Object[] { paramString });
       AppMethodBeat.o(78212);
     }
     return null;

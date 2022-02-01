@@ -6,12 +6,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.c.h;
+import com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.c.g;
 import com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.c.j;
 import com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.a.a;
 import com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.scan.BleScanWorker.3;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -22,20 +22,20 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 public final class a
 {
-  public static BroadcastReceiver kCT;
-  public static boolean kCU;
-  public static a.a kCV;
+  public static BroadcastReceiver kGi;
+  public static boolean kGj;
+  public static a.a kGk;
   private static Map<String, b> map;
   
   static
   {
     AppMethodBeat.i(144483);
     map = new ConcurrentHashMap();
-    kCV = new a.1();
+    kGk = new a.1();
     AppMethodBeat.o(144483);
   }
   
-  public static b Pt(String paramString)
+  public static b Qb(String paramString)
   {
     AppMethodBeat.i(144479);
     paramString = (b)map.get(paramString);
@@ -43,104 +43,104 @@ public final class a
     return paramString;
   }
   
-  public static j Pu(String paramString)
+  public static j Qc(String paramString)
   {
     AppMethodBeat.i(144480);
-    ad.i("MicroMsg.Ble.BleManager", "close appId:%s", new Object[] { paramString });
+    ae.i("MicroMsg.Ble.BleManager", "close appId:%s", new Object[] { paramString });
     if (!map.containsKey(paramString))
     {
-      paramString = j.kFA;
+      paramString = j.kIP;
       AppMethodBeat.o(144480);
       return paramString;
     }
     b localb = (b)map.remove(paramString);
-    com.tencent.mm.plugin.appbrand.g.b(paramString, localb);
+    com.tencent.mm.plugin.appbrand.h.b(paramString, localb);
     localb.uninit();
     if (map.size() == 0) {
-      bjf();
+      bjO();
     }
-    paramString = j.kFA;
+    paramString = j.kIP;
     AppMethodBeat.o(144480);
     return paramString;
   }
   
-  public static j a(String paramString, b.a parama, h paramh, com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.c.g paramg)
+  public static j a(String paramString, b.a parama, com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.c.h paramh, g paramg)
   {
     AppMethodBeat.i(144478);
-    ad.i("MicroMsg.Ble.BleManager", "open appId:%s", new Object[] { paramString });
-    if (!com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.c.bjy())
+    ae.i("MicroMsg.Ble.BleManager", "open appId:%s", new Object[] { paramString });
+    if (!com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.c.bkh())
     {
-      ad.e("MicroMsg.Ble.BleManager", "api version is below 18");
-      paramString = j.kFL;
+      ae.e("MicroMsg.Ble.BleManager", "api version is below 18");
+      paramString = j.kJa;
       AppMethodBeat.o(144478);
       return paramString;
     }
     if (!map.containsKey(paramString))
     {
       b localb = new b(paramString);
-      localb.kCW = new com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.b(aj.getContext());
-      Object localObject1 = localb.kCW;
-      Object localObject2 = ((com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.b)localObject1).kEA;
+      localb.kGl = new com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.b(ak.getContext());
+      Object localObject1 = localb.kGl;
+      Object localObject2 = ((com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.b)localObject1).kHP;
       com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.a.i("MicroMsg.Ble.BleConnectMgr", "init", new Object[0]);
-      if (((com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.a.c)localObject2).kEI == null) {
-        ((com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.a.c)localObject2).kEI = new ConcurrentHashMap();
+      if (((com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.a.c)localObject2).kHX == null) {
+        ((com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.a.c)localObject2).kHX = new ConcurrentHashMap();
       }
-      ((com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.a.c)localObject2).kEI.clear();
-      localObject1 = ((com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.b)localObject1).kEB;
-      com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.a.i(((com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.scan.a)localObject1).crd, "init", new Object[0]);
-      ((com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.scan.a)localObject1).deV.set(true);
-      ((com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.scan.a)localObject1).kcN = new HashMap();
-      ((com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.scan.a)localObject1).kFX = new ArrayList();
-      ((com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.scan.a)localObject1).kFV = new com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.scan.a.2((com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.scan.a)localObject1);
-      if (((com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.scan.a)localObject1).kCT == null)
+      ((com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.a.c)localObject2).kHX.clear();
+      localObject1 = ((com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.b)localObject1).kHQ;
+      com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.a.i(((com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.scan.a)localObject1).crG, "init", new Object[0]);
+      ((com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.scan.a)localObject1).dfX.set(true);
+      ((com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.scan.a)localObject1).kge = new HashMap();
+      ((com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.scan.a)localObject1).kJm = new ArrayList();
+      ((com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.scan.a)localObject1).kJk = new com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.scan.a.2((com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.scan.a)localObject1);
+      if (((com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.scan.a)localObject1).kGi == null)
       {
-        ad.i(((com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.scan.a)localObject1).crd, "bluetoothStateListener init");
-        ((com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.scan.a)localObject1).kCT = new BleScanWorker.3((com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.scan.a)localObject1);
+        ae.i(((com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.scan.a)localObject1).crG, "bluetoothStateListener init");
+        ((com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.scan.a)localObject1).kGi = new BleScanWorker.3((com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.scan.a)localObject1);
         localObject2 = new IntentFilter("android.bluetooth.adapter.action.STATE_CHANGED");
-        ((com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.scan.a)localObject1).context.registerReceiver(((com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.scan.a)localObject1).kCT, (IntentFilter)localObject2);
+        ((com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.scan.a)localObject1).context.registerReceiver(((com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.scan.a)localObject1).kGi, (IntentFilter)localObject2);
       }
-      localb.kCX = parama;
-      if (localb.kCW != null)
+      localb.kGm = parama;
+      if (localb.kGl != null)
       {
-        parama = localb.kCW;
-        if (parama.kEA != null) {
-          parama.kEA.kEJ = paramh;
+        parama = localb.kGl;
+        if (parama.kHP != null) {
+          parama.kHP.kHY = paramh;
         }
       }
-      if (localb.kCW != null)
+      if (localb.kGl != null)
       {
-        parama = localb.kCW;
-        if (parama.kEA != null) {
-          parama.kEA.kEK = paramg;
+        parama = localb.kGl;
+        if (parama.kHP != null) {
+          parama.kHP.kHZ = paramg;
         }
       }
       map.put(paramString, localb);
-      com.tencent.mm.plugin.appbrand.g.a(paramString, localb);
-      bje();
-      com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.a.kGY = kCV;
+      com.tencent.mm.plugin.appbrand.h.a(paramString, localb);
+      bjN();
+      com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.a.kKn = kGk;
     }
-    while (!com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.c.bjz())
+    while (!com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.c.bki())
     {
-      ad.e("MicroMsg.Ble.BleManager", "bluetooth not enable, err");
-      paramString = j.kFD;
+      ae.e("MicroMsg.Ble.BleManager", "bluetooth not enable, err");
+      paramString = j.kIS;
       AppMethodBeat.o(144478);
       return paramString;
-      ad.i("MicroMsg.Ble.BleManager", "already open appId:%s", new Object[] { paramString });
+      ae.i("MicroMsg.Ble.BleManager", "already open appId:%s", new Object[] { paramString });
     }
-    paramString = j.kFA;
+    paramString = j.kIP;
     AppMethodBeat.o(144478);
     return paramString;
   }
   
-  private static void bje()
+  private static void bjN()
   {
     try
     {
       AppMethodBeat.i(144481);
-      if (kCT == null)
+      if (kGi == null)
       {
-        ad.i("MicroMsg.Ble.BleManager", "bluetoothStateListener init");
-        kCT = new BroadcastReceiver()
+        ae.i("MicroMsg.Ble.BleManager", "bluetoothStateListener init");
+        kGi = new BroadcastReceiver()
         {
           public final void onReceive(Context paramAnonymousContext, Intent paramAnonymousIntent)
           {
@@ -148,7 +148,7 @@ public final class a
             AppMethodBeat.i(144477);
             if (paramAnonymousIntent == null)
             {
-              ad.i("MicroMsg.Ble.BleManager", "Receive intent failed");
+              ae.i("MicroMsg.Ble.BleManager", "Receive intent failed");
               AppMethodBeat.o(144477);
               return;
             }
@@ -156,19 +156,19 @@ public final class a
             if (paramAnonymousContext != null)
             {
               int i = paramAnonymousContext.getState();
-              ad.d("MicroMsg.Ble.BleManager", "state:%d", new Object[] { Integer.valueOf(i) });
+              ae.d("MicroMsg.Ble.BleManager", "state:%d", new Object[] { Integer.valueOf(i) });
               boolean bool1;
               if (i == 12) {
                 bool1 = true;
               }
-              while (((a.kCU) && (!bool1)) || ((!a.kCU) && (bool1)))
+              while (((a.kGj) && (!bool1)) || ((!a.kGj) && (bool1)))
               {
-                paramAnonymousContext = a.aaU().values().iterator();
+                paramAnonymousContext = a.abd().values().iterator();
                 while (paramAnonymousContext.hasNext())
                 {
                   paramAnonymousIntent = (b)paramAnonymousContext.next();
-                  if (paramAnonymousIntent.kCX != null) {
-                    paramAnonymousIntent.kCX.gs(bool1);
+                  if (paramAnonymousIntent.kGm != null) {
+                    paramAnonymousIntent.kGm.gq(bool1);
                   }
                 }
                 bool1 = bool2;
@@ -176,14 +176,14 @@ public final class a
                   bool1 = bool2;
                 }
               }
-              a.kCU = bool1;
+              a.kGj = bool1;
             }
             AppMethodBeat.o(144477);
           }
         };
         IntentFilter localIntentFilter = new IntentFilter("android.bluetooth.adapter.action.STATE_CHANGED");
-        aj.getContext().registerReceiver(kCT, localIntentFilter);
-        kCU = com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.c.bjz();
+        ak.getContext().registerReceiver(kGi, localIntentFilter);
+        kGj = com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.c.bki();
       }
       AppMethodBeat.o(144481);
       return;
@@ -191,16 +191,16 @@ public final class a
     finally {}
   }
   
-  private static void bjf()
+  private static void bjO()
   {
     try
     {
       AppMethodBeat.i(144482);
-      if (kCT != null)
+      if (kGi != null)
       {
-        ad.i("MicroMsg.Ble.BleManager", "bluetoothStateListener uninit");
-        aj.getContext().unregisterReceiver(kCT);
-        kCT = null;
+        ae.i("MicroMsg.Ble.BleManager", "bluetoothStateListener uninit");
+        ak.getContext().unregisterReceiver(kGi);
+        kGi = null;
       }
       AppMethodBeat.o(144482);
       return;

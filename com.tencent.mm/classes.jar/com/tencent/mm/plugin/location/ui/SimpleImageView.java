@@ -5,14 +5,16 @@ import android.os.Message;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.vfs.i;
+import com.tencent.mm.b.g;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.h;
+import com.tencent.mm.vfs.o;
 
 public class SimpleImageView
   extends ImageView
 {
-  public ap handler;
+  public aq handler;
   public String imagePath;
   public int targetHeight;
   public int targetWidth;
@@ -23,7 +25,7 @@ public class SimpleImageView
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(55930);
     this.url = null;
-    this.handler = new ap()
+    this.handler = new aq()
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
@@ -31,16 +33,16 @@ public class SimpleImageView
         byte[] arrayOfByte = (byte[])paramAnonymousMessage.obj;
         if ((arrayOfByte == null) || (arrayOfByte.length == 0))
         {
-          ad.e("MicroMsg.SimpleImageView", "handleMsg fail, data is null");
+          ae.e("MicroMsg.SimpleImageView", "handleMsg fail, data is null");
           AppMethodBeat.o(55928);
           return;
         }
-        paramAnonymousMessage = com.tencent.mm.sdk.platformtools.g.cr(arrayOfByte);
-        String str = SimpleImageView.a(SimpleImageView.this) + com.tencent.mm.b.g.getMessageDigest(SimpleImageView.b(SimpleImageView.this).getBytes());
-        ad.d("MicroMsg.SimpleImageView", "filePath  %s", new Object[] { str });
-        i.f(str, arrayOfByte, arrayOfByte.length);
+        paramAnonymousMessage = h.cu(arrayOfByte);
+        String str = SimpleImageView.a(SimpleImageView.this) + g.getMessageDigest(SimpleImageView.b(SimpleImageView.this).getBytes());
+        ae.d("MicroMsg.SimpleImageView", "filePath  %s", new Object[] { str });
+        o.f(str, arrayOfByte, arrayOfByte.length);
         if ((paramAnonymousMessage != null) && (SimpleImageView.c(SimpleImageView.this) > 0) && (SimpleImageView.d(SimpleImageView.this) > 0)) {
-          paramAnonymousMessage = com.tencent.mm.sdk.platformtools.g.a(paramAnonymousMessage, SimpleImageView.d(SimpleImageView.this), SimpleImageView.c(SimpleImageView.this), true, false);
+          paramAnonymousMessage = h.a(paramAnonymousMessage, SimpleImageView.d(SimpleImageView.this), SimpleImageView.c(SimpleImageView.this), true, false);
         }
         for (;;)
         {

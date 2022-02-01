@@ -16,60 +16,60 @@ import java.util.List;
 public abstract class BaseTabSettingFragmentDialog
   extends BaseSettingFragmentDialog
 {
-  private TabLayout gJN;
-  private ViewPager gJO;
-  private List<Fragment> gJP;
-  private List<String> gJQ;
-  private q gJR;
+  private q gMA;
+  private TabLayout gMw;
+  private ViewPager gMx;
+  private List<Fragment> gMy;
+  private List<String> gMz;
   
-  protected abstract List<String> amb();
+  protected abstract List<String> amq();
   
   protected abstract List<Fragment> getFragments();
   
   public void onViewCreated(View paramView, Bundle paramBundle)
   {
     super.onViewCreated(paramView, paramBundle);
-    this.gJP = getFragments();
-    this.gJQ = amb();
-    if (this.gJP == null) {
-      this.gJP = new ArrayList();
+    this.gMy = getFragments();
+    this.gMz = amq();
+    if (this.gMy == null) {
+      this.gMy = new ArrayList();
     }
-    this.gJN.a(this.gJO, false, false);
-    this.gJR = new i(getChildFragmentManager())
+    this.gMw.a(this.gMx, false, false);
+    this.gMA = new i(getChildFragmentManager())
     {
       public final int getCount()
       {
-        AppMethodBeat.i(216715);
+        AppMethodBeat.i(197114);
         if (BaseTabSettingFragmentDialog.a(BaseTabSettingFragmentDialog.this) == null)
         {
-          AppMethodBeat.o(216715);
+          AppMethodBeat.o(197114);
           return 0;
         }
         int i = BaseTabSettingFragmentDialog.a(BaseTabSettingFragmentDialog.this).size();
-        AppMethodBeat.o(216715);
+        AppMethodBeat.o(197114);
         return i;
       }
       
       public final Fragment getItem(int paramAnonymousInt)
       {
-        AppMethodBeat.i(216714);
+        AppMethodBeat.i(197113);
         if (BaseTabSettingFragmentDialog.a(BaseTabSettingFragmentDialog.this) == null)
         {
-          AppMethodBeat.o(216714);
+          AppMethodBeat.o(197113);
           return null;
         }
         Fragment localFragment = (Fragment)BaseTabSettingFragmentDialog.a(BaseTabSettingFragmentDialog.this).get(paramAnonymousInt);
-        AppMethodBeat.o(216714);
+        AppMethodBeat.o(197113);
         return localFragment;
       }
     };
-    this.gJO.setAdapter(this.gJR);
+    this.gMx.setAdapter(this.gMA);
     int i = 0;
-    while (i < this.gJQ.size())
+    while (i < this.gMz.size())
     {
-      paramView = this.gJN.ad(i);
+      paramView = this.gMw.ad(i);
       if (paramView != null) {
-        paramView.d((CharSequence)this.gJQ.get(i));
+        paramView.d((CharSequence)this.gMz.get(i));
       }
       i += 1;
     }

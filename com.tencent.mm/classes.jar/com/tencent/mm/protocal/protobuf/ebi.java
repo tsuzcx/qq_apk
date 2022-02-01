@@ -3,43 +3,34 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class ebi
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public int HNW;
-  public String url;
+  public long IgT;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(91730);
+    AppMethodBeat.i(147801);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aS(1, this.HNW);
-      if (this.url != null) {
-        paramVarArgs.d(2, this.url);
-      }
-      AppMethodBeat.o(91730);
+      ((f.a.a.c.a)paramVarArgs[0]).aZ(1, this.IgT);
+      AppMethodBeat.o(147801);
       return 0;
     }
     if (paramInt == 1)
     {
-      int i = f.a.a.b.b.a.bz(1, this.HNW) + 0;
-      paramInt = i;
-      if (this.url != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.url);
-      }
-      AppMethodBeat.o(91730);
-      return paramInt;
+      paramInt = f.a.a.b.b.a.p(1, this.IgT);
+      AppMethodBeat.o(147801);
+      return paramInt + 0;
     }
     if (paramInt == 2)
     {
       paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gxE();
+          paramVarArgs.gCg();
         }
       }
-      AppMethodBeat.o(91730);
+      AppMethodBeat.o(147801);
       return 0;
     }
     if (paramInt == 3)
@@ -49,18 +40,14 @@ public final class ebi
       switch (((Integer)paramVarArgs[2]).intValue())
       {
       default: 
-        AppMethodBeat.o(91730);
+        AppMethodBeat.o(147801);
         return -1;
-      case 1: 
-        localebi.HNW = locala.NPN.zc();
-        AppMethodBeat.o(91730);
-        return 0;
       }
-      localebi.url = locala.NPN.readString();
-      AppMethodBeat.o(91730);
+      localebi.IgT = locala.OmT.zd();
+      AppMethodBeat.o(147801);
       return 0;
     }
-    AppMethodBeat.o(91730);
+    AppMethodBeat.o(147801);
     return -1;
   }
 }

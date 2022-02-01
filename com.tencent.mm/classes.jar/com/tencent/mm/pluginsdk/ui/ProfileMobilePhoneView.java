@@ -17,9 +17,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.am;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.an;
 import com.tencent.mm.ui.base.l;
 import com.tencent.mm.ui.base.n.d;
 import com.tencent.mm.ui.base.n.e;
@@ -27,14 +27,14 @@ import com.tencent.mm.ui.base.n.e;
 public class ProfileMobilePhoneView
   extends ProfileItemView
 {
-  public LinearLayout ETG;
-  public boolean ETH = false;
-  public String ETv;
-  public String ETw;
-  public String[] ETx;
-  public TextView lCL;
+  public String FlQ;
+  public String FlR;
+  public String[] FlS;
+  public LinearLayout Fmb;
+  public boolean Fmc = false;
+  public TextView lHk;
   private Context mContext;
-  private View.OnClickListener waa;
+  private View.OnClickListener wme;
   
   public ProfileMobilePhoneView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -50,39 +50,39 @@ public class ProfileMobilePhoneView
   public ProfileMobilePhoneView(Context paramContext, View.OnClickListener paramOnClickListener)
   {
     super(paramContext, null);
-    this.waa = paramOnClickListener;
+    this.wme = paramOnClickListener;
     this.mContext = paramContext;
   }
   
-  public final boolean aa(am paramam)
+  public final boolean ah(an paraman)
   {
-    this.pMt = paramam;
+    this.pSY = paraman;
     return true;
   }
   
-  public final boolean dBj()
+  public final boolean dEA()
   {
     AppMethodBeat.i(31242);
     Object localObject;
-    if (this.lCL != null)
+    if (this.lHk != null)
     {
-      localObject = this.lCL.getLayoutParams();
-      ((ViewGroup.LayoutParams)localObject).width = com.tencent.mm.cc.a.ax(getContext(), 2131165370);
-      this.lCL.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      localObject = this.lHk.getLayoutParams();
+      ((ViewGroup.LayoutParams)localObject).width = com.tencent.mm.cb.a.ax(getContext(), 2131165370);
+      this.lHk.setLayoutParams((ViewGroup.LayoutParams)localObject);
     }
-    if (this.ETG == null)
+    if (this.Fmb == null)
     {
       AppMethodBeat.o(31242);
       return false;
     }
     int k;
-    if ((!bt.isNullOrNil(this.ETv)) && (bt.aRn(this.ETv).booleanValue()))
+    if ((!bu.isNullOrNil(this.FlQ)) && (bu.aSK(this.FlQ).booleanValue()))
     {
-      localObject = this.ETG.getChildAt(0);
+      localObject = this.Fmb.getChildAt(0);
       if (localObject != null)
       {
         ((View)localObject).setVisibility(0);
-        ((TextView)localObject).setText(this.ETv);
+        ((TextView)localObject).setText(this.FlQ);
       }
       k = 1;
     }
@@ -90,27 +90,27 @@ public class ProfileMobilePhoneView
     for (int i = 1;; i = 0)
     {
       j = i;
-      if (bt.isNullOrNil(this.ETw)) {
+      if (bu.isNullOrNil(this.FlR)) {
         break;
       }
-      this.ETx = com.tencent.mm.o.a.a(this.pMt, this.ETw);
+      this.FlS = com.tencent.mm.contact.a.a(this.pSY, this.FlR);
       j = i;
-      if (this.ETx == null) {
+      if (this.FlS == null) {
         break;
       }
       setVisibility(0);
-      while (i < this.ETx.length + k)
+      while (i < this.FlS.length + k)
       {
-        localObject = this.ETG.getChildAt(i);
+        localObject = this.Fmb.getChildAt(i);
         if (localObject != null)
         {
           ((View)localObject).setVisibility(0);
-          ((TextView)localObject).setText(this.ETx[(i - k)]);
+          ((TextView)localObject).setText(this.FlS[(i - k)]);
         }
         i += 1;
       }
-      if ((this.ETv != null) && (!bt.aRn(this.ETv).booleanValue())) {
-        ad.e("MicroMsg.ProfileMobilePhoneView", "mobile format is error----%s", new Object[] { this.ETv });
+      if ((this.FlQ != null) && (!bu.aSK(this.FlQ).booleanValue())) {
+        ae.e("MicroMsg.ProfileMobilePhoneView", "mobile format is error----%s", new Object[] { this.FlQ });
       }
       k = 0;
     }
@@ -118,12 +118,12 @@ public class ProfileMobilePhoneView
     {
       if (j < 5)
       {
-        this.ETG.getChildAt(j).setVisibility(8);
+        this.Fmb.getChildAt(j).setVisibility(8);
         j += 1;
       }
       else
       {
-        if ((k != 1) && (bt.isNullOrNil(this.ETw))) {
+        if ((k != 1) && (bu.isNullOrNil(this.FlR))) {
           setVisibility(8);
         }
         AppMethodBeat.o(31242);
@@ -141,19 +141,19 @@ public class ProfileMobilePhoneView
   public final void init()
   {
     AppMethodBeat.i(31240);
-    this.lCL = ((TextView)findViewById(2131303213));
-    this.ETG = ((LinearLayout)findViewById(2131303212));
+    this.lHk = ((TextView)findViewById(2131303213));
+    this.Fmb = ((LinearLayout)findViewById(2131303212));
     int i = 0;
     while (i < 5)
     {
-      this.ETG.getChildAt(i).setOnClickListener(new View.OnClickListener()
+      this.Fmb.getChildAt(i).setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(31234);
           b localb = new b();
           localb.bd(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/pluginsdk/ui/ProfileMobilePhoneView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/pluginsdk/ui/ProfileMobilePhoneView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
           ProfileMobilePhoneView.a(ProfileMobilePhoneView.this, ((TextView)paramAnonymousView).getText().toString());
           ProfileMobilePhoneView.a(ProfileMobilePhoneView.this).onClick(paramAnonymousView);
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/pluginsdk/ui/ProfileMobilePhoneView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
@@ -165,19 +165,19 @@ public class ProfileMobilePhoneView
     AppMethodBeat.o(31240);
   }
   
-  public final void lt(String paramString1, String paramString2)
+  public final void lA(String paramString1, String paramString2)
   {
     AppMethodBeat.i(31241);
-    ad.i("MicroMsg.ProfileMobilePhoneView", "phoneNumberByMD5:%s phoneNumberList:%s", new Object[] { paramString1, paramString2 });
-    this.ETv = paramString1;
-    this.ETw = paramString2;
-    dBj();
+    ae.i("MicroMsg.ProfileMobilePhoneView", "phoneNumberByMD5:%s phoneNumberList:%s", new Object[] { paramString1, paramString2 });
+    this.FlQ = paramString1;
+    this.FlR = paramString2;
+    dEA();
     AppMethodBeat.o(31241);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.ProfileMobilePhoneView
  * JD-Core Version:    0.7.0.1
  */

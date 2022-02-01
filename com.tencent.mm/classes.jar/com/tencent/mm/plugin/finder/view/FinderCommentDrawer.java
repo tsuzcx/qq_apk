@@ -14,12 +14,12 @@ import android.widget.FrameLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.finder.feed.e;
 import com.tencent.mm.plugin.finder.presenter.contract.CommentDrawerContract.CloseDrawerCallback;
-import com.tencent.mm.plugin.finder.report.h;
+import com.tencent.mm.plugin.finder.report.i;
 import com.tencent.mm.plugin.finder.storage.FinderItem;
 import com.tencent.mm.plugin.finder.storage.ab;
 import com.tencent.mm.plugin.finder.viewmodel.component.FinderReporterUIC;
 import com.tencent.mm.plugin.finder.viewmodel.component.FinderReporterUIC.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.al;
 import com.tencent.mm.ui.ar;
@@ -30,34 +30,34 @@ import d.g.b.p;
 import d.l;
 import d.v;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/view/FinderCommentDrawer;", "Lcom/tencent/mm/view/drawer/RecyclerViewDrawer;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "banSwitch", "", "getBanSwitch", "()Z", "setBanSwitch", "(Z)V", "blinkRefComment", "getBlinkRefComment", "setBlinkRefComment", "closeComment", "getCloseComment", "setCloseComment", "feedObj", "Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "getFeedObj", "()Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "setFeedObj", "(Lcom/tencent/mm/plugin/finder/storage/FinderItem;)V", "footer", "Lcom/tencent/mm/plugin/finder/view/FinderCommentFooter;", "getFooter", "()Lcom/tencent/mm/plugin/finder/view/FinderCommentFooter;", "setFooter", "(Lcom/tencent/mm/plugin/finder/view/FinderCommentFooter;)V", "interceptClose", "Lkotlin/Function0;", "getInterceptClose", "()Lkotlin/jvm/functions/Function0;", "setInterceptClose", "(Lkotlin/jvm/functions/Function0;)V", "isSelfProfile", "setSelfProfile", "isSingleMode", "setSingleMode", "oldVersion", "getOldVersion", "setOldVersion", "onCloseDrawerCallback", "Lcom/tencent/mm/plugin/finder/presenter/contract/CommentDrawerContract$CloseDrawerCallback;", "getOnCloseDrawerCallback", "()Lcom/tencent/mm/plugin/finder/presenter/contract/CommentDrawerContract$CloseDrawerCallback;", "setOnCloseDrawerCallback", "(Lcom/tencent/mm/plugin/finder/presenter/contract/CommentDrawerContract$CloseDrawerCallback;)V", "reason", "getReason", "()I", "setReason", "(I)V", "rect", "Landroid/graphics/Rect;", "refCommentId", "", "getRefCommentId", "()J", "setRefCommentId", "(J)V", "replyCommentObj", "Lcom/tencent/mm/plugin/finder/storage/LocalFinderCommentObject;", "getReplyCommentObj", "()Lcom/tencent/mm/plugin/finder/storage/LocalFinderCommentObject;", "setReplyCommentObj", "(Lcom/tencent/mm/plugin/finder/storage/LocalFinderCommentObject;)V", "scene", "getScene", "setScene", "sceneForReply", "getSceneForReply", "setSceneForReply", "showFooter", "getShowFooter", "setShowFooter", "useCache", "getUseCache", "setUseCache", "closeDrawer", "", "closeDrawerWhenError", "dispatchTouchEvent", "event", "Landroid/view/MotionEvent;", "onUIPause", "onUIResume", "openDrawer", "fullScreen", "refreshSceneForReply", "switchScene", "Builder", "Companion", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/view/FinderCommentDrawer;", "Lcom/tencent/mm/view/drawer/RecyclerViewDrawer;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "banSwitch", "", "getBanSwitch", "()Z", "setBanSwitch", "(Z)V", "blinkRefComment", "getBlinkRefComment", "setBlinkRefComment", "closeComment", "getCloseComment", "setCloseComment", "feedObj", "Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "getFeedObj", "()Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "setFeedObj", "(Lcom/tencent/mm/plugin/finder/storage/FinderItem;)V", "footer", "Lcom/tencent/mm/plugin/finder/view/FinderCommentFooter;", "getFooter", "()Lcom/tencent/mm/plugin/finder/view/FinderCommentFooter;", "setFooter", "(Lcom/tencent/mm/plugin/finder/view/FinderCommentFooter;)V", "interceptClose", "Lkotlin/Function0;", "getInterceptClose", "()Lkotlin/jvm/functions/Function0;", "setInterceptClose", "(Lkotlin/jvm/functions/Function0;)V", "isSelfProfile", "setSelfProfile", "isSingleMode", "setSingleMode", "oldVersion", "getOldVersion", "setOldVersion", "onCloseDrawerCallback", "Lcom/tencent/mm/plugin/finder/presenter/contract/CommentDrawerContract$CloseDrawerCallback;", "getOnCloseDrawerCallback", "()Lcom/tencent/mm/plugin/finder/presenter/contract/CommentDrawerContract$CloseDrawerCallback;", "setOnCloseDrawerCallback", "(Lcom/tencent/mm/plugin/finder/presenter/contract/CommentDrawerContract$CloseDrawerCallback;)V", "reason", "getReason", "()I", "setReason", "(I)V", "rect", "Landroid/graphics/Rect;", "refCommentId", "", "getRefCommentId", "()J", "setRefCommentId", "(J)V", "replyCommentObj", "Lcom/tencent/mm/plugin/finder/storage/LocalFinderCommentObject;", "getReplyCommentObj", "()Lcom/tencent/mm/plugin/finder/storage/LocalFinderCommentObject;", "setReplyCommentObj", "(Lcom/tencent/mm/plugin/finder/storage/LocalFinderCommentObject;)V", "scene", "getScene", "setScene", "sceneForReply", "getSceneForReply", "setSceneForReply", "showFooter", "getShowFooter", "setShowFooter", "useCache", "getUseCache", "setUseCache", "closeDrawer", "", "closeDrawerWhenError", "dispatchTouchEvent", "event", "Landroid/view/MotionEvent;", "onUIPause", "onUIResume", "openDrawer", "fullScreen", "refreshSceneForReply", "switchScene", "Builder", "Companion", "plugin-finder_release"})
 public final class FinderCommentDrawer
   extends RecyclerViewDrawer
 {
-  public static final b sSJ;
-  private boolean dMI;
-  private long rIH;
-  private boolean rMe;
-  private CommentDrawerContract.CloseDrawerCallback rUG;
-  public boolean rUK;
-  private boolean rUL;
-  public FinderItem rUg;
+  public static final b tdV;
+  private boolean dNY;
+  private long rQR;
+  private boolean rUr;
   private int reason;
   private final Rect rect;
-  private boolean sSB;
-  private ab sSC;
-  public int sSD;
-  public boolean sSE;
-  private boolean sSF;
-  public FinderCommentFooter sSG;
-  private boolean sSH;
-  private a<Boolean> sSI;
+  public FinderItem scK;
   private int scene;
+  private CommentDrawerContract.CloseDrawerCallback sdk;
+  public boolean sdo;
+  private boolean sdp;
+  private boolean tdN;
+  private ab tdO;
+  public int tdP;
+  public boolean tdQ;
+  private boolean tdR;
+  public FinderCommentFooter tdS;
+  private boolean tdT;
+  private a<Boolean> tdU;
   
   static
   {
     AppMethodBeat.i(168255);
-    sSJ = new b((byte)0);
+    tdV = new b((byte)0);
     AppMethodBeat.o(168255);
   }
   
@@ -67,11 +67,11 @@ public final class FinderCommentDrawer
     AppMethodBeat.i(168252);
     this.rect = new Rect();
     this.scene = 2;
-    paramContext = com.tencent.mm.plugin.finder.storage.b.sxa;
-    this.sSD = com.tencent.mm.plugin.finder.storage.b.cGl();
-    this.dMI = true;
-    this.sSB = true;
-    this.rMe = true;
+    paramContext = com.tencent.mm.plugin.finder.storage.b.sHP;
+    this.tdP = com.tencent.mm.plugin.finder.storage.b.cIi();
+    this.dNY = true;
+    this.tdN = true;
+    this.rUr = true;
     AppMethodBeat.o(168252);
   }
   
@@ -81,11 +81,11 @@ public final class FinderCommentDrawer
     AppMethodBeat.i(168253);
     this.rect = new Rect();
     this.scene = 2;
-    paramContext = com.tencent.mm.plugin.finder.storage.b.sxa;
-    this.sSD = com.tencent.mm.plugin.finder.storage.b.cGl();
-    this.dMI = true;
-    this.sSB = true;
-    this.rMe = true;
+    paramContext = com.tencent.mm.plugin.finder.storage.b.sHP;
+    this.tdP = com.tencent.mm.plugin.finder.storage.b.cIi();
+    this.dNY = true;
+    this.tdN = true;
+    this.rUr = true;
     AppMethodBeat.o(168253);
   }
   
@@ -95,37 +95,37 @@ public final class FinderCommentDrawer
     AppMethodBeat.i(168254);
     this.rect = new Rect();
     this.scene = 2;
-    paramContext = com.tencent.mm.plugin.finder.storage.b.sxa;
-    this.sSD = com.tencent.mm.plugin.finder.storage.b.cGl();
-    this.dMI = true;
-    this.sSB = true;
-    this.rMe = true;
+    paramContext = com.tencent.mm.plugin.finder.storage.b.sHP;
+    this.tdP = com.tencent.mm.plugin.finder.storage.b.cIi();
+    this.dNY = true;
+    this.tdN = true;
+    this.rUr = true;
     AppMethodBeat.o(168254);
   }
   
-  public final void cMY()
+  public final void cPH()
   {
     AppMethodBeat.i(168251);
-    if (cMZ())
+    if (cPI())
     {
       Object localObject;
       int i;
-      if (this.rUK)
+      if (this.sdo)
       {
-        super.zi(false);
+        super.zw(false);
         localObject = getHeaderLayout().findViewById(2131299982);
         p.g(localObject, "headerErrTipLayout");
         ((View)localObject).setVisibility(8);
-        localObject = FinderReporterUIC.tcM;
+        localObject = FinderReporterUIC.tnG;
         localObject = getContext();
         p.g(localObject, "context");
-        localObject = FinderReporterUIC.a.eY((Context)localObject);
+        localObject = FinderReporterUIC.a.fc((Context)localObject);
         if (localObject == null) {
           break label136;
         }
-        h localh = h.soM;
-        i = ((FinderReporterUIC)localObject).rTD;
-        localObject = this.rUg;
+        i locali = i.syT;
+        i = ((FinderReporterUIC)localObject).sch;
+        localObject = this.scK;
         if (localObject == null) {
           break label131;
         }
@@ -133,10 +133,10 @@ public final class FinderCommentDrawer
       label131:
       for (long l = ((FinderItem)localObject).getId();; l = 0L)
       {
-        h.a(i, l, 3);
+        i.a(i, l, 3);
         AppMethodBeat.o(168251);
         return;
-        super.zi(true);
+        super.zw(true);
         break;
       }
     }
@@ -144,37 +144,37 @@ public final class FinderCommentDrawer
     AppMethodBeat.o(168251);
   }
   
-  final void cNc()
+  final void cPL()
   {
     AppMethodBeat.i(178471);
-    if (this.sSE)
+    if (this.tdQ)
     {
-      this.sSD = this.scene;
-      ad.i("Finder.CommentDrawer", "refreshSceneForReply isSelfProfile " + this.scene);
+      this.tdP = this.scene;
+      ae.i("Finder.CommentDrawer", "refreshSceneForReply isSelfProfile " + this.scene);
     }
     for (;;)
     {
-      Object localObject = this.sSG;
+      Object localObject = this.tdS;
       if (localObject != null) {
-        ((FinderCommentFooter)localObject).setScene(this.sSD);
+        ((FinderCommentFooter)localObject).setScene(this.tdP);
       }
-      localObject = this.sSG;
+      localObject = this.tdS;
       if (localObject == null) {
         break;
       }
-      ((FinderCommentFooter)localObject).cNf();
+      ((FinderCommentFooter)localObject).cPO();
       AppMethodBeat.o(178471);
       return;
-      localObject = com.tencent.mm.plugin.finder.storage.b.sxa;
-      this.sSD = com.tencent.mm.plugin.finder.storage.b.cGl();
+      localObject = com.tencent.mm.plugin.finder.storage.b.sHP;
+      this.tdP = com.tencent.mm.plugin.finder.storage.b.cIi();
     }
     AppMethodBeat.o(178471);
   }
   
-  public final void cNd()
+  public final void cPM()
   {
-    AppMethodBeat.i(205092);
-    Object localObject = this.sSI;
+    AppMethodBeat.i(205722);
+    Object localObject = this.tdU;
     if (localObject != null)
     {
       localObject = (Boolean)((a)localObject).invoke();
@@ -182,11 +182,11 @@ public final class FinderCommentDrawer
     }
     for (boolean bool = ((Boolean)localObject).booleanValue(); bool; bool = false)
     {
-      AppMethodBeat.o(205092);
+      AppMethodBeat.o(205722);
       return;
     }
-    cMY();
-    AppMethodBeat.o(205092);
+    cPH();
+    AppMethodBeat.o(205722);
   }
   
   public final boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
@@ -194,7 +194,7 @@ public final class FinderCommentDrawer
     AppMethodBeat.i(168247);
     p.h(paramMotionEvent, "event");
     View localView;
-    if (this.rUK)
+    if (this.sdo)
     {
       localView = getFooterLayout().findViewById(2131298514);
       this.rect.setEmpty();
@@ -204,14 +204,14 @@ public final class FinderCommentDrawer
         if ((paramMotionEvent.getAction() != 2) && (paramMotionEvent.getAction() != 1) && (paramMotionEvent.getAction() != 3)) {
           break label139;
         }
-        cMY();
+        cPH();
       }
     }
     boolean bool;
     for (;;)
     {
       bool = super.dispatchTouchEvent(paramMotionEvent);
-      if ((!this.LsM) || (paramMotionEvent.getAction() != 0)) {
+      if ((!this.LPz) || (paramMotionEvent.getAction() != 0)) {
         break label334;
       }
       paramMotionEvent = getContext();
@@ -230,7 +230,7 @@ public final class FinderCommentDrawer
         localView = getHeaderLayout().findViewById(2131299982);
         this.rect.setEmpty();
         localView.getGlobalVisibleRect(this.rect);
-        ad.d("Finder.CommentDrawer", "event.action " + paramMotionEvent.getActionMasked() + " event.y " + paramMotionEvent.getY() + ", " + this.rect.top + ", " + this.rect.bottom);
+        ae.d("Finder.CommentDrawer", "event.action " + paramMotionEvent.getActionMasked() + " event.y " + paramMotionEvent.getY() + ", " + this.rect.top + ", " + this.rect.bottom);
         if ((paramMotionEvent.getY() >= this.rect.top) && (paramMotionEvent.getY() <= this.rect.bottom))
         {
           if (paramMotionEvent.getActionMasked() != 2)
@@ -255,42 +255,42 @@ public final class FinderCommentDrawer
   
   public final boolean getBanSwitch()
   {
-    return this.sSH;
+    return this.tdT;
   }
   
   public final boolean getBlinkRefComment()
   {
-    return this.rUL;
+    return this.sdp;
   }
   
   public final boolean getCloseComment()
   {
-    return this.sSF;
+    return this.tdR;
   }
   
   public final FinderItem getFeedObj()
   {
-    return this.rUg;
+    return this.scK;
   }
   
   public final FinderCommentFooter getFooter()
   {
-    return this.sSG;
+    return this.tdS;
   }
   
   public final a<Boolean> getInterceptClose()
   {
-    return this.sSI;
+    return this.tdU;
   }
   
   public final boolean getOldVersion()
   {
-    return this.rMe;
+    return this.rUr;
   }
   
   public final CommentDrawerContract.CloseDrawerCallback getOnCloseDrawerCallback()
   {
-    return this.rUG;
+    return this.sdk;
   }
   
   public final int getReason()
@@ -300,12 +300,12 @@ public final class FinderCommentDrawer
   
   public final long getRefCommentId()
   {
-    return this.rIH;
+    return this.rQR;
   }
   
   public final ab getReplyCommentObj()
   {
-    return this.sSC;
+    return this.tdO;
   }
   
   public final int getScene()
@@ -315,57 +315,57 @@ public final class FinderCommentDrawer
   
   public final int getSceneForReply()
   {
-    return this.sSD;
+    return this.tdP;
   }
   
   public final boolean getShowFooter()
   {
-    return this.sSB;
+    return this.tdN;
   }
   
   public final boolean getUseCache()
   {
-    return this.dMI;
+    return this.dNY;
   }
   
   public final void setBanSwitch(boolean paramBoolean)
   {
-    this.sSH = paramBoolean;
+    this.tdT = paramBoolean;
   }
   
   public final void setBlinkRefComment(boolean paramBoolean)
   {
-    this.rUL = paramBoolean;
+    this.sdp = paramBoolean;
   }
   
   public final void setCloseComment(boolean paramBoolean)
   {
-    this.sSF = paramBoolean;
+    this.tdR = paramBoolean;
   }
   
   public final void setFeedObj(FinderItem paramFinderItem)
   {
-    this.rUg = paramFinderItem;
+    this.scK = paramFinderItem;
   }
   
   public final void setFooter(FinderCommentFooter paramFinderCommentFooter)
   {
-    this.sSG = paramFinderCommentFooter;
+    this.tdS = paramFinderCommentFooter;
   }
   
   public final void setInterceptClose(a<Boolean> parama)
   {
-    this.sSI = parama;
+    this.tdU = parama;
   }
   
   public final void setOldVersion(boolean paramBoolean)
   {
-    this.rMe = paramBoolean;
+    this.rUr = paramBoolean;
   }
   
   public final void setOnCloseDrawerCallback(CommentDrawerContract.CloseDrawerCallback paramCloseDrawerCallback)
   {
-    this.rUG = paramCloseDrawerCallback;
+    this.sdk = paramCloseDrawerCallback;
   }
   
   public final void setReason(int paramInt)
@@ -375,12 +375,12 @@ public final class FinderCommentDrawer
   
   public final void setRefCommentId(long paramLong)
   {
-    this.rIH = paramLong;
+    this.rQR = paramLong;
   }
   
   public final void setReplyCommentObj(ab paramab)
   {
-    this.sSC = paramab;
+    this.tdO = paramab;
   }
   
   public final void setScene(int paramInt)
@@ -390,30 +390,30 @@ public final class FinderCommentDrawer
   
   public final void setSceneForReply(int paramInt)
   {
-    this.sSD = paramInt;
+    this.tdP = paramInt;
   }
   
   public final void setSelfProfile(boolean paramBoolean)
   {
-    this.sSE = paramBoolean;
+    this.tdQ = paramBoolean;
   }
   
   public final void setShowFooter(boolean paramBoolean)
   {
-    this.sSB = paramBoolean;
+    this.tdN = paramBoolean;
   }
   
   public final void setSingleMode(boolean paramBoolean)
   {
-    this.rUK = paramBoolean;
+    this.sdo = paramBoolean;
   }
   
   public final void setUseCache(boolean paramBoolean)
   {
-    this.dMI = paramBoolean;
+    this.dNY = paramBoolean;
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/view/FinderCommentDrawer$Builder;", "", "onBuildDrawerBody", "", "context", "Landroid/content/Context;", "rlLayout", "Lcom/tencent/mm/view/RefreshLoadMoreLayout;", "onBuildDrawerFooter", "footerLayout", "Landroid/widget/FrameLayout;", "fullScreen", "", "onBuildDrawerHeader", "headerLayout", "onBuildLoading", "loadingLayout", "onDrawerCreated", "drawer", "Lcom/tencent/mm/view/drawer/RecyclerViewDrawer;", "displayScene", "", "plugin-finder_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/view/FinderCommentDrawer$Builder;", "", "onBuildDrawerBody", "", "context", "Landroid/content/Context;", "rlLayout", "Lcom/tencent/mm/view/RefreshLoadMoreLayout;", "onBuildDrawerFooter", "footerLayout", "Landroid/widget/FrameLayout;", "fullScreen", "", "onBuildDrawerHeader", "headerLayout", "onBuildLoading", "loadingLayout", "onDrawerCreated", "drawer", "Lcom/tencent/mm/view/drawer/RecyclerViewDrawer;", "displayScene", "", "plugin-finder_release"})
   public static abstract interface a
   {
     public abstract void a(Context paramContext, FrameLayout paramFrameLayout, boolean paramBoolean);
@@ -427,63 +427,42 @@ public final class FinderCommentDrawer
     public abstract void b(Context paramContext, FrameLayout paramFrameLayout, boolean paramBoolean);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/view/FinderCommentDrawer$Companion;", "", "()V", "TAG", "", "createDrawerToAttachWindow", "Lcom/tencent/mm/plugin/finder/view/FinderCommentDrawer;", "context", "Lcom/tencent/mm/ui/MMActivity;", "parent", "Landroid/view/View;", "scene", "", "builder", "Lcom/tencent/mm/plugin/finder/view/FinderCommentDrawer$Builder;", "safeMode", "", "fullScreen", "plugin-finder_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/view/FinderCommentDrawer$Companion;", "", "()V", "TAG", "", "createDrawerToAttachWindow", "Lcom/tencent/mm/plugin/finder/view/FinderCommentDrawer;", "context", "Lcom/tencent/mm/ui/MMActivity;", "parent", "Landroid/view/View;", "scene", "", "builder", "Lcom/tencent/mm/plugin/finder/view/FinderCommentDrawer$Builder;", "safeMode", "", "fullScreen", "plugin-finder_release"})
   public static final class b
   {
     public static FinderCommentDrawer a(MMActivity paramMMActivity, final View paramView, int paramInt, final FinderCommentDrawer.a parama, boolean paramBoolean1, final boolean paramBoolean2)
     {
-      AppMethodBeat.i(205088);
+      AppMethodBeat.i(205718);
       p.h(paramMMActivity, "context");
       p.h(paramView, "parent");
       p.h(parama, "builder");
-      ad.i("Finder.CommentDrawer", "createDrawerToAttachWindow scene:" + paramInt + ", safeMode:" + paramBoolean1);
+      ae.i("Finder.CommentDrawer", "createDrawerToAttachWindow scene:" + paramInt + ", safeMode:" + paramBoolean1);
       final FinderCommentDrawer localFinderCommentDrawer = new FinderCommentDrawer((Context)paramMMActivity);
       if (paramBoolean2)
       {
-        localFinderCommentDrawer.setTopOffset(al.jH((Context)paramMMActivity));
+        localFinderCommentDrawer.setTopOffset(al.jO((Context)paramMMActivity));
         localFinderCommentDrawer.setBackgroundColorRes(2131101053);
       }
       Object localObject = paramMMActivity.getResources();
       p.g(localObject, "context.resources");
       localFinderCommentDrawer.setTopOffset((int)(((Resources)localObject).getDisplayMetrics().heightPixels * 0.2D));
       parama.a((RecyclerViewDrawer)localFinderCommentDrawer, paramInt);
-      localObject = ((com.tencent.mm.plugin.finder.view.builder.b)parama).rMd;
+      localObject = ((com.tencent.mm.plugin.finder.view.builder.b)parama).rUq;
       if (localObject == null)
       {
         paramMMActivity = new v("null cannot be cast to non-null type com.tencent.mm.plugin.finder.feed.FinderCommentDrawerPresenter");
-        AppMethodBeat.o(205088);
+        AppMethodBeat.o(205718);
         throw paramMMActivity;
       }
-      ((e)localObject).rMJ = paramBoolean1;
+      ((e)localObject).rUX = paramBoolean1;
       localObject = new FrameLayout.LayoutParams(-1, -1);
-      paramView.addOnLayoutChangeListener((View.OnLayoutChangeListener)a.sSK);
+      paramView.addOnLayoutChangeListener((View.OnLayoutChangeListener)FinderCommentDrawer.b.a.tdW);
       paramView.post((Runnable)new b(paramMMActivity, paramView, localFinderCommentDrawer, (FrameLayout.LayoutParams)localObject, parama, paramBoolean2));
-      AppMethodBeat.o(205088);
+      AppMethodBeat.o(205718);
       return localFinderCommentDrawer;
     }
     
-    @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "v", "Landroid/view/View;", "kotlin.jvm.PlatformType", "left", "", "top", "right", "bottom", "oldLeft", "oldTop", "oldRight", "oldBottom", "onLayoutChange"})
-    static final class a
-      implements View.OnLayoutChangeListener
-    {
-      public static final a sSK;
-      
-      static
-      {
-        AppMethodBeat.i(205086);
-        sSK = new a();
-        AppMethodBeat.o(205086);
-      }
-      
-      public final void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
-      {
-        AppMethodBeat.i(205085);
-        ad.i("Finder.CommentDrawer", "[OnLayoutChange] bottom=" + paramInt4 + " oldBottom=" + paramInt8);
-        AppMethodBeat.o(205085);
-      }
-    }
-    
-    @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
+    @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
     static final class b
       implements Runnable
     {
@@ -491,28 +470,28 @@ public final class FinderCommentDrawer
       
       public final void run()
       {
-        AppMethodBeat.i(205087);
-        ad.i("Finder.CommentDrawer", "[initView] bottomMargin= ".concat(String.valueOf(ar.jS((Context)this.sav))));
+        AppMethodBeat.i(205717);
+        ae.i("Finder.CommentDrawer", "[initView] bottomMargin= ".concat(String.valueOf(ar.jZ((Context)this.sjk))));
         Object localObject = paramView;
         if (localObject == null)
         {
           localObject = new v("null cannot be cast to non-null type android.widget.FrameLayout");
-          AppMethodBeat.o(205087);
+          AppMethodBeat.o(205717);
           throw ((Throwable)localObject);
         }
-        ((FrameLayout)localObject).addView((View)localFinderCommentDrawer, (ViewGroup.LayoutParams)this.sSN);
-        parama.a((Context)this.sav, localFinderCommentDrawer.getHeaderLayout(), paramBoolean2);
-        parama.a((Context)this.sav, localFinderCommentDrawer.getCenterLayout());
-        parama.b((Context)this.sav, localFinderCommentDrawer.getFooterLayout(), paramBoolean2);
-        parama.b((Context)this.sav, localFinderCommentDrawer.getLoadingLayout());
-        AppMethodBeat.o(205087);
+        ((FrameLayout)localObject).addView((View)localFinderCommentDrawer, (ViewGroup.LayoutParams)this.tdZ);
+        parama.a((Context)this.sjk, localFinderCommentDrawer.getHeaderLayout(), paramBoolean2);
+        parama.a((Context)this.sjk, localFinderCommentDrawer.getCenterLayout());
+        parama.b((Context)this.sjk, localFinderCommentDrawer.getFooterLayout(), paramBoolean2);
+        parama.b((Context)this.sjk, localFinderCommentDrawer.getLoadingLayout());
+        AppMethodBeat.o(205717);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.view.FinderCommentDrawer
  * JD-Core Version:    0.7.0.1
  */

@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class mw
   extends b
 {
-  public a dAO;
+  public a dBS;
   
   public mw()
   {
@@ -15,22 +15,21 @@ public final class mw
   
   private mw(byte paramByte)
   {
-    AppMethodBeat.i(19822);
-    this.dAO = new a();
-    this.IbR = false;
+    AppMethodBeat.i(116035);
+    this.dBS = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(19822);
+    AppMethodBeat.o(116035);
   }
   
   public static final class a
   {
-    public int dAP = 0;
-    public int dAQ = 0;
+    public int type;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.g.a.mw
  * JD-Core Version:    0.7.0.1
  */

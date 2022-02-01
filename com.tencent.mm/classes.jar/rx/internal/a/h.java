@@ -9,13 +9,13 @@ import rx.internal.b.a;
 public final class h<T>
   implements d.b<Boolean, T>
 {
-  final e<? super T, Boolean> NXV;
-  final boolean NXW;
+  final e<? super T, Boolean> Ova;
+  final boolean Ovb;
   
   public h(e<? super T, Boolean> parame)
   {
-    this.NXV = parame;
-    this.NXW = true;
+    this.Ova = parame;
+    this.Ovb = true;
   }
   
   private rx.i<? super T> b(final rx.i<? super Boolean> parami)
@@ -24,44 +24,27 @@ public final class h<T>
     final a locala = new a(parami);
     rx.i local1 = new rx.i()
     {
-      boolean NXX;
+      boolean Ovc;
       boolean done;
       
-      public final void gyM()
-      {
-        AppMethodBeat.i(90261);
-        if (!this.done)
-        {
-          this.done = true;
-          if (this.NXX)
-          {
-            locala.setValue(Boolean.FALSE);
-            AppMethodBeat.o(90261);
-            return;
-          }
-          locala.setValue(Boolean.valueOf(h.this.NXW));
-        }
-        AppMethodBeat.o(90261);
-      }
-      
-      public final void gz(T paramAnonymousT)
+      public final void gC(T paramAnonymousT)
       {
         AppMethodBeat.i(90259);
-        this.NXX = true;
+        this.Ovc = true;
         for (;;)
         {
           try
           {
-            bool = ((Boolean)h.this.NXV.call(paramAnonymousT)).booleanValue();
+            bool = ((Boolean)h.this.Ova.call(paramAnonymousT)).booleanValue();
             if ((bool) && (!this.done))
             {
               this.done = true;
               paramAnonymousT = locala;
-              if (!h.this.NXW)
+              if (!h.this.Ovb)
               {
                 bool = true;
                 paramAnonymousT.setValue(Boolean.valueOf(bool));
-                this.NXn.gyQ();
+                this.Ous.gDs();
               }
             }
             else
@@ -80,6 +63,23 @@ public final class h<T>
         }
       }
       
+      public final void gDo()
+      {
+        AppMethodBeat.i(90261);
+        if (!this.done)
+        {
+          this.done = true;
+          if (this.Ovc)
+          {
+            locala.setValue(Boolean.FALSE);
+            AppMethodBeat.o(90261);
+            return;
+          }
+          locala.setValue(Boolean.valueOf(h.this.Ovb));
+        }
+        AppMethodBeat.o(90261);
+      }
+      
       public final void onError(Throwable paramAnonymousThrowable)
       {
         AppMethodBeat.i(90260);
@@ -95,7 +95,7 @@ public final class h<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     rx.internal.a.h
  * JD-Core Version:    0.7.0.1
  */

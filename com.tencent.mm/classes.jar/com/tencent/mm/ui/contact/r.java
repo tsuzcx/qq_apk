@@ -5,39 +5,39 @@ import android.content.res.Resources;
 import android.database.Cursor;
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.am.a.c;
+import com.tencent.mm.al.a.c;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.List;
 
 public final class r
   extends s
 {
-  private o.a KmN;
-  private List<String> Kni;
-  private ap handler;
-  private Cursor iVJ;
-  private String nZh;
+  private List<String> KJC;
+  private o.a KJh;
+  private aq handler;
+  private Cursor iYC;
+  private String oeQ;
   private String query;
   
   public r(MMBaseSelectContactUI paramMMBaseSelectContactUI, String paramString)
   {
     super(paramMMBaseSelectContactUI, null, false, 0);
     AppMethodBeat.i(102864);
-    this.handler = new ap(Looper.getMainLooper());
-    this.Kni = null;
-    this.nZh = paramString;
-    ad.i("MicroMsg.MMSearchContactAdapter", "Create!");
-    Zd();
+    this.handler = new aq(Looper.getMainLooper());
+    this.KJC = null;
+    this.oeQ = paramString;
+    ae.i("MicroMsg.MMSearchContactAdapter", "Create!");
+    Zm();
     AppMethodBeat.o(102864);
   }
   
-  private void Zd()
+  private void Zm()
   {
     AppMethodBeat.i(102866);
-    ad.i("MicroMsg.MMSearchContactAdapter", "initData!");
+    ae.i("MicroMsg.MMSearchContactAdapter", "initData!");
     this.query = null;
     clearCache();
     AppMethodBeat.o(102866);
@@ -45,7 +45,7 @@ public final class r
   
   public final void a(o.a parama)
   {
-    this.KmN = parama;
+    this.KJh = parama;
   }
   
   protected final boolean c(com.tencent.mm.ui.contact.a.a parama)
@@ -53,11 +53,11 @@ public final class r
     return true;
   }
   
-  public final void cT(String paramString, boolean paramBoolean)
+  public final void cX(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(102865);
-    if (this.KmN != null) {
-      this.KmN.y(paramString, getCount(), paramBoolean);
+    if (this.KJh != null) {
+      this.KJh.y(paramString, getCount(), paramBoolean);
     }
     AppMethodBeat.o(102865);
   }
@@ -66,47 +66,47 @@ public final class r
   {
     AppMethodBeat.i(102869);
     super.finish();
-    ad.i("MicroMsg.MMSearchContactAdapter", "finish!");
-    Zd();
+    ae.i("MicroMsg.MMSearchContactAdapter", "finish!");
+    Zm();
     AppMethodBeat.o(102869);
   }
   
   public final int getCount()
   {
     AppMethodBeat.i(102867);
-    if (this.iVJ == null)
+    if (this.iYC == null)
     {
       AppMethodBeat.o(102867);
       return 0;
     }
-    int i = this.iVJ.getCount();
+    int i = this.iYC.getCount();
     AppMethodBeat.o(102867);
     return i;
   }
   
-  protected final com.tencent.mm.ui.contact.a.a rh(int paramInt)
+  protected final com.tencent.mm.ui.contact.a.a rk(int paramInt)
   {
     AppMethodBeat.i(102868);
     com.tencent.mm.ui.bizchat.a locala = null;
     c localc;
-    if ((paramInt >= 0) && (this.iVJ.moveToPosition(paramInt)))
+    if ((paramInt >= 0) && (this.iYC.moveToPosition(paramInt)))
     {
       locala = new com.tencent.mm.ui.bizchat.a(paramInt);
       localc = new c();
-      localc.convertFrom(this.iVJ);
-      if (locala.nYO == -1L)
+      localc.convertFrom(this.iYC);
+      if (locala.oex == -1L)
       {
-        locala.nYO = localc.field_bizChatLocalId;
+        locala.oex = localc.field_bizChatLocalId;
         if (!localc.isGroup()) {
           break label155;
         }
-        locala.iVn = localc.field_chatName;
-        locala.hbP = localc.field_headImageUrl;
+        locala.iYg = localc.field_chatName;
+        locala.heD = localc.field_headImageUrl;
         locala.username = localc.field_brandUserName;
-        if (bt.ai(locala.iVn)) {
-          locala.iVn = this.KmO.getActivity().getResources().getString(2131763000);
+        if (bu.ah(locala.iYg)) {
+          locala.iYg = this.KJi.getActivity().getResources().getString(2131763000);
         }
-        if (bt.isNullOrNil(locala.username)) {
+        if (bu.isNullOrNil(locala.username)) {
           locala.username = localc.field_brandUserName;
         }
       }
@@ -116,15 +116,15 @@ public final class r
       AppMethodBeat.o(102868);
       return locala;
       label155:
-      com.tencent.mm.am.a.k localk = ((com.tencent.mm.api.k)g.ab(com.tencent.mm.api.k.class)).eK(localc.field_bizChatServId);
+      com.tencent.mm.al.a.k localk = ((com.tencent.mm.api.k)g.ab(com.tencent.mm.api.k.class)).eP(localc.field_bizChatServId);
       if (localk == null) {
         break;
       }
-      locala.iVn = localk.field_userName;
-      locala.hbP = localk.field_headImageUrl;
+      locala.iYg = localk.field_userName;
+      locala.heD = localk.field_headImageUrl;
       locala.username = localk.field_brandUserName;
       break;
-      ad.e("MicroMsg.MMSearchContactAdapter", "create Data Item Error position=%d", new Object[] { Integer.valueOf(paramInt) });
+      ae.e("MicroMsg.MMSearchContactAdapter", "create Data Item Error position=%d", new Object[] { Integer.valueOf(paramInt) });
     }
   }
 }

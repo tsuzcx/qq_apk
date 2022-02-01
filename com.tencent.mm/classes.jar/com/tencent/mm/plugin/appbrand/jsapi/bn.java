@@ -5,19 +5,19 @@ import com.tencent.luggage.h.e.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.g;
 import com.tencent.mm.pluginsdk.wallet.e;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class bn
   extends a<h>
 {
   public static final int CTRL_INDEX = 403;
   public static final String NAME = "openOfflinePayView";
-  final int ktx;
+  final int kwN;
   
   public bn()
   {
     AppMethodBeat.i(174758);
-    this.ktx = com.tencent.luggage.sdk.g.a.aC(this);
+    this.kwN = com.tencent.luggage.sdk.g.a.aC(this);
     AppMethodBeat.o(174758);
   }
 }

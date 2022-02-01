@@ -6,8 +6,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.ipcall.model.h.k;
 import com.tencent.mm.plugin.ipcall.model.h.l;
 import com.tencent.mm.plugin.ipcall.model.i;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.base.n.e;
 import java.util.ArrayList;
 
@@ -21,45 +21,45 @@ final class e$9
     AppMethodBeat.i(25657);
     if (paramInt == 0)
     {
-      paramMenuItem = this.uPW;
-      Object localObject = this.uPX;
-      paramInt = this.uPY;
+      paramMenuItem = this.vbI;
+      Object localObject = this.vbJ;
+      paramInt = this.vbK;
       l locall;
       int i;
       if (((k)localObject).field_addressId > 0L)
       {
-        locall = i.ddN();
+        locall = i.dgF();
         long l = ((k)localObject).field_addressId;
         if (l > 0L)
         {
           i = locall.db.delete("IPCallRecord", "addressId=?", new String[] { String.valueOf(l) });
           if (i < 0) {
-            ad.d("MicroMsg.IPCallRecordStorage", "deleteByAddressId failed, ret: %d, addressId: %d", new Object[] { Integer.valueOf(i), Long.valueOf(l) });
+            ae.d("MicroMsg.IPCallRecordStorage", "deleteByAddressId failed, ret: %d, addressId: %d", new Object[] { Integer.valueOf(i), Long.valueOf(l) });
           }
         }
       }
       for (;;)
       {
-        localObject = paramMenuItem.uPN;
-        ((h)localObject).uSO.remove(paramInt);
+        localObject = paramMenuItem.vbz;
+        ((h)localObject).veB.remove(paramInt);
         ((h)localObject).notifyDataSetChanged();
-        if (paramMenuItem.uPN.getCount() <= 0) {
+        if (paramMenuItem.vbz.getCount() <= 0) {
           break;
         }
-        paramMenuItem.uPO.setVisibility(8);
+        paramMenuItem.vbA.setVisibility(8);
         AppMethodBeat.o(25657);
         return;
-        locall = i.ddN();
+        locall = i.dgF();
         localObject = ((k)localObject).field_phonenumber;
-        if (!bt.isNullOrNil((String)localObject))
+        if (!bu.isNullOrNil((String)localObject))
         {
           i = locall.db.delete("IPCallRecord", "phonenumber=?", new String[] { localObject });
           if (i < 0) {
-            ad.d("MicroMsg.IPCallRecordStorage", "deleteByCallPhoneNumber failed, ret: %d, phoneNumber: %s", new Object[] { Integer.valueOf(i), localObject });
+            ae.d("MicroMsg.IPCallRecordStorage", "deleteByCallPhoneNumber failed, ret: %d, phoneNumber: %s", new Object[] { Integer.valueOf(i), localObject });
           }
         }
       }
-      paramMenuItem.uPO.setVisibility(0);
+      paramMenuItem.vbA.setVisibility(0);
     }
     AppMethodBeat.o(25657);
   }

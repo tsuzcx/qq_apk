@@ -5,16 +5,16 @@ import d.g.b.p;
 import d.l;
 import org.xmlpull.v1.XmlPullParser;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/emoji/model/BaseXmlContent;", "", "()V", "ns", "", "getNs", "()Ljava/lang/String;", "next", "", "parse", "parser", "Lorg/xmlpull/v1/XmlPullParser;", "parseTag", "tag", "readAttrInt", "", "name", "readAttrString", "readInt", "readString", "skip", "Companion", "plugin-emojisdk_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/emoji/model/BaseXmlContent;", "", "()V", "ns", "", "getNs", "()Ljava/lang/String;", "next", "", "parse", "parser", "Lorg/xmlpull/v1/XmlPullParser;", "parseTag", "tag", "readAttrInt", "", "name", "readAttrString", "readInt", "readString", "skip", "Companion", "plugin-emojisdk_release"})
 public class a
 {
   private static final String TAG = "MicroMsg.BaseXmlContent";
-  public static final a.a gjL;
+  public static final a.a gme;
   
   static
   {
     AppMethodBeat.i(105500);
-    gjL = new a.a((byte)0);
+    gme = new a.a((byte)0);
     TAG = "MicroMsg.BaseXmlContent";
     AppMethodBeat.o(105500);
   }
@@ -133,7 +133,7 @@ public class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.emoji.a.a
  * JD-Core Version:    0.7.0.1
  */

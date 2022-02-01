@@ -5,35 +5,35 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/MixFrameSyncMgr$NextFrameInfo;", "", "mixBitmap", "Landroid/graphics/Bitmap;", "skip", "", "(Landroid/graphics/Bitmap;Z)V", "getMixBitmap", "()Landroid/graphics/Bitmap;", "getSkip", "()Z", "component1", "component2", "copy", "equals", "other", "hashCode", "", "toString", "", "plugin-recordvideo_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/MixFrameSyncMgr$NextFrameInfo;", "", "mixBitmap", "Landroid/graphics/Bitmap;", "skip", "", "(Landroid/graphics/Bitmap;Z)V", "getMixBitmap", "()Landroid/graphics/Bitmap;", "getSkip", "()Z", "component1", "component2", "copy", "equals", "other", "hashCode", "", "toString", "", "plugin-recordvideo_release"})
 public final class g$a
 {
-  public final boolean dsn;
-  public final Bitmap xNf;
+  public final boolean dtu;
+  public final Bitmap ycZ;
   
   public g$a(Bitmap paramBitmap, boolean paramBoolean)
   {
-    this.xNf = paramBitmap;
-    this.dsn = paramBoolean;
+    this.ycZ = paramBitmap;
+    this.dtu = paramBoolean;
   }
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(200642);
+    AppMethodBeat.i(206900);
     if (this != paramObject)
     {
       if ((paramObject instanceof a))
       {
         paramObject = (a)paramObject;
-        if ((!p.i(this.xNf, paramObject.xNf)) || (this.dsn != paramObject.dsn)) {}
+        if ((!p.i(this.ycZ, paramObject.ycZ)) || (this.dtu != paramObject.dtu)) {}
       }
     }
     else
     {
-      AppMethodBeat.o(200642);
+      AppMethodBeat.o(206900);
       return true;
     }
-    AppMethodBeat.o(200642);
+    AppMethodBeat.o(206900);
     return false;
   }
   
@@ -44,9 +44,9 @@ public final class g$a
   
   public final String toString()
   {
-    AppMethodBeat.i(200640);
-    String str = "NextFrameInfo(mixBitmap=" + this.xNf + ", skip=" + this.dsn + ")";
-    AppMethodBeat.o(200640);
+    AppMethodBeat.i(206898);
+    String str = "NextFrameInfo(mixBitmap=" + this.ycZ + ", skip=" + this.dtu + ")";
+    AppMethodBeat.o(206898);
     return str;
   }
 }

@@ -11,7 +11,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class FoldableChatTextItemView
   extends LinearLayout
 {
-  private a JXB;
+  private a KtU;
   private c aAA;
   private int maxHeight;
   
@@ -53,7 +53,7 @@ public class FoldableChatTextItemView
   
   public void setFoldTextListener(a parama)
   {
-    this.JXB = parama;
+    this.KtU = parama;
   }
   
   public void setMaxHeight(int paramInt)
@@ -72,7 +72,7 @@ public class FoldableChatTextItemView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.view.FoldableChatTextItemView
  * JD-Core Version:    0.7.0.1
  */

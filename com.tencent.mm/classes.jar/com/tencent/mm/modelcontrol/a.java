@@ -1,20 +1,20 @@
 package com.tencent.mm.modelcontrol;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class a
 {
-  private static f[] hUO;
+  private static f[] hXG;
   
   static
   {
     AppMethodBeat.i(126746);
-    hUO = null;
+    hXG = null;
     f[] arrayOff = new f[2];
-    hUO = arrayOff;
+    hXG = arrayOff;
     arrayOff[0] = new f(0, 120, 540, 960, 30, 1200000, 1200000);
-    hUO[1] = new f(120, 300, 360, 640, 24, 544000, 544000);
+    hXG[1] = new f(120, 300, 360, 640, 24, 544000, 544000);
     AppMethodBeat.o(126746);
   }
   
@@ -28,7 +28,7 @@ public final class a
     try
     {
       if (paramArrayOff.length <= 0) {
-        arrayOff = hUO;
+        arrayOff = hXG;
       }
       n = arrayOff.length;
       paramVideoTransPara2.width = paramVideoTransPara1.width;
@@ -51,10 +51,10 @@ public final class a
       j = paramVideoTransPara1.height;
       label102:
       i1 = paramVideoTransPara1.duration;
-      if (paramVideoTransPara2.duration < arrayOff[(n - 1)].hVj) {
+      if (paramVideoTransPara2.duration < arrayOff[(n - 1)].hYb) {
         break label855;
       }
-      if (paramVideoTransPara2.duration >= hUO[1].hVj) {
+      if (paramVideoTransPara2.duration >= hXG[1].hYb) {
         break label794;
       }
     }
@@ -70,7 +70,7 @@ public final class a
         label430:
         label438:
         label462:
-        ad.e("MicroMsg.BitrateCalculator", "do calc bitrate error: " + paramArrayOff.toString());
+        ae.e("MicroMsg.BitrateCalculator", "do calc bitrate error: " + paramArrayOff.toString());
         label777:
         label794:
         int i = 0;
@@ -133,10 +133,10 @@ public final class a
       }
     }
     if (m < n) {
-      if ((i1 >= arrayOff[m].hVi) && (i1 < arrayOff[m].hVj))
+      if ((i1 >= arrayOff[m].hYa) && (i1 < arrayOff[m].hYb))
       {
-        i1 = arrayOff[m].hVk;
-        i2 = arrayOff[m].hVl;
+        i1 = arrayOff[m].hYc;
+        i2 = arrayOff[m].hYd;
         if (i <= i1) {
           if (j > i2)
           {
@@ -151,12 +151,12 @@ public final class a
                 break label923;
               }
               paramVideoTransPara2.height = i;
-              if (paramVideoTransPara2.fps <= arrayOff[m].hVm) {
+              if (paramVideoTransPara2.fps <= arrayOff[m].hYe) {
                 break label462;
               }
-              i = arrayOff[m].hVm;
+              i = arrayOff[m].hYe;
               paramVideoTransPara2.fps = i;
-              paramVideoTransPara2.videoBitrate = ((int)((arrayOff[m].hVn * arrayOff[m].hVj + arrayOff[m].hVo * paramVideoTransPara2.duration - arrayOff[m].hVn * paramVideoTransPara2.duration - arrayOff[m].hVo * arrayOff[m].hVi) / (arrayOff[m].hVj - arrayOff[m].hVi) * Math.sqrt(1.0D * (paramVideoTransPara2.width * paramVideoTransPara2.height) / (arrayOff[m].hVk * arrayOff[m].hVl)) * (paramVideoTransPara2.fps + 10) / 40.0D));
+              paramVideoTransPara2.videoBitrate = ((int)((arrayOff[m].hYf * arrayOff[m].hYb + arrayOff[m].hYg * paramVideoTransPara2.duration - arrayOff[m].hYf * paramVideoTransPara2.duration - arrayOff[m].hYg * arrayOff[m].hYa) / (arrayOff[m].hYb - arrayOff[m].hYa) * Math.sqrt(1.0D * (paramVideoTransPara2.width * paramVideoTransPara2.height) / (arrayOff[m].hYc * arrayOff[m].hYd)) * (paramVideoTransPara2.fps + 10) / 40.0D));
               i = paramVideoTransPara2.videoBitrate;
             }
             for (;;)
@@ -179,10 +179,10 @@ public final class a
                 if (m >= 2) {
                   break label794;
                 }
-                if ((i1 >= hUO[m].hVi) && (i1 < hUO[m].hVj))
+                if ((i1 >= hXG[m].hYa) && (i1 < hXG[m].hYb))
                 {
-                  i1 = hUO[m].hVk;
-                  i2 = hUO[m].hVl;
+                  i1 = hXG[m].hYc;
+                  i2 = hXG[m].hYd;
                   if (i > i1) {
                     break label944;
                   }
@@ -200,14 +200,14 @@ public final class a
                       break label1006;
                     }
                     paramVideoTransPara2.height = i;
-                    if (paramVideoTransPara2.fps <= hUO[m].hVm) {
+                    if (paramVideoTransPara2.fps <= hXG[m].hYe) {
                       break label777;
                     }
                   }
-                  for (i = hUO[m].hVm;; i = paramVideoTransPara2.fps)
+                  for (i = hXG[m].hYe;; i = paramVideoTransPara2.fps)
                   {
                     paramVideoTransPara2.fps = i;
-                    paramVideoTransPara2.videoBitrate = ((int)((hUO[m].hVn * hUO[m].hVj + hUO[m].hVo * paramVideoTransPara2.duration - hUO[m].hVn * paramVideoTransPara2.duration - hUO[m].hVo * hUO[m].hVi) / (hUO[m].hVj - hUO[m].hVi) * Math.sqrt(1.0D * (paramVideoTransPara2.width * paramVideoTransPara2.height) / (hUO[m].hVk * hUO[m].hVl)) * (paramVideoTransPara2.fps + 10) / 40.0D));
+                    paramVideoTransPara2.videoBitrate = ((int)((hXG[m].hYf * hXG[m].hYb + hXG[m].hYg * paramVideoTransPara2.duration - hXG[m].hYf * paramVideoTransPara2.duration - hXG[m].hYg * hXG[m].hYa) / (hXG[m].hYb - hXG[m].hYa) * Math.sqrt(1.0D * (paramVideoTransPara2.width * paramVideoTransPara2.height) / (hXG[m].hYc * hXG[m].hYd)) * (paramVideoTransPara2.fps + 10) / 40.0D));
                     i = paramVideoTransPara2.videoBitrate;
                     break;
                     j = i * i2 / j;
@@ -227,7 +227,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.modelcontrol.a
  * JD-Core Version:    0.7.0.1
  */

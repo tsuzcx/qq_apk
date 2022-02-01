@@ -19,6 +19,14 @@ public final class AppBrandCapsuleHomeButton
     super(paramContext, paramAttributeSet, paramInt);
   }
   
+  protected final String getDefaultAccessibilityLabel()
+  {
+    AppMethodBeat.i(208019);
+    String str = getContext().getString(2131755286);
+    AppMethodBeat.o(208019);
+    return str;
+  }
+  
   protected final Drawable getDefaultImageDrawable()
   {
     AppMethodBeat.i(135459);

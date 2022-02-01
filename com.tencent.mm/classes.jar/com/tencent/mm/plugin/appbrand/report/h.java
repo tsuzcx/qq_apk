@@ -19,57 +19,57 @@ import com.tencent.mm.plugin.appbrand.config.k;
 import com.tencent.mm.plugin.appbrand.config.w;
 import com.tencent.mm.plugin.appbrand.dynamic.f;
 import com.tencent.mm.plugin.appbrand.jsapi.x.f.c;
-import com.tencent.mm.plugin.appbrand.o;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.plugin.appbrand.p;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 public final class h
 {
-  public static final String mrn = f.c.ljA.value;
-  public static final String mro = f.c.ljz.value;
-  public static final String mrp = f.c.ljv.value;
-  public static final String mrq = f.c.ljw.value;
-  public static final String mrr = f.c.ljx.value;
+  public static final String mwl = f.c.lnn.value;
+  public static final String mwm = f.c.lnm.value;
+  public static final String mwn = f.c.lni.value;
+  public static final String mwo = f.c.lnj.value;
+  public static final String mwp = f.c.lnk.value;
   
   public static void F(String paramString1, String paramString2, int paramInt)
   {
     AppMethodBeat.i(48064);
-    AppBrandStatObject localAppBrandStatObject = com.tencent.mm.plugin.appbrand.a.Kl(paramString1);
+    AppBrandStatObject localAppBrandStatObject = com.tencent.mm.plugin.appbrand.a.KK(paramString1);
     if (localAppBrandStatObject == null)
     {
-      ad.e("MicroMsg.AppBrandReporterManager", "statObject is Null!");
+      ae.e("MicroMsg.AppBrandReporterManager", "statObject is Null!");
       AppMethodBeat.o(48064);
       return;
     }
-    Object localObject = com.tencent.mm.plugin.appbrand.a.Kk(paramString1);
+    Object localObject = com.tencent.mm.plugin.appbrand.a.KJ(paramString1);
     if (localObject == null) {}
-    for (int i = 0;; i = ((k)localObject).jYh.jIU + 1)
+    for (int i = 0;; i = ((k)localObject).kbw.jLV + 1)
     {
-      int j = Ui(paramString1);
-      String str2 = bt.nullAsNil(localAppBrandStatObject.dkh);
+      int j = US(paramString1);
+      String str2 = bu.nullAsNil(localAppBrandStatObject.dlj);
       if (localAppBrandStatObject.scene == 0) {
         localAppBrandStatObject.scene = 1000;
       }
-      long l = bt.aQJ();
+      long l = bu.aRi();
       localObject = "";
       try
       {
-        String str1 = com.tencent.mm.compatible.util.q.encode(bt.nullAsNil(paramString2), "UTF-8");
+        String str1 = com.tencent.mm.compatible.util.q.encode(bu.nullAsNil(paramString2), "UTF-8");
         localObject = str1;
       }
       catch (UnsupportedEncodingException localUnsupportedEncodingException)
       {
         for (;;)
         {
-          ad.e("MicroMsg.AppBrandReporterManager", "reportBackHome, encode page path error!, appId = %s", new Object[] { paramString1 });
-          ad.printErrStackTrace("MicroMsg.AppBrandReporterManager", localUnsupportedEncodingException, "", new Object[0]);
+          ae.e("MicroMsg.AppBrandReporterManager", "reportBackHome, encode page path error!, appId = %s", new Object[] { paramString1 });
+          ae.printErrStackTrace("MicroMsg.AppBrandReporterManager", localUnsupportedEncodingException, "", new Object[0]);
         }
       }
-      ad.d("MicroMsg.AppBrandReporterManager", "stev report(%s), scene : %d, sceneNote : %s, appid : %s, appState : %d, pagePath : %s, actionTime : %s,  appType : %d", new Object[] { Integer.valueOf(18189), Integer.valueOf(localAppBrandStatObject.scene), str2, paramString1, Integer.valueOf(i), paramString2, Long.valueOf(l), Integer.valueOf(j) });
-      com.tencent.mm.plugin.report.service.g.yhR.f(18189, new Object[] { paramString1, Integer.valueOf(i), Integer.valueOf(j), Long.valueOf(l), Integer.valueOf(localAppBrandStatObject.scene), str2, localObject, Integer.valueOf(paramInt) });
+      ae.d("MicroMsg.AppBrandReporterManager", "stev report(%s), scene : %d, sceneNote : %s, appid : %s, appState : %d, pagePath : %s, actionTime : %s,  appType : %d", new Object[] { Integer.valueOf(18189), Integer.valueOf(localAppBrandStatObject.scene), str2, paramString1, Integer.valueOf(i), paramString2, Long.valueOf(l), Integer.valueOf(j) });
+      com.tencent.mm.plugin.report.service.g.yxI.f(18189, new Object[] { paramString1, Integer.valueOf(i), Integer.valueOf(j), Long.valueOf(l), Integer.valueOf(localAppBrandStatObject.scene), str2, localObject, Integer.valueOf(paramInt) });
       AppMethodBeat.o(48064);
       return;
     }
@@ -91,22 +91,22 @@ public final class h
     int j;
     label81:
     int k;
-    if (!bt.isNullOrNil(paramString))
+    if (!bu.isNullOrNil(paramString))
     {
-      localObject = com.tencent.mm.plugin.appbrand.a.Kl(paramString);
+      localObject = com.tencent.mm.plugin.appbrand.a.KK(paramString);
       if (localObject != null) {
         if (((AppBrandStatObject)localObject).scene == 0)
         {
           i = 1000;
-          str = bt.nullAsNil(((AppBrandStatObject)localObject).dkh);
-          j = ((AppBrandStatObject)localObject).mrx;
-          localObject = com.tencent.mm.plugin.appbrand.a.Kk(paramString);
+          str = bu.nullAsNil(((AppBrandStatObject)localObject).dlj);
+          j = ((AppBrandStatObject)localObject).mwv;
+          localObject = com.tencent.mm.plugin.appbrand.a.KJ(paramString);
           k = m;
           if (localObject != null)
           {
             k = m;
-            if (((k)localObject).jYh != null) {
-              k = ((k)localObject).jYh.pkgVersion;
+            if (((k)localObject).kbw != null) {
+              k = ((k)localObject).kbw.pkgVersion;
             }
           }
           m = paramInt2;
@@ -116,12 +116,12 @@ public final class h
             if (localObject != null)
             {
               m = paramInt2;
-              if (((k)localObject).jYh != null) {
-                m = ((k)localObject).jYh.jIU + 1;
+              if (((k)localObject).kbw != null) {
+                m = ((k)localObject).kbw.jLV + 1;
               }
             }
           }
-          n = Ui(paramString);
+          n = US(paramString);
           paramInt2 = m;
           m = k;
           k = j;
@@ -131,13 +131,13 @@ public final class h
     }
     for (;;)
     {
-      ad.d("MicroMsg.AppBrandReporterManager", "stev report(%s), scene : %s, sceneNote %s, appId %s, appVersion %s, appState %s, usedState %s, pagetype %s, targetAction %s, appType %s", new Object[] { Integer.valueOf(13541), Integer.valueOf(i), str, paramString, Integer.valueOf(m), Integer.valueOf(paramInt2), Integer.valueOf(k), Integer.valueOf(paramInt1), Integer.valueOf(3), Integer.valueOf(j) });
-      com.tencent.mm.plugin.report.service.g.yhR.f(13541, new Object[] { Integer.valueOf(i), str, paramString, Integer.valueOf(m), Integer.valueOf(paramInt2), Integer.valueOf(k), Integer.valueOf(paramInt1), Integer.valueOf(3), "", Integer.valueOf(j) });
+      ae.d("MicroMsg.AppBrandReporterManager", "stev report(%s), scene : %s, sceneNote %s, appId %s, appVersion %s, appState %s, usedState %s, pagetype %s, targetAction %s, appType %s", new Object[] { Integer.valueOf(13541), Integer.valueOf(i), str, paramString, Integer.valueOf(m), Integer.valueOf(paramInt2), Integer.valueOf(k), Integer.valueOf(paramInt1), Integer.valueOf(3), Integer.valueOf(j) });
+      com.tencent.mm.plugin.report.service.g.yxI.f(13541, new Object[] { Integer.valueOf(i), str, paramString, Integer.valueOf(m), Integer.valueOf(paramInt2), Integer.valueOf(k), Integer.valueOf(paramInt1), Integer.valueOf(3), "", Integer.valueOf(j) });
       if ((!TextUtils.isEmpty(str)) && (str.contains("isWidget=1"))) {
         f.n(paramInt1, paramString, str);
       }
       if (("wxb6d22f922f37b35a".equals(paramString)) && (paramInt2 <= 1)) {
-        com.tencent.mm.plugin.report.service.g.yhR.dD(1089, paramInt1);
+        com.tencent.mm.plugin.report.service.g.yxI.dD(1089, paramInt1);
       }
       AppMethodBeat.o(48053);
       return;
@@ -151,7 +151,7 @@ public final class h
     }
   }
   
-  public static int Ui(String paramString)
+  public static int US(String paramString)
   {
     AppMethodBeat.i(48065);
     if ("@LibraryAppId".equals(paramString))
@@ -159,52 +159,71 @@ public final class h
       AppMethodBeat.o(48065);
       return 0;
     }
-    int j = i.Uj(paramString);
+    int j = i.UU(paramString);
+    String str = UT(paramString);
     int i = j;
-    Object localObject;
     if (j < 0)
     {
-      if (!aj.cnC()) {
-        break label95;
+      if (!ak.cpe()) {
+        break label100;
       }
-      localObject = j.aYP().e(paramString, new String[] { "appInfo" });
-      if (localObject == null) {
-        break label83;
+      paramString = j.aZl().e(str, new String[] { "appInfo" });
+      if (paramString == null) {
+        break label88;
       }
-      i = ((WxaAttributes)localObject).bel().cQN;
-      i.bT(paramString, i);
+      i = paramString.beT().cRx;
+      i.bX(str, i);
     }
     for (;;)
     {
       AppMethodBeat.o(48065);
       return i + 1000;
-      label83:
-      ad.i("MicroMsg.AppBrandReporterManager", "getServiceTypeForReport null = attrs!");
+      label88:
+      ae.i("MicroMsg.AppBrandReporterManager", "getServiceTypeForReport null = attrs!");
       i = j;
       continue;
-      label95:
-      localObject = com.tencent.mm.plugin.appbrand.a.Kj(paramString);
-      if (localObject == null) {}
-      for (localObject = null;; localObject = ((o)localObject).aXc())
+      label100:
+      paramString = com.tencent.mm.plugin.appbrand.a.KI(str);
+      if (paramString == null) {}
+      for (paramString = null;; paramString = paramString.aXx())
       {
-        if (localObject == null) {
-          break label131;
+        if (paramString == null) {
+          break label136;
         }
-        i = ((AppBrandInitConfigWC)localObject).cmr;
-        i.bT(paramString, i);
+        i = paramString.cmt;
+        i.bX(str, i);
         break;
       }
-      label131:
-      ad.i("MicroMsg.AppBrandReporterManager", "getServiceTypeForReport null = initConfig! appServiceType:%s", new Object[] { Integer.valueOf(j) });
+      label136:
+      ae.i("MicroMsg.AppBrandReporterManager", "getServiceTypeForReport null = initConfig! appServiceType:%s", new Object[] { Integer.valueOf(j) });
       i = j;
     }
+  }
+  
+  private static String UT(String paramString)
+  {
+    AppMethodBeat.i(222930);
+    if (TextUtils.isEmpty(paramString))
+    {
+      AppMethodBeat.o(222930);
+      return paramString;
+    }
+    int i = paramString.indexOf('$');
+    if (i >= 0)
+    {
+      paramString = paramString.substring(0, i);
+      AppMethodBeat.o(222930);
+      return paramString;
+    }
+    AppMethodBeat.o(222930);
+    return paramString;
   }
   
   public static void a(int paramInt1, String paramString1, String paramString2, int paramInt2, String paramString3, String paramString4)
   {
     AppMethodBeat.i(48048);
-    ad.d("MicroMsg.AppBrandReporterManager", "stev report(%s), scene : %d, appid %s, appversion %d, appidlist %snearbyAppIdCount %s, nearbyAppIdList %s  sceneNote %s", new Object[] { Integer.valueOf(13533), Integer.valueOf(paramInt1), bt.nullAsNil(paramString1), Integer.valueOf(0), paramString2, Integer.valueOf(paramInt2), paramString3, paramString4 });
-    com.tencent.mm.plugin.report.service.g.yhR.f(13533, new Object[] { Integer.valueOf(paramInt1), bt.nullAsNil(paramString1), Integer.valueOf(0), paramString2, Integer.valueOf(paramInt2), paramString3, Integer.valueOf(0), paramString4 });
+    ae.d("MicroMsg.AppBrandReporterManager", "stev report(%s), scene : %d, appid %s, appversion %d, appidlist %snearbyAppIdCount %s, nearbyAppIdList %s  sceneNote %s", new Object[] { Integer.valueOf(13533), Integer.valueOf(paramInt1), bu.nullAsNil(paramString1), Integer.valueOf(0), paramString2, Integer.valueOf(paramInt2), paramString3, paramString4 });
+    com.tencent.mm.plugin.report.service.g.yxI.f(13533, new Object[] { Integer.valueOf(paramInt1), bu.nullAsNil(paramString1), Integer.valueOf(0), paramString2, Integer.valueOf(paramInt2), paramString3, Integer.valueOf(0), paramString4 });
     AppMethodBeat.o(48048);
   }
   
@@ -219,16 +238,16 @@ public final class h
         if (paramBoolean1)
         {
           i = 8;
-          com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(j, i, 1L, false);
+          com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(j, i, 1L, false);
           if (!paramBoolean1) {
             break label346;
           }
-          com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(j, 7L, 1L, false);
+          com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(j, 7L, 1L, false);
         }
       }
       for (;;)
       {
-        ad.v("MicroMsg.AppBrandReporterManager", "startApp cost %s msec(hasDownload : %b).", new Object[] { Long.valueOf(paramLong), Boolean.valueOf(paramBoolean1) });
+        ae.v("MicroMsg.AppBrandReporterManager", "startApp cost %s msec(hasDownload : %b).", new Object[] { Long.valueOf(paramLong), Boolean.valueOf(paramBoolean1) });
         AppMethodBeat.o(48056);
         return;
         i = 1;
@@ -331,7 +350,7 @@ public final class h
         i = 6;
         break;
         label346:
-        com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(j, 0L, 1L, false);
+        com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(j, 0L, 1L, false);
       }
     }
   }
@@ -339,7 +358,7 @@ public final class h
   public static void a(String paramString, int paramInt1, int paramInt2, long paramLong1, long paramLong2, long paramLong3)
   {
     AppMethodBeat.i(48061);
-    a locala = a.mqo;
+    a locala = a.mvm;
     a.f(14369, new Object[] { paramString, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2 + 1), Long.valueOf(paramLong1), Long.valueOf(paramLong2), Long.valueOf(paramLong3) });
     AppMethodBeat.o(48061);
   }
@@ -347,15 +366,15 @@ public final class h
   public static void a(String paramString, int paramInt1, int paramInt2, long paramLong, boolean paramBoolean)
   {
     AppMethodBeat.i(48049);
-    Object localObject2 = q.dK(aj.getContext());
+    Object localObject2 = q.dO(ak.getContext());
     Object localObject1 = localObject2;
-    if (bt.isNullOrNil((String)localObject2)) {
-      localObject1 = mrn;
+    if (bu.isNullOrNil((String)localObject2)) {
+      localObject1 = mwl;
     }
-    int j = Ui(paramString);
-    long l = bt.aQJ();
-    ad.d("MicroMsg.AppBrandReporterManager", "stev report(%s), scene : %d, sceneNote %s, sessionId %s, appid %s, appversion %d, appState %d, usedState %d, pagePath %s, networkType %s, eventId %d,eventRusult %d, eventPercent %d, installCostTime %s, eventTime %s, useModule %b, appType %s", new Object[] { Integer.valueOf(13537), Integer.valueOf(1000), "", "", paramString, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), "", localObject1, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(0), Long.valueOf(paramLong), Long.valueOf(l), Boolean.valueOf(paramBoolean), Integer.valueOf(j) });
-    localObject2 = com.tencent.mm.plugin.report.service.g.yhR;
+    int j = US(paramString);
+    long l = bu.aRi();
+    ae.d("MicroMsg.AppBrandReporterManager", "stev report(%s), scene : %d, sceneNote %s, sessionId %s, appid %s, appversion %d, appState %d, usedState %d, pagePath %s, networkType %s, eventId %d,eventRusult %d, eventPercent %d, installCostTime %s, eventTime %s, useModule %b, appType %s", new Object[] { Integer.valueOf(13537), Integer.valueOf(1000), "", "", paramString, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), "", localObject1, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(0), Long.valueOf(paramLong), Long.valueOf(l), Boolean.valueOf(paramBoolean), Integer.valueOf(j) });
+    localObject2 = com.tencent.mm.plugin.report.service.g.yxI;
     if (paramBoolean) {}
     for (int i = 1;; i = 0)
     {
@@ -369,14 +388,14 @@ public final class h
   {
     AppMethodBeat.i(48051);
     i = 3;
-    if (bt.isNullOrNil(paramString1))
+    if (bu.isNullOrNil(paramString1))
     {
       AppMethodBeat.o(48051);
       return;
     }
     String str2 = "";
     String str1 = str2;
-    if (!bt.isNullOrNil(paramString4))
+    if (!bu.isNullOrNil(paramString4))
     {
       str1 = str2;
       if (paramString4.contains(".html")) {
@@ -386,7 +405,7 @@ public final class h
     paramString4 = "";
     try
     {
-      str2 = com.tencent.mm.compatible.util.q.encode(bt.nullAsNil(str1), "UTF-8");
+      str2 = com.tencent.mm.compatible.util.q.encode(bu.nullAsNil(str1), "UTF-8");
       paramString4 = str2;
     }
     catch (UnsupportedEncodingException localUnsupportedEncodingException)
@@ -395,8 +414,8 @@ public final class h
       {
         int j;
         boolean bool;
-        ad.e("MicroMsg.AppBrandReporterManager", "encode page path error!");
-        ad.printErrStackTrace("MicroMsg.AppBrandReporterManager", localUnsupportedEncodingException, "", new Object[0]);
+        ae.e("MicroMsg.AppBrandReporterManager", "encode page path error!");
+        ae.printErrStackTrace("MicroMsg.AppBrandReporterManager", localUnsupportedEncodingException, "", new Object[0]);
         continue;
         if (bool) {
           i = 2;
@@ -405,22 +424,22 @@ public final class h
         }
       }
     }
-    paramString3 = bt.nullAsNil(paramString3);
-    paramString5 = bt.nullAsNil(paramString5);
-    str2 = bt.nullAsNil(paramString2);
-    j = Ui(paramString2);
+    paramString3 = bu.nullAsNil(paramString3);
+    paramString5 = bu.nullAsNil(paramString5);
+    str2 = bu.nullAsNil(paramString2);
+    j = US(paramString2);
     if (paramInt1 > 0)
     {
       i = paramInt1 - 1;
-      bool = j.aYV().be(paramString1, i);
-      if (j.aYW().bb(paramString1, i)) {
+      bool = j.aZs().bh(paramString1, i);
+      if (j.aZt().be(paramString1, i)) {
         i = 1;
       }
     }
     else
     {
-      ad.d("MicroMsg.AppBrandReporterManager", "stev report(%s), scene : %d, sceneNote %s, appid %s, appversion %d, appState %d, usedState %d, pagePath %s, action %d, actionNote %s,actionTime %s, actionResult %d, actionErrorcode %d, appType %d", new Object[] { Integer.valueOf(13540), Integer.valueOf(paramInt2), paramString3, str2, Integer.valueOf(0), Integer.valueOf(paramInt1), Integer.valueOf(i), str1, Integer.valueOf(paramInt3), paramString5, Long.valueOf(paramLong), Integer.valueOf(paramInt4), Integer.valueOf(paramInt5), Integer.valueOf(j) });
-      com.tencent.mm.plugin.report.service.g.yhR.f(13540, new Object[] { Integer.valueOf(paramInt2), paramString3, str2, Integer.valueOf(0), Integer.valueOf(paramInt1), Integer.valueOf(i), paramString4, Integer.valueOf(paramInt3), paramString5, Long.valueOf(paramLong), Integer.valueOf(paramInt4), Integer.valueOf(paramInt5), Integer.valueOf(j) });
+      ae.d("MicroMsg.AppBrandReporterManager", "stev report(%s), scene : %d, sceneNote %s, appid %s, appversion %d, appState %d, usedState %d, pagePath %s, action %d, actionNote %s,actionTime %s, actionResult %d, actionErrorcode %d, appType %d", new Object[] { Integer.valueOf(13540), Integer.valueOf(paramInt2), paramString3, str2, Integer.valueOf(0), Integer.valueOf(paramInt1), Integer.valueOf(i), str1, Integer.valueOf(paramInt3), paramString5, Long.valueOf(paramLong), Integer.valueOf(paramInt4), Integer.valueOf(paramInt5), Integer.valueOf(j) });
+      com.tencent.mm.plugin.report.service.g.yxI.f(13540, new Object[] { Integer.valueOf(paramInt2), paramString3, str2, Integer.valueOf(0), Integer.valueOf(paramInt1), Integer.valueOf(i), paramString4, Integer.valueOf(paramInt3), paramString5, Long.valueOf(paramLong), Integer.valueOf(paramInt4), Integer.valueOf(paramInt5), Integer.valueOf(j) });
       AppMethodBeat.o(48051);
       return;
     }
@@ -429,16 +448,16 @@ public final class h
   public static void a(String paramString1, String paramString2, int paramInt1, String paramString3, long paramLong, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(48050);
-    AppBrandStatObject localAppBrandStatObject = com.tencent.mm.plugin.appbrand.a.Kl(paramString1);
+    AppBrandStatObject localAppBrandStatObject = com.tencent.mm.plugin.appbrand.a.KK(paramString1);
     if (localAppBrandStatObject == null)
     {
-      ad.e("MicroMsg.AppBrandReporterManager", "statObject is Null!");
+      ae.e("MicroMsg.AppBrandReporterManager", "statObject is Null!");
       AppMethodBeat.o(48050);
       return;
     }
     String str2 = "";
     String str1 = str2;
-    if (!bt.isNullOrNil(paramString2))
+    if (!bu.isNullOrNil(paramString2))
     {
       str1 = str2;
       if (paramString2.contains(".html")) {
@@ -448,7 +467,7 @@ public final class h
     str2 = "";
     try
     {
-      paramString2 = com.tencent.mm.compatible.util.q.encode(bt.nullAsNil(str1), "UTF-8");
+      paramString2 = com.tencent.mm.compatible.util.q.encode(bu.nullAsNil(str1), "UTF-8");
       str2 = paramString2;
     }
     catch (UnsupportedEncodingException paramString2)
@@ -456,15 +475,15 @@ public final class h
       for (;;)
       {
         String str3;
-        ad.e("MicroMsg.AppBrandReporterManager", "innerMenuClickReport, encode page path error!, appId = %s", new Object[] { paramString1 });
-        ad.printErrStackTrace("MicroMsg.AppBrandReporterManager", paramString2, "", new Object[0]);
+        ae.e("MicroMsg.AppBrandReporterManager", "innerMenuClickReport, encode page path error!, appId = %s", new Object[] { paramString1 });
+        ae.printErrStackTrace("MicroMsg.AppBrandReporterManager", paramString2, "", new Object[0]);
         continue;
-        int i = paramString2.jYh.pkgVersion;
+        int i = paramString2.kbw.pkgVersion;
         continue;
-        int j = paramString2.jYh.jIU + 1;
+        int j = paramString2.kbw.jLV + 1;
       }
     }
-    paramString2 = com.tencent.mm.plugin.appbrand.a.Kk(paramString1);
+    paramString2 = com.tencent.mm.plugin.appbrand.a.KJ(paramString1);
     if (paramString2 == null)
     {
       i = 0;
@@ -472,12 +491,12 @@ public final class h
         break label576;
       }
       j = 0;
-      str3 = bt.nullAsNil(paramString3);
+      str3 = bu.nullAsNil(paramString3);
       paramString2 = str3;
       if (paramInt1 == 18)
       {
         paramString2 = str3;
-        if (!bt.isNullOrNil(paramString3))
+        if (!bu.isNullOrNil(paramString3))
         {
           paramString2 = str3;
           if (paramString3.contains(".html")) {
@@ -488,7 +507,7 @@ public final class h
     }
     try
     {
-      paramString3 = com.tencent.mm.compatible.util.q.encode(bt.nullAsNil(paramString2), "UTF-8");
+      paramString3 = com.tencent.mm.compatible.util.q.encode(bu.nullAsNil(paramString2), "UTF-8");
       paramString2 = paramString3;
     }
     catch (UnsupportedEncodingException paramString3)
@@ -496,15 +515,15 @@ public final class h
       for (;;)
       {
         String str4;
-        ad.e("MicroMsg.AppBrandReporterManager", "encode actionNote error!");
-        ad.printErrStackTrace("MicroMsg.AppBrandReporterManager", paramString3, "", new Object[0]);
+        ae.e("MicroMsg.AppBrandReporterManager", "encode actionNote error!");
+        ae.printErrStackTrace("MicroMsg.AppBrandReporterManager", paramString3, "", new Object[0]);
       }
     }
-    str4 = bt.nullAsNil(localAppBrandStatObject.dkh);
+    str4 = bu.nullAsNil(localAppBrandStatObject.dlj);
     paramString3 = null;
     try
     {
-      str3 = bt.nullAsNil(com.tencent.mm.plugin.appbrand.a.Kj(paramString1).aXc().Ec());
+      str3 = bu.nullAsNil(com.tencent.mm.plugin.appbrand.a.KI(paramString1).aXx().Ef());
       paramString3 = str3;
     }
     catch (Exception localException)
@@ -513,24 +532,24 @@ public final class h
       {
         int k;
         int m;
-        ad.e("MicroMsg.AppBrandReporterManager", "innerMenuClickReport, get runtime by %s, e = %s", new Object[] { paramString1, localException });
+        ae.e("MicroMsg.AppBrandReporterManager", "innerMenuClickReport, get runtime by %s, e = %s", new Object[] { paramString1, localException });
       }
     }
     if (localAppBrandStatObject.scene == 0) {
       localAppBrandStatObject.scene = 1000;
     }
-    k = localAppBrandStatObject.dJQ;
-    str3 = localAppBrandStatObject.dJR;
-    m = Ui(paramString1);
-    ad.d("MicroMsg.AppBrandReporterManager", "stev report(%s), scene : %d, sceneNote : %s, sessionId : %s, appid : %s, appversion : %d, appState : %d, usedState : %d, pagePath : %s, action : %d, actionNote : %s,actionTime : %s, actionResult : %d, actionErrorcode : %d, preScene : %d, preSceneNote : %s, appType : %d", new Object[] { Integer.valueOf(13539), Integer.valueOf(localAppBrandStatObject.scene), str4, paramString3, paramString1, Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(localAppBrandStatObject.mrx), str1, Integer.valueOf(paramInt1), paramString2, Long.valueOf(paramLong), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(k), str3, Integer.valueOf(m) });
-    com.tencent.mm.plugin.report.service.g.yhR.f(13539, new Object[] { Integer.valueOf(localAppBrandStatObject.scene), str4, paramString3, paramString1, Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(localAppBrandStatObject.mrx), str2, Integer.valueOf(paramInt1), paramString2, Long.valueOf(paramLong), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(k), str3, Integer.valueOf(m) });
+    k = localAppBrandStatObject.dLf;
+    str3 = localAppBrandStatObject.dLg;
+    m = US(paramString1);
+    ae.d("MicroMsg.AppBrandReporterManager", "stev report(%s), scene : %d, sceneNote : %s, sessionId : %s, appid : %s, appversion : %d, appState : %d, usedState : %d, pagePath : %s, action : %d, actionNote : %s,actionTime : %s, actionResult : %d, actionErrorcode : %d, preScene : %d, preSceneNote : %s, appType : %d", new Object[] { Integer.valueOf(13539), Integer.valueOf(localAppBrandStatObject.scene), str4, paramString3, paramString1, Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(localAppBrandStatObject.mwv), str1, Integer.valueOf(paramInt1), paramString2, Long.valueOf(paramLong), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(k), str3, Integer.valueOf(m) });
+    com.tencent.mm.plugin.report.service.g.yxI.f(13539, new Object[] { Integer.valueOf(localAppBrandStatObject.scene), str4, paramString3, paramString1, Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(localAppBrandStatObject.mwv), str2, Integer.valueOf(paramInt1), paramString2, Long.valueOf(paramLong), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(k), str3, Integer.valueOf(m) });
     AppMethodBeat.o(48050);
   }
   
-  public static void aq(int paramInt, String paramString)
+  public static void ap(int paramInt, String paramString)
   {
     AppMethodBeat.i(48054);
-    List localList = ((ah)com.tencent.mm.kernel.g.ab(ah.class)).a(2147483647, ah.a.jPV);
+    List localList = ((ah)com.tencent.mm.kernel.g.ab(ah.class)).a(2147483647, ah.a.jTn);
     StringBuilder localStringBuilder = new StringBuilder();
     localList = b.C(localList);
     localList = localList.subList(0, Math.min(20, localList.size()));
@@ -543,17 +562,17 @@ public final class h
       }
       i += 1;
     }
-    ad.i("MicroMsg.AppBrandReporterManager", "[reportEnterMyWxaList] scene=".concat(String.valueOf(paramInt)));
-    ad.i("MicroMsg.AppBrandReporterManager", "[reportEnterMyWxaList] appIdStr=".concat(String.valueOf(localStringBuilder)));
-    ad.i("MicroMsg.AppBrandReporterManager", "[reportEnterMyWxaList] sceneNote=".concat(String.valueOf(paramString)));
-    com.tencent.mm.plugin.report.service.g.yhR.f(13800, new Object[] { Integer.valueOf(paramInt), Integer.valueOf(((ah)com.tencent.mm.kernel.g.ab(ah.class)).getCount()), localStringBuilder.toString(), Long.valueOf(System.currentTimeMillis()), paramString });
+    ae.i("MicroMsg.AppBrandReporterManager", "[reportEnterMyWxaList] scene=".concat(String.valueOf(paramInt)));
+    ae.i("MicroMsg.AppBrandReporterManager", "[reportEnterMyWxaList] appIdStr=".concat(String.valueOf(localStringBuilder)));
+    ae.i("MicroMsg.AppBrandReporterManager", "[reportEnterMyWxaList] sceneNote=".concat(String.valueOf(paramString)));
+    com.tencent.mm.plugin.report.service.g.yxI.f(13800, new Object[] { Integer.valueOf(paramInt), Integer.valueOf(((ah)com.tencent.mm.kernel.g.ab(ah.class)).getCount()), localStringBuilder.toString(), Long.valueOf(System.currentTimeMillis()), paramString });
     AppMethodBeat.o(48054);
   }
   
-  public static void ar(int paramInt, String paramString)
+  public static void aq(int paramInt, String paramString)
   {
     AppMethodBeat.i(48062);
-    com.tencent.mm.plugin.report.service.g.yhR.f(15651, new Object[] { Integer.valueOf(paramInt), bt.nullAsNil(paramString) });
+    com.tencent.mm.plugin.report.service.g.yxI.f(15651, new Object[] { Integer.valueOf(paramInt), bu.nullAsNil(paramString) });
     AppMethodBeat.o(48062);
   }
   
@@ -564,32 +583,32 @@ public final class h
     AppMethodBeat.o(48060);
   }
   
-  public static void bS(String paramString, int paramInt)
+  public static void bW(String paramString, int paramInt)
   {
     AppMethodBeat.i(48052);
     S(paramString, paramInt, 0);
     AppMethodBeat.o(48052);
   }
   
-  public static void bxj()
+  public static void byc()
   {
     AppMethodBeat.i(48055);
-    aq(2, "");
+    ap(2, "");
     AppMethodBeat.o(48055);
   }
   
-  public static void bxk()
+  public static void byd()
   {
     AppMethodBeat.i(48057);
-    int i = bt.jo(((com.tencent.mm.kernel.b.h)com.tencent.mm.kernel.g.ajz().ajb()).ca);
-    ad.i("MicroMsg.AppBrandReporterManager", "report now process mem : %d", new Object[] { Integer.valueOf(bt.jo(((com.tencent.mm.kernel.b.h)com.tencent.mm.kernel.g.ajz().ajb()).ca)) });
+    int i = bu.ju(((com.tencent.mm.kernel.b.h)com.tencent.mm.kernel.g.ajO().ajq()).ca);
+    ae.i("MicroMsg.AppBrandReporterManager", "report now process mem : %d", new Object[] { Integer.valueOf(bu.ju(((com.tencent.mm.kernel.b.h)com.tencent.mm.kernel.g.ajO().ajq()).ca)) });
     if (i <= 90) {
       i = 2;
     }
     for (;;)
     {
-      com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(386L, 1L, 1L, false);
-      com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(386L, i, 1L, false);
+      com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(386L, 1L, 1L, false);
+      com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(386L, i, 1L, false);
       AppMethodBeat.o(48057);
       return;
       if (i <= 130) {
@@ -607,15 +626,15 @@ public final class h
   public static String getNetworkType(Context paramContext)
   {
     AppMethodBeat.i(48047);
-    paramContext = q.dK(paramContext);
+    paramContext = q.dO(paramContext);
     AppMethodBeat.o(48047);
     return paramContext;
   }
   
-  public static void hy(boolean paramBoolean)
+  public static void hz(boolean paramBoolean)
   {
     AppMethodBeat.i(48059);
-    com.tencent.mm.plugin.report.service.g localg = com.tencent.mm.plugin.report.service.g.yhR;
+    com.tencent.mm.plugin.report.service.g localg = com.tencent.mm.plugin.report.service.g.yxI;
     if (paramBoolean) {}
     for (int i = 2;; i = 3)
     {
@@ -625,52 +644,52 @@ public final class h
     }
   }
   
-  public static void u(boolean paramBoolean, int paramInt)
+  public static void v(boolean paramBoolean, int paramInt)
   {
-    AppMethodBeat.i(188713);
+    AppMethodBeat.i(222929);
     switch (paramInt)
     {
     default: 
-      AppMethodBeat.o(188713);
+      AppMethodBeat.o(222929);
       return;
     case 10: 
       if (paramBoolean) {
-        com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(386L, 13L, 1L, false);
+        com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(386L, 13L, 1L, false);
       }
       for (;;)
       {
-        com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(386L, 8L, 1L, false);
-        AppMethodBeat.o(188713);
+        com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(386L, 8L, 1L, false);
+        AppMethodBeat.o(222929);
         return;
-        com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(386L, 12L, 1L, false);
+        com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(386L, 12L, 1L, false);
       }
     case 15: 
       if (paramBoolean) {
-        com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(386L, 11L, 1L, false);
+        com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(386L, 11L, 1L, false);
       }
       for (;;)
       {
-        com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(386L, 7L, 1L, false);
-        AppMethodBeat.o(188713);
+        com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(386L, 7L, 1L, false);
+        AppMethodBeat.o(222929);
         return;
-        com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(386L, 10L, 1L, false);
+        com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(386L, 10L, 1L, false);
       }
     }
     if (paramBoolean) {
-      com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(386L, 15L, 1L, false);
+      com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(386L, 15L, 1L, false);
     }
     for (;;)
     {
-      com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(386L, 9L, 1L, false);
+      com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(386L, 9L, 1L, false);
       break;
-      com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(386L, 14L, 1L, false);
+      com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(386L, 14L, 1L, false);
     }
   }
   
-  public static void vh(int paramInt)
+  public static void vm(int paramInt)
   {
     AppMethodBeat.i(48063);
-    com.tencent.mm.plugin.report.service.g.yhR.dD(891, paramInt);
+    com.tencent.mm.plugin.report.service.g.yxI.dD(891, paramInt);
     AppMethodBeat.o(48063);
   }
 }

@@ -5,7 +5,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.g.c.aa;
 import com.tencent.mm.sdk.e.e;
 import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,7 +32,7 @@ public final class p
     AppMethodBeat.o(31044);
   }
   
-  public final List<String> CC(long paramLong)
+  public final List<String> Da(long paramLong)
   {
     AppMethodBeat.i(31045);
     ArrayList localArrayList = new ArrayList();
@@ -44,11 +44,11 @@ public final class p
     localObject = rawQuery(((StringBuilder)localObject).toString(), new String[0]);
     if (localObject == null)
     {
-      ad.e("MicroMsg.AppSortStorage", "getAppListByFlag : cursor is null");
+      ae.e("MicroMsg.AppSortStorage", "getAppListByFlag : cursor is null");
       AppMethodBeat.o(31045);
       return null;
     }
-    ad.d("MicroMsg.AppSortStorage", "getAppListByFlag count = %d", new Object[] { Integer.valueOf(((Cursor)localObject).getCount()) });
+    ae.d("MicroMsg.AppSortStorage", "getAppListByFlag count = %d", new Object[] { Integer.valueOf(((Cursor)localObject).getCount()) });
     int i = ((Cursor)localObject).getColumnIndex("appId");
     while (((Cursor)localObject).moveToNext()) {
       localArrayList.add(((Cursor)localObject).getString(i));

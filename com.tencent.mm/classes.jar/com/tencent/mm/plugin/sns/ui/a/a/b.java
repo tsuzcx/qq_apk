@@ -4,8 +4,8 @@ import com.tencent.mm.plugin.sns.l.a;
 
 public final class b
 {
-  public com.tencent.mm.plugin.sns.l.b Akg = null;
-  public a Akh = null;
+  public com.tencent.mm.plugin.sns.l.b ABs = null;
+  public a ABt = null;
 }
 
 

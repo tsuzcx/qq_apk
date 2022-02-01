@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.story.f.c;
 
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"TAG", "", "getTAG", "()Ljava/lang/String;", "plugin-story_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"TAG", "", "getTAG", "()Ljava/lang/String;", "plugin-story_release"})
 public final class g
 {
   private static final String TAG = "MicroMsg.StoryLoader";
@@ -14,7 +14,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.story.f.c.g
  * JD-Core Version:    0.7.0.1
  */

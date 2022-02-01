@@ -123,7 +123,7 @@ final class c
     }
   }
   
-  static c ar(Context paramContext)
+  static c as(Context paramContext)
   {
     try
     {

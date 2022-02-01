@@ -2,21 +2,21 @@ package com.tencent.mm.plugin.qqmail.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.ax;
-import com.tencent.mm.model.bj;
+import com.tencent.mm.model.az;
+import com.tencent.mm.model.bl;
 import com.tencent.mm.plugin.messenger.foundation.a.l;
-import com.tencent.mm.storage.bq;
+import com.tencent.mm.storage.br;
 import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
 
 public final class ac
-  implements ax
+  implements az
 {
-  public static void dCm()
+  public static void dFD()
   {
     AppMethodBeat.i(122793);
-    bj.Bp("qqmail");
-    ((l)g.ab(l.class)).azv().aTx("qqmail");
+    bl.BR("qqmail");
+    ((l)g.ab(l.class)).azL().aUY("qqmail");
     ((k)g.ad(k.class)).getNormalMailAppService().clearData();
     AppMethodBeat.o(122793);
   }
@@ -25,7 +25,7 @@ public final class ac
   {
     AppMethodBeat.i(122792);
     if ((paramInt & 0x1) != 0) {
-      dCm();
+      dFD();
     }
     AppMethodBeat.o(122792);
   }

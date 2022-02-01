@@ -1,8 +1,5 @@
 package com.tencent.mm.chatroom.ui;
 
-import android.content.ClipData;
-import android.content.ClipboardManager;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.DialogInterface.OnDismissListener;
@@ -27,71 +24,69 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.chatroom.d.z;
-import com.tencent.mm.g.a.ok;
+import com.tencent.mm.g.a.ol;
 import com.tencent.mm.g.c.aw;
 import com.tencent.mm.g.c.ei;
-import com.tencent.mm.model.v;
+import com.tencent.mm.model.w;
 import com.tencent.mm.plugin.messenger.foundation.a.a.k.b;
 import com.tencent.mm.pluginsdk.ui.a.b;
 import com.tencent.mm.pluginsdk.ui.span.k;
 import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.bp;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.bq;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.n.d;
-import com.tencent.mm.ui.base.n.e;
 import com.tencent.mm.ui.base.p;
 import com.tencent.mm.ui.s.b;
 import com.tencent.mm.ui.widget.MMEditText;
 
 public class RoomCardUI
   extends MMActivity
-  implements com.tencent.mm.al.f
+  implements com.tencent.mm.ak.f
 {
-  private String fPi;
-  private String fQB;
-  private int fQC;
-  private String fQD;
-  private boolean fQE;
-  private boolean fQF;
-  private String fQG;
-  private String fQH;
-  private long fQI;
-  private p fQJ;
-  private TextView fQK;
-  private MMEditText fQL;
-  private TextView fQM;
-  private TextView fQN;
-  private ImageView fQO;
-  private LinearLayout fQP;
-  private LinearLayout fQQ;
-  private LinearLayout fQR;
-  private LinearLayout fQS;
-  private com.tencent.mm.ui.tools.h fQT;
-  private k.b fQU;
-  private c fQV;
-  private boolean fQW;
+  private String fRo;
+  private String fSH;
+  private int fSI;
+  private String fSJ;
+  private boolean fSK;
+  private boolean fSL;
+  private String fSM;
+  private String fSN;
+  private long fSO;
+  private p fSP;
+  private TextView fSQ;
+  private MMEditText fSR;
+  private TextView fSS;
+  private TextView fST;
+  private ImageView fSU;
+  private LinearLayout fSV;
+  private LinearLayout fSW;
+  private LinearLayout fSX;
+  private LinearLayout fSY;
+  private com.tencent.mm.ui.tools.h fSZ;
+  private k.b fTa;
+  private c fTb;
+  private boolean fTc;
   
   public RoomCardUI()
   {
     AppMethodBeat.i(12704);
-    this.fQV = new c() {};
-    this.fQW = false;
+    this.fTb = new c() {};
+    this.fTc = false;
     AppMethodBeat.o(12704);
   }
   
-  private boolean YV()
+  private boolean Ze()
   {
     AppMethodBeat.i(12712);
-    String str = this.fQL.getText().toString();
-    if (bt.isNullOrNil(str))
+    String str = this.fSR.getText().toString();
+    if (bu.isNullOrNil(str))
     {
-      if (bt.isNullOrNil(this.fQG))
+      if (bu.isNullOrNil(this.fSM))
       {
         AppMethodBeat.o(12712);
         return false;
@@ -99,7 +94,7 @@ public class RoomCardUI
       AppMethodBeat.o(12712);
       return true;
     }
-    if ((this.fQG == null) || (!this.fQG.equals(str)))
+    if ((this.fSM == null) || (!this.fSM.equals(str)))
     {
       AppMethodBeat.o(12712);
       return true;
@@ -108,10 +103,10 @@ public class RoomCardUI
     return false;
   }
   
-  private void YW()
+  private void Zf()
   {
     AppMethodBeat.i(12713);
-    if (YV())
+    if (Ze())
     {
       enableOptionMenu(true);
       AppMethodBeat.o(12713);
@@ -121,12 +116,12 @@ public class RoomCardUI
     AppMethodBeat.o(12713);
   }
   
-  private void YX()
+  private void Zg()
   {
     AppMethodBeat.i(12718);
     Intent localIntent = new Intent();
-    localIntent.putExtra("room_name", this.fQB);
-    localIntent.putExtra("room_notice", this.fQG);
+    localIntent.putExtra("room_name", this.fSH);
+    localIntent.putExtra("room_notice", this.fSM);
     setResult(-1, localIntent);
     finish();
     AppMethodBeat.o(12718);
@@ -135,37 +130,37 @@ public class RoomCardUI
   private void e(int paramInt1, int paramInt2, String paramString)
   {
     AppMethodBeat.i(12717);
-    if ((this.fQJ != null) && (this.fQJ.isShowing())) {
-      this.fQJ.dismiss();
+    if ((this.fSP != null) && (this.fSP.isShowing())) {
+      this.fSP.dismiss();
     }
-    if ((this.fQJ != null) && (this.fQJ.isShowing())) {
-      this.fQJ.dismiss();
+    if ((this.fSP != null) && (this.fSP.isShowing())) {
+      this.fSP.dismiss();
     }
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      ad.i("MicroMsg.RoomInfoUI", "dz[onSceneEnd : set announcement successfully!]");
-      this.fQG = this.fQL.getText().toString();
-      com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(219L, 15L, 1L, true);
-      YX();
+      ae.i("MicroMsg.RoomInfoUI", "dz[onSceneEnd : set announcement successfully!]");
+      this.fSM = this.fSR.getText().toString();
+      com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(219L, 15L, 1L, true);
+      Zg();
       AppMethodBeat.o(12717);
       return;
     }
-    uW(paramString);
-    ad.i("MicroMsg.RoomInfoUI", "dz[onSceneEnd : set announcement failed:%d %d %s]", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    vs(paramString);
+    ae.i("MicroMsg.RoomInfoUI", "dz[onSceneEnd : set announcement failed:%d %d %s]", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
     AppMethodBeat.o(12717);
   }
   
   private void goBack()
   {
     AppMethodBeat.i(12711);
-    if ((!this.fQE) && (!this.fQF))
+    if ((!this.fSK) && (!this.fSL))
     {
       setResult(0);
       finish();
       AppMethodBeat.o(12711);
       return;
     }
-    if (YV())
+    if (Ze())
     {
       com.tencent.mm.ui.base.h.e(this, getString(2131762578), null, getString(2131762580), getString(2131762579), new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
       {
@@ -188,11 +183,11 @@ public class RoomCardUI
     AppMethodBeat.o(12711);
   }
   
-  private void uW(String paramString)
+  private void vs(String paramString)
   {
     AppMethodBeat.i(12719);
-    ad.w("MicroMsg.RoomInfoUI", "dz[handleSetNoticeFailed:%s]", new Object[] { paramString });
-    paramString = com.tencent.mm.h.a.uz(paramString);
+    ae.w("MicroMsg.RoomInfoUI", "dz[handleSetNoticeFailed:%s]", new Object[] { paramString });
+    paramString = com.tencent.mm.h.a.uU(paramString);
     if (paramString != null) {
       paramString.a(this, new DialogInterface.OnDismissListener()
       {
@@ -217,9 +212,9 @@ public class RoomCardUI
     AppMethodBeat.i(12705);
     setMMTitle(2131762661);
     getWindow().setBackgroundDrawable(new ColorDrawable(getResources().getColor(2131101179)));
-    this.fQT = new com.tencent.mm.ui.tools.h(this);
+    this.fSZ = new com.tencent.mm.ui.tools.h(this);
     getWindow().setSoftInputMode(48);
-    this.fQT.KIP = new com.tencent.mm.ui.tools.g()
+    this.fSZ.Lfj = new com.tencent.mm.ui.tools.g()
     {
       public final void u(int paramAnonymousInt, boolean paramAnonymousBoolean)
       {
@@ -264,88 +259,88 @@ public class RoomCardUI
         AppMethodBeat.o(12696);
         return true;
       }
-    }, null, s.b.JbS);
+    }, null, s.b.JwA);
     enableOptionMenu(true);
-    this.fQR = ((LinearLayout)findViewById(2131300723));
-    this.fQS = ((LinearLayout)findViewById(2131304220));
-    this.fQL = ((MMEditText)findViewById(2131302952));
-    this.fQM = ((TextView)findViewById(2131302955));
-    this.fQN = ((TextView)findViewById(2131302954));
-    this.fQP = ((LinearLayout)findViewById(2131304223));
-    this.fQO = ((ImageView)findViewById(2131302953));
-    this.fQQ = ((LinearLayout)findViewById(2131304230));
-    this.fQL.setText(this.fQG);
+    this.fSX = ((LinearLayout)findViewById(2131300723));
+    this.fSY = ((LinearLayout)findViewById(2131304220));
+    this.fSR = ((MMEditText)findViewById(2131302952));
+    this.fSS = ((TextView)findViewById(2131302955));
+    this.fST = ((TextView)findViewById(2131302954));
+    this.fSV = ((LinearLayout)findViewById(2131304223));
+    this.fSU = ((ImageView)findViewById(2131302953));
+    this.fSW = ((LinearLayout)findViewById(2131304230));
+    this.fSR.setText(this.fSM);
     Object localObject = (WindowManager)getSystemService("window");
-    this.fQL.setMinHeight(((WindowManager)localObject).getDefaultDisplay().getHeight() * 2 / 3 - 100);
-    k.b(this.fQL, Integer.valueOf(31));
-    this.fQK = ((TextView)findViewById(2131301394));
-    this.fQK.setText(Integer.toString(com.tencent.mm.ui.tools.f.cU(280, this.fQG)));
-    this.fQQ.setVisibility(8);
-    this.fQL.setCursorVisible(false);
-    this.fQL.setFocusable(false);
+    this.fSR.setMinHeight(((WindowManager)localObject).getDefaultDisplay().getHeight() * 2 / 3 - 100);
+    k.b(this.fSR, Integer.valueOf(31));
+    this.fSQ = ((TextView)findViewById(2131301394));
+    this.fSQ.setText(Integer.toString(com.tencent.mm.ui.tools.f.cU(280, this.fSM)));
+    this.fSW.setVisibility(8);
+    this.fSR.setCursorVisible(false);
+    this.fSR.setFocusable(false);
     label424:
     String str;
-    if ((!this.fQE) && (!this.fQF))
+    if ((!this.fSK) && (!this.fSL))
     {
       removeOptionMenu(0);
-      this.fQS.setVisibility(0);
-      this.fQL.setFocusable(false);
-      this.fQL.setCursorVisible(false);
-      this.fQL.setOnLongClickListener(new View.OnLongClickListener()
+      this.fSY.setVisibility(0);
+      this.fSR.setFocusable(false);
+      this.fSR.setCursorVisible(false);
+      this.fSR.setOnLongClickListener(new View.OnLongClickListener()
       {
         public final boolean onLongClick(View paramAnonymousView)
         {
           AppMethodBeat.i(12697);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
           localb.bd(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/chatroom/ui/RoomCardUI$3", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.ahq());
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/chatroom/ui/RoomCardUI$3", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.ahF());
           RoomCardUI.a(RoomCardUI.this, RoomCardUI.b(RoomCardUI.this));
           com.tencent.mm.hellhoundlib.a.a.a(true, this, "com/tencent/mm/chatroom/ui/RoomCardUI$3", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
           AppMethodBeat.o(12697);
           return true;
         }
       });
-      if (this.fQI == 0L) {
+      if (this.fSO == 0L) {
         break label623;
       }
-      this.fQM.setVisibility(0);
-      this.fQM.setText(com.tencent.mm.pluginsdk.i.i.formatTime("yyyy-MM-dd HH:mm", this.fQI));
-      if (!bt.isNullOrNil(this.fQG)) {
+      this.fSS.setVisibility(0);
+      this.fSS.setText(com.tencent.mm.pluginsdk.i.i.formatTime("yyyy-MM-dd HH:mm", this.fSO));
+      if (!bu.isNullOrNil(this.fSM)) {
         break label635;
       }
-      this.fQL.setEnabled(true);
-      this.fQL.setFocusableInTouchMode(true);
-      this.fQL.setFocusable(true);
-      this.fQR.setVisibility(8);
-      this.fQL.setMinHeight(((WindowManager)localObject).getDefaultDisplay().getHeight() * 2 / 3 + 100);
-      this.fQL.requestFocus();
-      this.fQL.setCursorVisible(true);
+      this.fSR.setEnabled(true);
+      this.fSR.setFocusableInTouchMode(true);
+      this.fSR.setFocusable(true);
+      this.fSX.setVisibility(8);
+      this.fSR.setMinHeight(((WindowManager)localObject).getDefaultDisplay().getHeight() * 2 / 3 + 100);
+      this.fSR.requestFocus();
+      this.fSR.setCursorVisible(true);
       updateOptionMenuText(0, getContext().getString(2131755779));
-      YW();
-      this.fQL.performClick();
+      Zf();
+      this.fSR.performClick();
       showVKB();
       label537:
-      localObject = v.zf(this.fQH);
-      this.fQN.setText(k.b(this, (CharSequence)localObject, this.fQN.getTextSize()));
-      localObject = this.fQO;
-      str = this.fQH;
-      if (!bt.isNullOrNil(str)) {
+      localObject = w.zP(this.fSN);
+      this.fST.setText(k.b(this, (CharSequence)localObject, this.fST.getTextSize()));
+      localObject = this.fSU;
+      str = this.fSN;
+      if (!bu.isNullOrNil(str)) {
         break label646;
       }
       ((ImageView)localObject).setImageResource(2131231875);
     }
     for (;;)
     {
-      this.fQL.addTextChangedListener(new a((byte)0));
+      this.fSR.addTextChangedListener(new a((byte)0));
       AppMethodBeat.o(12705);
       return;
-      this.fQS.setVisibility(8);
+      this.fSY.setVisibility(8);
       break;
       label623:
-      this.fQM.setVisibility(8);
+      this.fSS.setVisibility(8);
       break label424;
       label635:
-      this.fQR.setVisibility(0);
+      this.fSX.setVisibility(0);
       break label537;
       label646:
       a.b.c((ImageView)localObject, str);
@@ -368,17 +363,17 @@ public class RoomCardUI
   {
     AppMethodBeat.i(12706);
     super.onCreate(paramBundle);
-    com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(219L, 0L, 1L, true);
-    com.tencent.mm.kernel.g.ajB().gAO.a(993, this);
-    this.fPi = getIntent().getStringExtra("RoomInfo_Id");
-    this.fQG = getIntent().getStringExtra("room_notice");
-    this.fQH = getIntent().getStringExtra("room_notice_editor");
-    this.fQI = getIntent().getLongExtra("room_notice_publish_time", 0L);
-    this.fQB = getIntent().getStringExtra("room_name");
-    this.fQC = getIntent().getIntExtra("room_member_count", 0);
-    this.fQD = getIntent().getStringExtra("room_owner_name");
-    this.fQE = getIntent().getBooleanExtra("Is_RoomOwner", false);
-    this.fQF = getIntent().getBooleanExtra("Is_RoomManager", false);
+    com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(219L, 0L, 1L, true);
+    com.tencent.mm.kernel.g.ajQ().gDv.a(993, this);
+    this.fRo = getIntent().getStringExtra("RoomInfo_Id");
+    this.fSM = getIntent().getStringExtra("room_notice");
+    this.fSN = getIntent().getStringExtra("room_notice_editor");
+    this.fSO = getIntent().getLongExtra("room_notice_publish_time", 0L);
+    this.fSH = getIntent().getStringExtra("room_name");
+    this.fSI = getIntent().getIntExtra("room_member_count", 0);
+    this.fSJ = getIntent().getStringExtra("room_owner_name");
+    this.fSK = getIntent().getBooleanExtra("Is_RoomOwner", false);
+    this.fSL = getIntent().getBooleanExtra("Is_RoomManager", false);
     initView();
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
@@ -397,9 +392,9 @@ public class RoomCardUI
   {
     AppMethodBeat.i(12710);
     super.onDestroy();
-    com.tencent.mm.kernel.g.ajB().gAO.b(993, this);
-    if ((this.fQJ != null) && (this.fQJ.isShowing())) {
-      this.fQJ.dismiss();
+    com.tencent.mm.kernel.g.ajQ().gDv.b(993, this);
+    if ((this.fSP != null) && (this.fSP.isShowing())) {
+      this.fSP.dismiss();
     }
     AppMethodBeat.o(12710);
   }
@@ -422,7 +417,7 @@ public class RoomCardUI
   {
     AppMethodBeat.i(12709);
     super.onPause();
-    this.fQT.close();
+    this.fSZ.close();
     AppMethodBeat.o(12709);
   }
   
@@ -430,7 +425,7 @@ public class RoomCardUI
   {
     AppMethodBeat.i(12707);
     super.onResume();
-    this.fQT.start();
+    this.fSZ.start();
     AppMethodBeat.o(12707);
   }
   
@@ -443,27 +438,27 @@ public class RoomCardUI
       AppMethodBeat.o(12716);
       return;
     }
-    ad.w("MicroMsg.RoomInfoUI", "error cgi type callback:[%d]", new Object[] { Integer.valueOf(paramn.getType()) });
+    ae.w("MicroMsg.RoomInfoUI", "error cgi type callback:[%d]", new Object[] { Integer.valueOf(paramn.getType()) });
     AppMethodBeat.o(12716);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
   {
     AppMethodBeat.i(12708);
+    AppMethodBeat.at(this, paramBoolean);
     super.onWindowFocusChanged(paramBoolean);
     if (paramBoolean) {
-      this.fQT.start();
+      this.fSZ.start();
     }
-    AppMethodBeat.at(this, paramBoolean);
     AppMethodBeat.o(12708);
   }
   
   final class a
     implements TextWatcher
   {
-    private int fQZ = 280;
-    private String fRa = "";
-    private boolean fRb = false;
+    private int fTf = 280;
+    private String fTg = "";
+    private boolean fTh = false;
     
     private a() {}
     

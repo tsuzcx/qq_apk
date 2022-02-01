@@ -1,59 +1,59 @@
 package com.tencent.mm.plugin.websearch.api;
 
 import android.os.Bundle;
-import com.tencent.mm.al.n;
-import com.tencent.mm.protocal.protobuf.dty;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.protocal.protobuf.duv;
 import java.util.LinkedList;
 
 public abstract class a
   extends n
 {
-  protected int DAT;
-  protected Bundle DAU;
-  protected String dCX;
+  protected int DSQ;
+  protected Bundle DSR;
+  protected String dEc;
   protected int fq;
   protected int mScene;
-  protected String tQe;
+  protected String uaV;
   
-  public final void VZ(int paramInt)
+  public final void WG(int paramInt)
   {
-    this.DAT = paramInt;
+    this.DSQ = paramInt;
   }
   
-  public void bb(LinkedList<dty> paramLinkedList) {}
+  public void bc(LinkedList<duv> paramLinkedList) {}
   
-  public final String cSK()
+  public final String cVp()
   {
-    return this.tQe;
+    return this.uaV;
   }
   
-  public final int eLK()
+  public final int ePt()
   {
-    return this.DAT;
+    return this.DSQ;
   }
   
-  public final boolean eLL()
+  public final boolean ePu()
   {
     return this.fq == 0;
   }
   
-  public final Bundle eLM()
+  public final Bundle ePv()
   {
-    return this.DAU;
+    return this.DSR;
   }
   
-  public abstract String eLN();
+  public abstract String ePw();
   
-  public abstract int eLO();
+  public abstract int ePx();
   
-  public final String eLP()
+  public final String ePy()
   {
-    return this.dCX;
+    return this.dEc;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.websearch.api.a
  * JD-Core Version:    0.7.0.1
  */

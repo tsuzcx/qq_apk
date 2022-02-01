@@ -28,11 +28,11 @@ public class PAGImage
   
   static
   {
-    AppMethodBeat.i(220166);
+    AppMethodBeat.i(216920);
     b.loadLibrary("libpag");
     nativeInit();
     PAGFont.loadSystemFonts();
-    AppMethodBeat.o(220166);
+    AppMethodBeat.o(216920);
   }
   
   PAGImage(long paramLong)
@@ -98,10 +98,10 @@ public class PAGImage
   
   public static PAGImage FromBitmap(Bitmap paramBitmap)
   {
-    AppMethodBeat.i(220156);
+    AppMethodBeat.i(216910);
     if ((Build.VERSION.SDK_INT >= 26) && (paramBitmap.getConfig() == Bitmap.Config.HARDWARE))
     {
-      AppMethodBeat.o(220156);
+      AppMethodBeat.o(216910);
       return null;
     }
     ByteBuffer localByteBuffer = ByteBuffer.allocate(paramBitmap.getHeight() * paramBitmap.getRowBytes());
@@ -132,7 +132,7 @@ public class PAGImage
       if (l != 0L) {
         break label200;
       }
-      AppMethodBeat.o(220156);
+      AppMethodBeat.o(216910);
       return null;
       i = 3;
       break;
@@ -152,62 +152,62 @@ public class PAGImage
     label200:
     paramBitmap = new PAGImage(l);
     paramBitmap.pixels = localByteBuffer.array();
-    AppMethodBeat.o(220156);
+    AppMethodBeat.o(216910);
     return paramBitmap;
   }
   
   public static PAGImage FromBytes(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(220158);
+    AppMethodBeat.i(216912);
     if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0))
     {
-      AppMethodBeat.o(220158);
+      AppMethodBeat.o(216912);
       return null;
     }
     paramArrayOfByte = BitmapFactory.decodeByteArray(paramArrayOfByte, 0, paramArrayOfByte.length);
     if (paramArrayOfByte == null)
     {
-      AppMethodBeat.o(220158);
+      AppMethodBeat.o(216912);
       return null;
     }
     paramArrayOfByte = FromBitmap(paramArrayOfByte);
-    AppMethodBeat.o(220158);
+    AppMethodBeat.o(216912);
     return paramArrayOfByte;
   }
   
   public static PAGImage FromPath(String paramString)
   {
-    AppMethodBeat.i(220157);
+    AppMethodBeat.i(216911);
     paramString = BitmapFactory.decodeFile(paramString);
     if (paramString == null)
     {
-      AppMethodBeat.o(220157);
+      AppMethodBeat.o(216911);
       return null;
     }
     paramString = FromBitmap(paramString);
-    AppMethodBeat.o(220157);
+    AppMethodBeat.o(216911);
     return paramString;
   }
   
   public static PAGImage FromTexture(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(220160);
+    AppMethodBeat.i(216914);
     PAGImage localPAGImage = FromTexture(paramInt1, paramInt2, paramInt3, paramInt4, false);
-    AppMethodBeat.o(220160);
+    AppMethodBeat.o(216914);
     return localPAGImage;
   }
   
   public static PAGImage FromTexture(int paramInt1, int paramInt2, int paramInt3, int paramInt4, boolean paramBoolean)
   {
-    AppMethodBeat.i(220161);
+    AppMethodBeat.i(216915);
     long l = LoadFromTexture(paramInt1, paramInt2, paramInt3, paramInt4, paramBoolean);
     if (l == 0L)
     {
-      AppMethodBeat.o(220161);
+      AppMethodBeat.o(216915);
       return null;
     }
     PAGImage localPAGImage = new PAGImage(l);
-    AppMethodBeat.o(220161);
+    AppMethodBeat.o(216915);
     return localPAGImage;
   }
   
@@ -233,40 +233,40 @@ public class PAGImage
   
   protected void finalize()
   {
-    AppMethodBeat.i(220165);
+    AppMethodBeat.i(216919);
     nativeFinalize();
-    AppMethodBeat.o(220165);
+    AppMethodBeat.o(216919);
   }
   
   public native int height();
   
   public Matrix matrix()
   {
-    AppMethodBeat.i(220162);
+    AppMethodBeat.i(216916);
     float[] arrayOfFloat = new float[9];
     nativeGetMatrix(arrayOfFloat);
     Matrix localMatrix = new Matrix();
     localMatrix.setValues(arrayOfFloat);
-    AppMethodBeat.o(220162);
+    AppMethodBeat.o(216916);
     return localMatrix;
   }
   
   public void release()
   {
-    AppMethodBeat.i(220164);
+    AppMethodBeat.i(216918);
     nativeRelease();
-    AppMethodBeat.o(220164);
+    AppMethodBeat.o(216918);
   }
   
   public native int scaleMode();
   
   public void setMatrix(Matrix paramMatrix)
   {
-    AppMethodBeat.i(220163);
+    AppMethodBeat.i(216917);
     float[] arrayOfFloat = new float[9];
     paramMatrix.getValues(arrayOfFloat);
     nativeSetMatrix(arrayOfFloat[0], arrayOfFloat[3], arrayOfFloat[1], arrayOfFloat[4], arrayOfFloat[2], arrayOfFloat[5]);
-    AppMethodBeat.o(220163);
+    AppMethodBeat.o(216917);
   }
   
   public native void setScaleMode(int paramInt);

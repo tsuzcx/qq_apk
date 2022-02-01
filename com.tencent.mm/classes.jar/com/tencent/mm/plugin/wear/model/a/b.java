@@ -9,15 +9,15 @@ public abstract interface b
 {
   public abstract byte[] a(Asset paramAsset);
   
-  public abstract void eKI();
+  public abstract void eOq();
   
-  public abstract GoogleApiClient eKJ();
+  public abstract GoogleApiClient eOr();
   
-  public abstract HashSet<String> eKK();
+  public abstract HashSet<String> eOs();
   
-  public abstract boolean eKL();
+  public abstract boolean eOt();
   
-  public abstract void eKM();
+  public abstract void eOu();
   
   public abstract void finish();
   

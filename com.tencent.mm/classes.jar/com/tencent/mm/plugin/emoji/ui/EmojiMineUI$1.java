@@ -12,7 +12,7 @@ final class EmojiMineUI$1
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
     AppMethodBeat.i(108934);
-    this.pJw.finish();
+    this.pQb.finish();
     AppMethodBeat.o(108934);
     return true;
   }

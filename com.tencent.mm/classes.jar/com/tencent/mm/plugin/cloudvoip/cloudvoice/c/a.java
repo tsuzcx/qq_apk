@@ -2,10 +2,10 @@ package com.tencent.mm.plugin.cloudvoip.cloudvoice.c;
 
 public final class a
 {
-  public int cSb = 0;
+  public int cSL = 0;
   public int height = 0;
-  public byte[] oVZ = null;
-  public int oWa = -1;
+  public byte[] pcC = null;
+  public int pcD = -1;
   public int width = 0;
 }
 

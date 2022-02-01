@@ -4,7 +4,7 @@ import java.util.Set;
 
 public final class c$nl
 {
-  public static Set<String> Fnc;
+  public static Set<String> FFA;
 }
 
 

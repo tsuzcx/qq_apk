@@ -3,32 +3,35 @@ package com.tencent.mm.plugin.sns.model.a;
 import android.graphics.BitmapFactory.Options;
 import android.util.SparseArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.data.m;
-import com.tencent.mm.plugin.sns.data.q;
+import com.tencent.mm.plugin.report.service.g;
+import com.tencent.mm.plugin.sns.data.n;
+import com.tencent.mm.plugin.sns.data.r;
 import com.tencent.mm.plugin.sns.j.c;
-import com.tencent.mm.plugin.sns.model.ag;
-import com.tencent.mm.plugin.sns.model.ao;
+import com.tencent.mm.plugin.sns.model.ah;
+import com.tencent.mm.plugin.sns.model.ap;
 import com.tencent.mm.plugin.sns.storage.u;
-import com.tencent.mm.protocal.protobuf.byn;
+import com.tencent.mm.protocal.protobuf.bzh;
 import com.tencent.mm.sdk.platformtools.MMNativeJpeg;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.h;
+import com.tencent.mm.vfs.o;
 
 public final class i
   extends f
 {
-  private boolean hFH;
+  private boolean hIz;
   
   public i(c.a parama, a parama1)
   {
     super(parama, parama1);
     AppMethodBeat.i(96075);
-    this.hFH = false;
-    com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(150L, 10L, 1L, true);
+    this.hIz = false;
+    g.yxI.idkeyStat(150L, 10L, 1L, true);
     AppMethodBeat.o(96075);
   }
   
-  public final boolean Qi(int paramInt)
+  public final boolean QP(int paramInt)
   {
     AppMethodBeat.i(96077);
     Object localObject4;
@@ -38,37 +41,37 @@ public final class i
     String str1;
     BitmapFactory.Options localOptions;
     int i;
-    if ((this.zoe.zcH != null) && (this.zoe.zcH.size() > 0))
+    if ((this.zFt.ztx != null) && (this.zFt.ztx.size() > 0))
     {
-      localObject4 = (m)this.zoe.zcH.get(paramInt);
-      localObject3 = (byn)this.zoe.zdw.get(paramInt);
+      localObject4 = (n)this.zFt.ztx.get(paramInt);
+      localObject3 = (bzh)this.zFt.zum.get(paramInt);
       if ((localObject4 == null) || (localObject3 == null))
       {
-        ad.e("MicroMsg.SnsDownloadThumb", "decodeElement or media is null.");
+        ae.e("MicroMsg.SnsDownloadThumb", "decodeElement or media is null.");
         AppMethodBeat.o(96077);
         return false;
       }
-      ad.i("MicroMsg.SnsDownloadThumb", "In processGroupDownloadSuccessData ing, %d.", new Object[] { Integer.valueOf(paramInt) });
+      ae.i("MicroMsg.SnsDownloadThumb", "In processGroupDownloadSuccessData ing, %d.", new Object[] { Integer.valueOf(paramInt) });
       localObject1 = new StringBuilder();
-      localObject2 = ((byn)localObject3).Id;
-      str1 = ao.jo(ag.getAccSnsPath(), (String)localObject2) + q.m((byn)localObject3);
-      localObject2 = q.d((byn)localObject3);
-      this.hFH = u.aAt(str1);
-      if (this.zoF) {
-        this.hFH = true;
+      localObject2 = ((bzh)localObject3).Id;
+      str1 = ap.jv(ah.getAccSnsPath(), (String)localObject2) + r.m((bzh)localObject3);
+      localObject2 = r.d((bzh)localObject3);
+      this.hIz = u.aBK(str1);
+      if (this.zFU) {
+        this.hIz = true;
       }
-      if (this.hFH) {
-        com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(22L, 64L, 1L, true);
+      if (this.hIz) {
+        g.yxI.idkeyStat(22L, 64L, 1L, true);
       }
       localOptions = new BitmapFactory.Options();
       localOptions.inJustDecodeBounds = true;
-      com.tencent.mm.sdk.platformtools.g.decodeFile(str1, localOptions);
+      h.decodeFile(str1, localOptions);
       if (localOptions.outMimeType == null) {
         break label1211;
       }
       localObject1 = localOptions.outMimeType.toLowerCase();
-      if ((localOptions.outMimeType == null) || (bt.isNullOrNil(localOptions.outMimeType))) {
-        com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(150L, 35L, 1L, true);
+      if ((localOptions.outMimeType == null) || (bu.isNullOrNil(localOptions.outMimeType))) {
+        g.yxI.idkeyStat(150L, 35L, 1L, true);
       }
       i = -1;
       if ((!((String)localObject1).contains("jpg")) && (!((String)localObject1).contains("jpeg"))) {
@@ -86,133 +89,133 @@ public final class i
     label1243:
     for (;;)
     {
-      this.zoe.mediaType = q.ans(str1);
-      long l1 = com.tencent.mm.vfs.i.aYo(str1);
+      this.zFt.mediaType = r.aou(str1);
+      long l1 = o.aZR(str1);
       if (l1 <= 0L)
       {
-        ad.e("MicroMsg.SnsDownloadThumb", "processGroupDownloadSuccessData!!! file err!!! [%s].", new Object[] { str1 });
-        com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(150L, 23L, 1L, true);
+        ae.e("MicroMsg.SnsDownloadThumb", "processGroupDownloadSuccessData!!! file err!!! [%s].", new Object[] { str1 });
+        g.yxI.idkeyStat(150L, 23L, 1L, true);
       }
-      long l2 = bt.HI();
-      localObject1 = q.h((byn)localObject3);
+      long l2 = bu.HQ();
+      localObject1 = r.h((bzh)localObject3);
       StringBuilder localStringBuilder = new StringBuilder();
-      Object localObject5 = ((byn)localObject3).Id;
-      com.tencent.mm.vfs.i.mz(str1, ao.jo(ag.getAccSnsPath(), (String)localObject5) + (String)localObject1);
+      Object localObject5 = ((bzh)localObject3).Id;
+      o.mF(str1, ap.jv(ah.getAccSnsPath(), (String)localObject5) + (String)localObject1);
       localStringBuilder = new StringBuilder("file exist ");
       localObject5 = new StringBuilder();
-      String str2 = ((byn)localObject3).Id;
-      ad.v("MicroMsg.SnsDownloadThumb", com.tencent.mm.vfs.i.fv(((StringBuilder)localObject5).append(ao.jo(ag.getAccSnsPath(), str2)).append((String)localObject1).toString()));
-      long l3 = bt.HI();
-      localObject1 = ((byn)localObject3).Id;
-      if (!u.a(ao.jo(ag.getAccSnsPath(), (String)localObject1), q.m((byn)localObject3), (String)localObject2, ag.dUq()))
+      String str2 = ((bzh)localObject3).Id;
+      ae.v("MicroMsg.SnsDownloadThumb", o.fB(((StringBuilder)localObject5).append(ap.jv(ah.getAccSnsPath(), str2)).append((String)localObject1).toString()));
+      long l3 = bu.HQ();
+      localObject1 = ((bzh)localObject3).Id;
+      if (!u.a(ap.jv(ah.getAccSnsPath(), (String)localObject1), r.m((bzh)localObject3), (String)localObject2, ah.dXQ()))
       {
-        ad.e("MicroMsg.SnsDownloadThumb", "decodeInfo createThumb failed");
-        com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(150L, 27L, 1L, true);
+        ae.e("MicroMsg.SnsDownloadThumb", "decodeInfo createThumb failed");
+        g.yxI.idkeyStat(150L, 27L, 1L, true);
       }
-      l3 = bt.aO(l3);
-      boolean bool = com.tencent.mm.vfs.i.fv(str1);
-      com.tencent.mm.vfs.i.deleteFile(str1);
-      l2 = bt.aO(l2);
+      l3 = bu.aO(l3);
+      boolean bool = o.fB(str1);
+      o.deleteFile(str1);
+      l2 = bu.aO(l2);
       localObject1 = new StringBuilder();
-      str1 = ((byn)localObject3).Id;
-      if (!com.tencent.mm.vfs.i.fv(ao.jo(ag.getAccSnsPath(), str1) + (String)localObject2))
+      str1 = ((bzh)localObject3).Id;
+      if (!o.fB(ap.jv(ah.getAccSnsPath(), str1) + (String)localObject2))
       {
-        ad.i("MicroMsg.SnsDownloadThumb", "fileExists is false %s.", new Object[] { Long.valueOf(com.tencent.mm.vfs.i.aYo(this.zoe.getPath() + (String)localObject2)) });
-        com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(150L, 31L, 1L, true);
+        ae.i("MicroMsg.SnsDownloadThumb", "fileExists is false %s.", new Object[] { Long.valueOf(o.aZR(this.zFt.getPath() + (String)localObject2)) });
+        g.yxI.idkeyStat(150L, 31L, 1L, true);
         if (bool)
         {
           localObject1 = new StringBuilder();
-          str1 = ((byn)localObject3).Id;
-          if (!com.tencent.mm.vfs.i.fv(ao.jo(ag.getAccSnsPath(), str1) + (String)localObject2))
+          str1 = ((bzh)localObject3).Id;
+          if (!o.fB(ap.jv(ah.getAccSnsPath(), str1) + (String)localObject2))
           {
-            bool = com.tencent.mm.plugin.normsg.a.b.wtJ.duK();
-            ad.i("MicroMsg.SnsDownloadThumb", "let me see Is DuplicatedApp? %s", new Object[] { Boolean.valueOf(bool) });
-            com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(150L, 32L, 1L, true);
+            bool = com.tencent.mm.plugin.normsg.a.b.wJt.dya();
+            ae.i("MicroMsg.SnsDownloadThumb", "let me see Is DuplicatedApp? %s", new Object[] { Boolean.valueOf(bool) });
+            g.yxI.idkeyStat(150L, 32L, 1L, true);
             if (bool) {
-              com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(150L, 33L, 1L, true);
+              g.yxI.idkeyStat(150L, 33L, 1L, true);
             }
           }
         }
       }
-      com.tencent.mm.plugin.report.service.g.yhR.f(11696, new Object[] { Integer.valueOf(3), Long.valueOf(l2), Integer.valueOf(this.zox), Thread.currentThread().getName(), ag.dUv(), com.tencent.mm.loader.j.b.arO() });
-      if ((((m)localObject4).zds == 0) || (this.zoe.zcG.zds == 5))
+      g.yxI.f(11696, new Object[] { Integer.valueOf(3), Long.valueOf(l2), Integer.valueOf(this.zFM), Thread.currentThread().getName(), ah.dXV(), com.tencent.mm.loader.j.b.asd() });
+      if ((((n)localObject4).zui == 0) || (this.zFt.ztw.zui == 5))
       {
-        localObject1 = q.e((byn)localObject3);
-        localObject4 = ((byn)localObject3).Id;
-        u.b(ao.jo(ag.getAccSnsPath(), (String)localObject4), (String)localObject2, (String)localObject1, ag.dUp());
+        localObject1 = r.e((bzh)localObject3);
+        localObject4 = ((bzh)localObject3).Id;
+        u.b(ap.jv(ah.getAccSnsPath(), (String)localObject4), (String)localObject2, (String)localObject1, ah.dXP());
       }
       for (;;)
       {
         localObject2 = new StringBuilder();
-        localObject4 = ((byn)localObject3).Id;
-        c.a(ao.jo(ag.getAccSnsPath(), (String)localObject4) + (String)localObject1, ((byn)localObject3).GSI, 1, localOptions.outMimeType, localOptions.outWidth, localOptions.outHeight, i, l1, l3);
+        localObject4 = ((bzh)localObject3).Id;
+        c.a(ap.jv(ah.getAccSnsPath(), (String)localObject4) + (String)localObject1, ((bzh)localObject3).Hmj, 1, localOptions.outMimeType, localOptions.outWidth, localOptions.outHeight, i, l1, l3);
         localObject2 = new StringBuilder();
-        localObject3 = ((byn)localObject3).Id;
-        this.zod = q.ayc(ao.jo(ag.getAccSnsPath(), (String)localObject3) + (String)localObject1);
-        this.zoy.put(paramInt, this.zod);
-        bool = q.b(this.zod);
-        ad.i("MicroMsg.SnsDownloadThumb", "download decode bitmap done : succ: " + bool + " isWebp: " + this.hFH + " srcImgFileSize: " + l1 + " index: " + paramInt);
+        localObject3 = ((bzh)localObject3).Id;
+        this.zFs = r.azt(ap.jv(ah.getAccSnsPath(), (String)localObject3) + (String)localObject1);
+        this.zFN.put(paramInt, this.zFs);
+        bool = r.b(this.zFs);
+        ae.i("MicroMsg.SnsDownloadThumb", "download decode bitmap done : succ: " + bool + " isWebp: " + this.hIz + " srcImgFileSize: " + l1 + " index: " + paramInt);
         if (!bool)
         {
-          com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(150L, 65L, 1L, true);
-          if (!this.zoI) {
+          g.yxI.idkeyStat(150L, 65L, 1L, true);
+          if (!this.zFX) {
             break label1219;
           }
-          com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(150L, 50L, 1L, true);
+          g.yxI.idkeyStat(150L, 50L, 1L, true);
         }
         for (;;)
         {
-          if (this.zoG) {
-            com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(150L, 54L, 1L, true);
+          if (this.zFV) {
+            g.yxI.idkeyStat(150L, 54L, 1L, true);
           }
-          if (this.zoF) {
-            com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(150L, 57L, 1L, true);
+          if (this.zFU) {
+            g.yxI.idkeyStat(150L, 57L, 1L, true);
           }
-          if ((this.hFH) && (!bool)) {
-            com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(22L, 65L, 1L, true);
+          if ((this.hIz) && (!bool)) {
+            g.yxI.idkeyStat(22L, 65L, 1L, true);
           }
-          if ((this.zoI) && (bool)) {
-            com.tencent.mm.plugin.sns.lucky.a.b.ma(139);
+          if ((this.zFX) && (bool)) {
+            com.tencent.mm.plugin.sns.lucky.a.b.md(139);
           }
           AppMethodBeat.o(96077);
           return true;
           localObject1 = "";
           break;
-          com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(150L, 51L, 1L, true);
+          g.yxI.idkeyStat(150L, 51L, 1L, true);
         }
         localObject1 = localObject2;
       }
     }
   }
   
-  public final boolean dVi()
+  public final boolean dYJ()
   {
     AppMethodBeat.i(96076);
     String str2;
     String str3;
     BitmapFactory.Options localOptions;
     String str1;
-    if (this.zoe.zcG != null)
+    if (this.zFt.ztw != null)
     {
-      str2 = q.d(this.dIQ);
-      this.hFH = u.aAt(this.zoe.getPath() + this.zoe.dVg());
-      if (this.zoF) {
-        this.hFH = true;
+      str2 = r.d(this.dKe);
+      this.hIz = u.aBK(this.zFt.getPath() + this.zFt.dYH());
+      if (this.zFU) {
+        this.hIz = true;
       }
-      if (this.hFH) {
-        com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(22L, 64L, 1L, true);
+      if (this.hIz) {
+        g.yxI.idkeyStat(22L, 64L, 1L, true);
       }
-      str3 = this.zoe.getPath() + this.zoe.dVg();
-      this.zoe.mediaType = q.ans(str3);
+      str3 = this.zFt.getPath() + this.zFt.dYH();
+      this.zFt.mediaType = r.aou(str3);
       localOptions = new BitmapFactory.Options();
       localOptions.inJustDecodeBounds = true;
-      com.tencent.mm.sdk.platformtools.g.decodeFile(str3, localOptions);
+      h.decodeFile(str3, localOptions);
       if (localOptions.outMimeType == null) {
         break label1150;
       }
       str1 = localOptions.outMimeType.toLowerCase();
-      if ((localOptions.outMimeType == null) || (bt.isNullOrNil(localOptions.outMimeType))) {
-        com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(150L, 35L, 1L, true);
+      if ((localOptions.outMimeType == null) || (bu.isNullOrNil(localOptions.outMimeType))) {
+        g.yxI.idkeyStat(150L, 35L, 1L, true);
       }
       if ((!str1.contains("jpg")) && (!str1.contains("jpeg"))) {
         break label1182;
@@ -225,83 +228,83 @@ public final class i
     label1182:
     for (int i = -1;; i = -1)
     {
-      long l1 = com.tencent.mm.vfs.i.aYo(str3);
+      long l1 = o.aZR(str3);
       if (l1 <= 0L)
       {
-        ad.e("MicroMsg.SnsDownloadThumb", "processData!!! file err!!! [%s].", new Object[] { str3 });
-        com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(150L, 23L, 1L, true);
+        ae.e("MicroMsg.SnsDownloadThumb", "processData!!! file err!!! [%s].", new Object[] { str3 });
+        g.yxI.idkeyStat(150L, 23L, 1L, true);
       }
-      long l2 = bt.HI();
-      str1 = q.h(this.dIQ);
-      com.tencent.mm.vfs.i.mz(this.zoe.getPath() + this.zoe.dVg(), this.zoe.getPath() + str1);
-      ad.v("MicroMsg.SnsDownloadThumb", "file src" + com.tencent.mm.vfs.i.fv(new StringBuilder().append(this.zoe.getPath()).append(str1).toString()));
-      long l3 = bt.HI();
-      if (!u.a(this.zoe.getPath(), this.zoe.dVg(), str2, ag.dUq()))
+      long l2 = bu.HQ();
+      str1 = r.h(this.dKe);
+      o.mF(this.zFt.getPath() + this.zFt.dYH(), this.zFt.getPath() + str1);
+      ae.v("MicroMsg.SnsDownloadThumb", "file src" + o.fB(new StringBuilder().append(this.zFt.getPath()).append(str1).toString()));
+      long l3 = bu.HQ();
+      if (!u.a(this.zFt.getPath(), this.zFt.dYH(), str2, ah.dXQ()))
       {
-        ad.e("MicroMsg.SnsDownloadThumb", "decodeInfo createThumb failed");
-        com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(150L, 27L, 1L, true);
+        ae.e("MicroMsg.SnsDownloadThumb", "decodeInfo createThumb failed");
+        g.yxI.idkeyStat(150L, 27L, 1L, true);
       }
-      ad.i("MicroMsg.SnsDownloadThumb", "processData execute step1.");
-      l3 = bt.aO(l3);
-      boolean bool = com.tencent.mm.vfs.i.fv(this.zoe.getPath() + this.zoe.dVg());
-      com.tencent.mm.vfs.i.deleteFile(this.zoe.getPath() + this.zoe.dVg());
-      l2 = bt.aO(l2);
-      if (!com.tencent.mm.vfs.i.fv(this.zoe.getPath() + str2))
+      ae.i("MicroMsg.SnsDownloadThumb", "processData execute step1.");
+      l3 = bu.aO(l3);
+      boolean bool = o.fB(this.zFt.getPath() + this.zFt.dYH());
+      o.deleteFile(this.zFt.getPath() + this.zFt.dYH());
+      l2 = bu.aO(l2);
+      if (!o.fB(this.zFt.getPath() + str2))
       {
-        ad.i("MicroMsg.SnsDownloadThumb", "fileExists is false %s", new Object[] { Long.valueOf(com.tencent.mm.vfs.i.aYo(this.zoe.getPath() + str2)) });
-        com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(150L, 31L, 1L, true);
-        if ((bool) && (!com.tencent.mm.vfs.i.fv(this.zoe.getPath() + str2)))
+        ae.i("MicroMsg.SnsDownloadThumb", "fileExists is false %s", new Object[] { Long.valueOf(o.aZR(this.zFt.getPath() + str2)) });
+        g.yxI.idkeyStat(150L, 31L, 1L, true);
+        if ((bool) && (!o.fB(this.zFt.getPath() + str2)))
         {
-          bool = com.tencent.mm.plugin.normsg.a.b.wtJ.duK();
-          ad.i("MicroMsg.SnsDownloadThumb", "let me see Is DuplicatedApp? %s", new Object[] { Boolean.valueOf(bool) });
-          com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(150L, 32L, 1L, true);
+          bool = com.tencent.mm.plugin.normsg.a.b.wJt.dya();
+          ae.i("MicroMsg.SnsDownloadThumb", "let me see Is DuplicatedApp? %s", new Object[] { Boolean.valueOf(bool) });
+          g.yxI.idkeyStat(150L, 32L, 1L, true);
           if (bool) {
-            com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(150L, 33L, 1L, true);
+            g.yxI.idkeyStat(150L, 33L, 1L, true);
           }
         }
       }
-      com.tencent.mm.plugin.report.service.g.yhR.f(11696, new Object[] { Integer.valueOf(3), Long.valueOf(l2), Integer.valueOf(this.zox), Thread.currentThread().getName(), ag.dUv(), com.tencent.mm.loader.j.b.arO() });
-      ad.i("MicroMsg.SnsDownloadThumb", "processData execute step2.");
-      if ((this.zoe.zcG.zds == 0) || (this.zoe.zcG.zds == 5))
+      g.yxI.f(11696, new Object[] { Integer.valueOf(3), Long.valueOf(l2), Integer.valueOf(this.zFM), Thread.currentThread().getName(), ah.dXV(), com.tencent.mm.loader.j.b.asd() });
+      ae.i("MicroMsg.SnsDownloadThumb", "processData execute step2.");
+      if ((this.zFt.ztw.zui == 0) || (this.zFt.ztw.zui == 5))
       {
-        str1 = q.e(this.dIQ);
-        u.b(this.zoe.getPath(), str2, str1, ag.dUp());
+        str1 = r.e(this.dKe);
+        u.b(this.zFt.getPath(), str2, str1, ah.dXP());
       }
       for (;;)
       {
-        c.a(this.zoe.getPath() + str1, this.zoe.url, 1, localOptions.outMimeType, localOptions.outWidth, localOptions.outHeight, i, l1, l3);
-        ad.i("MicroMsg.SnsDownloadThumb", "processData execute step3.");
-        this.zod = q.ayc(this.zoe.getPath() + str1);
-        bool = q.b(this.zod);
-        ad.i("MicroMsg.SnsDownloadThumb", "download decode bitmap done : succ: " + bool + " isWebp: " + this.hFH + " srcImgFileSize: " + l1);
+        c.a(this.zFt.getPath() + str1, this.zFt.url, 1, localOptions.outMimeType, localOptions.outWidth, localOptions.outHeight, i, l1, l3);
+        ae.i("MicroMsg.SnsDownloadThumb", "processData execute step3.");
+        this.zFs = r.azt(this.zFt.getPath() + str1);
+        bool = r.b(this.zFs);
+        ae.i("MicroMsg.SnsDownloadThumb", "download decode bitmap done : succ: " + bool + " isWebp: " + this.hIz + " srcImgFileSize: " + l1);
         if (!bool)
         {
-          com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(150L, 65L, 1L, true);
-          if (!this.zoI) {
+          g.yxI.idkeyStat(150L, 65L, 1L, true);
+          if (!this.zFX) {
             break label1158;
           }
-          com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(150L, 50L, 1L, true);
+          g.yxI.idkeyStat(150L, 50L, 1L, true);
         }
         for (;;)
         {
-          if (this.zoG) {
-            com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(150L, 54L, 1L, true);
+          if (this.zFV) {
+            g.yxI.idkeyStat(150L, 54L, 1L, true);
           }
-          if (this.zoF) {
-            com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(150L, 57L, 1L, true);
+          if (this.zFU) {
+            g.yxI.idkeyStat(150L, 57L, 1L, true);
           }
-          if ((this.hFH) && (!bool)) {
-            com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(22L, 65L, 1L, true);
+          if ((this.hIz) && (!bool)) {
+            g.yxI.idkeyStat(22L, 65L, 1L, true);
           }
-          if ((this.zoI) && (bool)) {
-            com.tencent.mm.plugin.sns.lucky.a.b.ma(139);
+          if ((this.zFX) && (bool)) {
+            com.tencent.mm.plugin.sns.lucky.a.b.md(139);
           }
           AppMethodBeat.o(96076);
           return true;
           label1150:
           str1 = "";
           break;
-          com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(150L, 51L, 1L, true);
+          g.yxI.idkeyStat(150L, 51L, 1L, true);
         }
         str1 = str2;
       }

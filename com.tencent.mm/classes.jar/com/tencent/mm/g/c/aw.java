@@ -3,96 +3,96 @@ package com.tencent.mm.g.c;
 import android.content.ContentValues;
 import android.database.Cursor;
 import com.tencent.mm.sdk.e.c;
-import com.tencent.mm.sdk.platformtools.aa;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public abstract class aw
   extends c
 {
   public static final String[] INDEX_CREATE = { "CREATE INDEX IF NOT EXISTS deleteflag_index ON Contact(deleteFlag)" };
-  private static final int eEC = "ticket".hashCode();
-  private static final int eFp = "username".hashCode();
-  private static final int eHl;
-  private static final int eKP;
-  private static final int eOR = "alias".hashCode();
-  private static final int eOS = "conRemark".hashCode();
-  private static final int eOT = "domainList".hashCode();
-  private static final int eOU;
-  private static final int eOV;
-  private static final int eOW;
-  private static final int eOX;
-  private static final int eOY;
-  private static final int eOZ;
-  private static final int ePa;
-  private static final int ePb;
-  private static final int ePc;
-  private static final int ePd;
-  private static final int ePe;
-  private static final int ePf;
-  private static final int ePg;
-  private static final int ePh;
-  private static final int ePi;
+  private static final int eGY = "username".hashCode();
+  private static final int eGl = "ticket".hashCode();
+  private static final int eIU;
+  private static final int eMy;
+  private static final int eQC = "alias".hashCode();
+  private static final int eQD = "conRemark".hashCode();
+  private static final int eQE = "domainList".hashCode();
+  private static final int eQF;
+  private static final int eQG;
+  private static final int eQH;
+  private static final int eQI;
+  private static final int eQJ;
+  private static final int eQK;
+  private static final int eQL;
+  private static final int eQM;
+  private static final int eQN;
+  private static final int eQO;
+  private static final int eQP;
+  private static final int eQQ;
+  private static final int eQR;
+  private static final int eQS;
+  private static final int eQT;
   private static final int rowid_HASHCODE = "rowid".hashCode();
   private static final int type_HASHCODE;
   private boolean __hadSettype = false;
-  private int dnh;
-  public String dzn;
-  private boolean eEA = false;
-  private boolean eFm = false;
-  private boolean eGP = false;
-  private boolean eKL = false;
-  private boolean eOA = false;
-  private boolean eOB = false;
-  private boolean eOC = false;
-  private boolean eOD = false;
-  private boolean eOE = false;
-  private boolean eOF = false;
-  private boolean eOG = false;
-  private boolean eOH = false;
-  private boolean eOI = false;
-  private boolean eOJ = false;
-  private boolean eOK = false;
-  private boolean eOL = false;
-  private boolean eOM = false;
-  private boolean eON = false;
-  private boolean eOO = false;
-  private boolean eOP = false;
-  private boolean eOQ = false;
-  private boolean eOz = false;
-  public String ePA;
-  public int ePB;
-  public int ePC;
-  public String ePD;
-  public String ePE;
-  public String ePF;
-  public String ePG;
-  public String ePH;
-  public String ePI;
-  public String ePJ;
-  public String ePK;
-  private String ePL;
-  public int ePM;
-  public String ePN;
-  public int ePO;
-  public long ePP;
-  public long ePQ;
-  public int ePj;
-  public int ePk;
-  public String ePl;
-  protected long ePm;
-  protected String ePn;
-  protected int ePo;
-  public int ePp;
-  protected String ePq;
-  protected String ePr;
-  public int ePs;
-  public int ePt;
-  private String ePu;
-  private String ePv;
-  public String ePw;
-  protected int ePx;
-  public String ePy;
-  public String ePz;
+  public String dAs;
+  private int doj;
+  private boolean eGV = false;
+  private boolean eGj = false;
+  private boolean eIy = false;
+  private boolean eMu = false;
+  private boolean eQA = false;
+  private boolean eQB = false;
+  public int eQU;
+  public int eQV;
+  public String eQW;
+  protected long eQX;
+  protected String eQY;
+  protected int eQZ;
+  private boolean eQk = false;
+  private boolean eQl = false;
+  private boolean eQm = false;
+  private boolean eQn = false;
+  private boolean eQo = false;
+  private boolean eQp = false;
+  private boolean eQq = false;
+  private boolean eQr = false;
+  private boolean eQs = false;
+  private boolean eQt = false;
+  private boolean eQu = false;
+  private boolean eQv = false;
+  private boolean eQw = false;
+  private boolean eQx = false;
+  private boolean eQy = false;
+  private boolean eQz = false;
+  public long eRA;
+  public long eRB;
+  public int eRa;
+  protected String eRb;
+  protected String eRc;
+  public int eRd;
+  public int eRe;
+  private String eRf;
+  private String eRg;
+  public String eRh;
+  protected int eRi;
+  public String eRj;
+  public String eRk;
+  public String eRl;
+  public int eRm;
+  public int eRn;
+  public String eRo;
+  public String eRp;
+  public String eRq;
+  public String eRr;
+  public String eRs;
+  public String eRt;
+  public String eRu;
+  public String eRv;
+  private String eRw;
+  public int eRx;
+  public String eRy;
+  public int eRz;
   private int extFlag;
   private String field_alias;
   protected int field_chatroomFlag;
@@ -122,27 +122,27 @@ public abstract class aw
   
   static
   {
-    eKP = "nickname".hashCode();
-    eOU = "pyInitial".hashCode();
-    eOV = "quanPin".hashCode();
-    eOW = "showHead".hashCode();
+    eMy = "nickname".hashCode();
+    eQF = "pyInitial".hashCode();
+    eQG = "quanPin".hashCode();
+    eQH = "showHead".hashCode();
     type_HASHCODE = "type".hashCode();
-    eOX = "weiboFlag".hashCode();
-    eOY = "weiboNickname".hashCode();
-    eOZ = "conRemarkPYFull".hashCode();
-    ePa = "conRemarkPYShort".hashCode();
-    eHl = "lvbuff".hashCode();
-    ePb = "verifyFlag".hashCode();
-    ePc = "encryptUsername".hashCode();
-    ePd = "chatroomFlag".hashCode();
-    ePe = "deleteFlag".hashCode();
-    ePf = "contactLabelIds".hashCode();
-    ePg = "descWordingId".hashCode();
-    ePh = "openImAppid".hashCode();
-    ePi = "sourceExtInfo".hashCode();
+    eQI = "weiboFlag".hashCode();
+    eQJ = "weiboNickname".hashCode();
+    eQK = "conRemarkPYFull".hashCode();
+    eQL = "conRemarkPYShort".hashCode();
+    eIU = "lvbuff".hashCode();
+    eQM = "verifyFlag".hashCode();
+    eQN = "encryptUsername".hashCode();
+    eQO = "chatroomFlag".hashCode();
+    eQP = "deleteFlag".hashCode();
+    eQQ = "contactLabelIds".hashCode();
+    eQR = "descWordingId".hashCode();
+    eQS = "openImAppid".hashCode();
+    eQT = "sourceExtInfo".hashCode();
   }
   
-  public final String Hu()
+  public final String HC()
   {
     return this.signature;
   }
@@ -150,58 +150,58 @@ public abstract class aw
   public void L(byte[] paramArrayOfByte)
   {
     this.field_lvbuff = paramArrayOfByte;
-    this.eGP = true;
+    this.eIy = true;
   }
   
-  public String VA()
+  public String VI()
   {
     return this.field_alias;
   }
   
-  public final String VB()
+  public final String VJ()
   {
     return this.field_conRemark;
   }
   
-  public final String VC()
+  public final String VK()
   {
     return this.field_nickname;
   }
   
-  public String VD()
+  public String VL()
   {
     return this.field_pyInitial;
   }
   
-  public String VE()
+  public String VM()
   {
     return this.field_quanPin;
   }
   
-  public final String VF()
+  public final String VN()
   {
     return this.field_encryptUsername;
   }
   
-  public final String VG()
+  public final String VO()
   {
     return this.field_descWordingId;
   }
   
-  public final String VH()
+  public final String VP()
   {
     return this.field_openImAppid;
   }
   
-  public final int VI()
+  public final int VQ()
   {
-    return this.ePk;
+    return this.eQV;
   }
   
-  public final void VJ()
+  public final void VR()
   {
-    this.ePO = 1;
-    this.eGP = true;
+    this.eRz = 1;
+    this.eIy = true;
   }
   
   public void convertFrom(Cursor paramCursor)
@@ -215,58 +215,58 @@ public abstract class aw
     if (i < j)
     {
       int k = arrayOfString[i].hashCode();
-      if (eFp == k)
+      if (eGY == k)
       {
         this.field_username = paramCursor.getString(i);
-        this.eFm = true;
+        this.eGV = true;
       }
       for (;;)
       {
         i += 1;
         break;
-        if (eOR == k) {
+        if (eQC == k) {
           this.field_alias = paramCursor.getString(i);
-        } else if (eOS == k) {
+        } else if (eQD == k) {
           this.field_conRemark = paramCursor.getString(i);
-        } else if (eOT == k) {
+        } else if (eQE == k) {
           this.field_domainList = paramCursor.getString(i);
-        } else if (eKP == k) {
+        } else if (eMy == k) {
           this.field_nickname = paramCursor.getString(i);
-        } else if (eOU == k) {
+        } else if (eQF == k) {
           this.field_pyInitial = paramCursor.getString(i);
-        } else if (eOV == k) {
+        } else if (eQG == k) {
           this.field_quanPin = paramCursor.getString(i);
-        } else if (eOW == k) {
+        } else if (eQH == k) {
           this.field_showHead = paramCursor.getInt(i);
         } else if (type_HASHCODE == k) {
           this.field_type = paramCursor.getInt(i);
-        } else if (eOX == k) {
+        } else if (eQI == k) {
           this.field_weiboFlag = paramCursor.getInt(i);
-        } else if (eOY == k) {
+        } else if (eQJ == k) {
           this.field_weiboNickname = paramCursor.getString(i);
-        } else if (eOZ == k) {
+        } else if (eQK == k) {
           this.field_conRemarkPYFull = paramCursor.getString(i);
-        } else if (ePa == k) {
+        } else if (eQL == k) {
           this.field_conRemarkPYShort = paramCursor.getString(i);
-        } else if (eHl == k) {
+        } else if (eIU == k) {
           this.field_lvbuff = paramCursor.getBlob(i);
-        } else if (ePb == k) {
+        } else if (eQM == k) {
           this.field_verifyFlag = paramCursor.getInt(i);
-        } else if (ePc == k) {
+        } else if (eQN == k) {
           this.field_encryptUsername = paramCursor.getString(i);
-        } else if (ePd == k) {
+        } else if (eQO == k) {
           this.field_chatroomFlag = paramCursor.getInt(i);
-        } else if (ePe == k) {
+        } else if (eQP == k) {
           this.field_deleteFlag = paramCursor.getInt(i);
-        } else if (ePf == k) {
+        } else if (eQQ == k) {
           this.field_contactLabelIds = paramCursor.getString(i);
-        } else if (ePg == k) {
+        } else if (eQR == k) {
           this.field_descWordingId = paramCursor.getString(i);
-        } else if (ePh == k) {
+        } else if (eQS == k) {
           this.field_openImAppid = paramCursor.getString(i);
-        } else if (ePi == k) {
+        } else if (eQT == k) {
           this.field_sourceExtInfo = paramCursor.getString(i);
-        } else if (eEC == k) {
+        } else if (eGl == k) {
           this.field_ticket = paramCursor.getString(i);
         } else if (rowid_HASHCODE == k) {
           this.systemRowid = paramCursor.getLong(i);
@@ -280,162 +280,162 @@ public abstract class aw
   {
     try
     {
-      if (this.eGP)
+      if (this.eIy)
       {
-        localObject = new aa();
-        ((aa)localObject).fkj();
-        ((aa)localObject).aaw(this.ePj);
-        ((aa)localObject).aaw(this.ePk);
-        ((aa)localObject).aQp(this.ePl);
-        ((aa)localObject).CV(this.ePm);
-        ((aa)localObject).aaw(this.uin);
-        ((aa)localObject).aQp(this.ePn);
-        ((aa)localObject).aQp(this.dzn);
-        ((aa)localObject).aaw(this.ePo);
-        ((aa)localObject).aaw(this.ePp);
-        ((aa)localObject).aQp(this.ePq);
-        ((aa)localObject).aQp(this.ePr);
-        ((aa)localObject).aaw(this.ePs);
-        ((aa)localObject).aaw(this.ePt);
-        ((aa)localObject).aQp(this.signature);
-        ((aa)localObject).aQp(this.ePu);
-        ((aa)localObject).aQp(this.ePv);
-        ((aa)localObject).aQp(this.ePw);
-        ((aa)localObject).aaw(this.ePx);
-        ((aa)localObject).aaw(this.dnh);
-        ((aa)localObject).aQp(this.ePy);
-        ((aa)localObject).aaw(this.field_verifyFlag);
-        ((aa)localObject).aQp(this.ePz);
-        ((aa)localObject).aQp(this.ePA);
-        ((aa)localObject).aaw(this.ePB);
-        ((aa)localObject).aaw(this.ePC);
-        ((aa)localObject).aQp(this.ePD);
-        ((aa)localObject).aQp(this.ePE);
-        ((aa)localObject).aQp(this.ePF);
-        ((aa)localObject).aQp(this.ePG);
-        ((aa)localObject).aQp(this.ePH);
-        ((aa)localObject).aQp(this.ePI);
-        ((aa)localObject).aQp(this.ePJ);
-        ((aa)localObject).aQp(this.ePK);
-        ((aa)localObject).aaw(this.extFlag);
-        ((aa)localObject).aQp(this.ePL);
-        ((aa)localObject).aaw(this.ePM);
-        ((aa)localObject).aQp(this.ePN);
-        ((aa)localObject).aaw(this.ePO);
-        ((aa)localObject).CV(this.ePP);
-        ((aa)localObject).CV(this.ePQ);
-        this.field_lvbuff = ((aa)localObject).fkk();
+        localObject = new ab();
+        ((ab)localObject).fod();
+        ((ab)localObject).abc(this.eQU);
+        ((ab)localObject).abc(this.eQV);
+        ((ab)localObject).aRM(this.eQW);
+        ((ab)localObject).Dt(this.eQX);
+        ((ab)localObject).abc(this.uin);
+        ((ab)localObject).aRM(this.eQY);
+        ((ab)localObject).aRM(this.dAs);
+        ((ab)localObject).abc(this.eQZ);
+        ((ab)localObject).abc(this.eRa);
+        ((ab)localObject).aRM(this.eRb);
+        ((ab)localObject).aRM(this.eRc);
+        ((ab)localObject).abc(this.eRd);
+        ((ab)localObject).abc(this.eRe);
+        ((ab)localObject).aRM(this.signature);
+        ((ab)localObject).aRM(this.eRf);
+        ((ab)localObject).aRM(this.eRg);
+        ((ab)localObject).aRM(this.eRh);
+        ((ab)localObject).abc(this.eRi);
+        ((ab)localObject).abc(this.doj);
+        ((ab)localObject).aRM(this.eRj);
+        ((ab)localObject).abc(this.field_verifyFlag);
+        ((ab)localObject).aRM(this.eRk);
+        ((ab)localObject).aRM(this.eRl);
+        ((ab)localObject).abc(this.eRm);
+        ((ab)localObject).abc(this.eRn);
+        ((ab)localObject).aRM(this.eRo);
+        ((ab)localObject).aRM(this.eRp);
+        ((ab)localObject).aRM(this.eRq);
+        ((ab)localObject).aRM(this.eRr);
+        ((ab)localObject).aRM(this.eRs);
+        ((ab)localObject).aRM(this.eRt);
+        ((ab)localObject).aRM(this.eRu);
+        ((ab)localObject).aRM(this.eRv);
+        ((ab)localObject).abc(this.extFlag);
+        ((ab)localObject).aRM(this.eRw);
+        ((ab)localObject).abc(this.eRx);
+        ((ab)localObject).aRM(this.eRy);
+        ((ab)localObject).abc(this.eRz);
+        ((ab)localObject).Dt(this.eRA);
+        ((ab)localObject).Dt(this.eRB);
+        this.field_lvbuff = ((ab)localObject).foe();
       }
       Object localObject = new ContentValues();
       if (this.field_username == null) {
         this.field_username = "";
       }
-      if (this.eFm) {
+      if (this.eGV) {
         ((ContentValues)localObject).put("username", this.field_username);
       }
       if (this.field_alias == null) {
         this.field_alias = "";
       }
-      if (this.eOz) {
+      if (this.eQk) {
         ((ContentValues)localObject).put("alias", this.field_alias);
       }
       if (this.field_conRemark == null) {
         this.field_conRemark = "";
       }
-      if (this.eOA) {
+      if (this.eQl) {
         ((ContentValues)localObject).put("conRemark", this.field_conRemark);
       }
       if (this.field_domainList == null) {
         this.field_domainList = "";
       }
-      if (this.eOB) {
+      if (this.eQm) {
         ((ContentValues)localObject).put("domainList", this.field_domainList);
       }
       if (this.field_nickname == null) {
         this.field_nickname = "";
       }
-      if (this.eKL) {
+      if (this.eMu) {
         ((ContentValues)localObject).put("nickname", this.field_nickname);
       }
       if (this.field_pyInitial == null) {
         this.field_pyInitial = "";
       }
-      if (this.eOC) {
+      if (this.eQn) {
         ((ContentValues)localObject).put("pyInitial", this.field_pyInitial);
       }
       if (this.field_quanPin == null) {
         this.field_quanPin = "";
       }
-      if (this.eOD) {
+      if (this.eQo) {
         ((ContentValues)localObject).put("quanPin", this.field_quanPin);
       }
-      if (this.eOE) {
+      if (this.eQp) {
         ((ContentValues)localObject).put("showHead", Integer.valueOf(this.field_showHead));
       }
       if (this.__hadSettype) {
         ((ContentValues)localObject).put("type", Integer.valueOf(this.field_type));
       }
-      if (this.eOF) {
+      if (this.eQq) {
         ((ContentValues)localObject).put("weiboFlag", Integer.valueOf(this.field_weiboFlag));
       }
       if (this.field_weiboNickname == null) {
         this.field_weiboNickname = "";
       }
-      if (this.eOG) {
+      if (this.eQr) {
         ((ContentValues)localObject).put("weiboNickname", this.field_weiboNickname);
       }
       if (this.field_conRemarkPYFull == null) {
         this.field_conRemarkPYFull = "";
       }
-      if (this.eOH) {
+      if (this.eQs) {
         ((ContentValues)localObject).put("conRemarkPYFull", this.field_conRemarkPYFull);
       }
       if (this.field_conRemarkPYShort == null) {
         this.field_conRemarkPYShort = "";
       }
-      if (this.eOI) {
+      if (this.eQt) {
         ((ContentValues)localObject).put("conRemarkPYShort", this.field_conRemarkPYShort);
       }
-      if (this.eGP) {
+      if (this.eIy) {
         ((ContentValues)localObject).put("lvbuff", this.field_lvbuff);
       }
-      if (this.eOJ) {
+      if (this.eQu) {
         ((ContentValues)localObject).put("verifyFlag", Integer.valueOf(this.field_verifyFlag));
       }
       if (this.field_encryptUsername == null) {
         this.field_encryptUsername = "";
       }
-      if (this.eOK) {
+      if (this.eQv) {
         ((ContentValues)localObject).put("encryptUsername", this.field_encryptUsername);
       }
-      if (this.eOL) {
+      if (this.eQw) {
         ((ContentValues)localObject).put("chatroomFlag", Integer.valueOf(this.field_chatroomFlag));
       }
-      if (this.eOM) {
+      if (this.eQx) {
         ((ContentValues)localObject).put("deleteFlag", Integer.valueOf(this.field_deleteFlag));
       }
       if (this.field_contactLabelIds == null) {
         this.field_contactLabelIds = "";
       }
-      if (this.eON) {
+      if (this.eQy) {
         ((ContentValues)localObject).put("contactLabelIds", this.field_contactLabelIds);
       }
       if (this.field_descWordingId == null) {
         this.field_descWordingId = "";
       }
-      if (this.eOO) {
+      if (this.eQz) {
         ((ContentValues)localObject).put("descWordingId", this.field_descWordingId);
       }
-      if (this.eOP) {
+      if (this.eQA) {
         ((ContentValues)localObject).put("openImAppid", this.field_openImAppid);
       }
-      if (this.eOQ) {
+      if (this.eQB) {
         ((ContentValues)localObject).put("sourceExtInfo", this.field_sourceExtInfo);
       }
       if (this.field_ticket == null) {
         this.field_ticket = "";
       }
-      if (this.eEA) {
+      if (this.eGj) {
         ((ContentValues)localObject).put("ticket", this.field_ticket);
       }
       if (this.systemRowid > 0L) {
@@ -447,29 +447,29 @@ public abstract class aw
     {
       for (;;)
       {
-        ad.e("MicroMsg.SDK.BaseContact", "get value failed, %s", new Object[] { localException.getMessage() });
+        ae.e("MicroMsg.SDK.BaseContact", "get value failed, %s", new Object[] { localException.getMessage() });
       }
     }
   }
   
   public String getCity()
   {
-    return this.ePv;
+    return this.eRg;
   }
   
   public final int getFromType()
   {
-    return this.ePx;
+    return this.eRi;
   }
   
   public String getProvince()
   {
-    return this.ePu;
+    return this.eRf;
   }
   
   public int getSource()
   {
-    return this.dnh;
+    return this.doj;
   }
   
   public final String getUsername()
@@ -477,94 +477,94 @@ public abstract class aw
     return this.field_username;
   }
   
-  public void jZ(int paramInt)
-  {
-    this.field_showHead = paramInt;
-    this.eOE = true;
-  }
-  
-  public void ka(int paramInt)
-  {
-    this.field_weiboFlag = paramInt;
-    this.eOF = true;
-  }
-  
   public void kb(int paramInt)
   {
-    this.field_verifyFlag = paramInt;
-    this.eOJ = true;
+    this.field_showHead = paramInt;
+    this.eQp = true;
   }
   
   public void kc(int paramInt)
   {
-    this.field_chatroomFlag = paramInt;
-    this.eOL = true;
+    this.field_weiboFlag = paramInt;
+    this.eQq = true;
   }
   
   public void kd(int paramInt)
   {
-    this.field_deleteFlag = paramInt;
-    this.eOM = true;
+    this.field_verifyFlag = paramInt;
+    this.eQu = true;
   }
   
   public void ke(int paramInt)
   {
-    this.ePj = paramInt;
-    this.eGP = true;
+    this.field_chatroomFlag = paramInt;
+    this.eQw = true;
   }
   
   public void kf(int paramInt)
   {
-    this.ePk = paramInt;
-    this.eGP = true;
+    this.field_deleteFlag = paramInt;
+    this.eQx = true;
   }
   
   public void kg(int paramInt)
   {
-    this.ePo = paramInt;
-    this.eGP = true;
+    this.eQU = paramInt;
+    this.eIy = true;
   }
   
   public void kh(int paramInt)
   {
-    this.ePp = paramInt;
-    this.eGP = true;
+    this.eQV = paramInt;
+    this.eIy = true;
   }
   
   public void ki(int paramInt)
   {
-    this.ePs = paramInt;
-    this.eGP = true;
+    this.eQZ = paramInt;
+    this.eIy = true;
   }
   
   public void kj(int paramInt)
   {
-    this.ePt = paramInt;
-    this.eGP = true;
+    this.eRa = paramInt;
+    this.eIy = true;
   }
   
   public void kk(int paramInt)
   {
-    this.ePB = paramInt;
-    this.eGP = true;
+    this.eRd = paramInt;
+    this.eIy = true;
   }
   
   public void kl(int paramInt)
   {
-    this.ePC = paramInt;
-    this.eGP = true;
+    this.eRe = paramInt;
+    this.eIy = true;
   }
   
-  public final void km(int paramInt)
+  public void km(int paramInt)
+  {
+    this.eRm = paramInt;
+    this.eIy = true;
+  }
+  
+  public void kn(int paramInt)
+  {
+    this.eRn = paramInt;
+    this.eIy = true;
+  }
+  
+  public final void ko(int paramInt)
   {
     this.extFlag = paramInt;
-    this.eGP = true;
+    this.eIy = true;
   }
   
-  public final void kn(int paramInt)
+  public final void kp(int paramInt)
   {
-    this.ePM = paramInt;
-    this.eGP = true;
+    this.eRx = paramInt;
+    this.eIy = true;
   }
   
   public final void parseBuff()
@@ -577,185 +577,125 @@ public abstract class aw
       if (this.field_lvbuff.length == 0) {
         return;
       }
-      aa localaa = new aa();
-      int i = localaa.cy(this.field_lvbuff);
+      ab localab = new ab();
+      int i = localab.cB(this.field_lvbuff);
       if (i != 0)
       {
-        ad.e("MicroMsg.SDK.BaseContact", "parse LVBuffer error:".concat(String.valueOf(i)));
+        ae.e("MicroMsg.SDK.BaseContact", "parse LVBuffer error:".concat(String.valueOf(i)));
         return;
       }
     }
     catch (Exception localException)
     {
-      ad.e("MicroMsg.SDK.BaseContact", "get value failed");
+      ae.e("MicroMsg.SDK.BaseContact", "get value failed");
       return;
     }
-    this.ePj = localException.getInt();
-    this.ePk = localException.getInt();
-    this.ePl = localException.getString();
-    this.ePm = localException.getLong();
+    this.eQU = localException.getInt();
+    this.eQV = localException.getInt();
+    this.eQW = localException.getString();
+    this.eQX = localException.getLong();
     this.uin = localException.getInt();
-    this.ePn = localException.getString();
-    this.dzn = localException.getString();
-    this.ePo = localException.getInt();
-    this.ePp = localException.getInt();
-    this.ePq = localException.getString();
-    this.ePr = localException.getString();
-    this.ePs = localException.getInt();
-    this.ePt = localException.getInt();
+    this.eQY = localException.getString();
+    this.dAs = localException.getString();
+    this.eQZ = localException.getInt();
+    this.eRa = localException.getInt();
+    this.eRb = localException.getString();
+    this.eRc = localException.getString();
+    this.eRd = localException.getInt();
+    this.eRe = localException.getInt();
     this.signature = localException.getString();
-    this.ePu = localException.getString();
-    this.ePv = localException.getString();
-    this.ePw = localException.getString();
-    this.ePx = localException.getInt();
-    this.dnh = localException.getInt();
-    this.ePy = localException.getString();
+    this.eRf = localException.getString();
+    this.eRg = localException.getString();
+    this.eRh = localException.getString();
+    this.eRi = localException.getInt();
+    this.doj = localException.getInt();
+    this.eRj = localException.getString();
     this.field_verifyFlag = localException.getInt();
-    this.ePz = localException.getString();
-    if (!localException.fki()) {
-      this.ePA = localException.getString();
+    this.eRk = localException.getString();
+    if (!localException.foc()) {
+      this.eRl = localException.getString();
     }
-    if (!localException.fki()) {
-      this.ePB = localException.getInt();
+    if (!localException.foc()) {
+      this.eRm = localException.getInt();
     }
-    if (!localException.fki()) {
-      this.ePC = localException.getInt();
+    if (!localException.foc()) {
+      this.eRn = localException.getInt();
     }
-    if (!localException.fki()) {
-      this.ePD = localException.getString();
+    if (!localException.foc()) {
+      this.eRo = localException.getString();
     }
-    if (!localException.fki()) {
-      this.ePE = localException.getString();
+    if (!localException.foc()) {
+      this.eRp = localException.getString();
     }
-    if (!localException.fki()) {
-      this.ePF = localException.getString();
+    if (!localException.foc()) {
+      this.eRq = localException.getString();
     }
-    if (!localException.fki()) {
-      this.ePG = localException.getString();
+    if (!localException.foc()) {
+      this.eRr = localException.getString();
     }
-    if (!localException.fki()) {
-      this.ePH = localException.getString();
+    if (!localException.foc()) {
+      this.eRs = localException.getString();
     }
-    if (!localException.fki()) {
-      this.ePI = localException.getString();
+    if (!localException.foc()) {
+      this.eRt = localException.getString();
     }
-    if (!localException.fki()) {
-      this.ePJ = localException.getString();
+    if (!localException.foc()) {
+      this.eRu = localException.getString();
     }
-    if (!localException.fki()) {
-      this.ePK = localException.getString();
+    if (!localException.foc()) {
+      this.eRv = localException.getString();
     }
-    if (!localException.fki()) {
+    if (!localException.foc()) {
       this.extFlag = localException.getInt();
     }
-    if (!localException.fki()) {
-      this.ePL = localException.getString();
+    if (!localException.foc()) {
+      this.eRw = localException.getString();
     }
-    if (!localException.fki()) {
-      this.ePM = localException.getInt();
+    if (!localException.foc()) {
+      this.eRx = localException.getInt();
     }
-    if (!localException.fki()) {
-      this.ePN = localException.getString();
+    if (!localException.foc()) {
+      this.eRy = localException.getString();
     }
-    if (!localException.fki()) {
-      this.ePO = localException.getInt();
+    if (!localException.foc()) {
+      this.eRz = localException.getInt();
     }
-    if (!localException.fki()) {
-      this.ePP = localException.getLong();
+    if (!localException.foc()) {
+      this.eRA = localException.getLong();
     }
-    if (!localException.fki()) {
-      this.ePQ = localException.getLong();
+    if (!localException.foc()) {
+      this.eRB = localException.getLong();
     }
   }
   
-  public void qr(long paramLong)
+  public void qE(long paramLong)
   {
-    this.ePm = paramLong;
-    this.eGP = true;
+    this.eQX = paramLong;
+    this.eIy = true;
   }
   
-  public void qs(long paramLong)
+  public void qF(long paramLong)
   {
-    this.ePP = paramLong;
-    this.eGP = true;
+    this.eRA = paramLong;
+    this.eIy = true;
   }
   
-  public void qt(long paramLong)
+  public void qG(long paramLong)
   {
-    this.ePQ = paramLong;
-    this.eGP = true;
-  }
-  
-  public void sQ(String paramString)
-  {
-    this.field_alias = paramString;
-    this.eOz = true;
-  }
-  
-  public void sR(String paramString)
-  {
-    this.field_conRemark = paramString;
-    this.eOA = true;
-  }
-  
-  public void sS(String paramString)
-  {
-    this.field_domainList = paramString;
-    this.eOB = true;
-  }
-  
-  public void sT(String paramString)
-  {
-    this.field_nickname = paramString;
-    this.eKL = true;
-  }
-  
-  public void sU(String paramString)
-  {
-    this.field_pyInitial = paramString;
-    this.eOC = true;
-  }
-  
-  public void sV(String paramString)
-  {
-    this.field_quanPin = paramString;
-    this.eOD = true;
-  }
-  
-  public void sW(String paramString)
-  {
-    this.field_weiboNickname = paramString;
-    this.eOG = true;
-  }
-  
-  public void sX(String paramString)
-  {
-    this.field_conRemarkPYFull = paramString;
-    this.eOH = true;
-  }
-  
-  public void sY(String paramString)
-  {
-    this.field_conRemarkPYShort = paramString;
-    this.eOI = true;
-  }
-  
-  public void sZ(String paramString)
-  {
-    this.field_encryptUsername = paramString;
-    this.eOK = true;
+    this.eRB = paramLong;
+    this.eIy = true;
   }
   
   public void setFromType(int paramInt)
   {
-    this.ePx = paramInt;
-    this.eGP = true;
+    this.eRi = paramInt;
+    this.eIy = true;
   }
   
   public void setSource(int paramInt)
   {
-    this.dnh = paramInt;
-    this.eGP = true;
+    this.doj = paramInt;
+    this.eIy = true;
   }
   
   public void setType(int paramInt)
@@ -767,169 +707,229 @@ public abstract class aw
   public void setUin(int paramInt)
   {
     this.uin = paramInt;
-    this.eGP = true;
+    this.eIy = true;
   }
   
   public void setUsername(String paramString)
   {
     this.field_username = paramString;
-    this.eFm = true;
+    this.eGV = true;
   }
   
-  public void ta(String paramString)
+  public void tA(String paramString)
   {
-    this.field_contactLabelIds = paramString;
-    this.eON = true;
+    this.eQW = paramString;
+    this.eIy = true;
   }
   
-  public final void tb(String paramString)
+  public void tB(String paramString)
   {
-    this.field_descWordingId = paramString;
-    this.eOO = true;
+    this.eQY = paramString;
+    this.eIy = true;
   }
   
-  public void tc(String paramString)
+  public void tC(String paramString)
   {
-    this.field_openImAppid = paramString;
-    this.eOP = true;
+    this.dAs = paramString;
+    this.eIy = true;
   }
   
-  public void td(String paramString)
+  public void tD(String paramString)
   {
-    this.field_sourceExtInfo = paramString;
-    this.eOQ = true;
+    this.eRb = paramString;
+    this.eIy = true;
   }
   
-  public void te(String paramString)
+  public void tE(String paramString)
   {
-    this.field_ticket = paramString;
-    this.eEA = true;
+    this.eRc = paramString;
+    this.eIy = true;
   }
   
-  public void tf(String paramString)
-  {
-    this.ePl = paramString;
-    this.eGP = true;
-  }
-  
-  public void tg(String paramString)
-  {
-    this.ePn = paramString;
-    this.eGP = true;
-  }
-  
-  public void th(String paramString)
-  {
-    this.dzn = paramString;
-    this.eGP = true;
-  }
-  
-  public void ti(String paramString)
-  {
-    this.ePq = paramString;
-    this.eGP = true;
-  }
-  
-  public void tj(String paramString)
-  {
-    this.ePr = paramString;
-    this.eGP = true;
-  }
-  
-  public void tk(String paramString)
+  public void tF(String paramString)
   {
     this.signature = paramString;
-    this.eGP = true;
+    this.eIy = true;
+  }
+  
+  public void tG(String paramString)
+  {
+    this.eRf = paramString;
+    this.eIy = true;
+  }
+  
+  public void tH(String paramString)
+  {
+    this.eRg = paramString;
+    this.eIy = true;
+  }
+  
+  public void tI(String paramString)
+  {
+    this.eRh = paramString;
+    this.eIy = true;
+  }
+  
+  public void tJ(String paramString)
+  {
+    this.eRj = paramString;
+    this.eIy = true;
+  }
+  
+  public void tK(String paramString)
+  {
+    this.eRk = paramString;
+    this.eIy = true;
+  }
+  
+  public void tL(String paramString)
+  {
+    this.eRl = paramString;
+    this.eIy = true;
+  }
+  
+  public void tM(String paramString)
+  {
+    this.eRo = paramString;
+    this.eIy = true;
+  }
+  
+  public void tN(String paramString)
+  {
+    this.eRp = paramString;
+    this.eIy = true;
+  }
+  
+  public void tO(String paramString)
+  {
+    this.eRq = paramString;
+    this.eIy = true;
+  }
+  
+  public void tP(String paramString)
+  {
+    this.eRr = paramString;
+    this.eIy = true;
+  }
+  
+  public void tQ(String paramString)
+  {
+    this.eRs = paramString;
+    this.eIy = true;
+  }
+  
+  public void tR(String paramString)
+  {
+    this.eRt = paramString;
+    this.eIy = true;
+  }
+  
+  public void tS(String paramString)
+  {
+    this.eRu = paramString;
+    this.eIy = true;
+  }
+  
+  public void tT(String paramString)
+  {
+    this.eRv = paramString;
+    this.eIy = true;
+  }
+  
+  public final void tU(String paramString)
+  {
+    this.eRy = paramString;
+    this.eIy = true;
   }
   
   public void tl(String paramString)
   {
-    this.ePu = paramString;
-    this.eGP = true;
+    this.field_alias = paramString;
+    this.eQk = true;
   }
   
   public void tm(String paramString)
   {
-    this.ePv = paramString;
-    this.eGP = true;
+    this.field_conRemark = paramString;
+    this.eQl = true;
   }
   
   public void tn(String paramString)
   {
-    this.ePw = paramString;
-    this.eGP = true;
+    this.field_domainList = paramString;
+    this.eQm = true;
   }
   
   public void to(String paramString)
   {
-    this.ePy = paramString;
-    this.eGP = true;
+    this.field_nickname = paramString;
+    this.eMu = true;
   }
   
   public void tp(String paramString)
   {
-    this.ePz = paramString;
-    this.eGP = true;
+    this.field_pyInitial = paramString;
+    this.eQn = true;
   }
   
   public void tq(String paramString)
   {
-    this.ePA = paramString;
-    this.eGP = true;
+    this.field_quanPin = paramString;
+    this.eQo = true;
   }
   
   public void tr(String paramString)
   {
-    this.ePD = paramString;
-    this.eGP = true;
+    this.field_weiboNickname = paramString;
+    this.eQr = true;
   }
   
   public void ts(String paramString)
   {
-    this.ePE = paramString;
-    this.eGP = true;
+    this.field_conRemarkPYFull = paramString;
+    this.eQs = true;
   }
   
   public void tt(String paramString)
   {
-    this.ePF = paramString;
-    this.eGP = true;
+    this.field_conRemarkPYShort = paramString;
+    this.eQt = true;
   }
   
   public void tu(String paramString)
   {
-    this.ePG = paramString;
-    this.eGP = true;
+    this.field_encryptUsername = paramString;
+    this.eQv = true;
   }
   
   public void tv(String paramString)
   {
-    this.ePH = paramString;
-    this.eGP = true;
+    this.field_contactLabelIds = paramString;
+    this.eQy = true;
   }
   
-  public void tw(String paramString)
+  public final void tw(String paramString)
   {
-    this.ePI = paramString;
-    this.eGP = true;
+    this.field_descWordingId = paramString;
+    this.eQz = true;
   }
   
   public void tx(String paramString)
   {
-    this.ePJ = paramString;
-    this.eGP = true;
+    this.field_openImAppid = paramString;
+    this.eQA = true;
   }
   
   public void ty(String paramString)
   {
-    this.ePK = paramString;
-    this.eGP = true;
+    this.field_sourceExtInfo = paramString;
+    this.eQB = true;
   }
   
-  public final void tz(String paramString)
+  public void tz(String paramString)
   {
-    this.ePN = paramString;
-    this.eGP = true;
+    this.field_ticket = paramString;
+    this.eGj = true;
   }
 }
 

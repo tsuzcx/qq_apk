@@ -23,7 +23,7 @@
             <LinearLayout android:id="@id/cpn" android:layout_width="wrap_content" android:layout_height="wrap_content">
                 <ViewStub android:id="@id/cpm" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/hu" android:layout_marginBottom="@dimen/ju" />
             </LinearLayout>
-            <com.tencent.mm.plugin.sns.ui.SnsTextView android:textSize="15.0dip" android:textColor="@color/a3l" android:id="@id/e5" android:background="@drawable/aaw" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/i_" android:layout_marginBottom="@dimen/jn" android:singleLine="true" />
+            <include layout="@layout/byb" />
             <com.tencent.mm.kiss.widget.textview.PLSysTextView android:textSize="12.0dip" android:textColor="@color/a3l" android:id="@id/gq" android:background="@drawable/aaw" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:layout_marginBottom="5.0dip" android:text="" android:singleLine="true" />
             <com.tencent.mm.kiss.widget.textview.PLSysTextView android:textSize="12.0dip" android:textColor="@color/a4d" android:id="@id/h4_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="7.0dip" android:layout_marginBottom="3.0dip" />
         </LinearLayout>

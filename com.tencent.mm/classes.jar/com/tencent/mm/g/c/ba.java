@@ -8,61 +8,61 @@ public abstract class ba
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eDc;
-  private static final int eEm;
-  private static final int eFp;
-  private static final int eHX;
-  private static final int eIG;
-  private static final int eIK;
-  private static final int eIL;
-  private static final int eIM = "atCount".hashCode();
-  private static final int eIN;
-  private static final int eIP;
-  private static final int eIQ;
-  private static final int eIR = "msgCount".hashCode();
-  private static final int eQA;
-  private static final int eQB;
-  private static final int eQC;
-  private static final int eQD = "sightTime".hashCode();
-  private static final int eQE = "unReadMuteCount".hashCode();
-  private static final int eQF = "lastSeq".hashCode();
-  private static final int eQG = "UnDeliverCount".hashCode();
-  private static final int eQH = "UnReadInvite".hashCode();
-  private static final int eQI = "firstUnDeliverSeq".hashCode();
-  private static final int eQJ = "editingQuoteMsgId".hashCode();
-  private static final int eQK = "hasTodo".hashCode();
-  private static final int eQw;
-  private static final int eQx;
-  private static final int eQy;
-  private static final int eQz;
+  private static final int eEL;
+  private static final int eFV;
+  private static final int eGY;
+  private static final int eJG;
+  private static final int eKA = "msgCount".hashCode();
+  private static final int eKp;
+  private static final int eKt;
+  private static final int eKu;
+  private static final int eKv = "atCount".hashCode();
+  private static final int eKw;
+  private static final int eKy;
+  private static final int eKz;
+  private static final int eSh;
+  private static final int eSi;
+  private static final int eSj;
+  private static final int eSk;
+  private static final int eSl;
+  private static final int eSm;
+  private static final int eSn;
+  private static final int eSo = "sightTime".hashCode();
+  private static final int eSp = "unReadMuteCount".hashCode();
+  private static final int eSq = "lastSeq".hashCode();
+  private static final int eSr = "UnDeliverCount".hashCode();
+  private static final int eSs = "UnReadInvite".hashCode();
+  private static final int eSt = "firstUnDeliverSeq".hashCode();
+  private static final int eSu = "editingQuoteMsgId".hashCode();
+  private static final int eSv = "hasTodo".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eCZ = false;
-  private boolean eDP = false;
-  private boolean eFm = false;
-  private boolean eHV = false;
-  private boolean eIA = false;
-  private boolean eIB = false;
-  private boolean eIC = false;
-  private boolean eIr = false;
-  private boolean eIv = false;
-  private boolean eIw = false;
-  private boolean eIx = false;
-  private boolean eIy = false;
-  private boolean eQh = false;
-  private boolean eQi = false;
-  private boolean eQj = false;
-  public boolean eQk = false;
-  private boolean eQl = false;
-  private boolean eQm = false;
-  private boolean eQn = false;
-  public boolean eQo = false;
-  private boolean eQp = false;
-  private boolean eQq = false;
-  private boolean eQr = false;
-  private boolean eQs = false;
-  private boolean eQt = false;
-  public boolean eQu = false;
-  private boolean eQv = false;
+  private boolean eEI = false;
+  private boolean eFy = false;
+  private boolean eGV = false;
+  private boolean eJE = false;
+  private boolean eKa = false;
+  private boolean eKe = false;
+  private boolean eKf = false;
+  private boolean eKg = false;
+  private boolean eKh = false;
+  private boolean eKj = false;
+  private boolean eKk = false;
+  private boolean eKl = false;
+  private boolean eRS = false;
+  private boolean eRT = false;
+  private boolean eRU = false;
+  public boolean eRV = false;
+  private boolean eRW = false;
+  private boolean eRX = false;
+  private boolean eRY = false;
+  public boolean eRZ = false;
+  private boolean eSa = false;
+  private boolean eSb = false;
+  private boolean eSc = false;
+  private boolean eSd = false;
+  private boolean eSe = false;
+  public boolean eSf = false;
+  private boolean eSg = false;
   public int field_UnDeliverCount;
   public int field_UnReadInvite;
   public int field_atCount;
@@ -93,46 +93,46 @@ public abstract class ba
   
   static
   {
-    eFp = "username".hashCode();
-    eIG = "unReadCount".hashCode();
-    eQw = "chatmode".hashCode();
-    eDc = "status".hashCode();
-    eIP = "isSend".hashCode();
-    eQx = "conversationTime".hashCode();
-    eEm = "content".hashCode();
-    eIQ = "msgType".hashCode();
-    eQy = "customNotify".hashCode();
-    eQz = "showTips".hashCode();
-    eHX = "flag".hashCode();
-    eIK = "digest".hashCode();
-    eIL = "digestUser".hashCode();
-    eQA = "hasTrunc".hashCode();
-    eQB = "parentRef".hashCode();
-    eQC = "attrflag".hashCode();
-    eIN = "editingMsg".hashCode();
+    eGY = "username".hashCode();
+    eKp = "unReadCount".hashCode();
+    eSh = "chatmode".hashCode();
+    eEL = "status".hashCode();
+    eKy = "isSend".hashCode();
+    eSi = "conversationTime".hashCode();
+    eFV = "content".hashCode();
+    eKz = "msgType".hashCode();
+    eSj = "customNotify".hashCode();
+    eSk = "showTips".hashCode();
+    eJG = "flag".hashCode();
+    eKt = "digest".hashCode();
+    eKu = "digestUser".hashCode();
+    eSl = "hasTrunc".hashCode();
+    eSm = "parentRef".hashCode();
+    eSn = "attrflag".hashCode();
+    eKw = "editingMsg".hashCode();
   }
   
-  public final int VK()
+  public final int VS()
   {
     return this.field_unReadCount;
   }
   
-  public final int VL()
+  public final int VT()
   {
     return this.field_unReadMuteCount;
   }
   
-  public final long VM()
+  public final long VU()
   {
     return this.field_lastSeq;
   }
   
-  public final int VN()
+  public final int VV()
   {
     return this.field_UnDeliverCount;
   }
   
-  public final long VO()
+  public final long VW()
   {
     return this.field_firstUnDeliverSeq;
   }
@@ -150,7 +150,7 @@ public abstract class ba
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eIR != k) {
+      if (eKA != k) {
         break label60;
       }
       this.field_msgCount = paramCursor.getInt(i);
@@ -161,108 +161,108 @@ public abstract class ba
       break label20;
       break;
       label60:
-      if (eFp == k)
+      if (eGY == k)
       {
         this.field_username = paramCursor.getString(i);
-        this.eFm = true;
+        this.eGV = true;
       }
-      else if (eIG == k)
+      else if (eKp == k)
       {
         this.field_unReadCount = paramCursor.getInt(i);
       }
-      else if (eQw == k)
+      else if (eSh == k)
       {
         this.field_chatmode = paramCursor.getInt(i);
       }
-      else if (eDc == k)
+      else if (eEL == k)
       {
         this.field_status = paramCursor.getInt(i);
       }
-      else if (eIP == k)
+      else if (eKy == k)
       {
         this.field_isSend = paramCursor.getInt(i);
       }
-      else if (eQx == k)
+      else if (eSi == k)
       {
         this.field_conversationTime = paramCursor.getLong(i);
       }
-      else if (eEm == k)
+      else if (eFV == k)
       {
         this.field_content = paramCursor.getString(i);
       }
-      else if (eIQ == k)
+      else if (eKz == k)
       {
         this.field_msgType = paramCursor.getString(i);
       }
-      else if (eQy == k)
+      else if (eSj == k)
       {
         this.field_customNotify = paramCursor.getString(i);
       }
-      else if (eQz == k)
+      else if (eSk == k)
       {
         this.field_showTips = paramCursor.getInt(i);
       }
-      else if (eHX == k)
+      else if (eJG == k)
       {
         this.field_flag = paramCursor.getLong(i);
       }
-      else if (eIK == k)
+      else if (eKt == k)
       {
         this.field_digest = paramCursor.getString(i);
       }
-      else if (eIL == k)
+      else if (eKu == k)
       {
         this.field_digestUser = paramCursor.getString(i);
       }
-      else if (eQA == k)
+      else if (eSl == k)
       {
         this.field_hasTrunc = paramCursor.getInt(i);
       }
-      else if (eQB == k)
+      else if (eSm == k)
       {
         this.field_parentRef = paramCursor.getString(i);
       }
-      else if (eQC == k)
+      else if (eSn == k)
       {
         this.field_attrflag = paramCursor.getInt(i);
       }
-      else if (eIN == k)
+      else if (eKw == k)
       {
         this.field_editingMsg = paramCursor.getString(i);
       }
-      else if (eIM == k)
+      else if (eKv == k)
       {
         this.field_atCount = paramCursor.getInt(i);
       }
-      else if (eQD == k)
+      else if (eSo == k)
       {
         this.field_sightTime = paramCursor.getLong(i);
       }
-      else if (eQE == k)
+      else if (eSp == k)
       {
         this.field_unReadMuteCount = paramCursor.getInt(i);
       }
-      else if (eQF == k)
+      else if (eSq == k)
       {
         this.field_lastSeq = paramCursor.getLong(i);
       }
-      else if (eQG == k)
+      else if (eSr == k)
       {
         this.field_UnDeliverCount = paramCursor.getInt(i);
       }
-      else if (eQH == k)
+      else if (eSs == k)
       {
         this.field_UnReadInvite = paramCursor.getInt(i);
       }
-      else if (eQI == k)
+      else if (eSt == k)
       {
         this.field_firstUnDeliverSeq = paramCursor.getLong(i);
       }
-      else if (eQJ == k)
+      else if (eSu == k)
       {
         this.field_editingQuoteMsgId = paramCursor.getLong(i);
       }
-      else if (eQK == k)
+      else if (eSv == k)
       {
         this.field_hasTodo = paramCursor.getInt(i);
       }
@@ -276,106 +276,106 @@ public abstract class ba
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eIC) {
+    if (this.eKl) {
       localContentValues.put("msgCount", Integer.valueOf(this.field_msgCount));
     }
     if (this.field_username == null) {
       this.field_username = "";
     }
-    if (this.eFm) {
+    if (this.eGV) {
       localContentValues.put("username", this.field_username);
     }
-    if (this.eIr) {
+    if (this.eKa) {
       localContentValues.put("unReadCount", Integer.valueOf(this.field_unReadCount));
     }
-    if (this.eQh) {
+    if (this.eRS) {
       localContentValues.put("chatmode", Integer.valueOf(this.field_chatmode));
     }
-    if (this.eCZ) {
+    if (this.eEI) {
       localContentValues.put("status", Integer.valueOf(this.field_status));
     }
-    if (this.eIA) {
+    if (this.eKj) {
       localContentValues.put("isSend", Integer.valueOf(this.field_isSend));
     }
-    if (this.eQi) {
+    if (this.eRT) {
       localContentValues.put("conversationTime", Long.valueOf(this.field_conversationTime));
     }
     if (this.field_content == null) {
       this.field_content = "";
     }
-    if (this.eDP) {
+    if (this.eFy) {
       localContentValues.put("content", this.field_content);
     }
     if (this.field_msgType == null) {
       this.field_msgType = "";
     }
-    if (this.eIB) {
+    if (this.eKk) {
       localContentValues.put("msgType", this.field_msgType);
     }
     if (this.field_customNotify == null) {
       this.field_customNotify = "";
     }
-    if (this.eQj) {
+    if (this.eRU) {
       localContentValues.put("customNotify", this.field_customNotify);
     }
-    if (this.eQk) {
+    if (this.eRV) {
       localContentValues.put("showTips", Integer.valueOf(this.field_showTips));
     }
-    if (this.eHV) {
+    if (this.eJE) {
       localContentValues.put("flag", Long.valueOf(this.field_flag));
     }
     if (this.field_digest == null) {
       this.field_digest = "";
     }
-    if (this.eIv) {
+    if (this.eKe) {
       localContentValues.put("digest", this.field_digest);
     }
     if (this.field_digestUser == null) {
       this.field_digestUser = "";
     }
-    if (this.eIw) {
+    if (this.eKf) {
       localContentValues.put("digestUser", this.field_digestUser);
     }
-    if (this.eQl) {
+    if (this.eRW) {
       localContentValues.put("hasTrunc", Integer.valueOf(this.field_hasTrunc));
     }
-    if (this.eQm) {
+    if (this.eRX) {
       localContentValues.put("parentRef", this.field_parentRef);
     }
-    if (this.eQn) {
+    if (this.eRY) {
       localContentValues.put("attrflag", Integer.valueOf(this.field_attrflag));
     }
     if (this.field_editingMsg == null) {
       this.field_editingMsg = "";
     }
-    if (this.eIy) {
+    if (this.eKh) {
       localContentValues.put("editingMsg", this.field_editingMsg);
     }
-    if (this.eIx) {
+    if (this.eKg) {
       localContentValues.put("atCount", Integer.valueOf(this.field_atCount));
     }
-    if (this.eQo) {
+    if (this.eRZ) {
       localContentValues.put("sightTime", Long.valueOf(this.field_sightTime));
     }
-    if (this.eQp) {
+    if (this.eSa) {
       localContentValues.put("unReadMuteCount", Integer.valueOf(this.field_unReadMuteCount));
     }
-    if (this.eQq) {
+    if (this.eSb) {
       localContentValues.put("lastSeq", Long.valueOf(this.field_lastSeq));
     }
-    if (this.eQr) {
+    if (this.eSc) {
       localContentValues.put("UnDeliverCount", Integer.valueOf(this.field_UnDeliverCount));
     }
-    if (this.eQs) {
+    if (this.eSd) {
       localContentValues.put("UnReadInvite", Integer.valueOf(this.field_UnReadInvite));
     }
-    if (this.eQt) {
+    if (this.eSe) {
       localContentValues.put("firstUnDeliverSeq", Long.valueOf(this.field_firstUnDeliverSeq));
     }
-    if (this.eQu) {
+    if (this.eSf) {
       localContentValues.put("editingQuoteMsgId", Long.valueOf(this.field_editingQuoteMsgId));
     }
-    if (this.eQv) {
+    if (this.eSg) {
       localContentValues.put("hasTodo", Integer.valueOf(this.field_hasTodo));
     }
     if (this.systemRowid > 0L) {
@@ -394,142 +394,142 @@ public abstract class ba
     return this.field_username;
   }
   
-  public final void ko(int paramInt)
+  public final void kA(int paramInt)
   {
-    this.field_msgCount = paramInt;
-    this.eIC = true;
-  }
-  
-  public final void kp(int paramInt)
-  {
-    this.field_unReadCount = paramInt;
-    this.eIr = true;
+    this.field_hasTodo = paramInt;
+    this.eSg = true;
   }
   
   public final void kq(int paramInt)
   {
-    this.field_chatmode = paramInt;
-    this.eQh = true;
+    this.field_msgCount = paramInt;
+    this.eKl = true;
   }
   
   public final void kr(int paramInt)
   {
-    this.field_isSend = paramInt;
-    this.eIA = true;
+    this.field_unReadCount = paramInt;
+    this.eKa = true;
   }
   
   public final void ks(int paramInt)
   {
-    this.field_hasTrunc = paramInt;
-    this.eQl = true;
+    this.field_chatmode = paramInt;
+    this.eRS = true;
   }
   
   public final void kt(int paramInt)
   {
-    this.field_attrflag = paramInt;
-    this.eQn = true;
+    this.field_isSend = paramInt;
+    this.eKj = true;
   }
   
   public final void ku(int paramInt)
   {
-    this.field_atCount = paramInt;
-    this.eIx = true;
+    this.field_hasTrunc = paramInt;
+    this.eRW = true;
   }
   
   public final void kv(int paramInt)
   {
-    this.field_unReadMuteCount = paramInt;
-    this.eQp = true;
+    this.field_attrflag = paramInt;
+    this.eRY = true;
   }
   
   public final void kw(int paramInt)
   {
-    this.field_UnDeliverCount = paramInt;
-    this.eQr = true;
+    this.field_atCount = paramInt;
+    this.eKg = true;
   }
   
   public final void kx(int paramInt)
   {
-    this.field_UnReadInvite = paramInt;
-    this.eQs = true;
+    this.field_unReadMuteCount = paramInt;
+    this.eSa = true;
   }
   
   public final void ky(int paramInt)
   {
-    this.field_hasTodo = paramInt;
-    this.eQv = true;
+    this.field_UnDeliverCount = paramInt;
+    this.eSc = true;
   }
   
-  public final void qu(long paramLong)
+  public final void kz(int paramInt)
+  {
+    this.field_UnReadInvite = paramInt;
+    this.eSd = true;
+  }
+  
+  public final void qH(long paramLong)
   {
     this.field_conversationTime = paramLong;
-    this.eQi = true;
+    this.eRT = true;
   }
   
-  public void qv(long paramLong)
+  public void qI(long paramLong)
   {
     this.field_flag = paramLong;
-    this.eHV = true;
+    this.eJE = true;
   }
   
-  public final void qw(long paramLong)
+  public final void qJ(long paramLong)
   {
     this.field_lastSeq = paramLong;
-    this.eQq = true;
+    this.eSb = true;
   }
   
-  public final void qx(long paramLong)
+  public final void qK(long paramLong)
   {
     this.field_firstUnDeliverSeq = paramLong;
-    this.eQt = true;
+    this.eSe = true;
   }
   
   public final void setContent(String paramString)
   {
     this.field_content = paramString;
-    this.eDP = true;
+    this.eFy = true;
   }
   
   public final void setStatus(int paramInt)
   {
     this.field_status = paramInt;
-    this.eCZ = true;
+    this.eEI = true;
   }
   
   public final void setUsername(String paramString)
   {
     this.field_username = paramString;
-    this.eFm = true;
+    this.eGV = true;
   }
   
-  public final void tA(String paramString)
+  public final void tV(String paramString)
   {
     this.field_msgType = paramString;
-    this.eIB = true;
+    this.eKk = true;
   }
   
-  public final void tB(String paramString)
+  public final void tW(String paramString)
   {
     this.field_digest = paramString;
-    this.eIv = true;
+    this.eKe = true;
   }
   
-  public final void tC(String paramString)
+  public final void tX(String paramString)
   {
     this.field_digestUser = paramString;
-    this.eIw = true;
+    this.eKf = true;
   }
   
-  public final void tD(String paramString)
+  public final void tY(String paramString)
   {
     this.field_parentRef = paramString;
-    this.eQm = true;
+    this.eRX = true;
   }
   
-  public final void tE(String paramString)
+  public final void tZ(String paramString)
   {
     this.field_editingMsg = paramString;
-    this.eIy = true;
+    this.eKh = true;
   }
 }
 

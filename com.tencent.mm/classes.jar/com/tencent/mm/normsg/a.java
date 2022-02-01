@@ -4,29 +4,31 @@ import android.content.Context;
 
 public abstract interface a
 {
-  public abstract String G(Context paramContext, String paramString);
+  public abstract String H(Context paramContext, String paramString);
   
-  public abstract byte[] Ix(String paramString);
+  public abstract byte[] IZ(String paramString);
   
-  public abstract void Iy(String paramString);
+  public abstract void Ja(String paramString);
   
   public abstract void N(int paramInt1, int paramInt2, int paramInt3);
   
   public abstract void O(int paramInt, String paramString);
   
-  public abstract String aPv();
+  public abstract String aPT();
   
-  public abstract long aPw();
+  public abstract long aPU();
   
-  public abstract String aPx();
+  public abstract String aPV();
   
-  public abstract boolean aPy();
+  public abstract boolean aPW();
   
-  public abstract String aPz();
+  public abstract String aPX();
   
-  public abstract String aaC();
+  public abstract boolean aPY();
   
-  public abstract boolean cQ(Context paramContext);
+  public abstract String aaL();
+  
+  public abstract boolean cS(Context paramContext);
   
   public abstract String getDeviceId();
   

@@ -12,7 +12,7 @@ public final class g
   {
     super(paramEmojiInfo, paramBoolean, parama);
     AppMethodBeat.i(104496);
-    new k(paramEmojiInfo, paramBoolean, paramEmojiInfo.field_attachedText, paramEmojiInfo.gzP(), paramEmojiInfo.field_imitateMd5).gko = new k.b()
+    new k(paramEmojiInfo, paramBoolean, paramEmojiInfo.field_attachedText, paramEmojiInfo.fSP(), paramEmojiInfo.field_imitateMd5).gmI = new k.b()
     {
       public final void b(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, boolean paramAnonymousBoolean)
       {
@@ -25,11 +25,11 @@ public final class g
         }
         if (paramAnonymousBoolean)
         {
-          g.this.mg(2);
+          g.this.mj(2);
           AppMethodBeat.o(104495);
           return;
         }
-        g.this.mg(paramAnonymousInt2);
+        g.this.mj(paramAnonymousInt2);
         AppMethodBeat.o(104495);
       }
     };
@@ -38,7 +38,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.emoji.c.g
  * JD-Core Version:    0.7.0.1
  */

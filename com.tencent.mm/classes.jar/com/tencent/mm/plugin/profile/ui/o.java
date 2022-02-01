@@ -16,7 +16,7 @@ final class o
   public final void a(HelperHeaderPreference paramHelperHeaderPreference)
   {
     AppMethodBeat.i(27227);
-    paramHelperHeaderPreference.pt(true);
+    paramHelperHeaderPreference.pB(true);
     AppMethodBeat.o(27227);
   }
   

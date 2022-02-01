@@ -9,52 +9,52 @@ import android.os.Handler;
 import android.os.HandlerThread;
 import android.view.Surface;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import d.g.a.b;
 import d.g.b.p;
 import d.l;
 import d.v;
 import java.nio.ByteBuffer;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/media/decoder/MediaCodecTransDecoderAsync;", "Lcom/tencent/mm/media/decoder/IMediaCodecTransDecoder;", "startTimeMs", "", "endTimeMs", "mediaExtractorWrapper", "Lcom/tencent/mm/media/extractor/MediaExtractorWrapper;", "decodeSurface", "Landroid/view/Surface;", "outputFps", "", "init", "Lkotlin/Function1;", "", "Lkotlin/ExtensionFunctionType;", "(JJLcom/tencent/mm/media/extractor/MediaExtractorWrapper;Landroid/view/Surface;ILkotlin/jvm/functions/Function1;)V", "TAG", "", "codecCallback", "com/tencent/mm/media/decoder/MediaCodecTransDecoderAsync$codecCallback$1", "Lcom/tencent/mm/media/decoder/MediaCodecTransDecoderAsync$codecCallback$1;", "decoderThread", "Landroid/os/HandlerThread;", "kotlin.jvm.PlatformType", "isInvokeDecodeEnd", "", "sawInputEOS", "onDecodeEnd", "releaseDecoder", "startDecode", "plugin-mediaeditor_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/media/decoder/MediaCodecTransDecoderAsync;", "Lcom/tencent/mm/media/decoder/IMediaCodecTransDecoder;", "startTimeMs", "", "endTimeMs", "mediaExtractorWrapper", "Lcom/tencent/mm/media/extractor/MediaExtractorWrapper;", "decodeSurface", "Landroid/view/Surface;", "outputFps", "", "init", "Lkotlin/Function1;", "", "Lkotlin/ExtensionFunctionType;", "(JJLcom/tencent/mm/media/extractor/MediaExtractorWrapper;Landroid/view/Surface;ILkotlin/jvm/functions/Function1;)V", "TAG", "", "codecCallback", "com/tencent/mm/media/decoder/MediaCodecTransDecoderAsync$codecCallback$1", "Lcom/tencent/mm/media/decoder/MediaCodecTransDecoderAsync$codecCallback$1;", "decoderThread", "Landroid/os/HandlerThread;", "kotlin.jvm.PlatformType", "isInvokeDecodeEnd", "", "sawInputEOS", "onDecodeEnd", "releaseDecoder", "startDecode", "plugin-mediaeditor_release"})
 public final class j
   extends f
 {
   final String TAG;
   private HandlerThread decoderThread;
-  volatile boolean hiY;
-  private boolean hjg;
-  private final a hjh;
+  volatile boolean hlM;
+  private boolean hlU;
+  private final a hlV;
   
   public j(long paramLong1, long paramLong2, final com.tencent.mm.media.f.a parama, Surface paramSurface, int paramInt, b<? super f, d.z> paramb)
   {
     super(paramLong1, paramLong2, parama, paramSurface, paramInt);
     AppMethodBeat.i(93555);
     this.TAG = "MicroMsg.MediaCodecTransDecoderAsync";
-    this.decoderThread = com.tencent.e.c.d.gY("MediaCodecTransDecoderAsync_decodeThread", 5);
-    this.hjh = new a(this, parama);
+    this.decoderThread = com.tencent.e.c.d.hh("MediaCodecTransDecoderAsync_decodeThread", 5);
+    this.hlV = new a(this, parama);
     try
     {
-      this.mediaFormat = parama.hka;
-      this.hir = com.tencent.mm.compatible.deviceinfo.z.vm(parama.atB());
-      ad.i(this.TAG, "mediaExtractorWrapper.getVideoMIME() :" + parama.atB());
-      if (com.tencent.mm.compatible.util.d.ly(23))
+      this.mediaFormat = parama.hmO;
+      this.hlf = com.tencent.mm.compatible.deviceinfo.z.vI(parama.atQ());
+      ae.i(this.TAG, "mediaExtractorWrapper.getVideoMIME() :" + parama.atQ());
+      if (com.tencent.mm.compatible.util.d.lA(23))
       {
         this.decoderThread.start();
         parama = this.decoderThread;
         p.g(parama, "decoderThread");
         parama = new Handler(parama.getLooper());
-        com.tencent.mm.compatible.deviceinfo.z localz = this.hir;
+        com.tencent.mm.compatible.deviceinfo.z localz = this.hlf;
         if (localz == null) {
-          p.gfZ();
+          p.gkB();
         }
-        localz.setCallback((MediaCodec.Callback)this.hjh, parama);
+        localz.setCallback((MediaCodec.Callback)this.hlV, parama);
       }
       for (;;)
       {
-        parama = this.hir;
+        parama = this.hlf;
         if (parama == null) {
-          p.gfZ();
+          p.gkB();
         }
         parama.a(this.mediaFormat, paramSurface, 0);
         if (paramb == null) {
@@ -63,17 +63,17 @@ public final class j
         paramb.invoke(this);
         AppMethodBeat.o(93555);
         return;
-        parama = this.hir;
+        parama = this.hlf;
         if (parama == null) {
-          p.gfZ();
+          p.gkB();
         }
-        parama.setCallback((MediaCodec.Callback)this.hjh);
+        parama.setCallback((MediaCodec.Callback)this.hlV);
       }
       AppMethodBeat.o(93555);
     }
     catch (Exception parama)
     {
-      ad.printErrStackTrace(this.TAG, (Throwable)parama, "create decoder error:" + parama.getMessage(), new Object[0]);
+      ae.printErrStackTrace(this.TAG, (Throwable)parama, "create decoder error:" + parama.getMessage(), new Object[0]);
       parama = (Throwable)new IllegalStateException("init decoder error");
       AppMethodBeat.o(93555);
       throw parama;
@@ -92,7 +92,7 @@ public final class j
     }
     catch (Exception localException)
     {
-      ad.printErrStackTrace(this.TAG, (Throwable)localException, "releaseDecoder error:" + localException.getMessage(), new Object[0]);
+      ae.printErrStackTrace(this.TAG, (Throwable)localException, "releaseDecoder error:" + localException.getMessage(), new Object[0]);
       AppMethodBeat.o(93554);
     }
   }
@@ -102,9 +102,9 @@ public final class j
     AppMethodBeat.i(93553);
     try
     {
-      com.tencent.mm.compatible.deviceinfo.z localz = this.hir;
+      com.tencent.mm.compatible.deviceinfo.z localz = this.hlf;
       if (localz == null) {
-        p.gfZ();
+        p.gkB();
       }
       localz.start();
       AppMethodBeat.o(93553);
@@ -112,12 +112,12 @@ public final class j
     }
     catch (Exception localException)
     {
-      ad.printErrStackTrace(this.TAG, (Throwable)localException, "startDecode error", new Object[0]);
+      ae.printErrStackTrace(this.TAG, (Throwable)localException, "startDecode error", new Object[0]);
       AppMethodBeat.o(93553);
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/media/decoder/MediaCodecTransDecoderAsync$codecCallback$1", "Landroid/media/MediaCodec$Callback;", "onError", "", "codec", "Landroid/media/MediaCodec;", "e", "Landroid/media/MediaCodec$CodecException;", "onInputBufferAvailable", "index", "", "onOutputBufferAvailable", "decoderOutputBufferIndex", "bufferInfo", "Landroid/media/MediaCodec$BufferInfo;", "onOutputFormatChanged", "format", "Landroid/media/MediaFormat;", "plugin-mediaeditor_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/media/decoder/MediaCodecTransDecoderAsync$codecCallback$1", "Landroid/media/MediaCodec$Callback;", "onError", "", "codec", "Landroid/media/MediaCodec;", "e", "Landroid/media/MediaCodec$CodecException;", "onInputBufferAvailable", "index", "", "onOutputBufferAvailable", "decoderOutputBufferIndex", "bufferInfo", "Landroid/media/MediaCodec$BufferInfo;", "onOutputFormatChanged", "format", "Landroid/media/MediaFormat;", "plugin-mediaeditor_release"})
   public static final class a
     extends MediaCodec.Callback
   {
@@ -128,18 +128,18 @@ public final class j
       AppMethodBeat.i(93552);
       p.h(paramMediaCodec, "codec");
       p.h(paramCodecException, "e");
-      ad.e(this.hji.TAG, "onError, codec:" + paramMediaCodec + ", " + paramCodecException.isRecoverable() + ' ' + paramCodecException.isTransient() + ' ' + paramCodecException.getDiagnosticInfo());
-      if (this.hji.hiN)
+      ae.e(this.hlW.TAG, "onError, codec:" + paramMediaCodec + ", " + paramCodecException.isRecoverable() + ' ' + paramCodecException.isTransient() + ' ' + paramCodecException.getDiagnosticInfo());
+      if (this.hlW.hlB)
       {
-        paramMediaCodec = com.tencent.mm.media.k.d.hoU;
-        com.tencent.mm.media.k.d.avJ();
+        paramMediaCodec = com.tencent.mm.media.k.d.hrI;
+        com.tencent.mm.media.k.d.avY();
       }
       if ((!paramCodecException.isRecoverable()) && (!paramCodecException.isTransient()))
       {
-        paramMediaCodec = com.tencent.mm.media.k.d.hoU;
-        com.tencent.mm.media.k.d.avK();
-        this.hji.releaseDecoder();
-        paramMediaCodec = this.hji.hiH;
+        paramMediaCodec = com.tencent.mm.media.k.d.hrI;
+        com.tencent.mm.media.k.d.avZ();
+        this.hlW.releaseDecoder();
+        paramMediaCodec = this.hlW.hlv;
         if (paramMediaCodec != null)
         {
           paramMediaCodec.invoke();
@@ -154,7 +154,7 @@ public final class j
     {
       AppMethodBeat.i(93550);
       p.h(paramMediaCodec, "codec");
-      ad.i(this.hji.TAG, "onInputBufferAvailable, index:".concat(String.valueOf(paramInt)));
+      ae.i(this.hlW.TAG, "onInputBufferAvailable, index:".concat(String.valueOf(paramInt)));
       if (paramInt >= 0)
       {
         try
@@ -169,11 +169,11 @@ public final class j
         }
         catch (Exception paramMediaCodec)
         {
-          ad.printErrStackTrace(this.hji.TAG, (Throwable)paramMediaCodec, "onInputBufferAvailable error", new Object[0]);
-          if (this.hji.hiN)
+          ae.printErrStackTrace(this.hlW.TAG, (Throwable)paramMediaCodec, "onInputBufferAvailable error", new Object[0]);
+          if (this.hlW.hlB)
           {
-            paramMediaCodec = com.tencent.mm.media.k.d.hoU;
-            com.tencent.mm.media.k.d.avI();
+            paramMediaCodec = com.tencent.mm.media.k.d.hrI;
+            com.tencent.mm.media.k.d.avX();
           }
         }
       }
@@ -189,19 +189,19 @@ public final class j
         long l = parama.getSampleTime();
         int i = parama.sampleSize;
         paramMediaCodec.position(0);
-        paramMediaCodec = this.hji.hir;
+        paramMediaCodec = this.hlW.hlf;
         if (paramMediaCodec == null) {
-          p.gfZ();
+          p.gkB();
         }
         paramMediaCodec.a(paramInt, i, l, 0);
         AppMethodBeat.o(93550);
         return;
       }
-      ad.i(this.hji.TAG, "read sample end");
-      this.hji.hiY = true;
-      paramMediaCodec = this.hji.hir;
+      ae.i(this.hlW.TAG, "read sample end");
+      this.hlW.hlM = true;
+      paramMediaCodec = this.hlW.hlf;
       if (paramMediaCodec == null) {
-        p.gfZ();
+        p.gkB();
       }
       paramMediaCodec.a(paramInt, 0, 0L, 4);
       AppMethodBeat.o(93550);
@@ -212,7 +212,7 @@ public final class j
       AppMethodBeat.i(93549);
       p.h(paramMediaCodec, "codec");
       p.h(paramBufferInfo, "bufferInfo");
-      ad.i(this.hji.TAG, "onOutputBufferAvailable, index:" + paramInt + ", bufferInfo:" + paramBufferInfo + " size:" + paramBufferInfo.size + ", isFinished:" + this.hji.gGM);
+      ae.i(this.hlW.TAG, "onOutputBufferAvailable, index:" + paramInt + ", bufferInfo:" + paramBufferInfo + " size:" + paramBufferInfo.size + ", isFinished:" + this.hlW.gJv);
       if (paramInt >= 0)
       {
         do
@@ -220,49 +220,49 @@ public final class j
           try
           {
             long l = paramBufferInfo.presentationTimeUs;
-            ad.i(this.hji.TAG, "presentationTimeUs : ".concat(String.valueOf(l)));
-            if ((l < this.hji.startTimeMs * 1000L) && ((paramBufferInfo.flags & 0x4) == 0))
+            ae.i(this.hlW.TAG, "presentationTimeUs : ".concat(String.valueOf(l)));
+            if ((l < this.hlW.startTimeMs * 1000L) && ((paramBufferInfo.flags & 0x4) == 0))
             {
-              paramMediaCodec = this.hji.hir;
+              paramMediaCodec = this.hlW.hlf;
               if (paramMediaCodec == null) {
-                p.gfZ();
+                p.gkB();
               }
               paramMediaCodec.releaseOutputBuffer(paramInt, false);
-              ad.i(this.hji.TAG, "decoder pts: " + l + ", not reach start: " + this.hji.startTimeMs * 1000L);
+              ae.i(this.hlW.TAG, "decoder pts: " + l + ", not reach start: " + this.hlW.startTimeMs * 1000L);
               AppMethodBeat.o(93549);
               return;
             }
-            this.hji.a(paramInt, paramBufferInfo);
-            if ((this.hji.hiy * 1000L != 1L) && (l >= this.hji.hiy * 1000L))
+            this.hlW.a(paramInt, paramBufferInfo);
+            if ((this.hlW.hlm * 1000L != 1L) && (l >= this.hlW.hlm * 1000L))
             {
-              ad.e(this.hji.TAG, "exceed endTimeMs");
-              j.a(this.hji);
-              this.hji.releaseDecoder();
+              ae.e(this.hlW.TAG, "exceed endTimeMs");
+              j.a(this.hlW);
+              this.hlW.releaseDecoder();
               AppMethodBeat.o(93549);
               return;
             }
           }
           catch (Exception paramMediaCodec)
           {
-            ad.printErrStackTrace(this.hji.TAG, (Throwable)paramMediaCodec, "onOutputBufferAvailable error", new Object[0]);
-            if (this.hji.hiN)
+            ae.printErrStackTrace(this.hlW.TAG, (Throwable)paramMediaCodec, "onOutputBufferAvailable error", new Object[0]);
+            if (this.hlW.hlB)
             {
-              paramMediaCodec = com.tencent.mm.media.k.d.hoU;
-              com.tencent.mm.media.k.d.avI();
+              paramMediaCodec = com.tencent.mm.media.k.d.hrI;
+              com.tencent.mm.media.k.d.avX();
             }
             AppMethodBeat.o(93549);
             return;
           }
-        } while (((paramBufferInfo.flags & 0x4) == 0) && (!this.hji.hiY));
-        ad.i(this.hji.TAG, "receive eos!");
-        j.a(this.hji);
-        this.hji.releaseDecoder();
+        } while (((paramBufferInfo.flags & 0x4) == 0) && (!this.hlW.hlM));
+        ae.i(this.hlW.TAG, "receive eos!");
+        j.a(this.hlW);
+        this.hlW.releaseDecoder();
         AppMethodBeat.o(93549);
         return;
       }
-      paramMediaCodec = this.hji.hir;
+      paramMediaCodec = this.hlW.hlf;
       if (paramMediaCodec == null) {
-        p.gfZ();
+        p.gkB();
       }
       paramMediaCodec.releaseOutputBuffer(paramInt, false);
       AppMethodBeat.o(93549);
@@ -273,12 +273,12 @@ public final class j
       AppMethodBeat.i(93551);
       p.h(paramMediaCodec, "codec");
       p.h(paramMediaFormat, "format");
-      this.hji.mediaFormat = paramMediaFormat;
-      ad.i(this.hji.TAG, "decoder output format changed: " + this.hji.mediaFormat);
-      paramMediaCodec = this.hji.mediaFormat;
+      this.hlW.mediaFormat = paramMediaFormat;
+      ae.i(this.hlW.TAG, "decoder output format changed: " + this.hlW.mediaFormat);
+      paramMediaCodec = this.hlW.mediaFormat;
       if (paramMediaCodec != null)
       {
-        paramMediaFormat = this.hji.hiG;
+        paramMediaFormat = this.hlW.hlu;
         if (paramMediaFormat != null)
         {
           paramMediaFormat.invoke(paramMediaCodec);

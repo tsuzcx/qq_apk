@@ -22,7 +22,7 @@ final class FTSMainUI$4
     AppMethodBeat.i(111964);
     b localb = new b();
     localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/fts/ui/FTSMainUI$12", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+    a.b("com/tencent/mm/plugin/fts/ui/FTSMainUI$12", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
     try
     {
       if (paramView.getTag() != null)
@@ -32,14 +32,14 @@ final class FTSMainUI$4
           break label194;
         }
         paramView = ((TextView)paramView).getText().toString();
-        if (!paramView.equals(this.tAq.getString(2131762938))) {
+        if (!paramView.equals(this.tLh.getString(2131762938))) {
           break label151;
         }
         i = 2;
         if (i != 0)
         {
-          paramView = FTSMainUI.b(this.tAq);
-          ((i)g.ab(i.class)).a(paramView.tDV, new d.3(paramView, i));
+          paramView = FTSMainUI.b(this.tLh);
+          ((i)g.ab(i.class)).a(paramView.tOM, new d.3(paramView, i));
         }
         a.a(this, "com/tencent/mm/plugin/fts/ui/FTSMainUI$12", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(111964);
@@ -53,9 +53,9 @@ final class FTSMainUI$4
       {
         int i = 0;
         continue;
-        if (paramView.equals(this.tAq.getString(2131762942))) {
+        if (paramView.equals(this.tLh.getString(2131762942))) {
           i = 8;
-        } else if (paramView.equals(this.tAq.getString(2131762939))) {
+        } else if (paramView.equals(this.tLh.getString(2131762939))) {
           i = 1;
         }
       }

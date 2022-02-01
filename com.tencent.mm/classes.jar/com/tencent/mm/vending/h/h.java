@@ -7,7 +7,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class h
   extends d
 {
-  public a LiU;
+  public a LFw;
   Looper mLooper;
   public String mType;
   
@@ -21,7 +21,7 @@ public final class h
   private h(Looper paramLooper, a parama, String paramString)
   {
     this.mLooper = paramLooper;
-    this.LiU = parama;
+    this.LFw = parama;
     this.mType = paramString;
   }
   
@@ -42,7 +42,7 @@ public final class h
   public final void cancel()
   {
     AppMethodBeat.i(74918);
-    this.LiU.fL();
+    this.LFw.fL();
     AppMethodBeat.o(74918);
   }
   
@@ -51,11 +51,11 @@ public final class h
     AppMethodBeat.i(74920);
     if (paramLong >= 0L)
     {
-      this.LiU.c(paramRunnable, paramLong);
+      this.LFw.c(paramRunnable, paramLong);
       AppMethodBeat.o(74920);
       return;
     }
-    this.LiU.post(paramRunnable);
+    this.LFw.post(paramRunnable);
     AppMethodBeat.o(74920);
   }
   
@@ -64,10 +64,10 @@ public final class h
     return this.mType;
   }
   
-  public final void w(Runnable paramRunnable)
+  public final void u(Runnable paramRunnable)
   {
     AppMethodBeat.i(74919);
-    this.LiU.post(paramRunnable);
+    this.LFw.post(paramRunnable);
     AppMethodBeat.o(74919);
   }
 }

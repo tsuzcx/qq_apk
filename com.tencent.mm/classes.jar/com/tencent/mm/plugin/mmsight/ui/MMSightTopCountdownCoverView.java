@@ -14,7 +14,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.aq;
 import com.tencent.mm.ui.al;
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
@@ -22,23 +22,23 @@ import java.util.concurrent.TimeUnit;
 public class MMSightTopCountdownCoverView
   extends FrameLayout
 {
-  final ap mHandler;
-  final View vVq;
-  private final ImageView vVr;
-  final TextView vVs;
-  final TextView vVt;
-  long vVu;
-  long vVv;
-  final Runnable vVw;
-  final Runnable vVx;
-  final ObjectAnimator vVy;
+  final aq mHandler;
+  final Runnable whA;
+  final Runnable whB;
+  final ObjectAnimator whC;
+  final View whu;
+  private final ImageView whv;
+  final TextView whw;
+  final TextView whx;
+  long why;
+  long whz;
   
   public MMSightTopCountdownCoverView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(94569);
-    this.mHandler = new ap(Looper.getMainLooper());
-    this.vVw = new Runnable()
+    this.mHandler = new aq(Looper.getMainLooper());
+    this.whA = new Runnable()
     {
       public final void run()
       {
@@ -47,7 +47,7 @@ public class MMSightTopCountdownCoverView
         AppMethodBeat.o(94567);
       }
     };
-    this.vVx = new Runnable()
+    this.whB = new Runnable()
     {
       public final void run()
       {
@@ -63,17 +63,17 @@ public class MMSightTopCountdownCoverView
       }
     };
     LayoutInflater.from(getContext()).inflate(2131494917, this, true);
-    this.vVq = findViewById(2131297932);
-    this.vVr = ((ImageView)findViewById(2131298801));
-    this.vVs = ((TextView)findViewById(2131298802));
-    this.vVt = ((TextView)findViewById(2131298800));
-    this.vVy = ObjectAnimator.ofFloat(this.vVr, "alpha", new float[] { 1.0F, 0.0F, 1.0F });
-    this.vVy.setDuration(2000L);
-    this.vVy.setInterpolator(new AccelerateInterpolator());
-    this.vVy.setRepeatCount(-1);
-    this.vVy.setRepeatMode(1);
+    this.whu = findViewById(2131297932);
+    this.whv = ((ImageView)findViewById(2131298801));
+    this.whw = ((TextView)findViewById(2131298802));
+    this.whx = ((TextView)findViewById(2131298800));
+    this.whC = ObjectAnimator.ofFloat(this.whv, "alpha", new float[] { 1.0F, 0.0F, 1.0F });
+    this.whC.setDuration(2000L);
+    this.whC.setInterpolator(new AccelerateInterpolator());
+    this.whC.setRepeatCount(-1);
+    this.whC.setRepeatMode(1);
     setBackgroundColor(Color.argb(Math.round(127.5F), 0, 0, 0));
-    dnS();
+    dqQ();
     setVisibility(8);
     AppMethodBeat.o(94569);
   }
@@ -82,8 +82,8 @@ public class MMSightTopCountdownCoverView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(94570);
-    this.mHandler = new ap(Looper.getMainLooper());
-    this.vVw = new Runnable()
+    this.mHandler = new aq(Looper.getMainLooper());
+    this.whA = new Runnable()
     {
       public final void run()
       {
@@ -92,7 +92,7 @@ public class MMSightTopCountdownCoverView
         AppMethodBeat.o(94567);
       }
     };
-    this.vVx = new Runnable()
+    this.whB = new Runnable()
     {
       public final void run()
       {
@@ -108,22 +108,22 @@ public class MMSightTopCountdownCoverView
       }
     };
     LayoutInflater.from(getContext()).inflate(2131494917, this, true);
-    this.vVq = findViewById(2131297932);
-    this.vVr = ((ImageView)findViewById(2131298801));
-    this.vVs = ((TextView)findViewById(2131298802));
-    this.vVt = ((TextView)findViewById(2131298800));
-    this.vVy = ObjectAnimator.ofFloat(this.vVr, "alpha", new float[] { 1.0F, 0.0F, 1.0F });
-    this.vVy.setDuration(2000L);
-    this.vVy.setInterpolator(new AccelerateInterpolator());
-    this.vVy.setRepeatCount(-1);
-    this.vVy.setRepeatMode(1);
+    this.whu = findViewById(2131297932);
+    this.whv = ((ImageView)findViewById(2131298801));
+    this.whw = ((TextView)findViewById(2131298802));
+    this.whx = ((TextView)findViewById(2131298800));
+    this.whC = ObjectAnimator.ofFloat(this.whv, "alpha", new float[] { 1.0F, 0.0F, 1.0F });
+    this.whC.setDuration(2000L);
+    this.whC.setInterpolator(new AccelerateInterpolator());
+    this.whC.setRepeatCount(-1);
+    this.whC.setRepeatMode(1);
     setBackgroundColor(Color.argb(Math.round(127.5F), 0, 0, 0));
-    dnS();
+    dqQ();
     setVisibility(8);
     AppMethodBeat.o(94570);
   }
   
-  private void dnS()
+  private void dqQ()
   {
     AppMethodBeat.i(94571);
     Object localObject = getContext();
@@ -132,7 +132,7 @@ public class MMSightTopCountdownCoverView
       AppMethodBeat.o(94571);
       return;
     }
-    localObject = al.bf((Activity)localObject);
+    localObject = al.bg((Activity)localObject);
     int j = getPaddingLeft();
     if (localObject != null) {
       i = getPaddingTop();
@@ -145,33 +145,33 @@ public class MMSightTopCountdownCoverView
     }
   }
   
-  private void dnV()
+  private void dqT()
   {
     AppMethodBeat.i(94575);
-    dnU();
-    this.vVy.cancel();
+    dqS();
+    this.whC.cancel();
     AppMethodBeat.o(94575);
   }
   
-  public final void dnT()
+  public final void dqR()
   {
     AppMethodBeat.i(94572);
-    if (this.vVv > 0L)
+    if (this.whz > 0L)
     {
-      dnV();
-      this.vVr.setAlpha(1.0F);
-      this.vVs.setText(String.format(Locale.US, "%02d:%02d", new Object[] { Integer.valueOf(0), Integer.valueOf(0) }));
-      this.vVv = 0L;
-      this.vVu = 0L;
+      dqT();
+      this.whv.setAlpha(1.0F);
+      this.whw.setText(String.format(Locale.US, "%02d:%02d", new Object[] { Integer.valueOf(0), Integer.valueOf(0) }));
+      this.whz = 0L;
+      this.why = 0L;
     }
     AppMethodBeat.o(94572);
   }
   
-  final void dnU()
+  final void dqS()
   {
     AppMethodBeat.i(94574);
-    this.mHandler.removeCallbacks(this.vVx);
-    this.mHandler.removeCallbacks(this.vVw);
+    this.mHandler.removeCallbacks(this.whB);
+    this.mHandler.removeCallbacks(this.whA);
     AppMethodBeat.o(94574);
   }
   
@@ -179,7 +179,7 @@ public class MMSightTopCountdownCoverView
   {
     AppMethodBeat.i(94573);
     super.onDetachedFromWindow();
-    dnV();
+    dqT();
     AppMethodBeat.o(94573);
   }
 }

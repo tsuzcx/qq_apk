@@ -8,15 +8,15 @@ import com.tencent.mm.plugin.game.model.w;
 public abstract interface f
   extends a
 {
-  public abstract s cWH();
+  public abstract s cZl();
   
-  public abstract w cWI();
+  public abstract w cZm();
   
-  public abstract com.tencent.mm.plugin.game.model.a.g cWJ();
+  public abstract com.tencent.mm.plugin.game.model.a.g cZn();
   
-  public abstract com.tencent.mm.plugin.game.media.g cWK();
+  public abstract com.tencent.mm.plugin.game.media.g cZo();
   
-  public abstract d cWL();
+  public abstract d cZp();
 }
 
 

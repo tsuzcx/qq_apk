@@ -3,48 +3,48 @@ package com.tencent.mm.plugin.vlog.player;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.media.g.c;
 import com.tencent.mm.media.g.d;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/vlog/player/VLogScriptTexCache;", "", "()V", "externalTexIndex", "", "externalTexsPool", "", "Lcom/tencent/mm/media/globject/GLTextureObject;", "[Lcom/tencent/mm/media/globject/GLTextureObject;", "normalTexIndex", "normalTexsPool", "clearCache", "", "initCache", "releaseExternalTex", "tex", "releaseNormalTex", "requestExternalTex", "requestNormalTex", "Companion", "plugin-vlog_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/vlog/player/VLogScriptTexCache;", "", "()V", "externalTexIndex", "", "externalTexsPool", "", "Lcom/tencent/mm/media/globject/GLTextureObject;", "[Lcom/tencent/mm/media/globject/GLTextureObject;", "normalTexIndex", "normalTexsPool", "clearCache", "", "initCache", "releaseExternalTex", "tex", "releaseNormalTex", "requestExternalTex", "requestNormalTex", "Companion", "plugin-vlog_release"})
 public final class j
 {
-  public static final a BIT;
-  final d[] BIP;
-  final d[] BIQ;
-  int BIR;
-  int BIS;
+  public static final a Cas;
+  final d[] Cao;
+  final d[] Cap;
+  int Caq;
+  int Car;
   
   static
   {
-    AppMethodBeat.i(195955);
-    BIT = new a((byte)0);
-    AppMethodBeat.o(195955);
+    AppMethodBeat.i(191415);
+    Cas = new a((byte)0);
+    AppMethodBeat.o(191415);
   }
   
   public j()
   {
-    AppMethodBeat.i(195954);
-    this.BIP = new d[2];
-    this.BIQ = new d[2];
-    AppMethodBeat.o(195954);
+    AppMethodBeat.i(191414);
+    this.Cao = new d[2];
+    this.Cap = new d[2];
+    AppMethodBeat.o(191414);
   }
   
-  public final void esJ()
+  public final void ewq()
   {
-    AppMethodBeat.i(195953);
-    ad.i("MicroMsg.VLogScriptTexCache", "init cache, cacheTexsNum:2");
+    AppMethodBeat.i(191413);
+    ae.i("MicroMsg.VLogScriptTexCache", "init cache, cacheTexsNum:2");
     int i = 0;
     while (i < 2)
     {
-      this.BIP[i] = c.a(false, 11L);
-      this.BIQ[i] = c.a(true, 11L);
+      this.Cao[i] = c.a(false, 11L);
+      this.Cap[i] = c.a(true, 11L);
       i += 1;
     }
-    AppMethodBeat.o(195953);
+    AppMethodBeat.o(191413);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/vlog/player/VLogScriptTexCache$Companion;", "", "()V", "TAG", "", "cacheTexsNum", "", "plugin-vlog_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/vlog/player/VLogScriptTexCache$Companion;", "", "()V", "TAG", "", "cacheTexsNum", "", "plugin-vlog_release"})
   public static final class a {}
 }
 

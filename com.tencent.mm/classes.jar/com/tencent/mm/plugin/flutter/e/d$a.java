@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.flutter.e;
 
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/flutter/video/FlutterVideoPlayer$Companion;", "", "()V", "isInited", "", "Ljava/lang/Boolean;", "plugin-flutter_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/flutter/video/FlutterVideoPlayer$Companion;", "", "()V", "isInited", "", "Ljava/lang/Boolean;", "plugin-flutter_release"})
 public final class d$a {}
 
 

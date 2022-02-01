@@ -4,9 +4,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
 {
-  private static volatile b NUK = b.NUO;
-  private final StringBuffer NUL;
-  private final b NUN;
+  private static volatile b OrQ = b.OrT;
+  private final StringBuffer OrR;
+  private final b OrS;
   private final Object object;
   
   public a(Object paramObject, b paramb)
@@ -19,17 +19,17 @@ public final class a
     AppMethodBeat.i(40695);
     b localb = paramb;
     if (paramb == null) {
-      localb = NUK;
+      localb = OrQ;
     }
     paramb = new StringBuffer(512);
-    this.NUL = paramb;
-    this.NUN = localb;
+    this.OrR = paramb;
+    this.OrS = localb;
     this.object = paramObject;
     if (paramObject != null) {
-      if ((localb.NUV) && (paramObject != null))
+      if ((localb.Osa) && (paramObject != null))
       {
-        b.gv(paramObject);
-        if (!localb.NUW) {
+        b.gy(paramObject);
+        if (!localb.Osb) {
           break label153;
         }
         paramb.append(org.apache.commons.b.b.bE(paramObject.getClass()));
@@ -37,14 +37,14 @@ public final class a
     }
     for (;;)
     {
-      if ((localb.NUX) && (paramObject != null))
+      if ((localb.Osc) && (paramObject != null))
       {
-        b.gv(paramObject);
+        b.gy(paramObject);
         paramb.append('@');
         paramb.append(Integer.toHexString(System.identityHashCode(paramObject)));
       }
-      paramb.append(localb.xez);
-      if (localb.NUZ) {
+      paramb.append(localb.xuq);
+      if (localb.Ose) {
         localb.c(paramb);
       }
       AppMethodBeat.o(40695);
@@ -54,10 +54,10 @@ public final class a
     }
   }
   
-  public final a gt(Object paramObject)
+  public final a gw(Object paramObject)
   {
     AppMethodBeat.i(40696);
-    this.NUN.b(this.NUL, paramObject);
+    this.OrS.b(this.OrR, paramObject);
     AppMethodBeat.o(40696);
     return this;
   }
@@ -68,20 +68,20 @@ public final class a
     AppMethodBeat.i(40697);
     if (this.object == null)
     {
-      this.NUL.append(this.NUN.NVh);
-      localObject1 = this.NUL.toString();
+      this.OrR.append(this.OrS.Osm);
+      localObject1 = this.OrR.toString();
       AppMethodBeat.o(40697);
       return localObject1;
     }
-    Object localObject1 = this.NUN;
-    StringBuffer localStringBuffer = this.NUL;
+    Object localObject1 = this.OrS;
+    StringBuffer localStringBuffer = this.OrR;
     Object localObject2 = this.object;
     int k;
     int m;
-    if (!((b)localObject1).NVa)
+    if (!((b)localObject1).Osf)
     {
       k = localStringBuffer.length();
-      m = ((b)localObject1).NVb.length();
+      m = ((b)localObject1).Osg.length();
       if ((k > 0) && (m > 0) && (k >= m))
       {
         i = 0;
@@ -89,7 +89,7 @@ public final class a
         if (i >= m) {
           break label179;
         }
-        if (localStringBuffer.charAt(k - 1 - i) == ((b)localObject1).NVb.charAt(m - 1 - i)) {
+        if (localStringBuffer.charAt(k - 1 - i) == ((b)localObject1).Osg.charAt(m - 1 - i)) {
           break label172;
         }
       }
@@ -101,8 +101,8 @@ public final class a
       if (i != 0) {
         localStringBuffer.setLength(k - m);
       }
-      localStringBuffer.append(((b)localObject1).xeA);
-      b.gw(localObject2);
+      localStringBuffer.append(((b)localObject1).xur);
+      b.gz(localObject2);
       break;
       i += 1;
       break label105;

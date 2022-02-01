@@ -7,12 +7,12 @@ import android.view.View.MeasureSpec;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public class ChatFooterBottom
   extends FrameLayout
 {
-  private boolean dKW = false;
+  private boolean dMl = false;
   
   public ChatFooterBottom(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -31,10 +31,10 @@ public class ChatFooterBottom
     AppMethodBeat.o(31719);
   }
   
-  public final boolean feq()
+  public final boolean fig()
   {
     AppMethodBeat.i(31727);
-    if ((this.dKW) || (getVisibility() != 0))
+    if ((this.dMl) || (getVisibility() != 0))
     {
       AppMethodBeat.o(31727);
       return true;
@@ -61,7 +61,7 @@ public class ChatFooterBottom
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     AppMethodBeat.i(31721);
-    ad.d("MicroMsg.ChatFooterBottom", "jacks onLayout change: %B, l:%d, t:%d, r:%d, b:%d", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4) });
+    ae.d("MicroMsg.ChatFooterBottom", "jacks onLayout change: %B, l:%d, t:%d, r:%d, b:%d", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4) });
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     AppMethodBeat.o(31721);
   }
@@ -69,8 +69,8 @@ public class ChatFooterBottom
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(31720);
-    ad.d("MicroMsg.ChatFooterBottom", "jacks onMeasure  width:%d, height:%d, isHide: %B", new Object[] { Integer.valueOf(View.MeasureSpec.getSize(paramInt1)), Integer.valueOf(View.MeasureSpec.getSize(paramInt2)), Boolean.valueOf(this.dKW) });
-    if (this.dKW)
+    ae.d("MicroMsg.ChatFooterBottom", "jacks onMeasure  width:%d, height:%d, isHide: %B", new Object[] { Integer.valueOf(View.MeasureSpec.getSize(paramInt1)), Integer.valueOf(View.MeasureSpec.getSize(paramInt2)), Boolean.valueOf(this.dMl) });
+    if (this.dMl)
     {
       setVisibility(8);
       paramInt1 = View.MeasureSpec.makeMeasureSpec(0, 1073741824);
@@ -83,14 +83,14 @@ public class ChatFooterBottom
   protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     AppMethodBeat.i(31723);
-    ad.d("MicroMsg.ChatFooterBottom", "jacks onSizeChanged  w:%d, h:%d, oldw:%d, oldh:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4) });
+    ae.d("MicroMsg.ChatFooterBottom", "jacks onSizeChanged  w:%d, h:%d, oldw:%d, oldh:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4) });
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     AppMethodBeat.o(31723);
   }
   
   public void setIsHide(boolean paramBoolean)
   {
-    this.dKW = paramBoolean;
+    this.dMl = paramBoolean;
   }
   
   public void setLayoutParams(ViewGroup.LayoutParams paramLayoutParams)
@@ -104,7 +104,7 @@ public class ChatFooterBottom
   {
     AppMethodBeat.i(31724);
     if (paramInt == 0) {
-      this.dKW = false;
+      this.dMl = false;
     }
     super.setVisibility(paramInt);
     AppMethodBeat.o(31724);

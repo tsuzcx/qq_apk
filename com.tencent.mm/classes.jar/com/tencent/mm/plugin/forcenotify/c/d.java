@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.forcenotify.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.g.c.cl;
-import com.tencent.mm.model.cf;
+import com.tencent.mm.model.ch;
 import com.tencent.mm.sdk.e.c.a;
-import com.tencent.mm.storage.am;
+import com.tencent.mm.storage.an;
 import java.lang.reflect.Field;
 import java.util.Map;
 
@@ -12,46 +12,46 @@ public final class d
   extends cl
 {
   public static c.a info;
-  public am contact = null;
+  public an contact = null;
   
   static
   {
     AppMethodBeat.i(149136);
     c.a locala = new c.a();
-    locala.IhA = new Field[8];
+    locala.IBL = new Field[8];
     locala.columns = new String[9];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "ForcePushId";
-    locala.IhC.put("ForcePushId", "TEXT PRIMARY KEY ");
+    locala.IBN.put("ForcePushId", "TEXT PRIMARY KEY ");
     localStringBuilder.append(" ForcePushId TEXT PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.IhB = "ForcePushId";
+    locala.IBM = "ForcePushId";
     locala.columns[1] = "CreateTime";
-    locala.IhC.put("CreateTime", "LONG");
+    locala.IBN.put("CreateTime", "LONG");
     localStringBuilder.append(" CreateTime LONG");
     localStringBuilder.append(", ");
     locala.columns[2] = "ExpiredTime";
-    locala.IhC.put("ExpiredTime", "LONG");
+    locala.IBN.put("ExpiredTime", "LONG");
     localStringBuilder.append(" ExpiredTime LONG");
     localStringBuilder.append(", ");
     locala.columns[3] = "Description";
-    locala.IhC.put("Description", "TEXT");
+    locala.IBN.put("Description", "TEXT");
     localStringBuilder.append(" Description TEXT");
     localStringBuilder.append(", ");
     locala.columns[4] = "UserIcon";
-    locala.IhC.put("UserIcon", "TEXT");
+    locala.IBN.put("UserIcon", "TEXT");
     localStringBuilder.append(" UserIcon TEXT");
     localStringBuilder.append(", ");
     locala.columns[5] = "UserName";
-    locala.IhC.put("UserName", "TEXT");
+    locala.IBN.put("UserName", "TEXT");
     localStringBuilder.append(" UserName TEXT");
     localStringBuilder.append(", ");
     locala.columns[6] = "ExtInfo";
-    locala.IhC.put("ExtInfo", "TEXT");
+    locala.IBN.put("ExtInfo", "TEXT");
     localStringBuilder.append(" ExtInfo TEXT");
     localStringBuilder.append(", ");
     locala.columns[7] = "Status";
-    locala.IhC.put("Status", "INTEGER default '0' ");
+    locala.IBN.put("Status", "INTEGER default '0' ");
     localStringBuilder.append(" Status INTEGER default '0' ");
     locala.columns[8] = "rowid";
     locala.sql = localStringBuilder.toString();
@@ -59,10 +59,10 @@ public final class d
     AppMethodBeat.o(149136);
   }
   
-  public final boolean cQB()
+  public final boolean cTg()
   {
     AppMethodBeat.i(149134);
-    if (cf.aCK() >= this.field_ExpiredTime)
+    if (ch.aDa() >= this.field_ExpiredTime)
     {
       AppMethodBeat.o(149134);
       return true;
@@ -91,7 +91,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.forcenotify.c.d
  * JD-Core Version:    0.7.0.1
  */

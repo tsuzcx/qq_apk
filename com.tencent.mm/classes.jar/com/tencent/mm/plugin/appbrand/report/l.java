@@ -9,7 +9,7 @@ public final class l
   public static int l(int paramInt, Bundle paramBundle)
   {
     AppMethodBeat.i(48066);
-    if ((paramBundle == null) || (!vi(paramInt)))
+    if ((paramBundle == null) || (!vn(paramInt)))
     {
       AppMethodBeat.o(48066);
       return 0;
@@ -22,7 +22,7 @@ public final class l
   public static String m(int paramInt, Bundle paramBundle)
   {
     AppMethodBeat.i(48067);
-    if ((paramBundle == null) || (!vi(paramInt)))
+    if ((paramBundle == null) || (!vn(paramInt)))
     {
       AppMethodBeat.o(48067);
       return "";
@@ -80,7 +80,7 @@ public final class l
     return paramBundle;
   }
   
-  private static boolean vi(int paramInt)
+  private static boolean vn(int paramInt)
   {
     switch (paramInt)
     {

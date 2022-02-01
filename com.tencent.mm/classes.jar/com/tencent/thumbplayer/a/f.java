@@ -8,24 +8,24 @@ import java.util.Map;
 
 public final class f
 {
-  public ParcelFileDescriptor LWV;
-  a LWW;
+  public ParcelFileDescriptor MtQ;
+  a MtR;
   public Map<String, String> mHttpHeaders;
   public int mType;
   public String mUrl;
   
   protected f()
   {
-    AppMethodBeat.i(191632);
+    AppMethodBeat.i(194310);
     this.mHttpHeaders = new HashMap();
-    AppMethodBeat.o(191632);
+    AppMethodBeat.o(194310);
   }
   
   protected final void setUrl(String paramString)
   {
     this.mUrl = paramString;
     this.mType = 0;
-    this.LWV = null;
+    this.MtQ = null;
   }
 }
 

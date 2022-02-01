@@ -4,14 +4,14 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 public final class jj
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public LinkedList<String> FAs;
+  public LinkedList<String> FSP;
   
   public jj()
   {
     AppMethodBeat.i(104751);
-    this.FAs = new LinkedList();
+    this.FSP = new LinkedList();
     AppMethodBeat.o(104751);
   }
   
@@ -20,24 +20,24 @@ public final class jj
     AppMethodBeat.i(104752);
     if (paramInt == 0)
     {
-      ((f.a.a.c.a)paramVarArgs[0]).e(1, 1, this.FAs);
+      ((f.a.a.c.a)paramVarArgs[0]).e(1, 1, this.FSP);
       AppMethodBeat.o(104752);
       return 0;
     }
     if (paramInt == 1)
     {
-      paramInt = f.a.a.a.c(1, 1, this.FAs);
+      paramInt = f.a.a.a.c(1, 1, this.FSP);
       AppMethodBeat.o(104752);
       return paramInt + 0;
     }
     if (paramInt == 2)
     {
       paramVarArgs = (byte[])paramVarArgs[0];
-      this.FAs.clear();
+      this.FSP.clear();
       paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gxE();
+          paramVarArgs.gCg();
         }
       }
       AppMethodBeat.o(104752);
@@ -53,7 +53,7 @@ public final class jj
         AppMethodBeat.o(104752);
         return -1;
       }
-      localjj.FAs.add(locala.NPN.readString());
+      localjj.FSP.add(locala.OmT.readString());
       AppMethodBeat.o(104752);
       return 0;
     }

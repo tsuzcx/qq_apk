@@ -25,27 +25,29 @@ import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ListView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.g.c.aw;
+import com.tencent.mm.g.c.ba;
 import com.tencent.mm.g.c.ei;
-import com.tencent.mm.model.bj.a;
-import com.tencent.mm.model.w;
+import com.tencent.mm.model.bc;
+import com.tencent.mm.model.bl.a;
 import com.tencent.mm.model.x;
+import com.tencent.mm.model.y;
 import com.tencent.mm.plugin.messenger.foundation.a.a.i;
 import com.tencent.mm.pluginsdk.l;
 import com.tencent.mm.pluginsdk.m;
-import com.tencent.mm.protocal.protobuf.bcl;
+import com.tencent.mm.protocal.protobuf.bdb;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.c;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.am;
-import com.tencent.mm.storage.at;
-import com.tencent.mm.storage.bp;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.aj;
+import com.tencent.mm.storage.an;
+import com.tencent.mm.storage.au;
 import com.tencent.mm.storage.bq;
+import com.tencent.mm.storage.br;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.MMSlideDelView.c;
 import com.tencent.mm.ui.base.MMSlideDelView.f;
@@ -62,26 +64,26 @@ public class QConversationUI
 {
   private TextView emptyTipTv;
   private boolean isDeleteCancel;
-  private n.e nUI;
-  private am pMt;
-  private boolean vgw;
-  private String xaA;
-  private boolean xaB;
-  private String xaC;
-  private ListView xav;
-  private c xaw;
-  private com.tencent.mm.plugin.qmessage.a.c xax;
-  private boolean xay;
-  private String xaz;
+  private n.e oao;
+  private an pSY;
+  private boolean vsD;
+  private ListView xqm;
+  private c xqn;
+  private com.tencent.mm.plugin.qmessage.a.c xqo;
+  private boolean xqp;
+  private String xqq;
+  private String xqr;
+  private boolean xqs;
+  private String xqt;
   
   public QConversationUI()
   {
     AppMethodBeat.i(27780);
-    this.vgw = false;
-    this.xay = false;
-    this.xaB = false;
+    this.vsD = false;
+    this.xqp = false;
+    this.xqs = false;
     this.isDeleteCancel = false;
-    this.nUI = new n.e()
+    this.oao = new n.e()
     {
       public final void onMMMenuItemSelected(MenuItem paramAnonymousMenuItem, int paramAnonymousInt)
       {
@@ -93,7 +95,7 @@ public class QConversationUI
     AppMethodBeat.o(27780);
   }
   
-  private static String ba(Context paramContext, String paramString)
+  private static String bc(Context paramContext, String paramString)
   {
     AppMethodBeat.i(27787);
     paramContext = paramContext.getPackageManager();
@@ -105,7 +107,7 @@ public class QConversationUI
       localIntent.setPackage(paramString.packageName);
       paramContext = (ResolveInfo)paramContext.queryIntentActivities(localIntent, 0).iterator().next();
       if (paramContext == null) {
-        break label100;
+        break label99;
       }
       paramContext = paramContext.activityInfo.name;
     }
@@ -113,7 +115,7 @@ public class QConversationUI
     {
       for (;;)
       {
-        ad.printErrStackTrace("MicroMsg.QConversationUI", paramContext, "", new Object[0]);
+        ae.printErrStackTrace("MicroMsg.QConversationUI", paramContext, "", new Object[0]);
         paramContext = null;
       }
     }
@@ -121,48 +123,48 @@ public class QConversationUI
     return paramContext;
   }
   
-  private static void dCa()
+  private static void dFr()
   {
     AppMethodBeat.i(27784);
-    com.tencent.mm.model.ba.aBQ();
-    Object localObject = com.tencent.mm.model.c.azs().JN(2);
+    bc.aCg();
+    Object localObject = com.tencent.mm.model.c.azI().Km(2);
     if ((localObject != null) && (((ei)localObject).field_msgId > 0L))
     {
-      ad.d("MicroMsg.QConversationUI", "resetUnread: lastReadTime = " + ((ei)localObject).field_createTime);
-      com.tencent.mm.model.ba.aBQ();
-      com.tencent.mm.model.c.ajl().set(12295, Long.valueOf(((ei)localObject).field_createTime));
+      ae.d("MicroMsg.QConversationUI", "resetUnread: lastReadTime = " + ((ei)localObject).field_createTime);
+      bc.aCg();
+      com.tencent.mm.model.c.ajA().set(12295, Long.valueOf(((ei)localObject).field_createTime));
     }
-    com.tencent.mm.model.ba.aBQ();
-    localObject = com.tencent.mm.model.c.azv().aTz("qmessage");
-    if ((localObject == null) || (bt.nullAsNil(((com.tencent.mm.g.c.ba)localObject).field_username).length() <= 0))
+    bc.aCg();
+    localObject = com.tencent.mm.model.c.azL().aVa("qmessage");
+    if ((localObject == null) || (bu.nullAsNil(((ba)localObject).field_username).length() <= 0))
     {
-      ad.e("MicroMsg.QConversationUI", "resetUnread: can not find QMessage");
+      ae.e("MicroMsg.QConversationUI", "resetUnread: can not find QMessage");
       AppMethodBeat.o(27784);
       return;
     }
-    ((at)localObject).kp(0);
-    com.tencent.mm.model.ba.aBQ();
-    if (com.tencent.mm.model.c.azv().a((at)localObject, ((com.tencent.mm.g.c.ba)localObject).field_username) == -1) {
-      ad.e("MicroMsg.QConversationUI", "reset qmessage unread failed");
+    ((au)localObject).kr(0);
+    bc.aCg();
+    if (com.tencent.mm.model.c.azL().a((au)localObject, ((ba)localObject).field_username) == -1) {
+      ae.e("MicroMsg.QConversationUI", "reset qmessage unread failed");
     }
     AppMethodBeat.o(27784);
   }
   
-  private void dCb()
+  private void dFs()
   {
     AppMethodBeat.i(27788);
-    if (bt.isNullOrNil(this.xaz))
+    if (bu.isNullOrNil(this.xqq))
     {
       AppMethodBeat.o(27788);
       return;
     }
-    this.xay = true;
+    this.xqp = true;
     addIconOptionMenu(0, 2131755128, 2131691057, new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
         AppMethodBeat.i(27779);
-        if (!bt.isNullOrNil(QConversationUI.f(QConversationUI.this))) {
+        if (!bu.isNullOrNil(QConversationUI.f(QConversationUI.this))) {
           QConversationUI.a(QConversationUI.this, QConversationUI.f(QConversationUI.this), QConversationUI.g(QConversationUI.this));
         }
         AppMethodBeat.o(27779);
@@ -172,11 +174,11 @@ public class QConversationUI
     AppMethodBeat.o(27788);
   }
   
-  private void dCc()
+  private void dFt()
   {
     AppMethodBeat.i(27789);
     removeAllOptionMenu();
-    dCb();
+    dFs();
     addIconOptionMenu(2, 2131755131, 2131689511, new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -185,7 +187,7 @@ public class QConversationUI
         paramAnonymousMenuItem = new Intent();
         paramAnonymousMenuItem.putExtra("Contact_User", QConversationUI.a(QConversationUI.this).field_username);
         paramAnonymousMenuItem.putExtra("Chat_Readonly", true);
-        com.tencent.mm.plugin.qmessage.a.iRG.c(paramAnonymousMenuItem, QConversationUI.this.getContext());
+        com.tencent.mm.plugin.qmessage.a.iUz.c(paramAnonymousMenuItem, QConversationUI.this.getContext());
         AppMethodBeat.o(27767);
         return true;
       }
@@ -196,7 +198,7 @@ public class QConversationUI
   private void goBack()
   {
     AppMethodBeat.i(27791);
-    if (this.vgw)
+    if (this.vsD)
     {
       finish();
       AppMethodBeat.o(27791);
@@ -204,7 +206,7 @@ public class QConversationUI
     }
     Intent localIntent = new Intent();
     localIntent.addFlags(67108864);
-    com.tencent.mm.plugin.qmessage.a.iRG.p(localIntent, this);
+    com.tencent.mm.plugin.qmessage.a.iUz.p(localIntent, this);
     overridePendingTransition(2130771986, 2130772100);
     AppMethodBeat.o(27791);
   }
@@ -217,25 +219,25 @@ public class QConversationUI
   public void initView()
   {
     AppMethodBeat.i(27786);
-    this.vgw = getIntent().getBooleanExtra("finish_direct", false);
-    ad.d("MicroMsg.QConversationUI", "isFromSearch  " + this.vgw);
-    com.tencent.mm.model.ba.aBQ();
-    this.pMt = com.tencent.mm.model.c.azp().Bf("qmessage");
-    if ((this.pMt != null) && ((int)this.pMt.gfj > 0)) {}
+    this.vsD = getIntent().getBooleanExtra("finish_direct", false);
+    ae.d("MicroMsg.QConversationUI", "isFromSearch  " + this.vsD);
+    bc.aCg();
+    this.pSY = com.tencent.mm.model.c.azF().BH("qmessage");
+    if ((this.pSY != null) && ((int)this.pSY.ght > 0)) {}
     for (boolean bool = true;; bool = false)
     {
       Assert.assertTrue("can not find qmessage", bool);
-      this.xav = ((ListView)findViewById(2131305951));
+      this.xqm = ((ListView)findViewById(2131305951));
       this.emptyTipTv = ((TextView)findViewById(2131299468));
       this.emptyTipTv.setText(2131758420);
-      this.xaw = new c(this, new r.a()
+      this.xqn = new c(this, new r.a()
       {
-        public final void aSs()
+        public final void aSR()
         {
           AppMethodBeat.i(27766);
           QConversationUI localQConversationUI = QConversationUI.this;
-          String str = QConversationUI.a(QConversationUI.this).adu();
-          int i = x.AA(w.hFg);
+          String str = QConversationUI.a(QConversationUI.this).adF();
+          int i = y.Bk(x.hHY);
           if (i <= 0) {
             localQConversationUI.setMMTitle(str);
           }
@@ -248,7 +250,7 @@ public class QConversationUI
           }
         }
       });
-      this.xaw.setGetViewPositionCallback(new MMSlideDelView.c()
+      this.xqn.setGetViewPositionCallback(new MMSlideDelView.c()
       {
         public final int dA(View paramAnonymousView)
         {
@@ -258,23 +260,23 @@ public class QConversationUI
           return i;
         }
       });
-      this.xaw.setPerformItemClickListener(new MMSlideDelView.g()
+      this.xqn.setPerformItemClickListener(new MMSlideDelView.g()
       {
-        public final void s(View paramAnonymousView, int paramAnonymousInt1, int paramAnonymousInt2)
+        public final void r(View paramAnonymousView, int paramAnonymousInt1, int paramAnonymousInt2)
         {
           AppMethodBeat.i(27773);
           QConversationUI.c(QConversationUI.this).performItemClick(paramAnonymousView, paramAnonymousInt1, paramAnonymousInt2);
           AppMethodBeat.o(27773);
         }
       });
-      this.xaw.a(new MMSlideDelView.f()
+      this.xqn.a(new MMSlideDelView.f()
       {
-        public final void cP(Object paramAnonymousObject)
+        public final void cQ(Object paramAnonymousObject)
         {
           AppMethodBeat.i(27774);
           if (paramAnonymousObject == null)
           {
-            ad.e("MicroMsg.QConversationUI", "onItemDel object null");
+            ae.e("MicroMsg.QConversationUI", "onItemDel object null");
             AppMethodBeat.o(27774);
             return;
           }
@@ -282,8 +284,8 @@ public class QConversationUI
           AppMethodBeat.o(27774);
         }
       });
-      this.xav.setAdapter(this.xaw);
-      this.xav.setOnItemClickListener(new AdapterView.OnItemClickListener()
+      this.xqm.setAdapter(this.xqn);
+      this.xqm.setOnItemClickListener(new AdapterView.OnItemClickListener()
       {
         public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
         {
@@ -291,28 +293,28 @@ public class QConversationUI
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
           localb.bd(paramAnonymousAdapterView);
           localb.bd(paramAnonymousView);
-          localb.mr(paramAnonymousInt);
-          localb.qY(paramAnonymousLong);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/qmessage/ui/QConversationUI$5", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.ahq());
-          paramAnonymousAdapterView = (at)QConversationUI.b(QConversationUI.this).getItem(paramAnonymousInt);
+          localb.mu(paramAnonymousInt);
+          localb.rl(paramAnonymousLong);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/qmessage/ui/QConversationUI$5", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.ahF());
+          paramAnonymousAdapterView = (au)QConversationUI.b(QConversationUI.this).getItem(paramAnonymousInt);
           paramAnonymousView = new Intent();
           paramAnonymousView.addFlags(67108864);
           paramAnonymousView.putExtra("Chat_User", paramAnonymousAdapterView.field_username);
           paramAnonymousView.putExtra("key_need_send_video", false);
-          com.tencent.mm.plugin.qmessage.a.iRG.d(paramAnonymousView, QConversationUI.this.getContext());
+          com.tencent.mm.plugin.qmessage.a.iUz.d(paramAnonymousView, QConversationUI.this.getContext());
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/qmessage/ui/QConversationUI$5", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
           AppMethodBeat.o(27775);
         }
       });
       final com.tencent.mm.ui.widget.b.a locala = new com.tencent.mm.ui.widget.b.a(this);
-      this.xav.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener()
+      this.xqm.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener()
       {
         public final boolean onItemLongClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
         {
           AppMethodBeat.i(27776);
           if (paramAnonymousInt < QConversationUI.c(QConversationUI.this).getHeaderViewsCount())
           {
-            ad.w("MicroMsg.QConversationUI", "on header view long click, ignore");
+            ae.w("MicroMsg.QConversationUI", "on header view long click, ignore");
             AppMethodBeat.o(27776);
             return true;
           }
@@ -321,7 +323,7 @@ public class QConversationUI
           return true;
         }
       });
-      com.tencent.mm.plugin.qmessage.a.xaa.hu(1010);
+      com.tencent.mm.plugin.qmessage.a.xpR.hu(1010);
       setBackBtn(new MenuItem.OnMenuItemClickListener()
       {
         public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -339,29 +341,29 @@ public class QConversationUI
           AppMethodBeat.i(27778);
           Object localObject = new com.tencent.mm.hellhoundlib.b.b();
           ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/qmessage/ui/QConversationUI$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahq());
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/qmessage/ui/QConversationUI$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahF());
           paramAnonymousView = QConversationUI.c(QConversationUI.this);
           paramAnonymousView = new com.tencent.mm.hellhoundlib.b.a().bc(paramAnonymousView);
           localObject = new Object();
-          com.tencent.mm.hellhoundlib.a.a.a(localObject, paramAnonymousView.ahp(), "com/tencent/mm/plugin/qmessage/ui/QConversationUI$8", "onClick", "(Landroid/view/View;)V", "com/tencent/mm/sdk/platformtools/BackwardSupportUtil$SmoothScrollFactory_EXEC_", "scrollToTop", "(Landroid/widget/ListView;)V");
-          BackwardSupportUtil.c.b((ListView)paramAnonymousView.mq(0));
+          com.tencent.mm.hellhoundlib.a.a.a(localObject, paramAnonymousView.ahE(), "com/tencent/mm/plugin/qmessage/ui/QConversationUI$8", "onClick", "(Landroid/view/View;)V", "com/tencent/mm/sdk/platformtools/BackwardSupportUtil$SmoothScrollFactory_EXEC_", "scrollToTop", "(Landroid/widget/ListView;)V");
+          BackwardSupportUtil.c.b((ListView)paramAnonymousView.mt(0));
           com.tencent.mm.hellhoundlib.a.a.a(localObject, "com/tencent/mm/plugin/qmessage/ui/QConversationUI$8", "onClick", "(Landroid/view/View;)V", "com/tencent/mm/sdk/platformtools/BackwardSupportUtil$SmoothScrollFactory_EXEC_", "scrollToTop", "(Landroid/widget/ListView;)V");
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/qmessage/ui/QConversationUI$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(27778);
         }
       });
-      com.tencent.mm.model.ba.aBQ();
-      this.xaz = ((String)com.tencent.mm.model.c.ajl().get(77, ""));
-      com.tencent.mm.model.ba.aBQ();
-      this.xaA = ((String)com.tencent.mm.model.c.ajl().get(78, ""));
-      if (this.xax == null)
+      bc.aCg();
+      this.xqq = ((String)com.tencent.mm.model.c.ajA().get(77, ""));
+      bc.aCg();
+      this.xqr = ((String)com.tencent.mm.model.c.ajA().get(78, ""));
+      if (this.xqo == null)
       {
-        this.xax = new com.tencent.mm.plugin.qmessage.a.c();
-        com.tencent.mm.model.ba.aiU().a(this.xax.getType(), this);
+        this.xqo = new com.tencent.mm.plugin.qmessage.a.c();
+        bc.ajj().a(this.xqo.getType(), this);
       }
-      com.tencent.mm.model.ba.aiU().a(this.xax, 0);
-      dCc();
-      com.tencent.mm.plugin.qmessage.a.xaa.hu(1010);
+      bc.ajj().a(this.xqo, 0);
+      dFt();
+      com.tencent.mm.plugin.qmessage.a.xpR.hu(1010);
       AppMethodBeat.o(27786);
       return;
     }
@@ -379,23 +381,23 @@ public class QConversationUI
   {
     AppMethodBeat.i(27792);
     paramView = (AdapterView.AdapterContextMenuInfo)paramContextMenuInfo;
-    paramView = (at)this.xaw.getItem(paramView.position);
-    com.tencent.mm.model.ba.aBQ();
-    paramContextMenu.setHeaderTitle(com.tencent.mm.model.c.azp().Bf(paramView.field_username).adv());
+    paramView = (au)this.xqn.getItem(paramView.position);
+    bc.aCg();
+    paramContextMenu.setHeaderTitle(com.tencent.mm.model.c.azF().BH(paramView.field_username).adG());
     paramContextMenu.add(0, 0, 0, 2131761057);
-    this.xaC = paramView.field_username;
+    this.xqt = paramView.field_username;
     AppMethodBeat.o(27792);
   }
   
   public void onDestroy()
   {
     AppMethodBeat.i(27782);
-    this.xaw.det();
-    if (this.xax != null)
+    this.xqn.dhl();
+    if (this.xqo != null)
     {
-      com.tencent.mm.model.ba.aiU().a(this.xax);
-      com.tencent.mm.model.ba.aiU().b(this.xax.getType(), this);
-      this.xax = null;
+      bc.ajj().a(this.xqo);
+      bc.ajj().b(this.xqo.getType(), this);
+      this.xqo = null;
     }
     super.onDestroy();
     AppMethodBeat.o(27782);
@@ -418,11 +420,11 @@ public class QConversationUI
   public void onPause()
   {
     AppMethodBeat.i(27785);
-    ad.v("MicroMsg.QConversationUI", "on pause");
-    com.tencent.mm.model.ba.aBQ();
-    com.tencent.mm.model.c.azv().b(this.xaw);
-    dCa();
-    this.xaw.onPause();
+    ae.v("MicroMsg.QConversationUI", "on pause");
+    bc.aCg();
+    com.tencent.mm.model.c.azL().b(this.xqn);
+    dFr();
+    this.xqn.onPause();
     super.onPause();
     AppMethodBeat.o(27785);
   }
@@ -431,10 +433,10 @@ public class QConversationUI
   {
     AppMethodBeat.i(27783);
     super.onResume();
-    dCa();
-    com.tencent.mm.model.ba.aBQ();
-    com.tencent.mm.model.c.azv().a(this.xaw);
-    this.xaw.a(null, null);
+    dFr();
+    bc.aCg();
+    com.tencent.mm.model.c.azL().a(this.xqn);
+    this.xqn.a(null, null);
     AppMethodBeat.o(27783);
   }
   
@@ -442,7 +444,7 @@ public class QConversationUI
   {
     Object localObject2 = null;
     AppMethodBeat.i(27793);
-    ad.d("MicroMsg.QConversationUI", "on scene end: errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    ae.d("MicroMsg.QConversationUI", "on scene end: errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
     switch (paramn.getType())
     {
     }
@@ -452,42 +454,42 @@ public class QConversationUI
       return;
     } while ((paramInt1 != 0) || (paramInt2 != 0));
     Object localObject3 = (com.tencent.mm.plugin.qmessage.a.c)paramn;
-    if (((com.tencent.mm.plugin.qmessage.a.c)localObject3).ipX != null)
+    if (((com.tencent.mm.plugin.qmessage.a.c)localObject3).isS != null)
     {
-      paramString = (bcl)((com.tencent.mm.plugin.qmessage.a.c)localObject3).ipX.hNL.hNQ;
+      paramString = (bdb)((com.tencent.mm.plugin.qmessage.a.c)localObject3).isS.hQE.hQJ;
       if (paramString == null) {}
     }
-    for (paramString = paramString.Gzc;; paramString = null)
+    for (paramString = paramString.GSC;; paramString = null)
     {
-      if (((com.tencent.mm.plugin.qmessage.a.c)localObject3).ipX != null)
+      if (((com.tencent.mm.plugin.qmessage.a.c)localObject3).isS != null)
       {
-        paramn = (bcl)((com.tencent.mm.plugin.qmessage.a.c)localObject3).ipX.hNL.hNQ;
+        paramn = (bdb)((com.tencent.mm.plugin.qmessage.a.c)localObject3).isS.hQE.hQJ;
         if (paramn == null) {}
       }
-      for (paramn = paramn.tRU;; paramn = null)
+      for (paramn = paramn.ucL;; paramn = null)
       {
         Object localObject1 = localObject2;
-        if (((com.tencent.mm.plugin.qmessage.a.c)localObject3).ipX != null)
+        if (((com.tencent.mm.plugin.qmessage.a.c)localObject3).isS != null)
         {
-          localObject3 = (bcl)((com.tencent.mm.plugin.qmessage.a.c)localObject3).ipX.hNL.hNQ;
+          localObject3 = (bdb)((com.tencent.mm.plugin.qmessage.a.c)localObject3).isS.hQE.hQJ;
           localObject1 = localObject2;
           if (localObject3 != null) {
-            localObject1 = ((bcl)localObject3).Gzd;
+            localObject1 = ((bdb)localObject3).GSD;
           }
         }
-        if (!bt.isNullOrNil((String)localObject1))
+        if (!bu.isNullOrNil((String)localObject1))
         {
-          this.xaz = ((String)localObject1);
-          com.tencent.mm.model.ba.aBQ();
-          com.tencent.mm.model.c.ajl().set(77, localObject1);
+          this.xqq = ((String)localObject1);
+          bc.aCg();
+          com.tencent.mm.model.c.ajA().set(77, localObject1);
         }
-        this.xaA = paramn;
-        com.tencent.mm.model.ba.aBQ();
-        com.tencent.mm.model.c.ajl().set(78, paramn);
-        if (!this.xay) {
-          dCc();
+        this.xqr = paramn;
+        bc.aCg();
+        com.tencent.mm.model.c.ajA().set(78, paramn);
+        if (!this.xqp) {
+          dFt();
         }
-        ad.d("MicroMsg.QConversationUI", "diaplayName: %s, url: %s, qqScheme: %s", new Object[] { paramString, paramn, localObject1 });
+        ae.d("MicroMsg.QConversationUI", "diaplayName: %s, url: %s, qqScheme: %s", new Object[] { paramString, paramn, localObject1 });
         break;
       }
     }

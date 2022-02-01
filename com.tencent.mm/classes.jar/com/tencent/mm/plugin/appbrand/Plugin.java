@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.appbrand;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.ax;
+import com.tencent.mm.model.az;
 import com.tencent.mm.plugin.appbrand.app.j;
 import com.tencent.mm.pluginsdk.b.c;
 import com.tencent.mm.pluginsdk.b.d;
@@ -16,7 +16,7 @@ public final class Plugin
     return null;
   }
   
-  public final ax createSubCore()
+  public final az createSubCore()
   {
     AppMethodBeat.i(43979);
     j localj = new j();

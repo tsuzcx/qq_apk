@@ -7,137 +7,137 @@ import java.util.List;
 
 public final class h
 {
-  public static final String Fng;
-  public static final String Fnh;
-  public static final String NHr;
-  public static final String NTA;
-  public static final String NTB;
-  public static final String NTC;
-  public static final String NTD;
-  public static final String NTE;
-  public static final String NTF;
-  public static final String NTG;
-  public static final String NTH;
-  public static final String NTI;
-  public static final String NTJ;
-  public static final String NTK;
-  public static final String NTL;
-  public static final String NTM;
-  public static final String NTN;
-  public static final String NTO;
-  public static final String NTP;
-  public static final String NTQ;
-  public static final String NTR;
-  public static final String NTS;
-  public static final String NTT;
-  public static final String NTU;
-  public static final String NTV;
-  public static final String NTW;
-  public static final String NTX;
-  public static final String NTY;
-  public static final String NTZ;
-  public static final String NTv;
-  public static final String NTw;
-  public static final String NTx;
-  public static final String NTy;
-  public static final String NTz;
-  public static final boolean NUA;
-  public static final boolean NUB;
-  public static final boolean NUC;
-  public static final boolean NUD;
-  public static final boolean NUE;
-  public static final boolean NUF;
-  public static final boolean NUG;
-  public static final boolean NUH;
-  public static final boolean NUI;
-  public static final boolean NUJ;
-  public static final String NUa;
-  public static final String NUb;
-  public static final String NUc;
-  public static final String NUd;
-  public static final String NUe;
-  public static final String NUf;
-  public static final String NUg;
-  public static final String NUh;
-  public static final float NUi;
-  public static final int NUj;
-  public static final boolean NUk;
-  public static final boolean NUl;
-  public static final boolean NUm;
-  public static final boolean NUn;
-  public static final boolean NUo;
-  public static final boolean NUp;
-  public static final boolean NUq;
-  public static final boolean NUr;
-  public static final boolean NUs;
-  public static final boolean NUt;
-  public static final boolean NUu;
-  public static final boolean NUv;
-  public static final boolean NUw;
-  public static final boolean NUx;
-  public static final boolean NUy;
-  public static final boolean NUz;
+  public static final String FFE;
+  public static final String FFF;
+  public static final String Oex;
+  public static final String OqB;
+  public static final String OqC;
+  public static final String OqD;
+  public static final String OqE;
+  public static final String OqF;
+  public static final String OqG;
+  public static final String OqH;
+  public static final String OqI;
+  public static final String OqJ;
+  public static final String OqK;
+  public static final String OqL;
+  public static final String OqM;
+  public static final String OqN;
+  public static final String OqO;
+  public static final String OqP;
+  public static final String OqQ;
+  public static final String OqR;
+  public static final String OqS;
+  public static final String OqT;
+  public static final String OqU;
+  public static final String OqV;
+  public static final String OqW;
+  public static final String OqX;
+  public static final String OqY;
+  public static final String OqZ;
+  public static final boolean OrA;
+  public static final boolean OrB;
+  public static final boolean OrC;
+  public static final boolean OrD;
+  public static final boolean OrE;
+  public static final boolean OrF;
+  public static final boolean OrG;
+  public static final boolean OrH;
+  public static final boolean OrI;
+  public static final boolean OrJ;
+  public static final boolean OrK;
+  public static final boolean OrL;
+  public static final boolean OrM;
+  public static final boolean OrN;
+  public static final boolean OrO;
+  public static final boolean OrP;
+  public static final String Ora;
+  public static final String Orb;
+  public static final String Orc;
+  public static final String Ord;
+  public static final String Ore;
+  public static final String Orf;
+  public static final String Org;
+  public static final String Orh;
+  public static final String Ori;
+  public static final String Orj;
+  public static final String Ork;
+  public static final String Orl;
+  public static final String Orm;
+  public static final String Orn;
+  public static final float Oro;
+  public static final int Orp;
+  public static final boolean Orq;
+  public static final boolean Orr;
+  public static final boolean Ors;
+  public static final boolean Ort;
+  public static final boolean Oru;
+  public static final boolean Orv;
+  public static final boolean Orw;
+  public static final boolean Orx;
+  public static final boolean Ory;
+  public static final boolean Orz;
   public static final String ccG;
   
   static
   {
     boolean bool2 = false;
     AppMethodBeat.i(40756);
-    NTv = getSystemProperty("awt.toolkit");
-    NTw = getSystemProperty("file.encoding");
-    NTx = getSystemProperty("file.separator");
-    NTy = getSystemProperty("java.awt.fonts");
-    NTz = getSystemProperty("java.awt.graphicsenv");
-    NTA = getSystemProperty("java.awt.headless");
-    NTB = getSystemProperty("java.awt.printerjob");
-    NTC = getSystemProperty("java.class.path");
-    NTD = getSystemProperty("java.class.version");
-    NTE = getSystemProperty("java.compiler");
-    NTF = getSystemProperty("java.endorsed.dirs");
-    NTG = getSystemProperty("java.ext.dirs");
-    NTH = getSystemProperty("java.home");
-    NTI = getSystemProperty("java.io.tmpdir");
-    NTJ = getSystemProperty("java.library.path");
-    NTK = getSystemProperty("java.runtime.name");
-    NTL = getSystemProperty("java.runtime.version");
-    NTM = getSystemProperty("java.specification.name");
-    NTN = getSystemProperty("java.specification.vendor");
-    NTO = getSystemProperty("java.specification.version");
-    NTP = getSystemProperty("java.util.prefs.PreferencesFactory");
-    NTQ = getSystemProperty("java.vendor");
-    NTR = getSystemProperty("java.vendor.url");
-    NTS = getSystemProperty("java.version");
-    NTT = getSystemProperty("java.vm.info");
-    NTU = getSystemProperty("java.vm.name");
-    NTV = getSystemProperty("java.vm.specification.name");
-    NTW = getSystemProperty("java.vm.specification.vendor");
-    NTX = getSystemProperty("java.vm.specification.version");
-    NTY = getSystemProperty("java.vm.vendor");
-    NTZ = getSystemProperty("java.vm.version");
-    NHr = getSystemProperty("line.separator");
-    NUa = getSystemProperty("os.arch");
-    Fng = getSystemProperty("os.name");
-    Fnh = getSystemProperty("os.version");
-    NUb = getSystemProperty("path.separator");
+    OqB = getSystemProperty("awt.toolkit");
+    OqC = getSystemProperty("file.encoding");
+    OqD = getSystemProperty("file.separator");
+    OqE = getSystemProperty("java.awt.fonts");
+    OqF = getSystemProperty("java.awt.graphicsenv");
+    OqG = getSystemProperty("java.awt.headless");
+    OqH = getSystemProperty("java.awt.printerjob");
+    OqI = getSystemProperty("java.class.path");
+    OqJ = getSystemProperty("java.class.version");
+    OqK = getSystemProperty("java.compiler");
+    OqL = getSystemProperty("java.endorsed.dirs");
+    OqM = getSystemProperty("java.ext.dirs");
+    OqN = getSystemProperty("java.home");
+    OqO = getSystemProperty("java.io.tmpdir");
+    OqP = getSystemProperty("java.library.path");
+    OqQ = getSystemProperty("java.runtime.name");
+    OqR = getSystemProperty("java.runtime.version");
+    OqS = getSystemProperty("java.specification.name");
+    OqT = getSystemProperty("java.specification.vendor");
+    OqU = getSystemProperty("java.specification.version");
+    OqV = getSystemProperty("java.util.prefs.PreferencesFactory");
+    OqW = getSystemProperty("java.vendor");
+    OqX = getSystemProperty("java.vendor.url");
+    OqY = getSystemProperty("java.version");
+    OqZ = getSystemProperty("java.vm.info");
+    Ora = getSystemProperty("java.vm.name");
+    Orb = getSystemProperty("java.vm.specification.name");
+    Orc = getSystemProperty("java.vm.specification.vendor");
+    Ord = getSystemProperty("java.vm.specification.version");
+    Ore = getSystemProperty("java.vm.vendor");
+    Orf = getSystemProperty("java.vm.version");
+    Oex = getSystemProperty("line.separator");
+    Org = getSystemProperty("os.arch");
+    FFE = getSystemProperty("os.name");
+    FFF = getSystemProperty("os.version");
+    Orh = getSystemProperty("path.separator");
     int i;
     if (getSystemProperty("user.country") == null)
     {
       localObject = getSystemProperty("user.region");
-      NUc = (String)localObject;
-      NUd = getSystemProperty("user.dir");
-      NUe = getSystemProperty("user.home");
-      NUf = getSystemProperty("user.language");
+      Ori = (String)localObject;
+      Orj = getSystemProperty("user.dir");
+      Ork = getSystemProperty("user.home");
+      Orl = getSystemProperty("user.language");
       ccG = getSystemProperty("user.name");
-      NUg = getSystemProperty("user.timezone");
-      if (NTS == null) {
+      Orm = getSystemProperty("user.timezone");
+      if (OqY == null) {
         break label776;
       }
       i = 0;
       label366:
-      if (i >= NTS.length()) {
+      if (i >= OqY.length()) {
         break label776;
       }
-      j = NTS.charAt(i);
+      j = OqY.charAt(i);
       if ((j < 48) || (j > 57)) {
         break label769;
       }
@@ -145,56 +145,56 @@ public final class h
     boolean bool1;
     label769:
     label776:
-    for (Object localObject = NTS.substring(i);; localObject = null)
+    for (Object localObject = OqY.substring(i);; localObject = null)
     {
-      NUh = (String)localObject;
-      NUi = R(bdR(NTS));
-      localObject = bdR(NTS);
+      Orn = (String)localObject;
+      Oro = S(bfv(OqY));
+      localObject = bfv(OqY);
       if (localObject != null) {
         break label782;
       }
       j = 0;
-      NUj = j;
-      NUk = bdP("1.1");
-      NUl = bdP("1.2");
-      NUm = bdP("1.3");
-      NUn = bdP("1.4");
-      NUo = bdP("1.5");
-      NUp = bdP("1.6");
-      NUq = bdP("1.7");
-      NUr = bdQ("AIX");
-      NUs = bdQ("HP-UX");
-      NUt = bdQ("Irix");
-      if ((!bdQ("Linux")) && (!bdQ("LINUX"))) {
+      Orp = j;
+      Orq = bft("1.1");
+      Orr = bft("1.2");
+      Ors = bft("1.3");
+      Ort = bft("1.4");
+      Oru = bft("1.5");
+      Orv = bft("1.6");
+      Orw = bft("1.7");
+      Orx = bfu("AIX");
+      Ory = bfu("HP-UX");
+      Orz = bfu("Irix");
+      if ((!bfu("Linux")) && (!bfu("LINUX"))) {
         break label832;
       }
       bool1 = true;
       label551:
-      NUu = bool1;
-      NUv = bdQ("Mac");
-      NUw = bdQ("Mac OS X");
-      NUx = bdQ("OS/2");
-      NUy = bdQ("Solaris");
-      NUz = bdQ("SunOS");
-      if ((!NUr) && (!NUs) && (!NUt) && (!NUu) && (!NUw) && (!NUy))
+      OrA = bool1;
+      OrB = bfu("Mac");
+      OrC = bfu("Mac OS X");
+      OrD = bfu("OS/2");
+      OrE = bfu("Solaris");
+      OrF = bfu("SunOS");
+      if ((!Orx) && (!Ory) && (!Orz) && (!OrA) && (!OrC) && (!OrE))
       {
         bool1 = bool2;
-        if (!NUz) {}
+        if (!OrF) {}
       }
       else
       {
         bool1 = true;
       }
-      NUA = bool1;
-      NUB = bdQ("Windows");
-      NUC = nL("Windows", "5.0");
-      NUD = nL("Windows 9", "4.0");
-      NUE = nL("Windows 9", "4.1");
-      NUF = nL("Windows", "4.9");
-      NUG = bdQ("Windows NT");
-      NUH = nL("Windows", "5.1");
-      NUI = nL("Windows", "6.0");
-      NUJ = nL("Windows", "6.1");
+      OrG = bool1;
+      OrH = bfu("Windows");
+      OrI = nR("Windows", "5.0");
+      OrJ = nR("Windows 9", "4.0");
+      OrK = nR("Windows 9", "4.1");
+      OrL = nR("Windows", "4.9");
+      OrM = bfu("Windows NT");
+      OrN = nR("Windows", "5.1");
+      OrO = nR("Windows", "6.0");
+      OrP = nR("Windows", "6.1");
       AppMethodBeat.o(40756);
       return;
       localObject = getSystemProperty("user.country");
@@ -223,7 +223,7 @@ public final class h
     }
   }
   
-  private static float R(int[] paramArrayOfInt)
+  private static float S(int[] paramArrayOfInt)
   {
     int i = 1;
     AppMethodBeat.i(40755);
@@ -260,10 +260,10 @@ public final class h
     return 0.0F;
   }
   
-  private static boolean bdP(String paramString)
+  private static boolean bft(String paramString)
   {
     AppMethodBeat.i(40750);
-    String str = NUh;
+    String str = Orn;
     if (str == null)
     {
       AppMethodBeat.o(40750);
@@ -274,10 +274,10 @@ public final class h
     return bool;
   }
   
-  private static boolean bdQ(String paramString)
+  private static boolean bfu(String paramString)
   {
     AppMethodBeat.i(40752);
-    String str = Fng;
+    String str = FFE;
     if (str == null)
     {
       AppMethodBeat.o(40752);
@@ -288,7 +288,7 @@ public final class h
     return bool;
   }
   
-  private static int[] bdR(String paramString)
+  private static int[] bfv(String paramString)
   {
     AppMethodBeat.i(40754);
     if (paramString == null)
@@ -456,11 +456,11 @@ public final class h
     return null;
   }
   
-  private static boolean nL(String paramString1, String paramString2)
+  private static boolean nR(String paramString1, String paramString2)
   {
     AppMethodBeat.i(40751);
-    String str1 = Fng;
-    String str2 = Fnh;
+    String str1 = FFE;
+    String str2 = FFF;
     if ((str1 == null) || (str2 == null))
     {
       AppMethodBeat.o(40751);
@@ -477,7 +477,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     org.apache.commons.b.h
  * JD-Core Version:    0.7.0.1
  */

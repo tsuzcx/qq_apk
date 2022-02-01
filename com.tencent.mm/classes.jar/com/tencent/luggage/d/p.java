@@ -18,7 +18,7 @@ import com.tencent.luggage.webview.a.b;
 import com.tencent.luggage.webview.a.d;
 import com.tencent.luggage.webview.a.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.regex.Matcher;
@@ -47,61 +47,61 @@ public final class p
     this.chT = false;
     this.chU = new a.a()
     {
-      private void cH(String paramAnonymousString)
+      private void cI(String paramAnonymousString)
       {
-        AppMethodBeat.i(187591);
+        AppMethodBeat.i(201158);
         if (!p.this.chT)
         {
-          if (cI(paramAnonymousString))
+          if (cJ(paramAnonymousString))
           {
-            AppMethodBeat.o(187591);
+            AppMethodBeat.o(201158);
             return;
           }
-          p.this.Co();
+          p.this.Cr();
         }
-        AppMethodBeat.o(187591);
+        AppMethodBeat.o(201158);
       }
       
-      private static boolean cI(String paramAnonymousString)
+      private static boolean cJ(String paramAnonymousString)
       {
-        AppMethodBeat.i(187592);
+        AppMethodBeat.i(201159);
         if ((paramAnonymousString == null) || (paramAnonymousString.length() == 0))
         {
-          AppMethodBeat.o(187592);
+          AppMethodBeat.o(201159);
           return false;
         }
         paramAnonymousString = Uri.parse(paramAnonymousString).getPath();
         if ((paramAnonymousString != null) && (paramAnonymousString.trim().endsWith("html")))
         {
-          AppMethodBeat.o(187592);
+          AppMethodBeat.o(201159);
           return true;
         }
-        AppMethodBeat.o(187592);
+        AppMethodBeat.o(201159);
         return false;
       }
       
       public final WebResourceResponse a(WebResourceRequest paramAnonymousWebResourceRequest, Bundle paramAnonymousBundle)
       {
-        AppMethodBeat.i(187589);
-        cH(paramAnonymousWebResourceRequest.getUrl().toString());
+        AppMethodBeat.i(201156);
+        cI(paramAnonymousWebResourceRequest.getUrl().toString());
         if (p.this.chO != null)
         {
           paramAnonymousBundle = p.this.chO.a(paramAnonymousWebResourceRequest, paramAnonymousBundle);
           if (paramAnonymousBundle != null)
           {
-            AppMethodBeat.o(187589);
+            AppMethodBeat.o(201156);
             return paramAnonymousBundle;
           }
         }
-        paramAnonymousWebResourceRequest = p.this.chR.dt(paramAnonymousWebResourceRequest.getUrl().toString());
-        AppMethodBeat.o(187589);
+        paramAnonymousWebResourceRequest = p.this.chR.dv(paramAnonymousWebResourceRequest.getUrl().toString());
+        AppMethodBeat.o(201156);
         return paramAnonymousWebResourceRequest;
       }
       
-      public final boolean cC(String paramAnonymousString)
+      public final boolean cD(String paramAnonymousString)
       {
-        AppMethodBeat.i(187585);
-        Iterator localIterator = p.this.chS.cqH.iterator();
+        AppMethodBeat.i(201152);
+        Iterator localIterator = p.this.chS.crl.iterator();
         while (localIterator.hasNext())
         {
           Object localObject = (Pair)localIterator.next();
@@ -109,53 +109,53 @@ public final class p
           localObject = (Pattern)((Pair)localObject).second;
           if ((localObject != null) && (((Pattern)localObject).matcher(paramAnonymousString).matches()))
           {
-            boolean bool = locale.Fx();
-            AppMethodBeat.o(187585);
+            boolean bool = locale.FD();
+            AppMethodBeat.o(201152);
             return bool;
           }
         }
-        AppMethodBeat.o(187585);
+        AppMethodBeat.o(201152);
         return false;
-      }
-      
-      public final void cD(String paramAnonymousString)
-      {
-        AppMethodBeat.i(187586);
-        p.this.chT = false;
-        p.this.mUrl = paramAnonymousString;
-        if (p.this.chO != null) {
-          p.this.chO.cD(paramAnonymousString);
-        }
-        AppMethodBeat.o(187586);
       }
       
       public final void cE(String paramAnonymousString)
       {
-        AppMethodBeat.i(187587);
+        AppMethodBeat.i(201153);
+        p.this.chT = false;
+        p.this.mUrl = paramAnonymousString;
+        if (p.this.chO != null) {
+          p.this.chO.cE(paramAnonymousString);
+        }
+        AppMethodBeat.o(201153);
+      }
+      
+      public final void cF(String paramAnonymousString)
+      {
+        AppMethodBeat.i(201154);
         p.this.mUrl = paramAnonymousString;
         p.this.cgI.cgP.onReady();
         if (p.this.chO != null)
         {
-          p.this.cgI.cv(p.this.chO.Cp());
-          p.this.chO.cE(paramAnonymousString);
+          p.this.cgI.cw(p.this.chO.Cs());
+          p.this.chO.cF(paramAnonymousString);
         }
-        AppMethodBeat.o(187587);
+        AppMethodBeat.o(201154);
       }
       
-      public final WebResourceResponse cF(String paramAnonymousString)
+      public final WebResourceResponse cG(String paramAnonymousString)
       {
-        AppMethodBeat.i(187588);
-        cH(paramAnonymousString);
-        paramAnonymousString = p.this.chR.dt(paramAnonymousString);
-        AppMethodBeat.o(187588);
+        AppMethodBeat.i(201155);
+        cI(paramAnonymousString);
+        paramAnonymousString = p.this.chR.dv(paramAnonymousString);
+        AppMethodBeat.o(201155);
         return paramAnonymousString;
       }
       
-      public final String cG(String paramAnonymousString)
+      public final String cH(String paramAnonymousString)
       {
-        AppMethodBeat.i(187590);
-        paramAnonymousString = p.this.cgI.cgP.cw(paramAnonymousString);
-        AppMethodBeat.o(187590);
+        AppMethodBeat.i(201157);
+        paramAnonymousString = p.this.cgI.cgP.cx(paramAnonymousString);
+        AppMethodBeat.o(201157);
         return paramAnonymousString;
       }
     };
@@ -166,31 +166,31 @@ public final class p
     }
     this.chN = paramContext;
     this.mHandler = new Handler(Looper.getMainLooper());
-    Cj();
-    this.chP = ((com.tencent.luggage.webview.a)org.a.a.bF(this.chN).aj(new Object[] { this.chM }).object);
+    Cm();
+    this.chP = ((com.tencent.luggage.webview.a)org.a.a.bF(this.chN).ai(new Object[] { this.chM }).object);
     this.chP.setWebCore(this);
     this.chP.a(this.chU);
     this.cgI = new o(this.chP);
     AppMethodBeat.o(140424);
   }
   
-  private void Cj()
+  private void Cm()
   {
     AppMethodBeat.i(140425);
     this.chR = new b();
     this.chS = new d();
-    Ck();
+    Cn();
     AppMethodBeat.o(140425);
   }
   
-  private void Ck()
+  private void Cn()
   {
     AppMethodBeat.i(140426);
     this.chR.a(new com.tencent.luggage.webview.a.a(this.chM));
     AppMethodBeat.o(140426);
   }
   
-  private void Cn()
+  private void Cq()
   {
     AppMethodBeat.i(140435);
     ViewParent localViewParent = getView().getParent();
@@ -200,19 +200,19 @@ public final class p
     AppMethodBeat.o(140435);
   }
   
-  final void Cl()
+  final void Co()
   {
     AppMethodBeat.i(140430);
     if (this.chQ)
     {
       this.chQ = false;
-      Cj();
+      Cm();
     }
     AppMethodBeat.o(140430);
   }
   
   @Deprecated
-  public final <T> T Cm()
+  public final <T> T Cp()
   {
     AppMethodBeat.i(140431);
     try
@@ -223,43 +223,43 @@ public final class p
     }
     catch (Exception localException)
     {
-      ad.e(getClass().getSimpleName(), "CoreImpl cast failed", new Object[] { localException });
+      ae.e(getClass().getSimpleName(), "CoreImpl cast failed", new Object[] { localException });
       AppMethodBeat.o(140431);
     }
     return null;
   }
   
-  public final void Co()
+  public final void Cr()
   {
     try
     {
-      AppMethodBeat.i(187595);
+      AppMethodBeat.i(201162);
       if (!this.chT)
       {
-        ad.m("Luggage.LuggageWebCore", "try inject jsbridge", new Object[0]);
-        this.cgI.BL();
+        ae.m("Luggage.LuggageWebCore", "try inject jsbridge", new Object[0]);
+        this.cgI.BM();
         if (this.chO != null) {
-          this.cgI.cv(this.chO.Cp());
+          this.cgI.cw(this.chO.Cs());
         }
         this.chT = true;
       }
-      AppMethodBeat.o(187595);
+      AppMethodBeat.o(201162);
       return;
     }
     finally {}
   }
   
-  public final void cB(String paramString)
+  public final void cC(String paramString)
   {
-    AppMethodBeat.i(187593);
+    AppMethodBeat.i(201160);
     this.chP.evaluateJavascript(paramString, null);
-    AppMethodBeat.o(187593);
+    AppMethodBeat.o(201160);
   }
   
   public final void destroy()
   {
     AppMethodBeat.i(140436);
-    Cn();
+    Cq();
     if (!this.chQ) {
       this.chP.destroy();
     }
@@ -273,9 +273,9 @@ public final class p
   
   public final String getUserAgent()
   {
-    AppMethodBeat.i(187594);
+    AppMethodBeat.i(201161);
     String str = this.chP.getUserAgent();
-    AppMethodBeat.o(187594);
+    AppMethodBeat.o(201161);
     return str;
   }
   

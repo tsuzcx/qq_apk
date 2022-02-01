@@ -6,8 +6,8 @@ import com.tencent.mm.ipcinvoker.d;
 import com.tencent.mm.ipcinvoker.h;
 import com.tencent.mm.ipcinvoker.type.IPCVoid;
 import com.tencent.mm.plugin.qqmail.c.j;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -20,28 +20,28 @@ public final class m
 {
   List<a> callbacks;
   int status;
-  private long xbG;
-  n xbH;
-  private int xbI;
-  private int xbJ;
-  int xbK;
+  private int xrA;
+  int xrB;
+  private long xrx;
+  n xry;
+  private int xrz;
   
   m(String paramString)
   {
     AppMethodBeat.i(122698);
-    this.xbI = 0;
-    this.xbJ = 1;
-    this.xbK = 2;
-    this.status = this.xbI;
-    this.xbH = new n(paramString);
+    this.xrz = 0;
+    this.xrA = 1;
+    this.xrB = 2;
+    this.status = this.xrz;
+    this.xry = new n(paramString);
     this.callbacks = new ArrayList();
     AppMethodBeat.o(122698);
   }
   
-  public static l auX(String paramString)
+  public static l awm(String paramString)
   {
     AppMethodBeat.i(122706);
-    if (bt.isNullOrNil(paramString))
+    if (bu.isNullOrNil(paramString))
     {
       AppMethodBeat.o(122706);
       return null;
@@ -55,7 +55,7 @@ public final class m
     }
     l locall = new l();
     locall.name = paramString.substring(0, i);
-    locall.uZn = paramString.substring(i + 1);
+    locall.vly = paramString.substring(i + 1);
     AppMethodBeat.o(122706);
     return locall;
   }
@@ -75,16 +75,16 @@ public final class m
     AppMethodBeat.o(122702);
   }
   
-  public final List<l> auW(String paramString)
+  public final List<l> awl(String paramString)
   {
     AppMethodBeat.i(122700);
     Object localObject2 = new ArrayList();
-    Object localObject1 = this.xbH.aQn();
+    Object localObject1 = this.xry.aQM();
     if (localObject1 != null) {
       ((List)localObject2).addAll((Collection)localObject1);
     }
-    if (this.status == this.xbI) {
-      dCh();
+    if (this.status == this.xrz) {
+      dFy();
     }
     Collections.sort((List)localObject2, new Comparator() {});
     if ((paramString == null) || (paramString.length() == 0))
@@ -97,7 +97,7 @@ public final class m
     while (((Iterator)localObject2).hasNext())
     {
       l locall = (l)((Iterator)localObject2).next();
-      if ((locall != null) && (((locall.name != null) && (locall.name.contains(paramString))) || ((locall.pinyin != null) && (locall.pinyin.contains(paramString))) || ((locall.uZn != null) && (locall.uZn.contains(paramString))))) {
+      if ((locall != null) && (((locall.name != null) && (locall.name.contains(paramString))) || ((locall.pinyin != null) && (locall.pinyin.contains(paramString))) || ((locall.vly != null) && (locall.vly.contains(paramString))))) {
         ((List)localObject1).add(locall);
       }
     }
@@ -122,15 +122,15 @@ public final class m
     AppMethodBeat.o(122703);
   }
   
-  public final void dCh()
+  public final void dFy()
   {
     AppMethodBeat.i(122701);
-    if (this.status == this.xbJ)
+    if (this.status == this.xrA)
     {
       AppMethodBeat.o(122701);
       return;
     }
-    if (bt.flT() - this.xbG <= 600000L)
+    if (bu.fpO() - this.xrx <= 600000L)
     {
       Iterator localIterator = this.callbacks.iterator();
       while (localIterator.hasNext()) {
@@ -139,16 +139,16 @@ public final class m
       AppMethodBeat.o(122701);
       return;
     }
-    this.status = this.xbJ;
-    this.xbG = bt.flT();
-    h.a(aj.getPackageName(), new IPCVoid(), j.class, new d() {});
+    this.status = this.xrA;
+    this.xrx = bu.fpO();
+    h.a(ak.getPackageName(), new IPCVoid(), j.class, new d() {});
     AppMethodBeat.o(122701);
   }
   
-  public final void eQ(List<l> paramList)
+  public final void eY(List<l> paramList)
   {
     AppMethodBeat.i(122704);
-    LinkedList localLinkedList = this.xbH.aQn();
+    LinkedList localLinkedList = this.xry.aQM();
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
@@ -156,10 +156,10 @@ public final class m
       if (i != -1)
       {
         as localas = (as)localLinkedList.get(i);
-        localas.xbF += 1;
+        localas.xrw += 1;
       }
     }
-    this.xbH.r(localLinkedList);
+    this.xry.r(localLinkedList);
     AppMethodBeat.o(122704);
   }
   
@@ -177,7 +177,7 @@ public final class m
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.qqmail.d.m
  * JD-Core Version:    0.7.0.1
  */

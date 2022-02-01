@@ -4,8 +4,8 @@ import android.widget.TextView;
 
 final class bn
 {
-  TextView KhK;
-  TextView KhL;
+  TextView KEe;
+  TextView KEf;
 }
 
 

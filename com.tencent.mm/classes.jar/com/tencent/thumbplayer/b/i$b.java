@@ -2,9 +2,9 @@ package com.tencent.thumbplayer.b;
 
 public final class i$b
 {
-  public String LYZ;
-  public String LZa;
-  public String LZb;
+  public String MvU;
+  public String MvV;
+  public String MvW;
   public String url;
 }
 

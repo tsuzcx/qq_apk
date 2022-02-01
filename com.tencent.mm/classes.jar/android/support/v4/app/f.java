@@ -40,8 +40,8 @@ public abstract class f<E>
     }
     paramFragment = this.mContext;
     paramIntent = new com.tencent.mm.hellhoundlib.b.a().bc(paramIntent);
-    com.tencent.mm.hellhoundlib.a.a.a(paramFragment, paramIntent.ahp(), "android/support/v4/app/FragmentHostCallback", "onStartActivityFromFragment", "(Landroid/support/v4/app/Fragment;Landroid/content/Intent;ILandroid/os/Bundle;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    paramFragment.startActivity((Intent)paramIntent.mq(0));
+    com.tencent.mm.hellhoundlib.a.a.a(paramFragment, paramIntent.ahE(), "android/support/v4/app/FragmentHostCallback", "onStartActivityFromFragment", "(Landroid/support/v4/app/Fragment;Landroid/content/Intent;ILandroid/os/Bundle;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramFragment.startActivity((Intent)paramIntent.mt(0));
     com.tencent.mm.hellhoundlib.a.a.a(paramFragment, "android/support/v4/app/FragmentHostCallback", "onStartActivityFromFragment", "(Landroid/support/v4/app/Fragment;Landroid/content/Intent;ILandroid/os/Bundle;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
   }
   

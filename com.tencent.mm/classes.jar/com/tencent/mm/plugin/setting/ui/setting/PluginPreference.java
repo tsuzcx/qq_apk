@@ -9,19 +9,19 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.e;
-import com.tencent.mm.ak.e.a;
-import com.tencent.mm.ak.p;
-import com.tencent.mm.cc.a;
+import com.tencent.mm.aj.e;
+import com.tencent.mm.aj.e.a;
+import com.tencent.mm.aj.p;
+import com.tencent.mm.cb.a;
+import com.tencent.mm.contact.c;
 import com.tencent.mm.g.c.aw;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.o.b;
 import com.tencent.mm.plugin.messenger.foundation.a.l;
 import com.tencent.mm.pluginsdk.ui.a.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.storage.am;
-import com.tencent.mm.storage.bp;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.storage.an;
+import com.tencent.mm.storage.bq;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.preference.Preference;
 
@@ -29,15 +29,15 @@ public final class PluginPreference
   extends Preference
   implements e.a
 {
-  private MMActivity fLP;
-  private ImageView jdF;
-  int rlt;
-  private String wSC;
-  String yEn;
-  String yEo;
-  private int yEp;
-  private int yEq;
-  boolean yEr;
+  private MMActivity fNT;
+  private ImageView jgy;
+  int rty;
+  private String xit;
+  String yUs;
+  String yUt;
+  private int yUu;
+  private int yUv;
+  boolean yUw;
   
   public PluginPreference(Context paramContext)
   {
@@ -53,32 +53,32 @@ public final class PluginPreference
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(73911);
-    this.wSC = "";
-    this.yEp = -1;
-    this.yEq = 8;
-    this.yEr = false;
-    this.jdF = null;
-    this.rlt = 255;
-    this.fLP = ((MMActivity)paramContext);
+    this.xit = "";
+    this.yUu = -1;
+    this.yUv = 8;
+    this.yUw = false;
+    this.jgy = null;
+    this.rty = 255;
+    this.fNT = ((MMActivity)paramContext);
     setLayoutResource(2131494804);
-    p.aEk().a(this);
+    p.aEA().a(this);
     AppMethodBeat.o(73911);
   }
   
-  private void dJx()
+  private void dMP()
   {
     AppMethodBeat.i(73914);
-    if (this.jdF != null) {
-      a.b.c(this.jdF, this.yEn);
+    if (this.jgy != null) {
+      a.b.c(this.jgy, this.yUs);
     }
     AppMethodBeat.o(73914);
   }
   
-  public final void De(String paramString)
+  public final void DG(String paramString)
   {
     AppMethodBeat.i(73917);
-    if ((this.yEn != null) && (this.yEn.equals(paramString))) {
-      new ap(Looper.getMainLooper()).post(new Runnable()
+    if ((this.yUs != null) && (this.yUs.equals(paramString))) {
+      new aq(Looper.getMainLooper()).post(new Runnable()
       {
         public final void run()
         {
@@ -91,29 +91,29 @@ public final class PluginPreference
     AppMethodBeat.o(73917);
   }
   
-  public final boolean axc(String paramString)
+  public final boolean ays(String paramString)
   {
     AppMethodBeat.i(73912);
-    paramString = ((l)g.ab(l.class)).azp().Bf(paramString);
-    if ((paramString == null) || ((int)paramString.gfj == 0))
+    paramString = ((l)g.ab(l.class)).azF().BH(paramString);
+    if ((paramString == null) || ((int)paramString.ght == 0))
     {
-      ad.e("MicroMsg.PluginPreference", "plugin do not exist");
+      ae.e("MicroMsg.PluginPreference", "plugin do not exist");
       AppMethodBeat.o(73912);
       return false;
     }
-    this.yEn = paramString.field_username;
-    this.yEo = paramString.adu();
-    setKey("settings_plugins_list_#" + this.yEn);
+    this.yUs = paramString.field_username;
+    this.yUt = paramString.adF();
+    setKey("settings_plugins_list_#" + this.yUs);
     AppMethodBeat.o(73912);
     return true;
   }
   
-  public final boolean jb(String paramString1, String paramString2)
+  public final boolean jh(String paramString1, String paramString2)
   {
     AppMethodBeat.i(73913);
-    this.yEn = paramString1;
-    this.yEo = paramString2;
-    setKey("settings_plugins_list_#" + this.yEn);
+    this.yUs = paramString1;
+    this.yUt = paramString2;
+    setKey("settings_plugins_list_#" + this.yUs);
     AppMethodBeat.o(73913);
     return true;
   }
@@ -122,20 +122,20 @@ public final class PluginPreference
   {
     AppMethodBeat.i(73916);
     super.onBindView(paramView);
-    this.jdF = ((ImageView)paramView.findViewById(2131300943));
-    this.jdF.setAlpha(this.rlt);
+    this.jgy = ((ImageView)paramView.findViewById(2131300943));
+    this.jgy.setAlpha(this.rty);
     TextView localTextView = (TextView)paramView.findViewById(2131305745);
     if (localTextView != null)
     {
-      localTextView.setVisibility(this.yEq);
-      localTextView.setText(this.wSC);
-      if (this.yEp != -1) {
-        localTextView.setBackgroundDrawable(a.l(this.fLP, this.yEp));
+      localTextView.setVisibility(this.yUv);
+      localTextView.setText(this.xit);
+      if (this.yUu != -1) {
+        localTextView.setBackgroundDrawable(a.l(this.fNT, this.yUu));
       }
     }
     paramView = (TextView)paramView.findViewById(2131302741);
     if (paramView != null) {
-      if (!this.yEr) {
+      if (!this.yUw) {
         break label125;
       }
     }
@@ -143,7 +143,7 @@ public final class PluginPreference
     for (int i = 0;; i = 8)
     {
       paramView.setVisibility(i);
-      dJx();
+      dMP();
       AppMethodBeat.o(73916);
       return;
     }

@@ -10,6 +10,7 @@ import com.tencent.map.tools.net.AdapterType;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.tencentmap.mapsdk.maps.model.MapViewType;
 import com.tencent.tencentmap.mapsdk.maps.model.OverSeaSource;
+import com.tencent.tencentmap.mapsdk.maps.model.TrafficStyle;
 import java.lang.reflect.Field;
 import java.util.Arrays;
 
@@ -54,6 +55,7 @@ public final class TencentMapOptions
   private String mSatelliteVersion = "0";
   private String mSubId;
   private String mSubKey;
+  private TrafficStyle mTrafficStyle;
   private Typeface mUserTypeface;
   
   private void setTypeface(Typeface paramTypeface, boolean paramBoolean)
@@ -290,6 +292,17 @@ public final class TencentMapOptions
         return false;
       }
     }
+    if (this.mTrafficStyle != null)
+    {
+      if (this.mTrafficStyle.equals(paramObject.mTrafficStyle)) {}
+    }
+    else {
+      while (paramObject.mTrafficStyle != null)
+      {
+        AppMethodBeat.o(181046);
+        return false;
+      }
+    }
     if (this.mOverSeaSource == paramObject.mOverSeaSource)
     {
       AppMethodBeat.o(181046);
@@ -399,6 +412,11 @@ public final class TencentMapOptions
     return this.mSubKey;
   }
   
+  public final TrafficStyle getTrafficStyle()
+  {
+    return this.mTrafficStyle;
+  }
+  
   public final Typeface getTypeface()
   {
     if (this.mUserTypeface == null) {
@@ -410,7 +428,7 @@ public final class TencentMapOptions
   public final int hashCode()
   {
     int i13 = 1;
-    int i14 = 0;
+    int i15 = 0;
     AppMethodBeat.i(181047);
     int i;
     int j;
@@ -419,8 +437,8 @@ public final class TencentMapOptions
     label50:
     int m;
     label66:
-    int i15;
     int i16;
+    int i17;
     int n;
     label94:
     int i1;
@@ -429,7 +447,7 @@ public final class TencentMapOptions
     label126:
     int i3;
     label136:
-    int i17;
+    int i18;
     int i4;
     label161:
     int i5;
@@ -438,7 +456,7 @@ public final class TencentMapOptions
     label193:
     int i7;
     label209:
-    int i18;
+    int i19;
     int i8;
     label231:
     int i9;
@@ -452,137 +470,143 @@ public final class TencentMapOptions
     {
       i = this.customAssetsPath.hashCode();
       if (this.customLocalPath == null) {
-        break label460;
+        break label482;
       }
       j = this.customLocalPath.hashCode();
       if (!this.isHandDrawMapEnable) {
-        break label465;
+        break label487;
       }
       k = 1;
       if (this.mExtSurface == null) {
-        break label470;
+        break label492;
       }
       m = this.mExtSurface.hashCode();
-      i15 = this.mExtSurfaceWidth;
-      i16 = this.mExtSurfaceHeight;
+      i16 = this.mExtSurfaceWidth;
+      i17 = this.mExtSurfaceHeight;
       if (this.mSubId == null) {
-        break label476;
+        break label498;
       }
       n = this.mSubId.hashCode();
       if (this.mSubKey == null) {
-        break label482;
+        break label504;
       }
       i1 = this.mSubKey.hashCode();
       if (this.mMapKey == null) {
-        break label488;
+        break label510;
       }
       i2 = this.mMapKey.hashCode();
       if (!this.isEnableMultipleInfoWindow) {
-        break label494;
+        break label516;
       }
       i3 = 1;
-      i17 = Arrays.hashCode(this.mDebugTags);
+      i18 = Arrays.hashCode(this.mDebugTags);
       if (this.mSatelliteVersion == null) {
-        break label500;
+        break label522;
       }
       i4 = this.mSatelliteVersion.hashCode();
       if (this.mMapViewType == null) {
-        break label506;
+        break label528;
       }
       i5 = this.mMapViewType.hashCode();
       if (this.mMapKernel == null) {
-        break label512;
+        break label534;
       }
       i6 = this.mMapKernel.hashCode();
       if (this.mUserTypeface == null) {
-        break label518;
+        break label540;
       }
       i7 = this.mUserTypeface.hashCode();
-      i18 = this.mProtocolFrom;
+      i19 = this.mProtocolFrom;
       if (this.mProtocolDataDesc == null) {
-        break label524;
+        break label546;
       }
       i8 = this.mProtocolDataDesc.hashCode();
       if (this.mNetAdapterType == null) {
-        break label530;
+        break label552;
       }
       i9 = this.mNetAdapterType.hashCode();
       if (this.mNetParams == null) {
-        break label536;
+        break label558;
       }
       i10 = this.mNetParams.hashCode();
       if (this.mCustomUserId == null) {
-        break label542;
+        break label564;
       }
       i11 = this.mCustomUserId.hashCode();
       if (this.mMapCallback == null) {
-        break label548;
+        break label570;
       }
       i12 = this.mMapCallback.hashCode();
       label295:
       if (!this.mOfflineMapEnable) {
-        break label554;
+        break label576;
+      }
+      label302:
+      if (this.mOverSeaSource == null) {
+        break label582;
       }
     }
-    for (;;)
+    label516:
+    label522:
+    label528:
+    label534:
+    label540:
+    label546:
+    label552:
+    label558:
+    label564:
+    label570:
+    label576:
+    label582:
+    for (int i14 = this.mOverSeaSource.hashCode();; i14 = 0)
     {
-      if (this.mOverSeaSource != null) {
-        i14 = this.mOverSeaSource.hashCode();
+      if (this.mTrafficStyle != null) {
+        i15 = this.mTrafficStyle.hashCode();
       }
       AppMethodBeat.o(181047);
-      return ((i12 + (i11 + (i10 + (i9 + (i8 + ((i7 + (i6 + (i5 + (i4 + ((i3 + (i2 + (i1 + (n + (((m + (k + (j + i * 31) * 31) * 31) * 31 + i15) * 31 + i16) * 31) * 31) * 31) * 31) * 31 + i17) * 31) * 31) * 31) * 31) * 31 + i18) * 31) * 31) * 31) * 31) * 31) * 31 + i13) * 31 + i14;
+      return (i14 + ((i12 + (i11 + (i10 + (i9 + (i8 + ((i7 + (i6 + (i5 + (i4 + ((i3 + (i2 + (i1 + (n + (((m + (k + (j + i * 31) * 31) * 31) * 31 + i16) * 31 + i17) * 31) * 31) * 31) * 31) * 31 + i18) * 31) * 31) * 31) * 31) * 31 + i19) * 31) * 31) * 31) * 31) * 31) * 31 + i13) * 31) * 31 + i15;
       i = 0;
       break;
-      label460:
+      label482:
       j = 0;
       break label41;
-      label465:
+      label487:
       k = 0;
       break label50;
-      label470:
+      label492:
       m = 0;
       break label66;
-      label476:
+      label498:
       n = 0;
       break label94;
-      label482:
+      label504:
       i1 = 0;
       break label110;
-      label488:
+      label510:
       i2 = 0;
       break label126;
-      label494:
       i3 = 0;
       break label136;
-      label500:
       i4 = 0;
       break label161;
-      label506:
       i5 = 0;
       break label177;
-      label512:
       i6 = 0;
       break label193;
-      label518:
       i7 = 0;
       break label209;
-      label524:
       i8 = 0;
       break label231;
-      label530:
       i9 = 0;
       break label247;
-      label536:
       i10 = 0;
       break label263;
-      label542:
       i11 = 0;
       break label279;
-      label548:
       i12 = 0;
       break label295;
-      label554:
       i13 = 0;
+      break label302;
     }
   }
   
@@ -633,15 +657,15 @@ public final class TencentMapOptions
   
   public final TencentMapOptions setExtSurface(Object paramObject)
   {
-    AppMethodBeat.i(195084);
+    AppMethodBeat.i(209857);
     if ((!(paramObject instanceof Surface)) && (!(paramObject instanceof SurfaceTexture)) && (!(paramObject instanceof SurfaceHolder)))
     {
       paramObject = new IllegalArgumentException("Parameter Surface should be Surface,SurfaceTexture or SurfaceHolder");
-      AppMethodBeat.o(195084);
+      AppMethodBeat.o(209857);
       throw paramObject;
     }
     this.mExtSurface = paramObject;
-    AppMethodBeat.o(195084);
+    AppMethodBeat.o(209857);
     return this;
   }
   
@@ -722,7 +746,7 @@ public final class TencentMapOptions
   
   public final TencentMapOptions setSubInfo(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(195086);
+    AppMethodBeat.i(209859);
     if (paramString1 != null)
     {
       this.mSubKey = paramString1.trim();
@@ -733,24 +757,30 @@ public final class TencentMapOptions
     label48:
     for (this.mSubId = paramString2.trim();; this.mSubId = "")
     {
-      AppMethodBeat.o(195086);
+      AppMethodBeat.o(209859);
       return this;
       this.mSubKey = "";
       break;
     }
   }
   
+  public final TencentMapOptions setTrafficStyle(TrafficStyle paramTrafficStyle)
+  {
+    this.mTrafficStyle = paramTrafficStyle;
+    return this;
+  }
+  
   public final TencentMapOptions setTypeface(Typeface paramTypeface)
   {
-    AppMethodBeat.i(195085);
+    AppMethodBeat.i(209858);
     setTypeface(paramTypeface, false);
-    AppMethodBeat.o(195085);
+    AppMethodBeat.o(209858);
     return this;
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(195087);
+    AppMethodBeat.i(209860);
     StringBuffer localStringBuffer1 = new StringBuffer("TencentMapOptions{");
     localStringBuffer1.append("customAssetsPath='").append(this.customAssetsPath).append('\'');
     localStringBuffer1.append(", customLocalPath='").append(this.customLocalPath).append('\'');
@@ -779,9 +809,10 @@ public final class TencentMapOptions
       localStringBuffer1.append(", mMapCallback=").append(this.mMapCallback);
       localStringBuffer1.append(", mOfflineMapEnable=").append(this.mOfflineMapEnable);
       localStringBuffer1.append(", mOverSeaSource=").append(this.mOverSeaSource);
+      localStringBuffer1.append(", mTrafficStyle=").append(this.mTrafficStyle);
       localStringBuffer1.append('}');
       str = localStringBuffer1.toString();
-      AppMethodBeat.o(195087);
+      AppMethodBeat.o(209860);
       return str;
     }
   }

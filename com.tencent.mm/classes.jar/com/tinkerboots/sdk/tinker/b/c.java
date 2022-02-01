@@ -51,10 +51,10 @@ public final class c
     AppMethodBeat.o(3449);
   }
   
-  public final void aw(Intent paramIntent)
+  public final void ax(Intent paramIntent)
   {
     AppMethodBeat.i(3448);
-    super.aw(paramIntent);
+    super.ax(paramIntent);
     AppMethodBeat.o(3448);
   }
   

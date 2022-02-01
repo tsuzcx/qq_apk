@@ -1,13 +1,13 @@
 package com.tencent.mm.plugin.webview.c;
 
-@d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/webview/jsapi/JsApiInterface;", "", "controlByte", "", "getControlByte", "()I", "funcName", "", "getFuncName", "()Ljava/lang/String;", "handleMsg", "", "env", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiEnv;", "msg", "Lcom/tencent/mm/plugin/webview/jsapi/MsgWrapper;", "webview-sdk_release"})
+@d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/webview/jsapi/JsApiInterface;", "", "controlByte", "", "getControlByte", "()I", "funcName", "", "getFuncName", "()Ljava/lang/String;", "handleMsg", "", "env", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiEnv;", "msg", "Lcom/tencent/mm/plugin/webview/jsapi/MsgWrapper;", "webview-sdk_release"})
 public abstract interface h
 {
   public abstract boolean a(d paramd, l paraml);
   
-  public abstract int eOL();
+  public abstract int eSw();
   
-  public abstract String eOM();
+  public abstract String eSx();
 }
 
 

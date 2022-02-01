@@ -1,28 +1,28 @@
 package com.tencent.mm.plugin.v;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.t;
+import com.tencent.mm.model.u;
 import com.tencent.mm.modelcontrol.c;
 
 public final class a
-  extends t
+  extends u
 {
-  private static a wKy;
+  private static a xam;
   
   private a()
   {
     super(c.class);
   }
   
-  public static a dzg()
+  public static a dCx()
   {
     try
     {
       AppMethodBeat.i(151531);
-      if (wKy == null) {
-        wKy = new a();
+      if (xam == null) {
+        xam = new a();
       }
-      a locala = wKy;
+      a locala = xam;
       AppMethodBeat.o(151531);
       return locala;
     }

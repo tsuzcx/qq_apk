@@ -2,7 +2,7 @@ package com.tencent.mm.emoji.c;
 
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/emoji/upload/EmojiCaptureCallback;", "", "onResult", "", "timeEnter", "", "success", "", "md5", "", "plugin-emojisdk_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/emoji/upload/EmojiCaptureCallback;", "", "onResult", "", "timeEnter", "", "success", "", "md5", "", "plugin-emojisdk_release"})
 public abstract interface a
 {
   public abstract void a(long paramLong, boolean paramBoolean, String paramString);

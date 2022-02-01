@@ -19,139 +19,95 @@ import android.widget.ListView;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cc.a;
-import com.tencent.mm.plugin.sns.ad.d.i;
-import com.tencent.mm.plugin.sns.model.ag;
+import com.tencent.mm.cb.a;
+import com.tencent.mm.plugin.sns.ad.e.j;
+import com.tencent.mm.plugin.sns.model.ah;
 import com.tencent.mm.plugin.sns.storage.p;
 import com.tencent.mm.plugin.sns.storage.q;
 import com.tencent.mm.pluginsdk.h;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
-import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.al;
 import com.tencent.mm.ui.z;
 
 public final class b
 {
+  private com.tencent.mm.plugin.sns.h.b AeL;
+  private com.tencent.mm.plugin.sns.ad.timeline.feedback.c AeM;
+  TextView AeN;
+  ListView AeO;
+  View AeP;
   private Context mContext;
-  boolean mXd;
-  private int yYM;
-  private com.tencent.mm.plugin.sns.h.b zNE;
-  private com.tencent.mm.plugin.sns.ad.timeline.feedback.c zNF;
-  TextView zNG;
-  ListView zNH;
-  View zNI;
-  i zbv;
-  private com.tencent.mm.plugin.sns.ui.d.c zpd;
-  private FrameLayout zpe;
-  AbsoluteLayout zpf;
-  protected Animation zpg;
-  protected Animation zph;
-  boolean zpi;
+  boolean ncj;
+  private com.tencent.mm.plugin.sns.ui.d.c zGs;
+  private FrameLayout zGt;
+  AbsoluteLayout zGu;
+  protected Animation zGv;
+  protected Animation zGw;
+  boolean zGx;
+  private int zpn;
+  j zrZ;
   
   public b(Context paramContext, com.tencent.mm.plugin.sns.ui.d.c paramc, FrameLayout paramFrameLayout, com.tencent.mm.plugin.sns.h.b paramb)
   {
     AppMethodBeat.i(97689);
-    this.zpf = null;
-    this.zpi = false;
-    this.mXd = false;
-    this.yYM = -1;
+    this.zGu = null;
+    this.zGx = false;
+    this.ncj = false;
+    this.zpn = -1;
     this.mContext = paramContext;
-    this.zNE = paramb;
-    this.zpd = paramc;
-    this.zpe = paramFrameLayout;
-    this.zpg = new ScaleAnimation(1.0F, 1.0F, 0.0F, 1.0F, 1, 1.0F, 1, 0.0F);
-    this.zpg = AnimationUtils.loadAnimation(paramContext, 2130772022);
-    this.zph = new ScaleAnimation(1.0F, 1.0F, 1.0F, 0.0F, 1, 1.0F, 1, 0.0F);
-    this.zph = AnimationUtils.loadAnimation(paramContext, 2130772023);
-    this.zNF = com.tencent.mm.plugin.sns.ad.timeline.feedback.c.a(paramContext, paramc);
+    this.AeL = paramb;
+    this.zGs = paramc;
+    this.zGt = paramFrameLayout;
+    this.zGv = new ScaleAnimation(1.0F, 1.0F, 0.0F, 1.0F, 1, 1.0F, 1, 0.0F);
+    this.zGv = AnimationUtils.loadAnimation(paramContext, 2130772022);
+    this.zGw = new ScaleAnimation(1.0F, 1.0F, 1.0F, 0.0F, 1, 1.0F, 1, 0.0F);
+    this.zGw = AnimationUtils.loadAnimation(paramContext, 2130772023);
+    this.AeM = com.tencent.mm.plugin.sns.ad.timeline.feedback.c.a(paramContext, paramc);
     AppMethodBeat.o(97689);
   }
   
-  public final boolean dVw()
+  public final boolean dYX()
   {
     AppMethodBeat.i(97691);
-    if ((this.zNE != null) && (ag.dTW().dVz())) {
-      this.zNE.dVw();
+    if ((this.AeL != null) && (ah.dXw().dZa())) {
+      this.AeL.dYX();
     }
-    if (this.zpf != null)
+    if (this.zGu != null)
     {
-      this.zpe.removeView(this.zpf);
-      this.zpf = null;
+      this.zGt.removeView(this.zGu);
+      this.zGu = null;
       AppMethodBeat.o(97691);
       return true;
     }
-    this.zpi = false;
-    this.zNH = null;
-    this.zNI = null;
+    this.zGx = false;
+    this.AeO = null;
+    this.AeP = null;
     AppMethodBeat.o(97691);
     return false;
   }
   
-  public final boolean dZp()
-  {
-    AppMethodBeat.i(97692);
-    final int k = this.zNG.getHeight();
-    this.zNG.setVisibility(8);
-    int i = 0;
-    Object localObject = null;
-    final int j = 0;
-    while (i < this.zNH.getAdapter().getCount())
-    {
-      localObject = this.zNH.getAdapter().getView(i, (View)localObject, null);
-      ((View)localObject).measure(this.zNI.getWidth(), -2);
-      j += ((View)localObject).getMeasuredHeight();
-      i += 1;
-    }
-    ((RelativeLayout.LayoutParams)this.zNH.getLayoutParams()).bottomMargin = (k - j);
-    this.zNH.setVisibility(0);
-    localObject = new Animation()
-    {
-      protected final void applyTransformation(float paramAnonymousFloat, Transformation paramAnonymousTransformation)
-      {
-        AppMethodBeat.i(97688);
-        paramAnonymousTransformation = (RelativeLayout.LayoutParams)b.this.zNH.getLayoutParams();
-        if (paramAnonymousFloat == 1.0F) {}
-        for (int i = 0;; i = (int)((k - j) * (1.0F - paramAnonymousFloat)))
-        {
-          paramAnonymousTransformation.bottomMargin = i;
-          b.this.zNH.requestLayout();
-          AppMethodBeat.o(97688);
-          return;
-        }
-      }
-      
-      public final boolean willChangeBounds()
-      {
-        return true;
-      }
-    };
-    ((Animation)localObject).setDuration(250L);
-    this.zNH.startAnimation((Animation)localObject);
-    AppMethodBeat.o(97692);
-    return true;
-  }
-  
-  public final boolean eZ(final View paramView)
+  public final boolean eY(final View paramView)
   {
     AppMethodBeat.i(97690);
     int i;
-    if ((ag.dTW().dVz()) && (this.zNE != null))
+    if ((ah.dXw().dZa()) && (this.AeL != null))
     {
-      i = this.zNE.eW(paramView);
+      i = this.AeL.eV(paramView);
       if ((i == 0) || (i == 1))
       {
         AppMethodBeat.o(97690);
         return true;
       }
-      ad.i("MicroMsg.AdNotLikeHelper", "abtest error return 2");
+      ae.i("MicroMsg.AdNotLikeHelper", "abtest error return 2");
     }
     for (;;)
     {
-      if (this.zpi)
+      if (this.zGx)
       {
         AppMethodBeat.o(97690);
         return false;
@@ -162,12 +118,12 @@ public final class b
         if (!(localObject1 instanceof com.tencent.mm.plugin.sns.data.b)) {
           continue;
         }
-        localObject1 = ag.dUe().aAa(((com.tencent.mm.plugin.sns.data.b)localObject1).doX);
-        com.tencent.mm.plugin.sns.ad.e.g.a(com.tencent.mm.plugin.sns.ad.timeline.feedback.a.b.a((p)localObject1, false, paramView, this.zbv));
-        if (this.zNF == null) {
+        localObject1 = ah.dXE().aBr(((com.tencent.mm.plugin.sns.data.b)localObject1).dqc);
+        com.tencent.mm.plugin.sns.ad.f.g.a(com.tencent.mm.plugin.sns.ad.timeline.feedback.a.b.a((p)localObject1, false, paramView, this.zrZ));
+        if (this.AeM == null) {
           continue;
         }
-        boolean bool = this.zNF.a(paramView, (p)localObject1);
+        boolean bool = this.AeM.a(paramView, (p)localObject1);
         if (!bool) {
           continue;
         }
@@ -175,14 +131,14 @@ public final class b
         return true;
       }
       catch (Throwable localThrowable) {}
-      if (this.zpf != null)
+      if (this.zGu != null)
       {
-        if ((this.zpf.getTag() instanceof a))
+        if ((this.zGu.getTag() instanceof a))
         {
-          paramView = ((a)this.zpf.getTag()).yXL;
-          this.zpi = true;
-          paramView.startAnimation(this.zph);
-          this.zph.setAnimationListener(new Animation.AnimationListener()
+          paramView = ((a)this.zGu.getTag()).zom;
+          this.zGx = true;
+          paramView.startAnimation(this.zGw);
+          this.zGw.setAnimationListener(new Animation.AnimationListener()
           {
             public final void onAnimationEnd(Animation paramAnonymousAnimation)
             {
@@ -191,9 +147,9 @@ public final class b
               {
                 paramView.clearAnimation();
                 paramView.setVisibility(8);
-                b.this.dVw();
+                b.this.dYX();
               }
-              b.this.zpi = false;
+              b.this.zGx = false;
               AppMethodBeat.o(97687);
             }
             
@@ -201,7 +157,7 @@ public final class b
             
             public final void onAnimationStart(Animation paramAnonymousAnimation)
             {
-              b.this.zpi = true;
+              b.this.zGx = true;
             }
           });
         }
@@ -209,7 +165,7 @@ public final class b
         {
           AppMethodBeat.o(97690);
           return false;
-          dVw();
+          dYX();
         }
       }
       if ((paramView.getTag() == null) || (!(paramView.getTag() instanceof com.tencent.mm.plugin.sns.data.b)))
@@ -218,49 +174,49 @@ public final class b
         return false;
       }
       com.tencent.mm.plugin.sns.data.b localb = (com.tencent.mm.plugin.sns.data.b)paramView.getTag();
-      Object localObject2 = localb.doX;
-      this.zpf = new AbsoluteLayout(this.mContext);
-      this.zpf.setId(2131296470);
+      Object localObject2 = localb.dqc;
+      this.zGu = new AbsoluteLayout(this.mContext);
+      this.zGu.setId(2131296470);
       new FrameLayout.LayoutParams(-1, -1);
-      this.zpe.addView(this.zpf);
-      int j = BackwardSupportUtil.b.g(this.mContext, 150.0F);
-      int k = BackwardSupportUtil.b.g(this.mContext, 17.0F);
-      BackwardSupportUtil.b.g(this.mContext, 40.0F);
-      final View localView = z.jO(this.mContext).inflate(2131492940, null);
+      this.zGt.addView(this.zGu);
+      int j = BackwardSupportUtil.b.h(this.mContext, 150.0F);
+      int k = BackwardSupportUtil.b.h(this.mContext, 17.0F);
+      BackwardSupportUtil.b.h(this.mContext, 40.0F);
+      final View localView = z.jV(this.mContext).inflate(2131492940, null);
       TextView localTextView = (TextView)localView.findViewById(2131296446);
-      Object localObject1 = ac.iM(aj.getContext());
-      com.tencent.mm.plugin.sns.storage.b localb1 = localb.zcq.ApR;
+      Object localObject1 = ad.iR(ak.getContext());
+      com.tencent.mm.plugin.sns.storage.b localb1 = localb.ztd.AHh;
       if (localb1 != null)
       {
         if (!"zh_CN".equals(localObject1)) {
           break label654;
         }
-        localObject1 = localb1.zvN;
-        if (!bt.isNullOrNil((String)localObject1))
+        localObject1 = localb1.zNi;
+        if (!bu.isNullOrNil((String)localObject1))
         {
           localTextView.setText((CharSequence)localObject1);
           localTextView.setClickable(true);
         }
       }
       new Rect();
-      i = h.hm(this.mContext);
-      localObject1 = localb.zcq.edN();
-      ad.d("MicroMsg.AdNotLikeHelper", "addCommentView getLocationInWindow " + localObject1[0] + "  " + localObject1[1] + " height: " + i);
-      this.yYM = al.jG(this.mContext);
-      if (this.mXd)
+      i = h.hs(this.mContext);
+      localObject1 = localb.ztd.ehu();
+      ae.d("MicroMsg.AdNotLikeHelper", "addCommentView getLocationInWindow " + localObject1[0] + "  " + localObject1[1] + " height: " + i);
+      this.zpn = al.jN(this.mContext);
+      if (this.ncj)
       {
         i = a.fromDPToPix(this.mContext, 2);
-        this.yYM = 0;
+        this.zpn = 0;
       }
       for (;;)
       {
-        localObject1 = new AbsoluteLayout.LayoutParams(-2, -2, localObject1[0] - j, localObject1[1] - this.yYM - i + k);
+        localObject1 = new AbsoluteLayout.LayoutParams(-2, -2, localObject1[0] - j, localObject1[1] - this.zpn - i + k);
         localObject2 = new a((String)localObject2, localView);
-        this.zpf.setTag(localObject2);
-        this.zpf.addView(localView, (ViewGroup.LayoutParams)localObject1);
+        this.zGu.setTag(localObject2);
+        this.zGu.addView(localView, (ViewGroup.LayoutParams)localObject1);
         localView.setVisibility(8);
-        this.zpi = true;
-        new ap().post(new Runnable()
+        this.zGx = true;
+        new aq().post(new Runnable()
         {
           public final void run()
           {
@@ -274,25 +230,69 @@ public final class b
         label654:
         if (("zh_TW".equals(localObject1)) || ("zh_HK".equals(localObject1)))
         {
-          localObject1 = localb1.zvP;
+          localObject1 = localb1.zNk;
           break;
         }
-        localObject1 = localb1.zvO;
+        localObject1 = localb1.zNj;
         break;
         i = a.fromDPToPix(this.mContext, 2) + i;
       }
     }
   }
   
+  public final boolean ecU()
+  {
+    AppMethodBeat.i(97692);
+    final int k = this.AeN.getHeight();
+    this.AeN.setVisibility(8);
+    int i = 0;
+    Object localObject = null;
+    final int j = 0;
+    while (i < this.AeO.getAdapter().getCount())
+    {
+      localObject = this.AeO.getAdapter().getView(i, (View)localObject, null);
+      ((View)localObject).measure(this.AeP.getWidth(), -2);
+      j += ((View)localObject).getMeasuredHeight();
+      i += 1;
+    }
+    ((RelativeLayout.LayoutParams)this.AeO.getLayoutParams()).bottomMargin = (k - j);
+    this.AeO.setVisibility(0);
+    localObject = new Animation()
+    {
+      protected final void applyTransformation(float paramAnonymousFloat, Transformation paramAnonymousTransformation)
+      {
+        AppMethodBeat.i(97688);
+        paramAnonymousTransformation = (RelativeLayout.LayoutParams)b.this.AeO.getLayoutParams();
+        if (paramAnonymousFloat == 1.0F) {}
+        for (int i = 0;; i = (int)((k - j) * (1.0F - paramAnonymousFloat)))
+        {
+          paramAnonymousTransformation.bottomMargin = i;
+          b.this.AeO.requestLayout();
+          AppMethodBeat.o(97688);
+          return;
+        }
+      }
+      
+      public final boolean willChangeBounds()
+      {
+        return true;
+      }
+    };
+    ((Animation)localObject).setDuration(250L);
+    this.AeO.startAnimation((Animation)localObject);
+    AppMethodBeat.o(97692);
+    return true;
+  }
+  
   final class a
   {
-    View yXL = null;
-    String zpy;
+    String zGN;
+    View zom = null;
     
     public a(String paramString, View paramView)
     {
-      this.zpy = paramString;
-      this.yXL = paramView;
+      this.zGN = paramString;
+      this.zom = paramView;
     }
   }
 }

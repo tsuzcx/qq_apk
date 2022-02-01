@@ -17,12 +17,12 @@ final class MobileInputUI$11
     AppMethodBeat.i(128344);
     b localb = new b();
     localb.bd(paramView);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/account/ui/MobileInputUI$19", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/account/ui/MobileInputUI$19", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
     paramView = new Intent();
-    paramView.putExtra("country_name", this.jmP.iem);
-    paramView.putExtra("couttry_code", this.jmP.countryCode);
-    paramView.putExtra("iso_code", this.jmP.jko);
-    com.tencent.mm.plugin.account.a.a.iRG.b(paramView, this.jmP);
+    paramView.putExtra("country_name", this.jpJ.ihe);
+    paramView.putExtra("couttry_code", this.jpJ.countryCode);
+    paramView.putExtra("iso_code", this.jpJ.jnh);
+    com.tencent.mm.plugin.account.a.a.iUz.b(paramView, this.jpJ);
     com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/account/ui/MobileInputUI$19", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(128344);
   }

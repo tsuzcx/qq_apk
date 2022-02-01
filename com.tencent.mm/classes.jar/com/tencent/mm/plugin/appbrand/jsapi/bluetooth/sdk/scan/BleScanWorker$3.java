@@ -5,7 +5,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public final class BleScanWorker$3
@@ -18,7 +18,7 @@ public final class BleScanWorker$3
     AppMethodBeat.i(144600);
     if (paramIntent == null)
     {
-      ad.i(this.kGa.crd, "Receive intent failed");
+      ae.i(this.kJp.crG, "Receive intent failed");
       AppMethodBeat.o(144600);
       return;
     }
@@ -26,12 +26,12 @@ public final class BleScanWorker$3
     if (paramContext != null)
     {
       int i = paramContext.getState();
-      ad.d(this.kGa.crd, "state:%d", new Object[] { Integer.valueOf(i) });
+      ae.d(this.kJp.crG, "state:%d", new Object[] { Integer.valueOf(i) });
       if ((i != 12) && (i != 11) && ((i == 10) || (i == 13)))
       {
-        com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.a.i(this.kGa.crd, "bluetooth is disable, stop scan", new Object[0]);
-        this.kGa.kFW.set(false);
-        this.kGa.bjr();
+        com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.a.i(this.kJp.crG, "bluetooth is disable, stop scan", new Object[0]);
+        this.kJp.kJl.set(false);
+        this.kJp.bka();
       }
     }
     AppMethodBeat.o(144600);

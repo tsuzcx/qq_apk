@@ -7,12 +7,12 @@ import android.content.IntentFilter;
 import android.support.v4.content.d;
 import android.view.ViewGroup;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.l;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.m;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.z;
 
 public abstract class a
-  extends l
+  extends m
 {
   private BroadcastReceiver receiver = new BroadcastReceiver()
   {
@@ -28,12 +28,12 @@ public abstract class a
       {
         if ("com.tencent.mm.adlanding.close_exposure_voice".equals(paramAnonymousIntent.getAction()))
         {
-          if (a.this.dWS().zAg.equals(paramAnonymousIntent.getStringExtra("para_id"))) {
+          if (a.this.eaw().zRg.equals(paramAnonymousIntent.getStringExtra("para_id"))) {
             break label98;
           }
           paramAnonymousContext = a.this;
-          if (paramAnonymousContext.zxZ) {
-            paramAnonymousContext.dWl();
+          if (paramAnonymousContext.zPy) {
+            paramAnonymousContext.dZN();
           }
           AppMethodBeat.o(96313);
           return;
@@ -45,47 +45,47 @@ public abstract class a
         return;
       }
       if ("com.tencent.mm.adlanding.video.action.PAUSE_OR_RESUME".equals(paramAnonymousIntent.getAction())) {
-        a.this.aM(paramAnonymousIntent);
+        a.this.aN(paramAnonymousIntent);
       }
       label98:
       AppMethodBeat.o(96313);
     }
   };
-  public boolean zxU;
-  private boolean zxV = true;
-  private boolean zxW = false;
-  public com.tencent.mm.plugin.sns.ad.landingpage.helper.b.a zxX;
-  private volatile boolean zxY = false;
-  public boolean zxZ;
+  public boolean zPt;
+  private boolean zPu = true;
+  private boolean zPv = false;
+  public com.tencent.mm.plugin.sns.ad.landingpage.helper.b.a zPw;
+  private volatile boolean zPx = false;
+  public boolean zPy;
   
-  public a(Context paramContext, x paramx, ViewGroup paramViewGroup)
+  public a(Context paramContext, y paramy, ViewGroup paramViewGroup)
   {
-    super(paramContext, paramx, paramViewGroup);
+    super(paramContext, paramy, paramViewGroup);
     try
     {
-      this.zxX = com.tencent.mm.plugin.sns.ad.landingpage.helper.b.a.dRv();
-      paramContext = d.U(this.context);
-      paramx = new IntentFilter("com.tencent.mm.adlanding.close_exposure_voice");
-      paramx.addAction("com.tencent.mm.adlanding.video.action.PAUSE_OR_RESUME");
-      paramContext.a(this.receiver, paramx);
-      ad.v("AbsVideoPlayComp", "register receiver " + this.receiver);
+      this.zPw = com.tencent.mm.plugin.sns.ad.landingpage.helper.b.a.dUT();
+      paramContext = d.V(this.context);
+      paramy = new IntentFilter("com.tencent.mm.adlanding.close_exposure_voice");
+      paramy.addAction("com.tencent.mm.adlanding.video.action.PAUSE_OR_RESUME");
+      paramContext.a(this.receiver, paramy);
+      ae.v("AbsVideoPlayComp", "register receiver " + this.receiver);
       return;
     }
     catch (Throwable paramContext) {}
   }
   
-  protected final void aM(Intent paramIntent)
+  protected final void aN(Intent paramIntent)
   {
     int i;
     if (paramIntent != null)
     {
-      i = y.getIntExtra(paramIntent, "TRY_PAUSE_OR_RESUME", 0);
+      i = z.getIntExtra(paramIntent, "TRY_PAUSE_OR_RESUME", 0);
       if (i != 1) {
         break label34;
       }
-      this.zxW = true;
+      this.zPv = true;
       if (isPlaying()) {
-        cxt();
+        cyU();
       }
     }
     label34:
@@ -95,75 +95,75 @@ public abstract class a
       {
         return;
       } while (i != 2);
-      this.zxW = false;
+      this.zPv = false;
     } while (isPlaying());
-    cxu();
+    cyV();
   }
   
-  protected void cxt() {}
+  protected void cyU() {}
   
-  protected void cxu() {}
+  protected void cyV() {}
   
-  public void dRk()
+  public void dUI()
   {
-    super.dRk();
+    super.dUI();
   }
   
-  public void dRm()
+  public void dUK()
   {
-    super.dRm();
-    this.zxZ = true;
+    super.dUK();
+    this.zPy = true;
   }
   
-  public void dRn()
+  public void dUL()
   {
-    super.dRn();
-    this.zxZ = false;
+    super.dUL();
+    this.zPy = false;
   }
   
-  public void dRo()
+  public void dUM()
   {
-    super.dRo();
-    d.U(this.context).unregisterReceiver(this.receiver);
-    this.zxZ = true;
-    ad.v("AbsVideoPlayComp", "unregister receiver " + this.receiver);
+    super.dUM();
+    d.V(this.context).unregisterReceiver(this.receiver);
+    this.zPy = true;
+    ae.v("AbsVideoPlayComp", "unregister receiver " + this.receiver);
   }
   
-  public void dWl()
+  public void dZN()
   {
-    this.zxU = false;
+    this.zPt = false;
   }
   
-  public void dWm()
+  public void dZO()
   {
-    super.dWm();
-    if (this.zxV)
+    super.dZO();
+    if (this.zPu)
     {
-      this.zxV = false;
-      if (!dWZ().zAO) {
-        dWl();
+      this.zPu = false;
+      if (!eaD().zRO) {
+        dZN();
       }
     }
     else
     {
       return;
     }
-    dWn();
+    dZP();
   }
   
-  public void dWn()
+  public void dZP()
   {
-    this.zxU = true;
+    this.zPt = true;
   }
   
-  public final void dWo()
+  public final void dZQ()
   {
     Intent localIntent = new Intent("com.tencent.mm.adlanding.close_exposure_voice");
-    localIntent.putExtra("para_id", dWS().zAg);
-    d.U(this.context).b(localIntent);
+    localIntent.putExtra("para_id", eaw().zRg);
+    d.V(this.context).b(localIntent);
   }
   
-  public final int dWp()
+  public final int dZR()
   {
     if (this.context != null) {
       return this.context.hashCode();
@@ -175,7 +175,7 @@ public abstract class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.a
  * JD-Core Version:    0.7.0.1
  */

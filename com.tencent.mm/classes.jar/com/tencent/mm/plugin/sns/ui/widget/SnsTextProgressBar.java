@@ -7,13 +7,13 @@ import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.widget.ProgressBar;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cc.a;
+import com.tencent.mm.cb.a;
 import com.tencent.mm.plugin.sns.i.a;
 
 public class SnsTextProgressBar
   extends ProgressBar
 {
-  private String ADP;
+  private String AVp;
   private int Hx;
   private Context mContext;
   private Paint mPaint;
@@ -68,10 +68,10 @@ public class SnsTextProgressBar
     //   27: iconst_1
     //   28: invokevirtual 105	android/graphics/Paint:setAntiAlias	(Z)V
     //   31: aload_0
-    //   32: getfield 107	com/tencent/mm/plugin/sns/ui/widget/SnsTextProgressBar:ADP	Ljava/lang/String;
+    //   32: getfield 107	com/tencent/mm/plugin/sns/ui/widget/SnsTextProgressBar:AVp	Ljava/lang/String;
     //   35: ifnull +13 -> 48
     //   38: aload_0
-    //   39: getfield 107	com/tencent/mm/plugin/sns/ui/widget/SnsTextProgressBar:ADP	Ljava/lang/String;
+    //   39: getfield 107	com/tencent/mm/plugin/sns/ui/widget/SnsTextProgressBar:AVp	Ljava/lang/String;
     //   42: invokevirtual 111	java/lang/String:length	()I
     //   45: ifgt +118 -> 163
     //   48: aload_0
@@ -136,7 +136,7 @@ public class SnsTextProgressBar
     //   161: monitorexit
     //   162: return
     //   163: aload_0
-    //   164: getfield 107	com/tencent/mm/plugin/sns/ui/widget/SnsTextProgressBar:ADP	Ljava/lang/String;
+    //   164: getfield 107	com/tencent/mm/plugin/sns/ui/widget/SnsTextProgressBar:AVp	Ljava/lang/String;
     //   167: invokestatic 161	android/graphics/Color:parseColor	(Ljava/lang/String;)I
     //   170: istore 4
     //   172: goto -110 -> 62
@@ -163,7 +163,7 @@ public class SnsTextProgressBar
   
   public void setPaintColor(String paramString)
   {
-    this.ADP = paramString;
+    this.AVp = paramString;
   }
   
   public void setProgress(int paramInt)

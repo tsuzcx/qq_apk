@@ -14,13 +14,13 @@ final class b$a
   @SuppressLint({"ClickableViewAccessibility"})
   public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(190414);
+    AppMethodBeat.i(220731);
     b localb = new b();
     localb.bd(paramView);
     localb.bd(paramMotionEvent);
-    a.b("com/tencent/luggage/game/page/GameNativeWidgetContainer$ConsumeAllTouchListener", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahq());
+    a.b("com/tencent/luggage/game/page/GameNativeWidgetContainer$ConsumeAllTouchListener", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahF());
     a.a(true, this, "com/tencent/luggage/game/page/GameNativeWidgetContainer$ConsumeAllTouchListener", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
-    AppMethodBeat.o(190414);
+    AppMethodBeat.o(220731);
     return true;
   }
 }

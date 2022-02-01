@@ -6,90 +6,90 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class aq
 {
-  int dDp;
-  int jeJ;
-  int jeK;
-  int jeL;
-  int jeM;
-  int jeN;
-  int jeO;
-  String jeP;
-  String jeQ;
+  int dEu;
+  int jhC;
+  int jhD;
+  int jhE;
+  int jhF;
+  int jhG;
+  int jhH;
+  String jhI;
+  String jhJ;
   
   public aq()
   {
     AppMethodBeat.i(131154);
-    this.dDp = -1;
-    this.jeJ = 0;
-    this.jeK = 0;
-    this.jeL = 0;
-    this.jeM = 0;
-    this.jeN = 0;
-    this.jeO = 0;
-    this.jeP = "";
-    this.jeQ = "";
+    this.dEu = -1;
+    this.jhC = 0;
+    this.jhD = 0;
+    this.jhE = 0;
+    this.jhF = 0;
+    this.jhG = 0;
+    this.jhH = 0;
+    this.jhI = "";
+    this.jhJ = "";
     AppMethodBeat.o(131154);
   }
   
-  public final ContentValues aTh()
+  public final ContentValues aTG()
   {
     AppMethodBeat.i(131156);
     ContentValues localContentValues = new ContentValues();
-    if ((this.dDp & 0x1) != 0) {
-      localContentValues.put("grouopid", Integer.valueOf(this.jeJ));
+    if ((this.dEu & 0x1) != 0) {
+      localContentValues.put("grouopid", Integer.valueOf(this.jhC));
     }
-    if ((this.dDp & 0x2) != 0) {
-      localContentValues.put("membernum", Integer.valueOf(this.jeK));
+    if ((this.dEu & 0x2) != 0) {
+      localContentValues.put("membernum", Integer.valueOf(this.jhD));
     }
-    if ((this.dDp & 0x4) != 0) {
-      localContentValues.put("weixinnum", Integer.valueOf(this.jeL));
+    if ((this.dEu & 0x4) != 0) {
+      localContentValues.put("weixinnum", Integer.valueOf(this.jhE));
     }
-    if ((this.dDp & 0x8) != 0) {
-      localContentValues.put("insert_time", Integer.valueOf(this.jeM));
+    if ((this.dEu & 0x8) != 0) {
+      localContentValues.put("insert_time", Integer.valueOf(this.jhF));
     }
-    if ((this.dDp & 0x10) != 0) {
-      localContentValues.put("lastupdate_time", Integer.valueOf(this.jeN));
+    if ((this.dEu & 0x10) != 0) {
+      localContentValues.put("lastupdate_time", Integer.valueOf(this.jhG));
     }
-    if ((this.dDp & 0x20) != 0) {
-      localContentValues.put("needupdate", Integer.valueOf(this.jeO));
+    if ((this.dEu & 0x20) != 0) {
+      localContentValues.put("needupdate", Integer.valueOf(this.jhH));
     }
-    if ((this.dDp & 0x40) != 0) {
-      localContentValues.put("updatekey", aTi());
+    if ((this.dEu & 0x40) != 0) {
+      localContentValues.put("updatekey", aTH());
     }
-    if ((this.dDp & 0x80) != 0) {
-      localContentValues.put("groupname", aTj());
+    if ((this.dEu & 0x80) != 0) {
+      localContentValues.put("groupname", aTI());
     }
     AppMethodBeat.o(131156);
     return localContentValues;
   }
   
-  public final String aTi()
+  public final String aTH()
   {
-    if (this.jeP == null) {
+    if (this.jhI == null) {
       return "";
     }
-    return this.jeP;
+    return this.jhI;
   }
   
-  public final String aTj()
+  public final String aTI()
   {
-    if (this.jeQ == null) {
+    if (this.jhJ == null) {
       return "";
     }
-    return this.jeQ;
+    return this.jhJ;
   }
   
   public final void convertFrom(Cursor paramCursor)
   {
     AppMethodBeat.i(131155);
-    this.jeJ = paramCursor.getInt(0);
-    this.jeK = paramCursor.getInt(1);
-    this.jeL = paramCursor.getInt(2);
-    this.jeM = paramCursor.getInt(3);
-    this.jeN = paramCursor.getInt(4);
-    this.jeO = paramCursor.getInt(5);
-    this.jeP = paramCursor.getString(6);
-    this.jeQ = paramCursor.getString(7);
+    this.jhC = paramCursor.getInt(0);
+    this.jhD = paramCursor.getInt(1);
+    this.jhE = paramCursor.getInt(2);
+    this.jhF = paramCursor.getInt(3);
+    this.jhG = paramCursor.getInt(4);
+    this.jhH = paramCursor.getInt(5);
+    this.jhI = paramCursor.getString(6);
+    this.jhJ = paramCursor.getString(7);
     AppMethodBeat.o(131155);
   }
 }

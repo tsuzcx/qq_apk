@@ -1,79 +1,86 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import f.a.a.b;
+import java.util.LinkedList;
 
-public class dmz
-  extends com.tencent.mm.bx.a
+public final class dmz
+  extends cwj
 {
-  public String FxR;
-  public String hzB;
-  public int weight;
-  
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(124569);
+    AppMethodBeat.i(32465);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.FxR != null) {
-        paramVarArgs.d(1, this.FxR);
+      if (this.BaseResponse == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: BaseResponse");
+        AppMethodBeat.o(32465);
+        throw paramVarArgs;
       }
-      if (this.hzB != null) {
-        paramVarArgs.d(2, this.hzB);
+      if (this.BaseResponse != null)
+      {
+        paramVarArgs.lJ(1, this.BaseResponse.computeSize());
+        this.BaseResponse.writeFields(paramVarArgs);
       }
-      paramVarArgs.aS(3, this.weight);
-      AppMethodBeat.o(124569);
+      AppMethodBeat.o(32465);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.FxR == null) {
-        break label318;
+      if (this.BaseResponse == null) {
+        break label369;
       }
     }
-    label318:
-    for (paramInt = f.a.a.b.b.a.e(1, this.FxR) + 0;; paramInt = 0)
+    label369:
+    for (paramInt = f.a.a.a.lI(1, this.BaseResponse.computeSize()) + 0;; paramInt = 0)
     {
-      int i = paramInt;
-      if (this.hzB != null) {
-        i = paramInt + f.a.a.b.b.a.e(2, this.hzB);
-      }
-      paramInt = f.a.a.b.b.a.bz(3, this.weight);
-      AppMethodBeat.o(124569);
-      return i + paramInt;
+      AppMethodBeat.o(32465);
+      return paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = cwj.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cwj.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
-        AppMethodBeat.o(124569);
+        if (this.BaseResponse == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: BaseResponse");
+          AppMethodBeat.o(32465);
+          throw paramVarArgs;
+        }
+        AppMethodBeat.o(32465);
         return 0;
       }
       if (paramInt == 3)
       {
-        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+        Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
         dmz localdmz = (dmz)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(124569);
+          AppMethodBeat.o(32465);
           return -1;
-        case 1: 
-          localdmz.FxR = locala.NPN.readString();
-          AppMethodBeat.o(124569);
-          return 0;
-        case 2: 
-          localdmz.hzB = locala.NPN.readString();
-          AppMethodBeat.o(124569);
-          return 0;
         }
-        localdmz.weight = locala.NPN.zc();
-        AppMethodBeat.o(124569);
+        paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
+        int i = paramVarArgs.size();
+        paramInt = 0;
+        while (paramInt < i)
+        {
+          Object localObject2 = (byte[])paramVarArgs.get(paramInt);
+          localObject1 = new BaseResponse();
+          localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
+          for (boolean bool = true; bool; bool = ((BaseResponse)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cwj.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+          localdmz.BaseResponse = ((BaseResponse)localObject1);
+          paramInt += 1;
+        }
+        AppMethodBeat.o(32465);
         return 0;
       }
-      AppMethodBeat.o(124569);
+      AppMethodBeat.o(32465);
       return -1;
     }
   }

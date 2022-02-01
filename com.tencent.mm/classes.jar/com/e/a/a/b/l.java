@@ -7,11 +7,11 @@ import javax.annotation.Nullable;
 abstract class l<K, V>
   extends AbstractCollection<Map.Entry<K, V>>
 {
-  abstract k<K, V> Ba();
+  abstract k<K, V> Bb();
   
   public void clear()
   {
-    Ba().clear();
+    Bb().clear();
   }
   
   public boolean contains(@Nullable Object paramObject)
@@ -19,7 +19,7 @@ abstract class l<K, V>
     if ((paramObject instanceof Map.Entry))
     {
       paramObject = (Map.Entry)paramObject;
-      return Ba().l(paramObject.getKey(), paramObject.getValue());
+      return Bb().l(paramObject.getKey(), paramObject.getValue());
     }
     return false;
   }
@@ -29,19 +29,19 @@ abstract class l<K, V>
     if ((paramObject instanceof Map.Entry))
     {
       paramObject = (Map.Entry)paramObject;
-      return Ba().remove(paramObject.getKey(), paramObject.getValue());
+      return Bb().remove(paramObject.getKey(), paramObject.getValue());
     }
     return false;
   }
   
   public int size()
   {
-    return Ba().size();
+    return Bb().size();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.e.a.a.b.l
  * JD-Core Version:    0.7.0.1
  */

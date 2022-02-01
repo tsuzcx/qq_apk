@@ -8,17 +8,17 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 final class bs
   extends c.a
 {
-  TextView iCV;
+  TextView iFO;
   
-  public final c.a gP(View paramView)
+  public final c.a gU(View paramView)
   {
     AppMethodBeat.i(37565);
-    super.gn(paramView);
-    this.fTP = ((TextView)paramView.findViewById(2131298178));
-    this.yEk = ((TextView)paramView.findViewById(2131298185));
-    this.iCV = ((TextView)paramView.findViewById(2131298073));
-    this.iCK = ((CheckBox)paramView.findViewById(2131298068));
-    this.gZU = paramView.findViewById(2131298147);
+    super.gs(paramView);
+    this.fVV = ((TextView)paramView.findViewById(2131298178));
+    this.yUp = ((TextView)paramView.findViewById(2131298185));
+    this.iFO = ((TextView)paramView.findViewById(2131298073));
+    this.iFD = ((CheckBox)paramView.findViewById(2131298068));
+    this.hcH = paramView.findViewById(2131298147);
     AppMethodBeat.o(37565);
     return this;
   }

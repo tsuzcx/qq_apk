@@ -4,17 +4,17 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.w;
+import com.tencent.mm.model.x;
 import com.tencent.mm.plugin.card.d.l;
-import com.tencent.mm.protocal.protobuf.aaf;
-import com.tencent.mm.protocal.protobuf.ael;
-import com.tencent.mm.protocal.protobuf.atd;
-import com.tencent.mm.protocal.protobuf.sr;
-import com.tencent.mm.protocal.protobuf.tl;
-import com.tencent.mm.protocal.protobuf.ts;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.aai;
+import com.tencent.mm.protocal.protobuf.aeu;
+import com.tencent.mm.protocal.protobuf.att;
+import com.tencent.mm.protocal.protobuf.st;
+import com.tencent.mm.protocal.protobuf.tn;
+import com.tencent.mm.protocal.protobuf.tu;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.MMActivity;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -24,34 +24,34 @@ import java.util.List;
 
 public final class f
 {
-  private int fPp;
-  public com.tencent.mm.plugin.card.base.b owK;
-  private MMActivity owO;
-  public List<com.tencent.mm.plugin.card.model.b> owP;
-  public com.tencent.mm.plugin.card.model.b owQ;
-  private ArrayList<tl> owR;
+  private int fRv;
+  public com.tencent.mm.plugin.card.base.b oDm;
+  private MMActivity oDq;
+  public List<com.tencent.mm.plugin.card.model.b> oDr;
+  public com.tencent.mm.plugin.card.model.b oDs;
+  private ArrayList<tn> oDt;
   
   public f(MMActivity paramMMActivity)
   {
     AppMethodBeat.i(112618);
-    this.fPp = 3;
-    this.owP = new ArrayList();
-    this.owO = paramMMActivity;
+    this.fRv = 3;
+    this.oDr = new ArrayList();
+    this.oDq = paramMMActivity;
     AppMethodBeat.o(112618);
   }
   
-  private boolean bUp()
+  private boolean bVE()
   {
     AppMethodBeat.i(112620);
-    if ((l.AN(this.fPp)) || (l.AO(this.fPp)) || (this.fPp == 23))
+    if ((l.AZ(this.fRv)) || (l.Ba(this.fRv)) || (this.fRv == 23))
     {
-      if ((this.owK.isAcceptable()) && (this.owK.bTN().FRS != null) && (!TextUtils.isEmpty(this.owK.bTN().FRS.text)) && (!TextUtils.isEmpty(this.owK.bTN().FRw)))
+      if ((this.oDm.isAcceptable()) && (this.oDm.bVc().Gkr != null) && (!TextUtils.isEmpty(this.oDm.bVc().Gkr.text)) && (!TextUtils.isEmpty(this.oDm.bVc().GjV)))
       {
         AppMethodBeat.o(112620);
         return true;
       }
     }
-    else if ((this.fPp == 6) && (this.owK.bTK()) && (this.owK.bTN().FRS != null) && (!TextUtils.isEmpty(this.owK.bTN().FRS.text)) && (!TextUtils.isEmpty(this.owK.bTN().FRw)))
+    else if ((this.fRv == 6) && (this.oDm.bUZ()) && (this.oDm.bVc().Gkr != null) && (!TextUtils.isEmpty(this.oDm.bVc().Gkr.text)) && (!TextUtils.isEmpty(this.oDm.bVc().GjV)))
     {
       AppMethodBeat.o(112620);
       return true;
@@ -63,149 +63,149 @@ public final class f
   private String getString(int paramInt)
   {
     AppMethodBeat.i(112623);
-    String str = this.owO.getString(paramInt);
+    String str = this.oDq.getString(paramInt);
     AppMethodBeat.o(112623);
     return str;
   }
   
-  public final void a(com.tencent.mm.plugin.card.base.b paramb, ArrayList<tl> paramArrayList, int paramInt)
+  public final void a(com.tencent.mm.plugin.card.base.b paramb, ArrayList<tn> paramArrayList, int paramInt)
   {
-    this.owK = paramb;
-    this.owR = paramArrayList;
-    this.fPp = paramInt;
+    this.oDm = paramb;
+    this.oDt = paramArrayList;
+    this.fRv = paramInt;
   }
   
-  public final List<com.tencent.mm.plugin.card.model.b> bUo()
+  public final List<com.tencent.mm.plugin.card.model.b> bVD()
   {
     AppMethodBeat.i(112619);
-    this.owP.clear();
-    if ((this.owK.bTO().FPB != null) && (!bt.isNullOrNil(this.owK.bTO().FPB.title)))
+    this.oDr.clear();
+    if ((this.oDm.bVd().Gia != null) && (!bu.isNullOrNil(this.oDm.bVd().Gia.title)))
     {
       localObject1 = new com.tencent.mm.plugin.card.model.b();
-      ((com.tencent.mm.plugin.card.model.b)localObject1).oxX = 1;
-      ((com.tencent.mm.plugin.card.model.b)localObject1).title = this.owK.bTO().FPB.title;
-      ((com.tencent.mm.plugin.card.model.b)localObject1).oBP = "";
+      ((com.tencent.mm.plugin.card.model.b)localObject1).oEz = 1;
+      ((com.tencent.mm.plugin.card.model.b)localObject1).title = this.oDm.bVd().Gia.title;
+      ((com.tencent.mm.plugin.card.model.b)localObject1).oIr = "";
       ((com.tencent.mm.plugin.card.model.b)localObject1).url = "card://jump_card_gift";
-      ((com.tencent.mm.plugin.card.model.b)localObject1).pkr = this.owK.bTO().FPB.pkr;
-      this.owP.add(localObject1);
+      ((com.tencent.mm.plugin.card.model.b)localObject1).pqW = this.oDm.bVd().Gia.pqW;
+      this.oDr.add(localObject1);
     }
-    if ((this.owK.bTO().FPk != null) && (this.owK.bTO().FPk.size() > 0))
+    if ((this.oDm.bVd().GhJ != null) && (this.oDm.bVd().GhJ.size() > 0))
     {
-      localObject1 = l.cF(this.owK.bTO().FPk);
+      localObject1 = l.cI(this.oDm.bVd().GhJ);
       if (localObject1 != null)
       {
-        ((com.tencent.mm.plugin.card.model.b)((List)localObject1).get(0)).oxY = false;
-        this.owP.addAll((Collection)localObject1);
+        ((com.tencent.mm.plugin.card.model.b)((List)localObject1).get(0)).oEA = false;
+        this.oDr.addAll((Collection)localObject1);
       }
     }
     int i;
-    if (((this.fPp == 6) && (this.owK.bTO().FPo <= 0)) || ((l.AP(this.fPp)) && (this.owK.bTJ()) && (this.owK.bTs()) && (this.owK.bTA())))
+    if (((this.fRv == 6) && (this.oDm.bVd().GhN <= 0)) || ((l.Bb(this.fRv)) && (this.oDm.bUY()) && (this.oDm.bUH()) && (this.oDm.bUP())))
     {
       localObject1 = new com.tencent.mm.plugin.card.model.b();
-      ((com.tencent.mm.plugin.card.model.b)localObject1).oxX = 1;
-      if (!bt.isNullOrNil(this.owK.bTN().FSk))
+      ((com.tencent.mm.plugin.card.model.b)localObject1).oEz = 1;
+      if (!bu.isNullOrNil(this.oDm.bVc().GkJ))
       {
-        ((com.tencent.mm.plugin.card.model.b)localObject1).title = this.owK.bTN().FSk;
-        ((com.tencent.mm.plugin.card.model.b)localObject1).oBP = "";
+        ((com.tencent.mm.plugin.card.model.b)localObject1).title = this.oDm.bVc().GkJ;
+        ((com.tencent.mm.plugin.card.model.b)localObject1).oIr = "";
         ((com.tencent.mm.plugin.card.model.b)localObject1).url = "card://jump_gift";
-        this.owP.add(localObject1);
+        this.oDr.add(localObject1);
       }
     }
     else
     {
-      if ((this.owK.bTO().status != 0) && (this.owK.bTO().status != 1)) {
-        this.owK.bTO();
+      if ((this.oDm.bVd().status != 0) && (this.oDm.bVd().status != 1)) {
+        this.oDm.bVd();
       }
-      if ((this.fPp != 3) && (this.fPp == 6)) {
-        this.owK.bTO();
+      if ((this.fRv != 3) && (this.fRv == 6)) {
+        this.oDm.bVd();
       }
-      localObject2 = this.owK.bTN().FRQ;
-      if (this.owK.bTO().FPu != null) {
-        TextUtils.isEmpty(this.owK.bTO().FPu.title);
+      localObject2 = this.oDm.bVc().Gkp;
+      if (this.oDm.bVd().GhT != null) {
+        TextUtils.isEmpty(this.oDm.bVd().GhT.title);
       }
       localObject1 = new com.tencent.mm.plugin.card.model.b();
-      if (!this.owK.bTy()) {
+      if (!this.oDm.bUN()) {
         break label1076;
       }
       i = 0;
       label479:
-      ((com.tencent.mm.plugin.card.model.b)localObject1).oxY = false;
-      ((com.tencent.mm.plugin.card.model.b)localObject1).oxX = 1;
+      ((com.tencent.mm.plugin.card.model.b)localObject1).oEA = false;
+      ((com.tencent.mm.plugin.card.model.b)localObject1).oEz = 1;
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append(getTitle());
       ((StringBuilder)localObject2).append(getString(2131756829));
       ((com.tencent.mm.plugin.card.model.b)localObject1).title = ((StringBuilder)localObject2).toString();
-      ((com.tencent.mm.plugin.card.model.b)localObject1).oxN = "";
-      ((com.tencent.mm.plugin.card.model.b)localObject1).oBP = "";
+      ((com.tencent.mm.plugin.card.model.b)localObject1).oEp = "";
+      ((com.tencent.mm.plugin.card.model.b)localObject1).oIr = "";
       ((com.tencent.mm.plugin.card.model.b)localObject1).url = "card://jump_detail";
       if (i != 0) {
-        this.owP.add(localObject1);
+        this.oDr.add(localObject1);
       }
-      if ((!this.owK.bTw()) || (this.owK.bTN().FRD <= 0))
+      if ((!this.oDm.bUL()) || (this.oDm.bVc().Gkc <= 0))
       {
-        if ((!this.owK.bTu()) || (this.owK.bTN().FRD <= 0))
+        if ((!this.oDm.bUJ()) || (this.oDm.bVc().Gkc <= 0))
         {
-          if (this.owK.bTN().FRD <= 0) {
+          if (this.oDm.bVc().Gkc <= 0) {
             break label925;
           }
-          ad.e("MicroMsg.CardDetailDataMgr", "shop_count:" + this.owK.bTN().FRD);
-          if ((this.owK.bTN().FRD > 0) && (this.owR != null) && (this.owR.size() > 0))
+          ae.e("MicroMsg.CardDetailDataMgr", "shop_count:" + this.oDm.bVc().Gkc);
+          if ((this.oDm.bVc().Gkc > 0) && (this.oDt != null) && (this.oDt.size() > 0))
           {
-            localObject1 = (tl)this.owR.get(0);
-            if ((localObject1 == null) || (((tl)localObject1).zxp >= 50000.0F)) {
+            localObject1 = (tn)this.oDt.get(0);
+            if ((localObject1 == null) || (((tn)localObject1).zOO >= 50000.0F)) {
               break label1124;
             }
             localObject2 = new com.tencent.mm.plugin.card.model.b();
-            ((com.tencent.mm.plugin.card.model.b)localObject2).oxX = 2;
-            ((com.tencent.mm.plugin.card.model.b)localObject2).title = ((tl)localObject1).name;
-            ((com.tencent.mm.plugin.card.model.b)localObject2).oxN = this.owO.getString(2131756996, new Object[] { l.f(this.owO, ((tl)localObject1).zxp), ((tl)localObject1).hWY });
-            ((com.tencent.mm.plugin.card.model.b)localObject2).oBP = "";
+            ((com.tencent.mm.plugin.card.model.b)localObject2).oEz = 2;
+            ((com.tencent.mm.plugin.card.model.b)localObject2).title = ((tn)localObject1).name;
+            ((com.tencent.mm.plugin.card.model.b)localObject2).oEp = this.oDq.getString(2131756996, new Object[] { l.f(this.oDq, ((tn)localObject1).zOO), ((tn)localObject1).hZQ });
+            ((com.tencent.mm.plugin.card.model.b)localObject2).oIr = "";
             ((com.tencent.mm.plugin.card.model.b)localObject2).url = "card://jump_shop";
-            ((com.tencent.mm.plugin.card.model.b)localObject2).oyb = ((tl)localObject1).oyb;
-            ((com.tencent.mm.plugin.card.model.b)localObject2).hAD = this.owK.bTN().hAD;
-            this.owP.add(localObject2);
+            ((com.tencent.mm.plugin.card.model.b)localObject2).oED = ((tn)localObject1).oED;
+            ((com.tencent.mm.plugin.card.model.b)localObject2).hDr = this.oDm.bVc().hDr;
+            this.oDr.add(localObject2);
           }
         }
         label826:
-        if ((this.owK.bTN().FRD <= 0) || (this.owR != null)) {
+        if ((this.oDm.bVc().Gkc <= 0) || (this.oDt != null)) {
           break label1170;
         }
         localObject1 = new com.tencent.mm.plugin.card.model.b();
-        ((com.tencent.mm.plugin.card.model.b)localObject1).oxX = 1;
-        if (TextUtils.isEmpty(this.owK.bTN().FSb)) {
+        ((com.tencent.mm.plugin.card.model.b)localObject1).oEz = 1;
+        if (TextUtils.isEmpty(this.oDm.bVc().GkA)) {
           break label1156;
         }
-        ((com.tencent.mm.plugin.card.model.b)localObject1).title = this.owK.bTN().FSb;
-        ((com.tencent.mm.plugin.card.model.b)localObject1).oxN = "";
-        ((com.tencent.mm.plugin.card.model.b)localObject1).oBP = "";
+        ((com.tencent.mm.plugin.card.model.b)localObject1).title = this.oDm.bVc().GkA;
+        ((com.tencent.mm.plugin.card.model.b)localObject1).oEp = "";
+        ((com.tencent.mm.plugin.card.model.b)localObject1).oIr = "";
         ((com.tencent.mm.plugin.card.model.b)localObject1).url = "card://jump_shop_list";
-        this.owP.add(localObject1);
+        this.oDr.add(localObject1);
       }
     }
     label925:
     label1076:
     label1124:
-    while ((this.owK.bTN().FRD <= 0) || (this.owR == null) || (this.owR.size() <= 0)) {
+    while ((this.oDm.bVc().Gkc <= 0) || (this.oDt == null) || (this.oDt.size() <= 0)) {
       for (;;)
       {
-        if (((!this.owK.bTy()) || (this.owK.bTO().status != 3)) && (!TextUtils.isEmpty(this.owK.bTN().FRw))) {
-          this.owP.add(bUr());
+        if (((!this.oDm.bUN()) || (this.oDm.bVd().status != 3)) && (!TextUtils.isEmpty(this.oDm.bVc().GjV))) {
+          this.oDr.add(bVG());
         }
-        if (!this.owK.bTu()) {
+        if (!this.oDm.bUJ()) {
           break label1493;
         }
-        localObject1 = this.owP.iterator();
+        localObject1 = this.oDr.iterator();
         while (((Iterator)localObject1).hasNext()) {
-          ((com.tencent.mm.plugin.card.model.b)((Iterator)localObject1).next()).oya = true;
+          ((com.tencent.mm.plugin.card.model.b)((Iterator)localObject1).next()).oEC = true;
         }
-        if (this.owK.bTy())
+        if (this.oDm.bUN())
         {
-          ((com.tencent.mm.plugin.card.model.b)localObject1).title = aj.getResources().getString(2131756937);
+          ((com.tencent.mm.plugin.card.model.b)localObject1).title = ak.getResources().getString(2131756937);
           break;
         }
-        ((com.tencent.mm.plugin.card.model.b)localObject1).title = aj.getContext().getString(2131756936);
+        ((com.tencent.mm.plugin.card.model.b)localObject1).title = ak.getContext().getString(2131756936);
         break;
-        if ((localObject2 != null) && (((ael)localObject2).Gcp != null) && (((ael)localObject2).Gcp.size() > 0) && (!TextUtils.isEmpty((CharSequence)((ael)localObject2).Gcp.get(0))))
+        if ((localObject2 != null) && (((aeu)localObject2).GuW != null) && (((aeu)localObject2).GuW.size() > 0) && (!TextUtils.isEmpty((CharSequence)((aeu)localObject2).GuW.get(0))))
         {
           i = 0;
           break label479;
@@ -215,7 +215,7 @@ public final class f
         if (localObject1 == null) {
           break label826;
         }
-        ad.e("MicroMsg.CardDetailDataMgr", "distance:" + ((tl)localObject1).zxp);
+        ae.e("MicroMsg.CardDetailDataMgr", "distance:" + ((tn)localObject1).zOO);
         break label826;
         ((com.tencent.mm.plugin.card.model.b)localObject1).title = getString(2131756800);
       }
@@ -223,31 +223,31 @@ public final class f
     label1156:
     label1170:
     Object localObject1 = new com.tencent.mm.plugin.card.model.b();
-    ((com.tencent.mm.plugin.card.model.b)localObject1).oxX = 1;
-    Object localObject2 = (tl)this.owR.get(0);
-    if (!TextUtils.isEmpty(this.owK.bTN().FSb))
+    ((com.tencent.mm.plugin.card.model.b)localObject1).oEz = 1;
+    Object localObject2 = (tn)this.oDt.get(0);
+    if (!TextUtils.isEmpty(this.oDm.bVc().GkA))
     {
-      ((com.tencent.mm.plugin.card.model.b)localObject1).title = this.owK.bTN().FSb;
+      ((com.tencent.mm.plugin.card.model.b)localObject1).title = this.oDm.bVc().GkA;
       label1261:
-      if ((!this.owK.bTu()) || (((tl)localObject2).zxp >= 2000.0F)) {
+      if ((!this.oDm.bUJ()) || (((tn)localObject2).zOO >= 2000.0F)) {
         break label1484;
       }
-      if ((this.owK.bTN().FRD <= 1) && ((this.owR == null) || (this.owR.size() <= 1))) {
+      if ((this.oDm.bVc().Gkc <= 1) && ((this.oDt == null) || (this.oDt.size() <= 1))) {
         break label1466;
       }
-      ((com.tencent.mm.plugin.card.model.b)localObject1).oxN = this.owO.getString(2131756932, new Object[] { l.f(this.owO, ((tl)localObject2).zxp) });
+      ((com.tencent.mm.plugin.card.model.b)localObject1).oEp = this.oDq.getString(2131756932, new Object[] { l.f(this.oDq, ((tn)localObject2).zOO) });
     }
     for (;;)
     {
-      ((com.tencent.mm.plugin.card.model.b)localObject1).oBP = "";
+      ((com.tencent.mm.plugin.card.model.b)localObject1).oIr = "";
       ((com.tencent.mm.plugin.card.model.b)localObject1).url = "card://jump_shop_list";
-      this.owP.add(localObject1);
+      this.oDr.add(localObject1);
       break;
-      if ((!this.owK.bTu()) && (((tl)localObject2).zxp < 5000.0F))
+      if ((!this.oDm.bUJ()) && (((tn)localObject2).zOO < 5000.0F))
       {
-        if ((this.owK.bTN().FRD == 1) || (this.owR.size() == 1))
+        if ((this.oDm.bVc().Gkc == 1) || (this.oDt.size() == 1))
         {
-          ad.i("MicroMsg.CardDetailDataMgr", "shop_count is 1 or mShopList size is 1");
+          ae.i("MicroMsg.CardDetailDataMgr", "shop_count is 1 or mShopList size is 1");
           break;
         }
         ((com.tencent.mm.plugin.card.model.b)localObject1).title = getString(2131756807);
@@ -256,59 +256,59 @@ public final class f
       ((com.tencent.mm.plugin.card.model.b)localObject1).title = getString(2131756800);
       break label1261;
       label1466:
-      ((com.tencent.mm.plugin.card.model.b)localObject1).oxN = l.f(this.owO, ((tl)localObject2).zxp);
+      ((com.tencent.mm.plugin.card.model.b)localObject1).oEp = l.f(this.oDq, ((tn)localObject2).zOO);
       continue;
       label1484:
-      ((com.tencent.mm.plugin.card.model.b)localObject1).oxN = "";
+      ((com.tencent.mm.plugin.card.model.b)localObject1).oEp = "";
     }
     label1493:
-    localObject1 = this.owP;
+    localObject1 = this.oDr;
     AppMethodBeat.o(112619);
     return localObject1;
   }
   
-  public final boolean bUq()
+  public final boolean bVF()
   {
-    if (this.owQ == null) {
+    if (this.oDs == null) {
       return false;
     }
-    return this.owQ.dKs;
+    return this.oDs.dLH;
   }
   
-  public final com.tencent.mm.plugin.card.model.b bUr()
+  public final com.tencent.mm.plugin.card.model.b bVG()
   {
     AppMethodBeat.i(112621);
     com.tencent.mm.plugin.card.model.b localb = new com.tencent.mm.plugin.card.model.b();
-    localb.oxX = 1;
-    localb.oxZ = bUp();
-    if ((localb.oxZ) || (TextUtils.isEmpty(this.owK.bTN().FRL))) {
-      if (w.zD(this.owK.bTN().FRw))
+    localb.oEz = 1;
+    localb.oEB = bVE();
+    if ((localb.oEB) || (TextUtils.isEmpty(this.oDm.bVc().Gkk))) {
+      if (x.An(this.oDm.bVc().GjV))
       {
         localb.title = getString(2131756935);
-        localb.oxZ = false;
+        localb.oEB = false;
       }
     }
     for (;;)
     {
-      if (!TextUtils.isEmpty(this.owK.bTN().FRN)) {
-        localb.oxN = this.owK.bTN().FRN;
+      if (!TextUtils.isEmpty(this.oDm.bVc().Gkm)) {
+        localb.oEp = this.oDm.bVc().Gkm;
       }
-      localb.oBP = "";
+      localb.oIr = "";
       localb.url = "card://jump_service";
-      this.owQ = localb;
-      localb = this.owQ;
+      this.oDs = localb;
+      localb = this.oDs;
       AppMethodBeat.o(112621);
       return localb;
       localb.title = getString(2131756934);
-      if ((this.owK.bTN().FRS != null) && (this.owK.bTN().FRS.Gri == 1))
+      if ((this.oDm.bVc().Gkr != null) && (this.oDm.bVc().Gkr.GKG == 1))
       {
-        localb.dKs = true;
+        localb.dLH = true;
       }
       else
       {
-        localb.dKs = false;
+        localb.dLH = false;
         continue;
-        localb.title = this.owK.bTN().FRL;
+        localb.title = this.oDm.bVc().Gkk;
       }
     }
   }
@@ -317,23 +317,23 @@ public final class f
   {
     AppMethodBeat.i(112622);
     Object localObject = new StringBuilder();
-    if (!TextUtils.isEmpty(this.owK.bTN().ozd)) {
-      ((StringBuilder)localObject).append(this.owK.bTN().ozd);
+    if (!TextUtils.isEmpty(this.oDm.bVc().oFF)) {
+      ((StringBuilder)localObject).append(this.oDm.bVc().oFF);
     }
     for (;;)
     {
       localObject = ((StringBuilder)localObject).toString();
       AppMethodBeat.o(112622);
       return localObject;
-      if (this.owK.bTu()) {
+      if (this.oDm.bUJ()) {
         ((StringBuilder)localObject).append(getString(2131756930));
-      } else if (this.owK.bTv()) {
+      } else if (this.oDm.bUK()) {
         ((StringBuilder)localObject).append(getString(2131756824));
-      } else if (this.owK.bTw()) {
+      } else if (this.oDm.bUL()) {
         ((StringBuilder)localObject).append(getString(2131756805));
-      } else if (this.owK.bTx()) {
+      } else if (this.oDm.bUM()) {
         ((StringBuilder)localObject).append(getString(2131756834));
-      } else if (this.owK.bTy()) {
+      } else if (this.oDm.bUN()) {
         ((StringBuilder)localObject).append(getString(2131756899));
       }
     }

@@ -6,14 +6,14 @@ public final class a
 {
   public static int c(float paramFloat1, float paramFloat2, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(206368);
+    AppMethodBeat.i(211398);
     int i = m(paramInt2, paramFloat1 / paramFloat2) + paramInt1;
     if (i < 0) {
       paramInt1 = 0;
     }
     for (;;)
     {
-      AppMethodBeat.o(206368);
+      AppMethodBeat.o(211398);
       return paramInt1;
       paramInt1 = paramInt2;
       if (i <= paramInt2) {

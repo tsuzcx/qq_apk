@@ -187,9 +187,9 @@ public final class Format
   
   public static Format a(String paramString1, String paramString2, int paramInt, String paramString3)
   {
-    AppMethodBeat.i(217111);
+    AppMethodBeat.i(211638);
     paramString1 = new Format(paramString1, paramString2, null, null, -1, -1, -1, -1, -1.0F, -1, -1.0F, null, -1, null, -1, -1, -1, -1, -1, paramInt, paramString3, -1, 9223372036854775807L, null, null, null);
-    AppMethodBeat.o(217111);
+    AppMethodBeat.o(211638);
     return paramString1;
   }
   
@@ -227,25 +227,25 @@ public final class Format
   
   public static Format a(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(217110);
+    AppMethodBeat.i(211637);
     paramString1 = new Format(paramString1, paramString2, null, paramString3, paramInt1, -1, paramInt2, paramInt3, -1.0F, -1, -1.0F, null, -1, null, -1, -1, -1, -1, -1, 0, null, -1, 9223372036854775807L, null, null, null);
-    AppMethodBeat.o(217110);
+    AppMethodBeat.o(211637);
     return paramString1;
   }
   
   public static Format a(String paramString1, String paramString2, String paramString3, int paramInt, String paramString4)
   {
-    AppMethodBeat.i(217112);
+    AppMethodBeat.i(211639);
     paramString1 = a(paramString1, paramString2, paramString3, paramInt, paramString4, -1);
-    AppMethodBeat.o(217112);
+    AppMethodBeat.o(211639);
     return paramString1;
   }
   
   public static Format a(String paramString1, String paramString2, String paramString3, int paramInt1, String paramString4, int paramInt2)
   {
-    AppMethodBeat.i(217113);
+    AppMethodBeat.i(211640);
     paramString1 = new Format(paramString1, paramString2, paramString3, null, -1, -1, -1, -1, -1.0F, -1, -1.0F, null, -1, null, -1, -1, -1, -1, -1, paramInt1, paramString4, paramInt2, 9223372036854775807L, null, null, null);
-    AppMethodBeat.o(217113);
+    AppMethodBeat.o(211640);
     return paramString1;
   }
   
@@ -302,9 +302,9 @@ public final class Format
   
   public static Format bc(String paramString)
   {
-    AppMethodBeat.i(217114);
+    AppMethodBeat.i(211641);
     paramString = a(null, paramString, 0, null, null);
-    AppMethodBeat.o(217114);
+    AppMethodBeat.o(211641);
     return paramString;
   }
   
@@ -318,9 +318,9 @@ public final class Format
   
   public static Format j(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(217115);
+    AppMethodBeat.i(211642);
     paramString1 = new Format(paramString1, paramString2, null, null, -1, -1, -1, -1, -1.0F, -1, -1.0F, null, -1, null, -1, -1, -1, -1, -1, 0, null, -1, 9223372036854775807L, null, null, null);
-    AppMethodBeat.o(217115);
+    AppMethodBeat.o(211642);
     return paramString1;
   }
   
@@ -612,7 +612,7 @@ public final class Format
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.exoplayer2.Format
  * JD-Core Version:    0.7.0.1
  */

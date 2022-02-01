@@ -1,16 +1,16 @@
 package com.tencent.mm.chatroom.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
-import com.tencent.mm.protocal.protobuf.cvu;
-import com.tencent.mm.protocal.protobuf.cvv;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.cwo;
+import com.tencent.mm.protocal.protobuf.cwp;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class q
   extends n
@@ -23,16 +23,16 @@ public final class q
   {
     AppMethodBeat.i(12489);
     Object localObject = new b.a();
-    ((b.a)localObject).hNM = new cvu();
-    ((b.a)localObject).hNN = new cvv();
+    ((b.a)localObject).hQF = new cwo();
+    ((b.a)localObject).hQG = new cwp();
     ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/revokechatroomqrcode";
     ((b.a)localObject).funcId = 700;
-    ((b.a)localObject).hNO = 0;
+    ((b.a)localObject).hQH = 0;
     ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).aDC();
-    localObject = (cvu)this.rr.hNK.hNQ;
-    ((cvu)localObject).HnT = paramString1;
-    ((cvu)localObject).HnU = paramString2;
+    this.rr = ((b.a)localObject).aDS();
+    localObject = (cwo)this.rr.hQD.hQJ;
+    ((cwo)localObject).HHt = paramString1;
+    ((cwo)localObject).HHu = paramString2;
     AppMethodBeat.o(12489);
   }
   
@@ -53,7 +53,7 @@ public final class q
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, com.tencent.mm.network.q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(12491);
-    ad.d("MicroMsg.RevokeChatRoomQRCodeRequest", "netId : " + paramInt1 + " errType :" + paramInt2 + " errCode: " + paramInt3 + " errMsg :" + paramString);
+    ae.d("MicroMsg.RevokeChatRoomQRCodeRequest", "netId : " + paramInt1 + " errType :" + paramInt2 + " errCode: " + paramInt3 + " errMsg :" + paramString);
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(12491);
   }

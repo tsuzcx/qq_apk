@@ -10,68 +10,68 @@ import android.media.MediaFormat;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.deviceinfo.z;
 import com.tencent.mm.compatible.h.c;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.nio.ByteBuffer;
 
 public final class e
   implements a
 {
   protected MediaCodec.BufferInfo bufferInfo;
-  protected c ddy;
+  protected c deA;
   private int frameCount;
-  protected int hiI;
-  protected z hir;
-  protected long hiy;
-  protected int hjY;
-  protected String irN;
-  protected MediaFormat ivg;
-  private byte[] ivh;
+  protected z hlf;
+  protected long hlm;
+  protected int hlw;
+  protected int hmM;
+  protected String iuH;
+  protected MediaFormat iya;
+  private byte[] iyb;
   protected int sampleSize;
   protected long startTimeMs;
-  protected h vQV;
-  private boolean vQY;
+  protected h wcZ;
+  private boolean wdc;
   
   public e()
   {
     AppMethodBeat.i(89620);
-    this.irN = null;
+    this.iuH = null;
     this.bufferInfo = new MediaCodec.BufferInfo();
-    this.hjY = -1;
+    this.hmM = -1;
     this.frameCount = 0;
-    this.vQY = false;
+    this.wdc = false;
     AppMethodBeat.o(89620);
   }
   
   private boolean a(c paramc)
   {
     AppMethodBeat.i(89622);
-    if (this.hir == null)
+    if (this.hlf == null)
     {
-      ad.i("MicroMsg.MMSightRemuxMediaCodecDecoder", "input decoder is null");
+      ae.i("MicroMsg.MMSightRemuxMediaCodecDecoder", "input decoder is null");
       AppMethodBeat.o(89622);
       return true;
     }
-    Object localObject = this.hir.getInputBuffers();
+    Object localObject = this.hlf.getInputBuffers();
     if (localObject == null)
     {
       AppMethodBeat.o(89622);
       return false;
     }
-    ad.i("MicroMsg.MMSightRemuxMediaCodecDecoder", "decoderInputByteBuffers size: %d", new Object[] { Integer.valueOf(localObject.length) });
+    ae.i("MicroMsg.MMSightRemuxMediaCodecDecoder", "decoderInputByteBuffers size: %d", new Object[] { Integer.valueOf(localObject.length) });
     int i = 0;
     int j;
     long l;
     for (;;)
     {
-      j = this.hir.dequeueInputBuffer(60000L);
+      j = this.hlf.dequeueInputBuffer(60000L);
       if ((j >= 0) || (i >= 15)) {
         break;
       }
-      l = bt.HI();
-      bool1 = atq();
-      ad.i("MicroMsg.MMSightRemuxMediaCodecDecoder", "drain cost1 %d", new Object[] { Long.valueOf(bt.aO(l)) });
+      l = bu.HQ();
+      bool1 = atF();
+      ae.i("MicroMsg.MMSightRemuxMediaCodecDecoder", "drain cost1 %d", new Object[] { Long.valueOf(bu.aO(l)) });
       if (bool1)
       {
         AppMethodBeat.o(89622);
@@ -85,9 +85,9 @@ public final class e
       ((ByteBuffer)localObject).clear();
       this.sampleSize = paramc.readSampleData((ByteBuffer)localObject, 0);
       ((ByteBuffer)localObject).position(0);
-      l = paramc.gdS.getSampleTime();
-      ad.i("MicroMsg.MMSightRemuxMediaCodecDecoder", "sampleTime: %s", new Object[] { Long.valueOf(l) });
-      if ((this.sampleSize >= 0) && (l < this.hiy * 1000L)) {
+      l = paramc.gga.getSampleTime();
+      ae.i("MicroMsg.MMSightRemuxMediaCodecDecoder", "sampleTime: %s", new Object[] { Long.valueOf(l) });
+      if ((this.sampleSize >= 0) && (l < this.hlm * 1000L)) {
         break label346;
       }
     }
@@ -95,8 +95,8 @@ public final class e
     label346:
     for (boolean bool1 = true;; bool1 = false)
     {
-      ad.i("MicroMsg.MMSightRemuxMediaCodecDecoder", "sawInputEOS: %s", new Object[] { Boolean.valueOf(bool1) });
-      paramc = this.hir;
+      ae.i("MicroMsg.MMSightRemuxMediaCodecDecoder", "sawInputEOS: %s", new Object[] { Boolean.valueOf(bool1) });
+      paramc = this.hlf;
       int k = this.sampleSize;
       if (bool1)
       {
@@ -105,9 +105,9 @@ public final class e
       }
       for (;;)
       {
-        l = bt.HI();
-        boolean bool2 = atq();
-        ad.i("MicroMsg.MMSightRemuxMediaCodecDecoder", "drain cost2 %d", new Object[] { Long.valueOf(bt.aO(l)) });
+        l = bu.HQ();
+        boolean bool2 = atF();
+        ae.i("MicroMsg.MMSightRemuxMediaCodecDecoder", "drain cost2 %d", new Object[] { Long.valueOf(bu.aO(l)) });
         if (!bool2) {
           break label338;
         }
@@ -115,7 +115,7 @@ public final class e
         return true;
         i = 0;
         break;
-        ad.w("MicroMsg.MMSightRemuxMediaCodecDecoder", "input buffer not available");
+        ae.w("MicroMsg.MMSightRemuxMediaCodecDecoder", "input buffer not available");
         bool1 = false;
       }
       AppMethodBeat.o(89622);
@@ -123,34 +123,34 @@ public final class e
     }
   }
   
-  private boolean atq()
+  private boolean atF()
   {
     AppMethodBeat.i(89623);
-    if (this.hir == null)
+    if (this.hlf == null)
     {
-      ad.e("MicroMsg.MMSightRemuxMediaCodecDecoder", "drainDecoder, decoder is null");
+      ae.e("MicroMsg.MMSightRemuxMediaCodecDecoder", "drainDecoder, decoder is null");
       AppMethodBeat.o(89623);
       return true;
     }
-    Object localObject = this.hir.getOutputBuffers();
-    ad.i("MicroMsg.MMSightRemuxMediaCodecDecoder", "decoderOutputByteBuffers length: %s", new Object[] { Integer.valueOf(localObject.length) });
-    int i = this.hir.dequeueOutputBuffer(this.bufferInfo, 60000L);
-    ad.i("MicroMsg.MMSightRemuxMediaCodecDecoder", "outputBufferIndex-->".concat(String.valueOf(i)));
+    Object localObject = this.hlf.getOutputBuffers();
+    ae.i("MicroMsg.MMSightRemuxMediaCodecDecoder", "decoderOutputByteBuffers length: %s", new Object[] { Integer.valueOf(localObject.length) });
+    int i = this.hlf.dequeueOutputBuffer(this.bufferInfo, 60000L);
+    ae.i("MicroMsg.MMSightRemuxMediaCodecDecoder", "outputBufferIndex-->".concat(String.valueOf(i)));
     if (i == -1)
     {
-      ad.i("MicroMsg.MMSightRemuxMediaCodecDecoder", "no output from decoder available, break");
+      ae.i("MicroMsg.MMSightRemuxMediaCodecDecoder", "no output from decoder available, break");
       label96:
       AppMethodBeat.o(89623);
       return false;
     }
     if (i == -3)
     {
-      localObject = this.hir.getOutputBuffers();
-      ad.i("MicroMsg.MMSightRemuxMediaCodecDecoder", "decoder output buffers changed");
+      localObject = this.hlf.getOutputBuffers();
+      ae.i("MicroMsg.MMSightRemuxMediaCodecDecoder", "decoder output buffers changed");
     }
     for (;;)
     {
-      int j = this.hir.dequeueOutputBuffer(this.bufferInfo, 60000L);
+      int j = this.hlf.dequeueOutputBuffer(this.bufferInfo, 60000L);
       i = j;
       if (j >= 0) {
         break;
@@ -158,16 +158,16 @@ public final class e
       break label96;
       if (i == -2)
       {
-        this.ivg = this.hir.getOutputFormat();
-        ad.i("MicroMsg.MMSightRemuxMediaCodecDecoder", "decoder output format changed: " + this.ivg);
+        this.iya = this.hlf.getOutputFormat();
+        ae.i("MicroMsg.MMSightRemuxMediaCodecDecoder", "decoder output format changed: " + this.iya);
       }
       else if (i < 0)
       {
-        ad.w("MicroMsg.MMSightRemuxMediaCodecDecoder", "unexpected result from decoder.dequeueOutputBuffer: ".concat(String.valueOf(i)));
+        ae.w("MicroMsg.MMSightRemuxMediaCodecDecoder", "unexpected result from decoder.dequeueOutputBuffer: ".concat(String.valueOf(i)));
       }
       else
       {
-        ad.v("MicroMsg.MMSightRemuxMediaCodecDecoder", "perform decoding");
+        ae.v("MicroMsg.MMSightRemuxMediaCodecDecoder", "perform decoding");
         h localh = localObject[i];
         if (localh == null) {
           break label96;
@@ -175,8 +175,8 @@ public final class e
         long l1 = this.bufferInfo.presentationTimeUs;
         if ((l1 < this.startTimeMs * 1000L) && ((this.bufferInfo.flags & 0x4) == 0))
         {
-          this.hir.releaseOutputBuffer(i, false);
-          ad.i("MicroMsg.MMSightRemuxMediaCodecDecoder", "decoder pts: %s, not reach start: %s", new Object[] { Long.valueOf(l1), Long.valueOf(this.startTimeMs * 1000L) });
+          this.hlf.releaseOutputBuffer(i, false);
+          ae.i("MicroMsg.MMSightRemuxMediaCodecDecoder", "decoder pts: %s, not reach start: %s", new Object[] { Long.valueOf(l1), Long.valueOf(this.startTimeMs * 1000L) });
           AppMethodBeat.o(89623);
           return false;
         }
@@ -184,41 +184,41 @@ public final class e
         {
           localh.position(this.bufferInfo.offset);
           localh.limit(this.bufferInfo.offset + this.bufferInfo.size);
-          long l2 = bt.HI();
+          long l2 = bu.HQ();
           localObject = this.bufferInfo;
           if (localh == null) {
-            ad.e("MicroMsg.MMSightRemuxMediaCodecDecoder", "processDecodeOutputBuffer error! byteBuffer is null");
+            ae.e("MicroMsg.MMSightRemuxMediaCodecDecoder", "processDecodeOutputBuffer error! byteBuffer is null");
           }
           for (;;)
           {
-            ad.v("MicroMsg.MMSightRemuxMediaCodecDecoder", "processDecodeOutputBuffer %s", new Object[] { Long.valueOf(bt.aO(l2)) });
-            this.hir.releaseOutputBuffer(i, false);
-            if ((this.hiy != 1L) && (l1 >= this.hiy * 1000L))
+            ae.v("MicroMsg.MMSightRemuxMediaCodecDecoder", "processDecodeOutputBuffer %s", new Object[] { Long.valueOf(bu.aO(l2)) });
+            this.hlf.releaseOutputBuffer(i, false);
+            if ((this.hlm != 1L) && (l1 >= this.hlm * 1000L))
             {
-              ad.e("MicroMsg.MMSightRemuxMediaCodecDecoder", "exceed endTimeMs");
-              this.vQY = true;
+              ae.e("MicroMsg.MMSightRemuxMediaCodecDecoder", "exceed endTimeMs");
+              this.wdc = true;
               AppMethodBeat.o(89623);
               return true;
               this.frameCount += 1;
-              if ((this.hiI > 1) && (this.frameCount % this.hiI == 0)) {
+              if ((this.hlw > 1) && (this.frameCount % this.hlw == 0)) {
                 continue;
               }
-              if (this.ivh == null) {
-                this.ivh = new byte[localh.remaining()];
+              if (this.iyb == null) {
+                this.iyb = new byte[localh.remaining()];
               }
-              long l3 = bt.HI();
+              long l3 = bu.HQ();
               try
               {
-                this.ivg = this.hir.getOutputFormat();
-                localh.get(this.ivh, 0, localh.remaining());
-                ad.i("MicroMsg.MMSightRemuxMediaCodecDecoder", "processDecodeOutputBuffer, byteBuffer: %s, bufferInfo: %s, size: %d cost %d", new Object[] { localh, localObject, Integer.valueOf(((MediaCodec.BufferInfo)localObject).size), Long.valueOf(bt.aO(l3)) });
-                if (this.vQV != null) {
-                  if ((this.hiy != 1L) && (((MediaCodec.BufferInfo)localObject).presentationTimeUs >= this.hiy * 1000L))
+                this.iya = this.hlf.getOutputFormat();
+                localh.get(this.iyb, 0, localh.remaining());
+                ae.i("MicroMsg.MMSightRemuxMediaCodecDecoder", "processDecodeOutputBuffer, byteBuffer: %s, bufferInfo: %s, size: %d cost %d", new Object[] { localh, localObject, Integer.valueOf(((MediaCodec.BufferInfo)localObject).size), Long.valueOf(bu.aO(l3)) });
+                if (this.wcZ != null) {
+                  if ((this.hlm != 1L) && (((MediaCodec.BufferInfo)localObject).presentationTimeUs >= this.hlm * 1000L))
                   {
                     j = 1;
-                    localh = this.vQV;
-                    byte[] arrayOfByte = this.ivh;
-                    if ((this.ivh != null) && (!this.vQY) && (j == 0)) {
+                    localh = this.wcZ;
+                    byte[] arrayOfByte = this.iyb;
+                    if ((this.iyb != null) && (!this.wdc) && (j == 0)) {
                       break label686;
                     }
                     bool = true;
@@ -230,7 +230,7 @@ public final class e
               {
                 for (;;)
                 {
-                  ad.e("MicroMsg.MMSightRemuxMediaCodecDecoder", "get output format error");
+                  ae.e("MicroMsg.MMSightRemuxMediaCodecDecoder", "get output format error");
                   continue;
                   j = 0;
                   continue;
@@ -242,13 +242,13 @@ public final class e
           }
           if ((this.bufferInfo.flags & 0x4) != 0)
           {
-            ad.i("MicroMsg.MMSightRemuxMediaCodecDecoder", "receive end of stream");
+            ae.i("MicroMsg.MMSightRemuxMediaCodecDecoder", "receive end of stream");
             try
             {
-              this.hir.stop();
-              this.hir.release();
-              this.vQY = true;
-              this.hir = null;
+              this.hlf.stop();
+              this.hlf.release();
+              this.wdc = true;
+              this.hlf = null;
               AppMethodBeat.o(89623);
               return true;
             }
@@ -256,36 +256,36 @@ public final class e
             {
               for (;;)
               {
-                ad.e("MicroMsg.MMSightRemuxMediaCodecDecoder", "stop and release decoder error: %s", new Object[] { localException1.getMessage() });
+                ae.e("MicroMsg.MMSightRemuxMediaCodecDecoder", "stop and release decoder error: %s", new Object[] { localException1.getMessage() });
               }
             }
           }
           AppMethodBeat.o(89623);
           return false;
         }
-        this.hir.releaseOutputBuffer(i, false);
+        this.hlf.releaseOutputBuffer(i, false);
       }
     }
   }
   
   public final void a(h paramh)
   {
-    this.vQV = paramh;
+    this.wcZ = paramh;
   }
   
-  public final Point aNh()
+  public final Point aNF()
   {
     AppMethodBeat.i(89626);
-    Point localPoint = new Point(this.ivg.getInteger("width"), this.ivg.getInteger("height"));
+    Point localPoint = new Point(this.iya.getInteger("width"), this.iya.getInteger("height"));
     AppMethodBeat.o(89626);
     return localPoint;
   }
   
-  public final int aNi()
+  public final int aNG()
   {
     AppMethodBeat.i(89625);
-    int i = this.ivg.getInteger("color-format");
-    ad.i("MicroMsg.MMSightRemuxMediaCodecDecoder", "src color format: %s", new Object[] { Integer.valueOf(i) });
+    int i = this.iya.getInteger("color-format");
+    ae.i("MicroMsg.MMSightRemuxMediaCodecDecoder", "src color format: %s", new Object[] { Integer.valueOf(i) });
     switch (i)
     {
     default: 
@@ -299,26 +299,26 @@ public final class e
     return 1;
   }
   
-  public final void dny()
+  public final void dqw()
   {
     AppMethodBeat.i(89624);
     this.frameCount = 0;
-    this.vQY = false;
-    while (!a(this.ddy))
+    this.wdc = false;
+    while (!a(this.deA))
     {
-      this.ddy.gdS.advance();
-      if (this.ddy.gdS.getSampleTrackIndex() != this.hjY) {
-        ad.i("MicroMsg.MMSightRemuxMediaCodecDecoder", "track index not match, break");
+      this.deA.gga.advance();
+      if (this.deA.gga.getSampleTrackIndex() != this.hmM) {
+        ae.i("MicroMsg.MMSightRemuxMediaCodecDecoder", "track index not match, break");
       }
     }
-    c localc = this.ddy;
-    ad.i("MicroMsg.MMSightRemuxMediaCodecDecoder", "sendDecoderEOS");
-    Object localObject = this.hir.getInputBuffers();
-    int i = this.hir.dequeueInputBuffer(60000L);
+    c localc = this.deA;
+    ae.i("MicroMsg.MMSightRemuxMediaCodecDecoder", "sendDecoderEOS");
+    Object localObject = this.hlf.getInputBuffers();
+    int i = this.hlf.dequeueInputBuffer(60000L);
     if (i < 0)
     {
-      ad.i("MicroMsg.MMSightRemuxMediaCodecDecoder", "check decoder input buffer index = %d count = %d", new Object[] { Integer.valueOf(i), Integer.valueOf(0) });
-      if (atq()) {}
+      ae.i("MicroMsg.MMSightRemuxMediaCodecDecoder", "check decoder input buffer index = %d count = %d", new Object[] { Integer.valueOf(i), Integer.valueOf(0) });
+      if (atF()) {}
     }
     else if (i >= 0)
     {
@@ -326,46 +326,46 @@ public final class e
       ((ByteBuffer)localObject).clear();
       this.sampleSize = localc.readSampleData((ByteBuffer)localObject, 0);
       ((ByteBuffer)localObject).position(0);
-      long l = localc.gdS.getSampleTime();
+      long l = localc.gga.getSampleTime();
       if (i < 0) {
         break label257;
       }
-      ad.i("MicroMsg.MMSightRemuxMediaCodecDecoder", "send EOS, decoderInputBufferIndex: %s", new Object[] { Integer.valueOf(i) });
-      this.hir.a(i, 0, l * 1000L, 4);
+      ae.i("MicroMsg.MMSightRemuxMediaCodecDecoder", "send EOS, decoderInputBufferIndex: %s", new Object[] { Integer.valueOf(i) });
+      this.hlf.a(i, 0, l * 1000L, 4);
     }
     for (;;)
     {
-      this.vQY = true;
-      atq();
-      aq.o(new Runnable()
+      this.wdc = true;
+      atF();
+      ar.o(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(89619);
-          if (e.this.hir != null)
+          if (e.this.hlf != null)
           {
-            ad.i("MicroMsg.MMSightRemuxMediaCodecDecoder", "delay to stop decoder");
+            ae.i("MicroMsg.MMSightRemuxMediaCodecDecoder", "delay to stop decoder");
             try
             {
-              e.this.hir.stop();
-              e.this.hir.release();
-              e.this.hir = null;
+              e.this.hlf.stop();
+              e.this.hlf.release();
+              e.this.hlf = null;
               AppMethodBeat.o(89619);
               return;
             }
             catch (Exception localException)
             {
-              ad.printErrStackTrace("MicroMsg.MMSightRemuxMediaCodecDecoder", localException, "delay to stop decoder error: %s", new Object[] { localException.getMessage() });
+              ae.printErrStackTrace("MicroMsg.MMSightRemuxMediaCodecDecoder", localException, "delay to stop decoder error: %s", new Object[] { localException.getMessage() });
             }
           }
           AppMethodBeat.o(89619);
         }
       }, 500L);
-      this.ddy.gdS.release();
+      this.deA.gga.release();
       AppMethodBeat.o(89624);
       return;
       label257:
-      ad.w("MicroMsg.MMSightRemuxMediaCodecDecoder", "input buffer not available");
+      ae.w("MicroMsg.MMSightRemuxMediaCodecDecoder", "input buffer not available");
     }
   }
   
@@ -376,28 +376,28 @@ public final class e
     int i;
     label245:
     int m;
-    if (!bt.isNullOrNil(paramString))
+    if (!bu.isNullOrNil(paramString))
     {
-      ad.i("MicroMsg.MMSightRemuxMediaCodecDecoder", "initDecoder, srcFilePath: %s, startTime: %s, endTime: %s, videoFps: %s", new Object[] { paramString, Long.valueOf(paramLong1), Long.valueOf(paramLong2), Integer.valueOf(paramInt) });
+      ae.i("MicroMsg.MMSightRemuxMediaCodecDecoder", "initDecoder, srcFilePath: %s, startTime: %s, endTime: %s, videoFps: %s", new Object[] { paramString, Long.valueOf(paramLong1), Long.valueOf(paramLong2), Integer.valueOf(paramInt) });
       try
       {
-        this.ddy = new c();
-        this.ddy.vx(paramString);
+        this.deA = new c();
+        this.deA.vT(paramString);
         paramInt = 0;
         for (;;)
         {
-          if (paramInt < this.ddy.gdS.getTrackCount())
+          if (paramInt < this.deA.gga.getTrackCount())
           {
-            localObject = this.ddy.getTrackFormat(paramInt);
+            localObject = this.deA.getTrackFormat(paramInt);
             if (((MediaFormat)localObject).getString("mime").toLowerCase().startsWith("video/"))
             {
-              this.hjY = paramInt;
-              this.ivg = ((MediaFormat)localObject);
+              this.hmM = paramInt;
+              this.iya = ((MediaFormat)localObject);
             }
           }
           else
           {
-            paramInt = this.hjY;
+            paramInt = this.hmM;
             if (paramInt >= 0) {
               break;
             }
@@ -406,12 +406,12 @@ public final class e
           }
           paramInt += 1;
         }
-        this.irN = paramString;
+        this.iuH = paramString;
         this.startTimeMs = paramLong1;
-        this.hiy = paramLong2;
-        this.ddy.selectTrack(this.hjY);
-        Object localObject = this.ivg.getString("mime");
-        this.hir = z.vm((String)localObject);
+        this.hlm = paramLong2;
+        this.deA.selectTrack(this.hmM);
+        Object localObject = this.iya.getString("mime");
+        this.hlf = z.vI((String)localObject);
         j = MediaCodecList.getCodecCount();
         paramInt = 0;
         if (paramInt >= j) {
@@ -430,39 +430,39 @@ public final class e
           break label631;
         }
         label266:
-        ad.i("MicroMsg.MMSightRemuxMediaCodecDecoder", "found codec: %s", new Object[] { paramString });
+        ae.i("MicroMsg.MMSightRemuxMediaCodecDecoder", "found codec: %s", new Object[] { paramString });
         if (paramString != null)
         {
-          ad.i("MicroMsg.MMSightRemuxMediaCodecDecoder", "codec name: %s", new Object[] { paramString.getName() });
-          ad.i("MicroMsg.MMSightRemuxMediaCodecDecoder", "selectColorFormat, mimeType: %s, codecInfo: %s", new Object[] { localObject, paramString });
+          ae.i("MicroMsg.MMSightRemuxMediaCodecDecoder", "codec name: %s", new Object[] { paramString.getName() });
+          ae.i("MicroMsg.MMSightRemuxMediaCodecDecoder", "selectColorFormat, mimeType: %s, codecInfo: %s", new Object[] { localObject, paramString });
           i = 0;
-          paramLong1 = bt.HI();
+          paramLong1 = bu.HQ();
           localObject = paramString.getCapabilitiesForType((String)localObject);
-          ad.i("MicroMsg.MMSightRemuxMediaCodecDecoder", "getCapabilitiesForType used %sms", new Object[] { Long.valueOf(bt.aO(paramLong1)) });
-          ad.i("MicroMsg.MMSightRemuxMediaCodecDecoder", "color format length: %s", new Object[] { Integer.valueOf(((MediaCodecInfo.CodecCapabilities)localObject).colorFormats.length) });
+          ae.i("MicroMsg.MMSightRemuxMediaCodecDecoder", "getCapabilitiesForType used %sms", new Object[] { Long.valueOf(bu.aO(paramLong1)) });
+          ae.i("MicroMsg.MMSightRemuxMediaCodecDecoder", "color format length: %s", new Object[] { Integer.valueOf(((MediaCodecInfo.CodecCapabilities)localObject).colorFormats.length) });
           paramInt = 0;
           label390:
           if (paramInt < ((MediaCodecInfo.CodecCapabilities)localObject).colorFormats.length)
           {
             m = localObject.colorFormats[paramInt];
-            ad.i("MicroMsg.MMSightRemuxMediaCodecDecoder", "capabilities colorFormat: %s", new Object[] { Integer.valueOf(m) });
+            ae.i("MicroMsg.MMSightRemuxMediaCodecDecoder", "capabilities colorFormat: %s", new Object[] { Integer.valueOf(m) });
           }
         }
         switch (m)
         {
         case 20: 
-          ad.i("MicroMsg.MMSightRemuxMediaCodecDecoder", "codec: %s, colorFormat: %s", new Object[] { paramString.getName(), Integer.valueOf(i) });
-          ad.i("MicroMsg.MMSightRemuxMediaCodecDecoder", "found colorFormat: %s", new Object[] { Integer.valueOf(i) });
-          this.ivg.setInteger("color-format", i);
-          this.hir.a(this.ivg, null, 0);
-          this.hir.start();
+          ae.i("MicroMsg.MMSightRemuxMediaCodecDecoder", "codec: %s, colorFormat: %s", new Object[] { paramString.getName(), Integer.valueOf(i) });
+          ae.i("MicroMsg.MMSightRemuxMediaCodecDecoder", "found colorFormat: %s", new Object[] { Integer.valueOf(i) });
+          this.iya.setInteger("color-format", i);
+          this.hlf.a(this.iya, null, 0);
+          this.hlf.start();
           AppMethodBeat.o(89621);
           return 0;
         }
       }
       catch (Exception paramString)
       {
-        ad.printErrStackTrace("MicroMsg.MMSightRemuxMediaCodecDecoder", paramString, "Init decoder failed : %s", new Object[] { paramString.getMessage() });
+        ae.printErrStackTrace("MicroMsg.MMSightRemuxMediaCodecDecoder", paramString, "Init decoder failed : %s", new Object[] { paramString.getMessage() });
         AppMethodBeat.o(89621);
         return -1;
       }
@@ -501,11 +501,11 @@ public final class e
     }
   }
   
-  public final void qm(int paramInt)
+  public final void qp(int paramInt)
   {
     AppMethodBeat.i(89627);
-    ad.i("MicroMsg.MMSightRemuxMediaCodecDecoder", "setFrameDropInterval: %s", new Object[] { Integer.valueOf(paramInt) });
-    this.hiI = paramInt;
+    ae.i("MicroMsg.MMSightRemuxMediaCodecDecoder", "setFrameDropInterval: %s", new Object[] { Integer.valueOf(paramInt) });
+    this.hlw = paramInt;
     AppMethodBeat.o(89627);
   }
 }

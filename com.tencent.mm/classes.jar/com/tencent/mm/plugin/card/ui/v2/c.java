@@ -3,27 +3,27 @@ package com.tencent.mm.plugin.card.ui.v2;
 import android.content.Context;
 import android.content.res.Resources;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ak;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"radius_4dp", "", "getRadius_4dp", "()I", "plugin-card_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"radius_4dp", "", "getRadius_4dp", "()I", "plugin-card_release"})
 public final class c
 {
-  private static final int oMA;
+  private static final int oTc;
   
   static
   {
     AppMethodBeat.i(112554);
-    Context localContext = aj.getContext();
+    Context localContext = ak.getContext();
     p.g(localContext, "MMApplicationContext.getContext()");
-    oMA = localContext.getResources().getDimensionPixelOffset(2131165970);
+    oTc = localContext.getResources().getDimensionPixelOffset(2131165970);
     AppMethodBeat.o(112554);
   }
   
-  public static final int bYf()
+  public static final int bZu()
   {
-    return oMA;
+    return oTc;
   }
 }
 

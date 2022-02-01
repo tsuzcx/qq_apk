@@ -9,15 +9,15 @@ public class AppBrandRecommendStatObj
   implements Parcelable
 {
   public static final Parcelable.Creator<AppBrandRecommendStatObj> CREATOR;
-  public float dAp;
-  public String duW;
-  public float dyz;
-  public String mrh;
-  public String mri;
-  public String mrj;
-  public String mrk;
-  public int mrl;
-  public String mrm;
+  public float dBu;
+  public String dwb;
+  public float dzE;
+  public String mwf;
+  public String mwg;
+  public String mwh;
+  public String mwi;
+  public int mwj;
+  public String mwk;
   public int position;
   public long sessionId;
   public String username;
@@ -25,7 +25,7 @@ public class AppBrandRecommendStatObj
   static
   {
     AppMethodBeat.i(123531);
-    CREATOR = new Parcelable.Creator() {};
+    CREATOR = new AppBrandRecommendStatObj.1();
     AppMethodBeat.o(123531);
   }
   
@@ -35,16 +35,16 @@ public class AppBrandRecommendStatObj
   {
     AppMethodBeat.i(123528);
     this.username = paramParcel.readString();
-    this.mrh = paramParcel.readString();
-    this.mri = paramParcel.readString();
-    this.duW = paramParcel.readString();
-    this.mrj = paramParcel.readString();
-    this.mrk = paramParcel.readString();
-    this.mrl = paramParcel.readInt();
-    this.mrm = paramParcel.readString();
+    this.mwf = paramParcel.readString();
+    this.mwg = paramParcel.readString();
+    this.dwb = paramParcel.readString();
+    this.mwh = paramParcel.readString();
+    this.mwi = paramParcel.readString();
+    this.mwj = paramParcel.readInt();
+    this.mwk = paramParcel.readString();
     this.position = paramParcel.readInt();
-    this.dAp = paramParcel.readFloat();
-    this.dyz = paramParcel.readFloat();
+    this.dBu = paramParcel.readFloat();
+    this.dzE = paramParcel.readFloat();
     this.sessionId = paramParcel.readLong();
     AppMethodBeat.o(123528);
   }
@@ -57,7 +57,7 @@ public class AppBrandRecommendStatObj
   public String toString()
   {
     AppMethodBeat.i(123529);
-    String str = "AppBrandRecommendStatObj{username=" + this.username + ", recommend_id='" + this.mrh + '\'' + ", strategy_info=" + this.mri + ", appid='" + this.duW + '\'' + ", page_path=" + this.mrj + ", page_param=" + this.mrk + ", card_type=" + this.mrl + ", pass_str=" + this.mrm + ", position=" + this.position + ", longitude=" + this.dAp + ", latitude=" + this.dyz + ", sessionId=" + this.sessionId + '}';
+    String str = "AppBrandRecommendStatObj{username=" + this.username + ", recommend_id='" + this.mwf + '\'' + ", strategy_info=" + this.mwg + ", appid='" + this.dwb + '\'' + ", page_path=" + this.mwh + ", page_param=" + this.mwi + ", card_type=" + this.mwj + ", pass_str=" + this.mwk + ", position=" + this.position + ", longitude=" + this.dBu + ", latitude=" + this.dzE + ", sessionId=" + this.sessionId + '}';
     AppMethodBeat.o(123529);
     return str;
   }
@@ -66,23 +66,23 @@ public class AppBrandRecommendStatObj
   {
     AppMethodBeat.i(123530);
     paramParcel.writeString(this.username);
-    paramParcel.writeString(this.mrh);
-    paramParcel.writeString(this.mri);
-    paramParcel.writeString(this.duW);
-    paramParcel.writeString(this.mrj);
-    paramParcel.writeString(this.mrk);
-    paramParcel.writeInt(this.mrl);
-    paramParcel.writeString(this.mrm);
+    paramParcel.writeString(this.mwf);
+    paramParcel.writeString(this.mwg);
+    paramParcel.writeString(this.dwb);
+    paramParcel.writeString(this.mwh);
+    paramParcel.writeString(this.mwi);
+    paramParcel.writeInt(this.mwj);
+    paramParcel.writeString(this.mwk);
     paramParcel.writeInt(this.position);
-    paramParcel.writeFloat(this.dAp);
-    paramParcel.writeFloat(this.dyz);
+    paramParcel.writeFloat(this.dBu);
+    paramParcel.writeFloat(this.dzE);
     paramParcel.writeLong(this.sessionId);
     AppMethodBeat.o(123530);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.report.AppBrandRecommendStatObj
  * JD-Core Version:    0.7.0.1
  */

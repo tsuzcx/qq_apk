@@ -5,38 +5,38 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.k.b;
-import com.tencent.mm.ai.u;
-import com.tencent.mm.ai.v;
-import com.tencent.mm.ai.x;
-import com.tencent.mm.aw.a.a.c.a;
-import com.tencent.mm.aw.a.c.h;
-import com.tencent.mm.bs.d;
+import com.tencent.mm.ah.k.b;
+import com.tencent.mm.ah.u;
+import com.tencent.mm.ah.v;
+import com.tencent.mm.ah.x;
+import com.tencent.mm.av.a.a.c.a;
+import com.tencent.mm.av.a.c.h;
+import com.tencent.mm.br.d;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.brandservice.a.b;
 import com.tencent.mm.plugin.messenger.foundation.a.a.i;
 import com.tencent.mm.pluginsdk.ui.applet.m;
-import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ax;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.bu;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.bv;
 import com.tencent.mm.storage.y;
 import com.tencent.mm.ui.e.b;
 import d.g.b.p;
 import java.util.LinkedList;
 import java.util.List;
 
-@d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/util/BizVideoUtil;", "", "()V", "REQUEST_CODE_APP_MSG", "", "REQUEST_SHARE_TO_TIME_LINE", "TAG", "", "bizVideoPlayTime", "maxVideoPlaySaveTime", "clearInvalidLastPlayTime", "", "mmkv", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "convertMsgInfo", "Lcom/tencent/mm/message/MPMsgInfo;", "intent", "Landroid/content/Intent;", "mpMsgInfo", "msgInfo", "Lcom/tencent/mm/storage/MsgInfo;", "convertOtherMsgInfo", "msg", "getBizReaderItem", "Lcom/tencent/mm/message/BizReaderItem;", "getBizReaderItemFromAppMsg", "getLastPlayTime", "key", "getMPMsgInfo", "getNumStr", "context", "Landroid/content/Context;", "num", "getVideoFullCoverPath", "goToWebViewUI", "url", "isSIMFree", "", "isWifi", "simType", "onVideoMsgClick", "msgId", "", "msgSvrId", "msgIndex", "bundle", "Landroid/os/Bundle;", "setCoverByUrl", "cover", "Landroid/widget/ImageView;", "coverUrl", "width", "height", "setLastPlayTime", "time", "plugin-brandservice_release"})
+@d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/util/BizVideoUtil;", "", "()V", "REQUEST_CODE_APP_MSG", "", "REQUEST_SHARE_TO_TIME_LINE", "TAG", "", "bizVideoPlayTime", "maxVideoPlaySaveTime", "clearInvalidLastPlayTime", "", "mmkv", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "convertMsgInfo", "Lcom/tencent/mm/message/MPMsgInfo;", "intent", "Landroid/content/Intent;", "mpMsgInfo", "msgInfo", "Lcom/tencent/mm/storage/MsgInfo;", "convertOtherMsgInfo", "msg", "getBizReaderItem", "Lcom/tencent/mm/message/BizReaderItem;", "getBizReaderItemFromAppMsg", "getLastPlayTime", "key", "getMPMsgInfo", "getNumStr", "context", "Landroid/content/Context;", "num", "getVideoFullCoverPath", "goToWebViewUI", "url", "isSIMFree", "", "isWifi", "simType", "onVideoMsgClick", "msgId", "", "msgSvrId", "msgIndex", "bundle", "Landroid/os/Bundle;", "setCoverByUrl", "cover", "Landroid/widget/ImageView;", "coverUrl", "width", "height", "setLastPlayTime", "time", "plugin-brandservice_release"})
 public final class l
 {
   private static final String TAG = "MicroMsg.BizVideoUtil";
-  public static final l ory;
+  public static final l oxU;
   
   static
   {
     AppMethodBeat.i(7319);
-    ory = new l();
+    oxU = new l();
     TAG = "MicroMsg.BizVideoUtil";
     AppMethodBeat.o(7319);
   }
@@ -50,7 +50,7 @@ public final class l
       AppMethodBeat.o(7312);
       return String.valueOf(paramInt);
     }
-    String str = ac.fks();
+    String str = ad.fom();
     if (str == null) {}
     while (paramInt >= 100000)
     {
@@ -93,13 +93,13 @@ public final class l
     return paramContext;
   }
   
-  public static final int XZ(String paramString)
+  public static final int YN(String paramString)
   {
     AppMethodBeat.i(7314);
     p.h(paramString, "key");
-    ax localax = ax.aQz("bizVideoPlayTime");
-    p.g(localax, "mmkv");
-    String[] arrayOfString = localax.allKeys();
+    ay localay = ay.aRW("bizVideoPlayTime");
+    p.g(localay, "mmkv");
+    String[] arrayOfString = localay.allKeys();
     if (arrayOfString != null)
     {
       int j = arrayOfString.length;
@@ -108,25 +108,25 @@ public final class l
       {
         String str = arrayOfString[i];
         p.g(str, "it");
-        if (!d.n.n.nA(str, "PlayTime"))
+        if (!d.n.n.nG(str, "PlayTime"))
         {
-          l = localax.decodeLong(str, 0L);
+          l = localay.decodeLong(str, 0L);
           if (Math.abs(System.currentTimeMillis() - l) > 7200000L)
           {
-            localax.remove(str);
-            localax.remove(str + ":PlayTime");
+            localay.remove(str);
+            localay.remove(str + ":PlayTime");
           }
         }
         i += 1;
       }
     }
-    long l = localax.decodeLong(paramString, 0L);
+    long l = localay.decodeLong(paramString, 0L);
     if (Math.abs(System.currentTimeMillis() - l) > 7200000L)
     {
       AppMethodBeat.o(7314);
       return 0;
     }
-    int i = localax.decodeInt(paramString + ":PlayTime", 0);
+    int i = localay.decodeInt(paramString + ":PlayTime", 0);
     AppMethodBeat.o(7314);
     return i;
   }
@@ -145,111 +145,111 @@ public final class l
     localIntent.putExtras(paramBundle);
     p.h(localIntent, "intent");
     x localx = new x();
-    localx.hDf = localIntent.getStringExtra("KPublisherId");
-    localx.doX = localIntent.getStringExtra("sns_local_id");
+    localx.hFX = localIntent.getStringExtra("KPublisherId");
+    localx.dqc = localIntent.getStringExtra("sns_local_id");
     localx.msgId = localIntent.getLongExtra("biz_video_msg_id", -1L);
     Object localObject1;
-    bu localbu;
+    bv localbv;
     Object localObject2;
     if (localx.msgId > -1L)
     {
       localObject1 = g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class);
       p.g(localObject1, "MMKernel.service<IMessen…engerStorage::class.java)");
-      localbu = ((com.tencent.mm.plugin.messenger.foundation.a.l)localObject1).dlK().xY(localx.msgId);
-      p.g(localbu, "msgInfo");
-      if ((localbu.fpd()) || (localbu.cTc()))
+      localbv = ((com.tencent.mm.plugin.messenger.foundation.a.l)localObject1).doJ().ys(localx.msgId);
+      p.g(localbv, "msgInfo");
+      if ((localbv.fta()) || (localbv.cVH()))
       {
         p.h(localIntent, "intent");
         p.h(localx, "mpMsgInfo");
-        p.h(localbu, "msgInfo");
-        localx.dAY = localIntent.getLongExtra("biz_video_msg_svr_id", 0L);
-        localx.hDd = localIntent.getIntExtra("biz_video_msg_index", 0);
-        localx.userName = localbu.VS();
-        p.h(localbu, "msgInfo");
+        p.h(localbv, "msgInfo");
+        localx.dCd = localIntent.getLongExtra("biz_video_msg_svr_id", 0L);
+        localx.hFV = localIntent.getIntExtra("biz_video_msg_index", 0);
+        localx.userName = localbv.Wa();
+        p.h(localbv, "msgInfo");
         p.h(localx, "mpMsgInfo");
-        if ((localbu.fpd()) || (!localbu.cTc())) {
+        if ((localbv.fta()) || (!localbv.cVH())) {
           break label630;
         }
-        p.h(localbu, "msgInfo");
+        p.h(localbv, "msgInfo");
         p.h(localx, "mpMsgInfo");
-        localObject2 = k.b.yr(localbu.getContent());
+        localObject2 = k.b.zb(localbv.getContent());
         if (localObject2 != null) {
           break label444;
         }
-        ad.w(TAG, "parse content fail");
+        ae.w(TAG, "parse content fail");
         localObject1 = null;
       }
     }
     int i;
     for (;;)
     {
-      localx.hDg = ((v)localObject1);
-      localx.type = localbu.getType();
+      localx.hFY = ((v)localObject1);
+      localx.type = localbv.getType();
       localx.t(localIntent);
-      paramInt = paramBundle.getInt(e.b.IUn, 10000);
-      i = paramBundle.getInt(e.b.IUo, 10000);
-      if (!bt.isNullOrNil(localx.hDg.url)) {
+      paramInt = paramBundle.getInt(e.b.JoV, 10000);
+      i = paramBundle.getInt(e.b.JoW, 10000);
+      if (!bu.isNullOrNil(localx.hFY.url)) {
         break;
       }
-      ad.e(TAG, "onVideoMsgClick url is null, %s", new Object[] { bt.flS() });
+      ae.e(TAG, "onVideoMsgClick url is null, %s", new Object[] { bu.fpN() });
       AppMethodBeat.o(175544);
       return;
       label444:
       localObject1 = new v();
-      localx.doK = ((k.b)localObject2).dHo;
-      localx.hDe = ((k.b)localObject2).dHp;
+      localx.dpP = ((k.b)localObject2).dIt;
+      localx.hFW = ((k.b)localObject2).dIu;
       ((v)localObject1).url = ((k.b)localObject2).url;
       ((v)localObject1).title = ((k.b)localObject2).title;
-      ((v)localObject1).hDo = ((k.b)localObject2).description;
-      ((v)localObject1).hDm = ((k.b)localObject2).thumburl;
-      localObject2 = (com.tencent.mm.ai.e)((k.b)localObject2).ao(com.tencent.mm.ai.e.class);
+      ((v)localObject1).hGg = ((k.b)localObject2).description;
+      ((v)localObject1).hGe = ((k.b)localObject2).thumburl;
+      localObject2 = (com.tencent.mm.ah.e)((k.b)localObject2).ao(com.tencent.mm.ah.e.class);
       if (localObject2 == null)
       {
-        ad.w(TAG, "piece content fail");
+        ae.w(TAG, "piece content fail");
         localObject1 = null;
       }
       else
       {
-        ((v)localObject1).hzm = ((com.tencent.mm.ai.e)localObject2).hzm;
-        ((v)localObject1).time = ((com.tencent.mm.ai.e)localObject2).hzi;
-        ((v)localObject1).type = ((com.tencent.mm.ai.e)localObject2).hzh;
-        ((v)localObject1).hzk = ((com.tencent.mm.ai.e)localObject2).hzk;
-        ((v)localObject1).hDq = ((com.tencent.mm.ai.e)localObject2).duration;
-        ((v)localObject1).videoWidth = ((com.tencent.mm.ai.e)localObject2).videoWidth;
-        ((v)localObject1).videoHeight = ((com.tencent.mm.ai.e)localObject2).videoHeight;
-        localx.hzl = ((com.tencent.mm.ai.e)localObject2).hzl;
+        ((v)localObject1).hCa = ((com.tencent.mm.ah.e)localObject2).hCa;
+        ((v)localObject1).time = ((com.tencent.mm.ah.e)localObject2).hBW;
+        ((v)localObject1).type = ((com.tencent.mm.ah.e)localObject2).hBV;
+        ((v)localObject1).hBY = ((com.tencent.mm.ah.e)localObject2).hBY;
+        ((v)localObject1).hGi = ((com.tencent.mm.ah.e)localObject2).duration;
+        ((v)localObject1).videoWidth = ((com.tencent.mm.ah.e)localObject2).videoWidth;
+        ((v)localObject1).videoHeight = ((com.tencent.mm.ah.e)localObject2).videoHeight;
+        localx.hBZ = ((com.tencent.mm.ah.e)localObject2).hBZ;
         continue;
         label630:
-        localObject1 = ((com.tencent.mm.plugin.biz.a.a)g.ab(com.tencent.mm.plugin.biz.a.a.class)).a(localbu.VP(), localbu.getContent());
-        if ((localObject1 == null) || (bt.hj((List)((u)localObject1).hDb)))
+        localObject1 = ((com.tencent.mm.plugin.biz.a.a)g.ab(com.tencent.mm.plugin.biz.a.a.class)).a(localbv.VX(), localbv.getContent());
+        if ((localObject1 == null) || (bu.ht((List)((u)localObject1).hFT)))
         {
-          ad.w(TAG, "getBizReaderItem reader is null");
+          ae.w(TAG, "getBizReaderItem reader is null");
           localObject1 = null;
         }
         else
         {
-          localx.doK = ((u)localObject1).dHo;
-          localx.hDe = ((u)localObject1).dHp;
-          if (localx.hDd >= ((u)localObject1).hDb.size()) {
-            localObject1 = (v)((u)localObject1).hDb.get(0);
+          localx.dpP = ((u)localObject1).dIt;
+          localx.hFW = ((u)localObject1).dIu;
+          if (localx.hFV >= ((u)localObject1).hFT.size()) {
+            localObject1 = (v)((u)localObject1).hFT.get(0);
           } else {
-            localObject1 = (v)((u)localObject1).hDb.get(localx.hDd);
+            localObject1 = (v)((u)localObject1).hFT.get(localx.hFV);
           }
         }
       }
     }
-    localIntent.putExtra("srcUsername", localx.VS());
-    localIntent.putExtra("srcDisplayname", localx.hDe);
+    localIntent.putExtra("srcUsername", localx.Wa());
+    localIntent.putExtra("srcDisplayname", localx.hFW);
     int j = (int)(System.currentTimeMillis() / 1000L);
     if (paramInt == 90)
     {
-      paramBundle = com.tencent.mm.plugin.brandservice.b.c.nWy;
-      com.tencent.mm.plugin.brandservice.b.c.s(4, localx.VS(), localx.hDg.url);
+      paramBundle = com.tencent.mm.plugin.brandservice.b.c.och;
+      com.tencent.mm.plugin.brandservice.b.c.s(4, localx.Wa(), localx.hFY.url);
     }
-    paramBundle = ((b)g.ab(b.class)).d(localx.hDg.url, paramInt, i, j);
-    if (!((b)g.ab(b.class)).a(paramContext, paramBundle, localx.hDg.type, paramInt, i, localIntent))
+    paramBundle = ((b)g.ab(b.class)).d(localx.hFY.url, paramInt, i, j);
+    if (!((b)g.ab(b.class)).a(paramContext, paramBundle, localx.hFY.type, paramInt, i, localIntent))
     {
-      localIntent.putExtra("rawUrl", localx.hDg.url);
+      localIntent.putExtra("rawUrl", localx.hFY.url);
       d.b(paramContext, "webview", ".ui.tools.WebViewUI", localIntent);
     }
     AppMethodBeat.o(175544);
@@ -262,12 +262,12 @@ public final class l
     p.h(paramx, "msgInfo");
     p.h(paramString, "url");
     Intent localIntent = new Intent();
-    localIntent.putExtra("KPublisherId", paramx.hDf);
-    localIntent.putExtra("pre_username", paramx.VS());
-    localIntent.putExtra("preUsername", paramx.VS());
-    localIntent.putExtra("preChatName", paramx.VS());
+    localIntent.putExtra("KPublisherId", paramx.hFX);
+    localIntent.putExtra("pre_username", paramx.Wa());
+    localIntent.putExtra("preUsername", paramx.Wa());
+    localIntent.putExtra("preChatName", paramx.Wa());
     localIntent.putExtra("rawUrl", paramString);
-    localIntent.putExtra("geta8key_username", paramx.VS());
+    localIntent.putExtra("geta8key_username", paramx.Wa());
     d.b(paramContext, "webview", ".ui.tools.WebViewUI", localIntent);
     AppMethodBeat.o(7313);
   }
@@ -277,40 +277,40 @@ public final class l
     AppMethodBeat.i(7316);
     p.h(paramString, "coverUrl");
     p.h(paramx, "msgInfo");
-    ad.i(TAG, "setCover coverUrl=%s", new Object[] { paramString });
-    if ((bt.isNullOrNil(paramString)) || (paramImageView == null))
+    ae.i(TAG, "setCover coverUrl=%s", new Object[] { paramString });
+    if ((bu.isNullOrNil(paramString)) || (paramImageView == null))
     {
       AppMethodBeat.o(7316);
       return;
     }
     paramImageView.setContentDescription((CharSequence)paramImageView.getContext().getString(2131757186));
-    com.tencent.mm.aw.a.a locala = com.tencent.mm.aw.a.a.aIP();
-    c.a locala1 = new c.a().aIY().dh(paramInt1, paramInt2).a((com.tencent.mm.aw.a.c.c)new com.tencent.mm.pluginsdk.ui.applet.n(4)).a((com.tencent.mm.aw.a.c.a)new com.tencent.mm.pluginsdk.ui.applet.e(4));
+    com.tencent.mm.av.a.a locala = com.tencent.mm.av.a.a.aJh();
+    c.a locala1 = new c.a().aJq().dh(paramInt1, paramInt2).a((com.tencent.mm.av.a.c.c)new com.tencent.mm.pluginsdk.ui.applet.n(4)).a((com.tencent.mm.av.a.c.a)new com.tencent.mm.pluginsdk.ui.applet.e(4));
     p.h(paramx, "msgInfo");
-    if (!bt.hj((List)paramx.hDh))
+    if (!bu.ht((List)paramx.hFZ))
     {
-      paramx = paramx.hDh.get(0);
+      paramx = paramx.hFZ.get(0);
       p.g(paramx, "msgInfo.coverPath[0]");
     }
     for (paramx = (String)paramx;; paramx = "")
     {
-      locala.a(paramString, paramImageView, locala1.FE(paramx).aJc(), null, (h)new m(4, paramInt1, paramInt2, null, null));
+      locala.a(paramString, paramImageView, locala1.Gg(paramx).aJu(), null, (h)new m(4, paramInt1, paramInt2, null, null));
       AppMethodBeat.o(7316);
       return;
     }
   }
   
-  public static final void cB(String paramString, int paramInt)
+  public static final void cF(String paramString, int paramInt)
   {
     AppMethodBeat.i(7315);
     p.h(paramString, "key");
-    ax localax = ax.aQz("bizVideoPlayTime");
-    localax.encode(paramString, System.currentTimeMillis());
-    localax.encode(paramString + ":PlayTime", paramInt);
+    ay localay = ay.aRW("bizVideoPlayTime");
+    localay.encode(paramString, System.currentTimeMillis());
+    localay.encode(paramString + ":PlayTime", paramInt);
     AppMethodBeat.o(7315);
   }
   
-  public static boolean y(boolean paramBoolean, int paramInt)
+  public static boolean z(boolean paramBoolean, int paramInt)
   {
     AppMethodBeat.i(7318);
     if (paramBoolean)
@@ -318,7 +318,7 @@ public final class l
       AppMethodBeat.o(7318);
       return true;
     }
-    ad.i(TAG, "simType: %s", new Object[] { Integer.valueOf(paramInt) });
+    ae.i(TAG, "simType: %s", new Object[] { Integer.valueOf(paramInt) });
     if ((paramInt == 1) || (paramInt == 0))
     {
       AppMethodBeat.o(7318);

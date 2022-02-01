@@ -1,11 +1,12 @@
 package com.tencent.mm.plugin.appbrand.jsapi.file;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.appstorage.p;
+import com.tencent.mm.plugin.appbrand.appstorage.q;
 import com.tencent.mm.plugin.appbrand.jsapi.a;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
 import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.vfs.k;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
@@ -23,13 +24,13 @@ public final class s
   {
     AppMethodBeat.i(128879);
     paramJSONObject = paramJSONObject.optString("filePath", "");
-    if (bt.isNullOrNil(paramJSONObject))
+    if (bu.isNullOrNil(paramJSONObject))
     {
       paramc.h(paramInt, e("fail:invalid data", null));
       AppMethodBeat.o(128879);
       return;
     }
-    e.kMv.execute(new Runnable()
+    e.kPL.execute(new Runnable()
     {
       public final void run()
       {
@@ -39,24 +40,24 @@ public final class s
           AppMethodBeat.o(128878);
           return;
         }
-        com.tencent.mm.vfs.e locale = paramc.Fg().Mj(paramJSONObject);
-        if (locale == null)
+        k localk = paramc.Fl().MP(paramJSONObject);
+        if (localk == null)
         {
           paramc.h(paramInt, s.this.e(String.format(Locale.US, "fail no such file \"%s\"", new Object[] { paramJSONObject }), null));
           AppMethodBeat.o(128878);
           return;
         }
         HashMap localHashMap = new HashMap(3);
-        localHashMap.put("size", Long.valueOf(locale.length()));
-        localHashMap.put("createTime", Long.valueOf(TimeUnit.MILLISECONDS.toSeconds(locale.lastModified())));
-        paramc.h(paramInt, s.this.m("ok", localHashMap));
+        localHashMap.put("size", Long.valueOf(localk.length()));
+        localHashMap.put("createTime", Long.valueOf(TimeUnit.MILLISECONDS.toSeconds(localk.lastModified())));
+        paramc.h(paramInt, s.this.n("ok", localHashMap));
         AppMethodBeat.o(128878);
       }
     });
     AppMethodBeat.o(128879);
   }
   
-  public final boolean bib()
+  public final boolean biK()
   {
     return true;
   }

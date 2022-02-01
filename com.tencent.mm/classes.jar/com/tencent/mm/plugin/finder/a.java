@@ -12,31 +12,31 @@ import java.util.concurrent.LinkedBlockingQueue;
 import kotlinx.coroutines.bh;
 import kotlinx.coroutines.bj;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"FinderAsyncDefaultExecutor", "Lcom/tencent/threadpool/ForkThreadPoolExecutor;", "getFinderAsyncDefaultExecutor", "()Lcom/tencent/threadpool/ForkThreadPoolExecutor;", "FinderCoroutineDispatcher", "Lkotlinx/coroutines/ExecutorCoroutineDispatcher;", "getFinderCoroutineDispatcher", "()Lkotlinx/coroutines/ExecutorCoroutineDispatcher;", "coreSize", "", "getCoreSize", "()I", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"FinderAsyncDefaultExecutor", "Lcom/tencent/threadpool/ForkThreadPoolExecutor;", "getFinderAsyncDefaultExecutor", "()Lcom/tencent/threadpool/ForkThreadPoolExecutor;", "FinderCoroutineDispatcher", "Lkotlinx/coroutines/ExecutorCoroutineDispatcher;", "getFinderCoroutineDispatcher", "()Lkotlinx/coroutines/ExecutorCoroutineDispatcher;", "coreSize", "", "getCoreSize", "()I", "plugin-finder_release"})
 public final class a
 {
-  private static final int rFK;
-  private static final bh rFL;
-  private static final b rFM;
+  private static final int rNV;
+  private static final bh rNW;
+  private static final b rNX;
   
   static
   {
-    AppMethodBeat.i(200929);
-    rFK = Runtime.getRuntime().availableProcessors();
-    Object localObject = h.LTJ;
-    int i = rFK;
+    AppMethodBeat.i(201351);
+    rNV = Runtime.getRuntime().availableProcessors();
+    Object localObject = h.MqF;
+    int i = rNV;
     localObject = ((i)localObject).a("FinderCoroutineDispatcher", i, i, (BlockingQueue)new LinkedBlockingQueue());
     p.g(localObject, "ThreadPool.INSTANCE.fork…  LinkedBlockingQueue()\n)");
-    rFL = (bh)new bj((Executor)localObject);
-    localObject = h.LTJ;
-    i = rFK;
-    rFM = ((i)localObject).a("FinderAsyncExecutor", i, i * 2, (BlockingQueue)new LinkedBlockingQueue());
-    AppMethodBeat.o(200929);
+    rNW = (bh)new bj((Executor)localObject);
+    localObject = h.MqF;
+    i = rNV;
+    rNX = ((i)localObject).a("FinderAsyncExecutor", i, i * 2, (BlockingQueue)new LinkedBlockingQueue());
+    AppMethodBeat.o(201351);
   }
   
-  public static final b cxH()
+  public static final b czi()
   {
-    return rFM;
+    return rNX;
   }
 }
 

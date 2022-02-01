@@ -4,22 +4,22 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.story.c.b;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/story/config/moduleconfig/StoryPostElementConfig;", "Lcom/tencent/mm/plugin/story/config/StoryElementConfig;", "", "()V", "ONE_DAY_POST_COUNT_THRESHOLD", "getElementName", "Lcom/tencent/mm/plugin/story/config/StoryConfigConstant$ElementName;", "initDefaultConfig", "()Ljava/lang/Integer;", "loadConfig", "", "syncConfig", "plugin-story_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/story/config/moduleconfig/StoryPostElementConfig;", "Lcom/tencent/mm/plugin/story/config/StoryElementConfig;", "", "()V", "ONE_DAY_POST_COUNT_THRESHOLD", "getElementName", "Lcom/tencent/mm/plugin/story/config/StoryConfigConstant$ElementName;", "initDefaultConfig", "()Ljava/lang/Integer;", "loadConfig", "", "syncConfig", "plugin-story_release"})
 public final class f
   extends b<Integer>
 {
-  private static final int AIO = 9;
-  public static final f AIP;
+  private static final int Bar = 9;
+  public static final f Bas;
   
   static
   {
     AppMethodBeat.i(118612);
-    AIP = new f();
-    AIO = 9;
+    Bas = new f();
+    Bar = 9;
     AppMethodBeat.o(118612);
   }
   
-  public final void atd() {}
+  public final void ats() {}
 }
 
 

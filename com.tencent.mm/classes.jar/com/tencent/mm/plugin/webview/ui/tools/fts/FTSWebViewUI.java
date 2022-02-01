@@ -8,31 +8,31 @@ import com.tencent.mm.plugin.websearch.api.am;
 public class FTSWebViewUI
   extends FTSBaseWebViewUI
 {
-  private void eUf()
+  private void eXS()
   {
     AppMethodBeat.i(80714);
     if (this.scene == 21) {
-      am.Wm(19);
+      am.WT(19);
     }
     AppMethodBeat.o(80714);
   }
   
-  public final void bzn()
+  public final void bAi()
   {
     AppMethodBeat.i(80708);
-    super.bzn();
-    am.Wk(this.scene);
+    super.bAi();
+    am.WR(this.scene);
     if (this.scene == 21) {
-      am.Wm(17);
+      am.WT(17);
     }
     AppMethodBeat.o(80708);
   }
   
-  public final void eTg()
+  public final void eWT()
   {
     AppMethodBeat.i(80715);
-    eUf();
-    super.eTg();
+    eXS();
+    super.eWT();
     AppMethodBeat.o(80715);
   }
   
@@ -48,7 +48,7 @@ public class FTSWebViewUI
   {
     AppMethodBeat.i(80712);
     super.onBackPressed();
-    eUf();
+    eXS();
     AppMethodBeat.o(80712);
   }
   
@@ -64,10 +64,10 @@ public class FTSWebViewUI
   {
     AppMethodBeat.i(80711);
     super.onDestroy();
-    am.eMs();
-    am.eMt();
+    am.eQb();
+    am.eQc();
     if (this.scene == 21) {
-      am.Wm(18);
+      am.WT(18);
     }
     AppMethodBeat.o(80711);
   }
@@ -76,7 +76,7 @@ public class FTSWebViewUI
   {
     AppMethodBeat.i(80710);
     super.onPause();
-    am.eMr();
+    am.eQa();
     AppMethodBeat.o(80710);
   }
   
@@ -84,7 +84,7 @@ public class FTSWebViewUI
   {
     AppMethodBeat.i(80709);
     super.onResume();
-    am.eMq();
+    am.ePZ();
     AppMethodBeat.o(80709);
   }
   
@@ -96,7 +96,7 @@ public class FTSWebViewUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.fts.FTSWebViewUI
  * JD-Core Version:    0.7.0.1
  */

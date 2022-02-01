@@ -4,7 +4,7 @@ import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
-import androidx.annotation.Keep;
+import com.tencent.tinker.anno.Keep;
 import com.tencent.tinker.loader.shareutil.ShareTinkerLog;
 
 @Keep

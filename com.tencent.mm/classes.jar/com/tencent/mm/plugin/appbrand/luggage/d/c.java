@@ -8,20 +8,20 @@ import com.tencent.mm.plugin.appbrand.dynamic.f;
 import com.tencent.mm.plugin.appbrand.o.o;
 import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
 import com.tencent.mm.plugin.appbrand.report.h;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.io.UnsupportedEncodingException;
 
 public final class c
   implements o
 {
-  public final void Os(String paramString)
+  public final void Pa(String paramString)
   {
     AppMethodBeat.i(47583);
-    paramString = com.tencent.mm.plugin.appbrand.a.Kl(paramString);
+    paramString = com.tencent.mm.plugin.appbrand.a.KK(paramString);
     if (paramString != null) {
-      f.Os(bt.nullAsNil(paramString.dkh));
+      f.Pa(bu.nullAsNil(paramString.dlj));
     }
     AppMethodBeat.o(47583);
   }
@@ -29,7 +29,7 @@ public final class c
   public final void a(String paramString1, String paramString2, String paramString3, String paramString4, long paramLong1, long paramLong2, int paramInt1, int paramInt2, int paramInt3, String paramString5, String paramString6)
   {
     AppMethodBeat.i(47582);
-    Object localObject = com.tencent.mm.plugin.appbrand.a.Kk(paramString1);
+    Object localObject = com.tencent.mm.plugin.appbrand.a.KJ(paramString1);
     if (localObject != null)
     {
       try
@@ -45,25 +45,25 @@ public final class c
           int i;
           int j;
           int k;
-          ad.w("MicroMsg.AppBrand.Report.kv_14510", "kv_14510 report UnsupportedEncodingException");
+          ae.w("MicroMsg.AppBrand.Report.kv_14510", "kv_14510 report UnsupportedEncodingException");
         }
       }
-      i = ((k)localObject).jYh.pkgVersion;
-      j = ((k)localObject).jYh.jIU + 1;
-      str = h.getNetworkType(aj.getContext());
-      k = h.Ui(paramString1);
-      localObject = com.tencent.mm.plugin.appbrand.report.a.mqo;
+      i = ((k)localObject).kbw.pkgVersion;
+      j = ((k)localObject).kbw.jLV + 1;
+      str = h.getNetworkType(ak.getContext());
+      k = h.US(paramString1);
+      localObject = com.tencent.mm.plugin.appbrand.report.a.mvm;
       com.tencent.mm.plugin.appbrand.report.a.f(14510, new Object[] { paramString1, Integer.valueOf(i), Integer.valueOf(j), str, paramString2, paramString4, paramString3, Long.valueOf(paramLong1), Long.valueOf(paramLong2), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString5, paramString6, Integer.valueOf(k) });
-      if (ad.getLogLevel() <= 1)
+      if (ae.getLogLevel() <= 1)
       {
         localObject = new StringBuilder("report kv_14510{");
         ((StringBuilder)localObject).append("appId='").append(paramString1).append('\'').append(", appVersion=").append(i).append(", appState=").append(j).append(", appType=").append(k).append(", networkType='").append(str).append('\'').append(", functionName='").append(paramString2).append('\'').append(", url='").append(paramString4).append('\'').append(", method='").append(paramString3).append('\'').append(", sentsize=").append(paramLong1).append(", receivedsize=").append(paramLong2).append(", statusCode=").append(paramInt1).append(", result=").append(paramInt2).append(", costtime=").append(paramInt3).append(", dstPath=").append(paramString5).append(", contentType=").append(paramString6).append('}');
-        ad.d("MicroMsg.AppBrand.Report.kv_14510", ((StringBuilder)localObject).toString());
+        ae.d("MicroMsg.AppBrand.Report.kv_14510", ((StringBuilder)localObject).toString());
       }
       AppMethodBeat.o(47582);
       return;
     }
-    ad.w("MicroMsg.AppBrand.Report.kv_14510", "kv_14510 report config is null. %s", new Object[] { paramString1 });
+    ae.w("MicroMsg.AppBrand.Report.kv_14510", "kv_14510 report config is null. %s", new Object[] { paramString1 });
     AppMethodBeat.o(47582);
   }
 }

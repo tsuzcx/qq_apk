@@ -2,20 +2,21 @@ package com.tencent.mm.plugin.appbrand.widget.input;
 
 import android.view.View;
 import android.widget.EditText;
+import com.tencent.mm.plugin.appbrand.page.z;
 
 public abstract interface aa<Input extends EditText,  extends ab>
 {
   public abstract void a(String paramString, Integer paramInteger);
   
-  public abstract boolean bDO();
+  public abstract boolean bEG();
   
-  public abstract Input bDP();
+  public abstract Input bEH();
   
-  public abstract boolean bDS();
+  public abstract boolean bEK();
   
-  public abstract int bDT();
+  public abstract int bEL();
   
-  public abstract boolean bDU();
+  public abstract boolean bEM();
   
   public abstract boolean ew(int paramInt1, int paramInt2);
   
@@ -23,9 +24,9 @@ public abstract interface aa<Input extends EditText,  extends ab>
   
   public abstract <P extends View,  extends ac> P getInputPanel();
   
-  public abstract boolean u(com.tencent.mm.plugin.appbrand.page.aa paramaa);
+  public abstract boolean v(z paramz);
   
-  public abstract void wm(int paramInt);
+  public abstract void wr(int paramInt);
 }
 
 

@@ -1,26 +1,26 @@
 package com.tencent.mm.plugin.finder.storage.data;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.amw;
+import com.tencent.mm.protocal.protobuf.ani;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/storage/data/PageCacheList;", "", "array", "", "Lcom/tencent/mm/plugin/finder/storage/data/CachePage;", "([Lcom/tencent/mm/plugin/finder/storage/data/CachePage;)V", "[Lcom/tencent/mm/plugin/finder/storage/data/CachePage;", "get", "typeFlag", "", "reset", "", "set", "page", "size", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/storage/data/PageCacheList;", "", "array", "", "Lcom/tencent/mm/plugin/finder/storage/data/CachePage;", "([Lcom/tencent/mm/plugin/finder/storage/data/CachePage;)V", "[Lcom/tencent/mm/plugin/finder/storage/data/CachePage;", "get", "typeFlag", "", "reset", "", "set", "page", "size", "plugin-finder_release"})
 public final class m
 {
-  final a[] sAj;
+  final a[] sLh;
   
   public m(a[] paramArrayOfa)
   {
-    AppMethodBeat.i(203840);
-    this.sAj = paramArrayOfa;
-    AppMethodBeat.o(203840);
+    AppMethodBeat.i(204431);
+    this.sLh = paramArrayOfa;
+    AppMethodBeat.o(204431);
   }
   
-  public final a Fv(int paramInt)
+  public final a FS(int paramInt)
   {
-    AppMethodBeat.i(203837);
-    Object localObject2 = this.sAj;
+    AppMethodBeat.i(204428);
+    Object localObject2 = this.sLh;
     int k = localObject2.length;
     int i = 0;
     Object localObject1;
@@ -41,9 +41,9 @@ public final class m
     {
       localObject2 = localObject1;
       if (localObject1 == null) {
-        localObject2 = new a(10000, "default_v3", new amw(), (byte)0);
+        localObject2 = new a(10000, "default_v3", new ani(), (byte)0);
       }
-      AppMethodBeat.o(203837);
+      AppMethodBeat.o(204428);
       return localObject2;
       j = 0;
       break label41;
@@ -56,37 +56,37 @@ public final class m
   
   public final void a(int paramInt, a parama)
   {
-    AppMethodBeat.i(203838);
+    AppMethodBeat.i(204429);
     p.h(parama, "page");
-    a[] arrayOfa = this.sAj;
+    a[] arrayOfa = this.sLh;
     int k = arrayOfa.length;
     int j = 0;
     int i = 0;
     while (j < k)
     {
       if (paramInt == arrayOfa[j].type) {
-        this.sAj[i] = parama;
+        this.sLh[i] = parama;
       }
       j += 1;
       i += 1;
     }
-    AppMethodBeat.o(203838);
+    AppMethodBeat.o(204429);
   }
   
   public final void reset()
   {
-    AppMethodBeat.i(203839);
-    a[] arrayOfa = this.sAj;
+    AppMethodBeat.i(204430);
+    a[] arrayOfa = this.sLh;
     int j = arrayOfa.length;
     int i = 0;
     while (i < j)
     {
       a locala = arrayOfa[i];
-      locala.kFr = false;
-      locala.a(new amw());
+      locala.kIG = false;
+      locala.a(new ani());
       i += 1;
     }
-    AppMethodBeat.o(203839);
+    AppMethodBeat.o(204430);
   }
 }
 

@@ -2,11 +2,11 @@ package com.tencent.mm.plugin.box.webview;
 
 public abstract interface e
 {
-  public abstract void eH(String paramString1, String paramString2);
+  public abstract void eK(String paramString1, String paramString2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.box.webview.e
  * JD-Core Version:    0.7.0.1
  */

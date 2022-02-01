@@ -13,20 +13,20 @@ public final class u
   extends n
   implements t
 {
-  private final d.l.b.a.b.f.b MVU;
+  private final d.l.b.a.b.f.b Nta;
   
   public u(d.l.b.a.b.f.b paramb)
   {
     AppMethodBeat.i(57501);
-    this.MVU = paramb;
+    this.Nta = paramb;
     AppMethodBeat.o(57501);
   }
   
-  public final Collection<g> G(d.g.a.b<? super f, Boolean> paramb)
+  public final Collection<g> J(d.g.a.b<? super f, Boolean> paramb)
   {
     AppMethodBeat.i(57496);
     p.h(paramb, "nameFilter");
-    paramb = (Collection)v.MKE;
+    paramb = (Collection)v.NhH;
     AppMethodBeat.o(57496);
     return paramb;
   }
@@ -34,7 +34,7 @@ public final class u
   public final boolean equals(Object paramObject)
   {
     AppMethodBeat.i(57498);
-    if (((paramObject instanceof u)) && (p.i(this.MVU, ((u)paramObject).MVU)))
+    if (((paramObject instanceof u)) && (p.i(this.Nta, ((u)paramObject).Nta)))
     {
       AppMethodBeat.o(57498);
       return true;
@@ -43,20 +43,20 @@ public final class u
     return false;
   }
   
-  public final d.l.b.a.b.f.b gjg()
+  public final d.l.b.a.b.f.b gnI()
   {
-    return this.MVU;
+    return this.Nta;
   }
   
-  public final Collection<t> glc()
+  public final Collection<t> gpE()
   {
-    return (Collection)v.MKE;
+    return (Collection)v.NhH;
   }
   
   public final int hashCode()
   {
     AppMethodBeat.i(57499);
-    int i = this.MVU.hashCode();
+    int i = this.Nta.hashCode();
     AppMethodBeat.o(57499);
     return i;
   }
@@ -72,14 +72,14 @@ public final class u
   public final String toString()
   {
     AppMethodBeat.i(57500);
-    String str = getClass().getName() + ": " + this.MVU;
+    String str = getClass().getName() + ": " + this.Nta;
     AppMethodBeat.o(57500);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.b.d.b.u
  * JD-Core Version:    0.7.0.1
  */

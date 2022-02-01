@@ -11,10 +11,10 @@ public class SnsCmdList
   implements Parcelable
 {
   public static final Parcelable.Creator<SnsCmdList> CREATOR;
-  private int zdj;
-  private int zdk;
-  public List<Integer> zdl;
-  public List<Integer> zdm;
+  private int ztZ;
+  private int zua;
+  public List<Integer> zub;
+  public List<Integer> zuc;
   
   static
   {
@@ -26,24 +26,24 @@ public class SnsCmdList
   public SnsCmdList()
   {
     AppMethodBeat.i(95077);
-    this.zdj = 0;
-    this.zdk = 0;
-    this.zdl = new LinkedList();
-    this.zdm = new LinkedList();
+    this.ztZ = 0;
+    this.zua = 0;
+    this.zub = new LinkedList();
+    this.zuc = new LinkedList();
     AppMethodBeat.o(95077);
   }
   
-  public final void PH(int paramInt)
+  public final void Qo(int paramInt)
   {
     AppMethodBeat.i(95078);
-    this.zdl.add(Integer.valueOf(paramInt));
+    this.zub.add(Integer.valueOf(paramInt));
     AppMethodBeat.o(95078);
   }
   
-  public final void PI(int paramInt)
+  public final void Qp(int paramInt)
   {
     AppMethodBeat.i(95079);
-    this.zdm.add(Integer.valueOf(paramInt));
+    this.zuc.add(Integer.valueOf(paramInt));
     AppMethodBeat.o(95079);
   }
   
@@ -56,20 +56,20 @@ public class SnsCmdList
   {
     int i = 0;
     AppMethodBeat.i(95080);
-    this.zdj = this.zdl.size();
-    paramParcel.writeInt(this.zdj);
+    this.ztZ = this.zub.size();
+    paramParcel.writeInt(this.ztZ);
     paramInt = 0;
-    while (paramInt < this.zdj)
+    while (paramInt < this.ztZ)
     {
-      paramParcel.writeInt(((Integer)this.zdl.get(paramInt)).intValue());
+      paramParcel.writeInt(((Integer)this.zub.get(paramInt)).intValue());
       paramInt += 1;
     }
-    this.zdk = this.zdm.size();
-    paramParcel.writeInt(this.zdk);
+    this.zua = this.zuc.size();
+    paramParcel.writeInt(this.zua);
     paramInt = i;
-    while (paramInt < this.zdk)
+    while (paramInt < this.zua)
     {
-      paramParcel.writeInt(((Integer)this.zdm.get(paramInt)).intValue());
+      paramParcel.writeInt(((Integer)this.zuc.get(paramInt)).intValue());
       paramInt += 1;
     }
     AppMethodBeat.o(95080);

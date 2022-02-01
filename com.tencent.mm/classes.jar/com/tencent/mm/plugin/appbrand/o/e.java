@@ -8,49 +8,49 @@ import java.util.Map;
 public final class e
 {
   String cgz;
-  String iFB;
-  Map<String, String> iFC;
-  boolean iFK;
-  boolean iFL;
-  d.a lWa;
-  ArrayList<String> lWb;
-  int lWc;
-  String lWd;
-  HttpURLConnection lWe;
-  String lWf;
-  String lWg;
-  boolean lWh;
-  boolean lWi;
-  boolean lWj;
+  boolean iID;
+  boolean iIE;
+  String iIu;
+  Map<String, String> iIv;
   byte[] mPostData;
   Runnable mRunnable;
   int mTimeout;
   String mUrl;
+  d.a maG;
+  ArrayList<String> maH;
+  int maI;
+  String maJ;
+  HttpURLConnection maK;
+  String maL;
+  String maM;
+  boolean maN;
+  boolean maO;
+  boolean maP;
   private long startTime;
   
   public e(String paramString1, byte[] paramArrayOfByte, int paramInt, d.a parama, String paramString2, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
     AppMethodBeat.i(144336);
-    this.lWc = 15;
+    this.maI = 15;
     this.mRunnable = null;
-    this.lWh = false;
-    this.iFK = false;
-    this.iFL = false;
-    this.lWi = false;
-    this.lWj = true;
+    this.maN = false;
+    this.iID = false;
+    this.iIE = false;
+    this.maO = false;
+    this.maP = true;
     this.mUrl = paramString1;
     this.mPostData = paramArrayOfByte;
-    this.lWa = parama;
+    this.maG = parama;
     this.mTimeout = paramInt;
     this.cgz = paramString2;
     this.startTime = System.currentTimeMillis();
-    this.iFK = paramBoolean1;
-    this.iFL = paramBoolean2;
-    this.lWi = paramBoolean3;
+    this.iID = paramBoolean1;
+    this.iIE = paramBoolean2;
+    this.maO = paramBoolean3;
     AppMethodBeat.o(144336);
   }
   
-  public final int bth()
+  public final int btS()
   {
     AppMethodBeat.i(144337);
     int i = (int)(System.currentTimeMillis() - this.startTime);

@@ -19,8 +19,8 @@ public final class i
   {
     AppMethodBeat.i(162331);
     super.a(paraml, paramInt, parama);
-    paraml.iUW.setTextColor(getContext().getResources().getColor(2131100154));
-    paraml.oSy.setBackgroundColor(getContext().getResources().getColor(2131100153));
+    paraml.iXP.setTextColor(getContext().getResources().getColor(2131100154));
+    paraml.oZa.setBackgroundColor(getContext().getResources().getColor(2131100153));
     AppMethodBeat.o(162331);
   }
 }

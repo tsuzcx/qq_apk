@@ -11,46 +11,46 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/vlog/ui/plugin/caption/EditorCaptionLayoutManager;", "Landroid/support/v7/widget/LinearLayoutManager;", "context", "Landroid/content/Context;", "orientation", "", "(Landroid/content/Context;I)V", "smoothScrollToPosition", "", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "state", "Landroid/support/v7/widget/RecyclerView$State;", "position", "CenterSmoothScroller", "plugin-vlog_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/vlog/ui/plugin/caption/EditorCaptionLayoutManager;", "Landroid/support/v7/widget/LinearLayoutManager;", "context", "Landroid/content/Context;", "orientation", "", "(Landroid/content/Context;I)V", "smoothScrollToPosition", "", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "state", "Landroid/support/v7/widget/RecyclerView$State;", "position", "CenterSmoothScroller", "plugin-vlog_release"})
 public final class EditorCaptionLayoutManager
   extends LinearLayoutManager
 {
   public EditorCaptionLayoutManager(Context paramContext)
   {
     super(1);
-    AppMethodBeat.i(196465);
-    AppMethodBeat.o(196465);
+    AppMethodBeat.i(191924);
+    AppMethodBeat.o(191924);
   }
   
   public final void a(RecyclerView paramRecyclerView, RecyclerView.t paramt, int paramInt)
   {
-    AppMethodBeat.i(196464);
+    AppMethodBeat.i(191923);
     p.h(paramRecyclerView, "recyclerView");
     paramRecyclerView = paramRecyclerView.getContext();
     p.g(paramRecyclerView, "recyclerView.context");
     paramRecyclerView = new a(paramRecyclerView);
     paramRecyclerView.cz(paramInt);
     a((RecyclerView.s)paramRecyclerView);
-    AppMethodBeat.o(196464);
+    AppMethodBeat.o(191923);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/vlog/ui/plugin/caption/EditorCaptionLayoutManager$CenterSmoothScroller;", "Landroid/support/v7/widget/LinearSmoothScroller;", "context", "Landroid/content/Context;", "(Lcom/tencent/mm/plugin/vlog/ui/plugin/caption/EditorCaptionLayoutManager;Landroid/content/Context;)V", "calculateDtToFit", "", "viewStart", "viewEnd", "boxStart", "boxEnd", "snapPreference", "calculateSpeedPerPixel", "", "displayMetrics", "Landroid/util/DisplayMetrics;", "plugin-vlog_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/vlog/ui/plugin/caption/EditorCaptionLayoutManager$CenterSmoothScroller;", "Landroid/support/v7/widget/LinearSmoothScroller;", "context", "Landroid/content/Context;", "(Lcom/tencent/mm/plugin/vlog/ui/plugin/caption/EditorCaptionLayoutManager;Landroid/content/Context;)V", "calculateDtToFit", "", "viewStart", "viewEnd", "boxStart", "boxEnd", "snapPreference", "calculateSpeedPerPixel", "", "displayMetrics", "Landroid/util/DisplayMetrics;", "plugin-vlog_release"})
   public final class a
     extends ae
   {
     public a()
     {
       super();
-      AppMethodBeat.i(196463);
-      AppMethodBeat.o(196463);
+      AppMethodBeat.i(191922);
+      AppMethodBeat.o(191922);
     }
     
     public final float a(DisplayMetrics paramDisplayMetrics)
     {
-      AppMethodBeat.i(196462);
+      AppMethodBeat.i(191921);
       p.h(paramDisplayMetrics, "displayMetrics");
       float f = 200.0F / paramDisplayMetrics.densityDpi;
-      AppMethodBeat.o(196462);
+      AppMethodBeat.o(191921);
       return f;
     }
     

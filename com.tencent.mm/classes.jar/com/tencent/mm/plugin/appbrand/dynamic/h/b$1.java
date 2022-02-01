@@ -3,17 +3,17 @@ package com.tencent.mm.plugin.appbrand.dynamic.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ipcinvoker.BaseIPCService;
 import com.tencent.mm.ipcinvoker.j;
-import com.tencent.mm.sdk.platformtools.av.a;
+import com.tencent.mm.sdk.platformtools.aw.a;
 
 final class b$1
-  implements av.a
+  implements aw.a
 {
   public final boolean onTimerExpired()
   {
     AppMethodBeat.i(121426);
-    BaseIPCService localBaseIPCService = j.ahy().wx("com.tencent.mm:support");
+    BaseIPCService localBaseIPCService = j.ahN().xg("com.tencent.mm:support");
     if (localBaseIPCService != null) {
-      localBaseIPCService.dx(false);
+      localBaseIPCService.dy(false);
     }
     AppMethodBeat.o(121426);
     return false;

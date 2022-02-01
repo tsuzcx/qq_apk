@@ -1,64 +1,64 @@
 package com.tencent.mm.plugin.facedetect.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.o;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.o;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.modelsimple.l;
+import com.tencent.mm.modelsimple.m;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
 import com.tencent.mm.protocal.ac;
 import com.tencent.mm.protocal.l.d;
-import com.tencent.mm.protocal.protobuf.bor;
-import com.tencent.mm.protocal.protobuf.ccc;
-import com.tencent.mm.protocal.protobuf.ccd;
-import com.tencent.mm.protocal.protobuf.pv;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.bpj;
+import com.tencent.mm.protocal.protobuf.ccw;
+import com.tencent.mm.protocal.protobuf.ccx;
+import com.tencent.mm.protocal.protobuf.px;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public abstract class p
   extends o
   implements k
 {
-  static String rgu = null;
+  static String roy = null;
   protected f callback = null;
   
-  protected static String aHw()
+  protected static String aHN()
   {
-    return rgu;
+    return roy;
   }
   
-  public static void afT(String paramString)
+  public static void agP(String paramString)
   {
-    rgu = paramString;
+    roy = paramString;
   }
   
   public final void a(final int paramInt1, int paramInt2, String paramString, q paramq)
   {
-    ad.i("MicroMsg.NetSceneFaceRsaBase", "hy: errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    ae.i("MicroMsg.NetSceneFaceRsaBase", "hy: errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
     if ((paramInt1 == 4) && (paramInt2 == -102))
     {
       paramInt1 = paramq.getReqObj().getRsaInfo().ver;
-      ad.d("MicroMsg.NetSceneFaceRsaBase", "hy: summerauth auth MM_ERR_CERT_EXPIRED  getcert now  old ver:%d", new Object[] { Integer.valueOf(paramInt1) });
-      g.ajF().ay(new Runnable()
+      ae.d("MicroMsg.NetSceneFaceRsaBase", "hy: summerauth auth MM_ERR_CERT_EXPIRED  getcert now  old ver:%d", new Object[] { Integer.valueOf(paramInt1) });
+      g.ajU().aw(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(103619);
-          new l().doScene(p.a(p.this), new f()
+          new m().doScene(p.a(p.this), new f()
           {
             public final void onSceneEnd(int paramAnonymous2Int1, int paramAnonymous2Int2, String paramAnonymous2String, n paramAnonymous2n)
             {
               AppMethodBeat.i(103618);
-              ad.d("MicroMsg.NetSceneFaceRsaBase", "hy: summerauth dkcert getcert type:%d ret [%d,%d]", new Object[] { Integer.valueOf(paramAnonymous2n.getType()), Integer.valueOf(paramAnonymous2Int1), Integer.valueOf(paramAnonymous2Int2) });
+              ae.d("MicroMsg.NetSceneFaceRsaBase", "hy: summerauth dkcert getcert type:%d ret [%d,%d]", new Object[] { Integer.valueOf(paramAnonymous2n.getType()), Integer.valueOf(paramAnonymous2Int1), Integer.valueOf(paramAnonymous2Int2) });
               if ((paramAnonymous2Int1 != 0) || (paramAnonymous2Int2 != 0))
               {
-                ad.e("MicroMsg.NetSceneFaceRsaBase", "hy: do scene err in rsa when get cert. clear ticket");
-                p.csG();
-                p.this.afS(p.aHw());
+                ae.e("MicroMsg.NetSceneFaceRsaBase", "hy: do scene err in rsa when get cert. clear ticket");
+                p.cuh();
+                p.this.agO(p.aHN());
                 p.this.callback.onSceneEnd(paramAnonymous2Int1, paramAnonymous2Int2, "", p.this);
                 AppMethodBeat.o(103618);
                 return;
@@ -75,45 +75,45 @@ public abstract class p
     c(paramInt1, paramInt2, paramString, paramq);
   }
   
-  public final void aEK()
+  public final void aFa()
   {
     if (this.callback != null) {
       this.callback.onSceneEnd(3, -1, "", this);
     }
   }
   
-  public final f aEL()
+  public final f aFb()
   {
     return this.callback;
   }
   
-  abstract void afS(String paramString);
+  abstract void agO(String paramString);
   
-  public final pv b(q paramq)
+  public final px b(q paramq)
   {
     paramq = f(paramq);
     if (paramq != null) {
-      return paramq.FEd;
+      return paramq.FWy;
     }
     return null;
   }
   
-  public final ccc c(q paramq)
+  public final ccw c(q paramq)
   {
     paramq = f(paramq);
     if (paramq != null) {
-      return paramq.FEe;
+      return paramq.FWz;
     }
     return null;
   }
   
   abstract void c(int paramInt1, int paramInt2, String paramString, q paramq);
   
-  public final bor d(q paramq)
+  public final bpj d(q paramq)
   {
     paramq = f(paramq);
     if (paramq != null) {
-      return paramq.FEc;
+      return paramq.FWx;
     }
     return null;
   }
@@ -121,10 +121,10 @@ public abstract class p
   public int doScene(e parame, f paramf)
   {
     this.callback = paramf;
-    if (!bt.isNullOrNil(rgu))
+    if (!bu.isNullOrNil(roy))
     {
-      ad.i("MicroMsg.NetSceneFaceRsaBase", "hy: has ticket: %s", new Object[] { rgu });
-      afS(rgu);
+      ae.i("MicroMsg.NetSceneFaceRsaBase", "hy: has ticket: %s", new Object[] { roy });
+      agO(roy);
       return f(parame);
     }
     return getType();
@@ -132,7 +132,7 @@ public abstract class p
   
   abstract int f(e parame);
   
-  protected abstract ccd f(q paramq);
+  protected abstract ccx f(q paramq);
 }
 
 

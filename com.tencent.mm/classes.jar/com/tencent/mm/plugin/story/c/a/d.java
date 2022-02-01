@@ -2,25 +2,25 @@ package com.tencent.mm.plugin.story.c.a;
 
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.w;
+import com.tencent.mm.model.x;
 import com.tencent.mm.plugin.story.api.o;
 import com.tencent.mm.plugin.story.c.b;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/story/config/moduleconfig/StoryEntranceElementConfig;", "Lcom/tencent/mm/plugin/story/config/StoryElementConfig;", "Lcom/tencent/mm/plugin/story/config/moduleconfig/StoryEntranceElementConfig$ShowEntranceConfig;", "()V", "checkChatterEnableStoryEntrance", "", "userName", "", "getElementName", "Lcom/tencent/mm/plugin/story/config/StoryConfigConstant$ElementName;", "initDefaultConfig", "loadConfig", "", "ShowEntranceConfig", "ShowEntranceType", "plugin-story_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/story/config/moduleconfig/StoryEntranceElementConfig;", "Lcom/tencent/mm/plugin/story/config/StoryElementConfig;", "Lcom/tencent/mm/plugin/story/config/moduleconfig/StoryEntranceElementConfig$ShowEntranceConfig;", "()V", "checkChatterEnableStoryEntrance", "", "userName", "", "getElementName", "Lcom/tencent/mm/plugin/story/config/StoryConfigConstant$ElementName;", "initDefaultConfig", "loadConfig", "", "ShowEntranceConfig", "ShowEntranceType", "plugin-story_release"})
 public final class d
   extends b<d.a>
 {
-  public static final d AIB;
+  public static final d Bae;
   
   static
   {
     AppMethodBeat.i(118605);
-    AIB = new d();
+    Bae = new d();
     AppMethodBeat.o(118605);
   }
   
-  public static boolean aBv(String paramString)
+  public static boolean aCO(String paramString)
   {
     AppMethodBeat.i(118602);
     if (TextUtils.isEmpty((CharSequence)paramString))
@@ -28,7 +28,7 @@ public final class d
       AppMethodBeat.o(118602);
       return false;
     }
-    if ((!w.zs(paramString)) && (!w.zE(paramString)) && (!w.zv(paramString)) && (!w.zA(paramString)) && (!w.zH(paramString)) && (!w.zI(paramString)) && (!w.Ai(paramString)) && (!w.An(paramString)) && (!w.Ap(paramString)) && (!w.zT(paramString)) && (!w.zl(paramString)) && (!w.zk(paramString)))
+    if ((!x.Ac(paramString)) && (!x.Ao(paramString)) && (!x.Af(paramString)) && (!x.Ak(paramString)) && (!x.Ar(paramString)) && (!x.As(paramString)) && (!x.AS(paramString)) && (!x.AX(paramString)) && (!x.AZ(paramString)) && (!x.AD(paramString)) && (!x.zV(paramString)) && (!x.zU(paramString)))
     {
       AppMethodBeat.o(118602);
       return true;
@@ -37,22 +37,22 @@ public final class d
     return false;
   }
   
-  public final void atd()
+  public final void ats()
   {
     AppMethodBeat.i(118604);
-    ((d.a)atb()).clear();
+    ((d.a)atq()).clear();
     if (!o.isShowStoryCheck())
     {
       AppMethodBeat.o(118604);
       return;
     }
-    ((d.a)atb()).add(d.b.AID);
-    ((d.a)atb()).add(d.b.AIE);
-    ((d.a)atb()).add(d.b.AIF);
-    ((d.a)atb()).add(d.b.AIG);
-    ((d.a)atb()).add(d.b.AIH);
-    ((d.a)atb()).add(d.b.AIJ);
-    ((d.a)atb()).add(d.b.AII);
+    ((d.a)atq()).add(d.b.Bag);
+    ((d.a)atq()).add(d.b.Bah);
+    ((d.a)atq()).add(d.b.Bai);
+    ((d.a)atq()).add(d.b.Baj);
+    ((d.a)atq()).add(d.b.Bak);
+    ((d.a)atq()).add(d.b.Bam);
+    ((d.a)atq()).add(d.b.Bal);
     AppMethodBeat.o(118604);
   }
 }

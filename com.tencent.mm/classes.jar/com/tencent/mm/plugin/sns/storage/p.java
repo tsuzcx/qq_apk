@@ -4,16 +4,16 @@ import android.database.Cursor;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.b.g;
-import com.tencent.mm.g.c.ga;
+import com.tencent.mm.g.c.gb;
 import com.tencent.mm.modelsns.h;
-import com.tencent.mm.plugin.sns.data.q;
-import com.tencent.mm.plugin.sns.model.ag;
+import com.tencent.mm.plugin.sns.data.r;
+import com.tencent.mm.plugin.sns.model.ah;
 import com.tencent.mm.protocal.protobuf.TimeLineObject;
-import com.tencent.mm.protocal.protobuf.abf;
-import com.tencent.mm.protocal.protobuf.byo;
+import com.tencent.mm.protocal.protobuf.abo;
+import com.tencent.mm.protocal.protobuf.bzi;
 import com.tencent.mm.sdk.e.c.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.lang.reflect.Field;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -21,112 +21,112 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 public final class p
-  extends ga
+  extends gb
 {
+  protected static Map<String, TimeLineObject> AdT;
+  protected static Map<String, bzi> AdU;
   protected static c.a info;
-  protected static Map<String, TimeLineObject> zMM;
-  protected static Map<String, byo> zMN;
+  public String AdI;
+  public int AdJ;
+  public String AdV;
+  public e AdW;
+  private bzi AdX;
   private boolean isAd;
-  public String zMB;
-  public int zMC;
-  public String zMO;
-  public e zMP;
-  private byo zMQ;
   
   static
   {
     AppMethodBeat.i(97532);
     c.a locala = new c.a();
-    locala.IhA = new Field[15];
+    locala.IBL = new Field[15];
     locala.columns = new String[16];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "snsId";
-    locala.IhC.put("snsId", "LONG");
+    locala.IBN.put("snsId", "LONG");
     localStringBuilder.append(" snsId LONG");
     localStringBuilder.append(", ");
     locala.columns[1] = "userName";
-    locala.IhC.put("userName", "TEXT");
+    locala.IBN.put("userName", "TEXT");
     localStringBuilder.append(" userName TEXT");
     localStringBuilder.append(", ");
     locala.columns[2] = "localFlag";
-    locala.IhC.put("localFlag", "INTEGER");
+    locala.IBN.put("localFlag", "INTEGER");
     localStringBuilder.append(" localFlag INTEGER");
     localStringBuilder.append(", ");
     locala.columns[3] = "createTime";
-    locala.IhC.put("createTime", "INTEGER");
+    locala.IBN.put("createTime", "INTEGER");
     localStringBuilder.append(" createTime INTEGER");
     localStringBuilder.append(", ");
     locala.columns[4] = "head";
-    locala.IhC.put("head", "INTEGER");
+    locala.IBN.put("head", "INTEGER");
     localStringBuilder.append(" head INTEGER");
     localStringBuilder.append(", ");
     locala.columns[5] = "localPrivate";
-    locala.IhC.put("localPrivate", "INTEGER");
+    locala.IBN.put("localPrivate", "INTEGER");
     localStringBuilder.append(" localPrivate INTEGER");
     localStringBuilder.append(", ");
     locala.columns[6] = "type";
-    locala.IhC.put("type", "INTEGER");
+    locala.IBN.put("type", "INTEGER");
     localStringBuilder.append(" type INTEGER");
     localStringBuilder.append(", ");
     locala.columns[7] = "sourceType";
-    locala.IhC.put("sourceType", "INTEGER");
+    locala.IBN.put("sourceType", "INTEGER");
     localStringBuilder.append(" sourceType INTEGER");
     localStringBuilder.append(", ");
     locala.columns[8] = "likeFlag";
-    locala.IhC.put("likeFlag", "INTEGER");
+    locala.IBN.put("likeFlag", "INTEGER");
     localStringBuilder.append(" likeFlag INTEGER");
     localStringBuilder.append(", ");
     locala.columns[9] = "pravited";
-    locala.IhC.put("pravited", "INTEGER");
+    locala.IBN.put("pravited", "INTEGER");
     localStringBuilder.append(" pravited INTEGER");
     localStringBuilder.append(", ");
     locala.columns[10] = "stringSeq";
-    locala.IhC.put("stringSeq", "TEXT");
+    locala.IBN.put("stringSeq", "TEXT");
     localStringBuilder.append(" stringSeq TEXT");
     localStringBuilder.append(", ");
     locala.columns[11] = "content";
-    locala.IhC.put("content", "BLOB");
+    locala.IBN.put("content", "BLOB");
     localStringBuilder.append(" content BLOB");
     localStringBuilder.append(", ");
     locala.columns[12] = "attrBuf";
-    locala.IhC.put("attrBuf", "BLOB");
+    locala.IBN.put("attrBuf", "BLOB");
     localStringBuilder.append(" attrBuf BLOB");
     localStringBuilder.append(", ");
     locala.columns[13] = "postBuf";
-    locala.IhC.put("postBuf", "BLOB");
+    locala.IBN.put("postBuf", "BLOB");
     localStringBuilder.append(" postBuf BLOB");
     localStringBuilder.append(", ");
     locala.columns[14] = "subType";
-    locala.IhC.put("subType", "INTEGER");
+    locala.IBN.put("subType", "INTEGER");
     localStringBuilder.append(" subType INTEGER");
     locala.columns[15] = "rowid";
     locala.sql = localStringBuilder.toString();
     info = locala;
-    zMM = new ConcurrentHashMap();
-    zMN = new ConcurrentHashMap();
+    AdT = new ConcurrentHashMap();
+    AdU = new ConcurrentHashMap();
     AppMethodBeat.o(97532);
   }
   
   public p()
   {
-    this.zMB = null;
-    this.zMO = null;
+    this.AdI = null;
+    this.AdV = null;
     this.isAd = false;
-    this.zMQ = null;
+    this.AdX = null;
   }
   
   public p(byte paramByte)
   {
     AppMethodBeat.i(97498);
-    this.zMB = null;
-    this.zMO = null;
+    this.AdI = null;
+    this.AdV = null;
     this.isAd = false;
-    this.zMQ = null;
-    Ae(0L);
+    this.AdX = null;
+    AC(0L);
     AppMethodBeat.o(97498);
   }
   
-  private static int Af(long paramLong)
+  private static int AD(long paramLong)
   {
     AppMethodBeat.i(97502);
     String str = new SimpleDateFormat("yyyyMMdd").format(new Date(1000L * paramLong));
@@ -140,16 +140,16 @@ public final class p
     {
       for (;;)
       {
-        ad.e("MicroMsg.SnsInfo", "error valueOf  ".concat(String.valueOf(str)));
+        ae.e("MicroMsg.SnsInfo", "error valueOf  ".concat(String.valueOf(str)));
         int i = (int)(paramLong / 86400L);
       }
     }
   }
   
-  public static boolean Ah(long paramLong)
+  public static boolean AF(long paramLong)
   {
     AppMethodBeat.i(97512);
-    if (bt.rM(paramLong / 1000L) > 1200L)
+    if (bu.rZ(paramLong / 1000L) > 1200L)
     {
       AppMethodBeat.o(97512);
       return true;
@@ -162,7 +162,7 @@ public final class p
   {
     AppMethodBeat.i(97499);
     p localp = new p();
-    localp.zMC = paramp.zMC;
+    localp.AdJ = paramp.AdJ;
     localp.field_snsId = paramp.field_snsId;
     localp.field_userName = paramp.field_userName;
     localp.field_localFlag = paramp.field_localFlag;
@@ -185,8 +185,8 @@ public final class p
     try
     {
       AppMethodBeat.i(97508);
-      zMM.clear();
-      zMN.clear();
+      AdT.clear();
+      AdU.clear();
       AppMethodBeat.o(97508);
       return;
     }
@@ -197,78 +197,78 @@ public final class p
     }
   }
   
-  public final void Ae(long paramLong)
+  public final void AC(long paramLong)
   {
     AppMethodBeat.i(97500);
     this.field_snsId = paramLong;
     if (paramLong != 0L) {
-      Ag(paramLong);
+      AE(paramLong);
     }
     AppMethodBeat.o(97500);
   }
   
-  public final void Ag(long paramLong)
+  public final void AE(long paramLong)
   {
     AppMethodBeat.i(97506);
-    this.field_stringSeq = q.zw(paramLong);
-    this.field_stringSeq = q.ayd(this.field_stringSeq);
-    ad.d("MicroMsg.SnsInfo", paramLong + " stringSeq " + this.field_stringSeq);
+    this.field_stringSeq = r.zV(paramLong);
+    this.field_stringSeq = r.azu(this.field_stringSeq);
+    ae.d("MicroMsg.SnsInfo", paramLong + " stringSeq " + this.field_stringSeq);
     AppMethodBeat.o(97506);
   }
   
-  public final void QJ(int paramInt)
+  public final void Rq(int paramInt)
   {
     this.field_sourceType |= paramInt;
   }
   
-  public final boolean QM(int paramInt)
+  public final boolean Rt(int paramInt)
   {
     return (this.field_sourceType & paramInt) > 0;
   }
   
-  public final void QN(int paramInt)
+  public final void Ru(int paramInt)
   {
     this.field_sourceType &= (paramInt ^ 0xFFFFFFFF);
   }
   
-  public final a QO(int paramInt)
+  public final a Rv(int paramInt)
   {
     AppMethodBeat.i(97516);
     if (paramInt == 2)
     {
-      locala = dYi();
+      locala = ebM();
       AppMethodBeat.o(97516);
       return locala;
     }
-    a locala = dRK();
+    a locala = dVi();
     AppMethodBeat.o(97516);
     return locala;
   }
   
-  public final boolean azY(String paramString)
+  public final boolean aBp(String paramString)
   {
     AppMethodBeat.i(97511);
-    paramString = h.Gx(paramString);
+    paramString = h.GZ(paramString);
     try
     {
       this.field_content = paramString.toByteArray();
-      this.zMB = (g.getMessageDigest(this.field_content) + g.getMessageDigest(this.field_attrBuf));
+      this.AdI = (g.getMessageDigest(this.field_content) + g.getMessageDigest(this.field_attrBuf));
       AppMethodBeat.o(97511);
       return true;
     }
     catch (Exception paramString)
     {
-      ad.printErrStackTrace("MicroMsg.SnsInfo", paramString, "", new Object[0]);
+      ae.printErrStackTrace("MicroMsg.SnsInfo", paramString, "", new Object[0]);
       AppMethodBeat.o(97511);
     }
     return false;
   }
   
-  public final void bI(byte[] paramArrayOfByte)
+  public final void bL(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(97505);
     this.field_attrBuf = paramArrayOfByte;
-    this.zMB = (g.getMessageDigest(this.field_content) + g.getMessageDigest(this.field_attrBuf));
+    this.AdI = (g.getMessageDigest(this.field_content) + g.getMessageDigest(this.field_attrBuf));
     AppMethodBeat.o(97505);
   }
   
@@ -276,53 +276,91 @@ public final class p
   {
     AppMethodBeat.i(97507);
     super.convertFrom(paramCursor);
-    this.zMC = ((int)this.systemRowid);
+    this.AdJ = ((int)this.systemRowid);
     AppMethodBeat.o(97507);
   }
   
-  public final a dRK()
+  public final a dVi()
   {
     AppMethodBeat.i(97514);
-    if (this.zMP == null) {
-      this.zMP = ag.dUh().zZ(this.field_snsId);
+    if (this.AdW == null) {
+      this.AdW = ah.dXH().Ax(this.field_snsId);
     }
-    if (this.zMP == null)
+    if (this.AdW == null)
     {
       locala = new a(null);
       AppMethodBeat.o(97514);
       return locala;
     }
-    a locala = this.zMP.dRK();
+    a locala = this.AdW.dVi();
     AppMethodBeat.o(97514);
     return locala;
   }
   
-  public final b dRL()
+  /* Error */
+  public final b dVj()
   {
-    AppMethodBeat.i(97513);
-    if (this.zMP == null) {
-      this.zMP = ag.dUh().zZ(this.field_snsId);
-    }
-    if (this.zMP == null)
-    {
-      localb = new b(null);
-      AppMethodBeat.o(97513);
-      return localb;
-    }
-    b localb = this.zMP.dRL();
-    AppMethodBeat.o(97513);
-    return localb;
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: ldc_w 385
+    //   5: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   8: aload_0
+    //   9: getfield 364	com/tencent/mm/plugin/sns/storage/p:AdW	Lcom/tencent/mm/plugin/sns/storage/e;
+    //   12: ifnonnull +17 -> 29
+    //   15: aload_0
+    //   16: invokestatic 370	com/tencent/mm/plugin/sns/model/ah:dXH	()Lcom/tencent/mm/plugin/sns/storage/f;
+    //   19: aload_0
+    //   20: getfield 243	com/tencent/mm/plugin/sns/storage/p:field_snsId	J
+    //   23: invokevirtual 376	com/tencent/mm/plugin/sns/storage/f:Ax	(J)Lcom/tencent/mm/plugin/sns/storage/e;
+    //   26: putfield 364	com/tencent/mm/plugin/sns/storage/p:AdW	Lcom/tencent/mm/plugin/sns/storage/e;
+    //   29: aload_0
+    //   30: getfield 364	com/tencent/mm/plugin/sns/storage/p:AdW	Lcom/tencent/mm/plugin/sns/storage/e;
+    //   33: ifnonnull +22 -> 55
+    //   36: new 387	com/tencent/mm/plugin/sns/storage/b
+    //   39: dup
+    //   40: aconst_null
+    //   41: invokespecial 388	com/tencent/mm/plugin/sns/storage/b:<init>	(Ljava/lang/String;)V
+    //   44: astore_1
+    //   45: ldc_w 385
+    //   48: invokestatic 155	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   51: aload_0
+    //   52: monitorexit
+    //   53: aload_1
+    //   54: areturn
+    //   55: aload_0
+    //   56: getfield 364	com/tencent/mm/plugin/sns/storage/p:AdW	Lcom/tencent/mm/plugin/sns/storage/e;
+    //   59: invokevirtual 390	com/tencent/mm/plugin/sns/storage/e:dVj	()Lcom/tencent/mm/plugin/sns/storage/b;
+    //   62: astore_1
+    //   63: ldc_w 385
+    //   66: invokestatic 155	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   69: goto -18 -> 51
+    //   72: astore_1
+    //   73: aload_0
+    //   74: monitorexit
+    //   75: aload_1
+    //   76: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	77	0	this	p
+    //   44	19	1	localb	b
+    //   72	4	1	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   2	29	72	finally
+    //   29	51	72	finally
+    //   55	69	72	finally
   }
   
-  public final boolean dTN()
+  public final boolean dXn()
   {
     return this.field_snsId == 0L;
   }
   
-  public final boolean dVZ()
+  public final boolean dZA()
   {
     AppMethodBeat.i(97528);
-    if ((dRL() != null) && (dRL().dVZ()))
+    if ((dVj() != null) && (dVj().dZA()))
     {
       AppMethodBeat.o(97528);
       return true;
@@ -331,10 +369,10 @@ public final class p
     return false;
   }
   
-  public final boolean dWa()
+  public final boolean dZB()
   {
     AppMethodBeat.i(97529);
-    if ((dRL() != null) && (dRL().dWa()))
+    if ((dVj() != null) && (dVj().dZB()))
     {
       AppMethodBeat.o(97529);
       return true;
@@ -343,10 +381,10 @@ public final class p
     return false;
   }
   
-  public final boolean dWb()
+  public final boolean dZC()
   {
     AppMethodBeat.i(97530);
-    if ((dRL() != null) && (dRL().dWb()))
+    if ((dVj() != null) && (dVj().dZC()))
     {
       AppMethodBeat.o(97530);
       return true;
@@ -355,25 +393,25 @@ public final class p
     return false;
   }
   
-  public final boolean dWc()
+  public final boolean dZD()
   {
-    AppMethodBeat.i(198125);
-    if ((dRL() != null) && (dRL().dWc()))
+    AppMethodBeat.i(219641);
+    if ((dVj() != null) && (dVj().dZD()))
     {
-      AppMethodBeat.o(198125);
+      AppMethodBeat.o(219641);
       return true;
     }
-    AppMethodBeat.o(198125);
+    AppMethodBeat.o(219641);
     return false;
   }
   
-  public final boolean dWk()
+  public final boolean dZL()
   {
     AppMethodBeat.i(97525);
-    b localb = dRL();
+    b localb = dVj();
     if (localb != null)
     {
-      boolean bool = localb.dWk();
+      boolean bool = localb.dZL();
       AppMethodBeat.o(97525);
       return bool;
     }
@@ -381,232 +419,94 @@ public final class p
     return false;
   }
   
-  public final byo dYD()
+  public final a ebM()
   {
-    AppMethodBeat.i(97497);
-    byo localbyo1;
-    if (this.field_postBuf == null)
-    {
-      localbyo1 = new byo();
-      AppMethodBeat.o(97497);
-      return localbyo1;
+    AppMethodBeat.i(97515);
+    if (this.AdW == null) {
+      this.AdW = ah.dXH().Ax(this.field_snsId);
     }
-    if (this.zMO == null) {
-      this.zMO = g.getMessageDigest(this.field_postBuf);
-    }
-    if (zMN.containsKey(this.zMO))
+    if (this.AdW == null)
     {
-      this.zMQ = ((byo)zMN.get(this.zMO));
-      if (this.zMQ != null)
+      locala = new a(null);
+      AppMethodBeat.o(97515);
+      return locala;
+    }
+    a locala = this.AdW.ebM();
+    AppMethodBeat.o(97515);
+    return locala;
+  }
+  
+  public final TimeLineObject ebP()
+  {
+    AppMethodBeat.i(97509);
+    TimeLineObject localTimeLineObject1;
+    if (this.field_content == null)
+    {
+      localTimeLineObject1 = h.aLJ();
+      AppMethodBeat.o(97509);
+      return localTimeLineObject1;
+    }
+    if (this.AdI == null) {
+      this.AdI = (g.getMessageDigest(this.field_content) + g.getMessageDigest(this.field_attrBuf));
+    }
+    if (AdT.containsKey(this.AdI))
+    {
+      localTimeLineObject1 = (TimeLineObject)AdT.get(this.AdI);
+      if (localTimeLineObject1 != null)
       {
-        localbyo1 = this.zMQ;
-        AppMethodBeat.o(97497);
-        return localbyo1;
+        AppMethodBeat.o(97509);
+        return localTimeLineObject1;
       }
     }
     try
     {
-      this.zMQ = ((byo)new byo().parseFrom(this.field_postBuf));
-      zMN.put(this.zMO, this.zMQ);
-      localbyo1 = this.zMQ;
-      AppMethodBeat.o(97497);
-      return localbyo1;
+      localTimeLineObject1 = (TimeLineObject)new TimeLineObject().parseFrom(this.field_content);
+      AdT.put(this.AdI, localTimeLineObject1);
+      AppMethodBeat.o(97509);
+      return localTimeLineObject1;
     }
     catch (Exception localException)
     {
-      ad.e("MicroMsg.SnsInfo", "error get snsinfo timeline!");
-      byo localbyo2 = new byo();
-      AppMethodBeat.o(97497);
-      return localbyo2;
+      ae.e("MicroMsg.SnsInfo", "error get snsinfo timeline!");
+      TimeLineObject localTimeLineObject2 = h.aLJ();
+      AppMethodBeat.o(97509);
+      return localTimeLineObject2;
     }
   }
   
-  public final void dYE()
+  public final Bundle ebW()
   {
-    this.field_localPrivate |= 0x1;
-  }
-  
-  public final int dYF()
-  {
-    return this.field_localPrivate;
-  }
-  
-  public final boolean dYG()
-  {
-    return (this.field_localFlag & 0x80) > 0;
-  }
-  
-  public final void dYH()
-  {
-    this.field_localFlag |= 0x2;
-  }
-  
-  public final void dYI()
-  {
-    this.field_localFlag &= 0xFFFFFFFD;
-  }
-  
-  public final boolean dYJ()
-  {
-    return (this.field_localFlag & 0x2) > 0;
-  }
-  
-  public final String dYK()
-  {
-    AppMethodBeat.i(97504);
-    if (QM(32))
-    {
-      str = x.bm("ad_table_", this.zMC);
-      AppMethodBeat.o(97504);
-      return str;
+    AppMethodBeat.i(97531);
+    Bundle localBundle = new Bundle();
+    localBundle.putParcelable("values", super.convertTo());
+    localBundle.putInt("localid", this.AdJ);
+    if (ecy() != null) {
+      localBundle.putBundle("adValues", ecy().ebW());
     }
-    String str = x.bm("sns_table_", this.zMC);
-    AppMethodBeat.o(97504);
-    return str;
+    AppMethodBeat.o(97531);
+    return localBundle;
   }
   
-  public final boolean dYL()
-  {
-    return (this.field_localFlag & 0x10) > 0;
-  }
-  
-  public final boolean dYM()
-  {
-    return ((this.field_localFlag & 0x20) > 0) && (this.field_snsId == 0L);
-  }
-  
-  public final void dYN()
-  {
-    this.field_localFlag &= 0xFFFFFFDF;
-  }
-  
-  public final void dYO()
-  {
-    this.field_localFlag |= 0x20;
-  }
-  
-  public final String dYP()
-  {
-    AppMethodBeat.i(97517);
-    Object localObject = dRK();
-    if (localObject == null)
-    {
-      AppMethodBeat.o(97517);
-      return "";
-    }
-    localObject = ((a)localObject).zuP;
-    AppMethodBeat.o(97517);
-    return localObject;
-  }
-  
-  public final String dYQ()
-  {
-    AppMethodBeat.i(97518);
-    Object localObject = dRK();
-    if (localObject == null)
-    {
-      AppMethodBeat.o(97518);
-      return "";
-    }
-    localObject = ((a)localObject).zuO;
-    AppMethodBeat.o(97518);
-    return localObject;
-  }
-  
-  public final String dYR()
-  {
-    AppMethodBeat.i(97519);
-    Object localObject = dRL();
-    if (localObject != null)
-    {
-      localObject = ((b)localObject).zuE;
-      AppMethodBeat.o(97519);
-      return localObject;
-    }
-    AppMethodBeat.o(97519);
-    return "";
-  }
-  
-  public final String dYS()
-  {
-    AppMethodBeat.i(97520);
-    Object localObject = dRK();
-    if (localObject != null)
-    {
-      localObject = ((a)localObject).zuE;
-      AppMethodBeat.o(97520);
-      return localObject;
-    }
-    AppMethodBeat.o(97520);
-    return "";
-  }
-  
-  public final String dYT()
-  {
-    AppMethodBeat.i(97521);
-    Object localObject = dRK();
-    if (localObject != null)
-    {
-      localObject = ((a)localObject).dFy;
-      AppMethodBeat.o(97521);
-      return localObject;
-    }
-    AppMethodBeat.o(97521);
-    return "";
-  }
-  
-  public final e dYU()
-  {
-    AppMethodBeat.i(97522);
-    if (this.zMP == null) {
-      this.zMP = ag.dUh().zZ(this.field_snsId);
-    }
-    if (this.zMP != null)
-    {
-      this.zMP.field_createTime = this.field_createTime;
-      this.zMP.field_userName = this.field_userName;
-      this.zMP.field_likeFlag = this.field_likeFlag;
-      this.zMP.field_attrBuf = this.field_attrBuf;
-    }
-    e locale = this.zMP;
-    AppMethodBeat.o(97522);
-    return locale;
-  }
-  
-  public final int dYV()
-  {
-    AppMethodBeat.i(97524);
-    b localb = dRL();
-    if (localb != null)
-    {
-      int i = localb.zvR;
-      AppMethodBeat.o(97524);
-      return i;
-    }
-    AppMethodBeat.o(97524);
-    return 0;
-  }
-  
-  public final int dYW()
+  public final int ecA()
   {
     AppMethodBeat.i(97526);
-    if (QM(32))
+    if (Rt(32))
     {
-      b localb = dRL();
-      TimeLineObject localTimeLineObject = dYl();
-      if (localb.dVY())
+      b localb = dVj();
+      TimeLineObject localTimeLineObject = ebP();
+      if (localb.dZz())
       {
         AppMethodBeat.o(97526);
         return 3;
       }
-      if ((localTimeLineObject != null) && (localTimeLineObject.HAT.GaP == 27))
+      if ((localTimeLineObject != null) && (localTimeLineObject.HUG.Gtw == 27))
       {
         AppMethodBeat.o(97526);
         return 6;
       }
-      if ((localb.dVZ()) || (localb.dWa()))
+      if ((localb.dZA()) || (localb.dZB()))
       {
-        if ((localTimeLineObject != null) && (localTimeLineObject.HAT.GaP == 15) && (localTimeLineObject.HBa != 1))
+        if ((localTimeLineObject != null) && (localTimeLineObject.HUG.Gtw == 15) && (localTimeLineObject.HUN != 1))
         {
           AppMethodBeat.o(97526);
           return 5;
@@ -626,10 +526,10 @@ public final class p
     return -1;
   }
   
-  public final boolean dYX()
+  public final boolean ecB()
   {
     AppMethodBeat.i(97527);
-    if ((dYl() != null) && (dYl().HAT.GaP == 27))
+    if ((ebP() != null) && (ebP().HUG.Gtw == 27))
     {
       AppMethodBeat.o(97527);
       return true;
@@ -638,72 +538,224 @@ public final class p
     return false;
   }
   
-  public final a dYi()
+  public final boolean ecC()
   {
-    AppMethodBeat.i(97515);
-    if (this.zMP == null) {
-      this.zMP = ag.dUh().zZ(this.field_snsId);
-    }
-    if (this.zMP == null)
+    AppMethodBeat.i(219640);
+    b localb = dVj();
+    a locala = dVi();
+    if ((Rt(32)) && (localb != null) && (localb.zOa != null) && (locala != null) && (locala.zLR == 9))
     {
-      locala = new a(null);
-      AppMethodBeat.o(97515);
-      return locala;
+      AppMethodBeat.o(219640);
+      return true;
     }
-    a locala = this.zMP.dYi();
-    AppMethodBeat.o(97515);
-    return locala;
+    AppMethodBeat.o(219640);
+    return false;
   }
   
-  public final TimeLineObject dYl()
+  public final bzi ech()
   {
-    AppMethodBeat.i(97509);
-    TimeLineObject localTimeLineObject1;
-    if (this.field_content == null)
+    AppMethodBeat.i(97497);
+    bzi localbzi1;
+    if (this.field_postBuf == null)
     {
-      localTimeLineObject1 = h.aLm();
-      AppMethodBeat.o(97509);
-      return localTimeLineObject1;
+      localbzi1 = new bzi();
+      AppMethodBeat.o(97497);
+      return localbzi1;
     }
-    if (this.zMB == null) {
-      this.zMB = (g.getMessageDigest(this.field_content) + g.getMessageDigest(this.field_attrBuf));
+    if (this.AdV == null) {
+      this.AdV = g.getMessageDigest(this.field_postBuf);
     }
-    if (zMM.containsKey(this.zMB))
+    if (AdU.containsKey(this.AdV))
     {
-      localTimeLineObject1 = (TimeLineObject)zMM.get(this.zMB);
-      if (localTimeLineObject1 != null)
+      this.AdX = ((bzi)AdU.get(this.AdV));
+      if (this.AdX != null)
       {
-        AppMethodBeat.o(97509);
-        return localTimeLineObject1;
+        localbzi1 = this.AdX;
+        AppMethodBeat.o(97497);
+        return localbzi1;
       }
     }
     try
     {
-      localTimeLineObject1 = (TimeLineObject)new TimeLineObject().parseFrom(this.field_content);
-      zMM.put(this.zMB, localTimeLineObject1);
-      AppMethodBeat.o(97509);
-      return localTimeLineObject1;
+      this.AdX = ((bzi)new bzi().parseFrom(this.field_postBuf));
+      AdU.put(this.AdV, this.AdX);
+      localbzi1 = this.AdX;
+      AppMethodBeat.o(97497);
+      return localbzi1;
     }
     catch (Exception localException)
     {
-      ad.e("MicroMsg.SnsInfo", "error get snsinfo timeline!");
-      TimeLineObject localTimeLineObject2 = h.aLm();
-      AppMethodBeat.o(97509);
-      return localTimeLineObject2;
+      ae.e("MicroMsg.SnsInfo", "error get snsinfo timeline!");
+      bzi localbzi2 = new bzi();
+      AppMethodBeat.o(97497);
+      return localbzi2;
     }
   }
   
-  public final Bundle dYs()
+  public final void eci()
   {
-    AppMethodBeat.i(97531);
-    Bundle localBundle = new Bundle();
-    localBundle.putParcelable("values", super.convertTo());
-    localBundle.putInt("localid", this.zMC);
-    if (dYU() != null) {
-      localBundle.putBundle("adValues", dYU().dYs());
+    this.field_localPrivate |= 0x1;
+  }
+  
+  public final int ecj()
+  {
+    return this.field_localPrivate;
+  }
+  
+  public final boolean eck()
+  {
+    return (this.field_localFlag & 0x80) > 0;
+  }
+  
+  public final void ecl()
+  {
+    this.field_localFlag |= 0x2;
+  }
+  
+  public final void ecm()
+  {
+    this.field_localFlag &= 0xFFFFFFFD;
+  }
+  
+  public final boolean ecn()
+  {
+    return (this.field_localFlag & 0x2) > 0;
+  }
+  
+  public final String eco()
+  {
+    AppMethodBeat.i(97504);
+    if (Rt(32))
+    {
+      str = x.bn("ad_table_", this.AdJ);
+      AppMethodBeat.o(97504);
+      return str;
     }
-    AppMethodBeat.o(97531);
-    return localBundle;
+    String str = x.bn("sns_table_", this.AdJ);
+    AppMethodBeat.o(97504);
+    return str;
+  }
+  
+  public final boolean ecp()
+  {
+    return (this.field_localFlag & 0x10) > 0;
+  }
+  
+  public final boolean ecq()
+  {
+    return ((this.field_localFlag & 0x20) > 0) && (this.field_snsId == 0L);
+  }
+  
+  public final void ecr()
+  {
+    this.field_localFlag &= 0xFFFFFFDF;
+  }
+  
+  public final void ecs()
+  {
+    this.field_localFlag |= 0x20;
+  }
+  
+  public final String ect()
+  {
+    AppMethodBeat.i(97517);
+    Object localObject = dVi();
+    if (localObject == null)
+    {
+      AppMethodBeat.o(97517);
+      return "";
+    }
+    localObject = ((a)localObject).zMk;
+    AppMethodBeat.o(97517);
+    return localObject;
+  }
+  
+  public final String ecu()
+  {
+    AppMethodBeat.i(97518);
+    Object localObject = dVi();
+    if (localObject == null)
+    {
+      AppMethodBeat.o(97518);
+      return "";
+    }
+    localObject = ((a)localObject).zMj;
+    AppMethodBeat.o(97518);
+    return localObject;
+  }
+  
+  public final String ecv()
+  {
+    AppMethodBeat.i(97519);
+    Object localObject = dVj();
+    if (localObject != null)
+    {
+      localObject = ((b)localObject).zLV;
+      AppMethodBeat.o(97519);
+      return localObject;
+    }
+    AppMethodBeat.o(97519);
+    return "";
+  }
+  
+  public final String ecw()
+  {
+    AppMethodBeat.i(97520);
+    Object localObject = dVi();
+    if (localObject != null)
+    {
+      localObject = ((a)localObject).zLV;
+      AppMethodBeat.o(97520);
+      return localObject;
+    }
+    AppMethodBeat.o(97520);
+    return "";
+  }
+  
+  public final String ecx()
+  {
+    AppMethodBeat.i(97521);
+    Object localObject = dVi();
+    if (localObject != null)
+    {
+      localObject = ((a)localObject).dGD;
+      AppMethodBeat.o(97521);
+      return localObject;
+    }
+    AppMethodBeat.o(97521);
+    return "";
+  }
+  
+  public final e ecy()
+  {
+    AppMethodBeat.i(97522);
+    if (this.AdW == null) {
+      this.AdW = ah.dXH().Ax(this.field_snsId);
+    }
+    if (this.AdW != null)
+    {
+      this.AdW.field_createTime = this.field_createTime;
+      this.AdW.field_userName = this.field_userName;
+      this.AdW.field_likeFlag = this.field_likeFlag;
+      this.AdW.field_attrBuf = this.field_attrBuf;
+    }
+    e locale = this.AdW;
+    AppMethodBeat.o(97522);
+    return locale;
+  }
+  
+  public final int ecz()
+  {
+    AppMethodBeat.i(97524);
+    b localb = dVj();
+    if (localb != null)
+    {
+      int i = localb.zNm;
+      AppMethodBeat.o(97524);
+      return i;
+    }
+    AppMethodBeat.o(97524);
+    return 0;
   }
   
   public final void f(TimeLineObject paramTimeLineObject)
@@ -712,7 +764,7 @@ public final class p
     try
     {
       this.field_content = paramTimeLineObject.toByteArray();
-      this.zMB = (g.getMessageDigest(this.field_content) + g.getMessageDigest(this.field_attrBuf));
+      this.AdI = (g.getMessageDigest(this.field_content) + g.getMessageDigest(this.field_attrBuf));
       AppMethodBeat.o(97510);
       return;
     }
@@ -720,7 +772,7 @@ public final class p
     {
       for (;;)
       {
-        ad.printErrStackTrace("MicroMsg.SnsInfo", paramTimeLineObject, "", new Object[0]);
+        ae.printErrStackTrace("MicroMsg.SnsInfo", paramTimeLineObject, "", new Object[0]);
       }
     }
   }
@@ -738,13 +790,13 @@ public final class p
   public final String getSnsId()
   {
     AppMethodBeat.i(97501);
-    if (QM(32))
+    if (Rt(32))
     {
-      str = x.bm("ad_table_", this.field_snsId);
+      str = x.bn("ad_table_", this.field_snsId);
       AppMethodBeat.o(97501);
       return str;
     }
-    String str = x.bm("sns_table_", this.field_snsId);
+    String str = x.bn("sns_table_", this.field_snsId);
     AppMethodBeat.o(97501);
     return str;
   }
@@ -765,21 +817,21 @@ public final class p
     if ((paramInt - this.field_createTime < 180) && (paramInt - this.field_createTime >= 0))
     {
       if (this.field_head == 0) {
-        this.field_head = Af(this.field_createTime);
+        this.field_head = AD(this.field_createTime);
       }
       AppMethodBeat.o(97503);
       return;
     }
     this.field_createTime = paramInt;
-    this.field_head = Af(paramInt);
+    this.field_head = AD(paramInt);
     AppMethodBeat.o(97503);
   }
   
   public final boolean vx()
   {
-    AppMethodBeat.i(221348);
-    boolean bool = QM(32);
-    AppMethodBeat.o(221348);
+    AppMethodBeat.i(224106);
+    boolean bool = Rt(32);
+    AppMethodBeat.o(224106);
     return bool;
   }
 }

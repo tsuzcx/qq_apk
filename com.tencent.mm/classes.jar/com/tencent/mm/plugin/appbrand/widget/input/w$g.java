@@ -11,13 +11,13 @@ final class w$g
   extends FrameLayout
   implements w.a
 {
-  private boolean nfF;
+  private boolean nkN;
   
   public w$g(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(136514);
-    this.nfF = false;
+    this.nkN = false;
     LayoutInflater.from(paramContext).inflate(2131493108, this);
     AppMethodBeat.o(136514);
   }
@@ -25,7 +25,7 @@ final class w$g
   protected final void onMeasure(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(136516);
-    if ((this.nfF) || (!isShown()))
+    if ((this.nkN) || (!isShown()))
     {
       paramInt1 = View.MeasureSpec.makeMeasureSpec(0, 1073741824);
       paramInt2 = View.MeasureSpec.makeMeasureSpec(0, 1073741824);
@@ -37,10 +37,10 @@ final class w$g
   public final void setIsHide(boolean paramBoolean)
   {
     AppMethodBeat.i(136515);
-    if (paramBoolean != this.nfF) {}
+    if (paramBoolean != this.nkN) {}
     for (int i = 1;; i = 0)
     {
-      this.nfF = paramBoolean;
+      this.nkN = paramBoolean;
       if ((i != 0) && ((Build.VERSION.SDK_INT < 18) || (!isInLayout()))) {
         requestLayout();
       }

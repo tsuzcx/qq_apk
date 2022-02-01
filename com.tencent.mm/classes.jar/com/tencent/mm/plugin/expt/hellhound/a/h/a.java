@@ -5,43 +5,43 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.c;
 import com.tencent.mm.plugin.expt.hellhound.core.b.c.d;
 import com.tencent.mm.plugin.expt.hellhound.core.b.c.e;
-import com.tencent.mm.protocal.protobuf.dwc;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.dwx;
+import com.tencent.mm.sdk.platformtools.ae;
 import d.l;
 import d.v;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/expt/hellhound/ext/submenu/SubMenuMonitor;", "", "()V", "Companion", "SubMenuListener", "plugin-expt_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/expt/hellhound/ext/submenu/SubMenuMonitor;", "", "()V", "Companion", "SubMenuListener", "plugin-expt_release"})
 public final class a
 {
-  private static boolean qZP;
-  private static final b qZQ;
-  private static boolean qZR;
-  public static final a.a qZS;
+  private static boolean rhV;
+  private static final b rhW;
+  private static boolean rhX;
+  public static final a.a rhY;
   
   static
   {
     AppMethodBeat.i(169403);
-    qZS = new a.a((byte)0);
-    qZQ = new b();
+    rhY = new a.a((byte)0);
+    rhW = new b();
     AppMethodBeat.o(169403);
   }
   
-  public static final void coL()
+  public static final void cqn()
   {
     AppMethodBeat.i(169404);
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(Pair.create("processOnItemClick", "(II)V"));
     HashMap localHashMap = new HashMap();
     ((Map)localHashMap).put("com/tencent/mm/ui/PlusSubMenuHelper", localArrayList);
-    com.tencent.mm.hellhoundlib.a.aho();
-    com.tencent.mm.hellhoundlib.a.a((Map)localHashMap, (c)qZQ);
+    com.tencent.mm.hellhoundlib.a.ahD();
+    com.tencent.mm.hellhoundlib.a.a((Map)localHashMap, (c)rhW);
     AppMethodBeat.o(169404);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/expt/hellhound/ext/submenu/SubMenuMonitor$SubMenuListener;", "Lcom/tencent/mm/hellhoundlib/method/IHellMethodMonitorCallback;", "()V", "runOnEnter", "", "className", "", "methodName", "methodDec", "caller", "", "args", "", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V", "runOnExit", "retVal", "viewCallback", "id", "", "plugin-expt_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/expt/hellhound/ext/submenu/SubMenuMonitor$SubMenuListener;", "Lcom/tencent/mm/hellhoundlib/method/IHellMethodMonitorCallback;", "()V", "runOnEnter", "", "className", "", "methodName", "methodDec", "caller", "", "args", "", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V", "runOnExit", "retVal", "viewCallback", "id", "", "plugin-expt_release"})
   static final class b
     implements c
   {
@@ -70,12 +70,12 @@ public final class a
         throw paramString1;
       }
       i = ((Integer)paramString1).intValue();
-      paramString1 = a.qZS;
+      paramString1 = a.rhY;
       if (10 == i)
       {
         bool1 = true;
         a.lg(bool1);
-        paramString1 = a.qZS;
+        paramString1 = a.rhY;
         if (2147483647 != i) {
           break label256;
         }
@@ -84,16 +84,16 @@ public final class a
       for (boolean bool1 = bool2;; bool1 = false)
       {
         a.lh(bool1);
-        paramString1 = new dwc();
+        paramString1 = new dwx();
         paramString1.id = String.valueOf(i);
         paramString1.timestamp = System.currentTimeMillis();
-        paramString1.HIB = paramString1.id;
+        paramString1.Icn = paramString1.id;
         paramString1.typeName = "MMPopupWindow$PopupViewContainer";
-        paramString1.HIC = "MMPopupWindow$PopupViewContainer";
-        paramString1.dtK = d.qSq.value;
+        paramString1.Ico = "MMPopupWindow$PopupViewContainer";
+        paramString1.duP = d.rao.value;
         paramString1.type = 0;
-        ad.i("HABBYGE-MALI.SubMenuMonitor", "SubMenuMonitor, viewCallback:\nid=" + paramString1.id + '\n' + "timestamp=" + paramString1.timestamp + '\n' + "eventId=" + paramString1.dtK);
-        paramString2 = e.qSF;
+        ae.i("HABBYGE-MALI.SubMenuMonitor", "SubMenuMonitor, viewCallback:\nid=" + paramString1.id + '\n' + "timestamp=" + paramString1.timestamp + '\n' + "eventId=" + paramString1.duP);
+        paramString2 = e.raD;
         e.a(paramString1);
         AppMethodBeat.o(184286);
         return;
@@ -105,7 +105,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.hellhound.a.h.a
  * JD-Core Version:    0.7.0.1
  */

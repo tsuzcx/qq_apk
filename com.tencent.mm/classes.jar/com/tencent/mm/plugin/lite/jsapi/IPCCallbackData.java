@@ -11,37 +11,37 @@ class IPCCallbackData
   implements Parcelable
 {
   public static final Parcelable.Creator<IPCCallbackData> CREATOR;
-  public boolean uYv;
-  public String uYw;
-  public String uYx;
+  public boolean vkk;
+  public String vkl;
+  public String vkm;
   
   static
   {
-    AppMethodBeat.i(214613);
+    AppMethodBeat.i(212366);
     CREATOR = new Parcelable.Creator() {};
-    AppMethodBeat.o(214613);
+    AppMethodBeat.o(212366);
   }
   
   public IPCCallbackData()
   {
-    this.uYv = false;
-    this.uYw = null;
-    this.uYx = null;
+    this.vkk = false;
+    this.vkl = null;
+    this.vkm = null;
   }
   
   public IPCCallbackData(Parcel paramParcel)
   {
-    AppMethodBeat.i(214610);
-    this.uYv = false;
-    this.uYw = null;
-    this.uYx = null;
+    AppMethodBeat.i(212363);
+    this.vkk = false;
+    this.vkl = null;
+    this.vkm = null;
     if (paramParcel.readInt() == 1) {}
     for (;;)
     {
-      this.uYv = bool;
-      this.uYw = paramParcel.readString();
-      this.uYx = paramParcel.readString();
-      AppMethodBeat.o(214610);
+      this.vkk = bool;
+      this.vkl = paramParcel.readString();
+      this.vkm = paramParcel.readString();
+      AppMethodBeat.o(212363);
       return;
       bool = false;
     }
@@ -52,37 +52,37 @@ class IPCCallbackData
     return 0;
   }
   
-  public final JSONObject dfD()
+  public final JSONObject dix()
   {
-    AppMethodBeat.i(214612);
-    if (this.uYx == null)
+    AppMethodBeat.i(212365);
+    if (this.vkm == null)
     {
-      AppMethodBeat.o(214612);
+      AppMethodBeat.o(212365);
       return null;
     }
     try
     {
-      JSONObject localJSONObject = new JSONObject(this.uYx);
-      AppMethodBeat.o(214612);
+      JSONObject localJSONObject = new JSONObject(this.vkm);
+      AppMethodBeat.o(212365);
       return localJSONObject;
     }
     catch (JSONException localJSONException)
     {
-      AppMethodBeat.o(214612);
+      AppMethodBeat.o(212365);
     }
     return null;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(214611);
-    if (this.uYv) {}
+    AppMethodBeat.i(212364);
+    if (this.vkk) {}
     for (paramInt = 1;; paramInt = 0)
     {
       paramParcel.writeInt(paramInt);
-      paramParcel.writeString(this.uYw);
-      paramParcel.writeString(this.uYx);
-      AppMethodBeat.o(214611);
+      paramParcel.writeString(this.vkl);
+      paramParcel.writeString(this.vkm);
+      AppMethodBeat.o(212364);
       return;
     }
   }

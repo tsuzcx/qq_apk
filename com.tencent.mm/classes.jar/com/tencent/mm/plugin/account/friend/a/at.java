@@ -4,18 +4,18 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.e.n;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.storagebase.h;
 
 public final class at
   extends n
 {
   public static final String[] SQL_CREATE = { "CREATE TABLE IF NOT EXISTS qqlist ( qq long  PRIMARY KEY , wexinstatus int  , groupid int  , username text  , nickname text  , pyinitial text  , quanpin text  , qqnickname text  , qqpyinitial text  , qqquanpin text  , qqremark text  , qqremarkpyinitial text  , qqremarkquanpin text  , reserved1 text  , reserved2 text  , reserved3 int  , reserved4 int  ) ", "CREATE INDEX IF NOT EXISTS groupid_index ON qqlist ( groupid ) ", "CREATE INDEX IF NOT EXISTS qq_index ON qqlist ( qq ) " };
-  public final h hHS;
+  public final h hKK;
   
   public at(h paramh)
   {
-    this.hHS = paramh;
+    this.hKK = paramh;
   }
   
   public final Cursor F(int paramInt, boolean paramBoolean)
@@ -31,7 +31,7 @@ public final class at
     }
     for (;;)
     {
-      localObject = this.hHS.a((String)localObject, arrayOfString, 0);
+      localObject = this.hKK.a((String)localObject, arrayOfString, 0);
       AppMethodBeat.o(131164);
       return localObject;
       localObject = "select qqlist.qq,qqlist.wexinstatus,qqlist.groupid,qqlist.username,qqlist.nickname,qqlist.pyinitial,qqlist.quanpin,qqlist.qqnickname,qqlist.qqpyinitial,qqlist.qqquanpin,qqlist.qqremark,qqlist.qqremarkpyinitial,qqlist.qqremarkquanpin,qqlist.reserved1,qqlist.reserved2,qqlist.reserved3,qqlist.reserved4 from qqlist  where qqlist.groupid=? and (wexinstatus=? or wexinstatus=?) order by reserved3";
@@ -42,12 +42,12 @@ public final class at
     }
   }
   
-  public final as JJ(String paramString)
+  public final as Ki(String paramString)
   {
     Object localObject = null;
     AppMethodBeat.i(131167);
     paramString = "select qqlist.qq,qqlist.wexinstatus,qqlist.groupid,qqlist.username,qqlist.nickname,qqlist.pyinitial,qqlist.quanpin,qqlist.qqnickname,qqlist.qqpyinitial,qqlist.qqquanpin,qqlist.qqremark,qqlist.qqremarkpyinitial,qqlist.qqremarkquanpin,qqlist.reserved1,qqlist.reserved2,qqlist.reserved3,qqlist.reserved4 from qqlist  where qqlist.username = \"" + paramString + "\"";
-    Cursor localCursor = this.hHS.a(paramString, null, 2);
+    Cursor localCursor = this.hKK.a(paramString, null, 2);
     if (localCursor == null)
     {
       AppMethodBeat.o(131167);
@@ -68,9 +68,9 @@ public final class at
   {
     int i = 0;
     AppMethodBeat.i(131168);
-    paramas = paramas.aTk();
+    paramas = paramas.aTJ();
     if (paramas.size() > 0) {
-      i = this.hHS.update("qqlist", paramas, "qq=?", new String[] { String.valueOf(paramLong) });
+      i = this.hKK.update("qqlist", paramas, "qq=?", new String[] { String.valueOf(paramLong) });
     }
     if (i > 0) {
       b(3, this, String.valueOf(paramLong));
@@ -87,12 +87,12 @@ public final class at
       AppMethodBeat.o(131169);
       return false;
     }
-    ad.d("MicroMsg.QQListStorage", "insert: name:" + paramas.aTl());
-    paramas.dDp = -1;
-    ContentValues localContentValues = paramas.aTk();
-    if ((int)this.hHS.a("qqlist", "qq", localContentValues) != -1)
+    ae.d("MicroMsg.QQListStorage", "insert: name:" + paramas.aTK());
+    paramas.dEu = -1;
+    ContentValues localContentValues = paramas.aTJ();
+    if ((int)this.hKK.a("qqlist", "qq", localContentValues) != -1)
     {
-      b(2, this, paramas.jeR);
+      b(2, this, paramas.jhK);
       AppMethodBeat.o(131169);
       return true;
     }
@@ -100,15 +100,15 @@ public final class at
     return false;
   }
   
-  public final boolean aSH()
+  public final boolean aTg()
   {
     AppMethodBeat.i(131170);
-    if ((this.hHS == null) || (this.hHS.fmj()))
+    if ((this.hKK == null) || (this.hKK.fqe()))
     {
-      if (this.hHS == null) {}
-      for (Object localObject = "null";; localObject = Boolean.valueOf(this.hHS.fmj()))
+      if (this.hKK == null) {}
+      for (Object localObject = "null";; localObject = Boolean.valueOf(this.hKK.fqe()))
       {
-        ad.w("MicroMsg.QQListStorage", "shouldProcessEvent db is close :%s", new Object[] { localObject });
+        ae.w("MicroMsg.QQListStorage", "shouldProcessEvent db is close :%s", new Object[] { localObject });
         AppMethodBeat.o(131170);
         return false;
       }
@@ -120,7 +120,7 @@ public final class at
   public final Cursor b(int paramInt, String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(131165);
-    ad.d("MicroMsg.QQListStorage", "getByGroupID: GroupID:" + paramInt + ", searchby:" + paramString);
+    ae.d("MicroMsg.QQListStorage", "getByGroupID: GroupID:" + paramInt + ", searchby:" + paramString);
     StringBuilder localStringBuilder = new StringBuilder();
     if (paramBoolean) {
       localStringBuilder.append("select qqlist.qq,qqlist.wexinstatus,qqlist.groupid,qqlist.username,qqlist.nickname,qqlist.pyinitial,qqlist.quanpin,qqlist.qqnickname,qqlist.qqpyinitial,qqlist.qqquanpin,qqlist.qqremark,qqlist.qqremarkpyinitial,qqlist.qqremarkquanpin,qqlist.reserved1,qqlist.reserved2,qqlist.reserved3,qqlist.reserved4 from qqlist  where qqlist.groupid = \"" + paramInt + "\" and ( ");
@@ -137,14 +137,14 @@ public final class at
       localStringBuilder.append("qqlist.qqquanpin like '%" + paramString + "%' or ");
       localStringBuilder.append("qqlist.qqremark like '%" + paramString + "%' )");
       localStringBuilder.append(" order by reserved3");
-      paramString = this.hHS.a(localStringBuilder.toString(), null, 0);
+      paramString = this.hKK.a(localStringBuilder.toString(), null, 0);
       AppMethodBeat.o(131165);
       return paramString;
       localStringBuilder.append("select qqlist.qq,qqlist.wexinstatus,qqlist.groupid,qqlist.username,qqlist.nickname,qqlist.pyinitial,qqlist.quanpin,qqlist.qqnickname,qqlist.qqpyinitial,qqlist.qqquanpin,qqlist.qqremark,qqlist.qqremarkpyinitial,qqlist.qqremarkquanpin,qqlist.reserved1,qqlist.reserved2,qqlist.reserved3,qqlist.reserved4 from qqlist  where qqlist.groupid = \"" + paramInt + "\" and (wexinstatus =\"1\" or wexinstatus =\"2\") and ( ");
     }
   }
   
-  public final boolean rq(int paramInt)
+  public final boolean rt(int paramInt)
   {
     bool3 = false;
     bool2 = false;
@@ -153,7 +153,7 @@ public final class at
     localObject1 = null;
     try
     {
-      Cursor localCursor = this.hHS.a("select reserved3 from qqlist where groupid=? and reserved3=?  limit 1", new String[] { String.valueOf(paramInt), "0" }, 2);
+      Cursor localCursor = this.hKK.a("select reserved3 from qqlist where groupid=? and reserved3=?  limit 1", new String[] { String.valueOf(paramInt), "0" }, 2);
       boolean bool1 = bool2;
       if (localCursor != null)
       {
@@ -177,7 +177,7 @@ public final class at
       for (;;)
       {
         localObject3 = localObject1;
-        ad.e("MicroMsg.QQListStorage", "[cpan] check qq list show head faild.:%s", new Object[] { localException.toString() });
+        ae.e("MicroMsg.QQListStorage", "[cpan] check qq list show head faild.:%s", new Object[] { localException.toString() });
         bool2 = bool3;
         if (localObject1 != null)
         {
@@ -198,12 +198,12 @@ public final class at
     return bool2;
   }
   
-  public final as sB(long paramLong)
+  public final as sO(long paramLong)
   {
     as localas = null;
     AppMethodBeat.i(131166);
     Object localObject = "select qqlist.qq,qqlist.wexinstatus,qqlist.groupid,qqlist.username,qqlist.nickname,qqlist.pyinitial,qqlist.quanpin,qqlist.qqnickname,qqlist.qqpyinitial,qqlist.qqquanpin,qqlist.qqremark,qqlist.qqremarkpyinitial,qqlist.qqremarkquanpin,qqlist.reserved1,qqlist.reserved2,qqlist.reserved3,qqlist.reserved4 from qqlist  where qqlist.qq = \"" + paramLong + "\"";
-    localObject = this.hHS.a((String)localObject, null, 2);
+    localObject = this.hKK.a((String)localObject, null, 2);
     if (localObject == null)
     {
       AppMethodBeat.o(131166);

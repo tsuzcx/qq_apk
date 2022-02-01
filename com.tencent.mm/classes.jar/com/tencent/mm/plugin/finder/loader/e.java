@@ -1,50 +1,50 @@
 package com.tencent.mm.plugin.finder.loader;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.aj;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/loader/FinderCoverImage;", "Lcom/tencent/mm/plugin/finder/loader/FinderLoaderData;", "url", "", "(Ljava/lang/String;)V", "uniqueValue", "getDecodeKey", "getMediaType", "Lcom/tencent/mm/plugin/finder/storage/FinderMediaType;", "getPath", "getThumbUrl", "getThumbUrlToken", "getUrl", "getUrlToken", "getUsername", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/loader/FinderCoverImage;", "Lcom/tencent/mm/plugin/finder/loader/FinderLoaderData;", "url", "", "(Ljava/lang/String;)V", "uniqueValue", "getDecodeKey", "getMediaType", "Lcom/tencent/mm/plugin/finder/storage/FinderMediaType;", "getPath", "getThumbUrl", "getThumbUrlToken", "getUrl", "getUrlToken", "getUsername", "plugin-finder_release"})
 public final class e
   implements k
 {
-  public final String sis;
+  public final String srn;
   private final String url;
   
   public e(String paramString)
   {
     AppMethodBeat.i(166310);
     this.url = paramString;
-    this.sis = ("finder_cover_" + ai.ee(this.url));
+    this.srn = ("finder_cover_" + aj.ej(this.url));
     AppMethodBeat.o(166310);
   }
   
-  public final String aeA()
+  public final String aeM()
   {
-    return this.sis;
+    return this.srn;
   }
   
-  public final String akW()
+  public final String all()
   {
     return this.url;
   }
   
-  public final String cCA()
+  public final com.tencent.mm.plugin.finder.storage.r cEj()
+  {
+    return com.tencent.mm.plugin.finder.storage.r.sJu;
+  }
+  
+  public final String cEk()
   {
     return "";
   }
   
-  public final com.tencent.mm.plugin.finder.storage.r cCx()
-  {
-    return com.tencent.mm.plugin.finder.storage.r.syD;
-  }
-  
-  public final String cCy()
+  public final String cEl()
   {
     return "";
   }
   
-  public final String cCz()
+  public final String cEm()
   {
     return "";
   }
@@ -52,7 +52,7 @@ public final class e
   public final String getPath()
   {
     AppMethodBeat.i(166309);
-    Object localObject = com.tencent.mm.plugin.finder.utils.r.sNc;
+    Object localObject = com.tencent.mm.plugin.finder.utils.r.sYn;
     localObject = com.tencent.mm.plugin.finder.utils.r.a(this);
     AppMethodBeat.o(166309);
     return localObject;

@@ -14,14 +14,18 @@ public abstract class q
   static
   {
     bTU = new int[] { 1, 1, 1, 1, 1, 1 };
-    bTY = new int[][] { { 3, 2, 1, 1 }, { 2, 2, 2, 1 }, { 2, 1, 2, 2 }, { 1, 4, 1, 1 }, { 1, 1, 3, 2 }, { 1, 2, 3, 1 }, { 1, 1, 1, 4 }, { 1, 3, 1, 2 }, { 1, 2, 1, 3 }, { 3, 1, 1, 2 } };
+    int[] arrayOfInt1 = { 1, 1, 3, 2 };
+    int[] arrayOfInt2 = { 1, 1, 1, 4 };
+    int[] arrayOfInt3 = { 1, 3, 1, 2 };
+    int[] arrayOfInt4 = { 1, 2, 1, 3 };
+    bTY = new int[][] { { 3, 2, 1, 1 }, { 2, 2, 2, 1 }, { 2, 1, 2, 2 }, { 1, 4, 1, 1 }, arrayOfInt1, { 1, 2, 3, 1 }, arrayOfInt2, arrayOfInt3, arrayOfInt4, { 3, 1, 1, 2 } };
     bTZ = new int[20][];
     System.arraycopy(bTY, 0, bTZ, 0, 10);
     int i = 10;
     while (i < 20)
     {
-      int[] arrayOfInt1 = bTY[(i - 10)];
-      int[] arrayOfInt2 = new int[arrayOfInt1.length];
+      arrayOfInt1 = bTY[(i - 10)];
+      arrayOfInt2 = new int[arrayOfInt1.length];
       int j = 0;
       while (j < arrayOfInt1.length)
       {

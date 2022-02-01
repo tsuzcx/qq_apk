@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.exdevice.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.drc;
-import com.tencent.mm.protocal.protobuf.drd;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.drz;
+import com.tencent.mm.protocal.protobuf.dsa;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class m
   extends n
@@ -19,7 +19,7 @@ public final class m
 {
   private f callback;
   public String coverUrl;
-  public String qeP;
+  public String qlu;
   private b rr;
   
   public m(String paramString1, String paramString2)
@@ -28,18 +28,18 @@ public final class m
     this.callback = null;
     this.rr = null;
     this.coverUrl = paramString1;
-    this.qeP = paramString2;
+    this.qlu = paramString2;
     Object localObject = new b.a();
-    ((b.a)localObject).hNM = new drc();
-    ((b.a)localObject).hNN = new drd();
+    ((b.a)localObject).hQF = new drz();
+    ((b.a)localObject).hQG = new dsa();
     ((b.a)localObject).uri = "/cgi-bin/mmbiz-bin/rank/updatecover";
     ((b.a)localObject).funcId = 1040;
-    ((b.a)localObject).hNO = 0;
+    ((b.a)localObject).hQH = 0;
     ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).aDC();
-    localObject = (drc)this.rr.hNK.hNQ;
-    ((drc)localObject).GEt = paramString1;
-    ((drc)localObject).qeP = paramString2;
+    this.rr = ((b.a)localObject).aDS();
+    localObject = (drz)this.rr.hQD.hQJ;
+    ((drz)localObject).GXW = paramString1;
+    ((drz)localObject).qlu = paramString2;
     AppMethodBeat.o(23537);
   }
   
@@ -60,7 +60,7 @@ public final class m
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(23539);
-    ad.d("MicroMsg.NetSceneUpdateRankCoverAndMotto", "hy: scene end. errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    ae.d("MicroMsg.NetSceneUpdateRankCoverAndMotto", "hy: scene end. errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(23539);
   }

@@ -6,102 +6,88 @@ import com.tencent.mm.plugin.report.a;
 public final class dq
   extends a
 {
-  public long dPl = 0L;
-  private String dSb = "";
-  private String egR = "";
-  private String egS = "";
-  private String egT = "";
-  private String egU = "";
+  private String dRJ = "";
+  private String eis = "";
+  public long eit = 0L;
+  public long eiu = 0L;
+  public long eiv = 0L;
+  public long eiw = 0L;
+  public long eix = 0L;
+  public long eiy = 0L;
   
-  public final String RD()
+  public final String RC()
   {
-    AppMethodBeat.i(211818);
+    AppMethodBeat.i(149920);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.egR);
+    ((StringBuffer)localObject).append(this.dRJ);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.egS);
+    ((StringBuffer)localObject).append(this.eis);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.egT);
+    ((StringBuffer)localObject).append(this.eit);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.egU);
+    ((StringBuffer)localObject).append(this.eiu);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dSb);
+    ((StringBuffer)localObject).append(this.eiv);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dPl);
+    ((StringBuffer)localObject).append(this.eiw);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.eix);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.eiy);
     localObject = ((StringBuffer)localObject).toString();
-    awz((String)localObject);
-    AppMethodBeat.o(211818);
+    axO((String)localObject);
+    AppMethodBeat.o(149920);
     return localObject;
   }
   
-  public final String RE()
+  public final String RD()
   {
-    AppMethodBeat.i(211819);
+    AppMethodBeat.i(149921);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("ResignationWorkUsername:").append(this.egR);
+    ((StringBuffer)localObject).append("sessionid:").append(this.dRJ);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("TakeOverWorkUsername:").append(this.egS);
+    ((StringBuffer)localObject).append("userName:").append(this.eis);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("WorkEnterpriseDescId:").append(this.egT);
+    ((StringBuffer)localObject).append("succeedStatus:").append(this.eit);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("WorkEnterpriseName:").append(this.egU);
+    ((StringBuffer)localObject).append("userStatus:").append(this.eiu);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("SessionId:").append(this.dSb);
+    ((StringBuffer)localObject).append("showSucceedMethod:").append(this.eiv);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("Action:").append(this.dPl);
+    ((StringBuffer)localObject).append("clickSucceedAction:").append(this.eiw);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("watchMessageRecord:").append(this.eix);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("sendMessageStatus:").append(this.eiy);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(211819);
+    AppMethodBeat.o(149921);
     return localObject;
   }
   
   public final int getId()
   {
-    return 19942;
+    return 15855;
   }
   
-  public final dq mW(String paramString)
+  public final dq nn(String paramString)
   {
-    AppMethodBeat.i(211813);
-    this.egR = t("ResignationWorkUsername", paramString, true);
-    AppMethodBeat.o(211813);
+    AppMethodBeat.i(149918);
+    this.dRJ = t("sessionid", paramString, true);
+    AppMethodBeat.o(149918);
     return this;
   }
   
-  public final dq mX(String paramString)
+  public final dq no(String paramString)
   {
-    AppMethodBeat.i(211814);
-    this.egS = t("TakeOverWorkUsername", paramString, true);
-    AppMethodBeat.o(211814);
-    return this;
-  }
-  
-  public final dq mY(String paramString)
-  {
-    AppMethodBeat.i(211815);
-    this.egT = t("WorkEnterpriseDescId", paramString, true);
-    AppMethodBeat.o(211815);
-    return this;
-  }
-  
-  public final dq mZ(String paramString)
-  {
-    AppMethodBeat.i(211816);
-    this.egU = t("WorkEnterpriseName", paramString, true);
-    AppMethodBeat.o(211816);
-    return this;
-  }
-  
-  public final dq na(String paramString)
-  {
-    AppMethodBeat.i(211817);
-    this.dSb = t("SessionId", paramString, true);
-    AppMethodBeat.o(211817);
+    AppMethodBeat.i(149919);
+    this.eis = t("userName", paramString, true);
+    AppMethodBeat.o(149919);
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.b.a.dq
  * JD-Core Version:    0.7.0.1
  */

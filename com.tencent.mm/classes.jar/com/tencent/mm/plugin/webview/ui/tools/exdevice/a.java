@@ -3,79 +3,79 @@ package com.tencent.mm.plugin.webview.ui.tools.exdevice;
 import android.content.Context;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.ef;
-import com.tencent.mm.g.a.ef.a;
 import com.tencent.mm.g.a.eg;
 import com.tencent.mm.g.a.eg.a;
 import com.tencent.mm.g.a.eh;
 import com.tencent.mm.g.a.eh.a;
 import com.tencent.mm.g.a.ei;
 import com.tencent.mm.g.a.ei.a;
-import com.tencent.mm.g.a.el;
-import com.tencent.mm.g.a.el.a;
-import com.tencent.mm.g.a.ep;
-import com.tencent.mm.g.a.fg;
+import com.tencent.mm.g.a.ej;
+import com.tencent.mm.g.a.ej.a;
+import com.tencent.mm.g.a.em;
+import com.tencent.mm.g.a.em.a;
+import com.tencent.mm.g.a.eq;
+import com.tencent.mm.g.a.fh;
 import com.tencent.mm.plugin.webview.stub.f;
 import com.tencent.mm.pluginsdk.ui.tools.w.a;
 import com.tencent.mm.sdk.b.b;
 import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public final class a
   implements w.a
 {
-  private static a EfQ;
-  private static String hgH = "lan";
-  public byte[] DNK = null;
-  public boolean DNM = false;
-  public a EfP;
-  private int EfR = -1;
-  public String doD;
+  private static a ExT;
+  private static String hjv = "lan";
+  public byte[] EfJ = null;
+  public boolean EfL = false;
+  public a ExS;
+  private int ExU = -1;
+  public String dpI;
   public boolean hasInit = false;
   
-  public static a eTG()
+  public static a eXt()
   {
     AppMethodBeat.i(80486);
-    if (EfQ == null) {
-      EfQ = new a();
+    if (ExT == null) {
+      ExT = new a();
     }
-    a locala = EfQ;
+    a locala = ExT;
     AppMethodBeat.o(80486);
     return locala;
   }
   
-  public final void eOW()
+  public final void eSH()
   {
     AppMethodBeat.i(80487);
-    ad.i("MicroMsg.webview.WebViewExDeviceLanMgr", "stopPlugin, isScaning = %s", new Object[] { Boolean.valueOf(this.DNM) });
-    if (this.DNM)
+    ae.i("MicroMsg.webview.WebViewExDeviceLanMgr", "stopPlugin, isScaning = %s", new Object[] { Boolean.valueOf(this.EfL) });
+    if (this.EfL)
     {
-      localObject = new fg();
-      ((fg)localObject).dqt.doE = false;
-      com.tencent.mm.sdk.b.a.IbL.l((b)localObject);
-      this.DNM = false;
+      localObject = new fh();
+      ((fh)localObject).dry.dpJ = false;
+      com.tencent.mm.sdk.b.a.IvT.l((b)localObject);
+      this.EfL = false;
     }
     this.hasInit = false;
-    if (this.EfP != null)
+    if (this.ExS != null)
     {
-      com.tencent.mm.sdk.b.a.IbL.d(this.EfP.DNR);
-      com.tencent.mm.sdk.b.a.IbL.d(this.EfP.EfS);
-      com.tencent.mm.sdk.b.a.IbL.d(this.EfP.EfU);
-      com.tencent.mm.sdk.b.a.IbL.d(this.EfP.EfT);
-      com.tencent.mm.sdk.b.a.IbL.d(this.EfP.EfV);
-      this.EfP = null;
+      com.tencent.mm.sdk.b.a.IvT.d(this.ExS.EfQ);
+      com.tencent.mm.sdk.b.a.IvT.d(this.ExS.ExV);
+      com.tencent.mm.sdk.b.a.IvT.d(this.ExS.ExX);
+      com.tencent.mm.sdk.b.a.IvT.d(this.ExS.ExW);
+      com.tencent.mm.sdk.b.a.IvT.d(this.ExS.ExY);
+      this.ExS = null;
     }
-    this.DNK = null;
-    Object localObject = new ep();
-    ((ep)localObject).dpJ.doE = false;
-    com.tencent.mm.sdk.b.a.IbL.l((b)localObject);
+    this.EfJ = null;
+    Object localObject = new eq();
+    ((eq)localObject).dqO.dpJ = false;
+    com.tencent.mm.sdk.b.a.IvT.l((b)localObject);
     AppMethodBeat.o(80487);
   }
   
-  public final void eOX() {}
+  public final void eSI() {}
   
-  public final void gT(Context paramContext) {}
+  public final void gZ(Context paramContext) {}
   
   public final String getName()
   {
@@ -84,26 +84,26 @@ public final class a
   
   public static final class a
   {
-    private f DNO;
-    public c DNR;
-    public c EfS;
-    public c EfT;
-    public c EfU;
-    public c EfV;
-    private String doD;
+    private f EfN;
+    public c EfQ;
+    public c ExV;
+    public c ExW;
+    public c ExX;
+    public c ExY;
+    private String dpI;
     
     public a(f paramf, String paramString)
     {
       AppMethodBeat.i(80484);
-      this.DNO = null;
-      this.doD = "";
-      this.DNR = new c() {};
-      this.EfS = new c() {};
-      this.EfT = new c() {};
-      this.EfU = new c() {};
-      this.EfV = new c() {};
-      this.DNO = paramf;
-      this.doD = paramString;
+      this.EfN = null;
+      this.dpI = "";
+      this.EfQ = new c() {};
+      this.ExV = new c() {};
+      this.ExW = new c() {};
+      this.ExX = new c() {};
+      this.ExY = new c() {};
+      this.EfN = paramf;
+      this.dpI = paramString;
       AppMethodBeat.o(80484);
     }
     
@@ -115,9 +115,9 @@ public final class a
         AppMethodBeat.o(80485);
         return false;
       }
-      if (this.DNO == null)
+      if (this.EfN == null)
       {
-        ad.e("MicroMsg.webview.WebViewExDeviceLanMgr", "callbacker is null");
+        ae.e("MicroMsg.webview.WebViewExDeviceLanMgr", "callbacker is null");
         AppMethodBeat.o(80485);
         return false;
       }
@@ -126,80 +126,80 @@ public final class a
       {
         try
         {
-          if (!(paramb instanceof el)) {
+          if (!(paramb instanceof em)) {
             continue;
           }
-          ad.d("MicroMsg.webview.WebViewExDeviceLanMgr", "ExDeviceOnDeviceBindStateChangeEvent");
-          paramb = (el)paramb;
-          bool = bt.isNullOrNil(paramb.dpF.cUi);
+          ae.d("MicroMsg.webview.WebViewExDeviceLanMgr", "ExDeviceOnDeviceBindStateChangeEvent");
+          paramb = (em)paramb;
+          bool = bu.isNullOrNil(paramb.dqK.cVh);
           if (bool)
           {
             AppMethodBeat.o(80485);
             return true;
           }
           localObject = new Bundle();
-          ((Bundle)localObject).putString("exdevice_device_id", paramb.dpF.cUi);
-          ((Bundle)localObject).putBoolean("exdevice_is_bound", paramb.dpF.doA);
-          this.DNO.g(17, (Bundle)localObject);
+          ((Bundle)localObject).putString("exdevice_device_id", paramb.dqK.cVh);
+          ((Bundle)localObject).putBoolean("exdevice_is_bound", paramb.dqK.dpF);
+          this.EfN.g(17, (Bundle)localObject);
         }
         catch (Exception paramb)
         {
           boolean bool;
-          ad.w("MicroMsg.webview.WebViewExDeviceLanMgr", "exception in WVExDeviceEventListener callback, %s", new Object[] { paramb.getMessage() });
+          ae.w("MicroMsg.webview.WebViewExDeviceLanMgr", "exception in WVExDeviceEventListener callback, %s", new Object[] { paramb.getMessage() });
           continue;
-          if (!(paramb instanceof eg)) {
+          if (!(paramb instanceof eh)) {
             continue;
           }
-          ad.d("MicroMsg.webview.WebViewExDeviceLanMgr", "ExDeviceLanDeviceRecvDataEvent");
-          paramb = (eg)paramb;
-          if ((bt.isNullOrNil(paramb.dpx.cUi)) || (bt.isNullOrNil(paramb.dpx.doD))) {
+          ae.d("MicroMsg.webview.WebViewExDeviceLanMgr", "ExDeviceLanDeviceRecvDataEvent");
+          paramb = (eh)paramb;
+          if ((bu.isNullOrNil(paramb.dqC.cVh)) || (bu.isNullOrNil(paramb.dqC.dpI))) {
             continue;
           }
-          localObject = paramb.dpx.data;
+          localObject = paramb.dqC.data;
           if (localObject != null) {
             continue;
           }
           AppMethodBeat.o(80485);
           return true;
           localObject = new Bundle();
-          ((Bundle)localObject).putString("exdevice_device_id", paramb.dpx.cUi);
-          ((Bundle)localObject).putByteArray("exdevice_data", paramb.dpx.data);
-          ((Bundle)localObject).putString("exdevice_brand_name", paramb.dpx.doD);
-          ((Bundle)localObject).putString("exdevice_device_type", a.hgH);
-          this.DNO.g(16, (Bundle)localObject);
-          continue;
-          if (!(paramb instanceof eh)) {
-            continue;
-          }
-          ad.i("MicroMsg.webview.WebViewExDeviceLanMgr", "ExDeviceLanDeviceScanResultEvent");
-          paramb = (eh)paramb;
-          localObject = new Bundle();
-          ((Bundle)localObject).putString("exdevice_device_id", paramb.dpy.cUi);
-          ((Bundle)localObject).putByteArray("exdevice_broadcast_data", paramb.dpy.dpz);
-          ((Bundle)localObject).putBoolean("exdevice_is_complete", paramb.dpy.bsb);
-          ((Bundle)localObject).putBoolean("exdevice_is_lan_device", true);
-          ((Bundle)localObject).putString("exdevice_device_type", a.hgH);
-          this.DNO.g(15, (Bundle)localObject);
+          ((Bundle)localObject).putString("exdevice_device_id", paramb.dqC.cVh);
+          ((Bundle)localObject).putByteArray("exdevice_data", paramb.dqC.data);
+          ((Bundle)localObject).putString("exdevice_brand_name", paramb.dqC.dpI);
+          ((Bundle)localObject).putString("exdevice_device_type", a.hjv);
+          this.EfN.g(16, (Bundle)localObject);
           continue;
           if (!(paramb instanceof ei)) {
             continue;
           }
-          ad.i("MicroMsg.webview.WebViewExDeviceLanMgr", "ExDeviceLanDeviceStateChangeEvent");
+          ae.i("MicroMsg.webview.WebViewExDeviceLanMgr", "ExDeviceLanDeviceScanResultEvent");
           paramb = (ei)paramb;
           localObject = new Bundle();
-          if (paramb.dpA.dpB != true) {
+          ((Bundle)localObject).putString("exdevice_device_id", paramb.dqD.cVh);
+          ((Bundle)localObject).putByteArray("exdevice_broadcast_data", paramb.dqD.dqE);
+          ((Bundle)localObject).putBoolean("exdevice_is_complete", paramb.dqD.bsb);
+          ((Bundle)localObject).putBoolean("exdevice_is_lan_device", true);
+          ((Bundle)localObject).putString("exdevice_device_type", a.hjv);
+          this.EfN.g(15, (Bundle)localObject);
+          continue;
+          if (!(paramb instanceof ej)) {
+            continue;
+          }
+          ae.i("MicroMsg.webview.WebViewExDeviceLanMgr", "ExDeviceLanDeviceStateChangeEvent");
+          paramb = (ej)paramb;
+          localObject = new Bundle();
+          if (paramb.dqF.dqG != true) {
             break;
           }
         }
         AppMethodBeat.o(80485);
         return true;
-        if ((paramb instanceof ef))
+        if ((paramb instanceof eg))
         {
-          ad.d("MicroMsg.webview.WebViewExDeviceLanMgr", "ExDeviceLanDeviceConnectStateEvent");
-          paramb = (ef)paramb;
-          if (!bt.isNullOrNil(paramb.dpv.cUi))
+          ae.d("MicroMsg.webview.WebViewExDeviceLanMgr", "ExDeviceLanDeviceConnectStateEvent");
+          paramb = (eg)paramb;
+          if (!bu.isNullOrNil(paramb.dqA.cVh))
           {
-            bool = this.doD.equals(paramb.dpv.doD);
+            bool = this.dpI.equals(paramb.dqA.dpI);
             if (bool) {}
           }
           else
@@ -208,10 +208,10 @@ public final class a
             return true;
           }
           localObject = new Bundle();
-          ((Bundle)localObject).putString("exdevice_device_id", paramb.dpv.cUi);
-          ((Bundle)localObject).putInt("exdevice_on_state_change_state", paramb.dpv.dpw);
-          ((Bundle)localObject).putString("exdevice_device_type", a.hgH);
-          this.DNO.g(1004, (Bundle)localObject);
+          ((Bundle)localObject).putString("exdevice_device_id", paramb.dqA.cVh);
+          ((Bundle)localObject).putInt("exdevice_on_state_change_state", paramb.dqA.dqB);
+          ((Bundle)localObject).putString("exdevice_device_type", a.hjv);
+          this.EfN.g(1004, (Bundle)localObject);
         }
         else
         {
@@ -220,7 +220,7 @@ public final class a
       }
       for (;;)
       {
-        this.DNO.g(47, (Bundle)localObject);
+        this.EfN.g(47, (Bundle)localObject);
         break;
         ((Bundle)localObject).putBoolean("exdevice_lan_state", false);
       }

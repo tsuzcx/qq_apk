@@ -3,43 +3,50 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class apk
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public int GnS;
-  public String dxD;
+  public String AqK;
+  public int GGz;
+  public int dez;
+  public long gJh;
+  public int liveStatus;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(209338);
+    AppMethodBeat.i(189368);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aS(1, this.GnS);
-      if (this.dxD != null) {
-        paramVarArgs.d(2, this.dxD);
+      paramVarArgs.aZ(1, this.gJh);
+      paramVarArgs.aS(2, this.GGz);
+      paramVarArgs.aS(3, this.liveStatus);
+      if (this.AqK != null) {
+        paramVarArgs.d(4, this.AqK);
       }
-      AppMethodBeat.o(209338);
+      paramVarArgs.aS(5, this.dez);
+      AppMethodBeat.o(189368);
       return 0;
     }
     if (paramInt == 1)
     {
-      int i = f.a.a.b.b.a.bz(1, this.GnS) + 0;
+      int i = f.a.a.b.b.a.p(1, this.gJh) + 0 + f.a.a.b.b.a.bz(2, this.GGz) + f.a.a.b.b.a.bz(3, this.liveStatus);
       paramInt = i;
-      if (this.dxD != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.dxD);
+      if (this.AqK != null) {
+        paramInt = i + f.a.a.b.b.a.e(4, this.AqK);
       }
-      AppMethodBeat.o(209338);
-      return paramInt;
+      i = f.a.a.b.b.a.bz(5, this.dez);
+      AppMethodBeat.o(189368);
+      return paramInt + i;
     }
     if (paramInt == 2)
     {
       paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gxE();
+          paramVarArgs.gCg();
         }
       }
-      AppMethodBeat.o(209338);
+      AppMethodBeat.o(189368);
       return 0;
     }
     if (paramInt == 3)
@@ -49,18 +56,30 @@ public final class apk
       switch (((Integer)paramVarArgs[2]).intValue())
       {
       default: 
-        AppMethodBeat.o(209338);
+        AppMethodBeat.o(189368);
         return -1;
       case 1: 
-        localapk.GnS = locala.NPN.zc();
-        AppMethodBeat.o(209338);
+        localapk.gJh = locala.OmT.zd();
+        AppMethodBeat.o(189368);
+        return 0;
+      case 2: 
+        localapk.GGz = locala.OmT.zc();
+        AppMethodBeat.o(189368);
+        return 0;
+      case 3: 
+        localapk.liveStatus = locala.OmT.zc();
+        AppMethodBeat.o(189368);
+        return 0;
+      case 4: 
+        localapk.AqK = locala.OmT.readString();
+        AppMethodBeat.o(189368);
         return 0;
       }
-      localapk.dxD = locala.NPN.readString();
-      AppMethodBeat.o(209338);
+      localapk.dez = locala.OmT.zc();
+      AppMethodBeat.o(189368);
       return 0;
     }
-    AppMethodBeat.o(209338);
+    AppMethodBeat.o(189368);
     return -1;
   }
 }

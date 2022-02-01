@@ -9,8 +9,8 @@ public class AppBrandMediaSource
   implements Parcelable
 {
   public static final Parcelable.Creator<AppBrandMediaSource> CREATOR;
-  public String hkO;
-  public String hkP;
+  public String hnC;
+  public String hnD;
   public String url;
   
   static
@@ -23,19 +23,19 @@ public class AppBrandMediaSource
   public AppBrandMediaSource()
   {
     this.url = "";
-    this.hkO = "";
-    this.hkP = "";
+    this.hnC = "";
+    this.hnD = "";
   }
   
   public AppBrandMediaSource(Parcel paramParcel)
   {
     AppMethodBeat.i(184248);
     this.url = "";
-    this.hkO = "";
-    this.hkP = "";
+    this.hnC = "";
+    this.hnD = "";
     this.url = paramParcel.readString();
-    this.hkO = paramParcel.readString();
-    this.hkP = paramParcel.readString();
+    this.hnC = paramParcel.readString();
+    this.hnD = paramParcel.readString();
     AppMethodBeat.o(184248);
   }
   
@@ -48,8 +48,8 @@ public class AppBrandMediaSource
   {
     AppMethodBeat.i(184249);
     paramParcel.writeString(this.url);
-    paramParcel.writeString(this.hkO);
-    paramParcel.writeString(this.hkP);
+    paramParcel.writeString(this.hnC);
+    paramParcel.writeString(this.hnD);
     AppMethodBeat.o(184249);
   }
 }

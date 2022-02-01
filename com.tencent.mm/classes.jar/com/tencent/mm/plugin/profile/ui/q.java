@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.profile.ui;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.u;
+import com.tencent.mm.model.v;
 
 final class q
   implements HelperHeaderPreference.a
@@ -17,10 +17,10 @@ final class q
   public final void a(HelperHeaderPreference paramHelperHeaderPreference)
   {
     AppMethodBeat.i(27231);
-    if ((u.aAy() & 0x8000) == 0) {}
+    if ((v.aAO() & 0x8000) == 0) {}
     for (boolean bool = true;; bool = false)
     {
-      paramHelperHeaderPreference.pt(bool);
+      paramHelperHeaderPreference.pB(bool);
       AppMethodBeat.o(27231);
       return;
     }

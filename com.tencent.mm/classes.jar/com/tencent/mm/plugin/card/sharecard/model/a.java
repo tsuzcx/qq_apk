@@ -1,42 +1,42 @@
 package com.tencent.mm.plugin.card.sharecard.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.q;
 import com.tencent.mm.plugin.card.model.am;
-import com.tencent.mm.protocal.protobuf.adn;
-import com.tencent.mm.protocal.protobuf.ado;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.adw;
+import com.tencent.mm.protocal.protobuf.adx;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class a
   extends n
   implements com.tencent.mm.network.k
 {
   private f callback;
-  private String dHX;
-  public int ozR;
+  private String dJb;
+  public int oGt;
   private final b rr;
   
   public a(String paramString)
   {
     AppMethodBeat.i(112954);
-    this.dHX = "";
+    this.dJb = "";
     b.a locala = new b.a();
-    locala.hNM = new adn();
-    locala.hNN = new ado();
+    locala.hQF = new adw();
+    locala.hQG = new adx();
     locala.uri = "/cgi-bin/mmbiz-bin/card/delsharecard";
     locala.funcId = 1163;
-    locala.hNO = 0;
+    locala.hQH = 0;
     locala.respCmdId = 0;
-    this.rr = locala.aDC();
-    ((adn)this.rr.hNK.hNQ).dHX = paramString;
-    this.dHX = paramString;
+    this.rr = locala.aDS();
+    ((adw)this.rr.hQD.hQJ).dJb = paramString;
+    this.dJb = paramString;
     AppMethodBeat.o(112954);
   }
   
@@ -57,14 +57,14 @@ public final class a
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(112955);
-    ad.i("MicroMsg.NetSceneDelShareCard", "onGYNetEnd, cmdType = %d, errType = %d, errCode = %d", new Object[] { Integer.valueOf(getType()), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    ae.i("MicroMsg.NetSceneDelShareCard", "onGYNetEnd, cmdType = %d, errType = %d, errCode = %d", new Object[] { Integer.valueOf(getType()), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      paramq = (ado)this.rr.hNL.hNQ;
-      ad.i("MicroMsg.NetSceneDelShareCard", "ret_code:" + paramq.ozR);
-      this.ozR = paramq.ozR;
-      if (this.ozR == 0) {
-        am.bUV().YD(this.dHX);
+      paramq = (adx)this.rr.hQE.hQJ;
+      ae.i("MicroMsg.NetSceneDelShareCard", "ret_code:" + paramq.oGt);
+      this.oGt = paramq.oGt;
+      if (this.oGt == 0) {
+        am.bWk().Zu(this.dJb);
       }
     }
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);

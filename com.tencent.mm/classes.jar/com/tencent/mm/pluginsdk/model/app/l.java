@@ -1,7 +1,7 @@
 package com.tencent.mm.pluginsdk.model.app;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.k;
+import com.tencent.mm.ah.k;
 import com.tencent.mm.sdk.e.e;
 import com.tencent.mm.sdk.e.j;
 import java.util.Iterator;
@@ -12,7 +12,7 @@ public final class l
   extends j<k>
 {
   public static final String[] SQL_CREATE;
-  private final a EMX;
+  private final a Ffu;
   
   static
   {
@@ -24,36 +24,36 @@ public final class l
   public l(e parame)
   {
     super(parame, k.info, "AppMessage", null);
-    AppMethodBeat.i(195371);
-    this.EMX = new a((byte)0);
-    AppMethodBeat.o(195371);
+    AppMethodBeat.i(218824);
+    this.Ffu = new a((byte)0);
+    AppMethodBeat.o(218824);
   }
   
   public final void a(b paramb)
   {
-    AppMethodBeat.i(195372);
+    AppMethodBeat.i(218825);
     if (paramb == null)
     {
-      AppMethodBeat.o(195372);
+      AppMethodBeat.o(218825);
       return;
     }
-    this.EMX.EMY.put(paramb, new Object());
-    AppMethodBeat.o(195372);
+    this.Ffu.Ffv.put(paramb, new Object());
+    AppMethodBeat.o(218825);
   }
   
   public final void b(b paramb)
   {
-    AppMethodBeat.i(195373);
-    this.EMX.EMY.remove(paramb);
-    AppMethodBeat.o(195373);
+    AppMethodBeat.i(218826);
+    this.Ffu.Ffv.remove(paramb);
+    AppMethodBeat.o(218826);
   }
   
-  public final k xH(long paramLong)
+  public final k yb(long paramLong)
   {
     AppMethodBeat.i(151752);
-    if (this.EMX.xI(paramLong))
+    if (this.Ffu.yc(paramLong))
     {
-      localk = this.EMX.xH(paramLong);
+      localk = this.Ffu.yb(paramLong);
       AppMethodBeat.o(151752);
       return localk;
     }
@@ -71,99 +71,99 @@ public final class l
   static final class a
     implements l.b
   {
-    ConcurrentHashMap<l.b, Object> EMY;
+    ConcurrentHashMap<l.b, Object> Ffv;
     
     private a()
     {
-      AppMethodBeat.i(195365);
-      this.EMY = new ConcurrentHashMap();
-      AppMethodBeat.o(195365);
+      AppMethodBeat.i(218818);
+      this.Ffv = new ConcurrentHashMap();
+      AppMethodBeat.o(218818);
     }
     
     public final boolean a(k paramk, boolean paramBoolean)
     {
-      AppMethodBeat.i(195369);
-      Iterator localIterator = this.EMY.keySet().iterator();
+      AppMethodBeat.i(218822);
+      Iterator localIterator = this.Ffv.keySet().iterator();
       while (localIterator.hasNext())
       {
         l.b localb = (l.b)localIterator.next();
-        if (localb.xI(paramk.field_msgId))
+        if (localb.yc(paramk.field_msgId))
         {
           paramBoolean = localb.a(paramk, paramBoolean);
-          AppMethodBeat.o(195369);
+          AppMethodBeat.o(218822);
           return paramBoolean;
         }
       }
-      AppMethodBeat.o(195369);
+      AppMethodBeat.o(218822);
       return false;
     }
     
     public final boolean a(k paramk, boolean paramBoolean, String... paramVarArgs)
     {
-      AppMethodBeat.i(195370);
-      Iterator localIterator = this.EMY.keySet().iterator();
+      AppMethodBeat.i(218823);
+      Iterator localIterator = this.Ffv.keySet().iterator();
       while (localIterator.hasNext())
       {
         l.b localb = (l.b)localIterator.next();
-        if (localb.xI(paramk.field_msgId))
+        if (localb.yc(paramk.field_msgId))
         {
           paramBoolean = localb.a(paramk, paramBoolean, paramVarArgs);
-          AppMethodBeat.o(195370);
+          AppMethodBeat.o(218823);
           return paramBoolean;
         }
       }
-      AppMethodBeat.o(195370);
+      AppMethodBeat.o(218823);
       return false;
     }
     
     public final boolean b(k paramk, boolean paramBoolean)
     {
-      AppMethodBeat.i(195368);
-      Iterator localIterator = this.EMY.keySet().iterator();
+      AppMethodBeat.i(218821);
+      Iterator localIterator = this.Ffv.keySet().iterator();
       while (localIterator.hasNext())
       {
         l.b localb = (l.b)localIterator.next();
-        if (localb.xI(paramk.field_msgId))
+        if (localb.yc(paramk.field_msgId))
         {
           paramBoolean = localb.b(paramk, paramBoolean);
-          AppMethodBeat.o(195368);
+          AppMethodBeat.o(218821);
           return paramBoolean;
         }
       }
-      AppMethodBeat.o(195368);
+      AppMethodBeat.o(218821);
       return false;
     }
     
-    public final k xH(long paramLong)
+    public final k yb(long paramLong)
     {
-      AppMethodBeat.i(195367);
-      Object localObject = this.EMY.keySet().iterator();
+      AppMethodBeat.i(218820);
+      Object localObject = this.Ffv.keySet().iterator();
       while (((Iterator)localObject).hasNext())
       {
         l.b localb = (l.b)((Iterator)localObject).next();
-        if (localb.xI(paramLong))
+        if (localb.yc(paramLong))
         {
-          localObject = localb.xH(paramLong);
-          AppMethodBeat.o(195367);
+          localObject = localb.yb(paramLong);
+          AppMethodBeat.o(218820);
           return localObject;
         }
       }
-      AppMethodBeat.o(195367);
+      AppMethodBeat.o(218820);
       return null;
     }
     
-    public final boolean xI(long paramLong)
+    public final boolean yc(long paramLong)
     {
-      AppMethodBeat.i(195366);
-      Iterator localIterator = this.EMY.keySet().iterator();
+      AppMethodBeat.i(218819);
+      Iterator localIterator = this.Ffv.keySet().iterator();
       while (localIterator.hasNext()) {
-        if (((l.b)localIterator.next()).xI(paramLong))
+        if (((l.b)localIterator.next()).yc(paramLong))
         {
-          AppMethodBeat.o(195366);
+          AppMethodBeat.o(218819);
           return true;
         }
       }
-      AppMethodBeat.o(195366);
+      AppMethodBeat.o(218819);
       return false;
     }
   }
@@ -176,14 +176,14 @@ public final class l
     
     public abstract boolean b(k paramk, boolean paramBoolean);
     
-    public abstract k xH(long paramLong);
+    public abstract k yb(long paramLong);
     
-    public abstract boolean xI(long paramLong);
+    public abstract boolean yc(long paramLong);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.model.app.l
  * JD-Core Version:    0.7.0.1
  */

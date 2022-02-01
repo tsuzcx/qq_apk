@@ -11,14 +11,14 @@ public class o
   
   public o(Context paramContext, Class<? extends g> paramClass)
   {
-    AppMethodBeat.i(187584);
+    AppMethodBeat.i(201151);
     init();
     this.mContext = paramContext;
     this.chL = new f(paramContext, paramClass);
-    AppMethodBeat.o(187584);
+    AppMethodBeat.o(201151);
   }
   
-  public final n BN()
+  public final n BO()
   {
     return this.chL;
   }

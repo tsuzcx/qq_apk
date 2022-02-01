@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.appbrand.launching;
 
 abstract interface d
 {
-  public abstract void bqJ();
+  public abstract void brt();
 }
 
 

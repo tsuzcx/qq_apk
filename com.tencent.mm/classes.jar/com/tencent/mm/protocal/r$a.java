@@ -1,29 +1,29 @@
 package com.tencent.mm.protocal;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.l;
+import com.tencent.mm.ak.l;
 
 public final class r$a
   extends l
 {
-  private r.b Fol;
-  private r.c Fom;
-  private boolean wtN;
+  private r.b FGJ;
+  private r.c FGK;
+  private boolean wJx;
   
   public r$a(boolean paramBoolean)
   {
     AppMethodBeat.i(149112);
-    this.wtN = true;
-    this.wtN = paramBoolean;
-    this.Fol = new r.b(this.wtN);
-    this.Fom = new r.c();
+    this.wJx = true;
+    this.wJx = paramBoolean;
+    this.FGJ = new r.b(this.wJx);
+    this.FGK = new r.c();
     AppMethodBeat.o(149112);
   }
   
   public final int getOptions()
   {
     AppMethodBeat.i(149113);
-    if (this.wtN)
+    if (this.wJx)
     {
       AppMethodBeat.o(149113);
       return 1;
@@ -35,7 +35,7 @@ public final class r$a
   
   public final int getType()
   {
-    if (this.wtN) {
+    if (this.wJx) {
       return 3944;
     }
     return 836;
@@ -43,7 +43,7 @@ public final class r$a
   
   public final String getUri()
   {
-    if (this.wtN) {
+    if (this.wJx) {
       return "/cgi-bin/micromsg-bin/fpfreshnl";
     }
     return "/cgi-bin/micromsg-bin/fpfresh";

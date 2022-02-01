@@ -4,34 +4,34 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class m
 {
-  static final ad.a jFG;
+  static final ae.a jIF;
   
   static
   {
     AppMethodBeat.i(90551);
-    jFG = new ad.a()
+    jIF = new ae.a()
     {
       public final void a(com.tencent.mm.pluginsdk.j.a.c.m paramAnonymousm) {}
       
-      public final void aZA() {}
+      public final void aZS() {}
       
-      public final void aZB() {}
+      public final void aZT() {}
       
-      public final void aZv() {}
+      public final void aZU() {}
       
-      public final void aZw() {}
+      public final void aZV() {}
       
-      public final void aZx() {}
+      public final void aZW() {}
       
-      public final void aZy() {}
+      public final void aZX() {}
       
-      public final void aZz() {}
+      public final void aZY() {}
+      
+      public final void fI(boolean paramAnonymousBoolean) {}
       
       public final void fJ(boolean paramAnonymousBoolean) {}
       
-      public final void fK(boolean paramAnonymousBoolean) {}
-      
-      public final void rR(int paramAnonymousInt) {}
+      public final void rU(int paramAnonymousInt) {}
     };
     AppMethodBeat.o(90551);
   }

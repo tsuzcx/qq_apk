@@ -1,10 +1,10 @@
 package com.tencent.mm.plugin.appbrand.jsapi.n;
 
-import com.tencent.mm.plugin.appbrand.page.b.f;
-import com.tencent.mm.plugin.appbrand.q;
+import com.tencent.mm.plugin.appbrand.page.a.f;
+import com.tencent.mm.plugin.appbrand.r;
 
 public final class ah
-  extends j<q, f>
+  extends j<r, f>
 {
   public static final int CTRL_INDEX = 12;
   public static final String NAME = "stopPullDownRefresh";

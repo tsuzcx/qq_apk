@@ -23,17 +23,19 @@ import android.widget.ImageView;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.am.a.c;
+import com.tencent.mm.al.a.c;
 import com.tencent.mm.api.j;
-import com.tencent.mm.aw.a.a.c.a;
-import com.tencent.mm.aw.q;
+import com.tencent.mm.av.a.a.c.a;
+import com.tencent.mm.av.q;
 import com.tencent.mm.compatible.util.Exif;
-import com.tencent.mm.model.w;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.model.x;
 import com.tencent.mm.pluginsdk.ui.a.b;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.ExifHelper;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.h;
 import com.tencent.mm.ui.base.NoMeasuredTextView;
 import com.tencent.mm.ui.s;
 import com.tencent.mm.ui.widget.a.d;
@@ -43,7 +45,6 @@ import com.tencent.mm.ui.widget.a.d.a.b;
 import com.tencent.mm.ui.widget.a.d.a.c;
 import com.tencent.mm.ui.widget.a.d.a.d;
 import com.tencent.mm.ui.z;
-import com.tencent.mm.vfs.i;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -52,26 +53,26 @@ import junit.framework.Assert;
 public final class o
   implements y
 {
-  private static int[] EVO = { 2131305923, 2131305924, 2131305925, 2131305926, 2131305927, 2131305928, 2131305929, 2131305930, 2131305931 };
+  private static int[] Foj = { 2131305923, 2131305924, 2131305925, 2131305926, 2131305927, 2131305928, 2131305929, 2131305930, 2131305931 };
   
   public static com.tencent.mm.ui.base.o a(s params, long paramLong, String paramString1, String paramString2, String paramString3, y.a parama)
   {
     AppMethodBeat.i(31396);
-    final View localView = at(params.Jbc, 2131493591);
-    final com.tencent.mm.ui.base.o localo = fQ(localView);
+    final View localView = at(params.JvK, 2131493591);
+    final com.tencent.mm.ui.base.o localo = fP(localView);
     a(localView, parama, localo);
-    if (bt.isNullOrNil(paramString1))
+    if (bu.isNullOrNil(paramString1))
     {
-      ad.e("MicroMsg.MMConfirmDialog", "showDialogItem8 fail,title or  message is empty");
+      ae.e("MicroMsg.MMConfirmDialog", "showDialogItem8 fail,title or  message is empty");
       AppMethodBeat.o(31396);
       return null;
     }
     a(localView, 2131298571, paramString1, false, 0);
     NoMeasuredTextView localNoMeasuredTextView = (NoMeasuredTextView)localView.findViewById(2131298568);
     localNoMeasuredTextView.setShouldEllipsize(true);
-    localNoMeasuredTextView.setTextSize(0, params.Jbc.getResources().getDimension(2131165192) * com.tencent.mm.cc.a.eb(params.Jbc));
-    localNoMeasuredTextView.setTextColor(com.tencent.mm.cc.a.m(params.Jbc, 2131100711));
-    Object localObject = ((j)com.tencent.mm.kernel.g.ab(j.class)).bd(paramLong);
+    localNoMeasuredTextView.setTextSize(0, params.JvK.getResources().getDimension(2131165192) * com.tencent.mm.cb.a.ef(params.JvK));
+    localNoMeasuredTextView.setTextColor(com.tencent.mm.cb.a.m(params.JvK, 2131100711));
+    Object localObject = ((j)g.ab(j.class)).bd(paramLong);
     String str1;
     if ((localObject != null) && (((c)localObject).isGroup()))
     {
@@ -82,16 +83,16 @@ public final class o
       if (paramString1 == null) {
         str2 = paramString2;
       }
-      if (bt.isNullOrNil(str2)) {
+      if (bu.isNullOrNil(str2)) {
         break label407;
       }
-      localNoMeasuredTextView.setText(com.tencent.mm.pluginsdk.ui.span.k.b(params.Jbc, str2, localNoMeasuredTextView.getTextSize()));
+      localNoMeasuredTextView.setText(com.tencent.mm.pluginsdk.ui.span.k.b(params.JvK, str2, localNoMeasuredTextView.getTextSize()));
     }
     for (;;)
     {
       a(localView, 2131298565, null, true, 8);
       paramString1 = (Button)localView.findViewById(2131298557);
-      if (!bt.isNullOrNil(paramString3)) {
+      if (!bu.isNullOrNil(paramString3)) {
         paramString1.setText(paramString3);
       }
       paramString1.setOnClickListener(new View.OnClickListener()
@@ -101,9 +102,9 @@ public final class o
           AppMethodBeat.i(31356);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
           localb.bd(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/pluginsdk/ui/applet/ConfirmDialog$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-          if (this.EVS != null) {
-            this.EVS.a(true, o.fR(localView), o.fS(localView));
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/pluginsdk/ui/applet/ConfirmDialog$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+          if (this.Fon != null) {
+            this.Fon.a(true, o.fQ(localView), o.fR(localView));
           }
           localo.dismiss();
           localo.setFocusable(false);
@@ -113,58 +114,58 @@ public final class o
         }
       });
       paramString1 = new c.a();
-      paramString1.prefixPath = com.tencent.mm.api.a.es((String)localObject);
-      paramString1.idr = true;
-      paramString1.hdX = true;
-      paramString1.idD = 2131690013;
-      paramString1 = paramString1.aJc();
-      if (!bt.isNullOrNil(str1)) {
-        q.aIJ().a(str1, (ImageView)localView.findViewById(2131298570), paramString1);
+      paramString1.prefixPath = com.tencent.mm.api.a.ex((String)localObject);
+      paramString1.igk = true;
+      paramString1.hgL = true;
+      paramString1.igv = 2131690013;
+      paramString1 = paramString1.aJu();
+      if (!bu.isNullOrNil(str1)) {
+        q.aJb().a(str1, (ImageView)localView.findViewById(2131298570), paramString1);
       }
       a(params, localo);
       AppMethodBeat.o(31396);
       return localo;
-      localObject = ((com.tencent.mm.api.k)com.tencent.mm.kernel.g.ab(com.tencent.mm.api.k.class)).eK(((c)localObject).field_bizChatServId);
+      localObject = ((com.tencent.mm.api.k)g.ab(com.tencent.mm.api.k.class)).eP(((c)localObject).field_bizChatServId);
       if (localObject != null)
       {
-        paramString1 = ((com.tencent.mm.am.a.k)localObject).field_userName;
-        str1 = ((com.tencent.mm.am.a.k)localObject).field_headImageUrl;
-        localObject = ((com.tencent.mm.am.a.k)localObject).field_brandUserName;
+        paramString1 = ((com.tencent.mm.al.a.k)localObject).field_userName;
+        str1 = ((com.tencent.mm.al.a.k)localObject).field_headImageUrl;
+        localObject = ((com.tencent.mm.al.a.k)localObject).field_brandUserName;
         break;
       }
-      ad.w("MicroMsg.MMConfirmDialog", "showDialogItem8 userInfo is null");
+      ae.w("MicroMsg.MMConfirmDialog", "showDialogItem8 userInfo is null");
       AppMethodBeat.o(31396);
       return null;
       label407:
-      localNoMeasuredTextView.setText(com.tencent.mm.pluginsdk.ui.span.k.b(params.Jbc, paramString2, localNoMeasuredTextView.getTextSize()));
+      localNoMeasuredTextView.setText(com.tencent.mm.pluginsdk.ui.span.k.b(params.JvK, paramString2, localNoMeasuredTextView.getTextSize()));
     }
   }
   
   public static com.tencent.mm.ui.base.o a(s params, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, y.a parama)
   {
     AppMethodBeat.i(31395);
-    final View localView = at(params.Jbc, 2131493591);
-    final com.tencent.mm.ui.base.o localo = fQ(localView);
+    final View localView = at(params.JvK, 2131493591);
+    final com.tencent.mm.ui.base.o localo = fP(localView);
     a(localView, parama, localo);
-    if (bt.isNullOrNil(paramString2))
+    if (bu.isNullOrNil(paramString2))
     {
-      ad.e("MicroMsg.MMConfirmDialog", "showDialogItem8 fail,title or  message is empty");
+      ae.e("MicroMsg.MMConfirmDialog", "showDialogItem8 fail,title or  message is empty");
       AppMethodBeat.o(31395);
       return null;
     }
     a(localView, 2131298571, paramString2, false, 0);
     paramString2 = (NoMeasuredTextView)localView.findViewById(2131298568);
     paramString2.setShouldEllipsize(true);
-    paramString2.setTextSize(0, params.Jbc.getResources().getDimension(2131165192) * com.tencent.mm.cc.a.eb(params.Jbc));
-    paramString2.setTextColor(com.tencent.mm.cc.a.m(params.Jbc, 2131100711));
-    if (!bt.isNullOrNil(paramString1)) {
-      paramString2.setText(((com.tencent.mm.plugin.emoji.b.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.emoji.b.a.class)).b(params.Jbc, ((com.tencent.mm.plugin.messenger.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.a.b.class)).zf(paramString1), paramString2.getTextSize()));
+    paramString2.setTextSize(0, params.JvK.getResources().getDimension(2131165192) * com.tencent.mm.cb.a.ef(params.JvK));
+    paramString2.setTextColor(com.tencent.mm.cb.a.m(params.JvK, 2131100711));
+    if (!bu.isNullOrNil(paramString1)) {
+      paramString2.setText(((com.tencent.mm.plugin.emoji.b.a)g.ab(com.tencent.mm.plugin.emoji.b.a.class)).b(params.JvK, ((com.tencent.mm.plugin.messenger.a.b)g.ab(com.tencent.mm.plugin.messenger.a.b.class)).zP(paramString1), paramString2.getTextSize()));
     }
     for (;;)
     {
       a(localView, 2131298565, paramString4, true, 8);
       paramString2 = (Button)localView.findViewById(2131298557);
-      if (!bt.isNullOrNil(paramString5)) {
+      if (!bu.isNullOrNil(paramString5)) {
         paramString2.setText(paramString5);
       }
       paramString2.setOnClickListener(new View.OnClickListener()
@@ -174,9 +175,9 @@ public final class o
           AppMethodBeat.i(31355);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
           localb.bd(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/pluginsdk/ui/applet/ConfirmDialog$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-          if (this.EVS != null) {
-            this.EVS.a(true, o.fR(localView), o.fS(localView));
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/pluginsdk/ui/applet/ConfirmDialog$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+          if (this.Fon != null) {
+            this.Fon.a(true, o.fQ(localView), o.fR(localView));
           }
           localo.dismiss();
           localo.setFocusable(false);
@@ -185,13 +186,13 @@ public final class o
           AppMethodBeat.o(31355);
         }
       });
-      if (!bt.isNullOrNil(paramString1)) {
+      if (!bu.isNullOrNil(paramString1)) {
         a.b.c((ImageView)localView.findViewById(2131298570), paramString1);
       }
       a(params, localo);
       AppMethodBeat.o(31395);
       return localo;
-      paramString2.setText(((com.tencent.mm.plugin.emoji.b.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.emoji.b.a.class)).b(params.Jbc, paramString3, paramString2.getTextSize()));
+      paramString2.setText(((com.tencent.mm.plugin.emoji.b.a)g.ab(com.tencent.mm.plugin.emoji.b.a.class)).b(params.JvK, paramString3, paramString2.getTextSize()));
     }
   }
   
@@ -206,34 +207,34 @@ public final class o
   public static d a(s params, int paramInt, String paramString1, boolean paramBoolean, String paramString2, y.a parama)
   {
     AppMethodBeat.i(31389);
-    d.a locala = new d.a(params.Jbc);
-    Object localObject = params.Jbc.getIntent().getExtras().getString("Select_Conv_User", null);
+    d.a locala = new d.a(params.JvK);
+    Object localObject = params.JvK.getIntent().getExtras().getString("Select_Conv_User", null);
     if (localObject != null)
     {
-      localObject = bt.U(((String)localObject).split(","));
-      a(params.Jbc, locala, localObject);
+      localObject = bu.U(((String)localObject).split(","));
+      a(params.JvK, locala, localObject);
     }
-    locala.yP(true);
+    locala.zd(true);
     if (paramInt == 2131689559) {
-      localObject = params.Jbc.getResources().getString(2131755773);
+      localObject = params.JvK.getResources().getString(2131755773);
     }
     for (;;)
     {
-      locala.au((String)localObject + paramString1).yR(false).yS(false);
+      locala.at((String)localObject + paramString1).zf(false).zg(false);
       if (paramBoolean) {
-        locala.yQ(true);
+        locala.ze(true);
       }
-      paramString1 = locala.fMb();
-      a(params.Jbc, paramString1, paramString2, null, parama, parama);
+      paramString1 = locala.fQv();
+      a(params.JvK, paramString1, paramString2, null, parama, parama);
       paramString1.show();
       AppMethodBeat.o(31389);
       return paramString1;
       if (paramInt == 2131689564) {
-        localObject = params.Jbc.getResources().getString(2131755820);
+        localObject = params.JvK.getResources().getString(2131755820);
       } else if (paramInt == 2131689581) {
-        localObject = params.Jbc.getResources().getString(2131755926);
+        localObject = params.JvK.getResources().getString(2131755926);
       } else {
-        localObject = params.Jbc.getResources().getString(2131755278);
+        localObject = params.JvK.getResources().getString(2131755278);
       }
     }
   }
@@ -241,16 +242,16 @@ public final class o
   public static d a(s params, Bitmap paramBitmap, String paramString1, String paramString2, String paramString3, y.a parama)
   {
     AppMethodBeat.i(31392);
-    View localView = at(params.Jbc, 2131493588);
-    d.a locala = new d.a(params.Jbc);
-    locala.yR(false);
-    locala.yS(false);
-    u(localView, true);
-    a(params, locala, parama, localView, params.Jbc.getResources().getString(2131757562));
+    View localView = at(params.JvK, 2131493588);
+    d.a locala = new d.a(params.JvK);
+    locala.zf(false);
+    locala.zg(false);
+    v(localView, true);
+    a(params, locala, parama, localView, params.JvK.getResources().getString(2131757562));
     parama = (TextView)localView.findViewById(2131298571);
-    parama.setText(com.tencent.mm.pluginsdk.ui.span.k.b(params.Jbc, paramString1, parama.getTextSize()));
+    parama.setText(com.tencent.mm.pluginsdk.ui.span.k.b(params.JvK, paramString1, parama.getTextSize()));
     paramString1 = (TextView)localView.findViewById(2131298568);
-    paramString1.setText(com.tencent.mm.pluginsdk.ui.span.k.b(params.Jbc, paramString2, paramString1.getTextSize()));
+    paramString1.setText(com.tencent.mm.pluginsdk.ui.span.k.b(params.JvK, paramString2, paramString1.getTextSize()));
     params = (TextView)localView.findViewById(2131298564);
     if ((paramString3 == null) || (paramString3.length() == 0))
     {
@@ -261,14 +262,14 @@ public final class o
         if ((paramBitmap != null) && (!paramBitmap.isRecycled())) {
           break label242;
         }
-        ad.w("MicroMsg.MMConfirmDialog", "showDialogItem4, thumbBmp is null or recycled");
+        ae.w("MicroMsg.MMConfirmDialog", "showDialogItem4, thumbBmp is null or recycled");
         params.setVisibility(8);
       }
     }
     for (;;)
     {
-      locala.gY(localView);
-      params = locala.fMb();
+      locala.hd(localView);
+      params = locala.fQv();
       params.show();
       AppMethodBeat.o(31392);
       return params;
@@ -284,24 +285,24 @@ public final class o
   
   public static d a(s params, String paramString1, Bitmap paramBitmap, String paramString2, String paramString3, y.a parama)
   {
-    AppMethodBeat.i(193447);
+    AppMethodBeat.i(186727);
     if (((paramString1 == null) || (paramString1.length() == 0)) && ((paramString2 == null) || (paramString2.length() == 0)))
     {
-      ad.e("MicroMsg.MMConfirmDialog", "showDialogItem6 fail, title message both are empty");
-      AppMethodBeat.o(193447);
+      ae.e("MicroMsg.MMConfirmDialog", "showDialogItem6 fail, title message both are empty");
+      AppMethodBeat.o(186727);
       return null;
     }
-    View localView = at(params.Jbc, 2131493589);
-    d.a locala = new d.a(params.Jbc);
-    locala.yR(false);
-    locala.yS(false);
-    u(localView, false);
-    a(params, locala, parama, localView, params.Jbc.getResources().getString(2131757589));
+    View localView = at(params.JvK, 2131493589);
+    d.a locala = new d.a(params.JvK);
+    locala.zf(false);
+    locala.zg(false);
+    v(localView, false);
+    a(params, locala, parama, localView, params.JvK.getResources().getString(2131757589));
     parama = (TextView)localView.findViewById(2131298571);
-    parama.setText(com.tencent.mm.pluginsdk.ui.span.k.b(params.Jbc, paramString1, parama.getTextSize()));
+    parama.setText(com.tencent.mm.pluginsdk.ui.span.k.b(params.JvK, paramString1, parama.getTextSize()));
     parama.getPaint().setFakeBoldText(true);
     paramString1 = (TextView)localView.findViewById(2131298568);
-    paramString1.setText(com.tencent.mm.pluginsdk.ui.span.k.b(params.Jbc, paramString2, paramString1.getTextSize()));
+    paramString1.setText(com.tencent.mm.pluginsdk.ui.span.k.b(params.JvK, paramString2, paramString1.getTextSize()));
     params = (ImageView)localView.findViewById(2131298570);
     if (params != null)
     {
@@ -313,20 +314,20 @@ public final class o
     }
     for (;;)
     {
-      locala.gY(localView);
-      params = locala.fMb();
+      locala.hd(localView);
+      params = locala.fQv();
       params.show();
-      AppMethodBeat.o(193447);
+      AppMethodBeat.o(186727);
       return params;
       label241:
-      if (!bt.isNullOrNil(paramString3))
+      if (!bu.isNullOrNil(paramString3))
       {
-        paramString1 = q.aIJ();
+        paramString1 = q.aJb();
         paramBitmap = new c.a();
-        paramBitmap.idD = 2131231342;
-        paramBitmap.idq = true;
-        paramBitmap.hfi = true;
-        paramString1.a(paramString3, params, paramBitmap.aJc());
+        paramBitmap.igv = 2131231342;
+        paramBitmap.igj = true;
+        paramBitmap.hhW = true;
+        paramString1.a(paramString3, params, paramBitmap.aJu());
       }
       else
       {
@@ -340,48 +341,48 @@ public final class o
     AppMethodBeat.i(31398);
     if ((paramString1 == null) || (paramString1.length() == 0))
     {
-      ad.e("MicroMsg.MMConfirmDialog", "showDialogItem1 fail, title message both are empty");
+      ae.e("MicroMsg.MMConfirmDialog", "showDialogItem1 fail, title message both are empty");
       AppMethodBeat.o(31398);
       return null;
     }
-    d.a locala = new d.a(params.Jbc);
-    locala.yR(false);
-    locala.yS(false);
-    a(locala, params.Jbc, paramString1);
-    if (!bt.isNullOrNil(paramString2))
+    d.a locala = new d.a(params.JvK);
+    locala.zf(false);
+    locala.zg(false);
+    a(locala, params.JvK, paramString1);
+    if (!bu.isNullOrNil(paramString2))
     {
       paramString1 = paramString2;
       if (paramString2.length() != 0) {}
     }
     else
     {
-      paramString1 = params.Jbc.getResources().getString(2131757562);
+      paramString1 = params.JvK.getResources().getString(2131757562);
     }
-    locala.aXM(paramString1).c(new DialogInterface.OnClickListener()
+    locala.aZo(paramString1).c(new DialogInterface.OnClickListener()
     {
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
         AppMethodBeat.i(31343);
-        if (this.EVR != null) {
-          this.EVR.nO(true);
+        if (this.Fom != null) {
+          this.Fom.nS(true);
         }
         AppMethodBeat.o(31343);
       }
     });
-    locala.afm(2131755691).d(new DialogInterface.OnClickListener()
+    locala.afV(2131755691).d(new DialogInterface.OnClickListener()
     {
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
         AppMethodBeat.i(31344);
-        if (this.EVR != null) {
-          this.EVR.nO(false);
+        if (this.Fom != null) {
+          this.Fom.nS(false);
         }
         AppMethodBeat.o(31344);
       }
     });
-    locala.gY(paramView);
-    paramString1 = locala.fMb();
-    paramString1.aaq(params.Jbc.getResources().getColor(2131100035));
+    locala.hd(paramView);
+    paramString1 = locala.fQv();
+    paramString1.aaW(params.JvK.getResources().getColor(2131100035));
     paramString1.show();
     AppMethodBeat.o(31398);
     return paramString1;
@@ -400,27 +401,27 @@ public final class o
     AppMethodBeat.i(31377);
     if (((paramString1 == null) || (paramString1.length() == 0)) && ((paramString3 == null) || (paramString3.length() == 0)))
     {
-      ad.e("MicroMsg.MMConfirmDialog", "showDialogItem1 fail, title message both are empty");
+      ae.e("MicroMsg.MMConfirmDialog", "showDialogItem1 fail, title message both are empty");
       AppMethodBeat.o(31377);
       return null;
     }
-    View localView = View.inflate(params.Jbc, 2131493587, null);
-    d.a locala = new d.a(params.Jbc);
-    locala.yR(false);
-    locala.yS(false);
-    a(locala, params.Jbc, paramString1);
-    u(localView, paramBoolean);
+    View localView = View.inflate(params.JvK, 2131493587, null);
+    d.a locala = new d.a(params.JvK);
+    locala.zf(false);
+    locala.zg(false);
+    a(locala, params.JvK, paramString1);
+    v(localView, paramBoolean);
     a(params, locala, parama, localView, paramString4);
     paramString1 = (TextView)localView.findViewById(2131298568);
-    paramString1.setText(com.tencent.mm.pluginsdk.ui.span.k.b(params.Jbc, paramString3, paramString1.getTextSize()));
+    paramString1.setText(com.tencent.mm.pluginsdk.ui.span.k.b(params.JvK, paramString3, paramString1.getTextSize()));
     localView.findViewById(2131298564).setVisibility(8);
-    int i = BackwardSupportUtil.b.g(params.Jbc, 120.0F);
+    int i = BackwardSupportUtil.b.h(params.JvK, 120.0F);
     params = (CdnImageView)localView.findViewById(2131298570);
     if (params != null) {
-      params.aI(paramString2, i, i);
+      params.aK(paramString2, i, i);
     }
-    locala.gY(localView);
-    params = locala.fMb();
+    locala.hd(localView);
+    params = locala.fQv();
     params.show();
     AppMethodBeat.o(31377);
     return params;
@@ -429,7 +430,7 @@ public final class o
   public static d a(s params, String paramString1, String paramString2, boolean paramBoolean, String paramString3, y.a parama)
   {
     AppMethodBeat.i(31378);
-    params = a(params, paramString1, paramString2, paramBoolean, paramString3, parama, params.Jbc.getResources().getString(2131755920));
+    params = a(params, paramString1, paramString2, paramBoolean, paramString3, parama, params.JvK.getResources().getString(2131755920));
     AppMethodBeat.o(31378);
     return params;
   }
@@ -439,24 +440,24 @@ public final class o
     AppMethodBeat.i(31379);
     if (((paramString1 == null) || (paramString1.length() == 0)) && ((paramString2 == null) || (paramString2.length() == 0)))
     {
-      ad.e("MicroMsg.MMConfirmDialog", "showDialogItem1 fail, title message both are empty");
+      ae.e("MicroMsg.MMConfirmDialog", "showDialogItem1 fail, title message both are empty");
       AppMethodBeat.o(31379);
       return null;
     }
-    paramString2 = new d.a(params.Jbc);
-    Object localObject = params.Jbc.getIntent().getExtras().getString("Select_Conv_User", null);
+    paramString2 = new d.a(params.JvK);
+    Object localObject = params.JvK.getIntent().getExtras().getString("Select_Conv_User", null);
     if (localObject != null)
     {
-      localObject = bt.U(((String)localObject).split(","));
-      a(params.Jbc, paramString2, localObject);
+      localObject = bu.U(((String)localObject).split(","));
+      a(params.JvK, paramString2, localObject);
     }
-    paramString2.yP(true);
-    paramString2.au(paramString4 + paramString1).yR(false).yS(false);
+    paramString2.zd(true);
+    paramString2.at(paramString4 + paramString1).zf(false).zg(false);
     if (paramBoolean) {
-      paramString2.yQ(true);
+      paramString2.ze(true);
     }
-    paramString1 = paramString2.fMb();
-    a(params.Jbc, paramString1, paramString3, null, parama, parama);
+    paramString1 = paramString2.fQv();
+    a(params.JvK, paramString1, paramString3, null, parama, parama);
     paramString1.show();
     AppMethodBeat.o(31379);
     return paramString1;
@@ -473,32 +474,32 @@ public final class o
   public static d a(s params, String paramString1, boolean paramBoolean, int paramInt, String paramString2, y.a parama)
   {
     AppMethodBeat.i(31391);
-    d.a locala = new d.a(params.Jbc);
-    Object localObject = params.Jbc.getIntent().getExtras().getString("Select_Conv_User", null);
+    d.a locala = new d.a(params.JvK);
+    Object localObject = params.JvK.getIntent().getExtras().getString("Select_Conv_User", null);
     if (localObject != null) {}
-    for (localObject = bt.U(((String)localObject).split(","));; localObject = null)
+    for (localObject = bu.U(((String)localObject).split(","));; localObject = null)
     {
-      a(params.Jbc, locala, localObject);
-      locala.yP(true);
+      a(params.JvK, locala, localObject);
+      locala.zd(true);
       switch (paramInt)
       {
       default: 
-        localObject = params.Jbc.getResources().getString(2131755278);
+        localObject = params.JvK.getResources().getString(2131755278);
       }
       for (;;)
       {
-        locala.au((String)localObject + paramString1).yR(false).yS(false);
+        locala.at((String)localObject + paramString1).zf(false).zg(false);
         if (paramBoolean) {
-          locala.yQ(true);
+          locala.ze(true);
         }
-        paramString1 = locala.fMb();
-        a(params.Jbc, paramString1, paramString2, null, parama, parama);
+        paramString1 = locala.fQv();
+        a(params.JvK, paramString1, paramString2, null, parama, parama);
         paramString1.show();
         AppMethodBeat.o(31391);
         return paramString1;
-        localObject = params.Jbc.getResources().getString(2131755926);
+        localObject = params.JvK.getResources().getString(2131755926);
         continue;
-        localObject = params.Jbc.getResources().getString(2131755820);
+        localObject = params.JvK.getResources().getString(2131755820);
       }
     }
   }
@@ -516,24 +517,24 @@ public final class o
     AppMethodBeat.i(31383);
     if ((paramString1 == null) || (paramString1.length() == 0))
     {
-      ad.e("MicroMsg.MMConfirmDialog", "showDialogItem2 fail, message is empty");
+      ae.e("MicroMsg.MMConfirmDialog", "showDialogItem2 fail, message is empty");
       AppMethodBeat.o(31383);
       return null;
     }
-    d.a locala = new d.a(params.Jbc);
-    Object localObject = params.Jbc.getIntent().getExtras().getString("Select_Conv_User", null);
+    d.a locala = new d.a(params.JvK);
+    Object localObject = params.JvK.getIntent().getExtras().getString("Select_Conv_User", null);
     if (localObject != null)
     {
-      localObject = bt.U(((String)localObject).split(","));
-      a(params.Jbc, locala, localObject);
+      localObject = bu.U(((String)localObject).split(","));
+      a(params.JvK, locala, localObject);
     }
-    locala.yP(true);
-    locala.au(paramString1).yR(false).yS(false);
+    locala.zd(true);
+    locala.at(paramString1).zf(false).zg(false);
     if (paramBoolean) {
-      locala.yQ(true);
+      locala.ze(true);
     }
-    paramString1 = locala.fMb();
-    a(params.Jbc, paramString1, paramString2, null, parama, parama);
+    paramString1 = locala.fQv();
+    a(params.JvK, paramString1, paramString2, null, parama, parama);
     paramString1.show();
     AppMethodBeat.o(31383);
     return paramString1;
@@ -552,21 +553,21 @@ public final class o
     AppMethodBeat.i(31387);
     if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0))
     {
-      ad.e("MicroMsg.MMConfirmDialog", "showDialogItem3 fail, imgData is null");
+      ae.e("MicroMsg.MMConfirmDialog", "showDialogItem3 fail, imgData is null");
       AppMethodBeat.o(31387);
       return null;
     }
-    d.a locala = new d.a(params.Jbc);
-    Object localObject = params.Jbc.getIntent().getExtras().getString("Select_Conv_User", null);
+    d.a locala = new d.a(params.JvK);
+    Object localObject = params.JvK.getIntent().getExtras().getString("Select_Conv_User", null);
     if (localObject != null)
     {
-      localObject = bt.U(((String)localObject).split(","));
-      a(params.Jbc, locala, localObject);
+      localObject = bu.U(((String)localObject).split(","));
+      a(params.JvK, locala, localObject);
     }
-    locala.yP(true);
-    locala.yR(false).yS(false);
+    locala.zd(true);
+    locala.zf(false).zg(false);
     if (paramBoolean) {
-      locala.yQ(true);
+      locala.ze(true);
     }
     if ((paramArrayOfByte != null) && (paramArrayOfByte.length > 0))
     {
@@ -578,15 +579,15 @@ public final class o
       {
         paramArrayOfByte = (byte[])localObject;
         if (i != 0) {
-          paramArrayOfByte = com.tencent.mm.sdk.platformtools.g.a((Bitmap)localObject, i);
+          paramArrayOfByte = h.a((Bitmap)localObject, i);
         }
         locala.a(paramArrayOfByte, true, 3);
         a(locala, paramArrayOfByte);
-        locala.yP(false);
+        locala.zd(false);
       }
     }
-    paramArrayOfByte = locala.fMb();
-    a(params.Jbc, paramArrayOfByte, paramString, null, parama, parama);
+    paramArrayOfByte = locala.fQv();
+    a(params.JvK, paramArrayOfByte, paramString, null, parama, parama);
     paramArrayOfByte.show();
     AppMethodBeat.o(31387);
     return paramArrayOfByte;
@@ -597,12 +598,12 @@ public final class o
     AppMethodBeat.i(31374);
     if (paramObject != null) {
       if ((paramObject instanceof String)) {
-        paramObject = bt.U(((String)paramObject).split(","));
+        paramObject = bu.U(((String)paramObject).split(","));
       }
     }
     for (;;)
     {
-      if (bt.hj(paramObject))
+      if (bu.ht(paramObject))
       {
         AppMethodBeat.o(31374);
         return;
@@ -615,27 +616,27 @@ public final class o
         if (paramObject.size() == 1)
         {
           paramObject = (String)paramObject.get(0);
-          int i = com.tencent.mm.cc.a.fromDPToPix(paramContext, (int)(20.0F * com.tencent.mm.cc.a.eb(paramContext)));
+          int i = com.tencent.mm.cb.a.fromDPToPix(paramContext, (int)(20.0F * com.tencent.mm.cb.a.ef(paramContext)));
           Object localObject1 = paramContext.getString(2131762564);
-          parama.as(((com.tencent.mm.plugin.emoji.b.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.emoji.b.a.class)).a(paramContext, ((String)localObject1).toString(), i)).afh(3);
-          localObject1 = ((com.tencent.mm.plugin.messenger.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.a.b.class)).zf(paramObject);
-          i = com.tencent.mm.cc.a.fromDPToPix(paramContext, (int)(14.0F * com.tencent.mm.cc.a.eb(paramContext)));
-          if (w.vF(paramObject))
+          parama.ar(((com.tencent.mm.plugin.emoji.b.a)g.ab(com.tencent.mm.plugin.emoji.b.a.class)).a(paramContext, ((String)localObject1).toString(), i)).afQ(3);
+          localObject1 = ((com.tencent.mm.plugin.messenger.a.b)g.ab(com.tencent.mm.plugin.messenger.a.b.class)).zP(paramObject);
+          i = com.tencent.mm.cb.a.fromDPToPix(paramContext, (int)(14.0F * com.tencent.mm.cb.a.ef(paramContext)));
+          if (x.wb(paramObject))
           {
-            Object localObject2 = paramContext.getString(2131762993, new Object[] { Integer.valueOf(((com.tencent.mm.plugin.chatroom.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.chatroom.a.b.class)).yS(paramObject)) });
+            Object localObject2 = paramContext.getString(2131762993, new Object[] { Integer.valueOf(((com.tencent.mm.plugin.chatroom.a.b)g.ab(com.tencent.mm.plugin.chatroom.a.b.class)).zC(paramObject)) });
             localObject1 = (String)localObject1 + (String)localObject2;
-            localObject1 = ((com.tencent.mm.plugin.emoji.b.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.emoji.b.a.class)).a(paramContext, ((String)localObject1).toString(), i);
-            localObject2 = z.jO(paramContext).inflate(2131493711, null);
+            localObject1 = ((com.tencent.mm.plugin.emoji.b.a)g.ab(com.tencent.mm.plugin.emoji.b.a.class)).a(paramContext, ((String)localObject1).toString(), i);
+            localObject2 = z.jV(paramContext).inflate(2131493711, null);
             GridView localGridView = (GridView)((View)localObject2).findViewById(2131297961);
             final ArrayList localArrayList = new ArrayList();
-            final List localList = ((com.tencent.mm.plugin.chatroom.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.chatroom.a.b.class)).yQ(paramObject);
+            final List localList = ((com.tencent.mm.plugin.chatroom.a.b)g.ab(com.tencent.mm.plugin.chatroom.a.b.class)).zA(paramObject);
             parama.a(paramObject, (CharSequence)localObject1, Boolean.TRUE, new d.a.c()new d.a.a
             {
-              public final void fcz()
+              public final void fgn()
               {
                 AppMethodBeat.i(31342);
-                bt.hideVKB(this.EVP);
-                if ((localArrayList.size() == 0) && (!bt.isNullOrNil(paramObject))) {
+                bu.hideVKB(this.Fok);
+                if ((localArrayList.size() == 0) && (!bu.isNullOrNil(paramObject))) {
                   o.a(localArrayList, localList);
                 }
                 AppMethodBeat.o(31342);
@@ -656,19 +657,19 @@ public final class o
               if (localList.size() <= 16) {
                 break label450;
               }
-              localGridView.setLayoutParams(new LinearLayout.LayoutParams(-1, com.tencent.mm.cc.a.ax(paramContext, 2131165265)));
-              localGridView.setPadding(com.tencent.mm.cc.a.ax(paramContext, 2131165261), 0, com.tencent.mm.cc.a.ax(paramContext, 2131165261), 0);
+              localGridView.setLayoutParams(new LinearLayout.LayoutParams(-1, com.tencent.mm.cb.a.ax(paramContext, 2131165265)));
+              localGridView.setPadding(com.tencent.mm.cb.a.ax(paramContext, 2131165261), 0, com.tencent.mm.cb.a.ax(paramContext, 2131165261), 0);
             }
             for (;;)
             {
-              parama.KWr.IaI = ((View)localObject2);
+              parama.LsP.IuP = ((View)localObject2);
               AppMethodBeat.o(31374);
               return;
               label450:
-              localGridView.setPadding(0, 0, 0, com.tencent.mm.cc.a.ax(paramContext, 2131165258));
+              localGridView.setPadding(0, 0, 0, com.tencent.mm.cb.a.ax(paramContext, 2131165258));
             }
           }
-          parama.a(paramObject, ((com.tencent.mm.plugin.emoji.b.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.emoji.b.a.class)).a(paramContext, ((String)localObject1).toString(), i), Boolean.FALSE, null, new d.a.a()
+          parama.a(paramObject, ((com.tencent.mm.plugin.emoji.b.a)g.ab(com.tencent.mm.plugin.emoji.b.a.class)).a(paramContext, ((String)localObject1).toString(), i), Boolean.FALSE, null, new d.a.a()
           {
             public final void y(ImageView paramAnonymousImageView, String paramAnonymousString)
             {
@@ -680,8 +681,8 @@ public final class o
           AppMethodBeat.o(31374);
           return;
         }
-        parama.gZ(d(paramContext, paramObject));
-        parama.aXF(paramContext.getString(2131761383)).afh(3);
+        parama.he(d(paramContext, paramObject));
+        parama.aZh(paramContext.getString(2131761383)).afQ(3);
         AppMethodBeat.o(31374);
         return;
       }
@@ -692,7 +693,7 @@ public final class o
   private static void a(Context paramContext, d paramd, String paramString1, String paramString2, y.a parama1, y.a parama2)
   {
     AppMethodBeat.i(31376);
-    if (!bt.isNullOrNil(paramString1))
+    if (!bu.isNullOrNil(paramString1))
     {
       paramString2 = paramString1;
       if (paramString1.length() != 0) {}
@@ -701,7 +702,7 @@ public final class o
     {
       paramString2 = paramContext.getResources().getString(2131757562);
     }
-    if (!bt.isNullOrNil(null)) {
+    if (!bu.isNullOrNil(null)) {
       throw new NullPointerException();
     }
     paramContext = paramContext.getResources().getString(2131755691);
@@ -718,7 +719,7 @@ public final class o
     for (boolean bool = true;; bool = false)
     {
       Assert.assertTrue(bool);
-      if ((!paramBoolean) || (!bt.isNullOrNil(paramString))) {
+      if ((!paramBoolean) || (!bu.isNullOrNil(paramString))) {
         break;
       }
       paramView.setVisibility(paramInt2);
@@ -736,18 +737,18 @@ public final class o
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(193444);
+        AppMethodBeat.i(186724);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
         localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/pluginsdk/ui/applet/ConfirmDialog$14", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-        if (this.EVS != null) {
-          this.EVS.a(true, o.fR(paramView), o.fS(paramView));
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/pluginsdk/ui/applet/ConfirmDialog$14", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        if (this.Fon != null) {
+          this.Fon.a(true, o.fQ(paramView), o.fR(paramView));
         }
         paramo.dismiss();
         paramo.setFocusable(false);
         paramo.setTouchable(false);
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/pluginsdk/ui/applet/ConfirmDialog$14", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(193444);
+        AppMethodBeat.o(186724);
       }
     });
     paramView = (Button)paramView.findViewById(2131298558);
@@ -759,9 +760,9 @@ public final class o
           AppMethodBeat.i(31346);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
           localb.bd(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/pluginsdk/ui/applet/ConfirmDialog$15", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-          if (this.EVS != null) {
-            this.EVS.a(false, null, 0);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/pluginsdk/ui/applet/ConfirmDialog$15", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+          if (this.Fon != null) {
+            this.Fon.a(false, null, 0);
           }
           paramo.dismiss();
           paramo.setFocusable(false);
@@ -779,21 +780,21 @@ public final class o
     AppMethodBeat.i(31406);
     try
     {
-      if (!params.Jbc.isFinishing())
+      if (!params.JvK.isFinishing())
       {
         paramo.setInputMethodMode(1);
         paramo.setSoftInputMode(16);
         paramo.setFocusable(true);
         paramo.setTouchable(true);
-        paramo.showAtLocation(params.Jbc.getWindow().getDecorView(), 17, 0, 0);
+        paramo.showAtLocation(params.JvK.getWindow().getDecorView(), 17, 0, 0);
       }
       AppMethodBeat.o(31406);
       return;
     }
     catch (Exception params)
     {
-      ad.e("MicroMsg.MMConfirmDialog", "show dialog fail: %s", new Object[] { params.getMessage() });
-      ad.printErrStackTrace("MicroMsg.MMConfirmDialog", params, "", new Object[0]);
+      ae.e("MicroMsg.MMConfirmDialog", "show dialog fail: %s", new Object[] { params.getMessage() });
+      ae.printErrStackTrace("MicroMsg.MMConfirmDialog", params, "", new Object[0]);
       AppMethodBeat.o(31406);
     }
   }
@@ -802,33 +803,33 @@ public final class o
   {
     AppMethodBeat.i(31401);
     String str;
-    if (!bt.isNullOrNil(paramString))
+    if (!bu.isNullOrNil(paramString))
     {
       str = paramString;
       if (paramString.length() != 0) {}
     }
     else
     {
-      str = params.Jbc.getResources().getString(2131757562);
+      str = params.JvK.getResources().getString(2131757562);
     }
-    parama.aXM(str).c(new DialogInterface.OnClickListener()
+    parama.aZo(str).c(new DialogInterface.OnClickListener()
     {
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
-        AppMethodBeat.i(193446);
-        if (this.EVS != null) {
-          this.EVS.a(true, o.fR(paramView), o.fS(paramView));
+        AppMethodBeat.i(186726);
+        if (this.Fon != null) {
+          this.Fon.a(true, o.fQ(paramView), o.fR(paramView));
         }
-        AppMethodBeat.o(193446);
+        AppMethodBeat.o(186726);
       }
     });
-    parama.afm(2131755691).d(new DialogInterface.OnClickListener()
+    parama.afV(2131755691).d(new DialogInterface.OnClickListener()
     {
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
         AppMethodBeat.i(31358);
-        if (this.EVS != null) {
-          this.EVS.a(false, null, 0);
+        if (this.Fon != null) {
+          this.Fon.a(false, null, 0);
         }
         AppMethodBeat.o(31358);
       }
@@ -839,18 +840,18 @@ public final class o
   public static void a(s params, String paramString1, String paramString2, String paramString3, y.a parama)
   {
     AppMethodBeat.i(31397);
-    params = new a(params.Jbc).dP(paramString1).aMS(paramString2).l(Boolean.FALSE);
-    params.EVV = paramString3;
-    params.a(parama).jcs.show();
+    params = new a(params.JvK).dQ(paramString1).aOo(paramString2).l(Boolean.FALSE);
+    params.Foq = paramString3;
+    params.a(parama).jfl.show();
     AppMethodBeat.o(31397);
   }
   
   private static void a(d.a parama, Context paramContext, String paramString)
   {
     AppMethodBeat.i(31402);
-    parama.aXF(paramString);
-    parama.aff(paramContext.getResources().getColor(2131100711));
-    parama.afg(2);
+    parama.aZh(paramString);
+    parama.afO(paramContext.getResources().getColor(2131100711));
+    parama.afP(2);
     AppMethodBeat.o(31402);
   }
   
@@ -874,15 +875,15 @@ public final class o
     AppMethodBeat.i(31380);
     if (((paramString1 == null) || (paramString1.length() == 0)) && ((paramString3 == null) || (paramString3.length() == 0)))
     {
-      ad.e("MicroMsg.MMConfirmDialog", "showDialogItem1 fail, title message both are empty");
+      ae.e("MicroMsg.MMConfirmDialog", "showDialogItem1 fail, title message both are empty");
       AppMethodBeat.o(31380);
       return null;
     }
-    View localView = View.inflate(params.Jbc, 2131493587, null);
-    d.a locala = new d.a(params.Jbc);
-    locala.yR(false);
-    locala.yS(false);
-    a(locala, params.Jbc, paramString1);
+    View localView = View.inflate(params.JvK, 2131493587, null);
+    d.a locala = new d.a(params.JvK);
+    locala.zf(false);
+    locala.zg(false);
+    a(locala, params.JvK, paramString1);
     if (localView != null)
     {
       paramString1 = (EditText)localView.findViewById(2131298569);
@@ -893,15 +894,15 @@ public final class o
     }
     a(params, locala, parama, localView, paramString5);
     paramString1 = (TextView)localView.findViewById(2131298568);
-    paramString1.setText(com.tencent.mm.pluginsdk.ui.span.k.b(params.Jbc, paramString3, paramString1.getTextSize()));
+    paramString1.setText(com.tencent.mm.pluginsdk.ui.span.k.b(params.JvK, paramString3, paramString1.getTextSize()));
     localView.findViewById(2131298564).setVisibility(8);
-    int i = BackwardSupportUtil.b.g(params.Jbc, 120.0F);
+    int i = BackwardSupportUtil.b.h(params.JvK, 120.0F);
     params = (CdnImageView)localView.findViewById(2131298570);
     if (params != null) {
-      params.aI(paramString2, i, i);
+      params.aK(paramString2, i, i);
     }
-    locala.gY(localView);
-    params = locala.fMb();
+    locala.hd(localView);
+    params = locala.fQv();
     params.show();
     AppMethodBeat.o(31380);
     return params;
@@ -918,41 +919,41 @@ public final class o
   public static d b(s params, String paramString1, boolean paramBoolean, String paramString2, y.a parama)
   {
     AppMethodBeat.i(31385);
-    if ((paramString1 == null) || (!i.fv(paramString1)))
+    if ((paramString1 == null) || (!com.tencent.mm.vfs.o.fB(paramString1)))
     {
-      ad.e("MicroMsg.MMConfirmDialog", "showDialogItem3 fail, img does not exist");
+      ae.e("MicroMsg.MMConfirmDialog", "showDialogItem3 fail, img does not exist");
       AppMethodBeat.o(31385);
       return null;
     }
-    d.a locala = new d.a(params.Jbc);
-    Object localObject = params.Jbc.getIntent().getExtras().getString("Select_Conv_User", null);
+    d.a locala = new d.a(params.JvK);
+    Object localObject = params.JvK.getIntent().getExtras().getString("Select_Conv_User", null);
     if (localObject != null)
     {
-      localObject = bt.U(((String)localObject).split(","));
-      a(params.Jbc, locala, localObject);
+      localObject = bu.U(((String)localObject).split(","));
+      a(params.JvK, locala, localObject);
     }
-    locala.yP(true);
-    locala.yR(false).yS(false);
+    locala.zd(true);
+    locala.zf(false).zg(false);
     if (paramBoolean) {
-      locala.yQ(true);
+      locala.ze(true);
     }
-    if (!bt.isNullOrNil(paramString1))
+    if (!bu.isNullOrNil(paramString1))
     {
-      localObject = com.tencent.mm.sdk.platformtools.g.aQf(paramString1);
-      int i = BackwardSupportUtil.ExifHelper.cY(paramString1);
+      localObject = h.aRC(paramString1);
+      int i = BackwardSupportUtil.ExifHelper.df(paramString1);
       if (localObject != null)
       {
         paramString1 = (String)localObject;
         if (i != 0) {
-          paramString1 = com.tencent.mm.sdk.platformtools.g.a((Bitmap)localObject, i);
+          paramString1 = h.a((Bitmap)localObject, i);
         }
         locala.a(paramString1, true, 3);
         a(locala, paramString1);
-        locala.yP(false);
+        locala.zd(false);
       }
     }
-    paramString1 = locala.fMb();
-    a(params.Jbc, paramString1, paramString2, null, parama, parama);
+    paramString1 = locala.fQv();
+    a(params.JvK, paramString1, paramString2, null, parama, parama);
     paramString1.show();
     AppMethodBeat.o(31385);
     return paramString1;
@@ -972,7 +973,7 @@ public final class o
         if ((i > 8) || (paramContext == null)) {
           break label102;
         }
-        ImageView localImageView = (ImageView)paramContext.findViewById(EVO[i]);
+        ImageView localImageView = (ImageView)paramContext.findViewById(Foj[i]);
         if (str == null) {
           break label102;
         }
@@ -990,7 +991,7 @@ public final class o
     }
   }
   
-  private static com.tencent.mm.ui.base.o fQ(View paramView)
+  private static com.tencent.mm.ui.base.o fP(View paramView)
   {
     AppMethodBeat.i(31400);
     paramView = new com.tencent.mm.ui.base.o(paramView, -1, -1);
@@ -998,7 +999,7 @@ public final class o
     return paramView;
   }
   
-  private static void u(View paramView, boolean paramBoolean)
+  private static void v(View paramView, boolean paramBoolean)
   {
     AppMethodBeat.i(31404);
     if (paramView != null)
@@ -1021,26 +1022,26 @@ public final class o
   
   public static final class a
   {
-    final d.a EVU;
-    public String EVV;
-    public d jcs;
+    final d.a Fop;
+    public String Foq;
+    public d jfl;
     Context mContext;
-    public DialogInterface.OnDismissListener naV;
+    public DialogInterface.OnDismissListener ngd;
     
     public a(Context paramContext)
     {
       AppMethodBeat.i(31360);
-      this.EVV = null;
+      this.Foq = null;
       this.mContext = paramContext;
-      this.EVU = new d.a(this.mContext);
-      this.EVU.yR(false);
-      this.EVU.yS(false);
-      this.EVU.a(new d.a.d()
+      this.Fop = new d.a(this.mContext);
+      this.Fop.zf(false);
+      this.Fop.zg(false);
+      this.Fop.a(new d.a.d()
       {
         public final CharSequence a(CharSequence paramAnonymousCharSequence, float paramAnonymousFloat)
         {
           AppMethodBeat.i(31359);
-          paramAnonymousCharSequence = ((com.tencent.mm.plugin.emoji.b.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.emoji.b.a.class)).a(o.a.this.mContext, paramAnonymousCharSequence, paramAnonymousFloat);
+          paramAnonymousCharSequence = ((com.tencent.mm.plugin.emoji.b.a)g.ab(com.tencent.mm.plugin.emoji.b.a.class)).a(o.a.this.mContext, paramAnonymousCharSequence, paramAnonymousFloat);
           AppMethodBeat.o(31359);
           return paramAnonymousCharSequence;
         }
@@ -1048,10 +1049,10 @@ public final class o
       AppMethodBeat.o(31360);
     }
     
-    public final a YR(int paramInt)
+    public final a Zx(int paramInt)
     {
       AppMethodBeat.i(31372);
-      this.EVV = this.mContext.getResources().getString(paramInt);
+      this.Foq = this.mContext.getResources().getString(paramInt);
       AppMethodBeat.o(31372);
       return this;
     }
@@ -1059,11 +1060,11 @@ public final class o
     public final a a(y.a parama)
     {
       AppMethodBeat.i(31373);
-      this.jcs = this.EVU.fMb();
-      if (this.naV != null) {
-        this.jcs.setOnDismissListener(this.naV);
+      this.jfl = this.Fop.fQv();
+      if (this.ngd != null) {
+        this.jfl.setOnDismissListener(this.ngd);
       }
-      o.a(this.mContext, this.jcs, this.EVV, parama, parama);
+      o.a(this.mContext, this.jfl, this.Foq, parama, parama);
       AppMethodBeat.o(31373);
       return this;
     }
@@ -1071,89 +1072,89 @@ public final class o
     public final a a(d.a.b paramb)
     {
       AppMethodBeat.i(31368);
-      this.EVU.c(paramb);
+      this.Fop.c(paramb);
       AppMethodBeat.o(31368);
       return this;
     }
     
-    public final a aMR(String paramString)
+    public final a aOn(String paramString)
     {
       AppMethodBeat.i(31362);
-      int i = com.tencent.mm.cc.a.fromDPToPix(this.mContext, (int)(20.0F * com.tencent.mm.cc.a.eb(this.mContext)));
-      if (!bt.isNullOrNil(paramString))
+      int i = com.tencent.mm.cb.a.fromDPToPix(this.mContext, (int)(20.0F * com.tencent.mm.cb.a.ef(this.mContext)));
+      if (!bu.isNullOrNil(paramString))
       {
-        paramString = ((com.tencent.mm.plugin.emoji.b.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.emoji.b.a.class)).a(this.mContext, paramString.toString(), i);
-        this.EVU.as(paramString);
+        paramString = ((com.tencent.mm.plugin.emoji.b.a)g.ab(com.tencent.mm.plugin.emoji.b.a.class)).a(this.mContext, paramString.toString(), i);
+        this.Fop.ar(paramString);
       }
       AppMethodBeat.o(31362);
       return this;
     }
     
-    public final a aMS(String paramString)
+    public final a aOo(String paramString)
     {
       AppMethodBeat.i(31364);
-      int i = com.tencent.mm.cc.a.fromDPToPix(this.mContext, (int)(14.0F * com.tencent.mm.cc.a.eb(this.mContext)));
-      if (!bt.isNullOrNil(paramString))
+      int i = com.tencent.mm.cb.a.fromDPToPix(this.mContext, (int)(14.0F * com.tencent.mm.cb.a.ef(this.mContext)));
+      if (!bu.isNullOrNil(paramString))
       {
-        paramString = ((com.tencent.mm.plugin.emoji.b.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.emoji.b.a.class)).a(this.mContext, paramString.toString(), i);
-        this.EVU.au(paramString);
+        paramString = ((com.tencent.mm.plugin.emoji.b.a)g.ab(com.tencent.mm.plugin.emoji.b.a.class)).a(this.mContext, paramString.toString(), i);
+        this.Fop.at(paramString);
       }
       AppMethodBeat.o(31364);
       return this;
     }
     
-    public final a aMT(String paramString)
+    public final a aOp(String paramString)
     {
       AppMethodBeat.i(31365);
-      this.EVU.aXI(paramString);
+      this.Fop.aZk(paramString);
       AppMethodBeat.o(31365);
       return this;
     }
     
-    public final a aMU(String paramString)
+    public final a aOq(String paramString)
     {
       AppMethodBeat.i(31367);
-      o.a(this.mContext, this.EVU, paramString);
-      this.EVU.yP(false);
+      o.a(this.mContext, this.Fop, paramString);
+      this.Fop.zd(false);
       AppMethodBeat.o(31367);
       return this;
     }
     
-    public final a dP(Object paramObject)
+    public final a dQ(Object paramObject)
     {
       AppMethodBeat.i(31361);
-      o.b(this.mContext, this.EVU, paramObject);
-      this.EVU.yP(true);
+      o.b(this.mContext, this.Fop, paramObject);
+      this.Fop.zd(true);
       AppMethodBeat.o(31361);
       return this;
     }
     
-    public final a fT(View paramView)
+    public final a fS(View paramView)
     {
       AppMethodBeat.i(31369);
-      this.EVU.gY(paramView);
+      this.Fop.hd(paramView);
       AppMethodBeat.o(31369);
       return this;
     }
     
-    public final a fcA()
+    public final a fgo()
     {
       AppMethodBeat.i(31363);
-      this.EVU.afj(2);
+      this.Fop.afS(2);
       AppMethodBeat.o(31363);
       return this;
     }
     
-    public final a fcB()
+    public final a fgp()
     {
-      this.EVU.KWr.IaO = 8;
+      this.Fop.LsP.IuV = 8;
       return this;
     }
     
-    public final a fcC()
+    public final a fgq()
     {
       AppMethodBeat.i(31371);
-      this.EVU.yP(false);
+      this.Fop.zd(false);
       AppMethodBeat.o(31371);
       return this;
     }
@@ -1161,9 +1162,9 @@ public final class o
     public final a i(Bitmap paramBitmap, int paramInt)
     {
       AppMethodBeat.i(31366);
-      this.EVU.a(paramBitmap, true, paramInt);
-      this.EVU.yP(false);
-      o.b(this.EVU, paramBitmap);
+      this.Fop.a(paramBitmap, true, paramInt);
+      this.Fop.zd(false);
+      o.b(this.Fop, paramBitmap);
       AppMethodBeat.o(31366);
       return this;
     }
@@ -1171,9 +1172,9 @@ public final class o
     public final a l(Boolean paramBoolean)
     {
       AppMethodBeat.i(31370);
-      this.EVU.yQ(paramBoolean.booleanValue());
+      this.Fop.ze(paramBoolean.booleanValue());
       if (paramBoolean.booleanValue()) {
-        this.EVU.aXK(this.mContext.getString(2131757559));
+        this.Fop.aZm(this.mContext.getString(2131757559));
       }
       AppMethodBeat.o(31370);
       return this;

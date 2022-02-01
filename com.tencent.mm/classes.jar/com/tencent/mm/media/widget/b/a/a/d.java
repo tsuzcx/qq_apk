@@ -8,15 +8,15 @@ import d.v;
 import java.util.Iterator;
 import java.util.List;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/media/widget/camera2/effect/request/WCRequestKeyFinder;", "", "()V", "mCaptureRequest", "Landroid/hardware/camera2/CaptureRequest;", "requestKeyFinder", "Landroid/hardware/camera2/CaptureRequest$Key;", "resultKeyFinder", "Landroid/hardware/camera2/CaptureResult$Key;", "requestKey", "T", "effectRequestTag", "Lcom/tencent/mm/media/widget/camera2/effect/request/WCCameraEffectRequestTag;", "list", "", "klass", "Ljava/lang/Class;", "resultKey", "name", "", "setRequestKey", "", "mRequest", "Landroid/hardware/camera2/CaptureRequest$Builder;", "kClass", "plugin-mediaeditor_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/media/widget/camera2/effect/request/WCRequestKeyFinder;", "", "()V", "mCaptureRequest", "Landroid/hardware/camera2/CaptureRequest;", "requestKeyFinder", "Landroid/hardware/camera2/CaptureRequest$Key;", "resultKeyFinder", "Landroid/hardware/camera2/CaptureResult$Key;", "requestKey", "T", "effectRequestTag", "Lcom/tencent/mm/media/widget/camera2/effect/request/WCCameraEffectRequestTag;", "list", "", "klass", "Ljava/lang/Class;", "resultKey", "name", "", "setRequestKey", "", "mRequest", "Landroid/hardware/camera2/CaptureRequest$Builder;", "kClass", "plugin-mediaeditor_release"})
 public final class d
 {
-  public static final d hsO;
+  public static final d hvC;
   
   static
   {
     AppMethodBeat.i(94204);
-    hsO = new d();
+    hvC = new d();
     AppMethodBeat.o(94204);
   }
   
@@ -33,7 +33,7 @@ public final class d
         break;
       }
       paramList = paramClass.next();
-    } while (!p.i(((CaptureRequest.Key)paramList).getName(), parama.hsy));
+    } while (!p.i(((CaptureRequest.Key)paramList).getName(), parama.hvm));
     for (parama = paramList; parama == null; parama = null)
     {
       parama = new v("null cannot be cast to non-null type android.hardware.camera2.CaptureRequest.Key<T>");

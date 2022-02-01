@@ -54,7 +54,7 @@ public final class b
     }
   }
   
-  private Typeface H(Context paramContext)
+  private Typeface I(Context paramContext)
   {
     Object localObject = null;
     if (this.lz) {
@@ -228,7 +228,7 @@ public final class b
   public final void c(Context paramContext, TextPaint paramTextPaint, f.a parama)
   {
     if (c.lE) {
-      a(paramTextPaint, H(paramContext));
+      a(paramTextPaint, I(paramContext));
     }
     do
     {

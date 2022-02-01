@@ -3,28 +3,28 @@ package com.tencent.mm.plugin.gamelife.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.gamelife.a.a;
 import com.tencent.mm.plugin.gamelife.a.b.c;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import d.l;
 import java.util.Map;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "map", "", "", "kotlin.jvm.PlatformType", "Lcom/tencent/mm/plugin/gamelife/api/IGameLifeContact;", "", "onDone"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "map", "", "", "kotlin.jvm.PlatformType", "Lcom/tencent/mm/plugin/gamelife/api/IGameLifeContact;", "", "onDone"})
 final class f$b
   implements b.c
 {
-  public static final b uyj;
+  public static final b uJM;
   
   static
   {
-    AppMethodBeat.i(211362);
-    uyj = new b();
-    AppMethodBeat.o(211362);
+    AppMethodBeat.i(212133);
+    uJM = new b();
+    AppMethodBeat.o(212133);
   }
   
-  public final void ab(Map<String, a> paramMap)
+  public final void ah(Map<String, a> paramMap)
   {
-    AppMethodBeat.i(211361);
-    ad.i("GameLife.ConversationUpdateCallback", "contact prefetch result: ".concat(String.valueOf(paramMap)));
-    AppMethodBeat.o(211361);
+    AppMethodBeat.i(212132);
+    ae.i("GameLife.ConversationUpdateCallback", "contact prefetch result: ".concat(String.valueOf(paramMap)));
+    AppMethodBeat.o(212132);
   }
 }
 

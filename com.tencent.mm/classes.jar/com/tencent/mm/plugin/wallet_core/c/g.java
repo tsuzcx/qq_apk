@@ -4,9 +4,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wallet_core.model.k;
 import com.tencent.mm.plugin.wallet_core.model.t;
 import com.tencent.mm.plugin.wallet_core.model.y;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.al.a;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.storage.aj;
+import com.tencent.mm.storage.am.a;
 import com.tencent.mm.wallet_core.tenpay.model.m;
 import java.util.HashMap;
 import org.json.JSONArray;
@@ -18,7 +18,7 @@ public final class g
   public g()
   {
     AppMethodBeat.i(69900);
-    t.eFC().db.execSQL("WalletBulletin", "delete from WalletBulletin");
+    t.eJj().db.execSQL("WalletBulletin", "delete from WalletBulletin");
     setRequestData(new HashMap());
     AppMethodBeat.o(69900);
   }
@@ -41,43 +41,43 @@ public final class g
   public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(69901);
-    ad.i("MicroMsg.NetSceneGetBannerInfo", "NetSceneGetBannerInfo errCode = " + paramInt + " " + paramJSONObject);
+    ae.i("MicroMsg.NetSceneGetBannerInfo", "NetSceneGetBannerInfo errCode = " + paramInt + " " + paramJSONObject);
     if (paramInt == 0)
     {
       y.bn(paramJSONObject);
       long l = paramJSONObject.optLong("banner_update_interval", 0L);
-      ad.i("MicroMsg.NetSceneGetBannerInfo", "update_interval=".concat(String.valueOf(l)));
-      com.tencent.mm.kernel.g.ajD();
-      com.tencent.mm.kernel.g.ajC().ajl().set(al.a.Iuf, Long.valueOf(l));
+      ae.i("MicroMsg.NetSceneGetBannerInfo", "update_interval=".concat(String.valueOf(l)));
+      com.tencent.mm.kernel.g.ajS();
+      com.tencent.mm.kernel.g.ajR().ajA().set(am.a.IOC, Long.valueOf(l));
       paramString = paramJSONObject.optJSONObject("lbs_info");
       if (paramString != null)
       {
         JSONArray localJSONArray = paramString.optJSONArray("config_array");
         if ((localJSONArray != null) && (localJSONArray.length() > 0))
         {
-          k localk = k.eFj();
+          k localk = k.eIQ();
           if (localJSONArray != null)
           {
-            ad.d("MicroMsg.GpsReportHelper", localJSONArray.toString());
-            localk.CWY = localJSONArray;
-            com.tencent.mm.kernel.g.ajD();
-            com.tencent.mm.kernel.g.ajC().ajl().set(al.a.IuW, localJSONArray.toString());
+            ae.d("MicroMsg.GpsReportHelper", localJSONArray.toString());
+            localk.DoD = localJSONArray;
+            com.tencent.mm.kernel.g.ajS();
+            com.tencent.mm.kernel.g.ajR().ajA().set(am.a.IPu, localJSONArray.toString());
           }
         }
-        com.tencent.mm.kernel.g.ajD();
-        com.tencent.mm.kernel.g.ajC().ajl().set(al.a.IuX, paramString.optString("title"));
-        com.tencent.mm.kernel.g.ajD();
-        com.tencent.mm.kernel.g.ajC().ajl().set(al.a.IuY, paramString.optString("content"));
+        com.tencent.mm.kernel.g.ajS();
+        com.tencent.mm.kernel.g.ajR().ajA().set(am.a.IPv, paramString.optString("title"));
+        com.tencent.mm.kernel.g.ajS();
+        com.tencent.mm.kernel.g.ajR().ajA().set(am.a.IPw, paramString.optString("content"));
       }
       paramJSONObject = paramJSONObject.optJSONObject("realname_info");
       if (paramJSONObject != null)
       {
         paramString = paramJSONObject.optString("title");
         paramJSONObject = paramJSONObject.optString("balance_title");
-        com.tencent.mm.kernel.g.ajD();
-        com.tencent.mm.kernel.g.ajC().ajl().set(al.a.IuZ, paramString);
-        com.tencent.mm.kernel.g.ajD();
-        com.tencent.mm.kernel.g.ajC().ajl().set(al.a.Iva, paramJSONObject);
+        com.tencent.mm.kernel.g.ajS();
+        com.tencent.mm.kernel.g.ajR().ajA().set(am.a.IPx, paramString);
+        com.tencent.mm.kernel.g.ajS();
+        com.tencent.mm.kernel.g.ajR().ajA().set(am.a.IPy, paramJSONObject);
       }
     }
     AppMethodBeat.o(69901);
@@ -85,7 +85,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.c.g
  * JD-Core Version:    0.7.0.1
  */

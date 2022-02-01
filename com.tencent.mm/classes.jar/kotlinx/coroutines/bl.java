@@ -3,22 +3,22 @@ package kotlinx.coroutines;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/coroutines/InactiveNodeList;", "Lkotlinx/coroutines/Incomplete;", "list", "Lkotlinx/coroutines/NodeList;", "(Lkotlinx/coroutines/NodeList;)V", "isActive", "", "()Z", "getList", "()Lkotlinx/coroutines/NodeList;", "toString", "", "kotlinx-coroutines-core"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/coroutines/InactiveNodeList;", "Lkotlinx/coroutines/Incomplete;", "list", "Lkotlinx/coroutines/NodeList;", "(Lkotlinx/coroutines/NodeList;)V", "isActive", "", "()Z", "getList", "()Lkotlinx/coroutines/NodeList;", "toString", "", "kotlinx-coroutines-core"})
 public final class bl
   implements bm
 {
-  final ca NIJ;
+  final ca OfP;
   
   public bl(ca paramca)
   {
     AppMethodBeat.i(118136);
-    this.NIJ = paramca;
+    this.OfP = paramca;
     AppMethodBeat.o(118136);
   }
   
-  public final ca gvq()
+  public final ca gzS()
   {
-    return this.NIJ;
+    return this.OfP;
   }
   
   public final boolean isActive()
@@ -31,7 +31,7 @@ public final class bl
     AppMethodBeat.i(118135);
     if (am.getDEBUG())
     {
-      str = this.NIJ.getString("New");
+      str = this.OfP.getString("New");
       AppMethodBeat.o(118135);
       return str;
     }

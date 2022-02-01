@@ -4,7 +4,7 @@ import android.database.AbstractCursor;
 import android.database.CursorIndexOutOfBoundsException;
 import android.database.CursorWindow;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public final class e
   extends AbstractCursor
@@ -29,7 +29,7 @@ public final class e
     this(paramArrayOfString);
   }
   
-  private static int dZ(Object paramObject)
+  private static int ea(Object paramObject)
   {
     if (paramObject == null) {
       return 0;
@@ -136,7 +136,7 @@ public final class e
           i = 0;
           label72:
           if (i < k) {
-            switch (dZ(get(i)))
+            switch (ea(get(i)))
             {
             }
           }
@@ -224,7 +224,7 @@ public final class e
       AppMethodBeat.o(133340);
       return d;
     }
-    double d = bt.getDouble(localObject.toString(), 0.0D);
+    double d = bu.getDouble(localObject.toString(), 0.0D);
     AppMethodBeat.o(133340);
     return d;
   }
@@ -244,7 +244,7 @@ public final class e
       AppMethodBeat.o(133339);
       return f;
     }
-    float f = bt.getFloat(localObject.toString(), 0.0F);
+    float f = bu.getFloat(localObject.toString(), 0.0F);
     AppMethodBeat.o(133339);
     return f;
   }
@@ -264,7 +264,7 @@ public final class e
       AppMethodBeat.o(133337);
       return paramInt;
     }
-    paramInt = bt.getInt(localObject.toString(), 0);
+    paramInt = bu.getInt(localObject.toString(), 0);
     AppMethodBeat.o(133337);
     return paramInt;
   }
@@ -284,7 +284,7 @@ public final class e
       AppMethodBeat.o(133338);
       return l;
     }
-    long l = bt.getLong(localObject.toString(), 0L);
+    long l = bu.getLong(localObject.toString(), 0L);
     AppMethodBeat.o(133338);
     return l;
   }
@@ -326,7 +326,7 @@ public final class e
   public final int getType(int paramInt)
   {
     AppMethodBeat.i(133342);
-    paramInt = dZ(get(paramInt));
+    paramInt = ea(get(paramInt));
     AppMethodBeat.o(133342);
     return paramInt;
   }

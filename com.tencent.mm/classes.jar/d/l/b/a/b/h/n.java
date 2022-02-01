@@ -12,13 +12,13 @@ public final class n
   extends AbstractList<String>
   implements o, RandomAccess
 {
-  public static final o Nrw;
+  public static final o NOC;
   private final List<Object> list;
   
   static
   {
     AppMethodBeat.i(59516);
-    Nrw = new n().grZ();
+    NOC = new n().gwB();
     AppMethodBeat.o(59516);
   }
   
@@ -48,11 +48,11 @@ public final class n
     }
     if ((paramObject instanceof d))
     {
-      paramObject = ((d)paramObject).ffY();
+      paramObject = ((d)paramObject).fjO();
       AppMethodBeat.o(59509);
       return paramObject;
     }
-    paramObject = j.dd((byte[])paramObject);
+    paramObject = j.dg((byte[])paramObject);
     AppMethodBeat.o(59509);
     return paramObject;
   }
@@ -62,7 +62,7 @@ public final class n
     AppMethodBeat.i(59505);
     Object localObject = paramCollection;
     if ((paramCollection instanceof o)) {
-      localObject = ((o)paramCollection).grY();
+      localObject = ((o)paramCollection).gwA();
     }
     boolean bool = this.list.addAll(paramInt, (Collection)localObject);
     this.modCount += 1;
@@ -78,7 +78,7 @@ public final class n
     return bool;
   }
   
-  public final d alg(int paramInt)
+  public final d alQ(int paramInt)
   {
     AppMethodBeat.i(59508);
     Object localObject = this.list.get(paramInt);
@@ -94,9 +94,9 @@ public final class n
       AppMethodBeat.o(59508);
       return locald;
       if ((localObject instanceof String)) {
-        locald = d.bcJ((String)localObject);
+        locald = d.ben((String)localObject);
       } else {
-        locald = d.cZ((byte[])localObject);
+        locald = d.dc((byte[])localObject);
       }
     }
   }
@@ -117,7 +117,7 @@ public final class n
     AppMethodBeat.o(59507);
   }
   
-  public final List<?> grY()
+  public final List<?> gwA()
   {
     AppMethodBeat.i(59510);
     List localList = Collections.unmodifiableList(this.list);
@@ -125,7 +125,7 @@ public final class n
     return localList;
   }
   
-  public final o grZ()
+  public final o gwB()
   {
     AppMethodBeat.i(59511);
     x localx = new x(this);

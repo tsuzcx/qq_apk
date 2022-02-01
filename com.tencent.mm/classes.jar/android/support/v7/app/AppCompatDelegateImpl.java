@@ -357,7 +357,7 @@ final class AppCompatDelegateImpl
   
   private boolean a(PanelFeatureState paramPanelFeatureState)
   {
-    paramPanelFeatureState.X(gx());
+    paramPanelFeatureState.Y(gx());
     paramPanelFeatureState.Zi = new f(paramPanelFeatureState.Zm);
     paramPanelFeatureState.gravity = 81;
     return true;
@@ -813,7 +813,7 @@ final class AppCompatDelegateImpl
   private void gG()
   {
     if (this.YP == null) {
-      this.YP = new e(i.Y(this.mContext));
+      this.YP = new e(i.Z(this.mContext));
     }
   }
   
@@ -1642,7 +1642,7 @@ final class AppCompatDelegateImpl
         localActionBar.onConfigurationChanged(paramConfiguration);
       }
     }
-    android.support.v7.widget.g.jb().aa(this.mContext);
+    android.support.v7.widget.g.jb().ab(this.mContext);
     gv();
   }
   
@@ -1923,7 +1923,7 @@ final class AppCompatDelegateImpl
       this.Zq = false;
     }
     
-    final void X(Context paramContext)
+    final void Y(Context paramContext)
     {
       TypedValue localTypedValue = new TypedValue();
       Resources.Theme localTheme = paramContext.getResources().newTheme();

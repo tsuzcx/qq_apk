@@ -6,11 +6,11 @@ public enum EditTextRestrictType
 {
   static
   {
-    AppMethodBeat.i(190322);
+    AppMethodBeat.i(221796);
     NONE = new EditTextRestrictType("NONE", 0);
     MONEY = new EditTextRestrictType("MONEY", 1);
     $VALUES = new EditTextRestrictType[] { NONE, MONEY };
-    AppMethodBeat.o(190322);
+    AppMethodBeat.o(221796);
   }
   
   private EditTextRestrictType() {}

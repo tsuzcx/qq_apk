@@ -3,60 +3,60 @@ package com.tencent.mm.modelappbrand.a;
 import android.graphics.Bitmap;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ar;
 import java.lang.ref.WeakReference;
 import java.util.Map;
 
 class b$m
   implements b.k
 {
-  private final b hLl;
-  boolean hLm;
+  private final b hOe;
+  boolean hOf;
   final String key;
   private final WeakReference<ImageView> og;
   
   private b$m(ImageView paramImageView, b paramb)
   {
     AppMethodBeat.i(131363);
-    this.hLm = false;
+    this.hOf = false;
     this.og = new WeakReference(paramImageView);
-    this.hLl = paramb;
+    this.hOe = paramb;
     this.key = "ImageView";
     AppMethodBeat.o(131363);
   }
   
-  private void aEe()
+  private void aEu()
   {
     AppMethodBeat.i(131364);
     if (this.og.get() != null) {
-      b.e(this.hLl).remove(Integer.valueOf(((ImageView)this.og.get()).hashCode()));
+      b.e(this.hOe).remove(Integer.valueOf(((ImageView)this.og.get()).hashCode()));
     }
     AppMethodBeat.o(131364);
   }
   
-  public final String BM()
+  public final String BN()
   {
     return this.key;
   }
   
-  public final void E(Bitmap paramBitmap)
+  public final void F(Bitmap paramBitmap)
   {
     AppMethodBeat.i(131365);
-    aEe();
+    aEu();
     ImageView localImageView = (ImageView)this.og.get();
     if (localImageView != null)
     {
-      if (!aq.isMainThread()) {
-        ad.l("Luggage.AppBrandSimpleImageLoader", "onBitmapLoaded invoke in non-main thread!!!", new Object[0]);
+      if (!ar.isMainThread()) {
+        ae.l("Luggage.AppBrandSimpleImageLoader", "onBitmapLoaded invoke in non-main thread!!!", new Object[0]);
       }
       localImageView.setImageDrawable(new f(localImageView.getResources(), paramBitmap));
     }
-    this.hLm = true;
+    this.hOf = true;
     AppMethodBeat.o(131365);
   }
   
-  public void aEd() {}
+  public void aEt() {}
   
   final ImageView getImageView()
   {
@@ -69,7 +69,7 @@ class b$m
   public final void ox()
   {
     AppMethodBeat.i(131366);
-    aEe();
+    aEu();
     AppMethodBeat.o(131366);
   }
 }

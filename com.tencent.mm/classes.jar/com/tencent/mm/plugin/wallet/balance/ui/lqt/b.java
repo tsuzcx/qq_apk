@@ -30,7 +30,7 @@ public class b
     AppMethodBeat.o(68739);
   }
   
-  public final String cQc()
+  public final String cSH()
   {
     return "BalanceFetchCardProcess";
   }
@@ -46,7 +46,7 @@ public class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.balance.ui.lqt.b
  * JD-Core Version:    0.7.0.1
  */

@@ -8,25 +8,25 @@ import com.tencent.mm.plugin.vlog.model.effect.f;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/vlog/ui/plugin/MagicTitleItemViewHolder;", "Lcom/tencent/mm/plugin/vlog/ui/plugin/MagicPanelViewHolder;", "itemView", "Landroid/view/View;", "(Landroid/view/View;)V", "title", "Landroid/widget/TextView;", "getTitle", "()Landroid/widget/TextView;", "onBind", "", "item", "Lcom/tencent/mm/plugin/vlog/model/effect/MagicListItem;", "plugin-vlog_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/vlog/ui/plugin/MagicTitleItemViewHolder;", "Lcom/tencent/mm/plugin/vlog/ui/plugin/MagicPanelViewHolder;", "itemView", "Landroid/view/View;", "(Landroid/view/View;)V", "title", "Landroid/widget/TextView;", "getTitle", "()Landroid/widget/TextView;", "onBind", "", "item", "Lcom/tencent/mm/plugin/vlog/model/effect/MagicListItem;", "plugin-vlog_release"})
 public final class j
   extends h
 {
-  private final TextView gnM;
+  private final TextView gqi;
   
   public j(View paramView)
   {
     super(paramView);
-    AppMethodBeat.i(196234);
+    AppMethodBeat.i(191693);
     paramView = paramView.findViewById(2131308335);
     p.g(paramView, "itemView.findViewById(R.id.item_magic_panel_title)");
-    this.gnM = ((TextView)paramView);
-    AppMethodBeat.o(196234);
+    this.gqi = ((TextView)paramView);
+    AppMethodBeat.o(191693);
   }
   
   public final void a(e parame)
   {
-    AppMethodBeat.i(196233);
+    AppMethodBeat.i(191692);
     p.h(parame, "item");
     if (!(parame instanceof f)) {
       parame = null;
@@ -36,11 +36,11 @@ public final class j
       parame = (f)parame;
       if (parame != null)
       {
-        this.gnM.setText((CharSequence)parame.title);
-        AppMethodBeat.o(196233);
+        this.gqi.setText((CharSequence)parame.title);
+        AppMethodBeat.o(191692);
         return;
       }
-      AppMethodBeat.o(196233);
+      AppMethodBeat.o(191692);
       return;
     }
   }

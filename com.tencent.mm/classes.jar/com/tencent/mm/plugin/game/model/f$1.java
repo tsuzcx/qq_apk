@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.game.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.protocal.protobuf.bne;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.protocal.protobuf.bnw;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ar;
 
 final class f$1
-  implements com.tencent.mm.al.f
+  implements com.tencent.mm.ak.f
 {
   f$1(String paramString) {}
   
@@ -20,27 +20,27 @@ final class f$1
     AppMethodBeat.i(41398);
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      ad.i("MicroMsg.GameCommOpertionProcessor", "pull menu data success. appid:%s", new Object[] { this.jBr });
-      g.aiU().b(1369, this);
-      aq.f(new Runnable()
+      ae.i("MicroMsg.GameCommOpertionProcessor", "pull menu data success. appid:%s", new Object[] { this.jEl });
+      g.ajj().b(1369, this);
+      ar.f(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(41397);
-          f.a(this.ubb, f.1.this.jBr);
+          f.a(this.umd, f.1.this.jEl);
           AppMethodBeat.o(41397);
         }
       });
       AppMethodBeat.o(41398);
       return;
     }
-    ad.i("MicroMsg.GameCommOpertionProcessor", "pull menu data fail. appid:%s", new Object[] { this.jBr });
+    ae.i("MicroMsg.GameCommOpertionProcessor", "pull menu data fail. appid:%s", new Object[] { this.jEl });
     AppMethodBeat.o(41398);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.game.model.f.1
  * JD-Core Version:    0.7.0.1
  */

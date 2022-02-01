@@ -30,23 +30,23 @@ public final class k
     return false;
   }
   
-  public static String dq(String paramString)
+  public static String ds(String paramString)
   {
-    AppMethodBeat.i(187604);
+    AppMethodBeat.i(201171);
     try
     {
       paramString = Uri.parse(paramString).getHost();
-      AppMethodBeat.o(187604);
+      AppMethodBeat.o(201171);
       return paramString;
     }
     catch (Exception paramString)
     {
-      AppMethodBeat.o(187604);
+      AppMethodBeat.o(201171);
     }
     return "";
   }
   
-  public static String dr(String paramString)
+  public static String dt(String paramString)
   {
     AppMethodBeat.i(140521);
     if (TextUtils.isEmpty(paramString))
@@ -65,7 +65,7 @@ public final class k
     return paramString;
   }
   
-  public static Map<String, String> ds(String paramString)
+  public static Map<String, String> du(String paramString)
   {
     AppMethodBeat.i(140522);
     HashMap localHashMap = new HashMap();

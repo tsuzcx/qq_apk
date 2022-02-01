@@ -4,16 +4,16 @@ import android.graphics.Point;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"INVALID_APP_ID", "", "INVALID_PIP_STABLE_POS", "Lcom/tencent/mm/plugin/appbrand/pip/PipStablePos;", "POINT_SPLITTER", "SAVED_KEY_SUFFIX", "TAG", "plugin-appbrand-integration_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"INVALID_APP_ID", "", "INVALID_PIP_STABLE_POS", "Lcom/tencent/mm/plugin/appbrand/pip/PipStablePos;", "POINT_SPLITTER", "SAVED_KEY_SUFFIX", "TAG", "plugin-appbrand-integration_release"})
 public final class m
 {
-  private static final PipStablePos moo;
+  private static final PipStablePos mtm;
   
   static
   {
-    AppMethodBeat.i(189567);
-    moo = new PipStablePos("", new Point());
-    AppMethodBeat.o(189567);
+    AppMethodBeat.i(223836);
+    mtm = new PipStablePos("", new Point());
+    AppMethodBeat.o(223836);
   }
 }
 

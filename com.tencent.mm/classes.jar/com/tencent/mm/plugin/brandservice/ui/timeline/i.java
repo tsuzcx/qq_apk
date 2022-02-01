@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.brandservice.ui.timeline;
 
 public abstract interface i
 {
-  public abstract void bOo();
+  public abstract void bPl();
 }
 
 

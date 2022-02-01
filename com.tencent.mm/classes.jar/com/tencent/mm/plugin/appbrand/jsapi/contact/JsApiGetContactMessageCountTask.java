@@ -7,15 +7,15 @@ import com.tencent.mm.g.c.ba;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
 import com.tencent.mm.plugin.messenger.foundation.a.l;
-import com.tencent.mm.storage.at;
-import com.tencent.mm.storage.bq;
+import com.tencent.mm.storage.au;
+import com.tencent.mm.storage.br;
 
 class JsApiGetContactMessageCountTask
   extends MainProcessTask
 {
   public static final Parcelable.Creator<JsApiGetContactMessageCountTask> CREATOR;
-  public int djY;
-  public Runnable krg;
+  public int dla;
+  public Runnable kuv;
   public String username;
   
   static
@@ -34,27 +34,27 @@ class JsApiGetContactMessageCountTask
     AppMethodBeat.o(46269);
   }
   
-  public final void aOA()
+  public final void aOX()
   {
     AppMethodBeat.i(46270);
-    at localat = ((l)g.ab(l.class)).azv().aTz(this.username);
-    if (localat == null)
+    au localau = ((l)g.ab(l.class)).azL().aVa(this.username);
+    if (localau == null)
     {
-      this.djY = -1;
-      bhX();
+      this.dla = -1;
+      biG();
       AppMethodBeat.o(46270);
       return;
     }
-    this.djY = localat.field_unReadCount;
-    bhX();
+    this.dla = localau.field_unReadCount;
+    biG();
     AppMethodBeat.o(46270);
   }
   
-  public final void aOB()
+  public final void aOY()
   {
     AppMethodBeat.i(46271);
-    if (this.krg != null) {
-      this.krg.run();
+    if (this.kuv != null) {
+      this.kuv.run();
     }
     AppMethodBeat.o(46271);
   }
@@ -63,7 +63,7 @@ class JsApiGetContactMessageCountTask
   {
     AppMethodBeat.i(46272);
     this.username = paramParcel.readString();
-    this.djY = paramParcel.readInt();
+    this.dla = paramParcel.readInt();
     AppMethodBeat.o(46272);
   }
   
@@ -71,7 +71,7 @@ class JsApiGetContactMessageCountTask
   {
     AppMethodBeat.i(46273);
     paramParcel.writeString(this.username);
-    paramParcel.writeInt(this.djY);
+    paramParcel.writeInt(this.dla);
     AppMethodBeat.o(46273);
   }
 }

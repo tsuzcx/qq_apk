@@ -3,15 +3,15 @@ package com.tencent.mm.plugin.vlog.model;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/vlog/model/Filter;", "", "(Ljava/lang/String;I)V", "NO_FILTER", "plugin-vlog_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/vlog/model/Filter;", "", "(Ljava/lang/String;I)V", "NO_FILTER", "plugin-vlog_release"})
 public enum h
 {
   static
   {
     AppMethodBeat.i(110920);
     h localh = new h("NO_FILTER");
-    BFf = localh;
-    BFg = new h[] { localh };
+    BWD = localh;
+    BWE = new h[] { localh };
     AppMethodBeat.o(110920);
   }
   

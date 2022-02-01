@@ -15,60 +15,60 @@ public final class a
   {
     AppMethodBeat.i(127262);
     c.a locala = new c.a();
-    locala.IhA = new Field[13];
+    locala.IBL = new Field[13];
     locala.columns = new String[14];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "tipId";
-    locala.IhC.put("tipId", "INTEGER default '0'  PRIMARY KEY ");
+    locala.IBN.put("tipId", "INTEGER default '0'  PRIMARY KEY ");
     localStringBuilder.append(" tipId INTEGER default '0'  PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.IhB = "tipId";
+    locala.IBM = "tipId";
     locala.columns[1] = "tipVersion";
-    locala.IhC.put("tipVersion", "INTEGER");
+    locala.IBN.put("tipVersion", "INTEGER");
     localStringBuilder.append(" tipVersion INTEGER");
     localStringBuilder.append(", ");
     locala.columns[2] = "tipkey";
-    locala.IhC.put("tipkey", "TEXT");
+    locala.IBN.put("tipkey", "TEXT");
     localStringBuilder.append(" tipkey TEXT");
     localStringBuilder.append(", ");
     locala.columns[3] = "tipType";
-    locala.IhC.put("tipType", "INTEGER");
+    locala.IBN.put("tipType", "INTEGER");
     localStringBuilder.append(" tipType INTEGER");
     localStringBuilder.append(", ");
     locala.columns[4] = "isExit";
-    locala.IhC.put("isExit", "INTEGER");
+    locala.IBN.put("isExit", "INTEGER");
     localStringBuilder.append(" isExit INTEGER");
     localStringBuilder.append(", ");
     locala.columns[5] = "hadRead";
-    locala.IhC.put("hadRead", "INTEGER");
+    locala.IBN.put("hadRead", "INTEGER");
     localStringBuilder.append(" hadRead INTEGER");
     localStringBuilder.append(", ");
     locala.columns[6] = "isReject";
-    locala.IhC.put("isReject", "INTEGER");
+    locala.IBN.put("isReject", "INTEGER");
     localStringBuilder.append(" isReject INTEGER");
     localStringBuilder.append(", ");
     locala.columns[7] = "beginShowTime";
-    locala.IhC.put("beginShowTime", "LONG");
+    locala.IBN.put("beginShowTime", "LONG");
     localStringBuilder.append(" beginShowTime LONG");
     localStringBuilder.append(", ");
     locala.columns[8] = "disappearTime";
-    locala.IhC.put("disappearTime", "LONG");
+    locala.IBN.put("disappearTime", "LONG");
     localStringBuilder.append(" disappearTime LONG");
     localStringBuilder.append(", ");
     locala.columns[9] = "overdueTime";
-    locala.IhC.put("overdueTime", "LONG");
+    locala.IBN.put("overdueTime", "LONG");
     localStringBuilder.append(" overdueTime LONG");
     localStringBuilder.append(", ");
     locala.columns[10] = "tipsShowInfo";
-    locala.IhC.put("tipsShowInfo", "BLOB");
+    locala.IBN.put("tipsShowInfo", "BLOB");
     localStringBuilder.append(" tipsShowInfo BLOB");
     localStringBuilder.append(", ");
     locala.columns[11] = "extInfo";
-    locala.IhC.put("extInfo", "TEXT");
+    locala.IBN.put("extInfo", "TEXT");
     localStringBuilder.append(" extInfo TEXT");
     localStringBuilder.append(", ");
     locala.columns[12] = "pagestaytime";
-    locala.IhC.put("pagestaytime", "LONG");
+    locala.IBN.put("pagestaytime", "LONG");
     localStringBuilder.append(" pagestaytime LONG");
     locala.columns[13] = "rowid";
     locala.sql = localStringBuilder.toString();
@@ -83,7 +83,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.newtips.b.a
  * JD-Core Version:    0.7.0.1
  */

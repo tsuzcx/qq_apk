@@ -7,16 +7,16 @@ import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
 final class EditorAudioSearchView$k
   implements View.OnClickListener
 {
-  public static final k xKn;
+  public static final k yai;
   
   static
   {
     AppMethodBeat.i(75914);
-    xKn = new k();
+    yai = new k();
     AppMethodBeat.o(75914);
   }
   
@@ -25,7 +25,7 @@ final class EditorAudioSearchView$k
     AppMethodBeat.i(75913);
     b localb = new b();
     localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/recordvideo/ui/editor/EditorAudioSearchView$init$9", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+    a.b("com/tencent/mm/plugin/recordvideo/ui/editor/EditorAudioSearchView$init$9", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
     a.a(this, "com/tencent/mm/plugin/recordvideo/ui/editor/EditorAudioSearchView$init$9", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(75913);
   }

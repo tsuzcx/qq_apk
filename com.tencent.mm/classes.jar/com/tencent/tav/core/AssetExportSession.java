@@ -38,13 +38,13 @@ public class AssetExportSession
   public AssetExportSession(Asset paramAsset, ExportConfig paramExportConfig)
   {
     this(paramAsset, paramExportConfig, new AssetExtension("export"));
-    AppMethodBeat.i(217724);
-    AppMethodBeat.o(217724);
+    AppMethodBeat.i(214362);
+    AppMethodBeat.o(214362);
   }
   
   public AssetExportSession(Asset paramAsset, ExportConfig paramExportConfig, AssetExtension paramAssetExtension)
   {
-    AppMethodBeat.i(217725);
+    AppMethodBeat.i(214363);
     this.outputFileType = "mp4";
     this.revertMode = false;
     this.appliesPreferredTrackTransform = false;
@@ -61,34 +61,34 @@ public class AssetExportSession
       paramAssetExtension = new ExportConfig((int)paramAsset.getNaturalSize().width, (int)paramAsset.getNaturalSize().height);
     }
     this.exportConfig = paramAssetExtension;
-    AppMethodBeat.o(217725);
+    AppMethodBeat.o(214363);
   }
   
   @Deprecated
   public AssetExportSession(Asset paramAsset, EncoderWriter.OutputConfig paramOutputConfig)
   {
     this(paramAsset, new ExportConfig(paramOutputConfig), new AssetExtension("export"));
-    AppMethodBeat.i(217723);
-    AppMethodBeat.o(217723);
+    AppMethodBeat.i(214361);
+    AppMethodBeat.o(214361);
   }
   
   public void cancelExport()
   {
-    AppMethodBeat.i(217727);
+    AppMethodBeat.i(214365);
     Logger.i("AssetExportSession", "cancelExport");
     if (this.exportThread != null) {
       this.exportThread.cancel();
     }
-    AppMethodBeat.o(217727);
+    AppMethodBeat.o(214365);
   }
   
   public void exportAsynchronouslyWithCompletionHandler(ExportCallbackHandler paramExportCallbackHandler)
   {
-    AppMethodBeat.i(217726);
+    AppMethodBeat.i(214364);
     this.exportThread = new AssetExportThread(this, paramExportCallbackHandler, this.audioMix, this.exportConfig);
     this.exportThread.setRenderContextParams(this.renderContextParams);
     this.exportThread.startExport();
-    AppMethodBeat.o(217726);
+    AppMethodBeat.o(214364);
   }
   
   public Asset getAsset()
@@ -184,13 +184,13 @@ public class AssetExportSession
   
   void release()
   {
-    AppMethodBeat.i(217728);
+    AppMethodBeat.i(214366);
     if (this.audioMix != null)
     {
       this.audioMix.release();
       this.audioMix = null;
     }
-    AppMethodBeat.o(217728);
+    AppMethodBeat.o(214366);
   }
   
   public void setAppliesPreferredTrackTransform(boolean paramBoolean)
@@ -220,12 +220,12 @@ public class AssetExportSession
   
   public void setRenderContextParams(RenderContextParams paramRenderContextParams)
   {
-    AppMethodBeat.i(217722);
+    AppMethodBeat.i(214360);
     this.renderContextParams = paramRenderContextParams;
     if (this.exportThread != null) {
       this.exportThread.setRenderContextParams(paramRenderContextParams);
     }
-    AppMethodBeat.o(217722);
+    AppMethodBeat.o(214360);
   }
   
   public void setRevertMode(boolean paramBoolean)
@@ -240,26 +240,26 @@ public class AssetExportSession
   
   public void setVideoComposition(VideoComposition paramVideoComposition)
   {
-    AppMethodBeat.i(217721);
+    AppMethodBeat.i(214359);
     this.videoComposition = paramVideoComposition;
     if (paramVideoComposition != null) {
       this.videoCompositing = paramVideoComposition.getCustomVideoCompositor();
     }
-    AppMethodBeat.o(217721);
+    AppMethodBeat.o(214359);
   }
   
   public static enum AssetExportSessionStatus
   {
     static
     {
-      AppMethodBeat.i(217720);
+      AppMethodBeat.i(214358);
       AssetExportSessionStatusUnknown = new AssetExportSessionStatus("AssetExportSessionStatusUnknown", 0);
       AssetExportSessionStatusExporting = new AssetExportSessionStatus("AssetExportSessionStatusExporting", 1);
       AssetExportSessionStatusCompleted = new AssetExportSessionStatus("AssetExportSessionStatusCompleted", 2);
       AssetExportSessionStatusFailed = new AssetExportSessionStatus("AssetExportSessionStatusFailed", 3);
       AssetExportSessionStatusCancelled = new AssetExportSessionStatus("AssetExportSessionStatusCancelled", 4);
       $VALUES = new AssetExportSessionStatus[] { AssetExportSessionStatusUnknown, AssetExportSessionStatusExporting, AssetExportSessionStatusCompleted, AssetExportSessionStatusFailed, AssetExportSessionStatusCancelled };
-      AppMethodBeat.o(217720);
+      AppMethodBeat.o(214358);
     }
     
     private AssetExportSessionStatus() {}

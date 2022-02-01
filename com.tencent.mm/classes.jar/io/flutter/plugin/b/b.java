@@ -24,36 +24,36 @@ import io.flutter.plugin.platform.h;
 
 public final class b
 {
-  private final io.flutter.embedding.engine.c.k MCr;
-  public h MCs;
-  Editable MGf;
-  public final InputMethodManager MGi;
-  public a MGk;
-  k.a MGl;
-  public boolean MGm;
-  public InputConnection MGn;
-  final boolean MGo;
-  public boolean MGp;
+  private final io.flutter.embedding.engine.c.k MZw;
+  public h MZx;
+  Editable Ndk;
+  public final InputMethodManager Ndn;
+  public a Ndp;
+  k.a Ndq;
+  public boolean Ndr;
+  public InputConnection Nds;
+  final boolean Ndt;
+  public boolean Ndu;
   public final View mView;
   
   public b(View paramView, DartExecutor paramDartExecutor, h paramh)
   {
     AppMethodBeat.i(9955);
-    this.MGk = new a(b.a.a.MGs, 0);
+    this.Ndp = new a(b.a.a.Ndx, 0);
     this.mView = paramView;
-    this.MGi = ((InputMethodManager)paramView.getContext().getSystemService("input_method"));
-    this.MCr = new io.flutter.embedding.engine.c.k(paramDartExecutor);
-    this.MCr.MFe = new k.e()
+    this.Ndn = ((InputMethodManager)paramView.getContext().getSystemService("input_method"));
+    this.MZw = new io.flutter.embedding.engine.c.k(paramDartExecutor);
+    this.MZw.Nck = new k.e()
     {
       public final void a(int paramAnonymousInt, k.a paramAnonymousa)
       {
         AppMethodBeat.i(9939);
         b localb = b.this;
-        localb.MGk = new b.a(b.a.a.MGt, paramAnonymousInt);
-        localb.MGl = paramAnonymousa;
-        localb.MGf = Editable.Factory.getInstance().newEditable("");
-        localb.MGm = true;
-        localb.MGp = false;
+        localb.Ndp = new b.a(b.a.a.Ndy, paramAnonymousInt);
+        localb.Ndq = paramAnonymousa;
+        localb.Ndk = Editable.Factory.getInstance().newEditable("");
+        localb.Ndr = true;
+        localb.Ndu = false;
         AppMethodBeat.o(9939);
       }
       
@@ -62,45 +62,45 @@ public final class b
         AppMethodBeat.i(9941);
         b localb = b.this;
         View localView = b.this.mView;
-        if (!paramAnonymousd.text.equals(localb.MGf.toString())) {
-          localb.MGf.replace(0, localb.MGf.length(), paramAnonymousd.text);
+        if (!paramAnonymousd.text.equals(localb.Ndk.toString())) {
+          localb.Ndk.replace(0, localb.Ndk.length(), paramAnonymousd.text);
         }
         int i = paramAnonymousd.selectionStart;
         int j = paramAnonymousd.selectionEnd;
-        if ((i >= 0) && (i <= localb.MGf.length()) && (j >= 0) && (j <= localb.MGf.length())) {
-          Selection.setSelection(localb.MGf, i, j);
+        if ((i >= 0) && (i <= localb.Ndk.length()) && (j >= 0) && (j <= localb.Ndk.length())) {
+          Selection.setSelection(localb.Ndk, i, j);
         }
-        while ((!localb.MGo) && (!localb.MGm))
+        while ((!localb.Ndt) && (!localb.Ndr))
         {
-          localb.MGi.updateSelection(localb.mView, Math.max(Selection.getSelectionStart(localb.MGf), 0), Math.max(Selection.getSelectionEnd(localb.MGf), 0), BaseInputConnection.getComposingSpanStart(localb.MGf), BaseInputConnection.getComposingSpanEnd(localb.MGf));
+          localb.Ndn.updateSelection(localb.mView, Math.max(Selection.getSelectionStart(localb.Ndk), 0), Math.max(Selection.getSelectionEnd(localb.Ndk), 0), BaseInputConnection.getComposingSpanStart(localb.Ndk), BaseInputConnection.getComposingSpanEnd(localb.Ndk));
           AppMethodBeat.o(9941);
           return;
-          Selection.removeSelection(localb.MGf);
+          Selection.removeSelection(localb.Ndk);
         }
-        localb.MGi.restartInput(localView);
-        localb.MGm = false;
+        localb.Ndn.restartInput(localView);
+        localb.Ndr = false;
         AppMethodBeat.o(9941);
       }
       
-      public final void ajc(int paramAnonymousInt)
+      public final void ajM(int paramAnonymousInt)
       {
         AppMethodBeat.i(9940);
         b localb = b.this;
         localb.mView.requestFocus();
-        localb.MGk = new b.a(b.a.a.MGu, paramAnonymousInt);
-        localb.MGi.restartInput(localb.mView);
-        localb.MGm = false;
+        localb.Ndp = new b.a(b.a.a.Ndz, paramAnonymousInt);
+        localb.Ndn.restartInput(localb.mView);
+        localb.Ndr = false;
         AppMethodBeat.o(9940);
       }
       
-      public final void gfh()
+      public final void gjJ()
       {
         AppMethodBeat.i(9942);
         b localb = b.this;
-        if (localb.MGk.MGr != b.a.a.MGu)
+        if (localb.Ndp.Ndw != b.a.a.Ndz)
         {
-          localb.MGk = new b.a(b.a.a.MGs, 0);
-          localb.MGp = false;
+          localb.Ndp = new b.a(b.a.a.Ndx, 0);
+          localb.Ndu = false;
         }
         AppMethodBeat.o(9942);
       }
@@ -108,7 +108,7 @@ public final class b
       public final void hide()
       {
         AppMethodBeat.i(9938);
-        b.this.ht(b.this.mView);
+        b.this.hy(b.this.mView);
         AppMethodBeat.o(9938);
       }
       
@@ -118,17 +118,17 @@ public final class b
         b localb = b.this;
         View localView = b.this.mView;
         localView.requestFocus();
-        localb.MGi.showSoftInput(localView, 0);
+        localb.Ndn.showSoftInput(localView, 0);
         AppMethodBeat.o(9937);
       }
     };
-    this.MCr.vCn.a("TextInputClient.requestExistingInputState", null, null);
-    this.MCs = paramh;
-    this.MCs.MBa = this;
-    if ((this.MGi.getCurrentInputMethodSubtype() == null) || (Build.VERSION.SDK_INT < 21) || (!Build.MANUFACTURER.equals("samsung"))) {}
+    this.MZw.vOr.a("TextInputClient.requestExistingInputState", null, null);
+    this.MZx = paramh;
+    this.MZx.MYf = this;
+    if ((this.Ndn.getCurrentInputMethodSubtype() == null) || (Build.VERSION.SDK_INT < 21) || (!Build.MANUFACTURER.equals("samsung"))) {}
     for (boolean bool = false;; bool = Settings.Secure.getString(this.mView.getContext().getContentResolver(), "default_input_method").contains("Samsung"))
     {
-      this.MGo = bool;
+      this.Ndt = bool;
       AppMethodBeat.o(9955);
       return;
     }
@@ -137,7 +137,7 @@ public final class b
   private static int a(k.b paramb, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, k.c paramc)
   {
     int j;
-    if (paramb.MFo == k.f.MFx) {
+    if (paramb.Ncu == k.f.NcD) {
       j = 4;
     }
     int i;
@@ -148,21 +148,21 @@ public final class b
       do
       {
         return j;
-        if (paramb.MFo != k.f.MFy) {
+        if (paramb.Ncu != k.f.NcE) {
           break;
         }
         i = 2;
-        if (paramb.MFp) {
+        if (paramb.Ncv) {
           i = 4098;
         }
         j = i;
-      } while (!paramb.MFq);
+      } while (!paramb.Ncw);
       return i | 0x2000;
-      if (paramb.MFo == k.f.MFz) {
+      if (paramb.Ncu == k.f.NcF) {
         return 3;
       }
       i = 1;
-      if (paramb.MFo == k.f.MFA)
+      if (paramb.Ncu == k.f.NcG)
       {
         i = 131073;
         if (!paramBoolean1) {
@@ -172,21 +172,21 @@ public final class b
       }
       for (;;)
       {
-        if (paramc != k.c.MFr) {
+        if (paramc != k.c.Ncx) {
           break label203;
         }
         return i | 0x1000;
-        if (paramb.MFo == k.f.MFB)
+        if (paramb.Ncu == k.f.NcH)
         {
           i = 33;
           break;
         }
-        if (paramb.MFo == k.f.MFC)
+        if (paramb.Ncu == k.f.NcI)
         {
           i = 17;
           break;
         }
-        if (paramb.MFo != k.f.MFD) {
+        if (paramb.Ncu != k.f.NcJ) {
           break;
         }
         i = 145;
@@ -200,87 +200,102 @@ public final class b
           i = j | 0x80000;
         }
       }
-      if (paramc == k.c.MFs) {
+      if (paramc == k.c.Ncy) {
         return i | 0x2000;
       }
       j = i;
-    } while (paramc != k.c.MFt);
+    } while (paramc != k.c.Ncz);
     return i | 0x4000;
   }
   
   public final InputConnection a(View paramView, EditorInfo paramEditorInfo)
   {
     AppMethodBeat.i(9956);
-    if (this.MGk.MGr == b.a.a.MGs)
+    if (this.Ndp.Ndw == b.a.a.Ndx)
     {
-      this.MGn = null;
+      this.Nds = null;
       AppMethodBeat.o(9956);
       return null;
     }
-    if (this.MGk.MGr == b.a.a.MGu)
+    if (this.Ndp.Ndw == b.a.a.Ndz)
     {
-      if (this.MGp)
+      if (this.Ndu)
       {
-        paramView = this.MGn;
+        paramView = this.Nds;
         AppMethodBeat.o(9956);
         return paramView;
       }
-      this.MGn = this.MCs.p(Integer.valueOf(this.MGk.id)).onCreateInputConnection(paramEditorInfo);
-      paramView = this.MGn;
+      this.Nds = this.MZx.q(Integer.valueOf(this.Ndp.id)).onCreateInputConnection(paramEditorInfo);
+      paramView = this.Nds;
       AppMethodBeat.o(9956);
       return paramView;
     }
-    paramEditorInfo.inputType = a(this.MGl.MFl, this.MGl.MFh, this.MGl.MFi, this.MGl.MFj, this.MGl.MFk);
+    paramEditorInfo.inputType = a(this.Ndq.Ncr, this.Ndq.Ncn, this.Ndq.Nco, this.Ndq.Ncp, this.Ndq.Ncq);
     paramEditorInfo.imeOptions = 33554432;
     int i;
-    if (this.MGl.MFm == null) {
+    if (this.Ndq.Ncs == null) {
       if ((0x20000 & paramEditorInfo.inputType) != 0) {
         i = 1;
       }
     }
     for (;;)
     {
-      if (this.MGl.MFn != null)
+      if (this.Ndq.Nct != null)
       {
-        paramEditorInfo.actionLabel = this.MGl.MFn;
+        paramEditorInfo.actionLabel = this.Ndq.Nct;
         paramEditorInfo.actionId = i;
       }
       paramEditorInfo.imeOptions = (i | paramEditorInfo.imeOptions);
-      paramView = new a(paramView, this.MGk.id, this.MCr, this.MGf, paramEditorInfo);
-      paramEditorInfo.initialSelStart = Selection.getSelectionStart(this.MGf);
-      paramEditorInfo.initialSelEnd = Selection.getSelectionEnd(this.MGf);
-      this.MGn = paramView;
-      paramView = this.MGn;
+      paramView = new a(paramView, this.Ndp.id, this.MZw, this.Ndk, paramEditorInfo);
+      paramEditorInfo.initialSelStart = Selection.getSelectionStart(this.Ndk);
+      paramEditorInfo.initialSelEnd = Selection.getSelectionEnd(this.Ndk);
+      this.Nds = paramView;
+      paramView = this.Nds;
       AppMethodBeat.o(9956);
       return paramView;
       i = 6;
       continue;
-      i = this.MGl.MFm.intValue();
+      i = this.Ndq.Ncs.intValue();
     }
   }
   
-  public final void ht(View paramView)
+  public final void hy(View paramView)
   {
     AppMethodBeat.i(9957);
-    this.MGi.hideSoftInputFromWindow(paramView.getApplicationWindowToken(), 0);
+    this.Ndn.hideSoftInputFromWindow(paramView.getApplicationWindowToken(), 0);
     AppMethodBeat.o(9957);
   }
   
   public static final class a
   {
-    public b.a.a MGr;
+    public a Ndw;
     public int id;
     
-    public a(b.a.a parama, int paramInt)
+    public a(a parama, int paramInt)
     {
-      this.MGr = parama;
+      this.Ndw = parama;
       this.id = paramInt;
+    }
+    
+    public static enum a
+    {
+      static
+      {
+        AppMethodBeat.i(9936);
+        Ndx = new a("NO_TARGET", 0);
+        Ndy = new a("FRAMEWORK_CLIENT", 1);
+        Ndz = new a("PLATFORM_VIEW", 2);
+        NdA = new a[] { Ndx, Ndy, Ndz };
+        AppMethodBeat.o(9936);
+      }
+      
+      private a() {}
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     io.flutter.plugin.b.b
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,14 @@
 package com.tencent.mm.g.a;
 
+import android.database.MatrixCursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
 import com.tencent.mm.sdk.b.b;
 
 public final class ft
   extends b
 {
-  public a drd;
-  public b dre;
+  public a dse;
+  public b dsf;
   
   public ft()
   {
@@ -17,31 +17,28 @@ public final class ft
   
   private ft(byte paramByte)
   {
-    AppMethodBeat.i(116018);
-    this.drd = new a();
-    this.dre = new b();
-    this.IbR = false;
+    AppMethodBeat.i(19806);
+    this.dse = new a();
+    this.dsf = new b();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(116018);
+    AppMethodBeat.o(19806);
   }
   
   public static final class a
   {
-    public String content;
-    public String drf;
-    public int flags;
-    public int type;
+    public String[] dsg;
   }
   
   public static final class b
   {
-    public n drg;
-    public long msgId = 0L;
+    public int drM = 0;
+    public MatrixCursor dsh;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.a.ft
  * JD-Core Version:    0.7.0.1
  */

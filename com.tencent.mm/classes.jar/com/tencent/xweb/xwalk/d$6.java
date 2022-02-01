@@ -18,8 +18,8 @@ final class d$6
     AppMethodBeat.i(154157);
     b localb = new b();
     localb.bd(paramView);
-    a.b("com/tencent/xweb/xwalk/WebDebugPage$14", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-    ((TextView)this.MvU.MvM.findViewById(2131306169)).setText(this.MvU.zO(true) + "\n" + XWalkInitializer.getXWalkInitializeLog());
+    a.b("com/tencent/xweb/xwalk/WebDebugPage$14", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+    ((TextView)this.MSY.MSQ.findViewById(2131306169)).setText(this.MSY.Ab(true) + "\n" + XWalkInitializer.getXWalkInitializeLog());
     a.a(this, "com/tencent/xweb/xwalk/WebDebugPage$14", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(154157);
   }

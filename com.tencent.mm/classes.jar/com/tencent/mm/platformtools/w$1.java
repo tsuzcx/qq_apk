@@ -14,13 +14,13 @@ import android.text.format.Time;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.b.k;
 import com.tencent.mm.n.f;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.e.j;
 
 public final class w$1
-  implements com.tencent.mm.bs.a
+  implements com.tencent.mm.br.a
 {
   public w$1(String paramString1, String paramString2, Bundle paramBundle, String paramString3, String paramString4, int paramInt) {}
   
@@ -31,30 +31,30 @@ public final class w$1
     ((Time)localObject1).setToNow();
     int i = ((Time)localObject1).hour;
     int j = ((Time)localObject1).minute;
-    aj.getContext();
+    ak.getContext();
     Object localObject2;
     if (!com.tencent.mm.n.a.cr(i, j))
     {
-      ad.i("MiroMsg.NotificationUtil", "no shake & sound notification during background deactive time");
+      ae.i("MiroMsg.NotificationUtil", "no shake & sound notification during background deactive time");
       localObject1 = new Intent();
-      ((Intent)localObject1).setClassName(aj.getPackageName(), aj.getPackageName() + ".plugin.webview.ui.tools.WebViewUI");
+      ((Intent)localObject1).setClassName(ak.getPackageName(), ak.getPackageName() + ".plugin.webview.ui.tools.WebViewUI");
       ((Intent)localObject1).putExtra("rawUrl", this.val$jumpUrl);
       ((Intent)localObject1).putExtra("useJs", true);
       ((Intent)localObject1).putExtra("vertical_scroll", true);
       ((Intent)localObject1).setFlags(872415232);
-      ad.d("MiroMsg.NotificationUtil", "bizFrom: %s, data: %s", new Object[] { this.iNK, this.cWK });
-      if ((this.iNK != null) && (this.cWK != null))
+      ae.d("MiroMsg.NotificationUtil", "bizFrom: %s, data: %s", new Object[] { this.iQE, this.cXH });
+      if ((this.iQE != null) && (this.cXH != null))
       {
-        ((Intent)localObject1).putExtra("bizofstartfrom", this.iNK);
-        ((Intent)localObject1).putExtra("startwebviewparams", this.cWK);
+        ((Intent)localObject1).putExtra("bizofstartfrom", this.iQE);
+        ((Intent)localObject1).putExtra("startwebviewparams", this.cXH);
       }
-      localObject1 = PendingIntent.getActivity(aj.getContext(), 0, (Intent)localObject1, 134217728);
-      localObject2 = com.tencent.mm.br.a.bI(aj.getContext(), "reminder_channel_id").i(null).i(System.currentTimeMillis()).f(this.cYy).g(this.ilu);
+      localObject1 = PendingIntent.getActivity(ak.getContext(), 0, (Intent)localObject1, 134217728);
+      localObject2 = com.tencent.mm.bq.a.bJ(ak.getContext(), "reminder_channel_id").i(null).i(System.currentTimeMillis()).f(this.cZw).g(this.ion);
       ((s.c)localObject2).Hl = ((PendingIntent)localObject1);
       localObject1 = ((s.c)localObject2).build();
-      ((Notification)localObject1).icon = com.tencent.mm.br.a.dwe();
+      ((Notification)localObject1).icon = com.tencent.mm.bq.a.dzu();
       ((Notification)localObject1).flags |= 0x10;
-      ((NotificationManager)aj.getContext().getSystemService("notification")).notify(this.iNL, (Notification)localObject1);
+      ((NotificationManager)ak.getContext().getSystemService("notification")).notify(this.iQF, (Notification)localObject1);
       AppMethodBeat.o(20713);
       return;
     }
@@ -65,20 +65,20 @@ public final class w$1
       {
         for (;;)
         {
-          localObject2 = aj.getContext();
-          boolean bool1 = f.abN();
-          boolean bool2 = f.abJ();
-          ad.d("MiroMsg.NotificationUtil", "shake " + bool1 + "sound " + bool2);
+          localObject2 = ak.getContext();
+          boolean bool1 = f.abW();
+          boolean bool2 = f.abS();
+          ae.d("MiroMsg.NotificationUtil", "shake " + bool1 + "sound " + bool2);
           if (bool1)
           {
-            ad.i("MiroMsg.NotificationUtil", "notification.shake:  notifyEngageRemind isShake~: true");
-            bt.F((Context)localObject2, true);
+            ae.i("MiroMsg.NotificationUtil", "notification.shake:  notifyEngageRemind isShake~: true");
+            bu.F((Context)localObject2, true);
           }
           if (!bool2) {
             break;
           }
-          localObject1 = f.abP();
-          if (localObject1 != e.j.gek) {
+          localObject1 = f.abY();
+          if (localObject1 != e.j.ggs) {
             break label562;
           }
           localObject1 = RingtoneManager.getDefaultUri(2);
@@ -90,7 +90,7 @@ public final class w$1
             if (com.tencent.mm.plugin.audio.c.a.getStreamVolume(5) == 0) {
               break;
             }
-            if (!com.tencent.mm.plugin.audio.c.a.bGx()) {
+            if (!com.tencent.mm.plugin.audio.c.a.bHt()) {
               break label572;
             }
             int k = com.tencent.mm.plugin.audio.c.a.getStreamVolume(8);
@@ -106,17 +106,17 @@ public final class w$1
             localk.setLooping(false);
             localk.start();
             com.tencent.mm.plugin.audio.c.a.eD(8, k);
-            ad.d("MiroMsg.NotificationUtil", "oldVolume is %d, toneVolume is %d", new Object[] { Integer.valueOf(k), Integer.valueOf(i) });
+            ae.d("MiroMsg.NotificationUtil", "oldVolume is %d, toneVolume is %d", new Object[] { Integer.valueOf(k), Integer.valueOf(i) });
           }
           catch (Exception localException1)
           {
-            ad.printErrStackTrace("MiroMsg.NotificationUtil", localException1, "", new Object[0]);
+            ae.printErrStackTrace("MiroMsg.NotificationUtil", localException1, "", new Object[0]);
           }
         }
       }
       catch (Exception localException2)
       {
-        ad.printErrStackTrace("MiroMsg.NotificationUtil", localException2, "", new Object[0]);
+        ae.printErrStackTrace("MiroMsg.NotificationUtil", localException2, "", new Object[0]);
       }
       break;
       label562:

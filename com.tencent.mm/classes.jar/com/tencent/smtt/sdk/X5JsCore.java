@@ -8,7 +8,7 @@ import com.tencent.smtt.export.external.jscore.interfaces.IX5JsVirtualMachine;
 import java.nio.ByteBuffer;
 
 public class X5JsCore
-  extends x
+  extends z
 {
   private static X5JsCore.a a = X5JsCore.a.a;
   private static X5JsCore.a b = X5JsCore.a.a;
@@ -63,7 +63,7 @@ public class X5JsCore
   private static IX5CoreJsCore b()
   {
     AppMethodBeat.i(54538);
-    if (v.a().b())
+    if (x.a().b())
     {
       IX5CoreJsCore localIX5CoreJsCore = getJSCoreImpl();
       AppMethodBeat.o(54538);

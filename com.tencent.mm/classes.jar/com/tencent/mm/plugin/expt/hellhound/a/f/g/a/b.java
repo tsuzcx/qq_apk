@@ -2,169 +2,169 @@ package com.tencent.mm.plugin.expt.hellhound.a.f.g.a;
 
 import android.util.Pair;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.asx;
-import com.tencent.mm.protocal.protobuf.boc;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.atn;
+import com.tencent.mm.protocal.protobuf.bou;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class b
 {
-  static void Dq(int paramInt)
+  static void DD(int paramInt)
   {
-    AppMethodBeat.i(210499);
-    asx localasx2 = cqE();
-    asx localasx1 = localasx2;
-    if (localasx2 == null) {
-      localasx1 = new asx();
+    AppMethodBeat.i(196166);
+    atn localatn2 = csg();
+    atn localatn1 = localatn2;
+    if (localatn2 == null) {
+      localatn1 = new atn();
     }
-    localasx1.type = paramInt;
-    a(localasx1);
-    AppMethodBeat.o(210499);
+    localatn1.type = paramInt;
+    a(localatn1);
+    AppMethodBeat.o(196166);
   }
   
-  public static void a(asx paramasx)
+  public static void a(atn paramatn)
   {
     AppMethodBeat.i(122285);
-    if (paramasx == null)
+    if (paramatn == null)
     {
       AppMethodBeat.o(122285);
       return;
     }
     try
     {
-      com.tencent.mm.plugin.expt.hellhound.core.a.b.p("mmkv_key_hell_floatS", paramasx.toByteArray());
+      com.tencent.mm.plugin.expt.hellhound.core.a.b.p("mmkv_key_hell_floatS", paramatn.toByteArray());
       AppMethodBeat.o(122285);
       return;
     }
-    catch (Exception paramasx)
+    catch (Exception paramatn)
     {
-      ad.printErrStackTrace("HABBYGE-MALI.FloatSessionDao", paramasx, "FloatSessionDao._writeBack: %s", new Object[] { paramasx.getMessage() });
+      ae.printErrStackTrace("HABBYGE-MALI.FloatSessionDao", paramatn, "FloatSessionDao._writeBack: %s", new Object[] { paramatn.getMessage() });
       AppMethodBeat.o(122285);
     }
   }
   
-  public static void b(boc paramboc)
+  public static void b(bou parambou)
   {
     AppMethodBeat.i(122279);
-    if (paramboc == null)
+    if (parambou == null)
     {
       AppMethodBeat.o(122279);
       return;
     }
-    asx localasx2 = cqE();
-    asx localasx1 = localasx2;
-    if (localasx2 == null) {
-      localasx1 = new asx();
+    atn localatn2 = csg();
+    atn localatn1 = localatn2;
+    if (localatn2 == null) {
+      localatn1 = new atn();
     }
-    localasx1.GqT = new boc();
-    localasx1.GqT.dtL = paramboc.dtL;
-    localasx1.GqT.dyV = paramboc.dyV;
-    localasx1.GqT.aHQ = paramboc.aHQ;
-    a(localasx1);
+    localatn1.GKr = new bou();
+    localatn1.GKr.duQ = parambou.duQ;
+    localatn1.GKr.dAa = parambou.dAa;
+    localatn1.GKr.aHQ = parambou.aHQ;
+    a(localatn1);
     AppMethodBeat.o(122279);
   }
   
-  public static boc cqB()
+  public static bou csd()
   {
     AppMethodBeat.i(122280);
-    Object localObject = cqE();
+    Object localObject = csg();
     if (localObject == null)
     {
       AppMethodBeat.o(122280);
       return null;
     }
-    localObject = ((asx)localObject).GqT;
+    localObject = ((atn)localObject).GKr;
     AppMethodBeat.o(122280);
     return localObject;
   }
   
-  public static int cqC()
+  public static int cse()
   {
     AppMethodBeat.i(184390);
-    asx localasx = cqE();
-    if (localasx == null)
+    atn localatn = csg();
+    if (localatn == null)
     {
       AppMethodBeat.o(184390);
       return 8;
     }
-    int i = localasx.GqX;
+    int i = localatn.GKv;
     AppMethodBeat.o(184390);
     return i;
   }
   
-  public static Pair<Integer, Integer> cqD()
+  public static Pair<Integer, Integer> csf()
   {
     AppMethodBeat.i(122284);
-    Object localObject = cqE();
+    Object localObject = csg();
     if (localObject == null)
     {
       AppMethodBeat.o(122284);
       return null;
     }
-    localObject = Pair.create(Integer.valueOf(((asx)localObject).GqU), Integer.valueOf(((asx)localObject).GqV));
+    localObject = Pair.create(Integer.valueOf(((atn)localObject).GKs), Integer.valueOf(((atn)localObject).GKt));
     AppMethodBeat.o(122284);
     return localObject;
   }
   
-  public static asx cqE()
+  public static atn csg()
   {
     AppMethodBeat.i(122286);
     byte[] arrayOfByte = com.tencent.mm.plugin.expt.hellhound.core.a.b.getBytes("mmkv_key_hell_floatS");
     if ((arrayOfByte == null) || (arrayOfByte.length <= 0))
     {
-      ad.e("HABBYGE-MALI.FloatSessionDao", "HellSession read(): NULL");
+      ae.e("HABBYGE-MALI.FloatSessionDao", "HellSession read(): NULL");
       AppMethodBeat.o(122286);
       return null;
     }
-    asx localasx = new asx();
+    atn localatn = new atn();
     try
     {
-      localasx.parseFrom(arrayOfByte);
+      localatn.parseFrom(arrayOfByte);
       AppMethodBeat.o(122286);
-      return localasx;
+      return localatn;
     }
     catch (Exception localException)
     {
-      ad.printErrStackTrace("HABBYGE-MALI.FloatSessionDao", localException, "FloatSessionDao._read: %s", new Object[] { localException.getMessage() });
+      ae.printErrStackTrace("HABBYGE-MALI.FloatSessionDao", localException, "FloatSessionDao._read: %s", new Object[] { localException.getMessage() });
       AppMethodBeat.o(122286);
     }
     return null;
   }
   
-  public static void fz(int paramInt1, int paramInt2)
+  public static void fx(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(122283);
-    asx localasx2 = cqE();
-    asx localasx1 = localasx2;
-    if (localasx2 == null) {
-      localasx1 = new asx();
+    atn localatn2 = csg();
+    atn localatn1 = localatn2;
+    if (localatn2 == null) {
+      localatn1 = new atn();
     }
     if (paramInt1 != -1) {
-      localasx1.GqU = paramInt1;
+      localatn1.GKs = paramInt1;
     }
     if (paramInt2 != -1) {
-      localasx1.GqV = paramInt2;
+      localatn1.GKt = paramInt2;
     }
-    a(localasx1);
+    a(localatn1);
     AppMethodBeat.o(122283);
   }
   
   public static void lc(boolean paramBoolean)
   {
     AppMethodBeat.i(122281);
-    asx localasx2 = cqE();
-    asx localasx1 = localasx2;
-    if (localasx2 == null) {
-      localasx1 = new asx();
+    atn localatn2 = csg();
+    atn localatn1 = localatn2;
+    if (localatn2 == null) {
+      localatn1 = new atn();
     }
-    localasx1.GqW = paramBoolean;
-    a(localasx1);
-    ad.d("HABBYGE-MALI.FloatSessionDao", "setClickMenuItem: %b", new Object[] { Boolean.valueOf(paramBoolean) });
+    localatn1.GKu = paramBoolean;
+    a(localatn1);
+    ae.d("HABBYGE-MALI.FloatSessionDao", "setClickMenuItem: %b", new Object[] { Boolean.valueOf(paramBoolean) });
     AppMethodBeat.o(122281);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.hellhound.a.f.g.a.b
  * JD-Core Version:    0.7.0.1
  */

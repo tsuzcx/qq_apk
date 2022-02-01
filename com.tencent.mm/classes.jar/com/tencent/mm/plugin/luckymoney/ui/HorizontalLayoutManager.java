@@ -8,19 +8,19 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/luckymoney/ui/HorizontalLayoutManager;", "Landroid/support/v7/widget/LinearLayoutManager;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "orientation", "", "reverseLayout", "", "(Landroid/content/Context;IZ)V", "canScrollHorizontal", "getCanScrollHorizontal", "()Z", "setCanScrollHorizontal", "(Z)V", "extraLayoutSpace", "scrollState", "scroller", "Landroid/support/v7/widget/LinearSmoothScroller;", "canScrollHorizontally", "canScrollVertically", "getExtraLayoutSpace", "state", "Landroid/support/v7/widget/RecyclerView$State;", "onLayoutChildren", "", "recycler", "Landroid/support/v7/widget/RecyclerView$Recycler;", "Landroid/support/v7/widget/RecyclerView;", "onScrollStateChanged", "scrollHorizontallyBy", "dx", "scrollToPosition", "position", "scrollToPositionWithOffset", "offset", "scrollVerticallyBy", "dy", "setExtraLayoutSpace", "setScrollVerticallyEnable", "enable", "smoothScrollToPosition", "recyclerView", "Companion", "plugin-wxpay_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/luckymoney/ui/HorizontalLayoutManager;", "Landroid/support/v7/widget/LinearLayoutManager;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "orientation", "", "reverseLayout", "", "(Landroid/content/Context;IZ)V", "canScrollHorizontal", "getCanScrollHorizontal", "()Z", "setCanScrollHorizontal", "(Z)V", "extraLayoutSpace", "scrollState", "scroller", "Landroid/support/v7/widget/LinearSmoothScroller;", "canScrollHorizontally", "canScrollVertically", "getExtraLayoutSpace", "state", "Landroid/support/v7/widget/RecyclerView$State;", "onLayoutChildren", "", "recycler", "Landroid/support/v7/widget/RecyclerView$Recycler;", "Landroid/support/v7/widget/RecyclerView;", "onScrollStateChanged", "scrollHorizontallyBy", "dx", "scrollToPosition", "position", "scrollToPositionWithOffset", "offset", "scrollVerticallyBy", "dy", "setExtraLayoutSpace", "setScrollVerticallyEnable", "enable", "smoothScrollToPosition", "recyclerView", "Companion", "plugin-wxpay_release"})
 public final class HorizontalLayoutManager
   extends LinearLayoutManager
 {
-  public static final a vuo;
-  public int psl;
+  public static final HorizontalLayoutManager.a vGs;
+  public int pyR;
+  private boolean vGr;
   private int vi;
-  private boolean vun;
   
   static
   {
     AppMethodBeat.i(163899);
-    vuo = new a((byte)0);
+    vGs = new HorizontalLayoutManager.a((byte)0);
     AppMethodBeat.o(163899);
   }
   
@@ -30,7 +30,7 @@ public final class HorizontalLayoutManager
     setOrientation(0);
     aw(true);
     cb(4);
-    this.vun = true;
+    this.vGr = true;
     AppMethodBeat.o(163898);
   }
   
@@ -63,9 +63,9 @@ public final class HorizontalLayoutManager
   {
     AppMethodBeat.i(163897);
     p.h(paramt, "state");
-    if (this.psl > 0)
+    if (this.pyR > 0)
     {
-      i = this.psl;
+      i = this.pyR;
       AppMethodBeat.o(163897);
       return i;
     }
@@ -99,7 +99,7 @@ public final class HorizontalLayoutManager
   public final boolean kc()
   {
     AppMethodBeat.i(163896);
-    if (this.vun)
+    if (this.vGr)
     {
       AppMethodBeat.o(163896);
       return true;
@@ -113,13 +113,10 @@ public final class HorizontalLayoutManager
   {
     return false;
   }
-  
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/luckymoney/ui/HorizontalLayoutManager$Companion;", "", "()V", "TAG", "", "plugin-wxpay_release"})
-  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.ui.HorizontalLayoutManager
  * JD-Core Version:    0.7.0.1
  */

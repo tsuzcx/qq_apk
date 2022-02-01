@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent;
 
 public final class t
-  extends x
+  extends y
 {
-  public int zxf;
-  public int zxu;
-  public String zxv;
-  public String zxw;
-  public String zxx;
-  public boolean zzK;
-  public String zzO;
-  public String zzP;
+  public int zOE;
+  public int zOT;
+  public String zOU;
+  public String zOV;
+  public String zOW;
+  public boolean zQJ;
+  public String zQN;
+  public String zQO;
 }
 
 

@@ -4,8 +4,6 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.ArrayList;
-import java.util.List;
 
 public abstract interface IKeyStepAnalyser
 {
@@ -13,50 +11,50 @@ public abstract interface IKeyStepAnalyser
     implements Parcelable
   {
     public static final Parcelable.Creator<StepLogInfo> CREATOR;
-    public long cpz;
+    public long cqc;
     public String errMsg;
-    public String lDi;
-    public boolean lDj;
-    public String lDk;
+    public String lHH;
+    public boolean lHI;
+    public String lHJ;
     public String sessionId;
     public long time;
     
     static
     {
-      AppMethodBeat.i(187714);
+      AppMethodBeat.i(201281);
       CREATOR = new Parcelable.Creator() {};
-      AppMethodBeat.o(187714);
+      AppMethodBeat.o(201281);
     }
     
     public StepLogInfo()
     {
-      this.cpz = -1L;
+      this.cqc = -1L;
     }
     
     public StepLogInfo(Parcel paramParcel)
     {
-      AppMethodBeat.i(187711);
-      this.cpz = -1L;
+      AppMethodBeat.i(201278);
+      this.cqc = -1L;
       this.time = paramParcel.readLong();
       this.sessionId = paramParcel.readString();
-      this.lDi = paramParcel.readString();
+      this.lHH = paramParcel.readString();
       if (paramParcel.readByte() != 0) {}
       for (boolean bool = true;; bool = false)
       {
-        this.lDj = bool;
+        this.lHI = bool;
         this.errMsg = paramParcel.readString();
-        this.lDk = paramParcel.readString();
-        this.cpz = paramParcel.readLong();
-        AppMethodBeat.o(187711);
+        this.lHJ = paramParcel.readString();
+        this.cqc = paramParcel.readLong();
+        AppMethodBeat.o(201278);
         return;
       }
     }
     
-    public final boolean bqC()
+    public final boolean brm()
     {
-      AppMethodBeat.i(187712);
-      boolean bool = "END".equals(this.lDi);
-      AppMethodBeat.o(187712);
+      AppMethodBeat.i(201279);
+      boolean bool = "END".equals(this.lHH);
+      AppMethodBeat.o(201279);
       return bool;
     }
     
@@ -67,39 +65,20 @@ public abstract interface IKeyStepAnalyser
     
     public final void writeToParcel(Parcel paramParcel, int paramInt)
     {
-      AppMethodBeat.i(187713);
+      AppMethodBeat.i(201280);
       paramParcel.writeLong(this.time);
       paramParcel.writeString(this.sessionId);
-      paramParcel.writeString(this.lDi);
-      if (this.lDj) {}
+      paramParcel.writeString(this.lHH);
+      if (this.lHI) {}
       for (paramInt = 1;; paramInt = 0)
       {
         paramParcel.writeByte((byte)paramInt);
         paramParcel.writeString(this.errMsg);
-        paramParcel.writeString(this.lDk);
-        paramParcel.writeLong(this.cpz);
-        AppMethodBeat.o(187713);
+        paramParcel.writeString(this.lHJ);
+        paramParcel.writeLong(this.cqc);
+        AppMethodBeat.o(201280);
         return;
       }
-    }
-  }
-  
-  public static abstract interface a
-  {
-    public abstract void bx(List<IKeyStepAnalyser.b> paramList);
-  }
-  
-  public static final class b
-  {
-    public ArrayList<IKeyStepAnalyser.StepLogInfo> lDg;
-    public StringBuilder lDh;
-    
-    public b()
-    {
-      AppMethodBeat.i(187709);
-      this.lDg = new ArrayList();
-      this.lDh = new StringBuilder();
-      AppMethodBeat.o(187709);
     }
   }
 }

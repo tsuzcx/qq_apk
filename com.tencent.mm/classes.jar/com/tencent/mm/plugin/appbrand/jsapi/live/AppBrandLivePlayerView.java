@@ -4,7 +4,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.util.AttributeSet;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.rtmp.ITXLivePlayListener;
 import com.tencent.rtmp.TXLivePlayer.ITXAudioVolumeEvaluationListener;
 import com.tencent.rtmp.TXLivePlayer.ITXSnapshotListener;
@@ -15,12 +15,12 @@ import org.json.JSONObject;
 public class AppBrandLivePlayerView
   extends TXCloudVideoView
 {
-  boolean csI;
-  l kOO;
-  a kOP;
-  private AppBrandLivePlayerView.c kOQ;
-  int kOR;
-  private b kOS;
+  boolean ctl;
+  private b kSA;
+  l kSw;
+  a kSx;
+  private AppBrandLivePlayerView.c kSy;
+  int kSz;
   
   public AppBrandLivePlayerView(Context paramContext)
   {
@@ -41,15 +41,15 @@ public class AppBrandLivePlayerView
   private void init(Context paramContext)
   {
     AppMethodBeat.i(145828);
-    this.kOO = new l(paramContext);
+    this.kSw = new l(paramContext);
     AppMethodBeat.o(145828);
   }
   
   public final boolean g(String paramString, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(145824);
-    paramString = this.kOO.h(paramString, paramJSONObject);
-    ad.i("MicroMsg.AppBrandLivePlayerView", "onOperate code:%d info:%s", new Object[] { Integer.valueOf(paramString.errorCode), paramString.crF });
+    paramString = this.kSw.h(paramString, paramJSONObject);
+    ae.i("MicroMsg.AppBrandLivePlayerView", "onOperate code:%d info:%s", new Object[] { Integer.valueOf(paramString.errorCode), paramString.csi });
     if (paramString.errorCode == 0)
     {
       AppMethodBeat.o(145824);
@@ -59,26 +59,26 @@ public class AppBrandLivePlayerView
     return false;
   }
   
-  public final void gE(int paramInt)
+  public final void gF(int paramInt)
   {
     AppMethodBeat.i(145826);
-    Object localObject = this.kOO;
-    ad.i("TXLivePlayerJSAdapter", "enterBackground");
-    if (((paramInt == 2) && (!((l)localObject).crT)) || ((paramInt == 1) && (!((l)localObject).crS)))
+    Object localObject = this.kSw;
+    ae.i("TXLivePlayerJSAdapter", "enterBackground");
+    if (((paramInt == 2) && (!((l)localObject).csw)) || ((paramInt == 1) && (!((l)localObject).csv)))
     {
-      ((l)localObject).kPo = false;
+      ((l)localObject).kSW = false;
       localObject = new i();
     }
     for (;;)
     {
-      ad.i("MicroMsg.AppBrandLivePlayerView", "onBackground code:%d info:%s", new Object[] { Integer.valueOf(((i)localObject).errorCode), ((i)localObject).crF });
+      ae.i("MicroMsg.AppBrandLivePlayerView", "onBackground code:%d info:%s", new Object[] { Integer.valueOf(((i)localObject).errorCode), ((i)localObject).csi });
       AppMethodBeat.o(145826);
       return;
-      ((l)localObject).kPo = ((l)localObject).csy.isPlaying();
-      if (((l)localObject).kPo)
+      ((l)localObject).kSW = ((l)localObject).ctb.isPlaying();
+      if (((l)localObject).kSW)
       {
-        if ((((l)localObject).csI) && (((l)localObject).csz != null)) {
-          ((l)localObject).csz.onPlayEvent(6000, new Bundle());
+        if ((((l)localObject).ctl) && (((l)localObject).ctc != null)) {
+          ((l)localObject).ctc.onPlayEvent(6000, new Bundle());
         }
         localObject = ((l)localObject).h("pause", null);
       }
@@ -89,11 +89,11 @@ public class AppBrandLivePlayerView
     }
   }
   
-  final void gx(boolean paramBoolean)
+  final void gw(boolean paramBoolean)
   {
     AppMethodBeat.i(145827);
-    if ((this.csI) && (this.kOQ != null)) {
-      this.kOQ.o(paramBoolean, this.kOR);
+    if ((this.ctl) && (this.kSy != null)) {
+      this.kSy.p(paramBoolean, this.kSz);
     }
     AppMethodBeat.o(145827);
   }
@@ -101,69 +101,69 @@ public class AppBrandLivePlayerView
   public final void onExit()
   {
     AppMethodBeat.i(145825);
-    Object localObject = this.kOO;
+    Object localObject = this.kSw;
     if (!((l)localObject).mInited) {}
     for (localObject = new i(-3, "uninited livePlayer");; localObject = new i())
     {
-      ad.i("MicroMsg.AppBrandLivePlayerView", "onDestroy code:%d info:%s", new Object[] { Integer.valueOf(((i)localObject).errorCode), ((i)localObject).crF });
-      if (this.kOS != null) {
-        this.kOS.bkG();
+      ae.i("MicroMsg.AppBrandLivePlayerView", "onDestroy code:%d info:%s", new Object[] { Integer.valueOf(((i)localObject).errorCode), ((i)localObject).csi });
+      if (this.kSA != null) {
+        this.kSA.blq();
       }
       AppMethodBeat.o(145825);
       return;
-      ((l)localObject).csy.stopPlay(true);
-      ((l)localObject).csy.setPlayListener(null);
+      ((l)localObject).ctb.stopPlay(true);
+      ((l)localObject).ctb.setPlayListener(null);
       ((l)localObject).mInited = false;
     }
   }
   
   public void setAudioVolumeEventListener(TXLivePlayer.ITXAudioVolumeEvaluationListener paramITXAudioVolumeEvaluationListener)
   {
-    this.kOO.mAudioVolumeListener = paramITXAudioVolumeEvaluationListener;
+    this.kSw.mAudioVolumeListener = paramITXAudioVolumeEvaluationListener;
   }
   
   public void setExitListener(b paramb)
   {
-    this.kOS = paramb;
+    this.kSA = paramb;
   }
   
   public void setFullScreenDelegate(a parama)
   {
-    this.kOP = parama;
+    this.kSx = parama;
   }
   
   public void setNeedEvent(boolean paramBoolean)
   {
-    this.csI = paramBoolean;
+    this.ctl = paramBoolean;
   }
   
   public void setOnFullScreenChangeListener(AppBrandLivePlayerView.c paramc)
   {
-    this.kOQ = paramc;
+    this.kSy = paramc;
   }
   
   public void setPlayEventListener(ITXLivePlayListener paramITXLivePlayListener)
   {
-    this.kOO.csz = paramITXLivePlayListener;
+    this.kSw.ctc = paramITXLivePlayListener;
   }
   
   public void setSnapshotListener(TXLivePlayer.ITXSnapshotListener paramITXSnapshotListener)
   {
-    this.kOO.csA = paramITXSnapshotListener;
+    this.kSw.ctd = paramITXSnapshotListener;
   }
   
   public static abstract interface a
   {
-    public abstract void bkF();
+    public abstract void blp();
     
     public abstract boolean isFullScreen();
     
-    public abstract void te(int paramInt);
+    public abstract void th(int paramInt);
   }
   
   public static abstract interface b
   {
-    public abstract void bkG();
+    public abstract void blq();
   }
 }
 

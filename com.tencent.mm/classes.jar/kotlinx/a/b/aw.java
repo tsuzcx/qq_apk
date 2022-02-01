@@ -4,23 +4,23 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 import kotlinx.a.n;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/serialization/internal/PrimitiveArrayDescriptor;", "Lkotlinx/serialization/internal/ListLikeDescriptor;", "primitive", "Lkotlinx/serialization/SerialDescriptor;", "(Lkotlinx/serialization/SerialDescriptor;)V", "serialName", "", "getSerialName", "()Ljava/lang/String;", "kotlinx-serialization-runtime"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/serialization/internal/PrimitiveArrayDescriptor;", "Lkotlinx/serialization/internal/ListLikeDescriptor;", "primitive", "Lkotlinx/serialization/SerialDescriptor;", "(Lkotlinx/serialization/SerialDescriptor;)V", "serialName", "", "getSerialName", "()Ljava/lang/String;", "kotlinx-serialization-runtime"})
 public final class aw
   extends ah
 {
-  private final String NLG;
+  private final String OiM;
   
   public aw(n paramn)
   {
     super(paramn, (byte)0);
-    AppMethodBeat.i(191171);
-    this.NLG = (paramn.gwQ() + "Array");
-    AppMethodBeat.o(191171);
+    AppMethodBeat.i(199759);
+    this.OiM = (paramn.gBs() + "Array");
+    AppMethodBeat.o(199759);
   }
   
-  public final String gwQ()
+  public final String gBs()
   {
-    return this.NLG;
+    return this.OiM;
   }
 }
 

@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.messenger.foundation.a;
 
 import com.tencent.mm.plugin.messenger.foundation.a.a.i.c;
-import com.tencent.mm.storage.at;
-import com.tencent.mm.storage.bu;
+import com.tencent.mm.storage.au;
+import com.tencent.mm.storage.bv;
 
 public abstract interface g
 {
-  public abstract void a(bu parambu, i.c paramc, boolean[] paramArrayOfBoolean);
+  public abstract void a(bv parambv, i.c paramc, boolean[] paramArrayOfBoolean);
   
-  public abstract void a(bu parambu, at paramat, boolean paramBoolean, i.c paramc);
+  public abstract void a(bv parambv, au paramau, boolean paramBoolean, i.c paramc);
   
-  public abstract void b(bu parambu, at paramat, boolean paramBoolean, i.c paramc);
+  public abstract void b(bv parambv, au paramau, boolean paramBoolean, i.c paramc);
 }
 
 

@@ -1,6 +1,6 @@
 package com.tencent.mm.plugin.label;
 
-import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.ar;
 import com.tencent.mm.storagebase.h.b;
 
 final class e$2
@@ -8,7 +8,7 @@ final class e$2
 {
   public final String[] getSQLs()
   {
-    return aq.SQL_CREATE;
+    return ar.SQL_CREATE;
   }
 }
 

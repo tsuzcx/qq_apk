@@ -9,10 +9,10 @@ public class PAGComposition
 {
   static
   {
-    AppMethodBeat.i(220134);
+    AppMethodBeat.i(216888);
     b.loadLibrary("libpag");
     nativeInit();
-    AppMethodBeat.o(220134);
+    AppMethodBeat.o(216888);
   }
   
   public PAGComposition(long paramLong)
@@ -50,9 +50,9 @@ public class PAGComposition
   
   public int numLayers()
   {
-    AppMethodBeat.i(220133);
+    AppMethodBeat.i(216887);
     int i = numChildren();
-    AppMethodBeat.o(220133);
+    AppMethodBeat.o(216887);
     return i;
   }
   

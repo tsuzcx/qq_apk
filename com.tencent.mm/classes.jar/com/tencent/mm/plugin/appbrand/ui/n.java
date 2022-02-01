@@ -1,293 +1,118 @@
 package com.tencent.mm.plugin.appbrand.ui;
 
 import android.app.Activity;
+import android.app.ActivityManager;
+import android.app.ActivityManager.RunningAppProcessInfo;
+import android.content.Context;
 import android.content.Intent;
-import android.support.v4.view.t;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.AnimationUtils;
-import com.tencent.luggage.sdk.config.AppBrandInitConfigLU;
-import com.tencent.luggage.sdk.d.c;
+import android.content.SharedPreferences;
+import android.os.RemoteException;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
-import com.tencent.mm.plugin.appbrand.ab.e;
-import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfig;
-import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
-import com.tencent.mm.plugin.appbrand.luggage.export.functionalpage.m;
-import com.tencent.mm.plugin.appbrand.o;
-import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
-import com.tencent.mm.plugin.appbrand.widget.d;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.ui.MMFragmentActivity.a;
+import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask.ProcessRequest;
+import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask.ProcessResult;
+import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask.b;
+import com.tencent.mm.plugin.appbrand.task.g.a;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import d.g.b.p;
+import d.g.b.q;
+import d.l;
+import d.z;
 
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/ui/AppBrandUIAccountReleaseHandler;", "", "()V", "TAG", "", "processForegroundImportance", "", "", "[Ljava/lang/Integer;", "getSerializedUin", "handleAccountRelease", "", "activity", "Landroid/app/Activity;", "finishHandler", "Lcom/tencent/mm/plugin/appbrand/task/AppBrandTaskUIController$FinishAllHandler;", "plugin-appbrand-integration_release"})
 public final class n
-  implements aa
 {
-  private static void a(final AppBrandRuntime paramAppBrandRuntime, final int paramInt, final Runnable paramRunnable)
+  private static final Integer[] mKn;
+  public static final n mKo;
+  
+  static
   {
-    AppMethodBeat.i(48868);
-    if (!t.ay(paramAppBrandRuntime.jwJ))
-    {
-      paramAppBrandRuntime.jwJ.setWillNotDraw(true);
-      paramAppBrandRuntime.jwJ.post(new Runnable()
-      {
-        public final void run()
-        {
-          AppMethodBeat.i(175084);
-          n.b(this.jIG, paramInt, paramRunnable);
-          AppMethodBeat.o(175084);
-        }
-      });
-      AppMethodBeat.o(48868);
-      return;
-    }
-    Animation localAnimation = AnimationUtils.loadAnimation(aj.getContext(), paramInt);
-    localAnimation.setAnimationListener(new Animation.AnimationListener()
-    {
-      public final void onAnimationEnd(Animation paramAnonymousAnimation)
-      {
-        AppMethodBeat.i(175085);
-        if (this.jzJ != null) {
-          aq.f(this.jzJ);
-        }
-        AppMethodBeat.o(175085);
-      }
-      
-      public final void onAnimationRepeat(Animation paramAnonymousAnimation) {}
-      
-      public final void onAnimationStart(Animation paramAnonymousAnimation)
-      {
-        AppMethodBeat.i(175086);
-        paramAppBrandRuntime.jwJ.setWillNotDraw(false);
-        AppMethodBeat.o(175086);
-      }
-    });
-    paramAppBrandRuntime.jwJ.startAnimation(localAnimation);
-    AppMethodBeat.o(48868);
+    AppMethodBeat.i(51149);
+    mKo = new n();
+    mKn = new Integer[] { Integer.valueOf(100), Integer.valueOf(200) };
+    AppMethodBeat.o(51149);
   }
   
-  public static boolean al(AppBrandRuntime paramAppBrandRuntime)
+  public static void a(final Activity paramActivity, g.a parama)
   {
-    AppMethodBeat.i(48869);
-    if ((paramAppBrandRuntime instanceof o))
-    {
-      paramAppBrandRuntime = (o)paramAppBrandRuntime;
-      if ((paramAppBrandRuntime.aWT()) || (paramAppBrandRuntime.Fb().cmC.scene == 1099))
-      {
-        AppMethodBeat.o(48869);
-        return true;
-      }
-      AppMethodBeat.o(48869);
-      return false;
-    }
-    AppMethodBeat.o(48869);
-    return false;
-  }
-  
-  private static int b(AppBrandStatObject paramAppBrandStatObject)
-  {
-    if (paramAppBrandStatObject == null) {
-      return 0;
-    }
-    return paramAppBrandStatObject.scene;
-  }
-  
-  public final void a(Activity paramActivity, AppBrandInitConfig paramAppBrandInitConfig)
-  {
-    AppMethodBeat.i(48864);
-    if ((paramActivity == null) || (paramActivity.getIntent() == null))
-    {
-      AppMethodBeat.o(48864);
-      return;
-    }
-    if (!(paramAppBrandInitConfig instanceof AppBrandInitConfigWC))
-    {
-      AppMethodBeat.o(48864);
-      return;
-    }
-    AppBrandStatObject localAppBrandStatObject = ((AppBrandInitConfigWC)paramAppBrandInitConfig).cmC;
+    AppMethodBeat.i(51148);
+    p.h(paramActivity, "activity");
+    p.h(parama, "finishHandler");
     try
     {
-      boolean bool = m.a(paramActivity, paramAppBrandInitConfig, localAppBrandStatObject);
-      if (bool)
+      ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = new ActivityManager.RunningAppProcessInfo();
+      ActivityManager.getMyMemoryState(localRunningAppProcessInfo);
+      parama = new a(parama, paramActivity);
+      if ((localRunningAppProcessInfo == null) || (!org.apache.commons.b.a.contains(mKn, Integer.valueOf(localRunningAppProcessInfo.importance))))
       {
-        AppMethodBeat.o(48864);
-        return;
-      }
-    }
-    catch (Throwable localThrowable)
-    {
-      if (e.b(paramActivity, paramAppBrandInitConfig))
-      {
-        AppMethodBeat.o(48864);
-        return;
-      }
-      if ((((AppBrandInitConfigWC)paramAppBrandInitConfig).jXu) || (((AppBrandInitConfigWC)paramAppBrandInitConfig).launchMode == 1))
-      {
-        paramActivity.overridePendingTransition(MMFragmentActivity.a.mOe, MMFragmentActivity.a.mOf);
-        AppMethodBeat.o(48864);
-        return;
-      }
-      if (b(localAppBrandStatObject) == 1023)
-      {
-        i = 1;
-        if (i == 0) {
-          if ((b(localAppBrandStatObject) != 1113) && (b(localAppBrandStatObject) != 1114)) {
-            break label181;
-          }
-        }
-      }
-      label181:
-      for (int i = 1;; i = 0)
-      {
-        if (i == 0) {
-          break label186;
-        }
-        paramActivity.overridePendingTransition(2130772004, 2130771986);
-        AppMethodBeat.o(48864);
-        return;
-        i = 0;
-        break;
-      }
-      label186:
-      if (1024 == b(localAppBrandStatObject)) {
-        if (localAppBrandStatObject == null)
+        paramActivity = new StringBuilder("finish directly importance[");
+        if (localRunningAppProcessInfo != null)
         {
-          i = 0;
-          if (6 != i) {
-            break label241;
-          }
+          i = localRunningAppProcessInfo.importance;
+          ae.i("MicroMsg.AppBrandUIAccountReleaseHandler", i + ']');
+          parama.invoke();
+          AppMethodBeat.o(51148);
+          return;
         }
       }
-      label241:
-      for (i = 1;; i = 0)
+    }
+    catch (RemoteException localRemoteException)
+    {
+      for (;;)
       {
-        if (i == 0) {
-          break label246;
-        }
-        paramActivity.overridePendingTransition(MMFragmentActivity.a.mOg, MMFragmentActivity.a.mOh);
-        AppMethodBeat.o(48864);
-        return;
-        i = localAppBrandStatObject.dJQ;
-        break;
+        Object localObject = null;
+        continue;
+        int i = -1;
       }
-      label246:
-      paramAppBrandInitConfig = paramActivity.getIntent();
-      if ((paramAppBrandInitConfig != null) && (paramAppBrandInitConfig.getBooleanExtra("key_appbrand_bring_ui_to_front_from_task_Base_by_task_top_ui", false))) {}
-      for (i = 1; i != 0; i = 0)
-      {
-        paramActivity.overridePendingTransition(2130772004, 2130771986);
-        AppMethodBeat.o(48864);
-        return;
-      }
-      if (1090 == b(localAppBrandStatObject))
-      {
-        paramActivity.overridePendingTransition(2130772005, 2130772003);
-        AppMethodBeat.o(48864);
-        return;
-      }
-      paramActivity.overridePendingTransition(2130772004, 2130772003);
-      AppMethodBeat.o(48864);
+      parama = (AppBrandProxyUIProcessTask.b)new b(parama);
+      com.tencent.mm.plugin.appbrand.ipc.a.a((Context)paramActivity, (AppBrandProxyUIProcessTask.ProcessRequest)new AccountReleaseProxyUILaunchRequest(), parama, new Intent().addFlags(67108864));
+      AppMethodBeat.o(51148);
     }
   }
   
-  public final void a(final AppBrandRuntime paramAppBrandRuntime1, AppBrandRuntime paramAppBrandRuntime2)
+  public static final int bAy()
   {
-    AppMethodBeat.i(48866);
-    if (paramAppBrandRuntime1 == null)
+    AppMethodBeat.i(175219);
+    SharedPreferences localSharedPreferences = ak.getContext().getSharedPreferences("system_config_prefs", 0);
+    if (localSharedPreferences != null)
     {
-      AppMethodBeat.o(48866);
-      return;
+      int i = localSharedPreferences.getInt("default_uin", 0);
+      AppMethodBeat.o(175219);
+      return i;
     }
-    if (al(paramAppBrandRuntime1))
+    AppMethodBeat.o(175219);
+    return 0;
+  }
+  
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"doFinish", "", "invoke"})
+  static final class a
+    extends q
+    implements d.g.a.a<z>
+  {
+    a(g.a parama, Activity paramActivity)
     {
-      i = MMFragmentActivity.a.mOe;
-      a(paramAppBrandRuntime1, i, new Runnable()
-      {
-        public final void run()
-        {
-          AppMethodBeat.i(48861);
-          if ((paramAppBrandRuntime1 instanceof o)) {
-            ((o)paramAppBrandRuntime1).onEnterAnimationComplete();
-          }
-          if (this.mFp != null) {
-            this.mFp.run();
-          }
-          AppMethodBeat.o(48861);
-        }
-      });
-      if (paramAppBrandRuntime2 != null) {
-        if (!al(paramAppBrandRuntime1)) {
-          break label73;
-        }
-      }
+      super();
     }
-    label73:
-    for (int i = MMFragmentActivity.a.mOf;; i = 2130771986)
+    
+    public final void invoke()
     {
-      a(paramAppBrandRuntime2, i, null);
-      AppMethodBeat.o(48866);
-      return;
-      i = 2130772004;
-      break;
+      AppMethodBeat.i(51146);
+      this.mKp.proceed();
+      paramActivity.finish();
+      AppMethodBeat.o(51146);
     }
   }
   
-  public final void a(AppBrandRuntime paramAppBrandRuntime1, AppBrandRuntime paramAppBrandRuntime2, Runnable paramRunnable)
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/appbrand/ui/AccountReleaseProxyUILaunchResult;", "kotlin.jvm.PlatformType", "onReceiveResult"})
+  static final class b<R extends AppBrandProxyUIProcessTask.ProcessResult>
+    implements AppBrandProxyUIProcessTask.b<AccountReleaseProxyUILaunchResult>
   {
-    AppMethodBeat.i(48867);
-    if (paramAppBrandRuntime2 == null)
-    {
-      AppMethodBeat.o(48867);
-      return;
-    }
-    if (al(paramAppBrandRuntime2))
-    {
-      i = MMFragmentActivity.a.mOh;
-      a(paramAppBrandRuntime2, i, paramRunnable);
-      if (paramAppBrandRuntime1 != null) {
-        if (!al(paramAppBrandRuntime2)) {
-          break label70;
-        }
-      }
-    }
-    label70:
-    for (int i = MMFragmentActivity.a.mOg;; i = 2130771986)
-    {
-      a(paramAppBrandRuntime1, i, null);
-      AppMethodBeat.o(48867);
-      return;
-      i = 2130772002;
-      break;
-    }
-  }
-  
-  public final void m(Activity paramActivity)
-  {
-    AppMethodBeat.i(48865);
-    if (paramActivity == null)
-    {
-      AppMethodBeat.o(48865);
-      return;
-    }
-    int i = 0;
-    while (i <= 0)
-    {
-      if (new Class[] { AppBrandPluginUI.class }[0].isInstance(paramActivity))
-      {
-        AppMethodBeat.o(48865);
-        return;
-      }
-      i += 1;
-    }
-    paramActivity.overridePendingTransition(2130772001, 2130772002);
-    AppMethodBeat.o(48865);
+    b(n.a parama) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.n
  * JD-Core Version:    0.7.0.1
  */

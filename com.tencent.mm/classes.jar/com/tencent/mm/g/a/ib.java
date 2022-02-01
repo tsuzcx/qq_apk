@@ -6,8 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class ib
   extends b
 {
-  public a duA;
-  public b duB;
+  public a dvE;
   
   public ib()
   {
@@ -16,33 +15,21 @@ public final class ib
   
   private ib(byte paramByte)
   {
-    AppMethodBeat.i(116029);
-    this.duA = new a();
-    this.duB = new b();
-    this.IbR = false;
+    AppMethodBeat.i(125616);
+    this.dvE = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(116029);
+    AppMethodBeat.o(125616);
   }
   
   public static final class a
   {
-    public int duC = 0;
-    public int duD = 0;
-    public long duE = -1L;
-    public long msgId = -1L;
-  }
-  
-  public static final class b
-  {
-    public int dlZ = 0;
-    public int dma = 0;
-    public int dmb = 0;
-    public int dmc = 0;
+    public int scene;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.a.ib
  * JD-Core Version:    0.7.0.1
  */

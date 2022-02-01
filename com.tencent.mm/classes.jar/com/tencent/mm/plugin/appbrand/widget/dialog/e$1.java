@@ -16,9 +16,9 @@ final class e$1
     AppMethodBeat.i(131477);
     b localb = new b();
     localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/appbrand/widget/dialog/AppBrandDialogContainerLayout$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-    if (paramView == this.nbt) {
-      e.a(this.nbt);
+    a.b("com/tencent/mm/plugin/appbrand/widget/dialog/AppBrandDialogContainerLayout$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+    if (paramView == this.ngC) {
+      e.a(this.ngC);
     }
     a.a(this, "com/tencent/mm/plugin/appbrand/widget/dialog/AppBrandDialogContainerLayout$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(131477);

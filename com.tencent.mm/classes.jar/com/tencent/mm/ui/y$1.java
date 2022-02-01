@@ -16,17 +16,17 @@ final class y$1
   public final void onCancel(DialogInterface paramDialogInterface)
   {
     AppMethodBeat.i(33437);
-    g.yhR.idkeyStat(405L, 39L, 1L, true);
-    if (this.Jcr != null)
+    g.yxI.idkeyStat(405L, 39L, 1L, true);
+    if (this.Jxb != null)
     {
-      this.iNQ.finish();
-      paramDialogInterface = this.iNQ;
-      Object localObject = this.Jcr;
+      this.iQK.finish();
+      paramDialogInterface = this.iQK;
+      Object localObject = this.Jxb;
       localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
-      com.tencent.mm.hellhoundlib.a.a.a(paramDialogInterface, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahp(), "com/tencent/mm/ui/MMErrorProcessor$10", "onCancel", "(Landroid/content/DialogInterface;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramDialogInterface.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mq(0));
+      com.tencent.mm.hellhoundlib.a.a.a(paramDialogInterface, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahE(), "com/tencent/mm/ui/MMErrorProcessor$10", "onCancel", "(Landroid/content/DialogInterface;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramDialogInterface.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mt(0));
       com.tencent.mm.hellhoundlib.a.a.a(paramDialogInterface, "com/tencent/mm/ui/MMErrorProcessor$10", "onCancel", "(Landroid/content/DialogInterface;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      b.am(this.iNQ, this.Jcr);
+      b.am(this.iQK, this.Jxb);
     }
     AppMethodBeat.o(33437);
   }

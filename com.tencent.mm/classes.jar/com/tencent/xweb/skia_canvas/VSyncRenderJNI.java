@@ -6,24 +6,24 @@ class VSyncRenderJNI
 {
   private static long addAnimationCallback(long paramLong)
   {
-    AppMethodBeat.i(217440);
+    AppMethodBeat.i(218237);
     Object localObject = VSyncRenderer.getInstance();
     if (localObject == null)
     {
       localObject = new IllegalStateException("VSyncRendererCallback is not init in current thread.");
-      AppMethodBeat.o(217440);
+      AppMethodBeat.o(218237);
       throw ((Throwable)localObject);
     }
     paramLong = ((VSyncRenderer)localObject).addAnimationCallback(new VSyncRenderer.AnimationCallback()
     {
       public final void doAnimation()
       {
-        AppMethodBeat.i(217439);
+        AppMethodBeat.i(218236);
         VSyncRenderJNI.access$000(this.val$cookie);
-        AppMethodBeat.o(217439);
+        AppMethodBeat.o(218236);
       }
     });
-    AppMethodBeat.o(217440);
+    AppMethodBeat.o(218237);
     return paramLong;
   }
   
@@ -31,21 +31,21 @@ class VSyncRenderJNI
   
   private static void removeAnimationCallback(long paramLong)
   {
-    AppMethodBeat.i(217441);
+    AppMethodBeat.i(218238);
     Object localObject = VSyncRenderer.getInstance();
     if (localObject == null)
     {
       localObject = new IllegalStateException("VSyncRendererCallback is not init in current thread.");
-      AppMethodBeat.o(217441);
+      AppMethodBeat.o(218238);
       throw ((Throwable)localObject);
     }
     ((VSyncRenderer)localObject).removeAnimationCallback(paramLong);
-    AppMethodBeat.o(217441);
+    AppMethodBeat.o(218238);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.xweb.skia_canvas.VSyncRenderJNI
  * JD-Core Version:    0.7.0.1
  */

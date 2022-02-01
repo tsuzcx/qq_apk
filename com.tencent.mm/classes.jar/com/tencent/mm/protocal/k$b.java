@@ -2,27 +2,27 @@ package com.tencent.mm.protocal;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.protocal.protobuf.id;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class k$b
   extends l.e
   implements l.c
 {
-  public id FnW;
+  public id FGu;
   
   public k$b()
   {
     AppMethodBeat.i(32082);
-    this.FnW = new id();
+    this.FGu = new id();
     AppMethodBeat.o(32082);
   }
   
   public final int fromProtoBuf(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(32083);
-    this.FnW = ((id)new id().parseFrom(paramArrayOfByte));
-    ad.d("MicroMsg.MMBakchatCreateQRcodeOffline.Resp", "Ret:%d, QRCodeBuffer:%s, QRCodeUrl:%s", new Object[] { Integer.valueOf(this.FnW.Ret), this.FnW.FAD, this.FnW.FAE });
-    int i = this.FnW.Ret;
+    this.FGu = ((id)new id().parseFrom(paramArrayOfByte));
+    ae.d("MicroMsg.MMBakchatCreateQRcodeOffline.Resp", "Ret:%d, QRCodeBuffer:%s, QRCodeUrl:%s", new Object[] { Integer.valueOf(this.FGu.Ret), this.FGu.FSZ, this.FGu.FTa });
+    int i = this.FGu.Ret;
     AppMethodBeat.o(32083);
     return i;
   }

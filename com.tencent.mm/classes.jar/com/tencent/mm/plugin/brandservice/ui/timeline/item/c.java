@@ -8,13 +8,13 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cc.a;
+import com.tencent.mm.cb.a;
 import com.tencent.mm.plugin.brandservice.ui.timeline.b;
 import com.tencent.mm.pluginsdk.ui.applet.m.a;
-import com.tencent.mm.protocal.protobuf.aig;
-import com.tencent.mm.protocal.protobuf.dlt;
-import com.tencent.mm.protocal.protobuf.oj;
-import com.tencent.mm.protocal.protobuf.ok;
+import com.tencent.mm.protocal.protobuf.aiq;
+import com.tencent.mm.protocal.protobuf.dmq;
+import com.tencent.mm.protocal.protobuf.ol;
+import com.tencent.mm.protocal.protobuf.om;
 import com.tencent.mm.storage.w;
 import com.tencent.mm.ui.widget.MMNeat7extView;
 import d.a.j;
@@ -24,63 +24,63 @@ import d.l;
 import java.util.Iterator;
 import java.util.LinkedList;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/item/BizRecCardUnfollowArticle;", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/item/BizRecCardUnfollowTopView;", "context", "Landroid/content/Context;", "adapter", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/BizTimeLineAdapter;", "(Landroid/content/Context;Lcom/tencent/mm/plugin/brandservice/ui/timeline/BizTimeLineAdapter;)V", "cover", "Landroid/widget/ImageView;", "getCover", "()Landroid/widget/ImageView;", "setCover", "(Landroid/widget/ImageView;)V", "coverLayout", "Landroid/view/View;", "getCoverLayout", "()Landroid/view/View;", "setCoverLayout", "(Landroid/view/View;)V", "coverMask", "getCoverMask", "setCoverMask", "readerItem", "Lcom/tencent/mm/message/BizReaderItem;", "filling", "", "parent", "info", "Lcom/tencent/mm/storage/BizTimeLineInfo;", "bizInfo", "Lcom/tencent/mm/protocal/protobuf/BizRecArtCardBizInfo;", "inflate", "id", "", "refreshFirstItem", "appMsg", "Lcom/tencent/mm/protocal/protobuf/BizRecArtCardAppMsg;", "refreshHeight", "v", "plugin-brandservice_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/item/BizRecCardUnfollowArticle;", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/item/BizRecCardUnfollowTopView;", "context", "Landroid/content/Context;", "adapter", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/BizTimeLineAdapter;", "(Landroid/content/Context;Lcom/tencent/mm/plugin/brandservice/ui/timeline/BizTimeLineAdapter;)V", "cover", "Landroid/widget/ImageView;", "getCover", "()Landroid/widget/ImageView;", "setCover", "(Landroid/widget/ImageView;)V", "coverLayout", "Landroid/view/View;", "getCoverLayout", "()Landroid/view/View;", "setCoverLayout", "(Landroid/view/View;)V", "coverMask", "getCoverMask", "setCoverMask", "readerItem", "Lcom/tencent/mm/message/BizReaderItem;", "filling", "", "parent", "info", "Lcom/tencent/mm/storage/BizTimeLineInfo;", "bizInfo", "Lcom/tencent/mm/protocal/protobuf/BizRecArtCardBizInfo;", "inflate", "id", "", "refreshFirstItem", "appMsg", "Lcom/tencent/mm/protocal/protobuf/BizRecArtCardAppMsg;", "refreshHeight", "v", "plugin-brandservice_release"})
 public final class c
   extends e
 {
-  private ImageView ocn;
-  private View oco;
-  private ImageView ocp;
-  private final com.tencent.mm.ai.v ocq;
+  private ImageView oic;
+  private View oid;
+  private ImageView oie;
+  private final com.tencent.mm.ah.v oif;
   
   public c(Context paramContext, b paramb)
   {
     super(paramContext, paramb);
-    AppMethodBeat.i(209682);
-    this.ocq = new com.tencent.mm.ai.v();
-    AppMethodBeat.o(209682);
+    AppMethodBeat.i(208656);
+    this.oif = new com.tencent.mm.ah.v();
+    AppMethodBeat.o(208656);
   }
   
-  private final void a(w paramw, ok paramok, final oj paramoj)
+  private final void a(w paramw, om paramom, final ol paramol)
   {
-    AppMethodBeat.i(209680);
+    AppMethodBeat.i(208654);
     final y.a locala = new y.a();
-    locala.MLQ = false;
+    locala.NiT = false;
     boolean bool;
-    switch (paramw.fpm().style)
+    switch (paramw.ftk().style)
     {
     default: 
-      this.ocq.type = paramoj.hCZ;
-      this.ocq.hDm = paramoj.FFY;
-      this.ocq.hDD = paramoj.FFY;
-      this.ocq.url = paramoj.FFW;
-      i = a.ip(this.context);
-      j = b.oah;
-      this.obC.oas.a(paramw.field_msgId, 0, this.ocq, paramoj.FFY, this.ocn, i - j, b.oad, false, (m.a)new a(this, locala, paramoj), false, paramw.ofe);
-      AppMethodBeat.o(209680);
+      this.oif.type = paramol.hFR;
+      this.oif.hGe = paramol.FYu;
+      this.oif.hGv = paramol.FYu;
+      this.oif.url = paramol.FYs;
+      i = a.iu(this.context);
+      j = b.ofX;
+      this.ohs.ogi.a(paramw.field_msgId, 0, this.oif, paramol.FYu, this.oic, i - j, b.ofT, false, (m.a)new a(this, locala, paramol), false, paramw.ole);
+      AppMethodBeat.o(208654);
       return;
     case 101: 
-      if (paramok.FJV.size() <= 1) {}
+      if (paramom.Gcu.size() <= 1) {}
       for (bool = true;; bool = false)
       {
-        locala.MLQ = bool;
+        locala.NiT = bool;
         break;
       }
     }
-    paramok = paramw.fpm().HAf.FHP;
-    p.g(paramok, "info.tlRecCardWrapper.extraInfo.BizInfo");
-    paramok = (Iterable)j.b((Iterable)paramok, 2);
+    paramom = paramw.ftk().HTS.Gal;
+    p.g(paramom, "info.tlRecCardWrapper.extraInfo.BizInfo");
+    paramom = (Iterable)j.b((Iterable)paramom, 2);
     int j = 0;
-    paramok = paramok.iterator();
+    paramom = paramom.iterator();
     int i = 0;
     label239:
-    if (paramok.hasNext())
+    if (paramom.hasNext())
     {
-      Object localObject = paramok.next();
+      Object localObject = paramom.next();
       if (j < 0) {
-        j.gfB();
+        j.gkd();
       }
-      if (((ok)localObject).FuX != 0) {
+      if (((om)localObject).FNv != 0) {
         break label315;
       }
       i += 1;
@@ -93,7 +93,7 @@ public final class c
       if (i < 2) {}
       for (bool = true;; bool = false)
       {
-        locala.MLQ = bool;
+        locala.NiT = bool;
         break;
       }
     }
@@ -101,63 +101,63 @@ public final class c
   
   private static void dC(View paramView)
   {
-    AppMethodBeat.i(209681);
+    AppMethodBeat.i(208655);
     ViewGroup.LayoutParams localLayoutParams = paramView.getLayoutParams();
-    localLayoutParams.height = b.oad;
+    localLayoutParams.height = b.ofT;
     paramView.setLayoutParams(localLayoutParams);
-    AppMethodBeat.o(209681);
+    AppMethodBeat.o(208655);
   }
   
   public final void V(View paramView, int paramInt)
   {
-    AppMethodBeat.i(209679);
+    AppMethodBeat.i(208653);
     p.h(paramView, "parent");
     if (this.auu == null)
     {
       super.V(paramView, paramInt);
-      this.ocn = ((ImageView)paramView.findViewById(2131298824));
-      this.oco = paramView.findViewById(2131298825);
-      this.ocp = ((ImageView)paramView.findViewById(2131298826));
-      bOx();
-      this.ocz = paramView.findViewById(2131305993);
+      this.oic = ((ImageView)paramView.findViewById(2131298824));
+      this.oid = paramView.findViewById(2131298825);
+      this.oie = ((ImageView)paramView.findViewById(2131298826));
+      bPv();
+      this.oio = paramView.findViewById(2131305993);
       paramView = this.auu;
       if (paramView != null) {}
       for (paramView = (MMNeat7extView)paramView.findViewById(2131305948); paramView == null; paramView = null)
       {
         paramView = new d.v("null cannot be cast to non-null type com.tencent.mm.ui.widget.MMNeat7extView");
-        AppMethodBeat.o(209679);
+        AppMethodBeat.o(208653);
         throw paramView;
       }
-      this.ocA = paramView;
+      this.oip = paramView;
       paramView = this.auu;
       if (paramView != null) {}
       for (paramView = (ImageView)paramView.findViewById(2131303387); paramView == null; paramView = null)
       {
         paramView = new d.v("null cannot be cast to non-null type android.widget.ImageView");
-        AppMethodBeat.o(209679);
+        AppMethodBeat.o(208653);
         throw paramView;
       }
-      this.ocB = paramView;
+      this.oiq = paramView;
       paramView = this.auu;
       if (paramView == null) {
         break label288;
       }
       paramView = (LinearLayout)paramView.findViewById(2131297367);
-      this.ocC = paramView;
+      this.oir = paramView;
       paramView = this.auu;
       if (paramView == null) {
         break label293;
       }
       paramView = (LinearLayout)paramView.findViewById(2131304831);
       label227:
-      this.ocD = paramView;
+      this.ois = paramView;
       paramView = this.auu;
       if (paramView == null) {
         break label298;
       }
       paramView = (MMNeat7extView)paramView.findViewById(2131304829);
       label252:
-      this.ocE = paramView;
+      this.oit = paramView;
       paramView = this.auu;
       if (paramView == null) {
         break label303;
@@ -169,8 +169,8 @@ public final class c
     label303:
     for (paramView = (MMNeat7extView)paramView.findViewById(2131304827);; paramView = null)
     {
-      this.ocF = paramView;
-      AppMethodBeat.o(209679);
+      this.oiu = paramView;
+      AppMethodBeat.o(208653);
       return;
       paramView = null;
       break;
@@ -181,66 +181,66 @@ public final class c
     }
   }
   
-  public final void a(View paramView, w paramw, ok paramok)
+  public final void a(View paramView, w paramw, om paramom)
   {
-    AppMethodBeat.i(209678);
+    AppMethodBeat.i(208652);
     p.h(paramView, "parent");
     p.h(paramw, "info");
-    p.h(paramok, "bizInfo");
+    p.h(paramom, "bizInfo");
     V(paramView, 2131308227);
     if (this.auu == null)
     {
-      AppMethodBeat.o(209678);
+      AppMethodBeat.o(208652);
       return;
     }
     paramView = this.auu;
     if (paramView != null) {
       paramView.setVisibility(0);
     }
-    paramView = (oj)paramok.FJV.get(0);
+    paramView = (ol)paramom.Gcu.get(0);
     p.g(paramView, "appMsg");
-    b(paramw, paramok, paramView);
-    Object localObject = this.oco;
+    b(paramw, paramom, paramView);
+    Object localObject = this.oid;
     if (localObject == null) {
-      p.gfZ();
+      p.gkB();
     }
     dC((View)localObject);
-    localObject = this.ocn;
+    localObject = this.oic;
     if (localObject == null) {
-      p.gfZ();
+      p.gkB();
     }
     dC((View)localObject);
-    a(paramw, paramok, paramView);
-    c(paramw, paramok, paramView);
-    AppMethodBeat.o(209678);
+    a(paramw, paramom, paramView);
+    c(paramw, paramom, paramView);
+    AppMethodBeat.o(208652);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/brandservice/ui/timeline/item/BizRecCardUnfollowArticle$refreshFirstItem$2", "Lcom/tencent/mm/pluginsdk/ui/applet/ChattingBizImageDownloadListener$LoadTitleBitmapCallback;", "onFinish", "", "onStart", "plugin-brandservice_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/brandservice/ui/timeline/item/BizRecCardUnfollowArticle$refreshFirstItem$2", "Lcom/tencent/mm/pluginsdk/ui/applet/ChattingBizImageDownloadListener$LoadTitleBitmapCallback;", "onFinish", "", "onStart", "plugin-brandservice_release"})
   public static final class a
     implements m.a
   {
-    a(y.a parama, oj paramoj) {}
+    a(y.a parama, ol paramol) {}
     
     public final void onFinish()
     {
-      AppMethodBeat.i(209677);
-      Object localObject = this.ocr.ocH;
+      AppMethodBeat.i(208651);
+      Object localObject = this.oig.oiw;
       if (localObject != null) {
-        ((TextView)localObject).setTextColor(this.ocr.context.getResources().getColor(2131099674));
+        ((TextView)localObject).setTextColor(this.oig.context.getResources().getColor(2131099674));
       }
-      localObject = this.ocr.ocB;
+      localObject = this.oig.oiq;
       if (localObject != null) {
         ((ImageView)localObject).setVisibility(0);
       }
-      if (!locala.MLQ)
+      if (!locala.NiT)
       {
-        localObject = this.ocr.ocA;
+        localObject = this.oig.oip;
         if (localObject != null) {
-          ((MMNeat7extView)localObject).setTextColor(this.ocr.context.getResources().getColor(2131101182));
+          ((MMNeat7extView)localObject).setTextColor(this.oig.context.getResources().getColor(2131101182));
         }
       }
-      this.ocr.a(paramoj);
-      AppMethodBeat.o(209677);
+      this.oig.a(paramol);
+      AppMethodBeat.o(208651);
     }
     
     public final void onStart() {}

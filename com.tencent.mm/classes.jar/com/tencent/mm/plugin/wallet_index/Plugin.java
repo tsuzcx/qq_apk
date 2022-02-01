@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.wallet_index;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.ax;
+import com.tencent.mm.model.az;
 import com.tencent.mm.plugin.wallet_index.a.a;
 import com.tencent.mm.pluginsdk.b.c;
 import com.tencent.mm.pluginsdk.b.d;
@@ -15,7 +15,7 @@ public final class Plugin
     return null;
   }
   
-  public final ax createSubCore()
+  public final az createSubCore()
   {
     AppMethodBeat.i(71796);
     a locala = new a();

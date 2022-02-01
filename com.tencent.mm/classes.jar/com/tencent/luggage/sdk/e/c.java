@@ -1,7 +1,7 @@
 package com.tencent.luggage.sdk.e;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import d.g.b.p;
 import d.l;
 import java.util.HashMap;
@@ -12,75 +12,75 @@ import java.util.Map.Entry;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/luggage/sdk/tasks/AppBrandParallelTasksManager;", "", "()V", "TAG", "", "map", "Ljava/util/concurrent/ConcurrentHashMap;", "Lcom/tencent/luggage/sdk/tasks/AppBrandParallelTasksCollection;", "addTasksCollection", "", "collection", "id", "finishByInstanceId", "instanceId", "getTasksCollectionById", "luggage-wechat-full-sdk_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/luggage/sdk/tasks/AppBrandParallelTasksManager;", "", "()V", "TAG", "", "map", "Ljava/util/concurrent/ConcurrentHashMap;", "Lcom/tencent/luggage/sdk/tasks/AppBrandParallelTasksCollection;", "addTasksCollection", "", "collection", "id", "finishByInstanceId", "instanceId", "getTasksCollectionById", "luggage-wechat-full-sdk_release"})
 public final class c
 {
-  private static final ConcurrentHashMap<String, b> cpF;
-  public static final c cpG;
+  private static final ConcurrentHashMap<String, b> cqi;
+  public static final c cqj;
   
   static
   {
-    AppMethodBeat.i(192336);
-    cpG = new c();
-    cpF = new ConcurrentHashMap();
-    AppMethodBeat.o(192336);
+    AppMethodBeat.i(220938);
+    cqj = new c();
+    cqi = new ConcurrentHashMap();
+    AppMethodBeat.o(220938);
   }
   
   public static void a(b paramb, String paramString)
   {
-    AppMethodBeat.i(192334);
+    AppMethodBeat.i(220936);
     p.h(paramb, "collection");
     p.h(paramString, "id");
-    if ((b)cpF.put(paramString, paramb) != null) {
-      ad.e("Luggage.AppBrandParallelTasksManager", "add duplicate collection id = [%s]", new Object[] { paramString });
+    if ((b)cqi.put(paramString, paramb) != null) {
+      ae.e("Luggage.AppBrandParallelTasksManager", "add duplicate collection id = [%s]", new Object[] { paramString });
     }
-    AppMethodBeat.o(192334);
+    AppMethodBeat.o(220936);
   }
   
-  public static b jdMethod_do(String paramString)
+  public static b dq(String paramString)
   {
-    AppMethodBeat.i(192333);
+    AppMethodBeat.i(220935);
     p.h(paramString, "instanceId");
-    if (cpF.get(paramString) == null)
+    if (cqi.get(paramString) == null)
     {
       b localb = new b();
-      ((Map)cpF).put(paramString, localb);
+      ((Map)cqi).put(paramString, localb);
     }
-    paramString = cpF.get(paramString);
+    paramString = cqi.get(paramString);
     if (paramString == null) {
-      p.gfZ();
+      p.gkB();
     }
     paramString = (b)paramString;
-    AppMethodBeat.o(192333);
+    AppMethodBeat.o(220935);
     return paramString;
   }
   
-  public static void dp(String paramString)
+  public static void dr(String paramString)
   {
-    AppMethodBeat.i(192335);
+    AppMethodBeat.i(220937);
     p.h(paramString, "instanceId");
-    paramString = (b)cpF.remove(paramString);
+    paramString = (b)cqi.remove(paramString);
     if (paramString != null)
     {
-      ad.i("Luggage.AppBrandParallelTasksCollection", "finishAllTask: ");
-      Iterator localIterator = ((Map)paramString.cpC).entrySet().iterator();
+      ae.i("Luggage.AppBrandParallelTasksCollection", "finishAllTask: ");
+      Iterator localIterator = ((Map)paramString.cqf).entrySet().iterator();
       while (localIterator.hasNext())
       {
         a locala = (a)((Map.Entry)localIterator.next()).getValue();
-        if (locala.Fl()) {
+        if (locala.Fq()) {
           locala.cancel();
         }
       }
-      paramString.cpC.clear();
-      localIterator = ((Iterable)paramString.cpD).iterator();
+      paramString.cqf.clear();
+      localIterator = ((Iterable)paramString.cqg).iterator();
       while (localIterator.hasNext()) {
         ((d.g.a.a)localIterator.next()).invoke();
       }
-      paramString.cpD.clear();
-      AppMethodBeat.o(192335);
+      paramString.cqg.clear();
+      AppMethodBeat.o(220937);
       return;
     }
-    AppMethodBeat.o(192335);
+    AppMethodBeat.o(220937);
   }
 }
 

@@ -9,16 +9,16 @@ import android.graphics.Matrix;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.e;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.f.c;
-import com.tencent.mm.ak.p;
-import com.tencent.mm.am.o;
-import com.tencent.mm.by.a.a.a;
-import com.tencent.mm.model.ba;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.sdk.platformtools.g;
+import com.tencent.mm.aj.e;
+import com.tencent.mm.aj.f;
+import com.tencent.mm.aj.f.c;
+import com.tencent.mm.aj.p;
+import com.tencent.mm.al.o;
+import com.tencent.mm.bx.a.a.a;
+import com.tencent.mm.model.bc;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.h;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.t;
 import com.tencent.mm.ui.tools.MMGestureGallery.f;
@@ -27,19 +27,19 @@ import com.tencent.mm.ui.tools.MMGestureGallery.f;
 public class ProfileHdHeadImg
   extends MMActivity
 {
-  private String ETD = null;
-  private String dtG = null;
+  private String FlY = null;
+  private String duL = null;
   private String username = null;
-  private GetHdHeadImageGalleryView yEv;
-  private f yEw;
+  private GetHdHeadImageGalleryView yUA;
+  private f yUB;
   
   private void d(Bitmap paramBitmap, String paramString)
   {
     AppMethodBeat.i(31230);
     try
     {
-      Object localObject = g.a(paramBitmap, false, 0.1F);
-      a.a.HTy.p(this.username, (Bitmap)localObject);
+      Object localObject = h.a(paramBitmap, false, 0.1F);
+      a.a.InF.p(this.username, (Bitmap)localObject);
       if (paramBitmap.getWidth() < 480)
       {
         float f = 480 / paramBitmap.getWidth();
@@ -47,15 +47,15 @@ public class ProfileHdHeadImg
         ((Matrix)localObject).postScale(f, f);
         localObject = Bitmap.createBitmap(paramBitmap, 0, 0, paramBitmap.getWidth(), paramBitmap.getHeight(), (Matrix)localObject, true);
       }
-      ad.d("MicroMsg.ProfileHdHeadImg", "dkhdbm old[%d %d] new[%d %d]", new Object[] { Integer.valueOf(paramBitmap.getWidth()), Integer.valueOf(paramBitmap.getHeight()), Integer.valueOf(((Bitmap)localObject).getWidth()), Integer.valueOf(((Bitmap)localObject).getHeight()) });
-      this.yEv.setHdHeadImage((Bitmap)localObject);
-      this.yEv.setHdHeadImagePath(paramString);
+      ae.d("MicroMsg.ProfileHdHeadImg", "dkhdbm old[%d %d] new[%d %d]", new Object[] { Integer.valueOf(paramBitmap.getWidth()), Integer.valueOf(paramBitmap.getHeight()), Integer.valueOf(((Bitmap)localObject).getWidth()), Integer.valueOf(((Bitmap)localObject).getHeight()) });
+      this.yUA.setHdHeadImage((Bitmap)localObject);
+      this.yUA.setHdHeadImagePath(paramString);
       AppMethodBeat.o(31230);
       return;
     }
     catch (Exception paramBitmap)
     {
-      ad.printErrStackTrace("MicroMsg.ProfileHdHeadImg", paramBitmap, "", new Object[0]);
+      ae.printErrStackTrace("MicroMsg.ProfileHdHeadImg", paramBitmap, "", new Object[0]);
       AppMethodBeat.o(31230);
     }
   }
@@ -73,32 +73,32 @@ public class ProfileHdHeadImg
       getSupportActionBar().hide();
     }
     this.username = getIntent().getStringExtra("username");
-    this.dtG = getIntent().getStringExtra("brand_icon_url");
+    this.duL = getIntent().getStringExtra("brand_icon_url");
     setActionbarColor(getResources().getColor(2131099654));
     setNavigationbarColor(getResources().getColor(2131099654));
-    this.yEv = ((GetHdHeadImageGalleryView)findViewById(2131300335));
-    this.yEv.setUsername(this.username);
-    this.yEv.setSingleClickOverListener(new MMGestureGallery.f()
+    this.yUA = ((GetHdHeadImageGalleryView)findViewById(2131300335));
+    this.yUA.setUsername(this.username);
+    this.yUA.setSingleClickOverListener(new MMGestureGallery.f()
     {
-      public final void aRp()
+      public final void aRO()
       {
         AppMethodBeat.i(31226);
         ProfileHdHeadImg.this.finish();
         AppMethodBeat.o(31226);
       }
     });
-    ba.aBQ();
+    bc.aCg();
     if (!com.tencent.mm.model.c.isSDCardAvailable())
     {
       t.g(this, null);
-      d(p.aEk().cy(this), null);
+      d(p.aEA().cA(this), null);
       AppMethodBeat.o(31228);
       return;
     }
     Object localObject;
-    if (!bt.isNullOrNil(this.dtG))
+    if (!bu.isNullOrNil(this.duL))
     {
-      paramBundle = o.bc(this.username, this.dtG);
+      paramBundle = o.bc(this.username, this.duL);
       localObject = paramBundle;
       if (paramBundle == null) {
         localObject = BitmapFactory.decodeResource(getResources(), 2131231875);
@@ -106,56 +106,56 @@ public class ProfileHdHeadImg
       if ((localObject == null) || (((Bitmap)localObject).isRecycled())) {
         break label322;
       }
-      ad.i("MicroMsg.ProfileHdHeadImg", "The avatar of %s is in the cache", new Object[] { this.username });
-      this.yEv.setThumbImage((Bitmap)localObject);
+      ae.i("MicroMsg.ProfileHdHeadImg", "The avatar of %s is in the cache", new Object[] { this.username });
+      this.yUA.setThumbImage((Bitmap)localObject);
     }
     for (;;)
     {
-      if (!bt.isNullOrNil(this.ETD)) {
-        this.username = this.ETD;
+      if (!bu.isNullOrNil(this.FlY)) {
+        this.username = this.FlY;
       }
-      p.aEk();
-      paramBundle = e.Db(this.username);
+      p.aEA();
+      paramBundle = e.DD(this.username);
       if ((paramBundle == null) || (paramBundle.isRecycled())) {
         break label344;
       }
-      ad.i("MicroMsg.ProfileHdHeadImg", "The HDAvatar of %s is already exists", new Object[] { this.username });
-      p.aEk();
+      ae.i("MicroMsg.ProfileHdHeadImg", "The HDAvatar of %s is already exists", new Object[] { this.username });
+      p.aEA();
       d(paramBundle, e.J(this.username, true));
       AppMethodBeat.o(31228);
       return;
-      paramBundle = com.tencent.mm.ak.c.a(this.username, true, -1, null);
+      paramBundle = com.tencent.mm.aj.c.a(this.username, true, -1, null);
       break;
       label322:
-      ad.i("MicroMsg.ProfileHdHeadImg", "The avatar of %s is not in the cache, use default avatar", new Object[] { this.username });
+      ae.i("MicroMsg.ProfileHdHeadImg", "The avatar of %s is not in the cache, use default avatar", new Object[] { this.username });
     }
     label344:
-    this.yEw = new f();
-    this.yEw.a(this.username, new f.c()
+    this.yUB = new f();
+    this.yUB.a(this.username, new f.c()
     {
       public final int df(int paramAnonymousInt1, int paramAnonymousInt2)
       {
         AppMethodBeat.i(31227);
         ProfileHdHeadImg.a(ProfileHdHeadImg.this).sN();
-        ad.i("MicroMsg.ProfileHdHeadImg", "onSceneEnd: errType=%d, errCode=%d", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2) });
+        ae.i("MicroMsg.ProfileHdHeadImg", "onSceneEnd: errType=%d, errCode=%d", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2) });
         if ((paramAnonymousInt1 == 0) && (paramAnonymousInt2 == 0))
         {
-          p.aEk();
-          Bitmap localBitmap = e.Db(ProfileHdHeadImg.b(ProfileHdHeadImg.this));
+          p.aEA();
+          Bitmap localBitmap = e.DD(ProfileHdHeadImg.b(ProfileHdHeadImg.this));
           if (localBitmap != null)
           {
             ProfileHdHeadImg localProfileHdHeadImg = ProfileHdHeadImg.this;
-            p.aEk();
+            p.aEA();
             ProfileHdHeadImg.a(localProfileHdHeadImg, localBitmap, e.J(ProfileHdHeadImg.b(ProfileHdHeadImg.this), true));
           }
           for (;;)
           {
             AppMethodBeat.o(31227);
             return 0;
-            ProfileHdHeadImg.a(ProfileHdHeadImg.this, this.yEA, null);
+            ProfileHdHeadImg.a(ProfileHdHeadImg.this, this.yUF, null);
           }
         }
-        ProfileHdHeadImg.a(ProfileHdHeadImg.this, this.yEA, null);
+        ProfileHdHeadImg.a(ProfileHdHeadImg.this, this.yUF, null);
         AppMethodBeat.o(31227);
         return 0;
       }

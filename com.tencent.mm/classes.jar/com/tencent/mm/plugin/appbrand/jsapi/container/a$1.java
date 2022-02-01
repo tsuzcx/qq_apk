@@ -6,7 +6,7 @@ import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.plugin.appbrand.jsapi.z.e;
+import com.tencent.mm.plugin.appbrand.jsapi.aa.e;
 
 final class a$1
   implements View.OnTouchListener
@@ -19,7 +19,7 @@ final class a$1
     b localb = new b();
     localb.bd(paramView);
     localb.bd(paramMotionEvent);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/appbrand/jsapi/container/JsApiInsertPositioningContainer$1", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahq());
+    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/appbrand/jsapi/container/JsApiInsertPositioningContainer$1", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahF());
     if (paramMotionEvent.getAction() != 0) {
       e.a((ViewGroup)paramView, paramMotionEvent);
     }
@@ -30,7 +30,7 @@ final class a$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.container.a.1
  * JD-Core Version:    0.7.0.1
  */

@@ -10,9 +10,10 @@ import com.tencent.mm.plugin.voip.b.i.a;
 import com.tencent.mm.plugin.voip.video.c.d.a;
 import com.tencent.mm.plugin.voip.video.c.h;
 import com.tencent.mm.plugin.voip.video.c.h.b;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import d.g.a.r;
 import d.g.b.p;
+import d.g.b.q;
 import d.l;
 import d.z;
 import java.nio.Buffer;
@@ -20,29 +21,29 @@ import java.nio.ByteBuffer;
 import java.nio.FloatBuffer;
 import java.util.Arrays;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/voip/video/render/VoipRenderProcExternalTexture;", "Lcom/tencent/mm/media/render/proc/GLTextureRenderProc;", "textureWidth", "", "textureHeight", "drawWidth", "drawHeight", "renderOutputType", "scaleType", "(IIIIII)V", "beautyParam", "externalGLTexture", "Lcom/tencent/mm/media/globject/GLTextureObject;", "externalTexture", "faceBeautyAlgo", "getFaceBeautyAlgo", "()I", "setFaceBeautyAlgo", "(I)V", "isFaceBeautyAlogChanged", "", "()Z", "setFaceBeautyAlogChanged", "(Z)V", "isViewPortChange", "onFaceBeautyDataCallback", "Lkotlin/Function4;", "Ljava/nio/ByteBuffer;", "", "Lcom/tencent/mm/plugin/voip/video/program/FaceBeautyDataCallBack;", "getOnFaceBeautyDataCallback", "()Lkotlin/jvm/functions/Function4;", "setOnFaceBeautyDataCallback", "(Lkotlin/jvm/functions/Function4;)V", "outputTexturObject", "programId", "textureRenderProgram", "Lcom/tencent/mm/plugin/voip/video/programv2/VoipRawRendererProgram;", "wcFaceBeautyProgram", "Lcom/tencent/mm/plugin/voip/video/programv2/VoipMMFaceBeautyRendererProgram;", "ytFaceBeautyProgram", "Lcom/tencent/mm/plugin/voip/video/programv2/VoipYTFaceBeautyRendererProgram;", "afterRender", "beforeRender", "getOutputRendererTexture", "release", "renderImpl", "setInputGLTexture", "texture", "setInputTexture", "setVoipBeauty", "cmd", "algorithm", "updateDrawViewSize", "width", "height", "updateTextureSize", "Companion", "plugin-voip_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/voip/video/render/VoipRenderProcExternalTexture;", "Lcom/tencent/mm/media/render/proc/GLTextureRenderProc;", "textureWidth", "", "textureHeight", "drawWidth", "drawHeight", "renderOutputType", "scaleType", "(IIIIII)V", "beautyParam", "externalGLTexture", "Lcom/tencent/mm/media/globject/GLTextureObject;", "externalTexture", "faceBeautyAlgo", "getFaceBeautyAlgo", "()I", "setFaceBeautyAlgo", "(I)V", "isFaceBeautyAlogChanged", "", "()Z", "setFaceBeautyAlogChanged", "(Z)V", "isViewPortChange", "onFaceBeautyDataCallback", "Lkotlin/Function4;", "Ljava/nio/ByteBuffer;", "", "Lcom/tencent/mm/plugin/voip/video/program/FaceBeautyDataCallBack;", "getOnFaceBeautyDataCallback", "()Lkotlin/jvm/functions/Function4;", "setOnFaceBeautyDataCallback", "(Lkotlin/jvm/functions/Function4;)V", "outputTexturObject", "programId", "textureRenderProgram", "Lcom/tencent/mm/plugin/voip/video/programv2/VoipRawRendererProgram;", "wcFaceBeautyProgram", "Lcom/tencent/mm/plugin/voip/video/programv2/VoipMMFaceBeautyRendererProgram;", "ytFaceBeautyProgram", "Lcom/tencent/mm/plugin/voip/video/programv2/VoipYTFaceBeautyRendererProgram;", "afterRender", "beforeRender", "getOutputRendererTexture", "release", "renderImpl", "setInputGLTexture", "texture", "setInputTexture", "setVoipBeauty", "cmd", "algorithm", "updateDrawViewSize", "width", "height", "updateTextureSize", "Companion", "plugin-voip_release"})
 public final class k
   extends a
 {
-  public static final k.a Cte;
-  private int CnM;
-  private com.tencent.mm.plugin.voip.video.c.e CsV;
-  private com.tencent.mm.plugin.voip.video.c.d CsW;
-  private h CsX;
-  com.tencent.mm.media.g.d CsY;
-  r<? super ByteBuffer, ? super Integer, ? super Integer, ? super Integer, z> CsZ;
-  private boolean Cta = true;
-  boolean Ctb;
-  int Ctc;
-  com.tencent.mm.media.g.d Ctd;
-  private int gLM;
-  int hon = -1;
+  public static final k.a CKI;
+  private int CFq;
+  private com.tencent.mm.plugin.voip.video.c.d CKA;
+  private h CKB;
+  com.tencent.mm.media.g.d CKC;
+  r<? super ByteBuffer, ? super Integer, ? super Integer, ? super Integer, z> CKD;
+  private boolean CKE = true;
+  boolean CKF;
+  int CKG;
+  com.tencent.mm.media.g.d CKH;
+  private com.tencent.mm.plugin.voip.video.c.e CKz;
+  private int gOv;
+  int hrb = -1;
   
   static
   {
-    AppMethodBeat.i(216218);
-    Cte = new k.a((byte)0);
-    AppMethodBeat.o(216218);
+    AppMethodBeat.i(210639);
+    CKI = new k.a((byte)0);
+    AppMethodBeat.o(210639);
   }
   
   public k(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -50,43 +51,43 @@ public final class k
     super(paramInt1, paramInt2, paramInt3, paramInt4, 2, 1);
   }
   
-  public final void amq()
+  public final void amF()
   {
-    AppMethodBeat.i(216214);
-    if (this.Cta)
+    AppMethodBeat.i(210635);
+    if (this.CKE)
     {
-      this.gLl.position(0);
-      if (this.Ctc != 0)
+      this.gNU.position(0);
+      if (this.CKG != 0)
       {
-        this.gLl.put(k(new float[] { 0.0F, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 1.0F, 0.0F }));
-        this.gLl.position(0);
-        this.gLm.position(0);
-        this.gLm.put(com.tencent.mm.media.k.c.hoI);
-        this.gLm.position(0);
+        this.gNU.put(k(new float[] { 0.0F, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 1.0F, 0.0F }));
+        this.gNU.position(0);
+        this.gNV.position(0);
+        this.gNV.put(com.tencent.mm.media.k.c.hrw);
+        this.gNV.position(0);
       }
     }
     else
     {
-      if (this.Ctc != 0)
+      if (this.CKG != 0)
       {
-        if (this.hnu == null)
+        if (this.hqi == null)
         {
-          this.hnu = com.tencent.mm.media.g.c.a(true, 3L);
-          localObject = com.tencent.mm.media.g.c.hkn;
-          this.hnv = com.tencent.mm.media.g.c.rq(3L);
+          this.hqi = com.tencent.mm.media.g.c.a(true, 3L);
+          localObject = com.tencent.mm.media.g.c.hnb;
+          this.hqj = com.tencent.mm.media.g.c.rD(3L);
         }
-        localObject = com.tencent.mm.media.k.c.hoP;
-        c.a.a(this.hnv, this.hnu, this.gLD, this.gLE);
+        localObject = com.tencent.mm.media.k.c.hrD;
+        c.a.a(this.hqj, this.hqi, this.gOm, this.gOn);
       }
-      GLES20.glViewport(0, 0, this.gLD, this.gLE);
-      AppMethodBeat.o(216214);
+      GLES20.glViewport(0, 0, this.gOm, this.gOn);
+      AppMethodBeat.o(210635);
       return;
     }
-    float f7 = this.hnI.x / this.gKJ;
-    float f4 = (this.hnI.y - 1.0F) / this.gKK;
-    float f6 = (this.hnJ.x - 1.0F) / this.gKJ;
-    float f5 = this.hnJ.y / this.gKK;
-    Object localObject = com.tencent.mm.media.k.c.hoJ;
+    float f7 = this.hqw.x / this.gNs;
+    float f4 = (this.hqw.y - 1.0F) / this.gNt;
+    float f6 = (this.hqx.x - 1.0F) / this.gNs;
+    float f5 = this.hqx.y / this.gNt;
+    Object localObject = com.tencent.mm.media.k.c.hrx;
     localObject = Arrays.copyOf((float[])localObject, localObject.length);
     int i;
     label304:
@@ -97,11 +98,11 @@ public final class k
     label352:
     float f1;
     float f2;
-    if ((this.hnk == 90) || (this.hnk == 270))
+    if ((this.hpY == 90) || (this.hpY == 270))
     {
       i = 1;
-      j = this.hnJ.x - this.hnI.x;
-      k = this.hnI.y - this.hnJ.y;
+      j = this.hqx.x - this.hqw.x;
+      k = this.hqw.y - this.hqx.y;
       if (i == 0) {
         break label534;
       }
@@ -109,19 +110,19 @@ public final class k
       if (i == 0) {
         break label541;
       }
-      f1 = this.gLD / m;
-      f2 = this.gLE / j;
+      f1 = this.gOm / m;
+      f2 = this.gOn / j;
       if (f1 >= f2) {
         break label548;
       }
-      f2 = m - this.gLD / f2;
+      f2 = m - this.gOm / f2;
       f1 = 0.0F;
     }
     for (;;)
     {
       label392:
-      this.hnF = (m - (int)f2);
-      this.hnG = (j - (int)f1);
+      this.hqt = (m - (int)f2);
+      this.hqu = (j - (int)f1);
       float f3;
       if (i != 0)
       {
@@ -143,7 +144,7 @@ public final class k
         localObject[5] = f5;
         localObject[6] = f2;
         localObject[7] = f5;
-        FloatBuffer localFloatBuffer = this.gLl;
+        FloatBuffer localFloatBuffer = this.gNU;
         p.g(localObject, "cropTextureCoord");
         localFloatBuffer.put(k((float[])localObject));
         break;
@@ -159,7 +160,7 @@ public final class k
         if (f1 <= f2) {
           break label590;
         }
-        f1 = j - this.gLE / f1;
+        f1 = j - this.gOn / f1;
         f2 = 0.0F;
         break label392;
         f2 = f2 / 2.0F / m;
@@ -170,18 +171,18 @@ public final class k
     }
   }
   
-  public final void aud()
+  public final void aus()
   {
-    AppMethodBeat.i(216216);
-    if (this.Ctc != 0) {
+    AppMethodBeat.i(210637);
+    if (this.CKG != 0) {
       GLES20.glBindFramebuffer(36160, 0);
     }
-    AppMethodBeat.o(216216);
+    AppMethodBeat.o(210637);
   }
   
-  public final void aue()
+  public final void aut()
   {
-    AppMethodBeat.i(216215);
+    AppMethodBeat.i(210636);
     Object localObject1;
     Object localObject2;
     FloatBuffer localFloatBuffer;
@@ -189,207 +190,207 @@ public final class k
     int j;
     int k;
     Object localObject3;
-    switch (this.Ctc)
+    switch (this.CKG)
     {
     default: 
-      localObject1 = this.CsV;
+      localObject1 = this.CKz;
       if (localObject1 != null)
       {
-        localObject2 = this.gLm;
-        localFloatBuffer = this.gLl;
-        i = this.hon;
+        localObject2 = this.gNV;
+        localFloatBuffer = this.gNU;
+        i = this.hrb;
         p.h(localObject2, "cubeBuffer");
         p.h(localFloatBuffer, "textureCoordBuff");
         if (i != -1)
         {
-          GLES20.glUseProgram(((com.tencent.mm.plugin.voip.video.c.e)localObject1).gLM);
+          GLES20.glUseProgram(((com.tencent.mm.plugin.voip.video.c.e)localObject1).gOv);
           GLES20.glActiveTexture(33984);
           GLES20.glBindTexture(36197, i);
-          GLES20.glUniform1i(((com.tencent.mm.plugin.voip.video.c.e)localObject1).gLP, 0);
-          GLES20.glVertexAttribPointer(((com.tencent.mm.plugin.voip.video.c.e)localObject1).gLN, 2, 5126, false, 8, (Buffer)localObject2);
-          GLES20.glEnableVertexAttribArray(((com.tencent.mm.plugin.voip.video.c.e)localObject1).gLN);
-          GLES20.glVertexAttribPointer(((com.tencent.mm.plugin.voip.video.c.e)localObject1).gLO, 2, 5126, false, 8, (Buffer)localFloatBuffer);
-          GLES20.glEnableVertexAttribArray(((com.tencent.mm.plugin.voip.video.c.e)localObject1).gLO);
+          GLES20.glUniform1i(((com.tencent.mm.plugin.voip.video.c.e)localObject1).gOy, 0);
+          GLES20.glVertexAttribPointer(((com.tencent.mm.plugin.voip.video.c.e)localObject1).gOw, 2, 5126, false, 8, (Buffer)localObject2);
+          GLES20.glEnableVertexAttribArray(((com.tencent.mm.plugin.voip.video.c.e)localObject1).gOw);
+          GLES20.glVertexAttribPointer(((com.tencent.mm.plugin.voip.video.c.e)localObject1).gOx, 2, 5126, false, 8, (Buffer)localFloatBuffer);
+          GLES20.glEnableVertexAttribArray(((com.tencent.mm.plugin.voip.video.c.e)localObject1).gOx);
           GLES20.glDrawArrays(5, 0, 4);
-          GLES20.glDisableVertexAttribArray(((com.tencent.mm.plugin.voip.video.c.e)localObject1).gLN);
-          GLES20.glDisableVertexAttribArray(((com.tencent.mm.plugin.voip.video.c.e)localObject1).gLO);
+          GLES20.glDisableVertexAttribArray(((com.tencent.mm.plugin.voip.video.c.e)localObject1).gOw);
+          GLES20.glDisableVertexAttribArray(((com.tencent.mm.plugin.voip.video.c.e)localObject1).gOx);
         }
-        AppMethodBeat.o(216215);
+        AppMethodBeat.o(210636);
         return;
       }
       break;
     case 2: 
-      localObject1 = this.CsX;
+      localObject1 = this.CKB;
       if (localObject1 != null)
       {
-        i = this.gLD;
-        j = this.gLE;
-        localObject2 = this.gLm;
-        localFloatBuffer = this.gLl;
-        k = this.hon;
-        localObject3 = this.hnu;
+        i = this.gOm;
+        j = this.gOn;
+        localObject2 = this.gNV;
+        localFloatBuffer = this.gNU;
+        k = this.hrb;
+        localObject3 = this.hqi;
         if (localObject3 == null) {
-          p.gfZ();
+          p.gkB();
         }
       }
-      for (localObject1 = ((h)localObject1).a(i, j, (FloatBuffer)localObject2, localFloatBuffer, k, (com.tencent.mm.media.g.d)localObject3, this.CnM);; localObject1 = null)
+      for (localObject1 = ((h)localObject1).a(i, j, (FloatBuffer)localObject2, localFloatBuffer, k, (com.tencent.mm.media.g.d)localObject3, this.CFq);; localObject1 = null)
       {
-        this.Ctd = ((com.tencent.mm.media.g.d)localObject1);
-        AppMethodBeat.o(216215);
+        this.CKH = ((com.tencent.mm.media.g.d)localObject1);
+        AppMethodBeat.o(210636);
         return;
       }
     case 1: 
-      localObject2 = this.CsW;
+      localObject2 = this.CKA;
       if (localObject2 != null)
       {
-        i = this.gLD;
-        j = this.gLE;
-        localFloatBuffer = this.gLm;
-        localObject3 = this.gLl;
-        k = this.hon;
-        localObject1 = this.hnu;
+        i = this.gOm;
+        j = this.gOn;
+        localFloatBuffer = this.gNV;
+        localObject3 = this.gNU;
+        k = this.hrb;
+        localObject1 = this.hqi;
         if (localObject1 == null) {
-          p.gfZ();
+          p.gkB();
         }
         p.h(localFloatBuffer, "cubeBuffer");
         p.h(localObject3, "textureCoordBuff");
         p.h(localObject1, "outputTexture");
         if (k != -1)
         {
-          GLES20.glUseProgram(((com.tencent.mm.plugin.voip.video.c.d)localObject2).gLM);
+          GLES20.glUseProgram(((com.tencent.mm.plugin.voip.video.c.d)localObject2).gOv);
           GLES20.glActiveTexture(33984);
           GLES20.glBindTexture(36197, k);
-          GLES20.glUniform1i(((com.tencent.mm.plugin.voip.video.c.d)localObject2).gLP, 0);
-          GLES20.glUniform1f(((com.tencent.mm.plugin.voip.video.c.d)localObject2).Cpw, 0.5F);
-          GLES20.glUniform1i(((com.tencent.mm.plugin.voip.video.c.d)localObject2).Cpx, 0);
-          GLES20.glUniform1i(((com.tencent.mm.plugin.voip.video.c.d)localObject2).Cpy, 2);
-          GLES20.glUniform1f(((com.tencent.mm.plugin.voip.video.c.d)localObject2).Cpz, 0.8F);
-          GLES20.glUniform1f(((com.tencent.mm.plugin.voip.video.c.d)localObject2).CpA, i);
-          GLES20.glUniform1f(((com.tencent.mm.plugin.voip.video.c.d)localObject2).CpB, j);
+          GLES20.glUniform1i(((com.tencent.mm.plugin.voip.video.c.d)localObject2).gOy, 0);
+          GLES20.glUniform1f(((com.tencent.mm.plugin.voip.video.c.d)localObject2).CHa, 0.5F);
+          GLES20.glUniform1i(((com.tencent.mm.plugin.voip.video.c.d)localObject2).CHb, 0);
+          GLES20.glUniform1i(((com.tencent.mm.plugin.voip.video.c.d)localObject2).CHc, 2);
+          GLES20.glUniform1f(((com.tencent.mm.plugin.voip.video.c.d)localObject2).CHd, 0.8F);
+          GLES20.glUniform1f(((com.tencent.mm.plugin.voip.video.c.d)localObject2).CHe, i);
+          GLES20.glUniform1f(((com.tencent.mm.plugin.voip.video.c.d)localObject2).CHf, j);
           localFloatBuffer.position(0);
-          GLES20.glVertexAttribPointer(((com.tencent.mm.plugin.voip.video.c.d)localObject2).gLN, 2, 5126, false, 8, (Buffer)localFloatBuffer);
-          GLES20.glEnableVertexAttribArray(((com.tencent.mm.plugin.voip.video.c.d)localObject2).gLN);
+          GLES20.glVertexAttribPointer(((com.tencent.mm.plugin.voip.video.c.d)localObject2).gOw, 2, 5126, false, 8, (Buffer)localFloatBuffer);
+          GLES20.glEnableVertexAttribArray(((com.tencent.mm.plugin.voip.video.c.d)localObject2).gOw);
           ((FloatBuffer)localObject3).position(0);
-          GLES20.glVertexAttribPointer(((com.tencent.mm.plugin.voip.video.c.d)localObject2).gLO, 2, 5126, false, 8, (Buffer)localObject3);
-          GLES20.glEnableVertexAttribArray(((com.tencent.mm.plugin.voip.video.c.d)localObject2).gLO);
+          GLES20.glVertexAttribPointer(((com.tencent.mm.plugin.voip.video.c.d)localObject2).gOx, 2, 5126, false, 8, (Buffer)localObject3);
+          GLES20.glEnableVertexAttribArray(((com.tencent.mm.plugin.voip.video.c.d)localObject2).gOx);
           GLES20.glDrawArrays(5, 0, 4);
-          GLES20.glDisableVertexAttribArray(((com.tencent.mm.plugin.voip.video.c.d)localObject2).gLN);
-          GLES20.glDisableVertexAttribArray(((com.tencent.mm.plugin.voip.video.c.d)localObject2).gLO);
+          GLES20.glDisableVertexAttribArray(((com.tencent.mm.plugin.voip.video.c.d)localObject2).gOw);
+          GLES20.glDisableVertexAttribArray(((com.tencent.mm.plugin.voip.video.c.d)localObject2).gOx);
           GLES20.glBindTexture(36197, 0);
-          if (((com.tencent.mm.plugin.voip.video.c.d)localObject2).CqV)
+          if (((com.tencent.mm.plugin.voip.video.c.d)localObject2).CIz)
           {
-            localObject2 = ((com.tencent.mm.plugin.voip.video.c.d)localObject2).CqU;
+            localObject2 = ((com.tencent.mm.plugin.voip.video.c.d)localObject2).CIy;
             if (localObject2 != null)
             {
-              ((EncoderSurfaceRender)localObject2).BHZ = ((com.tencent.mm.media.g.d)localObject1).hko;
-              ((EncoderSurfaceRender)localObject2).iA(i, j);
+              ((EncoderSurfaceRender)localObject2).BZy = ((com.tencent.mm.media.g.d)localObject1).hnc;
+              ((EncoderSurfaceRender)localObject2).iE(i, j);
               ((EncoderSurfaceRender)localObject2).requestRender();
-              AppMethodBeat.o(216215);
+              AppMethodBeat.o(210636);
               return;
             }
-            AppMethodBeat.o(216215);
+            AppMethodBeat.o(210636);
             return;
           }
-          localObject2 = ((com.tencent.mm.plugin.voip.video.c.d)localObject2).gLL;
+          localObject2 = ((com.tencent.mm.plugin.voip.video.c.d)localObject2).gOu;
           if (localObject2 != null)
           {
-            ((com.tencent.mm.media.j.b.e)localObject2).nd(90);
-            ((a)localObject2).hnl = true;
-            ((com.tencent.mm.media.j.b.e)localObject2).gKH = ((com.tencent.mm.media.g.d)localObject1).hko;
+            ((com.tencent.mm.media.j.b.e)localObject2).ng(90);
+            ((a)localObject2).hpZ = true;
+            ((com.tencent.mm.media.j.b.e)localObject2).gNq = ((com.tencent.mm.media.g.d)localObject1).hnc;
             ((com.tencent.mm.media.j.b.e)localObject2).cU(i, j);
             ((com.tencent.mm.media.j.b.e)localObject2).cT(j, i);
             ((com.tencent.mm.media.j.b.e)localObject2).cW(j, i);
-            ((a)localObject2).hnD = true;
-            ((com.tencent.mm.media.j.b.e)localObject2).ams();
-            AppMethodBeat.o(216215);
+            ((a)localObject2).hqr = true;
+            ((com.tencent.mm.media.j.b.e)localObject2).amH();
+            AppMethodBeat.o(210636);
             return;
           }
         }
-        AppMethodBeat.o(216215);
+        AppMethodBeat.o(210636);
         return;
       }
-      AppMethodBeat.o(216215);
+      AppMethodBeat.o(210636);
       return;
     }
-    AppMethodBeat.o(216215);
+    AppMethodBeat.o(210636);
   }
   
   public final void cT(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(216213);
-    if ((paramInt1 != this.gLD) || (paramInt2 != this.gLE))
+    AppMethodBeat.i(210634);
+    if ((paramInt1 != this.gOm) || (paramInt2 != this.gOn))
     {
       super.cT(paramInt1, paramInt2);
-      this.Cta = true;
+      this.CKE = true;
     }
-    AppMethodBeat.o(216213);
+    AppMethodBeat.o(210634);
   }
   
   public final void cU(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(216212);
+    AppMethodBeat.i(210633);
     super.cU(paramInt1, paramInt2);
-    this.Cta = true;
-    AppMethodBeat.o(216212);
+    this.CKE = true;
+    AppMethodBeat.o(210633);
   }
   
-  public final void iE(int paramInt1, int paramInt2)
+  public final void iI(int paramInt1, int paramInt2)
   {
     int i = 90;
     boolean bool = true;
-    AppMethodBeat.i(216211);
-    ad.i("MicroMsg.VoipRenderProcExternalTexture", "setVoIPBeauty, isON:%d", new Object[] { Integer.valueOf(paramInt1) });
-    this.CnM = paramInt1;
-    if (this.Ctc != paramInt2)
+    AppMethodBeat.i(210632);
+    ae.i("MicroMsg.VoipRenderProcExternalTexture", "setVoIPBeauty, isON:%d", new Object[] { Integer.valueOf(paramInt1) });
+    this.CFq = paramInt1;
+    if (this.CKG != paramInt2)
     {
-      this.Ctc = paramInt2;
-      this.Cta = true;
+      this.CKG = paramInt2;
+      this.CKE = true;
     }
     Object localObject1;
-    for (this.Ctb = true;; this.Ctb = false) {
+    for (this.CKF = true;; this.CKF = false) {
       switch (paramInt2)
       {
       default: 
-        if (this.CsV == null)
+        if (this.CKz == null)
         {
-          this.CsV = new com.tencent.mm.plugin.voip.video.c.e();
-          localObject1 = i.ClE;
-          i.a.UI(0);
+          this.CKz = new com.tencent.mm.plugin.voip.video.c.e();
+          localObject1 = i.CDi;
+          i.a.Vp(0);
         }
-        this.hnp = 1;
-        AppMethodBeat.o(216211);
+        this.hqd = 1;
+        AppMethodBeat.o(210632);
         return;
       }
     }
     Object localObject2;
-    if (this.CsX == null)
+    if (this.CKB == null)
     {
-      this.CsX = new h();
-      localObject2 = this.CsX;
+      this.CKB = new h();
+      localObject2 = this.CKB;
       if (localObject2 != null)
       {
-        localObject1 = (r)new k.b(this);
+        localObject1 = (r)new b(this);
         p.h(localObject1, "callback");
-        if (!((h)localObject2).CqV) {
+        if (!((h)localObject2).CIz) {
           break label286;
         }
-        localObject2 = ((h)localObject2).CqU;
+        localObject2 = ((h)localObject2).CIy;
         if (localObject2 != null) {
-          ((EncoderSurfaceRender)localObject2).Crj = ((r)localObject1);
+          ((EncoderSurfaceRender)localObject2).CIN = ((r)localObject1);
         }
       }
-      localObject1 = i.ClE;
-      i.a.UI(1);
+      localObject1 = i.CDi;
+      i.a.Vp(1);
     }
-    else if ((this.CsX != null) && (this.Ctb))
+    else if ((this.CKB != null) && (this.CKF))
     {
-      if (this.hnk != 90) {
+      if (this.hpY != 90) {
         break label320;
       }
       paramInt1 = 270;
       label244:
-      this.hnk = paramInt1;
-      if (this.hnl) {
+      this.hpY = paramInt1;
+      if (this.hpZ) {
         break label326;
       }
     }
@@ -399,145 +400,167 @@ public final class k
     label326:
     for (bool = true;; bool = false)
     {
-      this.hnl = bool;
-      ad.i("MicroMsg.VoipRenderProcExternalTexture", "render YT face-beauty algorithm");
-      this.hnp = 2;
-      AppMethodBeat.o(216211);
+      this.hpZ = bool;
+      ae.i("MicroMsg.VoipRenderProcExternalTexture", "render YT face-beauty algorithm");
+      this.hqd = 2;
+      AppMethodBeat.o(210632);
       return;
-      locale = ((h)localObject2).gLL;
+      locale = ((h)localObject2).gOu;
       if (locale == null) {
         break;
       }
-      locale.hnB = ((d.g.a.b)new h.b((h)localObject2, (r)localObject1));
+      locale.hqp = ((d.g.a.b)new h.b((h)localObject2, (r)localObject1));
       break;
       paramInt1 = 90;
       break label244;
     }
-    if (this.CsW == null)
+    if (this.CKA == null)
     {
-      this.CsW = new com.tencent.mm.plugin.voip.video.c.d();
-      localObject2 = this.CsW;
+      this.CKA = new com.tencent.mm.plugin.voip.video.c.d();
+      localObject2 = this.CKA;
       if (localObject2 != null)
       {
-        localObject1 = (r)new k.c(this);
+        localObject1 = (r)new c(this);
         p.h(localObject1, "callback");
-        if (!((com.tencent.mm.plugin.voip.video.c.d)localObject2).CqV) {
+        if (!((com.tencent.mm.plugin.voip.video.c.d)localObject2).CIz) {
           break label477;
         }
-        localObject2 = ((com.tencent.mm.plugin.voip.video.c.d)localObject2).CqU;
+        localObject2 = ((com.tencent.mm.plugin.voip.video.c.d)localObject2).CIy;
         if (localObject2 != null) {
-          ((EncoderSurfaceRender)localObject2).Crj = ((r)localObject1);
+          ((EncoderSurfaceRender)localObject2).CIN = ((r)localObject1);
         }
       }
-      localObject1 = i.ClE;
-      i.a.UI(2);
+      localObject1 = i.CDi;
+      i.a.Vp(2);
     }
-    else if ((this.CsW != null) && (this.Ctb))
+    else if ((this.CKA != null) && (this.CKF))
     {
       paramInt1 = i;
-      if (this.hnk == 90) {
+      if (this.hpY == 90) {
         paramInt1 = 270;
       }
-      this.hnk = paramInt1;
-      if (this.hnl) {
+      this.hpY = paramInt1;
+      if (this.hpZ) {
         break label511;
       }
     }
     for (;;)
     {
-      this.hnl = bool;
-      this.hnp = 2;
-      AppMethodBeat.o(216211);
+      this.hpZ = bool;
+      this.hqd = 2;
+      AppMethodBeat.o(210632);
       return;
       label477:
-      locale = ((com.tencent.mm.plugin.voip.video.c.d)localObject2).gLL;
+      locale = ((com.tencent.mm.plugin.voip.video.c.d)localObject2).gOu;
       if (locale == null) {
         break;
       }
-      locale.hnB = ((d.g.a.b)new d.a((com.tencent.mm.plugin.voip.video.c.d)localObject2, (r)localObject1));
+      locale.hqp = ((d.g.a.b)new d.a((com.tencent.mm.plugin.voip.video.c.d)localObject2, (r)localObject1));
       break;
       label511:
       bool = false;
     }
   }
   
-  public final void nN(int paramInt)
+  public final void nQ(int paramInt)
   {
-    this.hon = paramInt;
+    this.hrb = paramInt;
   }
   
   public final void release()
   {
-    AppMethodBeat.i(216217);
+    AppMethodBeat.i(210638);
     super.release();
-    Object localObject1 = this.CsV;
+    Object localObject1 = this.CKz;
     if (localObject1 != null) {
-      GLES20.glDeleteProgram(((com.tencent.mm.plugin.voip.video.c.e)localObject1).gLM);
+      GLES20.glDeleteProgram(((com.tencent.mm.plugin.voip.video.c.e)localObject1).gOv);
     }
-    localObject1 = this.CsX;
+    localObject1 = this.CKB;
     Object localObject3;
     if (localObject1 != null)
     {
-      localObject2 = ((h)localObject1).gLL;
+      localObject2 = ((h)localObject1).gOu;
       if (localObject2 != null) {
         ((com.tencent.mm.media.j.b.e)localObject2).release();
       }
-      localObject2 = ((h)localObject1).gLJ;
+      localObject2 = ((h)localObject1).gOs;
       if (localObject2 != null) {
         ((com.tencent.mm.media.g.d)localObject2).close();
       }
-      localObject2 = ((h)localObject1).Crc;
+      localObject2 = ((h)localObject1).CIG;
       if (localObject2 != null)
       {
         localObject3 = com.tencent.mm.plugin.voip.video.a.d.TAG;
         Thread localThread = Thread.currentThread();
         p.g(localThread, "Thread.currentThread()");
-        ad.i((String)localObject3, "clear %s %d", new Object[] { localObject2, Long.valueOf(localThread.getId()) });
+        ae.i((String)localObject3, "clear %s %d", new Object[] { localObject2, Long.valueOf(localThread.getId()) });
       }
     }
     try
     {
-      localObject3 = ((com.tencent.mm.plugin.voip.video.a.d)localObject2).gKI;
+      localObject3 = ((com.tencent.mm.plugin.voip.video.a.d)localObject2).gNr;
       if (localObject3 != null) {
         ((com.tencent.mm.media.g.d)localObject3).close();
       }
-      if (((com.tencent.mm.plugin.voip.video.a.d)localObject2).gtl != null)
+      if (((com.tencent.mm.plugin.voip.video.a.d)localObject2).gvS != null)
       {
-        localObject3 = ((com.tencent.mm.plugin.voip.video.a.d)localObject2).gtl;
+        localObject3 = ((com.tencent.mm.plugin.voip.video.a.d)localObject2).gvS;
         if (localObject3 == null) {
-          p.gfZ();
+          p.gkB();
         }
         ((com.tencent.mm.plugin.xlabeffect.b)localObject3).destroy();
-        ((com.tencent.mm.plugin.voip.video.a.d)localObject2).gtl = null;
+        ((com.tencent.mm.plugin.voip.video.a.d)localObject2).gvS = null;
       }
     }
     catch (Exception localException)
     {
       for (;;)
       {
-        ad.printErrStackTrace(com.tencent.mm.plugin.voip.video.a.d.TAG, (Throwable)localException, "clear error: %s", new Object[] { localException.getMessage() });
+        ae.printErrStackTrace(com.tencent.mm.plugin.voip.video.a.d.TAG, (Throwable)localException, "clear error: %s", new Object[] { localException.getMessage() });
       }
     }
-    Object localObject2 = ((h)localObject1).CqU;
+    Object localObject2 = ((h)localObject1).CIy;
     if (localObject2 != null) {
       ((EncoderSurfaceRender)localObject2).release();
     }
-    GLES20.glDeleteProgram(((h)localObject1).gLM);
-    localObject1 = this.CsW;
+    GLES20.glDeleteProgram(((h)localObject1).gOv);
+    localObject1 = this.CKA;
     if (localObject1 != null)
     {
-      localObject2 = ((com.tencent.mm.plugin.voip.video.c.d)localObject1).CqU;
+      localObject2 = ((com.tencent.mm.plugin.voip.video.c.d)localObject1).CIy;
       if (localObject2 != null) {
         ((EncoderSurfaceRender)localObject2).release();
       }
-      localObject2 = ((com.tencent.mm.plugin.voip.video.c.d)localObject1).gLL;
+      localObject2 = ((com.tencent.mm.plugin.voip.video.c.d)localObject1).gOu;
       if (localObject2 != null) {
         ((com.tencent.mm.media.j.b.e)localObject2).release();
       }
-      GLES20.glDeleteProgram(((com.tencent.mm.plugin.voip.video.c.d)localObject1).gLM);
+      GLES20.glDeleteProgram(((com.tencent.mm.plugin.voip.video.c.d)localObject1).gOv);
     }
-    GLES20.glDeleteProgram(this.gLM);
-    AppMethodBeat.o(216217);
+    GLES20.glDeleteProgram(this.gOv);
+    AppMethodBeat.o(210638);
+  }
+  
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "data", "Ljava/nio/ByteBuffer;", "width", "", "height", "dataType", "invoke"})
+  static final class b
+    extends q
+    implements r<ByteBuffer, Integer, Integer, Integer, z>
+  {
+    b(k paramk)
+    {
+      super();
+    }
+  }
+  
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "data", "Ljava/nio/ByteBuffer;", "width", "", "height", "dataType", "invoke"})
+  static final class c
+    extends q
+    implements r<ByteBuffer, Integer, Integer, Integer, z>
+  {
+    c(k paramk)
+    {
+      super();
+    }
   }
 }
 

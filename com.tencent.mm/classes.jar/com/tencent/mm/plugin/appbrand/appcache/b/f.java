@@ -1,12 +1,12 @@
 package com.tencent.mm.plugin.appbrand.appcache.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.e.a;
-import com.tencent.mm.al.e.b;
-import com.tencent.mm.cn.g;
+import com.tencent.mm.ak.e.a;
+import com.tencent.mm.ak.e.b;
+import com.tencent.mm.cm.g;
 import com.tencent.mm.plugin.messenger.foundation.a.p;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.vending.c.a;
 import java.util.Map;
 
@@ -16,8 +16,8 @@ public enum f
   static
   {
     AppMethodBeat.i(44381);
-    jJY = new f("INSTANCE");
-    jJZ = new f[] { jJY };
+    jMY = new f("INSTANCE");
+    jMZ = new f[] { jMY };
     AppMethodBeat.o(44381);
   }
   
@@ -27,15 +27,15 @@ public enum f
   {
     AppMethodBeat.i(44379);
     paramString = (String)paramMap.get(".sysmsg.WeAppSyncCommand.Base64JsonContent");
-    if (!bt.isNullOrNil(paramString)) {
-      g.er(paramString).j(new a()
+    if (!bu.isNullOrNil(paramString)) {
+      g.eu(paramString).j(new a()
       {
-        private static Void LS(String paramAnonymousString)
+        private static Void Mv(String paramAnonymousString)
         {
           AppMethodBeat.i(44375);
           try
           {
-            f.LR(paramAnonymousString);
+            f.Mu(paramAnonymousString);
             AppMethodBeat.o(44375);
             return null;
           }
@@ -43,7 +43,7 @@ public enum f
           {
             for (;;)
             {
-              ad.printErrStackTrace("MicroMsg.AppBrand.PredownloadXmlProcessor", paramAnonymousString, "process pbBase64", new Object[0]);
+              ae.printErrStackTrace("MicroMsg.AppBrand.PredownloadXmlProcessor", paramAnonymousString, "process pbBase64", new Object[0]);
             }
           }
         }

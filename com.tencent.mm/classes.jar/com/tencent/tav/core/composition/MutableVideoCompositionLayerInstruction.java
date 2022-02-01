@@ -24,19 +24,19 @@ public class MutableVideoCompositionLayerInstruction
   
   public MutableVideoCompositionLayerInstruction()
   {
-    AppMethodBeat.i(218059);
+    AppMethodBeat.i(214698);
     this.transformRampList = new ArrayList();
     this.opacityRampList = new ArrayList();
     this.cropRectangleRampList = new ArrayList();
     this.duration = new CMTime(2147483647L);
     this.flipX = false;
     this.flipY = false;
-    AppMethodBeat.o(218059);
+    AppMethodBeat.o(214698);
   }
   
   public MutableVideoCompositionLayerInstruction(int paramInt)
   {
-    AppMethodBeat.i(218058);
+    AppMethodBeat.i(214697);
     this.transformRampList = new ArrayList();
     this.opacityRampList = new ArrayList();
     this.cropRectangleRampList = new ArrayList();
@@ -44,12 +44,12 @@ public class MutableVideoCompositionLayerInstruction
     this.flipX = false;
     this.flipY = false;
     this.trackID = paramInt;
-    AppMethodBeat.o(218058);
+    AppMethodBeat.o(214697);
   }
   
   public MutableVideoCompositionLayerInstruction(AssetTrack paramAssetTrack)
   {
-    AppMethodBeat.i(218057);
+    AppMethodBeat.i(214696);
     this.transformRampList = new ArrayList();
     this.opacityRampList = new ArrayList();
     this.cropRectangleRampList = new ArrayList();
@@ -59,42 +59,42 @@ public class MutableVideoCompositionLayerInstruction
     this.trackID = paramAssetTrack.getTrackID();
     this.assetTrack = paramAssetTrack;
     this.duration = paramAssetTrack.getDuration();
-    AppMethodBeat.o(218057);
+    AppMethodBeat.o(214696);
   }
   
   public VideoCompositionLayerInstruction.CropRectangleRamp getCropRectangleRampForTime(CMTime paramCMTime)
   {
-    AppMethodBeat.i(218068);
+    AppMethodBeat.i(214707);
     Iterator localIterator = this.cropRectangleRampList.iterator();
     while (localIterator.hasNext())
     {
       VideoCompositionLayerInstruction.CropRectangleRamp localCropRectangleRamp = (VideoCompositionLayerInstruction.CropRectangleRamp)localIterator.next();
       if (localCropRectangleRamp.timeRange.containsTime(paramCMTime))
       {
-        AppMethodBeat.o(218068);
+        AppMethodBeat.o(214707);
         return localCropRectangleRamp;
       }
     }
     paramCMTime = new VideoCompositionLayerInstruction.CropRectangleRamp(new CMTimeRange(CMTime.CMTimeZero, this.duration));
-    AppMethodBeat.o(218068);
+    AppMethodBeat.o(214707);
     return paramCMTime;
   }
   
   public VideoCompositionLayerInstruction.OpacityRamp getOpacityRampForTime(CMTime paramCMTime)
   {
-    AppMethodBeat.i(218067);
+    AppMethodBeat.i(214706);
     Iterator localIterator = this.opacityRampList.iterator();
     while (localIterator.hasNext())
     {
       VideoCompositionLayerInstruction.OpacityRamp localOpacityRamp = (VideoCompositionLayerInstruction.OpacityRamp)localIterator.next();
       if (localOpacityRamp.timeRange.containsTime(paramCMTime))
       {
-        AppMethodBeat.o(218067);
+        AppMethodBeat.o(214706);
         return localOpacityRamp;
       }
     }
     paramCMTime = new VideoCompositionLayerInstruction.OpacityRamp(new CMTimeRange(CMTime.CMTimeZero, this.duration));
-    AppMethodBeat.o(218067);
+    AppMethodBeat.o(214706);
     return paramCMTime;
   }
   
@@ -105,25 +105,25 @@ public class MutableVideoCompositionLayerInstruction
   
   public VideoCompositionLayerInstruction.TransformRamp getTransformRampForTime(CMTime paramCMTime)
   {
-    AppMethodBeat.i(218066);
+    AppMethodBeat.i(214705);
     Iterator localIterator = this.transformRampList.iterator();
     while (localIterator.hasNext())
     {
       VideoCompositionLayerInstruction.TransformRamp localTransformRamp = (VideoCompositionLayerInstruction.TransformRamp)localIterator.next();
       if (localTransformRamp.timeRange.containsTime(paramCMTime))
       {
-        AppMethodBeat.o(218066);
+        AppMethodBeat.o(214705);
         return localTransformRamp;
       }
     }
     paramCMTime = new VideoCompositionLayerInstruction.TransformRamp(new CMTimeRange(CMTime.CMTimeZero, this.duration));
-    AppMethodBeat.o(218066);
+    AppMethodBeat.o(214705);
     return paramCMTime;
   }
   
   public void setCropRectangle(CGRect paramCGRect, CMTime paramCMTime)
   {
-    AppMethodBeat.i(218065);
+    AppMethodBeat.i(214704);
     CMTime localCMTime = this.duration;
     Iterator localIterator = this.cropRectangleRampList.iterator();
     while (localIterator.hasNext())
@@ -141,14 +141,14 @@ public class MutableVideoCompositionLayerInstruction
       paramCMTime.startCropRectangle = paramCGRect;
       paramCMTime.endCropRectangle = paramCGRect;
       this.cropRectangleRampList.add(paramCMTime);
-      AppMethodBeat.o(218065);
+      AppMethodBeat.o(214704);
       return;
     }
   }
   
   public void setCropRectangleRampFromStartCropRectangle(CGRect paramCGRect1, CGRect paramCGRect2, CMTimeRange paramCMTimeRange)
   {
-    AppMethodBeat.i(218064);
+    AppMethodBeat.i(214703);
     VideoCompositionLayerInstruction.CropRectangleRamp localCropRectangleRamp = new VideoCompositionLayerInstruction.CropRectangleRamp(paramCMTimeRange);
     localCropRectangleRamp.startCropRectangle = paramCGRect1;
     localCropRectangleRamp.endCropRectangle = paramCGRect2;
@@ -185,7 +185,7 @@ public class MutableVideoCompositionLayerInstruction
       }
     }
     this.cropRectangleRampList.add(localCropRectangleRamp);
-    AppMethodBeat.o(218064);
+    AppMethodBeat.o(214703);
   }
   
   public void setFlipX(boolean paramBoolean)
@@ -200,7 +200,7 @@ public class MutableVideoCompositionLayerInstruction
   
   public void setOpacity(float paramFloat, CMTime paramCMTime)
   {
-    AppMethodBeat.i(218063);
+    AppMethodBeat.i(214702);
     CMTime localCMTime = this.duration;
     Iterator localIterator = this.opacityRampList.iterator();
     while (localIterator.hasNext())
@@ -218,14 +218,14 @@ public class MutableVideoCompositionLayerInstruction
       paramCMTime.startOpacity = paramFloat;
       paramCMTime.endOpacity = paramFloat;
       this.opacityRampList.add(paramCMTime);
-      AppMethodBeat.o(218063);
+      AppMethodBeat.o(214702);
       return;
     }
   }
   
   public void setOpacityRampFromStartOpacity(float paramFloat1, float paramFloat2, CMTimeRange paramCMTimeRange)
   {
-    AppMethodBeat.i(218062);
+    AppMethodBeat.i(214701);
     VideoCompositionLayerInstruction.OpacityRamp localOpacityRamp = new VideoCompositionLayerInstruction.OpacityRamp(paramCMTimeRange);
     localOpacityRamp.startOpacity = paramFloat1;
     localOpacityRamp.endOpacity = paramFloat2;
@@ -263,7 +263,7 @@ public class MutableVideoCompositionLayerInstruction
       }
     }
     this.opacityRampList.add(localOpacityRamp);
-    AppMethodBeat.o(218062);
+    AppMethodBeat.o(214701);
   }
   
   public void setTrackID(int paramInt)
@@ -273,7 +273,7 @@ public class MutableVideoCompositionLayerInstruction
   
   public void setTransform(Transform paramTransform, CMTime paramCMTime)
   {
-    AppMethodBeat.i(218061);
+    AppMethodBeat.i(214700);
     CMTime localCMTime = this.duration;
     Iterator localIterator = this.transformRampList.iterator();
     while (localIterator.hasNext())
@@ -291,14 +291,14 @@ public class MutableVideoCompositionLayerInstruction
       paramCMTime.startTransform = paramTransform;
       paramCMTime.endTransform = paramTransform;
       this.transformRampList.add(paramCMTime);
-      AppMethodBeat.o(218061);
+      AppMethodBeat.o(214700);
       return;
     }
   }
   
   public void setTransformRampFromStartTransform(Transform paramTransform1, Transform paramTransform2, CMTimeRange paramCMTimeRange)
   {
-    AppMethodBeat.i(218060);
+    AppMethodBeat.i(214699);
     VideoCompositionLayerInstruction.TransformRamp localTransformRamp = new VideoCompositionLayerInstruction.TransformRamp(paramCMTimeRange);
     localTransformRamp.startTransform = paramTransform1;
     localTransformRamp.endTransform = paramTransform2;
@@ -335,7 +335,7 @@ public class MutableVideoCompositionLayerInstruction
       }
     }
     this.transformRampList.add(localTransformRamp);
-    AppMethodBeat.o(218060);
+    AppMethodBeat.o(214699);
   }
 }
 

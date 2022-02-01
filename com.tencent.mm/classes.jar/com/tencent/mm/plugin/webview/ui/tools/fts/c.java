@@ -9,7 +9,7 @@ import android.content.Context;
 import android.view.View;
 import android.view.animation.DecelerateInterpolator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class c
   extends a
@@ -22,8 +22,8 @@ public final class c
   public final void b(a.b paramb)
   {
     AppMethodBeat.i(80757);
-    if (paramb != this.EhL) {
-      switch (3.EhV[paramb.ordinal()])
+    if (paramb != this.EzP) {
+      switch (3.EzZ[paramb.ordinal()])
       {
       }
     }
@@ -31,24 +31,24 @@ public final class c
     {
       AppMethodBeat.o(80757);
       return;
-      eUi();
+      eXV();
       AppMethodBeat.o(80757);
       return;
-      eUj();
+      eXW();
     }
   }
   
-  protected final void eUi()
+  protected final void eXV()
   {
     AppMethodBeat.i(80758);
-    ad.i("MicroMsg.WebSearch.SosAnimatorController", "searchToInit");
+    ae.i("MicroMsg.WebSearch.SosAnimatorController", "searchToInit");
     ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
-    if (this.EhJ[0][0] - this.Ehz >= 0.0F) {
-      localValueAnimator.addUpdateListener(this.EhP);
+    if (this.EzN[0][0] - this.EzD >= 0.0F) {
+      localValueAnimator.addUpdateListener(this.EzT);
     }
     for (;;)
     {
-      ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(this.EhI, "alpha", new float[] { 0.0F, 1.0F });
+      ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(this.EzM, "alpha", new float[] { 0.0F, 1.0F });
       AnimatorSet localAnimatorSet = new AnimatorSet();
       localAnimatorSet.playTogether(new Animator[] { localValueAnimator, localObjectAnimator });
       localAnimatorSet.setInterpolator(new DecelerateInterpolator());
@@ -64,8 +64,8 @@ public final class c
         {
           AppMethodBeat.i(80753);
           c.this.isAnimating = false;
-          if (c.this.EhM != null) {
-            c.this.EhM.onAnimationEnd();
+          if (c.this.EzQ != null) {
+            c.this.EzQ.onAnimationEnd();
           }
           AppMethodBeat.o(80753);
         }
@@ -76,8 +76,8 @@ public final class c
         {
           AppMethodBeat.i(80752);
           c.this.isAnimating = true;
-          if (c.this.EhM != null) {
-            c.this.EhM.onAnimationStart();
+          if (c.this.EzQ != null) {
+            c.this.EzQ.onAnimationStart();
           }
           AppMethodBeat.o(80752);
         }
@@ -85,20 +85,20 @@ public final class c
       localAnimatorSet.start();
       AppMethodBeat.o(80758);
       return;
-      localValueAnimator.addUpdateListener(this.EhQ);
+      localValueAnimator.addUpdateListener(this.EzU);
     }
   }
   
-  protected final void eUj()
+  protected final void eXW()
   {
     AppMethodBeat.i(80759);
     ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
-    if (this.EhJ[0][0] - this.Ehz >= 0.0F) {
-      localValueAnimator.addUpdateListener(this.EhN);
+    if (this.EzN[0][0] - this.EzD >= 0.0F) {
+      localValueAnimator.addUpdateListener(this.EzR);
     }
     for (;;)
     {
-      ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(this.EhI, "alpha", new float[] { 1.0F, 0.0F });
+      ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(this.EzM, "alpha", new float[] { 1.0F, 0.0F });
       AnimatorSet localAnimatorSet = new AnimatorSet();
       localAnimatorSet.playTogether(new Animator[] { localValueAnimator, localObjectAnimator });
       localAnimatorSet.setInterpolator(new DecelerateInterpolator());
@@ -114,8 +114,8 @@ public final class c
         {
           AppMethodBeat.i(80755);
           c.this.isAnimating = false;
-          if (c.this.EhM != null) {
-            c.this.EhM.onAnimationEnd();
+          if (c.this.EzQ != null) {
+            c.this.EzQ.onAnimationEnd();
           }
           AppMethodBeat.o(80755);
         }
@@ -126,8 +126,8 @@ public final class c
         {
           AppMethodBeat.i(80754);
           c.this.isAnimating = true;
-          if (c.this.EhM != null) {
-            c.this.EhM.onAnimationStart();
+          if (c.this.EzQ != null) {
+            c.this.EzQ.onAnimationStart();
           }
           AppMethodBeat.o(80754);
         }
@@ -135,7 +135,7 @@ public final class c
       localAnimatorSet.start();
       AppMethodBeat.o(80759);
       return;
-      localValueAnimator.addUpdateListener(this.EhO);
+      localValueAnimator.addUpdateListener(this.EzS);
     }
   }
 }

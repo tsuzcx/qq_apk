@@ -15,7 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.convert.bc;
+import com.tencent.mm.plugin.finder.convert.bd;
 import com.tencent.mm.plugin.finder.convert.o;
 import com.tencent.mm.plugin.finder.convert.s;
 import com.tencent.mm.plugin.finder.convert.x;
@@ -30,7 +30,7 @@ import d.g.b.p;
 import d.v;
 import java.util.List;
 
-@d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/storage/FinderLbsStaggeredConfig;", "Lcom/tencent/mm/plugin/finder/storage/IFinderLayoutConfig;", "()V", "spanCount", "", "getSpanCount", "()I", "bindConvert", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "getIfReachBottom", "", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "getItemConvertFactory", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "extraMap", "Lkotlin/Function1;", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "getItemDecoration", "Landroid/support/v7/widget/RecyclerView$ItemDecoration;", "getLayoutManager", "Landroid/support/v7/widget/RecyclerView$LayoutManager;", "context", "Landroid/content/Context;", "getViewHolder", "Landroid/support/v7/widget/RecyclerView$ViewHolder;", "parent", "Landroid/view/ViewGroup;", "getViewPool", "Landroid/support/v7/widget/RecyclerView$RecycledViewPool;", "Lcom/tencent/mm/ui/MMActivity;", "plugin-finder_release"})
+@d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/storage/FinderLbsStaggeredConfig;", "Lcom/tencent/mm/plugin/finder/storage/IFinderLayoutConfig;", "()V", "spanCount", "", "getSpanCount", "()I", "bindConvert", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "getIfReachBottom", "", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "getItemConvertFactory", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "extraMap", "Lkotlin/Function1;", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "getItemDecoration", "Landroid/support/v7/widget/RecyclerView$ItemDecoration;", "getLayoutManager", "Landroid/support/v7/widget/RecyclerView$LayoutManager;", "context", "Landroid/content/Context;", "getViewHolder", "Landroid/support/v7/widget/RecyclerView$ViewHolder;", "parent", "Landroid/view/ViewGroup;", "getViewPool", "Landroid/support/v7/widget/RecyclerView$RecycledViewPool;", "Lcom/tencent/mm/ui/MMActivity;", "plugin-finder_release"})
 public final class n
   implements z
 {
@@ -38,69 +38,69 @@ public final class n
   
   public final c B(final d.g.a.b<? super Integer, ? extends com.tencent.mm.view.recyclerview.b<?>> paramb)
   {
-    AppMethodBeat.i(203706);
+    AppMethodBeat.i(204274);
     paramb = (c)new a(this, paramb);
-    AppMethodBeat.o(203706);
+    AppMethodBeat.o(204274);
     return paramb;
   }
   
-  public final c cBj()
+  public final c cCV()
   {
-    AppMethodBeat.i(203705);
+    AppMethodBeat.i(204273);
     c localc = B(null);
-    AppMethodBeat.o(203705);
+    AppMethodBeat.o(204273);
     return localc;
   }
   
-  public final RecyclerView.i eL(Context paramContext)
+  public final RecyclerView.i eP(Context paramContext)
   {
-    AppMethodBeat.i(203702);
+    AppMethodBeat.i(204270);
     p.h(paramContext, "context");
     paramContext = new FinderStaggeredGridLayoutManager(this.atv);
     paramContext.aw(true);
     paramContext = (RecyclerView.i)paramContext;
-    AppMethodBeat.o(203702);
+    AppMethodBeat.o(204270);
     return paramContext;
   }
   
   public final RecyclerView.n f(MMActivity paramMMActivity)
   {
-    AppMethodBeat.i(203707);
+    AppMethodBeat.i(204275);
     p.h(paramMMActivity, "context");
-    a locala = a.KiD;
-    paramMMActivity = ((FinderRecyclerViewPool)a.s(paramMMActivity).get(FinderRecyclerViewPool.class)).sZE;
-    AppMethodBeat.o(203707);
+    a locala = a.KEX;
+    paramMMActivity = ((FinderRecyclerViewPool)a.s(paramMMActivity).get(FinderRecyclerViewPool.class)).tkS;
+    AppMethodBeat.o(204275);
     return paramMMActivity;
   }
   
   public final RecyclerView.h getItemDecoration()
   {
-    AppMethodBeat.i(203704);
+    AppMethodBeat.i(204272);
     RecyclerView.h localh = (RecyclerView.h)new b();
-    AppMethodBeat.o(203704);
+    AppMethodBeat.o(204272);
     return localh;
   }
   
   public final RecyclerView.w q(ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(203703);
+    AppMethodBeat.i(204271);
     p.h(paramViewGroup, "parent");
     paramViewGroup = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131494094, paramViewGroup, false);
     p.g(paramViewGroup, "convertView");
-    paramViewGroup = (RecyclerView.w)new bc(paramViewGroup);
-    AppMethodBeat.o(203703);
+    paramViewGroup = (RecyclerView.w)new bd(paramViewGroup);
+    AppMethodBeat.o(204271);
     return paramViewGroup;
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/finder/storage/FinderLbsStaggeredConfig$getItemConvertFactory$1", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "getItemConvert", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "type", "", "plugin-finder_release"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/finder/storage/FinderLbsStaggeredConfig$getItemConvertFactory$1", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "getItemConvert", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "type", "", "plugin-finder_release"})
   public static final class a
     implements c
   {
     a(d.g.a.b paramb) {}
     
-    public final com.tencent.mm.view.recyclerview.b<?> AL(int paramInt)
+    public final com.tencent.mm.view.recyclerview.b<?> AX(int paramInt)
     {
-      AppMethodBeat.i(203700);
+      AppMethodBeat.i(204268);
       switch (paramInt)
       {
       default: 
@@ -113,69 +113,69 @@ public final class n
         }
         else
         {
-          p.gfZ();
+          p.gkB();
           localObject = null;
         }
-        AppMethodBeat.o(203700);
+        AppMethodBeat.o(204268);
         return localObject;
       case 4: 
       case 3002: 
         localObject = (com.tencent.mm.view.recyclerview.b)new a(this);
-        AppMethodBeat.o(203700);
+        AppMethodBeat.o(204268);
         return localObject;
       case 2: 
       case 3001: 
         localObject = (com.tencent.mm.view.recyclerview.b)new b(this);
-        AppMethodBeat.o(203700);
+        AppMethodBeat.o(204268);
         return localObject;
       case -3: 
         localObject = (com.tencent.mm.view.recyclerview.b)new s();
-        AppMethodBeat.o(203700);
+        AppMethodBeat.o(204268);
         return localObject;
       }
       Object localObject = (com.tencent.mm.view.recyclerview.b)new o();
-      AppMethodBeat.o(203700);
+      AppMethodBeat.o(204268);
       return localObject;
     }
     
-    @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/finder/storage/FinderLbsStaggeredConfig$getItemConvertFactory$1$getItemConvert$1", "Lcom/tencent/mm/plugin/finder/convert/FinderFeedVideoRoundCornerConvert;", "onBindViewHolder", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "position", "", "type", "isHotPatch", "", "payloads", "", "", "plugin-finder_release"})
+    @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/finder/storage/FinderLbsStaggeredConfig$getItemConvertFactory$1$getItemConvert$1", "Lcom/tencent/mm/plugin/finder/convert/FinderFeedVideoRoundCornerConvert;", "onBindViewHolder", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "position", "", "type", "isHotPatch", "", "payloads", "", "", "plugin-finder_release"})
     public static final class a
       extends x
     {
       public final void a(e parame, BaseFinderFeed paramBaseFinderFeed, int paramInt1, int paramInt2, boolean paramBoolean, List<Object> paramList)
       {
-        AppMethodBeat.i(203696);
+        AppMethodBeat.i(204264);
         p.h(parame, "holder");
         p.h(paramBaseFinderFeed, "item");
         super.a(parame, paramBaseFinderFeed, paramInt1, paramInt2, paramBoolean, paramList);
         n.d(parame, paramBaseFinderFeed);
-        AppMethodBeat.o(203696);
+        AppMethodBeat.o(204264);
       }
     }
     
-    @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/finder/storage/FinderLbsStaggeredConfig$getItemConvertFactory$1$getItemConvert$2", "Lcom/tencent/mm/plugin/finder/convert/FinderFeedImageRoundCornerConvert;", "onBindViewHolder", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "position", "", "type", "isHotPatch", "", "payloads", "", "", "plugin-finder_release"})
+    @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/finder/storage/FinderLbsStaggeredConfig$getItemConvertFactory$1$getItemConvert$2", "Lcom/tencent/mm/plugin/finder/convert/FinderFeedImageRoundCornerConvert;", "onBindViewHolder", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "position", "", "type", "isHotPatch", "", "payloads", "", "", "plugin-finder_release"})
     public static final class b
       extends com.tencent.mm.plugin.finder.convert.l
     {
       public final void a(e parame, BaseFinderFeed paramBaseFinderFeed, int paramInt1, int paramInt2, boolean paramBoolean, List<Object> paramList)
       {
-        AppMethodBeat.i(203698);
+        AppMethodBeat.i(204266);
         p.h(parame, "holder");
         p.h(paramBaseFinderFeed, "item");
         super.a(parame, paramBaseFinderFeed, paramInt1, paramInt2, paramBoolean, paramList);
         n.d(parame, paramBaseFinderFeed);
-        AppMethodBeat.o(203698);
+        AppMethodBeat.o(204266);
       }
     }
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/finder/storage/FinderLbsStaggeredConfig$getItemDecoration$1", "Landroid/support/v7/widget/RecyclerView$ItemDecoration;", "getItemOffsets", "", "outRect", "Landroid/graphics/Rect;", "view", "Landroid/view/View;", "parent", "Landroid/support/v7/widget/RecyclerView;", "state", "Landroid/support/v7/widget/RecyclerView$State;", "plugin-finder_release"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/finder/storage/FinderLbsStaggeredConfig$getItemDecoration$1", "Landroid/support/v7/widget/RecyclerView$ItemDecoration;", "getItemOffsets", "", "outRect", "Landroid/graphics/Rect;", "view", "Landroid/view/View;", "parent", "Landroid/support/v7/widget/RecyclerView;", "state", "Landroid/support/v7/widget/RecyclerView$State;", "plugin-finder_release"})
   public static final class b
     extends RecyclerView.h
   {
     public final void a(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.t paramt)
     {
-      AppMethodBeat.i(203701);
+      AppMethodBeat.i(204269);
       p.h(paramRect, "outRect");
       p.h(paramView, "view");
       p.h(paramRecyclerView, "parent");
@@ -190,7 +190,7 @@ public final class n
       if (paramRecyclerView == null)
       {
         paramRect = new v("null cannot be cast to non-null type android.support.v7.widget.StaggeredGridLayoutManager.LayoutParams");
-        AppMethodBeat.o(203701);
+        AppMethodBeat.o(204269);
         throw paramRect;
       }
       if (((StaggeredGridLayoutManager.LayoutParams)paramRecyclerView).mG())
@@ -199,14 +199,14 @@ public final class n
         paramRect.right = 0;
         paramRect.bottom = 0;
         paramRect.top = 0;
-        AppMethodBeat.o(203701);
+        AppMethodBeat.o(204269);
         return;
       }
       paramView = paramView.getLayoutParams();
       if (paramView == null)
       {
         paramRect = new v("null cannot be cast to non-null type android.support.v7.widget.StaggeredGridLayoutManager.LayoutParams");
-        AppMethodBeat.o(203701);
+        AppMethodBeat.o(204269);
         throw paramRect;
       }
       if (((StaggeredGridLayoutManager.LayoutParams)paramView).mH() % 2 == 0)
@@ -215,20 +215,20 @@ public final class n
         paramRect.right = j;
         paramRect.bottom = j;
         paramRect.top = j;
-        AppMethodBeat.o(203701);
+        AppMethodBeat.o(204269);
         return;
       }
       paramRect.left = j;
       paramRect.right = i;
       paramRect.bottom = j;
       paramRect.top = j;
-      AppMethodBeat.o(203701);
+      AppMethodBeat.o(204269);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.storage.n
  * JD-Core Version:    0.7.0.1
  */

@@ -10,15 +10,15 @@ import org.json.JSONObject;
 public final class r
   extends m
 {
-  public String COY;
-  public String COZ;
-  public BindCardOrder CPa;
-  public String fKQ;
+  public String DgC;
+  public String DgD;
+  public BindCardOrder DgE;
+  public String fMT;
   
   public r(BindCardOrder paramBindCardOrder, String paramString1, String paramString2, String paramString3, String paramString4, long paramLong1, long paramLong2, String paramString5, String paramString6, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(69928);
-    this.CPa = paramBindCardOrder;
+    this.DgE = paramBindCardOrder;
     paramBindCardOrder = new HashMap();
     paramBindCardOrder.put("activity_id", paramString1);
     paramBindCardOrder.put("award_id", paramString2);
@@ -54,16 +54,16 @@ public final class r
     AppMethodBeat.i(69929);
     if ((paramJSONObject != null) && (paramInt == 0))
     {
-      this.COY = paramJSONObject.optString("result_code");
-      this.fKQ = paramJSONObject.optString("result_msg");
-      this.COZ = paramJSONObject.optString("alert_wording");
+      this.DgC = paramJSONObject.optString("result_code");
+      this.fMT = paramJSONObject.optString("result_msg");
+      this.DgD = paramJSONObject.optString("alert_wording");
     }
     AppMethodBeat.o(69929);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.c.r
  * JD-Core Version:    0.7.0.1
  */

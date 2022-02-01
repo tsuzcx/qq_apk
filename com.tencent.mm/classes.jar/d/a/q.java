@@ -10,17 +10,17 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.RandomAccess;
 
-@l(gfA=1, gfx={1, 1, 16}, gfy={""}, gfz={"addAll", "", "T", "", "elements", "", "(Ljava/util/Collection;[Ljava/lang/Object;)Z", "", "Lkotlin/sequences/Sequence;", "filterInPlace", "", "predicate", "Lkotlin/Function1;", "predicateResultToRemove", "filterInPlace$CollectionsKt__MutableCollectionsKt", "", "minusAssign", "", "element", "(Ljava/util/Collection;Ljava/lang/Object;)V", "(Ljava/util/Collection;[Ljava/lang/Object;)V", "plusAssign", "remove", "Lkotlin/internal/OnlyInputTypes;", "(Ljava/util/Collection;Ljava/lang/Object;)Z", "index", "", "(Ljava/util/List;I)Ljava/lang/Object;", "removeAll", "", "removeFirst", "(Ljava/util/List;)Ljava/lang/Object;", "removeFirstOrNull", "removeLast", "removeLastOrNull", "retainAll", "retainNothing", "retainNothing$CollectionsKt__MutableCollectionsKt", "shuffle", "random", "Lkotlin/random/Random;", "shuffled", "", "kotlin-stdlib"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"addAll", "", "T", "", "elements", "", "(Ljava/util/Collection;[Ljava/lang/Object;)Z", "", "Lkotlin/sequences/Sequence;", "filterInPlace", "", "predicate", "Lkotlin/Function1;", "predicateResultToRemove", "filterInPlace$CollectionsKt__MutableCollectionsKt", "", "minusAssign", "", "element", "(Ljava/util/Collection;Ljava/lang/Object;)V", "(Ljava/util/Collection;[Ljava/lang/Object;)V", "plusAssign", "remove", "Lkotlin/internal/OnlyInputTypes;", "(Ljava/util/Collection;Ljava/lang/Object;)Z", "index", "", "(Ljava/util/List;I)Ljava/lang/Object;", "removeAll", "", "removeFirst", "(Ljava/util/List;)Ljava/lang/Object;", "removeFirstOrNull", "removeLast", "removeLastOrNull", "retainAll", "retainNothing", "retainNothing$CollectionsKt__MutableCollectionsKt", "shuffle", "random", "Lkotlin/random/Random;", "shuffled", "", "kotlin-stdlib"}, gkc=1)
 public class q
   extends p
 {
   public static final <T> boolean a(Iterable<? extends T> paramIterable, b<? super T, Boolean> paramb)
   {
-    AppMethodBeat.i(199614);
+    AppMethodBeat.i(188706);
     d.g.b.p.h(paramIterable, "$this$removeAll");
     d.g.b.p.h(paramb, "predicate");
     boolean bool = a(paramIterable, paramb, true);
-    AppMethodBeat.o(199614);
+    AppMethodBeat.o(188706);
     return bool;
   }
   
@@ -78,17 +78,17 @@ public class q
     return bool;
   }
   
-  public static final <T> boolean b(List<T> paramList, b<? super T, Boolean> paramb)
+  public static final <T> boolean c(List<T> paramList, b<? super T, Boolean> paramb)
   {
     AppMethodBeat.i(129122);
     d.g.b.p.h(paramList, "$this$removeAll");
     d.g.b.p.h(paramb, "predicate");
-    boolean bool = c(paramList, paramb);
+    boolean bool = d(paramList, paramb);
     AppMethodBeat.o(129122);
     return bool;
   }
   
-  private static final <T> boolean c(List<T> paramList, b<? super T, Boolean> paramb)
+  private static final <T> boolean d(List<T> paramList, b<? super T, Boolean> paramb)
   {
     AppMethodBeat.i(129123);
     if (!(paramList instanceof RandomAccess))
@@ -99,11 +99,11 @@ public class q
         AppMethodBeat.o(129123);
         throw paramList;
       }
-      boolean bool = a(ae.eP(paramList), paramb, true);
+      boolean bool = a(ae.eS(paramList), paramb, true);
       AppMethodBeat.o(129123);
       return bool;
     }
-    int m = j.ja(paramList);
+    int m = j.jj(paramList);
     int i;
     if (m >= 0)
     {
@@ -129,7 +129,7 @@ public class q
     int j = 0;
     if (j < paramList.size())
     {
-      i = j.ja(paramList);
+      i = j.jj(paramList);
       if (i >= j) {
         for (;;)
         {

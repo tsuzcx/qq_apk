@@ -11,9 +11,9 @@ public abstract interface i
   
   public abstract void aZ(View paramView);
   
-  public abstract View.OnClickListener egV();
+  public abstract View.OnClickListener ekD();
   
-  public abstract void fe(String paramString, int paramInt);
+  public abstract void fn(String paramString, int paramInt);
   
   public abstract void setOnClickListener(View.OnClickListener paramOnClickListener);
   

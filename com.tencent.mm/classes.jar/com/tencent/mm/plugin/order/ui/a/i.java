@@ -12,31 +12,31 @@ public final class i
   extends Preference
 {
   private View mView;
-  private int wFi;
-  String wFj;
+  private int wUT;
+  String wUU;
   
   public i(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(66827);
     this.mView = null;
-    this.wFi = 2147483647;
+    this.wUT = 2147483647;
     setLayoutResource(2131494713);
     AppMethodBeat.o(66827);
   }
   
-  public final void auf(String paramString)
+  public final void avu(String paramString)
   {
     AppMethodBeat.i(66830);
     try
     {
-      this.wFi = g.cl(paramString, true);
+      this.wUT = g.cp(paramString, true);
       AppMethodBeat.o(66830);
       return;
     }
     catch (Exception paramString)
     {
-      this.wFi = -1;
+      this.wUT = -1;
       AppMethodBeat.o(66830);
     }
   }
@@ -60,16 +60,16 @@ public final class i
     TextView localTextView = (TextView)paramView.findViewById(2131302044);
     paramView = (TextView)paramView.findViewById(2131302043);
     localTextView.setText(getTitle());
-    paramView.setText(this.wFj);
-    if (this.wFi != 2147483647) {
-      paramView.setTextColor(this.wFi);
+    paramView.setText(this.wUU);
+    if (this.wUT != 2147483647) {
+      paramView.setTextColor(this.wUT);
     }
     AppMethodBeat.o(66829);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.order.ui.a.i
  * JD-Core Version:    0.7.0.1
  */

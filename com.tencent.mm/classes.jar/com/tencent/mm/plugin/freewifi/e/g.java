@@ -1,8 +1,8 @@
 package com.tencent.mm.plugin.freewifi.e;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.plugin.freewifi.a.a;
 import com.tencent.mm.plugin.freewifi.m;
 import com.tencent.mm.plugin.freewifi.model.c;
@@ -12,16 +12,16 @@ import com.tencent.mm.plugin.freewifi.ui.FreeWifiFrontPageUI.a;
 import com.tencent.mm.plugin.freewifi.ui.FreeWifiFrontPageUI.b;
 import com.tencent.mm.plugin.freewifi.ui.FreeWifiFrontPageUI.d;
 import com.tencent.mm.protocal.protobuf.hu;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public final class g
   extends e
   implements a
 {
-  private com.tencent.mm.plugin.freewifi.a tnJ;
-  private int tnK = 5;
+  private com.tencent.mm.plugin.freewifi.a tyB;
+  private int tyC = 5;
   
   public g(FreeWifiFrontPageUI paramFreeWifiFrontPageUI)
   {
@@ -29,7 +29,7 @@ public final class g
   }
   
   /* Error */
-  static String ajU(String paramString)
+  static String akS(String paramString)
   {
     // Byte code:
     //   0: sipush 24890
@@ -69,7 +69,7 @@ public final class g
     //   65: iconst_1
     //   66: aload_2
     //   67: aastore
-    //   68: invokestatic 104	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   68: invokestatic 104	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   71: aload_0
     //   72: ifnull +14 -> 86
     //   75: aload_0
@@ -85,7 +85,7 @@ public final class g
     //   95: ldc 89
     //   97: aload_3
     //   98: invokevirtual 121	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   101: invokestatic 125	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   101: invokestatic 125	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   104: goto -22 -> 82
     //   107: aload_0
     //   108: ifnull +14 -> 122
@@ -102,7 +102,7 @@ public final class g
     //   131: ldc 89
     //   133: aload_2
     //   134: invokevirtual 121	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   137: invokestatic 125	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   137: invokestatic 125	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   140: goto -22 -> 118
     //   143: astore_2
     //   144: aconst_null
@@ -116,7 +116,7 @@ public final class g
     //   156: aload_2
     //   157: invokevirtual 121	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   160: aastore
-    //   161: invokestatic 129	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   161: invokestatic 129	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   164: aload_0
     //   165: ifnull -43 -> 122
     //   168: aload_0
@@ -129,7 +129,7 @@ public final class g
     //   183: ldc 89
     //   185: aload_2
     //   186: invokevirtual 121	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   189: invokestatic 125	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   189: invokestatic 125	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   192: goto -17 -> 175
     //   195: astore_2
     //   196: aconst_null
@@ -149,7 +149,7 @@ public final class g
     //   222: ldc 89
     //   224: aload_3
     //   225: invokevirtual 121	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   228: invokestatic 125	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   228: invokestatic 125	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   231: goto -22 -> 209
     //   234: astore_2
     //   235: goto -37 -> 198
@@ -184,19 +184,19 @@ public final class g
     //   25	71	242	java/lang/Exception
   }
   
-  private void cRW()
+  private void cUB()
   {
     AppMethodBeat.i(24888);
-    this.tnD.a(FreeWifiFrontPageUI.d.tpW, FreeWifiFrontPageUI.a.tpS);
+    this.tyv.a(FreeWifiFrontPageUI.d.tAN, FreeWifiFrontPageUI.a.tAJ);
     AppMethodBeat.o(24888);
   }
   
-  static String gJ(String paramString1, String paramString2)
+  static String gO(String paramString1, String paramString2)
   {
     AppMethodBeat.i(24889);
-    if (bt.isNullOrNil(paramString1))
+    if (bu.isNullOrNil(paramString1))
     {
-      ad.e("MicroMsg.FreeWifi.ProtocolOne", "null or nil header");
+      ae.e("MicroMsg.FreeWifi.ProtocolOne", "null or nil header");
       AppMethodBeat.o(24889);
       return null;
     }
@@ -230,7 +230,7 @@ public final class g
   public final void connect()
   {
     AppMethodBeat.i(24887);
-    j.cRC().cRl().post(new Runnable()
+    j.cUh().cTQ().post(new Runnable()
     {
       public final void run()
       {
@@ -244,7 +244,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.freewifi.e.g
  * JD-Core Version:    0.7.0.1
  */

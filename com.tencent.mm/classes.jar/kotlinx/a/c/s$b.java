@@ -6,18 +6,18 @@ import d.g.b.q;
 import d.l;
 import java.util.Map.Entry;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "<name for destructuring parameter 0>", "", "Lkotlinx/serialization/json/JsonElement;", "invoke"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "<name for destructuring parameter 0>", "", "Lkotlinx/serialization/json/JsonElement;", "invoke"})
 final class s$b
   extends q
   implements b<Map.Entry<? extends String, ? extends f>, String>
 {
-  public static final b NNW;
+  public static final b Olc;
   
   static
   {
-    AppMethodBeat.i(191396);
-    NNW = new b();
-    AppMethodBeat.o(191396);
+    AppMethodBeat.i(199984);
+    Olc = new b();
+    AppMethodBeat.o(199984);
   }
   
   s$b()

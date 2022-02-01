@@ -21,7 +21,7 @@ final class c
       localHashMap.put("data", paramJSONObject);
     }
     localHashMap.put("keepCallback", Boolean.valueOf(paramBoolean));
-    c(localHashMap);
+    j(localHashMap);
     AppMethodBeat.o(140315);
   }
 }

@@ -7,15 +7,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.widget.imageview.WeImageView;
 
 public class LanguagePreference
   extends Preference
 {
-  public a jkl;
+  public a jne;
   
   public LanguagePreference(Context paramContext)
   {
@@ -38,14 +38,14 @@ public class LanguagePreference
   public final void a(a parama)
   {
     AppMethodBeat.i(128056);
-    if ((parama == null) || (bt.isNullOrNil(parama.jko)))
+    if ((parama == null) || (bu.isNullOrNil(parama.jnh)))
     {
-      ad.e("MicroMsg.LanguagePreference", "setInfo info error");
+      ae.e("MicroMsg.LanguagePreference", "setInfo info error");
       AppMethodBeat.o(128056);
       return;
     }
-    this.jkl = parama;
-    setKey(parama.jko);
+    this.jne = parama;
+    setKey(parama.jnh);
     AppMethodBeat.o(128056);
   }
   
@@ -65,8 +65,8 @@ public class LanguagePreference
       label44:
       if ((j & i) != 0)
       {
-        localTextView.setText(this.jkl.jkm);
-        if (!this.jkl.isSelected) {
+        localTextView.setText(this.jne.jnf);
+        if (!this.jne.isSelected) {
           break label101;
         }
       }
@@ -76,7 +76,7 @@ public class LanguagePreference
     for (int i = 0;; i = 8)
     {
       paramView.setVisibility(i);
-      acw(8);
+      ade(8);
       AppMethodBeat.o(128058);
       return;
       i = 0;
@@ -101,15 +101,15 @@ public class LanguagePreference
   public static final class a
   {
     public boolean isSelected;
-    String jkm;
-    private String jkn;
-    public String jko;
+    String jnf;
+    private String jng;
+    public String jnh;
     
     public a(String paramString1, String paramString2, String paramString3, boolean paramBoolean)
     {
-      this.jkm = paramString1;
-      this.jkn = paramString2;
-      this.jko = paramString3;
+      this.jnf = paramString1;
+      this.jng = paramString2;
+      this.jnh = paramString3;
       this.isSelected = paramBoolean;
     }
   }

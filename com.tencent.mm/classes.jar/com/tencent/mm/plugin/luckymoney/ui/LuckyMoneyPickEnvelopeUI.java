@@ -8,8 +8,6 @@ import android.content.DialogInterface.OnCancelListener;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.content.res.Resources;
-import android.net.Uri;
-import android.net.Uri.Builder;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
@@ -28,20 +26,20 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.ql;
-import com.tencent.mm.model.u;
+import com.tencent.mm.g.a.qm;
+import com.tencent.mm.model.v;
 import com.tencent.mm.plugin.luckymoney.scaledLayout.ScaleLayoutManager;
 import com.tencent.mm.plugin.luckymoney.scaledLayout.ViewPagerLayoutManager;
 import com.tencent.mm.pluginsdk.ui.a.b;
 import com.tencent.mm.pluginsdk.ui.span.k;
-import com.tencent.mm.protocal.protobuf.aay;
-import com.tencent.mm.protocal.protobuf.bip;
-import com.tencent.mm.protocal.protobuf.bnu;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.al.a;
+import com.tencent.mm.protocal.protobuf.abh;
+import com.tencent.mm.protocal.protobuf.bjf;
+import com.tencent.mm.protocal.protobuf.bom;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.aj;
+import com.tencent.mm.storage.am.a;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.al;
 import com.tencent.mm.ui.base.h;
@@ -65,54 +63,54 @@ public class LuckyMoneyPickEnvelopeUI
   private boolean isLoading;
   private String sessionId;
   private Dialog tipDialog;
-  private int vkm;
-  private View vqW;
-  private String vzA;
-  private com.tencent.mm.plugin.luckymoney.scaledLayout.a vzB;
-  private TextView vzC;
-  private LinkedList<String> vzD;
-  private RecyclerView.m vzE;
-  private boolean vzF;
-  private Boolean vzG;
-  private String vzH;
-  private String vzI;
-  private com.tencent.mm.sdk.b.c<ql> vzJ;
-  private boolean vzK;
-  private LuckyMoneyEnvelopeTouchRecyclerView vzt;
-  private a vzu;
-  private ScaleLayoutManager vzv;
-  private List<b> vzw;
-  private int vzx;
-  private int vzy;
-  private boolean vzz;
+  private View vDb;
+  private List<b> vLA;
+  private int vLB;
+  private int vLC;
+  private boolean vLD;
+  private String vLE;
+  private com.tencent.mm.plugin.luckymoney.scaledLayout.a vLF;
+  private TextView vLG;
+  private LinkedList<String> vLH;
+  private RecyclerView.m vLI;
+  private boolean vLJ;
+  private Boolean vLK;
+  private String vLL;
+  private String vLM;
+  private com.tencent.mm.sdk.b.c<qm> vLN;
+  private boolean vLO;
+  private LuckyMoneyEnvelopeTouchRecyclerView vLx;
+  private a vLy;
+  private ScaleLayoutManager vLz;
+  private int vwr;
   
   public LuckyMoneyPickEnvelopeUI()
   {
     AppMethodBeat.i(65813);
-    this.vzw = new ArrayList();
-    this.vzx = -1;
-    this.vzy = -1;
-    this.vzz = false;
+    this.vLA = new ArrayList();
+    this.vLB = -1;
+    this.vLC = -1;
+    this.vLD = false;
     this.isLoading = false;
-    this.vkm = 0;
-    this.vzF = true;
-    this.vzJ = new com.tencent.mm.sdk.b.c() {};
-    this.vzK = false;
+    this.vwr = 0;
+    this.vLJ = true;
+    this.vLN = new com.tencent.mm.sdk.b.c() {};
+    this.vLO = false;
     AppMethodBeat.o(65813);
   }
   
-  private void a(bip parambip)
+  private void a(bjf parambjf)
   {
     AppMethodBeat.i(65818);
-    ad.i("MicroMsg.LuckyMoneyPickEnvelopeUI", "try show illegal msg");
-    if (bt.isNullOrNil(parambip.vnL))
+    ae.i("MicroMsg.LuckyMoneyPickEnvelopeUI", "try show illegal msg");
+    if (bu.isNullOrNil(parambjf.vzQ))
     {
       AppMethodBeat.o(65818);
       return;
     }
-    ArrayList localArrayList = new ArrayList(bt.lO((String)com.tencent.mm.kernel.g.ajC().ajl().get(al.a.ICw, ""), ","));
-    this.vzD = parambip.GDn;
-    Iterator localIterator = this.vzD.iterator();
+    ArrayList localArrayList = new ArrayList(bu.lV((String)com.tencent.mm.kernel.g.ajR().ajA().get(am.a.IWW, ""), ","));
+    this.vLH = parambjf.GWN;
+    Iterator localIterator = this.vLH.iterator();
     int i = 0;
     if (localIterator.hasNext())
     {
@@ -121,7 +119,7 @@ public class LuckyMoneyPickEnvelopeUI
         break label200;
       }
       localArrayList.add(str);
-      ad.i("MicroMsg.LuckyMoneyPickEnvelopeUI", "show illegal id: %s", new Object[] { str });
+      ae.i("MicroMsg.LuckyMoneyPickEnvelopeUI", "show illegal id: %s", new Object[] { str });
       i = 1;
     }
     label200:
@@ -130,8 +128,8 @@ public class LuckyMoneyPickEnvelopeUI
       break;
       if (i != 0)
       {
-        com.tencent.mm.kernel.g.ajC().ajl().set(al.a.ICw, bt.m(localArrayList, ","));
-        h.a(this, parambip.vnL, "", getString(2131755793), false, new DialogInterface.OnClickListener()
+        com.tencent.mm.kernel.g.ajR().ajA().set(am.a.IWW, bu.m(localArrayList, ","));
+        h.a(this, parambjf.vzQ, "", getString(2131755793), false, new DialogInterface.OnClickListener()
         {
           public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt) {}
         });
@@ -141,54 +139,54 @@ public class LuckyMoneyPickEnvelopeUI
     }
   }
   
-  private void a(bip parambip, boolean paramBoolean)
+  private void a(bjf parambjf, boolean paramBoolean)
   {
-    AppMethodBeat.i(199021);
-    ad.i("MicroMsg.LuckyMoneyPickEnvelopeUI", "update by resp");
+    AppMethodBeat.i(189856);
+    ae.i("MicroMsg.LuckyMoneyPickEnvelopeUI", "update by resp");
     boolean bool;
-    if (parambip.GDo == 1)
+    if (parambjf.GWO == 1)
     {
       bool = true;
-      this.vzz = bool;
-      a(parambip);
-      if (parambip.GDk != null)
+      this.vLD = bool;
+      a(parambjf);
+      if (parambjf.GWK != null)
       {
-        if (!parambip.GDk.isEmpty()) {
+        if (!parambjf.GWK.isEmpty()) {
           break label97;
         }
         this.GG.setVisibility(0);
-        this.vzt.setVisibility(8);
+        this.vLx.setVisibility(8);
       }
     }
     for (;;)
     {
-      this.vzu.asY.notifyChanged();
-      cJW();
-      AppMethodBeat.o(199021);
+      this.vLy.asY.notifyChanged();
+      cMz();
+      AppMethodBeat.o(189856);
       return;
       bool = false;
       break;
       label97:
-      ad.i("MicroMsg.LuckyMoneyPickEnvelopeUI", "list size: %s", new Object[] { Integer.valueOf(parambip.GDk.size()) });
-      if (!bt.isNullOrNil(this.vzI)) {}
+      ae.i("MicroMsg.LuckyMoneyPickEnvelopeUI", "list size: %s", new Object[] { Integer.valueOf(parambjf.GWK.size()) });
+      if (!bu.isNullOrNil(this.vLM)) {}
       int i;
       int j;
-      bnu localbnu;
+      bom localbom;
       b localb;
       int n;
       int k;
       for (int m = 1;; m = 0)
       {
-        parambip = parambip.GDk.iterator();
+        parambjf = parambjf.GWK.iterator();
         i = 0;
         for (j = -1;; j = n)
         {
-          if (!parambip.hasNext()) {
+          if (!parambjf.hasNext()) {
             break label370;
           }
-          localbnu = (bnu)parambip.next();
+          localbom = (bom)parambjf.next();
           localb = new b((byte)0);
-          localb.vqP = localbnu;
+          localb.vCU = localbom;
           n = j;
           if (paramBoolean)
           {
@@ -196,34 +194,34 @@ public class LuckyMoneyPickEnvelopeUI
               break;
             }
             k = j;
-            if (localbnu.Gat.equals(this.vzI))
+            if (localbom.Gta.equals(this.vLM))
             {
-              localb.oBZ = true;
+              localb.oIB = true;
               k = j;
             }
             n = k;
-            if (localb.oBZ)
+            if (localb.oIB)
             {
-              this.vzx = i;
+              this.vLB = i;
               n = k;
             }
           }
-          this.vzw.add(localb);
+          this.vLA.add(localb);
           i += 1;
         }
       }
-      if ((localbnu.GIb != 1) && (localbnu.FHA != 1) && (!ape(localbnu.Gat)))
+      if ((localbom.HbD != 1) && (localbom.FZW != 1) && (!aqj(localbom.Gta)))
       {
         n = 1;
         label310:
-        if ((localbnu.GIc != 1) || (n == 0)) {
+        if ((localbom.HbE != 1) || (n == 0)) {
           break label364;
         }
       }
       label364:
       for (bool = true;; bool = false)
       {
-        localb.oBZ = bool;
+        localb.oIB = bool;
         k = j;
         if (j >= 0) {
           break;
@@ -238,28 +236,28 @@ public class LuckyMoneyPickEnvelopeUI
         break label310;
       }
       label370:
-      if (this.vzx < 0)
+      if (this.vLB < 0)
       {
-        this.vzx = j;
-        ((b)this.vzw.get(this.vzx)).oBZ = true;
+        this.vLB = j;
+        ((b)this.vLA.get(this.vLB)).oIB = true;
       }
-      if (this.vzF)
+      if (this.vLJ)
       {
-        this.vzF = false;
-        this.vzy = this.vzx;
-        if (this.vzy >= 0) {
-          this.vzH = ((b)this.vzw.get(this.vzy)).vqP.Gat;
+        this.vLJ = false;
+        this.vLC = this.vLB;
+        if (this.vLC >= 0) {
+          this.vLL = ((b)this.vLA.get(this.vLC)).vCU.Gta;
         }
       }
     }
   }
   
-  private boolean ape(String paramString)
+  private boolean aqj(String paramString)
   {
     AppMethodBeat.i(163789);
-    if ((this.vzD != null) && (!this.vzD.isEmpty()))
+    if ((this.vLH != null) && (!this.vLH.isEmpty()))
     {
-      Iterator localIterator = this.vzD.iterator();
+      Iterator localIterator = this.vLH.iterator();
       while (localIterator.hasNext()) {
         if (((String)localIterator.next()).equals(paramString))
         {
@@ -272,10 +270,10 @@ public class LuckyMoneyPickEnvelopeUI
     return false;
   }
   
-  private void cJW()
+  private void cMz()
   {
     AppMethodBeat.i(163792);
-    if (this.vzx == -1)
+    if (this.vLB == -1)
     {
       enableOptionMenu(1, false);
       AppMethodBeat.o(163792);
@@ -285,7 +283,7 @@ public class LuckyMoneyPickEnvelopeUI
     AppMethodBeat.o(163792);
   }
   
-  private void djB()
+  private void dmA()
   {
     AppMethodBeat.i(163791);
     Runnable local2 = new Runnable()
@@ -297,10 +295,10 @@ public class LuckyMoneyPickEnvelopeUI
         int i;
         if ((LuckyMoneyPickEnvelopeUI.a(LuckyMoneyPickEnvelopeUI.this) >= 0) && (LuckyMoneyPickEnvelopeUI.a(LuckyMoneyPickEnvelopeUI.this) < LuckyMoneyPickEnvelopeUI.o(LuckyMoneyPickEnvelopeUI.this).getItemCount()))
         {
-          ad.i("MicroMsg.LuckyMoneyPickEnvelopeUI", "scroll to pos: %s", new Object[] { Integer.valueOf(LuckyMoneyPickEnvelopeUI.a(LuckyMoneyPickEnvelopeUI.this)) });
+          ae.i("MicroMsg.LuckyMoneyPickEnvelopeUI", "scroll to pos: %s", new Object[] { Integer.valueOf(LuckyMoneyPickEnvelopeUI.a(LuckyMoneyPickEnvelopeUI.this)) });
           localLuckyMoneyEnvelopeTouchRecyclerView = LuckyMoneyPickEnvelopeUI.p(LuckyMoneyPickEnvelopeUI.this);
           ScaleLayoutManager localScaleLayoutManager = LuckyMoneyPickEnvelopeUI.f(LuckyMoneyPickEnvelopeUI.this);
-          i = localScaleLayoutManager.wR(LuckyMoneyPickEnvelopeUI.a(LuckyMoneyPickEnvelopeUI.this));
+          i = localScaleLayoutManager.wW(LuckyMoneyPickEnvelopeUI.a(LuckyMoneyPickEnvelopeUI.this));
           if (localScaleLayoutManager.mOrientation == 1) {
             localLuckyMoneyEnvelopeTouchRecyclerView.scrollBy(0, i);
           }
@@ -308,7 +306,7 @@ public class LuckyMoneyPickEnvelopeUI
         else
         {
           Math.max(LuckyMoneyPickEnvelopeUI.a(LuckyMoneyPickEnvelopeUI.this), 0);
-          LuckyMoneyPickEnvelopeUI.djC();
+          LuckyMoneyPickEnvelopeUI.dmB();
           if (LuckyMoneyPickEnvelopeUI.q(LuckyMoneyPickEnvelopeUI.this) != null) {
             break label174;
           }
@@ -319,31 +317,31 @@ public class LuckyMoneyPickEnvelopeUI
               AppMethodBeat.i(163766);
               com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
               localb.bd(paramAnonymous2RecyclerView);
-              localb.mr(paramAnonymous2Int1);
-              localb.mr(paramAnonymous2Int2);
-              com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/luckymoney/ui/LuckyMoneyPickEnvelopeUI$10$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroid/support/v7/widget/RecyclerView;II)V", this, localb.ahq());
+              localb.mu(paramAnonymous2Int1);
+              localb.mu(paramAnonymous2Int2);
+              com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/luckymoney/ui/LuckyMoneyPickEnvelopeUI$10$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroid/support/v7/widget/RecyclerView;II)V", this, localb.ahF());
               super.a(paramAnonymous2RecyclerView, paramAnonymous2Int1, paramAnonymous2Int2);
               paramAnonymous2Int1 = LuckyMoneyPickEnvelopeUI.f(LuckyMoneyPickEnvelopeUI.this).ko();
-              ad.v("MicroMsg.LuckyMoneyPickEnvelopeUI", "scroll last vispos: %s", new Object[] { Integer.valueOf(paramAnonymous2Int1) });
+              ae.v("MicroMsg.LuckyMoneyPickEnvelopeUI", "scroll last vispos: %s", new Object[] { Integer.valueOf(paramAnonymous2Int1) });
               if ((!LuckyMoneyPickEnvelopeUI.u(LuckyMoneyPickEnvelopeUI.this)) && (LuckyMoneyPickEnvelopeUI.l(LuckyMoneyPickEnvelopeUI.this) == 1) && (paramAnonymous2Int1 == LuckyMoneyPickEnvelopeUI.o(LuckyMoneyPickEnvelopeUI.this).getItemCount() - 1))
               {
-                ad.d("MicroMsg.LuckyMoneyPickEnvelopeUI", "trigger load more: %s", new Object[] { Integer.valueOf(paramAnonymous2Int1) });
+                ae.d("MicroMsg.LuckyMoneyPickEnvelopeUI", "trigger load more: %s", new Object[] { Integer.valueOf(paramAnonymous2Int1) });
                 LuckyMoneyPickEnvelopeUI.a(LuckyMoneyPickEnvelopeUI.this, false);
               }
               LuckyMoneyPickEnvelopeUI.g(LuckyMoneyPickEnvelopeUI.this);
               paramAnonymous2RecyclerView = com.tencent.mm.plugin.luckymoney.scaledLayout.a.h(LuckyMoneyPickEnvelopeUI.f(LuckyMoneyPickEnvelopeUI.this));
               LuckyMoneyPickEnvelopeUI.p(LuckyMoneyPickEnvelopeUI.this);
               paramAnonymous2Int1 = LuckyMoneyEnvelopeTouchRecyclerView.bw(paramAnonymous2RecyclerView);
-              LuckyMoneyPickEnvelopeUI.djD();
+              LuckyMoneyPickEnvelopeUI.dmC();
               if ((paramAnonymous2Int1 != LuckyMoneyPickEnvelopeUI.a(LuckyMoneyPickEnvelopeUI.this)) && (paramAnonymous2Int1 >= 0) && (paramAnonymous2Int1 < LuckyMoneyPickEnvelopeUI.b(LuckyMoneyPickEnvelopeUI.this).size()))
               {
                 paramAnonymous2RecyclerView = (LuckyMoneyPickEnvelopeUI.b)LuckyMoneyPickEnvelopeUI.b(LuckyMoneyPickEnvelopeUI.this).get(paramAnonymous2Int1);
-                if ((paramAnonymous2RecyclerView.vqP != null) && ((paramAnonymous2RecyclerView.vqP.GIb == 1) || (paramAnonymous2RecyclerView.vqP.FHA == 1)))
+                if ((paramAnonymous2RecyclerView.vCU != null) && ((paramAnonymous2RecyclerView.vCU.HbD == 1) || (paramAnonymous2RecyclerView.vCU.FZW == 1)))
                 {
-                  ad.i("MicroMsg.LuckyMoneyPickEnvelopeUI", "expired: %s", new Object[] { Integer.valueOf(paramAnonymous2Int1) });
+                  ae.i("MicroMsg.LuckyMoneyPickEnvelopeUI", "expired: %s", new Object[] { Integer.valueOf(paramAnonymous2Int1) });
                   if (LuckyMoneyPickEnvelopeUI.a(LuckyMoneyPickEnvelopeUI.this) >= 0)
                   {
-                    ((LuckyMoneyPickEnvelopeUI.b)LuckyMoneyPickEnvelopeUI.b(LuckyMoneyPickEnvelopeUI.this).get(LuckyMoneyPickEnvelopeUI.a(LuckyMoneyPickEnvelopeUI.this))).oBZ = false;
+                    ((LuckyMoneyPickEnvelopeUI.b)LuckyMoneyPickEnvelopeUI.b(LuckyMoneyPickEnvelopeUI.this).get(LuckyMoneyPickEnvelopeUI.a(LuckyMoneyPickEnvelopeUI.this))).oIB = false;
                     LuckyMoneyPickEnvelopeUI.a(LuckyMoneyPickEnvelopeUI.this, LuckyMoneyPickEnvelopeUI.a(LuckyMoneyPickEnvelopeUI.this), false);
                     LuckyMoneyPickEnvelopeUI.b(LuckyMoneyPickEnvelopeUI.this, -1);
                   }
@@ -351,17 +349,17 @@ public class LuckyMoneyPickEnvelopeUI
                   AppMethodBeat.o(163766);
                   return;
                 }
-                if (paramAnonymous2RecyclerView.oBZ) {
+                if (paramAnonymous2RecyclerView.oIB) {
                   break label556;
                 }
-                ad.i("MicroMsg.LuckyMoneyPickEnvelopeUI", "do select pos: %s", new Object[] { Integer.valueOf(paramAnonymous2Int1) });
+                ae.i("MicroMsg.LuckyMoneyPickEnvelopeUI", "do select pos: %s", new Object[] { Integer.valueOf(paramAnonymous2Int1) });
                 if (LuckyMoneyPickEnvelopeUI.a(LuckyMoneyPickEnvelopeUI.this) >= 0)
                 {
-                  ((LuckyMoneyPickEnvelopeUI.b)LuckyMoneyPickEnvelopeUI.b(LuckyMoneyPickEnvelopeUI.this).get(LuckyMoneyPickEnvelopeUI.a(LuckyMoneyPickEnvelopeUI.this))).oBZ = false;
+                  ((LuckyMoneyPickEnvelopeUI.b)LuckyMoneyPickEnvelopeUI.b(LuckyMoneyPickEnvelopeUI.this).get(LuckyMoneyPickEnvelopeUI.a(LuckyMoneyPickEnvelopeUI.this))).oIB = false;
                   paramAnonymous2Int2 = LuckyMoneyPickEnvelopeUI.a(LuckyMoneyPickEnvelopeUI.this);
                   LuckyMoneyPickEnvelopeUI.a(LuckyMoneyPickEnvelopeUI.this, paramAnonymous2Int2, false);
                 }
-                paramAnonymous2RecyclerView.oBZ = true;
+                paramAnonymous2RecyclerView.oIB = true;
                 LuckyMoneyPickEnvelopeUI.b(LuckyMoneyPickEnvelopeUI.this, paramAnonymous2Int1);
                 LuckyMoneyPickEnvelopeUI.a(LuckyMoneyPickEnvelopeUI.this, LuckyMoneyPickEnvelopeUI.a(LuckyMoneyPickEnvelopeUI.this), true);
               }
@@ -371,7 +369,7 @@ public class LuckyMoneyPickEnvelopeUI
                 AppMethodBeat.o(163766);
                 return;
                 label556:
-                paramAnonymous2RecyclerView.oBZ = false;
+                paramAnonymous2RecyclerView.oIB = false;
                 LuckyMoneyPickEnvelopeUI.b(LuckyMoneyPickEnvelopeUI.this, -1);
               }
             }
@@ -381,16 +379,16 @@ public class LuckyMoneyPickEnvelopeUI
               AppMethodBeat.i(163765);
               com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
               localb.bd(paramAnonymous2RecyclerView);
-              localb.mr(paramAnonymous2Int);
-              com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/luckymoney/ui/LuckyMoneyPickEnvelopeUI$10$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroid/support/v7/widget/RecyclerView;I)V", this, localb.ahq());
+              localb.mu(paramAnonymous2Int);
+              com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/luckymoney/ui/LuckyMoneyPickEnvelopeUI$10$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroid/support/v7/widget/RecyclerView;I)V", this, localb.ahF());
               super.b(paramAnonymous2RecyclerView, paramAnonymous2Int);
-              ad.d("MicroMsg.LuckyMoneyPickEnvelopeUI", "on scroll changed: %s", new Object[] { Integer.valueOf(paramAnonymous2Int) });
+              ae.d("MicroMsg.LuckyMoneyPickEnvelopeUI", "on scroll changed: %s", new Object[] { Integer.valueOf(paramAnonymous2Int) });
               if (paramAnonymous2Int == 0)
               {
                 if ((!LuckyMoneyPickEnvelopeUI.r(LuckyMoneyPickEnvelopeUI.this)) && (LuckyMoneyPickEnvelopeUI.a(LuckyMoneyPickEnvelopeUI.this) >= 0))
                 {
                   paramAnonymous2RecyclerView = (LuckyMoneyPickEnvelopeUI.b)LuckyMoneyPickEnvelopeUI.b(LuckyMoneyPickEnvelopeUI.this).get(LuckyMoneyPickEnvelopeUI.a(LuckyMoneyPickEnvelopeUI.this));
-                  com.tencent.mm.plugin.report.service.g.yhR.f(19272, new Object[] { Integer.valueOf(1), LuckyMoneyPickEnvelopeUI.d(LuckyMoneyPickEnvelopeUI.this), paramAnonymous2RecyclerView.vqP.Gat });
+                  com.tencent.mm.plugin.report.service.g.yxI.f(19272, new Object[] { Integer.valueOf(1), LuckyMoneyPickEnvelopeUI.d(LuckyMoneyPickEnvelopeUI.this), paramAnonymous2RecyclerView.vCU.Gta });
                   LuckyMoneyPickEnvelopeUI.s(LuckyMoneyPickEnvelopeUI.this);
                 }
                 LuckyMoneyPickEnvelopeUI.t(LuckyMoneyPickEnvelopeUI.this);
@@ -412,24 +410,24 @@ public class LuckyMoneyPickEnvelopeUI
         }
       }
     };
-    this.vzt.post(local2);
+    this.vLx.post(local2);
     AppMethodBeat.o(163791);
   }
   
-  private void oc(final boolean paramBoolean)
+  private void oh(final boolean paramBoolean)
   {
     AppMethodBeat.i(163790);
-    ad.i("MicroMsg.LuckyMoneyPickEnvelopeUI", "do get show source: %s, %s", new Object[] { Boolean.valueOf(paramBoolean), this.vzA });
+    ae.i("MicroMsg.LuckyMoneyPickEnvelopeUI", "do get show source: %s, %s", new Object[] { Boolean.valueOf(paramBoolean), this.vLE });
     if (paramBoolean) {
-      this.vzA = "";
+      this.vLE = "";
     }
     this.tipDialog = h.a(getContext(), 3, 2131820985, getString(2131760709), false, new DialogInterface.OnCancelListener()
     {
       public final void onCancel(DialogInterface paramAnonymousDialogInterface) {}
     });
     this.isLoading = true;
-    com.tencent.mm.plugin.luckymoney.model.g localg = com.tencent.mm.plugin.luckymoney.model.g.dig();
-    localg.b(new com.tencent.mm.plugin.luckymoney.model.c(this.vzA));
+    com.tencent.mm.plugin.luckymoney.model.g localg = com.tencent.mm.plugin.luckymoney.model.g.dlf();
+    localg.b(new com.tencent.mm.plugin.luckymoney.model.c(this.vLE));
     localg.a(new com.tencent.mm.wallet_core.c.a.a() {}, 0L);
     AppMethodBeat.o(163790);
   }
@@ -442,36 +440,36 @@ public class LuckyMoneyPickEnvelopeUI
   public void initView()
   {
     AppMethodBeat.i(65815);
-    this.vzt = ((LuckyMoneyEnvelopeTouchRecyclerView)findViewById(2131301483));
+    this.vLx = ((LuckyMoneyEnvelopeTouchRecyclerView)findViewById(2131301483));
     this.GG = findViewById(2131301481);
-    this.vzC = ((TextView)findViewById(2131301482));
-    this.vzu = new a((byte)0);
-    this.vzu.av(true);
-    this.vzt.setAdapter(this.vzu);
-    this.vzt.setItemAnimator(null);
-    this.vzt.setItemViewCacheSize(-1);
-    this.vzv = new ScaleLayoutManager(this)
+    this.vLG = ((TextView)findViewById(2131301482));
+    this.vLy = new a((byte)0);
+    this.vLy.av(true);
+    this.vLx.setAdapter(this.vLy);
+    this.vLx.setItemAnimator(null);
+    this.vLx.setItemViewCacheSize(-1);
+    this.vLz = new ScaleLayoutManager(this)
     {
-      public final void div()
+      public final void dlu()
       {
         AppMethodBeat.i(65792);
-        super.div();
-        this.vrp -= 31.0F;
+        super.dlu();
+        this.vDu -= 31.0F;
         AppMethodBeat.o(65792);
       }
     };
-    Object localObject = this.vzv;
+    Object localObject = this.vLz;
     ((ScaleLayoutManager)localObject).F(null);
     if (((ScaleLayoutManager)localObject).aXF != 0.8F)
     {
       ((ScaleLayoutManager)localObject).aXF = 0.8F;
       ((ScaleLayoutManager)localObject).removeAllViews();
     }
-    this.vzt.setLayoutManager(this.vzv);
-    this.vzB = new com.tencent.mm.plugin.luckymoney.scaledLayout.a();
-    this.vzB.context = this;
-    this.vzB.j(this.vzt);
-    this.vzt.vxk = new LuckyMoneyEnvelopeTouchRecyclerView.a()
+    this.vLx.setLayoutManager(this.vLz);
+    this.vLF = new com.tencent.mm.plugin.luckymoney.scaledLayout.a();
+    this.vLF.context = this;
+    this.vLF.j(this.vLx);
+    this.vLx.vJo = new LuckyMoneyEnvelopeTouchRecyclerView.a()
     {
       public final boolean onInterceptTouchEvent(MotionEvent paramAnonymousMotionEvent)
       {
@@ -481,49 +479,23 @@ public class LuckyMoneyPickEnvelopeUI
           paramAnonymousMotionEvent = LuckyMoneyPickEnvelopeUI.this;
           LuckyMoneyPickEnvelopeUI.g(LuckyMoneyPickEnvelopeUI.this);
           LuckyMoneyPickEnvelopeUI.a(paramAnonymousMotionEvent, com.tencent.mm.plugin.luckymoney.scaledLayout.a.h(LuckyMoneyPickEnvelopeUI.f(LuckyMoneyPickEnvelopeUI.this)));
-          LuckyMoneyPickEnvelopeUI.g(LuckyMoneyPickEnvelopeUI.this).vqW = LuckyMoneyPickEnvelopeUI.h(LuckyMoneyPickEnvelopeUI.this);
+          LuckyMoneyPickEnvelopeUI.g(LuckyMoneyPickEnvelopeUI.this).vDb = LuckyMoneyPickEnvelopeUI.h(LuckyMoneyPickEnvelopeUI.this);
         }
         AppMethodBeat.o(65793);
         return false;
       }
     };
-    localObject = getIntent().getStringExtra(e.g.IUz);
-    final String str = getIntent().getStringExtra(e.g.IUA);
-    if (!bt.isNullOrNil((String)localObject))
+    localObject = getIntent().getStringExtra(e.g.Jph);
+    String str = getIntent().getStringExtra(e.g.Jpi);
+    if (!bu.isNullOrNil((String)localObject))
     {
-      this.vzC.setText((CharSequence)localObject);
-      this.vzC.setVisibility(0);
-      this.vzC.setOnClickListener(new View.OnClickListener()
-      {
-        public final void onClick(View paramAnonymousView)
-        {
-          AppMethodBeat.i(163772);
-          Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-          ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/luckymoney/ui/LuckyMoneyPickEnvelopeUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahq());
-          ad.d("MicroMsg.LuckyMoneyPickEnvelopeUI", "click exchange tv");
-          paramAnonymousView = Uri.parse(str).buildUpon();
-          paramAnonymousView.appendQueryParameter("sessionId", LuckyMoneyPickEnvelopeUI.e(LuckyMoneyPickEnvelopeUI.this));
-          localObject = new Intent();
-          ((Intent)localObject).putExtra("rawUrl", paramAnonymousView.build().toString());
-          ((Intent)localObject).putExtra("showShare", false);
-          ((Intent)localObject).putExtra("KRightBtn", true);
-          com.tencent.mm.wallet_core.ui.e.b(LuckyMoneyPickEnvelopeUI.this.getContext(), (Intent)localObject, 1);
-          paramAnonymousView = com.tencent.mm.plugin.report.service.g.yhR;
-          if (LuckyMoneyPickEnvelopeUI.i(LuckyMoneyPickEnvelopeUI.this).booleanValue()) {}
-          for (int i = 2;; i = 1)
-          {
-            paramAnonymousView.f(18890, new Object[] { Integer.valueOf(3), Integer.valueOf(i), LuckyMoneyPickEnvelopeUI.e(LuckyMoneyPickEnvelopeUI.this) });
-            com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/luckymoney/ui/LuckyMoneyPickEnvelopeUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-            AppMethodBeat.o(163772);
-            return;
-          }
-        }
-      });
+      this.vLG.setText((CharSequence)localObject);
+      this.vLG.setVisibility(0);
+      this.vLG.setOnClickListener(new LuckyMoneyPickEnvelopeUI.10(this, str));
       AppMethodBeat.o(65815);
       return;
     }
-    this.vzC.setVisibility(8);
+    this.vLG.setVisibility(8);
     AppMethodBeat.o(65815);
   }
   
@@ -543,12 +515,12 @@ public class LuckyMoneyPickEnvelopeUI
     setActionbarColor(getContext().getResources().getColor(2131099682));
     initView();
     setMMTitle(2131760932);
-    paramBundle = getIntent().getByteArrayExtra(e.g.IUx);
-    boolean bool = getIntent().getBooleanExtra(e.g.IUy, true);
-    this.vzG = Boolean.valueOf(getIntent().getBooleanExtra(e.g.IUB, false));
+    paramBundle = getIntent().getByteArrayExtra(e.g.Jpf);
+    boolean bool = getIntent().getBooleanExtra(e.g.Jpg, true);
+    this.vLK = Boolean.valueOf(getIntent().getBooleanExtra(e.g.Jpj, false));
     this.sessionId = getIntent().getStringExtra("key_session_id");
-    this.vzI = getIntent().getStringExtra("packetId");
-    ad.i("MicroMsg.LuckyMoneyPickEnvelopeUI", "scroll packageid: %s", new Object[] { this.vzI });
+    this.vLM = getIntent().getStringExtra("packetId");
+    ae.i("MicroMsg.LuckyMoneyPickEnvelopeUI", "scroll packageid: %s", new Object[] { this.vLM });
     if (bool) {
       if (paramBundle == null) {}
     }
@@ -556,13 +528,13 @@ public class LuckyMoneyPickEnvelopeUI
     {
       try
       {
-        paramBundle = (bip)new bip().parseFrom(paramBundle);
-        if (paramBundle.dlw == 0)
+        paramBundle = (bjf)new bjf().parseFrom(paramBundle);
+        if (paramBundle.dmy == 0)
         {
-          this.vzA = paramBundle.GDl;
-          this.vkm = paramBundle.GDm;
+          this.vLE = paramBundle.GWL;
+          this.vwr = paramBundle.GWM;
           a(paramBundle, true);
-          djB();
+          dmA();
           setBackBtn(new MenuItem.OnMenuItemClickListener()
           {
             public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -570,9 +542,9 @@ public class LuckyMoneyPickEnvelopeUI
               AppMethodBeat.i(65787);
               paramAnonymousMenuItem = "";
               if (LuckyMoneyPickEnvelopeUI.a(LuckyMoneyPickEnvelopeUI.this) >= 0) {
-                paramAnonymousMenuItem = ((LuckyMoneyPickEnvelopeUI.b)LuckyMoneyPickEnvelopeUI.b(LuckyMoneyPickEnvelopeUI.this).get(LuckyMoneyPickEnvelopeUI.a(LuckyMoneyPickEnvelopeUI.this))).vqP.Gat;
+                paramAnonymousMenuItem = ((LuckyMoneyPickEnvelopeUI.b)LuckyMoneyPickEnvelopeUI.b(LuckyMoneyPickEnvelopeUI.this).get(LuckyMoneyPickEnvelopeUI.a(LuckyMoneyPickEnvelopeUI.this))).vCU.Gta;
               }
-              com.tencent.mm.plugin.report.service.g.yhR.f(18892, new Object[] { Integer.valueOf(2), Integer.valueOf(LuckyMoneyPickEnvelopeUI.c(LuckyMoneyPickEnvelopeUI.this) + 1), Integer.valueOf(LuckyMoneyPickEnvelopeUI.a(LuckyMoneyPickEnvelopeUI.this) + 1), LuckyMoneyPickEnvelopeUI.d(LuckyMoneyPickEnvelopeUI.this), paramAnonymousMenuItem, LuckyMoneyPickEnvelopeUI.e(LuckyMoneyPickEnvelopeUI.this) });
+              com.tencent.mm.plugin.report.service.g.yxI.f(18892, new Object[] { Integer.valueOf(2), Integer.valueOf(LuckyMoneyPickEnvelopeUI.c(LuckyMoneyPickEnvelopeUI.this) + 1), Integer.valueOf(LuckyMoneyPickEnvelopeUI.a(LuckyMoneyPickEnvelopeUI.this) + 1), LuckyMoneyPickEnvelopeUI.d(LuckyMoneyPickEnvelopeUI.this), paramAnonymousMenuItem, LuckyMoneyPickEnvelopeUI.e(LuckyMoneyPickEnvelopeUI.this) });
               LuckyMoneyPickEnvelopeUI.this.setResult(0);
               LuckyMoneyPickEnvelopeUI.this.finish();
               AppMethodBeat.o(65787);
@@ -584,52 +556,52 @@ public class LuckyMoneyPickEnvelopeUI
             public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
             {
               AppMethodBeat.i(65791);
-              ad.i("MicroMsg.LuckyMoneyPickEnvelopeUI", "click save: %s", new Object[] { Integer.valueOf(LuckyMoneyPickEnvelopeUI.a(LuckyMoneyPickEnvelopeUI.this)) });
+              ae.i("MicroMsg.LuckyMoneyPickEnvelopeUI", "click save: %s", new Object[] { Integer.valueOf(LuckyMoneyPickEnvelopeUI.a(LuckyMoneyPickEnvelopeUI.this)) });
               if ((LuckyMoneyPickEnvelopeUI.a(LuckyMoneyPickEnvelopeUI.this) >= 0) && (LuckyMoneyPickEnvelopeUI.a(LuckyMoneyPickEnvelopeUI.this) < LuckyMoneyPickEnvelopeUI.b(LuckyMoneyPickEnvelopeUI.this).size()))
               {
                 paramAnonymousMenuItem = (LuckyMoneyPickEnvelopeUI.b)LuckyMoneyPickEnvelopeUI.b(LuckyMoneyPickEnvelopeUI.this).get(LuckyMoneyPickEnvelopeUI.a(LuckyMoneyPickEnvelopeUI.this));
-                if ((!paramAnonymousMenuItem.oBZ) || (paramAnonymousMenuItem.vqP == null)) {}
+                if ((!paramAnonymousMenuItem.oIB) || (paramAnonymousMenuItem.vCU == null)) {}
               }
-              for (paramAnonymousMenuItem = paramAnonymousMenuItem.vqP.Gat;; paramAnonymousMenuItem = "0")
+              for (paramAnonymousMenuItem = paramAnonymousMenuItem.vCU.Gta;; paramAnonymousMenuItem = "0")
               {
                 LuckyMoneyPickEnvelopeUI.a(LuckyMoneyPickEnvelopeUI.this, paramAnonymousMenuItem);
-                com.tencent.mm.plugin.report.service.g.yhR.f(16822, new Object[] { Integer.valueOf(3) });
+                com.tencent.mm.plugin.report.service.g.yxI.f(16822, new Object[] { Integer.valueOf(3) });
                 paramAnonymousMenuItem = "";
                 if (LuckyMoneyPickEnvelopeUI.a(LuckyMoneyPickEnvelopeUI.this) >= 0) {
-                  paramAnonymousMenuItem = ((LuckyMoneyPickEnvelopeUI.b)LuckyMoneyPickEnvelopeUI.b(LuckyMoneyPickEnvelopeUI.this).get(LuckyMoneyPickEnvelopeUI.a(LuckyMoneyPickEnvelopeUI.this))).vqP.Gat;
+                  paramAnonymousMenuItem = ((LuckyMoneyPickEnvelopeUI.b)LuckyMoneyPickEnvelopeUI.b(LuckyMoneyPickEnvelopeUI.this).get(LuckyMoneyPickEnvelopeUI.a(LuckyMoneyPickEnvelopeUI.this))).vCU.Gta;
                 }
-                com.tencent.mm.plugin.report.service.g.yhR.f(18892, new Object[] { Integer.valueOf(1), Integer.valueOf(LuckyMoneyPickEnvelopeUI.c(LuckyMoneyPickEnvelopeUI.this) + 1), Integer.valueOf(LuckyMoneyPickEnvelopeUI.a(LuckyMoneyPickEnvelopeUI.this) + 1), LuckyMoneyPickEnvelopeUI.d(LuckyMoneyPickEnvelopeUI.this), paramAnonymousMenuItem, LuckyMoneyPickEnvelopeUI.e(LuckyMoneyPickEnvelopeUI.this) });
+                com.tencent.mm.plugin.report.service.g.yxI.f(18892, new Object[] { Integer.valueOf(1), Integer.valueOf(LuckyMoneyPickEnvelopeUI.c(LuckyMoneyPickEnvelopeUI.this) + 1), Integer.valueOf(LuckyMoneyPickEnvelopeUI.a(LuckyMoneyPickEnvelopeUI.this) + 1), LuckyMoneyPickEnvelopeUI.d(LuckyMoneyPickEnvelopeUI.this), paramAnonymousMenuItem, LuckyMoneyPickEnvelopeUI.e(LuckyMoneyPickEnvelopeUI.this) });
                 AppMethodBeat.o(65791);
                 return false;
               }
             }
-          }, null, s.b.JbT);
-          cJW();
-          this.vzJ.alive();
+          }, null, s.b.JwB);
+          cMz();
+          this.vLN.alive();
           AppMethodBeat.o(65814);
           return;
         }
-        oc(true);
+        oh(true);
         continue;
       }
       catch (IOException paramBundle)
       {
-        ad.printErrStackTrace("MicroMsg.LuckyMoneyPickEnvelopeUI", paramBundle, "", new Object[0]);
-        oc(true);
+        ae.printErrStackTrace("MicroMsg.LuckyMoneyPickEnvelopeUI", paramBundle, "", new Object[0]);
+        oh(true);
         continue;
       }
-      oc(true);
+      oh(true);
       continue;
-      this.vzz = false;
-      this.vkm = 0;
-      this.vzx = 0;
+      this.vLD = false;
+      this.vwr = 0;
+      this.vLB = 0;
       paramBundle = new b((byte)0);
-      paramBundle.oBZ = true;
-      paramBundle.vqP = new bnu();
-      paramBundle.vqP.Gat = "0";
-      paramBundle.vqP.GHY = getString(2131760842);
-      this.vzw.add(paramBundle);
-      this.vzu.asY.notifyChanged();
+      paramBundle.oIB = true;
+      paramBundle.vCU = new bom();
+      paramBundle.vCU.Gta = "0";
+      paramBundle.vCU.HbA = getString(2131760842);
+      this.vLA.add(paramBundle);
+      this.vLy.asY.notifyChanged();
     }
   }
   
@@ -637,7 +609,7 @@ public class LuckyMoneyPickEnvelopeUI
   {
     AppMethodBeat.i(65816);
     super.onDestroy();
-    this.vzJ.dead();
+    this.vLN.dead();
     AppMethodBeat.o(65816);
   }
   
@@ -656,82 +628,82 @@ public class LuckyMoneyPickEnvelopeUI
     {
       AppMethodBeat.i(163777);
       LuckyMoneyPickEnvelopeUI.b localb = (LuckyMoneyPickEnvelopeUI.b)LuckyMoneyPickEnvelopeUI.b(LuckyMoneyPickEnvelopeUI.this).get(paramInt);
-      paramc.auu.setSelected(localb.oBZ);
-      a.b.a(paramc.fRd, u.aAm(), 0.06F, false);
-      paramc.opA.setText(k.b(paramc.vzL.getContext(), u.aAo(), com.tencent.mm.cc.a.ax(paramc.vzL.getContext(), 2131165574)));
-      paramc.vzT.setImageBitmap(null);
-      paramc.vzU.setVisibility(8);
-      if (localb.vqP != null)
+      paramc.auu.setSelected(localb.oIB);
+      a.b.a(paramc.fTj, v.aAC(), 0.06F, false);
+      paramc.ovs.setText(k.b(paramc.vLP.getContext(), v.aAE(), com.tencent.mm.cb.a.ax(paramc.vLP.getContext(), 2131165574)));
+      paramc.vLX.setImageBitmap(null);
+      paramc.vLY.setVisibility(8);
+      if (localb.vCU != null)
       {
-        paramc.fQd.setText(localb.vqP.GHY);
-        if (localb.vqP.GHZ != null) {
-          paramc.a(localb.vqP, false);
+        paramc.fSj.setText(localb.vCU.HbA);
+        if (localb.vCU.HbB != null) {
+          paramc.a(localb.vCU, false);
         }
-        paramc.vzU.setOnClickListener(new LuckyMoneyPickEnvelopeUI.c.2(paramc, localb));
-        if (!bt.isNullOrNil(localb.vqP.GIa))
+        paramc.vLY.setOnClickListener(new LuckyMoneyPickEnvelopeUI.c.2(paramc, localb));
+        if (!bu.isNullOrNil(localb.vCU.HbC))
         {
-          paramc.vzY.setText(localb.vqP.GIa);
-          paramc.vzY.setVisibility(0);
-          if (localb.vqP.hzE != 2) {
+          paramc.vMc.setText(localb.vCU.HbC);
+          paramc.vMc.setVisibility(0);
+          if (localb.vCU.hCs != 2) {
             break label269;
           }
-          paramc.vzZ.setVisibility(0);
+          paramc.vMd.setVisibility(0);
         }
         for (;;)
         {
-          if ((localb.vqP.hzE != 1) || (bt.isNullOrNil(localb.vqP.GIf))) {
+          if ((localb.vCU.hCs != 1) || (bu.isNullOrNil(localb.vCU.HbH))) {
             break label281;
           }
-          paramc.vzY.setVisibility(0);
-          paramc.vzY.setText(localb.vqP.GIf);
+          paramc.vMc.setVisibility(0);
+          paramc.vMc.setText(localb.vCU.HbH);
           AppMethodBeat.o(163777);
           return;
-          paramc.vzY.setText("");
+          paramc.vMc.setText("");
           break;
           label269:
-          paramc.vzZ.setVisibility(8);
+          paramc.vMd.setVisibility(8);
         }
         label281:
-        if (localb.vqP.FHA == 1)
+        if (localb.vCU.FZW == 1)
         {
           paramc.auu.setSelected(false);
-          paramc.vAa.setEnabled(false);
-          paramc.vzY.setVisibility(0);
-          if (!bt.isNullOrNil(localb.vqP.GIe)) {
-            paramc.vzY.setText(localb.vqP.GIe);
+          paramc.vMe.setEnabled(false);
+          paramc.vMc.setVisibility(0);
+          if (!bu.isNullOrNil(localb.vCU.HbG)) {
+            paramc.vMc.setText(localb.vCU.HbG);
           }
-          paramc.djE();
+          paramc.dmD();
           AppMethodBeat.o(163777);
           return;
         }
-        if (localb.vqP.GIb == 1)
+        if (localb.vCU.HbD == 1)
         {
           paramc.auu.setSelected(false);
-          paramc.vAa.setEnabled(false);
-          if (!bt.isNullOrNil(localb.vqP.GIa))
+          paramc.vMe.setEnabled(false);
+          if (!bu.isNullOrNil(localb.vCU.HbC))
           {
-            paramc.vzY.setText(localb.vqP.GIa);
-            paramc.vzY.setVisibility(0);
+            paramc.vMc.setText(localb.vCU.HbC);
+            paramc.vMc.setVisibility(0);
           }
-          paramc.djE();
+          paramc.dmD();
           AppMethodBeat.o(163777);
           return;
         }
-        if (LuckyMoneyPickEnvelopeUI.e(paramc.vzL, localb.vqP.Gat))
+        if (LuckyMoneyPickEnvelopeUI.e(paramc.vLP, localb.vCU.Gta))
         {
           paramc.auu.setSelected(false);
-          paramc.vAa.setEnabled(false);
-          paramc.vzY.setText(2131760852);
-          paramc.vzY.setVisibility(0);
-          paramc.djE();
+          paramc.vMe.setEnabled(false);
+          paramc.vMc.setText(2131760852);
+          paramc.vMc.setVisibility(0);
+          paramc.dmD();
           AppMethodBeat.o(163777);
           return;
         }
-        paramc.vAa.setEnabled(true);
-        if (bt.ai(paramc.vzY.getText())) {
-          paramc.vzY.setVisibility(4);
+        paramc.vMe.setEnabled(true);
+        if (bu.ah(paramc.vMc.getText())) {
+          paramc.vMc.setVisibility(4);
         }
-        paramc.vzU.setVisibility(8);
+        paramc.vLY.setVisibility(8);
       }
       AppMethodBeat.o(163777);
     }
@@ -755,46 +727,46 @@ public class LuckyMoneyPickEnvelopeUI
   
   static final class b
   {
-    public boolean oBZ = false;
-    public bnu vqP;
+    public boolean oIB = false;
+    public bom vCU;
   }
   
   final class c
     extends RecyclerView.w
   {
-    TextView fQd;
-    ImageView fRd;
-    TextView opA;
+    TextView fSj;
+    ImageView fTj;
+    TextView ovs;
     private Dialog tipDialog;
-    ViewGroup vAa;
-    ProgressBar vAb;
-    ImageView vzT;
-    View vzU;
-    ImageView vzV;
-    ProgressBar vzW;
-    TextView vzX;
-    TextView vzY;
-    TextView vzZ;
+    ImageView vLX;
+    View vLY;
+    ImageView vLZ;
+    ProgressBar vMa;
+    TextView vMb;
+    TextView vMc;
+    TextView vMd;
+    ViewGroup vMe;
+    ProgressBar vMf;
     
     public c(View paramView)
     {
       super();
       AppMethodBeat.i(65810);
       this.tipDialog = null;
-      this.vAa = ((ViewGroup)paramView.findViewById(2131301470));
-      this.vzT = ((ImageView)paramView.findViewById(2131301471));
-      this.fQd = ((TextView)paramView.findViewById(2131301473));
-      this.fRd = ((ImageView)paramView.findViewById(2131301469));
-      this.opA = ((TextView)paramView.findViewById(2131301477));
-      this.vzU = paramView.findViewById(2131301479);
-      this.vzV = ((ImageView)paramView.findViewById(2131301476));
-      this.vzW = ((ProgressBar)paramView.findViewById(2131301468));
-      this.vzX = ((TextView)paramView.findViewById(2131301478));
-      this.vzY = ((TextView)paramView.findViewById(2131301472));
-      this.vzZ = ((TextView)paramView.findViewById(2131307210));
-      this.vAb = ((ProgressBar)paramView.findViewById(2131301475));
+      this.vMe = ((ViewGroup)paramView.findViewById(2131301470));
+      this.vLX = ((ImageView)paramView.findViewById(2131301471));
+      this.fSj = ((TextView)paramView.findViewById(2131301473));
+      this.fTj = ((ImageView)paramView.findViewById(2131301469));
+      this.ovs = ((TextView)paramView.findViewById(2131301477));
+      this.vLY = paramView.findViewById(2131301479);
+      this.vLZ = ((ImageView)paramView.findViewById(2131301476));
+      this.vMa = ((ProgressBar)paramView.findViewById(2131301468));
+      this.vMb = ((TextView)paramView.findViewById(2131301478));
+      this.vMc = ((TextView)paramView.findViewById(2131301472));
+      this.vMd = ((TextView)paramView.findViewById(2131307210));
+      this.vMf = ((ProgressBar)paramView.findViewById(2131301475));
       if (al.isDarkMode()) {
-        this.vAa.setBackgroundResource(2131233104);
+        this.vMe.setBackgroundResource(2131233104);
       }
       for (;;)
       {
@@ -805,7 +777,7 @@ public class LuckyMoneyPickEnvelopeUI
             AppMethodBeat.i(163781);
             Object localObject = new com.tencent.mm.hellhoundlib.b.b();
             ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramAnonymousView);
-            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/luckymoney/ui/LuckyMoneyPickEnvelopeUI$VH$1", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahq());
+            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/luckymoney/ui/LuckyMoneyPickEnvelopeUI$VH$1", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahF());
             if (!LuckyMoneyPickEnvelopeUI.x(LuckyMoneyPickEnvelopeUI.this))
             {
               com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/mm/plugin/luckymoney/ui/LuckyMoneyPickEnvelopeUI$VH$1", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
@@ -819,27 +791,27 @@ public class LuckyMoneyPickEnvelopeUI
             localObject = com.tencent.mm.plugin.luckymoney.scaledLayout.a.h(LuckyMoneyPickEnvelopeUI.f(LuckyMoneyPickEnvelopeUI.this));
             if ((i >= 0) && (i < LuckyMoneyPickEnvelopeUI.b(LuckyMoneyPickEnvelopeUI.this).size()) && (paramAnonymousView == localObject))
             {
-              ad.i("MicroMsg.LuckyMoneyPickEnvelopeUI", "delete pos: %s", new Object[] { Integer.valueOf(i) });
+              ae.i("MicroMsg.LuckyMoneyPickEnvelopeUI", "delete pos: %s", new Object[] { Integer.valueOf(i) });
               paramAnonymousView = (LuckyMoneyPickEnvelopeUI.b)LuckyMoneyPickEnvelopeUI.b(LuckyMoneyPickEnvelopeUI.this).get(i);
-              if ((paramAnonymousView != null) && (paramAnonymousView.vqP != null))
+              if ((paramAnonymousView != null) && (paramAnonymousView.vCU != null))
               {
-                if ("0".equals(paramAnonymousView.vqP.Gat))
+                if ("0".equals(paramAnonymousView.vCU.Gta))
                 {
-                  ad.i("MicroMsg.LuckyMoneyPickEnvelopeUI", "can not delete default envelope");
+                  ae.i("MicroMsg.LuckyMoneyPickEnvelopeUI", "can not delete default envelope");
                   com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/mm/plugin/luckymoney/ui/LuckyMoneyPickEnvelopeUI$VH$1", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
                   AppMethodBeat.o(163781);
                   return false;
                 }
                 localObject = new com.tencent.mm.ui.widget.a.e(LuckyMoneyPickEnvelopeUI.this.getContext(), 1, true);
                 TextView localTextView = new TextView(LuckyMoneyPickEnvelopeUI.this.getContext());
-                localTextView.setPadding(0, 0, 0, com.tencent.mm.cc.a.fromDPToPix(LuckyMoneyPickEnvelopeUI.this.getContext(), 9));
-                localTextView.setMinHeight(com.tencent.mm.cc.a.ax(LuckyMoneyPickEnvelopeUI.this.getContext(), 2131165204));
+                localTextView.setPadding(0, 0, 0, com.tencent.mm.cb.a.fromDPToPix(LuckyMoneyPickEnvelopeUI.this.getContext(), 9));
+                localTextView.setMinHeight(com.tencent.mm.cb.a.ax(LuckyMoneyPickEnvelopeUI.this.getContext(), 2131165204));
                 localTextView.setTextSize(14.0F);
                 localTextView.setTextColor(LuckyMoneyPickEnvelopeUI.this.getResources().getColor(2131100482));
                 localTextView.setText(2131760927);
                 localTextView.setGravity(81);
-                ((com.tencent.mm.ui.widget.a.e)localObject).K(localTextView, true);
-                ((com.tencent.mm.ui.widget.a.e)localObject).KJy = new n.d()
+                ((com.tencent.mm.ui.widget.a.e)localObject).P(localTextView, true);
+                ((com.tencent.mm.ui.widget.a.e)localObject).LfS = new n.d()
                 {
                   public final void onCreateMMMenu(l paramAnonymous2l)
                   {
@@ -848,18 +820,18 @@ public class LuckyMoneyPickEnvelopeUI
                     AppMethodBeat.o(163779);
                   }
                 };
-                ((com.tencent.mm.ui.widget.a.e)localObject).KJz = new n.e()
+                ((com.tencent.mm.ui.widget.a.e)localObject).LfT = new n.e()
                 {
                   public final void onMMMenuItemSelected(MenuItem paramAnonymous2MenuItem, int paramAnonymous2Int)
                   {
                     AppMethodBeat.i(163780);
                     if (paramAnonymous2MenuItem.getItemId() == 0) {
-                      LuckyMoneyPickEnvelopeUI.f(LuckyMoneyPickEnvelopeUI.this, paramAnonymousView.vqP.Gat);
+                      LuckyMoneyPickEnvelopeUI.f(LuckyMoneyPickEnvelopeUI.this, paramAnonymousView.vCU.Gta);
                     }
                     AppMethodBeat.o(163780);
                   }
                 };
-                ((com.tencent.mm.ui.widget.a.e)localObject).cMW();
+                ((com.tencent.mm.ui.widget.a.e)localObject).cPF();
               }
             }
             com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/mm/plugin/luckymoney/ui/LuckyMoneyPickEnvelopeUI$VH$1", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
@@ -868,92 +840,92 @@ public class LuckyMoneyPickEnvelopeUI
           }
         };
         paramView.setOnLongClickListener(LuckyMoneyPickEnvelopeUI.this);
-        this.vzU.setOnLongClickListener(LuckyMoneyPickEnvelopeUI.this);
+        this.vLY.setOnLongClickListener(LuckyMoneyPickEnvelopeUI.this);
         AppMethodBeat.o(65810);
         return;
-        this.vAa.setBackgroundResource(2131233102);
+        this.vMe.setBackgroundResource(2131233102);
       }
     }
     
-    final void a(final bnu parambnu, boolean paramBoolean)
+    final void a(final bom parambom, boolean paramBoolean)
     {
       AppMethodBeat.i(65811);
       if (paramBoolean)
       {
-        this.vzV.setVisibility(8);
-        this.vzW.setVisibility(0);
-        this.vzX.setVisibility(8);
+        this.vLZ.setVisibility(8);
+        this.vMa.setVisibility(0);
+        this.vMb.setVisibility(8);
       }
       for (;;)
       {
-        ((com.tencent.mm.plugin.luckymoney.a.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.luckymoney.a.a.class)).a(this.vzT, parambnu, new com.tencent.mm.plugin.luckymoney.a.a.a()
+        ((com.tencent.mm.plugin.luckymoney.a.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.luckymoney.a.a.class)).a(this.vLX, parambom, new com.tencent.mm.plugin.luckymoney.a.a.a()
         {
-          public final void iK(final boolean paramAnonymousBoolean)
+          public final void iI(final boolean paramAnonymousBoolean)
           {
             AppMethodBeat.i(163784);
-            ad.i("MicroMsg.LuckyMoneyPickEnvelopeUI", "load ok: %s", new Object[] { Boolean.valueOf(paramAnonymousBoolean) });
+            ae.i("MicroMsg.LuckyMoneyPickEnvelopeUI", "load ok: %s", new Object[] { Boolean.valueOf(paramAnonymousBoolean) });
             Runnable local1 = new Runnable()
             {
               public final void run()
               {
                 AppMethodBeat.i(163783);
-                LuckyMoneyPickEnvelopeUI.c.this.vAb.setVisibility(8);
+                LuckyMoneyPickEnvelopeUI.c.this.vMf.setVisibility(8);
                 if ((LuckyMoneyPickEnvelopeUI.c.a(LuckyMoneyPickEnvelopeUI.c.this) != null) && (LuckyMoneyPickEnvelopeUI.c.a(LuckyMoneyPickEnvelopeUI.c.this).isShowing())) {
                   LuckyMoneyPickEnvelopeUI.c.a(LuckyMoneyPickEnvelopeUI.c.this).dismiss();
                 }
-                if ((LuckyMoneyPickEnvelopeUI.c.3.this.vAg.GIb == 1) || (LuckyMoneyPickEnvelopeUI.c.3.this.vAg.FHA == 1))
+                if ((LuckyMoneyPickEnvelopeUI.c.3.this.vMk.HbD == 1) || (LuckyMoneyPickEnvelopeUI.c.3.this.vMk.FZW == 1))
                 {
-                  ad.i("MicroMsg.LuckyMoneyPickEnvelopeUI", "envelope has expired do nothing");
+                  ae.i("MicroMsg.LuckyMoneyPickEnvelopeUI", "envelope has expired do nothing");
                   AppMethodBeat.o(163783);
                   return;
                 }
                 if (!paramAnonymousBoolean)
                 {
-                  LuckyMoneyPickEnvelopeUI.c.this.vzU.setVisibility(0);
-                  LuckyMoneyPickEnvelopeUI.c.this.vzV.setVisibility(0);
-                  LuckyMoneyPickEnvelopeUI.c.this.vzW.setVisibility(8);
-                  LuckyMoneyPickEnvelopeUI.c.this.vzX.setVisibility(0);
+                  LuckyMoneyPickEnvelopeUI.c.this.vLY.setVisibility(0);
+                  LuckyMoneyPickEnvelopeUI.c.this.vLZ.setVisibility(0);
+                  LuckyMoneyPickEnvelopeUI.c.this.vMa.setVisibility(8);
+                  LuckyMoneyPickEnvelopeUI.c.this.vMb.setVisibility(0);
                   AppMethodBeat.o(163783);
                   return;
                 }
-                LuckyMoneyPickEnvelopeUI.c.this.vzU.setVisibility(8);
+                LuckyMoneyPickEnvelopeUI.c.this.vLY.setVisibility(8);
                 AppMethodBeat.o(163783);
               }
             };
-            if (aq.isMainThread())
+            if (ar.isMainThread())
             {
               local1.run();
               AppMethodBeat.o(163784);
               return;
             }
-            LuckyMoneyPickEnvelopeUI.c.this.vzU.post(local1);
+            LuckyMoneyPickEnvelopeUI.c.this.vLY.post(local1);
             AppMethodBeat.o(163784);
           }
         });
         AppMethodBeat.o(65811);
         return;
-        if ("0".equals(parambnu.Gat))
+        if ("0".equals(parambom.Gta))
         {
-          ad.d("MicroMsg.LuckyMoneyPickEnvelopeUI", "default envelope");
+          ae.d("MicroMsg.LuckyMoneyPickEnvelopeUI", "default envelope");
           AppMethodBeat.o(65811);
           return;
         }
-        this.vAb.setVisibility(0);
+        this.vMf.setVisibility(0);
       }
     }
     
-    final void djE()
+    final void dmD()
     {
       AppMethodBeat.i(163786);
-      this.vzU.setVisibility(0);
-      this.vzV.setVisibility(8);
-      this.vzW.setVisibility(8);
-      this.vzX.setVisibility(8);
-      this.vzU.setOnClickListener(null);
+      this.vLY.setVisibility(0);
+      this.vLZ.setVisibility(8);
+      this.vMa.setVisibility(8);
+      this.vMb.setVisibility(8);
+      this.vLY.setOnClickListener(null);
       AppMethodBeat.o(163786);
     }
     
-    public final void od(boolean paramBoolean)
+    public final void oi(boolean paramBoolean)
     {
       AppMethodBeat.i(163785);
       this.auu.setSelected(paramBoolean);
@@ -963,7 +935,7 @@ public class LuckyMoneyPickEnvelopeUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.ui.LuckyMoneyPickEnvelopeUI
  * JD-Core Version:    0.7.0.1
  */

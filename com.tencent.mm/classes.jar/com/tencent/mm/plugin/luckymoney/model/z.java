@@ -21,32 +21,35 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.k.b;
-import com.tencent.mm.ak.j;
-import com.tencent.mm.ak.p;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.n;
-import com.tencent.mm.aw.a.a.c;
-import com.tencent.mm.aw.a.a.c.a;
+import com.tencent.mm.ah.k.b;
+import com.tencent.mm.aj.j;
+import com.tencent.mm.aj.p;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.av.a.a.c;
+import com.tencent.mm.av.a.a.c.a;
+import com.tencent.mm.av.q;
 import com.tencent.mm.g.a.at;
 import com.tencent.mm.g.a.at.a;
 import com.tencent.mm.g.c.aw;
 import com.tencent.mm.g.c.ei;
+import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.bj;
+import com.tencent.mm.model.bl;
 import com.tencent.mm.plugin.luckymoney.ui.SelectLuckyMoneyContactUI;
 import com.tencent.mm.pluginsdk.ui.a.b;
-import com.tencent.mm.protocal.protobuf.bop;
-import com.tencent.mm.protocal.protobuf.bzp;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.al.a;
-import com.tencent.mm.storage.am;
-import com.tencent.mm.storage.bp;
-import com.tencent.mm.storage.bu;
+import com.tencent.mm.protocal.protobuf.bph;
+import com.tencent.mm.protocal.protobuf.caj;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.aj;
+import com.tencent.mm.storage.am.a;
+import com.tencent.mm.storage.an;
+import com.tencent.mm.storage.bq;
+import com.tencent.mm.storage.bv;
 import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.vfs.w;
 import com.tencent.mm.wallet_core.d.a;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -57,59 +60,59 @@ import org.json.JSONObject;
 
 public class z
 {
-  private static com.tencent.mm.b.f<String, Bitmap> rys;
-  public static int vpE;
+  private static com.tencent.mm.b.f<String, Bitmap> rGD;
+  public static int vBJ;
   
   static
   {
     AppMethodBeat.i(65274);
-    vpE = 2147483647;
-    rys = new com.tencent.mm.memory.a.b(10, z.class);
+    vBJ = 2147483647;
+    rGD = new com.tencent.mm.memory.a.b(10, z.class);
     AppMethodBeat.o(65274);
   }
   
   public static boolean Z(String paramString1, String paramString2, int paramInt)
   {
     AppMethodBeat.i(65267);
-    if ((bt.isNullOrNil(paramString1)) || (bt.isNullOrNil(paramString2)))
+    if ((bu.isNullOrNil(paramString1)) || (bu.isNullOrNil(paramString2)))
     {
-      ad.w("MicroMsg.LuckyMoneyUtil", bt.nullAsNil(paramString1) + ", " + bt.nullAsNil(paramString2));
+      ae.w("MicroMsg.LuckyMoneyUtil", bu.nullAsNil(paramString1) + ", " + bu.nullAsNil(paramString2));
       AppMethodBeat.o(65267);
       return false;
     }
-    bu localbu = new bu();
-    localbu.setContent(paramString1);
-    localbu.setStatus(2);
-    localbu.tN(paramString2);
-    localbu.qA(bj.Bo(paramString2));
-    localbu.kr(1);
+    bv localbv = new bv();
+    localbv.setContent(paramString1);
+    localbv.setStatus(2);
+    localbv.ui(paramString2);
+    localbv.qN(bl.BQ(paramString2));
+    localbv.kt(1);
     if (paramInt == 3) {
-      localbu.setType(469762097);
+      localbv.setType(469762097);
     }
     long l;
     for (;;)
     {
-      l = ((com.tencent.mm.plugin.messenger.foundation.a.l)g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).dlK().as(localbu);
+      l = ((com.tencent.mm.plugin.messenger.foundation.a.l)g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).doJ().ar(localbv);
       if (l >= 0L) {
         break;
       }
-      ad.e("MicroMsg.LuckyMoneyUtil", com.tencent.mm.compatible.util.f.abi() + "insert msg failed :" + l);
+      ae.e("MicroMsg.LuckyMoneyUtil", com.tencent.mm.compatible.util.f.abr() + "insert msg failed :" + l);
       AppMethodBeat.o(65267);
       return false;
-      localbu.setType(436207665);
+      localbv.setType(436207665);
     }
-    com.tencent.mm.ai.k localk;
-    if (localbu.cTc())
+    com.tencent.mm.ah.k localk;
+    if (localbv.cVH())
     {
-      com.tencent.mm.modelstat.b.inZ.b(localbu, com.tencent.mm.ai.l.r(localbu));
-      localbu.setMsgId(l);
-      localk = new com.tencent.mm.ai.k();
-      localk.field_xml = localbu.field_content;
-      paramString2 = bt.aRd(paramString1);
+      com.tencent.mm.modelstat.b.iqT.b(localbv, com.tencent.mm.ah.l.r(localbv));
+      localbv.setMsgId(l);
+      localk = new com.tencent.mm.ah.k();
+      localk.field_xml = localbv.field_content;
+      paramString2 = bu.aSA(paramString1);
       paramString1 = null;
       if (paramString2 != null)
       {
-        paramString2 = k.b.aA(paramString2, localbu.field_reserved);
+        paramString2 = k.b.aB(paramString2, localbv.field_reserved);
         paramString1 = paramString2;
         if (paramString2 != null)
         {
@@ -120,38 +123,38 @@ public class z
       }
       localk.field_type = 2001;
       localk.field_msgId = l;
-      if ((paramString1 != null) && (paramString1.type == 2001) && (paramString1.dlp == 1))
+      if ((paramString1 != null) && (paramString1.type == 2001) && (paramString1.dmr == 1))
       {
-        if ((TextUtils.isEmpty(paramString1.hBA)) || (TextUtils.isEmpty(paramString1.hBB)) || (paramString1.hBC <= 0)) {
+        if ((TextUtils.isEmpty(paramString1.hEo)) || (TextUtils.isEmpty(paramString1.hEp)) || (paramString1.hEq <= 0)) {
           break label463;
         }
-        ad.i("MicroMsg.LuckyMoneyUtil", "ljd:sendLocalMsg() this is new year msg! send predownload image event!");
+        ae.i("MicroMsg.LuckyMoneyUtil", "ljd:sendLocalMsg() this is new year msg! send predownload image event!");
         paramString2 = new at();
-        paramString2.dlB = new at.a();
-        paramString2.dlB.dlD = paramString1.hBB;
-        paramString2.dlB.dlC = paramString1.hBA;
-        paramString2.dlB.dlE = paramString1.hBC;
-        com.tencent.mm.sdk.b.a.IbL.l(paramString2);
+        paramString2.dmD = new at.a();
+        paramString2.dmD.dmF = paramString1.hEp;
+        paramString2.dmD.dmE = paramString1.hEo;
+        paramString2.dmD.dmG = paramString1.hEq;
+        com.tencent.mm.sdk.b.a.IvT.l(paramString2);
       }
       label411:
-      paramString1 = com.tencent.mm.plugin.s.a.dxR().xH(l);
+      paramString1 = com.tencent.mm.plugin.s.a.dBh().yb(l);
       if ((paramString1 == null) || (paramString1.field_msgId != l)) {
         break label474;
       }
-      com.tencent.mm.plugin.s.a.dxR().update(localk, new String[0]);
+      com.tencent.mm.plugin.s.a.dBh().update(localk, new String[0]);
     }
     for (;;)
     {
       AppMethodBeat.o(65267);
       return true;
-      com.tencent.mm.modelstat.b.inZ.q(localbu);
+      com.tencent.mm.modelstat.b.iqT.q(localbv);
       break;
       label463:
-      ad.e("MicroMsg.LuckyMoneyUtil", "ljd:sendLocalMsg() this is new year msg! don't send predownload image event, because image preload data is illegal!");
+      ae.e("MicroMsg.LuckyMoneyUtil", "ljd:sendLocalMsg() this is new year msg! don't send predownload image event, because image preload data is illegal!");
       break label411;
       label474:
-      if (!com.tencent.mm.plugin.s.a.dxR().insert(localk)) {
-        ad.e("MicroMsg.LuckyMoneyUtil", "PinOpenApi.getAppMessageStorage().insert msg failed id:".concat(String.valueOf(l)));
+      if (!com.tencent.mm.plugin.s.a.dBh().insert(localk)) {
+        ae.e("MicroMsg.LuckyMoneyUtil", "PinOpenApi.getAppMessageStorage().insert msg failed id:".concat(String.valueOf(l)));
       }
     }
   }
@@ -183,7 +186,7 @@ public class z
       public final void onAnimationEnd(Animation paramAnonymousAnimation)
       {
         AppMethodBeat.i(65246);
-        this.oPJ.startAnimation(localScaleAnimation2);
+        this.oWl.startAnimation(localScaleAnimation2);
         AppMethodBeat.o(65246);
       }
       
@@ -210,32 +213,32 @@ public class z
   private static void a(ImageView paramImageView, String paramString1, String paramString2, boolean paramBoolean)
   {
     AppMethodBeat.i(65249);
-    ad.i("MicroMsg.LuckyMoneyUtil", "load url: %s", new Object[] { paramString1 });
+    ae.i("MicroMsg.LuckyMoneyUtil", "load url: %s", new Object[] { paramString1 });
     if (paramImageView != null) {
       paramImageView.setImageBitmap(null);
     }
     c.a locala;
-    if (!bt.isNullOrNil(paramString1))
+    if (!bu.isNullOrNil(paramString1))
     {
       locala = new c.a();
-      com.tencent.mm.plugin.luckymoney.b.a.dhH();
-      locala.prefixPath = com.tencent.mm.plugin.luckymoney.b.a.dhJ();
-      locala.idr = true;
-      locala.hdX = true;
-      locala.hfi = paramBoolean;
+      com.tencent.mm.plugin.luckymoney.b.a.dkG();
+      locala.prefixPath = com.tencent.mm.plugin.luckymoney.b.a.dkI();
+      locala.igk = true;
+      locala.hgL = true;
+      locala.hhW = paramBoolean;
       if (paramBoolean) {
-        locala.idK = 0.0F;
+        locala.igC = 0.0F;
       }
-      if (bt.isNullOrNil(paramString2)) {
+      if (bu.isNullOrNil(paramString2)) {
         break label128;
       }
       locala.md5 = paramString2;
     }
     label128:
-    for (locala.idv = true;; locala.idv = false)
+    for (locala.igo = true;; locala.igo = false)
     {
-      paramString2 = locala.aJc();
-      com.tencent.mm.aw.q.aIJ().a(paramString1, paramImageView, paramString2);
+      paramString2 = locala.aJu();
+      q.aJb().a(paramString1, paramImageView, paramString2);
       AppMethodBeat.o(65249);
       return;
     }
@@ -269,17 +272,17 @@ public class z
     if (paramBoolean) {
       localIntent.putExtra("scene_from", 5);
     }
-    com.tencent.mm.bs.d.c(paramMMActivity, ".ui.transmit.SelectConversationUI", localIntent, paramInt);
+    com.tencent.mm.br.d.c(paramMMActivity, ".ui.transmit.SelectConversationUI", localIntent, paramInt);
     AppMethodBeat.o(65257);
   }
   
   public static boolean a(Activity paramActivity, int paramInt1, n paramn, Bundle paramBundle, boolean paramBoolean, d.a parama, int paramInt2)
   {
     AppMethodBeat.i(65268);
-    ad.i("MicroMsg.LuckyMoneyUtil", "dealWithRealNameVerifyErr call");
+    ae.i("MicroMsg.LuckyMoneyUtil", "dealWithRealNameVerifyErr call");
     if (paramInt1 != 416)
     {
-      ad.i("MicroMsg.LuckyMoneyUtil", "don't need realname verify");
+      ae.i("MicroMsg.LuckyMoneyUtil", "don't need realname verify");
       AppMethodBeat.o(65268);
       return false;
     }
@@ -300,9 +303,9 @@ public class z
       paramn = ((ab)paramn).rr;
       if (paramn != null)
       {
-        paramn = (bop)paramn.hNL.hNQ;
-        if (paramn.GJp != null) {
-          paramn = com.tencent.mm.platformtools.z.b(paramn.GJp);
+        paramn = (bph)paramn.hQE.hQJ;
+        if (paramn.HcQ != null) {
+          paramn = com.tencent.mm.platformtools.z.b(paramn.HcQ);
         }
       }
     }
@@ -314,7 +317,7 @@ public class z
         if (paramn == null) {
           break label339;
         }
-        ad.i("MicroMsg.LuckyMoneyUtil", "dealWithRealNameVerifyErr json is not null");
+        ae.i("MicroMsg.LuckyMoneyUtil", "dealWithRealNameVerifyErr json is not null");
         localObject = paramn;
         if (paramn.has("real_name_info")) {
           localObject = paramn.optJSONObject("real_name_info");
@@ -328,26 +331,26 @@ public class z
         if (!"1".equals(paramn)) {
           break label246;
         }
-        ad.i("MicroMsg.LuckyMoneyUtil", "showRealnameDialog");
+        ae.i("MicroMsg.LuckyMoneyUtil", "showRealnameDialog");
         paramBoolean = com.tencent.mm.plugin.wallet_core.id_verify.util.a.a(paramActivity, paramBundle, parama, paramInt);
         AppMethodBeat.o(65269);
         return paramBoolean;
       }
       catch (JSONException paramn)
       {
-        ad.printErrStackTrace("MicroMsg.LuckyMoneyUtil", paramn, "", new Object[0]);
+        ae.printErrStackTrace("MicroMsg.LuckyMoneyUtil", paramn, "", new Object[0]);
       }
       paramn = null;
       continue;
       label246:
-      if (("2".equals(paramn)) && (!bt.isNullOrNil(str1)))
+      if (("2".equals(paramn)) && (!bu.isNullOrNil(str1)))
       {
-        ad.i("MicroMsg.LuckyMoneyUtil", "showUploadCreditDialog");
+        ae.i("MicroMsg.LuckyMoneyUtil", "showUploadCreditDialog");
         paramBoolean = com.tencent.mm.plugin.wallet_core.id_verify.util.a.a(paramActivity, (String)localObject, str1, str2, str3, paramBoolean, null);
         AppMethodBeat.o(65269);
         return paramBoolean;
       }
-      ad.e("MicroMsg.LuckyMoneyUtil", "guide_flag=" + paramn + ";upload_credit_url=null?" + bt.isNullOrNil(str1));
+      ae.e("MicroMsg.LuckyMoneyUtil", "guide_flag=" + paramn + ";upload_credit_url=null?" + bu.isNullOrNil(str1));
       AppMethodBeat.o(65269);
       return false;
       label339:
@@ -355,38 +358,38 @@ public class z
     }
   }
   
-  public static String aoV(String paramString)
+  public static String aqa(String paramString)
   {
     AppMethodBeat.i(65259);
-    Object localObject = p.aEx().Dj(paramString);
+    Object localObject = p.aEN().DL(paramString);
     if (localObject != null)
     {
-      paramString = ((com.tencent.mm.ak.i)localObject).aEr();
+      paramString = ((com.tencent.mm.aj.i)localObject).aEH();
       AppMethodBeat.o(65259);
       return paramString;
     }
-    g.ajD();
-    localObject = ((com.tencent.mm.plugin.messenger.foundation.a.l)g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azp().Bf(paramString);
+    g.ajS();
+    localObject = ((com.tencent.mm.plugin.messenger.foundation.a.l)g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azF().BH(paramString);
     if ((localObject == null) || (!((aw)localObject).field_username.equals(paramString)))
     {
       AppMethodBeat.o(65259);
       return null;
     }
-    if (((aw)localObject).ePj == 4)
+    if (((aw)localObject).eQU == 4)
     {
       AppMethodBeat.o(65259);
       return null;
     }
-    g.ajD();
-    paramString = ((com.tencent.mm.plugin.messenger.foundation.a.l)g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azp().aTp(paramString);
-    if (bt.cC(paramString))
+    g.ajS();
+    paramString = ((com.tencent.mm.plugin.messenger.foundation.a.l)g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azF().aUQ(paramString);
+    if (bu.cF(paramString))
     {
       AppMethodBeat.o(65259);
       return null;
     }
     try
     {
-      paramString = ((bzp)new bzp().parseFrom(paramString)).FVp;
+      paramString = ((caj)new caj().parseFrom(paramString)).GnO;
       AppMethodBeat.o(65259);
       return paramString;
     }
@@ -394,26 +397,26 @@ public class z
     {
       for (;;)
       {
-        ad.e("MicroMsg.LuckyMoneyUtil", "exception:%s", new Object[] { bt.n(paramString) });
+        ae.e("MicroMsg.LuckyMoneyUtil", "exception:%s", new Object[] { bu.o(paramString) });
         paramString = null;
       }
     }
   }
   
-  public static String aoW(String paramString)
+  public static String aqb(String paramString)
   {
     AppMethodBeat.i(65270);
-    if ((bt.isNullOrNil(paramString)) || (!g.ajx()))
+    if ((bu.isNullOrNil(paramString)) || (!g.ajM()))
     {
       AppMethodBeat.o(65270);
       return "";
     }
-    g.ajD();
-    com.tencent.mm.vfs.e locale = new com.tencent.mm.vfs.e(String.format("%s/%s/", new Object[] { g.ajC().gBm, "LuckyMoney" }));
-    if ((!locale.exists()) || (!locale.isDirectory())) {
-      locale.mkdirs();
+    g.ajS();
+    com.tencent.mm.vfs.k localk = new com.tencent.mm.vfs.k(String.format("%s/%s/", new Object[] { g.ajR().gDT, "LuckyMoney" }));
+    if ((!localk.exists()) || (!localk.isDirectory())) {
+      localk.mkdirs();
     }
-    paramString = com.tencent.mm.vfs.q.B(new com.tencent.mm.vfs.e(locale, paramString).fOK());
+    paramString = w.B(new com.tencent.mm.vfs.k(localk, paramString).fTh());
     AppMethodBeat.o(65270);
     return paramString;
   }
@@ -433,13 +436,13 @@ public class z
       AppMethodBeat.o(65253);
       return;
     }
-    if (!bt.isNullOrNil(paramString2)) {}
+    if (!bu.isNullOrNil(paramString2)) {}
     for (;;)
     {
       a.b.a(paramImageView, paramString2, 0.1F, false);
       AppMethodBeat.o(65253);
       return;
-      paramString2 = p.aEz().CX(paramString1);
+      paramString2 = p.aEP().Dz(paramString1);
     }
   }
   
@@ -479,11 +482,11 @@ public class z
     AppMethodBeat.o(65266);
   }
   
-  public static String diq()
+  public static String dlp()
   {
     AppMethodBeat.i(65258);
-    g.ajD();
-    String str = (String)g.ajC().ajl().get(al.a.IqY, null);
+    g.ajS();
+    String str = (String)g.ajR().ajA().get(am.a.ILu, null);
     AppMethodBeat.o(65258);
     return str;
   }
@@ -516,12 +519,12 @@ public class z
     AppMethodBeat.o(65262);
   }
   
-  public static String et(List<au> paramList)
+  public static String ex(List<au> paramList)
   {
     AppMethodBeat.i(65271);
     if ((paramList == null) || (paramList.size() == 0))
     {
-      ad.e("MicroMsg.LuckyMoneyUtil", "splitOperationField is empty!");
+      ae.e("MicroMsg.LuckyMoneyUtil", "splitOperationField is empty!");
       AppMethodBeat.o(65271);
       return "";
     }
@@ -546,18 +549,18 @@ public class z
     return paramList;
   }
   
-  public static int fH(Context paramContext)
+  public static int fN(Context paramContext)
   {
     AppMethodBeat.i(65261);
-    if (vpE == 2147483647) {
-      vpE = paramContext.getResources().getColor(2131100566);
+    if (vBJ == 2147483647) {
+      vBJ = paramContext.getResources().getColor(2131100566);
     }
-    int i = vpE;
+    int i = vBJ;
     AppMethodBeat.o(65261);
     return i;
   }
   
-  public static Dialog fI(Context paramContext)
+  public static Dialog fO(Context paramContext)
   {
     AppMethodBeat.i(65273);
     paramContext = com.tencent.mm.ui.base.h.a(paramContext, 3, 2131820985, paramContext.getString(2131760709), false, new DialogInterface.OnCancelListener()
@@ -568,19 +571,19 @@ public class z
     return paramContext;
   }
   
-  public static void hK(String paramString1, String paramString2)
+  public static void hR(String paramString1, String paramString2)
   {
     AppMethodBeat.i(65272);
-    if ((!bt.isNullOrNil(paramString1)) && (!bt.isNullOrNil(paramString2)))
+    if ((!bu.isNullOrNil(paramString1)) && (!bu.isNullOrNil(paramString2)))
     {
-      bu localbu = new bu();
-      localbu.kr(0);
-      localbu.tN(paramString2);
-      localbu.setStatus(3);
-      localbu.setContent(paramString1);
-      localbu.qA(bj.B(paramString2, System.currentTimeMillis() / 1000L));
-      localbu.setType(10000);
-      ((com.tencent.mm.plugin.messenger.foundation.a.l)g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).dlK().as(localbu);
+      bv localbv = new bv();
+      localbv.kt(0);
+      localbv.ui(paramString2);
+      localbv.setStatus(3);
+      localbv.setContent(paramString1);
+      localbv.qN(bl.B(paramString2, System.currentTimeMillis() / 1000L));
+      localbv.setType(10000);
+      ((com.tencent.mm.plugin.messenger.foundation.a.l)g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).doJ().ar(localbv);
     }
     AppMethodBeat.o(65272);
   }
@@ -592,14 +595,14 @@ public class z
     AppMethodBeat.o(65251);
   }
   
-  public static void m(TextView paramTextView)
+  public static void l(TextView paramTextView)
   {
     AppMethodBeat.i(163577);
-    paramTextView.setShadowLayer(8.0F, 0.0F, 0.0F, aj.getContext().getResources().getColor(2131100019));
+    paramTextView.setShadowLayer(8.0F, 0.0F, 0.0F, ak.getContext().getResources().getColor(2131100019));
     AppMethodBeat.o(163577);
   }
   
-  public static String n(Context paramContext, long paramLong)
+  public static String o(Context paramContext, long paramLong)
   {
     AppMethodBeat.i(65247);
     Object localObject = new GregorianCalendar();
@@ -638,33 +641,33 @@ public class z
       return;
     }
     paramImageView.setImageBitmap(null);
-    if (!bt.isNullOrNil(paramString))
+    if (!bu.isNullOrNil(paramString))
     {
       Object localObject = new c.a();
-      com.tencent.mm.plugin.luckymoney.b.a.dhH();
-      ((c.a)localObject).prefixPath = com.tencent.mm.plugin.luckymoney.b.a.dhJ();
-      ((c.a)localObject).idr = true;
-      ((c.a)localObject).hdX = true;
-      ((c.a)localObject).hfi = true;
-      ((c.a)localObject).idu = 1;
-      ((c.a)localObject).idD = 2131232967;
-      localObject = ((c.a)localObject).aJc();
-      com.tencent.mm.aw.q.aIJ().a(paramString, paramImageView, (c)localObject);
+      com.tencent.mm.plugin.luckymoney.b.a.dkG();
+      ((c.a)localObject).prefixPath = com.tencent.mm.plugin.luckymoney.b.a.dkI();
+      ((c.a)localObject).igk = true;
+      ((c.a)localObject).hgL = true;
+      ((c.a)localObject).hhW = true;
+      ((c.a)localObject).ign = 1;
+      ((c.a)localObject).igv = 2131232967;
+      localObject = ((c.a)localObject).aJu();
+      q.aJb().a(paramString, paramImageView, (c)localObject);
     }
     AppMethodBeat.o(65254);
   }
   
-  public static String ze(String paramString)
+  public static String zO(String paramString)
   {
     AppMethodBeat.i(65260);
-    g.ajD();
-    am localam = ((com.tencent.mm.plugin.messenger.foundation.a.l)g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azp().Bf(paramString);
-    if ((localam == null) || (!localam.field_username.equals(paramString)))
+    g.ajS();
+    an localan = ((com.tencent.mm.plugin.messenger.foundation.a.l)g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azF().BH(paramString);
+    if ((localan == null) || (!localan.field_username.equals(paramString)))
     {
       AppMethodBeat.o(65260);
       return null;
     }
-    paramString = localam.field_nickname;
+    paramString = localan.field_nickname;
     AppMethodBeat.o(65260);
     return paramString;
   }

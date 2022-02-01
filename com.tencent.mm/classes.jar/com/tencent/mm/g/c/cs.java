@@ -8,31 +8,31 @@ public abstract class cs
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eEf;
-  private static final int eZK;
-  private static final int fbW = "uploadState".hashCode();
-  private static final int fci = "taskId".hashCode();
-  private static final int fcj;
-  private static final int fck;
-  private static final int fcl;
-  private static final int fcm;
-  private static final int fcn = "publishState".hashCode();
-  private static final int fco = "compressImg".hashCode();
-  private static final int fcp = "mixState".hashCode();
-  private static final int fcq = "bgMixTaskId".hashCode();
+  private static final int eFO;
+  private static final int fby;
+  private static final int fdL = "uploadState".hashCode();
+  private static final int fdX = "taskId".hashCode();
+  private static final int fdY;
+  private static final int fdZ;
+  private static final int fea;
+  private static final int feb;
+  private static final int fec = "publishState".hashCode();
+  private static final int fed = "compressImg".hashCode();
+  private static final int fee = "mixState".hashCode();
+  private static final int fef = "bgMixTaskId".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eDI = true;
-  private boolean eZv = true;
-  private boolean fbO = true;
-  private boolean fbZ = true;
-  private boolean fca = true;
-  private boolean fcb = true;
-  private boolean fcc = true;
-  private boolean fcd = true;
-  private boolean fce = true;
-  private boolean fcf = true;
-  private boolean fcg = true;
-  private boolean fch = true;
+  private boolean eFr = true;
+  private boolean fbi = true;
+  private boolean fdD = true;
+  private boolean fdO = true;
+  private boolean fdP = true;
+  private boolean fdQ = true;
+  private boolean fdR = true;
+  private boolean fdS = true;
+  private boolean fdT = true;
+  private boolean fdU = true;
+  private boolean fdV = true;
+  private boolean fdW = true;
   public String field_BusinessData;
   public String field_bgMixTaskId;
   public boolean field_compressImg;
@@ -48,12 +48,12 @@ public abstract class cs
   
   static
   {
-    eEf = "createTime".hashCode();
-    fcj = "publishSource".hashCode();
-    eZK = "mediaType".hashCode();
-    fck = "localIdList".hashCode();
-    fcl = "mediaList".hashCode();
-    fcm = "BusinessData".hashCode();
+    eFO = "createTime".hashCode();
+    fdY = "publishSource".hashCode();
+    fby = "mediaType".hashCode();
+    fdZ = "localIdList".hashCode();
+    fea = "mediaList".hashCode();
+    feb = "BusinessData".hashCode();
   }
   
   public void convertFrom(Cursor paramCursor)
@@ -69,11 +69,11 @@ public abstract class cs
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (fci != k) {
+      if (fdX != k) {
         break label65;
       }
       this.field_taskId = paramCursor.getString(i);
-      this.fbZ = true;
+      this.fdO = true;
     }
     for (;;)
     {
@@ -81,41 +81,41 @@ public abstract class cs
       break label20;
       break;
       label65:
-      if (eEf == k)
+      if (eFO == k)
       {
         this.field_createTime = paramCursor.getLong(i);
       }
-      else if (fcj == k)
+      else if (fdY == k)
       {
         this.field_publishSource = paramCursor.getInt(i);
       }
-      else if (eZK == k)
+      else if (fby == k)
       {
         this.field_mediaType = paramCursor.getInt(i);
       }
-      else if (fck == k)
+      else if (fdZ == k)
       {
         this.field_localIdList = paramCursor.getString(i);
       }
-      else if (fcl == k)
+      else if (fea == k)
       {
         this.field_mediaList = paramCursor.getString(i);
       }
-      else if (fcm == k)
+      else if (feb == k)
       {
         this.field_BusinessData = paramCursor.getString(i);
       }
-      else if (fbW == k)
+      else if (fdL == k)
       {
         this.field_uploadState = paramCursor.getInt(i);
       }
-      else if (fcn == k)
+      else if (fec == k)
       {
         this.field_publishState = paramCursor.getInt(i);
       }
       else
       {
-        if (fco == k)
+        if (fed == k)
         {
           if (paramCursor.getInt(i) != 0) {}
           for (boolean bool = true;; bool = false)
@@ -124,9 +124,9 @@ public abstract class cs
             break;
           }
         }
-        if (fcp == k) {
+        if (fee == k) {
           this.field_mixState = paramCursor.getInt(i);
-        } else if (fcq == k) {
+        } else if (fef == k) {
           this.field_bgMixTaskId = paramCursor.getString(i);
         } else if (rowid_HASHCODE == k) {
           this.systemRowid = paramCursor.getLong(i);
@@ -138,40 +138,40 @@ public abstract class cs
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.fbZ) {
+    if (this.fdO) {
       localContentValues.put("taskId", this.field_taskId);
     }
-    if (this.eDI) {
+    if (this.eFr) {
       localContentValues.put("createTime", Long.valueOf(this.field_createTime));
     }
-    if (this.fca) {
+    if (this.fdP) {
       localContentValues.put("publishSource", Integer.valueOf(this.field_publishSource));
     }
-    if (this.eZv) {
+    if (this.fbi) {
       localContentValues.put("mediaType", Integer.valueOf(this.field_mediaType));
     }
-    if (this.fcb) {
+    if (this.fdQ) {
       localContentValues.put("localIdList", this.field_localIdList);
     }
-    if (this.fcc) {
+    if (this.fdR) {
       localContentValues.put("mediaList", this.field_mediaList);
     }
-    if (this.fcd) {
+    if (this.fdS) {
       localContentValues.put("BusinessData", this.field_BusinessData);
     }
-    if (this.fbO) {
+    if (this.fdD) {
       localContentValues.put("uploadState", Integer.valueOf(this.field_uploadState));
     }
-    if (this.fce) {
+    if (this.fdT) {
       localContentValues.put("publishState", Integer.valueOf(this.field_publishState));
     }
-    if (this.fcf) {
+    if (this.fdU) {
       localContentValues.put("compressImg", Boolean.valueOf(this.field_compressImg));
     }
-    if (this.fcg) {
+    if (this.fdV) {
       localContentValues.put("mixState", Integer.valueOf(this.field_mixState));
     }
-    if (this.fch) {
+    if (this.fdW) {
       localContentValues.put("bgMixTaskId", this.field_bgMixTaskId);
     }
     if (this.systemRowid > 0L) {
@@ -182,7 +182,7 @@ public abstract class cs
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.c.cs
  * JD-Core Version:    0.7.0.1
  */

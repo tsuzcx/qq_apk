@@ -4,12 +4,12 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
 {
-  private static a grT;
+  private static a guu;
   
   static
   {
     AppMethodBeat.i(43439);
-    grT = new a()
+    guu = new a()
     {
       public final void loadLibrary(String paramAnonymousString)
       {
@@ -23,13 +23,13 @@ public final class a
   
   public static void a(a parama)
   {
-    grT = parama;
+    guu = parama;
   }
   
   public static void loadLibraries()
   {
     AppMethodBeat.i(43438);
-    grT.loadLibrary("mmlockstep");
+    guu.loadLibrary("mmlockstep");
     AppMethodBeat.o(43438);
   }
   
@@ -40,7 +40,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.game.a.a
  * JD-Core Version:    0.7.0.1
  */

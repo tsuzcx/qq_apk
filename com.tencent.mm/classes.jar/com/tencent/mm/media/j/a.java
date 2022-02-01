@@ -4,7 +4,7 @@ import android.graphics.SurfaceTexture;
 import android.graphics.SurfaceTexture.OnFrameAvailableListener;
 import android.opengl.GLSurfaceView.Renderer;
 import com.tencent.mm.media.k.c.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import d.g.b.p;
 import d.l;
 import d.z;
@@ -12,27 +12,27 @@ import java.nio.IntBuffer;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/media/render/AbsSurfaceRenderer;", "Landroid/opengl/GLSurfaceView$Renderer;", "textureWidth", "", "textureHeight", "drawWidth", "drawHeight", "renderOutputType", "scaleType", "(IIIIII)V", "clearFrame", "", "getClearFrame", "()Z", "setClearFrame", "(Z)V", "createSurfaceTexture", "currentDrawFrame", "", "getDrawHeight", "()I", "setDrawHeight", "(I)V", "getDrawWidth", "setDrawWidth", "externalTextureObj", "Lcom/tencent/mm/media/globject/GLTextureObject;", "frameDrawCallback", "Lkotlin/Function0;", "", "getFrameDrawCallback", "()Lkotlin/jvm/functions/Function0;", "setFrameDrawCallback", "(Lkotlin/jvm/functions/Function0;)V", "glTextureRenderProc", "Lcom/tencent/mm/media/render/proc/GLTextureRenderProc;", "getGlTextureRenderProc", "()Lcom/tencent/mm/media/render/proc/GLTextureRenderProc;", "setGlTextureRenderProc", "(Lcom/tencent/mm/media/render/proc/GLTextureRenderProc;)V", "inputTexture", "getInputTexture", "setInputTexture", "mirror", "getMirror", "setMirror", "onFrameAvailableListener", "Lkotlin/Function1;", "Landroid/graphics/SurfaceTexture;", "Lkotlin/ParameterName;", "name", "surfaceTexture", "getOnFrameAvailableListener", "()Lkotlin/jvm/functions/Function1;", "setOnFrameAvailableListener", "(Lkotlin/jvm/functions/Function1;)V", "getRenderOutputType", "setRenderOutputType", "renderProcInited", "getRenderProcInited", "setRenderProcInited", "rotateDegree", "getRotateDegree", "setRotateDegree", "getScaleType", "setScaleType", "getSurfaceTexture", "()Landroid/graphics/SurfaceTexture;", "setSurfaceTexture", "(Landroid/graphics/SurfaceTexture;)V", "getTextureHeight", "setTextureHeight", "getTextureWidth", "setTextureWidth", "checkHasInit", "doInitRenderProc", "flip", "getExternalTexture", "getOutputBuffer", "Ljava/nio/IntBuffer;", "getOutputTexture", "getSnapHeight", "getSnapWidth", "getTexture", "initGLTextureRender", "initRenderProcInGlesThread", "input", "frame", "copyFrame", "texture", "onDrawFrame", "gl", "Ljavax/microedition/khronos/opengles/GL10;", "onSurfaceChanged", "width", "height", "onSurfaceCreated", "config", "Ljavax/microedition/khronos/egl/EGLConfig;", "release", "shouldDestroySurfaceTexture", "render", "resetRender", "setOnFBOAvailableListener", "listener", "setOnRGBDataAvailableListener", "buffer", "setRotate", "degree", "takePhoto", "updateDrawViewSize", "updateTextureSize", "updateTextureSizeByMediaFormat", "format", "Landroid/media/MediaFormat;", "Companion", "plugin-mediaeditor_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/media/render/AbsSurfaceRenderer;", "Landroid/opengl/GLSurfaceView$Renderer;", "textureWidth", "", "textureHeight", "drawWidth", "drawHeight", "renderOutputType", "scaleType", "(IIIIII)V", "clearFrame", "", "getClearFrame", "()Z", "setClearFrame", "(Z)V", "createSurfaceTexture", "currentDrawFrame", "", "getDrawHeight", "()I", "setDrawHeight", "(I)V", "getDrawWidth", "setDrawWidth", "externalTextureObj", "Lcom/tencent/mm/media/globject/GLTextureObject;", "frameDrawCallback", "Lkotlin/Function0;", "", "getFrameDrawCallback", "()Lkotlin/jvm/functions/Function0;", "setFrameDrawCallback", "(Lkotlin/jvm/functions/Function0;)V", "glTextureRenderProc", "Lcom/tencent/mm/media/render/proc/GLTextureRenderProc;", "getGlTextureRenderProc", "()Lcom/tencent/mm/media/render/proc/GLTextureRenderProc;", "setGlTextureRenderProc", "(Lcom/tencent/mm/media/render/proc/GLTextureRenderProc;)V", "inputTexture", "getInputTexture", "setInputTexture", "mirror", "getMirror", "setMirror", "onFrameAvailableListener", "Lkotlin/Function1;", "Landroid/graphics/SurfaceTexture;", "Lkotlin/ParameterName;", "name", "surfaceTexture", "getOnFrameAvailableListener", "()Lkotlin/jvm/functions/Function1;", "setOnFrameAvailableListener", "(Lkotlin/jvm/functions/Function1;)V", "getRenderOutputType", "setRenderOutputType", "renderProcInited", "getRenderProcInited", "setRenderProcInited", "rotateDegree", "getRotateDegree", "setRotateDegree", "getScaleType", "setScaleType", "getSurfaceTexture", "()Landroid/graphics/SurfaceTexture;", "setSurfaceTexture", "(Landroid/graphics/SurfaceTexture;)V", "getTextureHeight", "setTextureHeight", "getTextureWidth", "setTextureWidth", "checkHasInit", "doInitRenderProc", "flip", "getExternalTexture", "getOutputBuffer", "Ljava/nio/IntBuffer;", "getOutputTexture", "getSnapHeight", "getSnapWidth", "getTexture", "initGLTextureRender", "initRenderProcInGlesThread", "input", "frame", "copyFrame", "texture", "onDrawFrame", "gl", "Ljavax/microedition/khronos/opengles/GL10;", "onSurfaceChanged", "width", "height", "onSurfaceCreated", "config", "Ljavax/microedition/khronos/egl/EGLConfig;", "release", "shouldDestroySurfaceTexture", "render", "resetRender", "setOnFBOAvailableListener", "listener", "setOnRGBDataAvailableListener", "buffer", "setRotate", "degree", "takePhoto", "updateDrawViewSize", "updateTextureSize", "updateTextureSizeByMediaFormat", "format", "Landroid/media/MediaFormat;", "Companion", "plugin-mediaeditor_release"})
 public abstract class a
   implements GLSurfaceView.Renderer
 {
-  public static final a.a hnq = new a.a((byte)0);
-  protected int gKH;
-  public int gKJ;
-  public int gKK;
-  public int gLD;
-  public int gLE;
-  public com.tencent.mm.media.j.b.a hnf;
-  private byte[] hng;
-  public com.tencent.mm.media.g.d hnh;
-  public boolean hni;
-  private boolean hnj;
-  public int hnk;
-  protected boolean hnl;
-  public d.g.a.b<? super SurfaceTexture, z> hnm;
-  public d.g.a.a<z> hnn;
-  public boolean hno;
-  protected int hnp;
+  public static final a.a hqe = new a.a((byte)0);
+  protected int gNq;
+  public int gNs;
+  public int gNt;
+  public int gOm;
+  public int gOn;
+  public com.tencent.mm.media.j.b.a hpT;
+  private byte[] hpU;
+  public com.tencent.mm.media.g.d hpV;
+  public boolean hpW;
+  private boolean hpX;
+  public int hpY;
+  protected boolean hpZ;
+  public d.g.a.b<? super SurfaceTexture, z> hqa;
+  public d.g.a.a<z> hqb;
+  public boolean hqc;
+  protected int hqd;
   protected int scaleType;
   SurfaceTexture surfaceTexture;
   
@@ -43,72 +43,72 @@ public abstract class a
   
   public a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
   {
-    this.gKJ = paramInt1;
-    this.gKK = paramInt2;
-    this.gLD = paramInt3;
-    this.gLE = paramInt4;
-    this.hnp = paramInt5;
+    this.gNs = paramInt1;
+    this.gNt = paramInt2;
+    this.gOm = paramInt3;
+    this.gOn = paramInt4;
+    this.hqd = paramInt5;
     this.scaleType = paramInt6;
-    this.gKH = -1;
+    this.gNq = -1;
   }
   
-  protected abstract com.tencent.mm.media.j.b.a amr();
+  protected abstract com.tencent.mm.media.j.b.a amG();
   
-  public void ams()
+  public void amH()
   {
-    com.tencent.mm.media.j.b.a locala = this.hnf;
+    com.tencent.mm.media.j.b.a locala = this.hpT;
     if (locala != null) {
-      locala.ams();
+      locala.amH();
     }
   }
   
-  public com.tencent.mm.media.g.d amt()
+  public com.tencent.mm.media.g.d amI()
   {
-    return this.hnh;
+    return this.hpV;
   }
   
-  public final IntBuffer atU()
+  public final IntBuffer auj()
   {
-    com.tencent.mm.media.j.b.a locala = this.hnf;
+    com.tencent.mm.media.j.b.a locala = this.hpT;
     if (locala != null) {
-      return locala.atU();
+      return locala.auj();
     }
     return null;
   }
   
-  public void atV()
+  public void auk()
   {
-    ad.i("MicroMsg.Media.AbsSurfaceRenderer", "takePhoto");
-    com.tencent.mm.media.j.b.a locala = this.hnf;
+    ae.i("MicroMsg.Media.AbsSurfaceRenderer", "takePhoto");
+    com.tencent.mm.media.j.b.a locala = this.hpT;
     if (locala != null) {
-      locala.hnD = true;
+      locala.hqr = true;
     }
   }
   
-  public int atW()
+  public int aul()
   {
-    com.tencent.mm.media.j.b.a locala = this.hnf;
+    com.tencent.mm.media.j.b.a locala = this.hpT;
     if (locala != null) {
-      return locala.hnF;
+      return locala.hqt;
     }
     return 0;
   }
   
-  public int atX()
+  public int aum()
   {
-    com.tencent.mm.media.j.b.a locala = this.hnf;
+    com.tencent.mm.media.j.b.a locala = this.hpT;
     if (locala != null) {
-      return locala.hnG;
+      return locala.hqu;
     }
     return 0;
   }
   
   public void cT(int paramInt1, int paramInt2)
   {
-    ad.m("MicroMsg.Media.AbsSurfaceRenderer", hashCode() + " updateDrawViewSize ,width : " + paramInt1 + " , height : " + paramInt2, new Object[0]);
-    this.gLD = paramInt1;
-    this.gLE = paramInt2;
-    com.tencent.mm.media.j.b.a locala = this.hnf;
+    ae.m("MicroMsg.Media.AbsSurfaceRenderer", hashCode() + " updateDrawViewSize ,width : " + paramInt1 + " , height : " + paramInt2, new Object[0]);
+    this.gOm = paramInt1;
+    this.gOn = paramInt2;
+    com.tencent.mm.media.j.b.a locala = this.hpT;
     if (locala != null) {
       locala.cT(paramInt1, paramInt2);
     }
@@ -116,40 +116,40 @@ public abstract class a
   
   public void cU(int paramInt1, int paramInt2)
   {
-    ad.m("MicroMsg.Media.AbsSurfaceRenderer", hashCode() + " updateTextureSize ,width : " + paramInt1 + " , height : " + paramInt2, new Object[0]);
-    this.gKJ = paramInt1;
-    this.gKK = paramInt2;
-    com.tencent.mm.media.j.b.a locala = this.hnf;
+    ae.m("MicroMsg.Media.AbsSurfaceRenderer", hashCode() + " updateTextureSize ,width : " + paramInt1 + " , height : " + paramInt2, new Object[0]);
+    this.gNs = paramInt1;
+    this.gNt = paramInt2;
+    com.tencent.mm.media.j.b.a locala = this.hpT;
     if (locala != null) {
       locala.cU(paramInt1, paramInt2);
     }
   }
   
-  public final void ef(boolean paramBoolean)
+  public final void eh(boolean paramBoolean)
   {
-    if (this.hno)
+    if (this.hqc)
     {
-      ad.m("MicroMsg.Media.AbsSurfaceRenderer", hashCode() + " initRenderProcInGlesThread, already init", new Object[0]);
+      ae.m("MicroMsg.Media.AbsSurfaceRenderer", hashCode() + " initRenderProcInGlesThread, already init", new Object[0]);
       return;
     }
-    this.hnj = paramBoolean;
-    this.hnf = amr();
-    ad.i("MicroMsg.Media.AbsSurfaceRenderer", hashCode() + " exec func initGLTextureRender  mirror : " + this.hnl);
-    cT(this.gLD, this.gLE);
-    cU(this.gKJ, this.gKK);
-    nd(this.hnk);
-    eg(this.hnl);
+    this.hpX = paramBoolean;
+    this.hpT = amG();
+    ae.i("MicroMsg.Media.AbsSurfaceRenderer", hashCode() + " exec func initGLTextureRender  mirror : " + this.hpZ);
+    cT(this.gOm, this.gOn);
+    cU(this.gNs, this.gNt);
+    ng(this.hpY);
+    ei(this.hpZ);
     Object localObject;
     SurfaceTexture localSurfaceTexture;
-    if ((this.hnj) && ((this.surfaceTexture == null) || (this.gKH <= 0)))
+    if ((this.hpX) && ((this.surfaceTexture == null) || (this.gNq <= 0)))
     {
-      this.hnh = com.tencent.mm.media.g.c.a(false, 12L);
-      localObject = this.hnh;
+      this.hpV = com.tencent.mm.media.g.c.a(false, 12L);
+      localObject = this.hpV;
       if (localObject == null) {
-        p.gfZ();
+        p.gkB();
       }
-      localSurfaceTexture = new SurfaceTexture(((com.tencent.mm.media.g.d)localObject).hko);
-      localObject = this.hnm;
+      localSurfaceTexture = new SurfaceTexture(((com.tencent.mm.media.g.d)localObject).hnc);
+      localObject = this.hqa;
       if (localObject == null) {
         break label366;
       }
@@ -161,26 +161,26 @@ public abstract class a
     {
       localSurfaceTexture.setOnFrameAvailableListener((SurfaceTexture.OnFrameAvailableListener)localObject);
       this.surfaceTexture = localSurfaceTexture;
-      localObject = this.hnh;
+      localObject = this.hpV;
       if (localObject != null)
       {
-        i = ((com.tencent.mm.media.g.d)localObject).hko;
+        i = ((com.tencent.mm.media.g.d)localObject).hnc;
         if (i <= 0)
         {
-          localObject = com.tencent.mm.media.k.d.hoU;
-          com.tencent.mm.media.k.d.auq();
+          localObject = com.tencent.mm.media.k.d.hrI;
+          com.tencent.mm.media.k.d.auF();
         }
-        ad.m("MicroMsg.Media.AbsSurfaceRenderer", hashCode() + " createSurfaceTexture:" + this.hnh, new Object[0]);
-        localObject = this.hnh;
+        ae.m("MicroMsg.Media.AbsSurfaceRenderer", hashCode() + " createSurfaceTexture:" + this.hpV, new Object[0]);
+        localObject = this.hpV;
         if (localObject == null) {
           break label361;
         }
       }
-      for (int i = ((com.tencent.mm.media.g.d)localObject).hko;; i = -1)
+      for (int i = ((com.tencent.mm.media.g.d)localObject).hnc;; i = -1)
       {
         input(i);
-        ad.m("MicroMsg.Media.AbsSurfaceRenderer", hashCode() + " createSurfaceTexture:" + paramBoolean + ", surfaceTexture:" + this.surfaceTexture, new Object[0]);
-        this.hno = true;
+        ae.m("MicroMsg.Media.AbsSurfaceRenderer", hashCode() + " createSurfaceTexture:" + paramBoolean + ", surfaceTexture:" + this.surfaceTexture, new Object[0]);
+        this.hqc = true;
         return;
         i = -1;
         break;
@@ -188,13 +188,13 @@ public abstract class a
     }
   }
   
-  public void eg(boolean paramBoolean)
+  public void ei(boolean paramBoolean)
   {
-    ad.i("MicroMsg.Media.AbsSurfaceRenderer", hashCode() + " set mirror: " + paramBoolean);
-    this.hnl = paramBoolean;
-    com.tencent.mm.media.j.b.a locala = this.hnf;
+    ae.i("MicroMsg.Media.AbsSurfaceRenderer", hashCode() + " set mirror: " + paramBoolean);
+    this.hpZ = paramBoolean;
+    com.tencent.mm.media.j.b.a locala = this.hpT;
     if (locala != null) {
-      locala.hnl = paramBoolean;
+      locala.hpZ = paramBoolean;
     }
   }
   
@@ -214,10 +214,10 @@ public abstract class a
   
   public final void input(int paramInt)
   {
-    this.gKH = paramInt;
-    com.tencent.mm.media.j.b.a locala = this.hnf;
+    this.gNq = paramInt;
+    com.tencent.mm.media.j.b.a locala = this.hpT;
     if (locala != null) {
-      locala.nN(paramInt);
+      locala.nQ(paramInt);
     }
   }
   
@@ -225,66 +225,66 @@ public abstract class a
   {
     p.h(paramb, "listener");
     Object localObject = new StringBuilder("glTextureRenderProc is null ?");
-    if (this.hnf == null) {}
+    if (this.hpT == null) {}
     for (boolean bool = true;; bool = false)
     {
-      ad.m("MicroMsg.Media.AbsSurfaceRenderer", bool, new Object[0]);
-      localObject = this.hnf;
+      ae.m("MicroMsg.Media.AbsSurfaceRenderer", bool, new Object[0]);
+      localObject = this.hpT;
       if (localObject != null) {
-        ((com.tencent.mm.media.j.b.a)localObject).hnA = paramb;
+        ((com.tencent.mm.media.j.b.a)localObject).hqo = paramb;
       }
       return;
     }
   }
   
-  public void nd(int paramInt)
+  public void ng(int paramInt)
   {
-    ad.m("MicroMsg.Media.AbsSurfaceRenderer", hashCode() + " change rotate ,old degree : " + this.hnk + " , new degree : " + paramInt, new Object[0]);
-    this.hnk = paramInt;
-    com.tencent.mm.media.j.b.a locala = this.hnf;
+    ae.m("MicroMsg.Media.AbsSurfaceRenderer", hashCode() + " change rotate ,old degree : " + this.hpY + " , new degree : " + paramInt, new Object[0]);
+    this.hpY = paramInt;
+    com.tencent.mm.media.j.b.a locala = this.hpT;
     if (locala != null) {
-      locala.nd(paramInt);
+      locala.ng(paramInt);
     }
   }
   
   public void onDrawFrame(GL10 paramGL10)
   {
-    if (this.hni)
+    if (this.hpW)
     {
-      ad.i("MicroMsg.Media.AbsSurfaceRenderer", "do clear frame");
-      this.hni = false;
+      ae.i("MicroMsg.Media.AbsSurfaceRenderer", "do clear frame");
+      this.hpW = false;
     }
     do
     {
       return;
-      if ((this.hng == null) && (this.gKH == -1))
+      if ((this.hpU == null) && (this.gNq == -1))
       {
-        ad.e("MicroMsg.Media.AbsSurfaceRenderer", hashCode() + " there is no input ,do you dismiss setting input");
+        ae.e("MicroMsg.Media.AbsSurfaceRenderer", hashCode() + " there is no input ,do you dismiss setting input");
         return;
       }
-      ams();
-      paramGL10 = this.hnn;
+      amH();
+      paramGL10 = this.hqb;
     } while (paramGL10 == null);
     paramGL10.invoke();
   }
   
   public void onSurfaceChanged(GL10 paramGL10, int paramInt1, int paramInt2)
   {
-    ad.i("MicroMsg.Media.AbsSurfaceRenderer", hashCode() + " onSurfaceChanged width:" + paramInt1 + ", height:" + paramInt2);
+    ae.i("MicroMsg.Media.AbsSurfaceRenderer", hashCode() + " onSurfaceChanged width:" + paramInt1 + ", height:" + paramInt2);
     cT(paramInt1, paramInt2);
   }
   
   public void onSurfaceCreated(GL10 paramGL10, EGLConfig paramEGLConfig)
   {
-    ad.i("MicroMsg.Media.AbsSurfaceRenderer", hashCode() + " onSurfaceCreated");
-    paramGL10 = com.tencent.mm.media.k.c.hoP;
-    c.a.aug();
+    ae.i("MicroMsg.Media.AbsSurfaceRenderer", hashCode() + " onSurfaceCreated");
+    paramGL10 = com.tencent.mm.media.k.c.hrD;
+    c.a.auv();
   }
   
   public void release(boolean paramBoolean)
   {
-    ad.i("MicroMsg.Media.AbsSurfaceRenderer", hashCode() + " called release, shouldDestroySurfaceTexture: " + paramBoolean);
-    Object localObject1 = this.hnf;
+    ae.i("MicroMsg.Media.AbsSurfaceRenderer", hashCode() + " called release, shouldDestroySurfaceTexture: " + paramBoolean);
+    Object localObject1 = this.hpT;
     if (localObject1 != null) {
       ((com.tencent.mm.media.j.b.a)localObject1).release();
     }
@@ -295,15 +295,15 @@ public abstract class a
         ((SurfaceTexture)localObject1).release();
       }
     }
-    localObject1 = this.hnh;
+    localObject1 = this.hpV;
     if (localObject1 != null) {
       ((com.tencent.mm.media.g.d)localObject1).close();
     }
     try
     {
       this.surfaceTexture = null;
-      localObject1 = z.MKo;
-      this.hno = false;
+      localObject1 = z.Nhr;
+      this.hqc = false;
       return;
     }
     finally {}

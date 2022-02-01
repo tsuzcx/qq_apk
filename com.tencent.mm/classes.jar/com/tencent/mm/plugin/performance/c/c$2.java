@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.performance.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 final class c$2
   implements Runnable
@@ -10,9 +10,9 @@ final class c$2
   
   public final void run()
   {
-    AppMethodBeat.i(211780);
-    ad.i("MicroMsg.MemoryWatchDog", "[dumpMemoryAsync] %s", new Object[] { this.wKe.M(true, this.obr) });
-    AppMethodBeat.o(211780);
+    AppMethodBeat.i(215450);
+    ae.i("MicroMsg.MemoryWatchDog", "[dumpMemoryAsync] %s", new Object[] { this.wZP.P(true, this.ohh) });
+    AppMethodBeat.o(215450);
   }
 }
 

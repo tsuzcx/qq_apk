@@ -7,7 +7,7 @@ import com.tencent.mm.plugin.appbrand.jsapi.ce;
 import com.tencent.mm.plugin.appbrand.jsapi.cf;
 import com.tencent.mm.plugin.appbrand.jsapi.cg;
 import com.tencent.mm.plugin.appbrand.jsapi.cn;
-import com.tencent.mm.plugin.appbrand.jsapi.n.ae;
+import com.tencent.mm.plugin.appbrand.jsapi.n.ad;
 import com.tencent.mm.plugin.appbrand.jsapi.n.al;
 import com.tencent.mm.plugin.appbrand.jsapi.n.r;
 import com.tencent.mm.plugin.appbrand.jsapi.n.v;
@@ -16,7 +16,7 @@ import com.tencent.mm.plugin.appbrand.jsapi.n.y;
 import com.tencent.mm.plugin.appbrand.jsapi.nfc.a.a.c.a;
 import com.tencent.mm.plugin.appbrand.jsapi.video.AppBrandVideoWrapper;
 import com.tencent.mm.plugin.appbrand.jsapi.video.i.1;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -24,41 +24,42 @@ import java.util.Map;
 
 public final class a
 {
-  protected Map<String, com.tencent.mm.plugin.appbrand.jsapi.m> cmf;
-  protected Map<String, com.tencent.mm.plugin.appbrand.jsapi.m> cmg;
+  protected Map<String, com.tencent.mm.plugin.appbrand.jsapi.m> cmh;
+  protected Map<String, com.tencent.mm.plugin.appbrand.jsapi.m> cmi;
   
   static
   {
     AppMethodBeat.i(146678);
-    cn.biy();
-    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.Video.LuggageVideoNonSameLayerStrategy", "init, use ExoVideoView");
+    cn.bjh();
+    com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.Video.LuggageVideoNonSameLayerStrategy", "init, use ExoVideoView");
     AppBrandVideoWrapper.setVideoViewFactory(new i.1());
-    c.a locala = com.tencent.mm.plugin.appbrand.jsapi.nfc.a.a.c.kZM;
-    c.a.b(com.tencent.mm.plugin.appbrand.p.b.lXx);
+    c.a locala = com.tencent.mm.plugin.appbrand.jsapi.nfc.a.a.c.ldv;
+    c.a.b(com.tencent.mm.plugin.appbrand.p.b.mce);
+    com.tencent.mm.plugin.appbrand.jsapi.p.e.a(com.tencent.mm.plugin.appbrand.platform.window.h.mtP);
     AppMethodBeat.o(146678);
   }
   
   public a()
   {
     AppMethodBeat.i(146675);
-    this.cmf = new HashMap();
-    this.cmg = new HashMap();
+    this.cmh = new HashMap();
+    this.cmi = new HashMap();
     AppMethodBeat.o(146675);
   }
   
   private void a(com.tencent.mm.plugin.appbrand.jsapi.m paramm)
   {
     AppMethodBeat.i(146677);
-    if ((paramm == null) || (bt.isNullOrNil(paramm.getName())))
+    if ((paramm == null) || (bu.isNullOrNil(paramm.getName())))
     {
       AppMethodBeat.o(146677);
       return;
     }
-    this.cmg.put(paramm.getName(), paramm);
+    this.cmi.put(paramm.getName(), paramm);
     AppMethodBeat.o(146677);
   }
   
-  public final Map<String, com.tencent.mm.plugin.appbrand.jsapi.m> DU()
+  public final Map<String, com.tencent.mm.plugin.appbrand.jsapi.m> DX()
   {
     AppMethodBeat.i(146676);
     a(new bm());
@@ -117,11 +118,11 @@ public final class a
     a(new com.tencent.mm.plugin.appbrand.jsapi.coverview.j());
     a(new x());
     a(new v());
-    a(new ae());
+    a(new com.tencent.mm.plugin.appbrand.jsapi.n.ae());
     a(new com.tencent.mm.plugin.appbrand.jsapi.n.e());
     a(new r());
     a(new com.tencent.mm.plugin.appbrand.jsapi.n.q());
-    Object localObject = com.tencent.mm.plugin.appbrand.jsapi.i.aj.bkL();
+    Object localObject = com.tencent.mm.plugin.appbrand.jsapi.i.aj.blv();
     if (((List)localObject).size() > 0)
     {
       localObject = ((List)localObject).iterator();
@@ -131,7 +132,7 @@ public final class a
     }
     a(new com.tencent.mm.plugin.appbrand.jsapi.ui.e());
     a(new com.tencent.mm.plugin.appbrand.jsapi.ui.c());
-    a(new com.tencent.mm.plugin.appbrand.jsapi.n.ad());
+    a(new ad());
     a(new com.tencent.mm.plugin.appbrand.jsapi.n.d());
     a(new com.tencent.mm.plugin.appbrand.jsapi.ui.f());
     a(new com.tencent.mm.plugin.appbrand.jsapi.ui.d());
@@ -151,14 +152,14 @@ public final class a
     a(new com.tencent.mm.plugin.appbrand.jsapi.file.w());
     a(new al());
     a(new y());
-    localObject = this.cmg;
+    localObject = this.cmi;
     AppMethodBeat.o(146676);
     return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.luggage.sdk.a
  * JD-Core Version:    0.7.0.1
  */

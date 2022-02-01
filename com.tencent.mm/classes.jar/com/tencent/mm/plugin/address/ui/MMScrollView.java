@@ -7,14 +7,14 @@ import android.view.View.OnFocusChangeListener;
 import android.view.ViewGroup;
 import android.widget.ScrollView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cc.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.cb.a;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public class MMScrollView
   extends ScrollView
   implements View.OnFocusChangeListener
 {
-  private a jts;
+  private a jwn;
   
   public MMScrollView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -52,7 +52,7 @@ public class MMScrollView
   public void onFocusChange(final View paramView, boolean paramBoolean)
   {
     AppMethodBeat.i(20954);
-    ad.d("MicroMsg.MMScrollView", "onFocusChange:".concat(String.valueOf(paramBoolean)));
+    ae.d("MicroMsg.MMScrollView", "onFocusChange:".concat(String.valueOf(paramBoolean)));
     if (!paramBoolean)
     {
       AppMethodBeat.o(20954);
@@ -80,7 +80,7 @@ public class MMScrollView
   public void setOnSizeChangeListener(a parama)
   {
     if (parama != null) {
-      this.jts = parama;
+      this.jwn = parama;
     }
   }
   

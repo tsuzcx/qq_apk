@@ -2,7 +2,7 @@ package com.tencent.mm.ui.widget;
 
 public abstract interface MMEditText$b
 {
-  public abstract void aTH();
+  public abstract void aUg();
 }
 
 

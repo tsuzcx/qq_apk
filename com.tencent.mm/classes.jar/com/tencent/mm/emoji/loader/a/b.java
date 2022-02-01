@@ -2,57 +2,57 @@ package com.tencent.mm.emoji.loader.a;
 
 import android.graphics.Bitmap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/emoji/loader/cache/CoverMemoryCache;", "", "()V", "cacheMap", "Lcom/tencent/mm/memory/cache/BitmapResource;", "Landroid/graphics/Bitmap;", "clear", "", "get", "key", "", "put", "bitmap", "plugin-emojisdk_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/emoji/loader/cache/CoverMemoryCache;", "", "()V", "cacheMap", "Lcom/tencent/mm/memory/cache/BitmapResource;", "Landroid/graphics/Bitmap;", "clear", "", "get", "key", "", "put", "bitmap", "plugin-emojisdk_release"})
 public final class b
 {
-  private static final com.tencent.mm.memory.a.b<Bitmap> giH;
-  public static final b giI;
+  private static final com.tencent.mm.memory.a.b<Bitmap> gkZ;
+  public static final b gla;
   
   static
   {
     AppMethodBeat.i(105416);
-    giI = new b();
-    giH = new com.tencent.mm.memory.a.b(300, b.class);
+    gla = new b();
+    gkZ = new com.tencent.mm.memory.a.b(300, b.class);
     AppMethodBeat.o(105416);
   }
   
   public static void clear()
   {
     AppMethodBeat.i(105415);
-    giH.clear();
+    gkZ.clear();
     AppMethodBeat.o(105415);
   }
   
   public static void put(String paramString, Bitmap paramBitmap)
   {
     AppMethodBeat.i(105414);
-    ad.d(c.aeD(), "put: " + paramString + ", " + paramBitmap);
+    ae.d(c.aeP(), "put: " + paramString + ", " + paramBitmap);
     if (paramString != null)
     {
       if ((paramBitmap != null) && (!paramBitmap.isRecycled()))
       {
-        giH.put(paramString, paramBitmap);
+        gkZ.put(paramString, paramBitmap);
         AppMethodBeat.o(105414);
         return;
       }
-      giH.remove(paramString);
+      gkZ.remove(paramString);
     }
     AppMethodBeat.o(105414);
   }
   
-  public static Bitmap vT(String paramString)
+  public static Bitmap wA(String paramString)
   {
     AppMethodBeat.i(105413);
-    ad.d(c.aeD(), "get: ".concat(String.valueOf(paramString)));
+    ae.d(c.aeP(), "get: ".concat(String.valueOf(paramString)));
     if (paramString == null)
     {
       AppMethodBeat.o(105413);
       return null;
     }
-    paramString = (Bitmap)giH.get(paramString);
+    paramString = (Bitmap)gkZ.get(paramString);
     if ((paramString == null) || (paramString.isRecycled()))
     {
       AppMethodBeat.o(105413);

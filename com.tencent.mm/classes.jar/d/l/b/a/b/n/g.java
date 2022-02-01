@@ -11,12 +11,12 @@ public abstract interface g
   public static final class a
     implements g
   {
-    public static final a NEq;
+    public static final a Obx;
     
     static
     {
       AppMethodBeat.i(61302);
-      NEq = new a();
+      Obx = new a();
       AppMethodBeat.o(61302);
     }
     

@@ -2,7 +2,7 @@ package com.tencent.mm.dynamicbackground.view;
 
 import d.l;
 
-@l(gfx={1, 1, 11}, gfy={""}, gfz={"Lcom/tencent/mm/dynamicbackground/view/DynamicBackgroundGLSurfaceView$Companion;", "", "()V", "DRAW_LOG", "", "TAG", "", "dynamicbg_release"})
+@l(gjZ={1, 1, 11}, gka={""}, gkb={"Lcom/tencent/mm/dynamicbackground/view/DynamicBackgroundGLSurfaceView$Companion;", "", "()V", "DRAW_LOG", "", "TAG", "", "dynamicbg_release"})
 public final class DynamicBackgroundGLSurfaceView$a {}
 
 

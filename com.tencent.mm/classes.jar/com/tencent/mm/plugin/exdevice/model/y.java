@@ -1,34 +1,34 @@
 package com.tencent.mm.plugin.exdevice.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.dra;
-import com.tencent.mm.protocal.protobuf.drb;
+import com.tencent.mm.protocal.protobuf.drx;
+import com.tencent.mm.protocal.protobuf.dry;
 
 public final class y
   extends n
   implements k
 {
-  private String cUi;
+  private String cVh;
   private f callback;
-  private String dow;
-  public String ffB;
-  private int qdb;
+  private String dpB;
+  public String fhy;
+  private int qjG;
   private b rr;
   
   public y(String paramString1, String paramString2, String paramString3)
   {
-    this.ffB = paramString3;
-    this.cUi = paramString1;
-    this.dow = paramString2;
-    this.qdb = 0;
+    this.fhy = paramString3;
+    this.cVh = paramString1;
+    this.dpB = paramString2;
+    this.qjG = 0;
   }
   
   public final int doScene(e parame, f paramf)
@@ -36,18 +36,18 @@ public final class y
     AppMethodBeat.i(23422);
     this.callback = paramf;
     paramf = new b.a();
-    paramf.hNM = new dra();
-    paramf.hNN = new drb();
+    paramf.hQF = new drx();
+    paramf.hQG = new dry();
     paramf.uri = "/cgi-bin/mmoc-bin/hardware/updatemydeviceattr";
     paramf.funcId = getType();
-    paramf.hNO = 0;
+    paramf.hQH = 0;
     paramf.respCmdId = 0;
-    this.rr = paramf.aDC();
-    paramf = (dra)this.rr.hNK.hNQ;
-    paramf.ffB = this.ffB;
-    paramf.wyn = this.cUi;
-    paramf.devicetype = this.dow;
-    paramf.HEM = this.qdb;
+    this.rr = paramf.aDS();
+    paramf = (drx)this.rr.hQD.hQJ;
+    paramf.fhy = this.fhy;
+    paramf.wNY = this.cVh;
+    paramf.devicetype = this.dpB;
+    paramf.HYz = this.qjG;
     int i = dispatch(parame, this.rr, this);
     AppMethodBeat.o(23422);
     return i;

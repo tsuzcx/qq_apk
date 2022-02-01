@@ -10,16 +10,16 @@ import android.view.MenuItem.OnMenuItemClickListener;
 import android.widget.ListView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.ba;
-import com.tencent.mm.model.u;
+import com.tencent.mm.model.bc;
+import com.tencent.mm.model.v;
 import com.tencent.mm.plugin.fts.a.a.j;
 import com.tencent.mm.plugin.fts.a.a.k;
 import com.tencent.mm.plugin.fts.a.a.m;
 import com.tencent.mm.plugin.fts.ui.l;
 import com.tencent.mm.pluginsdk.ui.applet.aa.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.storage.am;
-import com.tencent.mm.storage.bp;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.storage.an;
+import com.tencent.mm.storage.bq;
 import com.tencent.mm.ui.contact.MMBaseSelectContactUI;
 import com.tencent.mm.ui.contact.a.e;
 import com.tencent.mm.ui.contact.o;
@@ -35,19 +35,19 @@ import java.util.List;
 public class MMCreateChatroomUI
   extends MMBaseSelectContactUI
 {
-  private boolean KMC;
-  a KMD;
-  private b KME;
-  private boolean KMF;
-  private List<String> KMt;
-  private boolean KpI;
+  private boolean KMc;
+  private List<String> LiR;
+  private boolean Lja;
+  a Ljb;
+  private b Ljc;
+  private boolean Ljd;
   private int scene;
   
   private static List<String> P(List<String> paramList)
   {
     AppMethodBeat.i(39251);
     LinkedList localLinkedList = new LinkedList();
-    if (!ba.ajx())
+    if (!bc.ajM())
     {
       AppMethodBeat.o(39251);
       return localLinkedList;
@@ -61,14 +61,14 @@ public class MMCreateChatroomUI
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
-      ba.aBQ();
-      am localam = com.tencent.mm.model.c.azp().Bf(str);
+      bc.aCg();
+      an localan = com.tencent.mm.model.c.azF().BH(str);
       paramList = str;
-      if (localam != null)
+      if (localan != null)
       {
         paramList = str;
-        if ((int)localam.gfj != 0) {
-          paramList = localam.adv();
+        if ((int)localan.ght != 0) {
+          paramList = localan.adG();
         }
       }
       localLinkedList.add(paramList);
@@ -100,36 +100,36 @@ public class MMCreateChatroomUI
     AppMethodBeat.i(39253);
     if (paramInt == 1)
     {
-      a locala = this.KMD;
-      locala.iVx.remove(paramString);
-      Iterator localIterator = locala.KMv.iterator();
+      a locala = this.Ljb;
+      locala.iYq.remove(paramString);
+      Iterator localIterator = locala.LiT.iterator();
       while (localIterator.hasNext())
       {
         a.a locala1 = (a.a)localIterator.next();
-        if (paramString.equals(locala1.KMy)) {
-          locala1.KMy = null;
+        if (paramString.equals(locala1.LiW)) {
+          locala1.LiW = null;
         }
       }
       locala.notifyDataSetChanged();
-      Zm();
+      Zv();
     }
     AppMethodBeat.o(39253);
   }
   
-  public final void Zd()
+  public final void Zm()
   {
     AppMethodBeat.i(39241);
-    super.Zd();
-    this.KMt = getIntent().getStringArrayListExtra("query_phrase_list");
-    this.KMC = getIntent().getBooleanExtra("go_to_chatroom_direct", false);
+    super.Zm();
+    this.LiR = getIntent().getStringArrayListExtra("query_phrase_list");
+    this.Lja = getIntent().getBooleanExtra("go_to_chatroom_direct", false);
     this.scene = getIntent().getIntExtra("scene_from", 0);
     AppMethodBeat.o(39241);
   }
   
-  public final void Zm()
+  public final void Zv()
   {
     AppMethodBeat.i(39243);
-    List localList = this.KMD.fKR();
+    List localList = this.Ljb.fPk();
     if (localList.size() > 0)
     {
       updateOptionMenuText(1, getString(2131755835) + "(" + localList.size() + ")");
@@ -154,9 +154,9 @@ public class MMCreateChatroomUI
     if ((parama instanceof e))
     {
       Object localObject = (e)parama;
-      parama = this.KMD;
-      localObject = ((e)localObject).kjY.tuh;
-      if (parama.iVx.contains(localObject))
+      parama = this.Ljb;
+      localObject = ((e)localObject).kno.tEY;
+      if (parama.iYq.contains(localObject))
       {
         AppMethodBeat.o(39249);
         return true;
@@ -168,17 +168,17 @@ public class MMCreateChatroomUI
     return false;
   }
   
-  public final boolean aRu()
+  public final boolean aRT()
   {
     return false;
   }
   
-  public final boolean aRv()
+  public final boolean aRU()
   {
     return false;
   }
   
-  public final String aRw()
+  public final String aRV()
   {
     AppMethodBeat.i(39245);
     String str = getString(2131763009);
@@ -186,24 +186,24 @@ public class MMCreateChatroomUI
     return str;
   }
   
-  public final q aRx()
+  public final q aRW()
   {
     AppMethodBeat.i(39246);
-    if (this.KMD == null) {
-      this.KMD = new a(this, this.KMt, this.scene);
+    if (this.Ljb == null) {
+      this.Ljb = new a(this, this.LiR, this.scene);
     }
-    a locala = this.KMD;
+    a locala = this.Ljb;
     AppMethodBeat.o(39246);
     return locala;
   }
   
-  public final o aRy()
+  public final o aRX()
   {
     AppMethodBeat.i(39247);
-    if (this.KME == null) {
-      this.KME = new b(this, this.scene);
+    if (this.Ljc == null) {
+      this.Ljc = new b(this, this.scene);
     }
-    b localb = this.KME;
+    b localb = this.Ljc;
     AppMethodBeat.o(39247);
     return localb;
   }
@@ -214,23 +214,23 @@ public class MMCreateChatroomUI
     if ((parama instanceof e))
     {
       Object localObject = (e)parama;
-      a locala = this.KMD;
-      localObject = ((e)localObject).kjY.tuh;
+      a locala = this.Ljb;
+      localObject = ((e)localObject).kno.tEY;
       int j = parama.position;
-      if (locala.iVx.contains(localObject))
+      if (locala.iYq.contains(localObject))
       {
-        int i = locala.KMv.size() - 1;
+        int i = locala.LiT.size() - 1;
         if (i >= 0)
         {
-          parama = (a.a)locala.KMv.get(i);
-          if (j < parama.tvN) {}
+          parama = (a.a)locala.LiT.get(i);
+          if (j < parama.tGE) {}
         }
         for (;;)
         {
           if (parama == null) {
             break label129;
           }
-          if (((String)localObject).equals(parama.KMy)) {
+          if (((String)localObject).equals(parama.LiW)) {
             break label137;
           }
           AppMethodBeat.o(39248);
@@ -251,7 +251,7 @@ public class MMCreateChatroomUI
     return false;
   }
   
-  public final boolean fIm()
+  public final boolean fME()
   {
     return true;
   }
@@ -260,22 +260,22 @@ public class MMCreateChatroomUI
   {
     AppMethodBeat.i(39242);
     super.initView();
-    a locala = this.KMD;
-    Iterator localIterator = locala.KMt.iterator();
+    a locala = this.Ljb;
+    Iterator localIterator = locala.LiR.iterator();
     while (localIterator.hasNext())
     {
       Object localObject = (String)localIterator.next();
       j localj = new j();
       localj.handler = locala.handler;
-      localj.tvj = locala.wPW;
+      localj.tGa = locala.xfN;
       localj.query = ((String)localObject);
-      localj.tvi = com.tencent.mm.plugin.fts.a.c.b.tvI;
-      localj.tve = new int[] { 131072 };
-      localj.tvh.add("filehelper");
-      localj.tvh.add(u.aAm());
+      localj.tFZ = com.tencent.mm.plugin.fts.a.c.b.tGz;
+      localj.tFV = new int[] { 131072 };
+      localj.tFY.add("filehelper");
+      localj.tFY.add(v.aAC());
       localObject = ((com.tencent.mm.plugin.fts.a.n)g.ad(com.tencent.mm.plugin.fts.a.n.class)).search(2, localj);
-      locala.KMu = new ArrayList();
-      locala.KMu.add(localObject);
+      locala.LiS = new ArrayList();
+      locala.LiS.add(localObject);
     }
     addTextOptionMenu(1, getString(2131755835), new MenuItem.OnMenuItemClickListener()
     {
@@ -289,24 +289,24 @@ public class MMCreateChatroomUI
           if (MMCreateChatroomUI.c(MMCreateChatroomUI.this) == 3)
           {
             MMCreateChatroomUI.d(MMCreateChatroomUI.this);
-            l.mK(true);
+            l.mO(true);
           }
         }
-        ad.i("MicroMsg.MMCreateChatroomUI", "Create the chatroom");
+        ae.i("MicroMsg.MMCreateChatroomUI", "Create the chatroom");
         AppMethodBeat.o(39237);
         return true;
       }
-    }, null, s.b.JbS);
-    Zm();
+    }, null, s.b.JwA);
+    Zv();
     AppMethodBeat.o(39242);
   }
   
   public void onDestroy()
   {
     AppMethodBeat.i(39244);
-    this.KMD.finish();
-    if ((!this.KMF) && (this.scene == 3)) {
-      l.mK(false);
+    this.Ljb.finish();
+    if ((!this.Ljd) && (this.scene == 3)) {
+      l.mO(false);
     }
     super.onDestroy();
     AppMethodBeat.o(39244);
@@ -318,32 +318,32 @@ public class MMCreateChatroomUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  public final void rg(int paramInt)
+  public final void rj(int paramInt)
   {
     AppMethodBeat.i(39252);
-    a locala = this.KMD;
-    k localk = this.KME.tuZ;
-    Object localObject = this.KME.query;
-    if ((localk.tvl.size() != 1) || (!((m)localk.tvl.get(0)).tuh.equals("no_result​")))
+    a locala = this.Ljb;
+    k localk = this.Ljc.tFQ;
+    Object localObject = this.Ljc.query;
+    if ((localk.tGc.size() != 1) || (!((m)localk.tGc.get(0)).tEY.equals("no_result​")))
     {
       a.a locala1 = new a.a(locala, (byte)0);
-      locala1.tvl = localk.tvl;
-      locala1.tun = localk.tun;
+      locala1.tGc = localk.tGc;
+      locala1.tFe = localk.tFe;
       locala1.query = ((String)localObject);
-      locala.KMv.add(locala1);
-      int i = paramInt - locala.KmO.getContentLV().getHeaderViewsCount();
+      locala.LiT.add(locala1);
+      int i = paramInt - locala.KJi.getContentLV().getHeaderViewsCount();
       if (i >= 3)
       {
-        localObject = (m)localk.tvl.remove(i);
-        localk.tvl.add(0, localObject);
-        paramInt = locala.KmO.getContentLV().getHeaderViewsCount();
+        localObject = (m)localk.tGc.remove(i);
+        localk.tGc.add(0, localObject);
+        paramInt = locala.KJi.getContentLV().getHeaderViewsCount();
       }
-      locala.fKQ();
-      i = locala1.tvN;
-      locala.KmO.getContentLV().post(new a.2(locala, i + paramInt + 1));
+      locala.fPj();
+      i = locala1.tGE;
+      locala.KJi.getContentLV().post(new a.2(locala, i + paramInt + 1));
     }
-    fIk();
-    fIl();
+    fMC();
+    fMD();
     hideVKB();
     AppMethodBeat.o(39252);
   }

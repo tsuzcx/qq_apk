@@ -3,17 +3,19 @@ package com.tencent.mm.live.b;
 import android.content.Context;
 import android.content.res.Resources;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.le;
+import com.tencent.mm.g.a.lf;
 import com.tencent.mm.live.core.core.b.d;
-import com.tencent.mm.model.ak;
-import com.tencent.mm.model.v;
+import com.tencent.mm.model.al;
+import com.tencent.mm.model.w;
 import com.tencent.mm.n.e;
-import com.tencent.mm.protocal.protobuf.buo;
-import com.tencent.mm.protocal.protobuf.buq;
-import com.tencent.mm.protocal.protobuf.buw;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ab;
+import com.tencent.mm.protocal.protobuf.bvi;
+import com.tencent.mm.protocal.protobuf.bvk;
+import com.tencent.mm.protocal.protobuf.bvq;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.ac;
+import d.g.b.ad;
 import d.g.b.p;
 import d.l;
 import d.o;
@@ -21,515 +23,515 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/live/model/LiveDataManager;", "", "()V", "TAG", "", "anchorLinkSuccessCountPerShow", "", "getAnchorLinkSuccessCountPerShow", "()I", "setAnchorLinkSuccessCountPerShow", "(I)V", "anchorStatus", "Lcom/tencent/mm/protocal/protobuf/LiveAnchorStatus;", "getAnchorStatus", "()Lcom/tencent/mm/protocal/protobuf/LiveAnchorStatus;", "setAnchorStatus", "(Lcom/tencent/mm/protocal/protobuf/LiveAnchorStatus;)V", "anchorUserName", "getAnchorUserName", "()Ljava/lang/String;", "setAnchorUserName", "(Ljava/lang/String;)V", "value", "audienceCountMax", "getAudienceCountMax", "setAudienceCountMax", "callingMicNickname", "getCallingMicNickname", "setCallingMicNickname", "callingMicUsername", "getCallingMicUsername", "setCallingMicUsername", "enterFromScene", "getEnterFromScene", "setEnterFromScene", "hasChangeVideoModePerLinkMic", "", "getHasChangeVideoModePerLinkMic", "()Z", "setHasChangeVideoModePerLinkMic", "(Z)V", "isClickStartLive", "setClickStartLive", "isForeigner", "setForeigner", "isLiveNameChanged", "setLiveNameChanged", "isManualClosed", "setManualClosed", "isStartLiveReport", "setStartLiveReport", "isVerifyChecked", "setVerifyChecked", "isVerifyUiShow", "setVerifyUiShow", "isVisitorReport", "setVisitorReport", "lastOrientation", "getLastOrientation", "setLastOrientation", "linkMicRequestCount", "getLinkMicRequestCount", "setLinkMicRequestCount", "liveCookies", "", "getLiveCookies", "()[B", "setLiveCookies", "([B)V", "liveDynamicConfig", "Lcom/tencent/mm/live/model/LiveDataManager$LiveDynamicConfig;", "getLiveDynamicConfig", "()Lcom/tencent/mm/live/model/LiveDataManager$LiveDynamicConfig;", "setLiveDynamicConfig", "(Lcom/tencent/mm/live/model/LiveDataManager$LiveDynamicConfig;)V", "liveFaceVerifyInfo", "Lcom/tencent/mm/live/model/LiveDataManager$LiveFaceVerifyInfo;", "getLiveFaceVerifyInfo", "()Lcom/tencent/mm/live/model/LiveDataManager$LiveFaceVerifyInfo;", "setLiveFaceVerifyInfo", "(Lcom/tencent/mm/live/model/LiveDataManager$LiveFaceVerifyInfo;)V", "liveInfo", "Lcom/tencent/mm/protocal/protobuf/LiveInfo;", "getLiveInfo", "()Lcom/tencent/mm/protocal/protobuf/LiveInfo;", "setLiveInfo", "(Lcom/tencent/mm/protocal/protobuf/LiveInfo;)V", "liveRoomModel", "Lcom/tencent/mm/live/core/core/model/LiveRoomModel;", "getLiveRoomModel", "()Lcom/tencent/mm/live/core/core/model/LiveRoomModel;", "setLiveRoomModel", "(Lcom/tencent/mm/live/core/core/model/LiveRoomModel;)V", "liveSdkInfo", "Lcom/tencent/mm/protocal/protobuf/LiveSdkInfo;", "getLiveSdkInfo", "()Lcom/tencent/mm/protocal/protobuf/LiveSdkInfo;", "setLiveSdkInfo", "(Lcom/tencent/mm/protocal/protobuf/LiveSdkInfo;)V", "liveSmallWindowInfo", "Lcom/tencent/mm/live/model/LiveDataManager$LiveSmallWindowInfo;", "getLiveSmallWindowInfo", "()Lcom/tencent/mm/live/model/LiveDataManager$LiveSmallWindowInfo;", "setLiveSmallWindowInfo", "(Lcom/tencent/mm/live/model/LiveDataManager$LiveSmallWindowInfo;)V", "liveStatus", "Lcom/tencent/mm/live/model/LiveDataManager$LiveStatus;", "getLiveStatus", "()Lcom/tencent/mm/live/model/LiveDataManager$LiveStatus;", "setLiveStatus", "(Lcom/tencent/mm/live/model/LiveDataManager$LiveStatus;)V", "mCheckDeviceLsn", "com/tencent/mm/live/model/LiveDataManager$mCheckDeviceLsn$1", "Lcom/tencent/mm/live/model/LiveDataManager$mCheckDeviceLsn$1;", "mLastOrientation", "getMLastOrientation", "setMLastOrientation", "mStartLinkTimes", "", "getMStartLinkTimes", "()J", "setMStartLinkTimes", "(J)V", "micPmkExpire", "getMicPmkExpire", "setMicPmkExpire", "msgFilterTime", "getMsgFilterTime", "setMsgFilterTime", "msgList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/live/view/adapter/CommentData;", "Lkotlin/collections/ArrayList;", "getMsgList", "()Ljava/util/ArrayList;", "setMsgList", "(Ljava/util/ArrayList;)V", "onlineHeadImgList", "getOnlineHeadImgList", "setOnlineHeadImgList", "shareRoomList", "Ljava/util/HashMap;", "Lkotlin/Pair;", "Lkotlin/collections/HashMap;", "getShareRoomList", "()Ljava/util/HashMap;", "setShareRoomList", "(Ljava/util/HashMap;)V", "sysMsgManager", "Lcom/tencent/mm/live/model/linkmic/LiveSysMsgManager;", "getSysMsgManager", "()Lcom/tencent/mm/live/model/linkmic/LiveSysMsgManager;", "setSysMsgManager", "(Lcom/tencent/mm/live/model/linkmic/LiveSysMsgManager;)V", "thumbUrl", "getThumbUrl", "setThumbUrl", "visitorCommentCount", "getVisitorCommentCount", "setVisitorCommentCount", "visitorConnectCount", "getVisitorConnectCount", "setVisitorConnectCount", "visitorConnectReqCount", "getVisitorConnectReqCount", "setVisitorConnectReqCount", "visitorEnterErrorCode", "getVisitorEnterErrorCode", "setVisitorEnterErrorCode", "visitorEnterMemberCount", "getVisitorEnterMemberCount", "setVisitorEnterMemberCount", "visitorLikeCount", "getVisitorLikeCount", "setVisitorLikeCount", "wechatRoomId", "getWechatRoomId", "setWechatRoomId", "displayLiveName", "displayUsername", "username", "formatAnchorLikeCount", "formatLikeCount", "liveError", "", "liveFinish", "liveStart", "preOnCreate", "release", "resetData", "resetLiveFaceVerifyInfo", "LiveDynamicConfig", "LiveFaceVerifyInfo", "LiveSmallWindowInfo", "LiveStatus", "plugin-logic_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/live/model/LiveDataManager;", "", "()V", "TAG", "", "anchorLinkSuccessCountPerShow", "", "getAnchorLinkSuccessCountPerShow", "()I", "setAnchorLinkSuccessCountPerShow", "(I)V", "anchorStatus", "Lcom/tencent/mm/protocal/protobuf/LiveAnchorStatus;", "getAnchorStatus", "()Lcom/tencent/mm/protocal/protobuf/LiveAnchorStatus;", "setAnchorStatus", "(Lcom/tencent/mm/protocal/protobuf/LiveAnchorStatus;)V", "anchorUserName", "getAnchorUserName", "()Ljava/lang/String;", "setAnchorUserName", "(Ljava/lang/String;)V", "value", "audienceCountMax", "getAudienceCountMax", "setAudienceCountMax", "callingMicNickname", "getCallingMicNickname", "setCallingMicNickname", "callingMicUsername", "getCallingMicUsername", "setCallingMicUsername", "enterFromScene", "getEnterFromScene", "setEnterFromScene", "hasChangeVideoModePerLinkMic", "", "getHasChangeVideoModePerLinkMic", "()Z", "setHasChangeVideoModePerLinkMic", "(Z)V", "isClickStartLive", "setClickStartLive", "isForeigner", "setForeigner", "isLiveNameChanged", "setLiveNameChanged", "isManualClosed", "setManualClosed", "isStartLiveReport", "setStartLiveReport", "isVerifyChecked", "setVerifyChecked", "isVerifyUiShow", "setVerifyUiShow", "isVisitorReport", "setVisitorReport", "lastOrientation", "getLastOrientation", "setLastOrientation", "linkMicRequestCount", "getLinkMicRequestCount", "setLinkMicRequestCount", "liveCookies", "", "getLiveCookies", "()[B", "setLiveCookies", "([B)V", "liveDynamicConfig", "Lcom/tencent/mm/live/model/LiveDataManager$LiveDynamicConfig;", "getLiveDynamicConfig", "()Lcom/tencent/mm/live/model/LiveDataManager$LiveDynamicConfig;", "setLiveDynamicConfig", "(Lcom/tencent/mm/live/model/LiveDataManager$LiveDynamicConfig;)V", "liveFaceVerifyInfo", "Lcom/tencent/mm/live/model/LiveDataManager$LiveFaceVerifyInfo;", "getLiveFaceVerifyInfo", "()Lcom/tencent/mm/live/model/LiveDataManager$LiveFaceVerifyInfo;", "setLiveFaceVerifyInfo", "(Lcom/tencent/mm/live/model/LiveDataManager$LiveFaceVerifyInfo;)V", "liveInfo", "Lcom/tencent/mm/protocal/protobuf/LiveInfo;", "getLiveInfo", "()Lcom/tencent/mm/protocal/protobuf/LiveInfo;", "setLiveInfo", "(Lcom/tencent/mm/protocal/protobuf/LiveInfo;)V", "liveRoomModel", "Lcom/tencent/mm/live/core/core/model/LiveRoomModel;", "getLiveRoomModel", "()Lcom/tencent/mm/live/core/core/model/LiveRoomModel;", "setLiveRoomModel", "(Lcom/tencent/mm/live/core/core/model/LiveRoomModel;)V", "liveSdkInfo", "Lcom/tencent/mm/protocal/protobuf/LiveSdkInfo;", "getLiveSdkInfo", "()Lcom/tencent/mm/protocal/protobuf/LiveSdkInfo;", "setLiveSdkInfo", "(Lcom/tencent/mm/protocal/protobuf/LiveSdkInfo;)V", "liveSmallWindowInfo", "Lcom/tencent/mm/live/model/LiveDataManager$LiveSmallWindowInfo;", "getLiveSmallWindowInfo", "()Lcom/tencent/mm/live/model/LiveDataManager$LiveSmallWindowInfo;", "setLiveSmallWindowInfo", "(Lcom/tencent/mm/live/model/LiveDataManager$LiveSmallWindowInfo;)V", "liveStatus", "Lcom/tencent/mm/live/model/LiveDataManager$LiveStatus;", "getLiveStatus", "()Lcom/tencent/mm/live/model/LiveDataManager$LiveStatus;", "setLiveStatus", "(Lcom/tencent/mm/live/model/LiveDataManager$LiveStatus;)V", "mCheckDeviceLsn", "com/tencent/mm/live/model/LiveDataManager$mCheckDeviceLsn$1", "Lcom/tencent/mm/live/model/LiveDataManager$mCheckDeviceLsn$1;", "mLastOrientation", "getMLastOrientation", "setMLastOrientation", "mStartLinkTimes", "", "getMStartLinkTimes", "()J", "setMStartLinkTimes", "(J)V", "micPmkExpire", "getMicPmkExpire", "setMicPmkExpire", "msgFilterTime", "getMsgFilterTime", "setMsgFilterTime", "msgList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/live/view/adapter/CommentData;", "Lkotlin/collections/ArrayList;", "getMsgList", "()Ljava/util/ArrayList;", "setMsgList", "(Ljava/util/ArrayList;)V", "onlineHeadImgList", "getOnlineHeadImgList", "setOnlineHeadImgList", "shareRoomList", "Ljava/util/HashMap;", "Lkotlin/Pair;", "Lkotlin/collections/HashMap;", "getShareRoomList", "()Ljava/util/HashMap;", "setShareRoomList", "(Ljava/util/HashMap;)V", "sysMsgManager", "Lcom/tencent/mm/live/model/linkmic/LiveSysMsgManager;", "getSysMsgManager", "()Lcom/tencent/mm/live/model/linkmic/LiveSysMsgManager;", "setSysMsgManager", "(Lcom/tencent/mm/live/model/linkmic/LiveSysMsgManager;)V", "thumbUrl", "getThumbUrl", "setThumbUrl", "visitorCommentCount", "getVisitorCommentCount", "setVisitorCommentCount", "visitorConnectCount", "getVisitorConnectCount", "setVisitorConnectCount", "visitorConnectReqCount", "getVisitorConnectReqCount", "setVisitorConnectReqCount", "visitorEnterErrorCode", "getVisitorEnterErrorCode", "setVisitorEnterErrorCode", "visitorEnterMemberCount", "getVisitorEnterMemberCount", "setVisitorEnterMemberCount", "visitorLikeCount", "getVisitorLikeCount", "setVisitorLikeCount", "wechatRoomId", "getWechatRoomId", "setWechatRoomId", "displayLiveName", "displayUsername", "username", "formatAnchorLikeCount", "formatLikeCount", "liveError", "", "liveFinish", "liveStart", "preOnCreate", "release", "resetData", "resetLiveFaceVerifyInfo", "LiveDynamicConfig", "LiveFaceVerifyInfo", "LiveSmallWindowInfo", "LiveStatus", "plugin-logic_release"})
 public final class g
 {
   private static final String TAG = "MicroMsg.LiveDataManager";
-  private static String gME;
-  private static ArrayList<String> gNC;
-  private static HashMap<String, o<ArrayList<String>, Integer>> gND;
-  private static ArrayList<com.tencent.mm.live.view.a.a> gNE;
-  private static byte[] gNF;
-  private static buq gNG;
-  private static buw gNH;
-  private static String gNI;
-  private static int gNJ;
-  private static d gNK;
-  private static long gNL;
-  private static buo gNM;
-  private static boolean gNN;
-  private static int gNO;
-  private static String gNP;
-  private static String gNQ;
-  private static boolean gNR;
-  private static d gNS;
-  private static g.b gNT;
-  private static g.a gNU;
-  private static c gNV;
-  private static boolean gNW;
-  private static boolean gNX;
-  private static boolean gNY;
-  private static boolean gNZ;
-  private static boolean gOa;
-  private static int gOb;
-  private static int gOc;
-  private static int gOd;
-  private static int gOe;
-  private static int gOf;
-  private static int gOg;
-  private static int gOh;
-  private static int gOi;
-  private static boolean gOj;
-  private static int gOk;
-  private static int gOl;
-  private static int gOm;
-  private static long gOn;
-  private static boolean gOo;
-  private static com.tencent.mm.live.b.b.a gOp;
-  private static final e gOq;
-  public static final g gOr;
+  private static int cpv;
+  private static String gPn;
+  private static d gQA;
+  private static g.b gQB;
+  private static g.a gQC;
+  private static c gQD;
+  private static boolean gQE;
+  private static boolean gQF;
+  private static boolean gQG;
+  private static boolean gQH;
+  private static boolean gQI;
+  private static int gQJ;
+  private static int gQK;
+  private static int gQL;
+  private static int gQM;
+  private static int gQN;
+  private static int gQO;
+  private static int gQP;
+  private static int gQQ;
+  private static boolean gQR;
+  private static int gQS;
+  private static int gQT;
+  private static int gQU;
+  private static long gQV;
+  private static boolean gQW;
+  private static com.tencent.mm.live.b.b.a gQX;
+  private static final e gQY;
+  public static final g gQZ;
+  private static ArrayList<String> gQl;
+  private static HashMap<String, o<ArrayList<String>, Integer>> gQm;
+  private static ArrayList<com.tencent.mm.live.view.a.a> gQn;
+  private static byte[] gQo;
+  private static bvk gQp;
+  private static bvq gQq;
+  private static String gQr;
+  private static int gQs;
+  private static d gQt;
+  private static long gQu;
+  private static bvi gQv;
+  private static boolean gQw;
+  private static String gQx;
+  private static String gQy;
+  private static boolean gQz;
   private static String thumbUrl;
   
   static
   {
-    AppMethodBeat.i(212078);
-    gOr = new g();
+    AppMethodBeat.i(215697);
+    gQZ = new g();
     TAG = "MicroMsg.LiveDataManager";
-    gME = "";
-    gNC = new ArrayList();
-    gND = new HashMap();
-    gNE = new ArrayList();
-    gNG = new buq();
-    gNI = "";
-    gNM = new buo();
-    gNO = -1;
-    gNP = "";
-    gNQ = "";
-    gNS = new d((byte)0);
-    gNT = new g.b();
-    gNU = new g.a((byte)0);
-    gNV = new c();
-    gOe = -1;
-    gOp = new com.tencent.mm.live.b.b.a();
+    gPn = "";
+    gQl = new ArrayList();
+    gQm = new HashMap();
+    gQn = new ArrayList();
+    gQp = new bvk();
+    gQr = "";
+    gQv = new bvi();
+    cpv = -1;
+    gQx = "";
+    gQy = "";
+    gQA = new d((byte)0);
+    gQB = new g.b();
+    gQC = new g.a((byte)0);
+    gQD = new c();
+    gQM = -1;
+    gQX = new com.tencent.mm.live.b.b.a();
     e locale = new e();
-    gOq = locale;
+    gQY = locale;
     locale.alive();
-    AppMethodBeat.o(212078);
+    AppMethodBeat.o(215697);
   }
   
   public static void P(byte[] paramArrayOfByte)
   {
-    gNF = paramArrayOfByte;
+    gQo = paramArrayOfByte;
   }
   
-  public static void Zh()
+  public static void Zq()
   {
-    AppMethodBeat.i(212076);
-    com.tencent.mm.sdk.platformtools.ad.m(TAG, "resetData", new Object[0]);
-    gNL = 0L;
-    gME = "";
-    gNC.clear();
-    gND.clear();
-    gNF = null;
-    gNG = new buq();
-    gNH = null;
+    AppMethodBeat.i(215695);
+    ae.m(TAG, "resetData", new Object[0]);
+    gQu = 0L;
+    gPn = "";
+    gQl.clear();
+    gQm.clear();
+    gQo = null;
+    gQp = new bvk();
+    gQq = null;
     thumbUrl = null;
-    com.tencent.mm.live.b.b.a locala = gOp;
-    locala.gQH = null;
-    locala.gQI = null;
-    locala.gQJ = null;
-    locala.gQK = null;
-    locala.gQL = null;
-    locala.gQM = null;
-    locala.gQN = null;
-    locala.gQP = null;
-    locala.gQO.clear();
-    locala.gQQ = "";
-    locala.gQR = "";
-    gNE.clear();
-    gNI = "";
-    gNJ = 0;
-    gNK = null;
-    gNM = new buo();
-    gNN = false;
-    gNO = -1;
-    gNP = "";
-    gNQ = "";
-    gNU = new g.a((byte)0);
-    gNV = new c();
-    gNR = false;
-    gNS = new d((byte)0);
-    gNT = new g.b();
-    AppMethodBeat.o(212076);
+    com.tencent.mm.live.b.b.a locala = gQX;
+    locala.gTp = null;
+    locala.gTq = null;
+    locala.gTr = null;
+    locala.gTs = null;
+    locala.gTt = null;
+    locala.gTu = null;
+    locala.gTv = null;
+    locala.gTx = null;
+    locala.gTw.clear();
+    locala.gTy = "";
+    locala.gTz = "";
+    gQn.clear();
+    gQr = "";
+    gQs = 0;
+    gQt = null;
+    gQv = new bvi();
+    gQw = false;
+    cpv = -1;
+    gQx = "";
+    gQy = "";
+    gQC = new g.a((byte)0);
+    gQD = new c();
+    gQz = false;
+    gQA = new d((byte)0);
+    gQB = new g.b();
+    AppMethodBeat.o(215695);
   }
   
-  public static void a(buo parambuo)
+  public static void a(bvi parambvi)
   {
-    AppMethodBeat.i(212068);
-    p.h(parambuo, "<set-?>");
-    gNM = parambuo;
-    AppMethodBeat.o(212068);
+    AppMethodBeat.i(215687);
+    p.h(parambvi, "<set-?>");
+    gQv = parambvi;
+    AppMethodBeat.o(215687);
   }
   
-  public static void a(buq parambuq)
+  public static void a(bvk parambvk)
   {
-    AppMethodBeat.i(212066);
-    p.h(parambuq, "<set-?>");
-    gNG = parambuq;
-    AppMethodBeat.o(212066);
+    AppMethodBeat.i(215685);
+    p.h(parambvk, "<set-?>");
+    gQp = parambvk;
+    AppMethodBeat.o(215685);
   }
   
-  public static void a(buw parambuw)
+  public static void a(bvq parambvq)
   {
-    gNH = parambuw;
-  }
-  
-  public static void anA()
-  {
-    gNN = true;
-  }
-  
-  public static int anB()
-  {
-    return gNO;
+    gQq = parambvq;
   }
   
   public static String anC()
   {
-    return gNP;
+    return gPn;
   }
   
-  public static String anD()
+  public static ArrayList<String> anD()
   {
-    return gNQ;
+    return gQl;
   }
   
-  public static boolean anE()
+  public static HashMap<String, o<ArrayList<String>, Integer>> anE()
   {
-    return gNR;
+    return gQm;
   }
   
-  public static void anF()
+  public static ArrayList<com.tencent.mm.live.view.a.a> anF()
   {
-    gNR = true;
+    return gQn;
   }
   
-  public static d anG()
+  public static byte[] anG()
   {
-    return gNS;
+    return gQo;
   }
   
-  public static g.b anH()
+  public static bvk anH()
   {
-    return gNT;
+    return gQp;
   }
   
-  public static g.a anI()
+  public static bvq anI()
   {
-    return gNU;
+    return gQq;
   }
   
-  public static c anJ()
+  public static String anJ()
   {
-    return gNV;
+    return gQr;
   }
   
-  public static boolean anK()
+  public static int anK()
   {
-    return gNW;
+    return gQs;
   }
   
-  public static boolean anL()
+  public static d anL()
   {
-    return gNX;
+    return gQt;
   }
   
-  public static boolean anM()
+  public static long anM()
   {
-    return gNY;
+    return gQu;
   }
   
-  public static boolean anN()
+  public static bvi anN()
   {
-    return gNZ;
+    return gQv;
   }
   
   public static boolean anO()
   {
-    return gOa;
+    return gQw;
   }
   
-  public static int anP()
+  public static void anP()
   {
-    return gOb;
+    gQw = true;
   }
   
   public static int anQ()
   {
-    return gOc;
+    return cpv;
   }
   
-  public static int anR()
+  public static String anR()
   {
-    return gOd;
+    return gQx;
   }
   
-  public static int anS()
+  public static String anS()
   {
-    return gOe;
+    return gQy;
   }
   
-  public static int anT()
+  public static boolean anT()
   {
-    return gOf;
+    return gQz;
   }
   
-  public static int anU()
+  public static void anU()
   {
-    return gOg;
+    gQz = true;
   }
   
-  public static int anV()
+  public static d anV()
   {
-    return gOh;
+    return gQA;
   }
   
-  public static int anW()
+  public static g.b anW()
   {
-    return gOi;
+    return gQB;
   }
   
-  public static boolean anX()
+  public static g.a anX()
   {
-    return gOj;
+    return gQC;
   }
   
-  public static int anY()
+  public static c anY()
   {
-    return gOk;
+    return gQD;
   }
   
-  public static int anZ()
+  public static boolean anZ()
   {
-    return gOl;
+    return gQE;
   }
   
-  public static String anm()
+  public static boolean aoa()
   {
-    return gME;
+    return gQF;
   }
   
-  public static ArrayList<String> ann()
+  public static boolean aob()
   {
-    return gNC;
-  }
-  
-  public static HashMap<String, o<ArrayList<String>, Integer>> ano()
-  {
-    return gND;
-  }
-  
-  public static ArrayList<com.tencent.mm.live.view.a.a> anp()
-  {
-    return gNE;
-  }
-  
-  public static byte[] anq()
-  {
-    return gNF;
-  }
-  
-  public static buq ans()
-  {
-    return gNG;
-  }
-  
-  public static buw ant()
-  {
-    return gNH;
-  }
-  
-  public static String anu()
-  {
-    return gNI;
-  }
-  
-  public static int anv()
-  {
-    return gNJ;
-  }
-  
-  public static d anw()
-  {
-    return gNK;
-  }
-  
-  public static long anx()
-  {
-    return gNL;
-  }
-  
-  public static buo any()
-  {
-    return gNM;
-  }
-  
-  public static boolean anz()
-  {
-    return gNN;
-  }
-  
-  public static int aoa()
-  {
-    return gOm;
-  }
-  
-  public static long aob()
-  {
-    AppMethodBeat.i(212071);
-    long l = (System.currentTimeMillis() - gOn) / 1000L;
-    AppMethodBeat.o(212071);
-    return l;
+    return gQG;
   }
   
   public static boolean aoc()
   {
-    return gOo;
+    return gQH;
   }
   
-  public static com.tencent.mm.live.b.b.a aod()
+  public static boolean aod()
   {
-    return gOp;
+    return gQI;
   }
   
-  public static String aoe()
+  public static int aoe()
   {
-    AppMethodBeat.i(212072);
-    if (gNG.GzX <= 0)
+    return gQJ;
+  }
+  
+  public static int aof()
+  {
+    return gQK;
+  }
+  
+  public static int aog()
+  {
+    return gQL;
+  }
+  
+  public static int aoh()
+  {
+    return gQM;
+  }
+  
+  public static int aoi()
+  {
+    return gQN;
+  }
+  
+  public static int aoj()
+  {
+    return gQO;
+  }
+  
+  public static int aok()
+  {
+    return gQP;
+  }
+  
+  public static int aol()
+  {
+    return gQQ;
+  }
+  
+  public static boolean aom()
+  {
+    return gQR;
+  }
+  
+  public static int aon()
+  {
+    return gQS;
+  }
+  
+  public static int aoo()
+  {
+    return gQT;
+  }
+  
+  public static int aop()
+  {
+    return gQU;
+  }
+  
+  public static long aoq()
+  {
+    AppMethodBeat.i(215690);
+    long l = (System.currentTimeMillis() - gQV) / 1000L;
+    AppMethodBeat.o(215690);
+    return l;
+  }
+  
+  public static boolean aor()
+  {
+    return gQW;
+  }
+  
+  public static com.tencent.mm.live.b.b.a aos()
+  {
+    return gQX;
+  }
+  
+  public static String aot()
+  {
+    AppMethodBeat.i(215691);
+    if (gQp.GTx <= 0)
     {
-      localObject = aj.getContext();
+      localObject = ak.getContext();
       p.g(localObject, "MMApplicationContext.getContext()");
       localObject = ((Context)localObject).getResources().getString(2131766618);
       p.g(localObject, "MMApplicationContext.get…ing.live_like_count_zero)");
-      AppMethodBeat.o(212072);
+      AppMethodBeat.o(215691);
       return localObject;
     }
-    if (gNG.GzX < 10000)
+    if (gQp.GTx < 10000)
     {
-      int i = gNG.GzX;
-      AppMethodBeat.o(212072);
+      int i = gQp.GTx;
+      AppMethodBeat.o(215691);
       return String.valueOf(i);
     }
-    if (gNG.GzX % 10000 >= 1000)
+    if (gQp.GTx % 10000 >= 1000)
     {
-      localObject = d.g.b.ad.MLZ;
-      localObject = aj.getContext();
+      localObject = ad.Njc;
+      localObject = ak.getContext();
       p.g(localObject, "MMApplicationContext.getContext()");
       localObject = ((Context)localObject).getResources().getString(2131766616);
       p.g(localObject, "MMApplicationContext.get…g.live_like_count_format)");
-      localObject = String.format((String)localObject, Arrays.copyOf(new Object[] { Float.valueOf(gNG.GzX / 10000.0F) }, 1));
+      localObject = String.format((String)localObject, Arrays.copyOf(new Object[] { Float.valueOf(gQp.GTx / 10000.0F) }, 1));
       p.g(localObject, "java.lang.String.format(format, *args)");
-      AppMethodBeat.o(212072);
+      AppMethodBeat.o(215691);
       return localObject;
     }
-    Object localObject = d.g.b.ad.MLZ;
-    localObject = aj.getContext();
+    Object localObject = ad.Njc;
+    localObject = ak.getContext();
     p.g(localObject, "MMApplicationContext.getContext()");
     localObject = ((Context)localObject).getResources().getString(2131766617);
     p.g(localObject, "MMApplicationContext.get…ve_like_count_int_format)");
-    localObject = String.format((String)localObject, Arrays.copyOf(new Object[] { Integer.valueOf(gNG.GzX / 10000) }, 1));
+    localObject = String.format((String)localObject, Arrays.copyOf(new Object[] { Integer.valueOf(gQp.GTx / 10000) }, 1));
     p.g(localObject, "java.lang.String.format(format, *args)");
-    AppMethodBeat.o(212072);
+    AppMethodBeat.o(215691);
     return localObject;
   }
   
-  public static String aof()
+  public static String aou()
   {
-    AppMethodBeat.i(212073);
-    if (gNG.GzX <= 0)
+    AppMethodBeat.i(215692);
+    if (gQp.GTx <= 0)
     {
-      AppMethodBeat.o(212073);
+      AppMethodBeat.o(215692);
       return "0";
     }
-    if (gNG.GzX < 10000)
+    if (gQp.GTx < 10000)
     {
-      int i = gNG.GzX;
-      AppMethodBeat.o(212073);
+      int i = gQp.GTx;
+      AppMethodBeat.o(215692);
       return String.valueOf(i);
     }
-    if (gNG.GzX % 10000 >= 1000)
+    if (gQp.GTx % 10000 >= 1000)
     {
-      localObject = d.g.b.ad.MLZ;
-      localObject = aj.getContext();
+      localObject = ad.Njc;
+      localObject = ak.getContext();
       p.g(localObject, "MMApplicationContext.getContext()");
       localObject = ((Context)localObject).getResources().getString(2131766616);
       p.g(localObject, "MMApplicationContext.get…g.live_like_count_format)");
-      localObject = String.format((String)localObject, Arrays.copyOf(new Object[] { Float.valueOf(gNG.GzX / 10000.0F) }, 1));
+      localObject = String.format((String)localObject, Arrays.copyOf(new Object[] { Float.valueOf(gQp.GTx / 10000.0F) }, 1));
       p.g(localObject, "java.lang.String.format(format, *args)");
-      AppMethodBeat.o(212073);
+      AppMethodBeat.o(215692);
       return localObject;
     }
-    Object localObject = d.g.b.ad.MLZ;
-    localObject = aj.getContext();
+    Object localObject = ad.Njc;
+    localObject = ak.getContext();
     p.g(localObject, "MMApplicationContext.getContext()");
     localObject = ((Context)localObject).getResources().getString(2131766617);
     p.g(localObject, "MMApplicationContext.get…ve_like_count_int_format)");
-    localObject = String.format((String)localObject, Arrays.copyOf(new Object[] { Integer.valueOf(gNG.GzX / 10000) }, 1));
+    localObject = String.format((String)localObject, Arrays.copyOf(new Object[] { Integer.valueOf(gQp.GTx / 10000) }, 1));
     p.g(localObject, "java.lang.String.format(format, *args)");
-    AppMethodBeat.o(212073);
+    AppMethodBeat.o(215692);
     return localObject;
   }
   
-  public static String aog()
+  public static String aov()
   {
-    AppMethodBeat.i(212074);
+    AppMethodBeat.i(215693);
     String str2;
     String str1;
-    if (bt.isNullOrNil(gNG.Gbw))
+    if (bu.isNullOrNil(gQp.Gud))
     {
-      str2 = gNG.GOL;
+      str2 = gQp.Hil;
       str1 = str2;
       if (str2 == null)
       {
-        AppMethodBeat.o(212074);
+        AppMethodBeat.o(215693);
         return "";
       }
     }
     else
     {
-      str2 = gNG.Gbw;
+      str2 = gQp.Gud;
       str1 = str2;
       if (str2 == null) {
         str1 = "";
       }
     }
-    AppMethodBeat.o(212074);
+    AppMethodBeat.o(215693);
     return str1;
   }
   
-  public static void aoh()
+  public static void aow()
   {
-    gNS.gOA = true;
-    gNS.gOz = false;
+    gQA.gRi = true;
+    gQA.gRh = false;
   }
   
-  public static void aoi()
+  public static void aox()
   {
-    gNS.gOB = true;
+    gQA.gRj = true;
   }
   
-  public static void aoj()
+  public static void aoy()
   {
-    gNS.gOz = true;
-    gNS.gOA = false;
+    gQA.gRh = true;
+    gQA.gRi = false;
   }
   
-  public static void aok()
+  public static void aoz()
   {
     boolean bool2 = true;
-    AppMethodBeat.i(212077);
-    int i = bt.getInt(com.tencent.mm.n.g.acA().getValue("MMLiveConfigBitSet"), 0);
-    g.a locala = gNU;
-    if (!com.tencent.mm.ad.c.cQ(i, 1))
+    AppMethodBeat.i(215696);
+    int i = bu.getInt(com.tencent.mm.n.g.acL().getValue("MMLiveConfigBitSet"), 0);
+    g.a locala = gQC;
+    if (!com.tencent.mm.ac.c.cQ(i, 1))
     {
       bool1 = true;
-      locala.gOs = bool1;
-      locala = gNU;
-      if (com.tencent.mm.ad.c.cQ(i, 2)) {
+      locala.gRa = bool1;
+      locala = gQC;
+      if (com.tencent.mm.ac.c.cQ(i, 2)) {
         break label111;
       }
       bool1 = true;
       label55:
-      locala.gOt = bool1;
-      locala = gNU;
-      if (com.tencent.mm.ad.c.cQ(i, 4)) {
+      locala.gRb = bool1;
+      locala = gQC;
+      if (com.tencent.mm.ac.c.cQ(i, 4)) {
         break label116;
       }
       bool1 = true;
       label74:
-      locala.gOu = bool1;
-      locala = gNU;
-      if (com.tencent.mm.ad.c.cQ(i, 8)) {
+      locala.gRc = bool1;
+      locala = gQC;
+      if (com.tencent.mm.ac.c.cQ(i, 8)) {
         break label121;
       }
     }
@@ -538,8 +540,8 @@ public final class g
     label121:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      locala.gOv = bool1;
-      AppMethodBeat.o(212077);
+      locala.gRd = bool1;
+      AppMethodBeat.o(215696);
       return;
       bool1 = false;
       break;
@@ -552,197 +554,197 @@ public final class g
   
   public static void b(d paramd)
   {
-    gNK = paramd;
-  }
-  
-  public static void dK(boolean paramBoolean)
-  {
-    gNW = paramBoolean;
+    gQt = paramd;
   }
   
   public static void dL(boolean paramBoolean)
   {
-    gNX = paramBoolean;
+    gQE = paramBoolean;
   }
   
   public static void dM(boolean paramBoolean)
   {
-    gNY = paramBoolean;
+    gQF = paramBoolean;
   }
   
   public static void dN(boolean paramBoolean)
   {
-    gNZ = paramBoolean;
+    gQG = paramBoolean;
   }
   
   public static void dO(boolean paramBoolean)
   {
-    gOa = paramBoolean;
+    gQH = paramBoolean;
   }
   
   public static void dP(boolean paramBoolean)
   {
-    gOj = paramBoolean;
+    gQI = paramBoolean;
   }
   
   public static void dQ(boolean paramBoolean)
   {
-    gOo = paramBoolean;
+    gQR = paramBoolean;
+  }
+  
+  public static void dR(boolean paramBoolean)
+  {
+    gQW = paramBoolean;
   }
   
   public static void nA(int paramInt)
   {
-    gOg = paramInt;
+    gQL = paramInt;
   }
   
   public static void nB(int paramInt)
   {
-    gOh = paramInt;
+    gQM = paramInt;
   }
   
   public static void nC(int paramInt)
   {
-    gOi = paramInt;
+    gQN = paramInt;
   }
   
   public static void nD(int paramInt)
   {
-    gOk = paramInt;
+    gQO = paramInt;
   }
   
   public static void nE(int paramInt)
   {
-    gOl = paramInt;
+    gQP = paramInt;
   }
   
   public static void nF(int paramInt)
   {
-    gOm = paramInt;
+    gQQ = paramInt;
   }
   
-  public static void nt(int paramInt)
+  public static void nG(int paramInt)
   {
-    gNJ = paramInt;
+    gQS = paramInt;
   }
   
-  public static void nu(int paramInt)
+  public static void nH(int paramInt)
   {
-    gNO = paramInt;
+    gQT = paramInt;
   }
   
-  public static void nv(int paramInt)
+  public static void nI(int paramInt)
   {
-    if (gOb < paramInt) {
-      gOb = paramInt;
-    }
-    while (paramInt != -1) {
-      return;
-    }
-    gOb = 0;
+    gQU = paramInt;
   }
   
   public static void nw(int paramInt)
   {
-    gOc = paramInt;
+    gQs = paramInt;
   }
   
   public static void nx(int paramInt)
   {
-    gOd = paramInt;
+    cpv = paramInt;
   }
   
   public static void ny(int paramInt)
   {
-    gOe = paramInt;
+    if (gQJ < paramInt) {
+      gQJ = paramInt;
+    }
+    while (paramInt != -1) {
+      return;
+    }
+    gQJ = 0;
   }
   
   public static void nz(int paramInt)
   {
-    gOf = paramInt;
+    gQK = paramInt;
   }
   
-  public static void rh(long paramLong)
+  public static void ru(long paramLong)
   {
-    gNL = paramLong;
+    gQu = paramLong;
   }
   
-  public static void ri(long paramLong)
+  public static void rv(long paramLong)
   {
-    gOn = paramLong;
+    gQV = paramLong;
   }
   
-  public static void xE(String paramString)
+  public static void yn(String paramString)
   {
-    AppMethodBeat.i(212065);
+    AppMethodBeat.i(215684);
     p.h(paramString, "<set-?>");
-    gME = paramString;
-    AppMethodBeat.o(212065);
+    gPn = paramString;
+    AppMethodBeat.o(215684);
   }
   
-  public static void xF(String paramString)
+  public static void yo(String paramString)
   {
     thumbUrl = paramString;
   }
   
-  public static void xG(String paramString)
+  public static void yp(String paramString)
   {
-    AppMethodBeat.i(212067);
+    AppMethodBeat.i(215686);
     p.h(paramString, "<set-?>");
-    gNI = paramString;
-    AppMethodBeat.o(212067);
+    gQr = paramString;
+    AppMethodBeat.o(215686);
   }
   
-  public static void xH(String paramString)
+  public static void yq(String paramString)
   {
-    AppMethodBeat.i(212069);
+    AppMethodBeat.i(215688);
     p.h(paramString, "<set-?>");
-    gNP = paramString;
-    AppMethodBeat.o(212069);
+    gQx = paramString;
+    AppMethodBeat.o(215688);
   }
   
-  public static void xI(String paramString)
+  public static void yr(String paramString)
   {
-    AppMethodBeat.i(212070);
+    AppMethodBeat.i(215689);
     p.h(paramString, "<set-?>");
-    gNQ = paramString;
-    AppMethodBeat.o(212070);
+    gQy = paramString;
+    AppMethodBeat.o(215689);
   }
   
-  public static String xJ(String paramString)
+  public static String ys(String paramString)
   {
-    AppMethodBeat.i(212075);
+    AppMethodBeat.i(215694);
     if (paramString == null)
     {
-      AppMethodBeat.o(212075);
+      AppMethodBeat.o(215694);
       return "";
     }
-    String str = v.zg(paramString);
+    String str = w.zQ(paramString);
     Object localObject = str;
-    if (bt.isNullOrNil(str))
+    if (bu.isNullOrNil(str))
     {
       localObject = com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.chatroom.a.c.class);
       p.g(localObject, "MMKernel.service(IChatroomService::class.java)");
-      localObject = ((com.tencent.mm.plugin.chatroom.a.c)localObject).azz().AN(gME);
+      localObject = ((com.tencent.mm.plugin.chatroom.a.c)localObject).azP().Bx(gPn);
       if (localObject != null) {
         break label90;
       }
-      localObject = v.zf(paramString);
+      localObject = w.zP(paramString);
     }
     for (;;)
     {
       p.g(localObject, "result");
-      AppMethodBeat.o(212075);
+      AppMethodBeat.o(215694);
       return localObject;
       label90:
-      str = ((ab)localObject).zf(paramString);
+      str = ((ac)localObject).zP(paramString);
       localObject = str;
-      if (bt.isNullOrNil(str)) {
-        localObject = v.zf(paramString);
+      if (bu.isNullOrNil(str)) {
+        localObject = w.zP(paramString);
       }
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/live/model/LiveDataManager$LiveSmallWindowInfo;", "", "userId", "", "streamType", "", "width", "height", "(Ljava/lang/String;III)V", "getHeight", "()I", "setHeight", "(I)V", "getStreamType", "setStreamType", "getUserId", "()Ljava/lang/String;", "setUserId", "(Ljava/lang/String;)V", "getWidth", "setWidth", "component1", "component2", "component3", "component4", "copy", "equals", "", "other", "hashCode", "isLandscape", "toString", "plugin-logic_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/live/model/LiveDataManager$LiveSmallWindowInfo;", "", "userId", "", "streamType", "", "width", "height", "(Ljava/lang/String;III)V", "getHeight", "()I", "setHeight", "(I)V", "getStreamType", "setStreamType", "getUserId", "()Ljava/lang/String;", "setUserId", "(Ljava/lang/String;)V", "getWidth", "setWidth", "component1", "component2", "component3", "component4", "copy", "equals", "", "other", "hashCode", "isLandscape", "toString", "plugin-logic_release"})
   public static final class c
   {
     public int height;
@@ -752,22 +754,22 @@ public final class g
     
     private c(String paramString)
     {
-      AppMethodBeat.i(212058);
+      AppMethodBeat.i(215677);
       this.userId = paramString;
       this.streamType = 0;
       this.width = 0;
       this.height = 0;
-      AppMethodBeat.o(212058);
+      AppMethodBeat.o(215677);
     }
     
-    public final boolean aol()
+    public final boolean aoA()
     {
       return this.width > this.height;
     }
     
     public final boolean equals(Object paramObject)
     {
-      AppMethodBeat.i(212062);
+      AppMethodBeat.i(215681);
       if (this != paramObject)
       {
         if ((paramObject instanceof c))
@@ -778,16 +780,16 @@ public final class g
       }
       else
       {
-        AppMethodBeat.o(212062);
+        AppMethodBeat.o(215681);
         return true;
       }
-      AppMethodBeat.o(212062);
+      AppMethodBeat.o(215681);
       return false;
     }
     
     public final int hashCode()
     {
-      AppMethodBeat.i(212061);
+      AppMethodBeat.i(215680);
       String str = this.userId;
       if (str != null) {}
       for (int i = str.hashCode();; i = 0)
@@ -795,35 +797,35 @@ public final class g
         int j = this.streamType;
         int k = this.width;
         int m = this.height;
-        AppMethodBeat.o(212061);
+        AppMethodBeat.o(215680);
         return ((i * 31 + j) * 31 + k) * 31 + m;
       }
     }
     
     public final void setUserId(String paramString)
     {
-      AppMethodBeat.i(212057);
+      AppMethodBeat.i(215676);
       p.h(paramString, "<set-?>");
       this.userId = paramString;
-      AppMethodBeat.o(212057);
+      AppMethodBeat.o(215676);
     }
     
     public final String toString()
     {
-      AppMethodBeat.i(212060);
+      AppMethodBeat.i(215679);
       String str = "LiveSmallWindowInfo(userId=" + this.userId + ", streamType=" + this.streamType + ", width=" + this.width + ", height=" + this.height + ")";
-      AppMethodBeat.o(212060);
+      AppMethodBeat.o(215679);
       return str;
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/live/model/LiveDataManager$LiveStatus;", "", "liveFinished", "", "liveStarted", "liveHasError", "liveJumpToOtherUI", "(ZZZZ)V", "getLiveFinished", "()Z", "setLiveFinished", "(Z)V", "getLiveHasError", "setLiveHasError", "getLiveJumpToOtherUI", "setLiveJumpToOtherUI", "getLiveStarted", "setLiveStarted", "component1", "component2", "component3", "component4", "copy", "equals", "other", "hashCode", "", "toString", "", "plugin-logic_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/live/model/LiveDataManager$LiveStatus;", "", "liveFinished", "", "liveStarted", "liveHasError", "liveJumpToOtherUI", "(ZZZZ)V", "getLiveFinished", "()Z", "setLiveFinished", "(Z)V", "getLiveHasError", "setLiveHasError", "getLiveJumpToOtherUI", "setLiveJumpToOtherUI", "getLiveStarted", "setLiveStarted", "component1", "component2", "component3", "component4", "copy", "equals", "other", "hashCode", "", "toString", "", "plugin-logic_release"})
   public static final class d
   {
-    public boolean gOA = false;
-    public boolean gOB = false;
-    public boolean gOC = false;
-    public boolean gOz = false;
+    public boolean gRh = false;
+    public boolean gRi = false;
+    public boolean gRj = false;
+    public boolean gRk = false;
     
     public final boolean equals(Object paramObject)
     {
@@ -832,7 +834,7 @@ public final class g
         if ((paramObject instanceof d))
         {
           paramObject = (d)paramObject;
-          if ((this.gOz != paramObject.gOz) || (this.gOA != paramObject.gOA) || (this.gOB != paramObject.gOB) || (this.gOC != paramObject.gOC)) {}
+          if ((this.gRh != paramObject.gRh) || (this.gRi != paramObject.gRi) || (this.gRj != paramObject.gRj) || (this.gRk != paramObject.gRk)) {}
         }
       }
       else {
@@ -848,21 +850,21 @@ public final class g
     
     public final String toString()
     {
-      AppMethodBeat.i(212063);
-      String str = "LiveStatus(liveFinished=" + this.gOz + ", liveStarted=" + this.gOA + ", liveHasError=" + this.gOB + ", liveJumpToOtherUI=" + this.gOC + ")";
-      AppMethodBeat.o(212063);
+      AppMethodBeat.i(215682);
+      String str = "LiveStatus(liveFinished=" + this.gRh + ", liveStarted=" + this.gRi + ", liveHasError=" + this.gRj + ", liveJumpToOtherUI=" + this.gRk + ")";
+      AppMethodBeat.o(215682);
       return str;
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/live/model/LiveDataManager$mCheckDeviceLsn$1", "Lcom/tencent/mm/sdk/event/IListener;", "Lcom/tencent/mm/autogen/events/LiveStateActionEvent;", "callback", "", "event", "plugin-logic_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/live/model/LiveDataManager$mCheckDeviceLsn$1", "Lcom/tencent/mm/sdk/event/IListener;", "Lcom/tencent/mm/autogen/events/LiveStateActionEvent;", "callback", "", "event", "plugin-logic_release"})
   public static final class e
-    extends com.tencent.mm.sdk.b.c<le>
+    extends com.tencent.mm.sdk.b.c<lf>
   {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.live.b.g
  * JD-Core Version:    0.7.0.1
  */

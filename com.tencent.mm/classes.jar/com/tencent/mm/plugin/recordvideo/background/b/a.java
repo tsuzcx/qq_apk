@@ -4,13 +4,13 @@ import android.graphics.Bitmap;
 import android.opengl.GLES20;
 import android.opengl.GLUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public abstract class a
 {
-  protected int xva;
+  protected int xKX;
   
-  private static void ND(int paramInt)
+  private static void Oj(int paramInt)
   {
     GLES20.glDeleteTextures(1, new int[] { paramInt }, 0);
   }
@@ -25,11 +25,11 @@ public abstract class a
   
   public static int g(Bitmap paramBitmap, int paramInt)
   {
-    ad.i("MicroMsg.Story.AbsShader", "loadTexture");
+    ae.i("MicroMsg.Story.AbsShader", "loadTexture");
     if (paramBitmap != null)
     {
       if (paramInt > 0) {
-        ND(paramInt);
+        Oj(paramInt);
       }
       int[] arrayOfInt = new int[1];
       GLES20.glGenTextures(1, arrayOfInt, 0);
@@ -42,13 +42,13 @@ public abstract class a
       GLUtils.texImage2D(3553, 0, paramBitmap, 0);
       return paramInt;
     }
-    ad.i("MicroMsg.Story.AbsShader", "loadTexture bitmap null");
+    ae.i("MicroMsg.Story.AbsShader", "loadTexture bitmap null");
     return paramInt;
   }
   
   protected static int loadShader(int paramInt, String paramString)
   {
-    ad.i("MicroMsg.Story.AbsShader", "loadShader");
+    ae.i("MicroMsg.Story.AbsShader", "loadShader");
     int[] arrayOfInt = new int[1];
     paramInt = GLES20.glCreateShader(paramInt);
     if (paramInt == 0) {
@@ -59,16 +59,16 @@ public abstract class a
     GLES20.glGetShaderiv(paramInt, 35713, arrayOfInt, 0);
     if (arrayOfInt[0] == 0)
     {
-      ad.e("MicroMsg.Story.AbsShader", GLES20.glGetShaderInfoLog(paramInt));
+      ae.e("MicroMsg.Story.AbsShader", GLES20.glGetShaderInfoLog(paramInt));
       GLES20.glDeleteShader(paramInt);
       return 0;
     }
     return paramInt;
   }
   
-  public final void dFd()
+  public final void dIu()
   {
-    GLES20.glUseProgram(this.xva);
+    GLES20.glUseProgram(this.xKX);
   }
   
   public static enum a
@@ -76,10 +76,10 @@ public abstract class a
     static
     {
       AppMethodBeat.i(74994);
-      xvb = new a("Default", 0);
-      xvc = new a("CenterCrop", 1);
-      xvd = new a("CenterInside", 2);
-      xve = new a[] { xvb, xvc, xvd };
+      xKY = new a("Default", 0);
+      xKZ = new a("CenterCrop", 1);
+      xLa = new a("CenterInside", 2);
+      xLb = new a[] { xKY, xKZ, xLa };
       AppMethodBeat.o(74994);
     }
     

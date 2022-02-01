@@ -6,19 +6,19 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.d.f;
 import d.g.b.p;
 import d.g.b.q;
-import d.k.h;
+import d.k.j;
 import d.l;
 import d.z;
 import kotlinx.coroutines.as;
 import kotlinx.coroutines.k;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/coroutines/android/HandlerContext;", "Lkotlinx/coroutines/android/HandlerDispatcher;", "Lkotlinx/coroutines/Delay;", "handler", "Landroid/os/Handler;", "name", "", "(Landroid/os/Handler;Ljava/lang/String;)V", "invokeImmediately", "", "(Landroid/os/Handler;Ljava/lang/String;Z)V", "_immediate", "immediate", "getImmediate", "()Lkotlinx/coroutines/android/HandlerContext;", "dispatch", "", "context", "Lkotlin/coroutines/CoroutineContext;", "block", "Ljava/lang/Runnable;", "Lkotlinx/coroutines/Runnable;", "equals", "other", "", "hashCode", "", "invokeOnTimeout", "Lkotlinx/coroutines/DisposableHandle;", "timeMillis", "", "isDispatchNeeded", "scheduleResumeAfterDelay", "continuation", "Lkotlinx/coroutines/CancellableContinuation;", "toString", "kotlinx-coroutines-android"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/coroutines/android/HandlerContext;", "Lkotlinx/coroutines/android/HandlerDispatcher;", "Lkotlinx/coroutines/Delay;", "handler", "Landroid/os/Handler;", "name", "", "(Landroid/os/Handler;Ljava/lang/String;)V", "invokeImmediately", "", "(Landroid/os/Handler;Ljava/lang/String;Z)V", "_immediate", "immediate", "getImmediate", "()Lkotlinx/coroutines/android/HandlerContext;", "dispatch", "", "context", "Lkotlin/coroutines/CoroutineContext;", "block", "Ljava/lang/Runnable;", "Lkotlinx/coroutines/Runnable;", "equals", "other", "", "hashCode", "", "invokeOnTimeout", "Lkotlinx/coroutines/DisposableHandle;", "timeMillis", "", "isDispatchNeeded", "scheduleResumeAfterDelay", "continuation", "Lkotlinx/coroutines/CancellableContinuation;", "toString", "kotlinx-coroutines-android"})
 public final class a
   extends b
   implements as
 {
-  private final a NJn;
-  private final boolean NJo;
+  private final a Ogt;
+  private final boolean Ogu;
   private volatile a _immediate;
   private final Handler handler;
   private final String name;
@@ -36,8 +36,8 @@ public final class a
     AppMethodBeat.i(107776);
     this.handler = paramHandler;
     this.name = paramString;
-    this.NJo = paramBoolean;
-    if (this.NJo) {}
+    this.Ogu = paramBoolean;
+    if (this.Ogu) {}
     for (paramHandler = this;; paramHandler = null)
     {
       this._immediate = paramHandler;
@@ -48,7 +48,7 @@ public final class a
         paramHandler = new a(this.handler, this.name, true);
         this._immediate = paramHandler;
       }
-      this.NJn = paramHandler;
+      this.Ogt = paramHandler;
       AppMethodBeat.o(107776);
       return;
     }
@@ -58,8 +58,8 @@ public final class a
   {
     AppMethodBeat.i(107773);
     final Runnable localRunnable = (Runnable)new a(this, paramk);
-    this.handler.postDelayed(localRunnable, h.aI(paramLong, 4611686018427387903L));
-    paramk.K((d.g.a.b)new b(this, localRunnable));
+    this.handler.postDelayed(localRunnable, j.aH(paramLong, 4611686018427387903L));
+    paramk.N((d.g.a.b)new b(this, localRunnable));
     AppMethodBeat.o(107773);
   }
   
@@ -75,15 +75,15 @@ public final class a
     return ((paramObject instanceof a)) && (((a)paramObject).handler == this.handler);
   }
   
-  public final boolean gvb()
+  public final boolean gzD()
   {
-    AppMethodBeat.i(186989);
-    if ((!this.NJo) || ((p.i(Looper.myLooper(), this.handler.getLooper()) ^ true)))
+    AppMethodBeat.i(193468);
+    if ((!this.Ogu) || ((p.i(Looper.myLooper(), this.handler.getLooper()) ^ true)))
     {
-      AppMethodBeat.o(186989);
+      AppMethodBeat.o(193468);
       return true;
     }
-    AppMethodBeat.o(186989);
+    AppMethodBeat.o(193468);
     return false;
   }
   
@@ -100,7 +100,7 @@ public final class a
     AppMethodBeat.i(107774);
     if (this.name != null)
     {
-      if (this.NJo)
+      if (this.Ogu)
       {
         str = this.name + " [immediate]";
         AppMethodBeat.o(107774);
@@ -115,7 +115,7 @@ public final class a
     return str;
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run", "kotlinx/coroutines/RunnableKt$Runnable$1"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run", "kotlinx/coroutines/RunnableKt$Runnable$1"})
   public static final class a
     implements Runnable
   {
@@ -124,12 +124,12 @@ public final class a
     public final void run()
     {
       AppMethodBeat.i(107778);
-      paramk.a(this.NJp, z.MKo);
+      paramk.a(this.Ogv, z.Nhr);
       AppMethodBeat.o(107778);
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "", "invoke"})
   static final class b
     extends q
     implements d.g.a.b<Throwable, z>

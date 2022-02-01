@@ -14,47 +14,70 @@ import java.util.Arrays;
 
 final class c
 {
-  a MBj;
-  private FlutterSplashView MBk;
-  private final io.flutter.embedding.engine.b.b MBl;
-  io.flutter.plugin.platform.b Mlc;
-  boolean Mld;
-  FlutterView tiF;
-  io.flutter.embedding.engine.a tiq;
+  io.flutter.plugin.platform.b MHZ;
+  boolean MIa;
+  a MYo;
+  private FlutterSplashView MYp;
+  private final io.flutter.embedding.engine.b.b MYq;
+  io.flutter.embedding.engine.a tti;
+  FlutterView ttx;
   
   c(a parama)
   {
     AppMethodBeat.i(10071);
-    this.MBl = new io.flutter.embedding.engine.b.b()
+    this.MYq = new io.flutter.embedding.engine.b.b()
     {
-      public final void cQm()
+      public final void cSR()
       {
-        AppMethodBeat.i(213318);
-        c.this.MBj.cQm();
-        AppMethodBeat.o(213318);
+        AppMethodBeat.i(197900);
+        c.this.MYo.cSR();
+        AppMethodBeat.o(197900);
       }
       
-      public final void cQn()
+      public final void cSS()
       {
-        AppMethodBeat.i(213319);
-        c.this.MBj.cQn();
-        AppMethodBeat.o(213319);
+        AppMethodBeat.i(197901);
+        c.this.MYo.cSS();
+        AppMethodBeat.o(197901);
       }
     };
-    this.MBj = parama;
+    this.MYo = parama;
     AppMethodBeat.o(10071);
   }
   
-  private void fYX()
+  private void gdA()
+  {
+    AppMethodBeat.i(197922);
+    if (this.MYo.diI() != null)
+    {
+      AppMethodBeat.o(197922);
+      return;
+    }
+    if (this.tti.MZm.MZX)
+    {
+      AppMethodBeat.o(197922);
+      return;
+    }
+    new StringBuilder("Executing Dart entrypoint: ").append(this.MYo.diJ()).append(", and sending initial route: ").append(this.MYo.diL());
+    io.flutter.a.giD();
+    if (this.MYo.diL() != null) {
+      this.tti.MZr.setInitialRoute(this.MYo.diL());
+    }
+    DartExecutor.a locala = new DartExecutor.a(this.MYo.diK(), this.MYo.diJ());
+    this.tti.MZm.a(locala);
+    AppMethodBeat.o(197922);
+  }
+  
+  private void gdy()
   {
     AppMethodBeat.i(10074);
-    io.flutter.a.gea();
-    Object localObject = this.MBj.dfO();
+    io.flutter.a.giD();
+    Object localObject = this.MYo.diI();
     if (localObject != null)
     {
-      this.tiq = io.flutter.embedding.engine.b.geD().bbK((String)localObject);
-      this.Mld = true;
-      if (this.tiq == null)
+      this.tti = io.flutter.embedding.engine.b.gjf().bdo((String)localObject);
+      this.MIa = true;
+      if (this.tti == null)
       {
         localObject = new IllegalStateException("The requested cached FlutterEngine did not exist in the FlutterEngineCache: '" + (String)localObject + "'");
         AppMethodBeat.o(10074);
@@ -63,107 +86,25 @@ final class c
       AppMethodBeat.o(10074);
       return;
     }
-    localObject = this.MBj;
-    this.MBj.getContext();
-    this.tiq = ((a)localObject).dfU();
-    if (this.tiq != null)
+    localObject = this.MYo;
+    this.MYo.getContext();
+    this.tti = ((a)localObject).diO();
+    if (this.tti != null)
     {
-      this.Mld = true;
+      this.MIa = true;
       AppMethodBeat.o(10074);
       return;
     }
-    io.flutter.a.gea();
-    this.tiq = new io.flutter.embedding.engine.a(this.MBj.getContext(), this.MBj.gej().toArray());
-    this.Mld = false;
+    io.flutter.a.giD();
+    this.tti = new io.flutter.embedding.engine.a(this.MYo.getContext(), this.MYo.giM().toArray());
+    this.MIa = false;
     AppMethodBeat.o(10074);
   }
   
-  private void fYZ()
-  {
-    AppMethodBeat.i(213340);
-    if (this.MBj.dfO() != null)
-    {
-      AppMethodBeat.o(213340);
-      return;
-    }
-    if (this.tiq.MCh.MCS)
-    {
-      AppMethodBeat.o(213340);
-      return;
-    }
-    new StringBuilder("Executing Dart entrypoint: ").append(this.MBj.dfP()).append(", and sending initial route: ").append(this.MBj.dfR());
-    io.flutter.a.gea();
-    if (this.MBj.dfR() != null) {
-      this.tiq.MCm.setInitialRoute(this.MBj.dfR());
-    }
-    DartExecutor.a locala = new DartExecutor.a(this.MBj.dfQ(), this.MBj.dfP());
-    this.tiq.MCh.a(locala);
-    AppMethodBeat.o(213340);
-  }
-  
-  final void fYW()
-  {
-    AppMethodBeat.i(213338);
-    fZa();
-    if (this.tiq == null) {
-      fYX();
-    }
-    this.Mlc = this.MBj.a(this.MBj.getActivity(), this.tiq);
-    if (this.MBj.gen())
-    {
-      io.flutter.a.gea();
-      this.tiq.MCi.a(this.MBj.getActivity(), this.MBj.getLifecycle());
-    }
-    this.MBj.a(this.tiq);
-    AppMethodBeat.o(213338);
-  }
-  
-  final View fYY()
-  {
-    AppMethodBeat.i(10075);
-    io.flutter.a.gea();
-    fZa();
-    Object localObject;
-    boolean bool;
-    if (this.MBj.gel() == g.MCa)
-    {
-      localObject = this.MBj.getActivity();
-      if (this.MBj.gem() == j.MCe)
-      {
-        bool = true;
-        localObject = new FlutterSurfaceView((Context)localObject, bool);
-        this.tiF = new FlutterView(this.MBj.getActivity(), (FlutterSurfaceView)localObject);
-        label86:
-        this.tiF.a(this.MBl);
-        this.MBk = new FlutterSplashView(this.MBj.getContext());
-        if (Build.VERSION.SDK_INT < 17) {
-          break label228;
-        }
-        this.MBk.setId(View.generateViewId());
-      }
-    }
-    for (;;)
-    {
-      this.MBk.a(this.tiF, this.MBj.dfL());
-      io.flutter.a.gea();
-      this.tiF.c(this.tiq);
-      localObject = this.MBk;
-      AppMethodBeat.o(10075);
-      return localObject;
-      bool = false;
-      break;
-      localObject = new FlutterTextureView(this.MBj.getActivity());
-      this.tiF = new FlutterView(this.MBj.getActivity(), (FlutterTextureView)localObject);
-      break label86;
-      label228:
-      this.MBk.setId(486947586);
-    }
-  }
-  
-  final void fZa()
+  final void gdB()
   {
     AppMethodBeat.i(10084);
-    if (this.MBj == null)
+    if (this.MYo == null)
     {
       IllegalStateException localIllegalStateException = new IllegalStateException("Cannot execute method on a destroyed FlutterActivityAndFragmentDelegate.");
       AppMethodBeat.o(10084);
@@ -172,224 +113,283 @@ final class c
     AppMethodBeat.o(10084);
   }
   
-  final void geo()
+  final void gdx()
   {
-    AppMethodBeat.i(213339);
-    io.flutter.a.gea();
-    fZa();
-    if (this.MBj.gen()) {
-      this.tiq.MCi.geI();
+    AppMethodBeat.i(197920);
+    gdB();
+    if (this.tti == null) {
+      gdy();
     }
-    AppMethodBeat.o(213339);
+    this.MHZ = this.MYo.a(this.MYo.getActivity(), this.tti);
+    if (this.MYo.giQ())
+    {
+      io.flutter.a.giD();
+      this.tti.MZn.a(this.MYo.getActivity(), this.MYo.getLifecycle());
+    }
+    this.MYo.a(this.tti);
+    AppMethodBeat.o(197920);
   }
   
-  final void gep()
+  final View gdz()
   {
-    AppMethodBeat.i(213342);
-    io.flutter.a.gea();
-    fZa();
-    if (this.MBj.gen()) {
-      this.tiq.MCi.gep();
+    AppMethodBeat.i(10075);
+    io.flutter.a.giD();
+    gdB();
+    Object localObject;
+    boolean bool;
+    if (this.MYo.giO() == g.MZf)
+    {
+      localObject = this.MYo.getActivity();
+      if (this.MYo.giP() == j.MZj)
+      {
+        bool = true;
+        localObject = new FlutterSurfaceView((Context)localObject, bool);
+        this.ttx = new FlutterView(this.MYo.getActivity(), (FlutterSurfaceView)localObject);
+        label86:
+        this.ttx.a(this.MYq);
+        this.MYp = new FlutterSplashView(this.MYo.getContext());
+        if (Build.VERSION.SDK_INT < 17) {
+          break label228;
+        }
+        this.MYp.setId(View.generateViewId());
+      }
     }
-    AppMethodBeat.o(213342);
+    for (;;)
+    {
+      this.MYp.a(this.ttx, this.MYo.diP());
+      io.flutter.a.giD();
+      this.ttx.c(this.tti);
+      localObject = this.MYp;
+      AppMethodBeat.o(10075);
+      return localObject;
+      bool = false;
+      break;
+      localObject = new FlutterTextureView(this.MYo.getActivity());
+      this.ttx = new FlutterView(this.MYo.getActivity(), (FlutterTextureView)localObject);
+      break label86;
+      label228:
+      this.MYp.setId(486947586);
+    }
+  }
+  
+  final void giR()
+  {
+    AppMethodBeat.i(197921);
+    io.flutter.a.giD();
+    gdB();
+    if (this.MYo.giQ()) {
+      this.tti.MZn.gjk();
+    }
+    AppMethodBeat.o(197921);
+  }
+  
+  final void giS()
+  {
+    AppMethodBeat.i(197924);
+    io.flutter.a.giD();
+    gdB();
+    if (this.MYo.giQ()) {
+      this.tti.MZn.giS();
+    }
+    AppMethodBeat.o(197924);
   }
   
   final void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     AppMethodBeat.i(10083);
-    fZa();
-    if (this.tiq != null)
+    gdB();
+    if (this.tti != null)
     {
       new StringBuilder("Forwarding onActivityResult() to FlutterEngine:\nrequestCode: ").append(paramInt1).append("\nresultCode: ").append(paramInt2).append("\ndata: ").append(paramIntent);
-      io.flutter.a.gea();
-      this.tiq.MCi.onActivityResult(paramInt1, paramInt2, paramIntent);
+      io.flutter.a.giD();
+      this.tti.MZn.onActivityResult(paramInt1, paramInt2, paramIntent);
       AppMethodBeat.o(10083);
       return;
     }
-    io.flutter.a.ged();
+    io.flutter.a.giG();
     AppMethodBeat.o(10083);
   }
   
   final void onBackPressed()
   {
-    AppMethodBeat.i(213343);
-    fZa();
-    if (this.tiq != null)
+    AppMethodBeat.i(197925);
+    gdB();
+    if (this.tti != null)
     {
-      io.flutter.a.gea();
-      this.tiq.MCm.cQl();
-      AppMethodBeat.o(213343);
+      io.flutter.a.giD();
+      this.tti.MZr.cSQ();
+      AppMethodBeat.o(197925);
       return;
     }
-    io.flutter.a.ged();
-    AppMethodBeat.o(213343);
+    io.flutter.a.giG();
+    AppMethodBeat.o(197925);
   }
   
   final void onDestroyView()
   {
     AppMethodBeat.i(10080);
-    io.flutter.a.gea();
-    fZa();
-    this.tiF.gex();
-    this.tiF.b(this.MBl);
+    io.flutter.a.giD();
+    gdB();
+    this.ttx.giZ();
+    this.ttx.b(this.MYq);
     AppMethodBeat.o(10080);
   }
   
   final void onDetach()
   {
     AppMethodBeat.i(10081);
-    io.flutter.a.gea();
-    fZa();
-    this.MBj.b(this.tiq);
-    if (this.MBj.gen())
+    io.flutter.a.giD();
+    gdB();
+    this.MYo.b(this.tti);
+    if (this.MYo.giQ())
     {
-      io.flutter.a.gea();
-      if (!this.MBj.getActivity().isChangingConfigurations()) {
+      io.flutter.a.giD();
+      if (!this.MYo.getActivity().isChangingConfigurations()) {
         break label155;
       }
-      this.tiq.MCi.geG();
+      this.tti.MZn.gji();
     }
     for (;;)
     {
-      if (this.Mlc != null)
+      if (this.MHZ != null)
       {
-        this.Mlc.destroy();
-        this.Mlc = null;
+        this.MHZ.destroy();
+        this.MHZ = null;
       }
-      this.tiq.MCk.gfb();
-      if (this.MBj.gek())
+      this.tti.MZp.gjD();
+      if (this.MYo.giN())
       {
-        this.tiq.destroy();
-        if (this.MBj.dfO() != null) {
-          io.flutter.embedding.engine.b.geD().bbL(this.MBj.dfO());
+        this.tti.destroy();
+        if (this.MYo.diI() != null) {
+          io.flutter.embedding.engine.b.gjf().bdp(this.MYo.diI());
         }
-        this.tiq = null;
+        this.tti = null;
       }
       AppMethodBeat.o(10081);
       return;
       label155:
-      this.tiq.MCi.geH();
+      this.tti.MZn.gjj();
     }
   }
   
   final void onNewIntent(Intent paramIntent)
   {
-    AppMethodBeat.i(213344);
-    fZa();
-    if (this.tiq != null)
+    AppMethodBeat.i(197926);
+    gdB();
+    if (this.tti != null)
     {
-      io.flutter.a.gea();
-      this.tiq.MCi.onNewIntent(paramIntent);
-      AppMethodBeat.o(213344);
+      io.flutter.a.giD();
+      this.tti.MZn.onNewIntent(paramIntent);
+      AppMethodBeat.o(197926);
       return;
     }
-    io.flutter.a.ged();
-    AppMethodBeat.o(213344);
+    io.flutter.a.giG();
+    AppMethodBeat.o(197926);
   }
   
   final void onPause()
   {
     AppMethodBeat.i(10078);
-    io.flutter.a.gea();
-    fZa();
-    this.tiq.MCk.geY();
+    io.flutter.a.giD();
+    gdB();
+    this.tti.MZp.gjA();
     AppMethodBeat.o(10078);
   }
   
   final void onPostResume()
   {
-    AppMethodBeat.i(213341);
-    io.flutter.a.gea();
-    fZa();
-    if (this.tiq != null)
+    AppMethodBeat.i(197923);
+    io.flutter.a.giD();
+    gdB();
+    if (this.tti != null)
     {
-      if (this.Mlc != null)
+      if (this.MHZ != null)
       {
-        this.Mlc.gfj();
-        AppMethodBeat.o(213341);
+        this.MHZ.gjL();
+        AppMethodBeat.o(197923);
       }
     }
     else {
-      io.flutter.a.ged();
+      io.flutter.a.giG();
     }
-    AppMethodBeat.o(213341);
+    AppMethodBeat.o(197923);
   }
   
   final void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
     AppMethodBeat.i(10082);
-    fZa();
-    if (this.tiq != null)
+    gdB();
+    if (this.tti != null)
     {
       new StringBuilder("Forwarding onRequestPermissionsResult() to FlutterEngine:\nrequestCode: ").append(paramInt).append("\npermissions: ").append(Arrays.toString(paramArrayOfString)).append("\ngrantResults: ").append(Arrays.toString(paramArrayOfInt));
-      io.flutter.a.gea();
-      this.tiq.MCi.a(paramInt, paramArrayOfString, paramArrayOfInt);
+      io.flutter.a.giD();
+      this.tti.MZn.a(paramInt, paramArrayOfString, paramArrayOfInt);
       AppMethodBeat.o(10082);
       return;
     }
-    io.flutter.a.ged();
+    io.flutter.a.giG();
     AppMethodBeat.o(10082);
   }
   
   final void onResume()
   {
     AppMethodBeat.i(10077);
-    io.flutter.a.gea();
-    fZa();
-    this.tiq.MCk.geZ();
+    io.flutter.a.giD();
+    gdB();
+    this.tti.MZp.gjB();
     AppMethodBeat.o(10077);
   }
   
   final void onStart()
   {
     AppMethodBeat.i(10076);
-    io.flutter.a.gea();
-    fZa();
-    fYZ();
+    io.flutter.a.giD();
+    gdB();
+    gdA();
     AppMethodBeat.o(10076);
   }
   
   final void onStop()
   {
     AppMethodBeat.i(10079);
-    io.flutter.a.gea();
-    fZa();
-    this.tiq.MCk.gfa();
+    io.flutter.a.giD();
+    gdB();
+    this.tti.MZp.gjC();
     AppMethodBeat.o(10079);
   }
   
   final void onTrimMemory(int paramInt)
   {
-    AppMethodBeat.i(213346);
-    fZa();
-    if (this.tiq != null)
+    AppMethodBeat.i(197928);
+    gdB();
+    if (this.tti != null)
     {
       if (paramInt == 10)
       {
-        io.flutter.a.gea();
-        this.tiq.MCq.gfg();
-        AppMethodBeat.o(213346);
+        io.flutter.a.giD();
+        this.tti.MZv.gjI();
+        AppMethodBeat.o(197928);
       }
     }
     else {
-      io.flutter.a.ged();
+      io.flutter.a.giG();
     }
-    AppMethodBeat.o(213346);
+    AppMethodBeat.o(197928);
   }
   
   final void onUserLeaveHint()
   {
-    AppMethodBeat.i(213345);
-    fZa();
-    if (this.tiq != null)
+    AppMethodBeat.i(197927);
+    gdB();
+    if (this.tti != null)
     {
-      io.flutter.a.gea();
-      this.tiq.MCi.onUserLeaveHint();
-      AppMethodBeat.o(213345);
+      io.flutter.a.giD();
+      this.tti.MZn.onUserLeaveHint();
+      AppMethodBeat.o(197927);
       return;
     }
-    io.flutter.a.ged();
-    AppMethodBeat.o(213345);
+    io.flutter.a.giG();
+    AppMethodBeat.o(197927);
   }
   
   static abstract interface a
@@ -401,42 +401,42 @@ final class c
     
     public abstract void b(io.flutter.embedding.engine.a parama);
     
-    public abstract void cQm();
+    public abstract void cSR();
     
-    public abstract void cQn();
+    public abstract void cSS();
     
-    public abstract h dfL();
+    public abstract String diI();
     
-    public abstract String dfO();
+    public abstract String diJ();
     
-    public abstract String dfP();
+    public abstract String diK();
     
-    public abstract String dfQ();
+    public abstract String diL();
     
-    public abstract String dfR();
+    public abstract io.flutter.embedding.engine.a diO();
     
-    public abstract io.flutter.embedding.engine.a dfU();
-    
-    public abstract d gej();
-    
-    public abstract boolean gek();
-    
-    public abstract g gel();
-    
-    public abstract j gem();
-    
-    public abstract boolean gen();
+    public abstract h diP();
     
     public abstract Activity getActivity();
     
     public abstract Context getContext();
     
     public abstract Lifecycle getLifecycle();
+    
+    public abstract d giM();
+    
+    public abstract boolean giN();
+    
+    public abstract g giO();
+    
+    public abstract j giP();
+    
+    public abstract boolean giQ();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     io.flutter.embedding.android.c
  * JD-Core Version:    0.7.0.1
  */

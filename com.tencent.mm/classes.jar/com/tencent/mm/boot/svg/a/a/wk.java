@@ -46,7 +46,7 @@ public final class wk
       c.a(localPaint, paramVarArgs).setStrokeWidth(1.0F);
       localCanvas.save();
       localObject2 = c.a((Paint)localObject2, paramVarArgs);
-      ((Paint)localObject2).setColor(436207615);
+      ((Paint)localObject2).setColor(419430400);
       arrayOfFloat = c.a(arrayOfFloat, 1.0F, 0.0F, -140.0F, 0.0F, 1.0F, -261.0F);
       ((Matrix)localObject1).reset();
       ((Matrix)localObject1).setValues(arrayOfFloat);

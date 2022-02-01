@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.exdevice;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.ax;
+import com.tencent.mm.model.az;
 import com.tencent.mm.plugin.exdevice.model.ad;
 import com.tencent.mm.pluginsdk.b.c;
 import com.tencent.mm.pluginsdk.b.d;
@@ -18,7 +18,7 @@ public class Plugin
     return locala;
   }
   
-  public ax createSubCore()
+  public az createSubCore()
   {
     AppMethodBeat.i(23142);
     ad localad = new ad();

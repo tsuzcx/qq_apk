@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.cloudvoip.cloudvoice.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.cloudvoip.cloudvoice.c.b;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -12,30 +12,30 @@ import java.util.TimerTask;
 
 public final class j
 {
-  final ArrayList<b> oWO;
-  ArrayList<b> oWP;
-  final ArrayList<a> oWQ;
-  Timer oWR;
+  final ArrayList<b> pdr;
+  ArrayList<b> pds;
+  final ArrayList<a> pdt;
+  Timer pdu;
   
   public j()
   {
     AppMethodBeat.i(90816);
-    this.oWP = new ArrayList(10);
-    this.oWQ = new ArrayList(2);
-    this.oWO = new ArrayList(10);
+    this.pds = new ArrayList(10);
+    this.pdt = new ArrayList(2);
+    this.pdr = new ArrayList(10);
     AppMethodBeat.o(90816);
   }
   
-  final String AZ(int paramInt)
+  final String Bl(int paramInt)
   {
     AppMethodBeat.i(184466);
-    if (this.oWO != null)
+    if (this.pdr != null)
     {
-      Object localObject = this.oWO.iterator();
+      Object localObject = this.pdr.iterator();
       while (((Iterator)localObject).hasNext())
       {
         b localb = (b)((Iterator)localObject).next();
-        if ((localb != null) && (paramInt == localb.oWb))
+        if ((localb != null) && (paramInt == localb.pcE))
         {
           localObject = localb.openId;
           AppMethodBeat.o(184466);

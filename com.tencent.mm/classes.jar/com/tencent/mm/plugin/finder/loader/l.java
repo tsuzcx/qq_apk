@@ -1,39 +1,39 @@
 package com.tencent.mm.plugin.finder.loader;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.aj;
 
-@d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/loader/FinderUrlImage;", "Lcom/tencent/mm/plugin/finder/loader/FinderLoaderData;", "url", "", "mediaType", "Lcom/tencent/mm/plugin/finder/storage/FinderMediaType;", "(Ljava/lang/String;Lcom/tencent/mm/plugin/finder/storage/FinderMediaType;)V", "md5", "kotlin.jvm.PlatformType", "getMd5", "()Ljava/lang/String;", "getDecodeKey", "getMediaType", "getPath", "getThumbUrl", "getThumbUrlToken", "getUrl", "getUrlToken", "getUsername", "uniqueValue", "plugin-finder_release"})
+@d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/loader/FinderUrlImage;", "Lcom/tencent/mm/plugin/finder/loader/FinderLoaderData;", "url", "", "mediaType", "Lcom/tencent/mm/plugin/finder/storage/FinderMediaType;", "(Ljava/lang/String;Lcom/tencent/mm/plugin/finder/storage/FinderMediaType;)V", "md5", "kotlin.jvm.PlatformType", "getMd5", "()Ljava/lang/String;", "getDecodeKey", "getMediaType", "getPath", "getThumbUrl", "getThumbUrlToken", "getUrl", "getUrlToken", "getUsername", "uniqueValue", "plugin-finder_release"})
 public final class l
   implements k
 {
   private final String md5;
-  private final com.tencent.mm.plugin.finder.storage.r sjl;
+  private final com.tencent.mm.plugin.finder.storage.r ssi;
   private final String url;
   
   public l(String paramString, com.tencent.mm.plugin.finder.storage.r paramr)
   {
     AppMethodBeat.i(166332);
     this.url = paramString;
-    this.sjl = paramr;
+    this.ssi = paramr;
     paramr = this.url;
     paramString = paramr;
     if (paramr == null) {
       paramString = "";
     }
-    this.md5 = ai.ee(paramString);
+    this.md5 = aj.ej(paramString);
     AppMethodBeat.o(166332);
   }
   
-  public final String aeA()
+  public final String aeM()
   {
     AppMethodBeat.i(166331);
-    String str = this.sjl.detail + "_finder_" + this.md5;
+    String str = this.ssi.detail + "_finder_" + this.md5;
     AppMethodBeat.o(166331);
     return str;
   }
   
-  public final String akW()
+  public final String all()
   {
     String str2 = this.url;
     String str1 = str2;
@@ -43,22 +43,22 @@ public final class l
     return str1;
   }
   
-  public final String cCA()
+  public final com.tencent.mm.plugin.finder.storage.r cEj()
+  {
+    return this.ssi;
+  }
+  
+  public final String cEk()
   {
     return "";
   }
   
-  public final com.tencent.mm.plugin.finder.storage.r cCx()
-  {
-    return this.sjl;
-  }
-  
-  public final String cCy()
+  public final String cEl()
   {
     return "";
   }
   
-  public final String cCz()
+  public final String cEm()
   {
     return "";
   }
@@ -66,7 +66,7 @@ public final class l
   public final String getPath()
   {
     AppMethodBeat.i(166330);
-    Object localObject = com.tencent.mm.plugin.finder.utils.r.sNc;
+    Object localObject = com.tencent.mm.plugin.finder.utils.r.sYn;
     localObject = com.tencent.mm.plugin.finder.utils.r.a(this);
     AppMethodBeat.o(166330);
     return localObject;

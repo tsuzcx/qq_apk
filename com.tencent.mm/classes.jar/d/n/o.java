@@ -5,34 +5,34 @@ import d.g.a.b;
 import d.g.b.p;
 import d.l;
 
-@l(gfA=1, gfx={1, 1, 16}, gfy={""}, gfz={"append", "T", "Ljava/lang/Appendable;", "Lkotlin/text/Appendable;", "value", "", "", "(Ljava/lang/Appendable;[Ljava/lang/CharSequence;)Ljava/lang/Appendable;", "appendElement", "", "element", "transform", "Lkotlin/Function1;", "(Ljava/lang/Appendable;Ljava/lang/Object;Lkotlin/jvm/functions/Function1;)V", "appendRange", "startIndex", "", "endIndex", "(Ljava/lang/Appendable;Ljava/lang/CharSequence;II)Ljava/lang/Appendable;", "kotlin-stdlib"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"append", "T", "Ljava/lang/Appendable;", "Lkotlin/text/Appendable;", "value", "", "", "(Ljava/lang/Appendable;[Ljava/lang/CharSequence;)Ljava/lang/Appendable;", "appendElement", "", "element", "transform", "Lkotlin/Function1;", "(Ljava/lang/Appendable;Ljava/lang/Object;Lkotlin/jvm/functions/Function1;)V", "appendRange", "startIndex", "", "endIndex", "(Ljava/lang/Appendable;Ljava/lang/CharSequence;II)Ljava/lang/Appendable;", "kotlin-stdlib"}, gkc=1)
 public class o
 {
   public static final <T> void a(Appendable paramAppendable, T paramT, b<? super T, ? extends CharSequence> paramb)
   {
-    AppMethodBeat.i(199638);
+    AppMethodBeat.i(188733);
     p.h(paramAppendable, "$this$appendElement");
     if (paramb != null)
     {
       paramAppendable.append((CharSequence)paramb.invoke(paramT));
-      AppMethodBeat.o(199638);
+      AppMethodBeat.o(188733);
       return;
     }
     if (paramT != null) {}
     for (boolean bool = paramT instanceof CharSequence; bool; bool = true)
     {
       paramAppendable.append((CharSequence)paramT);
-      AppMethodBeat.o(199638);
+      AppMethodBeat.o(188733);
       return;
     }
     if ((paramT instanceof Character))
     {
       paramAppendable.append(((Character)paramT).charValue());
-      AppMethodBeat.o(199638);
+      AppMethodBeat.o(188733);
       return;
     }
     paramAppendable.append((CharSequence)String.valueOf(paramT));
-    AppMethodBeat.o(199638);
+    AppMethodBeat.o(188733);
   }
 }
 

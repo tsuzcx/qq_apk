@@ -9,17 +9,17 @@ public final class f
 {
   public final String[] getHttpAuthUsernamePassword(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(195514);
-    paramString1 = ad.gbg().getHttpAuthUsernamePassword(paramString1, paramString2);
-    AppMethodBeat.o(195514);
+    AppMethodBeat.i(207530);
+    paramString1 = ad.gfI().getHttpAuthUsernamePassword(paramString1, paramString2);
+    AppMethodBeat.o(207530);
     return paramString1;
   }
   
   public final void setHttpAuthUsernamePassword(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    AppMethodBeat.i(195513);
-    ad.gbg().setHttpAuthUsernamePassword(paramString1, paramString2, paramString3, paramString4);
-    AppMethodBeat.o(195513);
+    AppMethodBeat.i(207529);
+    ad.gfI().setHttpAuthUsernamePassword(paramString1, paramString2, paramString3, paramString4);
+    AppMethodBeat.o(207529);
   }
 }
 

@@ -23,48 +23,48 @@ class BuilderModel
   
   BuilderModel(TAVComposition paramTAVComposition)
   {
-    AppMethodBeat.i(219810);
+    AppMethodBeat.i(200841);
     this.tavComposition = paramTAVComposition;
     this.mainVideoTrackInfo = new ArrayList();
     this.mainAudioTrackInfo = new ArrayList();
     this.overlayTrackInfo = new ArrayList();
     this.audioTrackInfo = new ArrayList();
-    AppMethodBeat.o(219810);
+    AppMethodBeat.o(200841);
   }
   
   void addAudioTrackInfo(AudioMixInfo paramAudioMixInfo)
   {
-    AppMethodBeat.i(219823);
+    AppMethodBeat.i(200854);
     this.audioTrackInfo.add(paramAudioMixInfo);
-    AppMethodBeat.o(219823);
+    AppMethodBeat.o(200854);
   }
   
   void addMainAudioTrackInfo(AudioParamsInfo paramAudioParamsInfo)
   {
-    AppMethodBeat.i(219821);
+    AppMethodBeat.i(200852);
     this.mainAudioTrackInfo.add(paramAudioParamsInfo);
-    AppMethodBeat.o(219821);
+    AppMethodBeat.o(200852);
   }
   
   void addMainVideoTrackInfo(List<VideoInfo> paramList)
   {
-    AppMethodBeat.i(219820);
+    AppMethodBeat.i(200851);
     this.mainVideoTrackInfo.add(paramList);
-    AppMethodBeat.o(219820);
+    AppMethodBeat.o(200851);
   }
   
   void addOverlayTrackInfo(VideoOverlayInfo paramVideoOverlayInfo)
   {
-    AppMethodBeat.i(219822);
+    AppMethodBeat.i(200853);
     this.overlayTrackInfo.add(paramVideoOverlayInfo);
-    AppMethodBeat.o(219822);
+    AppMethodBeat.o(200853);
   }
   
   List<List<? extends TAVTransitionableAudio>> getAudioChannels()
   {
-    AppMethodBeat.i(219812);
+    AppMethodBeat.i(200843);
     List localList = this.tavComposition.getAudioChannels();
-    AppMethodBeat.o(219812);
+    AppMethodBeat.o(200843);
     return localList;
   }
   
@@ -75,17 +75,17 @@ class BuilderModel
   
   int getBackgroundColor()
   {
-    AppMethodBeat.i(219815);
+    AppMethodBeat.i(200846);
     int i = this.tavComposition.getBackgroundColor();
-    AppMethodBeat.o(219815);
+    AppMethodBeat.o(200846);
     return i;
   }
   
   TAVVideoEffect getGlobalVideoEffect()
   {
-    AppMethodBeat.i(219818);
+    AppMethodBeat.i(200849);
     TAVVideoEffect localTAVVideoEffect = this.tavComposition.getGlobalVideoEffect();
-    AppMethodBeat.o(219818);
+    AppMethodBeat.o(200849);
     return localTAVVideoEffect;
   }
   
@@ -101,9 +101,9 @@ class BuilderModel
   
   List<? extends TAVAudio> getMixAudios()
   {
-    AppMethodBeat.i(219814);
+    AppMethodBeat.i(200845);
     List localList = this.tavComposition.getAudios();
-    AppMethodBeat.o(219814);
+    AppMethodBeat.o(200845);
     return localList;
   }
   
@@ -114,25 +114,25 @@ class BuilderModel
   
   List<? extends TAVVideo> getOverlays()
   {
-    AppMethodBeat.i(219813);
+    AppMethodBeat.i(200844);
     List localList = this.tavComposition.getOverlays();
-    AppMethodBeat.o(219813);
+    AppMethodBeat.o(200844);
     return localList;
   }
   
   VideoComposition.RenderLayoutMode getRenderLayoutMode()
   {
-    AppMethodBeat.i(219817);
+    AppMethodBeat.i(200848);
     VideoComposition.RenderLayoutMode localRenderLayoutMode = this.tavComposition.getRenderLayoutMode();
-    AppMethodBeat.o(219817);
+    AppMethodBeat.o(200848);
     return localRenderLayoutMode;
   }
   
   CGSize getRenderSize()
   {
-    AppMethodBeat.i(219816);
+    AppMethodBeat.i(200847);
     CGSize localCGSize = this.tavComposition.getRenderSize();
-    AppMethodBeat.o(219816);
+    AppMethodBeat.o(200847);
     return localCGSize;
   }
   
@@ -143,17 +143,17 @@ class BuilderModel
   
   List<List<? extends TAVTransitionableVideo>> getVideoChannels()
   {
-    AppMethodBeat.i(219811);
+    AppMethodBeat.i(200842);
     List localList = this.tavComposition.getVideoChannels();
-    AppMethodBeat.o(219811);
+    AppMethodBeat.o(200842);
     return localList;
   }
   
   public TAVVideoMixEffect getVideoMixEffect()
   {
-    AppMethodBeat.i(219819);
+    AppMethodBeat.i(200850);
     TAVVideoMixEffect localTAVVideoMixEffect = this.tavComposition.getVideoMixEffect();
-    AppMethodBeat.o(219819);
+    AppMethodBeat.o(200850);
     return localTAVVideoMixEffect;
   }
 }

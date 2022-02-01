@@ -1,145 +1,65 @@
 package com.tencent.mm.plugin.finder.report;
 
-import com.tencent.e.h;
-import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.gallery.a.c;
-import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.plugin.sight.base.a;
-import d.g.b.p;
+import com.tencent.mm.plugin.report.e;
 import d.l;
-import java.util.ArrayList;
-import java.util.Iterator;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/report/IDKey1371;", "", "()V", "CAPTURE_PHOTO", "", "CAPTURE_PHOTO_BACK", "CAPTURE_PHOTO_FRONT", "CAPTURE_PHOTO_WITH_BEAUTY", "ID", "SINGLE_VIDEO_BACK", "SINGLE_VIDEO_BEAUTY", "SINGLE_VIDEO_FRONT", "SINGLE_VIDEO_LENGTH_0_5", "SINGLE_VIDEO_LENGTH_10_15", "SINGLE_VIDEO_LENGTH_15_20", "SINGLE_VIDEO_LENGTH_20_30", "SINGLE_VIDEO_LENGTH_30_40", "SINGLE_VIDEO_LENGTH_40_50", "SINGLE_VIDEO_LENGTH_50_60", "SINGLE_VIDEO_LENGTH_5_10", "SINGLE_VIDEO_LENGTH_TOTAL", "SINGLE_VIDEO_NOT_ENOUGH", "SINGLE_VIDEO_SUCCESS", "SINGLE_VIDEO_TIME", "SUBVIDEO_AUTO_FINISH", "SUBVIDEO_CLICK_FINISH", "SUBVIDEO_NUM_0_3", "SUBVIDEO_NUM_10_15", "SUBVIDEO_NUM_15_20", "SUBVIDEO_NUM_3_6", "SUBVIDEO_NUM_6_10", "SUBVIDEO_PREPARE_DELETE", "SUBVIDEO_PRERARE_EXIT", "SUBVIDEO_SINGLE_LENGTH_0_5", "SUBVIDEO_SINGLE_LENGTH_10_15", "SUBVIDEO_SINGLE_LENGTH_15_20", "SUBVIDEO_SINGLE_LENGTH_20_30", "SUBVIDEO_SINGLE_LENGTH_30_40", "SUBVIDEO_SINGLE_LENGTH_40_50", "SUBVIDEO_SINGLE_LENGTH_50_60", "SUBVIDEO_SINGLE_LENGTH_5_10", "SUBVIDEO_SURE_DELETE", "SUBVIDEO_SURE_EXIT", "SUBVIDEO_TIME", "SUBVIDEO_TIME_NOT_ENOUGH", "SUBVIDEO_TIME_SUCCESS", "SUBVIDEO_TIME_TOTAL_DURATION", "SUBVIDEO_TOTAL_LENGTH_0_5", "SUBVIDEO_TOTAL_LENGTH_10_15", "SUBVIDEO_TOTAL_LENGTH_15_20", "SUBVIDEO_TOTAL_LENGTH_20_30", "SUBVIDEO_TOTAL_LENGTH_30_40", "SUBVIDEO_TOTAL_LENGTH_40_50", "SUBVIDEO_TOTAL_LENGTH_50_60", "SUBVIDEO_TOTAL_LENGTH_5_10", "SUBVIDEO_TOTAL_NUM", "capturePhoto", "", "capturePhotoBack", "capturePhotoCamera", "isBack", "", "capturePhotoFront", "capturePhotoWithBeauty", "captureSingleVideo", "captureSingleVideoBack", "captureSingleVideoBeauty", "captureSingleVideoCamera", "captureSingleVideoDuration", "durationMs", "captureSingleVideoFront", "captureSingleVideoNotEnough", "captureSingleVideoSuccess", "captureSingleVideoTotal", "report", "key", "value", "subVideoAutoFinish", "subVideoClickFinish", "subVideoDuration", "fileList", "Ljava/util/ArrayList;", "", "Lkotlin/collections/ArrayList;", "subVideoNotEnough", "subVideoNum", "num", "subVideoPrepareDelete", "subVideoPrepareExit", "subVideoSingleTime", "subVideoSuccess", "subVideoSureDelete", "subVideoSureExit", "subVideoTime", "subVideoTotalTime", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/report/IDKey1298;", "", "()V", "Companion", "plugin-finder_release"})
 public final class t
 {
-  public static final t ssb;
+  private static final int ID = 1298;
+  private static final int sBT = 1;
+  private static final int sBU = 2;
+  private static final int sBV = 3;
+  private static final int sBW = 4;
+  private static final int sBX = 5;
+  private static final int sBY = 6;
+  private static final int sBZ = 7;
+  private static final int sCa = 8;
+  private static final int sCb = 9;
+  private static final int sCc = 10;
+  private static final int sCd = 11;
+  private static final int sCe = 12;
+  private static final int sCf = 13;
+  private static final int sCg = 14;
+  private static final int sCh = 15;
+  private static final int sCi = 16;
+  private static final int sCj = 255;
+  public static final a sCk;
   
   static
   {
-    AppMethodBeat.i(203386);
-    ssb = new t();
-    AppMethodBeat.o(203386);
+    AppMethodBeat.i(166708);
+    sCk = new a((byte)0);
+    ID = 1298;
+    sBT = 1;
+    sBU = 2;
+    sBV = 3;
+    sBW = 4;
+    sBX = 5;
+    sBY = 6;
+    sBZ = 7;
+    sCa = 8;
+    sCb = 9;
+    sCc = 10;
+    sCd = 11;
+    sCe = 12;
+    sCf = 13;
+    sCg = 14;
+    sCh = 15;
+    sCi = 16;
+    sCj = 255;
+    AppMethodBeat.o(166708);
   }
   
-  public static void M(long paramLong1, long paramLong2)
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/report/IDKey1298$Companion;", "", "()V", "ID", "", "getID", "()I", "PlayerError_403", "getPlayerError_403", "PlayerError_404", "getPlayerError_404", "PlayerError_405", "getPlayerError_405", "PlayerError_416", "getPlayerError_416", "PlayerError_502", "getPlayerError_502", "PlayerError_503", "getPlayerError_503", "PlayerError_CDNCOM_TIMEOUT_TRANSFOR", "getPlayerError_CDNCOM_TIMEOUT_TRANSFOR", "PlayerError_CNDCOM_MEDIA_OPEN_FAILED", "getPlayerError_CNDCOM_MEDIA_OPEN_FAILED", "PlayerError_CNDCOM_NET_ERROR", "getPlayerError_CNDCOM_NET_ERROR", "PlayerError_CNDCOM_WRITE_MEDIA_FILE_FAILED", "getPlayerError_CNDCOM_WRITE_MEDIA_FILE_FAILED", "PlayerError_IO", "getPlayerError_IO", "PlayerError_MALFORMED", "getPlayerError_MALFORMED", "PlayerError_Other", "getPlayerError_Other", "PlayerError_PREPARE", "getPlayerError_PREPARE", "PlayerError_READ", "getPlayerError_READ", "PlayerError_REQ_ALL", "getPlayerError_REQ_ALL", "PlayerError_UNSUPPORT", "getPlayerError_UNSUPPORT", "report", "", "errorCode", "plugin-finder_release"})
+  public static final class a
   {
-    AppMethodBeat.i(203384);
-    g.yhR.idkeyStat(1371L, paramLong1, paramLong2, false);
-    AppMethodBeat.o(203384);
-  }
-  
-  public static void V(ArrayList<String> paramArrayList)
-  {
-    AppMethodBeat.i(203383);
-    p.h(paramArrayList, "fileList");
-    h.LTJ.aR((Runnable)new a(paramArrayList));
-    AppMethodBeat.o(203383);
-  }
-  
-  public static void lY(boolean paramBoolean)
-  {
-    AppMethodBeat.i(203380);
-    if (paramBoolean)
+    public static void md(int paramInt)
     {
-      M(202L, 1L);
-      AppMethodBeat.o(203380);
-      return;
-    }
-    M(201L, 1L);
-    AppMethodBeat.o(203380);
-  }
-  
-  public static void lZ(boolean paramBoolean)
-  {
-    AppMethodBeat.i(203381);
-    if (paramBoolean)
-    {
-      M(214L, 1L);
-      AppMethodBeat.o(203381);
-      return;
-    }
-    M(213L, 1L);
-    AppMethodBeat.o(203381);
-  }
-  
-  public static void wG(long paramLong)
-  {
-    AppMethodBeat.i(203382);
-    M(218L, paramLong);
-    if (paramLong < 5000L)
-    {
-      M(220L, 1L);
-      AppMethodBeat.o(203382);
-      return;
-    }
-    if (paramLong < 10000L)
-    {
-      M(221L, 1L);
-      AppMethodBeat.o(203382);
-      return;
-    }
-    if (paramLong < 15000L)
-    {
-      M(222L, 1L);
-      AppMethodBeat.o(203382);
-      return;
-    }
-    if (paramLong < 20000L)
-    {
-      M(223L, 1L);
-      AppMethodBeat.o(203382);
-      return;
-    }
-    if (paramLong < 30000L)
-    {
-      M(224L, 1L);
-      AppMethodBeat.o(203382);
-      return;
-    }
-    if (paramLong < 40000L)
-    {
-      M(225L, 1L);
-      AppMethodBeat.o(203382);
-      return;
-    }
-    if (paramLong < 50000L)
-    {
-      M(226L, 1L);
-      AppMethodBeat.o(203382);
-      return;
-    }
-    M(227L, 1L);
-    AppMethodBeat.o(203382);
-  }
-  
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
-  static final class a
-    implements Runnable
-  {
-    a(ArrayList paramArrayList) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(203379);
-      long l1 = 0L;
-      Object localObject1 = ((Iterable)this.ssc).iterator();
-      while (((Iterator)localObject1).hasNext())
-      {
-        Object localObject2 = (String)((Iterator)localObject1).next();
-        Object localObject3 = c.tQu;
-        localObject2 = c.aiV((String)localObject2);
-        long l2 = ((a)localObject2).videoDuration;
-        localObject3 = t.ssb;
-        t.wI(((a)localObject2).videoDuration);
-        l1 = l2 + l1;
-      }
-      localObject1 = t.ssb;
-      t.wJ(l1);
-      localObject1 = t.ssb;
-      t.wK(this.ssc.size());
-      AppMethodBeat.o(203379);
+      AppMethodBeat.i(166707);
+      e.ywz.idkeyStat(t.cGc(), paramInt, 1L, false);
+      AppMethodBeat.o(166707);
     }
   }
 }

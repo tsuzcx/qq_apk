@@ -4,7 +4,7 @@ import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.crashfix.c.a;
 import com.tencent.mm.plugin.crashfix.d.b;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -12,7 +12,7 @@ import java.lang.reflect.Method;
 public final class d
   implements b
 {
-  private static Object cbF()
+  private static Object ccU()
   {
     Object localObject1 = null;
     AppMethodBeat.i(145635);
@@ -30,53 +30,53 @@ public final class d
     {
       for (;;)
       {
-        ad.e("MicroMsg.ToastBadTokenFix", localNoSuchFieldException.getMessage());
+        ae.e("MicroMsg.ToastBadTokenFix", localNoSuchFieldException.getMessage());
       }
     }
     catch (IllegalAccessException localIllegalAccessException)
     {
       for (;;)
       {
-        ad.e("MicroMsg.ToastBadTokenFix", localIllegalAccessException.getMessage());
+        ae.e("MicroMsg.ToastBadTokenFix", localIllegalAccessException.getMessage());
       }
     }
     catch (NoSuchMethodException localNoSuchMethodException)
     {
       for (;;)
       {
-        ad.e("MicroMsg.ToastBadTokenFix", localNoSuchMethodException.getMessage());
+        ae.e("MicroMsg.ToastBadTokenFix", localNoSuchMethodException.getMessage());
       }
     }
     catch (InvocationTargetException localInvocationTargetException)
     {
       for (;;)
       {
-        ad.e("MicroMsg.ToastBadTokenFix", localInvocationTargetException.getMessage());
+        ae.e("MicroMsg.ToastBadTokenFix", localInvocationTargetException.getMessage());
       }
     }
     AppMethodBeat.o(145635);
     return localObject1;
   }
   
-  public final boolean Bn(int paramInt)
+  public final boolean Bz(int paramInt)
   {
     return paramInt < 26;
   }
   
-  public final boolean cbE()
+  public final boolean ccT()
   {
     AppMethodBeat.i(145634);
-    Object localObject = cbF();
+    Object localObject = ccU();
     if (localObject != null)
     {
-      localObject = c.cU(localObject);
+      localObject = c.cV(localObject);
       if (localObject == null)
       {
-        ad.e("MicroMsg.ToastBadTokenFix", "INotificationManagerInvocationHandler.getProxy null");
+        ae.e("MicroMsg.ToastBadTokenFix", "INotificationManagerInvocationHandler.getProxy null");
         AppMethodBeat.o(145634);
         return false;
       }
-      ad.i("MicroMsg.ToastBadTokenFix", "INotificationManagerInvocationHandler.getProxy succ");
+      ae.i("MicroMsg.ToastBadTokenFix", "INotificationManagerInvocationHandler.getProxy succ");
     }
     try
     {
@@ -84,13 +84,13 @@ public final class d
       localField.setAccessible(true);
       a.c(localField);
       localField.set(null, localObject);
-      ad.i("MicroMsg.ToastBadTokenFix", "replace succ");
+      ae.i("MicroMsg.ToastBadTokenFix", "replace succ");
       AppMethodBeat.o(145634);
       return true;
     }
     catch (NoSuchFieldException localNoSuchFieldException)
     {
-      ad.e("MicroMsg.ToastBadTokenFix", localNoSuchFieldException.getMessage());
+      ae.e("MicroMsg.ToastBadTokenFix", localNoSuchFieldException.getMessage());
       AppMethodBeat.o(145634);
       return false;
     }
@@ -98,14 +98,14 @@ public final class d
     {
       for (;;)
       {
-        ad.e("MicroMsg.ToastBadTokenFix", localIllegalAccessException.getMessage());
+        ae.e("MicroMsg.ToastBadTokenFix", localIllegalAccessException.getMessage());
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.crashfix.d.c.d
  * JD-Core Version:    0.7.0.1
  */

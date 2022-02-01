@@ -7,10 +7,10 @@ public enum a
   static
   {
     AppMethodBeat.i(143524);
-    KXF = new a("AROUND", 0);
-    KXG = new a("UP_AND_DOWN", 1);
-    KXH = new a("LEFT_AND_RIGHT", 2);
-    KXI = new a[] { KXF, KXG, KXH };
+    Lud = new a("AROUND", 0);
+    Lue = new a("UP_AND_DOWN", 1);
+    Luf = new a("LEFT_AND_RIGHT", 2);
+    Lug = new a[] { Lud, Lue, Luf };
     AppMethodBeat.o(143524);
   }
   

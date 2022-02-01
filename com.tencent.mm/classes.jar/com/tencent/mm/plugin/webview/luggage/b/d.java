@@ -37,15 +37,15 @@ public final class d
           localBundle.putLong("fav_local_id", paramg.mParams.getLong("fav_local_id", -1L));
           FavUrlTask localFavUrlTask = new FavUrlTask();
           localFavUrlTask.actionType = 4;
-          localFavUrlTask.dxT = localBundle;
+          localFavUrlTask.dyY = localBundle;
           AppBrandMainProcessService.b(localFavUrlTask);
           if (localFavUrlTask.result) {
-            paramg.gg(true);
+            paramg.ge(true);
           }
         }
       }
     });
-    com.tencent.mm.plugin.report.service.g.yhR.dD(982, 3);
+    com.tencent.mm.plugin.report.service.g.yxI.dD(982, 3);
     AppMethodBeat.o(78687);
   }
   

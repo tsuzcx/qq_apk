@@ -1,80 +1,91 @@
 package com.tencent.mm.plugin.appbrand.appcache;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.fh;
-import com.tencent.mm.plugin.appbrand.y.b;
-import com.tencent.mm.sdk.e.c.a;
-import java.lang.reflect.Field;
-import java.util.Map;
+import com.tencent.mm.plugin.appbrand.x.c;
+import com.tencent.mm.sdk.e.e;
+import com.tencent.mm.sdk.e.j;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.vfs.o;
 
-public final class an
-  extends fh
-  implements b
+public class an
+  extends c<am>
 {
-  static final c.a hEe;
-  static final String[] jFa;
+  public static final String[] hGX;
+  private final e jKa;
   
   static
   {
-    int i = 0;
-    AppMethodBeat.i(90564);
-    jFa = new String[] { "appId", "appVersion" };
-    Object localObject1 = new c.a();
-    ((c.a)localObject1).IhA = new Field[5];
-    ((c.a)localObject1).columns = new String[6];
-    Object localObject2 = new StringBuilder();
-    ((c.a)localObject1).columns[0] = "appId";
-    ((c.a)localObject1).IhC.put("appId", "TEXT");
-    ((StringBuilder)localObject2).append(" appId TEXT");
-    ((StringBuilder)localObject2).append(", ");
-    ((c.a)localObject1).columns[1] = "appVersion";
-    ((c.a)localObject1).IhC.put("appVersion", "INTEGER");
-    ((StringBuilder)localObject2).append(" appVersion INTEGER");
-    ((StringBuilder)localObject2).append(", ");
-    ((c.a)localObject1).columns[2] = "decryptKey";
-    ((c.a)localObject1).IhC.put("decryptKey", "TEXT");
-    ((StringBuilder)localObject2).append(" decryptKey TEXT");
-    ((StringBuilder)localObject2).append(", ");
-    ((c.a)localObject1).columns[3] = "pkgMd5";
-    ((c.a)localObject1).IhC.put("pkgMd5", "TEXT");
-    ((StringBuilder)localObject2).append(" pkgMd5 TEXT");
-    ((StringBuilder)localObject2).append(", ");
-    ((c.a)localObject1).columns[4] = "reportId";
-    ((c.a)localObject1).IhC.put("reportId", "INTEGER");
-    ((StringBuilder)localObject2).append(" reportId INTEGER");
-    ((c.a)localObject1).columns[5] = "rowid";
-    ((c.a)localObject1).sql = ((StringBuilder)localObject2).toString();
-    hEe = (c.a)localObject1;
-    localObject1 = " PRIMARY KEY ( ";
-    localObject2 = jFa;
-    int j = localObject2.length;
-    while (i < j)
+    AppMethodBeat.i(90563);
+    hGX = new String[] { j.getCreateSQLs(am.hGW, "PredownloadEncryptPkgInfo") };
+    AppMethodBeat.o(90563);
+  }
+  
+  public an(e parame)
+  {
+    super(parame, am.hGW, "PredownloadEncryptPkgInfo", am.INDEX_CREATE);
+    this.jKa = parame;
+  }
+  
+  static boolean a(am paramam)
+  {
+    AppMethodBeat.i(90562);
+    if (bu.isNullOrNil(paramam.field_pkgPath))
     {
-      localObject3 = localObject2[i];
-      localObject1 = (String)localObject1 + ", " + (String)localObject3;
-      i += 1;
+      ae.i("MicroMsg.AppBrand.PredownloadEncryptPkgStorage", "checkPkgIntegrity, with %s path nil", new Object[] { paramam.toShortString() });
+      AppMethodBeat.o(90562);
+      return false;
     }
-    localObject1 = ((String)localObject1).replaceFirst(",", "");
-    localObject1 = (String)localObject1 + " )";
-    localObject2 = new StringBuilder();
-    Object localObject3 = hEe;
-    ((c.a)localObject3).sql = (((c.a)localObject3).sql + "," + (String)localObject1);
-    AppMethodBeat.o(90564);
+    if (bu.isNullOrNil(paramam.field_pkgMd5))
+    {
+      ae.i("MicroMsg.AppBrand.PredownloadEncryptPkgStorage", "checkPkgIntegrity, with %s record md5 nil", new Object[] { paramam.toShortString() });
+      AppMethodBeat.o(90562);
+      return false;
+    }
+    String str = o.aRh(paramam.field_pkgPath);
+    ae.i("MicroMsg.AppBrand.PredownloadEncryptPkgStorage", "checkPkgIntegrity with %s, file_md5(%s), record_md5(%s)", new Object[] { paramam.toShortString(), str, paramam.field_pkgMd5 });
+    boolean bool = paramam.field_pkgMd5.equals(str);
+    AppMethodBeat.o(90562);
+    return bool;
   }
   
-  public final c.a getDBInfo()
+  public final am A(String paramString, int paramInt1, int paramInt2)
   {
-    return hEe;
+    AppMethodBeat.i(90561);
+    paramString = z(paramString, paramInt1, paramInt2);
+    if ((paramString != null) && (a(paramString)))
+    {
+      AppMethodBeat.o(90561);
+      return paramString;
+    }
+    AppMethodBeat.o(90561);
+    return null;
   }
   
-  public final String[] getKeys()
+  public final am z(String paramString, int paramInt1, int paramInt2)
   {
-    return jFa;
+    AppMethodBeat.i(90560);
+    if (bu.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(90560);
+      return null;
+    }
+    am localam = new am();
+    localam.field_appId = paramString;
+    localam.field_type = paramInt1;
+    localam.field_version = paramInt2;
+    if (get(localam, am.jHZ))
+    {
+      AppMethodBeat.o(90560);
+      return localam;
+    }
+    AppMethodBeat.o(90560);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appcache.an
  * JD-Core Version:    0.7.0.1
  */

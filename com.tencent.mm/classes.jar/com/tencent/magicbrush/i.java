@@ -9,25 +9,25 @@ import d.l.b;
 import d.l.d;
 import d.l.h;
 
-@l(gfx={1, 1, 13})
+@l(gjZ={1, 1, 13})
 final class i
   extends t
 {
-  public static final h cxK;
+  public static final h cyr;
   
   static
   {
     AppMethodBeat.i(140106);
-    cxK = new i();
+    cyr = new i();
     AppMethodBeat.o(140106);
   }
   
-  public final String Hu()
+  public final String HC()
   {
     return "getAsset_manager()Landroid/content/res/AssetManager;";
   }
   
-  public final d Hv()
+  public final d HD()
   {
     AppMethodBeat.i(140107);
     b localb = z.bp(MBRuntime.MBParams.class);
@@ -52,7 +52,7 @@ final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.magicbrush.i
  * JD-Core Version:    0.7.0.1
  */

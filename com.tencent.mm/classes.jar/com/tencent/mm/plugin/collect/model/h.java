@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.collect.model;
 
 public final class h
 {
-  public int dsd;
-  public long paq;
-  public int par;
+  public int dtj;
+  public long pgU;
+  public int pgV;
   public int type;
 }
 

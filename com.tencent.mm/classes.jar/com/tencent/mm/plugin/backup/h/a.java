@@ -2,32 +2,32 @@ package com.tencent.mm.plugin.backup.h;
 
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.as.a;
-import com.tencent.mm.model.as.b;
+import com.tencent.mm.model.au.a;
+import com.tencent.mm.model.au.b;
 import com.tencent.mm.pluginsdk.model.app.ao;
 import com.tencent.mm.pluginsdk.model.app.i;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aq;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 public final class a
 {
-  public ap handler;
-  LinkedList<a> nAb;
+  public aq handler;
+  LinkedList<a> nFw;
   
   public a()
   {
     AppMethodBeat.i(21743);
-    this.nAb = new LinkedList();
-    this.handler = new ap(Looper.getMainLooper());
+    this.nFw = new LinkedList();
+    this.handler = new aq(Looper.getMainLooper());
     AppMethodBeat.o(21743);
   }
   
   public final void h(int paramInt, Object paramObject)
   {
     AppMethodBeat.i(21744);
-    this.nAb.add(new a(paramInt, paramObject));
+    this.nFw.add(new a(paramInt, paramObject));
     AppMethodBeat.o(21744);
   }
   
@@ -45,7 +45,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.h.a
  * JD-Core Version:    0.7.0.1
  */

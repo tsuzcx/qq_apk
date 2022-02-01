@@ -3,46 +3,46 @@ package com.tencent.matrix.report;
 import android.os.SystemClock;
 import com.tencent.matrix.e.b;
 import com.tencent.matrix.trace.b.a.a;
-import com.tencent.mm.sdk.platformtools.ax;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.concurrent.ConcurrentHashMap;
 import org.json.JSONObject;
 
 public final class g
   implements h.b
 {
-  private final ConcurrentHashMap<String, a> cFg = new ConcurrentHashMap();
+  private final ConcurrentHashMap<String, g.a> cFP = new ConcurrentHashMap();
   
   public final boolean c(c paramc)
   {
     boolean bool2 = false;
     boolean bool1 = bool2;
     Object localObject;
-    if (paramc.cFa.getTag().equals("Trace"))
+    if (paramc.cFH.getTag().equals("Trace"))
     {
-      localObject = paramc.cEZ;
+      localObject = paramc.cFG;
       paramc = paramc.tag;
       if (!paramc.equalsIgnoreCase("Trace_EvilMethod")) {
         break label116;
       }
       paramc = ((JSONObject)localObject).getString("detail");
-      if (!paramc.equalsIgnoreCase(a.a.cJN.toString())) {
+      if (!paramc.equalsIgnoreCase(a.a.cKw.toString())) {
         break label85;
       }
-      if (ax.flf().decodeBool("clicfg_anr_report_all", true)) {
+      if (ay.fpa().decodeBool("clicfg_anr_report_all", true)) {
         break label244;
       }
-      bool1 = bt.isNullOrNil(((JSONObject)localObject).getString("stackKey"));
+      bool1 = bu.isNullOrNil(((JSONObject)localObject).getString("stackKey"));
     }
     for (;;)
     {
       return bool1;
       label85:
       bool1 = bool2;
-      if (paramc.equalsIgnoreCase(a.a.cJM.toString()))
+      if (paramc.equalsIgnoreCase(a.a.cKv.toString()))
       {
         bool1 = bool2;
-        if (!ax.flf().decodeBool("clicfg_normal_report", false))
+        if (!ay.fpa().decodeBool("clicfg_normal_report", false))
         {
           return true;
           label116:
@@ -50,12 +50,12 @@ public final class g
           if (paramc.equalsIgnoreCase("Trace_FPS"))
           {
             String str = ((JSONObject)localObject).getString("scene");
-            localObject = (a)this.cFg.get(str);
+            localObject = (g.a)this.cFP.get(str);
             paramc = (c)localObject;
             if (localObject == null)
             {
-              paramc = new a((byte)0);
-              this.cFg.put(str, paramc);
+              paramc = new g.a((byte)0);
+              this.cFP.put(str, paramc);
             }
             long l1 = SystemClock.uptimeMillis();
             long l2 = paramc.time;
@@ -66,7 +66,7 @@ public final class g
               bool1 = bool2;
               if (l1 - l2 <= 2400000L)
               {
-                this.cFg.put(str, new a((byte)0));
+                this.cFP.put(str, new g.a((byte)0));
                 return true;
                 label244:
                 bool1 = false;
@@ -76,12 +76,6 @@ public final class g
         }
       }
     }
-  }
-  
-  static final class a
-  {
-    int count = 0;
-    long time = SystemClock.uptimeMillis();
   }
 }
 

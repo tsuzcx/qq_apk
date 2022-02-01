@@ -19,15 +19,12 @@ import com.tencent.mm.modelgeo.c;
 import com.tencent.mm.modelgeo.c.a;
 import com.tencent.mm.modelstat.o;
 import com.tencent.mm.pluginsdk.s;
-import com.tencent.mm.protocal.protobuf.btl;
-import com.tencent.mm.protocal.protobuf.bvq;
-import com.tencent.mm.protocal.protobuf.cwt;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.sdk.platformtools.bv;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.al.a;
+import com.tencent.mm.protocal.protobuf.buf;
+import com.tencent.mm.protocal.protobuf.bwk;
+import com.tencent.mm.protocal.protobuf.cxn;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.bw;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.ao;
 import java.util.ArrayList;
@@ -37,82 +34,82 @@ import java.util.LinkedList;
 public class LocationWidget
   extends LinearLayout
 {
+  private ImageView AfZ;
+  private TextView Ahm;
+  private View Ajk;
+  private View Ajl;
+  private int[] Ajm;
+  private ImageView[] Ajn;
+  private int Ajo;
+  private TextView Ajp;
+  private byte[] Ajq;
+  private String Ajr;
+  private String Ajs;
+  private int Ajt;
+  private float Aju;
+  private int Ajv;
+  private a Ajw;
+  private boolean Ajx;
+  private b Ajy;
   private float bYG;
-  private String dwW;
-  private int ePo;
-  private String ePv;
-  private float hXj;
-  private float hXk;
-  private boolean hXu;
-  private String jDf;
-  private Activity kbt;
+  private String dyb;
+  private int eQZ;
+  private String eRg;
+  private float iab;
+  private float iac;
+  private boolean iam;
+  private String jGd;
+  private Activity keK;
   private int score;
-  private c.a uZA;
-  private c vfb;
-  private float wqB;
-  private b.a wqP;
-  private com.tencent.mm.modelgeo.d wqv;
-  private btl wrf;
-  private ImageView zOS;
-  private TextView zQf;
-  private View zSd;
-  private View zSe;
-  private int[] zSf;
-  private ImageView[] zSg;
-  private int zSh;
-  private TextView zSi;
-  private byte[] zSj;
-  private String zSk;
-  private String zSl;
-  private int zSm;
-  private float zSn;
-  private int zSo;
-  private a zSp;
-  private boolean zSq;
-  private b zSr;
+  private c.a vlL;
+  private c vri;
+  private buf wGO;
+  private com.tencent.mm.modelgeo.d wGe;
+  private float wGk;
+  private b.a wGy;
   
   public LocationWidget(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(97941);
-    this.zSf = new int[] { 2131304356, 2131304357, 2131304358, 2131304359, 2131304360 };
-    this.zSg = new ImageView[5];
-    this.hXj = -1000.0F;
-    this.hXk = -1000.0F;
-    this.zSm = 0;
-    this.wrf = null;
-    this.ePo = 0;
-    this.zSn = 0.0F;
-    this.wqB = 0.0F;
+    this.Ajm = new int[] { 2131304356, 2131304357, 2131304358, 2131304359, 2131304360 };
+    this.Ajn = new ImageView[5];
+    this.iab = -1000.0F;
+    this.iac = -1000.0F;
+    this.Ajt = 0;
+    this.wGO = null;
+    this.eQZ = 0;
+    this.Aju = 0.0F;
+    this.wGk = 0.0F;
     this.bYG = 0.0F;
-    this.zSo = -1;
-    this.hXu = true;
-    this.wqv = com.tencent.mm.modelgeo.d.aHQ();
-    this.zSp = null;
-    this.zSq = false;
-    this.uZA = new c.a()
+    this.Ajv = -1;
+    this.iam = true;
+    this.wGe = com.tencent.mm.modelgeo.d.aIh();
+    this.Ajw = null;
+    this.Ajx = false;
+    this.vlL = new c.a()
     {
       public final void b(Addr paramAnonymousAddr)
       {
         AppMethodBeat.i(97938);
-        ad.i("MicroMsg.LocationWidget", "get info %s", new Object[] { paramAnonymousAddr.toString() });
+        ae.i("MicroMsg.LocationWidget", "get info %s", new Object[] { paramAnonymousAddr.toString() });
         if (!LocationWidget.e(LocationWidget.this))
         {
           AppMethodBeat.o(97938);
           return;
         }
         LocationWidget.f(LocationWidget.this);
-        if (!bt.isNullOrNil(LocationWidget.g(LocationWidget.this)))
+        if (!bu.isNullOrNil(LocationWidget.g(LocationWidget.this)))
         {
           AppMethodBeat.o(97938);
           return;
         }
-        LocationWidget.a(LocationWidget.this, paramAnonymousAddr.hXa);
+        LocationWidget.a(LocationWidget.this, paramAnonymousAddr.hZS);
         LocationWidget.f(LocationWidget.this);
         AppMethodBeat.o(97938);
       }
     };
-    this.wqP = new b.a()
+    this.wGy = new b.a()
     {
       public final boolean a(boolean paramAnonymousBoolean, float paramAnonymousFloat1, float paramAnonymousFloat2, int paramAnonymousInt, double paramAnonymousDouble1, double paramAnonymousDouble2)
       {
@@ -122,8 +119,8 @@ public class LocationWidget
           AppMethodBeat.o(97939);
           return true;
         }
-        ad.d("MicroMsg.LocationWidget", "get location %f %f", new Object[] { Float.valueOf(paramAnonymousFloat2), Float.valueOf(paramAnonymousFloat1) });
-        com.tencent.mm.modelstat.e locale = com.tencent.mm.modelstat.e.aLE();
+        ae.d("MicroMsg.LocationWidget", "get location %f %f", new Object[] { Float.valueOf(paramAnonymousFloat2), Float.valueOf(paramAnonymousFloat1) });
+        com.tencent.mm.modelstat.e locale = com.tencent.mm.modelstat.e.aMb();
         if (paramAnonymousInt == 0)
         {
           paramAnonymousBoolean = false;
@@ -132,7 +129,7 @@ public class LocationWidget
           }
         }
         label113:
-        for (boolean bool = false;; bool = LocationWidget.h(LocationWidget.this).hXu)
+        for (boolean bool = false;; bool = LocationWidget.h(LocationWidget.this).iam)
         {
           locale.a(2003, paramAnonymousBoolean, bool, paramAnonymousFloat1, paramAnonymousFloat2, (int)paramAnonymousDouble2);
           o.a(2003, paramAnonymousFloat1, paramAnonymousFloat2, 0);
@@ -154,7 +151,7 @@ public class LocationWidget
         return false;
       }
     };
-    this.zSr = null;
+    this.Ajy = null;
     n((MMActivity)paramContext);
     AppMethodBeat.o(97941);
   }
@@ -163,44 +160,44 @@ public class LocationWidget
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(97940);
-    this.zSf = new int[] { 2131304356, 2131304357, 2131304358, 2131304359, 2131304360 };
-    this.zSg = new ImageView[5];
-    this.hXj = -1000.0F;
-    this.hXk = -1000.0F;
-    this.zSm = 0;
-    this.wrf = null;
-    this.ePo = 0;
-    this.zSn = 0.0F;
-    this.wqB = 0.0F;
+    this.Ajm = new int[] { 2131304356, 2131304357, 2131304358, 2131304359, 2131304360 };
+    this.Ajn = new ImageView[5];
+    this.iab = -1000.0F;
+    this.iac = -1000.0F;
+    this.Ajt = 0;
+    this.wGO = null;
+    this.eQZ = 0;
+    this.Aju = 0.0F;
+    this.wGk = 0.0F;
     this.bYG = 0.0F;
-    this.zSo = -1;
-    this.hXu = true;
-    this.wqv = com.tencent.mm.modelgeo.d.aHQ();
-    this.zSp = null;
-    this.zSq = false;
-    this.uZA = new c.a()
+    this.Ajv = -1;
+    this.iam = true;
+    this.wGe = com.tencent.mm.modelgeo.d.aIh();
+    this.Ajw = null;
+    this.Ajx = false;
+    this.vlL = new c.a()
     {
       public final void b(Addr paramAnonymousAddr)
       {
         AppMethodBeat.i(97938);
-        ad.i("MicroMsg.LocationWidget", "get info %s", new Object[] { paramAnonymousAddr.toString() });
+        ae.i("MicroMsg.LocationWidget", "get info %s", new Object[] { paramAnonymousAddr.toString() });
         if (!LocationWidget.e(LocationWidget.this))
         {
           AppMethodBeat.o(97938);
           return;
         }
         LocationWidget.f(LocationWidget.this);
-        if (!bt.isNullOrNil(LocationWidget.g(LocationWidget.this)))
+        if (!bu.isNullOrNil(LocationWidget.g(LocationWidget.this)))
         {
           AppMethodBeat.o(97938);
           return;
         }
-        LocationWidget.a(LocationWidget.this, paramAnonymousAddr.hXa);
+        LocationWidget.a(LocationWidget.this, paramAnonymousAddr.hZS);
         LocationWidget.f(LocationWidget.this);
         AppMethodBeat.o(97938);
       }
     };
-    this.wqP = new b.a()
+    this.wGy = new b.a()
     {
       public final boolean a(boolean paramAnonymousBoolean, float paramAnonymousFloat1, float paramAnonymousFloat2, int paramAnonymousInt, double paramAnonymousDouble1, double paramAnonymousDouble2)
       {
@@ -210,8 +207,8 @@ public class LocationWidget
           AppMethodBeat.o(97939);
           return true;
         }
-        ad.d("MicroMsg.LocationWidget", "get location %f %f", new Object[] { Float.valueOf(paramAnonymousFloat2), Float.valueOf(paramAnonymousFloat1) });
-        com.tencent.mm.modelstat.e locale = com.tencent.mm.modelstat.e.aLE();
+        ae.d("MicroMsg.LocationWidget", "get location %f %f", new Object[] { Float.valueOf(paramAnonymousFloat2), Float.valueOf(paramAnonymousFloat1) });
+        com.tencent.mm.modelstat.e locale = com.tencent.mm.modelstat.e.aMb();
         if (paramAnonymousInt == 0)
         {
           paramAnonymousBoolean = false;
@@ -220,7 +217,7 @@ public class LocationWidget
           }
         }
         label113:
-        for (boolean bool = false;; bool = LocationWidget.h(LocationWidget.this).hXu)
+        for (boolean bool = false;; bool = LocationWidget.h(LocationWidget.this).iam)
         {
           locale.a(2003, paramAnonymousBoolean, bool, paramAnonymousFloat1, paramAnonymousFloat2, (int)paramAnonymousDouble2);
           o.a(2003, paramAnonymousFloat1, paramAnonymousFloat2, 0);
@@ -242,12 +239,12 @@ public class LocationWidget
         return false;
       }
     };
-    this.zSr = null;
+    this.Ajy = null;
     n((MMActivity)paramContext);
     AppMethodBeat.o(97940);
   }
   
-  private void ax(ArrayList<Exif.a> paramArrayList)
+  private void ay(ArrayList<Exif.a> paramArrayList)
   {
     AppMethodBeat.i(97945);
     if ((paramArrayList == null) || (paramArrayList.size() == 0))
@@ -255,13 +252,13 @@ public class LocationWidget
       AppMethodBeat.o(97945);
       return;
     }
-    com.tencent.mm.plugin.report.service.g.yhR.kvStat(11139, "1");
+    com.tencent.mm.plugin.report.service.g.yxI.kvStat(11139, "1");
     Exif.a locala1;
-    if ((Math.abs(-1000.0F - this.hXj) > 1.0E-006D) && (Math.abs(-1000.0F - this.hXk) > 1.0E-006D))
+    if ((Math.abs(-1000.0F - this.iab) > 1.0E-006D) && (Math.abs(-1000.0F - this.iac) > 1.0E-006D))
     {
       locala1 = (Exif.a)paramArrayList.get(paramArrayList.size() - 1);
-      if (b(locala1.latitude, locala1.longitude, this.hXj, this.hXk)) {
-        com.tencent.mm.plugin.report.service.g.yhR.kvStat(11139, "2");
+      if (b(locala1.latitude, locala1.longitude, this.iab, this.iac)) {
+        com.tencent.mm.plugin.report.service.g.yxI.kvStat(11139, "2");
       }
     }
     int i = 0;
@@ -275,7 +272,7 @@ public class LocationWidget
       locala1 = (Exif.a)paramArrayList.get(i);
       Exif.a locala2 = (Exif.a)paramArrayList.get(j);
       if (b(locala1.latitude, locala1.longitude, locala2.latitude, locala2.longitude)) {
-        com.tencent.mm.plugin.report.service.g.yhR.kvStat(11139, "3");
+        com.tencent.mm.plugin.report.service.g.yxI.kvStat(11139, "3");
       }
     }
     label226:
@@ -305,74 +302,74 @@ public class LocationWidget
     return false;
   }
   
-  private void dZQ()
+  private void edw()
   {
     int i = 0;
     AppMethodBeat.i(97943);
-    ad.i("MicroMsg.LocationWidget", "updateScoreItem scoreSwtich:%d, classifyId:%s, poiClassifyType:%d, showFlag:%d, isOverSea:%b", new Object[] { Integer.valueOf(this.zSh), this.zSl, Integer.valueOf(this.zSm), Integer.valueOf(this.ePo), Boolean.valueOf(bv.fma()) });
-    if ((bv.fma()) || (this.zSh == 0) || (bt.isNullOrNil(this.zSl)) || (this.zSm == 1) || ((this.ePo & 0x1) == 0))
+    ae.i("MicroMsg.LocationWidget", "updateScoreItem scoreSwtich:%d, classifyId:%s, poiClassifyType:%d, showFlag:%d, isOverSea:%b", new Object[] { Integer.valueOf(this.Ajo), this.Ajs, Integer.valueOf(this.Ajt), Integer.valueOf(this.eQZ), Boolean.valueOf(bw.fpV()) });
+    if ((bw.fpV()) || (this.Ajo == 0) || (bu.isNullOrNil(this.Ajs)) || (this.Ajt == 1) || ((this.eQZ & 0x1) == 0))
     {
-      this.zSe.setVisibility(8);
+      this.Ajl.setVisibility(8);
       AppMethodBeat.o(97943);
       return;
     }
-    this.zSe.setVisibility(0);
+    this.Ajl.setVisibility(0);
     while (i < this.score)
     {
-      this.zSg[i].setImageResource(getSelectedStarImageResource());
+      this.Ajn[i].setImageResource(getSelectedStarImageResource());
       i += 1;
     }
     i = this.score;
     while (i < 5)
     {
-      this.zSg[i].setImageResource(getNormalStarImageResource());
+      this.Ajn[i].setImageResource(getNormalStarImageResource());
       i += 1;
     }
     AppMethodBeat.o(97943);
   }
   
-  private void dZS()
+  private void edy()
   {
     AppMethodBeat.i(97949);
-    if ((this.zSi != null) && (this.zQf != null))
+    if ((this.Ajp != null) && (this.Ahm != null))
     {
-      if (bt.isNullOrNil(this.jDf)) {
+      if (bu.isNullOrNil(this.jGd)) {
         break label124;
       }
-      this.zSi.setText(this.jDf);
-      this.zSi.setTextColor(getResources().getColor(2131100464));
-      this.zQf.setVisibility(8);
+      this.Ajp.setText(this.jGd);
+      this.Ajp.setTextColor(getResources().getColor(2131100464));
+      this.Ahm.setVisibility(8);
     }
-    while ((!bt.isNullOrNil(this.jDf)) || (!bt.isNullOrNil(this.ePv)))
+    while ((!bu.isNullOrNil(this.jGd)) || (!bu.isNullOrNil(this.eRg)))
     {
-      this.zOS.setImageDrawable(ao.k(this.kbt, 2131689533, getContext().getResources().getColor(2131101171)));
+      this.AfZ.setImageDrawable(ao.k(this.keK, 2131689533, getContext().getResources().getColor(2131101171)));
       AppMethodBeat.o(97949);
       return;
       label124:
-      if (!bt.isNullOrNil(this.ePv))
+      if (!bu.isNullOrNil(this.eRg))
       {
-        this.zSi.setText(this.ePv);
-        this.zSi.setTextColor(getResources().getColor(2131100464));
-        this.zQf.setVisibility(8);
+        this.Ajp.setText(this.eRg);
+        this.Ajp.setTextColor(getResources().getColor(2131100464));
+        this.Ahm.setVisibility(8);
       }
       else
       {
-        this.zSi.setText(2131763887);
-        this.zSi.setTextColor(getResources().getColor(2131100711));
-        this.zQf.setVisibility(8);
+        this.Ajp.setText(2131763887);
+        this.Ajp.setTextColor(getResources().getColor(2131100711));
+        this.Ahm.setVisibility(8);
       }
     }
-    this.zOS.setImageDrawable(ao.k(this.kbt, 2131689532, getContext().getResources().getColor(2131100499)));
+    this.AfZ.setImageDrawable(ao.k(this.keK, 2131689532, getContext().getResources().getColor(2131100499)));
     AppMethodBeat.o(97949);
   }
   
-  private void dZT()
+  private void edz()
   {
     AppMethodBeat.i(97952);
-    if (this.zSp != null)
+    if (this.Ajw != null)
     {
-      boolean bool = this.zSp.dZV();
-      Object localObject = this.zSp.dZU();
+      boolean bool = this.Ajw.edB();
+      Object localObject = this.Ajw.edA();
       if ((localObject == null) || (((ArrayList)localObject).size() == 0))
       {
         AppMethodBeat.o(97952);
@@ -382,8 +379,8 @@ public class LocationWidget
       if (((Iterator)localObject).hasNext())
       {
         Exif.a locala = (Exif.a)((Iterator)localObject).next();
-        ad.d("MicroMsg.LocationWidget", "snsreport lat lng %f, %f", new Object[] { Double.valueOf(locala.latitude), Double.valueOf(locala.longitude) });
-        com.tencent.mm.plugin.report.service.g localg = com.tencent.mm.plugin.report.service.g.yhR;
+        ae.d("MicroMsg.LocationWidget", "snsreport lat lng %f, %f", new Object[] { Double.valueOf(locala.latitude), Double.valueOf(locala.longitude) });
+        com.tencent.mm.plugin.report.service.g localg = com.tencent.mm.plugin.report.service.g.yxI;
         int j = (int)(locala.latitude * 1000000.0D);
         int k = (int)(locala.longitude * 1000000.0D);
         if (bool) {}
@@ -400,25 +397,25 @@ public class LocationWidget
   private void n(MMActivity paramMMActivity)
   {
     AppMethodBeat.i(97942);
-    this.kbt = paramMMActivity;
+    this.keK = paramMMActivity;
     View localView = View.inflate(paramMMActivity, getLayoutResource(), this);
-    this.zSd = localView.findViewById(2131301522);
-    this.zSi = ((TextView)this.zSd.findViewById(2131301545));
-    this.zQf = ((TextView)this.zSd.findViewById(2131301535));
-    this.zOS = ((ImageView)this.zSd.findViewById(2131301530));
-    this.zSe = localView.findViewById(2131304354);
+    this.Ajk = localView.findViewById(2131301522);
+    this.Ajp = ((TextView)this.Ajk.findViewById(2131301545));
+    this.Ahm = ((TextView)this.Ajk.findViewById(2131301535));
+    this.AfZ = ((ImageView)this.Ajk.findViewById(2131301530));
+    this.Ajl = localView.findViewById(2131304354);
     final int i = 0;
     while (i < 5)
     {
-      this.zSg[i] = ((ImageView)this.zSe.findViewById(this.zSf[i]));
-      this.zSg[i].setOnClickListener(new View.OnClickListener()
+      this.Ajn[i] = ((ImageView)this.Ajl.findViewById(this.Ajm[i]));
+      this.Ajn[i].setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(97936);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
           localb.bd(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/sns/ui/LocationWidget$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/sns/ui/LocationWidget$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
           if (LocationWidget.a(LocationWidget.this) == i + 1) {
             LocationWidget.b(LocationWidget.this);
           }
@@ -434,66 +431,27 @@ public class LocationWidget
       });
       i += 1;
     }
-    this.vfb = c.aHN();
-    this.zSd.setOnClickListener(new View.OnClickListener()
+    this.vri = c.aIe();
+    this.Ajk.setOnClickListener(new LocationWidget.2(this));
+    this.Ajs = paramMMActivity.getIntent().getStringExtra("kpoi_id");
+    if (!bu.isNullOrNil(this.Ajs))
     {
-      public final void onClick(View paramAnonymousView)
-      {
-        AppMethodBeat.i(97937);
-        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/sns/ui/LocationWidget$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-        if (com.tencent.mm.ax.b.FU((String)com.tencent.mm.kernel.g.ajC().ajl().get(274436, null)))
-        {
-          if (!com.tencent.mm.pluginsdk.permission.b.n(LocationWidget.d(LocationWidget.this), "android.permission.ACCESS_COARSE_LOCATION"))
-          {
-            if (!((Boolean)com.tencent.mm.kernel.g.ajC().ajl().get(al.a.IEr, Boolean.FALSE)).booleanValue()) {
-              com.tencent.mm.plugin.account.a.b.a.b(LocationWidget.d(LocationWidget.this), LocationWidget.this.getResources().getString(2131760740, new Object[] { ac.fks() }), 30764, true);
-            }
-            for (;;)
-            {
-              com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/sns/ui/LocationWidget$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-              AppMethodBeat.o(97937);
-              return;
-              com.tencent.mm.pluginsdk.permission.b.b(LocationWidget.d(LocationWidget.this), "android.permission.ACCESS_COARSE_LOCATION", 64);
-            }
-          }
-        }
-        else
-        {
-          boolean bool = com.tencent.mm.pluginsdk.permission.b.a(LocationWidget.d(LocationWidget.this), "android.permission.ACCESS_COARSE_LOCATION", 64, "", "");
-          ad.i("MicroMsg.LocationWidget", "summerper checkPermission checkLocation[%b]", new Object[] { Boolean.valueOf(bool) });
-          if (!bool)
-          {
-            com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/sns/ui/LocationWidget$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-            AppMethodBeat.o(97937);
-            return;
-          }
-        }
-        LocationWidget.this.dZR();
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/sns/ui/LocationWidget$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(97937);
-      }
-    });
-    this.zSl = paramMMActivity.getIntent().getStringExtra("kpoi_id");
-    if (!bt.isNullOrNil(this.zSl))
-    {
-      this.hXj = paramMMActivity.getIntent().getFloatExtra("k_lat", -1000.0F);
-      this.hXk = paramMMActivity.getIntent().getFloatExtra("k_lng", -1000.0F);
-      this.jDf = paramMMActivity.getIntent().getStringExtra("kpoi_name");
-      this.zSk = paramMMActivity.getIntent().getStringExtra("Kpoi_address");
-      dZS();
+      this.iab = paramMMActivity.getIntent().getFloatExtra("k_lat", -1000.0F);
+      this.iac = paramMMActivity.getIntent().getFloatExtra("k_lng", -1000.0F);
+      this.jGd = paramMMActivity.getIntent().getStringExtra("kpoi_name");
+      this.Ajr = paramMMActivity.getIntent().getStringExtra("Kpoi_address");
+      edy();
     }
-    if (com.tencent.mm.kernel.g.ajA().aiK()) {}
-    for (this.zSh = bt.getInt(com.tencent.mm.n.g.acA().getValue("SnsPostPOICommentSwitch"), 0);; this.zSh = 0)
+    if (com.tencent.mm.kernel.g.ajP().aiZ()) {}
+    for (this.Ajo = bu.getInt(com.tencent.mm.n.g.acL().getValue("SnsPostPOICommentSwitch"), 0);; this.Ajo = 0)
     {
-      dZQ();
+      edw();
       AppMethodBeat.o(97942);
       return;
     }
   }
   
-  public final boolean aN(Intent paramIntent)
+  public final boolean aO(Intent paramIntent)
   {
     AppMethodBeat.i(97948);
     if (paramIntent == null)
@@ -501,61 +459,61 @@ public class LocationWidget
       AppMethodBeat.o(97948);
       return true;
     }
-    this.zSm = paramIntent.getIntExtra("get_poi_classify_type", 0);
-    this.ePo = paramIntent.getIntExtra("get_poi_showflag", 0);
-    ad.d("MicroMsg.LocationWidget", "onactivity result ok poiClassifyType %d", new Object[] { Integer.valueOf(this.zSm) });
-    this.jDf = bt.bI(paramIntent.getStringExtra("get_poi_name"), "");
-    this.ePv = bt.bI(paramIntent.getStringExtra("get_city"), "");
-    this.hXj = paramIntent.getFloatExtra("get_lat", -1000.0F);
-    this.hXk = paramIntent.getFloatExtra("get_lng", -1000.0F);
-    ad.i("MicroMsg.LocationWidget", "check cur lat " + this.zSn + " " + this.wqB);
-    this.zSn = paramIntent.getFloatExtra("get_cur_lat", 0.0F);
-    this.wqB = paramIntent.getFloatExtra("get_cur_lng", 0.0F);
-    this.zSo = paramIntent.getIntExtra("get_loctype", -1);
+    this.Ajt = paramIntent.getIntExtra("get_poi_classify_type", 0);
+    this.eQZ = paramIntent.getIntExtra("get_poi_showflag", 0);
+    ae.d("MicroMsg.LocationWidget", "onactivity result ok poiClassifyType %d", new Object[] { Integer.valueOf(this.Ajt) });
+    this.jGd = bu.bI(paramIntent.getStringExtra("get_poi_name"), "");
+    this.eRg = bu.bI(paramIntent.getStringExtra("get_city"), "");
+    this.iab = paramIntent.getFloatExtra("get_lat", -1000.0F);
+    this.iac = paramIntent.getFloatExtra("get_lng", -1000.0F);
+    ae.i("MicroMsg.LocationWidget", "check cur lat " + this.Aju + " " + this.wGk);
+    this.Aju = paramIntent.getFloatExtra("get_cur_lat", 0.0F);
+    this.wGk = paramIntent.getFloatExtra("get_cur_lng", 0.0F);
+    this.Ajv = paramIntent.getIntExtra("get_loctype", -1);
     this.bYG = paramIntent.getFloatExtra("get_accuracy", 0.0F);
-    this.hXu = paramIntent.getBooleanExtra("get_is_mars", true);
-    this.dwW = paramIntent.getStringExtra("request_id");
-    Object localObject = com.tencent.mm.modelstat.e.aLE();
+    this.iam = paramIntent.getBooleanExtra("get_is_mars", true);
+    this.dyb = paramIntent.getStringExtra("request_id");
+    Object localObject = com.tencent.mm.modelstat.e.aMb();
     boolean bool;
-    if (this.zSo == 0)
+    if (this.Ajv == 0)
     {
       bool = false;
-      ((com.tencent.mm.modelstat.e)localObject).a(2003, bool, this.hXu, this.hXk, this.hXj, (int)this.bYG);
-      this.zSj = paramIntent.getByteArrayExtra("location_ctx");
-      if (bt.isNullOrNil(this.jDf)) {
+      ((com.tencent.mm.modelstat.e)localObject).a(2003, bool, this.iam, this.iac, this.iab, (int)this.bYG);
+      this.Ajq = paramIntent.getByteArrayExtra("location_ctx");
+      if (bu.isNullOrNil(this.jGd)) {
         break label610;
       }
-      this.zSk = bt.bI(paramIntent.getStringExtra("get_poi_address"), "");
-      this.zSl = bt.bI(paramIntent.getStringExtra("get_poi_classify_id"), "");
-      this.wrf = new btl();
+      this.Ajr = bu.bI(paramIntent.getStringExtra("get_poi_address"), "");
+      this.Ajs = bu.bI(paramIntent.getStringExtra("get_poi_classify_id"), "");
+      this.wGO = new buf();
     }
     for (;;)
     {
       try
       {
-        this.wrf = ((btl)this.wrf.parseFrom(paramIntent.getByteArrayExtra("get_poi_item_buf")));
-        if (!bt.isNullOrNil(this.zSl))
+        this.wGO = ((buf)this.wGO.parseFrom(paramIntent.getByteArrayExtra("get_poi_item_buf")));
+        if (!bu.isNullOrNil(this.Ajs))
         {
-          this.wrf = new btl();
-          this.wrf.wpM = this.zSl;
-          this.wrf.nEf = this.zSm;
-          this.wrf.Title = this.jDf;
-          this.wrf.wpR.add(new cwt().aPy(this.zSk));
+          this.wGO = new buf();
+          this.wGO.wFv = this.Ajs;
+          this.wGO.nJA = this.Ajt;
+          this.wGO.Title = this.jGd;
+          this.wGO.wFA.add(new cxn().aQV(this.Ajr));
         }
-        ad.d("MicroMsg.LocationWidget", "label %s poiname %s", new Object[] { this.zSk, this.jDf });
-        dZS();
-        dZQ();
-        this.zSr = new b();
-        localObject = this.zSr;
+        ae.d("MicroMsg.LocationWidget", "label %s poiname %s", new Object[] { this.Ajr, this.jGd });
+        edy();
+        edw();
+        this.Ajy = new b();
+        localObject = this.Ajy;
         if (paramIntent != null)
         {
           ((b)localObject).index = paramIntent.getIntExtra("report_index", -1);
-          ((b)localObject).wqE = paramIntent.getLongExtra("first_start_time", 0L);
-          ((b)localObject).wqF = paramIntent.getLongExtra("lastSuccStamp", 0L);
-          ((b)localObject).wqG = paramIntent.getLongExtra("firstSuccStamp", 0L);
-          ((b)localObject).wqH = paramIntent.getIntExtra("reqLoadCnt", 0);
-          ((b)localObject).vfX = paramIntent.getIntExtra("entry_time", 0);
-          ((b)localObject).keN = paramIntent.getStringExtra("search_id");
+          ((b)localObject).wGn = paramIntent.getLongExtra("first_start_time", 0L);
+          ((b)localObject).wGo = paramIntent.getLongExtra("lastSuccStamp", 0L);
+          ((b)localObject).wGp = paramIntent.getLongExtra("firstSuccStamp", 0L);
+          ((b)localObject).wGq = paramIntent.getIntExtra("reqLoadCnt", 0);
+          ((b)localObject).vse = paramIntent.getIntExtra("entry_time", 0);
+          ((b)localObject).kid = paramIntent.getStringExtra("search_id");
         }
         AppMethodBeat.o(97948);
         return true;
@@ -563,53 +521,53 @@ public class LocationWidget
       }
       catch (Exception localException)
       {
-        ad.printErrStackTrace("MicroMsg.LocationWidget", localException, "", new Object[0]);
-        this.wrf = null;
+        ae.printErrStackTrace("MicroMsg.LocationWidget", localException, "", new Object[0]);
+        this.wGO = null;
         continue;
       }
       label610:
-      if (!bt.isNullOrNil(this.ePv))
+      if (!bu.isNullOrNil(this.eRg))
       {
-        this.jDf = "";
-        this.zSk = "";
-        this.zSl = "";
-        this.wrf = null;
+        this.jGd = "";
+        this.Ajr = "";
+        this.Ajs = "";
+        this.wGO = null;
       }
       else
       {
-        this.hXj = -1000.0F;
-        this.hXk = -1000.0F;
-        this.jDf = "";
-        this.zSk = "";
-        this.ePv = "";
-        this.zSl = "";
-        this.wrf = null;
+        this.iab = -1000.0F;
+        this.iac = -1000.0F;
+        this.jGd = "";
+        this.Ajr = "";
+        this.eRg = "";
+        this.Ajs = "";
+        this.wGO = null;
       }
     }
   }
   
-  public final void dZR()
+  public final void edx()
   {
     AppMethodBeat.i(97944);
     Intent localIntent = new Intent();
     localIntent.putExtra("near_life_scene", 1);
     try
     {
-      localIntent.putExtra("get_poi_item_buf", this.wrf.toByteArray());
-      if (!bt.isNullOrNil(this.zSl))
+      localIntent.putExtra("get_poi_item_buf", this.wGO.toByteArray());
+      if (!bu.isNullOrNil(this.Ajs))
       {
-        localIntent.putExtra("get_poi_classify_id", this.zSl);
-        localIntent.putExtra("get_lat", this.hXj);
-        localIntent.putExtra("get_lng", this.hXk);
-        localIntent.putExtra("request_id", this.dwW);
-        if (this.zSp == null) {
+        localIntent.putExtra("get_poi_classify_id", this.Ajs);
+        localIntent.putExtra("get_lat", this.iab);
+        localIntent.putExtra("get_lng", this.iac);
+        localIntent.putExtra("request_id", this.dyb);
+        if (this.Ajw == null) {
           break label237;
         }
-        Object localObject = this.zSp.dZU();
+        Object localObject = this.Ajw.edA();
         if (localObject == null) {
           break label237;
         }
-        ax((ArrayList)localObject);
+        ay((ArrayList)localObject);
         ArrayList localArrayList = new ArrayList();
         localObject = ((ArrayList)localObject).iterator();
         while (((Iterator)localObject).hasNext())
@@ -623,28 +581,28 @@ public class LocationWidget
     {
       for (;;)
       {
-        ad.printErrStackTrace("MicroMsg.LocationWidget", localException, "", new Object[0]);
+        ae.printErrStackTrace("MicroMsg.LocationWidget", localException, "", new Object[0]);
         continue;
-        if (!bt.isNullOrNil(this.ePv)) {
-          localIntent.putExtra("get_city", this.ePv);
+        if (!bu.isNullOrNil(this.eRg)) {
+          localIntent.putExtra("get_city", this.eRg);
         }
       }
       label237:
-      com.tencent.mm.bs.d.b(getContext(), "nearlife", "com.tencent.mm.plugin.nearlife.ui.CheckInLifeUI", localIntent, 10);
+      com.tencent.mm.br.d.b(getContext(), "nearlife", "com.tencent.mm.plugin.nearlife.ui.CheckInLifeUI", localIntent, 10);
       AppMethodBeat.o(97944);
     }
   }
   
-  public bvq getCurLocation()
+  public bwk getCurLocation()
   {
     AppMethodBeat.i(97951);
-    bvq localbvq = new bvq();
-    localbvq.FOB = this.zSn;
-    localbvq.FOA = this.wqB;
-    localbvq.bYG = this.bYG;
-    localbvq.zSo = this.zSo;
+    bwk localbwk = new bwk();
+    localbwk.Gha = this.Aju;
+    localbwk.GgZ = this.wGk;
+    localbwk.bYG = this.bYG;
+    localbwk.Ajv = this.Ajv;
     AppMethodBeat.o(97951);
-    return localbvq;
+    return localbwk;
   }
   
   protected int getLayoutResource()
@@ -652,53 +610,53 @@ public class LocationWidget
     return 2131494601;
   }
   
-  public bvq getLocation()
+  public bwk getLocation()
   {
     AppMethodBeat.i(97950);
-    bvq localbvq = new bvq();
-    localbvq.FOB = this.hXj;
-    localbvq.FOA = this.hXk;
-    localbvq.GPQ = 0;
-    localbvq.score = this.score;
-    if (this.zSj != null) {
-      localbvq.GPR = new com.tencent.mm.bx.b(this.zSj);
+    bwk localbwk = new bwk();
+    localbwk.Gha = this.iab;
+    localbwk.GgZ = this.iac;
+    localbwk.Hjs = 0;
+    localbwk.score = this.score;
+    if (this.Ajq != null) {
+      localbwk.Hjt = new com.tencent.mm.bw.b(this.Ajq);
     }
-    if (!bt.isNullOrNil(this.jDf))
+    if (!bu.isNullOrNil(this.jGd))
     {
-      localbvq.zSk = this.zSk;
-      localbvq.jDf = this.jDf;
-      localbvq.Gnu = this.zSl;
-      localbvq.jde = this.ePv;
-      if ((this.zSm != 0) && (this.zSm == 1))
+      localbwk.Ajr = this.Ajr;
+      localbwk.jGd = this.jGd;
+      localbwk.GGA = this.Ajs;
+      localbwk.jfX = this.eRg;
+      if ((this.Ajt != 0) && (this.Ajt == 1))
       {
-        localbvq.zSm = 2;
-        ad.d("MicroMsg.LocationWidget", "getlocation type %d", new Object[] { Integer.valueOf(localbvq.zSm) });
+        localbwk.Ajt = 2;
+        ae.d("MicroMsg.LocationWidget", "getlocation type %d", new Object[] { Integer.valueOf(localbwk.Ajt) });
       }
     }
     for (;;)
     {
-      if (this.zSr != null)
+      if (this.Ajy != null)
       {
-        String str = String.format("%f/%f", new Object[] { Float.valueOf(localbvq.FOB), Float.valueOf(localbvq.FOA) });
+        String str = String.format("%f/%f", new Object[] { Float.valueOf(localbwk.Gha), Float.valueOf(localbwk.GgZ) });
         StringBuffer localStringBuffer = new StringBuffer();
-        localStringBuffer.append("index " + this.zSr.index);
-        localStringBuffer.append("firstStartStamp " + this.zSr.wqE);
-        localStringBuffer.append("lastSuccStamp " + this.zSr.wqG);
-        localStringBuffer.append("firstSuccStamp " + this.zSr.wqF);
-        localStringBuffer.append("reqLoadCnt " + this.zSr.wqH);
-        localStringBuffer.append("classifyId " + this.zSl);
-        localStringBuffer.append("entryTime " + this.zSr.vfX);
-        localStringBuffer.append("searchId" + this.zSr.keN);
-        ad.d("MicroMsg.LocationWidget", "report %s", new Object[] { localStringBuffer.toString() });
-        com.tencent.mm.plugin.report.service.g.yhR.f(11135, new Object[] { Integer.valueOf(5), Integer.valueOf(this.zSr.index + 1), Long.valueOf(this.zSr.wqE), Long.valueOf(this.zSr.wqG), Long.valueOf(System.currentTimeMillis()), Long.valueOf(this.zSr.wqF), Integer.valueOf(this.zSr.wqH), str, this.zSl, Integer.valueOf(this.zSr.vfX), this.zSr.keN, q.cH(true) });
+        localStringBuffer.append("index " + this.Ajy.index);
+        localStringBuffer.append("firstStartStamp " + this.Ajy.wGn);
+        localStringBuffer.append("lastSuccStamp " + this.Ajy.wGp);
+        localStringBuffer.append("firstSuccStamp " + this.Ajy.wGo);
+        localStringBuffer.append("reqLoadCnt " + this.Ajy.wGq);
+        localStringBuffer.append("classifyId " + this.Ajs);
+        localStringBuffer.append("entryTime " + this.Ajy.vse);
+        localStringBuffer.append("searchId" + this.Ajy.kid);
+        ae.d("MicroMsg.LocationWidget", "report %s", new Object[] { localStringBuffer.toString() });
+        com.tencent.mm.plugin.report.service.g.yxI.f(11135, new Object[] { Integer.valueOf(5), Integer.valueOf(this.Ajy.index + 1), Long.valueOf(this.Ajy.wGn), Long.valueOf(this.Ajy.wGp), Long.valueOf(System.currentTimeMillis()), Long.valueOf(this.Ajy.wGo), Integer.valueOf(this.Ajy.wGq), str, this.Ajs, Integer.valueOf(this.Ajy.vse), this.Ajy.kid, q.cH(true) });
       }
-      dZT();
+      edz();
       AppMethodBeat.o(97950);
-      return localbvq;
-      localbvq.zSm = 1;
+      return localbwk;
+      localbwk.Ajt = 1;
       break;
-      if (!bt.isNullOrNil(this.ePv)) {
-        localbvq.jde = this.ePv;
+      if (!bu.isNullOrNil(this.eRg)) {
+        localbwk.jfX = this.eRg;
       }
     }
   }
@@ -725,42 +683,42 @@ public class LocationWidget
   
   public int getShowFlag()
   {
-    return this.ePo;
+    return this.eQZ;
   }
   
   public void setLocationWidgetListener(a parama)
   {
-    this.zSp = parama;
+    this.Ajw = parama;
   }
   
   public final void stop()
   {
     AppMethodBeat.i(97947);
-    if (this.wqv != null) {
-      this.wqv.c(this.wqP);
+    if (this.wGe != null) {
+      this.wGe.c(this.wGy);
     }
-    if (this.vfb != null) {
-      this.vfb.a(this.uZA);
+    if (this.vri != null) {
+      this.vri.a(this.vlL);
     }
     AppMethodBeat.o(97947);
   }
   
   public static abstract interface a
   {
-    public abstract ArrayList<Exif.a> dZU();
+    public abstract ArrayList<Exif.a> edA();
     
-    public abstract boolean dZV();
+    public abstract boolean edB();
   }
   
   final class b
   {
     int index;
-    String keN = "";
-    int vfX = 0;
-    long wqE = -1L;
-    long wqF = -1L;
-    long wqG = -1L;
-    int wqH = 0;
+    String kid = "";
+    int vse = 0;
+    long wGn = -1L;
+    long wGo = -1L;
+    long wGp = -1L;
+    int wGq = 0;
     
     b() {}
   }

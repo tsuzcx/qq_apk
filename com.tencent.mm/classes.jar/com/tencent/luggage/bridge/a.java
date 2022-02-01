@@ -9,12 +9,12 @@ abstract class a
   protected b cgm;
   protected JSONObject cgn;
   
-  final b BG()
+  final b BH()
   {
     return this.cgm;
   }
   
-  final JSONObject BH()
+  final JSONObject BI()
   {
     return this.cgn;
   }

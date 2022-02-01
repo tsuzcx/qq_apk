@@ -1,62 +1,82 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import f.a.a.b;
 
 public final class dmv
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public int HBe;
-  public int oxQ;
+  public String HUh;
+  public int port;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(72586);
+    AppMethodBeat.i(32461);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aS(1, this.HBe);
-      paramVarArgs.aS(2, this.oxQ);
-      AppMethodBeat.o(72586);
-      return 0;
-    }
-    if (paramInt == 1)
-    {
-      paramInt = f.a.a.b.b.a.bz(1, this.HBe);
-      int i = f.a.a.b.b.a.bz(2, this.oxQ);
-      AppMethodBeat.o(72586);
-      return paramInt + 0 + i;
-    }
-    if (paramInt == 2)
-    {
-      paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gxE();
-        }
-      }
-      AppMethodBeat.o(72586);
-      return 0;
-    }
-    if (paramInt == 3)
-    {
-      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
-      dmv localdmv = (dmv)paramVarArgs[1];
-      switch (((Integer)paramVarArgs[2]).intValue())
+      if (this.HUh == null)
       {
-      default: 
-        AppMethodBeat.o(72586);
-        return -1;
-      case 1: 
-        localdmv.HBe = locala.NPN.zc();
-        AppMethodBeat.o(72586);
+        paramVarArgs = new b("Not all required fields were included: ip_str");
+        AppMethodBeat.o(32461);
+        throw paramVarArgs;
+      }
+      if (this.HUh != null) {
+        paramVarArgs.d(1, this.HUh);
+      }
+      paramVarArgs.aS(2, this.port);
+      AppMethodBeat.o(32461);
+      return 0;
+    }
+    if (paramInt == 1) {
+      if (this.HUh == null) {
+        break label318;
+      }
+    }
+    label318:
+    for (paramInt = f.a.a.b.b.a.e(1, this.HUh) + 0;; paramInt = 0)
+    {
+      int i = f.a.a.b.b.a.bz(2, this.port);
+      AppMethodBeat.o(32461);
+      return paramInt + i;
+      if (paramInt == 2)
+      {
+        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.gCg();
+          }
+        }
+        if (this.HUh == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: ip_str");
+          AppMethodBeat.o(32461);
+          throw paramVarArgs;
+        }
+        AppMethodBeat.o(32461);
         return 0;
       }
-      localdmv.oxQ = locala.NPN.zc();
-      AppMethodBeat.o(72586);
-      return 0;
+      if (paramInt == 3)
+      {
+        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+        dmv localdmv = (dmv)paramVarArgs[1];
+        switch (((Integer)paramVarArgs[2]).intValue())
+        {
+        default: 
+          AppMethodBeat.o(32461);
+          return -1;
+        case 1: 
+          localdmv.HUh = locala.OmT.readString();
+          AppMethodBeat.o(32461);
+          return 0;
+        }
+        localdmv.port = locala.OmT.zc();
+        AppMethodBeat.o(32461);
+        return 0;
+      }
+      AppMethodBeat.o(32461);
+      return -1;
     }
-    AppMethodBeat.o(72586);
-    return -1;
   }
 }
 

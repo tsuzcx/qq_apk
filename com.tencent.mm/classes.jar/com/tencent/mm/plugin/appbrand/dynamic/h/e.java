@@ -2,79 +2,58 @@ package com.tencent.mm.plugin.appbrand.dynamic.h;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.os.Looper;
-import android.os.MessageQueue;
-import android.os.MessageQueue.IdleHandler;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.b.a.ej;
+import com.tencent.mm.g.b.a.el;
 import com.tencent.mm.modelappbrand.u;
 import com.tencent.mm.modelappbrand.v;
-import com.tencent.mm.plugin.appbrand.appcache.ax;
+import com.tencent.mm.plugin.appbrand.appcache.ay;
 import com.tencent.mm.plugin.appbrand.dynamic.WxaWidgetContext;
 import com.tencent.mm.plugin.appbrand.dynamic.d.p;
 import com.tencent.mm.plugin.appbrand.dynamic.debugger.DebuggerInfo;
 import com.tencent.mm.plugin.appbrand.dynamic.j;
 import com.tencent.mm.plugin.appbrand.dynamic.launching.WidgetRuntimeConfig;
 import com.tencent.mm.plugin.appbrand.dynamic.launching.WidgetSysConfig;
-import com.tencent.mm.plugin.appbrand.utils.q;
-import com.tencent.mm.plugin.appbrand.utils.q.a;
+import com.tencent.mm.plugin.appbrand.utils.s;
+import com.tencent.mm.plugin.appbrand.utils.s.a;
 import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.ay;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.platformtools.az;
+import com.tencent.mm.sdk.platformtools.bu;
 import org.json.JSONObject;
 
 public class e
 {
-  private static volatile com.tencent.mm.ab.c.e kig;
-  private static volatile DebuggerInfo kih;
+  private static volatile com.tencent.mm.aa.c.e klw;
+  private static volatile DebuggerInfo klx;
   
-  private static void U(Runnable paramRunnable)
+  private static void S(Runnable paramRunnable)
   {
     AppMethodBeat.i(121448);
-    paramRunnable = new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(121441);
-        Looper.myQueue().addIdleHandler(new MessageQueue.IdleHandler()
-        {
-          public final boolean queueIdle()
-          {
-            AppMethodBeat.i(121440);
-            Looper.myQueue().removeIdleHandler(this);
-            e.1.this.val$runnable.run();
-            AppMethodBeat.o(121440);
-            return false;
-          }
-        });
-        AppMethodBeat.o(121441);
-      }
-    };
-    if (aq.isMainThread())
+    paramRunnable = new e.1(paramRunnable);
+    if (ar.isMainThread())
     {
       paramRunnable.run();
       AppMethodBeat.o(121448);
       return;
     }
-    aq.f(paramRunnable);
+    ar.f(paramRunnable);
     AppMethodBeat.o(121448);
   }
   
-  private static com.tencent.mm.ab.b.d a(com.tencent.mm.ab.c.e parame)
+  private static com.tencent.mm.aa.b.d a(com.tencent.mm.aa.c.e parame)
   {
     AppMethodBeat.i(121451);
-    parame = com.tencent.mm.plugin.appbrand.dynamic.e.b.cs(parame);
-    g.yhR.idkeyStat(639L, 2L, 1L, false);
-    ad.i("MicroMsg.PreloadOptimizer", "Using v8 Javascript Engine");
-    g.yhR.idkeyStat(639L, 0L, 1L, false);
+    parame = com.tencent.mm.plugin.appbrand.dynamic.e.b.ct(parame);
+    g.yxI.idkeyStat(639L, 2L, 1L, false);
+    ae.i("MicroMsg.PreloadOptimizer", "Using v8 Javascript Engine");
+    g.yxI.idkeyStat(639L, 0L, 1L, false);
     AppMethodBeat.o(121451);
     return parame;
   }
   
-  public static com.tencent.mm.ab.c.e a(Context paramContext, WxaWidgetContext paramWxaWidgetContext, com.tencent.mm.ab.d.a parama, Bundle paramBundle)
+  public static com.tencent.mm.aa.c.e a(Context paramContext, WxaWidgetContext paramWxaWidgetContext, com.tencent.mm.aa.d.a parama, Bundle paramBundle)
   {
     AppMethodBeat.i(121447);
     label701:
@@ -83,8 +62,8 @@ public class e
     {
       try
       {
-        com.tencent.mm.ab.c.e locale = kig;
-        kig = null;
+        com.tencent.mm.aa.c.e locale = klw;
+        klw = null;
         if (locale != null)
         {
           bool = true;
@@ -92,131 +71,131 @@ public class e
           if (locale != null) {
             break label704;
           }
-          locale = bgn();
+          locale = bgV();
           int i = paramBundle.getInt("widget_type");
           Object localObject = new com.tencent.mm.plugin.appbrand.dynamic.d.a.c();
-          ((com.tencent.mm.plugin.appbrand.dynamic.d.a.c)localObject).gaR = paramWxaWidgetContext.getId();
+          ((com.tencent.mm.plugin.appbrand.dynamic.d.a.c)localObject).gcZ = paramWxaWidgetContext.getId();
           if (i == 1) {
-            ((com.tencent.mm.plugin.appbrand.dynamic.d.a.c)localObject).kgL = new com.tencent.mm.plugin.appbrand.dynamic.i.c(paramWxaWidgetContext.getAppId(), paramBundle.getString("search_id"));
+            ((com.tencent.mm.plugin.appbrand.dynamic.d.a.c)localObject).kkb = new com.tencent.mm.plugin.appbrand.dynamic.i.c(paramWxaWidgetContext.getAppId(), paramBundle.getString("search_id"));
           }
-          paramBundle = new com.tencent.mm.ab.c.c(paramContext, locale, parama, (com.tencent.mm.ab.c.b)localObject);
-          paramBundle.gzO = p.sp(i);
-          locale.gzU = paramBundle;
-          paramBundle = locale.gzW;
-          locale.gzV = new com.tencent.mm.ab.c.f(paramBundle, com.tencent.mm.plugin.appbrand.dynamic.f.a.sq(i), parama);
-          locale.gzY = com.tencent.mm.plugin.appbrand.dynamic.debugger.a.bfY();
-          parama = paramWxaWidgetContext.bfU();
+          paramBundle = new com.tencent.mm.aa.c.c(paramContext, locale, parama, (com.tencent.mm.aa.c.b)localObject);
+          paramBundle.gCv = p.ss(i);
+          locale.gCB = paramBundle;
+          paramBundle = locale.gCD;
+          locale.gCC = new com.tencent.mm.aa.c.f(paramBundle, com.tencent.mm.plugin.appbrand.dynamic.f.a.st(i), parama);
+          locale.gCF = com.tencent.mm.plugin.appbrand.dynamic.debugger.a.bgG();
+          parama = paramWxaWidgetContext.bgC();
           localObject = new JSONObject();
-          b((JSONObject)localObject, "widgetType", Integer.valueOf(parama.khF));
+          b((JSONObject)localObject, "widgetType", Integer.valueOf(parama.kkV));
           b((JSONObject)localObject, "platform", "android");
-          b((JSONObject)localObject, "debug", Boolean.valueOf(paramWxaWidgetContext.bfS().kgd));
-          if (paramWxaWidgetContext.bfT() != null) {
-            b((JSONObject)localObject, "drawMinInterval", Integer.valueOf(paramWxaWidgetContext.bfT().jWI));
+          b((JSONObject)localObject, "debug", Boolean.valueOf(paramWxaWidgetContext.bgA().kjt));
+          if (paramWxaWidgetContext.bgB() != null) {
+            b((JSONObject)localObject, "drawMinInterval", Integer.valueOf(paramWxaWidgetContext.bgB().jZX));
           }
-          b((JSONObject)localObject, "clientVersion", Integer.valueOf(com.tencent.mm.protocal.d.Fnj));
+          b((JSONObject)localObject, "clientVersion", Integer.valueOf(com.tencent.mm.protocal.d.FFH));
           JSONObject localJSONObject = new JSONObject();
-          b(localJSONObject, "drawMinInterval", Integer.valueOf(parama.khW));
-          b(localJSONObject, "timerEnabled", Boolean.valueOf(parama.khX));
-          b(localJSONObject, "drawLock", Boolean.valueOf(parama.khY));
+          b(localJSONObject, "drawMinInterval", Integer.valueOf(parama.klm));
+          b(localJSONObject, "timerEnabled", Boolean.valueOf(parama.kln));
+          b(localJSONObject, "drawLock", Boolean.valueOf(parama.klo));
           parama = String.format("var __widgetConfig__ = %s;var __wxConfig = %s;var __wxIndexPage = \"%s\"", new Object[] { localJSONObject.toString(), ((JSONObject)localObject).toString(), "" });
           paramBundle.evaluateJavascript(parama, null);
-          ad.v("MicroMsg.PreloadOptimizer", "injectConfig(%s, %s)", new Object[] { paramWxaWidgetContext.getId(), parama });
-          v.ma(10);
-          parama = new ej().nF(u.Ci(paramWxaWidgetContext.getId()));
-          parama.ehS = u.Cg(paramWxaWidgetContext.getId());
-          parama.ehP = 5L;
-          parama = parama.nE(paramWxaWidgetContext.getId());
-          parama.ehQ = System.currentTimeMillis();
-          parama.nG(ay.iR(aj.getContext())).aLk();
-          parama = com.tencent.mm.plugin.appbrand.dynamic.j.c.cP(paramWxaWidgetContext.getId(), "WAWidget.js");
-          if (!bt.isNullOrNil(parama)) {
+          ae.v("MicroMsg.PreloadOptimizer", "injectConfig(%s, %s)", new Object[] { paramWxaWidgetContext.getId(), parama });
+          v.md(10);
+          parama = new el().oa(u.CK(paramWxaWidgetContext.getId()));
+          parama.ejC = u.CI(paramWxaWidgetContext.getId());
+          parama.ejz = 5L;
+          parama = parama.nZ(paramWxaWidgetContext.getId());
+          parama.ejA = System.currentTimeMillis();
+          parama.ob(az.iW(ak.getContext())).aLH();
+          parama = com.tencent.mm.plugin.appbrand.dynamic.j.c.cR(paramWxaWidgetContext.getId(), "WAWidget.js");
+          if (!bu.isNullOrNil(parama)) {
             break label701;
           }
           u.i("MicroMsg.PreloadOptimizer", "read WAWidget.js", new Object[0]);
-          parama = com.tencent.mm.plugin.appbrand.z.d.convertStreamToString(ax.openRead("WAWidget.js"));
-          if (bt.isNullOrNil(parama)) {
-            ad.e("MicroMsg.PreloadOptimizer", "get Null Or Nil widget js");
+          parama = com.tencent.mm.plugin.appbrand.y.d.convertStreamToString(ay.openRead("WAWidget.js"));
+          if (bu.isNullOrNil(parama)) {
+            ae.e("MicroMsg.PreloadOptimizer", "get Null Or Nil widget js");
           }
-          g.yhR.idkeyStat(636L, 0L, 1L, false);
-          q.a(paramBundle, parama, new q.a()
+          g.yxI.idkeyStat(636L, 0L, 1L, false);
+          s.a(paramBundle, parama, new s.a()
           {
-            public final void cT(String paramAnonymousString)
+            public final void cV(String paramAnonymousString)
             {
               AppMethodBeat.i(121444);
-              v.ma(12);
-              ej localej = new ej().nF(u.Ci(this.kij.getId()));
-              localej.ehS = u.Cg(this.kij.getId());
-              localej.ehP = 6L;
-              localej.ehR = 2L;
-              localej = localej.nE(this.kij.getId());
-              localej.ehQ = System.currentTimeMillis();
-              localej.nG(ay.iR(aj.getContext())).aLk();
-              j.bfM().Oy(this.kij.getId());
-              g.yhR.idkeyStat(636L, 2L, 1L, false);
-              ad.e("MicroMsg.PreloadOptimizer", "Inject SDK widget Script Failed: %s", new Object[] { paramAnonymousString });
+              v.md(12);
+              el localel = new el().oa(u.CK(this.klz.getId()));
+              localel.ejC = u.CI(this.klz.getId());
+              localel.ejz = 6L;
+              localel.ejB = 2L;
+              localel = localel.nZ(this.klz.getId());
+              localel.ejA = System.currentTimeMillis();
+              localel.ob(az.iW(ak.getContext())).aLH();
+              j.bgu().Pg(this.klz.getId());
+              g.yxI.idkeyStat(636L, 2L, 1L, false);
+              ae.e("MicroMsg.PreloadOptimizer", "Inject SDK widget Script Failed: %s", new Object[] { paramAnonymousString });
               AppMethodBeat.o(121444);
             }
             
             public final void onSuccess(String paramAnonymousString)
             {
               AppMethodBeat.i(121443);
-              v.ma(11);
-              paramAnonymousString = new ej().nF(u.Ci(this.kij.getId()));
-              paramAnonymousString.ehS = u.Cg(this.kij.getId());
-              paramAnonymousString.ehP = 6L;
-              paramAnonymousString.ehR = 1L;
-              paramAnonymousString = paramAnonymousString.nE(this.kij.getId());
-              paramAnonymousString.ehQ = System.currentTimeMillis();
-              paramAnonymousString.nG(ay.iR(aj.getContext())).aLk();
-              g.yhR.idkeyStat(636L, 1L, 1L, false);
+              v.md(11);
+              paramAnonymousString = new el().oa(u.CK(this.klz.getId()));
+              paramAnonymousString.ejC = u.CI(this.klz.getId());
+              paramAnonymousString.ejz = 6L;
+              paramAnonymousString.ejB = 1L;
+              paramAnonymousString = paramAnonymousString.nZ(this.klz.getId());
+              paramAnonymousString.ejA = System.currentTimeMillis();
+              paramAnonymousString.ob(az.iW(ak.getContext())).aLH();
+              g.yxI.idkeyStat(636L, 1L, 1L, false);
               AppMethodBeat.o(121443);
             }
           });
-          ad.v("MicroMsg.PreloadOptimizer", "injectWAWidget(%s)", new Object[] { paramWxaWidgetContext.getId() });
-          v.ma(13);
-          parama = com.tencent.mm.plugin.appbrand.dynamic.j.c.cP(paramWxaWidgetContext.getId(), "widget.js");
-          if (bt.isNullOrNil(parama))
+          ae.v("MicroMsg.PreloadOptimizer", "injectWAWidget(%s)", new Object[] { paramWxaWidgetContext.getId() });
+          v.md(13);
+          parama = com.tencent.mm.plugin.appbrand.dynamic.j.c.cR(paramWxaWidgetContext.getId(), "widget.js");
+          if (bu.isNullOrNil(parama))
           {
-            ad.e("MicroMsg.PreloadOptimizer", "get Null Or Nil widget js");
-            com.tencent.mm.plugin.appbrand.dynamic.f.bfI().bx(paramWxaWidgetContext.getId(), 2102);
+            ae.e("MicroMsg.PreloadOptimizer", "get Null Or Nil widget js");
+            com.tencent.mm.plugin.appbrand.dynamic.f.bgq().bA(paramWxaWidgetContext.getId(), 2102);
           }
-          g.yhR.idkeyStat(636L, 3L, 1L, false);
-          q.a(paramBundle, parama, new q.a()
+          g.yxI.idkeyStat(636L, 3L, 1L, false);
+          s.a(paramBundle, parama, new s.a()
           {
-            public final void cT(String paramAnonymousString)
+            public final void cV(String paramAnonymousString)
             {
               AppMethodBeat.i(121446);
-              v.ma(15);
-              ej localej = new ej().nF(u.Ci(this.kij.getId()));
-              localej.ehS = u.Cg(this.kij.getId());
-              localej.ehP = 7L;
-              localej.ehR = 2L;
-              localej = localej.nE(this.kij.getId());
-              localej.ehQ = System.currentTimeMillis();
-              localej.aLk();
-              g.yhR.idkeyStat(636L, 5L, 1L, false);
-              ad.e("MicroMsg.PreloadOptimizer", "Inject External widget Script Failed: %s", new Object[] { paramAnonymousString });
+              v.md(15);
+              el localel = new el().oa(u.CK(this.klz.getId()));
+              localel.ejC = u.CI(this.klz.getId());
+              localel.ejz = 7L;
+              localel.ejB = 2L;
+              localel = localel.nZ(this.klz.getId());
+              localel.ejA = System.currentTimeMillis();
+              localel.aLH();
+              g.yxI.idkeyStat(636L, 5L, 1L, false);
+              ae.e("MicroMsg.PreloadOptimizer", "Inject External widget Script Failed: %s", new Object[] { paramAnonymousString });
               AppMethodBeat.o(121446);
             }
             
             public final void onSuccess(String paramAnonymousString)
             {
               AppMethodBeat.i(121445);
-              v.ma(14);
-              paramAnonymousString = new ej().nF(u.Ci(this.kij.getId()));
-              paramAnonymousString.ehS = u.Cg(this.kij.getId());
-              paramAnonymousString.ehP = 7L;
-              paramAnonymousString.ehR = 1L;
-              paramAnonymousString = paramAnonymousString.nE(this.kij.getId());
-              paramAnonymousString.ehQ = System.currentTimeMillis();
-              paramAnonymousString.nG(ay.iR(aj.getContext())).aLk();
-              g.yhR.idkeyStat(636L, 4L, 1L, false);
-              j.bfM().Oy(this.kij.getId());
+              v.md(14);
+              paramAnonymousString = new el().oa(u.CK(this.klz.getId()));
+              paramAnonymousString.ejC = u.CI(this.klz.getId());
+              paramAnonymousString.ejz = 7L;
+              paramAnonymousString.ejB = 1L;
+              paramAnonymousString = paramAnonymousString.nZ(this.klz.getId());
+              paramAnonymousString.ejA = System.currentTimeMillis();
+              paramAnonymousString.ob(az.iW(ak.getContext())).aLH();
+              g.yxI.idkeyStat(636L, 4L, 1L, false);
+              j.bgu().Pg(this.klz.getId());
               AppMethodBeat.o(121445);
             }
           });
-          ad.v("MicroMsg.PreloadOptimizer", "injectWidget(%s)", new Object[] { paramWxaWidgetContext.getId() });
-          dl(paramContext);
+          ae.v("MicroMsg.PreloadOptimizer", "injectWidget(%s)", new Object[] { paramWxaWidgetContext.getId() });
+          dn(paramContext);
           AppMethodBeat.o(121447);
           return locale;
         }
@@ -241,25 +220,25 @@ public class e
     }
     catch (Exception paramJSONObject)
     {
-      ad.e("MicroMsg.PreloadOptimizer", "put env arguments error, %s", new Object[] { paramJSONObject });
+      ae.e("MicroMsg.PreloadOptimizer", "put env arguments error, %s", new Object[] { paramJSONObject });
       AppMethodBeat.o(121452);
     }
   }
   
-  private static com.tencent.mm.ab.c.e bgn()
+  private static com.tencent.mm.aa.c.e bgV()
   {
     AppMethodBeat.i(121450);
-    com.tencent.mm.ab.c.e locale = new com.tencent.mm.ab.c.e();
+    com.tencent.mm.aa.c.e locale = new com.tencent.mm.aa.c.e();
     locale.a(a(locale));
     AppMethodBeat.o(121450);
     return locale;
   }
   
-  public static void dl(Context paramContext)
+  public static void dn(Context paramContext)
   {
     AppMethodBeat.i(121449);
-    com.tencent.mm.plugin.expansions.a.cmP();
-    U(new Runnable()
+    com.tencent.mm.plugin.expansions.a.cof();
+    S(new Runnable()
     {
       /* Error */
       public final void run()
@@ -269,7 +248,7 @@ public class e
         //   2: invokestatic 28	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
         //   5: ldc 8
         //   7: monitorenter
-        //   8: invokestatic 32	com/tencent/mm/plugin/appbrand/dynamic/h/e:bgo	()Lcom/tencent/mm/ab/c/e;
+        //   8: invokestatic 32	com/tencent/mm/plugin/appbrand/dynamic/h/e:bgW	()Lcom/tencent/mm/aa/c/e;
         //   11: ifnull +12 -> 23
         //   14: ldc 8
         //   16: monitorexit
@@ -283,14 +262,14 @@ public class e
         //   30: iconst_0
         //   31: anewarray 4	java/lang/Object
         //   34: invokestatic 44	com/tencent/mm/modelappbrand/u:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-        //   37: invokestatic 48	com/tencent/mm/plugin/appbrand/dynamic/h/e:bgp	()Lcom/tencent/mm/plugin/appbrand/dynamic/debugger/DebuggerInfo;
+        //   37: invokestatic 48	com/tencent/mm/plugin/appbrand/dynamic/h/e:bgX	()Lcom/tencent/mm/plugin/appbrand/dynamic/debugger/DebuggerInfo;
         //   40: pop
-        //   41: invokestatic 51	com/tencent/mm/plugin/appbrand/dynamic/h/e:bgq	()Lcom/tencent/mm/ab/c/e;
+        //   41: invokestatic 51	com/tencent/mm/plugin/appbrand/dynamic/h/e:bgY	()Lcom/tencent/mm/aa/c/e;
         //   44: astore_1
         //   45: ldc 8
         //   47: monitorenter
         //   48: aload_1
-        //   49: invokestatic 55	com/tencent/mm/plugin/appbrand/dynamic/h/e:b	(Lcom/tencent/mm/ab/c/e;)Lcom/tencent/mm/ab/c/e;
+        //   49: invokestatic 55	com/tencent/mm/plugin/appbrand/dynamic/h/e:b	(Lcom/tencent/mm/aa/c/e;)Lcom/tencent/mm/aa/c/e;
         //   52: pop
         //   53: ldc 8
         //   55: monitorexit
@@ -314,7 +293,7 @@ public class e
         // Local variable table:
         //   start	length	slot	name	signature
         //   0	84	0	this	2
-        //   44	5	1	locale	com.tencent.mm.ab.c.e
+        //   44	5	1	locale	com.tencent.mm.aa.c.e
         //   62	10	1	localObject1	Object
         //   73	10	1	localObject2	Object
         // Exception table:

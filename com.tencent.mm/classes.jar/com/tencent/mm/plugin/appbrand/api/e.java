@@ -1,15 +1,15 @@
 package com.tencent.mm.plugin.appbrand.api;
 
 import com.tencent.mm.kernel.c.a;
-import com.tencent.mm.plugin.appbrand.appcache.am;
-import com.tencent.mm.plugin.appbrand.appcache.bg;
+import com.tencent.mm.plugin.appbrand.appcache.an;
+import com.tencent.mm.plugin.appbrand.appcache.bh;
 
 public abstract interface e
   extends a
 {
-  public abstract bg aYu();
+  public abstract bh aYP();
   
-  public abstract am aYv();
+  public abstract an aYQ();
 }
 
 

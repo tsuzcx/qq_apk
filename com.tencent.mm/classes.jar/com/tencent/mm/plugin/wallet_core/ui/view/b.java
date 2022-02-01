@@ -12,14 +12,14 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.u;
+import com.tencent.mm.model.v;
 import com.tencent.mm.platformtools.u.a;
 import com.tencent.mm.plugin.wallet_core.model.Bankcard;
 import com.tencent.mm.plugin.wallet_core.model.e;
 import com.tencent.mm.plugin.wallet_core.model.t;
 import com.tencent.mm.plugin.wallet_core.utils.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public final class b
 {
@@ -32,18 +32,18 @@ public final class b
     {
       localView = View.inflate(paramContext, paramInt, null);
       paramView = new a();
-      paramView.CFw = ((ImageView)localView.findViewById(2131297121));
-      paramView.CFs = ((TextView)localView.findViewById(2131297130));
-      paramView.CFt = ((TextView)localView.findViewById(2131297177));
-      paramView.CFr = ((TextView)localView.findViewById(2131297159));
-      paramView.CFx = ((TextView)localView.findViewById(2131297158));
-      paramView.CFu = ((ViewGroup)localView.findViewById(2131306688));
-      paramView.CFv = ((ImageView)localView.findViewById(2131297168));
-      paramView.CFy = ((TextView)localView.findViewById(2131297153));
-      paramView.DlX = ((ViewGroup)localView.findViewById(2131297155));
-      paramView.DlY = ((TextView)localView.findViewById(2131297140));
-      paramView.DlZ = ((ImageView)localView.findViewById(2131297169));
-      paramView.Dma = ((TextView)localView.findViewById(2131297173));
+      paramView.CXc = ((ImageView)localView.findViewById(2131297121));
+      paramView.CWY = ((TextView)localView.findViewById(2131297130));
+      paramView.CWZ = ((TextView)localView.findViewById(2131297177));
+      paramView.CWX = ((TextView)localView.findViewById(2131297159));
+      paramView.CXd = ((TextView)localView.findViewById(2131297158));
+      paramView.CXa = ((ViewGroup)localView.findViewById(2131306688));
+      paramView.CXb = ((ImageView)localView.findViewById(2131297168));
+      paramView.CXe = ((TextView)localView.findViewById(2131297153));
+      paramView.DDB = ((ViewGroup)localView.findViewById(2131297155));
+      paramView.DDC = ((TextView)localView.findViewById(2131297140));
+      paramView.DDD = ((ImageView)localView.findViewById(2131297169));
+      paramView.DDE = ((TextView)localView.findViewById(2131297173));
       localView.setTag(paramView);
       localObject = paramView;
     }
@@ -62,70 +62,70 @@ public final class b
     AppMethodBeat.i(71479);
     if (paramBankcard.field_bankcardState == 1)
     {
-      parama.CFx.setVisibility(0);
+      parama.CXd.setVisibility(0);
       if (!paramBoolean) {
         break label195;
       }
-      parama.Dma.setText(paramContext.getString(2131765063));
-      parama.Dma.setVisibility(0);
+      parama.DDE.setText(paramContext.getString(2131765063));
+      parama.DDE.setVisibility(0);
       label47:
-      parama.CFs.setVisibility(0);
-      parama.CFs.setText(paramBankcard.field_bankName);
-      if (!u.aAB()) {
+      parama.CWY.setVisibility(0);
+      parama.CWY.setText(paramBankcard.field_bankName);
+      if (!v.aAR()) {
         break label239;
       }
-      parama.CFt.setVisibility(8);
+      parama.CWZ.setVisibility(8);
       label81:
-      if (parama.CFr != null) {
-        parama.CFr.setText(paramBankcard.field_bankcardTail);
+      if (parama.CWX != null) {
+        parama.CWX.setText(paramBankcard.field_bankcardTail);
       }
-      if ((bt.isNullOrNil(paramBankcard.field_card_bottom_wording)) || (parama.DlY == null)) {
+      if ((bu.isNullOrNil(paramBankcard.field_card_bottom_wording)) || (parama.DDC == null)) {
         break label313;
       }
-      parama.DlY.setText(paramBankcard.field_card_bottom_wording);
-      parama.DlX.setVisibility(0);
+      parama.DDC.setText(paramBankcard.field_card_bottom_wording);
+      parama.DDB.setVisibility(0);
     }
     for (;;)
     {
-      parama1.a(paramContext, paramBankcard, parama.CFw, parama.CFu, parama.CFv, parama.Dma);
-      if (parama.CFy != null)
+      parama1.a(paramContext, paramBankcard, parama.CXc, parama.CXa, parama.CXb, parama.DDE);
+      if (parama.CXe != null)
       {
-        t.eFy();
-        parama.CFy.setVisibility(8);
+        t.eJf();
+        parama.CXe.setVisibility(8);
       }
       AppMethodBeat.o(71479);
       return;
-      parama.CFx.setVisibility(8);
+      parama.CXd.setVisibility(8);
       break;
       label195:
-      if (!bt.isNullOrNil(paramBankcard.field_card_state_name))
+      if (!bu.isNullOrNil(paramBankcard.field_card_state_name))
       {
-        parama.Dma.setText(paramBankcard.field_card_state_name);
-        parama.Dma.setVisibility(0);
+        parama.DDE.setText(paramBankcard.field_card_state_name);
+        parama.DDE.setVisibility(0);
         break label47;
       }
-      parama.Dma.setVisibility(8);
+      parama.DDE.setVisibility(8);
       break label47;
       label239:
-      if (!bt.isNullOrNil(paramBankcard.field_bankcardTypeName))
+      if (!bu.isNullOrNil(paramBankcard.field_bankcardTypeName))
       {
-        parama.CFt.setText(paramBankcard.field_bankcardTypeName);
+        parama.CWZ.setText(paramBankcard.field_bankcardTypeName);
         break label81;
       }
-      if (paramBankcard.eEQ())
+      if (paramBankcard.eIx())
       {
-        parama.CFt.setText(2131765997);
+        parama.CWZ.setText(2131765997);
         break label81;
       }
-      if (paramBankcard.eET())
+      if (paramBankcard.eIA())
       {
-        parama.CFt.setText(2131765221);
+        parama.CWZ.setText(2131765221);
         break label81;
       }
-      parama.CFt.setText(2131765241);
+      parama.CWZ.setText(2131765241);
       break label81;
       label313:
-      parama.DlX.setVisibility(8);
+      parama.DDB.setVisibility(8);
     }
   }
   
@@ -153,8 +153,8 @@ public final class b
     }
     catch (Exception paramContext)
     {
-      ad.f("MicroMsg.BankcardListAdapter", paramContext.getMessage());
-      ad.printErrStackTrace("MicroMsg.BankcardListAdapter", paramContext, "", new Object[0]);
+      ae.f("MicroMsg.BankcardListAdapter", paramContext.getMessage());
+      ae.printErrStackTrace("MicroMsg.BankcardListAdapter", paramContext, "", new Object[0]);
       AppMethodBeat.o(71480);
     }
     return null;
@@ -163,20 +163,20 @@ public final class b
   static final class a
     implements u.a
   {
-    public TextView CFr = null;
-    public TextView CFs = null;
-    public TextView CFt = null;
-    public ViewGroup CFu = null;
-    public ImageView CFv = null;
-    public ImageView CFw = null;
-    public TextView CFx = null;
-    public TextView CFy = null;
-    public TextView CFz = null;
-    public e DlW;
-    public ViewGroup DlX = null;
-    public TextView DlY = null;
-    public ImageView DlZ = null;
-    public TextView Dma = null;
+    public TextView CWX = null;
+    public TextView CWY = null;
+    public TextView CWZ = null;
+    public ViewGroup CXa = null;
+    public ImageView CXb = null;
+    public ImageView CXc = null;
+    public TextView CXd = null;
+    public TextView CXe = null;
+    public TextView CXf = null;
+    public e DDA;
+    public ViewGroup DDB = null;
+    public TextView DDC = null;
+    public ImageView DDD = null;
+    public TextView DDE = null;
     
     public final void k(String paramString, final Bitmap paramBitmap)
     {
@@ -185,32 +185,32 @@ public final class b
       if (paramBitmap == null) {}
       for (boolean bool = true;; bool = false)
       {
-        ad.d("MicroMsg.BankcardListAdapter", bool);
-        if (this.DlW != null) {
+        ae.d("MicroMsg.BankcardListAdapter", bool);
+        if (this.DDA != null) {
           break;
         }
         AppMethodBeat.o(71477);
         return;
       }
-      if (paramString.equals(this.DlW.wqa)) {
-        this.CFw.post(new Runnable()
+      if (paramString.equals(this.DDA.wFJ)) {
+        this.CXc.post(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(71475);
-            b.a.this.CFw.setImageBitmap(paramBitmap);
-            b.a.this.CFu.invalidate();
+            b.a.this.CXc.setImageBitmap(paramBitmap);
+            b.a.this.CXa.invalidate();
             AppMethodBeat.o(71475);
           }
         });
       }
-      if ((paramString.equals(this.DlW.CVf)) && (this.CFv != null)) {
-        this.CFv.post(new Runnable()
+      if ((paramString.equals(this.DDA.DmL)) && (this.CXb != null)) {
+        this.CXb.post(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(71476);
-            b.a.this.CFv.setImageBitmap(paramBitmap);
+            b.a.this.CXb.setImageBitmap(paramBitmap);
             AppMethodBeat.o(71476);
           }
         });
@@ -221,7 +221,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.ui.view.b
  * JD-Core Version:    0.7.0.1
  */

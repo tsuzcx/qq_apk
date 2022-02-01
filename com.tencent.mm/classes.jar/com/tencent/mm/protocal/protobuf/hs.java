@@ -5,14 +5,14 @@ import f.a.a.b;
 import java.util.LinkedList;
 
 public final class hs
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public int FAh;
-  public SKBuiltinBuffer_t FAi;
-  public bor FAj;
-  public int FAk;
-  public SKBuiltinBuffer_t FAl;
-  public String FAm;
+  public SKBuiltinBuffer_t FSF;
+  public bpj FSG;
+  public int FSH;
+  public SKBuiltinBuffer_t FSI;
+  public String FSJ;
+  public int uuz;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -20,37 +20,37 @@ public final class hs
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.FAi == null)
+      if (this.FSF == null)
       {
         paramVarArgs = new b("Not all required fields were included: AxTicket");
         AppMethodBeat.o(133152);
         throw paramVarArgs;
       }
-      if (this.FAl == null)
+      if (this.FSI == null)
       {
         paramVarArgs = new b("Not all required fields were included: RandomKey");
         AppMethodBeat.o(133152);
         throw paramVarArgs;
       }
-      paramVarArgs.aS(1, this.FAh);
-      if (this.FAi != null)
+      paramVarArgs.aS(1, this.uuz);
+      if (this.FSF != null)
       {
-        paramVarArgs.lC(2, this.FAi.computeSize());
-        this.FAi.writeFields(paramVarArgs);
+        paramVarArgs.lJ(2, this.FSF.computeSize());
+        this.FSF.writeFields(paramVarArgs);
       }
-      if (this.FAj != null)
+      if (this.FSG != null)
       {
-        paramVarArgs.lC(3, this.FAj.computeSize());
-        this.FAj.writeFields(paramVarArgs);
+        paramVarArgs.lJ(3, this.FSG.computeSize());
+        this.FSG.writeFields(paramVarArgs);
       }
-      paramVarArgs.aS(4, this.FAk);
-      if (this.FAl != null)
+      paramVarArgs.aS(4, this.FSH);
+      if (this.FSI != null)
       {
-        paramVarArgs.lC(5, this.FAl.computeSize());
-        this.FAl.writeFields(paramVarArgs);
+        paramVarArgs.lJ(5, this.FSI.computeSize());
+        this.FSI.writeFields(paramVarArgs);
       }
-      if (this.FAm != null) {
-        paramVarArgs.d(6, this.FAm);
+      if (this.FSJ != null) {
+        paramVarArgs.d(6, this.FSJ);
       }
       AppMethodBeat.o(133152);
       return 0;
@@ -58,23 +58,23 @@ public final class hs
     int i;
     if (paramInt == 1)
     {
-      i = f.a.a.b.b.a.bz(1, this.FAh) + 0;
+      i = f.a.a.b.b.a.bz(1, this.uuz) + 0;
       paramInt = i;
-      if (this.FAi != null) {
-        paramInt = i + f.a.a.a.lB(2, this.FAi.computeSize());
+      if (this.FSF != null) {
+        paramInt = i + f.a.a.a.lI(2, this.FSF.computeSize());
       }
       i = paramInt;
-      if (this.FAj != null) {
-        i = paramInt + f.a.a.a.lB(3, this.FAj.computeSize());
+      if (this.FSG != null) {
+        i = paramInt + f.a.a.a.lI(3, this.FSG.computeSize());
       }
-      i += f.a.a.b.b.a.bz(4, this.FAk);
+      i += f.a.a.b.b.a.bz(4, this.FSH);
       paramInt = i;
-      if (this.FAl != null) {
-        paramInt = i + f.a.a.a.lB(5, this.FAl.computeSize());
+      if (this.FSI != null) {
+        paramInt = i + f.a.a.a.lI(5, this.FSI.computeSize());
       }
       i = paramInt;
-      if (this.FAm != null) {
-        i = paramInt + f.a.a.b.b.a.e(6, this.FAm);
+      if (this.FSJ != null) {
+        i = paramInt + f.a.a.b.b.a.e(6, this.FSJ);
       }
       AppMethodBeat.o(133152);
       return i;
@@ -82,18 +82,18 @@ public final class hs
     if (paramInt == 2)
     {
       paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gxE();
+          paramVarArgs.gCg();
         }
       }
-      if (this.FAi == null)
+      if (this.FSF == null)
       {
         paramVarArgs = new b("Not all required fields were included: AxTicket");
         AppMethodBeat.o(133152);
         throw paramVarArgs;
       }
-      if (this.FAl == null)
+      if (this.FSI == null)
       {
         paramVarArgs = new b("Not all required fields were included: RandomKey");
         AppMethodBeat.o(133152);
@@ -115,11 +115,11 @@ public final class hs
         AppMethodBeat.o(133152);
         return -1;
       case 1: 
-        localhs.FAh = ((f.a.a.a.a)localObject1).NPN.zc();
+        localhs.uuz = ((f.a.a.a.a)localObject1).OmT.zc();
         AppMethodBeat.o(133152);
         return 0;
       case 2: 
-        paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
+        paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
         i = paramVarArgs.size();
         paramInt = 0;
         while (paramInt < i)
@@ -127,33 +127,33 @@ public final class hs
           localObject2 = (byte[])paramVarArgs.get(paramInt);
           localObject1 = new SKBuiltinBuffer_t();
           localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-          for (bool = true; bool; bool = ((SKBuiltinBuffer_t)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, com.tencent.mm.bx.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-          localhs.FAi = ((SKBuiltinBuffer_t)localObject1);
+          for (bool = true; bool; bool = ((SKBuiltinBuffer_t)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+          localhs.FSF = ((SKBuiltinBuffer_t)localObject1);
           paramInt += 1;
         }
         AppMethodBeat.o(133152);
         return 0;
       case 3: 
-        paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
+        paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
         i = paramVarArgs.size();
         paramInt = 0;
         while (paramInt < i)
         {
           localObject2 = (byte[])paramVarArgs.get(paramInt);
-          localObject1 = new bor();
+          localObject1 = new bpj();
           localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-          for (bool = true; bool; bool = ((bor)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, com.tencent.mm.bx.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-          localhs.FAj = ((bor)localObject1);
+          for (bool = true; bool; bool = ((bpj)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+          localhs.FSG = ((bpj)localObject1);
           paramInt += 1;
         }
         AppMethodBeat.o(133152);
         return 0;
       case 4: 
-        localhs.FAk = ((f.a.a.a.a)localObject1).NPN.zc();
+        localhs.FSH = ((f.a.a.a.a)localObject1).OmT.zc();
         AppMethodBeat.o(133152);
         return 0;
       case 5: 
-        paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
+        paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
         i = paramVarArgs.size();
         paramInt = 0;
         while (paramInt < i)
@@ -161,14 +161,14 @@ public final class hs
           localObject2 = (byte[])paramVarArgs.get(paramInt);
           localObject1 = new SKBuiltinBuffer_t();
           localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-          for (bool = true; bool; bool = ((SKBuiltinBuffer_t)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, com.tencent.mm.bx.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-          localhs.FAl = ((SKBuiltinBuffer_t)localObject1);
+          for (bool = true; bool; bool = ((SKBuiltinBuffer_t)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+          localhs.FSI = ((SKBuiltinBuffer_t)localObject1);
           paramInt += 1;
         }
         AppMethodBeat.o(133152);
         return 0;
       }
-      localhs.FAm = ((f.a.a.a.a)localObject1).NPN.readString();
+      localhs.FSJ = ((f.a.a.a.a)localObject1).OmT.readString();
       AppMethodBeat.o(133152);
       return 0;
     }

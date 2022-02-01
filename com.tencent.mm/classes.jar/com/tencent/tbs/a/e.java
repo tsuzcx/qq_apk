@@ -11,8 +11,8 @@ import java.util.List;
 
 public final class e
 {
-  private static c LSQ = c.LSR;
-  private static e.a LSU;
+  private static c MpN = c.MpO;
+  private static e.a MpR;
   private static volatile Boolean a = Boolean.FALSE;
   private static List<d> c;
   private static boolean d;
@@ -31,9 +31,9 @@ public final class e
       AppMethodBeat.o(174272);
       return;
     }
-    LSU.a = paramString1;
-    Object localObject = LSU;
-    paramString1 = c.agR(paramInt);
+    MpR.a = paramString1;
+    Object localObject = MpR;
+    paramString1 = c.ahA(paramInt);
     localObject = ((e.a)localObject).a;
     try
     {
@@ -44,7 +44,7 @@ public final class e
         return;
       }
       paramInt = paramString1.h;
-      int i = LSQ.h;
+      int i = MpN.h;
       if (paramInt < i)
       {
         AppMethodBeat.o(174272);
@@ -67,7 +67,7 @@ public final class e
     }
   }
   
-  public static void cA(Context paramContext, String paramString)
+  public static void cB(Context paramContext, String paramString)
   {
     AppMethodBeat.i(174269);
     try
@@ -75,7 +75,7 @@ public final class e
       Object localObject;
       if (!a.booleanValue())
       {
-        LSU = new e.a((byte)0);
+        MpR = new e.a((byte)0);
         localObject = new ArrayList();
         c = (List)localObject;
         ((List)localObject).add(new com.tencent.tbs.a.a.b(paramContext, new a(), new com.tencent.tbs.a.a.b.b(), new com.tencent.tbs.a.a.a.b()));
@@ -91,7 +91,7 @@ public final class e
       label127:
       for (f = ((File)localObject).getAbsolutePath();; f = paramContext.getFilesDir() + File.separator + paramString)
       {
-        LSQ = c.LSR;
+        MpN = c.MpO;
         d = true;
         a = Boolean.TRUE;
         AppMethodBeat.o(174269);

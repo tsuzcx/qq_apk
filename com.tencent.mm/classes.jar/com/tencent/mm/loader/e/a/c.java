@@ -2,28 +2,30 @@ package com.tencent.mm.loader.e.a;
 
 import android.graphics.Bitmap;
 import com.tencent.mm.compatible.util.Exif;
+import com.tencent.mm.loader.e.b.g;
 import com.tencent.mm.loader.f;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.h;
 import d.g.b.p;
 import d.l;
 import d.z;
 import java.io.InputStream;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/loader/impr/imageproducer/InputStreamBitmapProducer;", "Lcom/tencent/mm/loader/impr/imageproducer/ImageBitmapProducer;", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "setTAG", "(Ljava/lang/String;)V", "asResource", "Lcom/tencent/mm/loader/model/Resource;", "Landroid/graphics/Bitmap;", "targetView", "Lcom/tencent/mm/loader/impr/target/ViewWeakHolder;", "reaper", "Lcom/tencent/mm/loader/Reaper;", "input", "Lcom/tencent/mm/loader/model/datasource/DataSource;", "libimageloader_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/loader/impr/imageproducer/InputStreamBitmapProducer;", "Lcom/tencent/mm/loader/impr/imageproducer/ImageBitmapProducer;", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "setTAG", "(Ljava/lang/String;)V", "asResource", "Lcom/tencent/mm/loader/model/Resource;", "Landroid/graphics/Bitmap;", "targetView", "Lcom/tencent/mm/loader/impr/target/ViewWeakHolder;", "reaper", "Lcom/tencent/mm/loader/Reaper;", "input", "Lcom/tencent/mm/loader/model/datasource/DataSource;", "libimageloader_release"})
 public class c
   extends b
 {
   private String TAG = "MicroMsg.Loader.InputStreamBitmapProducer";
   
-  public com.tencent.mm.loader.h.e<Bitmap> a(com.tencent.mm.loader.e.b.g<?> paramg, f<?, Bitmap> paramf, com.tencent.mm.loader.h.b.a parama)
+  public com.tencent.mm.loader.h.e<Bitmap> a(g<?> paramg, f<?, Bitmap> paramf, com.tencent.mm.loader.h.b.a parama)
   {
     p.h(paramg, "targetView");
     p.h(paramf, "reaper");
     p.h(parama, "input");
-    InputStream localInputStream = parama.arF();
-    com.tencent.mm.ad.b localb = new com.tencent.mm.ad.b("InputStreamBitmapProducer");
+    InputStream localInputStream = parama.arU();
+    com.tencent.mm.ac.b localb = new com.tencent.mm.ac.b("InputStreamBitmapProducer");
     if (localInputStream != null) {}
-    for (paramg = com.tencent.mm.loader.l.a.a(paramg, localInputStream, paramf.hcp.hdR, paramf.hcp.hdS);; paramg = null)
+    for (paramg = com.tencent.mm.loader.l.a.a(paramg, localInputStream, paramf.hfd.hgF, paramf.hfd.hgG);; paramg = null)
     {
       paramf = paramg;
       if (localInputStream != null)
@@ -32,19 +34,19 @@ public class c
         paramf = Exif.fromStream(localInputStream);
         p.g(paramf, "Exif.fromStream(inputStream)");
         int i = paramf.getOrientationInDegree();
-        ad.i(this.TAG, "read exif rotate degree %d", new Object[] { Integer.valueOf(i) });
-        paramf = com.tencent.mm.sdk.platformtools.g.a(paramg, i * 1.0F);
+        ae.i(this.TAG, "read exif rotate degree %d", new Object[] { Integer.valueOf(i) });
+        paramf = h.a(paramg, i * 1.0F);
       }
-      paramg = z.MKo;
-      localb.akO();
-      ad.i(this.TAG, "InputStreamBitmapProducer decode bitmap done " + paramf + " from input " + parama);
+      paramg = z.Nhr;
+      localb.ald();
+      ae.i(this.TAG, "InputStreamBitmapProducer decode bitmap done " + paramf + " from input " + parama);
       return new com.tencent.mm.loader.h.e(paramf);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.loader.e.a.c
  * JD-Core Version:    0.7.0.1
  */

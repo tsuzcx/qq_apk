@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.cloudvoip.cloudvoice.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ad.a;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ae.a;
 
 public final class c
 {
-  public static int bZS()
+  public static int cbh()
   {
     AppMethodBeat.i(90787);
-    if (ad.fkt() != null)
+    if (ae.fon() != null)
     {
-      int i = ad.fkt().getLogLevel(0L);
+      int i = ae.fon().getLogLevel(0L);
       AppMethodBeat.o(90787);
       return i;
     }

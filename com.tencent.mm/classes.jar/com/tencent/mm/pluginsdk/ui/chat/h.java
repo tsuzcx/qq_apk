@@ -7,47 +7,47 @@ import android.provider.MediaStore.Images.Media;
 import android.provider.MediaStore.Images.Thumbnails;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.loader.j.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.vfs.i;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.vfs.o;
 import java.util.ArrayList;
 
 public final class h
 {
-  private ContentResolver gGN;
+  private ContentResolver gJw;
   protected Context mContext;
   
   protected h(Context paramContext)
   {
     AppMethodBeat.i(31743);
     this.mContext = paramContext;
-    this.gGN = this.mContext.getContentResolver();
+    this.gJw = this.mContext.getContentResolver();
     AppMethodBeat.o(31743);
   }
   
-  private String aNb(String paramString)
+  private String aOy(String paramString)
   {
     AppMethodBeat.i(31744);
-    if (bt.isNullOrNil(paramString))
+    if (bu.isNullOrNil(paramString))
     {
-      ad.e("MicroMsg.RecentPhotoTips.ImageQuery", "null or nill imageId");
+      ae.e("MicroMsg.RecentPhotoTips.ImageQuery", "null or nill imageId");
       AppMethodBeat.o(31744);
       return null;
     }
     Object localObject = "image_id=\"" + paramString + "\"";
     try
     {
-      localObject = this.gGN.query(MediaStore.Images.Thumbnails.EXTERNAL_CONTENT_URI, null, (String)localObject, null, null);
+      localObject = this.gJw.query(MediaStore.Images.Thumbnails.EXTERNAL_CONTENT_URI, null, (String)localObject, null, null);
       if (localObject == null)
       {
-        ad.e("MicroMsg.RecentPhotoTips.ImageQuery", "get cursor null:".concat(String.valueOf(paramString)));
+        ae.e("MicroMsg.RecentPhotoTips.ImageQuery", "get cursor null:".concat(String.valueOf(paramString)));
         AppMethodBeat.o(31744);
         return null;
       }
     }
     catch (Exception paramString)
     {
-      ad.e("MicroMsg.RecentPhotoTips.ImageQuery", "query thumb exception e : %s", new Object[] { paramString.toString() });
+      ae.e("MicroMsg.RecentPhotoTips.ImageQuery", "query thumb exception e : %s", new Object[] { paramString.toString() });
       AppMethodBeat.o(31744);
       return null;
     }
@@ -66,16 +66,16 @@ public final class h
     }
   }
   
-  public final ArrayList<g> feu()
+  public final ArrayList<g> fik()
   {
     AppMethodBeat.i(31745);
     ArrayList localArrayList = new ArrayList();
-    long l = bt.flT() / 1000L;
+    long l = bu.fpO() / 1000L;
     Cursor localCursor;
     try
     {
-      ad.e("MicroMsg.RecentPhotoTips.ImageQuery", "query excludeImageWithFeatureDate");
-      localCursor = this.gGN.query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, new String[] { "_id", "_data", "date_added" }, "date_added <= ?", new String[] { String.valueOf(l) }, "date_added desc limit 1");
+      ae.e("MicroMsg.RecentPhotoTips.ImageQuery", "query excludeImageWithFeatureDate");
+      localCursor = this.gJw.query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, new String[] { "_id", "_data", "date_added" }, "date_added <= ?", new String[] { String.valueOf(l) }, "date_added desc limit 1");
       if (localCursor == null)
       {
         AppMethodBeat.o(31745);
@@ -84,7 +84,7 @@ public final class h
     }
     catch (Exception localException)
     {
-      ad.e("MicroMsg.RecentPhotoTips.ImageQuery", "query photo exception e : %s", new Object[] { localException.toString() });
+      ae.e("MicroMsg.RecentPhotoTips.ImageQuery", "query photo exception e : %s", new Object[] { localException.toString() });
       if (0 != 0) {
         throw new NullPointerException();
       }
@@ -94,37 +94,37 @@ public final class h
     if (localCursor.moveToFirst()) {}
     for (;;)
     {
-      String str2 = localCursor.getString(localCursor.getColumnIndexOrThrow("_id"));
-      String str1 = localCursor.getString(localCursor.getColumnIndexOrThrow("_data"));
-      String str3 = localCursor.getString(localCursor.getColumnIndexOrThrow("date_added"));
-      String str4 = aNb(str2);
-      if ((bt.isNullOrNil(str1)) || (!i.fv(str1))) {
-        ad.e("MicroMsg.RecentPhotoTips.ImageQuery", "file not exist");
+      String str3 = localCursor.getString(localCursor.getColumnIndexOrThrow("_id"));
+      String str2 = localCursor.getString(localCursor.getColumnIndexOrThrow("_data"));
+      String str1 = localCursor.getString(localCursor.getColumnIndexOrThrow("date_added"));
+      String str4 = aOy(str3);
+      if ((bu.isNullOrNil(str2)) || (!o.fB(str2))) {
+        ae.e("MicroMsg.RecentPhotoTips.ImageQuery", "file not exist");
       }
       while (!localCursor.moveToNext())
       {
         localCursor.close();
         AppMethodBeat.o(31745);
-        return localException;
-        if (str1.startsWith(b.asg()))
+        return localArrayList;
+        if (str2.startsWith(b.asv()))
         {
-          ad.i("MicroMsg.RecentPhotoTips.ImageQuery", "exclude weixin path image");
+          ae.i("MicroMsg.RecentPhotoTips.ImageQuery", "exclude weixin path image");
         }
         else
         {
           g localg = new g();
-          localg.tHA = bt.getLong(str2, 0L);
-          localg.FdM = bt.getLong(str3, 0L);
-          if ((!bt.isNullOrNil(str4)) && (i.fv(str4))) {
+          localg.tSr = bu.getLong(str3, 0L);
+          localg.Fwk = bu.getLong(str1, 0L);
+          if ((!bu.isNullOrNil(str4)) && (o.fB(str4))) {
             localg.thumbPath = str4;
           }
-          if ((!bt.isNullOrNil(str1)) && (i.fv(str1))) {
-            localg.FdL = str1;
+          if ((!bu.isNullOrNil(str2)) && (o.fB(str2))) {
+            localg.Fwj = str2;
           }
-          if ((bt.isNullOrNil(localg.FdL)) && (bt.isNullOrNil(localg.FdL))) {
-            ad.e("MicroMsg.RecentPhotoTips.ImageQuery", "thumb file and orignal file both not exist");
+          if ((bu.isNullOrNil(localg.Fwj)) && (bu.isNullOrNil(localg.Fwj))) {
+            ae.e("MicroMsg.RecentPhotoTips.ImageQuery", "thumb file and orignal file both not exist");
           } else {
-            localException.add(localg);
+            localArrayList.add(localg);
           }
         }
       }
@@ -133,7 +133,7 @@ public final class h
   
   public static abstract interface a
   {
-    public abstract boolean fdU();
+    public abstract boolean fhJ();
     
     public abstract int getYFromBottom();
   }

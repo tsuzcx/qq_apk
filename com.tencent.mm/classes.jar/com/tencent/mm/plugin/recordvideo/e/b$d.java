@@ -1,11 +1,11 @@
 package com.tencent.mm.plugin.recordvideo.e;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.vfs.i;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.vfs.o;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
 final class b$d
   implements Runnable
 {
@@ -14,14 +14,14 @@ final class b$d
   public final void run()
   {
     AppMethodBeat.i(76180);
-    ad.i("MicroMsg.MediaFileUtil", "deleteMediaFile file:" + this.xRo);
-    i.deleteFile(this.xRo);
+    ae.i("MicroMsg.MediaFileUtil", "deleteMediaFile file:" + this.yhh);
+    o.deleteFile(this.yhh);
     AppMethodBeat.o(76180);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.e.b.d
  * JD-Core Version:    0.7.0.1
  */

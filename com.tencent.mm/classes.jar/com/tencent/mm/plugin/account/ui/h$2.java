@@ -13,12 +13,12 @@ final class h$2
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     AppMethodBeat.i(128264);
-    h.a(this.jml);
+    h.a(this.jpf);
     paramDialogInterface = new StringBuilder();
-    g.ajA();
-    paramDialogInterface = paramDialogInterface.append(com.tencent.mm.kernel.a.aiO()).append(",").append(getClass().getName()).append(",F200_200,");
-    g.ajA();
-    com.tencent.mm.plugin.b.a.i(true, com.tencent.mm.kernel.a.wS("F200_200") + ",2");
+    g.ajP();
+    paramDialogInterface = paramDialogInterface.append(com.tencent.mm.kernel.a.ajd()).append(",").append(getClass().getName()).append(",F200_200,");
+    g.ajP();
+    com.tencent.mm.plugin.b.a.i(true, com.tencent.mm.kernel.a.xB("F200_200") + ",2");
     AppMethodBeat.o(128264);
   }
 }

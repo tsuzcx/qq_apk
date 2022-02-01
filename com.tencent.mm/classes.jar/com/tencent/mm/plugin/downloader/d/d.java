@@ -1,9 +1,9 @@
 package com.tencent.mm.plugin.downloader.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.vfs.e;
-import com.tencent.mm.vfs.q;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.vfs.k;
+import com.tencent.mm.vfs.w;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.util.LinkedHashMap;
@@ -12,10 +12,10 @@ import org.xwalk.core.Log;
 
 public final class d
 {
-  public static Map<Integer, ByteBuffer> G(e parame)
+  public static Map<Integer, ByteBuffer> G(k paramk)
   {
     AppMethodBeat.i(177460);
-    if ((parame == null) || (!parame.exists()) || (!parame.isFile()))
+    if ((paramk == null) || (!paramk.exists()) || (!paramk.isFile()))
     {
       AppMethodBeat.o(177460);
       return null;
@@ -23,13 +23,13 @@ public final class d
     LinkedHashMap localLinkedHashMap;
     try
     {
-      localObject = f.I(parame);
+      localObject = f.I(paramk);
       a.C((ByteBuffer)localObject);
       localObject = a.c((ByteBuffer)localObject, ((ByteBuffer)localObject).capacity() - 24);
       localLinkedHashMap = new LinkedHashMap();
       i = 0;
     }
-    catch (IOException parame)
+    catch (IOException paramk)
     {
       AppMethodBeat.o(177460);
       return null;
@@ -47,7 +47,7 @@ public final class d
       for (;;)
       {
         long l;
-        Log.e("MicroMsg.Channel.IdValueReader", "APK : " + q.B(parame.fOK()) + " not have apk signature block");
+        Log.e("MicroMsg.Channel.IdValueReader", "APK : " + w.B(paramk.fTh()) + " not have apk signature block");
         continue;
         int j = (int)l;
         int k = localb1.position();
@@ -60,7 +60,7 @@ public final class d
         int m = localb2.getInt();
         localLinkedHashMap.put(Integer.valueOf(m), a.d(localb2, j - 4));
         if (m == 1896449818) {
-          ad.i("MicroMsg.Channel.V2SchemeUtil", "find V2 signature block Id : 1896449818");
+          ae.i("MicroMsg.Channel.V2SchemeUtil", "find V2 signature block Id : 1896449818");
         }
         localb2.position(k + j);
       }

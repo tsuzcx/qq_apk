@@ -20,7 +20,7 @@ public final class c
   extends RecyclerView.h
 {
   private static final int[] Qo = { 16843284 };
-  public a.a Min;
+  public a.a MFk;
   private final Rect mBounds;
   private int mOrientation;
   
@@ -36,7 +36,7 @@ public final class c
   public final void a(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.t paramt)
   {
     AppMethodBeat.i(159931);
-    if (this.Min.Mjl == null)
+    if (this.MFk.MGi == null)
     {
       paramRect.set(0, 0, 0, 0);
       AppMethodBeat.o(159931);
@@ -44,11 +44,11 @@ public final class c
     }
     if (this.mOrientation == 1)
     {
-      paramRect.set(0, 0, 0, this.Min.Mjl.getIntrinsicHeight());
+      paramRect.set(0, 0, 0, this.MFk.MGi.getIntrinsicHeight());
       AppMethodBeat.o(159931);
       return;
     }
-    paramRect.set(0, 0, this.Min.Mjl.getIntrinsicWidth(), 0);
+    paramRect.set(0, 0, this.MFk.MGi.getIntrinsicWidth(), 0);
     AppMethodBeat.o(159931);
   }
   
@@ -56,7 +56,7 @@ public final class c
   {
     int k = 0;
     AppMethodBeat.i(168816);
-    if ((paramRecyclerView.getLayoutManager() == null) || (this.Min.Mjl == null))
+    if ((paramRecyclerView.getLayoutManager() == null) || (this.MFk.MGi == null))
     {
       AppMethodBeat.o(168816);
       return;
@@ -68,7 +68,7 @@ public final class c
     int i1;
     if (this.mOrientation == 1)
     {
-      if (this.Min.Mjk)
+      if (this.MFk.MGh)
       {
         paramCanvas.save();
         j = paramRecyclerView.getChildCount();
@@ -79,18 +79,18 @@ public final class c
           k = paramRecyclerView.bu(paramt).lN();
           if (k >= 0)
           {
-            g localg = ((b)paramRecyclerView.getAdapter()).ain(k);
-            if (localg.MiZ)
+            g localg = ((b)paramRecyclerView.getAdapter()).aiW(k);
+            if (localg.MFW)
             {
-              k = localg.hq(paramt)[0];
+              k = localg.hv(paramt)[0];
               m = paramRecyclerView.getWidth();
-              n = localg.hq(paramt)[1];
+              n = localg.hv(paramt)[1];
               RecyclerView.c(paramt, this.mBounds);
               i1 = this.mBounds.bottom;
               i1 = Math.round(paramt.getTranslationY()) + i1;
-              int i2 = this.Min.Mjl.getIntrinsicHeight();
-              this.Min.Mjl.setBounds(k, i1 - i2, m - n, i1);
-              this.Min.Mjl.draw(paramCanvas);
+              int i2 = this.MFk.MGi.getIntrinsicHeight();
+              this.MFk.MGi.setBounds(k, i1 - i2, m - n, i1);
+              this.MFk.MGi.draw(paramCanvas);
             }
           }
           i += 1;
@@ -100,7 +100,7 @@ public final class c
       AppMethodBeat.o(168816);
       return;
     }
-    if (this.Min.Mjk)
+    if (this.MFk.MGh)
     {
       paramCanvas.save();
       if (paramRecyclerView.getClipToPadding())
@@ -115,14 +115,14 @@ public final class c
         while (k < m)
         {
           paramt = paramRecyclerView.getChildAt(k);
-          if (((g)this.Min.Mjj.get(paramRecyclerView.bu(paramt).lN())).MiZ)
+          if (((g)this.MFk.MGg.get(paramRecyclerView.bu(paramt).lN())).MFW)
           {
             paramRecyclerView.getLayoutManager();
             RecyclerView.i.c(paramt, this.mBounds);
             n = this.mBounds.right + Math.round(paramt.getTranslationX());
-            i1 = this.Min.Mjl.getIntrinsicWidth();
-            this.Min.Mjl.setBounds(n - i1, j, n, i);
-            this.Min.Mjl.draw(paramCanvas);
+            i1 = this.MFk.MGi.getIntrinsicWidth();
+            this.MFk.MGi.setBounds(n - i1, j, n, i);
+            this.MFk.MGi.draw(paramCanvas);
           }
           k += 1;
         }
@@ -136,7 +136,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.toybrick.b.c
  * JD-Core Version:    0.7.0.1
  */

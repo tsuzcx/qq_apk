@@ -10,7 +10,7 @@ public class BindWordingContent
 {
   public static final Parcelable.Creator<BindWordingContent> CREATOR;
   public String content;
-  public Integer ikV;
+  public Integer inO;
   public String title;
   
   static
@@ -25,12 +25,12 @@ public class BindWordingContent
     AppMethodBeat.i(134145);
     this.title = "";
     this.content = "";
-    this.ikV = Integer.valueOf(0);
+    this.inO = Integer.valueOf(0);
     String[] arrayOfString = new String[2];
     paramParcel.readStringArray(arrayOfString);
     this.title = arrayOfString[0];
     this.content = arrayOfString[1];
-    this.ikV = Integer.valueOf(paramParcel.readInt());
+    this.inO = Integer.valueOf(paramParcel.readInt());
     AppMethodBeat.o(134145);
   }
   
@@ -39,7 +39,7 @@ public class BindWordingContent
     AppMethodBeat.i(134144);
     this.title = "";
     this.content = "";
-    this.ikV = Integer.valueOf(0);
+    this.inO = Integer.valueOf(0);
     this.title = paramString1;
     this.content = paramString2;
     AppMethodBeat.o(134144);
@@ -54,7 +54,7 @@ public class BindWordingContent
   {
     AppMethodBeat.i(134146);
     paramParcel.writeStringArray(new String[] { this.title, this.content });
-    paramParcel.writeInt(this.ikV.intValue());
+    paramParcel.writeInt(this.inO.intValue());
     AppMethodBeat.o(134146);
   }
 }

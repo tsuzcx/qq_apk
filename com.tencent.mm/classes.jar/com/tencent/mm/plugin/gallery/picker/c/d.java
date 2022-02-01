@@ -13,7 +13,7 @@ import d.g.b.p;
 import d.l;
 import d.v;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/gallery/picker/loader/MediaThumbProducer;", "Lcom/tencent/mm/loader/impr/imageproducer/ImageBitmapProducer;", "()V", "asResource", "Lcom/tencent/mm/loader/model/Resource;", "Landroid/graphics/Bitmap;", "targetView", "Lcom/tencent/mm/loader/impr/target/ViewWeakHolder;", "reaper", "Lcom/tencent/mm/loader/Reaper;", "input", "Lcom/tencent/mm/loader/model/datasource/DataSource;", "plugin-gallery_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/gallery/picker/loader/MediaThumbProducer;", "Lcom/tencent/mm/loader/impr/imageproducer/ImageBitmapProducer;", "()V", "asResource", "Lcom/tencent/mm/loader/model/Resource;", "Landroid/graphics/Bitmap;", "targetView", "Lcom/tencent/mm/loader/impr/target/ViewWeakHolder;", "reaper", "Lcom/tencent/mm/loader/Reaper;", "input", "Lcom/tencent/mm/loader/model/datasource/DataSource;", "plugin-gallery_release"})
 public final class d
   extends b
 {
@@ -32,22 +32,22 @@ public final class d
     }
     paramf = (GalleryItem.MediaItem)paramg;
     if (paramf.getType() == 2) {
-      paramg = n.a(paramf.tGV, paramf.getType(), paramf.tGS, paramf.tGS);
+      paramg = n.a(paramf.tRM, paramf.getType(), paramf.tRJ, paramf.tRJ);
     }
     for (;;)
     {
       paramg = new e(paramg);
       AppMethodBeat.o(164900);
       return paramg;
-      if (paramf.tGZ)
+      if (paramf.tRQ)
       {
-        paramg = n.gP(paramf.tGS, paramf.tGS);
+        paramg = n.gU(paramf.tRJ, paramf.tRJ);
       }
       else
       {
-        paramg = n.aw(paramf.tGS, paramf.tGV);
+        paramg = n.aw(paramf.tRJ, paramf.tRM);
         if (paramg == null) {
-          paramg = n.gP(paramf.tGS, paramf.tGS);
+          paramg = n.gU(paramf.tRJ, paramf.tRJ);
         }
       }
     }
@@ -55,7 +55,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.gallery.picker.c.d
  * JD-Core Version:    0.7.0.1
  */

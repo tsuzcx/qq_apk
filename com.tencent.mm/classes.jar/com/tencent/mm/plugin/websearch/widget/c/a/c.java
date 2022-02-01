@@ -6,11 +6,11 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bs.d;
+import com.tencent.mm.br.d;
 import com.tencent.mm.pluginsdk.model.app.h;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -40,7 +40,7 @@ public final class c
           paramString.putExtra((String)localEntry.getKey(), (String)localEntry.getValue());
         }
       }
-      com.tencent.mm.ci.a.post(new Runnable()
+      com.tencent.mm.ch.a.post(new Runnable()
       {
         public final void run()
         {
@@ -52,7 +52,7 @@ public final class c
     }
     catch (Exception paramContext)
     {
-      ad.e("OpenAppNativeApp", bt.n(paramContext));
+      ae.e("OpenAppNativeApp", bu.o(paramContext));
       AppMethodBeat.o(116664);
       return false;
     }
@@ -60,7 +60,7 @@ public final class c
     return true;
   }
   
-  public final boolean Co(long paramLong)
+  public final boolean CM(long paramLong)
   {
     AppMethodBeat.i(116661);
     boolean bool = com.tencent.mm.plugin.websearch.widget.c.c.ah(paramLong, 1);
@@ -68,7 +68,7 @@ public final class c
     return bool;
   }
   
-  public final boolean aFZ(String paramString)
+  public final boolean aHt(String paramString)
   {
     AppMethodBeat.i(116662);
     if (TextUtils.isEmpty(paramString))
@@ -81,10 +81,10 @@ public final class c
     return bool;
   }
   
-  public final boolean aGa(String paramString)
+  public final boolean aHu(String paramString)
   {
     AppMethodBeat.i(116663);
-    if (!aFZ(paramString))
+    if (!aHt(paramString))
     {
       AppMethodBeat.o(116663);
       return false;
@@ -98,12 +98,12 @@ public final class c
     if ((!TextUtils.isEmpty(str1)) && (!TextUtils.isEmpty(str2))) {
       localHashMap.put(str2, str1);
     }
-    if (!b(aj.getContext(), paramString, localHashMap))
+    if (!b(ak.getContext(), paramString, localHashMap))
     {
       paramString = new Intent();
       paramString.putExtra("rawUrl", (String)localObject);
       paramString.putExtra("useJs", true);
-      d.b(aj.getContext(), "webview", ".ui.tools.WebViewUI", paramString);
+      d.b(ak.getContext(), "webview", ".ui.tools.WebViewUI", paramString);
     }
     AppMethodBeat.o(116663);
     return true;
@@ -111,7 +111,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.websearch.widget.c.a.c
  * JD-Core Version:    0.7.0.1
  */

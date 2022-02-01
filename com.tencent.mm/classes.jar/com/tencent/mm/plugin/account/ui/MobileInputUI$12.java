@@ -12,7 +12,7 @@ final class MobileInputUI$12
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
     AppMethodBeat.i(128345);
-    MobileInputUI.b(this.jmP);
+    MobileInputUI.b(this.jpJ);
     AppMethodBeat.o(128345);
     return true;
   }

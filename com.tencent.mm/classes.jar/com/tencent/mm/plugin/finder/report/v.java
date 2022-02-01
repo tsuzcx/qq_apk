@@ -1,149 +1,195 @@
 package com.tencent.mm.plugin.finder.report;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.event.base.b;
-import com.tencent.mm.plugin.finder.event.base.c;
-import com.tencent.mm.plugin.finder.event.base.e;
-import com.tencent.mm.plugin.finder.model.BaseFinderFeed;
-import com.tencent.mm.protocal.protobuf.bvf;
-import d.g.b.p;
-import d.l;
-import java.util.LinkedList;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.x;
+import com.tencent.mm.g.a.fm;
+import com.tencent.mm.g.a.hq;
+import com.tencent.mm.g.a.te;
+import com.tencent.mm.g.a.te.a;
+import com.tencent.mm.g.b.a.cq;
+import com.tencent.mm.g.b.a.ek;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.plugin.finder.PluginFinder;
+import com.tencent.mm.plugin.finder.extension.reddot.i;
+import com.tencent.mm.plugin.report.a.1;
+import com.tencent.mm.pointers.PBool;
+import com.tencent.mm.pointers.PString;
+import com.tencent.mm.protocal.d;
+import com.tencent.mm.protocal.protobuf.arj;
+import com.tencent.mm.protocal.protobuf.ast;
+import com.tencent.mm.protocal.protobuf.crz;
+import com.tencent.mm.protocal.protobuf.csa;
+import com.tencent.mm.sdk.b.c;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
+import java.util.HashSet;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/report/PageChangeSubscriber;", "Lcom/tencent/mm/plugin/finder/event/base/EventSubscriber;", "Lcom/tencent/mm/plugin/finder/report/PageChangeSubscriber$PageChangeBehavior;", "dispatcher", "Lcom/tencent/mm/plugin/finder/event/base/EventDispatcher;", "(Lcom/tencent/mm/plugin/finder/event/base/EventDispatcher;)V", "getBehavior", "PageChangeBehavior", "PageChangeEvent", "plugin-finder_release"})
 public final class v
-  extends e<a>
 {
-  public v(c paramc)
+  private static v sCz;
+  private c<te> kAl;
+  private c<fm> sCA;
+  boolean sCn;
+  boolean sCo;
+  boolean sCp;
+  HashSet<String> sCq;
+  HashSet<String> sCr;
+  HashSet<String> sCs;
+  boolean sCt;
+  String sCu;
+  String sCv;
+  String sCw;
+  String sCx;
+  String sCy;
+  
+  private v()
   {
-    super(paramc);
-    AppMethodBeat.i(166715);
-    AppMethodBeat.o(166715);
+    AppMethodBeat.i(201337);
+    this.sCn = false;
+    this.sCo = false;
+    this.sCp = false;
+    this.sCq = null;
+    this.sCr = null;
+    this.sCs = null;
+    this.sCt = false;
+    this.kAl = new c() {};
+    this.sCA = new c() {};
+    this.sCy = "";
+    this.sCx = "";
+    this.sCq = new HashSet();
+    this.sCr = new HashSet();
+    this.sCs = new HashSet();
+    AppMethodBeat.o(201337);
   }
   
-  public final a cEA()
+  private static HashSet<String> a(com.tencent.mm.plugin.expt.b.b.a parama, PBool paramPBool, PString paramPString)
   {
-    AppMethodBeat.i(166714);
-    a locala = (a)new c(this);
-    AppMethodBeat.o(166714);
-    return locala;
+    AppMethodBeat.i(201344);
+    String str = ((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(parama, "");
+    ae.i("MicroMsg.MMSessionReporter", "reset control key[%s] [%s]", new Object[] { parama.name(), str });
+    paramPString.value = str;
+    if (bu.isNullOrNil(str))
+    {
+      paramPBool.value = false;
+      AppMethodBeat.o(201344);
+      return null;
+    }
+    if ("-1".equalsIgnoreCase(str))
+    {
+      paramPBool.value = true;
+      AppMethodBeat.o(201344);
+      return null;
+    }
+    parama = new HashSet();
+    paramPString = str.split(",");
+    if ((paramPString != null) && (paramPString.length > 0))
+    {
+      int j = paramPString.length;
+      int i = 0;
+      while (i < j)
+      {
+        parama.add(paramPString[i]);
+        i += 1;
+      }
+    }
+    paramPBool.value = false;
+    AppMethodBeat.o(201344);
+    return parama;
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/report/PageChangeSubscriber$PageChangeBehavior;", "", "onPageChange", "", "feedId", "", "media", "Lcom/tencent/mm/protocal/protobuf/LocalFinderMedia;", "objectNonceId", "", "index", "", "mediaList", "Ljava/util/LinkedList;", "feed", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "plugin-finder_release"})
-  public static abstract interface a
+  public static v cGr()
   {
-    public abstract void a(long paramLong, bvf parambvf, String paramString, int paramInt, LinkedList<bvf> paramLinkedList, BaseFinderFeed paramBaseFinderFeed);
+    AppMethodBeat.i(201336);
+    if (sCz == null) {
+      sCz = new v();
+    }
+    v localv = sCz;
+    AppMethodBeat.o(201336);
+    return localv;
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/report/PageChangeSubscriber$PageChangeEvent;", "Lcom/tencent/mm/plugin/finder/event/base/Event;", "feedId", "", "media", "Lcom/tencent/mm/protocal/protobuf/LocalFinderMedia;", "objectNonceId", "", "index", "", "mediaList", "Ljava/util/LinkedList;", "feed", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "(JLcom/tencent/mm/protocal/protobuf/LocalFinderMedia;Ljava/lang/String;ILjava/util/LinkedList;Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;)V", "getFeed", "()Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "getFeedId", "()J", "getIndex", "()I", "getMedia", "()Lcom/tencent/mm/protocal/protobuf/LocalFinderMedia;", "getMediaList", "()Ljava/util/LinkedList;", "getObjectNonceId", "()Ljava/lang/String;", "component1", "component2", "component3", "component4", "component5", "component6", "copy", "equals", "", "other", "", "hashCode", "toString", "plugin-finder_release"})
-  public static final class b
-    extends b
+  private void cGt()
   {
-    final long dtq;
-    final int index;
-    private final LinkedList<bvf> mediaList;
-    private final String objectNonceId;
-    private final BaseFinderFeed rQZ;
-    final bvf rQt;
-    
-    public b(long paramLong, bvf parambvf, String paramString, int paramInt, LinkedList<bvf> paramLinkedList, BaseFinderFeed paramBaseFinderFeed)
-    {
-      AppMethodBeat.i(166709);
-      this.dtq = paramLong;
-      this.rQt = parambvf;
-      this.objectNonceId = paramString;
-      this.index = paramInt;
-      this.mediaList = paramLinkedList;
-      this.rQZ = paramBaseFinderFeed;
-      AppMethodBeat.o(166709);
+    AppMethodBeat.i(201341);
+    this.sCn = false;
+    this.sCq.clear();
+    PBool localPBool = new PBool();
+    PString localPString = new PString();
+    HashSet localHashSet = a(com.tencent.mm.plugin.expt.b.b.a.qPD, localPBool, localPString);
+    this.sCn = localPBool.value;
+    this.sCu = localPString.value;
+    if (localHashSet != null) {
+      this.sCq.addAll(localHashSet);
     }
-    
-    public final boolean equals(Object paramObject)
-    {
-      AppMethodBeat.i(166712);
-      if (this != paramObject)
-      {
-        if ((paramObject instanceof b))
-        {
-          paramObject = (b)paramObject;
-          if ((this.dtq != paramObject.dtq) || (!p.i(this.rQt, paramObject.rQt)) || (!p.i(this.objectNonceId, paramObject.objectNonceId)) || (this.index != paramObject.index) || (!p.i(this.mediaList, paramObject.mediaList)) || (!p.i(this.rQZ, paramObject.rQZ))) {}
-        }
-      }
-      else
-      {
-        AppMethodBeat.o(166712);
-        return true;
-      }
-      AppMethodBeat.o(166712);
-      return false;
-    }
-    
-    public final int hashCode()
-    {
-      int m = 0;
-      AppMethodBeat.i(166711);
-      long l = this.dtq;
-      int n = (int)(l ^ l >>> 32);
-      Object localObject = this.rQt;
-      int i;
-      int j;
-      label59:
-      int i1;
-      if (localObject != null)
-      {
-        i = localObject.hashCode();
-        localObject = this.objectNonceId;
-        if (localObject == null) {
-          break label140;
-        }
-        j = localObject.hashCode();
-        i1 = this.index;
-        localObject = this.mediaList;
-        if (localObject == null) {
-          break label145;
-        }
-      }
-      label140:
-      label145:
-      for (int k = localObject.hashCode();; k = 0)
-      {
-        localObject = this.rQZ;
-        if (localObject != null) {
-          m = localObject.hashCode();
-        }
-        AppMethodBeat.o(166711);
-        return (k + ((j + (i + n * 31) * 31) * 31 + i1) * 31) * 31 + m;
-        i = 0;
-        break;
-        j = 0;
-        break label59;
-      }
-    }
-    
-    public final String toString()
-    {
-      AppMethodBeat.i(166710);
-      String str = "PageChangeEvent(feedId=" + this.dtq + ", media=" + this.rQt + ", objectNonceId=" + this.objectNonceId + ", index=" + this.index + ", mediaList=" + this.mediaList + ", feed=" + this.rQZ + ")";
-      AppMethodBeat.o(166710);
-      return str;
-    }
+    AppMethodBeat.o(201341);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/finder/report/PageChangeSubscriber$getBehavior$1", "Lcom/tencent/mm/plugin/finder/report/PageChangeSubscriber$PageChangeBehavior;", "onPageChange", "", "feedId", "", "media", "Lcom/tencent/mm/protocal/protobuf/LocalFinderMedia;", "objectNonceId", "", "index", "", "mediaList", "Ljava/util/LinkedList;", "feed", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "plugin-finder_release"})
-  public static final class c
-    implements v.a
+  private void cGu()
   {
-    public final void a(long paramLong, bvf parambvf, String paramString, int paramInt, LinkedList<bvf> paramLinkedList, BaseFinderFeed paramBaseFinderFeed)
-    {
-      AppMethodBeat.i(166713);
-      p.h(parambvf, "media");
-      p.h(paramString, "objectNonceId");
-      p.h(paramLinkedList, "mediaList");
-      p.h(paramBaseFinderFeed, "feed");
-      parambvf = new v.b(paramLong, parambvf, paramString, paramInt, paramLinkedList, paramBaseFinderFeed);
-      this.ssu.c((b)parambvf);
-      AppMethodBeat.o(166713);
+    AppMethodBeat.i(201342);
+    this.sCo = false;
+    this.sCr.clear();
+    PBool localPBool = new PBool();
+    PString localPString = new PString();
+    HashSet localHashSet = a(com.tencent.mm.plugin.expt.b.b.a.qPE, localPBool, localPString);
+    this.sCo = localPBool.value;
+    this.sCv = localPString.value;
+    if (localHashSet != null) {
+      this.sCr.addAll(localHashSet);
     }
+    AppMethodBeat.o(201342);
+  }
+  
+  private void cGv()
+  {
+    AppMethodBeat.i(201343);
+    this.sCp = false;
+    this.sCs.clear();
+    PBool localPBool = new PBool();
+    PString localPString = new PString();
+    HashSet localHashSet = a(com.tencent.mm.plugin.expt.b.b.a.qPG, localPBool, localPString);
+    this.sCp = localPBool.value;
+    this.sCw = localPString.value;
+    if (localHashSet != null) {
+      this.sCs.addAll(localHashSet);
+    }
+    AppMethodBeat.o(201343);
+  }
+  
+  public final void CA()
+  {
+    AppMethodBeat.i(201338);
+    if (ak.coh())
+    {
+      cGs();
+      com.tencent.mm.sdk.b.a.IvT.b(this.kAl);
+      com.tencent.mm.sdk.b.a.IvT.b(this.sCA);
+    }
+    AppMethodBeat.o(201338);
+  }
+  
+  final void cGs()
+  {
+    AppMethodBeat.i(201340);
+    cGt();
+    cGu();
+    cGv();
+    this.sCt = ((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(com.tencent.mm.plugin.expt.b.b.a.qPF, false);
+    AppMethodBeat.o(201340);
+  }
+  
+  public final void unregister()
+  {
+    AppMethodBeat.i(201339);
+    if (ak.coh())
+    {
+      com.tencent.mm.sdk.b.a.IvT.d(this.kAl);
+      com.tencent.mm.sdk.b.a.IvT.d(this.sCA);
+    }
+    AppMethodBeat.o(201339);
   }
 }
 

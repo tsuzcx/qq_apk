@@ -10,7 +10,7 @@ public final class y
   {
     AppMethodBeat.i(60747);
     p.h(paramab, "$this$isFlexible");
-    boolean bool = paramab.gua() instanceof v;
+    boolean bool = paramab.gyC() instanceof v;
     AppMethodBeat.o(60747);
     return bool;
   }
@@ -19,7 +19,7 @@ public final class y
   {
     AppMethodBeat.i(60748);
     p.h(paramab, "$this$asFlexibleType");
-    paramab = paramab.gua();
+    paramab = paramab.gyC();
     if (paramab == null)
     {
       paramab = new d.v("null cannot be cast to non-null type org.jetbrains.kotlin.types.FlexibleType");
@@ -35,10 +35,10 @@ public final class y
   {
     AppMethodBeat.i(60749);
     p.h(paramab, "$this$lowerIfFlexible");
-    paramab = paramab.gua();
+    paramab = paramab.gyC();
     if ((paramab instanceof v))
     {
-      paramab = ((v)paramab).NBV;
+      paramab = ((v)paramab).NZc;
       AppMethodBeat.o(60749);
       return paramab;
     }
@@ -57,10 +57,10 @@ public final class y
   {
     AppMethodBeat.i(60750);
     p.h(paramab, "$this$upperIfFlexible");
-    paramab = paramab.gua();
+    paramab = paramab.gyC();
     if ((paramab instanceof v))
     {
-      paramab = ((v)paramab).NBW;
+      paramab = ((v)paramab).NZd;
       AppMethodBeat.o(60750);
       return paramab;
     }
@@ -77,7 +77,7 @@ public final class y
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.m.y
  * JD-Core Version:    0.7.0.1
  */

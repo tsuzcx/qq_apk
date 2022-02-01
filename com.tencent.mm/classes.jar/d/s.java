@@ -5,19 +5,19 @@ import d.g.a.a;
 import d.g.b.p;
 import java.io.Serializable;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlin/SynchronizedLazyImpl;", "T", "Lkotlin/Lazy;", "Ljava/io/Serializable;", "Lkotlin/io/Serializable;", "initializer", "Lkotlin/Function0;", "lock", "", "(Lkotlin/jvm/functions/Function0;Ljava/lang/Object;)V", "_value", "value", "getValue", "()Ljava/lang/Object;", "isInitialized", "", "toString", "", "writeReplace", "kotlin-stdlib"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlin/SynchronizedLazyImpl;", "T", "Lkotlin/Lazy;", "Ljava/io/Serializable;", "Lkotlin/io/Serializable;", "initializer", "Lkotlin/Function0;", "lock", "", "(Lkotlin/jvm/functions/Function0;Ljava/lang/Object;)V", "_value", "value", "getValue", "()Ljava/lang/Object;", "isInitialized", "", "toString", "", "writeReplace", "kotlin-stdlib"})
 final class s<T>
   implements f<T>, Serializable
 {
-  private a<? extends T> MKg;
-  private volatile Object MKh;
+  private a<? extends T> Nhj;
+  private volatile Object Nhk;
   private final Object lock;
   
   private s(a<? extends T> parama)
   {
     AppMethodBeat.i(129585);
-    this.MKg = parama;
-    this.MKh = x.MKn;
+    this.Nhj = parama;
+    this.Nhk = x.Nhq;
     this.lock = this;
     AppMethodBeat.o(129585);
   }
@@ -33,35 +33,35 @@ final class s<T>
   public final T getValue()
   {
     AppMethodBeat.i(129582);
-    Object localObject1 = this.MKh;
-    if (localObject1 != x.MKn)
+    Object localObject1 = this.Nhk;
+    if (localObject1 != x.Nhq)
     {
       AppMethodBeat.o(129582);
       return localObject1;
     }
     synchronized (this.lock)
     {
-      localObject1 = this.MKh;
-      x localx = x.MKn;
+      localObject1 = this.Nhk;
+      x localx = x.Nhq;
       if (localObject1 != localx)
       {
         AppMethodBeat.o(129582);
         return localObject1;
       }
-      localObject1 = this.MKg;
+      localObject1 = this.Nhj;
       if (localObject1 == null) {
-        p.gfZ();
+        p.gkB();
       }
       localObject1 = ((a)localObject1).invoke();
-      this.MKh = localObject1;
-      this.MKg = null;
+      this.Nhk = localObject1;
+      this.Nhj = null;
     }
   }
   
   public final String toString()
   {
     AppMethodBeat.i(129583);
-    if (this.MKh != x.MKn) {}
+    if (this.Nhk != x.Nhq) {}
     for (int i = 1; i != 0; i = 0)
     {
       String str = String.valueOf(getValue());

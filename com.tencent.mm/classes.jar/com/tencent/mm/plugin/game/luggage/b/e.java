@@ -14,7 +14,7 @@ public class e
   public final void a(Context paramContext, String paramString, bq.a parama)
   {
     AppMethodBeat.i(83054);
-    paramContext = com.tencent.mm.plugin.webview.luggage.c.b.Pe(paramString);
+    paramContext = com.tencent.mm.plugin.webview.luggage.c.b.PM(paramString);
     if (paramContext == null)
     {
       parama.f("empty_postId", null);
@@ -42,7 +42,7 @@ public class e
   
   public final void b(com.tencent.luggage.d.b<com.tencent.mm.plugin.game.luggage.f.g>.a paramb) {}
   
-  public final int ccO()
+  public final int ced()
   {
     return 1;
   }

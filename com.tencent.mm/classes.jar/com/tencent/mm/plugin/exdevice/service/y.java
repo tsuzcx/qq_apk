@@ -18,9 +18,9 @@ import com.tencent.mm.plugin.d.a.a.h;
 import com.tencent.mm.plugin.d.a.b.e.4;
 import com.tencent.mm.plugin.d.a.b.e.5;
 import com.tencent.mm.plugin.d.a.b.e.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.aq;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.UUID;
@@ -30,48 +30,48 @@ public final class y
   extends h.a
   implements com.tencent.mm.plugin.d.a.a.b, com.tencent.mm.plugin.d.a.d.a.a, g
 {
-  private final ap mHandler;
-  private RemoteCallbackList<t> qgA;
-  com.tencent.mm.plugin.d.a.b.e qgB;
-  private e.a qgC;
-  private a qgm;
-  private RemoteCallbackList<k> qgn;
-  private RemoteCallbackList<p> qgo;
-  private RemoteCallbackList<j> qgp;
-  private RemoteCallbackList<i> qgq;
-  private RemoteCallbackList<q> qgr;
-  private RemoteCallbackList<n> qgs;
-  private final l qgt;
-  private int qgu;
-  private final com.tencent.mm.plugin.d.a.a.f qgv;
-  private final com.tencent.mm.plugin.d.a.d.a qgw;
-  private RemoteCallbackList<j> qgx;
-  private RemoteCallbackList<k> qgy;
-  private RemoteCallbackList<s> qgz;
+  private final aq mHandler;
+  private a qmR;
+  private RemoteCallbackList<k> qmS;
+  private RemoteCallbackList<p> qmT;
+  private RemoteCallbackList<j> qmU;
+  private RemoteCallbackList<i> qmV;
+  private RemoteCallbackList<q> qmW;
+  private RemoteCallbackList<n> qmX;
+  private final l qmY;
+  private int qmZ;
+  private final com.tencent.mm.plugin.d.a.a.f qna;
+  private final com.tencent.mm.plugin.d.a.d.a qnb;
+  private RemoteCallbackList<j> qnc;
+  private RemoteCallbackList<k> qnd;
+  private RemoteCallbackList<s> qne;
+  private RemoteCallbackList<t> qnf;
+  com.tencent.mm.plugin.d.a.b.e qng;
+  private e.a qnh;
   
   public y()
   {
     AppMethodBeat.i(23726);
-    this.qgm = null;
-    this.qgn = new RemoteCallbackList();
-    this.qgo = new RemoteCallbackList();
-    this.qgp = new RemoteCallbackList();
-    this.qgq = new RemoteCallbackList();
-    this.qgr = new RemoteCallbackList();
-    this.qgs = new RemoteCallbackList();
-    this.qgt = new l((byte)0);
-    this.qgu = 0;
-    this.qgx = new RemoteCallbackList();
-    this.qgy = new RemoteCallbackList();
-    this.qgz = new RemoteCallbackList();
-    this.qgA = new RemoteCallbackList();
-    this.qgm = new a(this);
-    this.mHandler = new a(v.clW().imu.getSerialTag());
+    this.qmR = null;
+    this.qmS = new RemoteCallbackList();
+    this.qmT = new RemoteCallbackList();
+    this.qmU = new RemoteCallbackList();
+    this.qmV = new RemoteCallbackList();
+    this.qmW = new RemoteCallbackList();
+    this.qmX = new RemoteCallbackList();
+    this.qmY = new l((byte)0);
+    this.qmZ = 0;
+    this.qnc = new RemoteCallbackList();
+    this.qnd = new RemoteCallbackList();
+    this.qne = new RemoteCallbackList();
+    this.qnf = new RemoteCallbackList();
+    this.qmR = new a(this);
+    this.mHandler = new a(v.cnm().ipo.getSerialTag());
     if (Build.VERSION.SDK_INT >= 18) {}
-    for (this.qgv = new com.tencent.mm.plugin.d.a.a.f(this);; this.qgv = null)
+    for (this.qna = new com.tencent.mm.plugin.d.a.a.f(this);; this.qna = null)
     {
-      this.qgw = new com.tencent.mm.plugin.d.a.d.a(this);
-      this.qgC = new e.a()
+      this.qnb = new com.tencent.mm.plugin.d.a.d.a(this);
+      this.qnh = new e.a()
       {
         public final void a(long paramAnonymousLong1, boolean paramAnonymousBoolean, long paramAnonymousLong2)
         {
@@ -80,9 +80,9 @@ public final class y
           if (paramAnonymousBoolean)
           {
             localObject = "true";
-            ad.d("MicroMsg.exdevice.RemoteBTDeviceAdapter", "onConnected. seesionId=%d, connected=%s, profileType=%d", new Object[] { Long.valueOf(paramAnonymousLong1), localObject, Long.valueOf(paramAnonymousLong2) });
+            ae.d("MicroMsg.exdevice.RemoteBTDeviceAdapter", "onConnected. seesionId=%d, connected=%s, profileType=%d", new Object[] { Long.valueOf(paramAnonymousLong1), localObject, Long.valueOf(paramAnonymousLong2) });
             localObject = new y.c((byte)0);
-            ((y.c)localObject).nTx = paramAnonymousLong1;
+            ((y.c)localObject).nZd = paramAnonymousLong1;
             if (!paramAnonymousBoolean) {
               break label154;
             }
@@ -90,12 +90,12 @@ public final class y
           label154:
           for (int i = 2;; i = 4)
           {
-            ((y.c)localObject).qfE = i;
-            ((y.c)localObject).qfD = 1;
-            ((y.c)localObject).pZU = 0;
-            ((y.c)localObject).nQV = paramAnonymousLong2;
+            ((y.c)localObject).qmj = i;
+            ((y.c)localObject).qmi = 1;
+            ((y.c)localObject).qgz = 0;
+            ((y.c)localObject).nWB = paramAnonymousLong2;
             if (!y.a(y.this).sendMessage(y.a(y.this).obtainMessage(9, localObject))) {
-              ad.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "mHandler.sendMessage failed!!!, message what = %d", new Object[] { Integer.valueOf(9) });
+              ae.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "mHandler.sendMessage failed!!!, message what = %d", new Object[] { Integer.valueOf(9) });
             }
             AppMethodBeat.o(23717);
             return;
@@ -107,15 +107,15 @@ public final class y
         public final void a(String paramAnonymousString1, String paramAnonymousString2, int paramAnonymousInt, byte[] paramAnonymousArrayOfByte)
         {
           AppMethodBeat.i(23720);
-          ad.d("MicroMsg.exdevice.RemoteBTDeviceAdapter", "onDiscover. deviceMac=%s, deviceName=%s", new Object[] { paramAnonymousString1, paramAnonymousString2 });
+          ae.d("MicroMsg.exdevice.RemoteBTDeviceAdapter", "onDiscover. deviceMac=%s, deviceName=%s", new Object[] { paramAnonymousString1, paramAnonymousString2 });
           y.g localg = new y.g((byte)0);
-          localg.qgH = false;
-          localg.nTB = paramAnonymousString1;
+          localg.qnm = false;
+          localg.nZh = paramAnonymousString1;
           localg.mDeviceName = paramAnonymousString2;
-          localg.kGT = paramAnonymousInt;
-          localg.qgI = paramAnonymousArrayOfByte;
+          localg.kKi = paramAnonymousInt;
+          localg.qnn = paramAnonymousArrayOfByte;
           if (!y.a(y.this).sendMessage(y.a(y.this).obtainMessage(13, localg))) {
-            ad.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "mHandler.sendMessage failed!!!, message what = %d", new Object[] { Integer.valueOf(13) });
+            ae.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "mHandler.sendMessage failed!!!, message what = %d", new Object[] { Integer.valueOf(13) });
           }
           AppMethodBeat.o(23720);
         }
@@ -124,26 +124,26 @@ public final class y
         {
           AppMethodBeat.i(23718);
           y.f localf = new y.f((byte)0);
-          localf.qcT = paramAnonymousLong;
+          localf.qjy = paramAnonymousLong;
           localf.mData = paramAnonymousArrayOfByte;
           if (!y.a(y.this).sendMessage(y.a(y.this).obtainMessage(12, localf))) {
-            ad.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "mHandler.sendMessage failed!!!, message what = %d", new Object[] { Integer.valueOf(12) });
+            ae.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "mHandler.sendMessage failed!!!, message what = %d", new Object[] { Integer.valueOf(12) });
           }
           AppMethodBeat.o(23718);
         }
         
-        public final void bMH()
+        public final void bNF()
         {
           AppMethodBeat.i(23721);
-          ad.d("MicroMsg.exdevice.RemoteBTDeviceAdapter", "onDiscoverFinished");
+          ae.d("MicroMsg.exdevice.RemoteBTDeviceAdapter", "onDiscoverFinished");
           y.g localg = new y.g((byte)0);
-          localg.qgH = true;
-          localg.nTB = null;
+          localg.qnm = true;
+          localg.nZh = null;
           localg.mDeviceName = null;
-          localg.kGT = 0;
-          localg.qgI = null;
+          localg.kKi = 0;
+          localg.qnn = null;
           if (!y.a(y.this).sendMessage(y.a(y.this).obtainMessage(13, localg))) {
-            ad.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "mHandler.sendMessage failed!!!, message what = %d", new Object[] { Integer.valueOf(13) });
+            ae.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "mHandler.sendMessage failed!!!, message what = %d", new Object[] { Integer.valueOf(13) });
           }
           AppMethodBeat.o(23721);
         }
@@ -155,26 +155,26 @@ public final class y
           if (paramAnonymousBoolean)
           {
             localObject = "true";
-            ad.d("MicroMsg.exdevice.RemoteBTDeviceAdapter", "onSend. sessionId=%d, success=%s", new Object[] { Long.valueOf(paramAnonymousLong), localObject });
+            ae.d("MicroMsg.exdevice.RemoteBTDeviceAdapter", "onSend. sessionId=%d, success=%s", new Object[] { Long.valueOf(paramAnonymousLong), localObject });
             localObject = new y.h((byte)0);
-            ((y.h)localObject).qcT = paramAnonymousLong;
+            ((y.h)localObject).qjy = paramAnonymousLong;
             if (!paramAnonymousBoolean) {
               break label136;
             }
-            ((y.h)localObject).qag = 0;
+            ((y.h)localObject).qgL = 0;
           }
-          for (((y.h)localObject).pZU = 0;; ((y.h)localObject).pZU = -1)
+          for (((y.h)localObject).qgz = 0;; ((y.h)localObject).qgz = -1)
           {
-            ((y.h)localObject).ksX = "";
+            ((y.h)localObject).kwn = "";
             if (!y.a(y.this).sendMessage(y.a(y.this).obtainMessage(11, localObject))) {
-              ad.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "mHandler.sendMessage failed!!!, message what = %d", new Object[] { Integer.valueOf(11) });
+              ae.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "mHandler.sendMessage failed!!!, message what = %d", new Object[] { Integer.valueOf(11) });
             }
             AppMethodBeat.o(23719);
             return;
             localObject = "false";
             break;
             label136:
-            ((y.h)localObject).qag = -1;
+            ((y.h)localObject).qgL = -1;
           }
         }
       };
@@ -195,7 +195,7 @@ public final class y
   private static IInterface a(long paramLong, RemoteCallbackList paramRemoteCallbackList, int paramInt)
   {
     AppMethodBeat.i(23727);
-    ad.i("MicroMsg.exdevice.RemoteBTDeviceAdapter", "findCallbackbyId, Id = %d, count = %d", new Object[] { Long.valueOf(paramLong), Integer.valueOf(paramInt) });
+    ae.i("MicroMsg.exdevice.RemoteBTDeviceAdapter", "findCallbackbyId, Id = %d, count = %d", new Object[] { Long.valueOf(paramLong), Integer.valueOf(paramInt) });
     int i = 0;
     while (i < paramInt)
     {
@@ -208,7 +208,7 @@ public final class y
       }
       i += 1;
     }
-    ad.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "Can not find id in the callback list");
+    ae.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "Can not find id in the callback list");
     AppMethodBeat.o(23727);
     return null;
   }
@@ -216,10 +216,10 @@ public final class y
   private static boolean a(RemoteCallbackList paramRemoteCallbackList, long paramLong, IInterface paramIInterface)
   {
     AppMethodBeat.i(23734);
-    ad.i("MicroMsg.exdevice.RemoteBTDeviceAdapter", "registerRemoteCB, ID = %d", new Object[] { Long.valueOf(paramLong) });
+    ae.i("MicroMsg.exdevice.RemoteBTDeviceAdapter", "registerRemoteCB, ID = %d", new Object[] { Long.valueOf(paramLong) });
     if ((paramRemoteCallbackList == null) || (paramIInterface == null))
     {
-      ad.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "null == aCallbackList || null == aCallback");
+      ae.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "null == aCallbackList || null == aCallback");
       AppMethodBeat.o(23734);
       return false;
     }
@@ -235,7 +235,7 @@ public final class y
     } while (!paramRemoteCallbackList.getBroadcastItem(j).asBinder().equals(paramIInterface.asBinder()));
     if (j < 0)
     {
-      ad.i("MicroMsg.exdevice.RemoteBTDeviceAdapter", "Register a new process in callback list.");
+      ae.i("MicroMsg.exdevice.RemoteBTDeviceAdapter", "Register a new process in callback list.");
       localHashMap = new HashMap();
       localHashMap.put(Long.valueOf(paramLong), paramIInterface);
       paramRemoteCallbackList.register(paramIInterface, localHashMap);
@@ -246,7 +246,7 @@ public final class y
     HashMap localHashMap = (HashMap)paramRemoteCallbackList.getBroadcastCookie(j);
     if (localHashMap == null)
     {
-      ad.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "null == map");
+      ae.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "null == map");
       paramRemoteCallbackList.finishBroadcast();
       AppMethodBeat.o(23734);
       return false;
@@ -260,10 +260,10 @@ public final class y
   private static boolean a(RemoteCallbackList paramRemoteCallbackList, long paramLong, IInterface paramIInterface, int paramInt)
   {
     AppMethodBeat.i(23735);
-    ad.i("MicroMsg.exdevice.RemoteBTDeviceAdapter", "unRegisterRemoteCB, device id = %d, aCount = %d", new Object[] { Long.valueOf(paramLong), Integer.valueOf(paramInt) });
+    ae.i("MicroMsg.exdevice.RemoteBTDeviceAdapter", "unRegisterRemoteCB, device id = %d, aCount = %d", new Object[] { Long.valueOf(paramLong), Integer.valueOf(paramInt) });
     if ((paramRemoteCallbackList == null) || (paramIInterface == null))
     {
-      ad.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "null == aCallbackList || null == aCallback");
+      ae.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "null == aCallbackList || null == aCallback");
       AppMethodBeat.o(23735);
       return false;
     }
@@ -278,20 +278,20 @@ public final class y
     } while (!paramRemoteCallbackList.getBroadcastItem(i).asBinder().equals(paramIInterface.asBinder()));
     if (i < 0)
     {
-      ad.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "Can not find callback in callback list");
+      ae.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "Can not find callback in callback list");
       AppMethodBeat.o(23735);
       return false;
     }
     HashMap localHashMap = (HashMap)paramRemoteCallbackList.getBroadcastCookie(i);
     if (localHashMap == null)
     {
-      ad.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "null == map");
+      ae.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "null == map");
       AppMethodBeat.o(23735);
       return false;
     }
     if ((IInterface)localHashMap.remove(Long.valueOf(paramLong)) == null)
     {
-      ad.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "Cannot find id in the map");
+      ae.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "Cannot find id in the map");
       AppMethodBeat.o(23735);
       return false;
     }
@@ -300,10 +300,10 @@ public final class y
       AppMethodBeat.o(23735);
       return true;
     }
-    ad.i("MicroMsg.exdevice.RemoteBTDeviceAdapter", "No id is in the map, unregister this process");
+    ae.i("MicroMsg.exdevice.RemoteBTDeviceAdapter", "No id is in the map, unregister this process");
     boolean bool = paramRemoteCallbackList.unregister(paramIInterface);
     if (!bool) {
-      ad.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "aCallbackList.unregister failed!!!");
+      ae.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "aCallbackList.unregister failed!!!");
     }
     AppMethodBeat.o(23735);
     return bool;
@@ -312,29 +312,29 @@ public final class y
   private boolean b(long paramLong, p paramp)
   {
     AppMethodBeat.i(23738);
-    ad.i("MicroMsg.exdevice.RemoteBTDeviceAdapter", "startTaskImp, task Id = %d", new Object[] { Long.valueOf(paramLong) });
+    ae.i("MicroMsg.exdevice.RemoteBTDeviceAdapter", "startTaskImp, task Id = %d", new Object[] { Long.valueOf(paramLong) });
     if (paramp == null)
     {
-      ad.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "null == aTask");
+      ae.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "null == aTask");
       d(paramLong, -1, -1, "null == aTask");
       AppMethodBeat.o(23738);
       return false;
     }
-    a locala = this.qgm;
-    ad.i("MicroMsg.exdevice.BTDeviceManager", "startTask, taskId = %d", new Object[] { Long.valueOf(paramLong) });
+    a locala = this.qmR;
+    ae.i("MicroMsg.exdevice.BTDeviceManager", "startTask, taskId = %d", new Object[] { Long.valueOf(paramLong) });
     Assert.assertNotNull(paramp);
     a.g localg = new a.g(paramLong, paramp);
     if (locala.mHandler.sendMessage(locala.mHandler.obtainMessage(8, localg))) {}
     for (int i = 0; i != 0; i = -1)
     {
-      ad.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "mBTDeviceMrg.startTask Failed ret = -1");
+      ae.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "mBTDeviceMrg.startTask Failed ret = -1");
       d(paramLong, -1, -1, "mBTDeviceMrg.startTask Failed!!!");
       AppMethodBeat.o(23738);
       return false;
     }
-    if (!a(this.qgo, paramLong, paramp))
+    if (!a(this.qmT, paramLong, paramp))
     {
-      ad.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "registerRemoteCB Fail!!!");
+      ae.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "registerRemoteCB Fail!!!");
       d(paramLong, -1, -1, "registerRemoteCB Fail!!!");
       AppMethodBeat.o(23738);
       return false;
@@ -346,39 +346,39 @@ public final class y
   private boolean c(j paramj)
   {
     AppMethodBeat.i(23728);
-    ad.i("MicroMsg.exdevice.RemoteBTDeviceAdapter", "unRegistOnscanCallback");
-    boolean bool = this.qgp.unregister(paramj);
+    ae.i("MicroMsg.exdevice.RemoteBTDeviceAdapter", "unRegistOnscanCallback");
+    boolean bool = this.qmU.unregister(paramj);
     if (!bool) {
-      ad.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "mCBListOnScanCallback.unregister Failed!!!");
+      ae.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "mCBListOnScanCallback.unregister Failed!!!");
     }
     for (;;)
     {
       AppMethodBeat.o(23728);
       return bool;
-      this.qgu -= 1;
+      this.qmZ -= 1;
     }
   }
   
   private void d(long paramLong, int paramInt1, int paramInt2, String paramString)
   {
     AppMethodBeat.i(23744);
-    ad.i("MicroMsg.exdevice.RemoteBTDeviceAdapter", "onTaskEndImp taskId = %d, errType = %d, errCode =%d, errMsg = %s", new Object[] { Long.valueOf(paramLong), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-    int i = this.qgo.beginBroadcast();
-    p localp = (p)a(paramLong, this.qgo, i);
+    ae.i("MicroMsg.exdevice.RemoteBTDeviceAdapter", "onTaskEndImp taskId = %d, errType = %d, errCode =%d, errMsg = %s", new Object[] { Long.valueOf(paramLong), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    int i = this.qmT.beginBroadcast();
+    p localp = (p)a(paramLong, this.qmT, i);
     if (localp == null)
     {
-      ad.w("MicroMsg.exdevice.RemoteBTDeviceAdapter", "Cannot find Callback By taskId = ".concat(String.valueOf(paramLong)));
-      this.qgo.finishBroadcast();
+      ae.w("MicroMsg.exdevice.RemoteBTDeviceAdapter", "Cannot find Callback By taskId = ".concat(String.valueOf(paramLong)));
+      this.qmT.finishBroadcast();
       AppMethodBeat.o(23744);
       return;
     }
     try
     {
-      localp.clS().a(paramLong, paramInt1, paramInt2, paramString, localp);
-      if (!a(this.qgo, paramLong, localp, i)) {
-        ad.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "unRegisterRemoteCB failed!!!");
+      localp.cni().a(paramLong, paramInt1, paramInt2, paramString, localp);
+      if (!a(this.qmT, paramLong, localp, i)) {
+        ae.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "unRegisterRemoteCB failed!!!");
       }
-      this.qgo.finishBroadcast();
+      this.qmT.finishBroadcast();
       AppMethodBeat.o(23744);
       return;
     }
@@ -386,8 +386,8 @@ public final class y
     {
       for (;;)
       {
-        ad.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "callback.onTaskEnd Error!!!");
-        ad.printErrStackTrace("MicroMsg.exdevice.RemoteBTDeviceAdapter", paramString, "", new Object[0]);
+        ae.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "callback.onTaskEnd Error!!!");
+        ae.printErrStackTrace("MicroMsg.exdevice.RemoteBTDeviceAdapter", paramString, "", new Object[0]);
       }
     }
   }
@@ -397,15 +397,15 @@ public final class y
     AppMethodBeat.i(23730);
     if (paramj == null)
     {
-      ad.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "Error parameter: null == aCallback !!!");
+      ae.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "Error parameter: null == aCallback !!!");
       paramj = new IllegalArgumentException("scanImp: null == aCallback");
       AppMethodBeat.o(23730);
       throw paramj;
     }
-    ad.i("MicroMsg.exdevice.RemoteBTDeviceAdapter", "registOnscanCallback");
-    boolean bool = this.qgp.register(paramj);
+    ae.i("MicroMsg.exdevice.RemoteBTDeviceAdapter", "registOnscanCallback");
+    boolean bool = this.qmU.register(paramj);
     if (!bool) {
-      ad.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "mCBListOnScanCallback.register Failed!!!");
+      ae.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "mCBListOnScanCallback.register Failed!!!");
     }
     for (;;)
     {
@@ -415,35 +415,35 @@ public final class y
           paramj.a(0, -1, "scanImp: registScanCallback failed!!!", "", "", 0, null);
           AppMethodBeat.o(23730);
           return false;
-          this.qgu += 1;
+          this.qmZ += 1;
         }
         catch (RemoteException paramj)
         {
           for (;;)
           {
-            ad.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "aCallback.onScanCallback failed!!! %s", new Object[] { paramj.getMessage() });
-            ad.printErrStackTrace("MicroMsg.exdevice.RemoteBTDeviceAdapter", paramj, "", new Object[0]);
+            ae.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "aCallback.onScanCallback failed!!! %s", new Object[] { paramj.getMessage() });
+            ae.printErrStackTrace("MicroMsg.exdevice.RemoteBTDeviceAdapter", paramj, "", new Object[0]);
           }
         }
       }
     }
-    a locala = this.qgm;
-    ad.i("MicroMsg.exdevice.BTDeviceManager", "------scan------ bluetooth version = %d", new Object[] { Integer.valueOf(paramInt) });
+    a locala = this.qmR;
+    ae.i("MicroMsg.exdevice.BTDeviceManager", "------scan------ bluetooth version = %d", new Object[] { Integer.valueOf(paramInt) });
     if (!b.a(paramInt, locala, new int[0]))
     {
-      ad.e("MicroMsg.exdevice.BTDeviceManager", "BluetoothSDKAdapter.scan Failed!!!");
+      ae.e("MicroMsg.exdevice.BTDeviceManager", "BluetoothSDKAdapter.scan Failed!!!");
       bool = false;
     }
     for (;;)
     {
       if (!bool) {
-        ad.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "mBTDeviceMrg.scan Failed!!!");
+        ae.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "mBTDeviceMrg.scan Failed!!!");
       }
       try
       {
         paramj.a(0, -1, "scanImp: mBTDeviceMrg.scan failed!!!", "", "", 0, null);
         if (!c(paramj)) {
-          ad.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "unRegistScanCallback failed!!!");
+          ae.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "unRegistScanCallback failed!!!");
         }
         AppMethodBeat.o(23730);
         return bool;
@@ -453,8 +453,8 @@ public final class y
       {
         for (;;)
         {
-          ad.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "aCallback.onScanCallback failed!!! %s", new Object[] { localRemoteException.getMessage() });
-          ad.printErrStackTrace("MicroMsg.exdevice.RemoteBTDeviceAdapter", localRemoteException, "", new Object[0]);
+          ae.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "aCallback.onScanCallback failed!!! %s", new Object[] { localRemoteException.getMessage() });
+          ae.printErrStackTrace("MicroMsg.exdevice.RemoteBTDeviceAdapter", localRemoteException, "", new Object[0]);
         }
       }
     }
@@ -465,19 +465,19 @@ public final class y
     AppMethodBeat.i(23732);
     if (paramj == null)
     {
-      ad.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "Error parameter: null == aCallback !!!");
+      ae.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "Error parameter: null == aCallback !!!");
       AppMethodBeat.o(23732);
       return false;
     }
-    boolean bool = a.CC(paramInt);
+    boolean bool = a.CO(paramInt);
     if (!bool) {
-      ad.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "mBTDeviceMrg.stopScan Failed!!!");
+      ae.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "mBTDeviceMrg.stopScan Failed!!!");
     }
     try
     {
       paramj.a(0, -1, "stopScanImp: mBTDeviceMrg.stopScan failed!!!", "", "", 0, null);
       if (!c(paramj)) {
-        ad.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "unRegistScanCallback failed!!!");
+        ae.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "unRegistScanCallback failed!!!");
       }
       AppMethodBeat.o(23732);
       return bool;
@@ -486,8 +486,8 @@ public final class y
     {
       for (;;)
       {
-        ad.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "stopScanImp: aCallback.onScanCallback failed!!!, %s", new Object[] { localRemoteException.getMessage() });
-        ad.printErrStackTrace("MicroMsg.exdevice.RemoteBTDeviceAdapter", localRemoteException, "", new Object[0]);
+        ae.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "stopScanImp: aCallback.onScanCallback failed!!!, %s", new Object[] { localRemoteException.getMessage() });
+        ae.printErrStackTrace("MicroMsg.exdevice.RemoteBTDeviceAdapter", localRemoteException, "", new Object[0]);
       }
     }
   }
@@ -495,25 +495,25 @@ public final class y
   public final long a(p paramp)
   {
     AppMethodBeat.i(23739);
-    ad.i("MicroMsg.exdevice.RemoteBTDeviceAdapter", "startTask");
+    ae.i("MicroMsg.exdevice.RemoteBTDeviceAdapter", "startTask");
     if (paramp == null)
     {
-      ad.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "null == aTask");
+      ae.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "null == aTask");
       AppMethodBeat.o(23739);
       return -1L;
     }
-    l locall = this.qgt;
-    if (9223372036854775807L == locall.qfF)
+    l locall = this.qmY;
+    if (9223372036854775807L == locall.qmk)
     {
-      ad.w("MicroMsg.TaskId", "TaskId Data-overrun!!!");
-      locall.qfF = 0L;
+      ae.w("MicroMsg.TaskId", "TaskId Data-overrun!!!");
+      locall.qmk = 0L;
     }
-    long l = locall.qfF;
-    locall.qfF = (1L + l);
+    long l = locall.qmk;
+    locall.qmk = (1L + l);
     paramp = new k(l, paramp);
     if (!this.mHandler.sendMessage(this.mHandler.obtainMessage(0, paramp)))
     {
-      ad.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "mHandler.sendMessage failed!!! messsage what  = %d", new Object[] { Integer.valueOf(0) });
+      ae.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "mHandler.sendMessage failed!!! messsage what  = %d", new Object[] { Integer.valueOf(0) });
       AppMethodBeat.o(23739);
       return -1L;
     }
@@ -526,30 +526,30 @@ public final class y
     AppMethodBeat.i(23750);
     if (paramc == null)
     {
-      ad.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "aContext is null");
+      ae.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "aContext is null");
       AppMethodBeat.o(23750);
       return;
     }
-    h localh = paramc.nPj.nPn;
-    ad.i("MicroMsg.exdevice.RemoteBTDeviceAdapter", "onRangingCallback, distance = %f, uuid = %s, major = %d, minor = %d ,minor&0xFFFF = %d", new Object[] { Double.valueOf(paramDouble), com.tencent.mm.plugin.exdevice.k.b.bg(localh.nPO), Short.valueOf(localh.nPP), Short.valueOf(localh.nPQ), Integer.valueOf(localh.nPQ & 0xFFFF) });
+    h localh = paramc.nUP.nUT;
+    ae.i("MicroMsg.exdevice.RemoteBTDeviceAdapter", "onRangingCallback, distance = %f, uuid = %s, major = %d, minor = %d ,minor&0xFFFF = %d", new Object[] { Double.valueOf(paramDouble), com.tencent.mm.plugin.exdevice.k.b.bf(localh.nVu), Short.valueOf(localh.nVv), Short.valueOf(localh.nVw), Integer.valueOf(localh.nVw & 0xFFFF) });
     try
     {
-      int j = this.qgr.beginBroadcast();
+      int j = this.qmW.beginBroadcast();
       int i = 0;
       for (;;)
       {
         if (i < j) {
           try
           {
-            ((q)this.qgr.getBroadcastItem(i)).a(paramDouble, localh.nPP, localh.nPQ, localh.nPO, paramc.nPk, paramc.nPj.nPn.nPR, paramc.cOA);
+            ((q)this.qmW.getBroadcastItem(i)).a(paramDouble, localh.nVv, localh.nVw, localh.nVu, paramc.nUQ, paramc.nUP.nUT.nVx, paramc.cPk);
             i += 1;
           }
           catch (RemoteException localRemoteException)
           {
             for (;;)
             {
-              ad.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "mCBListIBeaconCallback.getBroadcastItem failed!!!, i = %d, (%s)", new Object[] { Integer.valueOf(i), localRemoteException.toString() });
-              ad.printErrStackTrace("MicroMsg.exdevice.RemoteBTDeviceAdapter", localRemoteException, "", new Object[0]);
+              ae.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "mCBListIBeaconCallback.getBroadcastItem failed!!!, i = %d, (%s)", new Object[] { Integer.valueOf(i), localRemoteException.toString() });
+              ae.printErrStackTrace("MicroMsg.exdevice.RemoteBTDeviceAdapter", localRemoteException, "", new Object[0]);
             }
           }
         }
@@ -558,13 +558,13 @@ public final class y
     }
     catch (Exception paramc)
     {
-      ad.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "[shakezb] beginBroadcast fail!", new Object[] { paramc.toString() });
-      ad.printErrStackTrace("MicroMsg.exdevice.RemoteBTDeviceAdapter", paramc, "", new Object[0]);
+      ae.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "[shakezb] beginBroadcast fail!", new Object[] { paramc.toString() });
+      ae.printErrStackTrace("MicroMsg.exdevice.RemoteBTDeviceAdapter", paramc, "", new Object[0]);
       return;
     }
     finally
     {
-      this.qgr.finishBroadcast();
+      this.qmW.finishBroadcast();
       AppMethodBeat.o(23750);
     }
   }
@@ -572,7 +572,7 @@ public final class y
   public final void a(int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3, int paramInt3, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(23743);
-    int j = this.qgp.beginBroadcast();
+    int j = this.qmU.beginBroadcast();
     int i = 0;
     for (;;)
     {
@@ -581,23 +581,23 @@ public final class y
       }
       try
       {
-        ((j)this.qgp.getBroadcastItem(i)).a(paramInt1, paramInt2, paramString1, paramString2, paramString3, paramInt3, paramArrayOfByte);
-        if ((2 == paramInt1) && (!this.qgp.unregister(this.qgp.getBroadcastItem(i)))) {
-          ad.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "onScanCallback: mCBListOnScanCallback.unregister failed!!!");
+        ((j)this.qmU.getBroadcastItem(i)).a(paramInt1, paramInt2, paramString1, paramString2, paramString3, paramInt3, paramArrayOfByte);
+        if ((2 == paramInt1) && (!this.qmU.unregister(this.qmU.getBroadcastItem(i)))) {
+          ae.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "onScanCallback: mCBListOnScanCallback.unregister failed!!!");
         }
       }
       catch (RemoteException localRemoteException)
       {
         for (;;)
         {
-          ad.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "onScanCallback Exception i = ".concat(String.valueOf(i)));
-          ad.printErrStackTrace("MicroMsg.exdevice.RemoteBTDeviceAdapter", localRemoteException, "", new Object[0]);
+          ae.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "onScanCallback Exception i = ".concat(String.valueOf(i)));
+          ae.printErrStackTrace("MicroMsg.exdevice.RemoteBTDeviceAdapter", localRemoteException, "", new Object[0]);
         }
       }
       i += 1;
     }
     label129:
-    this.qgp.finishBroadcast();
+    this.qmU.finishBroadcast();
     AppMethodBeat.o(23743);
   }
   
@@ -607,15 +607,15 @@ public final class y
     if (paramArrayOfByte == null) {}
     for (int i = 0;; i = paramArrayOfByte.length)
     {
-      ad.i("MicroMsg.exdevice.RemoteBTDeviceAdapter", "onDeviceRequest errorCode = %d, deviceId = %d, seq = %d, cmdId = %d, data length = %d", new Object[] { Integer.valueOf(paramInt), Long.valueOf(paramLong), Short.valueOf(paramShort1), Short.valueOf(paramShort2), Integer.valueOf(i) });
+      ae.i("MicroMsg.exdevice.RemoteBTDeviceAdapter", "onDeviceRequest errorCode = %d, deviceId = %d, seq = %d, cmdId = %d, data length = %d", new Object[] { Integer.valueOf(paramInt), Long.valueOf(paramLong), Short.valueOf(paramShort1), Short.valueOf(paramShort2), Integer.valueOf(i) });
       b localb = new b((byte)0);
-      localb.qfC = paramShort2;
-      localb.pZV = paramArrayOfByte;
-      localb.nTx = paramLong;
-      localb.qab = paramShort1;
+      localb.qmh = paramShort2;
+      localb.qgA = paramArrayOfByte;
+      localb.nZd = paramLong;
+      localb.qgG = paramShort1;
       localb.mErrorCode = paramInt;
       if (!this.mHandler.sendMessage(this.mHandler.obtainMessage(6, localb))) {
-        ad.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "mHandler.sendMessage failed!!!, message what = %d", new Object[] { Integer.valueOf(6) });
+        ae.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "mHandler.sendMessage failed!!!, message what = %d", new Object[] { Integer.valueOf(6) });
       }
       AppMethodBeat.o(23746);
       return;
@@ -625,14 +625,14 @@ public final class y
   public final void a(long paramLong, int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(23747);
-    ad.i("MicroMsg.exdevice.RemoteBTDeviceAdapter", "onStateChange deviceId = " + paramLong + " oldState" + paramInt1 + " newState = " + paramInt2 + " errCode = " + paramInt3);
+    ae.i("MicroMsg.exdevice.RemoteBTDeviceAdapter", "onStateChange deviceId = " + paramLong + " oldState" + paramInt1 + " newState = " + paramInt2 + " errCode = " + paramInt3);
     c localc = new c((byte)0);
-    localc.nTx = paramLong;
-    localc.qfD = paramInt1;
-    localc.qfE = paramInt2;
-    localc.pZU = paramInt3;
+    localc.nZd = paramLong;
+    localc.qmi = paramInt1;
+    localc.qmj = paramInt2;
+    localc.qgz = paramInt3;
     if (!this.mHandler.sendMessage(this.mHandler.obtainMessage(5, localc))) {
-      ad.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "mHandler.sendMessage failed!!!, messagewhat = %d", new Object[] { Integer.valueOf(5) });
+      ae.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "mHandler.sendMessage failed!!!, messagewhat = %d", new Object[] { Integer.valueOf(5) });
     }
     AppMethodBeat.o(23747);
   }
@@ -640,9 +640,9 @@ public final class y
   public final void a(n paramn)
   {
     AppMethodBeat.i(23752);
-    ad.i("MicroMsg.exdevice.RemoteBTDeviceAdapter", "registExDeviceInvokerHandler");
-    if (!this.qgs.register(paramn)) {
-      ad.i("MicroMsg.exdevice.RemoteBTDeviceAdapter", "mCBListIExDeviceInvoker.register failed!!!");
+    ae.i("MicroMsg.exdevice.RemoteBTDeviceAdapter", "registExDeviceInvokerHandler");
+    if (!this.qmX.register(paramn)) {
+      ae.i("MicroMsg.exdevice.RemoteBTDeviceAdapter", "mCBListIExDeviceInvoker.register failed!!!");
     }
     AppMethodBeat.o(23752);
   }
@@ -650,29 +650,29 @@ public final class y
   public final boolean a(long paramLong, int paramInt, k paramk)
   {
     AppMethodBeat.i(23736);
-    ad.i("MicroMsg.exdevice.RemoteBTDeviceAdapter", "startChannel deviceId = %d, bluetoothVersion = %d", new Object[] { Long.valueOf(paramLong), Integer.valueOf(paramInt) });
+    ae.i("MicroMsg.exdevice.RemoteBTDeviceAdapter", "startChannel deviceId = %d, bluetoothVersion = %d", new Object[] { Long.valueOf(paramLong), Integer.valueOf(paramInt) });
     if (paramk == null)
     {
-      ad.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "null == callback");
+      ae.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "null == callback");
       AppMethodBeat.o(23736);
       return false;
     }
     if (paramLong < 0L)
     {
-      ad.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "Invalid device id = %d", new Object[] { Long.valueOf(paramLong) });
+      ae.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "Invalid device id = %d", new Object[] { Long.valueOf(paramLong) });
       AppMethodBeat.o(23736);
       return false;
     }
     if ((1 != paramInt) && (paramInt != 0))
     {
-      ad.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "Invalid bluetooth version = %d", new Object[] { Integer.valueOf(paramInt) });
+      ae.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "Invalid bluetooth version = %d", new Object[] { Integer.valueOf(paramInt) });
       AppMethodBeat.o(23736);
       return false;
     }
     paramk = new j(paramLong, paramInt, paramk);
     if (!this.mHandler.sendMessage(this.mHandler.obtainMessage(3, paramk)))
     {
-      ad.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "mHandler.sendMessage failed!!! message what = %d", new Object[] { Integer.valueOf(3) });
+      ae.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "mHandler.sendMessage failed!!! message what = %d", new Object[] { Integer.valueOf(3) });
       AppMethodBeat.o(23736);
       return false;
     }
@@ -683,10 +683,10 @@ public final class y
   public final boolean a(i parami)
   {
     AppMethodBeat.i(23741);
-    ad.i("MicroMsg.exdevice.RemoteBTDeviceAdapter", "registOnDeviceRequest");
-    boolean bool = this.qgq.register(parami);
+    ae.i("MicroMsg.exdevice.RemoteBTDeviceAdapter", "registOnDeviceRequest");
+    boolean bool = this.qmV.register(parami);
     if (!bool) {
-      ad.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "mCBListOnDeviceReq.register Failed!!!");
+      ae.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "mCBListOnDeviceReq.register Failed!!!");
     }
     AppMethodBeat.o(23741);
     return bool;
@@ -697,13 +697,13 @@ public final class y
     AppMethodBeat.i(23757);
     if (params == null)
     {
-      ad.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "callback is null");
+      ae.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "callback is null");
       AppMethodBeat.o(23757);
       return false;
     }
-    boolean bool = this.qgz.register(params);
+    boolean bool = this.qne.register(params);
     if (!bool) {
-      ad.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "simpleBluetoothRegistOnRecv error");
+      ae.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "simpleBluetoothRegistOnRecv error");
     }
     AppMethodBeat.o(23757);
     return bool;
@@ -712,22 +712,22 @@ public final class y
   public final boolean a(String paramString, boolean paramBoolean, q paramq)
   {
     AppMethodBeat.i(23749);
-    if ((Build.VERSION.SDK_INT < 18) || (this.qgv == null))
+    if ((Build.VERSION.SDK_INT < 18) || (this.qna == null))
     {
       AppMethodBeat.o(23749);
       return false;
     }
-    boolean bool = aj.getContext().getPackageManager().hasSystemFeature("android.hardware.bluetooth_le");
+    boolean bool = ak.getContext().getPackageManager().hasSystemFeature("android.hardware.bluetooth_le");
     Object localObject = BluetoothAdapter.getDefaultAdapter();
     if ((!bool) || (localObject == null))
     {
       AppMethodBeat.o(23749);
       return false;
     }
-    ad.i("MicroMsg.exdevice.RemoteBTDeviceAdapter", "ranging, uuid = %s, op = %s", new Object[] { paramString, String.valueOf(paramBoolean) });
-    if (!this.qgr.register(paramq))
+    ae.i("MicroMsg.exdevice.RemoteBTDeviceAdapter", "ranging, uuid = %s, op = %s", new Object[] { paramString, String.valueOf(paramBoolean) });
+    if (!this.qmW.register(paramq))
     {
-      ad.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "mCBListIBeaconCallback.register failed!!!");
+      ae.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "mCBListIBeaconCallback.register failed!!!");
       AppMethodBeat.o(23749);
       return false;
     }
@@ -737,16 +737,16 @@ public final class y
       try
       {
         localObject = UUID.fromString(paramString);
-        localf = this.qgv;
-        com.tencent.mm.plugin.d.a.a.f.nPs = aj.getContext().getSharedPreferences("com.tencent.mm_exdevice_ibeacon_isNewScanning", 4).getBoolean("isNewScanning", false);
+        localf = this.qna;
+        com.tencent.mm.plugin.d.a.a.f.nUY = ak.getContext().getSharedPreferences("com.tencent.mm_exdevice_ibeacon_isNewScanning", 4).getBoolean("isNewScanning", false);
         if (localObject == null)
         {
           paramString = "";
-          ad.d("MicroMsg.exdevice.IBeaconServer", "Ranging, uuid = %s, op = %s", new Object[] { paramString, String.valueOf(paramBoolean) });
+          ae.d("MicroMsg.exdevice.IBeaconServer", "Ranging, uuid = %s, op = %s", new Object[] { paramString, String.valueOf(paramBoolean) });
           if (localObject != null) {
             break label248;
           }
-          ad.e("MicroMsg.exdevice.IBeaconServer", "error parameter: aUUID is null");
+          ae.e("MicroMsg.exdevice.IBeaconServer", "error parameter: aUUID is null");
           paramBoolean = false;
           if (!paramBoolean) {
             break;
@@ -757,7 +757,7 @@ public final class y
       }
       catch (Exception paramString)
       {
-        ad.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "UUID.fromString failed!!!, (%s)", new Object[] { paramString.getMessage() });
+        ae.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "UUID.fromString failed!!!, (%s)", new Object[] { paramString.getMessage() });
         AppMethodBeat.o(23749);
         return false;
       }
@@ -770,9 +770,9 @@ public final class y
         paramBoolean = localf.mHandler.post(new f.7(localf, (UUID)localObject));
       }
     }
-    ad.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "mIBeaconServer.ranging failed!!!");
-    if (!this.qgr.unregister(paramq)) {
-      ad.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "mCBListIBeaconCallback.unregister failed!!!");
+    ae.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "mIBeaconServer.ranging failed!!!");
+    if (!this.qmW.unregister(paramq)) {
+      ae.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "mCBListIBeaconCallback.unregister failed!!!");
     }
     AppMethodBeat.o(23749);
     return false;
@@ -781,10 +781,10 @@ public final class y
   public final boolean b(final int paramInt, final j paramj)
   {
     AppMethodBeat.i(23729);
-    ad.i("MicroMsg.exdevice.RemoteBTDeviceAdapter", "---scan--- aBluetoothVersion = ".concat(String.valueOf(paramInt)));
+    ae.i("MicroMsg.exdevice.RemoteBTDeviceAdapter", "---scan--- aBluetoothVersion = ".concat(String.valueOf(paramInt)));
     if (paramj == null)
     {
-      ad.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "Error parameter: null == aCallback !!!");
+      ae.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "Error parameter: null == aCallback !!!");
       AppMethodBeat.o(23729);
       return false;
     }
@@ -794,13 +794,13 @@ public final class y
       {
         AppMethodBeat.i(23723);
         if (!y.a(y.this, paramInt, paramj)) {
-          ad.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "scanImp failed!!!");
+          ae.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "scanImp failed!!!");
         }
         AppMethodBeat.o(23723);
       }
     });
     if (!bool) {
-      ad.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "scan: mHandler.post failed!!!");
+      ae.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "scan: mHandler.post failed!!!");
     }
     AppMethodBeat.o(23729);
     return bool;
@@ -809,13 +809,13 @@ public final class y
   public final boolean b(long paramLong1, int paramInt1, int paramInt2, int paramInt3, long paramLong2)
   {
     AppMethodBeat.i(23761);
-    ad.d("MicroMsg.exdevice.RemoteBTDeviceAdapter", "simpleBTOnSateChangeImpl. mac=%d, oldstate = %d, newsate=%d, errcode=%d", new Object[] { Long.valueOf(paramLong1), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
-    int i = this.qgy.beginBroadcast();
-    k localk = (k)a(paramLong1, this.qgy, i);
+    ae.d("MicroMsg.exdevice.RemoteBTDeviceAdapter", "simpleBTOnSateChangeImpl. mac=%d, oldstate = %d, newsate=%d, errcode=%d", new Object[] { Long.valueOf(paramLong1), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    int i = this.qnd.beginBroadcast();
+    k localk = (k)a(paramLong1, this.qnd, i);
     if (localk == null)
     {
-      ad.w("MicroMsg.exdevice.RemoteBTDeviceAdapter", "Cannot find Callback By deviceId = ".concat(String.valueOf(paramLong1)));
-      this.qgy.finishBroadcast();
+      ae.w("MicroMsg.exdevice.RemoteBTDeviceAdapter", "Cannot find Callback By deviceId = ".concat(String.valueOf(paramLong1)));
+      this.qnd.finishBroadcast();
       AppMethodBeat.o(23761);
       return false;
     }
@@ -826,13 +826,13 @@ public final class y
     }
     catch (RemoteException localRemoteException)
     {
-      ad.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "callback.onStateChange Failed!!!");
-      ad.printErrStackTrace("MicroMsg.exdevice.RemoteBTDeviceAdapter", localRemoteException, "", new Object[0]);
+      ae.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "callback.onStateChange Failed!!!");
+      ae.printErrStackTrace("MicroMsg.exdevice.RemoteBTDeviceAdapter", localRemoteException, "", new Object[0]);
       return false;
     }
     finally
     {
-      this.qgy.finishBroadcast();
+      this.qnd.finishBroadcast();
       AppMethodBeat.o(23761);
     }
   }
@@ -842,29 +842,29 @@ public final class y
     AppMethodBeat.i(23755);
     if (paramk == null)
     {
-      ad.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "callback is null");
+      ae.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "callback is null");
       AppMethodBeat.o(23755);
       return false;
     }
     if (paramLong < 0L)
     {
-      ad.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "Invalid device id = %d", new Object[] { Long.valueOf(paramLong) });
+      ae.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "Invalid device id = %d", new Object[] { Long.valueOf(paramLong) });
       AppMethodBeat.o(23755);
       return false;
     }
     if (paramInt != 0)
     {
-      ad.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "Invalid bluetooth version = %d", new Object[] { Integer.valueOf(paramInt) });
+      ae.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "Invalid bluetooth version = %d", new Object[] { Integer.valueOf(paramInt) });
       AppMethodBeat.o(23755);
       return false;
     }
     e locale = new e((byte)0);
-    locale.qcT = paramLong;
-    locale.qgF = paramInt;
-    locale.qgG = paramk;
+    locale.qjy = paramLong;
+    locale.qnk = paramInt;
+    locale.qnl = paramk;
     if (!this.mHandler.sendMessage(this.mHandler.obtainMessage(7, locale)))
     {
-      ad.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "mHandler.sendMessage failed!!!, message what = %d", new Object[] { Integer.valueOf(7) });
+      ae.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "mHandler.sendMessage failed!!!, message what = %d", new Object[] { Integer.valueOf(7) });
       AppMethodBeat.o(23755);
       return false;
     }
@@ -877,29 +877,29 @@ public final class y
     AppMethodBeat.i(23758);
     if (0L > paramLong)
     {
-      ad.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "mac < 0");
+      ae.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "mac < 0");
       AppMethodBeat.o(23758);
       return false;
     }
     if ((paramArrayOfByte == null) || (paramArrayOfByte.length <= 0))
     {
-      ad.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "data is empty");
+      ae.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "data is empty");
       AppMethodBeat.o(23758);
       return false;
     }
     if (paramt == null)
     {
-      ad.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "callback is null");
+      ae.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "callback is null");
       AppMethodBeat.o(23758);
       return false;
     }
     i locali = new i((byte)0);
-    locali.qcT = paramLong;
+    locali.qjy = paramLong;
     locali.mData = paramArrayOfByte;
-    locali.qgJ = paramt;
+    locali.qno = paramt;
     if (!this.mHandler.sendMessage(this.mHandler.obtainMessage(10, locali)))
     {
-      ad.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "mHandler.sendMessage failed!!!, message what = %d", new Object[] { Integer.valueOf(10) });
+      ae.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "mHandler.sendMessage failed!!!, message what = %d", new Object[] { Integer.valueOf(10) });
       AppMethodBeat.o(23758);
       return false;
     }
@@ -910,10 +910,10 @@ public final class y
   public final boolean b(i parami)
   {
     AppMethodBeat.i(23742);
-    ad.i("MicroMsg.exdevice.RemoteBTDeviceAdapter", "unRegistOnDeviceRequest");
-    boolean bool = this.qgq.unregister(parami);
+    ae.i("MicroMsg.exdevice.RemoteBTDeviceAdapter", "unRegistOnDeviceRequest");
+    boolean bool = this.qmV.unregister(parami);
     if (!bool) {
-      ad.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "mCBListOnDeviceReq.unregister Failed!!!");
+      ae.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "mCBListOnDeviceReq.unregister Failed!!!");
     }
     AppMethodBeat.o(23742);
     return bool;
@@ -922,14 +922,14 @@ public final class y
   public final void c(long paramLong, int paramInt1, int paramInt2, String paramString)
   {
     AppMethodBeat.i(23745);
-    ad.i("MicroMsg.exdevice.RemoteBTDeviceAdapter", "onTaskEnd taskId = %d, errTpye = %d, errCode = %d, errMsg = %s", new Object[] { Long.valueOf(paramLong), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    ae.i("MicroMsg.exdevice.RemoteBTDeviceAdapter", "onTaskEnd taskId = %d, errTpye = %d, errCode = %d, errMsg = %s", new Object[] { Long.valueOf(paramLong), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
     d locald = new d();
-    locald.qfF = paramLong;
-    locald.qag = paramInt1;
-    locald.pZU = paramInt2;
-    locald.ksX = paramString;
+    locald.qmk = paramLong;
+    locald.qgL = paramInt1;
+    locald.qgz = paramInt2;
+    locald.kwn = paramString;
     if (!this.mHandler.sendMessage(this.mHandler.obtainMessage(2, locald))) {
-      ad.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "mHandler.sendMessage failed!!!, MessageWhat = %d", new Object[] { Integer.valueOf(2) });
+      ae.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "mHandler.sendMessage failed!!!, MessageWhat = %d", new Object[] { Integer.valueOf(2) });
     }
     AppMethodBeat.o(23745);
   }
@@ -937,10 +937,10 @@ public final class y
   public final boolean c(final int paramInt, final j paramj)
   {
     AppMethodBeat.i(23731);
-    ad.i("MicroMsg.exdevice.RemoteBTDeviceAdapter", "---stopScan--- aBluetoothVersion = ".concat(String.valueOf(paramInt)));
+    ae.i("MicroMsg.exdevice.RemoteBTDeviceAdapter", "---stopScan--- aBluetoothVersion = ".concat(String.valueOf(paramInt)));
     if (paramj == null)
     {
-      ad.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "Error parameter: null == aCallback");
+      ae.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "Error parameter: null == aCallback");
       AppMethodBeat.o(23731);
       return false;
     }
@@ -950,13 +950,13 @@ public final class y
       {
         AppMethodBeat.i(23724);
         if (!y.b(y.this, paramInt, paramj)) {
-          ad.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "stopScanImp failed!!!");
+          ae.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "stopScanImp failed!!!");
         }
         AppMethodBeat.o(23724);
       }
     });
     if (!bool) {
-      ad.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "stopScan: mHandler.post failed!!!");
+      ae.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "stopScan: mHandler.post failed!!!");
     }
     AppMethodBeat.o(23731);
     return bool;
@@ -965,10 +965,10 @@ public final class y
   public final boolean c(long paramLong, int paramInt, k paramk)
   {
     AppMethodBeat.i(23759);
-    ad.d("MicroMsg.exdevice.RemoteBTDeviceAdapter", "simpleBTConnectImpl. mac=%d, bTVersion=%d", new Object[] { Long.valueOf(paramLong), Integer.valueOf(paramInt) });
-    if (!a(this.qgy, paramLong, paramk))
+    ae.d("MicroMsg.exdevice.RemoteBTDeviceAdapter", "simpleBTConnectImpl. mac=%d, bTVersion=%d", new Object[] { Long.valueOf(paramLong), Integer.valueOf(paramInt) });
+    if (!a(this.qnd, paramLong, paramk))
     {
-      ad.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "register connect callback error");
+      ae.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "register connect callback error");
       try
       {
         paramk.a(paramLong, -1, 4, -1, 0L);
@@ -979,25 +979,25 @@ public final class y
       {
         for (;;)
         {
-          ad.printErrStackTrace("MicroMsg.exdevice.RemoteBTDeviceAdapter", paramk, "", new Object[0]);
+          ae.printErrStackTrace("MicroMsg.exdevice.RemoteBTDeviceAdapter", paramk, "", new Object[0]);
         }
       }
     }
     try
     {
       paramk.a(paramLong, -1, 1, -1, 0L);
-      if (this.qgB != null)
+      if (this.qng != null)
       {
-        com.tencent.mm.plugin.d.a.b.e locale = this.qgB;
-        ad.d("MicroMsg.exdevice.BluetoothLESimpleManager", "connect. mac = %d", new Object[] { Long.valueOf(paramLong) });
-        if (!locale.bMG())
+        com.tencent.mm.plugin.d.a.b.e locale = this.qng;
+        ae.d("MicroMsg.exdevice.BluetoothLESimpleManager", "connect. mac = %d", new Object[] { Long.valueOf(paramLong) });
+        if (!locale.bNE())
         {
-          ad.e("MicroMsg.exdevice.BluetoothLESimpleManager", "BLE Unsupport");
+          ae.e("MicroMsg.exdevice.BluetoothLESimpleManager", "BLE Unsupport");
           bool = false;
           if (bool) {
             break label351;
           }
-          ad.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "connect device(mac=%d) error", new Object[] { Long.valueOf(paramLong) });
+          ae.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "connect device(mac=%d) error", new Object[] { Long.valueOf(paramLong) });
           if (paramk == null) {}
         }
       }
@@ -1012,32 +1012,32 @@ public final class y
           AppMethodBeat.o(23759);
           return false;
           localRemoteException = localRemoteException;
-          ad.printErrStackTrace("MicroMsg.exdevice.RemoteBTDeviceAdapter", localRemoteException, "", new Object[0]);
+          ae.printErrStackTrace("MicroMsg.exdevice.RemoteBTDeviceAdapter", localRemoteException, "", new Object[0]);
           continue;
-          com.tencent.mm.plugin.d.a.b.f localf = (com.tencent.mm.plugin.d.a.b.f)localRemoteException.nPZ.get(Long.valueOf(paramLong));
+          com.tencent.mm.plugin.d.a.b.f localf = (com.tencent.mm.plugin.d.a.b.f)localRemoteException.nVF.get(Long.valueOf(paramLong));
           if (localf != null)
           {
-            ad.d("MicroMsg.exdevice.BluetoothLESimpleManager", "session(mac=%s) has been in map");
+            ae.d("MicroMsg.exdevice.BluetoothLESimpleManager", "session(mac=%s) has been in map");
             bool = localf.connect();
           }
           else
           {
-            localf = new com.tencent.mm.plugin.d.a.b.f(paramLong, localRemoteException.IR, localRemoteException.nQK);
+            localf = new com.tencent.mm.plugin.d.a.b.f(paramLong, localRemoteException.IR, localRemoteException.nWq);
             if (!localf.connect()) {
               break;
             }
-            localRemoteException.ad(new e.4(localRemoteException, paramLong, localf));
+            localRemoteException.ab(new e.4(localRemoteException, paramLong, localf));
             bool = true;
           }
         }
-        ad.e("MicroMsg.exdevice.BluetoothLESimpleManager", "tmpConnectForScan error");
+        ae.e("MicroMsg.exdevice.BluetoothLESimpleManager", "tmpConnectForScan error");
         boolean bool = false;
       }
       catch (RemoteException paramk)
       {
         for (;;)
         {
-          ad.printErrStackTrace("MicroMsg.exdevice.RemoteBTDeviceAdapter", paramk, "", new Object[0]);
+          ae.printErrStackTrace("MicroMsg.exdevice.RemoteBTDeviceAdapter", paramk, "", new Object[0]);
         }
       }
       label351:
@@ -1049,37 +1049,37 @@ public final class y
   public final boolean c(long paramLong, byte[] paramArrayOfByte, t paramt)
   {
     AppMethodBeat.i(23760);
-    ad.d("MicroMsg.exdevice.RemoteBTDeviceAdapter", "simpleBTSendDataImpl. mac=%d, data=%s", new Object[] { Long.valueOf(paramLong), com.tencent.mm.plugin.exdevice.k.b.bg(paramArrayOfByte) });
-    if (this.qgB != null)
+    ae.d("MicroMsg.exdevice.RemoteBTDeviceAdapter", "simpleBTSendDataImpl. mac=%d, data=%s", new Object[] { Long.valueOf(paramLong), com.tencent.mm.plugin.exdevice.k.b.bf(paramArrayOfByte) });
+    if (this.qng != null)
     {
-      Object localObject = this.qgB;
-      ad.d("MicroMsg.exdevice.BluetoothLESimpleManager", "writeData. mac = %d", new Object[] { Long.valueOf(paramLong) });
+      Object localObject = this.qng;
+      ae.d("MicroMsg.exdevice.BluetoothLESimpleManager", "writeData. mac = %d", new Object[] { Long.valueOf(paramLong) });
       boolean bool;
-      if (!((com.tencent.mm.plugin.d.a.b.e)localObject).bMG())
+      if (!((com.tencent.mm.plugin.d.a.b.e)localObject).bNE())
       {
-        ad.e("MicroMsg.exdevice.BluetoothLESimpleManager", "BLE Unsupport");
+        ae.e("MicroMsg.exdevice.BluetoothLESimpleManager", "BLE Unsupport");
         bool = false;
       }
       for (;;)
       {
         if (!bool)
         {
-          ad.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "writeData error");
+          ae.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "writeData error");
           if (paramt != null) {}
           try
           {
             paramt.b(paramLong, -1, -1, "start write data error");
             AppMethodBeat.o(23760);
             return false;
-            localObject = (com.tencent.mm.plugin.d.a.b.f)((com.tencent.mm.plugin.d.a.b.e)localObject).nPZ.get(Long.valueOf(paramLong));
+            localObject = (com.tencent.mm.plugin.d.a.b.f)((com.tencent.mm.plugin.d.a.b.e)localObject).nVF.get(Long.valueOf(paramLong));
             if (localObject == null)
             {
-              ad.w("MicroMsg.exdevice.BluetoothLESimpleManager", "session is null, may be this session is closed");
+              ae.w("MicroMsg.exdevice.BluetoothLESimpleManager", "session is null, may be this session is closed");
               bool = false;
             }
             else
             {
-              ad.i("MicroMsg.exdevice.BluetoothLESimpleSession", "------writeData------parserobj, length = %d, mac=%s, name=%s", new Object[] { Integer.valueOf(paramArrayOfByte.length), com.tencent.mm.plugin.exdevice.k.b.uO(((com.tencent.mm.plugin.d.a.b.f)localObject).mSessionId), ((com.tencent.mm.plugin.d.a.b.f)localObject).kGR.getName() });
+              ae.i("MicroMsg.exdevice.BluetoothLESimpleSession", "------writeData------parserobj, length = %d, mac=%s, name=%s", new Object[] { Integer.valueOf(paramArrayOfByte.length), com.tencent.mm.plugin.exdevice.k.b.vf(((com.tencent.mm.plugin.d.a.b.f)localObject).mSessionId), ((com.tencent.mm.plugin.d.a.b.f)localObject).kKg.getName() });
               bool = ((com.tencent.mm.plugin.d.a.b.f)localObject).mHandler.sendMessage(((com.tencent.mm.plugin.d.a.b.f)localObject).mHandler.obtainMessage(3, paramArrayOfByte));
             }
           }
@@ -1087,15 +1087,15 @@ public final class y
           {
             for (;;)
             {
-              ad.printErrStackTrace("MicroMsg.exdevice.RemoteBTDeviceAdapter", paramArrayOfByte, "", new Object[0]);
+              ae.printErrStackTrace("MicroMsg.exdevice.RemoteBTDeviceAdapter", paramArrayOfByte, "", new Object[0]);
             }
           }
         }
       }
     }
-    if (!a(this.qgA, paramLong, paramt))
+    if (!a(this.qnf, paramLong, paramt))
     {
-      ad.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "register on send end callback error");
+      ae.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "register on send end callback error");
       AppMethodBeat.o(23760);
       return false;
     }
@@ -1103,10 +1103,10 @@ public final class y
     return true;
   }
   
-  public final long[] clI()
+  public final long[] cmY()
   {
     AppMethodBeat.i(23733);
-    long[] arrayOfLong = a.clI();
+    long[] arrayOfLong = a.cmY();
     AppMethodBeat.o(23733);
     return arrayOfLong;
   }
@@ -1114,73 +1114,73 @@ public final class y
   public final boolean d(int paramInt, j paramj)
   {
     AppMethodBeat.i(23753);
-    ad.d("MicroMsg.exdevice.RemoteBTDeviceAdapter", "simpleBlutoothScan. bluetoothVersion=%d", new Object[] { Integer.valueOf(paramInt) });
+    ae.d("MicroMsg.exdevice.RemoteBTDeviceAdapter", "simpleBlutoothScan. bluetoothVersion=%d", new Object[] { Integer.valueOf(paramInt) });
     if (paramj == null)
     {
-      ad.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "scan callback is null. just return");
+      ae.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "scan callback is null. just return");
       AppMethodBeat.o(23753);
       return false;
     }
     if (paramInt != 0)
     {
-      ad.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "this is not ble scan cmd");
+      ae.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "this is not ble scan cmd");
       AppMethodBeat.o(23753);
       return false;
     }
-    boolean bool3 = this.qgx.register(paramj);
+    boolean bool3 = this.qnc.register(paramj);
     if (bool3) {
-      ad.d("MicroMsg.exdevice.RemoteBTDeviceAdapter", "regist simple ble scan callback ok");
+      ae.d("MicroMsg.exdevice.RemoteBTDeviceAdapter", "regist simple ble scan callback ok");
     }
     for (;;)
     {
-      if (this.qgB != null)
+      if (this.qng != null)
       {
-        com.tencent.mm.plugin.d.a.b.e locale = this.qgB;
-        ad.d("MicroMsg.exdevice.BluetoothLESimpleManager", "simple ble scan");
+        com.tencent.mm.plugin.d.a.b.e locale = this.qng;
+        ae.d("MicroMsg.exdevice.BluetoothLESimpleManager", "simple ble scan");
         boolean bool1;
-        if (locale.nQb != null)
+        if (locale.nVH != null)
         {
           bool1 = true;
           label120:
           Assert.assertTrue(bool1);
-          if (locale.bMG()) {
+          if (locale.bNE()) {
             break label212;
           }
-          ad.e("MicroMsg.exdevice.BluetoothLESimpleManager", "BLE Unsupport");
+          ae.e("MicroMsg.exdevice.BluetoothLESimpleManager", "BLE Unsupport");
           bool1 = false;
           label143:
           if (bool1) {
             break label289;
           }
-          ad.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "simple ble scan fail");
+          ae.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "simple ble scan fail");
         }
         try
         {
           paramj.a(0, -1, "simpleBLE.scan failed!!!", "", "", 0, null);
           if (bool3) {
-            this.qgx.unregister(paramj);
+            this.qnc.unregister(paramj);
           }
           AppMethodBeat.o(23753);
           return false;
-          ad.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "regist simple ble scan callback fail");
+          ae.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "regist simple ble scan callback fail");
           continue;
           bool1 = false;
           break label120;
           label212:
-          boolean bool2 = locale.nQb.a(true, locale.nQe);
+          boolean bool2 = locale.nVH.a(true, locale.nVK);
           bool1 = bool2;
           if (!bool2) {
             break label143;
           }
-          locale.nQI.clear();
+          locale.nWo.clear();
           bool1 = bool2;
         }
         catch (RemoteException localRemoteException)
         {
           for (;;)
           {
-            ad.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "simpleBLE.scan callback failed!!!, %s", new Object[] { localRemoteException.getMessage() });
-            ad.printErrStackTrace("MicroMsg.exdevice.RemoteBTDeviceAdapter", localRemoteException, "", new Object[0]);
+            ae.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "simpleBLE.scan callback failed!!!, %s", new Object[] { localRemoteException.getMessage() });
+            ae.printErrStackTrace("MicroMsg.exdevice.RemoteBTDeviceAdapter", localRemoteException, "", new Object[0]);
           }
         }
       }
@@ -1215,9 +1215,9 @@ public final class y
     //   35: iconst_1
     //   36: aload 6
     //   38: aastore
-    //   39: invokestatic 341	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   39: invokestatic 341	com/tencent/mm/sdk/platformtools/ae:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   42: aload_0
-    //   43: getfield 128	com/tencent/mm/plugin/exdevice/service/y:qgz	Landroid/os/RemoteCallbackList;
+    //   43: getfield 128	com/tencent/mm/plugin/exdevice/service/y:qne	Landroid/os/RemoteCallbackList;
     //   46: invokevirtual 251	android/os/RemoteCallbackList:beginBroadcast	()I
     //   49: istore 5
     //   51: ldc 192
@@ -1229,12 +1229,12 @@ public final class y
     //   62: iload 5
     //   64: invokestatic 207	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   67: aastore
-    //   68: invokestatic 341	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   68: invokestatic 341	com/tencent/mm/sdk/platformtools/ae:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   71: iload 4
     //   73: iload 5
     //   75: if_icmpge +97 -> 172
     //   78: aload_0
-    //   79: getfield 128	com/tencent/mm/plugin/exdevice/service/y:qgz	Landroid/os/RemoteCallbackList;
+    //   79: getfield 128	com/tencent/mm/plugin/exdevice/service/y:qne	Landroid/os/RemoteCallbackList;
     //   82: iload 4
     //   84: invokevirtual 255	android/os/RemoteCallbackList:getBroadcastItem	(I)Landroid/os/IInterface;
     //   87: checkcast 1022	com/tencent/mm/plugin/exdevice/service/s
@@ -1251,37 +1251,37 @@ public final class y
     //   110: istore 4
     //   112: goto -41 -> 71
     //   115: aload_3
-    //   116: invokestatic 638	com/tencent/mm/plugin/exdevice/k/b:bg	([B)Ljava/lang/String;
+    //   116: invokestatic 638	com/tencent/mm/plugin/exdevice/k/b:bf	([B)Ljava/lang/String;
     //   119: astore 6
     //   121: goto -103 -> 18
     //   124: ldc 192
     //   126: ldc_w 1027
-    //   129: invokestatic 233	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   129: invokestatic 233	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   132: goto -26 -> 106
     //   135: astore_3
     //   136: ldc 192
     //   138: ldc_w 1029
-    //   141: invokestatic 233	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   141: invokestatic 233	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   144: ldc 192
     //   146: aload_3
     //   147: ldc_w 277
     //   150: iconst_0
     //   151: anewarray 196	java/lang/Object
-    //   154: invokestatic 281	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   154: invokestatic 281	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   157: aload_0
-    //   158: getfield 128	com/tencent/mm/plugin/exdevice/service/y:qgz	Landroid/os/RemoteCallbackList;
+    //   158: getfield 128	com/tencent/mm/plugin/exdevice/service/y:qne	Landroid/os/RemoteCallbackList;
     //   161: invokevirtual 284	android/os/RemoteCallbackList:finishBroadcast	()V
     //   164: sipush 23763
     //   167: invokestatic 188	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   170: iconst_1
     //   171: ireturn
     //   172: aload_0
-    //   173: getfield 128	com/tencent/mm/plugin/exdevice/service/y:qgz	Landroid/os/RemoteCallbackList;
+    //   173: getfield 128	com/tencent/mm/plugin/exdevice/service/y:qne	Landroid/os/RemoteCallbackList;
     //   176: invokevirtual 284	android/os/RemoteCallbackList:finishBroadcast	()V
     //   179: goto -15 -> 164
     //   182: astore_3
     //   183: aload_0
-    //   184: getfield 128	com/tencent/mm/plugin/exdevice/service/y:qgz	Landroid/os/RemoteCallbackList;
+    //   184: getfield 128	com/tencent/mm/plugin/exdevice/service/y:qne	Landroid/os/RemoteCallbackList;
     //   187: invokevirtual 284	android/os/RemoteCallbackList:finishBroadcast	()V
     //   190: sipush 23763
     //   193: invokestatic 188	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -1309,34 +1309,34 @@ public final class y
   public final boolean e(int paramInt, j paramj)
   {
     AppMethodBeat.i(23754);
-    ad.d("MicroMsg.exdevice.RemoteBTDeviceAdapter", "simpleBlutoothStopScan. bluetoothVersion=%d", new Object[] { Integer.valueOf(paramInt) });
+    ae.d("MicroMsg.exdevice.RemoteBTDeviceAdapter", "simpleBlutoothStopScan. bluetoothVersion=%d", new Object[] { Integer.valueOf(paramInt) });
     if (paramj == null)
     {
-      ad.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "stop scan callback is null. just return");
+      ae.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "stop scan callback is null. just return");
       AppMethodBeat.o(23754);
       return false;
     }
-    if (this.qgB == null)
+    if (this.qng == null)
     {
-      ad.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "stop scan mBLESimpleMgr is null. just return");
+      ae.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "stop scan mBLESimpleMgr is null. just return");
       AppMethodBeat.o(23754);
       return false;
     }
-    com.tencent.mm.plugin.d.a.b.e locale = this.qgB;
-    ad.d("MicroMsg.exdevice.BluetoothLESimpleManager", "simple ble stop scan");
+    com.tencent.mm.plugin.d.a.b.e locale = this.qng;
+    ae.d("MicroMsg.exdevice.BluetoothLESimpleManager", "simple ble stop scan");
     boolean bool;
-    if (locale.nQb != null) {
+    if (locale.nVH != null) {
       bool = true;
     }
     for (;;)
     {
       Assert.assertTrue(bool);
-      if (!locale.bMG())
+      if (!locale.bNE())
       {
-        ad.e("MicroMsg.exdevice.BluetoothLESimpleManager", "BLE Unsupport");
+        ae.e("MicroMsg.exdevice.BluetoothLESimpleManager", "BLE Unsupport");
         bool = false;
         if (!bool) {
-          ad.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "mBTDeviceMrg.stopScan Failed!!!");
+          ae.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "mBTDeviceMrg.stopScan Failed!!!");
         }
       }
       try
@@ -1347,14 +1347,14 @@ public final class y
         bool = false;
         continue;
         locale.mHandler.removeCallbacks(locale.mRunnable);
-        bool = locale.nQb.a(false, locale.nQe);
+        bool = locale.nVH.a(false, locale.nVK);
       }
       catch (RemoteException paramj)
       {
         for (;;)
         {
-          ad.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "simpleBLE.onScanCallback failed!!!, %s", new Object[] { paramj.getMessage() });
-          ad.printErrStackTrace("MicroMsg.exdevice.RemoteBTDeviceAdapter", paramj, "", new Object[0]);
+          ae.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "simpleBLE.onScanCallback failed!!!, %s", new Object[] { paramj.getMessage() });
+          ae.printErrStackTrace("MicroMsg.exdevice.RemoteBTDeviceAdapter", paramj, "", new Object[0]);
         }
       }
     }
@@ -1363,13 +1363,13 @@ public final class y
   public final boolean e(long paramLong, int paramInt1, int paramInt2, String paramString)
   {
     AppMethodBeat.i(23762);
-    ad.d("MicroMsg.exdevice.RemoteBTDeviceAdapter", "simpleBTOnSendEndImpl. mac=%d, errType = %d, errCode=%d, errMsg=%s", new Object[] { Long.valueOf(paramLong), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-    int i = this.qgA.beginBroadcast();
-    t localt = (t)a(paramLong, this.qgA, i);
+    ae.d("MicroMsg.exdevice.RemoteBTDeviceAdapter", "simpleBTOnSendEndImpl. mac=%d, errType = %d, errCode=%d, errMsg=%s", new Object[] { Long.valueOf(paramLong), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    int i = this.qnf.beginBroadcast();
+    t localt = (t)a(paramLong, this.qnf, i);
     if (localt == null)
     {
-      ad.w("MicroMsg.exdevice.RemoteBTDeviceAdapter", "Cannot find Callback By deviceId = ".concat(String.valueOf(paramLong)));
-      this.qgA.finishBroadcast();
+      ae.w("MicroMsg.exdevice.RemoteBTDeviceAdapter", "Cannot find Callback By deviceId = ".concat(String.valueOf(paramLong)));
+      this.qnf.finishBroadcast();
       AppMethodBeat.o(23762);
       return false;
     }
@@ -1380,13 +1380,13 @@ public final class y
     }
     catch (RemoteException paramString)
     {
-      ad.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "callback.onSendEnd Failed!!!");
-      ad.printErrStackTrace("MicroMsg.exdevice.RemoteBTDeviceAdapter", paramString, "", new Object[0]);
+      ae.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "callback.onSendEnd Failed!!!");
+      ae.printErrStackTrace("MicroMsg.exdevice.RemoteBTDeviceAdapter", paramString, "", new Object[0]);
       return false;
     }
     finally
     {
-      this.qgA.finishBroadcast();
+      this.qnf.finishBroadcast();
       AppMethodBeat.o(23762);
     }
   }
@@ -1394,29 +1394,29 @@ public final class y
   public final void setChannelSessionKey(long paramLong, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(23748);
-    ad.i("MicroMsg.exdevice.RemoteBTDeviceAdapter", "---setChannelSessionKey--- deviceId = %d", new Object[] { Long.valueOf(paramLong) });
-    a locala = this.qgm;
-    ad.i("MicroMsg.exdevice.BTDeviceManager", "------setChannelSessionKey------ deviceId = %d", new Object[] { Long.valueOf(paramLong) });
+    ae.i("MicroMsg.exdevice.RemoteBTDeviceAdapter", "---setChannelSessionKey--- deviceId = %d", new Object[] { Long.valueOf(paramLong) });
+    a locala = this.qmR;
+    ae.i("MicroMsg.exdevice.BTDeviceManager", "------setChannelSessionKey------ deviceId = %d", new Object[] { Long.valueOf(paramLong) });
     paramArrayOfByte = new a.f(paramLong, paramArrayOfByte);
     if (!locala.mHandler.sendMessage(locala.mHandler.obtainMessage(10, paramArrayOfByte))) {
-      ad.e("MicroMsg.exdevice.BTDeviceManager", "mHandler.sendMessage failed!!! messageWhat = %d", new Object[] { Integer.valueOf(10) });
+      ae.e("MicroMsg.exdevice.BTDeviceManager", "mHandler.sendMessage failed!!! messageWhat = %d", new Object[] { Integer.valueOf(10) });
     }
     AppMethodBeat.o(23748);
   }
   
-  public final boolean uJ(long paramLong)
+  public final boolean va(long paramLong)
   {
     AppMethodBeat.i(23737);
-    ad.i("MicroMsg.exdevice.RemoteBTDeviceAdapter", "stopChannel deviceId = %d", new Object[] { Long.valueOf(paramLong) });
+    ae.i("MicroMsg.exdevice.RemoteBTDeviceAdapter", "stopChannel deviceId = %d", new Object[] { Long.valueOf(paramLong) });
     if (paramLong < 0L)
     {
-      ad.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "Invalid device id = %d", new Object[] { Long.valueOf(paramLong) });
+      ae.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "Invalid device id = %d", new Object[] { Long.valueOf(paramLong) });
       AppMethodBeat.o(23737);
       return false;
     }
     if (!this.mHandler.sendMessage(this.mHandler.obtainMessage(4, Long.valueOf(paramLong))))
     {
-      ad.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "mHandler.sendMessage failed!!! message what = %d", new Object[] { Integer.valueOf(4) });
+      ae.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "mHandler.sendMessage failed!!! message what = %d", new Object[] { Integer.valueOf(4) });
       AppMethodBeat.o(23737);
       return false;
     }
@@ -1424,24 +1424,24 @@ public final class y
     return true;
   }
   
-  public final boolean uK(long paramLong)
+  public final boolean vb(long paramLong)
   {
     return false;
   }
   
-  public final boolean uL(long paramLong)
+  public final boolean vc(long paramLong)
   {
     AppMethodBeat.i(23740);
-    ad.i("MicroMsg.exdevice.RemoteBTDeviceAdapter", "stopTask, task Id = %d", new Object[] { Long.valueOf(paramLong) });
+    ae.i("MicroMsg.exdevice.RemoteBTDeviceAdapter", "stopTask, task Id = %d", new Object[] { Long.valueOf(paramLong) });
     if (paramLong < 0L)
     {
-      ad.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "taskId < 0");
+      ae.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "taskId < 0");
       AppMethodBeat.o(23740);
       return false;
     }
     if (!this.mHandler.sendMessage(this.mHandler.obtainMessage(1, Long.valueOf(paramLong))))
     {
-      ad.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "mHandler.sendMessage, message what = %d", new Object[] { Integer.valueOf(1) });
+      ae.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "mHandler.sendMessage, message what = %d", new Object[] { Integer.valueOf(1) });
       AppMethodBeat.o(23740);
       return false;
     }
@@ -1449,18 +1449,18 @@ public final class y
     return true;
   }
   
-  public final boolean uM(long paramLong)
+  public final boolean vd(long paramLong)
   {
     AppMethodBeat.i(23756);
     if (paramLong < 0L)
     {
-      ad.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "Invalid device id = %d", new Object[] { Long.valueOf(paramLong) });
+      ae.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "Invalid device id = %d", new Object[] { Long.valueOf(paramLong) });
       AppMethodBeat.o(23756);
       return false;
     }
     if (!this.mHandler.sendMessage(this.mHandler.obtainMessage(8, Long.valueOf(paramLong))))
     {
-      ad.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "mHandler.sendMessage failed!!!, message what = %d", new Object[] { Integer.valueOf(8) });
+      ae.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "mHandler.sendMessage failed!!!, message what = %d", new Object[] { Integer.valueOf(8) });
       AppMethodBeat.o(23756);
       return false;
     }
@@ -1468,11 +1468,11 @@ public final class y
     return true;
   }
   
-  public final void yX(int paramInt)
+  public final void zg(int paramInt)
   {
     AppMethodBeat.i(23751);
-    ad.i("MicroMsg.exdevice.RemoteBTDeviceAdapter", "OnBluetoothStateChange, state = %d", new Object[] { Integer.valueOf(paramInt) });
-    int i = this.qgs.beginBroadcast() - 1;
+    ae.i("MicroMsg.exdevice.RemoteBTDeviceAdapter", "OnBluetoothStateChange, state = %d", new Object[] { Integer.valueOf(paramInt) });
+    int i = this.qmX.beginBroadcast() - 1;
     for (;;)
     {
       if (i >= 0)
@@ -1481,25 +1481,25 @@ public final class y
         localBundle.putInt("key_state", paramInt);
         try
         {
-          ((n)this.qgs.getBroadcastItem(i)).o(0, localBundle);
+          ((n)this.qmX.getBroadcastItem(i)).o(0, localBundle);
           i -= 1;
         }
         catch (RemoteException localRemoteException)
         {
           for (;;)
           {
-            ad.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "mCBListIExDeviceInvoker.getBroadcastItem(%d).onExdeviceInvoke failed!!!", new Object[] { Integer.valueOf(i) });
-            ad.printErrStackTrace("MicroMsg.exdevice.RemoteBTDeviceAdapter", localRemoteException, "", new Object[0]);
+            ae.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "mCBListIExDeviceInvoker.getBroadcastItem(%d).onExdeviceInvoke failed!!!", new Object[] { Integer.valueOf(i) });
+            ae.printErrStackTrace("MicroMsg.exdevice.RemoteBTDeviceAdapter", localRemoteException, "", new Object[0]);
           }
         }
       }
     }
-    this.qgs.finishBroadcast();
+    this.qmX.finishBroadcast();
     AppMethodBeat.o(23751);
   }
   
   final class a
-    extends ap
+    extends aq
   {
     public a(String paramString)
     {
@@ -1517,83 +1517,83 @@ public final class y
         AppMethodBeat.o(23725);
         return;
         paramMessage = (y.d)paramMessage.obj;
-        y.a(y.this, paramMessage.qfF, paramMessage.qag, paramMessage.pZU, paramMessage.ksX);
+        y.a(y.this, paramMessage.qmk, paramMessage.qgL, paramMessage.qgz, paramMessage.kwn);
         AppMethodBeat.o(23725);
         return;
         paramMessage = (y.k)paramMessage.obj;
-        if (!y.a(y.this, paramMessage.qfF, paramMessage.qgL)) {
-          ad.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "startTaskImp failed!!!");
+        if (!y.a(y.this, paramMessage.qmk, paramMessage.qnq)) {
+          ae.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "startTaskImp failed!!!");
         }
         AppMethodBeat.o(23725);
         return;
         long l = ((Long)paramMessage.obj).longValue();
         if (!y.a(y.this, l)) {
-          ad.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "stopTaskImp failed!!!");
+          ae.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "stopTaskImp failed!!!");
         }
         AppMethodBeat.o(23725);
         return;
         paramMessage = (y.c)paramMessage.obj;
-        y.a(y.this, paramMessage.nTx, paramMessage.qfD, paramMessage.qfE, paramMessage.pZU);
+        y.a(y.this, paramMessage.nZd, paramMessage.qmi, paramMessage.qmj, paramMessage.qgz);
         AppMethodBeat.o(23725);
         return;
         paramMessage = (y.j)paramMessage.obj;
-        if (!y.a(y.this, paramMessage.nTx, paramMessage.qgK, paramMessage.qgG)) {
-          ad.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "startChannelImp failed!!!");
+        if (!y.a(y.this, paramMessage.nZd, paramMessage.qnp, paramMessage.qnl)) {
+          ae.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "startChannelImp failed!!!");
         }
         AppMethodBeat.o(23725);
         return;
         if (!y.b(y.this, ((Long)paramMessage.obj).longValue()))
         {
-          ad.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "stopChannelImp failed!!!");
+          ae.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "stopChannelImp failed!!!");
           AppMethodBeat.o(23725);
           return;
           paramMessage = (y.b)paramMessage.obj;
-          y.a(y.this, paramMessage.mErrorCode, paramMessage.nTx, paramMessage.qab, paramMessage.qfC, paramMessage.pZV);
+          y.a(y.this, paramMessage.mErrorCode, paramMessage.nZd, paramMessage.qgG, paramMessage.qmh, paramMessage.qgA);
           AppMethodBeat.o(23725);
           return;
           paramMessage = (y.e)paramMessage.obj;
-          if (!y.this.c(paramMessage.qcT, paramMessage.qgF, paramMessage.qgG)) {
-            ad.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "simpleBTConnectImpl error");
+          if (!y.this.c(paramMessage.qjy, paramMessage.qnk, paramMessage.qnl)) {
+            ae.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "simpleBTConnectImpl error");
           }
           AppMethodBeat.o(23725);
           return;
           l = ((Long)paramMessage.obj).longValue();
           paramMessage = y.this;
-          ad.d("MicroMsg.exdevice.RemoteBTDeviceAdapter", "simpleBTDisonnectImpl. mac=%d", new Object[] { Long.valueOf(l) });
-          if (paramMessage.qgB != null)
+          ae.d("MicroMsg.exdevice.RemoteBTDeviceAdapter", "simpleBTDisonnectImpl. mac=%d", new Object[] { Long.valueOf(l) });
+          if (paramMessage.qng != null)
           {
-            paramMessage = paramMessage.qgB;
-            ad.d("MicroMsg.exdevice.BluetoothLESimpleManager", "disconnect. mac = %d", new Object[] { Long.valueOf(l) });
-            if (!paramMessage.bMG())
+            paramMessage = paramMessage.qng;
+            ae.d("MicroMsg.exdevice.BluetoothLESimpleManager", "disconnect. mac = %d", new Object[] { Long.valueOf(l) });
+            if (!paramMessage.bNE())
             {
-              ad.e("MicroMsg.exdevice.BluetoothLESimpleManager", "BLE Unsupport");
+              ae.e("MicroMsg.exdevice.BluetoothLESimpleManager", "BLE Unsupport");
               AppMethodBeat.o(23725);
               return;
             }
-            paramMessage.ad(new e.5(paramMessage, l));
+            paramMessage.ab(new e.5(paramMessage, l));
           }
           AppMethodBeat.o(23725);
           return;
           paramMessage = (y.c)paramMessage.obj;
-          if (!y.this.b(paramMessage.nTx, paramMessage.qfD, paramMessage.qfE, paramMessage.pZU, paramMessage.nQV)) {
-            ad.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "simpleBTOnSateChangeImpl error");
+          if (!y.this.b(paramMessage.nZd, paramMessage.qmi, paramMessage.qmj, paramMessage.qgz, paramMessage.nWB)) {
+            ae.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "simpleBTOnSateChangeImpl error");
           }
           AppMethodBeat.o(23725);
           return;
           paramMessage = (y.i)paramMessage.obj;
-          if (!y.this.c(paramMessage.qcT, paramMessage.mData, paramMessage.qgJ)) {
-            ad.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "simpleBTSendDataImpl error");
+          if (!y.this.c(paramMessage.qjy, paramMessage.mData, paramMessage.qno)) {
+            ae.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "simpleBTSendDataImpl error");
           }
           AppMethodBeat.o(23725);
           return;
           paramMessage = (y.h)paramMessage.obj;
-          if (!y.this.e(paramMessage.qcT, paramMessage.qag, paramMessage.pZU, paramMessage.ksX)) {
-            ad.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "simpleBTOnSendEndImpl error");
+          if (!y.this.e(paramMessage.qjy, paramMessage.qgL, paramMessage.qgz, paramMessage.kwn)) {
+            ae.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "simpleBTOnSendEndImpl error");
           }
           AppMethodBeat.o(23725);
           return;
           paramMessage = (y.f)paramMessage.obj;
-          y.this.d(paramMessage.qcT, paramMessage.mData);
+          y.this.d(paramMessage.qjy, paramMessage.mData);
           AppMethodBeat.o(23725);
           return;
           paramMessage = (y.g)paramMessage.obj;
@@ -1606,95 +1606,95 @@ public final class y
   static final class b
   {
     int mErrorCode = 0;
-    long nTx = 0L;
-    byte[] pZV = null;
-    short qab = 0;
-    short qfC = 0;
+    long nZd = 0L;
+    byte[] qgA = null;
+    short qgG = 0;
+    short qmh = 0;
   }
   
   static final class c
   {
-    long nQV = 0L;
-    long nTx = 0L;
-    int pZU = 0;
-    int qfD = 0;
-    int qfE = 0;
+    long nWB = 0L;
+    long nZd = 0L;
+    int qgz = 0;
+    int qmi = 0;
+    int qmj = 0;
   }
   
   static final class d
   {
-    String ksX = null;
-    int pZU = 0;
-    int qag = 0;
-    long qfF = 0L;
+    String kwn = null;
+    int qgL = 0;
+    int qgz = 0;
+    long qmk = 0L;
   }
   
   static final class e
   {
-    public long qcT;
-    public int qgF;
-    public k qgG;
+    public long qjy;
+    public int qnk;
+    public k qnl;
   }
   
   static final class f
   {
     public byte[] mData;
-    public long qcT;
+    public long qjy;
   }
   
   static final class g
   {
-    int kGT;
+    int kKi;
     String mDeviceName;
-    String nTB;
-    boolean qgH;
-    byte[] qgI;
+    String nZh;
+    boolean qnm;
+    byte[] qnn;
   }
   
   static final class h
   {
-    public String ksX;
-    public int pZU;
-    public int qag;
-    public long qcT;
+    public String kwn;
+    public int qgL;
+    public int qgz;
+    public long qjy;
   }
   
   static final class i
   {
     public byte[] mData;
-    public long qcT;
-    public t qgJ;
+    public long qjy;
+    public t qno;
   }
   
   static final class j
   {
-    long nTx;
-    k qgG;
-    int qgK;
+    long nZd;
+    k qnl;
+    int qnp;
     
     public j(long paramLong, int paramInt, k paramk)
     {
-      this.nTx = paramLong;
-      this.qgK = paramInt;
-      this.qgG = paramk;
+      this.nZd = paramLong;
+      this.qnp = paramInt;
+      this.qnl = paramk;
     }
   }
   
   static final class k
   {
-    long qfF;
-    p qgL;
+    long qmk;
+    p qnq;
     
     public k(long paramLong, p paramp)
     {
-      this.qfF = paramLong;
-      this.qgL = paramp;
+      this.qmk = paramLong;
+      this.qnq = paramp;
     }
   }
   
   static final class l
   {
-    long qfF = 0L;
+    long qmk = 0L;
   }
 }
 

@@ -1,133 +1,133 @@
 package com.tencent.mm.live.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.kernel.b;
 import com.tencent.mm.live.b.a.o;
 import com.tencent.mm.live.core.core.b.c;
 import com.tencent.mm.live.core.core.b.d;
 import com.tencent.mm.live.core.core.c.a;
-import com.tencent.mm.protocal.protobuf.brp;
-import com.tencent.mm.protocal.protobuf.buq;
-import com.tencent.mm.protocal.protobuf.buw;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.bsj;
+import com.tencent.mm.protocal.protobuf.bvk;
+import com.tencent.mm.protocal.protobuf.bvq;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.trtc.TRTCCloudDef.TRTCParams;
 import d.g.a.r;
 import d.g.b.p;
-import d.k.h;
+import d.k.j;
 import d.l;
 import d.z;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/live/model/JoinLiveRoom;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "liveId", "", "wechatRoomId", "", "liveName", "isAnchor", "", "(JLjava/lang/String;Ljava/lang/String;Z)V", "callback", "Lkotlin/Function4;", "", "Lkotlin/ParameterName;", "name", "ret", "errMsg", "Lcom/tencent/mm/live/core/core/model/LiveRoomInfo;", "liveRoomInfo", "Lcom/tencent/trtc/TRTCCloudDef$TRTCParams;", "trtcParams", "", "join", "onSceneEnd", "errType", "errCode", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Companion", "plugin-logic_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/live/model/JoinLiveRoom;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "liveId", "", "wechatRoomId", "", "liveName", "isAnchor", "", "(JLjava/lang/String;Ljava/lang/String;Z)V", "callback", "Lkotlin/Function4;", "", "Lkotlin/ParameterName;", "name", "ret", "errMsg", "Lcom/tencent/mm/live/core/core/model/LiveRoomInfo;", "liveRoomInfo", "Lcom/tencent/trtc/TRTCCloudDef$TRTCParams;", "trtcParams", "", "join", "onSceneEnd", "errType", "errCode", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Companion", "plugin-logic_release"})
 public final class a
   implements f
 {
-  public static final a gMF;
-  private final boolean dyu;
-  private final String gGA;
-  private final long gGy;
-  private r<? super Integer, ? super String, ? super c, ? super TRTCCloudDef.TRTCParams, z> gMD;
-  private final String gME;
+  public static final a gPo;
+  private final boolean dzz;
+  private final long gJh;
+  private final String gJj;
+  private r<? super Integer, ? super String, ? super c, ? super TRTCCloudDef.TRTCParams, z> gPm;
+  private final String gPn;
   
   static
   {
-    AppMethodBeat.i(212020);
-    gMF = new a((byte)0);
-    AppMethodBeat.o(212020);
+    AppMethodBeat.i(215639);
+    gPo = new a((byte)0);
+    AppMethodBeat.o(215639);
   }
   
   private a(long paramLong, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(212019);
-    this.gGy = paramLong;
-    this.gME = paramString1;
-    this.gGA = paramString2;
-    this.dyu = false;
-    AppMethodBeat.o(212019);
+    AppMethodBeat.i(215638);
+    this.gJh = paramLong;
+    this.gPn = paramString1;
+    this.gJj = paramString2;
+    this.dzz = false;
+    AppMethodBeat.o(215638);
   }
   
   public final void a(r<? super Integer, ? super String, ? super c, ? super TRTCCloudDef.TRTCParams, z> paramr)
   {
-    AppMethodBeat.i(212017);
-    Object localObject1 = com.tencent.mm.kernel.g.ajB();
+    AppMethodBeat.i(215636);
+    Object localObject1 = com.tencent.mm.kernel.g.ajQ();
     p.g(localObject1, "MMKernel.network()");
-    ((b)localObject1).aiU().a(3797, (f)this);
-    long l = this.gGy;
-    localObject1 = this.gME;
-    Object localObject2 = g.gOr;
-    localObject1 = new o(l, (String)localObject1, g.anq());
-    localObject2 = com.tencent.mm.kernel.g.ajB();
+    ((b)localObject1).ajj().a(3797, (f)this);
+    long l = this.gJh;
+    localObject1 = this.gPn;
+    Object localObject2 = g.gQZ;
+    localObject1 = new o(l, (String)localObject1, g.anG());
+    localObject2 = com.tencent.mm.kernel.g.ajQ();
     p.g(localObject2, "MMKernel.network()");
-    ((b)localObject2).aiU().b((n)localObject1);
-    this.gMD = paramr;
-    AppMethodBeat.o(212017);
+    ((b)localObject2).ajj().b((n)localObject1);
+    this.gPm = paramr;
+    AppMethodBeat.o(215636);
   }
   
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
-    AppMethodBeat.i(212018);
+    AppMethodBeat.i(215637);
     Object localObject1;
     Object localObject2;
     if ((paramn instanceof o))
     {
-      ad.i("MicroMsg.JoinLiveRoom", "JoinLiveRoom on SceneEnd");
+      ae.i("MicroMsg.JoinLiveRoom", "JoinLiveRoom on SceneEnd");
       if ((paramInt1 != 0) || (paramInt2 != 0))
       {
-        ad.i("MicroMsg.JoinLiveRoom", "join live room failed " + paramInt1 + ' ' + paramInt2);
-        localObject1 = this.gMD;
+        ae.i("MicroMsg.JoinLiveRoom", "join live room failed " + paramInt1 + ' ' + paramInt2);
+        localObject1 = this.gPm;
         if (localObject1 != null)
         {
           paramn = paramString;
           if (paramString == null) {
             paramn = "";
           }
-          paramString = d.gHH;
-          paramString = d.alB();
-          localObject2 = d.gHH;
-          ((r)localObject1).a(Integer.valueOf(paramInt2), paramn, paramString, d.alA());
+          paramString = d.gKq;
+          paramString = d.alQ();
+          localObject2 = d.gKq;
+          ((r)localObject1).a(Integer.valueOf(paramInt2), paramn, paramString, d.alP());
         }
-        paramString = com.tencent.mm.kernel.g.ajB();
+        paramString = com.tencent.mm.kernel.g.ajQ();
         p.g(paramString, "MMKernel.network()");
-        paramString.aiU().b(3797, (f)this);
+        paramString.ajj().b(3797, (f)this);
       }
     }
     else
     {
-      AppMethodBeat.o(212018);
+      AppMethodBeat.o(215637);
       return;
     }
-    paramString = ((o)paramn).gQj;
-    paramn = g.gOr;
+    paramString = ((o)paramn).gSR;
+    paramn = g.gQZ;
     if (paramString != null) {}
-    for (paramString = paramString.GMH;; paramString = null)
+    for (paramString = paramString.Hgi;; paramString = null)
     {
       g.a(paramString);
-      paramString = g.gOr;
-      buw localbuw = g.ant();
-      if (localbuw == null) {
+      paramString = g.gQZ;
+      bvq localbvq = g.anI();
+      if (localbvq == null) {
         break;
       }
       localObject1 = new TRTCCloudDef.TRTCParams();
       localObject2 = new c(null, 0L, null, 0, null, 0L, 0L, 127);
-      paramString = e.gMR;
-      paramString = g.gOr;
-      paramn = g.ans().Gbw;
+      paramString = e.gPA;
+      paramString = g.gQZ;
+      paramn = g.anH().Gud;
       paramString = paramn;
       if (paramn == null) {
         paramString = "";
       }
-      paramn = g.gOr;
-      e.a(paramString, localbuw, g.ans(), (TRTCCloudDef.TRTCParams)localObject1, (c)localObject2);
-      if (this.dyu)
+      paramn = g.gQZ;
+      e.a(paramString, localbvq, g.anH(), (TRTCCloudDef.TRTCParams)localObject1, (c)localObject2);
+      if (this.dzz)
       {
-        paramString = c.a.gGU;
-        ((c)localObject2).gHy = c.a.alk();
+        paramString = c.a.gJD;
+        ((c)localObject2).gKh = c.a.alz();
       }
-      long l = h.aH((localbuw.GPc - 60L) * 1000L, 60000L);
-      i.gPh.rk(l);
-      paramString = this.gMD;
+      long l = j.aG((localbvq.HiE - 60L) * 1000L, 60000L);
+      i.gRP.rx(l);
+      paramString = this.gPm;
       if (paramString == null) {
         break;
       }
@@ -136,7 +136,7 @@ public final class a
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/live/model/JoinLiveRoom$Companion;", "", "()V", "TAG", "", "plugin-logic_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/live/model/JoinLiveRoom$Companion;", "", "()V", "TAG", "", "plugin-logic_release"})
   public static final class a {}
 }
 

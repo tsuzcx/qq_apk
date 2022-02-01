@@ -18,28 +18,28 @@ public final class b
   extends BaseAdapter
 {
   private Context mContext;
-  List<h> pdB;
+  List<h> pkh;
   
   public b(Context paramContext)
   {
     AppMethodBeat.i(64041);
-    this.pdB = new ArrayList();
+    this.pkh = new ArrayList();
     this.mContext = paramContext;
     AppMethodBeat.o(64041);
   }
   
-  public final h Bj(int paramInt)
+  public final h Bv(int paramInt)
   {
     AppMethodBeat.i(64043);
-    h localh = (h)this.pdB.get(paramInt);
+    h localh = (h)this.pkh.get(paramInt);
     AppMethodBeat.o(64043);
     return localh;
   }
   
-  public final void cL(List<h> paramList)
+  public final void cO(List<h> paramList)
   {
     AppMethodBeat.i(64046);
-    this.pdB.addAll(paramList);
+    this.pkh.addAll(paramList);
     notifyDataSetChanged();
     AppMethodBeat.o(64046);
   }
@@ -47,7 +47,7 @@ public final class b
   public final int getCount()
   {
     AppMethodBeat.i(64042);
-    int i = this.pdB.size();
+    int i = this.pkh.size();
     AppMethodBeat.o(64042);
     return i;
   }
@@ -63,14 +63,14 @@ public final class b
     View localView = paramView;
     if (paramView == null)
     {
-      localView = z.jO(this.mContext).inflate(2131493555, paramViewGroup, false);
+      localView = z.jV(this.mContext).inflate(2131493555, paramViewGroup, false);
       localView.setTag(new a(localView));
     }
     paramView = (a)localView.getTag();
-    paramViewGroup = Bj(paramInt);
-    paramView.oTF.setText(e.a(this.mContext, paramViewGroup.paq, paramViewGroup.type));
-    paramView.pdC.setText(e.Bh(paramViewGroup.dsd));
-    paramView.lDu.setText(this.mContext.getString(2131757448, new Object[] { Integer.valueOf(paramViewGroup.par) }));
+    paramViewGroup = Bv(paramInt);
+    paramView.pah.setText(e.a(this.mContext, paramViewGroup.pgU, paramViewGroup.type));
+    paramView.pki.setText(e.Bt(paramViewGroup.dtj));
+    paramView.lHT.setText(this.mContext.getString(2131757448, new Object[] { Integer.valueOf(paramViewGroup.pgV) }));
     AppMethodBeat.o(64044);
     return localView;
   }
@@ -78,26 +78,26 @@ public final class b
   public final void setData(List<h> paramList)
   {
     AppMethodBeat.i(64045);
-    this.pdB.clear();
-    this.pdB.addAll(paramList);
+    this.pkh.clear();
+    this.pkh.addAll(paramList);
     notifyDataSetChanged();
     AppMethodBeat.o(64045);
   }
   
   static final class a
   {
-    TextView lDu;
-    TextView oTF;
-    WalletTextView pdC;
-    TextView pdD;
+    TextView lHT;
+    TextView pah;
+    WalletTextView pki;
+    TextView pkj;
     
     public a(View paramView)
     {
       AppMethodBeat.i(64040);
-      this.oTF = ((TextView)paramView.findViewById(2131298436));
-      this.pdD = ((TextView)paramView.findViewById(2131298435));
-      this.pdC = ((WalletTextView)paramView.findViewById(2131298441));
-      this.lDu = ((TextView)paramView.findViewById(2131298437));
+      this.pah = ((TextView)paramView.findViewById(2131298436));
+      this.pkj = ((TextView)paramView.findViewById(2131298435));
+      this.pki = ((WalletTextView)paramView.findViewById(2131298441));
+      this.lHT = ((TextView)paramView.findViewById(2131298437));
       AppMethodBeat.o(64040);
     }
   }

@@ -8,63 +8,63 @@ import java.util.Arrays;
 
 public final class a
 {
-  public static final byte[] ntf = { 68, 88, 68, 73, 70, 70 };
-  public int MfA;
-  public int MfB;
-  public int MfC;
-  public int MfD;
-  public int MfE;
-  public int MfF;
-  public int MfG;
-  public int MfH;
-  public int MfI;
-  public int MfJ;
-  public int MfK;
-  public int MfL;
-  public int MfM;
-  public int MfN;
-  public int MfO;
-  public int MfP;
-  public int MfQ;
-  public byte[] MfR;
-  public final com.tencent.tinker.a.a.a.a Mfw;
-  private short Mfx;
-  public int Mfy;
-  private int Mfz;
+  public static final byte[] nyA = { 68, 88, 68, 73, 70, 70 };
+  public int MCA;
+  public int MCB;
+  public int MCC;
+  public int MCD;
+  public int MCE;
+  public int MCF;
+  public int MCG;
+  public int MCH;
+  public int MCI;
+  public int MCJ;
+  public int MCK;
+  public int MCL;
+  public int MCM;
+  public int MCN;
+  public byte[] MCO;
+  public final com.tencent.tinker.a.a.a.a MCt;
+  private short MCu;
+  public int MCv;
+  private int MCw;
+  public int MCx;
+  public int MCy;
+  public int MCz;
   
   public a(InputStream paramInputStream)
   {
-    this.Mfw = new com.tencent.tinker.a.a.a.a(ByteBuffer.wrap(d.s(paramInputStream)));
-    paramInputStream = this.Mfw.ahD(ntf.length);
-    if (c.p(paramInputStream, ntf) != 0) {
+    this.MCt = new com.tencent.tinker.a.a.a.a(ByteBuffer.wrap(d.s(paramInputStream)));
+    paramInputStream = this.MCt.aim(nyA.length);
+    if (c.q(paramInputStream, nyA) != 0) {
       throw new IllegalStateException("bad dex patch file magic: " + Arrays.toString(paramInputStream));
     }
-    this.Mfx = this.Mfw.aKX.getShort();
-    if (c.a(this.Mfx, (short)2) != 0) {
-      throw new IllegalStateException("bad dex patch file version: " + this.Mfx + ", expected: 2");
+    this.MCu = this.MCt.aKX.getShort();
+    if (c.a(this.MCu, (short)2) != 0) {
+      throw new IllegalStateException("bad dex patch file version: " + this.MCu + ", expected: 2");
     }
-    this.Mfy = this.Mfw.aKX.getInt();
-    this.Mfz = this.Mfw.aKX.getInt();
-    this.MfA = this.Mfw.aKX.getInt();
-    this.MfB = this.Mfw.aKX.getInt();
-    this.MfC = this.Mfw.aKX.getInt();
-    this.MfD = this.Mfw.aKX.getInt();
-    this.MfE = this.Mfw.aKX.getInt();
-    this.MfF = this.Mfw.aKX.getInt();
-    this.MfG = this.Mfw.aKX.getInt();
-    this.MfH = this.Mfw.aKX.getInt();
-    this.MfI = this.Mfw.aKX.getInt();
-    this.MfJ = this.Mfw.aKX.getInt();
-    this.MfK = this.Mfw.aKX.getInt();
-    this.MfL = this.Mfw.aKX.getInt();
-    this.MfM = this.Mfw.aKX.getInt();
-    this.MfN = this.Mfw.aKX.getInt();
-    this.MfO = this.Mfw.aKX.getInt();
-    this.MfP = this.Mfw.aKX.getInt();
-    this.MfQ = this.Mfw.aKX.getInt();
-    this.MfR = this.Mfw.ahD(20);
-    paramInputStream = this.Mfw;
-    int i = this.Mfz;
+    this.MCv = this.MCt.aKX.getInt();
+    this.MCw = this.MCt.aKX.getInt();
+    this.MCx = this.MCt.aKX.getInt();
+    this.MCy = this.MCt.aKX.getInt();
+    this.MCz = this.MCt.aKX.getInt();
+    this.MCA = this.MCt.aKX.getInt();
+    this.MCB = this.MCt.aKX.getInt();
+    this.MCC = this.MCt.aKX.getInt();
+    this.MCD = this.MCt.aKX.getInt();
+    this.MCE = this.MCt.aKX.getInt();
+    this.MCF = this.MCt.aKX.getInt();
+    this.MCG = this.MCt.aKX.getInt();
+    this.MCH = this.MCt.aKX.getInt();
+    this.MCI = this.MCt.aKX.getInt();
+    this.MCJ = this.MCt.aKX.getInt();
+    this.MCK = this.MCt.aKX.getInt();
+    this.MCL = this.MCt.aKX.getInt();
+    this.MCM = this.MCt.aKX.getInt();
+    this.MCN = this.MCt.aKX.getInt();
+    this.MCO = this.MCt.aim(20);
+    paramInputStream = this.MCt;
+    int i = this.MCw;
     paramInputStream.aKX.position(i);
   }
 }

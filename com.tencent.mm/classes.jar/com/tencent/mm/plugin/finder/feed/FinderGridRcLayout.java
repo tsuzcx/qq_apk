@@ -6,53 +6,53 @@ import android.util.AttributeSet;
 import android.view.View.MeasureSpec;
 import android.widget.FrameLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cc.a;
+import com.tencent.mm.cb.a;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/feed/FinderGridRcLayout;", "Landroid/widget/FrameLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "defStyleRes", "(Landroid/content/Context;Landroid/util/AttributeSet;II)V", "cornerDp", "", "getCornerDp", "()F", "radiusArray", "", "dispatchDraw", "", "canvas", "Landroid/graphics/Canvas;", "onMeasure", "widthMeasureSpec", "heightMeasureSpec", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/feed/FinderGridRcLayout;", "Landroid/widget/FrameLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "defStyleRes", "(Landroid/content/Context;Landroid/util/AttributeSet;II)V", "cornerDp", "", "getCornerDp", "()F", "radiusArray", "", "dispatchDraw", "", "canvas", "Landroid/graphics/Canvas;", "onMeasure", "widthMeasureSpec", "heightMeasureSpec", "plugin-finder_release"})
 public final class FinderGridRcLayout
   extends FrameLayout
 {
-  private final float rWb;
-  private final float[] rWc;
+  private final float seI;
+  private final float[] seJ;
   
   public FinderGridRcLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(201873);
-    this.rWb = (a.fromDPToPix(getContext(), 8) * 1.0F);
-    this.rWc = new float[] { this.rWb, this.rWb, this.rWb, this.rWb, this.rWb, this.rWb, this.rWb, this.rWb };
-    AppMethodBeat.o(201873);
+    AppMethodBeat.i(202333);
+    this.seI = (a.fromDPToPix(getContext(), 8) * 1.0F);
+    this.seJ = new float[] { this.seI, this.seI, this.seI, this.seI, this.seI, this.seI, this.seI, this.seI };
+    AppMethodBeat.o(202333);
   }
   
   public FinderGridRcLayout(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(201874);
-    this.rWb = (a.fromDPToPix(getContext(), 8) * 1.0F);
-    this.rWc = new float[] { this.rWb, this.rWb, this.rWb, this.rWb, this.rWb, this.rWb, this.rWb, this.rWb };
-    AppMethodBeat.o(201874);
+    AppMethodBeat.i(202334);
+    this.seI = (a.fromDPToPix(getContext(), 8) * 1.0F);
+    this.seJ = new float[] { this.seI, this.seI, this.seI, this.seI, this.seI, this.seI, this.seI, this.seI };
+    AppMethodBeat.o(202334);
   }
   
   protected final void dispatchDraw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(201871);
+    AppMethodBeat.i(202331);
     p.h(paramCanvas, "canvas");
     super.dispatchDraw(paramCanvas);
-    AppMethodBeat.o(201871);
+    AppMethodBeat.o(202331);
   }
   
   public final float getCornerDp()
   {
-    return this.rWb;
+    return this.seI;
   }
   
   protected final void onMeasure(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(201872);
+    AppMethodBeat.i(202332);
     super.onMeasure(paramInt1, View.MeasureSpec.makeMeasureSpec(View.MeasureSpec.getSize(paramInt1), 1073741824));
-    AppMethodBeat.o(201872);
+    AppMethodBeat.o(202332);
   }
 }
 

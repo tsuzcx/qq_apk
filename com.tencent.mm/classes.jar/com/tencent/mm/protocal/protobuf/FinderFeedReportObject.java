@@ -4,13 +4,14 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 public class FinderFeedReportObject
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
   public String actionTrace;
   public String beforeCutMediaPath;
   public long cdnEndTime;
   public int cgiErrorCode;
   public int cgiErrorType;
+  public String clickId;
   public int clickMentionCount;
   public int clickSucMentionCount;
   public int descCount;
@@ -40,7 +41,7 @@ public class FinderFeedReportObject
   public long remuxEndTime;
   public int remuxType;
   public int retryCount;
-  public aoy selectLocation;
+  public apl selectLocation;
   public long sendOrExitButtonTime;
   public String sessionId;
   public int uploadLogicError;
@@ -73,10 +74,10 @@ public class FinderFeedReportObject
       }
       paramVarArgs.aS(2, this.enterScene);
       paramVarArgs.aS(3, this.exitPageId);
-      paramVarArgs.aY(4, this.enterTakePhotoTime);
-      paramVarArgs.aY(5, this.enterVideoEditTime);
-      paramVarArgs.aY(6, this.sendOrExitButtonTime);
-      paramVarArgs.aY(7, this.videoRecordTime);
+      paramVarArgs.aZ(4, this.enterTakePhotoTime);
+      paramVarArgs.aZ(5, this.enterVideoEditTime);
+      paramVarArgs.aZ(6, this.sendOrExitButtonTime);
+      paramVarArgs.aZ(7, this.videoRecordTime);
       paramVarArgs.aS(8, this.videoSource);
       paramVarArgs.aS(9, this.videoEmojiCount);
       paramVarArgs.aS(10, this.videoWordingCount);
@@ -100,8 +101,8 @@ public class FinderFeedReportObject
         paramVarArgs.d(21, this.link);
       }
       paramVarArgs.aS(22, this.draft);
-      paramVarArgs.aY(23, this.cdnEndTime);
-      paramVarArgs.aY(24, this.remuxEndTime);
+      paramVarArgs.aZ(23, this.cdnEndTime);
+      paramVarArgs.aZ(24, this.remuxEndTime);
       paramVarArgs.e(25, 8, this.mediaList);
       paramVarArgs.aS(26, this.retryCount);
       paramVarArgs.aS(27, this.isBeauty);
@@ -128,7 +129,7 @@ public class FinderFeedReportObject
       paramVarArgs.aS(43, this.lbsFlag);
       if (this.selectLocation != null)
       {
-        paramVarArgs.lC(44, this.selectLocation.computeSize());
+        paramVarArgs.lJ(44, this.selectLocation.computeSize());
         this.selectLocation.writeFields(paramVarArgs);
       }
       paramVarArgs.aS(45, this.remuxType);
@@ -136,15 +137,18 @@ public class FinderFeedReportObject
       paramVarArgs.aS(47, this.postStage);
       paramVarArgs.aS(48, this.cgiErrorCode);
       paramVarArgs.aS(49, this.cgiErrorType);
+      if (this.clickId != null) {
+        paramVarArgs.d(50, this.clickId);
+      }
       AppMethodBeat.o(168957);
       return 0;
     }
     if (paramInt == 1) {
       if (this.sessionId == null) {
-        break label2646;
+        break label2694;
       }
     }
-    label2646:
+    label2694:
     for (paramInt = f.a.a.b.b.a.e(1, this.sessionId) + 0;; paramInt = 0)
     {
       int i = paramInt + f.a.a.b.b.a.bz(2, this.enterScene) + f.a.a.b.b.a.bz(3, this.exitPageId) + f.a.a.b.b.a.p(4, this.enterTakePhotoTime) + f.a.a.b.b.a.p(5, this.enterVideoEditTime) + f.a.a.b.b.a.p(6, this.sendOrExitButtonTime) + f.a.a.b.b.a.p(7, this.videoRecordTime) + f.a.a.b.b.a.bz(8, this.videoSource) + f.a.a.b.b.a.bz(9, this.videoEmojiCount) + f.a.a.b.b.a.bz(10, this.videoWordingCount);
@@ -184,23 +188,23 @@ public class FinderFeedReportObject
       i = i + f.a.a.b.b.a.bz(39, this.mentionCount) + f.a.a.b.b.a.bz(40, this.clickMentionCount) + f.a.a.b.b.a.bz(41, this.clickSucMentionCount) + f.a.a.b.b.a.bz(42, this.mentionRepeatCount) + f.a.a.b.b.a.bz(43, this.lbsFlag);
       paramInt = i;
       if (this.selectLocation != null) {
-        paramInt = i + f.a.a.a.lB(44, this.selectLocation.computeSize());
+        paramInt = i + f.a.a.a.lI(44, this.selectLocation.computeSize());
       }
-      i = f.a.a.b.b.a.bz(45, this.remuxType);
-      int j = f.a.a.b.b.a.bz(46, this.uploadLogicError);
-      int k = f.a.a.b.b.a.bz(47, this.postStage);
-      int m = f.a.a.b.b.a.bz(48, this.cgiErrorCode);
-      int n = f.a.a.b.b.a.bz(49, this.cgiErrorType);
+      i = paramInt + f.a.a.b.b.a.bz(45, this.remuxType) + f.a.a.b.b.a.bz(46, this.uploadLogicError) + f.a.a.b.b.a.bz(47, this.postStage) + f.a.a.b.b.a.bz(48, this.cgiErrorCode) + f.a.a.b.b.a.bz(49, this.cgiErrorType);
+      paramInt = i;
+      if (this.clickId != null) {
+        paramInt = i + f.a.a.b.b.a.e(50, this.clickId);
+      }
       AppMethodBeat.o(168957);
-      return paramInt + i + j + k + m + n;
+      return paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = (byte[])paramVarArgs[0];
         this.mediaList.clear();
         paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
         AppMethodBeat.o(168957);
@@ -220,103 +224,103 @@ public class FinderFeedReportObject
           AppMethodBeat.o(168957);
           return -1;
         case 1: 
-          localFinderFeedReportObject.sessionId = ((f.a.a.a.a)localObject1).NPN.readString();
+          localFinderFeedReportObject.sessionId = ((f.a.a.a.a)localObject1).OmT.readString();
           AppMethodBeat.o(168957);
           return 0;
         case 2: 
-          localFinderFeedReportObject.enterScene = ((f.a.a.a.a)localObject1).NPN.zc();
+          localFinderFeedReportObject.enterScene = ((f.a.a.a.a)localObject1).OmT.zc();
           AppMethodBeat.o(168957);
           return 0;
         case 3: 
-          localFinderFeedReportObject.exitPageId = ((f.a.a.a.a)localObject1).NPN.zc();
+          localFinderFeedReportObject.exitPageId = ((f.a.a.a.a)localObject1).OmT.zc();
           AppMethodBeat.o(168957);
           return 0;
         case 4: 
-          localFinderFeedReportObject.enterTakePhotoTime = ((f.a.a.a.a)localObject1).NPN.zd();
+          localFinderFeedReportObject.enterTakePhotoTime = ((f.a.a.a.a)localObject1).OmT.zd();
           AppMethodBeat.o(168957);
           return 0;
         case 5: 
-          localFinderFeedReportObject.enterVideoEditTime = ((f.a.a.a.a)localObject1).NPN.zd();
+          localFinderFeedReportObject.enterVideoEditTime = ((f.a.a.a.a)localObject1).OmT.zd();
           AppMethodBeat.o(168957);
           return 0;
         case 6: 
-          localFinderFeedReportObject.sendOrExitButtonTime = ((f.a.a.a.a)localObject1).NPN.zd();
+          localFinderFeedReportObject.sendOrExitButtonTime = ((f.a.a.a.a)localObject1).OmT.zd();
           AppMethodBeat.o(168957);
           return 0;
         case 7: 
-          localFinderFeedReportObject.videoRecordTime = ((f.a.a.a.a)localObject1).NPN.zd();
+          localFinderFeedReportObject.videoRecordTime = ((f.a.a.a.a)localObject1).OmT.zd();
           AppMethodBeat.o(168957);
           return 0;
         case 8: 
-          localFinderFeedReportObject.videoSource = ((f.a.a.a.a)localObject1).NPN.zc();
+          localFinderFeedReportObject.videoSource = ((f.a.a.a.a)localObject1).OmT.zc();
           AppMethodBeat.o(168957);
           return 0;
         case 9: 
-          localFinderFeedReportObject.videoEmojiCount = ((f.a.a.a.a)localObject1).NPN.zc();
+          localFinderFeedReportObject.videoEmojiCount = ((f.a.a.a.a)localObject1).OmT.zc();
           AppMethodBeat.o(168957);
           return 0;
         case 10: 
-          localFinderFeedReportObject.videoWordingCount = ((f.a.a.a.a)localObject1).NPN.zc();
+          localFinderFeedReportObject.videoWordingCount = ((f.a.a.a.a)localObject1).OmT.zc();
           AppMethodBeat.o(168957);
           return 0;
         case 11: 
-          localFinderFeedReportObject.videoMusicId = ((f.a.a.a.a)localObject1).NPN.readString();
+          localFinderFeedReportObject.videoMusicId = ((f.a.a.a.a)localObject1).OmT.readString();
           AppMethodBeat.o(168957);
           return 0;
         case 12: 
-          localFinderFeedReportObject.videoMusicIndex = ((f.a.a.a.a)localObject1).NPN.zc();
+          localFinderFeedReportObject.videoMusicIndex = ((f.a.a.a.a)localObject1).OmT.zc();
           AppMethodBeat.o(168957);
           return 0;
         case 13: 
-          localFinderFeedReportObject.videoMusicSearch = ((f.a.a.a.a)localObject1).NPN.zc();
+          localFinderFeedReportObject.videoMusicSearch = ((f.a.a.a.a)localObject1).OmT.zc();
           AppMethodBeat.o(168957);
           return 0;
         case 14: 
-          localFinderFeedReportObject.videoPostType = ((f.a.a.a.a)localObject1).NPN.zc();
+          localFinderFeedReportObject.videoPostType = ((f.a.a.a.a)localObject1).OmT.zc();
           AppMethodBeat.o(168957);
           return 0;
         case 15: 
-          localFinderFeedReportObject.videoMediaInfo = ((f.a.a.a.a)localObject1).NPN.readString();
+          localFinderFeedReportObject.videoMediaInfo = ((f.a.a.a.a)localObject1).OmT.readString();
           AppMethodBeat.o(168957);
           return 0;
         case 16: 
-          localFinderFeedReportObject.existDesc = ((f.a.a.a.a)localObject1).NPN.zc();
+          localFinderFeedReportObject.existDesc = ((f.a.a.a.a)localObject1).OmT.zc();
           AppMethodBeat.o(168957);
           return 0;
         case 17: 
-          localFinderFeedReportObject.descCount = ((f.a.a.a.a)localObject1).NPN.zc();
+          localFinderFeedReportObject.descCount = ((f.a.a.a.a)localObject1).OmT.zc();
           AppMethodBeat.o(168957);
           return 0;
         case 18: 
-          localFinderFeedReportObject.descEmojiCount = ((f.a.a.a.a)localObject1).NPN.zc();
+          localFinderFeedReportObject.descEmojiCount = ((f.a.a.a.a)localObject1).OmT.zc();
           AppMethodBeat.o(168957);
           return 0;
         case 19: 
-          localFinderFeedReportObject.actionTrace = ((f.a.a.a.a)localObject1).NPN.readString();
+          localFinderFeedReportObject.actionTrace = ((f.a.a.a.a)localObject1).OmT.readString();
           AppMethodBeat.o(168957);
           return 0;
         case 20: 
-          localFinderFeedReportObject.existLocation = ((f.a.a.a.a)localObject1).NPN.zc();
+          localFinderFeedReportObject.existLocation = ((f.a.a.a.a)localObject1).OmT.zc();
           AppMethodBeat.o(168957);
           return 0;
         case 21: 
-          localFinderFeedReportObject.link = ((f.a.a.a.a)localObject1).NPN.readString();
+          localFinderFeedReportObject.link = ((f.a.a.a.a)localObject1).OmT.readString();
           AppMethodBeat.o(168957);
           return 0;
         case 22: 
-          localFinderFeedReportObject.draft = ((f.a.a.a.a)localObject1).NPN.zc();
+          localFinderFeedReportObject.draft = ((f.a.a.a.a)localObject1).OmT.zc();
           AppMethodBeat.o(168957);
           return 0;
         case 23: 
-          localFinderFeedReportObject.cdnEndTime = ((f.a.a.a.a)localObject1).NPN.zd();
+          localFinderFeedReportObject.cdnEndTime = ((f.a.a.a.a)localObject1).OmT.zd();
           AppMethodBeat.o(168957);
           return 0;
         case 24: 
-          localFinderFeedReportObject.remuxEndTime = ((f.a.a.a.a)localObject1).NPN.zd();
+          localFinderFeedReportObject.remuxEndTime = ((f.a.a.a.a)localObject1).OmT.zd();
           AppMethodBeat.o(168957);
           return 0;
         case 25: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
+          paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
@@ -324,113 +328,117 @@ public class FinderFeedReportObject
             localObject2 = (byte[])paramVarArgs.get(paramInt);
             localObject1 = new FinderMediaReportObject();
             localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (bool = true; bool; bool = ((FinderMediaReportObject)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, com.tencent.mm.bx.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            for (bool = true; bool; bool = ((FinderMediaReportObject)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
             localFinderFeedReportObject.mediaList.add(localObject1);
             paramInt += 1;
           }
           AppMethodBeat.o(168957);
           return 0;
         case 26: 
-          localFinderFeedReportObject.retryCount = ((f.a.a.a.a)localObject1).NPN.zc();
+          localFinderFeedReportObject.retryCount = ((f.a.a.a.a)localObject1).OmT.zc();
           AppMethodBeat.o(168957);
           return 0;
         case 27: 
-          localFinderFeedReportObject.isBeauty = ((f.a.a.a.a)localObject1).NPN.zc();
+          localFinderFeedReportObject.isBeauty = ((f.a.a.a.a)localObject1).OmT.zc();
           AppMethodBeat.o(168957);
           return 0;
         case 28: 
-          localFinderFeedReportObject.isDurationCut = ((f.a.a.a.a)localObject1).NPN.zc();
+          localFinderFeedReportObject.isDurationCut = ((f.a.a.a.a)localObject1).OmT.zc();
           AppMethodBeat.o(168957);
           return 0;
         case 29: 
-          localFinderFeedReportObject.beforeCutMediaPath = ((f.a.a.a.a)localObject1).NPN.readString();
+          localFinderFeedReportObject.beforeCutMediaPath = ((f.a.a.a.a)localObject1).OmT.readString();
           AppMethodBeat.o(168957);
           return 0;
         case 30: 
-          localFinderFeedReportObject.isMultiShot = ((f.a.a.a.a)localObject1).NPN.zc();
+          localFinderFeedReportObject.isMultiShot = ((f.a.a.a.a)localObject1).OmT.zc();
           AppMethodBeat.o(168957);
           return 0;
         case 31: 
-          localFinderFeedReportObject.multiShotChangeCnt = ((f.a.a.a.a)localObject1).NPN.zc();
+          localFinderFeedReportObject.multiShotChangeCnt = ((f.a.a.a.a)localObject1).OmT.zc();
           AppMethodBeat.o(168957);
           return 0;
         case 32: 
-          localFinderFeedReportObject.multiShotClickCnt = ((f.a.a.a.a)localObject1).NPN.zc();
+          localFinderFeedReportObject.multiShotClickCnt = ((f.a.a.a.a)localObject1).OmT.zc();
           AppMethodBeat.o(168957);
           return 0;
         case 33: 
-          localFinderFeedReportObject.multiShotSuccessCnt = ((f.a.a.a.a)localObject1).NPN.zc();
+          localFinderFeedReportObject.multiShotSuccessCnt = ((f.a.a.a.a)localObject1).OmT.zc();
           AppMethodBeat.o(168957);
           return 0;
         case 35: 
-          localFinderFeedReportObject.multiShotVideoCnt = ((f.a.a.a.a)localObject1).NPN.zc();
+          localFinderFeedReportObject.multiShotVideoCnt = ((f.a.a.a.a)localObject1).OmT.zc();
           AppMethodBeat.o(168957);
           return 0;
         case 36: 
-          localFinderFeedReportObject.videoSubType = ((f.a.a.a.a)localObject1).NPN.zc();
+          localFinderFeedReportObject.videoSubType = ((f.a.a.a.a)localObject1).OmT.zc();
           AppMethodBeat.o(168957);
           return 0;
         case 37: 
-          localFinderFeedReportObject.postId = ((f.a.a.a.a)localObject1).NPN.readString();
+          localFinderFeedReportObject.postId = ((f.a.a.a.a)localObject1).OmT.readString();
           AppMethodBeat.o(168957);
           return 0;
         case 38: 
-          localFinderFeedReportObject.editId = ((f.a.a.a.a)localObject1).NPN.readString();
+          localFinderFeedReportObject.editId = ((f.a.a.a.a)localObject1).OmT.readString();
           AppMethodBeat.o(168957);
           return 0;
         case 39: 
-          localFinderFeedReportObject.mentionCount = ((f.a.a.a.a)localObject1).NPN.zc();
+          localFinderFeedReportObject.mentionCount = ((f.a.a.a.a)localObject1).OmT.zc();
           AppMethodBeat.o(168957);
           return 0;
         case 40: 
-          localFinderFeedReportObject.clickMentionCount = ((f.a.a.a.a)localObject1).NPN.zc();
+          localFinderFeedReportObject.clickMentionCount = ((f.a.a.a.a)localObject1).OmT.zc();
           AppMethodBeat.o(168957);
           return 0;
         case 41: 
-          localFinderFeedReportObject.clickSucMentionCount = ((f.a.a.a.a)localObject1).NPN.zc();
+          localFinderFeedReportObject.clickSucMentionCount = ((f.a.a.a.a)localObject1).OmT.zc();
           AppMethodBeat.o(168957);
           return 0;
         case 42: 
-          localFinderFeedReportObject.mentionRepeatCount = ((f.a.a.a.a)localObject1).NPN.zc();
+          localFinderFeedReportObject.mentionRepeatCount = ((f.a.a.a.a)localObject1).OmT.zc();
           AppMethodBeat.o(168957);
           return 0;
         case 43: 
-          localFinderFeedReportObject.lbsFlag = ((f.a.a.a.a)localObject1).NPN.zc();
+          localFinderFeedReportObject.lbsFlag = ((f.a.a.a.a)localObject1).OmT.zc();
           AppMethodBeat.o(168957);
           return 0;
         case 44: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
+          paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
             localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new aoy();
+            localObject1 = new apl();
             localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (bool = true; bool; bool = ((aoy)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, com.tencent.mm.bx.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-            localFinderFeedReportObject.selectLocation = ((aoy)localObject1);
+            for (bool = true; bool; bool = ((apl)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            localFinderFeedReportObject.selectLocation = ((apl)localObject1);
             paramInt += 1;
           }
           AppMethodBeat.o(168957);
           return 0;
         case 45: 
-          localFinderFeedReportObject.remuxType = ((f.a.a.a.a)localObject1).NPN.zc();
+          localFinderFeedReportObject.remuxType = ((f.a.a.a.a)localObject1).OmT.zc();
           AppMethodBeat.o(168957);
           return 0;
         case 46: 
-          localFinderFeedReportObject.uploadLogicError = ((f.a.a.a.a)localObject1).NPN.zc();
+          localFinderFeedReportObject.uploadLogicError = ((f.a.a.a.a)localObject1).OmT.zc();
           AppMethodBeat.o(168957);
           return 0;
         case 47: 
-          localFinderFeedReportObject.postStage = ((f.a.a.a.a)localObject1).NPN.zc();
+          localFinderFeedReportObject.postStage = ((f.a.a.a.a)localObject1).OmT.zc();
           AppMethodBeat.o(168957);
           return 0;
         case 48: 
-          localFinderFeedReportObject.cgiErrorCode = ((f.a.a.a.a)localObject1).NPN.zc();
+          localFinderFeedReportObject.cgiErrorCode = ((f.a.a.a.a)localObject1).OmT.zc();
+          AppMethodBeat.o(168957);
+          return 0;
+        case 49: 
+          localFinderFeedReportObject.cgiErrorType = ((f.a.a.a.a)localObject1).OmT.zc();
           AppMethodBeat.o(168957);
           return 0;
         }
-        localFinderFeedReportObject.cgiErrorType = ((f.a.a.a.a)localObject1).NPN.zc();
+        localFinderFeedReportObject.clickId = ((f.a.a.a.a)localObject1).OmT.readString();
         AppMethodBeat.o(168957);
         return 0;
       }
@@ -441,7 +449,7 @@ public class FinderFeedReportObject
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.FinderFeedReportObject
  * JD-Core Version:    0.7.0.1
  */

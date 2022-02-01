@@ -46,7 +46,7 @@ public class WeChatSplashActivity
   public void onPause()
   {
     AppMethodBeat.i(160111);
-    t.eYY();
+    t.fcM();
     super.onPause();
     AppMethodBeat.o(160111);
   }

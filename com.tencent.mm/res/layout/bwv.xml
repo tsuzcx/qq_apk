@@ -23,7 +23,7 @@
                 <ImageView android:id="@id/do7" android:visibility="gone" android:layout_alignTop="@id/do5" android:layout_alignRight="@id/do5" style="@style/yj" />
             </RelativeLayout>
             <TextView android:textSize="17.0dip" android:textColor="@color/a_u" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:text="@string/dm4" style="@style/ko" />
-            <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:layout_marginBottom="16.0dip">
+            <RelativeLayout android:id="@id/i8o" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:layout_marginBottom="16.0dip">
                 <com.tencent.mm.plugin.wallet_core.ui.view.WcPayMoneyLoadingView android:textSize="14.0dip" android:textColor="@color/a_r" android:id="@id/gw4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" android:alpha="0.5" wallet:progressBarType="h3z" wallet:walletTypeFace="ftc" />
                 <ProgressBar android:layout_gravity="center" android:id="@id/gxq" android:visibility="gone" android:layout_width="12.0dip" android:layout_height="12.0dip" android:layout_marginLeft="4.0dip" android:layout_toRightOf="@id/gw4" android:layout_centerVertical="true" style="@style/a4r" />
             </RelativeLayout>

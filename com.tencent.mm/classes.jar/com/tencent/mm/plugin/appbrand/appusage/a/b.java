@@ -2,23 +2,23 @@ package com.tencent.mm.plugin.appbrand.appusage.a;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.crr;
+import com.tencent.mm.protocal.protobuf.csl;
 import com.tencent.mm.sdk.e.e;
 import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 public class b
   extends j<a>
 {
-  public static final String[] hEf;
+  public static final String[] hGX;
   private e db;
   
   static
   {
     AppMethodBeat.i(44668);
-    hEf = new String[] { j.getCreateSQLs(a.info, "AppBrandRecommendCard") };
+    hGX = new String[] { j.getCreateSQLs(a.info, "AppBrandRecommendCard") };
     AppMethodBeat.o(44668);
   }
   
@@ -28,14 +28,14 @@ public class b
     this.db = parame;
   }
   
-  public final void bcD()
+  public final void bdi()
   {
     AppMethodBeat.i(44665);
     this.db.execSQL("AppBrandRecommendCard", "delete from AppBrandRecommendCard");
     AppMethodBeat.o(44665);
   }
   
-  public final LinkedList<crr> bcE()
+  public final LinkedList<csl> bdj()
   {
     AppMethodBeat.i(44667);
     Cursor localCursor = this.db.rawQuery("select * from AppBrandRecommendCard LIMIT 100", null);
@@ -44,7 +44,7 @@ public class b
       AppMethodBeat.o(44667);
       return null;
     }
-    ad.i("MicroMsg.Recommend.AppBrandRecommendCardStorage", "getRecommendWxaList()");
+    ae.i("MicroMsg.Recommend.AppBrandRecommendCardStorage", "getRecommendWxaList()");
     LinkedList localLinkedList = new LinkedList();
     while (localCursor.moveToNext())
     {
@@ -57,19 +57,19 @@ public class b
     return localLinkedList;
   }
   
-  public final void u(LinkedList<crr> paramLinkedList)
+  public final void u(LinkedList<csl> paramLinkedList)
   {
     AppMethodBeat.i(44666);
-    ad.i("MicroMsg.Recommend.AppBrandRecommendCardStorage", "addRecommendWxaList()");
+    ae.i("MicroMsg.Recommend.AppBrandRecommendCardStorage", "addRecommendWxaList()");
     Object localObject = new LinkedList();
     ((LinkedList)localObject).addAll(paramLinkedList);
     paramLinkedList = ((LinkedList)localObject).iterator();
     while (paramLinkedList.hasNext())
     {
-      localObject = (crr)paramLinkedList.next();
+      localObject = (csl)paramLinkedList.next();
       a locala = new a();
-      locala.field_appId = ((crr)localObject).GMM;
-      locala.field_recommendCard = ((crr)localObject);
+      locala.field_appId = ((csl)localObject).Hgn;
+      locala.field_recommendCard = ((csl)localObject);
       insert(locala);
     }
     AppMethodBeat.o(44666);

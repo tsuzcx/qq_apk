@@ -11,11 +11,11 @@ public class AlphabetScrollBar
     super(paramContext, paramAttributeSet);
   }
   
-  protected void Zr()
+  protected void ZA()
   {
-    this.uQL = new String[] { "↑", "☆", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "#" };
-    this.uQJ = 1.6F;
-    this.uQK = 79;
+    this.vcx = new String[] { "↑", "☆", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "#" };
+    this.vcv = 1.6F;
+    this.vcw = 79;
   }
   
   protected int getToastLayoutId()

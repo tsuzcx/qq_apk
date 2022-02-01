@@ -11,26 +11,26 @@ import com.google.android.exoplayer2.metadata.id3.PrivFrame;
 import com.google.android.exoplayer2.metadata.id3.TextInformationFrame;
 import com.google.android.exoplayer2.metadata.id3.UrlLinkFrame;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.text.NumberFormat;
 import java.util.Locale;
 
 public final class a
 {
-  private static final NumberFormat wmw;
+  private static final NumberFormat wCf;
   
   static
   {
     AppMethodBeat.i(137413);
     NumberFormat localNumberFormat = NumberFormat.getInstance(Locale.US);
-    wmw = localNumberFormat;
+    wCf = localNumberFormat;
     localNumberFormat.setMinimumFractionDigits(2);
-    wmw.setMaximumFractionDigits(2);
-    wmw.setGroupingUsed(false);
+    wCf.setMaximumFractionDigits(2);
+    wCf.setGroupingUsed(false);
     AppMethodBeat.o(137413);
   }
   
-  public static String LB(int paramInt)
+  public static String Mg(int paramInt)
   {
     switch (paramInt)
     {
@@ -56,7 +56,7 @@ public final class a
       if ((localObject instanceof TextInformationFrame))
       {
         localObject = (TextInformationFrame)localObject;
-        ad.d("MicroMsg.ExoPlayer", paramString + String.format("%s: value=%s", new Object[] { ((TextInformationFrame)localObject).id, ((TextInformationFrame)localObject).value }));
+        ae.d("MicroMsg.ExoPlayer", paramString + String.format("%s: value=%s", new Object[] { ((TextInformationFrame)localObject).id, ((TextInformationFrame)localObject).value }));
       }
       for (;;)
       {
@@ -65,44 +65,44 @@ public final class a
         if ((localObject instanceof UrlLinkFrame))
         {
           localObject = (UrlLinkFrame)localObject;
-          ad.d("MicroMsg.ExoPlayer", paramString + String.format("%s: url=%s", new Object[] { ((UrlLinkFrame)localObject).id, ((UrlLinkFrame)localObject).url }));
+          ae.d("MicroMsg.ExoPlayer", paramString + String.format("%s: url=%s", new Object[] { ((UrlLinkFrame)localObject).id, ((UrlLinkFrame)localObject).url }));
         }
         else if ((localObject instanceof PrivFrame))
         {
           localObject = (PrivFrame)localObject;
-          ad.d("MicroMsg.ExoPlayer", paramString + String.format("%s: owner=%s", new Object[] { ((PrivFrame)localObject).id, ((PrivFrame)localObject).buG }));
+          ae.d("MicroMsg.ExoPlayer", paramString + String.format("%s: owner=%s", new Object[] { ((PrivFrame)localObject).id, ((PrivFrame)localObject).buG }));
         }
         else if ((localObject instanceof GeobFrame))
         {
           localObject = (GeobFrame)localObject;
-          ad.d("MicroMsg.ExoPlayer", paramString + String.format("%s: mimeType=%s, filename=%s, description=%s", new Object[] { ((GeobFrame)localObject).id, ((GeobFrame)localObject).mimeType, ((GeobFrame)localObject).filename, ((GeobFrame)localObject).description }));
+          ae.d("MicroMsg.ExoPlayer", paramString + String.format("%s: mimeType=%s, filename=%s, description=%s", new Object[] { ((GeobFrame)localObject).id, ((GeobFrame)localObject).mimeType, ((GeobFrame)localObject).filename, ((GeobFrame)localObject).description }));
         }
         else if ((localObject instanceof ApicFrame))
         {
           localObject = (ApicFrame)localObject;
-          ad.d("MicroMsg.ExoPlayer", paramString + String.format("%s: mimeType=%s, description=%s", new Object[] { ((ApicFrame)localObject).id, ((ApicFrame)localObject).mimeType, ((ApicFrame)localObject).description }));
+          ae.d("MicroMsg.ExoPlayer", paramString + String.format("%s: mimeType=%s, description=%s", new Object[] { ((ApicFrame)localObject).id, ((ApicFrame)localObject).mimeType, ((ApicFrame)localObject).description }));
         }
         else if ((localObject instanceof CommentFrame))
         {
           localObject = (CommentFrame)localObject;
-          ad.d("MicroMsg.ExoPlayer", paramString + String.format("%s: language=%s, description=%s", new Object[] { ((CommentFrame)localObject).id, ((CommentFrame)localObject).language, ((CommentFrame)localObject).description }));
+          ae.d("MicroMsg.ExoPlayer", paramString + String.format("%s: language=%s, description=%s", new Object[] { ((CommentFrame)localObject).id, ((CommentFrame)localObject).language, ((CommentFrame)localObject).description }));
         }
         else if ((localObject instanceof Id3Frame))
         {
           localObject = (Id3Frame)localObject;
-          ad.d("MicroMsg.ExoPlayer", paramString + String.format("%s", new Object[] { ((Id3Frame)localObject).id }));
+          ae.d("MicroMsg.ExoPlayer", paramString + String.format("%s", new Object[] { ((Id3Frame)localObject).id }));
         }
         else if ((localObject instanceof EventMessage))
         {
           localObject = (EventMessage)localObject;
-          ad.d("MicroMsg.ExoPlayer", paramString + String.format("EMSG: scheme=%s, id=%d, value=%s", new Object[] { ((EventMessage)localObject).buo, Long.valueOf(((EventMessage)localObject).id), ((EventMessage)localObject).value }));
+          ae.d("MicroMsg.ExoPlayer", paramString + String.format("EMSG: scheme=%s, id=%d, value=%s", new Object[] { ((EventMessage)localObject).buo, Long.valueOf(((EventMessage)localObject).id), ((EventMessage)localObject).value }));
         }
       }
     }
     AppMethodBeat.o(137412);
   }
   
-  public static void dtE()
+  public static void dwT()
   {
     AppMethodBeat.i(137410);
     b.DEBUG = false;
@@ -110,7 +110,7 @@ public final class a
     AppMethodBeat.o(137410);
   }
   
-  public static String yl(long paramLong)
+  public static String yF(long paramLong)
   {
     AppMethodBeat.i(137411);
     if (paramLong == -9223372036854775807L)
@@ -118,7 +118,7 @@ public final class a
       AppMethodBeat.o(137411);
       return "?";
     }
-    String str = wmw.format((float)paramLong / 1000.0F);
+    String str = wCf.format((float)paramLong / 1000.0F);
     AppMethodBeat.o(137411);
     return str;
   }

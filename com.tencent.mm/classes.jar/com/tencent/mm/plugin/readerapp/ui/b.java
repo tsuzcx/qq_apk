@@ -9,21 +9,21 @@ import android.os.Message;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.g.c.aw;
 import com.tencent.mm.kernel.e;
-import com.tencent.mm.model.u;
-import com.tencent.mm.model.w;
+import com.tencent.mm.model.v;
+import com.tencent.mm.model.x;
 import com.tencent.mm.plugin.messenger.foundation.a.a.j;
 import com.tencent.mm.plugin.messenger.foundation.a.a.k.a;
 import com.tencent.mm.plugin.readerapp.c.c;
 import com.tencent.mm.plugin.readerapp.c.g.a;
 import com.tencent.mm.pluginsdk.ui.preference.HelperHeaderPreference;
-import com.tencent.mm.protocal.protobuf.cks;
+import com.tencent.mm.protocal.protobuf.clm;
 import com.tencent.mm.sdk.e.n;
 import com.tencent.mm.sdk.e.n.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.am;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.aj;
+import com.tencent.mm.storage.an;
 import com.tencent.mm.ui.base.preference.CheckBoxPreference;
 import com.tencent.mm.ui.base.preference.f;
 import com.tencent.mm.ui.r;
@@ -34,7 +34,7 @@ import junit.framework.Assert;
 public final class b
   implements com.tencent.mm.pluginsdk.b.a, n.b
 {
-  private am contact;
+  private an contact;
   Context context;
   private f screen;
   
@@ -43,43 +43,43 @@ public final class b
     this.context = paramContext;
   }
   
-  private void cdo()
+  private void ceD()
   {
     AppMethodBeat.i(102698);
     boolean bool1 = isOpen();
     this.screen.removeAll();
     this.screen.addPreferencesFromResource(2131951654);
-    Object localObject = (HelperHeaderPreference)this.screen.aVD("contact_info_header_helper");
-    ((HelperHeaderPreference)localObject).aZ(this.contact.field_username, this.contact.adv(), this.context.getString(2131757782));
+    Object localObject = (HelperHeaderPreference)this.screen.aXe("contact_info_header_helper");
+    ((HelperHeaderPreference)localObject).ba(this.contact.field_username, this.contact.adG(), this.context.getString(2131757782));
     if (bool1) {}
     for (int i = 1;; i = 0)
     {
       ((HelperHeaderPreference)localObject).updateStatus(i);
-      localObject = (CheckBoxPreference)this.screen.aVD("contact_info_readerappnews_recv_remind");
-      boolean bool2 = c.dDB();
-      ad.d("MicroMsg.ContactWidgetReaderAppNews", "wantToReceiveNews = ".concat(String.valueOf(bool2)));
+      localObject = (CheckBoxPreference)this.screen.aXe("contact_info_readerappnews_recv_remind");
+      boolean bool2 = c.dGS();
+      ae.d("MicroMsg.ContactWidgetReaderAppNews", "wantToReceiveNews = ".concat(String.valueOf(bool2)));
       if (localObject != null) {
-        ((CheckBoxPreference)localObject).oB = bool2;
+        ((CheckBoxPreference)localObject).setChecked(bool2);
       }
       if (!bool1) {
         break;
       }
-      this.screen.aVE("contact_info_readerappnews_install");
+      this.screen.aXf("contact_info_readerappnews_install");
       AppMethodBeat.o(102698);
       return;
     }
-    this.screen.aVE("contact_info_readerappnews_subscribe");
-    this.screen.aVE("contact_info_readerappnews_view");
-    this.screen.aVE("contact_info_readerappnews_clear_data");
-    this.screen.aVE("contact_info_readerappnews_uninstall");
-    this.screen.aVE("contact_info_readerappnews_recv_remind");
+    this.screen.aXf("contact_info_readerappnews_subscribe");
+    this.screen.aXf("contact_info_readerappnews_view");
+    this.screen.aXf("contact_info_readerappnews_clear_data");
+    this.screen.aXf("contact_info_readerappnews_uninstall");
+    this.screen.aXf("contact_info_readerappnews_recv_remind");
     AppMethodBeat.o(102698);
   }
   
   private static boolean isOpen()
   {
     AppMethodBeat.i(102694);
-    if ((u.aAy() & 0x80000) == 0)
+    if ((v.aAO() & 0x80000) == 0)
     {
       AppMethodBeat.o(102694);
       return true;
@@ -88,14 +88,14 @@ public final class b
     return false;
   }
   
-  static void pE(boolean paramBoolean)
+  static void pM(boolean paramBoolean)
   {
     AppMethodBeat.i(102695);
-    int i = u.aAs();
+    int i = v.aAI();
     if (paramBoolean)
     {
       i &= 0xFFFFFBFF;
-      com.tencent.mm.kernel.g.ajC().ajl().set(40, Integer.valueOf(i));
+      com.tencent.mm.kernel.g.ajR().ajA().set(40, Integer.valueOf(i));
       if (!paramBoolean) {
         break label83;
       }
@@ -103,7 +103,7 @@ public final class b
     label83:
     for (i = 2;; i = 1)
     {
-      ((com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azo().c(new com.tencent.mm.bb.h(26, i));
+      ((com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azE().d(new com.tencent.mm.ba.h(26, i));
       AppMethodBeat.o(102695);
       return;
       i |= 0x400;
@@ -119,47 +119,47 @@ public final class b
     {
       paramContext.getString(2131755906);
       localObject = com.tencent.mm.ui.base.h.b(paramContext, (String)localObject, true, null);
-      paramContext = new ap()
+      paramContext = new aq()
       {
         public final void handleMessage(Message paramAnonymousMessage)
         {
           AppMethodBeat.i(102692);
-          if (this.prx) {
-            b.pE(true);
+          if (this.pyd) {
+            b.pM(true);
           }
-          int i = u.aAy();
-          if (this.prx)
+          int i = v.aAO();
+          if (this.pyd)
           {
             i &= 0xFFF7FFFF;
-            com.tencent.mm.kernel.g.ajC().ajl().set(34, Integer.valueOf(i));
-            paramAnonymousMessage = new cks();
-            paramAnonymousMessage.Fsi = 524288;
-            if (!this.prx) {
+            com.tencent.mm.kernel.g.ajR().ajA().set(34, Integer.valueOf(i));
+            paramAnonymousMessage = new clm();
+            paramAnonymousMessage.FKG = 524288;
+            if (!this.pyd) {
               break label173;
             }
           }
           label173:
           for (i = 0;; i = 1)
           {
-            paramAnonymousMessage.Heh = i;
-            ((com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azo().c(new k.a(39, paramAnonymousMessage));
-            if (!this.prx)
+            paramAnonymousMessage.HxH = i;
+            ((com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azE().d(new k.a(39, paramAnonymousMessage));
+            if (!this.pyd)
             {
               com.tencent.mm.plugin.readerapp.c.g.a(new g.a()
               {
-                public final void dDA()
+                public final void dGR()
                 {
                   AppMethodBeat.i(102691);
-                  if (this.pgO != null) {
-                    this.pgO.dismiss();
+                  if (this.pnu != null) {
+                    this.pnu.dismiss();
                   }
                   AppMethodBeat.o(102691);
                 }
               });
-              b.pE(false);
+              b.pM(false);
             }
-            if (this.vHr != null) {
-              this.vHr.a(null, null);
+            if (this.vTv != null) {
+              this.vTv.a(null, null);
             }
             AppMethodBeat.o(102692);
             return;
@@ -173,9 +173,9 @@ public final class b
         public final void run()
         {
           AppMethodBeat.i(102693);
-          if (this.pgO != null)
+          if (this.pnu != null)
           {
-            this.pgO.dismiss();
+            this.pnu.dismiss();
             paramContext.sendEmptyMessage(0);
           }
           AppMethodBeat.o(102693);
@@ -189,11 +189,11 @@ public final class b
   public final void a(int paramInt, n paramn, Object paramObject)
   {
     AppMethodBeat.i(102701);
-    int i = bt.m(paramObject, 0);
-    ad.d("MicroMsg.ContactWidgetReaderAppNews", "onNotifyChange event:%d obj:%d stg:%s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i), paramn });
-    if ((paramn != com.tencent.mm.kernel.g.ajC().ajl()) || (i <= 0))
+    int i = bu.m(paramObject, 0);
+    ae.d("MicroMsg.ContactWidgetReaderAppNews", "onNotifyChange event:%d obj:%d stg:%s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i), paramn });
+    if ((paramn != com.tencent.mm.kernel.g.ajR().ajA()) || (i <= 0))
     {
-      ad.e("MicroMsg.ContactWidgetReaderAppNews", "onNotifyChange error obj:%d stg:%s", new Object[] { Integer.valueOf(i), paramn });
+      ae.e("MicroMsg.ContactWidgetReaderAppNews", "onNotifyChange error obj:%d stg:%s", new Object[] { Integer.valueOf(i), paramn });
       AppMethodBeat.o(102701);
       return;
     }
@@ -202,11 +202,11 @@ public final class b
       AppMethodBeat.o(102701);
       return;
     }
-    cdo();
+    ceD();
     AppMethodBeat.o(102701);
   }
   
-  public final boolean a(f paramf, am paramam, boolean paramBoolean, int paramInt)
+  public final boolean a(f paramf, an paraman, boolean paramBoolean, int paramInt)
   {
     boolean bool = false;
     AppMethodBeat.i(102697);
@@ -215,26 +215,26 @@ public final class b
     {
       Assert.assertTrue(paramBoolean);
       paramBoolean = bool;
-      if (paramam != null) {
+      if (paraman != null) {
         paramBoolean = true;
       }
       Assert.assertTrue(paramBoolean);
-      Assert.assertTrue(w.zU(paramam.field_username));
-      com.tencent.mm.kernel.g.ajC().ajl().a(this);
-      this.contact = paramam;
+      Assert.assertTrue(x.AE(paraman.field_username));
+      com.tencent.mm.kernel.g.ajR().ajA().a(this);
+      this.contact = paraman;
       this.screen = paramf;
-      cdo();
+      ceD();
       AppMethodBeat.o(102697);
       return true;
     }
   }
   
-  public final boolean aaG(String paramString)
+  public final boolean abx(String paramString)
   {
     boolean bool2 = false;
     AppMethodBeat.i(102696);
-    ad.d("MicroMsg.ContactWidgetReaderAppNews", "handleEvent : key = ".concat(String.valueOf(paramString)));
-    if (bt.nullAsNil(paramString).length() <= 0)
+    ae.d("MicroMsg.ContactWidgetReaderAppNews", "handleEvent : key = ".concat(String.valueOf(paramString)));
+    if (bu.nullAsNil(paramString).length() <= 0)
     {
       AppMethodBeat.o(102696);
       return false;
@@ -246,10 +246,10 @@ public final class b
       ((Intent)localObject).putExtra("type", 20);
       paramString = this.context;
       localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
-      com.tencent.mm.hellhoundlib.a.a.a(paramString, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahp(), "com/tencent/mm/plugin/readerapp/ui/ContactWidgetReaderAppNews", "gotoViewReaderapp", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramString.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mq(0));
+      com.tencent.mm.hellhoundlib.a.a.a(paramString, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahE(), "com/tencent/mm/plugin/readerapp/ui/ContactWidgetReaderAppNews", "gotoViewReaderapp", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramString.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mt(0));
       com.tencent.mm.hellhoundlib.a.a.a(paramString, "com/tencent/mm/plugin/readerapp/ui/ContactWidgetReaderAppNews", "gotoViewReaderapp", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      com.tencent.mm.plugin.readerapp.b.a.iRH.MR();
+      com.tencent.mm.plugin.readerapp.b.a.iUA.MM();
       AppMethodBeat.o(102696);
       return true;
     }
@@ -258,8 +258,8 @@ public final class b
       localObject = new Intent(this.context, ReaderAppSubscribeUI.class);
       paramString = this.context;
       localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
-      com.tencent.mm.hellhoundlib.a.a.a(paramString, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahp(), "com/tencent/mm/plugin/readerapp/ui/ContactWidgetReaderAppNews", "handleEvent", "(Ljava/lang/String;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramString.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mq(0));
+      com.tencent.mm.hellhoundlib.a.a.a(paramString, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahE(), "com/tencent/mm/plugin/readerapp/ui/ContactWidgetReaderAppNews", "handleEvent", "(Ljava/lang/String;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramString.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mt(0));
       com.tencent.mm.hellhoundlib.a.a.a(paramString, "com/tencent/mm/plugin/readerapp/ui/ContactWidgetReaderAppNews", "handleEvent", "(Ljava/lang/String;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       AppMethodBeat.o(102696);
       return true;
@@ -273,10 +273,10 @@ public final class b
           AppMethodBeat.i(102689);
           com.tencent.mm.plugin.readerapp.c.g.a(new g.a()
           {
-            public final void dDA()
+            public final void dGR()
             {
               AppMethodBeat.i(102688);
-              this.xmj.dismiss();
+              this.xCg.dismiss();
               AppMethodBeat.o(102688);
             }
           });
@@ -288,11 +288,11 @@ public final class b
     }
     if (paramString.equals("contact_info_readerappnews_recv_remind"))
     {
-      paramString = (CheckBoxPreference)this.screen.aVD(paramString);
-      boolean bool3 = c.dDB();
+      paramString = (CheckBoxPreference)this.screen.aXe(paramString);
+      boolean bool3 = c.dGS();
       if (!bool3)
       {
-        com.tencent.mm.plugin.report.service.g.yhR.f(15413, new Object[] { Integer.valueOf(7), "", "" });
+        com.tencent.mm.plugin.report.service.g.yxI.f(15413, new Object[] { Integer.valueOf(7), "", "" });
         if (paramString != null) {
           if (bool3) {
             break label494;
@@ -302,21 +302,21 @@ public final class b
       label494:
       for (boolean bool1 = true;; bool1 = false)
       {
-        paramString.oB = bool1;
+        paramString.setChecked(bool1);
         bool1 = bool2;
         if (!bool3) {
           bool1 = true;
         }
-        pE(bool1);
+        pM(bool1);
         AppMethodBeat.o(102696);
         return true;
-        com.tencent.mm.plugin.report.service.g.yhR.f(15413, new Object[] { Integer.valueOf(6), "", "" });
+        com.tencent.mm.plugin.report.service.g.yxI.f(15413, new Object[] { Integer.valueOf(6), "", "" });
         break;
       }
     }
     if (paramString.equals("contact_info_readerappnews_install"))
     {
-      com.tencent.mm.plugin.report.service.g.yhR.f(15413, new Object[] { Integer.valueOf(5), "", "" });
+      com.tencent.mm.plugin.report.service.g.yxI.f(15413, new Object[] { Integer.valueOf(5), "", "" });
       z(this.context, true);
       AppMethodBeat.o(102696);
       return true;
@@ -328,7 +328,7 @@ public final class b
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
           AppMethodBeat.i(102690);
-          com.tencent.mm.plugin.report.service.g.yhR.f(15413, new Object[] { Integer.valueOf(4), "", "" });
+          com.tencent.mm.plugin.report.service.g.yxI.f(15413, new Object[] { Integer.valueOf(4), "", "" });
           b.z(b.this.context, false);
           AppMethodBeat.o(102690);
         }
@@ -336,16 +336,16 @@ public final class b
       AppMethodBeat.o(102696);
       return true;
     }
-    ad.e("MicroMsg.ContactWidgetReaderAppNews", "handleEvent : unExpected key = ".concat(String.valueOf(paramString)));
+    ae.e("MicroMsg.ContactWidgetReaderAppNews", "handleEvent : unExpected key = ".concat(String.valueOf(paramString)));
     AppMethodBeat.o(102696);
     return false;
   }
   
-  public final boolean cdn()
+  public final boolean ceC()
   {
     AppMethodBeat.i(102700);
-    com.tencent.mm.kernel.g.ajC().ajl().b(this);
-    com.tencent.mm.plugin.readerapp.b.a.iRH.MR();
+    com.tencent.mm.kernel.g.ajR().ajA().b(this);
+    com.tencent.mm.plugin.readerapp.b.a.iUA.MM();
     AppMethodBeat.o(102700);
     return true;
   }

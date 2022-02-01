@@ -2,7 +2,7 @@ package com.tencent.mm.videocomposition;
 
 import d.l;
 
-@l(gfx={1, 1, 15})
+@l(gjZ={1, 1, 15})
 public final class i {}
 
 

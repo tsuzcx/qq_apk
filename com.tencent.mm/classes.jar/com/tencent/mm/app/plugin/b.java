@@ -1,19 +1,19 @@
 package com.tencent.mm.app.plugin;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.ld;
-import com.tencent.mm.g.a.ld.b;
+import com.tencent.mm.g.a.le;
+import com.tencent.mm.g.a.le.b;
 import com.tencent.mm.sdk.b.a;
 
 public final class b
 {
-  public static boolean Nf()
+  public static boolean Na()
   {
     AppMethodBeat.i(19662);
-    ld localld = new ld();
-    localld.dyp.drI = 7;
-    a.IbL.l(localld);
-    boolean bool = localld.dyq.dno;
+    le localle = new le();
+    localle.dzu.dsO = 7;
+    a.IvT.l(localle);
+    boolean bool = localle.dzv.doq;
     AppMethodBeat.o(19662);
     return bool;
   }

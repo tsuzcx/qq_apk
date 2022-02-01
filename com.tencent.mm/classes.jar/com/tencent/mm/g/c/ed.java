@@ -8,17 +8,17 @@ public abstract class ed
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eTj = "width".hashCode();
-  private static final int eTk;
-  private static final int fjE = "packet_id".hashCode();
-  private static final int fjL = "media_type".hashCode();
-  private static final int fjM = "media_url".hashCode();
-  private static final int fjN = "media_md5".hashCode();
-  private static final int fjO = "media_fuzzy_thumbnail_url".hashCode();
-  private static final int fjP = "media_fuzzy_thumbnail_md5".hashCode();
+  private static final int eUU = "width".hashCode();
+  private static final int eUV;
+  private static final int flB = "packet_id".hashCode();
+  private static final int flI = "media_type".hashCode();
+  private static final int flJ = "media_url".hashCode();
+  private static final int flK = "media_md5".hashCode();
+  private static final int flL = "media_fuzzy_thumbnail_url".hashCode();
+  private static final int flM = "media_fuzzy_thumbnail_md5".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eSx = true;
-  private boolean eSy = true;
+  private boolean eUi = true;
+  private boolean eUj = true;
   public int field_height;
   public String field_media_fuzzy_thumbnail_md5;
   public String field_media_fuzzy_thumbnail_url;
@@ -27,16 +27,16 @@ public abstract class ed
   public String field_media_url;
   public String field_packet_id;
   public int field_width;
-  private boolean fjG = true;
-  private boolean fjH = true;
-  private boolean fjI = true;
-  private boolean fjJ = true;
-  private boolean fjK = true;
-  private boolean fjw = true;
+  private boolean flD = true;
+  private boolean flE = true;
+  private boolean flF = true;
+  private boolean flG = true;
+  private boolean flH = true;
+  private boolean flt = true;
   
   static
   {
-    eTk = "height".hashCode();
+    eUV = "height".hashCode();
   }
   
   public void convertFrom(Cursor paramCursor)
@@ -52,7 +52,7 @@ public abstract class ed
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (fjL != k) {
+      if (flI != k) {
         break label60;
       }
       this.field_media_type = paramCursor.getInt(i);
@@ -63,19 +63,19 @@ public abstract class ed
       break label20;
       break;
       label60:
-      if (fjM == k) {
+      if (flJ == k) {
         this.field_media_url = paramCursor.getString(i);
-      } else if (fjN == k) {
+      } else if (flK == k) {
         this.field_media_md5 = paramCursor.getString(i);
-      } else if (eTk == k) {
+      } else if (eUV == k) {
         this.field_height = paramCursor.getInt(i);
-      } else if (eTj == k) {
+      } else if (eUU == k) {
         this.field_width = paramCursor.getInt(i);
-      } else if (fjE == k) {
+      } else if (flB == k) {
         this.field_packet_id = paramCursor.getString(i);
-      } else if (fjO == k) {
+      } else if (flL == k) {
         this.field_media_fuzzy_thumbnail_url = paramCursor.getString(i);
-      } else if (fjP == k) {
+      } else if (flM == k) {
         this.field_media_fuzzy_thumbnail_md5 = paramCursor.getString(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
@@ -86,28 +86,28 @@ public abstract class ed
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.fjG) {
+    if (this.flD) {
       localContentValues.put("media_type", Integer.valueOf(this.field_media_type));
     }
-    if (this.fjH) {
+    if (this.flE) {
       localContentValues.put("media_url", this.field_media_url);
     }
-    if (this.fjI) {
+    if (this.flF) {
       localContentValues.put("media_md5", this.field_media_md5);
     }
-    if (this.eSy) {
+    if (this.eUj) {
       localContentValues.put("height", Integer.valueOf(this.field_height));
     }
-    if (this.eSx) {
+    if (this.eUi) {
       localContentValues.put("width", Integer.valueOf(this.field_width));
     }
-    if (this.fjw) {
+    if (this.flt) {
       localContentValues.put("packet_id", this.field_packet_id);
     }
-    if (this.fjJ) {
+    if (this.flG) {
       localContentValues.put("media_fuzzy_thumbnail_url", this.field_media_fuzzy_thumbnail_url);
     }
-    if (this.fjK) {
+    if (this.flH) {
       localContentValues.put("media_fuzzy_thumbnail_md5", this.field_media_fuzzy_thumbnail_md5);
     }
     if (this.systemRowid > 0L) {

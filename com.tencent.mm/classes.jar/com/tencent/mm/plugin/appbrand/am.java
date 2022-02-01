@@ -12,88 +12,87 @@ import com.tencent.mm.plugin.appbrand.launching.params.LaunchParcel;
 import com.tencent.mm.plugin.appbrand.launching.report.AppBrandRuntimeReloadReportBundle;
 import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
 import com.tencent.mm.plugin.appbrand.report.quality.QualitySession;
-import com.tencent.mm.plugin.appbrand.utils.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import d.g.b.p;
+import com.tencent.mm.plugin.appbrand.utils.b;
+import com.tencent.mm.sdk.platformtools.ae;
 import d.l;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/RuntimeLaunchTimeoutFallbackReloadTask;", "Lcom/tencent/mm/plugin/appbrand/launching/AppBrandPreInitTask$PreInitCallback;", "rt", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntimeWC;", "prepareTask", "Lcom/tencent/mm/plugin/appbrand/launching/AppBrandPrepareTask;", "(Lcom/tencent/mm/plugin/appbrand/AppBrandRuntimeWC;Lcom/tencent/mm/plugin/appbrand/launching/AppBrandPrepareTask;)V", "TAG", "", "mCanceled", "Ljava/util/concurrent/atomic/AtomicBoolean;", "cancel", "", "onResult", "config", "Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfigWC;", "stat", "Lcom/tencent/mm/plugin/appbrand/report/AppBrandStatObject;", "Companion", "plugin-appbrand-integration_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/RuntimeLaunchTimeoutFallbackReloadTask;", "Lcom/tencent/mm/plugin/appbrand/launching/AppBrandPreInitTask$PreInitCallback;", "rt", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntimeWC;", "prepareTask", "Lcom/tencent/mm/plugin/appbrand/launching/AppBrandPrepareTask;", "(Lcom/tencent/mm/plugin/appbrand/AppBrandRuntimeWC;Lcom/tencent/mm/plugin/appbrand/launching/AppBrandPrepareTask;)V", "TAG", "", "mCanceled", "Ljava/util/concurrent/atomic/AtomicBoolean;", "cancel", "", "onResult", "config", "Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfigWC;", "stat", "Lcom/tencent/mm/plugin/appbrand/report/AppBrandStatObject;", "Companion", "plugin-appbrand-integration_release"})
 public final class am
   implements AppBrandPreInitTask.a
 {
-  public static final a jBl;
+  public static final a jDW;
   private final String TAG;
-  final AtomicBoolean jBi;
-  private final o jBj;
-  private final AppBrandPrepareTask jBk;
+  final AtomicBoolean jDT;
+  private final p jDU;
+  private final AppBrandPrepareTask jDV;
   
   static
   {
-    AppMethodBeat.i(188960);
-    jBl = new a((byte)0);
-    AppMethodBeat.o(188960);
+    AppMethodBeat.i(223195);
+    jDW = new a((byte)0);
+    AppMethodBeat.o(223195);
   }
   
-  private am(o paramo, AppBrandPrepareTask paramAppBrandPrepareTask)
+  private am(p paramp, AppBrandPrepareTask paramAppBrandPrepareTask)
   {
-    AppMethodBeat.i(188959);
-    this.jBj = paramo;
-    this.jBk = paramAppBrandPrepareTask;
-    this.TAG = ("MicroMsg.AppBrand.RuntimeLaunchTimeoutFallbackReloadTask[" + this.jBj.getAppId() + '|' + this.jBj.hashCode() + ']');
-    this.jBi = new AtomicBoolean(false);
-    AppMethodBeat.o(188959);
+    AppMethodBeat.i(223194);
+    this.jDU = paramp;
+    this.jDV = paramAppBrandPrepareTask;
+    this.TAG = ("MicroMsg.AppBrand.RuntimeLaunchTimeoutFallbackReloadTask[" + this.jDU.getAppId() + '|' + this.jDU.hashCode() + ']');
+    this.jDT = new AtomicBoolean(false);
+    AppMethodBeat.o(223194);
   }
   
-  public static final am a(o paramo, AppBrandPrepareTask paramAppBrandPrepareTask)
+  public static final am a(p paramp, AppBrandPrepareTask paramAppBrandPrepareTask)
   {
-    AppMethodBeat.i(188961);
-    p.h(paramo, "rt");
-    p.h(paramAppBrandPrepareTask, "prepareTask");
-    Object localObject1 = paramo.getContext();
+    AppMethodBeat.i(223196);
+    d.g.b.p.h(paramp, "rt");
+    d.g.b.p.h(paramAppBrandPrepareTask, "prepareTask");
+    Object localObject1 = paramp.getContext();
     if (localObject1 != null) {
       localObject1 = (Context)localObject1;
     }
     for (;;)
     {
-      Object localObject2 = paramo.aXc();
-      p.g(localObject2, "rt.initConfig");
+      Object localObject2 = paramp.aXx();
+      d.g.b.p.g(localObject2, "rt.initConfig");
       localObject2 = h.e((AppBrandInitConfigWC)localObject2);
-      String str = a.vL(paramo.aXc().uin);
-      paramo = new am(paramo, paramAppBrandPrepareTask);
-      new AppBrandPreInitTask((Context)localObject1, (LaunchParcel)localObject2, str, true, (AppBrandPreInitTask.a)paramo).bqK();
-      AppMethodBeat.o(188961);
-      return paramo;
-      localObject1 = paramo.getAppContext();
-      p.g(localObject1, "rt.appContext");
+      String str = b.vQ(paramp.aXx().uin);
+      paramp = new am(paramp, paramAppBrandPrepareTask);
+      new AppBrandPreInitTask((Context)localObject1, (LaunchParcel)localObject2, str, true, (AppBrandPreInitTask.a)paramp).bru();
+      AppMethodBeat.o(223196);
+      return paramp;
+      localObject1 = paramp.getAppContext();
+      d.g.b.p.g(localObject1, "rt.appContext");
     }
   }
   
   public final void a(final AppBrandInitConfigWC paramAppBrandInitConfigWC, final AppBrandStatObject paramAppBrandStatObject)
   {
-    AppMethodBeat.i(188958);
-    if (this.jBi.get())
+    AppMethodBeat.i(223193);
+    if (this.jDT.get())
     {
-      ad.w(this.TAG, "onResult but canceled");
-      AppMethodBeat.o(188958);
+      ae.w(this.TAG, "onResult but canceled");
+      AppMethodBeat.o(223193);
       return;
     }
-    ad.i(this.TAG, "onResult with config:".concat(String.valueOf(paramAppBrandInitConfigWC)));
-    this.jBk.interrupt();
+    ae.i(this.TAG, "onResult with config:".concat(String.valueOf(paramAppBrandInitConfigWC)));
+    this.jDV.interrupt();
     if (paramAppBrandInitConfigWC == null)
     {
-      this.jBj.finish();
-      AppMethodBeat.o(188958);
+      this.jDU.finish();
+      AppMethodBeat.o(223193);
       return;
     }
-    this.jBj.M((Runnable)new b(this, paramAppBrandInitConfigWC, paramAppBrandStatObject));
-    AppMethodBeat.o(188958);
+    this.jDU.K((Runnable)new b(this, paramAppBrandInitConfigWC, paramAppBrandStatObject));
+    AppMethodBeat.o(223193);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/RuntimeLaunchTimeoutFallbackReloadTask$Companion;", "", "()V", "start", "Lcom/tencent/mm/plugin/appbrand/RuntimeLaunchTimeoutFallbackReloadTask;", "rt", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntimeWC;", "prepareTask", "Lcom/tencent/mm/plugin/appbrand/launching/AppBrandPrepareTask;", "plugin-appbrand-integration_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/RuntimeLaunchTimeoutFallbackReloadTask$Companion;", "", "()V", "start", "Lcom/tencent/mm/plugin/appbrand/RuntimeLaunchTimeoutFallbackReloadTask;", "rt", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntimeWC;", "prepareTask", "Lcom/tencent/mm/plugin/appbrand/launching/AppBrandPrepareTask;", "plugin-appbrand-integration_release"})
   public static final class a {}
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
   static final class b
     implements Runnable
   {
@@ -101,16 +100,16 @@ public final class am
     
     public final void run()
     {
-      AppMethodBeat.i(188957);
-      paramAppBrandInitConfigWC.jXK = true;
+      AppMethodBeat.i(223192);
+      paramAppBrandInitConfigWC.kaZ = true;
       paramAppBrandInitConfigWC.a(paramAppBrandStatObject);
       paramAppBrandInitConfigWC.resetSession();
       AppBrandInitConfigWC localAppBrandInitConfigWC = paramAppBrandInitConfigWC;
-      String str = am.a(this.jBm).aXc().jXD.lEv;
-      p.g(str, "rt.initConfig.qualityReportSession.instanceId");
-      localAppBrandInitConfigWC.jXM = new AppBrandRuntimeReloadReportBundle(str, "TimeoutFallback");
-      am.a(this.jBm).a((AppBrandInitConfig)paramAppBrandInitConfigWC, "TimeoutFallback");
-      AppMethodBeat.o(188957);
+      String str = am.a(this.jDX).aXx().kaS.lIU;
+      d.g.b.p.g(str, "rt.initConfig.qualityReportSession.instanceId");
+      localAppBrandInitConfigWC.kbb = new AppBrandRuntimeReloadReportBundle(str, "TimeoutFallback");
+      am.a(this.jDX).a((AppBrandInitConfig)paramAppBrandInitConfigWC, "TimeoutFallback");
+      AppMethodBeat.o(223192);
     }
   }
 }

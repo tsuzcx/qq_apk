@@ -10,31 +10,31 @@ import com.tencent.youtu.ytposedetect.YTPoseDetectInterface.PoseDetectOnFrame;
 
 public final class a
 {
-  public int kHi;
+  public int kKx;
   public Camera mCamera;
   public Context mContext;
   public int mDesiredPreviewHeight;
   public int mDesiredPreviewWidth;
-  public int rpj;
-  public String rpk;
-  public FaceActionUI rpl;
-  public TextView rpm;
-  public a rpn;
-  public Rect rpo;
-  public Rect rpp;
-  public YTPoseDetectInterface.PoseDetectOnFrame rpq;
-  public boolean rpr = false;
+  public int rxn;
+  public String rxo;
+  public FaceActionUI rxp;
+  public TextView rxq;
+  public a rxr;
+  public Rect rxs;
+  public Rect rxt;
+  public YTPoseDetectInterface.PoseDetectOnFrame rxu;
+  public boolean rxv = false;
   
   public static abstract interface a {}
   
   public static final class b
   {
-    private static a rpt;
+    private static a rxx;
     
     static
     {
       AppMethodBeat.i(104203);
-      rpt = new a((byte)0);
+      rxx = new a((byte)0);
       AppMethodBeat.o(104203);
     }
   }

@@ -2,25 +2,25 @@ package com.tencent.mm.plugin.wear.model.f;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.k.b;
+import com.tencent.mm.ah.k.b;
 import com.tencent.mm.g.c.ei;
-import com.tencent.mm.model.w;
+import com.tencent.mm.model.x;
 import com.tencent.mm.plugin.wear.model.e.r;
 import com.tencent.mm.plugin.wear.model.h;
-import com.tencent.mm.protocal.protobuf.ecv;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.storage.bu;
+import com.tencent.mm.protocal.protobuf.eem;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.storage.bv;
 import java.io.IOException;
 
 public final class g
   extends b
 {
-  private bu dBd;
+  private bv dCi;
   
-  public g(bu parambu)
+  public g(bv parambv)
   {
-    this.dBd = parambu;
+    this.dCi = parambv;
   }
   
   public final String getName()
@@ -31,35 +31,35 @@ public final class g
   protected final void send()
   {
     AppMethodBeat.i(30127);
-    ecv localecv = new ecv();
-    Object localObject = this.dBd.field_content;
+    eem localeem = new eem();
+    Object localObject = this.dCi.field_content;
     String str;
     if (localObject != null)
     {
-      localObject = k.b.aA((String)localObject, this.dBd.field_reserved);
-      if ((localObject == null) || (!((k.b)localObject).hBx.startsWith("wxpay://c2cbizmessagehandler/hongbao/receivehongbao"))) {
+      localObject = k.b.aB((String)localObject, this.dCi.field_reserved);
+      if ((localObject == null) || (!((k.b)localObject).hEl.startsWith("wxpay://c2cbizmessagehandler/hongbao/receivehongbao"))) {
         break label244;
       }
-      localecv.FAf = this.dBd.field_msgId;
-      localecv.Hnp = this.dBd.field_talker;
-      if (this.dBd.field_isSend != 1) {
+      localeem.FSD = this.dCi.field_msgId;
+      localeem.HGP = this.dCi.field_talker;
+      if (this.dCi.field_isSend != 1) {
         break label220;
       }
-      localObject = ((k.b)localObject).hBr;
-      localecv.Title = h.aFs(this.dBd.field_talker);
-      if (!w.vF(this.dBd.field_talker)) {
+      localObject = ((k.b)localObject).hEf;
+      localeem.Title = h.aGM(this.dCi.field_talker);
+      if (!x.wb(this.dCi.field_talker)) {
         break label228;
       }
-      str = d(this.dBd.field_talker, this.dBd);
+      str = d(this.dCi.field_talker, this.dCi);
     }
-    for (localecv.hDa = String.format(aj.getContext().getString(2131761701), new Object[] { h.aFs(str), Character.valueOf('​'), localObject });; localecv.hDa = ((String)localObject))
+    for (localeem.hFS = String.format(ak.getContext().getString(2131761701), new Object[] { h.aGM(str), Character.valueOf('​'), localObject });; localeem.hFS = ((String)localObject))
     {
       try
       {
-        com.tencent.mm.plugin.wear.model.a.eKz();
-        r.a(20014, localecv.toByteArray(), true);
-        com.tencent.mm.plugin.wear.model.c.a.iP(10, 0);
-        com.tencent.mm.plugin.wear.model.c.a.VS(10);
+        com.tencent.mm.plugin.wear.model.a.eOh();
+        r.a(20014, localeem.toByteArray(), true);
+        com.tencent.mm.plugin.wear.model.c.a.iT(10, 0);
+        com.tencent.mm.plugin.wear.model.c.a.Wz(10);
         AppMethodBeat.o(30127);
         return;
       }
@@ -70,14 +70,14 @@ public final class g
         AppMethodBeat.o(30127);
         return;
       }
-      ad.w("MicroMsg.Wear.WearLuckyCreateTask", "xml is null!");
+      ae.w("MicroMsg.Wear.WearLuckyCreateTask", "xml is null!");
       AppMethodBeat.o(30127);
       return;
-      localObject = ((k.b)localObject).hBq;
+      localObject = ((k.b)localObject).hEe;
       break;
     }
     label244:
-    ad.i("MicroMsg.Wear.WearLuckyCreateTask", "biz c2c message, do not send to watch!");
+    ae.i("MicroMsg.Wear.WearLuckyCreateTask", "biz c2c message, do not send to watch!");
     AppMethodBeat.o(30127);
   }
 }

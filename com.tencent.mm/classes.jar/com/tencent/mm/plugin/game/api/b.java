@@ -4,7 +4,7 @@ import android.content.Context;
 
 public abstract interface b
 {
-  public abstract void Hx(int paramInt);
+  public abstract void HU(int paramInt);
   
   public abstract void P(long paramLong, int paramInt);
   
@@ -18,30 +18,30 @@ public abstract interface b
   
   public abstract void aj(String paramString, int paramInt1, int paramInt2);
   
-  public abstract boolean cWA();
+  public abstract boolean cZf();
   
-  public abstract String cWB();
+  public abstract String cZg();
   
-  public abstract void fk(Context paramContext);
+  public abstract void fo(Context paramContext);
   
   public abstract void j(Context paramContext, String paramString1, String paramString2);
   
   public abstract void k(String paramString1, String paramString2, String paramString3);
   
-  public abstract void mV(boolean paramBoolean);
+  public abstract void mZ(boolean paramBoolean);
   
   public static final class a
   {
-    private static b tRQ = null;
+    private static b ucH = null;
     
     public static void a(b paramb)
     {
-      tRQ = paramb;
+      ucH = paramb;
     }
     
-    public static b cWM()
+    public static b cZq()
     {
-      return tRQ;
+      return ucH;
     }
   }
 }

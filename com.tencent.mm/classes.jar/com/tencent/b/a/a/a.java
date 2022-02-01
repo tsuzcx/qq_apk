@@ -6,31 +6,31 @@ import org.json.JSONObject;
 
 final class a
 {
-  public static String cOi = "ts";
-  public static String cOj = "times";
-  public static String cOk = "mfreq";
-  public static String cOl = "mdays";
-  long cOe;
-  int cOf;
-  int cOg;
-  int cOh;
+  public static String cOS = "ts";
+  public static String cOT = "times";
+  public static String cOU = "mfreq";
+  public static String cOV = "mdays";
+  long cOO;
+  int cOP;
+  int cOQ;
+  int cOR;
   
   a()
   {
-    this.cOe = 0L;
-    this.cOf = 0;
-    this.cOg = 100;
-    this.cOh = 3;
+    this.cOO = 0L;
+    this.cOP = 0;
+    this.cOQ = 100;
+    this.cOR = 3;
   }
   
   a(String paramString)
   {
     AppMethodBeat.i(87622);
-    this.cOe = 0L;
-    this.cOf = 0;
-    this.cOg = 100;
-    this.cOh = 3;
-    if (!s.ek(paramString))
+    this.cOO = 0L;
+    this.cOP = 0;
+    this.cOQ = 100;
+    this.cOR = 3;
+    if (!s.ep(paramString))
     {
       AppMethodBeat.o(87622);
       return;
@@ -38,25 +38,25 @@ final class a
     try
     {
       paramString = new JSONObject(paramString);
-      if (!paramString.isNull(cOi)) {
-        this.cOe = paramString.getLong(cOi);
+      if (!paramString.isNull(cOS)) {
+        this.cOO = paramString.getLong(cOS);
       }
-      if (!paramString.isNull(cOk)) {
-        this.cOg = paramString.getInt(cOk);
+      if (!paramString.isNull(cOU)) {
+        this.cOQ = paramString.getInt(cOU);
       }
-      if (!paramString.isNull(cOj)) {
-        this.cOf = paramString.getInt(cOj);
+      if (!paramString.isNull(cOT)) {
+        this.cOP = paramString.getInt(cOT);
       }
-      if (!paramString.isNull(cOl))
+      if (!paramString.isNull(cOV))
       {
-        this.cOh = paramString.getInt(cOl);
+        this.cOR = paramString.getInt(cOV);
         AppMethodBeat.o(87622);
         return;
       }
     }
     catch (JSONException paramString)
     {
-      s.JL();
+      s.JT();
       AppMethodBeat.o(87622);
     }
   }
@@ -67,10 +67,10 @@ final class a
     Object localObject = new JSONObject();
     try
     {
-      ((JSONObject)localObject).put(cOi, this.cOe);
-      ((JSONObject)localObject).put(cOj, this.cOf);
-      ((JSONObject)localObject).put(cOk, this.cOg);
-      ((JSONObject)localObject).put(cOl, this.cOh);
+      ((JSONObject)localObject).put(cOS, this.cOO);
+      ((JSONObject)localObject).put(cOT, this.cOP);
+      ((JSONObject)localObject).put(cOU, this.cOQ);
+      ((JSONObject)localObject).put(cOV, this.cOR);
       localObject = ((JSONObject)localObject).toString();
       AppMethodBeat.o(87623);
       return localObject;
@@ -79,7 +79,7 @@ final class a
     {
       for (;;)
       {
-        s.JL();
+        s.JT();
       }
     }
   }

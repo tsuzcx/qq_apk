@@ -6,23 +6,23 @@ import com.tencent.mm.compatible.util.q;
 import com.tencent.mm.plugin.report.service.g;
 import com.tencent.mm.plugin.webview.c.l;
 import com.tencent.mm.plugin.webview.stub.f;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.Map;
 
 public final class j
 {
-  private static String Ul(String paramString)
+  private static String UW(String paramString)
   {
     AppMethodBeat.i(82064);
-    if (bt.isNullOrNil(paramString))
+    if (bu.isNullOrNil(paramString))
     {
       AppMethodBeat.o(82064);
       return "";
     }
     try
     {
-      paramString = bt.nullAsNil(q.encode(paramString));
+      paramString = bu.nullAsNil(q.encode(paramString));
       AppMethodBeat.o(82064);
       return paramString;
     }
@@ -35,23 +35,23 @@ public final class j
   
   private static String a(l paraml, String paramString)
   {
-    AppMethodBeat.i(208926);
-    if ((paraml.DNB == null) || (!paraml.DNB.containsKey(paramString)))
+    AppMethodBeat.i(199108);
+    if ((paraml.EfA == null) || (!paraml.EfA.containsKey(paramString)))
     {
-      AppMethodBeat.o(208926);
+      AppMethodBeat.o(199108);
       return "";
     }
-    paraml = String.valueOf(paraml.DNB.get(paramString));
-    AppMethodBeat.o(208926);
+    paraml = String.valueOf(paraml.EfA.get(paramString));
+    AppMethodBeat.o(199108);
     return paraml;
   }
   
   public static void a(f paramf, String paramString, l paraml)
   {
-    AppMethodBeat.i(208924);
+    AppMethodBeat.i(199106);
     if (paramf == null)
     {
-      AppMethodBeat.o(208924);
+      AppMethodBeat.o(199106);
       return;
     }
     try
@@ -59,20 +59,20 @@ public final class j
       paramf = paramf.k(145, null);
       if (paramf == null)
       {
-        AppMethodBeat.o(208924);
+        AppMethodBeat.o(199106);
         return;
       }
     }
     catch (Exception paramf)
     {
-      ad.e("kv_14993", String.valueOf(paramf));
-      AppMethodBeat.o(208924);
+      ae.e("kv_14993", String.valueOf(paramf));
+      AppMethodBeat.o(199106);
       return;
     }
     String[] arrayOfString = paramf.getStringArray("key_webview_apbrand_jsapi_report_args");
     if ((arrayOfString == null) || (arrayOfString.length != 19))
     {
-      AppMethodBeat.o(208924);
+      AppMethodBeat.o(199106);
       return;
     }
     arrayOfString[10] = paramString;
@@ -83,15 +83,15 @@ public final class j
       arrayOfString[12] = paramf;
       arrayOfString[13] = a(paraml, "permissionValue");
       arrayOfString[14] = a(paraml, "jsapiErrorCode");
-      g.yhR.f(14993, l(arrayOfString));
-      AppMethodBeat.o(208924);
+      g.yxI.f(14993, k(arrayOfString));
+      AppMethodBeat.o(199106);
       return;
     }
   }
   
   private static String b(String paramString, l paraml)
   {
-    AppMethodBeat.i(208925);
+    AppMethodBeat.i(199107);
     int i = -1;
     switch (paramString.hashCode())
     {
@@ -101,7 +101,7 @@ public final class j
       switch (i)
       {
       default: 
-        AppMethodBeat.o(208925);
+        AppMethodBeat.o(199107);
         return "";
         if (paramString.equals("getBrandWCPayRequest")) {
           i = 0;
@@ -109,12 +109,12 @@ public final class j
         break;
       }
     }
-    paramString = paraml.xaW.get("package").toString();
-    AppMethodBeat.o(208925);
+    paramString = paraml.xqN.get("package").toString();
+    AppMethodBeat.o(199107);
     return paramString;
   }
   
-  private static Object[] l(Object[] paramArrayOfObject)
+  private static Object[] k(Object[] paramArrayOfObject)
   {
     AppMethodBeat.i(82065);
     if ((paramArrayOfObject == null) || (paramArrayOfObject.length <= 0))
@@ -148,7 +148,7 @@ public final class j
           }
           else
           {
-            localObject1 = Ul((String)localObject2);
+            localObject1 = UW((String)localObject2);
           }
         }
       }

@@ -1,12 +1,12 @@
 package com.tencent.mm.pluginsdk.model.app;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
@@ -14,36 +14,36 @@ import com.tencent.mm.platformtools.z;
 import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
 import com.tencent.mm.protocal.protobuf.eg;
 import com.tencent.mm.protocal.protobuf.eh;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class ab
   extends n
   implements k
 {
-  int ENi;
-  aa ENj;
+  int FfF;
+  aa FfG;
   private f callback;
   private b rr;
   
   public ab(int paramInt, aa paramaa)
   {
     AppMethodBeat.i(151804);
-    this.ENi = paramInt;
+    this.FfF = paramInt;
     Object localObject = new b.a();
-    ((b.a)localObject).hNM = new eg();
-    ((b.a)localObject).hNN = new eh();
+    ((b.a)localObject).hQF = new eg();
+    ((b.a)localObject).hQG = new eh();
     ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/appcenter";
     ((b.a)localObject).funcId = 452;
-    ((b.a)localObject).hNO = 0;
+    ((b.a)localObject).hQH = 0;
     ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).aDC();
-    localObject = (eg)this.rr.hNK.hNQ;
-    byte[] arrayOfByte = paramaa.eZD();
+    this.rr = ((b.a)localObject).aDS();
+    localObject = (eg)this.rr.hQD.hQJ;
+    byte[] arrayOfByte = paramaa.fdr();
     if (arrayOfByte != null) {
       ((eg)localObject).ReqBuf = new SKBuiltinBuffer_t().setBuffer(arrayOfByte);
     }
-    ((eg)localObject).nEf = paramInt;
-    this.ENj = paramaa;
+    ((eg)localObject).nJA = paramInt;
+    this.FfG = paramaa;
     AppMethodBeat.o(151804);
   }
   
@@ -64,16 +64,16 @@ public final class ab
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(151805);
-    ad.d("MicroMsg.NetSceneAppCenter", "errType = " + paramInt2 + ", errCode = " + paramInt3);
+    ae.d("MicroMsg.NetSceneAppCenter", "errType = " + paramInt2 + ", errCode = " + paramInt3);
     if ((paramInt2 != 0) || (paramInt3 != 0))
     {
-      ad.e("MicroMsg.NetSceneAppCenter", "errType = " + paramInt2 + ", errCode = " + paramInt3);
+      ae.e("MicroMsg.NetSceneAppCenter", "errType = " + paramInt2 + ", errCode = " + paramInt3);
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
       AppMethodBeat.o(151805);
       return;
     }
-    this.ENj.ch(z.a(((eh)this.rr.hNL.hNQ).Fwe));
-    this.ENj.onGYNetEnd(paramInt1, paramInt2, paramInt3, paramString, this.rr, paramArrayOfByte);
+    this.FfG.ck(z.a(((eh)this.rr.hQE.hQJ).FOC));
+    this.FfG.onGYNetEnd(paramInt1, paramInt2, paramInt3, paramString, this.rr, paramArrayOfByte);
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(151805);
   }

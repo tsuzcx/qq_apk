@@ -4,7 +4,7 @@ import com.tencent.mm.storage.w;
 import com.tencent.mm.vending.c.a;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "", "kotlin.jvm.PlatformType", "call", "(Ljava/lang/Boolean;)V"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "", "kotlin.jvm.PlatformType", "call", "(Ljava/lang/Boolean;)V"})
 final class h$a$2<_Ret, _Var>
   implements a<_Ret, _Var>
 {

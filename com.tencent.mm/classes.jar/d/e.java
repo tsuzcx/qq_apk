@@ -1,6 +1,6 @@
 package d;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlin/KotlinNullPointerException;", "Ljava/lang/NullPointerException;", "Lkotlin/NullPointerException;", "()V", "message", "", "(Ljava/lang/String;)V", "kotlin-stdlib"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlin/KotlinNullPointerException;", "Ljava/lang/NullPointerException;", "Lkotlin/NullPointerException;", "()V", "message", "", "(Ljava/lang/String;)V", "kotlin-stdlib"})
 public final class e
   extends NullPointerException
 {}

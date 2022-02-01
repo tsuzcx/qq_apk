@@ -25,7 +25,7 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.widget.MMEditText;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -34,40 +34,40 @@ import java.util.List;
 public class MultiSelectContactView
   extends LinearLayout
 {
-  private RecyclerView ETf;
-  private HashSet<String> ETg;
-  private Animation ETh;
-  private int ETi;
-  private c ETj;
-  private d ETk;
-  private e ETl;
-  int ETm;
-  boolean ETn;
-  MMEditText ETo;
-  ImageView ETp;
-  private View fOB;
-  private LayoutInflater jfG;
-  private ArrayList<String> sec;
+  private RecyclerView FlA;
+  private HashSet<String> FlB;
+  private Animation FlC;
+  private int FlD;
+  private c FlE;
+  private d FlF;
+  private e FlG;
+  int FlH;
+  boolean FlI;
+  MMEditText FlJ;
+  ImageView FlK;
+  private View fQH;
+  private LayoutInflater jiz;
+  private ArrayList<String> smS;
   
   public MultiSelectContactView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(102785);
-    this.sec = new ArrayList();
-    this.ETi = 0;
-    this.ETm = getResources().getDimensionPixelSize(2131165239);
-    this.ETn = false;
-    this.jfG = LayoutInflater.from(paramContext);
-    this.jfG.inflate(2131494988, this, true);
-    this.ETf = ((RecyclerView)findViewById(2131302625));
+    this.smS = new ArrayList();
+    this.FlD = 0;
+    this.FlH = getResources().getDimensionPixelSize(2131165239);
+    this.FlI = false;
+    this.jiz = LayoutInflater.from(paramContext);
+    this.jiz.inflate(2131494988, this, true);
+    this.FlA = ((RecyclerView)findViewById(2131302625));
     getContext();
     paramAttributeSet = new LinearLayoutManager();
     paramAttributeSet.setOrientation(0);
-    this.ETf.setLayoutManager(paramAttributeSet);
-    this.ETf.setAdapter(new a());
-    this.ETg = new HashSet();
-    this.ETh = AnimationUtils.loadAnimation(paramContext, 2130772047);
-    this.fOB = findViewById(2131304239);
+    this.FlA.setLayoutManager(paramAttributeSet);
+    this.FlA.setAdapter(new a());
+    this.FlB = new HashSet();
+    this.FlC = AnimationUtils.loadAnimation(paramContext, 2130772047);
+    this.fQH = findViewById(2131304239);
     setBackgroundColor(paramContext.getResources().getColor(2131099650));
     setOnClickListener(new View.OnClickListener()
     {
@@ -76,7 +76,7 @@ public class MultiSelectContactView
         AppMethodBeat.i(102774);
         b localb = new b();
         localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/pluginsdk/ui/MultiSelectContactView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/pluginsdk/ui/MultiSelectContactView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/pluginsdk/ui/MultiSelectContactView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(102774);
       }
@@ -84,40 +84,40 @@ public class MultiSelectContactView
     AppMethodBeat.o(102785);
   }
   
-  private void cz(String paramString, boolean paramBoolean)
+  private void cD(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(102794);
-    int i = this.sec.indexOf(paramString);
-    if ((i >= 0) && (i < this.sec.size()))
+    int i = this.smS.indexOf(paramString);
+    if ((i >= 0) && (i < this.smS.size()))
     {
-      this.ETg.remove(this.sec.remove(i));
-      this.ETf.getAdapter().cl(i);
+      this.FlB.remove(this.smS.remove(i));
+      this.FlA.getAdapter().cl(i);
     }
-    fbV();
-    fbU();
-    if ((paramBoolean) && (this.ETj != null)) {
-      this.ETj.Q(1, paramString);
+    ffJ();
+    ffI();
+    if ((paramBoolean) && (this.FlE != null)) {
+      this.FlE.Q(1, paramString);
     }
     AppMethodBeat.o(102794);
   }
   
-  private void fbT()
+  private void ffH()
   {
     AppMethodBeat.i(102791);
-    if (this.ETf.getChildCount() == 1)
+    if (this.FlA.getChildCount() == 1)
     {
       AppMethodBeat.o(102791);
       return;
     }
-    View localView = this.ETf.getChildAt(this.ETf.getChildCount() - 2);
-    if (this.ETn)
+    View localView = this.FlA.getChildAt(this.FlA.getChildCount() - 2);
+    if (this.FlI)
     {
       if (localView == null)
       {
         AppMethodBeat.o(102791);
         return;
       }
-      this.ETn = false;
+      this.FlI = false;
       localView = localView.findViewById(2131302160);
       if (localView != null) {
         localView.setVisibility(8);
@@ -126,24 +126,24 @@ public class MultiSelectContactView
     AppMethodBeat.o(102791);
   }
   
-  private void fbU()
+  private void ffI()
   {
     AppMethodBeat.i(102793);
-    int i = Math.max(this.ETm * 2, this.ETf.getWidth() - (this.sec.size() + 1) * this.ETm);
+    int i = Math.max(this.FlH * 2, this.FlA.getWidth() - (this.smS.size() + 1) * this.FlH);
     if ((getInputText() != null) && (getInputText().getWidth() != i)) {
       getInputText().setWidth(i);
     }
     AppMethodBeat.o(102793);
   }
   
-  private void fbV()
+  private void ffJ()
   {
     AppMethodBeat.i(102795);
     View localView;
     if (getSearchIcon() != null)
     {
       localView = getSearchIcon();
-      if (this.ETf.getAdapter().getItemCount() > 1) {
+      if (this.FlA.getAdapter().getItemCount() > 1) {
         break label46;
       }
     }
@@ -156,53 +156,53 @@ public class MultiSelectContactView
     }
   }
   
-  public final void aMx(String paramString)
+  public final void aNT(String paramString)
   {
     AppMethodBeat.i(102789);
-    if (bt.isNullOrNil(paramString))
+    if (bu.isNullOrNil(paramString))
     {
       AppMethodBeat.o(102789);
       return;
     }
-    fbT();
-    if (this.ETg.contains(paramString))
+    ffH();
+    if (this.FlB.contains(paramString))
     {
-      cz(paramString, false);
+      cD(paramString, false);
       AppMethodBeat.o(102789);
       return;
     }
-    aMz(paramString);
+    aNV(paramString);
     AppMethodBeat.o(102789);
   }
   
-  public final void aMy(String paramString)
+  public final void aNU(String paramString)
   {
     AppMethodBeat.i(102790);
     if (paramString != null)
     {
-      cz(paramString, false);
+      cD(paramString, false);
       AppMethodBeat.o(102790);
       return;
     }
     AppMethodBeat.o(102790);
   }
   
-  public final void aMz(String paramString)
+  public final void aNV(String paramString)
   {
     AppMethodBeat.i(102792);
-    this.ETg.add(paramString);
-    this.sec.add(paramString);
-    int i = this.ETf.getAdapter().getItemCount();
-    this.ETf.getAdapter().ck(i - 2);
-    RecyclerView localRecyclerView = this.ETf;
+    this.FlB.add(paramString);
+    this.smS.add(paramString);
+    int i = this.FlA.getAdapter().getItemCount();
+    this.FlA.getAdapter().ck(i - 2);
+    RecyclerView localRecyclerView = this.FlA;
     com.tencent.mm.hellhoundlib.b.a locala = com.tencent.mm.hellhoundlib.b.c.a(i - 1, new com.tencent.mm.hellhoundlib.b.a());
-    com.tencent.mm.hellhoundlib.a.a.a(localRecyclerView, locala.ahp(), "com/tencent/mm/pluginsdk/ui/MultiSelectContactView", "addContact", "(Ljava/lang/String;Z)V", "Undefined", "scrollToPosition", "(I)V");
-    localRecyclerView.ca(((Integer)locala.mq(0)).intValue());
+    com.tencent.mm.hellhoundlib.a.a.a(localRecyclerView, locala.ahE(), "com/tencent/mm/pluginsdk/ui/MultiSelectContactView", "addContact", "(Ljava/lang/String;Z)V", "Undefined", "scrollToPosition", "(I)V");
+    localRecyclerView.ca(((Integer)locala.mt(0)).intValue());
     com.tencent.mm.hellhoundlib.a.a.a(localRecyclerView, "com/tencent/mm/pluginsdk/ui/MultiSelectContactView", "addContact", "(Ljava/lang/String;Z)V", "Undefined", "scrollToPosition", "(I)V");
-    fbV();
-    fbU();
-    if (this.ETj != null) {
-      this.ETj.Q(0, paramString);
+    ffJ();
+    ffI();
+    if (this.FlE != null) {
+      this.FlE.Q(0, paramString);
     }
     AppMethodBeat.o(102792);
   }
@@ -211,13 +211,13 @@ public class MultiSelectContactView
   {
     AppMethodBeat.i(102787);
     getInputText().clearFocus();
-    fbT();
+    ffH();
     AppMethodBeat.o(102787);
   }
   
   public EditText getInputText()
   {
-    return this.ETo;
+    return this.FlJ;
   }
   
   public String getSearchContent()
@@ -231,32 +231,32 @@ public class MultiSelectContactView
   public b getSearchHolder()
   {
     AppMethodBeat.i(102797);
-    b localb = (b)this.ETf.j(this.ETf.getAdapter().getItemCount() - 1, false);
+    b localb = (b)this.FlA.j(this.FlA.getAdapter().getItemCount() - 1, false);
     AppMethodBeat.o(102797);
     return localb;
   }
   
   public View getSearchIcon()
   {
-    return this.ETp;
+    return this.FlK;
   }
   
-  public final void hd(List<String> paramList)
+  public final void hn(List<String> paramList)
   {
     AppMethodBeat.i(102788);
-    this.sec.clear();
-    this.ETg.clear();
-    this.sec.addAll(paramList);
-    this.ETg.addAll(paramList);
-    this.ETf.getAdapter().asY.notifyChanged();
-    int i = this.ETf.getAdapter().getItemCount();
-    paramList = this.ETf;
+    this.smS.clear();
+    this.FlB.clear();
+    this.smS.addAll(paramList);
+    this.FlB.addAll(paramList);
+    this.FlA.getAdapter().asY.notifyChanged();
+    int i = this.FlA.getAdapter().getItemCount();
+    paramList = this.FlA;
     com.tencent.mm.hellhoundlib.b.a locala = com.tencent.mm.hellhoundlib.b.c.a(i - 1, new com.tencent.mm.hellhoundlib.b.a());
-    com.tencent.mm.hellhoundlib.a.a.a(paramList, locala.ahp(), "com/tencent/mm/pluginsdk/ui/MultiSelectContactView", "multiSelectChanged", "(Ljava/util/List;)V", "Undefined", "scrollToPosition", "(I)V");
-    paramList.ca(((Integer)locala.mq(0)).intValue());
+    com.tencent.mm.hellhoundlib.a.a.a(paramList, locala.ahE(), "com/tencent/mm/pluginsdk/ui/MultiSelectContactView", "multiSelectChanged", "(Ljava/util/List;)V", "Undefined", "scrollToPosition", "(I)V");
+    paramList.ca(((Integer)locala.mt(0)).intValue());
     com.tencent.mm.hellhoundlib.a.a.a(paramList, "com/tencent/mm/pluginsdk/ui/MultiSelectContactView", "multiSelectChanged", "(Ljava/util/List;)V", "Undefined", "scrollToPosition", "(I)V");
-    fbV();
-    fbU();
+    ffJ();
+    ffI();
     AppMethodBeat.o(102788);
   }
   
@@ -271,17 +271,17 @@ public class MultiSelectContactView
   
   public void setOnContactDeselectListener(c paramc)
   {
-    this.ETj = paramc;
+    this.FlE = paramc;
   }
   
   public void setOnSearchTextChangeListener(d paramd)
   {
-    this.ETk = paramd;
+    this.FlF = paramd;
   }
   
   public void setOnSearchTextFouceChangeListener(e parame)
   {
-    this.ETl = parame;
+    this.FlG = parame;
   }
   
   final class a
@@ -313,7 +313,7 @@ public class MultiSelectContactView
   final class b
     extends RecyclerView.w
   {
-    ImageView fRd;
+    ImageView fTj;
     
     public b(View paramView, int paramInt)
     {
@@ -321,8 +321,8 @@ public class MultiSelectContactView
       AppMethodBeat.i(102784);
       if (paramInt != 1)
       {
-        this.fRd = ((ImageView)paramView.findViewById(2131296996));
-        paramInt = MultiSelectContactView.this.ETm;
+        this.fTj = ((ImageView)paramView.findViewById(2131296996));
+        paramInt = MultiSelectContactView.this.FlH;
         LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(paramInt, paramInt);
         localLayoutParams.rightMargin = MultiSelectContactView.this.getResources().getDimensionPixelSize(2131165187);
         paramView.setLayoutParams(localLayoutParams);
@@ -333,7 +333,7 @@ public class MultiSelectContactView
             AppMethodBeat.i(102779);
             b localb = new b();
             localb.bd(paramAnonymousView);
-            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/pluginsdk/ui/MultiSelectContactView$ContactHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/pluginsdk/ui/MultiSelectContactView$ContactHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
             MultiSelectContactView.a(MultiSelectContactView.this, (String)paramAnonymousView.getTag());
             com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/pluginsdk/ui/MultiSelectContactView$ContactHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
             AppMethodBeat.o(102779);
@@ -342,11 +342,11 @@ public class MultiSelectContactView
         AppMethodBeat.o(102784);
         return;
       }
-      MultiSelectContactView.this.ETp = ((ImageView)paramView.findViewById(2131302627));
-      MultiSelectContactView.this.ETo = ((MMEditText)paramView.findViewById(2131302626));
-      MultiSelectContactView.this.ETo.setWidth(MultiSelectContactView.this.getResources().getDisplayMetrics().widthPixels - MultiSelectContactView.this.ETm * 2);
-      com.tencent.mm.ui.tools.b.c.d(MultiSelectContactView.this.ETo).aeU(100).a(null);
-      MultiSelectContactView.this.ETo.addTextChangedListener(new TextWatcher()
+      MultiSelectContactView.this.FlK = ((ImageView)paramView.findViewById(2131302627));
+      MultiSelectContactView.this.FlJ = ((MMEditText)paramView.findViewById(2131302626));
+      MultiSelectContactView.this.FlJ.setWidth(MultiSelectContactView.this.getResources().getDisplayMetrics().widthPixels - MultiSelectContactView.this.FlH * 2);
+      com.tencent.mm.ui.tools.b.c.d(MultiSelectContactView.this.FlJ).afD(100).a(null);
+      MultiSelectContactView.this.FlJ.addTextChangedListener(new TextWatcher()
       {
         public final void afterTextChanged(Editable paramAnonymousEditable) {}
         
@@ -357,21 +357,21 @@ public class MultiSelectContactView
           AppMethodBeat.i(102780);
           MultiSelectContactView.c(MultiSelectContactView.this);
           if (MultiSelectContactView.d(MultiSelectContactView.this) != null) {
-            MultiSelectContactView.d(MultiSelectContactView.this).aMA(paramAnonymousCharSequence.toString());
+            MultiSelectContactView.d(MultiSelectContactView.this).aNW(paramAnonymousCharSequence.toString());
           }
           AppMethodBeat.o(102780);
         }
       });
-      MultiSelectContactView.this.ETo.setOnKeyListener(new View.OnKeyListener()
+      MultiSelectContactView.this.FlJ.setOnKeyListener(new View.OnKeyListener()
       {
         public final boolean onKey(View paramAnonymousView, int paramAnonymousInt, KeyEvent paramAnonymousKeyEvent)
         {
           AppMethodBeat.i(102781);
           b localb = new b();
           localb.bd(paramAnonymousView);
-          localb.mr(paramAnonymousInt);
+          localb.mu(paramAnonymousInt);
           localb.bd(paramAnonymousKeyEvent);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/pluginsdk/ui/MultiSelectContactView$ContactHolder$3", "android/view/View$OnKeyListener", "onKey", "(Landroid/view/View;ILandroid/view/KeyEvent;)Z", this, localb.ahq());
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/pluginsdk/ui/MultiSelectContactView$ContactHolder$3", "android/view/View$OnKeyListener", "onKey", "(Landroid/view/View;ILandroid/view/KeyEvent;)Z", this, localb.ahF());
           if ((paramAnonymousInt == 67) && (paramAnonymousKeyEvent.getAction() == 0) && (MultiSelectContactView.this.getInputText().getSelectionStart() == 0) && (MultiSelectContactView.this.getInputText().getSelectionEnd() == 0)) {
             MultiSelectContactView.e(MultiSelectContactView.this);
           }
@@ -380,19 +380,19 @@ public class MultiSelectContactView
           return false;
         }
       });
-      MultiSelectContactView.this.ETo.clearFocus();
-      MultiSelectContactView.this.ETo.setOnFocusChangeListener(new View.OnFocusChangeListener()
+      MultiSelectContactView.this.FlJ.clearFocus();
+      MultiSelectContactView.this.FlJ.setOnFocusChangeListener(new View.OnFocusChangeListener()
       {
         public final void onFocusChange(View paramAnonymousView, boolean paramAnonymousBoolean)
         {
           AppMethodBeat.i(102782);
           if (MultiSelectContactView.f(MultiSelectContactView.this) != null) {
-            MultiSelectContactView.f(MultiSelectContactView.this).fbW();
+            MultiSelectContactView.f(MultiSelectContactView.this).ffK();
           }
           AppMethodBeat.o(102782);
         }
       });
-      MultiSelectContactView.this.ETo.post(new Runnable()
+      MultiSelectContactView.this.FlJ.post(new Runnable()
       {
         public final void run()
         {
@@ -412,12 +412,12 @@ public class MultiSelectContactView
   
   public static abstract interface d
   {
-    public abstract void aMA(String paramString);
+    public abstract void aNW(String paramString);
   }
   
   public static abstract interface e
   {
-    public abstract void fbW();
+    public abstract void ffK();
   }
 }
 

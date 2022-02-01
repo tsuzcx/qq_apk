@@ -10,52 +10,52 @@ import com.tencent.mm.modelvideo.u;
 import com.tencent.mm.modelvideo.w;
 import com.tencent.mm.plugin.mmsight.c;
 import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.protocal.protobuf.bxm;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.byg;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class n
   implements w
 {
-  public final void GV(String paramString)
+  public final void Hx(String paramString)
   {
     AppMethodBeat.i(89443);
-    final s locals = o.aMJ().Hb(paramString);
+    final s locals = o.aNh().HD(paramString);
     if (locals == null)
     {
       AppMethodBeat.o(89443);
       return;
     }
-    o.aMJ();
-    final String str = t.Hh(paramString);
-    bxm localbxm = locals.iuo;
-    VideoTransPara localVideoTransPara = d.aGQ().aGR();
-    if (localbxm != null)
+    o.aNh();
+    final String str = t.HJ(paramString);
+    byg localbyg = locals.ixi;
+    VideoTransPara localVideoTransPara = d.aHh().aHi();
+    if (localbyg != null)
     {
-      ad.i("MicroMsg.MMSightVideoMsgSendCallback", "beforeVideoSend count %d filename %s filePath %s", new Object[] { Integer.valueOf(localbxm.sJZ), paramString, str });
-      if (localbxm.sJZ > 1)
+      ae.i("MicroMsg.MMSightVideoMsgSendCallback", "beforeVideoSend count %d filename %s filePath %s", new Object[] { Integer.valueOf(localbyg.sVm), paramString, str });
+      if (localbyg.sVm > 1)
       {
-        u.Hp(paramString);
+        u.HR(paramString);
         AppMethodBeat.o(89443);
         return;
       }
     }
-    boolean bool2 = m.a(str, localVideoTransPara, localbxm, new e()
+    boolean bool2 = m.a(str, localVideoTransPara, localbyg, new e()
     {
-      public final boolean dlg()
+      public final boolean dog()
       {
         AppMethodBeat.i(89441);
-        ad.i("MicroMsg.MMSightVideoMsgSendCallback", "iUpdateVideoFile1 %s", new Object[] { str });
-        int i = t.Hj(str);
-        locals.hMP = i;
-        locals.dDp = 32;
-        o.aMJ().c(locals);
+        ae.i("MicroMsg.MMSightVideoMsgSendCallback", "iUpdateVideoFile1 %s", new Object[] { str });
+        int i = t.HL(str);
+        locals.hPI = i;
+        locals.dEu = 32;
+        o.aNh().c(locals);
         AppMethodBeat.o(89441);
         return true;
       }
     });
-    if (localbxm != null)
+    if (localbyg != null)
     {
-      ad.i("MicroMsg.MMSightVideoMsgSendCallback", "filename: %s need ret: %s", new Object[] { paramString, Boolean.valueOf(bool2) });
+      ae.i("MicroMsg.MMSightVideoMsgSendCallback", "filename: %s need ret: %s", new Object[] { paramString, Boolean.valueOf(bool2) });
       if (bool2) {
         break label298;
       }
@@ -63,50 +63,50 @@ public final class n
     label298:
     for (boolean bool1 = true;; bool1 = false)
     {
-      localbxm.GRD = bool1;
-      locals.iuo = localbxm;
-      locals.dDp = 536870912;
-      o.aMJ().c(locals);
+      localbyg.Hle = bool1;
+      locals.ixi = localbyg;
+      locals.dEu = 536870912;
+      o.aNh().c(locals);
       if (!bool2) {
         break label337;
       }
-      if (localbxm != null)
+      if (localbyg != null)
       {
-        localbxm.sJZ += 1;
-        locals.iuo = localbxm;
+        localbyg.sVm += 1;
+        locals.ixi = localbyg;
       }
-      locals.dDp = 536870912;
-      o.aMJ().c(locals);
-      c.Kd(locals.iuf);
-      if (m.b(str, localVideoTransPara, localbxm, new e()
+      locals.dEu = 536870912;
+      o.aNh().c(locals);
+      c.KD(locals.iwZ);
+      if (m.b(str, localVideoTransPara, localbyg, new e()
       {
-        public final boolean dlg()
+        public final boolean dog()
         {
           AppMethodBeat.i(89442);
-          c.Ke(locals.iuf);
-          ad.i("MicroMsg.MMSightVideoMsgSendCallback", "iUpdateVideoFile2 %s", new Object[] { str });
-          int i = t.Hj(str);
-          locals.hMP = i;
-          locals.dDp = 32;
-          o.aMJ().c(locals);
+          c.KE(locals.iwZ);
+          ae.i("MicroMsg.MMSightVideoMsgSendCallback", "iUpdateVideoFile2 %s", new Object[] { str });
+          int i = t.HL(str);
+          locals.hPI = i;
+          locals.dEu = 32;
+          o.aNh().c(locals);
           AppMethodBeat.o(89442);
           return true;
         }
       }) >= 0) {
         break;
       }
-      ad.i("MicroMsg.MMSightRecorderIDKeyStat", "mark720CapturePostCompressFailed");
-      g.yhR.idkeyStat(440L, 45L, 1L, false);
-      u.Hp(paramString);
+      ae.i("MicroMsg.MMSightRecorderIDKeyStat", "mark720CapturePostCompressFailed");
+      g.yxI.idkeyStat(440L, 45L, 1L, false);
+      u.HR(paramString);
       AppMethodBeat.o(89443);
       return;
     }
-    if (localbxm != null)
+    if (localbyg != null)
     {
-      localbxm.GRD = true;
-      locals.iuo = localbxm;
-      locals.dDp = 536870912;
-      o.aMJ().c(locals);
+      localbyg.Hle = true;
+      locals.ixi = localbyg;
+      locals.dEu = 536870912;
+      o.aNh().c(locals);
     }
     label337:
     AppMethodBeat.o(89443);

@@ -5,22 +5,22 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.location.ui.d;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public class LocationInfo
   implements Parcelable
 {
   public static final Parcelable.Creator<LocationInfo> CREATOR;
-  public String dDq;
-  public String uZq;
-  public double uZr;
-  public double uZs;
-  public int uZt;
-  public String uZu;
-  public String uZv;
-  String uZw;
-  public int uZx;
-  public String uZy;
+  public String dEv;
+  public String vlB;
+  public double vlC;
+  public double vlD;
+  public int vlE;
+  public String vlF;
+  public String vlG;
+  String vlH;
+  public int vlI;
+  public String vlJ;
   
   static
   {
@@ -31,27 +31,27 @@ public class LocationInfo
   
   public LocationInfo()
   {
-    this.uZq = "";
-    this.uZr = -85.0D;
-    this.uZs = -1000.0D;
-    this.uZu = "";
-    this.uZv = "zh-cn";
-    this.uZw = "";
-    this.uZx = 0;
+    this.vlB = "";
+    this.vlC = -85.0D;
+    this.vlD = -1000.0D;
+    this.vlF = "";
+    this.vlG = "zh-cn";
+    this.vlH = "";
+    this.vlI = 0;
   }
   
   public LocationInfo(byte paramByte)
   {
     AppMethodBeat.i(55673);
-    this.uZq = "";
-    this.uZr = -85.0D;
-    this.uZs = -1000.0D;
-    this.uZu = "";
-    this.uZv = "zh-cn";
-    this.uZw = "";
-    this.uZx = 0;
-    this.uZq = (toString() + " " + System.nanoTime());
-    this.uZt = d.dgu();
+    this.vlB = "";
+    this.vlC = -85.0D;
+    this.vlD = -1000.0D;
+    this.vlF = "";
+    this.vlG = "zh-cn";
+    this.vlH = "";
+    this.vlI = 0;
+    this.vlB = (toString() + " " + System.nanoTime());
+    this.vlE = d.djt();
     AppMethodBeat.o(55673);
   }
   
@@ -60,15 +60,15 @@ public class LocationInfo
     return 0;
   }
   
-  public final boolean dfX()
+  public final boolean diW()
   {
-    return (this.uZr != -85.0D) && (this.uZs != -1000.0D);
+    return (this.vlC != -85.0D) && (this.vlD != -1000.0D);
   }
   
-  public final boolean dfY()
+  public final boolean diX()
   {
     AppMethodBeat.i(55675);
-    if ((bt.isNullOrNil(this.uZu)) && (bt.isNullOrNil(this.dDq)))
+    if ((bu.isNullOrNil(this.vlF)) && (bu.isNullOrNil(this.dEv)))
     {
       AppMethodBeat.o(55675);
       return false;
@@ -80,7 +80,7 @@ public class LocationInfo
   public String toString()
   {
     AppMethodBeat.i(55676);
-    String str = this.uZr + " " + this.uZs + " " + this.uZu + " " + this.dDq + "  " + this.uZq;
+    String str = this.vlC + " " + this.vlD + " " + this.vlF + " " + this.dEv + "  " + this.vlB;
     AppMethodBeat.o(55676);
     return str;
   }
@@ -88,16 +88,16 @@ public class LocationInfo
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(55674);
-    paramParcel.writeString(this.uZq);
-    paramParcel.writeDouble(this.uZr);
-    paramParcel.writeDouble(this.uZs);
-    paramParcel.writeInt(this.uZt);
-    paramParcel.writeString(this.uZu);
-    paramParcel.writeString(this.uZv);
-    paramParcel.writeString(this.dDq);
-    paramParcel.writeString(this.uZw);
-    paramParcel.writeInt(this.uZx);
-    paramParcel.writeString(this.uZy);
+    paramParcel.writeString(this.vlB);
+    paramParcel.writeDouble(this.vlC);
+    paramParcel.writeDouble(this.vlD);
+    paramParcel.writeInt(this.vlE);
+    paramParcel.writeString(this.vlF);
+    paramParcel.writeString(this.vlG);
+    paramParcel.writeString(this.dEv);
+    paramParcel.writeString(this.vlH);
+    paramParcel.writeInt(this.vlI);
+    paramParcel.writeString(this.vlJ);
     AppMethodBeat.o(55674);
   }
 }

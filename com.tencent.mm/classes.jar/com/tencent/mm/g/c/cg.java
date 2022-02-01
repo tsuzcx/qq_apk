@@ -2,10 +2,10 @@ package com.tencent.mm.g.c;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import com.tencent.mm.protocal.protobuf.aqy;
+import com.tencent.mm.protocal.protobuf.arn;
 import com.tencent.mm.sdk.e.c;
 import com.tencent.mm.sdk.e.c.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.io.IOException;
 import java.lang.reflect.Field;
 import java.util.Map;
@@ -14,55 +14,55 @@ public abstract class cg
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eEB = "scene".hashCode();
-  private static final int eQz = "showTips".hashCode();
-  private static final int eVj = "localId".hashCode();
-  private static final int eYO = "likeAction".hashCode();
-  private static final int eYP = "contextObj".hashCode();
-  private static final int eYQ = "isPrivate".hashCode();
+  private static final int eGk = "scene".hashCode();
+  private static final int eSk = "showTips".hashCode();
+  private static final int eWU = "localId".hashCode();
+  private static final int faB = "likeAction".hashCode();
+  private static final int faC = "contextObj".hashCode();
+  private static final int faD = "isPrivate".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eEz = true;
-  private boolean eQk = true;
-  private boolean eVh = true;
-  private boolean eYL = true;
-  private boolean eYM = true;
-  private boolean eYN = true;
-  public aqy field_contextObj;
+  private boolean eGi = true;
+  private boolean eRV = true;
+  private boolean eWS = true;
+  private boolean faA = true;
+  private boolean fay = true;
+  private boolean faz = true;
+  public arn field_contextObj;
   public boolean field_isPrivate;
   public int field_likeAction;
   public long field_localId;
   public int field_scene;
   public boolean field_showTips;
   
-  public static c.a Vv()
+  public static c.a VD()
   {
     c.a locala = new c.a();
-    locala.IhA = new Field[6];
+    locala.IBL = new Field[6];
     locala.columns = new String[7];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "localId";
-    locala.IhC.put("localId", "LONG PRIMARY KEY ");
+    locala.IBN.put("localId", "LONG PRIMARY KEY ");
     localStringBuilder.append(" localId LONG PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.IhB = "localId";
+    locala.IBM = "localId";
     locala.columns[1] = "likeAction";
-    locala.IhC.put("likeAction", "INTEGER");
+    locala.IBN.put("likeAction", "INTEGER");
     localStringBuilder.append(" likeAction INTEGER");
     localStringBuilder.append(", ");
     locala.columns[2] = "scene";
-    locala.IhC.put("scene", "INTEGER");
+    locala.IBN.put("scene", "INTEGER");
     localStringBuilder.append(" scene INTEGER");
     localStringBuilder.append(", ");
     locala.columns[3] = "showTips";
-    locala.IhC.put("showTips", "INTEGER");
+    locala.IBN.put("showTips", "INTEGER");
     localStringBuilder.append(" showTips INTEGER");
     localStringBuilder.append(", ");
     locala.columns[4] = "contextObj";
-    locala.IhC.put("contextObj", "BLOB");
+    locala.IBN.put("contextObj", "BLOB");
     localStringBuilder.append(" contextObj BLOB");
     localStringBuilder.append(", ");
     locala.columns[5] = "isPrivate";
-    locala.IhC.put("isPrivate", "INTEGER");
+    locala.IBN.put("isPrivate", "INTEGER");
     localStringBuilder.append(" isPrivate INTEGER");
     locala.columns[6] = "rowid";
     locala.sql = localStringBuilder.toString();
@@ -82,11 +82,11 @@ public abstract class cg
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eVj != k) {
+      if (eWU != k) {
         break label65;
       }
       this.field_localId = paramCursor.getLong(i);
-      this.eVh = true;
+      this.eWS = true;
     }
     for (;;)
     {
@@ -94,18 +94,18 @@ public abstract class cg
       break label20;
       break;
       label65:
-      if (eYO == k)
+      if (faB == k)
       {
         this.field_likeAction = paramCursor.getInt(i);
       }
-      else if (eEB == k)
+      else if (eGk == k)
       {
         this.field_scene = paramCursor.getInt(i);
       }
       else
       {
         boolean bool;
-        if (eQz == k)
+        if (eSk == k)
         {
           if (paramCursor.getInt(i) != 0) {}
           for (bool = true;; bool = false)
@@ -114,7 +114,7 @@ public abstract class cg
             break;
           }
         }
-        if (eYP == k)
+        if (faC == k)
         {
           try
           {
@@ -122,16 +122,16 @@ public abstract class cg
             if ((arrayOfByte == null) || (arrayOfByte.length <= 0)) {
               continue;
             }
-            this.field_contextObj = ((aqy)new aqy().parseFrom(arrayOfByte));
+            this.field_contextObj = ((arn)new arn().parseFrom(arrayOfByte));
           }
           catch (IOException localIOException)
           {
-            ad.e("MicroMsg.SDK.BaseFinderLocalOperation", localIOException.getMessage());
+            ae.e("MicroMsg.SDK.BaseFinderLocalOperation", localIOException.getMessage());
           }
         }
         else
         {
-          if (eYQ == k)
+          if (faD == k)
           {
             if (paramCursor.getInt(i) != 0) {}
             for (bool = true;; bool = false)
@@ -151,23 +151,23 @@ public abstract class cg
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eVh) {
+    if (this.eWS) {
       localContentValues.put("localId", Long.valueOf(this.field_localId));
     }
-    if (this.eYL) {
+    if (this.fay) {
       localContentValues.put("likeAction", Integer.valueOf(this.field_likeAction));
     }
-    if (this.eEz) {
+    if (this.eGi) {
       localContentValues.put("scene", Integer.valueOf(this.field_scene));
     }
-    if (this.eQk) {
+    if (this.eRV) {
       localContentValues.put("showTips", Boolean.valueOf(this.field_showTips));
     }
-    if ((this.eYM) && (this.field_contextObj != null)) {}
+    if ((this.faz) && (this.field_contextObj != null)) {}
     try
     {
       localContentValues.put("contextObj", this.field_contextObj.toByteArray());
-      if (this.eYN) {
+      if (this.faA) {
         localContentValues.put("isPrivate", Boolean.valueOf(this.field_isPrivate));
       }
       if (this.systemRowid > 0L) {
@@ -179,7 +179,7 @@ public abstract class cg
     {
       for (;;)
       {
-        ad.e("MicroMsg.SDK.BaseFinderLocalOperation", localIOException.getMessage());
+        ae.e("MicroMsg.SDK.BaseFinderLocalOperation", localIOException.getMessage());
       }
     }
   }

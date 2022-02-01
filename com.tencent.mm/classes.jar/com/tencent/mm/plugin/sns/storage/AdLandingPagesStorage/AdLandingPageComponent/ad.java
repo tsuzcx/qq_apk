@@ -1,23 +1,13 @@
 package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent;
 
 public final class ad
-  extends x
+  extends y
 {
-  public static int zAD = 1;
-  public static int zAE = 2;
-  public static int zAF = 4;
-  public static int zAG = 0;
-  public static int zAH = 1;
-  public int maxLines = 2147483647;
-  public int textAlignment;
-  public float textSize;
-  public String vRt;
-  public String zAI;
-  public boolean zAJ;
-  public boolean zAK;
-  public boolean zAL;
-  public float zAM;
-  public int zyX = 0;
+  public float fontSize;
+  public String jZm;
+  public String label;
+  public float value;
+  public String zRC;
 }
 
 

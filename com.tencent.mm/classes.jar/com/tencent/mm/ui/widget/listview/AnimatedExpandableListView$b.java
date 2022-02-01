@@ -11,16 +11,16 @@ import java.util.List;
 final class AnimatedExpandableListView$b
   extends View
 {
-  List<View> KZk;
-  private int KZl;
+  List<View> LvI;
+  private int LvJ;
   private int dividerHeight;
-  private Drawable jiP;
+  private Drawable jlI;
   
   private AnimatedExpandableListView$b(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(159420);
-    this.KZk = new ArrayList();
+    this.LvI = new ArrayList();
     AppMethodBeat.o(159420);
   }
   
@@ -28,19 +28,19 @@ final class AnimatedExpandableListView$b
   {
     AppMethodBeat.i(159423);
     paramCanvas.save();
-    if (this.jiP != null) {
-      this.jiP.setBounds(0, 0, this.KZl, this.dividerHeight);
+    if (this.jlI != null) {
+      this.jlI.setBounds(0, 0, this.LvJ, this.dividerHeight);
     }
-    int j = this.KZk.size();
+    int j = this.LvI.size();
     int i = 0;
     while (i < j)
     {
-      View localView = (View)this.KZk.get(i);
+      View localView = (View)this.LvI.get(i);
       localView.draw(paramCanvas);
       paramCanvas.translate(0.0F, localView.getMeasuredHeight());
-      if (this.jiP != null)
+      if (this.jlI != null)
       {
-        this.jiP.draw(paramCanvas);
+        this.jlI.draw(paramCanvas);
         paramCanvas.translate(0.0F, this.dividerHeight);
       }
       i += 1;
@@ -49,11 +49,11 @@ final class AnimatedExpandableListView$b
     AppMethodBeat.o(159423);
   }
   
-  public final void he(View paramView)
+  public final void hj(View paramView)
   {
     AppMethodBeat.i(159421);
     paramView.layout(0, 0, getWidth(), getHeight());
-    this.KZk.add(paramView);
+    this.LvI.add(paramView);
     AppMethodBeat.o(159421);
   }
   
@@ -61,11 +61,11 @@ final class AnimatedExpandableListView$b
   {
     AppMethodBeat.i(159422);
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    int j = this.KZk.size();
+    int j = this.LvI.size();
     int i = 0;
     while (i < j)
     {
-      ((View)this.KZk.get(i)).layout(paramInt1, paramInt2, paramInt3, paramInt4);
+      ((View)this.LvI.get(i)).layout(paramInt1, paramInt2, paramInt3, paramInt4);
       i += 1;
     }
     AppMethodBeat.o(159422);

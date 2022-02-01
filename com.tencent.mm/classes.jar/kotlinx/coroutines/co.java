@@ -5,28 +5,28 @@ import d.d.a;
 import d.d.f.c;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/coroutines/YieldContext;", "Lkotlin/coroutines/AbstractCoroutineContextElement;", "()V", "dispatcherWasUnconfined", "", "Key", "kotlinx-coroutines-core"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/coroutines/YieldContext;", "Lkotlin/coroutines/AbstractCoroutineContextElement;", "()V", "dispatcherWasUnconfined", "", "Key", "kotlinx-coroutines-core"})
 public final class co
   extends a
 {
-  public static final a NJm;
-  public boolean NJl;
+  public static final a Ogs;
+  public boolean Ogr;
   
   static
   {
-    AppMethodBeat.i(190755);
-    NJm = new a((byte)0);
-    AppMethodBeat.o(190755);
+    AppMethodBeat.i(209246);
+    Ogs = new a((byte)0);
+    AppMethodBeat.o(209246);
   }
   
   public co()
   {
-    super((f.c)NJm);
-    AppMethodBeat.i(190754);
-    AppMethodBeat.o(190754);
+    super((f.c)Ogs);
+    AppMethodBeat.i(209245);
+    AppMethodBeat.o(209245);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/coroutines/YieldContext$Key;", "Lkotlin/coroutines/CoroutineContext$Key;", "Lkotlinx/coroutines/YieldContext;", "()V", "kotlinx-coroutines-core"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/coroutines/YieldContext$Key;", "Lkotlin/coroutines/CoroutineContext$Key;", "Lkotlinx/coroutines/YieldContext;", "()V", "kotlinx-coroutines-core"})
   public static final class a
     implements f.c<co>
   {}

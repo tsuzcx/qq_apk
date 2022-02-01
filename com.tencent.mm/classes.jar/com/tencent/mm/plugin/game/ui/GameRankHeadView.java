@@ -14,74 +14,74 @@ import com.tencent.mm.plugin.game.model.k;
 import com.tencent.mm.plugin.game.model.k.a;
 import com.tencent.mm.plugin.game.model.l;
 import com.tencent.mm.pluginsdk.model.app.h;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public class GameRankHeadView
   extends LinearLayout
   implements View.OnClickListener
 {
-  private TextView gnM;
-  private com.tencent.mm.plugin.game.model.c udL;
-  private TextView umL;
-  k.a unm;
-  private l uno;
-  private TextView usj;
-  private ImageView usk;
+  private TextView gqi;
+  private TextView uDC;
+  private ImageView uDD;
+  private com.tencent.mm.plugin.game.model.c uoT;
+  k.a uyI;
+  private l uyK;
+  private TextView uyi;
   
   public GameRankHeadView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
   }
   
-  private void cZW()
+  private void dcH()
   {
     AppMethodBeat.i(42343);
-    if (h.a(getContext(), this.udL))
+    if (h.a(getContext(), this.uoT))
     {
-      int i = com.tencent.mm.plugin.game.f.c.ams(this.udL.field_packageName);
-      if (this.udL.versionCode > i)
+      int i = com.tencent.mm.plugin.game.f.c.anq(this.uoT.field_packageName);
+      if (this.uoT.versionCode > i)
       {
-        this.umL.setText(2131759855);
+        this.uyi.setText(2131759855);
         AppMethodBeat.o(42343);
         return;
       }
-      this.umL.setText(2131759853);
+      this.uyi.setText(2131759853);
       AppMethodBeat.o(42343);
       return;
     }
-    switch (this.udL.status)
+    switch (this.uoT.status)
     {
     default: 
-      this.umL.setText(2131759850);
+      this.uyi.setText(2131759850);
       AppMethodBeat.o(42343);
       return;
     }
-    if (this.uno == null)
+    if (this.uyK == null)
     {
-      this.umL.setVisibility(8);
-      this.usk.setVisibility(8);
+      this.uyi.setVisibility(8);
+      this.uDD.setVisibility(8);
       AppMethodBeat.o(42343);
       return;
     }
-    this.umL.setVisibility(0);
-    this.usk.setVisibility(0);
-    switch (this.uno.status)
+    this.uyi.setVisibility(0);
+    this.uDD.setVisibility(0);
+    switch (this.uyK.status)
     {
     }
     for (;;)
     {
       AppMethodBeat.o(42343);
       return;
-      this.umL.setText(2131759850);
+      this.uyi.setText(2131759850);
       AppMethodBeat.o(42343);
       return;
-      this.umL.setText(2131759851);
+      this.uyi.setText(2131759851);
       AppMethodBeat.o(42343);
       return;
-      this.umL.setText(2131759849);
+      this.uyi.setText(2131759849);
       AppMethodBeat.o(42343);
       return;
-      this.umL.setText(2131759852);
+      this.uyi.setText(2131759852);
     }
   }
   
@@ -90,10 +90,10 @@ public class GameRankHeadView
     AppMethodBeat.i(42345);
     Object localObject = new b();
     ((b)localObject).bd(paramView);
-    a.b("com/tencent/mm/plugin/game/ui/GameRankHeadView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahq());
+    a.b("com/tencent/mm/plugin/game/ui/GameRankHeadView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahF());
     paramView = new d(getContext());
-    localObject = new l(this.udL);
-    paramView.a(this.udL, (l)localObject);
+    localObject = new l(this.uoT);
+    paramView.a(this.uoT, (l)localObject);
     a.a(this, "com/tencent/mm/plugin/game/ui/GameRankHeadView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(42345);
   }
@@ -102,45 +102,45 @@ public class GameRankHeadView
   {
     AppMethodBeat.i(42342);
     super.onFinishInflate();
-    this.gnM = ((TextView)findViewById(2131300423));
-    this.usj = ((TextView)findViewById(2131300408));
-    this.umL = ((TextView)findViewById(2131300422));
-    this.usk = ((ImageView)findViewById(2131300512));
-    ad.i("MicroMsg.GameRankHeadView", "initView finished");
+    this.gqi = ((TextView)findViewById(2131300423));
+    this.uDC = ((TextView)findViewById(2131300408));
+    this.uyi = ((TextView)findViewById(2131300422));
+    this.uDD = ((ImageView)findViewById(2131300512));
+    ae.i("MicroMsg.GameRankHeadView", "initView finished");
     AppMethodBeat.o(42342);
   }
   
   public void setData(GameDetailRankUI.a parama)
   {
     AppMethodBeat.i(42344);
-    this.gnM.setText(parama.unf);
-    this.usj.setText(parama.ung);
-    this.udL = parama.unh;
-    this.udL.dFG = 1203;
-    this.udL.position = 2;
-    if (this.uno == null) {
-      this.uno = new l(this.udL);
+    this.gqi.setText(parama.uyB);
+    this.uDC.setText(parama.uyC);
+    this.uoT = parama.uyD;
+    this.uoT.dGL = 1203;
+    this.uoT.position = 2;
+    if (this.uyK == null) {
+      this.uyK = new l(this.uoT);
     }
-    this.uno.fy(getContext());
-    this.uno.cdl();
-    cZW();
-    if (this.unm != null) {
-      k.a(this.unm);
+    this.uyK.fC(getContext());
+    this.uyK.ceA();
+    dcH();
+    if (this.uyI != null) {
+      k.a(this.uyI);
     }
     for (;;)
     {
-      this.umL.setOnClickListener(this);
+      this.uyi.setOnClickListener(this);
       AppMethodBeat.o(42344);
       return;
-      this.unm = new k.a()
+      this.uyI = new k.a()
       {
         public final void e(int paramAnonymousInt, String paramAnonymousString, boolean paramAnonymousBoolean)
         {
           AppMethodBeat.i(42341);
           if (GameRankHeadView.a(GameRankHeadView.this) != null)
           {
-            GameRankHeadView.b(GameRankHeadView.this).fy(GameRankHeadView.this.getContext());
-            GameRankHeadView.b(GameRankHeadView.this).cdl();
+            GameRankHeadView.b(GameRankHeadView.this).fC(GameRankHeadView.this.getContext());
+            GameRankHeadView.b(GameRankHeadView.this).ceA();
             if (paramAnonymousBoolean) {
               GameRankHeadView.c(GameRankHeadView.this);
             }
@@ -148,13 +148,13 @@ public class GameRankHeadView
           AppMethodBeat.o(42341);
         }
       };
-      k.a(this.unm);
+      k.a(this.uyI);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.GameRankHeadView
  * JD-Core Version:    0.7.0.1
  */

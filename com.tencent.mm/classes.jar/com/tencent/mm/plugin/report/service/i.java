@@ -10,65 +10,65 @@ import com.tencent.mars.smc.SmcLogic.BaseInfo;
 import com.tencent.mars.smc.SmcLogic.ICallBack;
 import com.tencent.mars.smc.SmcProtoBufUtil;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.q;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.kernel.a;
 import com.tencent.mm.kernel.b;
 import com.tencent.mm.kernel.g;
+import com.tencent.mm.plugin.messenger.foundation.a.a.j;
 import com.tencent.mm.plugin.messenger.foundation.a.a.k.a;
 import com.tencent.mm.plugin.messenger.foundation.a.l;
 import com.tencent.mm.plugin.report.b.h;
-import com.tencent.mm.protocal.a.a.k;
-import com.tencent.mm.protocal.protobuf.bpi;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.protocal.protobuf.bqa;
 import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.sdk.platformtools.bw;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.bx;
 import java.util.Map;
 
 public final class i
   implements SmcLogic.ICallBack
 {
-  public static IKVReportNotify yiw = null;
+  public static IKVReportNotify yyn = null;
   
-  public static void awD(String paramString)
+  public static void axS(String paramString)
   {
     AppMethodBeat.i(143926);
-    if (bt.isNullOrNil(paramString))
+    if (bu.isNullOrNil(paramString))
     {
-      ad.w("MicroMsg.SmcCallBack", "msg content is null");
+      ae.w("MicroMsg.SmcCallBack", "msg content is null");
       AppMethodBeat.o(143926);
       return;
     }
-    ad.i("MicroMsg.SmcCallBack", "receive msg: ".concat(String.valueOf(paramString)));
-    Map localMap = bw.M(paramString, "sysmsg");
+    ae.i("MicroMsg.SmcCallBack", "receive msg: ".concat(String.valueOf(paramString)));
+    Map localMap = bx.M(paramString, "sysmsg");
     if ((localMap == null) || (localMap.size() == 0))
     {
-      ad.e("MicroMsg.SmcCallBack", "plugin msg parse fail:".concat(String.valueOf(paramString)));
+      ae.e("MicroMsg.SmcCallBack", "plugin msg parse fail:".concat(String.valueOf(paramString)));
       AppMethodBeat.o(143926);
       return;
     }
     String str = (String)localMap.get(".sysmsg.$type");
-    if ((bt.isNullOrNil(str)) || (!str.equalsIgnoreCase("getkvidkeystg")))
+    if ((bu.isNullOrNil(str)) || (!str.equalsIgnoreCase("getkvidkeystg")))
     {
-      ad.e("MicroMsg.SmcCallBack", "plugin msg parse fail:".concat(String.valueOf(paramString)));
+      ae.e("MicroMsg.SmcCallBack", "plugin msg parse fail:".concat(String.valueOf(paramString)));
       AppMethodBeat.o(143926);
       return;
     }
-    long l1 = bt.getLong((String)localMap.get(".sysmsg.getkvidkeystg.generalversion"), -1L);
-    long l2 = bt.getLong((String)localMap.get(".sysmsg.getkvidkeystg.specialversion"), -1L);
-    long l3 = bt.getLong((String)localMap.get(".sysmsg.getkvidkeystg.whiteorblackuinversion"), -1L);
-    long l4 = bt.getLong((String)localMap.get(".sysmsg.getkvidkeystg.timeinterval"), -1L);
-    long l5 = bt.getLong((String)localMap.get(".sysmsg.getkvidkeystg.kvgeneralversion"), -1L);
-    long l6 = bt.getLong((String)localMap.get(".sysmsg.getkvidkeystg.kvspecialversion"), -1L);
-    long l7 = bt.getLong((String)localMap.get(".sysmsg.getkvidkeystg.kvwhiteorblackuinversion"), -1L);
+    long l1 = bu.getLong((String)localMap.get(".sysmsg.getkvidkeystg.generalversion"), -1L);
+    long l2 = bu.getLong((String)localMap.get(".sysmsg.getkvidkeystg.specialversion"), -1L);
+    long l3 = bu.getLong((String)localMap.get(".sysmsg.getkvidkeystg.whiteorblackuinversion"), -1L);
+    long l4 = bu.getLong((String)localMap.get(".sysmsg.getkvidkeystg.timeinterval"), -1L);
+    long l5 = bu.getLong((String)localMap.get(".sysmsg.getkvidkeystg.kvgeneralversion"), -1L);
+    long l6 = bu.getLong((String)localMap.get(".sysmsg.getkvidkeystg.kvspecialversion"), -1L);
+    long l7 = bu.getLong((String)localMap.get(".sysmsg.getkvidkeystg.kvwhiteorblackuinversion"), -1L);
     if ((l1 == -1L) || (l2 == -1L) || (l3 == -1L) || (l4 == -1L) || (-1L == l5) || (-1L == l6) || (-1L == l7))
     {
-      ad.e("MicroMsg.SmcCallBack", "plugin msg parse fail:".concat(String.valueOf(paramString)));
+      ae.e("MicroMsg.SmcCallBack", "plugin msg parse fail:".concat(String.valueOf(paramString)));
       AppMethodBeat.o(143926);
       return;
     }
-    ad.i("MicroMsg.SmcCallBack", "plugin msg version:" + l1 + ", " + l2 + ", " + l3);
+    ae.i("MicroMsg.SmcCallBack", "plugin msg version:" + l1 + ", " + l2 + ", " + l3);
     SmcLogic.OnPluginMsg(l5, l6, l7, l1, l2, l4);
     AppMethodBeat.o(143926);
   }
@@ -76,31 +76,31 @@ public final class i
   public final boolean OnSelfMonitorOpLogReady(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(143923);
-    g.ajA();
-    if (!a.aiJ())
+    g.ajP();
+    if (!a.aiY())
     {
-      ad.e("MicroMsg.SmcCallBack", "onReportKVDaSelfMonitorOpLogReady account not ready");
+      ae.e("MicroMsg.SmcCallBack", "onReportKVDaSelfMonitorOpLogReady account not ready");
       AppMethodBeat.o(143923);
       return false;
     }
     try
     {
-      k localk = new k();
+      com.tencent.mm.protocal.a.a.k localk = new com.tencent.mm.protocal.a.a.k();
       localk.parseFrom(paramArrayOfByte);
       paramArrayOfByte = SmcProtoBufUtil.toMMSelfMonitor(localk);
-      if (paramArrayOfByte.GJV <= 0)
+      if (paramArrayOfByte.Hdw <= 0)
       {
-        ad.e("KVReportJni", "error selfmonitor count");
+        ae.e("KVReportJni", "error selfmonitor count");
         AppMethodBeat.o(143923);
         return true;
       }
-      ((l)g.ab(l.class)).azo().c(new k.a(202, paramArrayOfByte));
+      ((l)g.ab(l.class)).azE().d(new k.a(202, paramArrayOfByte));
       AppMethodBeat.o(143923);
       return true;
     }
     catch (Exception paramArrayOfByte)
     {
-      ad.e("KVReportJni", paramArrayOfByte.getMessage());
+      ae.e("KVReportJni", paramArrayOfByte.getMessage());
       AppMethodBeat.o(143923);
     }
     return false;
@@ -110,7 +110,7 @@ public final class i
   {
     AppMethodBeat.i(143925);
     String str = AppLogic.getAppFilePath() + "/kvcomm/";
-    ad.i("MicroMsg.SmcCallBack", "[TEST-PATH (Smc)]path:" + AppLogic.getAppFilePath());
+    ae.i("MicroMsg.SmcCallBack", "[TEST-PATH (Smc)]path:" + AppLogic.getAppFilePath());
     AppMethodBeat.o(143925);
     return str;
   }
@@ -123,7 +123,7 @@ public final class i
     localBaseInfo.deviceBrand = Build.BRAND;
     localBaseInfo.osName = ("android-" + Build.MANUFACTURER);
     localBaseInfo.osVersion = Build.VERSION.SDK_INT;
-    localBaseInfo.languageVer = ac.fks();
+    localBaseInfo.languageVer = ad.fom();
     AppMethodBeat.o(143924);
     return localBaseInfo;
   }
@@ -135,19 +135,19 @@ public final class i
   
   public final void onReportDataReady(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt, String paramString)
   {
-    AppMethodBeat.i(197143);
+    AppMethodBeat.i(221081);
     try
     {
-      if ((yiw != null) && (paramArrayOfByte2 != null) && (paramArrayOfByte2.length > 0)) {
-        yiw.onReportKVDataReady(paramArrayOfByte1, paramArrayOfByte2, paramInt);
+      if ((yyn != null) && (paramArrayOfByte2 != null) && (paramArrayOfByte2.length > 0)) {
+        yyn.onReportKVDataReady(paramArrayOfByte1, paramArrayOfByte2, paramInt);
       }
-      AppMethodBeat.o(197143);
+      AppMethodBeat.o(221081);
       return;
     }
     catch (Exception paramArrayOfByte1)
     {
-      ad.e("KVReportJni", paramArrayOfByte1.getMessage());
-      AppMethodBeat.o(197143);
+      ae.e("KVReportJni", paramArrayOfByte1.getMessage());
+      AppMethodBeat.o(221081);
     }
   }
   
@@ -156,9 +156,9 @@ public final class i
     AppMethodBeat.i(143922);
     try
     {
-      if ((com.tencent.mm.sdk.platformtools.j.Icz) && (aj.getContext().getSharedPreferences(aj.fkC(), 0).getBoolean("gprs_alert", true)))
+      if ((com.tencent.mm.sdk.platformtools.k.IwK) && (ak.getContext().getSharedPreferences(ak.fow(), 0).getBoolean("gprs_alert", true)))
       {
-        ad.i("MicroMsg.SmcCallBack", "onRequestGetStrategy gprs alert return false");
+        ae.i("MicroMsg.SmcCallBack", "onRequestGetStrategy gprs alert return false");
         AppMethodBeat.o(143922);
         return false;
       }
@@ -166,11 +166,11 @@ public final class i
       {
         if (h.isRunning())
         {
-          ad.i("KVReportJni", "already running");
+          ae.i("KVReportJni", "already running");
           return false;
         }
         paramArrayOfByte = new h();
-        g.ajB().gAO.a(paramArrayOfByte, 0);
+        g.ajQ().gDv.a(paramArrayOfByte, 0);
         return true;
       }
       finally
@@ -181,7 +181,7 @@ public final class i
     }
     catch (Exception paramArrayOfByte)
     {
-      ad.e("KVReportJni", "onRequestGetStrategy error: " + paramArrayOfByte.getMessage());
+      ae.e("KVReportJni", "onRequestGetStrategy error: " + paramArrayOfByte.getMessage());
       AppMethodBeat.o(143922);
     }
   }

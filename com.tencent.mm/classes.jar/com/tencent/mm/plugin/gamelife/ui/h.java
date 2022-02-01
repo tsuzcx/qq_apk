@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.gamelife.ui;
 
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/gamelife/ui/IGameLifeContract;", "", "IConversationPresenter", "IConversationView", "plugin-gamelife_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/gamelife/ui/IGameLifeContract;", "", "IConversationPresenter", "IConversationView", "plugin-gamelife_release"})
 public abstract interface h {}
 
 

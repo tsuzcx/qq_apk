@@ -4,38 +4,38 @@ import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.protocal.protobuf.EmotionBannerSet;
 import com.tencent.mm.protocal.protobuf.EmotionSummary;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.bb;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.bc;
 
 public final class f
 {
   public int Hx;
   public int mStatus;
-  public f.a pBU;
-  public EmotionSummary pBV;
-  public EmotionBannerSet pBW;
-  public int pBX;
-  public String pBY;
-  public boolean pBZ;
-  public boolean pCa = true;
-  public boolean pCb = false;
+  public EmotionBannerSet pIA;
+  public int pIB;
+  public String pIC;
+  public boolean pID;
+  public boolean pIE = true;
+  public boolean pIF = false;
+  public f.a pIy;
+  public EmotionSummary pIz;
   
   public f(EmotionBannerSet paramEmotionBannerSet)
   {
-    this.pBW = paramEmotionBannerSet;
-    this.pBU = f.a.pCd;
+    this.pIA = paramEmotionBannerSet;
+    this.pIy = f.a.pIH;
   }
   
   public f(EmotionSummary paramEmotionSummary)
   {
-    this.pBV = paramEmotionSummary;
-    this.pBU = f.a.pCc;
+    this.pIz = paramEmotionSummary;
+    this.pIy = f.a.pIG;
   }
   
-  public final void a(boolean paramBoolean1, bb parambb, boolean paramBoolean2)
+  public final void a(boolean paramBoolean1, bc parambc, boolean paramBoolean2)
   {
     AppMethodBeat.i(108382);
-    EmotionSummary localEmotionSummary = this.pBV;
+    EmotionSummary localEmotionSummary = this.pIz;
     if (localEmotionSummary == null)
     {
       AppMethodBeat.o(108382);
@@ -56,11 +56,11 @@ public final class f
     }
     for (;;)
     {
-      if ((paramBoolean1) && (parambb != null) && (!bt.isNullOrNil(parambb.ILb)))
+      if ((paramBoolean1) && (parambc != null) && (!bu.isNullOrNil(parambc.JfI)))
       {
-        this.pBV.PackPrice = parambb.ILb;
-        this.pBV.PriceNum = parambb.ILa;
-        this.pBV.PriceType = parambb.IKZ;
+        this.pIz.PackPrice = parambc.JfI;
+        this.pIz.PriceNum = parambc.JfH;
+        this.pIz.PriceType = parambc.JfG;
       }
       AppMethodBeat.o(108382);
       return;
@@ -68,24 +68,24 @@ public final class f
       {
         setStatus(3);
         if ((bool1) || ((!paramBoolean1) && (bool3))) {
-          this.pBX = 0;
+          this.pIB = 0;
         } else {
-          this.pBX = 1;
+          this.pIB = 1;
         }
       }
       else if ((bool1) || ((!paramBoolean1) && (bool3)))
       {
         setStatus(3);
-        this.pBX = 0;
+        this.pIB = 0;
       }
       else
       {
-        this.pBX = 1;
-        if ((paramBoolean1) && (parambb != null)) {}
-        switch (parambb.IKX)
+        this.pIB = 1;
+        if ((paramBoolean1) && (parambc != null)) {}
+        switch (parambc.JfE)
         {
         default: 
-          if ((parambb.IKV != 7) && (parambb.IKV != 6) && (parambb.IKV != 3)) {
+          if ((parambc.JfC != 7) && (parambc.JfC != 6) && (parambc.JfC != 3)) {
             setStatus(10);
           }
           break;
@@ -108,15 +108,15 @@ public final class f
   
   public final void setStatus(int paramInt)
   {
-    if ((paramInt == 7) && (this.mStatus == 6) && (this.pCa)) {
-      this.pBZ = true;
+    if ((paramInt == 7) && (this.mStatus == 6) && (this.pIE)) {
+      this.pID = true;
     }
     this.mStatus = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.a.a.f
  * JD-Core Version:    0.7.0.1
  */

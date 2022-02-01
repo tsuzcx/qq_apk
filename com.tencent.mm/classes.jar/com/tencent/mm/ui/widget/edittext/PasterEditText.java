@@ -9,16 +9,16 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class PasterEditText
   extends EditText
 {
-  private ClipboardManager AcT;
+  private ClipboardManager Aug;
   private Context context;
-  private int mCQ;
+  private int mHV;
   
   public PasterEditText(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(168813);
-    this.AcT = null;
-    this.mCQ = 0;
+    this.Aug = null;
+    this.mHV = 0;
     this.context = paramContext;
     init();
     AppMethodBeat.o(168813);
@@ -28,8 +28,8 @@ public class PasterEditText
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(159400);
-    this.AcT = null;
-    this.mCQ = 0;
+    this.Aug = null;
+    this.mHV = 0;
     this.context = paramContext;
     init();
     AppMethodBeat.o(159400);
@@ -39,8 +39,8 @@ public class PasterEditText
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(159401);
-    this.AcT = null;
-    this.mCQ = 0;
+    this.Aug = null;
+    this.mHV = 0;
     init();
     AppMethodBeat.o(159401);
   }
@@ -48,21 +48,21 @@ public class PasterEditText
   private void init()
   {
     AppMethodBeat.i(159402);
-    this.AcT = ((ClipboardManager)this.context.getApplicationContext().getSystemService("clipboard"));
+    this.Aug = ((ClipboardManager)this.context.getApplicationContext().getSystemService("clipboard"));
     AppMethodBeat.o(159402);
   }
   
   public int getPasterLen()
   {
-    return this.mCQ;
+    return this.mHV;
   }
   
   public boolean onTextContextMenuItem(int paramInt)
   {
     AppMethodBeat.i(159403);
     if (paramInt == 16908322) {
-      if ((this.AcT != null) && (this.AcT.getText() != null) && ((this.AcT.getText() instanceof String)) && (this.AcT.getText() != null) && (this.AcT.getText().length() > 0)) {
-        this.mCQ += this.AcT.getText().length();
+      if ((this.Aug != null) && (this.Aug.getText() != null) && ((this.Aug.getText() instanceof String)) && (this.Aug.getText() != null) && (this.Aug.getText().length() > 0)) {
+        this.mHV += this.Aug.getText().length();
       }
     }
     for (boolean bool = super.onTextContextMenuItem(paramInt);; bool = super.onTextContextMenuItem(paramInt))

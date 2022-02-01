@@ -6,107 +6,127 @@ import com.tencent.mm.plugin.report.a;
 public final class cb
   extends a
 {
-  private String dSb = "";
-  private long dSt = 0L;
-  private String dVc;
-  private long dYT = 0L;
-  private String eaQ = "";
-  private long eaR = 0L;
-  private String eaS;
-  private long eaT = 0L;
-  private String eaU;
+  private long dTJ = 0L;
+  private String dTr = "";
+  private String dWs = "";
+  private String dXu = "";
+  private String dXv = "";
+  private long eam = 0L;
+  private String ecl = "";
+  private long ecm = 0L;
+  private String ecn = "";
+  private long eco = 0L;
+  private String ecp = "";
   
-  public final String RD()
+  public final String RC()
   {
-    AppMethodBeat.i(210159);
+    AppMethodBeat.i(195799);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dSb);
+    ((StringBuffer)localObject).append(this.dTr);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eaQ);
+    ((StringBuffer)localObject).append(this.ecl);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dSt);
+    ((StringBuffer)localObject).append(this.dTJ);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dYT);
+    ((StringBuffer)localObject).append(this.eam);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eaR);
+    ((StringBuffer)localObject).append(this.ecm);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dVc);
+    ((StringBuffer)localObject).append(this.dWs);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eaS);
+    ((StringBuffer)localObject).append(this.ecn);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eaT);
+    ((StringBuffer)localObject).append(this.eco);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eaU);
+    ((StringBuffer)localObject).append(this.ecp);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.dXu);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.dXv);
     localObject = ((StringBuffer)localObject).toString();
-    awz((String)localObject);
-    AppMethodBeat.o(210159);
+    axO((String)localObject);
+    AppMethodBeat.o(195799);
     return localObject;
   }
   
-  public final String RE()
+  public final String RD()
   {
-    AppMethodBeat.i(210160);
+    AppMethodBeat.i(195800);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("SessionId:").append(this.dSb);
+    ((StringBuffer)localObject).append("SessionId:").append(this.dTr);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("PageName:").append(this.eaQ);
+    ((StringBuffer)localObject).append("PageName:").append(this.ecl);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("StayTimeMs:").append(this.dSt);
+    ((StringBuffer)localObject).append("StayTimeMs:").append(this.dTJ);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("EnterTimeMs:").append(this.dYT);
+    ((StringBuffer)localObject).append("EnterTimeMs:").append(this.eam);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ExitTimeMs:").append(this.eaR);
+    ((StringBuffer)localObject).append("ExitTimeMs:").append(this.ecm);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ClickTabContextId:").append(this.dVc);
+    ((StringBuffer)localObject).append("ClickTabContextId:").append(this.dWs);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("Sid:").append(this.eaS);
+    ((StringBuffer)localObject).append("Sid:").append(this.ecn);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("reportType:").append(this.eaT);
+    ((StringBuffer)localObject).append("reportType:").append(this.eco);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("FinderContextID:").append(this.eaU);
+    ((StringBuffer)localObject).append("FinderContextID:").append(this.ecp);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("ExtraInfo:").append(this.dXu);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("enterSourceInfo:").append(this.dXv);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(210160);
+    AppMethodBeat.o(195800);
     return localObject;
   }
   
   public final long SA()
   {
-    return this.dSt;
+    return this.ecm;
   }
   
-  public final long SB()
+  public final String SB()
   {
-    return this.dYT;
+    return this.dWs;
   }
   
-  public final long SC()
+  public final String SC()
   {
-    return this.eaR;
+    return this.ecn;
   }
   
-  public final String SD()
+  public final long SD()
   {
-    return this.dVc;
+    return this.eco;
   }
   
   public final String SE()
   {
-    return this.eaS;
+    return this.ecp;
   }
   
-  public final long SF()
+  public final String SF()
   {
-    return this.eaT;
+    return this.dXv;
   }
   
-  public final String SG()
+  public final String Sx()
   {
-    return this.eaU;
+    return this.ecl;
   }
   
-  public final String Sz()
+  public final long Sy()
   {
-    return this.eaQ;
+    return this.dTJ;
+  }
+  
+  public final long Sz()
+  {
+    return this.eam;
+  }
+  
+  public final String getExtraInfo()
+  {
+    return this.dXu;
   }
   
   public final int getId()
@@ -116,85 +136,101 @@ public final class cb
   
   public final String getSessionId()
   {
-    return this.dSb;
+    return this.dTr;
   }
   
-  public final cb he(long paramLong)
+  public final cb hj(long paramLong)
   {
-    AppMethodBeat.i(210153);
-    this.dSt = paramLong;
-    super.bf("StayTimeMs", this.dSt);
-    AppMethodBeat.o(210153);
+    AppMethodBeat.i(195791);
+    this.dTJ = paramLong;
+    super.bg("StayTimeMs", this.dTJ);
+    AppMethodBeat.o(195791);
     return this;
   }
   
-  public final cb hf(long paramLong)
+  public final cb hk(long paramLong)
   {
-    AppMethodBeat.i(210154);
-    this.dYT = paramLong;
-    super.bf("EnterTimeMs", this.dYT);
-    AppMethodBeat.o(210154);
+    AppMethodBeat.i(195792);
+    this.eam = paramLong;
+    super.bg("EnterTimeMs", this.eam);
+    AppMethodBeat.o(195792);
     return this;
   }
   
-  public final cb hg(long paramLong)
+  public final cb hl(long paramLong)
   {
-    AppMethodBeat.i(210155);
-    this.eaR = paramLong;
-    super.bf("ExitTimeMs", this.eaR);
-    AppMethodBeat.o(210155);
+    AppMethodBeat.i(195793);
+    this.ecm = paramLong;
+    super.bg("ExitTimeMs", this.ecm);
+    AppMethodBeat.o(195793);
     return this;
   }
   
-  public final cb hh(long paramLong)
+  public final cb hm(long paramLong)
   {
-    this.eaT = paramLong;
+    this.eco = paramLong;
     return this;
   }
   
-  public final cb lh(String paramString)
+  public final cb lA(String paramString)
   {
-    AppMethodBeat.i(210151);
-    this.dSb = t("SessionId", paramString, true);
-    AppMethodBeat.o(210151);
+    AppMethodBeat.i(195798);
+    this.dXv = t("enterSourceInfo", paramString, true);
+    AppMethodBeat.o(195798);
     return this;
   }
   
-  public final cb li(String paramString)
+  public final cb lu(String paramString)
   {
-    AppMethodBeat.i(210152);
-    this.eaQ = t("PageName", paramString, true);
-    AppMethodBeat.o(210152);
+    AppMethodBeat.i(195789);
+    this.dTr = t("SessionId", paramString, true);
+    AppMethodBeat.o(195789);
     return this;
   }
   
-  public final cb lj(String paramString)
+  public final cb lv(String paramString)
   {
-    AppMethodBeat.i(210156);
-    this.dVc = t("ClickTabContextId", paramString, true);
-    AppMethodBeat.o(210156);
+    AppMethodBeat.i(195790);
+    this.ecl = t("PageName", paramString, true);
+    AppMethodBeat.o(195790);
     return this;
   }
   
-  public final cb lk(String paramString)
+  public final cb lw(String paramString)
   {
-    AppMethodBeat.i(210157);
-    this.eaS = t("Sid", paramString, true);
-    AppMethodBeat.o(210157);
+    AppMethodBeat.i(195794);
+    this.dWs = t("ClickTabContextId", paramString, true);
+    AppMethodBeat.o(195794);
     return this;
   }
   
-  public final cb ll(String paramString)
+  public final cb lx(String paramString)
   {
-    AppMethodBeat.i(210158);
-    this.eaU = t("FinderContextID", paramString, true);
-    AppMethodBeat.o(210158);
+    AppMethodBeat.i(195795);
+    this.ecn = t("Sid", paramString, true);
+    AppMethodBeat.o(195795);
+    return this;
+  }
+  
+  public final cb ly(String paramString)
+  {
+    AppMethodBeat.i(195796);
+    this.ecp = t("FinderContextID", paramString, true);
+    AppMethodBeat.o(195796);
+    return this;
+  }
+  
+  public final cb lz(String paramString)
+  {
+    AppMethodBeat.i(195797);
+    this.dXu = t("ExtraInfo", paramString, true);
+    AppMethodBeat.o(195797);
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.g.b.a.cb
  * JD-Core Version:    0.7.0.1
  */

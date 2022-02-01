@@ -4,32 +4,32 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aq;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public final class e
   implements d
 {
-  f JVp;
-  c JVq;
-  private AtomicBoolean hNy;
+  f KrH;
+  c KrI;
+  private AtomicBoolean hQr;
   final Handler mMainHandler;
-  private final ap rqK;
+  private final aq ryZ;
   
   public e(f paramf, c paramc)
   {
     AppMethodBeat.i(36429);
-    this.hNy = new AtomicBoolean(false);
+    this.hQr = new AtomicBoolean(false);
     this.mMainHandler = new Handler(Looper.getMainLooper())
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
         AppMethodBeat.i(36426);
         d.d locald = (d.d)paramAnonymousMessage.obj;
-        if (locald.hNy.get())
+        if (locald.hQr.get())
         {
-          ad.w("MicroMsg.ChattingLoader.ListDataLoader", "[handleMessage] cancel update!!!");
+          ae.w("MicroMsg.ChattingLoader.ListDataLoader", "[handleMessage] cancel update!!!");
           AppMethodBeat.o(36426);
           return;
         }
@@ -40,34 +40,34 @@ public final class e
         {
           AppMethodBeat.o(36426);
           return;
-          boolean bool = e.this.JVp.b(locald.JVl);
+          boolean bool = e.this.KrH.b(locald.KrD);
           if (bool)
           {
-            locald.JVo = e.this.JVq.ii(locald.JVm);
-            e.this.JVp.a(locald);
+            locald.KrG = e.this.KrI.is(locald.KrE);
+            e.this.KrH.a(locald);
           }
-          ad.i("MicroMsg.ChattingLoader.ListDataLoader", "[handleMessage] UPDATE!!! isAvailableUpdate=%s result:%s", new Object[] { Boolean.valueOf(bool), locald.toString() });
+          ae.i("MicroMsg.ChattingLoader.ListDataLoader", "[handleMessage] UPDATE!!! isAvailableUpdate=%s result:%s", new Object[] { Boolean.valueOf(bool), locald.toString() });
         }
       }
     };
-    this.JVp = paramf;
-    this.JVq = paramc;
-    this.rqK = new ap("ListDataLoader$");
+    this.KrH = paramf;
+    this.KrI = paramc;
+    this.ryZ = new aq("ListDataLoader$");
     AppMethodBeat.o(36429);
   }
   
   public final void a(d.a parama, boolean paramBoolean, d.c paramc)
   {
     AppMethodBeat.i(36430);
-    ad.i("MicroMsg.ChattingLoader.ListDataLoader", "[load] mode:%s isBlock:%s thread:%s", new Object[] { parama, Boolean.valueOf(paramBoolean), Long.valueOf(Thread.currentThread().getId()) });
-    parama = new a(parama, paramBoolean, paramc, this.hNy);
+    ae.i("MicroMsg.ChattingLoader.ListDataLoader", "[load] mode:%s isBlock:%s thread:%s", new Object[] { parama, Boolean.valueOf(paramBoolean), Long.valueOf(Thread.currentThread().getId()) });
+    parama = new a(parama, paramBoolean, paramc, this.hQr);
     if (paramBoolean)
     {
       parama.run();
       AppMethodBeat.o(36430);
       return;
     }
-    this.rqK.post(parama);
+    this.ryZ.post(parama);
     AppMethodBeat.o(36430);
   }
   
@@ -76,10 +76,10 @@ public final class e
     AppMethodBeat.i(36431);
     try
     {
-      ad.i("MicroMsg.ChattingLoader.ListDataLoader", "[cancel]");
-      this.hNy.set(true);
-      this.hNy = new AtomicBoolean(false);
-      this.rqK.removeCallbacksAndMessages(null);
+      ae.i("MicroMsg.ChattingLoader.ListDataLoader", "[cancel]");
+      this.hQr.set(true);
+      this.hQr = new AtomicBoolean(false);
+      this.ryZ.removeCallbacksAndMessages(null);
       this.mMainHandler.removeCallbacksAndMessages(null);
       return;
     }
@@ -92,17 +92,17 @@ public final class e
   final class a
     implements Runnable
   {
-    d.a JVl;
-    d.c JVs;
-    boolean dIH;
-    AtomicBoolean hNy;
+    d.a KrD;
+    d.c KrK;
+    boolean dJV;
+    AtomicBoolean hQr;
     
     a(d.a parama, boolean paramBoolean, d.c paramc, AtomicBoolean paramAtomicBoolean)
     {
-      this.JVl = parama;
-      this.dIH = paramBoolean;
-      this.JVs = paramc;
-      this.hNy = paramAtomicBoolean;
+      this.KrD = parama;
+      this.dJV = paramBoolean;
+      this.KrK = paramc;
+      this.hQr = paramAtomicBoolean;
     }
     
     public final void run()
@@ -111,38 +111,38 @@ public final class e
       long l = System.currentTimeMillis();
       try
       {
-        final d.d locald = new d.d(this.JVl, this.hNy);
-        com.tencent.mm.ui.chatting.n.e locale = this.JVs.b(locald);
-        e.this.JVq.a(this.JVl, locale, locald, new d.b()
+        final d.d locald = new d.d(this.KrD, this.hQr);
+        com.tencent.mm.ui.chatting.n.e locale = this.KrK.b(locald);
+        e.this.KrI.a(this.KrD, locale, locald, new d.b()
         {
           public final void next()
           {
             AppMethodBeat.i(36427);
-            e.a.this.JVs.c(locald);
+            e.a.this.KrK.c(locald);
             e.a locala = e.a.this;
             d.d locald = locald;
-            synchronized (locala.JVr)
+            synchronized (locala.KrJ)
             {
-              if (locala.hNy.get())
+              if (locala.hQr.get())
               {
-                ad.w("MicroMsg.ChattingLoader.ListDataLoader", "has cancel!");
+                ae.w("MicroMsg.ChattingLoader.ListDataLoader", "has cancel!");
                 AppMethodBeat.o(36427);
                 return;
               }
               Message localMessage = new Message();
               localMessage.what = 1;
               localMessage.obj = locald;
-              if ((locala.dIH) && (Looper.myLooper() == Looper.getMainLooper()))
+              if ((locala.dJV) && (Looper.myLooper() == Looper.getMainLooper()))
               {
-                locala.JVr.mMainHandler.handleMessage(localMessage);
+                locala.KrJ.mMainHandler.handleMessage(localMessage);
                 AppMethodBeat.o(36427);
                 return;
               }
-              locala.JVr.mMainHandler.sendMessage(localMessage);
+              locala.KrJ.mMainHandler.sendMessage(localMessage);
             }
           }
         });
-        ad.d("MicroMsg.ChattingLoader.ListDataLoader", "[LoadTask.run] cost:%dms", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
+        ae.d("MicroMsg.ChattingLoader.ListDataLoader", "[LoadTask.run] cost:%dms", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
         AppMethodBeat.o(36428);
         return;
       }
@@ -150,7 +150,7 @@ public final class e
       {
         for (;;)
         {
-          ad.printErrStackTrace("MicroMsg.ChattingLoader.ListDataLoader", localArrayIndexOutOfBoundsException, "", new Object[0]);
+          ae.printErrStackTrace("MicroMsg.ChattingLoader.ListDataLoader", localArrayIndexOutOfBoundsException, "", new Object[0]);
         }
       }
     }

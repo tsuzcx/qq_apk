@@ -10,12 +10,12 @@ import kotlinx.a.c.o;
 import kotlinx.a.c.s;
 import kotlinx.a.c.v;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"readJson", "T", "Lkotlinx/serialization/json/Json;", "element", "Lkotlinx/serialization/json/JsonElement;", "deserializer", "Lkotlinx/serialization/DeserializationStrategy;", "(Lkotlinx/serialization/json/Json;Lkotlinx/serialization/json/JsonElement;Lkotlinx/serialization/DeserializationStrategy;)Ljava/lang/Object;", "kotlinx-serialization-runtime"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"readJson", "T", "Lkotlinx/serialization/json/Json;", "element", "Lkotlinx/serialization/json/JsonElement;", "deserializer", "Lkotlinx/serialization/DeserializationStrategy;", "(Lkotlinx/serialization/json/Json;Lkotlinx/serialization/json/JsonElement;Lkotlinx/serialization/DeserializationStrategy;)Ljava/lang/Object;", "kotlinx-serialization-runtime"})
 public final class q
 {
   public static final <T> T a(kotlinx.a.c.a parama, kotlinx.a.c.f paramf, kotlinx.a.f<T> paramf1)
   {
-    AppMethodBeat.i(191343);
+    AppMethodBeat.i(199931);
     p.h(parama, "$this$readJson");
     p.h(paramf, "element");
     p.h(paramf1, "deserializer");
@@ -25,7 +25,7 @@ public final class q
     for (;;)
     {
       parama = kotlinx.a.e.c((c)parama, paramf1);
-      AppMethodBeat.o(191343);
+      AppMethodBeat.o(199931);
       return parama;
       if ((paramf instanceof b))
       {
@@ -33,14 +33,14 @@ public final class q
       }
       else
       {
-        if ((!(paramf instanceof o)) && (!p.i(paramf, kotlinx.a.c.q.NNR))) {
+        if ((!(paramf instanceof o)) && (!p.i(paramf, kotlinx.a.c.q.OkX))) {
           break;
         }
         parama = (a)new e(parama, (v)paramf);
       }
     }
     parama = new m();
-    AppMethodBeat.o(191343);
+    AppMethodBeat.o(199931);
     throw parama;
   }
 }

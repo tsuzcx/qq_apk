@@ -11,7 +11,7 @@ public class MMBackgroundRunningOperationParcel
   public static final Parcelable.Creator<MMBackgroundRunningOperationParcel> CREATOR;
   public String appId;
   public int beO;
-  public int dkM;
+  public int dlO;
   
   static
   {
@@ -27,7 +27,7 @@ public class MMBackgroundRunningOperationParcel
     AppMethodBeat.i(153215);
     this.appId = paramParcel.readString();
     this.beO = paramParcel.readInt();
-    this.dkM = paramParcel.readInt();
+    this.dlO = paramParcel.readInt();
     AppMethodBeat.o(153215);
   }
   
@@ -39,7 +39,7 @@ public class MMBackgroundRunningOperationParcel
   public String toString()
   {
     AppMethodBeat.i(153216);
-    String str = "operation{appId='" + this.appId + '\'' + ", usage=" + this.beO + ", operation=" + this.dkM + '}';
+    String str = "operation{appId='" + this.appId + '\'' + ", usage=" + this.beO + ", operation=" + this.dlO + '}';
     AppMethodBeat.o(153216);
     return str;
   }
@@ -49,7 +49,7 @@ public class MMBackgroundRunningOperationParcel
     AppMethodBeat.i(153217);
     paramParcel.writeString(this.appId);
     paramParcel.writeInt(this.beO);
-    paramParcel.writeInt(this.dkM);
+    paramParcel.writeInt(this.dlO);
     AppMethodBeat.o(153217);
   }
 }

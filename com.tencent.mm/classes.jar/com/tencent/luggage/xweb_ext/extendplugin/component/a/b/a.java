@@ -19,15 +19,15 @@ import com.tencent.luggage.h.h;
 import com.tencent.luggage.xweb_ext.extendplugin.component.o;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.b.q;
-import com.tencent.mm.plugin.appbrand.permission.p;
-import com.tencent.mm.plugin.appbrand.utils.aa;
-import com.tencent.mm.plugin.appbrand.utils.aa.a;
-import com.tencent.mm.plugin.appbrand.utils.aa.b;
-import com.tencent.mm.plugin.appbrand.z.g;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.plugin.appbrand.permission.r;
+import com.tencent.mm.plugin.appbrand.utils.ad;
+import com.tencent.mm.plugin.appbrand.utils.ad.a;
+import com.tencent.mm.plugin.appbrand.utils.ad.b;
+import com.tencent.mm.plugin.appbrand.y.g;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.rtmp.ITXLivePushListener;
 import com.tencent.rtmp.TXLiveBase;
 import com.tencent.rtmp.TXLivePusher.ITXAudioVolumeEvaluationListener;
@@ -42,26 +42,26 @@ public final class a
   extends com.tencent.luggage.xweb_ext.extendplugin.a.a
   implements o
 {
-  com.tencent.luggage.xweb_ext.extendplugin.a crL;
-  private com.tencent.luggage.xweb_ext.extendplugin.a.a crM;
-  int crN;
-  int crO;
-  private boolean crR;
-  b ctb;
-  public com.tencent.luggage.xweb_ext.extendplugin.component.a.b.a.c ctc;
-  public com.tencent.luggage.xweb_ext.extendplugin.component.a.b.a.b ctd;
-  public com.tencent.luggage.xweb_ext.extendplugin.component.a.b.a.a cte;
-  private String ctf;
-  private String ctg;
-  int cth;
-  boolean cti;
-  private boolean ctj;
-  private b ctk;
-  private int ctl;
-  aa ctm;
-  a ctn;
-  Handler cto;
-  private HandlerThread ctp;
+  com.tencent.luggage.xweb_ext.extendplugin.a cso;
+  private com.tencent.luggage.xweb_ext.extendplugin.a.a csp;
+  int csq;
+  int csr;
+  private boolean csu;
+  b ctF;
+  public com.tencent.luggage.xweb_ext.extendplugin.component.a.b.a.c ctG;
+  public com.tencent.luggage.xweb_ext.extendplugin.component.a.b.a.b ctH;
+  public com.tencent.luggage.xweb_ext.extendplugin.component.a.b.a.a ctI;
+  private String ctJ;
+  private String ctK;
+  int ctL;
+  boolean ctM;
+  private boolean ctN;
+  private b ctO;
+  private int ctP;
+  ad ctQ;
+  a ctR;
+  Handler ctS;
+  private HandlerThread ctT;
   int mCurrentScale;
   Handler mHandler;
   ScaleGestureDetector mScaleGestureDetector;
@@ -72,27 +72,27 @@ public final class a
   public a()
   {
     AppMethodBeat.i(138878);
-    this.ctf = "";
+    this.ctJ = "";
     this.mCurrentScale = 1;
-    this.ctk = new b((byte)0);
-    this.ctl = 0;
-    this.ctn = new a();
+    this.ctO = new b((byte)0);
+    this.ctP = 0;
+    this.ctR = new a();
     this.mScaleGestureListener = new ScaleGestureDetector.OnScaleGestureListener()
     {
       public final boolean onScale(ScaleGestureDetector paramAnonymousScaleGestureDetector)
       {
         float f2 = 0.9F;
-        AppMethodBeat.i(186786);
-        b localb = a.this.ctb;
+        AppMethodBeat.i(220469);
+        b localb = a.this.ctF;
         int j;
         float f3;
         float f1;
         label86:
         int k;
         int i;
-        if (localb.cty != null)
+        if (localb.cub != null)
         {
-          j = localb.cty.getMaxZoom();
+          j = localb.cub.getMaxZoom();
           if (j > 0)
           {
             f3 = paramAnonymousScaleGestureDetector.getScaleFactor();
@@ -138,15 +138,15 @@ public final class a
         for (;;)
         {
           a.this.mCurrentScale = i;
-          if (a.this.ctb != null)
+          if (a.this.ctF != null)
           {
-            ad.i(a.this.getLogTag(), "onScale, maxZoom:%s, current scale:%s", new Object[] { Integer.valueOf(j), Integer.valueOf(a.this.mCurrentScale) });
-            paramAnonymousScaleGestureDetector = a.this.ctb;
+            ae.i(a.this.getLogTag(), "onScale, maxZoom:%s, current scale:%s", new Object[] { Integer.valueOf(j), Integer.valueOf(a.this.mCurrentScale) });
+            paramAnonymousScaleGestureDetector = a.this.ctF;
             i = a.this.mCurrentScale;
-            paramAnonymousScaleGestureDetector.cty.setZoom(i);
+            paramAnonymousScaleGestureDetector.cub.setZoom(i);
             new com.tencent.luggage.xweb_ext.extendplugin.component.a.a();
           }
-          AppMethodBeat.o(186786);
+          AppMethodBeat.o(220469);
           return false;
           j = 0;
           break;
@@ -180,20 +180,20 @@ public final class a
       
       public final void onScaleEnd(ScaleGestureDetector paramAnonymousScaleGestureDetector) {}
     };
-    this.ctp = d.gX(String.format("LivePusherThread_%s", new Object[] { Long.valueOf(System.currentTimeMillis()) }), 5);
-    this.ctp.start();
-    this.cto = new Handler(this.ctp.getLooper());
-    this.mHandler = new Handler(aj.getContext().getMainLooper());
-    com.tencent.luggage.xweb_ext.extendplugin.component.a.b.Ga();
-    this.ctb = new b(aj.getContext());
-    this.ctb.mHandler = this.cto;
-    this.ctb.ctz = new ITXLivePushListener()
+    this.ctT = d.hg(String.format("LivePusherThread_%s", new Object[] { Long.valueOf(System.currentTimeMillis()) }), 5);
+    this.ctT.start();
+    this.ctS = new Handler(this.ctT.getLooper());
+    this.mHandler = new Handler(ak.getContext().getMainLooper());
+    com.tencent.luggage.xweb_ext.extendplugin.component.a.b.Gg();
+    this.ctF = new b(ak.getContext());
+    this.ctF.mHandler = this.ctS;
+    this.ctF.cuc = new ITXLivePushListener()
     {
       public final void onNetStatus(Bundle paramAnonymousBundle)
       {
         AppMethodBeat.i(178827);
-        if (a.this.Gd()) {
-          a.this.ctd.e(a.this.getId(), paramAnonymousBundle);
+        if (a.this.Gj()) {
+          a.this.ctH.e(a.this.getId(), paramAnonymousBundle);
         }
         AppMethodBeat.o(178827);
       }
@@ -201,30 +201,30 @@ public final class a
       public final void onPushEvent(int paramAnonymousInt, Bundle paramAnonymousBundle)
       {
         AppMethodBeat.i(178826);
-        if (a.this.Gd())
+        if (a.this.Gj())
         {
-          ad.d("MicroMsg.SameLayer.LivePusherPluginHandler", "onPushEvent, errCode:%s", new Object[] { Integer.valueOf(paramAnonymousInt) });
-          a.this.ctd.b(a.this.getId(), paramAnonymousInt, paramAnonymousBundle);
+          ae.d("MicroMsg.SameLayer.LivePusherPluginHandler", "onPushEvent, errCode:%s", new Object[] { Integer.valueOf(paramAnonymousInt) });
+          a.this.ctH.b(a.this.getId(), paramAnonymousInt, paramAnonymousBundle);
         }
-        if (((paramAnonymousInt == 1002) || (paramAnonymousInt == 1003) || (paramAnonymousInt == 1018)) && (a.this.cte != null))
+        if (((paramAnonymousInt == 1002) || (paramAnonymousInt == 1003) || (paramAnonymousInt == 1018)) && (a.this.ctI != null))
         {
-          a.this.cte.b(a.this, a.this.crL);
+          a.this.ctI.b(a.this, a.this.cso);
           AppMethodBeat.o(178826);
           return;
         }
-        if ((paramAnonymousInt == -1307) && (a.this.cte != null)) {
-          a.this.cte.c(a.this, a.this.crL);
+        if ((paramAnonymousInt == -1307) && (a.this.ctI != null)) {
+          a.this.ctI.c(a.this, a.this.cso);
         }
         AppMethodBeat.o(178826);
       }
     };
-    this.ctb.ctG = new TXLivePusher.OnBGMNotify()
+    this.ctF.cuj = new TXLivePusher.OnBGMNotify()
     {
       public final void onBGMComplete(int paramAnonymousInt)
       {
         AppMethodBeat.i(178831);
-        if (a.this.Gd()) {
-          a.this.ctd.bX(a.this.getId(), paramAnonymousInt);
+        if (a.this.Gj()) {
+          a.this.ctH.bX(a.this.getId(), paramAnonymousInt);
         }
         AppMethodBeat.o(178831);
       }
@@ -232,8 +232,8 @@ public final class a
       public final void onBGMProgress(long paramAnonymousLong1, long paramAnonymousLong2)
       {
         AppMethodBeat.i(178830);
-        if (a.this.Gd()) {
-          a.this.ctd.f(a.this.getId(), paramAnonymousLong1, paramAnonymousLong2);
+        if (a.this.Gj()) {
+          a.this.ctH.f(a.this.getId(), paramAnonymousLong1, paramAnonymousLong2);
         }
         AppMethodBeat.o(178830);
       }
@@ -241,42 +241,42 @@ public final class a
       public final void onBGMStart()
       {
         AppMethodBeat.i(178829);
-        if (a.this.Gd()) {
-          a.this.ctd.gL(a.this.getId());
+        if (a.this.Gj()) {
+          a.this.ctH.gM(a.this.getId());
         }
         AppMethodBeat.o(178829);
       }
     };
-    this.ctb.ctH = new TXLivePusher.ITXAudioVolumeEvaluationListener()
+    this.ctF.cuk = new TXLivePusher.ITXAudioVolumeEvaluationListener()
     {
       public final void onAudioVolumeEvaluationNotify(int paramAnonymousInt)
       {
         AppMethodBeat.i(178832);
-        if (a.this.Gd()) {
-          a.this.ctd.bY(a.this.getId(), paramAnonymousInt);
+        if (a.this.Gj()) {
+          a.this.ctH.bY(a.this.getId(), paramAnonymousInt);
         }
         AppMethodBeat.o(178832);
       }
     };
-    this.ctm = new aa(aj.getContext(), new aa.b()
+    this.ctQ = new ad(ak.getContext(), new ad.b()
     {
-      public final void a(aa.a paramAnonymousa1, aa.a paramAnonymousa2)
+      public final void a(ad.a paramAnonymousa1, ad.a paramAnonymousa2)
       {
         AppMethodBeat.i(178833);
         int i;
-        switch (a.14.cts[paramAnonymousa2.ordinal()])
+        switch (a.14.ctW[paramAnonymousa2.ordinal()])
         {
         default: 
           i = 0;
         }
         for (;;)
         {
-          paramAnonymousa1 = a.this.ctn;
+          paramAnonymousa1 = a.this.ctR;
           paramAnonymousa1.number = 0;
-          paramAnonymousa1.ctq.mHandler.removeCallbacks(paramAnonymousa1);
-          a.this.ctn.ctu = i;
-          paramAnonymousa1 = a.this.ctn;
-          paramAnonymousa1.ctq.mHandler.postDelayed(paramAnonymousa1, 250L);
+          paramAnonymousa1.ctU.mHandler.removeCallbacks(paramAnonymousa1);
+          a.this.ctR.ctY = i;
+          paramAnonymousa1 = a.this.ctR;
+          paramAnonymousa1.ctU.mHandler.postDelayed(paramAnonymousa1, 250L);
           AppMethodBeat.o(178833);
           return;
           i = 1;
@@ -289,15 +289,15 @@ public final class a
         }
       }
     });
-    this.ctm.enable();
-    gJ(getRotationAngle());
+    this.ctQ.enable();
+    gK(getRotationAngle());
     if (this.mHandler != null) {
       this.mHandler.post(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(178813);
-          a.this.mScaleGestureDetector = new ScaleGestureDetector(aj.getContext(), a.this.mScaleGestureListener);
+          a.this.mScaleGestureDetector = new ScaleGestureDetector(ak.getContext(), a.this.mScaleGestureListener);
           AppMethodBeat.o(178813);
         }
       });
@@ -305,14 +305,14 @@ public final class a
     AppMethodBeat.o(138878);
   }
   
-  private void Gc()
+  private void Gi()
   {
     AppMethodBeat.i(138888);
-    if ((this.crN != 0) && (this.crO != 0) && (this.mSurfaceTexture != null) && (this.ctb != null))
+    if ((this.csq != 0) && (this.csr != 0) && (this.mSurfaceTexture != null) && (this.ctF != null))
     {
-      ad.i(getLogTag(), "adjustHtmlSize, size:[%d, %d]", new Object[] { Integer.valueOf(this.crN), Integer.valueOf(this.crO) });
-      this.mSurfaceTexture.setDefaultBufferSize(this.crN, this.crO);
-      this.ctb.bV(this.crN, this.crO);
+      ae.i(getLogTag(), "adjustHtmlSize, size:[%d, %d]", new Object[] { Integer.valueOf(this.csq), Integer.valueOf(this.csr) });
+      this.mSurfaceTexture.setDefaultBufferSize(this.csq, this.csr);
+      this.ctF.bV(this.csq, this.csr);
     }
     AppMethodBeat.o(138888);
   }
@@ -320,9 +320,9 @@ public final class a
   static int getRotationAngle()
   {
     AppMethodBeat.i(138879);
-    if (aj.getContext().getSystemService("window") != null)
+    if (ak.getContext().getSystemService("window") != null)
     {
-      int i = ((WindowManager)aj.getContext().getSystemService("window")).getDefaultDisplay().getRotation();
+      int i = ((WindowManager)ak.getContext().getSystemService("window")).getDefaultDisplay().getRotation();
       AppMethodBeat.o(138879);
       return i;
     }
@@ -330,45 +330,45 @@ public final class a
     return 0;
   }
   
-  public final void FR()
+  public final void FX()
   {
-    AppMethodBeat.i(186788);
-    if (this.cto != null) {
-      this.cto.post(new Runnable()
+    AppMethodBeat.i(220471);
+    if (this.ctS != null) {
+      this.ctS.post(new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(186785);
-          if (a.this.ctb != null)
+          AppMethodBeat.i(220468);
+          if (a.this.ctF != null)
           {
-            a.this.ctb.c("stop", new JSONObject());
-            b localb = a.this.ctb;
-            if (localb.ctz != null)
+            a.this.ctF.c("stop", new JSONObject());
+            b localb = a.this.ctF;
+            if (localb.cuc != null)
             {
-              ad.i("TXLivePusherJSAdapter", "sendWeChatStop, send event 5001");
-              localb.ctz.onPushEvent(5001, new Bundle());
+              ae.i("TXLivePusherJSAdapter", "sendWeChatStop, send event 5001");
+              localb.cuc.onPushEvent(5001, new Bundle());
             }
           }
-          AppMethodBeat.o(186785);
+          AppMethodBeat.o(220468);
         }
       });
     }
-    AppMethodBeat.o(186788);
+    AppMethodBeat.o(220471);
   }
   
-  public final String FS()
+  public final String FY()
   {
-    AppMethodBeat.i(186789);
+    AppMethodBeat.i(220472);
     String str = String.format("%s_%s", new Object[] { this.type, Integer.valueOf(getId()) });
-    AppMethodBeat.o(186789);
+    AppMethodBeat.o(220472);
     return str;
   }
   
-  public final void Gb()
+  public final void Gh()
   {
     AppMethodBeat.i(138882);
-    if (this.cto != null) {
-      this.cto.post(new Runnable()
+    if (this.ctS != null) {
+      this.ctS.post(new Runnable()
       {
         public final void run()
         {
@@ -381,47 +381,47 @@ public final class a
     AppMethodBeat.o(138882);
   }
   
-  final boolean Gd()
+  final boolean Gj()
   {
-    return this.ctd != null;
+    return this.ctH != null;
   }
   
   final void a(final Activity paramActivity, final com.tencent.luggage.xweb_ext.extendplugin.a parama)
   {
     AppMethodBeat.i(138891);
-    int i = this.cth;
-    this.cth = (i + 1);
+    int i = this.ctL;
+    this.ctL = (i + 1);
     if (i > 5)
     {
-      ad.i(getLogTag(), "doInvokeInsertAfterRequestPermission, avoid dead loop");
-      parama.du("fail:system permission denied");
+      ae.i(getLogTag(), "doInvokeInsertAfterRequestPermission, avoid dead loop");
+      parama.dw("fail:system permission denied");
       AppMethodBeat.o(138891);
       return;
     }
-    p.b(parama.getAppId(), new android.support.v4.app.a.a()
+    r.b(parama.getAppId(), new android.support.v4.app.a.a()
     {
       public final void onRequestPermissionsResult(int paramAnonymousInt, String[] paramAnonymousArrayOfString, int[] paramAnonymousArrayOfInt)
       {
         AppMethodBeat.i(178824);
-        ad.i(a.this.getLogTag(), "onRequestPermissionsResult callback, requestCode:%d", new Object[] { Integer.valueOf(paramAnonymousInt) });
+        ae.i(a.this.getLogTag(), "onRequestPermissionsResult callback, requestCode:%d", new Object[] { Integer.valueOf(paramAnonymousInt) });
         if (paramAnonymousInt == 117)
         {
           if ((paramAnonymousArrayOfInt != null) && (paramAnonymousArrayOfInt.length > 0) && (paramAnonymousArrayOfInt[0] == 0))
           {
-            aq.o(new Runnable()
+            ar.o(new Runnable()
             {
               public final void run()
               {
                 AppMethodBeat.i(178822);
-                a.this.a(a.10.this.val$activity, a.10.this.csq);
+                a.this.a(a.10.this.val$activity, a.10.this.csT);
                 AppMethodBeat.o(178822);
               }
             }, 50L);
             AppMethodBeat.o(178824);
             return;
           }
-          ad.i(a.this.getLogTag(), "onRequestPermissionsResult callback, camera permission not grant");
-          parama.du("fail:system permission denied");
+          ae.i(a.this.getLogTag(), "onRequestPermissionsResult callback, camera permission not grant");
+          parama.dw("fail:system permission denied");
           AppMethodBeat.o(178824);
           return;
         }
@@ -429,55 +429,56 @@ public final class a
         {
           if ((paramAnonymousArrayOfInt != null) && (paramAnonymousArrayOfInt.length > 0) && (paramAnonymousArrayOfInt[0] == 0))
           {
-            aq.o(new Runnable()
+            ar.o(new Runnable()
             {
               public final void run()
               {
                 AppMethodBeat.i(178823);
-                a.this.a(a.10.this.val$activity, a.10.this.csq);
+                a.this.a(a.10.this.val$activity, a.10.this.csT);
                 AppMethodBeat.o(178823);
               }
             }, 50L);
             AppMethodBeat.o(178824);
             return;
           }
-          ad.i(a.this.getLogTag(), "onRequestPermissionsResult callback, microphone permission not grant");
-          parama.du("fail:system permission denied");
+          ae.i(a.this.getLogTag(), "onRequestPermissionsResult callback, microphone permission not grant");
+          parama.dw("fail:system permission denied");
         }
         AppMethodBeat.o(178824);
       }
     });
     if (!h.a(paramActivity, "android.permission.CAMERA", 117, "", ""))
     {
-      ad.i(getLogTag(), "doInvokeInsertAfterRequestPermission, no Camera Permission");
-      parama.du("fail:system permission denied");
+      ae.i(getLogTag(), "doInvokeInsertAfterRequestPermission, no Camera Permission");
+      parama.dw("fail:system permission denied");
       AppMethodBeat.o(138891);
       return;
     }
     if (!h.a(paramActivity, "android.permission.RECORD_AUDIO", 118, "", ""))
     {
-      ad.i(getLogTag(), "doInvokeInsertAfterRequestPermission, no Microphone Permission");
-      parama.du("fail:system permission denied");
+      ae.i(getLogTag(), "doInvokeInsertAfterRequestPermission, no Microphone Permission");
+      parama.dw("fail:system permission denied");
       AppMethodBeat.o(138891);
       return;
     }
-    ad.i(getLogTag(), "doInvokeInsertAfterRequestPermission, invoke insertInternal");
-    if (this.ctb == null)
+    ae.i(getLogTag(), "doInvokeInsertAfterRequestPermission, invoke insertInternal");
+    if (this.ctF == null)
     {
-      ad.i(getLogTag(), "insert, adapter is null");
+      ae.i(getLogTag(), "insert, adapter is null");
       AppMethodBeat.o(138891);
       return;
     }
     TXLiveBase.setAppVersion(String.format("weixin_%s", new Object[] { parama.getAppId() }));
-    this.crL = parama;
-    this.crM = new com.tencent.luggage.xweb_ext.extendplugin.a.a()
+    this.cso = parama;
+    this.csp = new com.tencent.luggage.xweb_ext.extendplugin.a.a()
     {
-      public final void gE(int paramAnonymousInt)
+      public final void gF(int paramAnonymousInt)
       {
         AppMethodBeat.i(178815);
+        ae.i(a.this.getLogTag(), "onBackground, type: ".concat(String.valueOf(paramAnonymousInt)));
         a locala = a.this;
-        if (locala.cto != null) {
-          locala.cto.post(new a.4(locala, paramAnonymousInt));
+        if (locala.ctS != null) {
+          locala.ctS.post(new a.4(locala, paramAnonymousInt));
         }
         AppMethodBeat.o(178815);
       }
@@ -486,8 +487,8 @@ public final class a
       {
         AppMethodBeat.i(178816);
         a locala = a.this;
-        if (locala.cto != null) {
-          locala.cto.post(new a.5(locala));
+        if (locala.ctS != null) {
+          locala.ctS.post(new a.5(locala));
         }
         AppMethodBeat.o(178816);
       }
@@ -495,68 +496,69 @@ public final class a
       public final void onForeground()
       {
         AppMethodBeat.i(178814);
+        ae.i(a.this.getLogTag(), "onForeground");
         a locala = a.this;
-        if (locala.cto != null) {
-          locala.cto.post(new a.3(locala));
+        if (locala.ctS != null) {
+          locala.ctS.post(new a.3(locala));
         }
         AppMethodBeat.o(178814);
       }
     };
-    parama.a(this.crM);
-    paramActivity = parama.FD();
+    parama.a(this.csp);
+    paramActivity = parama.FJ();
     a(parama, paramActivity);
     i(paramActivity);
     k(paramActivity);
     l(paramActivity);
     j(paramActivity);
     Bundle localBundle = com.tencent.luggage.xweb_ext.extendplugin.component.a.c.h(paramActivity);
-    if (this.cte != null)
+    if (this.ctI != null)
     {
-      paramActivity = this.cte.c(parama, localBundle);
-      if (!bt.isNullOrNil(paramActivity))
+      paramActivity = this.ctI.c(parama, localBundle);
+      if (!bu.isNullOrNil(paramActivity))
       {
-        ad.i(getLogTag(), "insert fail, message:%s", new Object[] { paramActivity });
-        parama.du("fail: can not insert RTC mode LivePusher now");
+        ae.i(getLogTag(), "insert fail, message:%s", new Object[] { paramActivity });
+        parama.dw("fail: can not insert RTC mode LivePusher now");
         Toast.makeText(parama.getContext(), paramActivity, 0).show();
         AppMethodBeat.o(138891);
         return;
       }
     }
-    paramActivity = this.ctb;
-    if (paramActivity.ctz != null)
+    paramActivity = this.ctF;
+    if (paramActivity.cuc != null)
     {
       localObject = new Bundle();
       ((Bundle)localObject).putString("EVT_MSG", TXLiveBase.getSDKVersionStr());
       ((Bundle)localObject).putLong("EVT_TIME", System.currentTimeMillis());
-      paramActivity.ctz.onPushEvent(-9999999, (Bundle)localObject);
+      paramActivity.cuc.onPushEvent(-9999999, (Bundle)localObject);
     }
     b.l("InitLivePusher", localBundle);
     paramActivity.mVideoView = null;
-    paramActivity.ctA = localBundle.getString("pushUrl", "");
-    paramActivity.cty.setPusherUrl(paramActivity.ctA);
+    paramActivity.cud = localBundle.getString("pushUrl", "");
+    paramActivity.cub.setPusherUrl(paramActivity.cud);
     paramActivity.a(localBundle, true);
-    paramActivity.ctK = localBundle.getBoolean("autopush", paramActivity.ctK);
-    if ((paramActivity.ctK) && (paramActivity.ctA != null) && (!paramActivity.ctA.isEmpty()) && (!paramActivity.cty.isPushing()))
+    paramActivity.cun = localBundle.getBoolean("autopush", paramActivity.cun);
+    if ((paramActivity.cun) && (paramActivity.cud != null) && (!paramActivity.cud.isEmpty()) && (!paramActivity.cub.isPushing()))
     {
-      ad.i("TXLivePusherJSAdapter", "initLivePusher: startPusher");
-      paramActivity.bB(paramActivity.ctQ);
-      paramActivity.bC(paramActivity.ctR);
-      if ((paramActivity.ctQ) && (paramActivity.mSurface != null)) {
-        paramActivity.cty.setSurface(paramActivity.mSurface);
+      ae.i("TXLivePusherJSAdapter", "initLivePusher: startPusher");
+      paramActivity.bB(paramActivity.cut);
+      paramActivity.bC(paramActivity.cuu);
+      if ((paramActivity.cut) && (paramActivity.mSurface != null)) {
+        paramActivity.cub.setSurface(paramActivity.mSurface);
       }
-      paramActivity.cty.startPusher(paramActivity.ctA);
+      paramActivity.cub.startPusher(paramActivity.cud);
     }
     paramActivity.mInited = true;
     Object localObject = new com.tencent.luggage.xweb_ext.extendplugin.component.a.a();
-    ad.i(getLogTag(), "insert, code:%d info:%s", new Object[] { Integer.valueOf(((com.tencent.luggage.xweb_ext.extendplugin.component.a.a)localObject).errorCode), ((com.tencent.luggage.xweb_ext.extendplugin.component.a.a)localObject).crF });
+    ae.i(getLogTag(), "insert, code:%d info:%s", new Object[] { Integer.valueOf(((com.tencent.luggage.xweb_ext.extendplugin.component.a.a)localObject).errorCode), ((com.tencent.luggage.xweb_ext.extendplugin.component.a.a)localObject).csi });
     if (((com.tencent.luggage.xweb_ext.extendplugin.component.a.a)localObject).errorCode == 0) {}
     for (paramActivity = "ok";; paramActivity = "fail")
     {
-      parama.du(paramActivity);
+      parama.dw(paramActivity);
       n(parama);
       o(parama);
-      if ((((com.tencent.luggage.xweb_ext.extendplugin.component.a.a)localObject).errorCode == 0) && (this.cte != null)) {
-        this.cte.a(this, this.crL, localBundle);
+      if ((((com.tencent.luggage.xweb_ext.extendplugin.component.a.a)localObject).errorCode == 0) && (this.ctI != null)) {
+        this.ctI.a(this, this.cso, localBundle);
       }
       AppMethodBeat.o(138891);
       return;
@@ -568,9 +570,9 @@ public final class a
     AppMethodBeat.i(138886);
     if (paramJSONObject.has("needEvent"))
     {
-      this.crR = paramJSONObject.optBoolean("needEvent", false);
-      if (Gd()) {
-        this.ctd.m(parama);
+      this.csu = paramJSONObject.optBoolean("needEvent", false);
+      if (Gj()) {
+        this.ctH.m(parama);
       }
     }
     AppMethodBeat.o(138886);
@@ -579,8 +581,8 @@ public final class a
   public final void e(final SurfaceTexture paramSurfaceTexture)
   {
     AppMethodBeat.i(138881);
-    if (this.cto != null) {
-      this.cto.post(new Runnable()
+    if (this.ctS != null) {
+      this.ctS.post(new Runnable()
       {
         public final void run()
         {
@@ -598,25 +600,25 @@ public final class a
     return true;
   }
   
-  final void gF(int paramInt)
+  final void gG(int paramInt)
   {
     AppMethodBeat.i(138893);
-    if (this.ctc != null) {
-      this.ctc.aK(paramInt);
+    if (this.ctG != null) {
+      this.ctG.aK(paramInt);
     }
     AppMethodBeat.o(138893);
   }
   
-  final boolean gJ(int paramInt)
+  final boolean gK(int paramInt)
   {
     AppMethodBeat.i(138880);
-    if (paramInt != this.ctl)
+    if (paramInt != this.ctP)
     {
-      this.ctl = paramInt;
-      ad.i("MicroMsg.SameLayer.LivePusherPluginHandler", "notifyOrientationChanged, new angle:%s", new Object[] { Integer.valueOf(paramInt) });
-      if (this.ctb != null)
+      this.ctP = paramInt;
+      ae.i("MicroMsg.SameLayer.LivePusherPluginHandler", "notifyOrientationChanged, new angle:%s", new Object[] { Integer.valueOf(paramInt) });
+      if (this.ctF != null)
       {
-        this.ctb.gK(paramInt);
+        this.ctF.gL(paramInt);
         AppMethodBeat.o(138880);
         return true;
       }
@@ -628,7 +630,7 @@ public final class a
   final String getLogTag()
   {
     AppMethodBeat.i(138877);
-    String str = String.format("%s(%s)", new Object[] { "MicroMsg.SameLayer.LivePusherPluginHandler", BM() });
+    String str = String.format("%s(%s)", new Object[] { "MicroMsg.SameLayer.LivePusherPluginHandler", BN() });
     AppMethodBeat.o(138877);
     return str;
   }
@@ -636,33 +638,33 @@ public final class a
   public final String h(final com.tencent.luggage.xweb_ext.extendplugin.a parama)
   {
     AppMethodBeat.i(138884);
-    if (this.cto != null) {
-      this.cto.post(new Runnable()
+    if (this.ctS != null) {
+      this.ctS.post(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(138874);
           a locala = a.this;
           com.tencent.luggage.xweb_ext.extendplugin.a locala1 = parama;
-          Object localObject1 = locala1.FE();
-          if (!bt.isNullOrNil((String)localObject1))
+          Object localObject1 = locala1.FK();
+          if (!bu.isNullOrNil((String)localObject1))
           {
-            Object localObject2 = locala1.FD();
-            ad.i(locala.getLogTag(), "*** handler(%s) handleJsApi(%s), data:%s", new Object[] { locala.BM(), localObject1, ((JSONObject)localObject2).toString() });
+            Object localObject2 = locala1.FJ();
+            ae.i(locala.getLogTag(), "*** handler(%s) handleJsApi(%s), data:%s", new Object[] { locala.BN(), localObject1, ((JSONObject)localObject2).toString() });
             new StringBuilder("handleJsApi:").append((String)localObject1).append(", data:").append(localObject2);
             if (((String)localObject1).contains("insert"))
             {
-              locala.gF(5);
+              locala.gG(5);
               localObject1 = locala1.getContext();
               if (!(localObject1 instanceof Activity))
               {
-                ad.w("MicroMsg.SameLayer.LivePusherPluginHandler", "invokeInsertAfterRequestPermission, pageContext not activity");
-                locala1.du("fail:internal error invalid android context");
-                p.TS(locala1.getAppId());
+                ae.w("MicroMsg.SameLayer.LivePusherPluginHandler", "invokeInsertAfterRequestPermission, pageContext not activity");
+                locala1.dw("fail:internal error invalid android context");
+                r.UC(locala1.getAppId());
                 AppMethodBeat.o(138874);
                 return;
               }
-              locala.cth = 0;
+              locala.ctL = 0;
               locala.a((Activity)localObject1, locala1);
               AppMethodBeat.o(138874);
               return;
@@ -670,30 +672,30 @@ public final class a
             com.tencent.luggage.xweb_ext.extendplugin.component.a.a locala2;
             if (((String)localObject1).contains("update"))
             {
-              locala.gF(6);
-              if (locala.ctb == null)
+              locala.gG(6);
+              if (locala.ctF == null)
               {
-                ad.i(locala.getLogTag(), "update, adapter is null");
+                ae.i(locala.getLogTag(), "update, adapter is null");
                 AppMethodBeat.o(138874);
                 return;
               }
-              localObject1 = locala1.FD();
+              localObject1 = locala1.FJ();
               locala.a(locala1, (JSONObject)localObject1);
               locala.i((JSONObject)localObject1);
               locala.k((JSONObject)localObject1);
               locala.l((JSONObject)localObject1);
               locala.j((JSONObject)localObject1);
               localObject2 = com.tencent.luggage.xweb_ext.extendplugin.component.a.c.h((JSONObject)localObject1);
-              locala2 = locala.ctb.o((Bundle)localObject2);
-              ad.i(locala.getLogTag(), "update, code:%d info:%s", new Object[] { Integer.valueOf(locala2.errorCode), locala2.crF });
+              locala2 = locala.ctF.o((Bundle)localObject2);
+              ae.i(locala.getLogTag(), "update, code:%d info:%s", new Object[] { Integer.valueOf(locala2.errorCode), locala2.csi });
               if (locala2.errorCode == 0) {}
               for (localObject1 = "ok";; localObject1 = "fail")
               {
-                locala1.du((String)localObject1);
+                locala1.dw((String)localObject1);
                 locala.n(locala1);
                 locala.o(locala1);
-                if ((locala2.errorCode == 0) && (locala.cte != null)) {
-                  locala.cte.b(locala.crL, (Bundle)localObject2);
+                if ((locala2.errorCode == 0) && (locala.ctI != null)) {
+                  locala.ctI.b(locala.cso, (Bundle)localObject2);
                 }
                 AppMethodBeat.o(138874);
                 return;
@@ -701,62 +703,62 @@ public final class a
             }
             if (((String)localObject1).contains("operate"))
             {
-              locala.gF(7);
-              if (locala.ctb == null)
+              locala.gG(7);
+              if (locala.ctF == null)
               {
-                ad.i(locala.getLogTag(), "operate, adapter is null");
+                ae.i(locala.getLogTag(), "operate, adapter is null");
                 AppMethodBeat.o(138874);
                 return;
               }
-              localObject1 = locala1.FD();
+              localObject1 = locala1.FJ();
               localObject2 = ((JSONObject)localObject1).optString("type");
-              ad.i(locala.getLogTag(), "operate, type:%s", new Object[] { localObject2 });
-              if ((!bt.isNullOrNil((String)localObject2)) && (locala.ctb != null))
+              ae.i(locala.getLogTag(), "operate, type:%s", new Object[] { localObject2 });
+              if ((!bu.isNullOrNil((String)localObject2)) && (locala.ctF != null))
               {
                 if (((String)localObject2).equals("snapshot"))
                 {
-                  locala.ctb.ctF = new a.8(locala, locala1);
-                  if (locala.ctb.c("snapshot", locala1.FD()).errorCode != 0) {
-                    locala1.du("fail:snapshot error");
+                  locala.ctF.cui = new a.8(locala, locala1);
+                  if (locala.ctF.c("snapshot", locala1.FJ()).errorCode != 0) {
+                    locala1.dw("fail:snapshot error");
                   }
                   AppMethodBeat.o(138874);
                   return;
                 }
                 if (((String)localObject2).equals("playBGM"))
                 {
-                  if (locala.cte != null)
+                  if (locala.ctI != null)
                   {
-                    locala.cte.b(locala1, new a.9(locala));
-                    locala1.du("ok");
+                    locala.ctI.b(locala1, new a.9(locala));
+                    locala1.dw("ok");
                     AppMethodBeat.o(138874);
                     return;
                   }
-                  locala1.du("fail");
+                  locala1.dw("fail");
                   AppMethodBeat.o(138874);
                   return;
                 }
-                locala2 = locala.ctb.c((String)localObject2, (JSONObject)localObject1);
-                ad.i(locala.getLogTag(), "operate, type:%s, error:[%s, %s]", new Object[] { localObject2, Integer.valueOf(locala2.errorCode), locala2.crF });
+                locala2 = locala.ctF.c((String)localObject2, (JSONObject)localObject1);
+                ae.i(locala.getLogTag(), "operate, type:%s, error:[%s, %s]", new Object[] { localObject2, Integer.valueOf(locala2.errorCode), locala2.csi });
                 if (locala2.errorCode == 0) {}
                 for (localObject1 = "ok";; localObject1 = "fail")
                 {
-                  locala1.du((String)localObject1);
-                  if ((((String)localObject2).equalsIgnoreCase("stop")) && (locala2.errorCode == 0) && (locala.cte != null)) {
-                    locala.cte.c(locala, locala.crL);
+                  locala1.dw((String)localObject1);
+                  if ((((String)localObject2).equalsIgnoreCase("stop")) && (locala2.errorCode == 0) && (locala.ctI != null)) {
+                    locala.ctI.c(locala, locala.cso);
                   }
                   AppMethodBeat.o(138874);
                   return;
                 }
               }
-              locala1.du("fail");
+              locala1.dw("fail");
               AppMethodBeat.o(138874);
               return;
             }
             if (((String)localObject1).contains("remove"))
             {
-              locala.gF(8);
+              locala.gG(8);
               locala.release();
-              locala1.du("ok");
+              locala1.dw("ok");
             }
           }
           AppMethodBeat.o(138874);
@@ -775,10 +777,10 @@ public final class a
       paramJSONObject = paramJSONObject.optJSONObject("position");
       if (paramJSONObject != null)
       {
-        this.crN = g.vJ(paramJSONObject.optInt("width", 0));
-        this.crO = g.vJ(paramJSONObject.optInt("height", 0));
-        ad.i(getLogTag(), "parseHtmlPosition, size:[%d, %d]", new Object[] { Integer.valueOf(this.crN), Integer.valueOf(this.crO) });
-        Gc();
+        this.csq = g.vO(paramJSONObject.optInt("width", 0));
+        this.csr = g.vO(paramJSONObject.optInt("height", 0));
+        ae.i(getLogTag(), "parseHtmlPosition, size:[%d, %d]", new Object[] { Integer.valueOf(this.csq), Integer.valueOf(this.csr) });
+        Gi();
       }
     }
     AppMethodBeat.o(138887);
@@ -789,9 +791,9 @@ public final class a
     AppMethodBeat.i(178836);
     if (paramJSONObject.has("filterImage"))
     {
-      this.ctf = paramJSONObject.optString("filterImage", this.ctf);
-      this.ctg = paramJSONObject.optString("filterImageMd5", null);
-      if (bt.isNullOrNil(this.ctf)) {
+      this.ctJ = paramJSONObject.optString("filterImage", this.ctJ);
+      this.ctK = paramJSONObject.optString("filterImageMd5", null);
+      if (bu.isNullOrNil(this.ctJ)) {
         try
         {
           paramJSONObject.put("filterImage", "");
@@ -800,12 +802,12 @@ public final class a
         }
         catch (JSONException paramJSONObject)
         {
-          ad.w(getLogTag(), "parseFilterImage, ignore exception:%s", new Object[] { paramJSONObject });
+          ae.w(getLogTag(), "parseFilterImage, ignore exception:%s", new Object[] { paramJSONObject });
           AppMethodBeat.o(178836);
           return;
         }
       }
-      if ((this.ctf.startsWith("http://")) || (this.ctf.startsWith("https://"))) {
+      if ((this.ctJ.startsWith("http://")) || (this.ctJ.startsWith("https://"))) {
         paramJSONObject.remove("filterImage");
       }
     }
@@ -821,7 +823,7 @@ public final class a
       if (paramJSONObject.optInt("focusMode", 0) != 0) {
         bool = true;
       }
-      this.cti = bool;
+      this.ctM = bool;
     }
     AppMethodBeat.o(138889);
   }
@@ -829,8 +831,8 @@ public final class a
   public final void l(final MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(138883);
-    if (this.cto != null) {
-      this.cto.post(new Runnable()
+    if (this.ctS != null) {
+      this.ctS.post(new Runnable()
       {
         public final void run()
         {
@@ -847,7 +849,7 @@ public final class a
   {
     AppMethodBeat.i(138890);
     if (paramJSONObject.has("zoom")) {
-      this.ctj = paramJSONObject.optBoolean("zoom", false);
+      this.ctN = paramJSONObject.optBoolean("zoom", false);
     }
     AppMethodBeat.o(138890);
   }
@@ -855,31 +857,31 @@ public final class a
   final void n(com.tencent.luggage.xweb_ext.extendplugin.a parama)
   {
     AppMethodBeat.i(138885);
-    if (this.cte != null) {
-      this.cte.a(parama, new com.tencent.luggage.xweb_ext.extendplugin.component.a.b.a.a.a()
+    if (this.ctI != null) {
+      this.ctI.a(parama, new com.tencent.luggage.xweb_ext.extendplugin.component.a.b.a.a.a()
       {
         public final void F(String paramAnonymousString1, String paramAnonymousString2)
         {
           AppMethodBeat.i(138857);
-          if (!bt.isNullOrNil(paramAnonymousString2))
+          if (!bu.isNullOrNil(paramAnonymousString2))
           {
             paramAnonymousString1 = q.k(paramAnonymousString2, false);
-            ad.i(a.this.getLogTag(), "convertBackgroundImageToLocalPath, targetPath:%s", new Object[] { paramAnonymousString1 });
-            if (a.this.ctb != null)
+            ae.i(a.this.getLogTag(), "convertBackgroundImageToLocalPath, targetPath:%s", new Object[] { paramAnonymousString1 });
+            if (a.this.ctF != null)
             {
               paramAnonymousString2 = new Bundle();
               paramAnonymousString2.putString("backgroundImage", paramAnonymousString1);
-              a.this.ctb.o(paramAnonymousString2);
+              a.this.ctF.o(paramAnonymousString2);
             }
             AppMethodBeat.o(138857);
             return;
           }
-          ad.i(a.this.getLogTag(), "convertBackgroundImageToLocalPath, load background image fail");
-          if (a.this.ctd != null)
+          ae.i(a.this.getLogTag(), "convertBackgroundImageToLocalPath, load background image fail");
+          if (a.this.ctH != null)
           {
             paramAnonymousString2 = new HashMap();
             paramAnonymousString2.put("url", paramAnonymousString1);
-            a.this.ctd.a(a.this.getId(), 10004, "load background image fail", paramAnonymousString2);
+            a.this.ctH.a(a.this.getId(), 10004, "load background image fail", paramAnonymousString2);
           }
           AppMethodBeat.o(138857);
         }
@@ -891,31 +893,31 @@ public final class a
   final void o(com.tencent.luggage.xweb_ext.extendplugin.a parama)
   {
     AppMethodBeat.i(178835);
-    if ((this.cte != null) && (!bt.isNullOrNil(this.ctf))) {
-      this.cte.a(parama, this.ctf, this.ctg, new com.tencent.luggage.xweb_ext.extendplugin.component.a.b.a.a.a()
+    if ((this.ctI != null) && (!bu.isNullOrNil(this.ctJ))) {
+      this.ctI.a(parama, this.ctJ, this.ctK, new com.tencent.luggage.xweb_ext.extendplugin.component.a.b.a.a.a()
       {
         public final void F(String paramAnonymousString1, String paramAnonymousString2)
         {
           AppMethodBeat.i(178819);
-          if (!bt.isNullOrNil(paramAnonymousString2))
+          if (!bu.isNullOrNil(paramAnonymousString2))
           {
             paramAnonymousString1 = q.k(paramAnonymousString2, false);
-            ad.i(a.this.getLogTag(), "convertFilterImageToLocalPath, targetPath:%s", new Object[] { paramAnonymousString1 });
-            if (a.this.ctb != null)
+            ae.i(a.this.getLogTag(), "convertFilterImageToLocalPath, targetPath:%s", new Object[] { paramAnonymousString1 });
+            if (a.this.ctF != null)
             {
               paramAnonymousString2 = new Bundle();
               paramAnonymousString2.putString("filterImage", paramAnonymousString1);
-              a.this.ctb.o(paramAnonymousString2);
+              a.this.ctF.o(paramAnonymousString2);
             }
             AppMethodBeat.o(178819);
             return;
           }
-          ad.i(a.this.getLogTag(), "convertFilterImageToLocalPath, load filter image fail");
-          if (a.this.ctd != null)
+          ae.i(a.this.getLogTag(), "convertFilterImageToLocalPath, load filter image fail");
+          if (a.this.ctH != null)
           {
             paramAnonymousString2 = new HashMap();
             paramAnonymousString2.put("url", paramAnonymousString1);
-            a.this.ctd.a(a.this.getId(), 10005, "load filter image fail", paramAnonymousString2);
+            a.this.ctH.a(a.this.getId(), 10005, "load filter image fail", paramAnonymousString2);
           }
           AppMethodBeat.o(178819);
         }
@@ -927,32 +929,32 @@ public final class a
   final void release()
   {
     AppMethodBeat.i(138892);
-    if (this.cte != null)
+    if (this.ctI != null)
     {
-      this.cte.c(this, this.crL);
-      this.cte.a(this, this.crL);
+      this.ctI.c(this, this.cso);
+      this.ctI.a(this, this.cso);
     }
-    if (this.ctb != null)
+    if (this.ctF != null)
     {
-      this.ctb.Gn();
-      this.ctb = null;
+      this.ctF.Gt();
+      this.ctF = null;
     }
     if (this.mSurface != null)
     {
       this.mSurface.release();
       this.mSurface = null;
     }
-    if (this.crL != null)
+    if (this.cso != null)
     {
-      this.crL.FF();
-      this.crM = null;
+      this.cso.FL();
+      this.csp = null;
     }
-    ad.i(getLogTag(), "LivePusher release handler thread");
-    if (this.cto != null) {
-      this.cto.removeCallbacksAndMessages(null);
+    ae.i(getLogTag(), "LivePusher release handler thread");
+    if (this.ctS != null) {
+      this.ctS.removeCallbacksAndMessages(null);
     }
-    if (this.ctp != null) {
-      this.ctp.quitSafely();
+    if (this.ctT != null) {
+      this.ctT.quitSafely();
     }
     AppMethodBeat.o(138892);
   }
@@ -960,11 +962,11 @@ public final class a
   final void s(float paramFloat1, float paramFloat2)
   {
     AppMethodBeat.i(138894);
-    if (this.ctb != null)
+    if (this.ctF != null)
     {
-      this.ctb.cty.setFocusPosition(paramFloat1, paramFloat2);
+      this.ctF.cub.setFocusPosition(paramFloat1, paramFloat2);
       com.tencent.luggage.xweb_ext.extendplugin.component.a.a locala = new com.tencent.luggage.xweb_ext.extendplugin.component.a.a();
-      ad.i(getLogTag(), "onTouchFocusPosition, set focus(%s, %s), code:%d, info:%s", new Object[] { Float.valueOf(paramFloat1), Float.valueOf(paramFloat2), Integer.valueOf(locala.errorCode), locala.crF });
+      ae.i(getLogTag(), "onTouchFocusPosition, set focus(%s, %s), code:%d, info:%s", new Object[] { Float.valueOf(paramFloat1), Float.valueOf(paramFloat2), Integer.valueOf(locala.errorCode), locala.csi });
     }
     AppMethodBeat.o(138894);
   }
@@ -972,7 +974,7 @@ public final class a
   final class a
     implements Runnable
   {
-    int ctu;
+    int ctY;
     int number = 0;
     
     a() {}
@@ -982,9 +984,9 @@ public final class a
       AppMethodBeat.i(138875);
       this.number += 1;
       int i = a.getRotationAngle();
-      if (i == this.ctu)
+      if (i == this.ctY)
       {
-        a.this.gJ(i);
+        a.this.gK(i);
         AppMethodBeat.o(138875);
         return;
       }
@@ -998,15 +1000,15 @@ public final class a
   final class b
     implements Runnable
   {
-    MotionEvent ctv;
+    MotionEvent ctZ;
     
     private b() {}
     
     public final void run()
     {
       AppMethodBeat.i(138876);
-      if ((a.this.cti) && (a.this.crN != 0) && (a.this.crO != 0)) {
-        a.this.s(this.ctv.getX() / a.this.crN, this.ctv.getY() / a.this.crO);
+      if ((a.this.ctM) && (a.this.csq != 0) && (a.this.csr != 0)) {
+        a.this.s(this.ctZ.getX() / a.this.csq, this.ctZ.getY() / a.this.csr);
       }
       AppMethodBeat.o(138876);
     }

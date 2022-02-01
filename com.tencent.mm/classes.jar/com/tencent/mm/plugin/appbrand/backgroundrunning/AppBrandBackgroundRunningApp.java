@@ -12,10 +12,10 @@ public class AppBrandBackgroundRunningApp
   public static final Parcelable.Creator<AppBrandBackgroundRunningApp> CREATOR;
   public String appId;
   public int beO;
-  public String dDH;
-  public int hQh;
-  public String jRQ;
-  public String jRR;
+  public String dEM;
+  public int hSZ;
+  public String jVi;
+  public String jVj;
   public String name;
   public String process;
   public String username;
@@ -33,14 +33,14 @@ public class AppBrandBackgroundRunningApp
   {
     AppMethodBeat.i(153204);
     this.appId = paramParcel.readString();
-    this.hQh = paramParcel.readInt();
+    this.hSZ = paramParcel.readInt();
     this.beO = paramParcel.readInt();
-    this.dDH = paramParcel.readString();
+    this.dEM = paramParcel.readString();
     this.name = paramParcel.readString();
     this.username = paramParcel.readString();
-    this.jRQ = paramParcel.readString();
+    this.jVi = paramParcel.readString();
     this.process = paramParcel.readString();
-    this.jRR = paramParcel.readString();
+    this.jVj = paramParcel.readString();
     AppMethodBeat.o(153204);
   }
   
@@ -79,7 +79,7 @@ public class AppBrandBackgroundRunningApp
   public String toString()
   {
     AppMethodBeat.i(153203);
-    String str = "AppBrandBackgroundRunningApp{appId='" + this.appId + '\'' + ", versionType=" + this.hQh + ", usage=" + this.beO + ", icon='" + this.dDH + '\'' + ", name='" + this.name + '\'' + ", username='" + this.username + '\'' + ", uiclass='" + this.jRQ + '\'' + ", process='" + this.process + '\'' + ", customNotificationLogicClassName='" + this.jRR + '\'' + '}';
+    String str = "AppBrandBackgroundRunningApp{appId='" + this.appId + '\'' + ", versionType=" + this.hSZ + ", usage=" + this.beO + ", icon='" + this.dEM + '\'' + ", name='" + this.name + '\'' + ", username='" + this.username + '\'' + ", uiclass='" + this.jVi + '\'' + ", process='" + this.process + '\'' + ", customNotificationLogicClassName='" + this.jVj + '\'' + '}';
     AppMethodBeat.o(153203);
     return str;
   }
@@ -88,14 +88,14 @@ public class AppBrandBackgroundRunningApp
   {
     AppMethodBeat.i(153207);
     paramParcel.writeString(this.appId);
-    paramParcel.writeInt(this.hQh);
+    paramParcel.writeInt(this.hSZ);
     paramParcel.writeInt(this.beO);
-    paramParcel.writeString(this.dDH);
+    paramParcel.writeString(this.dEM);
     paramParcel.writeString(this.name);
     paramParcel.writeString(this.username);
-    paramParcel.writeString(this.jRQ);
+    paramParcel.writeString(this.jVi);
     paramParcel.writeString(this.process);
-    paramParcel.writeString(this.jRR);
+    paramParcel.writeString(this.jVj);
     AppMethodBeat.o(153207);
   }
 }

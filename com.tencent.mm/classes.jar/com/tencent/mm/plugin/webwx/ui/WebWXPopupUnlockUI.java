@@ -10,10 +10,10 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.q;
-import com.tencent.mm.model.ba;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.model.bc;
 import com.tencent.mm.pluginsdk.l;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.ui.MMBaseActivity;
 
 public class WebWXPopupUnlockUI
@@ -39,12 +39,12 @@ public class WebWXPopupUnlockUI
             AppMethodBeat.i(30241);
             com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
             localb.bd(paramAnonymousView);
-            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/webwx/ui/WebWXPopupUnlockUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/webwx/ui/WebWXPopupUnlockUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
             paramAnonymousView = new com.tencent.mm.plugin.webwx.a.b(2);
-            ba.aiU().a(paramAnonymousView, 0);
-            ad.d("MicroMsg.WebWxPopUnlockUI", "doScene netSceneExtDeviceControl : UNLOCK");
-            com.tencent.mm.plugin.webwx.a.iRH.hu(1);
-            ad.d("MicroMsg.WebWxPopUnlockUI", "trigger netSceneSync notify");
+            bc.ajj().a(paramAnonymousView, 0);
+            ae.d("MicroMsg.WebWxPopUnlockUI", "doScene netSceneExtDeviceControl : UNLOCK");
+            com.tencent.mm.plugin.webwx.a.iUA.hu(1);
+            ae.d("MicroMsg.WebWxPopUnlockUI", "trigger netSceneSync notify");
             locala.dismiss();
             com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/webwx/ui/WebWXPopupUnlockUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
             AppMethodBeat.o(30241);
@@ -65,7 +65,7 @@ public class WebWXPopupUnlockUI
         AppMethodBeat.o(30243);
         return;
       }
-      ad.w("MicroMsg.WebWxPopUnlockUI", "Mac WeChat request to unlock,the deviceName is null");
+      ae.w("MicroMsg.WebWxPopUnlockUI", "Mac WeChat request to unlock,the deviceName is null");
     }
     AppMethodBeat.o(30243);
   }

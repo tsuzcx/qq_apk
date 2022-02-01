@@ -9,15 +9,15 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 final class ae$d
   extends ae.b
 {
-  ImageView ocn;
-  ImageView oeW;
-  TextView ofN;
-  ImageView ofO;
+  ImageView oic;
+  ImageView okW;
+  TextView olL;
+  ImageView olM;
   
   public final void dD(View paramView)
   {
     AppMethodBeat.i(37135);
-    if (this.odh != null)
+    if (this.oiV != null)
     {
       AppMethodBeat.o(37135);
       return;
@@ -29,13 +29,13 @@ final class ae$d
       return;
     }
     localViewStub.inflate();
-    this.odh = paramView.findViewById(2131298105);
-    this.ocn = ((ImageView)this.odh.findViewById(2131298813));
-    this.gnM = ((TextView)this.odh.findViewById(2131305902));
-    this.ofN = ((TextView)this.odh.findViewById(2131303307));
-    this.oeW = ((ImageView)this.odh.findViewById(2131303284));
-    this.ofO = ((ImageView)this.odh.findViewById(2131306868));
-    this.ocp = ((ImageView)this.odh.findViewById(2131298826));
+    this.oiV = paramView.findViewById(2131298105);
+    this.oic = ((ImageView)this.oiV.findViewById(2131298813));
+    this.gqi = ((TextView)this.oiV.findViewById(2131305902));
+    this.olL = ((TextView)this.oiV.findViewById(2131303307));
+    this.okW = ((ImageView)this.oiV.findViewById(2131303284));
+    this.olM = ((ImageView)this.oiV.findViewById(2131306868));
+    this.oie = ((ImageView)this.oiV.findViewById(2131298826));
     AppMethodBeat.o(37135);
   }
 }

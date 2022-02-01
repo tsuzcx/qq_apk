@@ -8,13 +8,13 @@ public abstract class dh
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eFp = "username".hashCode();
-  private static final int feZ = "championUrl".hashCode();
-  private static final int ffa = "championMotto".hashCode();
+  private static final int eGY = "username".hashCode();
+  private static final int fgW = "championUrl".hashCode();
+  private static final int fgX = "championMotto".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eFm = true;
-  private boolean feX = true;
-  private boolean feY = true;
+  private boolean eGV = true;
+  private boolean fgU = true;
+  private boolean fgV = true;
   public String field_championMotto;
   public String field_championUrl;
   public String field_username;
@@ -32,7 +32,7 @@ public abstract class dh
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eFp != k) {
+      if (eGY != k) {
         break label60;
       }
       this.field_username = paramCursor.getString(i);
@@ -43,9 +43,9 @@ public abstract class dh
       break label20;
       break;
       label60:
-      if (feZ == k) {
+      if (fgW == k) {
         this.field_championUrl = paramCursor.getString(i);
-      } else if (ffa == k) {
+      } else if (fgX == k) {
         this.field_championMotto = paramCursor.getString(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
@@ -56,13 +56,13 @@ public abstract class dh
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eFm) {
+    if (this.eGV) {
       localContentValues.put("username", this.field_username);
     }
-    if (this.feX) {
+    if (this.fgU) {
       localContentValues.put("championUrl", this.field_championUrl);
     }
-    if (this.feY) {
+    if (this.fgV) {
       localContentValues.put("championMotto", this.field_championMotto);
     }
     if (this.systemRowid > 0L) {

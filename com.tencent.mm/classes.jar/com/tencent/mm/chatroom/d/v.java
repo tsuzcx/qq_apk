@@ -1,16 +1,16 @@
 package com.tencent.mm.chatroom.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.dot;
-import com.tencent.mm.protocal.protobuf.dou;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.dpq;
+import com.tencent.mm.protocal.protobuf.dpr;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class v
   extends n
@@ -25,16 +25,16 @@ public final class v
     AppMethodBeat.i(12495);
     b.a locala = new b.a();
     this.username = paramString2;
-    dot localdot = new dot();
-    localdot.FuL = paramString1;
-    localdot.HDa = paramString2;
-    locala.hNM = localdot;
-    locala.hNN = new dou();
+    dpq localdpq = new dpq();
+    localdpq.FNj = paramString1;
+    localdpq.HWN = paramString2;
+    locala.hQF = localdpq;
+    locala.hQG = new dpr();
     locala.uri = "/cgi-bin/micromsg-bin/transferchatroomowner";
     locala.funcId = 990;
-    locala.hNO = 0;
+    locala.hQH = 0;
     locala.respCmdId = 0;
-    this.rr = locala.aDC();
+    this.rr = locala.aDS();
     AppMethodBeat.o(12495);
   }
   
@@ -55,7 +55,7 @@ public final class v
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(12496);
-    ad.w("MicroMsg.NetSceneTransferChatRoomOwner", "errType = " + paramInt2 + " errCode " + paramInt3 + " errMsg " + paramString);
+    ae.w("MicroMsg.NetSceneTransferChatRoomOwner", "errType = " + paramInt2 + " errCode " + paramInt3 + " errMsg " + paramString);
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(12496);
   }

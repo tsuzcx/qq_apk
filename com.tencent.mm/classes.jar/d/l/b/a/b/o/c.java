@@ -5,7 +5,7 @@ import d.g.b.p;
 
 public final class c
 {
-  public static final boolean s(Throwable paramThrowable)
+  public static final boolean t(Throwable paramThrowable)
   {
     AppMethodBeat.i(61356);
     p.h(paramThrowable, "$this$isProcessCanceledException");

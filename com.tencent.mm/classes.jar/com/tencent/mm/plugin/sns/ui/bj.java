@@ -4,8 +4,8 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.text.format.DateFormat;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -15,22 +15,22 @@ import java.util.Map;
 
 public final class bj
 {
-  private static HashMap<Long, Long> osk;
-  private static HashMap<Long, String> osl;
-  private static Map<String, List<String>> sLk;
-  private static Map<String, List<String>> sLl;
+  private static HashMap<Long, Long> oyL;
+  private static HashMap<Long, String> oyM;
+  private static Map<String, List<String>> sWv;
+  private static Map<String, List<String>> sWw;
   
   static
   {
     AppMethodBeat.i(99442);
-    sLk = new HashMap();
-    sLl = new HashMap();
-    osk = new HashMap();
-    osl = new HashMap();
+    sWv = new HashMap();
+    sWw = new HashMap();
+    oyL = new HashMap();
+    oyM = new HashMap();
     AppMethodBeat.o(99442);
   }
   
-  public static CharSequence Ar(long paramLong)
+  public static CharSequence AP(long paramLong)
   {
     AppMethodBeat.i(99440);
     Object localObject = new GregorianCalendar();
@@ -38,7 +38,7 @@ public final class bj
     if ((l1 > 0L) && (l1 <= 86400000L)) {}
     for (int i = 1; i != 0; i = 0)
     {
-      localObject = aj.getContext().getResources().getString(2131759542);
+      localObject = ak.getContext().getResources().getString(2131759542);
       AppMethodBeat.o(99440);
       return localObject;
     }
@@ -56,11 +56,11 @@ public final class bj
     if ((paramLong >= l1 - l2 * 86400000L) && (paramLong < l3 + l4 * 86400000L)) {}
     for (i = 1; i != 0; i = 0)
     {
-      localObject = aj.getContext().getResources().getString(2131759508);
+      localObject = ak.getContext().getResources().getString(2131759508);
       AppMethodBeat.o(99440);
       return localObject;
     }
-    localObject = DateFormat.format(aj.getContext().getString(2131759580), paramLong);
+    localObject = DateFormat.format(ak.getContext().getString(2131759580), paramLong);
     AppMethodBeat.o(99440);
     return localObject;
   }
@@ -68,15 +68,15 @@ public final class bj
   public static String G(Context paramContext, String paramString1, String paramString2)
   {
     AppMethodBeat.i(99438);
-    if (sLl.get(paramString2) == null) {
-      bh(paramContext, paramString2);
+    if (sWw.get(paramString2) == null) {
+      bj(paramContext, paramString2);
     }
-    int i = bt.getInt(paramString1, 0);
-    paramString1 = (List)sLl.get(paramString2);
+    int i = bu.getInt(paramString1, 0);
+    paramString1 = (List)sWw.get(paramString2);
     if ((i >= paramString1.size()) || (paramString1.get(i) == null) || (((String)paramString1.get(i)).equals(""))) {
-      bh(paramContext, paramString2);
+      bj(paramContext, paramString2);
     }
-    paramContext = (List)sLl.get(paramString2);
+    paramContext = (List)sWw.get(paramString2);
     if (i < paramContext.size())
     {
       paramContext = (String)paramContext.get(i);
@@ -139,7 +139,7 @@ public final class bj
     return paramContext;
   }
   
-  private static void bh(Context paramContext, String paramString)
+  private static void bj(Context paramContext, String paramString)
   {
     AppMethodBeat.i(99436);
     paramContext = paramContext.getResources().getStringArray(2130903094);
@@ -151,7 +151,7 @@ public final class bj
       localArrayList.add(paramContext[i]);
       i += 1;
     }
-    sLl.put(paramString, localArrayList);
+    sWw.put(paramString, localArrayList);
     AppMethodBeat.o(99436);
   }
   
@@ -160,8 +160,8 @@ public final class bj
     try
     {
       AppMethodBeat.i(99434);
-      osk.clear();
-      osl.clear();
+      oyL.clear();
+      oyM.clear();
       AppMethodBeat.o(99434);
       return;
     }
@@ -180,7 +180,7 @@ public final class bj
     return i;
   }
   
-  public static String l(Context paramContext, long paramLong)
+  public static String m(Context paramContext, long paramLong)
   {
     for (;;)
     {
@@ -197,17 +197,17 @@ public final class bj
           return paramContext;
         }
         l1 = localGregorianCalendar.getTimeInMillis();
-        if (osk.containsKey(Long.valueOf(paramLong))) {
-          if (l1 - ((Long)osk.get(Long.valueOf(paramLong))).longValue() < 60000L)
+        if (oyL.containsKey(Long.valueOf(paramLong))) {
+          if (l1 - ((Long)oyL.get(Long.valueOf(paramLong))).longValue() < 60000L)
           {
-            if (osl.containsKey(Long.valueOf(paramLong)))
+            if (oyM.containsKey(Long.valueOf(paramLong)))
             {
-              paramContext = (String)osl.get(Long.valueOf(paramLong));
+              paramContext = (String)oyM.get(Long.valueOf(paramLong));
               AppMethodBeat.o(99435);
             }
           }
           else {
-            osk.remove(Long.valueOf(paramLong));
+            oyL.remove(Long.valueOf(paramLong));
           }
         }
       }
@@ -222,8 +222,8 @@ public final class bj
           i = 1;
         }
         paramContext = paramContext.getResources().getQuantityString(2131623946, i, new Object[] { Integer.valueOf(i) });
-        osl.put(Long.valueOf(paramLong), paramContext);
-        osk.put(Long.valueOf(paramLong), Long.valueOf(l1));
+        oyM.put(Long.valueOf(paramLong), paramContext);
+        oyL.put(Long.valueOf(paramLong), Long.valueOf(l1));
         AppMethodBeat.o(99435);
       }
       else
@@ -238,8 +238,8 @@ public final class bj
             i = 1;
           }
           paramContext = paramContext.getResources().getQuantityString(2131623945, i, new Object[] { Integer.valueOf(i) });
-          osl.put(Long.valueOf(paramLong), paramContext);
-          osk.put(Long.valueOf(paramLong), Long.valueOf(l1));
+          oyM.put(Long.valueOf(paramLong), paramContext);
+          oyL.put(Long.valueOf(paramLong), Long.valueOf(l1));
           AppMethodBeat.o(99435);
         }
         else
@@ -248,8 +248,8 @@ public final class bj
           if ((l2 > 0L) && (l2 <= 86400000L))
           {
             paramContext = paramContext.getString(2131759551);
-            osl.put(Long.valueOf(paramLong), paramContext);
-            osk.put(Long.valueOf(paramLong), Long.valueOf(l1));
+            oyM.put(Long.valueOf(paramLong), paramContext);
+            oyL.put(Long.valueOf(paramLong), Long.valueOf(l1));
             AppMethodBeat.o(99435);
           }
           else
@@ -260,8 +260,8 @@ public final class bj
               i = 1;
             }
             paramContext = paramContext.getResources().getQuantityString(2131623947, i, new Object[] { Integer.valueOf(i) });
-            osl.put(Long.valueOf(paramLong), paramContext);
-            osk.put(Long.valueOf(paramLong), Long.valueOf(l1));
+            oyM.put(Long.valueOf(paramLong), paramContext);
+            oyL.put(Long.valueOf(paramLong), Long.valueOf(l1));
             AppMethodBeat.o(99435);
           }
         }
@@ -269,7 +269,7 @@ public final class bj
     }
   }
   
-  private static CharSequence m(Context paramContext, long paramLong)
+  private static CharSequence n(Context paramContext, long paramLong)
   {
     AppMethodBeat.i(99431);
     paramContext = DateFormat.format(paramContext.getString(2131759529), paramLong);
@@ -277,7 +277,7 @@ public final class bj
     return paramContext;
   }
   
-  public static String p(Context paramContext, long paramLong)
+  public static String q(Context paramContext, long paramLong)
   {
     int n = 0;
     AppMethodBeat.i(99432);
@@ -342,7 +342,7 @@ public final class bj
       {
         if (m != 0)
         {
-          paramContext = (String)m(paramContext, paramLong);
+          paramContext = (String)n(paramContext, paramLong);
           AppMethodBeat.o(99432);
           return paramContext;
           k = 0;
@@ -361,7 +361,7 @@ public final class bj
         }
         if (i != 0)
         {
-          paramContext = paramContext.getString(2131759551) + " " + (String)m(paramContext, paramLong);
+          paramContext = paramContext.getString(2131759551) + " " + (String)n(paramContext, paramLong);
           AppMethodBeat.o(99432);
           return paramContext;
         }
@@ -380,7 +380,7 @@ public final class bj
               localObject = str + " " + localCalendar.get(1);
             }
           }
-          paramContext = (String)localObject + " " + (String)m(paramContext, paramLong);
+          paramContext = (String)localObject + " " + (String)n(paramContext, paramLong);
           AppMethodBeat.o(99432);
           return paramContext;
         }
@@ -390,7 +390,7 @@ public final class bj
     }
   }
   
-  public static String q(Context paramContext, long paramLong)
+  public static String r(Context paramContext, long paramLong)
   {
     int n = 0;
     AppMethodBeat.i(99433);
@@ -452,7 +452,7 @@ public final class bj
       {
         if (m != 0)
         {
-          paramContext = (String)m(paramContext, paramLong);
+          paramContext = (String)n(paramContext, paramLong);
           AppMethodBeat.o(99433);
           return paramContext;
           k = 0;
@@ -474,7 +474,7 @@ public final class bj
         }
         if (i != 0)
         {
-          paramContext = paramContext.getString(2131759551) + " " + (String)m(paramContext, paramLong);
+          paramContext = paramContext.getString(2131759551) + " " + (String)n(paramContext, paramLong);
           AppMethodBeat.o(99433);
           return paramContext;
         }
@@ -491,7 +491,7 @@ public final class bj
             localObject = str + " " + localCalendar.get(1);
           }
         }
-        paramContext = (String)localObject + " " + (String)m(paramContext, paramLong);
+        paramContext = (String)localObject + " " + (String)n(paramContext, paramLong);
         AppMethodBeat.o(99433);
         return paramContext;
       }
@@ -502,7 +502,7 @@ public final class bj
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.bj
  * JD-Core Version:    0.7.0.1
  */

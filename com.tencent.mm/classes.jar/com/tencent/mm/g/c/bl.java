@@ -8,11 +8,11 @@ public abstract class bl
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eTG = "desc".hashCode();
-  private static final int eTK = "groupID".hashCode();
+  private static final int eVr = "desc".hashCode();
+  private static final int eVv = "groupID".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eTC = true;
-  private boolean eTJ = true;
+  private boolean eVn = true;
+  private boolean eVu = true;
   public String field_desc;
   public String field_groupID;
   
@@ -29,7 +29,7 @@ public abstract class bl
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eTK != k) {
+      if (eVv != k) {
         break label60;
       }
       this.field_groupID = paramCursor.getString(i);
@@ -40,7 +40,7 @@ public abstract class bl
       break label20;
       break;
       label60:
-      if (eTG == k) {
+      if (eVr == k) {
         this.field_desc = paramCursor.getString(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
@@ -51,10 +51,10 @@ public abstract class bl
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eTJ) {
+    if (this.eVu) {
       localContentValues.put("groupID", this.field_groupID);
     }
-    if (this.eTC) {
+    if (this.eVn) {
       localContentValues.put("desc", this.field_desc);
     }
     if (this.systemRowid > 0L) {

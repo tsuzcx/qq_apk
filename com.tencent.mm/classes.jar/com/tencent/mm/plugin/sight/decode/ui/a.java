@@ -4,7 +4,7 @@ import android.view.View.OnClickListener;
 
 public abstract interface a
 {
-  public abstract void dQn();
+  public abstract void dTK();
   
   public abstract int getVideoTotalTime();
   

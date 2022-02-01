@@ -55,7 +55,7 @@ public class ReaderEngine
   
   public boolean fileEnginePreLoad(Context paramContext, TBSOneCallback paramTBSOneCallback)
   {
-    AppMethodBeat.i(190612);
+    AppMethodBeat.i(192382);
     paramContext = TBSOneManager.getDefaultInstance(paramContext);
     paramContext.setPolicy(TBSOneManager.Policy.BUILTIN_FIRST);
     boolean bool1 = false;
@@ -75,7 +75,7 @@ public class ReaderEngine
       label48:
       break label48;
     }
-    AppMethodBeat.o(190612);
+    AppMethodBeat.o(192382);
     return bool1;
   }
   
@@ -217,28 +217,28 @@ public class ReaderEngine
   
   public void report(int paramInt, String paramString, Throwable paramThrowable)
   {
-    AppMethodBeat.i(190611);
+    AppMethodBeat.i(192381);
     try
     {
       StatisticReport localStatisticReport = StatisticReport.create("tbs_sdk_file_stat", paramInt);
       localStatisticReport.setDescription(paramString, paramThrowable);
       localStatisticReport.report();
-      AppMethodBeat.o(190611);
+      AppMethodBeat.o(192381);
       return;
     }
     catch (Throwable paramString)
     {
-      AppMethodBeat.o(190611);
+      AppMethodBeat.o(192381);
     }
   }
   
   public void setConfigSetting(Map paramMap)
   {
-    AppMethodBeat.i(190613);
+    AppMethodBeat.i(192383);
     if (this.a != null) {
       this.a.initSettings(paramMap);
     }
-    AppMethodBeat.o(190613);
+    AppMethodBeat.o(192383);
   }
 }
 

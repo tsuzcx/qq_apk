@@ -5,7 +5,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class d
   extends l
 {
-  public final String aiI(int paramInt)
+  public final String ajr(int paramInt)
   {
     AppMethodBeat.i(157180);
     String str = dd(paramInt, "pdfreader.apk");
@@ -13,24 +13,27 @@ public final class d
     return str;
   }
   
-  public final String gdf()
+  public final int ajs(int paramInt)
   {
-    return "com.tencent.xweb.xfiles.pdf.PDFReader";
-  }
-  
-  public final String gdg()
-  {
-    return "com.tencent.xweb.xfiles.pdf.PDFReaderEnvironment";
-  }
-  
-  public final int gdh()
-  {
+    if (paramInt == 1) {
+      return 214;
+    }
     return 100;
   }
   
   public final String getPluginName()
   {
     return "XFilesPDFReader";
+  }
+  
+  public final String ghI()
+  {
+    return "com.tencent.xweb.xfiles.pdf.PDFReader";
+  }
+  
+  public final String ghJ()
+  {
+    return "com.tencent.xweb.xfiles.pdf.PDFReaderEnvironment";
   }
 }
 

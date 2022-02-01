@@ -6,16 +6,16 @@ import java.util.Arrays;
 public final class a
   extends d.l.b.a.b.e.b.a
 {
-  public static final a NnR;
-  public static final a NnS;
-  public static final a NnT;
+  public static final a NKX;
+  public static final a NKY;
+  public static final a NKZ;
   
   static
   {
     AppMethodBeat.i(59048);
-    NnT = new a((byte)0);
-    NnR = new a(new int[] { 1, 0, 7 });
-    NnS = new a(new int[0]);
+    NKZ = new a((byte)0);
+    NKX = new a(new int[] { 1, 0, 7 });
+    NKY = new a(new int[0]);
     AppMethodBeat.o(59048);
   }
   
@@ -26,10 +26,10 @@ public final class a
     AppMethodBeat.o(59047);
   }
   
-  public final boolean gqj()
+  public final boolean guL()
   {
     AppMethodBeat.i(59046);
-    boolean bool = a((d.l.b.a.b.e.b.a)NnR);
+    boolean bool = a((d.l.b.a.b.e.b.a)NKX);
     AppMethodBeat.o(59046);
     return bool;
   }
@@ -38,7 +38,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.e.a.a
  * JD-Core Version:    0.7.0.1
  */

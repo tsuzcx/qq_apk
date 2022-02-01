@@ -1,16 +1,16 @@
 package com.tencent.mm.chatroom.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.dcc;
-import com.tencent.mm.protocal.protobuf.dcd;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.dcw;
+import com.tencent.mm.protocal.protobuf.dcx;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class u
   extends n
@@ -23,16 +23,16 @@ public final class u
   {
     AppMethodBeat.i(12492);
     b.a locala = new b.a();
-    dcc localdcc = new dcc();
-    localdcc.FuL = paramString1;
-    localdcc.Gwj = paramString2;
-    locala.hNM = localdcc;
-    locala.hNN = new dcd();
+    dcw localdcw = new dcw();
+    localdcw.FNj = paramString1;
+    localdcw.GPI = paramString2;
+    locala.hQF = localdcw;
+    locala.hQG = new dcx();
     locala.uri = "/cgi-bin/micromsg-bin/setchatroomannouncement";
     locala.funcId = 993;
-    locala.hNO = 0;
+    locala.hQH = 0;
     locala.respCmdId = 0;
-    this.rr = locala.aDC();
+    this.rr = locala.aDS();
     AppMethodBeat.o(12492);
   }
   
@@ -53,7 +53,7 @@ public final class u
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(12493);
-    ad.w("MicroMsg.NetSceneSetChatRoomAnnouncement", "errType = " + paramInt2 + " errCode " + paramInt3 + " errMsg " + paramString);
+    ae.w("MicroMsg.NetSceneSetChatRoomAnnouncement", "errType = " + paramInt2 + " errCode " + paramInt3 + " errMsg " + paramString);
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(12493);
   }

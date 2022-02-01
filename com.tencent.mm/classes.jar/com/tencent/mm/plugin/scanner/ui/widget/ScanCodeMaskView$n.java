@@ -5,7 +5,7 @@ import android.animation.Animator.AnimatorListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/scanner/ui/widget/ScanCodeMaskView$showSuccessView$3", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "plugin-scan_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/scanner/ui/widget/ScanCodeMaskView$showSuccessView$3", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "plugin-scan_release"})
 public final class ScanCodeMaskView$n
   implements Animator.AnimatorListener
 {
@@ -14,7 +14,7 @@ public final class ScanCodeMaskView$n
   public final void onAnimationEnd(Animator paramAnimator)
   {
     AppMethodBeat.i(170055);
-    ScanCodeMaskView.l(this.yxL);
+    ScanCodeMaskView.l(this.yNL);
     AppMethodBeat.o(170055);
   }
   

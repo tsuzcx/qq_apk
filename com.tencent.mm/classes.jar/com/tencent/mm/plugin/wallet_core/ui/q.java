@@ -6,18 +6,18 @@ import android.graphics.Color;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.ui.span.o;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public final class q
   extends o
 {
-  private a DhZ;
+  private a DzD;
   
   public q(int paramInt, a parama)
   {
     super(paramInt, null);
-    this.DhZ = parama;
+    this.DzD = parama;
   }
   
   public q(a parama)
@@ -29,8 +29,8 @@ public final class q
   {
     this(2, parama);
     AppMethodBeat.i(71104);
-    if (!bt.isNullOrNil(paramString)) {
-      setColor(Color.parseColor(paramString), aj.getContext().getResources().getColor(2131100913));
+    if (!bu.isNullOrNil(paramString)) {
+      setColor(Color.parseColor(paramString), ak.getContext().getResources().getColor(2131100913));
     }
     AppMethodBeat.o(71104);
   }
@@ -38,8 +38,8 @@ public final class q
   public final void onClick(View paramView)
   {
     AppMethodBeat.i(71105);
-    if (this.DhZ != null) {
-      this.DhZ.dN(paramView);
+    if (this.DzD != null) {
+      this.DzD.dN(paramView);
     }
     AppMethodBeat.o(71105);
   }
@@ -47,7 +47,7 @@ public final class q
   public final void setColorConfig(int paramInt)
   {
     AppMethodBeat.i(71106);
-    Context localContext = aj.getContext();
+    Context localContext = ak.getContext();
     super.setColorConfig(paramInt);
     if (paramInt == 5) {
       setColor(localContext.getResources().getColor(2131101179), localContext.getResources().getColor(2131100913));
@@ -62,7 +62,7 @@ public final class q
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.ui.q
  * JD-Core Version:    0.7.0.1
  */

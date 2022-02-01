@@ -8,19 +8,19 @@ import java.util.Iterator;
 final class i$a<T>
   implements d, Iterator<T>
 {
-  private final Iterator<T> NGg;
+  private final Iterator<T> Odm;
   
   public i$a(T[] paramArrayOfT)
   {
     AppMethodBeat.i(61394);
-    this.NGg = b.ae(paramArrayOfT);
+    this.Odm = b.ad(paramArrayOfT);
     AppMethodBeat.o(61394);
   }
   
   public final boolean hasNext()
   {
     AppMethodBeat.i(61391);
-    boolean bool = this.NGg.hasNext();
+    boolean bool = this.Odm.hasNext();
     AppMethodBeat.o(61391);
     return bool;
   }
@@ -28,7 +28,7 @@ final class i$a<T>
   public final T next()
   {
     AppMethodBeat.i(61392);
-    Object localObject = this.NGg.next();
+    Object localObject = this.Odm.next();
     AppMethodBeat.o(61392);
     return localObject;
   }

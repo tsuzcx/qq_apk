@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.appbrand.jsapi.nfc.hce.a;
 
 public abstract interface a
 {
-  public abstract void dm(String paramString1, String paramString2);
+  public abstract void jdMethod_do(String paramString1, String paramString2);
   
-  public abstract void dn(String paramString1, String paramString2);
+  public abstract void dp(String paramString1, String paramString2);
 }
 
 

@@ -6,18 +6,18 @@ import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/view/TestPreloadPreview$TestHolder;", "Landroid/support/v7/widget/RecyclerView$ViewHolder;", "itemView", "Landroid/view/View;", "(Landroid/view/View;)V", "mediaIdTv", "Landroid/widget/TextView;", "kotlin.jvm.PlatformType", "getMediaIdTv", "()Landroid/widget/TextView;", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/view/TestPreloadPreview$TestHolder;", "Landroid/support/v7/widget/RecyclerView$ViewHolder;", "itemView", "Landroid/view/View;", "(Landroid/view/View;)V", "mediaIdTv", "Landroid/widget/TextView;", "kotlin.jvm.PlatformType", "getMediaIdTv", "()Landroid/widget/TextView;", "plugin-finder_release"})
 public final class TestPreloadPreview$d
   extends RecyclerView.w
 {
-  final TextView sXj;
+  final TextView tix;
   
   public TestPreloadPreview$d(View paramView)
   {
     super(paramView);
-    AppMethodBeat.i(205275);
-    this.sXj = ((TextView)paramView.findViewById(2131307864));
-    AppMethodBeat.o(205275);
+    AppMethodBeat.i(205917);
+    this.tix = ((TextView)paramView.findViewById(2131307864));
+    AppMethodBeat.o(205917);
   }
 }
 

@@ -19,14 +19,14 @@ import com.tencent.mm.ui.widget.a.d.a;
 public class AlertActivity
   extends AppCompatActivity
 {
-  private static d.a EVU;
-  private boolean ISt = false;
-  private DialogInterface.OnDismissListener dIn;
-  private DialogInterface.OnCancelListener yps;
+  private static d.a Fop;
+  private boolean Jnb = false;
+  private DialogInterface.OnDismissListener dJr;
+  private DialogInterface.OnCancelListener yFr;
   
   public static void a(d.a parama)
   {
-    EVU = parama;
+    Fop = parama;
   }
   
   public void onCreate(Bundle paramBundle)
@@ -38,14 +38,14 @@ public class AlertActivity
     if (Build.VERSION.SDK_INT >= 21) {
       getWindow().setStatusBarColor(getResources().getColor(17170445));
     }
-    this.ISt = getIntent().getBooleanExtra("dialog_show_top", false);
+    this.Jnb = getIntent().getBooleanExtra("dialog_show_top", false);
     Window localWindow;
-    if (EVU != null)
+    if (Fop != null)
     {
-      EVU.mContext = this;
-      this.dIn = EVU.KWr.XM;
-      this.yps = EVU.KWr.XL;
-      EVU.a(new DialogInterface.OnDismissListener()
+      Fop.mContext = this;
+      this.dJr = Fop.LsP.XM;
+      this.yFr = Fop.LsP.XL;
+      Fop.a(new DialogInterface.OnDismissListener()
       {
         public final void onDismiss(DialogInterface paramAnonymousDialogInterface)
         {
@@ -57,7 +57,7 @@ public class AlertActivity
           AppMethodBeat.o(159081);
         }
       });
-      EVU.e(new DialogInterface.OnCancelListener()
+      Fop.e(new DialogInterface.OnCancelListener()
       {
         public final void onCancel(DialogInterface paramAnonymousDialogInterface)
         {
@@ -69,8 +69,8 @@ public class AlertActivity
           AppMethodBeat.o(159082);
         }
       });
-      paramBundle = EVU.fMb();
-      if (this.ISt)
+      paramBundle = Fop.fQv();
+      if (this.Jnb)
       {
         localWindow = paramBundle.getWindow();
         if (localWindow != null)
@@ -102,7 +102,7 @@ public class AlertActivity
   {
     AppMethodBeat.i(159085);
     super.onDestroy();
-    EVU = null;
+    Fop = null;
     AppMethodBeat.o(159085);
   }
   

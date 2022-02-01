@@ -11,13 +11,13 @@ import android.util.Pair;
 import android.view.View;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.x;
-import com.tencent.mm.al.x.a;
-import com.tencent.mm.model.y;
-import com.tencent.mm.modelsimple.ab;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.x;
+import com.tencent.mm.ak.x.a;
+import com.tencent.mm.model.z;
+import com.tencent.mm.modelsimple.ac;
 import com.tencent.mm.opensdk.channel.MMessageActV2;
 import com.tencent.mm.opensdk.channel.MMessageActV2.Args;
 import com.tencent.mm.opensdk.modelbase.BaseResp;
@@ -27,29 +27,29 @@ import com.tencent.mm.opensdk.modelbiz.WXLaunchWxaRedirectingPage.Req;
 import com.tencent.mm.opensdk.modelmsg.WXAppExtendObject;
 import com.tencent.mm.opensdk.modelmsg.WXMediaMessage;
 import com.tencent.mm.opensdk.modelmsg.WXMediaMessage.IMediaObject;
-import com.tencent.mm.plugin.appbrand.ae.a.a.a;
-import com.tencent.mm.plugin.appbrand.service.o.a;
+import com.tencent.mm.plugin.appbrand.ac.a.a.a;
+import com.tencent.mm.plugin.appbrand.service.p.a;
 import com.tencent.mm.pluginsdk.g.a;
 import com.tencent.mm.pluginsdk.model.app.q;
 import com.tencent.mm.pluginsdk.ui.AutoLoginActivity;
 import com.tencent.mm.pluginsdk.ui.AutoLoginActivity.a;
-import com.tencent.mm.protocal.protobuf.dpw;
-import com.tencent.mm.protocal.protobuf.dpx;
+import com.tencent.mm.protocal.protobuf.dqt;
+import com.tencent.mm.protocal.protobuf.dqu;
 import com.tencent.mm.protocal.protobuf.du;
 import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.LinkedList;
 
 public class WXBizEntryActivity
   extends AutoLoginActivity
 {
-  private c<com.tencent.mm.plugin.appbrand.service.d> nNh = null;
-  private int nNi;
-  private boolean nNj;
-  private boolean nNk = false;
+  private c<com.tencent.mm.plugin.appbrand.service.d> nSM = null;
+  private int nSN;
+  private boolean nSO;
+  private boolean nSP = false;
   
   private static void a(Bundle paramBundle, BaseResp paramBaseResp, com.tencent.mm.pluginsdk.model.app.g paramg)
   {
@@ -58,9 +58,9 @@ public class WXBizEntryActivity
     paramBaseResp = new MMessageActV2.Args();
     paramBaseResp.targetPkgName = paramg.field_packageName;
     paramBaseResp.bundle = paramBundle;
-    q.bb(paramBundle);
     q.bc(paramBundle);
-    MMessageActV2.send(aj.getContext(), paramBaseResp);
+    q.bd(paramBundle);
+    MMessageActV2.send(ak.getContext(), paramBaseResp);
     AppMethodBeat.o(22211);
   }
   
@@ -70,7 +70,7 @@ public class WXBizEntryActivity
     com.tencent.mm.pluginsdk.model.app.g localg = com.tencent.mm.pluginsdk.model.app.h.m(getIntent().getStringExtra("key_app_id"), true, false);
     if (localg == null)
     {
-      ad.e("MicroMsg.WXBizEntryActivity", "launchMiniProgramBackToApp info is null");
+      ae.e("MicroMsg.WXBizEntryActivity", "launchMiniProgramBackToApp info is null");
       AppMethodBeat.o(22210);
       return;
     }
@@ -86,11 +86,11 @@ public class WXBizEntryActivity
       AppMethodBeat.o(22210);
       return;
       localResp = new WXLaunchMiniProgram.Resp(localBundle);
-      ((WXLaunchMiniProgram.Resp)localResp).extMsg = bt.bI(paramString1, "{}");
+      ((WXLaunchMiniProgram.Resp)localResp).extMsg = bu.bI(paramString1, "{}");
     }
   }
   
-  private static void eF(String paramString1, String paramString2)
+  private static void eI(String paramString1, String paramString2)
   {
     AppMethodBeat.i(22212);
     paramString1 = com.tencent.mm.pluginsdk.model.app.h.m(paramString1, true, false);
@@ -104,18 +104,18 @@ public class WXBizEntryActivity
     localObject = new WXMediaMessage((WXMediaMessage.IMediaObject)localObject);
     ((WXMediaMessage)localObject).sdkVer = 637928960;
     ((WXMediaMessage)localObject).messageExt = paramString2;
-    com.tencent.mm.pluginsdk.model.app.h.a(aj.getContext(), paramString1.field_appId, (WXMediaMessage)localObject, 2, null, null);
+    com.tencent.mm.pluginsdk.model.app.h.a(ak.getContext(), paramString1.field_appId, (WXMediaMessage)localObject, 2, null, null);
     AppMethodBeat.o(22212);
   }
   
-  private void jd(final boolean paramBoolean)
+  private void jc(final boolean paramBoolean)
   {
     AppMethodBeat.i(22213);
     runOnUiThread(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(193147);
+        AppMethodBeat.i(186405);
         View localView = WXBizEntryActivity.this.findViewById(2131302340);
         if (localView != null) {
           if (!paramBoolean) {
@@ -126,7 +126,7 @@ public class WXBizEntryActivity
         for (int i = 0;; i = 8)
         {
           localView.setVisibility(i);
-          AppMethodBeat.o(193147);
+          AppMethodBeat.o(186405);
           return;
         }
       }
@@ -137,36 +137,36 @@ public class WXBizEntryActivity
   public final void a(final AutoLoginActivity.a parama, final Intent paramIntent)
   {
     AppMethodBeat.i(22209);
-    ad.i("MicroMsg.WXBizEntryActivity", "postLogin, loginResult = ".concat(String.valueOf(parama)));
+    ae.i("MicroMsg.WXBizEntryActivity", "postLogin, loginResult = ".concat(String.valueOf(parama)));
     if (getIntent() != null) {
-      this.nNi = getIntent().getIntExtra("key_command_id", 0);
+      this.nSN = getIntent().getIntExtra("key_command_id", 0);
     }
-    switch (WXBizEntryActivity.2.nNm[parama.ordinal()])
+    switch (WXBizEntryActivity.2.nSR[parama.ordinal()])
     {
     default: 
-      ad.e("MicroMsg.WXBizEntryActivity", "postLogin, unknown login result = ".concat(String.valueOf(parama)));
+      ae.e("MicroMsg.WXBizEntryActivity", "postLogin, unknown login result = ".concat(String.valueOf(parama)));
     }
     for (;;)
     {
-      f.yO(3);
+      f.yX(3);
       finish();
       AppMethodBeat.o(22209);
       return;
-      ad.i("MicroMsg.WXBizEntryActivity", "req type = %d", new Object[] { Integer.valueOf(this.nNi) });
-      if ((f.bMd()) && (this.nNj))
+      ae.i("MicroMsg.WXBizEntryActivity", "req type = %d", new Object[] { Integer.valueOf(this.nSN) });
+      if ((f.bNb()) && (this.nSO))
       {
-        ad.i("MicroMsg.WXBizEntryActivity", "Safe Launch WXBizEntry dealRequest isInConsumedSet finished");
+        ae.i("MicroMsg.WXBizEntryActivity", "Safe Launch WXBizEntry dealRequest isInConsumedSet finished");
         finish();
       }
       for (;;)
       {
-        f.yO(4);
+        f.yX(4);
         AppMethodBeat.o(22209);
         return;
         Object localObject1;
         Object localObject2;
         final String str1;
-        switch (this.nNi)
+        switch (this.nSN)
         {
         case 10: 
         case 18: 
@@ -180,11 +180,11 @@ public class WXBizEntryActivity
           finish();
           break;
         case 9: 
-          com.tencent.mm.bs.d.c(this, "card", ".ui.CardAddEntranceUI", getIntent());
+          com.tencent.mm.br.d.c(this, "card", ".ui.CardAddEntranceUI", getIntent());
           finish();
           break;
         case 16: 
-          com.tencent.mm.bs.d.c(this, "card", ".ui.CardListSelectedUI", getIntent());
+          com.tencent.mm.br.d.c(this, "card", ".ui.CardListSelectedUI", getIntent());
           finish();
           break;
         case 7: 
@@ -192,42 +192,42 @@ public class WXBizEntryActivity
           parama = getIntent();
           parama.setClassName(this, "com.tencent.mm.ui.CheckCanSubscribeBizUI");
           parama = new com.tencent.mm.hellhoundlib.b.a().bc(parama);
-          com.tencent.mm.hellhoundlib.a.a.a(this, parama.ahp(), "com/tencent/mm/plugin/base/stub/WXBizEntryActivity", "dealRequest", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          startActivity((Intent)parama.mq(0));
+          com.tencent.mm.hellhoundlib.a.a.a(this, parama.ahE(), "com/tencent/mm/plugin/base/stub/WXBizEntryActivity", "dealRequest", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          startActivity((Intent)parama.mt(0));
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/base/stub/WXBizEntryActivity", "dealRequest", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
           finish();
           break;
         case 11: 
           parama = getIntent();
           parama.putExtra("device_type", 1);
-          com.tencent.mm.bs.d.c(this, "exdevice", ".ui.ExdeviceRankInfoUI", parama);
+          com.tencent.mm.br.d.c(this, "exdevice", ".ui.ExdeviceRankInfoUI", parama);
           finish();
           break;
         case 13: 
           parama = getIntent();
           parama.putExtra("key_static_from_scene", 100001);
-          com.tencent.mm.bs.d.c(this, "luckymoney", ".ui.LuckyMoneyBusiReceiveUI", parama);
+          com.tencent.mm.br.d.c(this, "luckymoney", ".ui.LuckyMoneyBusiReceiveUI", parama);
           finish();
           break;
         case 14: 
         case 15: 
           new a(this, getIntent().getStringExtra("key_app_id"), getIntent().getStringExtra("open_id"), new d.a()
           {
-            public final void jc(boolean paramAnonymousBoolean)
+            public final void jb(boolean paramAnonymousBoolean)
             {
               AppMethodBeat.i(22189);
               if (paramAnonymousBoolean) {
-                com.tencent.mm.bs.d.c(WXBizEntryActivity.this, "game", ".ui.CreateOrJoinChatroomUI", WXBizEntryActivity.this.getIntent());
+                com.tencent.mm.br.d.c(WXBizEntryActivity.this, "game", ".ui.CreateOrJoinChatroomUI", WXBizEntryActivity.this.getIntent());
               }
               for (;;)
               {
                 WXBizEntryActivity.this.finish();
                 AppMethodBeat.o(22189);
                 return;
-                ad.e("MicroMsg.WXBizEntryActivity", "openIdCheck false");
+                ae.e("MicroMsg.WXBizEntryActivity", "openIdCheck false");
               }
             }
-          }).bMa();
+          }).bMY();
           break;
         case 17: 
           try
@@ -248,28 +248,28 @@ public class WXBizEntryActivity
           }
           catch (Exception parama)
           {
-            ad.e("MicroMsg.WXBizEntryActivity", "get url from intent failed : %s", new Object[] { parama.getMessage() });
+            ae.e("MicroMsg.WXBizEntryActivity", "get url from intent failed : %s", new Object[] { parama.getMessage() });
           }
           break;
         case 12: 
           try
           {
             parama = getIntent().getData();
-            if ((parama != null) && (com.tencent.mm.pluginsdk.g.aLk(parama.toString())))
+            if ((parama != null) && (com.tencent.mm.pluginsdk.g.aMG(parama.toString())))
             {
-              y.aBq().AG("key_data_center_session_id");
+              z.aBG().Bq("key_data_center_session_id");
               com.tencent.mm.pluginsdk.g.a(this, parama.toString(), getIntent().getIntExtra("translate_link_scene", 1), new g.a()
               {
                 public final void a(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, n paramAnonymousn, boolean paramAnonymousBoolean)
                 {
                   AppMethodBeat.i(22197);
-                  ad.i("MicroMsg.WXBizEntryActivity", "DeepLinkHelper.DeepLinkCallback, %d, %d, %s, %b", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString, Boolean.valueOf(paramAnonymousBoolean) });
-                  if ((paramAnonymousn != null) && (paramAnonymousInt1 != 0) && (paramAnonymousInt2 != 0) && ((paramAnonymousn instanceof ab)))
+                  ae.i("MicroMsg.WXBizEntryActivity", "DeepLinkHelper.DeepLinkCallback, %d, %d, %s, %b", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString, Boolean.valueOf(paramAnonymousBoolean) });
+                  if ((paramAnonymousn != null) && (paramAnonymousInt1 != 0) && (paramAnonymousInt2 != 0) && ((paramAnonymousn instanceof ac)))
                   {
-                    paramAnonymousString = ((ab)paramAnonymousn).aLd();
+                    paramAnonymousString = ((ac)paramAnonymousn).aLA();
                     if ((paramAnonymousString != null) && (!WXBizEntryActivity.this.isFinishing()))
                     {
-                      com.tencent.mm.ui.base.h.a(WXBizEntryActivity.this, bt.bI(paramAnonymousString.HDY, WXBizEntryActivity.this.getString(2131761811)), WXBizEntryActivity.this.getString(2131755906), WXBizEntryActivity.this.getString(2131755835), false, new DialogInterface.OnClickListener()
+                      com.tencent.mm.ui.base.h.a(WXBizEntryActivity.this, bu.bI(paramAnonymousString.HXL, WXBizEntryActivity.this.getString(2131761811)), WXBizEntryActivity.this.getString(2131755906), WXBizEntryActivity.this.getString(2131755835), false, new DialogInterface.OnClickListener()
                       {
                         public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
                         {
@@ -296,7 +296,7 @@ public class WXBizEntryActivity
           {
             for (;;)
             {
-              ad.e("MicroMsg.WXBizEntryActivity", "post login get url from intent failed : %s", new Object[] { parama.getMessage() });
+              ae.e("MicroMsg.WXBizEntryActivity", "post login get url from intent failed : %s", new Object[] { parama.getMessage() });
               parama = null;
             }
           }
@@ -304,21 +304,21 @@ public class WXBizEntryActivity
           try
           {
             parama = getIntent().getData();
-            if ((parama != null) && (com.tencent.mm.pluginsdk.g.aLl(parama.toString())))
+            if ((parama != null) && (com.tencent.mm.pluginsdk.g.aMH(parama.toString())))
             {
-              y.aBq().AG("key_data_center_session_id");
+              z.aBG().Bq("key_data_center_session_id");
               com.tencent.mm.pluginsdk.g.a(this, parama.toString(), getIntent().getIntExtra("translate_link_scene", 1), new g.a()
               {
                 public final void a(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, n paramAnonymousn, boolean paramAnonymousBoolean)
                 {
                   AppMethodBeat.i(22199);
-                  ad.i("MicroMsg.WXBizEntryActivity", "DeepLinkHelper.DeepLinkCallback, %d, %d, %s, %b", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString, Boolean.valueOf(paramAnonymousBoolean) });
-                  if ((paramAnonymousn != null) && (paramAnonymousInt1 != 0) && (paramAnonymousInt2 != 0) && ((paramAnonymousn instanceof ab)))
+                  ae.i("MicroMsg.WXBizEntryActivity", "DeepLinkHelper.DeepLinkCallback, %d, %d, %s, %b", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString, Boolean.valueOf(paramAnonymousBoolean) });
+                  if ((paramAnonymousn != null) && (paramAnonymousInt1 != 0) && (paramAnonymousInt2 != 0) && ((paramAnonymousn instanceof ac)))
                   {
-                    paramAnonymousString = ((ab)paramAnonymousn).aLd();
+                    paramAnonymousString = ((ac)paramAnonymousn).aLA();
                     if ((paramAnonymousString != null) && (!WXBizEntryActivity.this.isFinishing()))
                     {
-                      com.tencent.mm.ui.base.h.a(WXBizEntryActivity.this, bt.bI(paramAnonymousString.HDY, WXBizEntryActivity.this.getString(2131761811)), WXBizEntryActivity.this.getString(2131755906), WXBizEntryActivity.this.getString(2131755835), false, new DialogInterface.OnClickListener()
+                      com.tencent.mm.ui.base.h.a(WXBizEntryActivity.this, bu.bI(paramAnonymousString.HXL, WXBizEntryActivity.this.getString(2131761811)), WXBizEntryActivity.this.getString(2131755906), WXBizEntryActivity.this.getString(2131755835), false, new DialogInterface.OnClickListener()
                       {
                         public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
                         {
@@ -345,7 +345,7 @@ public class WXBizEntryActivity
           {
             for (;;)
             {
-              ad.e("MicroMsg.WXBizEntryActivity", "post login get url from intent failed : %s", new Object[] { parama.getMessage() });
+              ae.e("MicroMsg.WXBizEntryActivity", "post login get url from intent failed : %s", new Object[] { parama.getMessage() });
               parama = null;
             }
           }
@@ -361,9 +361,9 @@ public class WXBizEntryActivity
               if (getIntent().getBooleanExtra("key_launch_mini_program_is_used_token", false))
               {
                 str1 = getIntent().getStringExtra("key_launch_mini_program_token");
-                paramIntent = com.tencent.mm.plugin.ext.b.crZ().afG(str1);
+                paramIntent = com.tencent.mm.plugin.ext.b.ctB().agC(str1);
                 if (paramIntent == null) {
-                  com.tencent.mm.ui.base.h.a(this, bt.nullAsNil(getString(2131760671)), getString(2131755906), getString(2131755835), false, new DialogInterface.OnClickListener()
+                  com.tencent.mm.ui.base.h.a(this, bu.nullAsNil(getString(2131760671)), getString(2131755906), getString(2131755835), false, new DialogInterface.OnClickListener()
                   {
                     public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
                     {
@@ -381,7 +381,7 @@ public class WXBizEntryActivity
           {
             for (;;)
             {
-              ad.e("MicroMsg.WXBizEntryActivity", "get data from intent for launch wxminiprogram failed : %s", new Object[] { parama.getMessage() });
+              ae.e("MicroMsg.WXBizEntryActivity", "get data from intent for launch wxminiprogram failed : %s", new Object[] { parama.getMessage() });
               parama = null;
             }
             localObject2 = paramIntent.field_username;
@@ -390,8 +390,8 @@ public class WXBizEntryActivity
               paramIntent = ((String)localObject2).substring(0, ((String)localObject2).lastIndexOf("@app"));
             }
             paramIntent = ((String)localObject1).replace(str1, paramIntent);
-            ad.i("MicroMsg.WXBizEntryActivity", "launchWXMiniprogramWithToken, url with username=".concat(String.valueOf(paramIntent)));
-            f.yO(5);
+            ae.i("MicroMsg.WXBizEntryActivity", "launchWXMiniprogramWithToken, url with username=".concat(String.valueOf(paramIntent)));
+            f.yX(5);
             parama = parama.getQueryParameter("invokeData");
             final long l = System.currentTimeMillis();
             com.tencent.mm.pluginsdk.g.a(this, paramIntent, getIntent().getIntExtra("translate_link_scene", 1), new g.a()
@@ -399,22 +399,22 @@ public class WXBizEntryActivity
               public final void a(int paramAnonymousInt1, int paramAnonymousInt2, final String paramAnonymousString, n paramAnonymousn, boolean paramAnonymousBoolean)
               {
                 AppMethodBeat.i(22202);
-                ad.i("MicroMsg.WXBizEntryActivity", "launchWXMiniprogram, DeepLinkHelper.DeepLinkCallback, %d, %d, %s, %b", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString, Boolean.valueOf(paramAnonymousBoolean) });
+                ae.i("MicroMsg.WXBizEntryActivity", "launchWXMiniprogram, DeepLinkHelper.DeepLinkCallback, %d, %d, %s, %b", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString, Boolean.valueOf(paramAnonymousBoolean) });
                 WXBizEntryActivity.a(WXBizEntryActivity.this, paramAnonymousInt2, paramAnonymousn, (int)(System.currentTimeMillis() - l));
-                if ((paramAnonymousn != null) && (paramAnonymousInt1 != 0) && (paramAnonymousInt2 != 0) && ((paramAnonymousn instanceof ab)))
+                if ((paramAnonymousn != null) && (paramAnonymousInt1 != 0) && (paramAnonymousInt2 != 0) && ((paramAnonymousn instanceof ac)))
                 {
-                  f.yO(7);
-                  paramAnonymousString = ((ab)paramAnonymousn).aLd();
+                  f.yX(7);
+                  paramAnonymousString = ((ac)paramAnonymousn).aLA();
                   if ((paramAnonymousString != null) && (!WXBizEntryActivity.this.isFinishing()))
                   {
-                    com.tencent.mm.ui.base.h.a(WXBizEntryActivity.this, bt.bI(paramAnonymousString.HDY, WXBizEntryActivity.this.getString(2131761811)), WXBizEntryActivity.this.getString(2131755906), WXBizEntryActivity.this.getString(2131755835), false, new DialogInterface.OnClickListener()
+                    com.tencent.mm.ui.base.h.a(WXBizEntryActivity.this, bu.bI(paramAnonymousString.HXL, WXBizEntryActivity.this.getString(2131761811)), WXBizEntryActivity.this.getString(2131755906), WXBizEntryActivity.this.getString(2131755835), false, new DialogInterface.OnClickListener()
                     {
                       public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
                       {
                         AppMethodBeat.i(22201);
                         paramAnonymous2DialogInterface = WXBizEntryActivity.this;
-                        String str1 = WXBizEntryActivity.7.this.nNr;
-                        String str2 = paramAnonymousString.HDY;
+                        String str1 = WXBizEntryActivity.7.this.nSW;
+                        String str2 = paramAnonymousString.HXL;
                         if (WXBizEntryActivity.c(WXBizEntryActivity.this) == 29) {}
                         for (boolean bool = true;; bool = false)
                         {
@@ -432,7 +432,7 @@ public class WXBizEntryActivity
                   AppMethodBeat.o(22202);
                   return;
                 }
-                f.yO(6);
+                f.yX(6);
                 WXBizEntryActivity.this.finish();
                 AppMethodBeat.o(22202);
               }
@@ -451,13 +451,13 @@ public class WXBizEntryActivity
           {
             for (;;)
             {
-              ad.e("MicroMsg.WXBizEntryActivity", "get data from intent for launch fake native miniprogram failed : %s", new Object[] { parama.getMessage() });
+              ae.e("MicroMsg.WXBizEntryActivity", "get data from intent for launch fake native miniprogram failed : %s", new Object[] { parama.getMessage() });
               parama = null;
             }
           }
         case 30: 
           paramIntent = getIntent();
-          ((com.tencent.mm.plugin.appbrand.service.f)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.appbrand.service.f.class)).aYx();
+          ((com.tencent.mm.plugin.appbrand.service.f)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.appbrand.service.f.class)).aYS();
           String str2;
           for (;;)
           {
@@ -480,7 +480,7 @@ public class WXBizEntryActivity
                   break label1377;
                 }
                 localObject1 = "null";
-                ad.i("MicroMsg.WXBizEntryActivity", "dealRequest COMMAND_LAUNCH_WX_WXA_REDIRECTING_PAGE, deepLink[%s] translateLinkScene[%d], appPackage[%s | %s], req.ticket[%s]", new Object[] { localObject2, Integer.valueOf(i), str1, str2, localObject1 });
+                ae.i("MicroMsg.WXBizEntryActivity", "dealRequest COMMAND_LAUNCH_WX_WXA_REDIRECTING_PAGE, deepLink[%s] translateLinkScene[%d], appPackage[%s | %s], req.ticket[%s]", new Object[] { localObject2, Integer.valueOf(i), str1, str2, localObject1 });
                 if ((localObject2 != null) && (i > 0) && (!TextUtils.isEmpty(str1)) && (!TextUtils.isEmpty(str2)) && (paramIntent != null)) {
                   break label1386;
                 }
@@ -494,43 +494,43 @@ public class WXBizEntryActivity
             }
             catch (Exception parama)
             {
-              ad.printErrStackTrace("MicroMsg.WXBizEntryActivity", parama, "dealRequest COMMAND_LAUNCH_WX_WXA_REDIRECTING_PAGE", new Object[0]);
+              ae.printErrStackTrace("MicroMsg.WXBizEntryActivity", parama, "dealRequest COMMAND_LAUNCH_WX_WXA_REDIRECTING_PAGE", new Object[0]);
               finish();
             }
             localObject1 = paramIntent.invokeTicket;
           }
-          localObject1 = new dpw();
-          ((dpw)localObject1).link = ((Uri)localObject2).toString();
-          ((dpw)localObject1).scene = 1;
+          localObject1 = new dqt();
+          ((dqt)localObject1).link = ((Uri)localObject2).toString();
+          ((dqt)localObject1).scene = 1;
           localObject2 = new du();
           ((du)localObject2).signature = str2;
-          ((du)localObject2).pkf = str1;
-          ((dpw)localObject1).HDW.add(localObject2);
+          ((du)localObject2).pqK = str1;
+          ((dqt)localObject1).HXJ.add(localObject2);
           localObject2 = new b.a();
-          ((b.a)localObject2).hNM = ((com.tencent.mm.bx.a)localObject1);
-          ((b.a)localObject2).hNN = new dpx();
+          ((b.a)localObject2).hQF = ((com.tencent.mm.bw.a)localObject1);
+          ((b.a)localObject2).hQG = new dqu();
           ((b.a)localObject2).uri = "/cgi-bin/mmbiz-bin/translatelink";
           ((b.a)localObject2).funcId = 1200;
-          f.yP(3);
-          x.a(((b.a)localObject2).aDC(), new x.a()
+          f.yY(3);
+          x.a(((b.a)localObject2).aDS(), new x.a()
           {
-            public final int a(int paramAnonymousInt1, final int paramAnonymousInt2, final String paramAnonymousString, final com.tencent.mm.al.b paramAnonymousb, n paramAnonymousn)
+            public final int a(int paramAnonymousInt1, final int paramAnonymousInt2, final String paramAnonymousString, final com.tencent.mm.ak.b paramAnonymousb, n paramAnonymousn)
             {
-              AppMethodBeat.i(193146);
-              paramAnonymousb = (dpx)paramAnonymousb.hNL.hNQ;
+              AppMethodBeat.i(186404);
+              paramAnonymousb = (dqu)paramAnonymousb.hQE.hQJ;
               if ((paramAnonymousInt1 != 0) || (paramAnonymousInt2 != 0))
               {
-                ad.e("MicroMsg.WXBizEntryActivity", "doLaunchWxaRedirectingPage, with ticket[%s] hostAppId[%s], cgi failed, errType[%d] errCode[%d] errMsg[%s]", new Object[] { paramIntent.invokeTicket, parama, Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString });
-                f.yP(5);
-                aq.f(new Runnable()
+                ae.e("MicroMsg.WXBizEntryActivity", "doLaunchWxaRedirectingPage, with ticket[%s] hostAppId[%s], cgi failed, errType[%d] errCode[%d] errMsg[%s]", new Object[] { paramIntent.invokeTicket, parama, Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString });
+                f.yY(5);
+                ar.f(new Runnable()
                 {
                   public final void run()
                   {
-                    AppMethodBeat.i(193144);
+                    AppMethodBeat.i(186402);
                     String str;
                     if (paramAnonymousb != null)
                     {
-                      str = paramAnonymousb.HDY;
+                      str = paramAnonymousb.HXL;
                       if (!TextUtils.isEmpty(str)) {
                         break label114;
                       }
@@ -547,12 +547,12 @@ public class WXBizEntryActivity
                       {
                         public final void onClick(DialogInterface paramAnonymous3DialogInterface, int paramAnonymous3Int)
                         {
-                          AppMethodBeat.i(193143);
-                          f.a(WXBizEntryActivity.this, WXBizEntryActivity.9.this.nNv, WXBizEntryActivity.9.this.nNx, WXBizEntryActivity.9.1.this.val$errCode, WXBizEntryActivity.9.1.this.val$errMsg);
-                          AppMethodBeat.o(193143);
+                          AppMethodBeat.i(186401);
+                          f.a(WXBizEntryActivity.this, WXBizEntryActivity.9.this.nTa, WXBizEntryActivity.9.this.nTc, WXBizEntryActivity.9.1.this.val$errCode, WXBizEntryActivity.9.1.this.val$errMsg);
+                          AppMethodBeat.o(186401);
                         }
                       });
-                      AppMethodBeat.o(193144);
+                      AppMethodBeat.o(186402);
                       return;
                       str = null;
                       break;
@@ -560,35 +560,35 @@ public class WXBizEntryActivity
                     }
                   }
                 });
-                AppMethodBeat.o(193146);
+                AppMethodBeat.o(186404);
                 return 0;
               }
-              if ((paramAnonymousb.HEb == null) || (paramAnonymousb.HEb.zr.length <= 0))
+              if ((paramAnonymousb.HXO == null) || (paramAnonymousb.HXO.zr.length <= 0))
               {
-                f.yP(6);
-                ad.e("MicroMsg.WXBizEntryActivity", "doLaunchWxaRedirectingPage, with ticket[%s] hostAppId[%s], get invalid wxa_runtime_buff from cgi", new Object[] { paramIntent.invokeTicket, parama });
-                aq.f(new Runnable()
+                f.yY(6);
+                ae.e("MicroMsg.WXBizEntryActivity", "doLaunchWxaRedirectingPage, with ticket[%s] hostAppId[%s], get invalid wxa_runtime_buff from cgi", new Object[] { paramIntent.invokeTicket, parama });
+                ar.f(new Runnable()
                 {
                   public final void run()
                   {
-                    AppMethodBeat.i(193145);
-                    Toast.makeText(aj.getContext(), 2131767050, 0).show();
-                    AppMethodBeat.o(193145);
+                    AppMethodBeat.i(186403);
+                    Toast.makeText(ak.getContext(), 2131767050, 0).show();
+                    AppMethodBeat.o(186403);
                   }
                 });
                 f.a(WXBizEntryActivity.this, paramIntent, str1, -1, "Invalid wxa_runtime_buff");
-                AppMethodBeat.o(193146);
+                AppMethodBeat.o(186404);
                 return 0;
               }
-              f.yP(4);
-              paramAnonymousString = paramAnonymousb.HDX;
-              paramAnonymousString = ((com.tencent.mm.plugin.appbrand.service.f)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.appbrand.service.f.class)).a(WXBizEntryActivity.this, paramIntent, ((du)this.nNy.HDW.getFirst()).pkf, paramAnonymousString, paramAnonymousb.HEb.ffY());
+              f.yY(4);
+              paramAnonymousString = paramAnonymousb.HXK;
+              paramAnonymousString = ((com.tencent.mm.plugin.appbrand.service.f)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.appbrand.service.f.class)).a(WXBizEntryActivity.this, paramIntent, ((du)this.nTd.HXJ.getFirst()).pqK, paramAnonymousString, paramAnonymousb.HXO.fjO());
               if (((Integer)paramAnonymousString.first).intValue() != 0) {
                 f.a(WXBizEntryActivity.this, paramIntent, str1, ((Integer)paramAnonymousString.first).intValue(), (String)paramAnonymousString.second);
               }
               for (;;)
               {
-                AppMethodBeat.o(193146);
+                AppMethodBeat.o(186404);
                 return 0;
                 a.a.b(paramIntent.invokeTicket, WXBizEntryActivity.this);
               }
@@ -607,13 +607,13 @@ public class WXBizEntryActivity
                 public final void a(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, n paramAnonymousn, boolean paramAnonymousBoolean)
                 {
                   AppMethodBeat.i(22204);
-                  ad.i("MicroMsg.WXBizEntryActivity", "offline pay, DeepLinkHelper.DeepLinkCallback, %d, %d, %s, %b", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString, Boolean.valueOf(paramAnonymousBoolean) });
-                  if ((paramAnonymousn != null) && (paramAnonymousInt1 != 0) && (paramAnonymousInt2 != 0) && ((paramAnonymousn instanceof ab)))
+                  ae.i("MicroMsg.WXBizEntryActivity", "offline pay, DeepLinkHelper.DeepLinkCallback, %d, %d, %s, %b", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString, Boolean.valueOf(paramAnonymousBoolean) });
+                  if ((paramAnonymousn != null) && (paramAnonymousInt1 != 0) && (paramAnonymousInt2 != 0) && ((paramAnonymousn instanceof ac)))
                   {
-                    paramAnonymousString = ((ab)paramAnonymousn).aLd();
+                    paramAnonymousString = ((ac)paramAnonymousn).aLA();
                     if ((paramAnonymousString != null) && (!WXBizEntryActivity.this.isFinishing()))
                     {
-                      com.tencent.mm.ui.base.h.a(WXBizEntryActivity.this, bt.bI(paramAnonymousString.HDY, WXBizEntryActivity.this.getString(2131761811)), WXBizEntryActivity.this.getString(2131755906), WXBizEntryActivity.this.getString(2131755835), false, new DialogInterface.OnClickListener()
+                      com.tencent.mm.ui.base.h.a(WXBizEntryActivity.this, bu.bI(paramAnonymousString.HXL, WXBizEntryActivity.this.getString(2131761811)), WXBizEntryActivity.this.getString(2131755906), WXBizEntryActivity.this.getString(2131755835), false, new DialogInterface.OnClickListener()
                       {
                         public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
                         {
@@ -640,13 +640,13 @@ public class WXBizEntryActivity
           {
             for (;;)
             {
-              ad.e("MicroMsg.WXBizEntryActivity", "get data from intent for offline pay failed : %s", new Object[] { parama.getMessage() });
+              ae.e("MicroMsg.WXBizEntryActivity", "get data from intent for offline pay failed : %s", new Object[] { parama.getMessage() });
               parama = null;
             }
           }
         }
       }
-      ad.e("MicroMsg.WXBizEntryActivity", "postLogin fail, loginResult = ".concat(String.valueOf(parama)));
+      ae.e("MicroMsg.WXBizEntryActivity", "postLogin fail, loginResult = ".concat(String.valueOf(parama)));
     }
   }
   
@@ -664,31 +664,31 @@ public class WXBizEntryActivity
   {
     AppMethodBeat.i(22214);
     super.hideAllManagedDialogs();
-    jd(false);
+    jc(false);
     AppMethodBeat.o(22214);
   }
   
   public void onCreate(Bundle paramBundle)
   {
     AppMethodBeat.i(22208);
-    this.nNj = f.ae(getIntent());
-    com.tencent.mm.kernel.g.ajA();
-    if ((com.tencent.mm.kernel.a.aiJ()) && (!com.tencent.mm.kernel.a.aiE())) {
+    this.nSO = f.ae(getIntent());
+    com.tencent.mm.kernel.g.ajP();
+    if ((com.tencent.mm.kernel.a.aiY()) && (!com.tencent.mm.kernel.a.aiT())) {
       f.ad(getIntent());
     }
     setTheme(2131821150);
     super.onCreate(paramBundle);
-    ad.i("MicroMsg.WXBizEntryActivity", "onCreate");
-    if (f.bMd())
+    ae.i("MicroMsg.WXBizEntryActivity", "onCreate");
+    if (f.bNb())
     {
       boolean bool = getIntent().getBooleanExtra("__BIZ_ENTRY_FROM_RETRY", false);
-      if (this.nNj)
+      if (this.nSO)
       {
         if (bool) {}
         for (i = 32;; i = 33)
         {
-          f.yO(i);
-          ad.i("MicroMsg.WXBizEntryActivity", "Safe Launch WXBizEntry isInConsumedSet finished");
+          f.yX(i);
+          ae.i("MicroMsg.WXBizEntryActivity", "Safe Launch WXBizEntry isInConsumedSet finished");
           finish();
           AppMethodBeat.o(22208);
           return;
@@ -701,7 +701,7 @@ public class WXBizEntryActivity
     label144:
     for (int i = 34;; i = 35)
     {
-      f.yO(i);
+      f.yX(i);
       setTitleVisibility(0);
       AppMethodBeat.o(22208);
       return;
@@ -720,14 +720,14 @@ public class WXBizEntryActivity
   {
     AppMethodBeat.i(22215);
     super.onNewIntent(paramIntent);
-    ad.i("MicroMsg.WXBizEntryActivity", "onNewIntent");
-    this.nNk = false;
-    if (this.nNh != null)
+    ae.i("MicroMsg.WXBizEntryActivity", "onNewIntent");
+    this.nSP = false;
+    if (this.nSM != null)
     {
-      this.nNh.dead();
-      this.nNh = null;
+      this.nSM.dead();
+      this.nSM = null;
     }
-    jd(true);
+    jc(true);
     AppMethodBeat.o(22215);
   }
   
@@ -735,7 +735,7 @@ public class WXBizEntryActivity
   {
     AppMethodBeat.i(22217);
     super.onPause();
-    ad.i("MicroMsg.WXBizEntryActivity", "onPause");
+    ae.i("MicroMsg.WXBizEntryActivity", "onPause");
     AppMethodBeat.o(22217);
   }
   
@@ -743,8 +743,8 @@ public class WXBizEntryActivity
   {
     AppMethodBeat.i(22216);
     super.onResume();
-    ad.i("MicroMsg.WXBizEntryActivity", "onResume, mDoFinishOnNextResume[%b]", new Object[] { Boolean.valueOf(this.nNk) });
-    if (this.nNk) {
+    ae.i("MicroMsg.WXBizEntryActivity", "onResume, mDoFinishOnNextResume[%b]", new Object[] { Boolean.valueOf(this.nSP) });
+    if (this.nSP) {
       finish();
     }
     AppMethodBeat.o(22216);
@@ -757,20 +757,20 @@ public class WXBizEntryActivity
   }
   
   final class a
-    implements o.a, g.a
+    implements p.a, g.a
   {
     a() {}
     
     public final void a(int paramInt1, int paramInt2, final String paramString, n paramn, boolean paramBoolean)
     {
       AppMethodBeat.i(22192);
-      ad.i("MicroMsg.WXBizEntryActivity", "openBusinessView, DeepLinkHelper.DeepLinkCallback, %d, %d, %s, %b", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString, Boolean.valueOf(paramBoolean) });
-      if ((paramn != null) && (((!paramBoolean) && (!bt.isNullOrNil(paramString))) || ((paramInt1 != 0) && (paramInt2 != 0) && ((paramn instanceof ab)))))
+      ae.i("MicroMsg.WXBizEntryActivity", "openBusinessView, DeepLinkHelper.DeepLinkCallback, %d, %d, %s, %b", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString, Boolean.valueOf(paramBoolean) });
+      if ((paramn != null) && (((!paramBoolean) && (!bu.isNullOrNil(paramString))) || ((paramInt1 != 0) && (paramInt2 != 0) && ((paramn instanceof ac)))))
       {
-        paramn = ((ab)paramn).aLd();
+        paramn = ((ac)paramn).aLA();
         if ((paramn != null) && (!WXBizEntryActivity.this.isFinishing()))
         {
-          paramString = bt.bI(bt.bI(paramn.HDY, paramString), WXBizEntryActivity.this.getString(2131761811));
+          paramString = bu.bI(bu.bI(paramn.HXL, paramString), WXBizEntryActivity.this.getString(2131761811));
           com.tencent.mm.ui.base.h.a(WXBizEntryActivity.this, paramString, WXBizEntryActivity.this.getString(2131755906), WXBizEntryActivity.this.getString(2131755835), false, new DialogInterface.OnClickListener()
           {
             public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
@@ -788,22 +788,22 @@ public class WXBizEntryActivity
         AppMethodBeat.o(22192);
         return;
       }
-      if ((paramn instanceof ab))
+      if ((paramn instanceof ac))
       {
-        paramString = ((ab)paramn).aLc();
-        ad.i("MicroMsg.WXBizEntryActivity", "openBusinessView, DeepLinkHelper.DeepLinkCallback transUri[%s]", new Object[] { paramString });
-        if (!bt.nullAsNil(paramString).startsWith("weixin://dl/jumpFakeWxa/")) {
+        paramString = ((ac)paramn).aLz();
+        ae.i("MicroMsg.WXBizEntryActivity", "openBusinessView, DeepLinkHelper.DeepLinkCallback transUri[%s]", new Object[] { paramString });
+        if (!bu.nullAsNil(paramString).startsWith("weixin://dl/jumpFakeWxa/")) {
           WXBizEntryActivity.this.finish();
         }
         AppMethodBeat.o(22192);
         return;
       }
-      ad.e("MicroMsg.WXBizEntryActivity", "openBusinessView, DeepLinkHelper.DeepLinkCallback, scene is not NetSceneTranslateLink, finish activity");
+      ae.e("MicroMsg.WXBizEntryActivity", "openBusinessView, DeepLinkHelper.DeepLinkCallback, scene is not NetSceneTranslateLink, finish activity");
       WXBizEntryActivity.this.finish();
       AppMethodBeat.o(22192);
     }
     
-    public final void brK()
+    public final void bsv()
     {
       AppMethodBeat.i(22193);
       if (WXBizEntryActivity.d(WXBizEntryActivity.this) != null)
@@ -817,7 +817,7 @@ public class WXBizEntryActivity
       AppMethodBeat.o(22193);
     }
     
-    public final void brL()
+    public final void bsw()
     {
       AppMethodBeat.i(22194);
       WXBizEntryActivity.this.finish();
@@ -827,7 +827,7 @@ public class WXBizEntryActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.base.stub.WXBizEntryActivity
  * JD-Core Version:    0.7.0.1
  */

@@ -2,12 +2,11 @@ package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
-import com.tencent.mm.storage.bu;
 
 public final class sy
   extends b
 {
-  public a dHA;
+  public a dID;
   
   public sy()
   {
@@ -16,16 +15,19 @@ public final class sy
   
   private sy(byte paramByte)
   {
-    AppMethodBeat.i(42657);
-    this.dHA = new a();
-    this.IbR = false;
+    AppMethodBeat.i(116048);
+    this.dID = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(42657);
+    AppMethodBeat.o(116048);
   }
   
   public static final class a
   {
-    public bu dku;
+    public String cUB;
+    public String content;
+    public int flags;
+    public int type;
   }
 }
 

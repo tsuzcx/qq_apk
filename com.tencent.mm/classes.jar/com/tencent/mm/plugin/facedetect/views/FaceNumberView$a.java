@@ -7,9 +7,9 @@ public enum FaceNumberView$a
   static
   {
     AppMethodBeat.i(104174);
-    roC = new a("Normal", 0);
-    roD = new a("Shine", 1);
-    roE = new a[] { roC, roD };
+    rwG = new a("Normal", 0);
+    rwH = new a("Shine", 1);
+    rwI = new a[] { rwG, rwH };
     AppMethodBeat.o(104174);
   }
   

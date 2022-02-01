@@ -13,8 +13,8 @@ final class WxaLuckyMoneyPrepareUI$10
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
     AppMethodBeat.i(64956);
-    this.vkB.setResult(0, new Intent().putExtra("result_error_code", -1).putExtra("result_error_msg", "fail:system error {{user cancel}}"));
-    this.vkB.finish();
+    this.vwG.setResult(0, new Intent().putExtra("result_error_code", -1).putExtra("result_error_msg", "fail:system error {{user cancel}}"));
+    this.vwG.finish();
     AppMethodBeat.o(64956);
     return true;
   }

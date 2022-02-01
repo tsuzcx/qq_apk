@@ -15,16 +15,16 @@ final class k$4
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(206806);
+    AppMethodBeat.i(195616);
     b localb = new b();
     localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/game/media/GamePublishGalleryView$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+    a.b("com/tencent/mm/plugin/game/media/GamePublishGalleryView$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
     paramView = new Intent();
     paramView.putExtra("key_game_haowan_text", true);
-    ((Activity)this.tYb.getContext()).setResult(-1, paramView);
-    ((Activity)this.tYb.getContext()).finish();
+    ((Activity)this.ujd.getContext()).setResult(-1, paramView);
+    ((Activity)this.ujd.getContext()).finish();
     a.a(this, "com/tencent/mm/plugin/game/media/GamePublishGalleryView$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-    AppMethodBeat.o(206806);
+    AppMethodBeat.o(195616);
   }
 }
 

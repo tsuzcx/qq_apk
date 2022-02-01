@@ -2,13 +2,13 @@ package com.tencent.soter.a.f;
 
 public final class e$a
 {
-  public String LRo;
-  public String LRp;
+  public String Mol;
+  public String Mom;
   
   public e$a(String paramString1, String paramString2)
   {
-    this.LRp = paramString1;
-    this.LRo = paramString2;
+    this.Mom = paramString1;
+    this.Mol = paramString2;
   }
 }
 

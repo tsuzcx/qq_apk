@@ -4,60 +4,60 @@ import android.content.Intent;
 import com.tencent.e.h;
 import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.ss;
+import com.tencent.mm.g.a.st;
 import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.ui.chatting.ae;
+import com.tencent.mm.ui.chatting.af;
 import com.tencent.mm.ui.chatting.d.b.ag;
 import com.tencent.mm.ui.chatting.view.MMChattingListView;
 
-@com.tencent.mm.ui.chatting.d.a.a(fFo=ag.class)
+@com.tencent.mm.ui.chatting.d.a.a(fJv=ag.class)
 public class aq
   extends a
   implements ag
 {
-  private c<ss> JMp;
-  long mYb;
+  private c<st> Khl;
+  long ndi;
   
   public aq()
   {
-    AppMethodBeat.i(194090);
-    this.JMp = new c() {};
-    AppMethodBeat.o(194090);
+    AppMethodBeat.i(187399);
+    this.Khl = new c() {};
+    AppMethodBeat.o(187399);
   }
   
-  public final void fCC()
+  public final void fAs() {}
+  
+  public final void fAu()
   {
-    AppMethodBeat.i(194093);
-    super.fCC();
-    com.tencent.mm.sdk.b.a.IbL.d(this.JMp);
-    this.cWM.JOV = false;
-    AppMethodBeat.o(194093);
+    AppMethodBeat.i(187400);
+    com.tencent.mm.sdk.b.a.IvT.b(this.Khl);
+    AppMethodBeat.o(187400);
   }
   
-  public final void fws() {}
+  public final void fAw() {}
   
-  public final void fwu()
+  public final void fAx()
   {
-    AppMethodBeat.i(194091);
-    com.tencent.mm.sdk.b.a.IbL.b(this.JMp);
-    AppMethodBeat.o(194091);
+    AppMethodBeat.i(187401);
+    com.tencent.mm.sdk.b.a.IvT.d(this.Khl);
+    this.cXJ.Kkh = false;
+    AppMethodBeat.o(187401);
   }
   
-  public final void fww() {}
-  
-  public final void fwx()
+  public final void fGE()
   {
-    AppMethodBeat.i(194092);
-    com.tencent.mm.sdk.b.a.IbL.d(this.JMp);
-    this.cWM.JOV = false;
-    AppMethodBeat.o(194092);
+    AppMethodBeat.i(187402);
+    super.fGE();
+    com.tencent.mm.sdk.b.a.IvT.d(this.Khl);
+    this.cXJ.Kkh = false;
+    AppMethodBeat.o(187402);
   }
   
   public final void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    AppMethodBeat.i(194094);
+    AppMethodBeat.i(187403);
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    AppMethodBeat.o(194094);
+    AppMethodBeat.o(187403);
   }
 }
 

@@ -85,7 +85,7 @@ public class MyKeyboardWindow
         AppMethodBeat.i(130946);
         b localb = new b();
         localb.bd(paramAnonymousView);
-        a.b("com/tenpay/android/wechat/MyKeyboardWindow$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        a.b("com/tenpay/android/wechat/MyKeyboardWindow$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
         if (MyKeyboardWindow.this.mInputEditText == null)
         {
           a.a(this, "com/tenpay/android/wechat/MyKeyboardWindow$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
@@ -290,7 +290,7 @@ public class MyKeyboardWindow
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tenpay.android.wechat.MyKeyboardWindow
  * JD-Core Version:    0.7.0.1
  */

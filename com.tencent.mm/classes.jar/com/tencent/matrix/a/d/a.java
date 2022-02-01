@@ -7,7 +7,7 @@ import java.util.ListIterator;
 
 public final class a
 {
-  private static String cDP = null;
+  private static String cEw = null;
   private static String sPackageName = null;
   
   public static String getPackageName()
@@ -17,7 +17,7 @@ public final class a
   
   public static String getProcessName()
   {
-    return cDP;
+    return cEw;
   }
   
   public static String getThrowableStack(Throwable paramThrowable)
@@ -34,7 +34,7 @@ public final class a
   
   public static void setProcessName(String paramString)
   {
-    cDP = paramString;
+    cEw = paramString;
   }
   
   public static String stackTraceToString(StackTraceElement[] paramArrayOfStackTraceElement)
@@ -75,7 +75,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.matrix.a.d.a
  * JD-Core Version:    0.7.0.1
  */

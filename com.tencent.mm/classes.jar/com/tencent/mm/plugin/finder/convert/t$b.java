@@ -9,7 +9,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.b.y.f;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
 final class t$b
   implements Runnable
 {
@@ -17,13 +17,13 @@ final class t$b
   
   public final void run()
   {
-    AppMethodBeat.i(201394);
-    this.gZB.removeView((View)this.rOs.MLV);
-    ((FrameLayout)this.rOt.MLV).getLayoutParams().height = -2;
+    AppMethodBeat.i(201832);
+    this.hco.removeView((View)this.rWS.NiY);
+    ((FrameLayout)this.rWT.NiY).getLayoutParams().height = -2;
     FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-1, -2);
     localLayoutParams.gravity = 48;
-    ((FrameLayout)this.rOt.MLV).addView((View)this.rOs.MLV, (ViewGroup.LayoutParams)localLayoutParams);
-    AppMethodBeat.o(201394);
+    ((FrameLayout)this.rWT.NiY).addView((View)this.rWS.NiY, (ViewGroup.LayoutParams)localLayoutParams);
+    AppMethodBeat.o(201832);
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.collect.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.wallet_core.tenpay.model.m;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -14,25 +14,25 @@ import org.json.JSONObject;
 public final class r
   extends m
 {
-  public boolean hII;
+  public boolean hLB;
   public boolean isRetry;
-  public String krz;
+  public String kuP;
   private int limit;
-  public int paP;
-  public int paQ;
-  public int paR;
-  public int paS;
-  public List<h> paT;
-  public long paq;
+  public long pgU;
+  public int pht;
+  public int phu;
+  public int phv;
+  public int phw;
+  public List<h> phx;
   
   public r(int paramInt1, long paramLong, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(63843);
-    this.hII = false;
+    this.hLB = false;
     this.isRetry = false;
-    this.paT = new ArrayList();
+    this.phx = new ArrayList();
     this.limit = paramInt2;
-    this.paQ = 0;
+    this.phu = 0;
     HashMap localHashMap = new HashMap();
     localHashMap.put("type", String.valueOf(paramInt1));
     localHashMap.put("from_timestamp", String.valueOf(paramLong));
@@ -46,12 +46,12 @@ public final class r
   public r(int paramInt1, long paramLong, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
     AppMethodBeat.i(63844);
-    this.hII = false;
+    this.hLB = false;
     this.isRetry = false;
-    this.paT = new ArrayList();
+    this.phx = new ArrayList();
     this.isRetry = true;
     this.limit = paramInt3;
-    this.paQ = paramInt2;
+    this.phu = paramInt2;
     HashMap localHashMap = new HashMap();
     localHashMap.put("type", String.valueOf(paramInt1));
     localHashMap.put("from_timestamp", String.valueOf(paramLong));
@@ -81,20 +81,20 @@ public final class r
   public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(63845);
-    ad.d("MicroMsg.NetSceneTenpayF2fHistoryRecordList", "json: %s", new Object[] { paramJSONObject.toString() });
-    this.paP = paramJSONObject.optInt("choose_flag", 0);
-    this.paq = paramJSONObject.optLong("from_timestamp", -1L);
-    this.paR = paramJSONObject.optInt("finish_flag", 0);
-    this.paS = paramJSONObject.optInt("try_num", 0);
-    this.krz = paramJSONObject.optString("retmsg", "");
+    ae.d("MicroMsg.NetSceneTenpayF2fHistoryRecordList", "json: %s", new Object[] { paramJSONObject.toString() });
+    this.pht = paramJSONObject.optInt("choose_flag", 0);
+    this.pgU = paramJSONObject.optLong("from_timestamp", -1L);
+    this.phv = paramJSONObject.optInt("finish_flag", 0);
+    this.phw = paramJSONObject.optInt("try_num", 0);
+    this.kuP = paramJSONObject.optString("retmsg", "");
     paramString = paramJSONObject.optJSONArray("records");
     if ((paramString == null) || (paramString.length() <= 0))
     {
-      ad.i("MicroMsg.NetSceneTenpayF2fHistoryRecordList", "empty records");
-      if (this.paR == 1)
+      ae.i("MicroMsg.NetSceneTenpayF2fHistoryRecordList", "empty records");
+      if (this.phv == 1)
       {
-        ad.i("MicroMsg.NetSceneTenpayF2fHistoryRecordList", "finish query");
-        this.hII = true;
+        ae.i("MicroMsg.NetSceneTenpayF2fHistoryRecordList", "finish query");
+        this.hLB = true;
       }
       AppMethodBeat.o(63845);
       return;
@@ -106,17 +106,17 @@ public final class r
         paramJSONObject = paramString.getJSONObject(paramInt);
         h localh = new h();
         localh.type = paramJSONObject.optInt("type", 0);
-        localh.paq = paramJSONObject.optLong("from_timestamp", 0L);
-        localh.par = paramJSONObject.optInt("total_num", 0);
-        localh.dsd = paramJSONObject.optInt("total_amt", 0);
-        this.paT.add(localh);
+        localh.pgU = paramJSONObject.optLong("from_timestamp", 0L);
+        localh.pgV = paramJSONObject.optInt("total_num", 0);
+        localh.dtj = paramJSONObject.optInt("total_amt", 0);
+        this.phx.add(localh);
         paramInt += 1;
       }
       catch (JSONException paramJSONObject)
       {
         for (;;)
         {
-          ad.printErrStackTrace("MicroMsg.NetSceneTenpayF2fHistoryRecordList", paramJSONObject, "", new Object[0]);
+          ae.printErrStackTrace("MicroMsg.NetSceneTenpayF2fHistoryRecordList", paramJSONObject, "", new Object[0]);
         }
       }
     }

@@ -9,17 +9,17 @@ import android.view.ViewTreeObserver;
 import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.widget.FrameLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cc.a;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.cb.a;
+import com.tencent.mm.sdk.platformtools.ak;
 
 public class RemoteDebugMoveView
   extends FrameLayout
 {
-  float cNg;
-  float cNh;
-  int gnN;
-  float kbD;
-  float kbE;
+  float cNQ;
+  float cNR;
+  int gqj;
+  float keU;
+  float keV;
   int of;
   
   public RemoteDebugMoveView(Context paramContext, AttributeSet paramAttributeSet)
@@ -38,13 +38,13 @@ public class RemoteDebugMoveView
     super.onConfigurationChanged(paramConfiguration);
     getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener()
     {
-      private int fJg = 0;
+      private int cpF = 0;
       
       public final void onGlobalLayout()
       {
         AppMethodBeat.i(147040);
-        int i = this.fJg + 1;
-        this.fJg = i;
+        int i = this.cpF + 1;
+        this.cpF = i;
         if (i < 2)
         {
           AppMethodBeat.o(147040);
@@ -86,23 +86,23 @@ public class RemoteDebugMoveView
     {
       AppMethodBeat.o(147043);
       return true;
-      this.cNg = paramMotionEvent.getRawX();
-      this.cNh = paramMotionEvent.getRawY();
+      this.cNQ = paramMotionEvent.getRawX();
+      this.cNR = paramMotionEvent.getRawY();
       continue;
-      this.kbD = paramMotionEvent.getRawX();
-      this.kbE = paramMotionEvent.getRawY();
-      float f1 = getX() + (this.kbD - this.cNg);
-      if ((0.0F < f1) && (f1 < this.gnN - getWidth())) {
+      this.keU = paramMotionEvent.getRawX();
+      this.keV = paramMotionEvent.getRawY();
+      float f1 = getX() + (this.keU - this.cNQ);
+      if ((0.0F < f1) && (f1 < this.gqj - getWidth())) {
         setX(f1);
       }
-      f1 = this.kbE - this.cNh;
+      f1 = this.keV - this.cNR;
       float f2 = this.of - getHeight();
       float f3 = getY() + f1;
       if (((0.0F < f3) && (f3 < f2)) || ((f3 <= 0.0F) && (f1 > 0.0F)) || ((f3 >= f2) && (f1 < 0.0F))) {
         setY(f3);
       }
-      this.cNg = this.kbD;
-      this.cNh = this.kbE;
+      this.cNQ = this.keU;
+      this.cNR = this.keV;
     }
   }
 }

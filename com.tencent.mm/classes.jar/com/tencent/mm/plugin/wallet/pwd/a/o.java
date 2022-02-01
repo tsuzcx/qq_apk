@@ -18,11 +18,11 @@ public final class o
     HashMap localHashMap1 = new HashMap();
     HashMap localHashMap2 = new HashMap();
     localHashMap1.put("flag", paramv.flag);
-    localHashMap1.put("passwd", paramv.jcJ);
-    localHashMap1.put("rpasswd", paramv.jcJ);
-    localHashMap1.put("verify_code", paramv.Daf);
+    localHashMap1.put("passwd", paramv.jfC);
+    localHashMap1.put("rpasswd", paramv.jfC);
+    localHashMap1.put("verify_code", paramv.DrK);
     localHashMap1.put("token", paramv.token);
-    setPayInfo(paramv.xnF, localHashMap1, localHashMap2);
+    setPayInfo(paramv.xDC, localHashMap1, localHashMap2);
     setRequestData(localHashMap1);
     setWXRequestData(localHashMap2);
     AppMethodBeat.o(69566);
@@ -47,7 +47,7 @@ public final class o
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.pwd.a.o
  * JD-Core Version:    0.7.0.1
  */

@@ -1,48 +1,48 @@
 package com.tencent.mm.plugin.choosemsgfile.b.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.k.b;
+import com.tencent.mm.ah.k.b;
 import com.tencent.mm.g.c.ei;
 import com.tencent.mm.pluginsdk.model.app.c;
 import com.tencent.mm.pluginsdk.model.app.d;
-import com.tencent.mm.storage.bu;
+import com.tencent.mm.storage.bv;
 
 public final class b
   extends g
 {
-  private k.b oSf;
-  private String oSg;
+  private k.b oYH;
+  private String oYI;
   
-  public b(com.tencent.mm.plugin.choosemsgfile.b.c.g paramg, bu parambu)
+  public b(com.tencent.mm.plugin.choosemsgfile.b.c.g paramg, bv parambv)
   {
-    super(paramg, parambu);
+    super(paramg, parambv);
   }
   
-  private k.b bZu()
+  private k.b caJ()
   {
     AppMethodBeat.i(123259);
-    if (this.oSf == null) {
-      this.oSf = k.b.yr(this.oRU.field_content);
+    if (this.oYH == null) {
+      this.oYH = k.b.zb(this.oYw.field_content);
     }
-    k.b localb = this.oSf;
+    k.b localb = this.oYH;
     AppMethodBeat.o(123259);
     return localb;
   }
   
-  protected final String aCp()
+  protected final String aCF()
   {
     AppMethodBeat.i(123263);
     Object localObject;
-    if ((this.oSg == null) && (bZu() != null) && (bZu().dks != null) && (bZu().dks.length() > 0))
+    if ((this.oYI == null) && (caJ() != null) && (caJ().dlu != null) && (caJ().dlu.length() > 0))
     {
-      localObject = com.tencent.mm.plugin.s.a.bIX().aLD(bZu().dks);
+      localObject = com.tencent.mm.plugin.s.a.bJV().aMZ(caJ().dlu);
       if (localObject != null) {
-        this.oSg = ((c)localObject).field_fileFullPath;
+        this.oYI = ((c)localObject).field_fileFullPath;
       }
     }
-    if (this.oSg != null)
+    if (this.oYI != null)
     {
-      localObject = this.oSg;
+      localObject = this.oYI;
       AppMethodBeat.o(123263);
       return localObject;
     }
@@ -50,12 +50,12 @@ public final class b
     return "";
   }
   
-  public final String bZn()
+  public final String caC()
   {
     AppMethodBeat.i(123260);
-    if (bZu() != null)
+    if (caJ() != null)
     {
-      String str = bZu().hzP;
+      String str = caJ().hCD;
       AppMethodBeat.o(123260);
       return str;
     }
@@ -63,12 +63,12 @@ public final class b
     return "";
   }
   
-  public final int bZo()
+  public final int caD()
   {
     AppMethodBeat.i(123262);
-    if (bZu() != null)
+    if (caJ() != null)
     {
-      int i = bZu().hzO;
+      int i = caJ().hCC;
       AppMethodBeat.o(123262);
       return i;
     }
@@ -79,9 +79,9 @@ public final class b
   public final String getFileName()
   {
     AppMethodBeat.i(123261);
-    if (bZu() != null)
+    if (caJ() != null)
     {
-      String str = bZu().title;
+      String str = caJ().title;
       AppMethodBeat.o(123261);
       return str;
     }

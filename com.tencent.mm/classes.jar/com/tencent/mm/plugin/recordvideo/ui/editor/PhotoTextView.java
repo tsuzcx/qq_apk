@@ -11,11 +11,11 @@ import android.support.v7.widget.AppCompatTextView;
 import android.text.Layout;
 import android.util.AttributeSet;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cc.a;
+import com.tencent.mm.cb.a;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/PhotoTextView;", "Landroid/support/v7/widget/AppCompatTextView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "mBgColor", "", "paint", "Landroid/graphics/Paint;", "path", "Landroid/graphics/Path;", "radius", "", "rectF", "Landroid/graphics/RectF;", "drawBg", "", "canvas", "Landroid/graphics/Canvas;", "onDraw", "setTextBackground", "color", "plugin-recordvideo_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/PhotoTextView;", "Landroid/support/v7/widget/AppCompatTextView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "mBgColor", "", "paint", "Landroid/graphics/Paint;", "path", "Landroid/graphics/Path;", "radius", "", "rectF", "Landroid/graphics/RectF;", "drawBg", "", "canvas", "Landroid/graphics/Canvas;", "onDraw", "setTextBackground", "color", "plugin-recordvideo_release"})
 public final class PhotoTextView
   extends AppCompatTextView
 {
@@ -28,19 +28,19 @@ public final class PhotoTextView
   public PhotoTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(200646);
+    AppMethodBeat.i(206904);
     this.lP = new Path();
     this.paint = new Paint();
     this.hM = new RectF();
     this.radius = a.fromDPToPix(paramContext, 12);
     this.paint.setStyle(Paint.Style.FILL);
     this.paint.setAntiAlias(true);
-    AppMethodBeat.o(200646);
+    AppMethodBeat.o(206904);
   }
   
   protected final void onDraw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(200645);
+    AppMethodBeat.i(206903);
     p.h(paramCanvas, "canvas");
     int i;
     float f2;
@@ -78,7 +78,7 @@ public final class PhotoTextView
       this.lP.close();
       paramCanvas.drawPath(this.lP, this.paint);
       super.onDraw(paramCanvas);
-      AppMethodBeat.o(200645);
+      AppMethodBeat.o(206903);
       return;
       label206:
       i = 0;
@@ -120,10 +120,10 @@ public final class PhotoTextView
   
   public final void setTextBackground(int paramInt)
   {
-    AppMethodBeat.i(200644);
+    AppMethodBeat.i(206902);
     this.mBgColor = paramInt;
     invalidate();
-    AppMethodBeat.o(200644);
+    AppMethodBeat.o(206902);
   }
 }
 

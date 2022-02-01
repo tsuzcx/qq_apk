@@ -3,65 +3,77 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class bzw
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public int GUM;
-  public int GUN;
+  public String dwb;
+  public String ypt;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(127497);
+    AppMethodBeat.i(145671);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aS(1, this.GUM);
-      paramVarArgs.aS(2, this.GUN);
-      AppMethodBeat.o(127497);
-      return 0;
-    }
-    if (paramInt == 1)
-    {
-      paramInt = f.a.a.b.b.a.bz(1, this.GUM);
-      int i = f.a.a.b.b.a.bz(2, this.GUN);
-      AppMethodBeat.o(127497);
-      return paramInt + 0 + i;
-    }
-    if (paramInt == 2)
-    {
-      paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gxE();
-        }
+      if (this.dwb != null) {
+        paramVarArgs.d(1, this.dwb);
       }
-      AppMethodBeat.o(127497);
+      if (this.ypt != null) {
+        paramVarArgs.d(2, this.ypt);
+      }
+      AppMethodBeat.o(145671);
       return 0;
     }
-    if (paramInt == 3)
+    if (paramInt == 1) {
+      if (this.dwb == null) {
+        break label274;
+      }
+    }
+    label274:
+    for (paramInt = f.a.a.b.b.a.e(1, this.dwb) + 0;; paramInt = 0)
     {
-      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
-      bzw localbzw = (bzw)paramVarArgs[1];
-      switch (((Integer)paramVarArgs[2]).intValue())
+      int i = paramInt;
+      if (this.ypt != null) {
+        i = paramInt + f.a.a.b.b.a.e(2, this.ypt);
+      }
+      AppMethodBeat.o(145671);
+      return i;
+      if (paramInt == 2)
       {
-      default: 
-        AppMethodBeat.o(127497);
-        return -1;
-      case 1: 
-        localbzw.GUM = locala.NPN.zc();
-        AppMethodBeat.o(127497);
+        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.gCg();
+          }
+        }
+        AppMethodBeat.o(145671);
         return 0;
       }
-      localbzw.GUN = locala.NPN.zc();
-      AppMethodBeat.o(127497);
-      return 0;
+      if (paramInt == 3)
+      {
+        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+        bzw localbzw = (bzw)paramVarArgs[1];
+        switch (((Integer)paramVarArgs[2]).intValue())
+        {
+        default: 
+          AppMethodBeat.o(145671);
+          return -1;
+        case 1: 
+          localbzw.dwb = locala.OmT.readString();
+          AppMethodBeat.o(145671);
+          return 0;
+        }
+        localbzw.ypt = locala.OmT.readString();
+        AppMethodBeat.o(145671);
+        return 0;
+      }
+      AppMethodBeat.o(145671);
+      return -1;
     }
-    AppMethodBeat.o(127497);
-    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.bzw
  * JD-Core Version:    0.7.0.1
  */

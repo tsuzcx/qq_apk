@@ -10,38 +10,7 @@ import java.util.NoSuchElementException;
 
 public final class h
 {
-  private static r<Object> cdK = new r()
-  {
-    public final boolean hasNext()
-    {
-      return false;
-    }
-    
-    public final boolean hasPrevious()
-    {
-      return false;
-    }
-    
-    public final Object next()
-    {
-      throw new NoSuchElementException();
-    }
-    
-    public final int nextIndex()
-    {
-      return 0;
-    }
-    
-    public final Object previous()
-    {
-      throw new NoSuchElementException();
-    }
-    
-    public final int previousIndex()
-    {
-      return -1;
-    }
-  };
+  private static r<Object> cdK = new h.1();
   private static final Iterator<Object> cdL = new Iterator()
   {
     public final boolean hasNext()
@@ -60,7 +29,7 @@ public final class h
     }
   };
   
-  static <T> Iterator<T> Bc()
+  static <T> Iterator<T> Bd()
   {
     return cdL;
   }
@@ -104,7 +73,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.e.a.a.b.h
  * JD-Core Version:    0.7.0.1
  */

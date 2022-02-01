@@ -17,49 +17,49 @@ public class CMSampleState
   
   public CMSampleState(long paramLong, String paramString, Throwable paramThrowable)
   {
-    AppMethodBeat.i(219411);
+    AppMethodBeat.i(200204);
     this.isNewFrame = true;
     this.stateCode = 0L;
     this.time = new CMTime(paramLong);
     this.stateCode = paramLong;
     this.msg = paramString;
     this.throwable = paramThrowable;
-    AppMethodBeat.o(219411);
+    AppMethodBeat.o(200204);
   }
   
   public CMSampleState(CMTime paramCMTime)
   {
-    AppMethodBeat.i(219410);
+    AppMethodBeat.i(200203);
     this.isNewFrame = true;
     this.stateCode = 0L;
     this.time = paramCMTime;
     if (paramCMTime.value < 0L) {
       this.stateCode = paramCMTime.value;
     }
-    AppMethodBeat.o(219410);
+    AppMethodBeat.o(200203);
   }
   
   public static CMSampleState fromError(long paramLong)
   {
-    AppMethodBeat.i(219407);
+    AppMethodBeat.i(200200);
     CMSampleState localCMSampleState = fromError(paramLong, "state:".concat(String.valueOf(paramLong)));
-    AppMethodBeat.o(219407);
+    AppMethodBeat.o(200200);
     return localCMSampleState;
   }
   
   public static CMSampleState fromError(long paramLong, String paramString)
   {
-    AppMethodBeat.i(219408);
+    AppMethodBeat.i(200201);
     paramString = fromError(paramLong, paramString, new RuntimeException(paramString));
-    AppMethodBeat.o(219408);
+    AppMethodBeat.o(200201);
     return paramString;
   }
   
   public static CMSampleState fromError(long paramLong, String paramString, Throwable paramThrowable)
   {
-    AppMethodBeat.i(219409);
+    AppMethodBeat.i(200202);
     paramString = new CMSampleState(paramLong, paramString, paramThrowable);
-    AppMethodBeat.o(219409);
+    AppMethodBeat.o(200202);
     return paramString;
   }
   
@@ -123,9 +123,9 @@ public class CMSampleState
   
   public String toString()
   {
-    AppMethodBeat.i(219412);
+    AppMethodBeat.i(200205);
     String str = "CMSampleState{time=" + this.time + ", isNewFrame=" + this.isNewFrame + ", stateCode=" + this.stateCode + ", throwable=" + this.throwable + ", msg='" + this.msg + '\'' + '}';
-    AppMethodBeat.o(219412);
+    AppMethodBeat.o(200205);
     return str;
   }
 }

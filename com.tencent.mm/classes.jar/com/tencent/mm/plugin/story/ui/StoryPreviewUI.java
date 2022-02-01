@@ -17,19 +17,19 @@ import d.g.b.p;
 import d.l;
 
 @a(3)
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/story/ui/StoryPreviewUI;", "Lcom/tencent/mm/ui/MMActivity;", "()V", "TAG", "", "videoCallBack", "com/tencent/mm/plugin/story/ui/StoryPreviewUI$videoCallBack$1", "Lcom/tencent/mm/plugin/story/ui/StoryPreviewUI$videoCallBack$1;", "videoPlayView", "Lcom/tencent/mm/pluginsdk/ui/tools/VideoPlayerTextureView;", "getLayoutId", "", "onCreate", "", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "plugin-story_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/story/ui/StoryPreviewUI;", "Lcom/tencent/mm/ui/MMActivity;", "()V", "TAG", "", "videoCallBack", "com/tencent/mm/plugin/story/ui/StoryPreviewUI$videoCallBack$1", "Lcom/tencent/mm/plugin/story/ui/StoryPreviewUI$videoCallBack$1;", "videoPlayView", "Lcom/tencent/mm/pluginsdk/ui/tools/VideoPlayerTextureView;", "getLayoutId", "", "onCreate", "", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "plugin-story_release"})
 public final class StoryPreviewUI
   extends MMActivity
 {
-  private final b AUS;
+  private final b Bmq;
   private final String TAG;
-  private VideoPlayerTextureView vRr;
+  private VideoPlayerTextureView wdv;
   
   public StoryPreviewUI()
   {
     AppMethodBeat.i(119645);
     this.TAG = "MicroMsg.StoryPreviewUI";
-    this.AUS = new b(this);
+    this.Bmq = new b(this);
     AppMethodBeat.o(119645);
   }
   
@@ -45,7 +45,7 @@ public final class StoryPreviewUI
     super.onCreate(paramBundle);
     setSelfNavigationBarVisible(8);
     getWindow().addFlags(2097280);
-    if (d.ly(19)) {
+    if (d.lA(19)) {
       getWindow().setFlags(201327616, 201327616);
     }
     for (;;)
@@ -53,20 +53,20 @@ public final class StoryPreviewUI
       paramBundle = getIntent().getStringExtra("video_path");
       Object localObject = findViewById(2131305486);
       p.g(localObject, "findViewById(R.id.story_preview_play_view)");
-      this.vRr = ((VideoPlayerTextureView)localObject);
-      localObject = this.vRr;
+      this.wdv = ((VideoPlayerTextureView)localObject);
+      localObject = this.wdv;
       if (localObject == null) {
-        p.bcb("videoPlayView");
+        p.bdF("videoPlayView");
       }
       ((VideoPlayerTextureView)localObject).setVideoPath(paramBundle);
-      paramBundle = this.vRr;
+      paramBundle = this.wdv;
       if (paramBundle == null) {
-        p.bcb("videoPlayView");
+        p.bdF("videoPlayView");
       }
-      paramBundle.setVideoCallback((h.a)this.AUS);
-      paramBundle = this.vRr;
+      paramBundle.setVideoCallback((h.a)this.Bmq);
+      paramBundle = this.wdv;
       if (paramBundle == null) {
-        p.bcb("videoPlayView");
+        p.bdF("videoPlayView");
       }
       paramBundle.setAlpha(0.0F);
       findViewById(2131305485).setOnClickListener((View.OnClickListener)new StoryPreviewUI.a(this));
@@ -80,9 +80,9 @@ public final class StoryPreviewUI
   {
     AppMethodBeat.i(119644);
     super.onDestroy();
-    VideoPlayerTextureView localVideoPlayerTextureView = this.vRr;
+    VideoPlayerTextureView localVideoPlayerTextureView = this.wdv;
     if (localVideoPlayerTextureView == null) {
-      p.bcb("videoPlayView");
+      p.bdF("videoPlayView");
     }
     localVideoPlayerTextureView.stop();
     AppMethodBeat.o(119644);
@@ -94,11 +94,11 @@ public final class StoryPreviewUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/story/ui/StoryPreviewUI$videoCallBack$1", "Lcom/tencent/mm/pluginsdk/ui/tools/IVideoView$IVideoCallback;", "onCompletion", "", "onError", "what", "", "extra", "onGetVideoSize", "width", "height", "onPlayTime", "playTime", "videoTime", "onPrepared", "plugin-story_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/story/ui/StoryPreviewUI$videoCallBack$1", "Lcom/tencent/mm/pluginsdk/ui/tools/IVideoView$IVideoCallback;", "onCompletion", "", "onError", "what", "", "extra", "onGetVideoSize", "width", "height", "onPlayTime", "playTime", "videoTime", "onPrepared", "plugin-story_release"})
   public static final class b
     implements h.a
   {
-    public final int eT(int paramInt1, int paramInt2)
+    public final int eU(int paramInt1, int paramInt2)
     {
       return 0;
     }
@@ -108,7 +108,7 @@ public final class StoryPreviewUI
     public final void onCompletion()
     {
       AppMethodBeat.i(119642);
-      StoryPreviewUI.a(this.AUT).d(0.0D, true);
+      StoryPreviewUI.a(this.Bmr).d(0.0D, true);
       AppMethodBeat.o(119642);
     }
     
@@ -117,22 +117,22 @@ public final class StoryPreviewUI
     public final void ta()
     {
       AppMethodBeat.i(119641);
-      StoryPreviewUI.a(this.AUT).setOneTimeVideoTextureUpdateCallback((h.e)new a(this));
-      StoryPreviewUI.a(this.AUT).start();
+      StoryPreviewUI.a(this.Bmr).setOneTimeVideoTextureUpdateCallback((h.e)new a(this));
+      StoryPreviewUI.a(this.Bmr).start();
       AppMethodBeat.o(119641);
     }
     
-    @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "onTextureUpdate"})
+    @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "onTextureUpdate"})
     static final class a
       implements h.e
     {
       a(StoryPreviewUI.b paramb) {}
       
-      public final void boT()
+      public final void bpD()
       {
         AppMethodBeat.i(119640);
-        StoryPreviewUI.a(this.AUU.AUT).setVisibility(0);
-        StoryPreviewUI.a(this.AUU.AUT).setAlpha(1.0F);
+        StoryPreviewUI.a(this.Bms.Bmr).setVisibility(0);
+        StoryPreviewUI.a(this.Bms.Bmr).setAlpha(1.0F);
         AppMethodBeat.o(119640);
       }
     }

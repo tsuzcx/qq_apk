@@ -3,38 +3,38 @@ package com.tencent.mm.ui.chatting.n;
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.ba;
+import com.tencent.mm.model.bc;
 import com.tencent.mm.plugin.messenger.foundation.a.l;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.storage.bu;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.storage.bv;
 import com.tencent.mm.storage.r;
 import com.tencent.mm.ui.chatting.h.d.b;
 import java.util.List;
 
 public final class a
-  implements e<bu>
+  implements e<bv>
 {
-  private long JFK;
+  private long KaB;
   private Cursor Tc;
-  private int fTH;
-  private String fTa;
+  private int fVN;
+  private String fVg;
   private int mCount;
   
   public a(String paramString, long paramLong, int paramInt1, int paramInt2)
   {
-    this.fTa = paramString;
-    this.JFK = paramLong;
-    this.fTH = paramInt2;
+    this.fVg = paramString;
+    this.KaB = paramLong;
+    this.fVN = paramInt2;
     this.mCount = paramInt1;
   }
   
   public final void a(d.b paramb)
   {
     AppMethodBeat.i(36624);
-    long l = ((l)g.ab(l.class)).azS().apK(this.fTa);
-    ad.d("MicroMsg.ChattingLoader.ChattingBizDataSource", "[ChattingBizDataSource] talker:%s bizChatId:%s,count:%s totalCount:%s createTime:%s", new Object[] { this.fTa, Long.valueOf(this.JFK), Integer.valueOf(this.mCount), Integer.valueOf(this.fTH), Long.valueOf(l) });
-    ba.aBQ();
-    this.Tc = com.tencent.mm.model.c.azt().r(this.fTa, this.JFK, this.mCount);
+    long l = ((l)g.ab(l.class)).aAi().aqP(this.fVg);
+    ae.d("MicroMsg.ChattingLoader.ChattingBizDataSource", "[ChattingBizDataSource] talker:%s bizChatId:%s,count:%s totalCount:%s createTime:%s", new Object[] { this.fVg, Long.valueOf(this.KaB), Integer.valueOf(this.mCount), Integer.valueOf(this.fVN), Long.valueOf(l) });
+    bc.aCg();
+    this.Tc = com.tencent.mm.model.c.azJ().r(this.fVg, this.KaB, this.mCount);
     paramb.next();
     AppMethodBeat.o(36624);
   }
@@ -46,20 +46,20 @@ public final class a
     AppMethodBeat.o(36626);
   }
   
-  public final int fpw()
+  public final int ftv()
   {
-    return this.fTH;
+    return this.fVN;
   }
   
-  public final void in(List<bu> paramList)
+  public final void ix(List<bv> paramList)
   {
     AppMethodBeat.i(36625);
     this.Tc.moveToFirst();
     while (!this.Tc.isAfterLast())
     {
-      bu localbu = new bu();
-      localbu.convertFrom(this.Tc);
-      paramList.add(localbu);
+      bv localbv = new bv();
+      localbv.convertFrom(this.Tc);
+      paramList.add(localbv);
       this.Tc.moveToNext();
     }
     AppMethodBeat.o(36625);

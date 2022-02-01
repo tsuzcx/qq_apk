@@ -1,56 +1,56 @@
 package com.tencent.mm.plugin.remittance.bankcard.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.f;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.f;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.cgi;
-import com.tencent.mm.protocal.protobuf.cgj;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.al.a;
+import com.tencent.mm.protocal.protobuf.chc;
+import com.tencent.mm.protocal.protobuf.chd;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.aj;
+import com.tencent.mm.storage.am.a;
 
 public final class k
   extends b
 {
   private f callback;
-  private com.tencent.mm.al.b rr;
-  public cgj xRY;
+  private com.tencent.mm.ak.b rr;
+  public chd yhR;
   
   public k()
   {
     AppMethodBeat.i(67379);
     b.a locala = new b.a();
-    locala.hNM = new cgi();
-    locala.hNN = new cgj();
+    locala.hQF = new chc();
+    locala.hQG = new chd();
     locala.funcId = 1280;
     locala.uri = "/cgi-bin/mmpay-bin/operation_tsbc";
-    locala.hNO = 0;
+    locala.hQH = 0;
     locala.respCmdId = 0;
-    this.rr = locala.aDC();
+    this.rr = locala.aDS();
     AppMethodBeat.o(67379);
   }
   
   public final void b(int paramInt1, int paramInt2, String paramString, q paramq)
   {
     AppMethodBeat.i(67381);
-    ad.i("MicroMsg.NetSceneBankRemitOperation", "errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-    this.xRY = ((cgj)((com.tencent.mm.al.b)paramq).hNL.hNQ);
-    ad.i("MicroMsg.NetSceneBankRemitOperation", "retcode: %s, retmsg: %s", new Object[] { Integer.valueOf(this.xRY.dlw), this.xRY.paA });
-    if ((!this.pbG) && (!this.pbH))
+    ae.i("MicroMsg.NetSceneBankRemitOperation", "errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    this.yhR = ((chd)((com.tencent.mm.ak.b)paramq).hQE.hQJ);
+    ae.i("MicroMsg.NetSceneBankRemitOperation", "retcode: %s, retmsg: %s", new Object[] { Integer.valueOf(this.yhR.dmy), this.yhR.phe });
+    if ((!this.pil) && (!this.pim))
     {
-      ad.i("MicroMsg.NetSceneBankRemitOperation", "min_poundage: %s, max_amount: %s", new Object[] { Integer.valueOf(this.xRY.GZv), Integer.valueOf(this.xRY.GZw) });
-      if (this.xRY.GZv >= 0) {
-        g.ajC().ajl().set(al.a.IBO, Integer.valueOf(this.xRY.GZv));
+      ae.i("MicroMsg.NetSceneBankRemitOperation", "min_poundage: %s, max_amount: %s", new Object[] { Integer.valueOf(this.yhR.HsW), Integer.valueOf(this.yhR.HsX) });
+      if (this.yhR.HsW >= 0) {
+        g.ajR().ajA().set(am.a.IWn, Integer.valueOf(this.yhR.HsW));
       }
-      if (this.xRY.GZw > 0) {
-        g.ajC().ajl().set(al.a.IBP, Integer.valueOf(this.xRY.GZw));
+      if (this.yhR.HsX > 0) {
+        g.ajR().ajA().set(am.a.IWo, Integer.valueOf(this.yhR.HsX));
       }
-      if (!bt.isNullOrNil(this.xRY.GZx)) {
-        g.ajC().ajl().set(al.a.IBQ, this.xRY.GZx);
+      if (!bu.isNullOrNil(this.yhR.HsY)) {
+        g.ajR().ajA().set(am.a.IWp, this.yhR.HsY);
       }
     }
     if (this.callback != null) {
@@ -70,9 +70,9 @@ public final class k
   
   public final void e(q paramq)
   {
-    paramq = (cgj)((com.tencent.mm.al.b)paramq).hNL.hNQ;
-    this.Lyu = paramq.dlw;
-    this.Lyv = paramq.paA;
+    paramq = (chd)((com.tencent.mm.ak.b)paramq).hQE.hQJ;
+    this.LVj = paramq.dmy;
+    this.LVk = paramq.phe;
   }
   
   public final int getType()
@@ -82,7 +82,7 @@ public final class k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.remittance.bankcard.a.k
  * JD-Core Version:    0.7.0.1
  */

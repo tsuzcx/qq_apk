@@ -8,64 +8,64 @@ import com.tencent.mm.f.a;
 import com.tencent.mm.platformtools.ac;
 import com.tencent.mm.plugin.report.a.c;
 import com.tencent.mm.sdk.a.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public class ExDeviceProfile
   extends com.tencent.mm.compatible.loader.d
 {
-  public static final String cTJ;
+  public static final String cUu;
   
   static
   {
     AppMethodBeat.i(19442);
-    cTJ = aj.getPackageName() + ":exdevice";
+    cUu = ak.getPackageName() + ":exdevice";
     AppMethodBeat.o(19442);
   }
   
   public final void onConfigurationChanged(Configuration paramConfiguration)
   {
     AppMethodBeat.i(19441);
-    ad.d("MicroMsg.ExDeviceProfile", "onConfigurationChanged:" + toString());
+    ae.d("MicroMsg.ExDeviceProfile", "onConfigurationChanged:" + toString());
     AppMethodBeat.o(19441);
   }
   
   public final void onCreate()
   {
     AppMethodBeat.i(19440);
-    ad.i("MicroMsg.ExDeviceProfile", "exdevice profile oncreate");
-    Object localObject = com.tencent.mm.booter.d.bJ(this.app.getBaseContext());
-    a.bF(aj.getContext());
-    s.fk(cTJ);
+    ae.i("MicroMsg.ExDeviceProfile", "exdevice profile oncreate");
+    Object localObject = com.tencent.mm.booter.d.bL(this.app.getBaseContext());
+    a.bH(ak.getContext());
+    t.fq(cUu);
     localObject = new r((com.tencent.mm.booter.d)localObject);
-    ((r)localObject).uc("EXDEVICE");
-    ac.iOb = bt.a(((r)localObject).ud(".com.tencent.mm.debug.test.display_errcode"), false);
-    ac.iOc = bt.a(((r)localObject).ud(".com.tencent.mm.debug.test.display_msgstate"), false);
-    ac.iOd = bt.a(((r)localObject).ud(".com.tencent.mm.debug.test.network.simulate_fault"), false);
-    ac.iOe = bt.a(((r)localObject).ud(".com.tencent.mm.debug.test.network.force_touch"), false);
-    ac.iOf = bt.a(((r)localObject).ud(".com.tencent.mm.debug.test.outputToSdCardlog"), false);
-    ac.iOg = bt.a(((r)localObject).ud(".com.tencent.mm.debug.test.crashIsExit"), false);
-    ac.iOk = bt.a(((r)localObject).ud(".com.tencent.mm.debug.test.album_show_info"), false);
-    ac.iOl = bt.a(((r)localObject).ud(".com.tencent.mm.debug.test.location_help"), false);
-    ac.iOo = bt.a(((r)localObject).ud(".com.tencent.mm.debug.test.force_soso"), false);
-    ac.iOp = bt.a(((r)localObject).ud(".com.tencent.mm.debug.test.simulatePostServerError"), false);
-    ac.iOq = bt.a(((r)localObject).ud(".com.tencent.mm.debug.test.simulateUploadServerError"), false);
-    ac.iOr = bt.a(((r)localObject).ud(".com.tencent.mm.debug.test.snsNotwirteThumb"), false);
-    ac.iOu = bt.a(((r)localObject).ud(".com.tencent.mm.debug.test.filterfpnp"), false);
-    ac.iOv = bt.a(((r)localObject).ud(".com.tencent.mm.debug.test.testForPull"), false);
-    int i = bt.a(((r)localObject).getInteger(".com.tencent.mm.debug.test.cdnDownloadThread"), 0);
-    ac.iOs = i;
-    if ((i != 4) && (ac.iOs > 0))
+    ((r)localObject).ux("EXDEVICE");
+    ac.iQV = bu.a(((r)localObject).uy(".com.tencent.mm.debug.test.display_errcode"), false);
+    ac.iQW = bu.a(((r)localObject).uy(".com.tencent.mm.debug.test.display_msgstate"), false);
+    ac.iQX = bu.a(((r)localObject).uy(".com.tencent.mm.debug.test.network.simulate_fault"), false);
+    ac.iQY = bu.a(((r)localObject).uy(".com.tencent.mm.debug.test.network.force_touch"), false);
+    ac.iQZ = bu.a(((r)localObject).uy(".com.tencent.mm.debug.test.outputToSdCardlog"), false);
+    ac.iRa = bu.a(((r)localObject).uy(".com.tencent.mm.debug.test.crashIsExit"), false);
+    ac.iRe = bu.a(((r)localObject).uy(".com.tencent.mm.debug.test.album_show_info"), false);
+    ac.iRf = bu.a(((r)localObject).uy(".com.tencent.mm.debug.test.location_help"), false);
+    ac.iRi = bu.a(((r)localObject).uy(".com.tencent.mm.debug.test.force_soso"), false);
+    ac.iRj = bu.a(((r)localObject).uy(".com.tencent.mm.debug.test.simulatePostServerError"), false);
+    ac.iRk = bu.a(((r)localObject).uy(".com.tencent.mm.debug.test.simulateUploadServerError"), false);
+    ac.iRl = bu.a(((r)localObject).uy(".com.tencent.mm.debug.test.snsNotwirteThumb"), false);
+    ac.iRo = bu.a(((r)localObject).uy(".com.tencent.mm.debug.test.filterfpnp"), false);
+    ac.iRp = bu.a(((r)localObject).uy(".com.tencent.mm.debug.test.testForPull"), false);
+    int i = bu.a(((r)localObject).getInteger(".com.tencent.mm.debug.test.cdnDownloadThread"), 0);
+    ac.iRm = i;
+    if ((i != 4) && (ac.iRm > 0))
     {
-      com.tencent.mm.storage.ak.IpL = ac.iOs;
-      ad.e("MicroMsg.ExdDebugger", "cdn thread num " + ac.iOs);
+      com.tencent.mm.storage.al.IKf = ac.iRm;
+      ae.e("MicroMsg.ExdDebugger", "cdn thread num " + ac.iRm);
     }
-    ac.iOt = bt.a(((r)localObject).ud(".com.tencent.mm.debug.test.logShowSnsItemXml"), false);
+    ac.iRn = bu.a(((r)localObject).uy(".com.tencent.mm.debug.test.logShowSnsItemXml"), false);
     try
     {
       i = Integer.decode(((r)localObject).getString(".com.tencent.mm.debug.log.setversion")).intValue();
-      com.tencent.mm.protocal.d.ZA(i);
+      com.tencent.mm.protocal.d.aag(i);
       new StringBuilder("set up test protocal version = ").append(Integer.toHexString(i));
     }
     catch (Exception localException3)
@@ -73,13 +73,13 @@ public class ExDeviceProfile
       try
       {
         String str = ((r)localObject).getString(".com.tencent.mm.debug.log.setapilevel");
-        if (!bt.isNullOrNil(str))
+        if (!bu.isNullOrNil(str))
         {
-          com.tencent.mm.protocal.d.hgH = "android-".concat(String.valueOf(str));
-          com.tencent.mm.protocal.d.Fnf = "android-".concat(String.valueOf(str));
-          com.tencent.mm.protocal.d.Fnh = String.valueOf(str);
-          b.aPX(str);
-          new StringBuilder("set up test protocal apilevel = ").append(com.tencent.mm.protocal.d.hgH).append(" ").append(b.fjO());
+          com.tencent.mm.protocal.d.hjv = "android-".concat(String.valueOf(str));
+          com.tencent.mm.protocal.d.FFD = "android-".concat(String.valueOf(str));
+          com.tencent.mm.protocal.d.FFF = String.valueOf(str);
+          b.aRu(str);
+          new StringBuilder("set up test protocal apilevel = ").append(com.tencent.mm.protocal.d.hjv).append(" ").append(b.fnG());
         }
       }
       catch (Exception localException3)
@@ -87,8 +87,8 @@ public class ExDeviceProfile
         try
         {
           i = Integer.decode(((r)localObject).getString(".com.tencent.mm.debug.log.setuin")).intValue();
-          new StringBuilder("set up test protocal uin old: ").append(com.tencent.mm.protocal.d.Fni).append(" new: ").append(i);
-          com.tencent.mm.protocal.d.Fni = i;
+          new StringBuilder("set up test protocal uin old: ").append(com.tencent.mm.protocal.d.FFG).append(" new: ").append(i);
+          com.tencent.mm.protocal.d.FFG = i;
         }
         catch (Exception localException3)
         {
@@ -96,36 +96,36 @@ public class ExDeviceProfile
           {
             for (;;)
             {
-              boolean bool1 = bt.a(((r)localObject).ud(".com.tencent.mm.debug.report.debugmodel"), false);
-              boolean bool2 = bt.a(((r)localObject).ud(".com.tencent.mm.debug.report.kvstat"), false);
-              boolean bool3 = bt.a(((r)localObject).ud(".com.tencent.mm.debug.report.clientpref"), false);
-              boolean bool4 = bt.a(((r)localObject).ud(".com.tencent.mm.debug.report.useraction"), false);
+              boolean bool1 = bu.a(((r)localObject).uy(".com.tencent.mm.debug.report.debugmodel"), false);
+              boolean bool2 = bu.a(((r)localObject).uy(".com.tencent.mm.debug.report.kvstat"), false);
+              boolean bool3 = bu.a(((r)localObject).uy(".com.tencent.mm.debug.report.clientpref"), false);
+              boolean bool4 = bu.a(((r)localObject).uy(".com.tencent.mm.debug.report.useraction"), false);
               c.d(bool1, bool2, bool3, bool4);
               new StringBuilder("try control report : debugModel[").append(bool1).append("],kv[").append(bool2).append("], clientPref[").append(bool3).append("], useraction[").append(bool4).append("]");
-              ac.iOI = bt.bI(((r)localObject).getString(".com.tencent.mm.debug.jsapi.permission"), "");
-              ad.d("MicroMsg.ExdDebugger", "Test.jsapiPermission = " + ac.iOI);
-              ac.iOJ = bt.bI(((r)localObject).getString(".com.tencent.mm.debug.generalcontrol.permission"), "");
-              ad.d("MicroMsg.ExdDebugger", "Test.generalCtrl = " + ac.iOJ);
-              ac.iOK = bt.a(((r)localObject).ud(".com.tencent.mm.debug.skiploadurlcheck"), false);
-              ad.d("MicroMsg.ExdDebugger", "Test.skipLoadUrlCheck = " + ac.iOK);
-              ab.MA();
+              ac.iRC = bu.bI(((r)localObject).getString(".com.tencent.mm.debug.jsapi.permission"), "");
+              ae.d("MicroMsg.ExdDebugger", "Test.jsapiPermission = " + ac.iRC);
+              ac.iRD = bu.bI(((r)localObject).getString(".com.tencent.mm.debug.generalcontrol.permission"), "");
+              ae.d("MicroMsg.ExdDebugger", "Test.generalCtrl = " + ac.iRD);
+              ac.iRE = bu.a(((r)localObject).uy(".com.tencent.mm.debug.skiploadurlcheck"), false);
+              ae.d("MicroMsg.ExdDebugger", "Test.skipLoadUrlCheck = " + ac.iRE);
+              ab.Mv();
               AppMethodBeat.o(19440);
               return;
               localException1 = localException1;
-              ad.i("MicroMsg.ExdDebugger", "no debugger was got");
+              ae.i("MicroMsg.ExdDebugger", "no debugger was got");
               continue;
               localException2 = localException2;
-              ad.i("MicroMsg.ExdDebugger", "no debugger was got");
+              ae.i("MicroMsg.ExdDebugger", "no debugger was got");
               continue;
               localException3 = localException3;
-              ad.i("MicroMsg.ExdDebugger", "no debugger was got");
+              ae.i("MicroMsg.ExdDebugger", "no debugger was got");
             }
           }
           catch (Exception localException4)
           {
             for (;;)
             {
-              ad.i("MicroMsg.ExdDebugger", "no debugger was got");
+              ae.i("MicroMsg.ExdDebugger", "no debugger was got");
             }
           }
         }
@@ -135,7 +135,7 @@ public class ExDeviceProfile
   
   public String toString()
   {
-    return cTJ;
+    return cUu;
   }
 }
 

@@ -5,27 +5,27 @@ import com.tencent.mm.protocal.l;
 import com.tencent.mm.protocal.l.c;
 import com.tencent.mm.protocal.l.e;
 import com.tencent.mm.protocal.protobuf.BaseResponse;
-import com.tencent.mm.protocal.protobuf.aga;
+import com.tencent.mm.protocal.protobuf.agj;
 
 public final class s$b
   extends l.e
   implements l.c
 {
-  public aga jdV;
+  public agj jgO;
   
   public s$b()
   {
     AppMethodBeat.i(131069);
-    this.jdV = new aga();
+    this.jgO = new agj();
     AppMethodBeat.o(131069);
   }
   
   public final int fromProtoBuf(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(131070);
-    this.jdV = ((aga)new aga().parseFrom(paramArrayOfByte));
-    l.a(this, this.jdV.getBaseResponse());
-    int i = this.jdV.getBaseResponse().Ret;
+    this.jgO = ((agj)new agj().parseFrom(paramArrayOfByte));
+    l.a(this, this.jgO.getBaseResponse());
+    int i = this.jgO.getBaseResponse().Ret;
     AppMethodBeat.o(131070);
     return i;
   }

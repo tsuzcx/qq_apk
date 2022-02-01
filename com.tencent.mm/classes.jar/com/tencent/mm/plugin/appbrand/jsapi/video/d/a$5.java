@@ -4,33 +4,33 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.e;
 import com.tencent.mm.plugin.appbrand.jsapi.e.a;
 import com.tencent.mm.plugin.appbrand.jsapi.video.AppBrandVideoView.a;
-import com.tencent.mm.plugin.appbrand.page.bp;
+import com.tencent.mm.plugin.appbrand.page.bo;
 
 final class a$5
   implements AppBrandVideoView.a
 {
-  a$5(a parama, e parame, boolean paramBoolean, int paramInt, bp parambp) {}
+  a$5(a parama, e parame, boolean paramBoolean, int paramInt, bo parambo) {}
   
-  public final void bkF()
+  public final void blp()
   {
-    AppMethodBeat.i(206222);
-    this.kCd.fG(this.kCg).sH(this.kCh);
-    AppMethodBeat.o(206222);
+    AppMethodBeat.i(211250);
+    this.kFs.fF(this.kFv).sK(this.kFw);
+    AppMethodBeat.o(211250);
   }
   
   public final boolean isFullScreen()
   {
-    AppMethodBeat.i(206223);
-    boolean bool = this.kCd.fG(this.kCg).sI(this.kCh);
-    AppMethodBeat.o(206223);
+    AppMethodBeat.i(211251);
+    boolean bool = this.kFs.fF(this.kFv).sL(this.kFw);
+    AppMethodBeat.o(211251);
     return bool;
   }
   
-  public final void te(int paramInt)
+  public final void th(int paramInt)
   {
-    AppMethodBeat.i(206221);
-    this.kCd.fG(this.kCg).a(this.kCh, this.kPc, paramInt);
-    AppMethodBeat.o(206221);
+    AppMethodBeat.i(211249);
+    this.kFs.fF(this.kFv).a(this.kFw, this.kSK, paramInt);
+    AppMethodBeat.o(211249);
   }
 }
 

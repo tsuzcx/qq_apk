@@ -4,15 +4,15 @@ import java.io.InputStream;
 
 public abstract interface o
 {
-  public abstract String Ld(String paramString);
+  public abstract String LD(String paramString);
   
-  public abstract String aZn();
+  public abstract String aZK();
   
-  public abstract String aZo();
+  public abstract String aZL();
   
-  public abstract int aZp();
+  public abstract int aZM();
   
-  public abstract IPkgInfo aZq();
+  public abstract IPkgInfo aZN();
   
   public abstract InputStream openRead(String paramString);
 }

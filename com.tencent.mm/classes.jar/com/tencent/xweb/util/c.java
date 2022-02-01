@@ -320,7 +320,7 @@ public final class c
     //   50	59	174	java/lang/Exception
   }
   
-  public static boolean bbn(String paramString)
+  public static boolean bcQ(String paramString)
   {
     AppMethodBeat.i(156996);
     try
@@ -626,7 +626,7 @@ public final class c
   }
   
   /* Error */
-  public static boolean lL(String paramString1, String paramString2)
+  public static boolean lS(String paramString1, String paramString2)
   {
     // Byte code:
     //   0: ldc 160
@@ -913,7 +913,7 @@ public final class c
     //   35	55	403	java/lang/Exception
   }
   
-  public static boolean nf(String paramString1, String paramString2)
+  public static boolean nl(String paramString1, String paramString2)
   {
     AppMethodBeat.i(156993);
     File localFile = new File(paramString2);
@@ -941,7 +941,7 @@ public final class c
     return true;
   }
   
-  public static boolean ng(String paramString1, String paramString2)
+  public static boolean nm(String paramString1, String paramString2)
   {
     AppMethodBeat.i(156994);
     Object localObject = new File(paramString2);
@@ -962,7 +962,7 @@ public final class c
         AppMethodBeat.o(156994);
         return false;
       }
-      if ((localObject[i].isDirectory()) && (!ng(paramString1 + "/" + localObject[i].getName(), paramString2 + "/" + localObject[i].getName())))
+      if ((localObject[i].isDirectory()) && (!nm(paramString1 + "/" + localObject[i].getName(), paramString2 + "/" + localObject[i].getName())))
       {
         AppMethodBeat.o(156994);
         return false;

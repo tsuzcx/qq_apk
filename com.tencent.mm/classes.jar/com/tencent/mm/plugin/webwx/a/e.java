@@ -1,40 +1,40 @@
 package com.tencent.mm.plugin.webwx.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.aib;
-import com.tencent.mm.protocal.protobuf.aic;
+import com.tencent.mm.protocal.protobuf.ail;
+import com.tencent.mm.protocal.protobuf.aim;
 
 public final class e
   extends n
   implements k
 {
-  public boolean EwT;
+  public boolean EPp;
   private f callback;
-  public final b hWL;
+  public final b hZD;
   
   public e(String paramString1, String paramString2, boolean paramBoolean)
   {
     AppMethodBeat.i(30178);
-    this.EwT = paramBoolean;
+    this.EPp = paramBoolean;
     b.a locala = new b.a();
-    aib localaib = new aib();
-    aic localaic = new aic();
-    locala.hNM = localaib;
-    locala.hNN = localaic;
+    ail localail = new ail();
+    aim localaim = new aim();
+    locala.hQF = localail;
+    locala.hQG = localaim;
     locala.uri = "/cgi-bin/micromsg-bin/extdeviceloginconfirmok";
     locala.funcId = 972;
-    locala.hNO = 0;
+    locala.hQH = 0;
     locala.respCmdId = 0;
-    localaib.Gfj = paramString1;
-    localaib.Gfu = paramString2;
-    localaib.Gfw = paramBoolean;
-    this.hWL = locala.aDC();
+    localail.GxR = paramString1;
+    localail.Gyc = paramString2;
+    localail.Gye = paramBoolean;
+    this.hZD = locala.aDS();
     AppMethodBeat.o(30178);
   }
   
@@ -42,7 +42,7 @@ public final class e
   {
     AppMethodBeat.i(30179);
     this.callback = paramf;
-    int i = dispatch(parame, this.hWL, this);
+    int i = dispatch(parame, this.hZD, this);
     AppMethodBeat.o(30179);
     return i;
   }

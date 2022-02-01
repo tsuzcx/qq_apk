@@ -6,11 +6,11 @@ import com.tencent.mm.toolkit.a.a.a;
 public final class f
   implements com.tencent.mm.toolkit.a.a.f
 {
-  private String IRi;
+  private String JlQ;
   
   public f(String paramString)
   {
-    this.IRi = paramString;
+    this.JlQ = paramString;
   }
   
   /* Error */
@@ -91,7 +91,7 @@ public final class f
     //   137: astore 4
     //   139: aload_3
     //   140: astore 5
-    //   142: invokestatic 104	com/tencent/mm/toolkit/a/e:fuo	()V
+    //   142: invokestatic 104	com/tencent/mm/toolkit/a/e:fyp	()V
     //   145: aload_3
     //   146: invokestatic 110	com/tencent/mm/toolkit/a/d$c:closeQuietly	(Ljava/io/Closeable;)V
     //   149: ldc 23
@@ -121,7 +121,7 @@ public final class f
     //   196: invokestatic 121	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
     //   199: invokevirtual 101	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   202: pop
-    //   203: invokestatic 124	com/tencent/mm/toolkit/a/e:fup	()V
+    //   203: invokestatic 124	com/tencent/mm/toolkit/a/e:fyq	()V
     //   206: ldc 23
     //   208: invokestatic 113	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   211: iconst_0
@@ -204,14 +204,14 @@ public final class f
   
   public final void d(c paramc)
   {
-    AppMethodBeat.i(211580);
-    if (!h(paramc.IQQ, this.IRi))
+    AppMethodBeat.i(189011);
+    if (!h(paramc.Jly, this.JlQ))
     {
       paramc = new a(1202, "File MD5 is invalid.");
-      AppMethodBeat.o(211580);
+      AppMethodBeat.o(189011);
       throw paramc;
     }
-    AppMethodBeat.o(211580);
+    AppMethodBeat.o(189011);
   }
 }
 

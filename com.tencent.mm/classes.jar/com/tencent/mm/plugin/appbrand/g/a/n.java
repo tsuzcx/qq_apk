@@ -9,17 +9,17 @@ public final class n
   {
     super(paramString1, "");
     AppMethodBeat.i(158901);
-    a(e.a.kcE);
-    cE("SID", paramString2);
+    a(e.a.kfV);
+    cG("SID", paramString2);
     AppMethodBeat.o(158901);
   }
   
-  public final String bff()
+  public final String bfN()
   {
     return "UNSUBSCRIBE";
   }
   
-  public final String bfg()
+  public final String bfO()
   {
     return "";
   }

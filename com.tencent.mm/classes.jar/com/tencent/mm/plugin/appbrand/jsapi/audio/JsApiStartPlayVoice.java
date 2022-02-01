@@ -3,40 +3,35 @@ package com.tencent.mm.plugin.appbrand.jsapi.audio;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.h.a;
-import com.tencent.mm.al.h.b;
-import com.tencent.mm.model.y;
-import com.tencent.mm.model.y.b;
-import com.tencent.mm.plugin.appbrand.c.b;
+import com.tencent.mm.model.z.b;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
 import com.tencent.mm.plugin.appbrand.jsapi.a;
 import com.tencent.mm.plugin.appbrand.jsapi.f.b;
 import com.tencent.mm.plugin.appbrand.jsapi.f.c;
 import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.plugin.appbrand.page.aa;
-import com.tencent.mm.plugin.appbrand.q;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.plugin.appbrand.r;
+import com.tencent.mm.sdk.platformtools.ar;
 import java.util.HashMap;
 import java.util.Map;
 
 public final class JsApiStartPlayVoice
-  extends a<q>
+  extends a<r>
 {
   public static final int CTRL_INDEX = 33;
   public static final String NAME = "playVoice";
-  public static String kxh = null;
-  private StartPlayVoice kxi;
+  public static String kAw = null;
+  private StartPlayVoice kAx;
   
   static class StartPlayVoice
     extends MainProcessTask
   {
     public static final Parcelable.Creator<StartPlayVoice> CREATOR;
-    public String drH;
+    public String dsN;
     public boolean error;
     public String filePath;
-    private q jCl;
-    private int kje;
-    private m kry;
+    private r jFj;
+    private int kmu;
+    private m kuO;
     
     static
     {
@@ -53,61 +48,34 @@ public final class JsApiStartPlayVoice
       AppMethodBeat.o(45964);
     }
     
-    public StartPlayVoice(m paramm, q paramq, int paramInt)
+    public StartPlayVoice(m paramm, r paramr, int paramInt)
     {
       this.error = false;
-      this.kry = paramm;
-      this.jCl = paramq;
-      this.kje = paramInt;
+      this.kuO = paramm;
+      this.jFj = paramr;
+      this.kmu = paramInt;
     }
     
-    public final void aOA()
+    public final void aOX()
     {
       AppMethodBeat.i(45965);
-      aq.f(new Runnable()
-      {
-        public final void run()
-        {
-          AppMethodBeat.i(45962);
-          b localb = b.jVe;
-          b.a(JsApiStartPlayVoice.StartPlayVoice.this.filePath, new h.a()new h.b
-          {
-            public final void onCompletion()
-            {
-              AppMethodBeat.i(45960);
-              JsApiStartPlayVoice.StartPlayVoice.this.error = false;
-              JsApiStartPlayVoice.StartPlayVoice.b(JsApiStartPlayVoice.StartPlayVoice.this);
-              AppMethodBeat.o(45960);
-            }
-          }, new h.b()
-          {
-            public final void onError()
-            {
-              AppMethodBeat.i(45961);
-              JsApiStartPlayVoice.StartPlayVoice.this.error = true;
-              JsApiStartPlayVoice.StartPlayVoice.c(JsApiStartPlayVoice.StartPlayVoice.this);
-              AppMethodBeat.o(45961);
-            }
-          });
-          AppMethodBeat.o(45962);
-        }
-      });
+      ar.f(new JsApiStartPlayVoice.StartPlayVoice.1(this));
       AppMethodBeat.o(45965);
     }
     
-    public final void aOB()
+    public final void aOY()
     {
       AppMethodBeat.i(45966);
       HashMap localHashMap = new HashMap();
-      localHashMap.put("localId", this.drH);
-      q localq = this.jCl;
-      int i = this.kje;
-      m localm = this.kry;
+      localHashMap.put("localId", this.dsN);
+      r localr = this.jFj;
+      int i = this.kmu;
+      m localm = this.kuO;
       if (this.error) {}
       for (String str = "fail";; str = "ok")
       {
-        localq.h(i, localm.m(str, localHashMap));
-        JsApiStartPlayVoice.kxh = null;
+        localr.h(i, localm.n(str, localHashMap));
+        JsApiStartPlayVoice.kAw = null;
         AppMethodBeat.o(45966);
         return;
       }
@@ -116,7 +84,7 @@ public final class JsApiStartPlayVoice
     public final void e(Parcel paramParcel)
     {
       AppMethodBeat.i(45967);
-      this.drH = paramParcel.readString();
+      this.dsN = paramParcel.readString();
       this.filePath = paramParcel.readString();
       if (paramParcel.readByte() != 0) {}
       for (boolean bool = true;; bool = false)
@@ -130,7 +98,7 @@ public final class JsApiStartPlayVoice
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
       AppMethodBeat.i(45968);
-      paramParcel.writeString(this.drH);
+      paramParcel.writeString(this.dsN);
       paramParcel.writeString(this.filePath);
       if (this.error) {}
       for (byte b = 1;; b = 0)
@@ -144,7 +112,7 @@ public final class JsApiStartPlayVoice
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.audio.JsApiStartPlayVoice
  * JD-Core Version:    0.7.0.1
  */

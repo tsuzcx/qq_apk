@@ -5,19 +5,19 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
 {
-  private static a cxO;
+  private static a.a cyv;
   
   static
   {
     AppMethodBeat.i(139954);
-    cxO = new a()
+    cyv = new a.a()
     {
-      public final int p(String paramAnonymousString, int paramAnonymousInt)
+      public final int q(String paramAnonymousString, int paramAnonymousInt)
       {
         return 0;
       }
       
-      public final Drawable q(String paramAnonymousString, int paramAnonymousInt)
+      public final Drawable r(String paramAnonymousString, int paramAnonymousInt)
       {
         return null;
       }
@@ -25,26 +25,19 @@ public final class a
     AppMethodBeat.o(139954);
   }
   
-  public static a Hw()
+  public static a.a HE()
   {
-    return cxO;
+    return cyv;
   }
   
-  public static void a(a parama)
+  public static void a(a.a parama)
   {
-    cxO = parama;
-  }
-  
-  public static abstract interface a
-  {
-    public abstract int p(String paramString, int paramInt);
-    
-    public abstract Drawable q(String paramString, int paramInt);
+    cyv = parama;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.magicbrush.a.a
  * JD-Core Version:    0.7.0.1
  */

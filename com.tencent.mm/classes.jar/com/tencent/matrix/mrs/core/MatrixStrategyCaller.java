@@ -3,13 +3,13 @@ package com.tencent.matrix.mrs.core;
 import android.content.Context;
 import android.os.Build.VERSION;
 import com.tencent.matrix.strategy.c.a;
-import com.tencent.mm.al.q;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.kernel.b;
-import com.tencent.mm.model.u;
+import com.tencent.mm.model.v;
 import com.tencent.mm.protocal.d;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.vfs.e;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.vfs.k;
 
 public abstract class MatrixStrategyCaller
   implements MrsCallback
@@ -21,7 +21,7 @@ public abstract class MatrixStrategyCaller
   
   public String getCryptKey(MatrixUploadDataSlice paramMatrixUploadDataSlice)
   {
-    return com.tencent.mm.b.g.getMessageDigest(String.format("weixin#$()%d%d", new Object[] { Integer.valueOf(d.Fnj), Long.valueOf(paramMatrixUploadDataSlice.getDataSize()) }).getBytes()).toLowerCase();
+    return com.tencent.mm.b.g.getMessageDigest(String.format("weixin#$()%d%d", new Object[] { Integer.valueOf(d.FFH), Long.valueOf(paramMatrixUploadDataSlice.getDataSize()) }).getBytes()).toLowerCase();
   }
   
   public String getHost(MatrixUploadDataSlice paramMatrixUploadDataSlice)
@@ -33,30 +33,30 @@ public abstract class MatrixStrategyCaller
   {
     try
     {
-      Object localObject = e.X(aj.getContext().getFilesDir());
-      if (!((e)localObject).exists()) {
-        ((e)localObject).createNewFile();
+      Object localObject = k.W(ak.getContext().getFilesDir());
+      if (!((k)localObject).exists()) {
+        ((k)localObject).createNewFile();
       }
-      localObject = ((e)localObject).toString();
+      localObject = ((k)localObject).toString();
       com.tencent.matrix.g.c.i("Matrix.MatrixStrategyCaller", "[TEST-PATH] getPublicSharePath, path: %s", new Object[] { localObject });
       localObject = (String)localObject + "/mrs/";
       return localObject;
     }
     catch (Exception localException)
     {
-      ad.e("Matrix.MatrixStrategyCaller", localException.toString());
+      ae.e("Matrix.MatrixStrategyCaller", localException.toString());
     }
     return "";
   }
   
   public String getUrl(MatrixUploadDataSlice paramMatrixUploadDataSlice)
   {
-    String str = com.tencent.mm.b.g.getMessageDigest(String.format("weixin#$()%d%d", new Object[] { Integer.valueOf(d.Fnj), Long.valueOf(paramMatrixUploadDataSlice.getDataSize()) }).getBytes()).toLowerCase();
-    StringBuilder localStringBuilder = new StringBuilder(512).append("/cgi-bin/mmsupport-bin/stackreport?version=").append(Integer.toHexString(d.Fnj)).append("&devicetype=").append("android-" + Build.VERSION.SDK_INT).append("&filelength=").append(paramMatrixUploadDataSlice.getDataSize()).append("&sum=").append(str);
+    String str = com.tencent.mm.b.g.getMessageDigest(String.format("weixin#$()%d%d", new Object[] { Integer.valueOf(d.FFH), Long.valueOf(paramMatrixUploadDataSlice.getDataSize()) }).getBytes()).toLowerCase();
+    StringBuilder localStringBuilder = new StringBuilder(512).append("/cgi-bin/mmsupport-bin/stackreport?version=").append(Integer.toHexString(d.FFH)).append("&devicetype=").append("android-" + Build.VERSION.SDK_INT).append("&filelength=").append(paramMatrixUploadDataSlice.getDataSize()).append("&sum=").append(str);
     long l;
-    if ((aj.cnC()) && (com.tencent.mm.kernel.g.ajx()))
+    if ((ak.cpe()) && (com.tencent.mm.kernel.g.ajM()))
     {
-      str = u.aAm();
+      str = v.aAC();
       if ((str != null) && (str.length() != 0)) {
         localStringBuilder.append("&username=").append(str);
       }
@@ -88,25 +88,25 @@ public abstract class MatrixStrategyCaller
   {
     try
     {
-      if (!com.tencent.mm.kernel.g.ajx())
+      if (!com.tencent.mm.kernel.g.ajM())
       {
-        ad.e("Matrix.MatrixStrategyCaller", "onRequestGetMrsStrategy, account not ready");
+        ae.e("Matrix.MatrixStrategyCaller", "onRequestGetMrsStrategy, account not ready");
         return false;
       }
       try
       {
         if (com.tencent.matrix.strategy.c.isRunning())
         {
-          ad.i("Matrix.MatrixStrategyCaller", "NetSceneGetMatrixStrategy is already running, just return");
+          ae.i("Matrix.MatrixStrategyCaller", "NetSceneGetMatrixStrategy is already running, just return");
           return false;
         }
       }
       finally {}
-      ad.i("Matrix.MatrixStrategyCaller", "onRequestGetMrsStrategy, try to request mrs strategy");
+      ae.i("Matrix.MatrixStrategyCaller", "onRequestGetMrsStrategy, try to request mrs strategy");
     }
     catch (Exception paramArrayOfByte)
     {
-      ad.e("Matrix.MatrixStrategyCaller", "error: " + paramArrayOfByte.getMessage());
+      ae.e("Matrix.MatrixStrategyCaller", "error: " + paramArrayOfByte.getMessage());
       return false;
     }
     paramArrayOfByte = new com.tencent.matrix.strategy.c(paramArrayOfByte, new c.a()
@@ -116,7 +116,7 @@ public abstract class MatrixStrategyCaller
         MrsLogic.onStrategyResp(paramAnonymousInt1, paramAnonymousInt2, paramAnonymousArrayOfByte);
       }
     });
-    com.tencent.mm.kernel.g.ajB().gAO.a(paramArrayOfByte, 0);
+    com.tencent.mm.kernel.g.ajQ().gDv.a(paramArrayOfByte, 0);
     return true;
   }
 }

@@ -1,26 +1,74 @@
 package com.tencent.mm.bb;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.messenger.foundation.a.a.k.b;
-import com.tencent.mm.protocal.protobuf.acy;
-import com.tencent.mm.protocal.protobuf.cwt;
-import com.tencent.mm.sdk.platformtools.bt;
 
-@Deprecated
 public final class e
-  extends k.b
+  extends com.tencent.mm.bw.a
 {
-  private acy iiq;
+  public String ilP;
+  public String lang;
   
-  public e(String paramString, long paramLong)
+  public final int op(int paramInt, Object... paramVarArgs)
   {
-    super(8);
-    AppMethodBeat.i(20564);
-    this.iiq = new acy();
-    this.iiq.GbY = new cwt().aPy(bt.nullAsNil(paramString));
-    this.iiq.xbt = paramLong;
-    this.vKm = this.iiq;
-    AppMethodBeat.o(20564);
+    AppMethodBeat.i(150796);
+    if (paramInt == 0)
+    {
+      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
+      if (this.ilP != null) {
+        paramVarArgs.d(1, this.ilP);
+      }
+      if (this.lang != null) {
+        paramVarArgs.d(2, this.lang);
+      }
+      AppMethodBeat.o(150796);
+      return 0;
+    }
+    if (paramInt == 1) {
+      if (this.ilP == null) {
+        break label274;
+      }
+    }
+    label274:
+    for (paramInt = f.a.a.b.b.a.e(1, this.ilP) + 0;; paramInt = 0)
+    {
+      int i = paramInt;
+      if (this.lang != null) {
+        i = paramInt + f.a.a.b.b.a.e(2, this.lang);
+      }
+      AppMethodBeat.o(150796);
+      return i;
+      if (paramInt == 2)
+      {
+        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.gCg();
+          }
+        }
+        AppMethodBeat.o(150796);
+        return 0;
+      }
+      if (paramInt == 3)
+      {
+        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+        e locale = (e)paramVarArgs[1];
+        switch (((Integer)paramVarArgs[2]).intValue())
+        {
+        default: 
+          AppMethodBeat.o(150796);
+          return -1;
+        case 1: 
+          locale.ilP = locala.OmT.readString();
+          AppMethodBeat.o(150796);
+          return 0;
+        }
+        locale.lang = locala.OmT.readString();
+        AppMethodBeat.o(150796);
+        return 0;
+      }
+      AppMethodBeat.o(150796);
+      return -1;
+    }
   }
 }
 

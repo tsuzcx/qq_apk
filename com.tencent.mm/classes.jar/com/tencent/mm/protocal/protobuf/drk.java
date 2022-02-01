@@ -4,71 +4,63 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 public final class drk
-  extends cvc
+  extends cvw
 {
-  public SKBuiltinBuffer_t FDQ;
-  public String HEO;
-  public String HEP;
-  public int Scene;
+  public iy Gpj;
+  public String Gpk;
+  public long timestamp;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(130921);
+    AppMethodBeat.i(91720);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
       if (this.BaseRequest != null)
       {
-        paramVarArgs.lC(1, this.BaseRequest.computeSize());
+        paramVarArgs.lJ(1, this.BaseRequest.computeSize());
         this.BaseRequest.writeFields(paramVarArgs);
       }
-      if (this.HEO != null) {
-        paramVarArgs.d(2, this.HEO);
-      }
-      if (this.HEP != null) {
-        paramVarArgs.d(3, this.HEP);
-      }
-      paramVarArgs.aS(4, this.Scene);
-      if (this.FDQ != null)
+      if (this.Gpj != null)
       {
-        paramVarArgs.lC(5, this.FDQ.computeSize());
-        this.FDQ.writeFields(paramVarArgs);
+        paramVarArgs.lJ(2, this.Gpj.computeSize());
+        this.Gpj.writeFields(paramVarArgs);
       }
-      AppMethodBeat.o(130921);
+      if (this.Gpk != null) {
+        paramVarArgs.d(3, this.Gpk);
+      }
+      paramVarArgs.aZ(4, this.timestamp);
+      AppMethodBeat.o(91720);
       return 0;
     }
     if (paramInt == 1) {
       if (this.BaseRequest == null) {
-        break label630;
+        break label570;
       }
     }
-    label630:
-    for (int i = f.a.a.a.lB(1, this.BaseRequest.computeSize()) + 0;; i = 0)
+    label570:
+    for (int i = f.a.a.a.lI(1, this.BaseRequest.computeSize()) + 0;; i = 0)
     {
       paramInt = i;
-      if (this.HEO != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.HEO);
+      if (this.Gpj != null) {
+        paramInt = i + f.a.a.a.lI(2, this.Gpj.computeSize());
       }
       i = paramInt;
-      if (this.HEP != null) {
-        i = paramInt + f.a.a.b.b.a.e(3, this.HEP);
+      if (this.Gpk != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.Gpk);
       }
-      i += f.a.a.b.b.a.bz(4, this.Scene);
-      paramInt = i;
-      if (this.FDQ != null) {
-        paramInt = i + f.a.a.a.lB(5, this.FDQ.computeSize());
-      }
-      AppMethodBeat.o(130921);
-      return paramInt;
+      paramInt = f.a.a.b.b.a.p(4, this.timestamp);
+      AppMethodBeat.o(91720);
+      return i + paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = cvc.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cvc.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = cvw.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cvw.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
-        AppMethodBeat.o(130921);
+        AppMethodBeat.o(91720);
         return 0;
       }
       if (paramInt == 3)
@@ -81,10 +73,10 @@ public final class drk
         switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(130921);
+          AppMethodBeat.o(91720);
           return -1;
         case 1: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
+          paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
@@ -92,41 +84,37 @@ public final class drk
             localObject2 = (byte[])paramVarArgs.get(paramInt);
             localObject1 = new jc();
             localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (bool = true; bool; bool = ((jc)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, cvc.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            for (bool = true; bool; bool = ((jc)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cvw.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
             localdrk.BaseRequest = ((jc)localObject1);
             paramInt += 1;
           }
-          AppMethodBeat.o(130921);
+          AppMethodBeat.o(91720);
           return 0;
         case 2: 
-          localdrk.HEO = ((f.a.a.a.a)localObject1).NPN.readString();
-          AppMethodBeat.o(130921);
+          paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject2 = (byte[])paramVarArgs.get(paramInt);
+            localObject1 = new iy();
+            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
+            for (bool = true; bool; bool = ((iy)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cvw.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            localdrk.Gpj = ((iy)localObject1);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(91720);
           return 0;
         case 3: 
-          localdrk.HEP = ((f.a.a.a.a)localObject1).NPN.readString();
-          AppMethodBeat.o(130921);
-          return 0;
-        case 4: 
-          localdrk.Scene = ((f.a.a.a.a)localObject1).NPN.zc();
-          AppMethodBeat.o(130921);
+          localdrk.Gpk = ((f.a.a.a.a)localObject1).OmT.readString();
+          AppMethodBeat.o(91720);
           return 0;
         }
-        paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
-        i = paramVarArgs.size();
-        paramInt = 0;
-        while (paramInt < i)
-        {
-          localObject2 = (byte[])paramVarArgs.get(paramInt);
-          localObject1 = new SKBuiltinBuffer_t();
-          localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-          for (bool = true; bool; bool = ((SKBuiltinBuffer_t)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, cvc.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-          localdrk.FDQ = ((SKBuiltinBuffer_t)localObject1);
-          paramInt += 1;
-        }
-        AppMethodBeat.o(130921);
+        localdrk.timestamp = ((f.a.a.a.a)localObject1).OmT.zd();
+        AppMethodBeat.o(91720);
         return 0;
       }
-      AppMethodBeat.o(130921);
+      AppMethodBeat.o(91720);
       return -1;
     }
   }

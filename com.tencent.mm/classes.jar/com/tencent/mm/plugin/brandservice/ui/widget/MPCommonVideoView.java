@@ -5,7 +5,7 @@ import android.util.AttributeSet;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.ui.CommonVideoView;
 import com.tencent.mm.pluginsdk.ui.tools.h;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.aq;
 
 public class MPCommonVideoView
   extends CommonVideoView
@@ -20,11 +20,11 @@ public class MPCommonVideoView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public final void tx(long paramLong)
+  public final void tO(long paramLong)
   {
     AppMethodBeat.i(6259);
-    super.tx(paramLong);
-    this.gIf.postDelayed(new Runnable()
+    super.tO(paramLong);
+    this.gKO.postDelayed(new Runnable()
     {
       public final void run()
       {
@@ -40,7 +40,7 @@ public class MPCommonVideoView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.ui.widget.MPCommonVideoView
  * JD-Core Version:    0.7.0.1
  */

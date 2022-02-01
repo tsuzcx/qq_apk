@@ -1,31 +1,31 @@
 package com.tencent.mm.emoji.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.protocal.protobuf.crz;
-import com.tencent.mm.protocal.protobuf.csa;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.protocal.protobuf.cst;
+import com.tencent.mm.protocal.protobuf.csu;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/emoji/model/CgiEmojiRecommend;", "Lcom/tencent/mm/modelbase/Cgi;", "Lcom/tencent/mm/protocal/protobuf/RecommendPanelEmojiResponse;", "req", "Lcom/tencent/mm/protocal/protobuf/RecommendPanelEmojiRequest;", "(Lcom/tencent/mm/protocal/protobuf/RecommendPanelEmojiRequest;)V", "getReq", "()Lcom/tencent/mm/protocal/protobuf/RecommendPanelEmojiRequest;", "plugin-emojisdk_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/emoji/model/CgiEmojiRecommend;", "Lcom/tencent/mm/modelbase/Cgi;", "Lcom/tencent/mm/protocal/protobuf/RecommendPanelEmojiResponse;", "req", "Lcom/tencent/mm/protocal/protobuf/RecommendPanelEmojiRequest;", "(Lcom/tencent/mm/protocal/protobuf/RecommendPanelEmojiRequest;)V", "getReq", "()Lcom/tencent/mm/protocal/protobuf/RecommendPanelEmojiRequest;", "plugin-emojisdk_release"})
 public final class b
-  extends com.tencent.mm.al.a<csa>
+  extends com.tencent.mm.ak.a<csu>
 {
-  private final crz gjM;
+  private final cst gmf;
   
-  public b(crz paramcrz)
+  public b(cst paramcst)
   {
-    AppMethodBeat.i(218944);
-    this.gjM = paramcrz;
-    paramcrz = new csa();
+    AppMethodBeat.i(188555);
+    this.gmf = paramcst;
+    paramcst = new csu();
     b.a locala = new b.a();
-    locala.c((com.tencent.mm.bx.a)this.gjM);
-    locala.d((com.tencent.mm.bx.a)paramcrz);
-    locala.Dl("/cgi-bin/micromsg-bin/mmrecommendpanelemoji");
-    locala.oP(3793);
-    locala.oR(0);
-    locala.oS(0);
-    c(locala.aDC());
-    AppMethodBeat.o(218944);
+    locala.c((com.tencent.mm.bw.a)this.gmf);
+    locala.d((com.tencent.mm.bw.a)paramcst);
+    locala.DN("/cgi-bin/micromsg-bin/mmrecommendpanelemoji");
+    locala.oS(3793);
+    locala.oU(0);
+    locala.oV(0);
+    c(locala.aDS());
+    AppMethodBeat.o(188555);
   }
 }
 

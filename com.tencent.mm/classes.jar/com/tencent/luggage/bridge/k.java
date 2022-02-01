@@ -18,7 +18,7 @@ public final class k
   {
     AppMethodBeat.i(140325);
     this.cgE = paramf;
-    paramf = paramm.BH();
+    paramf = paramm.BI();
     this.cgz = paramf.getString("method");
     this.cgn = paramf.optJSONObject("data");
     if (this.cgn == null) {
@@ -31,14 +31,14 @@ public final class k
     AppMethodBeat.o(140325);
   }
   
-  public final void BJ()
+  public final void BK()
   {
     AppMethodBeat.i(140327);
-    this.cgE.a(BK());
+    this.cgE.a(BL());
     AppMethodBeat.o(140327);
   }
   
-  final e BK()
+  final e BL()
   {
     AppMethodBeat.i(140328);
     c localc = new c(this.cgA, this.cgG, this.cgH, this.cgB);
@@ -59,7 +59,7 @@ public final class k
     {
       this.cgH = paramJSONObject;
       if (this.cgA != 0) {
-        BJ();
+        BK();
       }
       AppMethodBeat.o(140326);
       return;

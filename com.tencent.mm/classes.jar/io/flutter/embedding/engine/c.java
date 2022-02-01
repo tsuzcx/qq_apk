@@ -27,143 +27,143 @@ import java.util.Set;
 final class c
   implements b
 {
-  private b MCA;
-  private boolean MCB;
-  private final Map<Class<? extends io.flutter.embedding.engine.plugins.a>, io.flutter.embedding.engine.plugins.d.a> MCC;
-  private Service MCD;
-  private c MCE;
-  private final Map<Class<? extends io.flutter.embedding.engine.plugins.a>, io.flutter.embedding.engine.plugins.b.a> MCF;
-  private final Map<Class<? extends io.flutter.embedding.engine.plugins.a>, io.flutter.embedding.engine.plugins.c.a> MCG;
-  private ContentProvider MCH;
-  private final Map<Class<? extends io.flutter.embedding.engine.plugins.a>, io.flutter.embedding.engine.plugins.a> MCx;
-  private final a.b MCy;
-  private final Map<Class<? extends io.flutter.embedding.engine.plugins.a>, io.flutter.embedding.engine.plugins.a.a> MCz;
+  private final Map<Class<? extends io.flutter.embedding.engine.plugins.a>, io.flutter.embedding.engine.plugins.a> MZC;
+  private final a.b MZD;
+  private final Map<Class<? extends io.flutter.embedding.engine.plugins.a>, io.flutter.embedding.engine.plugins.a.a> MZE;
+  private b MZF;
+  private boolean MZG;
+  private final Map<Class<? extends io.flutter.embedding.engine.plugins.a>, io.flutter.embedding.engine.plugins.d.a> MZH;
+  private Service MZI;
+  private c MZJ;
+  private final Map<Class<? extends io.flutter.embedding.engine.plugins.a>, io.flutter.embedding.engine.plugins.b.a> MZK;
+  private final Map<Class<? extends io.flutter.embedding.engine.plugins.a>, io.flutter.embedding.engine.plugins.c.a> MZL;
+  private ContentProvider MZM;
   private Activity activity;
   private BroadcastReceiver broadcastReceiver;
-  private final a tiq;
+  private final a tti;
   
   c(Context paramContext, a parama, io.flutter.embedding.engine.a.a parama1)
   {
-    AppMethodBeat.i(213244);
-    this.MCx = new HashMap();
-    this.MCz = new HashMap();
-    this.MCB = false;
-    this.MCC = new HashMap();
-    this.MCF = new HashMap();
-    this.MCG = new HashMap();
-    this.tiq = parama;
-    this.MCy = new a.b(paramContext, parama, parama.MCh, parama.MBc, parama.MCs.MGE, new a(parama1, (byte)0));
-    AppMethodBeat.o(213244);
+    AppMethodBeat.i(197826);
+    this.MZC = new HashMap();
+    this.MZE = new HashMap();
+    this.MZG = false;
+    this.MZH = new HashMap();
+    this.MZK = new HashMap();
+    this.MZL = new HashMap();
+    this.tti = parama;
+    this.MZD = new a.b(paramContext, parama, parama.MZm, parama.MYh, parama.MZx.NdJ, new a(parama1, (byte)0));
+    AppMethodBeat.o(197826);
   }
   
-  private void geE()
+  private void gjg()
   {
     AppMethodBeat.i(10169);
-    if (geF())
+    if (gjh())
     {
-      geH();
+      gjj();
       AppMethodBeat.o(10169);
       return;
     }
-    if (geJ())
+    if (gjl())
     {
-      geK();
+      gjm();
       AppMethodBeat.o(10169);
       return;
     }
-    if (geL())
+    if (gjn())
     {
-      geM();
+      gjo();
       AppMethodBeat.o(10169);
       return;
     }
-    if (geN()) {
-      geO();
+    if (gjp()) {
+      gjq();
     }
     AppMethodBeat.o(10169);
   }
   
-  private boolean geF()
+  private boolean gjh()
   {
     return this.activity != null;
   }
   
-  private boolean geJ()
+  private boolean gjl()
   {
-    return this.MCD != null;
+    return this.MZI != null;
   }
   
-  private void geK()
+  private void gjm()
   {
     AppMethodBeat.i(10177);
-    if (geJ())
+    if (gjl())
     {
-      new StringBuilder("Detaching from a Service: ").append(this.MCD);
-      io.flutter.a.gea();
-      Iterator localIterator = this.MCC.values().iterator();
+      new StringBuilder("Detaching from a Service: ").append(this.MZI);
+      io.flutter.a.giD();
+      Iterator localIterator = this.MZH.values().iterator();
       while (localIterator.hasNext()) {
         localIterator.next();
       }
-      this.MCD = null;
-      this.MCE = null;
+      this.MZI = null;
+      this.MZJ = null;
       AppMethodBeat.o(10177);
       return;
     }
-    io.flutter.a.gee();
+    io.flutter.a.giH();
     AppMethodBeat.o(10177);
   }
   
-  private boolean geL()
+  private boolean gjn()
   {
     return this.broadcastReceiver != null;
   }
   
-  private void geM()
+  private void gjo()
   {
     AppMethodBeat.i(10178);
-    if (geL())
+    if (gjn())
     {
       new StringBuilder("Detaching from BroadcastReceiver: ").append(this.broadcastReceiver);
-      io.flutter.a.gea();
-      Iterator localIterator = this.MCF.values().iterator();
+      io.flutter.a.giD();
+      Iterator localIterator = this.MZK.values().iterator();
       while (localIterator.hasNext()) {
         localIterator.next();
       }
       AppMethodBeat.o(10178);
       return;
     }
-    io.flutter.a.gee();
+    io.flutter.a.giH();
     AppMethodBeat.o(10178);
   }
   
-  private boolean geN()
+  private boolean gjp()
   {
-    return this.MCH != null;
+    return this.MZM != null;
   }
   
-  private void geO()
+  private void gjq()
   {
     AppMethodBeat.i(10179);
-    if (geN())
+    if (gjp())
     {
-      new StringBuilder("Detaching from ContentProvider: ").append(this.MCH);
-      io.flutter.a.gea();
-      Iterator localIterator = this.MCG.values().iterator();
+      new StringBuilder("Detaching from ContentProvider: ").append(this.MZM);
+      io.flutter.a.giD();
+      Iterator localIterator = this.MZL.values().iterator();
       while (localIterator.hasNext()) {
         localIterator.next();
       }
       AppMethodBeat.o(10179);
       return;
     }
-    io.flutter.a.gee();
+    io.flutter.a.giH();
     AppMethodBeat.o(10179);
   }
   
   private void removeAll()
   {
     AppMethodBeat.i(10168);
-    s(new HashSet(this.MCx.keySet()));
-    this.MCx.clear();
+    s(new HashSet(this.MZC.keySet()));
+    this.MZC.clear();
     AppMethodBeat.o(10168);
   }
   
@@ -174,25 +174,25 @@ final class c
     while (paramSet.hasNext())
     {
       Class localClass = (Class)paramSet.next();
-      io.flutter.embedding.engine.plugins.a locala = (io.flutter.embedding.engine.plugins.a)this.MCx.get(localClass);
+      io.flutter.embedding.engine.plugins.a locala = (io.flutter.embedding.engine.plugins.a)this.MZC.get(localClass);
       if (locala != null)
       {
         new StringBuilder("Removing plugin: ").append(locala);
-        io.flutter.a.gea();
+        io.flutter.a.giD();
         if ((locala instanceof io.flutter.embedding.engine.plugins.a.a)) {
-          this.MCz.remove(localClass);
+          this.MZE.remove(localClass);
         }
         if ((locala instanceof io.flutter.embedding.engine.plugins.d.a)) {
-          this.MCC.remove(localClass);
+          this.MZH.remove(localClass);
         }
         if ((locala instanceof io.flutter.embedding.engine.plugins.b.a)) {
-          this.MCF.remove(localClass);
+          this.MZK.remove(localClass);
         }
         if ((locala instanceof io.flutter.embedding.engine.plugins.c.a)) {
-          this.MCG.remove(localClass);
+          this.MZL.remove(localClass);
         }
-        locala.geT();
-        this.MCx.remove(localClass);
+        locala.gjv();
+        this.MZC.remove(localClass);
       }
     }
     AppMethodBeat.o(10167);
@@ -202,31 +202,31 @@ final class c
   {
     AppMethodBeat.i(10170);
     StringBuilder localStringBuilder = new StringBuilder("Attaching to an Activity: ").append(paramActivity).append(".");
-    if (this.MCB) {}
+    if (this.MZG) {}
     for (String str = " This is after a config change.";; str = "")
     {
       localStringBuilder.append(str);
-      io.flutter.a.gea();
-      geE();
+      io.flutter.a.giD();
+      gjg();
       this.activity = paramActivity;
-      this.MCA = new b(paramActivity, paramLifecycle);
-      this.tiq.MCs.a(paramActivity, this.tiq.MBc, this.tiq.MCh);
-      paramActivity = this.MCz.values().iterator();
+      this.MZF = new b(paramActivity, paramLifecycle);
+      this.tti.MZx.a(paramActivity, this.tti.MYh, this.tti.MZm);
+      paramActivity = this.MZE.values().iterator();
       while (paramActivity.hasNext()) {
         paramActivity.next();
       }
     }
-    this.MCB = false;
+    this.MZG = false;
     AppMethodBeat.o(10170);
   }
   
   public final boolean a(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
     AppMethodBeat.i(10173);
-    io.flutter.a.gea();
-    if (geF())
+    io.flutter.a.giD();
+    if (gjh())
     {
-      Iterator localIterator = this.MCA.MCK.iterator();
+      Iterator localIterator = this.MZF.MZP.iterator();
       boolean bool = false;
       if (localIterator.hasNext())
       {
@@ -238,7 +238,7 @@ final class c
       AppMethodBeat.o(10173);
       return bool;
     }
-    io.flutter.a.gee();
+    io.flutter.a.giH();
     AppMethodBeat.o(10173);
     return false;
   }
@@ -246,96 +246,96 @@ final class c
   public final void destroy()
   {
     AppMethodBeat.i(10166);
-    io.flutter.a.gea();
-    geE();
+    io.flutter.a.giD();
+    gjg();
     removeAll();
     AppMethodBeat.o(10166);
   }
   
-  public final void geG()
+  public final void giS()
   {
-    AppMethodBeat.i(10171);
-    if (geF())
+    AppMethodBeat.i(197827);
+    io.flutter.a.giD();
+    if (gjh())
     {
-      new StringBuilder("Detaching from an Activity for config changes: ").append(this.activity);
-      io.flutter.a.gea();
-      this.MCB = true;
-      Iterator localIterator = this.MCz.values().iterator();
+      Iterator localIterator = this.MZF.MZT.iterator();
       while (localIterator.hasNext()) {
         localIterator.next();
       }
-      this.tiq.MCs.detach();
+      AppMethodBeat.o(197827);
+      return;
+    }
+    io.flutter.a.giH();
+    AppMethodBeat.o(197827);
+  }
+  
+  public final void gji()
+  {
+    AppMethodBeat.i(10171);
+    if (gjh())
+    {
+      new StringBuilder("Detaching from an Activity for config changes: ").append(this.activity);
+      io.flutter.a.giD();
+      this.MZG = true;
+      Iterator localIterator = this.MZE.values().iterator();
+      while (localIterator.hasNext()) {
+        localIterator.next();
+      }
+      this.tti.MZx.detach();
       this.activity = null;
-      this.MCA = null;
+      this.MZF = null;
       AppMethodBeat.o(10171);
       return;
     }
-    io.flutter.a.gee();
+    io.flutter.a.giH();
     AppMethodBeat.o(10171);
   }
   
-  public final void geH()
+  public final void gjj()
   {
     AppMethodBeat.i(10172);
-    if (geF())
+    if (gjh())
     {
       new StringBuilder("Detaching from an Activity: ").append(this.activity);
-      io.flutter.a.gea();
-      Iterator localIterator = this.MCz.values().iterator();
+      io.flutter.a.giD();
+      Iterator localIterator = this.MZE.values().iterator();
       while (localIterator.hasNext()) {
         localIterator.next();
       }
-      this.tiq.MCs.detach();
+      this.tti.MZx.detach();
       this.activity = null;
-      this.MCA = null;
+      this.MZF = null;
       AppMethodBeat.o(10172);
       return;
     }
-    io.flutter.a.gee();
+    io.flutter.a.giH();
     AppMethodBeat.o(10172);
   }
   
-  public final void geI()
+  public final void gjk()
   {
-    AppMethodBeat.i(213246);
-    io.flutter.a.gea();
-    if (geF())
+    AppMethodBeat.i(197828);
+    io.flutter.a.giD();
+    if (gjh())
     {
-      Iterator localIterator = this.MCA.MCO.iterator();
+      Iterator localIterator = this.MZF.MZT.iterator();
       while (localIterator.hasNext()) {
         localIterator.next();
       }
-      AppMethodBeat.o(213246);
+      AppMethodBeat.o(197828);
       return;
     }
-    io.flutter.a.gee();
-    AppMethodBeat.o(213246);
-  }
-  
-  public final void gep()
-  {
-    AppMethodBeat.i(213245);
-    io.flutter.a.gea();
-    if (geF())
-    {
-      Iterator localIterator = this.MCA.MCO.iterator();
-      while (localIterator.hasNext()) {
-        localIterator.next();
-      }
-      AppMethodBeat.o(213245);
-      return;
-    }
-    io.flutter.a.gee();
-    AppMethodBeat.o(213245);
+    io.flutter.a.giH();
+    AppMethodBeat.o(197828);
   }
   
   public final boolean onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     AppMethodBeat.i(10174);
-    io.flutter.a.gea();
-    if (geF())
+    io.flutter.a.giD();
+    if (gjh())
     {
-      Iterator localIterator = this.MCA.MCL.iterator();
+      Iterator localIterator = this.MZF.MZQ.iterator();
       boolean bool = false;
       if (localIterator.hasNext())
       {
@@ -347,7 +347,7 @@ final class c
       AppMethodBeat.o(10174);
       return bool;
     }
-    io.flutter.a.gee();
+    io.flutter.a.giH();
     AppMethodBeat.o(10174);
     return false;
   }
@@ -355,69 +355,69 @@ final class c
   public final void onNewIntent(Intent paramIntent)
   {
     AppMethodBeat.i(10175);
-    io.flutter.a.gea();
-    if (geF())
+    io.flutter.a.giD();
+    if (gjh())
     {
-      Iterator localIterator = this.MCA.MCM.iterator();
+      Iterator localIterator = this.MZF.MZR.iterator();
       while (localIterator.hasNext()) {
         ((m.b)localIterator.next()).onNewIntent(paramIntent);
       }
       AppMethodBeat.o(10175);
       return;
     }
-    io.flutter.a.gee();
+    io.flutter.a.giH();
     AppMethodBeat.o(10175);
   }
   
   public final void onUserLeaveHint()
   {
     AppMethodBeat.i(10176);
-    io.flutter.a.gea();
-    if (geF())
+    io.flutter.a.giD();
+    if (gjh())
     {
-      Iterator localIterator = this.MCA.MCN.iterator();
+      Iterator localIterator = this.MZF.MZS.iterator();
       while (localIterator.hasNext()) {
         ((m.e)localIterator.next()).onUserLeaveHint();
       }
       AppMethodBeat.o(10176);
       return;
     }
-    io.flutter.a.gee();
+    io.flutter.a.giH();
     AppMethodBeat.o(10176);
   }
   
   static final class a
     implements a.a
   {
-    final io.flutter.embedding.engine.a.a MCI;
+    final io.flutter.embedding.engine.a.a MZN;
     
     private a(io.flutter.embedding.engine.a.a parama)
     {
-      this.MCI = parama;
+      this.MZN = parama;
     }
   }
   
   static final class b
   {
-    private final HiddenLifecycleReference MCJ;
-    final Set<m.d> MCK;
-    final Set<m.a> MCL;
-    final Set<m.b> MCM;
-    final Set<m.e> MCN;
-    final Set<Object> MCO;
+    private final HiddenLifecycleReference MZO;
+    final Set<m.d> MZP;
+    final Set<m.a> MZQ;
+    final Set<m.b> MZR;
+    final Set<m.e> MZS;
+    final Set<Object> MZT;
     private final Activity activity;
     
     public b(Activity paramActivity, Lifecycle paramLifecycle)
     {
-      AppMethodBeat.i(213247);
-      this.MCK = new HashSet();
-      this.MCL = new HashSet();
-      this.MCM = new HashSet();
-      this.MCN = new HashSet();
-      this.MCO = new HashSet();
+      AppMethodBeat.i(197829);
+      this.MZP = new HashSet();
+      this.MZQ = new HashSet();
+      this.MZR = new HashSet();
+      this.MZS = new HashSet();
+      this.MZT = new HashSet();
       this.activity = paramActivity;
-      this.MCJ = new HiddenLifecycleReference(paramLifecycle);
-      AppMethodBeat.o(213247);
+      this.MZO = new HiddenLifecycleReference(paramLifecycle);
+      AppMethodBeat.o(197829);
     }
   }
   
@@ -425,7 +425,7 @@ final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     io.flutter.embedding.engine.c
  * JD-Core Version:    0.7.0.1
  */

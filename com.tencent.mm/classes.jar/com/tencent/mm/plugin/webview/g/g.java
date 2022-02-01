@@ -5,32 +5,29 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.RemoteException;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.x;
-import com.tencent.mm.cc.a;
-import com.tencent.mm.model.u;
+import com.tencent.mm.cb.a;
 import com.tencent.mm.plugin.brandservice.a.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.sdk.platformtools.j;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.k;
 import com.tencent.mm.storage.y;
 import com.tencent.mm.ui.ar;
 import com.tencent.mm.ui.e.b;
 import d.g.b.p;
-import d.v;
 import java.util.HashMap;
 import java.util.Map;
 import org.json.JSONObject;
 
-@d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/webview/preload/WebViewNativePageUtil;", "", "()V", "SHARE_FUN_FLAG_FRIEND", "", "SHARE_FUN_FLAG_TIMELINE", "TAG", "", "checkParam", "itemShowType", "data", "Lorg/json/JSONObject;", "doHandleMPPageAction", "", "msg", "Lcom/tencent/mm/plugin/webview/jsapi/MsgWrapper;", "msgHandler", "Lcom/tencent/mm/plugin/webview/ui/tools/jsapi/MsgHandler;", "callbacker", "Lcom/tencent/mm/plugin/webview/stub/WebViewStub_Callback_AIDL;", "doHandleSearchItemDetailPage", "fillNativePageData", "", "bundle", "Landroid/os/Bundle;", "fillNativePageMPMsgInfo", "fillNativePagePosData", "context", "Landroid/content/Context;", "currentInfoStr", "density", "", "intent", "Landroid/content/Intent;", "isFullScreen", "plugin-webview_release"})
+@d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/webview/preload/WebViewNativePageUtil;", "", "()V", "SHARE_FUN_FLAG_FRIEND", "", "SHARE_FUN_FLAG_TIMELINE", "TAG", "", "checkParam", "itemShowType", "data", "Lorg/json/JSONObject;", "doHandleMPPageAction", "", "msg", "Lcom/tencent/mm/plugin/webview/jsapi/MsgWrapper;", "msgHandler", "Lcom/tencent/mm/plugin/webview/ui/tools/jsapi/MsgHandler;", "callbacker", "Lcom/tencent/mm/plugin/webview/stub/WebViewStub_Callback_AIDL;", "doHandleSearchItemDetailPage", "fillNativePageData", "", "bundle", "Landroid/os/Bundle;", "fillNativePageMPMsgInfo", "fillNativePagePosData", "context", "Landroid/content/Context;", "currentInfoStr", "density", "", "intent", "Landroid/content/Intent;", "isFullScreen", "plugin-webview_release"})
 public final class g
 {
-  public static final g DXH;
+  public static final g EpJ;
   private static final String TAG = "MicroMsg.WebViewNativePageUtil";
   
   static
   {
     AppMethodBeat.i(82516);
-    DXH = new g();
+    EpJ = new g();
     TAG = "MicroMsg.WebViewNativePageUtil";
     AppMethodBeat.o(82516);
   }
@@ -40,7 +37,7 @@ public final class g
     AppMethodBeat.i(82513);
     p.h(paramContext, "context");
     p.h(paramIntent, "intent");
-    if (bt.isNullOrNil(paramString))
+    if (bu.isNullOrNil(paramString))
     {
       AppMethodBeat.o(82513);
       return;
@@ -50,8 +47,8 @@ public final class g
       paramString = new JSONObject(paramString).optJSONObject("pos");
       if (paramString != null)
       {
-        int i = ar.dT(paramContext);
-        int n = ar.jG(paramContext);
+        int i = ar.dX(paramContext);
+        int n = ar.jN(paramContext);
         int j = (int)(paramString.optDouble("width") * paramFloat);
         int k = (int)(paramString.optDouble("height") * paramFloat);
         int m = (int)(paramString.optDouble("x") * paramFloat);
@@ -64,8 +61,8 @@ public final class g
         {
           i = (int)(i + d1 * d2);
           paramIntent.putExtra("img_gallery_width", j).putExtra("img_gallery_height", k).putExtra("img_gallery_left", m).putExtra("img_gallery_top", i);
-          n = a.iq(paramContext);
-          ad.d(TAG, "fillNativePagePosData left %d, top %d, w %d, h %d, density %f,screenHeight %d", new Object[] { Integer.valueOf(m), Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), Float.valueOf(paramFloat), Integer.valueOf(n) });
+          n = a.iv(paramContext);
+          ae.d(TAG, "fillNativePagePosData left %d, top %d, w %d, h %d, density %f,screenHeight %d", new Object[] { Integer.valueOf(m), Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), Float.valueOf(paramFloat), Integer.valueOf(n) });
           AppMethodBeat.o(82513);
           return;
           i += n;
@@ -75,7 +72,7 @@ public final class g
     }
     catch (Exception paramContext)
     {
-      ad.e(TAG, "fillNativePagePosData exp " + paramContext.getMessage());
+      ae.e(TAG, "fillNativePagePosData exp " + paramContext.getMessage());
       AppMethodBeat.o(82513);
     }
   }
@@ -85,7 +82,7 @@ public final class g
     AppMethodBeat.i(175654);
     p.h(paramBundle, "bundle");
     p.h(paramJSONObject, "data");
-    ad.i(TAG, "fillNativePageData itemShowType ".concat(String.valueOf(paramInt)));
+    ae.i(TAG, "fillNativePageData itemShowType ".concat(String.valueOf(paramInt)));
     paramBundle.putString("url", paramJSONObject.optString("url"));
     if (paramJSONObject.has("item_show_type")) {
       paramBundle.putInt("item_show_type", paramJSONObject.getInt("item_show_type"));
@@ -93,12 +90,12 @@ public final class g
     if (paramJSONObject.has("scene"))
     {
       paramBundle.putInt("scene", paramJSONObject.optInt("scene"));
-      paramBundle.putInt(e.b.IUn, paramJSONObject.optInt("scene"));
+      paramBundle.putInt(e.b.JoV, paramJSONObject.optInt("scene"));
     }
     if (paramJSONObject.has("subscene"))
     {
       paramBundle.putInt("subscene", paramJSONObject.optInt("subscene"));
-      paramBundle.putInt(e.b.IUo, paramJSONObject.optInt("subscene"));
+      paramBundle.putInt(e.b.JoW, paramJSONObject.optInt("subscene"));
     }
     if (paramJSONObject.has("openType")) {
       paramBundle.putInt("openType", paramJSONObject.optInt("openType"));
@@ -120,22 +117,22 @@ public final class g
     Object localObject1 = null;
     int i = 0;
     int j = 0;
-    AppMethodBeat.i(207597);
+    AppMethodBeat.i(199353);
     p.h(paraml, "msg");
     p.h(paramf, "msgHandler");
-    Object localObject2 = paraml.xaW.get("action");
+    Object localObject2 = paraml.xqN.get("action");
     if (localObject2 == null)
     {
-      paraml = new v("null cannot be cast to non-null type kotlin.String");
-      AppMethodBeat.o(207597);
+      paraml = new d.v("null cannot be cast to non-null type kotlin.String");
+      AppMethodBeat.o(199353);
       throw paraml;
     }
     Object localObject3 = (String)localObject2;
-    ad.i(TAG, "doHandleMPPageAction action=%s", new Object[] { localObject3 });
-    if (bt.isNullOrNil((String)localObject3))
+    ae.i(TAG, "doHandleMPPageAction action=%s", new Object[] { localObject3 });
+    if (bu.isNullOrNil((String)localObject3))
     {
       paramf.a(paraml, "handleMPPageAction:fail action is empty", null);
-      AppMethodBeat.o(207597);
+      AppMethodBeat.o(199353);
       return false;
     }
     localObject2 = new Bundle();
@@ -143,22 +140,22 @@ public final class g
     long l;
     if (p.i("writeComment", localObject3))
     {
-      localObject1 = paraml.xaW.get("style");
+      localObject1 = paraml.xqN.get("style");
       if (localObject1 == null)
       {
-        paraml = new v("null cannot be cast to non-null type kotlin.String");
-        AppMethodBeat.o(207597);
+        paraml = new d.v("null cannot be cast to non-null type kotlin.String");
+        AppMethodBeat.o(199353);
         throw paraml;
       }
       localObject1 = (String)localObject1;
-      localObject3 = paraml.xaW.get("comment_id");
+      localObject3 = paraml.xqN.get("comment_id");
       if (localObject3 == null)
       {
-        paraml = new v("null cannot be cast to non-null type kotlin.String");
-        AppMethodBeat.o(207597);
+        paraml = new d.v("null cannot be cast to non-null type kotlin.String");
+        AppMethodBeat.o(199353);
         throw paraml;
       }
-      l = bt.getLong((String)localObject3, 0L);
+      l = bu.getLong((String)localObject3, 0L);
       ((Bundle)localObject2).putString("style", (String)localObject1);
       ((Bundle)localObject2).putLong("commentTopicId", l);
       if (paramf1 != null) {}
@@ -166,43 +163,43 @@ public final class g
       {
         paramf1.k(201, (Bundle)localObject2);
         paramf.a(paraml, "handleMPPageAction:ok", null);
-        AppMethodBeat.o(207597);
+        AppMethodBeat.o(199353);
         return true;
       }
       catch (RemoteException paramf1)
       {
         for (;;)
         {
-          ad.e(TAG, "doHandleHaoKanAction e=%s", new Object[] { paramf1.getMessage() });
+          ae.e(TAG, "doHandleHaoKanAction e=%s", new Object[] { paramf1.getMessage() });
         }
       }
     }
     if (p.i("writeCommentReply", localObject3))
     {
-      localObject1 = paraml.xaW.get("comment_id");
+      localObject1 = paraml.xqN.get("comment_id");
       if (localObject1 == null)
       {
-        paraml = new v("null cannot be cast to non-null type kotlin.String");
-        AppMethodBeat.o(207597);
+        paraml = new d.v("null cannot be cast to non-null type kotlin.String");
+        AppMethodBeat.o(199353);
         throw paraml;
       }
-      l = bt.getLong((String)localObject1, 0L);
-      localObject1 = paraml.xaW.get("reply_content");
+      l = bu.getLong((String)localObject1, 0L);
+      localObject1 = paraml.xqN.get("reply_content");
       if (localObject1 == null)
       {
-        paraml = new v("null cannot be cast to non-null type kotlin.String");
-        AppMethodBeat.o(207597);
+        paraml = new d.v("null cannot be cast to non-null type kotlin.String");
+        AppMethodBeat.o(199353);
         throw paraml;
       }
       localObject1 = (String)localObject1;
-      localObject3 = paraml.xaW.get("personal_comment_id");
+      localObject3 = paraml.xqN.get("personal_comment_id");
       if (localObject3 == null)
       {
-        paraml = new v("null cannot be cast to non-null type kotlin.String");
-        AppMethodBeat.o(207597);
+        paraml = new d.v("null cannot be cast to non-null type kotlin.String");
+        AppMethodBeat.o(199353);
         throw paraml;
       }
-      i = bt.getInt((String)localObject3, 0);
+      i = bu.getInt((String)localObject3, 0);
       ((Bundle)localObject2).putLong("commentTopicId", l);
       ((Bundle)localObject2).putString("reply_content", (String)localObject1);
       ((Bundle)localObject2).putInt("personal_comment_id", i);
@@ -211,14 +208,14 @@ public final class g
       {
         paramf1.k(201, (Bundle)localObject2);
         paramf.a(paraml, "handleMPPageAction:ok", null);
-        AppMethodBeat.o(207597);
+        AppMethodBeat.o(199353);
         return true;
       }
       catch (RemoteException paramf1)
       {
         for (;;)
         {
-          ad.e(TAG, "doHandleHaoKanAction e=%s", new Object[] { paramf1.getMessage() });
+          ae.e(TAG, "doHandleHaoKanAction e=%s", new Object[] { paramf1.getMessage() });
         }
       }
     }
@@ -226,7 +223,7 @@ public final class g
     {
       try
       {
-        ((Bundle)localObject2).putString("extInfo", (String)paraml.xaW.get("extInfo"));
+        ((Bundle)localObject2).putString("extInfo", (String)paraml.xqN.get("extInfo"));
         if (paramf1 != null) {
           paramf1.k(201, (Bundle)localObject2);
         }
@@ -235,28 +232,28 @@ public final class g
       {
         for (;;)
         {
-          ad.e(TAG, "doHandleMPPageAction e=%s", new Object[] { paramf1.getMessage() });
+          ae.e(TAG, "doHandleMPPageAction e=%s", new Object[] { paramf1.getMessage() });
         }
       }
       paramf.a(paraml, "handleMPPageAction:ok", null);
-      AppMethodBeat.o(207597);
+      AppMethodBeat.o(199353);
       return true;
     }
     if (p.i("showToast", localObject3))
     {
-      localObject1 = paraml.xaW.get("wording");
+      localObject1 = paraml.xqN.get("wording");
       if (localObject1 == null)
       {
-        paraml = new v("null cannot be cast to non-null type kotlin.String");
-        AppMethodBeat.o(207597);
+        paraml = new d.v("null cannot be cast to non-null type kotlin.String");
+        AppMethodBeat.o(199353);
         throw paraml;
       }
       localObject1 = (String)localObject1;
-      localObject3 = paraml.xaW.get("status");
+      localObject3 = paraml.xqN.get("status");
       if (localObject3 == null)
       {
-        paraml = new v("null cannot be cast to non-null type kotlin.String");
-        AppMethodBeat.o(207597);
+        paraml = new d.v("null cannot be cast to non-null type kotlin.String");
+        AppMethodBeat.o(199353);
         throw paraml;
       }
       localObject3 = (String)localObject3;
@@ -267,20 +264,20 @@ public final class g
       {
         paramf1.k(201, (Bundle)localObject2);
         paramf.a(paraml, "handleMPPageAction:ok", null);
-        AppMethodBeat.o(207597);
+        AppMethodBeat.o(199353);
         return true;
       }
       catch (RemoteException paramf1)
       {
         for (;;)
         {
-          ad.e(TAG, "doHandleMPPageAction e=%s", new Object[] { paramf1.getMessage() });
+          ae.e(TAG, "doHandleMPPageAction e=%s", new Object[] { paramf1.getMessage() });
         }
       }
     }
     if (p.i("switchVideo", localObject3))
     {
-      localObject1 = paraml.DNA;
+      localObject1 = paraml.Efz;
       p.g(localObject1, "msg.rawParams");
       a((Bundle)localObject2, 5, (JSONObject)localObject1);
       if (paramf1 != null) {}
@@ -288,24 +285,24 @@ public final class g
       {
         paramf1.k(201, (Bundle)localObject2);
         paramf.a(paraml, "handleMPPageAction:ok", null);
-        AppMethodBeat.o(207597);
+        AppMethodBeat.o(199353);
         return true;
       }
       catch (RemoteException paramf1)
       {
         for (;;)
         {
-          ad.e(TAG, "doHandleMPPageAction e=%s", new Object[] { paramf1.getMessage() });
+          ae.e(TAG, "doHandleMPPageAction e=%s", new Object[] { paramf1.getMessage() });
         }
       }
     }
     if (p.i("createAdWebview", localObject3))
     {
-      localObject1 = paraml.xaW.get("adUrl");
+      localObject1 = paraml.xqN.get("adUrl");
       if (localObject1 == null)
       {
-        paraml = new v("null cannot be cast to non-null type kotlin.String");
-        AppMethodBeat.o(207597);
+        paraml = new d.v("null cannot be cast to non-null type kotlin.String");
+        AppMethodBeat.o(199353);
         throw paraml;
       }
       ((Bundle)localObject2).putString("adUrl", (String)localObject1);
@@ -316,14 +313,14 @@ public final class g
         {
           paramf1 = paramf1.k(201, (Bundle)localObject2);
           if (paramf1 == null) {
-            p.gfZ();
+            p.gkB();
           }
           boolean bool = paramf1.getBoolean("ret");
           j = bool;
         }
         catch (RemoteException paramf1)
         {
-          ad.e(TAG, "doHandleMPPageAction e=%s", new Object[] { paramf1.getMessage() });
+          ae.e(TAG, "doHandleMPPageAction e=%s", new Object[] { paramf1.getMessage() });
           continue;
           paramf.a(paraml, "handleMPPageAction:fail", null);
           continue;
@@ -332,7 +329,7 @@ public final class g
           continue;
         }
         paramf.a(paraml, "handleMPPageAction:ok", null);
-        AppMethodBeat.o(207597);
+        AppMethodBeat.o(199353);
         return true;
         paramf1 = null;
       }
@@ -344,14 +341,14 @@ public final class g
       {
         paramf1.k(201, (Bundle)localObject2);
         paramf.a(paraml, "handleMPPageAction:ok", null);
-        AppMethodBeat.o(207597);
+        AppMethodBeat.o(199353);
         return true;
       }
       catch (RemoteException paramf1)
       {
         for (;;)
         {
-          ad.e(TAG, "doHandleMPPageAction e=%s", new Object[] { paramf1.getMessage() });
+          ae.e(TAG, "doHandleMPPageAction e=%s", new Object[] { paramf1.getMessage() });
         }
       }
     }
@@ -362,14 +359,14 @@ public final class g
       {
         paramf1.k(201, (Bundle)localObject2);
         paramf.a(paraml, "handleMPPageAction:ok", null);
-        AppMethodBeat.o(207597);
+        AppMethodBeat.o(199353);
         return true;
       }
       catch (RemoteException paramf1)
       {
         for (;;)
         {
-          ad.e(TAG, "doHandleMPPageAction e=%s", new Object[] { paramf1.getMessage() });
+          ae.e(TAG, "doHandleMPPageAction e=%s", new Object[] { paramf1.getMessage() });
         }
       }
     }
@@ -377,24 +374,24 @@ public final class g
     {
       try
       {
-        localObject1 = paraml.xaW.get("webviewId");
+        localObject1 = paraml.xqN.get("webviewId");
         if (localObject1 == null)
         {
-          paramf1 = new v("null cannot be cast to non-null type kotlin.String");
-          AppMethodBeat.o(207597);
+          paramf1 = new d.v("null cannot be cast to non-null type kotlin.String");
+          AppMethodBeat.o(199353);
           throw paramf1;
         }
       }
       catch (RemoteException paramf1)
       {
-        ad.e(TAG, "doHandleMPPageAction e=%s", new Object[] { paramf1.getMessage() });
+        ae.e(TAG, "doHandleMPPageAction e=%s", new Object[] { paramf1.getMessage() });
       }
       for (;;)
       {
         paramf.a(paraml, "handleMPPageAction:ok", null);
-        AppMethodBeat.o(207597);
+        AppMethodBeat.o(199353);
         return true;
-        ((Bundle)localObject2).putInt("webviewId", bt.getInt((String)localObject1, 0));
+        ((Bundle)localObject2).putInt("webviewId", bu.getInt((String)localObject1, 0));
         if (paramf1 != null) {
           paramf1.k(201, (Bundle)localObject2);
         }
@@ -404,24 +401,24 @@ public final class g
     {
       try
       {
-        localObject1 = paraml.xaW.get("webviewId");
+        localObject1 = paraml.xqN.get("webviewId");
         if (localObject1 == null)
         {
-          paramf1 = new v("null cannot be cast to non-null type kotlin.String");
-          AppMethodBeat.o(207597);
+          paramf1 = new d.v("null cannot be cast to non-null type kotlin.String");
+          AppMethodBeat.o(199353);
           throw paramf1;
         }
       }
       catch (RemoteException paramf1)
       {
-        ad.e(TAG, "doHandleMPPageAction e=%s", new Object[] { paramf1.getMessage() });
+        ae.e(TAG, "doHandleMPPageAction e=%s", new Object[] { paramf1.getMessage() });
       }
       for (;;)
       {
         paramf.a(paraml, "handleMPPageAction:ok", null);
-        AppMethodBeat.o(207597);
+        AppMethodBeat.o(199353);
         return true;
-        ((Bundle)localObject2).putInt("webviewId", bt.getInt((String)localObject1, 0));
+        ((Bundle)localObject2).putInt("webviewId", bu.getInt((String)localObject1, 0));
         if (paramf1 != null) {
           paramf1.k(201, (Bundle)localObject2);
         }
@@ -431,22 +428,22 @@ public final class g
     {
       try
       {
-        localObject1 = paraml.xaW.get("data");
+        localObject1 = paraml.xqN.get("data");
         if (localObject1 == null)
         {
-          paramf1 = new v("null cannot be cast to non-null type kotlin.String");
-          AppMethodBeat.o(207597);
+          paramf1 = new d.v("null cannot be cast to non-null type kotlin.String");
+          AppMethodBeat.o(199353);
           throw paramf1;
         }
       }
       catch (RemoteException paramf1)
       {
-        ad.e(TAG, "doHandleMPPageAction e=%s", new Object[] { paramf1.getMessage() });
+        ae.e(TAG, "doHandleMPPageAction e=%s", new Object[] { paramf1.getMessage() });
       }
       for (;;)
       {
         paramf.a(paraml, "handleMPPageAction:ok", null);
-        AppMethodBeat.o(207597);
+        AppMethodBeat.o(199353);
         return true;
         ((Bundle)localObject2).putString("data", (String)localObject1);
         if (paramf1 != null) {
@@ -476,7 +473,7 @@ public final class g
             ((Map)localObject2).put("vid", paramf1);
           }
           paramf.a(paraml, "handleMPPageAction:ok", (Map)localObject1);
-          AppMethodBeat.o(207597);
+          AppMethodBeat.o(199353);
           return true;
         }
       }
@@ -484,43 +481,43 @@ public final class g
       {
         for (;;)
         {
-          ad.e(TAG, "doHandleMPPageAction e=%s", new Object[] { paramf1.getMessage() });
+          ae.e(TAG, "doHandleMPPageAction e=%s", new Object[] { paramf1.getMessage() });
           paramf1 = (com.tencent.mm.plugin.webview.stub.f)localObject1;
         }
       }
     }
     if (p.i("sendMPPageData", localObject3))
     {
-      localObject1 = paraml.xaW.get("data");
+      localObject1 = paraml.xqN.get("data");
       if (localObject1 == null)
       {
-        paraml = new v("null cannot be cast to non-null type kotlin.String");
-        AppMethodBeat.o(207597);
+        paraml = new d.v("null cannot be cast to non-null type kotlin.String");
+        AppMethodBeat.o(199353);
         throw paraml;
       }
       ((Bundle)localObject2).putString("data", (String)localObject1);
-      localObject1 = paraml.xaW.get("sendTo");
+      localObject1 = paraml.xqN.get("sendTo");
       if (localObject1 == null)
       {
-        paraml = new v("null cannot be cast to non-null type kotlin.String");
-        AppMethodBeat.o(207597);
+        paraml = new d.v("null cannot be cast to non-null type kotlin.String");
+        AppMethodBeat.o(199353);
         throw paraml;
       }
       ((Bundle)localObject2).putString("sendTo", (String)localObject1);
-      if (!paraml.xaW.containsKey("webviewId")) {
+      if (!paraml.xqN.containsKey("webviewId")) {
         break label2623;
       }
-      localObject1 = paraml.xaW.get("webviewId");
+      localObject1 = paraml.xqN.get("webviewId");
       if (localObject1 == null)
       {
-        paraml = new v("null cannot be cast to non-null type kotlin.String");
-        AppMethodBeat.o(207597);
+        paraml = new d.v("null cannot be cast to non-null type kotlin.String");
+        AppMethodBeat.o(199353);
         throw paraml;
       }
     }
     label2618:
     label2623:
-    for (i = bt.getInt((String)localObject1, 0);; i = 0)
+    for (i = bu.getInt((String)localObject1, 0);; i = 0)
     {
       ((Bundle)localObject2).putInt("webviewId", i);
       if (paramf1 != null) {}
@@ -528,23 +525,23 @@ public final class g
       {
         paramf1.k(201, (Bundle)localObject2);
         paramf.a(paraml, "handleMPPageAction:ok", null);
-        AppMethodBeat.o(207597);
+        AppMethodBeat.o(199353);
         return true;
       }
       catch (RemoteException paramf1)
       {
         for (;;)
         {
-          ad.e(TAG, "doHandleMPPageAction e=%s", new Object[] { paramf1.getMessage() });
+          ae.e(TAG, "doHandleMPPageAction e=%s", new Object[] { paramf1.getMessage() });
         }
       }
       if (p.i("setWebviewBackground", localObject3))
       {
-        localObject1 = paraml.xaW.get("backgroundColor");
+        localObject1 = paraml.xqN.get("backgroundColor");
         if (localObject1 == null)
         {
-          paraml = new v("null cannot be cast to non-null type kotlin.String");
-          AppMethodBeat.o(207597);
+          paraml = new d.v("null cannot be cast to non-null type kotlin.String");
+          AppMethodBeat.o(199353);
           throw paraml;
         }
         ((Bundle)localObject2).putString("backgroundColor", (String)localObject1);
@@ -553,24 +550,24 @@ public final class g
         {
           paramf1.k(201, (Bundle)localObject2);
           paramf.a(paraml, "handleMPPageAction:ok", null);
-          AppMethodBeat.o(207597);
+          AppMethodBeat.o(199353);
           return true;
         }
         catch (RemoteException paramf1)
         {
           for (;;)
           {
-            ad.e(TAG, "doHandleMPPageAction e=%s", new Object[] { paramf1.getMessage() });
+            ae.e(TAG, "doHandleMPPageAction e=%s", new Object[] { paramf1.getMessage() });
           }
         }
       }
       if (p.i("opPlayer", localObject3))
       {
-        localObject1 = paraml.xaW.get("opType");
+        localObject1 = paraml.xqN.get("opType");
         if (localObject1 == null)
         {
-          paraml = new v("null cannot be cast to non-null type kotlin.String");
-          AppMethodBeat.o(207597);
+          paraml = new d.v("null cannot be cast to non-null type kotlin.String");
+          AppMethodBeat.o(199353);
           throw paraml;
         }
         ((Bundle)localObject2).putString("opType", (String)localObject1);
@@ -579,80 +576,80 @@ public final class g
         {
           paramf1.k(201, (Bundle)localObject2);
           paramf.a(paraml, "handleMPPageAction:ok", null);
-          AppMethodBeat.o(207597);
+          AppMethodBeat.o(199353);
           return true;
         }
         catch (RemoteException paramf1)
         {
           for (;;)
           {
-            ad.e(TAG, "doHandleMPPageAction e=%s", new Object[] { paramf1.getMessage() });
+            ae.e(TAG, "doHandleMPPageAction e=%s", new Object[] { paramf1.getMessage() });
           }
         }
       }
       if (p.i("paySuccess", localObject3))
       {
-        paramf1 = paraml.xaW;
+        paramf1 = paraml.xqN;
         p.g(paramf1, "msg.params");
         if (paramf1.containsKey("fullUrl"))
         {
-          paramf1 = paraml.xaW.get("fullUrl");
+          paramf1 = paraml.xqN.get("fullUrl");
           if (paramf1 == null)
           {
-            paraml = new v("null cannot be cast to non-null type kotlin.String");
-            AppMethodBeat.o(207597);
+            paraml = new d.v("null cannot be cast to non-null type kotlin.String");
+            AppMethodBeat.o(199353);
             throw paraml;
           }
         }
         for (paramf1 = (String)paramf1;; paramf1 = (String)paramf1)
         {
-          localObject1 = paraml.xaW;
+          localObject1 = paraml.xqN;
           p.g(localObject1, "msg.params");
           if (!((Map)localObject1).containsKey("itemShowType")) {
             break label2618;
           }
-          localObject1 = paraml.xaW.get("itemShowType");
+          localObject1 = paraml.xqN.get("itemShowType");
           if (localObject1 != null) {
             break;
           }
-          paraml = new v("null cannot be cast to non-null type kotlin.String");
-          AppMethodBeat.o(207597);
+          paraml = new d.v("null cannot be cast to non-null type kotlin.String");
+          AppMethodBeat.o(199353);
           throw paraml;
-          paramf1 = paraml.xaW.get("url");
+          paramf1 = paraml.xqN.get("url");
           if (paramf1 == null)
           {
-            paraml = new v("null cannot be cast to non-null type kotlin.String");
-            AppMethodBeat.o(207597);
+            paraml = new d.v("null cannot be cast to non-null type kotlin.String");
+            AppMethodBeat.o(199353);
             throw paraml;
           }
         }
       }
-      for (i = bt.getInt((String)localObject1, -1);; i = -1)
+      for (i = bu.getInt((String)localObject1, -1);; i = -1)
       {
-        if (bt.isNullOrNil(paramf1))
+        if (bu.isNullOrNil(paramf1))
         {
           paramf.a(paraml, "handleMPPageAction:fail_url_is_null", null);
-          AppMethodBeat.o(207597);
+          AppMethodBeat.o(199353);
           return true;
         }
-        ((b)com.tencent.mm.kernel.g.ab(b.class)).ct(paramf1, i);
+        ((b)com.tencent.mm.kernel.g.ab(b.class)).cx(paramf1, i);
         paramf.a(paraml, "handleMPPageAction:ok", null);
-        AppMethodBeat.o(207597);
+        AppMethodBeat.o(199353);
         return true;
         if (p.i("isGPVersion", localObject3))
         {
           paramf1 = new HashMap();
           localObject1 = (Map)paramf1;
-          if ((j.fjZ()) || (u.aAA())) {
+          if ((k.fnT()) || (com.tencent.mm.model.v.aAQ())) {
             i = 1;
           }
           ((Map)localObject1).put("GPVersion", Integer.valueOf(i));
           paramf.a(paraml, "handleMPPageAction:ok", (Map)paramf1);
-          AppMethodBeat.o(207597);
+          AppMethodBeat.o(199353);
           return true;
         }
         paramf.a(paraml, "handleMPPageAction:fail, action not support", null);
-        AppMethodBeat.o(207597);
+        AppMethodBeat.o(199353);
         return false;
       }
     }
@@ -662,7 +659,7 @@ public final class g
   {
     AppMethodBeat.i(175656);
     p.h(paramJSONObject, "data");
-    if ((paramInt == 5) && (((b)com.tencent.mm.kernel.g.ab(b.class)).zb(paramInt)))
+    if ((paramInt == 5) && (((b)com.tencent.mm.kernel.g.ab(b.class)).zk(paramInt)) && (!com.tencent.mm.pluginsdk.ui.tools.x.fjk()))
     {
       if (!paramJSONObject.has("srcUserName"))
       {
@@ -704,76 +701,76 @@ public final class g
     AppMethodBeat.i(175655);
     p.h(paramBundle, "bundle");
     p.h(paramJSONObject, "data");
-    x localx;
+    com.tencent.mm.ah.x localx;
     if (paramInt == 5)
     {
-      localx = new x();
-      localx.doK = paramJSONObject.optString("srcUserName");
-      localx.hDe = paramJSONObject.optString("srcDisplayName");
+      localx = new com.tencent.mm.ah.x();
+      localx.dpP = paramJSONObject.optString("srcUserName");
+      localx.hFW = paramJSONObject.optString("srcDisplayName");
       if (!paramJSONObject.has("url")) {
         break label208;
       }
-      localx.hDg.url = paramJSONObject.optString("url");
+      localx.hFY.url = paramJSONObject.optString("url");
     }
     for (;;)
     {
-      localx.hDg.title = paramJSONObject.optString("title");
-      localx.hDg.hDo = paramJSONObject.optString("digest");
-      localx.hDg.hDm = paramJSONObject.optString("cover");
-      localx.hDg.type = paramInt;
-      localx.hDg.time = paramJSONObject.optInt("pubTime");
-      localx.hDg.hDq = paramJSONObject.optInt("duration");
-      localx.hDg.videoWidth = paramJSONObject.optInt("videoWidth");
-      localx.hDg.videoHeight = paramJSONObject.optInt("videoHeight");
-      localx.hDg.hzm = paramJSONObject.optString("vid");
-      localx.s(paramBundle);
+      localx.hFY.title = paramJSONObject.optString("title");
+      localx.hFY.hGg = paramJSONObject.optString("digest");
+      localx.hFY.hGe = paramJSONObject.optString("cover");
+      localx.hFY.type = paramInt;
+      localx.hFY.time = paramJSONObject.optInt("pubTime");
+      localx.hFY.hGi = paramJSONObject.optInt("duration");
+      localx.hFY.videoWidth = paramJSONObject.optInt("videoWidth");
+      localx.hFY.videoHeight = paramJSONObject.optInt("videoHeight");
+      localx.hFY.hCa = paramJSONObject.optString("vid");
+      localx.t(paramBundle);
       AppMethodBeat.o(175655);
       return;
       label208:
       if (paramJSONObject.has("jumpUrl")) {
-        localx.hDg.url = paramJSONObject.optString("jumpUrl");
+        localx.hFY.url = paramJSONObject.optString("jumpUrl");
       }
     }
   }
   
   public static final boolean b(com.tencent.mm.plugin.webview.c.l paraml, com.tencent.mm.plugin.webview.ui.tools.jsapi.f paramf, com.tencent.mm.plugin.webview.stub.f paramf1)
   {
-    AppMethodBeat.i(207598);
+    AppMethodBeat.i(199354);
     p.h(paraml, "msg");
     p.h(paramf, "msgHandler");
-    if (!((b)com.tencent.mm.kernel.g.ab(b.class)).zc(5))
+    if (!((b)com.tencent.mm.kernel.g.ab(b.class)).zl(5))
     {
-      AppMethodBeat.o(207598);
+      AppMethodBeat.o(199354);
       return false;
     }
-    int i = paraml.DNA.optInt("itemType", -1);
+    int i = paraml.Efz.optInt("itemType", -1);
     paramf = new Bundle();
     if (i >= 0)
     {
-      paramf.putString("url", paraml.DNA.optString("jumpUrl"));
+      paramf.putString("url", paraml.Efz.optString("jumpUrl"));
       paramf.putInt("item_show_type", i);
-      paramf.putInt("scene", paraml.DNA.optInt("scene"));
+      paramf.putInt("scene", paraml.Efz.optInt("scene"));
       paramf.putInt("openType", -1);
-      if ((i == 5) && (((b)com.tencent.mm.kernel.g.ab(b.class)).zb(i)))
+      if ((i == 5) && (((b)com.tencent.mm.kernel.g.ab(b.class)).zk(i)))
       {
-        JSONObject localJSONObject = paraml.DNA;
+        JSONObject localJSONObject = paraml.Efz;
         p.g(localJSONObject, "msg.rawParams");
-        if (bt.isNullOrNil(b(i, localJSONObject)))
+        if (bu.isNullOrNil(b(i, localJSONObject)))
         {
-          if (paraml.DNA.has("currentInfo")) {
-            paramf.putString("currentInfo", paraml.DNA.optString("currentInfo"));
+          if (paraml.Efz.has("currentInfo")) {
+            paramf.putString("currentInfo", paraml.Efz.optString("currentInfo"));
           }
-          if (paraml.DNA.has("scene")) {
-            paramf.putInt(e.b.IUn, paraml.DNA.optInt("scene"));
+          if (paraml.Efz.has("scene")) {
+            paramf.putInt(e.b.JoV, paraml.Efz.optInt("scene"));
           }
-          paramf.putInt(e.b.IUo, paraml.DNA.optInt("subScene"));
-          paramf.putString("KPublisherId", paraml.DNA.optString("publishId"));
+          paramf.putInt(e.b.JoW, paraml.Efz.optInt("subScene"));
+          paramf.putString("KPublisherId", paraml.Efz.optString("publishId"));
           paramf.putInt("biz_video_session_id", y.getSessionId());
           paramf.putBoolean("isNativePage", true);
-          paraml = paraml.DNA;
+          paraml = paraml.Efz;
           p.g(paraml, "msg.rawParams");
           b(paramf, i, paraml);
-          com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(1061L, 20L, 1L, false);
+          com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(1061L, 20L, 1L, false);
         }
       }
       if (paramf1 == null) {
@@ -783,12 +780,12 @@ public final class g
     label346:
     for (paraml = paramf1.k(200, paramf); (paraml != null) && (paraml.getBoolean("success")); paraml = null)
     {
-      AppMethodBeat.o(207598);
+      AppMethodBeat.o(199354);
       return true;
-      AppMethodBeat.o(207598);
+      AppMethodBeat.o(199354);
       return false;
     }
-    AppMethodBeat.o(207598);
+    AppMethodBeat.o(199354);
     return false;
   }
 }

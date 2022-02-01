@@ -15,23 +15,23 @@ public final class k
   {
     AppMethodBeat.i(112784);
     c.a locala = new c.a();
-    locala.IhA = new Field[4];
+    locala.IBL = new Field[4];
     locala.columns = new String[5];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "code_id";
-    locala.IhC.put("code_id", "TEXT");
+    locala.IBN.put("code_id", "TEXT");
     localStringBuilder.append(" code_id TEXT");
     localStringBuilder.append(", ");
     locala.columns[1] = "card_id";
-    locala.IhC.put("card_id", "TEXT");
+    locala.IBN.put("card_id", "TEXT");
     localStringBuilder.append(" card_id TEXT");
     localStringBuilder.append(", ");
     locala.columns[2] = "code";
-    locala.IhC.put("code", "TEXT");
+    locala.IBN.put("code", "TEXT");
     localStringBuilder.append(" code TEXT");
     localStringBuilder.append(", ");
     locala.columns[3] = "status";
-    locala.IhC.put("status", "INTEGER");
+    locala.IBN.put("status", "INTEGER");
     localStringBuilder.append(" status INTEGER");
     locala.columns[4] = "rowid";
     locala.sql = localStringBuilder.toString();
@@ -46,7 +46,7 @@ public final class k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.card.model.k
  * JD-Core Version:    0.7.0.1
  */

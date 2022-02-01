@@ -4,9 +4,9 @@ import android.graphics.Color;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.i.a.b.b;
 import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.plugin.appbrand.z.g;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.plugin.appbrand.y.g;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -22,16 +22,16 @@ public final class c
     super.a(paramc, paramJSONObject, paramInt);
     if (paramJSONObject == null)
     {
-      ad.e("MicroMsg.JsApiAddMapCircles", "data is null");
+      ae.e("MicroMsg.JsApiAddMapCircles", "data is null");
       paramc.h(paramInt, e("fail:invalid data", null));
       AppMethodBeat.o(143657);
       return;
     }
-    ad.i("MicroMsg.JsApiAddMapCircles", "data:%s", new Object[] { paramJSONObject });
+    ae.i("MicroMsg.JsApiAddMapCircles", "data:%s", new Object[] { paramJSONObject });
     com.tencent.mm.plugin.appbrand.jsapi.i.a.b localb = h(paramc, paramJSONObject);
     if (localb == null)
     {
-      ad.e("MicroMsg.JsApiAddMapCircles", "mapView is null, return");
+      ae.e("MicroMsg.JsApiAddMapCircles", "mapView is null, return");
       paramc.h(paramInt, e("fail:mapview is null", null));
       AppMethodBeat.o(143657);
       return;
@@ -40,35 +40,36 @@ public final class c
     {
       if (paramJSONObject.has("circles"))
       {
-        localb.bkT();
+        localb.blD();
         paramJSONObject = new JSONArray(paramJSONObject.optString("circles"));
         int i = 0;
         while (i < paramJSONObject.length())
         {
-          Object localObject = (JSONObject)paramJSONObject.get(i);
-          double d1 = bt.getDouble(((JSONObject)localObject).optString("latitude"), 0.0D);
-          double d2 = bt.getDouble(((JSONObject)localObject).optString("longitude"), 0.0D);
-          int j = g.cg(((JSONObject)localObject).optString("color", ""), Color.parseColor("#000000"));
-          int k = g.cg(((JSONObject)localObject).optString("fillColor", ""), Color.parseColor("#000000"));
-          int m = ((JSONObject)localObject).optInt("radius");
-          float f = g.a((JSONObject)localObject, "strokeWidth", 0.0F);
-          localObject = new b.b();
-          ((b.b)localObject).latitude = d1;
-          ((b.b)localObject).longitude = d2;
-          ((b.b)localObject).radius = m;
-          ((b.b)localObject).strokeColor = j;
-          ((b.b)localObject).strokeWidth = ((int)f);
-          ((b.b)localObject).fillColor = k;
-          localb.a((b.b)localObject);
+          JSONObject localJSONObject = (JSONObject)paramJSONObject.get(i);
+          double d1 = bu.getDouble(localJSONObject.optString("latitude"), 0.0D);
+          double d2 = bu.getDouble(localJSONObject.optString("longitude"), 0.0D);
+          int j = g.ck(localJSONObject.optString("color", ""), Color.parseColor("#000000"));
+          int k = g.ck(localJSONObject.optString("fillColor", ""), Color.parseColor("#000000"));
+          int m = localJSONObject.optInt("radius");
+          float f = g.a(localJSONObject, "strokeWidth", 0.0F);
+          b.b localb1 = new b.b();
+          localb1.latitude = d1;
+          localb1.longitude = d2;
+          localb1.radius = m;
+          localb1.strokeColor = j;
+          localb1.strokeWidth = ((int)f);
+          localb1.fillColor = k;
+          localb1.kVm = localJSONObject.optString("level");
+          localb.a(localb1);
           i += 1;
         }
       }
-      a(paramc, paramInt, e("ok", null), true, localb.bkR());
+      a(paramc, paramInt, e("ok", null), true, localb.blB());
     }
     catch (Exception paramJSONObject)
     {
-      ad.e("MicroMsg.JsApiAddMapCircles", "parse circles error, exception : %s", new Object[] { paramJSONObject });
-      a(paramc, paramInt, e("fail:internal error", null), false, localb.bkR());
+      ae.e("MicroMsg.JsApiAddMapCircles", "parse circles error, exception : %s", new Object[] { paramJSONObject });
+      a(paramc, paramInt, e("fail:internal error", null), false, localb.blB());
       AppMethodBeat.o(143657);
       return;
     }
@@ -77,7 +78,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.i.c
  * JD-Core Version:    0.7.0.1
  */

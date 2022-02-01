@@ -18,7 +18,7 @@ final class a$7
     AppMethodBeat.i(66799);
     b localb = new b();
     localb.bd(paramView);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/order/ui/preference/DefaultOrderPrefFactory$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/order/ui/preference/DefaultOrderPrefFactory$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
     if (paramView.getTag() == null)
     {
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/order/ui/preference/DefaultOrderPrefFactory$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
@@ -28,7 +28,7 @@ final class a$7
     if ((paramView.getTag() instanceof MallOrderDetailObject.HelpCenter))
     {
       paramView = (MallOrderDetailObject.HelpCenter)paramView.getTag();
-      a.a(this.val$context, paramView.url, this.wCn);
+      a.a(this.val$context, paramView.url, this.wRY);
     }
     com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/order/ui/preference/DefaultOrderPrefFactory$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(66799);

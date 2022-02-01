@@ -12,7 +12,7 @@ public final class ce
   
   private ce(byte paramByte)
   {
-    this.IbR = false;
+    this.IvZ = false;
     this.callback = null;
   }
 }

@@ -9,25 +9,27 @@ import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.az.f;
+import com.tencent.mm.ay.f;
+import com.tencent.mm.g.a.mg;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.modelsns.e;
 import com.tencent.mm.opensdk.modelmsg.SendMessageToWX.Req;
 import com.tencent.mm.opensdk.modelmsg.WXMediaMessage;
 import com.tencent.mm.opensdk.modelmsg.WXMusicObject;
-import com.tencent.mm.plugin.sns.data.q;
-import com.tencent.mm.plugin.sns.model.ag;
-import com.tencent.mm.plugin.sns.model.bb;
+import com.tencent.mm.plugin.sns.data.r;
+import com.tencent.mm.plugin.sns.j.g;
 import com.tencent.mm.plugin.sns.model.bc;
+import com.tencent.mm.plugin.sns.model.bd;
 import com.tencent.mm.pluginsdk.i.d;
 import com.tencent.mm.pluginsdk.ui.applet.CdnImageView;
 import com.tencent.mm.pointers.PInt;
-import com.tencent.mm.protocal.protobuf.bvq;
-import com.tencent.mm.protocal.protobuf.dhj;
+import com.tencent.mm.protocal.protobuf.bwk;
+import com.tencent.mm.protocal.protobuf.did;
 import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.h;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.z;
 import java.util.Iterator;
@@ -37,178 +39,194 @@ import java.util.List;
 public final class ah
   implements ac
 {
+  private int Ahk;
+  private CdnImageView Ahl;
+  private TextView Ahm;
+  private e Ahq;
+  private String Ahr;
+  private boolean AiJ;
+  private boolean AiK;
+  WXMediaMessage AiL;
+  ImageView AjY;
+  private Bitmap AjZ;
   private String appName;
-  String duW;
-  MMActivity fLP;
-  private c kwD;
-  boolean lQV;
+  String dwb;
+  MMActivity fNT;
+  private c kzS;
+  boolean lVw;
   String mediaId;
   private View rY;
   private TextView titleTv;
-  private int zQd;
-  private CdnImageView zQe;
-  private TextView zQf;
-  private e zQj;
-  private String zQk;
-  private boolean zRC;
-  private boolean zRD;
-  WXMediaMessage zRE;
-  ImageView zSR;
-  private Bitmap zSS;
-  private int znT;
+  private int zFi;
   
   public ah(MMActivity paramMMActivity)
   {
     AppMethodBeat.i(97981);
-    this.zRE = null;
-    this.zQe = null;
+    this.AiL = null;
+    this.Ahl = null;
     this.titleTv = null;
-    this.zQf = null;
-    this.duW = "";
+    this.Ahm = null;
+    this.dwb = "";
     this.appName = "";
-    this.zRC = false;
-    this.zRD = false;
-    this.lQV = false;
-    this.zQj = null;
-    this.znT = 1;
-    this.zQk = "";
-    this.kwD = new ah.1(this);
-    this.fLP = paramMMActivity;
-    com.tencent.mm.sdk.b.a.IbL.c(this.kwD);
+    this.AiJ = false;
+    this.AiK = false;
+    this.lVw = false;
+    this.Ahq = null;
+    this.zFi = 1;
+    this.Ahr = "";
+    this.kzS = new c() {};
+    this.fNT = paramMMActivity;
+    com.tencent.mm.sdk.b.a.IvT.c(this.kzS);
     AppMethodBeat.o(97981);
   }
   
-  public final boolean a(int paramInt1, int paramInt2, org.b.d.i parami, String paramString1, List<String> paramList1, bvq parambvq, LinkedList<Long> paramLinkedList, int paramInt3, boolean paramBoolean, List<String> paramList2, PInt paramPInt, String paramString2, int paramInt4, int paramInt5)
+  public final boolean a(int paramInt1, int paramInt2, org.b.d.i parami, String paramString1, List<String> paramList1, bwk parambwk, LinkedList<Long> paramLinkedList, int paramInt3, boolean paramBoolean, List<String> paramList2, PInt paramPInt, String paramString2, int paramInt4, int paramInt5)
   {
     AppMethodBeat.i(97985);
-    ag.dUa();
-    paramString1 = bb.b(this.zRE, paramString1, this.duW, this.appName);
+    com.tencent.mm.plugin.sns.model.ah.dXA();
+    paramString1 = bc.b(this.AiL, paramString1, this.dwb, this.appName);
     if (paramString1 == null)
     {
-      ad.e("MicroMsg.MusicWidget", "packHelper == null, %s, %s", new Object[] { this.duW, this.appName });
+      ae.e("MicroMsg.MusicWidget", "packHelper == null, %s, %s", new Object[] { this.dwb, this.appName });
       AppMethodBeat.o(97985);
       return false;
     }
     paramPInt.value = paramString1.beN;
-    if (paramInt3 > com.tencent.mm.plugin.sns.c.a.zbZ) {
-      paramString1.Qb(4);
+    if (paramInt3 > com.tencent.mm.plugin.sns.c.a.zsC) {
+      paramString1.QI(4);
     }
-    paramString1.Qg(this.zQd);
-    if (this.zRC) {
-      paramString1.Qg(5);
+    paramString1.QN(this.Ahk);
+    if (this.AiJ) {
+      paramString1.QN(5);
     }
     paramLinkedList = new LinkedList();
     if (paramList1 != null)
     {
       new LinkedList();
-      paramPInt = d.fas();
+      paramPInt = d.feg();
       paramList1 = paramList1.iterator();
       while (paramList1.hasNext())
       {
         paramString2 = (String)paramList1.next();
         if (!paramPInt.contains(paramString2))
         {
-          dhj localdhj = new dhj();
-          localdhj.nDo = paramString2;
-          paramLinkedList.add(localdhj);
+          did localdid = new did();
+          localdid.nIJ = paramString2;
+          paramLinkedList.add(localdid);
         }
       }
     }
-    paramString1.aU(paramLinkedList);
+    paramString1.aV(paramLinkedList);
     if (parami != null) {
-      paramString1.jr(parami.token, parami.GTp);
+      paramString1.jy(parami.token, parami.HmQ);
     }
-    paramString1.a(parambvq);
+    paramString1.a(parambwk);
     if (paramBoolean) {
-      paramString1.Qh(1);
+      paramString1.QO(1);
     }
     for (;;)
     {
-      paramString1.fL(paramList2).Qe(paramInt1);
+      paramString1.fU(paramList2).QL(paramInt1);
       paramString1.g(null, null, null, paramInt4, paramInt5);
-      paramString1.cc(this.znT, this.zQk);
-      if ((this.zRD) && (this.zRE != null))
+      paramString1.cc(this.zFi, this.Ahr);
+      if ((this.AiK) && (this.AiL != null))
       {
-        paramString1.azk(this.zRE.mediaTagName);
-        paramString1.aD(this.duW, this.zRE.messageExt, this.zRE.messageAction);
+        paramString1.aAB(this.AiL.mediaTagName);
+        paramString1.aD(this.dwb, this.AiL.messageExt, this.AiL.messageAction);
       }
       paramInt1 = paramString1.commit();
-      if (this.zQj != null)
+      if (this.Ahq != null)
       {
-        this.zQj.pX(paramInt1);
-        com.tencent.mm.plugin.sns.j.g.zus.c(this.zQj);
+        this.Ahq.qa(paramInt1);
+        g.zLJ.c(this.Ahq);
       }
-      ag.dUa().dSE();
-      this.fLP.finish();
+      com.tencent.mm.plugin.sns.model.ah.dXA().dWc();
+      this.fNT.finish();
       AppMethodBeat.o(97985);
       return false;
-      paramString1.Qh(0);
+      paramString1.QO(0);
     }
   }
   
-  public final void ap(Bundle paramBundle)
+  public final void aq(Bundle paramBundle)
   {
     AppMethodBeat.i(97982);
-    this.zRE = new SendMessageToWX.Req(this.fLP.getIntent().getBundleExtra("Ksnsupload_timeline")).message;
-    this.mediaId = this.fLP.getIntent().getStringExtra("Ksnsupload_musicid");
-    this.zQj = e.w(this.fLP.getIntent());
-    this.duW = bt.bI(this.fLP.getIntent().getStringExtra("Ksnsupload_appid"), "");
-    this.appName = bt.bI(this.fLP.getIntent().getStringExtra("Ksnsupload_appname"), "");
-    this.zRC = this.fLP.getIntent().getBooleanExtra("KThrid_app", false);
-    this.zRD = this.fLP.getIntent().getBooleanExtra("KSnsAction", false);
-    this.zQd = this.fLP.getIntent().getIntExtra("Ksnsupload_source", 0);
-    if (this.fLP.getIntent().getBooleanExtra("SendAppMessageWrapper_TokenValid", true)) {}
-    for (this.znT = 1;; this.znT = 0)
+    this.AiL = new SendMessageToWX.Req(this.fNT.getIntent().getBundleExtra("Ksnsupload_timeline")).message;
+    this.mediaId = this.fNT.getIntent().getStringExtra("Ksnsupload_musicid");
+    this.Ahq = e.w(this.fNT.getIntent());
+    this.dwb = bu.bI(this.fNT.getIntent().getStringExtra("Ksnsupload_appid"), "");
+    this.appName = bu.bI(this.fNT.getIntent().getStringExtra("Ksnsupload_appname"), "");
+    this.AiJ = this.fNT.getIntent().getBooleanExtra("KThrid_app", false);
+    this.AiK = this.fNT.getIntent().getBooleanExtra("KSnsAction", false);
+    this.Ahk = this.fNT.getIntent().getIntExtra("Ksnsupload_source", 0);
+    if (this.fNT.getIntent().getBooleanExtra("SendAppMessageWrapper_TokenValid", true)) {}
+    for (this.zFi = 1;; this.zFi = 0)
     {
-      this.zQk = bt.bI(this.fLP.getIntent().getStringExtra("SendAppMessageWrapper_PkgName"), "");
+      this.Ahr = bu.bI(this.fNT.getIntent().getStringExtra("SendAppMessageWrapper_PkgName"), "");
       AppMethodBeat.o(97982);
       return;
     }
   }
   
-  public final void aq(Bundle paramBundle) {}
+  public final void ar(Bundle paramBundle) {}
   
-  public final boolean dZG()
+  final void edG()
+  {
+    AppMethodBeat.i(97983);
+    new aq(this.fNT.getMainLooper()).post(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(97978);
+        com.tencent.mm.ay.a.aJX();
+        ah.this.lVw = false;
+        AppMethodBeat.o(97978);
+      }
+    });
+    AppMethodBeat.o(97983);
+  }
+  
+  public final boolean edl()
   {
     return true;
   }
   
-  public final View dZH()
+  public final View edm()
   {
     AppMethodBeat.i(97984);
-    this.rY = z.jO(this.fLP).inflate(2131495817, null);
-    this.zQe = ((CdnImageView)this.rY.findViewById(2131300948));
+    this.rY = z.jV(this.fNT).inflate(2131495817, null);
+    this.Ahl = ((CdnImageView)this.rY.findViewById(2131300948));
     this.titleTv = ((TextView)this.rY.findViewById(2131305950));
-    this.zQf = ((TextView)this.rY.findViewById(2131304202));
+    this.Ahm = ((TextView)this.rY.findViewById(2131304202));
     this.rY.findViewById(2131305185).setVisibility(8);
-    this.titleTv.setText(this.zRE.title);
-    if (this.zRE.thumbData != null) {
-      this.zSS = com.tencent.mm.sdk.platformtools.g.cr(this.zRE.thumbData);
+    this.titleTv.setText(this.AiL.title);
+    if (this.AiL.thumbData != null) {
+      this.AjZ = h.cu(this.AiL.thumbData);
     }
-    this.zQe.setImageBitmap(this.zSS);
-    if (!bt.isNullOrNil(this.zRE.description))
+    this.Ahl.setImageBitmap(this.AjZ);
+    if (!bu.isNullOrNil(this.AiL.description))
     {
-      this.zQf.setText(this.zRE.description);
-      this.zQf.setVisibility(0);
-      this.zSR = ((ImageView)this.rY.findViewById(2131305185));
-      this.zSR.setVisibility(0);
-      if ((!com.tencent.mm.az.a.aJG()) || (!this.lQV)) {
+      this.Ahm.setText(this.AiL.description);
+      this.Ahm.setVisibility(0);
+      this.AjY = ((ImageView)this.rY.findViewById(2131305185));
+      this.AjY.setVisibility(0);
+      if ((!com.tencent.mm.ay.a.aJZ()) || (!this.lVw)) {
         break label273;
       }
-      this.zSR.setImageResource(2131233393);
+      this.AjY.setImageResource(2131233393);
     }
     for (;;)
     {
-      this.zSR.setOnClickListener(new View.OnClickListener()
+      this.AjY.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(97980);
           b localb = new b();
           localb.bd(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/sns/ui/MusicWidget$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-          if (com.tencent.mm.az.a.aJG()) {
-            ah.this.eaa();
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/sns/ui/MusicWidget$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+          if (com.tencent.mm.ay.a.aJZ()) {
+            ah.this.edG();
           }
           for (;;)
           {
@@ -216,54 +234,43 @@ public final class ah
             AppMethodBeat.o(97980);
             return;
             paramAnonymousView = ah.this;
-            if (paramAnonymousView.zRE == null) {
-              ad.w("MicroMsg.MusicWidget", "doBeingPlayMusic: but item is null");
+            if (paramAnonymousView.AiL == null) {
+              ae.w("MicroMsg.MusicWidget", "doBeingPlayMusic: but item is null");
             } else {
-              new ap(paramAnonymousView.fLP.getMainLooper()).post(new ah.3(paramAnonymousView));
+              new aq(paramAnonymousView.fNT.getMainLooper()).post(new ah.3(paramAnonymousView));
             }
           }
         }
       });
-      q.b(this.zQe, this.fLP);
+      r.b(this.Ahl, this.fNT);
       View localView = this.rY;
       AppMethodBeat.o(97984);
       return localView;
-      this.zQf.setVisibility(8);
+      this.Ahm.setVisibility(8);
       break;
       label273:
-      this.zSR.setImageResource(2131233395);
+      this.AjY.setImageResource(2131233395);
     }
   }
   
-  public final boolean dZI()
+  public final boolean edn()
+  {
+    return true;
+  }
+  
+  public final boolean edo()
   {
     AppMethodBeat.i(97986);
-    if ((this.zSS != null) && (!this.zSS.isRecycled())) {
-      this.zSS.recycle();
+    if ((this.AjZ != null) && (!this.AjZ.isRecycled())) {
+      this.AjZ.recycle();
     }
-    com.tencent.mm.sdk.b.a.IbL.d(this.kwD);
-    if ((com.tencent.mm.az.a.aJG()) && (this.lQV)) {
-      eaa();
+    com.tencent.mm.sdk.b.a.IvT.d(this.kzS);
+    if ((com.tencent.mm.ay.a.aJZ()) && (this.lVw)) {
+      edG();
     }
-    boolean bool = com.tencent.mm.az.a.aJG();
+    boolean bool = com.tencent.mm.ay.a.aJZ();
     AppMethodBeat.o(97986);
     return bool;
-  }
-  
-  final void eaa()
-  {
-    AppMethodBeat.i(97983);
-    new ap(this.fLP.getMainLooper()).post(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(97978);
-        com.tencent.mm.az.a.aJE();
-        ah.this.lQV = false;
-        AppMethodBeat.o(97978);
-      }
-    });
-    AppMethodBeat.o(97983);
   }
   
   public final boolean k(int paramInt, Intent paramIntent)

@@ -7,6 +7,7 @@ import com.google.android.exoplayer2.h.t;
 import com.google.android.exoplayer2.i.a;
 import com.google.android.exoplayer2.w.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.io.IOException;
 
 public final class g
   implements f.c, i
@@ -14,7 +15,7 @@ public final class g
   private final w.a bcl;
   private i.a bvG;
   private final int bvJ;
-  private final g.a bvK;
+  private final a bvK;
   private final String bvN;
   private final com.google.android.exoplayer2.h.g.a bwq;
   private final com.google.android.exoplayer2.c.h bwr;
@@ -24,17 +25,17 @@ public final class g
   private final Handler eventHandler;
   private final Uri uri;
   
-  public g(Uri paramUri, com.google.android.exoplayer2.h.g.a parama, com.google.android.exoplayer2.c.h paramh, Handler paramHandler, g.a parama1)
+  public g(Uri paramUri, com.google.android.exoplayer2.h.g.a parama, com.google.android.exoplayer2.c.h paramh, Handler paramHandler, a parama1)
   {
     this(paramUri, parama, paramh, paramHandler, parama1, (byte)0);
   }
   
-  private g(Uri paramUri, com.google.android.exoplayer2.h.g.a parama, com.google.android.exoplayer2.c.h paramh, Handler paramHandler, g.a parama1, byte paramByte)
+  private g(Uri paramUri, com.google.android.exoplayer2.h.g.a parama, com.google.android.exoplayer2.c.h paramh, Handler paramHandler, a parama1, byte paramByte)
   {
     this(paramUri, parama, paramh, paramHandler, parama1, '\000');
   }
   
-  private g(Uri paramUri, com.google.android.exoplayer2.h.g.a parama, com.google.android.exoplayer2.c.h paramh, Handler paramHandler, g.a parama1, char paramChar)
+  private g(Uri paramUri, com.google.android.exoplayer2.h.g.a parama, com.google.android.exoplayer2.c.h paramh, Handler paramHandler, a parama1, char paramChar)
   {
     AppMethodBeat.i(92672);
     this.uri = paramUri;
@@ -122,10 +123,15 @@ public final class g
   {
     this.bvG = null;
   }
+  
+  public static abstract interface a
+  {
+    public abstract void onLoadError(IOException paramIOException);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.exoplayer2.source.g
  * JD-Core Version:    0.7.0.1
  */

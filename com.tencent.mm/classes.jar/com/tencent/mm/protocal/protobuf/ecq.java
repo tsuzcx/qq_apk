@@ -1,139 +1,99 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bw.b;
 
 public final class ecq
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public com.tencent.mm.bx.b HOD;
-  public String hDa;
-  public String nDo;
-  public String nEt;
-  public int ukh;
+  public b IhN;
+  public String description;
+  public String qlv;
+  public String title;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(32527);
+    AppMethodBeat.i(188965);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.nDo == null)
-      {
-        paramVarArgs = new f.a.a.b("Not all required fields were included: UserName");
-        AppMethodBeat.o(32527);
-        throw paramVarArgs;
+      if (this.qlv != null) {
+        paramVarArgs.d(1, this.qlv);
       }
-      if (this.nEt == null)
-      {
-        paramVarArgs = new f.a.a.b("Not all required fields were included: NickName");
-        AppMethodBeat.o(32527);
-        throw paramVarArgs;
+      if (this.IhN != null) {
+        paramVarArgs.c(2, this.IhN);
       }
-      if (this.hDa == null)
-      {
-        paramVarArgs = new f.a.a.b("Not all required fields were included: Content");
-        AppMethodBeat.o(32527);
-        throw paramVarArgs;
+      if (this.title != null) {
+        paramVarArgs.d(3, this.title);
       }
-      paramVarArgs.aS(1, this.ukh);
-      if (this.nDo != null) {
-        paramVarArgs.d(2, this.nDo);
+      if (this.description != null) {
+        paramVarArgs.d(4, this.description);
       }
-      if (this.nEt != null) {
-        paramVarArgs.d(3, this.nEt);
-      }
-      if (this.hDa != null) {
-        paramVarArgs.d(4, this.hDa);
-      }
-      if (this.HOD != null) {
-        paramVarArgs.c(5, this.HOD);
-      }
-      AppMethodBeat.o(32527);
+      AppMethodBeat.o(188965);
       return 0;
     }
-    if (paramInt == 1)
-    {
-      int i = f.a.a.b.b.a.bz(1, this.ukh) + 0;
-      paramInt = i;
-      if (this.nDo != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.nDo);
+    if (paramInt == 1) {
+      if (this.qlv == null) {
+        break label394;
       }
-      i = paramInt;
-      if (this.nEt != null) {
-        i = paramInt + f.a.a.b.b.a.e(3, this.nEt);
-      }
-      paramInt = i;
-      if (this.hDa != null) {
-        paramInt = i + f.a.a.b.b.a.e(4, this.hDa);
-      }
-      i = paramInt;
-      if (this.HOD != null) {
-        i = paramInt + f.a.a.b.b.a.b(5, this.HOD);
-      }
-      AppMethodBeat.o(32527);
-      return i;
     }
-    if (paramInt == 2)
+    label394:
+    for (int i = f.a.a.b.b.a.e(1, this.qlv) + 0;; i = 0)
     {
-      paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gxE();
+      paramInt = i;
+      if (this.IhN != null) {
+        paramInt = i + f.a.a.b.b.a.b(2, this.IhN);
+      }
+      i = paramInt;
+      if (this.title != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.title);
+      }
+      paramInt = i;
+      if (this.description != null) {
+        paramInt = i + f.a.a.b.b.a.e(4, this.description);
+      }
+      AppMethodBeat.o(188965);
+      return paramInt;
+      if (paramInt == 2)
+      {
+        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.gCg();
+          }
         }
+        AppMethodBeat.o(188965);
+        return 0;
       }
-      if (this.nDo == null)
+      if (paramInt == 3)
       {
-        paramVarArgs = new f.a.a.b("Not all required fields were included: UserName");
-        AppMethodBeat.o(32527);
-        throw paramVarArgs;
+        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+        ecq localecq = (ecq)paramVarArgs[1];
+        switch (((Integer)paramVarArgs[2]).intValue())
+        {
+        default: 
+          AppMethodBeat.o(188965);
+          return -1;
+        case 1: 
+          localecq.qlv = locala.OmT.readString();
+          AppMethodBeat.o(188965);
+          return 0;
+        case 2: 
+          localecq.IhN = locala.OmT.gCk();
+          AppMethodBeat.o(188965);
+          return 0;
+        case 3: 
+          localecq.title = locala.OmT.readString();
+          AppMethodBeat.o(188965);
+          return 0;
+        }
+        localecq.description = locala.OmT.readString();
+        AppMethodBeat.o(188965);
+        return 0;
       }
-      if (this.nEt == null)
-      {
-        paramVarArgs = new f.a.a.b("Not all required fields were included: NickName");
-        AppMethodBeat.o(32527);
-        throw paramVarArgs;
-      }
-      if (this.hDa == null)
-      {
-        paramVarArgs = new f.a.a.b("Not all required fields were included: Content");
-        AppMethodBeat.o(32527);
-        throw paramVarArgs;
-      }
-      AppMethodBeat.o(32527);
-      return 0;
+      AppMethodBeat.o(188965);
+      return -1;
     }
-    if (paramInt == 3)
-    {
-      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
-      ecq localecq = (ecq)paramVarArgs[1];
-      switch (((Integer)paramVarArgs[2]).intValue())
-      {
-      default: 
-        AppMethodBeat.o(32527);
-        return -1;
-      case 1: 
-        localecq.ukh = locala.NPN.zc();
-        AppMethodBeat.o(32527);
-        return 0;
-      case 2: 
-        localecq.nDo = locala.NPN.readString();
-        AppMethodBeat.o(32527);
-        return 0;
-      case 3: 
-        localecq.nEt = locala.NPN.readString();
-        AppMethodBeat.o(32527);
-        return 0;
-      case 4: 
-        localecq.hDa = locala.NPN.readString();
-        AppMethodBeat.o(32527);
-        return 0;
-      }
-      localecq.HOD = locala.NPN.gxI();
-      AppMethodBeat.o(32527);
-      return 0;
-    }
-    AppMethodBeat.o(32527);
-    return -1;
   }
 }
 

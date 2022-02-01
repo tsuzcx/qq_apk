@@ -19,16 +19,16 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
-import com.tencent.mm.model.ba;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.model.bc;
 import com.tencent.mm.modelgeo.Addr;
 import com.tencent.mm.modelgeo.c.a;
 import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.protocal.protobuf.btm;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.bug;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.base.p;
@@ -40,38 +40,38 @@ public class NearLifeCreatePoiUI
   implements f
 {
   private TextWatcher awu;
-  private p fQJ;
-  private String keN;
-  private MenuItem.OnMenuItemClickListener wrA;
-  private btm wrk;
-  private String wrl;
-  private String wrm;
-  private Addr wrn;
-  private String wro;
-  private EditText wrp;
-  private EditText wrq;
-  private TextView wrr;
-  private TextView wrs;
-  private com.tencent.mm.modelgeo.c wrt;
-  private com.tencent.mm.plugin.nearlife.b.c wru;
-  private View.OnClickListener wrv;
-  private View.OnClickListener wrw;
-  private View.OnClickListener wrx;
-  private MenuItem.OnMenuItemClickListener wry;
-  private c.a wrz;
+  private p fSP;
+  private String kid;
+  private bug wGT;
+  private String wGU;
+  private String wGV;
+  private Addr wGW;
+  private String wGX;
+  private EditText wGY;
+  private EditText wGZ;
+  private TextView wHa;
+  private TextView wHb;
+  private com.tencent.mm.modelgeo.c wHc;
+  private com.tencent.mm.plugin.nearlife.b.c wHd;
+  private View.OnClickListener wHe;
+  private View.OnClickListener wHf;
+  private View.OnClickListener wHg;
+  private MenuItem.OnMenuItemClickListener wHh;
+  private c.a wHi;
+  private MenuItem.OnMenuItemClickListener wHj;
   
   public NearLifeCreatePoiUI()
   {
     AppMethodBeat.i(26606);
-    this.wrv = new NearLifeCreatePoiUI.1(this);
-    this.wrw = new NearLifeCreatePoiUI.2(this);
-    this.wrx = new NearLifeCreatePoiUI.3(this);
-    this.wry = new MenuItem.OnMenuItemClickListener()
+    this.wHe = new NearLifeCreatePoiUI.1(this);
+    this.wHf = new NearLifeCreatePoiUI.2(this);
+    this.wHg = new NearLifeCreatePoiUI.3(this);
+    this.wHh = new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
         AppMethodBeat.i(26601);
-        g.yhR.f(11138, new Object[] { "2", "0", NearLifeCreatePoiUI.b(NearLifeCreatePoiUI.this) });
+        g.yxI.f(11138, new Object[] { "2", "0", NearLifeCreatePoiUI.b(NearLifeCreatePoiUI.this) });
         paramAnonymousMenuItem = NearLifeCreatePoiUI.this;
         Object localObject = NearLifeCreatePoiUI.this.getContext();
         NearLifeCreatePoiUI.this.getString(2131761605);
@@ -80,7 +80,7 @@ public class NearLifeCreatePoiUI
           public final void onCancel(DialogInterface paramAnonymous2DialogInterface)
           {
             AppMethodBeat.i(26600);
-            ba.aiU().a(NearLifeCreatePoiUI.c(NearLifeCreatePoiUI.this));
+            bc.ajj().a(NearLifeCreatePoiUI.c(NearLifeCreatePoiUI.this));
             AppMethodBeat.o(26600);
           }
         }));
@@ -90,31 +90,31 @@ public class NearLifeCreatePoiUI
         paramAnonymousMenuItem = ((EditText)NearLifeCreatePoiUI.this.findViewById(2131299527)).getText().toString();
         localObject = NearLifeCreatePoiUI.g(NearLifeCreatePoiUI.this);
         NearLifeCreatePoiUI.a(NearLifeCreatePoiUI.this, new com.tencent.mm.plugin.nearlife.b.c(NearLifeCreatePoiUI.h(NearLifeCreatePoiUI.this), NearLifeCreatePoiUI.i(NearLifeCreatePoiUI.this), NearLifeCreatePoiUI.j(NearLifeCreatePoiUI.this), NearLifeCreatePoiUI.k(NearLifeCreatePoiUI.this), ((LinkedList)localObject).size(), (LinkedList)localObject, paramAnonymousMenuItem));
-        ba.aiU().a(NearLifeCreatePoiUI.c(NearLifeCreatePoiUI.this), 0);
-        ad.d("MicroMsg.NearLifeCreatePoiUI", "do scene start");
+        bc.ajj().a(NearLifeCreatePoiUI.c(NearLifeCreatePoiUI.this), 0);
+        ae.d("MicroMsg.NearLifeCreatePoiUI", "do scene start");
         AppMethodBeat.o(26601);
         return true;
       }
     };
-    this.wrz = new c.a()
+    this.wHi = new c.a()
     {
       public final void b(Addr paramAnonymousAddr)
       {
         AppMethodBeat.i(26602);
-        String str1 = bt.nullAsNil(paramAnonymousAddr.hXa) + bt.nullAsNil(paramAnonymousAddr.hXc);
-        String str2 = bt.nullAsNil(paramAnonymousAddr.hXd) + bt.nullAsNil(paramAnonymousAddr.hXe);
-        ad.d("MicroMsg.NearLifeCreatePoiUI", "get address:".concat(String.valueOf(str1)));
-        if (bt.isNullOrNil(NearLifeCreatePoiUI.e(NearLifeCreatePoiUI.this).getText().toString())) {
+        String str1 = bu.nullAsNil(paramAnonymousAddr.hZS) + bu.nullAsNil(paramAnonymousAddr.hZU);
+        String str2 = bu.nullAsNil(paramAnonymousAddr.hZV) + bu.nullAsNil(paramAnonymousAddr.hZW);
+        ae.d("MicroMsg.NearLifeCreatePoiUI", "get address:".concat(String.valueOf(str1)));
+        if (bu.isNullOrNil(NearLifeCreatePoiUI.e(NearLifeCreatePoiUI.this).getText().toString())) {
           NearLifeCreatePoiUI.e(NearLifeCreatePoiUI.this).setText(str1);
         }
-        if ((bt.isNullOrNil(NearLifeCreatePoiUI.f(NearLifeCreatePoiUI.this).getText().toString())) && (!bt.isNullOrNil(str2))) {
+        if ((bu.isNullOrNil(NearLifeCreatePoiUI.f(NearLifeCreatePoiUI.this).getText().toString())) && (!bu.isNullOrNil(str2))) {
           NearLifeCreatePoiUI.f(NearLifeCreatePoiUI.this).setText(str2);
         }
         NearLifeCreatePoiUI.a(NearLifeCreatePoiUI.this, paramAnonymousAddr);
         AppMethodBeat.o(26602);
       }
     };
-    this.wrA = new MenuItem.OnMenuItemClickListener()
+    this.wHj = new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
@@ -146,7 +146,7 @@ public class NearLifeCreatePoiUI
     AppMethodBeat.o(26606);
   }
   
-  private void duj()
+  private void dxy()
   {
     AppMethodBeat.i(26612);
     h.a(this, 2131761599, 2131761605, new DialogInterface.OnClickListener()
@@ -154,7 +154,7 @@ public class NearLifeCreatePoiUI
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
         AppMethodBeat.i(26605);
-        g.yhR.f(11138, new Object[] { "3", "0", NearLifeCreatePoiUI.b(NearLifeCreatePoiUI.this) });
+        g.yxI.f(11138, new Object[] { "3", "0", NearLifeCreatePoiUI.b(NearLifeCreatePoiUI.this) });
         NearLifeCreatePoiUI.this.setResult(0, new Intent());
         NearLifeCreatePoiUI.this.finish();
         AppMethodBeat.o(26605);
@@ -172,31 +172,31 @@ public class NearLifeCreatePoiUI
   {
     AppMethodBeat.i(26608);
     setMMTitle(2131761605);
-    ((ViewGroup)findViewById(2131301463)).setOnClickListener(this.wrv);
-    ((ViewGroup)findViewById(2131301462)).setOnClickListener(this.wrw);
-    ((TextView)findViewById(2131306139)).setOnClickListener(this.wrx);
+    ((ViewGroup)findViewById(2131301463)).setOnClickListener(this.wHe);
+    ((ViewGroup)findViewById(2131301462)).setOnClickListener(this.wHf);
+    ((TextView)findViewById(2131306139)).setOnClickListener(this.wHg);
     findViewById(2131306139).setVisibility(8);
     findViewById(2131301462).setVisibility(0);
     findViewById(2131301464).setVisibility(0);
-    this.wrp = ((EditText)findViewById(2131299526));
-    this.wrq = ((EditText)findViewById(2131299525));
-    this.wrr = ((TextView)findViewById(2131306144));
-    this.wrs = ((TextView)findViewById(2131306143));
-    this.wrp.addTextChangedListener(this.awu);
-    this.wrq.addTextChangedListener(this.awu);
-    this.wrr.addTextChangedListener(this.awu);
-    String str = bt.bI(getIntent().getStringExtra("get_poi_name"), "");
+    this.wGY = ((EditText)findViewById(2131299526));
+    this.wGZ = ((EditText)findViewById(2131299525));
+    this.wHa = ((TextView)findViewById(2131306144));
+    this.wHb = ((TextView)findViewById(2131306143));
+    this.wGY.addTextChangedListener(this.awu);
+    this.wGZ.addTextChangedListener(this.awu);
+    this.wHa.addTextChangedListener(this.awu);
+    String str = bu.bI(getIntent().getStringExtra("get_poi_name"), "");
     if (str.length() != 0)
     {
-      this.wrp.setText(str);
-      this.wrp.setSelection(str.length());
+      this.wGY.setText(str);
+      this.wGY.setSelection(str.length());
     }
-    com.tencent.mm.ui.tools.b.c.d(this.wrp).aeU(100).a(null);
-    com.tencent.mm.ui.tools.b.c.d(this.wrq).aeU(400).a(null);
-    com.tencent.mm.ui.tools.b.c.d((EditText)findViewById(2131299527)).aeU(100).a(null);
-    addTextOptionMenu(0, getString(2131755779), this.wry, null, s.b.JbS);
+    com.tencent.mm.ui.tools.b.c.d(this.wGY).afD(100).a(null);
+    com.tencent.mm.ui.tools.b.c.d(this.wGZ).afD(400).a(null);
+    com.tencent.mm.ui.tools.b.c.d((EditText)findViewById(2131299527)).afD(100).a(null);
+    addTextOptionMenu(0, getString(2131755779), this.wHh, null, s.b.JwA);
     enableOptionMenu(0, false);
-    setBackBtn(this.wrA);
+    setBackBtn(this.wHj);
     AppMethodBeat.o(26608);
   }
   
@@ -211,15 +211,15 @@ public class NearLifeCreatePoiUI
       AppMethodBeat.o(26609);
       return;
       paramIntent = paramIntent.getStringExtra("karea_result");
-      if (!bt.isNullOrNil(paramIntent))
+      if (!bu.isNullOrNil(paramIntent))
       {
         ((TextView)findViewById(2131306144)).setText(paramIntent.replace(" ", ""));
         AppMethodBeat.o(26609);
         return;
         if ((-1 == paramInt2) && (paramIntent != null))
         {
-          paramIntent = bt.nullAsNil(paramIntent.getStringExtra("poi_category"));
-          this.wrs.setText(paramIntent);
+          paramIntent = bu.nullAsNil(paramIntent.getStringExtra("poi_category"));
+          this.wHb.setText(paramIntent);
         }
       }
     }
@@ -229,20 +229,20 @@ public class NearLifeCreatePoiUI
   {
     AppMethodBeat.i(26607);
     super.onCreate(paramBundle);
-    ba.aiU().a(650, this);
-    this.wrk = new btm();
-    this.wrk.FOB = getIntent().getFloatExtra("get_lat", -85.0F);
-    this.wrk.FOA = getIntent().getFloatExtra("get_lng", -1000.0F);
-    this.wrk.Ggw = getIntent().getIntExtra("get_preci", 0);
-    this.wrk.Ggy = "";
-    this.wrk.Ggz = 0;
-    this.wrk.Ggx = "";
-    this.wrt = com.tencent.mm.modelgeo.c.aHN();
-    if (this.wrt != null) {
-      this.wrt.a(this.wrk.FOB, this.wrk.FOA, this.wrz);
+    bc.ajj().a(650, this);
+    this.wGT = new bug();
+    this.wGT.Gha = getIntent().getFloatExtra("get_lat", -85.0F);
+    this.wGT.GgZ = getIntent().getFloatExtra("get_lng", -1000.0F);
+    this.wGT.Gzf = getIntent().getIntExtra("get_preci", 0);
+    this.wGT.Gzh = "";
+    this.wGT.Gzi = 0;
+    this.wGT.Gzg = "";
+    this.wHc = com.tencent.mm.modelgeo.c.aIe();
+    if (this.wHc != null) {
+      this.wHc.a(this.wGT.Gha, this.wGT.GgZ, this.wHi);
     }
-    this.keN = getIntent().getStringExtra("search_id");
-    ad.d("MicroMsg.NearLifeCreatePoiUI", "tofuliutest searchid: %s", new Object[] { this.keN });
+    this.kid = getIntent().getStringExtra("search_id");
+    ae.d("MicroMsg.NearLifeCreatePoiUI", "tofuliutest searchid: %s", new Object[] { this.kid });
     initView();
     AppMethodBeat.o(26607);
   }
@@ -251,7 +251,7 @@ public class NearLifeCreatePoiUI
   {
     AppMethodBeat.i(26610);
     super.onDestroy();
-    ba.aiU().b(650, this);
+    bc.ajj().b(650, this);
     AppMethodBeat.o(26610);
   }
   
@@ -260,7 +260,7 @@ public class NearLifeCreatePoiUI
     AppMethodBeat.i(26611);
     if (4 == paramKeyEvent.getKeyCode())
     {
-      duj();
+      dxy();
       AppMethodBeat.o(26611);
       return true;
     }
@@ -272,32 +272,32 @@ public class NearLifeCreatePoiUI
   public void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     AppMethodBeat.i(26613);
-    ad.i("MicroMsg.NearLifeCreatePoiUI", "errType:%d, errCode:%d, errMsg:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    ae.i("MicroMsg.NearLifeCreatePoiUI", "errType:%d, errCode:%d, errMsg:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      this.fQJ.dismiss();
+      this.fSP.dismiss();
       paramString = (com.tencent.mm.plugin.nearlife.b.c)paramn;
       paramn = new Intent();
-      if (this.wrk != null)
+      if (this.wGT != null)
       {
-        paramn.putExtra("get_lat", this.wrk.FOB);
-        paramn.putExtra("get_lng", this.wrk.FOA);
+        paramn.putExtra("get_lat", this.wGT.Gha);
+        paramn.putExtra("get_lng", this.wGT.GgZ);
       }
-      if (this.wrn != null) {
-        paramn.putExtra("get_city", this.wrn.hXa);
+      if (this.wGW != null) {
+        paramn.putExtra("get_city", this.wGW.hZS);
       }
-      paramn.putExtra("get_poi_address", this.wrm);
-      paramn.putExtra("get_poi_classify_id", paramString.wpX);
-      paramn.putExtra("get_poi_name", this.wrl);
+      paramn.putExtra("get_poi_address", this.wGV);
+      paramn.putExtra("get_poi_classify_id", paramString.wFG);
+      paramn.putExtra("get_poi_name", this.wGU);
       paramn.putExtra("get_poi_classify_type", 1);
       setResult(-1, paramn);
       finish();
       AppMethodBeat.o(26613);
       return;
     }
-    this.fQJ.dismiss();
+    this.fSP.dismiss();
     Toast.makeText(getContext(), getString(2131761603), 1).show();
-    this.wru = null;
+    this.wHd = null;
     AppMethodBeat.o(26613);
   }
   

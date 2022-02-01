@@ -3,11 +3,11 @@ package com.tencent.mm.pluginsdk.f;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.expt.b.b;
 import com.tencent.mm.plugin.expt.b.b.a;
-import com.tencent.mm.protocal.protobuf.chw;
-import com.tencent.mm.protocal.protobuf.chx;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.vfs.i;
+import com.tencent.mm.protocal.protobuf.ciq;
+import com.tencent.mm.protocal.protobuf.cir;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.vfs.o;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
@@ -16,311 +16,311 @@ import java.util.List;
 public final class a
   implements h
 {
-  String EKf;
-  private long EKg;
-  private int EKh;
-  private int EKi;
-  public String EKj;
-  public String EKk;
-  public String EKl;
-  public String EKm;
-  public int EKn;
-  public String EKo;
-  public String EKp;
-  public String EKq;
-  private g EKr;
-  private String EKs;
-  private List<f> EKt;
-  private List<f> EKu;
-  private int EKv;
-  private int EKw;
+  String FcD;
+  private long FcE;
+  private int FcF;
+  private int FcG;
+  public String FcH;
+  public String FcI;
+  public String FcJ;
+  public String FcK;
+  public int FcL;
+  public String FcM;
+  public String FcN;
+  public String FcO;
+  private g FcP;
+  private String FcQ;
+  private List<f> FcR;
+  private List<f> FcS;
+  private int FcT;
+  private int FcU;
   public int fileType;
-  public String hAi;
+  public String hCW;
   private boolean isRunning;
   public int scene;
   private int successCount;
   
   public a(g paramg)
   {
-    AppMethodBeat.i(195338);
-    this.EKw = 0;
-    this.EKr = paramg;
-    this.EKi = eZf();
-    this.EKh = ((b)com.tencent.mm.kernel.g.ab(b.class)).a(b.a.qHw, 10);
-    this.EKt = Collections.synchronizedList(new ArrayList());
-    this.EKu = Collections.synchronizedList(new ArrayList());
-    AppMethodBeat.o(195338);
+    AppMethodBeat.i(218791);
+    this.FcU = 0;
+    this.FcP = paramg;
+    this.FcG = fcT();
+    this.FcF = ((b)com.tencent.mm.kernel.g.ab(b.class)).a(b.a.qPc, 10);
+    this.FcR = Collections.synchronizedList(new ArrayList());
+    this.FcS = Collections.synchronizedList(new ArrayList());
+    AppMethodBeat.o(218791);
   }
   
-  private void Yg(int paramInt)
+  private void YM(int paramInt)
   {
-    AppMethodBeat.i(195341);
-    eZh();
-    if (this.EKr != null) {
-      this.EKr.a(this, this.EKs, paramInt);
+    AppMethodBeat.i(218794);
+    fcV();
+    if (this.FcP != null) {
+      this.FcP.a(this, this.FcQ, paramInt);
     }
-    AppMethodBeat.o(195341);
+    AppMethodBeat.o(218794);
   }
   
-  private boolean Yh(int paramInt)
+  private boolean YN(int paramInt)
   {
-    AppMethodBeat.i(195342);
+    AppMethodBeat.i(218795);
     if (!this.isRunning)
     {
-      ad.i("MicroMsg.CGIFileUploader", "it means error has occurred, return.");
-      AppMethodBeat.o(195342);
+      ae.i("MicroMsg.CGIFileUploader", "it means error has occurred, return.");
+      AppMethodBeat.o(218795);
       return false;
     }
     Object localObject;
     do
     {
-      this.EKu.remove(0);
-      this.EKt.add(localObject);
-      ((f)localObject).eZj();
-      ad.i("MicroMsg.CGIFileUploader", "start section idx = %s", new Object[] { Integer.valueOf(((f)localObject).EKN.EKJ) });
-      if ((this.EKt.size() >= this.EKh) || (this.EKu.size() <= 1)) {
+      this.FcS.remove(0);
+      this.FcR.add(localObject);
+      ((f)localObject).fcX();
+      ae.i("MicroMsg.CGIFileUploader", "start section idx = %s", new Object[] { Integer.valueOf(((f)localObject).Fdl.Fdh) });
+      if ((this.FcR.size() >= this.FcF) || (this.FcS.size() <= 1)) {
         break;
       }
-      if (paramInt - 1 == this.EKw)
+      if (paramInt - 1 == this.FcU)
       {
-        ad.e("MicroMsg.CGIFileUploader", "The whole piece is uploaded, but the limit value is not updated [%s, %s]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.EKw + 1) });
-        Yg(-30004);
-        AppMethodBeat.o(195342);
+        ae.e("MicroMsg.CGIFileUploader", "The whole piece is uploaded, but the limit value is not updated [%s, %s]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.FcU + 1) });
+        YM(-30004);
+        AppMethodBeat.o(218795);
         return false;
       }
-      localObject = (f)this.EKu.get(0);
-    } while (((f)localObject).taskId <= this.EKw);
-    ad.i("MicroMsg.CGIFileUploader", "upload too fast, need to wait for the previous task to complete first");
-    AppMethodBeat.o(195342);
+      localObject = (f)this.FcS.get(0);
+    } while (((f)localObject).taskId <= this.FcU);
+    ae.i("MicroMsg.CGIFileUploader", "upload too fast, need to wait for the previous task to complete first");
+    AppMethodBeat.o(218795);
     return true;
-    AppMethodBeat.o(195342);
+    AppMethodBeat.o(218795);
     return true;
   }
   
-  private static int eZf()
+  private static int fcT()
   {
-    AppMethodBeat.i(195337);
+    AppMethodBeat.i(218790);
     try
     {
-      String str = ((com.tencent.mm.plugin.zero.b.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.zero.b.a.class)).acA().getValue("ParallelUploadPartSize");
-      if (bt.isNullOrNil(str)) {
-        ad.i("MicroMsg.CGIFileUploader", "getFileSizeLimit nullOrNil");
+      String str = ((com.tencent.mm.plugin.zero.b.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.zero.b.a.class)).acL().getValue("ParallelUploadPartSize");
+      if (bu.isNullOrNil(str)) {
+        ae.i("MicroMsg.CGIFileUploader", "getFileSizeLimit nullOrNil");
       }
       for (;;)
       {
-        int i = bt.getInt(str, 32768);
-        AppMethodBeat.o(195337);
+        int i = bu.getInt(str, 32768);
+        AppMethodBeat.o(218790);
         return i;
-        ad.i("MicroMsg.CGIFileUploader", "getFileSizeLimit ".concat(String.valueOf(str)));
+        ae.i("MicroMsg.CGIFileUploader", "getFileSizeLimit ".concat(String.valueOf(str)));
       }
       return 32768;
     }
     catch (Throwable localThrowable)
     {
-      ad.printErrStackTrace("MicroMsg.CGIFileUploader", localThrowable, "getFileSizeLimit", new Object[0]);
-      AppMethodBeat.o(195337);
+      ae.printErrStackTrace("MicroMsg.CGIFileUploader", localThrowable, "getFileSizeLimit", new Object[0]);
+      AppMethodBeat.o(218790);
     }
   }
   
-  private void eZg()
+  private void fcU()
   {
-    AppMethodBeat.i(195340);
-    if (this.EKu.size() <= 0)
+    AppMethodBeat.i(218793);
+    if (this.FcS.size() <= 0)
     {
-      ad.e("MicroMsg.CGIFileUploader", "no section to upload, file:%s", new Object[] { this.EKf });
-      if (this.EKr != null) {
-        this.EKr.a(this, this.EKs, -30003);
+      ae.e("MicroMsg.CGIFileUploader", "no section to upload, file:%s", new Object[] { this.FcD });
+      if (this.FcP != null) {
+        this.FcP.a(this, this.FcQ, -30003);
       }
-      AppMethodBeat.o(195340);
+      AppMethodBeat.o(218793);
       return;
     }
-    f localf = (f)this.EKu.get(0);
-    this.EKu.remove(0);
-    this.EKt.add(localf);
-    localf.eZj();
-    AppMethodBeat.o(195340);
+    f localf = (f)this.FcS.get(0);
+    this.FcS.remove(0);
+    this.FcR.add(localf);
+    localf.fcX();
+    AppMethodBeat.o(218793);
   }
   
-  private void eZh()
+  private void fcV()
   {
-    AppMethodBeat.i(195343);
+    AppMethodBeat.i(218796);
     this.isRunning = false;
-    Iterator localIterator = this.EKt.iterator();
+    Iterator localIterator = this.FcR.iterator();
     while (localIterator.hasNext()) {
-      ((f)localIterator.next()).eZk();
+      ((f)localIterator.next()).fcY();
     }
-    AppMethodBeat.o(195343);
+    AppMethodBeat.o(218796);
   }
   
-  public final void a(f paramf, chw paramchw)
+  public final void a(f paramf, ciq paramciq)
   {
-    AppMethodBeat.i(195344);
+    AppMethodBeat.i(218797);
     this.successCount += 1;
     int i;
-    if (paramchw != null)
+    if (paramciq != null)
     {
-      i = paramchw.HbC;
-      ad.i("MicroMsg.CGIFileUploader", "upload section success, index = %s, successCount:%s, partIDLimit:%s", new Object[] { Integer.valueOf(paramf.EKN.EKJ), Integer.valueOf(this.successCount), Integer.valueOf(i) });
-      this.EKt.remove(paramf);
-      if (i <= this.EKw) {
+      i = paramciq.Hvc;
+      ae.i("MicroMsg.CGIFileUploader", "upload section success, index = %s, successCount:%s, partIDLimit:%s", new Object[] { Integer.valueOf(paramf.Fdl.Fdh), Integer.valueOf(this.successCount), Integer.valueOf(i) });
+      this.FcR.remove(paramf);
+      if (i <= this.FcU) {
         break label181;
       }
     }
     for (;;)
     {
-      this.EKw = i;
-      if (this.EKv > 0) {
-        this.EKr.a(this, this.successCount * 1.0F / this.EKv, paramf.EKN.EKK + paramf.EKN.EKi);
+      this.FcU = i;
+      if (this.FcT > 0) {
+        this.FcP.a(this, this.successCount * 1.0F / this.FcT, paramf.Fdl.Fdi + paramf.Fdl.FcG);
       }
-      if (paramf.EKN.EKJ != 0) {
+      if (paramf.Fdl.Fdh != 0) {
         break label235;
       }
-      if (!bt.isNullOrNil(paramchw.Hbw)) {
+      if (!bu.isNullOrNil(paramciq.HuW)) {
         break label189;
       }
-      ad.e("MicroMsg.CGIFileUploader", "no upload id return!");
-      Yg(-30002);
-      AppMethodBeat.o(195344);
+      ae.e("MicroMsg.CGIFileUploader", "no upload id return!");
+      YM(-30002);
+      AppMethodBeat.o(218797);
       return;
       i = 0;
       break;
       label181:
-      i = this.EKw;
+      i = this.FcU;
     }
     label189:
-    this.EKs = paramchw.Hbw;
-    paramf = this.EKu.iterator();
+    this.FcQ = paramciq.HuW;
+    paramf = this.FcS.iterator();
     while (paramf.hasNext()) {
-      ((f)paramf.next()).EKL = paramchw.Hbw;
+      ((f)paramf.next()).Fdj = paramciq.HuW;
     }
     label235:
-    if (!Yh(this.successCount))
+    if (!YN(this.successCount))
     {
-      AppMethodBeat.o(195344);
+      AppMethodBeat.o(218797);
       return;
     }
-    if ((this.EKu.size() == 1) && (this.EKt.size() == 0)) {
-      eZg();
+    if ((this.FcS.size() == 1) && (this.FcR.size() == 0)) {
+      fcU();
     }
-    if ((this.EKu.size() == 0) && (this.EKt.size() == 0))
+    if ((this.FcS.size() == 0) && (this.FcR.size() == 0))
     {
       paramf = new g.a();
-      paramf.EKL = this.EKs;
-      paramf.fileId = paramchw.Gjr;
-      paramf.gjI = paramchw.AesKey;
-      paramf.EKS = paramchw.HbB;
-      paramf.iQl = this.EKg;
-      eZh();
-      if (this.EKr != null) {
-        this.EKr.a(this, paramf);
+      paramf.Fdj = this.FcQ;
+      paramf.fileId = paramciq.GCa;
+      paramf.gmb = paramciq.AesKey;
+      paramf.Fdq = paramciq.Hvb;
+      paramf.iTe = this.FcE;
+      fcV();
+      if (this.FcP != null) {
+        this.FcP.a(this, paramf);
       }
     }
-    AppMethodBeat.o(195344);
+    AppMethodBeat.o(218797);
   }
   
   public final void a(f paramf, boolean paramBoolean, int paramInt)
   {
-    AppMethodBeat.i(195345);
-    ad.e("MicroMsg.CGIFileUploader", "upload section failure, index = %s, canRetry:%s, retCode:%s", new Object[] { Integer.valueOf(paramf.EKN.EKJ), Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt) });
-    this.EKt.remove(paramf);
+    AppMethodBeat.i(218798);
+    ae.e("MicroMsg.CGIFileUploader", "upload section failure, index = %s, canRetry:%s, retCode:%s", new Object[] { Integer.valueOf(paramf.Fdl.Fdh), Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt) });
+    this.FcR.remove(paramf);
     if (paramBoolean)
     {
       paramf.retryCount += 1;
-      if (paramf.EKN.EKJ == 0)
+      if (paramf.Fdl.Fdh == 0)
       {
-        this.EKu.add(0, paramf);
-        eZg();
-        AppMethodBeat.o(195345);
+        this.FcS.add(0, paramf);
+        fcU();
+        AppMethodBeat.o(218798);
         return;
       }
-      if (paramf.EKN.EKJ == this.EKv - 1)
+      if (paramf.Fdl.Fdh == this.FcT - 1)
       {
-        this.EKu.add(paramf);
-        eZg();
-        AppMethodBeat.o(195345);
+        this.FcS.add(paramf);
+        fcU();
+        AppMethodBeat.o(218798);
         return;
       }
-      this.EKu.add(0, paramf);
-      Yh(this.successCount);
-      AppMethodBeat.o(195345);
+      this.FcS.add(0, paramf);
+      YN(this.successCount);
+      AppMethodBeat.o(218798);
       return;
     }
-    Yg(paramInt);
-    AppMethodBeat.o(195345);
+    YM(paramInt);
+    AppMethodBeat.o(218798);
   }
   
-  public final void bN(String paramString, long paramLong)
+  public final void bO(String paramString, long paramLong)
   {
-    this.EKf = paramString;
-    this.EKg = paramLong;
+    this.FcD = paramString;
+    this.FcE = paramLong;
   }
   
-  public final void cYf()
+  public final void daP()
   {
-    AppMethodBeat.i(195339);
+    AppMethodBeat.i(218792);
     if (this.isRunning)
     {
-      ad.d("MicroMsg.CGIFileUploader", "uploader is already running");
-      AppMethodBeat.o(195339);
+      ae.d("MicroMsg.CGIFileUploader", "uploader is already running");
+      AppMethodBeat.o(218792);
       return;
     }
-    if (!i.fv(this.EKf))
+    if (!o.fB(this.FcD))
     {
-      ad.e("MicroMsg.CGIFileUploader", "file %s not exist", new Object[] { this.EKf });
-      if (this.EKr != null) {
-        this.EKr.a(this, this.EKs, -30001);
+      ae.e("MicroMsg.CGIFileUploader", "file %s not exist", new Object[] { this.FcD });
+      if (this.FcP != null) {
+        this.FcP.a(this, this.FcQ, -30001);
       }
-      AppMethodBeat.o(195339);
+      AppMethodBeat.o(218792);
       return;
     }
-    long l = this.EKg;
+    long l = this.FcE;
     int i = 0;
     int j = 0;
     for (;;)
     {
       Object localObject = new e();
-      ((e)localObject).filePath = this.EKf;
-      ((e)localObject).fileSize = this.EKg;
-      ((e)localObject).EKJ = i;
-      ((e)localObject).EKK = j;
-      if (this.EKi + j > l) {}
-      for (((e)localObject).EKi = ((int)(l - j));; ((e)localObject).EKi = this.EKi)
+      ((e)localObject).filePath = this.FcD;
+      ((e)localObject).fileSize = this.FcE;
+      ((e)localObject).Fdh = i;
+      ((e)localObject).Fdi = j;
+      if (this.FcG + j > l) {}
+      for (((e)localObject).FcG = ((int)(l - j));; ((e)localObject).FcG = this.FcG)
       {
-        j += this.EKi;
+        j += this.FcG;
         f localf = new f();
-        localf.EKP = this;
-        localf.EKN = ((e)localObject);
-        localf.taskId = ((e)localObject).EKJ;
+        localf.Fdn = this;
+        localf.Fdl = ((e)localObject);
+        localf.taskId = ((e)localObject).Fdh;
         localf.retryCount = 0;
-        localf.uEz = ((b)com.tencent.mm.kernel.g.ab(b.class)).a(b.a.qHx, 3);
+        localf.uQm = ((b)com.tencent.mm.kernel.g.ab(b.class)).a(b.a.qPd, 3);
         if (i == 0)
         {
-          this.EKq = i.aPK(this.EKf);
-          localObject = new chx();
-          ((chx)localObject).Scene = this.scene;
-          ((chx)localObject).Fyv = this.fileType;
-          ((chx)localObject).FileSize = ((int)this.EKg);
-          ((chx)localObject).HbD = this.EKq;
-          ((chx)localObject).HbE = this.EKi;
-          ((chx)localObject).HbF = this.EKk;
-          ((chx)localObject).HbG = this.hAi;
-          ((chx)localObject).HbI = this.EKl;
-          ((chx)localObject).HbJ = this.EKm;
-          ((chx)localObject).HbK = this.EKn;
-          ((chx)localObject).HbH = this.EKj;
-          ((chx)localObject).jdf = this.EKo;
-          ((chx)localObject).HbL = this.EKp;
-          localf.EKM = ((chx)localObject);
+          this.FcO = o.aRh(this.FcD);
+          localObject = new cir();
+          ((cir)localObject).Scene = this.scene;
+          ((cir)localObject).FQT = this.fileType;
+          ((cir)localObject).FileSize = ((int)this.FcE);
+          ((cir)localObject).Hvd = this.FcO;
+          ((cir)localObject).Hve = this.FcG;
+          ((cir)localObject).Hvf = this.FcI;
+          ((cir)localObject).Hvg = this.hCW;
+          ((cir)localObject).Hvi = this.FcJ;
+          ((cir)localObject).Hvj = this.FcK;
+          ((cir)localObject).Hvk = this.FcL;
+          ((cir)localObject).Hvh = this.FcH;
+          ((cir)localObject).jfY = this.FcM;
+          ((cir)localObject).Hvl = this.FcN;
+          localf.Fdk = ((cir)localObject);
         }
-        this.EKu.add(localf);
+        this.FcS.add(localf);
         if (j < l) {
           break;
         }
-        this.EKv = this.EKu.size();
-        ad.i("MicroMsg.CGIFileUploader", "will start upload, file = %s, scene = %s, fileType = %s, sectionLen = %s, sectionCount = %s", new Object[] { this.EKf, Integer.valueOf(this.scene), Integer.valueOf(this.fileType), Integer.valueOf(this.EKi), Integer.valueOf(this.EKu.size()) });
+        this.FcT = this.FcS.size();
+        ae.i("MicroMsg.CGIFileUploader", "will start upload, file = %s, scene = %s, fileType = %s, sectionLen = %s, sectionCount = %s", new Object[] { this.FcD, Integer.valueOf(this.scene), Integer.valueOf(this.fileType), Integer.valueOf(this.FcG), Integer.valueOf(this.FcS.size()) });
         this.isRunning = true;
-        eZg();
-        AppMethodBeat.o(195339);
+        fcU();
+        AppMethodBeat.o(218792);
         return;
       }
       i += 1;

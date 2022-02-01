@@ -5,32 +5,34 @@ import com.tencent.luggage.sdk.config.AppBrandInitConfigLU;
 import com.tencent.luggage.sdk.config.AppBrandSysConfigLU;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
-import com.tencent.mm.plugin.appbrand.ac.a;
-import com.tencent.mm.plugin.appbrand.aq;
+import com.tencent.mm.plugin.appbrand.ab.a;
+import com.tencent.mm.plugin.appbrand.ar;
 import com.tencent.mm.plugin.appbrand.jsapi.c.b;
 import com.tencent.mm.plugin.appbrand.jsapi.cj;
 import com.tencent.mm.plugin.appbrand.jsapi.m;
+import com.tencent.mm.plugin.appbrand.jsruntime.i;
 import com.tencent.mm.plugin.appbrand.jsruntime.o;
 import com.tencent.mm.plugin.appbrand.jsruntime.v;
 import com.tencent.mm.plugin.appbrand.m.f;
-import com.tencent.mm.plugin.appbrand.q;
-import com.tencent.mm.plugin.appbrand.q.4;
-import com.tencent.mm.plugin.appbrand.q.5;
-import com.tencent.mm.plugin.appbrand.utils.af;
-import com.tencent.mm.plugin.appbrand.z.g;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.plugin.appbrand.r;
+import com.tencent.mm.plugin.appbrand.r.4;
+import com.tencent.mm.plugin.appbrand.r.5;
+import com.tencent.mm.plugin.appbrand.utils.ai;
+import com.tencent.mm.plugin.appbrand.y.g;
 import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.sdk.platformtools.j;
+import com.tencent.mm.sdk.platformtools.k;
 import java.util.Locale;
 import java.util.Map;
 import org.json.JSONObject;
 
 public class c
-  extends q
+  extends r
   implements com.tencent.luggage.sdk.b.a.d, f
 {
-  public e coU;
+  public e coW;
   
   public c()
   {
@@ -43,9 +45,9 @@ public class c
   {
     AppMethodBeat.i(146827);
     String str = parama.getClass().getSimpleName();
-    ad.d("MicroMsg.AppBrand.AppBrandServiceLU", "hy: using %s as logic imp", new Object[] { str });
-    this.coU = ((e)d.EU().a(parama, this));
-    if (this.coU == null)
+    ae.d("MicroMsg.AppBrand.AppBrandServiceLU", "hy: using %s as logic imp", new Object[] { str });
+    this.coW = ((e)d.EW().a(parama, this));
+    if (this.coW == null)
     {
       parama = new IllegalArgumentException("No logic corresponding implement found with type: ".concat(String.valueOf(str)));
       AppMethodBeat.o(146827);
@@ -54,66 +56,66 @@ public class c
     AppMethodBeat.o(146827);
   }
   
-  public void CY()
+  public void Db()
   {
     AppMethodBeat.i(146840);
-    super.CY();
-    this.coU.CY();
+    super.Db();
+    this.coW.Db();
     AppMethodBeat.o(146840);
   }
   
-  public void Dd()
+  public void Dg()
   {
     AppMethodBeat.i(146838);
-    if (aXv()) {
-      aq.a(this, aYh());
+    if (aXQ()) {
+      ar.a(this, aYB());
     }
-    this.coU.Dd();
+    this.coW.Dg();
     AppMethodBeat.o(146838);
   }
   
-  public final void De()
+  public final void Dh()
   {
     AppMethodBeat.i(146843);
-    this.coU.De();
+    this.coW.Dh();
     AppMethodBeat.o(146843);
   }
   
-  final void EI()
+  final void EK()
   {
     AppMethodBeat.i(169441);
-    super.aXy();
+    super.aXT();
     AppMethodBeat.o(169441);
   }
   
-  public final void EJ()
+  public final void EL()
   {
     AppMethodBeat.i(146823);
-    this.coU.CM();
+    this.coW.CP();
     AppMethodBeat.o(146823);
   }
   
-  public com.tencent.mm.plugin.appbrand.jsruntime.i EK()
+  public i EM()
   {
     AppMethodBeat.i(146824);
-    com.tencent.mm.plugin.appbrand.jsruntime.i locali2 = this.coU.CL();
-    com.tencent.mm.plugin.appbrand.jsruntime.i locali1 = locali2;
+    i locali2 = this.coW.CO();
+    i locali1 = locali2;
     if (locali2 == null) {
-      locali1 = super.EK();
+      locali1 = super.EM();
     }
     AppMethodBeat.o(146824);
     return locali1;
   }
   
-  public final Map<String, m> EL()
+  public final Map<String, m> EN()
   {
     AppMethodBeat.i(146828);
-    Map localMap = this.coU.DG();
+    Map localMap = this.coW.DJ();
     AppMethodBeat.o(146828);
     return localMap;
   }
   
-  public com.tencent.luggage.sdk.b.a.c EM()
+  public com.tencent.luggage.sdk.b.a.c EO()
   {
     AppMethodBeat.i(146829);
     com.tencent.luggage.sdk.b.a.c localc = (com.tencent.luggage.sdk.b.a.c)super.at(com.tencent.luggage.sdk.b.a.c.class);
@@ -121,49 +123,49 @@ public class c
     return localc;
   }
   
-  public JSONObject EN()
+  public JSONObject EP()
   {
     AppMethodBeat.i(146833);
-    JSONObject localJSONObject = super.EN();
-    c(localJSONObject, "appType", Integer.valueOf(En().Fb().cmr));
-    c(localJSONObject, "debug", Boolean.valueOf(En().Fa().cmE));
+    JSONObject localJSONObject = super.EP();
+    c(localJSONObject, "appType", Integer.valueOf(Eq().Fg().cmt));
+    c(localJSONObject, "debug", Boolean.valueOf(Eq().Ff().cmG));
     e(localJSONObject);
-    int[] arrayOfInt = af.f(this);
-    c(localJSONObject, "screenWidth", Integer.valueOf(g.vH(arrayOfInt[0])));
-    c(localJSONObject, "screenHeight", Integer.valueOf(g.vH(arrayOfInt[1])));
+    int[] arrayOfInt = ai.f(this);
+    c(localJSONObject, "screenWidth", Integer.valueOf(g.vM(arrayOfInt[0])));
+    c(localJSONObject, "screenHeight", Integer.valueOf(g.vM(arrayOfInt[1])));
     AppMethodBeat.o(146833);
     return localJSONObject;
   }
   
-  public final void EO()
+  public final void EQ()
   {
     AppMethodBeat.i(146836);
-    super.EO();
-    this.coU.Dc();
-    ad.i("MicroMsg.AppBrandService", "notifyWxConfigReadyIfNeed, hash=%d", new Object[] { Integer.valueOf(aXC()) });
+    super.EQ();
+    this.coW.Df();
+    ae.i("MicroMsg.AppBrandService", "notifyWxConfigReadyIfNeed, hash=%d", new Object[] { Integer.valueOf(aXX()) });
     String str = String.format(Locale.US, ";(function(){ if(__wxConfig.preload) { %s; return true; } else { return false; }})();", new Object[] { cj.z("onWxConfigReady", "", 0) });
-    if (aYh().P(v.class) != null)
+    if (aYB().P(v.class) != null)
     {
-      ((v)aYh().P(v.class)).a(null, null, null, 0, str, new q.4(this));
+      ((v)aYB().P(v.class)).a(null, null, null, 0, str, new r.4(this));
       AppMethodBeat.o(146836);
       return;
     }
-    long l = bt.flT();
-    aYh().evaluateJavascript(str, new q.5(this, l));
+    long l = bu.fpO();
+    aYB().evaluateJavascript(str, new r.5(this, l));
     AppMethodBeat.o(146836);
   }
   
-  public final String EP()
+  public final String ER()
   {
     return "https://usr/";
   }
   
-  public final String EQ()
+  public final String ES()
   {
     return "https://lib/";
   }
   
-  protected a ER()
+  protected a ET()
   {
     AppMethodBeat.i(146844);
     a locala = new a(this);
@@ -171,20 +173,20 @@ public class c
     return locala;
   }
   
-  protected c.b ES()
+  protected c.b EU()
   {
     AppMethodBeat.i(146845);
-    com.tencent.mm.plugin.appbrand.c localc = new com.tencent.mm.plugin.appbrand.c(En(), this, En().cpr);
+    com.tencent.mm.plugin.appbrand.c localc = new com.tencent.mm.plugin.appbrand.c(Eq(), this, Eq().cpU);
     AppMethodBeat.o(146845);
     return localc;
   }
   
-  public com.tencent.luggage.sdk.d.c En()
+  public com.tencent.luggage.sdk.d.d Eq()
   {
     AppMethodBeat.i(146831);
-    com.tencent.luggage.sdk.d.c localc = (com.tencent.luggage.sdk.d.c)super.getRuntime();
+    com.tencent.luggage.sdk.d.d locald = (com.tencent.luggage.sdk.d.d)super.getRuntime();
     AppMethodBeat.o(146831);
-    return localc;
+    return locald;
   }
   
   public final <T> T Q(Class<T> paramClass)
@@ -196,13 +198,13 @@ public class c
       AppMethodBeat.o(146825);
       return paramClass;
     }
-    if (paramClass.isInstance(this.coU))
+    if (paramClass.isInstance(this.coW))
     {
-      paramClass = paramClass.cast(this.coU);
+      paramClass = paramClass.cast(this.coW);
       AppMethodBeat.o(146825);
       return paramClass;
     }
-    paramClass = paramClass.cast(this.coU.Q(paramClass));
+    paramClass = paramClass.cast(this.coW.Q(paramClass));
     AppMethodBeat.o(146825);
     return paramClass;
   }
@@ -211,28 +213,28 @@ public class c
   
   public final void a(String paramString1, String paramString2, int paramInt, o paramo)
   {
-    AppMethodBeat.i(192195);
-    if (((paramo == null) || (paramo == aYh())) && (this.coU.d(paramString1, paramString2, paramInt)))
+    AppMethodBeat.i(220764);
+    if (((paramo == null) || (paramo == aYB())) && (this.coW.d(paramString1, paramString2, paramInt)))
     {
-      AppMethodBeat.o(192195);
+      AppMethodBeat.o(220764);
       return;
     }
     super.a(paramString1, paramString2, paramInt, paramo);
-    AppMethodBeat.o(192195);
+    AppMethodBeat.o(220764);
   }
   
   public final void bw(boolean paramBoolean)
   {
     AppMethodBeat.i(146839);
     super.bw(paramBoolean);
-    this.coU.CX();
+    this.coW.Da();
     AppMethodBeat.o(146839);
   }
   
   public final void c(String paramString1, String paramString2, int paramInt)
   {
     AppMethodBeat.i(146842);
-    if (this.coU.d(paramString1, paramString2, paramInt))
+    if (this.coW.d(paramString1, paramString2, paramInt))
     {
       AppMethodBeat.o(146842);
       return;
@@ -241,20 +243,20 @@ public class c
     AppMethodBeat.o(146842);
   }
   
-  public boolean cS(String paramString)
+  public boolean cU(String paramString)
   {
-    AppMethodBeat.i(192194);
-    boolean bool = this.coU.cS(paramString);
-    AppMethodBeat.o(192194);
+    AppMethodBeat.i(220763);
+    boolean bool = this.coW.cU(paramString);
+    AppMethodBeat.o(220763);
     return bool;
   }
   
   public final void cleanup()
   {
     AppMethodBeat.i(146837);
-    this.coU.CN();
+    this.coW.CQ();
     super.cleanup();
-    this.coU.CO();
+    this.coW.CR();
     AppMethodBeat.o(146837);
   }
   
@@ -262,8 +264,8 @@ public class c
   {
     AppMethodBeat.i(146830);
     super.d(paramAppBrandRuntime);
-    this.kqm = ES();
-    this.coU.c(paramAppBrandRuntime);
+    this.ktB = EU();
+    this.coW.c(paramAppBrandRuntime);
     AppMethodBeat.o(146830);
   }
   
@@ -271,19 +273,19 @@ public class c
   {
     AppMethodBeat.i(146832);
     super.d(paramJSONObject);
-    c(paramJSONObject, "isIsolateContext", Boolean.valueOf(this.coU.CK()));
-    c(paramJSONObject, "version", j.aD(null, com.tencent.mm.sdk.platformtools.i.Ics));
-    c(paramJSONObject, "language", ac.iM(getContext()));
+    c(paramJSONObject, "isIsolateContext", Boolean.valueOf(this.coW.CN()));
+    c(paramJSONObject, "version", k.aD(null, j.IwD));
+    c(paramJSONObject, "language", ad.iR(getContext()));
     AppMethodBeat.o(146832);
   }
   
-  public final String dm(String paramString)
+  public final String jdMethod_do(String paramString)
   {
     AppMethodBeat.i(146835);
-    String str = this.coU.dn(paramString);
-    if (bt.isNullOrNil(str))
+    String str = this.coW.dp(paramString);
+    if (bu.isNullOrNil(str))
     {
-      paramString = super.dm(paramString);
+      paramString = super.jdMethod_do(paramString);
       AppMethodBeat.o(146835);
       return paramString;
     }
@@ -294,14 +296,14 @@ public class c
   protected void e(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(146834);
-    this.coU.c(paramJSONObject);
+    this.coW.c(paramJSONObject);
     AppMethodBeat.o(146834);
   }
   
   public void h(int paramInt, String paramString)
   {
     AppMethodBeat.i(146846);
-    if (this.coU.i(paramInt, paramString))
+    if (this.coW.i(paramInt, paramString))
     {
       AppMethodBeat.o(146846);
       return;
@@ -312,7 +314,7 @@ public class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.luggage.sdk.b.a.c.c
  * JD-Core Version:    0.7.0.1
  */

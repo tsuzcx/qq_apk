@@ -22,27 +22,25 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ListView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.g.c.aw;
-import com.tencent.mm.model.ba;
-import com.tencent.mm.model.c;
-import com.tencent.mm.model.u;
-import com.tencent.mm.model.w;
-import com.tencent.mm.openim.a.b.a;
+import com.tencent.mm.model.bc;
+import com.tencent.mm.model.v;
+import com.tencent.mm.openim.a.a.a;
 import com.tencent.mm.openim.b.i;
-import com.tencent.mm.protocal.protobuf.acf;
-import com.tencent.mm.protocal.protobuf.bff;
-import com.tencent.mm.protocal.protobuf.cwt;
-import com.tencent.mm.protocal.protobuf.cya;
-import com.tencent.mm.protocal.protobuf.dhg;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.aco;
+import com.tencent.mm.protocal.protobuf.bfv;
+import com.tencent.mm.protocal.protobuf.cxn;
+import com.tencent.mm.protocal.protobuf.cyu;
+import com.tencent.mm.protocal.protobuf.dia;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.storage.RegionCodeDecoder;
-import com.tencent.mm.storage.am;
-import com.tencent.mm.storage.bp;
+import com.tencent.mm.storage.an;
+import com.tencent.mm.storage.bq;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.MMFragment;
 import com.tencent.mm.ui.base.MMSlideDelView.c;
@@ -58,7 +56,7 @@ import java.util.List;
 public class OpenIMAddressUI
   extends MMActivity
 {
-  public MMFragment Kjs;
+  public MMFragment KFM;
   
   public int getLayoutId()
   {
@@ -72,9 +70,9 @@ public class OpenIMAddressUI
     paramBundle = getSupportFragmentManager();
     if (paramBundle.findFragmentById(16908290) == null)
     {
-      this.Kjs = new OpenIMAddressUIFragment();
-      this.Kjs.setArguments(getIntent().getExtras());
-      paramBundle.beginTransaction().a(2131301022, this.Kjs).commit();
+      this.KFM = new OpenIMAddressUIFragment();
+      this.KFM.setArguments(getIntent().getExtras());
+      paramBundle.beginTransaction().a(2131301022, this.KFM).commit();
     }
     AppMethodBeat.o(37918);
   }
@@ -87,34 +85,34 @@ public class OpenIMAddressUI
   
   public static class OpenIMAddressUIFragment
     extends MMFragment
-    implements com.tencent.mm.al.f
+    implements com.tencent.mm.ak.f
   {
-    boolean KjN;
-    private boolean KjO;
-    List<String> KjR;
-    private com.tencent.mm.ui.voicesearch.b Kjw;
-    private String Kjy;
-    private String KoE;
-    private x KoF;
-    private Runnable KoG;
-    com.tencent.mm.pluginsdk.ui.e fMX;
-    private ProgressDialog fMu;
-    List<String> fSL;
-    private com.tencent.mm.ui.widget.f nYF;
-    private int nYw;
-    private int nYx;
-    private n.e qlC;
-    private ListView uXc;
+    private com.tencent.mm.ui.voicesearch.b KFQ;
+    private String KFS;
+    boolean KGh;
+    private boolean KGi;
+    List<String> KGl;
+    private String KKY;
+    private x KKZ;
+    private Runnable KLa;
+    private ProgressDialog fOC;
+    com.tencent.mm.pluginsdk.ui.e fPf;
+    List<String> fUR;
+    private int oef;
+    private int oeg;
+    private com.tencent.mm.ui.widget.f oeo;
+    private n.e qsh;
+    private ListView viQ;
     
     public OpenIMAddressUIFragment()
     {
       super();
       AppMethodBeat.i(37902);
-      this.KoE = "";
-      this.fMu = null;
-      this.Kjy = "";
-      this.KjO = true;
-      this.KoG = new Runnable()
+      this.KKY = "";
+      this.fOC = null;
+      this.KFS = "";
+      this.KGi = true;
+      this.KLa = new Runnable()
       {
         public final void run()
         {
@@ -123,7 +121,7 @@ public class OpenIMAddressUI
           AppMethodBeat.o(37901);
         }
       };
-      this.qlC = new n.e()
+      this.qsh = new n.e()
       {
         public final void onMMMenuItemSelected(MenuItem paramAnonymousMenuItem, int paramAnonymousInt)
         {
@@ -143,86 +141,86 @@ public class OpenIMAddressUI
           AppMethodBeat.o(37885);
         }
       };
-      this.fMX = new com.tencent.mm.pluginsdk.ui.e(new AbsListView.OnScrollListener()
+      this.fPf = new com.tencent.mm.pluginsdk.ui.e(new AbsListView.OnScrollListener()
       {
         public final void onScroll(AbsListView paramAnonymousAbsListView, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3)
         {
           AppMethodBeat.i(37886);
-          ad.i("MicroMsg.OpenIMAddressUI", "[onScroll] firstVisibleItem:%s", new Object[] { Integer.valueOf(paramAnonymousInt1) });
+          ae.i("MicroMsg.OpenIMAddressUI", "[onScroll] firstVisibleItem:%s", new Object[] { Integer.valueOf(paramAnonymousInt1) });
           AppMethodBeat.o(37886);
         }
         
         public final void onScrollStateChanged(AbsListView paramAnonymousAbsListView, int paramAnonymousInt)
         {
           AppMethodBeat.i(37887);
-          ad.i("MicroMsg.OpenIMAddressUI", "[onScrollStateChanged] scrollState:%s", new Object[] { Integer.valueOf(paramAnonymousInt) });
+          ae.i("MicroMsg.OpenIMAddressUI", "[onScrollStateChanged] scrollState:%s", new Object[] { Integer.valueOf(paramAnonymousInt) });
           if (paramAnonymousInt == 2) {
-            com.tencent.mm.cj.d.fux().gt(OpenIMAddressUI.class.getName() + ".Listview", 4);
+            com.tencent.mm.ci.d.fyy().gC(OpenIMAddressUI.class.getName() + ".Listview", 4);
           }
           AppMethodBeat.o(37887);
         }
       });
-      this.fSL = new LinkedList();
-      this.KjR = new LinkedList();
+      this.fUR = new LinkedList();
+      this.KGl = new LinkedList();
       AppMethodBeat.o(37902);
     }
     
-    private void fHE()
+    private void fLW()
     {
       AppMethodBeat.i(37906);
-      this.fSL = new LinkedList();
-      this.KjR = new LinkedList();
-      com.tencent.mm.bs.d.ffH();
-      this.fSL.add("tmessage");
-      this.KjR.addAll(this.fSL);
-      if (!this.fSL.contains("officialaccounts")) {
-        this.fSL.add("officialaccounts");
+      this.fUR = new LinkedList();
+      this.KGl = new LinkedList();
+      com.tencent.mm.br.d.fjx();
+      this.fUR.add("tmessage");
+      this.KGl.addAll(this.fUR);
+      if (!this.fUR.contains("officialaccounts")) {
+        this.fUR.add("officialaccounts");
       }
-      this.fSL.add("helper_entry");
-      if (this.KoF != null) {
-        this.KoF.io(this.fSL);
+      this.fUR.add("helper_entry");
+      if (this.KKZ != null) {
+        this.KKZ.iy(this.fUR);
       }
-      if (this.Kjw != null) {
-        this.Kjw.io(this.KjR);
+      if (this.KFQ != null) {
+        this.KFQ.iy(this.KGl);
       }
       AppMethodBeat.o(37906);
     }
     
-    private void fHF()
+    private void fLX()
     {
       try
       {
         AppMethodBeat.i(37910);
         long l = System.currentTimeMillis();
-        fHE();
-        ad.i("MicroMsg.OpenIMAddressUI", "KEVIN updateBlockList() LAST" + (System.currentTimeMillis() - l));
+        fLW();
+        ae.i("MicroMsg.OpenIMAddressUI", "KEVIN updateBlockList() LAST" + (System.currentTimeMillis() - l));
         l = System.currentTimeMillis();
-        if (this.KoF != null)
+        if (this.KKZ != null)
         {
-          ad.v("MicroMsg.OpenIMAddressUI", "post to do refresh");
-          aq.f(new Runnable()
+          ae.v("MicroMsg.OpenIMAddressUI", "post to do refresh");
+          ar.f(new Runnable()
           {
             public final void run()
             {
               AppMethodBeat.i(37888);
-              OpenIMAddressUI.OpenIMAddressUIFragment.a(OpenIMAddressUI.OpenIMAddressUIFragment.this).fHD();
+              OpenIMAddressUI.OpenIMAddressUIFragment.a(OpenIMAddressUI.OpenIMAddressUIFragment.this).fLV();
               AppMethodBeat.o(37888);
             }
           });
         }
-        if (this.Kjw != null) {
-          aq.f(new Runnable()
+        if (this.KFQ != null) {
+          ar.f(new Runnable()
           {
             public final void run()
             {
               AppMethodBeat.i(37889);
-              ad.v("MicroMsg.OpenIMAddressUI", "post search adapter to do refresh");
+              ae.v("MicroMsg.OpenIMAddressUI", "post search adapter to do refresh");
               OpenIMAddressUI.OpenIMAddressUIFragment.d(OpenIMAddressUI.OpenIMAddressUIFragment.this).a(null, null);
               AppMethodBeat.o(37889);
             }
           });
         }
-        ad.i("MicroMsg.OpenIMAddressUI", "KEVIN doRefresh() LAST" + (System.currentTimeMillis() - l));
+        ae.i("MicroMsg.OpenIMAddressUI", "KEVIN doRefresh() LAST" + (System.currentTimeMillis() - l));
         AppMethodBeat.o(37910);
         return;
       }
@@ -237,7 +235,7 @@ public class OpenIMAddressUI
     public View getLayoutView()
     {
       AppMethodBeat.i(37903);
-      com.tencent.mm.kiss.a.b.akC();
+      com.tencent.mm.kiss.a.b.akR();
       View localView = com.tencent.mm.kiss.a.b.c(getContext(), 2131495056);
       AppMethodBeat.o(37903);
       return localView;
@@ -247,12 +245,12 @@ public class OpenIMAddressUI
     {
       AppMethodBeat.i(37908);
       super.onActivityCreated(paramBundle);
-      ad.v("MicroMsg.OpenIMAddressUI", "on address ui create");
-      ba.aiU().a(138, this);
-      com.tencent.mm.kernel.g.ajD();
-      com.tencent.mm.kernel.g.ajB().gAO.a(453, this);
-      this.KoE = getStringExtra("key_openim_acctype_id");
-      setMMTitle(((com.tencent.mm.openim.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.openim.a.b.class)).b(this.KoE, "openim_acct_type_title", b.a.iHt));
+      ae.v("MicroMsg.OpenIMAddressUI", "on address ui create");
+      bc.ajj().a(138, this);
+      com.tencent.mm.kernel.g.ajS();
+      com.tencent.mm.kernel.g.ajQ().gDv.a(453, this);
+      this.KKY = getStringExtra("key_openim_acctype_id");
+      setMMTitle(((com.tencent.mm.openim.a.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.openim.a.a.class)).b(this.KKY, "openim_acct_type_title", a.a.iKm));
       setBackBtn(new MenuItem.OnMenuItemClickListener()
       {
         public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -263,28 +261,28 @@ public class OpenIMAddressUI
           return true;
         }
       });
-      setTitleBarDoubleClickListener(this.KoG);
-      ad.v("MicroMsg.OpenIMAddressUI", "on address ui init view, %s", new Object[] { getResources().getDisplayMetrics() });
-      this.uXc = ((ListView)findViewById(2131296471));
-      this.uXc.setScrollingCacheEnabled(false);
-      this.KoF = new x(getContext(), "@openim.contact", this.KoE);
-      this.KoF.a(new f.a()
+      setTitleBarDoubleClickListener(this.KLa);
+      ae.v("MicroMsg.OpenIMAddressUI", "on address ui init view, %s", new Object[] { getResources().getDisplayMetrics() });
+      this.viQ = ((ListView)findViewById(2131296471));
+      this.viQ.setScrollingCacheEnabled(false);
+      this.KKZ = new x(getContext(), "@openim.contact", this.KKY);
+      this.KKZ.a(new f.a()
       {
-        public final void aSs()
+        public final void aSR()
         {
           AppMethodBeat.i(37894);
           OpenIMAddressUI.OpenIMAddressUIFragment localOpenIMAddressUIFragment = OpenIMAddressUI.OpenIMAddressUIFragment.this;
           OpenIMAddressUI.OpenIMAddressUIFragment.a(OpenIMAddressUI.OpenIMAddressUIFragment.this).getCount();
           OpenIMAddressUI.OpenIMAddressUIFragment.b(localOpenIMAddressUIFragment);
-          OpenIMAddressUI.OpenIMAddressUIFragment.a(OpenIMAddressUI.OpenIMAddressUIFragment.this).fHB();
+          OpenIMAddressUI.OpenIMAddressUIFragment.a(OpenIMAddressUI.OpenIMAddressUIFragment.this).fLT();
           AppMethodBeat.o(37894);
         }
         
-        public final void fvs() {}
+        public final void fzs() {}
       });
-      this.KoF.Kjc = true;
-      this.KoF.KoK = this;
-      this.KoF.setGetViewPositionCallback(new MMSlideDelView.c()
+      this.KKZ.KFw = true;
+      this.KKZ.KLe = this;
+      this.KKZ.setGetViewPositionCallback(new MMSlideDelView.c()
       {
         public final int dA(View paramAnonymousView)
         {
@@ -294,23 +292,23 @@ public class OpenIMAddressUI
           return i;
         }
       });
-      this.KoF.setPerformItemClickListener(new MMSlideDelView.g()
+      this.KKZ.setPerformItemClickListener(new MMSlideDelView.g()
       {
-        public final void s(View paramAnonymousView, int paramAnonymousInt1, int paramAnonymousInt2)
+        public final void r(View paramAnonymousView, int paramAnonymousInt1, int paramAnonymousInt2)
         {
           AppMethodBeat.i(37896);
           OpenIMAddressUI.OpenIMAddressUIFragment.c(OpenIMAddressUI.OpenIMAddressUIFragment.this).performItemClick(paramAnonymousView, paramAnonymousInt1, paramAnonymousInt2);
           AppMethodBeat.o(37896);
         }
       });
-      this.KoF.a(new MMSlideDelView.f()
+      this.KKZ.a(new MMSlideDelView.f()
       {
-        public final void cP(Object paramAnonymousObject)
+        public final void cQ(Object paramAnonymousObject)
         {
           AppMethodBeat.i(37897);
           if (paramAnonymousObject == null)
           {
-            ad.e("MicroMsg.OpenIMAddressUI", "onItemDel object null");
+            ae.e("MicroMsg.OpenIMAddressUI", "onItemDel object null");
             AppMethodBeat.o(37897);
             return;
           }
@@ -318,10 +316,10 @@ public class OpenIMAddressUI
           AppMethodBeat.o(37897);
         }
       });
-      this.Kjw = new com.tencent.mm.ui.voicesearch.b(getContext(), 1);
-      this.Kjw.yI(true);
-      this.nYF = new com.tencent.mm.ui.widget.f(getContext());
-      this.uXc.setOnItemClickListener(new AdapterView.OnItemClickListener()
+      this.KFQ = new com.tencent.mm.ui.voicesearch.b(getContext(), 1);
+      this.KFQ.yW(true);
+      this.oeo = new com.tencent.mm.ui.widget.f(getContext());
+      this.viQ.setOnItemClickListener(new AdapterView.OnItemClickListener()
       {
         public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
         {
@@ -329,109 +327,109 @@ public class OpenIMAddressUI
           Object localObject = new com.tencent.mm.hellhoundlib.b.b();
           ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramAnonymousAdapterView);
           ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramAnonymousView);
-          ((com.tencent.mm.hellhoundlib.b.b)localObject).mr(paramAnonymousInt);
-          ((com.tencent.mm.hellhoundlib.b.b)localObject).qY(paramAnonymousLong);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/contact/OpenIMAddressUI$OpenIMAddressUIFragment$6", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahq());
+          ((com.tencent.mm.hellhoundlib.b.b)localObject).mu(paramAnonymousInt);
+          ((com.tencent.mm.hellhoundlib.b.b)localObject).rl(paramAnonymousLong);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/contact/OpenIMAddressUI$OpenIMAddressUIFragment$6", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahF());
           paramAnonymousView = new StringBuilder("onItemClick ").append(paramAnonymousInt);
           boolean bool1;
           if (OpenIMAddressUI.OpenIMAddressUIFragment.d(OpenIMAddressUI.OpenIMAddressUIFragment.this) == null)
           {
             paramAnonymousAdapterView = OpenIMAddressUI.OpenIMAddressUIFragment.d(OpenIMAddressUI.OpenIMAddressUIFragment.this);
-            ad.i("MicroMsg.OpenIMAddressUI", paramAnonymousAdapterView);
+            ae.i("MicroMsg.OpenIMAddressUI", paramAnonymousAdapterView);
             paramAnonymousInt -= OpenIMAddressUI.OpenIMAddressUIFragment.c(OpenIMAddressUI.OpenIMAddressUIFragment.this).getHeaderViewsCount();
-            if ((OpenIMAddressUI.OpenIMAddressUIFragment.d(OpenIMAddressUI.OpenIMAddressUIFragment.this) == null) || (!OpenIMAddressUI.OpenIMAddressUIFragment.d(OpenIMAddressUI.OpenIMAddressUIFragment.this).KPF)) {
+            if ((OpenIMAddressUI.OpenIMAddressUIFragment.d(OpenIMAddressUI.OpenIMAddressUIFragment.this) == null) || (!OpenIMAddressUI.OpenIMAddressUIFragment.d(OpenIMAddressUI.OpenIMAddressUIFragment.this).Lmd)) {
               break label937;
             }
-            bool1 = OpenIMAddressUI.OpenIMAddressUIFragment.d(OpenIMAddressUI.OpenIMAddressUIFragment.this).HY(paramAnonymousInt);
-            boolean bool2 = OpenIMAddressUI.OpenIMAddressUIFragment.d(OpenIMAddressUI.OpenIMAddressUIFragment.this).aeX(paramAnonymousInt);
-            ad.i("MicroMsg.OpenIMAddressUI", "onItemClick ".concat(String.valueOf(bool2)));
+            bool1 = OpenIMAddressUI.OpenIMAddressUIFragment.d(OpenIMAddressUI.OpenIMAddressUIFragment.this).Iw(paramAnonymousInt);
+            boolean bool2 = OpenIMAddressUI.OpenIMAddressUIFragment.d(OpenIMAddressUI.OpenIMAddressUIFragment.this).afG(paramAnonymousInt);
+            ae.i("MicroMsg.OpenIMAddressUI", "onItemClick ".concat(String.valueOf(bool2)));
             if (!bool2) {
               break label230;
             }
-            OpenIMAddressUI.OpenIMAddressUIFragment.d(OpenIMAddressUI.OpenIMAddressUIFragment.this).aXz("");
+            OpenIMAddressUI.OpenIMAddressUIFragment.d(OpenIMAddressUI.OpenIMAddressUIFragment.this).aZb("");
           }
           for (;;)
           {
             com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/contact/OpenIMAddressUI$OpenIMAddressUIFragment$6", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
             AppMethodBeat.o(37898);
             return;
-            paramAnonymousAdapterView = Boolean.valueOf(OpenIMAddressUI.OpenIMAddressUIFragment.d(OpenIMAddressUI.OpenIMAddressUIFragment.this).KPF);
+            paramAnonymousAdapterView = Boolean.valueOf(OpenIMAddressUI.OpenIMAddressUIFragment.d(OpenIMAddressUI.OpenIMAddressUIFragment.this).Lmd);
             break;
             label230:
             if (bool1)
             {
-              paramAnonymousView = OpenIMAddressUI.OpenIMAddressUIFragment.d(OpenIMAddressUI.OpenIMAddressUIFragment.this).aeW(paramAnonymousInt);
-              paramAnonymousAdapterView = paramAnonymousView.GbY.HoB;
-              ba.aBQ();
-              localObject = c.azp().Bf(paramAnonymousAdapterView);
-              if (com.tencent.mm.o.b.lM(((aw)localObject).field_type))
+              paramAnonymousView = OpenIMAddressUI.OpenIMAddressUIFragment.d(OpenIMAddressUI.OpenIMAddressUIFragment.this).afF(paramAnonymousInt);
+              paramAnonymousAdapterView = paramAnonymousView.GuF.HId;
+              bc.aCg();
+              localObject = com.tencent.mm.model.c.azF().BH(paramAnonymousAdapterView);
+              if (com.tencent.mm.contact.c.lO(((aw)localObject).field_type))
               {
                 paramAnonymousView = new Intent();
                 paramAnonymousView.putExtra("Contact_User", paramAnonymousAdapterView);
                 paramAnonymousView.putExtra("Contact_Scene", 3);
                 if ((paramAnonymousAdapterView != null) && (paramAnonymousAdapterView.length() > 0))
                 {
-                  if (((am)localObject).fqg()) {
-                    com.tencent.mm.plugin.report.service.g.yhR.kvStat(10298, paramAnonymousAdapterView + ",3");
+                  if (((an)localObject).fug()) {
+                    com.tencent.mm.plugin.report.service.g.yxI.kvStat(10298, paramAnonymousAdapterView + ",3");
                   }
                   e.a(paramAnonymousView, paramAnonymousAdapterView);
-                  com.tencent.mm.bs.d.b(OpenIMAddressUI.OpenIMAddressUIFragment.this.getContext(), "profile", ".ui.ContactInfoUI", paramAnonymousView);
+                  com.tencent.mm.br.d.b(OpenIMAddressUI.OpenIMAddressUIFragment.this.getContext(), "profile", ".ui.ContactInfoUI", paramAnonymousView);
                 }
               }
               else
               {
                 localObject = new Intent();
-                ((Intent)localObject).putExtra("Contact_User", paramAnonymousView.GbY.HoB);
-                ((Intent)localObject).putExtra("Contact_Alias", paramAnonymousView.jdh);
-                ((Intent)localObject).putExtra("Contact_Nick", paramAnonymousView.GKC.HoB);
-                ((Intent)localObject).putExtra("Contact_Signature", paramAnonymousView.jdf);
-                ((Intent)localObject).putExtra("Contact_RegionCode", RegionCodeDecoder.bf(paramAnonymousView.jdl, paramAnonymousView.jdd, paramAnonymousView.jde));
-                ((Intent)localObject).putExtra("Contact_Sex", paramAnonymousView.jdc);
-                ((Intent)localObject).putExtra("Contact_VUser_Info", paramAnonymousView.GNV);
-                ((Intent)localObject).putExtra("Contact_VUser_Info_Flag", paramAnonymousView.GNU);
-                ((Intent)localObject).putExtra("Contact_KWeibo_flag", paramAnonymousView.GNY);
-                ((Intent)localObject).putExtra("Contact_KWeibo", paramAnonymousView.GNW);
-                ((Intent)localObject).putExtra("Contact_KWeiboNick", paramAnonymousView.GNX);
-                ((Intent)localObject).putExtra("Contact_KSnsIFlag", paramAnonymousView.GOa.jdn);
-                ((Intent)localObject).putExtra("Contact_KSnsBgId", paramAnonymousView.GOa.jdp);
-                ((Intent)localObject).putExtra("Contact_KSnsBgUrl", paramAnonymousView.GOa.jdo);
-                if (paramAnonymousView.GOb != null) {}
+                ((Intent)localObject).putExtra("Contact_User", paramAnonymousView.GuF.HId);
+                ((Intent)localObject).putExtra("Contact_Alias", paramAnonymousView.jga);
+                ((Intent)localObject).putExtra("Contact_Nick", paramAnonymousView.Hed.HId);
+                ((Intent)localObject).putExtra("Contact_Signature", paramAnonymousView.jfY);
+                ((Intent)localObject).putExtra("Contact_RegionCode", RegionCodeDecoder.bg(paramAnonymousView.jge, paramAnonymousView.jfW, paramAnonymousView.jfX));
+                ((Intent)localObject).putExtra("Contact_Sex", paramAnonymousView.jfV);
+                ((Intent)localObject).putExtra("Contact_VUser_Info", paramAnonymousView.Hhv);
+                ((Intent)localObject).putExtra("Contact_VUser_Info_Flag", paramAnonymousView.Hhu);
+                ((Intent)localObject).putExtra("Contact_KWeibo_flag", paramAnonymousView.Hhy);
+                ((Intent)localObject).putExtra("Contact_KWeibo", paramAnonymousView.Hhw);
+                ((Intent)localObject).putExtra("Contact_KWeiboNick", paramAnonymousView.Hhx);
+                ((Intent)localObject).putExtra("Contact_KSnsIFlag", paramAnonymousView.HhA.jgg);
+                ((Intent)localObject).putExtra("Contact_KSnsBgId", paramAnonymousView.HhA.jgi);
+                ((Intent)localObject).putExtra("Contact_KSnsBgUrl", paramAnonymousView.HhA.jgh);
+                if (paramAnonymousView.HhB != null) {}
                 try
                 {
-                  ((Intent)localObject).putExtra("Contact_customInfo", paramAnonymousView.GOb.toByteArray());
-                  if ((paramAnonymousView.GNU & 0x8) > 0) {
-                    com.tencent.mm.plugin.report.service.g.yhR.kvStat(10298, paramAnonymousAdapterView + ",3");
+                  ((Intent)localObject).putExtra("Contact_customInfo", paramAnonymousView.HhB.toByteArray());
+                  if ((paramAnonymousView.Hhu & 0x8) > 0) {
+                    com.tencent.mm.plugin.report.service.g.yxI.kvStat(10298, paramAnonymousAdapterView + ",3");
                   }
-                  com.tencent.mm.bs.d.b(OpenIMAddressUI.OpenIMAddressUIFragment.this.getContext(), "profile", ".ui.ContactInfoUI", (Intent)localObject);
+                  com.tencent.mm.br.d.b(OpenIMAddressUI.OpenIMAddressUIFragment.this.getContext(), "profile", ".ui.ContactInfoUI", (Intent)localObject);
                 }
                 catch (IOException localIOException)
                 {
                   for (;;)
                   {
-                    ad.printErrStackTrace("MicroMsg.OpenIMAddressUI", localIOException, "", new Object[0]);
+                    ae.printErrStackTrace("MicroMsg.OpenIMAddressUI", localIOException, "", new Object[0]);
                   }
                 }
               }
             }
             else
             {
-              paramAnonymousAdapterView = OpenIMAddressUI.OpenIMAddressUIFragment.d(OpenIMAddressUI.OpenIMAddressUIFragment.this).FC(paramAnonymousInt);
+              paramAnonymousAdapterView = OpenIMAddressUI.OpenIMAddressUIFragment.d(OpenIMAddressUI.OpenIMAddressUIFragment.this).Ga(paramAnonymousInt);
               if (paramAnonymousAdapterView == null)
               {
-                ad.e("MicroMsg.OpenIMAddressUI", "on Contact ListView ItemClick, the item contact shoud not be null. count:%d, pos:%d ", new Object[] { Integer.valueOf(OpenIMAddressUI.OpenIMAddressUIFragment.d(OpenIMAddressUI.OpenIMAddressUIFragment.this).getCount()), Integer.valueOf(paramAnonymousInt) });
+                ae.e("MicroMsg.OpenIMAddressUI", "on Contact ListView ItemClick, the item contact shoud not be null. count:%d, pos:%d ", new Object[] { Integer.valueOf(OpenIMAddressUI.OpenIMAddressUIFragment.d(OpenIMAddressUI.OpenIMAddressUIFragment.this).getCount()), Integer.valueOf(paramAnonymousInt) });
                 com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/contact/OpenIMAddressUI$OpenIMAddressUIFragment$6", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
                 AppMethodBeat.o(37898);
                 return;
               }
               paramAnonymousAdapterView = paramAnonymousAdapterView.field_username;
-              if (w.Ad(paramAnonymousAdapterView))
+              if (com.tencent.mm.model.x.AN(paramAnonymousAdapterView))
               {
                 paramAnonymousView = new Intent(OpenIMAddressUI.OpenIMAddressUIFragment.this.getContext(), OpenIMAddressUI.class);
                 paramAnonymousView.putExtra("Contact_GroupFilter_Type", "@biz.contact");
                 paramAnonymousAdapterView = OpenIMAddressUI.OpenIMAddressUIFragment.this;
                 paramAnonymousView = new com.tencent.mm.hellhoundlib.b.a().bc(paramAnonymousView);
-                com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousAdapterView, paramAnonymousView.ahp(), "com/tencent/mm/ui/contact/OpenIMAddressUI$OpenIMAddressUIFragment$6", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-                paramAnonymousAdapterView.startActivity((Intent)paramAnonymousView.mq(0));
+                com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousAdapterView, paramAnonymousView.ahE(), "com/tencent/mm/ui/contact/OpenIMAddressUI$OpenIMAddressUIFragment$6", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+                paramAnonymousAdapterView.startActivity((Intent)paramAnonymousView.mt(0));
                 com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousAdapterView, "com/tencent/mm/ui/contact/OpenIMAddressUI$OpenIMAddressUIFragment$6", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
                 com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/contact/OpenIMAddressUI$OpenIMAddressUIFragment$6", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
                 AppMethodBeat.o(37898);
@@ -441,12 +439,12 @@ public class OpenIMAddressUI
               paramAnonymousView.putExtra("Contact_User", paramAnonymousAdapterView);
               paramAnonymousView.putExtra("Contact_Scene", 3);
               if ((paramAnonymousAdapterView != null) && (paramAnonymousAdapterView.length() > 0)) {
-                com.tencent.mm.bs.d.b(OpenIMAddressUI.OpenIMAddressUIFragment.this.getContext(), "profile", ".ui.ContactInfoUI", paramAnonymousView);
+                com.tencent.mm.br.d.b(OpenIMAddressUI.OpenIMAddressUIFragment.this.getContext(), "profile", ".ui.ContactInfoUI", paramAnonymousView);
               }
             }
           }
           label937:
-          paramAnonymousAdapterView = (com.tencent.mm.storage.f)OpenIMAddressUI.OpenIMAddressUIFragment.a(OpenIMAddressUI.OpenIMAddressUIFragment.this).abj(paramAnonymousInt);
+          paramAnonymousAdapterView = (com.tencent.mm.storage.f)OpenIMAddressUI.OpenIMAddressUIFragment.a(OpenIMAddressUI.OpenIMAddressUIFragment.this).abR(paramAnonymousInt);
           if (paramAnonymousAdapterView != null)
           {
             paramAnonymousAdapterView = paramAnonymousAdapterView.field_username;
@@ -461,52 +459,52 @@ public class OpenIMAddressUI
             AppMethodBeat.o(37898);
             return;
             label995:
-            if (w.Ad(paramAnonymousAdapterView))
+            if (com.tencent.mm.model.x.AN(paramAnonymousAdapterView))
             {
-              ad.e("MicroMsg.OpenIMAddressUI", "error, 4.5 do not contain this contact %s", new Object[] { paramAnonymousAdapterView });
+              ae.e("MicroMsg.OpenIMAddressUI", "error, 4.5 do not contain this contact %s", new Object[] { paramAnonymousAdapterView });
             }
             else
             {
               localObject = new Intent();
               ((Intent)localObject).putExtra("Contact_User", paramAnonymousAdapterView);
-              if (w.zB(paramAnonymousAdapterView)) {
+              if (com.tencent.mm.model.x.Al(paramAnonymousAdapterView)) {
                 ((Intent)localObject).putExtra("Is_group_card", true);
               }
               if ((paramAnonymousAdapterView != null) && (paramAnonymousAdapterView.length() > 0))
               {
                 e.a((Intent)localObject, paramAnonymousAdapterView);
-                com.tencent.mm.bs.d.b(paramAnonymousView.getContext(), "profile", ".ui.ContactInfoUI", (Intent)localObject);
+                com.tencent.mm.br.d.b(paramAnonymousView.getContext(), "profile", ".ui.ContactInfoUI", (Intent)localObject);
               }
             }
           }
         }
       });
-      this.uXc.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener()
+      this.viQ.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener()
       {
         public final boolean onItemLongClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
         {
           AppMethodBeat.i(37899);
-          ad.i("MicroMsg.OpenIMAddressUI", "onItemLongClick, targetview is SearchBar::ListView, pos = ".concat(String.valueOf(paramAnonymousInt)));
+          ae.i("MicroMsg.OpenIMAddressUI", "onItemLongClick, targetview is SearchBar::ListView, pos = ".concat(String.valueOf(paramAnonymousInt)));
           if (paramAnonymousInt < OpenIMAddressUI.OpenIMAddressUIFragment.c(OpenIMAddressUI.OpenIMAddressUIFragment.this).getHeaderViewsCount())
           {
-            ad.w("MicroMsg.OpenIMAddressUI", "on item long click, but match header view");
+            ae.w("MicroMsg.OpenIMAddressUI", "on item long click, but match header view");
             AppMethodBeat.o(37899);
             return true;
           }
-          if ((OpenIMAddressUI.OpenIMAddressUIFragment.d(OpenIMAddressUI.OpenIMAddressUIFragment.this) != null) && (OpenIMAddressUI.OpenIMAddressUIFragment.d(OpenIMAddressUI.OpenIMAddressUIFragment.this).KPF))
+          if ((OpenIMAddressUI.OpenIMAddressUIFragment.d(OpenIMAddressUI.OpenIMAddressUIFragment.this) != null) && (OpenIMAddressUI.OpenIMAddressUIFragment.d(OpenIMAddressUI.OpenIMAddressUIFragment.this).Lmd))
           {
             AppMethodBeat.o(37899);
             return true;
           }
-          paramAnonymousAdapterView = (com.tencent.mm.storage.f)OpenIMAddressUI.OpenIMAddressUIFragment.a(OpenIMAddressUI.OpenIMAddressUIFragment.this).abj(paramAnonymousInt - OpenIMAddressUI.OpenIMAddressUIFragment.c(OpenIMAddressUI.OpenIMAddressUIFragment.this).getHeaderViewsCount());
+          paramAnonymousAdapterView = (com.tencent.mm.storage.f)OpenIMAddressUI.OpenIMAddressUIFragment.a(OpenIMAddressUI.OpenIMAddressUIFragment.this).abR(paramAnonymousInt - OpenIMAddressUI.OpenIMAddressUIFragment.c(OpenIMAddressUI.OpenIMAddressUIFragment.this).getHeaderViewsCount());
           if (paramAnonymousAdapterView == null)
           {
-            ad.e("MicroMsg.OpenIMAddressUI", "cont is null. position:%d, header count:%d", new Object[] { Integer.valueOf(paramAnonymousInt), Integer.valueOf(OpenIMAddressUI.OpenIMAddressUIFragment.c(OpenIMAddressUI.OpenIMAddressUIFragment.this).getHeaderViewsCount()) });
+            ae.e("MicroMsg.OpenIMAddressUI", "cont is null. position:%d, header count:%d", new Object[] { Integer.valueOf(paramAnonymousInt), Integer.valueOf(OpenIMAddressUI.OpenIMAddressUIFragment.c(OpenIMAddressUI.OpenIMAddressUIFragment.this).getHeaderViewsCount()) });
             AppMethodBeat.o(37899);
             return true;
           }
           paramAnonymousAdapterView = paramAnonymousAdapterView.field_username;
-          if ((w.Ad(paramAnonymousAdapterView)) || (w.Ae(paramAnonymousAdapterView)))
+          if ((com.tencent.mm.model.x.AN(paramAnonymousAdapterView)) || (com.tencent.mm.model.x.AO(paramAnonymousAdapterView)))
           {
             AppMethodBeat.o(37899);
             return true;
@@ -517,7 +515,7 @@ public class OpenIMAddressUI
           return true;
         }
       });
-      this.uXc.setOnTouchListener(new View.OnTouchListener()
+      this.viQ.setOnTouchListener(new View.OnTouchListener()
       {
         public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
         {
@@ -525,7 +523,7 @@ public class OpenIMAddressUI
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
           localb.bd(paramAnonymousView);
           localb.bd(paramAnonymousMotionEvent);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/contact/OpenIMAddressUI$OpenIMAddressUIFragment$8", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahq());
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/contact/OpenIMAddressUI$OpenIMAddressUIFragment$8", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahF());
           switch (paramAnonymousMotionEvent.getAction())
           {
           }
@@ -540,17 +538,17 @@ public class OpenIMAddressUI
           }
         }
       });
-      this.uXc.setOnScrollListener(this.fMX);
-      this.uXc.setDrawingCacheEnabled(false);
-      ba.aBQ();
-      c.azp().a(this.KoF);
+      this.viQ.setOnScrollListener(this.fPf);
+      this.viQ.setDrawingCacheEnabled(false);
+      bc.aCg();
+      com.tencent.mm.model.c.azF().a(this.KKZ);
       AppMethodBeat.o(37908);
     }
     
     public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
     {
       AppMethodBeat.i(37907);
-      ad.i("MicroMsg.OpenIMAddressUI", "onAcvityResult requestCode: %d", new Object[] { Integer.valueOf(paramInt1) });
+      ae.i("MicroMsg.OpenIMAddressUI", "onAcvityResult requestCode: %d", new Object[] { Integer.valueOf(paramInt1) });
       if ((paramInt1 == 6) && (paramInt2 == -1))
       {
         setResult(-1);
@@ -580,33 +578,33 @@ public class OpenIMAddressUI
       AppMethodBeat.i(37904);
       super.onCreateContextMenu(paramContextMenu, paramView, paramContextMenuInfo);
       paramContextMenuInfo = (AdapterView.AdapterContextMenuInfo)paramContextMenuInfo;
-      ba.aBQ();
-      am localam = c.azp().Bf(this.Kjy);
-      if (localam == null)
+      bc.aCg();
+      an localan = com.tencent.mm.model.c.azF().BH(this.KFS);
+      if (localan == null)
       {
-        ad.e("MicroMsg.OpenIMAddressUI", "onCreateContextMenu, contact is null, username = " + this.Kjy);
+        ae.e("MicroMsg.OpenIMAddressUI", "onCreateContextMenu, contact is null, username = " + this.KFS);
         AppMethodBeat.o(37904);
         return;
       }
-      if (u.aAm().equals(localam.field_username))
+      if (v.aAC().equals(localan.field_username))
       {
         AppMethodBeat.o(37904);
         return;
       }
-      if (w.zB(this.Kjy))
+      if (com.tencent.mm.model.x.Al(this.KFS))
       {
-        paramContextMenu.setHeaderTitle(com.tencent.mm.pluginsdk.ui.span.k.c(paramView.getContext(), localam.adv()));
+        paramContextMenu.setHeaderTitle(com.tencent.mm.pluginsdk.ui.span.k.c(paramView.getContext(), localan.adG()));
         paramContextMenu.add(paramContextMenuInfo.position, 2, 0, 2131755190);
         AppMethodBeat.o(37904);
         return;
       }
-      if ((w.zQ(this.Kjy)) || (w.Ag(this.Kjy)))
+      if ((com.tencent.mm.model.x.AA(this.KFS)) || (com.tencent.mm.model.x.AQ(this.KFS)))
       {
         AppMethodBeat.o(37904);
         return;
       }
-      paramContextMenu.setHeaderTitle(com.tencent.mm.pluginsdk.ui.span.k.c(paramView.getContext(), localam.adv()));
-      if ((com.tencent.mm.o.b.lM(localam.field_type)) && (localam.field_deleteFlag != 1)) {
+      paramContextMenu.setHeaderTitle(com.tencent.mm.pluginsdk.ui.span.k.c(paramView.getContext(), localan.adG()));
+      if ((com.tencent.mm.contact.c.lO(localan.field_type)) && (localan.field_deleteFlag != 1)) {
         paramContextMenu.add(paramContextMenuInfo.position, 7, 0, 2131757731);
       }
       AppMethodBeat.o(37904);
@@ -616,25 +614,25 @@ public class OpenIMAddressUI
     {
       AppMethodBeat.i(37912);
       super.onDestroy();
-      ad.v("MicroMsg.OpenIMAddressUI", "onDestory");
-      ba.aiU().b(138, this);
-      com.tencent.mm.kernel.g.ajD();
-      com.tencent.mm.kernel.g.ajB().gAO.b(453, this);
-      if (this.KoF != null)
+      ae.v("MicroMsg.OpenIMAddressUI", "onDestory");
+      bc.ajj().b(138, this);
+      com.tencent.mm.kernel.g.ajS();
+      com.tencent.mm.kernel.g.ajQ().gDv.b(453, this);
+      if (this.KKZ != null)
       {
-        this.KoF.wZ(true);
-        this.KoF.detach();
-        this.KoF.fvg();
+        this.KKZ.xh(true);
+        this.KKZ.detach();
+        this.KKZ.fzh();
       }
-      if (this.Kjw != null)
+      if (this.KFQ != null)
       {
-        this.Kjw.detach();
-        this.Kjw.det();
+        this.KFQ.detach();
+        this.KFQ.dhl();
       }
-      if ((ba.ajx()) && (this.KoF != null))
+      if ((bc.ajM()) && (this.KKZ != null))
       {
-        ba.aBQ();
-        c.azp().b(this.KoF);
+        bc.aCg();
+        com.tencent.mm.model.c.azF().b(this.KKZ);
       }
       AppMethodBeat.o(37912);
     }
@@ -643,12 +641,12 @@ public class OpenIMAddressUI
     {
       AppMethodBeat.i(37911);
       super.onPause();
-      ad.i("MicroMsg.OpenIMAddressUI", "AddressUI on Pause");
-      if (this.Kjw != null) {
-        this.Kjw.onPause();
+      ae.i("MicroMsg.OpenIMAddressUI", "AddressUI on Pause");
+      if (this.KFQ != null) {
+        this.KFQ.onPause();
       }
-      this.KoF.fHC();
-      aq.f(new Runnable()
+      this.KKZ.fLU();
+      ar.f(new Runnable()
       {
         public final void run()
         {
@@ -664,19 +662,19 @@ public class OpenIMAddressUI
     {
       AppMethodBeat.i(37909);
       super.onResume();
-      ad.v("MicroMsg.OpenIMAddressUI", "address ui on resume");
-      if (this.KjO)
+      ae.v("MicroMsg.OpenIMAddressUI", "address ui on resume");
+      if (this.KGi)
       {
-        this.KjO = false;
-        this.KjN = false;
-        fHE();
-        this.uXc.setAdapter(this.KoF);
-        this.uXc.post(new Runnable()
+        this.KGi = false;
+        this.KGh = false;
+        fLW();
+        this.viQ.setAdapter(this.KKZ);
+        this.viQ.post(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(37890);
-            ad.i("MicroMsg.OpenIMAddressUI", "post to first init finish");
+            ae.i("MicroMsg.OpenIMAddressUI", "post to first init finish");
             View localView = OpenIMAddressUI.OpenIMAddressUIFragment.this.findViewById(2131301512);
             if (localView != null)
             {
@@ -686,15 +684,15 @@ public class OpenIMAddressUI
             AppMethodBeat.o(37890);
           }
         });
-        this.Kjw.yH(false);
+        this.KFQ.yV(false);
       }
       for (;;)
       {
-        if (this.Kjw != null) {
-          this.Kjw.onResume();
+        if (this.KFQ != null) {
+          this.KFQ.onResume();
         }
-        this.KoF.IVh = false;
-        aq.f(new Runnable()
+        this.KKZ.JpP = false;
+        ar.f(new Runnable()
         {
           public final void run()
           {
@@ -705,9 +703,9 @@ public class OpenIMAddressUI
         });
         AppMethodBeat.o(37909);
         return;
-        if (this.KjN)
+        if (this.KGh)
         {
-          this.KjN = false;
+          this.KGh = false;
           com.tencent.mm.sdk.g.b.d(new Runnable()
           {
             public final void run()
@@ -732,18 +730,18 @@ public class OpenIMAddressUI
           AppMethodBeat.o(37905);
           return;
         }
-        if (!((bff)((i)paramn).rr.hNL.hNQ).GBe.isEmpty()) {
-          fHF();
+        if (!((bfv)((i)paramn).rr.hQE.hQJ).GUE.isEmpty()) {
+          fLX();
         }
         AppMethodBeat.o(37905);
         return;
       }
-      if (this.fMu != null)
+      if (this.fOC != null)
       {
-        this.fMu.dismiss();
-        this.fMu = null;
+        this.fOC.dismiss();
+        this.fOC = null;
       }
-      if (!bt.jh(getContext()))
+      if (!bu.jn(getContext()))
       {
         AppMethodBeat.o(37905);
         return;

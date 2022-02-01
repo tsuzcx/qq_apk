@@ -1,14 +1,14 @@
 package com.tencent.mm.plugin.q;
 
-import com.tencent.mm.protocal.protobuf.bjn;
+import com.tencent.mm.protocal.protobuf.bkf;
 
 public abstract interface b
 {
-  public abstract int dot();
+  public abstract int drr();
   
-  public abstract String[] dou();
+  public abstract String[] drs();
   
-  public abstract bjn dov();
+  public abstract bkf drt();
 }
 
 

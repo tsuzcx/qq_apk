@@ -7,7 +7,7 @@ import com.tencent.mm.plugin.card.model.m;
 import com.tencent.mm.pluginsdk.ui.applet.CdnImageView;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/card/ui/v2/CardCdnImageView;", "Lcom/tencent/mm/pluginsdk/ui/applet/CdnImageView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "init", "", "plugin-card_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/card/ui/v2/CardCdnImageView;", "Lcom/tencent/mm/pluginsdk/ui/applet/CdnImageView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "init", "", "plugin-card_release"})
 public final class CardCdnImageView
   extends CdnImageView
 {
@@ -30,7 +30,7 @@ public final class CardCdnImageView
   private final void init()
   {
     AppMethodBeat.i(112401);
-    setImgSavedPath(m.ozF + "/");
+    setImgSavedPath(m.oGh + "/");
     AppMethodBeat.o(112401);
   }
 }

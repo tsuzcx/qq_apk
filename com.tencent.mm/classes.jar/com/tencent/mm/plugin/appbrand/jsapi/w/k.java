@@ -3,48 +3,48 @@ package com.tencent.mm.plugin.appbrand.jsapi.w;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.at;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.plugin.appbrand.utils.n;
-import com.tencent.mm.plugin.appbrand.utils.n.a;
-import com.tencent.mm.plugin.appbrand.z.m;
-import com.tencent.mm.plugin.appbrand.z.m.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.plugin.appbrand.utils.o;
+import com.tencent.mm.plugin.appbrand.utils.o.a;
+import com.tencent.mm.plugin.appbrand.y.m;
+import com.tencent.mm.plugin.appbrand.y.m.a;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.LinkedList;
 import java.util.List;
 
 public final class k
 {
-  static int lht;
-  private n lgO;
-  final List<at> lhu;
-  Runnable lhv;
+  static int llf;
+  private o lkA;
+  final List<at> llg;
+  Runnable llh;
   
   private k()
   {
     AppMethodBeat.i(137654);
-    this.lhu = new LinkedList();
-    lht = i.lhq.bmw();
-    this.lhv = new Runnable()
+    this.llg = new LinkedList();
+    llf = i.llc.bnf();
+    this.llh = new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(137651);
-        synchronized (k.this.lhu)
+        synchronized (k.this.llg)
         {
-          if (k.this.lhu.isEmpty())
+          if (k.this.llg.isEmpty())
           {
             AppMethodBeat.o(137651);
             return;
           }
-          at localat = (at)k.this.lhu.remove(0);
-          int i = k.this.lhu.size();
-          localat.bir();
-          ad.v("MicroMsg.SensorJsEventPublisher", "publish next event(event : %s), list size is : %d.", new Object[] { localat.getName(), Integer.valueOf(i) });
+          at localat = (at)k.this.llg.remove(0);
+          int i = k.this.llg.size();
+          localat.bja();
+          ae.v("MicroMsg.SensorJsEventPublisher", "publish next event(event : %s), list size is : %d.", new Object[] { localat.getName(), Integer.valueOf(i) });
         }
-        synchronized (k.this.lhu)
+        synchronized (k.this.llg)
         {
-          boolean bool = k.this.lhu.isEmpty();
+          boolean bool = k.this.llg.isEmpty();
           if (!bool) {
-            m.bBp().k(this, k.lht);
+            m.bCj().k(this, k.llf);
           }
           AppMethodBeat.o(137651);
           return;
@@ -54,19 +54,19 @@ public final class k
         }
       }
     };
-    this.lgO = new n(lht, new n.a()
+    this.lkA = new o(llf, new o.a()
     {
-      public final boolean k(Object... arg1)
+      public final boolean j(Object... arg1)
       {
         AppMethodBeat.i(137652);
-        synchronized (k.this.lhu)
+        synchronized (k.this.llg)
         {
-          if (k.this.lhu.isEmpty())
+          if (k.this.llg.isEmpty())
           {
             AppMethodBeat.o(137652);
             return false;
           }
-          k.this.lhv.run();
+          k.this.llh.run();
           AppMethodBeat.o(137652);
           return true;
         }
@@ -83,46 +83,46 @@ public final class k
       AppMethodBeat.o(137655);
       return false;
     }
-    if (!i.lhq.a(???, paramat))
+    if (!i.llc.a(???, paramat))
     {
       AppMethodBeat.o(137655);
       return false;
     }
     for (;;)
     {
-      synchronized (this.lhu)
+      synchronized (this.llg)
       {
-        boolean bool = this.lhu.isEmpty();
-        if (!this.lhu.isEmpty())
+        boolean bool = this.llg.isEmpty();
+        if (!this.llg.isEmpty())
         {
-          if (((at)this.lhu.get(0)).equals(paramat))
+          if (((at)this.llg.get(0)).equals(paramat))
           {
-            this.lhu.add(0, paramat);
-            this.lhu.remove(1);
-            if ((bool) && (!this.lgO.m(new Object[0])))
+            this.llg.add(0, paramat);
+            this.llg.remove(1);
+            if ((bool) && (!this.lkA.l(new Object[0])))
             {
-              ad.v("MicroMsg.SensorJsEventPublisher", "post delay publish event(event : %s).", new Object[] { paramat.getName() });
-              m.bBp().k(this.lhv, lht);
+              ae.v("MicroMsg.SensorJsEventPublisher", "post delay publish event(event : %s).", new Object[] { paramat.getName() });
+              m.bCj().k(this.llh, llf);
             }
             AppMethodBeat.o(137655);
             return true;
           }
-          this.lhu.remove(paramat);
-          this.lhu.add(paramat);
+          this.llg.remove(paramat);
+          this.llg.add(paramat);
         }
       }
-      this.lhu.add(paramat);
+      this.llg.add(paramat);
     }
   }
   
   static final class a
   {
-    static k lhx;
+    static k llj;
     
     static
     {
       AppMethodBeat.i(137653);
-      lhx = new k((byte)0);
+      llj = new k((byte)0);
       AppMethodBeat.o(137653);
     }
   }

@@ -11,7 +11,7 @@ public class BoldSpan
     super(1);
   }
   
-  public static Boolean cfp()
+  public static Boolean cgF()
   {
     return Boolean.TRUE;
   }

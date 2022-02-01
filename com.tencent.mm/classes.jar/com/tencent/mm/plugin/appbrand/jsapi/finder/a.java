@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.appbrand.jsapi.finder;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ad.f;
+import com.tencent.mm.ac.f;
 import java.lang.reflect.Field;
 import java.util.Iterator;
 import java.util.LinkedList;

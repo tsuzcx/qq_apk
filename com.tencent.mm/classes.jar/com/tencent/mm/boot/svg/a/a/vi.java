@@ -46,7 +46,7 @@ public final class vi
       c.a(localPaint2, paramVarArgs).setStrokeWidth(1.0F);
       localCanvas.save();
       localPaint1 = c.a(localPaint1, paramVarArgs);
-      localPaint1.setColor(-1);
+      localPaint1.setColor(-16777216);
       localObject2 = c.a((float[])localObject2, 1.0F, 0.0F, 6.0F, 0.0F, 1.0F, 6.0F);
       ((Matrix)localObject1).reset();
       ((Matrix)localObject1).setValues((float[])localObject2);

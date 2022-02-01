@@ -2,8 +2,8 @@ package com.tencent.mm.plugin.fav.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Vector;
@@ -12,68 +12,68 @@ import org.json.JSONObject;
 
 public final class i
 {
-  public static List<a> rsH;
-  private static String rsI = "";
-  private static String rsJ = "";
-  private static long rsK = 0L;
+  public static List<a> rAU;
+  private static String rAV = "";
+  private static String rAW = "";
+  private static long rAX = 0L;
   
   private static void a(String paramString1, long paramLong, int paramInt, String paramString2)
   {
     AppMethodBeat.i(103400);
-    if (rsH == null)
+    if (rAU == null)
     {
       AppMethodBeat.o(103400);
       return;
     }
     a locala = new a((byte)0);
     locala.pageId = paramString1;
-    locala.rsL = paramLong;
+    locala.rAY = paramLong;
     locala.in = paramInt;
-    if (bt.isNullOrNil(paramString2)) {}
-    for (locala.qXk = "-1";; locala.qXk = paramString2)
+    if (bu.isNullOrNil(paramString2)) {}
+    for (locala.rfp = "-1";; locala.rfp = paramString2)
     {
-      if (rsH != null) {
-        rsH.add(locala);
+      if (rAU != null) {
+        rAU.add(locala);
       }
       AppMethodBeat.o(103400);
       return;
     }
   }
   
-  public static void ago(String paramString)
+  public static void ahl(String paramString)
   {
     AppMethodBeat.i(103402);
-    gi(paramString, "");
+    gn(paramString, "");
     AppMethodBeat.o(103402);
   }
   
-  public static void agp(String paramString)
+  public static void ahm(String paramString)
   {
     AppMethodBeat.i(103404);
-    gj(paramString, "");
+    go(paramString, "");
     AppMethodBeat.o(103404);
   }
   
-  private static void cuZ()
+  private static void cwA()
   {
-    rsI = "";
-    rsJ = "";
-    rsK = 0L;
+    rAV = "";
+    rAW = "";
+    rAX = 0L;
   }
   
   public static void end()
   {
     AppMethodBeat.i(103399);
-    if (rsH == null)
+    if (rAU == null)
     {
-      rsH = null;
-      cuZ();
+      rAU = null;
+      cwA();
       AppMethodBeat.o(103399);
       return;
     }
     Object localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append("[");
-    Object localObject2 = rsH.iterator();
+    Object localObject2 = rAU.iterator();
     for (;;)
     {
       if (((Iterator)localObject2).hasNext())
@@ -83,14 +83,14 @@ public final class i
         try
         {
           localJSONObject.put("p", locala.pageId);
-          localJSONObject.put("tbe", locala.rsL);
+          localJSONObject.put("tbe", locala.rAY);
           localJSONObject.put("in", locala.in);
-          localJSONObject.put("sid", locala.qXk);
+          localJSONObject.put("sid", locala.rfp);
           ((StringBuilder)localObject1).append(localJSONObject.toString()).append(";");
           if (((StringBuilder)localObject1).length() > 3072)
           {
-            rsH = null;
-            cuZ();
+            rAU = null;
+            cwA();
             AppMethodBeat.o(103399);
             return;
           }
@@ -99,7 +99,7 @@ public final class i
         {
           for (;;)
           {
-            ad.w("MicroMsg.Fav.FavSearchFlowReportLogic", "end, JSONException");
+            ae.w("MicroMsg.Fav.FavSearchFlowReportLogic", "end, JSONException");
           }
         }
       }
@@ -108,8 +108,8 @@ public final class i
     localObject1 = ((StringBuilder)localObject1).toString();
     if (((String)localObject1).length() > 3072)
     {
-      rsH = null;
-      cuZ();
+      rAU = null;
+      cwA();
       AppMethodBeat.o(103399);
       return;
     }
@@ -138,53 +138,53 @@ public final class i
       {
         for (;;)
         {
-          ad.w("MicroMsg.Fav.FavSearchFlowReportLogic", "report flow error: " + localThrowable.getMessage());
+          ae.w("MicroMsg.Fav.FavSearchFlowReportLogic", "report flow error: " + localThrowable.getMessage());
         }
       }
-      g.yhR.f(15508, new Object[] { localObject2[0], localObject2[1], localObject2[2] });
-      rsH = null;
-      cuZ();
+      g.yxI.f(15508, new Object[] { localObject2[0], localObject2[1], localObject2[2] });
+      rAU = null;
+      cwA();
       AppMethodBeat.o(103399);
       return;
       i = 0;
     }
   }
   
-  public static void gi(String paramString1, String paramString2)
+  public static void gn(String paramString1, String paramString2)
   {
     AppMethodBeat.i(103401);
-    if (!bt.isNullOrNil(rsI)) {
-      gj(rsI, rsJ);
+    if (!bu.isNullOrNil(rAV)) {
+      go(rAV, rAW);
     }
-    rsI = paramString1;
-    rsJ = paramString2;
-    rsK = System.currentTimeMillis();
+    rAV = paramString1;
+    rAW = paramString2;
+    rAX = System.currentTimeMillis();
     AppMethodBeat.o(103401);
   }
   
-  private static void gj(String paramString1, String paramString2)
+  private static void go(String paramString1, String paramString2)
   {
     AppMethodBeat.i(103403);
-    if ((bt.isNullOrNil(paramString1)) || (!paramString1.equals(rsI)))
+    if ((bu.isNullOrNil(paramString1)) || (!paramString1.equals(rAV)))
     {
       AppMethodBeat.o(103403);
       return;
     }
-    int i = (int)(System.currentTimeMillis() - rsK);
-    rsK /= 1000L;
+    int i = (int)(System.currentTimeMillis() - rAX);
+    rAX /= 1000L;
     String str = paramString2;
-    if (bt.isNullOrNil(paramString2)) {
+    if (bu.isNullOrNil(paramString2)) {
       str = "-1";
     }
-    a(paramString1, rsK, i, str);
-    cuZ();
+    a(paramString1, rAX, i, str);
+    cwA();
     AppMethodBeat.o(103403);
   }
   
   public static void start()
   {
     AppMethodBeat.i(103398);
-    rsH = new Vector();
+    rAU = new Vector();
     AppMethodBeat.o(103398);
   }
   
@@ -192,8 +192,8 @@ public final class i
   {
     int in;
     String pageId;
-    String qXk;
-    long rsL;
+    long rAY;
+    String rfp;
   }
 }
 

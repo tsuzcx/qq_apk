@@ -3,35 +3,35 @@ package com.tencent.mm.plugin.appbrand.media.record;
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.audio.b.c;
-import com.tencent.mm.g.a.oj;
+import com.tencent.mm.g.a.ok;
 import com.tencent.mm.plugin.appbrand.media.record.a.d.a;
 import com.tencent.mm.plugin.appbrand.media.record.record_imp.RecordParam;
 import com.tencent.mm.plugin.appbrand.media.record.record_imp.a.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.av;
-import com.tencent.mm.sdk.platformtools.av.a;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.aw;
+import com.tencent.mm.sdk.platformtools.aw.a;
 
 public final class g
 {
-  private static Object dcK;
-  private static g lRC;
-  private com.tencent.mm.plugin.appbrand.media.record.a.d diU;
-  public boolean diW;
-  private a.a lRA;
-  private d.a lRB;
-  private e lRD;
-  private av lRd;
-  public com.tencent.mm.plugin.appbrand.media.record.record_imp.a lRq;
-  public RecordParam lRr;
-  a lRs;
-  private boolean lRt;
-  private int lRu;
-  private long lRv;
-  private int lRw;
-  private ap lRx;
-  boolean lRy;
-  boolean lRz;
+  private static Object ddM;
+  private static g lWd;
+  private com.tencent.mm.plugin.appbrand.media.record.a.d djW;
+  public boolean djY;
+  private aw lVE;
+  public com.tencent.mm.plugin.appbrand.media.record.record_imp.a lVR;
+  public RecordParam lVS;
+  a lVT;
+  private boolean lVU;
+  private int lVV;
+  private long lVW;
+  private int lVX;
+  private aq lVY;
+  boolean lVZ;
+  boolean lWa;
+  private a.a lWb;
+  private d.a lWc;
+  private e lWe;
   private long mDuration;
   private String mFilePath;
   private Object mLockObj;
@@ -41,33 +41,33 @@ public final class g
   {
     AppMethodBeat.i(146184);
     j.a(new g.1());
-    dcK = new Object();
+    ddM = new Object();
     AppMethodBeat.o(146184);
   }
   
   private g()
   {
     AppMethodBeat.i(146169);
-    this.lRq = null;
-    this.diW = false;
+    this.lVR = null;
+    this.djY = false;
     this.mLockObj = new Object();
-    this.lRs = a.lRG;
-    this.diU = null;
-    this.lRt = false;
-    this.lRu = 0;
-    this.lRd = null;
+    this.lVT = a.lWh;
+    this.djW = null;
+    this.lVU = false;
+    this.lVV = 0;
+    this.lVE = null;
     this.mDuration = 0L;
-    this.lRv = 0L;
-    this.lRw = 0;
+    this.lVW = 0L;
+    this.lVX = 0;
     this.mStartTime = 0L;
-    this.lRy = false;
-    this.lRz = false;
-    this.lRA = new a.a()
+    this.lVZ = false;
+    this.lWa = false;
+    this.lWb = new a.a()
     {
       public final void ch(int paramAnonymousInt1, int paramAnonymousInt2)
       {
         AppMethodBeat.i(146157);
-        ad.i("MicroMsg.Record.AudioRecordMgr", "onRecError state:%d, detailState:%d", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2) });
+        ae.i("MicroMsg.Record.AudioRecordMgr", "onRecError state:%d, detailState:%d", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2) });
         g.this.onError(1);
         AppMethodBeat.o(146157);
       }
@@ -80,31 +80,31 @@ public final class g
           g localg = g.this;
           int j = g.c(g.this);
           com.tencent.mm.plugin.appbrand.media.record.record_imp.a locala = g.b(g.this);
-          if (locala.dgu != null) {}
-          for (int i = locala.dgu.dgR;; i = 20)
+          if (locala.dhw != null) {}
+          for (int i = locala.dhw.dhT;; i = 20)
           {
             g.a(localg, i + j);
             try
             {
               if (!g.a(g.this).a(g.d(g.this), paramAnonymousArrayOfByte, paramAnonymousInt)) {
-                ad.e("MicroMsg.Record.AudioRecordMgr", "encode pcm fail!");
+                ae.e("MicroMsg.Record.AudioRecordMgr", "encode pcm fail!");
               }
               AppMethodBeat.o(146156);
               return;
             }
             catch (Exception paramAnonymousArrayOfByte)
             {
-              ad.printErrStackTrace("MicroMsg.Record.AudioRecordMgr", paramAnonymousArrayOfByte, "onRecPcmDataReady", new Object[0]);
-              if ((g.e(g.this) == null) || (!"mp3".equalsIgnoreCase(g.e(g.this).kwT))) {
+              ae.printErrStackTrace("MicroMsg.Record.AudioRecordMgr", paramAnonymousArrayOfByte, "onRecPcmDataReady", new Object[0]);
+              if ((g.e(g.this) == null) || (!"mp3".equalsIgnoreCase(g.e(g.this).kAi))) {
                 break;
               }
-              j.uC(19);
+              j.uI(19);
               AppMethodBeat.o(146156);
               return;
-              if ((g.e(g.this) == null) || (!"aac".equalsIgnoreCase(g.e(g.this).kwT))) {
+              if ((g.e(g.this) == null) || (!"aac".equalsIgnoreCase(g.e(g.this).kAi))) {
                 break label204;
               }
-              j.uC(23);
+              j.uI(23);
             }
           }
         }
@@ -112,197 +112,141 @@ public final class g
         AppMethodBeat.o(146156);
       }
     };
-    this.lRB = new d.a()
+    this.lWc = new d.a()
     {
       public final void c(byte[] paramAnonymousArrayOfByte, int paramAnonymousInt, boolean paramAnonymousBoolean)
       {
         AppMethodBeat.i(146158);
         Object localObject = g.this;
-        ad.i("MicroMsg.Record.AudioRecordMgr", "onFrameRecorded  buffSize:%d, isLastFrameL:%b", new Object[] { Integer.valueOf(paramAnonymousInt), Boolean.valueOf(paramAnonymousBoolean) });
-        oj localoj = new oj();
-        localoj.dCl.state = "frameRecorded";
-        if (((g)localObject).lRr != null) {
-          localoj.dCl.appId = ((g)localObject).lRr.appId;
+        ae.i("MicroMsg.Record.AudioRecordMgr", "onFrameRecorded  buffSize:%d, isLastFrameL:%b", new Object[] { Integer.valueOf(paramAnonymousInt), Boolean.valueOf(paramAnonymousBoolean) });
+        ok localok = new ok();
+        localok.dDq.state = "frameRecorded";
+        if (((g)localObject).lVS != null) {
+          localok.dDq.appId = ((g)localObject).lVS.appId;
         }
-        localoj.dCl.action = 5;
+        localok.dDq.action = 5;
         localObject = new byte[paramAnonymousInt];
         System.arraycopy(paramAnonymousArrayOfByte, 0, localObject, 0, paramAnonymousInt);
-        localoj.dCl.frameBuffer = ((byte[])localObject);
-        localoj.dCl.dCm = paramAnonymousBoolean;
-        com.tencent.mm.sdk.b.a.IbL.a(localoj, Looper.getMainLooper());
+        localok.dDq.frameBuffer = ((byte[])localObject);
+        localok.dDq.dDr = paramAnonymousBoolean;
+        com.tencent.mm.sdk.b.a.IvT.a(localok, Looper.getMainLooper());
         AppMethodBeat.o(146158);
       }
     };
-    this.lRD = new e()
+    this.lWe = new e()
     {
-      public final void bsH()
+      public final void bts()
       {
         AppMethodBeat.i(146154);
         if (!g.l(g.this))
         {
-          g.this.bsR();
+          g.this.btC();
           AppMethodBeat.o(146154);
           return;
         }
-        ad.i("MicroMsg.Record.AudioRecordMgr", "is interrupting");
+        ae.i("MicroMsg.Record.AudioRecordMgr", "is interrupting");
         AppMethodBeat.o(146154);
       }
       
-      public final void bsI()
+      public final void btt()
       {
         AppMethodBeat.i(146155);
         if (g.l(g.this))
         {
           g localg = g.this;
-          localg.lRz = false;
-          ad.i("MicroMsg.Record.AudioRecordMgr", "onInterruptionEnd");
-          oj localoj = new oj();
-          localoj.dCl.action = 7;
-          localoj.dCl.state = "interruptionEnd";
-          if (localg.lRr != null) {
-            localoj.dCl.appId = localg.lRr.appId;
+          localg.lWa = false;
+          ae.i("MicroMsg.Record.AudioRecordMgr", "onInterruptionEnd");
+          ok localok = new ok();
+          localok.dDq.action = 7;
+          localok.dDq.state = "interruptionEnd";
+          if (localg.lVS != null) {
+            localok.dDq.appId = localg.lVS.appId;
           }
-          com.tencent.mm.sdk.b.a.IbL.a(localoj, Looper.getMainLooper());
+          com.tencent.mm.sdk.b.a.IvT.a(localok, Looper.getMainLooper());
           AppMethodBeat.o(146155);
           return;
         }
-        ad.i("MicroMsg.Record.AudioRecordMgr", "not call onInterruptionEnd");
+        ae.i("MicroMsg.Record.AudioRecordMgr", "not call onInterruptionEnd");
         AppMethodBeat.o(146155);
       }
     };
     AppMethodBeat.o(146169);
   }
   
-  private boolean PQ()
+  private boolean PP()
   {
     AppMethodBeat.i(146172);
-    ad.i("MicroMsg.Record.AudioRecordMgr", "startRecordInternal");
-    if (this.lRq != null)
+    ae.i("MicroMsg.Record.AudioRecordMgr", "startRecordInternal");
+    if (this.lVR != null)
     {
-      this.lRq.PG();
-      this.lRq = null;
-      ad.i("MicroMsg.Record.AudioRecordMgr", "mRecorder is not null, stop it, and not callback stop event");
+      this.lVR.PF();
+      this.lVR = null;
+      ae.i("MicroMsg.Record.AudioRecordMgr", "mRecorder is not null, stop it, and not callback stop event");
     }
-    if (this.lRq == null)
+    if (this.lVR == null)
     {
-      this.lRq = new com.tencent.mm.plugin.appbrand.media.record.record_imp.a(this.lRr);
-      this.lRq.lSn = this.lRA;
+      this.lVR = new com.tencent.mm.plugin.appbrand.media.record.record_imp.a(this.lVS);
+      this.lVR.lWO = this.lWb;
     }
-    com.tencent.mm.plugin.appbrand.media.record.record_imp.a locala = this.lRq;
-    ad.i("MicroMsg.Record.AppBrandRecorder", "startRecord");
-    if (locala.dgu != null)
+    com.tencent.mm.plugin.appbrand.media.record.record_imp.a locala = this.lVR;
+    ae.i("MicroMsg.Record.AppBrandRecorder", "startRecord");
+    if (locala.dhw != null)
     {
-      locala.dgu.PG();
-      locala.dgu = null;
+      locala.dhw.PF();
+      locala.dhw = null;
     }
-    locala.lSm = System.currentTimeMillis();
-    ad.i("MicroMsg.Record.AppBrandRecorder", "start time ticket:%d", new Object[] { Long.valueOf(locala.lSm) });
-    locala.dgu = new c(locala.sampleRate, locala.channelCount, locala.dgV);
-    if ("mp3".equalsIgnoreCase(locala.lSl.kwT))
+    locala.lWN = System.currentTimeMillis();
+    ae.i("MicroMsg.Record.AppBrandRecorder", "start time ticket:%d", new Object[] { Long.valueOf(locala.lWN) });
+    locala.dhw = new c(locala.sampleRate, locala.channelCount, locala.dhX);
+    if ("mp3".equalsIgnoreCase(locala.lWM.kAi))
     {
-      locala.dgu.hO(40);
-      locala.dgu.cu(false);
-      locala.dgu.dhh = locala.lSo;
-      locala.dgu.setAudioSource(locala.lSl.lSq.lum);
-      if (!locala.dgu.PP()) {
+      locala.dhw.hQ(40);
+      locala.dhw.cu(false);
+      locala.dhw.dij = locala.lWP;
+      locala.dhw.setAudioSource(locala.lWM.lWR.lyL);
+      if (!locala.dhw.PO()) {
         break label264;
       }
     }
     label264:
     for (boolean bool = true;; bool = false)
     {
-      ad.i("MicroMsg.Record.AudioRecordMgr", "record start:%b", new Object[] { Boolean.valueOf(bool) });
+      ae.i("MicroMsg.Record.AudioRecordMgr", "record start:%b", new Object[] { Boolean.valueOf(bool) });
       AppMethodBeat.o(146172);
       return bool;
-      locala.dgu.hO(20);
+      locala.dhw.hQ(20);
       break;
     }
   }
   
-  public static g bsM()
-  {
-    AppMethodBeat.i(146170);
-    synchronized (dcK)
-    {
-      if (lRC == null) {
-        lRC = new g();
-      }
-      g localg = lRC;
-      AppMethodBeat.o(146170);
-      return localg;
-    }
-  }
-  
-  private boolean bsN()
-  {
-    boolean bool1 = false;
-    AppMethodBeat.i(146173);
-    ad.i("MicroMsg.Record.AudioRecordMgr", "initEncode");
-    if (this.diU != null)
-    {
-      this.diU.close();
-      this.diU = null;
-    }
-    this.mFilePath = h.ea(this.lRr.kwT, this.lRr.gdn);
-    ad.i("MicroMsg.Record.AudioRecordMgr", "mFilePath:%s", new Object[] { this.mFilePath });
-    this.diU = com.tencent.mm.plugin.appbrand.media.record.a.b.Sy(this.lRr.kwT);
-    if (this.diU != null)
-    {
-      boolean bool2 = h.Sv(this.mFilePath);
-      if (!bool2)
-      {
-        ad.e("MicroMsg.Record.AudioRecordMgr", "prepare cache file fail");
-        AppMethodBeat.o(146173);
-        return bool2;
-      }
-      try
-      {
-        bool2 = this.diU.i(this.mFilePath, this.lRr.sampleRate, this.lRr.lup, this.lRr.luq);
-        bool1 = bool2;
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          ad.printErrStackTrace("MicroMsg.Record.AudioRecordMgr", localException, "init encoder fail", new Object[0]);
-        }
-      }
-      this.diU.a(this.lRB);
-      AppMethodBeat.o(146173);
-      return bool1;
-    }
-    AppMethodBeat.o(146173);
-    return false;
-  }
-  
-  private void bsP()
+  private void btA()
   {
     AppMethodBeat.i(146175);
-    ad.i("MicroMsg.Record.AudioRecordMgr", "stop record in runnable");
+    ae.i("MicroMsg.Record.AudioRecordMgr", "stop record in runnable");
     for (;;)
     {
       try
       {
-        if (OJ())
+        if (OH())
         {
-          ad.e("MicroMsg.Record.AudioRecordMgr", "is stopped, don't stop again");
+          ae.e("MicroMsg.Record.AudioRecordMgr", "is stopped, don't stop again");
           AppMethodBeat.o(146175);
           return;
         }
-        if (this.lRq == null) {
+        if (this.lVR == null) {
           continue;
         }
-        bool = this.lRq.PG();
-        this.lRq = null;
-        this.lRt = true;
-        ad.i("MicroMsg.Record.AudioRecordMgr", "mPcmDuration:%d", new Object[] { Integer.valueOf(this.lRu) });
-        if (this.diU != null)
+        bool = this.lVR.PF();
+        this.lVR = null;
+        this.lVU = true;
+        ae.i("MicroMsg.Record.AudioRecordMgr", "mPcmDuration:%d", new Object[] { Integer.valueOf(this.lVV) });
+        if (this.djW != null)
         {
-          this.diU.flush();
-          this.diU.close();
-          this.diU = null;
+          this.djW.flush();
+          this.djW.close();
+          this.djW = null;
         }
-        bsQ().post(new Runnable()
+        btB().post(new Runnable()
         {
           public final void run()
           {
@@ -311,97 +255,153 @@ public final class g
             AppMethodBeat.o(146153);
           }
         });
-        if (!OI()) {
+        if (!OG()) {
           continue;
         }
-        ad.e("MicroMsg.Record.AudioRecordMgr", "don't calculate time again if it is pause state");
+        ae.e("MicroMsg.Record.AudioRecordMgr", "don't calculate time again if it is pause state");
       }
       catch (Exception localException)
       {
-        oj localoj;
+        ok localok;
         long l1;
         long l2;
-        ad.printErrStackTrace("MicroMsg.Record.AudioRecordMgr", localException, "_stop", new Object[0]);
+        ae.printErrStackTrace("MicroMsg.Record.AudioRecordMgr", localException, "_stop", new Object[0]);
         boolean bool = false;
         continue;
         onError(9);
-        ad.e("MicroMsg.Record.AudioRecordMgr", "stop record fail");
+        ae.e("MicroMsg.Record.AudioRecordMgr", "stop record fail");
         continue;
       }
-      ad.i("MicroMsg.Record.AudioRecordMgr", "stop:%b", new Object[] { Boolean.valueOf(bool) });
+      ae.i("MicroMsg.Record.AudioRecordMgr", "stop:%b", new Object[] { Boolean.valueOf(bool) });
       if (!bool) {
         continue;
       }
-      ad.i("MicroMsg.Record.AudioRecordMgr", "onStop");
-      this.lRs = a.lRK;
-      this.diW = false;
-      localoj = new oj();
-      localoj.dCl.action = 2;
-      localoj.dCl.state = "stop";
-      if (this.lRr != null) {
-        localoj.dCl.appId = this.lRr.appId;
+      ae.i("MicroMsg.Record.AudioRecordMgr", "onStop");
+      this.lVT = a.lWl;
+      this.djY = false;
+      localok = new ok();
+      localok.dDq.action = 2;
+      localok.dDq.state = "stop";
+      if (this.lVS != null) {
+        localok.dDq.appId = this.lVS.appId;
       }
-      ad.i("MicroMsg.Record.AudioRecordMgr", "mPcmDuration:%d, mRealRecordedTime%d", new Object[] { Integer.valueOf(this.lRu), Integer.valueOf(this.lRw) });
-      localoj.dCl.duration = Math.min(this.lRu, this.lRw);
-      localoj.dCl.filePath = this.mFilePath;
-      localoj.dCl.fileSize = ((int)h.Sw(this.mFilePath));
-      com.tencent.mm.sdk.b.a.IbL.a(localoj, Looper.getMainLooper());
-      ad.i("MicroMsg.Record.AudioRecordMgr", "stop record success");
-      this.lRr = null;
-      d.bsG();
+      ae.i("MicroMsg.Record.AudioRecordMgr", "mPcmDuration:%d, mRealRecordedTime%d", new Object[] { Integer.valueOf(this.lVV), Integer.valueOf(this.lVX) });
+      localok.dDq.duration = Math.min(this.lVV, this.lVX);
+      localok.dDq.filePath = this.mFilePath;
+      localok.dDq.fileSize = ((int)h.Tf(this.mFilePath));
+      com.tencent.mm.sdk.b.a.IvT.a(localok, Looper.getMainLooper());
+      ae.i("MicroMsg.Record.AudioRecordMgr", "stop record success");
+      this.lVS = null;
+      d.btr();
       AppMethodBeat.o(146175);
       return;
-      ad.e("MicroMsg.Record.AudioRecordMgr", "mRecorder is null, has stop record!");
+      ae.e("MicroMsg.Record.AudioRecordMgr", "mRecorder is null, has stop record!");
       bool = true;
       continue;
       l1 = System.currentTimeMillis();
       l2 = System.currentTimeMillis() - this.mStartTime;
-      ad.i("MicroMsg.Record.AudioRecordMgr", "currentTime:%d, interval:%d, mRealRecordedTime:%d", new Object[] { Long.valueOf(l1), Long.valueOf(l2), Integer.valueOf(this.lRw) });
-      this.lRw = ((int)(this.lRw + l2));
-      this.lRv = (this.mDuration - this.lRw);
-      ad.i("MicroMsg.Record.AudioRecordMgr", "mLimitTime:%d, mRealRecordTime:%d", new Object[] { Long.valueOf(this.lRv), Integer.valueOf(this.lRw) });
+      ae.i("MicroMsg.Record.AudioRecordMgr", "currentTime:%d, interval:%d, mRealRecordedTime:%d", new Object[] { Long.valueOf(l1), Long.valueOf(l2), Integer.valueOf(this.lVX) });
+      this.lVX = ((int)(this.lVX + l2));
+      this.lVW = (this.mDuration - this.lVX);
+      ae.i("MicroMsg.Record.AudioRecordMgr", "mLimitTime:%d, mRealRecordTime:%d", new Object[] { Long.valueOf(this.lVW), Integer.valueOf(this.lVX) });
     }
   }
   
-  private ap bsQ()
+  private aq btB()
   {
     AppMethodBeat.i(146176);
-    if (this.lRx == null) {
-      this.lRx = new ap(Looper.getMainLooper());
+    if (this.lVY == null) {
+      this.lVY = new aq(Looper.getMainLooper());
     }
-    ap localap = this.lRx;
+    aq localaq = this.lVY;
     AppMethodBeat.o(146176);
-    return localap;
+    return localaq;
+  }
+  
+  public static g btx()
+  {
+    AppMethodBeat.i(146170);
+    synchronized (ddM)
+    {
+      if (lWd == null) {
+        lWd = new g();
+      }
+      g localg = lWd;
+      AppMethodBeat.o(146170);
+      return localg;
+    }
+  }
+  
+  private boolean bty()
+  {
+    boolean bool1 = false;
+    AppMethodBeat.i(146173);
+    ae.i("MicroMsg.Record.AudioRecordMgr", "initEncode");
+    if (this.djW != null)
+    {
+      this.djW.close();
+      this.djW = null;
+    }
+    this.mFilePath = h.ec(this.lVS.kAi, this.lVS.gfv);
+    ae.i("MicroMsg.Record.AudioRecordMgr", "mFilePath:%s", new Object[] { this.mFilePath });
+    this.djW = com.tencent.mm.plugin.appbrand.media.record.a.b.Th(this.lVS.kAi);
+    if (this.djW != null)
+    {
+      boolean bool2 = h.Te(this.mFilePath);
+      if (!bool2)
+      {
+        ae.e("MicroMsg.Record.AudioRecordMgr", "prepare cache file fail");
+        AppMethodBeat.o(146173);
+        return bool2;
+      }
+      try
+      {
+        bool2 = this.djW.i(this.mFilePath, this.lVS.sampleRate, this.lVS.lyO, this.lVS.lyP);
+        bool1 = bool2;
+      }
+      catch (Exception localException)
+      {
+        for (;;)
+        {
+          ae.printErrStackTrace("MicroMsg.Record.AudioRecordMgr", localException, "init encoder fail", new Object[0]);
+        }
+      }
+      this.djW.a(this.lWc);
+      AppMethodBeat.o(146173);
+      return bool1;
+    }
+    AppMethodBeat.o(146173);
+    return false;
   }
   
   private void stopTimer()
   {
     AppMethodBeat.i(146168);
-    ad.i("MicroMsg.Record.AudioRecordMgr", "stopTimer");
-    if (this.lRd != null) {
-      this.lRd.stopTimer();
+    ae.i("MicroMsg.Record.AudioRecordMgr", "stopTimer");
+    if (this.lVE != null) {
+      this.lVE.stopTimer();
     }
-    this.lRd = null;
+    this.lVE = null;
     AppMethodBeat.o(146168);
   }
   
-  public final boolean OI()
+  public final boolean OG()
   {
-    return this.lRs == a.lRJ;
+    return this.lVT == a.lWk;
   }
   
-  public final boolean OJ()
+  public final boolean OH()
   {
-    return this.lRs == a.lRK;
+    return this.lVT == a.lWl;
   }
   
-  public final boolean PG()
+  public final boolean PF()
   {
     AppMethodBeat.i(146171);
-    ad.i("MicroMsg.Record.AudioRecordMgr", "stopRecord");
-    if ((this.lRq == null) && (this.diU == null))
+    ae.i("MicroMsg.Record.AudioRecordMgr", "stopRecord");
+    if ((this.lVR == null) && (this.djW == null))
     {
-      ad.e("MicroMsg.Record.AudioRecordMgr", "mRecord is null and mAudioEncoder is null, stop fail");
+      ae.e("MicroMsg.Record.AudioRecordMgr", "mRecord is null and mAudioEncoder is null, stop fail");
       AppMethodBeat.o(146171);
       return false;
     }
@@ -422,34 +422,49 @@ public final class g
     return true;
   }
   
-  final void bsO()
+  protected final void btC()
+  {
+    AppMethodBeat.i(146178);
+    this.lWa = true;
+    ae.i("MicroMsg.Record.AudioRecordMgr", "onInterruptionBegin");
+    ok localok = new ok();
+    localok.dDq.action = 6;
+    localok.dDq.state = "interruptionBegin";
+    if (this.lVS != null) {
+      localok.dDq.appId = this.lVS.appId;
+    }
+    com.tencent.mm.sdk.b.a.IvT.a(localok, Looper.getMainLooper());
+    AppMethodBeat.o(146178);
+  }
+  
+  final void btz()
   {
     AppMethodBeat.i(146174);
-    ad.i("MicroMsg.Record.AudioRecordMgr", "pause record in runnable");
+    ae.i("MicroMsg.Record.AudioRecordMgr", "pause record in runnable");
     for (;;)
     {
       try
       {
-        if (OI())
+        if (OG())
         {
-          ad.e("MicroMsg.Record.AudioRecordMgr", "is paused, don't pause again");
+          ae.e("MicroMsg.Record.AudioRecordMgr", "is paused, don't pause again");
           AppMethodBeat.o(146174);
           return;
         }
-        if (this.lRq == null) {
+        if (this.lVR == null) {
           break label416;
         }
-        bool1 = this.lRq.PG();
-        this.lRq = null;
-        if ((this.lRr != null) && (this.lRr.lSr != null))
+        bool1 = this.lVR.PF();
+        this.lVR = null;
+        if ((this.lVS != null) && (this.lVS.lWS != null))
         {
-          boolean bool2 = this.lRr.lSr.bsJ();
-          ad.i("MicroMsg.Record.AudioRecordMgr", "isInterrupted:%b, interrupted:%b", new Object[] { Boolean.valueOf(this.lRz), Boolean.valueOf(bool2) });
-          if ((bool2) && (!this.lRz)) {
-            bsR();
+          boolean bool2 = this.lVS.lWS.btu();
+          ae.i("MicroMsg.Record.AudioRecordMgr", "isInterrupted:%b, interrupted:%b", new Object[] { Boolean.valueOf(this.lWa), Boolean.valueOf(bool2) });
+          if ((bool2) && (!this.lWa)) {
+            btC();
           }
         }
-        bsQ().post(new Runnable()
+        btB().post(new Runnable()
         {
           public final void run()
           {
@@ -460,36 +475,36 @@ public final class g
         });
         long l1 = System.currentTimeMillis();
         long l2 = l1 - this.mStartTime;
-        ad.i("MicroMsg.Record.AudioRecordMgr", "currentTime:%d, interval:%d, mRealRecordedTime:%d", new Object[] { Long.valueOf(l1), Long.valueOf(l2), Integer.valueOf(this.lRw) });
-        this.lRw = ((int)(this.lRw + l2));
-        this.lRv = (this.mDuration - this.lRw);
-        ad.i("MicroMsg.Record.AudioRecordMgr", "mLimitTime:%d, mRealRecordTime:%d", new Object[] { Long.valueOf(this.lRv), Integer.valueOf(this.lRw) });
+        ae.i("MicroMsg.Record.AudioRecordMgr", "currentTime:%d, interval:%d, mRealRecordedTime:%d", new Object[] { Long.valueOf(l1), Long.valueOf(l2), Integer.valueOf(this.lVX) });
+        this.lVX = ((int)(this.lVX + l2));
+        this.lVW = (this.mDuration - this.lVX);
+        ae.i("MicroMsg.Record.AudioRecordMgr", "mLimitTime:%d, mRealRecordTime:%d", new Object[] { Long.valueOf(this.lVW), Integer.valueOf(this.lVX) });
       }
       catch (Exception localException)
       {
-        oj localoj;
-        ad.printErrStackTrace("MicroMsg.Record.AudioRecordMgr", localException, "_pause", new Object[0]);
+        ok localok;
+        ae.printErrStackTrace("MicroMsg.Record.AudioRecordMgr", localException, "_pause", new Object[0]);
         bool1 = false;
         continue;
         onError(8);
-        ad.e("MicroMsg.Record.AudioRecordMgr", "pause record fail");
+        ae.e("MicroMsg.Record.AudioRecordMgr", "pause record fail");
         AppMethodBeat.o(146174);
         return;
       }
-      ad.i("MicroMsg.Record.AudioRecordMgr", "stop:%b", new Object[] { Boolean.valueOf(bool1) });
+      ae.i("MicroMsg.Record.AudioRecordMgr", "stop:%b", new Object[] { Boolean.valueOf(bool1) });
       if (bool1)
       {
-        ad.i("MicroMsg.Record.AudioRecordMgr", "onPause");
-        this.lRs = a.lRJ;
-        this.diW = false;
-        localoj = new oj();
-        localoj.dCl.action = 3;
-        localoj.dCl.state = "pause";
-        if (this.lRr != null) {
-          localoj.dCl.appId = this.lRr.appId;
+        ae.i("MicroMsg.Record.AudioRecordMgr", "onPause");
+        this.lVT = a.lWk;
+        this.djY = false;
+        localok = new ok();
+        localok.dDq.action = 3;
+        localok.dDq.state = "pause";
+        if (this.lVS != null) {
+          localok.dDq.appId = this.lVS.appId;
         }
-        com.tencent.mm.sdk.b.a.IbL.a(localoj, Looper.getMainLooper());
-        ad.i("MicroMsg.Record.AudioRecordMgr", "pause record success");
+        com.tencent.mm.sdk.b.a.IvT.a(localok, Looper.getMainLooper());
+        ae.i("MicroMsg.Record.AudioRecordMgr", "pause record success");
         AppMethodBeat.o(146174);
         return;
       }
@@ -498,39 +513,24 @@ public final class g
     }
   }
   
-  protected final void bsR()
-  {
-    AppMethodBeat.i(146178);
-    this.lRz = true;
-    ad.i("MicroMsg.Record.AudioRecordMgr", "onInterruptionBegin");
-    oj localoj = new oj();
-    localoj.dCl.action = 6;
-    localoj.dCl.state = "interruptionBegin";
-    if (this.lRr != null) {
-      localoj.dCl.appId = this.lRr.appId;
-    }
-    com.tencent.mm.sdk.b.a.IbL.a(localoj, Looper.getMainLooper());
-    AppMethodBeat.o(146178);
-  }
-  
   protected final void onError(int paramInt)
   {
     AppMethodBeat.i(146177);
-    ad.i("MicroMsg.Record.AudioRecordMgr", "onError errType:%d", new Object[] { Integer.valueOf(paramInt) });
-    if (this.lRs != a.lRL) {
-      j.uB(paramInt);
+    ae.i("MicroMsg.Record.AudioRecordMgr", "onError errType:%d", new Object[] { Integer.valueOf(paramInt) });
+    if (this.lVT != a.lWm) {
+      j.uH(paramInt);
     }
-    this.lRs = a.lRL;
-    this.diW = false;
-    oj localoj = new oj();
-    localoj.dCl.action = 4;
-    localoj.dCl.state = "error";
-    if (this.lRr != null) {
-      localoj.dCl.appId = this.lRr.appId;
+    this.lVT = a.lWm;
+    this.djY = false;
+    ok localok = new ok();
+    localok.dDq.action = 4;
+    localok.dDq.state = "error";
+    if (this.lVS != null) {
+      localok.dDq.appId = this.lVS.appId;
     }
-    localoj.dCl.errCode = paramInt;
-    localoj.dCl.errMsg = i.uz(paramInt);
-    com.tencent.mm.sdk.b.a.IbL.a(localoj, Looper.getMainLooper());
+    localok.dDq.errCode = paramInt;
+    localok.dDq.errMsg = i.uF(paramInt);
+    com.tencent.mm.sdk.b.a.IvT.a(localok, Looper.getMainLooper());
     AppMethodBeat.o(146177);
   }
   
@@ -539,13 +539,13 @@ public final class g
     static
     {
       AppMethodBeat.i(146167);
-      lRG = new a("INITIALIZING", 0);
-      lRH = new a("START", 1);
-      lRI = new a("RESUME", 2);
-      lRJ = new a("PAUSE", 3);
-      lRK = new a("STOP", 4);
-      lRL = new a("ERROR", 5);
-      lRM = new a[] { lRG, lRH, lRI, lRJ, lRK, lRL };
+      lWh = new a("INITIALIZING", 0);
+      lWi = new a("START", 1);
+      lWj = new a("RESUME", 2);
+      lWk = new a("PAUSE", 3);
+      lWl = new a("STOP", 4);
+      lWm = new a("ERROR", 5);
+      lWn = new a[] { lWh, lWi, lWj, lWk, lWl, lWm };
       AppMethodBeat.o(146167);
     }
     

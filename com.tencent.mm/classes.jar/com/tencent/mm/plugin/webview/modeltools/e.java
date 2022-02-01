@@ -4,43 +4,43 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bs.d;
-import com.tencent.mm.g.a.sh;
-import com.tencent.mm.g.a.sh.a;
-import com.tencent.mm.g.a.sj;
-import com.tencent.mm.g.a.sj.a;
-import com.tencent.mm.g.a.sn;
+import com.tencent.mm.br.d;
+import com.tencent.mm.g.a.si;
+import com.tencent.mm.g.a.si.a;
+import com.tencent.mm.g.a.sk;
+import com.tencent.mm.g.a.sk.a;
+import com.tencent.mm.g.a.so;
 import com.tencent.mm.sdk.b.a;
 import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public final class e
 {
-  String DVw;
-  private a DVx;
-  private c DVy;
-  private c DVz;
+  String Env;
+  private a Enw;
+  private c Enx;
+  private c Eny;
   private c scanBankCardConfirmResultListener;
   
   public e()
   {
     AppMethodBeat.i(79131);
-    this.DVw = null;
-    this.DVy = new c() {};
+    this.Env = null;
+    this.Enx = new c() {};
     this.scanBankCardConfirmResultListener = new c()
     {
-      private boolean callback(sh paramAnonymoussh)
+      private boolean callback(si paramAnonymoussi)
       {
         AppMethodBeat.i(79127);
-        if (((paramAnonymoussh instanceof sh)) && ("bank".equals(e.this.DVw)))
+        if (((paramAnonymoussi instanceof si)) && ("bank".equals(e.this.Env)))
         {
-          if (paramAnonymoussh.dGN.action != 0) {
+          if (paramAnonymoussi.dHT.action != 0) {
             break label65;
           }
-          e.a(e.this, e.this.DVw);
+          e.a(e.this, e.this.Env);
         }
         for (;;)
         {
@@ -48,37 +48,37 @@ public final class e
           AppMethodBeat.o(79127);
           return false;
           label65:
-          if (paramAnonymoussh.dGN.action == 1) {
-            if (bt.isNullOrNil(paramAnonymoussh.dGN.cardNum)) {
-              e.b(e.this, e.this.DVw);
+          if (paramAnonymoussi.dHT.action == 1) {
+            if (bu.isNullOrNil(paramAnonymoussi.dHT.cardNum)) {
+              e.b(e.this, e.this.Env);
             } else {
               try
               {
                 JSONObject localJSONObject = new JSONObject();
-                localJSONObject.put("bankcard_number", paramAnonymoussh.dGN.cardNum);
-                e.a(e.this, e.this.DVw, localJSONObject, null);
+                localJSONObject.put("bankcard_number", paramAnonymoussi.dHT.cardNum);
+                e.a(e.this, e.this.Env, localJSONObject, null);
               }
-              catch (JSONException paramAnonymoussh)
+              catch (JSONException paramAnonymoussi)
               {
-                ad.e("MicroMsg.LicenceScanner", "type = bankcard, add cardNum into json, exp = %s ", new Object[] { paramAnonymoussh });
-                e.b(e.this, e.this.DVw);
+                ae.e("MicroMsg.LicenceScanner", "type = bankcard, add cardNum into json, exp = %s ", new Object[] { paramAnonymoussi });
+                e.b(e.this, e.this.Env);
               }
             }
           }
         }
       }
     };
-    this.DVz = new c()
+    this.Eny = new c()
     {
-      private boolean a(sj paramAnonymoussj)
+      private boolean a(sk paramAnonymoussk)
       {
         AppMethodBeat.i(79129);
-        if (((paramAnonymoussj instanceof sj)) && (e.this.DVw.equalsIgnoreCase(paramAnonymoussj.dGR.cardType)))
+        if (((paramAnonymoussk instanceof sk)) && (e.this.Env.equalsIgnoreCase(paramAnonymoussk.dHX.cardType)))
         {
-          if (paramAnonymoussj.dGR.dGS != 0) {
+          if (paramAnonymoussk.dHX.dHY != 0) {
             break label70;
           }
-          e.b(e.this, e.this.DVw);
+          e.b(e.this, e.this.Env);
         }
         label187:
         for (;;)
@@ -87,27 +87,27 @@ public final class e
           AppMethodBeat.o(79129);
           return false;
           label70:
-          if (paramAnonymoussj.dGR.dGS == 2)
+          if (paramAnonymoussk.dHX.dHY == 2)
           {
-            e.a(e.this, e.this.DVw);
+            e.a(e.this, e.this.Env);
           }
           else
           {
             try
             {
-              if (bt.isNullOrNil(paramAnonymoussj.dGR.dGT)) {
+              if (bu.isNullOrNil(paramAnonymoussk.dHX.dHZ)) {
                 break label187;
               }
-              JSONObject localJSONObject = new JSONObject(paramAnonymoussj.dGR.dGT);
-              e.a(e.this, e.this.DVw, localJSONObject, paramAnonymoussj.dGR.dGU);
+              JSONObject localJSONObject = new JSONObject(paramAnonymoussk.dHX.dHZ);
+              e.a(e.this, e.this.Env, localJSONObject, paramAnonymoussk.dHX.dIa);
             }
-            catch (Exception paramAnonymoussj)
+            catch (Exception paramAnonymoussk)
             {
-              ad.e("MicroMsg.LicenceScanner", "Failed to parse json string: %s", new Object[] { paramAnonymoussj.getMessage() });
-              e.b(e.this, e.this.DVw);
+              ae.e("MicroMsg.LicenceScanner", "Failed to parse json string: %s", new Object[] { paramAnonymoussk.getMessage() });
+              e.b(e.this, e.this.Env);
             }
             continue;
-            e.a(e.this, e.this.DVw, null, paramAnonymoussj.dGR.dGU);
+            e.a(e.this, e.this.Env, null, paramAnonymoussk.dHX.dIa);
           }
         }
       }
@@ -125,10 +125,10 @@ public final class e
       paramString.putExtra("scan_bankcard_with_confirm_ui", true);
       paramString.addFlags(268435456);
       d.b(paramContext, "scanner", ".ui.ScanCardUI", paramString);
-      this.DVx = parama;
-      this.DVw = "bank";
-      a.IbL.c(this.DVy);
-      a.IbL.c(this.scanBankCardConfirmResultListener);
+      this.Enw = parama;
+      this.Env = "bank";
+      a.IvT.c(this.Enx);
+      a.IvT.c(this.scanBankCardConfirmResultListener);
       AppMethodBeat.o(79132);
       return true;
     }
@@ -137,10 +137,10 @@ public final class e
       paramString = new Intent();
       paramString.putExtra("BaseScanUI_select_scan_mode", 11);
       d.b(paramContext, "scanner", ".ui.ScanCardUI", paramString);
-      this.DVx = parama;
-      this.DVw = "identity_pay_auth";
-      a.IbL.c(this.DVy);
-      a.IbL.c(this.DVz);
+      this.Enw = parama;
+      this.Env = "identity_pay_auth";
+      a.IvT.c(this.Enx);
+      a.IvT.c(this.Eny);
       AppMethodBeat.o(79132);
       return true;
     }
@@ -150,11 +150,11 @@ public final class e
   
   public static abstract interface a
   {
-    public abstract void Qi(String paramString);
+    public abstract void QR(String paramString);
     
     public abstract void a(String paramString, JSONObject paramJSONObject, Bitmap paramBitmap);
     
-    public abstract void aHS(String paramString);
+    public abstract void aJl(String paramString);
   }
 }
 

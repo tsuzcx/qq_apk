@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.patmsg.a;
 
 public abstract interface d
 {
-  public abstract void aul(String paramString);
+  public abstract void avA(String paramString);
   
-  public abstract void dyo();
+  public abstract void dBE();
 }
 
 

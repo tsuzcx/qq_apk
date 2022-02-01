@@ -10,7 +10,7 @@ import android.support.v4.content.b;
 import android.support.v7.widget.AppCompatImageView;
 import android.util.AttributeSet;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cc.a;
+import com.tencent.mm.cb.a;
 import com.tencent.mm.ui.al;
 
 public class ProgressImageView
@@ -18,9 +18,9 @@ public class ProgressImageView
 {
   private int Hx;
   private Paint mPaint;
-  private boolean pqD;
-  boolean pqE;
-  private int pqF;
+  private boolean pxj;
+  boolean pxk;
+  private int pxl;
   
   public ProgressImageView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -34,11 +34,11 @@ public class ProgressImageView
     AppMethodBeat.o(183821);
   }
   
-  public final void cdj()
+  public final void cey()
   {
     AppMethodBeat.i(183823);
-    this.pqD = true;
-    this.pqE = false;
+    this.pxj = true;
+    this.pxk = false;
     if (al.isDarkMode())
     {
       setImageResource(2131233689);
@@ -49,11 +49,11 @@ public class ProgressImageView
     AppMethodBeat.o(183823);
   }
   
-  public final void cdk()
+  public final void cez()
   {
     AppMethodBeat.i(184793);
-    this.pqE = true;
-    this.pqD = false;
+    this.pxk = true;
+    this.pxj = false;
     setImageResource("download_wait_wifi");
     AppMethodBeat.o(184793);
   }
@@ -62,7 +62,7 @@ public class ProgressImageView
   {
     AppMethodBeat.i(183826);
     super.onDraw(paramCanvas);
-    if ((this.pqD) || (this.pqE) || (this.Hx == -1) || (this.pqF == 0))
+    if ((this.pxj) || (this.pxk) || (this.Hx == -1) || (this.pxl == 0))
     {
       AppMethodBeat.o(183826);
       return;
@@ -74,7 +74,7 @@ public class ProgressImageView
     f3 = getWidth() / 2 - f3 / 2.0F;
     this.mPaint.setColor(b.n(getContext(), 2131099736));
     paramCanvas.drawCircle(f1, f2, f3, this.mPaint);
-    this.mPaint.setColor(b.n(getContext(), this.pqF));
+    this.mPaint.setColor(b.n(getContext(), this.pxl));
     paramCanvas.drawArc(f1 - f3, f2 - f3, f1 + f3, f2 + f3, -90.0F, this.Hx / 100.0F * 360.0F, false, this.mPaint);
     AppMethodBeat.o(183826);
   }
@@ -101,15 +101,15 @@ public class ProgressImageView
   {
     AppMethodBeat.i(183822);
     this.Hx = paramInt;
-    this.pqD = false;
-    this.pqE = false;
+    this.pxj = false;
+    this.pxk = false;
     postInvalidate();
     AppMethodBeat.o(183822);
   }
   
   public void setProgressColor(int paramInt)
   {
-    this.pqF = paramInt;
+    this.pxl = paramInt;
   }
 }
 

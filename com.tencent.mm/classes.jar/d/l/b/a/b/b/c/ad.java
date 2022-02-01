@@ -8,35 +8,35 @@ import d.l.b.a.b.j.f.a.e;
 public final class ad
   extends c
 {
-  private final l MXA;
-  private final e MZw;
+  private final l NuG;
+  private final e NwC;
   
   public ad(l paraml, e parame, g paramg)
   {
     super(paramg);
     AppMethodBeat.i(57273);
-    this.MXA = paraml;
-    this.MZw = parame;
+    this.NuG = paraml;
+    this.NwC = parame;
     AppMethodBeat.o(57273);
   }
   
-  public final l ghs()
+  public final l glU()
   {
     AppMethodBeat.i(57275);
-    l locall = this.MXA;
+    l locall = this.NuG;
     if (locall == null) {
-      ajm(4);
+      ajW(4);
     }
     AppMethodBeat.o(57275);
     return locall;
   }
   
-  public final e gjp()
+  public final e gnR()
   {
     AppMethodBeat.i(57274);
-    e locale = this.MZw;
+    e locale = this.NwC;
     if (locale == null) {
-      ajm(3);
+      ajW(3);
     }
     AppMethodBeat.o(57274);
     return locale;
@@ -44,7 +44,7 @@ public final class ad
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.b.c.ad
  * JD-Core Version:    0.7.0.1
  */

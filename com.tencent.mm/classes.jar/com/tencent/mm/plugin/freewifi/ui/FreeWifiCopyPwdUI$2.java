@@ -17,9 +17,9 @@ final class FreeWifiCopyPwdUI$2
     AppMethodBeat.i(24996);
     b localb = new b();
     localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/freewifi/ui/FreeWifiCopyPwdUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+    a.b("com/tencent/mm/plugin/freewifi/ui/FreeWifiCopyPwdUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
     paramView = new Intent("android.settings.WIFI_SETTINGS");
-    this.tpr.startActivityForResult(paramView, FreeWifiCopyPwdUI.tpl);
+    this.tAi.startActivityForResult(paramView, FreeWifiCopyPwdUI.tAc);
     a.a(this, "com/tencent/mm/plugin/freewifi/ui/FreeWifiCopyPwdUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(24996);
   }

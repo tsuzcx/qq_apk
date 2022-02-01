@@ -5,7 +5,7 @@ import com.tencent.mm.plugin.appbrand.f.a;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
 import com.tencent.mm.plugin.appbrand.jsapi.i.a.b.v;
 import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -22,16 +22,16 @@ public final class ai
     super.a(paramc, paramJSONObject, paramInt);
     if (paramJSONObject == null)
     {
-      ad.e("MicroMsg.JsApiUpdateMapMarkers", "data is null");
+      ae.e("MicroMsg.JsApiUpdateMapMarkers", "data is null");
       paramc.h(paramInt, e("fail:invalid data", null));
       AppMethodBeat.o(183553);
       return;
     }
-    ad.i("MicroMsg.JsApiUpdateMapMarkers", "data:%s", new Object[] { paramJSONObject });
+    ae.i("MicroMsg.JsApiUpdateMapMarkers", "data:%s", new Object[] { paramJSONObject });
     com.tencent.mm.plugin.appbrand.jsapi.i.a.b localb = h(paramc, paramJSONObject);
     if (localb == null)
     {
-      ad.e("MicroMsg.JsApiUpdateMapMarkers", "mapView is null, return");
+      ae.e("MicroMsg.JsApiUpdateMapMarkers", "mapView is null, return");
       paramc.h(paramInt, e("fail:mapview is null", null));
       AppMethodBeat.o(183553);
       return;
@@ -45,7 +45,7 @@ public final class ai
         JSONArray localJSONArray = new JSONArray(paramJSONObject.optString("markers"));
         if (localJSONArray == null)
         {
-          ad.e("MicroMsg.JsApiUpdateMapMarkers", "markersArray is null, return");
+          ae.e("MicroMsg.JsApiUpdateMapMarkers", "markersArray is null, return");
           paramc.h(paramInt, e("fail:internal error", null));
           AppMethodBeat.o(183553);
           return;
@@ -78,20 +78,20 @@ public final class ai
           {
             for (;;)
             {
-              ad.printErrStackTrace("MicroMsg.JsApiUpdateMapMarkers", localJSONException2, "", new Object[0]);
+              ae.printErrStackTrace("MicroMsg.JsApiUpdateMapMarkers", localJSONException2, "", new Object[0]);
               Object localObject3 = null;
             }
           }
         }
       }
     }
-    a(paramc, paramInt, e("ok", null), true, localb.bkR());
+    a(paramc, paramInt, e("ok", null), true, localb.blB());
     AppMethodBeat.o(183553);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.i.ai
  * JD-Core Version:    0.7.0.1
  */

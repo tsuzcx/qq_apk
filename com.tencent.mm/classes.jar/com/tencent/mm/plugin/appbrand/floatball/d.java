@@ -6,96 +6,96 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
 import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfig;
 import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
-import com.tencent.mm.plugin.appbrand.o;
+import com.tencent.mm.plugin.appbrand.p;
 import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
 import com.tencent.mm.plugin.ball.f.b;
 import com.tencent.mm.plugin.ball.model.BallInfo;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class d
 {
-  public f kjA;
-  public g kjB;
-  public h kjC;
-  public a kjD;
-  public c kjz;
+  public c kmP;
+  public f kmQ;
+  public g kmR;
+  public h kmS;
+  public a kmT;
   
   public static void a(com.tencent.mm.plugin.ball.service.a parama, AppBrandInitConfig paramAppBrandInitConfig)
   {
     int i = 0;
-    AppMethodBeat.i(188152);
+    AppMethodBeat.i(222278);
     if (!(paramAppBrandInitConfig instanceof AppBrandInitConfigWC))
     {
-      AppMethodBeat.o(188152);
+      AppMethodBeat.o(222278);
       return;
     }
     paramAppBrandInitConfig = (AppBrandInitConfigWC)paramAppBrandInitConfig;
-    ad.i("MicroMsg.AppBrandFloatBallLogic", "setReportInfo, floatBallHelper:%s, configAppName:%s", new Object[] { parama, paramAppBrandInitConfig.doD });
-    parama.bKG().dwX = paramAppBrandInitConfig.appId;
-    parama.bKG().hPO = paramAppBrandInitConfig.doD;
-    parama.bKG().nGd = String.valueOf(paramAppBrandInitConfig.cmr);
-    parama = parama.bKG();
-    if (paramAppBrandInitConfig.cmC == null) {}
+    ae.i("MicroMsg.AppBrandFloatBallLogic", "setReportInfo, floatBallHelper:%s, configAppName:%s", new Object[] { parama, paramAppBrandInitConfig.dpI });
+    parama.bLD().dyc = paramAppBrandInitConfig.appId;
+    parama.bLD().hSG = paramAppBrandInitConfig.dpI;
+    parama.bLD().nLD = String.valueOf(paramAppBrandInitConfig.cmt);
+    parama = parama.bLD();
+    if (paramAppBrandInitConfig.cmE == null) {}
     for (;;)
     {
-      parama.nGb = i;
-      AppMethodBeat.o(188152);
+      parama.nLB = i;
+      AppMethodBeat.o(222278);
       return;
-      i = paramAppBrandInitConfig.cmC.scene;
+      i = paramAppBrandInitConfig.cmE.scene;
     }
   }
   
-  public final void r(o paramo)
+  public final void s(p paramp)
   {
-    AppMethodBeat.i(188151);
-    ad.i("MicroMsg.AppBrandFloatBallLogic", "destroy, runtime:%s", new Object[] { paramo.mAppId });
-    if (this.kjz != null) {
-      this.kjz.onDestroy();
+    AppMethodBeat.i(222277);
+    ae.i("MicroMsg.AppBrandFloatBallLogic", "destroy, runtime:%s", new Object[] { paramp.mAppId });
+    if (this.kmP != null) {
+      this.kmP.onDestroy();
     }
-    if (this.kjA != null) {
-      this.kjA.onDestroy();
+    if (this.kmQ != null) {
+      this.kmQ.onDestroy();
     }
-    if (this.kjB != null) {
-      this.kjB.onDestroy();
+    if (this.kmR != null) {
+      this.kmR.onDestroy();
     }
-    if (this.kjD != null) {
-      this.kjD.onDestroy();
+    if (this.kmT != null) {
+      this.kmT.onDestroy();
     }
-    if (this.kjC != null) {
-      this.kjC.onDestroy();
+    if (this.kmS != null) {
+      this.kmS.onDestroy();
     }
-    AppMethodBeat.o(188151);
+    AppMethodBeat.o(222277);
   }
   
-  public final boolean sx(int paramInt)
+  public final boolean sA(int paramInt)
   {
-    AppMethodBeat.i(188150);
-    if ((this.kjz != null) && (this.kjz.sv(paramInt)))
+    AppMethodBeat.i(222276);
+    if ((this.kmP != null) && (this.kmP.sy(paramInt)))
     {
-      AppMethodBeat.o(188150);
+      AppMethodBeat.o(222276);
       return true;
     }
-    if ((this.kjA != null) && (this.kjA.sv(paramInt)))
+    if ((this.kmQ != null) && (this.kmQ.sy(paramInt)))
     {
-      AppMethodBeat.o(188150);
+      AppMethodBeat.o(222276);
       return true;
     }
-    if ((this.kjB != null) && (this.kjB.sv(paramInt)))
+    if ((this.kmR != null) && (this.kmR.sy(paramInt)))
     {
-      AppMethodBeat.o(188150);
+      AppMethodBeat.o(222276);
       return true;
     }
-    if ((this.kjD != null) && (this.kjD.sv(paramInt)))
+    if ((this.kmT != null) && (this.kmT.sy(paramInt)))
     {
-      AppMethodBeat.o(188150);
+      AppMethodBeat.o(222276);
       return true;
     }
-    if ((this.kjC != null) && (this.kjC.sv(paramInt)))
+    if ((this.kmS != null) && (this.kmS.sy(paramInt)))
     {
-      AppMethodBeat.o(188150);
+      AppMethodBeat.o(222276);
       return true;
     }
-    AppMethodBeat.o(188150);
+    AppMethodBeat.o(222276);
     return false;
   }
 }

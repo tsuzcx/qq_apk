@@ -10,7 +10,7 @@ import android.net.wifi.WifiConfiguration;
 import android.net.wifi.WifiInfo;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class WiFiConnector$2
   extends BroadcastReceiver
@@ -31,15 +31,15 @@ public final class WiFiConnector$2
       AppMethodBeat.o(144703);
       return;
     }
-    ad.i("MicroMsg.WiFiConnector", "startMonitorWiFiEvent, action: ".concat(String.valueOf(paramContext)));
+    ae.i("MicroMsg.WiFiConnector", "startMonitorWiFiEvent, action: ".concat(String.valueOf(paramContext)));
     if (("android.net.conn.CONNECTIVITY_CHANGE".equals(paramContext)) || ("android.net.wifi.STATE_CHANGE".equals(paramContext)))
     {
-      paramContext = this.lwG.lwC.getActiveNetworkInfo();
+      paramContext = this.lBe.lBa.getActiveNetworkInfo();
       paramIntent = c.getConnectionInfo();
-      if ((paramContext != null) && (paramIntent != null) && (paramContext.getType() == 1) && (paramContext.getDetailedState() == NetworkInfo.DetailedState.CONNECTED) && (paramIntent.getNetworkId() == this.lwG.lwB.networkId))
+      if ((paramContext != null) && (paramIntent != null) && (paramContext.getType() == 1) && (paramContext.getDetailedState() == NetworkInfo.DetailedState.CONNECTED) && (paramIntent.getNetworkId() == this.lBe.lAZ.networkId))
       {
-        this.lwG.q(true, "");
-        ad.i("MicroMsg.wifi_event", "CONNECTIVITY_ACTION CONNECTED.");
+        this.lBe.q(true, "");
+        ae.i("MicroMsg.wifi_event", "CONNECTIVITY_ACTION CONNECTED.");
       }
       AppMethodBeat.o(144703);
       return;
@@ -50,10 +50,10 @@ public final class WiFiConnector$2
       i = paramIntent.getIntExtra("supplicantError", -1);
       if (i == 1)
       {
-        ad.e("MicroMsg.WiFiConnector", "ERROR_AUTHENTICATING");
-        ad.i("MicroMsg.wifi_event", "ERROR_AUTHENTICATING FAIL.");
-        paramIntent = this.lwG;
-        if (this.lwG.lwF)
+        ae.e("MicroMsg.WiFiConnector", "ERROR_AUTHENTICATING");
+        ae.i("MicroMsg.wifi_event", "ERROR_AUTHENTICATING FAIL.");
+        paramIntent = this.lBe;
+        if (this.lBe.lBd)
         {
           paramContext = "wifi config may be expired";
           paramIntent.q(false, paramContext);
@@ -69,7 +69,7 @@ public final class WiFiConnector$2
     {
       for (;;)
       {
-        ad.e("MicroMsg.WiFiConnector", paramContext.getMessage());
+        ae.e("MicroMsg.WiFiConnector", paramContext.getMessage());
         int i = -1;
         continue;
         paramContext = "password error";
@@ -79,7 +79,7 @@ public final class WiFiConnector$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.wifi.wifisdk.internal.WiFiConnector.2
  * JD-Core Version:    0.7.0.1
  */

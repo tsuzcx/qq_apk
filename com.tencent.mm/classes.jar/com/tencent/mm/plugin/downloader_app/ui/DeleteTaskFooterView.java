@@ -18,37 +18,37 @@ public class DeleteTaskFooterView
   extends LinearLayout
 {
   private boolean VQ;
-  private LinearLayout pqb;
-  ImageView pqc;
-  LinearLayout pqd;
-  TextView pqe;
-  ImageView pqf;
-  boolean pqg;
-  private d.c pqh;
+  private LinearLayout pwH;
+  ImageView pwI;
+  LinearLayout pwJ;
+  TextView pwK;
+  ImageView pwL;
+  boolean pwM;
+  private d.c pwN;
   
   public DeleteTaskFooterView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(8981);
     this.VQ = true;
-    this.pqg = false;
-    this.pqh = new d.c()
+    this.pwM = false;
+    this.pwN = new d.c()
     {
-      public final void jY(boolean paramAnonymousBoolean)
+      public final void jX(boolean paramAnonymousBoolean)
       {
         AppMethodBeat.i(8978);
         DeleteTaskFooterView localDeleteTaskFooterView = DeleteTaskFooterView.this;
         if (paramAnonymousBoolean)
         {
-          localDeleteTaskFooterView.pqd.setClickable(true);
-          com.tencent.mm.plugin.downloader_app.b.e(localDeleteTaskFooterView.pqf, "download_delete_enable");
-          localDeleteTaskFooterView.pqe.setTextColor(localDeleteTaskFooterView.getContext().getResources().getColor(2131099803));
+          localDeleteTaskFooterView.pwJ.setClickable(true);
+          com.tencent.mm.plugin.downloader_app.b.e(localDeleteTaskFooterView.pwL, "download_delete_enable");
+          localDeleteTaskFooterView.pwK.setTextColor(localDeleteTaskFooterView.getContext().getResources().getColor(2131099803));
           AppMethodBeat.o(8978);
           return;
         }
-        localDeleteTaskFooterView.pqd.setClickable(false);
-        com.tencent.mm.plugin.downloader_app.b.e(localDeleteTaskFooterView.pqf, "download_delete_disable");
-        localDeleteTaskFooterView.pqe.setTextColor(localDeleteTaskFooterView.getContext().getResources().getColor(2131099737));
+        localDeleteTaskFooterView.pwJ.setClickable(false);
+        com.tencent.mm.plugin.downloader_app.b.e(localDeleteTaskFooterView.pwL, "download_delete_disable");
+        localDeleteTaskFooterView.pwK.setTextColor(localDeleteTaskFooterView.getContext().getResources().getColor(2131099737));
         AppMethodBeat.o(8978);
       }
     };
@@ -59,7 +59,7 @@ public class DeleteTaskFooterView
   {
     AppMethodBeat.i(8983);
     super.onAttachedToWindow();
-    d.a(this.pqh);
+    d.a(this.pwN);
     AppMethodBeat.o(8983);
   }
   
@@ -67,7 +67,7 @@ public class DeleteTaskFooterView
   {
     AppMethodBeat.i(8984);
     super.onDetachedFromWindow();
-    d.b(this.pqh);
+    d.b(this.pwN);
     AppMethodBeat.o(8984);
   }
   
@@ -76,16 +76,16 @@ public class DeleteTaskFooterView
     AppMethodBeat.i(8982);
     super.onFinishInflate();
     View localView = LayoutInflater.from(getContext()).inflate(2131493691, this, true);
-    this.pqb = ((LinearLayout)localView.findViewById(2131298220));
-    this.pqc = ((ImageView)localView.findViewById(2131298219));
-    this.pqb.setOnClickListener(new View.OnClickListener()
+    this.pwH = ((LinearLayout)localView.findViewById(2131298220));
+    this.pwI = ((ImageView)localView.findViewById(2131298219));
+    this.pwH.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(8979);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
         localb.bd(paramAnonymousView);
-        a.b("com/tencent/mm/plugin/downloader_app/ui/DeleteTaskFooterView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        a.b("com/tencent/mm/plugin/downloader_app/ui/DeleteTaskFooterView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
         if (DeleteTaskFooterView.a(DeleteTaskFooterView.this))
         {
           DeleteTaskFooterView.a(DeleteTaskFooterView.this, false);
@@ -94,7 +94,7 @@ public class DeleteTaskFooterView
         for (;;)
         {
           if (DeleteTaskFooterView.c(DeleteTaskFooterView.this)) {
-            DeleteTaskFooterView.ka(DeleteTaskFooterView.a(DeleteTaskFooterView.this));
+            DeleteTaskFooterView.jZ(DeleteTaskFooterView.a(DeleteTaskFooterView.this));
           }
           DeleteTaskFooterView.d(DeleteTaskFooterView.this);
           a.a(this, "com/tencent/mm/plugin/downloader_app/ui/DeleteTaskFooterView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
@@ -105,23 +105,23 @@ public class DeleteTaskFooterView
         }
       }
     });
-    this.pqd = ((LinearLayout)localView.findViewById(2131298986));
-    this.pqd.setOnClickListener(new View.OnClickListener()
+    this.pwJ = ((LinearLayout)localView.findViewById(2131298986));
+    this.pwJ.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(8980);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
         localb.bd(paramAnonymousView);
-        a.b("com/tencent/mm/plugin/downloader_app/ui/DeleteTaskFooterView$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-        DeleteTaskFooterView.cde();
+        a.b("com/tencent/mm/plugin/downloader_app/ui/DeleteTaskFooterView$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        DeleteTaskFooterView.cet();
         a.a(this, "com/tencent/mm/plugin/downloader_app/ui/DeleteTaskFooterView$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(8980);
       }
     });
-    this.pqd.setClickable(false);
-    this.pqe = ((TextView)localView.findViewById(2131298982));
-    this.pqf = ((ImageView)localView.findViewById(2131298987));
+    this.pwJ.setClickable(false);
+    this.pwK = ((TextView)localView.findViewById(2131298982));
+    this.pwL = ((ImageView)localView.findViewById(2131298987));
     AppMethodBeat.o(8982);
   }
 }

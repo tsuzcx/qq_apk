@@ -4,25 +4,25 @@ import java.util.Collection;
 
 public abstract interface e
 {
-  public abstract String afw();
+  public abstract String afK();
   
-  public abstract boolean baB();
+  public abstract boolean bba();
   
-  public abstract boolean baC();
+  public abstract boolean bbb();
   
-  public abstract boolean baD();
+  public abstract boolean bbc();
   
-  public abstract boolean baF();
+  public abstract boolean bbe();
   
-  public abstract String faC();
+  public abstract String feK();
   
-  public abstract String faW();
+  public abstract Collection<b> feL();
   
-  public abstract Collection<b> faX();
+  public abstract int feM();
   
-  public abstract int faY();
+  public abstract String feN();
   
-  public abstract String faZ();
+  public abstract String feq();
   
   public abstract int getConnectTimeout();
   
@@ -32,7 +32,7 @@ public abstract interface e
   
   public abstract String getURL();
   
-  public abstract boolean sE(long paramLong);
+  public abstract boolean sR(long paramLong);
 }
 
 

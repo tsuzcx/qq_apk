@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class rb
   extends b
 {
-  public a dFC;
+  public a dGG;
   
   public rb()
   {
@@ -15,24 +15,21 @@ public final class rb
   
   private rb(byte paramByte)
   {
-    AppMethodBeat.i(116043);
-    this.dFC = new a();
-    this.IbR = false;
+    AppMethodBeat.i(19828);
+    this.dGG = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(116043);
+    AppMethodBeat.o(19828);
   }
   
   public static final class a
   {
-    public String appId;
-    public String dFD;
-    public String dFE;
-    public String mediaTagName;
+    public int scene = 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.a.rb
  * JD-Core Version:    0.7.0.1
  */

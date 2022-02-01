@@ -1,27 +1,27 @@
 package com.tencent.mm.plugin.appbrand.jsapi.auth;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.e;
-import com.tencent.mm.ak.f.c;
-import com.tencent.mm.ak.p;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.aj.e;
+import com.tencent.mm.aj.f.c;
+import com.tencent.mm.aj.p;
+import com.tencent.mm.sdk.platformtools.ae;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/auth/AuthorizeHelper;", "Lcom/tencent/mm/plugin/appbrand/jsapi/auth/AuthConstants;", "()V", "Companion", "GetHeadIconPathCallback", "plugin-appbrand-integration_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsapi/auth/AuthorizeHelper;", "Lcom/tencent/mm/plugin/appbrand/jsapi/auth/AuthConstants;", "()V", "Companion", "GetHeadIconPathCallback", "plugin-appbrand-integration_release"})
 public final class g
 {
   private static final String TAG = "AuthorizeHelper";
-  public static final a kxX;
+  public static final a kBm;
   
   static
   {
     AppMethodBeat.i(50446);
-    kxX = new a((byte)0);
+    kBm = new a((byte)0);
     TAG = "AuthorizeHelper";
     AppMethodBeat.o(50446);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/auth/AuthorizeHelper$Companion;", "Lcom/tencent/mm/plugin/appbrand/jsapi/auth/AuthHelper;", "()V", "TAG", "", "getHeadIconPath", "", "username", "callback", "Lcom/tencent/mm/plugin/appbrand/jsapi/auth/AuthorizeHelper$GetHeadIconPathCallback;", "plugin-appbrand-integration_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsapi/auth/AuthorizeHelper$Companion;", "Lcom/tencent/mm/plugin/appbrand/jsapi/auth/AuthHelper;", "()V", "TAG", "", "getHeadIconPath", "", "username", "callback", "Lcom/tencent/mm/plugin/appbrand/jsapi/auth/AuthorizeHelper$GetHeadIconPathCallback;", "plugin-appbrand-integration_release"})
   public static final class a
     implements f
   {
@@ -34,12 +34,12 @@ public final class g
       {
         if (i == 0)
         {
-          p.aEk();
-          if (!e.CZ(paramString)) {
+          p.aEA();
+          if (!e.DB(paramString)) {
             break;
           }
         }
-        p.aEk();
+        p.aEA();
         localObject = paramString;
         if (paramString == null) {
           localObject = "";
@@ -49,36 +49,36 @@ public final class g
         if (localObject == null) {
           paramString = "";
         }
-        paramb.KZ(paramString);
+        paramb.Lz(paramString);
         AppMethodBeat.o(50445);
         return;
       }
-      localObject = new com.tencent.mm.ak.f();
-      ((com.tencent.mm.ak.f)localObject).a(paramString, (f.c)new a((com.tencent.mm.ak.f)localObject, paramb, paramString));
+      localObject = new com.tencent.mm.aj.f();
+      ((com.tencent.mm.aj.f)localObject).a(paramString, (f.c)new a((com.tencent.mm.aj.f)localObject, paramb, paramString));
       AppMethodBeat.o(50445);
     }
     
-    @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "errType", "errCode", "resultCallback"})
+    @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "errType", "errCode", "resultCallback"})
     static final class a
       implements f.c
     {
-      a(com.tencent.mm.ak.f paramf, g.b paramb, String paramString) {}
+      a(com.tencent.mm.aj.f paramf, g.b paramb, String paramString) {}
       
       public final int df(int paramInt1, int paramInt2)
       {
         AppMethodBeat.i(50444);
-        ad.i(g.access$getTAG$cp(), "GetHDHeadImg errType=%d  errCode=%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-        this.kxY.sN();
+        ae.i(g.access$getTAG$cp(), "GetHDHeadImg errType=%d  errCode=%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+        this.kBn.sN();
         g.b localb = paramb;
         if (localb != null)
         {
-          p.aEk();
+          p.aEA();
           String str2 = e.J(paramString, false);
           String str1 = str2;
           if (str2 == null) {
             str1 = "";
           }
-          localb.KZ(str1);
+          localb.Lz(str1);
         }
         AppMethodBeat.o(50444);
         return 0;
@@ -86,10 +86,10 @@ public final class g
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/auth/AuthorizeHelper$GetHeadIconPathCallback;", "", "onCallback", "", "path", "", "plugin-appbrand-integration_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsapi/auth/AuthorizeHelper$GetHeadIconPathCallback;", "", "onCallback", "", "path", "", "plugin-appbrand-integration_release"})
   public static abstract interface b
   {
-    public abstract void KZ(String paramString);
+    public abstract void Lz(String paramString);
   }
 }
 

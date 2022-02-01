@@ -7,9 +7,9 @@ import com.tencent.luggage.d.b.a;
 import com.tencent.luggage.d.h;
 import com.tencent.luggage.d.s;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ci.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.ch.a;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.HashMap;
 import java.util.Map;
 import org.json.JSONArray;
@@ -23,7 +23,7 @@ public class t
   public final void b(final com.tencent.luggage.d.b<s>.a paramb)
   {
     AppMethodBeat.i(78555);
-    ad.i("MicroMsg.JsApiGetInstallState", "invokeInOwn");
+    ae.i("MicroMsg.JsApiGetInstallState", "invokeInOwn");
     a.post(new Runnable()
     {
       public final void run()
@@ -57,13 +57,13 @@ public class t
             j = i;
             String str = localJSONArray.optString(m);
             j = i;
-            localObject1 = com.tencent.mm.plugin.appbrand.z.b.getPackageInfo((Context)localObject3, str);
+            localObject1 = com.tencent.mm.plugin.appbrand.y.b.getPackageInfo((Context)localObject3, str);
             if (localObject1 == null)
             {
               n = 0;
               break label501;
               j = i;
-              ad.i("MicroMsg.JsApiGetInstallState", "getInstallState, packageName = " + str + ", version = " + n + ", versionName = " + (String)localObject1);
+              ae.i("MicroMsg.JsApiGetInstallState", "getInstallState, packageName = " + str + ", version = " + n + ", versionName = " + (String)localObject1);
               k = i;
               if (i == 0)
               {
@@ -92,7 +92,7 @@ public class t
             if (k == 0) {
               continue;
             }
-            paramb.d("get_install_state:yes", (Map)localObject2);
+            paramb.e("get_install_state:yes", (Map)localObject2);
             AppMethodBeat.o(78554);
             return;
             paramb.a("get_install_state:no", null);
@@ -103,14 +103,14 @@ public class t
           localObject1 = ((PackageInfo)localObject1).versionName;
           continue;
           localObject4 = ((JSONObject)localObject2).optString("packageName");
-          if (bt.isNullOrNil((String)localObject4))
+          if (bu.isNullOrNil((String)localObject4))
           {
-            ad.i("MicroMsg.JsApiGetInstallState", "packageName is null or nil");
+            ae.i("MicroMsg.JsApiGetInstallState", "packageName is null or nil");
             paramb.a("get_install_state:no_null_packageName", null);
             AppMethodBeat.o(78554);
             return;
           }
-          localObject3 = com.tencent.mm.plugin.appbrand.z.b.getPackageInfo((Context)localObject3, (String)localObject4);
+          localObject3 = com.tencent.mm.plugin.appbrand.y.b.getPackageInfo((Context)localObject3, (String)localObject4);
           if (localObject3 == null) {
             if (localObject3 != null) {
               break label446;
@@ -119,7 +119,7 @@ public class t
           label446:
           for (Object localObject2 = "null";; localObject2 = ((PackageInfo)localObject3).versionName)
           {
-            ad.i("MicroMsg.JsApiGetInstallState", "doGetInstallState, packageName = " + (String)localObject4 + ", version = " + i + ", versionName = " + (String)localObject2);
+            ae.i("MicroMsg.JsApiGetInstallState", "doGetInstallState, packageName = " + (String)localObject4 + ", version = " + i + ", versionName = " + (String)localObject2);
             if (localObject3 != null) {
               break label456;
             }
@@ -132,7 +132,7 @@ public class t
           label456:
           localObject3 = new HashMap();
           ((Map)localObject3).put("versionName", localObject2);
-          paramb.d("get_install_state:yes_".concat(String.valueOf(i)), (Map)localObject3);
+          paramb.e("get_install_state:yes_".concat(String.valueOf(i)), (Map)localObject3);
           AppMethodBeat.o(78554);
           return;
           label501:
@@ -145,7 +145,7 @@ public class t
     AppMethodBeat.o(78555);
   }
   
-  public final int ccO()
+  public final int ced()
   {
     return 0;
   }

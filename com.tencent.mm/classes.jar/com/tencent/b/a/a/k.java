@@ -14,19 +14,19 @@ final class k
     super(paramContext);
   }
   
-  protected final boolean JB()
+  protected final boolean JJ()
   {
     return true;
   }
   
-  protected final a JC()
+  protected final a JK()
   {
     AppMethodBeat.i(87631);
     try
     {
       a locala = new a(PreferenceManager.getDefaultSharedPreferences(this.context).getString(s.decode("4kU71lN96TJUomD1vOU9lgj9U+kKmxDPLVM+zzjst5U="), null));
       new StringBuilder("read CheckEntity from sharedPreferences:").append(locala.toString());
-      s.JK();
+      s.JS();
       return locala;
     }
     finally
@@ -41,7 +41,7 @@ final class k
     try
     {
       new StringBuilder("write CheckEntity to sharedPreferences:").append(parama.toString());
-      s.JK();
+      s.JS();
       SharedPreferences.Editor localEditor = PreferenceManager.getDefaultSharedPreferences(this.context).edit();
       localEditor.putString(s.decode("4kU71lN96TJUomD1vOU9lgj9U+kKmxDPLVM+zzjst5U="), parama.toString());
       localEditor.commit();
@@ -58,7 +58,7 @@ final class k
     AppMethodBeat.i(87629);
     try
     {
-      s.JK();
+      s.JS();
       String str = PreferenceManager.getDefaultSharedPreferences(this.context).getString(s.decode("4kU71lN96TJUomD1vOU9lgj9Tw=="), null);
       return str;
     }
@@ -73,7 +73,7 @@ final class k
     AppMethodBeat.i(87630);
     try
     {
-      s.JK();
+      s.JS();
       SharedPreferences.Editor localEditor = PreferenceManager.getDefaultSharedPreferences(this.context).edit();
       localEditor.putString(s.decode("4kU71lN96TJUomD1vOU9lgj9Tw=="), paramString);
       localEditor.commit();

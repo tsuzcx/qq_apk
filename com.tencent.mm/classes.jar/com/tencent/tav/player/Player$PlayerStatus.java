@@ -6,12 +6,12 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 {
   static
   {
-    AppMethodBeat.i(218564);
+    AppMethodBeat.i(215204);
     PlayerStatusUnknown = new PlayerStatus("PlayerStatusUnknown", 0);
     PlayerStatusReadyToPlay = new PlayerStatus("PlayerStatusReadyToPlay", 1);
     PlayerStatusFailed = new PlayerStatus("PlayerStatusFailed", 2);
     $VALUES = new PlayerStatus[] { PlayerStatusUnknown, PlayerStatusReadyToPlay, PlayerStatusFailed };
-    AppMethodBeat.o(218564);
+    AppMethodBeat.o(215204);
   }
   
   private Player$PlayerStatus() {}

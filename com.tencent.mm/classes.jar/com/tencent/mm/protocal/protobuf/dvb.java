@@ -1,72 +1,102 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import f.a.a.b;
+import java.util.LinkedList;
 
 public final class dvb
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public String ujy;
-  public String yhw;
+  public dxb IaL;
+  public int aXs;
+  public int aXt;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(152725);
+    AppMethodBeat.i(110915);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.ujy != null) {
-        paramVarArgs.d(1, this.ujy);
+      if (this.IaL == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: materialResp");
+        AppMethodBeat.o(110915);
+        throw paramVarArgs;
       }
-      if (this.yhw != null) {
-        paramVarArgs.d(2, this.yhw);
+      if (this.IaL != null)
+      {
+        paramVarArgs.lJ(1, this.IaL.computeSize());
+        this.IaL.writeFields(paramVarArgs);
       }
-      AppMethodBeat.o(152725);
+      paramVarArgs.aS(2, this.aXs);
+      paramVarArgs.aS(3, this.aXt);
+      AppMethodBeat.o(110915);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.ujy == null) {
-        break label274;
+      if (this.IaL == null) {
+        break label450;
       }
     }
-    label274:
-    for (paramInt = f.a.a.b.b.a.e(1, this.ujy) + 0;; paramInt = 0)
+    label450:
+    for (paramInt = f.a.a.a.lI(1, this.IaL.computeSize()) + 0;; paramInt = 0)
     {
-      int i = paramInt;
-      if (this.yhw != null) {
-        i = paramInt + f.a.a.b.b.a.e(2, this.yhw);
-      }
-      AppMethodBeat.o(152725);
-      return i;
+      int i = f.a.a.b.b.a.bz(2, this.aXs);
+      int j = f.a.a.b.b.a.bz(3, this.aXt);
+      AppMethodBeat.o(110915);
+      return paramInt + i + j;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
-        AppMethodBeat.o(152725);
+        if (this.IaL == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: materialResp");
+          AppMethodBeat.o(110915);
+          throw paramVarArgs;
+        }
+        AppMethodBeat.o(110915);
         return 0;
       }
       if (paramInt == 3)
       {
-        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+        Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
         dvb localdvb = (dvb)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(152725);
+          AppMethodBeat.o(110915);
           return -1;
         case 1: 
-          localdvb.ujy = locala.NPN.readString();
-          AppMethodBeat.o(152725);
+          paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            Object localObject2 = (byte[])paramVarArgs.get(paramInt);
+            localObject1 = new dxb();
+            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
+            for (boolean bool = true; bool; bool = ((dxb)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            localdvb.IaL = ((dxb)localObject1);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(110915);
+          return 0;
+        case 2: 
+          localdvb.aXs = ((f.a.a.a.a)localObject1).OmT.zc();
+          AppMethodBeat.o(110915);
           return 0;
         }
-        localdvb.yhw = locala.NPN.readString();
-        AppMethodBeat.o(152725);
+        localdvb.aXt = ((f.a.a.a.a)localObject1).OmT.zc();
+        AppMethodBeat.o(110915);
         return 0;
       }
-      AppMethodBeat.o(152725);
+      AppMethodBeat.o(110915);
       return -1;
     }
   }

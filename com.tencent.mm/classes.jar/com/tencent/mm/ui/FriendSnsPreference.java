@@ -14,9 +14,9 @@ import com.tencent.mm.ui.base.preference.Preference;
 public final class FriendSnsPreference
   extends IconPreference
 {
-  private String IWX = null;
-  private Bitmap IWY = null;
-  private long IWZ;
+  private String JrF = null;
+  private Bitmap JrG = null;
+  private long JrH;
   private Context context;
   
   public FriendSnsPreference(Context paramContext, AttributeSet paramAttributeSet)
@@ -30,28 +30,28 @@ public final class FriendSnsPreference
     this.context = paramContext;
   }
   
-  public final void DL(long paramLong)
+  public final void Ek(long paramLong)
   {
     AppMethodBeat.i(33139);
-    this.IWX = null;
-    this.IWY = null;
-    this.ITn = -1;
-    this.IWZ = paramLong;
-    if ((this.IWZ != 0L) && (this.vEo != null)) {
-      ((n)g.ab(n.class)).a(this.IWZ, this.vEo, this.mContext.hashCode());
+    this.JrF = null;
+    this.JrG = null;
+    this.JnV = -1;
+    this.JrH = paramLong;
+    if ((this.JrH != 0L) && (this.vQs != null)) {
+      ((n)g.ab(n.class)).a(this.JrH, this.vQs, this.mContext.hashCode());
     }
     AppMethodBeat.o(33139);
   }
   
-  public final void aVm(String paramString)
+  public final void aWN(String paramString)
   {
     AppMethodBeat.i(33138);
-    this.IWY = null;
-    this.ITn = -1;
-    this.IWX = paramString;
-    this.IWZ = 0L;
-    if (this.vEo != null) {
-      a.b.c(this.vEo, paramString);
+    this.JrG = null;
+    this.JnV = -1;
+    this.JrF = paramString;
+    this.JrH = 0L;
+    if (this.vQs != null) {
+      a.b.c(this.vQs, paramString);
     }
     AppMethodBeat.o(33138);
   }
@@ -60,11 +60,11 @@ public final class FriendSnsPreference
   {
     AppMethodBeat.i(33140);
     super.onBindView(paramView);
-    if ((this.IWX != null) && (g.ajx())) {
-      a.b.c(this.vEo, this.IWX);
+    if ((this.JrF != null) && (g.ajM())) {
+      a.b.c(this.vQs, this.JrF);
     }
-    if ((this.IWZ != 0L) && (this.vEo != null)) {
-      ((n)g.ab(n.class)).a(this.IWZ, this.vEo, this.mContext.hashCode());
+    if ((this.JrH != 0L) && (this.vQs != null)) {
+      ((n)g.ab(n.class)).a(this.JrH, this.vQs, this.mContext.hashCode());
     }
     AppMethodBeat.o(33140);
   }

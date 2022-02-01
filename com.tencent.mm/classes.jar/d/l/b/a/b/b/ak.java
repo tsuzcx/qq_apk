@@ -8,11 +8,11 @@ public abstract interface ak
 {
   public abstract ak e(ba paramba);
   
-  public abstract e gjp();
+  public abstract e gnR();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.b.ak
  * JD-Core Version:    0.7.0.1
  */

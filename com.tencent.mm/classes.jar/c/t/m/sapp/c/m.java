@@ -13,19 +13,19 @@ public class m
   
   public static String a(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(190489);
+    AppMethodBeat.i(210754);
     paramString1 = a(paramString1, paramString2, 2);
-    AppMethodBeat.o(190489);
+    AppMethodBeat.o(210754);
     return paramString1;
   }
   
   public static String a(String paramString1, String paramString2, int paramInt)
   {
-    AppMethodBeat.i(190486);
+    AppMethodBeat.i(210751);
     if ((paramInt != 1) && (paramInt != 2))
     {
       paramString1 = new IllegalArgumentException("wrong mode.");
-      AppMethodBeat.o(190486);
+      AppMethodBeat.o(210751);
       throw paramString1;
     }
     if ((paramString1 != null) && (paramString1.length() != 0)) {
@@ -42,7 +42,7 @@ public class m
           if (paramInt == 1)
           {
             paramString1 = Base64.encodeToString(paramString1, 2);
-            AppMethodBeat.o(190486);
+            AppMethodBeat.o(210751);
             return paramString1;
             if (paramInt != 2) {
               break label157;
@@ -53,21 +53,21 @@ public class m
           if (paramInt == 2)
           {
             paramString1 = new String(paramString1);
-            AppMethodBeat.o(190486);
+            AppMethodBeat.o(210751);
             return paramString1;
           }
-          AppMethodBeat.o(190486);
+          AppMethodBeat.o(210751);
           return null;
         }
       }
       catch (Throwable paramString1)
       {
-        AppMethodBeat.o(190486);
+        AppMethodBeat.o(210751);
         return "";
       }
-      AppMethodBeat.o(190486);
+      AppMethodBeat.o(210751);
       return "";
-      AppMethodBeat.o(190486);
+      AppMethodBeat.o(210751);
       return "";
       label157:
       paramString1 = null;
@@ -76,29 +76,29 @@ public class m
   
   public static Cipher a(String paramString, int paramInt)
   {
-    AppMethodBeat.i(190485);
+    AppMethodBeat.i(210750);
     paramString = new SecretKeySpec(paramString.getBytes("UTF-8"), "AES");
     Cipher localCipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
     localCipher.init(paramInt, paramString, new IvParameterSpec(a));
-    AppMethodBeat.o(190485);
+    AppMethodBeat.o(210750);
     return localCipher;
   }
   
   public static byte[] a(byte[] paramArrayOfByte, String paramString)
   {
-    AppMethodBeat.i(190491);
+    AppMethodBeat.i(210756);
     paramArrayOfByte = a(paramArrayOfByte, paramString, 2);
-    AppMethodBeat.o(190491);
+    AppMethodBeat.o(210756);
     return paramArrayOfByte;
   }
   
   public static byte[] a(byte[] paramArrayOfByte, String paramString, int paramInt)
   {
-    AppMethodBeat.i(190487);
+    AppMethodBeat.i(210752);
     if ((paramInt != 1) && (paramInt != 2))
     {
       paramArrayOfByte = new IllegalArgumentException("wrong mode.");
-      AppMethodBeat.o(190487);
+      AppMethodBeat.o(210752);
       throw paramArrayOfByte;
     }
     if ((paramArrayOfByte != null) && (paramArrayOfByte.length != 0)) {
@@ -108,38 +108,38 @@ public class m
         if (paramString == null)
         {
           paramArrayOfByte = b;
-          AppMethodBeat.o(190487);
+          AppMethodBeat.o(210752);
           return paramArrayOfByte;
         }
         paramArrayOfByte = paramString.doFinal(paramArrayOfByte);
-        AppMethodBeat.o(190487);
+        AppMethodBeat.o(210752);
         return paramArrayOfByte;
       }
       catch (Throwable paramArrayOfByte)
       {
         paramArrayOfByte = b;
-        AppMethodBeat.o(190487);
+        AppMethodBeat.o(210752);
         return paramArrayOfByte;
       }
     }
     paramArrayOfByte = b;
-    AppMethodBeat.o(190487);
+    AppMethodBeat.o(210752);
     return paramArrayOfByte;
   }
   
   public static String b(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(190488);
+    AppMethodBeat.i(210753);
     paramString1 = a(paramString1, paramString2, 1);
-    AppMethodBeat.o(190488);
+    AppMethodBeat.o(210753);
     return paramString1;
   }
   
   public static byte[] b(byte[] paramArrayOfByte, String paramString)
   {
-    AppMethodBeat.i(190490);
+    AppMethodBeat.i(210755);
     paramArrayOfByte = a(paramArrayOfByte, paramString, 1);
-    AppMethodBeat.o(190490);
+    AppMethodBeat.o(210755);
     return paramArrayOfByte;
   }
 }

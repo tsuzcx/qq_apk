@@ -4,21 +4,21 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 import kotlinx.coroutines.internal.t;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"CLOSED_EMPTY", "Lkotlinx/coroutines/internal/Symbol;", "CLOSED_EMPTY$annotations", "()V", "DISPOSED_TASK", "DISPOSED_TASK$annotations", "MAX_DELAY_NS", "", "MAX_MS", "MS_TO_NS", "SCHEDULE_COMPLETED", "", "SCHEDULE_DISPOSED", "SCHEDULE_OK", "delayNanosToMillis", "timeNanos", "delayToNanos", "timeMillis", "Queue", "T", "Lkotlinx/coroutines/internal/LockFreeTaskQueueCore;", "kotlinx-coroutines-core"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"CLOSED_EMPTY", "Lkotlinx/coroutines/internal/Symbol;", "CLOSED_EMPTY$annotations", "()V", "DISPOSED_TASK", "DISPOSED_TASK$annotations", "MAX_DELAY_NS", "", "MAX_MS", "MS_TO_NS", "SCHEDULE_COMPLETED", "", "SCHEDULE_DISPOSED", "SCHEDULE_OK", "delayNanosToMillis", "timeNanos", "delayToNanos", "timeMillis", "Queue", "T", "Lkotlinx/coroutines/internal/LockFreeTaskQueueCore;", "kotlinx-coroutines-core"})
 public final class bg
 {
-  private static final t NID;
-  private static final t NIE;
+  private static final t OfJ;
+  private static final t OfK;
   
   static
   {
-    AppMethodBeat.i(190760);
-    NID = new t("REMOVED_TASK");
-    NIE = new t("CLOSED_EMPTY");
-    AppMethodBeat.o(190760);
+    AppMethodBeat.i(209251);
+    OfJ = new t("REMOVED_TASK");
+    OfK = new t("CLOSED_EMPTY");
+    AppMethodBeat.o(209251);
   }
   
-  public static final long FD(long paramLong)
+  public static final long Gf(long paramLong)
   {
     if (paramLong <= 0L) {
       return 0L;

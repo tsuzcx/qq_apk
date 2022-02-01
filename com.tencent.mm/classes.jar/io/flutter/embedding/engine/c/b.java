@@ -10,12 +10,12 @@ import java.util.Map;
 
 public final class b
 {
-  public final io.flutter.plugin.a.b<Object> MDR;
+  public final io.flutter.plugin.a.b<Object> NaX;
   
   public b(DartExecutor paramDartExecutor)
   {
     AppMethodBeat.i(10233);
-    this.MDR = new io.flutter.plugin.a.b(paramDartExecutor, "flutter/keyevent", f.MFT);
+    this.NaX = new io.flutter.plugin.a.b(paramDartExecutor, "flutter/keyevent", f.NcZ);
     AppMethodBeat.o(10233);
   }
   
@@ -23,68 +23,68 @@ public final class b
   {
     AppMethodBeat.i(10234);
     paramMap.put("flags", Integer.valueOf(parama.flags));
-    paramMap.put("plainCodePoint", Integer.valueOf(parama.MDW));
-    paramMap.put("codePoint", Integer.valueOf(parama.MDX));
-    paramMap.put("keyCode", Integer.valueOf(parama.jBc));
-    paramMap.put("scanCode", Integer.valueOf(parama.MDZ));
-    paramMap.put("metaState", Integer.valueOf(parama.MEa));
-    if (parama.MDY != null) {
-      paramMap.put("character", parama.MDY.toString());
+    paramMap.put("plainCodePoint", Integer.valueOf(parama.Nbc));
+    paramMap.put("codePoint", Integer.valueOf(parama.Nbd));
+    paramMap.put("keyCode", Integer.valueOf(parama.jDN));
+    paramMap.put("scanCode", Integer.valueOf(parama.Nbf));
+    paramMap.put("metaState", Integer.valueOf(parama.Nbg));
+    if (parama.Nbe != null) {
+      paramMap.put("character", parama.Nbe.toString());
     }
-    paramMap.put("source", Integer.valueOf(parama.dnh));
-    paramMap.put("vendorId", Integer.valueOf(parama.MEb));
-    paramMap.put("productId", Integer.valueOf(parama.MEc));
-    paramMap.put("deviceId", Integer.valueOf(parama.MDV));
+    paramMap.put("source", Integer.valueOf(parama.doj));
+    paramMap.put("vendorId", Integer.valueOf(parama.Nbh));
+    paramMap.put("productId", Integer.valueOf(parama.Nbi));
+    paramMap.put("deviceId", Integer.valueOf(parama.Nbb));
     paramMap.put("repeatCount", Integer.valueOf(parama.repeatCount));
     AppMethodBeat.o(10234);
   }
   
   public static final class a
   {
-    public final int MDV;
-    public final int MDW;
-    public final int MDX;
-    public final Character MDY;
-    public final int MDZ;
-    public final int MEa;
-    public final int MEb;
-    public final int MEc;
-    public final int dnh;
+    public final int Nbb;
+    public final int Nbc;
+    public final int Nbd;
+    public final Character Nbe;
+    public final int Nbf;
+    public final int Nbg;
+    public final int Nbh;
+    public final int Nbi;
+    public final int doj;
     public final int flags;
-    public final int jBc;
+    public final int jDN;
     public final int repeatCount;
     
     private a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, Character paramCharacter, int paramInt6, int paramInt7, int paramInt8, int paramInt9)
     {
-      AppMethodBeat.i(213265);
-      this.MDV = paramInt1;
+      AppMethodBeat.i(197847);
+      this.Nbb = paramInt1;
       this.flags = paramInt2;
-      this.MDW = paramInt3;
-      this.MDX = paramInt4;
-      this.jBc = paramInt5;
-      this.MDY = paramCharacter;
-      this.MDZ = paramInt6;
-      this.MEa = paramInt7;
-      this.dnh = paramInt8;
+      this.Nbc = paramInt3;
+      this.Nbd = paramInt4;
+      this.jDN = paramInt5;
+      this.Nbe = paramCharacter;
+      this.Nbf = paramInt6;
+      this.Nbg = paramInt7;
+      this.doj = paramInt8;
       this.repeatCount = paramInt9;
       paramCharacter = InputDevice.getDevice(paramInt1);
       if (paramCharacter != null)
       {
         if (Build.VERSION.SDK_INT >= 19)
         {
-          this.MEb = paramCharacter.getVendorId();
-          this.MEc = paramCharacter.getProductId();
-          AppMethodBeat.o(213265);
+          this.Nbh = paramCharacter.getVendorId();
+          this.Nbi = paramCharacter.getProductId();
+          AppMethodBeat.o(197847);
           return;
         }
-        this.MEb = 0;
-        this.MEc = 0;
-        AppMethodBeat.o(213265);
+        this.Nbh = 0;
+        this.Nbi = 0;
+        AppMethodBeat.o(197847);
         return;
       }
-      this.MEb = 0;
-      this.MEc = 0;
-      AppMethodBeat.o(213265);
+      this.Nbh = 0;
+      this.Nbi = 0;
+      AppMethodBeat.o(197847);
     }
     
     public a(KeyEvent paramKeyEvent, Character paramCharacter)
@@ -97,7 +97,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     io.flutter.embedding.engine.c.b
  * JD-Core Version:    0.7.0.1
  */

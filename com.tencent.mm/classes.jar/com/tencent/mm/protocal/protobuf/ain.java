@@ -1,162 +1,157 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
 
 public final class ain
-  extends cvc
+  extends com.tencent.mm.bw.a
 {
-  public String GfR;
-  public String GfS;
-  public long GfT;
-  public double GfU;
-  public double GfV;
-  public String ePu;
-  public String ePv;
-  public String qeQ;
+  public int GxS;
+  public String GxT;
+  public String GxU;
+  public String Gyg;
+  public String Gyh;
+  public int Gyi;
+  public int Gyj;
+  public String Gyk;
+  public String Gyl;
+  public String Gym;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(91452);
+    AppMethodBeat.i(32206);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.BaseRequest != null)
-      {
-        paramVarArgs.lC(1, this.BaseRequest.computeSize());
-        this.BaseRequest.writeFields(paramVarArgs);
+      paramVarArgs.aS(1, this.GxS);
+      if (this.GxT != null) {
+        paramVarArgs.d(2, this.GxT);
       }
-      if (this.qeQ != null) {
-        paramVarArgs.d(2, this.qeQ);
+      if (this.Gyg != null) {
+        paramVarArgs.d(3, this.Gyg);
       }
-      if (this.ePv != null) {
-        paramVarArgs.d(3, this.ePv);
+      if (this.Gyh != null) {
+        paramVarArgs.d(4, this.Gyh);
       }
-      if (this.ePu != null) {
-        paramVarArgs.d(4, this.ePu);
+      paramVarArgs.aS(5, this.Gyi);
+      paramVarArgs.aS(6, this.Gyj);
+      if (this.Gyk != null) {
+        paramVarArgs.d(7, this.Gyk);
       }
-      if (this.GfR != null) {
-        paramVarArgs.d(5, this.GfR);
+      if (this.GxU != null) {
+        paramVarArgs.d(8, this.GxU);
       }
-      if (this.GfS != null) {
-        paramVarArgs.d(6, this.GfS);
+      if (this.Gyl != null) {
+        paramVarArgs.d(9, this.Gyl);
       }
-      paramVarArgs.aY(7, this.GfT);
-      paramVarArgs.e(8, this.GfU);
-      paramVarArgs.e(9, this.GfV);
-      AppMethodBeat.o(91452);
+      if (this.Gym != null) {
+        paramVarArgs.d(10, this.Gym);
+      }
+      AppMethodBeat.o(32206);
       return 0;
     }
-    if (paramInt == 1) {
-      if (this.BaseRequest == null) {
-        break label752;
-      }
-    }
-    label752:
-    for (int i = f.a.a.a.lB(1, this.BaseRequest.computeSize()) + 0;; i = 0)
+    if (paramInt == 1)
     {
+      int i = f.a.a.b.b.a.bz(1, this.GxS) + 0;
       paramInt = i;
-      if (this.qeQ != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.qeQ);
+      if (this.GxT != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.GxT);
       }
       i = paramInt;
-      if (this.ePv != null) {
-        i = paramInt + f.a.a.b.b.a.e(3, this.ePv);
+      if (this.Gyg != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.Gyg);
       }
       paramInt = i;
-      if (this.ePu != null) {
-        paramInt = i + f.a.a.b.b.a.e(4, this.ePu);
+      if (this.Gyh != null) {
+        paramInt = i + f.a.a.b.b.a.e(4, this.Gyh);
+      }
+      i = paramInt + f.a.a.b.b.a.bz(5, this.Gyi) + f.a.a.b.b.a.bz(6, this.Gyj);
+      paramInt = i;
+      if (this.Gyk != null) {
+        paramInt = i + f.a.a.b.b.a.e(7, this.Gyk);
       }
       i = paramInt;
-      if (this.GfR != null) {
-        i = paramInt + f.a.a.b.b.a.e(5, this.GfR);
+      if (this.GxU != null) {
+        i = paramInt + f.a.a.b.b.a.e(8, this.GxU);
       }
       paramInt = i;
-      if (this.GfS != null) {
-        paramInt = i + f.a.a.b.b.a.e(6, this.GfS);
+      if (this.Gyl != null) {
+        paramInt = i + f.a.a.b.b.a.e(9, this.Gyl);
       }
-      i = f.a.a.b.b.a.p(7, this.GfT);
-      int j = f.a.a.b.b.a.alT(8);
-      int k = f.a.a.b.b.a.alT(9);
-      AppMethodBeat.o(91452);
-      return paramInt + i + j + k;
-      if (paramInt == 2)
-      {
-        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = cvc.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cvc.getNextFieldNumber(paramVarArgs)) {
-          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
-          }
-        }
-        AppMethodBeat.o(91452);
-        return 0;
+      i = paramInt;
+      if (this.Gym != null) {
+        i = paramInt + f.a.a.b.b.a.e(10, this.Gym);
       }
-      if (paramInt == 3)
-      {
-        Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
-        ain localain = (ain)paramVarArgs[1];
-        paramInt = ((Integer)paramVarArgs[2]).intValue();
-        switch (paramInt)
-        {
-        default: 
-          AppMethodBeat.o(91452);
-          return -1;
-        case 1: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new jc();
-            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((jc)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, cvc.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-            localain.BaseRequest = ((jc)localObject1);
-            paramInt += 1;
-          }
-          AppMethodBeat.o(91452);
-          return 0;
-        case 2: 
-          localain.qeQ = ((f.a.a.a.a)localObject1).NPN.readString();
-          AppMethodBeat.o(91452);
-          return 0;
-        case 3: 
-          localain.ePv = ((f.a.a.a.a)localObject1).NPN.readString();
-          AppMethodBeat.o(91452);
-          return 0;
-        case 4: 
-          localain.ePu = ((f.a.a.a.a)localObject1).NPN.readString();
-          AppMethodBeat.o(91452);
-          return 0;
-        case 5: 
-          localain.GfR = ((f.a.a.a.a)localObject1).NPN.readString();
-          AppMethodBeat.o(91452);
-          return 0;
-        case 6: 
-          localain.GfS = ((f.a.a.a.a)localObject1).NPN.readString();
-          AppMethodBeat.o(91452);
-          return 0;
-        case 7: 
-          localain.GfT = ((f.a.a.a.a)localObject1).NPN.zd();
-          AppMethodBeat.o(91452);
-          return 0;
-        case 8: 
-          localain.GfU = Double.longBitsToDouble(((f.a.a.a.a)localObject1).NPN.grA());
-          AppMethodBeat.o(91452);
-          return 0;
-        }
-        localain.GfV = Double.longBitsToDouble(((f.a.a.a.a)localObject1).NPN.grA());
-        AppMethodBeat.o(91452);
-        return 0;
-      }
-      AppMethodBeat.o(91452);
-      return -1;
+      AppMethodBeat.o(32206);
+      return i;
     }
+    if (paramInt == 2)
+    {
+      paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.gCg();
+        }
+      }
+      AppMethodBeat.o(32206);
+      return 0;
+    }
+    if (paramInt == 3)
+    {
+      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+      ain localain = (ain)paramVarArgs[1];
+      switch (((Integer)paramVarArgs[2]).intValue())
+      {
+      default: 
+        AppMethodBeat.o(32206);
+        return -1;
+      case 1: 
+        localain.GxS = locala.OmT.zc();
+        AppMethodBeat.o(32206);
+        return 0;
+      case 2: 
+        localain.GxT = locala.OmT.readString();
+        AppMethodBeat.o(32206);
+        return 0;
+      case 3: 
+        localain.Gyg = locala.OmT.readString();
+        AppMethodBeat.o(32206);
+        return 0;
+      case 4: 
+        localain.Gyh = locala.OmT.readString();
+        AppMethodBeat.o(32206);
+        return 0;
+      case 5: 
+        localain.Gyi = locala.OmT.zc();
+        AppMethodBeat.o(32206);
+        return 0;
+      case 6: 
+        localain.Gyj = locala.OmT.zc();
+        AppMethodBeat.o(32206);
+        return 0;
+      case 7: 
+        localain.Gyk = locala.OmT.readString();
+        AppMethodBeat.o(32206);
+        return 0;
+      case 8: 
+        localain.GxU = locala.OmT.readString();
+        AppMethodBeat.o(32206);
+        return 0;
+      case 9: 
+        localain.Gyl = locala.OmT.readString();
+        AppMethodBeat.o(32206);
+        return 0;
+      }
+      localain.Gym = locala.OmT.readString();
+      AppMethodBeat.o(32206);
+      return 0;
+    }
+    AppMethodBeat.o(32206);
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.ain
  * JD-Core Version:    0.7.0.1
  */

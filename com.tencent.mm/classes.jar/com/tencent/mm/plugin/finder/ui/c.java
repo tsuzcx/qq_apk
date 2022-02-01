@@ -12,87 +12,85 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.loader.d;
-import com.tencent.mm.model.u;
 import com.tencent.mm.plugin.finder.loader.i;
 import com.tencent.mm.plugin.finder.loader.i.a;
 import com.tencent.mm.pluginsdk.ui.span.k;
-import com.tencent.mm.protocal.protobuf.aot;
+import com.tencent.mm.protocal.protobuf.apg;
 import com.tencent.mm.ui.widget.imageview.WeImageView;
 import d.g.b.p;
 import d.l;
-import d.v;
 import java.util.ArrayList;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/ui/FinderFriendRecommendAdapter;", "Landroid/widget/BaseAdapter;", "context", "Landroid/app/Activity;", "(Landroid/app/Activity;)V", "MENU_ID_NOLONGER_SEE", "", "TAG", "", "dataList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/protocal/protobuf/FinderLikeInfo;", "Lkotlin/collections/ArrayList;", "onBlackClickListener", "Lkotlin/Function1;", "", "getOnBlackClickListener", "()Lkotlin/jvm/functions/Function1;", "setOnBlackClickListener", "(Lkotlin/jvm/functions/Function1;)V", "onItemLongClickListener", "Lkotlin/Function2;", "Landroid/view/View;", "getOnItemLongClickListener", "()Lkotlin/jvm/functions/Function2;", "setOnItemLongClickListener", "(Lkotlin/jvm/functions/Function2;)V", "onLikeClickListener", "getOnLikeClickListener", "setOnLikeClickListener", "clickLike", "vh", "Lcom/tencent/mm/plugin/finder/ui/FinderFriendRecommendAdapter$LikedViewHolder;", "likeInfo", "clickUnLike", "getCount", "getItem", "position", "getItemId", "", "getView", "convertView", "parent", "Landroid/view/ViewGroup;", "initLikeView", "contact", "initUnLikeView", "setLikeGray", "setLikeRed", "setLikedContactList", "contacts", "", "setUnLikeBlack", "setUnLikeGray", "showMoreSheet", "uninterest", "likeEvent", "Lcom/tencent/mm/autogen/events/FeedLikeEvent;", "LikedViewHolder", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/ui/FinderFriendRecommendAdapter;", "Landroid/widget/BaseAdapter;", "context", "Landroid/app/Activity;", "(Landroid/app/Activity;)V", "MENU_ID_NOLONGER_SEE", "", "TAG", "", "dataList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/protocal/protobuf/FinderLikeInfo;", "Lkotlin/collections/ArrayList;", "onBlackClickListener", "Lkotlin/Function1;", "", "getOnBlackClickListener", "()Lkotlin/jvm/functions/Function1;", "setOnBlackClickListener", "(Lkotlin/jvm/functions/Function1;)V", "onItemLongClickListener", "Lkotlin/Function2;", "Landroid/view/View;", "getOnItemLongClickListener", "()Lkotlin/jvm/functions/Function2;", "setOnItemLongClickListener", "(Lkotlin/jvm/functions/Function2;)V", "onLikeClickListener", "getOnLikeClickListener", "setOnLikeClickListener", "clickLike", "vh", "Lcom/tencent/mm/plugin/finder/ui/FinderFriendRecommendAdapter$LikedViewHolder;", "likeInfo", "clickUnLike", "getCount", "getItem", "position", "getItemId", "", "getView", "convertView", "parent", "Landroid/view/ViewGroup;", "initLikeView", "contact", "initUnLikeView", "setLikeGray", "setLikeRed", "setLikedContactList", "contacts", "", "setUnLikeBlack", "setUnLikeGray", "showMoreSheet", "uninterest", "likeEvent", "Lcom/tencent/mm/autogen/events/FeedLikeEvent;", "LikedViewHolder", "plugin-finder_release"})
 public final class c
   extends BaseAdapter
 {
   private String TAG;
-  private Activity dsa;
-  public ArrayList<aot> jfg;
-  public d.g.a.b<? super aot, d.z> rNT;
-  public d.g.a.b<? super aot, d.z> rNU;
+  private Activity dtg;
+  public ArrayList<apg> jhZ;
+  public d.g.a.b<? super apg, d.z> rWl;
+  public d.g.a.b<? super apg, d.z> rWm;
   
   public c(Activity paramActivity)
   {
-    AppMethodBeat.i(204011);
+    AppMethodBeat.i(204607);
     this.TAG = "Finder.FinderLikedAdapter";
-    this.dsa = paramActivity;
-    this.jfg = new ArrayList();
-    AppMethodBeat.o(204011);
+    this.dtg = paramActivity;
+    this.jhZ = new ArrayList();
+    AppMethodBeat.o(204607);
   }
   
-  private aot FD(int paramInt)
+  private apg Gb(int paramInt)
   {
-    AppMethodBeat.i(204008);
-    Object localObject = this.jfg.get(paramInt);
+    AppMethodBeat.i(204604);
+    Object localObject = this.jhZ.get(paramInt);
     p.g(localObject, "dataList[position]");
-    localObject = (aot)localObject;
-    AppMethodBeat.o(204008);
+    localObject = (apg)localObject;
+    AppMethodBeat.o(204604);
     return localObject;
   }
   
   public final void a(a parama)
   {
-    AppMethodBeat.i(204004);
+    AppMethodBeat.i(204600);
     p.h(parama, "vh");
-    parama.cJL().setImageResource(2131690419);
-    parama.cJL().setIconColor(this.dsa.getResources().getColor(2131099803));
-    AppMethodBeat.o(204004);
+    parama.cMo().setImageResource(2131690419);
+    parama.cMo().setIconColor(this.dtg.getResources().getColor(2131099803));
+    AppMethodBeat.o(204600);
   }
   
   public final void b(a parama)
   {
-    AppMethodBeat.i(204005);
+    AppMethodBeat.i(204601);
     p.h(parama, "vh");
-    parama.cJL().setImageResource(2131690587);
-    parama.cJL().setIconColor(this.dsa.getResources().getColor(2131099735));
-    AppMethodBeat.o(204005);
+    parama.cMo().setImageResource(2131690587);
+    parama.cMo().setIconColor(this.dtg.getResources().getColor(2131099735));
+    AppMethodBeat.o(204601);
   }
   
   public final void c(a parama)
   {
-    AppMethodBeat.i(204006);
+    AppMethodBeat.i(204602);
     p.h(parama, "vh");
-    parama.cJN().setImageResource(2131690398);
-    parama.cJN().setIconColor(this.dsa.getResources().getColor(2131099732));
-    AppMethodBeat.o(204006);
+    parama.cMq().setImageResource(2131690398);
+    parama.cMq().setIconColor(this.dtg.getResources().getColor(2131099732));
+    AppMethodBeat.o(204602);
   }
   
   public final void d(a parama)
   {
-    AppMethodBeat.i(204007);
+    AppMethodBeat.i(204603);
     p.h(parama, "vh");
-    parama.cJN().setImageResource(2131690569);
-    parama.cJN().setIconColor(this.dsa.getResources().getColor(2131099735));
-    AppMethodBeat.o(204007);
+    parama.cMq().setImageResource(2131690569);
+    parama.cMq().setIconColor(this.dtg.getResources().getColor(2131099735));
+    AppMethodBeat.o(204603);
   }
   
   public final int getCount()
   {
-    AppMethodBeat.i(204010);
-    int i = this.jfg.size();
-    AppMethodBeat.o(204010);
+    AppMethodBeat.i(204606);
+    int i = this.jhZ.size();
+    AppMethodBeat.o(204606);
     return i;
   }
   
@@ -103,11 +101,11 @@ public final class c
   
   public final View getView(int paramInt, final View paramView, final ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(204003);
+    AppMethodBeat.i(204599);
     View localView = paramView;
     if (paramView == null)
     {
-      localView = com.tencent.mm.ui.z.jO((Context)this.dsa).inflate(2131496223, paramViewGroup, false);
+      localView = com.tencent.mm.ui.z.jV((Context)this.dtg).inflate(2131496223, paramViewGroup, false);
       paramView = new a();
       p.g(localView, "itemView");
       localView.setTag(paramView);
@@ -115,8 +113,8 @@ public final class c
     paramView = localView.getTag();
     if (paramView == null)
     {
-      paramView = new v("null cannot be cast to non-null type com.tencent.mm.plugin.finder.ui.FinderFriendRecommendAdapter.LikedViewHolder");
-      AppMethodBeat.o(204003);
+      paramView = new d.v("null cannot be cast to non-null type com.tencent.mm.plugin.finder.ui.FinderFriendRecommendAdapter.LikedViewHolder");
+      AppMethodBeat.o(204599);
       throw paramView;
     }
     paramView = (a)paramView;
@@ -124,47 +122,47 @@ public final class c
     p.g(paramViewGroup, "itemView.findViewById(R.id.finder_liked_avatar_iv)");
     paramViewGroup = (ImageView)paramViewGroup;
     p.h(paramViewGroup, "<set-?>");
-    paramView.fRd = paramViewGroup;
+    paramView.fTj = paramViewGroup;
     paramViewGroup = localView.findViewById(2131307406);
     p.g(paramViewGroup, "itemView.findViewById(R.…finder_liked_username_tv)");
     paramViewGroup = (TextView)paramViewGroup;
     p.h(paramViewGroup, "<set-?>");
-    paramView.opA = paramViewGroup;
+    paramView.ovs = paramViewGroup;
     paramViewGroup = localView.findViewById(2131307404);
     p.g(paramViewGroup, "itemView.findViewById(R.id.finder_liked_iv)");
     paramViewGroup = (WeImageView)paramViewGroup;
     p.h(paramViewGroup, "<set-?>");
-    paramView.rPA = paramViewGroup;
+    paramView.rYb = paramViewGroup;
     paramViewGroup = localView.findViewById(2131307403);
     p.g(paramViewGroup, "itemView.findViewById(R.…inder_liked_click_layout)");
     p.h(paramViewGroup, "<set-?>");
-    paramView.sCI = paramViewGroup;
+    paramView.sNH = paramViewGroup;
     paramViewGroup = localView.findViewById(2131307439);
     p.g(paramViewGroup, "itemView.findViewById(R.id.finder_unliked_iv)");
     paramViewGroup = (WeImageView)paramViewGroup;
     p.h(paramViewGroup, "<set-?>");
-    paramView.sCJ = paramViewGroup;
+    paramView.sNI = paramViewGroup;
     paramViewGroup = localView.findViewById(2131307440);
     p.g(paramViewGroup, "itemView.findViewById(R.id.finder_unliked_layout)");
     p.h(paramViewGroup, "<set-?>");
-    paramView.sCK = paramViewGroup;
-    paramViewGroup = FD(paramInt);
+    paramView.sNJ = paramViewGroup;
+    paramViewGroup = Gb(paramInt);
     Object localObject;
-    if (p.i(paramViewGroup.dul, u.aAm()))
+    if (p.i(paramViewGroup.dvq, com.tencent.mm.model.v.aAC()))
     {
-      paramView.cJM().setVisibility(8);
-      paramView.cJN().setVisibility(8);
-      localObject = i.sja;
-      localObject = i.cCD();
-      com.tencent.mm.plugin.finder.loader.a locala = new com.tencent.mm.plugin.finder.loader.a(paramViewGroup.hDQ);
+      paramView.cMp().setVisibility(8);
+      paramView.cMq().setVisibility(8);
+      localObject = i.srW;
+      localObject = i.cEp();
+      com.tencent.mm.plugin.finder.loader.a locala = new com.tencent.mm.plugin.finder.loader.a(paramViewGroup.hGI);
       ImageView localImageView = paramView.getAvatarIv();
-      i locali = i.sja;
-      ((d)localObject).a(locala, localImageView, i.a(i.a.sje));
-      localObject = paramView.opA;
+      i locali = i.srW;
+      ((d)localObject).a(locala, localImageView, i.a(i.a.ssb));
+      localObject = paramView.ovs;
       if (localObject == null) {
-        p.bcb("nicknameTv");
+        p.bdF("nicknameTv");
       }
-      ((TextView)localObject).setText((CharSequence)k.c((Context)this.dsa, (CharSequence)paramViewGroup.bVF));
+      ((TextView)localObject).setText((CharSequence)k.c((Context)this.dtg, (CharSequence)paramViewGroup.bVF));
       p.h(paramView, "vh");
       p.h(paramViewGroup, "contact");
       if (paramViewGroup.likeFlag != 1) {
@@ -174,7 +172,7 @@ public final class c
       label412:
       p.h(paramView, "vh");
       p.h(paramViewGroup, "contact");
-      if (paramViewGroup.Gnn != 1) {
+      if (paramViewGroup.GGt != 1) {
         break label539;
       }
       c(paramView);
@@ -182,13 +180,13 @@ public final class c
     for (;;)
     {
       paramView.getAvatarIv().setOnClickListener((View.OnClickListener)new d(this, paramViewGroup));
-      AppMethodBeat.o(204003);
+      AppMethodBeat.o(204599);
       return localView;
-      paramView.cJM().setVisibility(0);
-      paramView.cJM().setOnClickListener((View.OnClickListener)new b(this, paramView, paramViewGroup));
-      localObject = paramView.sCK;
+      paramView.cMp().setVisibility(0);
+      paramView.cMp().setOnClickListener((View.OnClickListener)new b(this, paramView, paramViewGroup));
+      localObject = paramView.sNJ;
       if (localObject == null) {
-        p.bcb("unLikeLayout");
+        p.bdF("unLikeLayout");
       }
       ((View)localObject).setOnClickListener((View.OnClickListener)new c(this, paramView, paramViewGroup));
       break;
@@ -200,74 +198,74 @@ public final class c
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/ui/FinderFriendRecommendAdapter$LikedViewHolder;", "", "()V", "avatarIv", "Landroid/widget/ImageView;", "getAvatarIv", "()Landroid/widget/ImageView;", "setAvatarIv", "(Landroid/widget/ImageView;)V", "likeIv", "Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "getLikeIv", "()Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "setLikeIv", "(Lcom/tencent/mm/ui/widget/imageview/WeImageView;)V", "likeLayout", "Landroid/view/View;", "getLikeLayout", "()Landroid/view/View;", "setLikeLayout", "(Landroid/view/View;)V", "nicknameTv", "Landroid/widget/TextView;", "getNicknameTv", "()Landroid/widget/TextView;", "setNicknameTv", "(Landroid/widget/TextView;)V", "unLike", "getUnLike", "setUnLike", "unLikeLayout", "getUnLikeLayout", "setUnLikeLayout", "plugin-finder_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/ui/FinderFriendRecommendAdapter$LikedViewHolder;", "", "()V", "avatarIv", "Landroid/widget/ImageView;", "getAvatarIv", "()Landroid/widget/ImageView;", "setAvatarIv", "(Landroid/widget/ImageView;)V", "likeIv", "Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "getLikeIv", "()Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "setLikeIv", "(Lcom/tencent/mm/ui/widget/imageview/WeImageView;)V", "likeLayout", "Landroid/view/View;", "getLikeLayout", "()Landroid/view/View;", "setLikeLayout", "(Landroid/view/View;)V", "nicknameTv", "Landroid/widget/TextView;", "getNicknameTv", "()Landroid/widget/TextView;", "setNicknameTv", "(Landroid/widget/TextView;)V", "unLike", "getUnLike", "setUnLike", "unLikeLayout", "getUnLikeLayout", "setUnLikeLayout", "plugin-finder_release"})
   public static final class a
   {
-    public ImageView fRd;
-    public TextView opA;
-    public WeImageView rPA;
-    public View sCI;
-    public WeImageView sCJ;
-    public View sCK;
+    public ImageView fTj;
+    public TextView ovs;
+    public WeImageView rYb;
+    public View sNH;
+    public WeImageView sNI;
+    public View sNJ;
     
-    public final WeImageView cJL()
+    public final WeImageView cMo()
     {
-      AppMethodBeat.i(203997);
-      WeImageView localWeImageView = this.rPA;
+      AppMethodBeat.i(204593);
+      WeImageView localWeImageView = this.rYb;
       if (localWeImageView == null) {
-        p.bcb("likeIv");
+        p.bdF("likeIv");
       }
-      AppMethodBeat.o(203997);
+      AppMethodBeat.o(204593);
       return localWeImageView;
     }
     
-    public final View cJM()
+    public final View cMp()
     {
-      AppMethodBeat.i(203998);
-      View localView = this.sCI;
+      AppMethodBeat.i(204594);
+      View localView = this.sNH;
       if (localView == null) {
-        p.bcb("likeLayout");
+        p.bdF("likeLayout");
       }
-      AppMethodBeat.o(203998);
+      AppMethodBeat.o(204594);
       return localView;
     }
     
-    public final WeImageView cJN()
+    public final WeImageView cMq()
     {
-      AppMethodBeat.i(203999);
-      WeImageView localWeImageView = this.sCJ;
+      AppMethodBeat.i(204595);
+      WeImageView localWeImageView = this.sNI;
       if (localWeImageView == null) {
-        p.bcb("unLike");
+        p.bdF("unLike");
       }
-      AppMethodBeat.o(203999);
+      AppMethodBeat.o(204595);
       return localWeImageView;
     }
     
     public final ImageView getAvatarIv()
     {
-      AppMethodBeat.i(203996);
-      ImageView localImageView = this.fRd;
+      AppMethodBeat.i(204592);
+      ImageView localImageView = this.fTj;
       if (localImageView == null) {
-        p.bcb("avatarIv");
+        p.bdF("avatarIv");
       }
-      AppMethodBeat.o(203996);
+      AppMethodBeat.o(204592);
       return localImageView;
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class b
     implements View.OnClickListener
   {
-    b(c paramc, c.a parama, aot paramaot) {}
+    b(c paramc, c.a parama, apg paramapg) {}
     
     public final void onClick(View paramView)
     {
-      AppMethodBeat.i(204000);
+      AppMethodBeat.i(204596);
       Object localObject = new com.tencent.mm.hellhoundlib.b.b();
       ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/ui/FinderFriendRecommendAdapter$getView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahq());
-      localObject = this.sCL;
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/ui/FinderFriendRecommendAdapter$getView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahF());
+      localObject = this.sNK;
       c.a locala = paramView;
       paramView = paramViewGroup;
       p.h(locala, "vh");
@@ -278,77 +276,75 @@ public final class c
       for (;;)
       {
         paramView.likeFlag = ((paramView.likeFlag + 1) % 2);
-        localObject = ((c)localObject).rNT;
+        localObject = ((c)localObject).rWl;
         if (localObject != null) {
           ((d.g.a.b)localObject).invoke(paramView);
         }
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/ui/FinderFriendRecommendAdapter$getView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(204000);
+        AppMethodBeat.o(204596);
         return;
         ((c)localObject).a(locala);
       }
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class c
     implements View.OnClickListener
   {
-    c(c paramc, c.a parama, aot paramaot) {}
+    c(c paramc, c.a parama, apg paramapg) {}
     
     public final void onClick(View paramView)
     {
-      AppMethodBeat.i(204001);
+      AppMethodBeat.i(204597);
       Object localObject = new com.tencent.mm.hellhoundlib.b.b();
       ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/ui/FinderFriendRecommendAdapter$getView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahq());
-      localObject = this.sCL;
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/ui/FinderFriendRecommendAdapter$getView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahF());
+      localObject = this.sNK;
       c.a locala = paramView;
       paramView = paramViewGroup;
       p.h(locala, "vh");
       p.h(paramView, "likeInfo");
-      if (paramView.Gnn == 1) {
+      if (paramView.GGt == 1) {
         ((c)localObject).d(locala);
       }
       for (;;)
       {
-        paramView.Gnn = ((paramView.Gnn + 1) % 2);
-        localObject = ((c)localObject).rNU;
+        paramView.GGt = ((paramView.GGt + 1) % 2);
+        localObject = ((c)localObject).rWm;
         if (localObject != null) {
           ((d.g.a.b)localObject).invoke(paramView);
         }
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/ui/FinderFriendRecommendAdapter$getView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(204001);
+        AppMethodBeat.o(204597);
         return;
         ((c)localObject).c(locala);
       }
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class d
     implements View.OnClickListener
   {
-    d(c paramc, aot paramaot) {}
+    d(c paramc, apg paramapg) {}
     
     public final void onClick(View paramView)
     {
-      AppMethodBeat.i(204002);
+      AppMethodBeat.i(204598);
       com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
       localb.bd(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/ui/FinderFriendRecommendAdapter$getView$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-      paramView = com.tencent.mm.plugin.finder.utils.a.sKD;
-      paramView = paramViewGroup.dul;
-      p.g(paramView, "likedUser.wxUsername");
-      com.tencent.mm.plugin.finder.utils.a.d(paramView, (Context)c.a(this.sCL));
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/ui/FinderFriendRecommendAdapter$getView$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+      paramView = com.tencent.mm.plugin.finder.utils.a.sVQ;
+      com.tencent.mm.plugin.finder.utils.a.d(paramViewGroup.dvq, (Context)c.a(this.sNK));
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/ui/FinderFriendRecommendAdapter$getView$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(204002);
+      AppMethodBeat.o(204598);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.ui.c
  * JD-Core Version:    0.7.0.1
  */

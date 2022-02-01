@@ -7,95 +7,66 @@ import org.xwalk.core.Log;
 
 public final class b
 {
-  private static final String[] MvB = { "_id" };
-  private final Object MvC;
+  private static final String[] MSF = { "_id" };
+  private final Object MSG;
   SQLiteDatabase mDatabase;
   private boolean mInitialized;
   
   private b()
   {
-    AppMethodBeat.i(195539);
-    this.MvC = new Object();
-    AppMethodBeat.o(195539);
+    AppMethodBeat.i(207555);
+    this.MSG = new Object();
+    AppMethodBeat.o(207555);
   }
   
-  public static b cG(final Context paramContext, final String paramString)
+  public static b cH(final Context paramContext, final String paramString)
   {
-    AppMethodBeat.i(195538);
+    AppMethodBeat.i(207554);
     b localb = new b();
     new Thread()
     {
       public final void run()
       {
-        AppMethodBeat.i(195537);
-        b.a(this.MvD, paramContext, paramString);
-        AppMethodBeat.o(195537);
+        AppMethodBeat.i(207553);
+        b.a(this.MSH, paramContext, paramString);
+        AppMethodBeat.o(207553);
       }
     }.start();
-    AppMethodBeat.o(195538);
+    AppMethodBeat.o(207554);
     return localb;
-  }
-  
-  final boolean gcO()
-  {
-    AppMethodBeat.i(195540);
-    synchronized (this.MvC)
-    {
-      for (;;)
-      {
-        boolean bool = this.mInitialized;
-        if (!bool) {
-          try
-          {
-            this.MvC.wait();
-          }
-          catch (InterruptedException localInterruptedException)
-          {
-            Log.e("HttpAuthDatabase", "Caught exception while checking initialization", localInterruptedException);
-          }
-        }
-      }
-    }
-    if (this.mDatabase != null)
-    {
-      AppMethodBeat.o(195540);
-      return true;
-    }
-    AppMethodBeat.o(195540);
-    return false;
   }
   
   /* Error */
   public final String[] getHttpAuthUsernamePassword(String paramString1, String paramString2)
   {
     // Byte code:
-    //   0: ldc 129
+    //   0: ldc 116
     //   2: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: aload_1
     //   6: ifnull +14 -> 20
     //   9: aload_2
     //   10: ifnull +10 -> 20
     //   13: aload_0
-    //   14: invokevirtual 131	com/tencent/xweb/xwalk/b:gcO	()Z
+    //   14: invokevirtual 120	com/tencent/xweb/xwalk/b:ghq	()Z
     //   17: ifne +10 -> 27
-    //   20: ldc 129
+    //   20: ldc 116
     //   22: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   25: aconst_null
     //   26: areturn
     //   27: aload_0
     //   28: getfield 53	com/tencent/xweb/xwalk/b:mDatabase	Landroid/database/sqlite/SQLiteDatabase;
-    //   31: ldc 133
+    //   31: ldc 122
     //   33: iconst_2
     //   34: anewarray 18	java/lang/String
     //   37: dup
     //   38: iconst_0
-    //   39: ldc 135
+    //   39: ldc 124
     //   41: aastore
     //   42: dup
     //   43: iconst_1
-    //   44: ldc 137
+    //   44: ldc 126
     //   46: aastore
-    //   47: ldc 139
+    //   47: ldc 128
     //   49: iconst_2
     //   50: anewarray 18	java/lang/String
     //   53: dup
@@ -109,12 +80,12 @@ public final class b
     //   61: aconst_null
     //   62: aconst_null
     //   63: aconst_null
-    //   64: invokevirtual 143	android/database/sqlite/SQLiteDatabase:query	(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   64: invokevirtual 132	android/database/sqlite/SQLiteDatabase:query	(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
     //   67: astore_1
     //   68: aload_1
     //   69: astore_2
     //   70: aload_1
-    //   71: invokeinterface 148 1 0
+    //   71: invokeinterface 137 1 0
     //   76: ifeq +132 -> 208
     //   79: aload_1
     //   80: astore_2
@@ -127,9 +98,9 @@ public final class b
     //   89: iconst_0
     //   90: aload_1
     //   91: aload_1
-    //   92: ldc 135
-    //   94: invokeinterface 152 2 0
-    //   99: invokeinterface 156 2 0
+    //   92: ldc 124
+    //   94: invokeinterface 141 2 0
+    //   99: invokeinterface 145 2 0
     //   104: aastore
     //   105: aload_1
     //   106: astore_2
@@ -137,9 +108,9 @@ public final class b
     //   108: iconst_1
     //   109: aload_1
     //   110: aload_1
-    //   111: ldc 137
-    //   113: invokeinterface 152 2 0
-    //   118: invokeinterface 156 2 0
+    //   111: ldc 126
+    //   113: invokeinterface 141 2 0
+    //   118: invokeinterface 145 2 0
     //   123: aastore
     //   124: aload_3
     //   125: astore_2
@@ -148,10 +119,10 @@ public final class b
     //   128: aload_1
     //   129: ifnull +11 -> 140
     //   132: aload_1
-    //   133: invokeinterface 159 1 0
+    //   133: invokeinterface 148 1 0
     //   138: aload_2
     //   139: astore_3
-    //   140: ldc 129
+    //   140: ldc 116
     //   142: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   145: aload_3
     //   146: areturn
@@ -161,13 +132,13 @@ public final class b
     //   150: aload_1
     //   151: astore_2
     //   152: ldc 55
-    //   154: ldc 160
+    //   154: ldc 149
     //   156: aload_3
-    //   157: invokestatic 124	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   157: invokestatic 152	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   160: aload_1
     //   161: ifnull +42 -> 203
     //   164: aload_1
-    //   165: invokeinterface 159 1 0
+    //   165: invokeinterface 148 1 0
     //   170: aconst_null
     //   171: astore_3
     //   172: goto -32 -> 140
@@ -177,8 +148,8 @@ public final class b
     //   178: aload_2
     //   179: ifnull +9 -> 188
     //   182: aload_2
-    //   183: invokeinterface 159 1 0
-    //   188: ldc 129
+    //   183: invokeinterface 148 1 0
+    //   188: ldc 116
     //   190: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   193: aload_1
     //   194: athrow
@@ -215,6 +186,35 @@ public final class b
     //   81	86	199	java/lang/IllegalStateException
     //   88	105	199	java/lang/IllegalStateException
     //   107	124	199	java/lang/IllegalStateException
+  }
+  
+  final boolean ghq()
+  {
+    AppMethodBeat.i(207556);
+    synchronized (this.MSG)
+    {
+      for (;;)
+      {
+        boolean bool = this.mInitialized;
+        if (!bool) {
+          try
+          {
+            this.MSG.wait();
+          }
+          catch (InterruptedException localInterruptedException)
+          {
+            Log.e("HttpAuthDatabase", "Caught exception while checking initialization", localInterruptedException);
+          }
+        }
+      }
+    }
+    if (this.mDatabase != null)
+    {
+      AppMethodBeat.o(207556);
+      return true;
+    }
+    AppMethodBeat.o(207556);
+    return false;
   }
 }
 

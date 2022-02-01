@@ -13,22 +13,24 @@ import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ListView;
 import android.widget.PopupWindow.OnDismissListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.am.ag;
+import com.tencent.mm.al.ag;
 import com.tencent.mm.g.c.aw;
+import com.tencent.mm.g.c.ba;
 import com.tencent.mm.g.c.ei;
-import com.tencent.mm.model.bj;
-import com.tencent.mm.model.w;
-import com.tencent.mm.modelsimple.aa;
+import com.tencent.mm.model.bc;
+import com.tencent.mm.model.bl;
+import com.tencent.mm.model.x;
+import com.tencent.mm.modelsimple.ab;
 import com.tencent.mm.pluginsdk.ui.span.k;
 import com.tencent.mm.pointers.PBool;
-import com.tencent.mm.protocal.protobuf.dbo;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.am;
-import com.tencent.mm.storage.at;
-import com.tencent.mm.storage.bp;
+import com.tencent.mm.protocal.protobuf.dci;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.an;
+import com.tencent.mm.storage.au;
 import com.tencent.mm.storage.bq;
-import com.tencent.mm.storage.bu;
+import com.tencent.mm.storage.br;
+import com.tencent.mm.storage.bv;
 import com.tencent.mm.ui.MMAppMgr;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.base.n.e;
@@ -37,22 +39,22 @@ import com.tencent.mm.ui.widget.b.a;
 public final class g
   implements View.OnCreateContextMenuListener, AdapterView.OnItemLongClickListener, PopupWindow.OnDismissListener
 {
-  private ListView KrJ;
-  private i KsY;
+  private ListView KOd;
+  private i KPs;
   private Activity activity;
-  private at conversation;
-  private n.e obh;
+  private au conversation;
+  private n.e ogY;
   private int position;
   private String talker;
-  private int[] tkf;
+  private int[] tuX;
   
   public g(i parami, ListView paramListView, Activity paramActivity, int[] paramArrayOfInt)
   {
     AppMethodBeat.i(38391);
     this.talker = "";
     this.conversation = null;
-    this.tkf = new int[2];
-    this.obh = new n.e()
+    this.tuX = new int[2];
+    this.ogY = new n.e()
     {
       public final void onMMMenuItemSelected(MenuItem paramAnonymousMenuItem, int paramAnonymousInt)
       {
@@ -69,33 +71,33 @@ public final class g
           paramAnonymousInt = -1;
           if (paramAnonymousInt > 0)
           {
-            com.tencent.mm.plugin.report.service.g.yhR.f(11090, new Object[] { Integer.valueOf(paramAnonymousInt) });
-            ad.d("MicroMsg.ConversationClickListener", "jacks kv long click: %d", new Object[] { Integer.valueOf(paramAnonymousInt) });
+            com.tencent.mm.plugin.report.service.g.yxI.f(11090, new Object[] { Integer.valueOf(paramAnonymousInt) });
+            ae.d("MicroMsg.ConversationClickListener", "jacks kv long click: %d", new Object[] { Integer.valueOf(paramAnonymousInt) });
           }
           AppMethodBeat.o(38390);
           return;
         case 4: 
-          if (w.vF(g.a(g.this)))
+          if (x.wb(g.a(g.this)))
           {
-            com.tencent.mm.plugin.report.service.g.yhR.f(14553, new Object[] { Integer.valueOf(1), Integer.valueOf(1), g.a(g.this) });
-            paramAnonymousMenuItem = g.b(g.this).IKk;
+            com.tencent.mm.plugin.report.service.g.yxI.f(14553, new Object[] { Integer.valueOf(1), Integer.valueOf(1), g.a(g.this) });
+            paramAnonymousMenuItem = g.b(g.this).JeR;
             if (paramAnonymousMenuItem == null) {
               break label474;
             }
-            ad.i("MicroMsg.ConversationClickListener", "summerdel talker[%s] activity[%s] username[%s] latestInsertMsg[%s, %s, %s]", new Object[] { g.a(g.this), g.c(g.this), g.b(g.this).field_username, Long.valueOf(paramAnonymousMenuItem.field_msgId), paramAnonymousMenuItem.field_content, Long.valueOf(paramAnonymousMenuItem.field_createTime) });
-            if (com.tencent.mm.am.g.DL(g.a(g.this)))
+            ae.i("MicroMsg.ConversationClickListener", "summerdel talker[%s] activity[%s] username[%s] latestInsertMsg[%s, %s, %s]", new Object[] { g.a(g.this), g.c(g.this), g.b(g.this).field_username, Long.valueOf(paramAnonymousMenuItem.field_msgId), paramAnonymousMenuItem.field_content, Long.valueOf(paramAnonymousMenuItem.field_createTime) });
+            if (com.tencent.mm.al.g.En(g.a(g.this)))
             {
-              localObject1 = ag.aGk();
+              localObject1 = ag.aGA();
               paramAnonymousInt = g.d(g.this);
               int i = g.b(g.this).field_unReadCount;
               localObject2 = g.a(g.this);
-              ((com.tencent.mm.am.l)localObject1).hQt = new dbo();
-              ((com.tencent.mm.am.l)localObject1).hQt.Hrr = paramAnonymousInt;
-              ((com.tencent.mm.am.l)localObject1).hQt.Hrp = i;
+              ((com.tencent.mm.al.l)localObject1).hTl = new dci();
+              ((com.tencent.mm.al.l)localObject1).hTl.HKT = paramAnonymousInt;
+              ((com.tencent.mm.al.l)localObject1).hTl.HKR = i;
               if (paramAnonymousMenuItem != null) {
                 break label1137;
               }
-              paramAnonymousMenuItem = ((com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).dlK().apX((String)localObject2);
+              paramAnonymousMenuItem = ((com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).doJ().arc((String)localObject2);
             }
           }
           break;
@@ -106,79 +108,79 @@ public final class g
         {
           if (paramAnonymousMenuItem != null)
           {
-            ((com.tencent.mm.am.l)localObject1).hQt.Hrq = paramAnonymousMenuItem.getType();
-            if (((com.tencent.mm.am.l)localObject1).hQt.Hrp > 0) {
-              ((com.tencent.mm.am.l)localObject1).hQt.Hro = ((int)(System.currentTimeMillis() - paramAnonymousMenuItem.field_createTime) / 1000);
+            ((com.tencent.mm.al.l)localObject1).hTl.HKS = paramAnonymousMenuItem.getType();
+            if (((com.tencent.mm.al.l)localObject1).hTl.HKR > 0) {
+              ((com.tencent.mm.al.l)localObject1).hTl.HKQ = ((int)(System.currentTimeMillis() - paramAnonymousMenuItem.field_createTime) / 1000);
             }
           }
-          com.tencent.mm.am.l.a(((com.tencent.mm.am.l)localObject1).hQt, (String)localObject2);
+          com.tencent.mm.al.l.a(((com.tencent.mm.al.l)localObject1).hTl, (String)localObject2);
           c.a(g.a(g.this), g.c(g.this), g.b(g.this), null, true, false);
           paramAnonymousInt = 1;
           break label58;
-          com.tencent.mm.plugin.report.service.g.yhR.f(14553, new Object[] { Integer.valueOf(0), Integer.valueOf(1), g.a(g.this) });
+          com.tencent.mm.plugin.report.service.g.yxI.f(14553, new Object[] { Integer.valueOf(0), Integer.valueOf(1), g.a(g.this) });
           break label156;
-          ad.i("MicroMsg.ConversationClickListener", "summerdel talker[%s] activity[%s] username[%s] latestInsertMsg is null", new Object[] { g.a(g.this), g.c(g.this), g.b(g.this).field_username });
+          ae.i("MicroMsg.ConversationClickListener", "summerdel talker[%s] activity[%s] username[%s] latestInsertMsg is null", new Object[] { g.a(g.this), g.c(g.this), g.b(g.this).field_username });
           break label243;
-          ad.d("MicroMsg.ConversationClickListener", "placed to the top");
-          w.D(g.a(g.this), true);
-          com.tencent.mm.model.ba.aBQ();
-          paramAnonymousMenuItem = com.tencent.mm.model.c.azp().Bf(g.a(g.this));
-          if ((paramAnonymousMenuItem != null) && (paramAnonymousMenuItem.fqg())) {
-            com.tencent.mm.plugin.report.service.g.yhR.f(13307, new Object[] { paramAnonymousMenuItem.field_username, Integer.valueOf(1), Integer.valueOf(1), Integer.valueOf(1) });
+          ae.d("MicroMsg.ConversationClickListener", "placed to the top");
+          x.D(g.a(g.this), true);
+          bc.aCg();
+          paramAnonymousMenuItem = com.tencent.mm.model.c.azF().BH(g.a(g.this));
+          if ((paramAnonymousMenuItem != null) && (paramAnonymousMenuItem.fug())) {
+            com.tencent.mm.plugin.report.service.g.yxI.f(13307, new Object[] { paramAnonymousMenuItem.field_username, Integer.valueOf(1), Integer.valueOf(1), Integer.valueOf(1) });
           }
-          h.cl(g.c(g.this), g.c(g.this).getString(2131761054));
-          com.tencent.mm.modelstat.b.inZ.c(true, g.a(g.this), true);
+          h.cm(g.c(g.this), g.c(g.this).getString(2131761054));
+          com.tencent.mm.modelstat.b.iqT.c(true, g.a(g.this), true);
           break label58;
-          ad.d("MicroMsg.ConversationClickListener", "unplaced to the top");
-          w.E(g.a(g.this), true);
-          com.tencent.mm.model.ba.aBQ();
-          paramAnonymousMenuItem = com.tencent.mm.model.c.azp().Bf(g.a(g.this));
-          if ((paramAnonymousMenuItem != null) && (paramAnonymousMenuItem.fqg())) {
-            com.tencent.mm.plugin.report.service.g.yhR.f(13307, new Object[] { paramAnonymousMenuItem.field_username, Integer.valueOf(1), Integer.valueOf(2), Integer.valueOf(1) });
+          ae.d("MicroMsg.ConversationClickListener", "unplaced to the top");
+          x.E(g.a(g.this), true);
+          bc.aCg();
+          paramAnonymousMenuItem = com.tencent.mm.model.c.azF().BH(g.a(g.this));
+          if ((paramAnonymousMenuItem != null) && (paramAnonymousMenuItem.fug())) {
+            com.tencent.mm.plugin.report.service.g.yxI.f(13307, new Object[] { paramAnonymousMenuItem.field_username, Integer.valueOf(1), Integer.valueOf(2), Integer.valueOf(1) });
           }
-          h.cl(g.c(g.this), g.c(g.this).getString(2131761055));
-          com.tencent.mm.modelstat.b.inZ.c(true, g.a(g.this), false);
+          h.cm(g.c(g.this), g.c(g.this).getString(2131761055));
+          com.tencent.mm.modelstat.b.iqT.c(true, g.a(g.this), false);
           paramAnonymousInt = 5;
           break label58;
-          ad.d("MicroMsg.ConversationClickListener", "jacks mark read: %s", new Object[] { g.a(g.this) });
-          com.tencent.mm.model.ba.aBQ();
-          com.tencent.mm.model.c.azv().aTB(g.a(g.this));
+          ae.d("MicroMsg.ConversationClickListener", "jacks mark read: %s", new Object[] { g.a(g.this) });
+          bc.aCg();
+          com.tencent.mm.model.c.azL().aVc(g.a(g.this));
           MMAppMgr.cancelNotification(g.a(g.this));
-          aa.aq(g.a(g.this), 1);
-          com.tencent.mm.modelstat.b.inZ.V(g.a(g.this), false);
-          com.tencent.mm.at.b.aHW();
-          com.tencent.mm.at.b.EZ(g.a(g.this));
+          ab.ar(g.a(g.this), 1);
+          com.tencent.mm.modelstat.b.iqT.V(g.a(g.this), false);
+          com.tencent.mm.as.b.aIn();
+          com.tencent.mm.as.b.FB(g.a(g.this));
           paramAnonymousInt = 3;
           break label58;
-          ad.d("MicroMsg.ConversationClickListener", "jacks set unread: %s", new Object[] { g.a(g.this) });
-          com.tencent.mm.model.ba.aBQ();
-          com.tencent.mm.model.c.azv().aTD(g.a(g.this));
-          com.tencent.mm.modelstat.b.inZ.V(g.a(g.this), true);
-          aa.aq(g.a(g.this), 13);
+          ae.d("MicroMsg.ConversationClickListener", "jacks set unread: %s", new Object[] { g.a(g.this) });
+          bc.aCg();
+          com.tencent.mm.model.c.azL().aVe(g.a(g.this));
+          com.tencent.mm.modelstat.b.iqT.V(g.a(g.this), true);
+          ab.ar(g.a(g.this), 13);
           paramAnonymousInt = 2;
           break label58;
-          ad.d("MicroMsg.ConversationClickListener", "jacks clear history: %s", new Object[] { g.a(g.this) });
-          w.vF(g.a(g.this));
+          ae.d("MicroMsg.ConversationClickListener", "jacks clear history: %s", new Object[] { g.a(g.this) });
+          x.wb(g.a(g.this));
           paramAnonymousMenuItem = g.a(g.this);
           localObject1 = g.c(g.this);
           localObject2 = new PBool();
           ((PBool)localObject2).value = false;
           ((Context)localObject1).getString(2131755906);
-          bj.a(paramAnonymousMenuItem, new c.10((PBool)localObject2, h.b((Context)localObject1, ((Context)localObject1).getString(2131755936), true, new c.9((PBool)localObject2))));
+          bl.a(paramAnonymousMenuItem, new c.10((PBool)localObject2, h.b((Context)localObject1, ((Context)localObject1).getString(2131755936), true, new c.9((PBool)localObject2))));
           paramAnonymousInt = -1;
           break label58;
-          ad.d("MicroMsg.ConversationClickListener", "delete biz service: %s", new Object[] { g.a(g.this) });
-          com.tencent.mm.model.ba.aBQ();
-          paramAnonymousMenuItem = com.tencent.mm.model.c.azp().Bf(g.a(g.this));
-          com.tencent.mm.ui.tools.b.a(com.tencent.mm.am.g.eS(g.a(g.this)), g.c(g.this), paramAnonymousMenuItem, 1);
+          ae.d("MicroMsg.ConversationClickListener", "delete biz service: %s", new Object[] { g.a(g.this) });
+          bc.aCg();
+          paramAnonymousMenuItem = com.tencent.mm.model.c.azF().BH(g.a(g.this));
+          com.tencent.mm.ui.tools.b.a(com.tencent.mm.al.g.eX(g.a(g.this)), g.c(g.this), paramAnonymousMenuItem, 1);
           break;
         }
       }
     };
-    this.KsY = parami;
-    this.KrJ = paramListView;
+    this.KPs = parami;
+    this.KOd = paramListView;
     this.activity = paramActivity;
-    this.tkf = paramArrayOfInt;
+    this.tuX = paramArrayOfInt;
     AppMethodBeat.o(38391);
   }
   
@@ -186,23 +188,23 @@ public final class g
   {
     int j = 1;
     AppMethodBeat.i(38394);
-    paramView = this.KsY;
-    ad.i("MicroMsg.ConversationWithCacheAdapter", "[frozenNotify] from:%s", new Object[] { bt.flS() });
-    paramView.Kvd = true;
-    com.tencent.mm.model.ba.aBQ();
-    am localam = com.tencent.mm.model.c.azp().Bf(this.talker);
-    if (localam == null)
+    paramView = this.KPs;
+    ae.i("MicroMsg.ConversationWithCacheAdapter", "[frozenNotify] from:%s", new Object[] { bu.fpN() });
+    paramView.KRx = true;
+    bc.aCg();
+    an localan = com.tencent.mm.model.c.azF().BH(this.talker);
+    if (localan == null)
     {
-      ad.e("MicroMsg.ConversationClickListener", "onCreateContextMenu, contact is null, talker = " + this.talker);
+      ae.e("MicroMsg.ConversationClickListener", "onCreateContextMenu, contact is null, talker = " + this.talker);
       AppMethodBeat.o(38394);
       return;
     }
-    String str = localam.adv();
+    String str = localan.adG();
     paramView = str;
     if (str.toLowerCase().endsWith("@chatroom"))
     {
       paramView = str;
-      if (bt.isNullOrNil(localam.field_nickname)) {
+      if (bu.isNullOrNil(localan.field_nickname)) {
         paramView = this.activity.getString(2131757293);
       }
     }
@@ -212,15 +214,15 @@ public final class g
     if (this.conversation != null)
     {
       i = 1;
-      if ((i & w.b(this.conversation)) != 0)
+      if ((i & x.b(this.conversation)) != 0)
       {
         paramView = this.talker;
-        com.tencent.mm.model.ba.aBQ();
-        paramView = com.tencent.mm.model.c.azv().aTz(paramView);
+        bc.aCg();
+        paramView = com.tencent.mm.model.c.azL().aVa(paramView);
         if (paramView == null) {
           break label459;
         }
-        if ((paramView.field_unReadCount > 0) || (paramView.lQ(1048576))) {
+        if ((paramView.field_unReadCount > 0) || (paramView.lS(1048576))) {
           break label453;
         }
         i = j;
@@ -231,10 +233,10 @@ public final class g
         paramContextMenu.add(paramContextMenuInfo.position, 8, 0, 2131761052);
       }
       label242:
-      if ((this.conversation != null) && (w.a(this.conversation)))
+      if ((this.conversation != null) && (x.a(this.conversation)))
       {
-        com.tencent.mm.model.ba.aBQ();
-        if (!com.tencent.mm.model.c.azv().aTH(this.talker)) {
+        bc.aCg();
+        if (!com.tencent.mm.model.c.azL().aVi(this.talker)) {
           break label485;
         }
         paramContextMenu.add(paramContextMenuInfo.position, 6, 0, 2131761053);
@@ -242,17 +244,17 @@ public final class g
     }
     for (;;)
     {
-      if ((localam.fqg()) && (com.tencent.mm.o.b.lM(localam.field_type)) && (!w.Aq(localam.field_username)) && (!w.zQ(localam.field_username)))
+      if ((localan.fug()) && (com.tencent.mm.contact.c.lO(localan.field_type)) && (!x.Ba(localan.field_username)) && (!x.AA(localan.field_username)))
       {
-        paramView = com.tencent.mm.am.g.eS(localam.field_username);
-        if ((paramView != null) && (paramView.Kk()) && (!w.zw(localam.field_username)) && (!w.zx(localam.field_username))) {
+        paramView = com.tencent.mm.al.g.eX(localan.field_username);
+        if ((paramView != null) && (paramView.Ks()) && (!x.Ag(localan.field_username)) && (!x.Ah(localan.field_username))) {
           paramContextMenu.add(paramContextMenuInfo.position, 10, 0, 2131761049);
         }
       }
       if ((this.conversation == null) || (this.conversation.field_conversationTime == -1L)) {
         break label620;
       }
-      if (!w.zJ(this.talker)) {
+      if (!x.At(this.talker)) {
         break label572;
       }
       paramContextMenu.add(paramContextMenuInfo.position, 4, 0, 2131761060);
@@ -270,9 +272,9 @@ public final class g
       paramContextMenu.add(paramContextMenuInfo.position, 7, 0, 2131761050);
       break label242;
       label485:
-      if (localam.fqg())
+      if (localan.fug())
       {
-        if ((w.zw(localam.field_username)) || (w.zx(localam.field_username))) {
+        if ((x.Ag(localan.field_username)) || (x.Ah(localan.field_username))) {
           paramContextMenu.add(paramContextMenuInfo.position, 5, 0, 2131757876);
         } else {
           paramContextMenu.add(paramContextMenuInfo.position, 5, 0, 2131757877);
@@ -283,7 +285,7 @@ public final class g
       }
     }
     label572:
-    if (w.zK(this.talker))
+    if (x.Au(this.talker))
     {
       paramContextMenu.add(paramContextMenuInfo.position, 4, 0, 2131761058);
       AppMethodBeat.o(38394);
@@ -297,8 +299,8 @@ public final class g
   public final void onDismiss()
   {
     AppMethodBeat.i(38393);
-    i locali = this.KsY;
-    locali.Kvd = false;
+    i locali = this.KPs;
+    locali.KRx = false;
     locali.notifyDataSetChanged();
     AppMethodBeat.o(38393);
   }
@@ -306,32 +308,32 @@ public final class g
   public final boolean onItemLongClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
     AppMethodBeat.i(38392);
-    if (paramInt < this.KrJ.getHeaderViewsCount())
+    if (paramInt < this.KOd.getHeaderViewsCount())
     {
-      ad.d("MicroMsg.ConversationClickListener", "on long click header view");
+      ae.d("MicroMsg.ConversationClickListener", "on long click header view");
       AppMethodBeat.o(38392);
       return true;
     }
-    this.position = (paramInt - this.KrJ.getHeaderViewsCount());
-    this.conversation = ((at)this.KsY.abj(paramInt - this.KrJ.getHeaderViewsCount()));
+    this.position = (paramInt - this.KOd.getHeaderViewsCount());
+    this.conversation = ((au)this.KPs.abR(paramInt - this.KOd.getHeaderViewsCount()));
     if (this.conversation == null)
     {
-      ad.e("MicroMsg.ConversationClickListener", "headercount:%d, postion:%d", new Object[] { Integer.valueOf(this.KrJ.getHeaderViewsCount()), Integer.valueOf(paramInt) });
+      ae.e("MicroMsg.ConversationClickListener", "headercount:%d, postion:%d", new Object[] { Integer.valueOf(this.KOd.getHeaderViewsCount()), Integer.valueOf(paramInt) });
       AppMethodBeat.o(38392);
       return true;
     }
     this.talker = this.conversation.field_username;
     paramAdapterView = new a(this.activity);
-    paramAdapterView.a(paramView, paramInt, paramLong, this, this.obh, this.tkf[0], this.tkf[1]);
-    paramAdapterView.KLB = this;
-    if (w.vF(this.talker)) {
-      com.tencent.mm.plugin.report.service.g.yhR.f(14553, new Object[] { Integer.valueOf(1), Integer.valueOf(0), this.talker });
+    paramAdapterView.a(paramView, paramInt, paramLong, this, this.ogY, this.tuX[0], this.tuX[1]);
+    paramAdapterView.LhV = this;
+    if (x.wb(this.talker)) {
+      com.tencent.mm.plugin.report.service.g.yxI.f(14553, new Object[] { Integer.valueOf(1), Integer.valueOf(0), this.talker });
     }
     for (;;)
     {
       AppMethodBeat.o(38392);
       return true;
-      com.tencent.mm.plugin.report.service.g.yhR.f(14553, new Object[] { Integer.valueOf(0), Integer.valueOf(0), this.talker });
+      com.tencent.mm.plugin.report.service.g.yxI.f(14553, new Object[] { Integer.valueOf(0), Integer.valueOf(0), this.talker });
     }
   }
 }

@@ -11,25 +11,25 @@ import android.widget.EditText;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public class MMVisiblePasswordEditText
   extends EditText
 {
-  final Drawable JoT;
-  final Drawable JoU;
-  private boolean JoV;
-  public String niV;
+  final Drawable JJI;
+  final Drawable JJJ;
+  private boolean JJK;
+  public String nod;
   
   public MMVisiblePasswordEditText(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(142318);
-    this.niV = "";
-    this.JoT = getResources().getDrawable(2131690744);
-    this.JoU = getResources().getDrawable(2131690745);
-    this.JoV = false;
-    cmL();
+    this.nod = "";
+    this.JJI = getResources().getDrawable(2131690744);
+    this.JJJ = getResources().getDrawable(2131690745);
+    this.JJK = false;
+    cob();
     AppMethodBeat.o(142318);
   }
   
@@ -37,22 +37,22 @@ public class MMVisiblePasswordEditText
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(142319);
-    this.niV = "";
-    this.JoT = getResources().getDrawable(2131690744);
-    this.JoU = getResources().getDrawable(2131690745);
-    this.JoV = false;
-    cmL();
+    this.nod = "";
+    this.JJI = getResources().getDrawable(2131690744);
+    this.JJJ = getResources().getDrawable(2131690745);
+    this.JJK = false;
+    cob();
     AppMethodBeat.o(142319);
   }
   
-  private void cmL()
+  private void cob()
   {
     AppMethodBeat.i(142320);
-    this.JoT.setBounds(0, 0, this.JoT.getIntrinsicWidth(), this.JoT.getIntrinsicHeight());
-    this.JoU.setBounds(0, 0, this.JoU.getIntrinsicWidth(), this.JoU.getIntrinsicHeight());
-    ad.d("MicroMsg.MMVisiblePasswordEditText", "closeEye width %d height %d", new Object[] { Integer.valueOf(this.JoT.getIntrinsicWidth()), Integer.valueOf(this.JoT.getIntrinsicHeight()) });
-    fzm();
-    setHeight(this.JoT.getIntrinsicHeight() + getResources().getDimensionPixelSize(2131165519) * 5);
+    this.JJI.setBounds(0, 0, this.JJI.getIntrinsicWidth(), this.JJI.getIntrinsicHeight());
+    this.JJJ.setBounds(0, 0, this.JJJ.getIntrinsicWidth(), this.JJJ.getIntrinsicHeight());
+    ae.d("MicroMsg.MMVisiblePasswordEditText", "closeEye width %d height %d", new Object[] { Integer.valueOf(this.JJI.getIntrinsicWidth()), Integer.valueOf(this.JJI.getIntrinsicHeight()) });
+    fDo();
+    setHeight(this.JJI.getIntrinsicHeight() + getResources().getDimensionPixelSize(2131165519) * 5);
     setOnTouchListener(new View.OnTouchListener()
     {
       public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
@@ -61,7 +61,7 @@ public class MMVisiblePasswordEditText
         b localb = new b();
         localb.bd(paramAnonymousView);
         localb.bd(paramAnonymousMotionEvent);
-        a.b("com/tencent/mm/ui/base/MMVisiblePasswordEditText$1", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahq());
+        a.b("com/tencent/mm/ui/base/MMVisiblePasswordEditText$1", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahF());
         paramAnonymousView = MMVisiblePasswordEditText.this;
         if (paramAnonymousView.getCompoundDrawables()[2] == null)
         {
@@ -75,7 +75,7 @@ public class MMVisiblePasswordEditText
           AppMethodBeat.o(142317);
           return false;
         }
-        if (paramAnonymousMotionEvent.getX() > paramAnonymousView.getWidth() - paramAnonymousView.getPaddingRight() - MMVisiblePasswordEditText.this.JoT.getIntrinsicWidth())
+        if (paramAnonymousMotionEvent.getX() > paramAnonymousView.getWidth() - paramAnonymousView.getPaddingRight() - MMVisiblePasswordEditText.this.JJI.getIntrinsicWidth())
         {
           paramAnonymousView = MMVisiblePasswordEditText.this;
           if (MMVisiblePasswordEditText.a(MMVisiblePasswordEditText.this)) {
@@ -96,15 +96,15 @@ public class MMVisiblePasswordEditText
     AppMethodBeat.o(142320);
   }
   
-  private void fzm()
+  private void fDo()
   {
     AppMethodBeat.i(142321);
     int i = getSelectionStart();
     int j = getSelectionEnd();
-    if (this.JoV)
+    if (this.JJK)
     {
       setInputType(1);
-      fzn();
+      fDp();
     }
     for (;;)
     {
@@ -112,27 +112,27 @@ public class MMVisiblePasswordEditText
       AppMethodBeat.o(142321);
       return;
       setInputType(129);
-      fzo();
+      fDq();
     }
   }
   
-  private void fzn()
+  private void fDp()
   {
     AppMethodBeat.i(142322);
-    setCompoundDrawables(getCompoundDrawables()[0], getCompoundDrawables()[1], this.JoU, getCompoundDrawables()[3]);
+    setCompoundDrawables(getCompoundDrawables()[0], getCompoundDrawables()[1], this.JJJ, getCompoundDrawables()[3]);
     AppMethodBeat.o(142322);
   }
   
-  private void fzo()
+  private void fDq()
   {
     AppMethodBeat.i(142323);
-    setCompoundDrawables(getCompoundDrawables()[0], getCompoundDrawables()[1], this.JoT, getCompoundDrawables()[3]);
+    setCompoundDrawables(getCompoundDrawables()[0], getCompoundDrawables()[1], this.JJI, getCompoundDrawables()[3]);
     AppMethodBeat.o(142323);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.ui.base.MMVisiblePasswordEditText
  * JD-Core Version:    0.7.0.1
  */

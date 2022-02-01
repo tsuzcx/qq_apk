@@ -9,7 +9,7 @@ public abstract class b
 {
   public final void a(c paramc)
   {
-    String str = paramc.gre;
+    String str = paramc.gtE;
     int i = -1;
     switch (str.hashCode())
     {
@@ -51,29 +51,29 @@ public abstract class b
         break;
       }
     }
-    paramc.wd("plugin");
-    paramc.wd("entry");
-    paramc.wd("arguments");
+    paramc.wM("plugin");
+    paramc.wM("entry");
+    paramc.wM("arguments");
     k(paramc);
     return;
-    paramc.wd("plugin");
-    paramc.wd("entry");
-    paramc.wd("arguments");
-    paramc.wd("name");
-    ((Integer)paramc.wd("requestCode")).intValue();
+    paramc.wM("plugin");
+    paramc.wM("entry");
+    paramc.wM("arguments");
+    paramc.wM("name");
+    ((Integer)paramc.wM("requestCode")).intValue();
     l(paramc);
     return;
-    c((String)paramc.wd("route"), paramc);
+    c((String)paramc.wM("route"), paramc);
     return;
-    wf((String)paramc.wd("route"));
+    wO((String)paramc.wM("route"));
     return;
-    d((String)paramc.wd("route"), paramc);
+    d((String)paramc.wM("route"), paramc);
     return;
-    paramc.wd("route");
+    paramc.wM("route");
     m(paramc);
   }
   
-  public final String agw()
+  public final String agK()
   {
     return "Route";
   }
@@ -88,11 +88,11 @@ public abstract class b
   
   public abstract void m(c paramc);
   
-  public abstract void wf(String paramString);
+  public abstract void wO(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.flutter.a.a.b
  * JD-Core Version:    0.7.0.1
  */

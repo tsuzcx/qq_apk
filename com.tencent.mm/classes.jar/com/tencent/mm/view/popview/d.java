@@ -5,17 +5,17 @@ import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.view.WindowManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.emoji.a.a.ai;
+import com.tencent.mm.emoji.a.b.ai;
 import d.g.b.p;
 import d.l;
 import d.v;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/view/popview/SmileyPopupHelper;", "Lcom/tencent/mm/view/popview/BasePopupHelper;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "lastAnchor", "Landroid/view/View;", "smileyPopView", "Lcom/tencent/mm/view/popview/AbstractPopView;", "windowManager", "Landroid/view/WindowManager;", "onLongPress", "", "anchor", "item", "", "onMove", "", "onTouchEnd", "updatePopupView", "plugin-emojisdk_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/view/popview/SmileyPopupHelper;", "Lcom/tencent/mm/view/popview/BasePopupHelper;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "lastAnchor", "Landroid/view/View;", "smileyPopView", "Lcom/tencent/mm/view/popview/AbstractPopView;", "windowManager", "Landroid/view/WindowManager;", "onLongPress", "", "anchor", "item", "", "onMove", "", "onTouchEnd", "updatePopupView", "plugin-emojisdk_release"})
 public final class d
   extends a
 {
-  private View LuF;
-  private AbstractPopView Lvb;
+  private AbstractPopView LRO;
+  private View LRs;
   private final Context context;
   private final WindowManager windowManager;
   
@@ -40,12 +40,12 @@ public final class d
     if (((paramObject instanceof ai)) && (paramView.isEnabled()))
     {
       Object localObject;
-      if (this.Lvb == null)
+      if (this.LRO == null)
       {
-        this.Lvb = c.b(this.context, paramObject);
+        this.LRO = c.b(this.context, paramObject);
         WindowManager localWindowManager = this.windowManager;
-        View localView = (View)this.Lvb;
-        localObject = this.Lvb;
+        View localView = (View)this.LRO;
+        localObject = this.LRO;
         if (localObject != null)
         {
           localObject = ((AbstractPopView)localObject).getWindowLayoutParams();
@@ -54,18 +54,18 @@ public final class d
       }
       else
       {
-        localObject = this.Lvb;
+        localObject = this.LRO;
         if (localObject != null) {
           ((AbstractPopView)localObject).setVisibility(0);
         }
-        c.a(this.Lvb, paramObject);
-        paramObject = this.Lvb;
+        c.a(this.LRO, paramObject);
+        paramObject = this.LRO;
         if (paramObject != null) {
-          paramObject.hl(paramView);
+          paramObject.hq(paramView);
         }
         paramObject = this.windowManager;
-        localObject = (View)this.Lvb;
-        paramView = this.Lvb;
+        localObject = (View)this.LRO;
+        paramView = this.LRO;
         if (paramView == null) {
           break label165;
         }
@@ -80,7 +80,7 @@ public final class d
         break;
       }
     }
-    paramView = this.Lvb;
+    paramView = this.LRO;
     if (paramView != null)
     {
       paramView.setVisibility(8);
@@ -96,7 +96,7 @@ public final class d
     p.h(paramView, "anchor");
     if (((paramObject instanceof ai)) && (paramView.isEnabled()))
     {
-      this.LuF = paramView;
+      this.LRs = paramView;
       e(paramView, paramObject);
       AppMethodBeat.o(184004);
       return true;
@@ -109,31 +109,31 @@ public final class d
   {
     AppMethodBeat.i(184005);
     p.h(paramView, "anchor");
-    if (p.i(this.LuF, paramView))
+    if (p.i(this.LRs, paramView))
     {
       AppMethodBeat.o(184005);
       return;
     }
-    this.LuF = paramView;
+    this.LRs = paramView;
     e(paramView, paramObject);
     AppMethodBeat.o(184005);
   }
   
-  public final void dXt()
+  public final void eaW()
   {
     AppMethodBeat.i(184007);
-    this.LuF = null;
-    AbstractPopView localAbstractPopView = this.Lvb;
+    this.LRs = null;
+    AbstractPopView localAbstractPopView = this.LRO;
     if (localAbstractPopView != null) {
       this.windowManager.removeView((View)localAbstractPopView);
     }
-    this.Lvb = null;
+    this.LRO = null;
     AppMethodBeat.o(184007);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.view.popview.d
  * JD-Core Version:    0.7.0.1
  */

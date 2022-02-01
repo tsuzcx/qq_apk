@@ -1,34 +1,34 @@
 package com.tencent.mm.plugin.fav.ui.gallery;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.ajn;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.ajx;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 public final class e
 {
-  ArrayList<d> rCx;
-  boolean rCy;
-  ArrayList<b> rCz;
+  ArrayList<d> rKI;
+  boolean rKJ;
+  ArrayList<b> rKK;
   
   private e()
   {
     AppMethodBeat.i(107392);
-    this.rCx = new ArrayList();
-    this.rCy = false;
-    this.rCz = new ArrayList();
+    this.rKI = new ArrayList();
+    this.rKJ = false;
+    this.rKK = new ArrayList();
     AppMethodBeat.o(107392);
   }
   
-  public final d agQ(String paramString)
+  public final d ahN(String paramString)
   {
     AppMethodBeat.i(107393);
-    Iterator localIterator = this.rCx.iterator();
+    Iterator localIterator = this.rKI.iterator();
     while (localIterator.hasNext())
     {
       d locald = (d)localIterator.next();
-      if (locald.dsX.dsU.equals(paramString))
+      if (locald.dud.dua.equals(paramString))
       {
         AppMethodBeat.o(107393);
         return locald;
@@ -41,40 +41,40 @@ public final class e
   public final void clear()
   {
     AppMethodBeat.i(107394);
-    ad.i("MicroMsg.ImageGallerySelectedHandle", "clear..");
-    this.rCx.clear();
-    Iterator localIterator = this.rCz.iterator();
+    ae.i("MicroMsg.ImageGallerySelectedHandle", "clear..");
+    this.rKI.clear();
+    Iterator localIterator = this.rKK.iterator();
     while (localIterator.hasNext()) {
       localIterator.next();
     }
     AppMethodBeat.o(107394);
   }
   
-  public final void cxi()
+  public final void cyJ()
   {
     AppMethodBeat.i(107395);
-    Iterator localIterator = this.rCz.iterator();
+    Iterator localIterator = this.rKK.iterator();
     while (localIterator.hasNext()) {
-      ((b)localIterator.next()).cxk();
+      ((b)localIterator.next()).cyL();
     }
     AppMethodBeat.o(107395);
   }
   
   static final class a
   {
-    private static final e rCA;
+    private static final e rKL;
     
     static
     {
       AppMethodBeat.i(107391);
-      rCA = new e((byte)0);
+      rKL = new e((byte)0);
       AppMethodBeat.o(107391);
     }
   }
   
   public static abstract interface b
   {
-    public abstract void cxk();
+    public abstract void cyL();
   }
 }
 

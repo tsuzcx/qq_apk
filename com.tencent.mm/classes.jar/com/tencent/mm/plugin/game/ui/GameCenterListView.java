@@ -15,18 +15,18 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class GameCenterListView
   extends ListView
 {
-  static boolean umd;
-  static int umf;
+  static boolean uxA;
+  static int uxC;
   private View agn;
   private Context mContext;
   private Scroller mScroller;
   private int rW;
-  private boolean uma;
-  private float umb;
-  private boolean umc;
-  private boolean ume;
-  private ImageView umg;
-  private ImageView umh;
+  private boolean uxB;
+  private ImageView uxD;
+  private ImageView uxE;
+  private boolean uxx;
+  private float uxy;
+  private boolean uxz;
   
   public GameCenterListView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -36,12 +36,12 @@ public class GameCenterListView
   
   public static void setCanPulldown(boolean paramBoolean)
   {
-    umd = paramBoolean;
+    uxA = paramBoolean;
   }
   
   public static void setDefaultPadding(int paramInt)
   {
-    umf = paramInt;
+    uxC = paramInt;
   }
   
   public void computeScroll()
@@ -56,11 +56,11 @@ public class GameCenterListView
     {
       int i = this.mScroller.getCurrY();
       this.agn.setPadding(0, i, 0, 0);
-      float f = (umf - i) / umf * 255.0F;
+      float f = (uxC - i) / uxC * 255.0F;
       i = (int)f;
       int j = (int)f;
-      this.umh.setAlpha(255 - i);
-      this.umg.setAlpha(j);
+      this.uxE.setAlpha(255 - i);
+      this.uxD.setAlpha(j);
       invalidate();
     }
     AppMethodBeat.o(41947);
@@ -70,7 +70,7 @@ public class GameCenterListView
   {
     AppMethodBeat.i(41946);
     boolean bool;
-    if ((!umd) || (this.agn == null))
+    if ((!uxA) || (this.agn == null))
     {
       bool = super.dispatchTouchEvent(paramMotionEvent);
       AppMethodBeat.o(41946);
@@ -91,31 +91,31 @@ public class GameCenterListView
             bool = super.dispatchTouchEvent(paramMotionEvent);
             AppMethodBeat.o(41946);
             return bool;
-            this.ume = false;
-            this.umb = paramMotionEvent.getRawY();
+            this.uxB = false;
+            this.uxy = paramMotionEvent.getRawY();
           }
-        } while (!this.umc);
-        if (this.ume)
+        } while (!this.uxz);
+        if (this.uxB)
         {
           AppMethodBeat.o(41946);
           return true;
         }
-        i = (int)(paramMotionEvent.getRawY() - this.umb);
-        if (this.agn.getPaddingTop() > umf + this.rW) {
+        i = (int)(paramMotionEvent.getRawY() - this.uxy);
+        if (this.agn.getPaddingTop() > uxC + this.rW) {
           break;
         }
       } while ((i <= 0) || (Math.abs(i) < this.rW));
-      this.ume = true;
+      this.uxB = true;
       this.mScroller.startScroll(0, this.agn.getPaddingTop(), 0, -this.agn.getPaddingTop(), 500);
-      this.umg.setClickable(true);
+      this.uxD.setClickable(true);
       invalidate();
       paramMotionEvent.setAction(3);
       super.dispatchTouchEvent(paramMotionEvent);
       AppMethodBeat.o(41946);
       return true;
     } while ((this.agn.getPaddingTop() < -this.rW) || (i >= 0) || (Math.abs(i) < this.rW));
-    this.ume = true;
-    this.mScroller.startScroll(0, 0, 0, umf, 500);
+    this.uxB = true;
+    this.mScroller.startScroll(0, 0, 0, uxC, 500);
     invalidate();
     paramMotionEvent.setAction(3);
     super.dispatchTouchEvent(paramMotionEvent);
@@ -153,19 +153,19 @@ public class GameCenterListView
   {
     AppMethodBeat.i(41945);
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    if ((paramBoolean) && (!this.uma))
+    if ((paramBoolean) && (!this.uxx))
     {
       this.agn = getChildAt(0);
-      this.umh = ((ImageView)this.agn.findViewById(2131304853));
-      this.umg = ((ImageView)this.agn.findViewById(2131297217));
-      this.uma = true;
+      this.uxE = ((ImageView)this.agn.findViewById(2131304853));
+      this.uxD = ((ImageView)this.agn.findViewById(2131297217));
+      this.uxx = true;
     }
     AppMethodBeat.o(41945);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.GameCenterListView
  * JD-Core Version:    0.7.0.1
  */

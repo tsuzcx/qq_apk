@@ -8,9 +8,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.PopupWindow.OnDismissListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.cw;
+import com.tencent.mm.g.a.cx;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.MMVerticalTextView;
 import com.tencent.mm.ui.base.o;
@@ -18,23 +18,23 @@ import java.util.ArrayList;
 
 public final class c
 {
-  ViewGroup LzP;
-  private boolean LzQ;
-  public o jtC;
-  private ImageView jtD;
-  private View jtE;
-  private View.OnClickListener jtG;
-  public boolean oFw;
-  private Bitmap oJr;
-  private View oJu;
-  private ImageView oJv;
-  private MMVerticalTextView oJw;
-  private ArrayList<Bitmap> oJy;
-  private MMActivity owO;
-  private String wAi;
-  private String wxr;
-  public Bitmap wzC;
-  public Bitmap wzD;
+  ViewGroup LWE;
+  private boolean LWF;
+  private View.OnClickListener jwB;
+  public o jwx;
+  private ImageView jwy;
+  private View jwz;
+  private MMActivity oDq;
+  public boolean oLY;
+  private Bitmap oPT;
+  private View oPW;
+  private ImageView oPX;
+  private MMVerticalTextView oPY;
+  private ArrayList<Bitmap> oQa;
+  private String wNc;
+  private String wPT;
+  public Bitmap wPn;
+  public Bitmap wPo;
   
   public c(MMActivity paramMMActivity)
   {
@@ -44,106 +44,106 @@ public final class c
   public c(MMActivity paramMMActivity, boolean paramBoolean)
   {
     AppMethodBeat.i(72952);
-    this.wzC = null;
-    this.wzD = null;
-    this.oJr = null;
-    this.wAi = "";
-    this.wxr = "";
-    this.oFw = true;
-    this.oJy = new ArrayList();
-    this.jtC = null;
-    this.LzQ = false;
-    this.jtG = new View.OnClickListener()
+    this.wPn = null;
+    this.wPo = null;
+    this.oPT = null;
+    this.wPT = "";
+    this.wNc = "";
+    this.oLY = true;
+    this.oQa = new ArrayList();
+    this.jwx = null;
+    this.LWF = false;
+    this.jwB = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(72948);
         b localb = new b();
         localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/wallet_core/ui/OfflinePopupWindow$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-        if (((paramAnonymousView.getId() == 2131303350) || (paramAnonymousView.getId() == 2131303346)) && (c.this.jtC != null) && (c.this.jtC.isShowing())) {
-          c.this.jtC.dismiss();
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/wallet_core/ui/OfflinePopupWindow$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        if (((paramAnonymousView.getId() == 2131303350) || (paramAnonymousView.getId() == 2131303346)) && (c.this.jwx != null) && (c.this.jwx.isShowing())) {
+          c.this.jwx.dismiss();
         }
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/wallet_core/ui/OfflinePopupWindow$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(72948);
       }
     };
-    this.owO = paramMMActivity;
-    this.LzQ = paramBoolean;
+    this.oDq = paramMMActivity;
+    this.LWF = paramBoolean;
     AppMethodBeat.o(72952);
   }
   
-  private void fRY()
+  private void fWu()
   {
     AppMethodBeat.i(72958);
-    if (this.oFw)
+    if (this.oLY)
     {
-      this.oJv.setOnClickListener(this.jtG);
-      Bitmap localBitmap = this.oJr;
-      if (this.wzD != null)
+      this.oPX.setOnClickListener(this.jwB);
+      Bitmap localBitmap = this.oPT;
+      if (this.wPo != null)
       {
-        this.oJr = e.S(this.wzD);
-        ad.i("MicroMsg.OfflinePopupWindow", "updatePopWindowContent mRoateBmp != null");
+        this.oPT = f.T(this.wPo);
+        ae.i("MicroMsg.OfflinePopupWindow", "updatePopWindowContent mRoateBmp != null");
       }
       for (;;)
       {
-        this.oJv.setImageBitmap(this.oJr);
-        this.oJy.add(0, localBitmap);
+        this.oPX.setImageBitmap(this.oPT);
+        this.oQa.add(0, localBitmap);
         recycleBmpList();
-        this.jtE.setVisibility(8);
-        this.oJu.setVisibility(0);
-        this.oJw.setText(e.aYM(this.wxr));
-        this.jtC.update();
+        this.jwz.setVisibility(8);
+        this.oPW.setVisibility(0);
+        this.oPY.setText(f.bap(this.wNc));
+        this.jwx.update();
         AppMethodBeat.o(72958);
         return;
-        this.oJr = null;
-        ad.e("MicroMsg.OfflinePopupWindow", "updatePopWindowContent mRoateBmp == null");
+        this.oPT = null;
+        ae.e("MicroMsg.OfflinePopupWindow", "updatePopWindowContent mRoateBmp == null");
       }
     }
-    this.jtD.setOnClickListener(this.jtG);
-    this.jtD.setImageBitmap(this.wzC);
-    if (this.wzC != null) {
-      ad.e("MicroMsg.OfflinePopupWindow", "updatePopWindowContent mQRCodeBmp != null");
+    this.jwy.setOnClickListener(this.jwB);
+    this.jwy.setImageBitmap(this.wPn);
+    if (this.wPn != null) {
+      ae.e("MicroMsg.OfflinePopupWindow", "updatePopWindowContent mQRCodeBmp != null");
     }
     for (;;)
     {
-      this.jtE.setVisibility(0);
-      this.oJu.setVisibility(8);
+      this.jwz.setVisibility(0);
+      this.oPW.setVisibility(8);
       break;
-      ad.i("MicroMsg.OfflinePopupWindow", "updatePopWindowContent mQRCodeBmp == null");
+      ae.i("MicroMsg.OfflinePopupWindow", "updatePopWindowContent mQRCodeBmp == null");
     }
   }
   
   private void recycleBmpList()
   {
     AppMethodBeat.i(72959);
-    if (this.oJy.size() >= 2)
+    if (this.oQa.size() >= 2)
     {
-      int i = this.oJy.size() - 1;
+      int i = this.oQa.size() - 1;
       while (i > 1)
       {
-        e.T((Bitmap)this.oJy.remove(i));
+        f.U((Bitmap)this.oQa.remove(i));
         i -= 1;
       }
     }
     AppMethodBeat.o(72959);
   }
   
-  public final void N(View paramView, boolean paramBoolean)
+  public final void S(View paramView, boolean paramBoolean)
   {
     AppMethodBeat.i(72955);
-    this.oFw = paramBoolean;
-    if ((this.jtC != null) && (!this.jtC.isShowing()))
+    this.oLY = paramBoolean;
+    if ((this.jwx != null) && (!this.jwx.isShowing()))
     {
-      this.jtC.showAtLocation(paramView.getRootView(), 17, 0, 0);
-      this.jtC.setFocusable(true);
-      this.jtC.setTouchable(true);
-      this.jtC.setBackgroundDrawable(new ColorDrawable(16777215));
-      this.jtC.setOutsideTouchable(true);
-      if (this.oFw) {
-        fRX();
+      this.jwx.showAtLocation(paramView.getRootView(), 17, 0, 0);
+      this.jwx.setFocusable(true);
+      this.jwx.setTouchable(true);
+      this.jwx.setBackgroundDrawable(new ColorDrawable(16777215));
+      this.jwx.setOutsideTouchable(true);
+      if (this.oLY) {
+        fWt();
       }
-      fRY();
+      fWu();
     }
     AppMethodBeat.o(72955);
   }
@@ -151,26 +151,26 @@ public final class c
   public final void dismiss()
   {
     AppMethodBeat.i(72960);
-    if ((this.jtC != null) && (this.jtC.isShowing())) {
-      this.jtC.dismiss();
+    if ((this.jwx != null) && (this.jwx.isShowing())) {
+      this.jwx.dismiss();
     }
     AppMethodBeat.o(72960);
   }
   
-  public final void fRV()
+  public final void fWr()
   {
     AppMethodBeat.i(72954);
-    if (this.jtC != null)
+    if (this.jwx != null)
     {
       AppMethodBeat.o(72954);
       return;
     }
     View localView;
-    if (this.LzQ)
+    if (this.LWF)
     {
-      localView = View.inflate(this.owO, 2131495991, null);
+      localView = View.inflate(this.oDq, 2131495991, null);
       MMVerticalTextView localMMVerticalTextView = (MMVerticalTextView)localView.findViewById(2131302163);
-      this.LzP = ((ViewGroup)localView.findViewById(2131303349));
+      this.LWE = ((ViewGroup)localView.findViewById(2131303349));
       localMMVerticalTextView.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
@@ -178,12 +178,12 @@ public final class c
           AppMethodBeat.i(72949);
           b localb = new b();
           localb.bd(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/wallet_core/ui/OfflinePopupWindow$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-          ad.d("MicroMsg.OfflinePopupWindow", "on click know");
-          c.this.LzP.setVisibility(8);
-          paramAnonymousView = new cw();
-          paramAnonymousView.dnP.dnQ = 1;
-          com.tencent.mm.sdk.b.a.IbL.l(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/wallet_core/ui/OfflinePopupWindow$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+          ae.d("MicroMsg.OfflinePopupWindow", "on click know");
+          c.this.LWE.setVisibility(8);
+          paramAnonymousView = new cx();
+          paramAnonymousView.doU.doV = 1;
+          com.tencent.mm.sdk.b.a.IvT.l(paramAnonymousView);
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/wallet_core/ui/OfflinePopupWindow$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(72949);
         }
@@ -195,10 +195,10 @@ public final class c
           AppMethodBeat.i(72950);
           b localb = new b();
           localb.bd(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/wallet_core/ui/OfflinePopupWindow$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-          ad.d("MicroMsg.OfflinePopupWindow", "root on click");
-          if ((c.this.jtC != null) && (c.this.jtC.isShowing())) {
-            c.this.jtC.dismiss();
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/wallet_core/ui/OfflinePopupWindow$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+          ae.d("MicroMsg.OfflinePopupWindow", "root on click");
+          if ((c.this.jwx != null) && (c.this.jwx.isShowing())) {
+            c.this.jwx.dismiss();
           }
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/wallet_core/ui/OfflinePopupWindow$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(72950);
@@ -207,22 +207,22 @@ public final class c
     }
     for (;;)
     {
-      this.jtE = localView.findViewById(2131303351);
-      this.jtD = ((ImageView)localView.findViewById(2131303350));
-      this.oJu = localView.findViewById(2131303347);
-      this.oJv = ((ImageView)localView.findViewById(2131303346));
-      this.oJw = ((MMVerticalTextView)localView.findViewById(2131306295));
-      this.jtC = new o(localView, -1, -1, true);
-      this.jtC.setClippingEnabled(false);
-      this.jtC.update();
-      this.jtC.setBackgroundDrawable(new ColorDrawable(16777215));
-      this.jtC.setOnDismissListener(new PopupWindow.OnDismissListener()
+      this.jwz = localView.findViewById(2131303351);
+      this.jwy = ((ImageView)localView.findViewById(2131303350));
+      this.oPW = localView.findViewById(2131303347);
+      this.oPX = ((ImageView)localView.findViewById(2131303346));
+      this.oPY = ((MMVerticalTextView)localView.findViewById(2131306295));
+      this.jwx = new o(localView, -1, -1, true);
+      this.jwx.setClippingEnabled(false);
+      this.jwx.update();
+      this.jwx.setBackgroundDrawable(new ColorDrawable(16777215));
+      this.jwx.setOnDismissListener(new PopupWindow.OnDismissListener()
       {
         public final void onDismiss() {}
       });
       AppMethodBeat.o(72954);
       return;
-      localView = View.inflate(this.owO, 2131495994, null);
+      localView = View.inflate(this.oDq, 2131495994, null);
       localView.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
@@ -230,9 +230,9 @@ public final class c
           AppMethodBeat.i(72951);
           b localb = new b();
           localb.bd(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/wallet_core/ui/OfflinePopupWindow$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-          if ((c.this.jtC != null) && (c.this.jtC.isShowing())) {
-            c.this.jtC.dismiss();
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/wallet_core/ui/OfflinePopupWindow$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+          if ((c.this.jwx != null) && (c.this.jwx.isShowing())) {
+            c.this.jwx.dismiss();
           }
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/wallet_core/ui/OfflinePopupWindow$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(72951);
@@ -241,40 +241,40 @@ public final class c
     }
   }
   
-  public final void fRW()
+  public final void fWs()
   {
     AppMethodBeat.i(72956);
-    if ((this.jtC != null) && (this.jtC.isShowing())) {
-      fRY();
+    if ((this.jwx != null) && (this.jwx.isShowing())) {
+      fWu();
     }
     AppMethodBeat.o(72956);
   }
   
-  public final void fRX()
+  public final void fWt()
   {
     AppMethodBeat.i(72957);
-    if (this.LzP != null) {
-      this.LzP.setVisibility(0);
+    if (this.LWE != null) {
+      this.LWE.setVisibility(0);
     }
     AppMethodBeat.o(72957);
   }
   
-  public final void mF(String paramString1, String paramString2)
+  public final void mL(String paramString1, String paramString2)
   {
-    this.wAi = paramString1;
-    this.wxr = paramString2;
+    this.wPT = paramString1;
+    this.wNc = paramString2;
   }
   
   public final void release()
   {
     AppMethodBeat.i(72953);
-    if ((this.jtC != null) && (this.jtC.isShowing())) {
-      this.jtC.dismiss();
+    if ((this.jwx != null) && (this.jwx.isShowing())) {
+      this.jwx.dismiss();
     }
-    e.T(this.oJr);
-    e.aZ(this.oJy);
-    this.oJy.clear();
-    this.owO = null;
+    f.U(this.oPT);
+    f.ba(this.oQa);
+    this.oQa.clear();
+    this.oDq = null;
     AppMethodBeat.o(72953);
   }
 }

@@ -1,16 +1,16 @@
 package com.tencent.mm.modelvoice;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.n.a;
-import com.tencent.mm.al.n.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.n.a;
+import com.tencent.mm.ak.n.b;
 import com.tencent.mm.m.a;
 import com.tencent.mm.m.a.a;
-import com.tencent.mm.model.bl;
-import com.tencent.mm.model.u;
+import com.tencent.mm.model.bn;
+import com.tencent.mm.model.v;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
@@ -18,13 +18,13 @@ import com.tencent.mm.platformtools.ac;
 import com.tencent.mm.plugin.messenger.foundation.a.a.i;
 import com.tencent.mm.plugin.messenger.foundation.a.l;
 import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.dtm;
-import com.tencent.mm.protocal.protobuf.dtn;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.av;
-import com.tencent.mm.sdk.platformtools.av.a;
-import com.tencent.mm.storage.am;
-import com.tencent.mm.storage.bp;
+import com.tencent.mm.protocal.protobuf.duj;
+import com.tencent.mm.protocal.protobuf.duk;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aw;
+import com.tencent.mm.sdk.platformtools.aw.a;
+import com.tencent.mm.storage.an;
+import com.tencent.mm.storage.bq;
 import java.util.HashMap;
 import junit.framework.Assert;
 
@@ -32,16 +32,16 @@ public final class f
   extends n
   implements k
 {
-  com.tencent.mm.al.f callback;
+  com.tencent.mm.ak.f callback;
   private int endFlag;
   public String fileName;
-  av hMj;
-  private int iuI;
-  private boolean iwe;
-  private int iwi;
-  long iwj;
+  aw hPc;
+  private int ixC;
+  private boolean iyX;
+  private int izb;
+  long izc;
   public int retCode;
-  private com.tencent.mm.al.b rr;
+  private com.tencent.mm.ak.b rr;
   
   public f(String paramString)
   {
@@ -52,18 +52,18 @@ public final class f
   {
     AppMethodBeat.i(148417);
     this.retCode = 0;
-    this.iuI = 0;
-    this.iwe = false;
+    this.ixC = 0;
+    this.iyX = false;
     this.endFlag = 0;
-    this.hMj = new av(new av.a()
+    this.hPc = new aw(new aw.a()
     {
       public final boolean onTimerExpired()
       {
         AppMethodBeat.i(148416);
-        r localr = s.Ia(f.this.fileName);
-        if ((localr == null) || (!localr.aNC()))
+        r localr = s.IC(f.this.fileName);
+        if ((localr == null) || (!localr.aOa()))
         {
-          ad.e("MicroMsg.NetSceneUploadVoice", "Get info Failed file:" + f.this.fileName);
+          ae.e("MicroMsg.NetSceneUploadVoice", "Get info Failed file:" + f.this.fileName);
           f.this.retCode = (com.tencent.mm.compatible.util.f.getLine() + 10000);
           f.this.callback.onSceneEnd(3, -1, "doScene failed", f.this);
           AppMethodBeat.o(148416);
@@ -72,23 +72,23 @@ public final class f
         if ((3 != localr.status) && (8 != localr.status))
         {
           long l = System.currentTimeMillis();
-          if (l / 1000L - localr.iud > 30L)
+          if (l / 1000L - localr.iwX > 30L)
           {
-            ad.e("MicroMsg.NetSceneUploadVoice", "Error ModifyTime in Read file:" + f.this.fileName);
+            ae.e("MicroMsg.NetSceneUploadVoice", "Error ModifyTime in Read file:" + f.this.fileName);
             f.this.retCode = (com.tencent.mm.compatible.util.f.getLine() + 10000);
             f.this.callback.onSceneEnd(3, -1, "doScene failed", f.this);
             AppMethodBeat.o(148416);
             return false;
           }
-          if (l - f.this.iwj < 2000L)
+          if (l - f.this.izc < 2000L)
           {
-            ad.d("MicroMsg.NetSceneUploadVoice", "TimerExpired :" + f.this.fileName + " but last send time:" + (l - f.this.iwj));
+            ae.d("MicroMsg.NetSceneUploadVoice", "TimerExpired :" + f.this.fileName + " but last send time:" + (l - f.this.izc));
             AppMethodBeat.o(148416);
             return true;
           }
-          g localg = s.HR(f.this.fileName).dr(localr.isJ, 6000);
-          ad.d("MicroMsg.NetSceneUploadVoice", "pusher doscene:" + f.this.fileName + " readByte:" + localg.dhO + " stat:" + localr.status);
-          if (localg.dhO < 2000)
+          g localg = s.It(f.this.fileName).dr(localr.ivD, 6000);
+          ae.d("MicroMsg.NetSceneUploadVoice", "pusher doscene:" + f.this.fileName + " readByte:" + localg.diR + " stat:" + localr.status);
+          if (localg.diR < 2000)
           {
             AppMethodBeat.o(148416);
             return true;
@@ -107,40 +107,40 @@ public final class f
     for (;;)
     {
       Assert.assertTrue(bool);
-      ad.d("MicroMsg.NetSceneUploadVoice", "NetSceneUploadVoice:  file:".concat(String.valueOf(paramString)));
+      ae.d("MicroMsg.NetSceneUploadVoice", "NetSceneUploadVoice:  file:".concat(String.valueOf(paramString)));
       this.fileName = paramString;
-      this.iwi = paramInt;
+      this.izb = paramInt;
       AppMethodBeat.o(148417);
       return;
       bool = false;
     }
   }
   
-  public final int doScene(e parame, com.tencent.mm.al.f paramf)
+  public final int doScene(e parame, com.tencent.mm.ak.f paramf)
   {
     AppMethodBeat.i(148418);
     this.callback = paramf;
-    this.iwe = false;
+    this.iyX = false;
     if (this.fileName == null)
     {
-      ad.e("MicroMsg.NetSceneUploadVoice", "doScene:  filename null!");
+      ae.e("MicroMsg.NetSceneUploadVoice", "doScene:  filename null!");
       this.retCode = (com.tencent.mm.compatible.util.f.getLine() + 10000);
       AppMethodBeat.o(148418);
       return -1;
     }
-    r localr = s.Ia(this.fileName);
-    if ((localr == null) || (!localr.aNC()))
+    r localr = s.IC(this.fileName);
+    if ((localr == null) || (!localr.aOa()))
     {
-      ad.e("MicroMsg.NetSceneUploadVoice", "Get info Failed file:" + this.fileName);
+      ae.e("MicroMsg.NetSceneUploadVoice", "Get info Failed file:" + this.fileName);
       this.retCode = (com.tencent.mm.compatible.util.f.getLine() + 10000);
       AppMethodBeat.o(148418);
       return -1;
     }
-    ad.d("MicroMsg.NetSceneUploadVoice", "doScene file:" + this.fileName + " netTimes:" + localr.iug);
-    if (!s.HQ(this.fileName))
+    ae.d("MicroMsg.NetSceneUploadVoice", "doScene file:" + this.fileName + " netTimes:" + localr.ixa);
+    if (!s.Is(this.fileName))
     {
-      ad.e("MicroMsg.NetSceneUploadVoice", "checkVoiceNetTimes Failed file:" + this.fileName);
-      s.Hp(this.fileName);
+      ae.e("MicroMsg.NetSceneUploadVoice", "checkVoiceNetTimes Failed file:" + this.fileName);
+      s.HR(this.fileName);
       this.retCode = (com.tencent.mm.compatible.util.f.getLine() + 10000);
       AppMethodBeat.o(148418);
       return -1;
@@ -152,147 +152,147 @@ public final class f
     Object localObject1;
     if (localr.status == 8)
     {
-      ad.v("MicroMsg.NetSceneUploadVoice", this.fileName + " cancelFlag = 1");
+      ae.v("MicroMsg.NetSceneUploadVoice", this.fileName + " cancelFlag = 1");
       this.endFlag = 0;
-      s.HW(localr.fileName);
+      s.Iy(localr.fileName);
       j = 0;
       k = 1;
-      int m = localr.ixm;
-      ad.i("MicroMsg.NetSceneUploadVoice", "info.getVoiceLength: %s", new Object[] { Integer.valueOf(m) });
+      int m = localr.iAf;
+      ae.i("MicroMsg.NetSceneUploadVoice", "info.getVoiceLength: %s", new Object[] { Integer.valueOf(m) });
       i = m;
       if (m == 0)
       {
-        m = s.Ib(this.fileName);
-        ad.i("MicroMsg.NetSceneUploadVoice", "getCurrentRecordFileLen: %s", new Object[] { Integer.valueOf(m) });
+        m = s.ID(this.fileName);
+        ae.i("MicroMsg.NetSceneUploadVoice", "getCurrentRecordFileLen: %s", new Object[] { Integer.valueOf(m) });
         i = m;
         if (m < 0)
         {
-          i = s.qq(this.iuI);
-          ad.i("MicroMsg.NetSceneUploadVoice", "fuck getMinTimeByOffset: %s", new Object[] { Integer.valueOf(i) });
+          i = s.qt(this.ixC);
+          ae.i("MicroMsg.NetSceneUploadVoice", "fuck getMinTimeByOffset: %s", new Object[] { Integer.valueOf(i) });
         }
       }
       localObject1 = new b.a();
-      ((b.a)localObject1).hNM = new dtm();
-      ((b.a)localObject1).hNN = new dtn();
+      ((b.a)localObject1).hQF = new duj();
+      ((b.a)localObject1).hQG = new duk();
       ((b.a)localObject1).uri = "/cgi-bin/micromsg-bin/uploadvoice";
       ((b.a)localObject1).funcId = 127;
-      ((b.a)localObject1).hNO = 19;
+      ((b.a)localObject1).hQH = 19;
       ((b.a)localObject1).respCmdId = 1000000019;
-      this.rr = ((b.a)localObject1).aDC();
-      localObject1 = (dtm)this.rr.hNK.hNQ;
-      ((dtm)localObject1).ukj = u.aAm();
-      ((dtm)localObject1).uki = localr.dDy;
-      ((dtm)localObject1).FMu = localr.isJ;
-      ((dtm)localObject1).Fwt = localr.clientId;
-      ((dtm)localObject1).FKC = i;
-      ((dtm)localObject1).ihf = this.endFlag;
-      ((dtm)localObject1).xbt = localr.dAY;
-      ((dtm)localObject1).Gds = k;
-      ((dtm)localObject1).HGm = this.iwi;
-      ((dtm)localObject1).Fvn = bl.aCi();
-      if (((com.tencent.mm.plugin.messenger.foundation.a.r)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.messenger.foundation.a.r.class)).ifAddTicketByActionFlag(localr.dDy)) {
-        ((dtm)localObject1).FOL = ((l)com.tencent.mm.kernel.g.ab(l.class)).azp().aTu(localr.dDy);
+      this.rr = ((b.a)localObject1).aDS();
+      localObject1 = (duj)this.rr.hQD.hQJ;
+      ((duj)localObject1).uvG = v.aAC();
+      ((duj)localObject1).uvF = localr.dED;
+      ((duj)localObject1).GeT = localr.ivD;
+      ((duj)localObject1).FOR = localr.clientId;
+      ((duj)localObject1).Gdb = i;
+      ((duj)localObject1).ijY = this.endFlag;
+      ((duj)localObject1).xrk = localr.dCd;
+      ((duj)localObject1).GvZ = k;
+      ((duj)localObject1).HZZ = this.izb;
+      ((duj)localObject1).FNL = bn.aCy();
+      if (((com.tencent.mm.plugin.messenger.foundation.a.s)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.messenger.foundation.a.s.class)).ifAddTicketByActionFlag(localr.dED)) {
+        ((duj)localObject1).Ghk = ((l)com.tencent.mm.kernel.g.ab(l.class)).azF().aUV(localr.dED);
       }
-      ((dtm)localObject1).Fvn = a.a.ZG().I(localr.dDy, localr.iuf);
-      ((dtm)localObject1).GSm = j;
+      ((duj)localObject1).FNL = a.a.ZP().J(localr.dED, localr.iwZ);
+      ((duj)localObject1).HlN = j;
       if (k == 1) {
         break label2073;
       }
-      ((dtm)localObject1).xcN = new SKBuiltinBuffer_t().setBuffer(paramf.buf, 0, paramf.dhO);
+      ((duj)localObject1).xsE = new SKBuiltinBuffer_t().setBuffer(paramf.buf, 0, paramf.diR);
     }
-    for (((dtm)localObject1).FIg = paramf.dhO;; ((dtm)localObject1).FIg = 1)
+    for (((duj)localObject1).GaC = paramf.diR;; ((duj)localObject1).GaC = 1)
     {
-      ad.d("MicroMsg.NetSceneUploadVoice", "cancelFlag:" + k + " endFlag:" + this.endFlag + " svrId:" + localr.dAY);
-      ad.v("MicroMsg.NetSceneUploadVoice", "doscene msgId:" + ((dtm)localObject1).xbt + " user:" + ((dtm)localObject1).uki + " offset:" + ((dtm)localObject1).FMu + " dataLen:" + ((dtm)localObject1).xcN.getILen() + " endFlag:" + ((dtm)localObject1).ihf);
-      ad.i("MicroMsg.NetSceneUploadVoice", "doScene MsgId:" + localr.dAY + " voiceFormat:" + j + " file:" + this.fileName + " readBytes:" + paramf.dhO + " neTTTOff:" + localr.isJ + " neWWWOff:" + this.iuI + " endFlag:" + this.endFlag + " cancelFlag:" + k + " status:" + localr.status + " voiceLen:" + i);
-      this.iwj = System.currentTimeMillis();
+      ae.d("MicroMsg.NetSceneUploadVoice", "cancelFlag:" + k + " endFlag:" + this.endFlag + " svrId:" + localr.dCd);
+      ae.v("MicroMsg.NetSceneUploadVoice", "doscene msgId:" + ((duj)localObject1).xrk + " user:" + ((duj)localObject1).uvF + " offset:" + ((duj)localObject1).GeT + " dataLen:" + ((duj)localObject1).xsE.getILen() + " endFlag:" + ((duj)localObject1).ijY);
+      ae.i("MicroMsg.NetSceneUploadVoice", "doScene MsgId:" + localr.dCd + " voiceFormat:" + j + " file:" + this.fileName + " readBytes:" + paramf.diR + " neTTTOff:" + localr.ivD + " neWWWOff:" + this.ixC + " endFlag:" + this.endFlag + " cancelFlag:" + k + " status:" + localr.status + " voiceLen:" + i);
+      this.izc = System.currentTimeMillis();
       i = dispatch(parame, this.rr, this);
       AppMethodBeat.o(148418);
       return i;
       if (localr.status == 3) {
-        this.iwe = true;
+        this.iyX = true;
       }
-      Object localObject2 = s.HR(this.fileName);
+      Object localObject2 = s.It(this.fileName);
       if (localObject2 == null)
       {
         this.retCode = (com.tencent.mm.compatible.util.f.getLine() + 10000);
-        ad.e("MicroMsg.NetSceneUploadVoice", "doScene: fileOp is null, fileName:%s", new Object[] { this.fileName });
+        ae.e("MicroMsg.NetSceneUploadVoice", "doScene: fileOp is null, fileName:%s", new Object[] { this.fileName });
         AppMethodBeat.o(148418);
         return -1;
       }
       j = ((b)localObject2).getFormat();
-      ad.d("MicroMsg.NetSceneUploadVoice", "format ".concat(String.valueOf(j)));
-      paramf = ((b)localObject2).dr(localr.isJ, 6000);
-      ad.d("MicroMsg.NetSceneUploadVoice", "doScene READ file[" + this.fileName + "] read ret:" + paramf.ret + " readlen:" + paramf.dhO + " newOff:" + paramf.iuI + " netOff:" + localr.isJ + " line:" + com.tencent.mm.compatible.util.f.getLine());
+      ae.d("MicroMsg.NetSceneUploadVoice", "format ".concat(String.valueOf(j)));
+      paramf = ((b)localObject2).dr(localr.ivD, 6000);
+      ae.d("MicroMsg.NetSceneUploadVoice", "doScene READ file[" + this.fileName + "] read ret:" + paramf.ret + " readlen:" + paramf.diR + " newOff:" + paramf.ixC + " netOff:" + localr.ivD + " line:" + com.tencent.mm.compatible.util.f.getLine());
       if (paramf.ret < 0)
       {
-        com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(111L, 241L, 1L, false);
-        ad.e("MicroMsg.NetSceneUploadVoice", "Err doScene READ file[" + this.fileName + "] read ret:" + paramf.ret + " readlen:" + paramf.dhO + " newOff:" + paramf.iuI + " netOff:" + localr.isJ);
-        s.Hp(this.fileName);
+        com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(111L, 241L, 1L, false);
+        ae.e("MicroMsg.NetSceneUploadVoice", "Err doScene READ file[" + this.fileName + "] read ret:" + paramf.ret + " readlen:" + paramf.diR + " newOff:" + paramf.ixC + " netOff:" + localr.ivD);
+        s.HR(this.fileName);
         this.retCode = (com.tencent.mm.compatible.util.f.getLine() + 10000);
         AppMethodBeat.o(148418);
         return -1;
       }
-      this.iuI = paramf.iuI;
-      if ((this.iuI < localr.isJ) || (this.iuI >= 469000))
+      this.ixC = paramf.ixC;
+      if ((this.ixC < localr.ivD) || (this.ixC >= 469000))
       {
-        com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(111L, 240L, 1L, false);
-        ad.e("MicroMsg.NetSceneUploadVoice", "Err doScene READ file[" + this.fileName + "] newOff:" + this.iuI + " OldtOff:" + localr.isJ);
-        s.Hp(this.fileName);
+        com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(111L, 240L, 1L, false);
+        ae.e("MicroMsg.NetSceneUploadVoice", "Err doScene READ file[" + this.fileName + "] newOff:" + this.ixC + " OldtOff:" + localr.ivD);
+        s.HR(this.fileName);
         this.retCode = (com.tencent.mm.compatible.util.f.getLine() + 10000);
         AppMethodBeat.o(148418);
         return -1;
       }
       this.endFlag = 0;
-      if ((paramf.dhO == 0) && (!this.iwe))
+      if ((paramf.diR == 0) && (!this.iyX))
       {
-        ad.e("MicroMsg.NetSceneUploadVoice", "doScene:  file:" + this.fileName + " No Data temperature , will be retry");
+        ae.e("MicroMsg.NetSceneUploadVoice", "doScene:  file:" + this.fileName + " No Data temperature , will be retry");
         this.retCode = (com.tencent.mm.compatible.util.f.getLine() + 10000);
         AppMethodBeat.o(148418);
         return -1;
       }
-      if (this.iwe)
+      if (this.iyX)
       {
-        if (localr.hMP <= 0)
+        if (localr.hPI <= 0)
         {
-          ad.e("MicroMsg.NetSceneUploadVoice", "Err doScene READ file[" + this.fileName + "] read totalLen:" + localr.hMP);
-          s.Hp(this.fileName);
+          ae.e("MicroMsg.NetSceneUploadVoice", "Err doScene READ file[" + this.fileName + "] read totalLen:" + localr.hPI);
+          s.HR(this.fileName);
           this.retCode = (com.tencent.mm.compatible.util.f.getLine() + 10000);
           AppMethodBeat.o(148418);
           return -1;
         }
-        if ((localr.hMP > this.iuI) && (paramf.dhO < 6000))
+        if ((localr.hPI > this.ixC) && (paramf.diR < 6000))
         {
-          ad.e("MicroMsg.NetSceneUploadVoice", "Err doScene READ file[" + this.fileName + "] readlen:" + paramf.dhO + " newOff:" + paramf.iuI + " netOff:" + localr.isJ + " totalLen:" + localr.hMP);
-          s.Hp(this.fileName);
+          ae.e("MicroMsg.NetSceneUploadVoice", "Err doScene READ file[" + this.fileName + "] readlen:" + paramf.diR + " newOff:" + paramf.ixC + " netOff:" + localr.ivD + " totalLen:" + localr.hPI);
+          s.HR(this.fileName);
           this.retCode = (com.tencent.mm.compatible.util.f.getLine() + 10000);
           AppMethodBeat.o(148418);
           return -1;
         }
-        if (localr.hMP <= this.iuI)
+        if (localr.hPI <= this.ixC)
         {
-          localObject1 = (Integer)s.ixr.get(s.getFullPath(this.fileName));
+          localObject1 = (Integer)s.iAk.get(s.getFullPath(this.fileName));
           if ((localObject1 != null) && (((Integer)localObject1).intValue() != 0))
           {
-            i = ((Integer)s.ixs.get(s.getFullPath(this.fileName))).intValue();
+            i = ((Integer)s.iAl.get(s.getFullPath(this.fileName))).intValue();
             localObject2 = ((b)localObject2).dr(0, i);
-            k = s.c(((Integer)localObject1).intValue() & 0xFF, ((g)localObject2).buf, ((g)localObject2).dhO);
+            k = s.c(((Integer)localObject1).intValue() & 0xFF, ((g)localObject2).buf, ((g)localObject2).diR);
             if (((Integer)localObject1).intValue() != k)
             {
-              ad.e("MicroMsg.NetSceneUploadVoice", "Checksum error file. realChecksum:%d, tempChecksum:%d, total:%d, rr.length:%d", new Object[] { Integer.valueOf(k), localObject1, Integer.valueOf(i), Integer.valueOf(((g)localObject2).dhO) });
-              ad.e("MicroMsg.NetSceneUploadVoice", "Checksum error file[" + this.fileName + "] readlen:" + paramf.dhO + " newOff:" + paramf.iuI + " netOff:" + localr.isJ + " totalLen:" + localr.hMP);
-              com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(111L, 173L, 1L, false);
-              s.ixr.put(s.getFullPath(this.fileName), Integer.valueOf(k));
-              localObject1 = (Integer)s.ixt.get(s.getFullPath(this.fileName));
+              ae.e("MicroMsg.NetSceneUploadVoice", "Checksum error file. realChecksum:%d, tempChecksum:%d, total:%d, rr.length:%d", new Object[] { Integer.valueOf(k), localObject1, Integer.valueOf(i), Integer.valueOf(((g)localObject2).diR) });
+              ae.e("MicroMsg.NetSceneUploadVoice", "Checksum error file[" + this.fileName + "] readlen:" + paramf.diR + " newOff:" + paramf.ixC + " netOff:" + localr.ivD + " totalLen:" + localr.hPI);
+              com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(111L, 173L, 1L, false);
+              s.iAk.put(s.getFullPath(this.fileName), Integer.valueOf(k));
+              localObject1 = (Integer)s.iAm.get(s.getFullPath(this.fileName));
               if ((localObject1 != null) && (((Integer)localObject1).intValue() != 0))
               {
-                i = s.b(0, ((g)localObject2).buf, ((g)localObject2).dhO);
+                i = s.b(0, ((g)localObject2).buf, ((g)localObject2).diR);
                 if (((Integer)localObject1).intValue() != i)
                 {
-                  ad.e("MicroMsg.NetSceneUploadVoice", "Checksum error file. cacheSimpleChecksum:%d, realSimpleChecksum:%d", new Object[] { localObject1, Integer.valueOf(i) });
-                  s.Hp(this.fileName);
+                  ae.e("MicroMsg.NetSceneUploadVoice", "Checksum error file. cacheSimpleChecksum:%d, realSimpleChecksum:%d", new Object[] { localObject1, Integer.valueOf(i) });
+                  s.HR(this.fileName);
                   this.retCode = (com.tencent.mm.compatible.util.f.getLine() + 10000);
-                  com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(111L, 174L, 1L, false);
+                  com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(111L, 174L, 1L, false);
                   AppMethodBeat.o(148418);
                   return -1;
                 }
@@ -305,7 +305,7 @@ public final class f
       k = 0;
       break;
       label2073:
-      ((dtm)localObject1).xcN = new SKBuiltinBuffer_t().setBuffer(com.tencent.mm.bx.b.cj(new byte[1]));
+      ((duj)localObject1).xsE = new SKBuiltinBuffer_t().setBuffer(com.tencent.mm.bw.b.cm(new byte[1]));
     }
   }
   
@@ -317,76 +317,76 @@ public final class f
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(148422);
-    ad.i("MicroMsg.NetSceneUploadVoice", "onGYNetEnd file:" + this.fileName + " errtype:" + paramInt2 + " errCode:" + paramInt3);
-    paramArrayOfByte = (dtm)((com.tencent.mm.al.b)paramq).hNK.hNQ;
-    paramq = (dtn)((com.tencent.mm.al.b)paramq).hNL.hNQ;
+    ae.i("MicroMsg.NetSceneUploadVoice", "onGYNetEnd file:" + this.fileName + " errtype:" + paramInt2 + " errCode:" + paramInt3);
+    paramArrayOfByte = (duj)((com.tencent.mm.ak.b)paramq).hQD.hQJ;
+    paramq = (duk)((com.tencent.mm.ak.b)paramq).hQE.hQJ;
     if ((paramq != null) && ((paramInt2 == 4) || ((paramInt2 == 0) && (paramInt3 == 0)))) {
-      ((com.tencent.mm.plugin.messenger.foundation.a.r)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.messenger.foundation.a.r.class)).setEnSendMsgActionFlag(paramq.FOM);
+      ((com.tencent.mm.plugin.messenger.foundation.a.s)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.messenger.foundation.a.s.class)).setEnSendMsgActionFlag(paramq.Ghl);
     }
     if ((paramInt2 == 4) && (paramInt3 == -22))
     {
-      s.Hq(this.fileName);
+      s.HS(this.fileName);
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
       AppMethodBeat.o(148422);
       return;
     }
     if ((paramInt2 == 4) && (paramInt3 != 0))
     {
-      s.Hp(this.fileName);
-      com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(111L, 237L, 1L, false);
+      s.HR(this.fileName);
+      com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(111L, 237L, 1L, false);
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
       AppMethodBeat.o(148422);
       return;
     }
     if ((paramInt2 != 0) || (paramInt3 != 0))
     {
-      com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(111L, 236L, 1L, false);
-      ad.e("MicroMsg.NetSceneUploadVoice", "onGYNetEnd file:" + this.fileName + " errType:" + paramInt2 + " errCode:" + paramInt3);
+      com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(111L, 236L, 1L, false);
+      ae.e("MicroMsg.NetSceneUploadVoice", "onGYNetEnd file:" + this.fileName + " errType:" + paramInt2 + " errCode:" + paramInt3);
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
       AppMethodBeat.o(148422);
       return;
     }
-    ad.d("MicroMsg.NetSceneUploadVoice", "onGYNetEnd msgId:" + paramq.xbt + " toUser:" + paramArrayOfByte.uki);
-    if ((paramq.xbt <= 0L) && (!am.zs(paramArrayOfByte.uki)))
+    ae.d("MicroMsg.NetSceneUploadVoice", "onGYNetEnd msgId:" + paramq.xrk + " toUser:" + paramArrayOfByte.uvF);
+    if ((paramq.xrk <= 0L) && (!an.Ac(paramArrayOfByte.uvF)))
     {
-      com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(111L, 235L, 1L, false);
-      ad.e("MicroMsg.NetSceneUploadVoice", "onGYNetEnd file:" + this.fileName + " getMsgId:" + paramq.xbt + " netoff:" + paramq.FMu);
-      s.Hp(this.fileName);
+      com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(111L, 235L, 1L, false);
+      ae.e("MicroMsg.NetSceneUploadVoice", "onGYNetEnd file:" + this.fileName + " getMsgId:" + paramq.xrk + " netoff:" + paramq.GeT);
+      s.HR(this.fileName);
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
       AppMethodBeat.o(148422);
       return;
     }
-    ad.d("MicroMsg.NetSceneUploadVoice", "dkmsgid  set svrmsgid %d -> %d", new Object[] { Long.valueOf(paramq.xbt), Integer.valueOf(ac.iOO) });
-    if ((10007 == ac.iON) && (ac.iOO != 0))
+    ae.d("MicroMsg.NetSceneUploadVoice", "dkmsgid  set svrmsgid %d -> %d", new Object[] { Long.valueOf(paramq.xrk), Integer.valueOf(ac.iRI) });
+    if ((10007 == ac.iRH) && (ac.iRI != 0))
     {
-      paramq.xbt = ac.iOO;
-      ac.iOO = 0;
+      paramq.xrk = ac.iRI;
+      ac.iRI = 0;
     }
-    paramInt1 = s.a(this.fileName, this.iuI, paramq.xbt, paramq.Fwt, this.endFlag, this.iwi);
-    ad.d("MicroMsg.NetSceneUploadVoice", "dkmsgid onGYNetEnd updateAfterSend:" + paramInt1 + " file:" + this.fileName + " MsgSvrId:" + paramq.xbt + " clientId:" + paramq.Fwt + " neWWOff:" + this.iuI + " neTTTT:" + paramq.FIg + " forwardflag:" + this.iwi);
+    paramInt1 = s.a(this.fileName, this.ixC, paramq.xrk, paramq.FOR, this.endFlag, this.izb);
+    ae.d("MicroMsg.NetSceneUploadVoice", "dkmsgid onGYNetEnd updateAfterSend:" + paramInt1 + " file:" + this.fileName + " MsgSvrId:" + paramq.xrk + " clientId:" + paramq.FOR + " neWWOff:" + this.ixC + " neTTTT:" + paramq.GaC + " forwardflag:" + this.izb);
     if (paramInt1 < 0)
     {
-      s.Hp(this.fileName);
-      ad.e("MicroMsg.NetSceneUploadVoice", "onGYNetEnd file:" + this.fileName + "UpdateAfterSend Ret:" + paramInt1);
+      s.HR(this.fileName);
+      ae.e("MicroMsg.NetSceneUploadVoice", "onGYNetEnd file:" + this.fileName + "UpdateAfterSend Ret:" + paramInt1);
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
       AppMethodBeat.o(148422);
       return;
     }
     if (paramInt1 == 1)
     {
-      ad.d("MicroMsg.NetSceneUploadVoice", "onGYNetEnd finish file:" + this.fileName);
-      paramq = s.Ia(this.fileName);
-      paramq = ((l)com.tencent.mm.kernel.g.ab(l.class)).dlK().xY(paramq.iuf);
-      com.tencent.mm.modelstat.b.inZ.q(paramq);
+      ae.d("MicroMsg.NetSceneUploadVoice", "onGYNetEnd finish file:" + this.fileName);
+      paramq = s.IC(this.fileName);
+      paramq = ((l)com.tencent.mm.kernel.g.ab(l.class)).doJ().ys(paramq.iwZ);
+      com.tencent.mm.modelstat.b.iqT.q(paramq);
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
       AppMethodBeat.o(148422);
       return;
     }
-    if (this.iwe) {}
+    if (this.iyX) {}
     for (long l = 0L;; l = 500L)
     {
-      ad.d("MicroMsg.NetSceneUploadVoice", "onGYNetEnd file:" + this.fileName + " delay:" + l);
-      this.hMj.az(l, l);
+      ae.d("MicroMsg.NetSceneUploadVoice", "onGYNetEnd file:" + this.fileName + " delay:" + l);
+      this.hPc.ay(l, l);
       AppMethodBeat.o(148422);
       return;
     }
@@ -402,7 +402,7 @@ public final class f
     AppMethodBeat.i(148420);
     boolean bool = super.securityLimitCountReach();
     if (bool) {
-      com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(111L, 239L, 1L, false);
+      com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(111L, 239L, 1L, false);
     }
     AppMethodBeat.o(148420);
     return bool;
@@ -411,15 +411,15 @@ public final class f
   public final n.b securityVerificationChecked(q paramq)
   {
     AppMethodBeat.i(148419);
-    paramq = (dtm)((com.tencent.mm.al.b)paramq).hNK.hNQ;
-    ad.v("MicroMsg.NetSceneUploadVoice", "check msgId:" + paramq.xbt + " offset:" + paramq.FMu + " dataLen:" + paramq.xcN.getILen() + " endFlag:" + paramq.ihf);
-    if (((paramq.xbt == 0L) && (paramq.FMu != 0)) || (((paramq.xcN == null) || (paramq.xcN.getILen() == 0)) && (paramq.ihf != 1) && (paramq.Gds != 1)))
+    paramq = (duj)((com.tencent.mm.ak.b)paramq).hQD.hQJ;
+    ae.v("MicroMsg.NetSceneUploadVoice", "check msgId:" + paramq.xrk + " offset:" + paramq.GeT + " dataLen:" + paramq.xsE.getILen() + " endFlag:" + paramq.ijY);
+    if (((paramq.xrk == 0L) && (paramq.GeT != 0)) || (((paramq.xsE == null) || (paramq.xsE.getILen() == 0)) && (paramq.ijY != 1) && (paramq.GvZ != 1)))
     {
-      paramq = n.b.hOq;
+      paramq = n.b.hRj;
       AppMethodBeat.o(148419);
       return paramq;
     }
-    paramq = n.b.hOp;
+    paramq = n.b.hRi;
     AppMethodBeat.o(148419);
     return paramq;
   }
@@ -427,8 +427,8 @@ public final class f
   public final void setSecurityCheckError(n.a parama)
   {
     AppMethodBeat.i(148421);
-    com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(111L, 238L, 1L, false);
-    s.Hp(this.fileName);
+    com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(111L, 238L, 1L, false);
+    s.HR(this.fileName);
     AppMethodBeat.o(148421);
   }
 }

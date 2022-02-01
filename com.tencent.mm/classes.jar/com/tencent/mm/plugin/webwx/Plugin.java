@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.webwx;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.ax;
+import com.tencent.mm.model.az;
 import com.tencent.mm.plugin.webwx.a.g;
 import com.tencent.mm.pluginsdk.b.c;
 import com.tencent.mm.pluginsdk.b.d;
@@ -18,7 +18,7 @@ public final class Plugin
     return locala;
   }
   
-  public final ax createSubCore()
+  public final az createSubCore()
   {
     AppMethodBeat.i(30154);
     g localg = new g();

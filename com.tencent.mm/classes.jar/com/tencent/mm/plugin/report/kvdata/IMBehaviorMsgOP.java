@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.report.kvdata;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class IMBehaviorMsgOP
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
   public int appMsgInnerType;
   public int count;
@@ -35,9 +35,9 @@ public class IMBehaviorMsgOP
     if (paramInt == 2)
     {
       paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gxE();
+          paramVarArgs.gCg();
         }
       }
       AppMethodBeat.o(151537);
@@ -53,19 +53,19 @@ public class IMBehaviorMsgOP
         AppMethodBeat.o(151537);
         return -1;
       case 1: 
-        localIMBehaviorMsgOP.msgType = locala.NPN.zc();
+        localIMBehaviorMsgOP.msgType = locala.OmT.zc();
         AppMethodBeat.o(151537);
         return 0;
       case 2: 
-        localIMBehaviorMsgOP.msgOpType = locala.NPN.zc();
+        localIMBehaviorMsgOP.msgOpType = locala.OmT.zc();
         AppMethodBeat.o(151537);
         return 0;
       case 3: 
-        localIMBehaviorMsgOP.appMsgInnerType = locala.NPN.zc();
+        localIMBehaviorMsgOP.appMsgInnerType = locala.OmT.zc();
         AppMethodBeat.o(151537);
         return 0;
       }
-      localIMBehaviorMsgOP.count = locala.NPN.zc();
+      localIMBehaviorMsgOP.count = locala.OmT.zc();
       AppMethodBeat.o(151537);
       return 0;
     }

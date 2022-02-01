@@ -2,21 +2,19 @@ package com.tencent.mm.plugin.appbrand.ipc;
 
 import android.content.Intent;
 import android.content.res.Resources;
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ak;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.MMActivity.a;
 
 public abstract class AppBrandProxyUIProcessTask
   implements MMActivity.a
 {
-  public c kpz;
+  public c ksP;
   
   protected static String getString(int paramInt)
   {
-    return aj.getResources().getString(paramInt);
+    return ak.getResources().getString(paramInt);
   }
   
   protected abstract void a(AppBrandProxyUIProcessTask.ProcessRequest paramProcessRequest);
@@ -28,73 +26,51 @@ public abstract class AppBrandProxyUIProcessTask
       public final void run()
       {
         AppMethodBeat.i(45412);
-        if (AppBrandProxyUIProcessTask.this.kpz == null)
+        if (AppBrandProxyUIProcessTask.this.ksP == null)
         {
           AppMethodBeat.o(45412);
           return;
         }
-        AppBrandProxyUIProcessTask.this.kpz.b(paramProcessResult);
+        AppBrandProxyUIProcessTask.this.ksP.b(paramProcessResult);
         AppMethodBeat.o(45412);
       }
     };
-    if (this.kpz == null) {
+    if (this.ksP == null) {
       return;
     }
-    this.kpz.runOnUiThread(paramProcessResult);
+    this.ksP.runOnUiThread(paramProcessResult);
   }
   
-  public final MMActivity bhJ()
+  public final MMActivity bis()
   {
-    return this.kpz.bhJ();
+    return this.ksP.bis();
   }
   
-  public final boolean bhK()
+  public final boolean bit()
   {
-    if (this.kpz == null) {
+    if (this.ksP == null) {
       return true;
     }
-    return this.kpz.bhK();
+    return this.ksP.bit();
   }
   
-  public final AppBrandTaskProxyUI bhP()
+  public final AppBrandTaskProxyUI biy()
   {
-    if ((this.kpz instanceof AppBrandTaskProxyUI)) {
-      return (AppBrandTaskProxyUI)this.kpz;
+    if ((this.ksP instanceof AppBrandTaskProxyUI)) {
+      return (AppBrandTaskProxyUI)this.ksP;
     }
     return null;
   }
   
-  protected void bhQ() {}
+  protected void biz() {}
   
   public void c(int paramInt1, int paramInt2, Intent paramIntent) {}
   
   protected void t(int[] paramArrayOfInt) {}
-  
-  public static class DefaultProcessResult
-    extends AppBrandProxyUIProcessTask.ProcessResult
-  {
-    public static final Parcelable.Creator<DefaultProcessResult> CREATOR;
-    
-    static
-    {
-      AppMethodBeat.i(188242);
-      CREATOR = new Parcelable.Creator() {};
-      AppMethodBeat.o(188242);
-    }
-    
-    public int describeContents()
-    {
-      return 0;
-    }
-    
-    protected final void j(Parcel paramParcel) {}
-    
-    public void writeToParcel(Parcel paramParcel, int paramInt) {}
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask
  * JD-Core Version:    0.7.0.1
  */

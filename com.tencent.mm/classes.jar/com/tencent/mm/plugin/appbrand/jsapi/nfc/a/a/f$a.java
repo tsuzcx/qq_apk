@@ -5,18 +5,18 @@ import d.g.a.a;
 import d.g.b.q;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
 final class f$a
   extends q
   implements a<byte[]>
 {
-  public static final a kZX;
+  public static final a ldG;
   
   static
   {
-    AppMethodBeat.i(199710);
-    kZX = new a();
-    AppMethodBeat.o(199710);
+    AppMethodBeat.i(208225);
+    ldG = new a();
+    AppMethodBeat.o(208225);
   }
   
   f$a()

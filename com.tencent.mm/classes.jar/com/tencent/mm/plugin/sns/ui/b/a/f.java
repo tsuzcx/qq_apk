@@ -14,16 +14,16 @@ import com.tencent.mm.plugin.sns.ui.c.a.a;
 import com.tencent.mm.plugin.sns.ui.c.a.c;
 import com.tencent.mm.plugin.sns.ui.widget.SnsAdTimelineVideoView;
 import com.tencent.mm.pluginsdk.ui.tools.VideoSightView;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.ui.MMActivity;
 
 public final class f
   extends b
 {
-  private ValueAnimator AsN;
-  private ValueAnimator AsO;
-  c AsZ;
-  private AnimatorSet yvH;
+  private ValueAnimator AKb;
+  private ValueAnimator AKc;
+  c AKn;
+  private AnimatorSet yLH;
   
   public f(MMActivity paramMMActivity, a parama)
   {
@@ -31,9 +31,9 @@ public final class f
     try
     {
       this.activity = paramMMActivity;
-      this.AsZ = ((c)parama);
-      this.AsN = ValueAnimator.ofFloat(new float[] { 1.0F, 0.0F });
-      this.AsN.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
+      this.AKn = ((c)parama);
+      this.AKb = ValueAnimator.ofFloat(new float[] { 1.0F, 0.0F });
+      this.AKb.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
       {
         public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
         {
@@ -41,60 +41,60 @@ public final class f
           float f = ((Float)paramAnonymousValueAnimator.getAnimatedValue()).floatValue();
           if (f != 1.0F)
           {
-            f.this.AsZ.zYc.setScaleX(f);
-            f.this.AsZ.zYc.setScaleY(f);
-            f.this.AsZ.zYc.setAlpha(f);
+            f.this.AKn.Apn.setScaleX(f);
+            f.this.AKn.Apn.setScaleY(f);
+            f.this.AKn.Apn.setAlpha(f);
           }
           AppMethodBeat.o(99918);
         }
       });
-      this.AsN.setDuration(400L);
-      this.AsN.addListener(new AnimatorListenerAdapter()
+      this.AKb.setDuration(400L);
+      this.AKb.addListener(new AnimatorListenerAdapter()
       {
         public final void onAnimationStart(Animator paramAnonymousAnimator) {}
       });
-      this.AsO = ValueAnimator.ofFloat(new float[] { 1.0F, 0.0F });
-      this.AsO.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
+      this.AKc = ValueAnimator.ofFloat(new float[] { 1.0F, 0.0F });
+      this.AKc.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
       {
         public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
         {
           AppMethodBeat.i(179331);
           float f = ((Float)paramAnonymousValueAnimator.getAnimatedValue()).floatValue();
-          f.this.AsZ.sUS.setAlpha(f);
-          f.this.AsZ.AtN.setAlpha(f);
+          f.this.AKn.tgh.setAlpha(f);
+          f.this.AKn.ALc.setAlpha(f);
           AppMethodBeat.o(179331);
         }
       });
-      this.AsO.setDuration(100L);
-      this.yvH = new AnimatorSet();
-      this.yvH.playTogether(new Animator[] { this.AsN, this.AsO });
-      this.yvH.addListener(new AnimatorListenerAdapter()
+      this.AKc.setDuration(100L);
+      this.yLH = new AnimatorSet();
+      this.yLH.playTogether(new Animator[] { this.AKb, this.AKc });
+      this.yLH.addListener(new AnimatorListenerAdapter()
       {
         public final void onAnimationEnd(Animator paramAnonymousAnimator)
         {
           AppMethodBeat.i(179333);
-          ad.i("MicroMsg.FullCardAdDetailClickAnimation", "onAnimation end");
-          f.this.AsZ.zYc.setScaleX(1.0F);
-          f.this.AsZ.zYc.setScaleY(1.0F);
-          f.this.AsZ.zYc.setAlpha(1.0F);
-          f.this.AsZ.sUS.setAlpha(1.0F);
-          f.this.AsZ.AtN.setAlpha(1.0F);
-          if (f.this.AsL != null) {
-            f.this.AsL.onAnimationEnd();
+          ae.i("MicroMsg.FullCardAdDetailClickAnimation", "onAnimation end");
+          f.this.AKn.Apn.setScaleX(1.0F);
+          f.this.AKn.Apn.setScaleY(1.0F);
+          f.this.AKn.Apn.setAlpha(1.0F);
+          f.this.AKn.tgh.setAlpha(1.0F);
+          f.this.AKn.ALc.setAlpha(1.0F);
+          if (f.this.AJZ != null) {
+            f.this.AJZ.onAnimationEnd();
           }
-          if (f.this.AsZ.Atv.zWG)
+          if (f.this.AKn.AKJ.AnP)
           {
-            if (f.this.AsZ.Atv.zWz.getVisibility() == 0)
+            if (f.this.AKn.AKJ.AnI.getVisibility() == 0)
             {
-              f.this.AsZ.Atv.zWz.aB(0, false);
-              ad.i("MicroMsg.FullCardAdDetailClickAnimation", "seek newVideoView to 0");
+              f.this.AKn.AKJ.AnI.aE(0, false);
+              ae.i("MicroMsg.FullCardAdDetailClickAnimation", "seek newVideoView to 0");
               AppMethodBeat.o(179333);
             }
           }
-          else if (f.this.AsZ.Atv.zWy.getVisibility() == 0)
+          else if (f.this.AKn.AKJ.AnH.getVisibility() == 0)
           {
-            f.this.AsZ.Atv.zWy.ySq.clear();
-            ad.i("MicroMsg.FullCardAdDetailClickAnimation", "seek sightView to 0");
+            f.this.AKn.AKJ.AnH.ziA.clear();
+            ae.i("MicroMsg.FullCardAdDetailClickAnimation", "seek sightView to 0");
           }
           AppMethodBeat.o(179333);
         }
@@ -102,7 +102,7 @@ public final class f
         public final void onAnimationStart(Animator paramAnonymousAnimator)
         {
           AppMethodBeat.i(179332);
-          ad.i("MicroMsg.FullCardAdDetailClickAnimation", "onAnimation start");
+          ae.i("MicroMsg.FullCardAdDetailClickAnimation", "onAnimation start");
           AppMethodBeat.o(179332);
         }
       });
@@ -111,18 +111,18 @@ public final class f
     }
     catch (Throwable paramMMActivity)
     {
-      ad.e("MicroMsg.FullCardAdDetailClickAnimation", "init exp=" + paramMMActivity.toString());
+      ae.e("MicroMsg.FullCardAdDetailClickAnimation", "init exp=" + paramMMActivity.toString());
       AppMethodBeat.o(99922);
     }
   }
   
-  public final void At(long paramLong)
+  public final void AR(long paramLong)
   {
     AppMethodBeat.i(99923);
-    if ((this.yvH != null) && (!this.yvH.isStarted()))
+    if ((this.yLH != null) && (!this.yLH.isStarted()))
     {
-      this.yvH.setStartDelay(paramLong);
-      this.yvH.start();
+      this.yLH.setStartDelay(paramLong);
+      this.yLH.start();
     }
     AppMethodBeat.o(99923);
   }

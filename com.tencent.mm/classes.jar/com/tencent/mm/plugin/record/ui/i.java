@@ -4,19 +4,19 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.widget.BaseAdapter;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bx.b;
-import com.tencent.mm.g.a.wv;
-import com.tencent.mm.g.a.wv.a;
-import com.tencent.mm.g.a.wy;
-import com.tencent.mm.g.a.wy.a;
+import com.tencent.mm.bw.b;
+import com.tencent.mm.g.a.wz;
+import com.tencent.mm.g.a.wz.a;
+import com.tencent.mm.g.a.xc;
+import com.tencent.mm.g.a.xc.a;
 import com.tencent.mm.plugin.record.b.w;
 import com.tencent.mm.plugin.record.b.x;
-import com.tencent.mm.protocal.protobuf.ajn;
+import com.tencent.mm.protocal.protobuf.ajx;
 import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.base.h;
 import java.io.IOException;
 import java.util.Iterator;
@@ -28,30 +28,30 @@ import java.util.regex.Pattern;
 public final class i
 {
   Context context;
-  public BaseAdapter ocf;
-  a xsD;
-  boolean xsE;
-  private c xsF;
-  Pattern xsG;
-  Pattern xsH;
+  public BaseAdapter ohU;
+  a xIA;
+  boolean xIB;
+  private c xIC;
+  Pattern xID;
+  Pattern xIE;
   
   public i(Context paramContext, BaseAdapter paramBaseAdapter, a parama)
   {
     AppMethodBeat.i(27996);
-    this.xsF = new c() {};
-    this.xsG = Pattern.compile("[a-zA-z]");
-    this.xsH = Pattern.compile("[一-龥]");
+    this.xIC = new c() {};
+    this.xID = Pattern.compile("[a-zA-z]");
+    this.xIE = Pattern.compile("[一-龥]");
     this.context = paramContext;
-    this.ocf = paramBaseAdapter;
-    this.xsD = parama;
-    com.tencent.mm.sdk.b.a.IbL.c(this.xsF);
+    this.ohU = paramBaseAdapter;
+    this.xIA = parama;
+    com.tencent.mm.sdk.b.a.IvT.c(this.xIC);
     AppMethodBeat.o(27996);
   }
   
-  public final w NC(int paramInt)
+  public final w Oi(int paramInt)
   {
     AppMethodBeat.i(27998);
-    Object localObject = this.xsD.xry.hDb.iterator();
+    Object localObject = this.xIA.xHv.hFT.iterator();
     while (((Iterator)localObject).hasNext())
     {
       w localw = (w)((Iterator)localObject).next();
@@ -64,64 +64,64 @@ public final class i
     localObject = new w();
     ((w)localObject).id = paramInt;
     ((w)localObject).status = 0;
-    this.xsD.xry.hDb.add(localObject);
+    this.xIA.xHv.hFT.add(localObject);
     AppMethodBeat.o(27998);
     return localObject;
   }
   
-  public final void at(int paramInt, boolean paramBoolean)
+  public final void aw(int paramInt, boolean paramBoolean)
   {
     AppMethodBeat.i(27997);
-    w localw = NC(paramInt);
-    if ((!bt.isNullOrNil(localw.xrv)) && (!paramBoolean))
+    w localw = Oi(paramInt);
+    if ((!bu.isNullOrNil(localw.xHs)) && (!paramBoolean))
     {
       localw.status = 2;
-      this.ocf.notifyDataSetChanged();
+      this.ohU.notifyDataSetChanged();
       AppMethodBeat.o(27997);
       return;
     }
-    if (paramInt >= this.xsD.xrx.size())
+    if (paramInt >= this.xIA.xHu.size())
     {
       AppMethodBeat.o(27997);
       return;
     }
-    wv localwv = new wv();
-    localwv.dLi.dLk = false;
-    localwv.dLi.id = String.valueOf(paramInt);
-    localwv.dLi.dLj = ((ajn)this.xsD.xrx.get(paramInt)).desc;
-    wv.a locala = localwv.dLi;
-    if (localw.xrw != null) {}
-    for (byte[] arrayOfByte = localw.xrw.zr;; arrayOfByte = null)
+    wz localwz = new wz();
+    localwz.dMx.dMz = false;
+    localwz.dMx.id = String.valueOf(paramInt);
+    localwz.dMx.dMy = ((ajx)this.xIA.xHu.get(paramInt)).desc;
+    wz.a locala = localwz.dMx;
+    if (localw.xHt != null) {}
+    for (byte[] arrayOfByte = localw.xHt.zr;; arrayOfByte = null)
     {
-      locala.dLl = arrayOfByte;
-      localwv.dLi.type = 4;
-      com.tencent.mm.sdk.b.a.IbL.l(localwv);
+      locala.dMA = arrayOfByte;
+      localwz.dMx.type = 4;
+      com.tencent.mm.sdk.b.a.IvT.l(localwz);
       localw.status = 1;
-      this.ocf.notifyDataSetChanged();
-      this.xsE = true;
+      this.ohU.notifyDataSetChanged();
+      this.xIB = true;
       AppMethodBeat.o(27997);
       return;
     }
   }
   
-  public final byte[] dEz()
+  public final byte[] dHQ()
   {
     AppMethodBeat.i(27999);
-    com.tencent.mm.sdk.b.a.IbL.d(this.xsF);
+    com.tencent.mm.sdk.b.a.IvT.d(this.xIC);
     Object localObject = new x();
-    if ((this.xsD != null) && (this.xsD.xry != null) && (this.xsD.xry.hDb != null))
+    if ((this.xIA != null) && (this.xIA.xHv != null) && (this.xIA.xHv.hFT != null))
     {
-      Iterator localIterator = this.xsD.xry.hDb.iterator();
+      Iterator localIterator = this.xIA.xHv.hFT.iterator();
       while (localIterator.hasNext())
       {
         w localw = (w)localIterator.next();
-        if (!bt.isNullOrNil(localw.xrv)) {
-          ((x)localObject).hDb.add(localw);
+        if (!bu.isNullOrNil(localw.xHs)) {
+          ((x)localObject).hFT.add(localw);
         }
       }
     }
-    this.ocf = null;
-    this.xsD = null;
+    this.ohU = null;
+    this.xIA = null;
     this.context = null;
     try
     {

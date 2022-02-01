@@ -8,11 +8,11 @@ import com.tencent.mm.compatible.deviceinfo.q;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.expt.b.b.a;
 import com.tencent.mm.plugin.report.e;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.aq;
 import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
@@ -20,76 +20,76 @@ import java.util.HashMap;
 public class MainProcessChecker
   extends AbstractProcessChecker
 {
-  private static final long[] wHT = { 0L, 86400000L };
-  private static String wIe = "";
-  private boolean cMW;
+  private static final long[] wXE = { 0L, 86400000L };
+  private static String wXP = "";
+  private boolean cNF;
   private boolean isHardMode;
-  private long wHK;
-  private long wHL;
-  private long wHM;
-  private long wHN;
-  private int wHO;
-  private float wHP;
-  private int wHQ;
-  private float wHR;
-  private boolean wHS;
-  private long wHU;
-  private long wHV;
-  private long wHW;
-  private long wHX;
-  private long wHY;
-  private int wHZ;
-  private long wIa;
-  private StringBuilder wIb;
-  private boolean wIc;
-  private long wId;
+  private float wXA;
+  private int wXB;
+  private float wXC;
+  private boolean wXD;
+  private long wXF;
+  private long wXG;
+  private long wXH;
+  private long wXI;
+  private long wXJ;
+  private int wXK;
+  private long wXL;
+  private StringBuilder wXM;
+  private boolean wXN;
+  private long wXO;
+  private long wXv;
+  private long wXw;
+  private long wXx;
+  private long wXy;
+  private int wXz;
   
   public MainProcessChecker()
   {
     AppMethodBeat.i(124985);
-    this.wHK = 1048576L;
-    this.wHL = 6000L;
-    this.wHM = 734003200L;
-    this.wHN = this.wHM;
-    this.wHO = 92;
-    this.wHP = (this.wHO * 0.01F);
-    this.wHQ = 85;
-    this.wHR = (this.wHQ * 0.01F);
-    this.cMW = false;
+    this.wXv = 1048576L;
+    this.wXw = 6000L;
+    this.wXx = 734003200L;
+    this.wXy = this.wXx;
+    this.wXz = 92;
+    this.wXA = (this.wXz * 0.01F);
+    this.wXB = 85;
+    this.wXC = (this.wXB * 0.01F);
+    this.cNF = false;
     this.isHardMode = true;
-    this.wHS = false;
-    this.wHZ = 1;
-    this.wIb = new StringBuilder();
-    this.wIc = false;
-    this.wId = 0L;
+    this.wXD = false;
+    this.wXK = 1;
+    this.wXM = new StringBuilder();
+    this.wXN = false;
+    this.wXO = 0L;
     AppMethodBeat.o(124985);
   }
   
-  public static void aus(String paramString)
+  public static void avH(String paramString)
   {
-    wIe = paramString;
+    wXP = paramString;
   }
   
-  private void dyP()
+  private void dCg()
   {
     AppMethodBeat.i(124993);
-    this.wHU = bs.CZ(0L);
-    this.wHV = bs.Da(0L);
-    this.wHW = bs.CY(0L);
-    this.wHX = bs.flI();
-    this.wHY = dyN();
+    this.wXF = bt.Dx(0L);
+    this.wXG = bt.Dy(0L);
+    this.wXH = bt.Dw(0L);
+    this.wXI = bt.fpD();
+    this.wXJ = dCe();
     AppMethodBeat.o(124993);
   }
   
-  private static boolean gY(int paramInt1, int paramInt2)
+  private static boolean gZ(int paramInt1, int paramInt2)
   {
     return (paramInt1 & paramInt2) > 0;
   }
   
-  private void gi(boolean paramBoolean)
+  private void gg(boolean paramBoolean)
   {
     AppMethodBeat.i(124992);
-    if ((!aj.cnC()) || (!this.cMW))
+    if ((!ak.cpe()) || (!this.cNF))
     {
       AppMethodBeat.o(124992);
       return;
@@ -108,7 +108,7 @@ public class MainProcessChecker
       localIDKey.SetKey(2);
       localIDKey.SetValue(1L);
       localArrayList.add(localIDKey);
-      if (gY(this.wHZ, 64))
+      if (gZ(this.wXK, 64))
       {
         localIDKey = new IDKey();
         localIDKey.SetID(959);
@@ -116,7 +116,7 @@ public class MainProcessChecker
         localIDKey.SetValue(1L);
         localArrayList.add(localIDKey);
       }
-      if (gY(this.wHZ, 256))
+      if (gZ(this.wXK, 256))
       {
         localIDKey = new IDKey();
         localIDKey.SetID(959);
@@ -124,7 +124,7 @@ public class MainProcessChecker
         localIDKey.SetValue(1L);
         localArrayList.add(localIDKey);
       }
-      if (gY(this.wHZ, 128))
+      if (gZ(this.wXK, 128))
       {
         localIDKey = new IDKey();
         localIDKey.SetID(959);
@@ -136,46 +136,46 @@ public class MainProcessChecker
       localIDKey.SetID(959);
       localIDKey.SetValue(1L);
       localArrayList.add(localIDKey);
-      if (!gY(this.wHZ, 4)) {
+      if (!gZ(this.wXK, 4)) {
         break label475;
       }
       localIDKey.SetKey(106);
     }
     for (;;)
     {
-      e.ygI.b(localArrayList, false);
+      e.ywz.b(localArrayList, false);
       AppMethodBeat.o(124992);
       return;
       localIDKey = new IDKey();
       localIDKey.SetID(959);
       localIDKey.SetValue(1L);
       localArrayList.add(localIDKey);
-      if (gY(this.wHZ, 8))
+      if (gZ(this.wXK, 8))
       {
         localIDKey.SetKey(100);
         break;
       }
-      if (gY(this.wHZ, 16))
+      if (gZ(this.wXK, 16))
       {
         localIDKey.SetKey(101);
         break;
       }
-      if (gY(this.wHZ, 32))
+      if (gZ(this.wXK, 32))
       {
         localIDKey.SetKey(102);
         break;
       }
-      if (gY(this.wHZ, 512))
+      if (gZ(this.wXK, 512))
       {
         localIDKey.SetKey(103);
         break;
       }
-      if (gY(this.wHZ, 1024))
+      if (gZ(this.wXK, 1024))
       {
         localIDKey.SetKey(104);
         break;
       }
-      if ((gY(this.wHZ, 64)) || (gY(this.wHZ, 128)) || (gY(this.wHZ, 256)))
+      if ((gZ(this.wXK, 64)) || (gZ(this.wXK, 128)) || (gZ(this.wXK, 256)))
       {
         localIDKey.SetKey(105);
         break;
@@ -187,40 +187,40 @@ public class MainProcessChecker
     }
   }
   
-  public final boolean ac(long paramLong1, long paramLong2)
+  public final boolean ab(long paramLong1, long paramLong2)
   {
     AppMethodBeat.i(124989);
-    this.cMW = true;
-    ad.i(getTag(), "[onCheck] processId:%s loopCheckTime:%sms isForeground:%s", new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2), Boolean.valueOf(this.cBJ) });
+    this.cNF = true;
+    ae.i(getTag(), "[onCheck] processId:%s loopCheckTime:%sms isForeground:%s", new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2), Boolean.valueOf(this.cCq) });
     label1077:
     for (;;)
     {
       try
       {
-        if (!this.cMW)
+        if (!this.cNF)
         {
-          this.wHZ |= 0x0;
+          this.wXK |= 0x0;
           return false;
         }
-        if (bt.isNullOrNil(this.wHy.wHB))
+        if (bu.isNullOrNil(this.wXj.wXm))
         {
-          ad.w("MicroMsg.MainProcessChecker", "it's never start activity! just return.");
-          this.wHZ |= 0x2;
+          ae.w("MicroMsg.MainProcessChecker", "it's never start activity! just return.");
+          this.wXK |= 0x2;
           return false;
         }
-        if (this.cBJ)
+        if (this.cCq)
         {
-          ad.w("MicroMsg.MainProcessChecker", "isForeground true! just return.");
-          this.wHZ |= 0x4;
+          ae.w("MicroMsg.MainProcessChecker", "isForeground true! just return.");
+          this.wXK |= 0x4;
           return false;
         }
-        if (SystemClock.uptimeMillis() - this.wId >= paramLong2)
+        if (SystemClock.uptimeMillis() - this.wXO >= paramLong2)
         {
           i = 1;
           if (i == 0)
           {
-            ad.w("MicroMsg.MainProcessChecker", "it's not enough loopCheckTime[%s], just return.", new Object[] { Long.valueOf(paramLong2) });
-            this.wHZ |= 0x4;
+            ae.w("MicroMsg.MainProcessChecker", "it's not enough loopCheckTime[%s], just return.", new Object[] { Long.valueOf(paramLong2) });
+            this.wXK |= 0x4;
             return false;
           }
         }
@@ -238,13 +238,13 @@ public class MainProcessChecker
         paramLong1 -= localCalendar.getTimeInMillis();
         if (!b.DEBUG)
         {
-          if ((wHT[0] <= paramLong1) && (paramLong1 <= wHT[1]))
+          if ((wXE[0] <= paramLong1) && (paramLong1 <= wXE[1]))
           {
             break label1077;
             if (i == 0)
             {
-              ad.w("MicroMsg.MainProcessChecker", "it's not at workTime[%s-%s], just return.", new Object[] { Long.valueOf(wHT[0]), Long.valueOf(wHT[1]) });
-              this.wHZ |= 0x8;
+              ae.w("MicroMsg.MainProcessChecker", "it's not at workTime[%s-%s], just return.", new Object[] { Long.valueOf(wXE[0]), Long.valueOf(wXE[1]) });
+              this.wXK |= 0x8;
               return false;
             }
           }
@@ -253,14 +253,14 @@ public class MainProcessChecker
             i = 0;
             continue;
           }
-          if (this.wHS) {
-            if ((!this.cBJ) && (wIe.equalsIgnoreCase(this.wHy.wHB)))
+          if (this.wXD) {
+            if ((!this.cCq) && (wXP.equalsIgnoreCase(this.wXj.wXm)))
             {
               i = 1;
               if (i == 0)
               {
-                ad.w("MicroMsg.MainProcessChecker", "it cares if it whether LauncherUI to back but it's not, just return.");
-                this.wHZ |= 0x10;
+                ae.w("MicroMsg.MainProcessChecker", "it cares if it whether LauncherUI to back but it's not, just return.");
+                this.wXK |= 0x10;
                 return false;
               }
             }
@@ -270,22 +270,22 @@ public class MainProcessChecker
               continue;
             }
           }
-          if (dyO())
+          if (dCf())
           {
-            this.wHZ |= 0x20;
+            this.wXK |= 0x20;
             return false;
           }
           if (this.isHardMode)
           {
-            paramLong1 = bs.CZ(this.wHU) + bs.Da(this.wHV) + bs.CY(this.wHW) + bs.Da(this.wHX);
-            ad.i(getTag(), "[isTraffic] diff:%s byte", new Object[] { Long.valueOf(paramLong1) });
-            if ((float)paramLong1 > 1.0F * (float)paramLong2 / 60000.0F * (float)this.wHK)
+            paramLong1 = bt.Dx(this.wXF) + bt.Dy(this.wXG) + bt.Dw(this.wXH) + bt.Dy(this.wXI);
+            ae.i(getTag(), "[isTraffic] diff:%s byte", new Object[] { Long.valueOf(paramLong1) });
+            if ((float)paramLong1 > 1.0F * (float)paramLong2 / 60000.0F * (float)this.wXv)
             {
               i = 1;
               if (i != 0)
               {
-                this.wHZ |= 0x200;
-                ad.i(getTag(), "is over Traffic, just return");
+                this.wXK |= 0x200;
+                ae.i(getTag(), "is over Traffic, just return");
                 return false;
               }
             }
@@ -297,15 +297,15 @@ public class MainProcessChecker
           }
           if (this.isHardMode)
           {
-            paramLong1 = dyN() - this.wHY;
-            ad.i(getTag(), "[isCpuBusy] diff:%s Jiffies", new Object[] { Long.valueOf(paramLong1) });
-            if ((float)paramLong1 >= 1.0F * (float)paramLong2 / 60000.0F * (float)this.wHL)
+            paramLong1 = dCe() - this.wXJ;
+            ae.i(getTag(), "[isCpuBusy] diff:%s Jiffies", new Object[] { Long.valueOf(paramLong1) });
+            if ((float)paramLong1 >= 1.0F * (float)paramLong2 / 60000.0F * (float)this.wXw)
             {
               i = 1;
               if (i != 0)
               {
-                this.wHZ |= 0x400;
-                ad.i(getTag(), "is cpu busy, just return");
+                this.wXK |= 0x400;
+                ae.i(getTag(), "is cpu busy, just return");
                 return false;
               }
             }
@@ -318,37 +318,37 @@ public class MainProcessChecker
           paramLong1 = Runtime.getRuntime().maxMemory();
           paramLong2 = Runtime.getRuntime().totalMemory();
           boolean bool1 = false;
-          ad.i(getTag(), "[isOverMemory] java[%s:%s]", new Object[] { Float.valueOf(1.0F * (float)paramLong2 / (float)paramLong1), Float.valueOf(this.wHR) });
-          if (1.0F * (float)paramLong2 / (float)paramLong1 >= this.wHR)
+          ae.i(getTag(), "[isOverMemory] java[%s:%s]", new Object[] { Float.valueOf(1.0F * (float)paramLong2 / (float)paramLong1), Float.valueOf(this.wXC) });
+          if (1.0F * (float)paramLong2 / (float)paramLong1 >= this.wXC)
           {
-            this.wHZ |= 0x40;
+            this.wXK |= 0x40;
             bool1 = true;
           }
           boolean bool2 = bool1;
-          if (!this.wIc)
+          if (!this.wXN)
           {
-            paramLong1 = Jr();
-            ad.i(getTag(), "[isOverMemory] vm[%s:%s]", new Object[] { Float.valueOf(1.0F * (float)paramLong1 / 4.294967E+009F), Float.valueOf(this.wHP) });
+            paramLong1 = Jz();
+            ae.i(getTag(), "[isOverMemory] vm[%s:%s]", new Object[] { Float.valueOf(1.0F * (float)paramLong1 / 4.294967E+009F), Float.valueOf(this.wXA) });
             bool2 = bool1;
-            if (1.0F * (float)paramLong1 / 4.294967E+009F >= this.wHP)
+            if (1.0F * (float)paramLong1 / 4.294967E+009F >= this.wXA)
             {
-              this.wHZ |= 0x100;
+              this.wXK |= 0x100;
               bool2 = true;
             }
           }
           paramLong1 = Debug.getNativeHeapSize();
-          ad.w(getTag(), "[isOverMemory] native[%s:%s]", new Object[] { Long.valueOf(paramLong1), Long.valueOf(this.wHN) });
-          if (paramLong1 > this.wHN)
+          ae.w(getTag(), "[isOverMemory] native[%s:%s]", new Object[] { Long.valueOf(paramLong1), Long.valueOf(this.wXy) });
+          if (paramLong1 > this.wXy)
           {
             i = 1;
             if (i != 0)
             {
-              this.wHZ |= 0x80;
+              this.wXK |= 0x80;
               bool2 = true;
             }
-            dyP();
-            gi(bool2);
-            this.wHZ = 1;
+            dCg();
+            gg(bool2);
+            this.wXK = 1;
             AppMethodBeat.o(124989);
             return bool2;
           }
@@ -359,9 +359,9 @@ public class MainProcessChecker
       }
       finally
       {
-        dyP();
-        gi(false);
-        this.wHZ = 1;
+        dCg();
+        gg(false);
+        this.wXK = 1;
         AppMethodBeat.o(124989);
       }
     }
@@ -371,57 +371,57 @@ public class MainProcessChecker
   {
     AppMethodBeat.i(124990);
     super.bV(paramBoolean);
-    ad.i("MicroMsg.MainProcessChecker", "[onAppForeground] isForeground:%s", new Object[] { Boolean.valueOf(paramBoolean) });
+    ae.i("MicroMsg.MainProcessChecker", "[onAppForeground] isForeground:%s", new Object[] { Boolean.valueOf(paramBoolean) });
     if (!paramBoolean) {
-      this.wId = SystemClock.uptimeMillis();
+      this.wXO = SystemClock.uptimeMillis();
     }
     AppMethodBeat.o(124990);
   }
   
-  protected final String dyK()
+  protected final String dCb()
   {
     AppMethodBeat.i(124987);
-    Object localObject = new StringBuilder(this.wIb);
-    ((StringBuilder)localObject).append(super.dyK());
+    Object localObject = new StringBuilder(this.wXM);
+    ((StringBuilder)localObject).append(super.dCb());
     HashMap localHashMap = new HashMap();
-    int i = ax(localHashMap);
+    int i = aD(localHashMap);
     if (i >= 300)
     {
       ((StringBuilder)localObject).append("threadCount:").append(i).append("\n");
       ((StringBuilder)localObject).append(localHashMap.toString()).append("\n");
-      e.ygI.idkeyStat(959L, 8L, 1L, true);
+      e.ywz.idkeyStat(959L, 8L, 1L, true);
     }
     localObject = ((StringBuilder)localObject).toString();
     AppMethodBeat.o(124987);
     return localObject;
   }
   
-  protected final long dyL()
+  protected final long dCc()
   {
-    return this.wIa;
+    return this.wXL;
   }
   
-  protected final void gX(int paramInt1, int paramInt2)
+  protected final void gY(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(124991);
-    super.gX(paramInt1, paramInt2);
-    ad.w(getTag(), "[onCallUp] %s -> %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt1) });
-    if (aj.cnC())
+    super.gY(paramInt1, paramInt2);
+    ae.w(getTag(), "[onCallUp] %s -> %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt1) });
+    if (ak.cpe())
     {
-      e.ygI.idkeyStat(959L, 1L, 1L, true);
-      cWY().postDelayed(new Runnable()
+      e.ywz.idkeyStat(959L, 1L, 1L, true);
+      cZF().postDelayed(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(124984);
-          if (MainProcessChecker.this.wHy.wHC)
+          if (MainProcessChecker.this.wXj.wXn)
           {
-            ad.w(MainProcessChecker.this.getTag(), "[onCallUp] My God, you saw me!");
-            e.ygI.idkeyStat(959L, 7L, 1L, true);
+            ae.w(MainProcessChecker.this.getTag(), "[onCallUp] My God, you saw me!");
+            e.ywz.idkeyStat(959L, 7L, 1L, true);
             AppMethodBeat.o(124984);
             return;
           }
-          ad.w(MainProcessChecker.this.getTag(), "[onCallUp] you can't see me, perry!");
+          ae.w(MainProcessChecker.this.getTag(), "[onCallUp] you can't see me, perry!");
           AppMethodBeat.o(124984);
         }
       }, 30000L);
@@ -436,23 +436,23 @@ public class MainProcessChecker
   
   protected final boolean isEnable()
   {
-    return this.cMW;
+    return this.cNF;
   }
   
   protected final void onScreenOff()
   {
     AppMethodBeat.i(124988);
-    ad.i(getTag(), "onScreenOff enable:%s", new Object[] { Boolean.valueOf(this.cMW) });
-    if (!this.cMW)
+    ae.i(getTag(), "onScreenOff enable:%s", new Object[] { Boolean.valueOf(this.cNF) });
+    if (!this.cNF)
     {
       AppMethodBeat.o(124988);
       return;
     }
-    if ((b.DEBUG) || ((!this.wIc) && (Jr() >= 3994319585.2800002D)))
+    if ((b.DEBUG) || ((!this.wXN) && (Jz() >= 3994319585.2800002D)))
     {
-      this.wHZ |= 0x100;
-      gi(true);
-      dyJ();
+      this.wXK |= 0x100;
+      gg(true);
+      dCa();
     }
     AppMethodBeat.o(124988);
   }
@@ -465,29 +465,29 @@ public class MainProcessChecker
     {
       if (g.ab(com.tencent.mm.plugin.expt.b.b.class) == null)
       {
-        ad.w("MicroMsg.MainProcessChecker", "IExptService is null!");
+        ae.w("MicroMsg.MainProcessChecker", "IExptService is null!");
         AppMethodBeat.o(124986);
         return;
       }
-      this.wIc = q.is64BitRuntime();
-      this.wHN = ((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qst, this.wHM);
-      this.wHP = (((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qsu, this.wHO) * 0.01F);
-      this.wHR = (((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qsv, this.wHQ) * 0.01F);
-      wHT[0] = ((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qsw, 0);
-      wHT[1] = ((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qsx, 86400000L);
-      this.wHK = ((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qsD, 1048576L);
-      this.wHL = ((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qsC, 6000L);
-      this.isHardMode = ((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qsz, true);
-      this.wHS = ((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qsA, false);
-      this.wIa = ((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qsB, 1200000L);
-      this.wIb.append(" \n***************ProcessElf Config****************\n| is64BitRuntime:").append(this.wIc).append("\n| isHardMode:").append(this.isHardMode).append("\n| workTime:").append(wHT[0]).append("-").append(wHT[1]).append("ms\n| NATIVE_SIZE:").append(this.wHN).append("B\n| MEMORY_VM_TOP:").append(this.wHP).append("%\n| MEMORY_JAVA_TOP:").append(this.wHR).append("%\n| TRAFFIC_PER_MIN:").append(this.wHK).append("B\n| JIFFIES_PER_MIN:").append(this.wHL).append("jiffy\n| CHECK_TIME:").append(this.wIa).append("ms\n************************************************\n");
-      ad.i("MicroMsg.MainProcessChecker", this.wIb.toString());
+      this.wXN = q.is64BitRuntime();
+      this.wXy = ((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qzi, this.wXx);
+      this.wXA = (((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qzj, this.wXz) * 0.01F);
+      this.wXC = (((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qzk, this.wXB) * 0.01F);
+      wXE[0] = ((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qzl, 0);
+      wXE[1] = ((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qzm, 86400000L);
+      this.wXv = ((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qzs, 1048576L);
+      this.wXw = ((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qzr, 6000L);
+      this.isHardMode = ((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qzo, true);
+      this.wXD = ((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qzp, false);
+      this.wXL = ((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qzq, 1200000L);
+      this.wXM.append(" \n***************ProcessElf Config****************\n| is64BitRuntime:").append(this.wXN).append("\n| isHardMode:").append(this.isHardMode).append("\n| workTime:").append(wXE[0]).append("-").append(wXE[1]).append("ms\n| NATIVE_SIZE:").append(this.wXy).append("B\n| MEMORY_VM_TOP:").append(this.wXA).append("%\n| MEMORY_JAVA_TOP:").append(this.wXC).append("%\n| TRAFFIC_PER_MIN:").append(this.wXv).append("B\n| JIFFIES_PER_MIN:").append(this.wXw).append("jiffy\n| CHECK_TIME:").append(this.wXL).append("ms\n************************************************\n");
+      ae.i("MicroMsg.MainProcessChecker", this.wXM.toString());
       AppMethodBeat.o(124986);
       return;
     }
     catch (Exception localException)
     {
-      ad.e("MicroMsg.MainProcessChecker", "[resetConfig] ERROR!!! %s", new Object[] { localException });
+      ae.e("MicroMsg.MainProcessChecker", "[resetConfig] ERROR!!! %s", new Object[] { localException });
       AppMethodBeat.o(124986);
     }
   }

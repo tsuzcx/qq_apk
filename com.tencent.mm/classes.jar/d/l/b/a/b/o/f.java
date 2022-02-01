@@ -5,14 +5,14 @@ import d.g.b.p;
 
 public final class f
 {
-  public final String Dsg;
-  public final int NFT;
+  public final String DJL;
+  public final int OcZ;
   
   public f(String paramString, int paramInt)
   {
     AppMethodBeat.i(61369);
-    this.Dsg = paramString;
-    this.NFT = paramInt;
+    this.DJL = paramString;
+    this.OcZ = paramInt;
     AppMethodBeat.o(61369);
   }
   
@@ -24,7 +24,7 @@ public final class f
       if ((paramObject instanceof f))
       {
         paramObject = (f)paramObject;
-        if ((!p.i(this.Dsg, paramObject.Dsg)) || (this.NFT != paramObject.NFT)) {}
+        if ((!p.i(this.DJL, paramObject.DJL)) || (this.OcZ != paramObject.OcZ)) {}
       }
     }
     else
@@ -39,11 +39,11 @@ public final class f
   public final int hashCode()
   {
     AppMethodBeat.i(61371);
-    String str = this.Dsg;
+    String str = this.DJL;
     if (str != null) {}
     for (int i = str.hashCode();; i = 0)
     {
-      int j = this.NFT;
+      int j = this.OcZ;
       AppMethodBeat.o(61371);
       return i * 31 + j;
     }
@@ -52,7 +52,7 @@ public final class f
   public final String toString()
   {
     AppMethodBeat.i(61370);
-    String str = "NumberWithRadix(number=" + this.Dsg + ", radix=" + this.NFT + ")";
+    String str = "NumberWithRadix(number=" + this.DJL + ", radix=" + this.OcZ + ")";
     AppMethodBeat.o(61370);
     return str;
   }

@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.appbrand.jsapi.nfc.a.a;
 
-import com.tencent.mm.plugin.appbrand.g.a;
+import com.tencent.mm.plugin.appbrand.h.a;
 import d.g.a.b;
 import d.l;
 
-@l(gfx={1, 1, 16})
+@l(gjZ={1, 1, 16})
 final class d
-  implements g.a
+  implements h.a
 {
   d(b paramb)
   {
-    this.hcc = paramb;
+    this.heQ = paramb;
   }
 }
 

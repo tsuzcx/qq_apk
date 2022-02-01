@@ -1,30 +1,30 @@
 package com.tencent.mm.plugin.brandservice.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.x.a;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.x.a;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.brandservice.a.b.b;
-import com.tencent.mm.protocal.protobuf.beo;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.bfe;
+import com.tencent.mm.sdk.platformtools.ae;
 import d.g.b.p;
 import d.l;
 import d.v;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "errType", "errCode", "errMsg", "", "kotlin.jvm.PlatformType", "comReqResp", "Lcom/tencent/mm/modelbase/CommReqResp;", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "callback"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "errType", "errCode", "errMsg", "", "kotlin.jvm.PlatformType", "comReqResp", "Lcom/tencent/mm/modelbase/CommReqResp;", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "callback"})
 final class c$b
   implements x.a
 {
   c$b(b.b paramb) {}
   
-  public final int a(int paramInt1, int paramInt2, String paramString, com.tencent.mm.al.b paramb, n paramn)
+  public final int a(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ak.b paramb, n paramn)
   {
     AppMethodBeat.i(175464);
-    ad.i("MicroMsg.BizVideoChannelStrategy", "alvinluo getNotifyAndChannelFeeds callback errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    ae.i("MicroMsg.BizVideoChannelStrategy", "alvinluo getNotifyAndChannelFeeds callback errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
       p.g(paramb, "comReqResp");
-      paramString = paramb.aEF();
+      paramString = paramb.aEV();
       if (paramString != null)
       {
         if (paramString == null)
@@ -33,7 +33,7 @@ final class c$b
           AppMethodBeat.o(175464);
           throw paramString;
         }
-        paramString = ((beo)paramString).GAH;
+        paramString = ((bfe)paramString).GUh;
         if (paramString != null) {
           break label174;
         }
@@ -43,9 +43,9 @@ final class c$b
     label174:
     for (;;)
     {
-      ad.d("MicroMsg.BizVideoChannelStrategy", "alvinuo getNotifyAndChannelFeeds channelFeeds: %s", new Object[] { paramString });
-      ((com.tencent.mm.plugin.brandservice.a.b)g.ab(com.tencent.mm.plugin.brandservice.a.b.class)).WR(paramString);
-      paramb = this.nWB;
+      ae.d("MicroMsg.BizVideoChannelStrategy", "alvinuo getNotifyAndChannelFeeds channelFeeds: %s", new Object[] { paramString });
+      ((com.tencent.mm.plugin.brandservice.a.b)g.ab(com.tencent.mm.plugin.brandservice.a.b.class)).XD(paramString);
+      paramb = this.ock;
       if (paramb != null) {
         paramb.onSuccess(paramString);
       }
@@ -53,7 +53,7 @@ final class c$b
       {
         AppMethodBeat.o(175464);
         return 0;
-        paramb = this.nWB;
+        paramb = this.ock;
         if (paramb != null) {
           paramb.p(paramInt1, paramInt2, paramString);
         }

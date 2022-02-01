@@ -7,15 +7,15 @@ import android.view.accessibility.AccessibilityEvent;
 import android.view.accessibility.AccessibilityNodeInfo;
 import android.widget.FrameLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public class LayoutListenerView
   extends FrameLayout
 {
-  private byte[] IZU;
-  private a IZV;
-  private c IZW;
-  private b IZX;
+  private byte[] JuC;
+  private a JuD;
+  private c JuE;
+  private b JuF;
   private String TAG;
   
   public LayoutListenerView(Context paramContext, AttributeSet paramAttributeSet)
@@ -23,18 +23,18 @@ public class LayoutListenerView
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(141306);
     this.TAG = "MicroMsg.LayoutListenerView";
-    this.IZU = new byte[0];
+    this.JuC = new byte[0];
     AppMethodBeat.o(141306);
   }
   
   protected void onDetachedFromWindow()
   {
     AppMethodBeat.i(141312);
-    synchronized (this.IZU)
+    synchronized (this.JuC)
     {
-      this.IZV = null;
-      this.IZW = null;
-      this.IZX = null;
+      this.JuD = null;
+      this.JuE = null;
+      this.JuF = null;
       super.onDetachedFromWindow();
       AppMethodBeat.o(141312);
       return;
@@ -46,7 +46,7 @@ public class LayoutListenerView
   {
     AppMethodBeat.i(141311);
     super.onInitializeAccessibilityEvent(paramAccessibilityEvent);
-    ad.d(this.TAG, "jacks onInitializeAccessibilityEvent");
+    ae.d(this.TAG, "jacks onInitializeAccessibilityEvent");
     AppMethodBeat.o(141311);
   }
   
@@ -55,14 +55,14 @@ public class LayoutListenerView
   {
     AppMethodBeat.i(141309);
     super.onInitializeAccessibilityNodeInfo(paramAccessibilityNodeInfo);
-    ad.d(this.TAG, "jacks onInitializeAccessibilityNodeInfo");
+    ae.d(this.TAG, "jacks onInitializeAccessibilityNodeInfo");
     AppMethodBeat.o(141309);
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     AppMethodBeat.i(141307);
-    synchronized (this.IZU)
+    synchronized (this.JuC)
     {
       super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     }
@@ -78,7 +78,7 @@ public class LayoutListenerView
   {
     AppMethodBeat.i(141310);
     super.onPopulateAccessibilityEvent(paramAccessibilityEvent);
-    ad.d(this.TAG, "jacks onPopulateAccessibilityEvent");
+    ae.d(this.TAG, "jacks onPopulateAccessibilityEvent");
     AppMethodBeat.o(141310);
   }
   
@@ -86,10 +86,10 @@ public class LayoutListenerView
   {
     AppMethodBeat.i(141308);
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    synchronized (this.IZU)
+    synchronized (this.JuC)
     {
-      if (this.IZW != null) {
-        this.IZW.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
+      if (this.JuE != null) {
+        this.JuE.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
       }
       AppMethodBeat.o(141308);
       return;
@@ -98,27 +98,27 @@ public class LayoutListenerView
   
   public void setOnLayoutListener(a parama)
   {
-    synchronized (this.IZU)
+    synchronized (this.JuC)
     {
-      this.IZV = parama;
+      this.JuD = parama;
       return;
     }
   }
   
   public void setOnPreLayoutListener(b paramb)
   {
-    synchronized (this.IZU)
+    synchronized (this.JuC)
     {
-      this.IZX = paramb;
+      this.JuF = paramb;
       return;
     }
   }
   
   public void setOnResizedListener(c paramc)
   {
-    synchronized (this.IZU)
+    synchronized (this.JuC)
     {
-      this.IZW = paramc;
+      this.JuE = paramc;
       return;
     }
   }

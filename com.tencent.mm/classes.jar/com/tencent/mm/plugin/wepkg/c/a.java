@@ -2,8 +2,8 @@ package com.tencent.mm.plugin.wepkg.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aj;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
@@ -11,28 +11,28 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public final class a
 {
-  private Map<String, b> EFM;
+  private Map<String, b> EYi;
   
   private a()
   {
     AppMethodBeat.i(110765);
-    this.EFM = new ConcurrentHashMap();
+    this.EYi = new ConcurrentHashMap();
     AppMethodBeat.o(110765);
   }
   
   public final void m(String paramString1, String paramString2, long paramLong)
   {
     AppMethodBeat.i(110767);
-    paramString1 = ai.ee(paramString1 + paramString2);
-    paramString1 = (b)this.EFM.remove(paramString1);
+    paramString1 = aj.ej(paramString1 + paramString2);
+    paramString1 = (b)this.EYi.remove(paramString1);
     if (paramString1 != null)
     {
-      paramString1.EFO -= 1;
-      paramString1.isA += paramLong;
-      if (paramString1.EFO == 0)
+      paramString1.EYk -= 1;
+      paramString1.ivu += paramLong;
+      if (paramString1.EYk == 0)
       {
-        ad.i("MicroMsg.Wepkg.BatchUpdateReporter", "batch update size: %s", new Object[] { Long.valueOf(paramString1.isA) });
-        com.tencent.mm.game.report.api.a.gsb.a(1, "", String.valueOf(paramString1.isA), 0L);
+        ae.i("MicroMsg.Wepkg.BatchUpdateReporter", "batch update size: %s", new Object[] { Long.valueOf(paramString1.ivu) });
+        com.tencent.mm.game.report.api.a.guC.a(1, "", String.valueOf(paramString1.ivu), 0L);
       }
     }
     AppMethodBeat.o(110767);
@@ -43,39 +43,39 @@ public final class a
     AppMethodBeat.i(110766);
     if (paramSet.isEmpty())
     {
-      g.yhR.idkeyStat(859L, 20L, 1L, false);
+      g.yxI.idkeyStat(859L, 20L, 1L, false);
       AppMethodBeat.o(110766);
       return;
     }
-    g.yhR.idkeyStat(859L, 21L, 1L, false);
+    g.yxI.idkeyStat(859L, 21L, 1L, false);
     b localb = new b();
-    localb.EFO = paramSet.size();
-    localb.isA = 0L;
+    localb.EYk = paramSet.size();
+    localb.ivu = 0L;
     paramSet = paramSet.iterator();
     while (paramSet.hasNext())
     {
       String str = (String)paramSet.next();
-      this.EFM.put(str, localb);
+      this.EYi.put(str, localb);
     }
     AppMethodBeat.o(110766);
   }
   
   public static final class a
   {
-    private static a EFN;
+    private static a EYj;
     
     static
     {
       AppMethodBeat.i(110764);
-      EFN = new a((byte)0);
+      EYj = new a((byte)0);
       AppMethodBeat.o(110764);
     }
   }
   
   public final class b
   {
-    int EFO;
-    long isA;
+    int EYk;
+    long ivu;
     
     public b() {}
   }

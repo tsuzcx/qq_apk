@@ -7,12 +7,12 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/TaskParamsCallPredownload;", "Landroid/os/Parcelable;", "source", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "username", "", "path", "scene", "", "(Ljava/lang/String;Ljava/lang/String;I)V", "getPath", "()Ljava/lang/String;", "getScene", "()I", "getUsername", "component1", "component2", "component3", "copy", "describeContents", "equals", "", "other", "", "hashCode", "toString", "writeToParcel", "", "dest", "flags", "Companion", "plugin-appbrand-integration_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsapi/TaskParamsCallPredownload;", "Landroid/os/Parcelable;", "source", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "username", "", "path", "scene", "", "(Ljava/lang/String;Ljava/lang/String;I)V", "getPath", "()Ljava/lang/String;", "getScene", "()I", "getUsername", "component1", "component2", "component3", "copy", "describeContents", "equals", "", "other", "", "hashCode", "toString", "writeToParcel", "", "dest", "flags", "Companion", "plugin-appbrand-integration_release"})
 final class TaskParamsCallPredownload
   implements Parcelable
 {
   public static final Parcelable.Creator<TaskParamsCallPredownload> CREATOR;
-  public static final a kvf;
+  public static final a kyu;
   final String path;
   final int scene;
   final String username;
@@ -20,7 +20,7 @@ final class TaskParamsCallPredownload
   static
   {
     AppMethodBeat.i(50426);
-    kvf = new a((byte)0);
+    kyu = new a((byte)0);
     CREATOR = (Parcelable.Creator)new b();
     AppMethodBeat.o(50426);
   }
@@ -100,10 +100,10 @@ final class TaskParamsCallPredownload
     AppMethodBeat.o(50424);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/TaskParamsCallPredownload$Companion;", "", "()V", "CREATOR", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/appbrand/jsapi/TaskParamsCallPredownload;", "plugin-appbrand-integration_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsapi/TaskParamsCallPredownload$Companion;", "", "()V", "CREATOR", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/appbrand/jsapi/TaskParamsCallPredownload;", "plugin-appbrand-integration_release"})
   public static final class a {}
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/appbrand/jsapi/TaskParamsCallPredownload$Companion$CREATOR$1", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/appbrand/jsapi/TaskParamsCallPredownload;", "createFromParcel", "source", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/mm/plugin/appbrand/jsapi/TaskParamsCallPredownload;", "plugin-appbrand-integration_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/appbrand/jsapi/TaskParamsCallPredownload$Companion$CREATOR$1", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/appbrand/jsapi/TaskParamsCallPredownload;", "createFromParcel", "source", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/mm/plugin/appbrand/jsapi/TaskParamsCallPredownload;", "plugin-appbrand-integration_release"})
   public static final class b
     implements Parcelable.Creator<TaskParamsCallPredownload>
   {}

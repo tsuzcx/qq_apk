@@ -3,20 +3,20 @@ package com.tencent.mm.roomsdk.a.c;
 import android.content.Context;
 import android.content.DialogInterface.OnCancelListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
-import com.tencent.mm.bb.b.a;
-import com.tencent.mm.bb.b.c;
-import com.tencent.mm.bb.c;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.ba.b.a;
+import com.tencent.mm.ba.b.c;
+import com.tencent.mm.ba.c;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.messenger.foundation.a.a.k.b;
-import com.tencent.mm.protocal.protobuf.cgk;
-import com.tencent.mm.protocal.protobuf.cgm;
-import com.tencent.mm.protocal.protobuf.cgn;
+import com.tencent.mm.protocal.protobuf.che;
+import com.tencent.mm.protocal.protobuf.chg;
+import com.tencent.mm.protocal.protobuf.chh;
 import com.tencent.mm.roomsdk.a.b.e;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.base.p;
 import java.util.LinkedList;
@@ -25,27 +25,27 @@ import java.util.List;
 public final class d
   extends a
 {
-  c HWr;
-  f hPn;
+  c Iqz;
+  f ghB;
   
   public d()
   {
-    AppMethodBeat.i(195482);
-    this.hPn = new f()
+    AppMethodBeat.i(218935);
+    this.ghB = new f()
     {
       public final void onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, n paramAnonymousn)
       {
-        AppMethodBeat.i(195481);
-        if (d.this.HWr.equals(paramAnonymousn))
+        AppMethodBeat.i(218934);
+        if (d.this.Iqz.equals(paramAnonymousn))
         {
-          g.ajD();
-          g.ajB().gAO.b(paramAnonymousn.getType(), d.this.hPn);
+          g.ajS();
+          g.ajQ().gDv.b(paramAnonymousn.getType(), d.this.ghB);
           if (d.this.tipDialog != null) {
             d.this.tipDialog.dismiss();
           }
-          if (d.this.HWj != null)
+          if (d.this.Iqr != null)
           {
-            paramAnonymousString = ((b.c)((com.tencent.mm.bb.b)paramAnonymousn).iij.getRespObj()).iio;
+            paramAnonymousString = ((b.c)((com.tencent.mm.ba.b)paramAnonymousn).ilc.getRespObj()).ilh;
             if ((paramAnonymousInt1 != 0) || (paramAnonymousInt2 != 0)) {
               break label309;
             }
@@ -55,16 +55,16 @@ public final class d
         {
           try
           {
-            paramAnonymousInt1 = ((Integer)paramAnonymousString.GZB.GtN.getLast()).intValue();
+            paramAnonymousInt1 = ((Integer)paramAnonymousString.Htc.GNm.getLast()).intValue();
             paramAnonymousInt2 = paramAnonymousInt1;
-            paramAnonymousn = (cgk)paramAnonymousString.GZB.GZC.getLast();
+            paramAnonymousn = (che)paramAnonymousString.Htc.Htd.getLast();
             if (paramAnonymousn != null)
             {
               paramAnonymousInt2 = paramAnonymousInt1;
-              if (!bt.isNullOrNil(paramAnonymousn.hDa))
+              if (!bu.isNullOrNil(paramAnonymousn.hFS))
               {
                 paramAnonymousInt2 = paramAnonymousInt1;
-                paramAnonymousString = paramAnonymousn.hDa;
+                paramAnonymousString = paramAnonymousn.hFS;
               }
             }
             Object localObject;
@@ -74,21 +74,21 @@ public final class d
           {
             try
             {
-              localObject = bt.bI(paramAnonymousn.Title, "");
+              localObject = bu.bI(paramAnonymousn.Title, "");
               paramAnonymousn = paramAnonymousString;
               paramAnonymousString = (String)localObject;
               localObject = paramAnonymousn;
               paramAnonymousn = paramAnonymousString;
               paramAnonymousString = (String)localObject;
-              if ((d.this.HWj instanceof e))
+              if ((d.this.Iqr instanceof e))
               {
-                localObject = (e)d.this.HWj;
+                localObject = (e)d.this.Iqr;
                 ((e)localObject).ret = paramAnonymousInt1;
                 ((e)localObject).title = paramAnonymousn;
                 ((e)localObject).content = paramAnonymousString;
               }
-              d.this.HWj.a(0, paramAnonymousInt1, "", d.this.HWj);
-              AppMethodBeat.o(195481);
+              d.this.Iqr.a(0, paramAnonymousInt1, "", d.this.Iqr);
+              AppMethodBeat.o(218934);
               return;
             }
             catch (Exception paramAnonymousn)
@@ -98,7 +98,7 @@ public final class d
             paramAnonymousn = paramAnonymousn;
             paramAnonymousString = null;
             paramAnonymousInt1 = paramAnonymousInt2;
-            ad.e("MicroMsg.RoomCallbackFactory", "NetSceneSyncOplog %s", new Object[] { paramAnonymousn.getMessage() });
+            ae.e("MicroMsg.RoomCallbackFactory", "NetSceneSyncOplog %s", new Object[] { paramAnonymousn.getMessage() });
             paramAnonymousn = null;
             continue;
             paramAnonymousn = null;
@@ -111,64 +111,64 @@ public final class d
         }
       }
     };
-    this.HWg = true;
-    AppMethodBeat.o(195482);
+    this.Iqo = true;
+    AppMethodBeat.o(218935);
   }
   
   public final void a(Context paramContext, String paramString, boolean paramBoolean, DialogInterface.OnCancelListener paramOnCancelListener)
   {
-    AppMethodBeat.i(195486);
-    if (this.HWr == null)
+    AppMethodBeat.i(218939);
+    if (this.Iqz == null)
     {
-      AppMethodBeat.o(195486);
+      AppMethodBeat.o(218939);
       return;
     }
     this.tipDialog = h.b(paramContext, paramString, paramBoolean, paramOnCancelListener);
-    cyR();
-    AppMethodBeat.o(195486);
+    cAs();
+    AppMethodBeat.o(218939);
+  }
+  
+  public final void a(k.b paramb)
+  {
+    AppMethodBeat.i(218937);
+    LinkedList localLinkedList = new LinkedList();
+    localLinkedList.add(paramb);
+    this.Iqz = new c(localLinkedList);
+    AppMethodBeat.o(218937);
+  }
+  
+  public final void cAs()
+  {
+    AppMethodBeat.i(218938);
+    if (this.Iqz == null)
+    {
+      AppMethodBeat.o(218938);
+      return;
+    }
+    ae.i("MicroMsg.RoomCallbackFactory", "request scene %s", new Object[] { this.Iqz });
+    if ((this.tipDialog != null) || (this.Iqp != null) || (this.Iqq != null) || (this.Iqr != null))
+    {
+      g.ajS();
+      g.ajQ().gDv.a(this.Iqz.getType(), this.ghB);
+    }
+    g.ajS();
+    g.ajQ().gDv.a(this.Iqz, 0);
+    AppMethodBeat.o(218938);
   }
   
   public final void cancel()
   {
-    AppMethodBeat.i(195483);
-    if (this.HWr == null)
+    AppMethodBeat.i(218936);
+    if (this.Iqz == null)
     {
-      AppMethodBeat.o(195483);
+      AppMethodBeat.o(218936);
       return;
     }
-    g.ajD();
-    g.ajB().gAO.a(this.HWr);
-    g.ajD();
-    g.ajB().gAO.b(this.HWr.getType(), this.hPn);
-    AppMethodBeat.o(195483);
-  }
-  
-  public final void cyR()
-  {
-    AppMethodBeat.i(195485);
-    if (this.HWr == null)
-    {
-      AppMethodBeat.o(195485);
-      return;
-    }
-    ad.i("MicroMsg.RoomCallbackFactory", "request scene %s", new Object[] { this.HWr });
-    if ((this.tipDialog != null) || (this.HWh != null) || (this.HWi != null) || (this.HWj != null))
-    {
-      g.ajD();
-      g.ajB().gAO.a(this.HWr.getType(), this.hPn);
-    }
-    g.ajD();
-    g.ajB().gAO.a(this.HWr, 0);
-    AppMethodBeat.o(195485);
-  }
-  
-  public final void e(k.b paramb)
-  {
-    AppMethodBeat.i(195484);
-    LinkedList localLinkedList = new LinkedList();
-    localLinkedList.add(paramb);
-    this.HWr = new c(localLinkedList);
-    AppMethodBeat.o(195484);
+    g.ajS();
+    g.ajQ().gDv.a(this.Iqz);
+    g.ajS();
+    g.ajQ().gDv.b(this.Iqz.getType(), this.ghB);
+    AppMethodBeat.o(218936);
   }
 }
 

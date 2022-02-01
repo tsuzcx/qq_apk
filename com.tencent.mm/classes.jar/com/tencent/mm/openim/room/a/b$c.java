@@ -1,26 +1,26 @@
 package com.tencent.mm.openim.room.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.cet;
-import com.tencent.mm.protocal.protobuf.ceu;
-import com.tencent.mm.protocal.protobuf.vw;
-import com.tencent.mm.storage.am;
+import com.tencent.mm.protocal.protobuf.cfn;
+import com.tencent.mm.protocal.protobuf.cfo;
+import com.tencent.mm.protocal.protobuf.vz;
+import com.tencent.mm.storage.an;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
 public final class b$c
 {
-  public static am a(am paramam, cet paramcet)
+  public static an a(an paraman, cfn paramcfn)
   {
     AppMethodBeat.i(151322);
-    paramam.setUsername(paramcet.userName);
-    paramam.sT(paramcet.bVF);
+    paraman.setUsername(paramcfn.userName);
+    paraman.to(paramcfn.bVF);
     AppMethodBeat.o(151322);
-    return paramam;
+    return paraman;
   }
   
-  public static LinkedList<vw> aF(List<ceu> paramList)
+  public static LinkedList<vz> aF(List<cfo> paramList)
   {
     AppMethodBeat.i(151323);
     LinkedList localLinkedList = new LinkedList();
@@ -32,16 +32,16 @@ public final class b$c
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
-      ceu localceu = (ceu)paramList.next();
-      vw localvw = new vw();
-      localvw.nDo = localceu.userName;
-      localvw.nEt = localceu.bVF;
-      localvw.FVn = localceu.fVj;
-      localvw.FVo = localceu.Gby;
-      localvw.FVp = localceu.Gbz;
-      localvw.FVq = localceu.GYQ;
-      localvw.FVr = localceu.GYS;
-      localLinkedList.add(localvw);
+      cfo localcfo = (cfo)paramList.next();
+      vz localvz = new vz();
+      localvz.nIJ = localcfo.userName;
+      localvz.nJO = localcfo.bVF;
+      localvz.GnM = localcfo.fXp;
+      localvz.GnN = localcfo.Guf;
+      localvz.GnO = localcfo.Gug;
+      localvz.GnP = localcfo.Hsr;
+      localvz.GnQ = localcfo.Hst;
+      localLinkedList.add(localvz);
     }
     AppMethodBeat.o(151323);
     return localLinkedList;

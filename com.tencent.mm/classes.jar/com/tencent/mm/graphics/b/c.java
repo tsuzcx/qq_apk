@@ -3,43 +3,43 @@ package com.tencent.mm.graphics.b;
 import android.view.Choreographer;
 import android.view.Choreographer.FrameCallback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.concurrent.TimeUnit;
 
 public enum c
   implements Choreographer.FrameCallback
 {
   private Choreographer choreographer;
-  private long guK;
-  private int guL;
-  double guM;
-  private int guN;
-  public boolean guO;
+  private long gxr;
+  private int gxs;
+  double gxt;
+  private int gxu;
+  public boolean gxv;
   private final Object lock;
   
   static
   {
     AppMethodBeat.i(136204);
-    guJ = new c("INSTANCE");
-    guP = new c[] { guJ };
+    gxq = new c("INSTANCE");
+    gxw = new c[] { gxq };
     AppMethodBeat.o(136204);
   }
   
   private c()
   {
     AppMethodBeat.i(136201);
-    this.guK = 0L;
-    this.guL = 0;
-    this.guM = 0.0D;
-    this.guN = 500;
+    this.gxr = 0L;
+    this.gxs = 0;
+    this.gxt = 0.0D;
+    this.gxu = 500;
     this.lock = new Object();
-    this.guO = false;
+    this.gxv = false;
     AppMethodBeat.o(136201);
   }
   
   /* Error */
-  public final Choreographer ahe()
+  public final Choreographer aht()
   {
     // Byte code:
     //   0: ldc 94
@@ -129,34 +129,34 @@ public enum c
   {
     AppMethodBeat.i(136203);
     paramLong = TimeUnit.NANOSECONDS.toMillis(paramLong);
-    if (this.guK > 0L)
+    if (this.gxr > 0L)
     {
-      long l = paramLong - this.guK;
-      this.guL += 1;
-      if (l > this.guN)
+      long l = paramLong - this.gxr;
+      this.gxs += 1;
+      if (l > this.gxu)
       {
-        this.guM = (this.guL * 1000 / l);
-        this.guK = paramLong;
-        this.guL = 0;
+        this.gxt = (this.gxs * 1000 / l);
+        this.gxr = paramLong;
+        this.gxs = 0;
       }
     }
     for (;;)
     {
-      ahe().postFrameCallback(this);
+      aht().postFrameCallback(this);
       AppMethodBeat.o(136203);
       return;
-      this.guK = paramLong;
+      this.gxr = paramLong;
     }
   }
   
   public final void stop()
   {
     AppMethodBeat.i(136202);
-    this.guK = 0L;
-    this.guL = 0;
-    this.guO = false;
-    ad.i("MicroMsg.Metronome", "[stop] stack:%s", new Object[] { bt.flS() });
-    ahe().removeFrameCallback(this);
+    this.gxr = 0L;
+    this.gxs = 0;
+    this.gxv = false;
+    ae.i("MicroMsg.Metronome", "[stop] stack:%s", new Object[] { bu.fpN() });
+    aht().removeFrameCallback(this);
     AppMethodBeat.o(136202);
   }
 }

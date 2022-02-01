@@ -52,7 +52,7 @@ public final class wy
       localCanvas.concat((Matrix)localObject2);
       localCanvas.save();
       localObject2 = c.a((Paint)localObject1, paramVarArgs);
-      ((Paint)localObject2).setColor(-16777216);
+      ((Paint)localObject2).setColor(-15028967);
       ((Paint)localObject2).setStrokeWidth(3.6F);
       localObject3 = c.n(paramVarArgs);
       ((Path)localObject3).moveTo(21.0F, 11.55F);
@@ -61,7 +61,7 @@ public final class wy
       localCanvas.restore();
       localCanvas.save();
       localObject2 = c.a((Paint)localObject1, paramVarArgs);
-      ((Paint)localObject2).setColor(-16777216);
+      ((Paint)localObject2).setColor(-15028967);
       ((Paint)localObject2).setStrokeWidth(3.6F);
       localObject3 = c.n(paramVarArgs);
       ((Path)localObject3).moveTo(21.0F, 31.799999F);
@@ -70,7 +70,7 @@ public final class wy
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a((Paint)localObject1, paramVarArgs);
-      ((Paint)localObject1).setColor(-16777216);
+      ((Paint)localObject1).setColor(-15028967);
       ((Paint)localObject1).setStrokeWidth(3.6F);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(21.0F, 52.049999F);
@@ -79,7 +79,7 @@ public final class wy
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint, paramVarArgs);
-      ((Paint)localObject1).setColor(-16777216);
+      ((Paint)localObject1).setColor(-15028967);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(5.090625F, 18.0F);
       ((Path)localObject2).lineTo(5.090625F, 7.06875F);
@@ -96,7 +96,7 @@ public final class wy
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint, paramVarArgs);
-      ((Paint)localObject1).setColor(-16777216);
+      ((Paint)localObject1).setColor(-15028967);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(6.375F, 27.75F);
       ((Path)localObject2).cubicTo(8.238961F, 27.75F, 9.75F, 29.26104F, 9.75F, 31.125F);
@@ -108,7 +108,7 @@ public final class wy
       localCanvas.restore();
       localCanvas.save();
       localPaint = c.a(localPaint, paramVarArgs);
-      localPaint.setColor(-16777216);
+      localPaint.setColor(-15028967);
       localObject1 = c.n(paramVarArgs);
       ((Path)localObject1).moveTo(3.0F, 48.0F);
       ((Path)localObject1).lineTo(9.75F, 48.0F);

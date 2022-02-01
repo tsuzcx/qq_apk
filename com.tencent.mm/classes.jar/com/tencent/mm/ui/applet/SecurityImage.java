@@ -17,23 +17,23 @@ import android.widget.ProgressBar;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.g;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.h;
 import com.tencent.mm.ui.widget.a.d;
 import com.tencent.mm.ui.widget.a.d.a;
 
 public class SecurityImage
   extends LinearLayout
 {
-  private ProgressBar JhY = null;
-  private ImageView JhZ = null;
-  private Button Jia = null;
-  private EditText Jib = null;
-  private b Jic;
-  private d jcs = null;
-  private String jcw = null;
-  private String jcx = null;
-  private int jlF = 0;
+  private ProgressBar JCJ = null;
+  private ImageView JCK = null;
+  private Button JCL = null;
+  private EditText JCM = null;
+  private b JCN;
+  private d jfl = null;
+  private String jfp = null;
+  private String jfq = null;
+  private int joz = 0;
   
   public SecurityImage(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -43,29 +43,29 @@ public class SecurityImage
   private void a(int paramInt, Bitmap paramBitmap, String paramString1, String paramString2)
   {
     AppMethodBeat.i(141601);
-    this.jcw = paramString1;
-    this.jcx = paramString2;
-    this.jlF = paramInt;
+    this.jfp = paramString1;
+    this.jfq = paramString2;
+    this.joz = paramInt;
     if (paramBitmap != null)
     {
-      this.JhZ.setImageBitmap(paramBitmap);
+      this.JCK.setImageBitmap(paramBitmap);
       AppMethodBeat.o(141601);
       return;
     }
-    ad.e("MicroMsg.SecurityImage", "setSecImg failed, decode failed");
+    ae.e("MicroMsg.SecurityImage", "setSecImg failed, decode failed");
     AppMethodBeat.o(141601);
   }
   
   private void c(int paramInt, byte[] paramArrayOfByte, String paramString1, String paramString2)
   {
     AppMethodBeat.i(141600);
-    this.jcw = paramString1;
-    this.jcx = paramString2;
-    this.jlF = paramInt;
-    Bitmap localBitmap = g.cr(paramArrayOfByte);
+    this.jfp = paramString1;
+    this.jfq = paramString2;
+    this.joz = paramInt;
+    Bitmap localBitmap = h.cu(paramArrayOfByte);
     if (localBitmap != null)
     {
-      ad.i("MicroMsg.SecurityImage", "dkwt setSecImg sid:%s key:%s imgBuf:%d [%d %d]", new Object[] { paramString1, paramString2, Integer.valueOf(paramArrayOfByte.length), Integer.valueOf(localBitmap.getWidth()), Integer.valueOf(localBitmap.getHeight()) });
+      ae.i("MicroMsg.SecurityImage", "dkwt setSecImg sid:%s key:%s imgBuf:%d [%d %d]", new Object[] { paramString1, paramString2, Integer.valueOf(paramArrayOfByte.length), Integer.valueOf(localBitmap.getWidth()), Integer.valueOf(localBitmap.getHeight()) });
       a(paramInt, localBitmap, paramString1, paramString2);
       AppMethodBeat.o(141600);
       return;
@@ -73,22 +73,22 @@ public class SecurityImage
     if (paramArrayOfByte == null) {}
     for (paramInt = -1;; paramInt = paramArrayOfByte.length)
     {
-      ad.e("MicroMsg.SecurityImage", "dkwt setSecImg ERROR sid:%s key:%s imgBuf:%d", new Object[] { paramString1, paramString2, Integer.valueOf(paramInt) });
+      ae.e("MicroMsg.SecurityImage", "dkwt setSecImg ERROR sid:%s key:%s imgBuf:%d", new Object[] { paramString1, paramString2, Integer.valueOf(paramInt) });
       AppMethodBeat.o(141600);
       return;
     }
   }
   
-  private void xy(boolean paramBoolean)
+  private void xG(boolean paramBoolean)
   {
     int j = 0;
     AppMethodBeat.i(141599);
-    Object localObject = this.JhZ;
+    Object localObject = this.JCK;
     if (paramBoolean)
     {
       i = 255;
       ((ImageView)localObject).setAlpha(i);
-      localObject = this.JhZ;
+      localObject = this.JCK;
       if (!paramBoolean) {
         break label77;
       }
@@ -97,7 +97,7 @@ public class SecurityImage
     for (int i = 0;; i = -5592406)
     {
       ((ImageView)localObject).setBackgroundColor(i);
-      localObject = this.JhY;
+      localObject = this.JCJ;
       i = j;
       if (paramBoolean) {
         i = 4;
@@ -113,21 +113,21 @@ public class SecurityImage
   public final void a(int paramInt, byte[] paramArrayOfByte, String paramString1, String paramString2)
   {
     AppMethodBeat.i(141595);
-    this.JhY = ((ProgressBar)findViewById(2131303931));
-    this.JhZ = ((ImageView)findViewById(2131296986));
-    this.Jia = ((Button)findViewById(2131296984));
-    this.Jib = ((EditText)findViewById(2131296985));
-    this.Jia.setOnClickListener(new View.OnClickListener()
+    this.JCJ = ((ProgressBar)findViewById(2131303931));
+    this.JCK = ((ImageView)findViewById(2131296986));
+    this.JCL = ((Button)findViewById(2131296984));
+    this.JCM = ((EditText)findViewById(2131296985));
+    this.JCL.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(141591);
         b localb = new b();
         localb.bd(paramAnonymousView);
-        a.b("com/tencent/mm/ui/applet/SecurityImage$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        a.b("com/tencent/mm/ui/applet/SecurityImage$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
         SecurityImage.a(SecurityImage.this);
         if (SecurityImage.b(SecurityImage.this) != null) {
-          SecurityImage.b(SecurityImage.this).aSv();
+          SecurityImage.b(SecurityImage.this).aSU();
         }
         a.a(this, "com/tencent/mm/ui/applet/SecurityImage$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(141591);
@@ -140,7 +140,7 @@ public class SecurityImage
   public final void b(int paramInt, byte[] paramArrayOfByte, String paramString1, String paramString2)
   {
     AppMethodBeat.i(141596);
-    xy(true);
+    xG(true);
     c(paramInt, paramArrayOfByte, paramString1, paramString2);
     AppMethodBeat.o(141596);
   }
@@ -148,50 +148,50 @@ public class SecurityImage
   public final void dismiss()
   {
     AppMethodBeat.i(141598);
-    if (this.jcs != null)
+    if (this.jfl != null)
     {
-      this.jcs.dismiss();
-      this.jcs = null;
+      this.jfl.dismiss();
+      this.jfl = null;
     }
     AppMethodBeat.o(141598);
   }
   
   public int getSecCodeType()
   {
-    return this.jlF;
+    return this.joz;
   }
   
   public String getSecImgCode()
   {
     AppMethodBeat.i(141597);
-    if (this.Jib == null)
+    if (this.JCM == null)
     {
       AppMethodBeat.o(141597);
       return "";
     }
-    String str = this.Jib.getText().toString().trim();
+    String str = this.JCM.getText().toString().trim();
     AppMethodBeat.o(141597);
     return str;
   }
   
   public String getSecImgEncryptKey()
   {
-    return this.jcx;
+    return this.jfq;
   }
   
   public String getSecImgSid()
   {
-    return this.jcw;
+    return this.jfp;
   }
   
   public void setNetworkModel(b paramb)
   {
     AppMethodBeat.i(141594);
-    if (this.Jic != null) {
-      this.Jic.d(null);
+    if (this.JCN != null) {
+      this.JCN.d(null);
     }
-    this.Jic = paramb;
-    this.Jic.d(this);
+    this.JCN = paramb;
+    this.JCN.d(this);
     AppMethodBeat.o(141594);
   }
   
@@ -204,8 +204,8 @@ public class SecurityImage
       localSecurityImage.setNetworkModel(paramb);
       localSecurityImage.a(paramInt, paramArrayOfByte, paramString1, paramString2);
       paramContext = new d.a(paramContext);
-      paramContext.afe(2131762387);
-      paramContext.afl(2131755700).c(new DialogInterface.OnClickListener()
+      paramContext.afN(2131762387);
+      paramContext.afU(2131755700).c(new DialogInterface.OnClickListener()
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
@@ -215,9 +215,9 @@ public class SecurityImage
         }
       });
       paramContext.e(paramOnCancelListener);
-      paramContext.gY(localSecurityImage);
-      paramContext.yR(true);
-      SecurityImage.a(localSecurityImage, paramContext.fMb());
+      paramContext.hd(localSecurityImage);
+      paramContext.zf(true);
+      SecurityImage.a(localSecurityImage, paramContext.fQv());
       SecurityImage.c(localSecurityImage).setOnDismissListener(paramOnDismissListener);
       SecurityImage.c(localSecurityImage).show();
       AppMethodBeat.o(141593);
@@ -227,19 +227,19 @@ public class SecurityImage
   
   public static abstract class b
   {
-    protected SecurityImage Jif;
+    protected SecurityImage JCQ;
     
-    public abstract void aSv();
+    public abstract void aSU();
     
     public final void d(SecurityImage paramSecurityImage)
     {
-      this.Jif = paramSecurityImage;
+      this.JCQ = paramSecurityImage;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.applet.SecurityImage
  * JD-Core Version:    0.7.0.1
  */

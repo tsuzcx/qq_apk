@@ -364,6 +364,9 @@
     <item type="drawable" name="bz3">false</item>
     <item type="drawable" name="bz5">false</item>
     <item type="drawable" name="bz6">false</item>
+    <item type="drawable" name="bz7">false</item>
+    <item type="drawable" name="bz_">false</item>
+    <item type="drawable" name="bzb">false</item>
     <item type="drawable" name="bzv">false</item>
     <item type="drawable" name="bzw">false</item>
     <item type="drawable" name="bzx">false</item>

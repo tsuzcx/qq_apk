@@ -15,7 +15,7 @@ public final class s
   extends r
   implements a
 {
-  private InputConnection neP;
+  private InputConnection njX;
   
   public s(Context paramContext)
   {
@@ -30,7 +30,7 @@ public final class s
       
       public final int getInputType()
       {
-        if (s.this.nfG) {}
+        if (s.this.nkO) {}
         for (int i = 16;; i = 0) {
           return i | 0x2;
         }
@@ -39,7 +39,7 @@ public final class s
     AppMethodBeat.o(136461);
   }
   
-  public final void bEs()
+  public final void bFk()
   {
     AppMethodBeat.i(136468);
     if (!t.aC(this))
@@ -54,11 +54,11 @@ public final class s
     AppMethodBeat.o(136468);
   }
   
-  public final InputConnection bEv()
+  public final InputConnection bFn()
   {
     AppMethodBeat.i(136465);
     InputConnection localInputConnection = super.onCreateInputConnection(new EditorInfo());
-    this.neP = localInputConnection;
+    this.njX = localInputConnection;
     AppMethodBeat.o(136465);
     return localInputConnection;
   }
@@ -66,7 +66,7 @@ public final class s
   public final void clearFocus()
   {
     AppMethodBeat.i(136462);
-    bEO();
+    bFG();
     AppMethodBeat.o(136462);
   }
   
@@ -113,7 +113,7 @@ public final class s
   public final void setPasswordMode(boolean paramBoolean)
   {
     AppMethodBeat.i(136466);
-    bEM();
+    bFE();
     int i = getInputType() | 0x2;
     if (paramBoolean) {
       i |= 0x10;
@@ -122,7 +122,7 @@ public final class s
     {
       setInputType(i);
       super.setPasswordMode(paramBoolean);
-      bEN();
+      bFF();
       AppMethodBeat.o(136466);
       return;
       i &= 0xFFFFFFEF;

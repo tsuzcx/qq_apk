@@ -3,11 +3,11 @@ package kotlinx.a.b;
 import d.l;
 import kotlinx.a.h;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/serialization/internal/GeneratedSerializer;", "T", "Lkotlinx/serialization/KSerializer;", "childSerializers", "", "()[Lkotlinx/serialization/KSerializer;", "kotlinx-serialization-runtime"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/serialization/internal/GeneratedSerializer;", "T", "Lkotlinx/serialization/KSerializer;", "childSerializers", "", "()[Lkotlinx/serialization/KSerializer;", "kotlinx-serialization-runtime"})
 public abstract interface u<T>
   extends h<T>
 {
-  public abstract h<?>[] eLk();
+  public abstract h<?>[] eOS();
 }
 
 

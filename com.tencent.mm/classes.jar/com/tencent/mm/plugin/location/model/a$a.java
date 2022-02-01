@@ -3,72 +3,72 @@ package com.tencent.mm.plugin.location.model;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.g.c.ei;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.bj;
-import com.tencent.mm.model.w;
+import com.tencent.mm.model.bl;
+import com.tencent.mm.model.x;
 import com.tencent.mm.modelgeo.Addr;
 import com.tencent.mm.modelgeo.c;
 import com.tencent.mm.modelgeo.c.a;
 import com.tencent.mm.plugin.messenger.foundation.a.a.i;
 import com.tencent.mm.plugin.messenger.foundation.a.l;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.bu;
-import com.tencent.mm.storage.bu.b;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.bv;
+import com.tencent.mm.storage.bv.b;
 import java.util.Set;
 
 public final class a$a
 {
-  private c.a uZA;
-  Set<Long> uZz;
+  Set<Long> vlK;
+  private c.a vlL;
   
   public a$a()
   {
     AppMethodBeat.i(55679);
-    this.uZA = new c.a()
+    this.vlL = new c.a()
     {
       public final void b(Addr paramAnonymousAddr)
       {
         AppMethodBeat.i(55678);
         a.a locala = a.a.this;
-        bu localbu;
+        bv localbv;
         int i;
         boolean bool;
         Object localObject;
         if ((paramAnonymousAddr.tag != null) && ((paramAnonymousAddr.tag instanceof Long)))
         {
           long l = ((Long)paramAnonymousAddr.tag).longValue();
-          localbu = ((l)g.ab(l.class)).dlK().xY(l);
-          if (!bt.isNullOrNil(paramAnonymousAddr.hWY))
+          localbv = ((l)g.ab(l.class)).doJ().ys(l);
+          if (!bu.isNullOrNil(paramAnonymousAddr.hZQ))
           {
-            String str = localbu.field_content;
-            if (localbu.field_isSend != 0) {
+            String str = localbv.field_content;
+            if (localbv.field_isSend != 0) {
               break label573;
             }
             i = 1;
-            bool = w.vF(localbu.field_talker);
+            bool = x.wb(localbv.field_talker);
             localObject = str;
             if (bool)
             {
               localObject = str;
               if (i != 0)
               {
-                int j = bj.Bh(str);
+                int j = bl.BJ(str);
                 localObject = str;
                 if (j != -1) {
                   localObject = str.substring(j + 1).trim();
                 }
               }
             }
-            localObject = bu.b.aUc((String)localObject);
-            ((bu.b)localObject).label = paramAnonymousAddr.aHM();
+            localObject = bv.b.aVD((String)localObject);
+            ((bv.b)localObject).label = paramAnonymousAddr.aId();
             if ((!bool) || (i == 0)) {
               break label584;
             }
-            i = bj.Bh(localbu.field_content);
+            i = bl.BJ(localbv.field_content);
             if (i == -1) {
               break label584;
             }
-            paramAnonymousAddr = localbu.field_content.substring(0, i).trim();
+            paramAnonymousAddr = localbv.field_content.substring(0, i).trim();
             if (paramAnonymousAddr.length() <= 0) {
               break label584;
             }
@@ -76,32 +76,32 @@ public final class a$a
         }
         for (;;)
         {
-          if ((((bu.b)localObject).IMx == null) || (((bu.b)localObject).IMx.equals(""))) {
-            ((bu.b)localObject).IMx = "";
+          if ((((bv.b)localObject).Jhe == null) || (((bv.b)localObject).Jhe.equals(""))) {
+            ((bv.b)localObject).Jhe = "";
           }
-          if ((((bu.b)localObject).IMw == null) || (((bu.b)localObject).IMw.equals(""))) {
-            ((bu.b)localObject).IMx = "";
+          if ((((bv.b)localObject).Jhd == null) || (((bv.b)localObject).Jhd.equals(""))) {
+            ((bv.b)localObject).Jhe = "";
           }
-          if ((((bu.b)localObject).IMv == null) || (((bu.b)localObject).IMv.equals(""))) {
-            ((bu.b)localObject).IMv = "";
+          if ((((bv.b)localObject).Jhc == null) || (((bv.b)localObject).Jhc.equals(""))) {
+            ((bv.b)localObject).Jhc = "";
           }
-          if ((((bu.b)localObject).dHm == null) || (((bu.b)localObject).dHm.equals(""))) {
-            ((bu.b)localObject).dHm = "";
+          if ((((bv.b)localObject).cUA == null) || (((bv.b)localObject).cUA.equals(""))) {
+            ((bv.b)localObject).cUA = "";
           }
-          if ((((bu.b)localObject).label == null) || (((bu.b)localObject).label.equals(""))) {
-            ((bu.b)localObject).label = "";
+          if ((((bv.b)localObject).label == null) || (((bv.b)localObject).label.equals(""))) {
+            ((bv.b)localObject).label = "";
           }
-          if ((((bu.b)localObject).IMu == null) || (((bu.b)localObject).IMu.equals(""))) {
-            ((bu.b)localObject).IMu = "";
+          if ((((bv.b)localObject).Jhb == null) || (((bv.b)localObject).Jhb.equals(""))) {
+            ((bv.b)localObject).Jhb = "";
           }
-          localObject = "<msg><location x=\"" + ((bu.b)localObject).uZr + "\" y=\"" + ((bu.b)localObject).uZs + "\" scale=\"" + ((bu.b)localObject).dyB + "\" label=\"" + ((bu.b)localObject).label + "\" maptype=\"" + ((bu.b)localObject).IMu + "\"  fromusername=\"" + ((bu.b)localObject).dHm + "\" /></msg>";
+          localObject = "<msg><location x=\"" + ((bv.b)localObject).vlC + "\" y=\"" + ((bv.b)localObject).vlD + "\" scale=\"" + ((bv.b)localObject).dzG + "\" label=\"" + ((bv.b)localObject).label + "\" maptype=\"" + ((bv.b)localObject).Jhb + "\"  fromusername=\"" + ((bv.b)localObject).cUA + "\" /></msg>";
           if ((bool) && (!paramAnonymousAddr.equals(""))) {}
           for (paramAnonymousAddr = paramAnonymousAddr + ":\n" + (String)localObject;; paramAnonymousAddr = (Addr)localObject)
           {
-            ad.d("MicroMsg.LocationServer", "xml: ".concat(String.valueOf(paramAnonymousAddr)));
-            localbu.setContent(paramAnonymousAddr);
-            ((l)g.ab(l.class)).dlK().a(localbu.field_msgId, localbu);
-            locala.uZz.remove(Long.valueOf(localbu.field_msgId));
+            ae.d("MicroMsg.LocationServer", "xml: ".concat(String.valueOf(paramAnonymousAddr)));
+            localbv.setContent(paramAnonymousAddr);
+            ((l)g.ab(l.class)).doJ().a(localbv.field_msgId, localbv);
+            locala.vlK.remove(Long.valueOf(localbv.field_msgId));
             AppMethodBeat.o(55678);
             return;
             label573:
@@ -116,13 +116,13 @@ public final class a$a
     AppMethodBeat.o(55679);
   }
   
-  public final String[] ap(bu parambu)
+  public final String[] ao(bv parambv)
   {
     int j = 1;
     AppMethodBeat.i(55681);
     String[] arrayOfString = new String[2];
-    Object localObject2 = parambu.field_content;
-    if (bt.isNullOrNil((String)localObject2))
+    Object localObject2 = parambv.field_content;
+    if (bu.isNullOrNil((String)localObject2))
     {
       arrayOfString[0] = "";
       arrayOfString[1] = "";
@@ -132,38 +132,38 @@ public final class a$a
     Object localObject1;
     label162:
     long l;
-    if (parambu.field_isSend == 0)
+    if (parambv.field_isSend == 0)
     {
       i = 1;
       localObject1 = localObject2;
-      if (w.vF(parambu.field_talker))
+      if (x.wb(parambv.field_talker))
       {
         localObject1 = localObject2;
         if (i != 0)
         {
-          i = bj.Bh((String)localObject2);
+          i = bl.BJ((String)localObject2);
           localObject1 = localObject2;
           if (i != -1) {
             localObject1 = ((String)localObject2).substring(i + 1).trim();
           }
         }
       }
-      localObject2 = ((l)g.ab(l.class)).dlK().aql((String)localObject1);
-      if (!((bu.b)localObject2).fst()) {
+      localObject2 = ((l)g.ab(l.class)).doJ().arq((String)localObject1);
+      if (!((bv.b)localObject2).fwu()) {
         break label347;
       }
-      localObject1 = ((bu.b)localObject2).label;
-      localObject2 = ((bu.b)localObject2).jDf;
+      localObject1 = ((bv.b)localObject2).label;
+      localObject2 = ((bv.b)localObject2).jGd;
       arrayOfString[0] = localObject1;
       arrayOfString[1] = localObject2;
-      if ((bt.isNullOrNil(arrayOfString[0])) && (bt.isNullOrNil(arrayOfString[1])))
+      if ((bu.isNullOrNil(arrayOfString[0])) && (bu.isNullOrNil(arrayOfString[1])))
       {
-        ad.i("MicroMsg.LocationServer", "pull from sever");
-        l = parambu.field_msgId;
-        if ((this.uZz != null) && (!this.uZz.contains(Long.valueOf(l))))
+        ae.i("MicroMsg.LocationServer", "pull from sever");
+        l = parambv.field_msgId;
+        if ((this.vlK != null) && (!this.vlK.contains(Long.valueOf(l))))
         {
-          localObject2 = parambu.field_content;
-          if (parambu.field_isSend != 0) {
+          localObject2 = parambv.field_content;
+          if (parambv.field_isSend != 0) {
             break label365;
           }
         }
@@ -174,38 +174,38 @@ public final class a$a
     for (int i = j;; i = 0)
     {
       localObject1 = localObject2;
-      if (w.vF(parambu.field_talker))
+      if (x.wb(parambv.field_talker))
       {
         localObject1 = localObject2;
         if (i != 0)
         {
-          i = bj.Bh((String)localObject2);
+          i = bl.BJ((String)localObject2);
           localObject1 = localObject2;
           if (i != -1) {
             localObject1 = ((String)localObject2).substring(i + 1).trim();
           }
         }
       }
-      localObject1 = bu.b.aUc((String)localObject1);
-      this.uZz.add(Long.valueOf(l));
-      c.aHN().a(((bu.b)localObject1).uZr, ((bu.b)localObject1).uZs, this.uZA, Long.valueOf(parambu.field_msgId));
+      localObject1 = bv.b.aVD((String)localObject1);
+      this.vlK.add(Long.valueOf(l));
+      c.aIe().a(((bv.b)localObject1).vlC, ((bv.b)localObject1).vlD, this.vlL, Long.valueOf(parambv.field_msgId));
       AppMethodBeat.o(55681);
       return arrayOfString;
       i = 0;
       break;
-      arrayOfString[0] = ((bu.b)localObject2).label;
+      arrayOfString[0] = ((bv.b)localObject2).label;
       arrayOfString[1] = "";
       break label162;
     }
   }
   
-  public final void dfZ()
+  public final void diY()
   {
     AppMethodBeat.i(55680);
-    if (this.uZz != null) {
-      this.uZz.clear();
+    if (this.vlK != null) {
+      this.vlK.clear();
     }
-    c.aHN().a(this.uZA);
+    c.aIe().a(this.vlL);
     AppMethodBeat.o(55680);
   }
 }

@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.cloudvoip.cloudvoice.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 
@@ -14,8 +14,8 @@ public final class a
   public byte cRsvd1;
   public byte cSkipFlag;
   public short iKbps;
-  public byte oWc;
-  public byte oWd;
+  public byte pcF;
+  public byte pcG;
   public byte[] s2p;
   
   public a()
@@ -27,27 +27,27 @@ public final class a
   
   public final void parseS2PData()
   {
-    AppMethodBeat.i(190907);
+    AppMethodBeat.i(211560);
     ByteBuffer localByteBuffer = ByteBuffer.wrap(this.s2p);
     localByteBuffer.order(ByteOrder.LITTLE_ENDIAN);
     this.iKbps = localByteBuffer.getShort();
     this.cFps = localByteBuffer.get();
     this.cIPeriod = localByteBuffer.get();
     this.cResolution = localByteBuffer.get();
-    this.oWc = localByteBuffer.get();
-    this.oWd = localByteBuffer.get();
+    this.pcF = localByteBuffer.get();
+    this.pcG = localByteBuffer.get();
     this.cSkipFlag = localByteBuffer.get();
     this.cIReqFlag = localByteBuffer.get();
     this.cRsvd1 = localByteBuffer.get();
-    AppMethodBeat.o(190907);
+    AppMethodBeat.o(211560);
   }
   
   public final void printS2P()
   {
-    AppMethodBeat.i(190908);
-    ad.d("OpenVoice[HWEnc]", "raw S2P:" + this.s2p);
-    ad.d("OpenVoice[HWEnc]", "-S2P- iKbps:" + this.iKbps + ", fps:" + this.cFps + ", IP:" + this.cIPeriod + ", Reso:" + this.cResolution + ", Codec:" + this.oWc + ", HWEnable:" + this.oWd + ", Skip:" + this.cSkipFlag + ", IReq:" + this.cIReqFlag + ", Rsvd1:" + this.cRsvd1);
-    AppMethodBeat.o(190908);
+    AppMethodBeat.i(211561);
+    ae.d("OpenVoice[HWEnc]", "raw S2P:" + this.s2p);
+    ae.d("OpenVoice[HWEnc]", "-S2P- iKbps:" + this.iKbps + ", fps:" + this.cFps + ", IP:" + this.cIPeriod + ", Reso:" + this.cResolution + ", Codec:" + this.pcF + ", HWEnable:" + this.pcG + ", Skip:" + this.cSkipFlag + ", IReq:" + this.cIReqFlag + ", Rsvd1:" + this.cRsvd1);
+    AppMethodBeat.o(211561);
   }
 }
 

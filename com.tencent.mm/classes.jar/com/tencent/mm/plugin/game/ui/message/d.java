@@ -21,36 +21,34 @@ import java.util.Set;
 public final class d
   extends RecyclerView
 {
-  private int fPp;
+  private int fRv;
   private Context mContext;
-  private com.tencent.mm.b.f<String, Bitmap> urk;
-  private e uuE;
-  private Set<Integer> uuF;
-  b uuQ;
+  private com.tencent.mm.b.f<String, Bitmap> uCE;
+  private e uGd;
+  private Set<Integer> uGe;
+  b uGp;
   
   public d(Context paramContext, int paramInt)
   {
     super(paramContext);
     AppMethodBeat.i(183896);
-    this.uuF = new HashSet();
+    this.uGe = new HashSet();
     this.mContext = paramContext;
-    this.fPp = paramInt;
-    this.urk = new b(30, getClass());
-    this.uuE = new e(this.fPp, new e.b()
+    this.fRv = paramInt;
+    this.uCE = new b(30, getClass());
+    this.uGd = new e(this.fRv, new e.b()
     {
-      public final void dam()
+      public final void dcY()
       {
         AppMethodBeat.i(183891);
-        d.a(d.this).djY = ((com.tencent.mm.plugin.game.api.f)g.ab(com.tencent.mm.plugin.game.api.f.class)).cWH().HR(2);
-        Cursor localCursor = ((com.tencent.mm.plugin.game.api.f)g.ab(com.tencent.mm.plugin.game.api.f.class)).cWH().HP(2);
-        d.a(d.this).changeCursor(localCursor);
+        d.a(d.this);
         AppMethodBeat.o(183891);
       }
     });
-    paramInt = ((com.tencent.mm.plugin.game.api.f)g.ab(com.tencent.mm.plugin.game.api.f.class)).cWH().HR(2);
-    this.uuQ = new b(paramContext, ((com.tencent.mm.plugin.game.api.f)g.ab(com.tencent.mm.plugin.game.api.f.class)).cWH().HP(2), paramInt);
+    paramInt = ((com.tencent.mm.plugin.game.api.f)g.ab(com.tencent.mm.plugin.game.api.f.class)).cZl().Io(2);
+    this.uGp = new b(paramContext, ((com.tencent.mm.plugin.game.api.f)g.ab(com.tencent.mm.plugin.game.api.f.class)).cZl().Im(2), paramInt);
     setLayoutManager(new LinearLayoutManager());
-    setAdapter(this.uuQ);
+    setAdapter(this.uGp);
     AppMethodBeat.o(183896);
   }
   
@@ -58,9 +56,9 @@ public final class d
   {
     AppMethodBeat.i(183897);
     e.a.a locala = new e.a.a();
-    locala.idp = false;
-    locala.uvL = paramFloat;
-    com.tencent.mm.plugin.game.f.e.dav().a(paramImageView, paramString, locala.daw(), new com.tencent.mm.plugin.game.f.e.b()
+    locala.igi = false;
+    locala.uHk = paramFloat;
+    com.tencent.mm.plugin.game.f.e.ddh().a(paramImageView, paramString, locala.ddi(), new com.tencent.mm.plugin.game.f.e.b()
     {
       public final void a(View paramAnonymousView, Bitmap paramAnonymousBitmap)
       {
@@ -77,39 +75,39 @@ public final class d
   final class a
     extends RecyclerView.w
   {
-    ImageView fUN;
-    TextView gUs;
-    TextView opA;
+    ImageView fWT;
+    TextView gXb;
+    TextView ovs;
     TextView timeTv;
     TextView titleTv;
-    ViewGroup uuH;
-    View uuN;
-    View uuO;
-    View uuP;
-    private ViewGroup uuS;
-    ImageView uuT;
+    ViewGroup uGg;
+    View uGm;
+    View uGn;
+    View uGo;
+    private ViewGroup uGr;
+    ImageView uGs;
     
     public a(View paramView)
     {
       super();
       AppMethodBeat.i(183893);
-      this.uuH = ((ViewGroup)paramView.findViewById(2131302521));
-      this.fUN = ((ImageView)paramView.findViewById(2131300891));
-      this.opA = ((TextView)paramView.findViewById(2131302867));
-      this.uuS = ((ViewGroup)paramView.findViewById(2131302522));
-      this.uuT = ((ImageView)paramView.findViewById(2131297877));
+      this.uGg = ((ViewGroup)paramView.findViewById(2131302521));
+      this.fWT = ((ImageView)paramView.findViewById(2131300891));
+      this.ovs = ((TextView)paramView.findViewById(2131302867));
+      this.uGr = ((ViewGroup)paramView.findViewById(2131302522));
+      this.uGs = ((ImageView)paramView.findViewById(2131297877));
       this.titleTv = ((TextView)paramView.findViewById(2131297914));
-      this.gUs = ((TextView)paramView.findViewById(2131297777));
+      this.gXb = ((TextView)paramView.findViewById(2131297777));
       this.timeTv = ((TextView)paramView.findViewById(2131305822));
-      this.uuN = paramView.findViewById(2131300518);
-      this.uuO = paramView.findViewById(2131302790);
-      this.uuP = paramView.findViewById(2131301490);
-      this.uuH.setOnLongClickListener(d.e(d.this));
-      this.uuH.setOnClickListener(d.e(d.this));
-      this.fUN.setOnLongClickListener(d.e(d.this));
-      this.fUN.setOnClickListener(d.e(d.this));
-      this.opA.setOnLongClickListener(d.e(d.this));
-      this.opA.setOnClickListener(d.e(d.this));
+      this.uGm = paramView.findViewById(2131300518);
+      this.uGn = paramView.findViewById(2131302790);
+      this.uGo = paramView.findViewById(2131301490);
+      this.uGg.setOnLongClickListener(d.e(d.this));
+      this.uGg.setOnClickListener(d.e(d.this));
+      this.fWT.setOnLongClickListener(d.e(d.this));
+      this.fWT.setOnClickListener(d.e(d.this));
+      this.ovs.setOnLongClickListener(d.e(d.this));
+      this.ovs.setOnClickListener(d.e(d.this));
       AppMethodBeat.o(183893);
     }
   }
@@ -117,18 +115,18 @@ public final class d
   final class b
     extends f<d.a>
   {
-    int djY;
+    int dla;
     
     public b(Context paramContext, Cursor paramCursor, int paramInt)
     {
       super(paramCursor);
-      this.djY = paramInt;
+      this.dla = paramInt;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.message.d
  * JD-Core Version:    0.7.0.1
  */

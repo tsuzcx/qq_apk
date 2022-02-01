@@ -16,7 +16,7 @@ final class JsApiNavigateToDevMiniProgram$1
     if (paramBoolean)
     {
       paramString = "ok";
-      this.ktg.h(this.cjQ, this.kWa.e(paramString, null));
+      this.kww.h(this.cjS, this.kZI.e(paramString, null));
       AppMethodBeat.o(46622);
       return;
     }

@@ -16,16 +16,16 @@ final class b$11
     AppMethodBeat.i(125941);
     com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
     localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/topstory/ui/home/TopStoryHomeUIComponentImpl$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+    a.b("com/tencent/mm/plugin/topstory/ui/home/TopStoryHomeUIComponentImpl$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
     long l = System.currentTimeMillis();
-    if (l - this.BsG.Bst < 300L) {}
+    if (l - this.BKf.BJS < 300L) {}
     try
     {
-      if ((this.BsG.Bsm != null) && (this.BsG.Bsm.getView() != null)) {
-        this.BsG.Bsm.getView().scrollTo(this.BsG.Bsm.getView().getScrollX(), 0);
+      if ((this.BKf.BJL != null) && (this.BKf.BJL.getView() != null)) {
+        this.BKf.BJL.getView().scrollTo(this.BKf.BJL.getView().getScrollX(), 0);
       }
       label107:
-      this.BsG.Bst = l;
+      this.BKf.BJS = l;
       a.a(this, "com/tencent/mm/plugin/topstory/ui/home/TopStoryHomeUIComponentImpl$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(125941);
       return;

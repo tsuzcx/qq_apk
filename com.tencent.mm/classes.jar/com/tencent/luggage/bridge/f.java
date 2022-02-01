@@ -1,7 +1,7 @@
 package com.tencent.luggage.bridge;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.Iterator;
 import java.util.LinkedList;
 
@@ -27,12 +27,12 @@ public final class f
     AppMethodBeat.o(140321);
   }
   
-  final void BI()
+  final void BJ()
   {
     try
     {
       AppMethodBeat.i(140322);
-      ad.i("Java2JsMessageQueue", "ready");
+      ae.i("Java2JsMessageQueue", "ready");
       this.cgy = true;
       Iterator localIterator = this.cgx.iterator();
       while (localIterator.hasNext()) {

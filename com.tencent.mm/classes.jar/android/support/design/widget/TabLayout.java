@@ -58,7 +58,7 @@ import java.util.Iterator;
 public class TabLayout
   extends HorizontalScrollView
 {
-  private static final l.a<f> tZ = new l.c(16);
+  private static final l.a<TabLayout.f> tZ = new l.c(16);
   private int contentInsetStart;
   int mode;
   boolean uA;
@@ -75,8 +75,8 @@ public class TabLayout
   private a uL;
   private boolean uM;
   private final l.a<h> uN = new l.b(12);
-  private final ArrayList<f> ua = new ArrayList();
-  private f ub;
+  private final ArrayList<TabLayout.f> ua = new ArrayList();
+  private TabLayout.f ub;
   private final RectF uc = new RectF();
   private final e ud;
   int ue;
@@ -167,7 +167,7 @@ public class TabLayout
     }
   }
   
-  private h a(f paramf)
+  private h a(TabLayout.f paramf)
   {
     if (this.uN != null) {}
     h localh2;
@@ -192,7 +192,7 @@ public class TabLayout
   
   private void a(TabItem paramTabItem)
   {
-    f localf = cU();
+    TabLayout.f localf = cU();
     if (paramTabItem.text != null) {
       localf.d(paramTabItem.text);
     }
@@ -212,7 +212,7 @@ public class TabLayout
     a(localf, this.ua.isEmpty());
   }
   
-  private void a(f paramf, int paramInt)
+  private void a(TabLayout.f paramf, int paramInt)
   {
     paramf.position = paramInt;
     this.ua.add(paramInt, paramf);
@@ -220,7 +220,7 @@ public class TabLayout
     paramInt += 1;
     while (paramInt < i)
     {
-      ((f)this.ua.get(paramInt)).position = paramInt;
+      ((TabLayout.f)this.ua.get(paramInt)).position = paramInt;
       paramInt += 1;
     }
   }
@@ -322,7 +322,7 @@ public class TabLayout
     this.uE.remove(paramb);
   }
   
-  private void c(f paramf)
+  private void c(TabLayout.f paramf)
   {
     int i = this.uE.size() - 1;
     while (i >= 0)
@@ -332,12 +332,12 @@ public class TabLayout
     }
   }
   
-  private static f cV()
+  private static TabLayout.f cV()
   {
-    f localf2 = (f)tZ.acquire();
-    f localf1 = localf2;
+    TabLayout.f localf2 = (TabLayout.f)tZ.acquire();
+    TabLayout.f localf1 = localf2;
     if (localf2 == null) {
-      localf1 = new f();
+      localf1 = new TabLayout.f();
     }
     return localf1;
   }
@@ -348,7 +348,7 @@ public class TabLayout
     int i = 0;
     while (i < j)
     {
-      ((f)this.ua.get(i)).updateView();
+      ((TabLayout.f)this.ua.get(i)).updateView();
       i += 1;
     }
   }
@@ -390,7 +390,7 @@ public class TabLayout
     }
   }
   
-  private void d(f paramf)
+  private void d(TabLayout.f paramf)
   {
     int i = this.uE.size() - 1;
     while (i >= 0)
@@ -400,7 +400,7 @@ public class TabLayout
     }
   }
   
-  private void e(f paramf)
+  private void e(TabLayout.f paramf)
   {
     int i = this.uE.size() - 1;
     while (i >= 0)
@@ -416,7 +416,7 @@ public class TabLayout
     int i = 0;
     if (i < j)
     {
-      f localf = (f)this.ua.get(i);
+      TabLayout.f localf = (TabLayout.f)this.ua.get(i);
       if ((localf == null) || (localf.icon == null) || (TextUtils.isEmpty(localf.text))) {}
     }
     for (i = 1;; i = 0)
@@ -466,7 +466,7 @@ public class TabLayout
     Object localObject = this.ua.iterator();
     while (((Iterator)localObject).hasNext())
     {
-      f localf = (f)((Iterator)localObject).next();
+      TabLayout.f localf = (TabLayout.f)((Iterator)localObject).next();
       ((Iterator)localObject).remove();
       localf.ve = null;
       localf.vf = null;
@@ -552,7 +552,7 @@ public class TabLayout
     }
   }
   
-  public final void a(f paramf, boolean paramBoolean)
+  public final void a(TabLayout.f paramf, boolean paramBoolean)
   {
     int i = this.ua.size();
     if (paramf.ve != this) {
@@ -632,12 +632,12 @@ public class TabLayout
     cW();
   }
   
-  public final f ad(int paramInt)
+  public final TabLayout.f ad(int paramInt)
   {
     if ((paramInt < 0) || (paramInt >= getTabCount())) {
       return null;
     }
-    return (f)this.ua.get(paramInt);
+    return (TabLayout.f)this.ua.get(paramInt);
   }
   
   public void addView(View paramView)
@@ -665,14 +665,14 @@ public class TabLayout
     return Math.round(getResources().getDisplayMetrics().density * paramInt);
   }
   
-  final void b(f paramf)
+  final void b(TabLayout.f paramf)
   {
     b(paramf, true);
   }
   
-  final void b(f paramf, boolean paramBoolean)
+  final void b(TabLayout.f paramf, boolean paramBoolean)
   {
-    f localf = this.ub;
+    TabLayout.f localf = this.ub;
     if (localf == paramf)
     {
       if (localf != null)
@@ -716,9 +716,9 @@ public class TabLayout
     }
   }
   
-  public final f cU()
+  public final TabLayout.f cU()
   {
-    f localf = cV();
+    TabLayout.f localf = cV();
     localf.ve = this;
     localf.vf = a(localf);
     return localf;
@@ -1513,84 +1513,6 @@ public class TabLayout
     }
   }
   
-  public static final class f
-  {
-    Drawable icon;
-    int position = -1;
-    Object tag;
-    CharSequence text;
-    CharSequence vc;
-    public View vd;
-    public TabLayout ve;
-    public TabLayout.h vf;
-    
-    private f z(View paramView)
-    {
-      this.vd = paramView;
-      updateView();
-      return this;
-    }
-    
-    public final f ak(int paramInt)
-    {
-      return z(LayoutInflater.from(this.vf.getContext()).inflate(paramInt, this.vf, false));
-    }
-    
-    public final f d(CharSequence paramCharSequence)
-    {
-      if ((TextUtils.isEmpty(this.vc)) && (!TextUtils.isEmpty(paramCharSequence))) {
-        this.vf.setContentDescription(paramCharSequence);
-      }
-      this.text = paramCharSequence;
-      updateView();
-      return this;
-    }
-    
-    public final f g(Object paramObject)
-    {
-      this.tag = paramObject;
-      return this;
-    }
-    
-    public final View getCustomView()
-    {
-      return this.vd;
-    }
-    
-    public final int getPosition()
-    {
-      return this.position;
-    }
-    
-    public final Object getTag()
-    {
-      return this.tag;
-    }
-    
-    public final boolean isSelected()
-    {
-      if (this.ve == null) {
-        throw new IllegalArgumentException("Tab not attached to a TabLayout");
-      }
-      return this.ve.getSelectedTabPosition() == this.position;
-    }
-    
-    public final void select()
-    {
-      if (this.ve == null) {
-        throw new IllegalArgumentException("Tab not attached to a TabLayout");
-      }
-      this.ve.b(this);
-    }
-    
-    final void updateView()
-    {
-      if (this.vf != null) {
-        this.vf.update();
-      }
-    }
-  }
-  
   final class h
     extends LinearLayout
   {
@@ -1606,7 +1528,7 @@ public class TabLayout
     public h(Context paramContext)
     {
       super();
-      I(paramContext);
+      J(paramContext);
       t.d(this, TabLayout.this.ue, TabLayout.this.uf, TabLayout.this.ug, TabLayout.this.uh);
       setGravity(17);
       if (TabLayout.this.uA) {}
@@ -1614,12 +1536,12 @@ public class TabLayout
       {
         setOrientation(i);
         setClickable(true);
-        t.a(this, r.W(getContext()));
+        t.a(this, r.X(getContext()));
         return;
       }
     }
     
-    private void I(Context paramContext)
+    private void J(Context paramContext)
     {
       Object localObject = null;
       GradientDrawable localGradientDrawable;

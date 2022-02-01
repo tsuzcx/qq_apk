@@ -45,7 +45,7 @@ public class FirebaseInitProvider
   public boolean onCreate()
   {
     AppMethodBeat.i(4105);
-    a.aj(getContext());
+    a.ak(getContext());
     AppMethodBeat.o(4105);
     return false;
   }

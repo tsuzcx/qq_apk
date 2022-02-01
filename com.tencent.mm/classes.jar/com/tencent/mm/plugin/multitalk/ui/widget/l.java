@@ -6,12 +6,12 @@ import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.b.p;
 
-@d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/multitalk/ui/widget/SmallAvatarHolderInContactUI;", "Landroid/support/v7/widget/RecyclerView$ViewHolder;", "itemView", "Landroid/view/View;", "(Landroid/view/View;)V", "avatarIv", "Landroid/widget/ImageView;", "getAvatarIv", "()Landroid/widget/ImageView;", "setAvatarIv", "(Landroid/widget/ImageView;)V", "headerStub", "getHeaderStub", "()Landroid/view/View;", "setHeaderStub", "plugin-multitalk_release"})
+@d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/multitalk/ui/widget/SmallAvatarHolderInContactUI;", "Landroid/support/v7/widget/RecyclerView$ViewHolder;", "itemView", "Landroid/view/View;", "(Landroid/view/View;)V", "avatarIv", "Landroid/widget/ImageView;", "getAvatarIv", "()Landroid/widget/ImageView;", "setAvatarIv", "(Landroid/widget/ImageView;)V", "headerStub", "getHeaderStub", "()Landroid/view/View;", "setHeaderStub", "plugin-multitalk_release"})
 public final class l
   extends RecyclerView.w
 {
-  ImageView fRd;
-  View weJ;
+  ImageView fTj;
+  View wum;
   
   public l(View paramView)
   {
@@ -19,10 +19,10 @@ public final class l
     AppMethodBeat.i(178985);
     View localView = paramView.findViewById(2131296996);
     p.g(localView, "itemView.findViewById(R.id.avatar)");
-    this.fRd = ((ImageView)localView);
+    this.fTj = ((ImageView)localView);
     paramView = paramView.findViewById(2131300727);
     p.g(paramView, "itemView.findViewById(R.id.header_stub)");
-    this.weJ = paramView;
+    this.wum = paramView;
     AppMethodBeat.o(178985);
   }
 }

@@ -4,26 +4,26 @@ import com.tencent.mm.pluginsdk.wallet.PayInfo;
 
 public final class v
 {
-  public String CPp;
-  public String CTV;
-  public String CTY;
-  public String CTZ;
-  public int CUf;
-  public String Daf;
-  public boolean Dag;
-  public String Dah;
-  public String Dai;
-  public int dBZ = 0;
-  public String dkR;
+  public String DgT;
+  public String DlB;
+  public String DlE;
+  public String DlF;
+  public int DlL;
+  public String DrK;
+  public boolean DrL;
+  public String DrM;
+  public String DrN;
+  public int dDe = 0;
+  public String dlT;
   public String flag;
-  public String jcJ;
+  public String jfC;
   public String token;
-  public String wBI;
-  public PayInfo xnF;
+  public String wRt;
+  public PayInfo xDC;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.model.v
  * JD-Core Version:    0.7.0.1
  */

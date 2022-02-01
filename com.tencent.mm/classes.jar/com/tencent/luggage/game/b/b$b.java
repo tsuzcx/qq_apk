@@ -10,8 +10,8 @@ import com.tencent.luggage.a.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
 import com.tencent.mm.plugin.appbrand.jsapi.s.c;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
 import java.io.BufferedInputStream;
 import java.lang.ref.WeakReference;
 import java.net.HttpURLConnection;
@@ -23,27 +23,27 @@ final class b$b
 {
   private int bbx;
   private int bby;
-  private WeakReference<AppBrandRuntime> ciG;
+  private WeakReference<AppBrandRuntime> ciI;
   private final String mUserAgent;
   
   public b$b(AppBrandRuntime paramAppBrandRuntime)
   {
-    AppMethodBeat.i(190398);
+    AppMethodBeat.i(220712);
     this.bbx = 60000;
     this.bby = 60000;
-    this.ciG = new WeakReference(paramAppBrandRuntime);
+    this.ciI = new WeakReference(paramAppBrandRuntime);
     paramAppBrandRuntime = (com.tencent.mm.plugin.appbrand.o.a)paramAppBrandRuntime.ar(com.tencent.mm.plugin.appbrand.o.a.class);
-    int i = paramAppBrandRuntime.lVp;
-    int j = paramAppBrandRuntime.lVp;
+    int i = paramAppBrandRuntime.lZS;
+    int j = paramAppBrandRuntime.lZS;
     if ((i <= 0) || (j <= 0)) {}
     for (;;)
     {
-      this.mUserAgent = paramAppBrandRuntime.lVu;
-      AppMethodBeat.o(190398);
+      this.mUserAgent = paramAppBrandRuntime.lZX;
+      AppMethodBeat.o(220712);
       return;
       this.bbx = i;
       this.bby = j;
-      ad.i("AppBrandImageHttpFetcher", "Http Timeout Set: connection[%d] read[%d]", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
+      ae.i("AppBrandImageHttpFetcher", "Http Timeout Set: connection[%d] read[%d]", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
     }
   }
   
@@ -52,10 +52,10 @@ final class b$b
     if (paramc == null) {
       return ImageDecodeConfig.ReferrerPolicy.NOT_SET;
     }
-    if (paramc == c.lfc) {
+    if (paramc == c.liO) {
       return ImageDecodeConfig.ReferrerPolicy.NO_REFERRER;
     }
-    if (paramc == c.lfb) {
+    if (paramc == c.liN) {
       return ImageDecodeConfig.ReferrerPolicy.ORIGIN;
     }
     return ImageDecodeConfig.ReferrerPolicy.NOT_SET;
@@ -63,9 +63,9 @@ final class b$b
   
   public final b.a a(Object paramObject, ImageDecodeConfig paramImageDecodeConfig)
   {
-    AppMethodBeat.i(190400);
+    AppMethodBeat.i(220714);
     locala = new b.a();
-    localAppBrandRuntime = (AppBrandRuntime)this.ciG.get();
+    localAppBrandRuntime = (AppBrandRuntime)this.ciI.get();
     Object localObject1;
     if (localAppBrandRuntime != null)
     {
@@ -75,16 +75,16 @@ final class b$b
       {
         localObject1 = localObject2;
         if (localObject2 == ImageDecodeConfig.ReferrerPolicy.NOT_SET) {
-          localObject1 = a(((com.tencent.mm.plugin.appbrand.jsapi.s.a)localObject3).x(localAppBrandRuntime.Ew()));
+          localObject1 = a(((com.tencent.mm.plugin.appbrand.jsapi.s.a)localObject3).x(localAppBrandRuntime.Ey()));
         }
         localObject2 = localObject1;
         if (localObject1 == ImageDecodeConfig.ReferrerPolicy.NOT_SET) {
-          localObject2 = a(((com.tencent.mm.plugin.appbrand.jsapi.s.a)localObject3).bmo());
+          localObject2 = a(((com.tencent.mm.plugin.appbrand.jsapi.s.a)localObject3).bmX());
         }
         if (localObject2 != ImageDecodeConfig.ReferrerPolicy.ORIGIN) {
           break label320;
         }
-        localObject1 = ((com.tencent.mm.plugin.appbrand.jsapi.s.a)localObject3).y(localAppBrandRuntime.Ew());
+        localObject1 = ((com.tencent.mm.plugin.appbrand.jsapi.s.a)localObject3).y(localAppBrandRuntime.Ey());
         localAppBrandRuntime = null;
       }
     }
@@ -98,8 +98,8 @@ final class b$b
       for (;;)
       {
         int j;
-        ad.e("AppBrandImageHttpFetcher", "ImageFetch Timeout! path[%s] connectionTimeout[%d] readTimeout[%d] error[%s]", new Object[] { paramObject, Integer.valueOf(this.bbx), Integer.valueOf(this.bby), paramImageDecodeConfig.toString() });
-        locala.errorMsg = aj.getContext().getString(2131757659);
+        ae.e("AppBrandImageHttpFetcher", "ImageFetch Timeout! path[%s] connectionTimeout[%d] readTimeout[%d] error[%s]", new Object[] { paramObject, Integer.valueOf(this.bbx), Integer.valueOf(this.bby), paramImageDecodeConfig.toString() });
+        locala.errorMsg = ak.getContext().getString(2131757659);
         paramObject = localAppBrandRuntime;
       }
     }
@@ -109,8 +109,8 @@ final class b$b
       {
         int i;
         String str;
-        ad.e("AppBrandImageHttpFetcher", "fetch error. path = [%s], error = [%s]", new Object[] { paramObject, paramImageDecodeConfig.toString() });
-        locala.errorMsg = String.format(aj.getContext().getString(2131757582), new Object[] { paramImageDecodeConfig.toString() });
+        ae.e("AppBrandImageHttpFetcher", "fetch error. path = [%s], error = [%s]", new Object[] { paramObject, paramImageDecodeConfig.toString() });
+        locala.errorMsg = String.format(ak.getContext().getString(2131757582), new Object[] { paramImageDecodeConfig.toString() });
         paramObject = localAppBrandRuntime;
         continue;
         paramObject = null;
@@ -132,7 +132,7 @@ final class b$b
     if ((j == 301) || (j == 302))
     {
       str = ((HttpURLConnection)localObject3).getHeaderField("location");
-      ad.i("AppBrandImageHttpFetcher", "redirect from[%s] to[%s]", new Object[] { localObject2, str });
+      ae.i("AppBrandImageHttpFetcher", "redirect from[%s] to[%s]", new Object[] { localObject2, str });
       ((HttpURLConnection)localObject3).disconnect();
       if (str != null) {
         break label373;
@@ -146,40 +146,40 @@ final class b$b
       paramImageDecodeConfig = new BufferedInputStream(paramImageDecodeConfig.getInputStream());
       paramObject = paramImageDecodeConfig;
       locala.inputStream = paramObject;
-      AppMethodBeat.o(190400);
+      AppMethodBeat.o(220714);
       return locala;
-      ad.w("AppBrandImageHttpFetcher", "referrer helper is null");
+      ae.w("AppBrandImageHttpFetcher", "referrer helper is null");
       label320:
       localObject1 = null;
       break;
       if ((j >= 200) && (j < 300)) {
         break label537;
       }
-      locala.errorMsg = String.format(aj.getContext().getString(2131757277), new Object[] { Integer.valueOf(j) });
+      locala.errorMsg = String.format(ak.getContext().getString(2131757277), new Object[] { Integer.valueOf(j) });
       break label537;
       label373:
       if (i < 3) {
         break label526;
       }
-      ad.e("AppBrandImageHttpFetcher", "too much redirection!");
-      locala.errorMsg = aj.getContext().getString(2131757583);
+      ae.e("AppBrandImageHttpFetcher", "too much redirection!");
+      locala.errorMsg = ak.getContext().getString(2131757583);
     }
   }
   
   public final boolean accept(Object paramObject)
   {
-    AppMethodBeat.i(190399);
+    AppMethodBeat.i(220713);
     if (!(paramObject instanceof String))
     {
-      AppMethodBeat.o(190399);
+      AppMethodBeat.o(220713);
       return false;
     }
     if ((((String)paramObject).startsWith("http://")) || (((String)paramObject).startsWith("https://")))
     {
-      AppMethodBeat.o(190399);
+      AppMethodBeat.o(220713);
       return true;
     }
-    AppMethodBeat.o(190399);
+    AppMethodBeat.o(220713);
     return false;
   }
   
@@ -190,7 +190,7 @@ final class b$b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.luggage.game.b.b.b
  * JD-Core Version:    0.7.0.1
  */

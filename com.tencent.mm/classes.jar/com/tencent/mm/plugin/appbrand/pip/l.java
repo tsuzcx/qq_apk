@@ -6,51 +6,51 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ipcinvoker.d;
 import com.tencent.mm.ipcinvoker.type.IPCString;
 import com.tencent.mm.plugin.appbrand.widget.AppBrandPipContainerView;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
-@d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/pip/AppBrandPipStablePosLogicWC;", "Lcom/tencent/mm/plugin/appbrand/pip/AppBrandPipStablePosLogic;", "appId", "", "pipContainerView", "Lcom/tencent/mm/plugin/appbrand/widget/AppBrandPipContainerView;", "(Ljava/lang/String;Lcom/tencent/mm/plugin/appbrand/widget/AppBrandPipContainerView;)V", "lastStablePos", "Landroid/graphics/Point;", "getStablePosAsync", "", "callback", "Lcom/tencent/mm/plugin/appbrand/pip/AppBrandPipStablePosCallback;", "saveStablePos", "point", "plugin-appbrand-integration_release"})
+@d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/pip/AppBrandPipStablePosLogicWC;", "Lcom/tencent/mm/plugin/appbrand/pip/AppBrandPipStablePosLogic;", "appId", "", "pipContainerView", "Lcom/tencent/mm/plugin/appbrand/widget/AppBrandPipContainerView;", "(Ljava/lang/String;Lcom/tencent/mm/plugin/appbrand/widget/AppBrandPipContainerView;)V", "lastStablePos", "Landroid/graphics/Point;", "getStablePosAsync", "", "callback", "Lcom/tencent/mm/plugin/appbrand/pip/AppBrandPipStablePosCallback;", "saveStablePos", "point", "plugin-appbrand-integration_release"})
 final class l
   extends i
 {
-  volatile Point mok;
+  volatile Point mti;
   
   public l(String paramString, AppBrandPipContainerView paramAppBrandPipContainerView)
   {
     super(paramString, paramAppBrandPipContainerView);
-    AppMethodBeat.i(189566);
-    AppMethodBeat.o(189566);
+    AppMethodBeat.i(223835);
+    AppMethodBeat.o(223835);
   }
   
   public final void a(final h paramh)
   {
-    AppMethodBeat.i(189564);
+    AppMethodBeat.i(223833);
     d.g.b.p.h(paramh, "callback");
     com.tencent.mm.ipcinvoker.h.a("com.tencent.mm", (Parcelable)new IPCString(this.appId), n.class, (d)new a(this, paramh));
-    AppMethodBeat.o(189564);
+    AppMethodBeat.o(223833);
   }
   
   protected final void f(final Point paramPoint)
   {
-    AppMethodBeat.i(189565);
+    AppMethodBeat.i(223834);
     d.g.b.p.h(paramPoint, "point");
-    if (d.g.b.p.i(paramPoint, this.mok))
+    if (d.g.b.p.i(paramPoint, this.mti))
     {
-      ad.i("MicroMsg.AppBrand.AppBrandPipStablePosLogicWC", "saveStablePos, same pos");
-      AppMethodBeat.o(189565);
+      ae.i("MicroMsg.AppBrand.AppBrandPipStablePosLogicWC", "saveStablePos, same pos");
+      AppMethodBeat.o(223834);
       return;
     }
     com.tencent.mm.ipcinvoker.h.a("com.tencent.mm", (Parcelable)new PipStablePos(this.appId, paramPoint), p.class, (d)new b(this, paramPoint));
-    AppMethodBeat.o(189565);
+    AppMethodBeat.o(223834);
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "point", "Landroid/graphics/Point;", "onCallback"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "point", "Landroid/graphics/Point;", "onCallback"})
   static final class a<T>
     implements d<ResultType>
   {
     a(l paraml, h paramh) {}
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "kotlin.jvm.PlatformType", "onCallback"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "kotlin.jvm.PlatformType", "onCallback"})
   static final class b<T>
     implements d<ResultType>
   {

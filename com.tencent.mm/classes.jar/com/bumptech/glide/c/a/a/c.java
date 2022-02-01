@@ -32,8 +32,8 @@ public final class c
   public static c a(Context paramContext, Uri paramUri, d paramd)
   {
     AppMethodBeat.i(76907);
-    b localb = com.bumptech.glide.c.ad(paramContext).aCp;
-    paramContext = new c(paramUri, new e(com.bumptech.glide.c.ad(paramContext).aCo.nL(), paramd, localb, paramContext.getContentResolver()));
+    b localb = com.bumptech.glide.c.ae(paramContext).aCp;
+    paramContext = new c(paramUri, new e(com.bumptech.glide.c.ae(paramContext).aCo.nL(), paramd, localb, paramContext.getContentResolver()));
     AppMethodBeat.o(76907);
     return paramContext;
   }

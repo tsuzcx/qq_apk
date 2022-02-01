@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.a;
 
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/Atom/MvhdAtom$Companion;", "", "()V", "TAG", "", "plugin-playvideo_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/Atom/MvhdAtom$Companion;", "", "()V", "TAG", "", "plugin-playvideo_release"})
 public final class m$a {}
 
 

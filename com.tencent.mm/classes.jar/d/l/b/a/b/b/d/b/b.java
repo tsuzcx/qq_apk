@@ -24,17 +24,17 @@ import java.util.Map;
 
 public final class b
 {
-  private static final Map<Class<? extends d.c<?>>, Integer> MLF;
-  private static final List<d.l.b<? extends Object>> Nak;
-  private static final Map<Class<? extends Object>, Class<? extends Object>> Nal;
-  private static final Map<Class<? extends Object>, Class<? extends Object>> Nam;
+  private static final Map<Class<? extends d.c<?>>, Integer> NiI;
+  private static final List<d.l.b<? extends Object>> Nxq;
+  private static final Map<Class<? extends Object>, Class<? extends Object>> Nxr;
+  private static final Map<Class<? extends Object>, Class<? extends Object>> Nxs;
   
   static
   {
     int i = 0;
     AppMethodBeat.i(57407);
     Object localObject1 = d.a.j.listOf(new d.l.b[] { z.bp(Boolean.TYPE), z.bp(Byte.TYPE), z.bp(Character.TYPE), z.bp(Double.TYPE), z.bp(Float.TYPE), z.bp(Integer.TYPE), z.bp(Long.TYPE), z.bp(Short.TYPE) });
-    Nak = (List)localObject1;
+    Nxq = (List)localObject1;
     Object localObject2 = (Iterable)localObject1;
     localObject1 = (Collection)new ArrayList(d.a.j.a((Iterable)localObject2, 10));
     localObject2 = ((Iterable)localObject2).iterator();
@@ -42,18 +42,18 @@ public final class b
     while (((Iterator)localObject2).hasNext())
     {
       localObject3 = (d.l.b)((Iterator)localObject2).next();
-      ((Collection)localObject1).add(d.u.S(d.g.a.c((d.l.b)localObject3), d.g.a.b((d.l.b)localObject3)));
+      ((Collection)localObject1).add(d.u.R(d.g.a.c((d.l.b)localObject3), d.g.a.b((d.l.b)localObject3)));
     }
-    Nal = ae.A((Iterable)localObject1);
-    localObject2 = (Iterable)Nak;
+    Nxr = ae.A((Iterable)localObject1);
+    localObject2 = (Iterable)Nxq;
     localObject1 = (Collection)new ArrayList(d.a.j.a((Iterable)localObject2, 10));
     localObject2 = ((Iterable)localObject2).iterator();
     while (((Iterator)localObject2).hasNext())
     {
       localObject3 = (d.l.b)((Iterator)localObject2).next();
-      ((Collection)localObject1).add(d.u.S(d.g.a.b((d.l.b)localObject3), d.g.a.c((d.l.b)localObject3)));
+      ((Collection)localObject1).add(d.u.R(d.g.a.b((d.l.b)localObject3), d.g.a.c((d.l.b)localObject3)));
     }
-    Nam = ae.A((Iterable)localObject1);
+    Nxs = ae.A((Iterable)localObject1);
     localObject2 = (Iterable)d.a.j.listOf(new Class[] { d.g.a.a.class, d.g.a.b.class, m.class, d.g.a.q.class, r.class, s.class, t.class, d.g.a.u.class, d.g.a.v.class, w.class, d.g.a.c.class, d.class, d.g.a.e.class, d.g.a.f.class, g.class, d.g.a.h.class, d.g.a.i.class, d.g.a.j.class, k.class, l.class, d.g.a.n.class, o.class, d.g.a.p.class });
     localObject1 = (Collection)new ArrayList(d.a.j.a((Iterable)localObject2, 10));
     localObject2 = ((Iterable)localObject2).iterator();
@@ -61,12 +61,12 @@ public final class b
     {
       localObject3 = ((Iterator)localObject2).next();
       if (i < 0) {
-        d.a.j.gfB();
+        d.a.j.gkd();
       }
-      ((Collection)localObject1).add(d.u.S((Class)localObject3, Integer.valueOf(i)));
+      ((Collection)localObject1).add(d.u.R((Class)localObject3, Integer.valueOf(i)));
       i += 1;
     }
-    MLF = ae.A((Iterable)localObject1);
+    NiI = ae.A((Iterable)localObject1);
     AppMethodBeat.o(57407);
   }
   
@@ -74,7 +74,7 @@ public final class b
   {
     AppMethodBeat.i(57402);
     d.g.b.p.h(paramClass, "$this$wrapperByPrimitive");
-    paramClass = (Class)Nam.get(paramClass);
+    paramClass = (Class)Nxs.get(paramClass);
     AppMethodBeat.o(57402);
     return paramClass;
   }
@@ -107,7 +107,7 @@ public final class b
     for (int i = 1; i != 0; i = 0)
     {
       paramClass = new d.l.b.a.b.f.b(paramClass.getName());
-      paramClass = new d.l.b.a.b.f.a(paramClass.grg(), d.l.b.a.b.f.b.r(paramClass.grh()), true);
+      paramClass = new d.l.b.a.b.f.a(paramClass.gvI(), d.l.b.a.b.f.b.r(paramClass.gvJ()), true);
       AppMethodBeat.o(57403);
       return paramClass;
     }
@@ -117,7 +117,7 @@ public final class b
       localObject = bB((Class)localObject);
       if (localObject != null)
       {
-        paramClass = ((d.l.b.a.b.f.a)localObject).o(d.l.b.a.b.f.f.bcE(paramClass.getSimpleName()));
+        paramClass = ((d.l.b.a.b.f.a)localObject).o(d.l.b.a.b.f.f.bei(paramClass.getSimpleName()));
         AppMethodBeat.o(57403);
         return paramClass;
       }
@@ -189,7 +189,7 @@ public final class b
   {
     AppMethodBeat.i(57401);
     d.g.b.p.h(paramClass, "$this$primitiveByWrapper");
-    paramClass = (Class)Nal.get(paramClass);
+    paramClass = (Class)Nxr.get(paramClass);
     AppMethodBeat.o(57401);
     return paramClass;
   }
@@ -200,7 +200,7 @@ public final class b
     d.g.b.p.h(paramType, "$this$parameterizedTypeArguments");
     if (!(paramType instanceof ParameterizedType))
     {
-      paramType = (List)d.a.v.MKE;
+      paramType = (List)d.a.v.NhH;
       AppMethodBeat.o(57406);
       return paramType;
     }
@@ -208,11 +208,11 @@ public final class b
     {
       paramType = ((ParameterizedType)paramType).getActualTypeArguments();
       d.g.b.p.g(paramType, "actualTypeArguments");
-      paramType = d.a.e.W(paramType);
+      paramType = d.a.e.V(paramType);
       AppMethodBeat.o(57406);
       return paramType;
     }
-    paramType = d.m.i.c(d.m.i.c(d.m.i.b(paramType, (d.g.a.b)a.Nan), (d.g.a.b)b.Nao));
+    paramType = d.m.i.c(d.m.i.c(d.m.i.b(paramType, (d.g.a.b)a.Nxt), (d.g.a.b)b.Nxu));
     AppMethodBeat.o(57406);
     return paramType;
   }
@@ -221,12 +221,12 @@ public final class b
     extends d.g.b.q
     implements d.g.a.b<ParameterizedType, ParameterizedType>
   {
-    public static final a Nan;
+    public static final a Nxt;
     
     static
     {
       AppMethodBeat.i(57396);
-      Nan = new a();
+      Nxt = new a();
       AppMethodBeat.o(57396);
     }
     
@@ -240,12 +240,12 @@ public final class b
     extends d.g.b.q
     implements d.g.a.b<ParameterizedType, d.m.h<? extends Type>>
   {
-    public static final b Nao;
+    public static final b Nxu;
     
     static
     {
       AppMethodBeat.i(57398);
-      Nao = new b();
+      Nxu = new b();
       AppMethodBeat.o(57398);
     }
     
@@ -257,7 +257,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.b.d.b.b
  * JD-Core Version:    0.7.0.1
  */

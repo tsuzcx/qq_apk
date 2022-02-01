@@ -3,7 +3,7 @@ package com.tencent.mm.compatible.deviceinfo;
 import android.os.Process;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ak;
 
 final class z$1
   implements Runnable
@@ -12,14 +12,14 @@ final class z$1
   
   public final void run()
   {
-    AppMethodBeat.i(209018);
-    Toast.makeText(aj.getContext(), String.format("MediaCodecProxy queueInputBuffer, thread:[%s]", new Object[] { Integer.valueOf(Process.myTid()) }), 1).show();
-    AppMethodBeat.o(209018);
+    AppMethodBeat.i(213382);
+    Toast.makeText(ak.getContext(), String.format("MediaCodecProxy queueInputBuffer, thread:[%s]", new Object[] { Integer.valueOf(Process.myTid()) }), 1).show();
+    AppMethodBeat.o(213382);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.compatible.deviceinfo.z.1
  * JD-Core Version:    0.7.0.1
  */

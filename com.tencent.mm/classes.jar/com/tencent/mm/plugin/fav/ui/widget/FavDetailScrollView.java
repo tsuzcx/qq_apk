@@ -8,7 +8,7 @@ import com.tencent.mm.ui.widget.MMLoadScrollView;
 public class FavDetailScrollView
   extends MMLoadScrollView
 {
-  private a rEu;
+  private a rMF;
   
   public FavDetailScrollView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -24,28 +24,28 @@ public class FavDetailScrollView
   {
     AppMethodBeat.i(107511);
     super.onScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    if ((getScrollY() == 0) && (this.rEu != null))
+    if ((getScrollY() == 0) && (this.rMF != null))
     {
-      this.rEu.cwO();
+      this.rMF.cyp();
       AppMethodBeat.o(107511);
       return;
     }
-    if (this.rEu != null) {
-      this.rEu.cwN();
+    if (this.rMF != null) {
+      this.rMF.cyo();
     }
     AppMethodBeat.o(107511);
   }
   
   public void setOnScrollChangeListener(a parama)
   {
-    this.rEu = parama;
+    this.rMF = parama;
   }
   
   public static abstract interface a
   {
-    public abstract void cwN();
+    public abstract void cyo();
     
-    public abstract void cwO();
+    public abstract void cyp();
   }
 }
 

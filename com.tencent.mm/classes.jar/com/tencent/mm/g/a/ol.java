@@ -1,10 +1,13 @@
 package com.tencent.mm.g.a;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class ol
   extends b
 {
+  public a dDs;
+  
   public ol()
   {
     this((byte)0);
@@ -12,8 +15,19 @@ public final class ol
   
   private ol(byte paramByte)
   {
-    this.IbR = false;
+    AppMethodBeat.i(42655);
+    this.dDs = new a();
+    this.IvZ = false;
     this.callback = null;
+    AppMethodBeat.o(42655);
+  }
+  
+  public static final class a
+  {
+    public int count;
+    public String dDt;
+    public String dDu;
+    public int ret;
   }
 }
 

@@ -6,7 +6,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class b
 {
-  public static boolean lG(Context paramContext)
+  public static boolean lM(Context paramContext)
   {
     AppMethodBeat.i(3461);
     if (Build.VERSION.SDK_INT < 23)

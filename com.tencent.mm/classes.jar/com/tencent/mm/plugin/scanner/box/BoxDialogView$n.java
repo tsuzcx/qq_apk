@@ -4,7 +4,7 @@ import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
 final class BoxDialogView$n
   implements Runnable
 {
@@ -12,15 +12,15 @@ final class BoxDialogView$n
   
   public final void run()
   {
-    AppMethodBeat.i(186240);
-    View localView = this.sTD;
+    AppMethodBeat.i(189522);
+    View localView = this.teP;
     if (localView != null)
     {
       localView.requestLayout();
-      AppMethodBeat.o(186240);
+      AppMethodBeat.o(189522);
       return;
     }
-    AppMethodBeat.o(186240);
+    AppMethodBeat.o(189522);
   }
 }
 

@@ -6,32 +6,32 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class c
 {
-  String iDs = null;
-  boolean rlQ = false;
-  public boolean rlR = true;
-  boolean rlS = true;
-  boolean rlT = false;
-  boolean rlU = false;
-  boolean rlV = false;
-  boolean rlW = false;
-  int rlX = 0;
-  Bitmap rlY = null;
-  public String rlZ = null;
-  String rma = null;
-  String rmb = null;
-  int rmc = -1;
-  String rmd = null;
-  a.a rme = null;
-  View.OnClickListener rmf;
-  View.OnClickListener rmg;
-  View.OnClickListener rmh;
-  View.OnClickListener rmi;
+  String iGl = null;
+  boolean rtV = false;
+  public boolean rtW = true;
+  boolean rtX = true;
+  boolean rtY = false;
+  boolean rtZ = false;
+  boolean rua = false;
+  boolean rub = false;
+  int ruc = 0;
+  Bitmap rud = null;
+  public String rue = null;
+  String ruf = null;
+  String rug = null;
+  int ruh = -1;
+  String rui = null;
+  a.a ruj = null;
+  View.OnClickListener ruk;
+  View.OnClickListener rul;
+  View.OnClickListener rum;
+  View.OnClickListener run;
   public int status = 1;
   
   public final String toString()
   {
     AppMethodBeat.i(104047);
-    String str = "JumperConfig{isShowMainButton=" + this.rlQ + ", isShowStatusWordingTv=" + this.rlR + ", isShowUploadStatusIv=" + this.rlS + ", isShowCancelBtn=" + this.rlT + ", isShowSubButton=" + this.rlU + ", isShowOneByOne=" + this.rlV + ", isShowFeedback=" + this.rlW + ", oneByOneIndexStart=" + this.rlX + ", bgBm=" + this.rlY + ", statusWording='" + this.rlZ + '\'' + ", mainBtnText='" + this.rma + '\'' + ", subBtnText='" + this.rmb + '\'' + ", cancelBtnText='" + this.iDs + '\'' + ", statusIvRes=" + this.rmc + ", feedbackText='" + this.rmd + '\'' + ", status=" + this.status + ", onJumperShowEndCallback=" + this.rme + ", onMainBtnClickListener=" + this.rmf + ", onSubBtnClickListener=" + this.rmg + ", onFeedbackClickListener=" + this.rmh + ", onCancelBtnClickListener=" + this.rmi + '}';
+    String str = "JumperConfig{isShowMainButton=" + this.rtV + ", isShowStatusWordingTv=" + this.rtW + ", isShowUploadStatusIv=" + this.rtX + ", isShowCancelBtn=" + this.rtY + ", isShowSubButton=" + this.rtZ + ", isShowOneByOne=" + this.rua + ", isShowFeedback=" + this.rub + ", oneByOneIndexStart=" + this.ruc + ", bgBm=" + this.rud + ", statusWording='" + this.rue + '\'' + ", mainBtnText='" + this.ruf + '\'' + ", subBtnText='" + this.rug + '\'' + ", cancelBtnText='" + this.iGl + '\'' + ", statusIvRes=" + this.ruh + ", feedbackText='" + this.rui + '\'' + ", status=" + this.status + ", onJumperShowEndCallback=" + this.ruj + ", onMainBtnClickListener=" + this.ruk + ", onSubBtnClickListener=" + this.rul + ", onFeedbackClickListener=" + this.rum + ", onCancelBtnClickListener=" + this.run + '}';
     AppMethodBeat.o(104047);
     return str;
   }

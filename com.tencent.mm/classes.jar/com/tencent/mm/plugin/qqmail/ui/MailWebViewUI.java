@@ -12,11 +12,11 @@ import android.webkit.WebSettings.LayoutAlgorithm;
 import android.widget.FrameLayout;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cc.a;
+import com.tencent.mm.cb.a;
 import com.tencent.mm.plugin.qqmail.c.a;
 import com.tencent.mm.remoteservice.d;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aq;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.widget.MMWebView;
 import com.tencent.mm.ui.widget.MMWebView.a;
@@ -28,17 +28,17 @@ import java.util.Map;
 public class MailWebViewUI
   extends MMActivity
 {
-  private String cSr;
-  private d giA;
-  private ap handler;
-  private MMWebView omW;
-  private long xcO;
-  private c.a xgK;
+  private String cTb;
+  private d gkS;
+  private aq handler;
+  private MMWebView osM;
+  private long xsF;
+  private c.a xwC;
   
   public MailWebViewUI()
   {
     AppMethodBeat.i(123129);
-    this.xgK = new c.a()
+    this.xwC = new c.a()
     {
       public final void onError(int paramAnonymousInt, final String paramAnonymousString)
       {
@@ -70,7 +70,7 @@ public class MailWebViewUI
         AppMethodBeat.o(123120);
       }
     };
-    this.giA = new d(this);
+    this.gkS = new d(this);
     AppMethodBeat.o(123129);
   }
   
@@ -83,21 +83,21 @@ public class MailWebViewUI
   {
     AppMethodBeat.i(123135);
     boolean bool = getIntent().getBooleanExtra("singleColumn", false);
-    this.omW = MMWebView.a.kH(getContext());
-    this.omW.setBackgroundDrawable(a.l(this, 2131100695));
-    ((FrameLayout)findViewById(2131298736)).addView(this.omW);
-    this.omW.getSettings().setJavaScriptEnabled(true);
+    this.osM = MMWebView.a.kO(getContext());
+    this.osM.setBackgroundDrawable(a.l(this, 2131100695));
+    ((FrameLayout)findViewById(2131298736)).addView(this.osM);
+    this.osM.getSettings().setJavaScriptEnabled(true);
     if (Boolean.valueOf(bool).booleanValue())
     {
-      MMWebView localMMWebView = this.omW;
+      MMWebView localMMWebView = this.osM;
       if (Build.VERSION.SDK_INT >= 8) {
         localMMWebView.getSettings().setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
       }
     }
-    this.omW.getSettings().gaV();
-    this.omW.getSettings().setSupportZoom(true);
-    this.omW.getSettings().setBuiltInZoomControls(true);
-    this.omW.setWebViewClient(new ac()
+    this.osM.getSettings().gfx();
+    this.osM.getSettings().setSupportZoom(true);
+    this.osM.getSettings().setBuiltInZoomControls(true);
+    this.osM.setWebViewClient(new ac()
     {
       public final void a(WebView paramAnonymousWebView, float paramAnonymousFloat1, float paramAnonymousFloat2)
       {
@@ -111,7 +111,7 @@ public class MailWebViewUI
         AppMethodBeat.i(123124);
         if (paramAnonymousString.startsWith("weixin://private/getcontentwidth/"))
         {
-          ad.d("MicroMsg.QQMail.WebViewUI", "shouldOverride, url is getContentWidth scheme, url = ".concat(String.valueOf(paramAnonymousString)));
+          ae.d("MicroMsg.QQMail.WebViewUI", "shouldOverride, url is getContentWidth scheme, url = ".concat(String.valueOf(paramAnonymousString)));
           MailWebViewUI.b(MailWebViewUI.this, paramAnonymousString);
           AppMethodBeat.o(123124);
           return true;
@@ -129,7 +129,7 @@ public class MailWebViewUI
         AppMethodBeat.o(123125);
       }
     });
-    this.omW.setWebChromeClient(new com.tencent.xweb.x()
+    this.osM.setWebChromeClient(new com.tencent.xweb.x()
     {
       public final boolean onConsoleMessage(ConsoleMessage paramAnonymousConsoleMessage)
       {
@@ -137,11 +137,11 @@ public class MailWebViewUI
         if (paramAnonymousConsoleMessage != null) {}
         for (String str = paramAnonymousConsoleMessage.message();; str = null)
         {
-          str = com.tencent.mm.pluginsdk.ui.tools.x.aNI(str);
+          str = com.tencent.mm.pluginsdk.ui.tools.x.aPf(str);
           if (!str.startsWith("weixin://private/getcontentwidth/")) {
             break;
           }
-          ad.d("MicroMsg.QQMail.WebViewUI", "onConsoleMessage, url is getContentWidth scheme, url = ".concat(String.valueOf(str)));
+          ae.d("MicroMsg.QQMail.WebViewUI", "onConsoleMessage, url is getContentWidth scheme, url = ".concat(String.valueOf(str)));
           MailWebViewUI.b(MailWebViewUI.this, str);
           AppMethodBeat.o(123126);
           return true;
@@ -151,7 +151,7 @@ public class MailWebViewUI
         return bool;
       }
     });
-    this.omW.fLz();
+    this.osM.fPT();
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -169,13 +169,13 @@ public class MailWebViewUI
   {
     AppMethodBeat.i(123132);
     super.onCreate(paramBundle);
-    this.handler = new ap();
+    this.handler = new aq();
     initView();
     paramBundle = getIntent().getStringExtra("title");
     if (paramBundle != null) {
       setMMTitle(paramBundle);
     }
-    this.giA.connect(new Runnable()
+    this.gkS.connect(new Runnable()
     {
       public final void run()
       {
@@ -190,10 +190,10 @@ public class MailWebViewUI
   public void onDestroy()
   {
     AppMethodBeat.i(123134);
-    this.omW.setVisibility(8);
-    this.omW.destroy();
-    this.omW = null;
-    this.giA.release();
+    this.osM.setVisibility(8);
+    this.osM.destroy();
+    this.osM = null;
+    this.gkS.release();
     super.onDestroy();
     AppMethodBeat.o(123134);
   }
@@ -217,7 +217,7 @@ public class MailWebViewUI
   public void onStop()
   {
     AppMethodBeat.i(123133);
-    this.omW.stopLoading();
+    this.osM.stopLoading();
     super.onStop();
     AppMethodBeat.o(123133);
   }
@@ -230,7 +230,7 @@ public class MailWebViewUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.qqmail.ui.MailWebViewUI
  * JD-Core Version:    0.7.0.1
  */

@@ -20,21 +20,21 @@ public class RenderInfo
   
   public RenderInfo(CMTime paramCMTime, CGSize paramCGSize, CIContext paramCIContext)
   {
-    AppMethodBeat.i(219907);
+    AppMethodBeat.i(200938);
     this.tracks = new ArrayList();
     this.time = paramCMTime;
     this.renderSize = paramCGSize;
     this.ciContext = paramCIContext;
-    AppMethodBeat.o(219907);
+    AppMethodBeat.o(200938);
   }
   
   void addTrack(TAVVideoCompositionTrack paramTAVVideoCompositionTrack)
   {
-    AppMethodBeat.i(219910);
+    AppMethodBeat.i(200941);
     if (!this.tracks.contains(paramTAVVideoCompositionTrack)) {
       this.tracks.add(paramTAVVideoCompositionTrack);
     }
-    AppMethodBeat.o(219910);
+    AppMethodBeat.o(200941);
   }
   
   public CIContext getCiContext()
@@ -44,15 +44,15 @@ public class RenderInfo
   
   public Object getParam(String paramString)
   {
-    AppMethodBeat.i(219909);
+    AppMethodBeat.i(200940);
     RenderContextParams localRenderContextParams = this.ciContext.getRenderContext().getParams();
     if (localRenderContextParams != null)
     {
       paramString = localRenderContextParams.getParam(paramString);
-      AppMethodBeat.o(219909);
+      AppMethodBeat.o(200940);
       return paramString;
     }
-    AppMethodBeat.o(219909);
+    AppMethodBeat.o(200940);
     return null;
   }
   
@@ -78,18 +78,18 @@ public class RenderInfo
   
   public Object getTrackExtraInfo(String paramString)
   {
-    AppMethodBeat.i(219911);
+    AppMethodBeat.i(200942);
     Iterator localIterator = this.tracks.iterator();
     while (localIterator.hasNext())
     {
       Object localObject = ((TAVVideoCompositionTrack)localIterator.next()).getExtraTrackInfo(paramString);
       if (localObject != null)
       {
-        AppMethodBeat.o(219911);
+        AppMethodBeat.o(200942);
         return localObject;
       }
     }
-    AppMethodBeat.o(219911);
+    AppMethodBeat.o(200942);
     return null;
   }
   
@@ -100,12 +100,12 @@ public class RenderInfo
   
   public void putParam(String paramString, Object paramObject)
   {
-    AppMethodBeat.i(219908);
+    AppMethodBeat.i(200939);
     RenderContextParams localRenderContextParams = this.ciContext.getRenderContext().getParams();
     if (localRenderContextParams != null) {
       localRenderContextParams.putParam(paramString, paramObject);
     }
-    AppMethodBeat.o(219908);
+    AppMethodBeat.o(200939);
   }
 }
 

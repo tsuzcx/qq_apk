@@ -10,13 +10,13 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 final class i$a
   implements ViewTreeObserver.OnDrawListener
 {
-  Runnable MHc;
+  Runnable Neg;
   final View mView;
   
   private i$a(View paramView, Runnable paramRunnable)
   {
     this.mView = paramView;
-    this.MHc = paramRunnable;
+    this.Neg = paramRunnable;
   }
   
   static void g(View paramView, Runnable paramRunnable)
@@ -30,13 +30,13 @@ final class i$a
   public final void onDraw()
   {
     AppMethodBeat.i(9891);
-    if (this.MHc == null)
+    if (this.Neg == null)
     {
       AppMethodBeat.o(9891);
       return;
     }
-    this.MHc.run();
-    this.MHc = null;
+    this.Neg.run();
+    this.Neg = null;
     this.mView.post(new Runnable()
     {
       public final void run()

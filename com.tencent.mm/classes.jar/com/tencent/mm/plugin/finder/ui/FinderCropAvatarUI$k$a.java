@@ -5,16 +5,16 @@ import android.content.DialogInterface.OnCancelListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onCancel"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onCancel"})
 final class FinderCropAvatarUI$k$a
   implements DialogInterface.OnCancelListener
 {
-  public static final a sCo;
+  public static final a sNn;
   
   static
   {
     AppMethodBeat.i(167209);
-    sCo = new a();
+    sNn = new a();
     AppMethodBeat.o(167209);
   }
   

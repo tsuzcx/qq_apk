@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.patmsg.a;
 
 import android.util.Pair;
 import com.tencent.mm.kernel.c.a;
-import com.tencent.mm.protocal.protobuf.cif;
-import com.tencent.mm.protocal.protobuf.cig;
-import com.tencent.mm.storage.bu;
+import com.tencent.mm.protocal.protobuf.ciz;
+import com.tencent.mm.protocal.protobuf.cja;
+import com.tencent.mm.storage.bv;
 import java.util.List;
 
 public abstract interface b
@@ -14,31 +14,31 @@ public abstract interface b
   
   public abstract Pair<Long, Long> H(int paramInt, String paramString1, String paramString2);
   
-  public abstract cig a(cif paramcif, long paramLong);
+  public abstract cja a(ciz paramciz, long paramLong);
   
-  public abstract String a(cif paramcif);
+  public abstract String a(ciz paramciz);
   
   public abstract void a(Pair<Long, Long> paramPair, int paramInt);
   
-  public abstract boolean ab(long paramLong1, long paramLong2);
+  public abstract boolean aa(long paramLong1, long paramLong2);
   
-  public abstract cif auh(String paramString);
+  public abstract ciz avw(String paramString);
   
-  public abstract String aui(String paramString);
+  public abstract String avx(String paramString);
   
-  public abstract int b(cif paramcif, long paramLong);
+  public abstract int b(ciz paramciz, long paramLong);
   
   public abstract long b(String paramString, Pair<Long, Long> paramPair);
   
-  public abstract void ba(String paramString, long paramLong);
+  public abstract void bb(String paramString, long paramLong);
   
   public abstract String d(Pair<Long, Long> paramPair);
   
   public abstract boolean e(Pair<Long, Long> paramPair);
   
-  public abstract boolean yr(long paramLong);
+  public abstract boolean yL(long paramLong);
   
-  public abstract List<bu> ys(long paramLong);
+  public abstract List<bv> yM(long paramLong);
 }
 
 

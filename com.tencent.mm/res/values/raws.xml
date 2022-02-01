@@ -2135,4 +2135,13 @@
     <item type="raw" name="zuozhuan">false</item>
     <item type="raw" name="finder_bubble_arrow">false</item>
     <item type="raw" name="loading_brand">false</item>
+    <item type="raw" name="group_tool_live">false</item>
+    <item type="raw" name="ic_chat_list_empty">false</item>
+    <item type="raw" name="icons_filled_cheer">false</item>
+    <item type="raw" name="icons_outlined_cheer">false</item>
+    <item type="raw" name="icons_outlined_colorful_handoff">false</item>
+    <item type="raw" name="icons_outlined_colorful_handoff_success">false</item>
+    <item type="raw" name="image_gallery_search_image_bubble_triangle">false</item>
+    <item type="raw" name="spinner_white_16_outer_holo">false</item>
+    <item type="raw" name="spinner_white_76_outer_holo">false</item>
 </resources>

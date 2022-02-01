@@ -24,12 +24,12 @@ public final class y
   {
     AppMethodBeat.i(60123);
     p.h(paramy, "module");
-    a locala = g.MQb.MRz;
+    a locala = g.Nng.NoE;
     p.g(locala, "KotlinBuiltIns.FQ_NAMES.uLong");
     paramy = s.b(paramy, locala);
     if (paramy != null)
     {
-      paramy = paramy.giC();
+      paramy = paramy.gne();
       if (paramy != null)
       {
         paramy = (ab)paramy;
@@ -37,7 +37,7 @@ public final class y
         return paramy;
       }
     }
-    paramy = u.bcU("Unsigned type ULong not found");
+    paramy = u.bey("Unsigned type ULong not found");
     p.g(paramy, "ErrorUtils.createErrorTy…ed type ULong not found\")");
     paramy = (ab)paramy;
     AppMethodBeat.o(60123);
@@ -54,7 +54,7 @@ public final class y
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.j.b.y
  * JD-Core Version:    0.7.0.1
  */

@@ -26,48 +26,48 @@ import java.util.Set;
 
 public final class e
 {
-  private static final Map<d.l.b.a.b.f.b, f> Nce;
-  private static final Map<f, List<f>> Ncf;
-  private static final Set<d.l.b.a.b.f.b> Ncg;
-  private static final Set<f> Nch;
-  public static final e Nci;
+  private static final Map<d.l.b.a.b.f.b, f> Nzj;
+  private static final Map<f, List<f>> Nzk;
+  private static final Set<d.l.b.a.b.f.b> Nzl;
+  private static final Set<f> Nzm;
+  public static final e Nzn;
   
   static
   {
     AppMethodBeat.i(57572);
-    Nci = new e();
-    Object localObject1 = g.MQb.MQw;
+    Nzn = new e();
+    Object localObject1 = g.Nng.NnB;
     p.g(localObject1, "BUILTIN_NAMES._enum");
-    localObject1 = u.S(t.b((c)localObject1, "name"), f.bcE("name"));
-    Object localObject2 = g.MQb.MQw;
+    localObject1 = u.R(t.b((c)localObject1, "name"), f.bei("name"));
+    Object localObject2 = g.Nng.NnB;
     p.g(localObject2, "BUILTIN_NAMES._enum");
-    localObject2 = u.S(t.b((c)localObject2, "ordinal"), f.bcE("ordinal"));
-    Object localObject3 = g.MQb.MQS;
+    localObject2 = u.R(t.b((c)localObject2, "ordinal"), f.bei("ordinal"));
+    Object localObject3 = g.Nng.NnX;
     p.g(localObject3, "BUILTIN_NAMES.collection");
-    localObject3 = u.S(t.a((d.l.b.a.b.f.b)localObject3, "size"), f.bcE("size"));
-    Object localObject4 = g.MQb.MQW;
+    localObject3 = u.R(t.a((d.l.b.a.b.f.b)localObject3, "size"), f.bei("size"));
+    Object localObject4 = g.Nng.Nob;
     p.g(localObject4, "BUILTIN_NAMES.map");
-    localObject4 = u.S(t.a((d.l.b.a.b.f.b)localObject4, "size"), f.bcE("size"));
-    Object localObject5 = g.MQb.MQk;
+    localObject4 = u.R(t.a((d.l.b.a.b.f.b)localObject4, "size"), f.bei("size"));
+    Object localObject5 = g.Nng.Nnp;
     p.g(localObject5, "BUILTIN_NAMES.charSequence");
-    localObject5 = u.S(t.b((c)localObject5, "length"), f.bcE("length"));
-    Object localObject6 = g.MQb.MQW;
+    localObject5 = u.R(t.b((c)localObject5, "length"), f.bei("length"));
+    Object localObject6 = g.Nng.Nob;
     p.g(localObject6, "BUILTIN_NAMES.map");
-    localObject6 = u.S(t.a((d.l.b.a.b.f.b)localObject6, "keys"), f.bcE("keySet"));
-    Object localObject7 = g.MQb.MQW;
+    localObject6 = u.R(t.a((d.l.b.a.b.f.b)localObject6, "keys"), f.bei("keySet"));
+    Object localObject7 = g.Nng.Nob;
     p.g(localObject7, "BUILTIN_NAMES.map");
-    localObject7 = u.S(t.a((d.l.b.a.b.f.b)localObject7, "values"), f.bcE("values"));
-    d.l.b.a.b.f.b localb = g.MQb.MQW;
+    localObject7 = u.R(t.a((d.l.b.a.b.f.b)localObject7, "values"), f.bei("values"));
+    d.l.b.a.b.f.b localb = g.Nng.Nob;
     p.g(localb, "BUILTIN_NAMES.map");
-    localObject1 = ae.a(new o[] { localObject1, localObject2, localObject3, localObject4, localObject5, localObject6, localObject7, u.S(t.a(localb, "entries"), f.bcE("entrySet")) });
-    Nce = (Map)localObject1;
+    localObject1 = ae.a(new o[] { localObject1, localObject2, localObject3, localObject4, localObject5, localObject6, localObject7, u.R(t.a(localb, "entries"), f.bei("entrySet")) });
+    Nzj = (Map)localObject1;
     localObject2 = (Iterable)((Map)localObject1).entrySet();
     localObject1 = (Collection)new ArrayList(j.a((Iterable)localObject2, 10));
     localObject2 = ((Iterable)localObject2).iterator();
     while (((Iterator)localObject2).hasNext())
     {
       localObject3 = (Map.Entry)((Iterator)localObject2).next();
-      ((Collection)localObject1).add(new o(((d.l.b.a.b.f.b)((Map.Entry)localObject3).getKey()).grh(), ((Map.Entry)localObject3).getValue()));
+      ((Collection)localObject1).add(new o(((d.l.b.a.b.f.b)((Map.Entry)localObject3).getKey()).gvJ(), ((Map.Entry)localObject3).getValue()));
     }
     localObject1 = (Iterable)localObject1;
     localObject2 = (Map)new LinkedHashMap();
@@ -88,34 +88,34 @@ public final class e
     {
       ((List)localObject1).add((f)((o)localObject4).first);
       break;
-      Ncf = (Map)localObject2;
-      localObject1 = Nce.keySet();
-      Ncg = (Set)localObject1;
+      Nzk = (Map)localObject2;
+      localObject1 = Nzj.keySet();
+      Nzl = (Set)localObject1;
       localObject2 = (Iterable)localObject1;
       localObject1 = (Collection)new ArrayList(j.a((Iterable)localObject2, 10));
       localObject2 = ((Iterable)localObject2).iterator();
       while (((Iterator)localObject2).hasNext()) {
-        ((Collection)localObject1).add(((d.l.b.a.b.f.b)((Iterator)localObject2).next()).grh());
+        ((Collection)localObject1).add(((d.l.b.a.b.f.b)((Iterator)localObject2).next()).gvJ());
       }
-      Nch = j.n((Iterable)localObject1);
+      Nzm = j.n((Iterable)localObject1);
       AppMethodBeat.o(57572);
       return;
     }
   }
   
-  public static Set<f> glp()
+  public static Set<f> gpR()
   {
-    return Nch;
+    return Nzm;
   }
   
   public static List<f> h(f paramf)
   {
     AppMethodBeat.i(57570);
     p.h(paramf, "name1");
-    List localList = (List)Ncf.get(paramf);
+    List localList = (List)Nzk.get(paramf);
     paramf = localList;
     if (localList == null) {
-      paramf = (List)v.MKE;
+      paramf = (List)v.NhH;
     }
     AppMethodBeat.o(57570);
     return paramf;
@@ -125,19 +125,19 @@ public final class e
   {
     AppMethodBeat.i(57569);
     p.h(paramb, "callableMemberDescriptor");
-    if (!Nch.contains(paramb.giD()))
+    if (!Nzm.contains(paramb.gnf()))
     {
       AppMethodBeat.o(57569);
       return false;
     }
-    if ((j.a((Iterable)Ncg, a.I((l)paramb))) && (paramb.gis().isEmpty()))
+    if ((j.a((Iterable)Nzl, a.I((l)paramb))) && (paramb.gmU().isEmpty()))
     {
       AppMethodBeat.o(57569);
       return true;
     }
     if (g.c((l)paramb))
     {
-      paramb = paramb.giu();
+      paramb = paramb.gmW();
       p.g(paramb, "overriddenDescriptors");
       paramb = (Iterable)paramb;
       if ((!(paramb instanceof Collection)) || (!((Collection)paramb).isEmpty()))
@@ -164,19 +164,19 @@ public final class e
     AppMethodBeat.i(57571);
     p.h(paramb, "$this$getBuiltinSpecialPropertyGetterName");
     boolean bool = g.c((l)paramb);
-    if ((ac.MKp) && (!bool))
+    if ((ac.Nhs) && (!bool))
     {
       paramb = (Throwable)new AssertionError("This method is defined only for builtin members, but " + paramb + " found");
       AppMethodBeat.o(57571);
       throw paramb;
     }
-    paramb = a.b(a.v(paramb), (d.g.a.b)a.Ncj);
+    paramb = a.b(a.v(paramb), (d.g.a.b)a.Nzo);
     if (paramb == null)
     {
       AppMethodBeat.o(57571);
       return null;
     }
-    paramb = (f)Nce.get(a.o((l)paramb));
+    paramb = (f)Nzj.get(a.o((l)paramb));
     if (paramb != null)
     {
       paramb = paramb.sD();
@@ -191,12 +191,12 @@ public final class e
     extends q
     implements d.g.a.b<d.l.b.a.b.b.b, Boolean>
   {
-    public static final a Ncj;
+    public static final a Nzo;
     
     static
     {
       AppMethodBeat.i(57568);
-      Ncj = new a();
+      Nzo = new a();
       AppMethodBeat.o(57568);
     }
     
@@ -208,7 +208,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.d.a.e
  * JD-Core Version:    0.7.0.1
  */

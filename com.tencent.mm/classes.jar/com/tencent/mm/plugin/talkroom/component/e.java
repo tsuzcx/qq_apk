@@ -5,11 +5,11 @@ import android.os.IInterface;
 public abstract interface e
   extends IInterface
 {
-  public abstract void cxw();
+  public abstract void cyX();
   
-  public abstract void eaq();
+  public abstract void edW();
   
-  public abstract int enB();
+  public abstract int eri();
   
   public abstract void release();
   

@@ -9,7 +9,7 @@ public abstract class n<T>
   protected transient Object[] cgb;
   protected final p<T> cgc = this;
   
-  public n<T> BB()
+  public n<T> BC()
   {
     n localn = (n)super.clone();
     localn.cgb = ((Object[])this.cgb.clone());
